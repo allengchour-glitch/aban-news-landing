@@ -14,4 +14,7 @@ const p = T.pilotReihen({ start: "2026-10-11", tage: [
   { stand: "2026-10-11", kapital: 10000, maerkte: { BTC: { kurs: 80000, hebel: 1 } } },
   { stand: "2026-10-12", kapital: 10500, maerkte: { BTC: { kurs: 88000, hebel: 1 } } }] });
 ok(p.length === 2 && p[0].punkte[1].wert === 10500 && Math.abs(p[1].punkte[1].wert - 11000) < 1e-9, "Pilot vs. Bitcoin halten (+10 %)");
+const p2 = T.pilotReihen({ tage: [{ stand: "2026-10-11", kapital: 10000, maerkte: { BTC: { kurs: 1, hebel: 1 } } }],
+  tage_p2: [{ stand: "2026-10-12", kapital: 10000 }, { stand: "2026-10-13", kapital: 10200 }] });
+ok(p2.map(x => x.name).join() === "Krypto-Pilot,Pilot 2.0,Bitcoin halten" && p2[1].punkte[1].wert === 10200, "Pilot 2.0 als eigene Linie, eigener Start = 10 000");
 ok(T.pilotReihen({ tage: [] }).length === 0 && T.kennzahlen([]) === null, "leere Logbücher");

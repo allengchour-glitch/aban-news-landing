@@ -87,7 +87,7 @@ td.z,th.z{text-align:right;white-space:nowrap}
   </section>
 
   <section class="panel" id="krypto">
-    <h2 style="margin-top:0">Krypto-Pilot gegen Bitcoin halten</h2>
+    <h2 style="margin-top:0">Krypto-Pilot und Pilot 2.0 gegen Bitcoin halten</h2>
     <div class="out" id="pilot" aria-live="polite"><p class="note">Wird geladen …</p></div>
   </section>
 
@@ -97,6 +97,7 @@ td.z,th.z{text-align:right;white-space:nowrap}
     <li><b>Ausgleich:</b> alle 8 Märkte gleich gewichtet, einmal pro Monat zurück auf gleiche Teile. Im Rückblick 2004–2026 die beste der drei (+8,1 % pro Jahr ohne Bitcoin).</li>
     <li><b>Trendfilter 200:</b> ein Markt wird nur gehalten, solange er über seinem 200-Tage-Durchschnitt liegt.</li>
     <li><b>Krypto-Pilot:</b> Bitcoin und Ethereum je zur Hälfte, long über dem Trend (150 bzw. 200 Tage), sonst short, Grösse nach Schwankung. Das Tagebuch verbucht seine Entscheide mit Gebühren und Finanzierungskosten, aber ohne Stop-Kurse.</li>
+    <li><b>Pilot 2.0:</b> gleiche Signale wie der Krypto-Pilot, aber klüger ausgeführt: Long über Spot (kein Funding), Short über Futures (kassiert Funding), freies Geld als Funding-Ernte geparkt. Im Rückblick mit echten Binance-Fundingraten 2022–2026 +29,5 % statt +25,1 % pro Jahr bei kleinerem Einbruch (−23 % statt −26 %). Läuft hier ab Oktober 2026 vorwärts.</li>
   </ul>
   <p>Was die Rückblicke vor dem Start gezeigt haben, steht auf <a href="/ki-trading-bot.html">KI-Trading-Bots ehrlich geprüft</a>: Keine Strategie schlug einfaches Halten belastbar. Dieses Tagebuch prüft, ob das auch vorwärts gilt.</p>
 
@@ -136,6 +137,8 @@ td.z,th.z{text-align:right;white-space:nowrap}
     var k0 = t[0].kapital, b0 = (t[0].maerkte.BTC || {}).kurs;
     var p = { name: "Krypto-Pilot", punkte: t.map(function (x) { return { tag: x.stand, wert: x.kapital / k0 * START }; }) };
     var r = [p];
+    var t2 = lb.tage_p2 || [];
+    if (t2.length) r.push({ name: "Pilot 2.0", punkte: t2.map(function (x) { return { tag: x.stand, wert: x.kapital / t2[0].kapital * START }; }) });
     if (b0) r.push({ name: "Bitcoin halten", punkte: t.filter(function (x) { return x.maerkte.BTC; }).map(function (x) { return { tag: x.stand, wert: x.maerkte.BTC.kurs / b0 * START }; }) });
     return r;
   }

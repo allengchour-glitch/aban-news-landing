@@ -38,4 +38,30 @@ b = S.bericht(lb)
 ok("Bitcoin halten" in b and "+21.0 %" in b and "Einbruch" in b, "Bericht mit Vergleich")
 # 8. Älterer Stand wird nicht verbucht
 ok(not S.verbuchen(lb, [E("BTC", "2026-10-01", 50, 1.0), E("ETH", "2026-10-01", 5, 1.0)], 0, 0), "älterer Stand ignoriert")
+# 9. Echtes Funding (P0): Long 1× zahlt f, ohne Kursänderung → −f × Anteil (1 Markt = ganzes Kapital)
+lb3 = {}
+S.verbuchen(lb3, [E("BTC", "2026-01-01", 100, 1.0)], 0, 0, funding={"BTC": 0.001})
+S.verbuchen(lb3, [E("BTC", "2026-01-02", 100, 1.0)], 0, 0, funding={"BTC": 0.001})
+ok(abs(lb3["tage"][-1]["rendite"] + 0.001) < 1e-12, f"P0 Long zahlt echtes Funding: {lb3['tage'][-1]['rendite']}")
+# 10. P2: Long über Spot zahlt KEIN Funding; Short bekommt Funding; halber Hebel parkt die andere Hälfte (÷1.5)
+lb4 = {}
+S.verbuchen(lb4, [E("BTC", "2026-01-01", 100, 1.0)], 0, 0, schluessel="tage_p2", modus="P2")
+S.verbuchen(lb4, [E("BTC", "2026-01-02", 100, 1.0)], 0, 0, funding={"BTC": 0.001}, schluessel="tage_p2", modus="P2")
+ok(lb4["tage_p2"][-1]["rendite"] == 0, "P2 Spot-Long ohne Funding")
+lb5 = {}
+S.verbuchen(lb5, [E("BTC", "2026-01-01", 100, -0.5)], 0, 0, schluessel="tage_p2", modus="P2")
+S.verbuchen(lb5, [E("BTC", "2026-01-02", 100, -0.5)], 0, 0, funding={"BTC": 0.003}, schluessel="tage_p2", modus="P2")
+soll = 0.5 * 0.003 + 0.5 / 1.5 * 0.003
+ok(abs(lb5["tage_p2"][-1]["rendite"] - soll) < 1e-12, f"P2 Short + Parkplatz kassieren Funding: {lb5['tage_p2'][-1]['rendite']} (soll {soll})")
+# 11. P2-Gebühr: Einstieg Long 0→1 kostet Spot 0,10 % + Parkplatz-Abbau 1/1.5 × 0,15 %
+lb6 = {}
+S.verbuchen(lb6, [E("BTC", "2026-01-01", 100, 0.0)], 0.0005, 0, schluessel="tage_p2", modus="P2")
+S.verbuchen(lb6, [E("BTC", "2026-01-02", 100, 1.0)], 0.0005, 0, funding={"BTC": 0.0}, schluessel="tage_p2", modus="P2")
+soll = -(0.001 + 1 / 1.5 * 0.0015)
+ok(abs(lb6["tage_p2"][-1]["rendite"] - soll) < 1e-12, f"P2 Gebühren: {lb6['tage_p2'][-1]['rendite']} (soll {soll:.6f})")
+# 12. Fehlt echtes Funding → Schätzung 0,01 %/8 h × Tage
+lb7 = {}
+S.verbuchen(lb7, [E("BTC", "2026-01-01", 100, 1.0)], 0, 0.0001)
+S.verbuchen(lb7, [E("BTC", "2026-01-03", 100, 1.0)], 0, 0.0001, funding={})
+ok(abs(lb7["tage"][-1]["rendite"] + 0.0006) < 1e-12, "Schätzung, wenn Funding fehlt")
 print(f"\n{ok_n} bestanden, {fail} fehlgeschlagen"); sys.exit(1 if fail else 0)

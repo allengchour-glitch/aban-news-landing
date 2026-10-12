@@ -172,6 +172,39 @@ Alpaca-Bots —, offene Positionen bleiben mit ihrem Stop stehen. `weiter.bat` h
 - Logbücher werden atomar geschrieben (erst Zwischendatei, dann umbenennen); eine beschädigte Datei wird beiseitegelegt
   (`….kaputt-Datum`) statt still überschrieben.
 
+## 🚀 Pilot 2.0 + Funding-Ernte + Mehr-Horizont-Trend (Recherche und Prüfung, 12.10.2026)
+
+Drei Ideen aus der Forschung, jede mit **echten Binance-Fundingraten** (data.binance.vision, alle 8 Stunden seit 2020) und mit
+Regeln, die vor dem Rechnen festgelegt wurden.
+
+**1. Funding-Ernte («Cash and Carry», `carry_pruefung.py`, 8 Tests)** — Spot kaufen + gleich viel Perpetual verkaufen,
+marktneutral, verdient das Funding (BIS Working Paper 1087 «Crypto carry»). Kapital 1,5× Volumen, 0,15 % je Wechsel:
+
+| Variante | 2020–2021 | ab 2022 | 2025 | schlimmster Einbruch |
+|---|---|---|---|---|
+| A immer an (BTC+ETH) | +20,6 %/J. | **+4,3 %/J.** | +3,4 % | −0,5 % |
+| B mit Filter (Funding 7 T. > 0) | +19,9 %/J. | +3,5 %/J. | +2,8 % | −0,9 % |
+| C breit, 8 Coins mit Filter | +19,9 %/J. | +3,0 %/J. | +1,4 % | −0,8 % |
+
+Seit 2022 kaum mehr als ein Zinskonto, aber fast ohne Schwankung → **als Parkplatz für freies Geld** nützlich, nicht als Geldmaschine.
+Nicht abgebildet: Spot/Future-Kursdifferenz, Börsenausfall (FTX 2022).
+
+**2. Mehr-Horizont-Trend (`trend_pruefung.py`)** — 4 Zeiträume abstimmen lassen statt eines Schnitts. **Abgelehnt:** ab 2022
++10,8 % (E1) bzw. +18,9 % (E2) gegen +23,0 % beim Pilot, bei grösserem Einbruch.
+
+**3. Pilot 2.0 (`pilot2_pruefung.py`)** — gleiche Signale, klügere Ausführung, echtes Funding:
+
+| Variante | ab 2020 | ab 2022 | ab 2024 |
+|---|---|---|---|
+| P0 live (alles Futures) | +26,0 % / −30 % | +25,1 % / −26 % | +18,6 % / −26 % |
+| P1 Long über Spot | +33,4 % / −29 % | +28,6 % / −24 % | +22,4 % / −24 % |
+| **P2 + Parkplatz (Funding-Ernte)** | **+37,5 % / −28 %** | **+29,5 % / −23 %** | **+23,9 % / −23 %** |
+
+P2 ist in **allen** Zeiträumen besser (Rendite ÷ Einbruch). Gegenprobe: ohne Funding sind P1/P2 leicht **schlechter** (höhere
+Spot-Gebühr) — der Vorsprung kommt also ganz aus gespartem bzw. kassiertem Funding, nicht aus einem Rechenfehler.
+**Status:** Pilot 2.0 läuft ab 12.10.2026 im Spielgeld-Schattenbuch neben dem Piloten (`tools/trading/schatten/`, echtes Funding
+über OKX). Die Live-Ausführung auf dem PC wird erst umgestellt, wenn er dort mindestens 3 Monate nicht schlechter ist.
+
 ## 🪙 ETH-Sammler (Sparplan + Staking)
 
 `eth_sammler.py` kauft regelmässig Ethereum für einen festen Betrag und legt ihn auf Binance ins **ETH-Staking**.

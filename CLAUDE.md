@@ -71,6 +71,12 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 **Jede Session:** beide Logbücher lesen (`pilot_schatten.py --bericht`), gegen Halten vergleichen, Code/Tests pflegen.
 **NIE:** echtes Geld, Broker-Schlüssel als Secrets, Auto-Classifier blockt lokale `bot.py --lauf` → nur über den Workflow.
 **Öffentliche Seite `ki-bot-tagebuch.html`** (Tabelle + Diagramm aus beiden Logbüchern, `tools/trading/schatten/tagebuch.js` + `build_tagebuch.py`, 4 Tests); der Job startet nach dem Commit `cf-deploy-mainsite.yml`. Bot-Doku: `tools/trading/ki_bot/README.md`, `tools/trading/krypto_bot/README.md`. Prüfung frühestens nach 3 Monaten (Jan 2027).
+**Pilot 2.0 (12.10., User: „krasser Bot … binance“):** Recherche + 3 Prüfstände mit ECHTEN Binance-Fundingraten (`data.binance.vision`
+Monatsarchive; `api.binance.com`/`fapi` = 451 von hier und GitHub → `data-api.binance.vision` für Spot, OKX-API für aktuelles Funding):
+Funding-Ernte `carry_pruefung.py` (ab 2022 nur +3–4 %/J., Einbruch <1 % → Parkplatz), Mehr-Horizont-Trend `trend_pruefung.py`
+(abgelehnt), **`pilot2_pruefung.py`: Long über Spot + Short über Futures + freies Geld in Funding-Ernte = in ALLEN Zeiträumen besser**
+(ab 2022 +29,5 % / −23 % statt +25,1 % / −26 %; Gegenprobe ohne Funding: Vorteil weg). Läuft als `tage_p2` im Schattenbuch.
+Live-Umstellung auf dem PC erst nach ≥3 Monaten Vorwärtstest.
 
 **📌 2026-10-04 (🚚 Versand-Schwelle: Beinahe-Schaden abgewendet + „Mini-Kühlschrank" war eine Insulin-Kühlbox):**
 - **🚨 WICHTIGSTE LEHRE — `dropship/VERSAND-SCHWELLE.md` LESEN, bevor jemand eine Versand-Zahl ändert.**
