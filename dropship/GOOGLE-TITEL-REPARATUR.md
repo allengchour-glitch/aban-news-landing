@@ -16,15 +16,13 @@
 Gegenproben: «Sexy» im Titel (45) trägt 0 «Inappropriate title»; RAUCH-Regex über 50'016 Titel = 45 Treffer, alle
 echtes Rauchzubehör; Such-Kanarienvogel `title:*zzzkanari*` = 0.
 
-## Letzter Lauf 2026-10-12T01:12:16Z — SCHARF
+## Letzter Lauf 2026-10-12T21:14:47Z — SCHARF
 
-Gescannt 53431 aktive von 53427 (EXACT); Wächter-Stand 1 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 5x gewartet, 39 s gesamt.
+Gescannt 53888 aktive von 53888 (EXACT); Wächter-Stand 1 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 0x gewartet, 0 s gesamt.
 
 | Produkt | Regel | Änderung | Status |
 |---|---|---|---|
 | zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100 | EINZEL | Kategorie → hg-11-10-5-2 | ok |
-| zigarrenschneider-011392 | RAUCH | Typ Küche & Bar → Raucherzubehör; Kategorie → hg-19; +raucher,smoke-zubehoer; −kochen,kueche | ok |
-| zigarrenschneider-gezackt-und-doppelklingig-769728 | RAUCH | Typ Küche & Bar → Raucherzubehör; Kategorie → hg-19; +raucher,smoke-zubehoer; −kochen,kueche | ok |
 
 ## Ledger gesamt
 
@@ -91,3 +89,8 @@ Typ-/Tag-Korrekturen (rückgelesen):
 - zigarrenschneider-011392: typ Raucherzubehör; tags_dazu raucher,smoke-zubehoer
 - zigarrenschneider-gezackt-und-doppelklingig-769728: typ Raucherzubehör; tags_dazu raucher,smoke-zubehoer
 - zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100: typ Küche & Bar
+
+## Nachmessung (≥ 20 h nach dem Schreiben, Google live)
+
+- zigarrenschneider-011392: keine Google-Meldung
+- zigarrenschneider-gezackt-und-doppelklingig-769728: keine Google-Meldung
