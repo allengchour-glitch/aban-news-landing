@@ -6898,3 +6898,5 @@ gid://shopify/Product/15465842082177	zugeordnet	64	Midilanges Kleid · Damen
 gid://shopify/Product/15465842147713	zugeordnet	20	Sommer-Tennis-Kleid
 gid://shopify/Product/15465842213249	zugeordnet	36	V-Ausschnitt Freizeitkleid mit 3/4-Ärmeln & Taschen
 gid://shopify/Product/15465842278785	zugeordnet	10	Bluse mit Blumenmuster
+gid://shopify/Product/15465842344321	zugeordnet	10	Langarmshirt mit UV-Schutz für Damen
+gid://shopify/Product/15465842475393	zugeordnet	6	One-Shoulder Spitzen-Top mit Cut-Out
