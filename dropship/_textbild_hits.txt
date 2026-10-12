@@ -17640,3 +17640,38 @@ gid://shopify/Product/16614841516423	56->0	Rückenfreies Bodycon-Midi-Kleid mit 
 gid://shopify/Product/16614844137863	70->0	Umhängetasche aus PU-Leder für Herren
 gid://shopify/Product/16614845055367	25->0	Magnetisches Holzpuzzle für Kinder
 gid://shopify/Product/16613765153159	36->0	Baby Nachtlicht mit beruhigenden Klängen
+gid://shopify/Product/16613782356359	47->2	Outdoor Sneaker für Herren, flache Sohle
+gid://shopify/Product/16613788090759	40->1	Faltbarer Laptopständer aus Aluminium
+gid://shopify/Product/16613788320135	13->1	Bluetooth-Diagnosegerät für Auto
+gid://shopify/Product/16613793268103	19->1	Smart Eye Massagegerät mit Luftdruck und Wärme
+gid://shopify/Product/16613801722247	30->0	Lüfterbasis für PS4 Slim Pro
+gid://shopify/Product/16613865816455	22->0	Haustierhalsband aus Silikon mit Buchstaben
+gid://shopify/Product/16614845251975	37->1	Grosses Crossbody für Herren – urbanes Minimaldesign
+gid://shopify/Product/16614845874567	49->0	Abendkleid mit V-Ausschnitt
+gid://shopify/Product/16614846103943	15->1	Rollkoffer mit grossem Fassungsvermögen
+gid://shopify/Product/16614847218055	128->3	Damenkleid mit Stehkragen und Falten
+gid://shopify/Product/16614849151367	66->1	Stiefeletten mit hohem Absatz
+gid://shopify/Product/16614856622471	14->1	Grosses Oxford-Rucksack mit PVC-Mesh
+gid://shopify/Product/16614857048455	85->0	Sportreise-Aufbewahrungstasche für Frauen
+gid://shopify/Product/16614857146759	81->0	Sportliche Crossbody-Chestbag aus Nylon
+gid://shopify/Product/16614857310599	13->0	USB-Lade-Computer-Rucksack 18 L
+gid://shopify/Product/16614857441671	52->1	Schultertasche aus erster Schicht Rindsleder
+gid://shopify/Product/16614857474439	27->0	Flache sportliche Plattform-Sandalen
+gid://shopify/Product/16614857671047	12->2	Flache Strick-Fischmund Sandalen
+gid://shopify/Product/16614858097031	35->0	Sportrucksack für Yoga und Fitness
+gid://shopify/Product/16614858523015	27->3	Messenger Rucksack für den Alltag
+gid://shopify/Product/16614874448263	13->3	Grosses wasserdichtes Rucksack für Outdoor
+gid://shopify/Product/16614874481031	32->0	Camping- und Wanderrucksack aus Oxford-Stoff
+gid://shopify/Product/16614874644871	9->0	Kabelloses Tastatur- und Mausset
+gid://shopify/Product/16614875300231	19->2	Mini Metall-USB-Stick 8 GB
+gid://shopify/Product/16614875398535	52->1	Sandalen mit dickem Absatz und Plateau
+gid://shopify/Product/16614884835719	19->0	Reiserucksack 36-55L mit Anti-Diebstahl-Funktion
+gid://shopify/Product/16614885065095	49->1	Cross-Country Rucksack 22x48 cm
+gid://shopify/Product/16614885228935	24->0	Multifunktionale Sneaker-Aufbewahrungstasche
+gid://shopify/Product/16614885327239	9->0	Business-Rucksack mit Solarladefunktion
+gid://shopify/Product/16614886179207	18->2	Retro-Rucksack aus Canvas
+gid://shopify/Product/16614886277511	9->0	Multifunktionale Hüfttasche für unterwegs
+gid://shopify/Product/16614886965639	66->0	Oxford-Travelrucksack für Herren
+gid://shopify/Product/16614887096711	18->0	Sporttasche mit Trocken-Nass-Trennung
+gid://shopify/Product/16614887293319	14->0	Reise- und Freizeitrucksack
+gid://shopify/Product/16614887326087	36->1	Grosser Rucksack für Herren

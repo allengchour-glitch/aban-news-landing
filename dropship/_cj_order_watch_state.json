@@ -43,15 +43,8 @@
   "status": "SHIPPED",
   "tracking": "EQKPT8612975206YQ"
  },
- "#1023": {
-  "status": "CJ_BEZAHLT_PENDING",
-  "cj_order": "CJ2610115452995745998",
-  "cj_sub": "SD2610110914560648000",
-  "cj_betrag_usd": 59.52,
-  "quelle": "Betreiber-Screenshot CJ-App 11.10.2026, Zahlung durch Betreiber"
- },
- "#1024": {
-  "status": "MANUELL_MISTER_DTF",
-  "quelle": "Bügeltransfer, Lieferant Mister DTF (manuell), kein CJ-Auftrag nötig"
+ "LX1023": {
+  "status": "UNSHIPPED",
+  "tracking": "EQKPT8613048701YQ"
  }
 }

@@ -23,3 +23,5 @@ gid://shopify/Product/16611762405767	Stahlsatz mit Sternmuster, 6-teilig
 gid://shopify/Product/16611935814023	Hundetrikot aus Baumwolle – navy blau
 gid://shopify/Product/16611936076167	Wollpullover mit Leopardenmuster für Hunde
 gid://shopify/Product/16612760682887	Yogarad für Pilates und Yoga
+gid://shopify/Product/16613846974855	Kabellose Fernbedienung für Computer
+gid://shopify/Product/16615393460615	Fensterputzroboter mit geplanter Route

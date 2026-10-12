@@ -35,8 +35,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Farben: Default Material: Strick Farbe: Default Muster: Unifarben Grös…»
 - `15449069126017` · Retro Crossbody Bag aus echtem Leder für Herren
   - «…Erhältlich in verschiedenen Farben…»
-- `15449077055873` · Herren Sportuhr mit grossem Zifferblatt
-  - «…Erhältlich in diversen Farben…»
 - `15449077547393` · Multifunktionale Camouflage Sportuhr
   - «…Farben: Camo Gelb-Schwarz, Camo Gelb-Weiss, Camo Grün-Schwarz, Camo Gr…»
 - `15449079153025` · Verdunkelungsvorhang Blickdicht Ohne Bohren
@@ -947,8 +945,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Grössen: 60*50CM/…»
 - `15500253757825` · Aufblasbarer Schutzring für Haustiere
   - «…Erhältlich in verschiedenen Grössen…»
-- `15500254216577` · Wollschal für Hunde
-  - «…Verfügbar in verschiedenen Grössen…»
 - `15500254871937` · Hundehalsband für Labrador, Golden Retriever & Co.
   - «…in verschiedenen Grössen…»
 - `15500344361345` · Vintage Reise-Sporttasche Leder faltbar
@@ -1971,7 +1967,7 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Verfügbar in drei Grössen…»
 - `15521241268609` · Hunde & Katzen Umhängetasche für unterwegs
   - «…in zwei Grössen…»
-- `15521241432449` · Baumwoll-Twill-Stoff für Kinderbettwäsche
+- `15521241432449` · Baumwoll-Twill-Stoff für Kinderbettwäsche · 10 m
   - «…Erhältlich in verschiedenen Mustern…»
 - `15521243824513` · Checkerboard Bärenherz-Nägel zum Aufkleben
   - «…Erhältlich in drei Grössen…»
@@ -2071,8 +2067,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Erhältlich in zwei Farbvarianten…»
 - `15522440413569` · Seidenfaden für Samtblumen, nicht spaltend
   - «…Erhältlich in verschiedenen Farben…»
-- `15522697609601` · MOQ100 Custom USB Rucksack
-  - «…Erhältlich in den Farben…»
 - `15522968535425` · Bedruckte Tragetasche für Schule und Reisen
   - «…Erhältlich in verschiedenen Grössen…»
 - `15523039150465` · Grosser Herren-Rucksack
@@ -2163,3 +2157,7 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…in vier Farben…»
 - `16612740694407` · Silikon-Futternapf mit Saugnapf-Matte
   - «…Erhältlich in kleiner und grosse…»
+- `16613764956551` · Multifunktionale Bluetooth-Uhr mit Schrittzähler
+  - «…Farben: taro purple, haze blue, matcha green, cherry blossom powder, p…»
+- `16613871681927` · Hundelaufgurt mit Zugseil – Nylon, 2–30 kg
+  - «…Farben: Rot, Lila, Grün, Blau, Schwarz Kein Skalierbar Nylon,…»
