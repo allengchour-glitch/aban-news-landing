@@ -7469,3 +7469,6 @@ smart-egg-lernspiel-formen-farben-345536	1419174983564922880	16	10.31	ok	landese
 unisex-korean-style-mesh-sneaker-156672	1371031235106836480	16	14.96	ok	landeseite
 yoga-ligament-dehnungsband-10341f	017F9048-891F-4077-B6D2-1031E285D544	16	10.87	ok	landeseite
 fashion-ripped-shirt-jacket-damen-421120	1626192158220890112	16	11.24	ok	landeseite
+flammen-luftbefeuchter-aroma-diffuser-367424	1621421309848727552	7	9.68	ok	landeseite
+kabellose-hasenohren-kopfhorer-mit-lichteffekt-566912	1521744870598258688	7	12.25	ok	landeseite
+meerjungfrauen-make-up-pinsel-set-11-teilig-10eebf	D9E7F4FF-D5FC-469A-8970-D569F30FC4DD	16	6.95	ok	landeseite
