@@ -6836,3 +6836,4 @@ gid://shopify/Product/15463453458817	zugeordnet	15	Elegantes ärmelloses Tank-Kl
 gid://shopify/Product/15463453524353	zugeordnet	25	Kurzer Cardigan mit Bolero-Stil
 gid://shopify/Product/15463453786497	zugeordnet	8	Trendiges Langarmshirt mit Kreuzmuster
 gid://shopify/Product/15463465550209	zugeordnet	12	Anti-Rutsch Lauflernschuhe für Babys
+gid://shopify/Product/15463465615745	zugeordnet	20	Kinder Lauflernschuhe Frühling/Herbst

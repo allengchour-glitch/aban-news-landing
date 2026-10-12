@@ -17842,3 +17842,4 @@ gid://shopify/Product/16615796474247	17->2	Baby Girl Herbst/Winter Baumwoll-Stra
 gid://shopify/Product/16615797064071	49->0	Taschenschal mit grossem Karomuster
 gid://shopify/Product/16615797522823	12->2	Baby-Sweatshirt und -Hose mit Buchstaben-Print
 gid://shopify/Product/16615797850503	45->2	Gesteppte Baby-Sneaker mit Klettverschluss
+gid://shopify/Product/16615798407559	12->2	Blumiger Seidenschal mit UV-Schutz
