@@ -22,11 +22,11 @@
   "maerkte": {
    "S&P 500": {
     "datum": "2026-10-12",
-    "kurs": 7799.56005859375,
+    "kurs": 7807.240234375,
     "ki": 0.4923,
     "trend200": 1.0,
     "halten": 1.0,
-    "vol_jahr": 0.0943,
+    "vol_jahr": 0.0941,
     "warum": {
      "top_experten": [
       [
@@ -35,14 +35,14 @@
       ],
       [
        "Momentum",
-       0.102
+       0.103
       ],
       [
        "Trendfolge",
        0.09
       ]
      ],
-     "p_steigt": 0.498,
+     "p_steigt": 0.494,
      "bremse": false
     }
    },
@@ -100,37 +100,37 @@
    },
    "Bitcoin": {
     "datum": "2026-10-12",
-    "kurs": 82613.1328125,
+    "kurs": 83007.9609375,
     "ki": 0.2722,
     "trend200": 1.0,
     "halten": 1.0,
-    "vol_jahr": 0.2807,
+    "vol_jahr": 0.278,
     "warum": {
      "top_experten": [
       [
        "Ruhige Phasen",
-       0.179
+       0.183
       ],
       [
        "Halten",
-       0.123
+       0.126
       ],
       [
        "EMA 12/26",
-       0.096
+       0.098
       ]
      ],
-     "p_steigt": 0.534,
+     "p_steigt": 0.529,
      "bremse": false
     }
    },
    "EUR/CHF": {
     "datum": "2026-10-12",
-    "kurs": 0.9313499927520752,
+    "kurs": 0.9310399889945984,
     "ki": 0.2307,
     "trend200": 1.0,
     "halten": 1.0,
-    "vol_jahr": 0.0552,
+    "vol_jahr": 0.0553,
     "warum": {
      "top_experten": [
       [
@@ -146,85 +146,85 @@
        0.061
       ]
      ],
-     "p_steigt": 0.501,
+     "p_steigt": 0.504,
      "bremse": true
     }
    },
    "Gold": {
     "datum": "2026-10-12",
-    "kurs": 4189.89990234375,
+    "kurs": 4193.89990234375,
     "ki": 0.2575,
     "trend200": 0.0,
     "halten": 1.0,
-    "vol_jahr": 0.1882,
+    "vol_jahr": 0.1878,
     "warum": {
      "top_experten": [
       [
        "EMA 12/26",
-       0.136
+       0.135
       ],
       [
        "Halten",
-       0.083
+       0.084
       ],
       [
        "Momentum",
        0.082
       ]
      ],
-     "p_steigt": 0.574,
+     "p_steigt": 0.572,
      "bremse": false
     }
    },
    "Silber": {
     "datum": "2026-10-12",
-    "kurs": 60.42499923706055,
+    "kurs": 60.494998931884766,
     "ki": 0.2052,
     "trend200": 0.0,
     "halten": 1.0,
-    "vol_jahr": 0.3147,
+    "vol_jahr": 0.3145,
     "warum": {
      "top_experten": [
       [
        "Ausbruch (Turtle)",
-       0.233
+       0.232
       ],
       [
        "Saison: Sell in May",
-       0.162
+       0.161
       ],
       [
        "Halten",
-       0.13
+       0.131
       ]
      ],
-     "p_steigt": 0.568,
+     "p_steigt": 0.566,
      "bremse": false
     }
    },
    "Öl (WTI)": {
     "datum": "2026-10-12",
-    "kurs": 93.4800033569336,
+    "kurs": 93.18000030517578,
     "ki": 0.0469,
     "trend200": 1.0,
     "halten": 1.0,
-    "vol_jahr": 0.3999,
+    "vol_jahr": 0.3979,
     "warum": {
      "top_experten": [
       [
        "Halten",
-       0.224
+       0.221
       ],
       [
        "Saison: Sell in May",
-       0.177
+       0.18
       ],
       [
        "Momentum",
-       0.138
+       0.137
       ]
      ],
-     "p_steigt": 0.508,
+     "p_steigt": 0.507,
      "bremse": true
     }
    }

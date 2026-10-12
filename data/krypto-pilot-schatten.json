@@ -18,5 +18,22 @@
  ],
  "start": "2026-10-11",
  "start_kapital": 10000.0,
- "hinweis": "Spielgeld-Vorwärtstest; Stops/Liquidation nicht abgebildet."
+ "hinweis": "Spielgeld-Vorwärtstest; Stops/Liquidation nicht abgebildet.",
+ "tage_p2": [
+  {
+   "stand": "2026-10-11",
+   "kapital": 10000.0,
+   "rendite": 0.0,
+   "maerkte": {
+    "BTC": {
+     "kurs": 83679.47,
+     "hebel": 1.0
+    },
+    "ETH": {
+     "kurs": 2534.7,
+     "hebel": 0.922
+    }
+   }
+  }
+ ]
 }
