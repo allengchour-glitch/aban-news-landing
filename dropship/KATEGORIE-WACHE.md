@@ -1,15 +1,15 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-11T18:14Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-12T00:12Z
 
-Aktive gescannt: 42 · ohne Kategorie: 42 · heute gesetzt: 42 (SCHARF, CAP 1500) · danach offen: 0 · Fehler: 0
+Aktive gescannt: 91 · ohne Kategorie: 91 · heute gesetzt: 91 (SCHARF, CAP 1500) · danach offen: 0 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
 
 ## Beispiele (heute gesetzt)
 
-- kleid-mit-geometrischem-3d-digitaldruck-620700 · Damenmode → Apparel & Accessories > Clothing
-- business-schuhe-aus-leder-621500 · Herrenschuhe → Apparel & Accessories > Shoes
-- strickkleid-mit-langen-armeln-616500 · Damenmode → Apparel & Accessories > Clothing
-- atmungsaktive-latex-einlegesohlen-fur-herren-628500 · Herrenschuhe → Apparel & Accessories > Shoes
-- mesh-kleid-mit-neckholder-und-bugel-609000 · Damenmode → Apparel & Accessories > Clothing
+- gestreiftes-mini-kleid-mit-hohem-taillenschnit-615500 · Damenmode → Apparel & Accessories > Clothing
+- gestricktes-a-linien-kleid-mit-streifen-631800 · Damenmode → Apparel & Accessories > Clothing
+- elegantes-kleid-mit-spitze-und-ausgestellten-a-628500 · Damenmode → Apparel & Accessories > Clothing
+- off-shoulder-v-ausschnitt-strickkleid-mini-630700 · Damenmode → Apparel & Accessories > Clothing
+- leoparden-minikleid-mit-langen-armeln-602900 · Damenmode → Apparel & Accessories > Clothing
 
