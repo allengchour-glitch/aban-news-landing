@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-12 21:52 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-12 23:34 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1570 · **1503 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1283, teilweise: 176, keine: 44; Preisspanne > 2×: 166) · 1 CJ-Variante: 65 · ohne Antwort: 2
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1566 · **1499 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1281, teilweise: 176, keine: 42; Preisspanne > 2×: 166) · 1 CJ-Variante: 65 · ohne Antwort: 2
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -343,7 +343,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Hundewinterjacke aus Wolle (`hundewinterjacke-aus-wolle-839168`) | 12 | 12 | 7.58–7.58 | 16.90 | Green-XS, Green-S, Green-M, Green-L |
 | Hundemantel Elch Reh Fellweste (`hundemantel-elch-reh-fellweide-f72cfb`) | 12 | 12 | 2.41–2.41 | 16.90 | Blue-S, Blue-L, Red-XXL, Blue-XL |
 | Edelstahl Automatische Trinkschüssel für Hunde (`stainless-automatic-trinkschussel-fur-hunde-457b0f`) | 12 | 12 | 2.02–4.76 | 22.90 | pink-big-1, green-big-1, Blue-L-2, pink-small-1 |
-| Hundegeschirr mit Strass (`hundegeschirr-mit-strass-9a5d24`) | 12 | 0 | 6.29–7.72 | 17.90 | Blue-S, Blue-XL, Pink-L, Pink-S |
 | Plüschtier mit Quietscher für Hunde (`pluschtier-mit-quietscher-fur-hunde-705474`) | 11 | 7 | 4.99–5.29 | 19.90 | Brown dog, Blue Donkey, Green Dog, Giraffe |
 | Halskette im traditionellen chinesischen Stil (`halskette-im-traditionellen-chinesischen-stil-610100`) | 11 | 11 | 2.68–2.68 | 15.90 | No 1 Incense Burner Necklace, No 2 Maple Leaf Necklace, No 3 Mirror Necklace, No 4 Folding Fan Necklace |
 | Jacquard Kissenbezug mit Stickerei (`jacquard-kissenbezug-mit-stickerei-629200`) | 11 | 11 | 3.04–3.04 | 15.90 | B2409091-45x45cm, B2409101-45x45cm, B2409111-45x45cm, B2409131-45x45cm |
@@ -470,7 +469,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Doppelführleine für Hunde (`doppelfuhrleine-fur-hunde-805440`) | 9 | 9 | 4.66–6.93 | 24.90 | Black-S, Black-M, Black-L, Orange-S |
 | Keramik-Servierplatte «New Bohemian» (`keramik-servierplatte-new-bohemian-604500`) | 9 | 9 | 3.76–6.92 | 23.90 | Orange Persian 10 Inches, Blue Persia 10 Inches, Green Persia 10 Inches, Baroque 10 Inches |
 | Multifunktionale Bluetooth-Uhr mit Schrittzähler (`multifunktionale-bluetooth-pedometer-uhr-865920`) | 9 | 9 | 6.48–6.48 | 16.90 | All Black, Black Gold, Black Rose Gold, Haze blue |
-| Hundeleine für Mittel- und Grosse Hunde (`hundeleine-fur-mittel-und-grosse-hunde-6e4a44`) | 9 | 0 | 5.13–5.69 | 18.90 | Camouflage red-L, Camouflage green-M, Camouflage green-XL, Camouflage red-XL |
 | Schwarzer Strickschal aus Wolle – 230 × 20 cm (`schwarzer-strickschal-aus-wolle-230-20-cm-616900`) | 9 | 9 | 2.99–2.99 | 16.90 | Red, Black, Wine Red, Light Blue |
 | Wolkenkissen im französischen Stil (`wolkenkissen-im-franzosischen-stil-614600`) | 8 | 8 | 3.19–3.5 | 26.90 | White Cloud Pillow-Central Pillow, White Cloud Pillow-High Pillow, Gray Clouds Pillow-Central Pillow, Gray Clouds Pillow-High Pillow |
 | Multifunktionale Camouflage Sportuhr (`multifunktionale-camouflage-sportuhr-628700`) | 8 | 7 | 4.86–4.86 | 15.90 | Camouflage Yellow And Black, Camouflage Yellow And White, Camouflage Green Black, Camouflage Green And White |
@@ -1178,7 +1176,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Transparentes Puder für mattes Finish (`transparentes-puder-fur-mattes-finish-2eca22`) | 4 | 4 | 4.35–4.35 | 23.90 | Banana, Medium dee, Beige, Translucent |
 | Karierter Hundepullover in Lila (`dogger-plaid-pullover-in-lila-877696`) | 4 | 4 | 5.8–5.8 | 16.90 | Purple-L, Purple-XL, Purple-2XL, Purple-3XL |
 | Sanda Box-Target für Muay Thai und Taekwondo (`sanda-box-target-fur-muay-thai-und-taekwondo-767616`) | 4 | 4 | 15.96–15.96 | 34.90 | Orange, Blue, Yellow, Silver |
-| Traction Rope 150 cm für kleine & mittlere Hunde (`traction-rope-150-cm-fur-kleine-mittlere-hunde-627700`) | 4 | 4 | 2.81–2.81 | 16.90 | Pink, Purple, Black, Blue |
 | Nackenstützkissen mit Massageperlen (`nackenstutzkissen-mit-massageperlen-609000`) | 3 | 3 | 5.2–5.51 | 22.90 | Low Loft Pillow, Medium Pillow, High Pillow |
 | Velo-Scheinwerfer mit USB-Ladefunktion (`velo-scheinwerfer-mit-usb-ladefunktion-725376`) | 3 | 3 | 6.1–16.78 | 22.90 | Standard Model, Upgrade, Flagship |
 | Ausziehbares Staufach für Mittelkonsole (`ausziehbares-staufach-fur-mittelkonsole-634700`) | 3 | 3 | 5.47–5.47 | 14.90 | Old Style, New And Refreshed Model, ModelY YL |
@@ -1353,7 +1350,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Porzellan-Schüssel für Hund und Katze (`porzellan-schussel-fur-hund-und-katze-392512`) | 3 | 3 | 2.1–2.1 | 16.90 | Blue, White, Beige |
 | Flexible Futter- und Wasserschüssel mit Klappverschluss (`flexible-futter-und-wasserschussel-mit-klappve-6e4fef`) | 3 | 0 | 2.37–2.37 | 16.90 | Purple, Blue, Green |
 | Grosses Crossbody für Herren – urbanes Minimaldesign (`grosses-crossbody-fur-herren-urbanes-minimalde-639700`) | 3 | 3 | 20.66–20.66 | 40.90 | Elegant Black, Gray And Blue Contrast Color, Sky Blue |
-| Haarkurler mit negativer Ionenfunktion (`haarkurler-mit-negativer-ionenfunktion-615400`) | 3 | 3 | 5.56–6.08 | 17.90 | Pink, White, Green |
 | Magnetisches Schnellverschluss Holster für Herren (`magnetisches-schnellverschluss-holster-fur-her-601900`) | 2 | 2 | 4.19–13.27 | 24.90 | Black A model-27 X 20 X 5.5, Black B model-27 X 20 X 5.5 |
 | 4-in-1 Cartoon Game USB Hub (`4-in-1-cartoon-game-usb-hub-646100`) | 2 | 2 | 3.34–3.34 | 15.90 |  USBA  TO  TYPE C, TYPE C  TO  TYPE C |
 | Rundes Stein- und Metallarmband 2er Set (`rundes-stein-und-metallarmband-2er-set-636200`) | 2 | 2 | 4.33–4.33 | 15.90 | Brown, Blue |
