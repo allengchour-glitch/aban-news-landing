@@ -1191,3 +1191,5 @@
 16612785619335	Farbe:2:2	2026-10-12	bluetooth-lautsprecher-mit-dual-horn-und-rgb-b-608800
 16612785488263	Farbe:3:3	2026-10-12	handheld-mini-led-projektor-f59a5c
 16614808584583	Farbe:6+Grösse:4:24	2026-10-12	dreiteiliges-hundegeschirr-aus-kunstleder-57d787
+16614808486279	Farbe:6+Grösse:5:30	2026-10-12	brustgeschirr-mit-leine-schwarz-rot-camouflage-0ec96e
+16614804160903	Farbe:3+Grösse:5:15	2026-10-12	katzen-zugleine-aus-polyester-canvas-d3d0a5
