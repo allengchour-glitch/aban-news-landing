@@ -49,6 +49,29 @@
 
 
 
+## 🧾 Versandsatz gegen die Kasse: «Versand CHF 7» stimmte für 45–49,99 CHF nicht — gemessen, geprüft, Wächter (2026-10-12, Verbesserungsrunde 04:25 UTC, «weiter machen»)
+
+**GEMESSEN:** Die Kasse gibt Einzelbestellungen ab **45,00 CHF** gratis (`draftOrderCalculate`, nur lesend: 44,90 → Standard 7,00;
+45,00 / 49,90 / 49,99 / 50,00 → «Kostenloser Versand» plus Standard 7,00). Die öffentliche Zusage bleibt «gratis ab CHF 50».
+Im Produkttext des Abendkleids «Sirène» (49,90) stand «Versand CHF 7, ab CHF 50 gratis» — für diesen Preis falsch. Gleiche
+Klasse: das Wecker-Armband (49,90) mit «darunter kostet der Versand CHF 7» in der FAQ. Voll-Export 53'568 aktive Produkte:
+1'464 in der Spanne 45–49,99 CHF, davon **2** mit dem Fehler; unter 45 CHF 10 richtige Treffer.
+
+**Die Lehre, die zählt:** Die Gegenprobe durch unabhängige Prüfer hat **meine Zusammenfassung teilweise widerlegt** — «Angebotspreis»
+und «Keine Ergebnisse gefunden» sind für Besucher unsichtbar (`visually-hidden` bzw. `hidden`), «Ähnliche Produkte» dagegen ist
+wirklich sichtbar, auch ohne Empfehlungen. WebFetch liefert den Text inklusive Screenreader-Text; ohne Quelle im Theme wäre
+ein «Angebotspreis»-Fehler gemeldet worden, der keiner ist. **Sichtbarkeit nur aus der Theme-Datei belegen.**
+
+**Zweite Klasse, offen (NICHT in dieser Runde gefixt):** «gratis ab CHF 50» ohne «Schweiz» — Liechtenstein bekommt keinen
+Gratisversand (14,90 CHF bei 49,90 und 50,00 gemessen). Im Theme 12 Stellen in 9 Dateien (nur 3 mit «Schweiz» im Umfeld), in
+den Produkttexten 73 von 3'431 Treffern ohne «Schweiz». → nächste Runde, mit Wächter.
+
+**Wächter:** `automation/versand_band_wache.py` (Voll-Export, Trockenlauf Standard, `SCHARF=1` schreibt nur wörtlich einmal
+vorkommende Sätze und liest zurück, Ledger `dropship/_versand_band.tsv`). Offline gegen den Export: genau die zwei Produkte.
+
+**Grenze:** Judge.me-Texte «No reviews» und «Bestbewertet» stehen in keiner Theme-Datei; die Ursache liegt in der App
+(Judge.me-Admin, Betreiber). Im Theme ist dafür nichts zu ändern.
+
 ## 📊 Die 12-Tage-Bilanz: mehr Sitzungen, weniger Warenkörbe — die Quelle entscheidet, nicht die Zahl (2026-10-12, Tag 12 «Webseite pimpen», Verbesserungsrunde 00:25 UTC)
 
 **GEMESSEN** (`tools/webseite_bilanz.py`, nur Menschen): 19.–30.09. → 01.10.–heute (je 12 Tage): Sitzungen 190 → 508,
