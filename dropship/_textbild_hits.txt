@@ -17651,3 +17651,7 @@ gid://shopify/Product/16614845874567	49->0	Abendkleid mit V-Ausschnitt
 gid://shopify/Product/16614846103943	15->1	Rollkoffer mit grossem Fassungsvermögen
 gid://shopify/Product/16614847218055	128->3	Damenkleid mit Stehkragen und Falten
 gid://shopify/Product/16614849151367	66->1	Stiefeletten mit hohem Absatz
+gid://shopify/Product/16614856622471	14->1	Grosses Oxford-Rucksack mit PVC-Mesh
+gid://shopify/Product/16614857048455	85->0	Sportreise-Aufbewahrungstasche für Frauen
+gid://shopify/Product/16614857146759	81->0	Sportliche Crossbody-Chestbag aus Nylon
+gid://shopify/Product/16614857310599	13->0	USB-Lade-Computer-Rucksack 18 L
