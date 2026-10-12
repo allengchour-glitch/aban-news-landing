@@ -2290,6 +2290,22 @@ KLT=/tmp/test_klingen_tor.log
     fi
   fi
 
+  # 12.10.2026: WEIHNACHTEN-TAG — «weihnachten» muss verdient sein (Weihnachtswort im TITEL, data/weihnachten_tag_regel.json).
+  # Anlass: Gruppe «cjpartydeko» stempelte es auf Kunstblumen/Tortenformen/Halloween-Deko → 5 von 8 Startseiten-Karten
+  # «Weihnachten 🎄» ohne Bezug, 56 entfernt. Importer gesperrt; die Wache fängt andere Wege (nur Partydeko wird geschrieben).
+  WTW=/tmp/weihnachten_tag_wache.log
+  if [ -f "$REPO/automation/weihnachten_tag_wache.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$WTW" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$WTW" || still_gestorben "$WTW"; then
+      touch "$WTW"
+      ( cd "$REPO" && setsid bash -c \
+          "exec 9>/tmp/lock_weihnachten_tag.lock; flock -n 9 || exit 0; exec >> \"$WTW\" 2>&1; \
+           echo \"START \$(date -u +%FT%TZ) (Aufseher)\"; python3 -u automation/weihnachten_tag_wache.py --kanarien > /dev/null \
+           && SCHARF=1 timeout 900 python3 -u automation/weihnachten_tag_wache.py; \
+           echo \"FERTIG \$(date -u +%FT%TZ)\"" 9>&- & )
+    fi
+  fi
+
   # 12.10.2026: GOOGLE-NACHFRAGE — verschwinden Produkte, die über Google Besuch/Warenkörbe brachten? (bester Kanal:
   # 90 T 44 → 6 Körbe → 1 Kauf; von 48 Juli-Sitzungen landeten 34 auf heute gedrafteten Produkten). Nur lesend:
   # dropship/GOOGLE-NACHFRAGE.md (Arbeitsliste + Prioritätsquelle für cj_versand_ch_revive.py). Täglich.

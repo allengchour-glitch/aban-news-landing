@@ -13,6 +13,8 @@ const _plt=JSON.parse(fs.readFileSync(new URL('./pluesch_textil.json',import.met
 const PLUESCH_SPIELZEUG=new RegExp(_plt.spielzeug,'i');
 const PLUESCH_TEXTIL=new RegExp(_plt.textil,'i');
 const PLUESCH_TYP=_plt.typ_textil, PLUESCH_TAGS=_plt.tags_textil;
+// 🎄 12.10.2026: «weihnachten» muss VERDIENT sein — EINE Regelquelle mit automation/weihnachten_tag_wache.py (Bestand).
+const WEIHNACHT_WORT=new RegExp(JSON.parse(fs.readFileSync(new URL('../data/weihnachten_tag_regel.json',import.meta.url),'utf8')).weihnachtswort,'i');
 import { istKlinge, istHandklinge } from './klingenregel.mjs';
 import { nurAltnetz, DRAFT_TAG as MOBILFUNK_TAG } from './mobilfunk.mjs';   // 10.10.2026: nur 2G/3G = in CH ohne Netz
 import { schonBeansprucht } from './cj_claim.mjs';
@@ -877,6 +879,9 @@ for(const [cat,label] of grp.cats){
    // taeglich hunderte Produkte dazukamen. Ein Schaufenster, das sich nicht bewegt.
    let tagsFinal=[...(process.env.WAREHOUSE?[...grp.tags,'eu-lager','schnelle-lieferung']:grp.tags),...(katTag?[katTag]:[]),'neuheit'];
    if(fash?.preisFix) tagsFinal=[...tagsFinal,'preis-ausreisser-korrigiert'];
+   // 🎄 12.10.2026: Gruppe «cjpartydeko» stempelte «weihnachten» auf Kunstblumen, Tortenformen, Halloween-Deko — 5 von 8
+   // Startseiten-Karten «Weihnachten 🎄» ohne Bezug. Nur der TITEL zählt (wie die Wache), sonst entfernt sie es am nächsten Tag.
+   if(tagsFinal.includes('weihnachten')&&!WEIHNACHT_WORT.test(title)) tagsFinal=tagsFinal.filter(t=>t!=='weihnachten');
    let typeFinal=grp.type;
    // 🔪 03.09.2026: CJs «Kitchen Knives» liefert auch Outdoor-/Taktik-/Survival-Klingen. Mit den Gruppen-Tags
    // kueche/kochen/haushalt landeten 90 davon in «Wohnen & Dekoration» und «Küche & Bar» — zwischen Sofakissen.

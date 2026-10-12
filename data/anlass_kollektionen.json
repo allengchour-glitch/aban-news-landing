@@ -1,12 +1,35 @@
 {
   "_zweck": "Anlass-Kollektionen für automation/anlass_lieferzeit_wache.py (12.10.2026). datum = Tag, an dem die Ware spätestens da sein muss. Neue Anlässe hier eintragen (Handle aus dem Shop, Datum JJJJ-MM-TT).",
-  "lieferung_werktage": {"schnell": 2, "langsam": 23},
-  "_lieferung_quelle": "schnell = Schweizer Lager (Fortura/DPD «1–2 Werktage» laut Produkttext); langsam = Direktversand CJ: 3 Werktage Bearbeitung (Shopify processingTime P3D seit 10.10.) + bis 20 Werktage Transit (Zusage Produktseite «10–20 Werktage»).",
+  "lieferung_werktage": {
+    "schnell": 2,
+    "langsam": 12
+  },
+  "_lieferung_quelle": "schnell = Schweizer Lager (Fortura/DPD «1–2 Werktage» laut Produkttext). langsam = Direktversand CJ, KALIBRIERT 12.10. an der Wirklichkeit statt an der Zusage: CJ-Linie «CJPacket EQ Sensitive» 6–10 Tage (CJ-Angabe, #1025), Bearbeitung Median 2 / max 5 WT (kassen_lieferdatum_wache), gemessene Zustellungen 10–16 Kalendertage (n = 6, Gegenprüfung Workflow 12.10.) → 12 WT ≈ 16 KT. Erste Fassung (23 WT = Obergrenze der Zusage) stellte Halloween 4 Tage zu früh um.",
   "anlaesse": [
-    {"handle": "halloween", "anlass": "Halloween", "datum": "2026-10-31"},
-    {"handle": "adventskalender", "anlass": "Advent", "datum": "2026-12-01"},
-    {"handle": "weihnachten-2026", "anlass": "Weihnachten", "datum": "2026-12-24"},
-    {"handle": "weihnachtspyjama-familie", "anlass": "Weihnachten", "datum": "2026-12-24"},
-    {"handle": "weihnachtspullover", "anlass": "Weihnachten", "datum": "2026-12-24"}
+    {
+      "handle": "halloween",
+      "anlass": "Halloween",
+      "datum": "2026-10-31"
+    },
+    {
+      "handle": "adventskalender",
+      "anlass": "Advent",
+      "datum": "2026-12-01"
+    },
+    {
+      "handle": "weihnachten-2026",
+      "anlass": "Weihnachten",
+      "datum": "2026-12-24"
+    },
+    {
+      "handle": "weihnachtspyjama-familie",
+      "anlass": "Weihnachten",
+      "datum": "2026-12-24"
+    },
+    {
+      "handle": "weihnachtspullover",
+      "anlass": "Weihnachten",
+      "datum": "2026-12-24"
+    }
   ]
 }

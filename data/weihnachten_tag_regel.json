@@ -1,0 +1,78 @@
+{
+  "_zweck": "Das Tag «weihnachten» muss verdient sein (12.10.2026). Nur der TITEL zählt (Wache und Importer gleich, sonst Hin und Her). Gelesen von automation/weihnachten_tag_wache.py (Bestand) und automation/cj_category_fill.mjs (Import). Anlass: Gruppe «cjpartydeko» stempelte «weihnachten» auf alle sechs CJ-Kategorien (Kunstblumen, Tortendeko, Partymasken, Einladungskarten) → 5 von 8 Startseiten-Karten «Weihnachten 🎄» ohne Weihnachtsbezug.",
+  "weihnachtswort": "weihnacht|christ(?:baum|kind|mas|kugel|nacht|stollen|stern|fest|rose)|advent|nikolaus|samichlaus|santa|schneem[aä]nn|schneeflock|tannenbaum|tannenzweig|tanne\\b|rentier|\\belch|lebkuchen|krippe|engel|xmas|x-mas|baumspitze|baumschmuck|christbaum|wichtel|zuckerstange|mistelzweig|stechpalme|nussknacker|glühwein|weihnachtsstern|winterwunderland|grinch|ho ho|lichterbaum|vorhanglicht|lichtervorhang|\\bstern(?:e|en)?\\b|festlich",
+  "nur_gruppen_typen": [
+    "Partydeko & Ballone"
+  ],
+  "kanarien": [
+    [
+      "Christbaumkugeln Set 24 Stück",
+      true
+    ],
+    [
+      "Weihnachtsmann-Figur mit LED",
+      true
+    ],
+    [
+      "Adventskranz mit Tannenzweigen",
+      true
+    ],
+    [
+      "Nussknacker Holzfigur 30 cm",
+      true
+    ],
+    [
+      "Schneemann-Kissenbezug",
+      true
+    ],
+    [
+      "Gestrickter Blumenstrauss",
+      false
+    ],
+    [
+      "Hochzeitskleid-Modell zur Dekoration",
+      false
+    ],
+    [
+      "Sisal-Dekoration mit Mona Lisa Motiv",
+      false
+    ],
+    [
+      "Geburtstags-Tortenstecker Gold",
+      false
+    ],
+    [
+      "Halloween Kürbis-Girlande",
+      false
+    ],
+    [
+      "Kerzenhalter Engelsflügel Gold",
+      true
+    ],
+    [
+      "Christine Party-Maske",
+      false
+    ],
+    [
+      "LED Vorhanglicht mit Sternen – 2,5 m",
+      true
+    ],
+    [
+      "Lichterbaum-Musikbox 10x10x20 cm",
+      true
+    ],
+    [
+      "Kugelförmige Aromakerze für festliche Dekoration",
+      true
+    ],
+    [
+      "Laternen-Windlicht aus Metall",
+      false
+    ],
+    [
+      "Sternenhimmel-Projektor",
+      false
+    ]
+  ],
+  "_grenzfaelle": "12.10.: Lichtervorhang/Lichterbaum/«mit Stern(en)»/«festlich» zählen als Weihnachten (Saison-Beleuchtung, Trockenlauf 4 Grenzfälle); Laterne, Windlicht, Kranz ohne Anlasswort nicht."
+}
