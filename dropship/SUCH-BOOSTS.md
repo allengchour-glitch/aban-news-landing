@@ -1,6 +1,6 @@
 # Such-Boosts — Messung der Enter-Suche
 
-Stand: 2026-10-12 22:35 UTC
+Stand: 2026-10-12 22:37 UTC
 
 **SUCHSEITE: 10 Familien · 73 Produkte · 19 Begriffe unter 6/8 (halloween, halloween kostüm, kostüm, kostüme, geschenk für frau, geschenk für sie)**
 
@@ -9,9 +9,9 @@ Werkzeug `automation/such_boost.py --messen`, Regel `automation/data/such_boosts
 | Familie | Begriff | Soll in Top 8 | erste 3 |
 |---|---|---|---|
 | halloween | halloween | 1/8 | kostum-hexe-schwarz-weiss-fgssor9436, horror-maske-fur-halloween-und-fasnacht-821504, halloween-kapuzenpullover-mit-totenkopf-print-603500 |
-| halloween | halloween kostüm | 2/8 | kostum-hexe-schwarz-weiss-fgssor9436, horror-maske-fur-halloween-und-fasnacht-821504, halloween-umhang-kleiner-teufel-aus-flanell-632800 |
+| halloween | halloween kostüm | 1/8 | kostum-hexe-schwarz-weiss-fgssor9436, horror-maske-fur-halloween-und-fasnacht-821504, tarnmuster-special-agent-captain-kostum-612000 |
 | kostueme | kostüm | 0/8 | tarnmuster-special-agent-captain-kostum-612000, glanzende-ellenbogenlange-kostumhandschuhe-637600, skull-punk-nieten-performance-maske-065344 |
-| kostueme | kostüme | 0/8 | kostum-hexe-schwarz-weiss-fgssor9436, latex-augenmaske-628500, kostum-clown-fga996532 |
+| kostueme | kostüme | 0/8 | tarnmuster-special-agent-captain-kostum-612000, skull-punk-nieten-performance-maske-065344, steampunk-halbmaske-fur-maskenballe-408768 |
 | geschenk-frau | geschenk für frau | 3/8 | vergoldetes-edelstahl-armband-mit-doppel-schic-608400, nachtlicht-aus-holz-fur-warme-atmosphare-602400, walnuss-holz-kerzenwarmer-fur-zuhause-halt-tee-609800 |
 | geschenk-frau | geschenk für sie | 3/8 | nachtlicht-aus-holz-fur-warme-atmosphare-602400, walnuss-holz-kerzenwarmer-fur-zuhause-halt-tee-609800, vergoldetes-edelstahl-armband-mit-doppel-schic-608400 |
 | geschenk-mann | geschenk für mann | 5/8 | herren-uhr-mit-mehrfach-einsatzen-621400, antimagnetische-vintage-taschenkarte-618900, weinkrug-aus-edelstahl-184512 |
@@ -21,7 +21,7 @@ Werkzeug `automation/such_boost.py --messen`, Regel `automation/data/such_boosts
 | powerbank | powerbank | 1/8 | handy-powerbank-622700, mini-powerbank-mit-spiegel-und-digitalanzeige-36dc06, powerbank-20-000-mah-636300 |
 | powerbank | power bank | 1/8 | handy-powerbank-622700, mini-powerbank-mit-spiegel-und-digitalanzeige-36dc06, powerbank-20-000-mah-ultraschlank-632900 |
 | staubsauger | staubsauger | 3/8 | handstaubsauger-mit-saug-und-stossfunktion-604100, mini-handstaubsauger-a8e394, tragbarer-akku-staubsauger-7f21be |
-| staubsauger | handstaubsauger | 0/8 |  |
+| staubsauger | handstaubsauger | 5/8 | handstaubsauger-mit-saug-und-stossfunktion-604100, mini-handstaubsauger-a8e394, handstaubsauger-fur-das-auto-12v-120w-69dc26 |
 | tshirt-herren | tshirt männer | 3/8 | herren-basic-t-shirt-kurzarm-613900, herren-kurzarm-sportshirt-mit-rundhals-613100, herren-t-shirt-rundhals-kurzarm-616100 |
 | tshirt-herren | t-shirt männer | 3/8 | herren-basic-t-shirt-kurzarm-613900, einheitsfarbenes-t-shirt-fur-herren-634300, herren-t-shirt-mit-streifenmuster-622900 |
 | handwaermer | handwärmer | 4/6 | travel-box-handwarmer-mit-usb-ladefunktion-030976, winter-handwarmer-kissen-mit-cartoon-motiv-c420ff, usb-powerbank-mit-handwarmer-und-massage-45aeb2 |

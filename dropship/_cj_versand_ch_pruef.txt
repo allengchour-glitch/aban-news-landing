@@ -7482,3 +7482,13 @@ freizeit-cargo-shorts-fur-herren-073920	1392044506592972800	16	8.09	ok	landeseit
 tierhaarentferner-handschuh-fur-hunde-katzen-601200	2503191148021601500	16	4.92	ok	landeseite
 futterspender-spielball-fur-haustiere-63a10e	A8F20274-08D9-4011-BBEA-50D519B6AA13	16	8.96	ok	landeseite
 mechanische-gaming-tastatur-fur-notebooks-d7d292	D94C234B-2D0B-4949-8CC0-1EAA7E01E485	16	13.62	ok	landeseite
+led-rose-mit-bluetooth-speaker-im-glas-454336	1737398203760254976	7	13.04	ok	landeseite
+harajuku-canvas-rucksack-mit-vielen-fachern-119424	1366260771499151360	16	7.57	ok	landeseite
+avocado-burste-zur-fellpflege-811392	1694608499164057600	16	6.04	ok	landeseite
+baby-sommer-set-t-shirt-shorts-fur-madchen-jun-7b8c06	0F79B102-C243-4F6C-8397-8E604A649E3A	16	6.01	ok	landeseite
+kuchenburste-mit-seifenspender-545920	1364488527668187136	16	5.69	ok	landeseite
+mini-powerbank-mit-spiegel-und-digitalanzeige-36dc06	01FC5F5D-0BC3-4C85-B350-03131187828E	0	-	KEINE CH-Option → DRAFT	landeseite
+magnetische-kunstwimpern-fur-einen-ausdrucksst-78c329	01F952BF-CF56-4643-ABCA-BD9F6BEB9D67	3	5.30	ok	landeseite
+trolley-rucksack-fur-haustiere-mit-sichtfenste-868992	-	-	-	unklar keine CJ-SKU	landeseite
+smart-led-schranklicht-mit-uhr-und-sensor-254144	1621774231606808576	7	10.73	ok	landeseite
+beheizbare-wimpernzange-mit-temperaturkontroll-659840	1600764611945574400	7	6.75	ok	landeseite
