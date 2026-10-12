@@ -6841,3 +6841,4 @@ gid://shopify/Product/15463489536385	zugeordnet	96	Elegantes Maxikleid mit verst
 gid://shopify/Product/15463489831297	zugeordnet	8	Blumenprint V-Ausschnitt Badeanzug
 gid://shopify/Product/15463490093441	zugeordnet	8	Bedrucktes Langarm-Minikleid mit Rundhals
 gid://shopify/Product/15463491076481	zugeordnet	42	Leinenhemd V-Ausschnitt Langarm für Herren
+gid://shopify/Product/15463491830145	zugeordnet	91	Herren T-Shirt mit Streifenmuster
