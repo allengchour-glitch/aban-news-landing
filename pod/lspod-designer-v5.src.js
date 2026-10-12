@@ -1,0 +1,2641 @@
+/* LuxeStyle · lspod-designer v5 (12.10.2026) — Profi-Bedienung: genaue Zahlen (X/Y/Grösse/Drehung/Deckkraft),
+ * Rückgängig/Wiederholen (Strg+Z/Strg+Y), Ebenen-Liste mit Reihenfolge, mehrzeiliger Text, Fett/Kursiv,
+ * Ausrichtung, Zeilenabstand, Mitte-Hilfslinien, Pfeiltasten/Entf. Vorschau und Druckdatei nutzen dieselben Regeln.
+ * Quelle: pod/lspod-designer-v5.src.js (aus v4 entminifiziert, Patch: scratchpad/v5/patch_v5.py). */
+(function () {
+  if (window.__lspodDesignerLoaded) return;
+  window.__lspodDesignerLoaded = !0;
+  var CLOUD = "dwyi6kkrl",
+    PRESET = "pigto8ba",
+    IMG_ENABLED = !!(CLOUD && PRESET),
+    STICKER_BASE =
+      "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/stk-",
+    STICKER_INDEX = STICKER_BASE + "index.json",
+    REF = 1200,
+    locale = (
+      (window.Shopify && Shopify.locale) ||
+      document.documentElement.lang ||
+      "de"
+    ).toLowerCase(),
+    EN = locale.indexOf("en") === 0,
+    T = EN
+      ? {
+          head: "Design it yourself",
+          ph: "Your text \u2026",
+          addText: "\u2795 Text",
+          addImg: "\uD83D\uDDBC\uFE0F Image",
+          addSticker: "\u2B50 Sticker",
+          font: "Font",
+          color: "Color",
+          stickers: "Pick a sticker",
+          front: "Front",
+          back: "Back",
+          tapHint:
+            "Tip: drag to move \xB7 corner = resize & rotate \xB7 tap an image \u2192 crop, flip & filter",
+          upHint: "PNG/JPG \xB7 transparent PNG for logos",
+          uploading: "Uploading \u2026",
+          upErr: "Upload error: ",
+          tooBig: "File too large (max 10 MB).",
+          cta: "\uD83D\uDED2 Add my design to cart",
+          empty: "Add text, an image or a sticker first.",
+          baking: "Preparing print file \u2026",
+          adding: "Adding \u2026",
+          added: "\u2713 Added! Redirecting \u2026",
+          addErr: "Could not add: ",
+          stillUp: "Image still uploading \u2013 please wait \u2026",
+          noVar: "Please select a size/color above first.",
+          fonts: [
+            "Modern Sans",
+            "Elegant Serif",
+            "Handwriting",
+            "Bold Display",
+            "Mono",
+          ],
+          pSide: ["Front", "Back"],
+          pPrintFile: "\uD83D\uDDBC\uFE0F Print file",
+          pDesign: "\uD83C\uDFA8 Design",
+          layerText: "Text",
+          layerImage: "Image",
+          layerSticker: "Sticker",
+        }
+      : {
+          head: "Jetzt selbst gestalten",
+          ph: "Dein Text \u2026",
+          addText: "\u2795 Text",
+          addImg: "\uD83D\uDDBC\uFE0F Bild",
+          addSticker: "\u2B50 Sticker",
+          font: "Schrift",
+          color: "Farbe",
+          stickers: "Sticker w\xE4hlen",
+          front: "Vorne",
+          back: "Hinten",
+          tapHint:
+            "Tipp: ziehen zum Verschieben \xB7 Ecke = skalieren & drehen \xB7 Bild antippen \u2192 zuschneiden, spiegeln & filtern",
+          upHint: "PNG/JPG \xB7 transparentes PNG f\xFCr Logos",
+          uploading: "Wird hochgeladen \u2026",
+          upErr: "Upload-Fehler: ",
+          tooBig: "Datei zu gross (max 10 MB).",
+          cta: "\uD83D\uDED2 Mit meinem Design in den Warenkorb",
+          empty: "F\xFCge zuerst Text, ein Bild oder einen Sticker hinzu.",
+          baking: "Druckdatei wird erstellt \u2026",
+          adding: "Wird hinzugef\xFCgt \u2026",
+          added: "\u2713 Im Warenkorb! Weiterleitung \u2026",
+          addErr: "Konnte nicht hinzuf\xFCgen: ",
+          stillUp: "Bild l\xE4dt noch hoch \u2013 kurz warten \u2026",
+          noVar:
+            "Variante nicht gefunden \u2013 bitte oben Gr\xF6sse/Farbe w\xE4hlen.",
+          fonts: [
+            "Modern Sans",
+            "Elegant Serif",
+            "Handschrift",
+            "Bold Display",
+            "Mono",
+          ],
+          pSide: ["Vorne", "Hinten"],
+          pPrintFile: "\uD83D\uDDBC\uFE0F Druckdatei",
+          pDesign: "\uD83C\uDFA8 Design",
+          layerText: "Text",
+          layerImage: "Bild",
+          layerSticker: "Sticker",
+        },
+    FONTVALS = [
+      "'Helvetica Neue',Arial,sans-serif",
+      "Georgia,'Times New Roman',serif",
+      "'Brush Script MT','Segoe Script',cursive",
+      "'Arial Black','Helvetica Neue',sans-serif",
+      "'Courier New',monospace",
+    ],
+    FONTCANVAS = [
+      "bold {S}px Arial,Helvetica,sans-serif",
+      "bold {S}px Georgia,'Times New Roman',serif",
+      "{S}px 'Brush Script MT','Segoe Script',cursive",
+      "900 {S}px 'Arial Black',Arial,sans-serif",
+      "bold {S}px 'Courier New',monospace",
+    ],
+    FONTS = FONTVALS.map(function (v, i) {
+      return { n: T.fonts[i], v: v, c: FONTCANVAS[i] };
+    }),
+    COLORS = [
+      "#111111",
+      "#ffffff",
+      "#c1922f",
+      "#b3122b",
+      "#1e4fd6",
+      "#1c8a4b",
+      "#e84393",
+      "#000080",
+    ],
+    ADD_URL =
+      (window.Shopify && Shopify.routes && Shopify.routes.cart_add_url) ||
+      "/cart/add.js",
+    CART_URL =
+      (window.Shopify && Shopify.routes && Shopify.routes.cart_url) || "/cart";
+  function el(t, a, h) {
+    var e = document.createElement(t);
+    if (a) for (var k in a) e.setAttribute(k, a[k]);
+    return (h != null && (e.innerHTML = h), e);
+  }
+  function findForm() {
+    return document.querySelector('form[action*="/cart/add"]') || null;
+  }
+  function getVariantId(f, fb) {
+    try {
+      var uv = new URLSearchParams(window.location.search).get("variant");
+      if (uv) return uv;
+    } catch (e) {}
+    if (f) {
+      var i =
+        f.querySelector('[name="id"]:checked') ||
+        f.querySelector('[name="id"]');
+      if (i && i.value) return i.value;
+    }
+    return fb || null;
+  }
+  function fontByVal(v) {
+    return (
+      FONTS.filter(function (f) {
+        return f.v === v;
+      })[0] || FONTS[0]
+    );
+  }
+  // ── v5 (12.10.2026): Profi-Bedienung ─────────────────────────────────────
+  // Gleiche Regeln für Vorschau (DOM) und Druckdatei (Canvas): Deckkraft, Schnitt, Zeilen, Ausrichtung.
+  function opOf(l) {
+    return l.op == null ? 1 : l.op;
+  }
+  function lhOf(l) {
+    return l.lh || 1.05;
+  }
+  function alignOf(l) {
+    return l.align === "left" || l.align === "right" ? l.align : "center";
+  }
+  function pctOf(v) {
+    return Math.round(v * 1000) / 10;
+  }
+  // Schriftschnitt für Canvas. Ohne Schalter bleibt der Standard der Schrift (wie bisher).
+  function canvasFont(l, px) {
+    var f = fontByVal(l.font),
+      base = f.c.replace("{S}", Math.round(px)),
+      m = /^(?:bold |900 )?(\d+)px (.*)$/.exec(base),
+      fam = m ? m[2] : "Arial,sans-serif",
+      pre = (/^(bold |900 )/.exec(base) || [""])[0],
+      w = l.bold === false ? "" : l.bold === true ? pre || "bold " : pre;
+    return (l.italic ? "italic " : "") + w + Math.round(px) + "px " + fam;
+  }
+  function uplFile(file, cb) {
+    var fd = new FormData();
+    (fd.append("file", file),
+      fd.append("upload_preset", PRESET),
+      fetch("https://api.cloudinary.com/v1_1/" + CLOUD + "/auto/upload", {
+        method: "POST",
+        body: fd,
+      })
+        .then(function (r) {
+          return r.json();
+        })
+        .then(function (j) {
+          j.secure_url
+            ? cb(null, j.secure_url)
+            : cb(new Error((j.error && j.error.message) || "failed"));
+        })
+        .catch(cb));
+  }
+  function uplBlob(blob, cb) {
+    var fd = new FormData();
+    (fd.append("file", blob),
+      fd.append("upload_preset", PRESET),
+      fetch("https://api.cloudinary.com/v1_1/" + CLOUD + "/auto/upload", {
+        method: "POST",
+        body: fd,
+      })
+        .then(function (r) {
+          return r.json();
+        })
+        .then(function (j) {
+          j.secure_url
+            ? cb(null, j.secure_url)
+            : cb(new Error((j.error && j.error.message) || "failed"));
+        })
+        .catch(cb));
+  }
+  function corsUrl(u) {
+    return CLOUD && u.indexOf("abannews.com") >= 0
+      ? "https://res.cloudinary.com/" +
+          CLOUD +
+          "/image/fetch/" +
+          encodeURIComponent(u)
+      : u;
+  }
+  var UID = 0;
+  function build(container) {
+    var imgFront =
+        container.getAttribute("data-img-front") ||
+        container.getAttribute("data-img") ||
+        "",
+      imgBack = container.getAttribute("data-img-back") || "",
+      fallbackVar = container.getAttribute("data-variant") || "",
+      imgMap = {};
+    try {
+      imgMap = JSON.parse(container.getAttribute("data-img-map") || "{}") || {};
+    } catch (e) {
+      imgMap = {};
+    }
+    var RATIO = parseFloat(container.getAttribute("data-ratio"));
+    RATIO > 0 || (RATIO = 1);
+    var REF2 = parseInt(container.getAttribute("data-ref"), 10);
+    REF2 >= 600 || (REF2 = 1200);
+    var sides = [{ k: "front", label: T.front, img: imgFront }];
+    imgBack &&
+      imgBack !== imgFront &&
+      sides.push({ k: "back", label: T.back, img: imgBack });
+    var state = { active: "front", layers: { front: [], back: [] }, sel: null };
+    function curLayers() {
+      return state.layers[state.active];
+    }
+    function curImg() {
+      for (var i = 0; i < sides.length; i++)
+        if (sides[i].k === state.active) return sides[i].img;
+      return imgFront;
+    }
+    function variantBg() {
+      try {
+        var vid = getVariantId(findForm(), fallbackVar);
+        if (vid && imgMap[vid]) return imgMap[vid];
+      } catch (e) {}
+      return curImg();
+    }
+    function applyBg() {
+      stage && (stage.style.backgroundImage = "url('" + variantBg() + "')");
+    }
+    function findLayer(id) {
+      for (var a = curLayers(), i = 0; i < a.length; i++)
+        if (a[i].id === id) return a[i];
+      return null;
+    }
+    // ── v5: Verlauf (Rückgängig/Wiederholen), Ebenen-Liste, Zahlenfelder ──
+    function cloneLayers() {
+      var o = {};
+      for (var k in state.layers)
+        o[k] = state.layers[k].map(function (l) {
+          var c = {};
+          for (var p in l) c[p] = l[p];
+          if (l.edit) {
+            c.edit = {};
+            for (var q in l.edit) c.edit[q] = l.edit[q];
+          }
+          return c;
+        });
+      return o;
+    }
+    // Vergleich ohne die großen Bilddaten: Länge + Ende genügen, um Änderungen zu erkennen.
+    function layersSig(o) {
+      return JSON.stringify(o, function (k, v) {
+        return (k === "src" || k === "origSrc" || k === "printUrl") && typeof v === "string"
+          ? v.length + ":" + v.slice(-24)
+          : v;
+      });
+    }
+    var hist = { stack: [], idx: -1 };
+    function histBtns() {
+      if (!btnUndo) return;
+      btnUndo.style.opacity = hist.idx > 0 ? "1" : "0.4";
+      btnRedo.style.opacity = hist.idx < hist.stack.length - 1 ? "1" : "0.4";
+    }
+    // Nach jeder abgeschlossenen Änderung aufrufen. Gleicher Zustand = kein neuer Schritt.
+    function histCommit() {
+      var snap = cloneLayers();
+      if (hist.idx >= 0 && layersSig(hist.stack[hist.idx]) === layersSig(snap)) return;
+      hist.stack = hist.stack.slice(0, hist.idx + 1);
+      hist.stack.push(snap);
+      if (hist.stack.length > 60) hist.stack.shift();
+      hist.idx = hist.stack.length - 1;
+      histBtns();
+    }
+    function histRestore(snap) {
+      state.layers = {};
+      for (var k in snap)
+        state.layers[k] = snap[k].map(function (l) {
+          var c = {};
+          for (var p in l) c[p] = l[p];
+          if (l.edit) {
+            c.edit = {};
+            for (var q in l.edit) c.edit[q] = l.edit[q];
+          }
+          c.uploading = false;
+          return c;
+        });
+      var keep = state.sel;
+      clearStage();
+      deselect();
+      curLayers().forEach(function (l) {
+        makeNode(l);
+        layoutNode(l);
+      });
+      relayer();
+      if (keep && findLayer(keep)) select(keep);
+      syncFormInputs();
+      histBtns();
+    }
+    function histUndo() {
+      if (hist.idx > 0) {
+        hist.idx--;
+        histRestore(hist.stack[hist.idx]);
+      }
+    }
+    function histRedo() {
+      if (hist.idx < hist.stack.length - 1) {
+        hist.idx++;
+        histRestore(hist.stack[hist.idx]);
+      }
+    }
+    // Z-Reihenfolge = Reihenfolge im Array (oben = zuletzt). Knoten im DOM ebenso sortieren.
+    function relayer() {
+      curLayers().forEach(function (l, i) {
+        var n = nodes[l.id];
+        if (n) {
+          n.root.style.zIndex = String(2 + i);
+          stage.appendChild(n.root);
+        }
+      });
+    }
+    function shiftLayer(dir) {
+      var a = curLayers(),
+        i = -1;
+      for (var j = 0; j < a.length; j++)
+        if (a[j].id === state.sel) {
+          i = j;
+          break;
+        }
+      var t = i + dir;
+      if (i < 0 || t < 0 || t >= a.length) return;
+      var tmp = a[i];
+      a[i] = a[t];
+      a[t] = tmp;
+      relayer();
+      syncFormInputs();
+      histCommit();
+    }
+    // Ebenen-Liste: oben = zuletzt angelegt. Klick wählt die Ebene.
+    function layerChipsRender() {
+      if (!layerChips) return;
+      layerChips.innerHTML = "";
+      var arr = curLayers();
+      if (!arr.length) {
+        var none = el("span", { style: "font-size:12px;color:#8a8a90;align-self:center;white-space:nowrap;" });
+        none.textContent = EN ? "No layers yet" : "Noch keine Ebenen";
+        layerChips.appendChild(none);
+        return;
+      }
+      for (var i = arr.length - 1; i >= 0; i--)
+        (function (l) {
+          var name =
+            l.type === "text"
+              ? T.layerText + ": " + ((l.text || "").split("\n")[0].slice(0, 12) || "…")
+              : l.type === "sticker"
+                ? T.layerSticker
+                : T.layerImage;
+          var on = l.id === state.sel;
+          var b = el("button", {
+            type: "button",
+            style:
+              "flex:none;padding:6px 10px;border-radius:999px;border:1px solid " +
+              (on ? "#16151a" : "#ddd") +
+              ";background:" +
+              (on ? "#16151a" : "#fff") +
+              ";color:" +
+              (on ? "#fff" : "#16151a") +
+              ";font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;",
+          });
+          b.textContent = name;
+          b.addEventListener("click", function () {
+            select(l.id);
+          });
+          layerChips.appendChild(b);
+        })(arr[i]);
+    }
+    // Zahlenfelder und Regler an das gewählte Element angleichen.
+    function refreshAll(ly) {
+      if (!ly) return;
+      pX.value = pctOf(ly.cx);
+      pY.value = pctOf(ly.cy);
+      pS.value = Math.round(ly.scale * 1000) / 10;
+      pR.value = Math.round(ly.rot * 10) / 10;
+      pO.value = Math.round(opOf(ly) * 100);
+      ctxSize.value = ly.scale;
+      ctxRot.value = Math.round(ly.rot) || 0;
+      rotLbl.textContent = (Math.round(ly.rot) || 0) + "°";
+      if (ly.type === "text") {
+        ctxLs.value = ly.ls || 0;
+        ctxOutl.value = ly.outl || 0;
+        ctxOutC.value = ly.outc || "#ffffff";
+        ctxLh.value = lhOf(ly);
+        setActive(stB, ly.bold !== false);
+        setActive(stI, !!ly.italic);
+        setActive(stL, alignOf(ly) === "left");
+        setActive(stC, alignOf(ly) === "center");
+        setActive(stR, alignOf(ly) === "right");
+      }
+    }
+    // Zahlen → Element. Während des Tippens nie die Felder zurückschreiben (sonst bricht «0,» ab).
+    function precApply() {
+      var ly = findLayer(state.sel);
+      if (!ly) return;
+      var v;
+      function num(inp, lo, hi) {
+        var n = parseFloat(inp.value);
+        return isNaN(n) ? null : Math.max(lo, Math.min(hi, n));
+      }
+      if ((v = num(pX, 0, 100)) !== null) ly.cx = v / 100;
+      if ((v = num(pY, 0, 100)) !== null) ly.cy = v / 100;
+      if ((v = num(pS, 6, 300)) !== null) ly.scale = v / 100;
+      if ((v = num(pR, -180, 180)) !== null) ly.rot = v;
+      if ((v = num(pO, 0, 100)) !== null) ly.op = v / 100;
+      layoutNode(ly);
+      checkRes(ly);
+      syncFormInputs();
+    }
+    function readoutShow(ly) {
+      readout.textContent =
+        "X " + pctOf(ly.cx) + " % · Y " + pctOf(ly.cy) + " % · " +
+        Math.round(ly.scale * 100) + " % · " + Math.round(ly.rot) + "°";
+      readout.style.display = "block";
+    }
+    container.innerHTML = "";
+    var wrap = el("div", {
+      style:
+        "border:1px solid #ece7df;border-radius:16px;overflow:hidden;background:#fff;font-family:'Helvetica Neue',Arial,sans-serif;max-width:520px;margin:8px 0 16px;",
+    });
+    wrap.appendChild(
+      el(
+        "div",
+        {
+          style:
+            "background:#16151a;color:#fff;padding:12px 16px;font-weight:800;font-size:15px;",
+        },
+        "\uD83C\uDFA8 " + T.head,
+      ),
+    );
+    var stage = el("div", {
+      style:
+        "position:relative;width:100%;aspect-ratio:1/" +
+        RATIO +
+        ";background:#f4f1ec center/cover no-repeat;touch-action:none;user-select:none;overflow:hidden;",
+    });
+    (wrap.appendChild(stage),
+      wrap.appendChild(
+        el(
+          "div",
+          {
+            style:
+              "font-size:11.5px;color:#8a8a90;padding:6px 16px 0;text-align:center;",
+          },
+          T.tapHint,
+        ),
+      ));
+    var body = el("div", { style: "padding:12px 16px 16px;" }),
+      sideBtns = {};
+    if (sides.length > 1) {
+      var sw = el("div", {
+        style:
+          "display:flex;gap:8px;margin-bottom:12px;background:#f4f1ec;padding:5px;border-radius:12px;",
+      });
+      (sides.forEach(function (s) {
+        var b = el(
+          "button",
+          {
+            type: "button",
+            "data-s": s.k,
+            style:
+              "flex:1;padding:11px;border-radius:9px;border:none;font-weight:800;font-size:14px;cursor:pointer;background:" +
+              (s.k === "front" ? "#fff" : "transparent") +
+              ";color:#16151a;box-shadow:" +
+              (s.k === "front" ? "0 1px 3px rgba(0,0,0,.12)" : "none") +
+              ";",
+          },
+          (s.k === "front" ? "\uD83D\uDC55 " : "\uD83D\uDD04 ") + s.label,
+        );
+        ((sideBtns[s.k] = b), sw.appendChild(b));
+      }),
+        body.appendChild(sw),
+        sw.addEventListener("click", function (e) {
+          var b = e.target.closest("[data-s]");
+          b && setSide(b.getAttribute("data-s"));
+        }));
+    }
+    var tools = el("div", {
+      style: "display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;",
+    });
+    function toolBtn(label) {
+      return el(
+        "button",
+        {
+          type: "button",
+          style:
+            "flex:1;min-width:90px;padding:11px 8px;border-radius:10px;border:1.5px solid #16151a;background:#16151a;color:#fff;font-weight:800;font-size:14px;cursor:pointer;",
+        },
+        label,
+      );
+    }
+    var btnText = toolBtn(T.addText),
+      btnSticker = toolBtn(T.addSticker);
+    (tools.appendChild(btnText), tools.appendChild(btnSticker));
+    var btnImg = null;
+    (IMG_ENABLED && ((btnImg = toolBtn(T.addImg)), tools.appendChild(btnImg)),
+      body.appendChild(tools));
+    var HBTN =
+      "flex:1;padding:9px 6px;border-radius:9px;border:1px solid #ddd;background:#fff;color:#16151a;font-weight:700;font-size:13px;cursor:pointer;";
+    var histBar = el("div", { style: "display:flex;gap:8px;margin-bottom:8px;" }),
+      btnUndo = el(
+        "button",
+        { type: "button", title: EN ? "Undo (Ctrl+Z)" : "R\xFCckg\xE4ngig (Strg+Z)", style: HBTN },
+        EN ? "↶ Undo" : "↶ R\xFCckg\xE4ngig",
+      ),
+      btnRedo = el(
+        "button",
+        { type: "button", title: EN ? "Redo (Ctrl+Y)" : "Wiederholen (Strg+Y)", style: HBTN },
+        EN ? "↷ Redo" : "↷ Wiederholen",
+      );
+    (histBar.appendChild(btnUndo), histBar.appendChild(btnRedo), body.appendChild(histBar));
+    var layerBar = el("div", { style: "display:flex;gap:6px;align-items:center;margin-bottom:10px;" }),
+      layerChips = el("div", { style: "display:flex;gap:6px;overflow-x:auto;flex:1;min-width:0;padding:2px 0;" }),
+      btnLUp = el(
+        "button",
+        { type: "button", title: EN ? "Move up" : "Nach oben", style: "flex:none;padding:6px 10px;border-radius:8px;border:1px solid #ddd;background:#fff;font-weight:800;cursor:pointer;" },
+        "▲",
+      ),
+      btnLDown = el(
+        "button",
+        { type: "button", title: EN ? "Move down" : "Nach unten", style: "flex:none;padding:6px 10px;border-radius:8px;border:1px solid #ddd;background:#fff;font-weight:800;cursor:pointer;" },
+        "▼",
+      );
+    (layerBar.appendChild(
+      el("span", { style: "font-size:12px;font-weight:800;color:#8a8a90;white-space:nowrap;" }, EN ? "Layers" : "Ebenen"),
+    ),
+      layerBar.appendChild(layerChips),
+      layerBar.appendChild(btnLUp),
+      layerBar.appendChild(btnLDown),
+      body.appendChild(layerBar));
+    var ctx = el("div", {
+        style:
+          "display:none;background:#faf8f5;border:1px solid #ece7df;border-radius:12px;padding:10px;margin-bottom:10px;",
+      }),
+      ctxIn = el("textarea", {
+        rows: "2",
+        maxlength: "160",
+        placeholder: T.ph,
+        style:
+          "width:100%;box-sizing:border-box;padding:10px;border:1px solid #ddd;border-radius:9px;font-size:15px;margin-bottom:8px;resize:vertical;font-family:inherit;line-height:1.3;",
+      }),
+      ctxFont = el("select", {
+        style:
+          "width:100%;padding:9px;border:1px solid #ddd;border-radius:9px;font-size:14px;margin-bottom:8px;",
+      });
+    FONTS.forEach(function (f) {
+      var o = el("option", { value: f.v });
+      ((o.textContent = f.n),
+        (o.style.fontFamily = f.v),
+        ctxFont.appendChild(o));
+    });
+    var ctxCw = el("div", { style: "display:flex;flex-wrap:wrap;gap:8px;" });
+    COLORS.forEach(function (c) {
+      ctxCw.appendChild(
+        el(
+          "button",
+          {
+            type: "button",
+            "data-c": c,
+            style:
+              "width:32px;height:32px;border-radius:50%;border:2px solid #e3e3e3;background:" +
+              c +
+              ";cursor:pointer;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);color:" +
+              (c.toLowerCase() === "#ffffff" || c === "#c1922f"
+                ? "#111"
+                : "#fff") +
+              ";font-size:15px;line-height:1;",
+          },
+          "",
+        ),
+      );
+    });
+    var ctxPick = el("input", {
+      type: "color",
+      value: "#111111",
+      title: EN ? "Custom color" : "Eigene Farbe",
+      style:
+        "width:32px;height:32px;border:2px solid #e3e3e3;border-radius:50%;background:none;cursor:pointer;padding:0;",
+    });
+    (ctxCw.appendChild(ctxPick),
+      ctx.appendChild(ctxIn),
+      ctx.appendChild(ctxFont),
+      ctx.appendChild(ctxCw),
+      body.appendChild(ctx));
+    var ctxStyle = el("div", { style: "display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap;align-items:center;" }),
+      SBTN =
+        "min-width:44px;padding:8px 10px;border-radius:9px;border:1px solid #ddd;background:#fff;color:#16151a;font-weight:800;font-size:14px;cursor:pointer;",
+      stB = el("button", { type: "button", title: EN ? "Bold" : "Fett", style: SBTN }, "B"),
+      stI = el("button", { type: "button", title: EN ? "Italic" : "Kursiv", style: SBTN + "font-style:italic;" }, "I"),
+      stL = el("button", { type: "button", title: EN ? "Align left" : "Linksb\xFCndig", style: SBTN }, EN ? "Left" : "Links"),
+      stC = el("button", { type: "button", title: EN ? "Center" : "Zentriert", style: SBTN }, EN ? "Center" : "Mitte"),
+      stR = el("button", { type: "button", title: EN ? "Align right" : "Rechtsb\xFCndig", style: SBTN }, EN ? "Right" : "Rechts");
+    (ctxStyle.appendChild(stB),
+      ctxStyle.appendChild(stI),
+      ctxStyle.appendChild(stL),
+      ctxStyle.appendChild(stC),
+      ctxStyle.appendChild(stR),
+      ctx.insertBefore(ctxStyle, ctxCw));
+    var precBar = el("div", {
+        style:
+          "display:none;background:#faf8f5;border:1px solid #ece7df;border-radius:12px;padding:9px 12px;margin-bottom:10px;",
+      }),
+      precGrid = el("div", {
+        style: "display:grid;grid-template-columns:repeat(auto-fit,minmax(70px,1fr));gap:6px;",
+      });
+    precBar.appendChild(
+      el(
+        "div",
+        { style: "font-size:12px;font-weight:800;color:#8a8a90;margin-bottom:6px;" },
+        EN ? "Exact values" : "Genaue Werte",
+      ),
+    );
+    function precField(lab, min, max, step) {
+      var lb = el("label", {
+          style: "display:flex;flex-direction:column;font-size:11px;font-weight:700;color:#16151a;gap:3px;min-width:0;",
+        }),
+        inp = el("input", {
+          type: "number",
+          min: "" + min,
+          max: "" + max,
+          step: "" + step,
+          style:
+            "width:100%;box-sizing:border-box;min-width:0;padding:7px 5px;border:1px solid #ddd;border-radius:8px;font-size:14px;",
+        });
+      (lb.appendChild(el("span", null, lab)), lb.appendChild(inp), precGrid.appendChild(lb));
+      return inp;
+    }
+    var pX = precField("X %", 0, 100, 0.5),
+      pY = precField("Y %", 0, 100, 0.5),
+      pS = precField(EN ? "Size %" : "Gr\xF6sse %", 6, 300, 1),
+      pR = precField(EN ? "Turn \xB0" : "Drehung \xB0", -180, 180, 1),
+      pO = precField(EN ? "Opacity %" : "Deckkraft %", 0, 100, 1);
+    var precBtns = el("div", { style: "display:flex;gap:6px;margin-top:8px;" }),
+      btnCX = el("button", { type: "button", style: HBTN }, EN ? "⇔ Centre horizontally" : "⇔ Mitte horizontal"),
+      btnCY = el("button", { type: "button", style: HBTN }, EN ? "⇕ Centre vertically" : "⇕ Mitte vertikal");
+    (precBtns.appendChild(btnCX),
+      precBtns.appendChild(btnCY),
+      precBar.appendChild(precGrid),
+      precBar.appendChild(precBtns),
+      body.appendChild(precBar));
+    var sizeBar = el("div", {
+      style:
+        "display:none;align-items:center;gap:10px;background:#faf8f5;border:1px solid #ece7df;border-radius:12px;padding:9px 12px;margin-bottom:10px;",
+    });
+    sizeBar.appendChild(
+      el(
+        "span",
+        {
+          style:
+            "font-size:13px;font-weight:700;color:#16151a;white-space:nowrap;",
+        },
+        EN ? "Size" : "Gr\xF6sse",
+      ),
+    );
+    var ctxSize = el("input", {
+      type: "range",
+      min: "0.15",
+      max: "3",
+      step: "0.02",
+      style: "flex:1;accent-color:#c1922f;",
+    });
+    (sizeBar.appendChild(ctxSize), body.appendChild(sizeBar));
+    var rotBar = el("div", {
+      style:
+        "display:none;align-items:center;gap:10px;background:#faf8f5;border:1px solid #ece7df;border-radius:12px;padding:9px 12px;margin-bottom:10px;",
+    });
+    rotBar.appendChild(
+      el(
+        "span",
+        {
+          style:
+            "font-size:13px;font-weight:700;color:#16151a;white-space:nowrap;",
+        },
+        EN ? "Rotate" : "Drehen",
+      ),
+    );
+    var ctxRot = el("input", {
+      type: "range",
+      min: "-180",
+      max: "180",
+      step: "1",
+      style: "flex:1;accent-color:#c1922f;",
+    });
+    rotBar.appendChild(ctxRot);
+    var rotLbl = el(
+      "span",
+      {
+        style: "font-size:12px;color:#6b6770;min-width:44px;text-align:right;",
+      },
+      "0\u00B0",
+    );
+    (rotBar.appendChild(rotLbl), body.appendChild(rotBar));
+    var textBar = el("div", {
+      style:
+        "display:none;align-items:center;gap:10px;flex-wrap:wrap;background:#faf8f5;border:1px solid #ece7df;border-radius:12px;padding:9px 12px;margin-bottom:10px;",
+    });
+    textBar.appendChild(
+      el(
+        "span",
+        {
+          style:
+            "font-size:13px;font-weight:700;color:#16151a;white-space:nowrap;",
+        },
+        EN ? "Spacing" : "Abstand",
+      ),
+    );
+    var ctxLs = el("input", {
+      type: "range",
+      min: "0",
+      max: "0.4",
+      step: "0.01",
+      style: "flex:1;accent-color:#c1922f;min-width:90px;",
+    });
+    textBar.appendChild(ctxLs);
+    textBar.appendChild(
+      el(
+        "span",
+        {
+          style:
+            "font-size:13px;font-weight:700;color:#16151a;white-space:nowrap;",
+        },
+        EN ? "Outline" : "Kontur",
+      ),
+    );
+    var ctxOutl = el("input", {
+      type: "range",
+      min: "0",
+      max: "0.12",
+      step: "0.005",
+      style: "flex:1;accent-color:#c1922f;min-width:90px;",
+    });
+    textBar.appendChild(ctxOutl);
+    var ctxOutC = el("input", {
+      type: "color",
+      value: "#ffffff",
+      style: "width:34px;height:30px;border:none;background:none;padding:0;",
+    });
+    var ctxLh = el("input", {
+      type: "range",
+      min: "0.9",
+      max: "2",
+      step: "0.05",
+      style: "flex:1;accent-color:#c1922f;min-width:90px;",
+    });
+    (textBar.appendChild(ctxOutC),
+      textBar.appendChild(
+        el(
+          "span",
+          { style: "font-size:13px;font-weight:700;color:#16151a;white-space:nowrap;" },
+          EN ? "Lines" : "Zeilen",
+        ),
+      ),
+      textBar.appendChild(ctxLh),
+      body.appendChild(textBar));
+    var presetBar = el("div", {
+      style: "display:none;gap:6px;margin-bottom:10px;flex-wrap:wrap;",
+    });
+    function preBtn(label, sc) {
+      var b = el(
+        "button",
+        {
+          type: "button",
+          style:
+            "flex:1;min-width:70px;padding:8px 4px;border-radius:9px;border:1px solid #ddd;background:#fff;color:#16151a;font-weight:700;font-size:12.5px;cursor:pointer;",
+        },
+        label,
+      );
+      return (
+        b.addEventListener("click", function () {
+          var ly = findLayer(state.sel);
+          ly &&
+            ((ly.scale = sc),
+            (ctxSize.value = sc),
+            layoutNode(ly),
+            checkRes(ly),
+            syncFormInputs());
+        }),
+        b
+      );
+    }
+    (presetBar.appendChild(
+      el(
+        "span",
+        {
+          style:
+            "font-size:12px;font-weight:700;color:#8a8a90;align-self:center;white-space:nowrap;margin-right:2px;",
+        },
+        EN ? "Print size:" : "Druckgr\xF6sse:",
+      ),
+    ),
+      presetBar.appendChild(preBtn(EN ? "Small" : "Klein", 0.6)),
+      presetBar.appendChild(preBtn(EN ? "Medium" : "Mittel", 1)),
+      presetBar.appendChild(preBtn(EN ? "Large" : "Gross", 1.5)),
+      presetBar.appendChild(preBtn(EN ? "Fill" : "F\xFCllend", 2)),
+      body.appendChild(presetBar));
+    var resWarn = el(
+      "div",
+      {
+        style:
+          "display:none;background:#fff4f5;border:1px solid #f3c6cd;color:#b3122b;border-radius:10px;padding:8px 10px;margin-bottom:10px;font-size:12.5px;font-weight:600;",
+      },
+      EN
+        ? "\u26A0\uFE0F Image may be too small for a sharp print \u2014 scale down or use a larger image."
+        : "\u26A0\uFE0F Bild evtl. zu klein f\xFCr scharfen Druck \u2014 kleiner skalieren oder gr\xF6sseres Bild verwenden.",
+    );
+    body.appendChild(resWarn);
+    var actBar = el("div", {
+      style: "display:none;gap:8px;margin-bottom:10px;",
+    });
+    function actBtn(label) {
+      return el(
+        "button",
+        {
+          type: "button",
+          style:
+            "flex:1;padding:9px 6px;border-radius:9px;border:1px solid #ddd;background:#fff;color:#16151a;font-weight:700;font-size:13px;cursor:pointer;",
+        },
+        label,
+      );
+    }
+    var btnDup = actBtn(EN ? "\u29C9 Duplicate" : "\u29C9 Duplizieren"),
+      btnFront = actBtn(EN ? "\u2191 Front" : "\u2191 Vorne"),
+      btnBack = actBtn(EN ? "\u2193 Back" : "\u2193 Hinten");
+    (actBar.appendChild(btnDup),
+      actBar.appendChild(btnFront),
+      actBar.appendChild(btnBack),
+      body.appendChild(actBar));
+    var imgBar = el("div", {
+      style: "display:none;gap:8px;margin-bottom:10px;flex-wrap:wrap;",
+    });
+    function imgBtn(label) {
+      return el(
+        "button",
+        {
+          type: "button",
+          style:
+            "flex:1;min-width:84px;padding:9px 6px;border-radius:9px;border:1px solid #ddd;background:#fff;color:#16151a;font-weight:700;font-size:13px;cursor:pointer;",
+        },
+        label,
+      );
+    }
+    var btnCrop = imgBtn(EN ? "\u2702\uFE0F Crop" : "\u2702\uFE0F Zuschneiden"),
+      btnFlip = imgBtn(EN ? "\u2194\uFE0F Flip" : "\u2194\uFE0F Spiegeln"),
+      btnRot90 = imgBtn("\u21BB 90\xB0"),
+      btnCut = imgBtn(EN ? "\uD83E\uDE84 Cut out" : "\uD83E\uDE84 Freistellen"),
+      btnFrame = imgBtn(
+        EN ? "\uD83D\uDDBC\uFE0F Frame" : "\uD83D\uDDBC\uFE0F Rahmen",
+      ),
+      btnFilt = imgBtn("\uD83C\uDFA8 Filter");
+    (imgBar.appendChild(btnCrop),
+      imgBar.appendChild(btnFlip),
+      imgBar.appendChild(btnRot90),
+      imgBar.appendChild(btnCut),
+      imgBar.appendChild(btnFrame),
+      imgBar.appendChild(btnFilt),
+      body.appendChild(imgBar));
+    var filtPanel = el("div", {
+      style:
+        "display:none;background:#faf8f5;border:1px solid #ece7df;border-radius:12px;padding:10px;margin-bottom:10px;",
+    });
+    function fSlider(lab, min, max, val) {
+      var row = el("div", {
+        style: "display:flex;align-items:center;gap:10px;margin-bottom:7px;",
+      });
+      row.appendChild(
+        el(
+          "span",
+          {
+            style: "font-size:12.5px;font-weight:700;color:#16151a;width:84px;",
+          },
+          lab,
+        ),
+      );
+      var s = el("input", {
+        type: "range",
+        min: "" + min,
+        max: "" + max,
+        value: "" + val,
+        step: "1",
+        style: "flex:1;accent-color:#c1922f;",
+      });
+      return (row.appendChild(s), filtPanel.appendChild(row), s);
+    }
+    var sBri = fSlider(EN ? "Brightness" : "Helligkeit", 50, 150, 100),
+      sCon = fSlider(EN ? "Contrast" : "Kontrast", 50, 150, 100),
+      sSat = fSlider(EN ? "Saturation" : "S\xE4ttigung", 0, 200, 100),
+      sSharp = fSlider(EN ? "Sharpness" : "Sch\xE4rfe", 0, 100, 0),
+      filtRow = el("div", { style: "display:flex;gap:8px;" }),
+      btnGray = imgBtn(EN ? "\u26AB B/W" : "\u26AB S/W"),
+      btnReset = imgBtn(EN ? "\u21BA Reset" : "\u21BA Zur\xFCcksetzen");
+    (filtRow.appendChild(btnGray),
+      filtRow.appendChild(btnReset),
+      filtPanel.appendChild(filtRow),
+      body.appendChild(filtPanel));
+    var lib = el("div", {
+        style:
+          "display:none;background:#fff;border:1px solid #ece7df;border-radius:12px;padding:10px;margin-bottom:10px;max-height:240px;overflow:auto;",
+      }),
+      libHead = el("div", {
+        style:
+          "display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;",
+      });
+    libHead.appendChild(
+      el("div", { style: "font-weight:800;font-size:14px;" }, T.stickers),
+    );
+    var libClose = el(
+      "button",
+      {
+        type: "button",
+        style:
+          "border:none;background:#f0ece4;border-radius:8px;padding:5px 10px;font-weight:700;font-size:12px;cursor:pointer;",
+      },
+      "\u2715",
+    );
+    (libHead.appendChild(libClose), lib.appendChild(libHead));
+    var EMO = [
+        "\u2764\uFE0F",
+        "\u2B50",
+        "\uD83D\uDE00",
+        "\uD83D\uDE0D",
+        "\uD83D\uDE0E",
+        "\uD83D\uDD25",
+        "\u2728",
+        "\uD83C\uDF89",
+        "\uD83D\uDC51",
+        "\uD83C\uDF08",
+        "\uD83C\uDF38",
+        "\uD83C\uDF1F",
+        "\uD83D\uDC8E",
+        "\u2600\uFE0F",
+        "\uD83C\uDF0A",
+        "\uD83C\uDF40",
+        "\uD83E\uDD8B",
+        "\uD83D\uDC31",
+        "\uD83D\uDC36",
+        "\uD83C\uDF55",
+        "\u2615",
+        "\u26A1",
+        "\uD83C\uDFB5",
+        "\uD83D\uDCAA",
+        "\uD83C\uDDE8\uD83C\uDDED",
+        "\uD83C\uDFD4\uFE0F",
+        "\uD83E\uDDC0",
+        "\uD83C\uDF6B",
+      ],
+      emoWrap = el("div", {
+        style:
+          "display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px;border-bottom:1px solid #ece7df;padding-bottom:10px;",
+      });
+    (EMO.forEach(function (ch) {
+      var b = el(
+        "button",
+        {
+          type: "button",
+          style:
+            "width:32px;height:32px;border:1px solid #ece7df;border-radius:8px;background:#faf8f5;cursor:pointer;font-size:18px;line-height:1;padding:0;",
+        },
+        ch,
+      );
+      (b.addEventListener("click", function () {
+        var ly = newText();
+        ((ly.text = ch),
+          (ly.scale = 0.7),
+          addLayer(ly),
+          (lib.style.display = "none"));
+      }),
+        emoWrap.appendChild(b));
+    }),
+      lib.appendChild(emoWrap));
+    var libGrid = el("div", {
+      style: "display:grid;grid-template-columns:repeat(4,1fr);gap:8px;",
+    });
+    (lib.appendChild(libGrid),
+      body.appendChild(lib),
+      libClose.addEventListener("click", function () {
+        lib.style.display = "none";
+      }));
+    var fi = el("input", {
+      type: "file",
+      accept: "image/png,image/jpeg,image/webp",
+      style: "display:none;",
+    });
+    body.appendChild(fi);
+    var btnPrev = el(
+      "button",
+      {
+        type: "button",
+        style:
+          "width:100%;padding:12px;border:1px solid #ddd;border-radius:999px;background:#fff;color:#16151a;font-weight:700;font-size:14px;cursor:pointer;margin-top:2px;margin-bottom:8px;",
+      },
+      EN
+        ? "\uD83D\uDC41\uFE0F Preview print file"
+        : "\uD83D\uDC41\uFE0F Druck-Vorschau anzeigen",
+    );
+    (btnPrev.addEventListener("click", function () {
+      (deselect(),
+        (msg.style.color = "#6b6b73"),
+        (msg.textContent = T.baking),
+        bakeSide(state.active)
+          .then(function (blob) {
+            if (((msg.textContent = ""), !blob)) {
+              ((msg.style.color = "#b3122b"), (msg.textContent = T.empty));
+              return;
+            }
+            var url = URL.createObjectURL(blob),
+              ov = el("div", {
+                style:
+                  "position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;font-family:'Helvetica Neue',Arial,sans-serif;",
+              });
+            (ov.appendChild(
+              el(
+                "div",
+                {
+                  style:
+                    "color:#fff;font-weight:800;font-size:15px;margin-bottom:6px;text-align:center;",
+                },
+                EN
+                  ? "\uD83D\uDC41\uFE0F Exactly this gets printed"
+                  : "\uD83D\uDC41\uFE0F Genau das wird gedruckt",
+              ),
+            ),
+              ov.appendChild(
+                el(
+                  "div",
+                  {
+                    style:
+                      "color:#cfcfd6;font-size:12.5px;margin-bottom:12px;text-align:center;max-width:340px;",
+                  },
+                  EN
+                    ? "Checkered = transparent (not printed). Only your design is printed onto the product."
+                    : "Karos = transparent (wird nicht gedruckt). Nur dein Motiv kommt aufs Produkt.",
+                ),
+              ));
+            var fr = el("div", {
+                style:
+                  "background-color:#fff;background-image:linear-gradient(45deg,#e6e6e6 25%,transparent 25%),linear-gradient(-45deg,#e6e6e6 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#e6e6e6 75%),linear-gradient(-45deg,transparent 75%,#e6e6e6 75%);background-size:20px 20px;background-position:0 0,0 10px,10px -10px,-10px 0;border-radius:10px;padding:8px;",
+              }),
+              im = el("img", {
+                src: url,
+                style: "display:block;max-width:82vw;max-height:58vh;",
+              });
+            (fr.appendChild(im), ov.appendChild(fr));
+            var cl = el(
+              "button",
+              {
+                type: "button",
+                style:
+                  "margin-top:14px;padding:11px 24px;border:none;border-radius:999px;background:#c1922f;color:#fff;font-weight:800;font-size:15px;cursor:pointer;",
+              },
+              EN ? "Close" : "Schliessen",
+            );
+            (cl.addEventListener("click", function () {
+              ov.remove();
+              try {
+                URL.revokeObjectURL(url);
+              } catch (_) {}
+            }),
+              ov.appendChild(cl),
+              document.body.appendChild(ov));
+          })
+          .catch(function () {
+            msg.textContent = "";
+          }));
+    }),
+      body.appendChild(btnPrev));
+    var cta = el(
+        "button",
+        {
+          type: "button",
+          style:
+            "width:100%;padding:16px;border:none;border-radius:999px;background:#c1922f;color:#fff;font-weight:800;font-size:16px;cursor:pointer;margin-top:4px;",
+        },
+        T.cta,
+      ),
+      msg = el("div", {
+        style:
+          "text-align:center;font-size:13px;margin-top:8px;min-height:18px;",
+      });
+    (body.appendChild(cta),
+      body.appendChild(msg),
+      wrap.appendChild(body),
+      container.appendChild(wrap));
+    var nodes = {};
+    var guideV = el("div", {
+        style:
+          "position:absolute;top:0;bottom:0;left:50%;width:0;border-left:1.5px dashed #c1922f;display:none;pointer-events:none;z-index:50;",
+      }),
+      guideH = el("div", {
+        style:
+          "position:absolute;left:0;right:0;top:50%;height:0;border-top:1.5px dashed #c1922f;display:none;pointer-events:none;z-index:50;",
+      }),
+      readout = el("div", {
+        style:
+          "position:absolute;left:8px;top:8px;background:rgba(22,21,26,.82);color:#fff;font-size:12px;font-weight:700;padding:4px 8px;border-radius:8px;display:none;pointer-events:none;z-index:60;",
+      });
+    (stage.appendChild(guideV), stage.appendChild(guideH), stage.appendChild(readout));
+    wrap.setAttribute("tabindex", "0");
+    wrap.style.outline = "none";
+    var cT = null;
+    function commitSoon() {
+      clearTimeout(cT);
+      cT = setTimeout(histCommit, 700);
+    }
+    btnUndo.addEventListener("click", histUndo);
+    btnRedo.addEventListener("click", histRedo);
+    btnLUp.addEventListener("click", function () {
+      shiftLayer(1);
+    });
+    btnLDown.addEventListener("click", function () {
+      shiftLayer(-1);
+    });
+    btnCX.addEventListener("click", function () {
+      var ly = findLayer(state.sel);
+      if (ly) {
+        ly.cx = 0.5;
+        layoutNode(ly);
+        refreshAll(ly);
+        syncFormInputs();
+        histCommit();
+      }
+    });
+    btnCY.addEventListener("click", function () {
+      var ly = findLayer(state.sel);
+      if (ly) {
+        ly.cy = 0.5;
+        layoutNode(ly);
+        refreshAll(ly);
+        syncFormInputs();
+        histCommit();
+      }
+    });
+    [pX, pY, pS, pR, pO].forEach(function (inp) {
+      inp.addEventListener("input", precApply);
+      inp.addEventListener("change", function () {
+        precApply();
+        refreshAll(findLayer(state.sel));
+      });
+    });
+    stB.addEventListener("click", function () {
+      var ly = findLayer(state.sel);
+      if (ly && ly.type === "text") {
+        ly.bold = ly.bold === false;
+        layoutNode(ly);
+        refreshAll(ly);
+        syncFormInputs();
+      }
+    });
+    stI.addEventListener("click", function () {
+      var ly = findLayer(state.sel);
+      if (ly && ly.type === "text") {
+        ly.italic = !ly.italic;
+        layoutNode(ly);
+        refreshAll(ly);
+        syncFormInputs();
+      }
+    });
+    [
+      [stL, "left"],
+      [stC, "center"],
+      [stR, "right"],
+    ].forEach(function (p) {
+      p[0].addEventListener("click", function () {
+        var ly = findLayer(state.sel);
+        if (ly && ly.type === "text") {
+          ly.align = p[1];
+          layoutNode(ly);
+          refreshAll(ly);
+          syncFormInputs();
+        }
+      });
+    });
+    ctxLh.addEventListener("input", function () {
+      var ly = findLayer(state.sel);
+      if (ly && ly.type === "text") {
+        ly.lh = parseFloat(ctxLh.value) || 1.05;
+        layoutNode(ly);
+        syncFormInputs();
+        commitSoon();
+      }
+    });
+    // Alle Regler und Auswahlfelder: Verlauf beim Loslassen (nicht die Bild-Filter, die committen selbst)
+    body.addEventListener("change", function (e) {
+      if ([sBri, sCon, sSat, sSharp].indexOf(e.target) >= 0) return;
+      histCommit();
+    });
+    [ctxCw, presetBar, ctxStyle].forEach(function (x) {
+      x.addEventListener("click", function () {
+        setTimeout(histCommit, 0);
+      });
+    });
+    // Tastatur: Strg+Z / Strg+Y, Pfeiltasten verschieben, Entf löscht (nicht, wenn ein Feld Fokus hat)
+    wrap.addEventListener("keydown", function (e) {
+      var tn = e.target && e.target.tagName;
+      if (tn === "INPUT" || tn === "TEXTAREA" || tn === "SELECT") return;
+      var k = (e.key || "").toLowerCase(),
+        mod = e.ctrlKey || e.metaKey;
+      if (mod && k === "z" && !e.shiftKey) {
+        e.preventDefault();
+        histUndo();
+        return;
+      }
+      if (mod && (k === "y" || (k === "z" && e.shiftKey))) {
+        e.preventDefault();
+        histRedo();
+        return;
+      }
+      var ly = findLayer(state.sel);
+      if (!ly) return;
+      if (e.key === "Delete" || e.key === "Backspace") {
+        e.preventDefault();
+        removeLayer(ly.id);
+        return;
+      }
+      var st = e.shiftKey ? 0.02 : 0.005,
+        dx = 0,
+        dy = 0;
+      if (e.key === "ArrowLeft") dx = -st;
+      else if (e.key === "ArrowRight") dx = st;
+      else if (e.key === "ArrowUp") dy = -st;
+      else if (e.key === "ArrowDown") dy = st;
+      else return;
+      e.preventDefault();
+      ly.cx = Math.max(0, Math.min(1, ly.cx + dx));
+      ly.cy = Math.max(0, Math.min(1, ly.cy + dy));
+      layoutNode(ly);
+      refreshAll(ly);
+      syncFormInputs();
+    });
+    wrap.addEventListener("keyup", function (e) {
+      if ((e.key || "").indexOf("Arrow") === 0) histCommit();
+    });
+    function stagePx() {
+      var r = stage.getBoundingClientRect();
+      return { w: r.width || 1, h: r.height || 1, r: r };
+    }
+    function makeNode(layer) {
+      var root = el("div", {
+          "data-lid": layer.id,
+          style:
+            "position:absolute;left:0;top:0;transform-origin:center center;cursor:grab;will-change:transform;",
+        }),
+        content;
+      (layer.type === "text"
+        ? (content = el("div", {
+            style:
+              "white-space:pre;font-weight:800;line-height:1.05;text-align:center;pointer-events:none;",
+          }))
+        : ((content = el("img", {
+            style: "display:block;pointer-events:none;-webkit-user-drag:none;",
+          })),
+          (content.src = layer.src)),
+        root.appendChild(content));
+      var frame = el("div", {
+          style:
+            "position:absolute;inset:-6px;border:1.5px dashed #16151a;border-radius:6px;display:none;pointer-events:none;",
+        }),
+        handle = el(
+          "div",
+          {
+            style:
+              "position:absolute;right:-13px;bottom:-13px;width:26px;height:26px;border-radius:50%;background:#16151a;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3);display:none;cursor:nwse-resize;touch-action:none;color:#fff;font-size:12px;line-height:22px;text-align:center;",
+          },
+          "\u2921",
+        ),
+        del = el(
+          "div",
+          {
+            style:
+              "position:absolute;left:-13px;top:-13px;width:26px;height:26px;border-radius:50%;background:#b3122b;color:#fff;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3);display:none;cursor:pointer;font-size:13px;line-height:22px;text-align:center;font-weight:900;touch-action:none;",
+          },
+          "\u2715",
+        );
+      return (
+        root.appendChild(frame),
+        root.appendChild(handle),
+        root.appendChild(del),
+        stage.appendChild(root),
+        (nodes[layer.id] = {
+          root: root,
+          content: content,
+          frame: frame,
+          handle: handle,
+          del: del,
+        }),
+        attachGestures(layer, root, handle, del),
+        nodes[layer.id]
+      );
+    }
+    function layoutNode(layer) {
+      var n = nodes[layer.id];
+      if (n) {
+        var sp = stagePx();
+        if (layer.type === "text") {
+          n.content.textContent = layer.text || T.ph;
+          var f = fontByVal(layer.font);
+          ((n.content.style.fontFamily = f.v),
+            (n.content.style.color = layer.color),
+            (n.content.style.fontSize = layer.scale * sp.w * 0.12 + "px"),
+            (n.content.style.opacity = (layer.text ? 1 : 0.45) * opOf(layer)),
+            (n.content.style.textShadow =
+              layer.color.toLowerCase() === "#ffffff"
+                ? "0 1px 3px rgba(0,0,0,.45)"
+                : "none"));
+          var fpx = layer.scale * sp.w * 0.12;
+          ((n.content.style.letterSpacing = (layer.ls || 0) * fpx + "px"),
+            (n.content.style.webkitTextStroke =
+              (layer.outl || 0) * fpx * 2 + "px " + (layer.outc || "#ffffff")),
+            (n.content.style.paintOrder = "stroke fill"),
+            (n.content.style.fontWeight = layer.bold === false ? "400" : "800"),
+            (n.content.style.fontStyle = layer.italic ? "italic" : "normal"),
+            (n.content.style.lineHeight = String(lhOf(layer))),
+            (n.content.style.textAlign = alignOf(layer)));
+        } else
+          ((n.content.style.width = layer.scale * sp.w * 0.5 + "px"),
+            (n.content.style.height = "auto"),
+            (n.content.style.opacity = opOf(layer)));
+        var x = layer.cx * sp.w,
+          y = layer.cy * sp.h;
+        n.root.style.transform =
+          "translate(" +
+          x +
+          "px," +
+          y +
+          "px) translate(-50%,-50%) rotate(" +
+          layer.rot +
+          "deg)";
+      }
+    }
+    function select(id) {
+      state.sel = id;
+      for (var k in nodes) {
+        var on = k === id;
+        ((nodes[k].frame.style.display = on ? "block" : "none"),
+          (nodes[k].handle.style.display = on ? "block" : "none"),
+          (nodes[k].del.style.display = on ? "block" : "none"));
+      }
+      var ly = findLayer(id);
+      (ly &&
+        ((sizeBar.style.display = "flex"),
+        (rotBar.style.display = "flex"),
+        (ctxRot.value = Math.round(ly.rot) || 0),
+        (rotLbl.textContent = (Math.round(ly.rot) || 0) + "\u00B0"),
+        (textBar.style.display = ly.type === "text" ? "flex" : "none"),
+        (ctxLs.value = ly.ls || 0),
+        (ctxOutl.value = ly.outl || 0),
+        (ctxOutC.value = ly.outc || "#ffffff"),
+        (ctxSize.value = ly.scale),
+        (actBar.style.display = "flex"),
+        (presetBar.style.display = "flex")),
+        ly && ly.type === "text"
+          ? ((ctx.style.display = "block"),
+            (ctxIn.value = ly.text || ""),
+            (ctxFont.value = ly.font),
+            /^#[0-9a-f]{6}$/i.test(ly.color) && (ctxPick.value = ly.color),
+            paintCtxSwatch(ly.color))
+          : (ctx.style.display = "none"));
+      var isImg = !!(ly && ly.type === "image");
+      ((imgBar.style.display = isImg ? "flex" : "none"),
+        isImg || (filtPanel.style.display = "none"),
+        isImg ? checkRes(ly) : (resWarn.style.display = "none"),
+        (precBar.style.display = ly ? "block" : "none"),
+        refreshAll(ly),
+        syncFormInputs());
+    }
+    function deselect() {
+      state.sel = null;
+      for (var k in nodes)
+        ((nodes[k].frame.style.display = "none"),
+          (nodes[k].handle.style.display = "none"),
+          (nodes[k].del.style.display = "none"));
+      ((ctx.style.display = "none"),
+        (sizeBar.style.display = "none"),
+        (rotBar.style.display = "none"),
+        (textBar.style.display = "none"),
+        (actBar.style.display = "none"),
+        (imgBar.style.display = "none"),
+        (filtPanel.style.display = "none"),
+        (presetBar.style.display = "none"),
+        (resWarn.style.display = "none"),
+        (precBar.style.display = "none"));
+    }
+    function paintCtxSwatch(val) {
+      Array.prototype.forEach.call(ctxCw.children, function (x) {
+        var on = x.getAttribute("data-c") === val;
+        ((x.style.border = "2px solid " + (on ? "#16151a" : "#e3e3e3")),
+          (x.style.transform = on ? "scale(1.12)" : "none"),
+          (x.textContent = on ? "\u2713" : ""));
+      });
+    }
+    function attachGestures(layer, root, handle, del) {
+      var ptrs = {},
+        start = null;
+      function center() {
+        var sp = stagePx();
+        return {
+          x: layer.cx * sp.w + sp.r.left,
+          y: layer.cy * sp.h + sp.r.top,
+        };
+      }
+      function onDown(e, viaHandle) {
+        (e.preventDefault(), e.stopPropagation(), select(layer.id));
+        try {
+          wrap.focus({ preventScroll: true });
+        } catch (_) {}
+        try {
+          (viaHandle ? handle : root).setPointerCapture(e.pointerId);
+        } catch (_) {}
+        ptrs[e.pointerId] = { x: e.clientX, y: e.clientY, handle: viaHandle };
+        var ids = Object.keys(ptrs);
+        if (ids.length === 2) {
+          var a = ptrs[ids[0]],
+            b = ptrs[ids[1]];
+          start = {
+            mode: "pinch",
+            d0: Math.hypot(a.x - b.x, a.y - b.y) || 1,
+            ang0: Math.atan2(b.y - a.y, b.x - a.x),
+            scale0: layer.scale,
+            rot0: layer.rot,
+          };
+        } else if (viaHandle) {
+          var c = center();
+          start = {
+            mode: "transform",
+            cx: c.x,
+            cy: c.y,
+            d0: Math.hypot(e.clientX - c.x, e.clientY - c.y) || 1,
+            ang0: Math.atan2(e.clientY - c.y, e.clientX - c.x),
+            scale0: layer.scale,
+            rot0: layer.rot,
+          };
+        } else {
+          var sp = stagePx();
+          start = {
+            mode: "drag",
+            px: e.clientX,
+            py: e.clientY,
+            cx0: layer.cx,
+            cy0: layer.cy,
+            sw: sp.w,
+            sh: sp.h,
+          };
+        }
+      }
+      function onMove(e) {
+        if (!(!start || !(e.pointerId in ptrs))) {
+          if (
+            (e.preventDefault(),
+            (ptrs[e.pointerId].x = e.clientX),
+            (ptrs[e.pointerId].y = e.clientY),
+            start.mode === "pinch")
+          ) {
+            var ids = Object.keys(ptrs);
+            if (ids.length < 2) return;
+            var a = ptrs[ids[0]],
+              b = ptrs[ids[1]],
+              d = Math.hypot(a.x - b.x, a.y - b.y),
+              ang = Math.atan2(b.y - a.y, b.x - a.x);
+            ((layer.scale = Math.max(
+              0.06,
+              Math.min(3, start.scale0 * (d / start.d0)),
+            )),
+              (layer.rot = start.rot0 + ((ang - start.ang0) * 180) / Math.PI));
+          } else if (start.mode === "transform") {
+            var d2 = Math.hypot(e.clientX - start.cx, e.clientY - start.cy),
+              ang2 = Math.atan2(e.clientY - start.cy, e.clientX - start.cx);
+            ((layer.scale = Math.max(
+              0.06,
+              Math.min(3, start.scale0 * (d2 / start.d0)),
+            )),
+              (layer.rot = start.rot0 + ((ang2 - start.ang0) * 180) / Math.PI));
+          } else
+            ((layer.cx = Math.max(
+              0,
+              Math.min(1, start.cx0 + (e.clientX - start.px) / start.sw),
+            )),
+              (layer.cy = Math.max(
+                0,
+                Math.min(1, start.cy0 + (e.clientY - start.py) / start.sh),
+              )));
+          if (start && start.mode === "drag") {
+            guideV.style.display = Math.abs(layer.cx - 0.5) < 0.008 ? "block" : "none";
+            guideH.style.display = Math.abs(layer.cy - 0.5) < 0.008 ? "block" : "none";
+            if (guideV.style.display === "block") layer.cx = 0.5;
+            if (guideH.style.display === "block") layer.cy = 0.5;
+          }
+          readoutShow(layer);
+          layoutNode(layer);
+        }
+      }
+      function onUp(e) {
+        (delete ptrs[e.pointerId], (start = null));
+        try {
+          state.sel === layer.id &&
+            ((ctxSize.value = layer.scale),
+            (ctxRot.value = Math.round(layer.rot) || 0),
+            (rotLbl.textContent = (Math.round(layer.rot) || 0) + "\u00B0"),
+            checkRes(layer));
+        } catch (_) {}
+        if (Object.keys(ptrs).length === 0) {
+          syncFormInputs();
+          refreshAll(layer);
+          guideV.style.display = "none";
+          guideH.style.display = "none";
+          readout.style.display = "none";
+          histCommit();
+        }
+      }
+      (root.addEventListener("pointerdown", function (e) {
+        onDown(e, !1);
+      }),
+        handle.addEventListener("pointerdown", function (e) {
+          onDown(e, !0);
+        }),
+        root.addEventListener("pointermove", onMove),
+        handle.addEventListener("pointermove", onMove),
+        root.addEventListener("pointerup", onUp),
+        root.addEventListener("pointercancel", onUp),
+        handle.addEventListener("pointerup", onUp),
+        handle.addEventListener("pointercancel", onUp),
+        del.addEventListener("click", function (e) {
+          (e.stopPropagation(), removeLayer(layer.id));
+        }),
+        del.addEventListener("pointerdown", function (e) {
+          e.stopPropagation();
+        }));
+    }
+    function addLayer(layer) {
+      (curLayers().push(layer),
+        makeNode(layer),
+        layoutNode(layer),
+        select(layer.id),
+        relayer(),
+        histCommit());
+    }
+    function removeLayer(id) {
+      for (var a = curLayers(), i = 0; i < a.length; i++)
+        if (a[i].id === id) {
+          a.splice(i, 1);
+          break;
+        }
+      (nodes[id] && (nodes[id].root.remove(), delete nodes[id]),
+        state.sel === id && deselect(),
+        syncFormInputs(),
+        histCommit());
+    }
+    function newText() {
+      return {
+        id: "L" + ++UID,
+        type: "text",
+        text: "",
+        font: FONTS[0].v,
+        color: "#111111",
+        cx: 0.5,
+        cy: 0.42,
+        scale: 0.55,
+        rot: 0,
+      };
+    }
+    function newEdit() {
+      return {
+        cx0: 0,
+        cy0: 0,
+        cw: 1,
+        ch: 1,
+        flipH: !1,
+        flipV: !1,
+        rotQ: 0,
+        bri: 100,
+        con: 100,
+        sat: 100,
+        gray: 0,
+        bg: 0,
+        frame: 0,
+        sharp: 0,
+      };
+    }
+    function newImage(src, printUrl, uploading) {
+      return {
+        id: "L" + ++UID,
+        type: "image",
+        src: src,
+        origSrc: src,
+        printUrl: printUrl || "",
+        uploading: !!uploading,
+        cx: 0.5,
+        cy: 0.5,
+        scale: 1,
+        rot: 0,
+        edit: newEdit(),
+      };
+    }
+    function newSticker(name) {
+      var u = STICKER_BASE + name + ".png";
+      return {
+        id: "L" + ++UID,
+        type: "sticker",
+        name: name,
+        src: u,
+        printUrl: u,
+        uploading: !1,
+        cx: 0.5,
+        cy: 0.5,
+        scale: 0.8,
+        rot: 0,
+      };
+    }
+    function curImgLayer() {
+      var l = findLayer(state.sel);
+      return l && l.type === "image" ? l : null;
+    }
+    function checkRes(layer) {
+      if (!layer || layer.type !== "image") {
+        resWarn.style.display = "none";
+        return;
+      }
+      var ow = layer._origW || 0;
+      if (!ow) {
+        resWarn.style.display = "none";
+        return;
+      }
+      var e = layer.edit || newEdit(),
+        effW = (e.rotQ % 2 ? e.ch : e.cw) * ow,
+        printW = layer.scale * REF2 * 0.5;
+      resWarn.style.display =
+        effW > 0 && effW < printW * 0.7 ? "block" : "none";
+    }
+    function removeBg(c, cv, tol) {
+      var w = cv.width,
+        h = cv.height;
+      if (w < 2 || h < 2) return;
+      var d = c.getImageData(0, 0, w, h),
+        p = d.data;
+      function px(x, y) {
+        var i2 = (y * w + x) * 4;
+        return [p[i2], p[i2 + 1], p[i2 + 2]];
+      }
+      var cs = [px(0, 0), px(w - 1, 0), px(0, h - 1), px(w - 1, h - 1)],
+        br = 0,
+        bg = 0,
+        bb = 0;
+      (cs.forEach(function (a) {
+        ((br += a[0]), (bg += a[1]), (bb += a[2]));
+      }),
+        (br /= 4),
+        (bg /= 4),
+        (bb /= 4));
+      for (var t2 = tol * 1.7, i = 0; i < p.length; i += 4) {
+        var dr = p[i] - br,
+          dg = p[i + 1] - bg,
+          db = p[i + 2] - bb,
+          dist = Math.sqrt(dr * dr + dg * dg + db * db);
+        dist < tol
+          ? (p[i + 3] = 0)
+          : dist < t2 &&
+            (p[i + 3] = Math.round((p[i + 3] * (dist - tol)) / (t2 - tol)));
+      }
+      c.putImageData(d, 0, 0);
+    }
+    function sharpen(c, cv, amt) {
+      var w = cv.width,
+        h = cv.height;
+      if (!(w < 3 || h < 3)) {
+        var src = c.getImageData(0, 0, w, h),
+          s = src.data,
+          out = c.createImageData(w, h),
+          o = out.data;
+        o.set(s);
+        for (var cen = 1 + 4 * amt, y = 1; y < h - 1; y++)
+          for (var x = 1; x < w - 1; x++)
+            for (var b = (y * w + x) * 4, ch2 = 0; ch2 < 3; ch2++) {
+              var i = b + ch2,
+                v =
+                  cen * s[i] -
+                  amt * (s[i - 4] + s[i + 4] + s[i - w * 4] + s[i + w * 4]);
+              o[i] = v < 0 ? 0 : v > 255 ? 255 : v;
+            }
+        c.putImageData(out, 0, 0);
+      }
+    }
+    function drawFrame(c, cv, frame) {
+      var w = cv.width,
+        h = cv.height,
+        bw = Math.max(2, Math.round(Math.min(w, h) * 0.035));
+      (c.save(),
+        (c.filter = "none"),
+        (c.strokeStyle = frame === 2 ? "#111111" : "#ffffff"),
+        (c.lineWidth = bw),
+        c.strokeRect(bw / 2, bw / 2, w - bw, h - bw),
+        c.restore());
+    }
+    function renderEditCanvas(layer, maxW) {
+      return loadImg(layer.origSrc || layer.src).then(function (im) {
+        var e = layer.edit || (layer.edit = newEdit()),
+          sw2 = im.naturalWidth || im.width || 1,
+          sh = im.naturalHeight || im.height || 1,
+          cx = Math.round(e.cx0 * sw2),
+          cy = Math.round(e.cy0 * sh),
+          cw = Math.max(1, Math.round(e.cw * sw2)),
+          ch = Math.max(1, Math.round(e.ch * sh)),
+          q = (((e.rotQ || 0) % 4) + 4) % 4,
+          swap = q === 1 || q === 3,
+          outW = swap ? ch : cw,
+          outH = swap ? cw : ch,
+          sc = maxW && outW > maxW ? maxW / outW : 1,
+          cv = document.createElement("canvas");
+        ((cv.width = Math.max(1, Math.round(outW * sc))),
+          (cv.height = Math.max(1, Math.round(outH * sc))));
+        var c = cv.getContext("2d");
+        try {
+          c.filter =
+            "brightness(" +
+            e.bri +
+            "%) contrast(" +
+            e.con +
+            "%) saturate(" +
+            e.sat +
+            "%) grayscale(" +
+            e.gray +
+            "%)";
+        } catch (_) {}
+        (c.save(),
+          c.translate(cv.width / 2, cv.height / 2),
+          c.rotate((q * Math.PI) / 2),
+          c.scale((e.flipH ? -1 : 1) * sc, (e.flipV ? -1 : 1) * sc),
+          c.drawImage(im, cx, cy, cw, ch, -cw / 2, -ch / 2, cw, ch),
+          c.restore());
+        try {
+          c.filter = "none";
+        } catch (_) {}
+        if (e.bg)
+          try {
+            removeBg(c, cv, e.bg);
+          } catch (_) {}
+        if (e.sharp)
+          try {
+            sharpen(c, cv, e.sharp / 100);
+          } catch (_) {}
+        if (e.frame)
+          try {
+            drawFrame(c, cv, e.frame);
+          } catch (_) {}
+        return cv;
+      });
+    }
+    function previewEdit(layer) {
+      renderEditCanvas(layer, 700)
+        .then(function (cv) {
+          var url = cv.toDataURL("image/png");
+          layer.src = url;
+          var n = nodes[layer.id];
+          (n &&
+            n.content &&
+            n.content.tagName === "IMG" &&
+            (n.content.src = url),
+            layoutNode(layer));
+        })
+        .catch(function () {});
+    }
+    function commitEdit(layer) {
+      renderEditCanvas(layer, 0)
+        .then(function (cv) {
+          var url = cv.toDataURL("image/png");
+          layer.src = url;
+          histCommit();
+          var n = nodes[layer.id];
+          if (
+            (n &&
+              n.content &&
+              n.content.tagName === "IMG" &&
+              (n.content.src = url),
+            layoutNode(layer),
+            checkRes(layer),
+            IMG_ENABLED)
+          ) {
+            ((layer.uploading = !0), (layer.printUrl = ""), syncFormInputs());
+            try {
+              cv.toBlob(function (b) {
+                if (!b) {
+                  ((layer.uploading = !1), syncFormInputs());
+                  return;
+                }
+                uplBlob(b, function (err, u) {
+                  ((layer.uploading = !1),
+                    !err && u && (layer.printUrl = u),
+                    syncFormInputs());
+                });
+              }, "image/png");
+            } catch (_) {
+              layer.uploading = !1;
+            }
+          } else syncFormInputs();
+        })
+        .catch(function () {
+          layer.uploading = !1;
+        });
+    }
+    var _filtT = null;
+    function previewDeb(layer) {
+      (clearTimeout(_filtT),
+        (_filtT = setTimeout(function () {
+          previewEdit(layer);
+        }, 50)));
+    }
+    function setActive(btn, on) {
+      ((btn.style.background = on ? "#16151a" : "#fff"),
+        (btn.style.color = on ? "#fff" : "#16151a"));
+    }
+    function refreshFiltUI(ly) {
+      var e = ly.edit || newEdit();
+      ((sBri.value = e.bri),
+        (sCon.value = e.con),
+        (sSat.value = e.sat),
+        (sSharp.value = e.sharp),
+        setActive(btnGray, !!e.gray),
+        setActive(btnCut, !!e.bg),
+        setActive(btnFrame, !!e.frame));
+    }
+    (btnFlip.addEventListener("click", function () {
+      var ly = curImgLayer();
+      ly && ((ly.edit.flipH = !ly.edit.flipH), commitEdit(ly));
+    }),
+      btnRot90.addEventListener("click", function () {
+        var ly = curImgLayer();
+        ly && ((ly.edit.rotQ = ((ly.edit.rotQ || 0) + 1) % 4), commitEdit(ly));
+      }),
+      btnCut.addEventListener("click", function () {
+        var ly = curImgLayer();
+        ly &&
+          ((ly.edit.bg = ly.edit.bg ? 0 : 45),
+          setActive(btnCut, !!ly.edit.bg),
+          commitEdit(ly));
+      }),
+      btnFrame.addEventListener("click", function () {
+        var ly = curImgLayer();
+        ly &&
+          ((ly.edit.frame = ((ly.edit.frame || 0) + 1) % 3),
+          setActive(btnFrame, !!ly.edit.frame),
+          commitEdit(ly));
+      }),
+      btnFilt.addEventListener("click", function () {
+        var ly = curImgLayer();
+        ly &&
+          (refreshFiltUI(ly),
+          (filtPanel.style.display =
+            filtPanel.style.display === "none" || !filtPanel.style.display
+              ? "block"
+              : "none"));
+      }));
+    function onSlide() {
+      var ly = curImgLayer();
+      ly &&
+        ((ly.edit.bri = parseInt(sBri.value, 10)),
+        (ly.edit.con = parseInt(sCon.value, 10)),
+        (ly.edit.sat = parseInt(sSat.value, 10)),
+        (ly.edit.sharp = parseInt(sSharp.value, 10)),
+        previewDeb(ly));
+    }
+    function onSlideEnd() {
+      var ly = curImgLayer();
+      ly && commitEdit(ly);
+    }
+    ([sBri, sCon, sSat, sSharp].forEach(function (s) {
+      (s.addEventListener("input", onSlide),
+        s.addEventListener("change", onSlideEnd));
+    }),
+      btnGray.addEventListener("click", function () {
+        var ly = curImgLayer();
+        ly &&
+          ((ly.edit.gray = ly.edit.gray ? 0 : 100),
+          setActive(btnGray, !!ly.edit.gray),
+          commitEdit(ly));
+      }),
+      btnReset.addEventListener("click", function () {
+        var ly = curImgLayer();
+        ly && ((ly.edit = newEdit()), refreshFiltUI(ly), commitEdit(ly));
+      }),
+      btnCrop.addEventListener("click", function () {
+        var ly = curImgLayer();
+        ly && openCrop(ly);
+      }));
+    function openCrop(layer) {
+      loadImg(layer.origSrc || layer.src)
+        .then(function (im) {
+          var ov = el("div", {
+            style:
+              "position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;font-family:'Helvetica Neue',Arial,sans-serif;",
+          });
+          ov.appendChild(
+            el(
+              "div",
+              {
+                style:
+                  "color:#fff;font-weight:800;font-size:15px;margin-bottom:10px;",
+              },
+              EN
+                ? "\u2702\uFE0F Crop image \u2014 drag the box"
+                : "\u2702\uFE0F Bild zuschneiden \u2014 Rahmen ziehen",
+            ),
+          );
+          var box = el("div", {
+              style: "position:relative;line-height:0;touch-action:none;",
+            }),
+            pic = el("img", {
+              src: layer.origSrc || layer.src,
+              style:
+                "display:block;max-width:88vw;max-height:62vh;user-select:none;-webkit-user-drag:none;",
+            });
+          box.appendChild(pic);
+          var selB = el("div", {
+              style:
+                "position:absolute;border:2px solid #fff;box-shadow:0 0 0 9999px rgba(0,0,0,.5);box-sizing:border-box;cursor:move;touch-action:none;",
+            }),
+            hnd = el("div", {
+              style:
+                "position:absolute;right:-12px;bottom:-12px;width:24px;height:24px;border-radius:50%;background:#c1922f;border:2px solid #fff;cursor:nwse-resize;touch-action:none;",
+            });
+          (selB.appendChild(hnd), box.appendChild(selB));
+          var bar = el("div", {
+              style: "display:flex;gap:10px;margin-top:14px;",
+            }),
+            ok = el(
+              "button",
+              {
+                type: "button",
+                style:
+                  "padding:12px 22px;border:none;border-radius:999px;background:#c1922f;color:#fff;font-weight:800;font-size:15px;cursor:pointer;",
+              },
+              EN ? "\u2713 Apply" : "\u2713 \xDCbernehmen",
+            ),
+            ca = el(
+              "button",
+              {
+                type: "button",
+                style:
+                  "padding:12px 22px;border:none;border-radius:999px;background:#fff;color:#16151a;font-weight:800;font-size:15px;cursor:pointer;",
+              },
+              EN ? "\u2715 Cancel" : "\u2715 Abbrechen",
+            );
+          (bar.appendChild(ok),
+            bar.appendChild(ca),
+            ov.appendChild(box),
+            ov.appendChild(bar),
+            document.body.appendChild(ov));
+          function dd() {
+            return { w: pic.clientWidth || 1, h: pic.clientHeight || 1 };
+          }
+          function setB(x, y, w, h) {
+            ((selB.style.left = x + "px"),
+              (selB.style.top = y + "px"),
+              (selB.style.width = w + "px"),
+              (selB.style.height = h + "px"));
+          }
+          function getB() {
+            return {
+              x: parseFloat(selB.style.left) || 0,
+              y: parseFloat(selB.style.top) || 0,
+              w: parseFloat(selB.style.width) || 0,
+              h: parseFloat(selB.style.height) || 0,
+            };
+          }
+          function init() {
+            var d = dd(),
+              e = layer.edit || newEdit();
+            setB(
+              e.cx0 * d.w,
+              e.cy0 * d.h,
+              Math.max(30, e.cw * d.w),
+              Math.max(30, e.ch * d.h),
+            );
+          }
+          pic.complete ? init() : (pic.onload = init);
+          function clampB() {
+            var d = dd(),
+              b = getB(),
+              x = Math.max(0, Math.min(b.x, d.w - 30)),
+              y = Math.max(0, Math.min(b.y, d.h - 30)),
+              w = Math.max(30, Math.min(b.w, d.w - x)),
+              h = Math.max(30, Math.min(b.h, d.h - y));
+            setB(x, y, w, h);
+          }
+          var drag = null;
+          (selB.addEventListener("pointerdown", function (ev) {
+            if (ev.target !== hnd) {
+              ev.preventDefault();
+              try {
+                selB.setPointerCapture(ev.pointerId);
+              } catch (_) {}
+              var b = getB();
+              drag = {
+                m: "move",
+                px: ev.clientX,
+                py: ev.clientY,
+                x0: b.x,
+                y0: b.y,
+              };
+            }
+          }),
+            hnd.addEventListener("pointerdown", function (ev) {
+              (ev.preventDefault(), ev.stopPropagation());
+              try {
+                hnd.setPointerCapture(ev.pointerId);
+              } catch (_) {}
+              var b = getB();
+              drag = {
+                m: "size",
+                px: ev.clientX,
+                py: ev.clientY,
+                w0: b.w,
+                h0: b.h,
+              };
+            }));
+          function mv(ev) {
+            if (drag) {
+              ev.preventDefault();
+              var b = getB();
+              (drag.m === "move"
+                ? setB(
+                    drag.x0 + (ev.clientX - drag.px),
+                    drag.y0 + (ev.clientY - drag.py),
+                    b.w,
+                    b.h,
+                  )
+                : setB(
+                    b.x,
+                    b.y,
+                    drag.w0 + (ev.clientX - drag.px),
+                    drag.h0 + (ev.clientY - drag.py),
+                  ),
+                clampB());
+            }
+          }
+          function up() {
+            drag = null;
+          }
+          (selB.addEventListener("pointermove", mv),
+            hnd.addEventListener("pointermove", mv),
+            selB.addEventListener("pointerup", up),
+            hnd.addEventListener("pointerup", up),
+            selB.addEventListener("pointercancel", up),
+            hnd.addEventListener("pointercancel", up),
+            ca.addEventListener("click", function () {
+              ov.remove();
+            }),
+            ok.addEventListener("click", function () {
+              var d = dd(),
+                b = getB();
+              ((layer.edit.cx0 = Math.max(0, b.x / d.w)),
+                (layer.edit.cy0 = Math.max(0, b.y / d.h)),
+                (layer.edit.cw = Math.min(1 - layer.edit.cx0, b.w / d.w)),
+                (layer.edit.ch = Math.min(1 - layer.edit.cy0, b.h / d.h)),
+                ov.remove(),
+                commitEdit(layer));
+            }));
+        })
+        .catch(function () {});
+    }
+    (btnText.addEventListener("click", function () {
+      ((lib.style.display = "none"), addLayer(newText()), ctxIn.focus());
+    }),
+      btnSticker.addEventListener("click", function () {
+        ((ctx.style.display = "none"),
+          (lib.style.display = lib.style.display === "none" ? "block" : "none"),
+          loadStickers());
+      }),
+      btnImg &&
+        btnImg.addEventListener("click", function () {
+          ((lib.style.display = "none"), fi.click());
+        }),
+      ctxIn.addEventListener("input", function () {
+        var ly = findLayer(state.sel);
+        if (!ly || ly.type !== "text") return;
+        ly.text = ctxIn.value
+          .split("\n")
+          .slice(0, 4)
+          .map(function (t) {
+            return t.slice(0, 40);
+          })
+          .join("\n");
+        if (ctxIn.value !== ly.text) ctxIn.value = ly.text;
+        layoutNode(ly);
+        syncFormInputs();
+        commitSoon();
+      }),
+      ctxFont.addEventListener("change", function () {
+        var ly = findLayer(state.sel);
+        ly &&
+          ly.type === "text" &&
+          ((ly.font = ctxFont.value), layoutNode(ly), syncFormInputs());
+      }),
+      ctxCw.addEventListener("click", function (e) {
+        var b = e.target.closest("[data-c]");
+        if (b) {
+          var ly = findLayer(state.sel);
+          ly &&
+            ly.type === "text" &&
+            ((ly.color = b.getAttribute("data-c")),
+            paintCtxSwatch(ly.color),
+            layoutNode(ly),
+            syncFormInputs());
+        }
+      }),
+      ctxSize.addEventListener("input", function () {
+        var ly = findLayer(state.sel);
+        ly &&
+          ((ly.scale = Math.max(
+            0.06,
+            Math.min(3, parseFloat(ctxSize.value) || ly.scale),
+          )),
+          layoutNode(ly),
+          checkRes(ly),
+          syncFormInputs());
+      }),
+      ctxLs.addEventListener("input", function () {
+        var ly = findLayer(state.sel);
+        ly &&
+          ly.type === "text" &&
+          ((ly.ls = parseFloat(ctxLs.value) || 0),
+          layoutNode(ly),
+          syncFormInputs());
+      }),
+      ctxOutl.addEventListener("input", function () {
+        var ly = findLayer(state.sel);
+        ly &&
+          ly.type === "text" &&
+          ((ly.outl = parseFloat(ctxOutl.value) || 0),
+          layoutNode(ly),
+          syncFormInputs());
+      }),
+      ctxOutC.addEventListener("input", function () {
+        var ly = findLayer(state.sel);
+        ly &&
+          ly.type === "text" &&
+          ((ly.outc = ctxOutC.value), layoutNode(ly), syncFormInputs());
+      }),
+      ctxRot.addEventListener("input", function () {
+        var ly = findLayer(state.sel);
+        ly &&
+          ((ly.rot = parseFloat(ctxRot.value) || 0),
+          (rotLbl.textContent = Math.round(ly.rot) + "\u00B0"),
+          layoutNode(ly),
+          syncFormInputs());
+      }),
+      ctxPick.addEventListener("input", function () {
+        var ly = findLayer(state.sel);
+        ly &&
+          ly.type === "text" &&
+          ((ly.color = ctxPick.value),
+          paintCtxSwatch(ly.color),
+          layoutNode(ly),
+          syncFormInputs());
+      }),
+      btnDup.addEventListener("click", function () {
+        var ly = findLayer(state.sel);
+        if (ly) {
+          var c = JSON.parse(JSON.stringify(ly));
+          ((c.id = "L" + ++UID),
+            (c.cx = Math.min(0.92, (ly.cx || 0.5) + 0.05)),
+            (c.cy = Math.min(0.92, (ly.cy || 0.5) + 0.05)),
+            curLayers().push(c),
+            makeNode(c),
+            layoutNode(c),
+            select(c.id)),
+            relayer(),
+            histCommit();
+        }
+      }));
+    function reorder(toFront) {
+      for (var a = curLayers(), i = -1, j = 0; j < a.length; j++)
+        if (a[j].id === state.sel) {
+          i = j;
+          break;
+        }
+      if (!(i < 0)) {
+        var ly = a.splice(i, 1)[0],
+          root = nodes[ly.id] && nodes[ly.id].root;
+        (toFront ? a.push(ly) : a.unshift(ly),
+          relayer(),
+          histCommit(),
+          syncFormInputs());
+      }
+    }
+    (btnFront.addEventListener("click", function () {
+      reorder(!0);
+    }),
+      btnBack.addEventListener("click", function () {
+        reorder(!1);
+      }),
+      stage.addEventListener("pointerdown", function (e) {
+        e.target === stage && deselect();
+      }),
+      fi.addEventListener("change", function () {
+        var f = fi.files && fi.files[0];
+        if (f) {
+          if (f.size > 10 * 1024 * 1024) {
+            ((msg.style.color = "#b3122b"), (msg.textContent = T.tooBig));
+            return;
+          }
+          var rd = new FileReader();
+          ((rd.onload = function () {
+            var ly = newImage(rd.result, "", !0);
+            (addLayer(ly),
+              (msg.style.color = "#6b6b73"),
+              (msg.textContent = T.uploading),
+              loadImg(rd.result)
+                .then(function (im) {
+                  ((ly._origW = im.naturalWidth || im.width),
+                    (ly._origH = im.naturalHeight || im.height),
+                    state.sel === ly.id && checkRes(ly));
+                })
+                .catch(function () {}),
+              uplFile(f, function (err, url) {
+                if (((ly.uploading = !1), err)) {
+                  ((msg.style.color = "#b3122b"),
+                    (msg.textContent = T.upErr + err.message));
+                  return;
+                }
+                ((ly.printUrl = url), (msg.textContent = ""), syncFormInputs());
+              }));
+          }),
+            rd.readAsDataURL(f),
+            (fi.value = ""));
+        }
+      }));
+    var stickersLoaded = !1,
+      STK = [];
+    function loadStickers() {
+      stickersLoaded ||
+        ((stickersLoaded = !0),
+        (libGrid.innerHTML =
+          "<div style='grid-column:1/-1;color:#8a8a90;font-size:13px;text-align:center;padding:10px'>\u2026</div>"),
+        fetch(STICKER_INDEX, { cache: "no-store" })
+          .then(function (r) {
+            return r.json();
+          })
+          .then(function (list) {
+            ((STK = list || []), renderStickers());
+          })
+          .catch(function () {
+            ((STK = [
+              "heart-red",
+              "star-gold",
+              "smiley-yellow",
+              "daisy-flower",
+              "cat-cute",
+              "dog-cute",
+              "butterfly",
+              "rainbow",
+              "lightning",
+              "crown",
+              "coffee",
+              "peace",
+              "moon-stars",
+              "mushroom-retro",
+              "cherry",
+              "flame",
+              "word-love",
+              "word-vibes",
+            ]),
+              renderStickers());
+          }));
+    }
+    function renderStickers() {
+      if (((libGrid.innerHTML = ""), !STK.length)) {
+        libGrid.innerHTML =
+          "<div style='grid-column:1/-1;color:#8a8a90;font-size:13px;text-align:center;padding:10px'>\u2014</div>";
+        return;
+      }
+      STK.forEach(function (name) {
+        var b = el("button", {
+            type: "button",
+            style:
+              "border:1px solid #ece7df;border-radius:10px;background:#faf8f5;padding:6px;cursor:pointer;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;",
+          }),
+          im = el("img", {
+            src: STICKER_BASE + name + ".png",
+            loading: "lazy",
+            style: "max-width:100%;max-height:100%;pointer-events:none;",
+          });
+        (b.appendChild(im),
+          b.addEventListener("click", function () {
+            (addLayer(newSticker(name)), (lib.style.display = "none"));
+          }),
+          libGrid.appendChild(b));
+      });
+    }
+    function clearStage() {
+      for (var k in nodes) nodes[k].root.remove();
+      nodes = {};
+    }
+    function setSide(k) {
+      if (k !== state.active) {
+        (deselect(), clearStage(), (state.active = k), applyBg());
+        for (var s in sideBtns) {
+          var on = s === k;
+          ((sideBtns[s].style.background = on ? "#fff" : "transparent"),
+            (sideBtns[s].style.boxShadow = on
+              ? "0 1px 3px rgba(0,0,0,.12)"
+              : "none"));
+        }
+        (curLayers().forEach(function (l) {
+          (makeNode(l), layoutNode(l));
+        }),
+          relayer(),
+          syncFormInputs());
+      }
+    }
+    function sideSummary(side) {
+      var arr = state.layers[side] || [];
+      return arr.length
+        ? arr
+            .map(function (l) {
+              return l.type === "text"
+                ? T.layerText + ': "' + (l.text || "").replace(/\n/g, " / ") + '"'
+                : l.type === "sticker"
+                  ? T.layerSticker + ": " + l.name
+                  : T.layerImage;
+            })
+            .join(" \xB7 ")
+        : "";
+    }
+    function buildProps() {
+      var props = {},
+        multi = sides.length > 1;
+      return (
+        sides.forEach(function (s, si) {
+          var arr = state.layers[s.k] || [];
+          if (arr.length) {
+            var pre = multi ? T.pSide[si] + " \xB7 " : "",
+              sum = sideSummary(s.k);
+            (sum && (props[pre + T.pDesign] = sum),
+              s._printUrl && (props[pre + T.pPrintFile] = s._printUrl));
+          }
+        }),
+        props
+      );
+    }
+    function syncFormInputs() {
+      layerChipsRender();
+      var form = findForm();
+      if (form) {
+        Array.prototype.forEach.call(
+          form.querySelectorAll('input[data-lspod="1"]'),
+          function (x) {
+            x.parentNode && x.parentNode.removeChild(x);
+          },
+        );
+        var props = buildProps();
+        for (var k in props) {
+          var i = document.createElement("input");
+          ((i.type = "hidden"),
+            i.setAttribute("data-lspod", "1"),
+            (i.name = "properties[" + k + "]"),
+            (i.value = props[k]),
+            form.appendChild(i));
+        }
+      }
+    }
+    function loadImg(src) {
+      return new Promise(function (res, rej) {
+        var im = new Image();
+        ((im.crossOrigin = "anonymous"),
+          (im.onload = function () {
+            res(im);
+          }),
+          (im.onerror = function () {
+            rej(new Error("img"));
+          }),
+          (im.src = src));
+      });
+    }
+    function bakeSide(sideKey) {
+      var arr = state.layers[sideKey] || [];
+      if (!arr.length) return Promise.resolve(null);
+      var cv = document.createElement("canvas");
+      ((cv.width = REF2), (cv.height = Math.round(REF2 * RATIO)));
+      var cxn = cv.getContext("2d"),
+        seq = Promise.resolve();
+      return (
+        arr.forEach(function (l) {
+          seq = seq.then(function () {
+            var x = l.cx * REF2,
+              y = l.cy * cv.height;
+            if (l.type === "text") {
+              if (!l.text) return;
+              var px = l.scale * REF2 * 0.12,
+                lines = l.text.split("\n"),
+                lhPx = px * lhOf(l),
+                al = alignOf(l),
+                maxW = 0;
+              cxn.save();
+              cxn.translate(x, y);
+              cxn.rotate((l.rot * Math.PI) / 180);
+              cxn.globalAlpha = opOf(l);
+              cxn.font = canvasFont(l, px);
+              cxn.fillStyle = l.color;
+              cxn.textBaseline = "middle";
+              cxn.letterSpacing = (l.ls || 0) * px + "px";
+              lines.forEach(function (s) {
+                maxW = Math.max(maxW, cxn.measureText(s).width);
+              });
+              cxn.textAlign = al === "left" ? "left" : al === "right" ? "right" : "center";
+              if (l.color.toLowerCase() === "#ffffff") {
+                cxn.shadowColor = "rgba(0,0,0,.4)";
+                cxn.shadowBlur = px * 0.12;
+              }
+              var x0 = al === "left" ? -maxW / 2 : al === "right" ? maxW / 2 : 0,
+                y0 = (-(lines.length - 1) * lhPx) / 2;
+              lines.forEach(function (s, i) {
+                var yy = y0 + i * lhPx;
+                if (l.outl > 0) {
+                  cxn.lineJoin = "round";
+                  cxn.lineWidth = l.outl * px * 2;
+                  cxn.strokeStyle = l.outc || "#ffffff";
+                  cxn.strokeText(s, x0, yy);
+                }
+                cxn.fillText(s, x0, yy);
+              });
+              cxn.restore();
+              return;
+            }
+            var src =
+              l.type === "sticker" ? corsUrl(l.src) : l.printUrl || l.src;
+            return loadImg(src)
+              .then(function (im) {
+                var w = l.scale * REF2 * 0.5,
+                  h = w * (im.height / im.width || 1);
+                (cxn.save(),
+                  cxn.translate(x, y),
+                  cxn.rotate((l.rot * Math.PI) / 180),
+                  (cxn.globalAlpha = opOf(l)),
+                  cxn.drawImage(im, -w / 2, -h / 2, w, h),
+                  cxn.restore());
+              })
+              .catch(function () {});
+          });
+        }),
+        seq.then(function () {
+          return new Promise(function (res) {
+            try {
+              cv.toBlob(function (b) {
+                res(b);
+              }, "image/png");
+            } catch (e) {
+              res(null);
+            }
+          });
+        })
+      );
+    }
+    if (
+      (cta.addEventListener("click", function () {
+        var any = sides.some(function (s) {
+          return (state.layers[s.k] || []).length > 0;
+        });
+        if (!any) {
+          ((msg.style.color = "#b3122b"), (msg.textContent = T.empty));
+          return;
+        }
+        var uploading = !1;
+        if (
+          (sides.forEach(function (s) {
+            (state.layers[s.k] || []).forEach(function (l) {
+              l.uploading && (uploading = !0);
+            });
+          }),
+          uploading)
+        ) {
+          ((msg.style.color = "#b3122b"), (msg.textContent = T.stillUp));
+          return;
+        }
+        var form = findForm(),
+          vid = getVariantId(form, fallbackVar);
+        if (!vid) {
+          ((msg.style.color = "#b3122b"), (msg.textContent = T.noVar));
+          return;
+        }
+        ((cta.disabled = !0), (cta.style.opacity = "0.7"), deselect());
+        function finish() {
+          var props = buildProps();
+          ((msg.style.color = "#6b6b73"),
+            (msg.textContent = T.adding),
+            fetch(ADD_URL, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+              },
+              body: JSON.stringify({ id: vid, quantity: 1, properties: props }),
+            })
+              .then(function (r) {
+                return r.ok
+                  ? r.json()
+                  : r.json().then(function (j) {
+                      throw new Error(j.description || "Fehler");
+                    });
+              })
+              .then(function () {
+                ((msg.style.color = "#1c8a4b"),
+                  (msg.textContent = T.added),
+                  (window.location.href = CART_URL));
+              })
+              .catch(function (err) {
+                ((cta.disabled = !1),
+                  (cta.style.opacity = "1"),
+                  (msg.style.color = "#b3122b"),
+                  (msg.textContent = T.addErr + err.message));
+              }));
+        }
+        if (!IMG_ENABLED) {
+          finish();
+          return;
+        }
+        ((msg.style.color = "#6b6b73"), (msg.textContent = T.baking));
+        var chain = Promise.resolve();
+        (sides.forEach(function (s) {
+          chain = chain.then(function () {
+            return bakeSide(s.k).then(function (blob) {
+              if (blob)
+                return new Promise(function (res) {
+                  uplBlob(blob, function (err, url) {
+                    (!err && url && (s._printUrl = url), res());
+                  });
+                });
+            });
+          });
+        }),
+          chain.then(finish).catch(finish));
+      }),
+      applyBg(),
+      Object.keys(imgMap).length)
+    ) {
+      var checkVar2 = function () {
+          var vid = null;
+          try {
+            vid = getVariantId(findForm(), fallbackVar);
+          } catch (e) {}
+          vid !== lastVid && ((lastVid = vid), applyBg());
+        },
+        checkVar = checkVar2,
+        lastVid = null;
+      (document.addEventListener(
+        "change",
+        function () {
+          checkVar2();
+        },
+        !0,
+      ),
+        document.addEventListener(
+          "click",
+          function () {
+            setTimeout(checkVar2, 60);
+          },
+          !0,
+        ),
+        window.addEventListener("popstate", checkVar2));
+      try {
+        setInterval(checkVar2, 500);
+      } catch (e) {}
+      checkVar2();
+    }
+    histCommit();
+  }
+  function initAll() {
+    var n = document.querySelectorAll(".lspod-designer");
+    Array.prototype.forEach.call(n, function (x) {
+      if (x.getAttribute("data-init") !== "1") {
+        x.setAttribute("data-init", "1");
+        try {
+          build(x);
+        } catch (e) {
+          (x.setAttribute("data-init", "err"),
+            window.console &&
+              console.error &&
+              console.error("[lspod] build error:", e));
+        }
+      }
+    });
+  }
+  (document.readyState === "loading"
+    ? document.addEventListener("DOMContentLoaded", initAll)
+    : initAll(),
+    window.addEventListener("load", initAll),
+    [300, 800, 1500, 2500, 4e3, 6e3, 8e3].forEach(function (ms) {
+      setTimeout(function () {
+        (Array.prototype.forEach.call(
+          document.querySelectorAll('.lspod-designer[data-init="err"]'),
+          function (x) {
+            x.removeAttribute("data-init");
+          },
+        ),
+          initAll());
+      }, ms);
+    }));
+})();

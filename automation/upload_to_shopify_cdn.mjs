@@ -41,7 +41,8 @@ if (!fs.existsSync(file)) { console.error('Datei nicht gefunden:', file); proces
 if (!SHOP) { console.error('SHOPIFY_SHOP fehlt → No-op.'); process.exit(1); }
 
 const MIME = { '.mp4':'video/mp4', '.mov':'video/quicktime', '.webm':'video/webm',
-  '.jpg':'image/jpeg', '.jpeg':'image/jpeg', '.png':'image/png', '.webp':'image/webp' };
+  '.jpg':'image/jpeg', '.jpeg':'image/jpeg', '.png':'image/png', '.webp':'image/webp',
+  '.js':'text/javascript' };
 const ext = path.extname(file).toLowerCase();
 const mimeType = MIME[ext] || 'application/octet-stream';
 const fileSize = String(fs.statSync(file).size);
