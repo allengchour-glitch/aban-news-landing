@@ -102,9 +102,12 @@ if [ "$PREMIUM_LAEUFT" = "0" ] && [ -n "$BIGBUY_API_KEY" ] && ! running 'bb_auto
 fi
 
 # ── 4. Auto-Committer (Ledger-Drift alle 5 Min) ──
-if ! running 'sleep 300; git add dropship'; then
-  nohup bash -c 'while true; do sleep 300; git add dropship/ 2>/dev/null; git diff --cached --quiet || (git commit -q -m "Ledger-Drift (auto) #autocommit-loop" && git push -q); done' > /tmp/autocommit.log 2>&1 &
-  log "Auto-Committer gestartet (PID $!)"
+# 12.10.2026: Die Repo-Fassung (automation/autocommit.sh) holt VOR dem Push und merged origin; die alte Inline-Schleife
+# hier hat nie gefetcht. Gemessen: ein lokaler Commit blieb liegen, der Push wurde «fetch first» abgewiesen, der
+# Stop-Hook meldete dauerhaft «1 unpushed commit». Die Schleife ist jetzt die Repo-Datei, nicht mehr dieser Text.
+if ! running 'automation/autocommit.sh'; then
+  nohup bash automation/autocommit.sh > /tmp/autocommit.log 2>&1 &
+  log "Auto-Committer (Repo-Fassung, merge vor Push) gestartet (PID $!)"
 fi
 
 log "fertig. Laufend: $(pgrep -fc 'cj_perpetual|bigbuy_import|gmc_desc' 2>/dev/null || echo 0) Engine(s)."
