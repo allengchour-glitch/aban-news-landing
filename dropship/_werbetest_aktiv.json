@@ -7,10 +7,11 @@
  "google_ads": "Kampagne «Sales-Shopping-1» (24340093418), Konto 719-826-3241",
  "plan": "dropship/WERBETEST-PLAN-2026-10-10.md",
  "handle": "abendkleid-aurora-satin-spaghettitrager-schlitz",
- "status": "aktiviert · Label «werbetest» am 12.10. ~19:40 UTC von Sirène auf Aurora umgestellt (Betreiber «umstellen»); Aurora ohne Google-Meldung, 30/30 Varianten verfügbar, CHF 69.90 · ⚠️ 19:55 UTC: Google prüfte Aurora nach der Label-Änderung neu → jetzt AUCH «Over capacity for Shopping ads (in CSS program) [CH]». Umstellen hilft nicht, solange das Werbe-Kontingent voll ist.",
+ "status": "PAUSIERT (Betreiber «pausiert», 12.10. ~20:35 UTC) — Werbe-Kontingent im Merchant Center voll (Sirène und Aurora «Over capacity for Shopping ads [CH]»). Wieder an erst nach Kontingent-Erhöhung.",
  "vorher": {
   "handle": "abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe",
   "start": "2026-10-10",
   "ergebnis": "10.–12.10.: 25 Sitz., alle auf fremden Produkten, 0 Korb; Sirène bei Google «Over capacity for Shopping ads (in CSS program) [CH]» = nicht bewerbbar"
- }
+ },
+ "pausiert": "2026-10-12T20:35Z"
 }

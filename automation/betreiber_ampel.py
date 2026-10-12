@@ -518,6 +518,8 @@ def werbetest():
         start, ende = datetime.date.fromisoformat(w["start"]), datetime.date.fromisoformat(w["ende"])
         if heute > ende + datetime.timedelta(days=3):
             return None
+        if w.get("pausiert"):   # 12.10.: pausierte Kampagne → keine Stopp-Regel-Mahnung, nur der Stand
+            return f"WERBETEST {w['kampagne']}: pausiert seit {w['pausiert'][:10]} (Werbe-Kontingent voll) — wieder an nach Kontingent-Erhöhung"
         sys.path.insert(0, os.path.join(REPO, "tools"))
         from werbetest_trichter import ql, FELDER
         # 12.10.: Start in der Zukunft (Produktwechsel, Zählung ab morgen) → ShopifyQL «UNTIL before SINCE» beendete die ganze Ampel
