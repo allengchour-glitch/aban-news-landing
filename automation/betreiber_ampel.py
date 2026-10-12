@@ -39,7 +39,13 @@ def gql(q, v=None):
         data=json.dumps({"query": q, "variables": v or {}}).encode(),
         headers={"X-Shopify-Access-Token": tok, "Content-Type": "application/json"})
     with urllib.request.urlopen(req, timeout=40) as r:
-        return json.loads(r.read())
+        j = json.loads(r.read())
+    try:   # 12.10.2026 (Zweites Gehirn «helfer-ohne-eimer»): die Ampel fragt jetzt mehr (Werbetest-Meldung) — Eimer-Boden halten
+        from eimer_etikette import nachlauf
+        nachlauf(j)
+    except Exception as e:
+        print(f"(Ampel: Eimer-Etikette nicht anwendbar: {type(e).__name__}: {e})", file=sys.stderr)
+    return j
 
 
 def datei_speicher_voll():
@@ -554,7 +560,7 @@ def werbetest():
     if fremd:
         regel += f" · ⚠️ {fremd} Sitzungen auf FREMDEN Produkten → Google Ads: Produktgruppe «Alles andere» ausschliessen"
     if sperre:
-        regel += f" · ⛔ Testprodukt bei Google NICHT bewerbbar ({'; '.join(sorted(set(sperre)))}) → Label «werbetest» auf ein Produkt ohne Meldung"
+        regel += f" · ⛔ Testprodukt bei Google NICHT bewerbbar ({'; '.join(sorted(set(sperre)))}) → Werbe-Kontingent voll: im Merchant Center erhöhen lassen oder Kampagne pausieren (Produktwechsel hilft nicht — Aurora fiel 30 min nach der Änderung ebenfalls raus, 12.10.)"
     if tage >= 2 and s2 <= 2:
         regel += f" · ⚠️ gestern+heute {s2} Sitz. — Kampagne pausiert oder ohne Auslieferung"
     return (f"WERBETEST {w['kampagne']} Tag {tage} (≤ CHF {hoechst:.0f}): {s} Sitz. · {k} Korb · {c} Kasse · {b} Kauf{regel}")
