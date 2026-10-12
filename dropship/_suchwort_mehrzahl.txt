@@ -4005,3 +4005,46 @@ gid://shopify/Product/16615369113991	kleider	Damenkleid aus Samt mit V-Ausschnit
 gid://shopify/Product/16615370195335	kleider	Minikleid mit Pelzkragen
 gid://shopify/Product/16615371407751	kleider	Rippenkleid mit Puffärmeln
 gid://shopify/Product/16615372718471	taschen	Tragbare Golftasche
+gid://shopify/Product/16615375470983	taschen	Wasserdichte Kühltasche
+gid://shopify/Product/16615375667591	kleider	Tailliertes Sommerkleid mit Rundhalsausschnitt
+gid://shopify/Product/16615378157959	kleider	Trägerloses Minikleid mit Raffung
+gid://shopify/Product/16615379763591	taschen	Reisetasche mit Muster
+gid://shopify/Product/16615382221191	taschen	Umhängetasche aus Vollnarben-Rindsleder
+gid://shopify/Product/16615383761287	taschen	Umhängetasche aus Vollnarbenleder für Herren
+gid://shopify/Product/16615386612103	taschen	Broschen-Geschenktasche
+gid://shopify/Product/16615387595143	taschen	Aufbewahrungstasche für Reisen & Büro
+gid://shopify/Product/16615389299079	taschen	Reisetasche aus Oxford-Gewebe
+gid://shopify/Product/16615407419783	kleider	Schlank geschnittenes Langarmkleid mit Quasten
+gid://shopify/Product/16615408206215	kleider	Dreidimensionales Blumenkleid mit Puffärmel
+gid://shopify/Product/16615409418631	kleider	Pailletten-Abendkleid mit V-Ausschnitt
+gid://shopify/Product/16615412203911	kleider	Fransenkleid mit V-Ausschnitt & langen Ärmeln
+gid://shopify/Product/16615414006151	kleider	Strickkleid mit Rollkragen für Damen
+gid://shopify/Product/16615416103303	kleider	Damenkleid mit Spitze und Rüschen
+gid://shopify/Product/16615510081927	kleider	Damenkleid mit Print und Spitzenbesatz
+gid://shopify/Product/16615514014087	kleider	Samt-Trägerkleid mit offener Rückenpartie
+gid://shopify/Product/16615518273927	kleider	Elegantes Damenkleid mit Gürtel
+gid://shopify/Product/16615524172167	kleider	Strickkleid mit langen Ärmeln
+gid://shopify/Product/16615548977543	kleider	Gestreiftes Bleistiftkleid mit langen Ärmeln
+gid://shopify/Product/16615553401223	kleider	Samtkleid mit V-Ausschnitt und langen Ärmeln
+gid://shopify/Product/16615553925511	kleider	Etuikleid mit Hahnentrittmuster und Gürtel
+gid://shopify/Product/16615554646407	kleider	Französisches Strickkleid
+gid://shopify/Product/16615557366151	kleider	Samtkleid für Damen
+gid://shopify/Product/16615603995015	kleider	Stehkragen-Knopfkleid mit Patchwork, A-Linie
+gid://shopify/Product/16615604978055	kleider	Samtkleid mit Stehkragen und V-Ausschnitt
+gid://shopify/Product/16615607239047	kleider	Retro Strickkleid mit Streifen
+gid://shopify/Product/16615611859335	kleider	Einfarbiges Damenkleid mit Puffärmel und V-Ausschnitt
+gid://shopify/Product/16615644955015	kleider	Bauchfreies V-Ausschnitt-Strap-Glitzerkleid
+gid://shopify/Product/16615645512071	kleider	Klassisches Damenkleid mit Flügelärmeln
+gid://shopify/Product/16615645708679	kleider	Abendkleid mit hoher Taille und voluminösem Rock
+gid://shopify/Product/16615646298503	kleider	Aprikosenkleid mit Polka-Dots und Taillengürtel
+gid://shopify/Product/16615646658951	kleider	Mittelhohes, langärmliges Patchwork-Midikleid
+gid://shopify/Product/16615655506311	kleider	Eleganter, langärmliger Abendkleid in Satin
+gid://shopify/Product/16615655833991	kleider	Taillenbetontes Langarmkleid
+gid://shopify/Product/16615655866759	kleider	Ärmelloses Maxikleid mit V-Ausschnitt und Rüschen
+gid://shopify/Product/16615655932295	kleider	Schwarzes Samtkleid mit hoher Taille und Spitzeneinlage
+gid://shopify/Product/16615656096135	kleider	Off-Shoulder V-Ausschnitt Strickkleid Mini
+gid://shopify/Product/16615656161671	kleider	Leoparden-Minikleid mit langen Ärmeln
+gid://shopify/Product/16615656259975	kleider	Denimkleid im Loose Fit mit langen Ärmeln
+gid://shopify/Product/16615656489351	kleider	Elegantes Hüftkleid mit langen Ärmeln
+gid://shopify/Product/16615656718727	kleider	Maxikleid mit Rundhalsausschnitt und Falten
+gid://shopify/Product/16615656751495	kleider	Weihnachts-Strickkleid mit langen Ärmeln
