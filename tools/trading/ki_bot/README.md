@@ -87,8 +87,13 @@ schlägt er fehl, wird nichts geschrieben. Ein zweiter Lauf am selben Tag änder
    nächsten Tag still aus (eine Aufgabe startet nicht, solange die alte noch läuft).
 
 Läuft er mindestens **3 Monate** im Papierkonto, vergleiche mit `python tools/trading/ki_bot/signale.py --rueckblick`
-und mit einfachem Halten. Erst dann über echtes Geld nachdenken. Ein automatischer Lauf auf GitHub ist bewusst
+und mit einfachem Halten. Erst dann über echtes Geld nachdenken. Ein Lauf mit **Broker-Schlüsseln** auf GitHub ist bewusst
 **nicht** eingerichtet: Einen Bot mit Broker-Schlüsseln lässt man nur auf dem eigenen Rechner und bewusst laufen.
+
+**Schattenbuch auf GitHub (seit 12.10.2026, nur Spielgeld, ohne Schlüssel):** Der Tages-Lauf `tages-update.yml` (1×/Tag)
+führt `bot.py --lauf` mit eigenem Logbuch `data/ki-bot-schatten.json` (das PC-Logbuch `data/ki-bot.json` bleibt unberührt) und
+`tools/trading/schatten/pilot_schatten.py --lauf` → `data/krypto-pilot-schatten.json` (Entscheide des Krypto-Piloten als
+Vorwärtstest; ohne Börsen-Stops und Liquidation). Stand jederzeit: `python3 tools/trading/schatten/pilot_schatten.py --bericht`.
 Hinweis: Hat kein Markt das Gütesiegel, handelt der Daytrading-Teil nicht. Das ist Absicht, kein Fehler.
 
 **Sicherungen:** Papier ist Standard. Echtes Geld nur, wenn `ALPACA_PAPER=false` **und**

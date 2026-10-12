@@ -74,6 +74,49 @@ jobs:
             echo "Keine Aenderung."
           fi
 
+  # KI-Bot + Krypto-Pilot im Schattenbuch: NUR Spielgeld, KEINE Broker-Schlüssel, keine Secrets (User 2026-10-12:
+  # „Spielgeld-Lauf auf GitHub"). bot.py --lauf macht zuerst seinen Selbsttest (schlägt er fehl: nichts geschrieben).
+  # pilot_schatten.py führt die Entscheide des Krypto-Piloten als Vorwärtstest nach (tools/trading/schatten/).
+  ki-bot-schatten:
+    needs: uebungsdepot
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Tests (Schattenbuch + KI-Bot)
+        run: |
+          python tools/trading/schatten/test_pilot_schatten.py
+          python tools/trading/ki_bot/test_ki_bot.py
+      - name: KI-Bot Tages-Depot (Spielgeld)
+        # data/ki-bot.json ist gitignored (gehört dem PC). Der GitHub-Lauf führt sein eigenes Logbuch
+        # data/ki-bot-schatten.json: vorher zurückkopieren, nachher sichern.
+        run: |
+          if [ -f data/ki-bot-schatten.json ]; then cp data/ki-bot-schatten.json data/ki-bot.json; fi
+          python tools/trading/ki_bot/bot.py --lauf
+          cp data/ki-bot.json data/ki-bot-schatten.json
+      - name: Krypto-Pilot Schattenbuch (Spielgeld)
+        if: always()
+        run: python tools/trading/schatten/pilot_schatten.py --lauf
+      - name: Logbücher committen (falls geaendert)
+        if: always()
+        run: |
+          for f in data/ki-bot-schatten.json data/krypto-pilot-schatten.json; do if [ -f "$f" ]; then git add "$f"; fi; done
+          if ! git diff --cached --quiet; then
+            git config user.name "aban-news-bot"
+            git config user.email "bot@users.noreply.github.com"
+            git commit -m "chore(ki-bot): Spielgeld-Logbücher des Tages [skip ci]"
+            git stash --include-untracked || true
+            for _i in 1 2 3 4 5; do git push && break; git pull --rebase origin main || true; sleep 3; done
+          else
+            echo "Keine Aenderung."
+          fi
+
   maerkte:
     needs: [ki-news, uebungsdepot]
     if: always()

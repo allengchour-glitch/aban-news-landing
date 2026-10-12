@@ -64,6 +64,14 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-12 (🤖 KI-Bot übernommen — Schattenbuch auf GitHub, NUR Spielgeld):** User: „kannst du alles übernehmen“ → gewählt
+„Spielgeld-Lauf auf GitHub“. Job `ki-bot-schatten` in `tages-update.yml` (kein neuer Cron): Tests → `bot.py --lauf` mit eigenem Logbuch
+`data/ki-bot-schatten.json` (PC-Logbuch `data/ki-bot.json` bleibt gitignored) → `tools/trading/schatten/pilot_schatten.py --lauf`
+(`data/krypto-pilot-schatten.json`, Vorwärtstest der Pilot-Entscheide, ohne Stops/Liquidation; 9 Tests, Mutationsprobe 2/2).
+**Jede Session:** beide Logbücher lesen (`pilot_schatten.py --bericht`), gegen Halten vergleichen, Code/Tests pflegen.
+**NIE:** echtes Geld, Broker-Schlüssel als Secrets, Auto-Classifier blockt lokale `bot.py --lauf` → nur über den Workflow.
+Bot-Doku: `tools/trading/ki_bot/README.md`, `tools/trading/krypto_bot/README.md`. Prüfung frühestens nach 3 Monaten (Jan 2027).
+
 **📌 2026-10-04 (🚚 Versand-Schwelle: Beinahe-Schaden abgewendet + „Mini-Kühlschrank" war eine Insulin-Kühlbox):**
 - **🚨 WICHTIGSTE LEHRE — `dropship/VERSAND-SCHWELLE.md` LESEN, bevor jemand eine Versand-Zahl ändert.**
   Die Versandregel gibt Gratis-Versand ab **CHF 45 auf den Korb NACH Rabatt** (live gemessen, Gegenprobe:
