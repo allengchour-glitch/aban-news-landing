@@ -17761,3 +17761,4 @@ gid://shopify/Product/16615518765447	16->0	Gestrickter Dreieckschal mit Streifen
 gid://shopify/Product/16615520207239	68->0	Gestrickter Schal mit Aushöhlung
 gid://shopify/Product/16615520633223	9->3	Schnelltrocknende Wasserschuhe
 gid://shopify/Product/16615524172167	125->0	Strickkleid mit langen Ärmeln
+gid://shopify/Product/16615527055751	14->0	Mesh-Kleid mit Neckholder und Bügel
