@@ -2339,7 +2339,7 @@ KLT=/tmp/test_klingen_tor.log
 
   # 12.10.2026: SUCH-BOOSTS — Search & Discovery-Metafeld shopify--discovery--product_search_boost.queries je Begriffsfamilie
   # (data/such_boosts.json): «halloween» zeigte 0/8 ab Schweizer Lager, «geschenk für frau» ein Intim-Serum. Täglich neu
-  # (ausverkauft/gedraftet fällt raus, Anlass vorbei → Boosts weg), schreibt nur eigene Begriffe; danach Enter-Suche messen.
+  # (ausverkauft/gedraftet fällt raus, Anlass vorbei → Boosts weg), schreibt nur eigene Begriffe; danach (60 min später — der Such-Index zieht Boosts erst nach > 30 min nach, gemessen 12.10.) Enter-Suche messen.
   SBW=/tmp/such_boost.log
   if [ -f "$REPO/automation/such_boost.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$SBW" 2>/dev/null || echo 0) ))
@@ -2348,7 +2348,7 @@ KLT=/tmp/test_klingen_tor.log
       ( cd "$REPO" && setsid bash -c \
           "exec 9>/tmp/lock_such_boost.lock; flock -n 9 || exit 0; exec >> \"$SBW\" 2>&1; \
            echo \"START \$(date -u +%FT%TZ) (Aufseher)\"; python3 -u automation/such_boost.py --selbsttest > /dev/null \
-           && SCHARF=1 timeout 1500 python3 -u automation/such_boost.py && sleep 900 && timeout 900 python3 -u automation/such_boost.py --messen; \
+           && SCHARF=1 timeout 1500 python3 -u automation/such_boost.py && sleep 3600 && timeout 900 python3 -u automation/such_boost.py --messen; \
            echo \"FERTIG \$(date -u +%FT%TZ)\"" 9>&- & )
     fi
   fi

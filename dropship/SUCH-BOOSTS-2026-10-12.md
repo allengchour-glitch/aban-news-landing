@@ -69,7 +69,13 @@
 - Bei unserer IP (curl) sind «halloween» und «kostüm» Zeichen für Zeichen dieselben Seiten wie um 19:08: die bekannte veraltete Bot-Cache-Kopie.
 - WebFetch (anderer Ausgang) zeigt bei «kostüm» ebenfalls noch die alte Reihenfolge, der Boost greift also noch nicht.
 - Bei Begriffen, die vorher nie abgerufen wurden, stehen geboostete Produkte schon oben: «wichteln» 3/8 (Aroma-Diffuser, Sternzeichen-Anhänger, Kartenetui), «geschenk für frau» Platz 1 das geboostete Doppel-Armband.
-- Nachmessung folgt; der Aufseher misst täglich 15 min nach dem Schreiben.
+- **Nachmessung 22:42 UTC (mit Cache-Brecher, ~55 min nach Lauf 1, ~20 min nach Lauf 2):** Die Boosts WIRKEN, aber verzögert. Oben stehen die Produkte aus Lauf 1, auch solche, die Lauf 2 per Veto wieder entfernt hatte:
+  - «powerbank» Platz 1: die Akku-Hülle.
+  - «staubsauger» Platz 1: der Sauger mit englischem Text.
+  - «tshirt männer» Platz 2: das Totenkopf-Shirt.
+  - Weitere Treffer: «geschenk für ihn» 6/8, «geschenk für mann» 5/8, «handwärmer» 4/6, «kerze» 3/4, «halloween» Platz 1 die Hexe aus dem Schweizer Lager.
+  - «kostüm» noch 0/8, weil der Index noch nachzieht.
+- **Lehre:** Der Such-Index übernimmt Metafeld-Änderungen erst nach mehr als 30 Minuten. Der Aufseher misst deshalb 60 Minuten nach dem Schreiben (vorher 15). Wer Vetos setzt, sieht die alte Wahl noch eine Weile in der Suche.
 
 ## Offen / Risiken
 
