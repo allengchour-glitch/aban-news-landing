@@ -1,50 +1,50 @@
-# Google-Diagnosen (product.feedback der App «Google & YouTube») — Stand 2026-10-10T09:13Z
+# Google-Diagnosen (product.feedback der App «Google & YouTube») — Stand 2026-10-12T00:35Z
 
-Gescannt: 52442 aktive Produkte in 210 Seiten (vollständig), 321 s. Meldungen nur für Shopping Ads (ignoriert): 32574.
+Gescannt: 53418 aktive Produkte in 214 Seiten (vollständig), 477 s. Meldungen nur für Shopping Ads (ignoriert): 32808.
 
-## Free-Listings-Blocker: 1068
+## Free-Listings-Blocker: 1035
 
 | Klasse | Produkte | davon ohne onlineStoreUrl | davon Ziel «[]» |
 |---|---:|---:|---:|
-| Image under review | 421 | 0 | 421 |
-| Inappropriate image | 330 | 0 | 330 |
-| Unable to show image | 110 | 0 | – |
-| Restricted adult content | 109 | 0 | 109 |
-| Product page unavailable | 49 | 0 | – |
-| Promotional overlay on image | 34 | 0 | – |
-| Image too small | 7 | 0 | – |
+| Image under review | 439 | 0 | 439 |
+| Inappropriate image | 318 | 0 | 318 |
+| Unable to show image | 107 | 0 | – |
+| Restricted adult content | 107 | 0 | 107 |
+| Promotional overlay on image | 31 | 0 | – |
+| Product page unavailable | 23 | 0 | – |
 | Adult-oriented content | 3 | 0 | 3 |
 | Title under review | 2 | 0 | 2 |
 | Tobacco products & related equipment | 2 | 0 | – |
+| Image too small | 2 | 0 | – |
 | Additional text found | 1 | 0 | – |
 
 Ziel «[]» = die App nennt kein betroffenes Ziel («… in [] [CH]» statt «in [Free_listings,Shopping_ads]»). Was das bei Google heisst, ist UNBELEGT (keine Doku gefunden, 08.10.) — Wahrheit = Status im Merchant Center.
 
 ## Nur andere Länder (blockiert die Schweiz NICHT — Shop liefert nur CH)
 
-- Missing shipping info in some countries [LI]: 27957
+- Missing shipping info in some countries [LI]: 28226
 - Alcoholic beverages [LI]: 4
 
 Abhilfe (Betreiber, optional): im Google Merchant Center unter Zielländer/Versand das Land entfernen.
 
 ## Nur personalisierte Werbung (blockiert Gratis-Einträge NICHT — Targeting-Regel, siehe Kopf)
 
-- Personalized advertising: Sexual interests: 109
+- Personalized advertising: Sexual interests: 107
 - Personalized advertising: personal hardships: 91
 - Personalized advertising: legal restrictions: 8
 
 ## Meldungen anderer Kanal-Apps (kein Google-Blocker)
 
-- [Shop] Dieses Produkt ist in Shop nicht auffindbar. Prüfe den Angebotsstatus im Shop-Kanal: 3
+- [Shop] Dieses Produkt ist in Shop nicht auffindbar. Prüfe den Angebotsstatus im Shop-Kanal: 5
 
 «ohne onlineStoreUrl» = nicht im Onlineshop publiziert, aber im Google-Kanal — Google sieht eine 404. Reparatur: Onlineshop-Publikation nachziehen oder aus dem Google-Kanal nehmen (Fixer folgt).
 
-### Unable to show image (110)
+### Unable to show image (107)
 
 - tech-hero-geschenkbox-smartwatch-anc-ladestation
+- hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten
 - prodigi-poster-gruezi
 - toilettenpapier-6-rollen-schwarz-ft52304sw
-- viehtransportanhanger-mit-1-rind-fga02227
 - steyr-6300-terrus-cvt-mit-frontlader-fga03181
 - sommerliche-off-shoulder-bluse-in-grossen-gros-638400
 - bequeme-herrenhosen-628900
@@ -103,36 +103,44 @@ Abhilfe (Betreiber, optional): im Google Merchant Center unter Zielländer/Versa
 - color-block-pullover-mit-kettenmuster-611200
 - …
 
-### Image under review (421)
+### Image under review (439)
 
-- rosenquarz-gua-sha-set
-- solar-camping-laterne-im-vintage-look-wiederaufladbar-ip44-wetterfest
+- kristall-set-3-teilig
 - phone-makeover-set-charms-grip-magsafe-holder
-- sunset-projection-lamp-16-colors-adjustable
-- sommer-armband-evil-schmetterling-nazar-auge-vergoldet
-- fransen-minirock-santa-fe-wildleder-optik-2-lagig
+- hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten
 - transparente-iphone®-hulle-selbst-gestalten
 - recycelter-unisex-allover-pullover-selbst-gestalten
 - schweiz-poster-alpsee-see-spiegelung-kunstdruck
-- schweiz-poster-matterhorn-sonnenuntergang-kunstdruck
+- poster-zum-selbstgestalten
+- schweiz-sticker-swiss-cross-badge
+- pod-sticker-art-veggies
+- pod-sticker-burger-cute
 - pod-sticker-cactus-sunset
-- pod-sticker-capybara
 - pod-sticker-checker-heart
 - pod-sticker-ice-hockey
 - pod-sticker-kiwi
 - pod-sticker-ladybug2
+- pod-sticker-parrot-cute
 - pod-sticker-pixel-mushroom
+- pod-sticker-planet-earth
+- pod-sticker-seal
+- pod-sticker-seashell
+- pod-sticker-star-cluster
 - pod-sticker-tattoo-anchor
-- pod-sticker-zebra
+- pod-sticker-zodiac-sagittarius
+- tasse-basel
 - tasse-braunvieh
 - tasse-chalet
+- tasse-enzian
 - tasse-feierabig
+- tasse-gaell
 - tote-zum-selbstgestalten
 - reise-tasche-wasserdicht-xl
 - canvas-shopper-tote-nachhaltig
+- partner-ring-bar-vintage-edelstahl-unisex
 - rgb-wandlampe-halo-kabellos-fernbedienung-ohne-bohren-💡
+- echtleder-henkeltasche-milano-weiches-rindsleder
 - x2-dual-elektro-display-2-8-zoll-335169
-- edelstahl-anhanger-sternzeichen-und-monate-620600
 - hawaiihemd-fur-herren-atmungsaktiv-stylisch-618400
 - paisley-jacquard-schal-mit-quasten-600200
 - retro-zip-up-hoodie-mit-3d-digitalprint-614100
@@ -147,6 +155,7 @@ Abhilfe (Betreiber, optional): im Google Merchant Center unter Zielländer/Versa
 - kabellose-multifunktions-reinigungsburste-622500
 - smart-armband-1-3-zoll-display-tpu-band-e49535
 - h88-4k-mini-action-kamera-fur-sport-outdoor-608500
+- verdunkelungsvorhang-samt-mit-osen-982785
 - usb-hd-kamera-064832
 - slim-fit-herrenweste-korean-style-603700
 - sandalen-mit-riemchen-und-nieten-5cm-keilabsat-111425
@@ -156,23 +165,17 @@ Abhilfe (Betreiber, optional): im Google Merchant Center unter Zielländer/Versa
 - wetterfestes-zelt-636000
 - hd-quadrocopter-mit-fernbedienung-622700
 - katzenfestes-einheitssofauberwurf-603200
-- 3d-bubble-chiffon-esstuhl-bezug-618900
-- chenille-bolsterkissen-extra-lang-verschiedene-874242
-- sommerdecke-mit-kuhlung-618000
-- sommer-duvet-mit-tencel-und-stickerei-621100
-- anstecknadel-halter-639100
-- gesichtsfirma-gel-609900
-- schonheitspflaster-628100
-- kottensack-fur-wohnzimmer-623000
-- katzenspielzeug-622200
 - …
 
-### Inappropriate image (330)
+### Inappropriate image (318)
 
 - herren-ring-vintage-edelstahl-retro
+- pod-sticker-flame-graffiti
 - pod-sticker-pumpkin-jack
 - pod-sticker-tattoo-skull-rose
+- retro-flammen-tischlampe-led
 - herren-cargo-hose-trail-multi-pocket-outdoor
+- vertikaler-gaming-pistolengriff-mit-trigger-610900
 - rc-fernsteuerung-fur-modellautos-boote-600600
 - punk-motorrad-seiten-taschen-602000
 - gedruckter-baumwoll-leinen-schal-fur-herbst-wi-626100
@@ -190,7 +193,6 @@ Abhilfe (Betreiber, optional): im Google Merchant Center unter Zielländer/Versa
 - french-chic-color-block-bandeau-top-607000
 - spitzen-neckholder-top-mit-integrierten-pads-632800
 - strick-top-mit-eckigem-ausschnitt-und-volantsa-603500
-- satin-camisole-mit-neckholder-622900
 - figurbetonte-bandeau-spitzencorsage-603100
 - damen-spitzen-tube-top-mit-offener-ruckenparti-601800
 - samt-camisole-mit-schnurung-958338
@@ -227,25 +229,21 @@ Abhilfe (Betreiber, optional): im Google Merchant Center unter Zielländer/Versa
 - silikon-photon-maske-led-620400
 - verdunkelungsvorhange-mit-osen-2-stuck-340353
 - ultraschall-luftbefeuchter-mit-aromatherapie-327744
-- personalisierbarer-zugfreier-reflektierender-h-4ce320
-- antigravitations-nebel-feuchter-580ml-354048
 - …
 
-### Promotional overlay on image (34)
+### Promotional overlay on image (31)
 
+- painless-fast-nail-art-extension-set-621900
 - li-ion-akku-ladegerat-set-3000mah-626433
 - magnetische-lesebrille-zum-umhangen-601100
 - 10-paar-unsichtbare-socken-fur-damen-195841
 - 10-paar-damen-fusslinge-seidig-glatt-257473
 - wlan-garagentor-steuerung-mit-app-161024
-- 2-in-1-pflegehandschuh-fur-haustiere-477121
-- 350ml-usb-blender-mit-3d-messer-918592
 - uberwachungskamera-mit-1080p-und-zoom-356544
 - klein-robust-4k-auflosung-626700
 - 3-in-1-wireless-ladestation-fur-mehrere-gerate-9b0c4e
 - tragbare-2-in-1-trinkflasche-fur-hunde-269760
 - faltbare-hd-drohne-mit-hinderniserkennung-692992
-- gesichtshochheber-nackenmassagegerat-2a3655
 - mini-drohne-mit-dual-kamera-und-fernsteuerung-649344
 - mini-quadcopter-mit-dual-kamera-221888
 - s68-mini-drohne-mit-4k-dual-kamera-220928
@@ -254,7 +252,6 @@ Abhilfe (Betreiber, optional): im Google Merchant Center unter Zielländer/Versa
 - digitaler-thermostat-fur-fussbodenheizung-992000
 - 9mm-super-slim-lockenstab-fur-ringellockchen-593152
 - bluetooth-audio-empfanger-furs-auto-a0dc61
-- akku-ladegerat-fur-ni-cd-ni-mh-zellen-7-2-18v-628100
 - hautfarbenkorektur-fur-die-stirnlinie-622500
 - happy-mary-kinder-und-lauflernschuhe-99e12e
 - herren-quarz-armbanduhr-mit-kalender-058624
@@ -268,7 +265,7 @@ Abhilfe (Betreiber, optional): im Google Merchant Center unter Zielländer/Versa
 - hawaiihemd-fur-herren-mit-3d-print-606700
 - 6-farben-wasserfester-nude-matt-lippenstift-798464
 
-### Restricted adult content (109)
+### Restricted adult content (107)
 
 - seidenmaske-mit-halsbedeckung-fur-damen-628900
 - nahtlose-hauchdunne-seiden-strumpfhose-605000
@@ -303,7 +300,6 @@ Abhilfe (Betreiber, optional): im Google Merchant Center unter Zielländer/Versa
 - dunne-durchsichtige-leggings-605400
 - peach-yoga-pants-mit-bauch-und-huftformung-613400
 - retro-spitze-halter-nacken-ruckenfrei-kleid-so-610101
-- damen-spitzen-minirock-603600
 - durchsichtige-nachtrobe-613300
 - elegantes-mesh-maxikleid-in-grossen-grossen-637100
 - retro-thong-sandalen-fur-damen-629700
@@ -330,64 +326,13 @@ Abhilfe (Betreiber, optional): im Google Merchant Center unter Zielländer/Versa
 - transparente-mid-heel-pantoletten-mit-kristall-619600
 - transparente-high-heel-sandalette-604800
 - mesh-kleid-mit-digitaldruck-615900
+- damen-maxikleid-mit-print-619100
 - …
 
 ### Title under review (2)
 
 - warme-lederhandschuhe-mit-fleecefutter-626600
 - distressed-jeans-fur-herren-632300
-
-### Product page unavailable (49)
-
-- slip-on-sandalen-mit-blockabsatz-629700
-- chunky-ankle-boots-mit-reissverschluss-636900
-- armelloses-v-neck-top-mit-schleife-637200
-- kapuzen-leinenkleid-mit-langen-armeln-622600
-- muller-stiletto-sandalen-mit-schleife-621900
-- high-heel-sandalen-mit-offener-spitze-625600
-- outdoor-schlankheits-sandalen-619800
-- martin-boots-fur-herren-mid-top-608100
-- keramik-futternapf-fur-katzen-erhoht-065024
-- herren-mesh-sneaker-atmungsaktiv-einfarbig-912064
-- atmungsaktive-kindersneakers-mit-weicher-sohle-121792
-- cardigan-mit-blumenstickerei-636300
-- herren-langarmhemd-mit-stehkragen-und-brusttas-601900
-- strickjacke-mit-reverskragen-fur-herren-608700
-- ethno-sandalen-mit-klettverschluss-und-dicker-624200
-- sandalen-mit-hanfseil-und-plateau-sohle-605900
-- sommerliches-camisole-kleid-mit-u-ausschnitt-630700
-- elegantes-armelloses-leinenkleid-611900
-- einfarbiges-armelloses-a-linien-kleid-mit-gurt-626400
-- kariertes-langarmhemd-aus-baumwolle-fur-herren-618000
-- businesshemd-langarm-bugelfrei-629800
-- tragerloses-chiffon-maxi-kleid-613100
-- madchen-leder-prinzessinnen-schuhe-598400
-- octopus-martin-boots-fur-herren-619100
-- lassige-sportschuhe-mit-speziellem-design-629600
-- boho-kleid-mit-3d-ethno-muster-615900
-- niedliche-casual-low-top-kleinkinderschuhe-380608
-- gefaltetes-patchwork-bandeau-abendkleid-616700
-- retro-frosted-schnallen-sandalen-aus-leder-826688
-- kurzarmhemd-aus-baumwolle-fur-herren-609900
-- kurzarm-t-shirt-aus-baumwolle-fur-herren-614500
-- business-t-shirt-aus-eisseide-624500
-- kurzarm-polohemd-aus-baumwollmischung-605600
-- elegantes-maxikleid-mit-kurzen-armeln-600000
-- polo-shirt-aus-gewaschener-baumwolle-627100
-- seiden-polohemd-mit-revers-fur-herren-601000
-- furry-high-heel-sandalen-mit-spitzer-zehe-828096
-- retro-leinen-baumwoll-cardigan-bestickt-621500
-- herren-sommer-t-shirt-mit-reverskragen-606700
-- hawaii-kurzarmhemd-fur-herren-vielseitig-trend-628000
-- retro-streifen-fake-zweiteiler-shirt-fur-damen-634700
-- vintage-leder-halbschuhe-fur-madchen-337728
-- freistehendes-kurzarmling-und-hose-608300
-- freizeit-plateau-sportschuhe-fur-herren-616100
-- futter-und-trinkbrunnen-fur-haustiere-76d3dd
-- damen-sandalen-mit-riemen-699520
-- herren-strickjacke-mit-revers-612400
-- damen-shirt-mit-schnurung-und-ruschen-608600
-- herren-fitness-shirt-kurzarm-627400
 
 ### Adult-oriented content (3)
 
@@ -400,17 +345,38 @@ Abhilfe (Betreiber, optional): im Google Merchant Center unter Zielländer/Versa
 - katzenspielzeug-mit-drehkopf-618400
 - doppeldisplay-halter-bcc975
 
-### Image too small (7)
+### Product page unavailable (23)
 
-- herren-casual-plaid-print-polo-shirt-630900
-- figurformender-einteiler-mit-bauchkontrolle-624300
-- ngc-wireless-controller-fur-wii-162304
-- keilsandalen-im-bohemian-stil-mit-blumen-621400
-- kurzes-v-neck-kleid-mit-lochstickerei-625400
-- brustgeschirr-und-leine-fur-katzen-645632
-- formelles-sequined-kleid-mit-doppel-v-halsauss-629000
+- chunky-ankle-boots-mit-reissverschluss-636900
+- armelloses-v-neck-top-mit-schleife-637200
+- martin-boots-fur-herren-mid-top-608100
+- keramik-futternapf-fur-katzen-erhoht-065024
+- cardigan-mit-blumenstickerei-636300
+- kariertes-langarmhemd-aus-baumwolle-fur-herren-618000
+- businesshemd-langarm-bugelfrei-629800
+- tragerloses-chiffon-maxi-kleid-613100
+- madchen-leder-prinzessinnen-schuhe-598400
+- octopus-martin-boots-fur-herren-619100
+- gefaltetes-patchwork-bandeau-abendkleid-616700
+- kurzarmhemd-aus-baumwolle-fur-herren-609900
+- kurzarm-t-shirt-aus-baumwolle-fur-herren-614500
+- business-t-shirt-aus-eisseide-624500
+- kurzarm-polohemd-aus-baumwollmischung-605600
+- polo-shirt-aus-gewaschener-baumwolle-627100
+- retro-leinen-baumwoll-cardigan-bestickt-621500
+- herren-sommer-t-shirt-mit-reverskragen-606700
+- retro-streifen-fake-zweiteiler-shirt-fur-damen-634700
+- vintage-leder-halbschuhe-fur-madchen-337728
+- herren-strickjacke-mit-revers-612400
+- damen-shirt-mit-schnurung-und-ruschen-608600
+- herren-fitness-shirt-kurzarm-627400
 
 ### Additional text found (1)
 
 - herren-fleece-sport-freizeitschuhe-483776
+
+### Image too small (2)
+
+- brustgeschirr-und-leine-fur-katzen-645632
+- kinder-freizeitschuhe-e3de89
 
