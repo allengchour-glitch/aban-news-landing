@@ -530,9 +530,24 @@ def werbetest():
         regel += f" · ⚠️ {fremd} Sitzungen auf FREMDEN Produkten → Google Ads: Produktgruppe «Alles andere» ausschliessen"
     return (f"WERBETEST {w['kampagne']} Tag {tage} (≤ CHF {hoechst:.0f}): {s} Sitz. · {k} Korb · {c} Kasse · {b} Kauf{regel}")
 
+def _kategorie_live():
+    """12.10.2026: Die Ampel zog früher vom Stand-Wert (211, vor dem Lauf um 06:33) ab und meldete 211, obwohl
+    live 36 aktiv ohne Kategorie stehen: neue Produkte stehen nicht im Ledger, also wurden sie nie abgezogen.
+    Deshalb zählt die Ampel jetzt LIVE (productsCount, EXACT). Fällt die Abfrage aus, bleibt der Stand-Wert."""
+    try:
+        sys.path.insert(0, os.path.join(REPO, "automation"))
+        from seo_autopilot import gql
+        d = gql('{ productsCount(query:"status:active AND -category_id:*"){ count precision } }')["productsCount"]
+        return int(d["count"]), d.get("precision")
+    except Exception:
+        return None, None
+
 def kategorie_offen():
     """KATEGORIE: N aktive ohne Taxonomie-Kategorie — Stand von automation/kategorie_wache.py (23.09.2026, Task #101).
     Der Shop-Kanal zeigt nur Produkte MIT Kategorie (33'863 «nicht auffindbar» gemessen). Liest den STAND (Datei)."""
+    live_n, live_p = _kategorie_live()
+    if live_n is not None:
+        return None if live_n == 0 else f"KATEGORIE: {live_n} aktive ohne Kategorie (live gezählt, {live_p or '?'})"
     p = os.path.join(REPO, "dropship", "_kategorie_stand.json")
     try:
         s = json.load(open(p, encoding="utf-8"))

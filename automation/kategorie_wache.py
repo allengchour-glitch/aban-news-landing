@@ -281,7 +281,8 @@ KINDERREGELN = [
     (r"strampler|strampel\w*|romper|\w*body\b|onesie|overall|jumpsuit|latzhose", "aa-1-25-10"),
     (r"(top|shirt|oberteil|pullover|sweatshirt|polo|weste)\b.*\b(und|mit|&)\b.*(rock|hose\w*|shorts)\b", "aa-1-25-5"),
     (r"kleid\w*", "aa-1-25-3"),
-    (r"jacke|mantel|\w*weste\b|cardigan|kardigan", "aa-1-25-4"),
+    # 12.10.2026: «Poncho» ist Oberbekleidung wie Jacke/Mantel (aa-1-25-4). Ohne die Regel blieb «Cartoon Poncho für Kinder» ohne Ziel.
+    (r"jacke|mantel|\w*weste\b|cardigan|kardigan|\bponchos?\b", "aa-1-25-4"),
     (r"\w*pullover|pulli\w*|\w*shirt\b|\btop\b|oberteil|hoodie|polo\b|bluse|longsleeve", "aa-1-25-9"),
     (r"hose\w*|shorts|\w*rock\b|leggings|jeans", "aa-1-25-1"),
     (r"socken|strumpf\w*", "aa-1-25-7"),
