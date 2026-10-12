@@ -50869,3 +50869,16 @@ herren-sneaker-aus-rindsleder-617300	aa-8	Herrenschuhe	2026-10-12T19:35Z
 atmungsaktive-barfussschuhe-fur-fitness-yoga-627200	aa-8	Herrenschuhe	2026-10-12T19:35Z
 herrenschuhe-mit-hohenaufsatz-mesh-obermateria-623100	aa-8	Herrenschuhe	2026-10-12T19:35Z
 klassische-sneaker-mit-flyknit-beschichtung-621800	aa-8	Herrenschuhe	2026-10-12T19:35Z
+abstandsklebeband-2-m-e97e96	ha-15	Werkzeug & Heimwerken	2026-10-12T21:29Z
+messschieber-fur-positionierung-4c5535	ha-15	Werkzeug & Heimwerken	2026-10-12T21:29Z
+pp-armatur-fur-wasserrohrschlauch-antifreeze-s-d3ba55	ha-15	Werkzeug & Heimwerken	2026-10-12T21:29Z
+schubladenschiene-2-sektor-ultra-schmal-f8f21f	ha-15	Werkzeug & Heimwerken	2026-10-12T21:29Z
+tungsten-steel-pcb-fraser-mit-beschichtung-3167ac	ha-15	Werkzeug & Heimwerken	2026-10-12T21:29Z
+dreifach-crimpzange-fur-netzwerk-und-telefonka-1efa21	ha-15	Werkzeug & Heimwerken	2026-10-12T21:29Z
+zinklegierungs-haken-entkoppler-9-5-m-9c3363	ha-15	Werkzeug & Heimwerken	2026-10-12T21:29Z
+universaler-scooter-griff-aus-canvas-41436f	ha-15	Werkzeug & Heimwerken	2026-10-12T21:29Z
+heissklebepistole-60-100-w-361b43	ha-15	Werkzeug & Heimwerken	2026-10-12T21:29Z
+y-formiger-messing-filterkugelventil-d4076e	ha-15	Werkzeug & Heimwerken	2026-10-12T21:29Z
+l-formiger-steckschlussel-aus-cr-v-stahl-751536	ha-15	Werkzeug & Heimwerken	2026-10-12T21:29Z
+ratschen-crimpzange-6d1907	ha-15	Werkzeug & Heimwerken	2026-10-12T21:29Z
+minimalistische-geometrische-ohrstecker-aus-ed-609100	aa-6	Schmuck	2026-10-12T21:29Z
