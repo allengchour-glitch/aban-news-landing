@@ -1,18 +1,18 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-12 12:25 UTC, Stand 2026-10-12 14:51 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-12 12:25 UTC, Stand 2026-10-12 14:53 UTC — **vollständig**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **52'800**
-- Optionen mit englischen Werten (Kandidaten): 3'001
-- Optionen übersetzt: **0** · Werte übersetzt: **0**
-- Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 15'499
+- Produkte gesehen: **53'897**
+- Optionen mit englischen Werten (Kandidaten): 3'100
+- Optionen übersetzt: **49** · Werte übersetzt: **315**
+- Optionen nur codebereinigt: 1
+- Werte mit unbekanntem Wort (unverändert): 15'803
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 82
+- übersprungen «kleidungsstueck-im-wert»: 91
 - übersprungen «kollision-nach-uebersetzung»: 41
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
@@ -54,6 +54,12 @@
 - `16613406179719` [Farbe] **Strick-Set für Mädchen – Pullover & Shorts** — jacke, overall · Titel nennt Set: Romper Grape Red | Coat Grape Red | Romper Apricot | Coat Apricot
 - `16613406966151` [Farbe] **Baby-Overall aus Baumwolle** — overall, weste: Beige Romper | Coffee Color Romper | Beige Vest | Coffee Vest | Pink | Hellgrau | Grün | Blau
 - `16614832112007` [Farbe] **Halloween Kostümkleid Set** — rock · Titel nennt Set: 8735 One Skirt | 8735 Single Cloak | 8735 Skirt Cloak
+- `16615380779399` [Farbe] **Satinbluse Langarm** — hose: Braun | Champagner | Schwarz | Grün | Lila | Claret | Coffee pants | Brown set
+- `16615410958727` [Farbe] **Damen-Kleid Moonlight Melody** — oberteil: Moonlight Color | White Blouse
+- `16615656194439` [Farbe] **Jacquard Kleid-Set mit Schleife** — jacke, oberteil, rock · Titel nennt Set: Top  Skirt  Blazer | Top  Skirt  Blouse Sleeve | Black Skirt Support
+- `16615783498119` [Farbe] **Baby-Strampler-Set mit Bluse und Hose** — overall, pullover · Titel nennt Set: Beige-Cardigan | Beige-Suit | Beige-Romper | Blue-Cardigan | Blue-Suit | Blue-Romper
+- `16615807222151` [Farbe] **Hochzeitskleid-Set für Puppen** — weste · Titel nennt Set: Wedding Progress-Without Baby | Mr Vest-Without Baby
+- `16615808401799` [Farbe] **Baby Jumpsuit mit Alphabet-Stickerei** — overall, pullover · Titel nennt Set: Gray Romper | Gray Sweater
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -125,5 +131,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`inner` 651, `⟨satzbau:adjektiv-vor-nomen⟩` 583, `light` 449, `color` 411, `shell` 159, `size` 159, `degrees` 159, `⟨satzbau:material-vor-farbe⟩` 150, `core` 137, `surface` 130, `powder` 127, `⟨satzbau:nomen-nomen⟩` 118, `shoes` 117, `no` 110, `diamond` 109, `skin` 106, `high` 104, `inside` 104, `four` 97, `three` 96, `bag` 93, `belt` 92, `french` 89, `rain` 88, `yards` 88, `dinosaur` 87, `code` 85, `case` 84, `dark` 83, `opp` 81, `buckle` 78, `cloth` 78, `to` 77, `bottom` 77, `cherry` 76, `rope` 75, `spring` 72, `dual` 71, `chain` 70, `autumn` 69, `net` 68, `petal` 68, `half` 67, `little` 66, `hat` 66, `base` 63, `strap` 62, `feet` 62, `bear` 61, `insole` 61, `of` 60, `⟨satzbau:menge-vor-nomen⟩` 60, `tea` 59, `plush` 59, `one` 58, `rainbow` 57, `electric` 56, `rice` 55, `background` 54, `night` 54
+`inner` 659, `⟨satzbau:adjektiv-vor-nomen⟩` 586, `light` 449, `color` 423, `size` 162, `shell` 159, `degrees` 159, `⟨satzbau:material-vor-farbe⟩` 150, `core` 137, `surface` 130, `powder` 129, `three` 125, `⟨satzbau:nomen-nomen⟩` 119, `shoes` 117, `no` 111, `diamond` 109, `skin` 106, `high` 104, `inside` 104, `to` 98, `yards` 98, `four` 97, `bag` 93, `dinosaur` 93, `belt` 92, `french` 89, `rain` 88, `code` 85, `dark` 85, `case` 84, `opp` 81, `bottom` 79, `buckle` 78, `cloth` 78, `cherry` 76, `rope` 75, `net` 75, `spring` 72, `little` 71, `dual` 71, `chain` 70, `autumn` 69, `petal` 68, `half` 67, `hat` 66, `base` 63, `strap` 62, `feet` 62, `bear` 61, `rainbow` 61, `insole` 61, `of` 60, `⟨satzbau:menge-vor-nomen⟩` 60, `tea` 59, `plush` 59, `one` 58, `background` 56, `electric` 56, `rice` 56, `suit` 55
 

@@ -91,7 +91,7 @@ Jeder Tag: messen → ändern → nachmessen → hier abhaken. Was liegen bleibt
 
 | Tag | Punkt | Messbar fertig, wenn … |
 |---|---|---|
-| 13.10. | **Abendkleid-Seiten** (Sirène, Aurora) prüfen: Preis, Grössentabelle, Lieferzeit, Bilder, Bewertungen, Versandsatz; Kaufweg am Handy (`tools/kaufweg_handy.mjs`) | Je Seite ein Ursachenbefund mit Zahl |
+| 13.10. ✅ (12.10., `dropship/KAUFSTRECKE-ABENDKLEIDER-2026-10-12.md`: 0 Sitzungen seit 05.10., 104 TikTok → 0 Korb, Sirène nicht im Google-Index, 0 Impressionen) | **Abendkleid-Seiten** (Sirène, Aurora) prüfen: Preis, Grössentabelle, Lieferzeit, Bilder, Bewertungen, Versandsatz; Kaufweg am Handy (`tools/kaufweg_handy.mjs`) | Je Seite ein Ursachenbefund mit Zahl |
 | 14.10. | **189 Produktsitzungen ohne Herkunft prüfen:** echte Menschen oder Vorschau-Bots? (Gerät, Land, Referrer, Spitze 01./02.10.) | Befund mit Zahl; bei Bots: Wächter statt Anzeige |
 | 15.10. | Änderung an den zwei Seiten (Grössenhilfe, Lieferzeit, echte Bewertungen, Bilder) — live bei 390 px geprüft | Warenkorb-Quote der Seiten ≥ 3 % |
 | 16.–20.10. | Täglich nachmessen: `python3 tools/webseite_bilanz.py` + Zeile KAUFWILLE in der Keepalive-Meldung | Warenkörbe je Tag gegen den Vortag |

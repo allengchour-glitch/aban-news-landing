@@ -82,11 +82,44 @@ def laender(txt):
 
 
 def trifft_ch(txt):
-    """02.10.2026: 1'771 «Missing shipping info … [LI]» liessen die Ampel von 723 auf 2'568 springen — der Shop liefert seit
-    22.09. bewusst nur in die Schweiz (Liechtenstein gestrichen). Eine Meldung nur für andere Länder blockiert die Schweizer
-    Gratis-Einträge NICHT → eigene Liste «nur Ausland», nicht in den Blockern. Ohne Länderangabe zählt sie (vorsichtig) mit."""
+    """02.10.2026: 1'771 «Missing shipping info … [LI]» liessen die Ampel von 723 auf 2'568 springen — der Shop lieferte damals
+    nur in die Schweiz. Eine Meldung nur für andere Länder blockiert die Schweizer Gratis-Einträge NICHT → eigene Liste
+    «nur Ausland», nicht in den Blockern. Ohne Länderangabe zählt sie (vorsichtig) mit.
+    12.10.2026: Seit 09.10. ist Liechtenstein wieder Lieferland (Markt «Switzerland» = CH + LI). Die Blocker-Zahl bleibt die
+    Schweizer Zahl; Meldungen für ein ANDERES Lieferland trennt teile_ausland() ab und weist sie eigens aus."""
     l = laender(txt)
     return not l or "CH" in l
+
+
+def lieferlaender():
+    """Lieferländer GEMESSEN aus Shopify Markets (aktive Märkte, Länder-Regionen) — nie aus einer Notiz.
+    ANLASS 12.10.2026: Der Bericht schrieb «Shop liefert nur CH» (Stand 22.09.) und riet, Liechtenstein im Merchant Center
+    zu entfernen — seit 09.10. ist LI aber Lieferland. 28'226 Produkte trugen «Missing shipping info … [LI]».
+    → set der Ländercodes, None wenn nicht messbar (dann bleibt alles «nur Ausland» wie bisher)."""
+    try:
+        d = gql("{ markets(first:50){ nodes{ status conditions{ regionsCondition{ regions(first:250){ nodes{ "
+                "... on MarketRegionCountry{ code } } } } } } } }")
+        out = set()
+        for m in d["data"]["markets"]["nodes"]:
+            if m.get("status") != "ACTIVE":
+                continue
+            for r in ((((m.get("conditions") or {}).get("regionsCondition") or {}).get("regions") or {}).get("nodes") or []):
+                if r.get("code"):
+                    out.add(r["code"])
+        return out or None
+    except Exception:
+        return None
+
+
+def teile_ausland(nur_ausland, liefer):
+    """«nur Ausland» (Schlüssel «Klasse [LI]») trennen: → (Lieferland ohne CH, Rest). Ohne gemessene Lieferländer: ({}, alles)."""
+    andere_liefer = set(liefer or ()) - {"CH"}
+    lief, rest = {}, {}
+    for k, v in (nur_ausland or {}).items():
+        m = re.search(r"\[([A-Z, ]+)\]\s*$", k)
+        cc = {x.strip() for x in m.group(1).split(",")} if m else set()
+        (lief if cc & andere_liefer else rest)[k] = v
+    return lief, rest
 
 
 def bericht_schreiben(stand):
@@ -100,9 +133,20 @@ def bericht_schreiben(stand):
             f.write(f"| {k} | {v} | {stand['ohne_onlineStoreUrl'].get(k, 0)} | {(stand.get('ziel_leer') or {}).get(k, '–')} |\n")
         f.write("\nZiel «[]» = die App nennt kein betroffenes Ziel («… in [] [CH]» statt «in [Free_listings,Shopping_ads]»). "
                 "Was das bei Google heisst, ist UNBELEGT (keine Doku gefunden, 08.10.) — Wahrheit = Status im Merchant Center.\n")
-        if stand.get('nur_ausland'):
-            f.write("\n## Nur andere Länder (blockiert die Schweiz NICHT — Shop liefert nur CH)\n\n"
-                    + "\n".join(f"- {k}: {v}" for k, v in stand["nur_ausland"].items())
+        liefer = stand.get("lieferlaender")
+        lief, rest = teile_ausland(stand.get("nur_ausland"), liefer)
+        if lief:
+            f.write(f"\n## Weiteres Lieferland betroffen (Lieferländer gemessen in Shopify Markets: {', '.join(liefer)})\n\n"
+                    "Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.\n\n"
+                    + "\n".join(f"- {k}: {v}" for k, v in lief.items())
+                    + "\n\n«Missing shipping info … [LI]»: In Shopify gibt es den Tarif (General profile, Zone «Liechtenstein» "
+                      "CHF 14.90, seit 09.10.), Google hat ihn nicht übernommen. Abhilfe (Betreiber, UNBELEGT welcher Klick "
+                      "reicht): App «Google & YouTube» → Einstellungen → Versand neu importieren, sonst im Merchant Center "
+                      "einen Versandservice für Liechtenstein (CHF 14.90) anlegen. NICHT das Land entfernen — LI ist Lieferland. "
+                      "Wirkung = diese Zahl beim nächsten Scan.\n")
+        if rest:
+            f.write("\n## Nur andere Länder (kein Lieferland — blockiert keinen Verkauf)\n\n"
+                    + "\n".join(f"- {k}: {v}" for k, v in rest.items())
                     + "\n\nAbhilfe (Betreiber, optional): im Google Merchant Center unter Zielländer/Versand das Land entfernen.\n")
         if stand.get('nur_personalisiert'):
             f.write("\n## Nur personalisierte Werbung (blockiert Gratis-Einträge NICHT — Targeting-Regel, siehe Kopf)\n\n"
@@ -124,6 +168,15 @@ def main():
         ok = sum(trifft_ch(t) == soll for t, soll in faelle)
         for t, soll in faelle:
             print(f"{'✓' if trifft_ch(t) == soll else '✗'} {t} → {trifft_ch(t)}")
+        aus = {"Missing shipping info in some countries [LI]": 5, "Alcoholic beverages [LI]": 1, "Missing shipping info [DE]": 3}
+        teil = [(teile_ausland(aus, {"CH", "LI"}), ({"Missing shipping info in some countries [LI]": 5, "Alcoholic beverages [LI]": 1},
+                                                   {"Missing shipping info [DE]": 3})),
+                (teile_ausland(aus, {"CH"}), ({}, aus)),
+                (teile_ausland(aus, None), ({}, aus))]          # nicht messbar → wie bisher alles «nur Ausland»
+        for i, (ist, soll) in enumerate(teil):
+            print(f"{'✓' if ist == soll else '✗'} teile_ausland Fall {i + 1} → Lieferland {list(ist[0])}")
+        ok += sum(ist == soll for ist, soll in teil)
+        faelle = faelle + teil
         pers = [("Personalized advertising: Sexual interests in [Free_listings,Shopping_ads] [CH].", True),
                 ("Personalized advertising: personal hardships in [Free_listings] [CH].", True),
                 ("Restricted adult content in [Free_listings,Shopping_ads] [CH].", False),   # bleibt Blocker
@@ -142,6 +195,9 @@ def main():
             st["ohne_onlineStoreUrl"].pop(k, None)
         st["nur_personalisiert"] = dict(sorted(np_.items(), key=lambda x: -x[1]))
         st["blocker"] = sum(st["klassen"].values())
+        ll = lieferlaender() if TOK else None
+        if ll:
+            st["lieferlaender"] = sorted(ll)
         json.dump(st, open(STAND, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
         bericht_schreiben(st)
         print(f"UMGERECHNET: {st['blocker']} Free-Listings-Blocker · nur personalisiert {sum(st['nur_personalisiert'].values())}")
@@ -225,6 +281,7 @@ def main():
              "nur_ausland": dict(sorted(ausland.items(), key=lambda x: -x[1])),
              "nur_personalisiert": dict(sorted(personal.items(), key=lambda x: -x[1])),
              "ziel_leer": ziel_leer,
+             "lieferlaender": sorted(lieferlaender() or []) or None,   # gemessen (Markets), für teile_ausland()
              "handles_personalisiert": handles_pers,          # google_bildtausch_bilanz liest sie mit (Bildsignal)
              "dauer_s": round(time.time() - t0)}
     json.dump(stand, open(STAND, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
