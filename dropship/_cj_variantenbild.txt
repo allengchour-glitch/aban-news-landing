@@ -6809,3 +6809,6 @@ gid://shopify/Product/15461980471681	zugeordnet	36	Cartoon Baby-Sandalen mit wei
 gid://shopify/Product/15461980537217	zugeordnet	30	Martin Black Bright Skin Boots
 gid://shopify/Product/15458624307585	keine-passende-sku
 gid://shopify/Product/15462220136833	zugeordnet	99	Langarm-Sweater · Damen
+gid://shopify/Product/15462220169601	zugeordnet	5	Retro-Cardigan · Damen
+gid://shopify/Product/15462220202369	zugeordnet	12	Texturierte Strickjacke
+gid://shopify/Product/15462220267905	zugeordnet	24	Wollfutter-Mantel
