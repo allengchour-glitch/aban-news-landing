@@ -6872,3 +6872,5 @@ gid://shopify/Product/15463691616641	zugeordnet	9	Fatima Nachtlicht aus Holz
 gid://shopify/Product/15463691682177	bild-urls-tot
 gid://shopify/Product/15463691780481	zugeordnet	6	Stoff-Tissuebox aus Leinen
 gid://shopify/Product/15463727759745	zugeordnet	4	Yulu Hanf Strandtuch · 70 × 140 cm
+gid://shopify/Product/15463728087425	zugeordnet	8	Rosenstrauss Engel-Geschenk (ewig haltbar)
+gid://shopify/Product/15463782056321	zugeordnet	20	Leichtes Sommer-Top
