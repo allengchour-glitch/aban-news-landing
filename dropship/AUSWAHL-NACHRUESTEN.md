@@ -1,39 +1,35 @@
-# Auswahl nachrüsten — scharf 2026-10-12 17:35 UTC
+# Auswahl nachrüsten — scharf 2026-10-12 19:15 UTC
 
-umgebaut: 110 · MANUELL: 33 · Fehler: 0
+umgebaut: 66 · MANUELL: 29 · Fehler: 0
 
 ## MANUELL (Grund)
 
-- Atmungsaktive Sneaker mit Drehverschluss (`atmungsaktive-sneaker-mit-drehverschluss-622400`): hat inzwischen mehrere Varianten
-- Langlebiger Quadrokopter mit optischem Fluss (`langlebiger-quadrokopter-mit-optischem-fluss-621900`): KI-Übersetzung fehlt/abgelehnt: ['P18 Black Double Lens', 'P18 Orange Double Lens', 'P18 Black Can Be Vertical Shot', 'P18 Orange Vertical Shot'] | ['Single Electric', 'Double Electric', 'Three Batteries']
-- Spiegelndes Lipgloss (`spiegelndes-lipgloss-611400`): KI-Übersetzung fehlt/abgelehnt: ['Streamer 01FENTYGLOW', 'Streamer 02FUY', 'Streamer 04SweetMouth', 'Streamer 05HOTCHOCOLIT']
-- Garnfärbenes Baumwoll-Bettwäsche-Set (`garnfarbenes-baumwoll-bettwasche-set-602800`): KI-Übersetzung fehlt/abgelehnt: ['1.5 1.8m Flat Sheet Set', '1.5m Fitted Sheet Set', '1.8m Fitted Sheet Set', '2.0m Fitted Sheet Set']
-- Elegante Quarz-Armbanduhr für Damen (`elegante-quarz-armbanduhr-fur-damen-635300`): KI-Übersetzung fehlt/abgelehnt: ['Rose Pink', 'Steel Belt Rose White', 'Rose Green', 'White']
-- Faltbarer Quadrocopter mit Touch-Steuerung (`faltbarer-quadrocopter-mit-touch-steuerung-622000`): KI-Übersetzung fehlt/abgelehnt: ['M33 4K Single Battery', 'M33 4K Dual Battery', 'M33 4K Triple Battery', 'M33 Max 6K Single Battery']
-- Eleganter Print-Dress für Plus-Grösse, Taille betonend, ohne Ärmel (`eleganter-print-dress-fur-plus-grosse-taille-b-628800`): KI-Übersetzung fehlt/abgelehnt: ['L', 'XL', '2XL', '3XL']
-- TPE-Falt-Yogamatte, verstärkt und rutschfest (`tpe-falt-yogamatte-verstarkt-und-rutschfest-624800`): KI-Übersetzung fehlt/abgelehnt: ['Beige', 'Mint Green', 'Coral Pink', 'Peace Blue']
-- Tragbarer Schminktischspiegel (`tragbarer-schminktischspiegel-600700`): KI-Übersetzung fehlt/abgelehnt: ['Black', 'White', 'Nordic Green', 'Brown Tea']
-- Kraftbänder (`kraftbander-614300`): Preisspreizung > 4× (0.66–3.75)
-- Edelstahl-Armband «Cœur» · Herz, Gold (`edelstahl-armband-coeur-herz-gold`): SKU ist nicht mehr CJ-<pid> ('cj-CJSL2935523') — schon umgestellt?
-- Fahrradhelm mit Schutzbrille und Licht (`fahrradhelm-mit-schutzbrille-und-licht-215296`): KI-Übersetzung fehlt/abgelehnt: ['Orange Blue Black', 'Red, White And Black', 'White', 'Blue, White And Black']
-- Plüschtier mit Geräusch für Hunde (`pluschtier-mit-gerausch-fur-hunde-603800`): KI-Übersetzung fehlt/abgelehnt: ['P2310301A Pendulum Hammer', 'P2310301AB Rabbit Pinch Cap', '2pcs']
-- Multifunktionaler Pflegepinsel für Hals & Körper (`multifunktionaler-pflegepinsel-fur-hals-korper-618100`): KI-Übersetzung fehlt/abgelehnt: ['Rose Gold Plating Handle', 'Black Plastic Handle', 'Light Gold Plating Handle', 'Rose Gold Dark Brown']
-- Fahrradhelm mit Licht für Sommer (`fahrradhelm-mit-licht-fur-sommer-128192`): KI-Übersetzung fehlt/abgelehnt: ['Bright red', 'Bright titanium', 'Bright white']
-- Kartenhalter aus Carbonfaser (`kartenhalter-aus-carbonfaser-600100`): KI-Übersetzung fehlt/abgelehnt: ['Carbon Blue', 'Carbon Orange', 'Carbon Green', 'Plain Black And Red']
-- 10-teiliges Badset aus Baumwolle (`10-teiliges-badset-aus-baumwolle-620600`): Titel verspricht «10-teiliges», CJ führt 4 Einzelvarianten → Titel prüfen (Mensch)
-- Schmuckkasten (`schmuckkasten-618500`): Ausführung-Auswahl, aber Variantenbilder nicht unterscheidbar
-- Baseball-Cap «L.A.» · Hellblau (`baseball-cap-l-a-hellblau`): SKU ist nicht mehr CJ-<pid> ('cj-CJMZ2930713') — schon umgestellt?
-- 3-Kamera-Drohne für Luftaufnahmen (`3-kamera-drohne-fur-luftaufnahmen-608100`): KI-Übersetzung fehlt/abgelehnt: ['Single Electric Version', 'Dual Electric Version', 'Three Battery Versions']
-- Keramik-Schatzbecken mit Handmalerei (`keramik-schatzbecken-mit-handmalerei-616800`): KI-Übersetzung fehlt/abgelehnt: ['Crane Painting A', 'The Flowers Of War A', 'Attract Wealth A', 'Crane Painting B']
-- Mehrzweck-Hundeleine mit Frosch Schnalle (`mehrzweck-hundeleine-mit-frosch-schnalle-636500`): Lesefehler: KI-Antwort unvollständig (2 statt 1 Listen)
-- Kinder Fahrradhelm (`kinder-fahrradhelm-111424`): KI-Übersetzung fehlt/abgelehnt: ['White', 'Blue', 'Red', 'Pink']
-- Gürtel Herrenuhr – Schlicht & Business-tauglich (`gurtel-herrenuhr-schlicht-business-tauglich-772160`): KI-Übersetzung fehlt/abgelehnt: ['Rose shell black noodles', 'All black rose needles', 'Silver shell black surface', 'All black and silver']
-- Retro Magnetarmband aus rotem Bronze (`retro-magnetarmband-aus-rotem-bronze-628600`): KI-Übersetzung fehlt/abgelehnt: ['Red Bronze', 'Red Bronze set', 'Bronze Oval Turquoise', '43SSJCRed']
-- Weiche Kuschelwurst für Hunde (`weiche-kuschelwurst-fur-hunde-618400`): KI-Übersetzung fehlt/abgelehnt: ['Dog Single Pack', 'Dog  2PCS', 'Hot Dog  Single Pack', 'Hot Dog 2PCS']
-- Leuchtender Katzenpfoten-Anhänger mit Stern & Mond (`leuchtender-katzenpfoten-anhanger-mit-stern-mo-613500`): Modell-Auswahl, aber Variantenbilder nicht unterscheidbar
-- Faltbares UAV-Mesh-Drohne für Luftaufnahmen (`faltbares-uav-mesh-drohne-fur-luftaufnahmen-606700`): KI-Übersetzung fehlt/abgelehnt: ['No Aerial Photography', '6K Aerial Photography'] | ['Single Electric Package', 'Dual Power Package', 'Triple Electric Package', 'Four electric package']
-- Mediavalles Kupferarmband (`mediavalles-kupferarmband-638600`): Titel nennt nur «Armband» (Ausführung: ['4-Stil', 'Armband', 'Set']) → Titel prüfen (Mensch)
-- Duschkopf mit Wassersparfunktion und Ventilator (`duschkopf-mit-wassersparfunktion-und-ventilato-030400`): KI-Übersetzung fehlt/abgelehnt: ['A Pack', 'B Pack', 'C Pack', 'Set']
-- Sport-Smartwatch mit Temperatur- und Pulsmessung (`sport-smartwatch-mit-temperatur-und-pulsmessun-353536`): KI-Übersetzung fehlt/abgelehnt: ['Vinyl', 'Silver Case Vinyl', 'Retro Brown Black', 'Retro Brown Silver']
-- Männertasche für Laptop und Sport (`mannertasche-fur-laptop-und-sport-603000`): KI-Übersetzung fehlt/abgelehnt: ['Plaid Black', 'Elite Black']
-- Haarspange Herz-Keks (`schokoladen-ohrring-haarstecker-609700`): Titel nennt nur «Herz» (Form: ['Quadratisch', 'Rund', 'Fünf Sterne', 'Herz']) → Titel prüfen (Mensch)
+- Reflektierendes Hunde-Brustgeschirr mit Leine (`reflektierendes-hunde-brustgeschirr-mit-leine-050816`): KI-Übersetzung fehlt/abgelehnt: ['Yellow', 'Orange', 'Red', 'Black']
+- Gedruckter Multifunktioneller Strick Dehnbarer Sofa-Bett-Bezug (`gedruckter-multifunktioneller-strick-dehnbarer-636900`): KI-Übersetzung fehlt/abgelehnt: ['Style', 'Warm Sun', 'Colorful', 'Elegant Plaid']
+- Barockperlen-Ohrhänger-Set (`barockperlen-ohrhanger-set-2621f7`): KI-Übersetzung fehlt/abgelehnt: ['Necklace gold', 'Silver set', 'Necklace silver', 'Studs']
+- Studenten-Becher mit Sprühfunktion, 580 ml (`studenten-becher-mit-spruhfunktion-580-ml-614200`): KI-Übersetzung fehlt/abgelehnt: ['Jelly Galaxy', 'Cloud Diary', 'Sweet Dream Switch']
+- Retro-Leder-Gürtelbag (`retro-leder-gurtelbag-615400`): KI-Übersetzung fehlt/abgelehnt: ['1033 Brown', '1033 Black Litchi Pattern', '1033 Dark Brown', '1033 Light Brown']
+- Männliche Manschettenknöpfe mit Schale (`mannliche-manschettenknopfe-mit-schale-123904`): KI-Übersetzung fehlt/abgelehnt: ['Blue Fiber', 'Blue', 'Black Gold', 'Black Gold Plated']
+- Kamera-Drohne mit Hindernis-Vermeidung (`kamera-drohne-mit-hindernis-vermeidung-622200`): KI-Übersetzung fehlt/abgelehnt: ['Black And Yellow Single Camera', 'Black And Cyan Single Camera', 'Black And Yellow Dual Camera', 'Black And Cyan Dual Camera'] | ['Single Battery', 'Dual Battery', 'Three Batteries']
+- Haarstyling-Kamm für glatte Haare (`haarstyling-kamm-fur-glatte-haare-943232`): EU-Stecker teurer (6.48 vs. 5.59) — Preis/EK müssten mit → Mensch
+- Kabelloses Ansteckmikrofon mit Ladebox (`kabelloses-ansteckmikrofon-mit-ladebox-016064`): KI-Übersetzung fehlt/abgelehnt: ['One To One Black', 'One Drag Two Black', 'One To One Yellow', 'One Drag Two Yellow'] | ['Type C Interface', 'Lighting Interface', 'Universal']
+- DIY-Anhänger für Armbänder im Resort-Stil (`diy-anhanger-fur-armbander-im-resort-stil-630400`): KI-Übersetzung fehlt/abgelehnt: ['Maritime Travel', 'Sailboat', 'Holiday Cruise Ship', 'Lighthouse']
+- USB-Joystick-Steuerungsset (`usb-joystick-steuerungsset-aee55a`): Farbe-Auswahl, aber Variantenbilder nicht unterscheidbar
+- Gänsedaunenkissen – Füllung für Kissenhüllen (`gansedaunenkissen-fullung-fur-kissenhullen-520f50`): CJ-variantSku passt nicht zum Bestell-Automaten: 'CJJJJFZT00142-White-45x45cm\t'
+- Boho-Stil Vorhang (`boho-stil-vorhang-610600`): Ausführung-Auswahl, aber Variantenbilder nicht unterscheidbar
+- Velours-Decken für Baby (`velours-decken-fur-baby-602700`): KI-Übersetzung fehlt/abgelehnt: ['Paris Tour', 'Fruit Banquet', 'Cheering Duck', 'Jurassic']
+- Keramik-Kaffeetasse mit Buchmotiv (`keramik-kaffeetasse-mit-buchmotiv-616700`): KI-Übersetzung fehlt/abgelehnt: ['Coffee  Green', 'Coffee Rice', 'Coffee Purple', 'Coffee Blue']
+- Bluetooth Grillthermometer-Fühler (`bluetooth-grillthermometer-fuhler-553f4f`): Preisspreizung > 4× (2.0–153.23)
+- Lenkrad-Zierleiste für Challenger (`lenkrad-zierleiste-fur-challenger-617900`): KI-Übersetzung fehlt/abgelehnt: ['Carbon Fiber', 'Chinese Red', 'Stoving Varnish Black', 'Carbon Fiber Red']
+- Rücksitz-Organizer für Auto (`rucksitz-organizer-fur-auto-154a34`): KI-Übersetzung fehlt/abgelehnt: ['Black 2PCS', 'Black']
+- Handgefertigter Doppler zur Fetalbeat-Messung (`handgefertigter-doppler-zur-fetalbeat-messung-20fd87`): KI-Übersetzung fehlt/abgelehnt: ['Pink', '02.pink', 'Blue', 'White']
+- Sicherheitsgurt-Abdeckung aus Leder (`sicherheitsgurt-abdeckung-aus-leder-764480`): KI-Übersetzung fehlt/abgelehnt: ['Leather Black Thread', 'Leather Red Line', 'Leather Blue Line', 'Carbon Gray Suede Black Thread']
+- Phosphor-Bronze Folk-Akustikgitarrensaiten (`phosphor-bronze-folk-akustikgitarrensaiten-b110d4`): KI-Übersetzung fehlt/abgelehnt: ['Medium 011x052', 'Light 010x047', 'Heavy 012 x053']
+- Kopfstützen- und Lordosenstützkissen fürs Auto (`kopfstutzen-und-lordosenstutzkissen-furs-auto-403456`): Titel nennt nur «Kopfstütze» (Ausführung: ['Kopfstütze', 'Lordosenstütze', 'Set']) → Titel prüfen (Mensch)
+- Nackenkissen aus Memory-Schaum für das Auto (`nackenkissen-aus-memory-schaum-fur-das-auto-610900`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- Atmungsaktiver Vierjahres-Sitzkissen aus Nappa-Leder (`atmungsaktiver-vierjahres-sitzkissen-aus-nappa-618300`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- Sitzbezüge aus Voll-Kunstleder mit Rautensteppung – 9-teiliges Set (`all-leather-diamond-quilted-sitzbezuge-9-teili-616100`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b) — HTTP 429: {"error":{"message":"Rate limit reached
+- 5-in-1 tragbares Solar-Notfallradio (`5-in-1-tragbares-solarlaufwerk-mit-radio-63ab0e`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Automatischer Schuhüberzugsspender (`automatischer-schuhuberzugsspender-065033`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Auto-Sticker Zebra-Muster (`auto-sticker-zebra-muster-615300`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Elektrischer Nacken- und Schultermassage-Schal (`elektrischer-nacken-und-schultermassage-schal-460544`): Stecker-Teil nicht in jedem Schlüssel genau einmal

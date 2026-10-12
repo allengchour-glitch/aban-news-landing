@@ -1072,3 +1072,5 @@
 16613828428167	Grösse:2:2	2026-10-12	organizer-fur-autositz-ruckenlehne-718720
 16613827969415	Modell:3:3	2026-10-12	quarz-uhrwerk-0a511a
 16613802148231	Farbe:2:2	2026-10-12	solar-multifunktionsradio-mit-handkurbel-129600
+16613802115463	Farbe:3:3	2026-10-12	gestreifter-auto-aufkleber-628400
+16613800575367	Modell:16:16	2026-10-12	katzenkopfstutzkissen-fur-den-autositz-117e15

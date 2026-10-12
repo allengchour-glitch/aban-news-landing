@@ -7264,3 +7264,10 @@ kubb-spielset-aus-holz-956801	1990723516075921410	0	-	KEINE CH-Option → DRAFT	
 fussballtor-fur-kinder-mit-zielmatte-und-ball-668546	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 faltbarer-fussball-rebounder-100x100-cm-641666	1990723038329294850	0	-	KEINE CH-Option → DRAFT	landeseite
 rutenstander-fur-16-angelruten-schwarz-580161	1990724825189502977	0	-	KEINE CH-Option → DRAFT	landeseite
+fussballtor-122-x-81-cm-stahl-weiss-927746	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+leitergolf-aus-holz-012545	1990723529443168257	0	-	KEINE CH-Option → DRAFT	landeseite
+softball-rebounder-88x79x137-cm-stahl-670018	1990724530155147265	0	-	KEINE CH-Option → DRAFT	landeseite
+tischfussball-balle-10-stk-32-mm-abs-801666	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+tischfussball-spieler-set-22-stk-308546	1990724286468902913	0	-	KEINE CH-Option → DRAFT	landeseite
+wand-fahrradhalter-2er-set-verzinkter-stahl-262721	1990701866886418433	0	-	KEINE CH-Option → DRAFT	landeseite
+elektronisches-dartboard-mit-darts-429057	1990724605483470850	0	-	KEINE CH-Option → DRAFT	landeseite
