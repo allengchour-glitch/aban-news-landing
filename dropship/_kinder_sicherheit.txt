@@ -1597,3 +1597,49 @@ gid://shopify/Product/16613802049927	a	toddler
 gid://shopify/Product/16613828362631	a	toddler
 gid://shopify/Product/16613829542279	a	toddler
 gid://shopify/Product/16613835637127	a	toddler
+gid://shopify/Product/16614565544327	w	Kleinteile	Holz 3D-Puzzle – Camper-Rot
+gid://shopify/Product/16614566199687	w	Kleinteile	Kleine Bausteine für Kinder – 50–100 Stück
+gid://shopify/Product/16614566330759	w	Kleinteile	3D Holz-Puzzle mit Musikfunktion
+gid://shopify/Product/16614566494599	w	Kleinteile	Bauklötze für Kinder 50-100 Stück
+gid://shopify/Product/16614566592903	w	Kleinteile	Kleine Bausteine City Building Set
+gid://shopify/Product/16614567510407	w	Kleinteile	Bausteinsatz 1008 Stück – Kunststoffspielzeug
+gid://shopify/Product/16614567608711	w	Kleinteile	Holz 3D Interaktives Puzzlemodell
+gid://shopify/Product/16614567739783	w	Kleinteile	Kleine ABS-Teile für Bau- und Experimentierspiel
+gid://shopify/Product/16614828212615	w	Kleinteile	Bauklötze mit drehender LED-Weihnachtsbaum-Musikbox
+gid://shopify/Product/16614829752711	w	Kleinteile	DIY Zelt-Bausatz für Kinder, 85 Teile
+gid://shopify/Product/16614830342535	w	Kleinteile	Holzbaustein-Set 100 Stück
+gid://shopify/Product/16614830932359	w	Kleinteile	Holzbausteine gestapelt – 300 Stück
+gid://shopify/Product/16614831522183	w	Magnete	Magnetbausteine mit Farbfenstern
+gid://shopify/Product/16614832767367	w	Kleinteile	Holzperlen-Puzzle zum Auffädeln
+gid://shopify/Product/16614833717639	w	Kleinteile	Holz-Bauklotz mit drehbarem Gesichtswürfel
+gid://shopify/Product/16614834766215	w	Kleinteile	Weihnachts-Bausteine Buch – Weihnachtsmann Modell
+gid://shopify/Product/16614835618183	w	Kleinteile	Bauklotz-Set Weihnachts-Hornball 800 Teile
+gid://shopify/Product/16614836142471	w	Kleinteile	Holz-Bausatz zum Selberbauen
+gid://shopify/Product/16614838075783	w	Kleinteile	Holz-Weihnachtsbaum-Puzzle für Kinder
+gid://shopify/Product/16614839189895	w	Kleinteile	Feuerwehrfahrzeug Baustein-Set
+gid://shopify/Product/16614840762759	w	Kleinteile	Bauklötze-Set 800-Teile für Kinder
+gid://shopify/Product/16614842761607	w	Kleinteile	Bauklotz-Set Rainbow Road – 230 Stück
+gid://shopify/Product/16614844432775	w	Magnete	Magnetisches Bauklötzchen-Set für Mädchen
+gid://shopify/Product/16614845055367	w	Magnete	Magnetisches Holzpuzzle für Kinder
+gid://shopify/Product/16614845579655	w	Kleinteile	Mini-Klappfahrrad zum Zusammenbauen – Spielzeug
+gid://shopify/Product/16614846202247	w	Kleinteile	Weihnachts-Bilderrahmen Bausteine
+gid://shopify/Product/16614846890375	w	Kleinteile	3D-Holzpuzzle Kugel – Wissenschaftliches Bauspielzeug
+gid://shopify/Product/16614847381895	w	Kleinteile	Holzpuzzle für Erwachsene – 1000 Teile
+gid://shopify/Product/16615662715271	w	Magnete	Magnetische Bausteine für Kinder – Grosser Baukasten
+gid://shopify/Product/16615662780807	w	Kleinteile	Bausteine-Set Giraffe
+gid://shopify/Product/16615662813575	w	Kleinteile	Lernbausteine aus Holz – 162 Teile im Eimer
+gid://shopify/Product/16615662911879	w	Kleinteile	Holz-Eisenbahn-Puzzle für Kinder
+gid://shopify/Product/16615663042951	w	Kleinteile	Märchenschloss Baustein-Set
+gid://shopify/Product/16615663206791	w	Kleinteile	Elektrische Bausteine – Steckpuzzle für Kinder
+gid://shopify/Product/16615663436167	w	Kleinteile	Kreatives Blumen-Bausteinmodell Phalaenopsis
+gid://shopify/Product/16615663698311	w	Kleinteile	Holz-Puzzle Teleskop Astronomie
+gid://shopify/Product/16615664451975	w	Kleinteile	Bausteine für Kindergärten
+gid://shopify/Product/16615665598855	w	Kleinteile	Belagerungswagen-Bausatz für historische Schlachten
+gid://shopify/Product/16613801787783	a	kids
+gid://shopify/Product/16613835276679	a	kids
+gid://shopify/Product/16613851398535	a	toddler
+gid://shopify/Product/16615287554439	a	kids
+gid://shopify/Product/16615684571527	a	toddler
+gid://shopify/Product/16615708197255	a	toddler
+gid://shopify/Product/16615770030471	a	toddler
+gid://shopify/Product/16615771537799	a	toddler
