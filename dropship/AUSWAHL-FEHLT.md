@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-12 18:34 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-12 20:15 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1571 · **1504 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1283, teilweise: 177, keine: 44; Preisspanne > 2×: 166) · 1 CJ-Variante: 65 · ohne Antwort: 2
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1570 · **1503 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1283, teilweise: 176, keine: 44; Preisspanne > 2×: 166) · 1 CJ-Variante: 65 · ohne Antwort: 2
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -160,7 +160,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Blau-weisse Patchwork Kissenhülle (`blau-weisse-patchwork-kissenhulle-666240`) | 20 | 20 | 6.93–10.88 | 23.90 | Shell Medium-45x45 pillowcase, Shell Medium-45x45 pillowcaseandcore, Shell Medium-50x50 pillowcase, Shell Medium-50x50 pillowcaseandedium |
 | Brustgeschirr für mittelgrosse bis grosse Hunde (`brustgeschirr-fur-mittelgrosse-bis-grosse-hund-156ea8`) | 20 | 0 | 6.04–8.9 | 25.90 | Red-S, Brown-XS, Sky Blue-XL, Brown-M |
 | Holzboot-Bausatz "Reibungslose Fahrt" (`holzboot-bausatz-reibungslose-fahrt-587392`) | 20 | 20 | 14.84–36.8 | 53.90 | Toy1, Toy2, Toy3, Toy4 |
-| Verdunklungsvorhang Modern Minimalistisch (`verdunklungsvorhang-modern-minimalistisch-842048`) | 20 | 10 | 3.35–5.31 | 22.90 | Dark Gray-100x130 Punch 1PCs, Dark Gray-100x200 Punch 1PCs, Dark Gray-100x250 Punch 1PCs, Dark Gray-132x160 Punch 1PCs |
 | Reflektierendes Hunde-Geschirr mit Leine (`reflektierendes-hunde-geschirr-mit-leine-600900`) | 20 | 20 | 3.05–3.05 | 22.90 | Orange-S, Orange-M, Orange-L, Orange-XL |
 | Mehrfarbiger Falttürvorhang (`mehrfarbiger-faltturvorhang-619600`) | 19 | 16 | 2.94–13.27 | 47.90 | White-180x180cm, White-180x200cm, Pink-180x180cm, Pink-180x200cm |
 | Kreuzbit-Schraubendreher-Set mit starkem Magnet (`kreuzbit-schraubendreher-set-mit-starkem-magne-611300`) | 19 | 8 | 0.64–7.46 | 14.90 | 50mmxPH2 1PC-50mm-635mm, 65mmxPH2 1PC-65MM-635mm, 75mmxPH2 1PC-75mm-635mm, 100mmxPH2 1PC-100mm-635mm |

@@ -37,6 +37,26 @@ SPERR_TITEL = re.compile(r"kostüm|kostuem|perücke|verkleidung|fasnacht|hallowe
                          # 10.10.: Fremdmarke als Ware (Harrods-Logo auf der Tasse, seit 24.09. bekannt, war in «bis CHF 30»)
                          r"harrods|burberry|starbucks|chanel|gucci|louis vuitton|disney|hello kitty|sanrio|pok[eé]mon|labubu", re.I)
 
+# 12.10.2026: Warenarten des Geschenke-Einstiegs — geteilt von «alle», «unter50», «unter100», «preishits».
+ALLE_ARTEN = [
+                 ("schmuck", r"ohrring|halskette|kette mit|anhänger|armband(?!uhr)|armreif|\bring\b|schmuckset"),
+                 ("uhr", r"damenuhr|damen-uhr|uhr für damen|herrenuhr|herren-?armbanduhr|automatikuhr|chronograph|herren.{0,20}uhr"),
+                 ("tasche", r"handtasche|umhängetasche|clutch|schultertasche|tote ?bag|abendtasche|reisetasche|kulturbeutel"),
+                 ("leder", r"geldbörse|portemonnaie|brieftasche|kartenetui|herrengürtel|ledergürtel|manschettenknöpfe"),
+                 ("kuschel", r"kuscheldecke|heizdecke|wärmekissen|fleecedecke|wolldecke|sofadecke|handwärmer"),
+                 ("duft", r"duftkerze|kerze|diffuser|aroma|duftstäbchen|kerzenwärmer"),
+                 ("beauty", r"make-?up-?(pinsel|set)|schminkkoffer|kosmetiktasche|haarstyler|lockenstab|glätteisen|"
+                            r"warmluftbürste|schminkspiegel"),
+                 ("tech", r"powerbank|kopfhörer|ohrhörer|bluetooth-?lautsprecher|ladestation|sternenprojektor|mini-?beamer|drohne"),
+                 ("bar", r"whisky|flachmann|cocktail|bar-?set|weinset|bierkrug"),
+                 ("tasse", r"tasse(?!l)|thermobecher|teekanne|teeset"),
+                 ("deko", r"weihnachtsfigur|weihnachtskugel|weihnachtsdeko|schneekugel|lichterkette|nussknacker|adventskranz"),
+                 ("schal", r"\bschal\b|-schal\b|halstuch|seidentuch|wintermütze|strickmütze|lederhandschuhe|winterhandschuhe"),
+                 ("plüsch", r"plüschtier|kuscheltier|stofftier|teddy"),
+                 ("bauen", r"bausteine|klemmbausteine|baukasten|3d-?puzzle"),
+                 ("spiel", r"brettspiel|kartenspiel|puzzle|würfelspiel"),
+]
+
 WELTEN = {
     "sie": {"handle": "geschenke-fuer-sie", "nicht": re.compile(r"herren|männer|\bmen\b|jungen|kinder|baby", re.I),
             "arten": [
@@ -111,24 +131,41 @@ WELTEN = {
     # Mona-Lisa-Sisal, Schlüsselanhänger (Gruppe «cjpartydeko» stempelt «geschenk» auf jede Kategorie). Gleiche Klasse wie «sie/ihn».
     # Keine Preisgrenze ab 50 (Ratgeber «Männer-Geschenke unter 50 CHF» verlinkt hierher), sondern Vielfalt reihum über alle Arten.
     "alle": {"handle": "premium-geschenke", "nicht": re.compile(r"baby|strampler", re.I),
-             "deckel": {"schmuck": 80, "uhr": 60},
+             "deckel": {"schmuck": 80, "uhr": 60}, "arten": ALLE_ARTEN},
+    # 12.10.2026 (Betreiber «mache auch geschenk kategorie»): die übrigen Geschenk-Seiten im Menü waren reine Preis-/Wortregeln —
+    # «unter CHF 50» 68'005 und «unter CHF 100» 79'613 Produkte (oben Herrenschuhe), «Preis-Hits unter CHF 25» 41'667 (Schuhe,
+    # Haustierbedarf), «Hochzeitsgeschenke» über «für Paare» (Golfschuhe, taktische Weste), «Sets & Bundles» über «-Set»
+    # (Babykleider, Krankenschwester-Stifte). Gleiche Klasse wie «alle» → eigene Preisbänder bzw. eigene Arten.
+    "unter50": {"handle": "geschenke-unter-50-franken", "preis": (19, 50), "nicht": re.compile(r"baby|strampler", re.I),
+                "deckel": {"schmuck": 80, "uhr": 60}, "arten": ALLE_ARTEN,
+                "teuer_zuerst": True},   # sonst dieselben ersten Plätze wie «alle» (gleiche Arten, überlappende Preise)
+    "unter100": {"handle": "geschenke-unter-100-franken", "preis": (40, 100), "nicht": re.compile(r"baby|strampler", re.I),
+                 "deckel": {"schmuck": 80, "uhr": 60}, "arten": ALLE_ARTEN},
+    "preishits": {"handle": "unter-chf-25", "preis": (9.9, 25), "nicht": re.compile(r"baby|strampler", re.I),
+                  "deckel": {"schmuck": 60}, "arten": ALLE_ARTEN},
+    "hochzeit": {"handle": "hochzeitsgeschenke", "preis": (19, 200),
+                 "nicht": re.compile(r"schuh|sneaker|weste|taktik|golf|baby|puppe|kostüm|hochzeitskleid|zwerg|fee\b|feen", re.I),
+                 "arten": [
+                     ("paar", r"mr\.?\s*(&|und)\s*mrs|king\s*&\s*queen|partner-?(tasse|kissen|armband|ringe|schmuck|kette)|"
+                              r"paar-?(armband|armbänder|ringe|tasse|tassen|kissen|kette)|pärchen|für (das )?brautpaar|hochzeitsgeschenk"),
+                     ("bar", r"weinset|wein-?(glas|gläser|dekanter|kühler|öffner)|sektgl|champagner-?(glas|gläser|flöte|kühler)|whisky-?(glas|gläser|set)|karaffe|dekanter|bar-?set"),
+                     ("deko", r"bilderrahmen|fotorahmen|fotoalbum|hochzeitsalbum|kerzenständer|kerzenhalter|windlicht|vase\b|led-?schild"),
+                     ("kuschel", r"bettwäsche|kuscheldecke|wolldecke|tagesdecke"),   # Kissenbezüge nahmen 241 von 390 Plätzen ein
+                     ("kueche", r"fondue|raclette|servierbrett|käsebrett|teeset|kaffeeservice|tassen-?set|gläser-?set"),
+                     ("duft", r"duftkerze|diffuser|duftstäbchen|kerzenwärmer"),
+                 ]},
+    "sets": {"handle": "sets-bundles", "preis": (15, 150), "deckel": {"beauty": 60},
+             "nicht": re.compile(r"baby|strampler|oberteil|shorts|kleid|hose|pullover|puppe|krankenschwester|schlüsselanhänger|"
+                                 r"weihnachtskugel|baumkugel|anhänger-?set|ornament", re.I),
              "arten": [
-                 ("schmuck", r"ohrring|halskette|kette mit|anhänger|armband(?!uhr)|armreif|\bring\b|schmuckset"),
-                 ("uhr", r"damenuhr|damen-uhr|uhr für damen|herrenuhr|herren-?armbanduhr|automatikuhr|chronograph|herren.{0,20}uhr"),
-                 ("tasche", r"handtasche|umhängetasche|clutch|schultertasche|tote ?bag|abendtasche|reisetasche|kulturbeutel"),
-                 ("leder", r"geldbörse|portemonnaie|brieftasche|kartenetui|herrengürtel|ledergürtel|manschettenknöpfe"),
-                 ("kuschel", r"kuscheldecke|heizdecke|wärmekissen|fleecedecke|wolldecke|sofadecke|handwärmer"),
-                 ("duft", r"duftkerze|kerze|diffuser|aroma|duftstäbchen|kerzenwärmer"),
-                 ("beauty", r"make-?up-?(pinsel|set)|schminkkoffer|kosmetiktasche|haarstyler|lockenstab|glätteisen|"
-                            r"warmluftbürste|schminkspiegel"),
-                 ("tech", r"powerbank|kopfhörer|ohrhörer|bluetooth-?lautsprecher|ladestation|sternenprojektor|mini-?beamer|drohne"),
-                 ("bar", r"whisky|flachmann|cocktail|bar-?set|weinset|bierkrug"),
-                 ("tasse", r"tasse(?!l)|thermobecher|teekanne|teeset"),
-                 ("deko", r"weihnachtsfigur|weihnachtskugel|weihnachtsdeko|schneekugel|lichterkette|nussknacker|adventskranz"),
-                 ("schal", r"\bschal\b|-schal\b|halstuch|seidentuch|wintermütze|strickmütze|lederhandschuhe|winterhandschuhe"),
-                 ("plüsch", r"plüschtier|kuscheltier|stofftier|teddy"),
-                 ("bauen", r"bausteine|klemmbausteine|baukasten|3d-?puzzle"),
-                 ("spiel", r"brettspiel|kartenspiel|puzzle|würfelspiel"),
+                 ("geschenkset", r"geschenkset|geschenk-?set|geschenkbox|präsentbox"),
+                 ("schmuck", r"schmuckset|schmuck-?set|halskette und (ohrringe|armband)|kette und ohrringe|ohrringe-?set"),
+                 ("beauty", r"make-?up-?(pinsel-?)?set|pinselset|pflegeset|nagelset|maniküre-?set|kosmetik-?set|haarpflege-?set"),
+                 ("tee", r"teeset|tee-?set|kaffeeset|tassen-?set|espresso-?set"),
+                 ("bar", r"bar-?set|cocktail-?set|weinset|wein-?set|whisky-?set|gläser-?set"),
+                 ("winter", r"mütze.{0,12}schal|schal.{0,12}handschuh|winter-?set"),
+                 ("bettwaesche", r"bettwäsche-?set|bettwäscheset"),
+                 ("kueche", r"backset|back-?set|gewürz-?set|aufbewahrungs-?set|dosen-?set"),
              ]},
 }
 
@@ -150,7 +187,7 @@ TIER = re.compile(r"hund|katze|katzen|haustier|nager|vögel|vogel|leine|aquarium
 KLEIDUNG = re.compile(r"kleid|hose|hemd|shirt|bluse|anzug|bikini|jacke|mantel|pullover|hoodie|\brock\b|jeans|leggings|"
                       r"\btop\b|weste|overall|jumpsuit|cardigan", re.I)
 ART_NICHT = {
-    "schmuck": r"schlüssel|fidget|spinner|uhrenarmband|werkzeug|smart|watch|uhr|herzfrequenz|sport-?armband|silikon|trainer|grip|kautschuk|"
+    "schmuck": r"maniküre|nagel|nägel|schlüssel|fidget|spinner|uhrenarmband|werkzeug|smart|watch|uhr|herzfrequenz|sport-?armband|silikon|trainer|grip|kautschuk|"
                # 10.10. (Welt «wichtel»): Mücken-Armbänder, Uhrenbänder ohne das Wort «Uhr», Quarz-«Armband» = Uhr, Zubehör
                r"mücke|insekt|ultraschall|schnellwechsel|schirmverschluss|\b(?:18|20|22|24|26) ?mm\b|quarz|aufbewahrung|"
                r"anziehhilfe|usb|vorhang|personalisiert|gravur|schnellverschluss|ventilator",
@@ -273,7 +310,8 @@ def auswahl():
     for w in kand:
         # je Art ausgewogen kappen: reihum aus den Art-Listen ziehen (Vorrang, dann mehr Bilder)
         je = collections.defaultdict(list)
-        for k in sorted(kand[w], key=lambda k: (k["prio"], -k["bilder"], k["preis"])):
+        teuer = WELTEN[w].get("teuer_zuerst")
+        for k in sorted(kand[w], key=lambda k: (k["prio"], -k["preis"], -k["bilder"]) if teuer else (k["prio"], -k["bilder"], k["preis"])):
             je[k["art"]].append(k)
         reihe, i = [], 0
         while len(reihe) < MAX_JE_WELT and any(je.values()):
