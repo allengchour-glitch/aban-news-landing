@@ -80,6 +80,15 @@ def urteil(eintrag, shop_groessen):
         return False, "keine Zweitlesung", None
     if a.get("einheit") not in ("cm", "inch") or b.get("einheit") not in ("cm", "inch"):
         return False, f"Einheit unklar ({a.get('einheit')}/{b.get('einheit')})", None
+    fg = eintrag.get("freigabe")   # 12.10.: Hand-Freigabe nur für Spalten, die BEIDE gleich gelesen haben (Grund im Datensatz)
+    if fg:
+        idx = [i for i, sp in enumerate(a["spalten"]) if kanon(sp) in {kanon(x) for x in fg["spalten"]}]
+        if not idx or len(idx) != len(fg["spalten"]):
+            return False, f"Freigabe-Spalten fehlen: {fg['spalten']}", None
+        def teil(t):
+            return {**t, "sicherheit": "hoch", "spalten": [fg["namen"].get(t["spalten"][i], t["spalten"][i]) for i in idx],
+                    "zeilen": [{"groesse": z["groesse"], "werte": [z["werte"][i] for i in idx]} for z in t["zeilen"]]}
+        a, b = teil(a), teil(b)
     if a.get("sicherheit") != "hoch" or b.get("sicherheit") != "hoch":
         return False, f"Lesung nicht sicher ({a.get('sicherheit')}/{b.get('sicherheit')}) — {a.get('bemerkung', '')[:90]}", None
     # 12.10.: Spalten nach Grundbedeutung vergleichen («Rocklänge» = «Länge», «Brust (Bluse)» = «Brust») — die ZAHLEN entscheiden
