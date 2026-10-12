@@ -20286,3 +20286,47 @@ gid://shopify/Product/16615388250503	Farbe	gid://shopify/ProductOptionValue/5840
 gid://shopify/Product/16615388250503	Farbe	gid://shopify/ProductOptionValue/58400278151559	37388 Gray	37388 Grau	2026-10-11T16:20Z
 gid://shopify/Product/16615388250503	Farbe	gid://shopify/ProductOptionValue/58400278184327	37388 Purple	37388 Lila	2026-10-11T16:20Z
 gid://shopify/Product/16615389495687	Farbe	gid://shopify/ProductOptionValue/58400280904071	Black Upgrade	Schwarz Upgrade	2026-10-11T16:20Z
+gid://shopify/Product/16615510606215	Farbe	gid://shopify/ProductOptionValue/58400869613959	Yellow Pattern	Gelb Muster	2026-10-12T14:51Z
+gid://shopify/Product/16615510606215	Farbe	gid://shopify/ProductOptionValue/58400869646727	Black Pattern	Schwarz Muster	2026-10-12T14:51Z
+gid://shopify/Product/16615510606215	Farbe	gid://shopify/ProductOptionValue/58400869679495	Brown Pattern	Braun Muster	2026-10-12T14:51Z
+gid://shopify/Product/16615511425415	Farbe	gid://shopify/ProductOptionValue/58400870924679	M Black	M Schwarz	2026-10-12T14:51Z
+gid://shopify/Product/16615516897671	Farbe	gid://shopify/ProductOptionValue/58400885604743	Camouflage White	Camouflage Weiss	2026-10-12T14:51Z
+gid://shopify/Product/16615518273927	Farbe	gid://shopify/ProductOptionValue/58400913719687	Blue And White Pattern	Blau-Weiss Muster	2026-10-12T14:51Z
+gid://shopify/Product/16615518273927	Farbe	gid://shopify/ProductOptionValue/58400913883527	Leopard Print	Leopardenmuster	2026-10-12T14:51Z
+gid://shopify/Product/16615518273927	Farbe	gid://shopify/ProductOptionValue/58400913916295	Brown And White	Braun-Weiss	2026-10-12T14:51Z
+gid://shopify/Product/16615518273927	Farbe	gid://shopify/ProductOptionValue/58400913981831	Black And White Big Flower	Schwarz-Weiss gross geblümt	2026-10-12T14:51Z
+gid://shopify/Product/16615518273927	Farbe	gid://shopify/ProductOptionValue/58400914014599	Light Brown Stripes	Hellbraun gestreift	2026-10-12T14:51Z
+gid://shopify/Product/16615518273927	Farbe	gid://shopify/ProductOptionValue/58400914047367	Dark Brown Stripes	Dunkelbraun gestreift	2026-10-12T14:51Z
+gid://shopify/Product/16615518273927	Farbe	gid://shopify/ProductOptionValue/58400914080135	White And Blue Pattern	Weiss-Blau Muster	2026-10-12T14:51Z
+gid://shopify/Product/16615518273927	Farbe	gid://shopify/ProductOptionValue/58400914145671	Polka Dot	Gepunktet	2026-10-12T14:51Z
+gid://shopify/Product/16615520633223	Farbe	gid://shopify/ProductOptionValue/58400918897031	White Sapphire Blue	Weiss-Saphirblau	2026-10-12T14:51Z
+gid://shopify/Product/16615524172167	Farbe	gid://shopify/ProductOptionValue/58400982401415	Olive	Oliv	2026-10-12T14:51Z
+gid://shopify/Product/16615603798407	Farbe	gid://shopify/ProductOptionValue/58401658634631	Dark Purplish Red	Dunkelpurpurrot	2026-10-12T14:51Z
+gid://shopify/Product/16615657341319	Farbe	gid://shopify/ProductOptionValue/58402383790471	White Collar	Weiss Kragen	2026-10-12T14:51Z
+gid://shopify/Product/16615657341319	Farbe	gid://shopify/ProductOptionValue/58402383823239	Blue Collar	Blau Kragen	2026-10-12T14:51Z
+gid://shopify/Product/16615657341319	Farbe	gid://shopify/ProductOptionValue/58402383856007	2pcs	2 Stück	2026-10-12T14:51Z
+gid://shopify/Product/16615657963911	Farbe	gid://shopify/ProductOptionValue/58402386149767	Mens white	Herren Weiss	2026-10-12T14:51Z
+gid://shopify/Product/16615657963911	Farbe	gid://shopify/ProductOptionValue/58402386182535	Women White	Damen Weiss	2026-10-12T14:51Z
+gid://shopify/Product/16615657963911	Farbe	gid://shopify/ProductOptionValue/58402386215303	Men Light blue	Herren Hellblau	2026-10-12T14:51Z
+gid://shopify/Product/16615657963911	Farbe	gid://shopify/ProductOptionValue/58402386248071	Women Light blue	Damen Hellblau	2026-10-12T14:51Z
+gid://shopify/Product/16615657963911	Farbe	gid://shopify/ProductOptionValue/58402386280839	Men Bright Gray Light blue	Herren Leuchtendes Grau-Hellblau	2026-10-12T14:51Z
+gid://shopify/Product/16615657963911	Farbe	gid://shopify/ProductOptionValue/58402386313607	Women Bright Gray	Damen Leuchtendes Grau	2026-10-12T14:51Z
+gid://shopify/Product/16615657963911	Farbe	gid://shopify/ProductOptionValue/58402386346375	Men Gray	Herren Grau	2026-10-12T14:51Z
+gid://shopify/Product/16615657963911	Farbe	gid://shopify/ProductOptionValue/58402386379143	Women Gray	Damen Grau	2026-10-12T14:51Z
+gid://shopify/Product/16615657963911	Farbe	gid://shopify/ProductOptionValue/58402386411911	Men Pink	Herren Pink	2026-10-12T14:51Z
+gid://shopify/Product/16615657963911	Farbe	gid://shopify/ProductOptionValue/58402386444679	Women Pink	Damen Pink	2026-10-12T14:51Z
+gid://shopify/Product/16615657996679	Farbe	gid://shopify/ProductOptionValue/58402386772359	Men White	Herren Weiss	2026-10-12T14:51Z
+gid://shopify/Product/16615657996679	Farbe	gid://shopify/ProductOptionValue/58402386805127	Women's White	Damen Weiss	2026-10-12T14:51Z
+gid://shopify/Product/16615657996679	Farbe	gid://shopify/ProductOptionValue/58402386837895	Men's Blue	Herren Blau	2026-10-12T14:51Z
+gid://shopify/Product/16615657996679	Farbe	gid://shopify/ProductOptionValue/58402386870663	Women's Blue	Damen Blau	2026-10-12T14:51Z
+gid://shopify/Product/16615657996679	Farbe	gid://shopify/ProductOptionValue/58402386903431	Men's Bright Gray	Herren Leuchtendes Grau	2026-10-12T14:51Z
+gid://shopify/Product/16615657996679	Farbe	gid://shopify/ProductOptionValue/58402386936199	Women's Bright Gray	Damen Leuchtendes Grau	2026-10-12T14:51Z
+gid://shopify/Product/16615657996679	Farbe	gid://shopify/ProductOptionValue/58402386968967	Men's Gray	Herren Grau	2026-10-12T14:51Z
+gid://shopify/Product/16615657996679	Farbe	gid://shopify/ProductOptionValue/58402387001735	Women's Gray	Damen Grau	2026-10-12T14:51Z
+gid://shopify/Product/16615657996679	Farbe	gid://shopify/ProductOptionValue/58402387034503	Men's Pink	Herren Pink	2026-10-12T14:51Z
+gid://shopify/Product/16615657996679	Farbe	gid://shopify/ProductOptionValue/58402387067271	Women's Pink	Damen Pink	2026-10-12T14:51Z
+gid://shopify/Product/16615658684807	Farbe	gid://shopify/ProductOptionValue/58402415247751	Long sleeves	Langarm	2026-10-12T14:51Z
+gid://shopify/Product/16615658684807	Farbe	gid://shopify/ProductOptionValue/58402415280519	Short sleeves	Kurzarm	2026-10-12T14:51Z
+gid://shopify/Product/16615684571527	Farbe	gid://shopify/ProductOptionValue/58402672476551	Black-13.5cm	Schwarz-13.5 cm	2026-10-12T14:51Z
+gid://shopify/Product/16615684571527	Farbe	gid://shopify/ProductOptionValue/58402672509319	Beige-13.5cm	Beige-13.5 cm	2026-10-12T14:51Z
+gid://shopify/Product/16615695352199	Farbe	gid://shopify/ProductOptionValue/58402727985543	Creamy white	Cremeweiss	2026-10-12T14:51Z
