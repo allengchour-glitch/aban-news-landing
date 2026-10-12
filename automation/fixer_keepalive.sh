@@ -2322,6 +2322,21 @@ KLT=/tmp/test_klingen_tor.log
     fi
   fi
 
+  # 12.10.2026: KOLLEKTIONSTITEL — kein Ergänzungsstrich («Lauf- & Sportschuhe»): die Vorschlagsliste sucht Kollektionen nur im
+  # Titel, «laufschuhe» fand nichts. 19 umbenannt (Handle/SEO/Menü unverändert); täglich für neue Kollektionen, Kanarien zuerst.
+  KTW=/tmp/kollektion_titel_ausschreiben.log
+  if [ -f "$REPO/automation/kollektion_titel_ausschreiben.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$KTW" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$KTW" || still_gestorben "$KTW"; then
+      touch "$KTW"
+      ( cd "$REPO" && setsid bash -c \
+          "exec 9>/tmp/lock_kollektion_titel.lock; flock -n 9 || exit 0; exec >> \"$KTW\" 2>&1; \
+           echo \"START \$(date -u +%FT%TZ) (Aufseher)\"; python3 -u automation/kollektion_titel_ausschreiben.py --kanarien > /dev/null \
+           && SCHARF=1 timeout 600 python3 -u automation/kollektion_titel_ausschreiben.py; \
+           echo \"FERTIG \$(date -u +%FT%TZ)\"" 9>&- & )
+    fi
+  fi
+
   # 12.10.2026: GOOGLE-NACHFRAGE — verschwinden Produkte, die über Google Besuch/Warenkörbe brachten? (bester Kanal:
   # 90 T 44 → 6 Körbe → 1 Kauf; von 48 Juli-Sitzungen landeten 34 auf heute gedrafteten Produkten). Nur lesend:
   # dropship/GOOGLE-NACHFRAGE.md (Arbeitsliste + Prioritätsquelle für cj_versand_ch_revive.py). Täglich.

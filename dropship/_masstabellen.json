@@ -1,0 +1,2187 @@
+[
+ {
+  "handle": "leinen-set-lino-weste-weite-hose",
+  "leser": {
+   "handle": "leinen-set-lino-weste-weite-hose",
+   "gefunden": true,
+   "chart_url": "https://oss-cf.cjdropshipping.com/product/2026/06/08/05/aa4f23d8-ab12-4c7a-945d-59f11be4eefc.jpg?x-oss-process=image/quality,q_100",
+   "einheit": "inch",
+   "messart": "umfang",
+   "spalten": [
+    "Länge Oberteil",
+    "Brust",
+    "Schulter",
+    "Länge Hose",
+    "Taille",
+    "Hüfte"
+   ],
+   "zeilen": [
+    {
+     "groesse": "XS",
+     "werte": [
+      23.6,
+      33.5,
+      14.2,
+      38.6,
+      25.6,
+      37.4
+     ]
+    },
+    {
+     "groesse": "S",
+     "werte": [
+      24,
+      35.4,
+      14.6,
+      39.4,
+      27.6,
+      39.4
+     ]
+    },
+    {
+     "groesse": "M",
+     "werte": [
+      24.4,
+      37.4,
+      15,
+      40.2,
+      29.5,
+      41.3
+     ]
+    },
+    {
+     "groesse": "L",
+     "werte": [
+      24.8,
+      39.4,
+      15.4,
+      40.9,
+      31.5,
+      43.3
+     ]
+    },
+    {
+     "groesse": "XL",
+     "werte": [
+      25.2,
+      41.3,
+      15.7,
+      41.7,
+      33.5,
+      45.3
+     ]
+    },
+    {
+     "groesse": "2XL",
+     "werte": [
+      25.6,
+      43.3,
+      16.1,
+      42.5,
+      35.4,
+      47.2
+     ]
+    }
+   ],
+   "bemerkung": "Bild 01 (im cj_text direkt nach «Size:»). Die Tabelle hat einen Umschalter INCHES/CM, angezeigt ist INCHES. Die Fusszeile sagt «1inch=2.54cm» und «Sizes can vary from 2-3 centimeters». Brust, Taille und Hüfte sind ganzer Umfang: XS hat Brust 33.5 in, also rund 85 cm. Die Spalte «US» mit Bereichen (0-2, 4-6, 8-10, 12-14, 16-18, 20-22) ist weggelassen, weil Bereiche nicht als Zahl erlaubt sind. Die Grössen XS bis 2XL decken sich genau mit den Shop-Grössen. Aus dem Bild geht nicht hervor, ob das Körper- oder Kleidungsmasse sind; die Spalten für Oberteil- und Hosenlänge passen aber zum Set.",
+   "sicherheit": "hoch"
+  },
+  "pruefer": {
+   "handle": "leinen-set-lino-weste-weite-hose",
+   "gefunden": true,
+   "chart_url": "https://oss-cf.cjdropshipping.com/product/2026/06/08/05/aa4f23d8-ab12-4c7a-945d-59f11be4eefc.jpg?x-oss-process=image/quality,q_100",
+   "einheit": "inch",
+   "messart": "umfang",
+   "spalten": [
+    "Länge Oberteil",
+    "Brust",
+    "Schulter",
+    "Länge Hose",
+    "Taille",
+    "Hüfte"
+   ],
+   "zeilen": [
+    {
+     "groesse": "XS",
+     "werte": [
+      23.6,
+      33.5,
+      14.2,
+      38.6,
+      25.6,
+      37.4
+     ]
+    },
+    {
+     "groesse": "S",
+     "werte": [
+      24,
+      35.4,
+      14.6,
+      39.4,
+      27.6,
+      39.4
+     ]
+    },
+    {
+     "groesse": "M",
+     "werte": [
+      24.4,
+      37.4,
+      15,
+      40.2,
+      29.5,
+      41.3
+     ]
+    },
+    {
+     "groesse": "L",
+     "werte": [
+      24.8,
+      39.4,
+      15.4,
+      40.9,
+      31.5,
+      43.3
+     ]
+    },
+    {
+     "groesse": "XL",
+     "werte": [
+      25.2,
+      41.3,
+      15.7,
+      41.7,
+      33.5,
+      45.3
+     ]
+    },
+    {
+     "groesse": "2XL",
+     "werte": [
+      25.6,
+      43.3,
+      16.1,
+      42.5,
+      35.4,
+      47.2
+     ]
+    }
+   ],
+   "bemerkung": "Bild 741x454, gut lesbar, Ziffern in 2-facher Vergrösserung nachgeprüft. Aktiver Reiter 'INCHES' (blau), 'CM' ist im Bild nicht gezeigt; Fusszeile: '1inch=2.54cm', 'Sizes can vary from 2-3 centimeters because they are measured by hand', die Grösse auf dem Etikett kann von der bestellten abweichen. Original-Spaltenköpfe: SIZE, US, TOP LENGTH, BUST, SHOULDER, BOTTOM LENGTH, WAIST, HIP. Die US-Spalte enthält Grössenbereiche und keine Masse, deshalb steht sie nicht in 'spalten': XS=0-2, S=4-6, M=8-10, L=12-14, XL=16-18, 2XL=20-22. Messart steht nicht im Bild. 'umfang' folgt aus den Zahlen: Brust XS 33.5 in = ca. 85 cm, Taille 25.6 in = ca. 65 cm, Hüfte 37.4 in = ca. 95 cm, also ganze Umfänge, nicht flach gemessen. Ob es Körper- oder Kleidermasse sind, sagt das Bild nicht.",
+   "sicherheit": "hoch"
+  }
+ },
+ {
+  "handle": "herren-freizeit-sneaker-mit-dezenter-erhohung-614600",
+  "leser": {
+   "handle": "herren-freizeit-sneaker-mit-dezenter-erhohung-614600",
+   "gefunden": false,
+   "chart_url": "",
+   "einheit": "unklar",
+   "messart": "unklar",
+   "spalten": [],
+   "zeilen": [],
+   "bemerkung": "Keines der 8 Bilder ist eine Masstabelle. Bild 04 zeigt nur die Erhöhung durch die Innensohle (6/8/10 cm, Abbildung «About 8 cm»). Die übrigen Bilder sind Produktfotos und Detailaufnahmen (Obermaterial, Sohle). Es gibt keine Fusslänge pro Grösse.",
+   "sicherheit": "hoch"
+  },
+  "pruefer": null
+ },
+ {
+  "handle": "keil-sandalen-capri-geflochten-espadrille-look",
+  "leser": {
+   "handle": "keil-sandalen-capri-geflochten-espadrille-look",
+   "gefunden": false,
+   "chart_url": "",
+   "einheit": "unklar",
+   "messart": "unklar",
+   "spalten": [],
+   "zeilen": [],
+   "bemerkung": "Keines der 13 Bilder ist eine Masstabelle. Bild 11 zeigt nur die Keilhöhe (6 cm / 2.36 in), Bild 01 das Produkt auf einer Waage, Bild 07 ist eine Farbmuster-Kachel (80x80). Alle übrigen sind Produktfotos. Es gibt keine Fusslänge pro Grösse.",
+   "sicherheit": "hoch"
+  },
+  "pruefer": null
+ },
+ {
+  "handle": "thermoaktive-farbwechsel-herrenjacke-627300",
+  "leser": {
+   "handle": "thermoaktive-farbwechsel-herrenjacke-627300",
+   "gefunden": false,
+   "chart_url": "",
+   "einheit": "unklar",
+   "messart": "unklar",
+   "spalten": [],
+   "zeilen": [],
+   "bemerkung": "Alle 5 Bilder sind Model- bzw. Produktfotos, keines ist eine Masstabelle. Der cj_text verweist zwar auf «check the size chart», enthält aber keine Bildposition «Size: [BILD]».",
+   "sicherheit": "hoch"
+  },
+  "pruefer": null
+ },
+ {
+  "handle": "abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe",
+  "leser": {
+   "handle": "abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe",
+   "gefunden": false,
+   "chart_url": "",
+   "einheit": "unklar",
+   "messart": "unklar",
+   "spalten": [],
+   "zeilen": [],
+   "bemerkung": "Alle 18 Bilder durchgesehen: nur Modelfotos (bordeaux/weiss) und ein Foto-Collage-Bild (16.jpg). Keine Masstabelle, auch der cj_text nennt nur die Grössen S, M, L, XL ohne Masse.",
+   "sicherheit": "hoch"
+  },
+  "pruefer": null
+ },
+ {
+  "handle": "abendkleid-aurora-satin-spaghettitrager-schlitz",
+  "leser": {
+   "handle": "abendkleid-aurora-satin-spaghettitrager-schlitz",
+   "gefunden": true,
+   "chart_url": "https://oss-cf.cjdropshipping.com/product/2026/06/08/09/e27c352c-b26f-44fa-b5bf-936a2546f183.jpg",
+   "einheit": "cm",
+   "messart": "flach",
+   "spalten": [
+    "Länge",
+    "Brust",
+    "Taille"
+   ],
+   "zeilen": [
+    {
+     "groesse": "S",
+     "werte": [
+      138,
+      44,
+      37
+     ]
+    },
+    {
+     "groesse": "M",
+     "werte": [
+      140,
+      46,
+      39
+     ]
+    },
+    {
+     "groesse": "L",
+     "werte": [
+      142,
+      48,
+      41
+     ]
+    },
+    {
+     "groesse": "XL",
+     "werte": [
+      144,
+      50,
+      43
+     ]
+    },
+    {
+     "groesse": "XXL",
+     "werte": [
+      146,
+      52,
+      45
+     ]
+    },
+    {
+     "groesse": "XXXL",
+     "werte": [
+      148,
+      54,
+      47
+     ]
+    }
+   ],
+   "bemerkung": "Tabelle in 01.jpg (Produktinfo-Karte), Spalten im Bild: Size, Clothing Length, Bust, Sleeve Length, Waist Circumference, Hip Circumference. Ärmellänge und Hüfte sind überall «-» und wurden weggelassen. Die Taille heisst im Bild zwar «Circumference», aber Brust 44 und Taille 37 bei S zeigen klar halben Umfang (flach gemessen). Die Einheit cm steht im Hinweis darunter («error of 1-3 cm»). XXXL im Bild entspricht der Shop-Grösse 3XL.",
+   "sicherheit": "hoch"
+  },
+  "pruefer": {
+   "handle": "abendkleid-aurora-satin-spaghettitrager-schlitz",
+   "gefunden": true,
+   "chart_url": "https://oss-cf.cjdropshipping.com/product/2026/06/08/09/e27c352c-b26f-44fa-b5bf-936a2546f183.jpg",
+   "einheit": "cm",
+   "messart": "flach",
+   "spalten": [
+    "Länge",
+    "Brust",
+    "Taille"
+   ],
+   "zeilen": [
+    {
+     "groesse": "S",
+     "werte": [
+      138,
+      44,
+      37
+     ]
+    },
+    {
+     "groesse": "M",
+     "werte": [
+      140,
+      46,
+      39
+     ]
+    },
+    {
+     "groesse": "L",
+     "werte": [
+      142,
+      48,
+      41
+     ]
+    },
+    {
+     "groesse": "XL",
+     "werte": [
+      144,
+      50,
+      43
+     ]
+    },
+    {
+     "groesse": "XXL",
+     "werte": [
+      146,
+      52,
+      45
+     ]
+    },
+    {
+     "groesse": "XXXL",
+     "werte": [
+      148,
+      54,
+      47
+     ]
+    }
+   ],
+   "bemerkung": "Bildspalten in Reihenfolge: Size, Clothing Length, Bust, Sleeve Length, Waist Circumference, Hip Circumference. Sleeve Length und Hip Circumference sind in allen Zeilen nur '-' (leer) und wurden weggelassen. Einheit steht nicht im Tabellenkopf, aber der Hinweis darunter sagt 'error of 1-3 cm' -> cm. Brust 44 und Taille 37 bei S sind eindeutig halbe Weite (flach), obwohl die Spalte 'Waist Circumference' heisst. Länge 138-148 ist die Gesamtlänge. Bild zeigt schwarzes Satin-Maxikleid mit Spaghettiträgern und Beinschlitz, Grössen S-XXXL - passt zum Handle.",
+   "sicherheit": "hoch"
+  }
+ },
+ {
+  "handle": "2-teiliges-leinen-set-provence-hemd-wide-leg-hose",
+  "leser": {
+   "handle": "2-teiliges-leinen-set-provence-hemd-wide-leg-hose",
+   "gefunden": true,
+   "chart_url": "https://oss-cf.cjdropshipping.com/product/2026/05/30/08/b0d5b16d-05ea-489b-adcf-3b2aceb5ce82.jpg",
+   "einheit": "cm",
+   "messart": "umfang",
+   "spalten": [
+    "Brust",
+    "Länge",
+    "Taille",
+    "Relax",
+    "Ärmel"
+   ],
+   "zeilen": [
+    {
+     "groesse": "S",
+     "werte": [
+      103,
+      62,
+      64,
+      100,
+      99
+     ]
+    },
+    {
+     "groesse": "M",
+     "werte": [
+      107,
+      63,
+      68,
+      104,
+      100
+     ]
+    },
+    {
+     "groesse": "L",
+     "werte": [
+      113,
+      64,
+      74,
+      110,
+      101
+     ]
+    },
+    {
+     "groesse": "XL",
+     "werte": [
+      119,
+      65,
+      80,
+      116,
+      102
+     ]
+    },
+    {
+     "groesse": "XXL",
+     "werte": [
+      125,
+      66,
+      86,
+      122,
+      103
+     ]
+    },
+    {
+     "groesse": "3XL",
+     "werte": [
+      131,
+      67,
+      92,
+      128,
+      104
+     ]
+    }
+   ],
+   "bemerkung": "Tabelle in 01.jpg (klein, 386x205, aber gut lesbar). Spalten im Bild: Size, Bust, Length, Waist, Relax, Sleeve. Eine Einheit steht nicht im Bild; die Zahlen sind cm (Brust 103 bei S = ganzer Umfang). Die Bedeutung zweier Spalten ist für dieses Set aus Oberteil und Hose unklar: «Relax» (100–128, +6 je Grösse) steht wohl für die Hüfte oder die gedehnte Taille der Hose. «Sleeve» (99–104, +1 je Grösse) ist als Ärmellänge kaum möglich und passt eher zur Hosenlänge. «Length» 62–67 ist vermutlich die Länge des Oberteils. Die Spaltennamen sind wörtlich übernommen, Relax und Ärmel vor dem Veröffentlichen bitte nicht so deuten.",
+   "sicherheit": "mittel"
+  },
+  "pruefer": {
+   "handle": "2-teiliges-leinen-set-provence-hemd-wide-leg-hose",
+   "gefunden": true,
+   "chart_url": "https://oss-cf.cjdropshipping.com/product/2026/05/30/08/b0d5b16d-05ea-489b-adcf-3b2aceb5ce82.jpg",
+   "einheit": "cm",
+   "messart": "umfang",
+   "spalten": [
+    "Brust",
+    "Länge",
+    "Taille",
+    "Relax (unklar)",
+    "Ärmel"
+   ],
+   "zeilen": [
+    {
+     "groesse": "S",
+     "werte": [
+      103,
+      62,
+      64,
+      100,
+      99
+     ]
+    },
+    {
+     "groesse": "M",
+     "werte": [
+      107,
+      63,
+      68,
+      104,
+      100
+     ]
+    },
+    {
+     "groesse": "L",
+     "werte": [
+      113,
+      64,
+      74,
+      110,
+      101
+     ]
+    },
+    {
+     "groesse": "XL",
+     "werte": [
+      119,
+      65,
+      80,
+      116,
+      102
+     ]
+    },
+    {
+     "groesse": "XXL",
+     "werte": [
+      125,
+      66,
+      86,
+      122,
+      103
+     ]
+    },
+    {
+     "groesse": "3XL",
+     "werte": [
+      131,
+      67,
+      92,
+      128,
+      104
+     ]
+    }
+   ],
+   "bemerkung": "Bild ist nur ein Tabellenausschnitt (386x205 px), ohne Produktbild, ohne Einheit und ohne Hinweistext. Einheit cm aus den Werten geschlossen (Brust 103 bei S = ganzer Umfang). Englische Kopfzeile: Size, Bust, Length, Waist, Relax, Sleeve. 'Relax' ist im Bild nicht erklärt (liegt konstant 36 cm über Waist - evtl. Taille gedehnt oder Hüfte, NICHT belegt). 'Sleeve' 99-104 ist für einen Hemdärmel unplausibel lang - vermutlich eigentlich Hosenlänge, im Bild aber als Sleeve beschriftet; Bezeichnung so übernommen. Welche Masse zum Hemd und welche zur Hose gehören, sagt das Bild nicht (Bust/Length vermutlich Hemd, Waist/Relax/'Sleeve' vermutlich Hose).",
+   "sicherheit": "mittel"
+  }
+ },
+ {
+  "handle": "herren-sneaker-mit-8-cm-plateausohle-610100",
+  "leser": {
+   "handle": "herren-sneaker-mit-8-cm-plateausohle-610100",
+   "gefunden": true,
+   "chart_url": "https://oss-cf.cjdropshipping.com/product/2024/10/10/02/9d84e869-2c7f-4c76-b77a-a42bb8df06c6_trans.jpeg",
+   "einheit": "cm",
+   "messart": "unklar",
+   "spalten": [
+    "Fusslänge"
+   ],
+   "zeilen": [
+    {
+     "groesse": "38",
+     "werte": [
+      24
+     ]
+    },
+    {
+     "groesse": "39",
+     "werte": [
+      24.5
+     ]
+    },
+    {
+     "groesse": "40",
+     "werte": [
+      25
+     ]
+    },
+    {
+     "groesse": "41",
+     "werte": [
+      25.5
+     ]
+    },
+    {
+     "groesse": "42",
+     "werte": [
+      26
+     ]
+    },
+    {
+     "groesse": "43",
+     "werte": [
+      26.5
+     ]
+    },
+    {
+     "groesse": "44",
+     "werte": [
+      27
+     ]
+    },
+    {
+     "groesse": "45",
+     "werte": [
+      27.5
+     ]
+    },
+    {
+     "groesse": "46",
+     "werte": [
+      28
+     ]
+    },
+    {
+     "groesse": "47",
+     "werte": [
+      28.5
+     ]
+    },
+    {
+     "groesse": "48",
+     "werte": [
+      29
+     ]
+    }
+   ],
+   "bemerkung": "In 01.jpg steht eine «Size comparison table»: Shoe size (male) 38–48 und Foot length (mm) 240–290. Die mm-Werte sind exakt in cm umgerechnet (240 mm = 24 cm). Flach oder Umfang trifft hier nicht zu, weil die Fusslänge ein Längenmass ist. Shop-Grösse 37 fehlt in der Tabelle, 44–48 werden im Shop nicht verkauft. Die Tabelle läuft in gleichmässigen 5-mm-Schritten und wirkt eher allgemein als am Modell gemessen. Der Text im selben Bild widerspricht sich: «Standardgrösse», trotzdem soll man bei Sneaker-Grösse 41 die 40 nehmen und bei breiten Füssen eine Nummer grösser. Nebenbefund: 06.jpg wirbt mit «Invisible internal height increase 6CM», der Shop-Titel sagt 8 cm (laut CJ-Farbname «increased by 8CM»).",
+   "sicherheit": "mittel"
+  },
+  "pruefer": {
+   "handle": "herren-sneaker-mit-8-cm-plateausohle-610100",
+   "gefunden": true,
+   "chart_url": "https://oss-cf.cjdropshipping.com/product/2024/10/10/02/9d84e869-2c7f-4c76-b77a-a42bb8df06c6_trans.jpeg",
+   "einheit": "cm",
+   "messart": "unklar",
+   "spalten": [
+    "Fusslänge"
+   ],
+   "zeilen": [
+    {
+     "groesse": "38",
+     "werte": [
+      24
+     ]
+    },
+    {
+     "groesse": "39",
+     "werte": [
+      24.5
+     ]
+    },
+    {
+     "groesse": "40",
+     "werte": [
+      25
+     ]
+    },
+    {
+     "groesse": "41",
+     "werte": [
+      25.5
+     ]
+    },
+    {
+     "groesse": "42",
+     "werte": [
+      26
+     ]
+    },
+    {
+     "groesse": "43",
+     "werte": [
+      26.5
+     ]
+    },
+    {
+     "groesse": "44",
+     "werte": [
+      27
+     ]
+    },
+    {
+     "groesse": "45",
+     "werte": [
+      27.5
+     ]
+    },
+    {
+     "groesse": "46",
+     "werte": [
+      28
+     ]
+    },
+    {
+     "groesse": "47",
+     "werte": [
+      28.5
+     ]
+    },
+    {
+     "groesse": "48",
+     "werte": [
+      29
+     ]
+    }
+   ],
+   "bemerkung": "Im Bild steht 'Foot length (mm)': 240, 245, 250, 255, 260, 265, 270, 275, 280, 285, 290 für 'Shoe size (male)' 38-48. Hier exakt durch 10 geteilt und als cm angegeben (Einheit-Enum kennt kein mm). Messart flach/Umfang trifft auf Fusslänge nicht zu -> unklar. Achtung: Das Bild zeigt einen braunen Leder-Slipper, keinen Plateau-Sneaker; Text darüber: 'this model is a standard size. If you usually wear sneakers of size 41, it is recommended to choose size 40. If you usually wear leather shoes of size 40, choose size 40. If your feet are fat or wide, choose one size larger.' sowie 'This style of leather shoes is size 39 = Standard leather shoes size 39 = Sports shoes size 40'. Die Tabelle ist also vermutlich eine generische Lieferanten-Tabelle eines Lederschuhs; die Passform-Empfehlung (eine Grösse kleiner als Sneaker) passt nicht sicher zu diesem Sneaker.",
+   "sicherheit": "mittel"
+  }
+ },
+ {
+  "handle": "blumen-maxikleid-fleurette-neckholder-mit-fishtail",
+  "leser": {
+   "handle": "blumen-maxikleid-fleurette-neckholder-mit-fishtail",
+   "gefunden": true,
+   "chart_url": "https://oss-cf.cjdropshipping.com/product/2026/05/30/09/0b3958ee-f3d8-4c34-8c91-72a6e4fb4824_trans.jpeg",
+   "einheit": "cm",
+   "messart": "umfang",
+   "spalten": [
+    "Brust",
+    "Taille",
+    "Hüfte",
+    "Länge (1. Wert)",
+    "Länge (2. Wert)",
+    "Trägerlänge"
+   ],
+   "zeilen": [
+    {
+     "groesse": "XS",
+     "werte": [
+      71.1,
+      62,
+      80.5,
+      90.2,
+      122,
+      42.5
+     ]
+    },
+    {
+     "groesse": "S",
+     "werte": [
+      75,
+      66,
+      84.5,
+      91.5,
+      124,
+      44
+     ]
+    },
+    {
+     "groesse": "M",
+     "werte": [
+      79,
+      70,
+      88.5,
+      92.8,
+      126,
+      45.5
+     ]
+    },
+    {
+     "groesse": "L",
+     "werte": [
+      84.9,
+      76,
+      94.5,
+      93.8,
+      128,
+      47
+     ]
+    }
+   ],
+   "bemerkung": "Tabelle in 01.jpg («Size Guide», Reiter «Product Size», Schalter auf CM, Fit type zwischen Thin und Regular). Die Spalten heissen im Bild Bust, Waist Circumference, Hip Circumference, Length, Shoulder strap length. Gemessen ist der ganze Umfang des Kleidungsstücks (Brust 71,1 bei XS, dehnbares Etuikleid). Die Länge steht im Bild als Doppelwert «90.2/122.0» usw.; beide Werte sind in zwei Spalten übernommen, was sie bedeuten, sagt das Bild nicht (eventuell Länge ab Taille / Gesamtlänge). XL fehlt in der Tabelle, obwohl der Shop XL verkauft. Die Zahlen selbst sind gut lesbar.",
+   "sicherheit": "hoch"
+  },
+  "pruefer": {
+   "handle": "blumen-maxikleid-fleurette-neckholder-mit-fishtail",
+   "gefunden": true,
+   "chart_url": "https://oss-cf.cjdropshipping.com/product/2026/05/30/09/0b3958ee-f3d8-4c34-8c91-72a6e4fb4824_trans.jpeg",
+   "einheit": "cm",
+   "messart": "umfang",
+   "spalten": [
+    "Brust",
+    "Taille",
+    "Hüfte",
+    "Länge (1. Wert)",
+    "Länge (2. Wert)",
+    "Trägerlänge"
+   ],
+   "zeilen": [
+    {
+     "groesse": "XS",
+     "werte": [
+      71.1,
+      62,
+      80.5,
+      90.2,
+      122,
+      42.5
+     ]
+    },
+    {
+     "groesse": "S",
+     "werte": [
+      75,
+      66,
+      84.5,
+      91.5,
+      124,
+      44
+     ]
+    },
+    {
+     "groesse": "M",
+     "werte": [
+      79,
+      70,
+      88.5,
+      92.8,
+      126,
+      45.5
+     ]
+    },
+    {
+     "groesse": "L",
+     "werte": [
+      84.9,
+      76,
+      94.5,
+      93.8,
+      128,
+      47
+     ]
+    }
+   ],
+   "bemerkung": "Size Guide mit Schalter CM aktiv und Reiter 'Product Size' aktiv (Produktmasse, nicht Körpermasse; Reiter 'Body Measurements' ist nicht sichtbar). Kopf: 尺寸 (Grösse), Bust, Waist Circumference, Hip Circumference, Length, Shoulder strap length. Brust 71.1 bei XS ist nur als ganzer Umfang plausibel (flach wären es 142) -> Umfang, Produkt wohl eng/dehnbar (Fit-Regler steht nahe 'Thin'). Die Länge steht im Bild als zwei Werte in einer Zelle, z. B. '90.2/122.0' - kein Bereich; was die beiden Werte bedeuten (z. B. Rock-/Gesamtlänge oder vorne/hinten), sagt das Bild nicht. Deshalb in zwei Spalten aufgeteilt, nicht gemittelt. Nur Grössen XS-L. Fussnote: Handmessung, 1-2 cm Abweichung möglich.",
+   "sicherheit": "mittel"
+  }
+ },
+ {
+  "handle": "halterneck-patchwork-kleid-floral-604500",
+  "leser": {
+   "handle": "halterneck-patchwork-kleid-floral-604500",
+   "gefunden": true,
+   "chart_url": "https://oss-cf.cjdropshipping.com/product/2026/07/02/15/686cb0dc-3675-4add-a1a0-7de49d67a7ae_trans_water.jpeg",
+   "einheit": "cm",
+   "messart": "umfang",
+   "spalten": [
+    "Länge",
+    "Brust"
+   ],
+   "zeilen": [
+    {
+     "groesse": "S",
+     "werte": [
+      134,
+      88
+     ]
+    },
+    {
+     "groesse": "M",
+     "werte": [
+      135,
+      92
+     ]
+    },
+    {
+     "groesse": "L",
+     "werte": [
+      136,
+      98
+     ]
+    },
+    {
+     "groesse": "XL",
+     "werte": [
+      137,
+      104
+     ]
+    }
+   ],
+   "bemerkung": "Bild 01 (Item number 6885), «Unit: CM», Toleranz 1-3 cm laut Bild. Nur Spalten Clothing Length und Bust sind gefüllt; Sleeve, Cuff, Pants length, Waist, Hip, Thigh, Weight leer. Zeilen 2XL und 3XL im Bild komplett leer (Shop verkauft nur S-XL). Brust 88 bei S = ganzer Umfang.",
+   "sicherheit": "hoch"
+  },
+  "pruefer": {
+   "handle": "halterneck-patchwork-kleid-floral-604500",
+   "gefunden": true,
+   "chart_url": "https://oss-cf.cjdropshipping.com/product/2026/07/02/15/686cb0dc-3675-4add-a1a0-7de49d67a7ae_trans_water.jpeg",
+   "einheit": "cm",
+   "messart": "umfang",
+   "spalten": [
+    "Länge",
+    "Brust"
+   ],
+   "zeilen": [
+    {
+     "groesse": "S",
+     "werte": [
+      134,
+      88
+     ]
+    },
+    {
+     "groesse": "M",
+     "werte": [
+      135,
+      92
+     ]
+    },
+    {
+     "groesse": "L",
+     "werte": [
+      136,
+      98
+     ]
+    },
+    {
+     "groesse": "XL",
+     "werte": [
+      137,
+      104
+     ]
+    }
+   ],
+   "bemerkung": "Artikelnummer G585, Einheit im Bild 'Unit:CM' und 'Size (cm)'. Nur die Spalten Length (Clothing Length) und Bust sind gefüllt; Sleeve, Cuff, Pants length, Waist, Hip, Thigh, Weight sind leer. Zeilen 2XL und 3XL stehen in der Tabelle, sind aber komplett leer (weggelassen). Brust 88 bei S ist nur als ganzer Umfang plausibel -> umfang. Bild zeigt Korsett-Maxikleid mit Halterneck, Spitzeneinsatz und Beinschlitz (bordeaux/rosa) - Zuordnung zum Handle plausibel, aber 'floral' ist im Bild nicht eindeutig. Toleranzhinweis im Bild: 1-3 cm.",
+   "sicherheit": "hoch"
+  }
+ },
+ {
+  "handle": "damen-kapuzenpullover-mit-print-600400",
+  "leser": {
+   "handle": "damen-kapuzenpullover-mit-print-600400",
+   "gefunden": false,
+   "chart_url": "",
+   "einheit": "unklar",
+   "messart": "unklar",
+   "spalten": [],
+   "zeilen": [],
+   "bemerkung": "Nur ein Bild (Produktfoto des Hoodies am Kleiderbügel), keine Masstabelle vorhanden; cj_text verweist auf eine Size Chart, die nicht mitgeliefert ist.",
+   "sicherheit": "hoch"
+  },
+  "pruefer": null
+ },
+ {
+  "handle": "mule-sandalette-nodo-drapiert-spitze-form",
+  "leser": {
+   "handle": "mule-sandalette-nodo-drapiert-spitze-form",
+   "gefunden": true,
+   "chart_url": "https://oss-cf.cjdropshipping.com/product/2026/06/08/10/a5badb71-4ad4-4400-abeb-6d2868f9f200_trans.jpeg",
+   "einheit": "cm",
+   "messart": "unklar",
+   "spalten": [
+    "Fusslänge",
+    "Fussbreite"
+   ],
+   "zeilen": [
+    {
+     "groesse": "33",
+     "werte": [
+      21.5,
+      8
+     ]
+    },
+    {
+     "groesse": "34",
+     "werte": [
+      22,
+      8
+     ]
+    },
+    {
+     "groesse": "35",
+     "werte": [
+      22.5,
+      8.5
+     ]
+    },
+    {
+     "groesse": "36",
+     "werte": [
+      23,
+      8.5
+     ]
+    },
+    {
+     "groesse": "37",
+     "werte": [
+      23.5,
+      9
+     ]
+    },
+    {
+     "groesse": "38",
+     "werte": [
+      24,
+      9
+     ]
+    },
+    {
+     "groesse": "39",
+     "werte": [
+      24.5,
+      9.5
+     ]
+    },
+    {
+     "groesse": "40",
+     "werte": [
+      25,
+      9.5
+     ]
+    },
+    {
+     "groesse": "41",
+     "werte": [
+      25.5,
+      10
+     ]
+    },
+    {
+     "groesse": "42",
+     "werte": [
+      26,
+      10
+     ]
+    },
+    {
+     "groesse": "43",
+     "werte": [
+      26.5,
+      10.5
+     ]
+    },
+    {
+     "groesse": "44",
+     "werte": [
+      27,
+      10.5
+     ]
+    },
+    {
+     "groesse": "45",
+     "werte": [
+      27.5,
+      11
+     ]
+    }
+   ],
+   "bemerkung": "Bild 01 «Size reference SIZLTABLE» ist im Original in MILLIMETERN («The measurement unit for all the above data is millimeters»): Länge 215-275 mm, hier exakt durch 10 geteilt in cm angegeben. Es sind Fussmasse (Fusslänge Ferse bis Zehe, Fussbreite), keine Schuhinnenmasse; Standard-Lieferantentabelle mit 5-mm-Schritten, nicht schuhspezifisch vermessen. Fussbreite bei Grössen 34, 36, 38, 40, 42, 44 im Bild als Bereich (80-85, 85-90, 90-95, 95-100, 100-105, 105-110 mm), hier jeweils untere Grenze eingetragen. Flach/Umfang nicht anwendbar. Shop verkauft nur 35-40; Tabelle zeigt 33-45. Hinweis im Bild: bei hohem Rist/breitem Fuss eine Grösse grösser.",
+   "sicherheit": "mittel"
+  },
+  "pruefer": {
+   "handle": "mule-sandalette-nodo-drapiert-spitze-form",
+   "gefunden": true,
+   "chart_url": "https://oss-cf.cjdropshipping.com/product/2026/06/08/10/a5badb71-4ad4-4400-abeb-6d2868f9f200_trans.jpeg",
+   "einheit": "cm",
+   "messart": "unklar",
+   "spalten": [
+    "Fusslänge",
+    "Fussbreite"
+   ],
+   "zeilen": [
+    {
+     "groesse": "33",
+     "werte": [
+      21.5,
+      8
+     ]
+    },
+    {
+     "groesse": "34",
+     "werte": [
+      22,
+      8
+     ]
+    },
+    {
+     "groesse": "35",
+     "werte": [
+      22.5,
+      8.5
+     ]
+    },
+    {
+     "groesse": "36",
+     "werte": [
+      23,
+      8.5
+     ]
+    },
+    {
+     "groesse": "37",
+     "werte": [
+      23.5,
+      9
+     ]
+    },
+    {
+     "groesse": "38",
+     "werte": [
+      24,
+      9
+     ]
+    },
+    {
+     "groesse": "39",
+     "werte": [
+      24.5,
+      9.5
+     ]
+    },
+    {
+     "groesse": "40",
+     "werte": [
+      25,
+      9.5
+     ]
+    },
+    {
+     "groesse": "41",
+     "werte": [
+      25.5,
+      10
+     ]
+    },
+    {
+     "groesse": "42",
+     "werte": [
+      26,
+      10
+     ]
+    },
+    {
+     "groesse": "43",
+     "werte": [
+      26.5,
+      10.5
+     ]
+    },
+    {
+     "groesse": "44",
+     "werte": [
+      27,
+      10.5
+     ]
+    },
+    {
+     "groesse": "45",
+     "werte": [
+      27.5,
+      11
+     ]
+    }
+   ],
+   "bemerkung": "ORIGINAL IN MILLIMETER ('The measurement unit for all the above data is millimeters'), hier durch 10 geteilt in cm angegeben. Originalwerte mm: Length 215/220/225/230/235/240/245/250/255/260/265/270/275 fuer EU 33-45; Foot Width 80 / 80-85 / 85 / 85-90 / 90 / 90-95 / 95 / 95-100 / 100 / 100-105 / 105 / 105-110 / 110. Bereiche bei 34, 36, 38, 40, 42, 44 -> untere Grenze eingetragen (z. B. 34 = 80-85 mm -> 8.0 cm). Messart flach/Umfang nicht anwendbar (Schuh-Längen-/Breitenmass, daher 'unklar'). Die Fussskizze ist mit 'Foot Circumference' beschriftet, die Tabelle aber mit 'Foot Width'; 80-110 mm passen nur zu Breite, nicht zu Umfang. Generische Lieferanten-Tabelle ('SIZLTABLE'), kein Produktbezug im Bild sichtbar.",
+   "sicherheit": "hoch"
+  }
+ },
+ {
+  "handle": "relaxter-pullover-mit-ausschnitt-611400",
+  "leser": {
+   "handle": "relaxter-pullover-mit-ausschnitt-611400",
+   "gefunden": true,
+   "chart_url": "https://oss-cf.cjdropshipping.com/product/2026/07/12/09/2d2136dc-1803-4fa5-99ed-85cc89f9fa7c_fine.jpeg",
+   "einheit": "cm",
+   "messart": "umfang",
+   "spalten": [
+    "Brust",
+    "Länge",
+    "Ärmel"
+   ],
+   "zeilen": [
+    {
+     "groesse": "0XL",
+     "werte": [
+      114,
+      65,
+      50
+     ]
+    },
+    {
+     "groesse": "1XL",
+     "werte": [
+      120,
+      66,
+      51
+     ]
+    },
+    {
+     "groesse": "2XL",
+     "werte": [
+      126,
+      67,
+      52
+     ]
+    },
+    {
+     "groesse": "3XL",
+     "werte": [
+      132,
+      68,
+      53
+     ]
+    },
+    {
+     "groesse": "4XL",
+     "werte": [
+      138,
+      69,
+      54
+     ]
+    }
+   ],
+   "bemerkung": "Bild 01, Spalten «Chest circumference (cm)», «Length (cm)», «Sleeve length (cm)» = ganzer Brustumfang. Zeilen «Inventory discrepancy» (6/1/1) sind Abstände zwischen Grössen, keine Grössen. Zeile 5XL ist im Bildausschnitt abgeschnitten (Scrollbalken) und fehlt daher - nicht hochgerechnet. Lieferantengrössen 0XL/1XL; der Shop verkauft L/XL/2XL-5XL - Zuordnung 0XL=L, 1XL=XL ist naheliegend, aber im Bild nicht belegt.",
+   "sicherheit": "mittel"
+  },
+  "pruefer": {
+   "handle": "relaxter-pullover-mit-ausschnitt-611400",
+   "gefunden": true,
+   "chart_url": "https://oss-cf.cjdropshipping.com/product/2026/07/12/09/2d2136dc-1803-4fa5-99ed-85cc89f9fa7c_fine.jpeg",
+   "einheit": "cm",
+   "messart": "umfang",
+   "spalten": [
+    "Brust",
+    "Länge",
+    "Ärmel"
+   ],
+   "zeilen": [
+    {
+     "groesse": "0XL",
+     "werte": [
+      114,
+      65,
+      50
+     ]
+    },
+    {
+     "groesse": "1XL",
+     "werte": [
+      120,
+      66,
+      51
+     ]
+    },
+    {
+     "groesse": "2XL",
+     "werte": [
+      126,
+      67,
+      52
+     ]
+    },
+    {
+     "groesse": "3XL",
+     "werte": [
+      132,
+      68,
+      53
+     ]
+    },
+    {
+     "groesse": "4XL",
+     "werte": [
+      138,
+      69,
+      54
+     ]
+    }
+   ],
+   "bemerkung": "Spalten im Bild: 'Chest circumference (cm)', 'Length (cm)', 'Sleeve length (cm)' -> Brust als ganzer Umfang laut Beschriftung. Zwischenzeilen 'Inventory discrepancy' (= Abstand zur Nachbargroesse, 6/1/1) sind keine Groessen und wurden weggelassen. Groessenbezeichnungen wortgetreu 0XL-4XL (Plus-Size-Schema, keine Zuordnung zu S/M/L im Bild). ACHTUNG: Screenshot eines scrollbaren Fensters - der Scrollbalken reicht nicht bis ganz unten, unter 4XL ist vermutlich mindestens eine weitere Zeile (z. B. 5XL) abgeschnitten; Tabelle evtl. unvollstaendig. Sichtbare Werte selbst sind klar lesbar (Wasserzeichen verdeckt keine Ziffern).",
+   "sicherheit": "mittel"
+  }
+ },
+ {
+  "handle": "etuikleid-lumea-cut-out-sheath",
+  "leser": {
+   "handle": "etuikleid-lumea-cut-out-sheath",
+   "gefunden": true,
+   "chart_url": "https://oss-cf.cjdropshipping.com/product/2026/05/31/01/7b85e7b2-13ca-4fb6-bc65-e21512bbc602_trans.jpeg",
+   "einheit": "cm",
+   "messart": "umfang",
+   "spalten": [
+    "Brust",
+    "Taille",
+    "Hüfte",
+    "Rocklänge"
+   ],
+   "zeilen": [
+    {
+     "groesse": "XS",
+     "werte": [
+      72,
+      60,
+      78,
+      70
+     ]
+    },
+    {
+     "groesse": "S",
+     "werte": [
+      76,
+      64,
+      82,
+      72
+     ]
+    },
+    {
+     "groesse": "M",
+     "werte": [
+      80,
+      68,
+      86,
+      74
+     ]
+    },
+    {
+     "groesse": "L",
+     "werte": [
+      86,
+      74,
+      92,
+      76
+     ]
+    }
+   ],
+   "bemerkung": "Tabelle «PRODUCTSIZE product size» unten in Bild 01 (Infografik). Brust, Taille und Hüfte stehen im Bild als BEREICHE, hier jeweils die untere Grenze. Volle Werte: XS Brust 72-82, Taille 60-70, Hüfte 78-88; S 76-86 / 64-74 / 82-92; M 80-90 / 68-78 / 86-96; L 86-96 / 74-84 / 92-102. Die Bereiche passen eher zu Körpermassen (dehnbarer Stoff), nicht zu Kleidungsmassen. Die Rocklänge (Skirt length / Length) ist ein Einzelwert. Spalte Sleeve Length ist leer, daher weggelassen. Zusatzspalten im Bild ohne Masswert: US-Grösse 2/4/6/8 und EU-Grösse 34/36/38/40 für XS/S/M/L. Hinweis im Bild: wegen hoher Dehnbarkeit bis ca. 3 cm Abweichung. Die Grössen XS–L stimmen mit dem Shop überein.",
+   "sicherheit": "mittel"
+  },
+  "pruefer": {
+   "handle": "etuikleid-lumea-cut-out-sheath",
+   "gefunden": true,
+   "chart_url": "https://oss-cf.cjdropshipping.com/product/2026/05/31/01/7b85e7b2-13ca-4fb6-bc65-e21512bbc602_trans.jpeg",
+   "einheit": "cm",
+   "messart": "umfang",
+   "spalten": [
+    "Brust",
+    "Taille",
+    "Hüfte",
+    "Länge"
+   ],
+   "zeilen": [
+    {
+     "groesse": "XS",
+     "werte": [
+      72,
+      60,
+      78,
+      70
+     ]
+    },
+    {
+     "groesse": "S",
+     "werte": [
+      76,
+      64,
+      82,
+      72
+     ]
+    },
+    {
+     "groesse": "M",
+     "werte": [
+      80,
+      68,
+      86,
+      74
+     ]
+    },
+    {
+     "groesse": "L",
+     "werte": [
+      86,
+      74,
+      92,
+      76
+     ]
+    }
+   ],
+   "bemerkung": "Bild zeigt ein One-Shoulder-Cut-out-Etuikleid (gelb), Artikel MDR9538, Polyester + Spandex. Brust, Taille und Hüfte stehen als Bereiche im Bild; eingetragen ist jeweils die untere Grenze. Volle Bereiche: XS Brust 72-82 / Taille 60-70 / Hüfte 78-88; S 76-86 / 64-74 / 82-92; M 80-90 / 68-78 / 86-96; L 86-96 / 74-84 / 92-102. Länge = «Skirt length» (Rocklänge) 70/72/74/76. Zusätzlich im Bild: US-Grösse 2/4/6/8 und EU-Grösse 34/36/38/40 (XS/S/M/L), nicht als Mass-Spalte übernommen. Spalte «Sleeve Length» ist leer. Keine Einheit angegeben; Werte passen nur zu cm. Bereiche = Körper-/Umfangmasse (Umfang). Hinweis im Bild: Stoff sehr dehnbar, Abweichung ca. 3 cm.",
+   "sicherheit": "hoch"
+  }
+ },
+ {
+  "handle": "damen-chiffon-kleid-mit-halter-neck-und-stufen-609900",
+  "leser": {
+   "handle": "damen-chiffon-kleid-mit-halter-neck-und-stufen-609900",
+   "gefunden": true,
+   "chart_url": "https://oss-cf.cjdropshipping.com/product/2026/06/04/07/00dc01bc-7a98-4f82-bc4c-f5e3b812c764_trans.jpeg",
+   "einheit": "cm",
+   "messart": "umfang",
+   "spalten": [
+    "Rocklänge",
+    "Taille",
+    "Brust"
+   ],
+   "zeilen": [
+    {
+     "groesse": "S",
+     "werte": [
+      132,
+      60,
+      84
+     ]
+    },
+    {
+     "groesse": "M",
+     "werte": [
+      133,
+      64,
+      88
+     ]
+    },
+    {
+     "groesse": "L",
+     "werte": [
+      134,
+      68,
+      92
+     ]
+    }
+   ],
+   "bemerkung": "Tabelle in Bild 01 mit der Reihenfolge der Spalten im Bild: Size, Skirt length, Waist Circumference, Bust. Taille steht als Bereich, hier die untere Grenze. Volle Werte: S 60-68, M 64-72, L 68-76. Im Bild steht «Flat measurement in centimeters … ±3 cm». Brust 84 bei S kann aber kein halber Umfang sein, deshalb messart = umfang. «Flat» meint hier wohl, dass liegend gemessen wurde. «Skirt length» 132–134 cm ist bei einem Midi-Neckholder-Kleid vermutlich die Gesamtlänge ab Nackenträger. Das Bild beschriftet sie aber als Skirt length.",
+   "sicherheit": "mittel"
+  },
+  "pruefer": {
+   "handle": "damen-chiffon-kleid-mit-halter-neck-und-stufen-609900",
+   "gefunden": true,
+   "chart_url": "https://oss-cf.cjdropshipping.com/product/2026/06/04/07/00dc01bc-7a98-4f82-bc4c-f5e3b812c764_trans.jpeg",
+   "einheit": "cm",
+   "messart": "umfang",
+   "spalten": [
+    "Länge",
+    "Taille",
+    "Brust"
+   ],
+   "zeilen": [
+    {
+     "groesse": "S",
+     "werte": [
+      132,
+      60,
+      84
+     ]
+    },
+    {
+     "groesse": "M",
+     "werte": [
+      133,
+      64,
+      88
+     ]
+    },
+    {
+     "groesse": "L",
+     "werte": [
+      134,
+      68,
+      92
+     ]
+    }
+   ],
+   "bemerkung": "Reihenfolge im Bild: Size, Skirt length, Waist Circumference, Bust. Taille steht als Bereich; eingetragen ist die untere Grenze (S 60-68, M 64-72, L 68-76). Länge = «Skirt length» 132/133/134. Der Fusstext sagt «Flat measurement in centimeters … ±3 cm», die Zahlen (Brust 84 bei S, Spalte heisst «Waist Circumference») sind aber eindeutig ganze Umfänge, deshalb messart = umfang; der «flat»-Hinweis ist vermutlich Standardtext. Nur die Tabelle ist im Bild, kein Produktfoto.",
+   "sicherheit": "hoch"
+  }
+ },
+ {
+  "handle": "2-teilige-mesh-bluse-resille-langarm-mit-hollow-out",
+  "leser": {
+   "handle": "2-teilige-mesh-bluse-resille-langarm-mit-hollow-out",
+   "gefunden": true,
+   "chart_url": "https://oss-cf.cjdropshipping.com/product/2026/05/29/06/febcc103-50f0-4838-9475-cac1e55d0e1d_trans.jpeg",
+   "einheit": "cm",
+   "messart": "umfang",
+   "spalten": [
+    "Brust (Bluse)",
+    "Länge (Bluse)",
+    "Brust (Bustier)",
+    "Länge (Bustier)"
+   ],
+   "zeilen": [
+    {
+     "groesse": "S",
+     "werte": [
+      96,
+      66,
+      69,
+      19
+     ]
+    },
+    {
+     "groesse": "M",
+     "werte": [
+      100,
+      67,
+      73,
+      20
+     ]
+    },
+    {
+     "groesse": "L",
+     "werte": [
+      106,
+      68,
+      79,
+      21
+     ]
+    },
+    {
+     "groesse": "XL",
+     "werte": [
+      112,
+      69,
+      85,
+      22
+     ]
+    },
+    {
+     "groesse": "XXL",
+     "werte": [
+      118,
+      70,
+      91,
+      23
+     ]
+    }
+   ],
+   "bemerkung": "Tabelle in Bild 01 (Item number 24262, 100 % Polyester). Im Bild kommen die Spalten «Bust Circumference (CM)» und «Length (CM)» je zweimal vor, ohne Teilenamen. Gelesen als erstes Paar = Bluse (Langarmhemd) und zweites Paar = trägerloses Bustier. Dafür sprechen die Packliste «Shirt + Strapless top» und die Längen 19–23 cm. Hinweis im Bild: 1-3 cm Abweichung. Die Grössen S–XXL stimmen mit dem Shop überein. Alle Zahlen sind klar lesbar.",
+   "sicherheit": "hoch"
+  },
+  "pruefer": {
+   "handle": "2-teilige-mesh-bluse-resille-langarm-mit-hollow-out",
+   "gefunden": true,
+   "chart_url": "https://oss-cf.cjdropshipping.com/product/2026/05/29/06/febcc103-50f0-4838-9475-cac1e55d0e1d_trans.jpeg",
+   "einheit": "cm",
+   "messart": "umfang",
+   "spalten": [
+    "Brust",
+    "Länge",
+    "Brust",
+    "Länge"
+   ],
+   "zeilen": [
+    {
+     "groesse": "S",
+     "werte": [
+      96,
+      66,
+      69,
+      19
+     ]
+    },
+    {
+     "groesse": "M",
+     "werte": [
+      100,
+      67,
+      73,
+      20
+     ]
+    },
+    {
+     "groesse": "L",
+     "werte": [
+      106,
+      68,
+      79,
+      21
+     ]
+    },
+    {
+     "groesse": "XL",
+     "werte": [
+      112,
+      69,
+      85,
+      22
+     ]
+    },
+    {
+     "groesse": "XXL",
+     "werte": [
+      118,
+      70,
+      91,
+      23
+     ]
+    }
+   ],
+   "bemerkung": "Artikel 24262, 100 % Polyester. Zwei Teile in einer Tabelle ohne Teil-Beschriftung: Spalten 1-2 (Bust Circumference 96-118, Length 66-70) passen zur Mesh-Bluse/Hemd, Spalten 3-4 (Bust Circumference 69-91, Length 19-23) passen zum kurzen Unterteil/Bandeau-Top. Diese Zuordnung ist aus den Zahlen und dem Foto geschlossen, nicht im Bild beschriftet. Einheit (CM) im Kopf angegeben, beide Brust-Spalten als «Circumference» = Umfang. Hinweis: Abweichung 1-3 cm.",
+   "sicherheit": "hoch"
+  }
+ },
+ {
+  "handle": "boho-resort-set-2-teilig-sommer-kollektion-2026-top-hose",
+  "leser": {
+   "handle": "boho-resort-set-2-teilig-sommer-kollektion-2026-top-hose",
+   "gefunden": true,
+   "chart_url": "https://oss-cf.cjdropshipping.com/product/2026/05/30/08/2b2113fa-677c-4b6d-bafc-710ebe4a9d58_trans.jpeg",
+   "einheit": "cm",
+   "messart": "umfang",
+   "spalten": [
+    "Brust",
+    "Taille",
+    "Hüfte",
+    "Länge (Oberteil)",
+    "Ärmel",
+    "Länge (Hose)"
+   ],
+   "zeilen": [
+    {
+     "groesse": "S",
+     "werte": [
+      96,
+      64,
+      96,
+      64,
+      47,
+      100
+     ]
+    },
+    {
+     "groesse": "M",
+     "werte": [
+      100,
+      68,
+      100,
+      65,
+      48,
+      101
+     ]
+    },
+    {
+     "groesse": "L",
+     "werte": [
+      104,
+      72,
+      104,
+      66,
+      49,
+      102
+     ]
+    },
+    {
+     "groesse": "XL",
+     "werte": [
+      108,
+      76,
+      108,
+      67,
+      50,
+      103
+     ]
+    },
+    {
+     "groesse": "XXL",
+     "werte": [
+      112,
+      80,
+      112,
+      68,
+      51,
+      104
+     ]
+    },
+    {
+     "groesse": "3XL",
+     "werte": [
+      116,
+      84,
+      116,
+      69,
+      52,
+      105
+     ]
+    },
+    {
+     "groesse": "4XL",
+     "werte": [
+      120,
+      88,
+      120,
+      70,
+      53,
+      106
+     ]
+    },
+    {
+     "groesse": "5XL",
+     "werte": [
+      124,
+      92,
+      124,
+      71,
+      54,
+      107
+     ]
+    }
+   ],
+   "bemerkung": "Tabelle «Product Information» in Bild 01 (Style XH2460, 65 % Baumwolle, 35 % Polyester, Gewebe). Im Bild ist sie quer angelegt: Grössen als Spalten, Masse als Zeilen. Im Bild heisst die Grösse «2XL», hier als XXL geschrieben, damit sie zur Shop-Grösse passt. Die Einheit cm steht nicht ausdrücklich in der Tabelle. Sie ergibt sich aus dem Hinweis «error of 2-3cm» und den Werten. Taille 64–92 ist vermutlich der Bund der Hose, Hüfte vermutlich die Hüfte der Hose. Das Bild ordnet diese Werte keinem Teil zu.",
+   "sicherheit": "hoch"
+  },
+  "pruefer": {
+   "handle": "boho-resort-set-2-teilig-sommer-kollektion-2026-top-hose",
+   "gefunden": true,
+   "chart_url": "https://oss-cf.cjdropshipping.com/product/2026/05/30/08/2b2113fa-677c-4b6d-bafc-710ebe4a9d58_trans.jpeg",
+   "einheit": "cm",
+   "messart": "umfang",
+   "spalten": [
+    "Brust",
+    "Taille",
+    "Hüfte",
+    "Länge",
+    "Ärmel",
+    "Hosenlänge"
+   ],
+   "zeilen": [
+    {
+     "groesse": "S",
+     "werte": [
+      96,
+      64,
+      96,
+      64,
+      47,
+      100
+     ]
+    },
+    {
+     "groesse": "M",
+     "werte": [
+      100,
+      68,
+      100,
+      65,
+      48,
+      101
+     ]
+    },
+    {
+     "groesse": "L",
+     "werte": [
+      104,
+      72,
+      104,
+      66,
+      49,
+      102
+     ]
+    },
+    {
+     "groesse": "XL",
+     "werte": [
+      108,
+      76,
+      108,
+      67,
+      50,
+      103
+     ]
+    },
+    {
+     "groesse": "2XL",
+     "werte": [
+      112,
+      80,
+      112,
+      68,
+      51,
+      104
+     ]
+    },
+    {
+     "groesse": "3XL",
+     "werte": [
+      116,
+      84,
+      116,
+      69,
+      52,
+      105
+     ]
+    },
+    {
+     "groesse": "4XL",
+     "werte": [
+      120,
+      88,
+      120,
+      70,
+      53,
+      106
+     ]
+    },
+    {
+     "groesse": "5XL",
+     "werte": [
+      124,
+      92,
+      124,
+      71,
+      54,
+      107
+     ]
+    }
+   ],
+   "bemerkung": "Tabelle im Bild ist transponiert (Grössen als Spalten, Masse als Zeilen). Style XH2460 «Buckle Xiang Set», gewebt, 65 % Baumwolle / 35 % Polyester; Foto zeigt Hemdbluse + weite Hose in Hellblau. Länge = «Top length» (Oberteil), Hosenlänge = «Pants Length». Taille und Hüfte als «Circumference» beschriftet, Brust 96 bei S passt ebenfalls zum Umfang. Keine Einheit im Kopf; der Hinweis nennt «error of 2-3cm», also cm.",
+   "sicherheit": "hoch"
+  }
+ },
+ {
+  "handle": "schnurkleid-noir-schleifen-detail",
+  "leser": {
+   "handle": "schnurkleid-noir-schleifen-detail",
+   "gefunden": true,
+   "chart_url": "https://oss-cf.cjdropshipping.com/product/2026/05/30/06/4727cb34-46f9-46fc-8cfc-2a40d7124336_trans.jpeg",
+   "einheit": "cm",
+   "messart": "umfang",
+   "spalten": [
+    "Brust",
+    "Taille",
+    "Hüfte",
+    "Länge",
+    "Körpergrösse empfohlen (ab)"
+   ],
+   "zeilen": [
+    {
+     "groesse": "S",
+     "werte": [
+      84,
+      66,
+      90,
+      105,
+      155
+     ]
+    },
+    {
+     "groesse": "M",
+     "werte": [
+      89,
+      70,
+      94,
+      107,
+      160
+     ]
+    },
+    {
+     "groesse": "L",
+     "werte": [
+      94,
+      74,
+      98,
+      109,
+      165
+     ]
+    },
+    {
+     "groesse": "XL",
+     "werte": [
+      99,
+      78,
+      102,
+      111,
+      170
+     ]
+    },
+    {
+     "groesse": "XXL",
+     "werte": [
+      104,
+      82,
+      106,
+      113,
+      175
+     ]
+    }
+   ],
+   "bemerkung": "Bild 01. Spalten im Bild: International code, Chest (cm), Waist circumference (cm), Hips (cm), Length (cm), Recommended height (cm). Die Taille heisst im Bild ausdrücklich «circumference», also Umfang. Die empfohlene Körpergrösse ist im Bild ein Bereich. Eingetragen ist die untere Grenze, die vollen Bereiche lauten: S 155-165, M 160-170, L 165-175, XL 170-180, XXL 175-185. Bildgrösse XXL entspricht Shop-Grösse 2XL. Der CJ-Text nennt «Mini Length», die Länge 105-113 cm und die Fotos zeigen aber ein knielanges bis Midi-Etuikleid. Bild 06 ist dieselbe Datei wie Bild 02, Bild 05 dieselbe wie 03 und Bild 07 dieselbe wie 04.",
+   "sicherheit": "hoch"
+  },
+  "pruefer": {
+   "handle": "schnurkleid-noir-schleifen-detail",
+   "gefunden": true,
+   "chart_url": "https://oss-cf.cjdropshipping.com/product/2026/05/30/06/4727cb34-46f9-46fc-8cfc-2a40d7124336_trans.jpeg",
+   "einheit": "cm",
+   "messart": "umfang",
+   "spalten": [
+    "Brust",
+    "Taille",
+    "Hüfte",
+    "Länge",
+    "Körpergrösse"
+   ],
+   "zeilen": [
+    {
+     "groesse": "S",
+     "werte": [
+      84,
+      66,
+      90,
+      105,
+      155
+     ]
+    },
+    {
+     "groesse": "M",
+     "werte": [
+      89,
+      70,
+      94,
+      107,
+      160
+     ]
+    },
+    {
+     "groesse": "L",
+     "werte": [
+      94,
+      74,
+      98,
+      109,
+      165
+     ]
+    },
+    {
+     "groesse": "XL",
+     "werte": [
+      99,
+      78,
+      102,
+      111,
+      170
+     ]
+    },
+    {
+     "groesse": "XXL",
+     "werte": [
+      104,
+      82,
+      106,
+      113,
+      175
+     ]
+    }
+   ],
+   " bemerkung": "",
+   "bemerkung": "Bild klar lesbar, alle Werte in cm. Spaltenköpfe: International code / Chest (cm) / Waist circumference (cm) / Hips (cm) / Length (cm) / Recommended height (cm). Taille ausdrücklich 'circumference', Brust 84 bei S = Umfang. Letzte Spalte ist eine EMPFOHLENE Körpergrösse als Bereich (S 155-165, M 160-170, L 165-175, XL 170-180, XXL 175-185) – kein Kleidungsmass; als untere Grenze eingetragen, kann weggelassen werden.",
+   "sicherheit": "hoch"
+  }
+ },
+ {
+  "handle": "maxi-kleid-aria-langarm-tailliert-mit-gurtel",
+  "leser": {
+   "handle": "maxi-kleid-aria-langarm-tailliert-mit-gurtel",
+   "gefunden": false,
+   "chart_url": "",
+   "einheit": "cm",
+   "messart": "umfang",
+   "spalten": [],
+   "zeilen": [],
+   "bemerkung": "Das einzige Tabellenbild ist Bild 01 (unter «Size:» im CJ-Text): https://oss-cf.cjdropshipping.com/product/2026/06/08/05/24f16eff-2818-4e75-b6c4-2afde4a36f70.jpg. Es ist eine allgemeine tschechische Körpermass-Tabelle (VELIKOST/PRSA/PAS/BOKY) mit US/UK/EU-Umrechnung und Körpermassen als Bereiche in Zoll (PALCE) und cm. Sie enthält keine Masse dieses Kleidungsstücks. Ausserdem deckt sie nur S-XL ab, der Shop verkauft XS-2XL. Darum gefunden=false. Abschrift zur Entscheidung, Körpermasse in cm (Brust/Taille/Hüfte): S 84-90/66-70/90-94 (US 2-4, UK 6-8, EU 36-38); M 92-98/70-74/96-102 (US 6-8, UK 10-12, EU 38-40); L 102-108/76-80/104-110 (US 10-12, UK 14-16, EU 40-42); XL 108-114/80-86/112-116 (US 14, UK 16-18, EU 44). Die Zoll-Werte passen zu den cm-Werten. Alle Werte sind gut lesbar.",
+   "sicherheit": "mittel"
+  },
+  "pruefer": null
+ },
+ {
+  "handle": "herren-leinenhose-lino-locker-atmungsaktiv",
+  "leser": {
+   "handle": "herren-leinenhose-lino-locker-atmungsaktiv",
+   "gefunden": true,
+   "chart_url": "https://oss-cf.cjdropshipping.com/product/2026/05/30/03/67e7af25-f523-4082-b825-2ac510b7780f_trans.jpeg",
+   "einheit": "cm",
+   "messart": "umfang",
+   "spalten": [
+    "Länge",
+    "Taille",
+    "Hüfte"
+   ],
+   "zeilen": [
+    {
+     "groesse": "S",
+     "werte": [
+      104,
+      72,
+      106
+     ]
+    },
+    {
+     "groesse": "M",
+     "werte": [
+      106,
+      74,
+      111
+     ]
+    },
+    {
+     "groesse": "L",
+     "werte": [
+      108,
+      76,
+      116
+     ]
+    },
+    {
+     "groesse": "XL",
+     "werte": [
+      110,
+      78,
+      121
+     ]
+    },
+    {
+     "groesse": "XXL",
+     "werte": [
+      112,
+      80,
+      126
+     ]
+    },
+    {
+     "groesse": "3XL",
+     "werte": [
+      114,
+      82,
+      131
+     ]
+    }
+   ],
+   "bemerkung": "Bild 01. Spalten im Bild: Pants Length, Waist Circumference, Hip Circumference. Das Bild hat keine Einheitsangabe im Kopf, die Fussnote sagt aber «error range of 1-3CM», also cm. Umfang laut Spaltenname. Die Taille ist im Bild ein Bereich (Gummibund, ungedehnt bis gedehnt). Eingetragen ist die untere Grenze, die vollen Bereiche lauten: S 72-90, M 74-92, L 76-94, XL 78-98, XXL 80-104, 3XL 82-110. Die Grössen S-3XL decken sich genau mit dem Shop.",
+   "sicherheit": "hoch"
+  },
+  "pruefer": {
+   "handle": "herren-leinenhose-lino-locker-atmungsaktiv",
+   "gefunden": true,
+   "chart_url": "https://oss-cf.cjdropshipping.com/product/2026/05/30/03/67e7af25-f523-4082-b825-2ac510b7780f_trans.jpeg",
+   "einheit": "cm",
+   "messart": "umfang",
+   "spalten": [
+    "Länge",
+    "Taille",
+    "Hüfte"
+   ],
+   "zeilen": [
+    {
+     "groesse": "S",
+     "werte": [
+      104,
+      72,
+      106
+     ]
+    },
+    {
+     "groesse": "M",
+     "werte": [
+      106,
+      74,
+      111
+     ]
+    },
+    {
+     "groesse": "L",
+     "werte": [
+      108,
+      76,
+      116
+     ]
+    },
+    {
+     "groesse": "XL",
+     "werte": [
+      110,
+      78,
+      121
+     ]
+    },
+    {
+     "groesse": "XXL",
+     "werte": [
+      112,
+      80,
+      126
+     ]
+    },
+    {
+     "groesse": "3XL",
+     "werte": [
+      114,
+      82,
+      131
+     ]
+    }
+   ],
+   "bemerkung": "Einheit im Bild nicht ausgeschrieben, aber Fussnote 'error range of 1-3CM' und Werte (Hosenlänge 104-114) eindeutig cm. Spaltenköpfe: Pants Length / Waist Circumference / Hip Circumference (= Umfang). Taille ist im Bild ein BEREICH (Gummibund, ungedehnt-gedehnt): S 72-90, M 74-92, L 76-94, XL 78-98, XXL 80-104, 3XL 82-110 – eingetragen ist jeweils die untere Grenze. Wasserzeichen 'MARCO. DANTU' unten rechts.",
+   "sicherheit": "hoch"
+  }
+ },
+ {
+  "handle": "damen-denim-rock-midi-sexy-cool-602100",
+  "leser": {
+   "handle": "damen-denim-rock-midi-sexy-cool-602100",
+   "gefunden": true,
+   "chart_url": "https://cf.cjdropshipping.com/quick/product/8e68ddf9-de45-45c8-bb29-2654c3827dac.jpg",
+   "einheit": "cm",
+   "messart": "umfang",
+   "spalten": [
+    "Saumweite",
+    "Brust",
+    "Schulter",
+    "Länge",
+    "Taille"
+   ],
+   "zeilen": [
+    {
+     "groesse": "S",
+     "werte": [
+      124,
+      88,
+      28,
+      81,
+      74
+     ]
+    },
+    {
+     "groesse": "M",
+     "werte": [
+      128,
+      92,
+      29,
+      82,
+      78
+     ]
+    },
+    {
+     "groesse": "L",
+     "werte": [
+      134,
+      98,
+      30.5,
+      83,
+      84
+     ]
+    },
+    {
+     "groesse": "XL",
+     "werte": [
+      140,
+      104,
+      32,
+      84,
+      90
+     ]
+    }
+   ],
+   "bemerkung": "Zwei übereinstimmende Tabellen. Bild 01 «SIZE CHART» hat die Spalten Sweep, Bust, Shoulder und Toplength je in cm und inch, dazu US 4/6/8/10, UK 8/10/12/14 und EU 36/38/40/42. Die Zoll-Spalten sind weggelassen. Bild 02 (https://oss-cf.cjdropshipping.com/product/2026/07/06/07/3f59bb5e-1221-46f7-8ddb-60e4b7d13275_trans.jpeg, Artikel 14463) wiederholt Länge, Brust und Schulter mit denselben Werten. Nur dort steht die Spalte Taille (Waist Circumference), sie ist ans Ende gesetzt. Die Spalte «Pants Length/outseam» ist dort leer. Saumweite, Brust und Taille sind Umfang. Die Schulter ist eine Breite und die Länge eine Strecke. ACHTUNG Produktabweichung: Titel und CJ-Text sagen «Rock Midi, A-Linie», aber alle 22 Fotos und das Foto in Tabelle 02 zeigen ein kurzes Jeans-Trägerkleid (Latzkleid) mit Taschen. Laut Packliste «Dress x1» und Länge 81-84 cm ist es kein Midirock. Der Titel sollte geprüft werden. Die Grössen S-XL decken sich mit dem Shop.",
+   "sicherheit": "hoch"
+  },
+  "pruefer": {
+   "handle": "damen-denim-rock-midi-sexy-cool-602100",
+   "gefunden": true,
+   "chart_url": "https://cf.cjdropshipping.com/quick/product/8e68ddf9-de45-45c8-bb29-2654c3827dac.jpg",
+   "einheit": "cm",
+   "messart": "umfang",
+   "spalten": [
+    "Saumweite",
+    "Brust",
+    "Schulter",
+    "Länge"
+   ],
+   "zeilen": [
+    {
+     "groesse": "S",
+     "werte": [
+      124,
+      88,
+      28,
+      81
+     ]
+    },
+    {
+     "groesse": "M",
+     "werte": [
+      128,
+      92,
+      29,
+      82
+     ]
+    },
+    {
+     "groesse": "L",
+     "werte": [
+      134,
+      98,
+      30.5,
+      83
+     ]
+    },
+    {
+     "groesse": "XL",
+     "werte": [
+      140,
+      104,
+      32,
+      84
+     ]
+    }
+   ],
+   "bemerkung": "Bild hat cm- UND inch-Spalten nebeneinander; übernommen sind nur die cm-Werte (inch-Werte geprüft, passen: z. B. 124 cm = 48.8 in, 30.5 cm = 12.0 in, 81 cm = 31.9 in). Spaltenköpfe: Sweep (Saumweite) / Bust / Shoulder / Toplength. Zusätzliche Grössenspalten: S = US 4 / UK 8 / EU 36, M = US 6 / UK 10 / EU 38, L = US 8 / UK 12 / EU 40, XL = US 10 / UK 14 / EU 42. ACHTUNG: Die Tabelle passt NICHT zu einem Rock – sie hat Brust, Schulter und 'Toplength' (81-84 cm), aber weder Taille noch Hüfte; sie gehört eher zu einem Oberteil/Kleid (Trägerkleid?). Vor Verwendung prüfen, ob das Produkt wirklich ein Rock ist oder die falsche Tabelle anhängt. Brust 88 bei S = Umfang; Saumweite ebenfalls Umfang; Schulter ist eine Breite.",
+   "sicherheit": "mittel"
+  }
+ }
+]
