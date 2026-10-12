@@ -1071,3 +1071,4 @@
 16613828657543	Farbe:2:2	2026-10-12	led-bluetooth-live-licht-93020c
 16613828428167	Grösse:2:2	2026-10-12	organizer-fur-autositz-ruckenlehne-718720
 16613827969415	Modell:3:3	2026-10-12	quarz-uhrwerk-0a511a
+16613802148231	Farbe:2:2	2026-10-12	solar-multifunktionsradio-mit-handkurbel-129600
