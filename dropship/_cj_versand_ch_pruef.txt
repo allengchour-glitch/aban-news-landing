@@ -7382,3 +7382,7 @@ fussballtor-122-x-81-cm-stahl-weiss-927746	-	-	-	unklar pid 1602002 Product has 
 tischfussball-balle-10-stk-32-mm-abs-801666	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 multi-universal-reiseadapter-5f1893	1728F122-A67D-4D2B-83ED-E3A8E2BB6FF4	16	6.48	ok	landeseite
 led-wecker-mit-kabelloser-ladefunktion-518080	1422036227833597952	7	8.03	ok	landeseite
+led-laser-rolling-pet-toy-ball-ef4abd	09ADECBC-0793-42DC-88FA-BDB580E8F4C7	7	6.67	ok	landeseite
+halterung-fur-ruckspiegel-handy-045440	1490967753375485952	16	8.05	ok	landeseite
+aromatherapie-duftol-fur-luftbefeuchter-640556	01FAB857-2403-44B2-91DC-02BD9C890C22	3	5.62	ok	landeseite
+3-in-1-trinkflasche-fur-haustiere-mit-futter-k-535040	1650398167281700864	16	9.07	ok	landeseite
