@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-12T11:54:24Z",
+ "stand": "2026-10-12T19:23:49Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,84 +18,68 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Qualcomm-Chef: KI-Agenten sollen für Smartphone-Käufe Anreiz sein",
-   "u": "https://www.golem.de/news/qualcomm-chef-ki-agenten-sollen-fuer-smartphone-kaeufe-anreiz-sein-2610-214003.html",
-   "q": "Golem",
-   "d": "2026-10-12T11:44:02Z",
-   "s": "Cristiano Amon erwartet, dass KI-Agenten die Smartphone-Käufe ankurbeln. Der Qualcomm-CEO hat daran sicherlich ein Eigeninteresse. (KI, Smartphone)",
-   "sprache": "de"
-  },
-  {
-   "t": "Im Kampf gegen KI-Scam: Wie Bots Betrügern ihre wertvolle Zeit stehlen",
-   "u": "https://www.heise.de/news/Im-Kampf-gegen-KI-Scam-Wie-Bots-Betruegern-ihre-wertvolle-Zeit-stehlen-11484115.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-12T11:08:00Z",
-   "s": "Am besten kämpft man gegen die steigende Anzahl von KI-Betrugsfällen laut Sicherheitsexperten ebenfalls mit KI. Wie KI-Bots Betrüger in Schach halten.",
-   "sprache": "de"
-  },
-  {
-   "t": "SAP zwischen KI-Vision und ERP-Alltag: DSAG fordert Wahlfreiheit",
-   "u": "https://www.heise.de/news/SAP-zwischen-KI-Vision-und-ERP-Alltag-DSAG-fordert-Wahlfreiheit-11484019.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-12T10:46:00Z",
-   "s": "SAP will mit KI-Agenten die Unternehmenssoftware neu gestalten. Die SAP-Anwendergruppe DSAG fordert aber Innovationen auch für bestehende ERP-Systeme.",
-   "sprache": "de"
-  },
-  {
-   "t": "Physiker finden mathematische Formel: Wann lokale KI-Modelle plötzlich gefährlich werden",
-   "u": "https://t3n.de/news/mathematische-formel-kipppunkt-ki-1767244/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-10-12T09:55:00Z",
-   "s": "Modelle für künstliche Intelligenz können unvermittelt von sicheren zu gefährlichen Ausgaben wechseln. Eine neue mathematische Formel soll helfen, diesen kritischen Kipppunkt frühzeitig zu erkennen. w…",
-   "sprache": "de"
-  },
-  {
-   "t": "Total Annihilation: KI hat neue Engine für Strategieklassiker programmiert",
-   "u": "https://www.golem.de/news/total-annihilation-ki-hat-neue-engine-fuer-strategieklassiker-programmiert-2610-213989.html",
-   "q": "Golem",
-   "d": "2026-10-12T09:37:01Z",
-   "s": "Eine weitgehend mithilfe von KI entwickelte Open-Source-Engine bringt Total Annihilation auf moderne Rechner und in den Browser. (KI, Spiele)",
-   "sprache": "de"
-  },
-  {
-   "t": "Weniger Demo, mehr Daten: Was Unternehmen nach dem KI-Hype wirklich beschäftigt",
-   "u": "https://t3n.de/news/weniger-demo-mehr-daten-was-unternehmen-nach-dem-ki-hype-wirklich-beschaeftigt-1765690/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-10-12T07:00:08Z",
-   "s": "Chatbots, Copiloten und beeindruckende Demos gibt es inzwischen genug. 2026 wollen Unternehmen vor allem wissen, welche KI-Anwendungen im Arbeitsalltag funktionieren und sich rechnen. Drei Entwicklung…",
-   "sprache": "de"
-  },
-  {
-   "t": "Will the HomeView be Apple’s first smart home success?",
-   "u": "https://techcrunch.com/2026/10/11/will-the-homeview-be-apples-first-smart-home-success/",
+   "t": "Meta releases its first frontier model, Muse Wonder",
+   "u": "https://techcrunch.com/2026/10/12/meta-releases-its-first-frontier-model-muse-wonder/",
    "q": "TechCrunch AI",
-   "d": "2026-10-11T21:14:40Z",
-   "s": "Over the past couple of years, we’ve seen multiple reports that Apple was working on a new smart home product, but now it seems the product has a name and a launch date.",
+   "d": "2026-10-12T17:56:56Z",
+   "s": "Where Muse Spark aimed to be a lightweight model that could perform at low latency, the Wonder models are larger and said to be more capable, with higher benchmark scores and better results on complex…",
    "sprache": "en"
   },
   {
-   "t": "48 hours to TechCrunch Disrupt 2026 — hear directly from the people building what’s next",
-   "u": "https://techcrunch.com/2026/10/11/48-hours-to-techcrunch-disrupt-2026-hear-directly-from-the-people-building-whats-next/",
+   "t": "WindBorne wins a hefty US Air Force contract for its balloon data",
+   "u": "https://techcrunch.com/2026/10/12/windborne-wins-a-hefty-us-air-force-contract-for-its-balloon-data/",
    "q": "TechCrunch AI",
-   "d": "2026-10-11T19:00:00Z",
-   "s": "Less than 48 hours, TechCrunch Disrupt 2026 starts in San Francisco’s Moscone West. Save up to $100 on your pass before prices increase at the door, plus get 50% on a second pass. Or score other deals…",
+   "d": "2026-10-12T17:19:14Z",
+   "s": "A Silicon Valley startup that uses weather balloons and AI to predict the weather won a U.S. military contract worth almost $50 million.",
    "sprache": "en"
   },
   {
-   "t": "Impactful scheduling for GPU clusters",
-   "u": "https://huggingface.co/blog/allenai/impactful-scheduling",
-   "q": "Hugging Face",
-   "d": "2026-10-09T15:20:29Z",
-   "s": "",
-   "sprache": "en"
+   "t": "Anzeige: KI für Pentesting, Schwachstellenanalyse und Reporting",
+   "u": "https://www.golem.de/news/anzeige-ki-fuer-pentesting-schwachstellenanalyse-und-reporting-2610-213849.html",
+   "q": "Golem",
+   "d": "2026-10-12T16:45:02Z",
+   "s": "KI in der IT-Sicherheit kann Tests unterstützen, liefert aber auch unzuverlässige Ergebnisse. Ein Workshop zeigt Verfahren und Grenzen. (Golem Karrierewelt, Server-Applikationen)",
+   "sprache": "de"
   },
   {
-   "t": "The Download: AI’s refusal problem and weight-loss drug side effects",
-   "u": "https://www.technologyreview.com/2026/10/09/1146250/the-download-ai-refusal-problem-weight-loss-drug-side-effects/",
-   "q": "MIT Tech Review",
-   "d": "2026-10-09T12:10:00Z",
-   "s": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. We’re putting too much faith in AI’s ability to say no Today’s…",
-   "sprache": "en"
+   "t": "Airbus testet Kampfdrohne U740 Valkyrie",
+   "u": "https://www.heise.de/news/Airbus-testet-Kampfdrohne-U740-Valkyrie-11484973.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-10-12T16:07:00Z",
+   "s": "Airbus hat die US-Kampfdrohne U740 Valkyrie getestet. Für den Einsatz in der Bundeswehr soll sie eine von Airbus entwickelte, KI-gestützte Software bekommen.",
+   "sprache": "de"
+  },
+  {
+   "t": "(g+) Künstliche Intelligenz: Ein Blick in die 'Roboter-Fitnessstudios', in denen Maschinen für ...",
+   "u": "https://www.golem.de/news/kuenstliche-intelligenz-ein-blick-in-die-roboter-fitnessstudios-in-denen-maschinen-fuer-die-echte-welt-trainiert-werden-2610-214019.html",
+   "q": "Golem",
+   "d": "2026-10-12T16:00:02Z",
+   "s": "Robotern fehlen Trainingsdaten aus der echten Welt. Die Financial Times zeigt in unserem Lesetipp, wie Unternehmen das ändern wollen. Von Rafe Rosner-Uddin (Roboter, KI)",
+   "sprache": "de"
+  },
+  {
+   "t": "Satya Nadella will „Notbremse“, um KI abschalten zu können",
+   "u": "https://www.heise.de/news/Microsoft-Chef-will-Notbremse-fuer-kuenstliche-Intelligenz-11483617.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-10-12T13:58:00Z",
+   "s": "Nach Hacking-Attacken durch KI schlägt Satya Nadella Regeln für die Technologie vor. Die Maßnahmen offenbaren, wie besorgt der Microsoft-Chef ist.",
+   "sprache": "de"
+  },
+  {
+   "t": "Das Ende von Photoshop, Word & Co.? So schlagen sich KI-generierte Software-Kopien wirklich",
+   "u": "https://t3n.de/news/das-ende-von-photoshop-word-co-so-schlagen-sich-ki-generierte-software-kopien-wirklich-1767815/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-10-12T13:15:38Z",
+   "s": "Von Adobe Photoshop bis Microsoft Word: Artcraft bietet KI-generierte Kopien einiger der beliebtesten Software-Tools an. Wie gut sind die Gratis-Klone wirklich weiterlesen auf t3n.de",
+   "sprache": "de"
+  },
+  {
+   "t": "Entwickler lassen GPT, Claude und Grok einen Toyota fahren: So lief der Test",
+   "u": "https://t3n.de/news/gpt-claude-grok-steuern-toyota-1767731/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-10-12T12:30:09Z",
+   "s": "Drei Entwickler haben die großen Sprachmodelle GPT, Claude und Grok ans Steuer eines echten Fahrzeugs gelassen. Tatsächlich gelang es allen drei KI-Systemen, das Auto zu steuern. Aber nur ein Modell a…",
+   "sprache": "de"
   }
  ]
 }
