@@ -1,0 +1,34 @@
+{
+  "typ": "skript",
+  "skript": "pinterest_pin_erstellen.mjs",
+  "id": "pinterest-pin-2026-10-12-5",
+  "warum": "Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus auftraege/pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). 5 von 10 heute.",
+  "stand": "ok",
+  "begonnen": "2026-10-12T01:22:27.324Z",
+  "dauer_s": 61.6,
+  "ergebnis": {
+    "gepinnt": [
+      "weinoffner-mit-luftdruckpumpe-198db1"
+    ],
+    "unklar": [],
+    "uebersprungen": [],
+    "schritte": [
+      "Warteschlange 163, quittiert 55, offen 110",
+      "Boards auf dem Profil: /luxestyleCH/sommerkleider-damenmode-2026/, /luxestyleCH/wellness-beauty/, /luxestyleCH/schuhe-sandalen/, /luxestyleCH/home-geschenkideen/, /luxestyleCH/schmuck-accessoires/, /luxestyleCH/herrenmode-schweiz/, /luxestyleCH/wohnen-deko/, /luxestyleCH/schlaf-aromatherapie/, /luxestyleCH/geschenkideen-schweiz/, /luxestyleCH/k%C3%BCche-genuss/, /luxestyleCH/tech-gadgets/, /luxestyleCH/leder-accessoires/, /luxestyleCH/wellness-self-care/, /luxestyleCH/beauty-pflege/",
+      "Pinnwand «Home & Geschenkideen» (https://ch.pinterest.com/luxestyleCH/home-geschenkideen/, 1183 Z.): Titel nicht da",
+      "Bild 35193 Bytes (image/jpeg)",
+      "Beschreibung eingetragen",
+      "Nachlesen: Titel auf der Pinnwand (1232 Z.)"
+    ],
+    "bilder": [
+      "auftraege/ergebnis/pinterest-pin-2026-10-12-5-1-bild.png",
+      "auftraege/ergebnis/pinterest-pin-2026-10-12-5-2-ausgefuellt.png",
+      "auftraege/ergebnis/pinterest-pin-2026-10-12-5-3-nachher.png"
+    ],
+    "pin": {
+      "handle": "weinoffner-mit-luftdruckpumpe-198db1",
+      "board": "Home & Geschenkideen",
+      "title": "Weinöffner mit Luftdruckpumpe"
+    }
+  }
+}
