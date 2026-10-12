@@ -10471,3 +10471,10 @@ gid://shopify/Product/15460673192321	1791738530	ok	40 Shop / 40 CJ / 0 fehlend /
 gid://shopify/Product/15460701602177	1791738530	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15460701634945	1791738530	ok	18 Shop / 18 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15460701667713	1791738530	ok	9 Shop / 9 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15431384269185	1791778126	unklar	SKU-DOPPELT: 4 Shop-Varianten teilen einen CJ-Kern, 4 ohne Namens-Treffer bei CJ
+gid://shopify/Product/15431384498561	1791778126	unklar	SKU-DOPPELT: 4 Shop-Varianten teilen einen CJ-Kern, 4 ohne Namens-Treffer bei CJ
+gid://shopify/Product/15431384859009	1791778126	unklar	SKU-DOPPELT: 4 Shop-Varianten teilen einen CJ-Kern, 4 ohne Namens-Treffer bei CJ
+gid://shopify/Product/15431385121153	1791778126	unklar	SKU-DOPPELT: 4 Shop-Varianten teilen einen CJ-Kern, 4 ohne Namens-Treffer bei CJ
+gid://shopify/Product/15445274263937	1791778126	ok	6 Shop / 6 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15447892492673	1791778126	ok	4 Shop / 4 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15448834736513	1791778126	ok	17 Shop / 17 CJ / 0 fehlend / 0 DENY
