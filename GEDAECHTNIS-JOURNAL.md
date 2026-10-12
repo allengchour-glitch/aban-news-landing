@@ -49,6 +49,16 @@
 
 
 
+## 🔎 Google-Gratis-Einträge: bester Kanal, aber die Nachfrage-Produkte verschwanden (2026-10-12, «weiter verbessern»)
+- GEMESSEN (ShopifyQL 90 T, Menschen): sag_organic 44 Sitz. → 6 Körbe → 5 Kasse → 1 Kauf (TikTok-Werbung 144 → 2 → 2 → 0). Wöchentlich:
+  Juli 7–27, seit August 0–4. Von 48 Juli-Sitzungen landeten 34 auf heute gedrafteten Produkten (BigBuy-Ende, nicht CH-lieferbar,
+  ohne Lieferant, Verlust, Dubletten); auch aktive sinken (Jul 14 → Aug 12 → Sep 6 → Okt 3). Google-Websuche: winzig (14 Begriffe ≥ 3 Impr.).
+- Wächter `automation/google_nachfrage_wache.py` (Selbsttest 15/15, Aufseher täglich): 197 Produkte mit Google-Besuch (120 T), 60 weg,
+  8 mit Ersatz (Weiterleitung/Zwilling), 52 ohne (11 mit Warenkorb). Bericht `dropship/GOOGLE-NACHFRAGE.md` = dritte Prioritätsquelle
+  für `cj_versand_ch_revive.py`. Falle: Shopify-Suche verknüpft Wörter mit UND → Zwilling nur über das längste Kernwort suchen.
+- Lehre: Jeder Draft-Grund war für sich richtig, aber keiner fragte nach Ersatz für bewiesene Nachfrage. Vor dem Draften eines
+  Produkts mit Google-Besuch: Zwilling aktiv? Sonst Weiterleitung. CJ-API hing heute zweimal > 60 s (takt-Konkurrenz) — Bestell-Runner lief trotzdem.
+
 ## 🤖 Kauf-Strecke Tag 2: Ein Drittel der «Sitzungen ohne Herkunft» sind Abgraser, die Shopify als Mensch zählt (2026-10-12)
 - GEMESSEN: 01.10. 21h 41 Sitzungen auf 41 verschiedenen Produktseiten (je 1×), 25 iOS / 25 Android, Orte Aarau–Madrid–Istanbul–USA,
   0 Warenkörbe; nicht korreliert mit TikTok (r = −0,01). Seit 01.09. 10 solche Stunden = 143 von 438 Produktsitzungen ohne Herkunft.
@@ -20016,3 +20026,4 @@ Verschoben am 04.10.2026:
 - 2026-10-10 · 📧 **«sonst verbessere weiter»: Klaviyo-Warenkorb-Flow `Vse76a` hatte die Mail als ERSTE Aktion (Wartezeit dahinter) → Mail 1 im Median 25 s nach Kassenstart, 2/6 Empfängerinnen bezahlten gerade (Klaviyo-«Conversion» #1021 unecht); neuer Flow `XEGbTB` 1 h → Mail 1 → 23 h → Mail 2 live, alter Entwurf, Texte ohne «reserviert»/«nur für kurze Zeit»/ß/«Hey ,»; Wächter `klaviyo_flow_pruefen.py` (8/8, Stand-Datei, «Messung fällig» > 7 T); Abbruch-Messung zählt echt/Test/eigen/Wegwerf (15 T: 10 → echt 2, 3 eigene Prüfkörbe).** Reihenfolge an `entry_action_id` + Zeitstempeln ablesen, nicht am Vorlagennamen → `dropship/WARENKORB-MAIL-2026-10-10.md`
 - 2026-10-10 · 🛏️ **«weiter»: Hype-Recherche → Thema «Schlaf-Stützkissen» (Bestand 20), 16 neu in der Reihe; Trockenlauf fand Fehlgriffe «MagSafe» = Handyhülle zum Selbstgestalten, «Oversize Hoodie» = Mode → Muster an Warenwort gebunden. Google 06:58: CH-Blocker 1'050 («Unable to show image» 109 = neu versionierte Bilder, 25/25 HTTP 200), «Missing shipping [LI]» 28'195 nach der LI-Freigabe → nachmessen 11.10.** Merkmalwort ≠ Warenwort → Journal 10.10. 07:15
 - 2026-10-10 · 🧾 **«weiter»: 13 Produkte mit Händlerbedingungen im Text («Preis 40 yuan», «Aufpreis 10 Yuan … Rückgabe ausgeschlossen», «Mindestbestellmenge 10 Meter» = CJ-Einheit 10M ohne Menge im Titel, «MOQ100 Rucksack», Fortura «· 6 Stück» + «Preis pro Stück») → `bedingung_satz` in `haendlerwort_regel.json` (py + mjs, Satz fällt, 110/110, py=js 52'364/0), Importer-Anweisung, Stoffe «· 10 m» von Hand, MOQ100 DRAFT, 5 Texte per Wächter.** Mindestmenge = oft Verkaufseinheit → in den Titel → `dropship/HAENDLERBEDINGUNG-2026-10-10.md`
+- 2026-10-10 · 🎨 **Verbesserungsrunde: Code VOR der Farbe im Auswahlfeld («2350 Black», «646 Schwarz», «2GS8111G Brown»; 396 aktive, 193 Optionen mit Farbe dahinter) — `farbcode_modell` (09.10.) prüft nur Werte ohne Leerzeichen, Importer-`ohneCode()` nur Codes mit Grossbuchstaben vorn → `data/farbcode_praefix_regel.json` = `farbcode_praefix.py` (Aufseher täglich) = `.mjs` in beiden Importern (45 Kanarien, py=js 16'677/0) → 193/0 live; Fallen: angeklebtes Wort «3237Dark», Mass «45x45cm», `9xx` schluckte «933»; stale «GOOGLE-VERSUCH»-Zeile ausgebaut; Anstoss leert die Google-Meldung bis zur Neuprüfung.** Alle Schreibformen eines Lecks prüfen → `dropship/FARBCODE-PRAEFIX-2026-10-10.md`  ← (aus dem CLAUDE.md-Index verschoben am 12.10. 16:10)
