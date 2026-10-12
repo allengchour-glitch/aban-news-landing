@@ -96,7 +96,7 @@
       "titel_ja": [
         "power ?bank"
       ],
-      "titel_nein": "hülle|case|tasche|ersatz|kabel\\b|starthilfe"
+      "titel_nein": "hülle|case|tasche|ersatz|kabel\\b|starthilfe|oculus|quest|kopfband|vr\\b"
     },
     {
       "name": "staubsauger",
@@ -133,7 +133,7 @@
         "t-?shirt",
         "herren|männer"
       ],
-      "titel_nein": "damen|frauen|kinder|mädchen|hemd\\b|bluse|langärm|langarm|holland"
+      "titel_nein": "damen|frauen|kinder|mädchen|hemd\\b|bluse|langärm|langarm|holland|revers|polo|kragen"
     },
     {
       "name": "handwaermer",
@@ -165,7 +165,7 @@
       "titel_ja": [
         "kerze\\b|kerzen\\b|duftkerze"
       ],
-      "titel_nein": "form\\b|formen|ständer|halter|wärmer|docht|giess|silikon|leuchter|zubehör|herstellung|wachs\\b"
+      "titel_nein": "form\\b|formen|ständer|halter|wärmer|docht|giess|silikon|leuchter|zubehör|herstellung|wachs\\b|regal|wandregal|ornament|figur"
     }
   ],
   "veto": {
@@ -180,7 +180,8 @@
     "Bild ≠ Titel (Akku-Hülle statt Powerbank, Polo statt T-Shirt, Smiley statt Streifen)": [
       "handy-powerbank-622700",
       "herren-t-shirt-aus-eisseide-mit-kurzarm-291200",
-      "herren-t-shirt-mit-streifenmuster-622900"
+      "herren-t-shirt-mit-streifenmuster-622900",
+      "ice-silk-fashion-t-shirt-fur-herren-624700"
     ],
     "Collage aus zwei Bildern, wirkt billig": [
       "tragbarer-akku-staubsauger-7f21be"
