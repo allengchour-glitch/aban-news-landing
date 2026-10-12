@@ -1,8 +1,8 @@
 # Judge.me-Wache — unechte Bewertungen (nur lesen)
 
-Stand: 2026-10-10 04:19 UTC · Skript `automation/judgeme_fake_wache.py` (taeglich im Aufseher) · Dauer 241 s
+Stand: 2026-10-12 07:05 UTC · Skript `automation/judgeme_fake_wache.py` (taeglich im Aufseher) · Dauer 290 s
 
-**JUDGEME: unklar (unvollstaendig: rating 5 >100 Seiten (API-Deckel page=100)) · bis dahin 0 verdaechtig · 3 Namen unmaskiert · 14396 von 15615 gelesen**
+**JUDGEME: unklar (unvollstaendig: rating 5 >100 Seiten (API-Deckel page=100)) · bis dahin 0 verdaechtig · 2 Namen unmaskiert · 14417 von 15700 gelesen**
 
 Hausregel: NIE Fake-Reviews (UWG). Die Wache LIEST nur — jeder Befund ist ein Entscheid fuer einen Menschen:
 ausblenden = `PUT https://judge.me/api/v1/reviews/<id>` mit `{"curated":"spam"}` (privater Token + shop_domain),
@@ -37,9 +37,9 @@ Judge.me schreibt sie zeitverzoegert; der Waechter unten liest sie bei jedem Lau
 
 | Feld | Wert | updatedAt |
 |---|---|---|
-| all_reviews_count | 12711 | 2026-10-10T03:16:22Z |
+| all_reviews_count | 12796 | 2026-10-12T02:21:18Z |
 | all_reviews_rating | 4.83 | 2026-10-10T03:16:23Z |
-| reviews_grid.metafield_updated_at | 2026-10-10T03:19:28Z | 2026-10-10T03:19:29Z |
+| reviews_grid.metafield_updated_at | 2026-10-12T02:24:30Z | 2026-10-12T02:24:31Z |
 | shop_reviews_count | 0 | 2026-09-23T00:11:06Z |
 | shop_reviews_rating | 0.00 | 2026-09-23T00:11:06Z |
 
@@ -47,13 +47,12 @@ Judge.me schreibt sie zeitverzoegert; der Waechter unten liest sie bei jedem Lau
 
 _keine_
 
-## Namen unmaskiert — veroeffentlicht (3)
+## Namen unmaskiert — veroeffentlicht (2)
 
 | ID | erstellt | ★ | Produkt-ID | Name | E-Mail (maskiert) | Text | Zustand | Gruende |
 |---|---|---|---|---|---|---|---|---|
 | 1316672656 | 2026-08-31T16:12 | 5 | 15451638038913 | AliExpress Müşterisi | cj…@luxestyle.ch | «excelente vale la pena por el precio .graba super bien en la» | veröffentlicht | Name unmaskiert «AliExpress Müşterisi» |
 | 1315625975 | 2026-08-30T20:23 | 5 | 15450858062209 | Darksin | cj…@luxestyle.ch | «Phofay is one of those brands where you question how it isn'» | veröffentlicht | Name unmaskiert «Darksin» |
-| 1313874473 | 2026-08-29T02:17 | 5 | 15450852786561 | Unishkhyaju | cj…@luxestyle.ch | «Das Produkt sieht nicht neu aus. Auf dem Gehäuse sind Kratze» | veröffentlicht | Name unmaskiert «Unishkhyaju» |
 
 ## Bereits ausgeblendet / unveroeffentlicht mit Befund (1)
 
