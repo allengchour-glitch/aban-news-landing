@@ -32,6 +32,12 @@ SCHARF = os.environ.get("SCHARF") == "1"
 # (Tag, Muster auf dem normalisierten Titel, Shopify-Suchanfrage zum Vorfiltern)
 SAISON = [
     ("halloween", re.compile(r"halloween"), "status:active AND title:Halloween*"),
+    # 12.10.2026 (Messrunde «Saison», Gegenprüfung bestätigt): 12 echte Kalender, alle 02.–12.10. importiert, standen ausserhalb
+    # der Kollektion «Adventskalender» (15 aktiv) — kurz vor dem CJ-Bestellschluss (~13.–15.11.). Freitext-Suche als Vorfilter:
+    # `title:*kalender*` fand 5 von 6 Kompositen NICHT («Filz-Adventskalender», «Schlittenkalender»).
+    ("adventskalender", re.compile(r"advent-?s?kalender|weihnachtskalender|weihnachts-?countdown|schlittenkalender"),
+     "status:active AND (kalender OR adventskalender OR weihnachtskalender OR countdown OR schlittenkalender)",
+     re.compile(r"halloween|\beid\b|ramadan|beauty")),   # Halloween-Countdown, Eid-Kalender; «Beauty» schliesst die Kollektionsregel aus
 ]
 
 
@@ -41,7 +47,7 @@ def norm(t):
 
 def tags_fuer(titel):
     s = norm(titel)
-    return [tag for tag, muster, _ in SAISON if muster.search(s)]
+    return [e[0] for e in SAISON if e[1].search(s) and not (len(e) > 3 and e[3].search(s))]
 
 
 def gql(q, v=None):
@@ -70,7 +76,15 @@ def kanarienvogel():
               ("Aufblasbares Halloweenkostüm für zwei Personen", ["halloween"]),
               ("Samt-Kürbis Kissen", []),                      # Herbstdeko, kein Halloween-Bezug im Titel
               ("Ghost Magic Book Nachtlicht", []),             # nur der Suchbegriff war Halloween
-              ("Nordische Nachttischlampe Touch", [])]
+              ("Nordische Nachttischlampe Touch", []),
+              ("DIY Filz-Adventskalender zum Aufhängen", ["adventskalender"]),
+              ("Weihnachts-Schlittenkalender aus Schima superba", ["adventskalender"]),
+              ("Weihnachtskalender aus MDF – mit 24 Tagesfächern", ["adventskalender"]),
+              ("Weihnachts-Countdown-Dekoration mit Glöckchen", ["adventskalender"]),
+              ("Halloween Adventskalender Zwerge", ["halloween"]),   # Halloween-Countdown gehört nicht in den Advent
+              ("Eid Mubarak Countdown-Kalender aus Filz", []),
+              ("Adventure Rucksack für Outdoor & Sport", []),
+              ("Beauty Adventskalender 24 Tage", [])]
     ok = 0
     for t, soll in faelle:
         ist = tags_fuer(t)
@@ -85,7 +99,7 @@ def main():
         return kanarienvogel()
     print(f"START {time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())} · {'SCHARF' if SCHARF else 'TROCKEN'}", flush=True)
     gesetzt = fehler = 0
-    for tag, muster, suche in SAISON:
+    for tag, muster, suche, *_ in SAISON:
         prod, c = {}, None
         while True:
             d = gql('query($c:String,$q:String!){products(first:250,after:$c,query:$q){pageInfo{hasNextPage endCursor} '
