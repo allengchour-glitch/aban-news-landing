@@ -17640,3 +17640,9 @@ gid://shopify/Product/16614841516423	56->0	Rückenfreies Bodycon-Midi-Kleid mit 
 gid://shopify/Product/16614844137863	70->0	Umhängetasche aus PU-Leder für Herren
 gid://shopify/Product/16614845055367	25->0	Magnetisches Holzpuzzle für Kinder
 gid://shopify/Product/16613765153159	36->0	Baby Nachtlicht mit beruhigenden Klängen
+gid://shopify/Product/16613782356359	47->2	Outdoor Sneaker für Herren, flache Sohle
+gid://shopify/Product/16613788090759	40->1	Faltbarer Laptopständer aus Aluminium
+gid://shopify/Product/16613788320135	13->1	Bluetooth-Diagnosegerät für Auto
+gid://shopify/Product/16613793268103	19->1	Smart Eye Massagegerät mit Luftdruck und Wärme
+gid://shopify/Product/16613801722247	30->0	Lüfterbasis für PS4 Slim Pro
+gid://shopify/Product/16613865816455	22->0	Haustierhalsband aus Silikon mit Buchstaben
