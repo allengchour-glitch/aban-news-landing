@@ -58,3 +58,48 @@ python3 tools/werbetest_trichter.py sirene-test 14
 python3 automation/google_feedback_wache.py --kanarienvogel      # 11/11
 python3 automation/google_feedback_wache.py --umrechnen          # Bericht ohne Neuscan, Lieferländer live
 ```
+
+---
+
+# Kauf-Strecke Tag 2 — «Produktsitzungen ohne Herkunft»: Menschen oder Programme? (vorgezogen auf 12.10.)
+
+Plan-Punkt 14.10.: «Befund mit Zahl; bei Bots: Wächter statt Anzeige».
+
+## GEMESSEN (ShopifyQL, Shopify zählt alle als «human»)
+- Seit 01.10.: 195 Produktsitzungen ohne utm. Davon 135 ganz ohne Referrer, 36 von Facebook (Beiträge ohne utm),
+  22 von Google, 2 von Pinterest. Fast alle am Handy (180 von 195), davon 144 aus der Schweiz.
+- **01.10. 21:00 UTC: 41 Sitzungen in einer Stunde, auf 41 verschiedenen Produktseiten**, jede genau 1×. Mit den
+  9 «social»-Sitzungen derselben Stunde sind es genau 25 iOS und 25 Android. Die Orte reichen von Aarau über Madrid, Istanbul und Niš
+  bis Norridge (USA). 0 Warenkörbe. Mit der TikTok-Welle derselben Tage hängt es nicht zusammen (Korrelation je Stunde
+  r = −0,01, n = 55).
+- Dasselbe Muster seit September: 03.09. 09h (24 auf 24 Seiten), 05.09. 07h (16/16), 13.09. 21h (12/10), 14.09. 20h (14/14)
+  u. a. — **10 Stunden, 143 von 438 Produktsitzungen ohne Herkunft (33 %)**, alle ohne Warenkorb.
+
+## Urteil
+Das sind keine Kundinnen. Ein Mensch öffnet nicht in einer Stunde 41 verschiedene Produkte über 41 getrennte Sitzungen.
+Es ist ein Abgraser (Spionage-Werkzeug oder Katalog-Prüfer) mit Handy-Kennung und wechselnden Adressen. Wer, ist nicht
+belegt. Die übrigen Sitzungen ohne Herkunft (295) bleiben Menschen, bis etwas anderes gemessen ist.
+
+## Wächter (statt Anzeige)
+- `tools/botwellen.py`: Regel (SETZUNG, an 5 Wellen kalibriert) — eine Stunde ist eine Welle bei ≥ 6 Produktsitzungen
+  ohne utm/Referrer, ≥ 80 % davon auf verschiedenen Seiten, 0 Warenkörbe. Gegenprobe: Werbewelle auf 3 Seiten → keine
+  Welle; ein Warenkorb → Mensch. Selbsttest 8/8.
+- `tools/webseite_bilanz.py` weist je Fenster eine Zeile «ohne Bot-Wellen» aus. Nichts wird gelöscht.
+
+## Was die Bereinigung an der Bilanz ändert
+| Fenster | Sitzungen | Warenkorb-Quote |
+|---|---:|---:|
+| vorher 19.–30.09. | 190 | 5,3 % (keine Welle im Fenster) |
+| nachher 01.10.–12.10. | 523 | 1,3 % |
+| nachher **ohne Bot-Wellen** | 466 (−57) | **1,5 %** |
+
+**Die Programme erklären nur einen kleinen Teil des Rückgangs.** Der grosse Teil bleibt die TikTok-Werbung
+(144 Sitzungen, 2 Warenkörbe) — Befund der 12-Tage-Bilanz bestätigt, nicht widerlegt.
+
+## Befehle
+```
+python3 tools/botwellen.py                          # Wellen seit 01.09.
+python3 tools/botwellen.py "SINCE -7d UNTIL today"
+python3 tools/botwellen.py --selbsttest             # 8/8
+python3 tools/webseite_bilanz.py                    # Bilanz mit Zeile «ohne Bot-Wellen»
+```
