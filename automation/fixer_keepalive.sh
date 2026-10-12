@@ -2274,6 +2274,22 @@ KLT=/tmp/test_klingen_tor.log
     fi
   fi
 
+  # 12.10.2026: GOOGLE-NACHFRAGE — verschwinden Produkte, die über Google Besuch/Warenkörbe brachten? (bester Kanal:
+  # 90 T 44 → 6 Körbe → 1 Kauf; von 48 Juli-Sitzungen landeten 34 auf heute gedrafteten Produkten). Nur lesend:
+  # dropship/GOOGLE-NACHFRAGE.md (Arbeitsliste + Prioritätsquelle für cj_versand_ch_revive.py). Täglich.
+  GNW=/tmp/google_nachfrage_wache.log
+  if [ -f "$REPO/automation/google_nachfrage_wache.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$GNW" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$GNW" || still_gestorben "$GNW"; then
+      touch "$GNW"
+      ( cd "$REPO" && setsid bash -c \
+          "exec 9>/tmp/lock_google_nachfrage.lock; flock -n 9 || exit 0; exec >> \"$GNW\" 2>&1; \
+           echo \"START \$(date -u +%FT%TZ) (Aufseher)\"; python3 -u automation/google_nachfrage_wache.py --selbsttest > /dev/null \
+           && timeout 1800 python3 -u automation/google_nachfrage_wache.py; \
+           echo \"FERTIG \$(date -u +%FT%TZ)\"" 9>&- & )
+    fi
+  fi
+
   # ⭐ UNECHTE BEWERTUNGEN BEI JUDGE.ME — taeglicher LESE-Waechter (22.09.2026). Anlass: Bewertung
   # 1335720164 («Test»/«Probelauf», 5★, Shop-Ebene) stand seit 14.09. veroeffentlicht und zaehlte in
   # der Startseiten-Zahl mit; angelegt von einer fremden Session mit dem OEFFENTLICHEN Token.

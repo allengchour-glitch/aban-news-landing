@@ -1,12 +1,12 @@
 {
- "stand": "2026-10-12T15:51Z",
+ "stand": "2026-10-12T15:54Z",
  "tage": 120,
  "mit_nachfrage": 197,
  "weg": 60,
- "ersatz": 7,
- "ohne_ersatz": 53,
+ "ersatz": 8,
+ "ohne_ersatz": 52,
  "ohne_ersatz_korb": 11,
- "behebbar": 15,
+ "behebbar": 14,
  "zeilen": [
   {
    "handle": "rizinusol-wickel-set-mit-bio-ol-323457",
@@ -518,8 +518,8 @@
    ],
    "grund": "ohne Lieferant → Lieferant suchen",
    "behebbar": true,
-   "ersatz": null,
-   "ersatz_art": ""
+   "ersatz": "mikrofaser-strandtuch-277504",
+   "ersatz_art": "Zwilling (Ähnlichkeit 0.5)"
   },
   {
    "handle": "kompakte-klimaanlage-angenehme-kuhle-uberall-1099314",
