@@ -38,3 +38,11 @@
 - Handy-Benachrichtigung zeigt jetzt direkt die Liste der wartenden Bestellungen: `orderList?orderType=5`.
 - #1023 ist bezahlt (CJ UNSHIPPED, Zahlung 09:24 UTC), kein Zahllink mehr offen.
 - Leere CJ-Hüllen (`DP…`, CREATED, ohne Betrag) kommen vom CJ-Shopify-Connector, nicht vom Automaten. Nie bezahlen; der Betreiber entfernt sie.
+
+## 12.10.2026 16:02 UTC: Shopify #1025 → CJ LX1025 wartet auf Zahlung
+- Shopify #1025 (15:57 UTC): bezahlt CHF 91.62, Lausanne, 2 × K68 Signal-Detektor, Gratisversand, Neukunde.
+- Automat (cj_fulfill_runner 16:02): angelegt **LX1025 = SD2610121602510642100**, Ware $56.48 + CJPacket EQ Sensitive $16.81
+  = **$73.29**, Marge ~CHF 30.58, 6–10 Tage. CJ-Status CREATED, Guthaben $0.00 → Betreiber zahlt.
+- Zahllink (Liste der wartenden Zahlungen): https://cjdropshipping.com/mine/dropshipping/orderList?orderType=5
+  Dort nur die Bestellung **SD2610121602510642100 / LX1025 über $73.29** bezahlen; leere `DP…`-Hüllen ohne Betrag nie.
+- Nach der Zahlung holt `cj_order_watch.py` die Sendungsnummer und meldet sie an Shopify zurück (nichts von Hand nötig).

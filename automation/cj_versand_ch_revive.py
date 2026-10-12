@@ -227,8 +227,12 @@ def main():
     # Ein Bericht kennt immer nur SEINE Frage; wer nach Verkehr priorisiert, findet die
     # Seiten nicht, die Verkehr bekommen KOENNTEN.
     prio = set()
+    # ⚠️ DRITTE Quelle, 12.10.2026: GOOGLE-NACHFRAGE.md (automation/google_nachfrage_wache.py) — Produkte, die über
+    # die Google-Gratis-Einträge nachweislich Besuch oder Warenkörbe hatten (bester Kanal: 90 T 44 → 6 Körbe → 1 Kauf)
+    # und heute fehlen. Von 48 Juli-Sitzungen landeten 34 auf solchen Produkten.
     for name, muster in (("TOTE-LANDESEITEN.md", r"`([^`]+)`"),
-                         ("TOTE-RANKINGS.md", r"/products/([a-z0-9\-]+)")):
+                         ("TOTE-RANKINGS.md", r"/products/([a-z0-9\-]+)"),
+                         ("GOOGLE-NACHFRAGE.md", r"\(`([a-z0-9\-]+)`\)")):
         ber = os.path.join(REPO, "dropship", name)
         if not os.path.exists(ber):
             continue
