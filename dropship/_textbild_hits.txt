@@ -17655,3 +17655,5 @@ gid://shopify/Product/16614856622471	14->1	Grosses Oxford-Rucksack mit PVC-Mesh
 gid://shopify/Product/16614857048455	85->0	Sportreise-Aufbewahrungstasche für Frauen
 gid://shopify/Product/16614857146759	81->0	Sportliche Crossbody-Chestbag aus Nylon
 gid://shopify/Product/16614857310599	13->0	USB-Lade-Computer-Rucksack 18 L
+gid://shopify/Product/16614857441671	52->1	Schultertasche aus erster Schicht Rindsleder
+gid://shopify/Product/16614857474439	27->0	Flache sportliche Plattform-Sandalen
