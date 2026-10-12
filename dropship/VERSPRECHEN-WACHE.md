@@ -1,6 +1,6 @@
-# Versprechen ohne Beleg — Stand 2026-10-11 21:28 UTC
+# Versprechen ohne Beleg — Stand 2026-10-12 21:36 UTC
 
-Regel: `automation/data/versprechen_regel.json` (Lieferversprechen nur bei Schweizer Lager; «Qualität geprüft», «meistverkauft», «unser Bestseller» nie; dekorative «Diamanten» = Strasssteine bzw. Zirkonia). Geprüft: 53393 aktive · geändert: 0 () · Fehler: 0
+Regel: `automation/data/versprechen_regel.json` (Lieferversprechen nur bei Schweizer Lager; «Qualität geprüft», «meistverkauft», «unser Bestseller» nie; dekorative «Diamanten» = Strasssteine bzw. Zirkonia). Geprüft: 53889 aktive · geändert: 0 () · Fehler: 0
 
 ## Beispiele
 
