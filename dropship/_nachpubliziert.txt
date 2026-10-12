@@ -355,3 +355,8 @@ gid://shopify/Product/16615527055751	mesh-kleid-mit-neckholder-und-bugel-609000	
 gid://shopify/Product/16615562150279	beiges-a-linien-kleid-mit-reissverschluss-616000	Beiges A-Linien Kleid mit Reissverschluss
 gid://shopify/Product/16615611859335	einfarbiges-damenkleid-mit-puffarmel-und-v-aus-610200	Einfarbiges Damenkleid mit Puffärmel und V-Ausschnitt
 gid://shopify/Product/16615770161543	lauflernschuh-mit-schnalle-und-stickerei-55ef6d	Lauflernschuh mit Schnalle und Stickerei
+gid://shopify/Product/16615797817735	baby-unterwasche-set-mit-pinguin-motiv-605900	Baby Unterwäsche-Set mit Pinguin-Motiv
+gid://shopify/Product/16615797850503	gesteppte-baby-sneaker-mit-klettverschluss-d42d05	Gesteppte Baby-Sneaker mit Klettverschluss
+gid://shopify/Product/16615800439175	quadratisches-seiden-halstuch-638000	Quadratisches Seiden-Halstuch
+gid://shopify/Product/16615802044807	baby-lauflernschuhe-warm-und-rutschfest-a662c1	Baby Lauflernschuhe warm und rutschfest
+gid://shopify/Product/16615802110343	bluetooth-smartwatch-mit-herzfrequenz-blutsaue-125760	Bluetooth Smartwatch mit Herzfrequenz & Blutsauerstoff
