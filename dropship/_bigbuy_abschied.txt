@@ -284,3 +284,11 @@ gid://shopify/Product/16609720959367	Messing dekorative Schnalle
 gid://shopify/Product/16610081046919	Quarzuhr mit Stahlband
 gid://shopify/Product/16612342989191	Telescopischer Seilspannmechanismus
 gid://shopify/Product/16613835309447	Sitzbezug-Organizer mit USB-Anschluss
+gid://shopify/Product/16614857310599	USB-Lade-Computer-Rucksack 18 L
+gid://shopify/Product/16614885228935	Multifunktionale Sneaker-Aufbewahrungstasche
+gid://shopify/Product/16614953615751	Canvas-Reisetasche für Herren, gross
+gid://shopify/Product/16615074136455	Retro-Stil-Kleiner PU-Tasche
+gid://shopify/Product/16615373701511	Schulrucksack mit grossem Fassungsvermögen
+gid://shopify/Product/16615677886855	Quarz-Armbanduhr mit Lederarmband
+gid://shopify/Product/16615811514759	Modischer Computer-Rucksack
+gid://shopify/Product/16615812333959	Grosser Reise-Rucksack Polyester
