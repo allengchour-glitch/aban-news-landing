@@ -17895,3 +17895,4 @@ gid://shopify/Product/16615811121543	19->0	Langarmshirt Polyester
 gid://shopify/Product/16615811547527	17->0	Miniatur-Puppenhaus «Glückliches Zuhause»
 gid://shopify/Product/16615811776903	113->0	Langarmshirt aus reiner Baumwolle für Herren
 gid://shopify/Product/16615811809671	170->2	Herren-Rucksack aus PU-Leder
+gid://shopify/Product/16615812235655	62->1	Faltbarer wasserdichter Rucksack

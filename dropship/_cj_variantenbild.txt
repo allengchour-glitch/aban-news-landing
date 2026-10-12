@@ -6859,3 +6859,5 @@ gid://shopify/Product/15463671005569	zugeordnet	3	Ultraschall-Hautschaufel Reini
 gid://shopify/Product/15463688864129	zugeordnet	11	Halter-Top Kleid · Damen
 gid://shopify/Product/15463689355649	zugeordnet	9	Ärmelloses A-Linien Maxikleid für Damen
 gid://shopify/Product/15463689552257	zugeordnet	25	Geblümtes V-Ausschnitt Kleid
+gid://shopify/Product/15463689683329	zugeordnet	42	Gemustertes Tüllkleid mit V-Ausschnitt
+gid://shopify/Product/15463690207617	zugeordnet	6	Off-Shoulder Camisole mit Schnürung
