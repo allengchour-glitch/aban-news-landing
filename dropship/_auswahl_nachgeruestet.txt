@@ -1085,3 +1085,4 @@
 16614368510343	Farbe:6+Grösse:6:36	2026-10-12	weinroter-strickpullover-mit-seitenschlaufen-602900
 16614346850695	Grösse:6:6	2026-10-12	langarmpullover-mit-asymmetrischem-rundknopf-625400
 16614305431943	Farbe:4+Grösse:5:20	2026-10-12	v-ausschnitt-strickblazer-mit-knopfleiste-603300
+16614287311239	Farbe:2:2	2026-10-12	3-in-1-metalldetektor-ac-spannungsprufer-a7661a
