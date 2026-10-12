@@ -912,6 +912,31 @@ def judgeme_verdacht():
     return None
 
 
+def such_boosts():
+    """Such-Boosts der Shop-Suche (automation/such_boost.py, 12.10.2026). Liest die Ampel-Zeile aus dropship/SUCH-BOOSTS.md;
+    meldet Begriffe unter 6/8 Soll-Ware in den ersten 8 der Enter-Suche oder einen Bericht älter als 2 Tage."""
+    p = os.path.join(REPO, "dropship", "SUCH-BOOSTS.md")
+    try:
+        text = open(p, encoding="utf-8").read()
+    except OSError:
+        return None
+    m = re.search(r"\*\*(SUCHSEITE: [^*\n]+)\*\*", text)
+    stand = re.search(r"^Stand: (\d{4}-\d{2}-\d{2} \d{2}:\d{2}) UTC", text, re.M)
+    if not m or not stand:
+        return None
+    try:
+        tage = (datetime.datetime.now(datetime.timezone.utc)
+                - datetime.datetime.strptime(stand.group(1), "%Y-%m-%d %H:%M").replace(tzinfo=datetime.timezone.utc)).days
+    except Exception:
+        tage = 99
+    if tage >= 2:
+        return f"🔎 Such-Boosts seit {tage} T nicht gemessen — Aufseher-Block SUCH-BOOSTS prüfen"
+    n = re.search(r"· (\d+) Begriffe unter 6/8", m.group(1))
+    if n and int(n.group(1)) > 0:
+        return f"🔎 {m.group(1)} — dropship/SUCH-BOOSTS.md"
+    return None
+
+
 def offene_punkte():
     """Zählt die Abschnitte in COWORK-AUFTRAEGE.md VOR dem Erledigt-Teil."""
     p = os.path.join(REPO, "dropship", "COWORK-AUFTRAEGE.md")
@@ -1020,7 +1045,7 @@ def main():
     ohne_token = not os.path.exists(TOKPFAD)
     # Pruefungen, die den Shop-Token brauchen, laufen ohne ihn nicht — alle anderen schon (26.09.).
     MIT_TOKEN = (liechtenstein_gesperrt, klingen_pingpong, grow_zaehler, drafts_ohne_quittung, datei_speicher_voll, video_deckel)
-    pruefungen = (bot_puls, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kassen_lieferdatum, werbetest, verkauf_gewinn, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik)
+    pruefungen = (bot_puls, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kassen_lieferdatum, werbetest, verkauf_gewinn, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik, such_boosts)
     teile = [zugang_weg()]
     for f in pruefungen:
         if ohne_token and f in MIT_TOKEN:
