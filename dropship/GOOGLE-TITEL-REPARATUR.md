@@ -16,16 +16,19 @@
 Gegenproben: «Sexy» im Titel (45) trägt 0 «Inappropriate title»; RAUCH-Regex über 50'016 Titel = 45 Treffer, alle
 echtes Rauchzubehör; Such-Kanarienvogel `title:*zzzkanari*` = 0.
 
-## Letzter Lauf 2026-10-10T09:17:06Z — SCHARF
+## Letzter Lauf 2026-10-12T01:12:16Z — SCHARF
 
-Gescannt 52442 aktive von 52442 (EXACT); Wächter-Stand 0 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 0x gewartet, 0 s gesamt.
+Gescannt 53431 aktive von 53427 (EXACT); Wächter-Stand 1 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 5x gewartet, 39 s gesamt.
 
 | Produkt | Regel | Änderung | Status |
 |---|---|---|---|
+| zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100 | EINZEL | Kategorie → hg-11-10-5-2 | ok |
+| zigarrenschneider-011392 | RAUCH | Typ Küche & Bar → Raucherzubehör; Kategorie → hg-19; +raucher,smoke-zubehoer; −kochen,kueche | ok |
+| zigarrenschneider-gezackt-und-doppelklingig-769728 | RAUCH | Typ Küche & Bar → Raucherzubehör; Kategorie → hg-19; +raucher,smoke-zubehoer; −kochen,kueche | ok |
 
 ## Ledger gesamt
 
-49 Produkte mit rückgelesenen Änderungen; 0 Beschreibungen noch offen (Text-Sperre belegt — der nächste Lauf holt sie nach).
+51 Produkte mit rückgelesenen Änderungen; 0 Beschreibungen noch offen (Text-Sperre belegt — der nächste Lauf holt sie nach).
 
 Geschriebene Titel (rückgelesen):
 
@@ -85,8 +88,6 @@ Typ-/Tag-Korrekturen (rückgelesen):
 - spiral-pipe-atomizer-fur-trockene-krauter-467392: typ Raucherzubehör; tags_dazu raucher,smoke-zubehoer
 - strandtuch-kleid-new-style-f6bb03: typ Pool & Strand
 - taktisches-outdoor-stativ-faltbar-ausziehbar-519234: tags_dazu google-policy-flag,google-policy-waffen
+- zigarrenschneider-011392: typ Raucherzubehör; tags_dazu raucher,smoke-zubehoer
+- zigarrenschneider-gezackt-und-doppelklingig-769728: typ Raucherzubehör; tags_dazu raucher,smoke-zubehoer
 - zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100: typ Küche & Bar
-
-## Nachmessung (≥ 20 h nach dem Schreiben, Google live)
-
-- damenblau-arbeitshose-aus-baumwoll-mischung-ge-639500: Missing shipping info in some countries
