@@ -18,8 +18,6 @@ Suchverkehr ist der einzige Kanal, der in diesem Shop verkauft. Ein Ratgeber, de
 | [Gaming-Zubehör 2026: Maus, Headset & Tastatur richtig auswäh](/blogs/ratgeber/gaming-zubehoer-2026-maus-headset-tastatur) | 0 |
 | [Fitness zuhause 2026: Die richtige Ausrüstung für dein Heimt](/blogs/ratgeber/fitness-zuhause-2026-heimtraining-ausruestung) | 0 |
 | [Bartpflege & Rasur 2026: Der komplette Ratgeber für gepflegt](/blogs/ratgeber/bartpflege-rasur-2026-ratgeber) | 0 |
-| [Make-up & Beauty Basics 2026: Die wichtigsten Produkte für j](/blogs/ratgeber/make-up-beauty-basics-2026) | 0 |
-| [Caps & Sommerhüte 2026: Sonnenschutz mit Stil](/blogs/ratgeber/caps-sommerhuete-2026-sonnenschutz-stil) | 0 |
 | [Küchenhelfer 2026: Die nützlichsten Gadgets für jeden Hausha](/blogs/ratgeber/kuechenhelfer-2026-gadgets-haushalt) | 0 |
 | [Rucksack kaufen 2026: Schulranzen, Laptop- & Wanderrucksack ](/blogs/ratgeber/rucksack-kaufen-2026-ratgeber) | 0 |
 | [Beleuchtung & Lampen 2026: Stimmungsvolles Licht für jeden R](/blogs/ratgeber/beleuchtung-lampen-2026-ratgeber) | 0 |
@@ -212,7 +210,6 @@ Suchverkehr ist der einzige Kanal, der in diesem Shop verkauft. Ein Ratgeber, de
 | [Geschenkideen 2026: die passende Idee für jeden Anlass finde](/blogs/ratgeber/geschenkideen-2026-die-passende-idee-fur-jeden-anlass-finden) | 0 |
 | [Rucksack für Alltag, Uni & Reise: der grosse Rucksack-Guide](/blogs/ratgeber/rucksack-fur-alltag-uni-reise-der-grosse-rucksack-guide) | 0 |
 | [Ohrringe-Guide: Stecker, Creolen & Hänger für jeden Typ](/blogs/ratgeber/ohrringe-guide-stecker-creolen-hanger-fur-jeden-typ) | 0 |
-| [Winter-Wärme zuhause: Heizdecke, Kuscheldecke & Co richtig w](/blogs/ratgeber/winter-warme-zuhause-heizdecke-kuscheldecke-co-richtig-wahlen) | 0 |
 | [Gaming-Setup für Einsteiger: die richtige Grundausstattung](/blogs/ratgeber/gaming-setup-fur-einsteiger-die-richtige-grundausstattung) | 0 |
 | [Herrenuhr-Guide: welcher Uhrentyp passt zu deinem Stil?](/blogs/ratgeber/herrenuhr-guide-welcher-uhrentyp-passt-zu-deinem-stil) | 0 |
 | [Die besten Mini-Ventilatoren für unterwegs 2026 – Ratgeber f](/blogs/ratgeber/die-besten-mini-ventilatoren-fur-unterwegs-2026-ratgeber-fur-heisse-schweizer-sommertage) | 0 |
