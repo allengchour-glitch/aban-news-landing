@@ -17758,3 +17758,6 @@ gid://shopify/Product/16615515423111	136->0	Leichter Strick-Schal
 gid://shopify/Product/16615516275079	32->0	Damen-Kleid mit V-Ausschnitt und Rüschenärmeln
 gid://shopify/Product/16615517258119	90->0	Leinen-Dreieckstuch
 gid://shopify/Product/16615518765447	16->0	Gestrickter Dreieckschal mit Streifenmuster
+gid://shopify/Product/16615520207239	68->0	Gestrickter Schal mit Aushöhlung
+gid://shopify/Product/16615520633223	9->3	Schnelltrocknende Wasserschuhe
+gid://shopify/Product/16615524172167	125->0	Strickkleid mit langen Ärmeln
