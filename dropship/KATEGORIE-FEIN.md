@@ -1,36 +1,28 @@
-# Feinkategorie (automatisch, 2026-10-12 06:27 UTC)
+# Feinkategorie (automatisch, 2026-10-12 07:05 UTC)
 
 Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 
 | Zustand | Produkte |
 |---|---:|
-| gleich | 35223 |
+| gleich | 35476 |
 | shopify-feiner | 15094 |
 | kein-google | 1635 |
 | rueckfall-grob | 1062 |
-| anderer-zweig | 543 |
-| ohne-kategorie | 201 |
-| verfeinern | 73 |
+| anderer-zweig | 552 |
+| ohne-kategorie | 36 |
+| kreuz | 14 |
 | titelprobe-nein | 14 |
-| kreuz | 13 |
 | schon-im-ledger | 13 |
+| verfeinern | 13 |
 | keine-zuordnung | 1 |
-| **geschrieben** | 73 (Fehler 0) |
+| **geschrieben** | 13 (Fehler 0) |
 
 ## Ziele (dieser Lauf)
 
-- 21 → Clothing > Sleepwear & Loungewear > Pajamas
-- 16 → Clothing > Underwear & Socks > Hosiery
-- 16 → Clothing > Underwear & Socks > Socks
-- 7 → Outdoor Recreation > Boating & Water Sports > Swimming > Swim Goggles & Masks
-- 5 → Clothing Accessories > Gloves & Mittens
-- 2 → Clothing > Baby & Toddler Clothing > Toddler Underwear
-- 1 → Outdoor Recreation > Boating & Water Sports > Diving & Snorkeling > Diving & Snorkeling Masks
-- 1 → Clothing Accessories > Scarves & Shawls > Scarves
-- 1 → Clothing > Shirts & Tops
-- 1 → Clothing > Outerwear > Snow Pants & Suits
-- 1 → Clothing > Sleepwear & Loungewear > Loungewear
-- 1 → Clothing > Outfit Sets
+- 7 → Backpacks
+- 4 → Toys > Building Toys
+- 1 → Handbags, Wallets & Cases > Handbags
+- 1 → Toys > Dolls, Playsets & Toy Figures > Stuffed Animals
 
 ## Titelprobe hat abgelehnt (bleibt grob)
 
