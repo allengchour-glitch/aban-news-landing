@@ -14,7 +14,17 @@
  *      [MIN_SCORE=1] · [DRY_RUN=1]
  */
 import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { nachlauf } from './eimer_etikette.mjs';
+
+// STOPP-Schalter (12.10.2026, Gegenprobe wf_52c03c1d): Die Importe erschienen als Shop-Bewertungen mit Platzhalter-
+// Name «Käufer:in beim Lieferanten» und Platzhalter-Mail; Lieferanten-Kommentare sind keine Kundenbewertungen des Shops.
+// Solange die Datei existiert, schreibt dieses Skript NICHTS nach Judge.me. Aufheben = Betreiber-Entscheid.
+const STOPP = fileURLToPath(new URL('../dropship/_bewertungen_stopp.txt', import.meta.url));
+if (fs.existsSync(STOPP)) {
+  console.log('STOPP: dropship/_bewertungen_stopp.txt vorhanden — kein Judge.me-Schreiben (Betreiber-Entscheid offen)');
+  process.exit(0);
+}
 
 const CJ_EMAIL = (process.env.CJ_EMAIL || '').trim();
 const CJ_API_KEY = (process.env.CJ_API_KEY || '').trim();

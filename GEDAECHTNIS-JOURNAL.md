@@ -72,6 +72,27 @@ vorkommende Sätze und liest zurück, Ledger `dropship/_versand_band.tsv`). Offl
 **Grenze:** Judge.me-Texte «No reviews» und «Bestbewertet» stehen in keiner Theme-Datei; die Ursache liegt in der App
 (Judge.me-Admin, Betreiber). Im Theme ist dafür nichts zu ändern.
 
+**Umgesetzt (04:50 UTC):** Der Wächter ist SCHARF gelaufen: Sirène und Wecker-Armband gelesen, geschrieben, neu gelesen,
+frisch gegengelesen (alter Satz weg, neuer da). Die Gegenprobe hat meine Vorab-Texte korrigiert: der Zweite-Artikel-Satz
+ist gestrichen (nicht gemessen), «in der Schweiz» ist Pflicht (Liechtenstein 14,90 CHF bei 49,90 und 50,00).
+
+**Zweiter Befund, schwerer (Gegenprobe):** Der Bewertungs-Import (`automation/cj_reviews_import.mjs`, Judge.me) hat
+CJ-Lieferantenkommentare als Shop-Bewertungen eingestellt: Name «Käufer:in beim Lieferanten», Platzhalter-Mail
+cj-import@luxestyle.ch, 351 Produkte, 1'848 Posts (`/tmp/cj_reviews_import.log`). Das widerspricht unserer Regel «keine
+erfundenen Bewertungen». Der Import ist jetzt per Stopp-Datei `dropship/_bewertungen_stopp.txt` angehalten; **gelöscht
+wurde nichts**. Die Entscheidung über Quelle und Kennzeichnung liegt beim Betreiber. Lehre: ein Eintrag im Ledger ist keine
+Veröffentlichung, aber `cj_reviews_done.txt` quittiert auch Produkte OHNE einen einzigen Kommentar — Quittungen sind keine
+Messung.
+
+**Dritter Befund:** Die drei Abendkleid-/Set-Seiten haben 0 Judge.me-Bewertungen (10'000 Einträge gelesen; der Filter
+wird von der API ignoriert) und 0 echte CJ-Kommentare. CJ-Größentabellen gibt es nur als Bild (Aurora, Provence), ohne
+Einheit → nicht veröffentlicht, bis eine Einheit belegt ist.
+
+**Offen (nächste Runde, eine Klasse):** «gratis ab CHF 50» ohne «Schweiz» — im Theme an drei Trust-Stellen
+(`templates/product.json:255`, `sections/header-group.json:20`, `templates/index.json:60`), in den Produkttexten 73 Treffer.
+Ferner: der Client-Credentials-Grant antwortete der Gegenprobe mit HTTP 400 (einmal, nicht reproduziert); die Import-Skripte
+mit diesem Weg wären dann No-op.
+
 ## 📊 Die 12-Tage-Bilanz: mehr Sitzungen, weniger Warenkörbe — die Quelle entscheidet, nicht die Zahl (2026-10-12, Tag 12 «Webseite pimpen», Verbesserungsrunde 00:25 UTC)
 
 **GEMESSEN** (`tools/webseite_bilanz.py`, nur Menschen): 19.–30.09. → 01.10.–heute (je 12 Tage): Sitzungen 190 → 508,

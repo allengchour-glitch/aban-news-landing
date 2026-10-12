@@ -37,3 +37,12 @@ OEKO-TEX®, ab 1 Stück, 3–5 Werktage, Express möglich). Printful kann lose B
 - **Einkauf 38.60 CHF, Verkauf 40.12 CHF, Gewinn ca. 2 CHF.** Das ist zu knapp. Die manuelle Abwicklung (Formular, Captcha, Zahlung von Hand) kostet zusätzlich Zeit.
 - Künftige Bügeltransfer-Bestellungen: vor dem Verkauf rechnen (Einkauf pro A3-Bogen 12.90 + Versand 9.90). Preis oder Produkt entscheidet der Betreiber.
 - Offen: Versandmail von Mister DTF (Trackingnummer) abwarten, dann Shopify #1024 als versandt markieren und die Trackingnummer eintragen.
+
+---
+## Update 2026-10-12: Größe A5 (Klein) aus dem Shop genommen (Betreiber «a5 weg»)
+- Variante **TRANSFER-A5** (Shopify-Variante `55784678588801`) gelöscht, Größenwert «Klein (bis A5, ~15×10 cm)» aus der
+  Option «Grösse» entfernt, Produkttext ohne A5 gegengelesen. Verbleibend: **Mittel (A4) 16.90 · Gross (A3) 35.90**.
+- Editor-QA `automation/pod_editor_qa.mjs`: 30 Editor-Produkte, **0 Befunde**.
+- Alte Beschreibung gesichert: `scratchpad/transfer_bild_beschreibung_vorher.json` (nicht im Repo).
+- ⚠️ Bestellung **#1024** (CHF 40.12) enthält noch einen A5-Bogen («Feivel»). Die Auftragszeile bleibt in Shopify
+  erhalten; der Mister-DTF-Auftrag für A5 ist ein Betreiber-Klick (Druckdatei aus der Bestell-Eigenschaft «🖼️ Druckdatei»).
