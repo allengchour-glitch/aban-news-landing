@@ -2793,7 +2793,11 @@ JSON
   # Lehre 19.08.: «wer startet DICH?» — hier lautete die Antwort: niemand.
   CJW=/tmp/cj_order_watch.log
   if [ -f "$REPO/automation/cj_order_watch.py" ] && [ -f /tmp/cj_token.json ]; then
-    if [ $(( $(date +%s) - $(stat -c %Y "$CJW" 2>/dev/null || echo 0) )) -gt 7200 ]; then
+    # 12.10.2026 (#1025): zusätzlich SOFORT, wenn der Bestell-Automat einen neuen Auftrag ins Ledger geschrieben hat
+    # (Ledger jünger als das Abgleich-Log) — sonst zeigte die Ampel bis zu 2 h «KEIN CJ-Auftrag» für eine Bestellung,
+    # die bei CJ längst auf Zahlung wartete.
+    if [ $(( $(date +%s) - $(stat -c %Y "$CJW" 2>/dev/null || echo 0) )) -gt 7200 ] \
+       || [ "$REPO/dropship/_cj_orders_done.txt" -nt "$CJW" ]; then
       ( cd "$REPO" && python3 automation/cj_order_watch.py > "$CJW" 2>&1 )
       grep -q "AENDERUNG\|ÄNDERUNG" "$CJW" && { echo "$(date -u +%H:%M) 📦 CJ-BESTELLUNG geaendert:"; grep "AENDERUNG\|ÄNDERUNG" "$CJW" | head -5; }
     fi
