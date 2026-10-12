@@ -361,3 +361,4 @@
 2026-10-10	gid://shopify/Product/16613794152839	natel	Schutzfolie für iPhone 11 – Blaulicht- und Fingerabdruckschutz
 2026-10-10	gid://shopify/Product/16613794513287	natel	WLAN-Smart-Fernbedienung für iPhone & Android
 2026-10-11	gid://shopify/Product/16615706460551	finken	Hausschuhe für Kinder
+2026-10-12	gid://shopify/Product/16615818887559	natel	Fahrrad-Handytasche mit Touchscreen
