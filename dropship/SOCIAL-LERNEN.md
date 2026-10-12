@@ -1,6 +1,6 @@
-# Social-Lernen — Stand 2026-10-12 11:19 UTC
+# Social-Lernen — Stand 2026-10-12 17:27 UTC
 
-Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 128 · TikTok 49 · Pinterest 240 · Facebook-Reels 94 · YouTube 24 → **352 Inhalte**; 8 zu junge Posts nicht gezählt.
+Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 129 · TikTok 50 · Pinterest 240 · Facebook-Reels 94 · YouTube 24 → **354 Inhalte**; 7 zu junge Posts nicht gezählt.
 
 **So wird gerechnet:** Jeder Post wird am Median seines Kanals und Formats (±21 Tage) gemessen (×1.00 = typisch; +5 als Rauschboden, damit «7 statt 0 Impressionen» kein ×8 wird). Gewicht = exp(Σ ln(rel) / (n + 3)): Bayes-Glättung Richtung Durchschnitt, ein Einzelpost bewegt ein Gewicht höchstens um ×1.68. **n** = Inhalte. **Belastbar erst ab n ≥ 3** — alles darunter ist ein Hinweis, keine Erkenntnis. Der Reel-Motor bevorzugt nur belastbare Hooks.
 
@@ -10,14 +10,14 @@ Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 128 · TikTok 49 · Pin
 
 | Wert | n | Gewicht | Median rel | belastbar |
 |---|---:|---:|---:|---|
-| mode | 65 | 1.42 | 1.07 | ja |
+| mode | 65 | 1.43 | 1.07 | ja |
 | schmuck | 19 | 1.31 | 1.00 | ja |
-| haustier | 40 | 1.26 | 1.00 | ja |
 | kinder | 8 | 1.25 | 1.00 | ja |
-| allgemein | 75 | 1.23 | 1.08 | ja |
+| haustier | 41 | 1.24 | 1.00 | ja |
 | gadget | 21 | 1.23 | 1.10 | ja |
+| allgemein | 76 | 1.23 | 1.08 | ja |
 | fitness | 13 | 1.14 | 1.02 | ja |
-| beauty | 24 | 1.13 | 1.00 | ja |
+| beauty | 24 | 1.14 | 1.00 | ja |
 | home | 57 | 1.13 | 1.00 | ja |
 | kueche | 30 | 1.04 | 1.00 | ja |
 
@@ -27,7 +27,7 @@ Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 128 · TikTok 49 · Pin
 |---|---:|---:|---:|---|
 | Endlich Ruhe beim Gassi? | 7 | 1.46 | 2.46 | ja |
 | Für die Katze, die alles darf | 3 | 1.43 | 1.81 | ja |
-| Wusstest du das schon? | 13 | 1.39 | 1.23 | ja |
+| Wusstest du das schon? | 15 | 1.33 | 1.12 | ja |
 | Neu bei LuxeStyle | 9 | 1.23 | 1.06 | ja |
 | Licht an, Stimmung an | 4 | 1.17 | 0.97 | ja |
 | Dein Hund wird es lieben | 5 | 1.13 | 1.04 | ja |
@@ -51,25 +51,25 @@ Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 128 · TikTok 49 · Pin
 | pinterest 21–24 | 31 | 1.73 | 2.00 | ja |
 | pinterest 09–12 | 3 | 1.53 | 1.61 | ja |
 | facebook 18–21 | 23 | 1.41 | 1.14 | ja |
-| instagram 18–21 | 15 | 1.32 | 1.45 | ja |
-| instagram 15–18 | 13 | 1.27 | 0.96 | ja |
+| instagram 18–21 | 16 | 1.29 | 1.45 | ja |
+| instagram 15–18 | 13 | 1.28 | 0.96 | ja |
 | facebook 12–15 | 4 | 1.26 | 1.10 | ja |
 | facebook 09–12 | 39 | 1.24 | 1.00 | ja |
 | pinterest 18–21 | 12 | 1.21 | 1.00 | ja |
-| instagram 12–15 | 10 | 1.19 | 1.26 | ja |
-| instagram 21–24 | 20 | 1.17 | 1.15 | ja |
+| instagram 12–15 | 10 | 1.21 | 1.28 | ja |
+| instagram 21–24 | 20 | 1.18 | 1.15 | ja |
 | pinterest 06–09 | 171 | 1.15 | 1.00 | ja |
+| instagram 00–03 | 13 | 1.15 | 1.04 | ja |
 | youtube 09–12 | 5 | 1.14 | 1.02 | ja |
-| instagram 00–03 | 13 | 1.14 | 1.04 | ja |
 | facebook 06–09 | 7 | 1.11 | 1.00 | ja |
 | instagram 09–12 | 31 | 1.10 | 0.90 | ja |
 | tiktok 06–09 | 9 | 1.07 | 1.01 | ja |
 | facebook 15–18 | 8 | 1.05 | 0.78 | ja |
+| instagram 06–09 | 17 | 1.03 | 0.86 | ja |
 | pinterest 00–03 | 6 | 1.02 | 1.00 | ja |
-| instagram 06–09 | 17 | 1.02 | 0.83 | ja |
+| instagram 03–06 | 9 | 1.01 | 1.00 | ja |
 | tiktok 09–12 | 14 | 1.00 | 1.00 | ja |
-| instagram 03–06 | 9 | 1.00 | 0.97 | ja |
-| tiktok 18–21 | 16 | 0.99 | 0.98 | ja |
+| tiktok 18–21 | 17 | 0.99 | 0.98 | ja |
 | youtube 06–09 | 3 | 0.98 | 0.88 | ja |
 | facebook 00–03 | 4 | 0.94 | 0.86 | ja |
 | youtube 15–18 | 10 | 0.91 | 1.14 | ja |
@@ -82,68 +82,69 @@ Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 128 · TikTok 49 · Pin
 |---|---:|---:|---:|---|
 | #abendkleid | 3 | 2.00 | 8.00 | ja |
 | #hundeliebe | 3 | 1.76 | 3.66 | ja |
-| #zuhause | 14 | 1.66 | 1.01 | ja |
-| #wohnen | 14 | 1.66 | 1.01 | ja |
+| #zuhause | 14 | 1.67 | 1.01 | ja |
+| #wohnen | 14 | 1.67 | 1.01 | ja |
 | #homedecor | 15 | 1.64 | 1.00 | ja |
 | #herrenschmuck | 4 | 1.63 | 2.46 | ja |
 | #tierliebe | 15 | 1.57 | 1.00 | ja |
 | #haustiere | 16 | 1.53 | 1.00 | ja |
-| #techschweiz | 6 | 1.51 | 1.03 | ja |
-| #fashionschweiz | 37 | 1.45 | 1.20 | ja |
+| #fashionschweiz | 37 | 1.47 | 1.20 | ja |
 | #onlineshopping | 40 | 1.45 | 1.00 | ja |
-| #zürich | 43 | 1.45 | 1.00 | ja |
+| #techschweiz | 7 | 1.44 | 1.00 | ja |
+| #zürich | 44 | 1.44 | 1.00 | ja |
 | #alltag | 46 | 1.37 | 1.00 | ja |
 | #kleid | 3 | 1.35 | 1.20 | ja |
 | #kleiderliebe | 3 | 1.35 | 1.20 | ja |
 | #armband | 3 | 1.35 | 0.89 | ja |
 | #fundstück | 44 | 1.33 | 1.00 | ja |
+| #modeschweiz | 10 | 1.33 | 1.20 | ja |
 | #totebag | 5 | 1.33 | 1.00 | ja |
-| #modeschweiz | 10 | 1.32 | 1.20 | ja |
-| #technik | 10 | 1.29 | 1.00 | ja |
-| #uhren | 4 | 1.25 | 1.26 | ja |
+| #technik | 11 | 1.27 | 1.00 | ja |
 | #shoppingschweiz | 74 | 1.25 | 1.00 | ja |
-| #gadgets | 14 | 1.23 | 1.00 | ja |
-| #swissstyle | 24 | 1.23 | 1.00 | ja |
+| #uhren | 4 | 1.25 | 1.26 | ja |
+| #swissstyle | 24 | 1.24 | 1.00 | ja |
 | #geschenkidee | 11 | 1.23 | 1.00 | ja |
 | #pflege | 8 | 1.22 | 1.03 | ja |
-| #lederarmband | 3 | 1.21 | 0.67 | ja |
+| #gadgets | 15 | 1.22 | 1.00 | ja |
 | #ootdschweiz | 89 | 1.21 | 1.00 | ja |
+| #lederarmband | 3 | 1.21 | 0.67 | ja |
 | #swissfashion | 5 | 1.19 | 1.20 | ja |
-| #luxestyle | 391 | 1.19 | 1.00 | ja |
-| #haustier | 45 | 1.18 | 1.00 | ja |
+| #luxestyle | 393 | 1.19 | 1.00 | ja |
 | #schweizmode | 97 | 1.18 | 1.00 | ja |
+| #haustier | 45 | 1.18 | 1.00 | ja |
 | #basel | 4 | 1.17 | 1.17 | ja |
-| #sommerkleid | 5 | 1.16 | 1.00 | ja |
 | #skincare | 19 | 1.16 | 1.00 | ja |
+| #sommerkleid | 5 | 1.16 | 1.00 | ja |
 | #outfit | 13 | 1.15 | 1.00 | ja |
+| #neu | 21 | 1.15 | 1.07 | ja |
 | #fyp | 80 | 1.14 | 1.00 | ja |
-| #herrenuhr | 8 | 1.14 | 1.08 | ja |
 | #selfcare | 19 | 1.14 | 1.00 | ja |
-| #kinder | 5 | 1.13 | 1.04 | ja |
-| #familie | 5 | 1.13 | 1.04 | ja |
+| #herrenuhr | 8 | 1.14 | 1.08 | ja |
+| #kinder | 5 | 1.14 | 1.04 | ja |
+| #familie | 5 | 1.14 | 1.04 | ja |
 | #hund | 31 | 1.13 | 1.00 | ja |
-| #neu | 21 | 1.13 | 1.03 | ja |
-| #schweiz | 294 | 1.13 | 1.00 | ja |
+| #schweiz | 295 | 1.13 | 1.00 | ja |
 | #trend | 9 | 1.12 | 1.00 | ja |
-| #wasserdicht | 4 | 1.11 | 1.15 | ja |
+| #wasserdicht | 4 | 1.12 | 1.15 | ja |
 | #viral | 15 | 1.11 | 1.04 | ja |
 | #echtleder | 3 | 1.11 | 0.90 | ja |
 | #rfidschutz | 3 | 1.11 | 0.90 | ja |
-| #streetwear | 4 | 1.11 | 1.20 | ja |
+| #bambus | 3 | 1.11 | 1.00 | ja |
 
 ### Musik
 
 | Wert | n | Gewicht | Median rel | belastbar |
 |---|---:|---:|---:|---|
 | luxe-orchestra.wav | 12 | 1.11 | 1.01 | ja |
-| luxe-epic-anime.wav | 10 | 1.02 | 0.97 | ja |
+| luxe-epic-anime.wav | 10 | 1.03 | 0.98 | ja |
+| luxe-epic-hero.wav | 3 | 0.99 | 0.98 | ja |
 | luxe-adventure-uplift.wav | 13 | 0.99 | 1.00 | ja |
 
 ### Stimme
 
 | Wert | n | Gewicht | Median rel | belastbar |
 |---|---:|---:|---:|---|
-| ohne Stimme | 29 | 1.08 | 1.01 | ja |
+| ohne Stimme | 31 | 1.07 | 1.01 | ja |
 | mit Stimme | 16 | 0.97 | 0.97 | ja |
 
 ## Alle Werte mit n (vorläufige eingeschlossen)
@@ -152,14 +153,14 @@ Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 128 · TikTok 49 · Pin
 
 | Wert | n | Gewicht | Median rel | belastbar |
 |---|---:|---:|---:|---|
-| mode | 65 | 1.42 | 1.07 | ja |
+| mode | 65 | 1.43 | 1.07 | ja |
 | schmuck | 19 | 1.31 | 1.00 | ja |
-| haustier | 40 | 1.26 | 1.00 | ja |
 | kinder | 8 | 1.25 | 1.00 | ja |
-| allgemein | 75 | 1.23 | 1.08 | ja |
+| haustier | 41 | 1.24 | 1.00 | ja |
 | gadget | 21 | 1.23 | 1.10 | ja |
+| allgemein | 76 | 1.23 | 1.08 | ja |
 | fitness | 13 | 1.14 | 1.02 | ja |
-| beauty | 24 | 1.13 | 1.00 | ja |
+| beauty | 24 | 1.14 | 1.00 | ja |
 | home | 57 | 1.13 | 1.00 | ja |
 | kueche | 30 | 1.04 | 1.00 | ja |
 
@@ -175,27 +176,27 @@ Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 128 · TikTok 49 · Pin
 | pinterest 21–24 | 31 | 1.73 | 2.00 | ja |
 | pinterest 09–12 | 3 | 1.53 | 1.61 | ja |
 | facebook 18–21 | 23 | 1.41 | 1.14 | ja |
-| instagram 18–21 | 15 | 1.32 | 1.45 | ja |
-| instagram 15–18 | 13 | 1.27 | 0.96 | ja |
+| instagram 18–21 | 16 | 1.29 | 1.45 | ja |
+| instagram 15–18 | 13 | 1.28 | 0.96 | ja |
 | facebook 12–15 | 4 | 1.26 | 1.10 | ja |
 | facebook 09–12 | 39 | 1.24 | 1.00 | ja |
 | pinterest 18–21 | 12 | 1.21 | 1.00 | ja |
-| instagram 12–15 | 10 | 1.19 | 1.26 | ja |
-| instagram 21–24 | 20 | 1.17 | 1.15 | ja |
+| instagram 12–15 | 10 | 1.21 | 1.28 | ja |
+| instagram 21–24 | 20 | 1.18 | 1.15 | ja |
 | pinterest 06–09 | 171 | 1.15 | 1.00 | ja |
+| instagram 00–03 | 13 | 1.15 | 1.04 | ja |
 | youtube 09–12 | 5 | 1.14 | 1.02 | ja |
-| instagram 00–03 | 13 | 1.14 | 1.04 | ja |
 | facebook 06–09 | 7 | 1.11 | 1.00 | ja |
 | instagram 09–12 | 31 | 1.10 | 0.90 | ja |
 | tiktok 06–09 | 9 | 1.07 | 1.01 | ja |
 | facebook 15–18 | 8 | 1.05 | 0.78 | ja |
 | tiktok 15–18 | 1 | 1.03 | 1.14 | vorläufig |
+| instagram 06–09 | 17 | 1.03 | 0.86 | ja |
 | pinterest 00–03 | 6 | 1.02 | 1.00 | ja |
-| instagram 06–09 | 17 | 1.02 | 0.83 | ja |
+| instagram 03–06 | 9 | 1.01 | 1.00 | ja |
 | tiktok 09–12 | 14 | 1.00 | 1.00 | ja |
-| instagram 03–06 | 9 | 1.00 | 0.97 | ja |
 | tiktok 12–15 | 1 | 1.00 | 0.98 | vorläufig |
-| tiktok 18–21 | 16 | 0.99 | 0.98 | ja |
+| tiktok 18–21 | 17 | 0.99 | 0.98 | ja |
 | youtube 06–09 | 3 | 0.98 | 0.88 | ja |
 | facebook 03–06 | 2 | 0.94 | 0.86 | vorläufig |
 | facebook 00–03 | 4 | 0.94 | 0.86 | ja |
@@ -212,7 +213,7 @@ Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 128 · TikTok 49 · Pin
 | Endlich Ruhe beim Gassi? | 7 | 1.46 | 2.46 | ja |
 | Für die Katze, die alles darf | 3 | 1.43 | 1.81 | ja |
 | Das Gadget, das alle wollen | 1 | 1.41 | 3.99 | vorläufig |
-| Wusstest du das schon? | 13 | 1.39 | 1.23 | ja |
+| Wusstest du das schon? | 15 | 1.33 | 1.12 | ja |
 | Echt getragen, nicht im Studio fotografiert. | 1 | 1.26 | 2.49 | vorläufig |
 | Neu bei LuxeStyle | 9 | 1.23 | 1.06 | ja |
 | Licht an, Stimmung an | 4 | 1.17 | 0.97 | ja |
@@ -224,35 +225,35 @@ Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 128 · TikTok 49 · Pin
 
 ### Musik und Stimme
 
-45 Inhalte mit Musik aus `social/_musik_verlauf.txt` verknüpft (456 Verlaufszeilen).
+47 Inhalte mit Musik aus `social/_musik_verlauf.txt` verknüpft (456 Verlaufszeilen).
 
 | Wert | n | Gewicht | Median rel | belastbar |
 |---|---:|---:|---:|---|
 | luxe-orchestra.wav | 12 | 1.11 | 1.01 | ja |
-| luxe-epic-anime.wav | 10 | 1.02 | 0.97 | ja |
+| luxe-epic-anime.wav | 10 | 1.03 | 0.98 | ja |
 | luxe-epic-elegant.wav | 2 | 1.02 | 1.06 | vorläufig |
 | luxe-epic-trailer.wav | 1 | 1.02 | 1.08 | vorläufig |
 | luxe-house2.wav | 1 | 1.01 | 1.06 | vorläufig |
 | luxe-hype-pro.mp3 | 1 | 1.00 | 1.01 | vorläufig |
-| luxe-epic-hybrid.wav | 1 | 1.00 | 0.99 | vorläufig |
-| luxe-epic-hero.wav | 2 | 0.99 | 0.98 | vorläufig |
+| luxe-epic-hybrid.wav | 1 | 1.00 | 1.00 | vorläufig |
 | luxe-epic-winter.wav | 1 | 0.99 | 0.97 | vorläufig |
+| luxe-epic-hero.wav | 3 | 0.99 | 0.98 | ja |
 | luxe-adventure-uplift.wav | 13 | 0.99 | 1.00 | ja |
-| luxe-epic-fantasy.wav | 1 | 0.98 | 0.93 | vorläufig |
+| luxe-epic-fantasy.wav | 2 | 0.98 | 0.94 | vorläufig |
 
 | Wert | n | Gewicht | Median rel | belastbar |
 |---|---:|---:|---:|---|
-| ohne Stimme | 29 | 1.08 | 1.01 | ja |
+| ohne Stimme | 31 | 1.07 | 1.01 | ja |
 | mit Stimme | 16 | 0.97 | 0.97 | ja |
 
 ### Formate (roher Median-Score je Kanal)
 
 | Kanal Format | n | Median-Score |
 |---|---:|---:|
+| instagram bild | 60 | 13.5 |
 | instagram reel | 51 | 32.4 |
 | instagram karussell | 18 | 15 |
-| instagram bild | 59 | 14 |
-| tiktok reel | 49 | 275 |
+| tiktok reel | 50 | 274.5 |
 | facebook reel | 94 | 1 |
 | youtube reel | 24 | 166 |
 | pinterest pin-video | 55 | 1 |
@@ -261,9 +262,9 @@ Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 128 · TikTok 49 · Pin
 ## Stärkste 5 (gegen den eigenen Kanal-Median)
 - ×8.00 (Score 223, Median 22) · instagram reel · Endlich Ruhe beim Gassi? 👀 · https://www.instagram.com/reel/Ddutl8miAzn/
 - ×8.00 (Score 243, Median 22) · instagram reel · Endlich Ruhe beim Gassi? 👀 · https://www.instagram.com/reel/DdnatlxD0nV/
-- ×8.00 (Score 26624, Median 275) · tiktok reel · Leicht wie Sommer, gemacht für den Herbst 🍂 Leinen-Set «Provence» – H · https://www.tiktok.com/@luxestyle.ch/video/7691437492066733344
-- ×8.00 (Score 28874, Median 275) · tiktok reel · Welche Farbe wäre deine? 💙🖤❤️💚 Abendkleid «Aurora» aus Satin mit Sc · https://www.tiktok.com/@luxestyle.ch/video/7691432399791476000
-- ×8.00 (Score 39340, Median 275) · tiktok reel · Der grosse Auftritt ✨ Abendkleid «Sirène» mit Schleppe – CHF 49.90 · 2 · https://www.tiktok.com/@luxestyle.ch/video/7691427221021527329
+- ×8.00 (Score 26624, Median 274) · tiktok reel · Leicht wie Sommer, gemacht für den Herbst 🍂 Leinen-Set «Provence» – H · https://www.tiktok.com/@luxestyle.ch/video/7691437492066733344
+- ×8.00 (Score 28874, Median 274) · tiktok reel · Welche Farbe wäre deine? 💙🖤❤️💚 Abendkleid «Aurora» aus Satin mit Sc · https://www.tiktok.com/@luxestyle.ch/video/7691432399791476000
+- ×8.00 (Score 39340, Median 274) · tiktok reel · Der grosse Auftritt ✨ Abendkleid «Sirène» mit Schleppe – CHF 49.90 · 2 · https://www.tiktok.com/@luxestyle.ch/video/7691427221021527329
 
 ## Schwächste 5
 - ×0.13 (Score 15, Median 166) · youtube reel · Katzen-Spielzeug mit Futterspender #Shorts · https://www.youtube.com/watch?v=AzdT2dfLozo

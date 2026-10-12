@@ -7141,3 +7141,18 @@ zitrus-krauter-kerze-163266	-	-	-	unklar pid 1602002 Product has been removed fr
 bequeme-slip-on-sneaker-mit-paisley-print-293890	1981293493283094533	-	-	unklar 1602002 Product has been removed from  rest=97	landeseite
 atmungsaktiver-herren-sneaker-mit-dampfung-614100	2410030754561614300	16	14.72	ok	landeseite
 dampfende-laufschuhe-mit-rebound-effekt-604500	2408240603561604800	16	11.84	ok	landeseite
+sportliche-herren-sneaker-mit-drehverschluss-623900	2408190426411624100	16	13.52	ok	landeseite
+leder-sneaker-fur-kinder-mit-klettverschluss-622500	2406201006161622700	16	11.12	ok	landeseite
+leichte-atmungsaktive-badminton-schuhe-697152	1797512726571388928	16	8.79	ok	landeseite
+high-top-sneaker-mit-dicker-sohle-222400	1769632760852914176	16	15.20	ok	landeseite
+kinder-sneaker-fur-outdoor-und-alltag-232000	1751152725192089600	16	10.69	ok	landeseite
+racing-carbon-plate-rebound-shock-absorption-s-156672	-	-	-	unklar sku 1602001 Product not found	landeseite
+cotton-candy-basketball-sneaker-fur-herren-593088	1741018867918450688	16	14.60	ok	landeseite
+luminous-high-top-basketballschuhe-830848	1698540780626911232	16	15.20	ok	landeseite
+outdoor-casual-sneaker-fur-herren-890880	1685882834822639616	16	13.16	ok	landeseite
+atmungsaktiver-sportschuh-fur-jede-jahreszeit-987712	1612296025501347840	16	12.56	ok	landeseite
+freizeitschuh-fly-woven-957696	1528992437107175424	16	10.55	ok	landeseite
+anpassbare-high-top-basketballschuhe-721024	1519572778347933696	16	14.96	ok	landeseite
+leichte-mesh-sneaker-fur-outdoor-und-freizeit-924864	1509003028224028672	16	11.72	ok	landeseite
+frosted-personality-youth-high-top-sneaker-564864	1469871107950645248	16	21.16	ok	landeseite
+atmungsaktive-mesh-sneaker-fur-sport-und-freiz-901888	1420377551326547968	16	13.16	ok	landeseite

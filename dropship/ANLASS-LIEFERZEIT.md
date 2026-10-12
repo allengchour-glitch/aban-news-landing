@@ -1,4 +1,4 @@
-# Anlass-Kollektionen: rechtzeitige Ware oben — Stand 2026-10-12T16:44Z
+# Anlass-Kollektionen: rechtzeitige Ware oben — Stand 2026-10-12T17:10Z
 
 Regel: `automation/anlass_lieferzeit_wache.py`, Tabelle `data/anlass_kollektionen.json` (Schweizer Lager 2 WT, Direktversand 23 WT). Nur die Reihenfolge wird geändert.
 
