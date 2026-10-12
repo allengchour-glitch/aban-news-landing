@@ -17843,3 +17843,7 @@ gid://shopify/Product/16615797064071	49->0	Taschenschal mit grossem Karomuster
 gid://shopify/Product/16615797522823	12->2	Baby-Sweatshirt und -Hose mit Buchstaben-Print
 gid://shopify/Product/16615797850503	45->2	Gesteppte Baby-Sneaker mit Klettverschluss
 gid://shopify/Product/16615798407559	12->2	Blumiger Seidenschal mit UV-Schutz
+gid://shopify/Product/16615799816583	70->0	Seidenschal mit Wollanteil und Stickerei
+gid://shopify/Product/16615800111495	128->3	Kaschmir-Schal mit Ethno-Muster
+gid://shopify/Product/16615801651591	132->0	Kaschmir-Schal mit Stickerei für den Winter
+gid://shopify/Product/16615801684359	123->0	Kinder Strick-Overall
