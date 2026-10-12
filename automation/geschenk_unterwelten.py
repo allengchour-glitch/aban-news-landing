@@ -106,6 +106,30 @@ WELTEN = {
                     ("gadget", r"schlüsselanhänger|handyständer|notizbuch|tagebuch|lesezeichen|"
                                r"flaschenöffner|eiskratzer|kartenetui"),
                 ]},
+    # 12.10.2026: Der Geschenke-EINSTIEG selbst (Hauptmenü Platz 1 «🎁 Geschenke & Weihnachten», 49 Ratgeber-Links, 13 Kollektionen
+    # verlinken ihn) war die Regel «Tag = geschenk» → 4'735 aktive, CREATED_DESC, Median der ersten 24 CHF 16.90, oben Strickblumen,
+    # Mona-Lisa-Sisal, Schlüsselanhänger (Gruppe «cjpartydeko» stempelt «geschenk» auf jede Kategorie). Gleiche Klasse wie «sie/ihn».
+    # Keine Preisgrenze ab 50 (Ratgeber «Männer-Geschenke unter 50 CHF» verlinkt hierher), sondern Vielfalt reihum über alle Arten.
+    "alle": {"handle": "premium-geschenke", "nicht": re.compile(r"baby|strampler", re.I),
+             "deckel": {"schmuck": 80, "uhr": 60},
+             "arten": [
+                 ("schmuck", r"ohrring|halskette|kette mit|anhänger|armband(?!uhr)|armreif|\bring\b|schmuckset"),
+                 ("uhr", r"damenuhr|damen-uhr|uhr für damen|herrenuhr|herren-?armbanduhr|automatikuhr|chronograph|herren.{0,20}uhr"),
+                 ("tasche", r"handtasche|umhängetasche|clutch|schultertasche|tote ?bag|abendtasche|reisetasche|kulturbeutel"),
+                 ("leder", r"geldbörse|portemonnaie|brieftasche|kartenetui|herrengürtel|ledergürtel|manschettenknöpfe"),
+                 ("kuschel", r"kuscheldecke|heizdecke|wärmekissen|fleecedecke|wolldecke|sofadecke|handwärmer"),
+                 ("duft", r"duftkerze|kerze|diffuser|aroma|duftstäbchen|kerzenwärmer"),
+                 ("beauty", r"make-?up-?(pinsel|set)|schminkkoffer|kosmetiktasche|haarstyler|lockenstab|glätteisen|"
+                            r"warmluftbürste|schminkspiegel"),
+                 ("tech", r"powerbank|kopfhörer|ohrhörer|bluetooth-?lautsprecher|ladestation|sternenprojektor|mini-?beamer|drohne"),
+                 ("bar", r"whisky|flachmann|cocktail|bar-?set|weinset|bierkrug"),
+                 ("tasse", r"tasse(?!l)|thermobecher|teekanne|teeset"),
+                 ("deko", r"weihnachtsfigur|weihnachtskugel|weihnachtsdeko|schneekugel|lichterkette|nussknacker|adventskranz"),
+                 ("schal", r"\bschal\b|-schal\b|halstuch|seidentuch|wintermütze|strickmütze|lederhandschuhe|winterhandschuhe"),
+                 ("plüsch", r"plüschtier|kuscheltier|stofftier|teddy"),
+                 ("bauen", r"bausteine|klemmbausteine|baukasten|3d-?puzzle"),
+                 ("spiel", r"brettspiel|kartenspiel|puzzle|würfelspiel"),
+             ]},
 }
 
 
@@ -212,6 +236,8 @@ def main():
     kand = auswahl()
     alt = {}
     for w, reihe in kand.items():
+        if os.environ.get("NUR") and w not in os.environ["NUR"].split(","):   # 12.10.: NUR=alle für einen Einzellauf
+            continue
         welt = WELTEN[w]
         zahl = collections.Counter(k["art"] for k in reihe)
         print(f"\n== {w}: {len(reihe)} Produkte · {dict(zahl)}")
