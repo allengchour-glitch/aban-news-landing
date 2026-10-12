@@ -6900,3 +6900,22 @@ gid://shopify/Product/15465842213249	zugeordnet	36	V-Ausschnitt Freizeitkleid mi
 gid://shopify/Product/15465842278785	zugeordnet	10	Bluse mit Blumenmuster
 gid://shopify/Product/15465842344321	zugeordnet	10	Langarmshirt mit UV-Schutz für Damen
 gid://shopify/Product/15465842475393	zugeordnet	6	One-Shoulder Spitzen-Top mit Cut-Out
+gid://shopify/Product/15465843065217	zugeordnet	45	Kurzes Leinen-Baumwoll Cardigan-Kleid
+gid://shopify/Product/15465843294593	zugeordnet	48	Langarmshirt aus reiner Baumwolle
+gid://shopify/Product/15465843327361	zugeordnet	72	Herren Businesshemd Langarm Slim Fit
+gid://shopify/Product/15465843425665	zugeordnet	24	Herren Strickpullover einfarbig
+gid://shopify/Product/15465843655041	zugeordnet	12	Herren Strickpullover mit Halbreissverschluss
+gid://shopify/Product/15465843753345	zugeordnet	15	Lockerer Strickpullover mit Rundhalsausschnitt
+gid://shopify/Product/15465843786113	zugeordnet	12	Herren Base Pullover mit Fleece-Futter
+gid://shopify/Product/15465844048257	zugeordnet	20	Herren Strickjacke für Herbst und Winter
+gid://shopify/Product/15465857483137	zugeordnet	12	Gestreiftes Mock-Two-Piece Kurzarmhemd
+gid://shopify/Product/15465857778049	zugeordnet	15	Kurzarm Henry Kragen Strickpullover für Herren
+gid://shopify/Product/15465857843585	zugeordnet	30	Ärmelloses Jacquard V-Shirt für Herren
+gid://shopify/Product/15465857909121	bild-urls-tot
+gid://shopify/Product/15465857941889	zugeordnet	35	Kurzarm-Strickpullover für Herren
+gid://shopify/Product/15465858007425	zugeordnet	10	Atmungsaktives Kurzarm-Shirt für Herren
+gid://shopify/Product/15465883500929	zugeordnet	28	Herren Langarmhemd
+gid://shopify/Product/15465883697537	zugeordnet	14	Herren Kurzarmhemd mit Revers und Print
+gid://shopify/Product/15465883763073	zugeordnet	35	Langarm-Compression-Shirt
+gid://shopify/Product/15465885860225	zugeordnet	40	American Henry Langarmshirt mit Stehkragen
+gid://shopify/Product/15465983017345	zugeordnet	64	Herren Jacquard Pullover Langarm
