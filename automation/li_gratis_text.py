@@ -93,12 +93,16 @@ def main():
         print("Trockenlauf — nichts geschrieben. SCHARF=1 zum Schreiben.")
         return 0
     ok = fehl = 0
-    with ThreadPoolExecutor(max_workers=WORKERS) as ex:
-        ergebnisse = list(ex.map(lambda f: (f, *schreiben(f[0], f[3])), fund))
-    for (pid, handle, _, _, n), gut, grund in ergebnisse:
+    def eins(f):
+        pid, handle, _, neu, n = f
+        gut, grund = schreiben(pid, neu)
+        # Ledger je Produkt sofort (ein Abbruch verliert so nichts; der Lauf ist idempotent)
         ledger([time.strftime("%Y-%m-%dT%H:%MZ", time.gmtime()), handle, str(n), "ok" if gut else "fehler", grund])
-        ok += gut
-        fehl += not gut
+        return gut
+    with ThreadPoolExecutor(max_workers=WORKERS) as ex:
+        for gut in ex.map(eins, fund):
+            ok += gut
+            fehl += not gut
     print(f"geschrieben: {ok} · Fehler: {fehl}")
     return 0 if fehl == 0 else 1
 
