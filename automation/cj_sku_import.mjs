@@ -116,6 +116,104 @@ async function attachVideo(t, pid, url, tag) {
   } catch {}
 }
 
+// ─────────────────────────────────────────────────────────────────────────────────────────────
+// 🎯 RELEVANZ-TOR FÜR SUCHAUFTRÄGE (13.10.2026, Punkt K8). GEMESSEN in /tmp/cj_runner.log, 10./11.10.:
+// «thermal underwear set women» legte ein «Klassisches Strickset mit Cape und Hose» und ein Plüsch-Hoodie-Set an,
+// «hot water bottle with knitted cover» eine Golfbag-Abdeckung, einen Strickblazer und eine Photosensitivdrum für
+// Tonerkartuschen, «ski base layer thermal» ein Rundhals-T-Shirt. Die alte Wache zählte TEILWÖRTER («set»+«women»
+// in «Classic Knit Set … Women», «water» in «Waterproof», «hot» in «PHOTOsensitive») — zwei Füllwörter genügten.
+// Und der Queue-Runner quittierte jeden Lauf mit RC=0 als «#done», auch wenn nur Fremdware kam.
+// Regel jetzt: Kernwörter = Suchwörter vor «with/for» ohne Füllwörter (STOPP); ein CJ-Treffer zählt nur, wenn
+// sein productNameEn genug Kernwörter als GANZES Wort trägt (Plural-s erlaubt) — mind. 2 (bei 1 Kernwort 1),
+// ab 4 Kernwörtern 60 %. Verworfene Treffer: Logzeile «irrelevant: <name>». Je Suchauftrag eine Zeile
+// «RELEVANT<TAB>n<TAB>search:…» — daran entscheidet cj_queue_runner.sh #done (n ≥ 1) oder #ohne-treffer (n = 0).
+// Gilt für JEDEN Suchauftrag dieses Importers, auch künftige. Selbsttest: node automation/cj_sku_import.mjs --selbsttest
+// (läuft bei jedem Start von cj_queue_runner.sh; rot = Queue bleibt zu). Tageszahlen: --stand (Aufseher-Zeile).
+const RELEVANZ_STOPP = new Set(['set', 'sets', 'women', 'womens', 'woman', 'men', 'mens', 'man', 'with', 'for', 'new',
+  'hot', 'sale', 'rechargeable', 'and', 'the', 'of', 'in', 'on', 'to', 'a', 'an', 'by', 'ladies', 'lady', 'unisex']);
+const RELEVANZ_STAT = 'dropship/_cj_suche_relevanz.json';
+const rxEsc = x => x.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+// «hot» ist Füllwort («hot sale»), ausser in «hot water» (Wärmflasche) — dort als EIN Wort, sonst ginge jede Trinkflasche durch.
+const relNorm = s => String(s || '').toLowerCase().replace(/[’']s\b/g, '').replace(/\bhot[\s-]+water\b/g, 'hot-water');
+function kernwoerter(suche) {
+  const s = relNorm(suche);
+  const woerter = x => x.split(/[^a-z0-9-]+/).map(t => t.replace(/^-+|-+$/g, '')).filter(t => t.length >= 2 && !RELEVANZ_STOPP.has(t));
+  const kopf = woerter(s.split(/\b(?:with|for)\b/)[0]);   // «hot water bottle with knitted cover» → Ware = water bottle
+  return kopf.length ? kopf : woerter(s);
+}
+function wortMuster(w) {
+  const formen = new Set([w]);
+  if (w.length > 3 && w.endsWith('ies')) formen.add(w.slice(0, -3) + 'y');
+  if (w.length > 3 && w.endsWith('es')) formen.add(w.slice(0, -2));
+  if (w.length > 3 && w.endsWith('s')) formen.add(w.slice(0, -1));
+  return new RegExp(`(?<![a-z0-9])(?:${[...formen].map(rxEsc).join('|')})(?:s|es)?(?![a-z0-9])`);
+}
+function relevanzUrteil(suche, nameEn) {
+  const kern = kernwoerter(suche);
+  if (!kern.length) return { ok: true, treffer: 0, noetig: 0, kern };
+  const name = relNorm(nameEn);
+  const treffer = kern.filter(w => wortMuster(w).test(name)).length;
+  const noetig = Math.max(Math.min(2, kern.length), Math.ceil(kern.length * 0.6));
+  return { ok: treffer >= noetig, treffer, noetig, kern };
+}
+// Kanarien: [Suche, CJ-Name, erwartet]. Die ersten vier stehen so im Auftrag K8; die übrigen sind echte Fehlgriffe aus
+// dem Runner-Log und Gegenproben (Plural, Wortgrenze, «with»-Kopf), damit das Tor nicht ins andere Extrem kippt.
+const RELEVANZ_KANARIEN = [
+  ['hot water bottle', 'Photosensitive Drum for Toner', false],
+  ['thermal underwear set women', 'Classic Knit Set Cape Pants', false],
+  ['ski base layer thermal', 'Round Neck Long Sleeve T-shirt', false],
+  ['heated socks rechargeable', 'Heated Socks Rechargeable', true],
+  ['hot water bottle with knitted cover', 'Waterproof Golf Bag Cover', false],
+  ['hot water bottle with knitted cover', 'Knitted Cardigan Sweater With Buttons', false],
+  ['hot water bottle with knitted cover', 'Hot Water Bottle With Knitted Cover 2L', true],
+  ['hot water bottle', 'New Foldable Large-capacity Water Bottle', false],
+  ['hot water bottle silicone', 'Silicone Hot-Water Bag Bottle 1L', true],
+  ['thermal underwear set women', "Women's Classic Knit Set Cape Pants", false],
+  ['ski goggles', 'Ski Gloves Winter Warm Waterproof', false],
+  ['ski goggles', 'Anti-fog Double Layer Ski Goggles Snowboard', true],
+  ['heated socks rechargeable', 'Electric Heated Sock USB Foot Warmer', true],
+  ['heated socks rechargeable', 'Winter Warm Wool Socks Women', false],
+  ['fuzzy socks women', "Women's Fuzzy Plush Socks Winter", true],
+  ['fuzzy socks women', 'Fuzzy Slippers Indoor', false],
+  ['thermal underwear set', "Men's Thermal Underwear Set Fleece Lined", true],
+  ['thermal underwear set', 'Red Wine Thermal Cooler Bag Thickened And Waterproof With A Handle', false],
+  ['hand warmer power bank', 'Power Bank 10000mAh Fast Charging', false],
+  ['rechargeable hand warmer usb', 'Rechargeable Electric Hand Warmer Winter Double-Side Heating Mini Pocket Power Bank', true],
+];
+function relevanzSelbsttest() {
+  let rot = 0;
+  for (const [s, n, soll] of RELEVANZ_KANARIEN) {
+    const u = relevanzUrteil(s, n);
+    if (u.ok !== soll) { rot++; console.log(`  ✗ Kanarie: «${s}» × «${n}» → ${u.ok ? 'ja' : 'nein'} (Soll ${soll ? 'ja' : 'nein'}; Kern ${u.kern.join('/')}, ${u.treffer}/${u.noetig})`); }
+  }
+  console.log(`RELEVANZ-SELBSTTEST: ${RELEVANZ_KANARIEN.length - rot}/${RELEVANZ_KANARIEN.length} ${rot ? 'ROT' : 'grün'}`);
+  return rot === 0;
+}
+// Tageszahlen (UTC) für die Aufseher-Zeile; 30 Tage, Lese-Ändere-Schreibe über tmp+rename (der Queue-Runner ist der
+// einzige Such-Aufrufer, ein verlorener Zähler bei Gleichzeitigkeit wäre kein Schaden).
+function relevanzBuchen(delta) {
+  try {
+    const tag = new Date().toISOString().slice(0, 10);
+    let st = {}; try { st = JSON.parse(fs.readFileSync(RELEVANZ_STAT, 'utf8')); } catch {}
+    const t = st[tag] || (st[tag] = {});
+    for (const [k, v] of Object.entries(delta)) if (v) t[k] = (t[k] || 0) + v;
+    const grenze = new Date(Date.now() - 30 * 864e5).toISOString().slice(0, 10);
+    for (const k of Object.keys(st)) if (k < grenze) delete st[k];
+    fs.writeFileSync(RELEVANZ_STAT + '.tmp', JSON.stringify(st, null, 1) + '\n'); fs.renameSync(RELEVANZ_STAT + '.tmp', RELEVANZ_STAT);
+  } catch (e) { console.log('  (Relevanz-Zähler nicht geschrieben:', e.message, ')'); }
+}
+if (process.argv.includes('--selbsttest')) process.exit(relevanzSelbsttest() ? 0 : 1);
+if (process.argv.includes('--stand')) {
+  // Eine Zeile für den Aufseher: heutige Suchaufträge, verworfene Fremdware, #ohne-treffer (aus der Queue-Datei).
+  const tag = new Date().toISOString().slice(0, 10);
+  let t = {}; try { t = JSON.parse(fs.readFileSync(RELEVANZ_STAT, 'utf8'))[tag] || {}; } catch {}
+  let ohne = 0; try { ohne = fs.readFileSync('automation/cj_search_queue.txt', 'utf8').split('\n').filter(z => z.startsWith('#ohne-treffer ' + tag)).length; } catch {}
+  const gruen = RELEVANZ_KANARIEN.every(([s, n, soll]) => relevanzUrteil(s, n).ok === soll);
+  console.log(`CJ-SUCHE ${tag}: ${t.suchen || 0} Suchen · ${t.irrelevant || 0} irrelevant verworfen · ${ohne} #ohne-treffer · ${t.angelegt || 0} angelegt${gruen ? '' : ' · ⛔ RELEVANZ-TOR ROT (--selbsttest)'}`);
+  process.exit(0);
+}
+// ─────────────────────────────────────────────────────────────────────────────────────────────
+
 const ITEMS = (process.env.ITEMS || '').split(',').map(s => s.trim()).filter(Boolean);
 if (!ITEMS.length) { console.error('ITEMS fehlt (sku:… oder search:…)'); process.exit(1); }
 const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').split('\n').map(s => s.replace('cj:', '').trim()) : []);
@@ -123,9 +221,40 @@ const t = await shTok();
 const SET = `mutation($i:ProductSetInput!){ productSet(synchronous:true,input:$i){ product{id} userErrors{field message} } }`;
 
 let ohneText = 0, angelegt = 0;
-for (const item of ITEMS) {
+// 🎯 K8 (13.10.2026): Suchaufträge laufen als JOBS — ein Suchbegriff darf bis zu PRO_SUCHE Produkte anlegen (Default 1,
+// der Queue-Runner setzt 3) und probiert dafür höchstens 3×PRO_SUCHE relevante Kandidaten aus einem Seiten-Puffer
+// (vorher: nur der ERSTE Kandidat; war er eine Dublette, war der Suchbegriff verbraucht). sku:/pid: unverändert.
+const PRO_SUCHE = Math.max(1, parseInt(process.env.PRO_SUCHE || '1', 10) || 1);
+const SUCH_PAGES = parseInt(process.env.CJPAGES || '5', 10);
+const suchStand = new Map();      // item → { n, relevant, irrelevant, angelegt, versuche, kand, seite, erschoepft, offen, gemeldet, textFehlt }
+const versucht = new Set();       // pids, die dieser Lauf schon in der Hand hatte
+const JOBS = [...ITEMS];
+const relSumme = { suchen: 0, irrelevant: 0, relevant: 0, angelegt: 0, ohne_treffer: 0 };
+let laufenderJob = null;
+function relevanzMelden(st) {
+  if (st.gemeldet) return; st.gemeldet = true;
+  // Texte fehlten und nichts angelegt → «offen»: der Runner lässt die Zeile stehen (Lehre 02.09., Wecker-Suche).
+  if (st.textFehlt && !st.angelegt) { console.log(`RELEVANT\toffen\t${st.item}\t(keine Texte)`); return; }
+  if (!st.n) relSumme.ohne_treffer++;
+  console.log(`RELEVANT\t${st.n}\t${st.item}\t(relevant ${st.relevant}, Typ lieferbar ${st.n}, irrelevant ${st.irrelevant}, angelegt ${st.angelegt})`);
+}
+function jobFertig() {
+  const st = laufenderJob; laufenderJob = null;
+  if (st && --st.offen <= 0) relevanzMelden(st);
+}
+process.on('exit', () => {
+  // Abbruch mitten im Lauf (Exit 3 = CJ-Punkte weg): Suchbegriffe, die schon etwas angelegt haben, gelten als erledigt —
+  // sonst legte jeder Neuversuch des Runners ein weiteres Produkt an (10./11.10.: 16 Wiederholungen derselben 4er-Charge).
+  for (const st of suchStand.values()) if (!st.gemeldet && st.angelegt > 0) relevanzMelden(st);
+  for (const st of suchStand.values()) if (st.gemeldet || st.angelegt) relSumme.relevant += st.n;
+  if (relSumme.suchen || relSumme.irrelevant) relevanzBuchen(relSumme);
+});
+for (let ji = 0; ji < JOBS.length; ji++) {
+  jobFertig();
+  const item = JOBS[ji];
   const [kind, ...rest] = item.split(':'); const val = rest.join(':');
   let pid = null;
+  let st = null;
   if (kind === 'pid') {
     // Direkte Produkt-ID (15.08.2026, Schulstart-Import): die Kandidaten sind schon
     // recherchiert, eine erneute Textsuche würde nur Punkte kosten und anders treffen.
@@ -134,27 +263,36 @@ for (const item of ITEMS) {
     const j = await cj(`/product/query?productSku=${encodeURIComponent(val)}`); await sleep(1300);
     pid = j.data?.pid;
   } else {
-    // Tiefer paginieren (CJPAGES, Default 5): Top-Treffer sind bei 10k+-Ledger längst importiert
-    const PAGES = parseInt(process.env.CJPAGES || '5', 10);
-    for (let pg = 1; pg <= PAGES && !pid; pg++) {
-      const WH = (process.env.WH || '').trim(); // z.B. WH=DE → nur EU-Lager (Schnellversand in die CH)
-      const j = await cj(`/product/list?pageSize=10&pageNum=${pg}&productNameEn=${encodeURIComponent(val)}${WH ? `&countryCode=${WH}` : ''}`); await sleep(1300);
+    // Tiefer paginieren (CJPAGES, Default 5): Top-Treffer sind bei 10k+-Ledger längst importiert.
+    // Relevanz: relevanzUrteil() (Tor oben, K8) — ersetzt die Teilwort-Wache vom Juli («selfie stick» → Küchenlöffel).
+    st = suchStand.get(item);
+    if (!st) { st = { item, n: 0, relevant: 0, irrelevant: 0, angelegt: 0, versuche: 0, kand: [], seite: 0, erschoepft: false, offen: 1, gemeldet: false, textFehlt: false };
+               suchStand.set(item, st); relSumme.suchen++; }
+    laufenderJob = st;
+    if (st.angelegt >= PRO_SUCHE || st.textFehlt) continue;   // genug — oder die Text-Kette steht (dann nicht weiter CJ-Punkte ausgeben)
+    const WH = (process.env.WH || '').trim(); // z.B. WH=DE → nur EU-Lager (Schnellversand in die CH)
+    while (!st.kand.length && !st.erschoepft && st.seite < SUCH_PAGES) {
+      st.seite++;
+      const j = await cj(`/product/list?pageSize=10&pageNum=${st.seite}&productNameEn=${encodeURIComponent(val)}${WH ? `&countryCode=${WH}` : ''}`); await sleep(1300);
       const list = j.data?.list || [];
-      if (!list.length) break;
-      // Relevanz-Wache: CJ-Textsuche streut (Küchenlöffel bei «selfie stick»!) —
-      // Kandidat muss mind. 1 Suchwort (>3 Zeichen) im productNameEn tragen.
-      const kws = val.toLowerCase().split(/\s+/).filter(w => w.length >= 3);
+      if (!list.length) { st.erschoepft = true; break; }
       for (const cand of list) {
-        const name = (cand.productNameEn || '').toLowerCase();
-        const hits = kws.filter(w => name.includes(w)).length;
-        if (kws.length && hits < Math.min(2, kws.length)) continue; // ≥2 Wörter bei mehrwortiger Suche («shower caddy»≠Duschkopf)
+        const ru = relevanzUrteil(val, cand.productNameEn);
+        if (!ru.ok) { st.irrelevant++; relSumme.irrelevant++; console.log(`  irrelevant: ${String(cand.productNameEn || '').slice(0, 90)} (${ru.treffer}/${ru.noetig} von ${ru.kern.join('/')})`); continue; }
+        st.relevant++;
         // MOQ-Wache (2026-07-11, User-Fund VerveBuds MOQ 10): NUR ORDINARY_PRODUCT (CJ-Lager, Einzel-Dropship
         // MOQ 1). SUPPLIER_SHIPPED_PRODUCT/SUPPLIER_PRODUCT = Lieferant-Direkt, oft MOQ>1 → nicht einzeln fulfillbar.
         const pt = cand.productType || '';
         if (pt && pt !== 'ORDINARY_PRODUCT' && pt !== 'DIY_PRODUCT') { continue; }
-        if (!done.has(String(cand.pid))) { pid = cand.pid; break; }
+        st.n++;   // relevant UND einzeln lieferbar — schon importiert zählt mit (der Begriff ist dann abgedeckt)
+        if (!done.has(String(cand.pid)) && !versucht.has(String(cand.pid))) st.kand.push(String(cand.pid));
       }
     }
+    pid = st.kand.shift() || null;
+    if (pid) {
+      versucht.add(pid); st.versuche++;
+      if (st.versuche < PRO_SUCHE * 3) { JOBS.push(item); st.offen++; }   // nächster Kandidat, falls dieser übersprungen wird
+    } else if (st.versuche) continue;   // Puffer leer nach mind. einem Versuch — still beenden
   }
   if (!pid) { console.log('✗ nicht gefunden/alles schon da:', item); continue; }
   if (done.has(String(pid))) { console.log('= schon importiert:', item); continue; }
@@ -164,7 +302,7 @@ for (const item of ITEMS) {
   if (imgs.length < 2) { console.log('✗ zu wenig Bilder:', item); continue; }
   const feats = (d.description || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
   const g = await groq(d.productNameEn || val, feats, d.categoryName || '');
-  if (!g) { console.log('✗ keine Texte:', item); ohneText++; continue; }
+  if (!g) { console.log('✗ keine Texte:', item); ohneText++; if (st) st.textFehlt = true; continue; }
   // Marken-Filter (14.08.2026), siehe automation/marken_filter.mjs
   const ms = produktSaeubern(g.title, g.html);
   if (ms.verdacht) { console.log('✗ Markenbezug, übersprungen:', item); continue; }
@@ -324,9 +462,13 @@ for (const item of ITEMS) {
   if (d.productVideo && /^https/.test(d.productVideo)) await attachVideo(t, spid, d.productVideo, String(pid).slice(-6));
   fs.appendFileSync(LEDGER, 'cj:' + pid + '\n');
   angelegt++;
+  if (st) { st.angelegt++; relSumme.angelegt++; }
   console.log(`✅ ${title} → ${spid.split('/').pop()} (CHF ${chf(d.sellPrice, d.variants?.[0]?.variantWeight)})`);
 }
 // ⚠️ 02.09.2026: Fehlen die Texte fuer ALLE gefundenen Produkte (Groq-Schluessel/Modell), darf der
 // Queue-Runner den Suchbegriff NICHT quittieren — Exit 3 haelt ihn offen (RC≠0-Zweig).
+jobFertig();
+{ const sum = [...suchStand.values()].reduce((a, x) => a + x.n, 0);
+  if (suchStand.size) console.log(`RELEVANT\t${sum}\tgesamt\t(${suchStand.size} Suchaufträge, ${relSumme.irrelevant} irrelevant verworfen, ${relSumme.angelegt} angelegt)`); }
 if (ohneText > 0 && angelegt === 0) { console.error(`ABBRUCH: ${ohneText} Produkte gefunden, aber keine Texte (Groq?) — Exit 3`); process.exit(3); }
 console.log('FERTIG.');
