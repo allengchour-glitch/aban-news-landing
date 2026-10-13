@@ -119,8 +119,12 @@ export function psZeile(z) {
   const prog = worte[0].split('/').pop();
   // Worte aus `bash -c "…; exec python3 automation/x.py"` tragen Satzzeichen am Rand — die fallen vor dem Test weg
   const skript = worte.map(w => w.replace(/^["']+|[;"')&|]+$/g, '')).find(w => SKRIPT_WORT.test(w) && !w.startsWith('-'));
-  const name = skript ? skript.split('/').pop() : (PS_PROGRAMME.has(prog) ? prog : null);
-  if (!name || (!skript && !/^(?:luxe|abannews)/.test(einheit))) return null;
+  const eigen = /^(?:luxe|abannews)/.test(einheit);
+  // 13.10.2026 (Pruefer S1): ein Prozess in einer luxe-/abannews-Einheit, der weder Skript noch bekanntes Programm ist
+  // («sleep 300», «tee -a …», «curl …»), fiel bisher weg — die Frage «ueberlebt etwas das Takt-Ende?» bekam dann ein
+  // falsches Nein. Jetzt erscheint er mit Platzhalter (Name/Argumente bleiben trotzdem auf dem Server).
+  const name = skript ? skript.split('/').pop() : (PS_PROGRAMME.has(prog) ? prog : (eigen ? '(anderes)' : null));
+  if (!name || (!skript && !eigen)) return null;
   return `${alter(Number(sek))} ${einheit} ${name}`;
 }
 
@@ -244,8 +248,9 @@ export const AKTIONEN = {
       ['date', ['+%F %T %Z']],
       ['systemctl', ['show', 'luxe-waechter.service', '-p',
         'Type,KillMode,ExitType,RemainAfterExit,ActiveState,SubState,Result,ExecMainStartTimestamp,ExecMainExitTimestamp,'
-        + 'ActiveEnterTimestamp,InactiveEnterTimestamp,TimeoutStartUSec,TasksCurrent,MemoryCurrent,MemoryPeak,'
-        + 'FragmentPath,DropInPaths']],
+        // FragmentPath/DropInPaths weggelassen (13.10., Pruefer S1): schwaerzen trifft «PAT» in «FragmentPATh» und
+        // zeigte dauerhaft «***» — sah aus wie ein geschwaerztes Geheimnis; KillMode/Type werden ohnehin direkt gemeldet
+        + 'ActiveEnterTimestamp,InactiveEnterTimestamp,TimeoutStartUSec,TasksCurrent,MemoryCurrent,MemoryPeak']],
       ['systemctl', ['show', 'luxe-waechter.timer', '-p', 'ActiveState,LastTriggerUSec,NextElapseUSecRealtime']],
       ['journalctl', ['-u', 'luxe-waechter.service', '--since=-3h', '--no-pager', '-o', 'short-iso'],
         { filter: 'systemd\\[1\\]:.*(?:Starting|Consumed|Deactivated|Failed|timed out|Killing|SIGTERM|SIGKILL|status=[1-9])',
@@ -253,7 +258,9 @@ export const AKTIONEN = {
       // aufsteigend nach Alter: die Kappe schneidet vorne ab, die AELTESTEN (= die Antwort) bleiben stehen
       ['ps', ['-ww', '-eo', 'etimes=,unit=,args=', '--sort=etimes'], { form: psZeile, max: 8000 }],
       // find_spec zuerst: ein fehlendes Modul heisst «FEHLT», ein vorhandenes, das beim Laden bricht, «KAPUTT …»
-      ['python3', ['-c', 'import importlib, importlib.util as u\n'
+      // -I (13.10., Pruefer S1): isoliert — kein Arbeitsverzeichnis in sys.path, keine PYTHON*-Umgebung; sonst haette
+      // eine scipy.py/av.py/PIL/ im Repo-Wurzelverzeichnis das echte Modul verdeckt und die Messung verfaelscht
+      ['python3', ['-I', '-c', 'import importlib, importlib.util as u\n'
         + 'for m in ("scipy", "av", "numpy", "PIL"):\n'
         + '    try: v = getattr(importlib.import_module(m), "__version__", "da") if u.find_spec(m) else "FEHLT"\n'
         + '    except Exception as e: v = "KAPUTT " + type(e).__name__\n'

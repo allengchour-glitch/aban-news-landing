@@ -137,6 +137,13 @@ t('psZeile: Alter + Einheit + Skriptname, NIE Argumente', () => {
   for (const z of ['  9 luxe-waechter.service node x.mjs --api-key=abc123', '  9 luxe-waechter.service python3 y.py https://u:pw@h/x'])
     assert.ok(!/abc123|pw@/.test(psZeile(z)), z);
 });
+// 13.10. (Pruefer S1): fremdes Programm in eigener Einheit → Platzhalter statt null (sonst falsches «nichts überlebt»)
+t('psZeile: unbekanntes Programm in luxe-/abannews-Einheit → «(anderes)», nie Argumente', () => {
+  assert.equal(psZeile('   700 luxe-waechter.service sleep 300'), '11m luxe-waechter.service (anderes)');
+  assert.equal(psZeile('    50 luxe-waechter.service /usr/bin/curl -u luxe:S3cret https://api'), '50s luxe-waechter.service (anderes)');
+  assert.equal(psZeile('    50 abannews-deploy.service tee -a /tmp/x.log'), '50s abannews-deploy.service (anderes)');
+  assert.equal(psZeile('    50 cron.service sleep 300'), null, 'fremde Einheit bleibt draussen');
+});
 t('journalZeile: nur systemds eigene Zeilen, gekürzt', () => {
   assert.equal(journalZeile('2026-10-13T19:20:01+00:00 ubuntu-4gb-nbg1-1 systemd[1]: luxe-waechter.service: Consumed 1min 2.345s CPU time over 3min 4.567s wall clock time, 312.4M memory peak.'),
                '2026-10-13T19:20:01 Consumed 1min 2.345s CPU time over 3min 4.567s wall clock time, 312.4M memory peak.');
@@ -183,10 +190,18 @@ t('waechter_zustand: rein lesend, feste Schritte, nichts aus /etc/luxe', () => {
   assert.ok(!j[1].includes('-g') && !j[1].includes('-n') && j[1].includes('short-iso'), 'journalctl: aufsteigend, short-iso');
   // der Python-Schritt importiert nur und druckt Versionen — kein Datei-, Prozess- oder Netzzugriff
   const py = a.schritte.find(([b]) => b === 'python3')[1];
-  assert.equal(py[0], '-c');
-  assert.ok(!/open\(|os\.|subprocess|socket|exec\(|eval\(|urllib|sys\.argv/.test(py[1]), 'Python-Probe nur Import');
+  assert.deepEqual(py.slice(0, 2), ['-I', '-c'], 'Python-Probe isoliert (-I), sonst verdeckt eine scipy.py im Arbeitsverzeichnis das Modul');
+  assert.ok(!/open\(|os\.|subprocess|socket|exec\(|eval\(|urllib|sys\.argv/.test(py[2]), 'Python-Probe nur Import');
+
   const st = a.schritte.find(([b, argv]) => b === 'git' && argv.includes('list') && !argv.includes('-1'));
   assert.ok(st[2].zaehlen, 'Stash-Liste wird nur gezählt (Nachrichten bleiben auf dem Server)');
+});
+// 13.10. (Pruefer S1): kein abgefragtes Feld darf von schwaerzen als «***» kommen (FragmentPATh) — sähe aus wie ein
+// geschwärztes Geheimnis und verdeckt den Wert
+t('waechter_zustand: systemctl-show-Felder werden nicht geschwärzt', () => {
+  for (const [b, argv] of AKTIONEN.waechter_zustand.schritte.filter(([b, argv]) => b === 'systemctl' && argv[0] === 'show'))
+    for (const feld of argv[argv.indexOf('-p') + 1].split(','))
+      assert.equal(schwaerzen(`${feld}=/etc/systemd/system/x.service`), `${feld}=/etc/systemd/system/x.service`, `${feld} wird geschwärzt`);
 });
 // Interpreter als Befehl nur für die feste Import-Probe in waechter_zustand
 t('Interpreter (python3/node) nur in waechter_zustand', () => {

@@ -51,8 +51,13 @@ Mal an (TOCTOU, die Lücke vom 12.07.). Beide Fälle stehen als Test in
 `server/faelligkeit.test.mjs`; der entscheidende ist «50 weitere Läufe am selben Tag → 0».
 
 Aktuell: **storefront** (täglich — der Agent ist das einzige Fenster, das nicht auf unsere
-Bot-Cache-Kopie schaut) und **anmeldungen** (wöchentlich — läuft die eine echte Anmeldung
-ab, wird jeder Browser-Auftrag still wertlos).
+Bot-Cache-Kopie schaut), **anmeldungen** (wöchentlich — läuft die eine echte Anmeldung
+ab, wird jeder Browser-Auftrag still wertlos) und **server-zustand** (täglich seit 13.10.2026,
+`{typ: wartung, aktion: waechter_zustand}`, rein lesend: systemd-Zustand und `KillMode` des
+Wächters, Takt-Dauer aus dem Journal, laufende Skripte nur als Name + Alter + Einheit,
+scipy/av/ffmpeg, Stash-Zahl, Platte, `/tmp`, RAM, Swap — jeder spätere Schritt des Plans
+«Hetzner auf Maximum» prüft seine Wirkung an dieser Quittung; erste Messung und Befund 2 in
+`dropship/HETZNER-SERVER.md` § Takt-Messung).
 
 ## Was in der Quittung stehen kann
 
