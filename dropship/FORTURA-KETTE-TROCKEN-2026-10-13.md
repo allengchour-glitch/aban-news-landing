@@ -55,8 +55,8 @@ Die Testbestellungen hiessen LX9901–LX9903, mit Testadresse und `test@example.
 - Gegenprobe mit 4 Fällen: «0 offen» bleibt still, eine Zeile kommt durch, `exit 1` und Timeout ergeben die Warnung. `bash -n` ok.
 
 **Offen, nicht behoben (klein, aber nicht eindeutig):**
-- **O1 Gemischte Bestellung (Fortura + CJ).** Der Docstring der Engine sagt «CJ-Teil bleibt beim CJ-Automaten». `cj_order_engine.py:563-571` überspringt gemischte Bestellungen aber **ganz** («manuell aufteilen», mit Meldung). Der Fortura-Teil geht automatisch, der CJ-Teil nur von Hand. Die Bestell-Ampel zeigt bei gemischten Bestellungen nur den CJ-Stand (`all(fortura-)`), die Fortura-Zeile kommt aber aus der Engine.
-- **O2 Menge mit Komma.** `int(float(g))` (Engine Zeile ~128) bricht bei «2,000» ab und reisst den Lauf um. Unbekannt, ob Opacc so schreibt. Mit einer echten DELVRY-Datei prüfen.
+- **O1 Gemischte Bestellung (Fortura + CJ).** Der Docstring der Engine sagt «CJ-Teil bleibt beim CJ-Automaten». `cj_order_engine.py:561-571` überspringt gemischte Bestellungen aber **ganz** («manuell aufteilen», mit Meldung). Der Fortura-Teil geht automatisch, der CJ-Teil nur von Hand. Die Bestell-Ampel zeigt bei gemischten Bestellungen nur den CJ-Stand (`all(fortura-)`), die Fortura-Zeile kommt aber aus der Engine.
+- **O2 Menge mit Komma.** `int(float(g))` (`fortura_bestell_engine.py:130`) bricht bei «2,000» ab und reisst den Lauf um. Unbekannt, ob Opacc so schreibt. Mit einer echten DELVRY-Datei prüfen.
 - **O3 Neutraler Versand.** Der Satz «neutraler Versand an Endkundin» steht in `HEADER/TEXT`, und der wird laut Template «nicht auf Lieferschein angedruckt». Ob Fortura ohne eigenen Lieferschein mit Preisen an die Kundin versendet, ist nicht geklärt. Bei der Probebestellung auf das Paket achten.
 - **O4 Liechtenstein** (Glied 6). Kein Länderfeld im Format, also Portal-Weg. Bei Fortura fragen, ob DPD nach LI über dasselbe XML geht.
 
