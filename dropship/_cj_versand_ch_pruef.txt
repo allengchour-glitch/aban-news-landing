@@ -8260,3 +8260,4 @@ cc-bare-face-tint-cream-40g-713666	2075133489973211138	3	5.86	ok	landeseite
 farbwechselnder-concealer-foundation-stick-813313	2074742512610562050	3	5.37	ok	landeseite
 2-in-1-farbwechsel-foundation-stick-dunkel-533186	2074742066479087617	3	5.60	ok	landeseite
 thermo-reaktive-foundation-passt-sich-dem-haut-396737	2074734842398756866	3	5.95	ok	landeseite
+sonnenschutz-foundation-mit-farbwechsel-757825	2074742726624923649	3	5.86	ok	landeseite
