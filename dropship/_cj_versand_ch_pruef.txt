@@ -7976,3 +7976,28 @@ mummy-bag-aus-hochwertigem-rindsleder-916864	1388309082062065664	16	20.90	ok	lan
 doppelkreuz-zirkonring-kupfer-verstellbar-550912	1410494562090225664	16	4.60	ok	landeseite
 peeling-fussmaske-fur-zarte-fusse-244f6a	1566649725716279296	3	11.10	ok	landeseite
 interaktiver-futterspender-fur-haustiere-653376	1752236157204705280	16	9.07	ok	landeseite
+mobelfolie-selbstklebend-mit-holzmaserung-772546	1990433663152861186	0	-	KEINE CH-Option → DRAFT	landeseite
+verdunkelungsvorhang-samt-mit-osen-982785	1990426433909612545	0	-	KEINE CH-Option → DRAFT	landeseite
+reinigungs-tucher-5er-set-mit-grunem-streifen-786946	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+gartenmobel-reiniger-fur-rattan-textilene-308546	1990442486643482626	0	-	KEINE CH-Option → DRAFT	landeseite
+vorratsglaser-mit-korkdeckel-6er-set-650-ml-261313	1990512955426004993	0	-	KEINE CH-Option → DRAFT	landeseite
+nice-smart-gemuseschneider-15-teilig-758785	1980835499424919553	0	-	KEINE CH-Option → DRAFT	landeseite
+sammelbehalter-fur-leergut-100l-beige-704130	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+wandtattoo-set-waldtiere-507905	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+warming-mat-250w-3-temperaturstufen-058880	1851479464908574720	0	-	KEINE CH-Option → DRAFT	landeseite
+kompakte-hand-kaffeemaschine-fur-kapseln-pulve-934784	1851205156294512640	0	-	KEINE CH-Option → DRAFT	landeseite
+30000mah-powerbank-mit-integrierten-kabeln-132482	2056561138971070466	0	-	KEINE CH-Option → DRAFT	landeseite
+powerbank-10000-mah-mit-schnellladefunktion-795202	2048311393618595842	0	-	KEINE CH-Option → DRAFT	landeseite
+mini-powerbank-5000mah-mit-20w-fast-charge-672130	2045400942546444289	0	-	KEINE CH-Option → DRAFT	landeseite
+solar-powerbank-10-000-mah-wasserdicht-076161	2045395743268179970	0	-	KEINE CH-Option → DRAFT	landeseite
+powerbank-10-000-mah-2x-usb-476993	2045393152186552321	0	-	KEINE CH-Option → DRAFT	landeseite
+magnetische-10000mah-powerbank-mit-20w-967745	2044607361200517122	0	-	KEINE CH-Option → DRAFT	landeseite
+tragbarer-hd-mini-projektor-mit-ausziehbarem-s-615809	2045397744586776577	0	-	KEINE CH-Option → DRAFT	landeseite
+fussmassagegerat-mit-heiz-und-vibrationsfunkti-998081	1998944596617187329	0	-	KEINE CH-Option → DRAFT	landeseite
+wasser-dumbbell-899136	1380823048986431488	16	8.53	ok	landeseite
+2er-set-kuhlhandtucher-blau-grun-834433	2074708079249440770	0	-	KEINE CH-Option → DRAFT	landeseite
+200-komprimierte-einwegtucher-fur-reisen-haush-445378	2074708120024051714	0	-	KEINE CH-Option → DRAFT	landeseite
+rosegold-glattburste-fur-geschmeidiges-haar-222786	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+gold-gel-nagelmaschine-fur-zuhause-795521	2074707417568624641	0	-	KEINE CH-Option → DRAFT	landeseite
+2-stockiges-ausziehregal-mit-haken-bechern-298370	2074708281951899650	0	-	KEINE CH-Option → DRAFT	landeseite
+20er-set-kochmutzen-aus-papier-verstellbar-539905	2074708198262951937	0	-	KEINE CH-Option → DRAFT	landeseite
