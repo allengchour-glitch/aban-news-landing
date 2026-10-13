@@ -7594,3 +7594,12 @@ geruchsentferner-lufterfrischer-250-ml-452354	1990691887152418817	0	-	KEINE CH-O
 wendbare-gusseisen-grillplatte-50x23-cm-128449	1990708274637885442	0	-	KEINE CH-Option → DRAFT	landeseite
 grillpfanne-gusseisen-mit-holzgriff-20x20-cm-048449	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 leder-und-textilreiniger-250-ml-907394	1990691873768394754	0	-	KEINE CH-Option → DRAFT	landeseite
+holzreiniger-auffrischer-250-ml-393090	1990691865803411457	0	-	KEINE CH-Option → DRAFT	landeseite
+gartenmobel-reiniger-fur-rattan-textilene-250-814210	1990706747336609793	0	-	KEINE CH-Option → DRAFT	landeseite
+gusseisen-grillpfanne-24-x-23-cm-260673	1990708233919582210	0	-	KEINE CH-Option → DRAFT	landeseite
+herdabdeckplatten-2er-set-aus-bambus-730881	1990699110230446081	0	-	KEINE CH-Option → DRAFT	landeseite
+getrankespender-set-mit-stander-2-x-4-l-glas-939521	1990708457968095233	0	-	KEINE CH-Option → DRAFT	landeseite
+holzol-fur-mobel-250-ml-526146	1990691894958018561	0	-	KEINE CH-Option → DRAFT	landeseite
+gusseisen-grillpfanne-rund-30-cm-537857	1990708246515077122	0	-	KEINE CH-Option → DRAFT	landeseite
+drehbare-servierplatte-transparent-60-cm-870850	1990695402872557569	0	-	KEINE CH-Option → DRAFT	landeseite
+vorratsglaser-mit-bambusdeckel-6-stuck-600-ml-961090	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
