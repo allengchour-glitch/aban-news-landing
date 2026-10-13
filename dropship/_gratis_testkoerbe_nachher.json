@@ -1,0 +1,297 @@
+[
+ {
+  "zwischensumme": 40.49,
+  "rabatt": 0.0,
+  "tarife": [
+   [
+    7.0,
+    "Standard"
+   ]
+  ],
+  "versand": 7.0,
+  "gesamt": 47.49,
+  "fall": "CH 40.49",
+  "land": "CH",
+  "codes": [],
+  "zeilen": [
+   {
+    "title": "Testposition 40.49",
+    "originalUnitPriceWithCurrency": {
+     "amount": "40.49",
+     "currencyCode": "CHF"
+    },
+    "quantity": 1,
+    "requiresShipping": true
+   }
+  ]
+ },
+ {
+  "zwischensumme": 40.5,
+  "rabatt": 0.0,
+  "tarife": [
+   [
+    0.0,
+    "Kostenloser Versand"
+   ],
+   [
+    7.0,
+    "Standard"
+   ]
+  ],
+  "versand": 0.0,
+  "gesamt": 40.5,
+  "fall": "CH 40.50",
+  "land": "CH",
+  "codes": [],
+  "zeilen": [
+   {
+    "title": "Testposition 40.50",
+    "originalUnitPriceWithCurrency": {
+     "amount": "40.50",
+     "currencyCode": "CHF"
+    },
+    "quantity": 1,
+    "requiresShipping": true
+   }
+  ]
+ },
+ {
+  "zwischensumme": 44.91,
+  "rabatt": 4.99,
+  "tarife": [
+   [
+    0.0,
+    "Kostenloser Versand"
+   ],
+   [
+    7.0,
+    "Standard"
+   ]
+  ],
+  "versand": 0.0,
+  "gesamt": 44.91,
+  "fall": "CH Sirène 49.90 + WELCOME10 (Abendkleid «Sirène» – High-Sli)",
+  "land": "CH",
+  "codes": [
+   "WELCOME10"
+  ],
+  "zeilen": [
+   {
+    "variantId": "gid://shopify/ProductVariant/55747898114433",
+    "quantity": 1
+   }
+  ]
+ },
+ {
+  "zwischensumme": 49.9,
+  "rabatt": 0.0,
+  "tarife": [
+   [
+    0.0,
+    "Kostenloser Versand"
+   ],
+   [
+    7.0,
+    "Standard"
+   ]
+  ],
+  "versand": 0.0,
+  "gesamt": 49.9,
+  "fall": "CH Sirène 49.90 ohne Code",
+  "land": "CH",
+  "codes": [],
+  "zeilen": [
+   {
+    "variantId": "gid://shopify/ProductVariant/55747898114433",
+    "quantity": 1
+   }
+  ]
+ },
+ {
+  "zwischensumme": 44.99,
+  "rabatt": 0.0,
+  "tarife": [
+   [
+    0.0,
+    "Kostenloser Versand"
+   ],
+   [
+    7.0,
+    "Standard"
+   ]
+  ],
+  "versand": 0.0,
+  "gesamt": 44.99,
+  "fall": "CH 44.99",
+  "land": "CH",
+  "codes": [],
+  "zeilen": [
+   {
+    "title": "Testposition 44.99",
+    "originalUnitPriceWithCurrency": {
+     "amount": "44.99",
+     "currencyCode": "CHF"
+    },
+    "quantity": 1,
+    "requiresShipping": true
+   }
+  ]
+ },
+ {
+  "zwischensumme": 49.99,
+  "rabatt": 0.0,
+  "tarife": [
+   [
+    0.0,
+    "Kostenloser Versand"
+   ],
+   [
+    7.0,
+    "Standard"
+   ]
+  ],
+  "versand": 0.0,
+  "gesamt": 49.99,
+  "fall": "CH 49.99",
+  "land": "CH",
+  "codes": [],
+  "zeilen": [
+   {
+    "title": "Testposition 49.99",
+    "originalUnitPriceWithCurrency": {
+     "amount": "49.99",
+     "currencyCode": "CHF"
+    },
+    "quantity": 1,
+    "requiresShipping": true
+   }
+  ]
+ },
+ {
+  "zwischensumme": 45.0,
+  "rabatt": 0.0,
+  "tarife": [
+   [
+    14.9,
+    "Standard Liechtenstein"
+   ]
+  ],
+  "versand": 14.9,
+  "gesamt": 59.9,
+  "fall": "LI 45.00",
+  "land": "LI",
+  "codes": [],
+  "zeilen": [
+   {
+    "title": "Testposition 45.00",
+    "originalUnitPriceWithCurrency": {
+     "amount": "45.00",
+     "currencyCode": "CHF"
+    },
+    "quantity": 1,
+    "requiresShipping": true
+   }
+  ]
+ },
+ {
+  "zwischensumme": 40.5,
+  "rabatt": 0.0,
+  "tarife": [
+   [
+    14.9,
+    "Standard Liechtenstein"
+   ]
+  ],
+  "versand": 14.9,
+  "gesamt": 55.4,
+  "fall": "LI 40.50",
+  "land": "LI",
+  "codes": [],
+  "zeilen": [
+   {
+    "title": "Testposition 40.50",
+    "originalUnitPriceWithCurrency": {
+     "amount": "40.50",
+     "currencyCode": "CHF"
+    },
+    "quantity": 1,
+    "requiresShipping": true
+   }
+  ]
+ },
+ {
+  "zwischensumme": 43.02,
+  "rabatt": 4.78,
+  "tarife": [
+   [
+    0.0,
+    "Kostenloser Versand"
+   ],
+   [
+    7.0,
+    "Standard"
+   ]
+  ],
+  "versand": 0.0,
+  "gesamt": 43.02,
+  "fall": "CH Mischkorb CH-Lager 27.90 + CJ 19.90",
+  "land": "CH",
+  "codes": [],
+  "zeilen": [
+   {
+    "variantId": "gid://shopify/ProductVariant/55970614149505",
+    "quantity": 1
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55746191032705",
+    "quantity": 1
+   }
+  ]
+ },
+ {
+  "zwischensumme": 43.02,
+  "rabatt": 4.78,
+  "tarife": [
+   [
+    14.9,
+    "Standard Liechtenstein"
+   ]
+  ],
+  "versand": 14.9,
+  "gesamt": 57.92,
+  "fall": "LI Mischkorb CH-Lager 27.90 + CJ 19.90",
+  "land": "LI",
+  "codes": [],
+  "zeilen": [
+   {
+    "variantId": "gid://shopify/ProductVariant/55970614149505",
+    "quantity": 1
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55746191032705",
+    "quantity": 1
+   }
+  ]
+ },
+ {
+  "zwischensumme": 27.9,
+  "rabatt": 0.0,
+  "tarife": [
+   [
+    0.0,
+    "Standard"
+   ]
+  ],
+  "versand": 0.0,
+  "gesamt": 27.9,
+  "fall": "CH nur CH-Lager 27.90",
+  "land": "CH",
+  "codes": [],
+  "zeilen": [
+   {
+    "variantId": "gid://shopify/ProductVariant/55970614149505",
+    "quantity": 1
+   }
+  ]
+ }
+]

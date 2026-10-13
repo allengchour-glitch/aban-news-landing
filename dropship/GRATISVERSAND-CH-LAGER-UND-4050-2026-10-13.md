@@ -64,7 +64,22 @@ Auftrag: Betreiber-Entscheide C und D (`dropship/BETREIBER-ENTSCHEIDE-2026-10-13
 - Die neue Datei `templates/cart.lux-chlager.liquid` darf bleiben: Ohne Aufrufer ist sie wirkungslos.
 - Schneller Notschalter je Produkt: das Zeichen `profil-ch-lager`. `ch_lager_profil.py --zurueck` entfernt es VOR dem Lösen.
 
-## D — Gratis-Tarif CH ab 40.50 (vorbereitet, NICHT live)
+## D — Gratis-Tarif CH ab 40.50 (LIVE seit 13.10.2026 ~23:30 UTC)
+
+> **Nachtrag 23:40 UTC (Sitzung, Betreiber-Freigabe «D ja»):** Schritte 1–5 ausgeführt.
+> 1. `gratis_schwelle_setzen.py --scharf`: General, CH-Lager, Druck je 45.00 → 40.50, zurückgelesen (neue Versandarten …3485191,
+>    …3517959, …3550727; alte inaktiv), Ledger `dropship/_gratis_schwelle.tsv`.
+> 2. `versand_transit_wache.py --scharf`: «gesetzt 3» (Transit der neuen Versandarten = Zusage).
+> 3. `ch_lager_profil.GRATIS_AB_CH = 40.50` sofort gepusht (cab071384); `versandschwelle_rabatt --pruefen` «OK 40.50».
+> 4. Theme 4500 → 4050 (3 + 4 + 3 Ersetzungen) mit md5-Wache hochgeladen, Live-md5 cart-summary 61b238d1…, theme.liquid
+>    b8973237…, product.json 6e823bd0… (enthält zusätzlich Prüfer-B1/B2: Grössentabelle ohne «30 Tage Rückgaberecht» bei
+>    Editor-Ware, ohne «eine Nummer grösser» bei Herrenschuh bis 43). Sicherungen `theme_backup/*.vor-gratis4050-1013`.
+>    `warenkorb_einig.KANARIEN` nachgezogen (9/9, zwei neue unter 40.50). Organization-JSON-LD neu geschrieben
+>    («gratis ab 40.50», Sicherung `theme_backup/sections__header.vor-org-4050-1013.liquid`).
+> 5. Testkörbe NACHHER `--vergleich`: **11/11 gleich oder günstiger** (CH 40.50, 44.99, Sirène+WELCOME10, Mischkorb je −7.00).
+>    Wächter: CH-LAGER-KORB ✓, WARENKORB-VERSAND ✓ «Tarif gratis ab 40», GOOGLE-ORG ✓, ch_lager --test 8/8, druck 17/17.
+>    WebFetch Kostüm 42.90: «Gratis Versand in der Schweiz für diesen Artikel (ohne Gutschein)».
+
 
 ### Margenprüfung (Pflicht vorher) — `tools/gratis_schwelle_marge.py`, Liste `dropship/_gratis_schwelle_marge.tsv`
 

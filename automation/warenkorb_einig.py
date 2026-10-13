@@ -25,7 +25,7 @@ REGEL (eine, hier definiert, Liquid + JS + Kanarien daraus):
   sonst Direktversand Asien wie Kasse: Bearbeitung (P1D) + 9–19 Werktage, Schluss 12 Uhr (LUX-KASSENDATUM).
   Die Zahlen (1 / 1–2 / 9–19) prüft automation/kassen_lieferdatum_wache.py gegen Bearbeitungszeit und Transitregel.
   JS_NEU = der Live-Balken vom 13.10.2026 23:03 (LUX-CHLAGER-KORB: alle_chlager aus /cart?view=lux-chlager, Rückfall auf das
-  Merkmal data-lux-alle-chlager der Zusammenfassung). TARIF folgt ch_lager_profil.GRATIS_AB_CH (Entscheid D 40.50 vorbereitet).
+  Merkmal data-lux-alle-chlager der Zusammenfassung). TARIF folgt ch_lager_profil.GRATIS_AB_CH (Entscheid D: 40.50 live seit 13.10.2026).
   LI_NEU unten = der Live-Block lux_cart_trust vom 13.10.2026 abends (LUX-KASSENDATUM, P1D, 9/19, Zeichen profil-ch-lager);
   vorher stand hier die Kalendertage-Fassung vom 09.10. — ein Reparaturlauf hätte die Kassen-Rechnung überschrieben.
   Ändert sich der Live-Block, LI_NEU nachziehen (kassen_lieferdatum_wache prüft die Zahlen, nicht diese Vorlage).
@@ -59,10 +59,12 @@ KANARIEN = [  # (Name, Warenwert vor Rabatt, nach Rabatt, erwartet «noch»)
     ("1× Leinen 39.90", 3990, 3990, 1010),
     ("1× Sirène 49.90 (Tarif gratis)", 4990, 4990, 0),
     ("1× 45.90", 4590, 4590, 0),
-    ("2× 24.90 → 44.82", 4980, 4482, 20),
-    ("39.90 + 5.90 → 41.22", 4580, 4122, 420),
+    ("2× 24.90 → 44.82", 4980, 4482, 0),          # 13.10.2026 Entscheid D (Tarif 40.50): vorher 0.20
+    ("39.90 + 5.90 → 41.22", 4580, 4122, 0),      # vorher 4.20
     ("2× Leinen → 71.82", 7980, 7182, 0),
-    ("Code zusätzlich: 52.00 → 42.12", 5200, 4212, 320),
+    ("Code zusätzlich: 52.00 → 42.12", 5200, 4212, 0),   # vorher 3.20
+    ("2× 19.90 → 35.82 (unter 40.50)", 3980, 3582, 1020),  # neu: Rabatt-Pfad unter dem Tarif bleibt geprüft
+    ("1× 35.00", 3500, 3500, 1500),
 ]
 
 
