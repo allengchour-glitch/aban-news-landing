@@ -1923,3 +1923,6 @@
 16609942995335	Farbe:2:2	2026-10-13	wok-set-aus-aluminium-und-keramik-628400
 16609934442887	Farbe:3:3	2026-10-13	kristall-whiskyglas-luxus-design-613200
 16609933033863	Farbe:2:2	2026-10-13	automatischer-nudelbereiter-615100
+16617547923847	Farbe:4:4	2026-10-13	wasserdichte-quarz-uhr-30-m-942e44
+16617547497863	Farbe:5:5	2026-10-13	armbanduhr-chenxi-cx-004a-zifferblatt-mit-stra-29c3d9
+16617238004103	Farbe:5:5	2026-10-13	business-rucksack-36-55l-mit-mehreren-fachern-cded4d
