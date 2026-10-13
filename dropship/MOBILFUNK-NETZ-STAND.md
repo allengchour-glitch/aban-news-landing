@@ -188,3 +188,125 @@
 | bluetooth | ble | [GPS Sport-Smartwatch mit LCD-Display](https://luxestyle.ch/products/gps-sport-smartwatch-mit-lcd-display-558656) |
 | bluetooth | ble | [Kinder-Telefonuhr mit vielen Sprachen](https://luxestyle.ch/products/kinder-telefonuhr-mit-vielen-sprachen-186112) |
 | bluetooth | ble | [Ortungsgerät für Wandobjekte](https://luxestyle.ch/products/ortungsgerat-fur-wandobjekte-5d03fe) |
+
+## Lauf 2026-10-13 00:27 UTC
+
+| Urteil | Beleg | Produkt |
+|---|---|---|
+| 4g | 4G | [4G All-Netcom Kinder-Smartwatch](https://luxestyle.ch/products/4g-all-netcom-kinder-smartwatch-605900) |
+| 4g | 4G | [4G Kinder Smartwatch mit GPS und Videoanruf](https://luxestyle.ch/products/4g-kinder-smartwatch-mit-gps-und-videoanruf-132544) |
+| 4g | 4G | [4G Netcom Smartwatch für Kinder](https://luxestyle.ch/products/4g-netcom-smartwatch-fur-kinder-391232) |
+| 4g | 4G | [4G PTZ Überwachungskamera mit Solarpanel](https://luxestyle.ch/products/4g-ptz-uberwachungskamera-mit-solarpanel-614600) |
+| 4g | 4G | [4G Smartwatch für Kinder mit Videoanruffunktion](https://luxestyle.ch/products/4g-smartwatch-fur-kinder-mit-videoanruffunktio-365342) |
+| 4g | 4G | [E7 Kinder Smartwatch 4G mit Videocall & GPS](https://luxestyle.ch/products/e7-kinder-smartwatch-4g-mit-videocall-gps-846080) |
+| 4g | 4G | [Fahrzeug-Tracker](https://luxestyle.ch/products/fahrzeug-tracker-604900) |
+| 4g | 4G | [GPS-Tracker für Katzen und Hunde](https://luxestyle.ch/products/gps-tracker-fur-katzen-und-hunde-637800) |
+| 4g | 4G | [H1 Kinder Smartwatch mit Kamera](https://luxestyle.ch/products/h1-kinder-smartwatch-mit-kamera-f107df) |
+| 4g | 4G | [Kinder GPS Smartwatch 4G mit WiFi](https://luxestyle.ch/products/kinder-gps-smartwatch-4g-mit-wifi-797bbe) |
+| 4g | 4G | [Kinder Smartwatch mit GPS & Bluetooth-Anrufen](https://luxestyle.ch/products/kinder-smartwatch-mit-gps-bluetooth-anrufen-622300) |
+| 4g | 4G | [Mobiler 4G LTE Router mit Akku](https://luxestyle.ch/products/mobiler-4g-lte-router-mit-akku-616500) |
+| 4g | 4G | [Senioren Smartwatch 4G mit Ortungsfunktion](https://luxestyle.ch/products/senioren-smartwatch-4g-mit-ortungsfunktion-409600) |
+| 4g | 4G | [Smartwatch 4G](https://luxestyle.ch/products/smartwatch-4g-602300) |
+| 4g | 4G | [Smartwatch 4G mit Dual-Kamera & Herzfrequenz](https://luxestyle.ch/products/smartwatch-4g-mit-dual-kamera-herzfrequenz-046784) |
+| 4g | 4G | [Smartwatch Dual Kamera 4G mit Herzfrequenz](https://luxestyle.ch/products/smartwatch-dual-kamera-4g-mit-herzfrequenz-552448) |
+| 4g | 4G | [Smartwatch für Senioren mit GPS und 4G](https://luxestyle.ch/products/smartwatch-fur-senioren-mit-gps-und-4g-180352) |
+| 4g | 4G | [Smartwatch mit Videoanruf und Kamera](https://luxestyle.ch/products/smartwatch-mit-videoanruf-und-kamera-624700) |
+| 4g | 4G | [Solarbetriebene 4G Wildtierkamera](https://luxestyle.ch/products/solarbetriebene-4g-wildtierkamera-610500) |
+| 4g | 4G | [Z040 Desktop DDR3 4G 1600 AMD Arbeitsspeicher](https://luxestyle.ch/products/z040-desktop-ddr3-4g-1600-amd-arbeitsspeicher-752640) |
+| 4g | 4G | [i9L Kinder 4G Videoanruf-Uhr](https://luxestyle.ch/products/i9l-kinder-4g-videoanruf-uhr-939264) |
+| 4g | FDD | [GPS-Telefonuhr mit Videoanruf](https://luxestyle.ch/products/gps-telefonuhr-mit-videoanruf-650688) |
+| 4g | alle Netze | [Smartwatch mit Video-Ortung für alle Netze](https://luxestyle.ch/products/smartwatch-mit-video-ortung-fur-alle-netze-618200) |
+| bluetooth | AirTag | [GPS-Halsband für Haustiere aus PU-Leder](https://luxestyle.ch/products/gps-halsband-fur-haustiere-aus-pu-leder-623700) |
+| bluetooth | Anti-Lost | [GPS-Tracker für Hunde mit Echtzeitortung](https://luxestyle.ch/products/gps-tracker-fur-hunde-mit-echtzeitortung-311809) |
+| bluetooth | Anti-Verlust | [Drahtlose Ladekarte mit Anti-Verlust-Tracker](https://luxestyle.ch/products/drahtlose-ladekarte-mit-anti-verlust-tracker-607600) |
+| bluetooth | Anti-Verlust | [G12 Pet Navigator Locator GPS Tracker](https://luxestyle.ch/products/g12-pet-navigator-locator-gps-tracker-609500) |
+| bluetooth | Anti-Verlust | [GPS-Halsband für Hunde – Anti-Verlust-Gerät](https://luxestyle.ch/products/gps-halsband-fur-hunde-anti-verlust-gerat-622300) |
+| bluetooth | Anti-Verlust | [Global Locator Ultra-dünne Anti-Verlust-Karte](https://luxestyle.ch/products/global-locator-ultra-dunne-anti-verlust-karte-741760) |
+| bluetooth | Anti-Verlust | [Global Locator Ultra-dünner Anti-Verlust-Alarm](https://luxestyle.ch/products/global-locator-ultra-dunner-anti-verlust-alarm-625700) |
+| bluetooth | Anti-Verlust | [Smart GPS Tracker Halsband für Katzen](https://luxestyle.ch/products/smart-gps-tracker-halsband-fur-katzen-635200) |
+| bluetooth | Anti-Verlust | [Universal Anti-Verlust Haustier-Locator](https://luxestyle.ch/products/universal-anti-verlust-haustier-locator-615900) |
+| bluetooth | Anti-Verlust | [Zwei-Wege-Ortungsgerät für Kinder](https://luxestyle.ch/products/zwei-wege-ortungsgerat-fur-kinder-279872) |
+| bluetooth | Anti-lost | [GPS-Halsband für Haustiere: Anti-verloren & Anti-Diebstahl Tracker](https://luxestyle.ch/products/gps-halsband-fur-haustiere-anti-verloren-anti-629000) |
+| bluetooth | Anti-lost | [Kinder-Smartwatch mit Musik und Foto](https://luxestyle.ch/products/kinder-smartwatch-mit-musik-und-foto-610880) |
+| bluetooth | Anti-lost | [Smartwatch für Senioren mit GPS](https://luxestyle.ch/products/smartwatch-fur-senioren-mit-gps-600700) |
+| bluetooth | Anti-lost | [Verloren- Tracker für Hunde](https://luxestyle.ch/products/verloren-tracker-fur-hunde-604800) |
+| bluetooth | Bluetooth | [Bluetooth-Ortungstracker](https://luxestyle.ch/products/bluetooth-ortungstracker-568450) |
+| bluetooth | Bluetooth | [Bluetooth-Tracker für Haustiere](https://luxestyle.ch/products/gps-ortungsgerat-fur-haustiere-625500) |
+| bluetooth | Bluetooth | [GPS Smartwatch Bluetooth Sport-Armband](https://luxestyle.ch/products/gps-smartwatch-bluetooth-sport-armband-770560) |
+| bluetooth | Bluetooth | [GPS Sport-Smartwatch mit LCD-Display](https://luxestyle.ch/products/gps-sport-smartwatch-mit-lcd-display-558656) |
+| bluetooth | Bluetooth | [GTX2 Outdoor Sportuhr mit GPS](https://luxestyle.ch/products/gtx2-outdoor-sportuhr-mit-gps-601900) |
+| bluetooth | Bluetooth | [Notruf-Armband mit Sturzsensor und Bluetooth](https://luxestyle.ch/products/notruf-armband-mit-sturzsensor-und-bluetooth-747584) |
+| bluetooth | Bluetooth | [Schnurlos-Ortungssystem](https://luxestyle.ch/products/schnurlos-ortungssystem-633900) |
+| bluetooth | Bluetooth | [Smartwatch für Kinder mit Herzfrequenzmessung](https://luxestyle.ch/products/smartwatch-fur-kinder-mit-herzfrequenzmessung-833216) |
+| bluetooth | Bluetooth | [Smartwatch mit Bluetooth, NFC und GPS](https://luxestyle.ch/products/smartwatch-mit-bluetooth-nfc-und-gps-551296) |
+| bluetooth | Bluetooth | [Stratos 2 Ultra GPS Smartwatch](https://luxestyle.ch/products/stratos-2-ultra-gps-smartwatch-625000) |
+| bluetooth | Bluetooth | [Sualio MFI Anti-Loss Tracker](https://luxestyle.ch/products/sualio-mfi-anti-loss-tracker-611200) |
+| bluetooth | Bluetooth | [Tierortungshalsband](https://luxestyle.ch/products/tierortungshalsband-626400) |
+| bluetooth | Bluetooth | [Tracker mit Farbdisplay](https://luxestyle.ch/products/tracker-mit-farbdisplay-206656) |
+| bluetooth | Bluetooth | [V76 GPS-Uhr mit Kompass und Höhenmesser](https://luxestyle.ch/products/v76-gps-uhr-mit-kompass-und-hohenmesser-625300) |
+| bluetooth | Bluetooth | [X5 Smartwatch mit Bluetooth & GPS](https://luxestyle.ch/products/x5-smartwatch-mit-bluetooth-gps-625300) |
+| bluetooth | Find My | [Karten-Tracker](https://luxestyle.ch/products/karten-tracker-779202) |
+| bluetooth | Find-My | [GPS-Halsband für Katzen · Find-My-kompatibel](https://luxestyle.ch/products/gps-halsband-fur-katzen-mit-apple-find-my-606900) |
+| bluetooth | Find-My | [Suchtracker · Find-My-kompatibel · 6 Farben](https://luxestyle.ch/products/suchtracker-fur-apple-gerate-in-6-farben-604500) |
+| nur-2g-3g | 2G | [GPS-Haustier-Tracker mit Echtzeit-Ortung](https://luxestyle.ch/products/gps-haustier-tracker-mit-echtzeit-ortung-264768) |
+| nur-2g-3g | 2G | [Kinder Smartwatch mit Kamera](https://luxestyle.ch/products/kinder-smartwatch-mit-kamera-1e3837) |
+| nur-2g-3g | 2G | [OBD-GPS-Locator](https://luxestyle.ch/products/obd-gps-locator-649024) |
+| nur-2g-3g | GSM | [GPS-Diebstahlschutz mit Langzeit-Standby](https://luxestyle.ch/products/gps-diebstahlschutz-mit-langzeit-standby-455232) |
+| nur-2g-3g | GSM | [GPS-Haustier-Tracker Z8-A](https://luxestyle.ch/products/gps-haustier-tracker-z8-a-a3d1b5) |
+| nur-2g-3g | GSM | [GPS-Lokator](https://luxestyle.ch/products/gps-lokator-231c58) |
+| nur-2g-3g | GSM | [Kleiner GPS-Tracker](https://luxestyle.ch/products/kleiner-gps-tracker-879232) |
+| unklar |  | [36MP HD Infrarot-Wildkamera](https://luxestyle.ch/products/36mp-hd-infrarot-wildkamera-620900) |
+| unklar |  | [AD08 Kinder Smartwatch mit Anruffunktion](https://luxestyle.ch/products/ad08-kinder-smartwatch-mit-anruffunktion-830080) |
+| unklar |  | [Bell Pet GPS Tracker](https://luxestyle.ch/products/bell-pet-gps-tracker-9d6915) |
+| unklar |  | [GPS-Auto-Ortungsgerät](https://luxestyle.ch/products/gps-auto-ortungsgerat-d21f56) |
+| unklar |  | [GPS-Auto-Ortungstracker](https://luxestyle.ch/products/gps-auto-ortungstracker-298432) |
+| unklar |  | [GPS-Halsband für Hunde (Grösse M-L)](https://luxestyle.ch/products/gps-halsband-fur-hunde-grosse-m-l-622200) |
+| unklar |  | [GPS-Ortungsgerät](https://luxestyle.ch/products/gps-ortungsgerat-484480) |
+| unklar |  | [GPS-Ortungsgerät für Fahrzeuge](https://luxestyle.ch/products/gps-ortungsgerat-fur-fahrzeuge-623800) |
+| unklar |  | [GPS-Tracker für Haustiere mit Gesundheitsüberwachung](https://luxestyle.ch/products/gps-tracker-fur-haustiere-mit-gesundheitsuberw-603200) |
+| unklar |  | [H39T Smartwatch für Kinder mit Temperaturfunktion](https://luxestyle.ch/products/h39t-smartwatch-fur-kinder-mit-temperaturfunkt-441088) |
+| unklar |  | [Intelligente Outdoor-Sportuhr mit GPS](https://luxestyle.ch/products/intelligente-outdoor-sportuhr-mit-gps-614100) |
+| unklar |  | [Kartenetui mit Ortungschip](https://luxestyle.ch/products/kartenetui-mit-ortungschip-601900) |
+| unklar |  | [Katzenhalsband mit GPS](https://luxestyle.ch/products/katzenhalsband-mit-gps-612000) |
+| unklar |  | [Kinder Smartwatch mit Anruffunktion](https://luxestyle.ch/products/kinder-smartwatch-mit-anruffunktion-471360) |
+| unklar |  | [Kinder Smartwatch mit Dual-Kamera & Spielen](https://luxestyle.ch/products/kinder-smartwatch-mit-dual-kamera-spielen-716160) |
+| unklar |  | [Kinder Smartwatch mit GPS und HD-Kamera](https://luxestyle.ch/products/kinder-smartwatch-mit-gps-und-hd-kamera-630400) |
+| unklar |  | [Kinder Smartwatch mit GPS und Kamera](https://luxestyle.ch/products/kinder-smartwatch-mit-gps-und-kamera-653568) |
+| unklar |  | [Kinder Smartwatch mit GPS und Videotelefonie](https://luxestyle.ch/products/kinder-smartwatch-mit-gps-und-videotelefonie-616576) |
+| unklar |  | [Kinder Smartwatch mit GPS-Ortung](https://luxestyle.ch/products/kinder-smartwatch-mit-gps-ortung-085376) |
+| unklar |  | [Kinder Smartwatch mit SOS-Funktion & Kamera](https://luxestyle.ch/products/kinder-smartwatch-mit-sos-funktion-kamera-614000) |
+| unklar |  | [Kinder Smartwatch mit Vibrationsalarm](https://luxestyle.ch/products/kinder-smartwatch-mit-vibrationsalarm-602800) |
+| unklar |  | [Kinder-Telefonuhr mit vielen Sprachen](https://luxestyle.ch/products/kinder-telefonuhr-mit-vielen-sprachen-186112) |
+| unklar |  | [Kleiner Tracker mit NFC](https://luxestyle.ch/products/kleiner-tracker-mit-nfc-624800) |
+| unklar |  | [Mini-GPS-Tracker für Outdoor & Auto](https://luxestyle.ch/products/mini-gps-tracker-fur-outdoor-auto-b7cf0e) |
+| unklar |  | [Multifunktionale, wasserdichte Smartwatch für Kinder](https://luxestyle.ch/products/multifunktionale-wasserdichte-smartwatch-fur-k-602000) |
+| unklar |  | [Multifunktions-Smartwatch für Kinder](https://luxestyle.ch/products/multifunktions-smartwatch-fur-kinder-604700) |
+| unklar |  | [Notruf-Pager für Senioren und Patienten](https://luxestyle.ch/products/notruf-pager-fur-senioren-und-patienten-463360) |
+| unklar |  | [Ortungsgerät für Wandobjekte](https://luxestyle.ch/products/ortungsgerat-fur-wandobjekte-5d03fe) |
+| unklar |  | [Q12S Kinder Smartwatch mit GPS & Kamera](https://luxestyle.ch/products/q12s-kinder-smartwatch-mit-gps-kamera-404288) |
+| unklar |  | [Q19 Kinder Smartwatch mit GPS](https://luxestyle.ch/products/q19-kinder-smartwatch-mit-gps-493824) |
+| unklar |  | [Smart Anti-Diebstahl GPS-Tracker](https://luxestyle.ch/products/smart-anti-diebstahl-gps-tracker-610400) |
+| unklar |  | [Smart GPS Haustier-Tracker](https://luxestyle.ch/products/smart-gps-haustier-tracker-633100) |
+| unklar |  | [Smart-Armband mit GPS, Herzfrequenzmessung](https://luxestyle.ch/products/smart-armband-mit-gps-herzfrequenzmessung-628200) |
+| unklar |  | [Smartwatch GPS Herzfrequenz Kompass](https://luxestyle.ch/products/smartwatch-gps-herzfrequenz-kompass-541184) |
+| unklar |  | [Smartwatch für Kinder mit GPS und Kamera](https://luxestyle.ch/products/smartwatch-fur-kinder-mit-gps-und-kamera-636300) |
+| unklar |  | [Smartwatch für Kinder mit Video und Touch](https://luxestyle.ch/products/smartwatch-fur-kinder-mit-video-und-touch-6e1b49) |
+| unklar |  | [Smartwatch für Senioren mit GPS und Video](https://luxestyle.ch/products/smartwatch-fur-senioren-mit-gps-und-video-606800) |
+| unklar |  | [Smartwatch mit Kamera und GPS für Kinder](https://luxestyle.ch/products/smartwatch-mit-kamera-und-gps-fur-kinder-669504) |
+| unklar |  | [Smartwatch mit Videoanruf und Schrittzähler](https://luxestyle.ch/products/smartwatch-mit-videoanruf-und-schrittzahler-341568) |
+| unklar |  | [T58 GPS Smartwatch für Kinder](https://luxestyle.ch/products/t58-gps-smartwatch-fur-kinder-025b84) |
+| unklar |  | [V95 Kinder-Smartwatch wasserdicht mit GPS](https://luxestyle.ch/products/v95-kinder-smartwatch-wasserdicht-mit-gps-624832) |
+| unklar |  | [WLAN-Wildkamera für die Outdoor-Forschung](https://luxestyle.ch/products/wlan-wildkamera-fur-die-outdoor-forschung-624100) |
+| unklar |  | [Wasserdichte Touchscreen-Smartwatch für Kinder](https://luxestyle.ch/products/wasserdichte-touchscreen-smartwatch-fur-kinder-171200) |
+| unklar |  | [Y90 Smartwatch mit GPS & Gesundheitsmonitoring](https://luxestyle.ch/products/y90-smartwatch-mit-gps-gesundheitsmonitoring-956672) |
+| unklar | CJ nicht erreicht | [LEMFO Y99 Kinder Smartwatch mit 4G & GPS](https://luxestyle.ch/products/lemfo-y99-kinder-smartwatch-mit-4g-gps-323584) |
+| unklar | CJ nicht erreicht | [Smartwatch für Kinder mit Videoanruffunktion](https://luxestyle.ch/products/smartwatch-fur-kinder-mit-videoanruffunktion-091008) |
+| unklar-sim | Anruf/Video ohne Netzangabe | [GPS Sport Smartwatch mit Bluetooth-Anruffunktion](https://luxestyle.ch/products/gps-sport-smartwatch-mit-bluetooth-anruffunkti-620300) |
+| unklar-sim | Anruf/Video ohne Netzangabe | [Outdoor GPS Smartwatch mit Bluetooth-Anruf](https://luxestyle.ch/products/outdoor-gps-smartwatch-mit-bluetooth-anruf-943168) |
+| unklar-sim | Anruf/Video ohne Netzangabe | [Outdoor-Sportuhr mit GPS und Bluetooth-Telefonie](https://luxestyle.ch/products/outdoor-sportuhr-mit-gps-und-bluetooth-telefon-620200) |
+| unklar-sim | Anruf/Video ohne Netzangabe | [Smartwatch für Kinder mit Video & Anruf](https://luxestyle.ch/products/smartwatch-fur-kinder-mit-video-anruf-979072) |
+| unklar-sim | Anruf/Video ohne Netzangabe | [Smartwatch mit Anruffunktion & Gesundheits-Tracker](https://luxestyle.ch/products/smartwatch-mit-anruffunktion-gesundheits-track-604800) |
+| unklar-sim | Anruf/Video ohne Netzangabe | [Smartwatch mit GPS und Bluetooth-Telefonie](https://luxestyle.ch/products/smartwatch-mit-gps-und-bluetooth-telefonie-610100) |
+| unklar-sim | Anruf/Video ohne Netzangabe | [T92 Smartwatch mit Bluetooth-Anrufen & Gesundheits-Tracker](https://luxestyle.ch/products/t92-smartwatch-mit-bluetooth-anrufen-gesundhei-605200) |
+| unklar-sim | SIM ohne Netz | [Senioren-Telefonuhr mit Ortungsfunktion](https://luxestyle.ch/products/senioren-telefonuhr-mit-ortungsfunktion-448640) |
+| unklar-sim | SIM ohne Netz | [Smartwatch mit rundem Display und SIM-Karten-Funktion](https://luxestyle.ch/products/smartwatch-mit-rundem-display-und-sim-karten-f-042176) |
