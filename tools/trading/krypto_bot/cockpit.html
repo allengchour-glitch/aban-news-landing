@@ -154,7 +154,15 @@ footer{color:var(--ink-3);font-size:12px;margin:16px 0}
         <button type="button" data-s="1.5" aria-pressed="false">1,5× mehr Risiko<small id="st-1.5"></small></button>
         <button type="button" data-s="2" aria-pressed="false">2× hohes Risiko<small id="st-2"></small></button>
       </div>
-      <span class="unter">Mehr als 2× gibt es nicht: 3× fiel im Test um −81 %, 5× um −97 %, 10× war das Konto weg.</span>
+      <span class="unter">Mehr als 2× gibt es nicht: 3× fiel im Test um −82 %, 5× um −98 %, 10× wurde liquidiert.</span>
+    </div>
+    <div class="risiko">
+      <span class="unter" style="font-weight:700;color:var(--ink-2)">Konto-Anteil</span>
+      <div class="stufen" id="anteile">
+        <button type="button" data-k="0.5" aria-pressed="true">50 % Standard<small id="ka-0.5">Hälfte bleibt als USDT liegen</small></button>
+        <button type="button" data-k="1" aria-pressed="false">100 % ganzes Konto<small id="ka-1"></small></button>
+      </div>
+      <span class="unter" id="kontoZahl">Was das ganze Konto im Test brachte (Stufe × Anteil).</span>
     </div>
     <div class="knoepfe">
       <button type="button" data-a="probe">▶ Probelauf<small>zeigt Aufträge, handelt nicht</small></button>
@@ -387,13 +395,22 @@ function zeichne(d) {
   $("gesund").innerHTML = g.map(x => `<li style="padding:3px 0">${zeichen(x.ok)} <b>${esc(x.name)}</b> — <span class="unter">${esc(x.text)}</span></li>`).join("");
   const probleme = g.filter(x => x.ok === false).length;
   $("g-kurz").textContent = probleme ? `${probleme} Punkt${probleme > 1 ? "e" : ""} brauchen Aufmerksamkeit` : "alles in Ordnung";
-  const ri = d.risiko || {stufe: 1, test: {}};
+  const ri = d.risiko || {stufe: 1, test: {}, anteil: 0.5, konto: {}};
+  const kontoTest = (a, s) => (ri.konto || {})[`${a}|${s}`];  // ganzes Konto: Anteil arbeitet, der Rest liegt ohne Zins da
+  const kurz = t => t && t["2019–heute"] ? `${fmtPct(t["2019–heute"].cagr)}/J · Einbruch ${fmtZahl(t["2019–heute"].einbruch * 100)} %` : "";
   document.querySelectorAll("#stufen button").forEach(b => {
     b.setAttribute("aria-pressed", String(+b.dataset.s === ri.stufe));
-    const t = ri.test[b.dataset.s];
-    if (t && t["2019–heute"]) $("st-" + b.dataset.s).textContent =
-      `Test ab 2019: ${fmtPct(t["2019–heute"].cagr)}/J · Einbruch ${fmtZahl(t["2019–heute"].einbruch * 100)} %`;
+    const t = kontoTest(ri.anteil ?? 0.5, b.dataset.s) || ri.test[b.dataset.s];
+    if (t && t["2019–heute"]) $("st-" + b.dataset.s).textContent = "Konto ab 2019: " + kurz(t);
   });
+  document.querySelectorAll("#anteile button").forEach(b => {
+    b.setAttribute("aria-pressed", String(+b.dataset.k === (ri.anteil ?? 0.5)));
+    const t = kontoTest(b.dataset.k, String(ri.stufe));
+    if (t) $("ka-" + b.dataset.k).textContent = "Konto ab 2019: " + kurz(t);
+  });
+  const jetzt = kontoTest(String(ri.anteil ?? 0.5), String(ri.stufe));
+  if (jetzt) $("kontoZahl").textContent = `Jetzt: Stufe ${String(ri.stufe).replace(".", ",")}× auf ${Math.round((ri.anteil ?? 0.5) * 100)} % des Kontos — ` +
+    `im Test ab 2019 ${kurz(jetzt)}${jetzt["2022–heute"] ? `, ab 2022 ${fmtPct(jetzt["2022–heute"].cagr)}/J` : ""}. Vergangenheit ist keine Garantie.`;
   const aus = d.notaus || d.pause;
   $("auto").setAttribute("aria-checked", String(!aus));
   $("autoText").textContent = aus ? "Auto-Handel AUS" : "Auto-Handel AN";
@@ -537,10 +554,21 @@ $("stufen").addEventListener("click", e => {
   const b = e.target.closest("button[data-s]"); if (!b) return;
   const s = +b.dataset.s, ri = (letzterStand && letzterStand.risiko) || {stufe: 1, test: {}};
   if (s === ri.stufe) return;
-  const t = ri.test[b.dataset.s] && ri.test[b.dataset.s]["2019–heute"], t22 = ri.test[b.dataset.s] && ri.test[b.dataset.s]["2022–heute"];
-  if (s > 1 && !confirm(`Risiko-Stufe ${b.dataset.s.replace(".", ",")}× wählen?\n\nIm Test ab 2019: ${t ? fmtPct(t.cagr) + " pro Jahr, schlimmster Einbruch " + fmtZahl(t.einbruch * 100) + " %" : "—"}` +
+  const tk = ((ri.konto || {})[`${ri.anteil ?? 0.5}|${b.dataset.s}`]) || ri.test[b.dataset.s];
+  const t = tk && tk["2019–heute"], t22 = tk && tk["2022–heute"];
+  if (s > 1 && !confirm(`Risiko-Stufe ${b.dataset.s.replace(".", ",")}× wählen?\n\nGanzes Konto im Test ab 2019: ${t ? fmtPct(t.cagr) + " pro Jahr, schlimmster Einbruch " + fmtZahl(t.einbruch * 100) + " %" : "—"}` +
       `${t22 ? "\nab 2022: " + fmtPct(t22.cagr) + " pro Jahr, Einbruch " + fmtZahl(t22.einbruch * 100) + " %" : ""}\n\nMit 1× war das Verhältnis Rendite zu Einbruch besser. Gilt ab dem nächsten Lauf.`)) return;
   knopf({"1": "risiko_1", "1.5": "risiko_1_5", "2": "risiko_2"}[b.dataset.s]);
+});
+$("anteile").addEventListener("click", e => {
+  const b = e.target.closest("button[data-k]"); if (!b) return;
+  const k = +b.dataset.k, ri = (letzterStand && letzterStand.risiko) || {stufe: 1, anteil: 0.5, konto: {}};
+  if (k === (ri.anteil ?? 0.5)) return;
+  const t = (ri.konto || {})[`${b.dataset.k}|${ri.stufe}`], t1 = t && t["2019–heute"];
+  if (k > 0.5 && !confirm(`Ganzes Futures-Konto einsetzen (100 %)?\n\nMit Stufe ${String(ri.stufe).replace(".", ",")}× im Test ab 2019: ` +
+      `${t1 ? fmtPct(t1.cagr) + " pro Jahr, schlimmster Einbruch " + fmtZahl(t1.einbruch * 100) + " %" : "—"}\n\n` +
+      "Gewinne UND Einbrüche des Kontos werden etwa doppelt so gross. Nur Geld, das für den Pilot bestimmt ist. Gilt ab dem nächsten Lauf.")) return;
+  knopf(k === 1 ? "anteil_100" : "anteil_50");
 });
 ladeProtokoll();
 addEventListener("resize", () => letzterStand && zeichne(letzterStand));

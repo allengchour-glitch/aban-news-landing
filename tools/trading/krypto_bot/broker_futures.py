@@ -9,7 +9,10 @@ Sicherungen:
   • Hebel: Risiko-Stufe 1 / 1,5 / 2 (Cockpit oder KRYPTO_RISIKO; altes KRYPTO_MAX_HEBEL wirkt als Deckel), hart gedeckelt auf 2. Margin-Art ISOLATED: Verlust höchstens das Pfand der Position.
   • Nur Einweg-Modus (kein Hedge), nur Marktaufträge; Verkleinern immer mit reduceOnly.
   • Stop an der Börse: STOP_MARKET closePosition auf den Markpreis, nach jedem Lauf neu gesetzt.
-  • Höchstens KI_BOT_ANTEIL (Standard 0.5) des Kontos, je Auftrag höchstens KI_BOT_MAX_AUFTRAG USDT (Standard 1000).
+  • Höchstens KI_BOT_ANTEIL (Standard 0.5, im Cockpit wählbar) des Kontos. Zukauf je Lauf höchstens
+    KRYPTO_MAX_AUFTRAG_ANTEIL × Konto (Standard 1,0 — greift bei Stufe ≤ 2 nie) und, nur wenn gesetzt, KRYPTO_MAX_AUFTRAG bzw.
+    KI_BOT_MAX_AUFTRAG USDT. Bis 11.10.2026 galt fest 1000 USDT: Das kostete ab 5000 USDT Konto 10–50 Pp. Rendite pro Jahr,
+    weil der Pilot seine Position über Wochen aufbaute (Profit-Prüfung). Zukäufe nie grösser als die freie Margin erlaubt.
   • Not-Aus: KI_BOT_STOP=1 oder Datei tools/trading/ki_bot/STOP → keine neuen Positionen; bestehende werden geschlossen.
   • Protokoll ohne Schlüssel in data/ki-bot-broker.json.
 """
@@ -99,8 +102,12 @@ def einstellungen(env=None):
         "spot": env.get("BINANCE_SPOT_URL") or SPOT_URL,
         "echtgeld": echt, "symbol": (env.get("KRYPTO_FUTURES_SYMBOL") or "BTCUSDT").upper(),
         "max_hebel": max(0.0, min(HEBEL_HART, hebel)),
-        "anteil": max(0.0, min(1.0, env_zahl(env, "KI_BOT_ANTEIL", 0.5))),
-        "max_auftrag": max(0.0, env_zahl(env, "KI_BOT_MAX_AUFTRAG", 1000)),
+        "anteil": K.anteil(None if env is os.environ else env),
+        # fester Deckel nur, wenn bewusst gesetzt (eigener Name zuerst — KI_BOT_MAX_AUFTRAG gilt auch für Alpaca)
+        "max_auftrag": max(0.0, env_zahl(env, "KRYPTO_MAX_AUFTRAG" if env.get("KRYPTO_MAX_AUFTRAG") else "KI_BOT_MAX_AUFTRAG",
+                                         float("inf"))),
+        "max_auftrag_anteil": max(0.0, min(HEBEL_HART, env_zahl(env, "KRYPTO_MAX_AUFTRAG_ANTEIL", 1.0))),
+        "boersen_hebel": min(HEBEL_HART, K.BOERSEN_HEBEL),
         "stop": env.get("KI_BOT_STOP", "") == "1" or STOP_DATEI.exists(),
     }
 
@@ -263,12 +270,16 @@ def runde(x, schritt):
     return math.floor(abs(x) / schritt + 1e-9) * schritt * (1 if x >= 0 else -1)
 
 
-def plane(cfg, kapital, menge_ist, mark, regeln, ziel, gewicht=1.0):
-    """Reine Rechnung: Ziel-Hebel → Liste von Aufträgen [(seite, menge, reduceOnly)]. Kapital = Kontowert inkl. offener Gewinne."""
+def plane(cfg, kapital, menge_ist, mark, regeln, ziel, gewicht=1.0, frei=None):
+    """Reine Rechnung: Ziel-Hebel → Liste von Aufträgen [(seite, menge, reduceOnly)]. Kapital = Kontowert inkl. offener Gewinne.
+    frei = freies Guthaben (availableBalance): ein Zukauf wird nie grösser, als die Margin beim Börsen-Hebel erlaubt —
+    sonst lehnt Binance ab (Warnung aufs Handy) und es wird gar nichts gekauft."""
     ziel = max(-cfg["max_hebel"], min(cfg["max_hebel"], ziel))
     basis = kapital * cfg["anteil"] * gewicht
     if basis <= 0 or mark <= 0:
         return []
+    deckel = min(cfg["max_auftrag"], cfg.get("max_auftrag_anteil", 1.0) * kapital)
+    menge_vorher = menge_ist
     ist_hebel = menge_ist * mark / basis
     gleiche_richtung = (ist_hebel > 0) == (ziel > 0)
     if ziel != 0 and menge_ist != 0 and gleiche_richtung and abs(ist_hebel - ziel) <= BAND:
@@ -279,16 +290,21 @@ def plane(cfg, kapital, menge_ist, mark, regeln, ziel, gewicht=1.0):
     # 1) Bestehende Position verkleinern oder schliessen (Richtungswechsel, Ziel 0, Ziel kleiner)
     if menge_ist != 0 and (ziel == 0 or not gleiche_richtung or abs(ziel_menge) < abs(menge_ist)):
         weg = abs(menge_ist) if (ziel == 0 or not gleiche_richtung) else abs(menge_ist) - abs(ziel_menge)
-        weg = min(weg, cfg["max_auftrag"] / mark) if weg < abs(menge_ist) else weg  # Schliessen nie kappen
+        weg = min(weg, deckel / mark) if weg < abs(menge_ist) else weg  # Schliessen nie kappen
         weg = runde(weg, regeln["step"])
         if weg > 0 and (weg * mark >= mindest or weg == runde(abs(menge_ist), regeln["step"])):
             auftraege.append(("SELL" if menge_ist > 0 else "BUY", weg, True))
         if ziel == 0 or gleiche_richtung:
             return auftraege
         menge_ist = 0.0  # nach dem Schliessen neu eröffnen
-    # 2) Aufbauen / vergrössern (höchstens max_auftrag pro Lauf)
+    # 2) Aufbauen / vergrössern (höchstens den Deckel pro Lauf und nie mehr, als die freie Margin trägt)
     dazu = abs(ziel_menge) - abs(menge_ist)
-    dazu = runde(min(dazu, cfg["max_auftrag"] / mark), regeln["step"])
+    grenze = deckel
+    if frei is not None:
+        hebel_b = max(1.0, cfg.get("boersen_hebel", 1))
+        frei_nach = frei + (abs(menge_vorher) * mark / hebel_b if menge_ist == 0 and menge_vorher != 0 else 0.0)  # Wechsel gibt Margin frei
+        grenze = min(grenze, max(0.0, frei_nach * 0.95) * hebel_b)  # 5 % Reserve für Gebühren und Kursbewegung
+    dazu = runde(min(dazu, grenze / mark), regeln["step"])
     if dazu >= regeln["min_qty"] and dazu * mark >= mindest:
         auftraege.append(("BUY" if ziel > 0 else "SELL", dazu, False))
     return auftraege
@@ -425,7 +441,8 @@ def ausfuehren(entscheid, trocken=False, env=None, client=None, protokolliere=No
         elif ziel < 0 and ss and mark >= ss:
             ziel = 0.0
             e["hinweis"] = (e["hinweis"] + f" Kurs {mark:g} liegt schon über dem Stop {ss:.2f} — heute kein Short.").strip()
-        plan = plane(cfg, kapital, menge, mark, regeln, ziel, gewicht)
+        frei = konto.get("availableBalance")
+        plan = plane(cfg, kapital, menge, mark, regeln, ziel, gewicht, float(frei) if frei not in (None, "") else None)
     except (BinanceFehler, *NETZFEHLER, KeyError, ValueError, StopIteration) as ex:
         return abbruch(fehlertext(ex))
     eingerichtet = False
@@ -442,7 +459,7 @@ def ausfuehren(entscheid, trocken=False, env=None, client=None, protokolliere=No
                 break
             try:
                 if not red and not eingerichtet:  # vor JEDEM Aufbau, auch nach einem Schliessauftrag (Richtungswechsel)
-                    c.einrichten(sym, cfg["max_hebel"])
+                    c.einrichten(sym, cfg["boersen_hebel"])
                     eingerichtet = True
                 antwort = c.auftrag(sym, seite, m, red)
                 a["id"], a["status"] = (antwort or {}).get("orderId"), (antwort or {}).get("status")

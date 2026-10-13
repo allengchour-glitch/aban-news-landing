@@ -11,7 +11,10 @@ Regel (vorab festgelegt, aus futures.py die einzige, die den Zufallstest bestand
                  oder lag sie im letzten Jahr mehr als EINBRUCH_MAX im Minus vom Hoch, gibt es eine WARNUNG.
                  Als Notbremse (flach gehen) kostete er im Test Rendite — darum handelt der Pilot live trotzdem.
   Stop:     Abstand = STOP_SIGMA × Tages-Schwankung × Kurs (als Sicherung an der Börse gegen Crash-Tage).
-            3σ statt bisher 4σ: auf der Live-Konfiguration (BTC 150 + ETH 200 + MVRV) in allen Feldern besser.
+            6σ = weite Crash-Sicherung. Mit realistischem Modell (Stop auf dem Binance-Markpreis, echtes Funding, gemessener
+            Schlupf 0,45 %) waren enge Stops (3σ/4σ) in allen Zeiträumen schlechter als weite oder gar keiner — sie lösen an
+            Dochten aus und kaufen teuer zurück. Ganz ohne Stop war es minimal besser, aber dann fehlt die Sicherung bei
+            Börsenausfall, ausgeschaltetem PC oder einem Absturz über die Liquidationsgrenze (Börsen-Hebel 2 ≈ −49 %).
   MVRV-Bremse: Liegt der Kurs unter dem Einstandswert aller Coins (MVRV < 1, CoinMetrics, Stand Vortag), kein Short —
             die einzige von 13 freien Markt-Infos, die info_pruefung.py bestand (alle 4 Felder besser, Zufallsprobe 94 %).
 Alle Werte nur aus abgeschlossenen Tagen; die Entscheidung von Tag i gilt ab Tag i+1.
@@ -30,11 +33,20 @@ HEBEL_HART = 2.0          # nie mehr, egal was eingestellt ist
 FENSTER = 730
 SKILL_MIN = 0.60
 EINBRUCH_MAX = -0.45
-STOP_SIGMA = 3.0          # pilot_pruefung.py 1L: 3σ auf der Live-Konfiguration in allen Feldern besser als 4σ (11.10.2026)
+STOP_SIGMA = 6.0          # Crash-Sicherung, siehe pilot_pruefung.py 1L (11.10.2026: 3σ/4σ kosteten mit Markpreis-Stops 6–7 Pp./J)
 MVRV_TIEF = 1.0
 # Risiko-Stufe (hebel_pruefung.py): 1 = Standard und im Test am besten (Rendite ÷ Einbruch). 1,5 und 2 = alles grösser
-# (Schwankungsziel × Stufe, Deckel = Stufe): mehr Rendite, aber Einbrüche bis −44 % bzw. −60 %. Ab 5×: −97 %, 10×: Konto weg.
+# (Schwankungsziel × Stufe, Deckel = Stufe): mehr Rendite, aber Einbrüche bis −49 % bzw. −66 % (realistisches Modell 11.10.2026).
+# Ab 5×: −98 %, 10×: auf dem Markpreis liquidiert.
 STUFEN = (1.0, 1.5, 2.0)
+# Konto-Anteil (KI_BOT_ANTEIL oder Cockpit): welcher Teil des Futures-Kontos arbeitet. Der Rest liegt als USDT OHNE Zins da —
+# bei 50 % bekommt das Konto also nur rund die Hälfte der Backtest-Rendite (Profit-Prüfung 11.10.2026). Für ein Konto, das nur
+# für den Pilot da ist, ist 100 % richtig; 50 % bleibt Standard, damit niemand ungefragt sein ganzes Konto einsetzt.
+ANTEILE = (0.5, 1.0)
+# Börsen-Hebel (isolierte Margin) — NICHT die Positionsgrösse, die bestimmt plane(). Mit 1 fehlte bei Anteil 100 % oft die
+# Margin für Zukäufe (Backtest: 36 Ablehnungen), mit 2 liegt die Liquidation rund 49 % vom Einstieg weg, weit hinter dem Stop
+# (höchstens ~20 %). Nie über HEBEL_HART.
+BOERSEN_HEBEL = 2
 EINSTELLUNGEN = Path(__file__).resolve().parents[3] / "data" / "krypto-einstellungen.json"
 GEBUEHR = 0.0005
 FUNDING_8H = 0.0001
@@ -86,6 +98,25 @@ def risiko(env=None, datei=None):
         return {"stufe": 1.0, "ziel_vol": ZIEL_VOL, "max_hebel": deckel}
     s = min(STUFEN, key=lambda x: abs(x - s))
     return {"stufe": s, "ziel_vol": ZIEL_VOL * s, "max_hebel": min(s, HEBEL_HART)}
+
+
+def anteil(env=None, datei=None):
+    """→ Konto-Anteil 0–1. Quelle: KI_BOT_ANTEIL, sonst die Cockpit-Einstellung «anteil» (nur wenn env nicht vorgegeben oder
+    eine Datei übergeben wird), sonst 0,5. «0,5» und Unsinn gehen (Unsinn → 0,5) — nie ein Absturz vor dem Not-Aus."""
+    nur_env = env is not None and datei is None
+    env = os.environ if env is None else env
+    roh = env.get("KI_BOT_ANTEIL")
+    if roh in (None, "") and not nur_env:
+        try:
+            roh = json.loads((datei or EINSTELLUNGEN).read_text(encoding="utf-8")).get("anteil")
+        except (OSError, ValueError, AttributeError):
+            roh = None
+    try:
+        a = float(str(roh).strip().replace(",", ".")) if roh not in (None, "") else 0.5
+    except ValueError:
+        print(f"⚠️ KI_BOT_ANTEIL={roh!r} ist keine Zahl — nehme 0.5.")
+        a = 0.5
+    return max(0.0, min(1.0, a))
 
 
 def roh_hebel(p, short=True, max_hebel=MAX_HEBEL, n_sma=200, ziel_vol=ZIEL_VOL):

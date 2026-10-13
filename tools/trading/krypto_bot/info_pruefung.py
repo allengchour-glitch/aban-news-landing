@@ -135,6 +135,7 @@ def main():
     btc, eth = P.ohlc("BTC-USD"), P.ohlc("ETH-USD")
     tage, ((hb, lb, cb), (he, le, ce)) = P.ausrichten([btc, eth])
     maerkte = {"btc": (hb, lb, cb, K.roh_hebel(cb, n_sma=150)), "eth": (he, le, ce, K.roh_hebel(ce, n_sma=200))}
+    bx = P.boerse(tage)  # echtes Funding + Markpreis-Stops ab 2020
     fl = {coin: flaggen(coin, tage) for coin in maerkte}
     start = next(i for i, t in enumerate(tage) if t >= ABSCHNITTE[0][0])
     fenster = []
@@ -144,7 +145,7 @@ def main():
         fenster.append((f"{von[:4]}–{'heute' if bis == '9999' else str(int(bis[:4]) - 1)}", a, b))
 
     def konto(zs, a, b):
-        return {coin: P.lauf(zs[coin], *maerkte[coin][:3], a, b, K.STOP_SIGMA)[0] for coin in zs}
+        return {coin: P.lauf(zs[coin], *maerkte[coin][:3], a, b, K.STOP_SIGMA, **bx[coin])[0] for coin in zs}
 
     def mar_mix(zs):
         w = konto(zs, start, len(tage))
