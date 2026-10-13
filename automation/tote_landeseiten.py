@@ -24,6 +24,16 @@ unlieferbare Bestellung teuer (Lehre 20.08.).
 erlebt einen Köderwechsel. Markenanfragen bleiben dem Menschen überlassen.
 
   DRY=1  nur zeigen (Standard)   FIX=1  Weiterleitungen anlegen
+  GSC=1  zusätzlich die Search Console lesen (dropship/_gsc_seiten.json, Schnappschuss ≤ 3 T alt)
+  --kanarien  Zielwahl gegen feste Titel prüfen (live, 0 Fehler Pflicht vor FIX)
+
+SEARCH CONSOLE ALS ZWEITE QUELLE (13.10.2026, Messrunde Richter Platz 1): Shopify zählt Landungen auf einer 404-Seite
+NICHT als Sitzung. Seiten, die schon tot waren, als Google-Besucher kamen, sah dieser Wächter deshalb nie. GEMESSEN
+(Skeptiker, 1 Woche GSC 04.–10.10.): 133 tote /products/-Seiten ohne 301 mit 332–364 Impressionen/Woche, nur 2 davon mit
+einer ShopifyQL-Sitzung; 3–4 echte 404-Klicks/Woche. Für GSC-Funde gilt eine STRENGERE Zielwahl: Zwilling nur über
+ersatz() (≥ 0,70, kein neues langes Wort), Kategorie nur über TITEL_ZIEL und nur, wenn die Zielkollektion ≤ 3'000 aktive
+Produkte hat — grobe Tag-/Typ-Rückfälle gehen in den Bericht. Höchstens GSC_MAX (50) neue Weiterleitungen je Lauf.
+Erwartung ehrlich: Hygiene am einzigen Kanal mit Käufen, ≈ 0 Käufe in 6 Wochen (VERMUTUNG).
 """
 import json, os, re, subprocess, sys, time, urllib.parse
 
@@ -33,6 +43,22 @@ BERICHT = os.path.join(REPO, "dropship", "TOTE-LANDESEITEN.md")
 LEDGER = os.path.join(REPO, "dropship", "_tote_landeseiten.txt")
 FIX = os.environ.get("FIX") == "1"
 TAGE = os.environ.get("TAGE", "60")
+GSC = os.environ.get("GSC") == "1"
+GSC_DATEI = os.path.join(REPO, "dropship", "_gsc_seiten.json")
+GSC_STAND = os.path.join(REPO, "dropship", "_gsc_tot_stand.json")
+GSC_MAX = int(os.environ.get("GSC_MAX", "50"))
+GSC_KOLL_MAX = 3000     # grössere Kategorien sind für eine Google-Landung zu grob (sub-haustier 3'704, damen-mode 10'344)
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+try:   # 13.10.2026: Eimer-Etikette (Regel «helfer-ohne-eimer») — der Helfer hatte keine
+    from eimer_etikette import nachlauf as _nachlauf
+except Exception:  # pragma: no cover
+    def _nachlauf(d):
+        return 0
+try:
+    from klingenregel import ist_handklinge
+except Exception:  # pragma: no cover
+    def ist_handklinge(t):
+        return False
 
 # Tags, die ein Ziel disqualifizieren — ein Ersatz darf nicht dasselbe Problem haben.
 RISIKO = {"verdeckte-ueberwachung", "abhoergeraet-pruefen", "nicht-bewerben",
@@ -75,6 +101,7 @@ def gql(q, v=None):
             time.sleep(min(20, max(2, (k.get("requestedQueryCost", 100) - ts.get("currentlyAvailable", 0))
                                    / (ts.get("restoreRate") or 100) + 1)))
             continue
+        _nachlauf(d)
         return d
     return {"errors": [{"message": "aufgegeben"}]}
 
@@ -229,12 +256,16 @@ TITEL_ZIEL = [
     ("sprühmatte", "spielzeug"), ("planschbecken", "spielzeug"),
     ("kuschelkissen", "kissen-wohntextilien"), ("strandtuch", "sommer"),
     ("wandlampe", "lampen-leuchten"), ("nachtlicht", "lampen-leuchten"), ("tischlampe", "lampen-leuchten"),
+    # 13.10.2026: feinere Ziele vor dem groben «hunde/katzen» — Leitfall «katzenfutter automat» (GSC Pos. 18–24)
+    ("pilzsammel", "outdoor-garten"),     # 13.10.: Tag «haushalt» schickte das Pilzsammel-Taschen-Set auf Haushaltsgeräte
+    ("futterspender", "haustier-napf-futter"), ("futterautomat", "haustier-napf-futter"),
+    ("trinkbrunnen", "haustier-napf-futter"), ("heizdecke", "kuschel-heizdecken"),
     ("hunde", "sub-haustier"), ("katzen", "sub-haustier"), ("leggings", "damen-mode"),
     ("klemmbaustein", "klemmbausteine-bausaetze"), ("bausteine-set", "klemmbausteine-bausaetze"),
     ("diffuser", "sub-aroma-diffuser"), ("luftbefeuchter", "haushaltsgeraete"),
     ("luftreiniger", "haushaltsgeraete"), ("ventilator", "haushaltsgeraete"),
     ("smartwatch", "smartwatches-wearables"), ("kopfhörer", "kopfhoerer-audio"),
-    ("dashcam", "auto-kfz-zubehoer"), ("powerbank", "ladegeraete-powerbanks"),
+    ("dashcam", "auto-kfz-zubehoer"), ("powerbank", "handy-powerbanks"),   # 13.10.: «ladegeraete-powerbanks» gibt es nicht (lief ins Leere)
     ("kulturbeutel", "sub-reise"), ("koffer", "sub-reise"),
     ("wolldecke", "kissen-wohntextilien"), ("kuscheldecke", "kissen-wohntextilien"),
     # ganz zuletzt, weil grob: Geschlechtswort im Titel → Modekategorie
@@ -314,17 +345,148 @@ def kategorie_ziel(p, handle=""):
     return None
 
 
+_koll_n = {}
+
+
+def koll_groesse(handle):
+    if handle not in _koll_n:
+        d = gql('query($q:String!){collections(first:1,query:$q){nodes{id}}}', {"q": "handle:" + handle})
+        n = ((d.get("data") or {}).get("collections") or {}).get("nodes") or []
+        if not n:
+            _koll_n[handle] = 10 ** 9
+        else:
+            c = gql('query($q:String!){productsCount(query:$q,limit:null){count}}',
+                    {"q": f"collection_id:{n[0]['id'].split('/')[-1]} status:active"})
+            _koll_n[handle] = ((c.get("data") or {}).get("productsCount") or {}).get("count", 10 ** 9)
+    return _koll_n[handle]
+
+
+def kategorie_ziel_gsc(p, handle=""):
+    """Strenge Kategorie für Google-Landungen: nur ein Warenwort aus TITEL_ZIEL (ohne die groben Geschlechtswörter),
+    der ERSTE Treffer entscheidet, und die Zielkollektion hat höchstens GSC_KOLL_MAX aktive Produkte — sonst None."""
+    text = (p.get("title") or "").lower() if p else handle.replace("-", " ").lower()
+    for wort, ziel in TITEL_ZIEL:
+        if wort in ("damen", "herren"):
+            continue
+        if (wort if p else wort.replace("-", " ")) in text:
+            if kollektion_taugt(ziel) and koll_groesse(ziel) <= GSC_KOLL_MAX:
+                return "/collections/" + ziel
+            return None
+    return None
+
+
+def gsc_seiten():
+    """→ ({handle: (klicks, impressionen)}, alter_tage) aus dem Schnappschuss; ({}, alter) wenn zu alt/fehlt."""
+    if not os.path.exists(GSC_DATEI):
+        print("⚠️ GSC-STAND FEHLT (dropship/_gsc_seiten.json) — GSC-Teil übersprungen")
+        return {}, None
+    d = json.load(open(GSC_DATEI, encoding="utf-8"))
+    import datetime as _dt
+    alter = (_dt.datetime.utcnow() - _dt.datetime.strptime(d["stand"], "%Y-%m-%dT%H:%MZ")).days
+    if alter > 3:
+        print(f"⚠️ GSC-STAND ALT ({alter} T) — GSC-Teil übersprungen")
+        return {}, alter
+    tage = max(1, int(d.get("tage") or 28))
+    aus = {}
+    for z in d.get("zeilen") or []:
+        pfad = urllib.parse.urlparse(z.get("page") or "").path
+        m = re.match(r"^(?:/fr)?/products/([^/?#]+)/?$", pfad)
+        if not m:
+            continue
+        h = urllib.parse.unquote(m.group(1))
+        if (z.get("clicks") or 0) >= 1 or (z.get("impressions") or 0) * 7 / tage >= 3:
+            k, i = aus.get(h, (0, 0))
+            aus[h] = (k + (z.get("clicks") or 0), i + round((z.get("impressions") or 0) * 7 / tage))
+    print(f"GSC: {len(aus)} Produktseiten mit Signal (≥ 1 Klick oder ≥ 3 Impr./Woche, Stand {alter} T, {tage} T Daten)")
+    return aus, alter
+
+
+def status_viele(handles):
+    """{handle: produkt|None} — in Paketen statt je Handle eine Abfrage (GSC liefert ~900 Seiten)."""
+    aus = {}
+    hs = list(handles)
+    for i in range(0, len(hs), 40):
+        teil = hs[i:i + 40]
+        q = " OR ".join('handle:"%s"' % h.replace('"', "") for h in teil)
+        d = gql('query($q:String!){products(first:100,query:$q){nodes{id handle title status productType tags}}}', {"q": q})
+        for n in ((d.get("data") or {}).get("products") or {}).get("nodes") or []:
+            aus[n["handle"]] = n
+    return {h: aus.get(h) for h in hs}
+
+
+KANARIEN = [   # (Titel, verbotenes Wort im Ziel oder None, erlaubte Kategorie oder None = nur «offen» erlaubt)
+    ("Automatischer Futterspender für Katzen & Hunde", "trinkbrunnen", "/collections/haustier-napf-futter"),
+    ("Mini Heizlüfter", "luftbefeuchter", None),
+    ("Smart Anti-Bell Halsband", None, None),
+    ("Damast Küchenmesser", "", None),           # "" = gar kein Zwilling erlaubt (Klinge)
+    ("Smaragd-Anhänger Halskette", "leopard", "/collections/sub-halsketten"),
+    ("Titan-Wok", "pfanne", None),
+    ("Aromadiffuser mit Bluetooth-Lautsprecher", "uhr", "/collections/sub-aroma-diffuser"),   # Diffusor-Kategorie ist richtig, verboten nur der Uhr-Lautsprecher
+    ("Planeten-Schaukelstuhl", None, None),
+    ("USB-Heizdecke", None, "/collections/kuschel-heizdecken"),
+]
+
+
+def zielwahl_gsc(p, handle):
+    """→ (ziel, wie) oder (None, grund) — die GSC-Zielwahl (Zwilling streng, Kategorie streng)."""
+    titel = (p or {}).get("title", "")
+    if titel and ist_handklinge(titel):
+        return None, "Klinge — nie umleiten"
+    z = ersatz(titel, (p or {}).get("productType")) if p else None
+    if z:
+        return "/products/" + z[0]["handle"], f"Ähnlichkeit {z[1]:.2f}"
+    if not p:
+        kern = handle_kern(handle)
+        pk = produkt(kern) if kern else None
+        if pk and pk["status"] == "ACTIVE":
+            return "/products/" + kern, "Handle-Kern"
+    kat = kategorie_ziel_gsc(p, handle)
+    return (kat, "Kategorie (streng)") if kat else (None, "kein strenges Ziel")
+
+
+def kanarien():
+    fehler = 0
+    for titel, verboten, kat_ok in KANARIEN:
+        ziel, wie = zielwahl_gsc({"title": titel, "productType": "", "tags": []}, "")
+        gut = True
+        if ziel and ziel.startswith("/products/"):
+            if verboten == "" or (verboten and verboten in ziel.lower()):
+                gut = False
+        elif ziel and ziel.startswith("/collections/"):
+            gut = (ziel == kat_ok)
+        print(f"  {'✓' if gut else '✗'} {titel[:44]:46} → {ziel or 'offen'} ({wie})")
+        fehler += not gut
+    print(f"KANARIEN {len(KANARIEN) - fehler}/{len(KANARIEN)}")
+    return fehler == 0
+
+
 def main():
+    if "--kanarien" in sys.argv:
+        return 0 if kanarien() else 1
     seiten = landeseiten()
     if seiten is None:
         print("PAUSE (Sitzungsdaten nicht lesbar)"); return 1
     erledigt = set()
     if os.path.exists(LEDGER):
         erledigt = {z.strip() for z in open(LEDGER) if z.strip()}
+    herkunft = {h: "shopifyql" for h, _ in seiten}
+    gsc_signal, gsc_alter = {}, None
+    if GSC:
+        gsc_signal, gsc_alter = gsc_seiten()
+        neu = [h for h in gsc_signal if h not in herkunft and h not in erledigt]
+        st = status_viele(neu)
+        dazu = 0
+        for h in neu:
+            if st[h] and st[h]["status"] == "ACTIVE":
+                continue
+            seiten.append((h, 0)); herkunft[h] = "gsc"; dazu += 1
+        print(f"GSC: {dazu} tote Kandidaten, die Shopify nicht als Sitzung sieht")
+    gsc_gesetzt, gsc_offen, gsc_kand = 0, [], 0
 
     tot, gesetzt, offen = [], 0, []
+    nur_gsc = os.environ.get("NUR_GSC") == "1"   # Einzeltest: nur GSC-Funde schreiben
     for handle, sitzungen in seiten:
-        if handle in erledigt:
+        if handle in erledigt or (nur_gsc and herkunft.get(handle) != "gsc"):
             continue
         p = produkt(handle)
         if p and p["status"] == "ACTIVE":
@@ -336,6 +498,26 @@ def main():
             continue
         grund = ",".join(t for t in (p["tags"] if p else []) if t in RISIKO or t.startswith("google-kanal")) or "kein Grund-Tag"
         tot.append((handle, sitzungen, (p or {}).get("title", "(gelöscht)"), (p or {}).get("status", "WEG"), grund))
+        if herkunft.get(handle) == "gsc":
+            gsc_kand += 1
+            kl, im = gsc_signal.get(handle, (0, 0))
+            ziel, wie = zielwahl_gsc(p, handle)
+            if not ziel:
+                gsc_offen.append((handle, kl, im, (p or {}).get("title", "(gelöscht)"), wie)); continue
+            if not FIX:
+                print(f"  [DRY GSC] {handle[:40]:42s} → {ziel[:42]} ({wie}; {kl} Kl., {im} Impr./W.)"); continue
+            if gsc_gesetzt >= GSC_MAX:
+                gsc_offen.append((handle, kl, im, (p or {}).get("title", "(gelöscht)"), f"GSC_MAX {GSC_MAX} erreicht")); continue
+            r = gql('mutation($in:UrlRedirectInput!){urlRedirectCreate(urlRedirect:$in){userErrors{message}}}',
+                    {"in": {"path": pfad, "target": ziel}})
+            ue = ((r.get("data") or {}).get("urlRedirectCreate") or {}).get("userErrors") or []
+            if ue or "errors" in r:
+                print("  FEHLER", handle, str(ue or r["errors"])[:100]); continue
+            gsc_gesetzt += 1; gesetzt += 1
+            with open(LEDGER, "a") as f:
+                f.write(handle + "\n")
+            print(f"  → GSC {handle[:40]:42s} → {ziel[:42]} ({wie}; {kl} Kl., {im} Impr./W.)")
+            continue
         z = ersatz((p or {}).get("title", ""), (p or {}).get("productType")) if p else None
         if not p and not z:
             kern = handle_kern(handle)
@@ -363,6 +545,16 @@ def main():
         else:
             offen.append((handle, sitzungen, (p or {}).get("title", "(gelöscht)")))
 
+    if GSC:
+        stand = {"stand": time.strftime("%Y-%m-%dT%H:%MZ", time.gmtime()), "gsc_alter_tage": gsc_alter,
+                 "kandidaten": gsc_kand, "gesetzt": gsc_gesetzt, "offen": len(gsc_offen),
+                 "impr_woche_offen": sum(x[2] for x in gsc_offen), "klicks_offen": sum(x[1] for x in gsc_offen),
+                 "fix": FIX}
+        json.dump(stand, open(GSC_STAND, "w"), ensure_ascii=False, indent=1)
+        print(f"GSC-TOT: {gsc_kand} Kandidaten · {'gesetzt' if FIX else 'setzbar'} "
+              f"{gsc_gesetzt if FIX else gsc_kand - len(gsc_offen)} · offen {len(gsc_offen)} "
+              f"({stand['impr_woche_offen']} Impr./Woche, {stand['klicks_offen']} Klicks)")
+        offen += [(h, 0, f"{t[:50]} [GSC {kl} Kl./{im} Impr./W. — {w}]") for h, kl, im, t, w in gsc_offen]
     print(f"Landeseiten mit Verkehr: {len(seiten)} | nicht mehr kaufbar und ohne Weiterleitung: {len(tot)}")
     print(f"  {'gesetzt' if FIX else 'setzbar'}: {gesetzt if FIX else len(tot) - len(offen)} | "
           f"ohne eindeutigen Ersatz (Mensch entscheidet): {len(offen)}")

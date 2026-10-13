@@ -12,6 +12,11 @@ Den Shopify-Shop **LuxeStyle CH** (luxestyle.ch) langsam & sauber mit echten,
 fulfillment-fähigen CJ-Dropshipping-Produkten füllen — pro Durchlauf 1–4 Stück, alle live in
 6 Verkaufskanälen, deutsche Copy, verifizierte Bilder.
 
+**Verbesserungsrunde: einmal täglich GSC-Schnappschuss schreiben** (13.10.2026): mcp OpenSEO `get_search_console_performance`
+(projectId 443c940c-93c9-4feb-9d0c-1e4d1d88c6cf, dimensions ["page"], last_28_days, rowLimit 1000, 0 Credits) → Antwortdatei →
+`python3 tools/gsc_schnappschuss.py <datei>`. Ohne frischen Schnappschuss (≤ 3 T) ist der GSC-Teil von `tote_landeseiten.py` blind
+(Ampel «GSC-TOT»). Grund: Shopify zählt Landungen auf 404-Seiten nicht als Sitzung.
+
 ## 1. Credentials (NUR aus der Umgebung — niemals im Repo!)
 - `CJ_EMAIL` und `CJ_API_KEY` kommen als **Environment-Variablen** (vom User gesetzt/gepastet).
   NIE in eine Repo-Datei schreiben (der Key wurde 2026-05-31 schon einmal wegen genau so eines

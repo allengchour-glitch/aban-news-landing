@@ -957,6 +957,26 @@ def alter_lieferblock():
             "alter Server-Cron seit 13.10. aus. Steigt die Zahl wieder → dropship/ZOMBIE-CRON-2026-10-13.md")
 
 
+def gsc_tot():
+    """Tote Google-Seiten (13.10.2026): tote_landeseiten.py GSC=1 liest den Search-Console-Schnappschuss
+    dropship/_gsc_seiten.json. Den kann nur eine Claude-Sitzung erneuern (OpenSEO-Konnektor, tools/gsc_schnappschuss.py).
+    Meldet NUR, wenn der Schnappschuss älter als 3 Tage ist — dann ist der GSC-Teil des Wächters blind."""
+    p = os.path.join(REPO, "dropship", "_gsc_seiten.json")
+    try:
+        stand = json.load(open(p, encoding="utf-8"))["stand"]
+        alter = (datetime.datetime.utcnow() - datetime.datetime.strptime(stand, "%Y-%m-%dT%H:%MZ")).days
+    except Exception:
+        return "🔎 GSC-TOT: kein Search-Console-Schnappschuss — Verbesserungsrunde: tools/gsc_schnappschuss.py"
+    if alter <= 3:
+        return None
+    try:
+        st = json.load(open(os.path.join(REPO, "dropship", "_gsc_tot_stand.json"), encoding="utf-8"))
+        rest = f" · zuletzt {st.get('offen')} offen ({st.get('impr_woche_offen')} Impr./Woche)"
+    except Exception:
+        rest = ""
+    return f"🔎 GSC-TOT: Schnappschuss {alter} T alt — tote Google-Seiten ungeprüft{rest} → tools/gsc_schnappschuss.py"
+
+
 def offene_punkte():
     """Zählt die Abschnitte in COWORK-AUFTRAEGE.md VOR dem Erledigt-Teil."""
     p = os.path.join(REPO, "dropship", "COWORK-AUFTRAEGE.md")
@@ -1065,7 +1085,7 @@ def main():
     ohne_token = not os.path.exists(TOKPFAD)
     # Pruefungen, die den Shop-Token brauchen, laufen ohne ihn nicht — alle anderen schon (26.09.).
     MIT_TOKEN = (liechtenstein_gesperrt, klingen_pingpong, grow_zaehler, drafts_ohne_quittung, datei_speicher_voll, video_deckel, alter_lieferblock)
-    pruefungen = (bot_puls, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kassen_lieferdatum, werbetest, verkauf_gewinn, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik, such_boosts, alter_lieferblock)
+    pruefungen = (bot_puls, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kassen_lieferdatum, werbetest, verkauf_gewinn, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik, such_boosts, alter_lieferblock, gsc_tot)
     teile = [zugang_weg()]
     for f in pruefungen:
         if ohne_token and f in MIT_TOKEN:

@@ -2005,12 +2005,14 @@ fi
       echo "$(date -u +%H:%M) tiktok-meisterwerk gebaut"
     fi
   fi
+  # 13.10.2026: GSC=1 — Search Console als zweite Quelle (Shopify zählt 404-Landungen nicht als Sitzung). Liest den
+  # Schnappschuss dropship/_gsc_seiten.json (tools/gsc_schnappschuss.py, Verbesserungsrunde 1×/Tag); älter als 3 T → übersprungen + Ampel.
   TLS=/tmp/tote_landeseiten.log
   if [ -f "$REPO/automation/tote_landeseiten.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$TLS" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$TLS"; then
       touch "$TLS"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
-      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_tote_landeseiten.lock; flock -n 9 || exit 0; FIX=1 exec python3 automation/tote_landeseiten.py" >> "$TLS" 2>&1 9>&- & )
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_tote_landeseiten.lock; flock -n 9 || exit 0; GSC=1 FIX=1 exec python3 automation/tote_landeseiten.py" >> "$TLS" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) tote-landeseiten geprüft"
     fi
   fi
