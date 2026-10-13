@@ -2096,6 +2096,24 @@ fi
       echo "$(date -u +%H:%M) druck-profil abgeglichen"
     fi
   fi
+  # 13.10.2026 (Kauf-Strecke T-A, Klassen 5/7 — «jede behobene Klasse = Regel + Wächter, auch NEUE Importe»): täglich
+  # (a) Unisex-Titel → Merkmal gender «unisex» (Brotkrumen/Filter; Altwert-Ledger dropship/_gender_aus_titel_alt.tsv), nur wenn
+  # --pruefen etwas findet; (b) Editor-Produkte ohne Ausschluss-Satz «Ersatz bei Druckfehlern» → Satz anhängen (Editor-Block
+  # bleibt byte-gleich), danach POD-QA (0 Befunde Pflicht, Gehirn 4). Beide achten die Werbetest-Sperre und Aurora.
+  EGW=/tmp/editor_gender_taeglich.log
+  if [ -f "$REPO/automation/gender_aus_titel.py" ] && [ -f "$REPO/automation/editor_rueckgabe_satz.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$EGW" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$EGW"; then
+      touch "$EGW"
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_editor_gender.lock; flock -n 9 || exit 0; \
+          echo \"START \$(date -u +%FT%TZ) (Aufseher)\"; \
+          timeout 900 python3 automation/gender_aus_titel.py --pruefen || timeout 1800 python3 automation/gender_aus_titel.py --unisex 2>&1 | tail -3; \
+          timeout 900 python3 automation/editor_rueckgabe_satz.py --scharf 2>&1 | tail -4 \
+            && timeout 900 /opt/node22/bin/node automation/pod_editor_qa.mjs 2>&1 | tail -3; \
+          echo \"FERTIG \$(date -u +%FT%TZ)\"" >> "$EGW" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) editor-rückgabe + gender-titel (täglich)"
+    fi
+  fi
   # 13.10.2026 (Betreiber «4 entscheide du sauber»): keine «Sicherheitsschuhe/Schutzschuhe» ohne Prüfnorm EN ISO 20345 (PSA) —
   # 91 umbenannt + PSA-Hinweis. Täglich: neue Importe gleich behandeln (Voll-Export, Kanarien vorher). Bericht dropship/PSA-SCHUHE-2026-10-13.md.
   PSW=/tmp/psa_schuhe_wache.log
@@ -2280,7 +2298,8 @@ fi
           if [ -e dropship/_auswahl_scharf_aus ]; then echo 'SCHARF aus (dropship/_auswahl_scharf_aus)'; exit 0; fi; \
           if ! timeout 120 python3 automation/auswahl_werte.py --selbsttest > /tmp/auswahl_werte_selbsttest.log 2>&1; then \
             echo '  ⛔ auswahl_werte Selbsttest rot (KI-Prüfung/Kanarien, /tmp/auswahl_werte_selbsttest.log) — kein SCHARF-Lauf'; exit 0; fi; \
-          VORRANG=dropship/_klassen/auswahl-besuchte-seiten.txt SCHARF=1 CAP=150 MAX_FEHLER=3 ZEIT_S=1200 timeout 2400 python3 automation/auswahl_nachruesten.py 2>&1 | grep -E '^(FERTIG|PAUSE|Abbruch|  ⛔|  ✅)' | tail -200" 9>&- & )
+          VORRANG=dropship/_klassen/auswahl-besuchte-seiten.txt SCHARF=1 CAP=150 MAX_FEHLER=3 ZEIT_S=1200 timeout 2400 python3 automation/auswahl_nachruesten.py 2>&1 | grep -E '^(FERTIG|PAUSE|Abbruch|  ⛔|  ✅)' | tail -200; \
+          SCHARF=1 timeout 600 python3 automation/auswahl_fehlt_messen.py --markieren 2>&1 | tail -1" 9>&- & )
       if [ -s "$AN" ] && tail -n 30 "$AN" | grep -q "Traceback\|⛔"; then
         echo "$(date -u +%H:%M) ⚠️ auswahl_nachruesten: letzter Lauf mit Fehler ($AN)"
       else

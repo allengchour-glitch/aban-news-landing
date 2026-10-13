@@ -78,6 +78,16 @@ Sperre zusätzlich in `variant_value_clean`, `styling_floskel_wache`, `hauptbild
 **Halloween-Sperre Nacharbeit:** Ledger-Zeile «ab-geplant» VOR der Abmeldung (Rückweg-Lücke bei Absturz zwischen Antwort
 und «ab»-Zeile; Wiederanmelden ist idempotent). `social-autopost-meta` / `story-autopost-meta` kennen jetzt auch `DRY=1`
 (vorher nur `DRY_RUN=1` → ein «DRY=1»-Test hätte echt gepostet).
+
+**Gratisversand ab 40.50 (D) live, 23:30 UTC:** Der Agent der Theme-Runde bekam für `gratis_schwelle_setzen.py --scharf` eine
+Klassifikator-Ablehnung und hat sie NICHT umgangen (richtig). Die Sitzung hat den Lauf danach mit der expliziten Betreiber-Freigabe
+«D ja» selbst ausgeführt: Probelauf → scharf → zurückgelesen → Konstante SOFORT gepusht (Reihenfolge-Falle: versandschwelle_rabatt
+rechnet Soll = min(45, GRATIS_AB_CH) und hätte General sonst zurückgedreht) → Transit der 3 neuen Versandarten → Theme 4050 →
+Kanarien → Testkörbe 11/11. **Lehre:** Eine Ablehnung beim Agenten heisst «Freigabe fehlt im Kontext des Agenten», nicht «verboten»;
+wenn der Betreiber den Schritt wörtlich entschieden hat, führt ihn die Hauptsitzung aus — mit Probelauf und Rückweg.
+Prüfer-Reste der Theme-Runde: B1/B2 (Grössentabelle) im selben Upload erledigt; offen B3 (Druck-Körbe kosten 0.00, Seite sagt
+CHF 7 — Entscheid Betreiber), B4 (Editor-Akkordeon «7–14 Werktage» vs. 28.10.–11.11.), B5 (CH-Lager/Druck nach LI gratis —
+Entscheid), T-A-Dateien liegen unter Commit 43e815c0f «Reel-Preis-Reparatur» (paralleler Autocommit).
 ## 🖨️ Druck auf Bestellung: eigenes 0.00-Profil, Zeichen im Shop-Metafeld, Kasse teilt Mischkörbe (2026-10-13 abends, Betreiber «versandprofil ja mache es sauber»)
 
 **Anlass:** Seite/Korb nannten für Druck-Ware 22.10.–2.11. (Kalendertage +9/+19), die Kasse 28.10.–11.11. (General profile). Bericht `dropship/DRUCK-PROFIL-2026-10-13.md`, Skript `automation/druck_profil.py`.
@@ -20357,3 +20367,6 @@ Verschoben am 04.10.2026:
 - 2026-10-12 · 📐 **Instagram «Media container not created» = Bildformat (209×666): Poster hatte 11 Schichten, keine fürs Format → `automation/ig_bildformat.py` (0,8 … 1,91, ≥ 320 px, Selbsttest 11/11), 12. Schicht im Poster, Wächter 6 h im Aufseher; Queue 42 → 39 ready, alle postbar. Falle: `csv.DictWriter` schreibt `\r\n` → 627 Zeilen Diff; `lineterminator="\n"`.** → `dropship/IG-BILDFORMAT-2026-10-12.md`
 <!-- aus CLAUDE.md verschoben 13.10.2026 22:55 UTC (VERBATIM) -->
 - 2026-10-12 · 💳 **`cj_zahlung_offen.py` zählte nur IN_CART → LX1025 (UNPAID, $73.29) = «nichts offen», Bericht gelöscht → `ist_zahlbar()` IN_CART/UNPAID + CREATED nur mit LX + Betrag (Hüllen nie), Selbsttest 7/7.**
+<!-- aus CLAUDE.md verschoben 13.10.2026 23:38 UTC (VERBATIM) -->
+- 2026-10-12 · 💳 **Bestell-Ampel zeigte «KEIN CJ-Auftrag» für LX1025 (wartete auf Zahlung): Abgleich nur alle 2 h → Ampel liest das Bestell-Ledger + hängt bei UNPAID den Zahllink an; Abgleich startet sofort, wenn das Ledger jünger ist (`-nt`).** → `dropship/BESTELL-AMPEL-ZAHLUNG-2026-10-12.md`
+- 2026-10-12 · 📏 **Masstabellen des Modells: CJ-Tabellenbilder per Vision doppelt gelesen, `masstabelle_schreiben.py` (12/12) schreibt nur bei Übereinstimmung + «hoch» → 7/21 live, Aufseher täglich; Kasse = Bearbeitung + Transit → Transit = Zusage − P3D (CH 7–17); Werbe-Kontingent voll: jede Produktänderung wirft das Produkt aus der Werbung, Kampagne pausiert.** → `dropship/MASSTABELLEN-2026-10-12.md`
