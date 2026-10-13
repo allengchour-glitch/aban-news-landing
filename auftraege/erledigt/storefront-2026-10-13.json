@@ -3,6 +3,78 @@
   "typ": "skript",
   "skript": "storefront_wahrheit.mjs",
   "warum": "Taegliche Pruefung der oeffentlichen Seite von einer ECHTEN Besucher-IP. Von unserer eigenen IP ist sie nicht pruefbar (Bot-Cache, 19.08. gemessen). Handy-Breite, weil 77 % des Verkehrs Handy ist.",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "begonnen": "2026-10-13T17:23:51.768Z",
+  "dauer_s": 61.9,
+  "ergebnis": {
+    "zusammenfassung": "✅ 3 Seiten sauber, jede mehrfach geladen (5/5 · 2/2 · 2/2) — von echter Besucher-IP",
+    "befunde": [
+      {
+        "seite": "startseite",
+        "ziel": "https://luxestyle.ch/?frisch=storefront-2026-10-13-5",
+        "erreichbar": true,
+        "geladen": "5/5",
+        "ohne_cachebust": "1/1",
+        "kalt_gerendert": "4/4",
+        "querscrollen": false,
+        "breite": {
+          "dok": 390,
+          "fenster": 390
+        },
+        "versandzusage": "CHF 50 — richtig",
+        "preis_sichtbar": true,
+        "fehlertexte": [],
+        "zeichen": 5627,
+        "zeichen_spanne": [
+          5606,
+          5627
+        ],
+        "bild": "auftraege/ergebnis/storefront-2026-10-13-startseite.png"
+      },
+      {
+        "seite": "kollektion",
+        "ziel": "https://luxestyle.ch/collections/neu-eingetroffen?frisch=storefront-2026-10-13-2",
+        "erreichbar": true,
+        "geladen": "2/2",
+        "ohne_cachebust": "1/1",
+        "kalt_gerendert": "1/1",
+        "querscrollen": false,
+        "breite": {
+          "dok": 390,
+          "fenster": 390
+        },
+        "versandzusage": "CHF 50 — richtig",
+        "preis_sichtbar": true,
+        "fehlertexte": [],
+        "zeichen": 3837,
+        "zeichen_spanne": [
+          3837,
+          3837
+        ],
+        "bild": "auftraege/ergebnis/storefront-2026-10-13-kollektion.png"
+      },
+      {
+        "seite": "faq",
+        "ziel": "https://luxestyle.ch/pages/faq?frisch=storefront-2026-10-13-2",
+        "erreichbar": true,
+        "geladen": "2/2",
+        "ohne_cachebust": "1/1",
+        "kalt_gerendert": "1/1",
+        "querscrollen": false,
+        "breite": {
+          "dok": 390,
+          "fenster": 390
+        },
+        "versandzusage": "CHF 50 — richtig",
+        "preis_sichtbar": true,
+        "fehlertexte": [],
+        "zeichen": 3107,
+        "zeichen_spanne": [
+          3107,
+          3107
+        ],
+        "bild": "auftraege/ergebnis/storefront-2026-10-13-faq.png"
+      }
+    ]
+  }
 }
