@@ -1,26 +1,24 @@
-# Feinkategorie (automatisch, 2026-10-13 01:31 UTC)
+# Feinkategorie (automatisch, 2026-10-13 02:14 UTC)
 
 Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 
 | Zustand | Produkte |
 |---|---:|
-| gleich | 35520 |
+| gleich | 35533 |
 | shopify-feiner | 15091 |
 | kein-google | 1635 |
 | rueckfall-grob | 1061 |
 | anderer-zweig | 503 |
-| kreuz | 22 |
 | titelprobe-nein | 16 |
+| kreuz | 13 |
 | schon-im-ledger | 13 |
-| verfeinern | 13 |
+| ohne-kategorie | 2 |
 | keine-zuordnung | 1 |
-| **geschrieben** | 13 (Fehler 0) |
+| verfeinern | 0 |
+| **geschrieben** | 0 (Fehler 0) |
 
 ## Ziele (dieser Lauf)
 
-- 9 → Handbags, Wallets & Cases > Handbags
-- 3 → Exercise & Fitness
-- 1 → Backpacks
 
 ## Titelprobe hat abgelehnt (bleibt grob)
 

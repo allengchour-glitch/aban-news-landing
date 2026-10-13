@@ -1273,3 +1273,4 @@ gid://shopify/Product/15447632576897	kein-video-beim-lieferanten
 gid://shopify/Product/15447632740737	kein-video-beim-lieferanten
 gid://shopify/Product/15447632937345	kein-video-beim-lieferanten
 gid://shopify/Product/15447633068417	kein-video-beim-lieferanten
+gid://shopify/Product/16614844137863	ok-lokal
