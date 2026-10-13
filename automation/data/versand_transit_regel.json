@@ -21,8 +21,22 @@
   "toleranz_tage": 0,
   "ausnahme_profile_praefix": [
     "Gelato:",
-    "Shopify Collective"
+    "Shopify Collective",
+    "Printful:"
   ],
-  "ausnahme_grund": "App-verwaltete Profile (Gelato = Druck auf Bestellung, Regel «Editor/POD heilig»; Collective = Partnerware). Die App setzt dort Preise und Zeiten selbst; Gelato hatte 10.10. 18 + 24 Varianten (T-Shirts, Hoodies) — in der Richtlinie gilt dafür «7–14 Werktage».",
-  "abzug_bearbeitung": true
+  "ausnahme_grund": "App-verwaltete Profile (Gelato = Druck auf Bestellung, Regel «Editor/POD heilig»; Collective = Partnerware). Die App setzt dort Preise und Zeiten selbst; Gelato hatte 10.10. 18 + 24 Varianten (T-Shirts, Hoodies) — in der Richtlinie gilt dafür «7–14 Werktage». 13.10.2026: «Printful:» ergänzt — die 16 Printful-Profile lagen auf Seite 2 der Profil-Liste (first:50 ohne Blättern) und wurden nie geprüft; sie sind App-verwaltet wie Gelato, ihre CH-Tarife stehen seit 14.08. auf 0.00 und ihre Ware im General profile (versandprofil_poster.py).",
+  "abzug_bearbeitung": true,
+  "profile_zonen": {
+    "CH-Lager": {
+      "CH": {
+        "min_tage": 4,
+        "max_tage": 5
+      },
+      "LI": {
+        "min_tage": 15,
+        "max_tage": 45
+      }
+    }
+  },
+  "profile_zonen_grund": "13.10.2026 (dropship/CH-LAGER-PROFIL-2026-10-13.md): Ware ab Schweizer Lager (Fortura, Tag ch-lager) liegt im Profil «CH-Lager» mit 0.00-Tarifen unter den Namen des General profile — gemischte Körbe zahlen wie bisher, die Kasse rechnet aber mit der kurzen Transitzeit. Zusage CH 4–5 Werktage = Bearbeitung P3D (shopweit, nicht je Profil) + Transit 1–2 T; LI wie im General profile (Fortura beliefert LI nicht automatisch). Ohne diesen Eintrag setzte die tägliche --scharf-Wache das Profil auf 7–17 T zurück."
 }

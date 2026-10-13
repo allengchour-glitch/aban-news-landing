@@ -494,6 +494,37 @@ def google_feedback():
 
 
 
+def ch_lager_profil_zeile():
+    """CH-LAGER-PROFIL (13.10.2026): Ware ab Schweizer Lager liegt im Versandprofil «CH-Lager» (0.00-Tarife unter den Namen des
+    General profile) — die Kasse zeigt ihr Datum (Maske 13.10.: «Di., 20. Okt–Mi., 21. Okt KOSTENLOS» statt «28. Okt–11. Nov»).
+    Liest dropship/_ch_lager_profil.json + _ch_lager_profil_stufe.json. None = alles in Ordnung."""
+    try:
+        s = json.load(open(os.path.join(REPO, "dropship", "_ch_lager_profil.json"), encoding="utf-8"))
+        st = json.load(open(os.path.join(REPO, "dropship", "_ch_lager_profil_stufe.json"), encoding="utf-8"))
+    except Exception:
+        return "⚠️ CH-LAGER-PROFIL: Stand fehlt (automation/ch_lager_profil.py)"
+    if s.get("fehler"):
+        return f"⚠️ CH-LAGER-PROFIL: {s['fehler']}"
+    if not s.get("tarife_ok"):
+        return (f"⚠️ CH-LAGER-PROFIL: Tarif-Befund {'; '.join((s.get('befunde') or [])[:2])} → Zuordnen gestoppt "
+                f"(Rückweg: python3 automation/ch_lager_profil.py --zurueck --scharf)")
+    try:
+        alter = (datetime.datetime.utcnow() - datetime.datetime.strptime(s["stand"], "%Y-%m-%dT%H:%MZ")).total_seconds()
+    except Exception:
+        alter = 10 ** 9
+    if alter > 30 * 3600:
+        return f"⚠️ CH-LAGER-PROFIL: Stand von {s.get('stand')} — Tageslauf fehlt (Log /tmp/ch_lager_profil.log)"
+    teile = []
+    if s.get("fehlt_varianten") or s.get("falsch_varianten"):
+        teile.append(f"{s.get('fehlt_varianten')} nicht zugeordnet, {s.get('falsch_varianten')} falsch")
+    stufe = int(st.get("stufe", 1))
+    faellig = {1: "2026-10-14", 2: "2026-10-17"}.get(stufe)
+    if faellig and datetime.date.today().isoformat() >= faellig:
+        teile.append(f"Stufe {stufe} → {stufe + 1} fällig (vorher google_feedback_wache auf «shipping»/«Inaccurate» prüfen, "
+                     f"dann «stufe» in dropship/_ch_lager_profil_stufe.json)")
+    return f"CH-LAGER-PROFIL Stufe {stufe}: {s.get('im_profil_varianten')} Varianten · " + " · ".join(teile) if teile else None
+
+
 def kassen_lieferdatum():
     """KASSEN-DATUM (10.10.2026): Kasse zeigte «Zustellung 20. Okt», Produktseite «26. Okt – 9. Nov» — Bearbeitungszeit P1D, CJ
     versendet nach Median 2 / bis 5 Werktagen. Nur im Admin änderbar → Betreiber. Liest dropship/_kassen_lieferdatum.json
@@ -503,13 +534,11 @@ def kassen_lieferdatum():
     except Exception:
         return None
     teile = []
-    # 13.10.2026: CH-Lager-Ware im Asien-Profil (Entscheid des Betreibers; Quittung «bleibt» in der Datei stellt die Zeile ab)
-    quit = os.path.join(REPO, "dropship", "_entscheid_ch_lager_profil.txt")
-    if s.get("ch_lager_im_asien_profil") and not (os.path.exists(quit) and "bleibt" in open(quit, encoding="utf-8").read()):
-        n = ((s.get("ch_lager_profil") or {}).get("ch_lager") or {}).get("anzahl")
-        teile.append(f"KASSEN-DATUM CH-LAGER: {n} Produkte ab Schweizer Lager zeigen in der Kasse das Asien-Fenster (Kostüm: Seite "
-                     f"«14.–16. Okt», Kasse «28. Okt–11. Nov») → Entscheid: eigenes Versandprofil (gemischte Körbe zahlen Versand "
-                     f"doppelt) oder «bleibt» in dropship/_entscheid_ch_lager_profil.txt")
+    # 13.10.2026: Entscheid 1 («entscheide du») = Versandprofil «CH-Lager» (automation/ch_lager_profil.py, Aufseher täglich).
+    # Die Zeile erscheint nur, wenn etwas zu tun ist: Tarif-Befund, Stand alt/fehlt, Rest nicht zugeordnet, Stufe fällig.
+    z = ch_lager_profil_zeile()
+    if z:
+        teile.append(z)
     if not s.get("zu_frueh"):
         return " · ".join(teile) or None
     return " · ".join(teile + [""]) + (f"KASSEN-DATUM zu früh: Bearbeitungszeit {s.get('bearbeitungszeit_tage')} T, CJ versendet nach Median {s.get('median')} "

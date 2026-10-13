@@ -2027,6 +2027,19 @@ fi
       echo "$(date -u +%H:%M) versand-band/gratis-schwelle geprüft"
     fi
   fi
+  # 13.10.2026 (Entscheid 1, Betreiber «entscheide du»): Ware ab Schweizer Lager im Versandprofil «CH-Lager» (0.00-Tarife unter
+  # den Namen des General profile, Transit 1–2 T) → Kasse zeigt ihr Datum statt des Asien-Fensters. Täglich: NEUE ch-lager-Ware
+  # zuordnen, Fremdes lösen, gemäss Stufe (dropship/_ch_lager_profil_stufe.json). Prüft vorher die Tarife (alle 0.00, Namen +
+  # Bedingungen wie General) — ein Befund = kein Zuordnen. Bericht dropship/CH-LAGER-PROFIL-2026-10-13.md.
+  CLP=/tmp/ch_lager_profil.log
+  if [ -f "$REPO/automation/ch_lager_profil.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$CLP" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$CLP"; then
+      touch "$CLP"
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_ch_lager_profil.lock; flock -n 9 || exit 0; exec timeout 1800 python3 automation/ch_lager_profil.py --scharf" >> "$CLP" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) ch-lager-profil abgeglichen"
+    fi
+  fi
   # 13.10.2026 (Messrunde Platz 9): Weiterleitungen, deren ZIEL inzwischen tot ist (gedraftetes Produkt, abgemeldete
   # Kollektion) — 169 von 1'657 führten ins Leere. Ketten glätten, totes Ziel bekommt Ersatz; Ledger + --zurueck.
   WZW=/tmp/weiterleitung_ziel_wache.log

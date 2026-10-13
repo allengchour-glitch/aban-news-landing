@@ -7,7 +7,7 @@ Anlass (dropship/VERSAND-LIEFERZEIT-2026-10-10.md): Google zeigte 2–6 Tage Lie
 Kasse lesen die Transitzeit des Shopify-Tarifs; schreibbar ist sie nur in der API-Version «unstable»
 (DeliveryRateDefinition.minTransitTime/maxTransitTime, Sekunden).
 
-Prüft gegen automation/data/versand_transit_regel.json:
+Prüft gegen automation/data/versand_transit_regel.json (13.10.2026: «profile_zonen» = eigene Zusage je Profil, z. B. CH-Lager):
   * jeder aktive Tarif (alle Profile) hat min/max Transitzeit,
   * sie entspricht der Zone (CH 10–20, LI 15–45, Rest 10–20 Tage),
   * die Versandrichtlinie enthält die Sätze, aus denen die Zahlen stammen (sonst ist die Regel veraltet).
@@ -20,6 +20,7 @@ import json
 import os
 import re
 import sys
+import time
 import urllib.request
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -28,7 +29,19 @@ SHOP = "au3j0y-hq.myshopify.com"
 TAG = 86400
 SCHARF = "--scharf" in sys.argv
 
-Q_LISTE = "{deliveryProfiles(first:50){nodes{id name}}}"
+# 13.10.2026: blättern — der Shop hat > 50 Profile (Gelato/Printful legen je Format eines an); das neue Profil «CH-Lager»
+# stand auf Seite 2 und wurde mit first:50 nie geprüft (gemessen: «5 Tarife» vor und nach dem Anlegen).
+Q_LISTE = "query($n:String){deliveryProfiles(first:50,after:$n){pageInfo{hasNextPage endCursor} nodes{id name}}}"
+
+
+def profile_liste():
+    aus, nach = [], None
+    while True:
+        d = gql(Q_LISTE, {"n": nach})["deliveryProfiles"]
+        aus += d["nodes"]
+        if not d["pageInfo"]["hasNextPage"]:
+            return aus
+        nach = d["pageInfo"]["endCursor"]
 Q = """query($id:ID!){node(id:$id){... on DeliveryProfile{id name profileLocationGroups{locationGroup{id}
  locationGroupZones(first:10){nodes{zone{id name countries{code{countryCode restOfWorld}}}
   methodDefinitions(first:8){nodes{id name active
@@ -42,10 +55,14 @@ def gql(q, v=None, ver=None):
     r = urllib.request.Request(f"https://{SHOP}/admin/api/{ver or REGEL['api_version']}/graphql.json",
                                data=json.dumps({"query": q, "variables": v or {}}).encode(),
                                headers={"X-Shopify-Access-Token": tok, "Content-Type": "application/json"})
-    d = json.load(urllib.request.urlopen(r, timeout=60))
-    if d.get("errors"):
-        raise RuntimeError(str(d["errors"])[:160])
-    return d["data"]
+    for versuch in range(6):   # 13.10.2026: Drossel (THROTTLED) ist kein Ergebnis — warten und neu fragen
+        d = json.load(urllib.request.urlopen(r, timeout=60))
+        if d.get("errors") and "THROTTLED" in json.dumps(d["errors"]) and versuch < 5:
+            time.sleep(10 + 10 * versuch)
+            continue
+        if d.get("errors"):
+            raise RuntimeError(str(d["errors"])[:160])
+        return d["data"]
 
 
 def zonen_schluessel(zone):
@@ -58,7 +75,7 @@ def zonen_schluessel(zone):
 
 def main():
     try:
-        liste = gql(Q_LISTE)["deliveryProfiles"]["nodes"]
+        liste = profile_liste()
         aus = tuple(REGEL.get("ausnahme_profile_praefix") or ())
         profile = [gql(Q, {"id": x["id"]})["node"] for x in liste if not x["name"].startswith(aus)]
         pol = gql("{shop{shopPolicies{type body}}}", ver="2026-01")["shop"]["shopPolicies"]
@@ -86,7 +103,9 @@ def main():
         for g in p["profileLocationGroups"]:
             zs = []
             for zn in g["locationGroupZones"]["nodes"]:
-                gesamt = REGEL["zonen"][zonen_schluessel(zn["zone"])]
+                # 13.10.2026: eigene Zusage je Profil (CH-Lager 4–5 Werktage), sonst die der Zone
+                k = zonen_schluessel(zn["zone"])
+                gesamt = ((REGEL.get("profile_zonen") or {}).get(p["name"]) or {}).get(k) or REGEL["zonen"][k]
                 soll = {"min_tage": max(1, gesamt["min_tage"] - bearb), "max_tage": max(1, gesamt["max_tage"] - bearb)}
                 mds = []
                 for m in zn["methodDefinitions"]["nodes"]:
