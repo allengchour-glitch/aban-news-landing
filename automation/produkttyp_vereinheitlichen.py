@@ -77,6 +77,64 @@ FREMD_KAT = ("aa-1", "aa-8")
 # «Coral Fleece Küchenmatte», «Schuh-Unterstuetzung» stehen unter Clothing/Shoes) → bleibt. «Weste mit Taschen» (Plural) zählt nicht.
 FREMD_BLEIBT = re.compile(r"\w*tasche\b|\w*matte\b|teppich|unterst(ü|ue)tzung|einlage|sohle|kissen|\bdecke\b", re.I)
 
+# 13.10.2026 (Messrunde Punkt 4): Forturas Gruppe «Kostüme» ist ein Sammeltopf. Der Importer sortiert seit 03.09. Spielzeug
+# und Süsswaren aus (forturaType), ältere Importe tragen aber noch «Kostüme & Verkleidung». GEMESSEN 13.10.: 43 Bruder-Modelle
+# (Tag `bruder`, Google-Kategorie stimmt schon: Toy Trucks …), 10× Toilettenpapier, 12 Fan-Caps, 5 Autoflaggen-«Radsocken»,
+# American Football / Wurfball, 1 HARIBO. Folge: Im Filter «Produkttyp» steht ein Traktor unter «Kostüme & Verkleidung».
+# Bewusst eng: nur eindeutige Warenwörter; Kostüm-Zubehör (Gehstock Totenkopf, Umhang, Perücke …) bleibt Kostüm.
+# Titel mit Kostümwort (google_sperrliste.ist_kostuem oder «kostüm») werden NIE umgelegt.
+KOSTUEM_TYP = "Kostüme & Verkleidung"
+KOSTUEM_FREMD = [
+    (lambda t, tags: "bruder" in tags, "Spielzeug & Spiele"),
+    (lambda t, tags: re.search(r"toilettenpapier|\bwc[- ]?papier", t, re.I), "Haushalt & Wohnen"),
+    (lambda t, tags: re.search(r"\b(flag-?)?caps?\b|baseballcaps?\b", t, re.I), "Hüte & Caps"),
+    (lambda t, tags: re.search(r"radsocken", t, re.I), "Auto-Zubehör"),
+    (lambda t, tags: re.search(r"american football(?!\s*helm)|\bwurfball", t, re.I), "Sport & Outdoor"),   # Helm = Kostüm-Helm
+    (lambda t, tags: re.search(r"haribo|trolli|gummib(ä|a)r|fruchtgummi|lakritz", t, re.I), "Süsswaren & Esswaren"),
+]
+KOSTUEM_FREMD_KANARIEN = [   # (Titel, Tags, erwarteter neuer Typ oder None)
+    ("Claas Disco 8550 C Plus Dreifach-Mähwerk", ["bruder"], "Spielzeug & Spiele"),
+    ("Toilettenpapier 6 Rollen fuchsia", [], "Haushalt & Wohnen"),
+    ("WC Papier rosa 4 Rollen Red Label 3 lagig", [], "Haushalt & Wohnen"),
+    ("Cap Serbien", ["fanartikel"], "Hüte & Caps"), ("Baseballcaps Portugal", [], "Hüte & Caps"),
+    ("Flag-Cap Frankreich", [], "Hüte & Caps"), ("Radsocken für Auto England", [], "Auto-Zubehör"),
+    ("American Football 12x20 cm", [], "Sport & Outdoor"),
+    ("HARIBO Riesenerdbeeren 9 g · 150 Stück in der Dose", [], "Süsswaren & Esswaren"),
+    ("Cape mit Visier und Haare", [], None), ("Hemd und Mütze Captain Bier", [], None),
+    ("Kostüm Cap'n Pirat mit Hut", [], None), ("Gehstock Totenkopf 88 cm", [], None),
+    ("Kinderkostüm Traktorfahrer", ["bruder"], None), ("Perücke Ryan blond", [], None),
+    ("American Football Helm", [], None),          # Kostüm-Helm (Fortura), kein Sportgerät
+]
+
+
+def kostuem_fremd_ziel(titel, tags):
+    t = titel or ""
+    if re.search(r"kost(ü|ue)m", t, re.I) or _ist_kostuem(t):
+        return None
+    tags = [x.lower() for x in (tags or [])]
+    for regel, ziel in KOSTUEM_FREMD:
+        if regel(t, tags):
+            return ziel
+    return None
+
+
+def _ist_kostuem(t):
+    try:
+        from google_sperrliste import ist_kostuem
+    except Exception:  # pragma: no cover
+        return False
+    return ist_kostuem(t)
+
+
+def kostuem_fremd_kanarien():
+    fehler = 0
+    for titel, tags, soll in KOSTUEM_FREMD_KANARIEN:
+        ist = kostuem_fremd_ziel(titel, tags)
+        ok = ist == soll
+        fehler += not ok
+        print(f"  {'✓' if ok else '✗'} {titel[:50]:52} → {ist}")
+    print(f"KANARIEN Kostüm-Fremdware {len(KOSTUEM_FREMD_KANARIEN) - fehler}/{len(KOSTUEM_FREMD_KANARIEN)}")
+    return fehler == 0
 
 # 04.10.2026 (Verbesserungsrunde «kategorie-typ»): nach dem ersten Lauf blieben 84 Kleider + 35 Schuhe als «Trend-Gadget»,
 # weil kein Geschlechtswort im Titel stand. Gemessen an den 119 Titeln: Warenwörter, die im Shop nur EIN Geschlecht
@@ -243,6 +301,10 @@ def zurueck():
 def main():
     if "--zurueck" in sys.argv:
         return zurueck()
+    if "--kanarien" in sys.argv:
+        return 0 if kostuem_fremd_kanarien() else 1
+    if not kostuem_fremd_kanarien():
+        print("ABBRUCH: Kanarien Kostüm-Fremdware rot"); return 1
     print(f"START {dt.datetime.utcnow():%Y-%m-%dT%H:%MZ}{'' if SCHARF else ' · TROCKEN'} · LAUF={LAUF}", flush=True)
     regeln = typ_regeln()
     print(f"  {len(regeln)} Kollektionen mit TYPE-Regel")
@@ -304,6 +366,24 @@ def main():
             if led:
                 led.write(f"{dt.date.today()}\t{p['id']}\t{alt}\t{neu}\t{dt.datetime.utcnow():%Y-%m-%dT%H:%MZ}\t{LAUF}\n")
     print("  Kleidung mit Fremdtyp →", dict(sorted(fz.items(), key=lambda x: -x[1])))
+    # Fremdware im Kostümtyp (13.10.2026)
+    kz = {}
+    for p in produkte(KOSTUEM_TYP, nur_aktiv=True):
+        if POD.search(" ".join(p["tags"])):
+            continue
+        neu = kostuem_fremd_ziel(p["title"], p["tags"])
+        if not neu:
+            continue
+        g = sperrgrund(KOSTUEM_TYP, neu, regeln, pid=p["id"])
+        if g:
+            kz["gesperrt"] = kz.get("gesperrt", 0) + 1
+            print(f"  ✗ {p['title'][:50]} → {neu}: {g}")
+            continue
+        kz[neu] = kz.get(neu, 0) + 1
+        paare.append((p["id"], neu))
+        if led:
+            led.write(f"{dt.date.today()}\t{p['id']}\t{KOSTUEM_TYP}\t{neu}\t{dt.datetime.utcnow():%Y-%m-%dT%H:%MZ}\t{LAUF}\n")
+    print("  Fremdware im Kostümtyp →", dict(sorted(kz.items(), key=lambda x: -x[1])))
     if led:
         led.flush()
     ok = schreiben(paare) if SCHARF else 0

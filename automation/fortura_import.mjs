@@ -32,6 +32,13 @@ function forturaType(t){
   // 03.09.2026: Forturas Gruppe «Kostüme» ist ein Sammeltopf (226 BRUDER-Traktoren, Lotto, HARIBO, Deko standen als Kostüm)
   if(/bruder|claas|john deere|fendt|lemken|fliegl|joskin|manitou|\bjlg\b|volvo|\bcat\b|ram 2500|land rover|range rover|mb sprinter|mb arocs|mack granite|man tg|scania|massey|new holland|steyr|case ih|jcb|deutz|horsch|kipp-?lkw|anh[äa]nger|dumper|radlader|bagger|\blkw\b|traktor|bworld|rundballen|teleskoplader|feldh[äa]cksler|bulldozer|gator|roadmax|tankwagen|unimog|hoflader|lotto|bingo|tombola|gl[üu]cksrad|w[üu]rfel|spielkarte/.test(tl))return 'Spielzeug & Spiele';
   if(/haribo|trolli|bonbon|kaugummi|lolli|schoko|gummib[äa]r|chupa|lakritz|zuckerwatte|zuckerst|fruchtgummi|skittles|candy/.test(tl))return 'Süsswaren & Esswaren';
+  // 13.10.2026: weitere Fremdware im Kostüm-Sammeltopf (Bestand: produkttyp_vereinheitlichen.py «Fremdware im Kostümtyp», Kanarien dort)
+  if(!/kost[üu]m/.test(tl)){
+    if(/toilettenpapier|\bwc[- ]?papier/.test(tl))return 'Haushalt & Wohnen';
+    if(/\b(flag-?)?caps?\b|baseballcaps?\b/.test(tl))return 'Hüte & Caps';
+    if(/radsocken/.test(tl))return 'Auto-Zubehör';
+    if(/american football|\bwurfball/.test(tl))return 'Sport & Outdoor';
+  }
   if(/jeton|wertmarke|wachsfackel|skelett\b|spinne\b|spinnennetz|totenkopf|dekostoff|knicklicht|papagei|kan[üu]le|luftschlange|einwegteller|pappbecher|laternenstab|lampionstab|geschenkband|leinwand|wurfdose|animatronic|grabstein|fledermaus|k[üu]rbis\b/.test(tl))return 'Partydeko & Ballone';
   return 'Kostüme & Verkleidung';
 }

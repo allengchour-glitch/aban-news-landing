@@ -221,7 +221,15 @@ KOSTUEM_KONTEXT = re.compile(
     r'horror|latex|zombie|totenkopf|skull|cosplay|halloween|grusel|vampir|hexe|clown|pl[üu]sch|fasnacht|fasching|'
     r'karneval|steampunk|viking|wikinger|monster|teufel|d[äa]mon|geist|fratze|joker|scream|maskerade|party', re.I)
 KOSTUEM_MASKE = re.compile(r'\w*maske\b|\bmask\b', re.I)
-KOSTUEM_WORT = re.compile(r'\w*kost[üu]e?m(?:e|en)?\b|halbmaske|maskenb[aä]ll|(?<![\wäöüß])verkleidung\b', re.I)
+KOSTUEM_WORT = re.compile(r'\w*kost[üu]e?m(?:e|en)?\b|\bkost[üu]m(?:kleid|handschuhe?|set|zubeh[öo]r)\w*|halbmaske|maskenb[aä]ll|'
+                          r'(?<![\wäöüß])verkleidung\b', re.I)
+# Prüfung 13.10. (Workflow wf_1c367cd7-abd, Befund bestätigt): KOSTUEM_NICHT stand VOR allem anderen und schlug ein
+# ausdrückliches «Kinderkostüm» über blosse Wortteile — «Kinderkostüm Hexe mit LED», «… Pinguin · Anzug & Kopfteil»,
+# «… Pirat · … Kopftuch», «Atemberaubendes Vampir Kostüm», «Jedi Kostüm mit Lichtschwert» galten als «kein Kostüm».
+# Jetzt: Steht das Kostümwort im Titel, zählt NUR die Damenanzug-Ausnahme (KOSTUEM_ANZUG). Die übrigen Ausnahmen gelten
+# nur für Masken/…verkleidung ohne Kostümwort; dort sind LED/Licht keine Ausnahme mehr, wenn Kostüm-Kontext da ist
+# («LED Purge Maske Halloween»), denn die Beauty-Masken tragen ihr eigenes Wort (Photon, Kollagen, Gesichtspflege …).
+KOSTUEM_ANZUG = re.compile(r'blazer|business|damenanzug|kost[üu]mjacke|kost[üu]mrock|\bdamen\s+kost[üu]m\b(?!\w)', re.I)
 # «…verkleidung» als Wortteil (Heizkörper-, Kotflügel-, Wandverkleidung) ist Technik — nur MIT Kostüm-Kontext ein Kostüm.
 KOSTUEM_VERKLEIDUNG_TEIL = re.compile(r'\w+verkleidung\b', re.I)
 KOSTUEM_NICHT = re.compile(
@@ -238,20 +246,21 @@ POD_TYPEN = {"sticker", "tasse", "t-shirt", "tasche", "kissen", "mauspad", "post
 def ist_kostuem(titel, typ=""):
     """True, wenn das Produkt ein Kostüm / eine Kostüm-Maske ist (nie in den Google-Kanal).
 
-    Maske zählt nur mit Kostüm-Kontext im Titel (Horror, Latex, Cosplay …), «Kostüm» nur als Wortende und nie als
-    Damenanzug; Ausnahmen (LED, Kollagen, Schlaf, Sport, Thermo …) gewinnen immer.
+    Reihenfolge (13.10., nach Prüfung): Druck-Ware nie · Kostümwort im Titel → Kostüm, ausser Damenanzug (KOSTUEM_ANZUG) ·
+    Maske/…verkleidung nur mit Kostüm-Kontext und ohne Ausnahme (KOSTUEM_NICHT; LED/Licht zählen dort bei Kontext nicht).
     """
     t = titel or ""
-    if KOSTUEM_NICHT.search(t):
-        return False
     # ⚠️ KEINE Typ-Regel: «Kostüme & Verkleidung» ist bei Fortura-Ware massenhaft falsch vergeben (GEMESSEN 13.10.:
     # 113 aktive Google-Produkte mit diesem Typ, darunter Toilettenpapier, Spielzeug-Traktoren, Luftmatratzen, HARIBO).
     # Druck-Ware mit Motivnamen («Tasse «Fasnacht Mask»») ist kein Kostüm.
     if POD_WARE.match(t.strip()) or (typ or "").strip().lower() in POD_TYPEN:
         return False
     if KOSTUEM_WORT.search(t):
-        return True
-    return bool((KOSTUEM_MASKE.search(t) or KOSTUEM_VERKLEIDUNG_TEIL.search(t)) and KOSTUEM_KONTEXT.search(t))
+        return not KOSTUEM_ANZUG.search(t)
+    if not (KOSTUEM_MASKE.search(t) or KOSTUEM_VERKLEIDUNG_TEIL.search(t)) or not KOSTUEM_KONTEXT.search(t):
+        return False
+    rest = re.sub(r'\bled\b|licht', ' ', t, flags=re.I)     # bei Kostüm-Kontext sind LED/Licht keine Ausnahme
+    return not KOSTUEM_NICHT.search(rest)
 
 
 KOSTUEM_KANARIEN = [
@@ -291,6 +300,22 @@ KOSTUEM_KANARIEN = [
     ("WC Papier rosa 4 Rollen Red Label 3 lagig", "Kostüme & Verkleidung", False),
     ("Claas Disco 8550 C Plus Dreifach-Mähwerk", "Kostüme & Verkleidung", False),
     ("Plüsch Maske Werwolf", "Spielzeug & Spiele", True),
+    # 13.10. Prüfung: ausdrückliches Kostümwort schlägt Wortteile der Ausnahmeliste
+    ("Kinderkostüm Hexe mit LED", "Kostüme & Verkleidung", True),
+    ("Kinderkostüm Pinguin · Anzug & Kopfteil (Widmann)", "", True),
+    ("Kinderkostüm Pirat · Hemd, Weste, Hose & Kopftuch (Widmann)", "", True),
+    ("Atemberaubendes Vampir Kostüm", "", True),
+    ("Jedi Kostüm mit Lichtschwert", "", True),
+    ("Kinderkostüm Taucher", "", True),
+    ("Kostüm Skifahrer", "", True),
+    ("Kostüm Set Chirurg", "", True),
+    ("Kostüm Hosenanzug Geist", "", True),
+    ("Halloween Kostümkleid Set", "", True),
+    ("Kostümhandschuhe Skelett", "", True),
+    ("LED Purge Maske Halloween", "", True),
+    ("Business Damen Kostüm zweiteilig", "Damenmode", False),
+    ("Motorrad Sturmhaube Totenkopf Maske", "", False),
+    ("Ski-Maske mit Totenkopf-Print", "", False),
 ]
 
 

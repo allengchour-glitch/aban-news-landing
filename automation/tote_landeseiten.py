@@ -323,21 +323,67 @@ def kollektion_taugt(handle):
     return _koll_ok[handle]
 
 
+# 13.10.2026 (Prüfung wf_1c367cd7-abd, Befund bestätigt): `wort in titel` traf WORTTEILE, und der erste Listentreffer
+# entschied. Am Bestand: «Hundehalskette» → Halsketten (Damenschmuck), «Alu-Werkzeugkoffer» und «Kofferraum-Organizer»
+# → Reise, «Solar Helm mit Ventilator» → Haushaltsgeräte — Lehre 9b/16d (Hunde**geschirr** ≠ Geschirr) zum dritten Mal.
+# Jetzt (titel_ziel): (1) «für Hunde/Katzen/Haustiere» → Haustier; (2) nur der Hauptteil vor «mit/inkl./+» zählt;
+# (3) ein Warenwort zählt nur als KOPF des Wortes (Wortende, ggf. Plural) — «Kofferraum» ist kein Koffer; (4) steht
+# davor ein Bestimmungswort, das die Abteilung wechselt (Hunde-, Katzen-, Werkzeug-, Auto-), gewinnt dieses;
+# (5) «hunde/katzen/damen/herren» sind selbst Bestimmungswörter und dürfen ein Wort BEGINNEN. Wörter mit Bindestrich,
+# Leerzeichen oder «·» in der Tabelle bleiben wörtliche Teilstrings (wie bisher).
+TIER_FUER = re.compile(r"\bf(?:ü|ue|u)r\s+(?:deinen\s+|deine\s+|den\s+|die\s+|ihren\s+)?(?:hunde?|katzen?|haustiere?|welpen)\b")
+PRAEFIX_ZIEL = [(re.compile(r"(?:hunde?|katzen?|haustier|tier)$"), "sub-haustier"),
+                (re.compile(r"werkzeug$"), "werkzeug-maschinen"),
+                (re.compile(r"(?:auto|kfz)$"), "auto-kfz-zubehoer")]
+ANFANG_WORT = {"hunde", "katzen", "damen", "herren"}
+
+
+def titel_ziel(text, ohne=()):
+    """→ Kollektions-Handle aus Titel- oder Handle-Text (ohne Tauglichkeitsprüfung) oder None."""
+    t = (text or "").lower()
+    z = _tabelle(re.split(r"\s(?:mit|inkl\.?|inklusive|plus|\+)\s", t, maxsplit=1)[0], ohne)
+    if TIER_FUER.search(t) and z not in ("sub-haustier", "haustier-napf-futter"):
+        return "sub-haustier"             # «Kuscheldecke für Hunde»; ein genaueres Tierziel («Futterspender») bleibt
+    return z
+
+
+def _tabelle(haupt, ohne=()):
+    for wort, ziel in TITEL_ZIEL:
+        if wort in ohne:
+            continue
+        if not re.fullmatch(r"[a-zäöüß]+", wort):
+            if wort in haupt or wort.replace("-", " ") in haupt:
+                return ziel
+            continue
+        for m in re.finditer(re.escape(wort), haupt):
+            vor = re.search(r"([a-zäöüß]+)-?$", haupt[:m.start()])
+            praefix = vor.group(1) if vor and (m.start() == 0 or haupt[m.start() - 1] in "abcdefghijklmnopqrstuvwxyzäöüß-") else ""
+            if haupt[m.start() - 1:m.start()] == "-" and not vor:
+                praefix = ""
+            if wort in ANFANG_WORT:
+                if not (m.start() == 0 or not haupt[m.start() - 1].isalpha()):
+                    continue
+                return ziel
+            if not re.match(r"(?:n|en|e|s|es|er)?(?![a-zäöüß])", haupt[m.end():]):
+                continue                      # Wortteil vorne («kofferraum»), nicht Kopf des Wortes
+            for rx, z in PRAEFIX_ZIEL:
+                if praefix and rx.search(praefix):
+                    return z
+            return ziel
+    return None
+
+
 def kategorie_ziel(p, handle=""):
     """⚠️ Auch fuer GELOESCHTE Produkte: dort gibt es weder Titel noch Tags — die Warenart
     steht dann nur noch im HANDLE (Lehre 29.08.: wenn der Titel schweigt, reden productType,
     Beschreibung und Handle). Der Handle ist der slugifizierte Titel, die Titelwoerter greifen
     also unveraendert; Bindestriche werden dafuer zu Leerzeichen."""
     if not p:
-        aus_handle = handle.replace("-", " ").lower()
-        for wort, ziel in TITEL_ZIEL:
-            if wort.replace("-", " ") in aus_handle and kollektion_taugt(ziel):
-                return "/collections/" + ziel
-        return None
-    titel = (p.get("title") or "").lower()
-    for wort, ziel in TITEL_ZIEL:
-        if wort in titel and kollektion_taugt(ziel):
-            return "/collections/" + ziel
+        z = titel_ziel(handle.replace("-", " "))
+        return ("/collections/" + z) if z and kollektion_taugt(z) else None
+    z = titel_ziel(p.get("title") or "")
+    if z and kollektion_taugt(z):
+        return "/collections/" + z
     tags = [t.lower() for t in (p.get("tags") or [])]
     # ⚠️ EXAKT vergleichen, nicht als Teilstring (13.09.): `any(wort in t)` machte aus dem
     # Draft-Marker «auto-entwurf-0926» ein «auto» — ein Herren-Rollkragen bekam eine 301 auf
@@ -370,14 +416,10 @@ def koll_groesse(handle):
 def kategorie_ziel_gsc(p, handle=""):
     """Strenge Kategorie für Google-Landungen: nur ein Warenwort aus TITEL_ZIEL (ohne die groben Geschlechtswörter),
     der ERSTE Treffer entscheidet, und die Zielkollektion hat höchstens GSC_KOLL_MAX aktive Produkte — sonst None."""
-    text = (p.get("title") or "").lower() if p else handle.replace("-", " ").lower()
-    for wort, ziel in TITEL_ZIEL:
-        if wort in ("damen", "herren"):
-            continue
-        if (wort if p else wort.replace("-", " ")) in text:
-            if kollektion_taugt(ziel) and koll_groesse(ziel) <= GSC_KOLL_MAX:
-                return "/collections/" + ziel
-            return None
+    text = (p.get("title") or "") if p else handle.replace("-", " ")
+    ziel = titel_ziel(text, ohne=("damen", "herren"))
+    if ziel and kollektion_taugt(ziel) and koll_groesse(ziel) <= GSC_KOLL_MAX:
+        return "/collections/" + ziel
     return None
 
 
@@ -430,6 +472,13 @@ KANARIEN = [   # (Titel, verbotenes Wort im Ziel oder None, erlaubte Kategorie o
     ("Aromadiffuser mit Bluetooth-Lautsprecher", "uhr", "/collections/sub-aroma-diffuser"),   # Diffusor-Kategorie ist richtig, verboten nur der Uhr-Lautsprecher
     ("Planeten-Schaukelstuhl", None, None),
     ("USB-Heizdecke", None, "/collections/kuschel-heizdecken"),
+    # 13.10. Prüfung: Wortteile/Komposita (Lehre 9b/16d)
+    ("Hundehalskette aus Edelstahl mit Dornen", None, "/collections/sub-haustier"),
+    ("Alu-Werkzeugkoffer 176 Teile für jeden Einsatz", "reise", "/collections/werkzeug-maschinen"),
+    ("Kofferraum-Organizer: Nie wieder Chaos im Auto", None, None),
+    ("Bluetooth Aroma Diffuser mit Musik & Nachtlicht", "lampe", "/collections/sub-aroma-diffuser"),
+    ("Solar Helm mit Ventilator", None, None),
+    ("Kuscheldecke für Hunde", None, "/collections/sub-haustier"),
 ]
 
 
