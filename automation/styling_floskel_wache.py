@@ -28,6 +28,11 @@ python3 automation/styling_floskel_wache.py --selbsttest   → prüft die drei R
 import fcntl, json, os, re, subprocess, sys, time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+try:   # 13.10.2026: Werbetest-Sperre — fehlt der Leser, wird vorsichtshalber NICHT geschrieben
+    from werbetest_sperre import gesperrt as _werbetest_gesperrt
+except Exception:
+    def _werbetest_gesperrt(_x):
+        return True
 try:
     from eimer_etikette import nachlauf  # noqa: E402
 except Exception:  # pragma: no cover
@@ -100,6 +105,8 @@ def main():
     ok = fehl = gleich = 0
     with open("/tmp/lock_produkttext.lock", "w") as lk:
         for pid, h in ks.items():
+            if _werbetest_gesperrt(pid):   # 13.10.2026 Werbetest A (dropship/_werbetest_sperre.txt)
+                print(f"  = {h} übersprungen (Werbetest-Sperre)"); continue
             fcntl.flock(lk, fcntl.LOCK_EX)
             try:
                 p = gql("query($id:ID!){product(id:$id){descriptionHtml}}", {"id": pid})["data"]["product"]
@@ -219,6 +226,8 @@ def textregeln():
     ok = fehl = 0
     with open("/tmp/lock_produkttext.lock", "w") as lk:
         for pid, n in kandidaten.items():
+            if _werbetest_gesperrt(pid):   # 13.10.2026 Werbetest A (dropship/_werbetest_sperre.txt)
+                print(f"  = {n.get('handle')} übersprungen (Werbetest-Sperre)"); continue
             neu, aend = regeln_anwenden(n["descriptionHtml"], n["title"], n["options"])
             seo_alt = ((n.get("seo") or {}).get("description")) or ""
             seo_neu = VISKOSE.sub("Klebeverfahren", seo_alt)

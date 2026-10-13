@@ -87,6 +87,11 @@ from collections import Counter
 REPO = os.environ.get("REPO", "/home/user/aban-news-landing")
 HIER = os.path.join(REPO, "automation")
 sys.path.insert(0, HIER)
+try:   # 13.10.2026: Werbetest-Sperre — fehlt der Leser, wird vorsichtshalber NICHT geschrieben (gesperrt = True)
+    from werbetest_sperre import gesperrt as _werbetest_gesperrt
+except Exception:
+    def _werbetest_gesperrt(_x):
+        return True
 from eimer_etikette import nachlauf, bilanz          # noqa: E402
 import farbwerte_zusammengesetzt as _fz              # noqa: E402  (phrase_de: sea+blue → Seeblau)
 
@@ -1238,6 +1243,10 @@ def produkt_bearbeiten(p, st, besuche=0):
         if not upd:
             continue
         en_zahl = sum(1 for v in vals if final[v["id"]] != stufe1[v["id"]])
+        # 13.10.2026 Werbetest A: die 13 Testprodukte bis Testende nicht anfassen (dropship/_werbetest_sperre.txt)
+        if _werbetest_gesperrt(p["id"]):
+            print(f"  = {pid_kurz} übersprungen (Werbetest-Sperre)", flush=True)
+            continue
         if DRY:
             st["opt_uebersetzt" if en_zahl else "opt_code"] += 1
             st["werte_uebersetzt"] += en_zahl

@@ -277,6 +277,16 @@ alles bekannte Fakten, also misst sie richtig.
 
 ### Eintragen (Dateien, die diese Sitzung nicht anfassen durfte)
 
+> **✅ Erledigt 13.10. ~23:00 UTC:** `betreiber_ampel.werbetest()` prüft alle `handles` über `werbetest_trichter.wache()` und zählt
+> erst ab Aktivierung (erster Tag mit Sitzungen der utm_campaign, oder Feld `aktiviert`); vorher «wartet auf Aktivierung», ab 3 Tagen
+> ohne Sitzungen ⚠️. Warnt, wenn die Schreibsperre vor Testende + 3 T abläuft. `ql()` wirft jetzt RuntimeError statt `sys.exit`
+> (SystemExit hätte die ganze Ampel beendet). Sperre zusätzlich in `variant_value_clean.py`, `styling_floskel_wache.py` (beide
+> Schleifen) und `hauptbild_ohne_text.py` (beide Schleifen, ohne Ledger-Eintrag → nach dem Test wieder Kandidat). Proben: heute
+> «startet frühestens 14.10. — wartet auf Aktivierung · Testprodukte 13/13 aktiv»; simuliert 16.10. ohne Sitzungen → ⚠️ «3 T 0
+> Sitzungen»; alte Kampagne sirene-test mit Plan 09.10. → «Tag 4 seit 10.10.» (Aktivierung richtig erkannt), fremde 25 Sitz. gemeldet.
+> CLAUDE.md-Zeile «Werbetest A bis 24.10.» steht. Offen bleibt (niedrig, Vermutung): ob Bestand/Verkauf `updatedAt` hochsetzt —
+> die Meldung sagt deshalb «geändert … Schreiber oder nur Bestand/Verkauf».
+
 - `automation/betreiber_ampel.py` `werbetest()`: liest nur `handle` (ein String). Für `geschenke-test` steht absichtlich kein
   `handle` in der JSON (sonst zählten 12 der 13 als «fremd»), damit fallen Fremd- und Kontingent-Prüfung dort weg. Zeile vor dem
   `return`: `try: from werbetest_trichter import wache, zeile; regel += " · " + zeile(wache(w)).split(": ", 1)[1] if w.get("handles") else ""`
@@ -377,7 +387,9 @@ utm_source=google&utm_medium=cpc&utm_campaign=geschenke-test
 «Alles andere … Ausgeschlossen», Budget 10, Suffix wie oben.
 
 **7. Aktivieren.** Kampagne → Status **Aktiviert**. Kein Nachladen ohne neuen Entscheid; Abbruch bei CHF 30 ohne Warenkorb
-(die Ampel meldet «STOPP-REGEL»).
+(die Ampel meldet «STOPP-REGEL»). Den Tag musst du nirgends eintragen: die Ampel zählt ab dem ersten Tag, an dem Besuche mit
+`utm_campaign=geschenke-test` ankommen, und schiebt das Testende um gleich viele Tage nach hinten (Nachtrag 13.10. 23:00 UTC).
+Schreib der Sitzung kurz «aktiviert», dann trägt sie das Datum zusätzlich in `_werbetest_aktiv.json` ein.
 
 Menüpfade geprüft am 13.10. gegen die Google-Ads-Hilfe: Produktgruppen unterteilen / Bulk-Werte
 ([support.google.com/google-ads/answer/6275317](https://support.google.com/google-ads/answer/6275317?hl=de)), Suffix der finalen
