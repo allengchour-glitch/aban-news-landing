@@ -124,6 +124,13 @@ NAME_GRATIS = "Kostenloser Versand"
 #  auf active=false setzen. Sie bleibt im Profil stehen und ist mit einem Klick zurueckholbar.
 
 BEWORBEN = 50.00          # das, was in Leiste, Produkt-, Kollektions- und Blogtexten steht
+# 13.10.2026 abends, Betreiber-Entscheid D («D ja», dropship/BETREIBER-ENTSCHEIDE-2026-10-13.md): Tarif ab 40.50 statt 45
+# (Codes wie WELCOME10 drückten Einzelartikel 45–49.99 unter 45 → mit Code CHF 2.01 TEURER als ohne). Die Wache rechnet weiter
+# BEWORBEN × (1 − höchster Automatik-Rabatt) als OBERGRENZE und nimmt die tiefere Zahl aus der EINEN Quelle
+# ch_lager_profil.GRATIS_AB_CH — sonst hätte der Aufseher eine umgestellte 40.50 am nächsten Tag auf 45 «repariert».
+# Solange GRATIS_AB_CH = 45 (Profil-Umstellung wartet auf Freigabe) ändert sich hier nichts.
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from ch_lager_profil import GRATIS_AB_CH as ENTSCHEID  # noqa: E402
 LEDGER = "dropship/_versandschwelle_rabatt.txt"
 
 
@@ -287,11 +294,12 @@ def main():
 
     prozent, betrags_rabatte = hoechster_automatik_rabatt()
     methode, ist = gratis_versandart()
-    soll = round(BEWORBEN * (1 - prozent) + 1e-9, 2)
+    soll = min(round(BEWORBEN * (1 - prozent) + 1e-9, 2), ENTSCHEID)
 
     print("Beworbene Schwelle .............. CHF %.2f" % BEWORBEN)
     print("Hoechster AUTOMATIK-Rabatt ...... %.0f %%" % (prozent * 100))
-    print("Noetige Versandbedingung ........ CHF %.2f" % soll)
+    print("Noetige Versandbedingung ........ CHF %.2f (Obergrenze %.2f, GRATIS_AB_CH %.2f)"
+          % (soll, round(BEWORBEN * (1 - prozent) + 1e-9, 2), ENTSCHEID))
     print("Aktuelle Versandbedingung ....... CHF %.2f" % ist)
     if betrags_rabatte:
         print("!! Automatik-Rabatte mit FESTBETRAG (nicht verrechenbar, von Hand pruefen):",

@@ -9,7 +9,9 @@ global return policy / shipping policy for your business under Organization mark
 
 FAKTEN (Kanon = shopPolicies, siehe zusagen_abgleich.py; Tarif = deliveryProfiles, gemessen 06.10.):
   Rückgabe  Schweiz, 30 Tage, per Post, Rücksendeporto trägt die Kundin, volle Erstattung.
-  Versand   Schweiz, CHF 7.00; ab Bestellwert CHF 45 gratis (Tarif; Versprechen auf den Seiten «ab 50» = Puffer).
+  Versand   Schweiz, CHF 7.00; ab Bestellwert GRATIS_AB_CH gratis (Tarif, EINE Quelle ch_lager_profil.GRATIS_AB_CH: 45;
+            Betreiber-Entscheid D 40.50 vorbereitet; Versprechen auf den Seiten «ab 50» = Puffer). Stellt jemand die Konstante um,
+            meldet --pruefen «Markup veraltet» und der Aufseher schreibt das Markup neu (SCHARF=1).
             Liechtenstein (seit 09.10. Lieferland, Nachtrag 13.10.2026 Kauf-Strecke Klasse 16): CHF 14.90, KEIN Gratisversand
             (Zone «Liechtenstein» im General profile, gemessen 13.10.); Rückgabe 30 Tage gilt laut Richtlinie für CH und LI.
   Ein bestehendes Markup ohne LI wird beim SCHARF-Lauf ERSETZT (nicht nur eingefügt, wenn es fehlt).
@@ -31,7 +33,7 @@ ANKER = '''    "url": {{ request.origin | append: page.url | json }}
 </script>'''
 RUECKGABE_TAGE = 30
 VERSAND_CHF = 7.00
-GRATIS_AB_CHF = 45.00
+from ch_lager_profil import GRATIS_AB_CH as GRATIS_AB_CHF  # noqa: E402  (eine Quelle; Entscheid D 40.50 vorbereitet)
 LI_VERSAND_CHF = 14.90
 LAENDER = ["CH", "LI"]
 
@@ -129,11 +131,11 @@ def pruefen():
         b.append(f"Liechtenstein-Tarif {li} ≠ Markup {LI_VERSAND_CHF}")
     if std != VERSAND_CHF:
         b.append(f"Standardversand {std} ≠ Markup {VERSAND_CHF}")
-    if gratis != GRATIS_AB_CHF:
+    if gratis is None or abs(gratis - GRATIS_AB_CHF) > 0.005:
         b.append(f"Gratis-Schwelle Tarif {gratis} ≠ Markup {GRATIS_AB_CHF}")
     if b:
         print("⚠️ GOOGLE-ORG-RICHTLINIEN: " + " · ".join(b)); return 1
-    print(f"GOOGLE-ORG-RICHTLINIEN ✓: Rückgabe {RUECKGABE_TAGE} T CH+LI · Versand CHF {std:.2f} / gratis ab {gratis:.0f} · LI {LI_VERSAND_CHF:.2f} = Tarif")
+    print(f"GOOGLE-ORG-RICHTLINIEN ✓: Rückgabe {RUECKGABE_TAGE} T CH+LI · Versand CHF {std:.2f} / gratis ab {gratis:.2f} · LI {LI_VERSAND_CHF:.2f} = Tarif")
     return 0
 
 

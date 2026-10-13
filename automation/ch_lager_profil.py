@@ -8,8 +8,8 @@ profile» neben 51'168 CJ-Produkten; die Kasse rechnet Bearbeitung (P3D, shopwei
 Betreiber 13.10.: «1 entscheide du».
 
 ENTSCHEID (Workflow wf_3a8f194a-f37, Bericht dropship/CH-LAGER-PROFIL-2026-10-13.md):
-  Eigenes Profil «CH-Lager» mit 0.00-Tarifen UNTER DEN NAMEN des General profile («Standard», «Kostenloser Versand» ab 45,
-  «Standard Liechtenstein»), Transit CH 1–2 T. Shopify zählt Tarife verschiedener Profile mit GLEICHEM Namen zusammen
+  Eigenes Profil «CH-Lager» mit 0.00-Tarifen UNTER DEN NAMEN des General profile («Standard», «Kostenloser Versand» ab GRATIS_AB_CH
+  (45; Entscheid D 40.50 vorbereitet), «Standard Liechtenstein»), Transit CH 1–2 T. Shopify zählt Tarife verschiedener Profile mit GLEICHEM Namen zusammen
   und prüft Preis-Bedingungen an der Korbsumme (QUELLE help.shopify.com …/combined-shipping-rates; GEMESSEN 14.08. am
   Zendrop-Profil, versandprofil_poster.py). Damit:
     gemischter Korb CH < 45: 7 + 0 = 7 (wie heute) · ab 45: 0 + 0 = 0 · LI: 14.90 + 0 (wie heute)
@@ -70,6 +70,14 @@ STAND = os.path.join(REPO, "dropship", "_ch_lager_profil.json")
 LEDGER = os.path.join(REPO, "dropship", "_ch_lager_profil.tsv")
 REGEL = json.load(open(os.path.join(HIER, "data", "versand_transit_regel.json"), encoding="utf-8"))
 BLOCK = 50
+# IST-Schwelle «Kostenloser Versand» CH (General, CH-Lager, Druck auf Bestellung — gleich in allen Profilen). EINE Quelle für
+# Wächter, Korb-Matrix und Selbsttest (ch_lager_profil, druck_profil, versand_band_wache, google_org_richtlinien,
+# versandschwelle_rabatt). Betreiber-Entscheid D (13.10. abends, «D ja»): 40.50 statt 45 (= 45 × 0,9, Einzelartikel ab 45 mit
+# WELCOME10 versandfrei). VORBEREITET, NICHT LIVE: der Profil-Schreiblauf `automation/gratis_schwelle_setzen.py --scharf` wurde
+# am 13.10. 23:1x UTC vom Auto-Modus abgelehnt (Freigabe nötig). Reihenfolge beim Umstellen: (1) gratis_schwelle_setzen.py --scharf,
+# (2) versand_transit_wache.py --scharf, (3) HIER 40.50, (4) Theme-Zahlen 4500 → 4050 (Bericht GRATISVERSAND-CH-LAGER-UND-4050).
+# Nie (3) vor (1): versandschwelle_rabatt würde sonst nur das General profile umstellen.
+GRATIS_AB_CH = 45.00
 
 
 def gql(q, v=None, ver="2026-01"):
@@ -148,6 +156,23 @@ def tarife_pruefen(chl, gen):
                 continue
             if sorted(tuple(map(tuple, e["bed"])) for e in eintraege) != sorted(tuple(map(tuple, e["bed"])) for e in c[name]):
                 bef.append(f"{land}/{name}: Bedingungen {[e['bed'] for e in c[name]]} ≠ General {[e['bed'] for e in eintraege]}")
+    return bef
+
+
+def schwelle_pruefen(gen, chl=None):
+    """Befunde (leer = ok): «Kostenloser Versand» CH im General profile (und im Zusatzprofil) = GRATIS_AB_CH.
+    Absolut, nicht nur gleich zwischen den Profilen — sonst bliebe ein gemeinsames Abweichen (z. B. nur General umgestellt
+    von versandschwelle_rabatt.py, oder alle zurück) unbemerkt. Blockiert das Zuordnen NICHT, meldet nur."""
+    bef = []
+    for wer, m in (("General", gen), ("Profil", chl)):
+        if m is None:
+            continue
+        ab = [b[2] for e in (m.get("CH") or {}).get("Kostenloser Versand", []) for b in e["bed"]
+              if b[0] == "TOTAL_PRICE" and b[1] == "GREATER_THAN_OR_EQUAL_TO"]
+        if not ab:
+            bef.append(f"{wer}: keine Bedingung «Kostenloser Versand» CH")
+        elif any(abs(x - GRATIS_AB_CH) > 0.005 for x in ab):
+            bef.append(f"{wer}: Gratis ab {ab} ≠ GRATIS_AB_CH {GRATIS_AB_CH:.2f}")
     return bef
 
 
@@ -373,6 +398,9 @@ def lauf(scharf, zurueck=False):
     cm = zonen_methoden(gql(Q_PROFIL, {"id": pid}, ver="unstable")["deliveryProfile"])
     bef = tarife_pruefen(cm, gm)
     stand["tarife_ok"], stand["befunde"] = not bef, bef
+    stand["schwelle_befunde"] = schwelle_pruefen(gm, cm)
+    if stand["schwelle_befunde"]:
+        print(f"⚠️ CH-LAGER-PROFIL: Gratis-Schwelle {stand['schwelle_befunde']} → automation/gratis_schwelle_setzen.py")
     inhalt = profil_inhalt(pid)
     if zurueck:
         ids = sorted(inhalt)
@@ -499,7 +527,7 @@ def test():
         if sub is None:
             print(f"  ✗ {name}: {rates}"); fehler += 1; continue
         if soll is None:                     # Mischkorb CH: wie ein reiner General-Korb gleicher Summe
-            soll = 0.0 if sub >= 45 else 7.0
+            soll = 0.0 if sub >= GRATIS_AB_CH else 7.0
         billig = rates[0][0] if rates else None
         ok = billig == soll
         fehler += not ok
@@ -511,10 +539,10 @@ def test():
 # ---------------------------------------------------------------- Selbsttest
 def selbsttest(leise=False):
     gen = {"CH": {"Standard": [{"preise": [7.0], "bed": []}],
-                  "Kostenloser Versand": [{"preise": [0.0], "bed": [("TOTAL_PRICE", "GREATER_THAN_OR_EQUAL_TO", 45.0)]}]},
+                  "Kostenloser Versand": [{"preise": [0.0], "bed": [("TOTAL_PRICE", "GREATER_THAN_OR_EQUAL_TO", GRATIS_AB_CH)]}]},
            "LI": {"Standard Liechtenstein": [{"preise": [14.9], "bed": []}]}}
     gut = {"CH": {"Standard": [{"preise": [0.0], "bed": []}],
-                  "Kostenloser Versand": [{"preise": [0.0], "bed": [("TOTAL_PRICE", "GREATER_THAN_OR_EQUAL_TO", 45.0)]}]},
+                  "Kostenloser Versand": [{"preise": [0.0], "bed": [("TOTAL_PRICE", "GREATER_THAN_OR_EQUAL_TO", GRATIS_AB_CH)]}]},
            "LI": {"Standard Liechtenstein": [{"preise": [0.0], "bed": []}]}}
     teuer = json.loads(json.dumps(gut)); teuer["CH"]["Standard"][0]["preise"] = [7.0]
     fremd = json.loads(json.dumps(gut)); fremd["CH"]["Blitz"] = fremd["CH"].pop("Standard")
@@ -531,6 +559,8 @@ def selbsttest(leise=False):
                "titel": "Hemd Waggis rot", "typ": "Kostüme & Verkleidung"}]
     faelle = [
         ("Tarife gut", lambda: tarife_pruefen(gut, gen), []),
+        ("Schwelle = Soll", lambda: schwelle_pruefen(gen, gut), []),
+        ("Schwelle ≠ Soll", lambda: len(schwelle_pruefen(json.loads(json.dumps(gen).replace(str(GRATIS_AB_CH), "39.0")))), 1),
         ("Tarif 7.00", lambda: len(tarife_pruefen(teuer, gen)), 1),
         ("fremder Name", lambda: len(tarife_pruefen(fremd, gen)) >= 2, True),
         ("Bedingung fehlt", lambda: len(tarife_pruefen(bedingung, gen)), 1),
