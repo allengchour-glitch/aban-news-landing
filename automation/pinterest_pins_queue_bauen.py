@@ -82,6 +82,10 @@ def main():
             if (p['mediaCount']['count'] or 0) < 2 or float(p['priceRangeV2']['minVariantPrice']['amount']) < 19: continue
             if not p['variants']['nodes'] or not p['variants']['nodes'][0]['availableForSale']: continue
             if RISK.search(' '.join(p['tags']) + ' ' + p['title']): continue
+            # 13.10.2026 (Richter «mehr Käufer» S4): Halloween-Ware nur ab Schweizer Lager (Tag profil-ch-lager) — CJ-Halloween
+            # (10–20 WT) käme nach dem 31.10. an; gleiche Regel wie metricool_pinterest_pin.mjs halloweenOhneChLager().
+            tl = [t.lower() for t in p['tags']]
+            if ('halloween' in tl or re.search(r'halloween', p['title'], re.I)) and 'profil-ch-lager' not in tl: continue
             img = ((p['featuredMedia'] or {}).get('preview') or {}).get('image', {}).get('url')
             if not img: continue
             t = txt(p['descriptionHtml']); s = re.split(r'(?<=[.!?])\s+', t)

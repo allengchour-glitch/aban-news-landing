@@ -1,0 +1,8 @@
+{
+ "stufe": 1,
+ "seit": "2026-10-13",
+ "stufe1_anzahl": 10,
+ "stufe2_ab": "2026-10-17",
+ "plan": "Stufe 1 = 10 Motiv-T-Shirts ohne Editor (kleinste IDs, alle im Google-Kanal) ab 13.10. Stufe 2 = alle Mitglieder nach der Regel (heute 49: 46 Motiv-Shirts, Editor-Shirt, Hoodie, Jutebeutel) ab 17.10. — druck_profil.py --scharf schaltet SELBST um, wenn die Stufe-1-Produkte bei Google keine Versand-/Preis-Meldung tragen und Tarife, Transit und Korb-Matrix ok sind. 17.10. statt 14.10.: CH-Lager Stufe 2 wird 14.–17.10. beobachtet (Kritik Punkt 8), eine Konto-Warnung wäre sonst nicht zuzuordnen. Rückweg: python3 automation/druck_profil.py --rueckweg --scharf",
+ "warum": "dropship/DRUCK-PROFIL-2026-10-13.md"
+}

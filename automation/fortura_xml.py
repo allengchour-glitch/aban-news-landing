@@ -21,6 +21,8 @@ TEMPLATE = os.path.join(REPO, 'dropship', 'fortura', 'Opacc_Orders_Template.xml'
 KUNDENNR = '544341'
 BASIS = 'https://webtransfer.fortura.ch'
 PFLICHT_ADR = ('FIRSTNAME', 'LASTNAME', 'STREET', 'ZIP', 'CITY', 'EMAIL')
+ARTNR = r'[0-9A-Z][0-9A-Z.\-]{2,19}'      # Feed 13.10.: 59774, 90404-2, BO01520, CK-404, OR47166.01, 042156 (20'198 ArtNr, 0 klein → «fortura-x» bleibt unplausibel)
+FEED = '/tmp/fortura_feed.csv'
 
 
 def _t(x):
@@ -43,10 +45,16 @@ def bau_orders_xml(nr, adresse, email, positionen, text=''):
     if not positionen:
         fehler.append('keine Positionen')
     for p in positionen:
-        if not re.fullmatch(r'\d{3,8}', str(p.get('artnr') or '')):
+        # 13.10.2026 (Trockenlauf): hier stand `\d{3,8}` — 2'442 von 4'003 aktiven Fortura-Varianten (Kostüm-Grössen «90404-2»,
+        # «BO01520», «CK9999M», «PC28601» …) wären als «unplausibel» NIE per XML gegangen. Form wie im Feed (Spalte ArtNr).
+        if not re.fullmatch(ARTNR, str(p.get('artnr') or '')):
             fehler.append(f"Artikelnummer «{p.get('artnr')}» unplausibel")
         if not (isinstance(p.get('menge'), int) and p['menge'] > 0):
             fehler.append(f"Menge «{p.get('menge')}» unplausibel")
+        # 13.10.2026: Internet_VE > 1 = der Shop verkauft das Bündel (Draculagebiss «10 Stück»), VP1 ist ein STÜCKpreis. Ob
+        # QUANTITY in Stück oder in VE zählt, sagt das Template nicht → bis Fortura es bestätigt: kein Raten, Portal-Weg.
+        if (p.get('ve') or 1) > 1:
+            fehler.append(f"Artikel {p.get('artnr')} hat VE {p['ve']} — QUANTITY Stück oder VE? bei Fortura klären")
     adr = '\n'.join(f'\t\t\t<{k}>{_t(v)}</{k}>' for k, v in felder.items())
     pos = '\n'.join(
         f'\t\t\t<POS>\n\t\t\t\t<POS_NO>{(i + 1) * 10}</POS_NO>\n\t\t\t\t<ARTICLE_NO>{_t(p["artnr"])}</ARTICLE_NO>\n'
@@ -89,10 +97,13 @@ def _zugang():
     return env['FORTURA_FTP_USER'], env['FORTURA_FTP_PW']
 
 
-def _curl(args, timeout=120):
-    r = subprocess.run(['curl', '-sS', '-k', '--max-time', str(timeout)] + args, capture_output=True, text=True)
+def _curl(args, timeout=120, roh=False):
+    # roh=True → Bytes. 13.10.2026: Fortura liefert den Feed in cp1252; ein DELVRY in ISO-8859-1 mit «ä» hätte text=True mit
+    # UnicodeDecodeError abgebrochen (ganzer Stufe-2-Lauf ⚠️, kein Tracking). Bytes gibt ET.fromstring selbst die Kodierung.
+    r = subprocess.run(['curl', '-sS', '-k', '--max-time', str(timeout)] + args, capture_output=True, text=not roh)
     if r.returncode:
-        raise RuntimeError(f'curl {r.returncode}: {r.stderr[:160]}')
+        err = r.stderr if not roh else r.stderr.decode('utf-8', 'replace')
+        raise RuntimeError(f'curl {r.returncode}: {err[:160]}')
     return r.stdout
 
 
@@ -137,7 +148,25 @@ def hochladen(sid, ordner, name, inhalt):
 def herunterladen(sid, pfad):
     return _curl(['-G', f'{BASIS}/webapi/entry.cgi', '--data-urlencode', 'api=SYNO.FileStation.Download',
                   '--data-urlencode', 'version=2', '--data-urlencode', 'method=download', '--data-urlencode', f'path={pfad}',
-                  '--data-urlencode', 'mode=download', '--data-urlencode', '_sid=' + sid], 120)
+                  '--data-urlencode', 'mode=download', '--data-urlencode', '_sid=' + sid], 120, roh=True)
+
+
+def ve_aus_feed(artnrs, pfad=FEED):
+    """{artnr: Internet_VE} aus dem täglichen Feed (cp1252, «|»). Fehlt der Feed: {} (dann keine VE-Sperre — Feed ist täglich da)."""
+    import csv
+    out, gesucht = {}, set(artnrs)
+    try:
+        with open(pfad, encoding='cp1252', newline='') as f:
+            r = csv.reader(f, delimiter='|'); kopf = next(r); a, v = kopf.index('ArtNr'), kopf.index('Internet_VE')
+            for z in r:
+                if len(z) > v and z[a] in gesucht:
+                    try:
+                        out[z[a]] = max(1, round(float(z[v].replace(',', '.') or 1)))
+                    except ValueError:
+                        out[z[a]] = 1
+    except (OSError, ValueError, StopIteration):
+        pass
+    return out
 
 
 def lies_delvry(xml_text):
@@ -174,7 +203,17 @@ def selbsttest():
                     '<POSITIONS><POS><POS_NO>1</POS_NO><ARTICLE_NO>20564</ARTICLE_NO><ORDER_QUANTITY>2</ORDER_QUANTITY>'
                     '<DELVRY_QUANTITY>2</DELVRY_QUANTITY></POS></POSITIONS></DOC></Opacc.DELVRY>')
     assert d[0]['order_no'] == 'LX1023' and d[0]['tracking'] == ['0123'] and d[0]['positionen'][0][:3] == ('20564', '2', '2')
-    print('Selbsttest 7/7')
+    # 13.10.2026: Feed-Formen der Artikelnummer, VE-Sperre, DELVRY als ISO-8859-1-Bytes
+    for a in ('90404-2', 'BO01520', 'CK-404', 'OR47166.01', '042156', '86727M'):
+        _, f = bau_orders_xml('LX9999', adr, 'a@b.ch', [{'artnr': a, 'menge': 1}])
+        assert not f, (a, f)
+    _, f = bau_orders_xml('LX9999', adr, 'a@b.ch', [{'artnr': '59774', 'menge': 1, 've': 10}])
+    assert any('VE 10' in e for e in f), f
+    lat = ('<?xml version="1.0" encoding="ISO-8859-1"?><Opacc.DELVRY><DOC><HEADER><ORDER_NO>LX1030</ORDER_NO></HEADER><POSITIONS><POS>'
+           '<ARTICLE_NO>94097</ARTICLE_NO><ARTICLE_NAME>Zähne</ARTICLE_NAME><ORDER_QUANTITY>3</ORDER_QUANTITY>'
+           '<DELVRY_QUANTITY>3</DELVRY_QUANTITY></POS></POSITIONS></DOC></Opacc.DELVRY>').encode('latin-1')
+    assert lies_delvry(lat)[0]['positionen'][0][:3] == ('94097', '3', '3')
+    print('Selbsttest 10/10')
 
 
 if __name__ == '__main__':
