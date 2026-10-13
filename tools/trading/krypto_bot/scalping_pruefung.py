@@ -151,21 +151,29 @@ def pruefe(trades, b1, kosten, f):
             "stress": stress, "mit_bnb": bnb, "kriterien": kriterien, "bestanden": all(kriterien.values())}
 
 
+KRITERIUM_TEXT = {"beide_haelften": "Hälften", "anzahl": "Anzahl", "netto_je_trade": "≥ 1 bp", "zufall": "Zufall",
+                  "stress": "Stress"}
+
+
+def _de(x, fmt):
+    """Zahl wie in der README: Dezimalkomma, Tausender-Apostroph, typografisches Minus."""
+    return format(x, fmt).replace(",", "'").replace(".", ",").replace("-", "−")
+
+
 def bericht_md(erg):
     """Markdown-Tabelle für die README direkt aus der Ergebnis-Datei (keine Zahl von Hand abgeschrieben)."""
-    zeilen = ["| Markt | Strategie (gewählte Variante) | Trades | Brutto je Trade | Netto je Trade | Netto Summe | "
-              "Treffer | Zufall geschlagen | Urteil |", "|---|---|---|---|---|---|---|---|---|"]
+    zeilen = ["| Markt | Strategie (gewählte Variante) | Trades | Brutto je Trade | Netto je Trade | Treffer | "
+              "Zufall geschlagen | Urteil (durchgefallen an) |", "|---|---|---|---|---|---|---|---|"]
     for sym, strat in erg["maerkte"].items():
         for kurz, s in strat.items():
             k, pr = s["pruefung"]["kennzahlen"], s["pruefung"]
             if not k.get("n"):
-                zeilen.append(f"| {sym[:3]} | {kurz} {s['name']} ({s['gewaehlt']}) | 0 | – | – | – | – | – | ❌ |")
+                zeilen.append(f"| {sym[:3]} | {kurz} {s['name']} ({s['gewaehlt']}) | 0 | – | – | – | – | ❌ |")
                 continue
-            fehlt = [n for n, ok in pr["kriterien"].items() if not ok]
-            anzahl = f"{k['n']:,}".replace(",", "'")
-            zeilen.append(f"| {sym[:3]} | {kurz} {s['name']} ({s['gewaehlt']}) | {anzahl} | {k['brutto_bp']:+.1f} bp | "
-                          f"{k['netto_bp']:+.1f} bp | {k['summe_pct']:+.1f} % | {k['treffer']:.0%} | "
-                          f"{pr['zufall_geschlagen']:.0%} | {'✅' if pr['bestanden'] else '❌ ' + ', '.join(fehlt)} |")
+            fehlt = [KRITERIUM_TEXT.get(n, n) for n, ok in pr["kriterien"].items() if not ok]
+            zeilen.append(f"| {sym[:3]} | {kurz} {s['name']} ({s['gewaehlt']}) | {_de(k['n'], ',')} | "
+                          f"{_de(k['brutto_bp'], '+.1f')} bp | {_de(k['netto_bp'], '+.1f')} bp | {_de(100 * k['treffer'], '.0f')} % | "
+                          f"{_de(100 * pr['zufall_geschlagen'], '.0f')} % | {'✅' if pr['bestanden'] else '❌ ' + ', '.join(fehlt)} |")
     return "\n".join(zeilen)
 
 

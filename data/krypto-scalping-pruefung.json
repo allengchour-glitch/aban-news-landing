@@ -1,0 +1,2120 @@
+{
+ "stand": "2026-10-13T18:57:46+00:00",
+ "protokoll": {
+  "daten": "2022-01 bis 2026-09",
+  "lernen_bis": "2023-12-31",
+  "pruefen": "2024-01-01 bis 2026-09-30",
+  "gebuehr": {
+   "M": 0.0002,
+   "T": 0.0005
+  },
+  "maerkte": {
+   "BTCUSDT": {
+    "tick": 0.1,
+    "slip": 0.0001
+   },
+   "ETHUSDT": {
+    "tick": 0.01,
+    "slip": 0.00015
+   }
+  },
+  "kriterien": {
+   "min_trades": 200,
+   "min_netto_bp": 1.0,
+   "zufall": 0.9,
+   "stress": [
+    1.2,
+    2.0
+   ]
+  }
+ },
+ "maerkte": {
+  "BTCUSDT": {
+   "S1": {
+    "name": "Band-Abpraller (Mean-Reversion, Maker)",
+    "varianten": {
+     "k=2.0": {
+      "lern": {
+       "n": 92778,
+       "treffer": 0.3581,
+       "brutto_bp": -4.043,
+       "netto_bp": -10.618,
+       "summe_pct": -9851.05,
+       "pf": 0.297,
+       "einbruch_pct": -9851.05,
+       "dauer_min": 7.7
+      },
+      "pruef_info": {
+       "n": 120143,
+       "treffer": 0.3706,
+       "brutto_bp": -3.039,
+       "netto_bp": -9.565,
+       "summe_pct": -11491.79,
+       "pf": 0.314,
+       "einbruch_pct": -11491.79,
+       "dauer_min": 8.3
+      }
+     },
+     "k=2.5": {
+      "lern": {
+       "n": 60863,
+       "treffer": 0.4026,
+       "brutto_bp": -2.483,
+       "netto_bp": -8.961,
+       "summe_pct": -5454.21,
+       "pf": 0.404,
+       "einbruch_pct": -5454.21,
+       "dauer_min": 9.8
+      },
+      "pruef_info": {
+       "n": 77016,
+       "treffer": 0.4111,
+       "brutto_bp": -1.6,
+       "netto_bp": -8.037,
+       "summe_pct": -6189.53,
+       "pf": 0.416,
+       "einbruch_pct": -6189.53,
+       "dauer_min": 10.4
+      }
+     },
+     "k=3.0": {
+      "lern": {
+       "n": 40491,
+       "treffer": 0.4222,
+       "brutto_bp": -1.571,
+       "netto_bp": -8.04,
+       "summe_pct": -3255.56,
+       "pf": 0.477,
+       "einbruch_pct": -3255.64,
+       "dauer_min": 11.2
+      },
+      "pruef_info": {
+       "n": 49259,
+       "treffer": 0.4289,
+       "brutto_bp": -0.763,
+       "netto_bp": -7.192,
+       "summe_pct": -3542.54,
+       "pf": 0.48,
+       "einbruch_pct": -3542.67,
+       "dauer_min": 11.8
+      }
+     },
+     "k=3.5": {
+      "lern": {
+       "n": 26718,
+       "treffer": 0.433,
+       "brutto_bp": -1.023,
+       "netto_bp": -7.522,
+       "summe_pct": -2009.67,
+       "pf": 0.528,
+       "einbruch_pct": -2010.16,
+       "dauer_min": 12.2
+      },
+      "pruef_info": {
+       "n": 30618,
+       "treffer": 0.43,
+       "brutto_bp": -0.457,
+       "netto_bp": -6.927,
+       "summe_pct": -2121.01,
+       "pf": 0.516,
+       "einbruch_pct": -2121.14,
+       "dauer_min": 12.8
+      }
+     }
+    },
+    "gewaehlt": "k=3.5",
+    "pruefung": {
+     "kennzahlen": {
+      "n": 30618,
+      "treffer": 0.43,
+      "brutto_bp": -0.457,
+      "netto_bp": -6.927,
+      "summe_pct": -2121.01,
+      "pf": 0.516,
+      "einbruch_pct": -2121.14,
+      "dauer_min": 12.8
+     },
+     "haelfte_1": {
+      "n": 14284,
+      "treffer": 0.4452,
+      "brutto_bp": -0.417,
+      "netto_bp": -6.872,
+      "summe_pct": -981.65,
+      "pf": 0.565,
+      "einbruch_pct": -981.65,
+      "dauer_min": 13.0
+     },
+     "haelfte_2": {
+      "n": 16334,
+      "treffer": 0.4167,
+      "brutto_bp": -0.493,
+      "netto_bp": -6.975,
+      "summe_pct": -1139.36,
+      "pf": 0.463,
+      "einbruch_pct": -1139.48,
+      "dauer_min": 12.6
+     },
+     "zufall_geschlagen": 0.005,
+     "stress": {
+      "n": 30618,
+      "treffer": 0.4153,
+      "brutto_bp": -0.457,
+      "netto_bp": -8.715,
+      "summe_pct": -2668.41,
+      "pf": 0.444,
+      "einbruch_pct": -2668.5,
+      "dauer_min": 12.8
+     },
+     "mit_bnb": {
+      "n": 30618,
+      "treffer": 0.4351,
+      "brutto_bp": -0.457,
+      "netto_bp": -6.342,
+      "summe_pct": -1941.83,
+      "pf": 0.544,
+      "einbruch_pct": -1942.01,
+      "dauer_min": 12.8
+     },
+     "kriterien": {
+      "beide_haelften": false,
+      "anzahl": true,
+      "netto_je_trade": false,
+      "zufall": false,
+      "stress": false
+     },
+     "bestanden": false
+    }
+   },
+   "S2": {
+    "name": "Ausbruch (Donchian, Stop-Einstieg)",
+    "varianten": {
+     "n=15": {
+      "lern": {
+       "n": 60391,
+       "treffer": 0.15,
+       "brutto_bp": 1.213,
+       "netto_bp": -10.787,
+       "summe_pct": -6514.16,
+       "pf": 0.291,
+       "einbruch_pct": -6515.17,
+       "dauer_min": 11.7
+      },
+      "pruef_info": {
+       "n": 83854,
+       "treffer": 0.1658,
+       "brutto_bp": 1.504,
+       "netto_bp": -10.495,
+       "summe_pct": -8800.27,
+       "pf": 0.27,
+       "einbruch_pct": -8800.3,
+       "dauer_min": 11.7
+      }
+     },
+     "n=30": {
+      "lern": {
+       "n": 30675,
+       "treffer": 0.1796,
+       "brutto_bp": 1.127,
+       "netto_bp": -10.872,
+       "summe_pct": -3334.97,
+       "pf": 0.399,
+       "einbruch_pct": -3335.81,
+       "dauer_min": 23.7
+      },
+      "pruef_info": {
+       "n": 42286,
+       "treffer": 0.1949,
+       "brutto_bp": 1.181,
+       "netto_bp": -10.818,
+       "summe_pct": -4574.46,
+       "pf": 0.368,
+       "einbruch_pct": -4574.61,
+       "dauer_min": 23.9
+      }
+     },
+     "n=60": {
+      "lern": {
+       "n": 15664,
+       "treffer": 0.2013,
+       "brutto_bp": 1.148,
+       "netto_bp": -10.848,
+       "summe_pct": -1699.31,
+       "pf": 0.511,
+       "einbruch_pct": -1700.01,
+       "dauer_min": 46.1
+      },
+      "pruef_info": {
+       "n": 21558,
+       "treffer": 0.2218,
+       "brutto_bp": 1.026,
+       "netto_bp": -10.973,
+       "summe_pct": -2365.6,
+       "pf": 0.476,
+       "einbruch_pct": -2369.62,
+       "dauer_min": 46.9
+      }
+     },
+     "n=240": {
+      "lern": {
+       "n": 3958,
+       "treffer": 0.2436,
+       "brutto_bp": 1.731,
+       "netto_bp": -10.263,
+       "summe_pct": -406.23,
+       "pf": 0.728,
+       "einbruch_pct": -406.26,
+       "dauer_min": 181.4
+      },
+      "pruef_info": {
+       "n": 5471,
+       "treffer": 0.2734,
+       "brutto_bp": 1.594,
+       "netto_bp": -10.432,
+       "summe_pct": -570.76,
+       "pf": 0.702,
+       "einbruch_pct": -573.0,
+       "dauer_min": 184.7
+      }
+     }
+    },
+    "gewaehlt": "n=240",
+    "pruefung": {
+     "kennzahlen": {
+      "n": 5471,
+      "treffer": 0.2734,
+      "brutto_bp": 1.594,
+      "netto_bp": -10.432,
+      "summe_pct": -570.76,
+      "pf": 0.702,
+      "einbruch_pct": -573.0,
+      "dauer_min": 184.7
+     },
+     "haelfte_1": {
+      "n": 2721,
+      "treffer": 0.2731,
+      "brutto_bp": 2.316,
+      "netto_bp": -9.719,
+      "summe_pct": -264.46,
+      "pf": 0.742,
+      "einbruch_pct": -266.89,
+      "dauer_min": 186.8
+     },
+     "haelfte_2": {
+      "n": 2750,
+      "treffer": 0.2738,
+      "brutto_bp": 0.879,
+      "netto_bp": -11.138,
+      "summe_pct": -306.3,
+      "pf": 0.657,
+      "einbruch_pct": -307.87,
+      "dauer_min": 182.7
+     },
+     "zufall_geschlagen": 0.835,
+     "stress": {
+      "n": 5471,
+      "treffer": 0.2557,
+      "brutto_bp": 1.594,
+      "netto_bp": -14.433,
+      "summe_pct": -789.62,
+      "pf": 0.62,
+      "einbruch_pct": -791.58,
+      "dauer_min": 184.7
+     },
+     "mit_bnb": {
+      "n": 5471,
+      "treffer": 0.2797,
+      "brutto_bp": 1.594,
+      "netto_bp": -9.432,
+      "summe_pct": -516.05,
+      "pf": 0.725,
+      "einbruch_pct": -518.36,
+      "dauer_min": 184.7
+     },
+     "kriterien": {
+      "beide_haelften": false,
+      "anzahl": true,
+      "netto_je_trade": false,
+      "zufall": false,
+      "stress": false
+     },
+     "bestanden": false
+    }
+   },
+   "S3": {
+    "name": "RSI(2)-Extrem 5m",
+    "varianten": {
+     "<5 +Trend": {
+      "lern": {
+       "n": 4226,
+       "treffer": 0.2688,
+       "brutto_bp": 1.276,
+       "netto_bp": -10.725,
+       "summe_pct": -453.24,
+       "pf": 0.25,
+       "einbruch_pct": -453.24,
+       "dauer_min": 12.8
+      },
+      "pruef_info": {
+       "n": 6523,
+       "treffer": 0.2589,
+       "brutto_bp": 1.788,
+       "netto_bp": -10.213,
+       "summe_pct": -666.19,
+       "pf": 0.22,
+       "einbruch_pct": -666.19,
+       "dauer_min": 13.3
+      }
+     },
+     "<5": {
+      "lern": {
+       "n": 14808,
+       "treffer": 0.3169,
+       "brutto_bp": 0.744,
+       "netto_bp": -11.257,
+       "summe_pct": -1666.92,
+       "pf": 0.322,
+       "einbruch_pct": -1666.93,
+       "dauer_min": 11.7
+      },
+      "pruef_info": {
+       "n": 21700,
+       "treffer": 0.2941,
+       "brutto_bp": 1.096,
+       "netto_bp": -10.905,
+       "summe_pct": -2366.4,
+       "pf": 0.272,
+       "einbruch_pct": -2366.48,
+       "dauer_min": 12.2
+      }
+     },
+     "<10 +Trend": {
+      "lern": {
+       "n": 9113,
+       "treffer": 0.2571,
+       "brutto_bp": 1.205,
+       "netto_bp": -10.795,
+       "summe_pct": -983.71,
+       "pf": 0.225,
+       "einbruch_pct": -983.71,
+       "dauer_min": 13.0
+      },
+      "pruef_info": {
+       "n": 13285,
+       "treffer": 0.2467,
+       "brutto_bp": 1.182,
+       "netto_bp": -10.823,
+       "summe_pct": -1437.78,
+       "pf": 0.199,
+       "einbruch_pct": -1437.78,
+       "dauer_min": 13.5
+      }
+     },
+     "<10": {
+      "lern": {
+       "n": 26805,
+       "treffer": 0.2874,
+       "brutto_bp": 0.58,
+       "netto_bp": -11.42,
+       "summe_pct": -3061.23,
+       "pf": 0.274,
+       "einbruch_pct": -3061.23,
+       "dauer_min": 11.9
+      },
+      "pruef_info": {
+       "n": 37944,
+       "treffer": 0.2716,
+       "brutto_bp": 0.753,
+       "netto_bp": -11.249,
+       "summe_pct": -4268.2,
+       "pf": 0.237,
+       "einbruch_pct": -4268.2,
+       "dauer_min": 12.5
+      }
+     }
+    },
+    "gewaehlt": "<5 +Trend",
+    "pruefung": {
+     "kennzahlen": {
+      "n": 6523,
+      "treffer": 0.2589,
+      "brutto_bp": 1.788,
+      "netto_bp": -10.213,
+      "summe_pct": -666.19,
+      "pf": 0.22,
+      "einbruch_pct": -666.19,
+      "dauer_min": 13.3
+     },
+     "haelfte_1": {
+      "n": 3159,
+      "treffer": 0.3004,
+      "brutto_bp": 2.277,
+      "netto_bp": -9.723,
+      "summe_pct": -307.15,
+      "pf": 0.274,
+      "einbruch_pct": -307.15,
+      "dauer_min": 13.4
+     },
+     "haelfte_2": {
+      "n": 3364,
+      "treffer": 0.22,
+      "brutto_bp": 1.329,
+      "netto_bp": -10.673,
+      "summe_pct": -359.03,
+      "pf": 0.168,
+      "einbruch_pct": -359.03,
+      "dauer_min": 13.3
+     },
+     "zufall_geschlagen": 1.0,
+     "stress": {
+      "n": 6523,
+      "treffer": 0.172,
+      "brutto_bp": 1.788,
+      "netto_bp": -14.213,
+      "summe_pct": -927.1,
+      "pf": 0.125,
+      "einbruch_pct": -927.1,
+      "dauer_min": 13.3
+     },
+     "mit_bnb": {
+      "n": 6523,
+      "treffer": 0.285,
+      "brutto_bp": 1.788,
+      "netto_bp": -9.213,
+      "summe_pct": -600.96,
+      "pf": 0.255,
+      "einbruch_pct": -600.96,
+      "dauer_min": 13.3
+     },
+     "kriterien": {
+      "beide_haelften": false,
+      "anzahl": true,
+      "netto_je_trade": false,
+      "zufall": true,
+      "stress": false
+     },
+     "bestanden": false
+    }
+   },
+   "S4": {
+    "name": "Order-Flow folgen 1m",
+    "varianten": {
+     "1m/5m": {
+      "lern": {
+       "n": 62,
+       "treffer": 0.2903,
+       "brutto_bp": 5.841,
+       "netto_bp": -6.162,
+       "summe_pct": -3.82,
+       "pf": 0.541,
+       "einbruch_pct": -3.9,
+       "dauer_min": 5.0
+      },
+      "pruef_info": {
+       "n": 65,
+       "treffer": 0.1077,
+       "brutto_bp": -2.322,
+       "netto_bp": -14.331,
+       "summe_pct": -9.32,
+       "pf": 0.069,
+       "einbruch_pct": -9.33,
+       "dauer_min": 5.0
+      }
+     },
+     "5m/15m": {
+      "lern": {
+       "n": 569,
+       "treffer": 0.1845,
+       "brutto_bp": 1.691,
+       "netto_bp": -10.309,
+       "summe_pct": -58.66,
+       "pf": 0.366,
+       "einbruch_pct": -58.66,
+       "dauer_min": 15.0
+      },
+      "pruef_info": {
+       "n": 763,
+       "treffer": 0.2097,
+       "brutto_bp": 1.033,
+       "netto_bp": -10.974,
+       "summe_pct": -83.73,
+       "pf": 0.257,
+       "einbruch_pct": -84.25,
+       "dauer_min": 15.0
+      }
+     },
+     "15m/30m": {
+      "lern": {
+       "n": 739,
+       "treffer": 0.2463,
+       "brutto_bp": -0.335,
+       "netto_bp": -12.333,
+       "summe_pct": -91.14,
+       "pf": 0.427,
+       "einbruch_pct": -91.72,
+       "dauer_min": 30.0
+      },
+      "pruef_info": {
+       "n": 841,
+       "treffer": 0.2438,
+       "brutto_bp": 1.981,
+       "netto_bp": -10.029,
+       "summe_pct": -84.34,
+       "pf": 0.408,
+       "einbruch_pct": -84.34,
+       "dauer_min": 30.0
+      }
+     },
+     "60m/60m": {
+      "lern": {
+       "n": 674,
+       "treffer": 0.2864,
+       "brutto_bp": -0.137,
+       "netto_bp": -12.133,
+       "summe_pct": -81.78,
+       "pf": 0.583,
+       "einbruch_pct": -85.12,
+       "dauer_min": 60.0
+      },
+      "pruef_info": {
+       "n": 808,
+       "treffer": 0.3032,
+       "brutto_bp": -0.514,
+       "netto_bp": -12.51,
+       "summe_pct": -101.08,
+       "pf": 0.508,
+       "einbruch_pct": -102.47,
+       "dauer_min": 60.0
+      }
+     }
+    },
+    "gewaehlt": "5m/15m",
+    "pruefung": {
+     "kennzahlen": {
+      "n": 763,
+      "treffer": 0.2097,
+      "brutto_bp": 1.033,
+      "netto_bp": -10.974,
+      "summe_pct": -83.73,
+      "pf": 0.257,
+      "einbruch_pct": -84.25,
+      "dauer_min": 15.0
+     },
+     "haelfte_1": {
+      "n": 372,
+      "treffer": 0.2312,
+      "brutto_bp": 1.87,
+      "netto_bp": -10.137,
+      "summe_pct": -37.71,
+      "pf": 0.321,
+      "einbruch_pct": -38.23,
+      "dauer_min": 15.0
+     },
+     "haelfte_2": {
+      "n": 391,
+      "treffer": 0.1893,
+      "brutto_bp": 0.236,
+      "netto_bp": -11.77,
+      "summe_pct": -46.02,
+      "pf": 0.193,
+      "einbruch_pct": -46.02,
+      "dauer_min": 15.0
+     },
+     "zufall_geschlagen": 0.84,
+     "stress": {
+      "n": 763,
+      "treffer": 0.1599,
+      "brutto_bp": 1.033,
+      "netto_bp": -14.974,
+      "summe_pct": -114.25,
+      "pf": 0.169,
+      "einbruch_pct": -114.38,
+      "dauer_min": 15.0
+     },
+     "mit_bnb": {
+      "n": 763,
+      "treffer": 0.2215,
+      "brutto_bp": 1.033,
+      "netto_bp": -9.973,
+      "summe_pct": -76.1,
+      "pf": 0.286,
+      "einbruch_pct": -76.72,
+      "dauer_min": 15.0
+     },
+     "kriterien": {
+      "beide_haelften": false,
+      "anzahl": true,
+      "netto_je_trade": false,
+      "zufall": false,
+      "stress": false
+     },
+     "bestanden": false
+    }
+   },
+   "S5": {
+    "name": "Umkehr nach Fluss-Kerze 15m",
+    "varianten": {
+     "2σ/1×15m": {
+      "lern": {
+       "n": 2950,
+       "treffer": 0.3532,
+       "brutto_bp": -1.393,
+       "netto_bp": -13.399,
+       "summe_pct": -395.27,
+       "pf": 0.385,
+       "einbruch_pct": -396.11,
+       "dauer_min": 15.0
+      },
+      "pruef_info": {
+       "n": 4476,
+       "treffer": 0.3425,
+       "brutto_bp": -0.691,
+       "netto_bp": -12.686,
+       "summe_pct": -567.82,
+       "pf": 0.363,
+       "einbruch_pct": -568.83,
+       "dauer_min": 15.0
+      }
+     },
+     "2σ/4×15m": {
+      "lern": {
+       "n": 2307,
+       "treffer": 0.4257,
+       "brutto_bp": -3.119,
+       "netto_bp": -15.126,
+       "summe_pct": -348.95,
+       "pf": 0.542,
+       "einbruch_pct": -350.39,
+       "dauer_min": 60.0
+      },
+      "pruef_info": {
+       "n": 3457,
+       "treffer": 0.4035,
+       "brutto_bp": -0.395,
+       "netto_bp": -12.389,
+       "summe_pct": -428.3,
+       "pf": 0.572,
+       "einbruch_pct": -429.59,
+       "dauer_min": 60.0
+      }
+     },
+     "3σ/1×15m": {
+      "lern": {
+       "n": 1207,
+       "treffer": 0.3836,
+       "brutto_bp": -0.321,
+       "netto_bp": -12.318,
+       "summe_pct": -148.68,
+       "pf": 0.477,
+       "einbruch_pct": -152.18,
+       "dauer_min": 15.0
+      },
+      "pruef_info": {
+       "n": 1564,
+       "treffer": 0.3728,
+       "brutto_bp": -2.116,
+       "netto_bp": -14.116,
+       "summe_pct": -220.77,
+       "pf": 0.405,
+       "einbruch_pct": -221.08,
+       "dauer_min": 15.0
+      }
+     },
+     "3σ/4×15m": {
+      "lern": {
+       "n": 1052,
+       "treffer": 0.4468,
+       "brutto_bp": -2.642,
+       "netto_bp": -14.647,
+       "summe_pct": -154.08,
+       "pf": 0.591,
+       "einbruch_pct": -156.37,
+       "dauer_min": 60.0
+      },
+      "pruef_info": {
+       "n": 1322,
+       "treffer": 0.4039,
+       "brutto_bp": -3.424,
+       "netto_bp": -15.412,
+       "summe_pct": -203.75,
+       "pf": 0.566,
+       "einbruch_pct": -205.07,
+       "dauer_min": 60.0
+      }
+     }
+    },
+    "gewaehlt": "3σ/1×15m",
+    "pruefung": {
+     "kennzahlen": {
+      "n": 1564,
+      "treffer": 0.3728,
+      "brutto_bp": -2.116,
+      "netto_bp": -14.116,
+      "summe_pct": -220.77,
+      "pf": 0.405,
+      "einbruch_pct": -221.08,
+      "dauer_min": 15.0
+     },
+     "haelfte_1": {
+      "n": 759,
+      "treffer": 0.3913,
+      "brutto_bp": -5.305,
+      "netto_bp": -17.303,
+      "summe_pct": -131.33,
+      "pf": 0.391,
+      "einbruch_pct": -132.11,
+      "dauer_min": 15.0
+     },
+     "haelfte_2": {
+      "n": 805,
+      "treffer": 0.3553,
+      "brutto_bp": 0.891,
+      "netto_bp": -11.111,
+      "summe_pct": -89.44,
+      "pf": 0.423,
+      "einbruch_pct": -89.48,
+      "dauer_min": 15.0
+     },
+     "zufall_geschlagen": 0.005,
+     "stress": {
+      "n": 1564,
+      "treffer": 0.3178,
+      "brutto_bp": -2.116,
+      "netto_bp": -18.115,
+      "summe_pct": -283.32,
+      "pf": 0.312,
+      "einbruch_pct": -283.38,
+      "dauer_min": 15.0
+     },
+     "mit_bnb": {
+      "n": 1564,
+      "treffer": 0.3843,
+      "brutto_bp": -2.116,
+      "netto_bp": -13.116,
+      "summe_pct": -205.13,
+      "pf": 0.432,
+      "einbruch_pct": -205.6,
+      "dauer_min": 15.0
+     },
+     "kriterien": {
+      "beide_haelften": false,
+      "anzahl": true,
+      "netto_je_trade": false,
+      "zufall": false,
+      "stress": false
+     },
+     "bestanden": false
+    }
+   },
+   "S6": {
+    "name": "Halbstunden-Momentum",
+    "varianten": {
+     "utc": {
+      "lern": {
+       "n": 730,
+       "treffer": 0.2904,
+       "brutto_bp": 0.532,
+       "netto_bp": -11.514,
+       "summe_pct": -84.05,
+       "pf": 0.354,
+       "einbruch_pct": -84.73,
+       "dauer_min": 30.0
+      },
+      "pruef_info": {
+       "n": 1004,
+       "treffer": 0.255,
+       "brutto_bp": -0.711,
+       "netto_bp": -12.708,
+       "summe_pct": -127.59,
+       "pf": 0.251,
+       "einbruch_pct": -127.79,
+       "dauer_min": 30.0
+      }
+     },
+     "utc_stark": {
+      "lern": {
+       "n": 335,
+       "treffer": 0.3254,
+       "brutto_bp": 1.881,
+       "netto_bp": -10.179,
+       "summe_pct": -34.1,
+       "pf": 0.404,
+       "einbruch_pct": -34.19,
+       "dauer_min": 30.0
+      },
+      "pruef_info": {
+       "n": 484,
+       "treffer": 0.2872,
+       "brutto_bp": 0.596,
+       "netto_bp": -11.419,
+       "summe_pct": -55.27,
+       "pf": 0.298,
+       "einbruch_pct": -55.51,
+       "dauer_min": 30.0
+      }
+     },
+     "us": {
+      "lern": {
+       "n": 520,
+       "treffer": 0.3538,
+       "brutto_bp": 3.268,
+       "netto_bp": -8.734,
+       "summe_pct": -45.42,
+       "pf": 0.593,
+       "einbruch_pct": -47.41,
+       "dauer_min": 30.0
+      },
+      "pruef_info": {
+       "n": 718,
+       "treffer": 0.3315,
+       "brutto_bp": -1.347,
+       "netto_bp": -13.345,
+       "summe_pct": -95.82,
+       "pf": 0.387,
+       "einbruch_pct": -95.99,
+       "dauer_min": 30.0
+      }
+     }
+    },
+    "gewaehlt": "us",
+    "pruefung": {
+     "kennzahlen": {
+      "n": 718,
+      "treffer": 0.3315,
+      "brutto_bp": -1.347,
+      "netto_bp": -13.345,
+      "summe_pct": -95.82,
+      "pf": 0.387,
+      "einbruch_pct": -95.99,
+      "dauer_min": 30.0
+     },
+     "haelfte_1": {
+      "n": 360,
+      "treffer": 0.3722,
+      "brutto_bp": -1.558,
+      "netto_bp": -13.553,
+      "summe_pct": -48.79,
+      "pf": 0.439,
+      "einbruch_pct": -49.12,
+      "dauer_min": 30.0
+     },
+     "haelfte_2": {
+      "n": 358,
+      "treffer": 0.2905,
+      "brutto_bp": -1.136,
+      "netto_bp": -13.136,
+      "summe_pct": -47.03,
+      "pf": 0.321,
+      "einbruch_pct": -48.43,
+      "dauer_min": 30.0
+     },
+     "zufall_geschlagen": 0.17,
+     "stress": {
+      "n": 718,
+      "treffer": 0.2869,
+      "brutto_bp": -1.347,
+      "netto_bp": -17.344,
+      "summe_pct": -124.53,
+      "pf": 0.292,
+      "einbruch_pct": -124.58,
+      "dauer_min": 30.0
+     },
+     "mit_bnb": {
+      "n": 718,
+      "treffer": 0.3468,
+      "brutto_bp": -1.347,
+      "netto_bp": -12.345,
+      "summe_pct": -88.64,
+      "pf": 0.415,
+      "einbruch_pct": -88.84,
+      "dauer_min": 30.0
+     },
+     "kriterien": {
+      "beide_haelften": false,
+      "anzahl": true,
+      "netto_je_trade": false,
+      "zufall": false,
+      "stress": false
+     },
+     "bestanden": false
+    }
+   },
+   "S7": {
+    "name": "Tageszeit-Muster 1h",
+    "varianten": {
+     "1 Std.": {
+      "lern": {
+       "n": 1460,
+       "treffer": 0.3863,
+       "brutto_bp": 4.523,
+       "netto_bp": -7.478,
+       "summe_pct": -109.18,
+       "pf": 0.694,
+       "einbruch_pct": -116.66,
+       "dauer_min": 60.0
+      },
+      "pruef_info": {
+       "n": 2008,
+       "treffer": 0.3476,
+       "brutto_bp": -1.137,
+       "netto_bp": -13.138,
+       "summe_pct": -263.82,
+       "pf": 0.489,
+       "einbruch_pct": -264.79,
+       "dauer_min": 60.0
+      }
+     },
+     "2 Std.": {
+      "lern": {
+       "n": 2920,
+       "treffer": 0.3771,
+       "brutto_bp": 4.04,
+       "netto_bp": -7.96,
+       "summe_pct": -232.43,
+       "pf": 0.667,
+       "einbruch_pct": -240.48,
+       "dauer_min": 60.0
+      },
+      "pruef_info": {
+       "n": 4016,
+       "treffer": 0.3523,
+       "brutto_bp": 0.485,
+       "netto_bp": -11.516,
+       "summe_pct": -462.5,
+       "pf": 0.524,
+       "einbruch_pct": -463.03,
+       "dauer_min": 60.0
+      }
+     },
+     "3 Std.": {
+      "lern": {
+       "n": 4380,
+       "treffer": 0.371,
+       "brutto_bp": 3.593,
+       "netto_bp": -8.407,
+       "summe_pct": -368.22,
+       "pf": 0.64,
+       "einbruch_pct": -368.22,
+       "dauer_min": 60.0
+      },
+      "pruef_info": {
+       "n": 6024,
+       "treffer": 0.3536,
+       "brutto_bp": 0.591,
+       "netto_bp": -11.409,
+       "summe_pct": -687.29,
+       "pf": 0.524,
+       "einbruch_pct": -688.16,
+       "dauer_min": 60.0
+      }
+     }
+    },
+    "gewaehlt": "1 Std.",
+    "pruefung": {
+     "kennzahlen": {
+      "n": 2008,
+      "treffer": 0.3476,
+      "brutto_bp": -1.137,
+      "netto_bp": -13.138,
+      "summe_pct": -263.82,
+      "pf": 0.489,
+      "einbruch_pct": -264.79,
+      "dauer_min": 60.0
+     },
+     "haelfte_1": {
+      "n": 1004,
+      "treffer": 0.3456,
+      "brutto_bp": -3.797,
+      "netto_bp": -15.799,
+      "summe_pct": -158.62,
+      "pf": 0.474,
+      "einbruch_pct": -159.81,
+      "dauer_min": 60.0
+     },
+     "haelfte_2": {
+      "n": 1004,
+      "treffer": 0.3496,
+      "brutto_bp": 1.522,
+      "netto_bp": -10.478,
+      "summe_pct": -105.2,
+      "pf": 0.51,
+      "einbruch_pct": -106.71,
+      "dauer_min": 60.0
+     },
+     "zufall_geschlagen": 0.145,
+     "stress": {
+      "n": 2008,
+      "treffer": 0.3073,
+      "brutto_bp": -1.137,
+      "netto_bp": -17.139,
+      "summe_pct": -344.15,
+      "pf": 0.397,
+      "einbruch_pct": -344.92,
+      "dauer_min": 60.0
+     },
+     "mit_bnb": {
+      "n": 2008,
+      "treffer": 0.3526,
+      "brutto_bp": -1.137,
+      "netto_bp": -12.138,
+      "summe_pct": -243.74,
+      "pf": 0.516,
+      "einbruch_pct": -244.76,
+      "dauer_min": 60.0
+     },
+     "kriterien": {
+      "beide_haelften": false,
+      "anzahl": true,
+      "netto_je_trade": false,
+      "zufall": false,
+      "stress": false
+     },
+     "bestanden": false
+    }
+   }
+  },
+  "ETHUSDT": {
+   "S1": {
+    "name": "Band-Abpraller (Mean-Reversion, Maker)",
+    "varianten": {
+     "k=2.0": {
+      "lern": {
+       "n": 94310,
+       "treffer": 0.3708,
+       "brutto_bp": -5.104,
+       "netto_bp": -11.992,
+       "summe_pct": -11309.91,
+       "pf": 0.332,
+       "einbruch_pct": -11309.91,
+       "dauer_min": 7.6
+      },
+      "pruef_info": {
+       "n": 127223,
+       "treffer": 0.3886,
+       "brutto_bp": -4.502,
+       "netto_bp": -11.338,
+       "summe_pct": -14424.19,
+       "pf": 0.361,
+       "einbruch_pct": -14424.33,
+       "dauer_min": 7.8
+      }
+     },
+     "k=2.5": {
+      "lern": {
+       "n": 61465,
+       "treffer": 0.4151,
+       "brutto_bp": -3.187,
+       "netto_bp": -9.964,
+       "summe_pct": -6124.43,
+       "pf": 0.446,
+       "einbruch_pct": -6124.53,
+       "dauer_min": 9.7
+      },
+      "pruef_info": {
+       "n": 82202,
+       "treffer": 0.43,
+       "brutto_bp": -2.517,
+       "netto_bp": -9.244,
+       "summe_pct": -7599.03,
+       "pf": 0.478,
+       "einbruch_pct": -7599.38,
+       "dauer_min": 10.0
+      }
+     },
+     "k=3.0": {
+      "lern": {
+       "n": 41082,
+       "treffer": 0.4368,
+       "brutto_bp": -2.068,
+       "netto_bp": -8.83,
+       "summe_pct": -3627.74,
+       "pf": 0.521,
+       "einbruch_pct": -3627.97,
+       "dauer_min": 11.1
+      },
+      "pruef_info": {
+       "n": 53326,
+       "treffer": 0.4484,
+       "brutto_bp": -1.286,
+       "netto_bp": -8.008,
+       "summe_pct": -4270.24,
+       "pf": 0.556,
+       "einbruch_pct": -4270.83,
+       "dauer_min": 11.6
+      }
+     },
+     "k=3.5": {
+      "lern": {
+       "n": 27037,
+       "treffer": 0.4449,
+       "brutto_bp": -1.594,
+       "netto_bp": -8.398,
+       "summe_pct": -2270.46,
+       "pf": 0.564,
+       "einbruch_pct": -2271.43,
+       "dauer_min": 12.0
+      },
+      "pruef_info": {
+       "n": 34093,
+       "treffer": 0.4535,
+       "brutto_bp": -0.719,
+       "netto_bp": -7.485,
+       "summe_pct": -2551.92,
+       "pf": 0.6,
+       "einbruch_pct": -2552.42,
+       "dauer_min": 12.6
+      }
+     }
+    },
+    "gewaehlt": "k=3.5",
+    "pruefung": {
+     "kennzahlen": {
+      "n": 34093,
+      "treffer": 0.4535,
+      "brutto_bp": -0.719,
+      "netto_bp": -7.485,
+      "summe_pct": -2551.92,
+      "pf": 0.6,
+      "einbruch_pct": -2552.42,
+      "dauer_min": 12.6
+     },
+     "haelfte_1": {
+      "n": 15598,
+      "treffer": 0.4586,
+      "brutto_bp": -0.702,
+      "netto_bp": -7.459,
+      "summe_pct": -1163.39,
+      "pf": 0.625,
+      "einbruch_pct": -1163.69,
+      "dauer_min": 12.9
+     },
+     "haelfte_2": {
+      "n": 18495,
+      "treffer": 0.4492,
+      "brutto_bp": -0.733,
+      "netto_bp": -7.508,
+      "summe_pct": -1388.53,
+      "pf": 0.576,
+      "einbruch_pct": -1389.41,
+      "dauer_min": 12.5
+     },
+     "zufall_geschlagen": 0.0,
+     "stress": {
+      "n": 34093,
+      "treffer": 0.4422,
+      "brutto_bp": -0.719,
+      "netto_bp": -9.575,
+      "summe_pct": -3264.43,
+      "pf": 0.529,
+      "einbruch_pct": -3264.81,
+      "dauer_min": 12.6
+     },
+     "mit_bnb": {
+      "n": 34093,
+      "treffer": 0.4572,
+      "brutto_bp": -0.719,
+      "netto_bp": -6.901,
+      "summe_pct": -2352.73,
+      "pf": 0.624,
+      "einbruch_pct": -2353.29,
+      "dauer_min": 12.6
+     },
+     "kriterien": {
+      "beide_haelften": false,
+      "anzahl": true,
+      "netto_je_trade": false,
+      "zufall": false,
+      "stress": false
+     },
+     "bestanden": false
+    }
+   },
+   "S2": {
+    "name": "Ausbruch (Donchian, Stop-Einstieg)",
+    "varianten": {
+     "n=15": {
+      "lern": {
+       "n": 60834,
+       "treffer": 0.168,
+       "brutto_bp": 1.469,
+       "netto_bp": -11.53,
+       "summe_pct": -7014.41,
+       "pf": 0.346,
+       "einbruch_pct": -7014.48,
+       "dauer_min": 11.7
+      },
+      "pruef_info": {
+       "n": 83783,
+       "treffer": 0.1891,
+       "brutto_bp": 1.731,
+       "netto_bp": -11.267,
+       "summe_pct": -9440.01,
+       "pf": 0.35,
+       "einbruch_pct": -9440.49,
+       "dauer_min": 11.7
+      }
+     },
+     "n=30": {
+      "lern": {
+       "n": 30881,
+       "treffer": 0.1986,
+       "brutto_bp": 1.498,
+       "netto_bp": -11.502,
+       "summe_pct": -3552.05,
+       "pf": 0.458,
+       "einbruch_pct": -3552.45,
+       "dauer_min": 23.5
+      },
+      "pruef_info": {
+       "n": 42018,
+       "treffer": 0.2195,
+       "brutto_bp": 1.637,
+       "netto_bp": -11.36,
+       "summe_pct": -4773.45,
+       "pf": 0.462,
+       "einbruch_pct": -4773.92,
+       "dauer_min": 23.8
+      }
+     },
+     "n=60": {
+      "lern": {
+       "n": 15722,
+       "treffer": 0.2222,
+       "brutto_bp": 2.072,
+       "netto_bp": -10.929,
+       "summe_pct": -1718.22,
+       "pf": 0.583,
+       "einbruch_pct": -1718.22,
+       "dauer_min": 46.1
+      },
+      "pruef_info": {
+       "n": 21301,
+       "treffer": 0.2472,
+       "brutto_bp": 1.719,
+       "netto_bp": -11.281,
+       "summe_pct": -2402.91,
+       "pf": 0.577,
+       "einbruch_pct": -2403.98,
+       "dauer_min": 47.1
+      }
+     },
+     "n=240": {
+      "lern": {
+       "n": 4016,
+       "treffer": 0.2672,
+       "brutto_bp": 2.243,
+       "netto_bp": -10.756,
+       "summe_pct": -431.97,
+       "pf": 0.769,
+       "einbruch_pct": -452.11,
+       "dauer_min": 179.1
+      },
+      "pruef_info": {
+       "n": 5400,
+       "treffer": 0.2952,
+       "brutto_bp": 4.832,
+       "netto_bp": -8.205,
+       "summe_pct": -443.09,
+       "pf": 0.821,
+       "einbruch_pct": -447.05,
+       "dauer_min": 186.8
+      }
+     }
+    },
+    "gewaehlt": "n=240",
+    "pruefung": {
+     "kennzahlen": {
+      "n": 5400,
+      "treffer": 0.2952,
+      "brutto_bp": 4.832,
+      "netto_bp": -8.205,
+      "summe_pct": -443.09,
+      "pf": 0.821,
+      "einbruch_pct": -447.05,
+      "dauer_min": 186.8
+     },
+     "haelfte_1": {
+      "n": 2698,
+      "treffer": 0.305,
+      "brutto_bp": 5.683,
+      "netto_bp": -7.363,
+      "summe_pct": -198.66,
+      "pf": 0.843,
+      "einbruch_pct": -222.47,
+      "dauer_min": 189.7
+     },
+     "haelfte_2": {
+      "n": 2702,
+      "treffer": 0.2853,
+      "brutto_bp": 3.983,
+      "netto_bp": -9.046,
+      "summe_pct": -244.43,
+      "pf": 0.797,
+      "einbruch_pct": -246.28,
+      "dauer_min": 184.0
+     },
+     "zufall_geschlagen": 0.995,
+     "stress": {
+      "n": 5400,
+      "treffer": 0.2785,
+      "brutto_bp": 4.832,
+      "netto_bp": -13.206,
+      "summe_pct": -713.12,
+      "pf": 0.732,
+      "einbruch_pct": -714.94,
+      "dauer_min": 186.8
+     },
+     "mit_bnb": {
+      "n": 5400,
+      "treffer": 0.298,
+      "brutto_bp": 4.832,
+      "netto_bp": -7.205,
+      "summe_pct": -389.09,
+      "pf": 0.84,
+      "einbruch_pct": -393.48,
+      "dauer_min": 186.8
+     },
+     "kriterien": {
+      "beide_haelften": false,
+      "anzahl": true,
+      "netto_je_trade": false,
+      "zufall": true,
+      "stress": false
+     },
+     "bestanden": false
+    }
+   },
+   "S3": {
+    "name": "RSI(2)-Extrem 5m",
+    "varianten": {
+     "<5 +Trend": {
+      "lern": {
+       "n": 4369,
+       "treffer": 0.3129,
+       "brutto_bp": 1.953,
+       "netto_bp": -11.048,
+       "summe_pct": -482.7,
+       "pf": 0.306,
+       "einbruch_pct": -483.42,
+       "dauer_min": 13.2
+      },
+      "pruef_info": {
+       "n": 6393,
+       "treffer": 0.3319,
+       "brutto_bp": 1.146,
+       "netto_bp": -11.861,
+       "summe_pct": -758.28,
+       "pf": 0.282,
+       "einbruch_pct": -758.35,
+       "dauer_min": 13.3
+      }
+     },
+     "<5": {
+      "lern": {
+       "n": 14936,
+       "treffer": 0.3572,
+       "brutto_bp": 0.728,
+       "netto_bp": -12.271,
+       "summe_pct": -1832.83,
+       "pf": 0.366,
+       "einbruch_pct": -1833.04,
+       "dauer_min": 12.0
+      },
+      "pruef_info": {
+       "n": 21549,
+       "treffer": 0.3763,
+       "brutto_bp": 0.678,
+       "netto_bp": -12.324,
+       "summe_pct": -2655.66,
+       "pf": 0.357,
+       "einbruch_pct": -2655.78,
+       "dauer_min": 12.2
+      }
+     },
+     "<10 +Trend": {
+      "lern": {
+       "n": 9276,
+       "treffer": 0.2928,
+       "brutto_bp": 1.25,
+       "netto_bp": -11.751,
+       "summe_pct": -1090.01,
+       "pf": 0.276,
+       "einbruch_pct": -1090.02,
+       "dauer_min": 13.3
+      },
+      "pruef_info": {
+       "n": 13315,
+       "treffer": 0.3193,
+       "brutto_bp": 0.673,
+       "netto_bp": -12.333,
+       "summe_pct": -1642.13,
+       "pf": 0.256,
+       "einbruch_pct": -1642.13,
+       "dauer_min": 13.5
+      }
+     },
+     "<10": {
+      "lern": {
+       "n": 26947,
+       "treffer": 0.3284,
+       "brutto_bp": 0.475,
+       "netto_bp": -12.524,
+       "summe_pct": -3374.8,
+       "pf": 0.325,
+       "einbruch_pct": -3374.88,
+       "dauer_min": 12.1
+      },
+      "pruef_info": {
+       "n": 37909,
+       "treffer": 0.3499,
+       "brutto_bp": 0.35,
+       "netto_bp": -12.651,
+       "summe_pct": -4795.92,
+       "pf": 0.314,
+       "einbruch_pct": -4795.92,
+       "dauer_min": 12.4
+      }
+     }
+    },
+    "gewaehlt": "<5 +Trend",
+    "pruefung": {
+     "kennzahlen": {
+      "n": 6393,
+      "treffer": 0.3319,
+      "brutto_bp": 1.146,
+      "netto_bp": -11.861,
+      "summe_pct": -758.28,
+      "pf": 0.282,
+      "einbruch_pct": -758.35,
+      "dauer_min": 13.3
+     },
+     "haelfte_1": {
+      "n": 3218,
+      "treffer": 0.3418,
+      "brutto_bp": 1.023,
+      "netto_bp": -11.987,
+      "summe_pct": -385.73,
+      "pf": 0.29,
+      "einbruch_pct": -386.07,
+      "dauer_min": 13.3
+     },
+     "haelfte_2": {
+      "n": 3175,
+      "treffer": 0.3219,
+      "brutto_bp": 1.27,
+      "netto_bp": -11.734,
+      "summe_pct": -372.55,
+      "pf": 0.274,
+      "einbruch_pct": -372.55,
+      "dauer_min": 13.4
+     },
+     "zufall_geschlagen": 0.995,
+     "stress": {
+      "n": 6393,
+      "treffer": 0.2254,
+      "brutto_bp": 1.146,
+      "netto_bp": -16.861,
+      "summe_pct": -1077.92,
+      "pf": 0.163,
+      "einbruch_pct": -1077.92,
+      "dauer_min": 13.3
+     },
+     "mit_bnb": {
+      "n": 6393,
+      "treffer": 0.3576,
+      "brutto_bp": 1.146,
+      "netto_bp": -10.861,
+      "summe_pct": -694.35,
+      "pf": 0.316,
+      "einbruch_pct": -694.52,
+      "dauer_min": 13.3
+     },
+     "kriterien": {
+      "beide_haelften": false,
+      "anzahl": true,
+      "netto_je_trade": false,
+      "zufall": true,
+      "stress": false
+     },
+     "bestanden": false
+    }
+   },
+   "S4": {
+    "name": "Order-Flow folgen 1m",
+    "varianten": {
+     "1m/5m": {
+      "lern": {
+       "n": 152,
+       "treffer": 0.2368,
+       "brutto_bp": 0.475,
+       "netto_bp": -12.532,
+       "summe_pct": -19.05,
+       "pf": 0.343,
+       "einbruch_pct": -19.26,
+       "dauer_min": 5.0
+      },
+      "pruef_info": {
+       "n": 131,
+       "treffer": 0.2595,
+       "brutto_bp": 4.147,
+       "netto_bp": -8.856,
+       "summe_pct": -11.6,
+       "pf": 0.361,
+       "einbruch_pct": -11.65,
+       "dauer_min": 5.0
+      }
+     },
+     "5m/15m": {
+      "lern": {
+       "n": 843,
+       "treffer": 0.2218,
+       "brutto_bp": 0.18,
+       "netto_bp": -12.815,
+       "summe_pct": -108.03,
+       "pf": 0.333,
+       "einbruch_pct": -108.09,
+       "dauer_min": 15.0
+      },
+      "pruef_info": {
+       "n": 863,
+       "treffer": 0.2549,
+       "brutto_bp": 0.762,
+       "netto_bp": -12.235,
+       "summe_pct": -105.58,
+       "pf": 0.32,
+       "einbruch_pct": -105.58,
+       "dauer_min": 15.0
+      }
+     },
+     "15m/30m": {
+      "lern": {
+       "n": 792,
+       "treffer": 0.2437,
+       "brutto_bp": 1.752,
+       "netto_bp": -11.24,
+       "summe_pct": -89.02,
+       "pf": 0.519,
+       "einbruch_pct": -92.01,
+       "dauer_min": 30.0
+      },
+      "pruef_info": {
+       "n": 998,
+       "treffer": 0.3156,
+       "brutto_bp": 1.581,
+       "netto_bp": -11.421,
+       "summe_pct": -113.98,
+       "pf": 0.46,
+       "einbruch_pct": -114.55,
+       "dauer_min": 30.0
+      }
+     },
+     "60m/60m": {
+      "lern": {
+       "n": 602,
+       "treffer": 0.3206,
+       "brutto_bp": 6.425,
+       "netto_bp": -6.58,
+       "summe_pct": -39.61,
+       "pf": 0.772,
+       "einbruch_pct": -45.51,
+       "dauer_min": 60.0
+      },
+      "pruef_info": {
+       "n": 813,
+       "treffer": 0.3186,
+       "brutto_bp": 0.8,
+       "netto_bp": -12.212,
+       "summe_pct": -99.28,
+       "pf": 0.601,
+       "einbruch_pct": -103.19,
+       "dauer_min": 60.0
+      }
+     }
+    },
+    "gewaehlt": "60m/60m",
+    "pruefung": {
+     "kennzahlen": {
+      "n": 813,
+      "treffer": 0.3186,
+      "brutto_bp": 0.8,
+      "netto_bp": -12.212,
+      "summe_pct": -99.28,
+      "pf": 0.601,
+      "einbruch_pct": -103.19,
+      "dauer_min": 60.0
+     },
+     "haelfte_1": {
+      "n": 433,
+      "treffer": 0.3141,
+      "brutto_bp": 1.549,
+      "netto_bp": -11.461,
+      "summe_pct": -49.63,
+      "pf": 0.624,
+      "einbruch_pct": -57.71,
+      "dauer_min": 60.0
+     },
+     "haelfte_2": {
+      "n": 380,
+      "treffer": 0.3237,
+      "brutto_bp": -0.054,
+      "netto_bp": -13.067,
+      "summe_pct": -49.66,
+      "pf": 0.576,
+      "einbruch_pct": -51.56,
+      "dauer_min": 60.0
+     },
+     "zufall_geschlagen": 0.675,
+     "stress": {
+      "n": 813,
+      "treffer": 0.2878,
+      "brutto_bp": 0.8,
+      "netto_bp": -17.214,
+      "summe_pct": -139.95,
+      "pf": 0.495,
+      "einbruch_pct": -139.95,
+      "dauer_min": 60.0
+     },
+     "mit_bnb": {
+      "n": 813,
+      "treffer": 0.3296,
+      "brutto_bp": 0.8,
+      "netto_bp": -11.211,
+      "summe_pct": -91.15,
+      "pf": 0.626,
+      "einbruch_pct": -96.15,
+      "dauer_min": 60.0
+     },
+     "kriterien": {
+      "beide_haelften": false,
+      "anzahl": true,
+      "netto_je_trade": false,
+      "zufall": false,
+      "stress": false
+     },
+     "bestanden": false
+    }
+   },
+   "S5": {
+    "name": "Umkehr nach Fluss-Kerze 15m",
+    "varianten": {
+     "2σ/1×15m": {
+      "lern": {
+       "n": 2753,
+       "treffer": 0.3723,
+       "brutto_bp": -1.947,
+       "netto_bp": -14.945,
+       "summe_pct": -411.44,
+       "pf": 0.405,
+       "einbruch_pct": -411.85,
+       "dauer_min": 15.0
+      },
+      "pruef_info": {
+       "n": 4171,
+       "treffer": 0.4028,
+       "brutto_bp": -0.78,
+       "netto_bp": -13.774,
+       "summe_pct": -574.52,
+       "pf": 0.447,
+       "einbruch_pct": -574.66,
+       "dauer_min": 15.0
+      }
+     },
+     "2σ/4×15m": {
+      "lern": {
+       "n": 2274,
+       "treffer": 0.4446,
+       "brutto_bp": -1.889,
+       "netto_bp": -14.877,
+       "summe_pct": -338.3,
+       "pf": 0.595,
+       "einbruch_pct": -340.2,
+       "dauer_min": 60.0
+      },
+      "pruef_info": {
+       "n": 3298,
+       "treffer": 0.4421,
+       "brutto_bp": -0.99,
+       "netto_bp": -13.977,
+       "summe_pct": -460.97,
+       "pf": 0.628,
+       "einbruch_pct": -461.64,
+       "dauer_min": 60.0
+      }
+     },
+     "3σ/1×15m": {
+      "lern": {
+       "n": 1056,
+       "treffer": 0.4015,
+       "brutto_bp": -1.277,
+       "netto_bp": -14.275,
+       "summe_pct": -150.74,
+       "pf": 0.49,
+       "einbruch_pct": -153.95,
+       "dauer_min": 15.0
+      },
+      "pruef_info": {
+       "n": 1478,
+       "treffer": 0.435,
+       "brutto_bp": -2.858,
+       "netto_bp": -15.853,
+       "summe_pct": -234.31,
+       "pf": 0.478,
+       "einbruch_pct": -235.78,
+       "dauer_min": 15.0
+      }
+     },
+     "3σ/4×15m": {
+      "lern": {
+       "n": 945,
+       "treffer": 0.4423,
+       "brutto_bp": -1.502,
+       "netto_bp": -14.496,
+       "summe_pct": -136.99,
+       "pf": 0.637,
+       "einbruch_pct": -143.38,
+       "dauer_min": 60.0
+      },
+      "pruef_info": {
+       "n": 1279,
+       "treffer": 0.4543,
+       "brutto_bp": -2.234,
+       "netto_bp": -15.218,
+       "summe_pct": -194.63,
+       "pf": 0.666,
+       "einbruch_pct": -199.15,
+       "dauer_min": 60.0
+      }
+     }
+    },
+    "gewaehlt": "3σ/1×15m",
+    "pruefung": {
+     "kennzahlen": {
+      "n": 1478,
+      "treffer": 0.435,
+      "brutto_bp": -2.858,
+      "netto_bp": -15.853,
+      "summe_pct": -234.31,
+      "pf": 0.478,
+      "einbruch_pct": -235.78,
+      "dauer_min": 15.0
+     },
+     "haelfte_1": {
+      "n": 708,
+      "treffer": 0.4435,
+      "brutto_bp": -3.714,
+      "netto_bp": -16.707,
+      "summe_pct": -118.29,
+      "pf": 0.482,
+      "einbruch_pct": -122.12,
+      "dauer_min": 15.0
+     },
+     "haelfte_2": {
+      "n": 770,
+      "treffer": 0.4273,
+      "brutto_bp": -2.071,
+      "netto_bp": -15.068,
+      "summe_pct": -116.03,
+      "pf": 0.475,
+      "einbruch_pct": -117.74,
+      "dauer_min": 15.0
+     },
+     "zufall_geschlagen": 0.005,
+     "stress": {
+      "n": 1478,
+      "treffer": 0.3782,
+      "brutto_bp": -2.858,
+      "netto_bp": -20.853,
+      "summe_pct": -308.21,
+      "pf": 0.375,
+      "einbruch_pct": -309.03,
+      "dauer_min": 15.0
+     },
+     "mit_bnb": {
+      "n": 1478,
+      "treffer": 0.4445,
+      "brutto_bp": -2.858,
+      "netto_bp": -14.853,
+      "summe_pct": -219.53,
+      "pf": 0.502,
+      "einbruch_pct": -221.13,
+      "dauer_min": 15.0
+     },
+     "kriterien": {
+      "beide_haelften": false,
+      "anzahl": true,
+      "netto_je_trade": false,
+      "zufall": false,
+      "stress": false
+     },
+     "bestanden": false
+    }
+   },
+   "S6": {
+    "name": "Halbstunden-Momentum",
+    "varianten": {
+     "utc": {
+      "lern": {
+       "n": 730,
+       "treffer": 0.2877,
+       "brutto_bp": -0.06,
+       "netto_bp": -13.135,
+       "summe_pct": -95.88,
+       "pf": 0.397,
+       "einbruch_pct": -96.08,
+       "dauer_min": 30.0
+      },
+      "pruef_info": {
+       "n": 1004,
+       "treffer": 0.3048,
+       "brutto_bp": 0.194,
+       "netto_bp": -12.847,
+       "summe_pct": -128.99,
+       "pf": 0.345,
+       "einbruch_pct": -129.01,
+       "dauer_min": 30.0
+      }
+     },
+     "utc_stark": {
+      "lern": {
+       "n": 331,
+       "treffer": 0.2931,
+       "brutto_bp": 0.631,
+       "netto_bp": -12.517,
+       "summe_pct": -41.43,
+       "pf": 0.431,
+       "einbruch_pct": -43.6,
+       "dauer_min": 30.0
+      },
+      "pruef_info": {
+       "n": 475,
+       "treffer": 0.2989,
+       "brutto_bp": -0.955,
+       "netto_bp": -14.031,
+       "summe_pct": -66.65,
+       "pf": 0.329,
+       "einbruch_pct": -67.05,
+       "dauer_min": 30.0
+      }
+     },
+     "us": {
+      "lern": {
+       "n": 520,
+       "treffer": 0.3442,
+       "brutto_bp": -0.693,
+       "netto_bp": -13.695,
+       "summe_pct": -71.22,
+       "pf": 0.489,
+       "einbruch_pct": -71.22,
+       "dauer_min": 30.0
+      },
+      "pruef_info": {
+       "n": 718,
+       "treffer": 0.3496,
+       "brutto_bp": -1.602,
+       "netto_bp": -14.602,
+       "summe_pct": -104.84,
+       "pf": 0.428,
+       "einbruch_pct": -104.98,
+       "dauer_min": 30.0
+      }
+     }
+    },
+    "gewaehlt": "utc_stark",
+    "pruefung": {
+     "kennzahlen": {
+      "n": 475,
+      "treffer": 0.2989,
+      "brutto_bp": -0.955,
+      "netto_bp": -14.031,
+      "summe_pct": -66.65,
+      "pf": 0.329,
+      "einbruch_pct": -67.05,
+      "dauer_min": 30.0
+     },
+     "haelfte_1": {
+      "n": 240,
+      "treffer": 0.3167,
+      "brutto_bp": 2.158,
+      "netto_bp": -11.053,
+      "summe_pct": -26.53,
+      "pf": 0.426,
+      "einbruch_pct": -27.56,
+      "dauer_min": 30.0
+     },
+     "haelfte_2": {
+      "n": 235,
+      "treffer": 0.2809,
+      "brutto_bp": -4.136,
+      "netto_bp": -17.073,
+      "summe_pct": -40.12,
+      "pf": 0.245,
+      "einbruch_pct": -40.5,
+      "dauer_min": 30.0
+     },
+     "zufall_geschlagen": 0.31,
+     "stress": {
+      "n": 475,
+      "treffer": 0.2358,
+      "brutto_bp": -0.955,
+      "netto_bp": -19.031,
+      "summe_pct": -90.4,
+      "pf": 0.225,
+      "einbruch_pct": -90.42,
+      "dauer_min": 30.0
+     },
+     "mit_bnb": {
+      "n": 475,
+      "treffer": 0.3221,
+      "brutto_bp": -0.955,
+      "netto_bp": -13.031,
+      "summe_pct": -61.9,
+      "pf": 0.356,
+      "einbruch_pct": -62.38,
+      "dauer_min": 30.0
+     },
+     "kriterien": {
+      "beide_haelften": false,
+      "anzahl": true,
+      "netto_je_trade": false,
+      "zufall": false,
+      "stress": false
+     },
+     "bestanden": false
+    }
+   },
+   "S7": {
+    "name": "Tageszeit-Muster 1h",
+    "varianten": {
+     "1 Std.": {
+      "lern": {
+       "n": 1460,
+       "treffer": 0.3808,
+       "brutto_bp": 4.644,
+       "netto_bp": -8.356,
+       "summe_pct": -122.0,
+       "pf": 0.711,
+       "einbruch_pct": -141.84,
+       "dauer_min": 60.0
+      },
+      "pruef_info": {
+       "n": 2008,
+       "treffer": 0.3521,
+       "brutto_bp": -3.545,
+       "netto_bp": -16.548,
+       "summe_pct": -332.28,
+       "pf": 0.484,
+       "einbruch_pct": -333.32,
+       "dauer_min": 60.0
+      }
+     },
+     "2 Std.": {
+      "lern": {
+       "n": 2920,
+       "treffer": 0.3853,
+       "brutto_bp": 4.423,
+       "netto_bp": -8.577,
+       "summe_pct": -250.44,
+       "pf": 0.704,
+       "einbruch_pct": -272.09,
+       "dauer_min": 60.0
+      },
+      "pruef_info": {
+       "n": 4016,
+       "treffer": 0.3618,
+       "brutto_bp": -0.293,
+       "netto_bp": -13.295,
+       "summe_pct": -533.94,
+       "pf": 0.57,
+       "einbruch_pct": -535.6,
+       "dauer_min": 60.0
+      }
+     },
+     "3 Std.": {
+      "lern": {
+       "n": 4380,
+       "treffer": 0.3961,
+       "brutto_bp": 4.007,
+       "netto_bp": -8.993,
+       "summe_pct": -393.88,
+       "pf": 0.699,
+       "einbruch_pct": -395.92,
+       "dauer_min": 60.0
+      },
+      "pruef_info": {
+       "n": 6024,
+       "treffer": 0.3782,
+       "brutto_bp": 0.517,
+       "netto_bp": -12.483,
+       "summe_pct": -751.99,
+       "pf": 0.599,
+       "einbruch_pct": -754.6,
+       "dauer_min": 60.0
+      }
+     }
+    },
+    "gewaehlt": "1 Std.",
+    "pruefung": {
+     "kennzahlen": {
+      "n": 2008,
+      "treffer": 0.3521,
+      "brutto_bp": -3.545,
+      "netto_bp": -16.548,
+      "summe_pct": -332.28,
+      "pf": 0.484,
+      "einbruch_pct": -333.32,
+      "dauer_min": 60.0
+     },
+     "haelfte_1": {
+      "n": 1004,
+      "treffer": 0.3476,
+      "brutto_bp": -4.046,
+      "netto_bp": -17.049,
+      "summe_pct": -171.17,
+      "pf": 0.494,
+      "einbruch_pct": -171.2,
+      "dauer_min": 60.0
+     },
+     "haelfte_2": {
+      "n": 1004,
+      "treffer": 0.3566,
+      "brutto_bp": -3.043,
+      "netto_bp": -16.047,
+      "summe_pct": -161.11,
+      "pf": 0.473,
+      "einbruch_pct": -162.77,
+      "dauer_min": 60.0
+     },
+     "zufall_geschlagen": 0.015,
+     "stress": {
+      "n": 2008,
+      "treffer": 0.3083,
+      "brutto_bp": -3.545,
+      "netto_bp": -21.549,
+      "summe_pct": -432.71,
+      "pf": 0.392,
+      "einbruch_pct": -433.1,
+      "dauer_min": 60.0
+     },
+     "mit_bnb": {
+      "n": 2008,
+      "treffer": 0.3596,
+      "brutto_bp": -3.545,
+      "netto_bp": -15.548,
+      "summe_pct": -312.2,
+      "pf": 0.506,
+      "einbruch_pct": -313.64,
+      "dauer_min": 60.0
+     },
+     "kriterien": {
+      "beide_haelften": false,
+      "anzahl": true,
+      "netto_je_trade": false,
+      "zufall": false,
+      "stress": false
+     },
+     "bestanden": false
+    }
+   }
+  }
+ },
+ "handelbar": []
+}

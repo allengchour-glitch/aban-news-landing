@@ -64,6 +64,16 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-13 (⏱️ Scalping ehrlich getestet → verliert; Pilot 2.0 nach 5 Prüfungen weiter gesperrt):** User: «mache scalping,
+höchste Präzision und Gewinn». `tools/trading/krypto_bot/scalping_pruefung.py` + `scalping_kern.py` (50 Tests, Mutationsprobe 16/16),
+Protokoll VORAB committet (`198f2b1`), dann echte Binance-Futures-1m-Daten BTC/ETH 2022-01–2026-09 (je 2'496'960 Minuten, Archiv
+`data.binance.vision`, Cache `tools/trading/daten/binance_1m_fut/` gitignored). Kosten VIP 0 (Maker 0,02 / Taker 0,05 % + Schlupf + Funding),
+strenge Füll-Regeln. **Ergebnis: 0 von 14 bestanden, 0 von 52 Varianten netto im Plus** (bestenfalls −6,9 bp/Trade, selbst mit Rückschau).
+Echte Muster existieren (ETH-Ausbruch +4,8 bp brutto, RSI2 schlägt 100 % Zufall), aber ein Trade kostet ~12 bp. Maker-Limits = adverse Auswahl.
+**Kein Scalping-Bot.** README-Abschnitt «⏱️ Scalping». x100-Hebel: siehe `hebel_pruefung.py --minuten` (92–94 % liquidiert in < 9 h).
+Telegram «GF1BIGTAKEOFFICIAL» geprüft: 2 echte Calls in 4 Monaten, sonst Werbung → nicht prüfbar; VIP-Gruppe nur über PC (`calls_leser.py`).
+Pilot 2.0: Prüfungen 3–5 fanden je 2–3 Blocker, alle behoben (PRs #2632–#2634, 98 Tests); 6. Prüfung lief am 13.10. abends.
+
 **📌 2026-10-12 (🤖 KI-Bot übernommen — Schattenbuch auf GitHub, NUR Spielgeld):** User: „kannst du alles übernehmen“ → gewählt
 „Spielgeld-Lauf auf GitHub“. Job `ki-bot-schatten` in `tages-update.yml` (kein neuer Cron): Tests → `bot.py --lauf` mit eigenem Logbuch
 `data/ki-bot-schatten.json` (PC-Logbuch `data/ki-bot.json` bleibt gitignored) → `tools/trading/schatten/pilot_schatten.py --lauf`
