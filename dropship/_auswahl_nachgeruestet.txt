@@ -1934,3 +1934,5 @@
 16614568952199	Farbe:8+Grösse:3:24+ki	2026-10-13	hunde-halsband-s-873c4f
 16614568558983	Farbe:6+Grösse:4:24+ki	2026-10-13	tierschultergurt-mit-reflektierendem-stoff-08d8c5
 16614566297991	Farbe:4:4+ki	2026-10-13	taktische-hundetasche-aus-1000d-nylon-98b0c8
+16614566166919	Farbe:3+Menge:2:6+ki	2026-10-13	hundeharnisch-mit-zugseil-rosa-grau-himmelblau-8b1e68
+16614563905927	Muster:4+Grösse:3:12+ki	2026-10-13	pet-brustschutz-dodopet-87d4a3
