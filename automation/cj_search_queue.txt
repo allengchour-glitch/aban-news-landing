@@ -776,3 +776,13 @@
 #done search:christmas sweater men knitted
 #done search:rechargeable hand warmer usb
 #done search:hand warmer power bank
+# 2026-10-13 K8 (Saison-Lücken, OpenSEO CH Suchen/Mt): Thermounterwäsche ~4'000 (Nov 5'400), Heizsocken 2'900,
+#   Kuschelsocken 1'000 (Nov 4'400), Skibrille 2'900. Bestand GEMESSEN 13.10. 19:10 UTC (aktive Titel): Thermo-Unterwäsche 0
+#   (nur 5 Thermo-Leggings/-hose), Heizsocken 0, Kuschelsocken 0 (1 «Kuschelige Bären-Socken»), Sport-Skibrille 1 (+9 Party-
+#   Skibrillen). Ab heute mit Relevanz-Tor (cj_sku_import.mjs) und bis zu 3 Produkten je Begriff (PRO_SUCHE im Runner).
+#   «snow globe» NICHT aufnehmen: erst eine Versandprobe mit einem Stück (Glas + Flüssigkeit; freightCalculate «ok» belegt
+#   nichts — Klingen-Lehre #1017). Keine Heizgeräte mit Netzstecker; Klinge/Kostüm/2G-Wachen greifen wie immer.
+search:heated socks rechargeable
+search:fuzzy socks women
+search:thermal underwear set
+search:ski goggles

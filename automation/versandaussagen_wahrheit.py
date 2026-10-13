@@ -102,7 +102,11 @@ LIMIT = int(os.environ.get("LIMIT", "0"))  # 0 = alle; >0 nur fuer den Probelauf
 # pod = 7–14 liegt innerhalb der auf der Seite genannten Maximal-Spanne 10–20 für Bestell-/
 # POD-Ware und entspricht der bereits im Shop stehenden Stufe «eu-druck» — eine präzisere
 # Angabe unter demselben Dach ist kein Widerspruch.
-SPANNE = {"ch": "1–2", "eu": "2–7", "pod": "7–14", "direkt": "10–20"}
+# ⚠️ NACHTRAG 13.10.2026 (VERB-M1): «ch» 1–2 → 2–3. Seit dem Profil «CH-Lager» rechnet die Kasse Bearbeitung P1D +
+# Transit 1–2 = 2–3 Werktage (automation/data/versand_transit_regel.json, profile_zonen). Die Fortura-Seiten oben sind damit
+# NICHT mehr «schon wahr» — die Wache kassen_lieferdatum_wache.py («ZUSAGE CH-LAGER») korrigiert sie in Tageschargen.
+# «eu» bleibt als Stufe stehen (Kopfblock), wird aber in keinem Seitentext mehr genannt: die Kasse rechnet eu-lager-Ware 10–20.
+SPANNE = {"ch": "2–3", "eu": "2–7", "pod": "7–14", "direkt": "10–20"}
 WEGNAME = {
     "ch": "ab Schweizer Lager",
     "eu": "ab EU-Lager",
@@ -567,7 +571,7 @@ SEITEN = {
         '<p>Wir liefern in die Schweiz und nach Liechtenstein; ein Versand in '
         'andere Länder ist nicht möglich. Ein grosser Teil der Ware wird direkt ab dem Lager '
         'des Herstellers versendet. Die Lieferzeit hängt vom Bezugsweg ab: ab Schweizer Lager '
-        '1–2 Werktage, ab EU-Lager 2–7 Werktage, bei Druck auf Bestellung 7–14 Werktage, im '
+        'meist 2–3 Werktage, bei Druck auf Bestellung 7–14 Werktage, im '
         'Direktversand ab Lieferantenlager 10–20 Werktage. Massgeblich ist die Angabe auf der '
         'jeweiligen Produktseite. Zoll- oder Einfuhrabgaben fallen für Lieferungen in die '
         'Schweiz und nach Liechtenstein nicht zusätzlich an.</p>')],
@@ -575,22 +579,22 @@ SEITEN = {
         '<p>Lieferzeit: <strong>7-14 Werktage</strong> ab Zahlungseingang, innerhalb der '
         'Schweiz.</p>',
         '<p>Lieferzeit ab Zahlungseingang, innerhalb der Schweiz: ab '
-        'Schweizer Lager <strong>1–2 Werktage</strong>, ab EU-Lager <strong>2–7 Werktage</strong>, '
+        'Schweizer Lager meist <strong>2–3 Werktage</strong>, '
         'bei Druck auf Bestellung <strong>7–14 Werktage</strong>, im Direktversand ab '
         'Lieferantenlager <strong>10–20 Werktage</strong>. Massgeblich ist die Angabe auf der '
         'Produktseite. Ein Versand in andere Länder ist nicht möglich.</p>')],
     697899516289: [  # faq — widersprach sich auf EINER Seite selbst
         ('🇨🇭 Blitzversand-Artikel kommen in 1–3 Werktagen aus dem Schweizer Lager, '
          'EU-Lager-Artikel in 3–7 Tagen, international versendete Artikel in 7–14 Tagen.',
-         '🇨🇭 Blitzversand-Artikel kommen in 1–2 Werktagen aus dem Schweizer Lager, Ware ab '
-         'EU-Lager in 2–7 Werktagen, Druck-auf-Bestellung-Artikel in 7–14 Werktagen und Ware '
-         'im Direktversand ab Lieferantenlager in 10–20 Werktagen. Geliefert wird in die Schweiz '
-         'und nach Liechtenstein.'),
+         '🇨🇭 Blitzversand-Artikel kommen ab Schweizer Lager meist in 2–3 Werktagen, '
+         'Druck-auf-Bestellung-Artikel in 7–14 Werktagen und Ware '
+         'im Direktversand ab Lieferantenlager in 10–20 Werktagen; das genaue Datum steht beim '
+         'Artikel und in der Kasse.'),
         ('Lieferzeit je nach Produkt in der Regel ca. 10–20 Werktage '
          '(personalisierte/Print-on-Demand- und Übersee-Artikel ca. 7–14 Werktage).',
-         'Lieferzeit je nach Bezugsweg: ab Schweizer Lager 1–2 Werktage, ab EU-Lager 2–7 '
-         'Werktage, bei Druck auf Bestellung 7–14 Werktage, im Direktversand ab Lieferantenlager '
-         '10–20 Werktage.')],
+         'Lieferzeit je nach Bezugsweg: ab Schweizer Lager meist 2–3 Werktage, '
+         'bei Druck auf Bestellung 7–14 Werktage, im Direktversand ab Lieferantenlager '
+         '10–20 Werktage; das genaue Datum steht beim Artikel und in der Kasse.')],
     698006208897: [(  # schweizer-vs-deutsche-marken — bewarb Lieferung nach Deutschland
         '<li>🇩🇪 Versand auch nach DE (8-14 Tage)</li>',
         '<li>🇨🇭 Versand in die ganze Schweiz</li>')],
@@ -631,12 +635,12 @@ SEITEN = {
     698029965697: [('<p>7-12 Werktage — ehrlich gesagt. Keine Lügen. Versand direkt ab Werk '
                     'damit dein Preis stimmt.</p>',
                     '<p>10–20 Werktage im Direktversand ab Lieferantenlager, ab Schweizer Lager '
-                    '1–2 Werktage — ehrlich gesagt. Keine Lügen. Die Angabe für den einzelnen '
+                    'meist 2–3 Werktage — ehrlich gesagt. Keine Lügen. Die Angabe für den einzelnen '
                     'Artikel steht auf der Produktseite.</p>'),
                    ('7-12 Werktage CH', '10–20 Werktage CH')],
     # ueber-uns nennt bereits die richtige Staffel, nur in «Tage» statt «Werktage».
     697899549057: [('· 2-7 Tage Lagerartikel · einige Artikel 10-20 Tage ·',
-                    '· 1–2 Werktage ab Schweizer Lager · 2–7 Werktage ab EU-Lager · '
+                    '· meist 2–3 Werktage ab Schweizer Lager · '
                     'übrige Artikel 10–20 Werktage ·')],
     # ⚠️ Diese Weihnachtsseite versprach «Express-Bundles» mit 7-10 Tagen. Eine Express-
     # Versandart gibt es im Versandprofil überhaupt nicht (nur Standard CHF 7.00 und

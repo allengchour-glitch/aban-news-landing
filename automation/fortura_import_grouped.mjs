@@ -129,7 +129,7 @@ for(const [key,grp] of groups){
   const specs=[['Marke',pick(base,COL.marke)],['Farbe',pick(base,COL.farbe)],['Masse',pick(base,COL.dimension)],['Anlass',pick(base,COL.anlass)],['Lieferumfang',pick(base,COL.lieferumfangDE)]].filter(([,v])=>v);
   const specTable=specs.length?`<h4>Details</h4><ul>${specs.map(([k,v])=>`<li><strong>${k}:</strong> ${v}</li>`).join('')}</ul>`:'';
   const veNote=ve>1?`<p>📦 Verkauf in Bündeln zu ${ve} Stück.</p>`:'';
-  const desc=`<p>${marketing}</p>${specTable}${veNote}<h4>Warum bei LuxeStyle kaufen?</h4><ul><li>🇨🇭 <strong>Versand aus der Schweiz</strong> – Lieferung in nur 1–2 Werktagen (DPD)</li><li>📦 Gratis-Versand ab CHF 50</li><li>↩️ 30 Tage Rückgaberecht</li><li>🔒 Kauf auf Rechnung mit Klarna · TWINT · Karten · PayPal · Apple Pay</li><li>💬 Schweizer Support: info@luxestyle.ch</li></ul>`;
+  const desc=`<p>${marketing}</p>${specTable}${veNote}<h4>Warum bei LuxeStyle kaufen?</h4><ul><li>🇨🇭 <strong>Versand ab Schweizer Lager</strong> mit DPD, meist in 2–3 Werktagen bei dir</li><li>📦 Gratis-Versand ab CHF 50</li><li>↩️ 30 Tage Rückgaberecht</li><li>🔒 Kauf auf Rechnung mit Klarna · TWINT · Karten · PayPal · Apple Pay</li><li>💬 Schweizer Support: info@luxestyle.ch</li></ul>`;
   const slug=(normT(title).replace(/\s+/g,'-').slice(0,42))+'-fg'+key.replace(/[^a-z0-9]/gi,'').toLowerCase().slice(0,12);
   const tags=[...new Set(['fortura','dropship','ch-lager','schweiz-versand','neu',...kostuemFrontTag(forturaType(title),title),...FT_TAGS,...fortCatTags(base['Grp-Bez'],base['Kategorie'],title),...catTags(title)])];
   const input={title,handle:slug,productType:forturaType(title),vendor:'LuxeStyle',status:'ACTIVE',tags,descriptionHtml:desc,

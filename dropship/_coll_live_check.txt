@@ -564,3 +564,5 @@ weihnachtspullover	ok	29	Weihnachtspullover & Christmas Sweater
 handwaermer	ok	17	Handwärmer
 🎁-geschenke-bis-chf-30-alt-20261010	unveroeffentlicht	0	Geschenke bis CHF 30 (alt)
 damenmode-favoriten	ok	17	Damenmode – unsere Favoriten
+futterautomaten	ok	29	Futterautomaten für Katzen & Hunde
+trinkbrunnen-katzen	ok	28	Trinkbrunnen für Katzen & Hunde

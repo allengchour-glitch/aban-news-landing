@@ -518,13 +518,17 @@ def chf(p):
 
 def laden_zeile(tags=None):
     """Ehrliche Laden-Zeile statt Rabatt-Push (Kundenfeedback 05.09.: «zu fest KI, wie Scam»).
-    Lieferzeit nur nennen, wenn sie fuer DIESES Produkt belegt ist (Tag ch-lager = 1–2 Werktage,
-    CJ = 10–20 Werktage); bei gemischten Beitraegen steht sie auf jeder Produktseite."""
+    Lieferzeit nur nennen, wenn sie fuer DIESES Produkt belegt ist (Tag ch-lager + profil-ch-lager = Versandprofil
+    «CH-Lager», Kasse 2–3 Werktage seit 13.10.2026 — vorher hier «1–2», zu kurz; ch-lager ohne Zeichen rechnet die Kasse bis
+    Stufe 3 mit Direktversand-Zeiten → nur Verweis aufs Datum; CJ = 10–20 Werktage); bei gemischten Beitraegen steht sie auf
+    jeder Produktseite."""
     t = {x.lower() for x in (tags or [])}
     if tags is None:
         liefer = "Lieferzeit steht auf jeder Produktseite"
+    elif "ch-lager" in t and "profil-ch-lager" in t:
+        liefer = "Versand ab Schweizer Lager, meist in 2–3 Werktagen"
     elif "ch-lager" in t:
-        liefer = "Versand ab Schweizer Lager in 1–2 Werktagen"
+        liefer = "Ab Schweizer Lager, Lieferdatum steht beim Artikel und in der Kasse"
     else:
         liefer = "Lieferung 10–20 Werktage, dafür ehrlich angeschrieben"
     return (f"Kleiner Schweizer Shop aus Belp, kein Konzern. {liefer} · "

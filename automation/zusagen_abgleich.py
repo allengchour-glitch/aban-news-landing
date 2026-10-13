@@ -5,7 +5,8 @@ an die Richtlinien angleichen (04./05.10.2026, Betreiber «fix 12 h lang alles»
 WAHRHEIT = die shopPolicies (Rückgabe, Versand, AGB), gemessen 05.10.2026 01:25 UTC:
   Rückgabe   30 Tage freiwillig, unbenutzt/originalverpackt, Rücksendung zahlt die Kundin (bei Mangel wir),
              Erstattung innert 14 Tagen nach Eingang, Ausnahmen Hygiene/personalisiert, Mangel innert 7 Tagen melden.
-  Versand    nur Schweiz, gratis ab CHF 50 (sonst CHF 7.00), CH-Lager 1–2 WT · EU-Lager 2–7 · Druck 7–14 ·
+  Versand    nur Schweiz, gratis ab CHF 50 (sonst CHF 7.00), CH-Lager meist 2–3 WT · Druck 7–14 ·
+             (13.10.2026 VERB-M1: vorher «CH-Lager 1–2 · EU-Lager 2–7»; Kasse = P1D + Transit 1–2, eu-lager-Ware rechnet 10–20)
              Direktversand 10–20 WT, Richtwerte (keine garantierten Termine).
   Zahlung    Visa, Mastercard, American Express, TWINT, PayPal, Klarna, Apple Pay, Google Pay.
              (AMEX gemessen 05.10. 03:40 an der Storefront: Shopify-Payments-Wallet-Konfiguration auf luxestyle.ch
@@ -140,10 +141,10 @@ SEITEN = {
    ("<h4>🛡️ Swiss Guarantee</h4>\n<p>30-day money-back. Period. Doesn't work — we'll fix it.</p>",
     "<h4>🛡️ 30-Day Returns</h4>\n<p>Return unused items within 30 days. Doesn't work — we'll fix it.</p>"),
    ("Direct from manufacturer. 7-14 business day shipping. Great prices.",
-    "Direct from the supplier's warehouse. 10–20 business days shipping (1–2 from our Swiss warehouse). Great prices."),
+    "Direct from the supplier's warehouse. 10–20 business days shipping (usually 2–3 from our Swiss warehouse). Great prices."),
    ("<h2>Why 7-14 Business Days Shipping?</h2>", "<h2>Why 10–20 Business Days Shipping?</h2>"),
    ("I'm upfront: <strong>7-14 business days</strong>.",
-    "I'm upfront: <strong>10–20 business days</strong> for direct shipping, 1–2 from our Swiss warehouse — the exact figure is on every product page."),
+    "I'm upfront: <strong>10–20 business days</strong> for direct shipping, usually 2–3 from our Swiss warehouse — the exact date is shown with each item and at checkout."),
    ("Doesn't work? Send it back. Money back. No questions asked.",
     "Doesn't work? Tell us within 7 days with a photo — replacement or refund, your choice. Unused items can be returned within 30 days."),
    ("Available via WhatsApp, phone, email. Responses within 24h.",
@@ -152,8 +153,8 @@ SEITEN = {
    ("<h3>2. 30-Day Money-Back — Unconditional</h3>\n<p>Don't like it? Doesn't work? Send it back. We refund. No complicated forms.</p>",
     "<h3>2. 30-Day Returns</h3>\n<p>Don't like it? Send it back unused, we refund. No complicated forms. Exceptions (personalised items, opened hygiene products) are listed in our refund policy.</p>"),
    ("<p>7-14 business days — honestly. No 'shipping in 2 days' lies. Direct from manufacturer for great prices.</p>",
-    "<p>10–20 business days for direct shipping, 1–2 from our Swiss warehouse — honestly. No 'shipping in 2 days' lies. The exact figure is on every product page.</p>"),
-   (">7-14 business days</td>", ">10–20 business days (1–2 from Swiss warehouse)</td>"),
+    "<p>10–20 business days for direct shipping, usually 2–3 from our Swiss warehouse — honestly. No 'shipping in 2 days' lies. The exact figure is on every product page.</p>"),
+   (">7-14 business days</td>", ">10–20 business days (usually 2–3 from Swiss warehouse)</td>"),
    (">Guarantee</td>", ">Returns</td>"),
    (">30-day money-back</td>", ">30-day returns</td>"),
    ("Email, WhatsApp, phone — all responses within 24h.", "Email — responses usually within 24h on business days."),
@@ -162,20 +163,20 @@ SEITEN = {
  'a-propos-fr': {'body': [
    ('<h4 style="color:#10b981">🛡️ Garantie 30 Jours</h4>\n<p>Pas satisfait? Argent remboursé. Sans discussion.</p>',
     '<h4 style="color:#10b981">🛡️ Retours sous 30 jours</h4>\n<p>Pas satisfait? Retourne l\'article non utilisé, nous remboursons. Les exceptions figurent dans notre politique de retour.</p>'),
-   ("Expédition 7-14 jours ouvrés.", "Livraison 10–20 jours ouvrés en expédition directe, 1–2 jours depuis notre stock suisse."),
+   ("Expédition 7-14 jours ouvrés.", "Livraison 10–20 jours ouvrés en expédition directe, généralement 2–3 jours ouvrés depuis notre stock suisse."),
    ("Email, WhatsApp, téléphone — réponses sous 24h.", "Email — réponses en général sous 24h les jours ouvrables.")]},
  'chi-siamo-it': {'body': [
    ("Garanzia 30 Giorni", "Reso entro 30 giorni"),
    ("Non ti piace? Rimborso totale.", "Non ti piace? Restituisci l'articolo non usato, rimborsiamo. Le eccezioni sono nella politica di reso."),
-   ("Spedizione 7-14 giorni lavorativi.", "Consegna 10–20 giorni lavorativi in spedizione diretta, 1–2 giorni dal nostro magazzino svizzero."),
+   ("Spedizione 7-14 giorni lavorativi.", "Consegna 10–20 giorni lavorativi in spedizione diretta, di solito 2–3 giorni lavorativi dal nostro magazzino svizzero."),
    ("Email, WhatsApp, telefono — risposta entro 24h.", "Email — risposta di norma entro 24h nei giorni lavorativi.")]},
  'personalisierte-geschenke-fuer-sie': {'body': [
    ("Ja. Sie haben 30 Tage Rückgaberecht.", "Ja. Du hast 30 Tage Rückgaberecht."),
-   # 05.10.: pauschal «7–14 Werktage» — die verlinkte Kollektion trägt keine Liefer-Stufe, Richtlinie: je Artikel 1–2 / 7–14 / 10–20
+   # 05.10.: pauschal «7–14 Werktage» — die verlinkte Kollektion trägt keine Liefer-Stufe, Richtlinie: je Artikel 2–3 (seit 13.10., vorher 1–2) / 7–14 / 10–20
    ("Wir liefern in der Regel innerhalb von 7–14 Werktagen in die ganze Schweiz.",
-    "Wir liefern in die ganze Schweiz. Die Lieferzeit hängt vom Artikel ab: 1–2 Werktage ab Schweizer Lager, 7–14 Werktage bei Druck auf Bestellung, 10–20 Werktage im Direktversand ab Lieferantenlager — die Angabe steht auf jeder Produktseite."),
+    "Wir liefern in die ganze Schweiz. Die Lieferzeit hängt vom Artikel ab: meist 2–3 Werktage ab Schweizer Lager, 7–14 Werktage bei Druck auf Bestellung, 10–20 Werktage im Direktversand ab Lieferantenlager — die Angabe steht auf jeder Produktseite."),
    ("Lieferung in der Regel 7–14 Werktage · Gratis Versand ab CHF 50",
-    "Lieferzeit je Artikel 1–2 bis 10–20 Werktage (steht auf jeder Produktseite) · Gratis Versand ab CHF 50")]},
+    "Lieferzeit je Artikel 2–3 bis 10–20 Werktage (steht auf jeder Produktseite) · Gratis Versand ab CHF 50")]},
  'herren-mode-fuer-ihn': {'body': [
    ("Bezahlen Sie bequem mit", "Bezahle bequem mit"),
    # 05.10.: Rest der Sie-Form (Hausregel du-Form); WELCOME10 gemessen ACTIVE 10 % bis 31.12.2027 → bleibt

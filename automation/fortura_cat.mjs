@@ -33,7 +33,7 @@ export function fortCatTags(grpBez, kategorie, title = '') {
 
 // Tag → {title, emoji-Titel, Beschreibung} für Collection-Anlage
 export const FORT_COLLECTIONS = {
-  damenkostuem:      ['damenkostuem', '👗 Damenkostüme', 'Kostüme & Verkleidung für Damen – Fasnacht, Halloween & Motto-Partys. CH-Lager, 1–2 Tage.'],
+  damenkostuem:      ['damenkostuem', '👗 Damenkostüme', 'Kostüme & Verkleidung für Damen – Fasnacht, Halloween & Motto-Partys. CH-Lager, meist in 2–3 Werktagen.'],
   herrenkostuem:     ['herrenkostuem', '🤵 Herrenkostüme', 'Kostüme & Verkleidung für Herren – schnelle Lieferung aus der Schweiz.'],
   unisexkostuem:     ['unisexkostuem', '🎭 Unisex- & Tierkostüme', 'Unisex-, Tier- & Fantasiekostüme für alle. Ab Schweizer Lager.'],
   kinderkostuem:     ['kinderkostuem', '🧒 Kinderkostüme', 'Kostüme für Kinder – Tiere, Helden & mehr. Blitzversand aus der Schweiz.'],
