@@ -439,11 +439,14 @@ function caption(hook, k, benefit) {
 // Entscheid je pid stabil (eigener Hash-Salz, damit er nicht mit der Musikwahl num(pid) % n gleichlaeuft):
 // ein Neu-Rendern bekommt dieselbe Seite des A/B wie der Erstbau.
 const stimmeGewollt = pid => STIMME_ANTEIL > 0 && (num('stimme:' + pid) % 1000) / 1000 < STIMME_ANTEIL;
+// 13.10.2026 (R9): der Produkt-Hook wiederholt oft den Namen («Herren Business Quarzuhr. Herren Business Quarzuhr mit …» im
+// ersten scharfen Lauf) → gesprochen wird der Hook nur, wenn er kein Wort des Namens trägt (voiceover.py lässt leere Hooks weg).
+const sprechHook = (hook, title) => hook.split(/\s+/).filter(w => w.length >= 4).some(w => kurzTitel(title).toLowerCase().includes(w.toLowerCase())) ? '' : hook;
 function stimmeBauen(pid, th, hook, k, benefit) {
   if (!stimmeGewollt(pid)) return { ja: false, grund: 'anteil' };
   const wav = `/tmp/reelbuild/vo_${pid}.wav`;
   const kurz = benefit && benefit.length <= 90 ? benefit : '';
-  const args = ['automation/reel/voiceover.py', '--out', wav, '--hook', hook, '--name', kurzTitel(k.title), '--nutzen', kurz,
+  const args = ['automation/reel/voiceover.py', '--out', wav, '--hook', sprechHook(hook, k.title), '--name', kurzTitel(k.title), '--nutzen', kurz,
     '--preis', k.price.toFixed(2), '--thema', th];
   let out = '';
   try { out = execFileSync('python3', args, { encoding: 'utf8', timeout: 240000, stdio: ['ignore', 'pipe', 'pipe'] }); }
@@ -457,7 +460,7 @@ function stimmeBauen(pid, th, hook, k, benefit) {
 function stimmeDry(pid, th, hook, k, benefit) {
   if (!stimmeGewollt(pid)) return 'nein (Anteil)';
   try {
-    const j = JSON.parse(execFileSync('python3', ['automation/reel/voiceover.py', '--dry', '--hook', hook, '--name', kurzTitel(k.title),
+    const j = JSON.parse(execFileSync('python3', ['automation/reel/voiceover.py', '--dry', '--hook', sprechHook(hook, k.title), '--name', kurzTitel(k.title),
       '--nutzen', benefit && benefit.length <= 90 ? benefit : '', '--preis', k.price.toFixed(2), '--thema', th], { encoding: 'utf8' }).trim());
     return `ja (${j.stimme}) «${j.varianten[0]}»`;
   } catch (e) { return 'ja, aber voiceover.py --dry scheitert: ' + String(e.message || e).slice(0, 80); }
