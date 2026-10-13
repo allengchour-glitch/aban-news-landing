@@ -2,19 +2,25 @@
 
 Gescannt: 53882 aktive Produkte in 216 Seiten (vollständig), 319 s. Meldungen nur für Shopping Ads (ignoriert): 33319.
 
-## Free-Listings-Blocker: 1082
+## Free-Listings-Blocker: 439
 
 | Klasse | Produkte | davon ohne onlineStoreUrl | davon Ziel «[]» |
 |---|---:|---:|---:|
-| Image under review | 638 | 0 | 638 |
 | Inappropriate image | 284 | 0 | 284 |
 | Unable to show image | 113 | 0 | – |
 | Promotional overlay on image | 30 | 0 | – |
 | Product page unavailable | 6 | 0 | – |
-| Title under review | 5 | 0 | 5 |
 | Image too small | 4 | 0 | – |
 | Adult-oriented content | 1 | 0 | 1 |
 | Image not processed | 1 | 0 | – |
+
+## Wartet bei Google (Prüfung, kein Fehler bei uns): 643
+
+- Image under review: 638
+- Title under review: 5
+
+Verweildauer (dropship/_google_pruefung_seit.json): 0 länger als 14 Tage, ältestes seit 2026-10-01 — ⚠️ Handle-Liste gedeckelt (umgerechneter Altstand), Zahl unvollständig.
+Nicht reagieren, solange die Verweildauer kurz ist: Google prüft. Wer hier ein Bild tauscht, setzt die Prüfung neu.
 
 Ziel «[]» = die App nennt kein betroffenes Ziel («… in [] [CH]» statt «in [Free_listings,Shopping_ads]»). Was das bei Google heisst, ist UNBELEGT (keine Doku gefunden, 08.10.) — Wahrheit = Status im Merchant Center.
 
@@ -100,70 +106,6 @@ Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.
 - gestreiftes-hemd-601400
 - color-block-pullover-mit-kettenmuster-611200
 - herren-bootcut-jeans-mit-schmalem-schnitt-637600
-- …
-
-### Image under review (638)
-
-- kristallspitzen-set-8-teilig-holzbox
-- solar-camping-laterne-im-vintage-look-wiederaufladbar-ip44-wetterfest
-- sonnenbrille-carre-retro-small-square
-- phone-makeover-set-charms-grip-magsafe-holder
-- sunset-projection-lamp-16-colors-adjustable
-- sommer-armband-evil-schmetterling-nazar-auge-vergoldet
-- fransen-minirock-santa-fe-wildleder-optik-2-lagig
-- hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten
-- transparente-iphone®-hulle-selbst-gestalten
-- recycelter-unisex-allover-pullover-selbst-gestalten
-- schweiz-poster-alpsee-see-spiegelung-kunstdruck
-- poster-zum-selbstgestalten
-- magnet-zum-selbstgestalten
-- schweiz-sticker-swiss-cross-badge
-- schweiz-sticker-steinbock
-- pod-sticker-art-veggies
-- pod-sticker-burger-cute
-- pod-sticker-cactus-sunset
-- pod-sticker-checker-heart
-- pod-sticker-cocktail
-- pod-sticker-dumbbell
-- pod-sticker-grapes
-- pod-sticker-ice-hockey
-- pod-sticker-kiwi
-- pod-sticker-ladybug2
-- pod-sticker-moon-face
-- pod-sticker-parrot-cute
-- pod-sticker-pastel-mushroom
-- pod-sticker-pine-forest
-- pod-sticker-pixel-mushroom
-- pod-sticker-retro-arcade
-- pod-sticker-seal
-- pod-sticker-seashell
-- pod-sticker-shark-cute
-- pod-sticker-shooting-star
-- pod-sticker-swiss-cowbell
-- pod-sticker-tattoo-anchor
-- pod-sticker-text-goodday
-- pod-sticker-text-staywild
-- pod-sticker-text-youmatter
-- pod-sticker-vinyl-record
-- pod-sticker-zodiac-sagittarius
-- tasse-basel
-- tasse-braunvieh
-- tasse-chalet
-- tasse-enzian
-- tasse-feierabig
-- tasse-gaell
-- tasse-merci-vilmal
-- reise-tasche-wasserdicht-xl
-- canvas-shopper-tote-nachhaltig
-- partner-ring-bar-vintage-edelstahl-unisex
-- rgb-wandlampe-halo-kabellos-fernbedienung-ohne-bohren-💡
-- echtleder-henkeltasche-milano-weiches-rindsleder
-- edelstahl-armband-amore-herz-geburtsstein-gold
-- x2-dual-elektro-display-2-8-zoll-335169
-- hawaiihemd-fur-herren-atmungsaktiv-stylisch-618400
-- paisley-jacquard-schal-mit-quasten-600200
-- ruckenfreies-top-mit-rundhals-und-3-4-armeln-602500
-- weisse-bluse-mit-flatterndem-kragen-615900
 - …
 
 ### Inappropriate image (284)
@@ -267,14 +209,6 @@ Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.
 - hawaiihemd-fur-herren-mit-3d-print-606700
 - 6-farben-wasserfester-nude-matt-lippenstift-798464
 
-### Title under review (5)
-
-- interaktiver-hunde-spielball-aus-e-tpu-757633
-- distressed-jeans-fur-herren-632300
-- schnelltrocknende-wasserschuhe-613600
-- strickkleid-mit-langen-armeln-616500
-- jacquard-kleid-set-mit-schleife-609700
-
 ### Image too small (4)
 
 - geraffter-pullover-schal-fur-damen-623100
@@ -294,4 +228,56 @@ Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.
 ### Image not processed (1)
 
 - kochfeld-feuerabdeckung-aus-kupfer-e3007a
+
+### wartet: Image under review (638) — die ältesten zuerst
+
+- kinder-retro-sneakers-mit-klettverschluss-611200 (seit 2026-10-01)
+- blumenkleid-mit-schnurung-613000 (seit 2026-10-02)
+- damen-maxikleid-mit-3d-druckarmeln-632800 (seit 2026-10-02)
+- dehnbare-yoga-hose-aus-ice-silk-622700 (seit 2026-10-02)
+- herren-geldborse-aus-echtem-leder-634700 (seit 2026-10-02)
+- schonheitspflaster-628100 (seit 2026-10-02)
+- wasserdichte-sportuhr-627700 (seit 2026-10-02)
+- atmungsaktive-casual-schuhe-198016 (seit 2026-10-03)
+- franzosischer-stil-rock-mit-ruschen-600100 (seit 2026-10-03)
+- hawaiihemd-fur-herren-atmungsaktiv-stylisch-618400 (seit 2026-10-03)
+- hd-quadrocopter-mit-fernbedienung-622700 (seit 2026-10-03)
+- kinder-schuhe-aus-baumwolle-535552 (seit 2026-10-03)
+- lederarmbanduhr-fur-paare-601500 (seit 2026-10-03)
+- quadratische-paaruhren-mit-gitterarmband-wasse-614000 (seit 2026-10-03)
+- smart-armband-1-3-zoll-display-tpu-band-e49535 (seit 2026-10-03)
+- usb-hd-kamera-064832 (seit 2026-10-04)
+- anstecknadel-halter-639100 (seit 2026-10-05)
+- cartoons-regenstiefel-614200 (seit 2026-10-05)
+- casualer-kurzarm-pullover-fur-herren-600100 (seit 2026-10-05)
+- einheits-loafer-fur-madchen-612100 (seit 2026-10-05)
+- einlegesohlen-schuhe-mit-stickereien-610800 (seit 2026-10-05)
+- finger-separator-fur-handgelenk-schutz-610600 (seit 2026-10-05)
+- herren-elastische-wei-langarmhemd-626100 (seit 2026-10-05)
+- herren-quarzuhr-mit-stahlarmband-628000 (seit 2026-10-05)
+- herren-sleeveless-basketball-top-607600 (seit 2026-10-05)
+- herren-sportliche-multifunktionsquarzuhr-637400 (seit 2026-10-05)
+- herrenuhr-rund-mit-quarzwerk-verschiedene-farb-624800 (seit 2026-10-05)
+- hohe-elastische-damenhosen-mit-taschen-645900 (seit 2026-10-05)
+- kinder-lauflernschuhe-fruhling-herbst-023168 (seit 2026-10-05)
+- kinder-lauflernschuhe-fur-latein-tanz-601800 (seit 2026-10-05)
+- kinder-schutzkappe-49c713 (seit 2026-10-05)
+- kunstler-rucksack-mit-stauraum-623200 (seit 2026-10-05)
+- mannliche-leder-geldborse-658300 (seit 2026-10-05)
+- perlensandalen-fur-madchen-636300 (seit 2026-10-05)
+- personalisierte-retro-uhr-609300 (seit 2026-10-05)
+- professionelle-leichtathletik-schuhe-fur-schul-451328 (seit 2026-10-05)
+- rattan-sesselkissen-652400 (seit 2026-10-05)
+- schonheits-nacken-pflege-memory-kopfkissen-631300 (seit 2026-10-05)
+- sommer-duvet-mit-tencel-und-stickerei-621100 (seit 2026-10-05)
+- sommerdecke-mit-kuhlung-618000 (seit 2026-10-05)
+- …
+
+### wartet: Title under review (5) — die ältesten zuerst
+
+- distressed-jeans-fur-herren-632300 (seit 2026-10-10)
+- interaktiver-hunde-spielball-aus-e-tpu-757633 (seit 2026-10-12)
+- jacquard-kleid-set-mit-schleife-609700 (seit 2026-10-12)
+- schnelltrocknende-wasserschuhe-613600 (seit 2026-10-12)
+- strickkleid-mit-langen-armeln-616500 (seit 2026-10-12)
 
