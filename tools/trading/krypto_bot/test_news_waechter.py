@@ -8,6 +8,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import news_waechter as N  # noqa: E402
 
+ALTER = N.MAX_ALTER_STUNDEN
+N.MAX_ALTER_STUNDEN = None  # die Beispiel-Daten sind fest datiert — das Alters-Limit prüft ein eigener Test unten
+
 n_ok = n_f = 0
 
 
@@ -60,7 +63,7 @@ def json_laden(url):
     return BIN
 
 
-eintraege, fehler = N.sammeln(laden_json=json_laden, laden_xml=lambda u: XML, env={})
+eintraege, fehler = N.sammeln(laden_json=json_laden, laden_xml=lambda u: XML if "t.me" not in u else b"", env={})
 pruefe("eine Quelle fällt aus → gemeldet, alle anderen trotzdem gelesen", fehler == ["Binance Listing: OSError"]
        and len([x for x in eintraege if x["quelle"] == "Cointelegraph"]) == 2, (fehler, len(eintraege)))
 pruefe("ohne CRYPTOPANIC_KEY keine CryptoPanic-Abfrage", not any("cryptopanic" in u for u in gerufen))
@@ -112,5 +115,33 @@ pruefe("Schnell-Takt: zwischen den 30-Minuten-Runden jede Minute die Delistings 
        abfragen[0] == 3 and schlaf == [60, 60, 60], (abfragen, schlaf))
 pruefe("… das Delisting eines eigenen Coins (NEWS_COINS) kommt in der nächsten Minute — und nur einmal",
        len(gem2) == 1 and "SOL" in gem2[0] and "−17 % in 30 Min." in gem2[0], gem2)
+TG = ('<div class="tgme_widget_message_wrap js-widget_message_wrap"><div class="tgme_widget_message text_not_supported_wrap js-widget_message" '
+      'data-post="WatcherGuru/15481"><div class="tgme_widget_message_text js-message_text" dir="auto">JUST IN: 🇺🇸 SEC approves '
+      'spot <b>XRP</b> ETF<br/><br/>@WatcherGuru</div><time datetime="2026-10-13T20:37:43+00:00" class="time">20:37</time></div></div>'
+      '<div class="tgme_widget_message_wrap"><div data-post="WatcherGuru/15482"><div class="tgme_widget_message_text js-message_text">'
+      'Exchange &amp; Co. suspends withdrawals</div><time datetime="2026-10-13T21:00:00+00:00"></time></div></div>')
+tg = N.telegram("WatcherGuru", laden=lambda u: TG.encode() if u == "https://t.me/s/WatcherGuru" else b"")
+pruefe("Telegram-Kanal (Web-Vorschau): Titel = erste Zeile ohne HTML, Zeit, Link auf die Nachricht", len(tg) == 2
+       and tg[0]["titel"] == "JUST IN: 🇺🇸 SEC approves spot XRP ETF" and tg[0]["link"] == "https://t.me/WatcherGuru/15481"
+       and tg[0]["zeit"] == 1791923863000 and tg[1]["titel"] == "Exchange & Co. suspends withdrawals"
+       and tg[0]["quelle"] == "Telegram Watcher.Guru", tg)
+pruefe("NEWS_TELEGRAM: eigene öffentliche Kanäle dazu (mit/ohne @), Unsinn wird ignoriert",
+       N.telegram_kanaele({"NEWS_TELEGRAM": "@whale_alert_io, foo/../bar;WatcherGuru"}) == ["WatcherGuru", "wublockchainenglish", "whale_alert_io"])
+sp3 = Path(tempfile.mkdtemp()) / "s.json"
+sp3.write_text('{"gesehen": []}')
+doppel = N._ergaenzen([{"quelle": "Binance Delisting", "titel": "Binance Will Delist SOL on 2026-11-01", "zeit": 7, "link": "https://b/1"},
+                       {"quelle": "Telegram @binance_announcements", "titel": "Binance Will Delist SOL on 2026-11-01", "zeit": 8,
+                        "link": "https://t.me/binance_announcements/9"}])
+pruefe("dieselbe Schlagzeile aus zwei Quellen (Binance-Seite + Telegram) → nur EIN Alarm",
+       len(N.neue_alarme(doppel, speicher=sp3, beobachtet={"SOL"})) == 1)
+N.MAX_ALTER_STUNDEN = ALTER
+sp4 = Path(tempfile.mkdtemp()) / "s.json"
+sp4.write_text('{"gesehen": []}')
+jetzt = 1791924663000
+alt_neu = N._ergaenzen([{"quelle": "Decrypt", "titel": "Exchange A suspends withdrawals", "zeit": jetzt - 13 * 3_600_000, "link": "https://a/x"},
+                        {"quelle": "Decrypt", "titel": "Exchange B suspends withdrawals", "zeit": jetzt - 1 * 3_600_000, "link": "https://a/y"}])
+al = N.neue_alarme(alt_neu, speicher=sp4, jetzt_ms=jetzt)
+pruefe(f"Meldung älter als {ALTER} Stunden → kein Alarm mehr (neue Quelle, PC war aus), frische schon", [a["titel"] for a in al]
+       == ["Exchange B suspends withdrawals"], al)
 print(f"\n{n_ok} bestanden, {n_f} fehlgeschlagen")
 sys.exit(1 if n_f else 0)
