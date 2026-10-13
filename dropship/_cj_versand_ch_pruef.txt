@@ -8352,3 +8352,14 @@ intelligenter-roboterhund-mit-sprachdialog-app-674241	2043945507432669186	0	-	KE
 rc-roboterhund-mit-touch-und-sound-631300	2603300729531631700	7	21.95	ok	landeseite
 bionischer-roboterhund-grau-601100	2603300722571601500	7	23.19	ok	landeseite
 anime-style-elektronisches-badge-628000	2601170547081628300	7	6.14	ok	landeseite
+smartes-spielzeug-mit-weissrausch-funktion-604700	2601060638411604900	7	19.72	ok	landeseite
+solar-ultraschall-tier-vogelabwehr-626700	2511230519481626900	7	9.99	ok	landeseite
+rc-spruh-insekt-fur-kinder-610700	2510011244141611000	7	22.08	ok	landeseite
+intelligenter-roboter-mit-gestensteuerung-prog-466626	1967882941326712833	7	25.21	ok	landeseite
+elektronischer-vogel-mit-sound-fur-katzen-604900	2509070636201605100	7	5.18	ok	landeseite
+elegante-pumps-mit-spitzer-kappe-630000	2607081129291630600	16	11.12	ok	landeseite
+chunky-sohlen-roman-sandalen-fur-zierliche-fra-613000	2607080948351613600	16	12.56	ok	landeseite
+sandalen-mit-dicker-sohle-und-geschlossener-sp-608800	2607080346221609700	16	12.56	ok	landeseite
+elegante-nubuk-sandalen-mit-blockabsatz-562049	2074735953398448130	16	11.23	ok	landeseite
+romer-sandalen-mit-strass-perlen-440898	2074693608328298497	16	9.33	ok	landeseite
+elegante-square-toe-thong-sandalen-135042	2074678848010215426	16	11.23	ok	landeseite
