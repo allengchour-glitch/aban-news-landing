@@ -8107,3 +8107,25 @@ grillpfanne-gusseisen-mit-holzgriff-20x20-cm-048449	-	-	-	unklar pid 1602002 Pro
 vorratsglaser-mit-bambusdeckel-6-stuck-600-ml-961090	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 led-handscheinwerfer-mit-4-leuchtmodi-902145	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 usb-led-taschenlampe-extrem-hell-995841	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+reinigungs-tucher-5er-set-mit-grunem-streifen-786946	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+sammelbehalter-fur-leergut-100l-beige-704130	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+wandtattoo-set-waldtiere-507905	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+rosegold-glattburste-fur-geschmeidiges-haar-222786	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+schutzrahmen-mit-griff-fur-osmo-pocket-3-627200	2408140501341627400	16	5.27	ok	landeseite
+vr-brille-fur-smartphones-335680	1742815612952387584	5	12.56	ok	landeseite
+gpd-win4-handheld-game-console-basis-expander-740672	1692468332722655232	7	8.24	ok	landeseite
+vr-headset-mit-power-bank-283456	1639467713762439168	7	13.95	ok	landeseite
+silikon-bluetooth-selfie-stick-stativ-339520	1634787808470642688	16	6.35	ok	landeseite
+game-gunstock-fur-nintendo-switch-300672	1601485593349992448	16	6.04	ok	landeseite
+schutzhulle-fur-xbox-one-controller-083328	1601032524539637760	16	6.33	ok	landeseite
+vr-stander-fur-oculus-quest-2-controller-011712	1580525194064703488	16	10.18	ok	landeseite
+vr-headset-elite-version-verstellbar-499904	1456074041432608768	7	11.30	ok	landeseite
+jakehoe-ventilator-reiniger-907010	2074334924368404481	3	7.60	ok	landeseite
+warmeplatte-fur-den-heimgebrauch-626600	2605290217041629200	16	15.20	ok	landeseite
+dynamische-reflexion-keramik-kaffeetasse-621700	2605070610201622300	16	13.04	ok	landeseite
+gestreifter-kissenbezug-aus-baumwoll-leinen-mi-631400	2605190522411632000	16	6.77	ok	landeseite
+nordischer-bettlaufer-mit-quasten-616900	2607080358211617500	16	11.60	ok	landeseite
+bettuberwurf-619200	2607061025141610001	16	13.16	ok	landeseite
+kuscheldecke-613200	2607061020441614000	16	18.95	ok	landeseite
+vw-funkschlussel-gehause-3-tasten-633400	2605310916241634100	16	4.66	ok	landeseite
+auto-schlusselanhanger-sweet-couple-640400	2510200553061640600	7	6.49	ok	landeseite
