@@ -8036,3 +8036,10 @@ dv3000-multifunktions-sportkamera-mit-taschenl-066176	1443151308386340864	7	10.6
 4k-action-kamera-fur-outdoor-sport-967488	1422819069308047360	7	11.30	ok	landeseite
 usb-hd-kamera-064832	1395671328106876928	16	5.85	ok	landeseite
 wasserdichtes-gehause-fur-gopro8-9-041216	1395310102625521664	16	6.50	ok	landeseite
+quadrocopter-mit-dual-kamera-und-langer-akkula-893888	1392000157360459776	0	-	KEINE CH-Option → DRAFT	landeseite
+h9r-outdoor-sportkamera-wasserdicht-mit-hd-309760	1391658597804544000	7	18.39	ok	landeseite
+tragbare-uberwachungskamera-a10-132608	1390502688269144064	7	11.57	ok	landeseite
+hd-kamera-quadcopter-drohne-610752	1389167418202525696	3	35.13	ok	landeseite
+hd-nachtsicht-uberwachungsroboter-mit-fernzugr-704000	1374914545230942208	7	15.26	ok	landeseite
+intelligente-uberwachungskamera-mit-alarmfunkt-425920	1372508107539877888	7	11.69	ok	landeseite
+kabellose-solar-uberwachungskamera-728832	1371639592943489024	7	16.01	ok	landeseite
