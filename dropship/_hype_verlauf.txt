@@ -239,3 +239,15 @@
 2026-10-10	Futterautomat	gid://shopify/Product/15503286075777	Automatischer Futter- und Wassernapf
 2026-10-10	Haustier-Spielzeug smart	gid://shopify/Product/15454092689793	Elektrisches Katzen Spielzeug mit Feder
 2026-10-10	Sternenhimmel-Projektor	gid://shopify/Product/15481692356993	Laser Sternenhimmel Projektor mit Bluetooth-Musik
+2026-10-13	Beauty-Gerät	gid://shopify/Product/15522129215873	Photonen-Hautverjüngungsgerät mit Mikrostrom
+2026-10-13	Schlaf-Stützkissen	gid://shopify/Product/15508461846913	Nackenstützkissen aus Memory-Schaum
+2026-10-13	Mini-Beamer	gid://shopify/Product/15481680691585	P330 Mini Beamer – Heimkino für unterwegs
+2026-10-13	Hygiene-Gadget	gid://shopify/Product/15475905757569	Berührungsloser Seifenspender für die Spüle
+2026-10-13	Ordnung & Aesthetic	gid://shopify/Product/15523992797569	Reise-Organizer-Set mit Netz
+2026-10-13	Ladestation 3-in-1	gid://shopify/Product/15450836861313	3-in-1 Wireless Ladestation für iPhone & Android
+2026-10-13	Kerzenwärmer & Duft	gid://shopify/Product/15450834469249	New Flame Aroma Diffuser mit Flammeneffekt
+2026-10-13	Faszienrolle	gid://shopify/Product/15506224939393	Multifunktionaler manueller Massageroller
+2026-10-13	Karaoke-Mikrofon	gid://shopify/Product/15480630870401	Duales Stereo Karaoke-System
+2026-10-13	Ringlicht	gid://shopify/Product/15480830755201	Selfie Stick Stativ mit LED-Ringlicht
+2026-10-13	Futterautomat	gid://shopify/Product/15525499470209	Futterspender für Hunde
+2026-10-13	Haustier-Spielzeug smart	gid://shopify/Product/15449431277953	Interaktives Katzenspielzeug mit Fernbedienung
