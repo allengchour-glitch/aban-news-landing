@@ -111,10 +111,12 @@ while true; do
   # 28.09.2026 (Betreiber «alles andere weiter pushen bis einkauf kommt»; dropship/KASSE-ABBRUCH-2026-09-28.md): 9 Kassen-Sitzungen,
   # 1 Kauf — CJ-Lieferzeit 2–4 Wochen. CH-Lager-Ware (1–2 Werktage) lag in 0 von 32 Reels und kaum in Bild-Posts. Liegen weniger als 4
   # wartende Bild-Posts mit «Schweizer Lager» in der Caption, werden bis 4 CH-Lager-Artikel eingereiht (Kadenz unverändert).
+  # 13.10.2026: nur Ware MIT Tag profil-ch-lager (im Versandprofil «CH-Lager» → Kasse P1D + 1–2 WT); ohne das Zeichen rechnet die
+  # Kasse noch 10–20 WT (Stufe 1/2, Google-Kanal) — «in 1–2 Werktagen» war für keinen Artikel mehr wahr (Kasse 2–3 WT).
   if faellig "$MARKE_NACHSCHUB.chlager" "$NACHSCHUB_ABSTAND"; then
     CHL=$(python3 -c "import csv;print(sum(1 for r in csv.DictReader(open('social/posts_image.csv',encoding='utf-8')) if r.get('status')=='ready' and 'Schweizer Lager' in (r.get('caption') or '')))" 2>/dev/null || echo 99)
     if [ "$CHL" -lt 4 ]; then
-      SHOPIFY_SHOP=au3j0y-hq.myshopify.com SHOPIFY_ADMIN_TOKEN="$(cat /tmp/cj_shop_token.txt 2>/dev/null)" VORRANG_TAG=ch-lager SAISON_ZEILE='🇨🇭 Ab Schweizer Lager – in 1–2 Werktagen bei dir' QUEUE_MAX=$((4 - CHL)) $NODE automation/queue_new_products.mjs || echo "$(date -u +%H:%M) CH-Lager-Nachschub fehlgeschlagen"
+      SHOPIFY_SHOP=au3j0y-hq.myshopify.com SHOPIFY_ADMIN_TOKEN="$(cat /tmp/cj_shop_token.txt 2>/dev/null)" VORRANG_TAG=profil-ch-lager SAISON_ZEILE='🇨🇭 Ab Schweizer Lager – meist in 2–3 Werktagen bei dir' QUEUE_MAX=$((4 - CHL)) $NODE automation/queue_new_products.mjs || echo "$(date -u +%H:%M) CH-Lager-Nachschub fehlgeschlagen"
     fi
     touch "$MARKE_NACHSCHUB.chlager"
   fi

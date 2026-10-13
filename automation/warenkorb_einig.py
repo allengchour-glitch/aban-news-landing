@@ -19,10 +19,11 @@ REGEL (eine, hier definiert, Liquid + JS + Kanarien daraus):
   noch X  =  max(VERSPRECHEN − items_subtotal_price (VOR Rabatt),  ⌈(TARIF − total_price) · 10/9⌉)
              (erster Term: jeder Zusatzartikel bringt −10 %, 50 × 0,9 = 45; zweiter: weitere Rabatte, z. B. ein Code)
   Lieferzeit im Warenkorb = die LANGSAMSTE Ware im Korb, mit denselben Tags und Tagen wie der Produktseiten-Block
-  `lux_delivery` (templates/product.json): fortura/ch-lager/blitzversand wie Kasse: P3D + 1–2 Werktage, Schluss 12 Uhr
+  `lux_delivery` (templates/product.json): fortura/ch-lager/blitzversand wie Kasse: Bearbeitung (P1D) + 1–2 Werktage, Schluss 12 Uhr
+  — nur mit Tag profil-ch-lager, sonst wie Asien
   (LUX-KASSENDATUM, seit 13.10.2026) · eu-lager +3..+10 · Druck auf Bestellung +9..+19 Kalendertage, Sa/So → Montag ·
-  sonst Direktversand Asien wie Kasse: P3D + 7–17 Werktage, Schluss 12 Uhr (LUX-KASSENDATUM).
-  Die Zahlen (3 / 1–2 / 7–17) prüft automation/kassen_lieferdatum_wache.py gegen Bearbeitungszeit und Transitregel.
+  sonst Direktversand Asien wie Kasse: Bearbeitung (P1D) + 9–19 Werktage, Schluss 12 Uhr (LUX-KASSENDATUM).
+  Die Zahlen (1 / 1–2 / 9–19) prüft automation/kassen_lieferdatum_wache.py gegen Bearbeitungszeit und Transitregel.
   ⚠️ LI_NEU unten ist die Fassung vom 09.10. (Kalendertage) — sie wird nur geschrieben, wenn die Marke fehlt; danach
   LUX-KASSENDATUM neu einsetzen (Vorlage: Live-Block lux_cart_trust, Wache meldet «Marke fehlt»).
 

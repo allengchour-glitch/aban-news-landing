@@ -60,6 +60,11 @@ GENERAL = "gid://shopify/DeliveryProfile/132124180865"
 STANDORT = "gid://shopify/Location/109350125953"           # «Shop location», einziger Standort
 GOOGLE = "gid://shopify/Publication/302872297857"
 TAG = "ch-lager"
+# 13.10.2026 (Gegenprüfung wf_0c354c64-a2a): Das Theme kann das Versandprofil nicht lesen. Ohne Merkmal zeigte die Produktseite
+# für ~764 CH-Lager-Produkte AUSSERHALB des Profils (Google-Ware, Stufe 1/2) das kurze Datum (16.–19. Okt), die Kasse aber 28. Okt–11. Nov.
+# Marke am Produkt = «liegt im Profil CH-Lager»; lux_delivery/lux_cart_trust rechnen nur mit ihr kurz. Gesetzt NACH dem Zuordnen,
+# entfernt VOR dem Lösen (die Seite verspricht nie früher als die Kasse).
+MARKE = "profil-ch-lager"
 STUFE_DATEI = os.path.join(REPO, "dropship", "_ch_lager_profil_stufe.json")
 STAND = os.path.join(REPO, "dropship", "_ch_lager_profil.json")
 LEDGER = os.path.join(REPO, "dropship", "_ch_lager_profil.tsv")
@@ -311,6 +316,41 @@ def profil_aendern(pid, schluessel, ids, aktion, titel):
     return n
 
 
+def marke_traeger():
+    aus, nach = set(), None
+    while True:
+        d = gql("""query($n:String){products(first:250,after:$n,query:"tag:'profil-ch-lager'"){pageInfo{hasNextPage endCursor}
+          nodes{id tags}}}""", {"n": nach})["products"]
+        aus |= {n["id"] for n in d["nodes"] if MARKE in n["tags"]}
+        if not d["pageInfo"]["hasNextPage"]:
+            return aus
+        nach = d["pageInfo"]["endCursor"]
+
+
+def marke_abgleichen(soll_ids, scharf):
+    """soll_ids = Produkte mit mindestens einer Variante im Profil. → (gesetzt, entfernt, rest_falsch)."""
+    ist = marke_traeger()
+    add, weg = sorted(soll_ids - ist), sorted(ist - soll_ids)
+    if not scharf:
+        return len(add), len(weg), len(add) + len(weg)
+    n_add = n_weg = 0
+    # 13.10.: je 20 Produkte in EINER Anfrage (Aliase) — einzeln brauchten 1'611 Zeichen ~55 Min.
+    def buendel(ids, mut, art):
+        n = 0
+        for i in range(0, len(ids), 20):
+            teil = ids[i:i + 20]
+            q = "mutation{" + " ".join(f'a{j}:{mut}(id:"{p}",tags:["{MARKE}"]){{userErrors{{message}}}}'
+                                       for j, p in enumerate(teil)) + "}"
+            d = gql(q)
+            for j, p in enumerate(teil):
+                if not (d.get(f"a{j}") or {}).get("userErrors", ["?"]):
+                    n += 1; ledger(art, p)
+        return n
+    n_weg = buendel(weg, "tagsRemove", "marke-weg")   # zuerst entfernen: lieber kurz das lange Datum als ein zu frühes
+    n_add = buendel(add, "tagsAdd", "marke-neu")
+    return n_add, n_weg, (len(add) - n_add) + (len(weg) - n_weg)
+
+
 def lauf(scharf, zurueck=False):
     pid = profil_finden()
     stufe, stichprobe, stufe_roh = stufe_lesen()
@@ -337,6 +377,9 @@ def lauf(scharf, zurueck=False):
     if zurueck:
         ids = sorted(inhalt)
         print(f"Rückweg: {len(ids)} Varianten aus «{PROFIL_NAME}» lösen")
+        if scharf:
+            a, w, r = marke_abgleichen(set(), True)
+            print(f"  Marke «{MARKE}» entfernt: {w} (Rest {r})")
         n = profil_aendern(pid, "variantsToDissociate", ids, "zurueck", {k: (v[0], v[2]) for k, v in inhalt.items()}) if scharf else 0
         print(f"FERTIG: {n} gelöst")
         return 0
@@ -387,6 +430,11 @@ def lauf(scharf, zurueck=False):
     if vorschau:
         print(f"VORSCHAU Stufe {stufe}: nichts geschrieben (Stand-Datei unverändert)")
         return 0
+    im_profil = {v[0] for v in profil_inhalt(pid).values()} if scharf else {v[0] for v in inhalt.values()}
+    a, w, r = marke_abgleichen(im_profil, scharf)
+    stand["marke"] = {"gesetzt": a, "entfernt": w, "offen": r}
+    print(f"Marke «{MARKE}»: {'gesetzt' if scharf else 'fehlt'} {a} · {'entfernt' if scharf else 'zu viel'} {w}"
+          + (f" · offen {r}" if scharf else ""))
     json.dump(stand, open(STAND, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print(f"CH-LAGER-PROFIL: Stufe {stufe} · {stand['im_profil_varianten']} Varianten im Profil · fehlt {stand['fehlt_varianten']} · "
           f"falsch {stand['falsch_varianten']}" + (f" · zugeordnet {stand.get('zugeordnet', 0)} · gelöst {stand.get('geloest', 0)}"
