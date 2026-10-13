@@ -18117,3 +18117,65 @@ gid://shopify/Product/15524865212801	46->0	Brustgeschirr und Leine für Katzen
 gid://shopify/Product/15524868620673	10->0	Reflektierende Hunde-Führleine
 gid://shopify/Product/15524893753729	13->3	Hundeleine mit zwei Kupferhaken
 gid://shopify/Product/15524900143489	132->0	Herren Hemd mit Tiermuster
+gid://shopify/Product/15524901192065	14->0	Herren Fitness-Shirt Kurzarm
+gid://shopify/Product/15524926652801	19->0	Herren Kurzarm Polo-Shirt
+gid://shopify/Product/15524929503617	24->0	Leinenartiges Herrenhemd
+gid://shopify/Product/15524945789313	112->3	Kurzarmhemd und Strandhose
+gid://shopify/Product/15525265703297	36->0	Makeup-Set mit 24 Farb-Lids, 8 Lippen, 4 Rouge, 3 Puderkuche
+gid://shopify/Product/15525461459329	22->1	Metall-Wanddeko fliegender Vogel
+gid://shopify/Product/15525493834113	25->1	Hunde-Brustgeschirr mit Reflektor
+gid://shopify/Product/15525494587777	13->0	Kinder-Isolierflasche 550 ml
+gid://shopify/Product/15525499896193	17->0	Anti-Schlingnapf für Hunde
+gid://shopify/Product/15525508841857	20->0	Multifunktionaler Sandsack für das Krafttraining
+gid://shopify/Product/16603331985799	26->0	Mittellanger Steppmantel mit Kapuze
+gid://shopify/Product/16603334607239	140->0	Langtrench mit Slim-Fit
+gid://shopify/Product/16603338408327	29->1	Slim-Fit Daunenjacke mit weisser Federfüllung
+gid://shopify/Product/16603352760711	21->0	Spiegelleuchte zur Wandmontage mit Fernbedienung
+gid://shopify/Product/16603592556935	38->0	Rosenförmige Tischlampe in Weiss und Rosa
+gid://shopify/Product/16603594326407	20->2	Solarwandlampe Outdoor mit IP44
+gid://shopify/Product/16603738898823	33->3	Drahtloser Wasserleck-Melder
+gid://shopify/Product/16603739718023	17->0	Elektrische U-Zahnbürste mit USB-Ladefunktion
+gid://shopify/Product/16603986297223	62->0	Weihnachtsdeko: Solar-Weihnachtsmann-Lampe
+gid://shopify/Product/16604173697415	85->0	Portabler Mini-Barbecue-Grill mit Holzkohle
+gid://shopify/Product/16604585427335	38->1	Sandalen mit Schnallen und dicker Sohle
+gid://shopify/Product/16604589916551	26->0	Zehentrenner mit Strass-Schleife und Absatz, Satin
+gid://shopify/Product/16604905046407	17->0	USB-Stick mit Sprachfunktion
+gid://shopify/Product/16604907831687	19->0	Keramik-Teetassen und Teekanne
+gid://shopify/Product/16604927721863	68->0	Auto Fussmatte Leder
+gid://shopify/Product/16604940730759	11->0	Outdoor Bluetooth Karaoke Lautsprecher
+gid://shopify/Product/16605038182791	37->0	Hundepullover mit Bären-Muster, braun
+gid://shopify/Product/16606120477063	24->0	Ölfilterschlüssel mit 3 Backen
+gid://shopify/Product/16606123491719	79->0	Kupferstift für intern beheizte Lötkolben
+gid://shopify/Product/16606126244231	84->0	Farbroller für Wandfarben
+gid://shopify/Product/16606943609223	17->0	Malen nach Zahlen – Palmenstrand 40×50 cm
+gid://shopify/Product/16607377949063	11->3	Handgefertigter Eisenkessel – 24 cm, 26 cm, 28 cm
+gid://shopify/Product/16607606145415	24->0	Kurzgeldbörse aus Vollnarben-Rindsleder
+gid://shopify/Product/16608455328135	10->3	Kettensäge mit Lithiumbatterie
+gid://shopify/Product/16608628965767	25->0	Leichtes atmungsaktives Kragenhemd
+gid://shopify/Product/16610116796807	8->1	Quarzuhr mit Edelstahlarmband
+gid://shopify/Product/16615672611207	11->1	Badesalz mit Rosenblüten
+gid://shopify/Product/16615701217671	140->0	Malen nach Zahlen – Sonnenblumen-Vase
+gid://shopify/Product/16615782154631	13->2	Schlafzimmer Nachtlicht mit verstellbarer Wachsmelderlampe
+gid://shopify/Product/16615782351239	35->0	Sternenhimmel-Deckenprojektor mit augen-schonendem Licht
+gid://shopify/Product/16615782908295	52->0	LED-Lichtstreifen für TV-Hintergrundbeleuchtung
+gid://shopify/Product/16615803355527	8->0	Taillenkette mit Gürtelschnalle
+gid://shopify/Product/16615807680903	30->0	Leinen-Trenchcoat im Tang-Stil
+gid://shopify/Product/16615813513607	80->0	31-Nacht-Schrecken Halloween Countdown-Box mit Puppe
+gid://shopify/Product/16616518386055	20->0	Kabelloses Gamepad mit Ladehafen
+gid://shopify/Product/16616723349895	19->1	LED-Leuchtsticker für Auto
+gid://shopify/Product/16616723415431	14->0	Taktische Umhängetasche
+gid://shopify/Product/16616723513735	134->0	Auto-Sticker für die Seitenlinie
+gid://shopify/Product/16616723546503	16->0	Umhängetasche aus PU-Leder mit Textur
+gid://shopify/Product/16616723579271	28->0	Robuste Outdoor-Handytasche
+gid://shopify/Product/16616723677575	15->0	Eisportionierer-Set mit Messbecher
+gid://shopify/Product/16616723710343	8->0	Crossbody-Brusttasche für Herren
+gid://shopify/Product/16616723775879	55->0	Abtropfmatte für Küche und Bad
+gid://shopify/Product/16616723906951	39->0	Reisetasche Herren – Leicht & robust
+gid://shopify/Product/16616724398471	50->1	Umhängetasche mit Kettenriemen
+gid://shopify/Product/16616724431239	71->0	Hai-Autoaufkleber – Karosserie-Dekor
+gid://shopify/Product/16616724496775	29->0	Umhängetasche aus Rindsleder mit grossem Fach
+gid://shopify/Product/16617001582983	116->0	Rutschfeste Eingangsmatte 43x75 cm
+gid://shopify/Product/16617107915143	150->0	Satinbedeckte Halbsandale mit flachem Absatz
+gid://shopify/Product/16617109586311	51->0	Latina-Tanzschuh mit Soft-Sole
+gid://shopify/Product/16617113321863	47->0	Platform-Ketten-Slipper für Damen
+gid://shopify/Product/16617115976071	14->0	Wedge-Stiefel mit Fellbesatz

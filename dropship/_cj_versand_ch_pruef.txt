@@ -7975,3 +7975,4 @@ hunde-wurfspielzeug-aus-eva-material-862336	1382210273724731392	16	6.33	ok	lande
 mummy-bag-aus-hochwertigem-rindsleder-916864	1388309082062065664	16	20.90	ok	landeseite
 doppelkreuz-zirkonring-kupfer-verstellbar-550912	1410494562090225664	16	4.60	ok	landeseite
 peeling-fussmaske-fur-zarte-fusse-244f6a	1566649725716279296	3	11.10	ok	landeseite
+interaktiver-futterspender-fur-haustiere-653376	1752236157204705280	16	9.07	ok	landeseite
