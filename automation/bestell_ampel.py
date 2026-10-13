@@ -56,14 +56,19 @@ def fortura_stand(nr, h, pfad=FORTURA_LEDGER):
     """Reine Fortura-Bestellung → (Stand, Warnzusatz). 13.10.2026 (Trockenlauf Fortura-Kette): nur «bestellt» (Stufe 1, Quittung)
     galt als in Ordnung — der Normalzustand von Stufe 2, «xml-hochgeladen», stand damit IMMER mit ⚠️ da. Jetzt: hochgeladen ist in
     Ordnung bis 48 h (dieselbe Frist wie fortura_bestell_engine: «bei Fortura nachfragen»), «bereit»/«versandt»/unbekannt bleiben ⚠️."""
-    fst = "unbekannt"
+    fst, info = "unbekannt", ""
     try:
         for z in open(pfad, encoding="utf-8"):
             t = z.rstrip("\n").split("\t")
-            if len(t) > 3 and t[0] == nr: fst = t[3]
+            if len(t) > 3 and t[0] == nr: fst, info = t[3], (t[4] if len(t) > 4 else "")
     except Exception:
         pass
     ok = fst == "bestellt" or (fst == "xml-hochgeladen" and h <= 48)
+    # 13.10.2026 Nachtrag (Prüfer N2): «abweichend» (Lieferschein mit Ersatzartikel/fremder Nummer) und «teilgeliefert» zeigen,
+    # WAS fehlt bzw. fremd ist — sonst steht nur ein Wort da und die Kundin wartet auf das bestellte Teil.
+    if fst in ("abweichend", "teilgeliefert"):
+        d = info[info.find(" · fehlt"):] if " · fehlt" in info else info[info.find(" · fremd"):] if " · fremd" in info else ""
+        return f"Fortura: {fst.upper()}{d[:140]}", " ⚠️"
     return f"Fortura: {fst}", "" if ok else " ⚠️"
 
 
@@ -89,6 +94,17 @@ def selbsttest():
                (fortura_stand("1032", 90, f.name), ("Fortura: bestellt", "")),
                (fortura_stand("1099", 1, f.name), ("Fortura: unbekannt", " ⚠️"))]
     os.unlink(f.name)
+    with tempfile.NamedTemporaryFile("w", delete=False, suffix=".tsv") as f:     # 13.10.2026 Nachtrag N2
+        f.write("nr\tzeit\tpositionen\tstatus\tfortura_auftrag\n"
+                "1040\tx\t93583×1, 90654-2×1\tabweichend\tORDERS_LX1040.xml · Lieferschein LS1 · DPD 1 · fehlt 90654-2 0/1"
+                " · fremd 99999×1 nicht bestellt\n"
+                "1041\tx\t93583×2\tteilgeliefert\tORDERS_LX1041.xml · fehlt 93583 1/2\n"
+                "1042\tx\t93583×1\terfuellt\tORDERS_LX1042.xml\n")
+    faelle += [(fortura_stand("1040", 30, f.name),
+                ("Fortura: ABWEICHEND · fehlt 90654-2 0/1 · fremd 99999×1 nicht bestellt", " ⚠️")),
+               (fortura_stand("1041", 30, f.name), ("Fortura: TEILGELIEFERT · fehlt 93583 1/2", " ⚠️")),
+               (fortura_stand("1042", 30, f.name), ("Fortura: erfuellt", " ⚠️"))]   # erfüllt + trotzdem offen = Shopify hinkt → ⚠️
+    os.unlink(f.name)
     ok = all(a == b for a, b in faelle)
     for i, (a, b) in enumerate(faelle):
         print(f"  {'OK  ' if a == b else 'FEHL'} Fall {i + 1}: {a}")
@@ -101,7 +117,10 @@ def main():
         tok = open("/tmp/cj_shop_token.txt").read().strip()
     except Exception as e:
         print(f"BESTELLUNGEN: unklar (kein Shop-Token: {e})"); return
-    q = ('{orders(first:20,query:"financial_status:paid AND fulfillment_status:unfulfilled AND status:open",'
+    # 13.10.2026 Nachtrag: teilerfüllt (Fortura-Teil versandt, CJ-Teil oder Ersatzfall offen) darf nicht aus der Ampel fallen.
+    # GEMESSEN: «(… OR …)» wirkt (unfulfilled 12 + shipped 11 = 23); ob «unfulfilled» partial schon einschliesst, war nicht
+    # messbar (0 teilerfüllte Bestellungen) → ausdrücklich dazu.
+    q = ('{orders(first:20,query:"financial_status:paid AND (fulfillment_status:unfulfilled OR fulfillment_status:partial) AND status:open",'
          'sortKey:CREATED_AT,reverse:true){nodes{name createdAt '
          'totalPriceSet{shopMoney{amount}} '
          'refunds(first:3){id totalRefundedSet{shopMoney{amount}} transactions(first:5){nodes{kind status amountSet{shopMoney{amount}}}}} '
@@ -168,6 +187,11 @@ def main():
                 st, warn = fortura_stand(nr, h)
                 teile.append(f"#{nr} {alt} CHF {float(o['totalPriceSet']['shopMoney']['amount']):.2f} → {st}{warn}")
                 continue
+            # 13.10.2026 Nachtrag: Mischkorb (CJ + Fortura) zeigte nur den CJ-Stand; der Fortura-Teil (z. B. «abweichend») fehlte.
+            f_zusatz = ""
+            if any(x.startswith("fortura-") for x in skus):
+                fst, fwarn = fortura_stand(nr, h)
+                f_zusatz = f" · {fst}{'' if fst == 'Fortura: erfuellt' else fwarn}"   # Fortura-Teil erledigt, CJ-Teil offen = normal
             st = ", ".join(f"{k}: {CJ_STATUS.get(watch[k].get('status'), watch[k].get('status', '?'))}"
                            + (f" ({watch[k]['tracking']})" if watch[k].get("tracking") else "") for k in lx) \
                 if lx else "KEIN CJ-Auftrag"
@@ -184,6 +208,7 @@ def main():
                     st = (f"{le['lx']} angelegt ({le['sd']}{', ' + le['betrag'] if le['betrag'] else ''}), CJ-Abgleich folgt — "
                           f"falls unbezahlt: 💳 {ZAHLLISTE}")
                     warn = " ⚠️" if h > 6 else ""
+            st += f_zusatz
         teile.append(f"#{nr} {alt} CHF {float(o['totalPriceSet']['shopMoney']['amount']):.2f} → {st}{warn}")
     print(f"BESTELLUNGEN: {len(nodes)} offen · " + " | ".join(teile))
 
