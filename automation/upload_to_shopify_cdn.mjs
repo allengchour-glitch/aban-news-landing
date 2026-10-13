@@ -24,6 +24,11 @@
  * über den Basename bleibt gültig. Anlass: reel_neu_rendern.py ersetzte nur social/reels/…, die Queue zeigte seit
  * dem CDN-Umzug (02.10.) auf cdn.shopify.com → Poster luden das alte Video mit dem alten Preis (9 Reels im Kreis
  * ready → meisterwerk-tor-skip → ready, drei Kanäle unter Takt). Ohne die Variable bleibt der Ablauf byte-gleich.
+ *
+ * ALS_BILD=1 (13.10.2026): Bild als MediaImage statt GenericFile anlegen (resource/contentType IMAGE). Anlass:
+ * Markenprofil B1 — Bildwähler im Admin (Einstellungen → Marke, Theme-Editor) zeigen «vorhandene Bilder»; ein
+ * GenericFile-PNG hat dort keine Bildmasse (gemessen: luxestyle-ch-logo_58da….png ohne width/height). Ohne die
+ * Variable bleibt der Ablauf byte-gleich. Mit ERSETZE_FILE_ID nicht kombinierbar.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -47,6 +52,9 @@ const ext = path.extname(file).toLowerCase();
 const mimeType = MIME[ext] || 'application/octet-stream';
 const fileSize = String(fs.statSync(file).size);
 const filename = path.basename(file).replace(/[^a-zA-Z0-9._-]/g, '-');
+const ALS_BILD = process.env.ALS_BILD === '1';
+if (ALS_BILD && !mimeType.startsWith('image/')) { console.error('ALS_BILD=1 nur für Bilder (jpg/png/webp):', file); process.exit(1); }
+if (ALS_BILD && (process.env.ERSETZE_FILE_ID || '').trim()) { console.error('ALS_BILD=1 und ERSETZE_FILE_ID schliessen sich aus.'); process.exit(1); }
 
 async function getToken(){
   if (!(CID && CSECRET) && TOK_STATIC) return TOK_STATIC;
@@ -75,7 +83,7 @@ async function gql(token, query, variables){
   const staged = await gql(token,
     `mutation($input:[StagedUploadInput!]!){ stagedUploadsCreate(input:$input){
        stagedTargets{ url resourceUrl parameters{ name value } } userErrors{ field message } } }`,
-    { input: [{ resource:'FILE', filename, mimeType, httpMethod:'POST', fileSize }] });
+    { input: [{ resource: ALS_BILD ? 'IMAGE' : 'FILE', filename, mimeType, httpMethod:'POST', fileSize }] });
   const t = staged?.stagedUploadsCreate?.stagedTargets?.[0];
   const errs = staged?.stagedUploadsCreate?.userErrors || [];
   if (!t || errs.length) { console.error('stagedUploadsCreate fehlgeschlagen:', JSON.stringify(errs)); process.exit(1); }
@@ -117,6 +125,23 @@ async function gql(token, query, variables){
       }
     }
     console.error('Timeout: Datei nach fileUpdate nicht neu bereit.'); process.exit(1);
+  }
+  if (ALS_BILD) {
+    const cb = await gql(token,
+      `mutation($files:[FileCreateInput!]!){ fileCreate(files:$files){
+         files{ ... on MediaImage{ id fileStatus } } userErrors{ field message } } }`,
+      { files: [{ originalSource: t.resourceUrl, contentType:'IMAGE', alt, filename }] });
+    const bErrs = cb?.fileCreate?.userErrors || [];
+    id = cb?.fileCreate?.files?.[0]?.id;
+    if (!id || bErrs.length) { console.error('fileCreate (IMAGE) fehlgeschlagen:', JSON.stringify(bErrs)); process.exit(1); }
+    for (let i=0;i<30;i++){
+      await new Promise(r=>setTimeout(r, i===0?2000:3000));
+      const d = await gql(token, `query($id:ID!){ node(id:$id){ ... on MediaImage{ fileStatus image{ url width height } } } }`, { id });
+      const n = d?.node;
+      if (n?.fileStatus === 'READY' && n.image?.url) { console.error(`READY (MediaImage ${id}, ${n.image.width}x${n.image.height}).`); console.log(n.image.url); process.exit(0); }
+      if (n?.fileStatus === 'FAILED') { console.error('Verarbeitung FAILED.'); process.exit(1); }
+    }
+    console.error('Timeout beim Warten auf READY (IMAGE).'); process.exit(1);
   }
   const created = await gql(token,
     `mutation($files:[FileCreateInput!]!){ fileCreate(files:$files){
