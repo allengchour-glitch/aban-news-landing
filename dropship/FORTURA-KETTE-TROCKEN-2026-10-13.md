@@ -70,3 +70,39 @@ Die Testbestellungen hiessen LX9901–LX9903, mit Testadresse und `test@example.
 
 - S2-Texte b/c dürfen ein Datum nennen, **sobald B (VE-1-Artikel) echt durchläuft**. Bis dahin gilt die Abbruch-Regel aus dem Richter: «das genaue Datum zeigt die Kasse».
 - B: Probe mit `fortura-93583` statt Draculagebiss (F2), Lieferadresse in der Schweiz (O4). Danach in der Ampel beobachten: `bereit` → `xml-hochgeladen` → `versandt/erfuellt`, Tage notieren.
+
+## Nachtrag 13.10.2026, ~22:45 UTC — Prüfer-Lücken N1–N4 behoben, Probeartikel B gewählt
+
+Grenzen wie oben: kein Upload, kein Aufruf bei Fortura (`_curl` in allen Tests gesperrt), keine Bestellung, Shopify nur gelesen.
+Ein Storefront-Warenkorb pro Kandidat wurde angelegt, um den Versand in der Kasse zu messen (kein Checkout, keine Bestellung).
+
+| # | Lücke (Prüfer) | Fix | Beleg |
+|---|---|---|---|
+| N1 | Lieferschein ohne Kodierungsangabe (Forturas Vorlagen-Kopfzeile `<?xml version="1.0"?>`) in cp1252/Latin-1 → still `[]`, kein Tracking | `fortura_xml._xml_wurzel()`: zuerst die Bytes wie deklariert. Scheitert das, wird als UTF-8, sonst cp1252, sonst Latin-1 dekodiert und mit überschriebener Kodierung geparst. Die Deklaration im Text bleibt unverändert. Ist eine Datei wirklich kaputt, schreibt die Engine bei jedem Lauf `⚠️ FORTURA: Lieferschein <datei> unlesbar` | Selbsttest: Vorlagen-Kopfzeile + «Mantel Dracula – Grösse M, Zähne» in cp1252 und Latin-1 → Bestellnr. und Tracking gelesen. Abgeschnittene Datei → Warnzeile |
+| N2 | Ersatzartikel / andere `ARTICLE_NO` → still `erfuellt`, das bestellte Teil blieb in Shopify offen | `norm_artnr()` (ohne Leerraum, gross, ohne führende Nullen) und `abgleich()`: der Lieferschein wird gegen **unsere** Bestellung (Ledger-Spalte) geprüft, nicht gegen sich selbst. Eine unbekannte Position, eine unlesbare Menge oder eine Mehrlieferung ergibt den neuen Status **`abweichend`**. Shopify bekommt nur die passenden Positionen, das bestellte Teil bleibt offen. Die Zeile `⚠️ FORTURA: #nr ABWEICHEND …` steht in **jedem** Lauf, auch wenn Shopify die Bestellung nicht mehr als offen führt, bis `--geklaert <nr>`. In der Ampel steht `Fortura: ABWEICHEND · fehlt … · fremd … ⚠️`, auch bei einem Mischkorb (CJ + Fortura) | Engine-Selbsttest: 93583 + Ersatz 99999 statt 90654-2 → `abweichend`, Sendung nur `li-fortura-93583 ×1`, Zeile in Lauf 1 und 2, mit `--geklaert` weg. «042156» bestellt, «42156» geliefert → `erfuellt` |
+| N3/O2 | Mengen «2.000»/«2.0» → falscher Teillieferungs-Alarm, «2,000» → Absturz | `menge_zahl()`: Ein einzelnes Trennzeichen gilt als Dezimalzeichen («2», «2.0», «2.000», «2,000» → 2). Eindeutige Tausender («1'000», «1.000,00», «1,000.00») → 1000. «2,5», leer oder Text → `None`, das ergibt `abweichend` statt Absturz | Selbsttest: 12 Formate; «2.000» gegen «1.000» bleibt eine echte Teillieferung (`fehlt 93583 1/2`) |
+| N4 | Fehlt `/tmp/fortura_feed.csv`, greift keine VE-Sperre (fail-open) | `ve_aus_feed()` gibt `None` zurück. Die Engine übergibt dann `'ve': None`, und `bau_orders_xml` lehnt ab: «VE unbekannt (Feed fehlt oder Artikel nicht im Feed)». Es geht kein XML raus, die Ampel zeigt den Portal-Weg. Gleiches gilt für einen Artikel, der im Feed fehlt | Engine-Selbsttest: Feed weg → kein Upload, Status bleibt `bereit`. Feed wieder da → `ORDERS_LX1034.xml` hochgeladen (gespielt) |
+| (Prüfer, VERMUTUNG) | Fällt eine teilerfüllte Bestellung aus der Ampel? | Die Ampel fragt jetzt `(fulfillment_status:unfulfilled OR fulfillment_status:partial)` | GEMESSEN: Die OR-Syntax wirkt (unfulfilled 12 + shipped 11 = 23). Teilerfüllte Bestellungen gibt es heute 0, ob `unfulfilled` sie schon einschloss, bleibt also unmessbar. Deshalb steht `partial` ausdrücklich in der Abfrage |
+
+**Gegenprobe:** Jeder Fix wurde in einer Kopie einzeln zurückgedreht (Mutation). Der Engine-Selbsttest wird dann rot: norm → 1 Fall, menge → 3, Kodierung → 3. Die Mutation «Feed fehlt → `{}`» fängt die Engine trotzdem ab, weil der Artikel dann fehlt und `None` ergibt. Den Fall `is None` prüft der `fortura_xml`-Selbsttest.
+
+**Selbsttests:** `fortura_xml.py --selbsttest` 25/25 · `fortura_bestell_engine.py --selbsttest` (neu) 13/13 · `bestell_ampel.py --selbsttest` 16/16.
+**Live nur lesend, 22:40:** `BESTELLUNGEN: 4 offen` (#1023–#1026, CJ bzw. Mister DTF, wie vorher), Engine `FORTURA: 0 offen` (Ledger nicht geschrieben).
+
+**Glied 8 (Lieferschein-Leser) jetzt 🟢 trocken.** Echt bewiesen ist das erst, wenn Fortura den ersten echten Lieferschein schickt.
+
+### Probeartikel B (Betreiber «B ja», Eigenkauf)
+
+Filter (GEMESSEN, Shopify + Feed 13.10. 03:09): 1'611 aktive Produkte mit `profil-ch-lager`. Davon mit genau 1 Variante (also ohne Grössenwahl), VE 1, Feed-Bestand «Lagerbestand Fortura» ≥ 20 und Preis ≤ CHF 20 bleiben nur Hüte, Accessoires und Strümpfe übrig. Keine Kosmetik/Schminke, nichts Essbares. Der günstigste Treffer kostet 17.90.
+
+| Handle | Titel | Preis | Bestand Fortura / Total | Versand in der Kasse (CH, 1 Stk) | Gleiche SKU sonst |
+|---|---|---|---|---|---|
+| `gangsterhut-fga98678` | Gangsterhut (schwarz, Hutgrösse 58 cm) | **17.90** (günstigster) | 251 / 269 | **Standard 0.00** | keine |
+| `hexenbesen-fga99835` | Hexenbesen 89 cm | 18.90 | 220 / 261 | **Standard 0.00** | keine |
+| `baseball-cap-fgapc41947` | Baseball Cap (mit Propeller) | 19.90 | 192 / 206 | **Standard 0.00** | keine |
+
+Alle drei: ACTIVE, online, `DENY`, EAN Shop = Feed, VE 1. Korbtotal = Preis, also kein Versandaufschlag (GEMESSEN über die Storefront-API, Adresse Belp).
+
+**Empfehlung: `hexenbesen-fga99835` (CHF 18.90).** Er kostet nur CHF 1.00 mehr als der günstigste und ist ein Saisonartikel. Halloween kommt in 18 Tagen, und genau diese Klasse (Halloween ab CH-Lager) sollen die S2-Texte mit Datum bewerben. Die Probe misst damit die Lieferzeit der Ware, um die es geht. Ist nur der Preis wichtig: `gangsterhut-fga98678` (17.90).
+- `bau_orders_xml('LX9905', Testadresse Belp, …, [{'artnr':'99835','ean':'8003558983506','menge':1,'ve':1}])` ergibt **0 Fehler**, gleiches Gerüst wie die Vorlage, ohne Upload. Für 98678 und PC41947 ebenfalls 0 Fehler.
+- Ablauf nach dem Kauf: Die Engine nimmt die Bestellung beim nächsten stündlichen Lauf von selbst und schreibt `bereit` → `xml-hochgeladen`. Danach den Lieferschein abwarten: `versandt` → `erfuellt`. Tage und Paket notieren (O3: Liegt ein Lieferschein mit Preisen bei?).

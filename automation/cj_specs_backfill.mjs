@@ -11,6 +11,7 @@
 import fs from 'node:fs';
 import { produktdetails } from './cj_specs.mjs';
 import { takt as cjTakt } from './cj_takt.mjs';
+import { gesperrt as werbetestGesperrt, HINWEIS as WERBETEST_HINWEIS } from './lib/werbetest_sperre.mjs';
 
 const SHOP = 'au3j0y-hq.myshopify.com';
 const TOK = (fs.existsSync('/tmp/cj_shop_token.txt') ? fs.readFileSync('/tmp/cj_shop_token.txt', 'utf8') : '').trim();
@@ -81,13 +82,17 @@ async function main() {
   if (!TOK || !CJT) { console.log('PAUSE (Token fehlt)'); return; }
   if (!fs.existsSync(PRIO)) { console.log('FERTIG: keine Prioritätsliste'); return; }
   const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').split('\n').map(l => l.split('\t')[0]).filter(Boolean) : []);
-  const handles = fs.readFileSync(PRIO, 'utf8').split('\n').map(l => l.trim().split('\t')[0]).filter(h => h && !h.startsWith('#') && !done.has(h));
+  const offen = fs.readFileSync(PRIO, 'utf8').split('\n').map(l => l.trim().split('\t')[0]).filter(h => h && !h.startsWith('#') && !done.has(h));
+  // 13.10.2026 Werbetest A: beworbene Produkte bis Testende nicht schreiben (dropship/_werbetest_sperre.txt). KEINE Quittung —
+  // sie bleiben in der Prio-Liste und kommen nach dem Ende der Sperre von selbst dran (Silberarmband stand auf Pos. 499).
+  const handles = offen.filter(h => { if (!werbetestGesperrt(h)) return true; console.log(`  ${WERBETEST_HINWEIS} ${h}`); return false; });
   let n = 0, gesetzt = 0, leer = 0;
   for (const h of handles) {
     if (n >= LIMIT) break;
     const q = await sgql(`query($h:String!){ productByIdentifier(identifier:{handle:$h}){ id title status descriptionHtml variants(first:1){nodes{sku}} } }`, { h });
     const p = q.data?.productByIdentifier;
     if (!p) { console.log('  ? nicht gefunden', h); continue; }
+    if (werbetestGesperrt(p.id)) { console.log(`  ${WERBETEST_HINWEIS} ${h}`); continue; }   // Handle geändert, ID gesperrt
     if (p.status !== 'ACTIVE') { if (!DRY) fs.appendFileSync(LEDGER, `${h}\tnicht-aktiv\n`); continue; }
     // Eine Liste, die NUR Versand-/Lieferzeilen traegt (alte ls-feed-details), ist fuer die Tabelle leer —
     // das Theme blendet Versandzeilen aus. Sie wird ersetzt; echte Listen bleiben unangetastet.

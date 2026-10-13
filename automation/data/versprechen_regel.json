@@ -626,5 +626,35 @@
         true
       ]
     ]
+  },
+  "editor_rueckgabe": {
+    "_zweck": "Kauf-Strecke Klassen 5/7/16 (13.10.2026, dropship/KAUFSTRECKE-SEITEN-2026-10-13.md): Editor-Produkte (Beschreibung enthält lspod-designer) sind laut Rückgaberichtlinie von der Rückgabe ausgeschlossen — Leiste, Akkordeon und Warenkorb zeigen dort «Ersatz bei Druckfehlern» statt «30 Tage Rückgabe», und der Text nennt den Ausschluss (Kasten ls-pod-retoure, Schreiber automation/editor_rueckgabe_satz.py). Dazu die Brotkrumen-Bedingungen (Klasse 5) und die Liefergebiets-Leiste (Klasse 16). Wächter: versprechen_wache.py prüft die Live-Dateien (Pflicht-Zeichenfolgen) und zählt Editor-Produkte ohne Satz.",
+    "editor_marker": "lspod-designer",
+    "satz": [
+      "ls-pod-retoure",
+      "Rückgabe aus Meinungsänderung"
+    ],
+    "theme_pflicht": {
+      "templates/product.json": [
+        "LUX-EDITOR-RUECKGABE",
+        "Ersatz bei Druckfehlern",
+        "lux_rueckgabe_text",
+        "s.url contains 'trend'",
+        "bc_dup_u",
+        "bc_ohne_damen",
+        "Lieferung nur in die Schweiz und nach Liechtenstein",
+        "Versand in der Schweiz"
+      ],
+      "templates/cart.json": [
+        "LUX-EDITOR-RUECKGABE",
+        "lux_editor_n",
+        "Ersatz bei Druckfehlern"
+      ]
+    },
+    "theme_verboten": {
+      "templates/cart.json": [
+        "Versand CHF 7.00 · <strong>gratis ab CHF 50</strong>"
+      ]
+    }
   }
 }

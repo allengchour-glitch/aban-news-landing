@@ -16,6 +16,8 @@
  *      META_GRAPH_VERSION(Default v21.0) · MAX_PER_RUN(1) · DRY_RUN=1
  */
 import fs from 'node:fs';
+import { socialPause, pauseSchluessel } from './lib/social_pause.mjs';   // 13.10.: Anlass-Social-Sperre (Halloween-CJ 15.10.–01.11.)
+const _socialPause = pauseSchluessel();
 import { lock as postLock, seen as postSeen, mark as postMark, fbSeitenIdentitaet, modelSperre } from './post_guard.mjs';
 
 const CSV = new URL('../social/story_queue.csv', import.meta.url).pathname;
@@ -172,6 +174,7 @@ const header = rows[0];
 const idx = Object.fromEntries(COLS.map(c=>[c, header.indexOf(c)]));
 const data = rows.slice(1);
 const due = data.filter(r => (r[idx.status]||'').trim()==='ready' && (r[idx.media_url]||'').trim()
+  && !socialPause({ id: r[idx.id] }, _socialPause)   // 13.10. Anlass-Sperre (story-<handle[:74]> per Präfix)
   && ((r[idx.scheduled_date]||'').trim()==='' || (r[idx.scheduled_date]||'').trim() <= today));
 if(due.length===0){ console.log('Keine Story fällig.'); process.exit(0); }
 

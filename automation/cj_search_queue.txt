@@ -782,7 +782,7 @@
 #   Skibrillen). Ab heute mit Relevanz-Tor (cj_sku_import.mjs) und bis zu 3 Produkten je Begriff (PRO_SUCHE im Runner).
 #   «snow globe» NICHT aufnehmen: erst eine Versandprobe mit einem Stück (Glas + Flüssigkeit; freightCalculate «ok» belegt
 #   nichts — Klingen-Lehre #1017). Keine Heizgeräte mit Netzstecker; Klinge/Kostüm/2G-Wachen greifen wie immer.
-search:heated socks rechargeable
-search:fuzzy socks women
-search:thermal underwear set
-search:ski goggles
+#ohne-treffer 2026-10-13 search:heated socks rechargeable
+#ohne-treffer 2026-10-13 search:fuzzy socks women
+#ohne-treffer 2026-10-13 search:thermal underwear set
+#done search:ski goggles

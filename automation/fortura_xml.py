@@ -53,7 +53,10 @@ def bau_orders_xml(nr, adresse, email, positionen, text=''):
             fehler.append(f"Menge «{p.get('menge')}» unplausibel")
         # 13.10.2026: Internet_VE > 1 = der Shop verkauft das Bündel (Draculagebiss «10 Stück»), VP1 ist ein STÜCKpreis. Ob
         # QUANTITY in Stück oder in VE zählt, sagt das Template nicht → bis Fortura es bestätigt: kein Raten, Portal-Weg.
-        if (p.get('ve') or 1) > 1:
+        # 13.10.2026 Nachtrag (N4): «ve» vorhanden, aber None = Feed fehlt oder Artikel nicht im Feed → VE unprüfbar → kein XML.
+        if 've' in p and p['ve'] is None:
+            fehler.append(f"Artikel {p.get('artnr')}: VE unbekannt (Feed {FEED} fehlt oder Artikel nicht im Feed)")
+        elif (p.get('ve') or 1) > 1:
             fehler.append(f"Artikel {p.get('artnr')} hat VE {p['ve']} — QUANTITY Stück oder VE? bei Fortura klären")
     adr = '\n'.join(f'\t\t\t<{k}>{_t(v)}</{k}>' for k, v in felder.items())
     pos = '\n'.join(
@@ -151,31 +154,128 @@ def herunterladen(sid, pfad):
                   '--data-urlencode', 'mode=download', '--data-urlencode', '_sid=' + sid], 120, roh=True)
 
 
-def ve_aus_feed(artnrs, pfad=FEED):
-    """{artnr: Internet_VE} aus dem täglichen Feed (cp1252, «|»). Fehlt der Feed: {} (dann keine VE-Sperre — Feed ist täglich da)."""
+def norm_artnr(a):
+    """13.10.2026 Nachtrag (N2): Vergleichsform einer Fortura-Artikelnummer — ohne Leerraum, gross, ohne führende Nullen
+    («042156» = «42156», « 93583 » = «93583»). Nur zum VERGLEICHEN; ins XML geht immer die Nummer wie im Feed."""
+    return re.sub(r'\s+', '', str(a or '')).upper().lstrip('0') or '0'
+
+
+def ve_aus_feed(artnrs, pfad=None):
+    """{artnr: Internet_VE} aus dem täglichen Feed (cp1252, «|»). Artikel, die im Feed fehlen, fehlen auch im Ergebnis.
+    13.10.2026 Nachtrag (N4): Feed fehlt/unlesbar → None (früher {} = keine VE-Sperre, fail-open). Aufrufer: None → kein XML."""
     import csv
-    out, gesucht = {}, set(artnrs)
+    pfad = pfad or FEED                       # zur Laufzeit lesen (Selbsttest der Engine biegt FEED um)
+    out, gesucht = {}, {norm_artnr(a): a for a in artnrs}
     try:
         with open(pfad, encoding='cp1252', newline='') as f:
             r = csv.reader(f, delimiter='|'); kopf = next(r); a, v = kopf.index('ArtNr'), kopf.index('Internet_VE')
             for z in r:
-                if len(z) > v and z[a] in gesucht:
+                if len(z) > v and norm_artnr(z[a]) in gesucht:
                     try:
-                        out[z[a]] = max(1, round(float(z[v].replace(',', '.') or 1)))
+                        out[gesucht[norm_artnr(z[a])]] = max(1, round(float(z[v].replace(',', '.') or 1)))
                     except ValueError:
-                        out[z[a]] = 1
-    except (OSError, ValueError, StopIteration):
-        pass
+                        out[gesucht[norm_artnr(z[a])]] = 1
+    except (OSError, ValueError, StopIteration, UnicodeDecodeError):
+        return None
     return out
+
+
+def menge_zahl(s):
+    """13.10.2026 Nachtrag (N3/O2): Mengenfeld aus dem Lieferschein → int, sonst None (nie Absturz).
+    «2», «2.0», «2.000», «2,000» → 2 (ein einzelnes Trennzeichen = Dezimalzeichen: Opacc schreibt Mengen mit Nachkommastellen,
+    1000 Stück sind bei Dropship-Einzelbestellungen unplausibel); «1'000» / «1.000,00» / «1,000.00» → 1000 (Tausender eindeutig);
+    «2,5», «», «abc» → None."""
+    t = re.sub(r"\s+", '', str(s or '')).replace("'", '').replace('’', '')
+    if not t:
+        return None
+    if ',' in t and '.' in t:
+        dez = ',' if t.rindex(',') > t.rindex('.') else '.'
+        t = t.replace('.' if dez == ',' else ',', '').replace(dez, '.')
+    elif t.count(',') + t.count('.') > 1:
+        t = t.replace(',', '').replace('.', '')          # 1.234.567 → Tausender
+    else:
+        t = t.replace(',', '.')
+    try:
+        from decimal import Decimal, InvalidOperation
+        d = Decimal(t)
+    except (InvalidOperation, ValueError):
+        return None
+    return int(d) if d == d.to_integral_value() and d >= 0 else None
+
+
+def positionen_aus_text(txt):
+    """Ledger-Spalte «93583×2, 90654-2×1» → {'93583': 2, '90654-2': 1} (unsere Bestellung, Grundlage des Abgleichs)."""
+    out = {}
+    for teil in str(txt or '').split(','):
+        teil = teil.strip()
+        if '×' in teil:
+            a, m = teil.rsplit('×', 1)
+            out[a.strip()] = out.get(a.strip(), 0) + (menge_zahl(m) or 0)
+    return out
+
+
+def abgleich(bestellt, positionen):
+    """13.10.2026 Nachtrag (N2/N3): Lieferschein gegen UNSERE Bestellung — nie die Mengen des Lieferscheins gegen sich selbst.
+    bestellt: {artnr: menge} (Ledger); positionen: lies_delvry()[i]['positionen'].
+    → (geliefert {norm_artnr: menge} NUR für bestellte Artikel, fehlt [«A g/b»], fremd [«…»]).
+    fremd = Position mit unbekannter Artikelnummer (Ersatzartikel), unlesbare Menge oder Mehrlieferung → Status «abweichend»."""
+    soll = {}
+    for a, m in bestellt.items():
+        soll[norm_artnr(a)] = (a, soll.get(norm_artnr(a), (a, 0))[1] + m)
+    geliefert, fremd = {}, []
+    for a, _b, g, text in positionen:
+        n, gz = norm_artnr(a), menge_zahl(g)
+        if gz is None:
+            fremd.append(f"{a or '?'} Menge «{g}» unlesbar"); continue
+        if n not in soll:
+            if gz > 0:
+                fremd.append(f"{a or '?'}×{gz} nicht bestellt{(' (' + text[:40] + ')') if text else ''}")
+            continue
+        geliefert[n] = geliefert.get(n, 0) + gz
+    fehlt = []
+    for n, (a, m) in soll.items():
+        g = geliefert.get(n, 0)
+        if g < m:
+            fehlt.append(f'{a} {g}/{m}')
+        elif g > m:
+            fremd.append(f'{a} {g}/{m} zu viel')
+    return geliefert, fehlt, fremd
+
+
+def _xml_wurzel(roh):
+    """13.10.2026 Nachtrag (N1): Forturas Vorlage beginnt mit «<?xml version="1.0"?>» — OHNE Kodierungsangabe. Kommen dann
+    cp1252/Latin-1-Bytes (ARTICLE_NAME ist Pflicht und hat Umlaute), lehnt expat die Datei ab: früher still [] = kein Tracking.
+    Reihenfolge: (1) Bytes wie deklariert, (2) scheitert das: als UTF-8, sonst cp1252, sonst Latin-1 dekodieren und mit
+    überschriebener Kodierung parsen (Deklaration bleibt im Text unverändert). None = wirklich unlesbar."""
+    if isinstance(roh, str):
+        texte = [roh]
+    else:
+        try:
+            return ET.fromstring(roh)
+        except ET.ParseError:
+            pass
+        texte = []
+        for kod in ('utf-8', 'cp1252', 'latin-1'):
+            try:
+                texte = [roh.decode(kod)]; break
+            except UnicodeDecodeError:
+                continue
+    for t in texte:
+        try:
+            p = ET.XMLParser(encoding='utf-8')
+            p.feed(t.lstrip('\ufeff').encode('utf-8'))
+            return p.close()
+        except ET.ParseError:
+            pass
+    return None
 
 
 def lies_delvry(xml_text):
     """→ [{'order_no','doc_no','datum','tracking':[...],'positionen':[(artnr, bestellt, geliefert, text)]}]"""
     out = []
-    try:
-        w = ET.fromstring(xml_text.encode('utf-8') if isinstance(xml_text, str) else xml_text)
-    except ET.ParseError:
-        return out
+    w = _xml_wurzel(xml_text)
+    if w is None:
+        return out          # Aufrufer meldet «Lieferschein unlesbar» (fortura_bestell_engine)
     for doc in w.iter('DOC'):
         h = doc.find('HEADER')
         g = lambda e, k: ((e.findtext(k) if e is not None else '') or '').strip()
@@ -213,7 +313,50 @@ def selbsttest():
            '<ARTICLE_NO>94097</ARTICLE_NO><ARTICLE_NAME>Zähne</ARTICLE_NAME><ORDER_QUANTITY>3</ORDER_QUANTITY>'
            '<DELVRY_QUANTITY>3</DELVRY_QUANTITY></POS></POSITIONS></DOC></Opacc.DELVRY>').encode('latin-1')
     assert lies_delvry(lat)[0]['positionen'][0][:3] == ('94097', '3', '3')
-    print('Selbsttest 10/10')
+    n = 10
+    # ── Nachtrag 13.10.2026 (Prüfer N1–N4) ──
+    # N1: Forturas Vorlagen-Kopfzeile OHNE Kodierung + cp1252/Latin-1-Bytes (Umlaut, Gedankenstrich) → gelesen, nicht still []
+    roh = ('<?xml version="1.0"?>\r\n<Opacc.DELVRY><DOC><HEADER><DOC_NO>LS1</DOC_NO><ORDER_NO>LX1031</ORDER_NO></HEADER>'
+           '<TRACKINGLIST><TRACKING_NO>01505012345678</TRACKING_NO></TRACKINGLIST><POSITIONS><POS><ARTICLE_NO>93583</ARTICLE_NO>'
+           '<ARTICLE_NAME>Mantel Dracula – Grösse M, Zähne</ARTICLE_NAME><ORDER_QUANTITY>1</ORDER_QUANTITY>'
+           '<DELVRY_QUANTITY>1</DELVRY_QUANTITY></POS></POSITIONS></DOC></Opacc.DELVRY>')
+    for kod in ('cp1252', 'latin-1'):
+        try:
+            b = roh.encode(kod)
+        except UnicodeEncodeError:
+            b = roh.replace('–', '-').encode(kod)
+        d = lies_delvry(b)
+        assert d and d[0]['order_no'] == 'LX1031' and d[0]['tracking'] == ['01505012345678'], (kod, d); n += 1
+    assert lies_delvry(roh.encode('utf-8'))[0]['order_no'] == 'LX1031'; n += 1                         # UTF-8 ohne Angabe
+    assert lies_delvry(roh.replace('<?xml version="1.0"?>', '<?xml version="1.0" encoding="ISO-8859-1"?>'))[0]['order_no'] == 'LX1031'
+    assert lies_delvry(b'<?xml version="1.0"?><Opacc.DELVRY><DOC>kaputt') == []; n += 2                  # echt kaputt → [] (Engine warnt)
+    # N2: Ersatzartikel / führende Nullen / Leerzeichen
+    g, fehlt, fremd = abgleich({'042156': 1, '90654-2': 1},
+                               [('42156', '1', '1', ''), ('99999', '1', '1', 'Ersatzartikel für 90654-2')])
+    assert g == {'42156': 1} and fehlt == ['90654-2 0/1'] and len(fremd) == 1 and '99999×1 nicht bestellt' in fremd[0], (g, fehlt, fremd)
+    g, fehlt, fremd = abgleich({'93583': 2}, [(' 093583 ', '2', '2', '')])
+    assert g == {'93583': 2} and not fehlt and not fremd, (g, fehlt, fremd); n += 2
+    assert positionen_aus_text('93583×2, 90654-2×1') == {'93583': 2, '90654-2': 1}; n += 1
+    # N3/O2: Mengenformate numerisch, kein Absturz, kein falscher Teillieferungs-Alarm
+    for s, w in (('2', 2), ('2.0', 2), ('2.000', 2), ('2,000', 2), (' 2 ', 2), ("1'000", 1000), ('1.000,00', 1000),
+                 ('1,000.00', 1000), ('2,5', None), ('', None), ('abc', None), ('-1', None)):
+        assert menge_zahl(s) == w, (s, menge_zahl(s), w)
+    for s in ('2', '2.0', '2.000', '2,000'):
+        assert abgleich({'93583': 2}, [('93583', s, s, '')]) == ({'93583': 2}, [], []), s
+    assert abgleich({'93583': 2}, [('93583', '2', '1,000', '')])[1] == ['93583 1/2']                    # echte Teillieferung bleibt
+    assert 'unlesbar' in abgleich({'93583': 2}, [('93583', '2', 'zwei', '')])[2][0]; n += 4
+    # N4: Feed fehlt → None → kein XML; Artikel nicht im Feed → None; Feed vorhanden → VE
+    assert ve_aus_feed(['93583'], '/nicht/da.csv') is None
+    _, f = bau_orders_xml('LX9999', adr, 'a@b.ch', [{'artnr': '93583', 'menge': 1, 've': None}])
+    assert any('VE unbekannt' in e for e in f), f
+    with tempfile.NamedTemporaryFile('w', encoding='cp1252', suffix='.csv', delete=False) as tf:
+        tf.write('Grp|ArtNr|Bez1DE|Internet_VE|\n1|93583|Mantel Dracula|1|\n1|59774|Draculagebiss|10|\n1|042156|Krone|1|\n')
+    try:
+        assert ve_aus_feed(['93583', '59774', '42156', '11111'], tf.name) == {'93583': 1, '59774': 10, '42156': 1}
+    finally:
+        os.unlink(tf.name)
+    n += 3
+    print(f'Selbsttest {n}/{n}')
 
 
 if __name__ == '__main__':

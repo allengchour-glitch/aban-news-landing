@@ -21,6 +21,8 @@
  */
 import { mitFolgen, fbText as fbTextLib } from './lib/fb_text.mjs';   // 07.10.: FB ohne https-Link (Reichweite)
 import fs from 'node:fs';
+import { socialPause, pauseSchluessel } from './lib/social_pause.mjs';   // 13.10.: Anlass-Social-Sperre (Halloween-CJ 15.10.–01.11.)
+const _socialPause = pauseSchluessel();
 const FORMATE = (()=>{ try { return JSON.parse(fs.readFileSync(new URL('./data/kanal_formate.json', import.meta.url),'utf8')); } catch { return {}; } })();
 import { execFileSync as _exf } from 'node:child_process';
 import { markierungFehlt,
@@ -212,7 +214,7 @@ const header = rows[0];
 const idx = Object.fromEntries(COLS.map(c=>[c, header.indexOf(c)]));
 const data = rows.slice(1);
 
-const ready = nachVorrang(data.filter(r => (r[idx.status]||'').trim()==='ready' && (r[idx.image_url]||'').trim()), r => `/products/${(r[idx.id]||'').trim()} ${r[idx.caption]||''}`);   // 25.09. Saison-Vorrang (Herbst) zuerst — id = Handle (Bild-Captions tragen keinen Link)
+const ready = nachVorrang(data.filter(r => (r[idx.status]||'').trim()==='ready' && (r[idx.image_url]||'').trim() && !socialPause({ id: r[idx.id], caption: r[idx.caption] }, _socialPause)), r => `/products/${(r[idx.id]||'').trim()} ${r[idx.caption]||''}`);   // 25.09. Saison-Vorrang (Herbst) zuerst — id = Handle (Bild-Captions tragen keinen Link)
 if(ready.length===0){ console.log('Kein Bild mit status=ready — nichts zu tun.'); process.exit(0); }
 
 console.log(`Konfigurierte Kanäle: ${configured.join('+')||'(keine, DRY)'} · ready: ${ready.length} · MAX_PER_RUN: ${MAX}`);

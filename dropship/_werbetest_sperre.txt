@@ -1,0 +1,18 @@
+# Werbetest A «geschenke-test» — Schreibsperre (Betreiber «A ja», 13.10.2026; Plan dropship/WERBETEST-GESCHENKE-VORBEREITUNG-2026-10-13.md)
+# Diese 13 Produkte bis einschliesslich Enddatum NICHT schreiben (Text, Tags, Varianten, Metafelder, Bilder).
+# Ausnahmen bleiben scharf: Lieferbarkeit (besuchte_seiten_lieferbar → DRAFT), CJ-Lagerabgleich (DENY), Preisschutz.
+# Leser: automation/werbetest_sperre.py · automation/lib/werbetest_sperre.mjs — nach dem Ende wird die Datei ignoriert.
+# ende: 2026-10-24
+15450839286145  mechanische-skelett-herrenuhr-mit-silikonband-817728   # Skelett-Herrenuhr
+15454132961665  elegante-quarz-armbanduhr-fur-damen-635300   # Elegante Damenuhr
+15449444057473  herren-geldborse-aus-hochwertigem-leder-617500   # Herren-Geldbörse
+15455791907201  herrenholzarmbanduhr-631400   # Holzarmbanduhr
+15480824037761  bluetooth-ubersetzungs-kopfhorer-625536   # Übersetzungs-Kopfhörer
+15454414111105  luminous-sonne-mond-stern-herren-mechanische-u-602700   # Sonne & Mond
+15495239106945  trendige-damenuhr-mit-strass-zifferblatt-616000   # Strass-Damenuhr
+15497460810113  quadratische-damenuhr-mit-18k-vergoldung-225856   # 18K-Damenuhr
+15465984491905  moissanit-ring-aus-925er-sterling-silber-639800   # Moissanit-Ring
+15449430851969  3-in-1-magnetische-falt-ladestation-015296   # Falt-Ladestation
+15412915110273  abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe   # Sirène
+15493830443393  retro-damenuhr-mit-quarzwerk-602500   # Retro-Damenuhr
+15453601890689  silberarmband-614500   # Silberarmband

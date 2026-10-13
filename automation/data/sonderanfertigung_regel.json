@@ -25,5 +25,28 @@
     {"satz": "Sonderanfertigung: alle Grössen.", "werte": "35-42", "soll": "alle"},
     {"satz": "Bitte beachte, dass kundenspezifische Anpassungen vom Umtausch ausgeschlossen sind.", "werte": "XS,S,M,L", "soll": "keine"},
     {"satz": "Aus Hygienegründen ist Bademode von der Rückgabe ausgeschlossen, sobald die Versiegelung entfernt wurde.", "werte": "S,M,L", "soll": "nichts"}
-  ]
+  ],
+  "herren_groessen": {
+    "_zweck": "Kauf-Strecke Klasse 6 (13.10.2026, dropship/KAUFSTRECKE-SEITEN-2026-10-13.md): 60 echte Herrenschuhe enden bei EU 43 oder darunter, die Seite riet «im Zweifel eine Nummer grösser». Theme lux_sizeguide (Marker LUX-GROESSE-MAX) zeigt dort «Erhältlich bis Grösse N – grösser? Herrenschuhe ab N+1 →». Fremdware im Typ Herrenschuhe (Einlegesohle, Damen-/Kindertitel) bekommt den richtigen Typ, sonst erschiene der Hinweis bzw. die Ware unter Herrenschuhen. Ledger dropship/_herrenschuh_typ.tsv (Altwert → Rückweg).",
+    "typ": "Herrenschuhe",
+    "theme_marker": "LUX-GROESSE-MAX",
+    "max_grenze": 43,
+    "fremd": [
+      {"muster": "einlegesohle", "neu": "Einlegesohlen"},
+      {"muster": "\\b(kinder|kids?|jungen|mädchen|maedchen|baby)\\b|f(ü|ue)r kinder", "neu": "Kinderschuhe", "nicht": "herren"},
+      {"muster": "\\bdamen\\b|f(ü|ue)r damen", "neu": "Damenschuhe", "nicht": "herren"}
+    ],
+    "kanarien": [
+      ["Unsichtbare Höhenerhöhende Einlegesohle", "Einlegesohlen"],
+      ["Höhenverstellbare Einlegesohle für Herrenschuhe", "Einlegesohlen"],
+      ["Arbeitsschuhe mit Deodorant-Einlegesohle", null],
+      ["Transformierende Laufschuhe für Kinder", "Kinderschuhe"],
+      ["Carbon-Racing-Sneaker für Jungen", "Kinderschuhe"],
+      ["Britische Worker-Boots für Damen", "Damenschuhe"],
+      ["Wanderschuhe für Herren und Damen", null],
+      ["Warme Outdoor Snow Boots für Damen & Herren", null],
+      ["Herren Sneaker mit versteckter Erhöhung 8 cm", null],
+      ["Retro-Sneaker mit dicker Sohle", null]
+    ]
+  }
 }

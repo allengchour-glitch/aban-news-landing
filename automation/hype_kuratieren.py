@@ -29,6 +29,19 @@ import json, os, re, subprocess, sys, time
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
 DRY = os.environ.get("DRY") == "1"
 EXPORT = os.environ.get("EXPORT", "/tmp/export.jsonl")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from werbetest_sperre import gesperrt as werbetest_gesperrt, HINWEIS as WERBETEST_HINWEIS  # noqa: E402  (13.10.2026)
+
+
+def ohne_werbetest(liste, wie=lambda x: x["id"]):
+    """13.10.2026 Werbetest A: Produkte aus dropship/_werbetest_sperre.txt bis Testende weder aufnehmen noch abräumen."""
+    rest = []
+    for x in liste:
+        if werbetest_gesperrt(wie(x)):
+            print(f"   {WERBETEST_HINWEIS}: {str((x[0] if isinstance(x, tuple) else x).get('title', ''))[:52]}", flush=True)
+        else:
+            rest.append(x)
+    return rest
 HEUTE = os.environ.get("HEUTE") or time.strftime("%Y-%m-%d")
 HYPE_TAGE = int(os.environ.get("HYPE_TAGE", "21"))
 PRO_THEMA = int(os.environ.get("PRO_THEMA", "1"))  # 31.08.: 2 je Thema landete als PAAR nebeneinander in der Reihe (zwei Beamer, zwei Kleider) — sieht aus wie Katalogauszug
@@ -387,7 +400,7 @@ def reste_raeumen():
         if not pg:
             print("  ⚠️ hype-seit-Reste nicht lesbar — übersprungen", flush=True)
             return 0
-        reste += [p for p in pg["nodes"] if TAG not in p["tags"] and hype_seit_tags(p["tags"])]
+        reste += ohne_werbetest([p for p in pg["nodes"] if TAG not in p["tags"] and hype_seit_tags(p["tags"])])
         if not pg["pageInfo"]["hasNextPage"]:
             break
         cur = pg["pageInfo"]["endCursor"]
@@ -432,6 +445,9 @@ def abgelaufene_raeumen():
             ohne_datum.append(p)
         elif tage_her(seit) > HYPE_TAGE:
             raus.append((p, seit))
+    regelbruch = ohne_werbetest(regelbruch, lambda x: x[0]["id"])
+    ohne_datum = ohne_werbetest(ohne_datum)
+    raus = ohne_werbetest(raus, lambda x: x[0]["id"])
     print(f"Regelbruch in der Reihe: {len(regelbruch)} | ohne Datum: {len(ohne_datum)}", flush=True)
     for p, _ in regelbruch[:12]:
         print(f"   Regelbruch: {p['title'][:52]} [{p.get('productType')}]", flush=True)
@@ -631,6 +647,9 @@ def main():
             continue                       # ungeklaerter Einkaufspreis gehoert nicht nach vorn
         for thema, muster in THEMEN.items():
             if muster.search(p["title"]):
+                if werbetest_gesperrt(p["id"]):
+                    print(f"   {WERBETEST_HINWEIS}: {p['title'][:52]}", flush=True)
+                    break
                 kandidaten[thema].append(
                     (p["id"], p["title"], preis, (p.get("mediaCount") or {}).get("count", 0)))
                 break

@@ -1,0 +1,274 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "cart-section": {
+      "type": "main-cart",
+      "blocks": {
+        "cart-page-title": {
+          "type": "_cart-title",
+          "static": true,
+          "settings": {
+            "title": "Warenkorb",
+            "show_count": true,
+            "type_preset": "h4",
+            "alignment": "left",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "cart-page-items": {
+          "type": "_cart-products",
+          "static": true,
+          "settings": {
+            "gap": 24,
+            "image_ratio": "portrait",
+            "dividers": true,
+            "vendor": false,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "cart-page-summary": {
+          "type": "_cart-summary",
+          "static": true,
+          "settings": {
+            "extend_summary": true,
+            "inherit_color_scheme": false,
+            "color_scheme": "scheme-2",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0
+          },
+          "blocks": {}
+        }
+      },
+      "settings": {
+        "section_width": "page-width",
+        "color_scheme": "",
+        "padding-block-start": 24,
+        "padding-block-end": 0
+      }
+    },
+    "product_list_NNFgcy": {
+      "type": "product-list",
+      "blocks": {
+        "static-header": {
+          "type": "_product-list-content",
+          "name": "t:names.header",
+          "static": true,
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": false,
+            "horizontal_alignment": "space-between",
+            "vertical_alignment": "flex-end",
+            "align_baseline": true,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_list_text_fifeh4": {
+              "type": "_product-list-text",
+              "name": "t:names.collection_title",
+              "settings": {
+                "text": "<h3>Das könnte dir auch gefallen</h3>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "font_size": "",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_list_button_eibbma": {
+              "type": "_product-list-button",
+              "name": "t:names.product_list_button",
+              "settings": {
+                "label": "Alle anzeigen",
+                "open_in_new_tab": false,
+                "style_class": "link",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_list_text_fifeh4",
+            "product_list_button_eibbma"
+          ]
+        },
+        "static-product-card": {
+          "type": "_product-card",
+          "name": "t:names.product_card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 4,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_card_gallery_PEPpfq": {
+              "type": "_product-card-gallery",
+              "name": "t:names.product_card_media",
+              "settings": {
+                "image_ratio": "adapt",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title_WNMpHe": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 4,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price_yXfkPX": {
+              "type": "price",
+              "name": "t:names.product_price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h6",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "color": "var(--color-foreground)",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_card_gallery_PEPpfq",
+            "product_title_WNMpHe",
+            "price_yXfkPX"
+          ]
+        }
+      },
+      "name": "Featured collection",
+      "settings": {
+        "collection": "bestseller",
+        "layout_type": "grid",
+        "carousel_on_mobile": false,
+        "max_products": 4,
+        "columns": 4,
+        "mobile_columns": "2",
+        "mobile_card_size": "60cqw",
+        "columns_gap": 8,
+        "rows_gap": 24,
+        "icons_style": "arrow",
+        "icons_shape": "none",
+        "section_width": "page-width",
+        "horizontal_alignment": "flex-start",
+        "gap": 28,
+        "color_scheme": "scheme-1",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "lux_cart_trust": {
+      "type": "custom-liquid",
+      "name": "Warenkorb-Vertrauen",
+      "settings": {
+        "custom_liquid": "<div style=\"max-width:1200px;margin:0 auto;padding:6px 1rem 18px;\">\n<ul style=\"list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:10px 22px;font-size:14px;color:#333;\">\n<li>🚚&nbsp;Versand CHF 7.00 · <strong>gratis ab CHF 50</strong></li>\n{%- comment -%} LUX-WARENKORB-EINIG (09.10.2026, automation/warenkorb_einig.py): Lieferdatum der LANGSAMSTEN Ware im\nKorb, dieselben Tags/Tage wie der Produktseiten-Block lux_delivery (templates/product.json). Vorher stand hier pauschal\n«CH-Lager 1–2 Werktage», auch wenn der Korb nur Direktversand aus Asien enthielt. {%- endcomment -%}\n{%- assign lux_rang = -1 -%}\n{%- assign lux_ohne_marke = false -%}\n{%- for item in cart.items -%}\n  {%- assign t = item.product.tags -%}\n  {%- if t contains 'fortura' or t contains 'ch-lager' or t contains 'blitzversand' -%}{%- assign r = 0 -%}{%- unless t contains 'profil-ch-lager' -%}{%- assign lux_ohne_marke = true -%}{%- endunless -%}\n  {%- elsif t contains 'eu-lager' -%}{%- assign r = 1 -%}\n  {%- elsif t contains 'printful_personalized_product' or t contains 'prodigi_personalized_product' or t contains 'selbst-gestalten' -%}{%- assign r = 2 -%}\n  {%- else -%}{%- assign r = 3 -%}{%- endif -%}\n  {%- if r > lux_rang -%}{%- assign lux_rang = r -%}{%- endif -%}\n{%- endfor -%}\n{%- if lux_rang >= 0 -%}\n  {%- assign now_s = 'now' | date: '%s' | plus: 0 -%}\n  {%- case lux_rang -%}\n    {%- when 0 -%}{%- assign lx_stufe = shop.metafields.luxe.ch_lager_stufe.value | default: 1 | plus: 0 -%}{%- if lux_ohne_marke -%}{%- assign lx_stufe = 0 -%}{%- endif -%}{%- if lx_stufe >= 1 -%}{%- assign lx_tmin = 1 -%}{%- assign lx_tmax = 2 -%}{%- else -%}{%- assign lx_tmin = 9 -%}{%- assign lx_tmax = 19 -%}{%- endif -%}{%- assign lux_lager = 'aus dem Schweizer Lager' -%}\n    {%- when 1 -%}{%- assign d_from = now_s | plus: 259200 -%}{%- assign d_to = now_s | plus: 864000 -%}{%- assign lux_lager = 'aus dem EU-Lager' -%}\n    {%- when 2 -%}{%- assign d_from = now_s | plus: 777600 -%}{%- assign d_to = now_s | plus: 1641600 -%}{%- assign lux_lager = 'Druck auf Bestellung' -%}\n    {%- else -%}{%- assign lx_tmin = 9 -%}{%- assign lx_tmax = 19 -%}{%- assign lux_lager = 'Direktversand aus Asien' -%}\n  {%- endcase -%}\n  {%- comment -%} LUX-KASSENDATUM 13.10.2026: Rang 0 (nur Schweizer Lager) und Rang 3 (Asien) = dieselbe Rechnung wie lux_delivery\n  (templates/product.json) und die Kasse: Werktage Mo–Fr, Annahmeschluss 12 Uhr, Bearbeitung P1D, Transit lx_tmin–lx_tmax Werktage. {%- endcomment -%}\n  {%- if lux_rang == 0 or lux_rang == 3 -%}\n    {%- assign lx_h = 'now' | date: '%H' | plus: 0 -%}\n    {%- assign lx_w = 'now' | date: '%w' | plus: 0 -%}\n    {%- assign lx_von = 1 | plus: lx_tmin -%}\n    {%- if lx_h >= 12 or lx_w == 0 or lx_w == 6 -%}{%- assign lx_von = lx_von | plus: 1 -%}{%- endif -%}\n    {%- assign lx_bis = lx_von | plus: lx_tmax | minus: lx_tmin -%}\n    {%- assign lx_t = lx_h | times: -3600 | plus: 43200 | plus: now_s -%}\n    {%- assign lx_n = 0 -%}\n    {%- for lx_i in (1..35) -%}\n      {%- assign lx_t = lx_t | plus: 86400 -%}\n      {%- assign lx_wt = lx_t | date: '%w' | plus: 0 -%}\n      {%- unless lx_wt == 0 or lx_wt == 6 -%}\n        {%- assign lx_n = lx_n | plus: 1 -%}\n        {%- if lx_n == lx_von -%}{%- assign d_from = lx_t -%}{%- endif -%}\n        {%- if lx_n == lx_bis -%}{%- assign d_to = lx_t -%}{%- break -%}{%- endif -%}\n      {%- endunless -%}\n    {%- endfor -%}\n  {%- endif -%}\n  {%- assign wf = d_from | date: '%w' | plus: 0 -%}\n  {%- if wf == 6 -%}{%- assign d_from = d_from | plus: 172800 -%}{%- elsif wf == 0 -%}{%- assign d_from = d_from | plus: 86400 -%}{%- endif -%}\n  {%- assign wt = d_to | date: '%w' | plus: 0 -%}\n  {%- if wt == 6 -%}{%- assign d_to = d_to | plus: 172800 -%}{%- elsif wt == 0 -%}{%- assign d_to = d_to | plus: 86400 -%}{%- endif -%}\n  {%- assign months = 'Jan.,Feb.,März,Apr.,Mai,Juni,Juli,Aug.,Sept.,Okt.,Nov.,Dez.' | split: ',' -%}\n  {%- assign mf = d_from | date: '%-m' | minus: 1 -%}{%- assign mt = d_to | date: '%-m' | minus: 1 -%}\n<li>📦&nbsp;Lieferung voraussichtlich <strong>{{ d_from | date: '%-d' }}. {{ months[mf] }} – {{ d_to | date: '%-d' }}. {{ months[mt] }}</strong> ({{ lux_lager }}{% if cart.item_count > 1 %}, langsamster Artikel{% endif %})</li>\n{%- else -%}\n<li>📦&nbsp;Lieferdatum steht auf jeder Produktseite</li>\n{%- endif -%}\n<li>💳&nbsp;TWINT · Klarna · Karten · PayPal · Apple Pay</li>\n<li>↩️&nbsp;30 Tage Rückgaberecht</li>\n<li>🇨🇭&nbsp;Schweizer Shop · Support auf Deutsch: info@luxestyle.ch</li>\n</ul></div>"
+      }
+    }
+  },
+  "order": [
+    "cart-section",
+    "lux_cart_trust",
+    "product_list_NNFgcy"
+  ]
+}

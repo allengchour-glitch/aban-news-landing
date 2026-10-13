@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-13 20:45 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-13 22:21 UTC)
 
-Suche: `status:active AND created_at:>=2026-10-10` · gemessen 837 · **478 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 388, teilweise: 62, keine: 28; Preisspanne > 2×: 75) · 1 CJ-Variante: 359 · ohne Antwort: 0
+Suche: `status:active AND created_at:>=2026-10-10` · gemessen 829 · **465 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 377, teilweise: 60, keine: 28; Preisspanne > 2×: 70) · 1 CJ-Variante: 364 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -30,10 +30,8 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Edelstahl-Armband mit Geburtsstein für Kinder (`edelstahl-armband-mit-geburtsstein-fur-kinder-633200`) | 36 | 36 | 3.47–3.93 | 16.90 | January-Gold, January-Silver, January-Rose Gold, February-Gold |
 | Keramik-Kaffeetasse mit Buchmotiv (`keramik-kaffeetasse-mit-buchmotiv-616700`) | 33 | 33 | 2.39–3.34 | 16.90 | Coffee  Green-Small Size, Coffee  Green-Medium, Coffee  Green-Large Size, Coffee Rice-Small Size |
 | Taschenschal mit grossem Karomuster (`taschenschal-mit-grossem-karomuster-637500`) | 33 | 17 | 2.0–2.0 | 16.90 | 01 Red Plaid-200X60CM, 02 Green And Pink Grid-200X60CM, 03 Blue And Green-200X60CM, 04 Black And Gray-200X60CM |
-| Reissfestes Hundegeschirr mit Leine (`reissfestes-hundegeschirr-mit-leine-774208`) | 32 | 32 | 2.19–3.17 | 16.90 | Blue-Towing rope and chest back-S, Blue-Towing rope and chest back-M, Blue-Towing rope and chest back-L, Blue-Towing rope and chest back-XL |
 | Faux-Kaschmir Schal für Herbst und Winter (`faux-kaschmir-schal-fur-herbst-und-winter-634800`) | 31 | 16 | 2.63–2.63 | 16.90 | T635 02-70X190, T635 01-70X190, T635 12-70X190, T635 13-70X190 |
 | Elektrischer Nacken- und Schultermassage-Schal (`elektrischer-nacken-und-schultermassage-schal-460544`) | 30 | 30 | 12.1–19.2 | 58.90 | Offwhite-Chinese version, Offwhite-AU, Offwhite-EU, Offwhite-UK |
-| Hundegeschirr mit Blumenmuster (`hundegeschirr-mit-blumenmuster-901312`) | 30 | 30 | 13.88–20.9 | 37.90 | Blue-XS, Blue-S, Blue-M, Blue-L |
 | Weihnachtskugel aus Plastik 24 × 6 cm (`weihnachtskugel-aus-plastik-24-6-cm-626300`) | 30 | 18 | 2.55–4.08 | 16.90 | New MJXK Wine Red Dark Green-24x24x6cm, MJXK Wine Red Champagne Gold-24x24x6cm, 616 89 Macarons-24x24x6cm, MJBK07 Wine Red Champagne Gold-24x24x6cm |
 | Schmuckset mit Wassertropfen-Anhänger (`schmuckset-mit-wassertropfen-anhanger-634400`) | 30 | 27 | 3.49–11.48 | 20.90 | Gold-5, Gold-6, Gold-7, Gold-8 |
 | Hunde-Jumpsuit atmungsaktiv (`hunde-jumpsuit-atmungsaktiv-633000`) | 30 | 30 | 4.35–5.23 | 16.90 | Light yellow sun-S, Light yellow sun-M, Light yellow sun-L, Light yellow sun-XL |
@@ -51,9 +49,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Geflochtene Ledertasche (`geflochtene-ledertasche-629600`) | 25 | 25 | 32.99–39.06 | 71.90 | Black-21x15x15CM, Black-30x20x26CM, White-21x15x15CM, White-30x20x26CM |
 | Stahlarmband mit TPU-Rahmen für Apple Watch (`stahlarmband-mit-tpu-rahmen-fur-apple-watch-806208`) | 24 | 24 | 3.62–5.46 | 16.90 | Silver-38MM40MM41MM, Silver-42MM44MM45MM, Black-38MM40MM41MM, Black-42MM44MM45MM |
 | Reflektierender Sitzgurtschloss für Hunde (`reflektierender-sitzgurtschloss-fur-hunde-0d6be9`) | 24 | 0 | 2.37–3.2 | 16.90 | Rose Red-S, Rose red rope-M, Blue-L, Black-L |
-| Tierschultergurt mit reflektierendem Stoff (`tierschultergurt-mit-reflektierendem-stoff-08d8c5`) | 24 | 0 | 3.39–4.89 | 16.90 | Red-XS, Green and tow rope-S, Red-M, Red and tow rope-XS |
-| Hunde Halsband S (`hunde-halsband-s-873c4f`) | 24 | 3 | 3.87–5.75 | 16.90 | 1Red-L, Yellow-L, Red-M, Blue-M |
-| Hundeleine mit Tragevest – Dunkelblau, Rosa, Lila (`hundeleine-mit-tragevest-dunkelblau-rosa-lila-613700`) | 24 | 24 | 16.25–33.85 | 44.90 | Dark Night Blue-S-Excluding traction rope, Dark Night Blue-S-Chest and back with rope, Dark Night Blue-XS-Excluding traction rope, Dark Night Blue-XS-Chest and back with rope |
 | Cross-Country Rucksack 22x48 cm (`cross-country-rucksack-22x48-cm-8505c5`) | 24 | 16 | 8.33–29.57 | 73.90 | 3pcs Black, 3pcs Blue, 3pcs Red, 1set |
 | Schutzhülle für iPad 9.7 (`schutzhulle-fur-ipad-9-7-752c92`) | 24 | 0 | 8.18–8.52 | 17.90 | Blue-New iPad 2018, Black-Mini1234, Black-IPad pro 9.7, Beige-New iPad 2018 |
 | Romantische Sommerblumen Wandbild (`romantische-sommerblumen-wandbild-607500`) | 24 | 24 | 11.66–11.66 | 23.90 | A-Log frame-30x40cm, A-Teak frame-30x40cm, A-Walnut frame-30x40cm, B-Log frame-30x40cm |
@@ -63,7 +58,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Kaschmir-Schal mit Lilien-Stickerei (`kaschmir-schal-mit-lilien-stickerei-619200`) | 23 | 16 | 4.01–4.01 | 16.90 | Hole Blue-70x200cm, Black-70x200cm, Light Purple-70x200cm, Bright Red-70x200cm |
 | Schal mit Kronen-Stickerei (`schal-mit-kronen-stickerei-601700`) | 23 | 17 | 4.01–4.01 | 17.90 | Navy Blue-200cm, Milky White-200cm, Denim Blue-200cm, Purplish Red-200cm |
 | Fahrzeug-Wechselrichter (`fahrzeug-wechselrichter-6467f8`) | 22 | 19 | 10.22–40.04 | 52.90 | 1200W48V, 1200W60V, 1600W60V, 1600W24V |
-| Hundelaufgeschirr für Welpen (`hundelaufgeschirr-fur-welpen-287eb5`) | 21 | 21 | 2.59–5.51 | 16.90 | Grey-L, Grey-XS, Green-M, Blue1-M |
 | Holzpuzzle für Erwachsene – 1000 Teile (`holzpuzzle-fur-erwachsene-1000-teile-026944`) | 21 | 20 | 3.1–3.45 | 18.90 | Love palette, Babylon Tower, Venice in the evening, Colorful house |
 | Titanring mit EKG-Muster (`titanring-mit-ekg-muster-618400`) | 21 | 21 | 4.44–4.44 | 16.90 | 6mm Silver-US Size 4, 6mm Silver-US Size 4.5, 6mm Silver-US Size 5.5, 6mm Silver-US Size 7.5 |
 | Titanstahl-Ring mit Leopardenmuster (`titanstahl-ring-mit-leopardenmuster-603800`) | 21 | 21 | 2.11–2.28 | 16.90 | Silver-No 7, Silver-No 8, Silver-No 9, Silver-No 10 |
@@ -82,7 +76,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Sporttasche Fussball-Rucksack (`sporttasche-fussball-rucksack-38b2f6`) | 19 | 19 | 4.7–7.22 | 27.90 | Black blue-Big upgrade, Orange-Big upgrade, Orange-Ordinary, Orange-Thicker version |
 | Retro Mini-Portemonnaie aus Leder (`retro-mini-portemonnaie-aus-leder-601200`) | 19 | 17 | 3.35–3.35 | 16.90 | Wine Red, Sapphire Blue, Black, Brown |
 | Lordosenstütze und Nackenkissen für Autositze (`lordosenstutze-und-nackenkissen-fur-autositze-e37c28`) | 18 | 16 | 5.93–13.39 | 43.90 | A piece-Beige, PILLOW-Purple, PILLOW-Gray, Twopiece-Beige |
-| Hundegeschirr mit Leine, reflektierend (`hundegeschirr-mit-leine-reflektierend-838272`) | 18 | 18 | 4.05–6.27 | 16.90 | Grey-S, Grey-M, Grey-L, earthy yellow-S |
 | Hundegeschirr für Hinter- oder Vorderbeine (`hundegeschirr-fur-hinter-oder-vorderbeine-878144`) | 18 | 18 | 3.56–5.06 | 16.90 | Red-Front leg-S, Red-Front leg-M, Red-Front leg-L, Red-Hind legs-S |
 | Anti-Lost-Halsband für Hunde (`anti-lost-halsband-fur-hunde-605700`) | 18 | 18 | 5.1–6.5 | 16.90 | Black-S, Black-M, Black-L, Gray-S |
 | Herren-Armband aus Edelstahl und Leder (`herren-armband-aus-edelstahl-und-leder-639900`) | 18 | 18 | 2.07–2.6 | 16.90 | M934 Gold-19cm, M934 Gold-21cm, M934 Gold-23cm, M934 Steel Color-19cm |
@@ -117,7 +110,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Bluetooth-Tastaturhülle (`bluetooth-tastaturhulle-4b80f0`) | 14 | 1 | 3.81–5.74 | 16.90 | White-10 inch, Gold-7 to 8 inch, White-7 to 8 inch, Irose red-10 inch |
 | Hundeharnisch mit Zugseil (`hundeharnisch-mit-zugseil-afb680`) | 14 | 14 | 10.35–15.32 | 27.90 | Black carbon molecule-L, Vibrant pink-L, Space adventurer-S, Space adventurer-M |
 | Gestrickte Umhängetasche (`gestrickte-umhangetasche-623700`) | 14 | 14 | 8.51–8.51 | 23.90 | Beige-30.5x4.5x13CM, Silver-30.5x4.5x13CM, Black-30.5x4.5x13CM, Pink-30.5x4.5x13CM |
-| Katzengeschirr mit Leine – reissfest & reflektierend (`katzengeschirr-mit-leine-reissfest-reflektiere-354176`) | 13 | 13 | 2.53–5.86 | 16.90 | Green -S, Green -M, Green -L, Pink-S |
 | Pilates-Matte mit Anti-Rutsch-Sohle (`pilates-matte-mit-anti-rutsch-sohle-624000`) | 13 | 13 | 4.6–6.6 | 18.90 | Black-Single Story, Black-Two Story, Grass Green-Single Story, Green-Single Story |
 | Bambus-Section Leinen Viskose Cape für Damen (`bambus-section-leinen-viskose-cape-fur-damen-627400`) | 13 | 13 | 4.7–4.7 | 16.90 | Retro Red-168CM, Forest Green-168CM, Cheese Yellow-168CM, Soft Mist Powder-168CM |
 | Kaschmir-Schal mit Stickerei für den Winter (`kaschmir-schal-mit-stickerei-fur-den-winter-628400`) | 13 | 13 | 4.01–4.01 | 18.90 | Purplish Red-200cm, Orange-200cm, Milky White-200cm, Bright Red-200cm |
@@ -127,10 +119,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Sitzlücken-Organizer (`sitzlucken-organizer-9e8e33`) | 12 | 12 | 5.12–10.12 | 27.90 | Black-2-Main driving copilot, Beige-1-Main driving, Black-1-Copilot, Grey-1-Copilot |
 | Atmungsaktiver Vierjahres-Sitzkissen aus Nappa-Leder (`atmungsaktiver-vierjahres-sitzkissen-aus-nappa-618300`) | 12 | 12 | 5.8–14.93 | 37.90 | Chestnut Brown-Front row, Emma Orange-Front row, Volcano Red-Front row, Haze Purple-Front row |
 | Kopfstützen- und Lordosenstützkissen fürs Auto (`kopfstutzen-und-lordosenstutzkissen-furs-auto-403456`) | 12 | 12 | 2.63–6.63 | 31.90 | Gray Upgrade Angel-Headrest, Gray Upgrade Angel-Lumbar Support Pillow, Gray Upgrade Angel-Suit, Black Upgrade Angel-Headrest |
-| 12V Starthilfe Power Bank 500A (`12v-jumpstarter-power-bank-500a-624600`) | 12 | 12 | 21.7–26.04 | 73.90 | EVA package-EU, EVA package-UK, EVA package-US, EVA package-AU |
-| Wandteppich mit Druck (`wandteppich-mit-druck-49ab09`) | 12 | 12 | 2.71–5.06 | 21.90 | A-150x230cm, A-150x130cm thick, B-150x230cm, B-150x130cm |
-| Wandteppich Waldmotiv (`wandteppich-waldmotiv-040209`) | 12 | 12 | 2.79–5.5 | 22.90 | B-150X130cm, B-150x100cm thick, B-150x230cm thick, A-150X230cm |
-| Pet Brustschutz DODOPET (`pet-brustschutz-dodopet-87d4a3`) | 12 | 3 | 3.51–4.27 | 16.90 | Red blue-S, Red-L, Red blue-L, Blue-M |
 | Reissfeste Hundeleine mit reflektierendem Band (`reissfeste-hundeleine-mit-reflektierendem-band-67fa0c`) | 12 | 12 | 4.11–5.4 | 16.90 | Color A-S, Black-M, Color A-L, Camouflage-M |
 | Isolierter Picknick-Rucksack 23-27 L (`isolierter-picknick-rucksack-23-27-l-891776`) | 12 | 12 | 7.5–8.29 | 31.90 | Jungle camouflage, Jungle camouflage XL, Blue standard, Grey standard |
 | Blumen Pilz Perlenhalskette (`blumen-pilz-perlenhalskette-627600`) | 12 | 12 | 2.2–3.61 | 16.90 | N1493 Blue And Yellow, N1492 Pink And White, N1494 Green Purple, N1506 Green Series |
@@ -160,7 +148,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Nackenkissen für Auto mit Memory-Schaum (`nackenkissen-fur-auto-mit-memory-schaum-b4c788`) | 10 | 10 | 5.67–11.52 | 41.90 | Elegant rice 2pcs, Pearl black 2pcs, Cayenne Color 2PCS, Claret 2PCS |
 | Aufbewahrungstasche für Auto, Würfelform (`aufbewahrungstasche-fur-auto-wurfelform-c38676`) | 10 | 10 | 5.29–5.97 | 20.90 | Green, Blue Whale, Lion, Car |
 | Trinkwasserfilter 14 L/h – 8-Lagen-Aktivkohle (`trinkwasserfilter-14-l-h-8-lagen-aktivkohle-620400`) | 10 | 10 | 2.5–30.68 | 99.90 | 14L-A/10, 16L-A/10, 20L-A/10, 6stage filter-A/10 |
-| Taschenrucksack mit Lauf-Leine für Hunde (`taschenrucksack-mit-lauf-leine-fur-hunde-618600`) | 10 | 10 | 3.49–4.41 | 16.90 | green-2.5cmx140cm-Waist bag style, green-2.5cmx140cm-Water cup style, orange-2.5cmx140cm-Waist bag style, orange-2.5cmx140cm-Water cup style |
 | Business-Rucksack für Herren, 36-55 L, schwarz (`business-rucksack-fur-herren-36-55-l-schwarz-423552`) | 10 | 10 | 21.21–22.73 | 61.90 | Black, Blue, Green, Grey |
 | Sportliche Crossbody-Chestbag aus Nylon (`sportliche-crossbody-chestbag-aus-nylon-7fd998`) | 10 | 10 | 4.49–4.63 | 16.90 | Khaki-Left, Black-Left, Camouflage1-Right, Green-Right |
 | Wasserdichter Reisesack mit Laptopfach (`wasserdichter-reisesack-mit-laptopfach-0b53b3`) | 10 | 10 | 42.71–47.65 | 79.90 | Scarlet-Large, Scarlet-Medium, Cyan-Large, Black-Large |
@@ -195,6 +182,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Regenkette aus Kupfer-Aluminium-Legierung (`regenkette-aus-kupfer-aluminium-legierung-605800`) | 9 | 9 | 15.75–115.67 | 168.90 | Acorns-Aluminum Alloy-Black, Acorns-Aluminum Alloy-Imitation Copper, Acorns-Copper-Distressed, Acorns-Copper-Ordinary |
 | Mountainbike-Schutzfolie (`mountainbike-schutzfolie-678016`) | 9 | 6 | 6.86–7.32 | 16.90 | Color, Transparent, Snake Head, Wolf Head |
 | Outdoor-Rucksack 80 L (`outdoor-rucksack-80-l-02a1cd`) | 9 | 9 | 5.35–7.79 | 43.90 | Jungle, CP camouflage, Night Camouflage, Urban camouflage |
+| Ski-Goggles mit Doppel-Schicht Anti-Fog (`ski-goggles-mit-doppel-schicht-anti-fog-611900`) | 9 | 9 | 10.94–10.94 | 20.90 | White Frame Red Film, Silver Black Frame Silver, Black Frame Silver Strip, White Frame Silver |
 | Mosaik-Schachbrett-Kunstharz-Armband 22 mm (`mosaik-schachbrett-resin-armband-22-mm-788928`) | 8 | 8 | 5.46–5.46 | 16.90 | Pink white-38mm40mm41mm, Pink white-42mm44mm45mm, Red white green yellow-38mm40mm41mm, Red white green yellow-42mm44mm45mm |
 | Zinn-Glasperlen Armband für Apple Watch (`zinn-glasperlen-armband-fur-apple-watch-425088`) | 8 | 8 | 11.72–11.72 | 20.90 | Black-38mm40mm41mm, Black-42mm44mm45mm, Silver-38mm40mm41mm, Silver-42mm44mm45mm |
 | Smartwatch-Haarring-Loop-Set für Apple Watch (`smartwatch-haarring-loop-set-fur-apple-watch-909952`) | 8 | 8 | 4.82–4.82 | 16.90 | Red-38mm40mm41mm, Red-42mm44mm45mm, White red-38mm40mm41mm, White red-42mm44mm45mm |
@@ -205,7 +193,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Ergonomisches Lendenkissen mit Höhenverstellung (`ergonomisches-lendenkissen-mit-hohenverstellun-252f36`) | 8 | 8 | 4.47–5.65 | 37.90 | Gray-routine, Rice-routine, Black-routine, Orange-routine |
 | HD-Projektor mit kabelloser Bildschirmspiegelung (`hd-projektor-mit-kabelloser-bildschirmspiegelu-601900`) | 8 | 8 | 14.93–15.97 | 39.90 | Wired Same Screen-US, Wired Same Screen-EU, Wired Same Screen-UK, Wired Same Screen-AU |
 | Lenkrad-Zierleiste für Challenger (`lenkrad-zierleiste-fur-challenger-617900`) | 8 | 8 | 3.35–7.46 | 16.90 | Carbon Fiber, Chinese Red, Stoving Varnish Black, Carbon Fiber Red |
-| Schmetterlings-Kissen für Nackenschutz (`schmetterlings-kissen-fur-nackenschutz-606700`) | 8 | 8 | 15.11–34.79 | 81.90 | 3.0 Traction Pillow 1 Pair, 3.0 Traction Pillow 1pcs, 3.0 with pillowcase 1 pair, 3.0 with pillowcase 1pcs |
 | Vakuumversiegelungsmaschine für Lebensmittel (`vakuumversiegelungsmaschine-fur-lebensmittel-ec7642`) | 8 | 4 | 37.37–37.37 | 85.90 | Orange-EU, Green-UK, Green-CHN, Orange-CHN |
 | Hundeslinge mit Zugseil – 1,5 cm breit (`hundeslinge-mit-zugseil-1-5-cm-breit-f07623`) | 8 | 0 | 5.13–5.58 | 16.90 | Grey-S-1.5cm, Orange-M-2cm, Grey-M-2cm, Pink-S-1.5cm |
 | Taktische Hundeweste aus 600D Nylon (`taktische-hundeweste-aus-600d-nylon-21d2a7`) | 8 | 2 | 4.14–4.14 | 16.90 | Army Green-L, Earthy-S, CP-L, Black-L |
@@ -231,7 +218,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Notizbuch mit PU-Leder-Einband (`notizbuch-mit-pu-leder-einband-616600`) | 8 | 8 | 2.02–2.02 | 16.90 | Gentleman Gray, Bean Green, Brown, Sky Blue |
 | Leder Portemonnaie mit Schnalle (`leder-portemonnaie-mit-schnalle-625200`) | 8 | 8 | 6.3–6.3 | 16.90 | Vintage Brown, Vibrant Orange, Midnight Black, Wine Red |
 | Sitzbezug für alle Jahreszeiten (`sitzbezug-fur-alle-jahreszeiten-a8f1bb`) | 7 | 7 | 4.7–16.31 | 36.90 | Black A, Red, Blue, Brown |
-| Transparente PVC Schneidmatte – 1 m² (`transparente-pvc-schneidmatte-1-m-296cb3`) | 7 | 0 | 1.19–3.69 | 16.90 | A5, A4, 15x10cm, 10x10cm |
 | Holzpuppet Soldat 30 cm – Europäischer Stil (`holzpuppet-soldat-30-cm-europaischer-stil-341888`) | 7 | 7 | 3.66–3.66 | 16.90 | Drummer-30cm, Axeman-30cm, Take the sword-30cm, 30cm red cloth King-30cm |
 | Multifunktionaler Militär-Rucksack 27 L (`multifunktionaler-militar-rucksack-27-l-972a42`) | 7 | 7 | 5.08–7.13 | 32.90 | Black, Army Green, Jungle camouflage, ACU camouflage |
 | Rindsleder-Schultertasche für den Alltag (`rindsleder-schultertasche-fur-den-alltag-616100`) | 7 | 7 | 20.49–23.44 | 44.90 | 9331 Dark Brown, 9331 Bright brown, 9331 Light Brown, 9331 Red brown |
@@ -253,13 +239,10 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Tarn-Rucksack für Herren (`tarn-rucksack-fur-herren-b98711`) | 7 | 7 | 8.39–66.11 | 117.90 | Army Geen, Desert camouflage, Black, Desert camouflage2 |
 | Mountainbike-Rahmenschutzfolie (`mountainbike-rahmenschutzfolie-956416`) | 7 | 7 | 3.85–4.73 | 16.90 | Transparent Diamond Pattern, Transparent Orange Peel, Magic Big Mouth, Magic Octopus |
 | Bluetooth Grillthermometer-Fühler (`bluetooth-grillthermometer-fuhler-553f4f`) | 6 | 6 | 2.0–153.23 | 193.90 | TY520, TY530 2pcs, TY530 3pcs, TY530 4pcs |
-| Cartoon-Kissen Reisrolle (`cartoon-kissen-reisrolle-617100`) | 6 | 6 | 2.6–4.95 | 39.90 | Cheese Color-40CM, Cheese Color-60CM, Rice Ball Color-40CM, Rice Ball Color-60CM |
 | Nackenstützkissen mit Wabenstruktur (`nackenstutzkissen-mit-wabenstruktur-623600`) | 6 | 6 | 3.62–8.48 | 62.90 | Low Loft Pillow 1PCs-Default Item, Medium Pillow 1PCs-Default Item, High Pillow 1PCs-Default Item, Low Loft Pillow Pairs-Default Item |
 | Kissen für Nackenschutz (`kissen-fur-nackenschutz-621400`) | 6 | 6 | 7.62–15.09 | 61.90 | A pair of low pillows, A pair of middle pillows, A pair of high pillows, Low pillow single |
 | Wandteppich mit europäischem Motiv (`wandteppich-mit-europaischem-motiv-e1fa6b`) | 6 | 6 | 2.57–5.06 | 21.90 | Color-150x100cm thick, Color-150x130cm thick, Color-150x230cm thick, Color-150×230cm |
-| Wandteppich mit Wasserfall-Motiv (`wandteppich-mit-wasserfall-motiv-0bf0ac`) | 6 | 6 | 2.57–5.06 | 17.90 | BLACK-150X130cm, BLACK-150x100cm thick, BLACK-150x230cm thick, BLACK-150X100cm |
 | Hundegeschirr mit reissfester Leine (`hundegeschirr-mit-reissfester-leine-418816`) | 6 | 6 | 3.17–4.9 | 16.90 | Green-Leash, Green-Chest strap S, Green-Chest strap M, Blue-Leash |
-| Hundeharnisch mit Zugseil – rosa/ grau/ himmelblau (`hundeharnisch-mit-zugseil-rosa-grau-himmelblau-8b1e68`) | 6 | 2 | 2.4–2.59 | 16.90 | Grey-1.5, Blue-1.0, Blue-1.5, Grey-1.0 |
 | Grosser Laptop-Rucksack 56-75 L (`grosser-laptop-rucksack-56-75-l-6adffb`) | 6 | 6 | 7.48–8.98 | 18.90 | Dark Grey-Big, White grey-Medium, Dark Grey-Medium, Black-Medium |
 | Hörverstärker 6-Kanal kabellos (`horverstarker-6-kanal-kabellos-610300`) | 6 | 6 | 63.02–63.02 | 79.90 | Champagne Left Ear, Champagne Right Ear, Pearl Gray Left Ear, Pearl Gray  Right Ear |
 | Reise-Set für Organisation und Aufbewahrung (`reise-set-fur-organisation-und-aufbewahrung-776768`) | 6 | 6 | 6.14–6.14 | 18.90 | Purple, Black, Grey, Khaki |
@@ -295,13 +278,15 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Acryl-Marker-Set für Kunst und Graffiti (`acryl-marker-set-fur-kunst-und-graffiti-602800`) | 6 | 6 | 3.0–18.17 | 45.90 | 12 Colors Suit, 24 Colors Suit, 36 Colors Suit, 48 Colors Suit |
 | Portemonnaie mit Reissverschluss aus Rindsleder (`portemonnaie-mit-reissverschluss-aus-rindslede-608600`) | 6 | 6 | 5.97–5.97 | 16.90 | Wine Red, Black, Pink Purple, Elephant Gray |
 | Faltbare Reisetasche (`faltbare-reisetasche-d797a1`) | 6 | 6 | 7.48–7.48 | 17.90 | Rainforest, Moonlit jungle, Vibrant Orange, Dark Blue |
+| Rucksack 600D Oxford, 38x26x14 cm, 0,7 kg (`rucksack-600d-oxford-38x26x14-cm-0-7-kg-823ba6`) | 6 | 1 | 16.74–18.14 | 40.90 | Black brown belt, Brown stripe, Black belt, Grey pinstripe |
+| Reiseaufbewahrungsbeutel 24×13×14 cm (`reiseaufbewahrungsbeutel-24-13-14-cm-812649`) | 6 | 0 | 5.81–6.83 | 17.90 | Grey, Blue, Coffee, Black |
+| Grosses wasserdichtes Schultertasche Retro (`grosses-wasserdichtes-schultertasche-retro-620300`) | 6 | 6 | 5.47–5.47 | 18.90 | Beige, Gray, Black, Blue |
 | Smartwatch mit 1,3" TFT-Display (`smartwatch-mit-1-3-tft-display-326144`) | 5 | 5 | 15.5–16.7 | 25.90 | Black plate black glue, Black steel belt, Silver plate red glue, Silver steel belt |
 | USB-Aufladebatterie 1200 mAh (`usb-aufladebatterie-1200-mah-79a81e`) | 5 | 5 | 5.96–71.56 | 90.90 | 6knots, 12knots, 2 knot, 1 knot |
 | 5-in-1 tragbares Solar-Notfallradio (`5-in-1-tragbares-solarlaufwerk-mit-radio-63ab0e`) | 5 | 5 | 11.78–35.34 | 65.90 | Orange NOAA, Orange Japanese Edition, Red 3PCS, Red |
 | Sitzbezüge aus Voll-Kunstleder mit Rautensteppung – 9-teiliges Set (`all-leather-diamond-quilted-sitzbezuge-9-teili-616100`) | 5 | 5 | 9.91–9.91 | 38.90 | Black And Black-9piece set , Black Orange-9piece set , Black And Red-9piece set , Black And Gray-9piece set  |
 | Sicherheitsgurt-Abdeckung aus Leder (`sicherheitsgurt-abdeckung-aus-leder-764480`) | 5 | 5 | 21.23–21.23 | 30.90 | Leather Black Thread-Other, Leather Red Line-Other, Leather Blue Line-Other, Carbon Gray Suede Black Thread-Other |
 | Bambusfaser Baby-Kissen 20 × 50 cm (`bambusfaser-baby-kissen-20-50-cm-601200`) | 5 | 5 | 4.02–4.02 | 19.90 | Pink Rabbit Bamboo Fiber, Blue Mouse Bamboo Fiber, Pink Mouse Bamboo Fiber, Green Frog Bamboo Fiber |
-| Schwangerschaftskissen für Bauchstütze (`schwangerschaftskissen-fur-bauchstutze-619000`) | 5 | 5 | 3.18–3.34 | 19.90 | Romanti Pink-Free Size, Roman Blue-Free Size, Animal Kingdom-Free Size, Happy Cow-Free Size |
 | Zange mit langer Nadel, 280 mm (`zange-mit-langer-nadel-280-mm-98f2cc`) | 5 | 0 | 1.34–1.5 | 16.90 | 25 degree-11inches, 45 degree-11inches, 90 degree-11inches, Needle nose pliers-11inch |
 | Dauerhafter Hundehalsband mit Zugtrennriemen XS (`dauerhafter-hundehalsband-mit-zugtrennriemen-x-534016`) | 5 | 5 | 5.77–5.77 | 16.90 | Blue-L, Blue-M, Blue-S, Blue-XL |
 | Holz-Bausatz zum Selberbauen (`holz-bausatz-zum-selberbauen-529600`) | 5 | 5 | 3.57–33.0 | 63.90 | TG406, TG302, AM601, MC502 |
@@ -332,8 +317,8 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Robuste Outdoor-Handytasche (`robuste-outdoor-handytasche-614100`) | 5 | 5 | 2.57–2.57 | 16.90 | Black-16.5X9.5CM, Khaki-16.5X9.5CM, Green-16.5X9.5CM, ACU-16.5X9.5CM |
 | Rutschfeste Eingangsmatte 43x75 cm (`rutschfeste-eingangsmatte-43x75-cm-636100`) | 5 | 5 | 6.93–6.93 | 32.90 | Gray-43x75cm, Gray 2-43x75cm, Khaki-43x75cm, Gray 3-43x75cm |
 | 15-Zoll-Computer-Rucksack mit USB (`15-zoll-computer-rucksack-mit-usb-53b4da`) | 5 | 0 | 6.74–7.4 | 30.90 | Black nylon, Black, Grey nylon, Grey |
-| Business-Rucksack 36-55L mit mehreren Fächern (`business-rucksack-36-55l-mit-mehreren-fachern-cded4d`) | 5 | 5 | 12.63–12.63 | 25.90 | Black, Light grey, Wine Red, Red |
-| Armbanduhr CHENXI CX-004a – Zifferblatt mit Strasssteinen (`armbanduhr-chenxi-cx-004a-zifferblatt-mit-stra-29c3d9`) | 5 | 1 | 5.28–5.28 | 16.90 | White-For women, Blue-For women, Gold-For women, Black-For women |
+| Taktische Angeltasche Schwarz 100 cm (`taktische-angeltasche-schwarz-100-cm-9b8af2`) | 5 | 0 | 6.74–6.74 | 30.90 | ACU-1m, Black-1m, Nissan-1m, CP-1m |
+| Schiessdecke Training 200x75 cm 1000D Nylon (`schiessdecke-training-200x75-cm-1000d-nylon-b8ed7f`) | 5 | 5 | 12.65–12.65 | 27.90 | Black, Khaki, Camouflage A, Ruin camouflage |
 | Kinder Smartwatch A63 – GPS, Kamera, 1,44" Display (`kinder-smartwatch-a63-gps-kamera-1-44-display-305472`) | 4 | 4 | 19.6–28.62 | 38.90 | Green-Single camera-USB, Green-Rotating dual camera-USB, Purple-Single camera-USB, Purple-Rotating dual camera-USB |
 | 3D Nachtlicht mit 7-Farben-Touch-Schalter (`3d-nachtlicht-mit-7-farben-touch-schalter-bc58d1`) | 4 | 4 | 4.12–5.06 | 17.90 | Blue Remote 16 Colors Set, Blue Touch 7 Colors Set, Red Touch 7 Colors Set, Red Remote 16 Colors Set |
 | Infrarot-Thermometer Schussgerät (`infrarot-thermometer-schussgerat-2a72b9`) | 4 | 0 | 7.54–22.63 | 44.90 | DN997 purple, DN997 purple 2pcs, White, DN997 purple 3pcs |
@@ -342,9 +327,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Handstaubsauger mit Saug- und Stossfunktion (`handstaubsauger-mit-saug-und-stossfunktion-604100`) | 4 | 4 | 12.44–12.44 | 34.90 | Silver Gray Purple, Silver Gray Blue, Silver Red, Black Gold Custom Color |
 | Auto-Sticker Zebra-Muster (`auto-sticker-zebra-muster-615300`) | 4 | 4 | 2.18–2.18 | 16.90 | Zebra Style-50x150CM, Warning Line-50x150CM, Black And White Plaid-50x150CM, Classic Black And White-50x150CM |
 | Handgefertigter Doppler zur Fetalbeat-Messung (`handgefertigter-doppler-zur-fetalbeat-messung-20fd87`) | 4 | 4 | 23.68–45.83 | 66.90 | Pink, 02.pink, Blue, White |
-| Seitenschläferkissen für Schwangerschaft (`seitenschlaferkissen-fur-schwangerschaft-610800`) | 4 | 4 | 3.18–3.18 | 19.90 | Romanti Pink-Free Size, Roman Blue-Free Size, Animal Kingdom-Free Size, Happy Cow-Free Size |
-| Weihnachtsstrumpf-Geschenkbeutel Anhänger (`weihnachtsstrumpf-geschenkbeutel-anhanger-623500`) | 4 | 4 | 2.54–2.54 | 16.90 | Elk, Penguin, Santa Claus, Snowman |
-| Taktische Hundetasche aus 1000D Nylon (`taktische-hundetasche-aus-1000d-nylon-98b0c8`) | 4 | 1 | 21.3–21.3 | 34.90 | Smoky green, Black, Tactical grey, Wolf brown |
 | Kleine Bausteine City Building Set (`kleine-bausteine-city-building-set-201728`) | 4 | 4 | 2.49–3.89 | 20.90 | 168PCS color box, 165pcs box packaging, 165pcs opp bag packaging, 336 particle color box |
 | Ultraschall-Fettabbaugerät (`ultraschall-fettabbaugerat-244032`) | 4 | 4 | 73.08–73.08 | 128.90 | White-U.S., White-EUR, White-UK, White-AUS |
 | Kleine ABS-Teile für Bau- und Experimentierspiel (`kleine-abs-teile-fur-bau-und-experimentierspie-987520`) | 4 | 4 | 4.25–4.25 | 19.90 | Sweetheart handmade, Afternoon time, Annies studio, Sunshine Flower House |
@@ -386,14 +368,11 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Regenkette mit Vögeln (`regenkette-mit-vogeln-638700`) | 4 | 4 | 4.02–5.97 | 21.90 | Black-4PCS, Black-6PCS, Black-8PCS, Copper Color-8PCS |
 | Regenkette aus Metall (`regenkette-aus-metall-608000`) | 4 | 4 | 4.86–6.63 | 24.90 | Rotating Rain Chain, Umbrella Rain Chain, Mushroom Rain Chain, Pinecone Rain Chain |
 | Picknick-Kühltasche für unterwegs (`picknick-kuhltasche-fur-unterwegs-603000`) | 4 | 4 | 4.53–4.53 | 16.90 | Black, Gray, Khaki Bag, Blue |
-| Gitarren-Gig-Tasche (`gitarren-gig-tasche-f01f4b`) | 4 | 4 | 9.02–9.02 | 29.90 | Black-40in, Black-41in, Black-38in, Black-39in |
-| Wasserdichte Quarz-Uhr 30 m (`wasserdichte-quarz-uhr-30-m-942e44`) | 4 | 1 | 13.76–13.76 | 23.90 | Green Silver, Red, Green, Red Silver |
 | Daumen-Hülle für Gaming (`daumen-hulle-fur-gaming-27db26`) | 3 | 0 | 5.0–9.88 | 18.90 | A pair, 2pairs, Green |
 | USB-Ethernet-Adapter mit 3-Port-USB-Hub (`usb-ethernet-adapter-mit-3-port-usb-hub-46adc4`) | 3 | 3 | 11.44–21.58 | 38.90 | USB3.0-100M, USB3.0-Gigabit, USB2.0-100M |
 | Automatischer Schuhüberzugsspender (`automatischer-schuhuberzugsspender-065033`) | 3 | 3 | 4.17–26.92 | 88.90 | Shoe film width 15cm, Silver, Gold |
 | Phosphor-Bronze Folk-Akustikgitarrensaiten (`phosphor-bronze-folk-akustikgitarrensaiten-b110d4`) | 3 | 1 | 2.7–2.7 | 16.90 | Medium 011x052, Light 010x047, Heavy 012 x053 |
 | Rücksitz-Organizer für Auto (`rucksitz-organizer-fur-auto-154a34`) | 3 | 3 | 3.06–6.2 | 22.90 | Black 2PCS-L, Black-L, Black-S |
-| WLAN-Router (`wlan-router-91ee9e`) | 3 | 0 | 37.48–50.77 | 68.90 | 6 templates, International version, 5 templates |
 | Fusselentferner – elektrisch (`fusselentferner-elektrisch-6a296a`) | 3 | 3 | 3.39–5.64 | 16.90 | Plug in, Battery, USB white |
 | Nackenkissen mit Nackenstütze (`nackenkissen-mit-nackenstutze-616800`) | 3 | 3 | 2.63–2.99 | 25.90 | Plaid Low Loft Pillow Single-48 x74cm, Plaid Medium Pillow Single-48 x74cm, Plaid High Pillow Single Pack-48 x74cm |
 | Känguru-Formiges Katzenspielzeug mit Katzenminze (`kanguru-formiges-katzenspielzeug-mit-katzenmin-629900`) | 3 | 3 | 3.58–4.6 | 16.90 | D Kangaroo Wrestler Toy, A Cat Hand Puppet, B Cat Hand Puppet Toy |
@@ -433,6 +412,10 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Rucksack mit Zahlenschloss (`rucksack-mit-zahlenschloss-a44781`) | 3 | 3 | 20.93–22.02 | 60.90 | Upgrade gray, Upgrade Black, Regular Black |
 | Taktische Umhängetasche (`taktische-umhangetasche-626100`) | 3 | 3 | 5.04–5.04 | 16.90 | Black-Below 20L, Scorpio-Below 20L, Dark Night-Below 20L |
 | Foto-Nachtlicht mit personalisiertem Bild (`foto-nachtlicht-mit-personalisiertem-bild-637100`) | 3 | 3 | 8.14–9.68 | 23.90 | 3Colors-USB Power Plug in, 7Colors-USB Power Plug in, 1Colors-USB Power Plug in |
+| Business-Backpack für Reisen 20-35 L (`business-backpack-fur-reisen-20-35-l-0b5893`) | 3 | 1 | 4.15–4.15 | 29.90 | Black, Gray, Blue |
+| Business-Computer-Tasche aus wasserdichtem Oxford (`business-computer-tasche-aus-wasserdichtem-oxf-bac557`) | 3 | 1 | 11.48–11.48 | 37.90 | Black-20 inches, Wine red-20 inches, Grey-20 inches |
+| Mannlicher Schultertasche PU Leder 10" (`mannlicher-schultertasche-pu-leder-10-604400`) | 3 | 0 | 3.52–3.52 | 18.90 | 9120 Light Brown-10 inches, 9120 Dark Brown-10 inches, 9120 Black-10 inches |
+| Cargobag mit Kette – Schwarz, Gold, Silber (`cargobag-mit-kette-schwarz-gold-silber-612200`) | 3 | 3 | 22.39–22.39 | 43.90 | Black, Gold, Silver |
 | Smartwatch mit NFC, Offline Call & Sportfunktionen (`smartwatch-mit-nfc-offline-call-sportfunktione-729216`) | 2 | 2 | 26.92–26.92 | 39.90 | Black Gold King Kong-Plus a silicone strap, Black Silver Silver Steel-Plus a silicone strap |
 | U-Form Massagekissen für Nacken (`u-form-massagekissen-fur-nacken-776448`) | 2 | 2 | 5.31–7.85 | 27.90 | A-USB, B-USB |
 | USB-C-Hub mit HDMI, VGA, Ethernet und Kartenleser (`usb-c-hub-mit-hdmi-vga-ethernet-und-kartenlese-d8ea0f`) | 2 | 1 | 56.22–57.92 | 77.90 | 11 in 1, 10 in 1 |
@@ -442,12 +425,10 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Universal Autositzbezug Set schwarz (`universal-autositzbezug-set-schwarz-cdb012`) | 2 | 1 | 2.74–3.98 | 16.90 | Front single seat 2, Rear three seat cover |
 | Fahrzeug-Diagnose-Tool (`fahrzeug-diagnose-tool-f06f58`) | 2 | 2 | 2.13–4.82 | 16.90 | V1.5, V2.1 |
 | Fahrrad-Stoppuhr mit grossem Bildschirm (`bicycle-stopwatch-mit-grossem-bildschirm-3df803`) | 2 | 2 | 7.05–7.05 | 16.90 | White light wireless, Greenlight Wireless |
-| Notebook-Kühler 294×65×65 cm (`notebook-kuhler-294-65-65-cm-68987f`) | 2 | 0 | 12.25–13.63 | 32.90 | Black, Black with support |
 | Resin-Tastenkappe für mechanische Tastatur (`resin-tastenkappe-fur-mechanische-tastatur-41d847`) | 2 | 2 | 7.09–7.09 | 29.90 | White, Black |
 | Kabellose Maus mit farbigem Hintergrundlicht (`kabellose-maus-mit-farbigem-hintergrundlicht-7fd15b`) | 2 | 2 | 8.84–8.84 | 17.90 | Russian, English |
 | Zange zum Nageln von Hühnerkäfigen (`zange-zum-nageln-von-huhnerkafigen-6f7afd`) | 2 | 2 | 1.65–4.57 | 22.90 | Pliers, Nail |
 | Grünes Auto-Ladegerät 12-24V mit abwickelbarem Kabel (`grunes-auto-ladegerat-12-24v-mit-abwickelbarem-602400`) | 2 | 2 | 9.57–9.57 | 18.90 | Dark Green-Type c, Dark Green-Type c and Lightning |
-| Körperhalsband mit Leine (75-105 cm / 120-150 cm) (`korperhalsband-mit-leine-75-105-cm-120-150-cm-d82c70`) | 2 | 0 | 6.39–8.1 | 17.90 | Short size, Longer size |
 | Magnetisches Bauklötzchen-Set für Mädchen (`magnetisches-bauklotzchen-set-fur-madchen-849024`) | 2 | 2 | 6.38–10.21 | 31.90 | 100straight bars and 50balls-2.7CM, 50straight rods plus 50balls-2.7CM |
 | Magnetisches Holzpuzzle für Kinder (`magnetisches-holzpuzzle-fur-kinder-813696`) | 2 | 2 | 3.6–4.04 | 19.90 | Classic box, Magnetic |
 | Hantel für Armtraining (`hantel-fur-armtraining-056064`) | 2 | 2 | 4.69–7.02 | 140.90 | A, B |
@@ -484,3 +465,9 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Kartenhalter mit Anime-Motiv (`kartenhalter-mit-anime-motiv-617800`) | 2 | 0 | 2.27–2.27 | 16.90 | Badge Protective Case, Card Holder |
 | Stiftehalter aus Massivholz (`stiftehalter-aus-massivholz-626700`) | 2 | 2 | 10.78–14.58 | 30.90 | Double Pen Holder-100mmx200mmx100mm, D Style-190x109x100mm |
 | Windseil-Licht 10×2×1,5 cm (`windseil-licht-10-2-1-5-cm-626700`) | 2 | 2 | 5.47–65.64 | 97.90 | Wind Rope Lamp-1PC, Wind Rope Lamp-12PCS |
+| Magnetisches 3-in-1-Ladegerät – faltbar (`magnetisches-3-in-1-ladegerat-faltbar-601700`) | 2 | 2 | 14.58–14.58 | 29.90 | Gray, White |
+| UV-Desinfektionspaket mit USB-Ladeanschluss (`uv-desinfektionspaket-mit-usb-ladeanschluss-c6bdef`) | 2 | 0 | 11.36–11.36 | 26.90 | Black, Red |
+| Oxford-Canvas Schultertasche (`oxford-canvas-schultertasche-3a38dd`) | 2 | 1 | 3.58–3.58 | 18.90 | Khaki, Black |
+| Polyhedron Brusttasche 310x200x80 mm (`polyhedron-brusttasche-310x200x80-mm-75bb02`) | 2 | 0 | 15.47–15.47 | 33.90 | Camouflage, Black |
+| Reiserucksack 43,5×16×29 cm – Black (`reiserucksack-43-5-16-29-cm-black-555f4e`) | 2 | 2 | 29.68–33.0 | 68.90 | Flagship Edition, Luxury Edition |
+| Rucksack Männer USB-Ladecomputer Tasche (`rucksack-manner-usb-ladecomputer-tasche-8bb498`) | 2 | 2 | 22.78–26.7 | 53.90 | Grey, Black |

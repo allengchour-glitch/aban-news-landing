@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-13T20:20Z",
+ "stand": "2026-10-13T22:23Z",
  "scharf": true,
  "anlaesse": {
   "halloween": {
@@ -11,22 +11,22 @@
     "Facebook & Instagram": "gid://shopify/Publication/302566834561",
     "Pinterest": "gid://shopify/Publication/302994456961"
    },
-   "auswahl": 49,
+   "auswahl": 54,
    "nach_grund": {
-    "Verkleidungsteil": 4,
-    "Kostüm": 19,
-    "Partydeko": 26
+    "Kostüm": 24,
+    "Verkleidungsteil": 2,
+    "Partydeko": 28
    },
-   "grenzfaelle": 73,
-   "abmelden_paare": 147,
+   "grenzfaelle": 76,
+   "abmelden_paare": 162,
    "pro_kanal": {
-    "TikTok": 49,
-    "Facebook & Instagram": 49,
-    "Pinterest": 49
+    "TikTok": 54,
+    "Facebook & Instagram": 54,
+    "Pinterest": 54
    },
-   "tag_fehlt": 49,
+   "tag_fehlt": 54,
    "tag_zuviel": 0,
-   "queue_zeilen": 5,
+   "queue_zeilen": 6,
    "queue_ready": 0,
    "liste": [
     {
@@ -78,18 +78,6 @@
      ]
     },
     {
-     "id": "gid://shopify/Product/15453118398849",
-     "handle": "fledermaus-pendelen-617900",
-     "titel": "Fledermaus-Pendelen",
-     "typ": "Partydeko & Ballone",
-     "grund": "Partydeko",
-     "kanaele": [
-      "TikTok",
-      "Facebook & Instagram",
-      "Pinterest"
-     ]
-    },
-    {
      "id": "gid://shopify/Product/16603524333959",
      "handle": "ghost-magic-book-nachtlicht-623900",
      "titel": "Geister-Zauberbuch Nachtlicht",
@@ -118,6 +106,18 @@
      "handle": "halloween-adventskalender-zwerge-608700",
      "titel": "Halloween Adventskalender Zwerge",
      "typ": "Partydeko & Ballone",
+     "grund": "Partydeko",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/16609738097031",
+     "handle": "halloween-aufkleber-set-2-stuck-00e5fb",
+     "titel": "Halloween Aufkleber Set – 2 Stück",
+     "typ": "Werkzeug & Heimwerken",
      "grund": "Partydeko",
      "kanaele": [
       "TikTok",
@@ -334,7 +334,7 @@
      "handle": "halloween-umhang-kleiner-teufel-aus-flanell-632800",
      "titel": "Halloween-Umhang «Kleiner Teufel» aus Flanell",
      "typ": "Damenmode",
-     "grund": "Verkleidungsteil",
+     "grund": "Kostüm",
      "kanaele": [
       "TikTok",
       "Facebook & Instagram",
@@ -450,6 +450,18 @@
      ]
     },
     {
+     "id": "gid://shopify/Product/16609738031495",
+     "handle": "kurbis-totenkopf-projektionslampe-199f31",
+     "titel": "Kürbis-Totenkopf-Projektionslampe",
+     "typ": "Beleuchtung",
+     "grund": "Partydeko",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
      "id": "gid://shopify/Product/15448820384129",
      "handle": "tyrant-rotten-face-mask-861120",
      "titel": "Latex-Horrormaske «Verrottete Fratze» · Halloween",
@@ -478,7 +490,7 @@
      "handle": "lolita-stirnband-mit-hexenhut-und-rosen-636900",
      "titel": "Lolita-Stirnband mit Hexenhut und Rosen",
      "typ": "Damenmode",
-     "grund": "Verkleidungsteil",
+     "grund": "Kostüm",
      "kanaele": [
       "TikTok",
       "Facebook & Instagram",
@@ -503,6 +515,18 @@
      "titel": "Mehrlagiges Kerzen-Geist-Kürbis-Ornament aus Harz",
      "typ": "Partydeko & Ballone",
      "grund": "Partydeko",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/16603690303879",
+     "handle": "realistische-tiermaske-614200",
+     "titel": "Realistische Tiermaske",
+     "typ": "Hautpflege",
+     "grund": "Kostüm",
      "kanaele": [
       "TikTok",
       "Facebook & Instagram",
@@ -594,6 +618,30 @@
      ]
     },
     {
+     "id": "gid://shopify/Product/15480340251009",
+     "handle": "sprechende-kurbis-sussigkeitenschale-727424",
+     "titel": "Sprechende Kürbis-Süssigkeitenschale",
+     "typ": "Partydeko & Ballone",
+     "grund": "Partydeko",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/15448818778497",
+     "handle": "steampunk-halbmaske-fur-maskenballe-408768",
+     "titel": "Steampunk Halbmaske für Maskenbälle",
+     "typ": "Kostüme & Verkleidung",
+     "grund": "Kostüm",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
      "id": "gid://shopify/Product/16604913533319",
      "handle": "sussigkeitenschale-geist-halloween-tischdeko-604000",
      "titel": "Süssigkeitenschale Geist Halloween Tischdeko",
@@ -616,6 +664,18 @@
       "Facebook & Instagram",
       "Pinterest"
      ]
+    },
+    {
+     "id": "gid://shopify/Product/15495119274369",
+     "handle": "viking-ugly-latex-maske-44abc7",
+     "titel": "Viking Ugly Latex Maske",
+     "typ": "Hautpflege",
+     "grund": "Kostüm",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
     }
    ],
    "grenzfall_liste": [
@@ -629,6 +689,12 @@
      "handle": "bichon-frise-kostum-zwei-teiliger-pink-blau-gr-795712",
      "titel": "Bichon Frise Kostüm – Zwei-teiliger Pink-Blau-Grauer Pullover",
      "typ": "Haustierbedarf",
+     "grund": "CJ-Kostüm ohne Halloween-Bezug — bleibt (Fasnacht/Mottoparty)"
+    },
+    {
+     "handle": "cold-light-eva-half-face-glow-mask-holiday-252608",
+     "titel": "Cold Light Eva Half Face Glow Mask Holiday",
+     "typ": "Kostüme & Verkleidung",
      "grund": "CJ-Kostüm ohne Halloween-Bezug — bleibt (Fasnacht/Mottoparty)"
     },
     {
@@ -668,15 +734,21 @@
      "grund": "CJ-Kostüm ohne Halloween-Bezug — bleibt (Fasnacht/Mottoparty)"
     },
     {
-     "handle": "steampunk-cosplay-maske-09f69f",
-     "titel": "Steampunk Cosplay Maske",
-     "typ": "Hautpflege",
+     "handle": "rock-field-cs-spike-unisex-punk-rope-leder-mas-611700",
+     "titel": "Rock Field CS Spike Unisex Punk Rope Leder Maske",
+     "typ": "Damenmode",
      "grund": "CJ-Kostüm ohne Halloween-Bezug — bleibt (Fasnacht/Mottoparty)"
     },
     {
-     "handle": "steampunk-halbmaske-fur-maskenballe-408768",
-     "titel": "Steampunk Halbmaske für Maskenbälle",
-     "typ": "Kostüme & Verkleidung",
+     "handle": "anime-jk-uniform-cosplay-woll-komplettset-608800",
+     "titel": "Schuluniform-Set im Anime-Stil: Blazer, Rock, Hemd & Fliege (Cosplay)",
+     "typ": "Damenmode",
+     "grund": "CJ-Kostüm ohne Halloween-Bezug — bleibt (Fasnacht/Mottoparty)"
+    },
+    {
+     "handle": "steampunk-cosplay-maske-09f69f",
+     "titel": "Steampunk Cosplay Maske",
+     "typ": "Hautpflege",
      "grund": "CJ-Kostüm ohne Halloween-Bezug — bleibt (Fasnacht/Mottoparty)"
     },
     {
@@ -692,12 +764,6 @@
      "grund": "CJ-Kostüm ohne Halloween-Bezug — bleibt (Fasnacht/Mottoparty)"
     },
     {
-     "handle": "viking-ugly-latex-maske-44abc7",
-     "titel": "Viking Ugly Latex Maske",
-     "typ": "Hautpflege",
-     "grund": "CJ-Kostüm ohne Halloween-Bezug — bleibt (Fasnacht/Mottoparty)"
-    },
-    {
      "handle": "waschtes-denim-kleidungskostum-fur-haustiere-54023d",
      "titel": "Waschtes Denim-Kleidungskostüm für Haustiere",
      "typ": "Haustierbedarf",
@@ -707,6 +773,12 @@
      "handle": "3d-puzzle-halloween-schloss-923840",
      "titel": "3D Puzzle Halloween Schloss",
      "typ": "Spielzeug & Spiele",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "3d-totenkopf-backform-aus-aluminium-600600",
+     "titel": "3D Totenkopf-Backform aus Aluminium",
+     "typ": "Küche & Bar",
      "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
     },
     {
@@ -730,12 +802,6 @@
     {
      "handle": "diamond-painting-schadelmadchen-halloween-088768",
      "titel": "Diamond Painting «Schädelmädchen» Halloween",
-     "typ": "Basteln & DIY",
-     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
-    },
-    {
-     "handle": "drei-hexen-anhanger-aus-acryl-631000",
-     "titel": "Drei Hexen Anhänger aus Acryl",
      "typ": "Basteln & DIY",
      "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
     },
@@ -902,6 +968,12 @@
      "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
     },
     {
+     "handle": "hunde-pullover-mit-kurbis-muster-624100",
+     "titel": "Hunde-Pullover mit Kürbis-Muster",
+     "typ": "Haustierbedarf",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
      "handle": "hundepullover-halloween-004352",
      "titel": "Hundepullover Halloween",
      "typ": "Haustierbedarf",
@@ -1046,16 +1118,22 @@
      "grund": "Kürbis/Herbst-Bezug ohne Halloween-Wort — bleibt (Herbst-Deko)"
     },
     {
-     "handle": "sprechende-kurbis-sussigkeitenschale-727424",
-     "titel": "Sprechende Kürbis-Süssigkeitenschale",
-     "typ": "Partydeko & Ballone",
-     "grund": "Kürbis/Herbst-Bezug ohne Halloween-Wort — bleibt (Herbst-Deko)"
-    },
-    {
      "handle": "pumpkin-tissue-halter-657600",
      "titel": "Taschentuch-Halter im Kürbis-Design · 19 cm",
      "typ": "Partydeko & Ballone",
      "grund": "Kürbis/Herbst-Bezug ohne Halloween-Wort — bleibt (Herbst-Deko)"
+    },
+    {
+     "handle": "drei-hexen-anhanger-aus-acryl-631000",
+     "titel": "Drei Hexen Anhänger aus Acryl",
+     "typ": "Basteln & DIY",
+     "grund": "Schmuck mit Halloween-Bezug — bleibt (ganzjährig)"
+    },
+    {
+     "handle": "fledermaus-pendelen-617900",
+     "titel": "Fledermaus-Anhänger aus Metall",
+     "typ": "Partydeko & Ballone",
+     "grund": "Schmuck mit Halloween-Bezug — bleibt (ganzjährig)"
     }
    ],
    "queue_liste": [
@@ -1085,13 +1163,19 @@
     },
     {
      "datei": "social/ig_karussell.csv",
+     "zeile": "sprechende-kurbis-sussigkeitenschale-727424",
+     "status": "posted-ig-fb",
+     "schluessel": "h:sprechende-kurbis-sussigkeitenschale-727424"
+    },
+    {
+     "datei": "social/ig_karussell.csv",
      "zeile": "top-4-unter-20-halloween-0923",
      "status": "preis-veraltet",
      "schluessel": "h:halloween-gartenstecker-mit-kunstblumen-626100"
     }
    ],
    "gesperrt": 0,
-   "offen": 49
+   "offen": 54
   }
  }
 }

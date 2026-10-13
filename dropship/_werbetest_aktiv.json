@@ -1,17 +1,44 @@
 {
- "kampagne": "sirene-test",
- "start": "2026-10-13",
- "ende": "2026-10-17",
+ "kampagne": "geschenke-test",
+ "start": "2026-10-14",
+ "ende": "2026-10-21",
  "budget_tag": 10,
- "marge": 19,
- "google_ads": "Kampagne «Sales-Shopping-1» (24340093418), Konto 719-826-3241",
- "plan": "dropship/WERBETEST-PLAN-2026-10-10.md",
- "handle": "abendkleid-aurora-satin-spaghettitrager-schlitz",
- "status": "PAUSIERT (Betreiber «pausiert», 12.10. ~20:35 UTC) — Werbe-Kontingent im Merchant Center voll (Sirène und Aurora «Over capacity for Shopping ads [CH]»). Wieder an erst nach Kontingent-Erhöhung.",
+ "marge": 21,
+ "gebot_max": 0.5,
+ "abbruch": "CHF 30 ohne Warenkorb → Stopp; kein Nachladen ohne neuen Betreiber-Entscheid",
+ "google_ads": "Kampagne «Sales-Shopping-1» (24340093418), Konto 719-826-3241 — Produktgruppen nach Artikel-ID (39 IDs der 13 Produkte), «Alles andere» ausgeschlossen",
+ "plan": "dropship/WERBETEST-GESCHENKE-VORBEREITUNG-2026-10-13.md",
+ "entscheid": "dropship/BETREIBER-ENTSCHEIDE-2026-10-13.md (A ja, 13.10. ~21:00 UTC)",
+ "url_suffix": "utm_source=google&utm_medium=cpc&utm_campaign=geschenke-test",
+ "handles": [
+  "mechanische-skelett-herrenuhr-mit-silikonband-817728",
+  "elegante-quarz-armbanduhr-fur-damen-635300",
+  "herren-geldborse-aus-hochwertigem-leder-617500",
+  "herrenholzarmbanduhr-631400",
+  "bluetooth-ubersetzungs-kopfhorer-625536",
+  "luminous-sonne-mond-stern-herren-mechanische-u-602700",
+  "trendige-damenuhr-mit-strass-zifferblatt-616000",
+  "quadratische-damenuhr-mit-18k-vergoldung-225856",
+  "moissanit-ring-aus-925er-sterling-silber-639800",
+  "3-in-1-magnetische-falt-ladestation-015296",
+  "abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe",
+  "retro-damenuhr-mit-quarzwerk-602500",
+  "silberarmband-614500"
+ ],
+ "sperre": "dropship/_werbetest_sperre.txt",
+ "status": "VORBEREITET — Betreiber verknüpft Konto, stellt Produktgruppen um, Screenshot, aktiviert (Klickweg im Plan, Abschnitt «Für den Betreiber»)",
+ "hinweis_handle": "Kein Einzel-«handle»: betreiber_ampel.werbetest() liest nur «handle» (ein String) und würde 12 der 13 als fremde Landeseiten zählen. Mehrere Handles stehen in «handles».",
  "vorher": {
-  "handle": "abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe",
-  "start": "2026-10-10",
-  "ergebnis": "10.–12.10.: 25 Sitz., alle auf fremden Produkten, 0 Korb; Sirène bei Google «Over capacity for Shopping ads (in CSS program) [CH]» = nicht bewerbbar"
- },
- "pausiert": "2026-10-12T20:35Z"
+  "kampagne": "sirene-test",
+  "start": "2026-10-13",
+  "ende": "2026-10-17",
+  "handle": "abendkleid-aurora-satin-spaghettitrager-schlitz",
+  "status": "PAUSIERT (Betreiber «pausiert», 12.10. ~20:35 UTC) — Werbe-Kontingent im Merchant Center voll (Sirène und Aurora «Over capacity for Shopping ads [CH]»). Wieder an erst nach Kontingent-Erhöhung.",
+  "pausiert": "2026-10-12T20:35Z",
+  "davor": {
+   "handle": "abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe",
+   "start": "2026-10-10",
+   "ergebnis": "10.–12.10.: 25 Sitz., alle auf fremden Produkten, 0 Korb; Sirène bei Google «Over capacity for Shopping ads (in CSS program) [CH]» = nicht bewerbbar"
+  }
+ }
 }

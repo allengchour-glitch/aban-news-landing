@@ -10,7 +10,8 @@
 export function catKey(s){
   s = (s || '').toLowerCase();
   if (/hund|katze|haustier|welpe|\bpet\b|(?<!k)leine(?!n)|kratzbaum|futter|(?<!saug)napf|aquarium|vogel/.test(s)) return 'haustier';
-  if (/sit-?up|fitness|yoga|hantel|widerstandsband|faszien|bauchtrainer|springseil|trainings?/.test(s)) return 'fitness';
+  if (/sit-?up|fitness|yoga|hantel|widerstandsband|faszien|bauchtrainer|springseil|trainings?|boxsack/.test(s)
+      || (/box(?:en|ing)?-?handschuh|gewichtheb\w*-?handschuh|gewichtheb\w*-booster|schwimmhandschuh/.test(s) && !/pullover|hoodie|shirt|stickerei|print|motiv/.test(s))) return 'fitness';
   // 13.10.2026 (Prüfer R3): «Hitzebeständige Reinigungshandschuhe» fiel unten über «handschuh» in 'mode' → TikTok/YouTube wählen
   // beim Posten #fashionschweiz #outfit (metricool_tiktok_post.mjs ruft hashtagSet(«Name») neu auf). Spül-/Ofen-/Putzhandschuhe = Küche.
   if (/küche|kueche|mixer|kaffee|\btee\b|matcha|entsafter|grill|messbecher|\btopf|pfanne|gemüse|gemuese|nudel|schäler|reibe|kochtopf|backform|brotdose|besteck|kocher|schneidebrett|geschirr|(?:reinigungs|spül|putz|ofen|küchen)handschuh/.test(s)) return 'kueche';
@@ -22,6 +23,10 @@ export function catKey(s){
   if (/tasche|\bbag\b|handtasche|crossbody|clutch|rucksack/.test(s)) return 'tasche';
   if (/kleid|\brock\b|dress|skirt|bluse/.test(s)) return 'kleid';
   if (/sonnenbrille|brille|\bhut\b|\bcap\b|gürtel|schal(?![et])|accessoire/.test(s)) return 'accessoire';
+  // 13.10. abends (Prüfer «Empfohlen» 5): Arbeits-/Garten-/Einweg-/Velo-/Auto-Wasch-Handschuhe sind keine Mode (39 von 99
+  // Handschuh-Titeln bekamen sonst #fashionschweiz). Garten → home, Box → fitness (oben), Rest → allgemein (Sach-Tags).
+  if (/garten-?handschuh/.test(s)) return 'home';
+  if (/(?:arbeits|einweg|nitril|latex|vinyl|velo|fahrrad|bike|auto-?wasch|wasch|mikrofaser|arbeitsschutz|schnittschutz|montage|schweiss|schweiß|mechaniker)-?handschuh/.test(s)) return 'allgemein';
   if (/hose|jacke|mantel|hoodie|shirt|pullover|strick|jeans|blazer|weste|mütze|handschuh|damenmode/.test(s)) return 'mode';
   if (/lampe|licht|deko|vase|kerze|diffuser|kissen|decke|organizer|regal|aufbewahrung|\bhome\b|ständer|halter/.test(s)) return 'home';
   if (/gadget|tech|beamer|projektor|kopfhörer|lautsprecher|ladegerät|ladestation|kabel|usb|bluetooth|smart|kamera|drohne|tracker/.test(s)) return 'gadget';

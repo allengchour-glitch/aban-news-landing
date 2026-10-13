@@ -14,6 +14,7 @@ Nur tagsAdd/tagsRemove (nie productUpdate(tags:)). Bericht: dropship/NACHFRAGE-L
 import datetime as dt, json, os, sys, time, urllib.request
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from ohne_lieferantenref_guard import gueltige_ref  # nur Ware mit belegter Bezugsquelle pushen (#1008-Klasse)
+from werbetest_sperre import gesperrt as werbetest_gesperrt, HINWEIS as WERBETEST_HINWEIS  # 13.10.2026 Werbetest A
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SHOP = "au3j0y-hq.myshopify.com"
@@ -87,6 +88,12 @@ def main():
         c = r["pageInfo"]["endCursor"]
     dazu = [i for i in soll if i not in ist]
     weg = [i for i in ist if i not in soll]
+    # 13.10.2026 Werbetest A: ein Erfolg des Tests (Warenkorb) würde das beworbene Produkt sofort schreiben → Tag erst nach
+    # Testende (dropship/_werbetest_sperre.txt). Gilt auch fürs Entfernen (Sirène trägt ihn schon).
+    for i in [i for i in dazu + weg if werbetest_gesperrt(i)]:
+        print(f"  {WERBETEST_HINWEIS}: {'+' if i in soll else '−'} {(soll.get(i) or ist.get(i) or '')[:60]}")
+    dazu = [i for i in dazu if not werbetest_gesperrt(i)]
+    weg = [i for i in weg if not werbetest_gesperrt(i)]
     for i in dazu:
         print(f"  + {soll[i][:60]}")
         if SCHARF:

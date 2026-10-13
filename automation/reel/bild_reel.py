@@ -52,6 +52,12 @@ def freisteller(im, rand=0.06, schwelle=0.80):
 SET_TITEL = re.compile(r"(?<![a-zäöüß])set(?![a-zäöüß])|partnerlook|\d-teilig|zwei-?teilig|drei-?teilig|kombi", re.I)
 SET_VARIANTE = re.compile(r"(?<![a-zäöüß])set(?![a-zäöüß])|suit|anzug|partnerlook|\d-teilig|zwei-?teilig|drei-?teilig|kombi|komplett", re.I)
 SET_ANTEIL = 0.7
+# 13.10. abends (Prüfer «Empfohlen» 3): nur BAUTEIL-Varianten zählen als Einzelteil (Hose/Top/Pullover/Jacke …). Grössen- und
+# Farbspannen sind keins — gemessen 27 Absagen an 342 CJ-Set-Titeln, darunter Familien-Pyjama-Sets (günstigste = Baby-Grösse),
+# «Lendenkissenbezug (6er-Set)» (Grössen) und «Nagellackstift · einzeln oder 5er-Set».
+SET_BAUTEIL = re.compile(r"(?<![a-zäöüß])(?:pants|hosen?|jogginghose|trousers|joggers?|shorts|leggings|tops?|oberteil|unterteil|"
+                         r"sweater|sweatshirt|pullover|hoodie|shirt|t-shirt|jacke|jacket|weste|vest|rock|skirt|bluse|blouse)(?![a-zäöüß])",
+                         re.I)
 
 
 def preis_anzeige(mn, mx=None):
@@ -63,10 +69,13 @@ def set_einzelteil(titel, varianten, mn, mx):
     den Mindestpreis trägt — dann ist die günstigste ungeprüft, und ungeprüft ist kein Ja)."""
     if not SET_TITEL.search(titel or "") or not mx or mn >= SET_ANTEIL * mx:
         return ""
+    bauteil = lambda v: bool(SET_BAUTEIL.search(v.get("title") or "")) and not SET_VARIANTE.search(v.get("title") or "")
     billig = [v for v in varianten or [] if abs(float(v.get("price") or 0) - mn) < 0.005]
-    einzel = [v for v in billig if not SET_VARIANTE.search(v.get("title") or "")]
+    einzel = [v for v in billig if bauteil(v)]
     if billig and not einzel:
-        return ""
+        return ""                       # günstigste Variante ist eine Grösse/Farbe/Menge, kein Bauteil
+    if not billig and not any(bauteil(v) for v in varianten or []):
+        return ""                       # Mindestpreis nicht unter den ersten 50, aber dort gibt es gar keine Bauteile
     vt = (einzel[0].get("title") if einzel else "ungeprüft")
     return f"Set-Titel, günstigste Variante «{vt}» CHF {mn:.2f} ist ein Einzelteil (bis CHF {mx:.2f})"
 

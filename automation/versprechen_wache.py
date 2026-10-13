@@ -19,6 +19,11 @@ Schreibt Titel, Beschreibung, SEO-Titel/-Beschreibung (immer BEIDE SEO-Felder, L
 Handles bleiben (Umbenennen braucht 301) — sie stehen im Bericht.
 DRY=1 zeigt nur. CACHE_NUTZEN=1 nimmt den letzten Export. --selbsttest prüft die Kanarien.
 
+NACHTRAG 13.10.2026 spät (Kauf-Strecke Klassen 5/7/16, Abschnitt «editor_rueckgabe»): Zeile «EDITOR-RÜCKGABE: n von m
+Editor-Produkten ohne Ausschluss-Satz · Theme ok/FEHLT» — zählt Editor-Produkte (lspod-designer) ohne Rückgabe-Ausschluss im Text
+(Schreiber: automation/editor_rueckgabe_satz.py) und prüft die Pflicht-Zeichenfolgen in templates/product.json + cart.json
+(Leiste/Akkordeon/Korb «Ersatz bei Druckfehlern», Brotkrumen trend/Doppel/Damen-Kette, Liefergebiet). Schreibt nichts.
+
 NACHTRAG 13.10.2026 (Kauf-Strecke Klasse 12, Abschnitt «kosmetik_beleg» der Regeldatei) — zwei ZÄHL-Regeln, schreiben nichts:
   · «Geprüfte Angaben ohne Beleg»: Kosmetik (Hautpflege/Make-up/Haarpflege) ohne Inhaltsstoff-Liste im Text (Marker
     INCI · «Inhaltsstoffe:» · «Ingredients:» · «Zutaten:» — dieselben Zeichenfolgen prüft die Theme-Bedingung). Gemessen 13.10.:
@@ -181,6 +186,33 @@ def theme_bedingung():
         return None
 
 
+E = REGEL.get("editor_rueckgabe") or {}
+
+
+def editor_ohne_satz(html):
+    """Editor-Produkt (lspod-designer im Text) ohne Rückgabe-Ausschluss-Satz → True."""
+    h = html or ""
+    return (E.get("editor_marker") or "lspod-designer") in h and not any(x in h for x in E.get("satz") or [])
+
+
+def theme_klassen():
+    """13.10.2026 (Kauf-Strecke 5/7/16): Pflicht-Zeichenfolgen in den Live-Dateien → Liste fehlender Stellen (None = unlesbar)."""
+    pflicht, verboten = E.get("theme_pflicht") or {}, E.get("theme_verboten") or {}
+    namen = sorted(set(pflicht) | set(verboten))
+    if not namen:
+        return []
+    try:
+        d = gql('query($f:[String!]!){ themes(first: 1, roles: [MAIN]) { nodes { files(filenames: $f) { nodes { filename body { '
+                '... on OnlineStoreThemeFileBodyText { content } } } } } } }', {"f": namen})
+        t = {x["filename"]: x["body"]["content"] for x in d["themes"]["nodes"][0]["files"]["nodes"]}
+    except Exception as e:  # noqa: BLE001
+        print(f"   Theme nicht lesbar: {str(e)[:120]}", flush=True)
+        return None
+    fehlt = [f"{n.split('/')[-1]} ohne «{x}»" for n in pflicht for x in pflicht[n] if x not in t.get(n, "")]
+    fehlt += [f"{n.split('/')[-1]} mit «{x[:40]}»" for n in verboten for x in verboten[n] if x in t.get(n, "")]
+    return fehlt
+
+
 def selbsttest():
     f = 0
     for art, ein, soll in REGEL["kanarien"]:
@@ -198,7 +230,14 @@ def selbsttest():
             if fn(ein) != soll:
                 f += 1
                 print(f"  ✗ {art}: {ein!r} → {fn(ein)} (soll {soll})")
-    n = len(REGEL["kanarien"]) + len(D.get("kanarien", [])) + sum(len(K.get(f"kanarien_{a}", [])) for a in ("reinstoff", "inci", "mischung"))
+    for ein, soll in (('<div class="lspod-designer"></div><p>x</p>', True),
+                      ('<div class="lspod-designer"></div><div class="ls-pod-retoure">…</div>', False),
+                      ('<p>eine Rückgabe aus Meinungsänderung ist darum ausgeschlossen</p><div class="lspod-designer">', False),
+                      ('<p>Normales Produkt, 30 Tage Rückgabe</p>', False)):
+        if editor_ohne_satz(ein) != soll:
+            f += 1
+            print(f"  ✗ editor_ohne_satz: {ein!r} → {editor_ohne_satz(ein)} (soll {soll})")
+    n = 4 + len(REGEL["kanarien"]) + len(D.get("kanarien", [])) + sum(len(K.get(f"kanarien_{a}", [])) for a in ("reinstoff", "inci", "mischung"))
     print(f"Selbsttest: {n - f}/{n} ok")
     return f == 0
 
@@ -268,8 +307,13 @@ def main():
     nur_k = os.environ.get("NUR") == "kosmetik"
     kos_n = kos_ohne = 0
     rein_widerspruch, rein_offen = [], []
+    ed_n, ed_ohne = 0, []
     for p in produkte():
         n += 1
+        if (E.get("editor_marker") or "lspod-designer") in (p.get("descriptionHtml") or ""):   # 13.10.2026 Klasse 7
+            ed_n += 1
+            if editor_ohne_satz(p.get("descriptionHtml")):
+                ed_ohne.append(p["handle"])
         lager = schweiz_lager(p.get("tags"), p["_sku"])
         s = p.get("seo") or {}
         neu = {}
@@ -359,6 +403,14 @@ def main():
                f"{0 if sichtbar else (kos_ohne if sichtbar is False else '?')} (Theme-Bedingung {'aktiv' if sichtbar else ('fehlt' if sichtbar is False else 'unklar')}) "
                f"· Reinstoff-Titel mit Mischung {len(rein_widerspruch)} · ohne Liste {len(rein_offen)}")
     print(k_zeile, flush=True)
+    tk = theme_klassen()
+    e_zeile = (f"EDITOR-RÜCKGABE: {len(ed_ohne)} von {ed_n} Editor-Produkten ohne Ausschluss-Satz"
+               + (f" ({', '.join(ed_ohne[:4])} → python3 automation/editor_rueckgabe_satz.py --scharf)" if ed_ohne else "")
+               + " · Theme " + ("unklar" if tk is None else ("ok (Klassen 5/7/16)" if not tk else "FEHLT: " + "; ".join(tk[:4]))))
+    if ed_ohne or tk:
+        e_zeile = "⚠️ " + e_zeile
+    print(e_zeile, flush=True)
+    k_zeile = k_zeile + " · " + e_zeile
     with open(K_BERICHT, "w", encoding="utf-8") as f:
         f.write(f"# Kosmetik: Inhaltsstoff-Beleg — Stand {time.strftime('%Y-%m-%d %H:%M', time.gmtime())} UTC\n\n{k_zeile}\n\n"
                 "Regel: `automation/data/versprechen_regel.json` → `kosmetik_beleg` (Kauf-Strecke Klasse 12, 13.10.2026). "

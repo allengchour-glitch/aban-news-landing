@@ -21,6 +21,8 @@
 import { hashtagSet } from './lib/hashtags.mjs';
 import { fbText, mitFolgen } from './lib/fb_text.mjs';   // 07.10.: FB-eigener Text (klickbarer Link + Folge-Zeile)
 import fs from 'node:fs';
+import { socialPause, pauseSchluessel } from './lib/social_pause.mjs';   // 13.10.: Anlass-Social-Sperre (Halloween-CJ 15.10.–01.11.)
+const _socialPause = pauseSchluessel();
 import { lock as postLock, seen as postSeen, mark as postMark, preisVeraltet, produktMerkenReel, nachVorrang, montageErst, montagePruefen, montageQuelle, juryPruefen, modelSperre } from './post_guard.mjs';
 // 22.09.: Adresse vor dem Post pruefen — 14 von 22 «ready»-Reels waren 404 (CDN-Dateien weg). 4xx → archived-deadurl.
 import { execFileSync as _exf, spawnSync } from 'node:child_process';
@@ -144,7 +146,8 @@ if (process.env.PRUEFEN === '1') {
 // Kandidat: ready, Video noch nirgends gepostet, NICHT stumm (TikTok ohne Ton wirkt tot — Plan 26.08.:
 // stumme Marken-Videos bekommen den Trend-Sound in der TikTok-App, nicht ueber Metricool). Produkt-Reels
 // (cjreel-*, mit Musik aus der ffmpeg-Pipeline) zuerst, Marken-Videos danach.
-const passt = r => get(r, 'status') === 'ready' && get(r, 'video_url') && !postSeen(get(r, 'video_url')) && !/stumm/i.test(get(r, 'video_url'));
+const passt = r => get(r, 'status') === 'ready' && get(r, 'video_url') && !postSeen(get(r, 'video_url')) && !/stumm/i.test(get(r, 'video_url'))
+  && !socialPause({ id: get(r, 'id'), caption: get(r, 'caption') }, _socialPause);   // 13.10. Anlass-Sperre (TikTok/YouTube/IG über Metricool)
 const _alle = rows.slice(1).filter(passt);
 const _reihe = montageErst(nachVorrang([..._alle.filter(r => /raw\.githubusercontent/.test(get(r, 'video_url'))), ..._alle.filter(r => !/raw\.githubusercontent/.test(get(r, 'video_url')) && /^cjreel-/.test(get(r, 'id'))), ..._alle.filter(r => !/raw\.githubusercontent/.test(get(r, 'video_url')) && !/^cjreel-/.test(get(r, 'id')))], r => get(r, 'caption')), r => get(r, 'id'));   // 25.09. Saison-Vorrang (Herbst) zuerst
 // 09.10.2026 (Betreiber «fb, zeige weniger asiaten»): Instagram+Facebook bekommen zuerst Reels, die das PRODUKT zeigen —
@@ -360,8 +363,11 @@ try {
     pid = await planen(bauBody(norm));
   }
   postMark(url);                                                   // Ledger SOFORT (plattformuebergreifend)
-  produktMerkenReel(get(cand, 'caption'), id, pa.gid, pa.handle);  // 13.10.2026 (Prüfer R2): WARE merken wie die Bild-Poster
   cand[idx.status] = POSTED; cand[idx.posted_at] = new Date().toISOString(); cand[idx.post_url] = pid ? `metricool:${pid}` : 'metricool'; writeLedger();
+  // 13.10.2026 (Prüfer R2): WARE merken wie die Bild-Poster — NACH writeLedger und in eigenem try/catch (13.10. abends,
+  // Prüfer «Empfohlen» 1): sonst setzte der äussere catch die schon geplante Zeile auf «ready» zurück (Exit 1, Kadenz doppelt).
+  try { produktMerkenReel(get(cand, 'caption'), id, pa.gid, pa.handle); }
+  catch (e) { console.error('⚠️ produktMerkenReel fehlgeschlagen (Post ist geplant, Ledger steht):', String(e.message || e).slice(0, 200)); }
   console.log(`✅ auf ${NETZ} geplant (${dateTime} ${TZ}), Metricool-Post ${pid || '?'} · Ledger aktualisiert → ${id} ${POSTED}`);
 } catch (e) {
   cand[idx.status] = 'ready'; cand[idx.posted_at] = ''; writeLedger();   // Claim zurueck: nichts ist raus

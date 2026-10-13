@@ -12,6 +12,8 @@
  * EXIT: 0 = gepostet oder nichts faellig · 1 = Fehler · 3 = Kandidat uebersprungen/quittiert, kein Post (naechster Lauf bald)
  */
 import fs from 'node:fs';
+import { socialPause, pauseSchluessel } from './lib/social_pause.mjs';   // 13.10.: Anlass-Social-Sperre (Halloween-CJ 15.10.–01.11.)
+const _socialPause = pauseSchluessel();
 import { preisVeraltet, produktMerkenReel, markierungFehlt, lock as postLock, seen as postSeen, mark as postMark, fbSeitenIdentitaet, familieKuerzlich, familieMerken, nachVorrang, montageErst, montagePruefen, montageQuelle, juryPruefen, juryVorrang, igUserTags } from './post_guard.mjs';
 // 22.09.: Adresse vor dem Post pruefen — 14 von 22 «ready»-Reels waren 404 (CDN-Dateien weg). 4xx → archived-deadurl.
 import { execFileSync as _exf, spawnSync } from 'node:child_process';
@@ -143,7 +145,8 @@ const _passt = r => (r[idx.status] || '').trim() === 'ready'
   && (r[idx.scheduled_date] || '9999') <= today
   && !postedVideos.has(vkey(r[idx.video_url]))
   && !postSeen(r[idx.video_url])
-  && !familieKuerzlich(r[idx.caption]);   // 23.09. Neunte Schicht: Warengruppe nicht zweimal in 72 h (alle Kanaele)
+  && !familieKuerzlich(r[idx.caption])
+  && !socialPause({ id: r[idx.id], caption: r[idx.caption] }, _socialPause);   // 13.10. Anlass-Sperre · 23.09. Neunte Schicht: Warengruppe nicht zweimal in 72 h (alle Kanaele)
 // 22.09.: v2-Reels (neues Design, Ablage raw.githubusercontent) zuerst, dann die aelteren
 const _alle = rows.slice(1).filter(_passt);
 const _reihe = montageErst(nachVorrang([..._alle.filter(r => /raw\.githubusercontent/.test(r[idx.video_url] || '')), ..._alle.filter(r => !/raw\.githubusercontent/.test(r[idx.video_url] || ''))], r => r[idx.caption]), r => r[idx.id]);   // 25.09. Saison-Vorrang (Herbst) vor v2/alt
@@ -211,6 +214,9 @@ async function produktAktiv(postId) {
       const d = await r.json();
       const p = istShopifyId ? (d && d.data && d.data.product) : ((d && d.data && d.data.products && d.data.products.nodes && d.data.products.nodes[0]) || (d && d.data ? null : undefined));
       if (p === null) return { ok: false, grund: 'Produkt existiert nicht mehr' };
+      // 13.10. abends (Prüfer «Empfohlen» 2): wie TikTok — ein unscharfer Suchtreffer (handle:… findet auch Präfixe) ist
+      // ein FREMDES Produkt; sonst würden Status/Preis/Merk-Schlüssel eines anderen Produkts genommen.
+      if (bh && p && p.handle !== bh[1]) return { ok: false, grund: 'Produkt existiert nicht mehr (Handle anders)' };
       if (p) return { ok: p.status === 'ACTIVE' && !!p.onlineStoreUrl, grund: `status ${p.status}, onlineStoreUrl ${p.onlineStoreUrl ? 'ja' : 'nein'}`, url: p.onlineStoreUrl || '', min: parseFloat(p.priceRangeV2?.minVariantPrice?.amount || 'NaN'), max: parseFloat(p.priceRangeV2?.maxVariantPrice?.amount || 'NaN'), gid: p.id || '', handle: p.handle || '' };
     } catch (e) { /* retry */ }
     await sleep(2000 * (a + 1));
@@ -342,8 +348,11 @@ if (pub.id) {
   postMark(url);                    // gemeinsamer Ledger: kein anderer Poster wiederholt dieses Video
   familieMerken(cand[idx.caption], 'reel');
   // 13.10.2026 (Prüfer R2): die WARE merken wie die Bild-Poster — sonst kommt sie später als Bildpost/Karussell/Bild-Reel
-  produktMerkenReel(cand[idx.caption], cand[idx.id], produktInfo.gid, produktInfo.handle);
-  writeLedger();
+  writeLedger();                    // erst die Zeile (Kadenz/Doppelpost), dann das Produkt-Merken
+  // Eigener try/catch (13.10. abends, Prüfer «Empfohlen» 1): ein Dateifehler beim Merken darf den Lauf nach dem IG-Publish
+  // nicht mit Exit 1 abbrechen (sonst entfällt Facebook und die Kadenz-Marke bleibt alt → nächster Lauf postet sofort).
+  try { produktMerkenReel(cand[idx.caption], cand[idx.id], produktInfo.gid, produktInfo.handle); }
+  catch (e) { console.error('⚠️ produktMerkenReel fehlgeschlagen (Post ist raus, Ledger steht):', String(e.message || e).slice(0, 200)); }
   const perma = await api(`${pub.id}`, { fields: 'permalink' }, 'GET');
   igPermalink = perma.permalink || pub.id;
   cand[idx.post_url] = igPermalink; writeLedger();

@@ -10,6 +10,8 @@ Ein Werbetest ohne diese Zeile meldet nur «548 Klicks».
 
   python3 tools/werbetest_trichter.py                        alle Kampagnen der letzten 30 Tage (Trichter + Quoten)
   python3 tools/werbetest_trichter.py KAMPAGNE [TAGE]        eine Kampagne je Tag + Gewinnschwelle (BUDGET=CHF, MARGE=CHF je Kauf)
+  python3 tools/werbetest_trichter.py --wache                Testprodukte aus dropship/_werbetest_aktiv.json: fremde Landeseiten,
+                                                             Google-Meldung [CH], seit Teststart geschrieben (13.10.2026, Test A)
 Die Kampagne muss in der Anzeige als utm_campaign stehen (z. B. …?utm_source=tiktok&utm_medium=paid&utm_campaign=sirene-test-nov).
 Liest nur (shopifyqlQuery), schreibt nichts.
 """
@@ -63,7 +65,60 @@ def kampagne(name, tage=14):
               + (f" · Gewinnschwelle CHF {marge:.0f} je Kauf → {'LOHNT' if kaeufe and budget / kaeufe <= marge else 'lohnt NICHT'}" if marge else ""))
 
 
+def wache(w=None):
+    """13.10.2026 (Werbetest A «geschenke-test», 13 Produkte): Was die Ampel bisher nur für EIN `handle` prüfte, für alle
+    `handles` der Steuerdatei: (1) Sitzungen der Kampagne auf FREMDEN Produkten (Produktgruppe offen, Fehler vom 10.10.),
+    (2) Google-Meldung «… Shopping ads … [CH]» je Testprodukt (Werbe-Kontingent, Sirène/Aurora 12.10.), (3) Testprodukte mit
+    `updatedAt` nach Teststart — jeder Schreibvorgang ist ein neuer Zug ums Kontingent (Sperre dropship/_werbetest_sperre.txt).
+    Gibt ein dict zurück; `zeile(d)` macht daraus die Ampel-Zeile. Liest nur."""
+    import json, datetime as dt
+    if w is None:
+        w = json.load(open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "dropship", "_werbetest_aktiv.json"),
+                           encoding="utf-8"))
+    handles = list(w.get("handles") or ([w["handle"]] if w.get("handle") else []))
+    start = min(dt.date.fromisoformat(w["start"]), dt.date.today())
+    fremd = 0
+    for z in ql(f"FROM sessions SHOW sessions GROUP BY landing_page_path WHERE utm_campaign = '{w['kampagne']}' "
+                f"SINCE {start.isoformat()} UNTIL today"):
+        pfad = z.get("landing_page_path") or ""
+        if not any(h in pfad for h in handles):
+            fremd += int(z.get("sessions") or 0)
+    sperre, geschrieben, fehlt = [], [], []
+    for h in handles:
+        p = gql('query($h:String!){productByHandle(handle:$h){title status updatedAt feedback{details{messages{message}}}}}',
+                {"h": h}).get("productByHandle")
+        if not p:
+            fehlt.append(h); continue
+        kurz = p["title"][:28]
+        if p["status"] != "ACTIVE":
+            fehlt.append(f"{kurz} ({p['status']})")
+        for det in ((p.get("feedback") or {}).get("details") or []):
+            for m in det.get("messages") or []:
+                if "Shopping ads" in m["message"].replace("_", " ") and "[CH]" in m["message"]:
+                    sperre.append(kurz); break
+        if (p.get("updatedAt") or "")[:10] >= w["start"]:
+            geschrieben.append(f"{kurz} {p['updatedAt'][5:16]}")
+    return {"kampagne": w["kampagne"], "produkte": len(handles), "fremd": fremd, "sperre": sorted(set(sperre)),
+            "geschrieben": geschrieben, "fehlt": fehlt}
+
+
+def zeile(d):
+    teile = [f"Testprodukte {d['produkte'] - len(d['fehlt'])}/{d['produkte']} aktiv"]
+    if d["fehlt"]:
+        teile.append("⚠️ fehlt/nicht aktiv: " + "; ".join(d["fehlt"][:4]))
+    if d["fremd"]:
+        teile.append(f"⚠️ {d['fremd']} Sitz. auf FREMDEN Produkten → Produktgruppe «Alles andere» ausschliessen")
+    if d["sperre"]:
+        teile.append(f"⛔ {len(d['sperre'])} bei Google nicht bewerbbar [CH] ({'; '.join(d['sperre'][:3])}) → NICHT per Schreiben reparieren")
+    if d["geschrieben"]:
+        teile.append(f"⚠️ {len(d['geschrieben'])} seit Teststart geschrieben ({'; '.join(d['geschrieben'][:3])}) → Schreiber suchen, Sperre prüfen")
+    return f"WERBETEST {d['kampagne']} Produkte: " + " · ".join(teile)
+
+
 if __name__ == "__main__":
+    if "--wache" in sys.argv:
+        print(zeile(wache()))
+        sys.exit(0)
     if len(sys.argv) > 1:
         kampagne(sys.argv[1], int(sys.argv[2]) if len(sys.argv) > 2 else 14)
     else:

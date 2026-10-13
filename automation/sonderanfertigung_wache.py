@@ -20,6 +20,12 @@ Hygiene-Hinweise («Versiegelung») bleiben unberührt. Neuimporte: cj_copy_prom
     python3 automation/sonderanfertigung_wache.py --export DATEI.jsonl   # Trockenlauf über einen Voll-Export
     ... --scharf                                                         # schreiben (Vorher-Stand ins Ledger)
     ... --ids 1549…,1545…                                                # nur diese Produkte
+    ... --herren                                                         # nur die Herren-Grössen-Prüfung (Klasse 6)
+
+13.10.2026 (Kauf-Strecke Klasse 6, Regel «herren_groessen»): zusätzlich je Lauf alle aktiven Herrenschuhe — (a) Fremdware im Typ
+Herrenschuhe (Einlegesohle, nur-Damen-/Kindertitel) bekommt mit --scharf den richtigen Typ (Ledger dropship/_herrenschuh_typ.tsv,
+Werbetest-Sperre beachtet); (b) Herrenschuhe mit grösster Zahl-Grösse ≤ 43 werden gezählt und es wird geprüft, dass
+templates/product.json den Theme-Hinweis (Marker LUX-GROESSE-MAX) trägt. Ergebnis hängt an der Schlusszeile («HERREN≤43 …»).
 """
 import datetime as dt
 import json
@@ -162,9 +168,101 @@ def kandidaten():
         after = d["pageInfo"]["endCursor"]
 
 
+HG = R.get("herren_groessen") or {}
+HG_FREMD = [(re.compile(f["muster"], re.I), f["neu"], re.compile(f["nicht"], re.I) if f.get("nicht") else None) for f in HG.get("fremd", [])]
+HG_LEDGER = os.path.join(REPO, "dropship", "_herrenschuh_typ.tsv")
+
+
+def herren_fremdtyp(titel):
+    """Typ, den ein «Herrenschuh» mit diesem Titel tragen sollte — None = bleibt Herrenschuh."""
+    for rx, neu, nicht in HG_FREMD:
+        if rx.search(titel or "") and not (nicht and nicht.search(titel or "")):
+            if neu == "Einlegesohlen" and re.search(r"(schuhe?|stiefel|boots|sneaker)\s+mit\s+[\w-]*einlegesohle", titel or "", re.I):
+                continue          # «Arbeitsschuhe mit Deodorant-Einlegesohle» ist ein Schuh
+            return neu
+    return None
+
+
+def max_groesse(options):
+    m = 0
+    for o in options or []:
+        if GROESSE.search(o.get("name") or ""):
+            for v in o.get("optionValues") or []:
+                z = re.match(r"\d+", (v.get("name") or "").strip())
+                if z and int(z.group()) < 60:
+                    m = max(m, int(z.group()))
+    return m
+
+
+def herren_kanarien():
+    f = 0
+    for titel, soll in HG.get("kanarien", []):
+        if herren_fremdtyp(titel) != soll:
+            f += 1
+            print(f"  FEHLER Herren-Typ: {titel!r} → {herren_fremdtyp(titel)} (soll {soll})")
+    return f == 0
+
+
+def herren_groessen(scharf):
+    """→ Teil der Schlusszeile. Liest alle aktiven Herrenschuhe (Typ) + Herren-Titel mit Schuh-Typ."""
+    if not HG:
+        return ""
+    if not herren_kanarien():
+        return " · ⚠️ HERREN: Kanarien rot"
+    try:
+        from werbetest_sperre import gesperrt
+    except Exception:  # noqa: BLE001
+        def gesperrt(_):
+            return False
+    gef, nach = {}, None
+    q = f'status:active AND (product_type:"{HG["typ"]}" OR (title:*Herren* AND product_type:*chuh*))'
+    while True:
+        d = gql('query($q:String!,$a:String){products(first:250,after:$a,query:$q){pageInfo{hasNextPage endCursor} '
+                'nodes{id handle title productType options{name optionValues{name}}}}}', {"q": q, "a": nach})["products"]
+        for p in d["nodes"]:
+            if p["productType"] == HG["typ"] or ("herren" in p["title"].lower() and "chuh" in p["productType"]):
+                gef[p["id"]] = p
+        if not d["pageInfo"]["hasNextPage"]:
+            break
+        nach = d["pageInfo"]["endCursor"]
+    fremd, bis43, fehler, gesetzt = [], 0, 0, 0
+    for p in gef.values():
+        neu = herren_fremdtyp(p["title"]) if p["productType"] == HG["typ"] else None
+        if neu:
+            fremd.append((p, neu))
+            continue
+        if 30 <= max_groesse(p["options"]) <= HG.get("max_grenze", 43):
+            bis43 += 1
+    for p, neu in fremd:
+        print(f"  Herren-Typ: {p['handle'][:60]} · {p['productType']} → {neu}{'' if scharf else ' (trocken)'}")
+        if not scharf or gesperrt(p["id"]) or gesperrt(p["handle"]):
+            continue
+        r = gql("mutation($p:ProductUpdateInput!){productUpdate(product:$p){product{productType} userErrors{message}}}",
+                {"p": {"id": p["id"], "productType": neu}})["productUpdate"]
+        gut = not r["userErrors"] and (r.get("product") or {}).get("productType") == neu
+        gesetzt += gut
+        fehler += not gut
+        with open(HG_LEDGER, "a", encoding="utf-8") as f:
+            f.write("\t".join([dt.datetime.utcnow().strftime("%Y-%m-%dT%H:%MZ"), p["id"], p["handle"], p["productType"], neu,
+                               "ok" if gut else f"FEHLER {r['userErrors']}"]) + "\n")
+    try:
+        inhalt = gql('{themes(first:1,roles:[MAIN]){nodes{files(filenames:["templates/product.json"]){nodes{body{... on '
+                     'OnlineStoreThemeFileBodyText{content}}}}}}}')["themes"]["nodes"][0]["files"]["nodes"][0]["body"]["content"]
+        theme = "aktiv" if HG.get("theme_marker", "LUX-GROESSE-MAX") in inhalt else "FEHLT"
+    except Exception:  # noqa: BLE001
+        theme = "unklar"
+    warn = "⚠️ " if (theme != "aktiv" and bis43) or fehler or (fremd and not scharf) else ""
+    return (f" · {warn}HERREN≤43: {bis43} von {len(gef)} (Theme-Hinweis {theme}) · Fremdtyp {len(fremd)}"
+            + (f" gesetzt {gesetzt}" if gesetzt else "") + (f" Fehler {fehler}" if fehler else ""))
+
+
 def main():
     if "--kanarien" in sys.argv:
-        return 0 if kanarien() else 1
+        return 0 if (kanarien() and herren_kanarien()) else 1
+    if "--herren" in sys.argv:
+        z = herren_groessen(SCHARF)
+        print("HERREN-GRÖSSEN:" + z[2:])
+        return 1 if "⚠️" in z else 0
     if not _still_ok():
         print("⛔ SONDERANFERTIGUNG: Kanarien rot — kein Lauf")
         return 1
@@ -221,6 +319,10 @@ def main():
     gesamt = sum(v for k, v in zaehl.items() if k != "fehler")
     zeile = (f"SONDERANFERTIGUNG: {gesamt} mit Rückgabe-Ausschluss · Grössen raus {zaehl['teil']} · Entwurf "
              f"{zaehl['alle'] + zaehl['unklar']} · nur Satz {zaehl['keine']}" + (" · SCHARF" if SCHARF else " · trocken"))
+    try:
+        zeile += herren_groessen(SCHARF)            # 13.10.2026 Kauf-Strecke Klasse 6 — hängt an der Schlusszeile (Aufseher: tail -1)
+    except Exception as e:  # noqa: BLE001
+        zeile += f" · ⚠️ HERREN: unklar ({type(e).__name__})"
     print(("⚠️ " if zaehl["fehler"] or (gesamt and not SCHARF) else "") + zeile + (f" · Fehler {zaehl['fehler']}" if zaehl["fehler"] else ""))
     return 1 if zaehl["fehler"] else 0
 

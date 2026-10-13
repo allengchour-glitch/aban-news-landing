@@ -91,9 +91,15 @@ def preis_veraltet(cap, pid):
     # Rappen («14.90») — «ab CHF 14.90» bleibt ein Preis, der geprüft wird.
     rein = re.sub(r"(?:versand|lieferung|gratis|kostenlos)[^.\n]{0,25}?CHF\s?\d+(?:[.,]\d{2})?",
                   " ", cap or "", flags=re.I)
-    for m in re.finditer(r"CHF\s?(\d+[.,]\d{2})\b", rein):
-        x = float(m.group(1).replace(",", "."))
-        if not (band[0] - 0.005 <= x <= band[1] + 0.005):
+    # 13.10. abends (Prüfer «Empfohlen» 4): gleiche Regel wie der Poster (post_guard.mjs preisVeraltet) — «ab CHF X» muss
+    # GENAU der Live-Mindestpreis sein, ein Preis ohne «ab» darf irgendwo im Band liegen. Vorher prüfte diese Seite «ab X» nur
+    # gegen das Band, der Poster sperrte strenger (Exit 3 = ein verschenkter Versuch je Lauf).
+    for m in re.finditer(r"(\b[Aa]b\s+)?CHF\s?(\d+[.,]\d{2})\b", rein):
+        x = float(m.group(2).replace(",", "."))
+        if m.group(1):
+            if abs(x - band[0]) > 0.005:
+                return True
+        elif not (band[0] - 0.005 <= x <= band[1] + 0.005):
             return True
     return False
 

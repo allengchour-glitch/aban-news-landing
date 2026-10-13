@@ -27,6 +27,12 @@ REPARATUR (FIX=1):
        → Kategorie aus dem Handle.
      Klinge (klingenregel.ist_handklinge) → nie umleiten, nur melden (Hausregel 16.09.).
   Kein Ersatz → bleibt im Bericht («Mensch entscheidet»). Nie veröffentlichen, nie löschen.
+SET → EINZELTEIL (13.10.2026, Kauf-Strecke Klasse 18; Regel automation/bestandteil_regel.py): Fehlt im Ziel ein Set-,
+  Stück- oder «mit X»-Wort der Quelle («Sonnenbrillen-Set» → eine Brille, «Rizinusöl-Wickel-Set mit Bio-Öl» → Wickel ohne
+  Öl), wird die Weiterleitung GEMELDET, nicht gedreht: (a) alle bestehenden Produkt→Produkt-Weiterleitungen mit lebendem
+  Endziel → Meldeliste im Bericht («Set/Stück/mit X fehlt im Ziel»), (b) beim Ersatz für ein totes Ziel verwirft
+  tote_landeseiten.ersatz() einen solchen Zwilling (danach Warenwort/Kategorie — eine Kategorie ist kein Einzelteil).
+  Gleiche Zahl am Handle-Ende (CJ-pid) = vermutlich nur umbenannt → im Bericht als Hinweis markiert.
 SICHERHEIT: DRY ist Standard; FIX=1 schreibt höchstens MAX (300) Änderungen je Lauf. Ledger
   dropship/_weiterleitung_ziel_ledger.tsv (zeit, lauf, art, redirect-id, pfad, alt, neu, wie) — Rückweg:
   `--zurueck LAUF=<kennung>` (FIX=1) dreht Ziele zurück und löscht die angelegten Weiterleitungen.
@@ -37,6 +43,7 @@ import datetime as dt, json, os, re, sys, urllib.parse
 HIER = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HIER)
 sys.path.insert(0, HIER)
+from bestandteil_regel import fehlt as bestandteil_fehlt, set_auf_menge, selbsttest as bestandteil_selbsttest  # noqa: E402
 
 LEDGER = os.path.join(REPO, "dropship", "_weiterleitung_ziel_ledger.tsv")
 BERICHT = os.path.join(REPO, "dropship", "WEITERLEITUNG-ZIELE.md")
@@ -144,9 +151,66 @@ def selbsttest(leise=False):
         if k == v or v in KOLL_ERSATZ:
             fehler += 1
             print(f"  ✗ KOLL_ERSATZ {k} → {v} ist selbst ein Ersatzfall")
+    # 13.10.2026: Set → Einzelteil (die 10 Richter-Fälle + Gegenproben), dazu die Meldelisten-Logik
+    if not bestandteil_selbsttest(leise=leise):
+        fehler += 1
+    probe = set_meldungen(
+        [{"path": "/products/sonnenbrillen-set-retro-polarized", "target": "/products/retro-polarisierte-sonnenbrille-616000"},
+         {"path": "/products/wear-armor-nagel-patch-set-928064", "target": "/products/lange-press-on-nagel-mit-gold-und-strass-deko-928064"},
+         {"path": "/products/kabelbinder-100-stueck", "target": "/products/kabelbinder-set-200-stk"},
+         {"path": "/products/jade-roller-gua-sha-premium-set-doppelkopf", "target": "/collections/beauty"},
+         {"path": "/products/nagel-kabelschellen-obo-bettermann-set", "target": "/products/kabelbinder-halterung-fur-wandmontage-612900"},
+         {"path": "/products/smartwatch-mit-ekg-blutdruck-625700", "target": "/products/fitness-smartwatch-mit-herzfrequenz-625700"}],
+        {"/products/sonnenbrillen-set-retro-polarized": "/products/retro-polarisierte-sonnenbrille-616000",
+         "/products/wear-armor-nagel-patch-set-928064": "/products/lange-press-on-nagel-mit-gold-und-strass-deko-928064",
+         "/products/kabelbinder-100-stueck": "/products/kabelbinder-set-200-stk",
+         "/products/jade-roller-gua-sha-premium-set-doppelkopf": "/collections/beauty",
+         "/products/nagel-kabelschellen-obo-bettermann-set": "/products/kabelbinder-halterung-fur-wandmontage-612900",
+         "/products/smartwatch-mit-ekg-blutdruck-625700": "/products/fitness-smartwatch-mit-herzfrequenz-625700"},
+        {("products", "kabelbinder-halterung-fur-wandmontage-612900"): "Kabelbinder-Halterungen für Wandmontage · 100 Stück"})
+    soll = [("/products/sonnenbrillen-set-retro-polarized", ""), ("/products/wear-armor-nagel-patch-set-928064", "gleiche Endnummer"),
+            ("/products/nagel-kabelschellen-obo-bettermann-set", "Kontrolle")]
+    ist = [(m[0], "gleiche Endnummer" if "Endnummer" in m[4] else ("Kontrolle" if "Kontrolle" in m[4] else "")) for m in probe]
+    ok = ist == soll
+    fehler += not ok
+    if not leise or not ok:
+        print(f"  {'✓' if ok else '✗'} Meldeliste: Set→Brille gemeldet, Umbenennung markiert (ohne «mit X»), Set→100 Stück = Kontrolle, "
+              f"Set→Set und →Kollektion still → {ist}")
     if not leise or fehler:
         print(f"SELBSTTEST {'OK' if not fehler else f'{fehler} FEHLER'}")
     return fehler == 0
+
+
+def _endnummer(h):
+    m = re.search(r"-(\d{6,})$", h or "")
+    return m.group(1) if m else None
+
+
+def set_meldungen(wl, endziel, titel):
+    """Bestehende Produkt→Produkt-Weiterleitungen, bei denen das (End-)Ziel einen Set-/Stück-/«mit X»-Bestandteil der Quelle
+    nicht hat. wl: [{path, target}], endziel: {quellpfad: lebender Endpfad}, titel: {("products", handle): Titel}.
+    → [(pfad, endziel, fehlend, quelle_text, hinweis)] — nur melden, nie drehen."""
+    aus = []
+    for r in wl:
+        qp = pfad_von(r["path"])
+        art_q, h_q = art_handle(qp)
+        zp = endziel.get(qp)
+        if art_q != "products" or not zp:
+            continue
+        art_z, h_z = art_handle(zp)
+        if art_z != "products" or h_z == h_q:
+            continue
+        quelle = f"{titel.get(('products', h_q)) or ''} {h_q}"
+        ziel = f"{titel.get(('products', h_z)) or ''} {h_z}"
+        umbenannt = bool(_endnummer(h_q)) and _endnummer(h_q) == _endnummer(h_z)
+        # Umbenennung desselben Produkts: «mit Diamanten» → «mit Strasssteinen» ist eine gewollte Korrektur → nur Set/Stückzahl
+        f = bestandteil_fehlt(quelle, ziel, mit_pruefen=not umbenannt)
+        if f:
+            hinweis = "gleiche Endnummer — vermutlich nur umbenannt" if umbenannt else ""
+            aus.append((r["path"], zp, ", ".join(f), quelle.strip(), hinweis))
+        elif set_auf_menge(quelle, ziel):
+            aus.append((r["path"], zp, "— (Ziel nennt Stückzahl statt «Set»)", quelle.strip(), "nur Kontrolle: kein Einzelteil"))
+    return aus
 
 
 # ── ab hier mit Netz ──────────────────────────────────────────────────────────────────────
@@ -316,8 +380,11 @@ def main():
 
     stat = {"gesamt": len(wl), "ok": 0, "fremd": 0, "kette": 0, "tot": 0}
     kette, tot = [], {}
+    endziel = {}   # Quellpfad → lebender Endpfad (für die Set→Einzelteil-Meldeliste)
     for r in wl:
         zustand, endpfad, hops = aufloesen(r["target"], karte, lebt)
+        if zustand == "ok":
+            endziel[pfad_von(r["path"])] = endpfad
         if zustand == "fremd":
             stat["fremd"] += 1
         elif zustand == "ok" and hops == 0:
@@ -330,6 +397,25 @@ def main():
             tot.setdefault(endpfad, []).append(r)
     print(f"Weiterleitungen {stat['gesamt']}: Ziel lebt {stat['ok']} · Kette {stat['kette']} · ins Leere {stat['tot']} "
           f"({len(tot)} tote Ziele) · Seiten/Blog/Datei {stat['fremd']}")
+
+    # 13.10.2026: Set → Einzelteil (Kauf-Strecke Klasse 18) — Titel der Quellen (oft noch als Entwurf da) und der Endziele
+    pp = [r for r in wl if art_handle(pfad_von(r["path"]))[0] == "products"
+          and art_handle(endziel.get(pfad_von(r["path"]), ""))[0] == "products"]
+    titel = {}
+    for (art, h), n in info.items():
+        if art == "products" and n:
+            titel[(art, h)] = n.get("title")
+    fehlend_q = {art_handle(pfad_von(r["path"]))[1] for r in pp} | {art_handle(endziel[pfad_von(r["path"])])[1] for r in pp}
+    fehlend_q = {h for h in fehlend_q if ("products", h) not in titel}
+    if fehlend_q:
+        for h, n in status_holen(fehlend_q, "products").items():
+            if n:
+                titel[("products", h)] = n.get("title")
+    meldungen = set_meldungen(pp, endziel, titel)
+    n_kontrolle = sum(1 for m in meldungen if m[4].startswith("nur Kontrolle"))
+    print(f"BESTANDTEIL: {len(meldungen) - n_kontrolle} von {len(pp)} Produkt→Produkt-Weiterleitungen führen auf ein Ziel ohne "
+          f"Set/Stück/«mit X» der Quelle (melden, nicht drehen; davon {sum(1 for m in meldungen if m[4].startswith('gleiche'))} "
+          f"Umbenennungen) · {n_kontrolle} zur Kontrolle (Set → Ziel mit Stückzahl)")
 
     schreibt = 0
     gedreht, angelegt, offen, fehler = [], [], [], []
@@ -389,7 +475,8 @@ def main():
          f"- Weiterleitungen gesamt: {stat['gesamt']}",
          f"- Ziel lebt: {stat['ok']} · zwei Sprünge (Kette): {stat['kette']} · ins Leere: {stat['tot']} "
          f"({len(tot)} tote Ziele) · Seiten/Blog/Datei (nicht geprüft): {stat['fremd']}",
-         f"- Dieser Lauf: gedreht {len(gedreht)} · angelegt {len(angelegt)} · offen {len(offen)} · Fehler {len(fehler)}", ""]
+         f"- Dieser Lauf: gedreht {len(gedreht)} · angelegt {len(angelegt)} · offen {len(offen)} · Fehler {len(fehler)}",
+         f"- Set → Einzelteil (gemeldet, nicht gedreht): {len(meldungen)} bestehende · {len(TL.GEMELDET)} verworfene Zwillinge", ""]
     if offen:
         z += ["## Offen (Mensch entscheidet)", "", "| totes Ziel | Quellen | Grund |", "|---|---:|---|"]
         z += [f"| {t} | {n} | {g} |" for t, n, g in offen] + [""]
@@ -401,6 +488,16 @@ def main():
         if len(gedreht) > 120:
             z.append(f"- … {len(gedreht) - 120} weitere (Ledger)")
         z.append("")
+    if meldungen or TL.GEMELDET:
+        z += ["## Set/Stück/«mit X» fehlt im Ziel — melden, nicht drehen (automation/bestandteil_regel.py)", "",
+              "Wer ein Set gesucht hat, landet auf einem Einzelteil. Mensch entscheidet: besseres Ziel (Set, Kategorie) oder so lassen.", ""]
+        if meldungen:
+            z += ["| Quelle | Ziel | fehlt | Hinweis |", "|---|---|---|---|"]
+            ordnung = lambda m: (m[4].startswith("nur Kontrolle"), m[4].startswith("gleiche"), m[0])  # noqa: E731
+            z += [f"| {p} | {zz} | {f} | {h} |" for p, zz, f, _, h in sorted(meldungen, key=ordnung)] + [""]
+        if TL.GEMELDET:
+            z += ["Beim Ersatz verworfene Zwillinge (dieser Lauf):", ""]
+            z += [f"- {q[:60]} ↛ /products/{h} (fehlt: {w})" for q, h, w in TL.GEMELDET] + [""]
     if fehler:
         z += ["## Fehler", ""] + [f"- {p}: {e}" for p, e in fehler] + [""]
     open(BERICHT, "w", encoding="utf-8").write("\n".join(z))
