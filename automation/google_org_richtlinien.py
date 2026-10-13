@@ -10,6 +10,9 @@ global return policy / shipping policy for your business under Organization mark
 FAKTEN (Kanon = shopPolicies, siehe zusagen_abgleich.py; Tarif = deliveryProfiles, gemessen 06.10.):
   Rückgabe  Schweiz, 30 Tage, per Post, Rücksendeporto trägt die Kundin, volle Erstattung.
   Versand   Schweiz, CHF 7.00; ab Bestellwert CHF 45 gratis (Tarif; Versprechen auf den Seiten «ab 50» = Puffer).
+            Liechtenstein (seit 09.10. Lieferland, Nachtrag 13.10.2026 Kauf-Strecke Klasse 16): CHF 14.90, KEIN Gratisversand
+            (Zone «Liechtenstein» im General profile, gemessen 13.10.); Rückgabe 30 Tage gilt laut Richtlinie für CH und LI.
+  Ein bestehendes Markup ohne LI wird beim SCHARF-Lauf ERSETZT (nicht nur eingefügt, wenn es fehlt).
 
   python3 automation/google_org_richtlinien.py            # Trockenlauf
   SCHARF=1 python3 automation/google_org_richtlinien.py   # Live-Datei holen, sichern (/tmp), einfügen, zurücklesen
@@ -29,12 +32,14 @@ ANKER = '''    "url": {{ request.origin | append: page.url | json }}
 RUECKGABE_TAGE = 30
 VERSAND_CHF = 7.00
 GRATIS_AB_CHF = 45.00
+LI_VERSAND_CHF = 14.90
+LAENDER = ["CH", "LI"]
 
 
 def markup():
     rueckgabe = {
         "@type": "MerchantReturnPolicy",
-        "applicableCountry": "CH",
+        "applicableCountry": LAENDER,
         "returnPolicyCountry": "CH",
         "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
         "merchantReturnDays": RUECKGABE_TAGE,
@@ -55,7 +60,15 @@ def markup():
              "shippingRate": {"@type": "MonetaryAmount", "value": 0, "currency": "CHF"}},
         ],
     }
-    teil = json.dumps({"hasMerchantReturnPolicy": rueckgabe, "hasShippingService": [versand]}, ensure_ascii=False)
+    versand_li = {
+        "@type": "ShippingService",
+        "name": "Versand Liechtenstein",
+        "shippingConditions": [
+            {"@type": "ShippingConditions", "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "LI"},
+             "shippingRate": {"@type": "MonetaryAmount", "value": LI_VERSAND_CHF, "currency": "CHF"}},
+        ],
+    }
+    teil = json.dumps({"hasMerchantReturnPolicy": rueckgabe, "hasShippingService": [versand, versand_li]}, ensure_ascii=False)
     return teil[1:-1]   # ohne äussere Klammern → wird als weitere Felder ins Organization-Objekt gesetzt
 
 
@@ -64,6 +77,37 @@ def neu_aus(alt):
              f'    {{%- comment -%}} {MARKE} (06.10.2026, automation/google_org_richtlinien.py) {{%- endcomment -%}}\n'
              f'    {markup()}\n  }}\n</script>')
     return alt.replace(ANKER, block, 1)
+
+
+def aktualisiert(alt):
+    """Ersetzt eine vorhandene (ältere) Markup-Zeile direkt unter der MARKE durch markup(); None, wenn nichts zu tun."""
+    i = alt.find(MARKE)
+    if i < 0:
+        return None
+    a = alt.find("\n", i) + 1
+    e = alt.find("\n", a)
+    zeile = alt[a:e]
+    if '"hasMerchantReturnPolicy"' not in zeile:
+        return None
+    soll = "    " + markup()
+    return None if zeile == soll else alt[:a] + soll + alt[e:]
+
+
+def tarif_li():
+    """Preis(e) der aktiven Raten in der LI-Zone des General profile."""
+    q = '''{ deliveryProfiles(first:10){ nodes{ default profileLocationGroups{ locationGroupZones(first:20){ nodes{
+      zone{ countries{ code{ countryCode } } }
+      methodDefinitions(first:30){ nodes{ active rateProvider{ ... on DeliveryRateDefinition{ price{ amount } } } } } } } } } } }'''
+    preise = set()
+    for p in gql(q)["deliveryProfiles"]["nodes"]:
+        if not p["default"]:
+            continue
+        for g in p["profileLocationGroups"]:
+            for z in g["locationGroupZones"]["nodes"]:
+                if "LI" in [c["code"]["countryCode"] for c in z["zone"]["countries"]]:
+                    preise |= {float(((m.get("rateProvider") or {}).get("price") or {}).get("amount") or -1)
+                               for m in z["methodDefinitions"]["nodes"] if m["active"]}
+    return sorted(preise)
 
 
 def datei():
@@ -78,23 +122,31 @@ def pruefen():
     b = []
     if MARKE not in inhalt:
         b.append("Markup fehlt im Live-Header (Theme-Update?) → SCHARF=1 erneut")
+    elif aktualisiert(inhalt) is not None:
+        b.append("Markup veraltet (z. B. ohne Liechtenstein) → SCHARF=1 erneut")
+    li = tarif_li()
+    if li != [LI_VERSAND_CHF]:
+        b.append(f"Liechtenstein-Tarif {li} ≠ Markup {LI_VERSAND_CHF}")
     if std != VERSAND_CHF:
         b.append(f"Standardversand {std} ≠ Markup {VERSAND_CHF}")
     if gratis != GRATIS_AB_CHF:
         b.append(f"Gratis-Schwelle Tarif {gratis} ≠ Markup {GRATIS_AB_CHF}")
     if b:
         print("⚠️ GOOGLE-ORG-RICHTLINIEN: " + " · ".join(b)); return 1
-    print(f"GOOGLE-ORG-RICHTLINIEN ✓: Rückgabe {RUECKGABE_TAGE} T · Versand CHF {std:.2f} / gratis ab {gratis:.0f} = Tarif")
+    print(f"GOOGLE-ORG-RICHTLINIEN ✓: Rückgabe {RUECKGABE_TAGE} T CH+LI · Versand CHF {std:.2f} / gratis ab {gratis:.0f} · LI {LI_VERSAND_CHF:.2f} = Tarif")
     return 0
 
 
 def einfuegen():
     role, alt = datei()
     if MARKE in alt:
-        print("schon drin"); return 0
-    if alt.count(ANKER) != 1:
+        neu = aktualisiert(alt)
+        if neu is None:
+            print("schon drin (aktuell)"); return 0
+    elif alt.count(ANKER) != 1:
         print(f"ANKER {alt.count(ANKER)}× (erwartet 1) — Header geändert, nicht blind einfügen"); return 2
-    neu = neu_aus(alt)
+    else:
+        neu = neu_aus(alt)
     json.loads("{" + markup() + "}")   # gültiges JSON
     if os.environ.get("SCHARF") != "1":
         print(f"TROCKEN: {DATEI} {len(alt)} → {len(neu)} Zeichen\n{markup()[:300]}…"); return 0
@@ -107,7 +159,7 @@ def einfuegen():
         print("FEHLER", r["userErrors"], "· Sicherung", pfad); return 1
     for _ in range(8):
         time.sleep(4)
-        if MARKE in datei()[1]:
+        if datei()[1] == neu:
             print(f"EINGEFÜGT + ZURÜCKGELESEN · Sicherung {pfad}"); return 0
     print("RÜCKLESEN FEHLT · Sicherung", pfad); return 1
 
