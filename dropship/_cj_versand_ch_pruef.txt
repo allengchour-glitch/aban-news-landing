@@ -8214,3 +8214,5 @@ militar-stil-wanderrucksack-gross-600900	2606060521191601500	0	-	KEINE CH-Option
 rfid-kartenetui-mit-munzfach-aus-pu-leder-623700	2607071158141624300	16	6.12	ok	landeseite
 retro-canvas-portemonnaie-und-necessaire-606900	2607070613081607500	16	7.43	ok	landeseite
 minimalistisches-portemonnaie-mit-airtag-chip-636900	2601081153211637100	16	6.63	ok	landeseite
+multifunktionales-anti-diebstahl-kartenetui-fu-628900	2601041255151629100	16	5.75	ok	landeseite
+herren-portemonnaie-mit-rfid-schutz-593602	2007630080098725889	0	-	KEINE CH-Option → DRAFT	landeseite
