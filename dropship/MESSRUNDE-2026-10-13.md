@@ -48,6 +48,7 @@ Anlass: Betreiber «mach bitte du alles weiter und verbesserung». Frage: Welche
 2. Platz 3: Menü-Einträge Weihnachtspullover, Handwärmer, Weihnachtspyjama-Familie (für Menschen, nicht für den Crawl).
 3. Kleinkram: Meta «Über 2'000 Kostüme», CHANEL-Tüte, 2XL/XXL, Google-Feedback-Wache mit IDs statt 300 Handles.
 4. Fortura-Produkttyp «Kostüme & Verkleidung» bereinigen (~100 falsche Typen).
+5. ✅ 13.10. 10:20 — Platz 9 «Weiterleitungen ins Leere»: `automation/weiterleitung_ziel_wache.py` (täglich im Aufseher). 169 von 1'657 zeigten ins Leere, 27 über zwei Sprünge → 197 gedreht, 54 angelegt, Nachmessung 0. Nebenfund: `kollektion_taugt()` prüfte die Veröffentlichung nicht (handy-powerbanks) → behoben, Kanarien prüfen jedes Tabellenziel.
 
 ## Nur Betreiber
 - Search Console → URL-Prüfung → «Indexierung beantragen», nur im Handy-Browser, etwa 5 Minuten, nachrangig hinter BigBuy EUR 1'000 und Merchant. Jetzt für: /collections/weihnachten-2026, /collections/geschenke-fuer-sie, /collections/geschenke-fuer-ihn, /collections/kleine-geschenke-mitbringsel, /collections/premium-geschenke, /collections/adventskalender (Inhalt seit dem Abruf am 05.10. geändert: 17 → 29 Produkte) und /blogs/ratgeber/weihnachtsgeschenke-2026-schweiz-ideen. Für weihnachtspullover, handwaermer und weihnachtspyjama-familie erst ab 24.10., falls sie dann noch «unknown» sind. Google sagt «Tage bis Wochen, ohne Garantie»; keine Verkaufserwartung.

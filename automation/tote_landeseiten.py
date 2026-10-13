@@ -47,6 +47,7 @@ GSC = os.environ.get("GSC") == "1"
 GSC_DATEI = os.path.join(REPO, "dropship", "_gsc_seiten.json")
 GSC_STAND = os.path.join(REPO, "dropship", "_gsc_tot_stand.json")
 GSC_MAX = int(os.environ.get("GSC_MAX", "50"))
+ONLINE_STORE = "gid://shopify/Publication/301970915713"
 GSC_KOLL_MAX = 3000     # grössere Kategorien sind für eine Google-Landung zu grob (sub-haustier 3'704, damen-mode 10'344)
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 try:   # 13.10.2026: Eimer-Etikette (Regel «helfer-ohne-eimer») — der Helfer hatte keine
@@ -265,7 +266,9 @@ TITEL_ZIEL = [
     ("diffuser", "sub-aroma-diffuser"), ("luftbefeuchter", "haushaltsgeraete"),
     ("luftreiniger", "haushaltsgeraete"), ("ventilator", "haushaltsgeraete"),
     ("smartwatch", "smartwatches-wearables"), ("kopfhörer", "kopfhoerer-audio"),
-    ("dashcam", "auto-kfz-zubehoer"), ("powerbank", "handy-powerbanks"),   # 13.10.: «ladegeraete-powerbanks» gibt es nicht (lief ins Leere)
+    # 13.10.: «ladegeraete-powerbanks» gibt es nicht; «handy-powerbanks» gibt es, ist aber NICHT im Onlineshop
+    # veröffentlicht (gefunden von weiterleitung_ziel_wache.py) → «Ladegeräte & Powerbanks» (elektronik-laden, Tag kat-laden)
+    ("dashcam", "auto-kfz-zubehoer"), ("powerbank", "elektronik-laden"),
     ("kulturbeutel", "sub-reise"), ("koffer", "sub-reise"),
     ("wolldecke", "kissen-wohntextilien"), ("kuscheldecke", "kissen-wohntextilien"),
     # ganz zuletzt, weil grob: Geschlechtswort im Titel → Modekategorie
@@ -278,11 +281,11 @@ TAG_ZIEL = [
     ("kueche", "sub-kueche"), ("haushalt", "haushaltsgeraete"),
     ("reise", "sub-reise"), ("outdoor", "sub-reise"), ("camping", "sub-reise"),
     ("auto", "auto-kfz-zubehoer"), ("kinder", "spielzeug"), ("spielzeug", "spielzeug"),
-    ("schmuck", "schmuck"), ("uhren", "uhren"), ("beauty", "beauty-pflege"),
+    ("schmuck", "schmuck-uhren"), ("uhren", "uhren"),   # 13.10.: Kollektion «schmuck» gibt es nicht (still übersprungen) ("beauty", "beauty-pflege"),
     ("elektronik", "elektronik-technik"), ("gadget", "trends-gadgets"),
     ("wohnen", "wohnen-dekoration"), ("deko", "wohnen-dekoration"),
     ("sport", "sub-yoga-fitness"), ("fitness", "sub-yoga-fitness"),
-    ("taschen", "sub-taschen"), ("schuhe", "schuhe-sneaker"),
+    ("taschen", "sub-taschen"), ("schuhe", "sneaker-sportschuhe"),
 ]
 # ⚠️ 22.09.2026: `kinderspielzeug` ist selbst eine 301 auf `spielzeug` — kollektion_taugt() lehnte
 # das Ziel darum still ab, und JEDES Kinder-/Spielzeug-Produkt fiel auf «Mensch entscheidet»
@@ -295,19 +298,22 @@ TYP_ZIEL = {
     # productType heisst «Damenmode»/«Herrenmode» (ohne Bindestrich) — die alten Schluessel
     # «damen-mode»/«herren-mode» trafen nie, und «herren-mode» als Kollektion gibt es nicht.
     "damenmode": "damen-mode", "herrenmode": "fur-ihn",
-    "damenschuhe": "schuhe-sneaker", "herrenschuhe": "herren-schuhe",
+    "damenschuhe": "sneaker-sportschuhe", "herrenschuhe": "herren-schuhe",   # 13.10.: schuhe-sneaker trägt eine (wirkungslose) Weiterleitung → kein Ziel
 }
 _koll_ok = {}
 
 
 def kollektion_taugt(handle):
-    """Veroeffentlicht, mit aktiver Ware, und selbst keine Weiterleitung."""
+    """Veroeffentlicht, mit aktiver Ware, und selbst keine Weiterleitung.
+    ⚠️ 13.10.2026: «veröffentlicht» stand nur im Docstring — geprüft wurden Existenz, aktive Ware und Weiterleitung.
+    `handy-powerbanks` (347 Produkte, NICHT im Onlineshop) galt deshalb als taugliches Ziel; die erste Weiterleitung
+    dorthin (Solar-Powerbank) führte in eine 404. Jetzt fragt die Abfrage die Onlineshop-Veröffentlichung mit."""
     if handle in _koll_ok:
         return _koll_ok[handle]
-    d = gql('query($q:String!){collections(first:1,query:$q){nodes{id handle}}}',
-            {"q": "handle:" + handle})
+    d = gql('query($q:String!,$p:ID!){collections(first:1,query:$q){nodes{id handle publishedOnPublication(publicationId:$p)}}}',
+            {"q": "handle:" + handle, "p": ONLINE_STORE})
     n = ((d.get("data") or {}).get("collections") or {}).get("nodes") or []
-    if not n:
+    if not n or n[0]["handle"] != handle or not n[0].get("publishedOnPublication"):
         _koll_ok[handle] = False; return False
     kid = n[0]["id"].split("/")[-1]
     d2 = gql('query($q:String!){products(first:1,query:$q){nodes{id}}}',
@@ -456,7 +462,13 @@ def kanarien():
             gut = (ziel == kat_ok)
         print(f"  {'✓' if gut else '✗'} {titel[:44]:46} → {ziel or 'offen'} ({wie})")
         fehler += not gut
-    print(f"KANARIEN {len(KANARIEN) - fehler}/{len(KANARIEN)}")
+    # 13.10.2026: jedes Tabellenziel muss taugen — sonst wird der Eintrag STILL übersprungen («schmuck» gab es nie,
+    # «handy-powerbanks» ist nicht veröffentlicht). Ein Ziel, das nicht taugt, ist ein Kanarienfehler.
+    for z in sorted({z for _, z in TITEL_ZIEL} | {z for _, z in TAG_ZIEL} | set(TYP_ZIEL.values())):
+        if not kollektion_taugt(z):
+            print(f"  ✗ Tabellenziel /collections/{z} taugt nicht (fehlt, nicht veröffentlicht, leer oder Weiterleitung)")
+            fehler += 1
+    print(f"KANARIEN {'OK' if not fehler else f'{fehler} FEHLER'} ({len(KANARIEN)} Titel + Tabellenziele)")
     return fehler == 0
 
 

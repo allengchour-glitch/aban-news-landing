@@ -1614,3 +1614,5 @@
 16614886277511	Farbe:6:6	2026-10-13	multifunktionale-hufttasche-fur-unterwegs-608100
 16614886179207	Farbe:6:6	2026-10-13	retro-rucksack-aus-canvas-40e425
 16614886048135	Farbe:2:2	2026-10-13	rucksack-mit-weltkarten-muster-2acdda
+16614885425543	Farbe:3:3	2026-10-13	outdoor-cycling-rucksack-20-35-l-a0d8b7
+16614885196167	Farbe:3:3	2026-10-13	wasserfester-oxford-rucksack-f933e0

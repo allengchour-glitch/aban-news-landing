@@ -49,6 +49,31 @@
 
 
 
+## ↪️ Weiterleitungen ins Leere: das ZIEL stirbt nach der Weiterleitung (2026-10-13 vormittags, «weiter», Messrunde Platz 9)
+- **GEMESSEN (alle 1'657 URL-Weiterleitungen, 10:00 UTC):**
+  - 146 Produkt→Produkt-Weiterleitungen zeigten auf 51 inzwischen gedraftete Produkte, zum Beispiel Champion-Trainingsanzug, Gürteltasche Safta, Wanduhr Versa und Michael-Kors-Taschen.
+  - 28 zeigten auf abgemeldete Kollektionen ohne eigene Weiterleitung: klima-ventilatoren (21), die BigBuy-Marken adidas, puma, reebok, under-armour und gant, dazu tauchen-schnorcheln.
+  - Alle diese Ziele ergeben eine 404, also genau das, was die Weiterleitung verhindern sollte.
+  - 27 Weiterleitungen liefen über zwei Sprünge (sub-uhren → uhren …).
+  - tote_landeseiten.py fragt nur «hat der Pfad eine Weiterleitung?», nie «lebt ihr Ziel noch?».
+- **Neu: `automation/weiterleitung_ziel_wache.py`** (täglich im Aufseher, `FIX=1`, Lock + Log /tmp/weiterleitung_ziel_wache.log).
+  - Regel: Ein Ziel ist tot, wenn es für Besucher eine 404 ist. Bei einem Produkt heisst das nicht ACTIVE oder nicht im Onlineshop. Bei einer Kollektion heisst das nicht im Onlineshop; eine veröffentlichte, leere Kollektion ist keine 404.
+  - Ketten werden geglättet.
+  - Ein totes Ziel bekommt selbst eine Weiterleitung auf einen Ersatz, und alle Quellen werden direkt auf diesen Ersatz gedreht.
+  - Ersatz, in dieser Reihenfolge: Zwilling (≥ 0,70, veröffentlicht) → Tabelle WARENWORT → Kategorie aus dem Produkt → Kategorie aus dem Handle.
+  - Marken gehen nie auf eine andere Marke (KOLL_ERSATZ: adidas → Sport & Outdoor). Klingen werden nie umgeleitet.
+  - Sicherung: Ledger `dropship/_weiterleitung_ziel_ledger.tsv` mit Rückweg `--zurueck LAUF=…` und `--selbsttest` (offline, 20 Fälle). Bericht `dropship/WEITERLEITUNG-ZIELE.md`.
+- **Ergebnis:** 197 gedreht, 54 angelegt, 0 offen. Nachmessung 1'711 Weiterleitungen: 0 ins Leere, 0 Ketten.
+  - Live per curl -I: Klimaanlage → Haushaltsgeräte, klima-ventilatoren → Haushaltsgeräte, Wanduhr → Wohnen & Dekoration, Solar-Powerbank → Ladegeräte & Powerbanks. Jeweils ein Sprung.
+- **Lehre 1 — ein Docstring ist keine Prüfung:**
+  - `tote_landeseiten.kollektion_taugt()` versprach im Docstring «veröffentlicht», geprüft hat es das nie.
+  - Folge: `handy-powerbanks` hat 347 Produkte, ist aber nicht im Onlineshop, und galt trotzdem als Ziel. Die Powerbank-Weiterleitung, die ich heute früh selbst gesetzt hatte, führte in eine 404.
+  - Jetzt fragt die Prüfung die Onlineshop-Veröffentlichung mit.
+  - `--kanarien` prüft zusätzlich jedes Tabellenziel. Dabei kamen zwei weitere Fehler ans Licht: die Kollektion «schmuck» gab es nie, und «schuhe-sneaker» trägt eine Weiterleitung, wird darum abgelehnt und still übersprungen. Neue Ziele: schmuck-uhren und sneaker-sportschuhe.
+- **Lehre 2 — sed in einer Python-Dict-Zeile:** Ein angehängter `# Kommentar` mitten in der Zeile hat den Eintrag `"herrenschuhe"` dahinter verschluckt. AST und Testabfrage haben das gefangen. Kommentare deshalb ans ZEILENENDE nach dem letzten Eintrag setzen.
+- **Lehre 3 — Selbsttest vor dem Schreiben:** Bindestriche zu Leerzeichen zu machen, hätte «L-IPL-iner» zum IPL-Gerät gemacht (dieselbe Falle wie am 12.08.). Der Warenwort-Kanarienvogel hat es vor dem ersten FIX-Lauf gefangen.
+- **Lehre 4 — Handlauf und Aufseher:** Ein Handlauf hält den Lock des Aufsehers nicht. Ein neuer Aufseher-Block mit einem frischen Log würde parallel starten. Deshalb das Log nach einem Handlauf anfassen (touch + eine Zeile).
+
 ## 🔎 «weiter»: Messrunden-Rest abgearbeitet (2026-10-13 vormittags)
 - **Menü** +3 (Weihnachtspullover, Handwärmer, Weihnachtspyjamas) per `menue_neue_kollektionen.py --saison`, Sicherung, 0 verlorene IDs.
 - **Mengenangabe:** «Über 2'000 Kostüme» bei 1'545 aktiven → `kollektion_mengen_wache` kannte das Nomen «Kostüme» nicht (jetzt Kanarien 15/15).
@@ -19764,6 +19789,8 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-10-12 · 🖼️ **Google-Bilder: Bildtausch wirkt (getauscht 76–91 % frei vs. Vergleich 46 %); Waffenzubehör nie tauschen (Holster-Regel, Kanarien 8/0); `tools/bild_text_weg.py` entfernt Werbetext nur auf gleichmässigem Grund (Selbsttest 4/4, Balken-Regel), 1 von 24 sicher; «Unable to show image» = nicht bei uns (40/40 HTTP 200)** → `dropship/GOOGLE-BILDER-2026-10-12.md`
+- 2026-10-12 · 🧹 **Auftrag 1–8: Taschen-Vorschau auf das Printful-Blank (Farbe passt nur so), Shirt-Preise nach Formel (nur 9 Varianten, Repricer würde senken), Liechtenstein-Satz «in der Schweiz» in 3'720 Texten (Theme gesperrt → Liste), Verkauf ohne EK gesetzt. Lehren: pkill-Selbsttod, InventoryItemInput, Monitor 5-min-Limit, Container-Neustart beendet Läufe, Live-Schreiber = Hook-Lücke → `dropship/AUFTRAG-1-8-2026-10-12.md`, Journal 12.10. «Auftrag 1–8».**
 - 2026-10-07 · 💳 **«bei bestellung sofort … paylink schicken»: CJ-Anlage lief schon (createOrderV2), Meldung nur im Log → `betreiber_push.py` (ntfy, Thema nie im Repo) aus `cj_order_engine.py` (angelegt + jeder Fehlerfall) + tägliche Erinnerung `cj_zahlung_offen.py`; Runner 20 → 5 min.** Link = CJ-Konsole (Bestellseiten-URL unbelegt) → Journal 07.10. 16:35
 - 2026-10-07 · 🧰 **Verbesserungsrunde: CJ-Gruppe «Werkzeug» stempelt alles als Hardware > Tools (110/490 Neuimporte in 4 h, 1'188 aktive, nur 566 mit Werkzeugwort: Kalimba, Regenschirm, Kerzenhalter, Auto-Diagnose) → `google_kategorie_umzug.py` Werkzeugwort-Schutz + 15 Kreuzregeln, Kanarien 65/65, 70 umgezogen/0 Fehler; Shop-Seite (Typ, Shopify-Kategorie, Tags) per `werkzeug_korb_shop.py` 80/0 nachgezogen, Aufseher direkt danach; an der Quelle: eine Regeldatei `data/werkzeug_korb.json` für Importer + Wächter, Gleichlauf 1'253 Titel 0 Abweichungen.** Ein Feld korrigiert = Geschwisterfelder prüfen; Sammelgruppe ≠ Warenurteil → `dropship/GOOGLE-WERKZEUG-SAMMELKORB-2026-10-07.md`
 - 2026-10-07 · 🖼️ **«das bild ist verzogen?»: IG-Karussell-Slide = Lieferanten-Infografik, von CJ auf 800×800 gestaucht (unser grund() hält das Verhältnis) → `automation/fremdtext.py` (OCR Grau + Schwellwert, ≥4 Wörter = raus) in Karussell, Einzelbild-Nachschub, Story, Bild-Reel; 15/48 fertige Sets `fremdtext-skip`. Nach Neustart erst Keepalive abwarten (Reset löschte die neue Datei).** Verzerrung zuerst am Quellbild messen → Journal 07.10. 10:30
