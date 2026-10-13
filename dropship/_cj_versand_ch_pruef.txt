@@ -7624,3 +7624,4 @@ taktische-led-taschenlampe-xhp90-wiederaufladb-554241	2045027201653264385	0	-	KE
 usb-led-taschenlampe-extrem-hell-995841	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 led-stirnlampe-super-hell-mit-bewegungssensor-877058	2043597803109928962	0	-	KEINE CH-Option → DRAFT	landeseite
 extrem-helle-taktische-led-taschenlampe-545282	2043597849526374402	0	-	KEINE CH-Option → DRAFT	landeseite
+superheller-led-handscheinwerfer-mit-usb-ladef-366594	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
