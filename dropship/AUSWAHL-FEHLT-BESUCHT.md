@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-13 04:31 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-13 08:15 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 132 · **67 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 44, teilweise: 17, keine: 6; Preisspanne > 2×: 14) · 1 CJ-Variante: 65 · ohne Antwort: 0
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 131 · **66 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 43, teilweise: 17, keine: 6; Preisspanne > 2×: 14) · 1 CJ-Variante: 65 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -63,7 +63,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Vulkan Aroma Diffuser mit Flammen- & Quallen-Effekt (`vulkan-aroma-diffuser-mit-flammen-quallen-effe-771200`) | 3 | 3 | 16.32–32.64 | 33.90 | Blue flame bead-With Essential Oil-US, Yellow flame bead-With Essential Oil-US, Blue yellow-With Essential Oil-US |
 | Glättbürste mit Dampf-Sprühfunktion (`glattburste-mit-dampf-spruhfunktion-e765b5`) | 3 | 3 | 15.49–15.49 | 29.90 | UK plug, US plug, EU plug |
 | Marokkanisches Kissen mit Quasten (`marokkanisches-kissen-mit-quasten-890688`) | 3 | 3 | 7.4–8.91 | 20.90 | Mosaic pillow 4545cm-Without core, Square pillow 4545cm-Without core, Square waist pillow 3050cm-Without core |
-| Tragbares USB-Haarentfernungsgerät (`tragbares-usb-haarentfernungsgerat-630000`) | 3 | 3 | 3.02–3.02 | 22.90 | White, Pink, Skin Color |
 | Edelstahl-Armband «Cœur» · Herz, Gold (`edelstahl-armband-coeur-herz-gold`) | 3 | 0 | 3.86–4.81 | 34.90 | Steel, Rose Gold, Gold |
 | Vintage Baseball-Cap «Liberty» · Washed Schwarz (`vintage-baseball-cap-liberty-washed-schwarz`) | 3 | 3 | 2.13–2.13 | 27.90 | Black, Deep Blue, Light blue |
 | Baseball-Cap «L.A.» · Hellblau (`baseball-cap-l-a-hellblau`) | 3 | 3 | 2.04–2.04 | 24.90 | Black, Light blue, Deep Blue |

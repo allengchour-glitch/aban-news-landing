@@ -1,10 +1,12 @@
 {
- "stand": "2026-10-13T06:11Z",
- "gescannt": 29,
- "ohne_kategorie_vorher": 29,
- "gesetzt": 29,
- "ohne_kategorie_nachher": 0,
+ "stand": "2026-10-13T08:13Z",
+ "gescannt": 55,
+ "ohne_kategorie_vorher": 55,
+ "gesetzt": 47,
+ "ohne_kategorie_nachher": 8,
  "fehler": 0,
- "unbekannte_typen": {},
+ "unbekannte_typen": {
+  "Büro & Home Office": 8
+ },
  "scharf": true
 }
