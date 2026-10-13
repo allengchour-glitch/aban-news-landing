@@ -2,7 +2,10 @@
  * (Vertrag 2026-07-22, Kundennr 544341). Quelle: täglicher CSV-Feed via FTP (Anlage 1 des Vertrags).
  *
  * Der Feed liefert täglich echten CH-Lagerbestand (Lagerbestand Total) → beim ANLEGEN setzen wir
- * tracked:true + DENY + echte Menge. CH-Versand DPD CHF 9.50, 1–2 Tage.
+ * tracked:true + DENY + echte Menge. CH-Versand DPD CHF 9.50, 1–2 Tage Transit.
+ * 13.10.2026 (VERB-M1): Kunden-Zusage «meist 2–3 Werktage» — die Kasse rechnet Bearbeitung P1D + Transit 1–2
+ * (Versandprofil «CH-Lager», data/versand_transit_regel.json). Satz im Text = fortura_neu() in kassen_lieferdatum_wache.py;
+ * die Wache («ZUSAGE CH-LAGER») liest diesen Quelltext mit und meldet jede kürzere Zusage.
  * ⚠️ KORREKTUR 2026-08-14: Hier stand «ghost-sale-SICHER by design». Das war falsch und hat den
  * Fehler drei Wochen gedeckt. Der FEED ist täglich frisch, der SHOP war es nicht: dieses Skript
  * schreibt die Menge nur beim Anlegen, danach nie wieder — 4'179 aktive Varianten standen 21 Tage
@@ -225,7 +228,7 @@ for (const rec of recs.slice(0, LIMIT)) {
   const veNote = ve > 1 ? `<p>📦 Verkauf in praktischen Bündeln zu ${ve} Stück.</p>` : '';
   const desc = `<p>${marketing}</p>${specTable}${veNote}`
     + `<h4>Warum bei LuxeStyle kaufen?</h4><ul>`
-    + `<li>🇨🇭 <strong>Versand aus der Schweiz</strong> – Lieferung in nur 1–2 Werktagen (DPD)</li>`
+    + `<li>🇨🇭 <strong>Versand ab Schweizer Lager</strong> mit DPD, meist in 2–3 Werktagen bei dir</li>`
     + `<li>📦 Gratis-Versand ab CHF 50</li>`
     + `<li>↩️ 30 Tage Rückgaberecht</li>`
     + `<li>🔒 Kauf auf Rechnung mit Klarna · TWINT · Karten · PayPal · Apple Pay</li>`

@@ -34,6 +34,8 @@ TOK = open("/tmp/cj_shop_token.txt").read().strip() if os.path.exists("/tmp/cj_s
 SCAM = re.compile(r"WELCOME10|Designer-Preis|Schreib LINK|#fyp\b|nur heute|Rabatt|Bezahl bequem|Klarna\.|"
                   r"Spar dir|Limitiert|Nur noch|%", re.I)
 GENERISCH = {"#onlineshopping", "#sale", "#fyp", "#viral", "#shopping", "#neu", "#trend", "#trending", "#luxestyle", "#schweiz"}
+LIEFERSATZ = re.compile(r"Werktag|Lieferung|Versand|Schweizer Lager|Lieferzeit", re.I)
+ALTE_ZUSAGE = re.compile(r"\b1\s*[–-]\s*2\s*(?:Werk)?[Tt]ag")
 EMOJI = re.compile(r"[\U0001F300-\U0001FAFF☀-➿⭐⭕️]")
 
 
@@ -65,6 +67,18 @@ def produkte(ids):
     return out
 
 
+def produkte_handle(handles):
+    """{'h:<handle>': Produkt} für Queue-Zeilen, deren ID der Handle ist (Nachschub Fortura)."""
+    out = {}
+    for h in handles:
+        d = gql("query($q:String!){products(first:1,query:$q){nodes{id handle title status onlineStoreUrl tags "
+                "priceRangeV2{minVariantPrice{amount}}}}}", {"q": f"handle:{h}"})
+        n = [x for x in (d["data"]["products"]["nodes"] or []) if x["handle"] == h]
+        if n:
+            out["h:" + h] = n[0]
+    return out
+
+
 def chf(p):
     return "CHF " + f"{float(p):.2f}".replace(".00", ".–")
 
@@ -82,6 +96,10 @@ def erster_satz(cap):
     s = re.sub(r"\s*🔗.*$", "", s)
     if not s or len(s) > 140 or SCAM.search(s) or "Link in Bio" in s or "luxestyle" in s.lower():
         return ""
+    # 13.10.2026 (VERB-M1): Lieferzusagen gehören in die Laden-Zeile (belegt je Profil), nie in den Kimi-Satz —
+    # der Nachschub schrieb «🇨🇭 Ab Schweizer Lager – in 1–2 Werktagen bei dir» als ersten Satz.
+    if LIEFERSATZ.search(s):
+        return ""
     em = EMOJI.findall(s)
     if len(em) > 1:                                   # hoechstens ein Emoji, und das am Ende
         s = EMOJI.sub("", s).strip() + " " + em[0]
@@ -89,8 +107,16 @@ def erster_satz(cap):
 
 
 def laden_zeile(tags):
+    """13.10.2026 (VERB-M1): CH-Lager nur mit Zeichen «profil-ch-lager» = Versandprofil «CH-Lager», Kasse 2–3 Werktage
+    (P1D + Transit 1–2). CH-Lager-Ware ohne Zeichen rechnet die Kasse bis Stufe 3 (ch_lager_profil.py) mit Direktversand-
+    Zeiten → keine Zahl, nur der Verweis aufs Datum beim Artikel. Vorher pauschal «in 1–2 Werktagen» (zu kurz)."""
     t = {x.lower() for x in tags}
-    liefer = "Versand ab Schweizer Lager in 1–2 Werktagen" if "ch-lager" in t else "Lieferung 10–20 Werktage, dafür ehrlich angeschrieben"
+    if "ch-lager" in t and "profil-ch-lager" in t:
+        liefer = "Versand ab Schweizer Lager, meist in 2–3 Werktagen"
+    elif "ch-lager" in t:
+        liefer = "Ab Schweizer Lager, Lieferdatum steht beim Artikel und in der Kasse"
+    else:
+        liefer = "Lieferung 10–20 Werktage, dafür ehrlich angeschrieben"
     return (f"Kleiner Schweizer Shop aus Belp, kein Konzern. {liefer} · 30 Tage Rückgabe · TWINT oder Rechnung.\n"
             "Fragen? Schreib sie in die Kommentare 👇")
 
@@ -114,7 +140,9 @@ def neu_caption(alt, p):
 
 
 def braucht_umbau(cap):
-    return SCAM.search(cap) is not None or "Kleiner Schweizer Shop" not in cap or "CHF" not in cap
+    # 13.10.2026 (VERB-M1): alte Zusage «in 1–2 Werktagen» (Laden-Zeile bis 13.10. + Nachschub-Satz) → neu bauen
+    return (SCAM.search(cap) is not None or "Kleiner Schweizer Shop" not in cap or "CHF" not in cap
+            or ALTE_ZUSAGE.search(cap) is not None)
 
 
 def main():
@@ -122,13 +150,22 @@ def main():
     rows = list(csv.reader(io.StringIO(text)))
     hdr = rows[0]; ci = {h: i for i, h in enumerate(hdr)}
     ready = [r for r in rows[1:] if len(r) > ci["status"] and r[ci["status"]].strip() == "ready"]
-    kand = [(r, re.search(r"(\d{12,})\s*$", r[ci["id"]].strip())) for r in ready]
-    kand = [(r, m.group(1)) for r, m in kand if m and braucht_umbau(r[ci["caption"]])]
+    kand = []
+    for r in ready:
+        zid, cap = r[ci["id"]].strip(), r[ci["caption"]]
+        m = re.search(r"(\d{12,})\s*$", zid)
+        if m and braucht_umbau(cap):
+            kand.append((r, m.group(1)))
+        elif not m and re.fullmatch(r"[a-z0-9-]+", zid) and ALTE_ZUSAGE.search(cap):
+            # 13.10.2026 (VERB-M1): Nachschub-Zeilen für Fortura-Ware tragen den HANDLE als ID («loffelfuchs-fga87710») und
+            # fielen hier durch — mit «in 1–2 Werktagen» (Kasse: 2–3). Nur diese Klasse, sonst bleiben Handle-Zeilen unberührt.
+            kand.append((r, "h:" + zid))
     print(f"ready {len(ready)} · umzubauen {len(kand)}")
     if not kand:
         bericht(0, 0, [])
         return
-    live = produkte([pid for _, pid in kand])
+    live = produkte([pid for _, pid in kand if not pid.startswith("h:")])
+    live.update(produkte_handle([pid[2:] for _, pid in kand if pid.startswith("h:")]))
     umgebaut, beispiele, uebersprungen = 0, [], 0
     for r, pid in kand:
         p = live.get(pid)

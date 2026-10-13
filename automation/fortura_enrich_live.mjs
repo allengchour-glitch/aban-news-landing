@@ -29,7 +29,7 @@ function buildDesc(rec,art,title){
   const veNote=ve>1?`<p>📦 Verkauf in praktischen Bündeln zu ${ve} Stück.</p>`:'';
   return `<p>${marketing}</p>${specTable}${veNote}`
     +`<h4>Warum bei LuxeStyle kaufen?</h4><ul>`
-    +`<li>🇨🇭 <strong>Versand aus der Schweiz</strong> – Lieferung in nur 1–2 Werktagen (DPD)</li>`
+    +`<li>🇨🇭 <strong>Versand ab Schweizer Lager</strong> mit DPD, meist in 2–3 Werktagen bei dir</li>`
     +`<li>📦 Gratis-Versand ab CHF 50</li><li>↩️ 30 Tage Rückgaberecht</li>`
     +`<li>🔒 Kauf auf Rechnung mit Klarna · TWINT · Karten · PayPal · Apple Pay</li>`
     +`<li>💬 Schweizer Support: info@luxestyle.ch</li></ul>`;
