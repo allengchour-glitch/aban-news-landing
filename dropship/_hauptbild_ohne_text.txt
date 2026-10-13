@@ -55867,3 +55867,4 @@ gid://shopify/Product/16616662925703	schon-sauber	0
 gid://shopify/Product/15508716028289	karton-mass-korrigiert	-	gid://shopify/MediaImage/70618240844161	gid://shopify/MediaImage/70618240876929
 gid://shopify/Product/15510299902337	karton-mass-korrigiert	-	gid://shopify/MediaImage/70631244857729	gid://shopify/MediaImage/70631244890497
 gid://shopify/Product/16616558494087	karton-mass-korrigiert	-	gid://shopify/MediaImage/77501782229383	gid://shopify/MediaImage/77501782294919
+gid://shopify/Product/15524001448321	karton-mass-korrigiert	0	gid://shopify/MediaImage/70772828012929	gid://shopify/MediaImage/70772828045697
