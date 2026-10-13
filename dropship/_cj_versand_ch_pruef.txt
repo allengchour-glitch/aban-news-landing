@@ -8251,3 +8251,13 @@ herren-strick-cardigan-mit-lochmuster-614000	2607050314371614700	16	10.29	ok	lan
 herren-hemd-mit-animal-print-und-kurzen-armeln-611500	2607040941481612400	16	8.39	ok	landeseite
 herren-hawaiihemd-mit-3d-print-622800	2607040937511624200	16	7.43	ok	landeseite
 herren-weste-mit-stehkragen-605200	2607090700181606100	16	10.15	ok	landeseite
+slim-fit-herrenweste-korean-style-603700	2607080934161604400	16	8.79	ok	landeseite
+kapuzenjacke-fur-herren-606500	2607070850411607200	16	8.79	ok	landeseite
+herren-cordjacke-im-workwear-stil-606500	2607070514151607100	16	11.23	ok	landeseite
+gothic-military-herrenjacke-630900	2607070403451631500	16	12.21	ok	landeseite
+pflanzenbasierter-hautpflege-roll-on-stift-15m-481537	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+cc-bare-face-tint-cream-40g-713666	2075133489973211138	3	5.86	ok	landeseite
+farbwechselnder-concealer-foundation-stick-813313	2074742512610562050	3	5.37	ok	landeseite
+2-in-1-farbwechsel-foundation-stick-dunkel-533186	2074742066479087617	3	5.60	ok	landeseite
+thermo-reaktive-foundation-passt-sich-dem-haut-396737	2074734842398756866	3	5.95	ok	landeseite
+sonnenschutz-foundation-mit-farbwechsel-757825	2074742726624923649	3	5.86	ok	landeseite

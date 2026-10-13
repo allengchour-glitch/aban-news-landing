@@ -25,6 +25,14 @@ deshalb erst ab mehreren echten WÖRTERN, nicht ab der ersten Zahl. Ebenso wenig
 auf dem Produkt selbst ein Grund (Markenschriftzug auf einem Schuh, Zifferblatt einer Uhr) —
 solche Funde bleiben unter der Schwelle, weil sie klein und vereinzelt sind.
 
+⚠️ 13.10.2026 — ALS HAUPTBILD GILT EINE MASSANGABE NICHT ALS SAUBER (Kauf-Strecke Klasse 13).
+hauptbild_ohne_text.py hat beim Tunmate-Rizinusöl den KARTON mit Masslinien («4.33in/11cm», «1.57in/4cm») nach vorn
+gestellt: Masszeilen bestehen aus Ziffern und zählen hier als 0 Wörter (WORT verlangt 3 Buchstaben). Als Zusatzbild ist
+eine Massangabe nützlich (siehe oben), als Hauptbild ist sie ein Karton-/Massbild statt eines Produktfotos.
+masse()/von_url_hauptbild()/hauptbild_tauglich(): Zahl+Einheit (in, inch, cm, mm, ml, oz — auch «4.33in/11cm»,
+«60ml/2.02fl oz») schliesst ein Bild als NEUES Hauptbild aus. «2 in 1» zählt nicht (Einheit «in» nur ohne Leerzeichen).
+Selbsttest: python3 automation/bildtext_pruefen.py --selbsttest (Tunmate-Karton = «nicht sauber»).
+
 DIESES SKRIPT ÄNDERT NICHTS. Es liefert `hat_werbetext(pfad_oder_bytes)` für den Backfill und
 misst auf Wunsch eine Stichprobe, damit die Schwelle belegt ist statt geraten.
 """
@@ -70,8 +78,33 @@ WORT = re.compile(r'^[A-Za-zÄÖÜäöüß]{3,}$')
 ZWEILESARTEN = os.environ.get("ZWEILESARTEN") == "1"
 
 
+# 13.10.2026: Massangaben (Zahl+Einheit). «in»/«inch» nur direkt an der Zahl («4.33in»), damit «2 in 1» frei bleibt.
+MASS = re.compile(r"(?i)(?<![A-Za-z])\d+(?:[.,]\d+)?(?:in(?:ch(?:es)?)?\b|\s*(?:inch(?:es)?|cm|mm|ml|oz)\b)")
+MASS_SICHERHEIT = 50
+_LETZTE_MASSE = []
+
+
+def _masse_aus(d):
+    """Massangaben aus einer image_to_data-Lesung (Wörter ab MASS_SICHERHEIT, zeilenweise verbunden)."""
+    zeilen = {}
+    for i, wort in enumerate(d["text"]):
+        try:
+            k = float(d["conf"][i])
+        except (TypeError, ValueError):
+            continue
+        w = (wort or "").strip()
+        if not w or k < MASS_SICHERHEIT:
+            continue
+        zeilen.setdefault((d["block_num"][i], d["par_num"][i], d["line_num"][i]), []).append(w)
+    raus = []
+    for ws in zeilen.values():
+        raus += MASS.findall(" ".join(ws))
+    return raus
+
+
 def _lese(g):
     d = pytesseract.image_to_data(g, output_type=pytesseract.Output.DICT, timeout=OCR_TIMEOUT)
+    _LETZTE_MASSE[:] = _masse_aus(d)
     raus = []
     for wort, konf in zip(d["text"], d["conf"]):
         try:
@@ -139,6 +172,82 @@ def hat_werbetext(bild):
     return len(woerter(bild)) >= WORTGRENZE
 
 
+def masse(bild):
+    """Massangaben im Bild → (woerter, masse). Zusätzlich zur 1×-Lesung von woerter() eine Lesung mit psm 11
+    (verstreuter Text): Masslinien stehen einzeln neben dem Produkt, die Seitenaufteilung übersieht sie sonst
+    (gemessen 13.10. an der Stichprobe: Fahrradtasche «38cm», Holzauto «8cm» nur mit psm 11; saubere Fotos 0)."""
+    if isinstance(bild, (bytes, bytearray)):
+        bild = Image.open(io.BytesIO(bild))
+    elif isinstance(bild, str):
+        bild = Image.open(bild)
+    w = woerter(bild)
+    ms = list(_LETZTE_MASSE)
+    g = bild.convert("L")
+    if max(g.size) < 900:
+        f = 900 / max(g.size)
+        g = g.resize((int(g.width * f), int(g.height * f)))
+    d = pytesseract.image_to_data(g, config="--psm 11", output_type=pytesseract.Output.DICT, timeout=OCR_TIMEOUT)
+    for x in _masse_aus(d):
+        if x not in ms:
+            ms.append(x)
+    return w, ms
+
+
+def hauptbild_tauglich(bild):
+    """Darf dieses Bild ein NEUES Hauptbild werden? Kein Werbetext UND keine Massangabe (Karton-/Massbild)."""
+    w, m = masse(bild)
+    return len(w) < WORTGRENZE and not m
+
+
+def von_url_hauptbild(u):
+    """Wie von_url, aber → (wortzahl, masse). (-1, None) = nicht lesbar (NICHT «sauber»)."""
+    raw = subprocess.run(["curl", "-sL", "--max-time", "30", u], capture_output=True).stdout
+    if not raw:
+        return -1, None
+    try:
+        w, m = masse(raw)
+        return len(w), m
+    except Exception:
+        return -1, None
+
+
+# Tunmate Rizinus-Haaröl, Karton mit «4.33in/11cm» + «1.57in/4cm» (13.10.: von hauptbild_ohne_text nach vorn gestellt).
+SELBSTTEST_KARTON = ("https://cdn.shopify.com/s/files/1/0943/6856/3585/files/"
+                     "9f9c7336-67ad-4fd6-8b9e-c66d5b458dec.jpg")
+
+
+def selbsttest():
+    from PIL import ImageDraw, ImageFont
+    fehler = 0
+    for text, soll in (("4.33in/11cm", True), ("60ml/2.02fl oz", True), ("Breite 20 cm", True),
+                       ("2 in 1", False), ("Rot", False)):
+        ok = bool(MASS.findall(text)) == soll
+        fehler += not ok
+        print(f"{'ok ' if ok else 'FEHLER'} Regel {text!r}: Mass={'ja' if soll else 'nein'} erwartet")
+    try:
+        fnt = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 64)
+    except Exception:
+        fnt = None
+    g = Image.new("L", (1200, 400), 255)
+    ImageDraw.Draw(g).text((60, 150), "4.33in/11cm", fill=0, font=fnt)
+    ok = not hauptbild_tauglich(g)
+    fehler += not ok
+    print(f"{'ok ' if ok else 'FEHLER'} Bild mit «4.33in/11cm» = nicht sauber als Hauptbild")
+    ok = hauptbild_tauglich(Image.new("L", (900, 900), 255))
+    fehler += not ok
+    print(f"{'ok ' if ok else 'FEHLER'} leeres Bild = sauber")
+    n, m = von_url_hauptbild(SELBSTTEST_KARTON)
+    if n == -1:
+        print("?? Tunmate-Karton nicht ladbar (Netz) — Bildtest übersprungen")
+    else:
+        ok = bool(m) or n >= WORTGRENZE
+        fehler += not ok
+        print(f"{'ok ' if ok else 'FEHLER'} Tunmate-Karton: {n} Wörter, Masse {m} → "
+              f"{'nicht sauber' if ok else 'SAUBER (falsch)'}")
+    print(f"SELBSTTEST: {'bestanden' if not fehler else str(fehler) + ' Fehler'}")
+    return 1 if fehler else 0
+
+
 def von_url(u):
     """Lädt ein Bild und gibt die Wortzahl zurück; -1, wenn es nicht gelesen werden konnte.
     ⚠️ −1 heisst «unbekannt», NICHT «sauber». Der Aufrufer muss den Unterschied machen —
@@ -157,6 +266,8 @@ def von_url(u):
 def main():
     """Ohne Argumente: nichts. Mit --url <URL>: Wortzahl auf die Standardausgabe (für den
     Node-Backfill). Mit Dateipfaden: die Messung, mit der die Schwelle geeicht wurde."""
+    if "--selbsttest" in sys.argv:
+        raise SystemExit(selbsttest())
     if len(sys.argv) > 2 and sys.argv[1] == "--url":
         print(von_url(sys.argv[2]))
         return
