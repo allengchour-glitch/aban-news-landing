@@ -259,8 +259,11 @@ TITEL_ZIEL = [
     ("wandlampe", "lampen-leuchten"), ("nachtlicht", "lampen-leuchten"), ("tischlampe", "lampen-leuchten"),
     # 13.10.2026: feinere Ziele vor dem groben «hunde/katzen» — Leitfall «katzenfutter automat» (GSC Pos. 18–24)
     ("pilzsammel", "outdoor-garten"),     # 13.10.: Tag «haushalt» schickte das Pilzsammel-Taschen-Set auf Haushaltsgeräte
-    ("futterspender", "haustier-napf-futter"), ("futterautomat", "haustier-napf-futter"),
-    ("trinkbrunnen", "haustier-napf-futter"), ("heizdecke", "kuschel-heizdecken"),
+    # 13.10.2026 abends: eigene Suchbegriff-Kollektionen (suchbegriff_kollektionen.json) statt 413 gemischter Näpfe;
+    # «futterspender» allein bleibt beim Napf-Ziel (Spielzeug- und Schwerkraftspender)
+    ("automatischer futterspender", "futterautomaten"),
+    ("futterspender", "haustier-napf-futter"), ("futterautomat", "futterautomaten"),
+    ("trinkbrunnen", "trinkbrunnen-katzen"), ("heizdecke", "kuschel-heizdecken"),
     ("hunde", "sub-haustier"), ("katzen", "sub-haustier"), ("leggings", "damen-mode"),
     ("klemmbaustein", "klemmbausteine-bausaetze"), ("bausteine-set", "klemmbausteine-bausaetze"),
     ("diffuser", "sub-aroma-diffuser"), ("luftbefeuchter", "haushaltsgeraete"),
@@ -336,13 +339,16 @@ PRAEFIX_ZIEL = [(re.compile(r"(?:hunde?|katzen?|haustier|tier)$"), "sub-haustier
                 (re.compile(r"werkzeug$"), "werkzeug-maschinen"),
                 (re.compile(r"(?:auto|kfz)$"), "auto-kfz-zubehoer")]
 ANFANG_WORT = {"hunde", "katzen", "damen", "herren"}
+# 13.10.2026: Tier-Ziele — «für Katzen» oder «Katzen-…» wechselt hier die Abteilung NICHT (sonst landete
+# «Automatischer Futterspender für Katzen» auf sub-haustier mit 3'704 Produkten statt auf futterautomaten).
+TIER_ZIELE = ("sub-haustier", "haustier-napf-futter", "futterautomaten", "trinkbrunnen-katzen")
 
 
 def titel_ziel(text, ohne=()):
     """→ Kollektions-Handle aus Titel- oder Handle-Text (ohne Tauglichkeitsprüfung) oder None."""
     t = (text or "").lower()
     z = _tabelle(re.split(r"\s(?:mit|inkl\.?|inklusive|plus|\+)\s", t, maxsplit=1)[0], ohne)
-    if TIER_FUER.search(t) and z not in ("sub-haustier", "haustier-napf-futter"):
+    if TIER_FUER.search(t) and z not in TIER_ZIELE:
         return "sub-haustier"             # «Kuscheldecke für Hunde»; ein genaueres Tierziel («Futterspender») bleibt
     return z
 
@@ -368,7 +374,7 @@ def _tabelle(haupt, ohne=()):
                 continue                      # Wortteil vorne («kofferraum»), nicht Kopf des Wortes
             for rx, z in PRAEFIX_ZIEL:
                 if praefix and rx.search(praefix):
-                    return z
+                    return ziel if (z == "sub-haustier" and ziel in TIER_ZIELE) else z   # «Katzen-Trinkbrunnen»
             return ziel
     return None
 
@@ -463,7 +469,7 @@ def status_viele(handles):
 
 
 KANARIEN = [   # (Titel, verbotenes Wort im Ziel oder None, erlaubte Kategorie oder None = nur «offen» erlaubt)
-    ("Automatischer Futterspender für Katzen & Hunde", "trinkbrunnen", "/collections/haustier-napf-futter"),
+    ("Automatischer Futterspender für Katzen & Hunde", "trinkbrunnen", "/collections/futterautomaten"),
     ("Mini Heizlüfter", "luftbefeuchter", None),
     ("Smart Anti-Bell Halsband", None, None),
     ("Damast Küchenmesser", "", None),           # "" = gar kein Zwilling erlaubt (Klinge)

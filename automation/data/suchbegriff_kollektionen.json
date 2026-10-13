@@ -1,5 +1,5 @@
 {
-  "zweck": "Kollektionen für grosse, kaufnahe Suchbegriffe, für die Google bisher nur ein einzelnes Produkt auf Seite 6–9 zeigte (OpenSEO 10.10.2026: «handstaubsauger» 5'400/Mt Pos 72, «spiegel für schminktisch» 2'900 Pos 65, «schlafmaske» 2'400 Pos 66, «kleiderständer holz» ~3'000 Pos 48–53). Zuordnung über Tag `such-…` (Titel-Regel ja/nein mit Wortformen, nie nur Stichwort), Werkzeug automation/suchbegriff_kollektionen.py (Aufseher täglich über Neuimporte). Fotodrucker bewusst NICHT: im Sortiment nur Mini-Thermodrucker in Schwarz-Weiss, die Suche meint Farb-Fotodrucker. GPS-Tracker erst nach der 2G-Prüfung (dropship/MOBILFUNK-2G-2026-10-10.md).",
+  "zweck": "Kollektionen für grosse, kaufnahe Suchbegriffe, für die Google bisher nur ein einzelnes Produkt auf Seite 6–9 zeigte (OpenSEO 10.10.2026: «handstaubsauger» 5'400/Mt Pos 72, «spiegel für schminktisch» 2'900 Pos 65, «schlafmaske» 2'400 Pos 66, «kleiderständer holz» ~3'000 Pos 48–53). Zuordnung über Tag `such-…` (Titel-Regel ja/nein mit Wortformen, nie nur Stichwort), Werkzeug automation/suchbegriff_kollektionen.py (Aufseher täglich über Neuimporte). Fotodrucker bewusst NICHT: im Sortiment nur Mini-Thermodrucker in Schwarz-Weiss, die Suche meint Farb-Fotodrucker. GPS-Tracker erst nach der 2G-Prüfung (dropship/MOBILFUNK-2G-2026-10-10.md). 13.10.2026 (GSC): Futterautomaten und Trinkbrunnen — Bildprüfung aller Treffer; Schwerkraft-Spender und ein Futter-Spielzeug über das Nein-Muster draussen, die zwei Anti-Spritz-Näpfe vorher umbenannt.",
   "kollektionen": [
     {
       "handle": "handstaubsauger",
@@ -367,6 +367,65 @@
           "Beheizbare Handschuhe mit Akku",
           "Touchscreen-Handschuhe aus Wolle",
           "Wärmflasche mit Strickbezug"
+        ]
+      }
+    },
+    {
+      "handle": "futterautomaten",
+      "titel": "Futterautomaten für Katzen & Hunde",
+      "tag": "such-futterautomat",
+      "ja": "futter-?automat|automatische[rns]?\\s+(?:dual-|doppelnapf\\s+|wi-?fi\\s+|2-in-1\\s+)?(?:futterspender|futter-spender|futternapf|futterstation|haustierf(?:ü|ue)tterer|hund-\\s+und\\s+katzenf(?:ü|ue)tterer)|(?:smarte?r?|intelligente[rs]?)\\s+(?:\\d+\\s*l\\s+)?(?:futterspender|haustierf(?:ü|ue)tterer|futternapf\\s+mit\\s+(?:zeitsteuerung|fernsteuerung|timer|app|kamera))|tierfernf(?:ü|ue)tterung|futterspender\\s+(?:mit\\s+(?:timer|app|kamera|wi-?fi)|\\(\\d+\\s*l\\)|wlan)|futternapf\\s+mit\\s+automatischer\\s+f(?:ü|ue)tterung",
+      "nein": "aquari|fisch|spielzeug|spielball|kreisel|tumbler|kratzbrett|vogel|hamster|kaninchen|frostfutter|wurfmaschine|zahnpflege|einh(?:ä|ae)ngen|h(?:ä|ae)ngend|saugnapf|holz|biene|imker|weizenstroh|wasser|trink|schwerkraft|ohne strom|^automatischer futter-spender$|^grosser futternapf mit automatischer f(?:ü|ue)tterung$|2-in-1 hund- und katzenf(?:ü|ue)tterer",
+      "seo_title": "Futterautomat für Katzen & Hunde kaufen | LuxeStyle",
+      "seo_desc": "Futterautomaten für Katze und Hund: mit Timer, App, WLAN oder Kamera, 2 bis 6 Liter. Schweizer Shop, Lieferung meist 10–20 Werktage, gratis ab CHF 50.",
+      "html": "<p>Ein Futterautomat gibt deiner Katze oder deinem Hund das Futter zur eingestellten Zeit – praktisch an langen Arbeitstagen oder an einem Wochenende auswärts. Hier findest du Geräte mit Timer, mit App-Steuerung über WLAN oder mit eingebauter Kamera.</p><h2>Worauf achten?</h2><ul><li><strong>Fassungsvermögen:</strong> von 2 bis 6 Liter; die genaue Angabe steht auf jeder Produktseite.</li><li><strong>Steuerung:</strong> Timer am Gerät oder App über WLAN.</li><li><strong>Futter:</strong> Welche Futterart passt, steht auf der Produktseite.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite. Bezahlen kannst du mit TWINT oder Klarna.</p>",
+      "kanarien": {
+        "ja": [
+          "Automatischer Futterspender mit Timer",
+          "Futterautomat mit Kamera für Katzen, 6L",
+          "Smarter Futterspender 3L für Haustiere",
+          "Automatischer Dual-Futterspender mit Timer",
+          "Intelligenter Futterautomat",
+          "Automatischer WIFI Futternapf für Haustiere",
+          "Intelligente Tierfernfütterung mit HD-Kamera",
+          "Smarter Katzenfutterautomat mit Bewegungssensor"
+        ],
+        "nein": [
+          "Futterautomat für Aquarien",
+          "Automatischer Futterspender zum Einhängen",
+          "Futterspender-Spielzeug für Katze",
+          "Futterspender Holz für Hamster",
+          "Katzen-Trinkbrunnen mit Filter",
+          "Bienenfutterautomat im American Style",
+          "Futterautomat für Katzen aus Weizenstroh",
+          "Automatischer Futter- und Wasserspender",
+          "Automatischer Futter-Spender",
+          "Grosser Futternapf mit automatischer Fütterung",
+          "Automatischer 2-in-1 Hund- und Katzenfütterer"
+        ]
+      }
+    },
+    {
+      "handle": "trinkbrunnen-katzen",
+      "titel": "Trinkbrunnen für Katzen & Hunde",
+      "tag": "such-trinkbrunnen",
+      "ja": "trinkbrunnen|wasserbrunnen|katzenbrunnen",
+      "nein": "anti-schwapp|wassernapf|vogel|garten|kost(?:ü|ue)m|filter-?element|ersatzfilter|mundnasser",
+      "seo_title": "Trinkbrunnen für Katzen & Hunde kaufen | LuxeStyle",
+      "seo_desc": "Trinkbrunnen für Katzen und kleine Hunde: mit Filter, aus Keramik oder ohne Strom. Schweizer Shop, Lieferung meist 10–20 Werktage, gratis ab CHF 50.",
+      "html": "<p>Ein Trinkbrunnen hält das Wasser für Katze und kleinen Hund in Bewegung. Hier findest du Modelle mit Pumpe und Filter, aus Keramik oder ganz ohne Strom.</p><h2>Worauf achten?</h2><ul><li><strong>Material:</strong> Keramik ist schwer und leicht zu reinigen, Kunststoff ist leichter.</li><li><strong>Filter:</strong> Ob es Ersatzfilter gibt, steht auf der Produktseite.</li><li><strong>Fassungsvermögen:</strong> von rund 1,5 bis 4 Liter.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite. Bezahlen kannst du mit TWINT oder Klarna.</p>",
+      "kanarien": {
+        "ja": [
+          "Katzen-Trinkbrunnen mit Filter",
+          "Keramik-Trinkbrunnen für Katzen",
+          "Unplugged Trinkbrunnen für Hunde und Katzen",
+          "Katzenbrunnen mit Zirkulationsfiltration"
+        ],
+        "nein": [
+          "Anti-Schwapp-Wassernapf für Hund & Katze",
+          "Vogeltränke und Futterstation",
+          "Wasserfilter-Element für Katzenwasserbrunnen",
+          "Mundnasser-Schutz Trinkbrunnen für Katzen"
         ]
       }
     }
