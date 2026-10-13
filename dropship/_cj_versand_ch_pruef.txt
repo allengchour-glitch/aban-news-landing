@@ -8160,3 +8160,22 @@ minimalistisches-2-lagen-metallregal-602000	2607061232201602600	16	12.62	ok	land
 jaysuing-steinreinigungspulver-080322	2075054284679606273	1	9.56	ok	landeseite
 kabelloser-anionen-glattkamm-mit-usb-ladefunkt-431232	1775079509637734400	7	8.34	ok	landeseite
 kabelloser-mini-haarglatter-der-3-generation-203072	1774318610194894848	7	10.98	ok	landeseite
+6-in-1-lockenstab-glatteisen-mit-led-anzeige-149248	1773183421322366976	7	19.27	ok	landeseite
+kabelloser-2-in-1-glatt-lockenstab-014720	1767483073425317888	7	13.48	ok	landeseite
+kabelloser-mini-glattkamm-mit-lcd-anzeige-736512	1767477344316428288	7	10.98	ok	landeseite
+kabelloser-glattkamm-mit-anionen-technologie-843776	1767476066060341248	7	12.25	ok	landeseite
+kabelloser-2-in-1-glattkamm-mit-ionen-pflege-193664	1767464516536766464	7	8.32	ok	landeseite
+haarschneider-retro-look-fur-herren-609536	1766341545596301312	3	17.65	ok	landeseite
+kaltluft-haarglatter-276096	1766102446226550784	7	14.26	ok	landeseite
+mini-wireless-glattburste-mit-anionenfunktion-281920	1764104701114585088	7	7.65	ok	landeseite
+2-in-1-haarglatter-lockenstab-mit-ionen-techno-883200	1744647587417821184	3	16.43	ok	landeseite
+2-in-1-glatteisen-lockenstab-mit-3d-muster-276160	1743074578278133760	7	14.48	ok	landeseite
+rotlicht-vibrations-massagekamm-fur-vitales-ha-425536	1736559316234145792	7	10.98	ok	landeseite
+elektrischer-kopfhaut-massagekamm-635648	1701792059382190080	0	-	KEINE CH-Option → DRAFT	landeseite
+beruhigendes-hundebett-fur-sofa-wasserdicht-504578	2074765583912390657	16	8.25	ok	landeseite
+beruhigendes-haustierbett-im-sofa-stil-766658	2074751088527790081	16	8.25	ok	landeseite
+furzendes-kothaufen-spielzeug-mit-sound-608901	2601190143421609300	7	6.02	ok	landeseite
+reflektierendes-nylon-halsband-verstellbar-036929	2074417437791117314	16	6.01	ok	landeseite
+zughundeseil-fur-kleine-und-mittlere-hunde-608600	2607090723311609300	16	11.00	ok	landeseite
+verstellbare-kratzfeste-outdoor-hundeleine-624500	2604280157221625000	16	6.77	ok	landeseite
+kinder-keyboard-mit-mikrofon-37-tasten-358530	2013827948528381954	0	-	KEINE CH-Option → DRAFT	landeseite

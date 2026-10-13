@@ -2040,6 +2040,17 @@ fi
       echo "$(date -u +%H:%M) ch-lager-profil abgeglichen"
     fi
   fi
+  # 13.10.2026 (Betreiber «4 entscheide du sauber»): keine «Sicherheitsschuhe/Schutzschuhe» ohne Prüfnorm EN ISO 20345 (PSA) —
+  # 91 umbenannt + PSA-Hinweis. Täglich: neue Importe gleich behandeln (Voll-Export, Kanarien vorher). Bericht dropship/PSA-SCHUHE-2026-10-13.md.
+  PSW=/tmp/psa_schuhe_wache.log
+  if [ -f "$REPO/automation/psa_schuhe_wache.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$PSW" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$PSW"; then
+      touch "$PSW"
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_psa_schuhe.lock; flock -n 9 || exit 0; SCHARF=1 exec timeout 1800 python3 automation/psa_schuhe_wache.py" >> "$PSW" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) psa-schuhe geprüft"
+    fi
+  fi
   # 13.10.2026 (Messrunde Platz 9): Weiterleitungen, deren ZIEL inzwischen tot ist (gedraftetes Produkt, abgemeldete
   # Kollektion) — 169 von 1'657 führten ins Leere. Ketten glätten, totes Ziel bekommt Ersatz; Ledger + --zurueck.
   WZW=/tmp/weiterleitung_ziel_wache.log

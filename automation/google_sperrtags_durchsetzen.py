@@ -86,7 +86,8 @@ def kostuem_titel_kandidaten():
     Falbala» (von einer Reaktivierung am 04.10. in alle 11 Kanäle gestellt), ein Haustier-Geisterkostüm. Dieser Wächter
     fragte nur exakte Tags. Die Suche ist Vorfilter, entschieden wird an gs.ist_kostuem (Kanarien vorher, 0 Fehler).
     """
-    worte = ["maske", "mask", "kostüm", "kostuem", "kostum", "verkleidung"]
+    # 13.10. A4d: + Rollenwörter (Waggis, Nikolaus, Zimmermädchen …), die gs.kostuem_rolle() mit Kleidungsstück entscheidet
+    worte = ["maske", "mask", "kostüm", "kostuem", "kostum", "verkleidung"] + list(gs.KOSTUEM_ROLLE_SUCHWORTE)
     q = (f"status:active AND publication_ids:{GOOGLE.rsplit('/', 1)[1]} AND ("
          + " OR ".join(f"title:*{w}*" for w in worte) + ")")
     raus, nach = [], None

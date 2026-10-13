@@ -845,3 +845,10 @@
 2026-10-13T09:07:12Z	gid://shopify/Product/15495119896961	kostuem	Google & YouTube	steampunk-cosplay-maske-09f69f
 2026-10-13T09:07:13Z	gid://shopify/Product/15495120028033	kostuem	Google & YouTube	horror-zombie-maske-2ab800
 2026-10-13T09:07:14Z	gid://shopify/Product/15517644390785	kostuem	Google & YouTube	lustiges-teddy-cape-geist-kostum-669504
+2026-10-13T16:30:37Z	gid://shopify/Product/15454111203713	kostuem	Google & YouTube	tier-halloween-mantel-629600
+2026-10-13T16:30:38Z	gid://shopify/Product/15470011187585	kostuem	Google & YouTube	araber-schuhuberzug-fga99563
+2026-10-13T16:30:39Z	gid://shopify/Product/15470015971713	kostuem	Google & YouTube	hemd-waggis-rot-fgss90113
+2026-10-13T16:30:40Z	gid://shopify/Product/15470016332161	kostuem	Google & YouTube	nikolaus-baby-strampler-fgssfm118744
+2026-10-13T16:30:41Z	gid://shopify/Product/15470020166017	kostuem	Google & YouTube	zimmermadchenset-fga96665
+2026-10-13T16:30:42Z	gid://shopify/Product/15513781404033	kostuem	Google & YouTube	gottinnen-kleid-fur-mottopartys-und-halloween-626300
+2026-10-13T16:31:45Z	gid://shopify/Product/15448845025665	smoke-zubehoer	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	handlicher-sturmfeuerzeug-brenner-618300
