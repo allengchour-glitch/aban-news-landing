@@ -565,23 +565,58 @@ def kassen_lieferdatum():
     return " · ".join(teile + [""]) + (f"KASSEN-DATUM zu früh: Bearbeitungszeit {s.get('bearbeitungszeit_tage')} T, CJ versendet nach Median {s.get('median')} "
             f"Werktagen → Admin: Einstellungen → Versand und Zustellung → Voraussichtliche Zustellung → «Manuell» + {s.get('empfohlen')} Werktage")
 
+def _werbetest_aktiviert(w, ql, heute):
+    """13.10.2026 (Prüfung Werbetest A): Der Start in der Steuerdatei ist ein PLAN, kein Aktivierungstag. Die Ampel meldete am
+    Vortag «Tag 1 … ⚠️ 0 Sitzungen», und aktiviert der Betreiber später, zählte sie Tage × Budget ab dem Plan — die Stopp-Regel
+    «CHF 30 ohne Warenkorb» hätte zu früh gegriffen. Aktiviert = «aktiviert» in der Steuerdatei (von Hand gesetzt) ODER der
+    erste Tag mit Sitzungen dieser utm_campaign ab dem geplanten Start. None = noch nicht aktiviert."""
+    if w.get("aktiviert"):
+        return datetime.date.fromisoformat(str(w["aktiviert"])[:10])
+    geplant = datetime.date.fromisoformat(w["start"])
+    if geplant > heute:
+        return None
+    tage = sorted(str(z.get("day"))[:10] for z in ql(
+        f"FROM sessions SHOW sessions GROUP BY day WHERE utm_campaign = '{w['kampagne']}' SINCE {geplant.isoformat()} UNTIL today")
+        if int(z.get("sessions") or 0) > 0)
+    return datetime.date.fromisoformat(tage[0]) if tage else None
+
 def werbetest():
     """WERBETEST (10.10.2026, Sidekick-Empfehlung 4 «miss nicht nur Klicks»): solange eine Testkampagne läuft, steht ihr Trichter
     (Sitzungen → Warenkorb → Kasse → Kauf, ShopifyQL je utm_campaign) in jeder Ampel — mit den Abbruchregeln aus
     dropship/WERBETEST-PLAN-2026-10-10.md. Ausgaben kennt der Shop nicht (kein Google-Ads-Zugang): CHF-Angabe = Obergrenze
-    Tagesbudget × Tage. Steuerdatei dropship/_werbetest_aktiv.json {kampagne, start, ende, budget_tag, marge}."""
+    Tagesbudget × Tage AB AKTIVIERUNG. Steuerdatei dropship/_werbetest_aktiv.json {kampagne, start, ende, budget_tag, marge,
+    handle | handles, aktiviert?}. 13.10.: mehrere Testprodukte («handles») prüft tools/werbetest_trichter.wache() — fremde
+    Landeseiten, Google-Meldung [CH], seit Teststart geändert; ein einzelnes «handle» prüft der alte Weg unten."""
     try:
         w = json.load(open(os.path.join(REPO, "dropship", "_werbetest_aktiv.json"), encoding="utf-8"))
         heute = datetime.date.today()
         start, ende = datetime.date.fromisoformat(w["start"]), datetime.date.fromisoformat(w["ende"])
-        if heute > ende + datetime.timedelta(days=3):
-            return None
         if w.get("pausiert"):   # 12.10.: pausierte Kampagne → keine Stopp-Regel-Mahnung, nur der Stand
+            if heute > ende + datetime.timedelta(days=3):
+                return None
             return f"WERBETEST {w['kampagne']}: pausiert seit {w['pausiert'][:10]} (Werbe-Kontingent voll) — wieder an nach Kontingent-Erhöhung"
         sys.path.insert(0, os.path.join(REPO, "tools"))
-        from werbetest_trichter import ql, FELDER
-        # 12.10.: Start in der Zukunft (Produktwechsel, Zählung ab morgen) → ShopifyQL «UNTIL before SINCE» beendete die ganze Ampel
-        start = min(start, heute)
+        from werbetest_trichter import ql, FELDER, wache, zeile
+        produkte = ""
+        if w.get("handles"):
+            try:
+                produkte = " · " + zeile(wache(w)).split(": ", 1)[1]
+            except (Exception, SystemExit) as e:
+                produkte = f" · Produkte unklar ({type(e).__name__})"
+        aktiv = _werbetest_aktiviert(w, ql, heute)
+        if aktiv is None:
+            if heute > ende + datetime.timedelta(days=3):
+                return None
+            if heute < start:
+                return f"WERBETEST {w['kampagne']}: startet frühestens {start.strftime('%d.%m.')} — wartet auf Aktivierung durch den Betreiber{produkte}"
+            ohne = (heute - start).days + 1
+            hinweis = (f" · ⚠️ seit {start.strftime('%d.%m.')} ({ohne} T) 0 Sitzungen: noch nicht aktiviert — ODER Anzeigen ohne "
+                       f"Auslieferung bzw. URL-Suffix «utm_campaign={w['kampagne']}» fehlt → Betreiber fragen") if ohne >= 3 else ""
+            return f"WERBETEST {w['kampagne']}: noch nicht aktiviert (geplant ab {start.strftime('%d.%m.')}){hinweis}{produkte}"
+        ende = aktiv + (ende - start)            # Testdauer gilt ab Aktivierung, nicht ab Plan
+        if heute > ende + datetime.timedelta(days=3):
+            return None
+        start = aktiv
         tage = max(1, (min(heute, ende) - start).days + 1)
         r = ql(f"FROM sessions SHOW {FELDER} WHERE utm_campaign = '{w['kampagne']}' SINCE {start.isoformat()} UNTIL today")
         r = r[0] if r else {}
@@ -607,7 +642,18 @@ def werbetest():
                         sperre.append(m["message"].split(" in [")[0])
         r2 = ql(f"FROM sessions SHOW sessions WHERE utm_campaign = '{w['kampagne']}' SINCE -1d UNTIL today")   # gestern + heute
         s2 = int((r2[0] if r2 else {}).get("sessions") or 0)
-    except Exception as e:
+        # Schreibsperre muss bis Testende + 3 T reichen (Aktivierung später als geplant → Ende rutscht nach hinten)
+        frist = ""
+        try:
+            from werbetest_sperre import lesen as _sperre_lesen
+            _i, _h, sp_ende = _sperre_lesen(open(os.path.join(REPO, w.get("sperre") or "dropship/_werbetest_sperre.txt"),
+                                                 encoding="utf-8").read(), heute=heute)
+            if sp_ende and sp_ende < ende + datetime.timedelta(days=3):
+                frist = (f" · ⚠️ Schreibsperre endet {sp_ende.strftime('%d.%m.')}, Test bis {ende.strftime('%d.%m.')} → "
+                         f"«# ende:» in {w.get('sperre') or 'dropship/_werbetest_sperre.txt'} auf {(ende + datetime.timedelta(days=3)).isoformat()}")
+        except Exception:
+            pass
+    except (Exception, SystemExit) as e:   # ql() beendete früher per sys.exit — das riss die ganze Ampel mit
         return f"WERBETEST: unklar ({type(e).__name__})" if os.path.exists(os.path.join(REPO, "dropship", "_werbetest_aktiv.json")) else None
     hoechst = tage * float(w.get("budget_tag", 0))
     regel = ""
@@ -623,7 +669,8 @@ def werbetest():
         regel += f" · ⛔ Testprodukt bei Google NICHT bewerbbar ({'; '.join(sorted(set(sperre)))}) → Werbe-Kontingent voll: im Merchant Center erhöhen lassen oder Kampagne pausieren (Produktwechsel hilft nicht — Aurora fiel 30 min nach der Änderung ebenfalls raus, 12.10.)"
     if tage >= 2 and s2 <= 2:
         regel += f" · ⚠️ gestern+heute {s2} Sitz. — Kampagne pausiert oder ohne Auslieferung"
-    return (f"WERBETEST {w['kampagne']} Tag {tage} (≤ CHF {hoechst:.0f}): {s} Sitz. · {k} Korb · {c} Kasse · {b} Kauf{regel}")
+    return (f"WERBETEST {w['kampagne']} Tag {tage} seit {start.strftime('%d.%m.')} (≤ CHF {hoechst:.0f}): {s} Sitz. · {k} Korb · {c} Kasse · {b} Kauf"
+            f"{regel}{frist}{produkte}")
 
 def _kategorie_live():
     """12.10.2026: Die Ampel zog früher vom Stand-Wert (211, vor dem Lauf um 06:33) ab und meldete 211, obwohl

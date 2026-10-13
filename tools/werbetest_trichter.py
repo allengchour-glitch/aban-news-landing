@@ -24,8 +24,8 @@ FELDER = "sessions, sessions_with_cart_additions, sessions_that_reached_checkout
 
 def ql(q):
     t = gql('query($q:String!){shopifyqlQuery(query:$q){tableData{columns{name} rows} parseErrors}}', {"q": q})["shopifyqlQuery"]
-    if t.get("parseErrors"):
-        sys.exit(f"ShopifyQL: {t['parseErrors']}")
+    if t.get("parseErrors"):   # 13.10.: raise statt sys.exit — SystemExit riss die ganze Betreiber-Ampel mit
+        raise RuntimeError(f"ShopifyQL: {t['parseErrors']}")
     cols = [c["name"] for c in t["tableData"]["columns"]]
     return [dict(zip(cols, r)) if isinstance(r, list) else r for r in t["tableData"]["rows"]]
 
@@ -111,7 +111,8 @@ def zeile(d):
     if d["sperre"]:
         teile.append(f"⛔ {len(d['sperre'])} bei Google nicht bewerbbar [CH] ({'; '.join(d['sperre'][:3])}) → NICHT per Schreiben reparieren")
     if d["geschrieben"]:
-        teile.append(f"⚠️ {len(d['geschrieben'])} seit Teststart geschrieben ({'; '.join(d['geschrieben'][:3])}) → Schreiber suchen, Sperre prüfen")
+        teile.append(f"⚠️ {len(d['geschrieben'])} seit Teststart geändert ({'; '.join(d['geschrieben'][:3])}) → Log prüfen: Schreiber "
+                     f"(Sperre fehlt) oder nur Bestand/Verkauf")
     return f"WERBETEST {d['kampagne']} Produkte: " + " · ".join(teile)
 
 

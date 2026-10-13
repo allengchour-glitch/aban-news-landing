@@ -35,6 +35,11 @@ import json, os, subprocess, sys, time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from bildtext_pruefen import von_url, von_url_hauptbild, WORTGRENZE
+try:   # 13.10.2026: Werbetest-Sperre — fehlt der Leser, wird vorsichtshalber NICHT getauscht
+    from werbetest_sperre import gesperrt as _werbetest_gesperrt
+except Exception:
+    def _werbetest_gesperrt(_x):
+        return True
 
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
 DRY = os.environ.get("DRY") == "1"
@@ -97,6 +102,8 @@ def main():
     from bildtausch_sperre import gesperrte_handles, gesperrte_ids
     sperre_h, sperre_id = gesperrte_handles(), gesperrte_ids()
     for gid in kandidaten[:CAP]:
+        if _werbetest_gesperrt(gid):   # 13.10.2026 Werbetest A: kein Bildtausch (teuerster Zug ums Kontingent), kein Ledger
+            print(f"  = {gid} übersprungen (Werbetest-Sperre)"); continue
         if gid in sperre_id:
             gesperrt += 1; f.write(f"{gid}\tbildtausch-sperre\t-\n"); f.flush(); continue
         d = gql('query($id:ID!){product(id:$id){title handle media(first:10){nodes{id '
@@ -185,6 +192,8 @@ def nachpruefen():
     f = open(LEDGER, "a")
     korr = ohne = sauber = 0
     for gid in ids:
+        if _werbetest_gesperrt(gid):   # 13.10.2026 Werbetest A
+            print(f"  = {gid} übersprungen (Werbetest-Sperre)"); continue
         d = gql('query($id:ID!){product(id:$id){status handle media(first:10){nodes{id '
                 '... on MediaImage{status image{url}}}}}}', {"id": gid})
         p = (d.get("data") or {}).get("product")

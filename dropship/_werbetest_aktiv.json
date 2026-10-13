@@ -27,7 +27,7 @@
  ],
  "sperre": "dropship/_werbetest_sperre.txt",
  "status": "VORBEREITET — Betreiber verknüpft Konto, stellt Produktgruppen um, Screenshot, aktiviert (Klickweg im Plan, Abschnitt «Für den Betreiber»)",
- "hinweis_handle": "Kein Einzel-«handle»: betreiber_ampel.werbetest() liest nur «handle» (ein String) und würde 12 der 13 als fremde Landeseiten zählen. Mehrere Handles stehen in «handles».",
+ "hinweis_handle": "Kein Einzel-«handle»: mehrere Testprodukte stehen in «handles»; betreiber_ampel.werbetest() prüft sie über tools/werbetest_trichter.wache() (fremde Landeseiten, Google-Meldung [CH], seit Teststart geändert).",
  "vorher": {
   "kampagne": "sirene-test",
   "start": "2026-10-13",
@@ -40,5 +40,6 @@
    "start": "2026-10-10",
    "ergebnis": "10.–12.10.: 25 Sitz., alle auf fremden Produkten, 0 Korb; Sirène bei Google «Over capacity for Shopping ads (in CSS program) [CH]» = nicht bewerbbar"
   }
- }
+ },
+ "hinweis_aktiviert": "«start» ist der PLAN. Die Ampel zählt Tage × Budget erst ab dem ersten Tag mit Sitzungen dieser utm_campaign (oder ab «aktiviert»: JJJJ-MM-TT, falls von Hand gesetzt); die Testdauer (ende − start) rutscht mit. Vorher meldet sie «wartet auf Aktivierung», ab 3 Tagen ohne Sitzungen mit ⚠️ (13.10.2026)."
 }

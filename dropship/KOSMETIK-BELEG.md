@@ -1,6 +1,6 @@
-# Kosmetik: Inhaltsstoff-Beleg — Stand 2026-10-13 21:43 UTC
+# Kosmetik: Inhaltsstoff-Beleg — Stand 2026-10-13 22:35 UTC
 
-GEPRÜFT-OHNE-INCI: 1766 von 1772 Kosmetik ohne Inhaltsstoff-Liste · sichtbar 1766 (Theme-Bedingung fehlt) · Reinstoff-Titel mit Mischung 0 · ohne Liste 3
+GEPRÜFT-OHNE-INCI: 1765 von 1771 Kosmetik ohne Inhaltsstoff-Liste · sichtbar 0 (Theme-Bedingung aktiv) · Reinstoff-Titel mit Mischung 0 · ohne Liste 3 · EDITOR-RÜCKGABE: 0 von 32 Editor-Produkten ohne Ausschluss-Satz · Theme ok (Klassen 5/7/16)
 
 Regel: `automation/data/versprechen_regel.json` → `kosmetik_beleg` (Kauf-Strecke Klasse 12, 13.10.2026). Liste = einer der Marker «INCI» · «Inhaltsstoffe:» · «Ingredients:» · «Zutaten:» im Beschreibungstext. Der Wächter schreibt nichts: INCI nur vom Karton (zweimal unabhängig gelesen) oder aus der CJ-Beschreibung nachtragen, Titel nur mit Beleg ändern (Rückweg-Ledger `dropship/_kosmetik_produktwahrheit.tsv`).
 

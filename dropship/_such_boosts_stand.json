@@ -531,16 +531,6 @@
   ],
   "handle": "gestrickte-sofadecke-mit-quasten-608900"
  },
- "gid://shopify/Product/15506141053313": {
-  "begriffe": [
-   "geschenk für frau",
-   "geschenk für sie",
-   "geschenke für frauen",
-   "geschenk für freundin",
-   "geschenk für mama"
-  ],
-  "handle": "clutch-mit-blumenmuster-665088"
- },
  "gid://shopify/Product/15506302304641": {
   "begriffe": [
    "staubsauger",
@@ -715,5 +705,15 @@
    "autostaubsauger"
   ],
   "handle": "handstaubsauger-fur-das-auto-12v-120w-69dc26"
+ },
+ "gid://shopify/Product/16615821574535": {
+  "begriffe": [
+   "geschenk für frau",
+   "geschenk für sie",
+   "geschenke für frauen",
+   "geschenk für freundin",
+   "geschenk für mama"
+  ],
+  "handle": "badmintontasche-fur-damen-umhangetasche-605400"
  }
 }
