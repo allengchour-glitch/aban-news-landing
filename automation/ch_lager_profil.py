@@ -73,11 +73,11 @@ BLOCK = 50
 # IST-Schwelle «Kostenloser Versand» CH (General, CH-Lager, Druck auf Bestellung — gleich in allen Profilen). EINE Quelle für
 # Wächter, Korb-Matrix und Selbsttest (ch_lager_profil, druck_profil, versand_band_wache, google_org_richtlinien,
 # versandschwelle_rabatt). Betreiber-Entscheid D (13.10. abends, «D ja»): 40.50 statt 45 (= 45 × 0,9, Einzelartikel ab 45 mit
-# WELCOME10 versandfrei). VORBEREITET, NICHT LIVE: der Profil-Schreiblauf `automation/gratis_schwelle_setzen.py --scharf` wurde
-# am 13.10. 23:1x UTC vom Auto-Modus abgelehnt (Freigabe nötig). Reihenfolge beim Umstellen: (1) gratis_schwelle_setzen.py --scharf,
+# WELCOME10 versandfrei). LIVE seit 13.10. ~23:30 UTC (der Agent-Lauf um 23:1x wurde vom Auto-Modus abgelehnt, die Sitzung hat
+# ihn mit der Betreiber-Freigabe «D ja» ausgeführt; Ledger dropship/_gratis_schwelle.tsv). Reihenfolge beim Umstellen: (1) gratis_schwelle_setzen.py --scharf,
 # (2) versand_transit_wache.py --scharf, (3) HIER 40.50, (4) Theme-Zahlen 4500 → 4050 (Bericht GRATISVERSAND-CH-LAGER-UND-4050).
 # Nie (3) vor (1): versandschwelle_rabatt würde sonst nur das General profile umstellen.
-GRATIS_AB_CH = 45.00
+GRATIS_AB_CH = 40.50
 
 
 def gql(q, v=None, ver="2026-01"):
