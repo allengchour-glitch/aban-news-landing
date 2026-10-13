@@ -114,3 +114,18 @@ Alle 13 nach dem Lauf live nachgelesen: 0 Resttreffer in Titel/Text/SEO, Onlines
   hält «…messung» für Fehlalarm, `heilversprechen.py` läuft nicht täglich.
 - **Bilder neuer Importe**: kein Wächter liest Nicht-Hauptbilder auf Heilaussagen; rein bildliche Aussagen (rote
   Schmerzpunkte ohne Text) erkennt die Texterkennung nicht. Gelesen wurden je Produkt nur die ersten 6 Bilder.
+
+## Nachtrag Hauptsitzung (13.10. ~19:40 UTC)
+
+- **Nackenstützkissen 15510922822017:**
+  - Titel war «… mit Magnetfeldtherapie», jetzt «Ergonomisches Nackenstützkissen mit Magnetfaser».
+  - Aus dem Text entfernt: «Permanentmagnetpartikel aktivieren Blutzellen und stärken die körpereigene Immunität», «Beruhigung der Halswirbelsäule», «verbessert die Krümmung der Halswirbelsäule» und «Entspannung der Knochenstruktur».
+  - SEO-Titel und SEO-Beschreibung sind neu.
+  - Das Kissen bleibt kaufbar und in der Werbung, weil keine Heilaussage mehr dasteht.
+- **U-Nackenkissen 15522441757057:** «Erhältlich mit Magnettherapie» heisst jetzt «Erhältlich mit Magneteinlage». Die SEO-Beschreibung ist in der du-Form neu geschrieben.
+- **Altwerte:** `dropship/_magnetschmuck_altwerte.jsonl` (quelle hauptsitzung-magnetkissen).
+- **Kupferarmband 15524700389761 bleibt aus der Werbung.**
+  - Der Text enthält keine Heilaussage. Kupfer mit eingesetzten Magneten ist aber das klassische Magnettherapie-Produkt. Die Aussage steckt damit in der Produktart, deshalb gilt die Hausregel «Magnet-Armband = Heilversprechen-Klasse».
+  - Im Shop bleibt es kaufbar.
+  - Kosten: 1 von ~54'000 Produkten fehlt in der Werbung.
+- **Smartarmband 16613764268423 «mit Blutdruckmessung»:** gehört zur Wearable-Klasse und liegt bei der SEO-Gruppe ON-M1A (wearable_messversprechen.py, heute in Arbeit).
