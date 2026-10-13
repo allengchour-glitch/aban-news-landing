@@ -18067,3 +18067,5 @@ gid://shopify/Product/16616719679879	12->0	Vintage Umhängetasche mit grosser Ka
 gid://shopify/Product/16616719810951	30->2	Faltbarer Fahrradrucksack zum Umhängen
 gid://shopify/Product/16616720073095	44->0	Rucksack für Laptops bis 15,6 Zoll
 gid://shopify/Product/16616720531847	48->1	Rucksack mit USB-Ladefunktion
+gid://shopify/Product/15412899676545	19->0	Edelstahl-Trinkflasche «Hydro» 570 ml
+gid://shopify/Product/15412902855041	36->1	Mondstein-Blütenring «Fleur» – zarter Statement-Ring
