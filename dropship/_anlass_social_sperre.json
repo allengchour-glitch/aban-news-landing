@@ -1,6 +1,6 @@
 {
- "stand": "2026-10-13T20:19Z",
- "scharf": false,
+ "stand": "2026-10-13T20:20Z",
+ "scharf": true,
  "anlaesse": {
   "halloween": {
    "phase": "vor",
@@ -13,9 +13,9 @@
    },
    "auswahl": 49,
    "nach_grund": {
-    "Verkleidungsteil": 5,
+    "Verkleidungsteil": 4,
     "Kostüm": 19,
-    "Partydeko": 25
+    "Partydeko": 26
    },
    "grenzfaelle": 73,
    "abmelden_paare": 147,
@@ -166,7 +166,7 @@
      "handle": "halloween-witch-hat-nachtlicht-606700",
      "titel": "Halloween Hexenhut Nachtlicht",
      "typ": "Beleuchtung",
-     "grund": "Verkleidungsteil",
+     "grund": "Partydeko",
      "kanaele": [
       "TikTok",
       "Facebook & Instagram",
