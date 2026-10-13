@@ -48,6 +48,9 @@ def plane(markt, z, basis, kurs, spot_ist, perp_ist, regeln, max_auftrag=1000.0)
     # Ernte-Teil auf den gröberen Mengenschritt runden, damit Spot und Short sich GENAU aufheben (marktneutral)
     schritt_ernte = max(regeln["spot_step"], regeln["perp_step"])
     ernte_menge = runde((1 - abs(max(-1.0, min(1.0, z)))) / KAPITAL_FAKTOR * basis / kurs, schritt_ernte)
+    # Ernte nur, wenn BEIDE Seiten über dem Binance-Minimum liegen — sonst entstünde ein ungesicherter Spot-Long
+    if ernte_menge * kurs < max(MIN_SPOT, MIN_PERP, regeln.get("spot_min", 0), regeln.get("perp_min", 0)):
+        ernte_menge = 0.0
     s_ziel, p_ziel = r_spot + ernte_menge, r_perp - ernte_menge
     # Band: aktuelle Richtung = Spot + Perp (netto) in Einheiten von B; Ernte = −Perp − Richtung-Short-Anteil
     netto_ist = (spot_ist + perp_ist) * kurs / basis

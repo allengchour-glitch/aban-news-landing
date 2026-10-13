@@ -239,7 +239,17 @@ def main():
         ap.print_help()
         return 0
     import broker_futures as BF
+    import pilot2_live as P2L
     import sperre
+    if a.lauf and not a.trocken and BF.einstellungen()["stop"] and P2L.aktiv():
+        # Pilot 2.0: Not-Aus schliesst BEIDE Konten (Perpetual zurückkaufen, eigene Spot-Coins verkaufen)
+        with sperre.lauf_sperre(warten=120):
+            r2 = P2L.ausfuehren([{"markt": m, "hebel": 0.0} for m in maerkte()], protokolliere=P2L.protokoll_schreiben)
+        text_na = "\n".join(r2["zeilen"])
+        print(text_na)
+        import signale as SG
+        SG.push(text_na + "\nKeine Anlageberatung.")
+        return 3 if r2["warnung"] else 0
     if a.lauf and not a.trocken and BF.einstellungen()["stop"]:  # Datei STOP oder KI_BOT_STOP=1
         # Not-Aus hat Vorrang (auch vor der Pause) und braucht keine Kurse von Yahoo: nur schliessen, alle Märkte
         try:
@@ -335,9 +345,40 @@ def lauf_merken(ok, hinweise, trocken=False, logbuch=None):
     schreiben(lb, datei)
 
 
+def handeln2(ents, lage, trocken):
+    """Pilot 2.0 (KRYPTO_PILOT2=an): Long über Spot, Short über Perpetual, freier Teil als Funding-Ernte (pilot2_live.py)."""
+    import pilot2_live as P2L
+    lb = lies()
+    for e in ents:
+        vorher = letzter(lb, e["markt"])
+        if not vorher or vorher["stand"] != e["stand"]:
+            lb["entscheide"] = (lb["entscheide"] + [e])[-4000:]
+    try:
+        r2 = P2L.ausfuehren(ents, trocken=trocken, protokolliere=None if trocken else P2L.protokoll_schreiben)
+    except Exception as ex:  # noqa: BLE001
+        r2 = {"zeilen": [f"⚠️ Pilot 2.0 abgebrochen ({type(ex).__name__}: {str(ex)[:150]}) — bitte im Binance-Konto prüfen!"],
+              "auftraege": [], "warnung": True, "kapital": None, "modus": None}
+    if not trocken:
+        kontostand_merken(lb, ents[0]["stand"], r2.get("kapital"), f"pilot2-{r2.get('modus')}")
+        lb["letzter_lauf"] = {"zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), "ok": not r2["warnung"],
+                              "hinweise": [z for z in r2["zeilen"] if "⚠️" in z][:10]}
+    schreiben(lb)
+    zeilen = [text(e) for e in ents] + ["Pilot 2.0 (Spot-Long + Short + Ernte):"] + ["   " + z for z in r2["zeilen"]]
+    bericht = None if trocken else wochenbericht(lb, date.today().isoformat())
+    lage_text = lage() if callable(lage) else lage
+    print("\n".join(zeilen))
+    if r2["auftraege"] or r2["warnung"] or bericht:
+        import signale as SG
+        SG.push("\n".join(zeilen) + f"\n{lage_text}" + (f"\n\n{bericht}" if bericht else "") + "\nKeine Anlageberatung.")
+    return 3 if r2["warnung"] else 0
+
+
 def handeln(ents, lage, trocken):
     """Aufträge je Markt. Ein Fehler in einem Markt hält den anderen nicht auf; Warnungen kommen immer aufs Handy.
     lage: Text oder Funktion (wird erst nach den Aufträgen aufgerufen)."""
+    import pilot2_live as P2L
+    if P2L.aktiv():
+        return handeln2(ents, lage, trocken)
     import broker_futures as BF
     lb = lies()
     zeilen, wechsel_da, alle, warnung = [], False, [], False

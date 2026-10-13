@@ -497,6 +497,46 @@ Jeden Tag mit den Kursen bis gestern: Schwankung = EWMA der Tagesrenditen (λ 0,
 Bitcoin-Anteil = min(100 %, 40 % ÷ Schwankung). Ruhiger Markt: voll investiert. Wilder Markt: weniger.
 Andere Strategie wählen: `setx KRYPTO_STRATEGIE "halten"` (immer 100 %) oder `"trend200"`.
 
+## 🚀 Pilot 2.0 einschalten (Spot-Long + Short + Funding-Ernte)
+
+Gleiche Signale wie der Pilot, klügere Ausführung über **beide** Binance-Konten (`pilot2_plan.py` rechnet, `pilot2_live.py`
+handelt; 18 + 27 Tests mit nachgebauter Binance, Mutationsproben). Ohne `KRYPTO_PILOT2=an` handelt der Pilot wie bisher.
+
+**Was er tut:** Richtung long → Coin im Spot-Konto (kein Funding). Richtung short → Short-Perpetual (Hebel 1, bekommt Funding).
+Freier Teil → Funding-Ernte: Coin im Spot + gleich grosser Short (marktneutral, Pfand 100 %, Zwangsschliessung erst bei rund
++100 %). Er verschiebt USDT selbst zwischen Spot- und Futures-Konto. Stops nur auf den Richtungsteil.
+
+**Sicherungen:** verwaltet höchstens `KRYPTO_PILOT2_KAPITAL` USDT · verkauft nur Coins, die er selbst gekauft hat (eigenes Buch
+`data/krypto-pilot2-bestand.json`) · weigert sich, wenn im selben Konto der Spot-Bot (`KRYPTO_BROKER=binance`), der ETH-Sparplan
+oder kopierte Telegram-Calls laufen · Echtgeld-Schlüssel darf **keine Auszahlungen, keine Margin-Leihe, keine Überweisung an
+Dritte** · Not-Aus (`stop.bat`) schliesst beide Konten · Ernte nur, wenn beide Seiten über dem Binance-Minimum liegen.
+
+**1. Zuerst im Testnetz** (Spielgeld, getrennte Test-Konten, dort kein Verschieben → beide Test-Konten brauchen USDT):
+```
+setx BINANCE_API_KEY "spot-testnetz-key"          (testnet.binance.vision)
+setx BINANCE_API_SECRET "…"
+setx BINANCE_FUTURES_API_KEY "futures-testnetz-key" (testnet.binancefuture.com)
+setx BINANCE_FUTURES_API_SECRET "…"
+setx KRYPTO_PILOT2 "an"
+python tools\trading\krypto_bot\pilot.py --lauf --trocken     (zeigt den Plan, sendet nichts)
+python tools\trading\krypto_bot\pilot.py --lauf
+```
+**2. Echtes Geld — klein anfangen.** Neuer API-Schlüssel bei Binance: ✅ Spot & Margin-Handel, ✅ Futures, ✅ Universal Transfer,
+❌ Auszahlungen, ❌ Margin-Leihe, ❌ interne Überweisung; am besten auf deine IP beschränkt. Futures-Konto im Einweg-Modus.
+```
+setx PILOT2_API_KEY "…"
+setx PILOT2_API_SECRET "…"
+setx KRYPTO_PILOT2_KAPITAL "500"          (höchstens so viele USDT verwaltet er — Pflicht)
+setx BINANCE_TESTNET "false"
+setx BINANCE_FUTURES_TESTNET "false"
+setx KI_BOT_ECHTGELD "JA, MIT ECHTEM GELD"
+setx KI_BOT_ANTEIL "1"                    (sonst nutzt er nur die Hälfte des Deckels)
+```
+Danach **zuerst** `pilot.py --lauf --trocken` und den Plan lesen. **Mindestbetrag:** Binance verlangt für einen BTC-Short
+mindestens 100 USDT — unter rund 500 USDT läuft die Ernte für BTC nicht, dann liegt der freie Teil einfach als USDT da.
+**Risiko (Belastungstest oben):** zwischendurch −20 bis −40 % möglich, etwa jedes sechste Jahr im Minus. Nur Geld einsetzen,
+dessen Verlust du verkraftest. Keine Anlageberatung.
+
 ## Starten (auf deinem PC)
 
 Wie beim KI-Bot (`tools/trading/ki_bot/README.md`): Alpaca-Papierkonto, `ALPACA_KEY_ID` und `ALPACA_SECRET_KEY` setzen.

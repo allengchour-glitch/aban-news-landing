@@ -41,9 +41,11 @@ ok(pl["schritte"] == [], "im Band (0,8 → 0,9) nichts tun")
 # 7. Deckel je Auftrag
 pl = P.plane("BTC", 1.0, B, K, 0.0, 0.0, R, max_auftrag=1000)
 ok(pl["schritte"] == [("spot", "BUY", 0.01, False)], f"höchstens max_auftrag {pl['schritte']}")
-# 8. Zu klein für Binance → weglassen
-pl = P.plane("BTC", 0.0, 100, K, 0.0, 0.0, R, max_auftrag=1e9)
-ok(all(k != "perp" for k, *_ in pl["schritte"]), f"Perp unter Mindestvolumen weggelassen {pl['schritte']}")
+# 8. Ernte zu klein für das Perp-Minimum → GAR KEINE Ernte (sonst ungesicherter Spot-Long)
+pl = P.plane("ETH", 0.0, 100, 4000.0, 0.0, 0.0, R, max_auftrag=1e9)  # Ernte 0,012 ETH = 48 USDT < Perp-Minimum 100
+ok(pl["schritte"] == [], f"zu kleine Ernte: weder Spot noch Perp {pl['schritte']}")
+pl = P.plane("BTC", 0.5, 300, K, 0.0, 0.0, R, max_auftrag=1e9)
+ok([x[:2] for x in pl["schritte"]] == [("spot", "BUY")] and abs(pl["schritte"][0][2] - 0.0015) < 1e-9, f"Richtung ja, zu kleine Ernte nein {pl['schritte']}")
 # 9. Stops nur auf den Richtungsteil
 pl = P.plane("BTC", 0.5, B, K, 0.0, 0.0, R, max_auftrag=1e9)
 ok(nah(pl["stop_spot"], 0.05, 1e-5) and pl["stop_perp"] == 0, f"Stop long nur Richtung: {pl['stop_spot']}")

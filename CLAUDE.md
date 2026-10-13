@@ -76,7 +76,11 @@ Monatsarchive; `api.binance.com`/`fapi` = 451 von hier und GitHub → `data-api.
 Funding-Ernte `carry_pruefung.py` (ab 2022 nur +3–4 %/J., Einbruch <1 % → Parkplatz), Mehr-Horizont-Trend `trend_pruefung.py`
 (abgelehnt), **`pilot2_pruefung.py`: Long über Spot + Short über Futures + freies Geld in Funding-Ernte = in ALLEN Zeiträumen besser**
 (ab 2022 +29,5 % / −23 % statt +25,1 % / −26 %; Gegenprobe ohne Funding: Vorteil weg). Läuft als `tage_p2` im Schattenbuch.
-Live-Umstellung auf dem PC erst nach ≥3 Monaten Vorwärtstest.
+**13.10. User wählte „Pilot 2.0 live bauen“:** Belastungstest `pilot2_robust.py` (5/5 bestanden; Jahr im Minus ~17 %, schlechteste 5 % −21 %,
+Einbruch bis −39 %). Live: `pilot2_plan.py` (Rechnung, 18 Tests) + `pilot2_live.py` (Spot+Futures+Verschieben, 27 Tests mit Fake-Binance,
+Mutationsproben) + `pilot.py` leitet bei `KRYPTO_PILOT2=an` um. Pfand 100 % (Hebel 1). Sicherungen: Deckel `KRYPTO_PILOT2_KAPITAL`,
+eigenes Coin-Buch, Konflikt-Sperre (Spot-Bot/ETH-Sparplan/Calls), Rechteprüfung (keine Auszahlung, Universal Transfer AN).
+**Offen:** Testnetz-Lauf + Trockenlauf gegen echtes Konto durch den User; erst dann kleiner Betrag.
 
 **📌 2026-10-04 (🚚 Versand-Schwelle: Beinahe-Schaden abgewendet + „Mini-Kühlschrank" war eine Insulin-Kühlbox):**
 - **🚨 WICHTIGSTE LEHRE — `dropship/VERSAND-SCHWELLE.md` LESEN, bevor jemand eine Versand-Zahl ändert.**
