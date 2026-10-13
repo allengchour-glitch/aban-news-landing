@@ -1577,3 +1577,4 @@ gid://shopify/Product/16614885327239	ok	Business-Rucksack mit Solarladefunktion
 gid://shopify/Product/16615231947143	ok	Grosses Leder-Outdoor-Rucksack
 gid://shopify/Product/16615227720071	ok	Leder-Reiserucksack für Herren
 gid://shopify/Product/16616394719623	ok	Abstandsklebeband 2 m
+gid://shopify/Product/16616543256967	ok	Sportwagen-Modellbausatz mit Fernsteuerung
