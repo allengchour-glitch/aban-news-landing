@@ -1560,7 +1560,7 @@ fi
       else echo "$(date -u +%H:%M) ⚠️ BILDTAUSCH-SPERRE aus /tmp = 0 — textbild_fix/bild_klein_fix würden Tausche zurückdrehen (bildtausch_sperre.py nach /tmp spiegeln, REPO prüfen)"; fi
       ( cd "$REPO" && SCHARF=1 timeout 1200 python3 automation/google_bild_tausch.py --ruecklesen >> "$GBR" 2>&1 )
       echo "$(date -u +%H:%M) $(grep RUECKLESE "$GBR" | tail -1 | cut -c1-160)"
-      ( cd "$REPO" && timeout 120 python3 automation/google_bildtausch_bilanz.py 2>&1 | tail -1 | cut -c1-200 )
+      ( cd "$REPO" && timeout 120 python3 automation/google_bildtausch_bilanz.py 2>&1 | tail -1 | cut -c1-400 )
     fi
   fi
   # ── Jury-Kontingent (05.10.2026, neu, z. B. direkt nach der REEL-KADENZ-Zeile): sagt in jedem Tick, ob alle Bild-Jurys leer sind
