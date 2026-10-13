@@ -8389,3 +8389,17 @@ magnetische-schnursenkel-elastisch-kein-binden-964354	2033422431094210562	0	-	KE
 25er-set-zufallige-pvc-schuh-charms-464001	2033444631812681729	0	-	KEINE CH-Option → DRAFT	landeseite
 25er-set-hunde-schuh-charms-764481	2033429642713399297	0	-	KEINE CH-Option → DRAFT	landeseite
 elastische-schnursenkel-mit-schnallen-1-set-213314	2033419788221317121	0	-	KEINE CH-Option → DRAFT	landeseite
+wasserdichte-leder-sneaker-mit-dampfung-607100	2601260524461607500	16	12.44	ok	landeseite
+atmungsaktive-mesh-laufschuhe-fur-damen-620300	2601150918181620500	16	13.65	ok	landeseite
+rutschfeste-aqua-schuhe-fur-wanderungen-623100	2512310218121623400	16	11.00	ok	landeseite
+outdoor-sports-watschuhe-mit-rutsch-und-schnit-630400	2512180323371630600	16	10.42	ok	landeseite
+kinder-laufschuhe-flying-electric-5c-610300	2511290226291610500	16	11.96	ok	landeseite
+atmungsaktive-mesh-sneaker-fur-herren-643000	2510160839031643200	16	11.24	ok	landeseite
+atmungsaktiver-mesh-sneaker-mit-luftkissen-613700	2509200607171613900	16	10.55	ok	landeseite
+unisex-outdoor-schuhe-schnelltrocknend-604400	2508260737491604600	16	10.95	ok	landeseite
+freizeitschuhe-fur-kinder-weiche-sohle-633900	2607030647011634700	16	7.85	ok	landeseite
+kinder-retro-sneakers-mit-klettverschluss-611200	2607020837161612100	16	9.61	ok	landeseite
+kinder-retro-sneaker-mit-klettverschluss-621000	2607020747251621600	16	8.66	ok	landeseite
+habibear-kinder-schuhe-fur-breite-fusse-628900	2607020548291629700	16	9.33	ok	landeseite
+silberne-baby-und-kinderschuhe-mit-schleife-634600	2606260614231636100	16	8.53	ok	landeseite
+kinder-sportschuhe-mit-breiter-zehenbox-und-kl-635400	2606111318091636200	16	10.01	ok	landeseite
