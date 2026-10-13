@@ -1412,3 +1412,6 @@
 16610151170439	Farbe:2:2	2026-10-12	business-rucksack-fur-reisen-616704
 16610149859719	Grösse:2:2	2026-10-12	wandteppich-elefantendruck-563d53
 16610147631495	Ausführung:3:3	2026-10-12	isolierte-flaschentasche-fur-unterwegs-381120
+16610147402119	Modell:5:5	2026-10-12	elektrisches-vakuumiergerat-603900
+16610147107207	Farbe:4:4	2026-10-12	bein-und-huftkissen-624300
+16610145960327	Grösse:3:3	2026-10-12	schwarze-oxford-holzboden-box-fur-weihnachtsba-617700
