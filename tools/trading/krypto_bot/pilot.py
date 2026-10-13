@@ -305,9 +305,12 @@ def schliessen_alle(ausfuehren=None, heute=None, env=None):
     # Gehört das Konto, das der alte Pilot anspricht, Pilot 2.0 (dort gestartet)? Dann sind BTC/ETH-Perps seine Ernte —
     # die hat er oben schon geschlossen (oder bewusst als Absicherung stehen lassen). Sonst: alte Positionen hier schliessen.
     try:
-        p2_modus = "echt" if BF.einstellungen(env)["echtgeld"] else "testnetz"
+        bf = BF.einstellungen(env)
+        p2_modus = "echt" if bf["echtgeld"] else "testnetz"
         b2 = P2L.buch_lesen(P2L.BESTAND, p2_modus)
-        p2 = bool(b2["start"]) and (P2L.aktiv(env) or P2L._offen(b2))
+        # gleiches Konto? Echtgeld: Pilot 2.0 hat einen eigenen Schlüssel (PILOT2_API_KEY) → anderes Konto = alter Pilot schliessen
+        gleiches_konto = not bf["echtgeld"] or bf.get("key") == env.get("PILOT2_API_KEY")
+        p2 = bool(b2["start"]) and (P2L.aktiv(env) or P2L._offen(b2)) and gleiches_konto
     except Exception:  # noqa: BLE001
         p2 = True
     ziele = [] if p2 else [(m, sym) for m, (sym, _, _) in MAERKTE.items()]

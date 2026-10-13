@@ -169,7 +169,8 @@ AKTIONEN = {
     "risiko_2": ([], 10, "Risiko-Stufe 2×"),
     "auto_aus": ([], 10, "Auto-Handel aus"),
 }
-SELBSTTESTS = ["test_pilot.py", "test_sammler.py", "test_infos.py", "test_binance.py", "test_profit.py", "test_calls.py"]
+SELBSTTESTS = ["test_pilot.py", "test_sammler.py", "test_infos.py", "test_binance.py", "test_profit.py", "test_calls.py",
+              "test_pilot2_plan.py", "test_pilot2_live.py"]
 PROTOKOLL = deque(maxlen=40)
 _LAUFEND, _SPERRE = {}, threading.Lock()  # Name → Startzeit
 

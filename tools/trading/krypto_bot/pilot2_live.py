@@ -26,6 +26,7 @@ Sicherungen:
 from __future__ import annotations
 
 import json
+import math
 import os
 import random
 import sys
@@ -58,6 +59,15 @@ PAUSE_DATEI = HIER.parent / "ki_bot" / "PAUSE"
 UNKLAR_AUFGEBEN_S = 86400       # «Auftrag existiert nicht» (−2013) erst nach 1 Tag als «nie ausgeführt» werten
 STAUB_USDT = 5.0                # darunter gilt ein Bestand als leer
 GEBUEHREN_RESERVE = 0.005       # 0,5 % des verwalteten Geldes bleiben für Gebühren frei
+CID_STOP_SPOT, CID_STOP_PERP = "p2s", "p2a"   # Kennungs-Anfang eigener Stops → verwaiste Stops (verlorene Antwort) findet er wieder
+
+
+class BuchKaputt(ValueError):
+    """Buch-Datei vorhanden, aber unlesbar → nie überschreiben, nie «nichts offen» melden."""
+
+
+def _kennung(anfang):
+    return f"{anfang}{int(time.time() * 1000)}{random.randint(0, 999999):06d}"
 
 
 def aktiv(env=None):
@@ -116,11 +126,22 @@ def leer_buch():
     return {"coins": {}, "usdt": None, "stops": {}, "unklar": [], "perp_offen": False, "start": None}
 
 
-def buch_lesen(datei, modus):
+def _datei(datei):
+    """Ganze Buch-Datei. Fehlt sie: {}. Ist sie unlesbar: BuchKaputt (nie still als leer behandeln)."""
+    p = Path(datei)
+    if not p.exists():
+        return {}
     try:
-        b = (json.loads(Path(datei).read_text()).get(modus)) or {}
-    except (OSError, ValueError, AttributeError):
-        b = {}
+        alles = json.loads(p.read_text())
+    except (OSError, ValueError) as ex:
+        raise BuchKaputt(f"Pilot-2.0-Buch {p.name} unlesbar ({type(ex).__name__})") from ex
+    if not isinstance(alles, dict):
+        raise BuchKaputt(f"Pilot-2.0-Buch {p.name} hat ein falsches Format")
+    return alles
+
+
+def buch_lesen(datei, modus):
+    b = _datei(datei).get(modus) or {}
     out = leer_buch()
     out.update({k: v for k, v in b.items() if k in out})
     out["coins"] = {k: float(v) for k, v in (out["coins"] or {}).items()}
@@ -128,10 +149,7 @@ def buch_lesen(datei, modus):
 
 
 def buch_schreiben(datei, modus, buch):
-    try:
-        alt = json.loads(Path(datei).read_text()) if Path(datei).exists() else {}
-    except ValueError:
-        alt = {}
+    alt = _datei(datei)  # unlesbar → Abbruch statt den anderen Modus zu überschreiben
     alt[modus] = buch
     Path(datei).parent.mkdir(exist_ok=True)
     tmp = Path(str(datei) + ".neu")
@@ -145,16 +163,17 @@ def _offen(b):
 
 
 def modi_mit_bestand(datei=None):
-    try:
-        alles = json.loads(Path(datei or BESTAND).read_text())
-    except (OSError, ValueError):
-        return []
+    alles = _datei(datei or BESTAND)
     return [m for m, b in alles.items() if isinstance(b, dict) and _offen(b)]
 
 
 def hat_bestand(datei=None):
-    """Gibt es (in irgendeinem Modus) noch Pilot-2.0-Coins, -Positionen, -Stops oder unklare Aufträge?"""
-    return bool(modi_mit_bestand(datei))
+    """Gibt es (in irgendeinem Modus) noch Pilot-2.0-Coins, -Positionen, -Stops oder unklare Aufträge?
+    Unlesbares Buch zählt als «ja» (der alte Pilot darf dann nicht handeln)."""
+    try:
+        return bool(modi_mit_bestand(datei))
+    except BuchKaputt:
+        return True
 
 
 def bestand(konto, asset):
@@ -218,7 +237,7 @@ class Spot(BB.Binance):
     def stop_verkauf(self, symbol, menge, stop, regeln):
         stop_p = PL.runde(stop, regeln["tick"])
         p = {"symbol": symbol, "side": "SELL", "quantity": BB.format_menge(menge), "stopPrice": BB.format_menge(stop_p),
-             "newOrderRespType": "ACK"}
+             "newOrderRespType": "ACK", "newClientOrderId": _kennung(CID_STOP_SPOT)}
         if "STOP_LOSS" in regeln.get("typen", ()):
             p["type"] = "STOP_LOSS"  # beim Auslösen ein Marktauftrag (wie im Backtest)
         else:
@@ -244,8 +263,19 @@ class Fut(BF.Futures):
         """Stop NUR für den Richtungsteil: Menge + reduceOnly (nicht closePosition — sonst fiele die Ernte-Absicherung weg)."""
         return self._req("POST", "/fapi/v1/algoOrder", {"algoType": "CONDITIONAL", "symbol": symbol, "side": seite, "type": "STOP_MARKET",
                                                         "quantity": BF.fmt(menge), "triggerPrice": BF.fmt(PL.runde(preis, tick)),
-                                                        "reduceOnly": "true", "workingType": "MARK_PRICE", "priceProtect": "true"},
+                                                        "reduceOnly": "true", "workingType": "MARK_PRICE", "priceProtect": "true",
+                                                        "clientAlgoId": _kennung(CID_STOP_PERP)},
                          signiert=True)
+
+    def einrichten(self, symbol, hebel):
+        """Pilot 2.0: CROSS-Marge (eigenes Konto). Bei ISOLATED wäre das Pfand beim Eröffnen fix — der 10-%-Puffer im
+        Futures-Konto schützte den Ernte-Short dann nicht vor der Zwangsschliessung bei rund +100 %."""
+        try:
+            self._req("POST", "/fapi/v1/marginType", {"symbol": symbol, "marginType": "CROSSED"}, signiert=True)
+        except BF.BinanceFehler as ex:
+            if "-4046" not in str(ex.msg):  # schon CROSSED; −4048 (offene Position) → Fehler → kein Short
+                raise
+        self._req("POST", "/fapi/v1/leverage", {"symbol": symbol, "leverage": max(1, int(hebel))}, signiert=True)
 
     def offene_algos(self, symbol):
         return [o for o in (self._req("GET", "/fapi/v1/openAlgoOrders", {"symbol": symbol}, signiert=True) or []) if isinstance(o, dict)]
@@ -325,7 +355,11 @@ def ausfuehren(ents, trocken=False, env=None, spot=None, fut=None, protokolliere
         return erg
     spot = spot or Spot(cfg["spot"])
     fut = fut or Fut(cfg["futures"])
-    buch = buch_lesen(datei, cfg["modus"])
+    try:
+        buch = buch_lesen(datei, cfg["modus"])
+    except BuchKaputt as ex:
+        warn(f"{ex} — kein Auftrag. Datei prüfen/wiederherstellen; Not-Aus meldet den Kontostand.")
+        return erg
 
     def speichern():
         buch_schreiben(datei, cfg["modus"], buch)
@@ -377,7 +411,8 @@ def ausfuehren(ents, trocken=False, env=None, spot=None, fut=None, protokolliere
                              "rs": spot.regeln2(sym), "rf": fut.regeln(sym)}
         coin_wert += mein * daten[e["markt"]]["kurs"]
     if not buch["start"]:  # erster Lauf: Zuteilung bis zum Deckel
-        buch["usdt"] = max(0.0, min(usdt_frei, cfg["deckel"] - coin_wert - f_saldo - f_offen))
+        f_fremd = (f_saldo + f_offen) if cfg["echtgeld"] else 0.0  # Testnetz: eigenes Futures-Testkonto, getrennt
+        buch["usdt"] = max(0.0, min(usdt_frei, cfg["deckel"] - coin_wert - f_fremd))
         buch["start"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
         erg["zeilen"].append(f"Pilot 2.0 gestartet: {buch['usdt']:.2f} USDT zugeteilt (Deckel {cfg['deckel']:.0f}).")
     buch["usdt"] = max(0.0, min(buch["usdt"] or 0.0, usdt_frei))
@@ -536,17 +571,30 @@ def ausfuehren(ents, trocken=False, env=None, spot=None, fut=None, protokolliere
                     rest = max(0.0, p["stop_spot"] - max(0.0, richtung_ist))
                     kaeufe = [("spot", "BUY", PL.runde(rest, d["rs"]["step"]), False)] if rest * d["kurs"] >= d["rs"]["min_notional"] else []
                     shorts = []
-            gekauft = 0.0
+            gekauft, geplant = 0.0, sum(s[2] for s in kaeufe)
             for konto, seite, m, red in kaeufe:
                 if notaus_neu():
                     break
                 gekauft += schritt(k, konto, seite, m, red) or 0.0
+            fehlt = max(0.0, geplant - gekauft)  # gekürzter/ausgelassener Kauf (Gebühr in Coins zählt nicht als Fehlbetrag)
+            if fehlt > geplant * 0.002 + d["rs"]["step"]:
+                neu = []
+                for konto, seite, m, red in shorts:  # Short um denselben Betrag kürzen → Netto-Richtung wie geplant
+                    m2 = PL.runde(max(0.0, m - fehlt), d["rf"]["step"])
+                    if m2 > 0 and m2 * d["kurs"] >= d["rf"]["min_notional"]:
+                        neu.append((konto, seite, m2, red))
+                    else:
+                        warn(f"{k}: Kauf gekürzt — Short entfällt (unter dem Futures-Minimum).")
+                        if gekauft > 0:  # ungesicherte Ernte-Coins zurück
+                            neu.append(("rueck", "SELL", 0.0, False))
+                shorts = neu
             for konto, seite, m, red in shorts:
                 if k in gesperrt or notaus_neu():
                     break
-                r = schritt(k, konto, seite, m, red)
+                r = None if konto == "rueck" else schritt(k, konto, seite, m, red)
                 if r is None and gekauft > 0:  # sicher NICHT ausgeführt → Ernte-Spot zurück
-                    zurueck = PL.runde(min(gekauft, m, buch["coins"].get(k, 0.0)), d["rs"]["step"])
+                    frei_ist = bestand(spot.konto(), d["coin"])[0]
+                    zurueck = PL.runde(min(gekauft, m if m else gekauft, buch["coins"].get(k, 0.0), frei_ist), d["rs"]["step"])
                     if zurueck * d["kurs"] >= d["rs"]["min_notional"]:
                         gesperrt.discard(k)
                         if schritt(k, "spot", "SELL", zurueck, False):
@@ -579,13 +627,15 @@ def _stops_setzen(spot, fut, buch, speichern, ents, daten, plaene, ohne_stop_neu
             netto = mein + pos
             z = e.get("z", 0)
             stop_spot = PL.runde(min(max(0.0, netto), mein, frei), d["rs"]["step"]) if z > 0 else 0.0
-            stop_perp = PL.runde(min(max(0.0, -netto), abs(min(pos, 0.0))), d["rf"]["step"]) if z < 0 else 0.0
+            short = abs(min(pos, 0.0))
+            # Absicherung abrunden, NICHT den Stop: sonst bliebe bis zu ein Futures-Schritt Short ohne Stop
+            stop_perp = max(0.0, short - PL.runde(min(mein, short), d["rf"]["step"])) if z < 0 else 0.0
             st = buch["stops"].setdefault(k, {})
             if k in ohne_stop_neu:
                 if z:
                     warn(f"{k}: alter Stop bleibt aktiv (Löschen gescheitert) — kein neuer gesetzt.")
             else:
-                if stop_spot > 0 and stop_spot * d["kurs"] >= d["rs"]["min_notional"]:
+                if stop_spot > 0 and stop_spot * e["stop_long"] >= d["rs"]["min_notional"]:
                     r = spot.stop_verkauf(d["sym"], stop_spot, e["stop_long"], d["rs"])
                     st["spot"], st["spot_menge"], st["spot_quote"] = r.get("orderId"), 0.0, 0.0
                 if stop_perp > 0:
@@ -605,11 +655,18 @@ def _stops_setzen(spot, fut, buch, speichern, ents, daten, plaene, ohne_stop_neu
 
 
 def _stops_weg(spot, fut, buch, k, sym):
-    """Nur EIGENE Stops stornieren (IDs aus dem Buch). ID erst nach bestätigtem Storno aus dem Buch nehmen."""
+    """EIGENE Stops stornieren: die IDs aus dem Buch UND alle offenen mit eigener Kennung (p2s/p2a) — so verschwinden auch
+    Stops, deren Antwort verloren ging. Fremde Aufträge bleiben. ID erst nach bestätigtem Storno aus dem Buch nehmen."""
     st = buch["stops"].setdefault(k, {})
+    for o in spot.offene(sym):
+        if str(o.get("clientOrderId") or "").startswith(CID_STOP_SPOT) and o.get("orderId") != st.get("spot"):
+            spot.abbrechen(sym, o["orderId"])
     if st.get("spot") is not None:
         spot.abbrechen(sym, st["spot"])
         st["spot"], st["spot_menge"], st["spot_quote"] = None, 0.0, 0.0
+    for a in fut.offene_algos(sym):
+        if str(a.get("clientAlgoId") or "").startswith(CID_STOP_PERP) and str(a.get("algoId")) != str(st.get("perp")):
+            fut.algo_abbrechen(sym, a["algoId"])
     if st.get("perp") is not None:
         fut.algo_abbrechen(sym, st["perp"])
         st["perp"] = None
@@ -663,10 +720,42 @@ def notaus_alle(env=None, datei=None, trocken=False, spot=None, fut=None, protok
     egal wie die Freigabe-Schalter gerade stehen. «alles_zu» nur, wenn jeder Modus nachgeprüft zu ist."""
     env = os.environ if env is None else env
     datei = datei or BESTAND
-    modi = list(dict.fromkeys(modi_mit_bestand(datei) + ([einstellungen(env)["modus"]] if aktiv(env) else [])))
+    kaputt = None
+    try:
+        modi = modi_mit_bestand(datei)
+    except BuchKaputt as ex:
+        kaputt, modi = str(ex), []
+    if not kaputt:
+        modi = list(dict.fromkeys(modi + ([einstellungen(env)["modus"]] if aktiv(env) else [])))
+        if "echt" in modi and not buch_lesen(datei, "echt")["start"] and not _offen(buch_lesen(datei, "echt")):
+            modi.remove("echt")  # nie gestartet oder Buch weg: Konto unten nur ansehen, nicht halb schliessen
     erg = {"zeilen": [], "auftraege": [], "warnung": False, "kapital": None, "plan": {}, "modus": ",".join(modi) or None, "alles_zu": True}
+    if kaputt:
+        erg.update(alles_zu=False, warnung=True)
+        erg["zeilen"].append(f"⚠️ Not-Aus Pilot 2.0: {kaputt} — Bestand unbekannt, NICHT «alles zu». Datei prüfen/wiederherstellen!")
+    if env.get("PILOT2_API_KEY") and "echt" not in modi:
+        # Buch weg/kaputt oder nie gestartet: Echtgeld-Konto trotzdem ansehen — nie «nichts offen» melden, ohne zu schauen
+        try:
+            cfg = einstellungen(env, modus="echt")
+            s_, f_ = spot or Spot(cfg["spot"]), fut or Fut(cfg["futures"])
+            funde = []
+            for m_, (sym, coin) in COINS.items():
+                pos = f_.position_info(sym)[0]
+                menge = sum(bestand(s_.konto(), coin))
+                if pos:
+                    funde.append(f"Futures {sym} {pos:+g}")
+                if menge * s_.kurs(sym) >= STAUB_USDT and (kaputt or pos):
+                    funde.append(f"{menge:g} {coin}")
+            if funde:
+                erg.update(alles_zu=False, warnung=True)
+                erg["zeilen"].append("⚠️ Not-Aus Pilot 2.0 (echt): Konto zeigt " + ", ".join(funde)
+                                     + ", das Buch kennt es nicht — NICHTS automatisch verkauft. Bitte im Binance-Konto prüfen!")
+        except Exception as ex:  # noqa: BLE001
+            erg.update(alles_zu=False, warnung=True)
+            erg["zeilen"].append(f"⚠️ Not-Aus Pilot 2.0 (echt): Konto nicht prüfbar ({type(ex).__name__}) — bitte im Binance-Konto prüfen!")
     if not modi:
-        erg["zeilen"].append("Not-Aus Pilot 2.0: nichts offen.")
+        if erg["alles_zu"]:
+            erg["zeilen"].append("Not-Aus Pilot 2.0: nichts offen.")
         return erg
     for m in modi:
         cfg = einstellungen(env, modus=m)
@@ -716,16 +805,25 @@ def _notaus(spot, fut, buch, speichern_b, modus, trocken):
         except Exception as ex:  # noqa: BLE001
             warn(f"Not-Aus {modus} {k} Perpetual: {type(ex).__name__} {str(ex)[:120]}")
         try:  # 2) Perp-Stop erst NACH dem Schliessen löschen
-            if perp_zu and buch["stops"].get(k, {}).get("perp") is not None:
-                fut.algo_abbrechen(sym, buch["stops"][k]["perp"])
-                buch["stops"][k]["perp"] = None
+            if perp_zu:
+                eigene = {str(buch["stops"].get(k, {}).get("perp"))}
+                for a in fut.offene_algos(sym):
+                    if str(a.get("clientAlgoId") or "").startswith(CID_STOP_PERP) or str(a.get("algoId")) in eigene:
+                        fut.algo_abbrechen(sym, a["algoId"])
+                buch["stops"].setdefault(k, {})["perp"] = None
         except Exception as ex:  # noqa: BLE001
             warn(f"Not-Aus {modus} {k}: Perp-Stop nicht gelöscht ({type(ex).__name__}).")
-        try:  # 3) Spot: alles Eigene verkaufen — ausser der Short ist noch offen: dann nur den ungesicherten Überschuss
+        try:  # 3a) eigene Spot-Stops weg (gibt die gesperrten Coins frei)
             st = buch["stops"].setdefault(k, {})
             if st.get("spot") is not None:
                 spot.abbrechen(sym, st["spot"])
-                st["spot"], st["spot_menge"], st["spot_quote"] = None, 0.0, 0.0
+            for o in spot.offene(sym):
+                if str(o.get("clientOrderId") or "").startswith(CID_STOP_SPOT):
+                    spot.abbrechen(sym, o["orderId"])
+            st["spot"], st["spot_menge"], st["spot_quote"] = None, 0.0, 0.0
+        except Exception as ex:  # noqa: BLE001
+            warn(f"Not-Aus {modus} {k}: Spot-Stop nicht gelöscht ({type(ex).__name__}) — verkaufe die freien Coins trotzdem.")
+        try:  # 3b) Spot: alles Eigene verkaufen — ausser der Short ist noch offen: dann nur den ungesicherten Überschuss
             frei, gebunden = bestand(spot.konto(), coin)
             mein = min(buch["coins"].get(k, 0.0), frei)
             behalten = 0.0 if perp_zu else max(0.0, -fut.position_info(sym)[0])
@@ -768,6 +866,14 @@ def _notaus(spot, fut, buch, speichern_b, modus, trocken):
         buch["perp_offen"] = any(fut.position_info(COINS[m][0])[0] != 0 for m in COINS)
     except Exception:  # noqa: BLE001
         buch["perp_offen"] = True
+    if erg["alles_zu"] and not buch["perp_offen"] and modus == "echt":
+        try:
+            zurueck = float(fut.konto().get("maxWithdrawAmount", 0) or 0)
+            if zurueck >= 1:
+                spot.verschieben("FUTURES_ZU_SPOT", math.floor(zurueck * 100) / 100)
+                erg["zeilen"].append(f"{zurueck:.2f} USDT vom Futures- aufs Spot-Konto zurück.")
+        except Exception as ex:  # noqa: BLE001
+            erg["zeilen"].append(f"ℹ️ USDT im Futures-Konto nicht zurückverschoben ({type(ex).__name__}) — vor einem Neustart von Hand verschieben.")
     if erg["alles_zu"] and not buch["perp_offen"]:
         buch.clear()
         buch.update(leer_buch())  # alles zu → Pilot 2.0 beginnt beim nächsten Einschalten neu (mit Startprüfung)
