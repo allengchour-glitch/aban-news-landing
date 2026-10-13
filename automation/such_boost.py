@@ -298,7 +298,18 @@ def anwenden(gql, soll, log=print):
                 eigene=len(neu_stand) if SCHARF else len(soll))
 
 
-def such_top(begriff, n=8):
+def such_top(begriff, n=8, versuche=3):
+    """Erste n Produkt-Handles der Enter-Suche; leere Seite = Abruf-Aussetzer (13.10.: «wichteln» einmal leer, sofort danach 8/8)
+    → bis zu 3 Versuche, bevor «Seite leer» als Befund zählt."""
+    for v in range(versuche):
+        out = _such_top_einmal(begriff, n)
+        if out:
+            return out
+        time.sleep(5 * (v + 1))
+    return []
+
+
+def _such_top_einmal(begriff, n=8):
     # _lx = Zeitstempel: ohne ihn liefert der Edge-Cache unserer IP Stunden alte Seiten (12.10.: «kostüm» Zeichen für
     # Zeichen wie um 19:08); mit ihm rechnet Shopify neu (Platz 5 wechselte). options[prefix]=last wie das Theme-Formular.
     u = ("https://luxestyle.ch/search?type=product&options%5Bprefix%5D=last&q=" + urllib.parse.quote(begriff)
@@ -321,7 +332,12 @@ def messen(gql, regel):
     """Enter-Suche (/search?type=product) je Familie, die ersten zwei Begriffe: wie viele der ersten 8 sind Soll-Ware.
     Schreibt dropship/SUCH-BOOSTS.md (erste fette Zeile = Ampel). Shopify zieht den Index mit Verzug nach — erst
     ≥ 60 min nach dem Schreiben messen (gemessen 12.10.: nach 30 min standen oben noch die Boosts des VORLETZTEN Laufs; der Aufseher wartet 60 min)."""
-    soll, info = soll_berechnen(gql, regel, log=lambda *_: None)
+    # 13.10.: gegen den GESETZTEN Stand messen, nicht neu rechnen — eine neue Jury-Runde wählte bei «powerbank» andere
+    # Produkte und meldete 0/8, obwohl die ersten 8 genau die geboosteten waren.
+    stand = json.load(open(STAND)) if os.path.exists(STAND) else {}
+    soll = stand
+    info = {fam["name"]: {"produkte": [e["handle"] for e in stand.values() if norm_begriff(fam["begriffe"][0]) in e.get("begriffe", [])]}
+            for fam in regel["familien"]}
     unten, zeilen = [], []
     for fam in regel["familien"]:
         hs = set(info[fam["name"]]["produkte"])
