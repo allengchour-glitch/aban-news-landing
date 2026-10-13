@@ -1,0 +1,8 @@
+{
+  "id": "platte-2026-10-14",
+  "typ": "wartung",
+  "aktion": "platte",
+  "warum": "13.10.2026 abends, Plan «Hetzner auf Maximum» Schritt 1 (Nachtrag nach Prüfer S1), rein lesend. Schritt 6 (Platz schaffen, frühestens 14.10. 04:10 UTC) braucht vorher die Git-Grössen JE Klon — auch /opt/luxe/repo (toter Klon, Zombie-Cron 13.10.) — plus du /opt und halbfertige tmp_*-Packdateien. Gemessen 13.10. 19:58 UTC (server-zustand-2026-10-13): / zu 90 % belegt, 3,8 GB frei, kein Swap. Die Aktion «platte» liest nur (df, du, git count-objects, find tmp_*), ändert nichts. Der Name trägt den Tag, an dem Schritt 6 das Ergebnis braucht; der Agent führt ihn beim nächsten Takt aus (der Runner kennt keine Startzeit), die Quittung liegt also lange vor 04:10 UTC in erledigt/.",
+  "stand": "laufend",
+  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+}
