@@ -1415,3 +1415,5 @@
 16610147402119	Modell:5:5	2026-10-12	elektrisches-vakuumiergerat-603900
 16610147107207	Farbe:4:4	2026-10-12	bein-und-huftkissen-624300
 16610145960327	Grösse:3:3	2026-10-12	schwarze-oxford-holzboden-box-fur-weihnachtsba-617700
+16610145567111	Farbe:4:4	2026-10-12	rucksack-mit-diebstahlschutz-234432
+16610142421383	Modell:4:4	2026-10-12	fahrradtasche-fur-gepacktrager-420992
