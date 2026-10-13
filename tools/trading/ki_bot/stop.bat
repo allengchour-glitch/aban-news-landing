@@ -7,8 +7,13 @@ set PYTHONIOENCODING=utf-8
 cd /d "%~dp0\..\..\.."
 set PY=py
 where py >nul 2>nul || set PY=python
-if not "%BINANCE_FUTURES_API_KEY%"=="" (
-  echo Krypto-Pilot schliesst jetzt seine Futures-Positionen ...
+set "PILOTDA="
+if not "%BINANCE_FUTURES_API_KEY%"=="" set PILOTDA=1
+if not "%PILOT2_API_KEY%"=="" set PILOTDA=1
+if /i "%KRYPTO_PILOT2%"=="an" set PILOTDA=1
+if exist "data\krypto-pilot2-bestand.json" set PILOTDA=1
+if defined PILOTDA (
+  echo Krypto-Pilot schliesst jetzt seine Positionen ^(Futures und bei Pilot 2.0 auch Spot^) ...
   %PY% tools\trading\krypto_bot\pilot.py --lauf
 )
 echo.

@@ -11,6 +11,8 @@ Für jeden Markt mit Grundbetrag B = Kontowert × Anteil × Gewicht:
   pfand_ziel = (1−|z|)/2 × B + max(−z,0) × B                  (USDT im Futures-Konto, Hebel ≤ 1 auf den Richtungsteil)
 Netto-Richtung = spot_ziel + perp_ziel = z × B / Kurs (genau wie der Pilot). Kapitalbedarf = B (nichts geliehen).
 Reihenfolge im Plan: erst verkleinern (Perp reduceOnly, Spot verkaufen), dann Geld verschieben, dann vergrössern.
+Beim Ernte-Abbau zuerst den Short zurückkaufen: scheitert danach der Spot-Verkauf, bleibt man begrenzt long (Stop greift),
+nie ungedeckt short. Der Pfand-Puffer (10 %) ist in die Basis eingerechnet: Kapitalbedarf ≤ Basis.
 Stops: nur auf den RICHTUNGSTEIL (Spot-Stop für long, Perp-Stop mit Menge + reduceOnly für short) — der Ernte-Teil
 bleibt abgesichert und wird nie vom Stop getroffen.
 """
@@ -44,7 +46,9 @@ def plane(markt, z, basis, kurs, spot_ist, perp_ist, regeln, max_auftrag=1000.0)
     → {"schritte": [(konto, seite, menge, reduce_only)], "pfand": USDT, "stop_spot": Coins, "stop_perp": Kontrakte, "info": …}"""
     if basis <= 0 or kurs <= 0:
         return {"schritte": [], "pfand": 0.0, "stop_spot": 0.0, "stop_perp": 0.0, "info": "kein Kapital/Kurs"}
-    s_ziel, p_ziel, pfand, r_spot, r_perp = ziele(z, basis, kurs)
+    # Pfand-Puffer in die Basis einrechnen: Spot + Pfand × (1 + Puffer) darf das verwaltete Geld nie übersteigen
+    basis = basis / (1 + PFAND_PUFFER)
+    s_ziel, p_ziel, _, r_spot, r_perp = ziele(z, basis, kurs)
     # Ernte-Teil auf den gröberen Mengenschritt runden, damit Spot und Short sich GENAU aufheben (marktneutral)
     schritt_ernte = max(regeln["spot_step"], regeln["perp_step"])
     ernte_menge = runde((1 - abs(max(-1.0, min(1.0, z)))) / KAPITAL_FAKTOR * basis / kurs, schritt_ernte)
@@ -52,6 +56,7 @@ def plane(markt, z, basis, kurs, spot_ist, perp_ist, regeln, max_auftrag=1000.0)
     if ernte_menge * kurs < max(MIN_SPOT, MIN_PERP, regeln.get("spot_min", 0), regeln.get("perp_min", 0)):
         ernte_menge = 0.0
     s_ziel, p_ziel = r_spot + ernte_menge, r_perp - ernte_menge
+    pfand = ernte_menge * kurs * PFAND_ERNTE + abs(r_perp) * kurs  # Pfand nur für Ernte, die wirklich läuft, + Short-Richtung
     # Band: aktuelle Richtung = Spot + Perp (netto) in Einheiten von B; Ernte = −Perp − Richtung-Short-Anteil
     netto_ist = (spot_ist + perp_ist) * kurs / basis
     ernte_ist = (spot_ist * kurs / basis) - max(netto_ist, 0.0)
@@ -85,7 +90,7 @@ def plane(markt, z, basis, kurs, spot_ist, perp_ist, regeln, max_auftrag=1000.0)
         m = menge(perp_ist - p_ziel, regeln["perp_step"])
         if m > 0 and m * kurs >= mindest_p:
             schritte.append(("perp", "SELL", m, False))
-    return {"schritte": schritte, "pfand": pfand * (1 + PFAND_PUFFER),
+    return {"schritte": schritte, "pfand": pfand * (1 + PFAND_PUFFER), "ernte": ernte_menge,
             "stop_spot": runde(r_spot, regeln["spot_step"]), "stop_perp": runde(abs(r_perp), regeln["perp_step"]),
             "info": {"z": z, "spot_ziel": s_ziel, "perp_ziel": p_ziel, "netto_ist": netto_ist, "ernte_ist": ernte_ist}}
 

@@ -506,10 +506,26 @@ handelt; 18 + 27 Tests mit nachgebauter Binance, Mutationsproben). Ohne `KRYPTO_
 Freier Teil → Funding-Ernte: Coin im Spot + gleich grosser Short (marktneutral, Pfand 100 %, Zwangsschliessung erst bei rund
 +100 %). Er verschiebt USDT selbst zwischen Spot- und Futures-Konto. Stops nur auf den Richtungsteil.
 
-**Sicherungen:** verwaltet höchstens `KRYPTO_PILOT2_KAPITAL` USDT · verkauft nur Coins, die er selbst gekauft hat (eigenes Buch
-`data/krypto-pilot2-bestand.json`) · weigert sich, wenn im selben Konto der Spot-Bot (`KRYPTO_BROKER=binance`), der ETH-Sparplan
-oder kopierte Telegram-Calls laufen · Echtgeld-Schlüssel darf **keine Auszahlungen, keine Margin-Leihe, keine Überweisung an
-Dritte** · Not-Aus (`stop.bat`) schliesst beide Konten · Ernte nur, wenn beide Seiten über dem Binance-Minimum liegen.
+**Sicherungen** (nach unabhängiger Prüfung am 13.10.2026 überarbeitet, 38 Tests gegen eine strenge nachgebaute Binance mit
+Gebühren, gesperrten Coins, Marge und ausgelösten Stops; 10/10 Mutationsproben erkannt):
+- **Deckel = Verlustgrenze:** `KRYPTO_PILOT2_KAPITAL` wird beim ersten Lauf zugeteilt. Danach handelt Pilot 2.0 nur mit SEINEM
+  Geld (eigenes USDT- und Coin-Buch `data/krypto-pilot2-bestand.json`). Verluste werden **nicht** aus deinem übrigen Geld nachgefüllt.
+- **Fremdes bleibt unberührt:** Er verkauft nur selbst gekaufte Coins und storniert nur eigene Aufträge. Ausgelöste Stops und
+  Gebühren (in Coins) zieht er vom Buch ab, unklare Aufträge klärt er vor dem nächsten Handel.
+- **Not-Aus hat Vorrang vor allem** (Pause, fehlende Einstellungen, andere Bots): `stop.bat`, Cockpit, Telegram `/stop` und die
+  Tagesaufgabe schliessen beide Konten — je Konto einzeln, danach nachgeprüft. Auch ein Not-Aus mitten im Lauf stoppt den Aufbau.
+- **Stops nur auf die tatsächliche Richtung** (nach den Aufträgen neu gelesen), Spot als STOP_LOSS (Markt beim Auslösen), Perpetual
+  mit Menge + reduceOnly — die Ernte-Absicherung trifft ein Stop nie. Stops werden immer am Ende gesetzt, auch wenn vorher etwas scheitert.
+  Kein Aufbau in eine Richtung, deren Stop schon überschritten ist, und keine Richtung ohne Stop-Kurs.
+- **Keine ungesicherte Ernte:** Pfand-Puffer ist in die Basis eingerechnet, die Futures-Marge wird vor dem Short geprüft, und
+  scheitert der Short, verkauft er den eben gekauften Ernte-Spot sofort zurück.
+- Er weigert sich aufzubauen, wenn im selben Konto der Spot-Bot (`KRYPTO_BROKER=binance`), der ETH-Sparplan oder kopierte
+  Telegram-Calls laufen. Echtgeld-Schlüssel: keine Auszahlungen, keine Margin-Leihe, keine Überweisung an Dritte.
+- **Ausschalten:** Wer `KRYPTO_PILOT2` entfernt, während Pilot 2.0 noch Positionen hat, bekommt eine Warnung — der alte Pilot
+  handelt dann nicht (er würde die Ernte-Absicherung zerstören). Erst Not-Aus, dann umstellen. Ein aus `KRYPTO_PILOT_MAERKTE`
+  entfernter Markt wird automatisch abgebaut.
+- Pilot 2.0 nutzt höchstens Hebel 1 (die Risiko-Stufen 1,5/2 gelten nur für den alten Pilot). Steht der Futures-Hebel wegen
+  einer alten Position noch höher, eröffnet er keinen neuen Short, bis er 1 ist.
 
 **1. Zuerst im Testnetz** (Spielgeld, getrennte Test-Konten, dort kein Verschieben → beide Test-Konten brauchen USDT):
 ```

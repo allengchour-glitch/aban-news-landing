@@ -80,7 +80,11 @@ Funding-Ernte `carry_pruefung.py` (ab 2022 nur +3–4 %/J., Einbruch <1 % → Pa
 Einbruch bis −39 %). Live: `pilot2_plan.py` (Rechnung, 18 Tests) + `pilot2_live.py` (Spot+Futures+Verschieben, 27 Tests mit Fake-Binance,
 Mutationsproben) + `pilot.py` leitet bei `KRYPTO_PILOT2=an` um. Pfand 100 % (Hebel 1). Sicherungen: Deckel `KRYPTO_PILOT2_KAPITAL`,
 eigenes Coin-Buch, Konflikt-Sperre (Spot-Bot/ETH-Sparplan/Calls), Rechteprüfung (keine Auszahlung, Universal Transfer AN).
-**Offen:** Testnetz-Lauf + Trockenlauf gegen echtes Konto durch den User; erst dann kleiner Betrag.
+**Unabhängige Prüfung (Agent) fand 7 Blocker + 16 weitere** (Not-Aus erreichte P2 nicht/Pause blockierte ihn, Stops aus Ziel statt Bestand
+→ konnten Ernte schliessen, Gebühr in Coins → Stop −2010, Fremd-Coins nach ausgelöstem Stop verkauft, ungesicherte Ernte bei fehlender Marge …).
+Alles behoben, `pilot2_live.py` neu geschrieben; Tests gegen STRENGE Fake-Binance (Gebühren, Sperren, Marge, Auslösen), 38 Tests, 10/10 Mutationen.
+**LEHRE: eigene Fake-Börse war zu gutmütig — Geld-Code immer gegen eine strenge Börse + zweiten Prüfer testen.**
+**Offen:** zweite Prüfung, dann Testnetz-Lauf + Trockenlauf durch den User; erst dann kleiner Betrag.
 
 **📌 2026-10-04 (🚚 Versand-Schwelle: Beinahe-Schaden abgewendet + „Mini-Kühlschrank" war eine Insulin-Kühlbox):**
 - **🚨 WICHTIGSTE LEHRE — `dropship/VERSAND-SCHWELLE.md` LESEN, bevor jemand eine Versand-Zahl ändert.**

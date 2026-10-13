@@ -26,7 +26,12 @@ if exist "tools\trading\ki_bot\STOP" set NOTAUS=1
 if "%KI_BOT_STOP%"=="1" set NOTAUS=1
 if defined NOTAUS (
   echo Not-Aus ist aktiv: der Pilot schliesst nur noch seine Positionen ^(nichts Neues^). Weiterhandeln: weiter.bat
-  if not "%BINANCE_FUTURES_API_KEY%"=="" call :schritt Pilot-Not-Aus pilot.py --lauf
+  set "PILOTDA="
+  if not "%BINANCE_FUTURES_API_KEY%"=="" set PILOTDA=1
+  if not "%PILOT2_API_KEY%"=="" set PILOTDA=1
+  if /i "%KRYPTO_PILOT2%"=="an" set PILOTDA=1
+  if exist "data\krypto-pilot2-bestand.json" set PILOTDA=1
+  if defined PILOTDA call :schritt Pilot-Not-Aus pilot.py --lauf
   goto bilanz
 )
 if exist "tools\trading\ki_bot\PAUSE" (
@@ -42,10 +47,13 @@ for %%T in (test_pilot test_sammler test_infos test_cockpit test_profit test_cal
     goto ende
   )
 )
-if not "%BINANCE_FUTURES_API_KEY%"=="" (
+set "PILOTLAUF="
+if not "%BINANCE_FUTURES_API_KEY%"=="" set PILOTLAUF=1
+if /i "%KRYPTO_PILOT2%"=="an" if not "%PILOT2_API_KEY%%BINANCE_API_KEY%"=="" set PILOTLAUF=1
+if defined PILOTLAUF (
   call :schritt Krypto-Pilot pilot.py --lauf
 ) else (
-  echo Krypto-Pilot uebersprungen: BINANCE_FUTURES_API_KEY fehlt.
+  echo Krypto-Pilot uebersprungen: keine Schluessel ^(BINANCE_FUTURES_API_KEY oder Pilot 2.0^).
 )
 REM ETH-Sparplan nur mit ausdruecklicher Freigabe (Betrag gesetzt) - der Spot-Schluessel allein reicht nicht
 if not "%ETH_SPARPLAN_BETRAG%"=="" (
