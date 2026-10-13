@@ -202,6 +202,19 @@ Nicht abgebildet: Spot/Future-Kursdifferenz, Börsenausfall (FTX 2022).
 
 P2 ist in **allen** Zeiträumen besser (Rendite ÷ Einbruch). Gegenprobe: ohne Funding sind P1/P2 leicht **schlechter** (höhere
 Spot-Gebühr) — der Vorsprung kommt also ganz aus gespartem bzw. kassiertem Funding, nicht aus einem Rechenfehler.
+**Belastungstest (`pilot2_robust.py`, 13.10.2026, Regeln vorab festgelegt, alle bestanden):**
+
+| Prüfung | Ergebnis |
+|---|---|
+| Kosten doppelt (Futures 0,10 %, Spot 0,20 %, Ernte 0,30 %) | P2 +26,6 % / −25 % gegen P0 +24,0 % / −27 % |
+| Parkplatz verdient nur die Hälfte | P2 +29,3 % gegen P0 +25,1 % |
+| 36 Nachbar-Parameter (Trend, Schwankungsziel) | P2 besser in **36/36**, kleinster Vorsprung +3,4 Pp. |
+| 69 Jahresfenster, monatlich verschoben ab 2020 | P2 ≥ P0 in **96 %**; P2 nach 12 Monaten im Minus in **13 %**, schlechtestes −11 %, Median +30 % |
+| 5000 Zufallsjahre aus echten Tagesrenditen | Jahr im Minus **17 %**, schlechteste 5 % **−21 %**, Einbruch im Jahr typisch −23 %, schlechteste 5 % **−39 %** |
+
+Heisst: Pilot 2.0 ist robust besser als der Pilot, aber **kein sicheres Geld**. Rechne damit, dass das Konto zwischendurch
+um 20–40 % fällt und etwa jedes sechste Jahr im Minus endet.
+
 **Status:** Pilot 2.0 läuft ab 12.10.2026 im Spielgeld-Schattenbuch neben dem Piloten (`tools/trading/schatten/`, echtes Funding
 über OKX). Die Live-Ausführung auf dem PC wird erst umgestellt, wenn er dort mindestens 3 Monate nicht schlechter ist.
 
@@ -483,6 +496,68 @@ den Krypto-Pilot oben, mit eigenen Schlüsseln und Testnetz als Standard.
 Jeden Tag mit den Kursen bis gestern: Schwankung = EWMA der Tagesrenditen (λ 0,94), auf ein Jahr hochgerechnet.
 Bitcoin-Anteil = min(100 %, 40 % ÷ Schwankung). Ruhiger Markt: voll investiert. Wilder Markt: weniger.
 Andere Strategie wählen: `setx KRYPTO_STRATEGIE "halten"` (immer 100 %) oder `"trend200"`.
+
+## 🚀 Pilot 2.0 einschalten (Spot-Long + Short + Funding-Ernte)
+
+> ⛔ **NOCH NICHT FREIGEGEBEN (13.10.2026).** Zwei unabhängige Prüfungen fanden Blocker (zuletzt 7: Not-Aus-Modus nach dem
+> Ausschalten, veraltete Cockpit-Einstellungen, Doppel-Stops nach gescheitertem Storno, Deckel ≠ Verlustgrenze bei fremdem
+> Futures-Geld, unklarer Short, Übernahme alter Pilot-Positionen). Im Code ist `FREIGEGEBEN = False` — `KRYPTO_PILOT2=an` wirkt
+> nicht, der Pilot handelt wie bisher. Nächster Schritt: Pilot 2.0 verlangt ein Konto NUR für sich (beim Start leer bis auf
+> USDT), Funde beheben, dritte Prüfung. Bis dahin: den bestehenden Pilot nutzen (siehe «Starten» unten).
+
+Gleiche Signale wie der Pilot, klügere Ausführung über **beide** Binance-Konten (`pilot2_plan.py` rechnet, `pilot2_live.py`
+handelt; 18 + 27 Tests mit nachgebauter Binance, Mutationsproben). Ohne `KRYPTO_PILOT2=an` handelt der Pilot wie bisher.
+
+**Was er tut:** Richtung long → Coin im Spot-Konto (kein Funding). Richtung short → Short-Perpetual (Hebel 1, bekommt Funding).
+Freier Teil → Funding-Ernte: Coin im Spot + gleich grosser Short (marktneutral, Pfand 100 %, Zwangsschliessung erst bei rund
++100 %). Er verschiebt USDT selbst zwischen Spot- und Futures-Konto. Stops nur auf den Richtungsteil.
+
+**Sicherungen** (nach unabhängiger Prüfung am 13.10.2026 überarbeitet, 38 Tests gegen eine strenge nachgebaute Binance mit
+Gebühren, gesperrten Coins, Marge und ausgelösten Stops; 10/10 Mutationsproben erkannt):
+- **Deckel = Verlustgrenze:** `KRYPTO_PILOT2_KAPITAL` wird beim ersten Lauf zugeteilt. Danach handelt Pilot 2.0 nur mit SEINEM
+  Geld (eigenes USDT- und Coin-Buch `data/krypto-pilot2-bestand.json`). Verluste werden **nicht** aus deinem übrigen Geld nachgefüllt.
+- **Fremdes bleibt unberührt:** Er verkauft nur selbst gekaufte Coins und storniert nur eigene Aufträge. Ausgelöste Stops und
+  Gebühren (in Coins) zieht er vom Buch ab, unklare Aufträge klärt er vor dem nächsten Handel.
+- **Not-Aus hat Vorrang vor allem** (Pause, fehlende Einstellungen, andere Bots): `stop.bat`, Cockpit, Telegram `/stop` und die
+  Tagesaufgabe schliessen beide Konten — je Konto einzeln, danach nachgeprüft. Auch ein Not-Aus mitten im Lauf stoppt den Aufbau.
+- **Stops nur auf die tatsächliche Richtung** (nach den Aufträgen neu gelesen), Spot als STOP_LOSS (Markt beim Auslösen), Perpetual
+  mit Menge + reduceOnly — die Ernte-Absicherung trifft ein Stop nie. Stops werden immer am Ende gesetzt, auch wenn vorher etwas scheitert.
+  Kein Aufbau in eine Richtung, deren Stop schon überschritten ist, und keine Richtung ohne Stop-Kurs.
+- **Keine ungesicherte Ernte:** Pfand-Puffer ist in die Basis eingerechnet, die Futures-Marge wird vor dem Short geprüft, und
+  scheitert der Short, verkauft er den eben gekauften Ernte-Spot sofort zurück.
+- Er weigert sich aufzubauen, wenn im selben Konto der Spot-Bot (`KRYPTO_BROKER=binance`), der ETH-Sparplan oder kopierte
+  Telegram-Calls laufen. Echtgeld-Schlüssel: keine Auszahlungen, keine Margin-Leihe, keine Überweisung an Dritte.
+- **Ausschalten:** Wer `KRYPTO_PILOT2` entfernt, während Pilot 2.0 noch Positionen hat, bekommt eine Warnung — der alte Pilot
+  handelt dann nicht (er würde die Ernte-Absicherung zerstören). Erst Not-Aus, dann umstellen. Ein aus `KRYPTO_PILOT_MAERKTE`
+  entfernter Markt wird automatisch abgebaut.
+- Pilot 2.0 nutzt höchstens Hebel 1 (die Risiko-Stufen 1,5/2 gelten nur für den alten Pilot). Steht der Futures-Hebel wegen
+  einer alten Position noch höher, eröffnet er keinen neuen Short, bis er 1 ist.
+
+**1. Zuerst im Testnetz** (Spielgeld, getrennte Test-Konten, dort kein Verschieben → beide Test-Konten brauchen USDT):
+```
+setx BINANCE_API_KEY "spot-testnetz-key"          (testnet.binance.vision)
+setx BINANCE_API_SECRET "…"
+setx BINANCE_FUTURES_API_KEY "futures-testnetz-key" (testnet.binancefuture.com)
+setx BINANCE_FUTURES_API_SECRET "…"
+setx KRYPTO_PILOT2 "an"
+python tools\trading\krypto_bot\pilot.py --lauf --trocken     (zeigt den Plan, sendet nichts)
+python tools\trading\krypto_bot\pilot.py --lauf
+```
+**2. Echtes Geld — klein anfangen.** Neuer API-Schlüssel bei Binance: ✅ Spot & Margin-Handel, ✅ Futures, ✅ Universal Transfer,
+❌ Auszahlungen, ❌ Margin-Leihe, ❌ interne Überweisung; am besten auf deine IP beschränkt. Futures-Konto im Einweg-Modus.
+```
+setx PILOT2_API_KEY "…"
+setx PILOT2_API_SECRET "…"
+setx KRYPTO_PILOT2_KAPITAL "500"          (höchstens so viele USDT verwaltet er — Pflicht)
+setx BINANCE_TESTNET "false"
+setx BINANCE_FUTURES_TESTNET "false"
+setx KI_BOT_ECHTGELD "JA, MIT ECHTEM GELD"
+setx KI_BOT_ANTEIL "1"                    (sonst nutzt er nur die Hälfte des Deckels)
+```
+Danach **zuerst** `pilot.py --lauf --trocken` und den Plan lesen. **Mindestbetrag:** Binance verlangt für einen BTC-Short
+mindestens 100 USDT — unter rund 500 USDT läuft die Ernte für BTC nicht, dann liegt der freie Teil einfach als USDT da.
+**Risiko (Belastungstest oben):** zwischendurch −20 bis −40 % möglich, etwa jedes sechste Jahr im Minus. Nur Geld einsetzen,
+dessen Verlust du verkraftest. Keine Anlageberatung.
 
 ## Starten (auf deinem PC)
 
