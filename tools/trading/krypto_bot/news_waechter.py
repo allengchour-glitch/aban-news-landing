@@ -9,7 +9,9 @@ Warum nur melden und nicht handeln? Stimmungs-Infos (z. B. Angst & Gier, das auc
 Prüfstand nicht bestanden (info_pruefung.py). Gehandelt wird nur nach Regeln, die ein Prüfstand vorher bestätigt.
 
 Alarm-Arten (Schlagworte im Titel, Gross/klein egal): Hack · Abhebungen gestoppt · Insolvenz · Stablecoin-Depeg ·
-Regulierung/ETF · Delisting (bei BTC/ETH oder beobachteten Coins). Jeder Eintrag wird nur einmal gemeldet.
+Regulierung/ETF · Delisting (BTC/ETH und deine Coins aus NEWS_COINS, z. B. «SOL,DOGE»). Jeder Eintrag wird nur einmal gemeldet.
+Delistings prüft er jede Minute: Nach der Ankündigung fällt der Kurs im Median 4 % in der ersten Minute und 17 % in den
+ersten 30 Minuten (delisting_pruefung.py, 112 Coins 2022–2026) — für Halter zählt jede Minute.
 Aufruf: python3 tools/trading/krypto_bot/news_waechter.py [--melden]   (--melden: Alarme aufs Handy)
 """
 from __future__ import annotations
@@ -33,7 +35,7 @@ BINANCE = "https://www.binance.com/bapi/composite/v1/public/cms/article/list/que
 BINANCE_KATALOGE = {161: "Binance Delisting", 48: "Binance Listing", 49: "Binance News"}
 RSS = {"Cointelegraph": "https://cointelegraph.com/rss", "Decrypt": "https://decrypt.co/feed",
        "The Block": "https://www.theblock.co/rss.xml", "CoinDesk": "https://www.coindesk.com/arc/outboundfeeds/rss/"}
-BEOBACHTET = {"BTC", "ETH"}  # Delisting-Alarm nur für Coins, die der Bot handelt (weitere über beobachtet=…)
+BEOBACHTET = {"BTC", "ETH"}  # Delisting-Alarm für die Coins des Bots — dazu deine Coins aus NEWS_COINS
 ALARME = [  # (Art, Muster) — Reihenfolge = Vorrang
     ("Hack", r"\b(hack(ed|s)?|exploit(ed)?|stolen|drain(ed)?|breach)\b"),
     ("Abhebungen gestoppt", r"\b(suspend(s|ed)?|halt(s|ed)?|paus(e|es|ed)|freez(e|es)|frozen)\b.{0,40}\bwithdrawals?\b|\bwithdrawals?\b.{0,30}\b(suspend|halt|paus|frozen)"),
@@ -59,6 +61,13 @@ def coins_im_titel(titel):
         if name in titel.lower():
             out.add(kurz)
     return sorted(out)
+
+
+def beobachtete(env=None):
+    """BTC/ETH (der Bot) + deine Coins aus NEWS_COINS («SOL,DOGE;PEPE»)."""
+    env = os.environ if env is None else env
+    roh = (env.get("NEWS_COINS") or "").replace(";", ",")
+    return BEOBACHTET | {c.strip().upper() for c in roh.split(",") if c.strip()}
 
 
 def einstufen(eintrag, beobachtet=None):
@@ -113,10 +122,19 @@ def sammeln(laden_json=None, laden_xml=None, env=None):
                            if p.get("published_at") else 0} for p in d.get("results", [])]
         except Exception as ex:  # noqa: BLE001
             fehler.append(f"CryptoPanic: {type(ex).__name__}")
+    return _ergaenzen(eintraege), fehler
+
+
+def _ergaenzen(eintraege):
     for e in eintraege:
         e["coins"] = coins_im_titel(e["titel"])
         e["id"] = hashlib.sha1((e["quelle"] + "|" + (e["link"] or e["titel"])).encode()).hexdigest()[:16]
-    return eintraege, fehler
+    return eintraege
+
+
+def nur_delistings(laden_json=None):
+    """Schnell-Abfrage (jede Minute): nur die Binance-Delisting-Liste."""
+    return _ergaenzen(binance(161, BINANCE_KATALOGE[161], laden_json))
 
 
 def neue_alarme(eintraege, speicher=None, beobachtet=None):
@@ -146,22 +164,35 @@ def neue_alarme(eintraege, speicher=None, beobachtet=None):
 
 
 NEWS_MINUTEN = 30
+DELISTING_SEKUNDEN = 60
 
 
-def schleife(melden, runden=None, warte_s=NEWS_MINUTEN * 60, sammeln_fn=None, speicher=None):
-    """Alle 30 Minuten lesen; neue Alarme → melden(text). Fehler einer Runde halten die Schleife nie an."""
+def _runde(melden, holen, speicher, beobachtet):
+    """Einmal lesen und Neues melden. Ein Fehler (Netz weg …) hält die Schleife nie an."""
+    try:
+        r = holen()
+        alarme = neue_alarme(r[0] if isinstance(r, tuple) else r, speicher=speicher, beobachtet=beobachtet)
+        if alarme:
+            melden("📰 News-Wächter\n" + text(alarme) + "\n(nur Info — der Bot handelt nicht nach News) Keine Anlageberatung.")
+    except Exception:  # noqa: BLE001
+        pass
+
+
+def schleife(melden, runden=None, warte_s=NEWS_MINUTEN * 60, sammeln_fn=None, speicher=None, schnell_fn=None,
+             takt_s=DELISTING_SEKUNDEN, beobachtet=None, schlafen=time.sleep):
+    """Alle 30 Minuten alles lesen, dazwischen jede Minute nur die Binance-Delistings. Neue Alarme → melden(text).
+    Die erste Runde liest immer alles (beim allerersten Start wird dabei alles als gelesen gemerkt)."""
+    beobachtet = beobachtet or beobachtete()
     n = 0
     while runden is None or n < runden:
         n += 1
-        try:
-            eintraege, _ = (sammeln_fn or sammeln)()
-            alarme = neue_alarme(eintraege, speicher=speicher)
-            if alarme:
-                melden("📰 News-Wächter\n" + text(alarme) + "\n(nur Info — der Bot handelt nicht nach News) Keine Anlageberatung.")
-        except Exception:  # noqa: BLE001
-            pass
-        if runden is None:
-            time.sleep(warte_s)
+        _runde(melden, sammeln_fn or sammeln, speicher, beobachtet)
+        if takt_s <= 0:
+            schlafen(warte_s)
+            continue
+        for _ in range(max(0, int(warte_s // takt_s))):
+            schlafen(takt_s)
+            _runde(melden, schnell_fn or nur_delistings, speicher, beobachtet)
 
 
 def letzte(speicher=None, n=5):
@@ -179,7 +210,9 @@ def letzte(speicher=None, n=5):
 
 
 def text(alarme, fehler=()):
-    zeilen = [f"🚨 {a['alarm']}: {a['titel']} ({a['quelle']}) {a['link']}" for a in alarme]
+    zeilen = [f"🚨 {a['alarm']}: {a['titel']} ({a['quelle']}) {a['link']}"
+              + (" — früher fiel der Kurs danach im Median −4 % in 1 Min., −17 % in 30 Min." if a["alarm"] == "Delisting" else "")
+              for a in alarme]
     if fehler:
         zeilen.append("ℹ️ nicht erreichbar: " + ", ".join(fehler))
     return "\n".join(zeilen)
@@ -187,7 +220,7 @@ def text(alarme, fehler=()):
 
 def main():
     eintraege, fehler = sammeln()
-    alarme = neue_alarme(eintraege)
+    alarme = neue_alarme(eintraege, beobachtet=beobachtete())
     print(f"{len(eintraege)} Einträge gelesen, {len(alarme)} neue Alarme.")
     if alarme or fehler:
         print(text(alarme, fehler))
