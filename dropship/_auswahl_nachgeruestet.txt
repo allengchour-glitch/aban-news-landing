@@ -1931,3 +1931,4 @@
 16614721126791	Farbe:3+Grösse:4+Ausführung:2:24+ki	2026-10-13	hundeleine-mit-tragevest-dunkelblau-rosa-lila-613700
 16614614892935	Farbe:6+Stil:2:10+ki	2026-10-13	taschenrucksack-mit-lauf-leine-fur-hunde-618600
 16614606143879	Grösse:2:2+ki	2026-10-13	korperhalsband-mit-leine-75-105-cm-120-150-cm-d82c70
+16614568952199	Farbe:8+Grösse:3:24+ki	2026-10-13	hunde-halsband-s-873c4f
