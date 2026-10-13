@@ -202,6 +202,19 @@ Nicht abgebildet: Spot/Future-Kursdifferenz, Börsenausfall (FTX 2022).
 
 P2 ist in **allen** Zeiträumen besser (Rendite ÷ Einbruch). Gegenprobe: ohne Funding sind P1/P2 leicht **schlechter** (höhere
 Spot-Gebühr) — der Vorsprung kommt also ganz aus gespartem bzw. kassiertem Funding, nicht aus einem Rechenfehler.
+**Belastungstest (`pilot2_robust.py`, 13.10.2026, Regeln vorab festgelegt, alle bestanden):**
+
+| Prüfung | Ergebnis |
+|---|---|
+| Kosten doppelt (Futures 0,10 %, Spot 0,20 %, Ernte 0,30 %) | P2 +26,6 % / −25 % gegen P0 +24,0 % / −27 % |
+| Parkplatz verdient nur die Hälfte | P2 +29,3 % gegen P0 +25,1 % |
+| 36 Nachbar-Parameter (Trend, Schwankungsziel) | P2 besser in **36/36**, kleinster Vorsprung +3,4 Pp. |
+| 69 Jahresfenster, monatlich verschoben ab 2020 | P2 ≥ P0 in **96 %**; P2 nach 12 Monaten im Minus in **13 %**, schlechtestes −11 %, Median +30 % |
+| 5000 Zufallsjahre aus echten Tagesrenditen | Jahr im Minus **17 %**, schlechteste 5 % **−21 %**, Einbruch im Jahr typisch −23 %, schlechteste 5 % **−39 %** |
+
+Heisst: Pilot 2.0 ist robust besser als der Pilot, aber **kein sicheres Geld**. Rechne damit, dass das Konto zwischendurch
+um 20–40 % fällt und etwa jedes sechste Jahr im Minus endet.
+
 **Status:** Pilot 2.0 läuft ab 12.10.2026 im Spielgeld-Schattenbuch neben dem Piloten (`tools/trading/schatten/`, echtes Funding
 über OKX). Die Live-Ausführung auf dem PC wird erst umgestellt, wenn er dort mindestens 3 Monate nicht schlechter ist.
 
