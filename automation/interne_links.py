@@ -41,6 +41,23 @@ REGELN (Hausregeln 05.10.)
   ZURUECK_VOLL=1 python3 automation/interne_links.py --zurueck-voll [datei]
   python3 automation/interne_links.py --pruefen
   python3 automation/interne_links.py --kanarien   (Welt- und Anker-Kanarienvögel, 05.10.)
+  python3 automation/interne_links.py --waisen     (Waisen-Kollektionen, 13.10. — siehe unten)
+
+WAISEN-KOLLEKTIONEN (--waisen, 13.10.2026, SEO-Sofort ON-M5)
+  ANLASS: neue Kollektionen mit gemessener Nachfrage hatten KEINEN internen Link — gps-tracker (29 Anfragen, 71 Impressionen
+  auf Produkten), futterautomaten, trinkbrunnen-katzen (88 Impressionen); das Verzeichnis /pages/alle-kategorien stand seit
+  dem 10.10. still, weil kein Runner kategorien_verzeichnis.py rief. Google findet eine Seite ohne eingehenden Link nur über
+  die Sitemap — und wertet sie entsprechend.
+  ZIELE: jede im Onlineshop veröffentlichte Kollektion mit ≥ 3 AKTIVEN Produkten (productsCount zählt Entwürfe mit → je
+  Kollektion `collection_id:… AND status:active`), ohne die Kuratier-Hilfen und Doppelgänger, die das Verzeichnis bewusst
+  auslässt (kategorien_verzeichnis.RAUS/RAUS_MUSTER/entdoppeln — EINE Regel für beide).
+  QUELLEN wie --messen: Hauptmenü, Footer (die einzigen Menüs, die das Theme rendert — gemessen 13.10. header-group/
+  footer-group), Startseite, Texte veröffentlichter Kollektionen, veröffentlichte Ratgeber und Seiten — also auch
+  /pages/alle-kategorien. Waise = kein einziger eingehender Link.
+  AUSGABE: eine Zeile «WAISEN-KOLLEKTIONEN: n (Handles)» (n > 0 → der Aufseher meldet sie mit ⚠️) bzw.
+  «WAISEN-KOLLEKTIONEN: 0 · …»; Stand in dropship/_waisen_kollektionen.json (für die Betreiber-Ampel). Lesefehler oder nicht
+  lesbare Startseite → «WAISEN-KOLLEKTIONEN: unklar (…)», nie 0. Schreibt NICHTS im Shop. Läuft täglich im Aufseher direkt
+  NACH kategorien_verzeichnis.py — eine neue Kollektion steht damit am Folgetag im Verzeichnis oder in der Ampel.
 """
 import csv, datetime as dt, glob, html, json, os, re, sys, time, unicodedata, urllib.parse
 
@@ -727,6 +744,119 @@ def pruefen():
         print(f"INTERNE-LINKS: {bloecke} ls-verwandt-Blöcke, alle Ziele kaufbar")
 
 
+# ---------------------------------------------------------------- Waisen (13.10.2026)
+WAISEN_STAND = os.path.join(REPO, "dropship", "_waisen_kollektionen.json")
+WAISEN_MIN_AKTIV = int(os.environ.get("WAISEN_MIN_AKTIV", "3"))
+VERZEICHNIS = "alle-kategorien"
+
+
+def aktive_je_kollektion(kolls):
+    """{handle: aktive Produkte} — Aliase zu 20 je Anfrage (wie kategorien_verzeichnis.aktive_filtern)."""
+    raus = {}
+    for i in range(0, len(kolls), 20):
+        teil = kolls[i:i + 20]
+        felder = " ".join(f'a{j}: productsCount(query: "collection_id:{c["id"].split("/")[-1]} AND status:active"){{count}}'
+                          for j, c in enumerate(teil))
+        d = gql("query{" + felder + "}")
+        for j, c in enumerate(teil):
+            v = d.get(f"a{j}")
+            if v is None:
+                raise RuntimeError(f"productsCount fehlt für {c['handle']}")
+            raus[c["handle"]] = v["count"]
+    return raus
+
+
+def eingangs_index(colls, arts, pages, je_menue, start):
+    """{(art, handle): {Quelle, …}} — EIN Durchgang über alle Quell-Dokumente (statt je Ziel alle Texte zu lesen)."""
+    ein = {}
+
+    def dazu(ziel, quelle):
+        ein.setdefault(ziel, set()).add(quelle)
+    for m in ("main-menu", "footer"):
+        for z in je_menue.get(m, set()):
+            dazu(z, "menü:" + m)
+    for z in start or set():
+        dazu(z, "startseite")
+    for c in colls:
+        if c["online"]:
+            for z in links_in(c["descriptionHtml"]):
+                if z != ("collections", c["handle"]):
+                    dazu(z, "koll:" + c["handle"])
+    for a in arts:
+        if a["isPublished"]:
+            for z in links_in(a["body"]):
+                dazu(z, "blog:" + a["handle"])
+    for p in pages:
+        if p["isPublished"]:
+            for z in links_in(p["body"]):
+                dazu(z, "seite:" + p["handle"])
+    return ein
+
+
+def waisen():
+    """Waisen-Kollektionen messen (schreibt nur dropship/_waisen_kollektionen.json). Rückgabe 0 = gemessen, 2 = unklar."""
+    try:
+        import kategorien_verzeichnis as kv        # RAUS/RAUS_MUSTER/entdoppeln: dieselbe Auslassung wie das Verzeichnis
+        colls, menus, arts, pages, start = lade_alles()
+        if start is None:
+            raise RuntimeError("Startseite nicht lesbar")
+        baum, je_menue = menue_baum(menus)
+        online = [c for c in colls if c["online"]]
+        kand = [c for c in online if c["n"] >= WAISEN_MIN_AKTIV]
+        aktiv = aktive_je_kollektion(kand)
+    except Exception as e:
+        print(f"WAISEN-KOLLEKTIONEN: unklar ({type(e).__name__}: {str(e)[:100]})")
+        return 2
+    intern = {c["handle"] for c in online if c["handle"] in kv.RAUS or kv.RAUS_MUSTER.search(c["title"])}
+    _, doppel = kv.entdoppeln([[c["handle"], c["title"], c["n"], c["id"].split("/")[-1]]
+                               for c in online if c["handle"] not in intern])
+    ziele = [c for c in kand if aktiv.get(c["handle"], 0) >= WAISEN_MIN_AKTIV and c["handle"] not in intern | doppel]
+    ein = eingangs_index(colls, arts, pages, je_menue, start)
+    verz = next((p for p in pages if p["handle"] == VERZEICHNIS), None)
+    im_verz = {h for a, h in links_in((verz or {}).get("body"))} if verz and verz["isPublished"] else set()
+    w = sorted(((c["handle"], c["title"], aktiv[c["handle"]]) for c in ziele if not ein.get(("collections", c["handle"]))),
+               key=lambda x: -x[2])
+    nicht_im_verz = sorted(c["handle"] for c in ziele if c["handle"] not in im_verz)
+    stand = {"stand": dt.datetime.utcnow().strftime("%Y-%m-%dT%H:%MZ"), "ziele": len(ziele), "waisen": len(w),
+             "liste": [{"handle": h, "titel": t, "aktiv": n} for h, t, n in w],
+             "verzeichnis_veroeffentlicht": bool(verz and verz["isPublished"]), "nicht_im_verzeichnis": nicht_im_verz[:60],
+             "ausgelassen_intern": sorted(intern), "ausgelassen_doppel": sorted(doppel)}
+    try:
+        with open(WAISEN_STAND, "w", encoding="utf-8") as f:
+            json.dump(stand, f, ensure_ascii=False, indent=1)
+    except OSError as e:
+        print("  Stand nicht schreibbar:", e)
+    zusatz = (f" · nicht im Verzeichnis {len(nicht_im_verz)}" if nicht_im_verz else "") + \
+             ("" if verz and verz["isPublished"] else " · ⚠️ /pages/alle-kategorien fehlt/unveröffentlicht")
+    if w:
+        print(f"WAISEN-KOLLEKTIONEN: {len(w)} ({', '.join(h for h, _, _ in w[:12])}{' …' if len(w) > 12 else ''})"
+              f" · von {len(ziele)} Kollektionen mit ≥ {WAISEN_MIN_AKTIV} aktiven{zusatz}")
+    else:
+        print(f"WAISEN-KOLLEKTIONEN: 0 · {len(ziele)} Kollektionen mit ≥ {WAISEN_MIN_AKTIV} aktiven, alle mit eingehendem Link{zusatz}")
+    produktlinks_pruefen(colls)
+    return 0
+
+
+def produktlinks_pruefen(colls):
+    """KOLLEKTIONSTEXT-PRODUKTLINKS (13.10.2026, K5): Produktlinks im GANZEN Text veröffentlichter Kollektionen (nicht nur im
+    ls-verwandt-Block, den --pruefen wöchentlich liest). Anlass: weihnachten-2026 verlinkt seit 13.10. die Weihnachtskugeln
+    direkt (Absatz «Christbaumschmuck»); tote_links.py liest nur Seiten/Ratgeber, kein Wächter las Kollektionstexte auf
+    Produktlinks. Tot = fehlt, nicht ACTIVE oder nicht im Onlineshop. Meldet nur (Umbiegen ist eine Entscheidung)."""
+    paare = sorted({(c["handle"], h) for c in colls if c["online"]
+                    for art, h in links_in(c["descriptionHtml"]) if art == "products"})
+    try:
+        prod = produkte_lesen(sorted({h for _, h in paare}))
+    except Exception as e:
+        print(f"KOLLEKTIONSTEXT-PRODUKTLINKS: unklar ({type(e).__name__}: {str(e)[:80]})"); return
+    tot = [(q, h, (prod.get(h) or {}).get("status") or "fehlt") for q, h in paare
+           if not prod.get(h) or prod[h]["status"] != "ACTIVE" or not prod[h]["onlineStoreUrl"]]
+    if tot:
+        print(f"KOLLEKTIONSTEXT-PRODUKTLINKS: {len(tot)} tot von {len(paare)} · "
+              + " · ".join(f"{q} → {h} ({st})" for q, h, st in tot[:5]))
+    else:
+        print(f"KOLLEKTIONSTEXT-PRODUKTLINKS: 0 tot · {len(paare)} Produktlinks in Kollektionstexten")
+
+
 # ---------------------------------------------------------------- main
 def main():
     arg = sys.argv[1] if len(sys.argv) > 1 else "--trocken"
@@ -738,6 +868,8 @@ def main():
         pruefen(); return
     if arg == "--kanarien":
         raise SystemExit(1 if kanarien() else 0)
+    if arg == "--waisen":
+        raise SystemExit(waisen())
     colls, menus, arts, pages, start = lade_alles()
     baum, je_menue = menue_baum(menus)
     ziele = ziele_sammeln(colls, arts, pages, je_menue, start)
