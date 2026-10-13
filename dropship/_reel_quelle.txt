@@ -1,1 +1,3 @@
 CJBB106954801AZ	2026-10-13	shopify	960	ready
+CJLS187484201AZ	2026-10-13	cj	540	schnitt-3
+CJJT1626220-Horizontal	2026-10-13	shopify	540	schnitt-3

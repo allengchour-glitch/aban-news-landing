@@ -1,0 +1,49 @@
+# Index-Messgerät (tools/index_probe.py) — feste URL-Liste, 13.10.2026.
+# Format: <gruppe> <url>   (Gruppen: hub, saison, suchbegriff, produkt, ratgeber)
+# Die Liste bleibt FEST, damit zwei Läufe dieselben Seiten vergleichen. Wer eine Zeile ändert, ändert den Vergleich:
+# die Ampel vergleicht nur Seiten, die in beiden Läufen stehen. Neue Suchbegriff-Kollektion → hier unter «suchbegriff»
+# eintragen (Runbook-Regel b in dropship/AUTONOMER-MODUS.md zählt die Gruppe).
+# Produkte: die 9 AKTIVEN mit den meisten Impressionen aus dropship/_gsc_seiten.json (Stand 13.10. 10:20Z, 7 Datentage).
+# Gedraftet und deshalb ausgelassen (gemessen 13.10.): Wi-Fi-Futterspender k-030338 (37 Impr.), Transportbox PetGo (32),
+# Sternenhimmel-Projektor 527681 (24), Futterspender 653760 (23), Yoga-Bolster (19).
+
+hub https://luxestyle.ch/collections/damen-mode
+hub https://luxestyle.ch/collections/schuhe
+hub https://luxestyle.ch/collections/schmuck-uhren
+hub https://luxestyle.ch/collections/beauty-pflege
+hub https://luxestyle.ch/collections/elektronik-technik
+hub https://luxestyle.ch/collections/wohnen-dekoration
+hub https://luxestyle.ch/collections/fur-ihn
+hub https://luxestyle.ch/collections/kostueme-ch-lager
+hub https://luxestyle.ch/collections/damen-jacken-maentel
+hub https://luxestyle.ch/collections/muetzen-schals
+
+saison https://luxestyle.ch/collections/weihnachten-2026
+saison https://luxestyle.ch/collections/geschenke-fuer-sie
+saison https://luxestyle.ch/collections/geschenke-fuer-ihn
+saison https://luxestyle.ch/collections/adventskalender
+saison https://luxestyle.ch/collections/kleine-geschenke-mitbringsel
+saison https://luxestyle.ch/collections/premium-geschenke
+saison https://luxestyle.ch/collections/weihnachtspullover
+saison https://luxestyle.ch/collections/handwaermer
+
+suchbegriff https://luxestyle.ch/collections/futterautomaten
+suchbegriff https://luxestyle.ch/collections/trinkbrunnen-katzen
+suchbegriff https://luxestyle.ch/collections/gps-tracker
+suchbegriff https://luxestyle.ch/collections/licht-nachtlicht-projektor
+suchbegriff https://luxestyle.ch/collections/handstaubsauger
+suchbegriff https://luxestyle.ch/collections/sub-beleuchtung
+suchbegriff https://luxestyle.ch/collections/beamer-heimkino
+
+produkt https://luxestyle.ch/products/shirt-zum-selbstgestalten
+produkt https://luxestyle.ch/products/tasse-zum-selbstgestalten
+produkt https://luxestyle.ch/products/recycelte-allover-jogginghosen-selbst-gestalten
+produkt https://luxestyle.ch/products/kissen-zum-selbstgestalten
+produkt https://luxestyle.ch/products/gps-ortungsgerat-fur-fahrzeuge-623800
+produkt https://luxestyle.ch/products/trinkbrunnen-fur-haustiere-411520
+produkt https://luxestyle.ch/products/mini-fotodrucker-c75644
+produkt https://luxestyle.ch/products/kuscheldecke-selbst-gestalten
+produkt https://luxestyle.ch/products/selbstklebende-mobelfolie-650114
+
+ratgeber https://luxestyle.ch/blogs/ratgeber/weihnachtsgeschenke-2026-schweiz-ideen
+ratgeber https://luxestyle.ch/blogs/ratgeber/adventskalender-zum-befuellen-24-kleine-geschenke-ratgeber
