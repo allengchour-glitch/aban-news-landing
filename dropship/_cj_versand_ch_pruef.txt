@@ -7618,3 +7618,9 @@ schwimmende-solar-poolabdeckung-300-cm-535938	1990541750686113794	0	-	KEINE CH-O
 wc-sitz-mit-absenkautomatik-eckig-984513	1990428842102808577	0	-	KEINE CH-Option → DRAFT	landeseite
 waschmaschinen-regal-87x55x90-5-cm-eisen-800385	1990470415406116865	0	-	KEINE CH-Option → DRAFT	landeseite
 8er-handtuch-set-anthrazit-443778	1990427447932936193	0	-	KEINE CH-Option → DRAFT	landeseite
+wc-sitz-mit-absenkautomatik-46-2-x-36-x-4-3-cm-770625	1990500339114356738	0	-	KEINE CH-Option → DRAFT	landeseite
+led-handscheinwerfer-mit-4-leuchtmodi-902145	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+taktische-led-taschenlampe-xhp90-wiederaufladb-554241	2045027201653264385	0	-	KEINE CH-Option → DRAFT	landeseite
+usb-led-taschenlampe-extrem-hell-995841	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+led-stirnlampe-super-hell-mit-bewegungssensor-877058	2043597803109928962	0	-	KEINE CH-Option → DRAFT	landeseite
+extrem-helle-taktische-led-taschenlampe-545282	2043597849526374402	0	-	KEINE CH-Option → DRAFT	landeseite
