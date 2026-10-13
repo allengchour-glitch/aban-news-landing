@@ -8202,3 +8202,6 @@ minimalistisches-armreif-set-im-japanisch-kore-351041	2073898724235042817	16	4.8
 titan-stahl-armband-mit-schleife-617900	2607041154291618600	16	4.60	ok	landeseite
 business-quarzuhr-im-retro-look-fur-herren-637300	2606110646071638200	7	5.96	ok	landeseite
 engine-movement-herren-quarzuhr-638600	2606100255151639300	7	6.49	ok	landeseite
+klassische-minimalistische-quarzuhr-mit-mesh-a-630000	2606060941111630600	7	6.18	ok	landeseite
+herren-quarzuhr-im-gurtel-stil-632600	2606041016301633400	7	6.18	ok	landeseite
+herren-quarzuhr-mit-leuchtzeigern-und-stahlban-605400	2606040815331606000	7	7.33	ok	landeseite

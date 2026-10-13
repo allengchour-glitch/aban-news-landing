@@ -20733,3 +20733,24 @@ gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/1209
 gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090761118081	Black plus cotton-30or31	Schwarz gefüttert-30/31	2026-10-13T18:19Z
 gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090761150849	Black plus cotton-32or33	Schwarz gefüttert-32/33	2026-10-13T18:19Z
 gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090761183617	Black plus cotton-34or35	Schwarz gefüttert-34/35	2026-10-13T18:19Z
+gid://shopify/Product/15443502072193	Farbe	gid://shopify/ProductOptionValue/12294640730497	Gunmetal-Silikon	Anthrazit-Silikon	2026-10-13T20:59Z
+gid://shopify/Product/15445799960961	Farbe	gid://shopify/ProductOptionValue/12308491305345	13g-Natural Color	13 g-Natur	2026-10-13T20:59Z
+gid://shopify/Product/15445800518017	Farbe	gid://shopify/ProductOptionValue/12308491895169	Natural Color 13g	Natur 13 g	2026-10-13T20:59Z
+gid://shopify/Product/15447579263361	Farbe	gid://shopify/ProductOptionValue/12309815755137	Copper	Kupfer	2026-10-13T20:59Z
+gid://shopify/Product/15447579754881	Farbe	gid://shopify/ProductOptionValue/12309815918977	Men Copper	Herren Kupfer	2026-10-13T20:59Z
+gid://shopify/Product/15447579754881	Farbe	gid://shopify/ProductOptionValue/12309815951745	Women Copper	Damen Kupfer	2026-10-13T20:59Z
+gid://shopify/Product/15447894819201	Farbe	gid://shopify/ProductOptionValue/12309928214913	Deep Indigo Gray	Dunkelindigo-Grau	2026-10-13T20:59Z
+gid://shopify/Product/15447903928705	Farbe	gid://shopify/ProductOptionValue/12309943058817	Black Military Green	Schwarz-Olivgrün	2026-10-13T20:59Z
+gid://shopify/Product/15447956324737	Farbe	gid://shopify/ProductOptionValue/12018934579585	Natural	Natur	2026-10-13T20:59Z
+gid://shopify/Product/15448109187457	Farbe	gid://shopify/ProductOptionValue/12020498628993	Military green	Olivgrün	2026-10-13T20:59Z
+gid://shopify/Product/15448495391105	Farbe	gid://shopify/ProductOptionValue/12022167896449	Milk white	Milchweiss	2026-10-13T20:59Z
+gid://shopify/Product/15448495423873	Farbe	gid://shopify/ProductOptionValue/12022168420737	Magenta purple	Magenta-Lila	2026-10-13T20:59Z
+gid://shopify/Product/15448603361665	Farbe	gid://shopify/ProductOptionValue/12376935793025	Claret Red	Bordeaux-Rot	2026-10-13T20:59Z
+gid://shopify/Product/15448606343553	Farbe	gid://shopify/ProductOptionValue/12022983000449	Military Green	Olivgrün	2026-10-13T20:59Z
+gid://shopify/Product/15448640192897	Farbe	gid://shopify/ProductOptionValue/12023099326849	Magenta purple	Magenta-Lila	2026-10-13T20:59Z
+gid://shopify/Product/15448640520577	Farbe	gid://shopify/ProductOptionValue/12023100014977	Military Green	Olivgrün	2026-10-13T20:59Z
+gid://shopify/Product/15448644518273	Farbe	gid://shopify/ProductOptionValue/12023149887873	Rainbow Flower	Regenbogen geblümt	2026-10-13T20:59Z
+gid://shopify/Product/15448651202945	Farbe	gid://shopify/ProductOptionValue/12024561795457	Claret	Bordeaux	2026-10-13T20:59Z
+gid://shopify/Product/15448661459329	Farbe	gid://shopify/ProductOptionValue/12024643125633	Caramel Copper	Karamell-Kupfer	2026-10-13T20:59Z
+gid://shopify/Product/15448661623169	Farbe	gid://shopify/ProductOptionValue/12024644043137	Caramel Copper	Karamell-Kupfer	2026-10-13T20:59Z
+gid://shopify/Product/15448799347073	Farbe	gid://shopify/ProductOptionValue/12295661781377	Natural color	Natur	2026-10-13T20:59Z
