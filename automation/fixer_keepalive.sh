@@ -2016,6 +2016,17 @@ fi
       echo "$(date -u +%H:%M) tote-landeseiten geprüft"
     fi
   fi
+  # 13.10.2026 (Kassen-Prüfung wf_2a13fa79, Richter Platz 3): genannte Gratis-Schwelle muss «50» sein (Regel 2) + Versandsatz
+  # passt zur Kasse (Regel 1). Produkte (Voll-Export), Blog-Artikel, Seiten; nur feste Satzmuster schreiben, Rest melden.
+  VBW=/tmp/versand_band_wache.log
+  if [ -f "$REPO/automation/versand_band_wache.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$VBW" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$VBW"; then
+      touch "$VBW"
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_versand_band.lock; flock -n 9 || exit 0; SCHARF=1 exec timeout 1800 python3 automation/versand_band_wache.py" >> "$VBW" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) versand-band/gratis-schwelle geprüft"
+    fi
+  fi
   # 13.10.2026 (Messrunde Platz 9): Weiterleitungen, deren ZIEL inzwischen tot ist (gedraftetes Produkt, abgemeldete
   # Kollektion) — 169 von 1'657 führten ins Leere. Ketten glätten, totes Ziel bekommt Ersatz; Ledger + --zurueck.
   WZW=/tmp/weiterleitung_ziel_wache.log

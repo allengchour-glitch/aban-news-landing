@@ -49,6 +49,27 @@
 
 
 
+## 🧾 Kassen-Prüfung: die Rohliste war ein Scheinproblem (2026-10-13 nachmittags, «weiter» + Verbesserungsrunde 12:25)
+- **Anlass:** Ich las aus ShopifyQL (15 Kassen-Sitzungen, 7 Käufe) und den rohen abandonedCheckouts (15 Körbe, davon 5× Leinen-Set 39.90 → 46.90), dass Leute an der Kasse wegen CHF 7 Versand abbrechen. Darauf folgte ein Workflow mit 30 Agenten, nur lesend.
+- **GEMESSEN:** 12 von 14 Abbrüchen waren eigene Kaufweg-Tests (7× kaufweg-test@example.com), ein Betreiber-Korb oder Wegwerf/Bot. Echt waren 2. Seit 05.10. kauften 4 von 4. Der Verkehr auf Sirène (58/59) und Provence (39/42) war bezahlter TikTok-Test 01.–04.10. → **Engpass Verkehr, nicht Kasse.**
+- **Trotzdem echte Klassen gefunden:**
+  - (a) 11 Texte nannten «gratis ab CHF 45/65». Der Advent-Ratgeber rät zu Mehr-Artikel-Körben, bei denen −10 % die Gratisgrenze unterläuft. → `versand_band_wache.py` Regel 2 (Finder + feste Satzmuster, Kanarien 12/12, Aufseher täglich SCHARF=1): 6 Stellen auf «in der Schweiz … ab CHF 50», live geprüft.
+  - (b) Die Kasse zeigt für 2'375 CH-Lager-Produkte das Asien-Fenster (Kostüm: Seite 14.–16. Okt, Kasse 28. Okt–11. Nov). Ein eigenes Profil würde gemischte Körbe doppelt verrechnen → Betreiber-Entscheid. Ampel «KASSEN-DATUM CH-LAGER» meldet es; die Quittung `_entscheid_ch_lager_profil.txt` stellt die Zeile ab.
+  - (c) WELCOME10 macht Einzelartikel zu 45–49.99 um CHF 2.01 teurer (Tarif rechnet nach Rabatt) → Betreiber.
+- **Widerlegt durch Gegenprüfer:**
+  - «Standard 7» ab 45 per API begrenzen: Das ist eine Grundrate mit Bereich, kein eigener Tarif; eine Obergrenze kann die Kasse blockieren.
+  - «Leg dazu, du zahlst 45»: falsche Preisaussage.
+  - Upsell in der Schublade: öffnet nicht von selbst, für LI falsch.
+  - TWINT an Platz 1: braucht eine kostenpflichtige App.
+- **Kleinkram:**
+  - `checkout_abbruch_messen.py --selbsttest` (8/8, läuft vor jeder Ampel-Zeile).
+  - `kaufweg_handy.mjs` protokolliert jeden Prüflauf nach `dropship/_kaufweg_tests.txt`.
+  - Provence-SEO «Sommer» → «Herbst».
+- **Lehren:**
+  - (1) Vor jedem Auftrag aus einer Abbruch- oder Trichterzahl die BEREINIGTE Messung nehmen (`checkout_abbruch_messen.py`, Art «echt») und die Landeseiten nach utm_medium aufschlüsseln. Die Rohliste hätte 30 Agenten auf ein Scheinproblem gesetzt.
+  - (2) Gegenprüfer sind hier mehr wert als Prüfer: 2 von 24 Vorschlägen hielten, und zwei der widerlegten hätten die Kasse blockieren oder falsche Preise versprechen können.
+  - (3) Eigene Prüfläufe erzeugen Daten, die später wie Kundenverhalten aussehen. Darum jeden Lauf protokollieren.
+
 ## 🔍 Prüfung der Tagesskripte (Workflow, 11 Agenten) + Fremdware im Kostümtyp (2026-10-13 mittags)
 - **Ablauf:** Je Dateigruppe ein Finder (tote, google, hype, pflege, server), je Fund ein Gegenprüfer, nur lesend. Ergebnis: 6 Funde, 5 bestätigt, 1 widerlegt (Masstabelle XXL/2XL nur mit einer konstruierten Eingabe).
   - Funde der Schwere «niedrig» bekamen keinen Gegenprüfer. Zwei davon habe ich selbst erledigt (tagsAdd null, Lampion-Set).
@@ -19806,6 +19827,7 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-10-12 · 🚦 **Bestell-Ampel: `cj_order_watch.py` schrieb den Zustand nur aus der CJ-Liste neu und löschte den manuellen #1024 (Mister DTF) 2× → `behalte_manuell()` (Status «MANUELL…» bleibt, `--selbsttest`). Wer seinen Zustand neu schreibt, löscht alles Fremde.**
 - 2026-10-12 · 🧾 **Versandsatz gegen die Kasse: «Versand CHF 7» stimmte für 45–49,99 CHF nicht (Kasse gratis ab 45, Zusage ab 50) → Wächter `versand_band_wache.py`, 2 Produkte korrigiert. Gegenprobe: Bewertungs-Import hat Lieferanten-Kommentare mit Platzhalter-Namen als Shop-Bewertungen veröffentlicht → Stopp-Datei `dropship/_bewertungen_stopp.txt`, Betreiber entscheidet. Journal 12.10. 04:50.**
 - 2026-10-12 · 🖼️ **Google-Bilder: Bildtausch wirkt (getauscht 76–91 % frei vs. Vergleich 46 %); Waffenzubehör nie tauschen (Holster-Regel, Kanarien 8/0); `tools/bild_text_weg.py` entfernt Werbetext nur auf gleichmässigem Grund (Selbsttest 4/4, Balken-Regel), 1 von 24 sicher; «Unable to show image» = nicht bei uns (40/40 HTTP 200)** → `dropship/GOOGLE-BILDER-2026-10-12.md`
 - 2026-10-12 · 🧹 **Auftrag 1–8: Taschen-Vorschau auf das Printful-Blank (Farbe passt nur so), Shirt-Preise nach Formel (nur 9 Varianten, Repricer würde senken), Liechtenstein-Satz «in der Schweiz» in 3'720 Texten (Theme gesperrt → Liste), Verkauf ohne EK gesetzt. Lehren: pkill-Selbsttod, InventoryItemInput, Monitor 5-min-Limit, Container-Neustart beendet Läufe, Live-Schreiber = Hook-Lücke → `dropship/AUFTRAG-1-8-2026-10-12.md`, Journal 12.10. «Auftrag 1–8».**
