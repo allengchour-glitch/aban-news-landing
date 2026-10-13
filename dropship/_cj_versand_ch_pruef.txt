@@ -7886,3 +7886,4 @@ hd-wifi-spiegelreflexkamera-mit-flip-screen-398016	1496726769825353728	7	13.69	o
 powerbank-mit-hoher-kapazitat-13532a	48982845-01E4-46D5-8CAA-E77244588912	0	-	KEINE CH-Option → DRAFT	landeseite
 tragbarer-auto-luftbefeuchter-x3-56a667	1AC5A55E-19DD-414E-BD6D-CFDD215B4C1A	7	7.80	ok	landeseite
 winterkleidung-fur-paare-ca24d2	050E3896-69A1-4FE0-BDED-C52C3DC661E7	16	9.07	ok	landeseite
+bronzing-bikini-eb01e4	0390181E-9A33-40C0-A7D0-79CE47DA9665	16	6.65	ok	landeseite
