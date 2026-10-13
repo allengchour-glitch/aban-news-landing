@@ -9,7 +9,7 @@ Für jeden Markt mit Grundbetrag B = Kontowert × Anteil × Gewicht:
   spot_ziel  = (max(z,0) + (1−|z|)/2) × B / Kurs                    (Coins)
   perp_ziel  = −((1−|z|)/2 + max(−z,0)) × B / Kurs                  (Kontrakte, negativ = short)
   pfand_ziel = (1−|z|)/2 × B + max(−z,0) × B                  (USDT im Futures-Konto, Hebel ≤ 1 auf den Richtungsteil)
-Netto-Richtung = spot_ziel + perp_ziel = z × B / Kurs (genau wie der Pilot). Kapitalbedarf = B (nichts geliehen).
+Netto-Richtung = spot_ziel + perp_ziel ≈ z × B / Kurs (Short 2 % kleiner). Kapitalbedarf ≤ B (nichts geliehen).
 Reihenfolge im Plan: erst verkleinern (Perp reduceOnly, Spot verkaufen), dann Geld verschieben, dann vergrössern.
 Beim Ernte-Abbau zuerst den Short zurückkaufen: scheitert danach der Spot-Verkauf, bleibt man begrenzt long (Stop greift),
 nie ungedeckt short. Der Pfand-Puffer (10 %) ist in die Basis eingerechnet: Kapitalbedarf ≤ Basis.
@@ -22,9 +22,11 @@ import math
 
 KAPITAL_FAKTOR = 2.0     # Funding-Ernte: Volumen × 2 = Kapital (Spot voll + 100 % Pfand → Short mit Hebel 1)
 PFAND_ERNTE = 1.0
+PUFFER_ERNTE = 0.10      # Ernte-Pfand: 10 % mehr als das Volumen (Kurs steigt → Short verliert, bevor neu verteilt wird)
+PUFFER_SHORT = 0.02      # Richtungs-Short: 2 % Reserve für Gebühren (Hebel 1 braucht das volle Volumen als Pfand)
+PFAND_PUFFER = PUFFER_ERNTE  # alter Name (Rückwärtskompatibilität)
 BAND = 0.25              # Richtungsteil: erst handeln, wenn |Ist − Ziel| > 0,25 (wie Pilot)
 BAND_ERNTE = 0.10        # Ernte-Teil: erst anpassen, wenn er um > 10 % des Grundbetrags abweicht
-PFAND_PUFFER = 0.10      # 10 % mehr Pfand als nötig im Futures-Konto
 MIN_SPOT, MIN_PERP = 10.0, 20.0
 
 
@@ -33,36 +35,38 @@ def runde(x, schritt):
 
 
 def ziele(z, basis, kurs):
-    """→ (spot_ziel Coins, perp_ziel Kontrakte, pfand_ziel USDT, richtung_spot Coins, richtung_perp Kontrakte)."""
+    """→ (spot_ziel Coins, perp_ziel Kontrakte, pfand_ziel USDT, richtung_spot Coins, richtung_perp Kontrakte).
+    Richtung in VOLLER Grösse wie im Backtest (Short um die 2-%-Gebührenreserve kleiner); die Ernte bekommt, was übrig bleibt:
+    Kapitalbedarf = lang + kurz × 1,02 + Ernte × (1 + 1,10) = Basis."""
     z = max(-1.0, min(1.0, z))
-    ernte = (1 - abs(z)) / KAPITAL_FAKTOR * basis          # USDT-Volumen der Ernte
     lang = max(z, 0.0) * basis
-    kurz = max(-z, 0.0) * basis
-    return ((lang + ernte) / kurs, -(ernte + kurz) / kurs, ernte * PFAND_ERNTE + kurz, lang / kurs, -kurz / kurs)
+    kurz = max(-z, 0.0) * basis / (1 + PUFFER_SHORT)
+    ernte = (1 - abs(z)) * basis / (1 + PFAND_ERNTE * (1 + PUFFER_ERNTE))
+    return ((lang + ernte) / kurs, -(ernte + kurz) / kurs, ernte * PFAND_ERNTE * (1 + PUFFER_ERNTE) + kurz * (1 + PUFFER_SHORT),
+            lang / kurs, -kurz / kurs)
 
 
 def plane(markt, z, basis, kurs, spot_ist, perp_ist, regeln, max_auftrag=1000.0):
     """Ein Markt. regeln: {"spot_step", "perp_step", "spot_min", "perp_min"} (Mindestvolumen USDT).
-    → {"schritte": [(konto, seite, menge, reduce_only)], "pfand": USDT, "stop_spot": Coins, "stop_perp": Kontrakte, "info": …}"""
+    → {"schritte": [(konto, seite, menge, reduce_only)], "pfand": USDT, "ernte": Coins, "stop_spot": Coins, "stop_perp": Kontrakte}"""
     if basis <= 0 or kurs <= 0:
-        return {"schritte": [], "pfand": 0.0, "stop_spot": 0.0, "stop_perp": 0.0, "info": "kein Kapital/Kurs"}
-    # Pfand-Puffer in die Basis einrechnen: Spot + Pfand × (1 + Puffer) darf das verwaltete Geld nie übersteigen
-    basis = basis / (1 + PFAND_PUFFER)
-    s_ziel, p_ziel, _, r_spot, r_perp = ziele(z, basis, kurs)
-    # Ernte-Teil auf den gröberen Mengenschritt runden, damit Spot und Short sich GENAU aufheben (marktneutral)
+        return {"schritte": [], "pfand": 0.0, "ernte": 0.0, "stop_spot": 0.0, "stop_perp": 0.0, "info": "kein Kapital/Kurs"}
+    z = max(-1.0, min(1.0, z))
+    _, _, _, r_spot, r_perp = ziele(z, basis, kurs)
+    r_spot, r_perp = runde(r_spot, regeln["spot_step"]), -runde(abs(r_perp), regeln["perp_step"])
+    # Ernte auf den gröberen Mengenschritt runden, damit Spot und Short sich GENAU aufheben (marktneutral)
     schritt_ernte = max(regeln["spot_step"], regeln["perp_step"])
-    ernte_menge = runde((1 - abs(max(-1.0, min(1.0, z)))) / KAPITAL_FAKTOR * basis / kurs, schritt_ernte)
+    ernte_menge = runde((1 - abs(z)) * basis / (1 + PFAND_ERNTE * (1 + PUFFER_ERNTE)) / kurs, schritt_ernte)
     # Ernte nur, wenn BEIDE Seiten über dem Binance-Minimum liegen — sonst entstünde ein ungesicherter Spot-Long
     if ernte_menge * kurs < max(MIN_SPOT, MIN_PERP, regeln.get("spot_min", 0), regeln.get("perp_min", 0)):
         ernte_menge = 0.0
     s_ziel, p_ziel = r_spot + ernte_menge, r_perp - ernte_menge
-    pfand = ernte_menge * kurs * PFAND_ERNTE + abs(r_perp) * kurs  # Pfand nur für Ernte, die wirklich läuft, + Short-Richtung
-    # Band: aktuelle Richtung = Spot + Perp (netto) in Einheiten von B; Ernte = −Perp − Richtung-Short-Anteil
+    pfand = ernte_menge * kurs * PFAND_ERNTE * (1 + PUFFER_ERNTE) + abs(r_perp) * kurs * (1 + PUFFER_SHORT)
+    # Band: Ist-Richtung (Spot + Perp, netto) und Ist-Ernte (abgesicherter Teil) in Einheiten der Basis
     netto_ist = (spot_ist + perp_ist) * kurs / basis
-    ernte_ist = (spot_ist * kurs / basis) - max(netto_ist, 0.0)
-    ernte_soll = (1 - abs(z)) / KAPITAL_FAKTOR
-    richtung_ok = abs(netto_ist - z) <= BAND and (netto_ist > 0) == (z > 0) and not (z == 0 and abs(netto_ist) > 1e-9)
-    ernte_ok = abs(ernte_ist - ernte_soll) <= BAND_ERNTE
+    ernte_ist_menge = min(max(spot_ist, 0.0), max(-perp_ist, 0.0))
+    richtung_ok = abs(netto_ist - z) <= BAND and (netto_ist > 0) == (z > 0) and not (z == 0 and abs(netto_ist) * basis > max(MIN_SPOT, regeln.get("spot_min", 0)))
+    ernte_ok = abs(ernte_ist_menge - ernte_menge) * kurs <= BAND_ERNTE * basis
     if richtung_ok and ernte_ok and (spot_ist or perp_ist):
         s_ziel, p_ziel = spot_ist, perp_ist  # im Band: nichts tun
     schritte = []
@@ -72,27 +76,36 @@ def plane(markt, z, basis, kurs, spot_ist, perp_ist, regeln, max_auftrag=1000.0)
 
     def menge(x, schritt):
         return round(runde(min(abs(x), deckel), schritt), 10)
-    # 1) verkleinern
-    if p_ziel > perp_ist + 1e-12:  # Short verkleinern (Perp kaufen, reduceOnly)
+    # 1) verkleinern — reduceOnly darf unter dem Binance-Minimum liegen (Binance erlaubt das für reduceOnly)
+    if p_ziel > perp_ist + 1e-12:
         m = menge(min(p_ziel - perp_ist, -perp_ist), regeln["perp_step"])
-        if m > 0 and (m * kurs >= mindest_p or abs(m - abs(perp_ist)) < regeln["perp_step"]):
+        if m > 0:
             schritte.append(("perp", "BUY", m, True))
-    if s_ziel < spot_ist - 1e-12:  # Spot verkaufen
+    if s_ziel < spot_ist - 1e-12:
         m = menge(spot_ist - s_ziel, regeln["spot_step"])
         if m > 0 and m * kurs >= mindest_s:
             schritte.append(("spot", "SELL", m, False))
-    # 2) vergrössern (das Verschieben des Geldes plant ausfuehren() zwischen 1 und 2)
+    # 2) vergrössern. Der Short-Teil zuerst rechnen: was davon NICHT geht (Minimum, Deckel, Rundung), darf auch nicht
+    #    als Ernte-Spot gekauft werden — sonst ungesicherter Long.
+    m_p = 0.0
+    if p_ziel < perp_ist - 1e-12:
+        m_p = menge(perp_ist - p_ziel, regeln["perp_step"])
+        if not (m_p > 0 and m_p * kurs >= mindest_p):
+            m_p = 0.0
     if s_ziel > spot_ist + 1e-12:
-        m = menge(s_ziel - spot_ist, regeln["spot_step"])
+        gewuenscht = s_ziel - spot_ist
+        d_e = max(0.0, ernte_menge - ernte_ist_menge)              # gewünschter Ernte-Zuwachs
+        d_p = max(0.0, perp_ist - p_ziel)                          # gewünschter Short-Zuwachs (Richtung + Ernte)
+        ernte_erlaubt = max(0.0, d_e - (d_p - m_p))                # Ernte-Spot nur so weit, wie der Short mitkommt
+        richtung_dazu = max(0.0, gewuenscht - d_e)
+        m = menge(min(gewuenscht, richtung_dazu + ernte_erlaubt), regeln["spot_step"])
         if m > 0 and m * kurs >= mindest_s:
             schritte.append(("spot", "BUY", m, False))
-    if p_ziel < perp_ist - 1e-12:  # Short vergrössern
-        m = menge(perp_ist - p_ziel, regeln["perp_step"])
-        if m > 0 and m * kurs >= mindest_p:
-            schritte.append(("perp", "SELL", m, False))
-    return {"schritte": schritte, "pfand": pfand * (1 + PFAND_PUFFER), "ernte": ernte_menge,
-            "stop_spot": runde(r_spot, regeln["spot_step"]), "stop_perp": runde(abs(r_perp), regeln["perp_step"]),
-            "info": {"z": z, "spot_ziel": s_ziel, "perp_ziel": p_ziel, "netto_ist": netto_ist, "ernte_ist": ernte_ist}}
+    if m_p > 0:
+        schritte.append(("perp", "SELL", m_p, False))
+    return {"schritte": schritte, "pfand": pfand, "ernte": ernte_menge,
+            "stop_spot": r_spot, "stop_perp": abs(r_perp),
+            "info": {"z": z, "spot_ziel": s_ziel, "perp_ziel": p_ziel, "netto_ist": netto_ist, "ernte_ist": ernte_ist_menge}}
 
 
 def verschieben(pfand_soll, futures_saldo, futures_abziehbar, spot_usdt_frei, spot_bedarf):

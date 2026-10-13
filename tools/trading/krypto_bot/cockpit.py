@@ -46,7 +46,7 @@ HILFE = ("Befehle: /profit Gewinn und Positionen · /status Pilot heute · /kont
          "/stop Not-Aus (Positionen schliessen) · /weiter Not-Aus aufheben")
 
 
-UMGEBUNG_PRAEFIXE = ("BINANCE_", "KI_BOT_", "KRYPTO_", "CALLS_", "TELEGRAM_", "ANTHROPIC_", "ETH_", "ALPACA_")
+UMGEBUNG_PRAEFIXE = ("BINANCE_", "KI_BOT_", "KRYPTO_", "CALLS_", "TELEGRAM_", "ANTHROPIC_", "ETH_", "ALPACA_", "PILOT2_")
 
 
 def _registry_lesen():
@@ -119,13 +119,13 @@ def notaus_an(schliessen=True, ausfuehren=None):
         alles_zu = False  # ein anderer Lauf könnte gleichzeitig noch etwas aufgebaut haben → nicht «alles zu» melden
         vorab.append("⚠️ Ein anderer Lauf war noch aktiv — Not-Aus trotzdem ausgeführt. In 5 Minuten nochmals «Not-Aus» drücken.")
     try:
+        env = umgebung()  # aktuelle Schalter + Schlüssel (auch PILOT2_*) aus der Einstellungsdatei, nicht die beim Start
         if ausfuehren is None:
             import broker_futures as BF
-            env = umgebung()
 
             def ausfuehren(e, symbol, gewicht):
                 return BF.ausfuehren(e, env=env, symbol=symbol, gewicht=gewicht)
-        zu, zeilen = PI.schliessen_alle(ausfuehren)
+        zu, zeilen = PI.schliessen_alle(ausfuehren, env=env)
         alles_zu = alles_zu and zu
     finally:
         if gesperrt is not None:
@@ -169,7 +169,8 @@ AKTIONEN = {
     "risiko_2": ([], 10, "Risiko-Stufe 2×"),
     "auto_aus": ([], 10, "Auto-Handel aus"),
 }
-SELBSTTESTS = ["test_pilot.py", "test_sammler.py", "test_infos.py", "test_binance.py", "test_profit.py", "test_calls.py"]
+SELBSTTESTS = ["test_pilot.py", "test_sammler.py", "test_infos.py", "test_binance.py", "test_profit.py", "test_calls.py",
+              "test_pilot2_plan.py", "test_pilot2_live.py"]
 PROTOKOLL = deque(maxlen=40)
 _LAUFEND, _SPERRE = {}, threading.Lock()  # Name → Startzeit
 
