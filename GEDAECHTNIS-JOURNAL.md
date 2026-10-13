@@ -65,6 +65,10 @@
   Fremdmarke). Fallen: Bestseller-Sortierung der Kostüm-Kollektion zeigt oben Perücken/Handschuhe (Tiefe 1'500 nötig);
   «Sportshirt» enthält «tshirt»; fünf Hexen nebeneinander → Vielfalt-Stämme ≤ 2. → `dropship/SUCH-BOOSTS-2026-10-12.md`
 
+- **Nachtrag 13.10. 01:20:** Metafeld allein indexiert NICHT neu — erst der Tag `such-boost` (echte Produktänderung) machte die
+  Boosts sichtbar: 45 min später 8/8 bei halloween/kostüm/geschenk/wichteln/staubsauger/tshirt, Ampel 0 unter 6/8. Messung gegen den
+  Stand (nicht neu rechnen — Jury wählt anders), 3 Abruf-Versuche, Cache-Brecher `_lx`.
+
 ## 📏 Masstabellen des Modells, Kassen-Lieferdatum, Werbe-Kontingent (2026-10-12 abends, «weiter verbessern alles mögliche»)
 - Masstabellen: CJ-Tabellenbilder per Workflow (10 Vision-Agenten) gefunden und DOPPELT gelesen; `masstabelle_schreiben.py` schreibt
   nur bei «hoch»/«hoch», gleicher Bedeutung der Spalten (Rocklänge = Länge; Falle: «Länge (Bustier)» enthält «bust»), ≤ 1 cm Abweichung,

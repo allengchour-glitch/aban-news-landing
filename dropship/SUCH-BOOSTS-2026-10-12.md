@@ -77,6 +77,26 @@
   - «kostüm» noch 0/8, weil der Index noch nachzieht.
 - **Lehre:** Der Such-Index übernimmt Metafeld-Änderungen erst nach mehr als 30 Minuten. Der Aufseher misst deshalb 60 Minuten nach dem Schreiben (vorher 15). Wer Vetos setzt, sieht die alte Wahl noch eine Weile in der Suche.
 
+## Durchbruch: Metafeld allein indexiert nicht neu (13.10. 00:15–01:20 UTC)
+
+- **Messung 90 min nach dem Schreiben (23:40 UTC):** Oben standen nur geboostete Produkte, die zusätzlich anders geändert worden waren, etwa die von der Geschenk-Welt getaggten («geschenk für ihn» 6/8). Kostüme ohne andere Änderung standen bei 0/8. Per Veto entfernte Produkte (Akku-Hülle) blieben auf Platz 1.
+- **Schluss:** Ein reines `metafieldsSet` stösst die Such-Indexierung des Produkts nicht an. Die App übernimmt den Boost zwar, die Suche sieht ihn aber erst nach der nächsten echten Produktänderung.
+- **Fix in `such_boost.py`:** Jedes geboostete Produkt bekommt den Tag `such-boost`. Fällt es aus dem Boost, wird der Tag entfernt; nie markierte Produkte bekommen Setzen + Entfernen als Anstoss. 74 Produkte plus 34 alte Entfernungen nachgestossen.
+- **Messung 45 min nach dem Anstoss:**
+  - «halloween» 8/8 (alles Kostüme ab Schweizer Lager), «halloween kostüm» 8/8
+  - «kostüm» 8/8, «kostüme» 8/8
+  - «geschenk für mann/ihn» 8/8, «geschenk für frau/sie» 7/8
+  - «wichteln» 8/8, «wichtelgeschenk» 8/8
+  - «powerbank» 7/8
+  - «staubsauger» 8/8, «handstaubsauger» 8/8
+  - «tshirt männer» 8/8
+  - «handwärmer» 6/6, «kerze» 4/4
+  - **Ampel: 0 Begriffe unter 6/8.**
+- **Zwei Messfehler behoben:**
+  - Die Messung rechnete die Auswahl neu, eine neue Jury-Runde wählte bei «powerbank» andere Produkte (Schein-0/8). Sie misst jetzt gegen die Stand-Datei, also gegen das tatsächlich Gesetzte.
+  - Eine leere Seite war ein Abruf-Aussetzer. Jetzt gibt es 3 Versuche.
+- **Allgemeine Lehre:** Wer per Metafeld etwas an der Storefront ändern will (Suche, Filter), muss prüfen, ob die Änderung ohne Produkt-Update überhaupt ankommt. Gemessen wird an der Live-Seite mit Cache-Brecher.
+
 ## Offen / Risiken
 
 - **Treffer-Logik:** Nicht dokumentiert ist, ob ein Boost nur bei genau gleicher Suchanfrage greift (VERMUTUNG). Deshalb stehen die Varianten ausdrücklich in der Liste (kostüm/kostüme, tshirt männer/t-shirt männer …). Die Messung nach 15 Minuten zeigt es.
