@@ -15,6 +15,11 @@ Neue Tarife/Zonen ohne Transitzeit fallen damit am nächsten Tag auf.
 
     python3 automation/versand_transit_wache.py           # Ampel-Zeile, schreibt nichts
     python3 automation/versand_transit_wache.py --scharf  # fehlende/abweichende Transitzeit setzen (Preis unverändert)
+    python3 automation/versand_transit_wache.py --selbsttest-seite PRODUCT.json CART.json   # Seite/Kasse offline
+
+13.10.2026 (dropship/DRUCK-PROFIL-2026-10-13.md): zweite Zeile «SEITE≠KASSE» — je Lieferzeit-Tier (CH-Lager, EU-Lager, Druck,
+Asien; mit/ohne Profil-Zeichen) das Fenster, das Produktseite und Warenkorb heute rechnen, gegen das Fenster der Kasse
+(Bearbeitung + Transit «Standard» CH des Profils). Stand: dropship/_seite_kasse_fenster.json. Schreibt nichts im Shop.
 """
 import json
 import os
@@ -71,6 +76,251 @@ def zonen_schluessel(zone):
         if k in codes:
             return k
     return "REST"
+
+# ---------------------------------------------------------------- Seite ≠ Kasse (13.10.2026, dropship/DRUCK-PROFIL-2026-10-13.md)
+# Produktseite (templates/product.json, Block lux_delivery) und Warenkorb (templates/cart.json, Block lux_cart_trust) rechnen das
+# Lieferdatum im Theme selbst; die Kasse rechnet Bearbeitung (deliveryPromiseSettings) + Transit des Profil-Tarifs «Standard» CH.
+# Klasse 11 der Kauf-Strecke: Druck auf Bestellung zeigte Seite 22.10.–2.11. (Kalendertage +9/+19), Kasse 28.10.–11.11.
+# Diese Prüfung rechnet je Lieferzeit-Tier (Zweig im Theme, mit/ohne Profil-Zeichen) beide Fenster für HEUTE und meldet jede
+# Abweichung. Kasse = dieselbe Werktag-Rechnung, die das Theme seit 13.10. nutzt (geeicht an 3 Kassen-Messungen; 13.10. 21:30
+# nachgemessen: Druck-Profil Transit 6–13 → Kasse «Fr., 23. Okt–Di., 3. Nov», General 9–19 → «Mi., 28. Okt–Mi., 11. Nov»).
+SK_THEME_DATEIEN = ("templates/product.json", "templates/cart.json")
+SK_ZEICHEN = ("profil-ch-lager", "druck_profil_ids", "profil-druck", "lx_stufe", "lux_druck_lang", "lux_ohne_marke")
+# Tier → (Anker im product.json-Zweig, Anker im cart.json-Zweig, Profil MIT Zeichen; ohne Zeichen gilt das General profile)
+SK_TIERS = {
+    "CH-Lager": ("contains 'fortura'", "{%- when 0 -%}", "CH-Lager"),
+    "EU-Lager": ("contains 'eu-lager'", "{%- when 1 -%}", None),
+    "Druck": ("contains 'printful_personalized_product'", "{%- when 2 -%}", "Druck auf Bestellung"),
+    "Asien": (None, None, None),
+}
+SK_RANG = {"CH-Lager": 0, "EU-Lager": 1, "Druck": 2, "Asien": 3}
+RE_PAAR = re.compile(r"assign lx_tmin = (\d+) -%\}\{%- assign lx_tmax = (\d+)")
+RE_KAL = re.compile(r"assign d_from = now_s \| plus: (\d+) -%\}\s*\{%- assign d_to = now_s \| plus: (\d+)")
+RE_VON_T = re.compile(r"assign lx_von = (\d+) \| plus: lx_tmin")
+
+
+def _liquid_strings(roh):
+    k = roh.find("{", roh.find("*/") + 2 if roh.lstrip().startswith("/*") else 0)
+    aus = []
+
+    def lauf(x):
+        if isinstance(x, dict):
+            for v in x.values():
+                lauf(v)
+        elif isinstance(x, list):
+            for v in x:
+                lauf(v)
+        elif isinstance(x, str) and "LUX-KASSENDATUM" in x:
+            aus.append(x)
+    lauf(json.loads(roh[k:]))
+    return aus
+
+
+def _zweig(block, anker, ende_re):
+    i = block.find(anker)
+    if i < 0:
+        return None
+    m = re.compile(ende_re).search(block, i + len(anker))
+    return block[i: m.start() if m else len(block)]
+
+
+def werktag_fenster(jetzt, bearb, tmin, tmax):
+    """Wie Theme/Kasse: Werktage Mo–Fr, Annahmeschluss 12 Uhr, Bearbeitung + Transit → (datum_von, datum_bis)."""
+    import datetime as _dt
+    von = bearb + tmin + (1 if (jetzt.hour >= 12 or jetzt.weekday() >= 5) else 0)
+    bis = von + tmax - tmin
+    t, n, d_von = jetzt.date(), 0, None
+    for _ in range(60):
+        t += _dt.timedelta(days=1)
+        if t.weekday() < 5:
+            n += 1
+            if n == von:
+                d_von = t
+            if n == bis:
+                return d_von, t
+    return d_von, None
+
+
+def kalender_fenster(jetzt, s_von, s_bis):
+    import datetime as _dt
+
+    def schieb(d):
+        return d + _dt.timedelta(days=2 if d.weekday() == 5 else 1 if d.weekday() == 6 else 0)
+    return schieb((jetzt + _dt.timedelta(seconds=s_von)).date()), schieb((jetzt + _dt.timedelta(seconds=s_bis)).date())
+
+
+def seite_fenster(texte, jetzt):
+    """{(datei, tier, 'mit'|'ohne'): (von, bis, art)} aus den Live-Dateien. Befunde für Unlesbares als Liste."""
+    aus, bef = {}, []
+    for datei in SK_THEME_DATEIEN:
+        roh = texte.get(datei)
+        if roh is None:
+            bef.append(f"{datei}: nicht lesbar")
+            continue
+        try:
+            bl = [b for b in _liquid_strings(roh) if ("Druck auf Bestellung" in b)]
+        except Exception as e:  # noqa: BLE001
+            bef.append(f"{datei}: JSON unlesbar ({type(e).__name__})")
+            continue
+        if len(bl) != 1:
+            bef.append(f"{datei}: Lieferdatum-Block {len(bl)}× (erwartet 1)")
+            continue
+        b = bl[0]
+        vm = RE_VON_T.findall(b)
+        bearb_theme = int(vm[0]) if vm else 0
+        werktag_raenge = [0, 3]
+        rm = re.search(r"if lux_rang == [^%]*", b)
+        if datei.endswith("cart.json") and rm:
+            werktag_raenge = [int(x) for x in re.findall(r"lux_rang == (\d)", rm.group(0))]
+        for tier, (a_prod, a_cart, _) in SK_TIERS.items():
+            if datei.endswith("product.json"):
+                if a_prod:
+                    z = _zweig(b, a_prod, r"\n\{%- (?:elsif|else|endif)")
+                else:
+                    i = b.find("Direktversand vom Hersteller")
+                    z = b[max(0, b.rfind("{%- else -%}", 0, i)): i] if i > 0 else None
+                werktag = True
+            else:
+                # Zweige des case beginnen je eine Zeile («    {%- when N -%}», «    {%- else -%}…»); das innere else im
+                # CH-Lager-Zweig steht mitten in der Zeile und beendet nichts.
+                if tier != "Asien":
+                    z = _zweig(b, a_cart, r"\n\s*\{%- (?:when|else|endcase)")
+                else:
+                    i = b.find("lux_lager = 'Direktversand")
+                    z = b[b.rfind("\n", 0, i): i] if i > 0 else None
+                werktag = SK_RANG[tier] in werktag_raenge
+            if not z:
+                bef.append(f"{datei}/{tier}: Zweig nicht gefunden")
+                continue
+            paare = [tuple(map(int, x)) for x in RE_PAAR.findall(z)]
+            kal = RE_KAL.search(z)
+            if werktag and paare:
+                mit, ohne = min(paare, key=lambda x: x[1]), max(paare, key=lambda x: x[1])
+                for art, (a, e) in (("mit", mit), ("ohne", ohne)):
+                    v, bi = werktag_fenster(jetzt, bearb_theme, a, e)
+                    aus[(datei, tier, art)] = (v, bi, f"Werktage {a}–{e} + Bearbeitung {bearb_theme}")
+            elif kal:
+                v, bi = kalender_fenster(jetzt, int(kal.group(1)), int(kal.group(2)))
+                for art in ("mit", "ohne"):
+                    aus[(datei, tier, art)] = (v, bi, f"Kalendertage {int(kal.group(1)) // 86400}–{int(kal.group(2)) // 86400}")
+            else:
+                bef.append(f"{datei}/{tier}: Rechnung nicht erkannt")
+    return aus, bef
+
+
+def seite_kasse(texte, jetzt, bearb, transit):
+    """transit = {Profilname: (min, max) Transit-Tage Tarif «Standard» CH}. → (zeilen, befunde)."""
+    fenster, bef = seite_fenster(texte, jetzt)
+    zeilen = []
+    for (datei, tier, art), (v, bi, wie) in sorted(fenster.items()):
+        prof = SK_TIERS[tier][2] if art == "mit" and SK_TIERS[tier][2] else "General profile"
+        if prof not in transit:
+            bef.append(f"{tier} {art} Zeichen: Profil «{prof}» ohne Transit «Standard» CH")
+            continue
+        kv, kb = werktag_fenster(jetzt, bearb, *transit[prof])
+        gleich = (v, bi) == (kv, kb)
+        zeilen.append({"datei": datei, "tier": tier, "zeichen": art, "seite": f"{v:%d.%m.}–{bi:%d.%m.}", "rechnung": wie,
+                       "kasse": f"{kv:%d.%m.}–{kb:%d.%m.}", "profil": prof, "gleich": gleich})
+        if not gleich:
+            kurz = "Seite" if datei.endswith("product.json") else "Korb"
+            bef.append(f"{tier} {art} Zeichen: {kurz} {v:%d.%m.}–{bi:%d.%m.} · Kasse {kv:%d.%m.}–{kb:%d.%m.}")
+    return zeilen, bef
+
+
+def seite_kasse_live(bearb, transit):
+    import datetime as _dt
+    from zoneinfo import ZoneInfo
+    r = gql('query($f:[String!]!){themes(roles:[MAIN],first:1){nodes{files(filenames:$f,first:5){nodes{filename '
+            'body{... on OnlineStoreThemeFileBodyText{content}}}}}}}', {"f": list(SK_THEME_DATEIEN)}, ver="2026-01")
+    texte = {n["filename"]: n["body"]["content"] for n in r["themes"]["nodes"][0]["files"]["nodes"]}
+    zeilen, bef = seite_kasse(texte, _dt.datetime.now(ZoneInfo("Europe/Zurich")), bearb, transit)
+    try:
+        json.dump({"stand": _dt.datetime.utcnow().strftime("%Y-%m-%dT%H:%MZ"), "zeilen": zeilen, "befunde": bef},
+                  open(os.path.join(REPO, "dropship", "_seite_kasse_fenster.json"), "w", encoding="utf-8"),
+                  ensure_ascii=False, indent=1, default=str)
+    except Exception:  # noqa: BLE001
+        pass
+    return zeilen, bef
+
+
+def standard_transit(profile):
+    """{Profilname: (min, max)} Transit-Tage des aktiven Tarifs «Standard» in der CH-Zone."""
+    aus = {}
+    for p in profile:
+        for g in p["profileLocationGroups"]:
+            for zn in g["locationGroupZones"]["nodes"]:
+                if zonen_schluessel(zn["zone"]) != "CH":
+                    continue
+                for m in zn["methodDefinitions"]["nodes"]:
+                    if m["active"] and m["name"] == "Standard":
+                        for rg in m["rateGroups"]["nodes"]:
+                            for r in rg["rateProviders"]["nodes"]:
+                                if r.get("minTransitTime") and r.get("maxTransitTime"):
+                                    aus[p["name"]] = (r["minTransitTime"] // TAG, r["maxTransitTime"] // TAG)
+    return aus
+
+
+# Liquid-Patch für Druck auf Bestellung (13.10.2026, Bericht DRUCK-PROFIL): (alt, neu) roh wie in der Theme-JSON (\n escaped).
+# Zeichen = Shop-Metafeld luxe.druck_profil_ids «,id,id,» (druck_profil.py). Ohne Zeichen: 9–19 wie das General profile.
+PRODUCT_PATCH = [("{%- assign d_from = now_s | plus: 777600 -%}\\n  {%- assign d_to = now_s | plus: 1641600 -%}",
+                  "{%- assign lx_druck_key = ',' | append: closest.product.id | append: ',' -%}{%- if shop.metafields.luxe.druck_profil_ids.value"
+                  " contains lx_druck_key -%}{%- assign lx_tmin = 6 -%}{%- assign lx_tmax = 13 -%}{%- else -%}{%- assign lx_tmin = 9 -%}"
+                  "{%- assign lx_tmax = 19 -%}{%- endif -%}")]
+CART_PATCH = [
+    ("{%- assign lux_ohne_marke = false -%}",
+     "{%- assign lux_ohne_marke = false -%}{%- assign lux_druck_lang = false -%}"
+     "{%- assign lux_druck_ids = shop.metafields.luxe.druck_profil_ids.value | default: ',' -%}"),
+    ("{%- assign r = 2 -%}",
+     "{%- assign r = 2 -%}{%- assign lx_druck_key = ',' | append: item.product_id | append: ',' -%}"
+     "{%- unless lux_druck_ids contains lx_druck_key -%}{%- assign lux_druck_lang = true -%}{%- endunless -%}"),
+    ("{%- when 2 -%}{%- assign d_from = now_s | plus: 777600 -%}{%- assign d_to = now_s | plus: 1641600 -%}",
+     "{%- when 2 -%}{%- if lux_druck_lang or lux_ohne_marke -%}{%- assign lx_tmin = 9 -%}{%- assign lx_tmax = 19 -%}{%- else -%}"
+     "{%- assign lx_tmin = 6 -%}{%- assign lx_tmax = 13 -%}{%- endif -%}"),
+    ("{%- if lux_rang == 0 or lux_rang == 3 -%}", "{%- if lux_rang == 0 or lux_rang == 2 or lux_rang == 3 -%}"),
+]
+
+
+def selbsttest_seite_kasse(pfad_produkt, pfad_korb):
+    """Offline: Live-Kopien von 13.10. (Druck = Kalendertage) → Druck-Befund; mit Patch (Zeichen) → Druck gleich."""
+    import datetime as _dt
+    from zoneinfo import ZoneInfo
+    t = {"templates/product.json": open(pfad_produkt, encoding="utf-8").read(),
+         "templates/cart.json": open(pfad_korb, encoding="utf-8").read()}
+    jetzt = _dt.datetime(2026, 10, 13, 21, 30, tzinfo=ZoneInfo("Europe/Zurich"))
+    tr = {"General profile": (9, 19), "CH-Lager": (1, 2), "Druck auf Bestellung": (6, 13)}
+    fehler = 0
+
+    def pruef(name, ist, soll):
+        nonlocal fehler
+        ok = ist == soll
+        fehler += not ok
+        print(f"  {'✓' if ok else '✗'} {name}: {ist}")
+    z, b = seite_kasse(t, jetzt, 1, tr)
+    d = {(x["datei"][10:13], x["tier"], x["zeichen"]): x for x in z}
+    pruef("Druck Seite vorher 22.10.–02.11.", d[("pro", "Druck", "ohne")]["seite"], "22.10.–02.11.")
+    pruef("Druck Kasse ohne Zeichen 28.10.–11.11.", d[("pro", "Druck", "ohne")]["kasse"], "28.10.–11.11.")
+    pruef("Druck Kasse mit Zeichen 23.10.–03.11.", d[("pro", "Druck", "mit")]["kasse"], "23.10.–03.11.")
+    pruef("Asien Seite = Kasse", d[("pro", "Asien", "ohne")]["gleich"], True)
+    pruef("CH-Lager mit Zeichen gleich", d[("pro", "CH-Lager", "mit")]["gleich"], True)
+    pruef("Korb Druck meldet", any(x.startswith("Druck") and "Korb" in x for x in b), True)
+    p2 = t["templates/product.json"]
+    for a, n in PRODUCT_PATCH:
+        p2 = p2.replace(a, n)
+    pruef("Patch greift (Testtext ersetzt)", p2 != t["templates/product.json"], True)
+    z2, b2 = seite_kasse(dict(t, **{"templates/product.json": p2}), jetzt, 1, tr)
+    d2 = {(x["datei"][10:13], x["tier"], x["zeichen"]): x for x in z2}
+    pruef("nach Patch: Druck mit Zeichen gleich", d2[("pro", "Druck", "mit")]["gleich"], True)
+    pruef("nach Patch: Druck ohne Zeichen gleich", d2[("pro", "Druck", "ohne")]["gleich"], True)
+    c2 = t["templates/cart.json"]
+    for a, n in CART_PATCH:
+        c2 = c2.replace(a, n)
+    pruef("Korb-Patch greift (4 Stellen)", sum(c2.count(n) for _, n in CART_PATCH) >= 4, True)
+    z3, b3 = seite_kasse({"templates/product.json": p2, "templates/cart.json": c2}, jetzt, 1, tr)
+    d3 = {(x["datei"][10:13], x["tier"], x["zeichen"]): x for x in z3}
+    pruef("nach Korb-Patch: Druck mit Zeichen gleich", d3[("car", "Druck", "mit")]["gleich"], True)
+    pruef("nach Korb-Patch: Druck ohne Zeichen gleich", d3[("car", "Druck", "ohne")]["gleich"], True)
+    print(f"SELBSTTEST SEITE/KASSE {'OK' if not fehler else f'{fehler} FEHLER'}")
+    return fehler == 0
 
 
 def main():
@@ -142,14 +392,32 @@ def main():
             else:
                 gesetzt += sum(len(rd["rateDefinitionsToUpdate"]) for lg in lgs for z in lg["zonesToUpdate"]
                                for md in z["methodDefinitionsToUpdate"] for rd in md["rateGroupsToUpdate"])
+    rc = 0
     if befunde and not (SCHARF and gesetzt and all("statt" in b for b in befunde)):
         print(f"⚠️ VERSAND-LIEFERZEIT: {ok} Tarife ok · {len(befunde)} Befunde: " + " | ".join(befunde[:5])
               + (f" · gesetzt {gesetzt}" if gesetzt else ""))
-        return 1
-    print(f"VERSAND-LIEFERZEIT: {ok} Tarife mit ehrlicher Lieferzeit (Bearbeitung {bearb} T + Transit = Zusage)"
-          + (f" · gesetzt {gesetzt}" if gesetzt else ""))
-    return 0
+        rc = 1
+    else:
+        print(f"VERSAND-LIEFERZEIT: {ok} Tarife mit ehrlicher Lieferzeit (Bearbeitung {bearb} T + Transit = Zusage)"
+              + (f" · gesetzt {gesetzt}" if gesetzt else ""))
+    # 13.10.2026: Seitenfenster vs. Kassenfenster je Tier (Klasse 11 der Kauf-Strecke) — eigene Zeile, eigene Ampel
+    try:
+        if gesetzt:
+            profile = [gql(Q, {"id": x["id"]})["node"] for x in liste if not x["name"].startswith(aus)]
+        zeilen, sk = seite_kasse_live(bearb, standard_transit(profile))
+        if sk:
+            print(f"⚠️ SEITE≠KASSE: {len(sk)} von {len(zeilen)} Fenstern weichen ab: " + " | ".join(sk[:6]))
+            rc = 1
+        else:
+            print(f"SEITE=KASSE: {len(zeilen)} Lieferfenster (Seite/Korb je Tier, mit/ohne Zeichen) gleich wie die Kasse")
+    except Exception as e:  # noqa: BLE001
+        print(f"⚠️ SEITE≠KASSE: unklar ({type(e).__name__}: {str(e)[:100]})")
+        rc = 1
+    return rc
 
 
 if __name__ == "__main__":
+    if "--selbsttest-seite" in sys.argv:          # Pfade: Live-Kopien product.json, cart.json
+        i = sys.argv.index("--selbsttest-seite")
+        sys.exit(0 if selbsttest_seite_kasse(sys.argv[i + 1], sys.argv[i + 2]) else 1)
     sys.exit(main())

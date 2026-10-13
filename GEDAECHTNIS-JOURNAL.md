@@ -49,6 +49,17 @@
 
 
 
+## 🖨️ Druck auf Bestellung: eigenes 0.00-Profil, Zeichen im Shop-Metafeld, Kasse teilt Mischkörbe (2026-10-13 abends, Betreiber «versandprofil ja mache es sauber»)
+
+**Anlass:** Seite/Korb nannten für Druck-Ware 22.10.–2.11. (Kalendertage +9/+19), die Kasse 28.10.–11.11. (General profile). Bericht `dropship/DRUCK-PROFIL-2026-10-13.md`, Skript `automation/druck_profil.py`.
+
+1. **Die Kasse teilt einen Mischkorb in eine Lieferung JE PROFIL, jede mit eigenem Datum** (GEMESSEN im Browser: Shirt + CH-Lager-Artikel = «2 Lieferungen», CH-Lager «16.–19. Okt KOSTENLOS», Shirt «28. Okt–11. Nov CHF 7.00»). Ein Zusatzprofil verbessert also das Datum der eigenen Ware auch im Mischkorb; die Beträge addieren sich (gleichnamige Tarife, Bedingung an der Korbsumme — Matrix 9/9, 0 teurer).
+2. **Zeichen als Shop-Metafeld statt Produkt-Tag**, wenn die Ware im Google-Kanal liegt oder Editor-Ware ist: `luxe.druck_profil_ids` = «,id,id,», Liquid `contains (',' | append: id | append: ',')`. Null Produkt-Schreibvorgänge (kein Google-Neuabgleich, Editor unberührt), Rückweg = ein Feld. Zeichen nur, wenn ALLE Varianten im Profil liegen; Reihenfolge: Zeichen kürzen → lösen → zuordnen → Zeichen setzen.
+3. **Marge vor Gratisversand im schlechtesten Fall rechnen:** Preis −10 % Rabatt − (EK + Printful-Versand) × 1.081 MWST (Printful verrechnet CH-MWST, #1005) × 1.05 Wechselkurs − 3 % − 0.30. Das Editor-Shirt 24.90 bleibt so bei 0.30. Editor-Rückseite kostet +5.50 — sie existiert nur, wenn `data-img-back` gesetzt UND ≠ Vorderseite (Shirt/Hoodie/Jutebeutel: nein).
+4. **Cloudflare sperrt die Test-Kasse nach ~20 Aufrufen in einer Stunde** («Bestätigen Sie, dass Sie ein Mensch sind») — Beträge über `draftOrderCalculate` messen (gleiche Rechnung), Browser nur für das Datum und sparsam.
+5. **Google-Halt braucht eine Basis:** «Missing shipping info … [LI]» stand schon vorher an 28'541 Produkten — ohne `google_basis` hätte die Stufen-Wache Stufe 2 nie freigegeben.
+6. Neue Zeile **«SEITE≠KASSE»** in `versand_transit_wache.py`: rechnet je Tier (mit/ohne Zeichen) das Seiten- und das Kassenfenster für heute. Erster Lauf fand nebenbei **EU-Lager**: Seite 3–10 Kalendertage, Kasse 10–20 Werktage.
+
 ## 🧾 CJ teilt vor dem Bezahlen · Server-Takt tötet Motoren · createOrderV2 nie wiederholen (2026-10-13)
 
 **Anlass:** Hetzner-Plan Schritte 1/3/4/5/11 (Workflow wf_b1c94b55-f88, 4 Umsetzer + 4 Prüfer).

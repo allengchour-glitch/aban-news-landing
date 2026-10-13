@@ -32,3 +32,6 @@ start_utc	produkt	ergebnis	ordner
 2026-10-13T21:09:58.704Z	cart/55792251076993:1,55970707276161:1	ok	kasse_nachher	(Druck-Profil nachher-misch: Druck + CH-Lager CH, kaufweg-test@example.com)
 2026-10-13T21:10:13.477Z	cart/55792251076993:1,55746180153729:1	ok	kasse_nachher	(Druck-Profil nachher-misch: Druck + CJ klein LI, kaufweg-test@example.com)
 2026-10-13T21:10:27.453Z	cart/55792018620801:1,55792251076993:1	ok	kasse_nachher	(Druck-Profil nachher-misch: Sticker + Druck CH, kaufweg-test@example.com)
+2026-10-13T21:16:39.744Z	cart/55792251076993:1,55746180153729:1	ok	kasse_nachher	(Druck-Profil nachher-misch: Druck + CJ klein CH, kaufweg-test@example.com)
+2026-10-13T21:18:51.556Z	cart/55792251076993:1,55746180153729:1	ok	kasse_nachher2	(Druck-Profil nachher-misch: Druck + CJ klein CH, kaufweg-test@example.com)
+2026-10-13T21:28:58.506Z	cart/55792253141377:1	blockiert-cloudflare	/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/pruef/kasse1	(Druck-Profil Prüfer: Mitglied braunvieh allein CH, kaufweg-test@example.com)

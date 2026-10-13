@@ -1,0 +1,175 @@
+{
+ "stand": "2026-10-13T21:13Z",
+ "zeilen": [
+  {
+   "datei": "templates/cart.json",
+   "tier": "Asien",
+   "zeichen": "mit",
+   "seite": "28.10.–11.11.",
+   "rechnung": "Werktage 9–19 + Bearbeitung 1",
+   "kasse": "28.10.–11.11.",
+   "profil": "General profile",
+   "gleich": true
+  },
+  {
+   "datei": "templates/cart.json",
+   "tier": "Asien",
+   "zeichen": "ohne",
+   "seite": "28.10.–11.11.",
+   "rechnung": "Werktage 9–19 + Bearbeitung 1",
+   "kasse": "28.10.–11.11.",
+   "profil": "General profile",
+   "gleich": true
+  },
+  {
+   "datei": "templates/cart.json",
+   "tier": "CH-Lager",
+   "zeichen": "mit",
+   "seite": "16.10.–19.10.",
+   "rechnung": "Werktage 1–2 + Bearbeitung 1",
+   "kasse": "16.10.–19.10.",
+   "profil": "CH-Lager",
+   "gleich": true
+  },
+  {
+   "datei": "templates/cart.json",
+   "tier": "CH-Lager",
+   "zeichen": "ohne",
+   "seite": "28.10.–11.11.",
+   "rechnung": "Werktage 9–19 + Bearbeitung 1",
+   "kasse": "28.10.–11.11.",
+   "profil": "General profile",
+   "gleich": true
+  },
+  {
+   "datei": "templates/cart.json",
+   "tier": "Druck",
+   "zeichen": "mit",
+   "seite": "22.10.–02.11.",
+   "rechnung": "Kalendertage 9–19",
+   "kasse": "23.10.–03.11.",
+   "profil": "Druck auf Bestellung",
+   "gleich": false
+  },
+  {
+   "datei": "templates/cart.json",
+   "tier": "Druck",
+   "zeichen": "ohne",
+   "seite": "22.10.–02.11.",
+   "rechnung": "Kalendertage 9–19",
+   "kasse": "28.10.–11.11.",
+   "profil": "General profile",
+   "gleich": false
+  },
+  {
+   "datei": "templates/cart.json",
+   "tier": "EU-Lager",
+   "zeichen": "mit",
+   "seite": "16.10.–23.10.",
+   "rechnung": "Kalendertage 3–10",
+   "kasse": "28.10.–11.11.",
+   "profil": "General profile",
+   "gleich": false
+  },
+  {
+   "datei": "templates/cart.json",
+   "tier": "EU-Lager",
+   "zeichen": "ohne",
+   "seite": "16.10.–23.10.",
+   "rechnung": "Kalendertage 3–10",
+   "kasse": "28.10.–11.11.",
+   "profil": "General profile",
+   "gleich": false
+  },
+  {
+   "datei": "templates/product.json",
+   "tier": "Asien",
+   "zeichen": "mit",
+   "seite": "28.10.–11.11.",
+   "rechnung": "Werktage 9–19 + Bearbeitung 1",
+   "kasse": "28.10.–11.11.",
+   "profil": "General profile",
+   "gleich": true
+  },
+  {
+   "datei": "templates/product.json",
+   "tier": "Asien",
+   "zeichen": "ohne",
+   "seite": "28.10.–11.11.",
+   "rechnung": "Werktage 9–19 + Bearbeitung 1",
+   "kasse": "28.10.–11.11.",
+   "profil": "General profile",
+   "gleich": true
+  },
+  {
+   "datei": "templates/product.json",
+   "tier": "CH-Lager",
+   "zeichen": "mit",
+   "seite": "16.10.–19.10.",
+   "rechnung": "Werktage 1–2 + Bearbeitung 1",
+   "kasse": "16.10.–19.10.",
+   "profil": "CH-Lager",
+   "gleich": true
+  },
+  {
+   "datei": "templates/product.json",
+   "tier": "CH-Lager",
+   "zeichen": "ohne",
+   "seite": "28.10.–11.11.",
+   "rechnung": "Werktage 9–19 + Bearbeitung 1",
+   "kasse": "28.10.–11.11.",
+   "profil": "General profile",
+   "gleich": true
+  },
+  {
+   "datei": "templates/product.json",
+   "tier": "Druck",
+   "zeichen": "mit",
+   "seite": "22.10.–02.11.",
+   "rechnung": "Kalendertage 9–19",
+   "kasse": "23.10.–03.11.",
+   "profil": "Druck auf Bestellung",
+   "gleich": false
+  },
+  {
+   "datei": "templates/product.json",
+   "tier": "Druck",
+   "zeichen": "ohne",
+   "seite": "22.10.–02.11.",
+   "rechnung": "Kalendertage 9–19",
+   "kasse": "28.10.–11.11.",
+   "profil": "General profile",
+   "gleich": false
+  },
+  {
+   "datei": "templates/product.json",
+   "tier": "EU-Lager",
+   "zeichen": "mit",
+   "seite": "16.10.–23.10.",
+   "rechnung": "Kalendertage 3–10",
+   "kasse": "28.10.–11.11.",
+   "profil": "General profile",
+   "gleich": false
+  },
+  {
+   "datei": "templates/product.json",
+   "tier": "EU-Lager",
+   "zeichen": "ohne",
+   "seite": "16.10.–23.10.",
+   "rechnung": "Kalendertage 3–10",
+   "kasse": "28.10.–11.11.",
+   "profil": "General profile",
+   "gleich": false
+  }
+ ],
+ "befunde": [
+  "Druck mit Zeichen: Korb 22.10.–02.11. · Kasse 23.10.–03.11.",
+  "Druck ohne Zeichen: Korb 22.10.–02.11. · Kasse 28.10.–11.11.",
+  "EU-Lager mit Zeichen: Korb 16.10.–23.10. · Kasse 28.10.–11.11.",
+  "EU-Lager ohne Zeichen: Korb 16.10.–23.10. · Kasse 28.10.–11.11.",
+  "Druck mit Zeichen: Seite 22.10.–02.11. · Kasse 23.10.–03.11.",
+  "Druck ohne Zeichen: Seite 22.10.–02.11. · Kasse 28.10.–11.11.",
+  "EU-Lager mit Zeichen: Seite 16.10.–23.10. · Kasse 28.10.–11.11.",
+  "EU-Lager ohne Zeichen: Seite 16.10.–23.10. · Kasse 28.10.–11.11."
+ ]
+}

@@ -119,6 +119,13 @@ ENTSCHEIDUNG
     CHF 14.90 knapp kalkuliert ist. Das ist eine Preisfrage und gehört zu
     preisboden.py, nicht ins Versandprofil.
 
+NACHTRAG 13.10.2026 — EIGENE 0.00-PROFILE «CH-Lager» und «Druck auf Bestellung» (ch_lager_profil.py, druck_profil.py):
+Absicht, keine App-Profile. Ihre Tarife heissen wie im General profile und kosten 0.00 → dieses Skript wertet sie als
+«neutral» und holt nichts zurück (GEMESSEN 13.10. 21:40: «ok Druck auf Bestellung Standard / Kostenloser Versand»,
+«Würde zurückholen: 0»). Bewusst KEINE Ausnahme im Code: stünde dort je ein Tarif > 0, wäre das Zurückholen ins General
+profile genau der richtige Rückweg (Mischkorb zahlte sonst doppelt); die Profil-Skripte nehmen ihr Zeichen dann selbst
+weg (Zeichen nur, wenn ALLE Varianten im Profil liegen) und melden den Tarif-Befund in der Ampel.
+
 Aufruf:  python3 automation/versandprofil_poster.py            # Probelauf (nur zeigen)
          python3 automation/versandprofil_poster.py --scharf   # schreiben
 """
