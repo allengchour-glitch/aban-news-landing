@@ -29,8 +29,8 @@
   "profile_zonen": {
     "CH-Lager": {
       "CH": {
-        "min_tage": 4,
-        "max_tage": 5
+        "min_tage": 2,
+        "max_tage": 3
       },
       "LI": {
         "min_tage": 15,
@@ -38,5 +38,5 @@
       }
     }
   },
-  "profile_zonen_grund": "13.10.2026 (dropship/CH-LAGER-PROFIL-2026-10-13.md): Ware ab Schweizer Lager (Fortura, Tag ch-lager) liegt im Profil «CH-Lager» mit 0.00-Tarifen unter den Namen des General profile — gemischte Körbe zahlen wie bisher, die Kasse rechnet aber mit der kurzen Transitzeit. Zusage CH 4–5 Werktage = Bearbeitung P3D (shopweit, nicht je Profil) + Transit 1–2 T; LI wie im General profile (Fortura beliefert LI nicht automatisch). Ohne diesen Eintrag setzte die tägliche --scharf-Wache das Profil auf 7–17 T zurück."
+  "profile_zonen_grund": "13.10.2026 (dropship/CH-LAGER-PROFIL-2026-10-13.md): Ware ab Schweizer Lager (Fortura, Tag ch-lager) liegt im Profil «CH-Lager» mit 0.00-Tarifen unter den Namen des General profile — gemischte Körbe zahlen wie bisher, die Kasse rechnet aber mit der kurzen Transitzeit. Zusage CH 4–5 Werktage = Bearbeitung P3D (shopweit, nicht je Profil) + Transit 1–2 T; LI wie im General profile (Fortura beliefert LI nicht automatisch). Ohne diesen Eintrag setzte die tägliche --scharf-Wache das Profil auf 7–17 T zurück. 13.10.2026 17:00: Betreiber stellte die Bearbeitungszeit auf 1 Werktag (P1D, «entscheide du sauber») → CH-Lager-Zusage 2–3 Werktage (P1D + Transit 1–2; Fortura versendet laut Lieferant in 1–2 Werktagen, DPD). CJ bleibt 10–20 (Transit 9–19), LI 15–45 (Transit 14–44) — die Wache zieht die Bearbeitung ab."
 }

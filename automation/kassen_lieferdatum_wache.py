@@ -142,7 +142,11 @@ def _probe_datei(liquid, wo):
 
 
 def selbsttest():
-    regel = json.load(open(TRANSIT_REGEL, encoding="utf-8"))
+    # feste Testregel passend zu den Proben (Stand P3D: CJ 10–20, CH-Lager 4–5) — der Selbsttest darf nicht von der
+    # Live-Regel abhängen (13.10.: nach P1D + CH-Lager 2–3 fiel er auf 2/7, obwohl die Prüfung richtig rechnete)
+    regel = {"zonen": {"CH": {"min_tage": 10, "max_tage": 20}, "LI": {"min_tage": 15, "max_tage": 45},
+                       "REST": {"min_tage": 10, "max_tage": 20}},
+             "profile_zonen": {"CH-Lager": {"CH": {"min_tage": 4, "max_tage": 5}}}, "abzug_bearbeitung": True}
     gut = {"templates/product.json": _probe_datei(_PROBE_PRODUKT, "produkt"), "templates/cart.json": _probe_datei(_PROBE_KORB, "korb")}
     faelle = [
         ("P3D, Theme wie live", gut, 3, regel, set()),
@@ -194,6 +198,18 @@ def main():
     p80 = float(np.percentile(zahlen, 80)) if zahlen else None
     einstellung = tage(s.get("processingTime"))
     zu_frueh = bool(s.get("deliveryDatesEnabled") and einstellung is not None and median is not None and einstellung < median)
+    # 13.10.2026 (Betreiber stellte P3D → P1D, «entscheide du sauber»): Seit 12.10. zieht versand_transit_wache die Bearbeitung
+    # von der Transitzeit ab («abzug_bearbeitung») — die Kasse zeigt Bearbeitung + Transit = Zusage (CJ 10–20 Werktage),
+    # egal wie die Bearbeitung allein steht. Die alte Regel «Bearbeitung < CJ-Versand-Median = zu früh» meldete danach
+    # Fehlalarm («empfohlen 3 Werktage») und hätte den Betreiber zurück auf P3D geschickt. Zu früh ist die Kasse nur, wenn
+    # Bearbeitung + kürzeste Transitzeit unter dem gemessenen Versand (80 %) + 1 Werktag Zustellung läge.
+    try:
+        _r = json.load(open(TRANSIT_REGEL, encoding="utf-8"))
+        if _r.get("abzug_bearbeitung") and einstellung is not None and p80 is not None:
+            zusage_min = _r["zonen"]["CH"]["min_tage"]                    # = Bearbeitung + min Transit (Wache hält das)
+            zu_frueh = bool(s.get("deliveryDatesEnabled") and zusage_min < p80 + 1)
+    except Exception:
+        pass
     stand = {"stand": dt.datetime.utcnow().strftime("%Y-%m-%dT%H:%MZ"), "datum_in_kasse": s.get("deliveryDatesEnabled"),
              "bearbeitungszeit_tage": einstellung, "versand_werktage": werte, "median": median, "p80": p80,
              "empfohlen": int(np.ceil(p80)) if p80 is not None else None, "zu_frueh": zu_frueh}
@@ -223,7 +239,7 @@ def main():
     print("⚠️ KASSEN-DATUM THEME: " + " · ".join(tb) if tb else
           f"KASSEN-DATUM THEME: Produktseite + Warenkorb rechnen wie die Kasse (Bearbeitung {einstellung} T)")
     print(f"KASSEN-DATUM: Bearbeitungszeit {einstellung} T · gemessen bis Versand Median {median} / 80 % {p80} Werktage "
-          f"({len(werte)} CJ-Bestellungen) → {'⚠️ Kasse verspricht zu früh, empfohlen %s Werktage' % stand['empfohlen'] if zu_frueh else 'ok'}")
+          f"({len(werte)} CJ-Bestellungen) → {'⚠️ Kasse verspricht zu früh (Zusage-Minimum unter gemessenem Versand), empfohlen %s Werktage' % stand['empfohlen'] if zu_frueh else 'ok (Zusage über Transit gehalten)'}")
     # 13.10.2026: Entscheid umgesetzt — automation/ch_lager_profil.py ordnet stufenweise zu (Stufe 1/2 lässt Google-Ware
     # bewusst im General profile). Diese Stichprobe meldet deshalb erst ab Stufe 3; vorher meldet die Ampel-Zeile CH-LAGER-PROFIL.
     try:
