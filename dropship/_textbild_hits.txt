@@ -18179,3 +18179,12 @@ gid://shopify/Product/16617107915143	150->0	Satinbedeckte Halbsandale mit flache
 gid://shopify/Product/16617109586311	51->0	Latina-Tanzschuh mit Soft-Sole
 gid://shopify/Product/16617113321863	47->0	Platform-Ketten-Slipper für Damen
 gid://shopify/Product/16617115976071	14->0	Wedge-Stiefel mit Fellbesatz
+gid://shopify/Product/16617235841415	61->1	Leisure Rucksack grosse Kapazität aus Polyester
+gid://shopify/Product/16617236136327	41->0	Outdoor-Rucksack 80 L
+gid://shopify/Product/16617236693383	21->0	Solarbetriebener Rucksack mit USB-Ladefunktion
+gid://shopify/Product/16617237807495	10->3	Laptop-Tasche mit Anti-Diebstahl-Sicherung
+gid://shopify/Product/16617237873031	8->3	Schultertasche Crossbody für Herren
+gid://shopify/Product/16617238004103	11->0	Business-Rucksack 36-55L mit mehreren Fächern
+gid://shopify/Product/16617326248327	41->0	Punktierte Schuhe mit Schleife, flache Sohle
+gid://shopify/Product/16617336799623	45->0	Roman Sandalen mit Rundzehen – Low Cut
+gid://shopify/Product/16617338569095	50->0	Koreanische Board-Schuhe Herren

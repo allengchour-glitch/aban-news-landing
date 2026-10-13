@@ -259,8 +259,11 @@ TITEL_ZIEL = [
     ("wandlampe", "lampen-leuchten"), ("nachtlicht", "lampen-leuchten"), ("tischlampe", "lampen-leuchten"),
     # 13.10.2026: feinere Ziele vor dem groben «hunde/katzen» — Leitfall «katzenfutter automat» (GSC Pos. 18–24)
     ("pilzsammel", "outdoor-garten"),     # 13.10.: Tag «haushalt» schickte das Pilzsammel-Taschen-Set auf Haushaltsgeräte
-    ("futterspender", "haustier-napf-futter"), ("futterautomat", "haustier-napf-futter"),
-    ("trinkbrunnen", "haustier-napf-futter"), ("heizdecke", "kuschel-heizdecken"),
+    # 13.10.2026 abends: eigene Suchbegriff-Kollektionen (suchbegriff_kollektionen.json) statt 413 gemischter Näpfe;
+    # «futterspender» allein bleibt beim Napf-Ziel (Spielzeug- und Schwerkraftspender)
+    ("automatischer futterspender", "futterautomaten"),
+    ("futterspender", "haustier-napf-futter"), ("futterautomat", "futterautomaten"),
+    ("trinkbrunnen", "trinkbrunnen-katzen"), ("heizdecke", "kuschel-heizdecken"),
     ("hunde", "sub-haustier"), ("katzen", "sub-haustier"), ("leggings", "damen-mode"),
     ("klemmbaustein", "klemmbausteine-bausaetze"), ("bausteine-set", "klemmbausteine-bausaetze"),
     ("diffuser", "sub-aroma-diffuser"), ("luftbefeuchter", "haushaltsgeraete"),
@@ -463,7 +466,7 @@ def status_viele(handles):
 
 
 KANARIEN = [   # (Titel, verbotenes Wort im Ziel oder None, erlaubte Kategorie oder None = nur «offen» erlaubt)
-    ("Automatischer Futterspender für Katzen & Hunde", "trinkbrunnen", "/collections/haustier-napf-futter"),
+    ("Automatischer Futterspender für Katzen & Hunde", "trinkbrunnen", "/collections/futterautomaten"),
     ("Mini Heizlüfter", "luftbefeuchter", None),
     ("Smart Anti-Bell Halsband", None, None),
     ("Damast Küchenmesser", "", None),           # "" = gar kein Zwilling erlaubt (Klinge)

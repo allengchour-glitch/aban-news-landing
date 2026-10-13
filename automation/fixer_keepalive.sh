@@ -2626,6 +2626,29 @@ KLT=/tmp/test_klingen_tor.log
       echo "$(date -u +%H:%M) cj_stecker_eu_setzen gestartet"
     fi
   fi
+  # ── Netzstecker je VARIANTE (13.10.2026, Gegenpruefung B10): der Block oben prueft nur Ein-Varianten-Produkte und
+  # steht seit 28.09. auf FERTIG. Die «3-in-1 Wireless Ladestation» (61 Varianten) war ACTIVE mit 44 kaufbaren
+  # US/UK/AU-Varianten (Klasse #1018). Taeglich: Voll-Export, fremde Stecker-Varianten sperren (tracked + 0 + DENY),
+  # EU bleibt kaufbar; nur fremde Stecker -> DRAFT stecker-unpassend-ch. Erfasst NEUE Importe und Varianten, die ein
+  # anderer Automat wieder oeffnet. CJ nur fuer Varianten ohne Kennung, einmal je Produkt. Rueckweg: --rueckweg <pid>.
+  STV=/tmp/cj_stecker_varianten.log
+  if [ -f "$REPO/automation/cj_stecker_pruefen.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$STV" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$STV"; then
+      touch "$STV"   # Anspruch VOR dem Start (Lehre 21.09.)
+      ( cd "$REPO" && setsid bash -c \
+          "exec 9>/tmp/lock_cj_stecker_varianten.lock; flock -n 9 || exit 0; exec >> \"$STV\" 2>&1; \
+           exec python3 automation/cj_stecker_pruefen.py --varianten" 9>&- & )
+      # Ergebnis des VORIGEN Laufs melden, nicht den Start (Lehre 15.09.)
+      if [ -s "$STV" ] && tail -n 25 "$STV" | grep -q "Traceback\|Error:\|unvollstaendig\|Fehler [1-9]"; then
+        echo "$(date -u +%H:%M) ⚠️ Stecker-Varianten: letzter Lauf unklar ($STV)"
+      elif [ -s "$STV" ]; then
+        echo "$(date -u +%H:%M) Stecker-Varianten: $(grep 'kaufbare fremde Varianten' "$STV" | tail -n 1)"
+      else
+        echo "$(date -u +%H:%M) Stecker-Varianten-Wache gestartet (erster Lauf)"
+      fi
+    fi
+  fi
   # ── Zombie-Wache: WER schreibt einen reparierten Text zurueck? (04.09.2026) ────────────
   # 987 USA-Lieferzusagen lebten wieder, 978 davon standen als repariert im Ledger. Kein
   # Werkzeug BAUT den Block neu — jemand schreibt einen ALTEN descriptionHtml zurueck. Die
