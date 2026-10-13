@@ -7879,3 +7879,9 @@ kreatives-schraubpuzzle-set-fur-kinder-c800b9	1377904283500023808	7	18.24	ok	lan
 elektronik-organizer-wasserdicht-doppellagig-547776	1646726512303296512	0	-	KEINE CH-Option → DRAFT	landeseite
 bluetooth-earphone-mit-led-anzeige-143094	2603230938531610400	7	8.10	ok	landeseite
 yazole-herren-quarzuhr-9bdf18	3C76D119-A6C0-4B93-A409-A7D29D34C254	7	6.73	ok	landeseite
+nahtloser-yoga-bodysuit-mit-cut-outs-926592	1738064287735750656	16	8.25	ok	landeseite
+multifunktionaler-baby-tragegurt-f91290	{0B274AE9-E29D-46AA-9901-4F350F20579C}	16	8.93	ok	landeseite
+hunde-und-katzenrucksack-b35d28	1683294878643523584	16	9.63	ok	landeseite
+hd-wifi-spiegelreflexkamera-mit-flip-screen-398016	1496726769825353728	7	13.69	ok	landeseite
+powerbank-mit-hoher-kapazitat-13532a	48982845-01E4-46D5-8CAA-E77244588912	0	-	KEINE CH-Option → DRAFT	landeseite
+tragbarer-auto-luftbefeuchter-x3-56a667	1AC5A55E-19DD-414E-BD6D-CFDD215B4C1A	7	7.80	ok	landeseite
