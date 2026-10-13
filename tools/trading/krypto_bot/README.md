@@ -678,7 +678,7 @@ Andere Strategie wählen: `setx KRYPTO_STRATEGIE "halten"` (immer 100 %) oder `"
 > Prüfung keine Blocker mehr findet — bis dahin wirkt `KRYPTO_PILOT2=an` nicht (siehe «Starten» unten).
 
 Gleiche Signale wie der Pilot, klügere Ausführung über **beide** Binance-Konten (`pilot2_plan.py` rechnet, `pilot2_live.py`
-handelt; 23 + 101 Tests mit einer streng nachgebauten Binance, Mutationsproben). Ohne `KRYPTO_PILOT2=an` handelt der Pilot wie bisher.
+handelt; 23 + 141 Tests mit einer streng nachgebauten Binance, Mutationsproben). Ohne `KRYPTO_PILOT2=an` handelt der Pilot wie bisher.
 
 **Was er tut:** Richtung long → Coin im Spot-Konto (kein Funding). Richtung short → Short-Perpetual (Hebel 1, bekommt Funding).
 Freier Teil → Funding-Ernte: Coin im Spot + gleich grosser Short (marktneutral, Pfand 110 %, CROSS-Marge). Er verschiebt USDT
@@ -690,33 +690,50 @@ selbst zwischen Spot- und Futures-Teil des Unterkontos (wenn der Schlüssel das 
   liest jeden Lauf den Kontostand. Lege nur so viel hinein, wie er höchstens verwalten — und verlieren — darf: **mehr als im
   Unterkonto liegt, kann er nicht verlieren.** Was du später hineinlegst, setzt er ein.
 - **Start nur mit leerem Unterkonto:** beim ersten Lauf nur USDT darin (keine BTC/ETH, keine Aufträge, keine Futures-Position,
-  kein Futures-Guthaben) und höchstens `KRYPTO_PILOT2_KAPITAL`. Sonst handelt er nicht.
+  kein Futures-Guthaben) und höchstens `KRYPTO_PILOT2_KAPITAL`. Sonst handelt er nicht. Der Start wird gespeichert, BEVOR ein
+  Auftrag rausgeht (ist die Datei gesperrt, z. B. durch Virenscanner oder OneDrive: kein Auftrag).
 - **An dieses Konto gebunden:** Die Binance-Konto-ID (UID) merkt er beim Start. Zeigt der Schlüssel später auf ein anderes Konto
   (oder meldet Binance keine UID), handelt er nicht — und der Not-Aus fasst ein fremdes Konto nie an.
 - **Not-Aus hat Vorrang vor allem** (Pause, fehlende Einstellungen, andere Bots): `stop.bat`, Cockpit, Telegram `/stop` und die
   Tagesaufgabe schliessen jeden gestarteten Modus mit dessen Schlüsseln — auch wenn du die Schalter schon umgestellt hast. Erst
   das Perpetual (lässt es sich nicht schliessen, bleibt so viel Spot als Absicherung stehen, wie der Short gross ist), dann alle
-  Aufträge auf BTC/ETH weg, alle BTC/ETH verkaufen, USDT zurück ins Spot-Konto. «Alles zu» meldet er nur, wenn nachgeprüft —
-  danach beginnt Pilot 2.0 beim nächsten Einschalten neu (mit Startprüfung). Auch ein Not-Aus mitten im Lauf stoppt den Aufbau.
+  Aufträge auf BTC/ETH weg, alle BTC/ETH verkaufen (mehrere Versuche), USDT zurück ins Spot-Konto. Er liest zuerst die ganze Lage
+  — geht das nicht, fasst er nichts an. Scheitert der Verkauf (abgelehnt, Rate-Limit, nur teilweise ausgeführt, Konto kurz nicht
+  lesbar), bekommt alles Ungesicherte sofort einen **Schutz-Stop**: nie ein Long ohne Absicherung UND ohne Stop. «Alles zu» meldet
+  er nur, wenn nachgeprüft — danach beginnt Pilot 2.0 beim nächsten Einschalten neu (mit Startprüfung). Auch ein Not-Aus mitten
+  im Lauf stoppt den Aufbau.
 - **Stops nach dem Kontostand:** am Ende jedes Laufs auf die TATSÄCHLICHE Netto-Richtung (Spot-Coins + Perpetual), auch für Reste
   eines mehrtägigen Richtungswechsels: long → Spot-Stop (STOP_LOSS, beim Auslösen ein Marktauftrag), short → Perp-Stop mit Menge +
-  reduceOnly (trifft nie die Ernte-Absicherung). Fehlt ein gültiger Stop-Kurs: der zuletzt benutzte, sonst 5 % vom Kurs. Eigene
-  Stops tragen eine Kennung (`p2s…`/`p2a…`): keine Doppel-Stops, verwaiste löscht der nächste Lauf. Ist etwas nicht prüfbar oder
-  sind Coins durch einen anderen Auftrag gesperrt, warnt er laut «OHNE Stop» bzw. «nur … gesichert».
+  reduceOnly (trifft nie die Ernte-Absicherung). Ein passender Stop **bleibt stehen** (nie ersatzlos löschen); nur wer ersetzt
+  werden muss (anderer Kurs oder andere Menge), wird gelöscht und sofort neu gesetzt. Liegt der Kurs schon jenseits des Stops
+  (Sturz während des Laufs, Binance «würde sofort auslösen»), schliesst er sofort zum Markt — wie ein ausgelöster Stop; geht auch
+  das nicht, setzt er einen Not-Stop 5 % vom frischen Kurs. Fehlt ein gültiger Stop-Kurs: der zuletzt benutzte, sonst 5 % vom
+  Kurs. Kurze Störungen (503, 429) wiederholt er. Eigene Stops tragen eine Kennung (`p2s…`/`p2a…`): keine Doppel-Stops, verwaiste
+  löscht der nächste Lauf. Fällt das Konto mitten im Lauf aus, setzt er die Stops trotzdem und meldet alles. Ist etwas nicht
+  prüfbar oder sind Coins durch einen anderen Auftrag gesperrt, warnt er laut «OHNE Stop» bzw. «nur … gesichert».
 - **Unklare Antworten:** Der Markt ist für den Rest des Laufs gesperrt; nichts wird nachträglich «verbucht» — der nächste Lauf
-  liest den Kontostand. Einen Ernte-Short mit unklarer Antwort rechnet er nie zurück: der Spot bleibt und bekommt als Long einen Stop.
+  liest den Kontostand. Einen Ernte-Short mit unklarer Antwort rechnet er nie zurück: der Spot bleibt und bekommt als Long einen Stop,
+  und über die unklare Short-Menge kommt ein reduceOnly-Stop (harmlos, falls er nie ausgeführt wurde; schützt, falls er verspätet ankommt).
 - **Keine ungesicherte Ernte:** Pfand-Puffer in der Basis, Marge vor dem Short geprüft. Wird ein Kauf gekürzt, wird der Short
-  gleich stark gekürzt; lehnt Binance den Short ab, verkauft er den eben gekauften Ernte-Spot zurück.
+  gleich stark gekürzt; bliebe er unter dem Binance-Minimum, kauft er heute nur die Richtung. Lehnt Binance den Short ab, verkauft
+  er nur die ungesicherten Ernte-Coins zurück — nie den Richtungs-Long.
 - **CROSS-Marge** im Unterkonto: Der 10-%-Puffer im Futures-Teil schützt den Ernte-Short wirklich (bei ISOLATED wäre er fix).
-  Grenze: steigt ein Coin innert kurzer Zeit um rund +100 % (oder läuft der PC wochenlang nicht), schliesst Binance die Shorts
-  zwangsweise; dann liegen die Ernte-Coins ohne Absicherung da. Der tägliche Lauf und der Not-Aus melden das.
+  Das Pfand zählt nach dem **Eigenkapital** (offene Verluste des Shorts gehen ab) und wird bei jedem Lauf wieder auf 110 % des
+  Shorts gebracht (aus dem Spot-Teil bzw. durch eine kleinere Ernte). Grenze: steigt ein Coin **zwischen zwei Läufen** um rund
+  +100 % (oder läuft der PC tagelang nicht), schliesst Binance die Shorts zwangsweise; dann liegen die Ernte-Coins ohne
+  Absicherung da. Der tägliche Lauf und der Not-Aus melden das.
 - **Probelauf** (`--trocken`) sendet nichts und schreibt nichts (auch die Startprüfung bleibt scharf).
 - **Buch** (`data/krypto-pilot2-bestand.json`) enthält nur Start, Konto-ID und Stop-Kennungen. Ist es unlesbar: kein Handel, nie
   überschreiben, der Not-Aus meldet nie «alles zu».
-- Er weigert sich aufzubauen, wenn der Spot-Bot (`KRYPTO_BROKER=binance`), der ETH-Sparplan oder kopierte Telegram-Calls laufen.
+- Er weigert sich aufzubauen, wenn der Spot-Bot (`KRYPTO_BROKER=binance`), der ETH-Sparplan oder kopierte Telegram-Calls im
+  selben Konto laufen (mit echtem Geld: nur, wenn sie denselben Schlüssel wie `PILOT2_API_KEY` benutzen).
   Echtgeld-Schlüssel: keine Auszahlungen, keine Margin-Leihe, keine Überweisung an Dritte («Universal Transfer» erlaubt, nicht nötig).
-- **Ausschalten:** Wer `KRYPTO_PILOT2` entfernt, während Pilot 2.0 gestartet ist, bekommt eine Warnung — der alte Pilot handelt
-  dann nicht. Erst Not-Aus, dann umstellen. Ein aus `KRYPTO_PILOT_MAERKTE` entfernter Markt wird automatisch abgebaut.
+- **Nie still unverwaltet:** Wer `KRYPTO_PILOT2` entfernt, während Pilot 2.0 gestartet ist, bekommt bei jedem Lauf eine Warnung
+  (seine Positionen verwaltet dann niemand); im selben Konto handelt der alte Pilot dann nicht. Ein zweiter Modus (Testnetz/echt)
+  startet nie, solange einer gestartet ist; fehlen die Schlüssel eines gestarteten Modus, warnt er laut. Hat der alte Pilot beim
+  Einschalten noch Positionen in seinem eigenen Konto, startet Pilot 2.0 nicht (erst `stop.bat`, das schliesst beide). Ein
+  Testnetz-Stand, dessen Schlüssel das Testnetz nicht mehr annimmt, wird beim Not-Aus verworfen (Spielgeld). Erst Not-Aus, dann
+  umstellen. Ein aus `KRYPTO_PILOT_MAERKTE` entfernter Markt wird automatisch abgebaut.
 - Pilot 2.0 nutzt höchstens Hebel 1 (die Risiko-Stufen 1,5/2 gelten nur für den alten Pilot). Steht der Futures-Hebel wegen
   einer Position noch höher, eröffnet er keinen grösseren Short, bis er 1 ist.
 

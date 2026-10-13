@@ -93,7 +93,14 @@ Pilot 2.0: Prüfungen 3–6 fanden je 2–3 Blocker (PRs #2632–#2634). Wurzel 
 **Umbau «Konto = Wahrheit»**: Pilot 2.0 handelt nur in einem Binance-UNTERKONTO nur für ihn (alle verifizierten Konten mit 2FA, bis 5 Stück;
 PILOT2_API_KEY des Unterkontos), liest jeden Lauf den Kontostand, Buch = nur Start/UID/Stop-Kennungen. UID-Bindung (fremdes/fehlendes UID →
 nichts tun, auch im Not-Aus), Startprüfung: nur USDT ≤ KRYPTO_PILOT2_KAPITAL. 101 Tests, Mutationen 16/18 (+1 nachgebessert, 1 gleichwertig).
-FREIGEGEBEN bleibt False bis eine Prüfung 0 Blocker findet (7. Prüfung gestartet 13.10. abends).
+FREIGEGEBEN bleibt False bis eine Prüfung 0 Blocker findet. **7. Prüfung (13.10.): 1 Blocker + 8 wichtig + 7 klein — alle behoben:**
+B1 gescheiterter Not-Aus hinterliess Long ohne Absicherung UND ohne Stop → Lage zuerst lesen (sonst nichts anfassen), Verkauf mit Versuchen,
+Rest sofort Schutz-Stop (auch bei unbekannter Position beidseitig). W1 Stops: passender bleibt, nur Spot-Stops vor Verkäufen weg, Kurs jenseits →
+sofort schliessen/Not-Stop, Ausnahme im Lauf abgefangen. W2 Pfand nach Eigenkapital (Wallet + offene Verluste). W3 nie still unverwaltet
+(anderer Modus/fehlende Schlüssel laut, kein zweiter Modus). W4 alter Pilot mit Positionen → P2 startet nicht. W5 Konto vor Buch vergleichen.
+W6 Start muss gespeichert sein. W7 Rückverkauf nur Ernte, Vorab-Kürzung. W8 unklarer Short → reduceOnly-Stop. K1/K2/K5/K6/K7 dazu.
+Fake-Börse jetzt mit Einstand/offenem Gewinn, 503-Fenstern, 429, Teil-Ausführung, −2021. **141 Tests, Mutationen 26/26** (`python3 -B`!).
+Nächster Schritt: 8. unabhängige Prüfung; erst bei 0 Blockern FREIGEGEBEN=True (eigener PR), dann Testnetz → Probelauf → kleiner Betrag.
 
 **📌 2026-10-12 (🤖 KI-Bot übernommen — Schattenbuch auf GitHub, NUR Spielgeld):** User: „kannst du alles übernehmen“ → gewählt
 „Spielgeld-Lauf auf GitHub“. Job `ki-bot-schatten` in `tages-update.yml` (kein neuer Cron): Tests → `bot.py --lauf` mit eigenem Logbuch

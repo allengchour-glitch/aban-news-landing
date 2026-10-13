@@ -4,7 +4,8 @@
 Aus dem Signal z (−1 … +1, wie der Pilot) und dem Ist-Bestand wird ein Plan für Spot- UND Futures-Konto:
   • Richtung long  → Coin im Spot-Konto (kein Funding)
   • Richtung short → Short-Perpetual im Futures-Konto (bekommt Funding)
-  • freier Teil     → Funding-Ernte: Coin im Spot + gleich grosser Short-Perpetual (marktneutral), Pfand 100 % (Hebel 1, Zwangsschliessung erst bei rund +100 %)
+  • freier Teil     → Funding-Ernte: Coin im Spot + gleich grosser Short-Perpetual (marktneutral), Pfand 110 % (Hebel 1, jeden Lauf
+                      nachgefüllt; Zwangsschliessung erst bei rund +100 % zwischen zwei Läufen)
 Für jeden Markt mit Grundbetrag B = Kontowert × Anteil × Gewicht:
   spot_ziel  = (max(z,0) + (1−|z|)/2) × B / Kurs                    (Coins)
   perp_ziel  = −((1−|z|)/2 + max(−z,0)) × B / Kurs                  (Kontrakte, negativ = short)
@@ -110,7 +111,8 @@ def plane(markt, z, basis, kurs, spot_ist, perp_ist, regeln, max_auftrag=1000.0)
 
 def verschieben(pfand_soll, futures_saldo, futures_abziehbar, spot_usdt_frei, spot_bedarf):
     """USDT zwischen Spot- und Futures-Konto. → (Richtung, Betrag) oder None.
-    pfand_soll: Summe der Pfand-Ziele aller Märkte; futures_saldo: Wallet-Saldo im Futures-Konto (ohne offene Gewinne);
+    pfand_soll: Summe der Pfand-Ziele aller Märkte; futures_saldo: Eigenkapital im Futures-Konto OHNE offene Gewinne, aber MIT
+    offenen Verlusten (Wallet + min(0, offener Gewinn) — sonst schmilzt das Pfand bei steigendem Kurs unbemerkt);
     futures_abziehbar: was Binance dort maximal abziehen lässt; spot_bedarf: USDT, die die Spot-Käufe dieses Laufs brauchen.
     Futures bekommt zuerst sein Pfand (sonst kein Short); Spot bekommt Geld nur, wenn er es für Käufe braucht."""
     zu_wenig = pfand_soll - futures_saldo

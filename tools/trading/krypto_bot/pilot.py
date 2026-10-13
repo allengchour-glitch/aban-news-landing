@@ -178,7 +178,8 @@ def wochenbericht(lb, heute, erzwingen=False):
     def pct(a, b):
         return f"{(a / b - 1) * 100:+.1f} %" if b else "—"
 
-    modus = "Echtgeld" if ks[-1].get("modus") == "echtgeld" else "Testnetz"
+    m_ = ks[-1].get("modus") or ""
+    modus = ("Pilot 2.0, " if m_.startswith("pilot2") else "") + ("Echtgeld" if m_ in ("echtgeld", "pilot2-echt") else "Testnetz")
     t = f"📒 Krypto-Pilot Wochenbericht {heute}\nKonto ({modus}): {fmt_zahl(jetzt, 2)} USDT"
     t += f"\nKonto seit Start ({ks[0]['tag']}): {pct(jetzt, start)}"
     if vor7:
@@ -286,6 +287,34 @@ def main():
         return 0
 
 
+def teilt_konto(env, p2_modus, bf=None):
+    """Spricht der alte Pilot (BINANCE_FUTURES_*) dasselbe Binance-Konto an wie Pilot 2.0 im Modus p2_modus?
+    Echtgeld: Pilot 2.0 hat sein Unterkonto (PILOT2_API_KEY) — gleich nur bei gleichem Schlüssel. Testnetz: Pilot 2.0 nutzt
+    dieselben Testnetz-Futures-Schlüssel wie der alte Pilot im Testnetz."""
+    import broker_futures as BF
+    env = os.environ if env is None else env
+    bf = bf or BF.einstellungen(env)
+    if p2_modus == "echt":
+        return bool(bf["echtgeld"] and bf["key"] and bf["key"] == (env.get("PILOT2_API_KEY") or ""))
+    return not bf["echtgeld"]
+
+
+def alter_pilot_offen(env=None):
+    """Offene Positionen des alten Piloten in SEINEM Futures-Konto — nur wenn das nicht das Konto von Pilot 2.0 ist (dort
+    gehören BTC/ETH-Perps Pilot 2.0). → (["BTC +0.012"], Fehlertext oder None)."""
+    import broker_futures as BF
+    import pilot2_live as P2L
+    env = os.environ if env is None else env
+    bf = BF.einstellungen(env)
+    if not (bf["key"] and bf["secret"]) or bf["url_fehler"] or teilt_konto(env, P2L.einstellungen(env)["modus"], bf):
+        return [], None
+    try:
+        f = BF.Futures(bf)
+        return [f"{m} {pos:+g}" for m, (sym, _, _) in MAERKTE.items() if (pos := f.position(sym))], None
+    except Exception as ex:  # noqa: BLE001
+        return [], type(ex).__name__
+
+
 def schliessen_alle(ausfuehren=None, heute=None, env=None):
     """Not-Aus: ALLE bekannten Märkte schliessen (auch solche, die gerade nicht eingestellt sind). → (alles_zu, Zeilen).
     «geschlossen» nur, wenn die Position danach wirklich 0 ist. Pilot 2.0 zuerst (jeder Modus mit Bestand)."""
@@ -293,7 +322,7 @@ def schliessen_alle(ausfuehren=None, heute=None, env=None):
     import pilot2_live as P2L
     env = os.environ if env is None else env
     heute = heute or datetime.now(timezone.utc).date().isoformat()
-    zeilen, alles_zu = [], True
+    zeilen, alles_zu, r2 = [], True, {}
     try:
         r2 = P2L.notaus_alle(env, protokolliere=P2L.protokoll_schreiben)
         if r2["modus"] or not r2.get("alles_zu"):  # bei kaputtem/fehlendem Buch die Erklärung immer zeigen
@@ -307,15 +336,21 @@ def schliessen_alle(ausfuehren=None, heute=None, env=None):
             return BF.ausfuehren(e, env=env, symbol=symbol, gewicht=gewicht)
     # Gehört das Konto, das der alte Pilot anspricht, Pilot 2.0 (dort gestartet)? Dann sind BTC/ETH-Perps seine Ernte —
     # die hat er oben schon geschlossen (oder bewusst als Absicherung stehen lassen). Sonst: alte Positionen hier schliessen.
+    # Erst das Konto vergleichen, DANN das Buch lesen: ein unlesbares Buch darf den alten Piloten in einem ANDEREN Konto nie sperren.
     try:
         bf = BF.einstellungen(env)
         p2_modus = "echt" if bf["echtgeld"] else "testnetz"
-        b2 = P2L.buch_lesen(P2L.BESTAND, p2_modus)
-        # gleiches Konto? Echtgeld: Pilot 2.0 hat einen eigenen Schlüssel (PILOT2_API_KEY) → anderes Konto = alter Pilot schliessen
-        gleiches_konto = not bf["echtgeld"] or bf.get("key") == env.get("PILOT2_API_KEY")
-        p2 = P2L._gestartet(b2) and gleiches_konto
+        gleiches_konto = teilt_konto(env, p2_modus, bf)
     except Exception:  # noqa: BLE001
-        p2 = True
+        p2_modus, gleiches_konto = None, True
+    if not gleiches_konto:
+        p2 = False
+    else:
+        try:
+            p2 = P2L._gestartet(P2L.buch_lesen(P2L.BESTAND, p2_modus))
+        except Exception:  # noqa: BLE001 — Buch unlesbar und dasselbe Konto: nichts anfassen (der Not-Aus von Pilot 2.0 meldet es)
+            p2 = True
+    alt_name = " (alter Pilot)" if zeilen else ""  # neben Meldungen von Pilot 2.0 klar sagen, welches Konto gemeint ist
     ziele = [] if p2 else [(m, sym) for m, (sym, _, _) in MAERKTE.items()]
     try:  # kopierte Telegram-Calls schliesst der Not-Aus auch
         import calls_kopierer as CK
@@ -325,6 +360,7 @@ def schliessen_alle(ausfuehren=None, heute=None, env=None):
         zeilen.append(f"⚠️ Telegram-Calls nicht lesbar ({type(ex).__name__}) — kopierte Calls bitte im Binance-Konto prüfen!")
         alles_zu = False
     for m, sym in ziele:
+        m = m if m.startswith("Call ") else m + alt_name
         e = {"hebel": 0.0, "stand": heute}
         try:
             a = ausfuehren(e, symbol=sym, gewicht=1 / len(MAERKTE)) or []
@@ -362,19 +398,38 @@ def lauf_merken(ok, hinweise, trocken=False, logbuch=None):
     schreiben(lb, datei)
 
 
-def handeln2(ents, lage, trocken):
-    """Pilot 2.0 (KRYPTO_PILOT2=an): Long über Spot, Short über Perpetual, freier Teil als Funding-Ernte (pilot2_live.py)."""
+def handeln2(ents, lage, trocken, alt_offen=(), alt_fehler=None):
+    """Pilot 2.0 (KRYPTO_PILOT2=an): Long über Spot, Short über Perpetual, freier Teil als Funding-Ernte (pilot2_live.py).
+    alt_offen: Positionen des alten Piloten in seinem eigenen Konto — die verwaltet niemand, solange Pilot 2.0 läuft."""
     import pilot2_live as P2L
     lb = lies()
     for e in ents:
         vorher = letzter(lb, e["markt"])
         if not vorher or vorher["stand"] != e["stand"]:
             lb["entscheide"] = (lb["entscheide"] + [e])[-4000:]
+    zusatz = []
+    if alt_offen:
+        zusatz.append("⚠️ Der alte Pilot hat noch offene Positionen in seinem Konto (" + ", ".join(alt_offen) + ") — die verwaltet "
+                      "niemand, solange Pilot 2.0 läuft (kein Trend-Ausstieg, kein Stop-Nachziehen). Schliessen: stop.bat (schliesst "
+                      "beide Piloten), danach weiter.bat.")
+    elif alt_fehler:
+        zusatz.append(f"ℹ️ Konto des alten Piloten nicht lesbar ({alt_fehler}) — offene Positionen dort bitte selbst prüfen.")
     try:
-        r2 = P2L.ausfuehren(ents, trocken=trocken, protokolliere=None if trocken else P2L.protokoll_schreiben)
-    except Exception as ex:  # noqa: BLE001
-        r2 = {"zeilen": [f"⚠️ Pilot 2.0 abgebrochen ({type(ex).__name__}: {str(ex)[:150]}) — bitte im Binance-Konto prüfen!"],
+        gestartet = bool(P2L.buch_lesen(P2L.BESTAND, P2L.einstellungen()["modus"])["start"])
+    except Exception:  # noqa: BLE001 — unlesbares Buch meldet ausfuehren() selbst
+        gestartet = True
+    if alt_offen and not gestartet:
+        r2 = {"zeilen": zusatz + ["⚠️ Pilot 2.0 startet erst, wenn der alte Pilot keine offenen Positionen mehr hat — kein Auftrag."],
               "auftraege": [], "warnung": True, "kapital": None, "modus": None}
+    else:
+        try:
+            r2 = P2L.ausfuehren(ents, trocken=trocken, protokolliere=None if trocken else P2L.protokoll_schreiben)
+        except Exception as ex:  # noqa: BLE001
+            r2 = {"zeilen": [f"⚠️ Pilot 2.0 abgebrochen ({type(ex).__name__}: {str(ex)[:150]}) — bitte im Binance-Konto prüfen!"],
+                  "auftraege": [], "warnung": True, "kapital": None, "modus": None}
+        if zusatz:
+            r2["zeilen"] = zusatz + r2["zeilen"]
+            r2["warnung"] = r2["warnung"] or bool(alt_offen)
     if not trocken:
         kontostand_merken(lb, ents[0]["stand"], r2.get("kapital"), f"pilot2-{r2.get('modus')}")
         lb["letzter_lauf"] = {"zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), "ok": not r2["warnung"],
@@ -395,17 +450,25 @@ def handeln(ents, lage, trocken):
     lage: Text oder Funktion (wird erst nach den Aufträgen aufgerufen)."""
     import pilot2_live as P2L
     if P2L.aktiv():
-        return handeln2(ents, lage, trocken)
+        alt, fehler = alter_pilot_offen()
+        return handeln2(ents, lage, trocken, alt, fehler)
     if P2L.hat_bestand():
-        # Pilot 2.0 ausgeschaltet, aber seine Positionen sind noch da: der alte Pilot würde den Ernte-Short für seinen halten
-        # und mit einem closePosition-Stop die Absicherung zerstören → nichts tun, laut melden.
+        # Pilot 2.0 ausgeschaltet, aber gestartet: seine Positionen verwaltet niemand → laut melden. Im SELBEN Konto würde der
+        # alte Pilot den Ernte-Short für seinen halten (closePosition-Stop zerstört die Absicherung) → dann handelt er nicht.
         import signale as SG
-        t = ("⚠️ Pilot 2.0 hat noch offene Positionen, ist aber ausgeschaltet (KRYPTO_PILOT2). Der alte Pilot handelt nicht. "
-             "Zuerst Not-Aus (stop.bat) — er schliesst Pilot 2.0 —, danach weiter.bat.")
+        try:
+            modi = P2L.modi_mit_bestand()
+        except P2L.BuchKaputt:
+            modi = ["echt", "testnetz"]  # unbekannt → vorsichtig
+        selbes = any(teilt_konto(None, m) for m in modi)
+        t = (f"⚠️ Pilot 2.0 ist gestartet ({', '.join(modi)}), aber ausgeschaltet (KRYPTO_PILOT2) — seine Positionen verwaltet niemand. "
+             "Not-Aus (stop.bat) schliesst sie, danach weiter.bat."
+             + (" Der alte Pilot handelt nicht (gleiches Konto)." if selbes else " Der alte Pilot handelt in seinem eigenen Konto weiter."))
         print(t)
         if not trocken:
             SG.push(t + "\nKeine Anlageberatung.")
-        return 3
+        if selbes:
+            return 3
     import broker_futures as BF
     lb = lies()
     zeilen, wechsel_da, alle, warnung = [], False, [], False
