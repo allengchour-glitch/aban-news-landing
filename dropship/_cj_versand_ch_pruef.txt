@@ -8155,3 +8155,7 @@ hundespielball-fur-kauen-und-apportieren-605900	2511230252091606100	16	9.72	ok	l
 2er-set-schrank-organizer-fur-kleider-accessoi-502337	2074743451929137153	0	-	KEINE CH-Option → DRAFT	landeseite
 7-tage-pillendose-mit-3-fachern-pro-tag-935554	2074708991344570370	0	-	KEINE CH-Option → DRAFT	landeseite
 2er-set-sortierboxen-mit-je-28-fachern-982210	2074709199724199938	0	-	KEINE CH-Option → DRAFT	landeseite
+multifunktionales-ballnetz-mit-schulterriemen-796097	2074709159676985346	0	-	KEINE CH-Option → DRAFT	landeseite
+minimalistisches-2-lagen-metallregal-602000	2607061232201602600	16	12.62	ok	landeseite
+jaysuing-steinreinigungspulver-080322	2075054284679606273	1	9.56	ok	landeseite
+kabelloser-anionen-glattkamm-mit-usb-ladefunkt-431232	1775079509637734400	7	8.34	ok	landeseite
