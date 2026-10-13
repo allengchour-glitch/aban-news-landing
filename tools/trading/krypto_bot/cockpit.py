@@ -11,6 +11,8 @@ Es lauscht nur auf diesem PC (127.0.0.1), nicht im Netzwerk.
 
 Telegram-Steuerung (läuft mit, wenn TELEGRAM_BOT_TOKEN und TELEGRAM_CHAT_ID gesetzt sind). Befehle nur aus deinem Chat:
   /profit  Gewinn + offene Positionen · /status  Pilot heute · /konto  Wochenbericht · /ki  Claude-Einschätzung · /lage  Markt-Infos
+  /news    die letzten News-Alarme (der News-Wächter läuft mit dem Cockpit alle 30 Minuten und meldet Hacks, gestoppte
+           Abhebungen, Insolvenzen, Depegs, SEC/ETF und BTC/ETH-Delistings — nur Info, der Bot handelt nicht nach News)
   /stop    Not-Aus: Positionen schliessen, alle Bots stoppen · /weiter  Not-Aus aufheben · /hilfe
 """
 from __future__ import annotations
@@ -42,7 +44,7 @@ PAUSE = HIER.parent / "ki_bot" / "PAUSE"  # Auto-Handel aus: nichts handeln, Pos
 SEITE = HIER / "cockpit.html"
 MARKT = HIER / "markt.html"
 HILFE = ("Befehle: /profit Gewinn und Positionen · /status Pilot heute · /konto Wochenbericht · /ki Claude-Einschätzung · /lage Markt-Infos · "
-         "/calls Telegram-Calls (Schatten-Bilanz) · "
+         "/calls Telegram-Calls (Schatten-Bilanz) · /news News-Alarme · "
          "/stop Not-Aus (Positionen schliessen) · /weiter Not-Aus aufheben")
 
 
@@ -653,6 +655,9 @@ def befehl(text):
     if b == "/lage":
         import infos as I
         return "Lagebild (nur Info, Stand des letzten Laufs): " + I.text(I.lagebild(nur_speicher=True))
+    if b == "/news":
+        import news_waechter as NW
+        return NW.letzte()
     if b == "/calls":
         import calls_kopierer as CK
         s = calls_stand()
@@ -745,6 +750,7 @@ def main():
     ap.add_argument("--port", type=int, default=8765)
     ap.add_argument("--kein-browser", action="store_true")
     ap.add_argument("--ohne-telegram", action="store_true")
+    ap.add_argument("--ohne-news", action="store_true")
     a = ap.parse_args()
     Cockpit.port = a.port
     srv = ThreadingHTTPServer(("127.0.0.1", a.port), Cockpit)
@@ -753,6 +759,11 @@ def main():
     if os.environ.get("TELEGRAM_BOT_TOKEN") and os.environ.get("TELEGRAM_CHAT_ID") and not a.ohne_telegram:
         threading.Thread(target=telegram_schleife, daemon=True).start()
         print("Telegram-Steuerung aktiv: /status /konto /ki /lage /stop /weiter")
+    if not a.ohne_news:
+        import news_waechter as NW
+        import signale as SG
+        threading.Thread(target=NW.schleife, args=(SG.push,), daemon=True).start()
+        print(f"News-Wächter aktiv: prüft alle {NW.NEWS_MINUTEN} Minuten, Alarme kommen aufs Handy (/news zeigt die letzten).")
     if not a.kein_browser:
         import webbrowser
         threading.Timer(1.0, lambda: webbrowser.open(adresse)).start()

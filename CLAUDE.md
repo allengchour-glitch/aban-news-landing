@@ -64,6 +64,18 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-13 abends (👥 Copy-Trading · 🐸 Meme/Top 10/alles · 📰 News-Wächter — alle Protokolle VORAB committet):**
+User: «kopiere vom besten», «trade auch meme coins und alles … top 10 auch», «checke immer news überall». Ergebnisse (README `tools/trading/krypto_bot/`):
+- **Copy-Trading** `copytrading_pruefung.py` + `copytrading_kern.py` (24 Tests): 472 Binance-Leadtrader über öffentliche bapi-Endpunkte (ohne Konto).
+  Rang kippt (Rangkorrelation −0,40; beste 10 % der 1. Hälfte machen danach median +16 %, der Rest +58 %), 73–79 % der ROI-Besten schon neu
+  gestartet, 30–40 % haben Kopierer im Minus. Filter «kopierbar»: 3 von 472 → nur Vorwärts-Test. **Ab 12.11.2026: `copytrading_pruefung.py --auswerten`**.
+- **Meme/Top 10/alles** `alle_coins_pruefung.py` (12 Tests, Daten `binance_daten.py` inkl. delisteter Coins): **keine Gruppe besteht.** Halten
+  Top 10 ×0,25 (−85 %), Meme ×0,13 (−94 %), alles ×0,03 (−98 %); bester Herausforderer Top 10 mit BTC-Filter ×2,22 (−38 %) <
+  **Bitcoin mit Trend 150 ×3,27 (−28 %)**. Fix: zwei am selben Tag verschwundene Coins liessen `gewinner_pruefung.simulieren` abstürzen.
+- **News-Wächter** `news_waechter.py` (24 Tests): Binance-Ankündigungen (Delisting/Listing/News) + 4 RSS-Feeds alle 30 Min. im Cockpit-Thread,
+  Alarme (Hack, Abhebungen gestoppt, Insolvenz, Depeg, SEC/ETF, Delisting BTC/ETH) aufs Handy, `/news`. **Handelt nicht** (News-Daten haben
+  keinen Prüfstand bestanden). Twitter/X nur mit bezahlter API, Telegram-Kanäle über PC (`calls_leser.py`).
+
 **📌 2026-10-13 (⏱️ Scalping ehrlich getestet → verliert; Pilot 2.0 nach 5 Prüfungen weiter gesperrt):** User: «mache scalping,
 höchste Präzision und Gewinn». `tools/trading/krypto_bot/scalping_pruefung.py` + `scalping_kern.py` (50 Tests, Mutationsprobe 16/16),
 Protokoll VORAB committet (`198f2b1`), dann echte Binance-Futures-1m-Daten BTC/ETH 2022-01–2026-09 (je 2'496'960 Minuten, Archiv

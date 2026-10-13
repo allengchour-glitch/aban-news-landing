@@ -344,6 +344,19 @@ senden». Das hängt nicht an der PC-Uhr und gilt auch, wenn beim Start das Netz
 ausgeführt). `/stop` und `/weiter` laufen sofort — langsame Info-Befehle (`/lage`, `/status`, `/profit`) laufen nebenher
 und halten den Not-Aus nie auf.
 
+## 📰 News-Wächter — immer im Bild, aber kein News-Trading (`news_waechter.py`)
+
+Läuft mit dem Cockpit (`cockpit.py`) auf deinem PC und prüft **alle 30 Minuten**: Binance-Ankündigungen (Delistings,
+neue Listings, Binance-News) und die Krypto-Nachrichten von Cointelegraph, Decrypt, The Block und CoinDesk (mit
+`CRYPTOPANIC_KEY` zusätzlich CryptoPanic). Wichtiges kommt sofort aufs Handy, `/news` in Telegram zeigt die letzten Alarme:
+**Hack** · **Abhebungen gestoppt** · **Insolvenz** · **Stablecoin-Depeg** · **SEC/ETF-Entscheid** · **Delisting von BTC/ETH**.
+Jeder Eintrag kommt nur einmal; beim allerersten Start wird nichts gemeldet (sonst käme die ganze Liste).
+- **Twitter/X:** nur mit bezahltem X-Zugang lesbar — darum nicht dabei. **Telegram-Kanäle** liest dein PC mit deinem Konto
+  (`calls_leser.py`, siehe «Telegram-Call-Gruppen»).
+- **Warum der Bot nicht nach News handelt:** Bis eine Schlagzeile da ist, ist der Kurs meist schon gelaufen — und unsere
+  Stimmungs-Daten (Angst & Gier enthält auch Social-Media-Stimmung) haben den Prüfstand nicht bestanden (siehe «Alle Infos»).
+  Der Wächter meldet; entscheiden kannst du (z. B. Not-Aus per `/stop`).
+
 ## 📣 Telegram-Call-Gruppen kopieren — erst ehrlich prüfen, dann (vielleicht) kopieren
 
 Viele Call-Gruppen zeigen nur ihre Gewinner, löschen Verlierer oder sind Pump-Gruppen. Darum geht es in drei Stufen:
@@ -393,6 +406,73 @@ gleichzeitig (`CALLS_MAX_OFFEN`), je Coin einer. Bitcoin und Ethereum gehören d
 auch kopierte Calls, Pause = keine neuen. Telegram `/calls` zeigt die Bilanz. Unlesbare Formate kann Claude lesen
 (`CALLS_CLAUDE=1`, ein paar Zehntel-Cent je Nachricht) — Claude liest nur ab, entscheidet nichts.
 `…\calls_kopierer.py --probe "LONG #SOLUSDT Entry 145-148 TP 152 SL 140"` zeigt, was mit einer Nachricht passieren würde.
+
+## 👥 «Die Besten kopieren» (Binance Copy-Trading) — ehrlich geprüft (`copytrading_pruefung.py`)
+
+Binance zeigt öffentlich, was jeder Leadtrader erreicht hat — auch, ob **seine Kopierer** Geld verdient haben, und wie oft
+er schon ein Portfolio geschlossen und neu angefangen hat. Fragen und Filter standen fest, bevor die Daten geladen wurden
+(Commit `2e8b5a7`). Stand 13.10.2026, 472 Leadtrader aus den Top 150 von fünf Ranglisten:
+
+| Rangliste (Binance) | Median-ROI der Top 10 | Top 10: Kopierer im Minus | Top 150: Kopierer im Minus | Schon neu gestartet (Top 150) |
+|---|---|---|---|---|
+| ROI 30 Tage | +3'816 % | 40 % | 32 % | 73 % |
+| ROI 90 Tage | +4'814 % | 30 % | 36 % | 76 % |
+| ROI 180 Tage | +5'834 % | 30 % | 41 % | 79 % |
+| Gewinn 90 Tage | +341 % | 30 % | 43 % | 56 % |
+| Kopierer-Gewinn 90 Tage | +482 % | 0 % | 0 % | 60 % |
+
+- **Die Rangliste zeigt vor allem Glück und Neustarts.** Rund drei Viertel der ROI-Besten haben schon Portfolios geschlossen
+  und neu angefangen — ein Totalverlust verschwindet so aus der Statistik. Bei 30–40 % der Besten sind die Kopierer
+  insgesamt im Minus, obwohl der Leadtrader Tausende Prozent zeigt (Beispiel: Platz 2 der 90-Tage-Liste +7'453 %,
+  Kopierer −477'739 USDT).
+- **Ein guter Rang hält nicht — er kippt.** Bei 217 Leadtradern mit mindestens 120 Tagen Kurve: Wer in der ersten
+  Hälfte zu den besten 10 % gehörte, machte in der zweiten Hälfte im Median **+16 %**,
+  alle anderen **+58 %** (Rangkorrelation **−0,40**: je besser vorher,
+  desto schlechter nachher). 32 % der Besten lagen in der zweiten Hälfte im Minus.
+  Und das ist noch geschönt: Wer pleite ging, fehlt in den Daten.
+- **Filter «kopierbar»** (≥ 180 Tage, nie neu gestartet, Kopierer im Plus, 30/90/180 Tage im Plus, Einbruch ≤ 25 %, kein
+  Hebel > 20×, kein Martingale-Muster): **3 von 472** bleiben. Die Hürden, an denen die meisten scheitern:
+  zu kurz dabei (309), schon neu gestartet (82), Kopierer im Minus (55).
+- Die 3 sind **keine Empfehlung**, sondern Kandidaten für den **Vorwärts-Test**: Ab heute werden sie mit den naiven Top 10
+  verglichen; nach 30 Tagen zählt, was Kopieren seither gebracht hätte (`copytrading_pruefung.py --auswerten`, fällig ab
+  12.11.2026, Daten `data/copytrading-schatten.json`). **Warnzeichen** trotz bestandenem Filter: «Kristofer Hogon SAzs»
+  schloss 253 Positionen ohne einen einzigen Verlust, mit bis zu 50× Hebel — so sieht es aus, wenn Verlierer offen liegen
+  bleiben (die zählen in der Statistik nicht). «iiTrader» (Hebel höchstens 3×, 300 Positionen,
+  Trefferquote 41 %) und «CryptoWizards» (446 Tage, Einbruch 7,8 %) sehen
+  solider aus. Dazu kommt die Gewinnbeteiligung (10–20 % deines Gewinns gehen an den Leadtrader).
+- **Wer trotzdem kopiert:** kleiner fester Betrag («Fixed Amount»), in Binance einen Copy-Stop-Loss setzen, keinen höheren
+  Hebel als der Leadtrader, und den Vorwärts-Test abwarten. Keine Anlageberatung.
+
+## 🐸 Meme-Coins, Top 10 und «alles traden» — ehrlich getestet: schlechter als Bitcoin (`alle_coins_pruefung.py`)
+
+Die Trend-Regel des Piloten auf JEDEN Coin angewendet, mit allen Binance-USDT-Paaren seit 2017 — auch den abgemeldeten
+(LUNA, FTT …), sonst würde der Test die Verlierer weglassen. Regeln vorab festgelegt (Commit `249b1d8`): wöchentlich
+entschieden, höchstens 10 Plätze, Trendlänge nur 2018–2021 gewählt (Top 10: 50 Tage, alle Coins/Memes: 150 Tage), Kosten
+0,15 % (Top 10) bzw. 0,3 % (dünnere Märkte) je Umschichtung. 26 Meme-Coins mit Binance-Daten (1000CAT, 1000CHEEMS, 1000SATS, 1MBABYDOGE, ACT, BABY, BANANAS31, BOME, BONK, BROCCOLI714, DOGE, DOGS, FLOKI, MEME, MUBARAK, NEIRO, NOT, PENGU, PEOPLE, PEPE, PNUT, SHIB, TRUMP, TST, TURBO, WIF).
+Stand 2026-10-12:
+
+| Gruppe / Regel | 2022–2023 pro Jahr | 2024–heute pro Jahr | ab 2022: aus 1 wurde | schlimmster Einbruch | Zufall geschlagen | Urteil |
+|---|---|---|---|---|---|---|
+| Top 10: alles halten | −46,4 % | −6,1 % | × 0,25 | −85 % | – | ❌ |
+| Top 10: Trend je Coin | −6,3 % | +15,4 % | × 1,37 | −45 % | 96 % | ❌ |
+| Top 10: Trend + Bitcoin-Filter | +19,5 % | +15,3 % | × 2,22 | −38 % | 93 % | ❌ |
+| Meme-Coins: alles halten | −38,8 % | −32,1 % | × 0,13 | −94 % | – | ❌ |
+| Meme-Coins: Trend je Coin | −4,8 % | −8,8 % | × 0,71 | −71 % | 99 % | ❌ |
+| Meme-Coins: Trend + Bitcoin-Filter | −1,8 % | −4,0 % | × 0,88 | −69 % | 100 % | ❌ |
+| alle Coins: alles halten | −49,1 % | −55,2 % | × 0,03 | −98 % | – | ❌ |
+| alle Coins: Trend je Coin | −76,3 % | −57,2 % | × 0,01 | −100 % | 57 % | ❌ |
+| alle Coins: Trend + Bitcoin-Filter | +2,7 % | −1,4 % | × 1,06 | −58 % | 100 % | ❌ |
+| **Bitcoin mit Trend 150 (Pilot-Kern)** | +33,0 % | +22,7 % | × 3,27 | −28 % | | |
+| Bitcoin halten | −5,9 % | +24,8 % | × 1,71 | −67 % | | |
+
+- **Keine Gruppe besteht.** Bitcoin mit Trend 150 machte ab 2022 aus 1 → 3,27 bei höchstens −28 % Einbruch; die beste
+  Alternative (Top 10 mit Trend + Bitcoin-Filter) nur × 2,22 bei −38 %.
+- **Meme-Coins halten: −94 %** Einbruch, aus 1 wurden 0,13. Auch mit Trend-Regel und Bitcoin-Filter im Minus. Die Regel
+  schlägt zwar fast alle Zufallskopien (sie meidet die schlimmsten Abstürze) — aber «weniger schlecht» reicht nicht.
+- **Alle Coins mit Trend-Regel: aus 1 wurden 0,01** (−100 % Einbruch). Bei hunderten Altcoins kauft die Regel ständig
+  kurze Ausbrüche, die sofort wieder einbrechen — und zahlt jedes Mal Gebühren.
+- **Darum handelt der Bot weiter nur Bitcoin und Ethereum.** Meme-Coins sind für ihn nur Beobachtung (News-Wächter).
+  Keine Anlageberatung.
 
 ## 🏆 «Top-Krypto traden, Gewinnern folgen» — ehrlich getestet: verliert
 
@@ -688,6 +768,11 @@ python3 tools/trading/krypto_bot/test_binance.py  # 21 Tests, inkl. nachgebautem
 python3 tools/trading/krypto_bot/test_pilot2_plan.py  # 23 Tests: Pilot-2.0-Rechnung (Richtung, Ernte, Pfand, Mindestbeträge)
 python3 tools/trading/krypto_bot/test_pilot2_live.py  # 101 Tests: Pilot 2.0 («Konto = Wahrheit») gegen eine strenge nachgebaute Binance
 python3 tools/trading/krypto_bot/test_scalping.py      # 50 Tests: kein Blick in die Zukunft, strenge Füll-Regeln, Kosten exakt, Entscheidungsregeln
+python3 tools/trading/krypto_bot/test_news_waechter.py # 24 Tests: Alarm-Regeln, keine Fehlalarme, nur einmal melden, kein Fluten beim Start
+python3 tools/trading/krypto_bot/test_alle_coins.py    # 12 Tests: Universen Top 10/Meme/Alle, Trend-Auswahl, kein Blick in die Zukunft
+python3 tools/trading/krypto_bot/alle_coins_pruefung.py # Prüfstand Meme-Coins, Top 10 und alles (lädt alle Binance-Paare)
+python3 tools/trading/krypto_bot/test_copytrading.py   # 24 Tests: Filter «kopierbar», Rangkorrelation, Vorwärts-Test (ohne Netz)
+python3 tools/trading/krypto_bot/copytrading_pruefung.py  # Prüfstand Copy-Trading (Binance-Leadtrader); --auswerten = Vorwärts-Test nach 30 Tagen
 python3 tools/trading/krypto_bot/scalping_pruefung.py  # Prüfstand Scalping (lädt beim ersten Lauf ~200 MB Binance-Minutenarchive); --bericht = Tabelle
 python3 tools/trading/krypto_bot/pilot_pruefung.py   # Prüfstand: Stop, Trendlänge, Schwankungsziel, Ethereum
 python3 tools/trading/krypto_bot/info_pruefung.py    # Prüfstand: 13 freie Markt-Infos

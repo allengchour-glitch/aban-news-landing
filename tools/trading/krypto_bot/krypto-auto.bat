@@ -40,7 +40,7 @@ if exist "tools\trading\ki_bot\PAUSE" (
   goto ende
 )
 echo Selbsttest ...
-for %%T in (test_pilot test_sammler test_infos test_cockpit test_profit test_calls test_pilot2_plan test_pilot2_live) do (
+for %%T in (test_pilot test_sammler test_infos test_cockpit test_profit test_calls test_pilot2_plan test_pilot2_live test_news_waechter) do (
   %PY% tools\trading\krypto_bot\%%T.py > "data\selbsttest-%%T.log" 2>&1 || (
     echo Selbsttest %%T fehlgeschlagen - nichts gehandelt. Details: data\selbsttest-%%T.log
     %PY% tools\trading\krypto_bot\meldung.py --fehler "Selbsttest %%T fehlgeschlagen - nichts gehandelt (Details: data\selbsttest-%%T.log)" --push
