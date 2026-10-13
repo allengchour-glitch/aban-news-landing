@@ -9,6 +9,8 @@ set -u
 cd "$(dirname "$0")/.." || exit 1
 B=claude/luxestyle-status-tztnn1
 S=$(mktemp -d)
+# 13.10.2026: auch bei Abbruch (Container-Neustart, timeout) aufräumen — 12 verwaiste Kopien à ~120 MB lagen in /tmp (1,3 GB, Platte voll).
+[ "${KEEP_S:-0}" = 1 ] || trap 'rm -rf "$S"' EXIT
 cp dropship/*.txt "$S"/ 2>/dev/null
 # 07.10.2026: auch die .tsv-Ledger sichern (85 Dateien, bisher bei reset --hard verloren) — Union unten nur als Schwanz-Union.
 cp dropship/*.tsv "$S"/ 2>/dev/null
