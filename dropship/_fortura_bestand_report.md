@@ -1,12 +1,12 @@
-# Fortura-Bestandsabgleich — 2026-10-13 03:16 UTC
+# Fortura-Bestandsabgleich — 2026-10-13 23:24 UTC
 
-Feed: /tmp/fortura_feed.csv (20198 Zeilen, 18834 ArtNr, Fingerabdruck 69f734f8436a)
+Feed: /tmp/fortura_feed.csv (20201 Zeilen, 18837 ArtNr, Fingerabdruck 473004557c11)
 Shop: 8416 Varianten mit SKU `fortura-*`
 
 | | Anzahl |
 |---|---|
-| Menge geändert | 708 |
-| unverändert (Feed = Shop) | 7708 |
+| Menge geändert | 431 |
+| unverändert (Feed = Shop) | 7985 |
 | auf 0 gesetzt (nicht mehr im Feed) | 0 |
 | beim Schreiben offen geblieben (nächster Lauf) | 0 |
 | ohne Bestandsführung, unangetastet | 0 |
