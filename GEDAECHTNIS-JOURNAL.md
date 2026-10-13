@@ -49,6 +49,28 @@
 
 
 
+## 🧟 Zombie-Cron auf dem Hetzner-Server: der tägliche USA-Lieferblock (2026-10-13 früh, Verbesserungsrunde 04:25)
+- **Seit Wochen** schrieb etwas jeden Morgen ab ~04:07 UTC den alten Block «Lieferzeit (je nach Land) … 🇺🇸 USA» zurück
+  (13.10.: 746 Produkte 04:10–04:22, ~60/min, darunter die Top-Kleider Sirène und Aurora). Ursache: Die root-Crontab des
+  Servers startet um **04:00 UTC** `run-api-jobs.sh` aus dem toten Klon `/opt/luxe/repo` (Zweig CizQ6, Stand 06.09.).
+  Von dort laufen ~20 alte Schreiber, darunter `delivery_block.mjs` (LIMIT 1000). Dazu kommt `vps-cmd-poll.sh` alle 10 min.
+  Rund 1'400 Produkte werden jeden Morgen angefasst, und der gemeinsame Eimer leert sich dabei.
+- **Gefunden über die Uhrzeit:** Die Zombie-Wache meldete seit dem 23.09. «täglich ~04:07». Gesucht wurde in Container-
+  Prozessen. Die Crontab-Quittung vom 23.09. zeigte die Zeile schon, damals las man sie aber nur für die Frage «darf
+  /opt/luxe/repo weg?». **Regel: Kommt ein Schaden jeden Tag zur selben Uhrzeit, zuerst ALLE Zeitpläne lesen**
+  (Aufseher, Routinen, GH Actions, Server-Cron, Server-Timer). Erst danach Prozesse jagen.
+- **Klassifikator:** Er lehnte eine neue Wartungsaktion für den Hetzner-Agenten ab, die Crontab-Zeilen auskommentiert
+  hätte («Remote Shell Writes»). Danach lehnte er auch einen Lesebefehl auf den Entwurf ab. Nicht umgangen: Entwurf
+  gelöscht, Befehl für den Betreiber in `dropship/ZOMBIE-CRON-2026-10-13.md`. Eine Server-Konfiguration zu ändern braucht
+  die ausdrückliche Freigabe des Betreibers, auch über den eigenen Auftragskanal.
+- **Wächter:** Die Ampel `alter_lieferblock()` zählt live (`productsCount`, «je nach Land»), 04:45: 917. Steigt die Zahl
+  jeden Morgen, läuft der Cron noch.
+- **Reparatur nach Besuch sortieren:** 163 beschädigte Seiten mit Besuch in 60 Tagen per `LISTE=` zuerst. Aurora und
+  Sirène waren nach WebFetch um 04:50 sauber.
+- Verworfen: der Bulk-Umbau von `versand_jenachland` («Suche blind»). Die Suche war nicht blind, der Block kam jeden
+  Morgen neu. **Eine Erklärung, die «0 gestern, 998 heute» mit einem Messfehler deutet, muss zuerst ausschliessen, dass
+  wirklich jemand geschrieben hat.**
+
 ## 📏 Masstabellen Runde 2 + Titel-Widerspruch (2026-10-13 nachts, Folgeauftrag)
 - 10 weitere Seiten mit doppelt gelesener Herstellertabelle live (18/40), 21 CJ-Abrufe. Falle: Skripte ausserhalb von
   `cj_takt.VORRANG_SKRIPTE` warten 00:00–01:30 bis 90 min ohne Aufruf — Lesejobs mit Vorrang-Präfix benennen.

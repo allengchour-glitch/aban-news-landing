@@ -937,6 +937,23 @@ def such_boosts():
     return None
 
 
+def alter_lieferblock():
+    """Alter Lieferblock «Lieferzeit (je nach Land) … 🇺🇸 USA: 12–22 Tage» (13.10.2026). GEMESSEN: der root-Cron des
+    Hetzner-Servers startet täglich 04:00 UTC run-api-jobs.sh aus dem toten Klon /opt/luxe/repo (Zweig
+    claude/luxestyle-product-CizQ6, Stand 06.09.); dessen delivery_block.mjs schreibt den Block in bis zu 1'000
+    Produkte zurück (13.10.: 746, darunter Sirène und Aurora). versand_jenachland repariert ab 04:25, braucht bei
+    leerem Eimer aber Stunden. Gemessen wird der ZUSTAND (productsCount, Volltext), nicht die Absicht — die Zeile
+    verschwindet erst, wenn die Cron-Zeilen aus sind UND die Reparatur durch ist."""
+    try:
+        c = gql('{productsCount(query:"status:active AND \\"je nach Land\\""){count precision}}')["data"]["productsCount"]
+    except Exception as e:
+        return f"LIEFERBLOCK ALT: unklar ({type(e).__name__})"
+    if not c["count"]:
+        return None
+    return (f"📦 LIEFERBLOCK ALT: {c['count']} aktive Produkte zeigen «je nach Land · USA» — alter Server-Cron "
+            "04:00 UTC (toter Klon /opt/luxe/repo) → Befehl in dropship/ZOMBIE-CRON-2026-10-13.md")
+
+
 def offene_punkte():
     """Zählt die Abschnitte in COWORK-AUFTRAEGE.md VOR dem Erledigt-Teil."""
     p = os.path.join(REPO, "dropship", "COWORK-AUFTRAEGE.md")
@@ -1044,8 +1061,8 @@ def verkauf_gewinn():
 def main():
     ohne_token = not os.path.exists(TOKPFAD)
     # Pruefungen, die den Shop-Token brauchen, laufen ohne ihn nicht — alle anderen schon (26.09.).
-    MIT_TOKEN = (liechtenstein_gesperrt, klingen_pingpong, grow_zaehler, drafts_ohne_quittung, datei_speicher_voll, video_deckel)
-    pruefungen = (bot_puls, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kassen_lieferdatum, werbetest, verkauf_gewinn, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik, such_boosts)
+    MIT_TOKEN = (liechtenstein_gesperrt, klingen_pingpong, grow_zaehler, drafts_ohne_quittung, datei_speicher_voll, video_deckel, alter_lieferblock)
+    pruefungen = (bot_puls, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kassen_lieferdatum, werbetest, verkauf_gewinn, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik, such_boosts, alter_lieferblock)
     teile = [zugang_weg()]
     for f in pruefungen:
         if ohne_token and f in MIT_TOKEN:

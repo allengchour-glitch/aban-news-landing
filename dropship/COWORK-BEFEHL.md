@@ -1,5 +1,16 @@
 # COWORK-BEFEHL — Fassung 21.09.2026, 09:40 UTC (für heute Abend)
 
+## 🆕 13.10. 05:00 UTC — Hetzner: zwei alte Cron-Zeilen abschalten (~2 Min, Hetzner-Konsole als root)
+Der Server startet jeden Morgen um 04:00 UTC alten Code aus `/opt/luxe/repo` (toter Zweig vom 06.09.). Dieser Code
+schreibt in rund 750 Produkte «Lieferzeit … 🇺🇸 USA: 12–22 Tage» und fasst insgesamt rund 1'400 Produkte an.
+```bash
+crontab -l > /root/crontab-sicherung-2026-10-13.txt
+crontab -l | sed '/^[^#].*\/opt\/luxe\/repo/ s/^/#aus-13.10. /' | crontab -
+crontab -l | grep -c '^[^#].*/opt/luxe/repo'      # muss 0 ausgeben
+```
+Rückweg: `crontab /root/crontab-sicherung-2026-10-13.txt`. Belege und Hintergrund: `dropship/ZOMBIE-CRON-2026-10-13.md`.
+Die Ampel-Zeile «📦 LIEFERBLOCK ALT» verschwindet, sobald der Cron aus ist und die Reparatur durch ist.
+
 
 
 
