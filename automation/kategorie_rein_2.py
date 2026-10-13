@@ -270,6 +270,8 @@ KANARIEN = {
         ("Leichte Steppjacke mit Stehkragen für Damen", "Damenmode", [], True),
         ("Chiffon Cardigan – Strand-Cover-Up mit Sonnenschutz", "Damenmode", [], False),
         ("Kurzarm-Cardigan mit Digitaldruck", "Damenmode", [], False),
+        ("Langärmliger, mit Kapuze, gefütterter Baumwollmantel", "Damenmode", [], True),
+        ("Weitläufiger, mit Kapuze, schwarzer Mantel – 1XL-5XL", "Damenmode", [], True),
     ],
     "damen-strick-pullover": [
         ("Gestreifter Strickcardigan für Damen", "Damenmode", [], True),
@@ -375,8 +377,11 @@ def _produkte(query=None, handle=None):
         cur = d["pageInfo"]["endCursor"]
 
 
+EINSCHUB = R(r",\s*(mit|inkl\.?|inklusive)\s[^,]*,")   # 13.10.: «Langärmliger, mit Kapuze, gefütterter Baumwollmantel» — Einschub, kein Trenner
+
+
 def hauptteil(titel):
-    return TRENNER.split(titel, maxsplit=1)[0]
+    return TRENNER.split(EINSCHUB.sub(",", titel), maxsplit=1)[0]
 
 
 def pod(p):
@@ -471,7 +476,7 @@ def lauf(handle, c):
         kand.update(produkte(query=q))
     kand.update(produkte(query=f"tag:{c['tag']} status:active"))
     rein = {i for i, p in kand.items() if gehoert(c, p)}
-    raus = set(jetzt) - rein
+    raus = {i for i in set(jetzt) - rein if not pod(kand[i])}   # 13.10.: POD bleibt (heilig) — nicht jeden Tag als «raus» melden
     neu = rein - set(jetzt)
     print(f"== {handle}: jetzt {len(jetzt)} · gehört {len(rein)} · raus {len(raus)} · neu {len(neu)}")
     stichprobe(kand, raus, "−")

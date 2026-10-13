@@ -1768,6 +1768,11 @@ def plan(A, musik, ziel_s=12.0, einstieg=None, zone='organisch', hook_text=None,
 
 
 # ================================================================================================ TEXTEBENEN
+# 13.10.2026 (Prüfer R2/R3, Preis-Wahrheit): «ab CHF 18.90», wenn die Varianten verschieden kosten (Motor: preisAnzeige in
+# post_guard.mjs). Vorher nahm der Motor die ERSTE Variante ohne «ab» — Kleid 20.90 bei Spanne 18.90–20.90.
+PREIS_FORMAT = re.compile(r'(?:ab )?CHF \d+\.\d\d')
+
+
 def text_ebenen(ordner, titel1='', titel2='', preis='', hook='', zone='organisch'):
     """PNG-Ebenen aus den overlay.py-Bausteinen (font/spaced/wrap/text_cx, Farben, KOPF_Y/HOOK_Y/FUSS_Y/CX_FUSS).
     kopf (ab Bild 0), hook (0 -> t_F), info (Titel+Preis+Fusszeile, t_F -> t_C), infocta (wie info, aber «Link in Bio»
@@ -2268,8 +2273,8 @@ def main(argv=None):
             return 0 if A['nutzbar_sauber_s'] >= 6.0 else (print(f"UNGEEIGNET: nur {A['nutzbar_sauber_s']:.1f} s sauberes Material") or 3)
         if not a.musik:
             raise ValueError('--musik fehlt')
-        if a.preis and not re.fullmatch(r'CHF \d+\.\d\d', a.preis.strip()):
-            raise ValueError('--preis im Format «CHF 19.90» (live aus Shopify, nie erfinden)')
+        if a.preis and not PREIS_FORMAT.fullmatch(a.preis.strip()):
+            raise ValueError('--preis im Format «CHF 19.90» oder «ab CHF 19.90» (live aus Shopify, nie erfinden)')
         hook = a.hook.strip()
         # Bild 0 = Marke + Hook <= 40 Zeichen ist Pflicht (Code-Pruefung 23.09.: die Motor-Hooks sind bis 36 Zeichen
         # lang, Bild 0 haette 45 Zeichen); > 24 Zeichen nur Hinweis (Lesezeit steigt, steht im Entscheidungslog)

@@ -354,6 +354,13 @@ def main():
                               'CHF 19.90', 'Geschirr-Set für Hunde', zone=z)
             ok(f'Textebenen in der sicheren Zone ({z})', T['zone_ok'], '; '.join(T['zone_fehler'])[:120])
         ok('Bild 0 <= 40 Zeichen (Marke + Hook)', T['zeichen']['bild0'] <= 40, str(T['zeichen']))
+        # 13.10.2026 (Preis-Wahrheit): «ab CHF X» bei verschiedenen Variantenpreisen — Format erlaubt, passt in beide Zonen
+        za = [S.text_ebenen(os.path.join(arbeit, 'txt_ab_' + z), 'Hoodie & Jogginghose Set', 'im Partnerlook', 'ab CHF 129.90',
+                            'Hoodie-Set', zone=z) for z in ('organisch', 'meta')]
+        ok('«ab CHF 129.90» in beiden Zonen; Format «ab CHF 19.90» ja, «ab 19.90»/«CHF 19.9» nein',
+           all(x['zone_ok'] for x in za) and bool(S.PREIS_FORMAT.fullmatch('ab CHF 19.90')) and bool(S.PREIS_FORMAT.fullmatch('CHF 19.90'))
+           and not S.PREIS_FORMAT.fullmatch('ab 19.90') and not S.PREIS_FORMAT.fullmatch('CHF 19.9'),
+           '; '.join(sum((x['zone_fehler'] for x in za), []))[:120])
         fb = S.fremdtext_woerter([('$12.99', 88, 0, 0, 40, 12), ('50%', 80, 50, 0, 20, 12), ('OFF', 80, 72, 0, 20, 12)],
                                  [('39.9元', 70, 0, 20, 40, 12)])
         ok('Fremdpreis-Regel: $12.99, 50% OFF, 39.9元', len(fb['preise']) == 3, str(fb['preise']))

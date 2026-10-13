@@ -1651,6 +1651,29 @@ if [ -f "$REPO/automation/interne_links.py" ] && [ "$(date -u +%u)" = "1" ] && [
   ( cd "$REPO" && timeout 900 python3 automation/interne_links.py --pruefen 2>&1 | tail -1 | tee -a /tmp/interne_links.log )
   ( cd "$REPO" && SCHARF=1 timeout 1800 python3 automation/interne_links.py --scharf >> /tmp/interne_links.log 2>&1; grep "^geschrieben" /tmp/interne_links.log | tail -1 )
 fi
+# KATEGORIEN-VERZEICHNIS + WAISEN-KOLLEKTIONEN (13.10.2026, SEO-Sofort ON-M5). GEMESSEN 13.10.: kategorien_verzeichnis.py rief
+# kein Runner — /pages/alle-kategorien hatte 388 Links, gps-tracker/futterautomaten/trinkbrunnen-katzen fehlten, futterautomaten
+# und gps-tracker hatten 0 eingehende Links. Täglich ab 05 UTC (Tagesstempel, flock, timeout 600/900): erst das Verzeichnis
+# (Rückgang-Sperre > 5 Links → schreibt nicht, «VERZEICHNIS: ⚠️ Rückgang n»), dann interne_links.py --waisen
+# (veröffentlicht + ≥ 3 aktive, ohne Link aus Menü/Footer/Startseite/Kollektionstext/Ratgeber/Seite). Gemeldet wird das
+# Ergebnis des LETZTEN Laufs, nur bei Befund (⚠️) oder Lesefehler. Im selben Lauf: KOLLEKTIONSTEXT-PRODUKTLINKS (tote
+# Produktlinks im ganzen Text veröffentlichter Kollektionen — seit 13.10. verlinkt weihnachten-2026 die Weihnachtskugeln). Stand: dropship/_kategorien_verzeichnis_stand.json,
+# dropship/_waisen_kollektionen.json. Rückweg Seite: python3 automation/kategorien_verzeichnis.py --zurueck
+KVL=/tmp/kategorien_verzeichnis.log
+if [ -f "$REPO/automation/kategorien_verzeichnis.py" ] && [ "$(date -u +%H)" -ge 5 ]; then
+  if [ ! -f /tmp/kategorien_verzeichnis_$(date -u +%F).stamp ] || absturz_nachholen "$KVL" || still_gestorben "$KVL"; then
+    touch /tmp/kategorien_verzeichnis_$(date -u +%F).stamp
+    ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_kategorien_verzeichnis.lock; flock -n 9 || exit 0; exec >> \"$KVL\" 2>&1; \
+        echo \"START \$(date -u +%FT%TZ) (Aufseher)\"; \
+        AUFSEHER=1 timeout 600 python3 automation/kategorien_verzeichnis.py; \
+        timeout 900 python3 automation/interne_links.py --waisen; \
+        echo \"FERTIG \$(date -u +%FT%TZ)\"" 9>&- & )
+  fi
+  if [ -s "$KVL" ]; then
+    KVZ=$(letzter_lauf "$KVL" | grep -E "^VERZEICHNIS: .*(Rückgang|ABWEICHUNG)|^WAISEN-KOLLEKTIONEN: ([1-9]|unklar)|^KOLLEKTIONSTEXT-PRODUKTLINKS: ([1-9]|unklar)|Traceback|Quelle nicht baubar" | tail -n 3 | tr '\n' ' ')
+    [ -n "$KVZ" ] && echo "$(date -u +%H:%M) ⚠️ ${KVZ}(Log $KVL)"
+  fi
+fi
 # REGEL-KANARIEN (05.10.2026, Semrush Runde 3): Welten/Anker in interne_links.py + Semrush-Kategorien (169 Fälle) — stündlich,
 # < 1 s, ohne Shop. Fehler = eine Regeländerung kippt einen bekannten Fall → melden (die Tagesläufe würden Fremdware taggen/verlinken).
 RK1=$(cd "$REPO" && timeout 60 python3 automation/interne_links.py --kanarien 2>&1 | tail -1)

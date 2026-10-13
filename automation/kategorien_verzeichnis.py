@@ -18,14 +18,39 @@ Als Dublette gilt nur: gleiche Produktzahl UND der eine Titel beginnt mit dem an
 Das ist bewusst eng — sonst verschwinden echte Unterkategorien.
 
 DRY=1 zeigt die Gruppierung zum Lesen, ohne die Seite anzufassen.
+
+⚠️ RÜCKGANG-SPERRE (13.10.2026, SEO-Sofort ON-M5). Seit dem 13.10. läuft das Verzeichnis TÄGLICH im Aufseher
+(vorher rief es kein Runner — die Seite stand vom 10.10. bis 13.10. still, drei neue Kollektionen mit gemessener
+Nachfrage — gps-tracker, futterautomaten, trinkbrunnen-katzen — fehlten). Ein Tageslauf darf aber nicht still
+Kategorien verlieren: liefert Shopify eine halbe Kollektionsliste oder fallen viele Kollektionen unter 3 aktive,
+wäre die Seite danach dünner und niemand merkt es. Darum wird VOR dem Schreiben die Linkzahl der LIVE-Seite
+gelesen. Fällt die neue Zahl um mehr als RUECKGANG_MAX (5), schreibt der Lauf NICHT und meldet
+«VERZEICHNIS: ⚠️ Rückgang n» (Aufseher-Zeile + dropship/_kategorien_verzeichnis_stand.json). Ist der Rückgang
+gewollt (Saisonende), einmal von Hand: ERZWINGEN=1 python3 automation/kategorien_verzeichnis.py
+Altwert: dropship/_kategorien_verzeichnis_alt.html (der Seitentext VOR dem letzten Schreiben);
+Rückweg: python3 automation/kategorien_verzeichnis.py --zurueck
+Unverändert → kein Schreibzugriff.
 """
-import json, os, re, subprocess, sys, time
+import html, json, os, re, subprocess, sys, time, urllib.parse
+
+try:  # Eimer-Etikette (Regel «helfer-ohne-eimer»): nach jeder Antwort den throttleStatus lesen
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from eimer_etikette import nachlauf
+except Exception:  # pragma: no cover
+    def nachlauf(d):
+        return 0
 
 SHOP = "au3j0y-hq.myshopify.com"
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
 QUELLE = os.environ.get("QUELLE", "/tmp/kollektionen.json")
 HANDLE = "alle-kategorien"
 DRY = os.environ.get("DRY") == "1"
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+STAND = os.path.join(REPO, "dropship", "_kategorien_verzeichnis_stand.json")
+ALT = os.path.join(REPO, "dropship", "_kategorien_verzeichnis_alt.html")
+RUECKGANG_MAX = int(os.environ.get("RUECKGANG_MAX", "5"))
+ERZWINGEN = os.environ.get("ERZWINGEN") == "1"
+VLINK_RE = re.compile(r'href="/collections/([^"#?]+)"')
 
 # Interne Kuratier-Hilfen, keine Kundenkategorien.
 RAUS = {"home-page", "hero-favoriten", "im-video-vorgestellt", "frauen-favoriten",
@@ -114,6 +139,7 @@ def gql(q, v=None):
                            capture_output=True, text=True)
         try:
             d = json.loads(r.stdout)
+            nachlauf(d)
             if d.get("data"):
                 return d
             if "THROTTL" in json.dumps(d.get("errors") or "").upper():
@@ -245,22 +271,19 @@ def main():
     if UEBRIG in gruppen:
         reihen.append((UEBRIG, sorted(gruppen[UEBRIG], key=lambda x: -x[2])))
 
-    for name, eintraege in reihen:
+    for name, eintraege in ([] if os.environ.get("AUFSEHER") == "1" else reihen):   # Aufseher-Log: nur Ergebniszeilen
         print(f"\n{name}  ({len(eintraege)})")
         print("   " + " · ".join(t for t, _, _ in eintraege[:14])
               + (" …" if len(eintraege) > 14 else ""))
-
-    if DRY:
-        print("\n(DRY=1 — Seite nicht angefasst)")
-        return
 
     teile = ['<div class="lux-kat">',
              '<p class="lux-kat-lead">Der ganze Shop auf einen Blick — '
              f'{len(koll)} Kategorien. Was du suchst, ist meist zwei Klicks entfernt.</p>']
     for name, eintraege in reihen:
-        teile.append(f'<h2 class="lux-kat-h">{name}</h2><ul class="lux-kat-l">')
+        teile.append(f'<h2 class="lux-kat-h">{html.escape(name, quote=False)}</h2><ul class="lux-kat-l">')
         for t, h, _ in eintraege:
-            teile.append(f'<li><a href="/collections/{h}">{t}</a></li>')
+            # Emoji-Handles prozent-kodiert (so stand die Live-Seite am 13.10. — ein roher Emoji-Pfad ist kein gültiger URL-Pfad)
+            teile.append(f'<li><a href="/collections/{urllib.parse.quote(h, safe="-_.")}">{html.escape(t, quote=False)}</a></li>')
         teile.append('</ul>')
     teile.append('</div>')
     teile.append(
@@ -277,16 +300,39 @@ def main():
 
     # ⚠️ `pageByHandle` gibt es in 2024-10 nicht mehr ("Field doesn't exist on QueryRoot").
     # Gesucht wird über die Seitenliste mit Handle-Filter.
-    d = gql('query($q:String!){pages(first:5,query:$q){nodes{id handle}}}',
-            {"q": f"handle:{HANDLE}"})
-    if d is None:
+    vorhanden = seite_lesen()
+    if vorhanden == "PAUSE":
         print("PAUSE (Shopify antwortet nicht) — Seite unveraendert")
         return
-    treffer = [n for n in ((d.get("data") or {}).get("pages") or {}).get("nodes", [])
-               if n["handle"] == HANDLE]
-    vorhanden = treffer[0] if treffer else None
     titel = "Alle Kategorien — der ganze Shop auf einen Blick"
+    alt_links = verzeichnis_links(vorhanden["body"]) if vorhanden else []
+    neu_links = verzeichnis_links(body)
+    weg = sorted(set(alt_links) - set(neu_links))
+    dazu = sorted(set(neu_links) - set(alt_links))
+    rueckgang = len(set(alt_links)) - len(set(neu_links))
+    stand = {"stand": time.strftime("%Y-%m-%dT%H:%MZ", time.gmtime()), "links_alt": len(set(alt_links)),
+             "links_neu": len(set(neu_links)), "rueckgang": max(rueckgang, 0), "neu": dazu[:40], "weg": weg[:40]}
+    if DRY:
+        print(f"\n(DRY=1 — Seite nicht angefasst) VERZEICHNIS trocken: {len(set(neu_links))} Links (live {len(set(alt_links))}) · "
+              f"neu {len(dazu)}: {', '.join(dazu)} · weg {len(weg)}: {', '.join(weg)} · "
+              f"{'⚠️ Sperre würde greifen' if vorhanden and rueckgang > RUECKGANG_MAX else 'Sperre greift nicht'}")
+        return
+    if vorhanden and rueckgang > RUECKGANG_MAX and not ERZWINGEN:
+        stand["geschrieben"] = False
+        stand_schreiben(stand)
+        print(f"VERZEICHNIS: ⚠️ Rückgang {rueckgang} ({len(set(alt_links))} → {len(set(neu_links))} Links) — NICHT geschrieben · "
+              f"fehlen: {', '.join(weg[:12])}{' …' if len(weg) > 12 else ''} · gewollt? ERZWINGEN=1")
+        print("Verzeichnis gesperrt — Lauf ohne Schreiben beendet")
+        return
+    if vorhanden and gleich(vorhanden["body"], body) and vorhanden["title"] == titel:
+        stand["geschrieben"] = False
+        stand_schreiben(stand)
+        print(f"VERZEICHNIS: unverändert · {len(set(neu_links))} Links")
+        print("Verzeichnis fertig")
+        return
     if vorhanden:
+        with open(ALT, "w", encoding="utf-8") as f:       # Altwert VOR dem Schreiben (Rückweg --zurueck)
+            f.write(vorhanden["body"] or "")
         r = gql('mutation($id:ID!,$p:PageUpdateInput!){pageUpdate(id:$id,page:$p)'
                 '{userErrors{message}}}',
                 {"id": vorhanden["id"], "p": {"title": titel, "body": body}})
@@ -302,9 +348,66 @@ def main():
     fehler = (list((r.get("data") or {}).values()) or [{}])[0].get("userErrors")
     if fehler:
         print("  ⚠️", json.dumps(fehler)[:200]); return
-    print(f"Seite /pages/{HANDLE} {art} — {len(koll)} Kategorien verlinkt")
-    print("FERTIG")
+    zurueck = seite_lesen()
+    ok = isinstance(zurueck, dict) and gleich(zurueck["body"], body)
+    stand["geschrieben"] = ok
+    stand_schreiben(stand)
+    print(f"Seite /pages/{HANDLE} {art} — {len(koll)} Kategorien verlinkt · zurückgelesen {'ok' if ok else 'ABWEICHUNG'}")
+    print(f"VERZEICHNIS: {len(set(neu_links))} Links (vorher {len(set(alt_links))})"
+          + (f" · neu: {', '.join(dazu[:10])}{' …' if len(dazu) > 10 else ''}" if dazu else "")
+          + (f" · weg: {', '.join(weg[:10])}" if weg else "")
+          + ("" if ok else " · ⚠️ Zurücklesen weicht ab"))
+    print("Verzeichnis fertig")
 
+
+def seite_lesen():
+    """Die Verzeichnisseite live (id, title, body) · None = gibt es nicht · "PAUSE" = Shopify stumm."""
+    d = gql('query($q:String!){pages(first:5,query:$q){nodes{id handle title body}}}',
+            {"q": f"handle:{HANDLE}"})
+    if d is None:
+        return "PAUSE"
+    treffer = [n for n in ((d.get("data") or {}).get("pages") or {}).get("nodes", [])
+               if n["handle"] == HANDLE]
+    return treffer[0] if treffer else None
+
+
+def gleich(a, b):
+    """Inhaltsgleich trotz Shopify-Umformung: Shopify setzt «&» als «&amp;» und bricht zwischen Tags um (gemessen
+    13.10.: 229× &amp;, «</h2>\n<ul»). Verglichen wird ohne Leerraum zwischen Tags und mit aufgelösten Entitäten."""
+    n = lambda s: re.sub(r">\s+<", "><", html.unescape(s or "")).strip()
+    return n(a) == n(b)
+
+
+def verzeichnis_links(body):
+    """Kollektions-Handles, auf die der Seitentext verlinkt (Reihenfolge wie im Text), dekodiert — «%F0%9F%8E%81-…» und
+    «🎁-…» sind derselbe Link."""
+    return [urllib.parse.unquote(h) for h in VLINK_RE.findall(body or "")]
+
+
+def stand_schreiben(stand):
+    try:
+        with open(STAND, "w", encoding="utf-8") as f:
+            json.dump(stand, f, ensure_ascii=False, indent=1)
+    except OSError as e:
+        print("  Stand nicht schreibbar:", e)
+
+
+def zurueck():
+    """Rückweg: schreibt den Seitentext aus dropship/_kategorien_verzeichnis_alt.html zurück (liest live zurück)."""
+    if not os.path.exists(ALT):
+        print("kein Altwert", ALT); return
+    alt = open(ALT, encoding="utf-8").read()
+    v = seite_lesen()
+    if not isinstance(v, dict):
+        print("Seite nicht lesbar/vorhanden — nichts zurückgestellt"); return
+    r = gql('mutation($id:ID!,$p:PageUpdateInput!){pageUpdate(id:$id,page:$p){userErrors{message}}}',
+            {"id": v["id"], "p": {"body": alt}})
+    z = seite_lesen()
+    print("zurückgestellt" if isinstance(z, dict) and gleich(z["body"], alt) else f"FEHLER {json.dumps(r)[:200]}",
+          f"· {len(set(verzeichnis_links(alt)))} Links")
 
 if __name__ == "__main__":
-    main()
+    if "--zurueck" in sys.argv:
+        zurueck()
+    else:
+        main()

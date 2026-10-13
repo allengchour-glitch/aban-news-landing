@@ -21,7 +21,7 @@
 import { hashtagSet } from './lib/hashtags.mjs';
 import { fbText, mitFolgen } from './lib/fb_text.mjs';   // 07.10.: FB-eigener Text (klickbarer Link + Folge-Zeile)
 import fs from 'node:fs';
-import { lock as postLock, seen as postSeen, mark as postMark, preisVeraltet, nachVorrang, montageErst, montagePruefen, montageQuelle, juryPruefen, modelSperre } from './post_guard.mjs';
+import { lock as postLock, seen as postSeen, mark as postMark, preisVeraltet, produktMerkenReel, nachVorrang, montageErst, montagePruefen, montageQuelle, juryPruefen, modelSperre } from './post_guard.mjs';
 // 22.09.: Adresse vor dem Post pruefen — 14 von 22 «ready»-Reels waren 404 (CDN-Dateien weg). 4xx → archived-deadurl.
 import { execFileSync as _exf, spawnSync } from 'node:child_process';
 const erreichbar = u => { try { const c = _exf('curl', ['-s', '-o', '/dev/null', '-w', '%{http_code}', '--max-time', '30', '-r', '0-1000', u], { encoding: 'utf8' }).trim(); return /^20[06]$/.test(c) ? true : c; } catch { return 'curl'; } };
@@ -214,15 +214,15 @@ async function produktAktiv(postId) {
       const r = await fetch(`https://${shop}/admin/api/2026-01/graphql.json`, { method: 'POST',
         headers: { 'X-Shopify-Access-Token': tok, 'Content-Type': 'application/json' },
         body: JSON.stringify({ query: bh
-          ? `{ products(first:1, query:"handle:${bh[1]}"){ nodes{ handle status onlineStoreUrl priceRangeV2{ minVariantPrice{ amount } maxVariantPrice{ amount } } } } }`
+          ? `{ products(first:1, query:"handle:${bh[1]}"){ nodes{ id handle status onlineStoreUrl priceRangeV2{ minVariantPrice{ amount } maxVariantPrice{ amount } } } } }`
           : istShopifyId
-          ? `{ product(id:"gid://shopify/Product/${m[1]}"){ status onlineStoreUrl priceRangeV2{ minVariantPrice{ amount } maxVariantPrice{ amount } } } }`
-          : `{ products(first:1, query:"sku:CJ-${m[1]}"){ nodes{ status onlineStoreUrl priceRangeV2{ minVariantPrice{ amount } maxVariantPrice{ amount } } } } }` }) });
+          ? `{ product(id:"gid://shopify/Product/${m[1]}"){ id handle status onlineStoreUrl priceRangeV2{ minVariantPrice{ amount } maxVariantPrice{ amount } } } }`
+          : `{ products(first:1, query:"sku:CJ-${m[1]}"){ nodes{ id handle status onlineStoreUrl priceRangeV2{ minVariantPrice{ amount } maxVariantPrice{ amount } } } } }` }) });
       const d = await r.json();
       const p = istShopifyId ? (d && d.data && d.data.product) : ((d && d.data && d.data.products && d.data.products.nodes && d.data.products.nodes[0]) || (d && d.data ? null : undefined));
       if (p === null) return { ok: false, grund: 'Produkt existiert nicht mehr' };
       if (bh && p && p.handle !== bh[1]) return { ok: false, grund: 'Produkt existiert nicht mehr (Handle anders)' };
-      if (p) return { ok: p.status === 'ACTIVE' && !!p.onlineStoreUrl, grund: `status ${p.status}, onlineStoreUrl ${p.onlineStoreUrl ? 'ja' : 'nein'}`, url: p.onlineStoreUrl || '', min: parseFloat(p.priceRangeV2?.minVariantPrice?.amount || 'NaN'), max: parseFloat(p.priceRangeV2?.maxVariantPrice?.amount || 'NaN') };
+      if (p) return { ok: p.status === 'ACTIVE' && !!p.onlineStoreUrl, grund: `status ${p.status}, onlineStoreUrl ${p.onlineStoreUrl ? 'ja' : 'nein'}`, url: p.onlineStoreUrl || '', min: parseFloat(p.priceRangeV2?.minVariantPrice?.amount || 'NaN'), max: parseFloat(p.priceRangeV2?.maxVariantPrice?.amount || 'NaN'), gid: p.id || '', handle: p.handle || '' };
     } catch {}
     await new Promise(r => setTimeout(r, 2000 * (a + 1)));
   }
@@ -360,6 +360,7 @@ try {
     pid = await planen(bauBody(norm));
   }
   postMark(url);                                                   // Ledger SOFORT (plattformuebergreifend)
+  produktMerkenReel(get(cand, 'caption'), id, pa.gid, pa.handle);  // 13.10.2026 (Prüfer R2): WARE merken wie die Bild-Poster
   cand[idx.status] = POSTED; cand[idx.posted_at] = new Date().toISOString(); cand[idx.post_url] = pid ? `metricool:${pid}` : 'metricool'; writeLedger();
   console.log(`✅ auf ${NETZ} geplant (${dateTime} ${TZ}), Metricool-Post ${pid || '?'} · Ledger aktualisiert → ${id} ${POSTED}`);
 } catch (e) {
