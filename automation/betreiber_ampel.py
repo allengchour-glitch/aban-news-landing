@@ -1223,11 +1223,43 @@ def verkauf_gewinn():
     return None
 
 
+def social_sperre():
+    """SOCIAL-SPERRE (13.10.2026, Betreiber «cj kostüme ja»): CJ-Halloween-Kostüme/-Partydeko 15.10.–01.11. aus TikTok, FB/IG,
+    Pinterest (automation/anlass_social_sperre.py, Aufseher täglich + erster Lauf kurz nach 15.10. 00:00 UTC). Zeile aus dem
+    Stand (--ampel), aber nur, wenn etwas zu tun ist: ⚠️ offen > 0, Fenstergrenze überschritten und noch kein scharfer Lauf
+    danach (> 1 h), oder im Fenster Stand älter als 30 h. Still auf dem Server (Stand liegt in der Cloud-Sitzung) und ohne Datei."""
+    if AUF_SERVER:
+        return None
+    pfad = os.path.join(REPO, "dropship", "_anlass_social_sperre.json")
+    if not os.path.exists(pfad):
+        return None
+    sys.path.insert(0, os.path.join(REPO, "automation"))
+    import anlass_social_sperre as ass
+    st = json.load(open(pfad, encoding="utf-8"))
+    zeilen = ass.ampel_zeilen(st)
+    warn = [z for z in zeilen if z.startswith("⚠️")]
+    jetzt = datetime.datetime.now(datetime.timezone.utc)
+    for r in ass.regel():
+        grenze = ass.zeit(r["ab"]) if jetzt < ass.zeit(r["bis"]) else ass.zeit(r["bis"])
+        if ass.faellig(jetzt, pfad) and jetzt >= grenze + datetime.timedelta(hours=1):
+            warn.append(f"⚠️ SOCIAL-SPERRE {r['anlass']}: Fenstergrenze {grenze:%d.%m. %H:%M} UTC überschritten, kein scharfer Lauf "
+                        f"danach → python3 automation/anlass_social_sperre.py --scharf (Log /tmp/anlass_social_sperre.log)")
+        a = (st.get("anlaesse") or {}).get(r["anlass"]) or {}
+        try:
+            alter = (jetzt - datetime.datetime.strptime(st["stand"], "%Y-%m-%dT%H:%MZ").replace(
+                tzinfo=datetime.timezone.utc)).total_seconds()
+        except Exception:
+            alter = 0
+        if a.get("phase") == "im" and alter > 30 * 3600:
+            warn.append(f"⚠️ SOCIAL-SPERRE {r['anlass']}: Stand {st.get('stand')} — Tageslauf fehlt (neue Importe ungesperrt)")
+    return " · ".join(dict.fromkeys(warn)) or None
+
+
 def main():
     ohne_token = not os.path.exists(TOKPFAD)
     # Pruefungen, die den Shop-Token brauchen, laufen ohne ihn nicht — alle anderen schon (26.09.).
     MIT_TOKEN = (liechtenstein_gesperrt, klingen_pingpong, grow_zaehler, drafts_ohne_quittung, datei_speicher_voll, video_deckel, alter_lieferblock)
-    pruefungen = (bot_puls, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kassen_lieferdatum, werbetest, verkauf_gewinn, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik, such_boosts, alter_lieferblock, gsc_tot, index_stand, wearable_seo, cj_suche_tor, waisen_verzeichnis)
+    pruefungen = (bot_puls, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kassen_lieferdatum, werbetest, verkauf_gewinn, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik, such_boosts, alter_lieferblock, social_sperre, gsc_tot, index_stand, wearable_seo, cj_suche_tor, waisen_verzeichnis)
     teile = [zugang_weg()]
     for f in pruefungen:
         if ohne_token and f in MIT_TOKEN:

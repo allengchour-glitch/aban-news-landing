@@ -589,7 +589,7 @@ while true; do
     ( cd "$REPO" && flock -n /tmp/lock_hype_export.lock python3 automation/hype_export_bauen.py >> /tmp/hype_export_bauen.log 2>&1 )
     echo "$(date -u +%H:%M) export.jsonl im falschen Format → neu gebaut"
   fi
-  for L in verkauf_gewinn_wache preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache produkttexte_du_form verlustbringer social_queue_saeubern jury_nachbessern bild_queue_captions_ehrlich google_feedback_wache bild_mini_entfernen kategorie_wache bild_heilversprechen styling_floskel_wache heilversprechen_seo_wache koll_seo_laengen beleuchtung_tags_fix kollektion_accessoires_fix ig_gepostet_tags herbst_kuratieren google_titel_reparatur bild_werbetext_rueckholer kollektion_doppel preis_verlustschutz fortura_ek_nachtragen kinder_sicherheit fuellmenge_nachtragen nachfrage_liebling social_saison_vorrang gfeed_anstupsen google_kategorie_fein schmuck_tag_heilen saison_tags_nachtragen; do
+  for L in verkauf_gewinn_wache preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache produkttexte_du_form verlustbringer social_queue_saeubern jury_nachbessern bild_queue_captions_ehrlich google_feedback_wache bild_mini_entfernen kategorie_wache bild_heilversprechen styling_floskel_wache heilversprechen_seo_wache koll_seo_laengen beleuchtung_tags_fix kollektion_accessoires_fix ig_gepostet_tags herbst_kuratieren google_titel_reparatur bild_werbetext_rueckholer kollektion_doppel preis_verlustschutz fortura_ek_nachtragen kinder_sicherheit fuellmenge_nachtragen nachfrage_liebling social_saison_vorrang gfeed_anstupsen google_kategorie_fein schmuck_tag_heilen saison_tags_nachtragen anlass_social_sperre; do
     fehlt "$REPO/automation/$L.py" && continue
     # ⚠️ FERTIG IST KEIN AUSSCHALTER (04.09.2026). Bis heute hiess «FERTIG im Log» =
     # nie wieder starten — nur ein /tmp-Wipe hat die Waechter je wieder geweckt. Gemessen:
@@ -608,6 +608,14 @@ while true; do
     if [ "$L" = versand_jenachland ]; then
       HM=$(date -u +%H%M); ZS=$(cat /tmp/_start_versand_jenachland 2>/dev/null || echo 0)
       [ "$HM" -ge 425 ] 2>/dev/null && [ "$HM" -lt 700 ] 2>/dev/null && [ "$ZS" -lt "$(date -u -d 'today 04:25' +%s)" ] && ZN=1
+    fi
+    # 13.10.2026 abends: anlass_social_sperre (Halloween-CJ 15.10.–01.11. aus TikTok/FB-IG/Pinterest) muss den ERSTEN
+    # scharfen Lauf kurz nach 15.10. 00:00 UTC machen — der 20-h-FERTIG-Takt würde ihn sonst bis zu 20 h in den Tag schieben
+    # (FERTIG vom 14.10. abends). `--faellig` vergleicht die Phase im Repo-Stand dropship/_anlass_social_sperre.json (vom
+    # letzten SCHARFEN Lauf) mit der Phase jetzt: Fenstergrenze überschritten → Lauf trotz FERTIG. Repo-Datei statt
+    # /tmp/_start_*, weil dreht_sich_im_kreis() die Startmarke vor jedem Neustart löscht. Gleiches gilt am 01.11. (Rückweg).
+    if [ "$L" = anlass_social_sperre ] && ( cd "$REPO" && python3 automation/anlass_social_sperre.py --faellig >/dev/null 2>&1 ); then
+      ZN=1
     fi
     # ⚠️ 29.09.2026: `tail -n 3` sah das FERTIG des VORTAGS über der einen Zeile eines Laufs, der beim Container-Neustart
     # starb (preis_verlustschutz 29.09. 04:09: «Kandidaten: 2788 …», keine Schlusszeile → 16 h «erledigt», 63 Verlustartikel
@@ -670,6 +678,9 @@ while true; do
     if [ "$L" = bild_queue_captions_ehrlich ] || [ "$L" = kategorie_wache ] || [ "$L" = bild_heilversprechen ]; then EXP="SCHARF=1"; fi
     # 02.10.2026: Saison-Tags (halloween) für Neuware ohne Tag — nur hinzufügen, Standard trocken → hier scharf.
     [ "$L" = saison_tags_nachtragen ] && EXP="SCHARF=1"
+    # 13.10. Betreiber «cj kostüme ja»: Halloween-CJ-Ware 15.10.–01.11. aus TikTok/FB-IG/Pinterest, ab 01.11. Rückweg aus
+    # dem Ledger. Vor dem Fenster schreibt der scharfe Lauf nur die Pause-Datei (Poster lesen das Fenster selbst).
+    [ "$L" = anlass_social_sperre ] && EXP="SCHARF=1"
     # 23.09.: herbst_kuratieren nur RAEUMEN (Sperr-Tags raus, nach 30.11. Tag weg) — Neuaufnahmen nur in betreuten Laeufen.
     [ "$L" = herbst_kuratieren ] && EXP="NUR_RAEUMEN=1"
     if [ "$L" = verlustbringer ]; then [ -f /tmp/kost28.jsonl ] || continue; EXP="SCHARF=1 CAP=300 EXPORT=/tmp/kost28.jsonl"; fi
@@ -735,7 +746,8 @@ while true; do
     # Für diese Liste setzt der Aufseher die Zeile nach Exit 0 selbst. NICHT für Wächter, die FERTIG bewusst weglassen,
     # solange Arbeit offen ist (verlustbringer, versand_jenachland …) — die bleiben ausserhalb der Liste.
     NACH=""
-    case " social_queue_saeubern bild_queue_captions_ehrlich ig_gepostet_tags suchwort_mehrzahl herbst_kuratieren koll_seo_laengen " in
+    # anlass_social_sperre: Exit 0 = FERTIG; Exit 1 bei offenen Kanal-Einträgen/Tags → nächster Tick versucht erneut.
+    case " social_queue_saeubern bild_queue_captions_ehrlich ig_gepostet_tags suchwort_mehrzahl herbst_kuratieren koll_seo_laengen anlass_social_sperre " in
       *" $L "*) NACH=1 ;;
     esac
     date +%s > "/tmp/_start_$L"
@@ -2068,6 +2080,20 @@ fi
       touch "$CLP"
       ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_ch_lager_profil.lock; flock -n 9 || exit 0; exec timeout 1800 python3 automation/ch_lager_profil.py --scharf" >> "$CLP" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) ch-lager-profil abgeglichen"
+    fi
+  fi
+  # 13.10.2026 (Entscheid 2, Betreiber «versandprofil ja mache es sauber»): Druck auf Bestellung (DTG-Shirts/Hoodies von Printful,
+  # Marge ≥ 0 im schlechtesten Fall) im Profil «Druck auf Bestellung» (0.00-Tarife unter den General-Namen, Transit 6–13) → Kasse
+  # = Seite. Täglich: Tarife/Transit, Regel (auch neue Druck-Produkte), Zeichen luxe.druck_profil_ids, Korb-Matrix (teurer → Rückweg),
+  # Stufe 2 ab 17.10. selbst. Bericht dropship/DRUCK-PROFIL-2026-10-13.md. PRINTFUL_API_KEY/PRINTFUL_STORE_ID aus der Umgebung
+  # (wöchentliche Kosten-Erneuerung; ohne sie meldet der Lauf den alten Kosten-Cache).
+  DRP=/tmp/druck_profil.log
+  if [ -f "$REPO/automation/druck_profil.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$DRP" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$DRP"; then
+      touch "$DRP"
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_druck_profil.lock; flock -n 9 || exit 0; exec timeout 1800 python3 automation/druck_profil.py --scharf" >> "$DRP" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) druck-profil abgeglichen"
     fi
   fi
   # 13.10.2026 (Betreiber «4 entscheide du sauber»): keine «Sicherheitsschuhe/Schutzschuhe» ohne Prüfnorm EN ISO 20345 (PSA) —

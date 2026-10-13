@@ -32,6 +32,7 @@ Idempotent, täglich lauffähig, erfasst neue Importe (Voll-Export per Bulk-Oper
   python3 automation/anlass_social_sperre.py --scharf      # gemäss Fenster schreiben (auch SCHARF=1, Aufseher-Schleife)
   python3 automation/anlass_social_sperre.py --selbsttest  # Kanarien (0 Fehler Pflicht, sonst schreibt nichts)
   python3 automation/anlass_social_sperre.py --ampel       # nur die Ampelzeile (liest Stand-Datei, kein Shop-Aufruf)
+  python3 automation/anlass_social_sperre.py --faellig     # Exit 0 = Fenstergrenze seit letztem scharfem Lauf (Aufseher)
   JETZT=2026-10-15T06:00:00Z … simuliert einen Zeitpunkt (nur Trockenlauf)
 """
 import csv
@@ -208,8 +209,23 @@ def selbsttest(leise=False):
         if ist != soll:
             print(f"✗ Zeilen-Zuordnung {zeile} → {ist}, soll {soll}")
             gut = False
+    # Aufseher-Takt: Phasenwechsel erzwingt den Lauf (simulierter Stand, simulierte Zeit)
+    import tempfile
+    r0 = regel()[0]
+    ab, bis = zeit(r0["ab"]), zeit(r0["bis"])
+    sek = dt.timedelta(seconds=1)
+    for st_phase, st_scharf, t, soll in [("vor", True, ab - sek, False), ("vor", True, ab, True), ("vor", False, ab - sek, True),
+                                         ("im", True, ab + sek, False), ("im", True, bis - sek, False), ("im", True, bis, True),
+                                         ("nach", True, bis + sek, False), (None, True, ab, True)]:
+        with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False, encoding="utf-8") as tf:
+            json.dump({"scharf": st_scharf, "anlaesse": {r0["anlass"]: {"phase": st_phase}} if st_phase else {}}, tf)
+        ist = faellig(t, tf.name)
+        os.unlink(tf.name)
+        if ist != soll:
+            print(f"✗ faellig(Stand {st_phase}/{st_scharf}, {t:%Y-%m-%dT%H:%M:%SZ}) → {ist}, soll {soll}")
+            gut = False
     if not leise:
-        print(f"SELBSTTEST {'OK' if gut else 'ROT'} (Zeilen-Zuordnung {len(faelle)} Fälle)")
+        print(f"SELBSTTEST {'OK' if gut else 'ROT'} (Zeilen-Zuordnung {len(faelle)} Fälle, Aufseher-Takt 8 Fälle)")
     return gut
 
 
@@ -484,7 +500,7 @@ def lauf(scharf):
     rc = 0
     for r in regel():
         ab, bis = zeit(r["ab"]), zeit(r["bis"])
-        phase = "vor" if jetzt_ < ab else ("im" if jetzt_ < bis else "nach")
+        phase = phase_von(r, jetzt_)
         pubs = publikationen(r)
         gid_name = {g: n for n, g in pubs.items()}
         k = Klasse(r)
@@ -602,10 +618,37 @@ def ampel_zeilen(stand):
     return aus or ["SOCIAL-SPERRE: unklar (kein Stand)"]
 
 
+def phase_von(r, t):
+    return "vor" if t < zeit(r["ab"]) else ("im" if t < zeit(r["bis"]) else "nach")
+
+
+def faellig(jetzt_=None, stand_datei=STAND):
+    """Für den Aufseher (fixer_keepalive.sh): True, wenn seit dem letzten SCHARFEN Lauf eine Fenstergrenze überschritten
+    wurde (Stand-Phase ≠ Phase jetzt) oder es keinen scharfen Stand gibt. Dann startet der Aufseher trotz FERTIG < 20 h —
+    so fällt der erste scharfe Lauf auf den ersten Tick nach 15.10. 00:00 UTC, nicht bis zu 20 h später. Repo-Datei statt
+    /tmp/_start_*: die löscht dreht_sich_im_kreis() vor jedem Neustart."""
+    t = jetzt_ or jetzt()
+    try:
+        st = json.load(open(stand_datei, encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        return True
+    if not st.get("scharf"):
+        return True
+    for r in regel():
+        alt = (st.get("anlaesse") or {}).get(r["anlass"], {}).get("phase")
+        if alt != phase_von(r, t):
+            return True
+    return False
+
+
 def main():
     a = sys.argv[1:]
     if "--selbsttest" in a:
         return 0 if selbsttest() else 1
+    if "--faellig" in a:            # Exit 0 = Phasenwechsel seit dem letzten scharfen Lauf → Aufseher startet sofort
+        f = faellig()
+        print("FAELLIG (Fenstergrenze seit letztem scharfem Lauf)" if f else "nicht fällig (Phase unverändert)")
+        return 0 if f else 1
     if "--ampel" in a:
         try:
             for z in ampel_zeilen(json.load(open(STAND, encoding="utf-8"))):
