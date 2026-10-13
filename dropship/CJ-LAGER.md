@@ -2,7 +2,7 @@
 
 Werkzeug `automation/cj_lager_abgleich.py` — Regel im Kopf. Bestand 0 → Variante «ausverkauft» (DENY), Bestand zurück → wieder kaufbar. Nichts gelöscht, nichts gedraftet.
 
-CJ-Ware aktiv: 49694 · in diesem Lauf fällig: 0
+CJ-Ware aktiv: 49721 · in diesem Lauf fällig: 0
 
 | Zustand | Anzahl |
 |---|---:|

@@ -310,3 +310,9 @@
 | unklar-sim | Anruf/Video ohne Netzangabe | [T92 Smartwatch mit Bluetooth-Anrufen & Gesundheits-Tracker](https://luxestyle.ch/products/t92-smartwatch-mit-bluetooth-anrufen-gesundhei-605200) |
 | unklar-sim | SIM ohne Netz | [Senioren-Telefonuhr mit Ortungsfunktion](https://luxestyle.ch/products/senioren-telefonuhr-mit-ortungsfunktion-448640) |
 | unklar-sim | SIM ohne Netz | [Smartwatch mit rundem Display und SIM-Karten-Funktion](https://luxestyle.ch/products/smartwatch-mit-rundem-display-und-sim-karten-f-042176) |
+
+## Lauf 2026-10-13 02:18 UTC
+
+| Urteil | Beleg | Produkt |
+|---|---|---|
+| 4g | 4g | [Farbwechselnder Lippenbalsam 4g](https://luxestyle.ch/products/farbwechselnder-lippenbalsam-4g-452992) |
