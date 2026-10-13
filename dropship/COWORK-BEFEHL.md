@@ -1,21 +1,19 @@
 # COWORK-BEFEHL — Fassung 21.09.2026, 09:40 UTC (für heute Abend)
 
-## 🆕 13.10. 17:00 UTC — vier kurze Entscheide (Verbesserungsrunde, alles Übrige macht die Sitzung)
+## 🆕 13.10. 17:00 UTC — vier kurze Entscheide (Verbesserungsrunde, alles Übrige macht die Sitzung) — Stand 18:15: 1 ✅ · 3 ✅ · 4 ✅ · **nur 2 offen**
 
-1. **Bearbeitungszeit 3 → 1 Werktag?** (Admin → Einstellungen → Versand und Zustellung → Voraussichtliche Zustellung, ~1 Min.; per API nicht schreibbar.)
+1. ✅ **ERLEDIGT 13.10. (Betreiber-Klick «P1D ja»; API gemessen 18:10 UTC: `processingTime` = P1D; Transit nachgezogen in Commit 5e315c409).** ~~**Bearbeitungszeit 3 → 1 Werktag?**~~ (Admin → Einstellungen → Versand und Zustellung → Voraussichtliche Zustellung, ~1 Min.; per API nicht schreibbar.)
    - **Die CJ-Kasse bleibt gleich:** Die Lieferzeit-Wache zieht die Bearbeitungszeit vom Transit ab.
    - **Ware ab Schweizer Lager käme früher an:** In der Kasse etwa 2–4 statt 5–6 Werktage.
    - **Danach** setze ich AGB, FAQ und alle Texte auf eine einheitliche Zahl.
    - Antwort: «P1D ja» oder «bleibt 3».
 2. **Google Merchant Center, zwei Blicke (~2 Min.):** Zuerst `kinder-sandalen-mit-bar-print-weiche-sohle-kle-628100` («Image under review») öffnen, danach `taktische-arbeitshosen-fur-herren-600400` («Inappropriate image»). Bei beiden den Status unter **Gratis-Einträge** ablesen (aktiv / ausstehend / abgelehnt) und mir den Wortlaut schicken.
    - Daran entscheide ich, ob die rund 670 Meldungen «in Prüfung» Ware aus der Google-Suche nehmen oder nicht.
-3. **Sturmfeuerzeug** (`handlicher-sturmfeuerzeug-brenner-618300`): Ist das für dich Raucherzubehör?
-   - **Bis zu deiner Antwort** bleibt es ausserhalb von Google und den Werbekanälen. Im Laden bleibt es sichtbar.
-   - **Bei «nein»** gebe ich es wieder frei.
-4. **Sicherheitsschuhe ohne Normangabe:** Keiner der 105 Schuhe nennt EN ISO 20345.
-   - (A) Kollektion «Arbeitsschuhe mit Stahlkappe» mit dem Hinweis «ohne Normprüfung», das Wort «Sicherheitsschuh» fällt weg.
-   - (B) Bei CJ für die 10 meistbesuchten Modelle Zertifikate anfragen.
-   - Bis zu deinem Entscheid ändere ich nichts.
+3. ✅ **BEANTWORTET 13.10.: Feuerzeuge = Rauchzubehör** (Betreiber «3 ja und auch sonst normale feuerzeug»; Regel `google_sperrliste.ist_feuerzeug`, Durchsetzer `google_sperrtags_durchsetzen.py` täglich im Aufseher, Commit 428400779; gemessen 18:10 UTC: Tag `smoke-zubehoer`, nicht im Google-Kanal, Laden ACTIVE). ~~**Sturmfeuerzeug** (`handlicher-sturmfeuerzeug-brenner-618300`): Ist das für dich Raucherzubehör?~~
+   - ~~Bis zu deiner Antwort … Bei «nein» gebe ich es wieder frei.~~ Überholt: Ein Freigeben von Hand hielte nicht — der tägliche Durchsetzer taggt jedes Feuerzeug über `ist_feuerzeug()` wieder. Ändern nur über die Regel.
+4. ✅ **ENTSCHIEDEN 13.10. (Betreiber «4 entscheide du sauber») → Variante A umgesetzt:** «Arbeitsschuh» + PSA-Hinweis, `automation/psa_schuhe_wache.py` (Aufseher täglich), Bericht `dropship/PSA-SCHUHE-2026-10-13.md`. ~~**Sicherheitsschuhe ohne Normangabe:** Keiner der 105 Schuhe nennt EN ISO 20345.~~
+   - (A) ✅ gewählt: «Arbeitsschuh/-stiefel» statt «Sicherheitsschuh», Hinweis «keine geprüfte PSA nach EN ISO 20345», Stahlkappe bleibt als Ausstattung.
+   - (B) verworfen (dauert, und ohne geprüfte Unterlagen bliebe die Bezeichnung falsch).
 
 Nach Stufe 3 (ab 17.10.) folgt noch eine Wortlaut-Freigabe: «Versand gratis für diesen Artikel» auf Produktseiten ab Schweizer Lager. In der Kasse ist das schon heute so.
 
