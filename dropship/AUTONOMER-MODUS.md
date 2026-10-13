@@ -17,6 +17,9 @@ fulfillment-fähigen CJ-Dropshipping-Produkten füllen — pro Durchlauf 1–4 S
 `python3 tools/gsc_schnappschuss.py <datei_0> [<datei_1000> …]`. Ohne frischen Schnappschuss (≤ 3 T) ist der GSC-Teil von `tote_landeseiten.py` blind
 (Ampel «GSC-TOT»). Grund: Shopify zählt Landungen auf 404-Seiten nicht als Sitzung.
 
+- **(a) SEO-Nachmessung zählt nur nach Google-Abruf** (13.10.2026, Index-Messgerät `tools/index_probe.py`, Mo+Do: `--pakete` → je ≤ 4 URLs mcp OpenSEO `inspect_urls` → Dateien → `python3 tools/index_probe.py <dateien>`, Ampel «INDEX»): eine Nachmessung einer SEO-Änderung zählt nur, wenn `lastCrawlTime` NACH dem Änderungsdatum liegt (`python3 tools/index_probe.py --abgerufen-seit JJJJ-MM-TT [url-teil]`). Sonst lautet das Urteil «noch nicht abgerufen», NICHT «wirkungslos» (gemessen 13.10.: 7 von 9 Top-Produkten zuletzt Juli–September abgerufen).
+- **(b) Keine neue Suchbegriff-Kollektion unter 50 % Index-Quote:** solange weniger als die Hälfte der Gruppe «suchbegriff» in `dropship/_index_probe_urls.txt` indexiert ist (Zeile «SUCHBEGRIFF» von `index_probe.py --stand`; Nullpunkt 13.10.: 2/7), wird KEINE neue Suchbegriff-Kollektion angelegt — erst die bestehenden in den Index bringen. Jede neue Suchbegriff-Kollektion kommt in die Liste (Gruppe «suchbegriff»).
+
 ## 1. Credentials (NUR aus der Umgebung — niemals im Repo!)
 - `CJ_EMAIL` und `CJ_API_KEY` kommen als **Environment-Variablen** (vom User gesetzt/gepastet).
   NIE in eine Repo-Datei schreiben (der Key wurde 2026-05-31 schon einmal wegen genau so eines

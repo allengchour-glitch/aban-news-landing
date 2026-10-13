@@ -1888,3 +1888,4 @@
 16616723906951	Farbe:3:3	2026-10-13	reisetasche-herren-leicht-robust-607900
 16616723775879	Farbe:3:3	2026-10-13	abtropfmatte-fur-kuche-und-bad-607100
 16616723710343	Farbe:4:4	2026-10-13	crossbody-brusttasche-fur-herren-611700
+16616723644807	Farbe:4+Grösse:2:8	2026-10-13	umhangetasche-messenger-626700
