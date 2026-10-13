@@ -512,6 +512,111 @@ def seo_rueckweg(ziel):
     print(f'Rückweg: {len(letzte)} Produkte')
 
 
+# ═══════════════════════════════════════════════════════════════════════════════════════════════
+# BILD-ALT-TEXTE (13.10.2026, SEO-Sofort-Nacharbeit B). Der Importer schreibt den Alt-Text aus dem
+# Importtitel («Smartarmband mit Blutdruckmessung – Bild 4 | LuxeStyle»). Bereinigt dieser Wächter
+# später den Titel, bleibt die Aussage in den Alt-Texten stehen — sichtbar für Google-Bilder und
+# Screenreader (WebFetch 13.10. fand sie auf der Seite des Smartarmbands, Titel/Text/SEO waren sauber).
+# GEMESSEN 13.10.: 3 aktive Produkte, 22 Bilder (P10 «EKG-Funktion», F600 «Blutzucker-Tracking»,
+# Smartarmband «Blutdruckmessung»). Kandidaten = jedes Produkt, dessen Titel oder SEO dieser Wächter
+# je angefasst hat (LEDGER + SEO_LEDGER) — genau dort stammt der Alt-Text aus einem unsauberen Titel.
+# Neu = aktueller Produkttitel + der alte Zusatz («– Bild N», «| LuxeStyle»). Motive zählen nicht
+# (kritisch() wie überall). Ledger dropship/_wearable_mess_alt.tsv mit Altwert; Rückweg: RUECKWEG_ALT=1.
+# ═══════════════════════════════════════════════════════════════════════════════════════════════
+ALT_LEDGER = 'dropship/_wearable_mess_alt.tsv'
+ALT_ZUSATZ = re.compile(r'^(.*?)((?:\s+[–-]\s+(?:Bild|Ansicht|Foto)\s+\d+)?(?:\s*\|\s*LuxeStyle(?:\s*CH)?)?)\s*$', re.S)
+Q_ALT = ('query($ids:[ID!]!){nodes(ids:$ids){... on Product{id handle title status '
+         'media(first:50){nodes{id alt}}}}}')
+M_ALT = 'mutation($f:[FileUpdateInput!]!){fileUpdate(files:$f){files{id alt} userErrors{field message}}}'
+
+
+def alt_neu(alt, titel):
+    """Neuer Alt-Text aus dem (sauberen) Produkttitel und dem alten Zusatz; None, wenn es keinen sauberen gibt."""
+    if not kritisch(alt):
+        return alt
+    t = titel_saeubern(titel or '').strip()
+    if not t or kritisch(t):
+        return None
+    zusatz = ALT_ZUSATZ.match(alt).group(2) or ''
+    neu = (t + zusatz).strip()
+    return None if kritisch(neu) else neu
+
+
+def alt_kandidaten():
+    ids = []
+    for pfad in (LEDGER, SEO_LEDGER):
+        try:
+            for z in open(pfad, encoding='utf-8'):
+                m = re.search(r'gid://shopify/Product/\d+', z)
+                if m:
+                    ids.append(m.group(0))
+        except OSError:
+            pass
+    return list(dict.fromkeys(ids))
+
+
+def alt_pruefen():
+    """Gibt (geprüft, betroffene Bilder, bereinigt, offen) zurück; offen=None heisst unklar."""
+    ids = alt_kandidaten()
+    n = betr = bereinigt = offen = 0
+    zeit = time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())
+    for i in range(0, len(ids), 50):
+        d = (gql(Q_ALT, {'ids': ids[i:i + 50]}).get('data') or {}).get('nodes')
+        if d is None:
+            return (n, betr, bereinigt, None)              # stumme Antwort ist kein Befund
+        for p in d:
+            if not p or p.get('status') != 'ACTIVE':
+                continue
+            n += 1
+            files, alt_von = [], {}
+            for m in (p.get('media') or {}).get('nodes') or []:
+                a = m.get('alt') or ''
+                if not kritisch(a):
+                    continue
+                betr += 1
+                neu = alt_neu(a, p['title'])
+                if neu is None:
+                    offen += 1
+                    print(f"  ⚠️ Alt ohne sauberen Ersatz: {p['handle'][:50]} «{a[:70]}»")
+                    continue
+                print(f"  ~ {p['handle'][:50]}  Alt «{a[:60]}» → «{neu[:60]}»")
+                files.append({'id': m['id'], 'alt': neu}); alt_von[m['id']] = a
+            if DRY:
+                bereinigt += len(files)                    # «bereinigbar» — nichts geschrieben
+                continue
+            if not files:
+                continue
+            r = gql(M_ALT, {'f': files})
+            fu = (r.get('data') or {}).get('fileUpdate') or {}
+            live = {f['id']: f.get('alt') for f in fu.get('files') or [] if f}
+            with open(ALT_LEDGER, 'a', encoding='utf-8') as led:
+                for f in files:
+                    gut = not fu.get('userErrors') and live.get(f['id']) == f['alt']
+                    led.write('\t'.join(x.replace('\t', ' ').replace('\n', ' ') for x in [
+                        zeit, p['id'], p['handle'], f['id'], alt_von[f['id']], f['alt'],
+                        'ok' if gut else f"FEHLER {fu.get('userErrors')}"]) + '\n')
+                    if gut:
+                        bereinigt += 1
+                    else:
+                        offen += 1
+            time.sleep(0.4)
+    return (n, betr, bereinigt, offen if not DRY else betr)
+
+
+def alt_rueckweg():
+    """Setzt die Alt-Texte aus ALT_LEDGER (ok-Zeilen) auf den Altwert zurück."""
+    files = {}
+    for z in open(ALT_LEDGER, encoding='utf-8'):
+        f = z.rstrip('\n').split('\t')
+        if len(f) >= 7 and f[6] == 'ok':
+            files[f[3]] = f[4]
+    liste = [{'id': k, 'alt': v} for k, v in files.items()]
+    for i in range(0, len(liste), 25):
+        r = gql(M_ALT, {'f': liste[i:i + 25]})
+        print('  zurück', ((r.get('data') or {}).get('fileUpdate') or {}).get('userErrors') or 'ok')
+    print(f'Rückweg Alt-Texte: {len(liste)} Bilder')
+
+
 def selbsttest():
     """Kanarienvögel ohne Netz (python3 automation/wearable_messversprechen.py --test)."""
     from seo_titel_grenze import seo_titel
@@ -566,6 +671,20 @@ def selbsttest():
     soll(seo_beschreibung_neu('E600 Smartwatch', '<p>Die E600 Smartwatch ist ein innovatives Wearable, das speziell '
          'für die nicht-invasive Blutzuckermessung entwickelt wurde.</p><p>Das Display misst 1,43 Zoll und zeigt alle Werte klar an.</p>', []),
          'E600 Smartwatch: Das Display misst 1,43 Zoll und zeigt alle Werte klar an. ' + VERSAND, 'E600 nächster Satz')
+    # Bild-Alt-Texte (13.10.2026): aktueller Titel + alter Zusatz; Motive und saubere Alts bleiben
+    soll(alt_neu('Smartarmband mit Blutdruckmessung – Bild 4 | LuxeStyle', 'Smartarmband'),
+         'Smartarmband – Bild 4 | LuxeStyle', 'Alt Smartarmband Bild 4')
+    soll(alt_neu('Smartarmband mit Blutdruckmessung | LuxeStyle', 'Smartarmband'), 'Smartarmband | LuxeStyle', 'Alt Hauptbild')
+    soll(alt_neu('F600 Smartwatch mit Blutzucker-Tracking', 'F600 Fitness-Smartwatch mit Aktivitäts-Tracking'),
+         'F600 Fitness-Smartwatch mit Aktivitäts-Tracking', 'Alt ohne Zusatz')
+    soll(alt_neu('P10 Smart Health Armband mit EKG-Funktion – Bild 2 | LuxeStyle CH', 'P10 Smart Health Armband mit EKG-Funktion'),
+         'P10 Smart Health Armband – Bild 2 | LuxeStyle CH', 'Alt: Titel selbst noch unsauber → gesäubert')
+    soll(alt_neu('Titanring mit EKG-Muster – Bild 2 | LuxeStyle', 'Titanring mit EKG-Muster'),
+         'Titanring mit EKG-Muster – Bild 2 | LuxeStyle', 'Alt Motiv bleibt')
+    soll(alt_neu('E530 Smartwatch – Bild 3 | LuxeStyle', 'E530 Smartwatch'), 'E530 Smartwatch – Bild 3 | LuxeStyle', 'Alt sauber bleibt')
+    soll(alt_neu('Smartwatch mit EKG | LuxeStyle', ''), None, 'Alt ohne Titel → offen, nie leer')
+    soll(alt_neu('F600 Smartwatch mit Blutzucker-Tracking – Ansicht 3', 'F600 Fitness-Smartwatch'),
+         'F600 Fitness-Smartwatch – Ansicht 3', 'Alt «Ansicht N» bleibt')
     print(f'{f} Fehler' if f else '✅ Selbsttest: alle Kanarienvögel richtig')
     return 1 if f else 0
 
@@ -579,16 +698,27 @@ def lauf():
         sys.exit(selbsttest())
     if os.environ.get('RUECKWEG'):
         return seo_rueckweg(os.environ['RUECKWEG'])
+    if os.environ.get('RUECKWEG_ALT') == '1':
+        return alt_rueckweg()
     if os.environ.get('NUR') != 'seo':
         main()
     if os.environ.get('SEO', '1') == '1':
         n, betr, ok, offen = seo_pruefen()
+        # 13.10.2026: Bild-Alt-Texte derselben Produkte — Ergebnis hängt an DIESER Zeile, damit Aufseher und Ampel
+        # (beide lesen nur «WEARABLE-SEO:» mit ⚠️/unklar) es ohne eigene Änderung melden.
+        try:
+            an, abetr, aok, aoffen = alt_pruefen() if os.environ.get('ALT', '1') == '1' else (0, 0, 0, 0)
+        except Exception as e:
+            print(f'  Alt-Texte: Fehler {type(e).__name__}: {e}'[:160])
+            an, abetr, aok, aoffen = 0, 0, 0, None
+        alt_teil = (' · Alt-Texte unklar' if aoffen is None else
+                    f" · Alt-Texte {aoffen} offen/{aok} {'bereinigbar' if DRY else 'bereinigt'}" if abetr else '')
         zeit = time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())
         if offen is None:
-            print(f'WEARABLE-SEO: unklar (Export fehlgeschlagen), {zeit}')
+            print(f'WEARABLE-SEO: unklar (Export fehlgeschlagen){alt_teil}, {zeit}')
         else:
-            print(f"{'⚠️ ' if offen else ''}WEARABLE-SEO: {offen} offen · {ok} {'bereinigbar (DRY)' if DRY else 'bereinigt'}"
-                  f" · {betr} betroffen von {n} aktiven, {zeit}")
+            print(f"{'⚠️ ' if offen or aoffen else ''}WEARABLE-SEO: {offen} offen · {ok} {'bereinigbar (DRY)' if DRY else 'bereinigt'}"
+                  f" · {betr} betroffen von {n} aktiven{alt_teil}, {zeit}")
         if os.path.exists(SEO_EXPORT) and os.environ.get('CACHE_NUTZEN') != '1':
             os.remove(SEO_EXPORT)                          # ~18 MB, Platte knapp
 
