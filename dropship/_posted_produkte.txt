@@ -224,3 +224,5 @@ slug:ultradunne-magsafe-powerbank-10-000-mah-627600
 name:ultradünnemagsafepowerbank10000mah
 slug:flagge-schweiz-90x90-cm-fga21137
 slug:britischer-oversize-hoodie-mit-polo-kragen
+slug:quad-mit-fahrer-fga063000
+name:quadmitfahrer
