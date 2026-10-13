@@ -1,12 +1,12 @@
 {
- "stand": "2026-10-12T16:12Z",
+ "stand": "2026-10-13T16:17Z",
  "tage": 120,
- "mit_nachfrage": 197,
- "weg": 60,
+ "mit_nachfrage": 200,
+ "weg": 62,
  "ersatz": 8,
- "ohne_ersatz": 52,
+ "ohne_ersatz": 54,
  "ohne_ersatz_korb": 11,
- "behebbar": 14,
+ "behebbar": 16,
  "zeilen": [
   {
    "handle": "rizinusol-wickel-set-mit-bio-ol-323457",
@@ -250,9 +250,9 @@
    "ersatz_art": ""
   },
   {
-   "handle": "morgenstern-71-cm-fgabo73235",
-   "titel": "Morgenstern 71 cm",
-   "status": "ACTIVE",
+   "handle": "22-teiliges-leder-nahset-fur-lederarbeiten-105857",
+   "titel": "22-teiliges Leder Nähset für Lederarbeiten",
+   "status": "DRAFT",
    "google_kanal": false,
    "sitz": 2,
    "korb": 0,
@@ -260,8 +260,8 @@
    "quelle": [
     "Google-Suche"
    ],
-   "grund": "bewusst nicht bei Google (Kostüm)",
-   "behebbar": false,
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
    "ersatz": null,
    "ersatz_art": ""
   },
@@ -280,6 +280,22 @@
    "behebbar": true,
    "ersatz": "abtropfmatte-aus-silikon-selbstentleerend-214145",
    "ersatz_art": "Zwilling (Ähnlichkeit 0.5)"
+  },
+  {
+   "handle": "morgenstern-71-cm-fgabo73235",
+   "titel": "Morgenstern 71 cm",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 2,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "bewusst nicht bei Google (Kostüm)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
   },
   {
    "handle": "3d-drucker-tisch-mit-filamenthalterung-781569",
@@ -634,8 +650,24 @@
    "ersatz_art": ""
   },
   {
-   "handle": "zitruspresse-orbegozo-18269-s9916470",
-   "titel": "Zitruspresse «Orbegozo» 18269",
+   "handle": "strand-sandalen-doree-metallic-riemchen-flach",
+   "titel": "Strand-Sandalen «Dorée» · Metallic-Riemchen, Flach",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Saison (Sommerware)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "lidschatten-deborah-n-05-bb265249",
+   "titel": "Lidschatten Deborah Nº 05",
    "status": "DRAFT",
    "google_kanal": false,
    "sitz": 1,
@@ -648,22 +680,6 @@
    "behebbar": false,
    "ersatz": null,
    "ersatz_art": ""
-  },
-  {
-   "handle": "tennis-armband-zirkonia-316l-edelstahl",
-   "titel": "Tennis-Armband Zirkonia · 316L Edelstahl",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 0,
-   "kauf": 0,
-   "quelle": [
-    "Google-Suche"
-   ],
-   "grund": "ohne Lieferant → Lieferant suchen",
-   "behebbar": true,
-   "ersatz": "tennis-armband-aus-edelstahl-mit-zirkonia-637200",
-   "ersatz_art": "Weiterleitung"
   },
   {
    "handle": "floating-cooler-xl-schwimmende-kuhlbox",
@@ -682,8 +698,8 @@
    "ersatz_art": ""
   },
   {
-   "handle": "sport-trinkflasche-isoliert-mit-strohhalm-1l",
-   "titel": "Sport-Trinkflasche · Isoliert mit Strohhalm 1L",
+   "handle": "galaxy-aurora-led-projektor-360-sternenhimmel",
+   "titel": "Galaxy Aurora LED-Projektor 360° · Sternenhimmel & Nordlicht mit Fernbedienung",
    "status": "DRAFT",
    "google_kanal": false,
    "sitz": 1,
@@ -698,8 +714,8 @@
    "ersatz_art": ""
   },
   {
-   "handle": "strand-sandalen-doree-metallic-riemchen-flach",
-   "titel": "Strand-Sandalen «Dorée» · Metallic-Riemchen, Flach",
+   "handle": "signet-ring-edelstahl-matt-geburstet-unisex",
+   "titel": "Signet-Ring · Edelstahl matt gebürstet Unisex",
    "status": "DRAFT",
    "google_kanal": false,
    "sitz": 1,
@@ -708,8 +724,120 @@
    "quelle": [
     "Google-Suche"
    ],
-   "grund": "Saison (Sommerware)",
+   "grund": "ohne Lieferant → Lieferant suchen",
+   "behebbar": true,
+   "ersatz": "siegelring-marmor-gold",
+   "ersatz_art": "Weiterleitung"
+  },
+  {
+   "handle": "tennis-armband-zirkonia-316l-edelstahl",
+   "titel": "Tennis-Armband Zirkonia · 316L Edelstahl",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "ohne Lieferant → Lieferant suchen",
+   "behebbar": true,
+   "ersatz": "tennis-armband-aus-edelstahl-mit-zirkonia-637200",
+   "ersatz_art": "Weiterleitung"
+  },
+  {
+   "handle": "damenuhr-bellevue-b39-35-mm-295895",
+   "titel": "Damenuhr Bellevue B39 (Ø 35 mm)",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Lieferant beendet (BigBuy)",
    "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "herren-sonnenbrille-robuster-schutz-fur-starke-man-80688",
+   "titel": "Herrensonnenbrille Timberland · Modell 317884",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Lieferant beendet (BigBuy)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "pilzsammel-taschen-set-421313",
+   "titel": "Pilzsammel-Taschen-Set",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "paul-hewitt-armband-r-23m-s0397548",
+   "titel": "Paul Hewitt Armband «R-23M»",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Lieferant beendet (BigBuy)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "zitruspresse-orbegozo-18269-s9916470",
+   "titel": "Zitruspresse «Orbegozo» 18269",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Lieferant beendet (BigBuy)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "sport-trinkflasche-isoliert-mit-strohhalm-1l",
+   "titel": "Sport-Trinkflasche · Isoliert mit Strohhalm 1L",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "ohne Lieferant → Lieferant suchen",
+   "behebbar": true,
    "ersatz": null,
    "ersatz_art": ""
   },
@@ -732,22 +860,6 @@
   {
    "handle": "trinkglas-luminarc-maine-grau-glas-320-ml-6-stuc-bb1196852",
    "titel": "Trinkglas Luminarc Maine Grau Glas 320 ml (6 Stück)",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 0,
-   "kauf": 0,
-   "quelle": [
-    "Google-Suche"
-   ],
-   "grund": "Lieferant beendet (BigBuy)",
-   "behebbar": false,
-   "ersatz": null,
-   "ersatz_art": ""
-  },
-  {
-   "handle": "lidschatten-deborah-n-05-bb265249",
-   "titel": "Lidschatten Deborah Nº 05",
    "status": "DRAFT",
    "google_kanal": false,
    "sitz": 1,
@@ -794,22 +906,6 @@
    "ersatz_art": "Zwilling (Ähnlichkeit 0.6)"
   },
   {
-   "handle": "galaxy-aurora-led-projektor-360-sternenhimmel",
-   "titel": "Galaxy Aurora LED-Projektor 360° · Sternenhimmel & Nordlicht mit Fernbedienung",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 0,
-   "kauf": 0,
-   "quelle": [
-    "Google-Suche"
-   ],
-   "grund": "ohne Lieferant → Lieferant suchen",
-   "behebbar": true,
-   "ersatz": null,
-   "ersatz_art": ""
-  },
-  {
    "handle": "marmor-optik-vase-luxe-30-cm",
    "titel": "Marmor-Optik Vase Luxe 30 cm",
    "status": "DRAFT",
@@ -824,22 +920,6 @@
    "behebbar": true,
    "ersatz": null,
    "ersatz_art": ""
-  },
-  {
-   "handle": "signet-ring-edelstahl-matt-geburstet-unisex",
-   "titel": "Signet-Ring · Edelstahl matt gebürstet Unisex",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 0,
-   "kauf": 0,
-   "quelle": [
-    "Google-Suche"
-   ],
-   "grund": "ohne Lieferant → Lieferant suchen",
-   "behebbar": true,
-   "ersatz": "siegelring-marmor-gold",
-   "ersatz_art": "Weiterleitung"
   },
   {
    "handle": "industrie-deckenventilator-stark-stilvoll-kuhlen-565238",
@@ -869,38 +949,6 @@
     "Google-Suche"
    ],
    "grund": "rechtlich ausgeschlossen (Heilaussage)",
-   "behebbar": false,
-   "ersatz": null,
-   "ersatz_art": ""
-  },
-  {
-   "handle": "damenuhr-bellevue-b39-35-mm-295895",
-   "titel": "Damenuhr Bellevue B39 (Ø 35 mm)",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 0,
-   "kauf": 0,
-   "quelle": [
-    "Google-Suche"
-   ],
-   "grund": "Lieferant beendet (BigBuy)",
-   "behebbar": false,
-   "ersatz": null,
-   "ersatz_art": ""
-  },
-  {
-   "handle": "herren-sonnenbrille-robuster-schutz-fur-starke-man-80688",
-   "titel": "Herrensonnenbrille Timberland · Modell 317884",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 0,
-   "kauf": 0,
-   "quelle": [
-    "Google-Suche"
-   ],
-   "grund": "Lieferant beendet (BigBuy)",
    "behebbar": false,
    "ersatz": null,
    "ersatz_art": ""
@@ -949,22 +997,6 @@
     "Google-Suche"
    ],
    "grund": "nicht in die Schweiz lieferbar",
-   "behebbar": false,
-   "ersatz": null,
-   "ersatz_art": ""
-  },
-  {
-   "handle": "paul-hewitt-armband-r-23m-s0397548",
-   "titel": "Paul Hewitt Armband «R-23M»",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 0,
-   "kauf": 0,
-   "quelle": [
-    "Google-Suche"
-   ],
-   "grund": "Lieferant beendet (BigBuy)",
    "behebbar": false,
    "ersatz": null,
    "ersatz_art": ""

@@ -116,4 +116,4 @@ Ergebnis: **8/8 wie heute oder günstiger.**
 - **Gratisversand:** «Gratis ab CHF 50» auf CH-Lager-Seiten stimmt, verschenkt aber ein Verkaufsargument, denn ein reiner CH-Lager-Korb ist jetzt immer gratis.
   - Erst nach Stufe 3 und einer Messung umformulieren.
 - **Mischkorb:** Bei einem gemischten Korb nimmt die Kasse das spätere Datum (CJ). Das ist ehrlich und bleibt so.
-- **Bestellschluss bis Halloween:** Für reine CH-Lager-Körbe etwa 26.10. (VERMUTUNG: Bearbeitung 3 + Transit 1–2 Werktage).
+- **Bestellschluss bis Halloween:** Für reine CH-Lager-Körbe Do 22.10. (gerechnet: Kasse spätestens Fr 30.10.).
