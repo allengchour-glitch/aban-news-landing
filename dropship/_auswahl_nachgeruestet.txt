@@ -1936,3 +1936,5 @@
 16614566297991	Farbe:4:4+ki	2026-10-13	taktische-hundetasche-aus-1000d-nylon-98b0c8
 16614566166919	Farbe:3+Menge:2:6+ki	2026-10-13	hundeharnisch-mit-zugseil-rosa-grau-himmelblau-8b1e68
 16614563905927	Muster:4+Grösse:3:12+ki	2026-10-13	pet-brustschutz-dodopet-87d4a3
+16614559809927	Motiv:4:4+ki	2026-10-13	weihnachtsstrumpf-geschenkbeutel-anhanger-623500
+16614287442311	Grösse:7:7+ki	2026-10-13	transparente-pvc-schneidmatte-1-m-296cb3
