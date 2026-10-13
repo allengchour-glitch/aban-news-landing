@@ -32,3 +32,7 @@
 2026-09-25	gid://shopify/Product/15454066901377	description	led-maske-fur-akne-behandlung-894912
 2026-09-25	gid://shopify/Product/15493706187137	description	artiscare-lavendelol-gegen-akne-narben-ce9b7d
 2026-09-25	gid://shopify/Product/15493861015937	description	porenreiniger-akne-entferner-983104
+2026-10-13	gid://shopify/Product/15494984499585	description	terahertz-armband-energie-balance-608900
+2026-10-13	gid://shopify/Product/15497420603777	title+description	balancierendes-energie-armband-obsidian-aquama-608200
+2026-10-13	gid://shopify/Product/15452599943553	title+description	leuchtendes-stein-heilungs-kettenanhanger-109230
+2026-10-13	gid://shopify/Product/15465983771009	description	kupfer-armband-mit-negativen-ionen-627400
