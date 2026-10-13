@@ -8,6 +8,9 @@ titel:leder halbmaske totenkopf-reiter schwarz
 pid:15447947313537
 h:lolita-stirnband-mit-hexenhut-und-rosen-636900
 titel:lolita-stirnband mit hexenhut und rosen
+pid:15448818778497
+h:steampunk-halbmaske-fur-maskenballe-408768
+titel:steampunk halbmaske für maskenbälle
 pid:15448819892609
 h:horror-maske-blutung-totenkopf-285312
 titel:horror maske blutung totenkopf
@@ -29,9 +32,6 @@ titel:halloween kürbis-led-lampe · orange
 pid:15452605448577
 h:halloween-kostuem-fuer-hunde-479706
 titel:halloween-kostüm für hunde
-pid:15453118398849
-h:fledermaus-pendelen-617900
-titel:fledermaus-pendelen
 pid:15453728964993
 h:hexe-dekorative-malerei-148096
 titel:hexe dekorative malerei
@@ -44,6 +44,9 @@ titel:fledermaus-lampe
 pid:15477929640321
 h:halloween-gartenstecker-mit-kunstblumen-626100
 titel:halloween gartenstecker mit kunstblumen
+pid:15480340251009
+h:sprechende-kurbis-sussigkeitenschale-727424
+titel:sprechende kürbis-süssigkeitenschale
 pid:15485736092033
 h:dinosaurier-skelett-kostum-fur-haustiere-607600
 titel:dinosaurier-skelett kostüm für haustiere
@@ -53,6 +56,9 @@ titel:retro patchwork geist anhänger mit halloween-beleuchtung
 pid:15492130111873
 h:halloween-countdown-kalender-set-626600
 titel:halloween countdown kalender set
+pid:15495119274369
+h:viking-ugly-latex-maske-44abc7
+titel:viking ugly latex maske
 pid:15495119733121
 h:skull-maske-8d322d
 titel:skull maske
@@ -104,9 +110,18 @@ titel:schwingendes geisterlicht für halloween
 pid:16603588821383
 h:halloween-outfit-fur-madchen-611100
 titel:halloween-outfit für mädchen
+pid:16603690303879
+h:realistische-tiermaske-614200
+titel:realistische tiermaske
 pid:16604913533319
 h:sussigkeitenschale-geist-halloween-tischdeko-604000
 titel:süssigkeitenschale geist halloween tischdeko
+pid:16609738031495
+h:kurbis-totenkopf-projektionslampe-199f31
+titel:kürbis-totenkopf-projektionslampe
+pid:16609738097031
+h:halloween-aufkleber-set-2-stuck-00e5fb
+titel:halloween aufkleber set – 2 stück
 pid:16610523742599
 h:halloween-performance-kostumkleid-638500
 titel:halloween performance kostümkleid
@@ -150,4 +165,5 @@ zeile:cjreel-1433704456083607552
 zeile:cjreel-1773552640769658880
 zeile:cjreel-2407260303181621600
 zeile:cjreel-2607040852081633100
+zeile:sprechende-kurbis-sussigkeitenschale-727424
 zeile:top-4-unter-20-halloween-0923

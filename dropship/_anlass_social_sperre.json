@@ -1,6 +1,6 @@
 {
- "stand": "2026-10-13T22:16Z",
- "scharf": false,
+ "stand": "2026-10-13T22:23Z",
+ "scharf": true,
  "anlaesse": {
   "halloween": {
    "phase": "vor",
@@ -486,18 +486,6 @@
      ]
     },
     {
-     "id": "gid://shopify/Product/15478613574017",
-     "handle": "leuchtende-kurbis-laterne-631500",
-     "titel": "Leuchtende Kürbis-Laterne",
-     "typ": "Partydeko & Ballone",
-     "grund": "Partydeko",
-     "kanaele": [
-      "TikTok",
-      "Facebook & Instagram",
-      "Pinterest"
-     ]
-    },
-    {
      "id": "gid://shopify/Product/15447947313537",
      "handle": "lolita-stirnband-mit-hexenhut-und-rosen-636900",
      "titel": "Lolita-Stirnband mit Hexenhut und Rosen",
@@ -539,6 +527,18 @@
      "titel": "Realistische Tiermaske",
      "typ": "Hautpflege",
      "grund": "Kostüm",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/15492130046337",
+     "handle": "retro-patchwork-geist-anhanger-mit-halloween-b-617700",
+     "titel": "Retro Patchwork Geist Anhänger mit Halloween-Beleuchtung",
+     "typ": "Partydeko & Ballone",
+     "grund": "Partydeko",
      "kanaele": [
       "TikTok",
       "Facebook & Instagram",
@@ -1100,6 +1100,12 @@
      "grund": "Kürbis/Herbst-Bezug ohne Halloween-Wort — bleibt (Herbst-Deko)"
     },
     {
+     "handle": "leuchtende-kurbis-laterne-631500",
+     "titel": "Leuchtende Kürbis-Laterne",
+     "typ": "Partydeko & Ballone",
+     "grund": "Kürbis/Herbst-Bezug ohne Halloween-Wort — bleibt (Herbst-Deko)"
+    },
+    {
      "handle": "rundes-kurbis-kissen-handgemacht-994240",
      "titel": "Rundes Kürbis-Kissen, handgemacht",
      "typ": "Wohnen & Deko",
@@ -1126,12 +1132,6 @@
     {
      "handle": "fledermaus-pendelen-617900",
      "titel": "Fledermaus-Anhänger aus Metall",
-     "typ": "Partydeko & Ballone",
-     "grund": "Schmuck mit Halloween-Bezug — bleibt (ganzjährig)"
-    },
-    {
-     "handle": "retro-patchwork-geist-anhanger-mit-halloween-b-617700",
-     "titel": "Retro Patchwork Geist Anhänger mit Halloween-Beleuchtung",
      "typ": "Partydeko & Ballone",
      "grund": "Schmuck mit Halloween-Bezug — bleibt (ganzjährig)"
     }

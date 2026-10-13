@@ -21,6 +21,8 @@
  */
 import { mitFolgen, fbText as fbTextLib } from './lib/fb_text.mjs';   // 07.10.: FB ohne https-Link (Reichweite)
 import fs from 'node:fs';
+import { socialPause, pauseSchluessel } from './lib/social_pause.mjs';   // 13.10.: Anlass-Social-Sperre (Halloween-CJ 15.10.–01.11.)
+const _socialPause = pauseSchluessel();
 const FORMATE = (() => { try { return JSON.parse(fs.readFileSync(new URL('./data/kanal_formate.json', import.meta.url), 'utf8')); } catch { return {}; } })();
 import { execFileSync } from 'node:child_process';
 import { lock as postLock, seen as postSeen, mark as postMark, produktGepostet, produktMerken, fbSeitenIdentitaet, familieKuerzlich, familieMerken, warenFamilie, juryPruefen, modelSperre } from './post_guard.mjs';
@@ -124,7 +126,9 @@ function familienDesSets(r, caption, handles) {   // Map familie → Text, der s
   for (const t of texte) { const f = warenFamilie(t); if (f && !m.has(f)) m.set(f, t); }
   return m;
 }
-const bereit = rows.slice(1).filter(r => get(r, 'status') === 'ready' && (!process.env.NUR_SLUG || get(r, 'slug') === process.env.NUR_SLUG));
+const bereit = rows.slice(1).filter(r => get(r, 'status') === 'ready'
+  && !socialPause({ slug: get(r, 'slug'), produkte: get(r, 'produkte'), caption: get(r, 'caption') }, _socialPause)   // 13.10. Anlass-Sperre
+  && (!process.env.NUR_SLUG || get(r, 'slug') === process.env.NUR_SLUG));
 // Produkt-Sets zuerst (ein Produkt, klare Wache), Top-Sets danach
 bereit.sort((a, b) => (get(a, 'modus') === 'produkt' ? 0 : 1) - (get(b, 'modus') === 'produkt' ? 0 : 1));
 if (!bereit.length) { console.log('Nichts faellig: kein ready-Karussell.'); process.exit(0); }

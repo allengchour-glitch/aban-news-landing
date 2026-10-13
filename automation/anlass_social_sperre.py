@@ -8,10 +8,14 @@ Post für ein Halloween-Kostüm verkauft dann eine Enttäuschung. Der Onlineshop
 kennt), Herbst-Deko bleibt, Ware ab Schweizer Lager bleibt überall.
 
 AUSWAHL (Regeldatei automation/data/anlass_social_sperre.json, Bericht dropship/HALLOWEEN-SOCIAL-SPERRE-2026-10-13.md):
-  aktiv · Tag cj-real · OHNE ch-lager/profil-ch-lager · Halloween-Bezug · und
-    Kostüm      = google_sperrliste.ist_kostuem() ODER Verkleidungsteil (Outfit/Umhang/Hexenhut … mit starkem Anlasswort)
-    Partydeko   = Deko-Typ oder Deko-Wort UND (starkes Anlasswort ODER schwaches Wort + Tag halloween/Kürbis)
+  aktiv · CJ (Tag cj-real ODER Varianten-SKU ^CJ) · OHNE ch-lager/profil-ch-lager · Halloween-Bezug
+  (Titel, Tag halloween oder Beschreibung «für Halloween»/«Halloween-Party» — Ratgeber-Verweis abgeschnitten) · und
+    Kostüm      = ist_kostuem() ODER Tag kostuem ODER Typ «Kostüme & Verkleidung» ODER Beschreibung «Verkleidung»
+                  ODER Verkleidungsteil (Outfit/Umhang/Hexenhut … mit starkem Anlasswort)
+    Partydeko   = Deko-Typ oder Deko-Wort UND (starkes Anlasswort ODER schwaches Wort + Tag halloween/Kürbis ODER
+                  Halloween-Party in der Beschreibung); Schmuck (Anhänger/Kette/Ring …) ist nie Partydeko
   «Kürbis» allein ist Herbst (bleibt). Alles mit Halloween-Bezug, das keine Klasse trifft, steht als Grenzfall im Bericht.
+  Beschreibungen werden nur für Ware mit Titel-/Tag-/Typ-Signal gelesen (Klasse.kandidat, ~250 je Lauf).
 
 FENSTER [ab, bis) — im Fenster (nur --scharf):
   1. aus den Publikationen der Regel (TikTok, Facebook & Instagram, Pinterest — live per Name aufgelöst, NIE Online
@@ -58,6 +62,7 @@ EXPORT_MAXALTER = int(os.environ.get("EXPORT_MAXALTER", str(6 * 3600)))
 QUEUES = ["social/posts_image.csv", "automation/reels_seed.csv", "social/ig_karussell.csv", "social/story_queue.csv",
           "social/video_queue.csv", "social/tiktok_queue.csv"]
 BUENDEL = 20
+STORY_KUERZE = 74          # story_bauen.py: f"story-{handle}"[:80] bzw. handle[:74]
 
 
 def regel():
@@ -85,34 +90,67 @@ class Klasse:
         self.verkleidung = re.compile(r["verkleidung_wort"], f)
         self.deko_typen = set(r["deko_typen"])
         self.aus = {t.lower() for t in r["ausschluss_tags"]}
+        # 13.10. abends (Prüfer): Lieferant auch über SKU, Kostüm auch über Tag/Typ/Beschreibung, Schmuck ≠ Deko
+        self.lief_sku = re.compile(r.get("lieferant_sku") or r"^CJ", f)
+        self.kostuem_tag = (r.get("kostuem_tag") or "kostuem").lower()
+        self.kostuem_typen = set(r.get("kostuem_typen") or [])
+        self.b_verkleidung = re.compile(r.get("beschr_verkleidung") or r"(?!x)x", f)
+        self.b_bezug = re.compile(r.get("beschr_bezug") or r"(?!x)x", f)
+        self.schmuck = re.compile(r.get("schmuck_wort") or r"(?!x)x", f)
+        self.schmuck_tags = {t.lower() for t in r.get("schmuck_tags") or []}
+        self.schmuck_deko = re.compile(r.get("schmuck_deko_wort") or r"(?!x)x", f)
+        self.b_schnitt = re.compile(r.get("beschr_abschneiden") or r"(?!x)x", f)
 
-    def urteil(self, titel, typ, tags):
+    def ist_cj(self, tags, skus=()):
+        return self.r["lieferant_tag"] in {t.lower() for t in tags} or any(self.lief_sku.search(s or "") for s in skus)
+
+    def kandidat(self, titel, typ, tags):
+        """Braucht dieses Produkt die Beschreibung? (nur Ware mit Titel-/Tag-/Typ-Signal — Export ohne Beschreibung)"""
+        tl = {t.lower() for t in tags}
+        t = titel or ""
+        return bool(self.r["anlass_tag"] in tl or self.kostuem_tag in tl or (typ or "") in self.kostuem_typen
+                    or self.stark.search(t) or self.schwach.search(t) or self.kuerbis.search(t))
+
+    def urteil(self, titel, typ, tags, beschr="", skus=()):
         """→ (klasse, grund). klasse ∈ {"sperre", "grenzfall", None}. Lieferant/CH-Lager zuerst, dann Anlassbezug."""
         tl = {t.lower() for t in tags}
         t = titel or ""
+        b = beschr or ""
+        m = self.b_schnitt.search(b)
+        if m:
+            b = b[:m.start()]                   # Ratgeber-Verweis («📖 Passend dazu im Ratgeber: Halloween-Deko …») ≠ Produkt
         anlass_tag = self.r["anlass_tag"] in tl
         stark = bool(self.stark.search(t))
         schwach = bool(self.schwach.search(t))
-        bezug = anlass_tag or stark or schwach
-        if self.r["lieferant_tag"] not in tl:
-            return (("grenzfall", "kein CJ-Tag (Lieferant unklar) — bleibt") if (anlass_tag or stark) else (None, ""))
+        b_bezug = bool(self.b_bezug.search(b))
+        bezug = anlass_tag or stark or schwach or b_bezug
+        if not self.ist_cj(tags, skus):
+            return (("grenzfall", "kein CJ (weder Tag noch SKU) — bleibt") if (anlass_tag or stark) else (None, ""))
         if tl & self.aus:
             return None, ""                     # ab Schweizer Lager: bleibt überall
         try:
             from google_sperrliste import ist_kostuem
         except Exception:  # pragma: no cover — ohne Kostümregel lieber gar nichts sperren
             raise RuntimeError("google_sperrliste.ist_kostuem nicht ladbar")
-        if ist_kostuem(t, typ or ""):
+        kostuem = (ist_kostuem(t, typ or "") or self.kostuem_tag in tl or (typ or "") in self.kostuem_typen
+                   or bool(self.b_verkleidung.search(b)))
+        if kostuem:
             if bezug:
                 return "sperre", "Kostüm"
             return "grenzfall", "CJ-Kostüm ohne Halloween-Bezug — bleibt (Fasnacht/Mottoparty)"
+        schmuck = bool(self.schmuck.search(t) or (tl & self.schmuck_tags))
         deko = (typ or "") in self.deko_typen or bool(self.deko_wort.search(t))
-        deko_bezug = stark or (schwach and (anlass_tag or bool(self.kuerbis.search(t))))
+        if schmuck and not self.schmuck_deko.search(t):
+            deko = False                        # Anhänger/Kette/Ring … ist Schmuck, auch bei falschem Typ «Partydeko»
+        # Kürbis + Halloween-Party in der Beschreibung ist Halloween, nicht Herbst
+        deko_bezug = stark or (schwach and (anlass_tag or bool(self.kuerbis.search(t)))) or b_bezug
         if deko and deko_bezug:
             return "sperre", "Partydeko"
         if stark and self.verkleidung.search(t):
             return "sperre", "Verkleidungsteil"
-        if anlass_tag or stark:
+        if anlass_tag or stark or b_bezug:
+            if schmuck:
+                return "grenzfall", "Schmuck mit Halloween-Bezug — bleibt (ganzjährig)"
             if deko:
                 return "grenzfall", "Kürbis/Herbst-Bezug ohne Halloween-Wort — bleibt (Herbst-Deko)"
             return "grenzfall", "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
@@ -122,13 +160,19 @@ class Klasse:
 def kanarien(r, leise=False):
     k = Klasse(r)
     fehler = []
-    for titel, typ, tags, soll in r["kanarien"]:
-        ist = k.urteil(titel, typ, tags)[0] == "sperre"
+    for kn in r["kanarien"]:
+        titel, typ, tags, soll = kn[:4]
+        beschr = kn[4] if len(kn) > 4 else ""
+        skus = kn[5] if len(kn) > 5 else ()
+        ist = k.urteil(titel, typ, tags, beschr, skus)[0] == "sperre"
         if ist != soll:
             fehler.append((titel, tags, soll, ist))
         if not leise:
             print(f"  {'✓' if ist == soll else '✗'} {'SPERRE' if soll else 'bleibt'} · {titel} · {','.join(tags)}")
     return len(r["kanarien"]), fehler
+
+
+LANG_H = "halloween-deko-realistische-kunststoffkette-mit-totenkopf-und-spinnennetz-fuer-garten-658880"
 
 
 def selbsttest(leise=False):
@@ -146,7 +190,8 @@ def selbsttest(leise=False):
         if not leise:
             print(f"KANARIEN {r['anlass']}: {n - len(f)}/{n} ({pos} Sperre, {n - pos} bleibt)")
     # Zeilen-Zuordnung der Queues
-    probe = {"pid": {"15452605448577"}, "h": {"halloween-kostum-fur-hunde"}, "titel": {"halloween-kostüm für hunde"}}
+    probe = {"pid": {"15452605448577"}, "h": {"halloween-kostum-fur-hunde", LANG_H},
+             "titel": {"halloween-kostüm für hunde"}}
     faelle = [({"id": "kimi-x-15452605448577", "caption": ""}, True),
               ({"id": "bildreel-halloween-kostum-fur-hunde", "caption": ""}, True),
               ({"id": "fresh-halloween-kostum-fur-hunde-123456", "caption": ""}, True),
@@ -154,7 +199,10 @@ def selbsttest(leise=False):
               ({"slug": "s", "produkte": "a halloween-kostum-fur-hunde b", "caption": ""}, True),
               ({"id": "cjreel-1", "caption": "Halloween-Kostüm für Hunde\nCHF 19.90"}, True),
               ({"id": "kimi-y-15452605448578", "caption": "Kürbis-Kissen\nCHF 9"}, False),
-              ({"id": "bildreel-halloween-kostum-fur-hunde-xl", "caption": ""}, False)]
+              ({"id": "bildreel-halloween-kostum-fur-hunde-xl", "caption": ""}, False),
+              ({"id": "story-halloween-kostum-fur-hunde", "caption": ""}, True),
+              ({"id": "story-" + LANG_H[:74], "caption": ""}, True),
+              ({"id": "story-halloween-kostum", "caption": ""}, False)]
     for zeile, soll in faelle:
         ist = bool(zeile_treffer(zeile, probe))
         if ist != soll:
@@ -202,26 +250,31 @@ def publikationen(r):
     return {k: nach_name[k] for k in r["kanaele"]}
 
 
-def export(pubs, lieferant_tag):
-    """Voll-Export aktiver Ware mit Lieferanten-Tag (Bulk-Operation). Gecacht EXPORT_MAXALTER (Felder = Vertrag unten)."""
+EXPORT_VERSION = 2      # 13.10. abends: + Varianten-SKU (CJ ohne Tag cj-real); alter Cache ohne SKU gilt nicht mehr
+
+
+def export(pubs, r):
+    """Voll-Export aktiver CJ-Ware (Tag ODER SKU ^CJ) per Bulk-Operation, mit Varianten-SKU. Gecacht EXPORT_MAXALTER."""
+    vertrag = json.dumps({"_vertrag": sorted(pubs.values()), "v": EXPORT_VERSION})
     if os.path.exists(EXPORT) and time.time() - os.path.getmtime(EXPORT) < EXPORT_MAXALTER:
         kopf = open(EXPORT, encoding="utf-8").readline()
-        if kopf.strip() == json.dumps({"_vertrag": sorted(pubs.values())}):
+        if kopf.strip() == vertrag:
             return lesen_export()
     alias = " ".join(f'p{i}:publishedOnPublication(publicationId:"{g}")' for i, g in enumerate(pubs.values()))
-    q = ('{ products(query:"status:active AND tag:%s") { edges { node { id handle title productType status tags %s } } } }'
-         % (lieferant_tag, alias))
+    such = "status:active AND (tag:%s OR sku:%s*)" % (r["lieferant_tag"], (r.get("lieferant_sku") or "^CJ").lstrip("^"))
+    q = ('{ products(query:"%s") { edges { node { id handle title productType status tags %s '
+         'variants { edges { node { id sku } } } } } } }' % (such, alias))
     for versuch in range(12):
-        r = gql("mutation($q:String!){bulkOperationRunQuery(query:$q){bulkOperation{id status} userErrors{field message}}}",
-                {"q": q})["bulkOperationRunQuery"]
-        if not r["userErrors"]:
-            bid = r["bulkOperation"]["id"]
+        rr = gql("mutation($q:String!){bulkOperationRunQuery(query:$q){bulkOperation{id status} userErrors{field message}}}",
+                 {"q": q})["bulkOperationRunQuery"]
+        if not rr["userErrors"]:
+            bid = rr["bulkOperation"]["id"]
             break
-        print(f"  Bulk belegt ({r['userErrors'][0]['message'][:80]}) — warte 60 s")
+        print(f"  Bulk belegt ({rr['userErrors'][0]['message'][:80]}) — warte 60 s")
         time.sleep(60)
     else:
         raise RuntimeError("Bulk-Operation nicht startbar")
-    for _ in range(240):
+    for _ in range(360):
         time.sleep(5)
         b = gql("query($id:ID!){node(id:$id){... on BulkOperation{status url objectCount errorCode}}}", {"id": bid})["node"]
         if b["status"] in ("COMPLETED", "FAILED", "CANCELED", "EXPIRED"):
@@ -230,7 +283,7 @@ def export(pubs, lieferant_tag):
         raise RuntimeError(f"Bulk {b['status']} {b.get('errorCode')}")
     tmp = EXPORT + ".tmp"
     with open(tmp, "w", encoding="utf-8") as f:
-        f.write(json.dumps({"_vertrag": sorted(pubs.values())}) + "\n")
+        f.write(vertrag + "\n")
         if b.get("url"):
             with urllib.request.urlopen(b["url"], timeout=300) as u:
                 for z in u:
@@ -240,14 +293,30 @@ def export(pubs, lieferant_tag):
 
 
 def lesen_export():
-    aus = []
+    aus, skus = [], {}
     with open(EXPORT, encoding="utf-8") as f:
         f.readline()
         for z in f:
             o = json.loads(z)
-            if "/Product/" in o.get("id", "") and "__parentId" not in o:
+            if "__parentId" in o:
+                skus.setdefault(o["__parentId"], []).append(o.get("sku") or "")
+            elif "/Product/" in o.get("id", ""):
                 o["social"] = [i for i in range(10) if o.get(f"p{i}")]
                 aus.append(o)
+    for o in aus:
+        o["skus"] = skus.get(o["id"], [])
+    return aus
+
+
+def beschreibungen(ids):
+    """{id: Beschreibung (Text)} — nur für Kandidaten mit Titel-/Tag-Signal, je 50 in einer Anfrage."""
+    aus = {}
+    ids = sorted(ids)
+    for i in range(0, len(ids), 50):
+        d = gql("query($ids:[ID!]!){nodes(ids:$ids){... on Product{id description}}}", {"ids": ids[i:i + 50]})
+        for n in d["nodes"] or []:
+            if n:
+                aus[n["id"]] = n.get("description") or ""
     return aus
 
 
@@ -330,11 +399,17 @@ def zeile_treffer(row, probe):
     for h in re.findall(r"/products/([a-z0-9][a-z0-9-]*)", cap):
         if h in probe["h"]:
             return "h:" + h
-    kand = [re.sub(r"^bildreel-", "", zid), re.sub(r"^(?:ki|kimi|img|clip|post|auto|fresh\d*|meta-auto)-", "", zid)]
+    kand = [re.sub(r"^bildreel-", "", zid), re.sub(r"^(?:ki|kimi|img|clip|post|auto|fresh\d*|meta-auto|story)-", "", zid)]
     kand += [re.sub(r"-\d{1,8}$", "", k) for k in kand]
     for h in kand + (row.get("produkte") or "").split():
         if h in probe["h"]:
             return "h:" + h
+    # Story-IDs sind «story-<handle[:74]>» (story_bauen.py) → gekürzten Handle per Präfix vergleichen
+    if zid.startswith("story-") and len(zid) - 6 >= STORY_KUERZE:
+        rest = zid[6:]
+        for h in sorted(probe["h"]):
+            if h.startswith(rest):
+                return "h:" + h
     erste = norm_titel(cap.replace("⏎", "\n").split("\n")[0])
     erste = re.sub(r"\s+·\s+chf.*$", "", erste)
     if erste and erste in probe["titel"]:
@@ -434,11 +509,15 @@ def lauf(scharf):
             stand["anlaesse"][r["anlass"]] = st
             continue
 
-        produkte = export(pubs, r["lieferant_tag"])
+        produkte = export(pubs, r)
         idx = {p["id"]: p for p in produkte}
+        kand = [p["id"] for p in produkte if k.kandidat(p["title"], p.get("productType"), p["tags"])]
+        beschr = beschreibungen(kand)
+        print(f"  Export: {len(produkte)} aktive CJ (Tag oder SKU, davon ohne Tag "
+              f"{sum(1 for p in produkte if r['lieferant_tag'] not in p['tags'])}) · Beschreibung gelesen für {len(beschr)}")
         sperre, grenz = {}, []
         for p in produkte:
-            kl, grund = k.urteil(p["title"], p.get("productType"), p["tags"])
+            kl, grund = k.urteil(p["title"], p.get("productType"), p["tags"], beschr.get(p["id"], ""), p.get("skus", ()))
             if kl == "sperre":
                 sperre[p["id"]] = dict(p, grund=grund)
             elif kl == "grenzfall":
@@ -460,7 +539,7 @@ def lauf(scharf):
             nach_grund[p["grund"]] = nach_grund.get(p["grund"], 0) + 1
         pro_kanal = {n: sum(1 for _, g in abmelden if g == gid) for n, gid in pubs.items()}
         print(f"  Auswahl: {len(sperre)} Produkte ({', '.join(f'{g} {n}' for g, n in sorted(nach_grund.items()))}) · "
-              f"{len(grenz)} Grenzfälle · aus {len(produkte)} aktiven {r['lieferant_tag']}")
+              f"{len(grenz)} Grenzfälle · aus {len(produkte)} aktiven CJ")
         print(f"  Abmelden: {len(abmelden)} Paare ({', '.join(f'{n} {c}' for n, c in pro_kanal.items())}) · "
               f"Tag fehlt {len(ohne_tag)} · Tag zu viel {len(raus)} · Ledger zurück {len(zurueck)}")
         print(f"  Queues: {len(treffer)} Zeilen bewerben diese Ware, davon ready {len(ready)}")

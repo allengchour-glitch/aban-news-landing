@@ -12,6 +12,8 @@
  * EXIT: 0 = gepostet oder nichts faellig · 1 = Fehler · 3 = Kandidat uebersprungen/quittiert, kein Post (naechster Lauf bald)
  */
 import fs from 'node:fs';
+import { socialPause, pauseSchluessel } from './lib/social_pause.mjs';   // 13.10.: Anlass-Social-Sperre (Halloween-CJ 15.10.–01.11.)
+const _socialPause = pauseSchluessel();
 import { preisVeraltet, produktMerkenReel, markierungFehlt, lock as postLock, seen as postSeen, mark as postMark, fbSeitenIdentitaet, familieKuerzlich, familieMerken, nachVorrang, montageErst, montagePruefen, montageQuelle, juryPruefen, juryVorrang, igUserTags } from './post_guard.mjs';
 // 22.09.: Adresse vor dem Post pruefen — 14 von 22 «ready»-Reels waren 404 (CDN-Dateien weg). 4xx → archived-deadurl.
 import { execFileSync as _exf, spawnSync } from 'node:child_process';
@@ -143,7 +145,8 @@ const _passt = r => (r[idx.status] || '').trim() === 'ready'
   && (r[idx.scheduled_date] || '9999') <= today
   && !postedVideos.has(vkey(r[idx.video_url]))
   && !postSeen(r[idx.video_url])
-  && !familieKuerzlich(r[idx.caption]);   // 23.09. Neunte Schicht: Warengruppe nicht zweimal in 72 h (alle Kanaele)
+  && !familieKuerzlich(r[idx.caption])
+  && !socialPause({ id: r[idx.id], caption: r[idx.caption] }, _socialPause);   // 13.10. Anlass-Sperre · 23.09. Neunte Schicht: Warengruppe nicht zweimal in 72 h (alle Kanaele)
 // 22.09.: v2-Reels (neues Design, Ablage raw.githubusercontent) zuerst, dann die aelteren
 const _alle = rows.slice(1).filter(_passt);
 const _reihe = montageErst(nachVorrang([..._alle.filter(r => /raw\.githubusercontent/.test(r[idx.video_url] || '')), ..._alle.filter(r => !/raw\.githubusercontent/.test(r[idx.video_url] || ''))], r => r[idx.caption]), r => r[idx.id]);   // 25.09. Saison-Vorrang (Herbst) vor v2/alt
