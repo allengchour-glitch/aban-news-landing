@@ -1928,3 +1928,5 @@
 16617238004103	Farbe:5:5	2026-10-13	business-rucksack-36-55l-mit-mehreren-fachern-cded4d
 16617237971335	Grösse:4:4	2026-10-13	gitarren-gig-tasche-f01f4b
 16614723191175	Farbe:6+Grösse:4:21+ki	2026-10-13	hundelaufgeschirr-fur-welpen-287eb5
+16614721126791	Farbe:3+Grösse:4+Ausführung:2:24+ki	2026-10-13	hundeleine-mit-tragevest-dunkelblau-rosa-lila-613700
+16614614892935	Farbe:6+Stil:2:10+ki	2026-10-13	taschenrucksack-mit-lauf-leine-fur-hunde-618600
