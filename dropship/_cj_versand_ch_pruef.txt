@@ -8241,3 +8241,13 @@ leinenmisch-hemd-fur-herren-634300	2607080238371634900	16	8.11	ok	landeseite
 herren-corduroy-hemd-jacke-mit-brusttasche-636900	2607070951441630100	16	8.53	ok	landeseite
 herren-langarmshirt-mit-print-612800	2607070400101613500	16	8.11	ok	landeseite
 herren-retro-loose-fit-rundhals-shirt-611300	2607070222481612400	16	7.17	ok	landeseite
+freizeit-hemd-fur-herren-613100	2607070214181615100	16	8.11	ok	landeseite
+v-ausschnitt-pullover-aus-baumwoll-leinen-610200	2607061242031611000	16	8.79	ok	landeseite
+leinenhemd-fur-herren-langarm-unifarben-608500	2607061120021609200	16	8.11	ok	landeseite
+atmungsaktives-sportshirt-fur-herren-617600	2607060747231618300	16	9.33	ok	landeseite
+casual-retro-hemd-fur-herren-627700	2607060645091628800	16	10.15	ok	landeseite
+baumwoll-langarm-hemdjacke-636900	2607050615451637501	16	8.53	ok	landeseite
+herren-strick-cardigan-mit-lochmuster-614000	2607050314371614700	16	10.29	ok	landeseite
+herren-hemd-mit-animal-print-und-kurzen-armeln-611500	2607040941481612400	16	8.39	ok	landeseite
+herren-hawaiihemd-mit-3d-print-622800	2607040937511624200	16	7.43	ok	landeseite
+herren-weste-mit-stehkragen-605200	2607090700181606100	16	10.15	ok	landeseite
