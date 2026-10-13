@@ -339,13 +339,16 @@ PRAEFIX_ZIEL = [(re.compile(r"(?:hunde?|katzen?|haustier|tier)$"), "sub-haustier
                 (re.compile(r"werkzeug$"), "werkzeug-maschinen"),
                 (re.compile(r"(?:auto|kfz)$"), "auto-kfz-zubehoer")]
 ANFANG_WORT = {"hunde", "katzen", "damen", "herren"}
+# 13.10.2026: Tier-Ziele — «für Katzen» oder «Katzen-…» wechselt hier die Abteilung NICHT (sonst landete
+# «Automatischer Futterspender für Katzen» auf sub-haustier mit 3'704 Produkten statt auf futterautomaten).
+TIER_ZIELE = ("sub-haustier", "haustier-napf-futter", "futterautomaten", "trinkbrunnen-katzen")
 
 
 def titel_ziel(text, ohne=()):
     """→ Kollektions-Handle aus Titel- oder Handle-Text (ohne Tauglichkeitsprüfung) oder None."""
     t = (text or "").lower()
     z = _tabelle(re.split(r"\s(?:mit|inkl\.?|inklusive|plus|\+)\s", t, maxsplit=1)[0], ohne)
-    if TIER_FUER.search(t) and z not in ("sub-haustier", "haustier-napf-futter"):
+    if TIER_FUER.search(t) and z not in TIER_ZIELE:
         return "sub-haustier"             # «Kuscheldecke für Hunde»; ein genaueres Tierziel («Futterspender») bleibt
     return z
 
@@ -371,7 +374,7 @@ def _tabelle(haupt, ohne=()):
                 continue                      # Wortteil vorne («kofferraum»), nicht Kopf des Wortes
             for rx, z in PRAEFIX_ZIEL:
                 if praefix and rx.search(praefix):
-                    return z
+                    return ziel if (z == "sub-haustier" and ziel in TIER_ZIELE) else z   # «Katzen-Trinkbrunnen»
             return ziel
     return None
 
