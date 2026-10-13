@@ -7816,3 +7816,6 @@ retro-sportuhr-mit-lederarmband-26ea62	A3B11B4B-6E15-4B60-BC87-101CFE335B3A	7	5.
 makeup-spiegel-mit-4x-vergrosserung-und-led-e57258	117D519B-F447-4408-8DD0-B5A5A998F796	7	8.97	ok	landeseite
 interaktive-kobra-schlange-fur-katzen-587904	1439049742133891072	7	8.69	ok	landeseite
 verstellbarer-fussball-trainingsgurt-9af5a9	035CD323-D2D1-47E0-8A06-E05C47E10395	16	6.01	ok	landeseite
+universal-haustierbett-fur-alle-jahreszeiten-713600	1373922106332549120	16	9.33	ok	landeseite
+weinbelufter-fur-intensiveren-weingenuss-f8403f	086673AC-AAF6-4570-B747-8562DD2DB56C	16	5.64	ok	landeseite
+360-drehbarer-make-up-pinsel-organizer-mit-dec-792384	1625693489495289856	16	11.23	ok	landeseite
