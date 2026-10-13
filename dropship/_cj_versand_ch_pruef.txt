@@ -7856,3 +7856,8 @@ rosmarin-minze-haarfluid-59-ml-123840	1547433880846872576	3	5.89	ok	landeseite
 gefutterte-winterjacke-fur-herren-mit-kapuze-872d01	6A738275-0941-406D-B6D7-F2E76025D36F	16	18.95	ok	landeseite
 warme-wende-fleecejacke-mit-kapuze-fur-herren-480704	1706598697892589568	16	12.21	ok	landeseite
 pyjama-set-fur-damen-068096	1722169383289622528	16	8.11	ok	landeseite
+got7-baumwoll-hoodie-87d69b	068B6E18-5029-4BAD-8543-81475FD0D4BE	16	11.00	ok	landeseite
+magnetische-nackenhalterung-fur-smartphones-176384	1732650819977228288	7	10.33	ok	landeseite
+baby-geh-und-lauflernhilfe-509440	1630846977720201216	16	7.71	ok	landeseite
+elektrische-gesichtsmaske-mit-massagefunktion-032576	1414492966239735808	6	9.21	ok	landeseite
+ocean-wave-projektor-led-nachtlicht-33b26c	1569976313274970112	7	12.15	ok	landeseite
