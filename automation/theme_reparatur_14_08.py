@@ -170,7 +170,8 @@ CSS_KAUFKNOPF = """
    nie ueberschreiben — daran scheiterte die Reparatur vom 09.08. Der Inline-Wert ist jetzt
    entfernt, die Position lebt hier. Nicht zurueck ins style="" schreiben. */
 #lx-cookie-banner { bottom: 16px; }
-body:has(.sticky-add-to-cart__bar) #lx-cookie-banner { bottom: 90px; }
+/* 13.10.2026: nur bei SICHTBARER Kaufleiste (data-stuck) — siehe popup_tor_wache.py */
+body:has(.sticky-add-to-cart__bar[data-stuck="true"]) #lx-cookie-banner { bottom: 90px; }
 </style>
 """ % MARKE_KAUFKNOPF
 
@@ -223,7 +224,7 @@ def repariere_theme_liquid(inhalt):
         neu = ('      function lxBannerPlatzieren(){\n'
                '        if(!banner) return;\n'
                '        var leiste=document.querySelector(".sticky-add-to-cart__bar");\n'
-               '        var h=leiste?Math.round(leiste.getBoundingClientRect().height):0;\n'
+               '        var h=(leiste&&leiste.dataset.stuck==="true")?Math.round(leiste.getBoundingClientRect().height):0;\n'
                '        banner.style.bottom=(h>0?h+16:16)+"px";\n'
                '      }\n'
                '      if(!localStorage.getItem(KEY)){\n'

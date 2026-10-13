@@ -2,14 +2,20 @@
   "_zweck": "Anlass-Kollektionen für automation/anlass_lieferzeit_wache.py (12.10.2026). datum = Tag, an dem die Ware spätestens da sein muss. Neue Anlässe hier eintragen (Handle aus dem Shop, Datum JJJJ-MM-TT).",
   "lieferung_werktage": {
     "schnell": 4,
-    "langsam": 12
+    "langsam": 12,
+    "zusage_langsam_max": 21
   },
   "_lieferung_quelle": "schnell = Schweizer Lager, nur mit Versandprofil «CH-Lager» — Kasse: P1D + 1–2 Werktage, 12-Uhr-Schluss → 4 WT (seit 13.10.2026 17:00; davor P3D → 6 WT, und vorher 2 WT aus dem Produkttext «1–2 Werktage», die Kasse rechnet aber die Bearbeitung mit). langsam = Direktversand CJ, KALIBRIERT 12.10. an der Wirklichkeit statt an der Zusage: CJ-Linie «CJPacket EQ Sensitive» 6–10 Tage (CJ-Angabe, #1025), Bearbeitung Median 2 / max 5 WT (kassen_lieferdatum_wache), gemessene Zustellungen 10–16 Kalendertage (n = 6, Gegenprüfung Workflow 12.10.) → 12 WT ≈ 16 KT. Erste Fassung (23 WT = Obergrenze der Zusage) stellte Halloween 4 Tage zu früh um.",
   "anlaesse": [
     {
       "handle": "halloween",
       "anlass": "Halloween",
-      "datum": "2026-10-31"
+      "datum": "2026-10-31",
+      "hinweis_tag": "halloween",
+      "link_kandidaten": [
+        "halloween",
+        "kostueme-ch-lager"
+      ]
     },
     {
       "handle": "adventskalender",
@@ -19,7 +25,11 @@
     {
       "handle": "weihnachten-2026",
       "anlass": "Weihnachten",
-      "datum": "2026-12-24"
+      "datum": "2026-12-24",
+      "hinweis_tag": "weihnachten",
+      "link_kandidaten": [
+        "weihnachten-2026"
+      ]
     },
     {
       "handle": "weihnachtspyjama-familie",
@@ -31,5 +41,7 @@
       "anlass": "Weihnachten",
       "datum": "2026-12-24"
     }
-  ]
+  ],
+  "_zusage_quelle": "zusage_langsam_max = obere Grenze dessen, was die KASSE für Direktversand zeigt: P1D Bearbeitung + 19 WT Transit (versand_transit_wache, CJ 9–19) + 1 WT nach 12 Uhr = 21 WT. Ab dem Tag, an dem heute + 21 WT nach dem Anlass liegt, zeigt die Kasse ein Datum nach dem Anlass → Hinweis «nicht garantiert» an + Kollektion sortiert schnelle Ware nach oben (13.10.2026, Kauf-Strecke Klasse 3).",
+  "_hinweis": "hinweis_tag: Produkte mit diesem Tag OHNE Tag «profil-ch-lager» bekommen auf der Produktseite den Block lux_anlass_hinweis (templates/product.json). Daten im Shop-Metafeld luxe.anlass_hinweis (JSON, schreibt die Wache; ausserhalb des Fensters gelöscht). link_kandidaten: Kollektionen, auf die «Rechtzeitig: … ab Schweizer Lager →» zeigen darf — nur wenn ihre obersten 12 aktiven Artikel alle im Profil «CH-Lager» liegen (sonst nächster Kandidat, sonst kein Link)."
 }

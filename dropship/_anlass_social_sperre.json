@@ -1,0 +1,1097 @@
+{
+ "stand": "2026-10-13T20:19Z",
+ "scharf": false,
+ "anlaesse": {
+  "halloween": {
+   "phase": "vor",
+   "ab": "2026-10-15T00:00:00Z",
+   "bis": "2026-11-01T00:00:00Z",
+   "kanaele": {
+    "TikTok": "gid://shopify/Publication/302032716161",
+    "Facebook & Instagram": "gid://shopify/Publication/302566834561",
+    "Pinterest": "gid://shopify/Publication/302994456961"
+   },
+   "auswahl": 49,
+   "nach_grund": {
+    "Verkleidungsteil": 5,
+    "Kostüm": 19,
+    "Partydeko": 25
+   },
+   "grenzfaelle": 73,
+   "abmelden_paare": 147,
+   "pro_kanal": {
+    "TikTok": 49,
+    "Facebook & Instagram": 49,
+    "Pinterest": 49
+   },
+   "tag_fehlt": 49,
+   "tag_zuviel": 0,
+   "queue_zeilen": 5,
+   "queue_ready": 0,
+   "liste": [
+    {
+     "id": "gid://shopify/Product/16615813513607",
+     "handle": "31-nacht-schrecken-halloween-countdown-box-mit-623600",
+     "titel": "31-Nacht-Schrecken Halloween Countdown-Box mit Puppe",
+     "typ": "Partydeko & Ballone",
+     "grund": "Partydeko",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/16603297251719",
+     "handle": "inflierbares-halloween-kostum-fur-zwei-persone-638900",
+     "titel": "Aufblasbares Halloween-Kostüm für zwei Personen",
+     "typ": "Kostüme & Verkleidung",
+     "grund": "Kostüm",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/15485736092033",
+     "handle": "dinosaurier-skelett-kostum-fur-haustiere-607600",
+     "titel": "Dinosaurier-Skelett Kostüm für Haustiere",
+     "typ": "Aufbewahrung & Organizer",
+     "grund": "Kostüm",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/15460025008513",
+     "handle": "fledermaus-lampe-631400",
+     "titel": "Fledermaus-Lampe",
+     "typ": "Partydeko & Ballone",
+     "grund": "Partydeko",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/15453118398849",
+     "handle": "fledermaus-pendelen-617900",
+     "titel": "Fledermaus-Pendelen",
+     "typ": "Partydeko & Ballone",
+     "grund": "Partydeko",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/16603524333959",
+     "handle": "ghost-magic-book-nachtlicht-623900",
+     "titel": "Geister-Zauberbuch Nachtlicht",
+     "typ": "Beleuchtung",
+     "grund": "Partydeko",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/15513781404033",
+     "handle": "gottinnen-kleid-fur-mottopartys-und-halloween-626300",
+     "titel": "Göttinnen-Kleid für Mottopartys und Halloween",
+     "typ": "Damenmode",
+     "grund": "Kostüm",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/16615813022087",
+     "handle": "halloween-adventskalender-zwerge-608700",
+     "titel": "Halloween Adventskalender Zwerge",
+     "typ": "Partydeko & Ballone",
+     "grund": "Partydeko",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/15492130111873",
+     "handle": "halloween-countdown-kalender-set-626600",
+     "titel": "Halloween Countdown Kalender Set",
+     "typ": "Partydeko & Ballone",
+     "grund": "Partydeko",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/15477929640321",
+     "handle": "halloween-gartenstecker-mit-kunstblumen-626100",
+     "titel": "Halloween Gartenstecker mit Kunstblumen",
+     "typ": "Partydeko & Ballone",
+     "grund": "Partydeko",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/15506327044481",
+     "handle": "halloween-haustier-kopfbedeckung-halsband-423232",
+     "titel": "Halloween Haustier-Kopfbedeckung & Halsband",
+     "typ": "Haustierbedarf",
+     "grund": "Verkleidungsteil",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/16603433599367",
+     "handle": "halloween-witch-hat-nachtlicht-606700",
+     "titel": "Halloween Hexenhut Nachtlicht",
+     "typ": "Beleuchtung",
+     "grund": "Verkleidungsteil",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/16603337818503",
+     "handle": "halloween-katze-kurbis-dekoleuchte-617800",
+     "titel": "Halloween Katze Kürbis Dekoleuchte",
+     "typ": "Beleuchtung",
+     "grund": "Partydeko",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/16614832112007",
+     "handle": "halloween-kostumkleid-set-619000",
+     "titel": "Halloween Kostümkleid Set",
+     "typ": "Damenmode",
+     "grund": "Kostüm",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/15452602564993",
+     "handle": "gelber-halloweenkurbis-lichtsinn-607552",
+     "titel": "Halloween Kürbis-LED-Lampe · Orange",
+     "typ": "Partydeko & Ballone",
+     "grund": "Partydeko",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/16610523742599",
+     "handle": "halloween-performance-kostumkleid-638500",
+     "titel": "Halloween Performance Kostümkleid",
+     "typ": "Damenmode",
+     "grund": "Kostüm",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/16615812399495",
+     "handle": "halloween-totenkranz-dekoration-604200",
+     "titel": "Halloween Totenkranz-Dekoration",
+     "typ": "Partydeko & Ballone",
+     "grund": "Partydeko",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/16612776608135",
+     "handle": "halloween-dessert-guide-wandbild-605100",
+     "titel": "Halloween-Blechschild «Dessert Guide», 20 × 30 cm",
+     "typ": "Basteln & DIY",
+     "grund": "Partydeko",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/15496849916289",
+     "handle": "halloween-deko-realistische-kunststoffkette-658880",
+     "titel": "Halloween-Deko: Realistische Kunststoffkette",
+     "typ": "Haustierbedarf",
+     "grund": "Partydeko",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/16603297186183",
+     "handle": "halloween-hexen-umhang-dekoration-631500",
+     "titel": "Halloween-Dekoration Hexenbeine mit Stiefeln",
+     "typ": "Partydeko & Ballone",
+     "grund": "Partydeko",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/16613496390023",
+     "handle": "halloween-klematiskranz-mit-schwarzen-und-rote-620300",
+     "titel": "Halloween-Klematiskranz mit schwarzen und roten Kunstblättern",
+     "typ": "Partydeko & Ballone",
+     "grund": "Partydeko",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/15452605448577",
+     "handle": "halloween-kostuem-fuer-hunde-479706",
+     "titel": "Halloween-Kostüm für Hunde",
+     "typ": "Haustierbedarf",
+     "grund": "Kostüm",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/16614567346567",
+     "handle": "halloween-kostum-mittelalterliches-korsett-dre-620700",
+     "titel": "Halloween-Kostüm: Mittelalterliches Korsett-Dress",
+     "typ": "Damenmode",
+     "grund": "Kostüm",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/16603388412295",
+     "handle": "halloween-gluhender-skull-raven-rose-aus-resin-601000",
+     "titel": "Halloween-Leuchtdeko aus Kunstharz mit Totenkopf, Rabe und Rose",
+     "typ": "Beleuchtung",
+     "grund": "Partydeko",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/16603588821383",
+     "handle": "halloween-outfit-fur-madchen-611100",
+     "titel": "Halloween-Outfit für Mädchen",
+     "typ": "Baby & Kinder",
+     "grund": "Verkleidungsteil",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/15447893901697",
+     "handle": "halloween-umhang-kleiner-teufel-aus-flanell-632800",
+     "titel": "Halloween-Umhang «Kleiner Teufel» aus Flanell",
+     "typ": "Damenmode",
+     "grund": "Verkleidungsteil",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/16603400503687",
+     "handle": "halloween-zauberkrug-gartenlicht-608300",
+     "titel": "Halloween-Zauberkrug Gartenlicht",
+     "typ": "Beleuchtung",
+     "grund": "Partydeko",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/15453728964993",
+     "handle": "hexe-dekorative-malerei-148096",
+     "titel": "Hexe Dekorative Malerei",
+     "typ": "Basteln & DIY",
+     "grund": "Partydeko",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/16612997333383",
+     "handle": "hexenkapellen-lampe-nachtlicht-mit-usb-anschlu-633100",
+     "titel": "Hexenkapellen-Lampe – Nachtlicht mit USB-Anschluss",
+     "typ": "Beleuchtung",
+     "grund": "Partydeko",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/16611606757767",
+     "handle": "hexenkostum-mit-kleid-hut-und-halskette-622600",
+     "titel": "Hexenkostüm mit Kleid, Hut und Halskette",
+     "typ": "Damenmode",
+     "grund": "Kostüm",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/15448819892609",
+     "handle": "horror-maske-blutung-totenkopf-285312",
+     "titel": "Horror Maske Blutung Totenkopf",
+     "typ": "Hautpflege",
+     "grund": "Kostüm",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/15448821170561",
+     "handle": "horror-maske-fur-halloween-und-fasnacht-821504",
+     "titel": "Horror Maske für Halloween und Fasnacht",
+     "typ": "Hautpflege",
+     "grund": "Kostüm",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/15448821694849",
+     "handle": "horror-totenkopf-latex-maske-537728",
+     "titel": "Horror Totenkopf Latex-Maske",
+     "typ": "Hautpflege",
+     "grund": "Kostüm",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/15495120028033",
+     "handle": "horror-zombie-maske-2ab800",
+     "titel": "Horror Zombie Maske",
+     "typ": "Hautpflege",
+     "grund": "Kostüm",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/16615812596103",
+     "handle": "kurbis-totenkopf-grimasse-ornament-615600",
+     "titel": "Kürbis Totenkopf Grimasse Ornament",
+     "typ": "Partydeko & Ballone",
+     "grund": "Partydeko",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/15448820384129",
+     "handle": "tyrant-rotten-face-mask-861120",
+     "titel": "Latex-Horrormaske «Verrottete Fratze» · Halloween",
+     "typ": "Hautpflege",
+     "grund": "Kostüm",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/15447897244033",
+     "handle": "leder-halbmaske-totenkopf-reiter-schwarz-609600",
+     "titel": "Leder Halbmaske Totenkopf-Reiter Schwarz",
+     "typ": "Damenmode",
+     "grund": "Kostüm",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/15447947313537",
+     "handle": "lolita-stirnband-mit-hexenhut-und-rosen-636900",
+     "titel": "Lolita-Stirnband mit Hexenhut und Rosen",
+     "typ": "Damenmode",
+     "grund": "Verkleidungsteil",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/15517644390785",
+     "handle": "lustiges-teddy-cape-geist-kostum-669504",
+     "titel": "Lustiges Teddy Cape Geist Kostüm",
+     "typ": "Haustierbedarf",
+     "grund": "Kostüm",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/16613497340295",
+     "handle": "mehrlagiges-kerzen-geist-kurbis-ornament-aus-h-633800",
+     "titel": "Mehrlagiges Kerzen-Geist-Kürbis-Ornament aus Harz",
+     "typ": "Partydeko & Ballone",
+     "grund": "Partydeko",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/15492130046337",
+     "handle": "retro-patchwork-geist-anhanger-mit-halloween-b-617700",
+     "titel": "Retro Patchwork Geist Anhänger mit Halloween-Beleuchtung",
+     "typ": "Partydeko & Ballone",
+     "grund": "Partydeko",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/15523842228609",
+     "handle": "schwarze-totenkopf-placemat-fur-halloween-621600",
+     "titel": "Schwarze Totenkopf-Placemat für Halloween",
+     "typ": "Partydeko & Ballone",
+     "grund": "Partydeko",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/16603524366727",
+     "handle": "schwingender-geisterlicht-fur-halloween-629800",
+     "titel": "Schwingendes Geisterlicht für Halloween",
+     "typ": "Beleuchtung",
+     "grund": "Partydeko",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/15519835029889",
+     "handle": "skelett-gerippe-fur-halloween-deko-381376",
+     "titel": "Skelett-Gerippe für Halloween-Deko",
+     "typ": "Partydeko & Ballone",
+     "grund": "Partydeko",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/16615812792711",
+     "handle": "skelett-halloween-kostum-schulterfrei-626800",
+     "titel": "Skelett-Halloween-Kostüm – schulterfrei",
+     "typ": "Partydeko & Ballone",
+     "grund": "Kostüm",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/15495119733121",
+     "handle": "skull-maske-8d322d",
+     "titel": "Skull Maske",
+     "typ": "Hautpflege",
+     "grund": "Kostüm",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/15448820679041",
+     "handle": "skull-punk-nieten-performance-maske-065344",
+     "titel": "Skull Punk Nieten Performance Maske",
+     "typ": "Kostüme & Verkleidung",
+     "grund": "Kostüm",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/16604913533319",
+     "handle": "sussigkeitenschale-geist-halloween-tischdeko-604000",
+     "titel": "Süssigkeitenschale Geist Halloween Tischdeko",
+     "typ": "Küche & Bar",
+     "grund": "Partydeko",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/15454111203713",
+     "handle": "tier-halloween-mantel-629600",
+     "titel": "Tier-Halloween-Mantel",
+     "typ": "Haustierbedarf",
+     "grund": "Kostüm",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    }
+   ],
+   "grenzfall_liste": [
+    {
+     "handle": "30-cm-pluschbar-kostum-schneemann-set-615900",
+     "titel": "30 cm Plüschbär-Kostüm – Schneemann-Set",
+     "typ": "Spielzeug & Spiele",
+     "grund": "CJ-Kostüm ohne Halloween-Bezug — bleibt (Fasnacht/Mottoparty)"
+    },
+    {
+     "handle": "bichon-frise-kostum-zwei-teiliger-pink-blau-gr-795712",
+     "titel": "Bichon Frise Kostüm – Zwei-teiliger Pink-Blau-Grauer Pullover",
+     "typ": "Haustierbedarf",
+     "grund": "CJ-Kostüm ohne Halloween-Bezug — bleibt (Fasnacht/Mottoparty)"
+    },
+    {
+     "handle": "glanzende-ellenbogenlange-kostumhandschuhe-637600",
+     "titel": "Glänzende, ellenbogenlange Kostümhandschuhe",
+     "typ": "Accessoires",
+     "grund": "CJ-Kostüm ohne Halloween-Bezug — bleibt (Fasnacht/Mottoparty)"
+    },
+    {
+     "handle": "old-man-wanchristmas-haustier-strickpullover-681024",
+     "titel": "Hunde-Kostüm «Prisoner»: gestreifter Strickpullover mit Mütze",
+     "typ": "Haustierbedarf",
+     "grund": "CJ-Kostüm ohne Halloween-Bezug — bleibt (Fasnacht/Mottoparty)"
+    },
+    {
+     "handle": "kleiner-hund-zwei-beine-kostum-8c017e",
+     "titel": "Kleiner Hund Zwei-Beine-Kostüm",
+     "typ": "Haustierbedarf",
+     "grund": "CJ-Kostüm ohne Halloween-Bezug — bleibt (Fasnacht/Mottoparty)"
+    },
+    {
+     "handle": "latex-augenmaske-628500",
+     "titel": "Latex Augenmaske",
+     "typ": "Hautpflege",
+     "grund": "CJ-Kostüm ohne Halloween-Bezug — bleibt (Fasnacht/Mottoparty)"
+    },
+    {
+     "handle": "latex-gesichtsmaske-mit-kopfband-619300",
+     "titel": "Latex-Gesichtsmaske mit Kopfband",
+     "typ": "Damenmode",
+     "grund": "CJ-Kostüm ohne Halloween-Bezug — bleibt (Fasnacht/Mottoparty)"
+    },
+    {
+     "handle": "maskenball-kleid-fur-kostumparty-625900",
+     "titel": "Maskenball-Kleid für Kostümparty",
+     "typ": "Damenmode",
+     "grund": "CJ-Kostüm ohne Halloween-Bezug — bleibt (Fasnacht/Mottoparty)"
+    },
+    {
+     "handle": "steampunk-cosplay-maske-09f69f",
+     "titel": "Steampunk Cosplay Maske",
+     "typ": "Hautpflege",
+     "grund": "CJ-Kostüm ohne Halloween-Bezug — bleibt (Fasnacht/Mottoparty)"
+    },
+    {
+     "handle": "steampunk-halbmaske-fur-maskenballe-408768",
+     "titel": "Steampunk Halbmaske für Maskenbälle",
+     "typ": "Kostüme & Verkleidung",
+     "grund": "CJ-Kostüm ohne Halloween-Bezug — bleibt (Fasnacht/Mottoparty)"
+    },
+    {
+     "handle": "tarnmuster-special-agent-captain-kostum-612000",
+     "titel": "Tarnmuster Special Agent Captain Kostüm",
+     "typ": "Damenmode",
+     "grund": "CJ-Kostüm ohne Halloween-Bezug — bleibt (Fasnacht/Mottoparty)"
+    },
+    {
+     "handle": "tiger-kostum-fur-golden-retriever-861184",
+     "titel": "Tiger Kostüm für Golden Retriever",
+     "typ": "Haustierbedarf",
+     "grund": "CJ-Kostüm ohne Halloween-Bezug — bleibt (Fasnacht/Mottoparty)"
+    },
+    {
+     "handle": "viking-ugly-latex-maske-44abc7",
+     "titel": "Viking Ugly Latex Maske",
+     "typ": "Hautpflege",
+     "grund": "CJ-Kostüm ohne Halloween-Bezug — bleibt (Fasnacht/Mottoparty)"
+    },
+    {
+     "handle": "waschtes-denim-kleidungskostum-fur-haustiere-54023d",
+     "titel": "Waschtes Denim-Kleidungskostüm für Haustiere",
+     "typ": "Haustierbedarf",
+     "grund": "CJ-Kostüm ohne Halloween-Bezug — bleibt (Fasnacht/Mottoparty)"
+    },
+    {
+     "handle": "3d-puzzle-halloween-schloss-923840",
+     "titel": "3D Puzzle Halloween Schloss",
+     "typ": "Spielzeug & Spiele",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "5d-diamond-painting-halloween-totenkopf-555072",
+     "titel": "5D Diamond Painting: Halloween Totenkopf",
+     "typ": "Basteln & DIY",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "baby-romper-halloween-mit-kapuze-600300",
+     "titel": "Baby-Strampler Halloween mit Kapuze",
+     "typ": "Baby & Kinder",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "damen-tunika-mit-halloween-aufdruck-610000",
+     "titel": "Damen-Tunika mit Halloween-Aufdruck",
+     "typ": "Sport & Outdoor",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "diamond-painting-schadelmadchen-halloween-088768",
+     "titel": "Diamond Painting «Schädelmädchen» Halloween",
+     "typ": "Basteln & DIY",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "drei-hexen-anhanger-aus-acryl-631000",
+     "titel": "Drei Hexen Anhänger aus Acryl",
+     "typ": "Basteln & DIY",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "farbpalette-fur-halloween-621000",
+     "titel": "Farbpalette für Halloween",
+     "typ": "Make-up",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "kartoon-kurbisschlupfchen-682752",
+     "titel": "Flauschige Hausschuhe «Kürbis» · Halloween-Plüsch-Slipper",
+     "typ": "Schuhe",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "fliegende-hexe-968128",
+     "titel": "Fliegende Hexe",
+     "typ": "Basteln & DIY",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "frauengrunes-halloween-sweatshirt-633100",
+     "titel": "Frauengrünes Halloween Sweatshirt",
+     "typ": "Damenmode",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "geister-piratenschiff-bausteine-set-603200",
+     "titel": "Geister-Piratenschiff Bausteine-Set",
+     "typ": "Spielzeug & Spiele",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "gelber-leopard-hoodie-mit-teufelshornern-606900",
+     "titel": "Gelber Leopard-Hoodie mit Teufelshörnern",
+     "typ": "Damenmode",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "halloween-5d-diamond-painting-klein-031808",
+     "titel": "Halloween 5D Diamond Painting (klein)",
+     "typ": "Basteln & DIY",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "halloween-a-linien-kleid-im-vintage-stil-609000",
+     "titel": "Halloween A-Linien-Kleid im Vintage-Stil",
+     "typ": "Damenmode",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "halloween-geist-silikonform-628400",
+     "titel": "Halloween Geist Silikonform",
+     "typ": "Küche & Bar",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "halloween-haustier-set-mit-fliege-389684",
+     "titel": "Halloween Haustier-Set mit Fliege",
+     "typ": "Haustierbedarf",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "halloween-haustierbett-fur-hunde-und-katzen-400640",
+     "titel": "Halloween Haustierbett für Hunde und Katzen",
+     "typ": "Haustierbedarf",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "halloween-hunde-halsband-mit-cartoon-muster-285760",
+     "titel": "Halloween Hunde Halsband mit Cartoon-Muster",
+     "typ": "Haustierbedarf",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "halloween-kapuzenpullover-mit-totenkopf-print-603500",
+     "titel": "Halloween Kapuzenpullover mit Totenkopf-Print",
+     "typ": "Damenmode",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "halloween-langarm-pulli-herbst-winter-damenbek-606200",
+     "titel": "Halloween Langarm-Pulli Herbst/Winter Damenbekleidung",
+     "typ": "Damenmode",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "halloween-low-top-sneaker-mit-3d-druck-918208",
+     "titel": "Halloween Low-Top Sneaker mit 3D-Druck",
+     "typ": "Sportschuhe",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "halloween-mini-bausteine-149888",
+     "titel": "Halloween Mini-Bausteine",
+     "typ": "Spielzeug & Spiele",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "halloween-blumen-kleid-629300",
+     "titel": "Halloween-Blumen-Kleid",
+     "typ": "Damenmode",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "halloween-digitaldruck-sweatshirt-damen-615800",
+     "titel": "Halloween-Digitaldruck Sweatshirt Damen",
+     "typ": "Damenmode",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "halloween-glasbecher-622800",
+     "titel": "Halloween-Glasbecher",
+     "typ": "Küche & Bar",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "halloween-halsband-fur-hunde-583552",
+     "titel": "Halloween-Halsband für Hunde",
+     "typ": "Haustierbedarf",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "halloween-hundekuschelsweater-in-kurbisform-769856",
+     "titel": "Halloween-Hundekuschelsweater in Kürbisform",
+     "typ": "Haustierbedarf",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "halloween-midikleid-mit-farbverlauf-601500",
+     "titel": "Halloween-Midikleid mit Farbverlauf",
+     "typ": "Damenmode",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "halloween-sweatshirt-mit-digital-druck-618900",
+     "titel": "Halloween-Sweatshirt mit Digital-Druck",
+     "typ": "Damenmode",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "halsband-fur-hunde-mit-halloween-motiven-624100",
+     "titel": "Halsband für Hunde mit Halloween-Motiven",
+     "typ": "Haustierbedarf",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "halsband-mit-halloween-print-fur-hunde-219584",
+     "titel": "Halsband mit Halloween-Print für Hunde",
+     "typ": "Haustierbedarf",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "herren-t-shirt-mit-horror-schadel-druck-634000",
+     "titel": "Herren-T-Shirt mit Horror-Schädel-Druck",
+     "typ": "Herrenmode",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "hexen-wandkalender-aus-beschichtetem-papier-089472",
+     "titel": "Hexen-Wandkalender aus beschichtetem Papier",
+     "typ": "Basteln & DIY",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "hundepullover-halloween-004352",
+     "titel": "Hundepullover Halloween",
+     "typ": "Haustierbedarf",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "katzenhalsband-mit-perlen-halloween-kollektion-622400",
+     "titel": "Katzenhalsband mit Perlen – Halloween-Kollektion",
+     "typ": "Haustierbedarf",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "katzennest-hexen-hut-607300",
+     "titel": "Katzennest Hexen Hut",
+     "typ": "Haustierbedarf",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "kurbis-design-sweatshirts-fur-herren-639700",
+     "titel": "Kürbis-Design Sweatshirts für Herren",
+     "typ": "Herrenmode",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "kurbis-sitzkissen-aus-plusch-473088",
+     "titel": "Kürbis-Sitzkissen aus Plüsch",
+     "typ": "Heimtextilien",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "kurbisformiger-korb-aus-baumwollseil-628700",
+     "titel": "Kürbisförmiger Korb aus Baumwollseil",
+     "typ": "Aufbewahrung & Organizer",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "adressbuch-notizbuch-a5-636300",
+     "titel": "Passwort-Notizbuch A5 mit Hexenmotiv",
+     "typ": "Büro & Home Office",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "totenkopf-messerhalter-fur-halloween-891328",
+     "titel": "Totenkopf Messerhalter für Halloween",
+     "typ": "Küche & Bar",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "vielseitiger-kurbis-totenkopf-gurtel-603800",
+     "titel": "Vielseitiger Kürbis-Totenkopf Gürtel",
+     "typ": "Damenmode",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "weihnachts-und-halloween-glasbecher-621600",
+     "titel": "Weihnachts- und Halloween-Glasbecher",
+     "typ": "Haushalt & Wohnen",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "weihnachts-halloween-digitaldruck-longsleeve-602600",
+     "titel": "Weihnachts-Halloween-Digitaldruck-Langarmshirt",
+     "typ": "Damenmode",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "zombie-popsicle-formen-set-37efa1",
+     "titel": "Zombie Popsicle-Formen-Set",
+     "typ": "Küche & Bar",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "boho-kurbis-sitzkissen-und-dekokissen-619000",
+     "titel": "Boho-Kürbis-Sitzkissen und Dekokissen",
+     "typ": "Wohnen & Deko",
+     "grund": "Kürbis/Herbst-Bezug ohne Halloween-Wort — bleibt (Herbst-Deko)"
+    },
+    {
+     "handle": "damen-sweatshirt-mit-kurbis-laternen-print-617400",
+     "titel": "Damen Sweatshirt mit Kürbis-Laternen-Print",
+     "typ": "Damenmode",
+     "grund": "Kürbis/Herbst-Bezug ohne Halloween-Wort — bleibt (Herbst-Deko)"
+    },
+    {
+     "handle": "herbstkissenbezuge-mit-kurbismuster-647700",
+     "titel": "Herbstkissenbezüge mit Kürbismuster",
+     "typ": "Wohnen & Deko",
+     "grund": "Kürbis/Herbst-Bezug ohne Halloween-Wort — bleibt (Herbst-Deko)"
+    },
+    {
+     "handle": "kissenbezug-mit-kurbis-stickerei-634500",
+     "titel": "Kissenbezug mit Kürbis-Stickerei",
+     "typ": "Wohnen & Deko",
+     "grund": "Kürbis/Herbst-Bezug ohne Halloween-Wort — bleibt (Herbst-Deko)"
+    },
+    {
+     "handle": "kissenhulle-ahornblatt-kurbis-stickerei-608100",
+     "titel": "Kissenhülle Ahornblatt & Kürbis Stickerei",
+     "typ": "Wohnen & Deko",
+     "grund": "Kürbis/Herbst-Bezug ohne Halloween-Wort — bleibt (Herbst-Deko)"
+    },
+    {
+     "handle": "kissenhulle-bestickt-mit-herbstlaub-und-kurbis-959104",
+     "titel": "Kissenhülle bestickt mit Herbstlaub und Kürbis",
+     "typ": "Wohnen & Deko",
+     "grund": "Kürbis/Herbst-Bezug ohne Halloween-Wort — bleibt (Herbst-Deko)"
+    },
+    {
+     "handle": "kurbis-kissen-caramel-592704",
+     "titel": "Kürbis Kissen \"Caramel\"",
+     "typ": "Wohnen & Deko",
+     "grund": "Kürbis/Herbst-Bezug ohne Halloween-Wort — bleibt (Herbst-Deko)"
+    },
+    {
+     "handle": "kurbis-kissen-fur-sofa-und-wohnzimmer-606900",
+     "titel": "Kürbis-Kissen für Sofa und Wohnzimmer",
+     "typ": "Wohnen & Deko",
+     "grund": "Kürbis/Herbst-Bezug ohne Halloween-Wort — bleibt (Herbst-Deko)"
+    },
+    {
+     "handle": "kurbis-schatulle-aus-massivholz-612500",
+     "titel": "Kürbis-Schatulle aus Massivholz",
+     "typ": "Partydeko & Ballone",
+     "grund": "Kürbis/Herbst-Bezug ohne Halloween-Wort — bleibt (Herbst-Deko)"
+    },
+    {
+     "handle": "leuchtende-kurbis-laterne-631500",
+     "titel": "Leuchtende Kürbis-Laterne",
+     "typ": "Partydeko & Ballone",
+     "grund": "Kürbis/Herbst-Bezug ohne Halloween-Wort — bleibt (Herbst-Deko)"
+    },
+    {
+     "handle": "rundes-kurbis-kissen-handgemacht-994240",
+     "titel": "Rundes Kürbis-Kissen, handgemacht",
+     "typ": "Wohnen & Deko",
+     "grund": "Kürbis/Herbst-Bezug ohne Halloween-Wort — bleibt (Herbst-Deko)"
+    },
+    {
+     "handle": "samt-kurbis-kissen-95e02d",
+     "titel": "Samt-Kürbis Kissen",
+     "typ": "Wohnen & Deko",
+     "grund": "Kürbis/Herbst-Bezug ohne Halloween-Wort — bleibt (Herbst-Deko)"
+    },
+    {
+     "handle": "sprechende-kurbis-sussigkeitenschale-727424",
+     "titel": "Sprechende Kürbis-Süssigkeitenschale",
+     "typ": "Partydeko & Ballone",
+     "grund": "Kürbis/Herbst-Bezug ohne Halloween-Wort — bleibt (Herbst-Deko)"
+    },
+    {
+     "handle": "pumpkin-tissue-halter-657600",
+     "titel": "Taschentuch-Halter im Kürbis-Design · 19 cm",
+     "typ": "Partydeko & Ballone",
+     "grund": "Kürbis/Herbst-Bezug ohne Halloween-Wort — bleibt (Herbst-Deko)"
+    }
+   ],
+   "queue_liste": [
+    {
+     "datei": "automation/reels_seed.csv",
+     "zeile": "cjreel-1773552640769658880",
+     "status": "jury-skip",
+     "schluessel": "h:halloween-deko-realistische-kunststoffkette-658880"
+    },
+    {
+     "datei": "automation/reels_seed.csv",
+     "zeile": "cjreel-2407260303181621600",
+     "status": "jury-skip",
+     "schluessel": "h:schwarze-totenkopf-placemat-fur-halloween-621600"
+    },
+    {
+     "datei": "automation/reels_seed.csv",
+     "zeile": "cjreel-1433704456083607552",
+     "status": "posted-tiktok",
+     "schluessel": "h:gelber-halloweenkurbis-lichtsinn-607552"
+    },
+    {
+     "datei": "automation/reels_seed.csv",
+     "zeile": "cjreel-2607040852081633100",
+     "status": "jury-skip",
+     "schluessel": "h:hexenkapellen-lampe-nachtlicht-mit-usb-anschlu-633100"
+    },
+    {
+     "datei": "social/ig_karussell.csv",
+     "zeile": "top-4-unter-20-halloween-0923",
+     "status": "preis-veraltet",
+     "schluessel": "h:halloween-gartenstecker-mit-kunstblumen-626100"
+    }
+   ],
+   "gesperrt": 0,
+   "offen": 49
+  }
+ }
+}

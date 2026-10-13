@@ -1,0 +1,27 @@
+{
+ "stand": "2026-10-13T20:09Z",
+ "scharf": true,
+ "hinweise": [
+  {
+   "tag": "halloween",
+   "anlass": "Halloween",
+   "datum": "20261031",
+   "datum_text": "Sa, 31. Okt.",
+   "ab": "20261002",
+   "kipptag": "20261015",
+   "schnell_bis": "20261026",
+   "schnell_bis_text": "Mo, 26. Okt.",
+   "link": "/collections/halloween"
+  }
+ ],
+ "metafeld_aktuell": true,
+ "metafeld_updated": "2026-10-13T20:07:56Z",
+ "block_im_theme": true,
+ "befunde": [],
+ "zubehoer": {
+  "gesetzt": 353,
+  "entfernt": 0,
+  "soll": 353,
+  "ist_vorher": 0
+ }
+}
