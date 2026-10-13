@@ -1778,3 +1778,4 @@
 16615814005127	Motiv:2:2+ki	2026-10-13	weihnachtsbaum-statue-613000
 16615813742983	Motiv:2:2+ki	2026-10-13	weihnachts-anhanger-aus-glas-mit-muster-602400
 16615813513607	Variante:3:3+ki	2026-10-13	31-nacht-schrecken-halloween-countdown-box-mit-623600
+16615813054855	Variante:7:7+ki	2026-10-13	mini-weihnachtssocken-wundertute-617600

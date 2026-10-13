@@ -72,7 +72,13 @@ def main():
     json.dump(stand, open(STAND, "w"), ensure_ascii=False, indent=1)
     print(f"KASSEN-DATUM: Bearbeitungszeit {einstellung} T · gemessen bis Versand Median {median} / 80 % {p80} Werktage "
           f"({len(werte)} CJ-Bestellungen) → {'⚠️ Kasse verspricht zu früh, empfohlen %s Werktage' % stand['empfohlen'] if zu_frueh else 'ok'}")
-    if stand.get("ch_lager_im_asien_profil"):
+    # 13.10.2026: Entscheid umgesetzt — automation/ch_lager_profil.py ordnet stufenweise zu (Stufe 1/2 lässt Google-Ware
+    # bewusst im General profile). Diese Stichprobe meldet deshalb erst ab Stufe 3; vorher meldet die Ampel-Zeile CH-LAGER-PROFIL.
+    try:
+        stufe = int(json.load(open(os.path.join(REPO, "dropship", "_ch_lager_profil_stufe.json"))).get("stufe", 1))
+    except Exception:
+        stufe = 3
+    if stand.get("ch_lager_im_asien_profil") and stufe >= 3:
         print(f"KASSEN-DATUM CH-LAGER: {stand['ch_lager_profil']['ch_lager']['anzahl']} aktive Produkte ab Schweizer Lager im selben "
               f"Versandprofil wie CJ-Ware → Kasse zeigt das Asien-Lieferfenster")
 
