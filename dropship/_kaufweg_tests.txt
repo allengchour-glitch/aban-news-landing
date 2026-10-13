@@ -31,3 +31,4 @@ start_utc	produkt	ergebnis	ordner
 2026-10-13T21:09:44.342Z	cart/55792251076993:1,55743280021889:1	ok	kasse_nachher	(Druck-Profil nachher-misch: Druck + CJ gross CH, kaufweg-test@example.com)
 2026-10-13T21:09:58.704Z	cart/55792251076993:1,55970707276161:1	ok	kasse_nachher	(Druck-Profil nachher-misch: Druck + CH-Lager CH, kaufweg-test@example.com)
 2026-10-13T21:10:13.477Z	cart/55792251076993:1,55746180153729:1	ok	kasse_nachher	(Druck-Profil nachher-misch: Druck + CJ klein LI, kaufweg-test@example.com)
+2026-10-13T21:10:27.453Z	cart/55792018620801:1,55792251076993:1	ok	kasse_nachher	(Druck-Profil nachher-misch: Sticker + Druck CH, kaufweg-test@example.com)
