@@ -461,6 +461,59 @@ L-mal so gross):
   Rückfrage und den Zahlen oben. Der Pilot nutzt dabei weiterhin höchstens `KI_BOT_ANTEIL` (Standard 50 %) des Kontos —
   die Prozente oben gelten für diesen Teil.
 
+## ⏱️ Scalping (Minuten-Handel) — ehrlich getestet: verliert (`scalping_pruefung.py`)
+
+Frage: Lässt sich auf Binance-Futures mit Minuten-Handel **nach Gebühren** Geld verdienen? Die Regeln standen fest, bevor
+ein einziger echter Kurs gerechnet wurde (Git-Commit `198f2b1`, Kopf von `scalping_pruefung.py`):
+
+- **Daten:** BTCUSDT und ETHUSDT Perpetual, jede Minute vom 01.01.2022 bis 30.09.2026 (je 2'496'960 Minuten, keine Lücke),
+  mit Taker-Kauf-Volumen und Funding. **Lernen** bis Ende 2023, **Prüfen** 01.2024–09.2026 (in zwei Hälften).
+- **Kosten wie für dich:** Binance VIP 0 — Maker 0,02 %, Taker 0,05 % je Seite, dazu Schlupf (BTC 0,01 %, ETH 0,015 %)
+  und Funding. Ein Taker-Trade hin und zurück kostet damit rund **0,12 % (12 bp)**.
+- **Strenge Füll-Regeln:** Limit nur gefüllt, wenn der Kurs es durchstösst; Stop und Ziel in derselben Kerze → Stop;
+  Kurslücken zum schlechteren Kurs; ein Signal, das erst am Schluss feststeht, wird zur nächsten Eröffnung ausgeführt.
+- **7 Strategien** aus Praxis und Forschung, Variante nur im Lernzeitraum gewählt: Band-Abpraller (Mean-Reversion mit
+  Maker-Limits), Ausbruch (Donchian), RSI(2)-Extrem, Order-Flow folgen, Umkehr nach Fluss-Kerze
+  ([arXiv 2026](https://arxiv.org/pdf/2608.21888)), Halbstunden-Momentum
+  ([Shen/Urquhart/Wang 2022](https://research.birmingham.ac.uk/en/publications/bitcoin-intraday-time-series-momentum/)),
+  Tageszeit-Muster.
+- **Bestanden** nur mit Gewinn in beiden Hälften, ≥ 200 Trades, ≥ 1 bp netto je Trade, besser als 90 % von 200
+  Zufallskopien (gleiche Anzahl, Richtung, Haltedauer, zufälliger Zeitpunkt) und Gewinn auch bei Gebühren +20 % und
+  doppeltem Schlupf. «Handelbar» erst, wenn BTC **und** ETH bestehen.
+
+Ergebnis im Prüfzeitraum (Stand 13.10.2026, direkt aus `data/krypto-scalping-pruefung.json` erzeugt):
+
+| Markt | Strategie (gewählte Variante) | Trades | Brutto je Trade | Netto je Trade | Treffer | Zufall geschlagen | Urteil (durchgefallen an) |
+|---|---|---|---|---|---|---|---|
+| BTC | S1 Band-Abpraller (Mean-Reversion, Maker) (k=3.5) | 30'618 | −0,5 bp | −6,9 bp | 43 % | 0 % | ❌ Hälften, ≥ 1 bp, Zufall, Stress |
+| BTC | S2 Ausbruch (Donchian, Stop-Einstieg) (n=240) | 5'471 | +1,6 bp | −10,4 bp | 27 % | 84 % | ❌ Hälften, ≥ 1 bp, Zufall, Stress |
+| BTC | S3 RSI(2)-Extrem 5m (<5 +Trend) | 6'523 | +1,8 bp | −10,2 bp | 26 % | 100 % | ❌ Hälften, ≥ 1 bp, Stress |
+| BTC | S4 Order-Flow folgen 1m (5m/15m) | 763 | +1,0 bp | −11,0 bp | 21 % | 84 % | ❌ Hälften, ≥ 1 bp, Zufall, Stress |
+| BTC | S5 Umkehr nach Fluss-Kerze 15m (3σ/1×15m) | 1'564 | −2,1 bp | −14,1 bp | 37 % | 0 % | ❌ Hälften, ≥ 1 bp, Zufall, Stress |
+| BTC | S6 Halbstunden-Momentum (us) | 718 | −1,3 bp | −13,3 bp | 33 % | 17 % | ❌ Hälften, ≥ 1 bp, Zufall, Stress |
+| BTC | S7 Tageszeit-Muster 1h (1 Std.) | 2'008 | −1,1 bp | −13,1 bp | 35 % | 14 % | ❌ Hälften, ≥ 1 bp, Zufall, Stress |
+| ETH | S1 Band-Abpraller (Mean-Reversion, Maker) (k=3.5) | 34'093 | −0,7 bp | −7,5 bp | 45 % | 0 % | ❌ Hälften, ≥ 1 bp, Zufall, Stress |
+| ETH | S2 Ausbruch (Donchian, Stop-Einstieg) (n=240) | 5'400 | +4,8 bp | −8,2 bp | 30 % | 100 % | ❌ Hälften, ≥ 1 bp, Stress |
+| ETH | S3 RSI(2)-Extrem 5m (<5 +Trend) | 6'393 | +1,1 bp | −11,9 bp | 33 % | 100 % | ❌ Hälften, ≥ 1 bp, Stress |
+| ETH | S4 Order-Flow folgen 1m (60m/60m) | 813 | +0,8 bp | −12,2 bp | 32 % | 68 % | ❌ Hälften, ≥ 1 bp, Zufall, Stress |
+| ETH | S5 Umkehr nach Fluss-Kerze 15m (3σ/1×15m) | 1'478 | −2,9 bp | −15,9 bp | 44 % | 0 % | ❌ Hälften, ≥ 1 bp, Zufall, Stress |
+| ETH | S6 Halbstunden-Momentum (utc_stark) | 475 | −1,0 bp | −14,0 bp | 30 % | 31 % | ❌ Hälften, ≥ 1 bp, Zufall, Stress |
+| ETH | S7 Tageszeit-Muster 1h (1 Std.) | 2'008 | −3,5 bp | −16,5 bp | 35 % | 2 % | ❌ Hälften, ≥ 1 bp, Zufall, Stress |
+
+- **Keine einzige Strategie besteht — 0 von 14.** Selbst mit Schummeln (die beste der je 26 Varianten erst NACHTRÄGLICH im
+  Prüfzeitraum ausgesucht) bleibt jede im Minus: bestenfalls −6,9 bp (BTC) bzw. −7,5 bp (ETH) je Trade; **0 von 52
+  Varianten** verdienen netto. Mit BNB-Rabatt bestenfalls −6,3 bp je Trade.
+- **Die Gebühren sind die Wand, nicht die Idee.** Es gibt echte Muster: Ausbruch auf ETH (+4,8 bp brutto) und RSI(2) auf
+  beiden Märkten schlagen 100 % der Zufallskopien — aber ein Trade kostet ~12–13 bp. Der Vorteil müsste 2,5- bis 10-mal
+  so gross sein. Das deckt sich mit der neuesten Studie (183 Binance-Paare: ~1,3 bp Vorteil gegen 5 bp Kosten).
+- **Limit-Orders (Maker) sind kein Ausweg:** Der Band-Abpraller zahlt nur 0,02 %, wird aber genau dann gefüllt, wenn der
+  Kurs weiterläuft (adverse Auswahl) — schlechter als **jede** der 200 Zufallskopien.
+- **Hebel macht es nur schneller:** −6,9 bp je Trade sind bei 100× **−6,9 % je Trade** (und Liquidation schon bei 0,55 %,
+  siehe oben). Schon bei 1× wäre das Konto nach den 30'618 Trades des Band-Abprallers mehrfach weg (Summe −2'121 %).
+- Wer am Scalping verdient: die Börse (Gebühren) und Market-Maker mit Gebühren-Rabatten und Rechnern neben der Börse —
+  nicht Privatpersonen mit 0,05 %. **Darum gibt es dafür keinen Handels-Bot.** In den Backtests bestehen nur die langsamen
+  Regeln: der Pilot (Tageskerzen, Trend) und Pilot 2.0 (dieser bleibt gesperrt, bis eine Prüfung keine Blocker mehr findet).
+
 ## Futures (Hebel) — ehrlich gerechnet
 
 `python3 tools/trading/krypto_bot/futures.py` rechnet Bitcoin-Perpetuals wie bei Binance Futures: Entscheidung am
@@ -638,6 +691,8 @@ python3 tools/trading/krypto_bot/test_calls.py    # 84 Tests: 40 typische Call-F
 python3 tools/trading/krypto_bot/test_binance.py  # 21 Tests, inkl. nachgebautem Binance-Server mit Signaturprüfung
 python3 tools/trading/krypto_bot/test_pilot2_plan.py  # 23 Tests: Pilot-2.0-Rechnung (Richtung, Ernte, Pfand, Mindestbeträge)
 python3 tools/trading/krypto_bot/test_pilot2_live.py  # 98 Tests: Pilot 2.0 gegen eine strenge nachgebaute Binance (Spot + Futures)
+python3 tools/trading/krypto_bot/test_scalping.py      # 50 Tests: kein Blick in die Zukunft, strenge Füll-Regeln, Kosten exakt, Entscheidungsregeln
+python3 tools/trading/krypto_bot/scalping_pruefung.py  # Prüfstand Scalping (lädt beim ersten Lauf ~200 MB Binance-Minutenarchive); --bericht = Tabelle
 python3 tools/trading/krypto_bot/pilot_pruefung.py   # Prüfstand: Stop, Trendlänge, Schwankungsziel, Ethereum
 python3 tools/trading/krypto_bot/info_pruefung.py    # Prüfstand: 13 freie Markt-Infos
 python3 tools/trading/krypto_bot/hebel_pruefung.py   # Prüfstand: 1× bis 10× Hebel
