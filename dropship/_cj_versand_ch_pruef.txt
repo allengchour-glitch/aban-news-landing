@@ -8027,3 +8027,5 @@ seifenblasen-maschinenpistole-583168	1521796286008274944	3	26.22	ok	landeseite
 selbstkontrolle-box-995200	1383976638211035136	7	7.45	ok	landeseite
 solare-powerbank-3848bb	2FEC060A-987A-45F1-80BD-75CABF47857E	0	-	KEINE CH-Option → DRAFT	landeseite
 ultrasonisches-reinigungsgerat-352128	1432187342675906560	7	8.57	ok	landeseite
+kabellose-bluetooth-kopfhoerer-82e2b5	C4EEFBA3-A9E2-4D97-BFA0-291C4D0B27C0	7	6.81	ok	landeseite
+lazy-phone-halter-b20132	170D9F7D-7071-4E4A-A73E-CC5A3B66F020	16	9.33	ok	landeseite
