@@ -12,7 +12,7 @@
  * EXIT: 0 = gepostet oder nichts faellig · 1 = Fehler · 3 = Kandidat uebersprungen/quittiert, kein Post (naechster Lauf bald)
  */
 import fs from 'node:fs';
-import { preisVeraltet, markierungFehlt, lock as postLock, seen as postSeen, mark as postMark, fbSeitenIdentitaet, familieKuerzlich, familieMerken, nachVorrang, montageErst, montagePruefen, montageQuelle, juryPruefen, juryVorrang, igUserTags } from './post_guard.mjs';
+import { preisVeraltet, produktMerkenReel, markierungFehlt, lock as postLock, seen as postSeen, mark as postMark, fbSeitenIdentitaet, familieKuerzlich, familieMerken, nachVorrang, montageErst, montagePruefen, montageQuelle, juryPruefen, juryVorrang, igUserTags } from './post_guard.mjs';
 // 22.09.: Adresse vor dem Post pruefen — 14 von 22 «ready»-Reels waren 404 (CDN-Dateien weg). 4xx → archived-deadurl.
 import { execFileSync as _exf, spawnSync } from 'node:child_process';
 const erreichbar = u => { try { const c = _exf('curl', ['-s', '-o', '/dev/null', '-w', '%{http_code}', '--max-time', '30', '-r', '0-1000', u], { encoding: 'utf8' }).trim(); return /^20[06]$/.test(c) ? true : c; } catch { return 'curl'; } };
@@ -196,10 +196,10 @@ async function produktAktiv(postId) {
   if (!m) return { ok: true, grund: 'keine Produkt-ID im Reel-Namen' };
   const istShopifyId = !bh && /^\d{12,15}$/.test(m[1]);
   const query = bh
-    ? `{ products(first:1, query:"handle:${bh[1]}"){ nodes{ status onlineStoreUrl priceRangeV2{ minVariantPrice{ amount } maxVariantPrice{ amount } } } } }`
+    ? `{ products(first:1, query:"handle:${bh[1]}"){ nodes{ id handle status onlineStoreUrl priceRangeV2{ minVariantPrice{ amount } maxVariantPrice{ amount } } } } }`
     : istShopifyId
-    ? `{ product(id:"gid://shopify/Product/${m[1]}"){ status onlineStoreUrl priceRangeV2{ minVariantPrice{ amount } maxVariantPrice{ amount } } } }`
-    : `{ products(first:1, query:"sku:CJ-${m[1]}"){ nodes{ status onlineStoreUrl priceRangeV2{ minVariantPrice{ amount } maxVariantPrice{ amount } } } } }`;
+    ? `{ product(id:"gid://shopify/Product/${m[1]}"){ id handle status onlineStoreUrl priceRangeV2{ minVariantPrice{ amount } maxVariantPrice{ amount } } } }`
+    : `{ products(first:1, query:"sku:CJ-${m[1]}"){ nodes{ id handle status onlineStoreUrl priceRangeV2{ minVariantPrice{ amount } maxVariantPrice{ amount } } } } }`;
   const shop = process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com';
   const tok = (process.env.SHOPIFY_ADMIN_TOKEN || (fs.existsSync('/tmp/cj_shop_token.txt') ? fs.readFileSync('/tmp/cj_shop_token.txt', 'utf8') : '')).trim();
   if (!tok) return { ok: false, grund: 'kein Shop-Token' };
@@ -211,13 +211,14 @@ async function produktAktiv(postId) {
       const d = await r.json();
       const p = istShopifyId ? (d && d.data && d.data.product) : ((d && d.data && d.data.products && d.data.products.nodes && d.data.products.nodes[0]) || (d && d.data ? null : undefined));
       if (p === null) return { ok: false, grund: 'Produkt existiert nicht mehr' };
-      if (p) return { ok: p.status === 'ACTIVE' && !!p.onlineStoreUrl, grund: `status ${p.status}, onlineStoreUrl ${p.onlineStoreUrl ? 'ja' : 'nein'}`, url: p.onlineStoreUrl || '', min: parseFloat(p.priceRangeV2?.minVariantPrice?.amount || 'NaN'), max: parseFloat(p.priceRangeV2?.maxVariantPrice?.amount || 'NaN') };
+      if (p) return { ok: p.status === 'ACTIVE' && !!p.onlineStoreUrl, grund: `status ${p.status}, onlineStoreUrl ${p.onlineStoreUrl ? 'ja' : 'nein'}`, url: p.onlineStoreUrl || '', min: parseFloat(p.priceRangeV2?.minVariantPrice?.amount || 'NaN'), max: parseFloat(p.priceRangeV2?.maxVariantPrice?.amount || 'NaN'), gid: p.id || '', handle: p.handle || '' };
     } catch (e) { /* retry */ }
     await sleep(2000 * (a + 1));
   }
   return { ok: false, grund: 'Shopify nicht erreichbar' };
 }
 let shopUrl = '';
+let produktInfo = {};   // 13.10.2026: gid + handle aus produktAktiv() → produktMerkenReel() nach dem IG-Publish
 // 23.09.2026: Sammel-Reels (promo-…) werben fuer MEHRERE Produkte mit Preisen im Bild. Das Video traegt ein
 // Manifest (MP4-Kommentar); `promo_montage.py --pruefen` vergleicht jedes Produkt live (ACTIVE + Preis). Exit 3 =
 // veraltet → Zeile 'promo-veraltet', kein Post. FB-Link = die Kollektion aus der Caption.
@@ -238,7 +239,7 @@ async function promoPruefen(postId, videoUrl, caption) {
     ? await promoPruefen(cand[idx.id], cand[idx.video_url], cand[idx.caption])
     : await produktAktiv(cand[idx.id]);
   if (!pa.ok && pa.veraltet && !DRY) { cand[idx.status] = 'promo-veraltet'; writeLedger(); console.error(`⛔ Kein Post — ${pa.grund}`); process.exit(3); }
-  shopUrl = pa.url || '';
+  shopUrl = pa.url || ''; produktInfo = pa;
   if (!pa.ok) {
     console.error(`⛔ Kein Post — Produkt nicht kaufbar/pruefbar (${pa.grund}): ${cand[idx.id]}`);
     if (!DRY && /nicht mehr|status DRAFT|status ARCHIVED|onlineStoreUrl nein/.test(pa.grund)) { cand[idx.status] = 'produkt-nicht-aktiv'; writeLedger(); }
@@ -340,6 +341,8 @@ if (pub.id) {
   cand[idx.post_url] = pub.id;
   postMark(url);                    // gemeinsamer Ledger: kein anderer Poster wiederholt dieses Video
   familieMerken(cand[idx.caption], 'reel');
+  // 13.10.2026 (Prüfer R2): die WARE merken wie die Bild-Poster — sonst kommt sie später als Bildpost/Karussell/Bild-Reel
+  produktMerkenReel(cand[idx.caption], cand[idx.id], produktInfo.gid, produktInfo.handle);
   writeLedger();
   const perma = await api(`${pub.id}`, { fields: 'permalink' }, 'GET');
   igPermalink = perma.permalink || pub.id;

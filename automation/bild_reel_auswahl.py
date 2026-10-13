@@ -105,7 +105,8 @@ _THEMEN = [
     ("gadget", jsre(r"beamer|projektor|kopfhörer|kopfhoerer|lautsprecher|ladegerät|kabel|usb|bluetooth|smart|kamera|drohne|gadget|tracker|hülle|huelle")),
     ("beauty", jsre(r"serum|\bgua\b|roller|creme|pflege|haar|nagel|wimper|augenbraue|makeup|make-up|massage|beauty|glätt|lidschatten|lippenstift|lipgloss|lippen|rouge|mascara|eyeliner|lidstrich|parfum|palette|puder")),
     ("schmuck", jsre(r"kette|ohrring|ohrhänger|armreif|armband|\bring\b|schmuck|anhänger|uhr")),
-    ("mode", jsre(r"kleid|rock\b|bluse|hose|jacke|mantel|hoodie|shirt|hemd|pullover|cardigan|strick|sneaker|schuh|stiefel|sandal|ballerina|tasche|rucksack|gürtel|schal|cap\b|mütze")),
+    # 13.10.2026: (?<!hand)schuh + Mode-Handschuhe nur mit Mode-Wort davor, wie die Engine — «Reinigungshandschuhe» ist keine Mode (CLAUDE.md 16d)
+    ("mode", jsre(r"kleid|rock\b|bluse|hose|jacke|mantel|hoodie|shirt|hemd|pullover|cardigan|strick|sneaker|(?<!hand)schuh|(?:leder|winter|strick|kaschmir|touchscreen|fleece|plüsch|damen|ski|thermo)[-\s]?handschuh|stiefel|sandal|ballerina|tasche|rucksack|gürtel|schal|cap\b|mütze")),
 ]
 
 
@@ -296,8 +297,20 @@ def _csv(pfad):
         return list(csv.DictReader(f))
 
 
+# 13.10.2026 (Prüfer R2): posts_image.csv-Zeilen ohne «/products/»-Link und ohne Shopify-ID am Ende blieben unerkannt (196 von 632,
+# davon 126 gepostet) — die Zeilen-ID ist dort meist der Handle mit Erzeuger-Präfix (img-<handle>, ki-…, post-…) und evtl. Datum.
+ID_PRAEFIX = re.compile(r"^(?:img|ki|kimi|post|clip|auto|edit|fresh\d*|meta-auto)-", re.I)
+ID_DATUM = re.compile(r"-(?:\d{4}-\d{2}-\d{2}|\d{8})$")
+
+
+def id_handle(zid):
+    """Zeilen-ID → vermuteter Handle (Präfix und Datum am Ende weg). '' wenn nichts Brauchbares (< 6 Zeichen)."""
+    h = ID_DATUM.sub("", ID_PRAEFIX.sub("", (zid or "").strip().lower()))
+    return h if len(h) >= 6 and re.fullmatch(r"[a-z0-9-]+", h) else ""
+
+
 def sperrlisten():
-    s = {"handles": {}, "pids": set(), "medien": set()}
+    s = {"handles": {}, "pids": set(), "medien": set(), "reel_pids": set()}
 
     def h(x, quelle):
         x = (x or "").strip().lower()
@@ -309,12 +322,19 @@ def sperrlisten():
             h(rid[9:], "reels_seed.csv (bildreel)")
         for m in re.findall(r"/products/([a-z0-9-]+)", r.get("caption") or ""):
             h(m, f"reels_seed.csv ({rid[:30]})")
+        # 13.10.2026 (Prüfer R2, Regel 10): Video-Reels sperren über den Caption-Link (532 von 534 cjreel-Zeilen); die 2 übrigen
+        # sind v1-Reels «cjreel-<Shopify-ID>» ohne Link → über die ID.
+        m = re.fullmatch(r"cjreel-(\d{12,15})", rid)
+        if m:
+            s["reel_pids"].add(m.group(1))
     for r in _csv("social/posts_image.csv"):
         for m in re.findall(r"/products/([a-z0-9-]+)", r.get("caption") or ""):
             h(m, "posts_image.csv")
         m = re.search(r"(\d{12,})\s*$", r.get("id") or "")
         if m:
             s["pids"].add(m.group(1))
+        else:
+            h(id_handle(r.get("id")), "posts_image.csv (Zeilen-ID)")
     for r in _csv("social/ig_karussell.csv"):
         for x in re.split(r"[\s,;|]+", (r.get("produkte") or "") + " " + (r.get("slug") or "")):
             h(x, "ig_karussell.csv")
@@ -357,7 +377,9 @@ def gepostet(paare):
 
 
 # ---------------------------------------------------------------- Shopify
-FELDER = ("id handle title status onlineStoreUrl tags priceRangeV2{minVariantPrice{amount}} variants(first:10){nodes{availableForSale}} "
+# 13.10.2026: maxVariantPrice + Variantentitel/-preise (50) für preis_anzeige/set_einzelteil (reel/bild_reel.py); Kosten gemessen 157/330
+FELDER = ("id handle title status onlineStoreUrl tags priceRangeV2{minVariantPrice{amount} maxVariantPrice{amount}} "
+          "variants(first:50){nodes{availableForSale title price}} "
           "media(first:10){nodes{mediaContentType ... on MediaImage{image{url width height}}}}")
 
 
@@ -397,6 +419,11 @@ def vorpruefen(p, sp, led, heute):
         return "keine Variante kaufbar"
     if preis < MIN_PREIS:
         return f"unter CHF {MIN_PREIS:.2f}"
+    import bild_reel
+    mn, mx = bild_reel.preise(p)
+    g = bild_reel.set_einzelteil(p["title"], (p.get("variants") or {}).get("nodes"), mn, mx)
+    if g:
+        return g
     if tags & SPERR:
         return f"Sperr-Tag {sorted(tags & SPERR)[0]}"
     if HEIL.search(p["title"]):
@@ -413,6 +440,8 @@ def vorpruefen(p, sp, led, heute):
         return f"schon in {sp['handles'][h]}"
     if p["id"].split("/")[-1] in sp["pids"]:
         return "schon als Bild-Post (posts_image.csv)"
+    if p["id"].split("/")[-1] in sp.get("reel_pids", ()):
+        return "schon als Video-Reel (reels_seed.csv, cjreel-<Shopify-ID>)"
     if any(media_key(u) in sp["medien"] for u in alle_bilder):
         return "Produktbild schon gepostet (_posted_media.txt)"
     if len(bilder_gross(p)) < MIN_BILDER:
@@ -460,8 +489,9 @@ def cache_schreiben(tag, cache):
         pass
 
 
-def kandidaten(sp, led, heute, protokoll, cache):
-    """Erzeugt (produkt, quelle, platz) nach Vorrang; prüft billig (vorpruefen), dann produktGepostet im Batch."""
+def kandidaten(sp, led, heute, protokoll, cache, dauerhaft_merken=False):
+    """Erzeugt (produkt, quelle, platz) nach Vorrang; prüft billig (vorpruefen), dann produktGepostet im Batch.
+    dauerhaft_merken (nur scharf): «Set-Titel …»-Absagen kommen als «ungeeignet» ins Ledger (Preisaufbau ändert sich kaum)."""
     final = {z[1]: z[2] for z in led if z[2] in ENDGUELTIG}
     gesehen = set()
 
@@ -476,6 +506,8 @@ def kandidaten(sp, led, heute, protokoll, cache):
             if g:
                 protokoll.append((hh, g))
                 cache[hh] = g
+                if dauerhaft_merken and g.startswith("Set-Titel"):
+                    merken(p["handle"], "ungeeignet", g)
             else:
                 frisch.append((p, q, platz))
         if not frisch:
@@ -554,12 +586,13 @@ def plan_fuer(p, q, platz, sauber, gruende):
     hook = produkt_hook(th, p["title"])
     n = min(sauber, 7)
     st = stimme_fuer(p["handle"])
-    return {"handle": p["handle"], "titel": p["title"], "preis": float(p["priceRangeV2"]["minVariantPrice"]["amount"]),
+    mn, mx = bild_reel.preise(p)
+    return {"handle": p["handle"], "titel": p["title"], "preis": mn, "preis_max": mx,
             "quelle": q, "platz": platz, "thema": th, "hook": hook, "bilder_sauber": sauber, "bilder_gross": len(bilder_gross(p)),
             "ausgelassen": gruende, "dauer": bild_reel.dauer_fuer(n), "musik": musik_fuer(p["handle"]), "stimme": st,
             "begruendung": (f"{'Saison-Vorrang Platz ' + str(platz) if q == 'vorrang' else 'Kollektion ' + q + ' Platz ' + str(platz)}; "
                             f"{sauber} saubere Bilder ≥ 600 px (Diashow {bild_reel.dauer_fuer(n)} s, Schnitt bei 0,5 s); "
-                            f"Hook «{hook}» ({len(hook)} Z.) aus dem Produktwort; CHF {float(p['priceRangeV2']['minVariantPrice']['amount']):.2f}; "
+                            f"Hook «{hook}» ({len(hook)} Z.) aus dem Produktwort; {bild_reel.preis_anzeige(mn, mx)}; "
                             f"nirgends gepostet/geplant")}
 
 
@@ -572,7 +605,7 @@ def auswaehlen(n, protokoll, led=None, ungeeignet_merken=False):
     cache = cache_lesen(heute)
     aus = []
     try:
-        for p, q, platz in kandidaten(sp, led, heute, protokoll, cache):
+        for p, q, platz in kandidaten(sp, led, heute, protokoll, cache, dauerhaft_merken=ungeeignet_merken):
             sauber, gruende = bildpruefung(p)
             if sauber < MIN_BILDER:
                 g = f"nur {sauber} saubere Bilder ({', '.join(gruende)})"
@@ -628,13 +661,14 @@ def bauen(k, bogen_dir, out_dir):
         if rc != 0 or not os.path.exists(datei):
             txt = (so + se).strip().split("\n")
             meld = next((z for z in reversed(txt) if "⛔" in z), txt[-1] if txt else f"Exit {rc}")
-            return ("ungeeignet" if "⛔" in meld and re.search(r"nicht aktiv|weniger als 2 Bilder", meld) else "fehler"), meld[:200], ""
+            return ("ungeeignet" if "⛔" in meld and re.search(r"nicht aktiv|weniger als 2 Bilder|Einzelteil", meld) else "fehler"), meld[:200], ""
         os.makedirs(bogen_dir, exist_ok=True)
         bogen = os.path.join(bogen_dir, f"bildreel_{h[:60]}.jpg")
         lauf([sys.executable, os.path.join(HIER, "reel", "schnitt.py"), "--kontaktbogen", datei, "--bogen-out", bogen], 300)
         if not os.path.exists(bogen):
             bogen = ""
-        cap = bild_reel.caption_fuer({"title": res.get("titel") or k["titel"]}, float(res.get("preis") or k["preis"]), h)
+        cap = bild_reel.caption_fuer({"title": res.get("titel") or k["titel"]}, float(res.get("preis") or k["preis"]), h,
+                                     float(res.get("preis_max") or k.get("preis_max") or 0) or None)
         rc, so, se = lauf([sys.executable, os.path.join(HIER, "gemini_jury.py"), datei, "--caption", cap, "--typ", "reel"], 450)
         j = letzte_json(so)
         note = f"Jury {j.get('schnitt')} {','.join(j.get('ko') or [])} {str(j.get('gruende') or j.get('grund') or '')[:120]}".strip()
@@ -702,6 +736,50 @@ def selbsttest():
     pr("Hook ≤ 24 Zeichen, kein Heilwort", all(len(produkt_hook(thema(t), t)) <= 24 for t, _, _ in ref))
     pr("thema: \\b ASCII wie JS («LED-Rucksack» → home)", thema("LED-Rucksack") == "home")
     pr("thema: «Teelicht» ist keine Küche", thema("Teelicht-Halter") != "kueche")
+    # 13.10.2026 (Prüfer R3): Handschuh ≠ Schuh (CLAUDE.md 16d) — Kanarien + Gleichlauf py↔js gegen die ECHTE Engine-Funktion
+    hs = {"Hitzebeständige Reinigungshandschuhe": False, "Silikon-Spülhandschuhe mit Bürstenfunktion": False, "Arbeitshandschuh": False,
+          "Damen Sneaker Schuhe": True, "Damen Schuhe aus Leder": True, "Unisex Lederhandschuhe Winter": True,
+          "Warme Touchscreen-Handschuhe mit Fleecefutter": True}
+    pr("thema: Reinigungs-/Spül-/Arbeitshandschuh ≠ mode, Schuhe/Winterhandschuhe = mode",
+       all((thema(t) == "mode") == soll for t, soll in hs.items()))
+    js = ("const fs=require('fs');const src=fs.readFileSync('automation/cj_video_reel_engine.mjs','utf8');"
+          "const th=new Function(/function thema\\(t\\) \\{[\\s\\S]*?\\n\\}/.exec(src)[0]+';return thema;')();"
+          "Promise.all([import('./automation/post_guard.mjs'),import('./automation/lib/reel-category.mjs')]).then(([m,rc])=>{"
+          "const t=JSON.parse(fs.readFileSync(0,'utf8'));console.log(JSON.stringify({"
+          "kat:['Hitzebeständige Reinigungshandschuhe','Silikon-Ofenhandschuhe','Unisex Lederhandschuhe Winter'].map(x=>rc.catKey(x)),"
+          "thema:t.map(x=>th(x)),anzeige:[m.preisAnzeige(20.9,41.9),m.preisAnzeige(21.9,21.9)],"
+          "veraltet:[m.preisVeraltet('X\\nab CHF 20.90 · Gratis Versand ab CHF 50',20.9,41.9),m.preisVeraltet('ab CHF 24.90',20.9,41.9),"
+          "m.preisVeraltet('CHF 24.90',20.9,41.9)],"
+          "keys:[m.produktKey('','x-15449432916353'),m.produktKey('','hoodie-jogginghose-set-im-partnerlook-637400')]}))})")
+    titel = list(hs) + [t for t, _, _ in ref]
+    try:
+        r = subprocess.run(["/opt/node22/bin/node", "-e", js], input=json.dumps(titel), capture_output=True, text=True, cwd=REPO, timeout=60)
+        jj = json.loads(r.stdout.strip().split("\n")[-1])
+    except Exception as e:
+        jj = {"fehler": str(e)[:80]}
+    pr(f"Gleichlauf thema() py = js ({len(titel)} Titel)", jj.get("thema") == [thema(t) for t in titel])
+    # 13.10.2026 (Prüfer R2, Preis-Wahrheit): «ab» bei Variantenspanne, Poster prüft «ab X» = Mindestpreis
+    import bild_reel
+    pr("preis_anzeige py = preisAnzeige js («ab CHF 20.90» / «CHF 21.90»)",
+       [bild_reel.preis_anzeige(20.9, 41.9), bild_reel.preis_anzeige(21.9, 21.9)] == ["ab CHF 20.90", "CHF 21.90"] == jj.get("anzeige"))
+    pr("preisVeraltet: «ab CHF 20.90» = Mindestpreis ok, «ab CHF 24.90» nicht, nacktes «CHF 24.90» in der Spanne ok",
+       (jj.get("veraltet") or [None])[0] == "" and bool((jj.get("veraltet") or ["", ""])[1]) and (jj.get("veraltet") or ["", "", "x"])[2] == "")
+    pr("Hashtag-Gruppe (lib/reel-category catKey): Reinigungs-/Ofenhandschuh = kueche, Lederhandschuh = mode",
+       jj.get("kat") == ["kueche", "kueche", "mode"])
+    pr("Reel-Poster-Schlüssel = Prüfschlüssel der Auswahl (pid:<Shopify-ID>, slug:<Handle ohne Ziffernende>)",
+       jj.get("keys") == ["pid:15449432916353", "slug:hoodie-jogginghose-set-im-partnerlook"])
+    hood = [{"title": "Gray Sweater / S", "price": "24.90"}, {"title": "Gray Trousers / S", "price": "20.90"},
+            {"title": "Grey Suit / M", "price": "40.90"}, {"title": "Set1 / L", "price": "41.90"}]
+    pr("Set-Regel: Hoodie-Set (20.90 = Hose, Set 41.90) → auslassen",
+       bild_reel.set_einzelteil("Hoodie & Jogginghose Set im Partnerlook", hood, 20.9, 41.9).startswith("Set-Titel"))
+    pr("Set-Regel: günstigste Variante ist selbst ein Set / Spanne < 30 % / kein Set-Titel → bleibt",
+       bild_reel.set_einzelteil("Pyjama-Set", [{"title": "Set Rot / S", "price": "20.90"}], 20.9, 41.9) == ""
+       and bild_reel.set_einzelteil("Partnerlook Hoodie", [{"title": "Hose / S", "price": "30.90"}], 30.9, 41.9) == ""
+       and bild_reel.set_einzelteil("Damen Strickpullover", [{"title": "Grau / S", "price": "21.90"}], 21.9, 41.9) == ""
+       and bild_reel.set_einzelteil("Headset mit Mikrofon", [{"title": "Schwarz", "price": "15.90"}], 15.9, 39.9) == "")
+    pr("Caption Bild-Reel: «ab CHF 16.90» bei Spanne, sonst nackt",
+       "\nab CHF 16.90 · " in bild_reel.caption_fuer({"title": "Wickel"}, 16.9, "h", 22.9)
+       and "\nCHF 16.90 · " in bild_reel.caption_fuer({"title": "Wickel"}, 16.9, "h"))
     # 2. Sperren
     pr("HEIL: «Schmerzlinderung»", bool(HEIL.search("Wärmepflaster zur Schmerzlinderung")))
     pr("Lizenzfigur: «Spider-Man»", bool(LIZENZ_FIGUR.search("Spider-Man Rucksack")))
@@ -723,6 +801,17 @@ def selbsttest():
     pr("vorpruefen: schon im Pin-Ledger", vorpruefen(p, {**sp0, "handles": {"kleid-test": "_pinterest_pins.txt"}}, [], "x").startswith("schon in"))
     pr("vorpruefen: Bild schon gepostet", vorpruefen(p, {**sp0, "medien": {"k2.jpg"}}, [], "x").startswith("Produktbild"))
     pr("vorpruefen: Bild-Post-ID", vorpruefen(p, {**sp0, "pids": {"123456789012345"}}, [], "x").startswith("schon als Bild-Post"))
+    # 13.10.2026: v1-Video-Reel «cjreel-<Shopify-ID>» ohne Caption-Link sperrt; Hoodie-Fall fällt in der Vorprüfung
+    pr("vorpruefen: Video-Reel über Shopify-ID", vorpruefen(p, {**sp0, "reel_pids": {"123456789012345"}}, [], "x").startswith("schon als Video-Reel"))
+    pv = {**p, "title": "Hoodie & Jogginghose Set im Partnerlook", "priceRangeV2": {"minVariantPrice": {"amount": "20.9"}, "maxVariantPrice": {"amount": "41.9"}},
+          "variants": {"nodes": [{"availableForSale": True, "title": "Gray Trousers / S", "price": "20.90"},
+                                 {"availableForSale": True, "title": "Grey Suit / M", "price": "41.90"}]}}
+    pr("vorpruefen: Hoodie-Set mit Einzelteil-Mindestpreis → Set-Titel", vorpruefen(pv, sp0, [], "x").startswith("Set-Titel"))
+    # 13.10.2026 (Prüfer R2): posts_image-Zeilen-ID als Handle (Präfix + Datum weg)
+    pr("id_handle: img-/edit-…-Datum/nackter Handle/zu kurz",
+       [id_handle("img-herrenuhr-edelstahl"), id_handle("edit-plateau-sandale-20260610"), id_handle("rizinusol-wickel-bauch-nacken"),
+        id_handle("ki-uhr"), id_handle("post-damen-mantel-2026-09-01")]
+       == ["herrenuhr-edelstahl", "plateau-sandale", "rizinusol-wickel-bauch-nacken", "", "damen-mantel"])
     pr("vorpruefen: 2 grosse Bilder reichen nicht", vorpruefen({**p, "media": {"nodes": p["media"]["nodes"][:2]}}, sp0, [], "x").startswith("<"))
     pr("vorpruefen: Ledger endgültig", vorpruefen(p, sp0, [["2026-10-01T00:00:00Z", "kleid-test", "jury", ""]], "x").startswith("schon versucht"))
     pr("vorpruefen: kein-urteil heute = morgen neu", vorpruefen(p, sp0, [["2026-10-13T01:00:00Z", "kleid-test", "kein-urteil", ""]], "2026-10-13") == "heute schon versucht"
@@ -788,10 +877,11 @@ def main():
         return 1
     led, r, n, ab = stand()
     if a.dry:
+        import bild_reel
         protokoll = []
         aus = auswaehlen(a.n, protokoll, led)
         for i, k in enumerate(aus, 1):
-            print(f"{i:2}. {k['handle'][:58]} · CHF {k['preis']:.2f} · {k['bilder_sauber']}/{k['bilder_gross']} Bilder · Hook «{k['hook']}» · "
+            print(f"{i:2}. {k['handle'][:58]} · {bild_reel.preis_anzeige(k['preis'], k.get('preis_max'))} · {k['bilder_sauber']}/{k['bilder_gross']} Bilder · Hook «{k['hook']}» · "
                   f"{k['musik']} · {'Stimme ' + k['stimme'] if k['stimme'] else 'ohne Stimme'}\n    {k['begruendung']}"
                   f"{' · ausgelassen: ' + ', '.join(k['ausgelassen']) if k['ausgelassen'] else ''}")
         gr = {}

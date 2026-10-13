@@ -26,7 +26,7 @@ import { nachlauf } from './eimer_etikette.mjs';
 import { takt as cjTakt } from './cj_takt.mjs';
 import { catKey, tagsFor, balanceByCategory } from './lib/reel-category.mjs';
 import { hashtagText } from './lib/hashtags.mjs';
-import { seen as postSeen, produktGepostet } from './post_guard.mjs';
+import { seen as postSeen, produktGepostet, preisAnzeige } from './post_guard.mjs';
 import { reelBauen } from './reel/schnitt_motor.mjs';
 
 const SHOP = process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com';
@@ -210,7 +210,11 @@ function thema(t) {
   // 11.10.2026: «Multicolor Lidschatten-Palette» fiel in «allgemein» → Hook «Wusstest du das schon?» auf einem Make-up-Reel
   if (/serum|\bgua\b|roller|creme|pflege|haar|nagel|wimper|augenbraue|makeup|make-up|massage|beauty|glätt|lidschatten|lippenstift|lipgloss|lippen|rouge|mascara|eyeliner|lidstrich|parfum|palette|puder/.test(s)) return 'beauty';
   if (/kette|ohrring|ohrhänger|armreif|armband|\bring\b|schmuck|anhänger|uhr/.test(s)) return 'schmuck';
-  if (/kleid|rock\b|bluse|hose|jacke|mantel|hoodie|shirt|hemd|pullover|cardigan|strick|sneaker|schuh|stiefel|sandal|ballerina|tasche|rucksack|gürtel|schal|cap\b|mütze/.test(s)) return 'mode';
+  // 13.10.2026 (Prüfer R3): «schuh» traf «Reinigungs-hand-schuh-e» → Mode-Hook/-Musik auf Spülhandschuhen (CLAUDE.md 16d:
+  // Handschuh ≠ Schuh). Jetzt (?<!hand)schuh; Mode-Handschuhe nur mit Mode-Wort davor (Leder/Winter/Ski/Touchscreen …) —
+  // GEMESSEN an 53'994 Titeln: Spül-, Ofen-, Einweg-, Box-, Velo-Handschuhe → «allgemein», Winter-/Lederhandschuhe bleiben Mode.
+  // Python-Port: bild_reel_auswahl.py _THEMEN (Gleichlauf im --selbsttest).
+  if (/kleid|rock\b|bluse|hose|jacke|mantel|hoodie|shirt|hemd|pullover|cardigan|strick|sneaker|(?<!hand)schuh|(?:leder|winter|strick|kaschmir|touchscreen|fleece|plüsch|damen|ski|thermo)[-\s]?handschuh|stiefel|sandal|ballerina|tasche|rucksack|gürtel|schal|cap\b|mütze/.test(s)) return 'mode';
   return 'allgemein';
 }
 const HOOKS = {
@@ -447,8 +451,17 @@ function sqAuftrag(liste) {
   gitPush([datei, SQ_MERK], `Reel-Motor: Quellvideos über Server (${liste.length})`);
 }
 function caption(hook, k, benefit) {
-  return `${hook} 👀\n«${kurzTitel(k.title)}»${benefit ? ` — ${benefit}.` : ''}\n\nCHF ${k.price.toFixed(2)} · Gratis Versand ab CHF 50 · Klarna & TWINT 🇨🇭\n🔗 luxestyle.ch/products/${k.handle} (Link in Bio)`;
+  return `${hook} 👀\n«${kurzTitel(k.title)}»${benefit ? ` — ${benefit}.` : ''}\n\n${preisAnzeige(k.price, k.preisMax)} · Gratis Versand ab CHF 50 · Klarna & TWINT 🇨🇭\n🔗 luxestyle.ch/products/${k.handle} (Link in Bio)`;
 }
+// 13.10.2026 (Prüfer R3/R2, Preis-Wahrheit): k.price kam aus variants(first:1) — das ist die ERSTE Variante, nicht die günstigste
+// (Kleid 20.90 bei Spanne 18.90–20.90, Handschuhe 14.90 bei 14.90–21.90). Jetzt Mindestpreis aus priceRangeV2 und «ab», wenn die
+// Varianten verschieden kosten (preisAnzeige in post_guard.mjs). Schwelle CHF 14.90 gilt damit für den Mindestpreis.
+const preisAus = n => {
+  const v0 = parseFloat(n?.variants?.nodes?.[0]?.price || '0');
+  const min = parseFloat(n?.priceRangeV2?.minVariantPrice?.amount ?? v0), max = parseFloat(n?.priceRangeV2?.maxVariantPrice?.amount ?? min);
+  return { price: Number.isFinite(min) ? min : v0, preisMax: Number.isFinite(max) ? max : v0 };
+};
+const preisGesprochen = k => (k.preisMax > k.price + 0.005 ? '' : k.price.toFixed(2));   // «ab» spricht voiceover.py nicht → dann ohne Preis
 
 // ---------------------------------------------------------------- Stimme (A/B, 23.09.2026)
 // Entscheid je pid stabil (eigener Hash-Salz, damit er nicht mit der Musikwahl num(pid) % n gleichlaeuft):
@@ -462,7 +475,7 @@ function stimmeBauen(pid, th, hook, k, benefit) {
   const wav = `/tmp/reelbuild/vo_${pid}.wav`;
   const kurz = benefit && benefit.length <= 90 ? benefit : '';
   const args = ['automation/reel/voiceover.py', '--out', wav, '--hook', sprechHook(hook, k.title), '--name', kurzTitel(k.title), '--nutzen', kurz,
-    '--preis', k.price.toFixed(2), '--thema', th];
+    '--preis', preisGesprochen(k), '--thema', th];
   let out = '';
   try { out = execFileSync('python3', args, { encoding: 'utf8', timeout: 240000, stdio: ['ignore', 'pipe', 'pipe'] }); }
   catch (e) { out = String(e.stdout || ''); }
@@ -476,7 +489,7 @@ function stimmeDry(pid, th, hook, k, benefit) {
   if (!stimmeGewollt(pid)) return 'nein (Anteil)';
   try {
     const j = JSON.parse(execFileSync('python3', ['automation/reel/voiceover.py', '--dry', '--hook', sprechHook(hook, k.title), '--name', kurzTitel(k.title),
-      '--nutzen', benefit && benefit.length <= 90 ? benefit : '', '--preis', k.price.toFixed(2), '--thema', th], { encoding: 'utf8' }).trim());
+      '--nutzen', benefit && benefit.length <= 90 ? benefit : '', '--preis', preisGesprochen(k), '--thema', th], { encoding: 'utf8' }).trim());
     return `ja (${j.stimme}) «${j.varianten[0]}»`;
   } catch (e) { return 'ja, aber voiceover.py --dry scheitert: ' + String(e.message || e).slice(0, 80); }
 }
@@ -502,11 +515,11 @@ if (process.env.NEU_RENDERN === '1') {
   let neu = 0; const dateien = [];
   for (let i = 0; i < ziel.length; i += 20) {
     const teil = ziel.slice(i, i + 20);
-    const r = await gql(`query($q:String){ products(first:20, query:$q){ nodes{ id title handle status variants(first:1){nodes{price sku}} } } }`, { q: teil.map(p => `sku:CJ-${p}`).join(' OR ') });
+    const r = await gql(`query($q:String){ products(first:20, query:$q){ nodes{ id title handle status priceRangeV2{minVariantPrice{amount} maxVariantPrice{amount}} variants(first:1){nodes{price sku}} } } }`, { q: teil.map(p => `sku:CJ-${p}`).join(' OR ') });
     if (!r) break;
     for (const n of r.data.products.nodes) {
       const m = /^CJ-([0-9A-Za-z-]{10,})/.exec(n.variants.nodes[0]?.sku || ''); if (!m || !teil.includes(m[1])) continue;
-      const pid = m[1], k = { pid, title: n.title.trim(), price: parseFloat(n.variants.nodes[0]?.price || '0') };
+      const pid = m[1], k = { pid, title: n.title.trim(), ...preisAus(n) };
       let st = { ja: false, grund: 'anteil' };
       if (n.status !== 'ACTIVE') { console.log(`   ${pid}: Produkt ${n.status} — nicht neu gerendert`); continue; }
       // 13.10.2026 (R1): die Kennung kann eine Varianten-SKU sein → CJ mit der echten pid fragen; cjVideo() liefert ein Objekt.
@@ -520,7 +533,7 @@ if (process.env.NEU_RENDERN === '1') {
         let dur = 0; try { dur = parseFloat(execFileSync('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', src], { encoding: 'utf8' })); } catch {}
         const mw = musikWahl(thema(k.title), pid), musik = mw.datei;
         st = stimmeBauen(pid, th, hook, k, '');
-        const rb = reelBauen({ src, out, musik, einstieg: mw.start, titel: z1, titel2: z2, preis: `CHF ${k.price.toFixed(2)}`, hook, stimme: st });
+        const rb = reelBauen({ src, out, musik, einstieg: mw.start, titel: z1, titel2: z2, preis: preisAnzeige(k.price, k.preisMax), hook, stimme: st });
         if (!rb.ok) { console.log(`   ${pid}: schnitt Exit ${rb.code} — ${rb.grund}`); continue; }
         st = rb.st;
         // OHNE_PUSH = Sichtpruefung: nichts veroeffentlicht → auch kein Verlaufseintrag (sonst zaehlt die Lernschleife Test-Renders)
@@ -552,6 +565,11 @@ const inCsv = new Set((fs.readFileSync(CSV, 'utf8').match(/^cjreel-[^,\n]+/gm) |
 // nicht mehr; sie bleiben in der Datei (nicht löschen). Dazu die heutige Fehler-Sperre (cjVideo «fehler»).
 const gesperrt = (...s) => s.filter(Boolean).some(x => gebaut.has(x) || inCsv.has(x) || torAbgelehnt.has(x) || fehlerHeute.has(x)
   || (keinVideo.has(x) && istPidForm(x)));
+// 13.10.2026 (Prüfer R2, Regel 10): ein Bild-Reel (bildreel-<Handle>) sperrt dasselbe Produkt für Video-Reels — JEDER Status,
+// auch *-skip (ein zurückgehaltenes Bild-Reel heisst trotzdem: das Produkt war schon dran). gesperrt() kannte nur cjreel-IDs;
+// die drei Bild-Reel-Produkte vom 13.10. standen bis 30.11. in _reel_vorrang.txt. Gegenrichtung: bild_reel_auswahl.py sperrlisten().
+const bildReelHandles = new Set((fs.readFileSync(CSV, 'utf8').match(/^bildreel-[^,\n]+/gm) || []).map(s => s.slice(9).trim().toLowerCase()));
+const hatBildReel = h => !!h && bildReelHandles.has(String(h).toLowerCase());
 // R1 Schritt 4: dieselbe Abfrage wie produktAktiv() in metricool_tiktok_post.mjs / meta_reel_post.mjs —
 // products(first:1, query:"sku:CJ-<Kennung>") muss GENAU dieses Produkt mit ACTIVE + onlineStoreUrl liefern, sonst würde
 // der Poster das Reel später als «produkt-nicht-aktiv» verwerfen. '' = bestanden, sonst Grund.
@@ -598,7 +616,7 @@ for (let i = 0; i < Math.min(idxPids.length, IDX_MAX) && idxKand < IDX_ZIEL; i +
   // 13.10.2026 (R1 Schritt 2): je pid BEIDE Formen suchen — die direkte pid-SKU und die volle Shop-SKU aus der Umkehrtabelle
   // (in Anführungszeichen, 21 von 148 tragen Leerzeichen; GEMESSEN: `sku:"CJ-CJYDQTJM00565-Black Set"` findet das Produkt).
   const q = teil.flatMap(p => [`sku:CJ-${p}`, ...(UMKEHR.get(p) || []).slice(0, 2).map(s => `sku:${JSON.stringify(s)}`)]).join(' OR ');
-  const r = await gql(`query($q:String){ products(first:50, query:$q){ nodes{ id title handle status tags mediaCount{count} description(truncateAt:260) variants(first:5){nodes{price sku}} } } }`, { q });
+  const r = await gql(`query($q:String){ products(first:50, query:$q){ nodes{ id title handle status tags mediaCount{count} description(truncateAt:260) priceRangeV2{minVariantPrice{amount} maxVariantPrice{amount}} variants(first:5){nodes{price sku}} } } }`, { q });
   if (!r) break;
   // Je pid EIN Urteil: eine pid kann mehrere Shop-Produkte tragen (Duplikat als DRAFT neben dem ACTIVE-Original) —
   // qualifiziert eines, zaehlt die pid als Kandidat und landet NICHT im Ausfall-Ledger. Probe-/Sperr-Gründe gewinnen
@@ -610,15 +628,15 @@ for (let i = 0; i < Math.min(idxPids.length, IDX_MAX) && idxKand < IDX_ZIEL; i +
     // Zuordnung Produkt → pid über die Umkehrtabelle (eine der ersten 5 Varianten-SKUs), nicht über den Text der SKU
     const cjpid = vs.map(v => cjPidAus(v.sku)).find(p => p && teil.includes(p)); if (!cjpid) continue;
     if (gut.has(cjpid)) continue;
-    const kennung = kennungAus(sku); const price = parseFloat(vs[0]?.price || '0');
+    const kennung = kennungAus(sku); const { price, preisMax } = preisAus(n);
     const grund = !kennung ? 'sku-ohne-kennung' : n.status !== 'ACTIVE' ? `status-${n.status}` : price < 14.9 ? 'preis-unter-14.90' : (n.mediaCount?.count || 0) < 2 ? 'unter-2-bilder' : VERBOTEN.test(n.title) ? 'verbots-titel'
       : sperrGrund(n.tags, n.title) || (produktGepostet(`«${kurzTitel(n.title)}»`, `cjreel-${kennung}`) ? 'produkt-schon-gepostet' : '');
     if (grund) { setzeGrund(cjpid, grund); continue; }
-    if (gesperrt(kennung)) { setzeGrund(cjpid, 'gesperrt'); continue; }
+    if (gesperrt(kennung) || hatBildReel(n.handle)) { setzeGrund(cjpid, 'gesperrt'); continue; }
     const probe = await posterProbe(kennung, n.id);
     if (probe) { probeAus++; probeListe.push(`${cjpid} → ${kennung}: ${probe}`); setzeGrund(cjpid, 'probe:' + probe); continue; }
     gut.add(cjpid); grundJe.delete(cjpid);
-    kand.push({ pid: kennung, cjpid, gid: n.id, title: n.title.trim(), handle: n.handle, price, desc: n.description || '', tags: n.tags || [], idx: true, probe: true }); idxKand++;
+    kand.push({ pid: kennung, cjpid, gid: n.id, title: n.title.trim(), handle: n.handle, price, preisMax, desc: n.description || '', tags: n.tags || [], idx: true, probe: true }); idxKand++;
   }
   for (const p of teil) {
     if (gut.has(p)) continue;
@@ -663,25 +681,25 @@ let shopKand = 0, shopProbeAus = 0; const shopGruende = new Map(), shopListe = [
 const SHOP_ZIEL = DRY ? Infinity : BATCH * 3;
 for (let i = 0; i < BF_MIT.length && shopKand < SHOP_ZIEL; i += 50) {
   const r = await gql(`query($ids:[ID!]!){ nodes(ids:$ids){ ... on Product { id title handle status tags mediaCount{count} description(truncateAt:260)
-    variants(first:5){nodes{price sku}} media(first:25){ nodes{ mediaContentType ... on Video { filename status originalSource{ url width height } } } } } } }`, { ids: BF_MIT.slice(i, i + 50) });
+    priceRangeV2{minVariantPrice{amount} maxVariantPrice{amount}} variants(first:5){nodes{price sku}} media(first:25){ nodes{ mediaContentType ... on Video { filename status originalSource{ url width height } } } } } } }`, { ids: BF_MIT.slice(i, i + 50) });
   if (!r) break;
   for (const n of r.data.nodes || []) {
     if (!n || !n.id || shopKand >= SHOP_ZIEL) continue;
     const zaehl = g => shopGruende.set(g, (shopGruende.get(g) || 0) + 1);
     const vids = (n.media?.nodes || []).filter(m => m.mediaContentType === 'VIDEO' && m.status !== 'FAILED' && m.originalSource?.url);
     const v = vids.map(m => ({ m, p: (VID_DATEI.exec(m.filename || '') || [])[1] || '' })).find(x => istPidForm(x.p));
-    const vs = n.variants?.nodes || []; const sku = vs[0]?.sku || ''; const kennung = kennungAus(sku); const price = parseFloat(vs[0]?.price || '0');
+    const vs = n.variants?.nodes || []; const sku = vs[0]?.sku || ''; const kennung = kennungAus(sku); const { price, preisMax } = preisAus(n);
     const skuPid = vs.map(x => cjPidAus(x.sku)).find(Boolean) || '';
     const grund = !vids.length ? 'kein-video-medium' : !v ? 'dateiname-ohne-pid' : !kennung ? 'sku-ohne-kennung'
       : skuPid && skuPid !== v.p ? 'pid-widerspruch' : n.status !== 'ACTIVE' ? `status-${n.status}` : price < 14.9 ? 'preis-unter-14.90'
       : (n.mediaCount?.count || 0) < 2 ? 'unter-2-medien' : VERBOTEN.test(n.title) ? 'verbots-titel' : sperrGrund(n.tags, n.title)
-      || (gesperrtShop(kennung, v.p) ? 'schon-reel-oder-tor' : '') || (kand.some(x => x.pid === kennung || x.cjpid === v.p) ? 'schon-index-kandidat' : '')
+      || (gesperrtShop(kennung, v.p) ? 'schon-reel-oder-tor' : '') || (hatBildReel(n.handle) ? 'bild-reel-vorhanden' : '') || (kand.some(x => x.pid === kennung || x.cjpid === v.p) ? 'schon-index-kandidat' : '')
       || (produktGepostet(`«${kurzTitel(n.title)}»`, `cjreel-${kennung}`) ? 'produkt-schon-gepostet' : '');
     if (grund) { zaehl(grund); continue; }
     const probe = await posterProbe(kennung, n.id);
     if (probe) { shopProbeAus++; zaehl('probe:' + probe); continue; }
     const o = v.m.originalSource; const kurz = Math.min(o.width || 0, o.height || 0);
-    kand.push({ pid: kennung, cjpid: v.p, gid: n.id, title: n.title.trim(), handle: n.handle, price, desc: n.description || '', tags: n.tags || [],
+    kand.push({ pid: kennung, cjpid: v.p, gid: n.id, title: n.title.trim(), handle: n.handle, price, preisMax, desc: n.description || '', tags: n.tags || [],
       quelle: 'shopify', shopUrl: o.url, shopKurz: kurz, probe: true });
     shopKand++; shopListe.push(`${v.p} → ${kennung} · ${kurz} px${keinVideo.has(v.p) ? ' · (kein-Video-Ledger widerspricht)' : ''} · ${n.title.slice(0, 55)} · CHF ${price}`);
   }
@@ -690,7 +708,7 @@ console.log(`Shopify-Videos (Nachtrag): ${BF_MIT.length} Produkte → ${shopKand
 if (DRY) for (const z of shopListe) console.log(`   Shopify ✓ ${z}`);
 let bfGespart = 0;
 while (gescannt < SCAN && idxKand < BATCH * 3) {
-  const r = await gql(`query($c:String){ products(first:50, after:$c, sortKey:CREATED_AT, reverse:true, query:"status:active tag:cj-real"){ pageInfo{hasNextPage endCursor} nodes{ id title handle tags mediaCount{count} description(truncateAt:260) variants(first:1){nodes{price sku}} } } }`, { c: cursor });
+  const r = await gql(`query($c:String){ products(first:50, after:$c, sortKey:CREATED_AT, reverse:true, query:"status:active tag:cj-real"){ pageInfo{hasNextPage endCursor} nodes{ id title handle tags mediaCount{count} description(truncateAt:260) priceRangeV2{minVariantPrice{amount} maxVariantPrice{amount}} variants(first:1){nodes{price sku}} } } }`, { c: cursor });
   if (!r) break;
   const pg = r.data.products;
   for (const n of pg.nodes) {
@@ -700,11 +718,11 @@ while (gescannt < SCAN && idxKand < BATCH * 3) {
     // 13.10.2026 (R1): CJ nur mit der echten pid fragen. Varianten-SKU ohne Eintrag in der Umkehrtabelle → überspringen
     // (keine Frage, kein Ledger); vorher ging die Varianten-SKU selbst an CJ (29 % der Fragen seit 30.09., 0 Reels).
     const cjpid = cjPidAus(sku); if (!cjpid) continue;
-    const price = parseFloat(n.variants.nodes[0]?.price || '0');
-    if (gesperrt(pid, cjpid) || kand.some(x => x.pid === pid || x.cjpid === cjpid)) continue;
+    const { price, preisMax } = preisAus(n);
+    if (gesperrt(pid, cjpid) || hatBildReel(n.handle) || kand.some(x => x.pid === pid || x.cjpid === cjpid)) continue;
     if (price < 14.9 || (n.mediaCount?.count || 0) < 2 || VERBOTEN.test(n.title) || sperrGrund(n.tags, n.title)) continue;
     if (produktGepostet(`«${kurzTitel(n.title)}»`, `cjreel-${pid}`)) continue;
-    kand.push({ pid, cjpid, gid: n.id, title: n.title.trim(), handle: n.handle, price, desc: n.description || '', tags: n.tags || [] });
+    kand.push({ pid, cjpid, gid: n.id, title: n.title.trim(), handle: n.handle, price, preisMax, desc: n.description || '', tags: n.tags || [] });
   }
   if (!pg.pageInfo.hasNextPage) break;
   cursor = pg.pageInfo.endCursor;
@@ -741,15 +759,15 @@ if (process.env.NUR_PID && process.env.NEU_RENDERN !== '1') {
   reihe = reihe.filter(x => x.pid === pid || x.cjpid === pid);
   // 13.10.2026 (R1): NUR_PID darf Kennung oder echte pid sein; CJ wird nur mit der echten pid gefragt (cjPidAus).
   if (!reihe.length && !gesperrt(pid, kennungVon(pid))) {
-    const r = await gql(`query($q:String){ products(first:5, query:$q){ nodes{ id title handle status tags mediaCount{count} description(truncateAt:260) variants(first:1){nodes{price sku}} } } }`, { q: `sku:CJ-${kennungVon(pid)}` });
+    const r = await gql(`query($q:String){ products(first:5, query:$q){ nodes{ id title handle status tags mediaCount{count} description(truncateAt:260) priceRangeV2{minVariantPrice{amount} maxVariantPrice{amount}} variants(first:1){nodes{price sku}} } } }`, { q: `sku:CJ-${kennungVon(pid)}` });
     for (const n of r?.data?.products?.nodes || []) {
       const sku = n.variants.nodes[0]?.sku || '', kennung = kennungAus(sku), cjpid = cjPidAus(sku);
       if (!kennung || !cjpid || (kennung !== pid && cjpid !== pid)) continue;
-      const price = parseFloat(n.variants.nodes[0]?.price || '0');
+      const { price, preisMax } = preisAus(n);
       if (n.status !== 'ACTIVE' || price < 14.9 || (n.mediaCount?.count || 0) < 2 || VERBOTEN.test(n.title) || sperrGrund(n.tags, n.title)) { console.log(`NUR_PID ${pid}: faellt an der Schwelle (${n.status}, CHF ${price}, ${n.mediaCount?.count} Bilder, ${sperrGrund(n.tags, n.title) || 'keine Sperre'})`); continue; }
-      if (gesperrt(kennung, cjpid)) { console.log(`NUR_PID ${pid}: gesperrt (Ledger/CSV/Tor)`); continue; }
+      if (gesperrt(kennung, cjpid) || hatBildReel(n.handle)) { console.log(`NUR_PID ${pid}: gesperrt (Ledger/CSV/Tor/Bild-Reel)`); continue; }
       if (produktGepostet(`«${kurzTitel(n.title)}»`, `cjreel-${kennung}`)) { console.log(`NUR_PID ${pid}: Produkt schon gepostet`); continue; }
-      reihe.push({ pid: kennung, cjpid, gid: n.id, title: n.title.trim(), handle: n.handle, price, desc: n.description || '', tags: n.tags || [] });
+      reihe.push({ pid: kennung, cjpid, gid: n.id, title: n.title.trim(), handle: n.handle, price, preisMax, desc: n.description || '', tags: n.tags || [] });
     }
   }
   console.log(`NUR_PID ${pid}: ${reihe.length ? 'Kandidat' : 'KEIN Kandidat (Ledger/CSV/Schwelle)'}`);
@@ -767,11 +785,11 @@ if (!DRY) {
   const waisen = fs.readdirSync(MEDIEN).map(f => /^reel_(.+)\.mp4$/.exec(f)?.[1]).filter(p => p && !gebaut.has(p) && !inCsv.has(p));
   for (let i = 0; i < waisen.length; i += 20) {
     const teil = waisen.slice(i, i + 20);
-    const r = await gql(`query($q:String){ products(first:20, query:$q){ nodes{ id title handle status mediaCount{count} description(truncateAt:260) variants(first:1){nodes{price sku}} } } }`, { q: teil.map(p => `sku:CJ-${p}`).join(' OR ') });
+    const r = await gql(`query($q:String){ products(first:20, query:$q){ nodes{ id title handle status mediaCount{count} description(truncateAt:260) priceRangeV2{minVariantPrice{amount} maxVariantPrice{amount}} variants(first:1){nodes{price sku}} } } }`, { q: teil.map(p => `sku:CJ-${p}`).join(' OR ') });
     if (!r) break;
     for (const n of r.data.products.nodes) {
       const m = /^CJ-([0-9A-Za-z-]{10,})/.exec(n.variants.nodes[0]?.sku || ''); if (!m || !teil.includes(m[1])) continue;
-      const pid = m[1], k = { pid, title: n.title.trim(), handle: n.handle, price: parseFloat(n.variants.nodes[0]?.price || '0') }, url = RAW + `reel_${pid}.mp4`;
+      const pid = m[1], k = { pid, title: n.title.trim(), handle: n.handle, ...preisAus(n) }, url = RAW + `reel_${pid}.mp4`;
       let code = ''; try { code = execFileSync('curl', ['-s', '-o', '/dev/null', '-w', '%{http_code}', '--max-time', '30', '-r', '0-1000', url], { encoding: 'utf8' }); } catch {}
       if (!/^20[06]$/.test(code)) { console.log(`   Nachtrag ${pid}: Adresse antwortet ${code} — Datei noch nicht gepusht`); continue; }
       if (n.status !== 'ACTIVE') { console.log(`   Nachtrag ${pid}: Produkt ${n.status} — keine Zeile`); continue; }
@@ -809,6 +827,7 @@ for (const k of reihe) {
   k.cjpid = k.cjpid || k.pid;
   const shop = k.quelle === 'shopify';
   if (shop ? gesperrtShop(k.pid, k.cjpid) : gesperrt(k.pid, k.cjpid)) continue;
+  if (hatBildReel(k.handle)) { console.log(`   ${k.pid}: Bild-Reel bildreel-${k.handle} vorhanden → kein Video-Reel (Regel 10)`); continue; }
   let vurl = '', cjGross = '';
   if (shop) {
     // R3 Schritt 4: ab 720 px kurzer Seite das Shopify-Original ohne CJ-Frage. Darunter EINMAL CJ nach der grössten Fassung
@@ -842,7 +861,7 @@ for (const k of reihe) {
   const benefit = nutzen(k.desc);
   const cap = caption(hook, k, benefit);
   const tags = hashtags(k.title, k.pid);
-  console.log(`→ ${k.pid}${k.cjpid !== k.pid ? ` (CJ-pid ${k.cjpid})` : ''} [${th}] ${k.title.slice(0, 60)} · CHF ${k.price}\n   Hook: ${hook} · Titel: ${z1} / ${z2}\n   Video: ${shop ? `Shopify ${k.shopKurz} px ` : ''}${vurl.slice(0, 70)}${cjGross ? `\n   CJ-Fassung zum Vergleich: ${cjGross.slice(0, 70)}` : ''}`);
+  console.log(`→ ${k.pid}${k.cjpid !== k.pid ? ` (CJ-pid ${k.cjpid})` : ''} [${th}] ${k.title.slice(0, 60)} · ${preisAnzeige(k.price, k.preisMax)}\n   Hook: ${hook} · Titel: ${z1} / ${z2}\n   Video: ${shop ? `Shopify ${k.shopKurz} px ` : ''}${vurl.slice(0, 70)}${cjGross ? `\n   CJ-Fassung zum Vergleich: ${cjGross.slice(0, 70)}` : ''}`);
   if (DRY) { console.log(`   Stimme: ${stimmeDry(k.pid, th, hook, k, benefit)}`); made++; continue; }
   const src = `/tmp/reelbuild/src_${k.pid}.mp4`, out = `/tmp/reelbuild/reel_${k.pid}.mp4`, srcCj = `/tmp/reelbuild/srccj_${k.pid}.mp4`;
   let st = { ja: false, grund: 'anteil' }, quelleTxt = 'cj', kurzIst = 0;
@@ -878,7 +897,7 @@ for (const k of reihe) {
     const mw = musikWahl(th, k.pid), musik = mw.datei;
     console.log(`   Musik: ${musik} ab ${mw.start}s [${th}]`);
     st = stimmeBauen(k.pid, th, hook, k, benefit);
-    const rb = reelBauen({ src, out, musik, einstieg: mw.start, titel: z1, titel2: z2, preis: `CHF ${k.price.toFixed(2)}`, hook, stimme: st });
+    const rb = reelBauen({ src, out, musik, einstieg: mw.start, titel: z1, titel2: z2, preis: preisAnzeige(k.price, k.preisMax), hook, stimme: st });
     if (!rb.ok) {
       console.log(`   ⛔ schnitt Exit ${rb.code}: ${rb.grund} → nicht in die Queue`);
       // 3 = Quelle ungeeignet, 4 = Ausgabetor: dauerhaft → Ledger (nicht erneut fragen); 1 = Fehler (OCR, Musik) → vorübergehend

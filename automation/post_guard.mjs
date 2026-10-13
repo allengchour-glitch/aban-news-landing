@@ -122,6 +122,16 @@ export function produktMerken(caption, zeilenId) {
   const s = ladeProdukte(); if (s.has(k)) return;
   fs.appendFileSync(P_LEDGER, k + '\n');
 }
+// 13.10.2026 (Prüfer R2): die Reel-Poster (meta_reel_post, metricool_tiktok_post) merkten die Ware nie — ein als Reel gepostetes
+// Produkt konnte später als Bildpost, Karussell oder Bild-Reel wiederkommen. Gemerkt wird unter den Schlüsseln, die die anderen
+// Poster prüfen: «Name»/Zeilen-ID wie social-autopost-meta.mjs, pid:<Shopify-ID> (Bild-Zeilen «kimi-…-<ID>», Karussell-gid) und
+// slug:<Handle> (Bild-Zeilen «img-<handle>», bild_reel_auswahl.py). gid/handle fehlen → nur der erste Schlüssel.
+export function produktMerkenReel(caption, zeilenId, gid = '', handle = '') {
+  produktMerken(caption, zeilenId);
+  const id = String(gid || '').split('/').pop();
+  if (/^\d{12,}$/.test(id)) produktMerken('', `x-${id}`);
+  if (handle) produktMerken('', String(handle));
+}
 
 /* ─────────────────────────────────────────────────────────────────────────────
  * MODEL-MARKIERUNG — eine Zusage an eine Person, technisch durchgesetzt (04.09.2026)
@@ -243,11 +253,20 @@ export function familieMerken(text, kanal = '') {
 
 // 24.09.2026: Preis in Caption/Bild/Video ist eingebrannt. Nach dem Preisschutz (23'121 Varianten gehoben) warben wartende
 // Posts mit dem alten, tieferen Preis. Liefert '' (ok) oder den Grund. Schwellen («Gratis-Versand ab CHF 50») zählen nicht.
+// 13.10.2026 (Prüfer R2, Hoodie-Set): «ab CHF X» verspricht den GÜNSTIGSTEN Preis → X muss dem Live-Mindestpreis entsprechen
+// (nicht bloss in der Spanne liegen). Ein nackter Preis bleibt wie bisher: irgendwo zwischen Mindest- und Höchstpreis.
 export function preisVeraltet(caption = '', min = NaN, max = NaN) {
   if (!Number.isFinite(min) || !Number.isFinite(max)) return '';
   const rein = String(caption).replace(/(?:versand|lieferung|gratis|kostenlos)[^.\n]{0,25}?CHF\s?\d+(?:[.,]\d{2})?/gi, ' ');
-  const aus = [...rein.matchAll(/CHF\s?(\d+[.,]\d{2})\b/g)].map(m => parseFloat(m[1].replace(',', '.'))).filter(x => !(x >= min - 0.005 && x <= max + 0.005));
+  const aus = [...rein.matchAll(/(\b[Aa]b\s+)?CHF\s?(\d+[.,]\d{2})\b/g)].map(m => [!!m[1], parseFloat(m[2].replace(',', '.'))])
+    .filter(([ab, x]) => ab ? Math.abs(x - min) > 0.005 : !(x >= min - 0.005 && x <= max + 0.005)).map(([ab, x]) => (ab ? 'ab ' : '') + x.toFixed(2));
   return aus.length ? `Caption ${aus.join('/')} ≠ live ${min.toFixed(2)}–${max.toFixed(2)}` : '';
+}
+// 13.10.2026 (Prüfer R2): Preis im Reel-Bild und in der Caption. Kosten die Varianten verschieden, steht «ab» davor — der
+// Mindestpreis allein («CHF 20.90») las sich beim Hoodie-Set wie der Set-Preis (20.90 = nur die Hose, Set 40.90–41.90).
+// Python-Gegenstück: reel/bild_reel.py preis_anzeige().
+export function preisAnzeige(min, max = min) {
+  return `${Number.isFinite(max) && max > min + 0.005 ? 'ab ' : ''}CHF ${Number(min).toFixed(2)}`;
 }
 
 // 25.09.2026 «herbstsachen auf sozial pushen»: SAISON-VORRANG fuer alle Poster. dropship/_social_vorrang.txt traegt Zeilen

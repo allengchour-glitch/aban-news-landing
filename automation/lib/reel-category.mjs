@@ -11,7 +11,9 @@ export function catKey(s){
   s = (s || '').toLowerCase();
   if (/hund|katze|haustier|welpe|\bpet\b|(?<!k)leine(?!n)|kratzbaum|futter|(?<!saug)napf|aquarium|vogel/.test(s)) return 'haustier';
   if (/sit-?up|fitness|yoga|hantel|widerstandsband|faszien|bauchtrainer|springseil|trainings?/.test(s)) return 'fitness';
-  if (/küche|kueche|mixer|kaffee|\btee\b|matcha|entsafter|grill|messbecher|\btopf|pfanne|gemüse|gemuese|nudel|schäler|reibe|kochtopf|backform|brotdose|besteck|kocher|schneidebrett|geschirr/.test(s)) return 'kueche';
+  // 13.10.2026 (Prüfer R3): «Hitzebeständige Reinigungshandschuhe» fiel unten über «handschuh» in 'mode' → TikTok/YouTube wählen
+  // beim Posten #fashionschweiz #outfit (metricool_tiktok_post.mjs ruft hashtagSet(«Name») neu auf). Spül-/Ofen-/Putzhandschuhe = Küche.
+  if (/küche|kueche|mixer|kaffee|\btee\b|matcha|entsafter|grill|messbecher|\btopf|pfanne|gemüse|gemuese|nudel|schäler|reibe|kochtopf|backform|brotdose|besteck|kocher|schneidebrett|geschirr|(?:reinigungs|spül|putz|ofen|küchen)handschuh/.test(s)) return 'kueche';
   if (/baby|kleinkind|kinder|spielzeug|puzzle|baustein|plüsch/.test(s)) return 'kinder';
   if (/herren|männer|menswear|\bmen\b/.test(s)) return 'herren';
   if (/sneaker|slides|sandal|(?<!hand)schuh|stiefel|\bboots?\b|loafer|pumps/.test(s)) return 'schuhe';

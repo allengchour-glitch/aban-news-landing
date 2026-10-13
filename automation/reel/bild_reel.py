@@ -42,12 +42,46 @@ def freisteller(im, rand=0.06, schwelle=0.80):
     return sum(1 for p in rahmen if min(p) >= 235) / len(rahmen) >= schwelle
 
 
+# 13.10.2026 (Prüfer R2, Preis-Wahrheit): Das Hoodie-Reel zeigte «Hoodie & Jogginghose Set im Partnerlook · CHF 20.90» — 20.90
+# kostet nur die Hose («Gray Trousers»), das Set 40.90–41.90. Zwei Regeln:
+#   1. preis_anzeige(): kosten die Varianten verschieden, steht im Bild UND in der Caption «ab CHF <Mindestpreis>»
+#      (JS-Gegenstück post_guard.mjs preisAnzeige; der Poster prüft mit preisVeraltet, dass «ab X» = Live-Mindestpreis ist).
+#   2. set_einzelteil(): der Titel verspricht ein Set («Set», «Partnerlook», «2-teilig», «Kombi»), die günstigste Variante ist
+#      aber ein Einzelteil (Variantentitel ohne Set-Wort) und kostet < 70 % des Höchstpreises → kein Bild-Reel (auch «ab» wäre
+#      dort irreführend: das Bild zeigt das ganze Set).
+SET_TITEL = re.compile(r"(?<![a-zäöüß])set(?![a-zäöüß])|partnerlook|\d-teilig|zwei-?teilig|drei-?teilig|kombi", re.I)
+SET_VARIANTE = re.compile(r"(?<![a-zäöüß])set(?![a-zäöüß])|suit|anzug|partnerlook|\d-teilig|zwei-?teilig|drei-?teilig|kombi|komplett", re.I)
+SET_ANTEIL = 0.7
+
+
+def preis_anzeige(mn, mx=None):
+    return f"{'ab ' if mx is not None and mx > mn + 0.005 else ''}CHF {mn:.2f}"
+
+
+def set_einzelteil(titel, varianten, mn, mx):
+    """'' = in Ordnung, sonst Grund. varianten = [{title, price}, …] (die ersten 50 reichen: Grund auch, wenn keine davon
+    den Mindestpreis trägt — dann ist die günstigste ungeprüft, und ungeprüft ist kein Ja)."""
+    if not SET_TITEL.search(titel or "") or not mx or mn >= SET_ANTEIL * mx:
+        return ""
+    billig = [v for v in varianten or [] if abs(float(v.get("price") or 0) - mn) < 0.005]
+    einzel = [v for v in billig if not SET_VARIANTE.search(v.get("title") or "")]
+    if billig and not einzel:
+        return ""
+    vt = (einzel[0].get("title") if einzel else "ungeprüft")
+    return f"Set-Titel, günstigste Variante «{vt}» CHF {mn:.2f} ist ein Einzelteil (bis CHF {mx:.2f})"
+
+
 def produkt(handle, text_grenze=FREMDTEXT_GRENZE):
     d = gql('query($h:String!){ productByIdentifier(identifier:{handle:$h}){ id title status onlineStoreUrl tags '
-            'priceRangeV2{minVariantPrice{amount}} media(first:10){nodes{mediaContentType ... on MediaImage{image{url width height}}}} } }',
+            'priceRangeV2{minVariantPrice{amount} maxVariantPrice{amount}} variants(first:50){nodes{title price}} '
+            'media(first:10){nodes{mediaContentType ... on MediaImage{image{url width height}}}} } }',
             {"h": handle})["productByIdentifier"]
     if not d or d["status"] != "ACTIVE" or not d["onlineStoreUrl"]:
         sys.exit(f"⛔ {handle}: nicht aktiv/nicht im Onlineshop")
+    mn, mx = preise(d)
+    g = set_einzelteil(d["title"], (d.get("variants") or {}).get("nodes"), mn, mx)
+    if g:
+        sys.exit(f"⛔ {handle}: {g}")
     bilder = [m["image"] for m in d["media"]["nodes"] if m["mediaContentType"] == "IMAGE" and m.get("image")
               and min(m["image"]["width"], m["image"]["height"]) >= 600]
     # 07.10.2026 (Betreiber «das bild ist verzogen?»): Lieferanten-Infografiken mit englischem Text sind oft auf 800x800
@@ -66,6 +100,12 @@ def produkt(handle, text_grenze=FREMDTEXT_GRENZE):
     if len(bilder) < 2:
         sys.exit(f"⛔ {handle}: weniger als 2 Bilder ≥ 600 px ohne montierten Text")
     return d, bilder
+
+
+def preise(d):
+    pr = d.get("priceRangeV2") or {}
+    mn = float(pr["minVariantPrice"]["amount"])
+    return mn, float((pr.get("maxVariantPrice") or {}).get("amount") or mn)
 
 
 def lade(url):
@@ -177,11 +217,36 @@ def sprech_hook(hook, name):
     return "" if any(len(x) >= 4 and x.lower() in n for x in hook.split()) else hook
 
 
-def caption_fuer(d, preis, handle):
+def caption_fuer(d, preis, handle, preis_max=None):
     """Queue-Caption eines Bild-Reels. EINE Quelle für --freigeben und die Vor-Jury in bild_reel_auswahl.py: die Jury
-    cacht sha1(Datei) + Caption, der Poster fragt mit der Queue-Caption — gleiche Caption = kein zweiter Gemini-Aufruf."""
-    return (f"{d['title']}\nCHF {preis:.2f} · Gratis Versand ab CHF 50 · Klarna & TWINT 🇨🇭\n"
+    cacht sha1(Datei) + Caption, der Poster fragt mit der Queue-Caption — gleiche Caption = kein zweiter Gemini-Aufruf.
+    13.10.2026: Preis über preis_anzeige() («ab CHF …» bei verschiedenen Variantenpreisen)."""
+    return (f"{d['title']}\n{preis_anzeige(preis, preis_max)} · Gratis Versand ab CHF 50 · Klarna & TWINT 🇨🇭\n"
             f"🔗 luxestyle.ch/products/{handle} (Link in Bio)")
+
+
+CTA_S = 2.0
+
+
+def cta_anhaengen(datei, preis_text, dauer, td):
+    """13.10.2026 (Prüfer R2, A/B-Fairness): Video-Reels enden mit einer CTA-Ebene (schnitt.py text_ebenen «cta»: Preis +
+    «Link in Bio · luxestyle.ch», letzte ~2 s), Bild-Reels hatten keinen CTA — Skill-Regel 3 «nie ein Reel ohne CTA» und ein
+    zweiter Unterschied neben der Quelle im A/B-Test. Hier dieselbe Ebene, deckend über dem Infofeld von overlay.py (1170–1440,
+    links der Knopfleiste zentriert), als zweiter Durchgang über die fertige make_reel.sh-Datei; Ton wird kopiert."""
+    import overlay as ov
+    from PIL import ImageDraw
+    im = Image.new("RGBA", (W, H), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
+    d.rectangle((0, ov.FUSS_Y, W, ov.FUSS_ENDE), fill=(20, 20, 20, 255))
+    d.rectangle((ov.CX_FUSS - 100, ov.FUSS_Y + 16, ov.CX_FUSS + 100, ov.FUSS_Y + 20), fill=ov.GOLD)
+    ov.text_cx(d, ov.CX_FUSS, ov.FUSS_Y + 40, preis_text, ov.font(ov.F_BOLD, 76), ov.GOLD)
+    ov.text_cx(d, ov.CX_FUSS, ov.FUSS_Y + 140, "Link in Bio · luxestyle.ch", ov.font(ov.F_BOLD, 44), ov.WHITE)
+    png, tmp = os.path.join(td, "cta.png"), os.path.join(td, "mit_cta.mp4")
+    im.save(png)
+    subprocess.run(["ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-i", datei, "-i", png, "-filter_complex",
+                    f"[0:v][1:v]overlay=0:0:enable='gte(t,{max(0.0, dauer - CTA_S):.2f})'[v]", "-map", "[v]", "-map", "0:a",
+                    "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p", "-c:a", "copy", tmp],
+                   check=True, stdin=subprocess.DEVNULL)
+    os.replace(tmp, datei)
 
 
 def musik_wahl(wunsch):
@@ -195,7 +260,7 @@ def musik_wahl(wunsch):
 
 def render(a):
     d, bilder = produkt(a.handle, a.text_grenze)
-    preis = float(d["priceRangeV2"]["minVariantPrice"]["amount"])
+    preis, preis_max = preise(d)
     z1, z2 = zeilen(d["title"])
     os.makedirs(a.out_dir, exist_ok=True)
     out = os.path.join(a.out_dir, f"bildreel_{a.handle[:60]}.mp4")
@@ -212,7 +277,7 @@ def render(a):
             wav = os.path.join(td, "vo.wav")
             name = re.split(r"\s[–—·|]\s", d["title"])[0]
             r = subprocess.run([sys.executable, os.path.join(HIER, "voiceover.py"), "--out", wav, "--hook", sprech_hook(a.hook, name),
-                                "--name", name, "--preis", f"{preis:.2f}", "--motor", "azure",
+                                "--name", name, "--preis", "" if preis_max > preis + 0.005 else f"{preis:.2f}", "--motor", "azure",
                                 "--stimme", a.stimme, "--max", str(dauer - 1.5)], capture_output=True, text=True)
             try:
                 stimme = json.loads(r.stdout.strip().split("\n")[-1])
@@ -222,8 +287,10 @@ def render(a):
                 env["STIMME"] = wav
         m, ein = musik_wahl(a.musik)
         env["MUSIK_START"] = str(ein)
-        subprocess.run(["bash", os.path.join(HIER, "make_reel.sh"), src, out, z1, z2, f"CHF {preis:.2f}", a.hook,
+        subprocess.run(["bash", os.path.join(HIER, "make_reel.sh"), src, out, z1, z2, preis_anzeige(preis, preis_max), a.hook,
                         os.path.join(REPO, "automation/music", m)], check=True, env=env, stdin=subprocess.DEVNULL)  # ffmpeg frisst sonst stdin einer Schleife
+        if not a.ohne_cta:
+            cta_anhaengen(out, preis_anzeige(preis, preis_max), dauer, td)
     tor = subprocess.run([sys.executable, os.path.join(REPO, "automation/meisterwerk_tor.py"), out], capture_output=True, text=True,
                          env=dict(os.environ, PREIS_SOLL=f"{preis:.2f}"))
     tj = {}
@@ -231,7 +298,7 @@ def render(a):
         tj = json.loads(tor.stdout.strip().split("\n")[-1])
     except Exception:
         pass
-    print(json.dumps({"datei": out, "titel": d["title"], "preis": preis, "bilder": min(len(bilder), a.max_bilder), "dauer": dauer, "musik": m,
+    print(json.dumps({"datei": out, "titel": d["title"], "preis": preis, "preis_max": preis_max, "bilder": min(len(bilder), a.max_bilder), "dauer": dauer, "musik": m,
                       "musik_start": ein, "stimme_name": a.stimme if stimme.get("ok") else None,
                       "stimme": stimme.get("text") if stimme.get("ok") else None, "tor_ok": tj.get("ok"),
                       "tor_gruende": tj.get("gruende")}, ensure_ascii=False))
@@ -241,7 +308,7 @@ def render(a):
 def freigeben(a):
     """Erst nach Sichtprüfung: Shopify-CDN-Upload + Zeile in automation/reels_seed.csv (ready, instagram,facebook)."""
     d, _ = produkt(a.handle)
-    preis = float(d["priceRangeV2"]["minVariantPrice"]["amount"])
+    preis, preis_max = preise(d)
     tok = open("/tmp/cj_shop_token.txt").read().strip()
     env = dict(os.environ, SHOPIFY_SHOP="au3j0y-hq.myshopify.com", SHOPIFY_ADMIN_TOKEN=tok)
     env.pop("SHOPIFY_CLIENT_ID", None); env.pop("SHOPIFY_CLIENT_SECRET", None)
@@ -257,7 +324,7 @@ def freigeben(a):
     tags = subprocess.run(["/opt/node22/bin/node", "-e",
                            "import('./automation/lib/hashtags.mjs').then(m=>console.log(m.hashtagText(process.argv[1])))", d["title"]],
                           capture_output=True, text=True, cwd=REPO).stdout.strip() or "#luxestyle #shoppingschweiz"
-    cap = caption_fuer(d, preis, a.handle)
+    cap = caption_fuer(d, preis, a.handle, preis_max)
     esc = lambda x: '"' + x.replace('"', '""') + '"' if re.search(r'[",\n]', x) else x
     from datetime import date
     if not csv.endswith("\n"):
@@ -279,6 +346,7 @@ def main():
     ap.add_argument("--ohne-stimme", action="store_true")
     ap.add_argument("--text-grenze", type=int, default=FREMDTEXT_GRENZE, help="Bild raus ab so vielen OCR-Wörtern (Standard 4)")
     ap.add_argument("--weg", default="", help="Bildindizes (product.media, nur Bilder ≥ 600 px) weglassen, z. B. 4,5")
+    ap.add_argument("--ohne-cta", action="store_true", help="13.10.2026: ohne CTA-Ebene «Link in Bio» in den letzten 2 s")
     ap.add_argument("--freigeben", default="")
     a = ap.parse_args()
     if a.freigeben:
