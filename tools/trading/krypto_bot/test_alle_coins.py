@@ -66,5 +66,8 @@ pruefe("Zufallskopie: gleich viele Plätze, gleiches Gewicht, Coins aus demselbe
        and zp[i + 7] == {}, zp)
 pruefe("Ergebnis-Datei: unendliche Werte werden null (gültiges JSON)", json.loads(json.dumps(A._endlich({"a": [math.inf, 1.0], "b": -math.inf})))
        == {"a": [None, 1.0], "b": None})
+pz = {"AUSDT": [1.0, 1.0, None, None], "BUSDT": [2.0, 2.0, None, None], "CUSDT": [1.0, 1.0, 1.0, 1.0]}
+w = A.simulieren({0: {"AUSDT": 0.4, "BUSDT": 0.4, "CUSDT": 0.2}}, ["d0", "d1", "d2", "d3"], pz, 0, 4, 0.0)
+pruefe("zwei Coins verschwinden am selben Tag → beide zum letzten Kurs verkauft, kein Absturz", [round(x, 9) for x in w] == [1.0, 1.0, 1.0, 1.0], w)
 print(f"\n{n_ok} bestanden, {n_f} fehlgeschlagen")
 sys.exit(1 if n_f else 0)

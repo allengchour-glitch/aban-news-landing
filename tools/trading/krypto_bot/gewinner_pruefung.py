@@ -145,9 +145,11 @@ def simulieren(plan, tage, preis, a, b):
     vorher = max((j for j in plan if j <= a), default=None)
     for i in range(a, b):
         wert = bar + sum(m * (preis[s][i] if preis[s][i] is not None else 0.0) for s, m in menge.items())
-        # Verschwundene Coins zum letzten Kurs verkaufen
-        for s in [s for s in menge if preis[s][i] is None]:
+        # Verschwundene Coins zum letzten Kurs verkaufen (alle zuerst — es können mehrere am selben Tag verschwinden)
+        weg = [s for s in menge if preis[s][i] is None]
+        for s in weg:
             bar += menge.pop(s) * next(p for p in reversed(preis[s][:i]) if p is not None)
+        if weg:
             wert = bar + sum(m * preis[x][i] for x, m in menge.items())
         werte.append(wert)
         if i in plan or (i == a and vorher is not None):

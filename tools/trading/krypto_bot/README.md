@@ -430,6 +430,37 @@ er schon ein Portfolio geschlossen und neu angefangen hat. Fragen und Filter sta
 - **Wer trotzdem kopiert:** kleiner fester Betrag («Fixed Amount»), in Binance einen Copy-Stop-Loss setzen, keinen höheren
   Hebel als der Leadtrader, und den Vorwärts-Test abwarten. Keine Anlageberatung.
 
+## 🐸 Meme-Coins, Top 10 und «alles traden» — ehrlich getestet: schlechter als Bitcoin (`alle_coins_pruefung.py`)
+
+Die Trend-Regel des Piloten auf JEDEN Coin angewendet, mit allen Binance-USDT-Paaren seit 2017 — auch den abgemeldeten
+(LUNA, FTT …), sonst würde der Test die Verlierer weglassen. Regeln vorab festgelegt (Commit `249b1d8`): wöchentlich
+entschieden, höchstens 10 Plätze, Trendlänge nur 2018–2021 gewählt (Top 10: 50 Tage, alle Coins/Memes: 150 Tage), Kosten
+0,15 % (Top 10) bzw. 0,3 % (dünnere Märkte) je Umschichtung. 26 Meme-Coins mit Binance-Daten (1000CAT, 1000CHEEMS, 1000SATS, 1MBABYDOGE, ACT, BABY, BANANAS31, BOME, BONK, BROCCOLI714, DOGE, DOGS, FLOKI, MEME, MUBARAK, NEIRO, NOT, PENGU, PEOPLE, PEPE, PNUT, SHIB, TRUMP, TST, TURBO, WIF).
+Stand 2026-10-12:
+
+| Gruppe / Regel | 2022–2023 pro Jahr | 2024–heute pro Jahr | ab 2022: aus 1 wurde | schlimmster Einbruch | Zufall geschlagen | Urteil |
+|---|---|---|---|---|---|---|
+| Top 10: alles halten | −46,4 % | −6,1 % | × 0,25 | −85 % | – | ❌ |
+| Top 10: Trend je Coin | −6,3 % | +15,4 % | × 1,37 | −45 % | 96 % | ❌ |
+| Top 10: Trend + Bitcoin-Filter | +19,5 % | +15,3 % | × 2,22 | −38 % | 93 % | ❌ |
+| Meme-Coins: alles halten | −38,8 % | −32,1 % | × 0,13 | −94 % | – | ❌ |
+| Meme-Coins: Trend je Coin | −4,8 % | −8,8 % | × 0,71 | −71 % | 99 % | ❌ |
+| Meme-Coins: Trend + Bitcoin-Filter | −1,8 % | −4,0 % | × 0,88 | −69 % | 100 % | ❌ |
+| alle Coins: alles halten | −49,1 % | −55,2 % | × 0,03 | −98 % | – | ❌ |
+| alle Coins: Trend je Coin | −76,3 % | −57,2 % | × 0,01 | −100 % | 57 % | ❌ |
+| alle Coins: Trend + Bitcoin-Filter | +2,7 % | −1,4 % | × 1,06 | −58 % | 100 % | ❌ |
+| **Bitcoin mit Trend 150 (Pilot-Kern)** | +33,0 % | +22,7 % | × 3,27 | −28 % | | |
+| Bitcoin halten | −5,9 % | +24,8 % | × 1,71 | −67 % | | |
+
+- **Keine Gruppe besteht.** Bitcoin mit Trend 150 machte ab 2022 aus 1 → 3,27 bei höchstens −28 % Einbruch; die beste
+  Alternative (Top 10 mit Trend + Bitcoin-Filter) nur × 2,22 bei −38 %.
+- **Meme-Coins halten: −94 %** Einbruch, aus 1 wurden 0,13. Auch mit Trend-Regel und Bitcoin-Filter im Minus. Die Regel
+  schlägt zwar fast alle Zufallskopien (sie meidet die schlimmsten Abstürze) — aber «weniger schlecht» reicht nicht.
+- **Alle Coins mit Trend-Regel: aus 1 wurden 0,01** (−100 % Einbruch). Bei hunderten Altcoins kauft die Regel ständig
+  kurze Ausbrüche, die sofort wieder einbrechen — und zahlt jedes Mal Gebühren.
+- **Darum handelt der Bot weiter nur Bitcoin und Ethereum.** Meme-Coins sind für ihn nur Beobachtung (News-Wächter).
+  Keine Anlageberatung.
+
 ## 🏆 «Top-Krypto traden, Gewinnern folgen» — ehrlich getestet: verliert
 
 `gewinner_pruefung.py` testet die beliebteste YouTube-Idee: jede Woche die Coins mit dem stärksten Anstieg kaufen.
@@ -724,6 +755,8 @@ python3 tools/trading/krypto_bot/test_binance.py  # 21 Tests, inkl. nachgebautem
 python3 tools/trading/krypto_bot/test_pilot2_plan.py  # 23 Tests: Pilot-2.0-Rechnung (Richtung, Ernte, Pfand, Mindestbeträge)
 python3 tools/trading/krypto_bot/test_pilot2_live.py  # 101 Tests: Pilot 2.0 («Konto = Wahrheit») gegen eine strenge nachgebaute Binance
 python3 tools/trading/krypto_bot/test_scalping.py      # 50 Tests: kein Blick in die Zukunft, strenge Füll-Regeln, Kosten exakt, Entscheidungsregeln
+python3 tools/trading/krypto_bot/test_alle_coins.py    # 12 Tests: Universen Top 10/Meme/Alle, Trend-Auswahl, kein Blick in die Zukunft
+python3 tools/trading/krypto_bot/alle_coins_pruefung.py # Prüfstand Meme-Coins, Top 10 und alles (lädt alle Binance-Paare)
 python3 tools/trading/krypto_bot/test_copytrading.py   # 24 Tests: Filter «kopierbar», Rangkorrelation, Vorwärts-Test (ohne Netz)
 python3 tools/trading/krypto_bot/copytrading_pruefung.py  # Prüfstand Copy-Trading (Binance-Leadtrader); --auswerten = Vorwärts-Test nach 30 Tagen
 python3 tools/trading/krypto_bot/scalping_pruefung.py  # Prüfstand Scalping (lädt beim ersten Lauf ~200 MB Binance-Minutenarchive); --bericht = Tabelle
