@@ -116,4 +116,19 @@ Ergebnis: **8/8 wie heute oder günstiger.**
 - **Gratisversand:** «Gratis ab CHF 50» auf CH-Lager-Seiten stimmt, verschenkt aber ein Verkaufsargument, denn ein reiner CH-Lager-Korb ist jetzt immer gratis.
   - Erst nach Stufe 3 und einer Messung umformulieren.
 - **Mischkorb:** Bei einem gemischten Korb nimmt die Kasse das spätere Datum (CJ). Das ist ehrlich und bleibt so.
-- **Bestellschluss bis Halloween:** Für reine CH-Lager-Körbe Do 22.10. (gerechnet: Kasse spätestens Fr 30.10.).
+- **Bestellschluss bis Halloween:** Für reine CH-Lager-Körbe Di 27.10. vor 12 Uhr. Gerechnet ab 13.10. 17:00 mit P1D + 1–2 Werktagen, die Kasse zeigt dann spätestens Fr 30.10. Vorher, mit P3D, war es Do 22.10.
+
+## Nachtrag 13.10. 17:00 UTC: Bearbeitungszeit 3 → 1 Werktag (Betreiber «entscheide du sauber», Klick im Admin)
+
+| Bereich | Neu | Prüfung |
+|---|---|---|
+| Shop-Einstellung | `processingTime` = P1D | an der API bestätigt |
+| `versand_transit_regel.json` | CH-Lager-Zusage 2–3 Werktage | — |
+| `versand_transit_wache --scharf` | CJ-Transit 9–19, LI 14–44, CH-Lager 1–2 | gesetzt 6, danach 8/8 Tarife ok |
+| Kasse CJ | bleibt 10–20 Werktage | — |
+| Kasse Maske ab Schweizer Lager | «Fr., 16. Okt–Mo., 19. Okt KOSTENLOS» (vorher 20.–21. Okt., heute Mittag noch 28. Okt.–11. Nov.) | — |
+| Theme (product.json, cart.json) | Rechnung `3 | plus` → `1 | plus`, Asien 7/17 → 9/19 | Backup, md5-Schutz, zurückgelesen |
+| Produktseite der Maske | «16. Okt. – 19. Okt.», wie die Kasse | WebFetch |
+| `kassen_lieferdatum_wache.py` | Theme-Prüfung grün (Bearbeitung 1 T) | Selbsttest 7/7 |
+
+Die alte Regel «Bearbeitung < CJ-Versand-Median = Kasse zu früh» hätte nach der Umstellung Fehlalarm gegeben («empfohlen 3 Werktage»). Seit die Transitzeit die Bearbeitung abzieht, prüft sie jetzt das Zusage-Minimum (10) gegen den gemessenen Versand (80 % = 2,4 Werktage) plus 1 Werktag.

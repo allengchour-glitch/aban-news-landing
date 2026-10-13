@@ -17,15 +17,24 @@ Google-Kanal → Google sieht eine 404; das ist die Reparatur-Kandidatin für ei
 Abfrage: products(first:250, query:"status:active") { feedback{details{app{title} messages{message}}} } —
 GEMESSEN 23.09.: 47 Punkte je 250 Produkte, ~206 Seiten für 51k aktive; Eimer-Etikette nach jeder Antwort.
 Schreibt NUR am Ende (Teil-Läufe hinterlassen keinen halben Stand). Stand: dropship/_google_feedback_stand.json,
-Bericht: dropship/GOOGLE-FEEDBACK.md. Ampel-Zeile «GOOGLE: N Free-Listings-Blocker …» liest den Stand.
+Bericht: dropship/GOOGLE-FEEDBACK.md. Ampel-Zeile «GOOGLE: N Blocker · M warten bei Google …» liest den Stand.
+
+13.10.2026 «WARTET BEI GOOGLE» (Urteil B1): «Image under review» und «Title under review» sind die Prüf-Warteschlange bei
+Google, kein Fehler bei uns (GEMESSEN 12.10.: 638 + 5 der 1'082 «Blocker»). Sie zählen NICHT mehr als Blocker, sondern
+getrennt als `wartet` (Handles OHNE Deckel in `handles_wartet`). «Image not processed» bleibt Blocker. Verweildauer:
+dropship/_google_pruefung_seit.json {handle: seit} — je VOLLSTÄNDIGEM Scan neue Handles eintragen, verschwundene löschen
+(Teil-Scan: nur eintragen). Einmal vorbefüllt mit --pruefung-vorbefuellen aus der Git-Geschichte des Stands.
+Testlauf ohne den echten Stand zu berühren: GFW_STAND / GFW_BERICHT / GFW_TEIL / GFW_SEIT auf Scratch-Pfade + SEITEN_MAX.
 """
 import datetime, json, os, re, subprocess, sys, time
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from eimer_etikette import nachlauf, bilanz
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-STAND = os.path.join(ROOT, "dropship", "_google_feedback_stand.json")
-BERICHT = os.path.join(ROOT, "dropship", "GOOGLE-FEEDBACK.md")
+STAND = os.environ.get("GFW_STAND") or os.path.join(ROOT, "dropship", "_google_feedback_stand.json")
+BERICHT = os.environ.get("GFW_BERICHT") or os.path.join(ROOT, "dropship", "GOOGLE-FEEDBACK.md")
+PRUEFUNG_SEIT = os.environ.get("GFW_SEIT") or os.path.join(ROOT, "dropship", "_google_pruefung_seit.json")
+STAND_REL = "dropship/_google_feedback_stand.json"        # für die Git-Geschichte (--pruefung-vorbefuellen)
 SHOP = "au3j0y-hq.myshopify.com"
 TOK = (os.environ.get("SHOPIFY_ADMIN_TOKEN") or (open("/tmp/cj_shop_token.txt").read() if os.path.exists("/tmp/cj_shop_token.txt") else "")).strip()
 HANDLES_MAX = int(os.environ.get("HANDLES_MAX", "300"))
@@ -41,7 +50,10 @@ NUR_PERSONALISIERT = re.compile(r"^\s*Personalized advertising:", re.I)
 # Zielliste «[]», nur «Product page unavailable», «Promotional overlay», «Image too small» nennen [Free_listings,Shopping_ads].
 # Bedeutung unbelegt → nur zählen (Spalte im Bericht), nicht umdeuten.
 ZIEL_LEER = re.compile(r" in \[\]")
-TEIL = "/tmp/google_feedback_teil.json"            # Zwischenstand je Seite (überlebt Container-Neustarts in /tmp)
+TEIL = os.environ.get("GFW_TEIL") or "/tmp/google_feedback_teil.json"   # Zwischenstand je Seite (überlebt Neustarts in /tmp)
+# 13.10.2026 (Urteil B1): Prüf-Warteschlange bei Google — kein Fehler bei uns, kein Blocker. «Image not processed» bleibt Blocker.
+WARTET = {"Image under review", "Title under review"}
+WARTET_TAGE = 14                                        # Verweildauer, ab der die Ampel «n > 14 T» zählt
 TEIL_MAX_H = float(os.environ.get("TEIL_MAX_H", "8"))
 
 
@@ -122,6 +134,109 @@ def teile_ausland(nur_ausland, liefer):
     return lief, rest
 
 
+def einordnen(txt):
+    """Meldung der App «Google & YouTube» → 'anzeigen' | 'ausland' | 'personalisiert' | 'wartet' | 'blocker'.
+    Reihenfolge = Zählschleife in main(): nur Anzeigen → anderes Land → nur personalisierte Werbung → Prüfung bei Google
+    (13.10., WARTET) → Free-Listings-Blocker."""
+    if NUR_ANZEIGEN.search(txt):
+        return "anzeigen"
+    if not trifft_ch(txt):
+        return "ausland"
+    if NUR_PERSONALISIERT.search(txt):
+        return "personalisiert"
+    if klasse(txt) in WARTET:
+        return "wartet"
+    return "blocker"
+
+
+def seit_neu(alt, jetzt, heute, vollstaendig):
+    """Verweildauer-Ledger fortschreiben (rein, ohne Datei): neue Handles bekommen `heute`, vorhandene behalten ihr Datum.
+    Nur ein VOLLSTÄNDIGER Scan darf verschwundene Handles löschen (ein Teil-Scan hat sie vielleicht nur nicht erreicht)."""
+    if vollstaendig:
+        return {h: alt.get(h, heute) for h in sorted(jetzt)}
+    neu = dict(alt)
+    for h in jetzt:
+        neu.setdefault(h, heute)
+    return dict(sorted(neu.items()))
+
+
+def seit_lesen():
+    try:
+        return json.load(open(PRUEFUNG_SEIT, encoding="utf-8"))
+    except Exception:
+        return {}
+
+
+def seit_schreiben(seit):
+    tmp = PRUEFUNG_SEIT + ".neu"
+    json.dump(seit, open(tmp, "w", encoding="utf-8"), ensure_ascii=False, indent=0, sort_keys=True)
+    os.replace(tmp, PRUEFUNG_SEIT)
+
+
+def wartet_zusammenfassung(seit, handles, heute):
+    """(Anzahl mit Verweildauer > WARTET_TAGE, ältestes Datum oder None) über die gegebenen Handles."""
+    h0 = datetime.date.fromisoformat(heute)
+    ds = [seit[h] for h in set(handles) if h in seit]
+    ueber = sum(1 for d in ds if (h0 - datetime.date.fromisoformat(d)).days > WARTET_TAGE)
+    return ueber, (min(ds) if ds else None)
+
+
+def wartet_felder(stand, seit, heute):
+    """Zusammenfassung in den Stand schreiben (Ampel + Bericht lesen sie, kein zweiter Rechenweg)."""
+    hs = [h for v in (stand.get("handles_wartet") or {}).values() for h in v]
+    ueber, aeltestes = wartet_zusammenfassung(seit, hs, heute)
+    stand["wartet_summe"] = sum((stand.get("wartet") or {}).values())
+    stand["wartet_ueber_tage"] = WARTET_TAGE
+    stand["wartet_ueber"] = ueber
+    stand["wartet_aeltestes"] = aeltestes
+    return stand
+
+
+def pruefung_vorbefuellen():
+    """Einmalig (13.10.2026, Urteil B1): Ledger aus der Git-Geschichte des Stands vorbefüllen. Je Handle zählt der Beginn der
+    LAUFENDEN Prüfung: fehlt der Handle in einer Fassung, deren Liste VOLLSTÄNDIG ist (Zahl == Länge, kein HANDLES_MAX-Deckel),
+    ist er nachweislich verschwunden → ein späteres Wiederauftauchen beginnt neu. Fehlt er nur in einer gedeckelten Liste,
+    bleibt das alte Datum (unbekannt ≠ verschwunden). Zusätzlich gemeldet: frühestes Datum überhaupt (Vergleichszahl)."""
+    r = subprocess.run(["git", "-C", ROOT, "log", "--format=%H", "--", STAND_REL], capture_output=True, text=True)
+    fassungen = []
+    for c in r.stdout.split():
+        g = subprocess.run(["git", "-C", ROOT, "show", f"{c}:{STAND_REL}"], capture_output=True, text=True)
+        try:
+            fassungen.append(json.loads(g.stdout))
+        except Exception:
+            continue
+    try:
+        fassungen.append(json.load(open(STAND, encoding="utf-8")))          # Arbeitsstand (evtl. noch nicht committet)
+    except Exception:
+        pass
+    lauf, frueh = {}, {}
+    for s in sorted(fassungen, key=lambda s: s.get("stand", "")):
+        datum = (s.get("stand") or "")[:10]
+        if not datum:
+            continue
+        da, komplett = set(), True
+        for k in WARTET:
+            lst = list((s.get("handles_wartet") or {}).get(k) or []) or list((s.get("handles") or {}).get(k) or [])
+            zahl = (s.get("wartet") or {}).get(k, (s.get("klassen") or {}).get(k, 0)) or 0
+            da |= set(lst)
+            if len(set(lst)) < zahl:
+                komplett = False
+        for h in da:
+            lauf.setdefault(h, datum)
+            frueh[h] = min(frueh.get(h, datum), datum)
+        if komplett:
+            for h in [h for h in lauf if h not in da]:
+                del lauf[h]
+    alt = seit_lesen()
+    neu = dict(alt)
+    for h, d in lauf.items():
+        neu[h] = min(alt.get(h, d), d)
+    seit_schreiben(dict(sorted(neu.items())))
+    vor = sum(1 for d in neu.values() if d < datetime.date.today().isoformat())
+    print(f"VORBEFÜLLT: {len(neu)} Handles ({len(fassungen)} Fassungen; laufende Prüfung {len(lauf)}, je gesehen {len(frueh)}; "
+          f"{vor} mit Datum vor heute; ältestes {min(neu.values()) if neu else '–'}) → {PRUEFUNG_SEIT}")
+
+
 def bericht_schreiben(stand):
     """Bericht aus dem Stand — auch für Umrechnungen ohne Neuscan (--umrechnen)."""
     with open(BERICHT, "w", encoding="utf-8") as f:
@@ -131,6 +246,14 @@ def bericht_schreiben(stand):
         f.write(f"## Free-Listings-Blocker: {stand['blocker']}\n\n| Klasse | Produkte | davon ohne onlineStoreUrl | davon Ziel «[]» |\n|---|---:|---:|---:|\n")
         for k, v in stand["klassen"].items():
             f.write(f"| {k} | {v} | {stand['ohne_onlineStoreUrl'].get(k, 0)} | {(stand.get('ziel_leer') or {}).get(k, '–')} |\n")
+        if stand.get("wartet"):
+            aelt = stand.get("wartet_aeltestes")
+            f.write(f"\n## Wartet bei Google (Prüfung, kein Fehler bei uns): {stand.get('wartet_summe', sum(stand['wartet'].values()))}\n\n"
+                    + "\n".join(f"- {k}: {v}" for k, v in stand["wartet"].items())
+                    + f"\n\nVerweildauer (dropship/_google_pruefung_seit.json): {stand.get('wartet_ueber', '–')} länger als "
+                      f"{stand.get('wartet_ueber_tage', WARTET_TAGE)} Tage, ältestes seit {aelt or '–'}"
+                    + (" — ⚠️ Handle-Liste gedeckelt (umgerechneter Altstand), Zahl unvollständig" if stand.get("wartet_gedeckelt") else "")
+                    + ".\nNicht reagieren, solange die Verweildauer kurz ist: Google prüft. Wer hier ein Bild tauscht, setzt die Prüfung neu.\n")
         f.write("\nZiel «[]» = die App nennt kein betroffenes Ziel («… in [] [CH]» statt «in [Free_listings,Shopping_ads]»). "
                 "Was das bei Google heisst, ist UNBELEGT (keine Doku gefunden, 08.10.) — Wahrheit = Status im Merchant Center.\n")
         liefer = stand.get("lieferlaender")
@@ -157,6 +280,11 @@ def bericht_schreiben(stand):
                 "Reparatur: Onlineshop-Publikation nachziehen oder aus dem Google-Kanal nehmen (Fixer folgt).\n\n")
         for k, hs in stand['handles'].items():
             f.write(f"### {k} ({stand['klassen'][k]})\n\n" + "\n".join(f"- {h}" for h in hs[:60]) + ("\n- …" if stand['klassen'][k] > 60 else "") + "\n\n")
+        seit = seit_lesen()
+        for k, hs in (stand.get("handles_wartet") or {}).items():
+            alt_zuerst = sorted(set(hs), key=lambda h: (seit.get(h, "9999"), h))
+            f.write(f"### wartet: {k} ({(stand.get('wartet') or {}).get(k, len(hs))}) — die ältesten zuerst\n\n"
+                    + "\n".join(f"- {h} (seit {seit.get(h, '?')})" for h in alt_zuerst[:40]) + ("\n- …" if len(alt_zuerst) > 40 else "") + "\n\n")
 
 
 def main():
@@ -184,7 +312,26 @@ def main():
         ok += sum(bool(NUR_PERSONALISIERT.search(t)) == soll for t, soll in pers)
         for t, soll in pers:
             print(f"{'✓' if bool(NUR_PERSONALISIERT.search(t)) == soll else '✗'} nur-personalisiert {t} → {bool(NUR_PERSONALISIERT.search(t))}")
-        print(f"Kanarienvögel {ok}/{len(faelle) + len(pers)}")
+        wart = [("Image under review in [] [CH,LI].", "wartet"),
+                ("Title under review in [] [CH].", "wartet"),
+                ("Image not processed in [Free_listings,Shopping_ads] [CH,LI].", "blocker"),
+                ("Inappropriate image in [] [CH,LI].", "blocker"),
+                ("Image under review in [Shopping_ads] [CH].", "anzeigen"),
+                ("Image under review in [] [LI].", "ausland")]
+        ok += sum(einordnen(t) == soll for t, soll in wart)
+        for t, soll in wart:
+            print(f"{'✓' if einordnen(t) == soll else '✗'} einordnen {t} → {einordnen(t)} (soll {soll})")
+        alt = {"a": "2026-09-20", "b": "2026-10-12"}
+        led = [(seit_neu(alt, {"b", "c"}, "2026-10-13", True), {"b": "2026-10-12", "c": "2026-10-13"}),   # voll: a weg, c neu
+               (seit_neu(alt, {"c"}, "2026-10-13", False), {"a": "2026-09-20", "b": "2026-10-12", "c": "2026-10-13"}),  # Teil: nichts löschen
+               (wartet_zusammenfassung({"a": "2026-09-20", "b": "2026-10-12"}, ["a", "b", "x"], "2026-10-13"), (1, "2026-09-20"))]
+        ok += sum(ist == soll for ist, soll in led)
+        for i, (ist, soll) in enumerate(led):
+            print(f"{'✓' if ist == soll else '✗'} Verweildauer Fall {i + 1} → {ist}")
+        print(f"Kanarienvögel {ok}/{len(faelle) + len(pers) + len(wart) + len(led)}")
+        return
+    if "--pruefung-vorbefuellen" in sys.argv:
+        pruefung_vorbefuellen()
         return
     if "--umrechnen" in sys.argv:          # 08.10.2026: alten Stand nach neuer Regel umrechnen, ohne 35-min-Neuscan
         st = json.load(open(STAND, encoding="utf-8"))
@@ -194,18 +341,34 @@ def main():
             st.setdefault("handles_personalisiert", {})[k] = st["handles"].pop(k, [])
             st["ohne_onlineStoreUrl"].pop(k, None)
         st["nur_personalisiert"] = dict(sorted(np_.items(), key=lambda x: -x[1]))
+        wt = st.setdefault("wartet", {})                 # 13.10.2026 (B1): Prüf-Warteschlange aus den Blockern umbuchen
+        hw = st.setdefault("handles_wartet", {})
+        for k in [k for k in st["klassen"] if k in WARTET]:
+            wt[k] = wt.get(k, 0) + st["klassen"].pop(k)
+            hw[k] = list(dict.fromkeys(hw.get(k, []) + st["handles"].pop(k, [])))
+            st["ohne_onlineStoreUrl"].pop(k, None)
+            (st.get("ziel_leer") or {}).pop(k, None)
+            st["wartet_gedeckelt"] = True                # Altstand: Handle-Liste trug HANDLES_MAX — Verweildauer nur Teilmenge
+        st["wartet"] = dict(sorted(wt.items(), key=lambda x: -x[1]))
+        heute = datetime.datetime.utcnow().strftime("%Y-%m-%d")
+        if hw:
+            seit = seit_neu(seit_lesen(), {h for v in hw.values() for h in v}, heute, False)   # nur ergänzen, nie löschen
+            seit_schreiben(seit)
+            wartet_felder(st, seit, heute)
         st["blocker"] = sum(st["klassen"].values())
         ll = lieferlaender() if TOK else None
         if ll:
             st["lieferlaender"] = sorted(ll)
         json.dump(st, open(STAND, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
         bericht_schreiben(st)
-        print(f"UMGERECHNET: {st['blocker']} Free-Listings-Blocker · nur personalisiert {sum(st['nur_personalisiert'].values())}")
+        print(f"UMGERECHNET: {st['blocker']} Free-Listings-Blocker · {sum(st.get('wartet', {}).values())} warten bei Google · "
+              f"nur personalisiert {sum(st['nur_personalisiert'].values())}")
         return
     if not TOK:
         print("kein Shop-Token → No-op"); return
     cursor, seiten, gescannt = None, 0, 0
     klassen, handles, ohne_url, andere, ausland, personal, handles_pers, ziel_leer = {}, {}, {}, {}, {}, {}, {}, {}
+    wartet, handles_wartet = {}, {}
     anzeigen_meldungen = 0
     t0 = time.time()
     # 03.10.2026 FORTSETZEN: Der Vollscan (~206 Seiten, Eimer-Wartezeiten) braucht länger als eine Stunde; der Container
@@ -224,6 +387,7 @@ def main():
         andere, ausland, anzeigen_meldungen = teil_alt["andere"], teil_alt["ausland"], teil_alt["anzeigen"]
         personal, handles_pers = teil_alt.get("personal", {}), teil_alt.get("handles_pers", {})
         ziel_leer = teil_alt.get("ziel_leer", {})
+        wartet, handles_wartet = teil_alt.get("wartet", {}), teil_alt.get("handles_wartet", {})
         t0 -= teil_alt.get("dauer_s", 0)
         print(f"FORTSETZEN ab Seite {seiten} ({gescannt} gescannt)", flush=True)
     while True:
@@ -243,18 +407,25 @@ def main():
                         k = f"[{app}] " + klasse(txt)
                         andere[k] = andere.get(k, 0) + 1
                         continue
-                    if NUR_ANZEIGEN.search(txt):
+                    art = einordnen(txt)
+                    if art == "anzeigen":
                         anzeigen_meldungen += 1; continue
                     k = klasse(txt)
-                    if not trifft_ch(txt):
+                    if art == "ausland":
                         ka = f"{k} [{','.join(sorted(laender(txt)))}]"
                         ausland[ka] = ausland.get(ka, 0) + 1
                         continue
-                    if NUR_PERSONALISIERT.search(txt):
+                    if art == "personalisiert":
                         personal[k] = personal.get(k, 0) + 1
                         hp = handles_pers.setdefault(k, [])
                         if len(hp) < HANDLES_MAX:
                             hp.append(n["handle"])
+                        continue
+                    if art == "wartet":             # 13.10.2026 (B1): Prüfung bei Google — Handles OHNE Deckel
+                        wartet[k] = wartet.get(k, 0) + 1
+                        hw = handles_wartet.setdefault(k, [])
+                        if not hw or hw[-1] != n["handle"]:
+                            hw.append(n["handle"])
                         continue
                     klassen[k] = klassen.get(k, 0) + 1
                     if ZIEL_LEER.search(txt):
@@ -270,6 +441,7 @@ def main():
         tmp = TEIL + ".neu"
         json.dump({"cursor": cursor, "seiten": seiten, "gescannt": gescannt, "klassen": klassen, "handles": handles,
                    "ohne_url": ohne_url, "andere": andere, "ausland": ausland, "anzeigen": anzeigen_meldungen, "personal": personal, "handles_pers": handles_pers, "ziel_leer": ziel_leer,
+                   "wartet": wartet, "handles_wartet": handles_wartet,
                    "dauer_s": round(time.time() - t0)}, open(tmp, "w", encoding="utf-8"), ensure_ascii=False)
         os.replace(tmp, TEIL)
     voll = seiten < SEITEN_MAX
@@ -283,14 +455,21 @@ def main():
              "ziel_leer": ziel_leer,
              "lieferlaender": sorted(lieferlaender() or []) or None,   # gemessen (Markets), für teile_ausland()
              "handles_personalisiert": handles_pers,          # google_bildtausch_bilanz liest sie mit (Bildsignal)
+             "wartet": dict(sorted(wartet.items(), key=lambda x: -x[1])),   # 13.10. (B1): Prüfung bei Google, kein Blocker
+             "handles_wartet": handles_wartet,                # ohne Deckel; google_bildtausch_bilanz: Gruppe «in Prüfung»
              "dauer_s": round(time.time() - t0)}
+    heute = stand["stand"][:10]
+    seit = seit_neu(seit_lesen(), {h for v in handles_wartet.values() for h in v}, heute, voll)
+    seit_schreiben(seit)
+    wartet_felder(stand, seit, heute)
     json.dump(stand, open(STAND, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     try:
         os.remove(TEIL)
     except FileNotFoundError:
         pass
     bericht_schreiben(stand)
-    print(f"FERTIG: {gescannt} gescannt · {blocker} Free-Listings-Blocker (Google) · andere Apps {sum(andere.values())} · {dict(list(stand['klassen'].items())[:5])} · {bilanz()}")
+    print(f"FERTIG: {gescannt} gescannt · {blocker} Free-Listings-Blocker (Google) · {stand['wartet_summe']} warten bei Google "
+          f"({stand['wartet_ueber']} > {WARTET_TAGE} T, ältestes {stand['wartet_aeltestes'] or '–'}) · andere Apps {sum(andere.values())} · {dict(list(stand['klassen'].items())[:5])} · {bilanz()}")
 
 
 if __name__ == "__main__":

@@ -490,7 +490,15 @@ def google_feedback():
         if m and {x.strip() for x in m.group(1).split(",")} & weitere:
             li += v
     liz = f" · {'/'.join(sorted(weitere))}: {li} ohne Google-Versandangabe (Lieferland → GOOGLE-FEEDBACK.md)" if li else ""
-    return f"GOOGLE: {s.get('blocker')} Free-Listings-Blocker ({top}){alt}{voll}{shopz}{liz}"
+    # 13.10.2026 (Urteil B1): «Image/Title under review» = Prüf-Warteschlange bei Google, kein Blocker → eigene Zahl mit
+    # Verweildauer (dropship/_google_pruefung_seit.json, Felder schreibt google_feedback_wache.py in den Stand).
+    wz = ""
+    if s.get("wartet"):
+        aelt = s.get("wartet_aeltestes")
+        aelt_tm = f"{aelt[8:10]}.{aelt[5:7]}." if aelt and len(aelt) >= 10 else "?"
+        wz = (f" · {s.get('wartet_summe', sum(s['wartet'].values()))} warten bei Google ({s.get('wartet_ueber', '?')} > "
+              f"{s.get('wartet_ueber_tage', 14)} T, ältestes seit {aelt_tm}{', Liste gedeckelt' if s.get('wartet_gedeckelt') else ''})")
+    return f"GOOGLE: {s.get('blocker')} Blocker ({top}){wz}{alt}{voll}{shopz}{liz}"
 
 
 
