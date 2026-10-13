@@ -18,3 +18,4 @@ F00A31D8-9EC1-4AAB-B1E7-235D2C0C8BCE	2026-10-07	STILL 73 %
 792448D6-3DF9-4204-A5EA-C0AD6E2A72B9	2026-10-10	STILL 82 %
 CJZN107200001AZ	2026-10-13	schnitt 4: PRUEFUNG: Loop-Naht 6.57 > 1,3 x Referenz 3.23
 CJYD192819601AZ	2026-10-13	schnitt 3: UNGEEIGNET: kein sauberes Material (Fremdtext: CJK-Zeichen (降价); eingebranntes Logo/Einschub bei [378, 538, 66, 50]; eingebranntes Logo/Einschub bei [68, 720, 44, 114]; Fremdtext: eingebranntes Logo/Einschub bei [378, 538, 66, 50]; eingebra
+CJYDQTJM00539-150	2026-10-13	schnitt 4: PRUEFUNG: Loop-Naht 11.72 > 1,3 x Referenz 7.72
