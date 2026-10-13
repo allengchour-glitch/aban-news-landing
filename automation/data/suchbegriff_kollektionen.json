@@ -1,433 +1,434 @@
 {
-  "zweck": "Kollektionen für grosse, kaufnahe Suchbegriffe, für die Google bisher nur ein einzelnes Produkt auf Seite 6–9 zeigte (OpenSEO 10.10.2026: «handstaubsauger» 5'400/Mt Pos 72, «spiegel für schminktisch» 2'900 Pos 65, «schlafmaske» 2'400 Pos 66, «kleiderständer holz» ~3'000 Pos 48–53). Zuordnung über Tag `such-…` (Titel-Regel ja/nein mit Wortformen, nie nur Stichwort), Werkzeug automation/suchbegriff_kollektionen.py (Aufseher täglich über Neuimporte). Fotodrucker bewusst NICHT: im Sortiment nur Mini-Thermodrucker in Schwarz-Weiss, die Suche meint Farb-Fotodrucker. GPS-Tracker erst nach der 2G-Prüfung (dropship/MOBILFUNK-2G-2026-10-10.md). 13.10.2026 (GSC): Futterautomaten und Trinkbrunnen — Bildprüfung aller Treffer; Schwerkraft-Spender und ein Futter-Spielzeug über das Nein-Muster draussen, die zwei Anti-Spritz-Näpfe vorher umbenannt.",
-  "kollektionen": [
-    {
-      "handle": "handstaubsauger",
-      "titel": "Handstaubsauger",
-      "tag": "such-handstaubsauger",
-      "ja": "hand-?staubsauger|handsauger|akku-?staubsauger|akkusauger|tisch-?staubsauger|tischsauger|b(ü|ue)ro-?staubsauger|staubsauger-stick|(mini|auto|usb|kabellose[rs]?|tragbare[rs]?|handliche[rs]?)[- ]((mini|auto|usb)[- ])?staubsauger|(mini|auto|usb)-staubsauger",
-      "nein": "roboter|filter|ersatz|d(ü|ue)se|beutel|aufsatz|zubeh(ö|oe)r|b(ü|ue)rstenkopf|halter|adapter|ladeger(ä|ae)t|akku f(ü|ue)r|lithium-ionen-akku|nagel|bohr|wischmopp|schlauch",
-      "seo_title": "Handstaubsauger kabellos & mit Akku kaufen | LuxeStyle",
-      "seo_desc": "Handstaubsauger mit Akku: kabellose Mini-Sauger für Auto, Sofa, Tastatur und Tisch, viele mit Blasfunktion und USB-Ladung. Versand in die Schweiz.",
-      "html": "<p>Ein Handstaubsauger ist schnell zur Hand, wenn Krümel auf dem Sofa, Sand im Auto oder Staub auf der Tastatur liegen. Hier findest du kabellose Modelle mit Akku – vom Mini-Sauger für den Schreibtisch bis zum Auto-Staubsauger mit Blasfunktion.</p><h2>Worauf achten?</h2><ul><li><strong>Akku und Laden:</strong> Die meisten Geräte laden per USB. Laufzeit und Ladezeit stehen auf der Produktseite, wenn der Hersteller sie angibt.</li><li><strong>Saugkraft:</strong> Für Tierhaare und Autositze lohnt ein kräftigeres Modell, für Tastatur und Tisch reicht ein Mini-Sauger.</li><li><strong>Filter:</strong> Ein auswaschbarer Filter spart Ersatzteile.</li><li><strong>Düsen:</strong> Fugen- und Bürstendüse erreichen die Ritzen im Auto.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite. Bezahlen kannst du mit TWINT oder Klarna.</p>",
-      "kanarien": {
-        "ja": [
-          "Kabelloser Handstaubsauger mit Blasfunktion",
-          "Akku-Handsauger für Auto & Heim",
-          "Mini USB Tisch-Staubsauger",
-          "Kabelloser Auto-Staubsauger mit Reifendruckmesser",
-          "Handlicher Mini Auto Staubsauger – kraftvoll & kompakt",
-          "Tragbarer Akku-Staubsauger",
-          "Auto- und Bürostaubsauger"
-        ],
-        "nein": [
-          "Roboter-Staubsauger mit Mop-Funktion",
-          "Staubbeutel für Staubsauger",
-          "Ladegerät für Dyson V6, V7, V8 Staubsauger",
-          "Nagelstaubsauger 80W",
-          "Elektrischer Bohrstaubsauger mit Laser",
-          "Hochleistungs-Lithium-Ionen-Akku für Staubsauger",
-          "Multifunktionaler Staubsauger-Aufsatz, 8-teilig"
-        ]
-      }
-    },
-    {
-      "handle": "schminkspiegel",
-      "titel": "Schminkspiegel",
-      "tag": "such-schminkspiegel",
-      "ja": "(schmink|kosmetik|make-?up|vergr(ö|oe)sserungs)-?spiegel|(led|tisch|reise)-?(tisch)?spiegel mit (led|licht|beleuchtung)|spiegel mit (led|licht|dimmbarem licht)|(led|reise)-(make-?up-?|schmink)?spiegel",
-      "nein": "uhr|wecker|r(ü|ue)ckspiegel|auto|powerbank|kissenf(ü|ue)llung|bluetooth|wand",
-      "seo_title": "Schminkspiegel mit LED & Vergrösserung | LuxeStyle",
-      "seo_desc": "Schminkspiegel mit Licht: LED-Kosmetikspiegel zum Aufstellen, faltbare Reisespiegel und Spiegel mit 2- bis 10-facher Vergrösserung. Versand in die Schweiz.",
-      "html": "<p>Ein guter Schminkspiegel bringt Licht dorthin, wo du es beim Make-up brauchst. Hier findest du LED-Kosmetikspiegel für den Schminktisch, faltbare Spiegel für unterwegs und Modelle mit Vergrösserung für Details wie Augenbrauen oder Eyeliner.</p><h2>Worauf achten?</h2><ul><li><strong>Licht:</strong> Dimmbares LED-Licht hilft am Tag und am Abend.</li><li><strong>Vergrösserung:</strong> 2-fach für den Alltag, bis 10-fach für Details – manche Spiegel haben beide Seiten.</li><li><strong>Strom:</strong> Akku mit USB-Ladung oder Batterien, die Angabe steht auf der Produktseite.</li><li><strong>Grösse:</strong> Tischspiegel für zu Hause, flache Klappspiegel für die Handtasche.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite.</p>",
-      "kanarien": {
-        "ja": [
-          "LED Schminkspiegel mit 10x Vergrösserung",
-          "Dimmbarer Kosmetikspiegel mit Akku",
-          "Reise-Makeup-Spiegel mit LED-Licht",
-          "Aufklappbarer LED-Tischspiegel mit Licht · 175×11×36cm",
-          "Holz-Schminkspiegel",
-          "LED-Spiegel mit dimmbarem Licht",
-          "Doppeltes Kosmetikspiegel"
-        ],
-        "nein": [
-          "LED-Spiegeluhr minimalistisch · Wecker & Temperatur",
-          "Digitaler LED-Spiegelwecker",
-          "Powerbank mit Schminkspiegel",
-          "Kosmetikspiegel mit Kissenfüllung",
-          "Bluetooth LED Spiegel mit virtueller Beleuchtung",
-          "Auto-Rückspiegel mit LED"
-        ]
-      }
-    },
-    {
-      "handle": "schlafmasken",
-      "titel": "Schlafmasken",
-      "tag": "such-schlafmaske",
-      "ja": "schlafmaske|schlafbrille|augenmaske|augenbinde",
-      "nein": "domino|teufel|rabe|harlekin|kost(ü|ue)m|halloween|hoodie|kapuzenpullover|pullover|organizer|silikon-set|augenmasken ·|\\d+ st(ü|ue)ck|dunkle ringe|feuchtigkeit|jade|massageger(ä|ae)t|latex|sch(ö|oe)nheit",
-      "seo_title": "Schlafmaske kaufen: Seide, 3D & mit Wärme | LuxeStyle",
-      "seo_desc": "Schlafmasken zum Abdunkeln: aus Seide, in 3D-Form ohne Druck auf die Augen, gewichtet oder mit Wärme – auch für Reisen. Versand in die Schweiz.",
-      "html": "<p>Eine Schlafmaske dunkelt ab, wenn es im Schlafzimmer, im Zug oder im Flugzeug nicht dunkel genug ist. Hier findest du Masken aus Seide, 3D-Formen mit Raum für die Wimpern, gewichtete Masken und Modelle mit Wärmefunktion.</p><h2>Worauf achten?</h2><ul><li><strong>Material:</strong> Seide fühlt sich glatt an, Schaum und 3D-Formen drücken nicht auf die Augen.</li><li><strong>Abdunkelung:</strong> Eine breite Form mit Nasenpolster lässt weniger Licht durch.</li><li><strong>Wärme:</strong> Beheizbare Masken laden per USB, Dampf-Augenmasken sind für den einmaligen Gebrauch.</li><li><strong>Band:</strong> Ein verstellbares Band hält, ohne zu drücken.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite.</p>",
-      "kanarien": {
-        "ja": [
-          "Seidene Schlafmaske für angenehme Nächte",
-          "3D Gravity Schlafmaske",
-          "Gewichtete Schlafmaske mit Ohrstöpseln",
-          "Beheizte USB-Augenmaske mit Dampffunktion",
-          "Tiefschlaf-Augenmaske für lückenlose Abdunkelung",
-          "Seiden-Set: Kissenbezug, Schlafmaske, Haargummi"
-        ],
-        "nein": [
-          "Domino / Augenmaske – Harlekin bunt",
-          "Augenmaske Teufel",
-          "Kapuzenpullover mit Augenmaske und Fleecefutter",
-          "AloeRosePomegranate Augenmasken · 60 Stück (30 Paar)",
-          "Feuchtigkeitsspendende Augenmaske gegen dunkle Ringe",
-          "ESM Beauty Augenmasken-Massagegerät",
-          "Latex Augenmaske",
-          "Seiden-Organizer für Augenmaske & Schmuck"
-        ]
-      }
-    },
-    {
-      "handle": "kleiderstaender",
-      "titel": "Kleiderständer & Garderoben",
-      "tag": "such-kleiderstaender",
-      "ja": "kleiderst(ä|ae)nder|garderobenst(ä|ae)nder|kleiderstange|kleiderbaum|(holz|wand)-?garderobe|garderobenleiste|hutst(ä|ae)nder",
-      "nein": "kinder|haken|puppe|miniatur|t(ü|ue)rgarderobe",
-      "seo_title": "Kleiderständer & Garderoben aus Holz und Metall | LuxeStyle",
-      "seo_desc": "Kleiderständer auf Rollen, drehbar oder mit Ablagen, dazu Garderoben aus Holz und Metall für Flur und Schlafzimmer. Versand in die Schweiz.",
-      "html": "<p>Ein Kleiderständer schafft Platz, wo der Schrank nicht reicht – im Flur, im Schlafzimmer oder im Gästezimmer. Hier findest du Ständer auf Rollen, drehbare Modelle, Ständer mit mehreren Ebenen und Wandgarderoben aus Holz und Metall.</p><h2>Worauf achten?</h2><ul><li><strong>Stabilität:</strong> Für Wintermäntel lohnt ein Ständer mit breitem Fuss.</li><li><strong>Platz:</strong> Rollen helfen beim Umstellen, eine Wandgarderobe spart Bodenfläche.</li><li><strong>Ablage:</strong> Untere Ebenen nehmen Schuhe oder Taschen auf.</li><li><strong>Masse:</strong> Höhe und Breite stehen auf der Produktseite, wenn der Hersteller sie angibt.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite.</p>",
-      "kanarien": {
-        "ja": [
-          "Verstellbarer Kleiderständer auf Rollen",
-          "Drehbarer Kleiderständer",
-          "Holz-Garderobe mit Rattan",
-          "Faltbare Garderobenleiste aus Buchenholz",
-          "Wandgarderobe aus Metall für Mäntel und Hüte",
-          "Hutständer mit quadratischem Rohr"
-        ],
-        "nein": [
-          "Faltbarer Kleiderständer für Kinder",
-          "Garderobenhaken aus Walnussholz",
-          "Türgarderobe mit Haken – Nagel-frei",
-          "Holz-Haken für Garderobe"
-        ]
-      }
-    },
-    {
-      "handle": "gps-tracker",
-      "titel": "GPS-Tracker & Ortungsgeräte",
-      "tag": "such-gps-tracker",
-      "zusatz_tag": "netz-geprueft",
-      "ja": "gps[- ]?(tracker|ortung|locator|lokator|finder|sender)|ortungsger(ä|ae)t|ortungstracker|(haustier|hunde|katzen|kinder|fahrzeug|auto)[- ]?(gps[- ]?)?(tracker|ortung)|gps-?halsband|halsband mit gps|anti-?verlust[- ]?(tracker|locator|alarm)|bluetooth-?(ortungs)?tracker|itemfinder|schl(ü|ue)sselfinder|find-?my|suchtracker|tierortung|katzenortung|hundefreund-ortung|\\blocator\\b",
-      "nein": "uhr|watch|fitness|drohne|blutsauerstoff|herzfrequenz|lesez|h(ü|ue)lle|halter|ladekarte|detektor|kamera|anzeigeger|geschwindigkeit|fahrradcomputer|brustgeschirr|halsband f(ü|ue)r gps|kollektivset|wand|leitung|metall|balken|stud",
-      "seo_title": "GPS-Tracker kaufen: Auto, Hund, Katze & Gepäck | LuxeStyle",
-      "seo_desc": "GPS-Tracker und Ortungsgeräte mit 4G/LTE oder Bluetooth für Auto, Hund, Katze, Kinder und Gepäck – ohne 2G-Geräte, die in der Schweiz kein Netz haben.",
-      "html": "<p>Ein GPS-Tracker zeigt dir in der App, wo Auto, Hund, Katze oder Koffer gerade sind. Hier findest du Tracker mit SIM-Karte für die Ortung über weite Strecken und Bluetooth-Anhänger, die über Handys in der Nähe orten – zum Beispiel am Schlüsselbund.</p><h2>Nur Geräte, die in der Schweiz funken</h2><p>In der Schweiz ist das 2G-Netz seit Januar 2023 abgeschaltet, 3G folgt. Tracker, die nur 2G (GSM/GPRS) können, haben wir deshalb aus dem Sortiment genommen. In dieser Kollektion stehen nur Geräte, für die der Hersteller 4G/LTE oder Bluetooth angibt.</p><h2>Worauf achten?</h2><ul><li><strong>SIM oder Bluetooth:</strong> Tracker mit SIM brauchen eine SIM-Karte mit Datenvolumen. Bluetooth-Anhänger brauchen keine SIM, orten aber nur über Handys in der Nähe.</li><li><strong>Akku:</strong> Laufzeit und Ladeart stehen auf der Produktseite, wenn der Hersteller sie angibt.</li><li><strong>Wasserschutz:</strong> Für Halsbänder und Aussenmontage lohnt ein wasserdichtes Gerät.</li><li><strong>App:</strong> Die Ortung läuft über die App des Herstellers.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite.</p>",
-      "kanarien": {
-        "ja": [
-          "GPS-Tracker für Hunde mit Echtzeitortung",
-          "GPS-Ortungsgerät für Fahrzeuge",
-          "Bluetooth Anti-Verlust-Tracker",
-          "iTag Bluetooth-Itemfinder",
-          "Suchtracker · Find-My-kompatibel · 6 Farben",
-          "GPS-Halsband für Katzen · Find-My-kompatibel",
-          "OBD-GPS-Locator"
-        ],
-        "nein": [
-          "Kinder Smartwatch mit GPS und Videoanruf",
-          "Faltbarer Quadrocopter mit GPS und Kamera",
-          "GPS- und Funksignal-Detektor",
-          "Halsband für GPS-Tracker mit Diebstahlschutz",
-          "Motorrad-Kamera mit GPS",
-          "iGS50E GPS-Fahrradcomputer",
-          "Bluetooth-Blutsauerstoff-Tracker fürs Handgelenk",
-          "Ortungsgerät für Wandobjekte"
-        ]
-      }
-    },
-    {
-      "handle": "sicherheitsschuhe",
-      "titel": "Sicherheitsschuhe",
-      "tag": "such-sicherheitsschuhe",
-      "ja": "sicherheits-?(schuh|stiefel)|sicherheitschuh|stahlkappe|stahlplatte|durchtritt(schutz|sicher)|stich(fest|schutz)|zehenschutz|anti-?piercing|schutzschuh|kunststoffkappe|aufprallschutz|schweisser",
-      "nein": "kinder|spielzeug|socken|einlage|(ü|ue)berzieher|wander|senioren|fussverletz|deo|motorrad",
-      "seo_title": "Sicherheitsschuhe & Stahlkappenschuhe kaufen | LuxeStyle",
-      "seo_desc": "Sicherheitsschuhe und Arbeitsschuhe mit Stahlkappe, Durchtrittschutz und rutschfester Sohle – als Halbschuh oder Stiefel. Versand in die Schweiz.",
-      "html": "<p>Sicherheitsschuhe schützen die Zehen mit einer Stahlkappe, viele haben zusätzlich eine durchtrittsichere Sohle gegen Nägel und Scherben. Hier findest du nur Schuhe mit Schutzmerkmal – Sicherheitsschuhe und -stiefel für Werkstatt, Lager, Garten und Baustelle – als leichten Halbschuh oder als hohen Stiefel.</p><h2>Worauf achten?</h2><ul><li><strong>Schutz:</strong> Stahlkappe für die Zehen, durchtrittsichere Sohle gegen spitze Gegenstände.</li><li><strong>Norm:</strong> Ob ein Schuh einer Schutzklasse wie S1 oder S3 entspricht, steht auf der Produktseite, wenn der Hersteller sie angibt. Schreibt dein Arbeitgeber eine Norm vor, prüfe sie vor dem Kauf.</li><li><strong>Gewicht und Luft:</strong> Für lange Tage lohnt ein leichter, atmungsaktiver Schuh.</li><li><strong>Grösse:</strong> Sicherheitsschuhe fallen oft anders aus – die Grössentabelle steht auf der Produktseite.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite. Rückgabe innerhalb von 30 Tagen.</p>",
-      "kanarien": {
-        "ja": [
-          "Sicherheits-Schuhe mit Stahlkappe",
-          "Militär-Sicherheitsstiefel mit Stahlkappe",
-          "Sicherheitsschuhe mit Stich- und Aufprallschutz",
-          "Leichte, atmungsaktive Sicherheitsschuhe",
-          "Leichte Arbeitsschuhe mit Durchtrittschutz",
-          "Herrenleichtgewichtige Arbeitsschuhe mit Stoss- und Stichschutz",
-          "Feuerfeste Schweisser-Schutzschuhe",
-          "Leichte Industrieschutzschuhe"
-        ],
-        "nein": [
-          "Wanderschuhe für Damen",
-          "Kinder-Arbeitsschuhe Spielzeug",
-          "Schuhüberzieher für Arbeitsschuhe",
-          "Socken für Arbeitsschuhe",
-          "Abriebfeste rutschfeste Arbeitsschuhe Herren",
-          "Herren Arbeitsstiefel Suede",
-          "Worker-Boots – Hohe Arbeitsstiefel für Herren",
-          "Schutzschuhe für Senioren",
-          "Schutzschuhe für Fussverletzungen",
-          "Leichte Motorrad-Arbeitsstiefel"
-        ]
-      }
-    },
-    {
-      "handle": "holzuhren",
-      "titel": "Holzuhren",
-      "tag": "such-holzuhren",
-      "ja": "holz-?(armband)?uhr|holzarmbanduhr|uhr aus (holz|bambus)|bambus-?(holz-?)?uhr|holzuhr",
-      "nein": "wanduhr|wecker|tischuhr|standuhr|kuckuck|uhren-?box|uhrenbox|uhren-?st(ä|ae)nder|aufbewahrung",
-      "seo_title": "Holzuhren für Herren & Damen kaufen | LuxeStyle",
-      "seo_desc": "Armbanduhren aus Holz und Bambus: leicht, mit Holzarmband, für Herren und Damen – mit Quarz-, Multifunktions- oder mechanischem Werk. Versand in die Schweiz.",
-      "html": "<p>Eine Holzuhr ist leichter als eine Metalluhr und fühlt sich warm am Handgelenk an. Hier findest du Armbanduhren mit Gehäuse und Armband aus Holz oder Bambus – schlicht, sportlich oder mit Multifunktionswerk, für Herren und Damen.</p><h2>Worauf achten?</h2><ul><li><strong>Holz:</strong> Jedes Stück hat eine eigene Maserung, Farbe und Zeichnung weichen leicht ab.</li><li><strong>Werk:</strong> Quarz läuft mit Batterie, ein mechanisches Werk ohne – die Angabe steht auf der Produktseite.</li><li><strong>Wasser:</strong> Holzuhren sind meist spritzwassergeschützt, nicht zum Schwimmen gemacht.</li><li><strong>Armband:</strong> Holzglieder lassen sich kürzen, oft liegt ein kleines Werkzeug bei.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite.</p>",
-      "kanarien": {
-        "ja": [
-          "Holzarmbanduhr",
-          "Mechanische Holzuhr mit grauem Armband",
-          "Bambus-Holz-Uhr mit digitalem Goldzifferblatt",
-          "Herren-Armbanduhr aus Holz, Sportlich Elegant",
-          "Holz-Armbanduhr mit Sandelholz-Armband"
-        ],
-        "nein": [
-          "Holz-Uhrenbox mit Glasdach",
-          "Holz-Wanduhr rund",
-          "Holzwecker digital",
-          "Uhrenständer aus Holz"
-        ]
-      }
-    },
-    {
-      "handle": "camisole-traegertops",
-      "titel": "Camisole & Trägertops",
-      "tag": "such-camisole",
-      "ja": "camisole|tr(ä|ae)gertop|tr(ä|ae)ger-top|spaghetti-?tr(ä|ae)ger[- ]?top|spaghettitr(ä|ae)ger-?top|\\bcami\\b",
-      "nein": "kleid|\\bset\\b|schlafanzug|pyjama|\\bbody\\b|\\bbh\\b|kinder|jumpsuit|overall|dress\\b|herren|\\brock\\b",
-      "seo_title": "Camisole & Trägertops für Damen kaufen | LuxeStyle",
-      "seo_desc": "Camisoles und Trägertops für Damen aus Satin, Spitze oder Strick – mit Spaghettiträgern oder Neckholder, solo oder zum Layering. Versand in die Schweiz.",
-      "html": "<p>Ein Camisole ist ein leichtes Top mit dünnen Trägern – im Sommer allein, im Herbst unter Blazer, Strickjacke oder Hemd. Hier findest du Trägertops aus Satin, Spitze, Mesh und Strick, schlicht oder mit Print.</p><h2>Worauf achten?</h2><ul><li><strong>Material:</strong> Satin glänzt und fällt fliessend, Spitze wirkt verspielt, Strick ist wärmer.</li><li><strong>Träger:</strong> Spaghettiträger, breitere Träger oder Neckholder – je nach BH darunter.</li><li><strong>Länge:</strong> Kurze Tops zur hohen Hose, längere zum Reinstecken.</li><li><strong>Grösse:</strong> Die Masse stehen in der Grössentabelle auf der Produktseite.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite. Rückgabe innerhalb von 30 Tagen.</p>",
-      "kanarien": {
-        "ja": [
-          "Satin-Camisole mit Neckholder",
-          "Spitzen-Trägertop «Lacey» – feminines Sommer-Basic",
-          "Gehäkeltes Spaghetti-Träger Top mit Quasten",
-          "Trägertop für den Sommer",
-          "Y2K Lace Camisole Top mit Polka Dots"
-        ],
-        "nein": [
-          "Trägerkleid aus Satin",
-          "Pyjama-Set mit Camisole",
-          "Camisole-Body mit Spitze",
-          "Kinder Trägertop",
-          "Kurzer rückenfreier Cami Jumpsuit",
-          "Samt Camisole Slip Dress mit Spitze",
-          "Herren Camisole Unterhemd Slim-Fit",
-          "Retro Polka-Dot Träger-Top & Rock"
-        ]
-      }
-    },
-    {
-      "handle": "smart-ring",
-      "titel": "Smart Rings",
-      "tag": "such-smart-ring",
-      "ja": "smart[- ]?ring|gesundheits-?ring|fitness-?ring|intelligenter gesundheitsring",
-      "nein": "fernbedienung|ringlicht|schl(ü|ue)sselring|nfc-funktion",
-      "seo_title": "Smart Ring kaufen: Schlaf, Puls & Schritte | LuxeStyle",
-      "seo_desc": "Smart Rings mit Bluetooth-App: Schritte, Schlaf und Puls im Blick, wasserdicht und leichter als eine Uhr. Keine Medizinprodukte. Versand in die Schweiz.",
-      "html": "<p>Ein Smart Ring zeichnet Schritte, Schlaf und Puls auf – ohne Display, leichter als eine Smartwatch und auch nachts angenehm zu tragen. Die Werte siehst du in der App auf dem Handy.</p><h2>Worauf achten?</h2><ul><li><strong>Grösse:</strong> Ein Ring muss eng genug sitzen, damit der Sensor misst. Die Grössen stehen auf der Produktseite – miss deinen Finger vorher.</li><li><strong>App:</strong> Die Auswertung läuft über die App des Herstellers (iPhone und Android, wenn angegeben).</li><li><strong>Akku:</strong> Laufzeit und Ladeschale stehen auf der Produktseite.</li><li><strong>Messwerte:</strong> Smart Rings sind Fitness-Geräte, keine Medizinprodukte – für Diagnosen ist die Ärztin da.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite.</p>",
-      "kanarien": {
-        "ja": [
-          "Smart Ring mit Fitness- und Gesundheits-Tracking",
-          "Q520 Gesundheitsring für Schlaf, Herzfrequenz und Sauerstoff",
-          "R6 Smart Ring – Wasserdicht mit Stressüberwachung",
-          "Intelligenter Gesundheitsring",
-          "Multifunktionaler Smart-Ring"
-        ],
-        "nein": [
-          "Universal Smart Ring Fernbedienung",
-          "Smart Ring Bluetooth-Fernbedienung",
-          "Smart Ring mit NFC-Funktion",
-          "LED-Ringlicht mit Stativ"
-        ]
-      }
-    },
-    {
-      "handle": "schrank-organizer",
-      "titel": "Schrank-Organizer",
-      "tag": "such-schrank-organizer",
-      "ja": "(kleider)?schrank-?organizer|kleider-?organizer|unterw(ä|ae)sche-?organizer|aufbewahrungsbox(en)? f(ü|ue)r (kleider|kleidung|textilien)|schubladen-?organizer f(ü|ue)r (unterw(ä|ae)sche|socken|kleider)",
-      "nein": "k(ü|ue)hlschrank|k(ü|ue)che|b(ü|ue)ro|auto|kosmetik|kabel|bad",
-      "seo_title": "Schrank-Organizer & Kleider-Aufbewahrung | LuxeStyle",
-      "seo_desc": "Schrank-Organizer für Kleider, Pullover und Unterwäsche: stapelbare Boxen, Schubladen-Einsätze und Aufbewahrungsboxen aus Stoff für den Kleiderschrank.",
-      "html": "<p>Ordnung im Kleiderschrank beginnt mit festen Plätzen: Pullover in stapelbaren Boxen, Socken und Unterwäsche in Fächern, Saisonkleidung in grossen Aufbewahrungsboxen. Hier findest du Organizer aus Stoff zum Hineinstellen und Stapeln.</p><h2>Worauf achten?</h2><ul><li><strong>Masse:</strong> Miss Fachbreite und -tiefe, die Masse der Boxen stehen auf der Produktseite.</li><li><strong>Fächer:</strong> Kleine Fächer für Socken und Unterwäsche, grosse Boxen für Pullover und Bettwäsche.</li><li><strong>Stapeln:</strong> Feste Böden halten die Form, wenn mehrere Boxen übereinander stehen.</li><li><strong>Faltbar:</strong> Stoff-Organizer lassen sich flach verstauen, wenn du sie nicht brauchst.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite.</p>",
-      "kanarien": {
-        "ja": [
-          "4er-Set Stapelbare Kleider-Organizer",
-          "2er-Set Schrank-Organizer für Kleider & Accessoires",
-          "Schubladen-Organizer für Unterwäsche",
-          "Kleiderschrank-Organizer",
-          "Grosse Aufbewahrungsbox für Kleidung",
-          "3er-Set Unterwäsche-Organizer aus Stoff"
-        ],
-        "nein": [
-          "Kühlschrank-Organizer für Snacks & Trockenfrüchte",
-          "Büro-Schubladen-Organizer",
-          "Bambus Schubladen-Organizer für Küchenutensilien",
-          "Auto-Kofferraum-Organizer"
-        ]
-      }
-    },
-    {
-      "handle": "weihnachtspyjama-familie",
-      "titel": "Weihnachtspyjamas für die ganze Familie",
-      "tag": "such-weihnachtspyjama",
-      "ja": "(?=.*(pyjama|schlafanzug|hausanzug|homewear|loungewear|nachtw(ä|ae)sche))(?=.*(weihnacht|christmas|xmas|\\belch|rentier|santa|nikolaus|schneemann|lebkuchen|familie|partnerlook|eltern|mutter|vater))|(?=.*(weihnacht|christmas|xmas))(?=.*(familie|partnerlook|eltern))",
-      "nein": "hund|katze|haustier|puppe|kost(ü|ue)m|tasse|keramik|deko|kugel|kerze|stoffpuppe|socken",
-      "seo_title": "Weihnachtspyjama für die Familie & Partnerlook | LuxeStyle",
-      "seo_desc": "Weihnachtspyjamas im Partnerlook für Papa, Mama, Kinder und Baby: Elch, Karo, Streifen und Weihnachtsbaum. Versand in die Schweiz und nach Liechtenstein.",
-      "html": "<p>Gleiche Pyjamas für die ganze Familie – für den Weihnachtsmorgen, das Familienfoto oder als Geschenk. Die Sets gibt es in Grössen für Papa, Mama, Kinder und Baby, meist im selben Muster: Elch, Karo, Streifen oder Weihnachtsbaum.</p><h2>Worauf achten?</h2><ul><li><strong>Grösse:</strong> Jede Person wählt ihre eigene Grösse im Auswahlfeld («Papa M», «Mama S», «Kind 4Y»). Die Mass-Tabelle steht auf der Produktseite.</li><li><strong>Passform:</strong> Asiatische Konfektion fällt oft kleiner aus – im Zweifel eine Nummer grösser.</li><li><strong>Material:</strong> Baumwolle und Baumwollmischungen sind atmungsaktiv, Fleece und Flanell wärmen mehr. Das Material steht bei jedem Set.</li><li><strong>Lieferzeit:</strong> Die meisten Sets kommen per Direktversand in 10–20 Werktagen. Wer sicher vor Weihnachten liefern lassen will, bestellt am besten bis Mitte November.</li></ul><p>Rückgabe innerhalb von 30 Tagen, Bezahlung mit TWINT, Karte oder Klarna.</p>",
-      "kanarien": {
-        "ja": [
-          "Weihnachts-Pyjama für die ganze Familie",
-          "Kariertes Familien-Pyjama-Set mit Hirschgeweih",
-          "Weihnachts-Homewear im Partnerlook",
-          "Weihnachts-Pyjama für Mutter & Tochter",
-          "Dino-Weihnachtsbaum-Pyjama für die ganze Familie",
-          "Weihnachts-Partnerlook Blau-Weiss Gestreift",
-          "Familien-Weihnachtsanzüge mit Streifen",
-          "Weihnachtsbaum-Print Hausanzug"
-        ],
-        "nein": [
-          "Keramiktasse für Paare – Weihnachtsmotiv",
-          "Weihnachts-Hundepyjama mit Rentier",
-          "Damen Pyjama aus Seide",
-          "Weihnachtskugeln Set 24 Stück",
-          "Pyjama-Set für Damen mit Spitze",
-          "Weihnachtsmann Kostüm für Erwachsene",
-          "Weihnachtssocken für die ganze Familie"
-        ]
-      }
-    },
-    {
-      "handle": "weihnachtspullover",
-      "titel": "Weihnachtspullover & Christmas Sweater",
-      "tag": "such-weihnachtspullover",
-      "ja": "(?=.*(pullover|sweater|sweatshirt|strickpulli|hoodie|jumper|strickjacke|cardigan))(?=.*(weihnacht|christmas|xmas|rentier|\\belch|schneemann|santa|lebkuchen|schneeflocke|nikolaus))",
-      "nein": "hund|haustier|f(ü|ue)r katzen|katzenpullover|kost(ü|ue)m|deko|kissen|tasse",
-      "seo_title": "Weihnachtspullover & Ugly Christmas Sweater | LuxeStyle",
-      "seo_desc": "Weihnachtspullover für Damen und Herren: Strick mit Schneeflocken, Hoodies mit Rentier, Elch und Lebkuchenmann, Christmas Sweater. Versand in die Schweiz.",
-      "html": "<p>Weihnachtspullover für Damen und Herren – vom klassischen Strickpullover mit Schneeflocken bis zum Hoodie mit Rentier, Elch, Schneemann oder Lebkuchenmann. Auch lustige «Ugly Christmas Sweater» für die Weihnachtsfeier sind dabei.</p><h2>Worauf achten?</h2><ul><li><strong>Material:</strong> Strick und Jacquard sind klassisch, Flanell und Fleece wärmen mehr, Sweatshirts aus Baumwollmischung sind leicht. Das Material steht bei jedem Artikel.</li><li><strong>Passform:</strong> Asiatische Konfektion fällt oft kleiner aus – im Zweifel eine Nummer grösser. Die Mass-Tabelle steht auf der Produktseite.</li><li><strong>Partnerlook:</strong> Gleiche Motive für die ganze Familie findest du bei den <a href=\"/collections/weihnachtspyjama-familie\">Weihnachtspyjamas für die Familie</a>.</li><li><strong>Lieferzeit:</strong> Die meisten Pullover kommen per Direktversand in 10–20 Werktagen. Für Weihnachten am besten bis Mitte November bestellen.</li></ul><p>Rückgabe innerhalb von 30 Tagen, Bezahlung mit TWINT, Karte oder Klarna.</p>",
-      "kanarien": {
-        "ja": [
-          "Vintage Jacquard Weihnachtspullover",
-          "Weihnachts-Hoodie mit 3D-Print",
-          "Glitzer-Hoodie mit Lebkuchenmann-Motiv",
-          "Damen Rollkragenpullover mit Schneeflockenmuster",
-          "Jacquard Christmas Pullover für Herren",
-          "Weihnachts-Katze Crew-Neck Pullover Damen",
-          "Herren Hoodie mit Santa- und Biermuster"
-        ],
-        "nein": [
-          "Roter Weihnachtspullover für Hunde",
-          "Haustierpullover Weihnachten Kirsche",
-          "Elch-Pullover für Haustiere – Farbe & Grösse frei",
-          "Weihnachtspullover für Hund – S",
-          "Weihnachtskissen mit Rentier",
-          "Damen Strickpullover mit V-Ausschnitt"
-        ]
-      }
-    },
-    {
-      "handle": "handwaermer",
-      "titel": "Handwärmer",
-      "tag": "such-handwaermer",
-      "ja": "handw(ä|ae)rmer|hand-w(ä|ae)rmer|taschenw(ä|ae)rmer",
-      "nein": "handschuh|socke|kost(ü|ue)m",
-      "seo_title": "Handwärmer kaufen: USB-Akku, Powerbank & Einweg | LuxeStyle",
-      "seo_desc": "Handwärmer für kalte Tage: wiederaufladbar per USB, als Powerbank fürs Handy oder zum einmaligen Gebrauch. Klein für die Jackentasche. Versand in die Schweiz.",
-      "html": "<p>Handwärmer für den Arbeitsweg, das Stadion, die Skipiste oder den Spaziergang mit dem Hund. Hier findest du wiederaufladbare Akku-Handwärmer, Modelle mit Powerbank-Funktion und Wärmer zum einmaligen Gebrauch.</p><h2>Worauf achten?</h2><ul><li><strong>Akku oder Einweg:</strong> Akku-Handwärmer laden per USB und lassen sich immer wieder nutzen; Einweg-Wärmer brauchen keinen Strom.</li><li><strong>Powerbank:</strong> Viele Akku-Modelle laden auch das Handy – praktisch unterwegs.</li><li><strong>Grösse:</strong> Mini-Modelle passen in jede Jackentasche, grössere wärmen länger.</li><li><strong>Wärmestufen und Laufzeit:</strong> stehen beim jeweiligen Produkt, wenn der Hersteller sie angibt.</li></ul><p>Mehr gegen Kälte: <a href=\"/collections/winter-kaelte\">Winter &amp; Kälte</a>.</p>",
-      "kanarien": {
-        "ja": [
-          "Mini-Handwärmer & Powerbank",
-          "OUHOE Einweg-Handwärmer",
-          "USB-Handwärmer \"Warm Treasure\"",
-          "Niedliches Plüsch-Lendenkissen mit Handwärmer"
-        ],
-        "nein": [
-          "Beheizbare Handschuhe mit Akku",
-          "Touchscreen-Handschuhe aus Wolle",
-          "Wärmflasche mit Strickbezug"
-        ]
-      }
-    },
-    {
-      "handle": "futterautomaten",
-      "titel": "Futterautomaten für Katzen & Hunde",
-      "tag": "such-futterautomat",
-      "ja": "futter-?automat|automatische[rns]?\\s+(?:dual-|doppelnapf\\s+|wi-?fi\\s+|2-in-1\\s+)?(?:futterspender|futter-spender|futternapf|futterstation|haustierf(?:ü|ue)tterer|hund-\\s+und\\s+katzenf(?:ü|ue)tterer)|(?:smarte?r?|intelligente[rs]?)\\s+(?:\\d+\\s*l\\s+)?(?:futterspender|haustierf(?:ü|ue)tterer|futternapf\\s+mit\\s+(?:zeitsteuerung|fernsteuerung|timer|app|kamera))|tierfernf(?:ü|ue)tterung|futterspender\\s+(?:mit\\s+(?:timer|app|kamera|wi-?fi)|\\(\\d+\\s*l\\)|wlan)|futternapf\\s+mit\\s+automatischer\\s+f(?:ü|ue)tterung",
-      "nein": "aquari|fisch|spielzeug|spielball|kreisel|tumbler|kratzbrett|vogel|hamster|kaninchen|frostfutter|wurfmaschine|zahnpflege|einh(?:ä|ae)ngen|h(?:ä|ae)ngend|saugnapf|holz|biene|imker|weizenstroh|wasser|trink|schwerkraft|ohne strom|^automatischer futter-spender$|^grosser futternapf mit automatischer f(?:ü|ue)tterung$|2-in-1 hund- und katzenf(?:ü|ue)tterer",
-      "seo_title": "Futterautomat für Katzen & Hunde kaufen | LuxeStyle",
-      "seo_desc": "Futterautomaten für Katze und Hund: mit Timer, App, WLAN oder Kamera, 2 bis 6 Liter. Schweizer Shop, Lieferung meist 10–20 Werktage, gratis ab CHF 50.",
-      "html": "<p>Ein Futterautomat gibt deiner Katze oder deinem Hund das Futter zur eingestellten Zeit – praktisch an langen Arbeitstagen oder an einem Wochenende auswärts. Hier findest du Geräte mit Timer, mit App-Steuerung über WLAN oder mit eingebauter Kamera.</p><h2>Worauf achten?</h2><ul><li><strong>Fassungsvermögen:</strong> von 2 bis 6 Liter; die genaue Angabe steht auf jeder Produktseite.</li><li><strong>Steuerung:</strong> Timer am Gerät oder App über WLAN.</li><li><strong>Futter:</strong> Welche Futterart passt, steht auf der Produktseite.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite. Bezahlen kannst du mit TWINT oder Klarna.</p>",
-      "kanarien": {
-        "ja": [
-          "Automatischer Futterspender mit Timer",
-          "Futterautomat mit Kamera für Katzen, 6L",
-          "Smarter Futterspender 3L für Haustiere",
-          "Automatischer Dual-Futterspender mit Timer",
-          "Intelligenter Futterautomat",
-          "Automatischer WIFI Futternapf für Haustiere",
-          "Intelligente Tierfernfütterung mit HD-Kamera",
-          "Smarter Katzenfutterautomat mit Bewegungssensor"
-        ],
-        "nein": [
-          "Futterautomat für Aquarien",
-          "Automatischer Futterspender zum Einhängen",
-          "Futterspender-Spielzeug für Katze",
-          "Futterspender Holz für Hamster",
-          "Katzen-Trinkbrunnen mit Filter",
-          "Bienenfutterautomat im American Style",
-          "Futterautomat für Katzen aus Weizenstroh",
-          "Automatischer Futter- und Wasserspender",
-          "Automatischer Futter-Spender",
-          "Grosser Futternapf mit automatischer Fütterung",
-          "Automatischer 2-in-1 Hund- und Katzenfütterer"
-        ]
-      }
-    },
-    {
-      "handle": "trinkbrunnen-katzen",
-      "titel": "Trinkbrunnen für Katzen & Hunde",
-      "tag": "such-trinkbrunnen",
-      "ja": "trinkbrunnen|wasserbrunnen|katzenbrunnen",
-      "nein": "anti-schwapp|wassernapf|vogel|garten|kost(?:ü|ue)m|filter-?element|ersatzfilter|mundnasser",
-      "seo_title": "Trinkbrunnen für Katzen & Hunde kaufen | LuxeStyle",
-      "seo_desc": "Trinkbrunnen für Katzen und kleine Hunde: mit Filter, aus Keramik oder ohne Strom. Schweizer Shop, Lieferung meist 10–20 Werktage, gratis ab CHF 50.",
-      "html": "<p>Ein Trinkbrunnen hält das Wasser für Katze und kleinen Hund in Bewegung. Hier findest du Modelle mit Pumpe und Filter, aus Keramik oder ganz ohne Strom.</p><h2>Worauf achten?</h2><ul><li><strong>Material:</strong> Keramik ist schwer und leicht zu reinigen, Kunststoff ist leichter.</li><li><strong>Filter:</strong> Ob es Ersatzfilter gibt, steht auf der Produktseite.</li><li><strong>Fassungsvermögen:</strong> von rund 1,5 bis 4 Liter.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite. Bezahlen kannst du mit TWINT oder Klarna.</p>",
-      "kanarien": {
-        "ja": [
-          "Katzen-Trinkbrunnen mit Filter",
-          "Keramik-Trinkbrunnen für Katzen",
-          "Unplugged Trinkbrunnen für Hunde und Katzen",
-          "Katzenbrunnen mit Zirkulationsfiltration"
-        ],
-        "nein": [
-          "Anti-Schwapp-Wassernapf für Hund & Katze",
-          "Vogeltränke und Futterstation",
-          "Wasserfilter-Element für Katzenwasserbrunnen",
-          "Mundnasser-Schutz Trinkbrunnen für Katzen"
-        ]
-      }
-    }
-  ]
+ "zweck": "Kollektionen für grosse, kaufnahe Suchbegriffe, für die Google bisher nur ein einzelnes Produkt auf Seite 6–9 zeigte (OpenSEO 10.10.2026: «handstaubsauger» 5'400/Mt Pos 72, «spiegel für schminktisch» 2'900 Pos 65, «schlafmaske» 2'400 Pos 66, «kleiderständer holz» ~3'000 Pos 48–53). Zuordnung über Tag `such-…` (Titel-Regel ja/nein mit Wortformen, nie nur Stichwort), Werkzeug automation/suchbegriff_kollektionen.py (Aufseher täglich über Neuimporte). Fotodrucker bewusst NICHT: im Sortiment nur Mini-Thermodrucker in Schwarz-Weiss, die Suche meint Farb-Fotodrucker. GPS-Tracker erst nach der 2G-Prüfung (dropship/MOBILFUNK-2G-2026-10-10.md). 13.10.2026 (GSC): Futterautomaten und Trinkbrunnen — Bildprüfung aller Treffer; Schwerkraft-Spender und ein Futter-Spielzeug über das Nein-Muster draussen, die zwei Anti-Spritz-Näpfe vorher umbenannt.",
+ "kollektionen": [
+  {
+   "handle": "handstaubsauger",
+   "titel": "Handstaubsauger",
+   "tag": "such-handstaubsauger",
+   "ja": "hand-?staubsauger|handsauger|akku-?staubsauger|akkusauger|tisch-?staubsauger|tischsauger|b(ü|ue)ro-?staubsauger|staubsauger-stick|(mini|auto|usb|kabellose[rs]?|tragbare[rs]?|handliche[rs]?)[- ]((mini|auto|usb)[- ])?staubsauger|(mini|auto|usb)-staubsauger",
+   "nein": "roboter|filter|ersatz|d(ü|ue)se|beutel|aufsatz|zubeh(ö|oe)r|b(ü|ue)rstenkopf|halter|adapter|ladeger(ä|ae)t|akku f(ü|ue)r|lithium-ionen-akku|nagel|bohr|wischmopp|schlauch",
+   "seo_title": "Handstaubsauger kabellos & mit Akku kaufen | LuxeStyle",
+   "seo_desc": "Handstaubsauger mit Akku: kabellose Mini-Sauger für Auto, Sofa, Tastatur und Tisch, viele mit Blasfunktion und USB-Ladung. Versand in die Schweiz.",
+   "html": "<p>Ein Handstaubsauger ist schnell zur Hand, wenn Krümel auf dem Sofa, Sand im Auto oder Staub auf der Tastatur liegen. Hier findest du kabellose Modelle mit Akku – vom Mini-Sauger für den Schreibtisch bis zum Auto-Staubsauger mit Blasfunktion.</p><h2>Worauf achten?</h2><ul><li><strong>Akku und Laden:</strong> Die meisten Geräte laden per USB. Laufzeit und Ladezeit stehen auf der Produktseite, wenn der Hersteller sie angibt.</li><li><strong>Saugkraft:</strong> Für Tierhaare und Autositze lohnt ein kräftigeres Modell, für Tastatur und Tisch reicht ein Mini-Sauger.</li><li><strong>Filter:</strong> Ein auswaschbarer Filter spart Ersatzteile.</li><li><strong>Düsen:</strong> Fugen- und Bürstendüse erreichen die Ritzen im Auto.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite. Bezahlen kannst du mit TWINT oder Klarna.</p>",
+   "kanarien": {
+    "ja": [
+     "Kabelloser Handstaubsauger mit Blasfunktion",
+     "Akku-Handsauger für Auto & Heim",
+     "Mini USB Tisch-Staubsauger",
+     "Kabelloser Auto-Staubsauger mit Reifendruckmesser",
+     "Handlicher Mini Auto Staubsauger – kraftvoll & kompakt",
+     "Tragbarer Akku-Staubsauger",
+     "Auto- und Bürostaubsauger"
+    ],
+    "nein": [
+     "Roboter-Staubsauger mit Mop-Funktion",
+     "Staubbeutel für Staubsauger",
+     "Ladegerät für Dyson V6, V7, V8 Staubsauger",
+     "Nagelstaubsauger 80W",
+     "Elektrischer Bohrstaubsauger mit Laser",
+     "Hochleistungs-Lithium-Ionen-Akku für Staubsauger",
+     "Multifunktionaler Staubsauger-Aufsatz, 8-teilig"
+    ]
+   }
+  },
+  {
+   "handle": "schminkspiegel",
+   "titel": "Schminkspiegel",
+   "tag": "such-schminkspiegel",
+   "ja": "(schmink|kosmetik|make-?up|vergr(ö|oe)sserungs)-?spiegel|(led|tisch|reise)-?(tisch)?spiegel mit (led|licht|beleuchtung)|spiegel mit (led|licht|dimmbarem licht)|(led|reise)-(make-?up-?|schmink)?spiegel",
+   "nein": "uhr|wecker|r(ü|ue)ckspiegel|auto|powerbank|kissenf(ü|ue)llung|bluetooth|wand",
+   "seo_title": "Schminkspiegel mit LED & Vergrösserung | LuxeStyle",
+   "seo_desc": "Schminkspiegel mit Licht: LED-Kosmetikspiegel zum Aufstellen, faltbare Reisespiegel und Spiegel mit 2- bis 10-facher Vergrösserung. Versand in die Schweiz.",
+   "html": "<p>Ein guter Schminkspiegel bringt Licht dorthin, wo du es beim Make-up brauchst. Hier findest du LED-Kosmetikspiegel für den Schminktisch, faltbare Spiegel für unterwegs und Modelle mit Vergrösserung für Details wie Augenbrauen oder Eyeliner.</p><h2>Worauf achten?</h2><ul><li><strong>Licht:</strong> Dimmbares LED-Licht hilft am Tag und am Abend.</li><li><strong>Vergrösserung:</strong> 2-fach für den Alltag, bis 10-fach für Details – manche Spiegel haben beide Seiten.</li><li><strong>Strom:</strong> Akku mit USB-Ladung oder Batterien, die Angabe steht auf der Produktseite.</li><li><strong>Grösse:</strong> Tischspiegel für zu Hause, flache Klappspiegel für die Handtasche.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite.</p>",
+   "kanarien": {
+    "ja": [
+     "LED Schminkspiegel mit 10x Vergrösserung",
+     "Dimmbarer Kosmetikspiegel mit Akku",
+     "Reise-Makeup-Spiegel mit LED-Licht",
+     "Aufklappbarer LED-Tischspiegel mit Licht · 175×11×36cm",
+     "Holz-Schminkspiegel",
+     "LED-Spiegel mit dimmbarem Licht",
+     "Doppeltes Kosmetikspiegel"
+    ],
+    "nein": [
+     "LED-Spiegeluhr minimalistisch · Wecker & Temperatur",
+     "Digitaler LED-Spiegelwecker",
+     "Powerbank mit Schminkspiegel",
+     "Kosmetikspiegel mit Kissenfüllung",
+     "Bluetooth LED Spiegel mit virtueller Beleuchtung",
+     "Auto-Rückspiegel mit LED"
+    ]
+   }
+  },
+  {
+   "handle": "schlafmasken",
+   "titel": "Schlafmasken",
+   "tag": "such-schlafmaske",
+   "ja": "schlafmaske|schlafbrille|augenmaske|augenbinde",
+   "nein": "domino|teufel|rabe|harlekin|kost(ü|ue)m|halloween|hoodie|kapuzenpullover|pullover|organizer|silikon-set|augenmasken ·|\\d+ st(ü|ue)ck|dunkle ringe|feuchtigkeit|jade|massageger(ä|ae)t|latex|sch(ö|oe)nheit",
+   "seo_title": "Schlafmaske kaufen: Seide, 3D & mit Wärme | LuxeStyle",
+   "seo_desc": "Schlafmasken zum Abdunkeln: aus Seide, in 3D-Form ohne Druck auf die Augen, gewichtet oder mit Wärme – auch für Reisen. Versand in die Schweiz.",
+   "html": "<p>Eine Schlafmaske dunkelt ab, wenn es im Schlafzimmer, im Zug oder im Flugzeug nicht dunkel genug ist. Hier findest du Masken aus Seide, 3D-Formen mit Raum für die Wimpern, gewichtete Masken und Modelle mit Wärmefunktion.</p><h2>Worauf achten?</h2><ul><li><strong>Material:</strong> Seide fühlt sich glatt an, Schaum und 3D-Formen drücken nicht auf die Augen.</li><li><strong>Abdunkelung:</strong> Eine breite Form mit Nasenpolster lässt weniger Licht durch.</li><li><strong>Wärme:</strong> Beheizbare Masken laden per USB, Dampf-Augenmasken sind für den einmaligen Gebrauch.</li><li><strong>Band:</strong> Ein verstellbares Band hält, ohne zu drücken.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite.</p>",
+   "kanarien": {
+    "ja": [
+     "Seidene Schlafmaske für angenehme Nächte",
+     "3D Gravity Schlafmaske",
+     "Gewichtete Schlafmaske mit Ohrstöpseln",
+     "Beheizte USB-Augenmaske mit Dampffunktion",
+     "Tiefschlaf-Augenmaske für lückenlose Abdunkelung",
+     "Seiden-Set: Kissenbezug, Schlafmaske, Haargummi"
+    ],
+    "nein": [
+     "Domino / Augenmaske – Harlekin bunt",
+     "Augenmaske Teufel",
+     "Kapuzenpullover mit Augenmaske und Fleecefutter",
+     "AloeRosePomegranate Augenmasken · 60 Stück (30 Paar)",
+     "Feuchtigkeitsspendende Augenmaske gegen dunkle Ringe",
+     "ESM Beauty Augenmasken-Massagegerät",
+     "Latex Augenmaske",
+     "Seiden-Organizer für Augenmaske & Schmuck"
+    ]
+   }
+  },
+  {
+   "handle": "kleiderstaender",
+   "titel": "Kleiderständer & Garderoben",
+   "tag": "such-kleiderstaender",
+   "ja": "kleiderst(ä|ae)nder|garderobenst(ä|ae)nder|kleiderstange|kleiderbaum|(holz|wand)-?garderobe|garderobenleiste|hutst(ä|ae)nder",
+   "nein": "kinder|haken|puppe|miniatur|t(ü|ue)rgarderobe",
+   "seo_title": "Kleiderständer & Garderoben aus Holz und Metall | LuxeStyle",
+   "seo_desc": "Kleiderständer auf Rollen, drehbar oder mit Ablagen, dazu Garderoben aus Holz und Metall für Flur und Schlafzimmer. Versand in die Schweiz.",
+   "html": "<p>Ein Kleiderständer schafft Platz, wo der Schrank nicht reicht – im Flur, im Schlafzimmer oder im Gästezimmer. Hier findest du Ständer auf Rollen, drehbare Modelle, Ständer mit mehreren Ebenen und Wandgarderoben aus Holz und Metall.</p><h2>Worauf achten?</h2><ul><li><strong>Stabilität:</strong> Für Wintermäntel lohnt ein Ständer mit breitem Fuss.</li><li><strong>Platz:</strong> Rollen helfen beim Umstellen, eine Wandgarderobe spart Bodenfläche.</li><li><strong>Ablage:</strong> Untere Ebenen nehmen Schuhe oder Taschen auf.</li><li><strong>Masse:</strong> Höhe und Breite stehen auf der Produktseite, wenn der Hersteller sie angibt.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite.</p>",
+   "kanarien": {
+    "ja": [
+     "Verstellbarer Kleiderständer auf Rollen",
+     "Drehbarer Kleiderständer",
+     "Holz-Garderobe mit Rattan",
+     "Faltbare Garderobenleiste aus Buchenholz",
+     "Wandgarderobe aus Metall für Mäntel und Hüte",
+     "Hutständer mit quadratischem Rohr"
+    ],
+    "nein": [
+     "Faltbarer Kleiderständer für Kinder",
+     "Garderobenhaken aus Walnussholz",
+     "Türgarderobe mit Haken – Nagel-frei",
+     "Holz-Haken für Garderobe"
+    ]
+   }
+  },
+  {
+   "handle": "gps-tracker",
+   "titel": "GPS-Tracker & Ortungsgeräte",
+   "tag": "such-gps-tracker",
+   "zusatz_tag": "netz-geprueft",
+   "ja": "gps[- ]?(tracker|ortung|locator|lokator|finder|sender)|ortungsger(ä|ae)t|ortungstracker|(haustier|hunde|katzen|kinder|fahrzeug|auto)[- ]?(gps[- ]?)?(tracker|ortung)|gps-?halsband|halsband mit gps|anti-?verlust[- ]?(tracker|locator|alarm)|bluetooth-?(ortungs)?tracker|itemfinder|schl(ü|ue)sselfinder|find-?my|suchtracker|tierortung|katzenortung|hundefreund-ortung|\\blocator\\b",
+   "nein": "uhr|watch|fitness|drohne|blutsauerstoff|herzfrequenz|lesez|h(ü|ue)lle|halter|ladekarte|detektor|kamera|anzeigeger|geschwindigkeit|fahrradcomputer|brustgeschirr|halsband f(ü|ue)r gps|kollektivset|wand|leitung|metall|balken|stud",
+   "seo_title": "GPS-Tracker kaufen: Auto, Hund, Katze & Gepäck | LuxeStyle",
+   "seo_desc": "GPS-Tracker und Ortungsgeräte mit 4G/LTE oder Bluetooth für Auto, Hund, Katze, Kinder und Gepäck – ohne 2G-Geräte, die in der Schweiz kein Netz haben.",
+   "html": "<p>Ein GPS-Tracker zeigt dir in der App, wo Auto, Hund, Katze oder Koffer gerade sind. Hier findest du Tracker mit SIM-Karte für die Ortung über weite Strecken und Bluetooth-Anhänger, die über Handys in der Nähe orten – zum Beispiel am Schlüsselbund.</p><h2>Nur Geräte, die in der Schweiz funken</h2><p>In der Schweiz ist das 2G-Netz seit Januar 2023 abgeschaltet, 3G folgt. Tracker, die nur 2G (GSM/GPRS) können, haben wir deshalb aus dem Sortiment genommen. In dieser Kollektion stehen nur Geräte, für die der Hersteller 4G/LTE oder Bluetooth angibt.</p><h2>Worauf achten?</h2><ul><li><strong>SIM oder Bluetooth:</strong> Tracker mit SIM brauchen eine SIM-Karte mit Datenvolumen. Bluetooth-Anhänger brauchen keine SIM, orten aber nur über Handys in der Nähe.</li><li><strong>Akku:</strong> Laufzeit und Ladeart stehen auf der Produktseite, wenn der Hersteller sie angibt.</li><li><strong>Wasserschutz:</strong> Für Halsbänder und Aussenmontage lohnt ein wasserdichtes Gerät.</li><li><strong>App:</strong> Die Ortung läuft über die App des Herstellers.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite.</p>",
+   "kanarien": {
+    "ja": [
+     "GPS-Tracker für Hunde mit Echtzeitortung",
+     "GPS-Ortungsgerät für Fahrzeuge",
+     "Bluetooth Anti-Verlust-Tracker",
+     "iTag Bluetooth-Itemfinder",
+     "Suchtracker · Find-My-kompatibel · 6 Farben",
+     "GPS-Halsband für Katzen · Find-My-kompatibel",
+     "OBD-GPS-Locator"
+    ],
+    "nein": [
+     "Kinder Smartwatch mit GPS und Videoanruf",
+     "Faltbarer Quadrocopter mit GPS und Kamera",
+     "GPS- und Funksignal-Detektor",
+     "Halsband für GPS-Tracker mit Diebstahlschutz",
+     "Motorrad-Kamera mit GPS",
+     "iGS50E GPS-Fahrradcomputer",
+     "Bluetooth-Blutsauerstoff-Tracker fürs Handgelenk",
+     "Ortungsgerät für Wandobjekte"
+    ]
+   }
+  },
+  {
+   "handle": "sicherheitsschuhe",
+   "titel": "Arbeitsschuhe mit Stahlkappe",
+   "tag": "such-sicherheitsschuhe",
+   "ja": "sicherheits-?(schuh|stiefel)|sicherheitschuh|stahlkappe|stahlplatte|durchtritt(schutz|sicher)|stich(fest|schutz)|zehenschutz|anti-?piercing|schutzschuh|kunststoffkappe|aufprallschutz|schweisser",
+   "nein": "kinder|spielzeug|socken|einlage|(ü|ue)berzieher|wander|senioren|fussverletz|deo|motorrad",
+   "seo_title": "Arbeitsschuhe mit Stahlkappe | LuxeStyle Schweiz",
+   "seo_desc": "Arbeitsschuhe und -stiefel mit Stahlkappe, Durchtrittschutz und rutschfester Sohle. Keine zertifizierten Sicherheitsschuhe (PSA). Versand in die Schweiz.",
+   "html": "<p>Arbeitsschuhe mit Stahlkappe für Werkstatt, Lager, Garten und Hobby – viele zusätzlich mit durchtrittsicherer Sohle gegen Nägel und Scherben, als leichter Halbschuh oder hoher Stiefel.</p><p><strong>Wichtig:</strong> Diese Schuhe sind <strong>keine zertifizierten Sicherheitsschuhe</strong> (keine persönliche Schutzausrüstung nach EN ISO 20345, keine Schutzklasse S1/S3). Schreibt dein Arbeitgeber Sicherheitsschuhe vor, brauchst du zertifizierte Schuhe aus dem Fachhandel.</p><h2>Worauf achten?</h2><ul><li><strong>Ausstattung:</strong> Stahlkappe für die Zehen, durchtrittsichere Sohle gegen spitze Gegenstände.</li><li><strong>Gewicht und Luft:</strong> Für lange Tage lohnt ein leichter, atmungsaktiver Schuh.</li><li><strong>Grösse:</strong> Arbeitsschuhe fallen oft anders aus – die Grössentabelle steht auf der Produktseite.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite. Rückgabe innerhalb von 30 Tagen.</p>",
+   "kanarien": {
+    "ja": [
+     "Sicherheits-Schuhe mit Stahlkappe",
+     "Militär-Sicherheitsstiefel mit Stahlkappe",
+     "Sicherheitsschuhe mit Stich- und Aufprallschutz",
+     "Leichte, atmungsaktive Sicherheitsschuhe",
+     "Leichte Arbeitsschuhe mit Durchtrittschutz",
+     "Herrenleichtgewichtige Arbeitsschuhe mit Stoss- und Stichschutz",
+     "Feuerfeste Schweisser-Schutzschuhe",
+     "Leichte Industrieschutzschuhe"
+    ],
+    "nein": [
+     "Wanderschuhe für Damen",
+     "Kinder-Arbeitsschuhe Spielzeug",
+     "Schuhüberzieher für Arbeitsschuhe",
+     "Socken für Arbeitsschuhe",
+     "Abriebfeste rutschfeste Arbeitsschuhe Herren",
+     "Herren Arbeitsstiefel Suede",
+     "Worker-Boots – Hohe Arbeitsstiefel für Herren",
+     "Schutzschuhe für Senioren",
+     "Schutzschuhe für Fussverletzungen",
+     "Leichte Motorrad-Arbeitsstiefel"
+    ]
+   },
+   "_geaendert": "13.10.2026: Betreiber «4 entscheide du sauber» — keine Sicherheitsschuh-Zusage ohne Norm (dropship/PSA-SCHUHE-2026-10-13.md); Handle bleibt (Suchende landen hier und lesen den PSA-Hinweis)."
+  },
+  {
+   "handle": "holzuhren",
+   "titel": "Holzuhren",
+   "tag": "such-holzuhren",
+   "ja": "holz-?(armband)?uhr|holzarmbanduhr|uhr aus (holz|bambus)|bambus-?(holz-?)?uhr|holzuhr",
+   "nein": "wanduhr|wecker|tischuhr|standuhr|kuckuck|uhren-?box|uhrenbox|uhren-?st(ä|ae)nder|aufbewahrung",
+   "seo_title": "Holzuhren für Herren & Damen kaufen | LuxeStyle",
+   "seo_desc": "Armbanduhren aus Holz und Bambus: leicht, mit Holzarmband, für Herren und Damen – mit Quarz-, Multifunktions- oder mechanischem Werk. Versand in die Schweiz.",
+   "html": "<p>Eine Holzuhr ist leichter als eine Metalluhr und fühlt sich warm am Handgelenk an. Hier findest du Armbanduhren mit Gehäuse und Armband aus Holz oder Bambus – schlicht, sportlich oder mit Multifunktionswerk, für Herren und Damen.</p><h2>Worauf achten?</h2><ul><li><strong>Holz:</strong> Jedes Stück hat eine eigene Maserung, Farbe und Zeichnung weichen leicht ab.</li><li><strong>Werk:</strong> Quarz läuft mit Batterie, ein mechanisches Werk ohne – die Angabe steht auf der Produktseite.</li><li><strong>Wasser:</strong> Holzuhren sind meist spritzwassergeschützt, nicht zum Schwimmen gemacht.</li><li><strong>Armband:</strong> Holzglieder lassen sich kürzen, oft liegt ein kleines Werkzeug bei.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite.</p>",
+   "kanarien": {
+    "ja": [
+     "Holzarmbanduhr",
+     "Mechanische Holzuhr mit grauem Armband",
+     "Bambus-Holz-Uhr mit digitalem Goldzifferblatt",
+     "Herren-Armbanduhr aus Holz, Sportlich Elegant",
+     "Holz-Armbanduhr mit Sandelholz-Armband"
+    ],
+    "nein": [
+     "Holz-Uhrenbox mit Glasdach",
+     "Holz-Wanduhr rund",
+     "Holzwecker digital",
+     "Uhrenständer aus Holz"
+    ]
+   }
+  },
+  {
+   "handle": "camisole-traegertops",
+   "titel": "Camisole & Trägertops",
+   "tag": "such-camisole",
+   "ja": "camisole|tr(ä|ae)gertop|tr(ä|ae)ger-top|spaghetti-?tr(ä|ae)ger[- ]?top|spaghettitr(ä|ae)ger-?top|\\bcami\\b",
+   "nein": "kleid|\\bset\\b|schlafanzug|pyjama|\\bbody\\b|\\bbh\\b|kinder|jumpsuit|overall|dress\\b|herren|\\brock\\b",
+   "seo_title": "Camisole & Trägertops für Damen kaufen | LuxeStyle",
+   "seo_desc": "Camisoles und Trägertops für Damen aus Satin, Spitze oder Strick – mit Spaghettiträgern oder Neckholder, solo oder zum Layering. Versand in die Schweiz.",
+   "html": "<p>Ein Camisole ist ein leichtes Top mit dünnen Trägern – im Sommer allein, im Herbst unter Blazer, Strickjacke oder Hemd. Hier findest du Trägertops aus Satin, Spitze, Mesh und Strick, schlicht oder mit Print.</p><h2>Worauf achten?</h2><ul><li><strong>Material:</strong> Satin glänzt und fällt fliessend, Spitze wirkt verspielt, Strick ist wärmer.</li><li><strong>Träger:</strong> Spaghettiträger, breitere Träger oder Neckholder – je nach BH darunter.</li><li><strong>Länge:</strong> Kurze Tops zur hohen Hose, längere zum Reinstecken.</li><li><strong>Grösse:</strong> Die Masse stehen in der Grössentabelle auf der Produktseite.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite. Rückgabe innerhalb von 30 Tagen.</p>",
+   "kanarien": {
+    "ja": [
+     "Satin-Camisole mit Neckholder",
+     "Spitzen-Trägertop «Lacey» – feminines Sommer-Basic",
+     "Gehäkeltes Spaghetti-Träger Top mit Quasten",
+     "Trägertop für den Sommer",
+     "Y2K Lace Camisole Top mit Polka Dots"
+    ],
+    "nein": [
+     "Trägerkleid aus Satin",
+     "Pyjama-Set mit Camisole",
+     "Camisole-Body mit Spitze",
+     "Kinder Trägertop",
+     "Kurzer rückenfreier Cami Jumpsuit",
+     "Samt Camisole Slip Dress mit Spitze",
+     "Herren Camisole Unterhemd Slim-Fit",
+     "Retro Polka-Dot Träger-Top & Rock"
+    ]
+   }
+  },
+  {
+   "handle": "smart-ring",
+   "titel": "Smart Rings",
+   "tag": "such-smart-ring",
+   "ja": "smart[- ]?ring|gesundheits-?ring|fitness-?ring|intelligenter gesundheitsring",
+   "nein": "fernbedienung|ringlicht|schl(ü|ue)sselring|nfc-funktion",
+   "seo_title": "Smart Ring kaufen: Schlaf, Puls & Schritte | LuxeStyle",
+   "seo_desc": "Smart Rings mit Bluetooth-App: Schritte, Schlaf und Puls im Blick, wasserdicht und leichter als eine Uhr. Keine Medizinprodukte. Versand in die Schweiz.",
+   "html": "<p>Ein Smart Ring zeichnet Schritte, Schlaf und Puls auf – ohne Display, leichter als eine Smartwatch und auch nachts angenehm zu tragen. Die Werte siehst du in der App auf dem Handy.</p><h2>Worauf achten?</h2><ul><li><strong>Grösse:</strong> Ein Ring muss eng genug sitzen, damit der Sensor misst. Die Grössen stehen auf der Produktseite – miss deinen Finger vorher.</li><li><strong>App:</strong> Die Auswertung läuft über die App des Herstellers (iPhone und Android, wenn angegeben).</li><li><strong>Akku:</strong> Laufzeit und Ladeschale stehen auf der Produktseite.</li><li><strong>Messwerte:</strong> Smart Rings sind Fitness-Geräte, keine Medizinprodukte – für Diagnosen ist die Ärztin da.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite.</p>",
+   "kanarien": {
+    "ja": [
+     "Smart Ring mit Fitness- und Gesundheits-Tracking",
+     "Q520 Gesundheitsring für Schlaf, Herzfrequenz und Sauerstoff",
+     "R6 Smart Ring – Wasserdicht mit Stressüberwachung",
+     "Intelligenter Gesundheitsring",
+     "Multifunktionaler Smart-Ring"
+    ],
+    "nein": [
+     "Universal Smart Ring Fernbedienung",
+     "Smart Ring Bluetooth-Fernbedienung",
+     "Smart Ring mit NFC-Funktion",
+     "LED-Ringlicht mit Stativ"
+    ]
+   }
+  },
+  {
+   "handle": "schrank-organizer",
+   "titel": "Schrank-Organizer",
+   "tag": "such-schrank-organizer",
+   "ja": "(kleider)?schrank-?organizer|kleider-?organizer|unterw(ä|ae)sche-?organizer|aufbewahrungsbox(en)? f(ü|ue)r (kleider|kleidung|textilien)|schubladen-?organizer f(ü|ue)r (unterw(ä|ae)sche|socken|kleider)",
+   "nein": "k(ü|ue)hlschrank|k(ü|ue)che|b(ü|ue)ro|auto|kosmetik|kabel|bad",
+   "seo_title": "Schrank-Organizer & Kleider-Aufbewahrung | LuxeStyle",
+   "seo_desc": "Schrank-Organizer für Kleider, Pullover und Unterwäsche: stapelbare Boxen, Schubladen-Einsätze und Aufbewahrungsboxen aus Stoff für den Kleiderschrank.",
+   "html": "<p>Ordnung im Kleiderschrank beginnt mit festen Plätzen: Pullover in stapelbaren Boxen, Socken und Unterwäsche in Fächern, Saisonkleidung in grossen Aufbewahrungsboxen. Hier findest du Organizer aus Stoff zum Hineinstellen und Stapeln.</p><h2>Worauf achten?</h2><ul><li><strong>Masse:</strong> Miss Fachbreite und -tiefe, die Masse der Boxen stehen auf der Produktseite.</li><li><strong>Fächer:</strong> Kleine Fächer für Socken und Unterwäsche, grosse Boxen für Pullover und Bettwäsche.</li><li><strong>Stapeln:</strong> Feste Böden halten die Form, wenn mehrere Boxen übereinander stehen.</li><li><strong>Faltbar:</strong> Stoff-Organizer lassen sich flach verstauen, wenn du sie nicht brauchst.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite.</p>",
+   "kanarien": {
+    "ja": [
+     "4er-Set Stapelbare Kleider-Organizer",
+     "2er-Set Schrank-Organizer für Kleider & Accessoires",
+     "Schubladen-Organizer für Unterwäsche",
+     "Kleiderschrank-Organizer",
+     "Grosse Aufbewahrungsbox für Kleidung",
+     "3er-Set Unterwäsche-Organizer aus Stoff"
+    ],
+    "nein": [
+     "Kühlschrank-Organizer für Snacks & Trockenfrüchte",
+     "Büro-Schubladen-Organizer",
+     "Bambus Schubladen-Organizer für Küchenutensilien",
+     "Auto-Kofferraum-Organizer"
+    ]
+   }
+  },
+  {
+   "handle": "weihnachtspyjama-familie",
+   "titel": "Weihnachtspyjamas für die ganze Familie",
+   "tag": "such-weihnachtspyjama",
+   "ja": "(?=.*(pyjama|schlafanzug|hausanzug|homewear|loungewear|nachtw(ä|ae)sche))(?=.*(weihnacht|christmas|xmas|\\belch|rentier|santa|nikolaus|schneemann|lebkuchen|familie|partnerlook|eltern|mutter|vater))|(?=.*(weihnacht|christmas|xmas))(?=.*(familie|partnerlook|eltern))",
+   "nein": "hund|katze|haustier|puppe|kost(ü|ue)m|tasse|keramik|deko|kugel|kerze|stoffpuppe|socken",
+   "seo_title": "Weihnachtspyjama für die Familie & Partnerlook | LuxeStyle",
+   "seo_desc": "Weihnachtspyjamas im Partnerlook für Papa, Mama, Kinder und Baby: Elch, Karo, Streifen und Weihnachtsbaum. Versand in die Schweiz und nach Liechtenstein.",
+   "html": "<p>Gleiche Pyjamas für die ganze Familie – für den Weihnachtsmorgen, das Familienfoto oder als Geschenk. Die Sets gibt es in Grössen für Papa, Mama, Kinder und Baby, meist im selben Muster: Elch, Karo, Streifen oder Weihnachtsbaum.</p><h2>Worauf achten?</h2><ul><li><strong>Grösse:</strong> Jede Person wählt ihre eigene Grösse im Auswahlfeld («Papa M», «Mama S», «Kind 4Y»). Die Mass-Tabelle steht auf der Produktseite.</li><li><strong>Passform:</strong> Asiatische Konfektion fällt oft kleiner aus – im Zweifel eine Nummer grösser.</li><li><strong>Material:</strong> Baumwolle und Baumwollmischungen sind atmungsaktiv, Fleece und Flanell wärmen mehr. Das Material steht bei jedem Set.</li><li><strong>Lieferzeit:</strong> Die meisten Sets kommen per Direktversand in 10–20 Werktagen. Wer sicher vor Weihnachten liefern lassen will, bestellt am besten bis Mitte November.</li></ul><p>Rückgabe innerhalb von 30 Tagen, Bezahlung mit TWINT, Karte oder Klarna.</p>",
+   "kanarien": {
+    "ja": [
+     "Weihnachts-Pyjama für die ganze Familie",
+     "Kariertes Familien-Pyjama-Set mit Hirschgeweih",
+     "Weihnachts-Homewear im Partnerlook",
+     "Weihnachts-Pyjama für Mutter & Tochter",
+     "Dino-Weihnachtsbaum-Pyjama für die ganze Familie",
+     "Weihnachts-Partnerlook Blau-Weiss Gestreift",
+     "Familien-Weihnachtsanzüge mit Streifen",
+     "Weihnachtsbaum-Print Hausanzug"
+    ],
+    "nein": [
+     "Keramiktasse für Paare – Weihnachtsmotiv",
+     "Weihnachts-Hundepyjama mit Rentier",
+     "Damen Pyjama aus Seide",
+     "Weihnachtskugeln Set 24 Stück",
+     "Pyjama-Set für Damen mit Spitze",
+     "Weihnachtsmann Kostüm für Erwachsene",
+     "Weihnachtssocken für die ganze Familie"
+    ]
+   }
+  },
+  {
+   "handle": "weihnachtspullover",
+   "titel": "Weihnachtspullover & Christmas Sweater",
+   "tag": "such-weihnachtspullover",
+   "ja": "(?=.*(pullover|sweater|sweatshirt|strickpulli|hoodie|jumper|strickjacke|cardigan))(?=.*(weihnacht|christmas|xmas|rentier|\\belch|schneemann|santa|lebkuchen|schneeflocke|nikolaus))",
+   "nein": "hund|haustier|f(ü|ue)r katzen|katzenpullover|kost(ü|ue)m|deko|kissen|tasse",
+   "seo_title": "Weihnachtspullover & Ugly Christmas Sweater | LuxeStyle",
+   "seo_desc": "Weihnachtspullover für Damen und Herren: Strick mit Schneeflocken, Hoodies mit Rentier, Elch und Lebkuchenmann, Christmas Sweater. Versand in die Schweiz.",
+   "html": "<p>Weihnachtspullover für Damen und Herren – vom klassischen Strickpullover mit Schneeflocken bis zum Hoodie mit Rentier, Elch, Schneemann oder Lebkuchenmann. Auch lustige «Ugly Christmas Sweater» für die Weihnachtsfeier sind dabei.</p><h2>Worauf achten?</h2><ul><li><strong>Material:</strong> Strick und Jacquard sind klassisch, Flanell und Fleece wärmen mehr, Sweatshirts aus Baumwollmischung sind leicht. Das Material steht bei jedem Artikel.</li><li><strong>Passform:</strong> Asiatische Konfektion fällt oft kleiner aus – im Zweifel eine Nummer grösser. Die Mass-Tabelle steht auf der Produktseite.</li><li><strong>Partnerlook:</strong> Gleiche Motive für die ganze Familie findest du bei den <a href=\"/collections/weihnachtspyjama-familie\">Weihnachtspyjamas für die Familie</a>.</li><li><strong>Lieferzeit:</strong> Die meisten Pullover kommen per Direktversand in 10–20 Werktagen. Für Weihnachten am besten bis Mitte November bestellen.</li></ul><p>Rückgabe innerhalb von 30 Tagen, Bezahlung mit TWINT, Karte oder Klarna.</p>",
+   "kanarien": {
+    "ja": [
+     "Vintage Jacquard Weihnachtspullover",
+     "Weihnachts-Hoodie mit 3D-Print",
+     "Glitzer-Hoodie mit Lebkuchenmann-Motiv",
+     "Damen Rollkragenpullover mit Schneeflockenmuster",
+     "Jacquard Christmas Pullover für Herren",
+     "Weihnachts-Katze Crew-Neck Pullover Damen",
+     "Herren Hoodie mit Santa- und Biermuster"
+    ],
+    "nein": [
+     "Roter Weihnachtspullover für Hunde",
+     "Haustierpullover Weihnachten Kirsche",
+     "Elch-Pullover für Haustiere – Farbe & Grösse frei",
+     "Weihnachtspullover für Hund – S",
+     "Weihnachtskissen mit Rentier",
+     "Damen Strickpullover mit V-Ausschnitt"
+    ]
+   }
+  },
+  {
+   "handle": "handwaermer",
+   "titel": "Handwärmer",
+   "tag": "such-handwaermer",
+   "ja": "handw(ä|ae)rmer|hand-w(ä|ae)rmer|taschenw(ä|ae)rmer",
+   "nein": "handschuh|socke|kost(ü|ue)m",
+   "seo_title": "Handwärmer kaufen: USB-Akku, Powerbank & Einweg | LuxeStyle",
+   "seo_desc": "Handwärmer für kalte Tage: wiederaufladbar per USB, als Powerbank fürs Handy oder zum einmaligen Gebrauch. Klein für die Jackentasche. Versand in die Schweiz.",
+   "html": "<p>Handwärmer für den Arbeitsweg, das Stadion, die Skipiste oder den Spaziergang mit dem Hund. Hier findest du wiederaufladbare Akku-Handwärmer, Modelle mit Powerbank-Funktion und Wärmer zum einmaligen Gebrauch.</p><h2>Worauf achten?</h2><ul><li><strong>Akku oder Einweg:</strong> Akku-Handwärmer laden per USB und lassen sich immer wieder nutzen; Einweg-Wärmer brauchen keinen Strom.</li><li><strong>Powerbank:</strong> Viele Akku-Modelle laden auch das Handy – praktisch unterwegs.</li><li><strong>Grösse:</strong> Mini-Modelle passen in jede Jackentasche, grössere wärmen länger.</li><li><strong>Wärmestufen und Laufzeit:</strong> stehen beim jeweiligen Produkt, wenn der Hersteller sie angibt.</li></ul><p>Mehr gegen Kälte: <a href=\"/collections/winter-kaelte\">Winter &amp; Kälte</a>.</p>",
+   "kanarien": {
+    "ja": [
+     "Mini-Handwärmer & Powerbank",
+     "OUHOE Einweg-Handwärmer",
+     "USB-Handwärmer \"Warm Treasure\"",
+     "Niedliches Plüsch-Lendenkissen mit Handwärmer"
+    ],
+    "nein": [
+     "Beheizbare Handschuhe mit Akku",
+     "Touchscreen-Handschuhe aus Wolle",
+     "Wärmflasche mit Strickbezug"
+    ]
+   }
+  },
+  {
+   "handle": "futterautomaten",
+   "titel": "Futterautomaten für Katzen & Hunde",
+   "tag": "such-futterautomat",
+   "ja": "futter-?automat|automatische[rns]?\\s+(?:dual-|doppelnapf\\s+|wi-?fi\\s+|2-in-1\\s+)?(?:futterspender|futter-spender|futternapf|futterstation|haustierf(?:ü|ue)tterer|hund-\\s+und\\s+katzenf(?:ü|ue)tterer)|(?:smarte?r?|intelligente[rs]?)\\s+(?:\\d+\\s*l\\s+)?(?:futterspender|haustierf(?:ü|ue)tterer|futternapf\\s+mit\\s+(?:zeitsteuerung|fernsteuerung|timer|app|kamera))|tierfernf(?:ü|ue)tterung|futterspender\\s+(?:mit\\s+(?:timer|app|kamera|wi-?fi)|\\(\\d+\\s*l\\)|wlan)|futternapf\\s+mit\\s+automatischer\\s+f(?:ü|ue)tterung",
+   "nein": "aquari|fisch|spielzeug|spielball|kreisel|tumbler|kratzbrett|vogel|hamster|kaninchen|frostfutter|wurfmaschine|zahnpflege|einh(?:ä|ae)ngen|h(?:ä|ae)ngend|saugnapf|holz|biene|imker|weizenstroh|wasser|trink|schwerkraft|ohne strom|^automatischer futter-spender$|^grosser futternapf mit automatischer f(?:ü|ue)tterung$|2-in-1 hund- und katzenf(?:ü|ue)tterer",
+   "seo_title": "Futterautomat für Katzen & Hunde kaufen | LuxeStyle",
+   "seo_desc": "Futterautomaten für Katze und Hund: mit Timer, App, WLAN oder Kamera, 2 bis 6 Liter. Schweizer Shop, Lieferung meist 10–20 Werktage, gratis ab CHF 50.",
+   "html": "<p>Ein Futterautomat gibt deiner Katze oder deinem Hund das Futter zur eingestellten Zeit – praktisch an langen Arbeitstagen oder an einem Wochenende auswärts. Hier findest du Geräte mit Timer, mit App-Steuerung über WLAN oder mit eingebauter Kamera.</p><h2>Worauf achten?</h2><ul><li><strong>Fassungsvermögen:</strong> von 2 bis 6 Liter; die genaue Angabe steht auf jeder Produktseite.</li><li><strong>Steuerung:</strong> Timer am Gerät oder App über WLAN.</li><li><strong>Futter:</strong> Welche Futterart passt, steht auf der Produktseite.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite. Bezahlen kannst du mit TWINT oder Klarna.</p>",
+   "kanarien": {
+    "ja": [
+     "Automatischer Futterspender mit Timer",
+     "Futterautomat mit Kamera für Katzen, 6L",
+     "Smarter Futterspender 3L für Haustiere",
+     "Automatischer Dual-Futterspender mit Timer",
+     "Intelligenter Futterautomat",
+     "Automatischer WIFI Futternapf für Haustiere",
+     "Intelligente Tierfernfütterung mit HD-Kamera",
+     "Smarter Katzenfutterautomat mit Bewegungssensor"
+    ],
+    "nein": [
+     "Futterautomat für Aquarien",
+     "Automatischer Futterspender zum Einhängen",
+     "Futterspender-Spielzeug für Katze",
+     "Futterspender Holz für Hamster",
+     "Katzen-Trinkbrunnen mit Filter",
+     "Bienenfutterautomat im American Style",
+     "Futterautomat für Katzen aus Weizenstroh",
+     "Automatischer Futter- und Wasserspender",
+     "Automatischer Futter-Spender",
+     "Grosser Futternapf mit automatischer Fütterung",
+     "Automatischer 2-in-1 Hund- und Katzenfütterer"
+    ]
+   }
+  },
+  {
+   "handle": "trinkbrunnen-katzen",
+   "titel": "Trinkbrunnen für Katzen & Hunde",
+   "tag": "such-trinkbrunnen",
+   "ja": "trinkbrunnen|wasserbrunnen|katzenbrunnen",
+   "nein": "anti-schwapp|wassernapf|vogel|garten|kost(?:ü|ue)m|filter-?element|ersatzfilter|mundnasser",
+   "seo_title": "Trinkbrunnen für Katzen & Hunde kaufen | LuxeStyle",
+   "seo_desc": "Trinkbrunnen für Katzen und kleine Hunde: mit Filter, aus Keramik oder ohne Strom. Schweizer Shop, Lieferung meist 10–20 Werktage, gratis ab CHF 50.",
+   "html": "<p>Ein Trinkbrunnen hält das Wasser für Katze und kleinen Hund in Bewegung. Hier findest du Modelle mit Pumpe und Filter, aus Keramik oder ganz ohne Strom.</p><h2>Worauf achten?</h2><ul><li><strong>Material:</strong> Keramik ist schwer und leicht zu reinigen, Kunststoff ist leichter.</li><li><strong>Filter:</strong> Ob es Ersatzfilter gibt, steht auf der Produktseite.</li><li><strong>Fassungsvermögen:</strong> von rund 1,5 bis 4 Liter.</li></ul><p>Lieferzeit und Versandweg stehen auf jeder Produktseite. Bezahlen kannst du mit TWINT oder Klarna.</p>",
+   "kanarien": {
+    "ja": [
+     "Katzen-Trinkbrunnen mit Filter",
+     "Keramik-Trinkbrunnen für Katzen",
+     "Unplugged Trinkbrunnen für Hunde und Katzen",
+     "Katzenbrunnen mit Zirkulationsfiltration"
+    ],
+    "nein": [
+     "Anti-Schwapp-Wassernapf für Hund & Katze",
+     "Vogeltränke und Futterstation",
+     "Wasserfilter-Element für Katzenwasserbrunnen",
+     "Mundnasser-Schutz Trinkbrunnen für Katzen"
+    ]
+   }
+  }
+ ]
 }
