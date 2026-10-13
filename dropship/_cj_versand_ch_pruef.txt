@@ -8021,3 +8021,5 @@ runde-poolabdeckung-pe-460-cm-90-g-m-629122	1990542064318984193	0	-	KEINE CH-Opt
 12-teiliges-handtuch-set-anthrazit-100-baumwol-709761	1990427473844940802	0	-	KEINE CH-Option → DRAFT	landeseite
 waschbeckenarmatur-gold-130x180-mm-924418	1990435549692080130	0	-	KEINE CH-Option → DRAFT	landeseite
 fussball-kick-trainer-mit-verstellbarem-huftgu-700673	2074711139478335490	0	-	KEINE CH-Option → DRAFT	landeseite
+sicherheitsgurt-fur-hund-katze-528768	1383313729126535168	16	5.65	ok	landeseite
+lippenstift-mit-langanhaltender-wirkung-715648	1423527080850755584	3	6.16	ok	landeseite
