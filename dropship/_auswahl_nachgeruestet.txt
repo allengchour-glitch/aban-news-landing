@@ -1713,3 +1713,4 @@
 16609952334215	Farbe:2:2	2026-10-13	multifunktions-gemusehobel-880064
 16609951613319	Typ:4:4	2026-10-13	abtropfgestell-aus-edelstahl-fur-die-spule-295168
 16609948860807	Farbe:2:2	2026-10-13	besteck-set-aus-edelstahl-und-bambusholz-924864
+16616395538823	stecker-eu	2026-10-13	heissklebepistole-60-100-w-361b43
