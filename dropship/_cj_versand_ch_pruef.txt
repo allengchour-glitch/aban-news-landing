@@ -7777,3 +7777,12 @@ lenkrad-tisch-fur-unterwegs-8f43ff	0C6A1381-761C-41B6-A540-496ABE184901	16	12.32
 kuscheliges-haustierbett-fur-katzen-412224	1583452710844772352	16	7.17	ok	landeseite
 perfection-gesichts-kontur-highlighter-fb7028	88A6198E-BAC1-49C1-89C6-7F1E2CBCCE4E	3	5.09	ok	landeseite
 power-wrist-wraps-handgelenkstutze-cadd52	1675109196481703936	16	8.09	ok	landeseite
+usb-rucklicht-fur-velos-a18d73	128A0E16-220B-4AC8-92A3-9822B72CC83D	7	5.80	ok	landeseite
+faltbare-kosmetiktasche-mit-viel-platz-514624	1850461206671675392	16	9.47	ok	landeseite
+6er-set-atherische-ole-16061b	1620679076467978240	3	12.14	ok	landeseite
+elektrische-edelstahl-pfeffermuhle-69057d	1C5C548A-0ED0-4296-8B34-B168657175D4	7	9.99	ok	landeseite
+auto-luftbefeuchter-aroma-diffuser-d1b6f1	0B2A8D4C-AEE2-4342-9D07-60023EE7FFDB	16	6.30	ok	landeseite
+baby-bright-komfortabler-strampler-687552	1404650138818973696	16	7.25	ok	landeseite
+beauty-haarband-fur-gesichtspflege-sport-f03801	013DBAB0-26FC-4826-8EB1-D3025EE74E71	16	6.15	ok	landeseite
+augenpflege-produkt-401472	1725064046380064768	3	5.62	ok	landeseite
+atmungsaktive-outdoor-sneaker-fur-herren-167232	1744729515148333056	16	13.16	ok	landeseite
