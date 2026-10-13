@@ -20601,3 +20601,111 @@ gid://shopify/Product/16615810433415	Farbe	gid://shopify/ProductOptionValue/5840
 gid://shopify/Product/16615810433415	Farbe	gid://shopify/ProductOptionValue/58403801039239	1 red-13.5	1 Rot-13.5	2026-10-12T14:53Z
 gid://shopify/Product/16615810433415	Farbe	gid://shopify/ProductOptionValue/58403801137543	1 Blue-13.5	1 Blau-13.5	2026-10-12T14:53Z
 gid://shopify/Product/16615810531719	Farbe	gid://shopify/ProductOptionValue/58403801760135	Red wine	Rot-Weinrot	2026-10-12T14:53Z
+gid://shopify/Product/16615807353223	Farbe	gid://shopify/ProductOptionValue/58412161794439	Green	Grün	2026-10-13T12:02Z
+gid://shopify/Product/16615807353223	Farbe	gid://shopify/ProductOptionValue/58412161827207	Blue	Blau	2026-10-13T12:02Z
+gid://shopify/Product/16615807353223	Farbe	gid://shopify/ProductOptionValue/58412161859975	Brown	Braun	2026-10-13T12:02Z
+gid://shopify/Product/16615807353223	Farbe	gid://shopify/ProductOptionValue/58412161892743	Black	Schwarz	2026-10-13T12:02Z
+gid://shopify/Product/16615808336263	Farbe	gid://shopify/ProductOptionValue/58412162417031	Light Blue	Hellblau	2026-10-13T12:02Z
+gid://shopify/Product/16616349368711	Farbe	gid://shopify/ProductOptionValue/58412032295303	Leopard print	Leopardenmuster	2026-10-13T12:02Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412185256327	Black-36-2 pairs	Schwarz-36-2 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412185289095	Black-36-3 pairs	Schwarz-36-3 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412185321863	Black-37-2 pairs	Schwarz-37-2 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412185354631	Black-37-3 pairs	Schwarz-37-3 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412185387399	Black-38-2 pairs	Schwarz-38-2 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412185420167	Black-38-3 pairs	Schwarz-38-3 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412185452935	Black-39-2 pairs	Schwarz-39-2 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412185485703	Black-39-3 pairs	Schwarz-39-3 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412185518471	Black-40-2 pairs	Schwarz-40-2 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412185551239	Black-40-3 pairs	Schwarz-40-3 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412185584007	Black-41-2 pairs	Schwarz-41-2 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412185616775	Black-41-3 pairs	Schwarz-41-3 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412185649543	Black-42-2 pairs	Schwarz-42-2 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412185682311	Black-42-3 pairs	Schwarz-42-3 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412185715079	Black-43-2 pairs	Schwarz-43-2 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412185747847	Black-43-3 pairs	Schwarz-43-3 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412185780615	Black-44-2 pairs	Schwarz-44-2 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412185813383	Black-44-3 pairs	Schwarz-44-3 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412185846151	Black-45-2 pairs	Schwarz-45-2 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412185878919	Black-45-3 pairs	Schwarz-45-3 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412185911687	Black-46-2 pairs	Schwarz-46-2 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412185944455	Black-46-3 pairs	Schwarz-46-3 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412185977223	Black-47-2 pairs	Schwarz-47-2 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412186009991	Black-47-3 pairs	Schwarz-47-3 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412186042759	White-36-2 pairs	Weiss-36-2 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412186075527	White-36-3 pairs	Weiss-36-3 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412186108295	White-37-2 pairs	Weiss-37-2 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412186141063	White-37-3 pairs	Weiss-37-3 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412186173831	White-38-2 pairs	Weiss-38-2 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412186206599	White-38-3 pairs	Weiss-38-3 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412186239367	White-39-2 pairs	Weiss-39-2 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412186272135	White-39-3 pairs	Weiss-39-3 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412186304903	White-40-2 pairs	Weiss-40-2 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412186337671	White-40-3 pairs	Weiss-40-3 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412186370439	White-41-2 pairs	Weiss-41-2 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412186403207	White-41-3 pairs	Weiss-41-3 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412186435975	White-42-2 pairs	Weiss-42-2 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412186468743	White-42-3 pairs	Weiss-42-3 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412186501511	White-43-2 pairs	Weiss-43-2 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412186534279	White-43-3 pairs	Weiss-43-3 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412186567047	White-44-2 pairs	Weiss-44-2 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412186599815	White-44-3 pairs	Weiss-44-3 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412186632583	White-45-2 pairs	Weiss-45-2 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412186665351	White-45-3 pairs	Weiss-45-3 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412186698119	White-46-2 pairs	Weiss-46-2 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412186730887	White-46-3 pairs	Weiss-46-3 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412186763655	White-47-2 pairs	Weiss-47-2 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354709895	Farbe	gid://shopify/ProductOptionValue/58412186796423	White-47-3 pairs	Weiss-47-3 Paar	2026-10-13T12:03Z
+gid://shopify/Product/16616354972039	Farbe	gid://shopify/ProductOptionValue/58412188795271	Black 895	Schwarz 895	2026-10-13T12:03Z
+gid://shopify/Product/16616354972039	Farbe	gid://shopify/ProductOptionValue/58412188828039	Dark Gray 896	Dunkelgrau 896	2026-10-13T12:03Z
+gid://shopify/Product/16616355365255	Farbe	gid://shopify/ProductOptionValue/58412192760199	Yellow Gray	Gelb-Grau	2026-10-13T12:03Z
+gid://shopify/Product/16616357396871	Farbe	gid://shopify/ProductOptionValue/58412207931783	Khaki Increased 4cm	Khaki erhöht 4 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616357396871	Farbe	gid://shopify/ProductOptionValue/58412207964551	Khaki Increased 6cm	Khaki erhöht 6 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616357396871	Farbe	gid://shopify/ProductOptionValue/58412207997319	Khaki Increased 8cm	Khaki erhöht 8 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616357396871	Farbe	gid://shopify/ProductOptionValue/58412208128391	Dark Blue Increased By 4cm	Dunkelblau erhöht 4 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616357396871	Farbe	gid://shopify/ProductOptionValue/58412208161159	Dark Blue Increased By 6cm	Dunkelblau erhöht 6 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616357396871	Farbe	gid://shopify/ProductOptionValue/58412208193927	Dark Blue Increased By 8cm	Dunkelblau erhöht 8 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616357495175	Farbe	gid://shopify/ProductOptionValue/58412208816519	Black-37-6cm	Schwarz-37-6 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616357495175	Farbe	gid://shopify/ProductOptionValue/58412208849287	Black-37-8cm	Schwarz-37-8 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616357495175	Farbe	gid://shopify/ProductOptionValue/58412208882055	Black-38-6cm	Schwarz-38-6 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616357495175	Farbe	gid://shopify/ProductOptionValue/58412208914823	Black-38-8cm	Schwarz-38-8 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616357495175	Farbe	gid://shopify/ProductOptionValue/58412208947591	Black-39-6cm	Schwarz-39-6 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616357495175	Farbe	gid://shopify/ProductOptionValue/58412208980359	Black-39-8cm	Schwarz-39-8 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616357495175	Farbe	gid://shopify/ProductOptionValue/58412209013127	Black-40-6cm	Schwarz-40-6 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616357495175	Farbe	gid://shopify/ProductOptionValue/58412209045895	Black-40-8cm	Schwarz-40-8 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616357495175	Farbe	gid://shopify/ProductOptionValue/58412209078663	Black-41-6cm	Schwarz-41-6 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616357495175	Farbe	gid://shopify/ProductOptionValue/58412209111431	Black-41-8cm	Schwarz-41-8 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616357495175	Farbe	gid://shopify/ProductOptionValue/58412209144199	Black-42-6cm	Schwarz-42-6 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616357495175	Farbe	gid://shopify/ProductOptionValue/58412209176967	Black-42-8cm	Schwarz-42-8 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616357495175	Farbe	gid://shopify/ProductOptionValue/58412209209735	Black-43-6cm	Schwarz-43-6 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616357495175	Farbe	gid://shopify/ProductOptionValue/58412209242503	Black-43-8cm	Schwarz-43-8 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616357495175	Farbe	gid://shopify/ProductOptionValue/58412209275271	White-37-6cm	Weiss-37-6 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616357495175	Farbe	gid://shopify/ProductOptionValue/58412209308039	White-37-8cm	Weiss-37-8 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616357495175	Farbe	gid://shopify/ProductOptionValue/58412209340807	White-38-6cm	Weiss-38-6 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616357495175	Farbe	gid://shopify/ProductOptionValue/58412209373575	White-38-8cm	Weiss-38-8 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616357495175	Farbe	gid://shopify/ProductOptionValue/58412209406343	White-39-6cm	Weiss-39-6 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616357495175	Farbe	gid://shopify/ProductOptionValue/58412209439111	White-39-8cm	Weiss-39-8 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616357495175	Farbe	gid://shopify/ProductOptionValue/58412209471879	White-40-6cm	Weiss-40-6 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616357495175	Farbe	gid://shopify/ProductOptionValue/58412209504647	White-40-8cm	Weiss-40-8 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616357495175	Farbe	gid://shopify/ProductOptionValue/58412209537415	White-41-6cm	Weiss-41-6 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616357495175	Farbe	gid://shopify/ProductOptionValue/58412209570183	White-41-8cm	Weiss-41-8 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616357495175	Farbe	gid://shopify/ProductOptionValue/58412209602951	White-42-6cm	Weiss-42-6 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616357495175	Farbe	gid://shopify/ProductOptionValue/58412209635719	White-42-8cm	Weiss-42-8 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616357495175	Farbe	gid://shopify/ProductOptionValue/58412209668487	White-43-6cm	Weiss-43-6 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616357495175	Farbe	gid://shopify/ProductOptionValue/58412209701255	White-43-8cm	Weiss-43-8 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616518615431	Farbe	gid://shopify/ProductOptionValue/58413566525831	Peach red	Pfirsichrot	2026-10-13T12:03Z
+gid://shopify/Product/16616518615431	Farbe	gid://shopify/ProductOptionValue/58413566558599	Blue purple	Blau-Lila	2026-10-13T12:03Z
+gid://shopify/Product/16616519205255	Farbe	gid://shopify/ProductOptionValue/58413571047815	Red black	Rot-Schwarz	2026-10-13T12:03Z
+gid://shopify/Product/16616526938503	Farbe	gid://shopify/ProductOptionValue/58413634552199	Red-120	Rot-120	2026-10-13T12:03Z
+gid://shopify/Product/16616526938503	Farbe	gid://shopify/ProductOptionValue/58413634584967	Red-125	Rot-125	2026-10-13T12:03Z
+gid://shopify/Product/16616526938503	Farbe	gid://shopify/ProductOptionValue/58413634617735	Red-135	Rot-135	2026-10-13T12:03Z
+gid://shopify/Product/16616526938503	Farbe	gid://shopify/ProductOptionValue/58413634650503	Red-130	Rot-130	2026-10-13T12:03Z
+gid://shopify/Product/16616536768903	Farbe	gid://shopify/ProductOptionValue/58413749338503	Red Black	Rot-Schwarz	2026-10-13T12:03Z
+gid://shopify/Product/16616536768903	Farbe	gid://shopify/ProductOptionValue/58413749371271	Orange Green	Orange-Grün	2026-10-13T12:03Z
+gid://shopify/Product/16616538046855	Farbe	gid://shopify/ProductOptionValue/58413756940679	Red-14.5cm	Rot-14.5 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616538046855	Farbe	gid://shopify/ProductOptionValue/58413756973447	Army Green-16.5cm	Armeegrün-16.5 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616538046855	Farbe	gid://shopify/ProductOptionValue/58413757038983	Army Green-13.5cm	Armeegrün-13.5 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616538046855	Farbe	gid://shopify/ProductOptionValue/58413757071751	Army Green-14.5cm	Armeegrün-14.5 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616538046855	Farbe	gid://shopify/ProductOptionValue/58413757104519	Red-16.5cm	Rot-16.5 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616538046855	Farbe	gid://shopify/ProductOptionValue/58413757170055	Army Green-15.5cm	Armeegrün-15.5 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616538046855	Farbe	gid://shopify/ProductOptionValue/58413757202823	Red-15.5cm	Rot-15.5 cm	2026-10-13T12:03Z
+gid://shopify/Product/16616538046855	Farbe	gid://shopify/ProductOptionValue/58413757235591	Red-13.5cm	Rot-13.5 cm	2026-10-13T12:03Z
