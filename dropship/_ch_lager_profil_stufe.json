@@ -1,7 +1,8 @@
 {
  "stufe": 1,
  "seit": "2026-10-13",
- "google_stichprobe": 25,
- "plan": "Stufe 1 = CH-Lager-Ware ausserhalb des Google-Kanals (13.10.). Stufe 2 = + 25 Google-Produkte (kleinste IDs) ab 14.10., dann 3 Tage google_feedback_wache auf «shipping»/«Inaccurate» beobachten. Stufe 3 = alle, frühestens 17.10. Rückweg: python3 automation/ch_lager_profil.py --zurueck --scharf",
- "warum": "dropship/CH-LAGER-PROFIL-2026-10-13.md"
+ "google_stichprobe": 31,
+ "plan": "Stufe 1 = CH-Lager-Ware ausserhalb des Google-Kanals (13.10.). Stufe 2 = + 31 Google-Produkte ab 14.10.: zuerst die Google-CH-Lager-Ware aus halloween ∪ kostueme-ch-lager (ohne Kostüme, GEMESSEN 13.10.: 31 Treffer, Richter-Punkt A4d), Rest kleinste IDs; dann 3 Tage google_feedback_wache auf «shipping»/«Inaccurate» beobachten. Stufe 3 = alle, frühestens 17.10. Vorschau ohne Schreiben: STUFE=2 python3 automation/ch_lager_profil.py · Rückweg: python3 automation/ch_lager_profil.py --zurueck --scharf",
+ "warum": "dropship/CH-LAGER-PROFIL-2026-10-13.md",
+ "stichprobe_gesetzt": "2026-10-13: 25 → 31 (Zahl der Halloween-Treffer, höchstens 34)"
 }

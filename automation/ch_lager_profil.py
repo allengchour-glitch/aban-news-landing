@@ -22,7 +22,8 @@ ENTSCHEID (Workflow wf_3a8f194a-f37, Bericht dropship/CH-LAGER-PROFIL-2026-10-13
 
 STUFEN (dropship/_ch_lager_profil_stufe.json, Google sagt nur «errors» bei Zusatzprofilen, ohne welche):
   1 = nur CH-Lager-Ware AUSSERHALB des Google-Kanals (v. a. Kostüme — die dürfen nie in Google), Google-Risiko null
-  2 = dazu eine feste Stichprobe von N Google-Produkten (kleinste IDs), 3 Tage google_feedback_wache beobachten
+  2 = dazu eine Stichprobe von N Google-Produkten, 3 Tage google_feedback_wache beobachten. Seit 13.10. (A4d) zuerst die
+      Google-CH-Lager-Ware aus halloween ∪ kostueme-ch-lager (ohne Kostüme), Rest kleinste IDs; N = google_stichprobe
   3 = alle aktiven CH-Lager-Produkte
 Jede Stufe zieht NEUE Importe automatisch nach (täglich im Aufseher) und löst Varianten, die nicht hingehören.
 
@@ -30,6 +31,7 @@ SICHERUNG: Vor jedem Zuordnen werden die Tarife des Profils geprüft (alle 0.00,
 profile). Ein Befund → KEIN Zuordnen, Ampel-Zeile. Rückweg: --zurueck löst alle Varianten (sie fallen ins General profile).
 
   python3 automation/ch_lager_profil.py              # Probelauf: Soll/Ist, schreibt nur den Stand
+  STUFE=2 python3 automation/ch_lager_profil.py      # Vorschau einer anderen Stufe (Liste), schreibt NICHTS
   python3 automation/ch_lager_profil.py --anlegen    # Profil anlegen, falls es fehlt
   python3 automation/ch_lager_profil.py --scharf     # zuordnen/lösen gemäss Stufe
   python3 automation/ch_lager_profil.py --test       # Korb-Matrix per draftOrderCalculate (keine Bestellung)

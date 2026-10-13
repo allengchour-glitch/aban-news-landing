@@ -49,6 +49,19 @@
 
 
 
+## 🦺 «Sicherheitsschuhe» ohne Prüfnorm → Arbeitsschuhe + PSA-Hinweis (2026-10-13 abends, Betreiber «4 entscheide du sauber»)
+
+**Ausgangslage:** 134 aktive Schuhe nannten sich «Sicherheitsschuhe», «Schutzschuhe» oder «Sicherheitsstiefel», alle im Google-Kanal. Keiner hat eine Norm (EN ISO 20345) oder ein Zertifikat. «Sicherheitsschuh» ist ein PSA-Begriff, also ein Schutzversprechen ohne Prüfung.
+**Getan:** `psa_schuhe_wache.py` (Kanarien 23/23) hat 91 Produkte umbenannt zu «Arbeitsschuh/-stiefel/-Sneaker» und einen Hinweis-Absatz (`data-psa-hinweis`) eingefügt. Ledger und Rückweg sind vorhanden. Der Wächter läuft täglich im Aufseher. Bericht: `dropship/PSA-SCHUHE-2026-10-13.md`.
+**Lehre: Der Trockenlauf ist der eigentliche Test, nicht die Kanarien.** 16 Kanarien waren grün. Erst die Liste der 91 echten Titel zeigte 5 Fehler:
+- «Arbeitsarbeitsschuhe»
+- «Arbeits- & Arbeitsschuhe»
+- ein Verbandsschuh «für Fussverletzungen», der zu «Arbeitsschuh» geworden wäre
+- ein Seniorenschuh, der ebenfalls falsch umbenannt worden wäre
+- «Sicherheits-Halbschuhe», die unverändert geblieben wären
+
+Deutsche Komposita und Bedeutungen zeigen sich erst an echten Daten. Deshalb jede Massen-Umbenennung als volle Vorher→Nachher-Liste lesen, und jeden Fehlfund als neuen Kanarienvogel aufnehmen.
+
 ## 🇨🇭 Lieferdatum ab Schweizer Lager: ein Profil, das nichts kostet (2026-10-13 nachmittags, Betreiber «1 entscheide du»)
 
 **Was war:** Ein Kostüm ab Schweizer Lager zeigte in der Kasse «28. Okt–11. Nov», also ein Datum nach Halloween. Auf der Produktseite stand «14.–16. Okt». Grund: Alle 2'375 Fortura-Produkte lagen im General profile, das mit der CJ-Transitzeit rechnet. Ich hatte dem Betreiber nur zwei Wege angeboten: ein eigenes Profil, bei dem gemischte Körbe doppelt Versand zahlen, oder alles so lassen.
@@ -20265,3 +20278,5 @@ Verschoben am 04.10.2026:
 <!-- aus CLAUDE.md verschoben 13.10.2026 15:30 UTC (VERBATIM) -->
 - 2026-10-12 · 🤖 **Kauf-Strecke Tag 2: «ohne Herkunft» = zu 33 % Abgraser (01.10. 21h: 41 Sitz. auf 41 Seiten, 25 iOS/25 Android, 0 Korb) → `tools/botwellen.py` (Selbsttest 8/8) + Bilanz-Zeile «ohne Bot-Wellen» (1,3 → 1,5 %); Rückgang bleibt TikTok.** → `dropship/KAUFSTRECKE-ABENDKLEIDER-2026-10-12.md`
 - 2026-10-12 · 👗 **Kauf-Strecke Tag 1 (Abendkleider): 0 Sitzungen seit 05.10., 104 TikTok → 0 Korb, Sirène «crawled – not indexed» → Verkehr ist der Engpass; Hochformat-Hauptbild am Bestand widerlegt (kein Tausch). Klasse: Google-Wache hielt «nur CH» fest und riet LI zu entfernen → Lieferländer live aus Markets, Ampel «LI: 28230 ohne Google-Versandangabe».** → `dropship/KAUFSTRECKE-ABENDKLEIDER-2026-10-12.md`
+<!-- aus CLAUDE.md verschoben 13.10.2026 16:40 UTC (VERBATIM) -->
+- 2026-10-12 · 🔎 **Google-Gratis-Einträge = bester Kanal (44 → 6 Körbe → 1 Kauf), aber Juli 7–27/Woche → seit Aug 0–4: 34 von 48 Juli-Sitzungen auf heute gedrafteten Produkten → `google_nachfrage_wache.py` (197 mit Google-Besuch, 60 weg, 52 ohne Ersatz; Aufseher täglich; Prioritätsquelle für `cj_versand_ch_revive.py`).**
