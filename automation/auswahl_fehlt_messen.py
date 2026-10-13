@@ -196,6 +196,7 @@ ZEICHEN_STAND = "dropship/_auswahl_offen_stand.json"
 AUSNAHMEN = {"15422934647169"}
 NEUIMPORT_TAGE = 3
 NACH_TAG = "auswahl-nachgeruestet"   # setzt auswahl_nachruesten.py nach dem Umbau
+ZEICHEN_OK = set()                   # GIDs, die der letzte zeichen_schreiben()-Aufruf bestätigt hat
 
 
 def _num(x):
@@ -267,6 +268,7 @@ def zeichen_schreiben(mutation, ziele, quelle):
     from datetime import datetime, timezone
     art = "neu" if mutation == "tagsAdd" else "weg"
     ok = 0
+    ZEICHEN_OK.clear()
     for k in range(0, len(ziele), 20):
         teil = ziele[k:k + 20]
         q = "mutation{" + " ".join(f'a{j}:{mutation}(id:"{gid}",tags:["{ZEICHEN_TAG}"]){{userErrors{{message}}}}'
@@ -284,6 +286,7 @@ def zeichen_schreiben(mutation, ziele, quelle):
                     print(f"  ⚠️ {handle}: {fehler}", flush=True)
                     continue
                 fh.write(f"{zeit}\t{art}\t{gid}\t{handle}\t{'ohne' if art == 'neu' else 'mit'}\t{quelle}\n")
+                ZEICHEN_OK.add(gid)
                 ok += 1
     return ok
 
@@ -338,7 +341,7 @@ def markieren():
             except Exception:
                 alt = 99
             if alt <= NEUIMPORT_TAGE and ZEICHEN_TAG not in (n.get("tags") or []):
-                neuimport_ohne.append(n["handle"])
+                neuimport_ohne.append((i, n["handle"]))
     add = sorted(i for i in soll if ZEICHEN_TAG not in (live[i].get("tags") or []))
     weg = sorted(i for i, n in ist.items()
                  if i not in soll and not schreibsperre(i, n.get("handle"))
@@ -352,14 +355,19 @@ def markieren():
     for i in weg[:8]:
         print(f"  − {ist[i]['handle']} ({_prod(ist[i])})")
     n_add = n_weg = 0
+    nachher_ohne = list(neuimport_ohne)
     if SCHARF:
         n_add = zeichen_schreiben("tagsAdd", [(i, live[i]["handle"]) for i in add], "markieren")
+        nachher_ohne = [x for x in neuimport_ohne if x[0] not in ZEICHEN_OK]
         n_weg = zeichen_schreiben("tagsRemove", [(i, ist[i]["handle"]) for i in weg], "markieren")
         print(f"  geschrieben: +{n_add} −{n_weg}", flush=True)
     stand = {"stand": jetzt.strftime("%Y-%m-%dT%H:%MZ"), "scharf": SCHARF, "messung_offen": len(kand), "soll": len(soll),
              "soll_besucht": len({_num(i) for i in soll} & besucht), "gesperrt": gesperrt_n, "zeichen_vorher": len(ist),
              "setzen": len(add), "entfernen": len(weg), "gesetzt": n_add, "entfernt": n_weg,
-             "neuimport_ohne_zeichen": neuimport_ohne[:50], "neuimport_ohne_zahl": len(neuimport_ohne)}
+             # Kanarie: Neuimporte (≤ 3 T), die der Importer/Messlauf NICHT gezeichnet hatte (vor diesem Abgleich). Der erste
+             # Lauf (zeichen_vorher 0, 13.10.) zählt die Ware vor der Regel — die Ampel zeigt den Wert erst danach.
+             "kanarie_neuimport_ohne_vorher": len(neuimport_ohne), "neuimport_ohne_zeichen": [h for _, h in nachher_ohne[:50]],
+             "neuimport_ohne_zahl": len(nachher_ohne)}
     if SCHARF:
         json.dump(stand, open(ZEICHEN_STAND, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     return 0
@@ -378,14 +386,16 @@ def ampel():
     m = len({_num(i) for i in offen} & besucht_ids())
     zusatz = []
     veraltet = len(ist) - len(offen)
-    if veraltet:
-        zusatz.append(f"{veraltet} Zeichen veraltet (schon nachgerüstet)")
+    if veraltet > 20:   # der Nachrüster baut stündlich bis 150 um; --markieren räumt nach — erst ein Stau ist eine Meldung
+        zusatz.append(f"{veraltet} Zeichen veraltet (schon nachgerüstet, --markieren)")
     try:
         st = json.load(open(ZEICHEN_STAND, encoding="utf-8"))
         alter = (_dt.datetime.now(_dt.timezone.utc)
                  - _dt.datetime.strptime(st["stand"], "%Y-%m-%dT%H:%MZ").replace(tzinfo=_dt.timezone.utc)).total_seconds() / 3600
         if st.get("neuimport_ohne_zahl"):
             zusatz.append(f"{st['neuimport_ohne_zahl']} Neuimporte ohne Zeichen")
+        if st.get("zeichen_vorher") and st.get("kanarie_neuimport_ohne_vorher"):
+            zusatz.append(f"Kanarie: {st['kanarie_neuimport_ohne_vorher']} Neuimporte kamen ohne Zeichen an (Importer/Messlauf prüfen)")
         if alter > 30:
             zusatz.append(f"Abgleich {alter:.0f} h alt")
     except Exception:

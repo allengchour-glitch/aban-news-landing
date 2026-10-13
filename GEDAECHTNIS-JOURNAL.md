@@ -49,6 +49,35 @@
 
 
 
+
+## 🔪 Klingen ohne das Wort «Messer» · Werbetest-Ampel ab Aktivierung (2026-10-13, ~22:40–23:00 UTC)
+
+**Befund (Prüfer der Halloween-Sperre, Nebenbefund):** «Kompakt-Küchenschneide-Set» (Import 21:39) war im Bild ein
+Survival-Set mit Sägemesser und Taschenmessern. Gegenprobe über Shopify-Suche (findet auch Beschreibungstext) +
+Kontaktbögen: **14 CJ-Klingen ACTIVE**, keine trug «Messer» im Titel — 7 Hackbeile als «Knochenspalter/-hauer/-schneider»,
+«5-in-1 Outdoor-Tool» (Klappmesser), «9-teiliges Küchenhelfer-Set» (= neun Messer laut Beschreibung), zwei Multitools mit
+Klinge (Taschenmesser-Bauart), «Handschneidewerkzeug 13,5 cm» (Hackmesser), «Outdoor Besteckset» (Klappmesser).
+**Ursache:** Groq übersetzt «bone chopper / folding knife / knife set» in Titel ohne Klingenwort, und alle drei Importer
+fragten `istHandklinge(title)` — nur den deutschen Titel.
+**Behoben:** (1) `klingenregel.json` handklinge_immer + Knochen-spalter/-hauer/-hackbeil/-schneider, Hack-/Fleisch-/Spaltbeil
+(Schere/Zange/Motiv dahinter bleibt frei), Kanarien +7 (77/77, py=js); (2) Importer `cj_sku_import`, `cj_category_fill`,
+`cj_trending_import`: zusätzlich `istHandklinge(d.productNameEn)` — Zubehör mit «Knife» vorne («Knife Roll Bag») fällt mit,
+bewusst (verlorener Import < Rücksendung #1017); (3) 14 gedraftet + Sperr-Tags (nur tagsAdd), dazu «Kompakter 12-in-1
+Multitool» mit 3 Bildern Sportbekleidung → `bild-passt-nicht`; Ledger `dropship/_klinge_handliste.tsv`. Danach 0 aktive mit
+`handklinge-kein-ch-versand`. **Nicht gesperrt (bewusst):** Schnitz-Sets (Werkzeug), Tafel-Besteck, Schiessdecke (Stoffmatte).
+**Gemessen, verworfen:** Beschreibungstext als Wächter-Signal — 93 Treffer, fast alle «Messergebnisse», Besteck,
+Schraubendreher-«Klingen». Der Titel bleibt die Wächterquelle, der englische Name die Importquelle.
+**Lehre:** Ein Tor, das nur den ÜBERSETZTEN Titel liest, prüft die Übersetzung, nicht die Ware. Immer auch die
+Lieferanten-Bezeichnung fragen (wie schon `nurAltnetz` mit productNameEn + Beschreibung).
+
+**Werbetest A:** Ampel zählte ab dem PLAN-Start (14.10.) → heute Fehlalarm «Tag 1 … 0 Sitzungen», bei späterer Aktivierung
+Stopp-Regel zu früh. Jetzt Aktivierung = erster Tag mit utm_campaign-Sitzungen (oder Feld `aktiviert`), Testende rutscht mit;
+alle 13 `handles` über `werbetest_trichter.wache()`; `ql()` wirft statt `sys.exit` (SystemExit riss die Ampel mit).
+Sperre zusätzlich in `variant_value_clean`, `styling_floskel_wache`, `hauptbild_ohne_text`.
+
+**Halloween-Sperre Nacharbeit:** Ledger-Zeile «ab-geplant» VOR der Abmeldung (Rückweg-Lücke bei Absturz zwischen Antwort
+und «ab»-Zeile; Wiederanmelden ist idempotent). `social-autopost-meta` / `story-autopost-meta` kennen jetzt auch `DRY=1`
+(vorher nur `DRY_RUN=1` → ein «DRY=1»-Test hätte echt gepostet).
 ## 🖨️ Druck auf Bestellung: eigenes 0.00-Profil, Zeichen im Shop-Metafeld, Kasse teilt Mischkörbe (2026-10-13 abends, Betreiber «versandprofil ja mache es sauber»)
 
 **Anlass:** Seite/Korb nannten für Druck-Ware 22.10.–2.11. (Kalendertage +9/+19), die Kasse 28.10.–11.11. (General profile). Bericht `dropship/DRUCK-PROFIL-2026-10-13.md`, Skript `automation/druck_profil.py`.
@@ -20326,3 +20355,5 @@ Verschoben am 04.10.2026:
 - 2026-10-12 · 📊 **12-Tage-Bilanz «Webseite pimpen»: Sitzungen 190 → 508, Warenkorb-Quote 5,3 % → 1,4 %, Käufe 2 → 3 — der Zuwachs war Werbe- und Herkunftsverkehr ohne Warenkorb (TikTok 144 → 2 → 0; 189 Produktsitzungen ohne Herkunft, 0 Warenkörbe, Spitze 01./02.10.). Bilanz nie über Sitzungen allein: Quellen-Aufschlüsselung (utm_source, referrer_name) PFLICHT, bevor eine Zahl als Wirkung gilt; mit 2–3 Käufen je Fenster ist keine Quote belastbar → `dropship/WEBSEITE-12-TAGE-BILANZ.md`, `tools/webseite_bilanz.py`.**
 <!-- aus CLAUDE.md verschoben 13.10.2026 22:40 UTC (VERBATIM) -->
 - 2026-10-12 · 📐 **Instagram «Media container not created» = Bildformat (209×666): Poster hatte 11 Schichten, keine fürs Format → `automation/ig_bildformat.py` (0,8 … 1,91, ≥ 320 px, Selbsttest 11/11), 12. Schicht im Poster, Wächter 6 h im Aufseher; Queue 42 → 39 ready, alle postbar. Falle: `csv.DictWriter` schreibt `\r\n` → 627 Zeilen Diff; `lineterminator="\n"`.** → `dropship/IG-BILDFORMAT-2026-10-12.md`
+<!-- aus CLAUDE.md verschoben 13.10.2026 22:55 UTC (VERBATIM) -->
+- 2026-10-12 · 💳 **`cj_zahlung_offen.py` zählte nur IN_CART → LX1025 (UNPAID, $73.29) = «nichts offen», Bericht gelöscht → `ist_zahlbar()` IN_CART/UNPAID + CREATED nur mit LX + Betrag (Hüllen nie), Selbsttest 7/7.**

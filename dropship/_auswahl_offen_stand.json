@@ -1,0 +1,16 @@
+{
+ "stand": "2026-10-13T22:49Z",
+ "scharf": true,
+ "messung_offen": 3432,
+ "soll": 3420,
+ "soll_besucht": 66,
+ "gesperrt": 4,
+ "zeichen_vorher": 3423,
+ "setzen": 0,
+ "entfernen": 3,
+ "gesetzt": 0,
+ "entfernt": 3,
+ "kanarie_neuimport_ohne_vorher": 0,
+ "neuimport_ohne_zeichen": [],
+ "neuimport_ohne_zahl": 0
+}

@@ -364,8 +364,8 @@ def ledger_offen(anlass):
         if len(t) < 5 or t[2] != anlass:
             continue
         k = (t[3], t[4])
-        if t[1] == "ab":
-            offen[k] = t[5] if len(t) > 5 else ""
+        if t[1] in ("ab", "ab-geplant"):   # «ab-geplant» steht VOR der Abmeldung (13.10.: Rückweg-Lücke) — Wiederanmelden
+            offen[k] = t[5] if len(t) > 5 else ""   # ist idempotent, ein nie abgemeldetes Paar kostet am 01.11. nichts
         elif t[1] == "an":
             offen.pop(k, None)
     return offen
@@ -376,6 +376,9 @@ def buendel(paare, mut, anlass, art, titel):
     n = []
     for i in range(0, len(paare), BUENDEL):
         teil = paare[i:i + BUENDEL]
+        if art == "ab":   # 13.10.2026 (Prüfer): Absicht VOR der Anfrage festhalten — stirbt der Container zwischen Antwort und
+            for p, g in teil:   # «ab»-Zeile, bliebe das Paar sonst nach dem 01.11. abgemeldet und fehlte im Rückweg
+                ledger_schreiben("ab-geplant", anlass, p, g, titel.get(p, ""))
         q = "mutation{" + " ".join(f'a{j}:{mut}(id:"{p}",input:[{{publicationId:"{g}"}}]){{userErrors{{message}}}}'
                                    for j, (p, g) in enumerate(teil)) + "}"
         d = gql(q)

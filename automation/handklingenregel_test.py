@@ -42,8 +42,16 @@ SPERREN = [
     "Vintage Rasiermesser aus Edelstahl",
     "Garten-Veredelungsmesser aus geschmiedetem Stahl",
     "Küchenmesser mit Strass",
+    # 13.10.2026: Hackmesser ohne das Wort «Messer» (Groq-Titel aus «bone chopper»), 7 CJ-Hackbeile waren ACTIVE
+    "Drachen Nachfahre Knochenspalter",
+    "Raptor Knochenschneider",
+    "Beastmaster Knochenhauer",
+    "Chinesisches Hackbeil aus Damaststahl",
 ]
 DURCHLASSEN = [
+    "Knochenschneider-Schere für Geflügel",                   # 13.10.2026: Schere hinter dem Kompositum = Gerät
+    "Kauknochen für Hunde",                                   # 13.10.2026: «knochen» allein ist keine Klinge
+    "Knochenspalter-Motiv T-Shirt",                           # 13.10.2026: Motiv/Druck
     "Messer- und Schneidebretthalter aus Edelstahl",          # 07.10.2026 Kopfwort-Kanarie: Ergänzungsstrich = Halter
     "Messer- und Schneidebrettständer aus Holz",              # 07.10.2026 Kopfwort-Kanarie
     "Haarmesser 6″ – 17,5 cm, 12-Zahn-Schere",                # 07.10.2026 Kopfwort-Kanarie: Schere ist das Produkt

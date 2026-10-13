@@ -461,7 +461,11 @@ for (let ji = 0; ji < JOBS.length; ji++) {
   // Warenkorb. Das Produkt ist hier schon angelegt, also: DRAFT, Tag, nicht publizieren —
   // dasselbe Muster wie die Tierschutz-Wache darueber. Zubehoer ohne Klinge im Paket
   // (Messerblock, -schaerfer, Schwertgurt) bleibt erlaubt; das trennt istHandklinge.
-  if (istHandklinge(title)) {
+  // 13.10.2026: auch den ENGLISCHEN CJ-Namen fragen — Groq machte aus «bone chopper/cleaver», «folding knife carabiner»
+  // und «9 pcs knife set» die Titel «Knochenspalter», «5-in-1 Outdoor-Tool», «Küchenhelfer-Set»; 14 Klingen waren ACTIVE.
+  // Bewusst in Kauf genommen: Zubehör mit «Knife» vorne («Knife Roll Bag») wird übersprungen — ein verlorener Import
+  // kostet nichts, eine Klinge im Warenkorb eine Rücksendung aus Shanghai (#1017).
+  if (istHandklinge(title) || istHandklinge(d.productNameEn || '')) {
     await sgql(t, `mutation($i:ProductInput!){productUpdate(input:$i){userErrors{message}}}`,
       { i: { id: spid, status: 'DRAFT', tags: [...tagsFinal, 'cj-nicht-versendbar-ch', 'handklinge-kein-ch-versand'] } });
     console.log(`  ⛔ Handklinge — kein CH-Versand (Klasse #1017) → DRAFT: ${title.slice(0,50)}`);

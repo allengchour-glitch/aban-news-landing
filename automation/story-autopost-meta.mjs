@@ -22,7 +22,7 @@ import { lock as postLock, seen as postSeen, mark as postMark, fbSeitenIdentitae
 
 const CSV = new URL('../social/story_queue.csv', import.meta.url).pathname;
 const V = process.env.META_GRAPH_VERSION || 'v21.0';
-const DRY = process.env.DRY_RUN === '1';
+const DRY = process.env.DRY_RUN === '1' || process.env.DRY === '1';   // 13.10.: auch DRY=1 (wie alle anderen Poster) — sonst postete ein «DRY=1»-Test echt
 const MAX = Math.max(1, parseInt(process.env.MAX_PER_RUN || '1', 10) || 1);
 
 const IG_ID = process.env.IG_USER_ID || '';
