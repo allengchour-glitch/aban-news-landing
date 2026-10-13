@@ -1833,3 +1833,6 @@
 16616489255303	Muster:4:4+ki	2026-10-13	herren-schultertasche-aus-vollschicht-leder-613400
 16616438989191	Farbe:5:5	2026-10-13	naviforce-dual-display-quarz-uhr-c56453
 16616438825351	Farbe:6:6	2026-10-13	mannliche-quarz-uhr-mit-wasserdichtigkeit-30-m-3da95b
+16616692515207	Farbe:4:4	2026-10-13	plusch-etui-fur-stifte-und-utensilien-608800
+16616690647431	Farbe:3:3	2026-10-13	doppel-kartenhalter-herzform-615700
+16616688550279	Typ:3:3	2026-10-13	retro-notizbuch-im-gothic-stil-611100
