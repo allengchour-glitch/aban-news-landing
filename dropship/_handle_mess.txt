@@ -242,3 +242,6 @@ gid://shopify/Product/16613637095815	atmungsaktive-ledersneaker-mit-plateausohle
 gid://shopify/Product/16615392051591	britische-brogue-lederschuhe-fur-herren-603600	britische-brogue-kunstlederschuhe-fur-herren-603600	301
 gid://shopify/Product/16615522664839	business-schuhe-aus-leder-621500	business-schuhe-aus-kunstleder-621500	301
 gid://shopify/Product/16615692108167	prinzessin-leder-schuhe-fur-madchen-031040	prinzessin-kunstleder-schuhe-fur-madchen-031040	301
+gid://shopify/Product/16615782384007	lederbabyschuhe-fur-neugeborene-db44dd	kunstlederbabyschuhe-fur-neugeborene-db44dd	301
+gid://shopify/Product/16615783235975	kinder-lederstiefel-mit-runder-kappe-544e75	kinder-kunstlederstiefel-mit-runder-kappe-544e75	301
+gid://shopify/Product/16615803322759	ledergurtel-mit-skorpion-motiv-603200	kunstledergurtel-mit-skorpion-motiv-603200	301
