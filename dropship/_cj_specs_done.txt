@@ -4200,3 +4200,5 @@ quadrocopter-mit-dual-kamera-und-langer-akkula-893888	nicht-aktiv
 h9r-outdoor-sportkamera-wasserdicht-mit-hd-309760	gesetzt-3
 tragbare-uberwachungskamera-a10-132608	gesetzt-4
 hd-kamera-quadcopter-drohne-610752	gesetzt-3
+full-hd-webcam-mit-ringlicht-und-mikrofon-728832	gesetzt-2
+hd-nachtsicht-uberwachungsroboter-mit-fernzugr-704000	gesetzt-3
