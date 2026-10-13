@@ -127,13 +127,58 @@ def kostuem_titel_kandidaten():
     return raus
 
 
+def feuerzeug_kandidaten():
+    """13.10.2026 (Betreiber «auch sonst normale feuerzeug»): Feuerzeuge im Google- ODER einem Werbekanal ohne Sperr-Tag.
+    Titelsuche findet nur Wortanfänge («Sturmfeuerzeug» fehlt) → zusätzlich der Voll-Export, jeder Treffer live gegengeprüft."""
+    kanaele = [GOOGLE] + list(WERBUNG.values())
+    raus, gesehen, ids = [], set(), []
+    for q in ("title:*feuerzeug* OR title:*lighter* OR title:*Zigarrenanzünder*",):
+        nach = None
+        while True:
+            d = gql("""query($q:String,$n:String){products(first:100,after:$n,query:$q){pageInfo{hasNextPage endCursor}
+              nodes{id}}}""", {"q": "status:active AND (" + q + ")", "n": nach})
+            p = d["data"]["products"]
+            ids += [x["id"] for x in p["nodes"]]
+            if not p["pageInfo"]["hasNextPage"]:
+                break
+            nach = p["pageInfo"]["endCursor"]
+    exp = os.environ.get("EXPORT", "/tmp/export.jsonl")
+    if os.path.exists(exp) and time.time() - os.path.getmtime(exp) < 30 * 3600:
+        for zeile in open(exp, encoding="utf-8"):
+            try:
+                x = json.loads(zeile)
+            except Exception:
+                continue
+            if x.get("status") == "ACTIVE" and gs.ist_feuerzeug(x.get("title") or ""):
+                ids.append(x["id"])
+    else:
+        print(f"⚠️ Export fehlt/zu alt ({exp}) — Feuerzeuge nur über die Titelsuche (Wortanfang)")
+    for pid in dict.fromkeys(ids):
+        if pid in gesehen:
+            continue
+        gesehen.add(pid)
+        q = "query($id:ID!" + "".join(f",$k{i}:ID!" for i in range(len(kanaele))) + "){product(id:$id){id handle title tags status " + \
+            " ".join(f"p{i}:publishedOnPublication(publicationId:$k{i})" for i in range(len(kanaele))) + "}}"
+        v = {"id": pid, **{f"k{i}": k for i, k in enumerate(kanaele)}}
+        lp = ((gql(q, v).get("data") or {}).get("product")) or {}
+        if (lp.get("status") == "ACTIVE" and gs.ist_feuerzeug(lp["title"])
+                and "smoke-zubehoer" not in {t.lower() for t in lp["tags"]}
+                and any(lp.get(f"p{i}") for i in range(len(kanaele)))):
+            raus.append(lp)
+    return raus
+
+
 def main():
     if "--kanarien" in sys.argv:
+        n2, f2 = gs.feuerzeug_kanarien()
+        for t, e in f2:
+            print(f"  FEHLER Feuerzeug: «{t}» erwartet {e}")
+        print(f"FERTIG: {n2} Feuerzeug-Kanarien, {len(f2)} Fehler")
         n, f = gs.kostuem_kanarien()
         for t, ty, e in f:
             print(f"  FEHLER: «{t}» ({ty}) erwartet {e}")
         print(f"FERTIG: {n} Kostüm-Kanarien, {len(f)} Fehler")
-        sys.exit(1 if f else 0)
+        sys.exit(1 if (f or f2) else 0)
     # Kostüm-Titelregel: erst Kanarien, dann taggen (exakter Tag «kostuem» — keine Smart-Kollektion filtert darauf,
     # GEMESSEN 13.10.), danach greift der normale Ablauf unten.
     n, f = gs.kostuem_kanarien()
@@ -154,6 +199,24 @@ def main():
                 print(f"    ⚠️ Tag nicht gesetzt: {ta.get('userErrors') or str(d.get('errors'))[:160]}")
         if neu and not DRY:
             time.sleep(20)   # Suchindex braucht einen Moment, bis tag:'kostuem' die neuen Träger findet
+    # Feuerzeug-Regel (13.10.2026): Tag «smoke-zubehoer» → unten raus aus Google + allen Werbekanälen (ALLE_WERBEKANAELE).
+    n2, f2 = gs.feuerzeug_kanarien()
+    if f2:
+        print(f"⚠️ Feuerzeug-Kanarien: {len(f2)} von {n2} falsch — Feuerzeug-Regel übersprungen")
+    else:
+        fz = feuerzeug_kandidaten()
+        print(f"Feuerzeug-Regel: {len(fz)} ohne smoke-zubehoer in Google/Werbekanälen")
+        for p in fz:
+            print(f"  + smoke-zubehoer (Feuerzeug) | {p['title'][:70]}")
+            if DRY:
+                continue
+            d = gql("mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}",
+                    {"id": p["id"], "t": ["smoke-zubehoer"]})
+            ta = (d.get("data") or {}).get("tagsAdd") or {}
+            if ta.get("userErrors") or d.get("errors") or not d.get("data"):
+                print(f"    ⚠️ Tag nicht gesetzt: {ta.get('userErrors') or str(d.get('errors'))[:160]}")
+        if fz and not DRY:
+            time.sleep(20)
     roh = kandidaten()
     # Shopifys tag:'kostuem' trifft auch «kostuem-hut» (Plüschmützen, 65 am 23.09.) — die Suche
     # ist nur der Vorfilter, entschieden wird am exakten Tag.
