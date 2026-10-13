@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-12 23:34 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-13 01:12 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1566 · **1499 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1281, teilweise: 176, keine: 42; Preisspanne > 2×: 166) · 1 CJ-Variante: 65 · ohne Antwort: 2
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1565 · **1498 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1280, teilweise: 176, keine: 42; Preisspanne > 2×: 166) · 1 CJ-Variante: 65 · ohne Antwort: 2
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -978,7 +978,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Barocke Beauty-Kamee Nagelsticker (`barocke-beauty-kamee-nagelsticker-793984`) | 4 | 4 | 2.55–2.55 | 15.90 | Camellia-Xs Extra Small, Camellia-S Small Size, Camellia-M Medium, Camellia-L Large Size |
 | Hunde Kühlspielzeug Beissring für Welpen (`hunde-kuhlspielzeug-beissring-fur-welpen-822208`) | 4 | 4 | 3.02–3.02 | 15.90 | Butterfly type, Barbell type, Ball type, Frisbee type |
 | S925 Sterling Silber Embrace Love Halskette (`s925-sterling-silber-embrace-love-halskette-604600`) | 4 | 4 | 10.1–10.1 | 23.90 | 18K Gold And Silver Color-925 Silver, Silver-925 Silver, 18K gold silver gold-925 Silver, Full 18K Gold-925 Silver |
-| Teleskop-Organizer für Gewürze & Flaschen (`teleskop-organizer-fur-gewurze-flaschen-609800`) | 4 | 4 | 8.29–9.95 | 81.90 | Black-S, Black-L, White-S, White-L |
 | Smarte Uhr mit Datums- und Temperaturanzeige (`smarte-uhr-mit-datums-und-temperaturanzeige-633700`) | 4 | 4 | 5.27–5.27 | 17.90 | Bamboo White Characters, Wood White Character, Black And White Letters, Brown Wood White Characters |
 | Faltbarer Quadrocopter mit Synchronarm (`faltbarer-quadrocopter-mit-synchronarm-3dc8b4`) | 4 | 0 | 11.58–11.58 | 22.90 | Camouflage, Silver, Red, Black |
 | Faltbarer Doppel-Napf für unterwegs (`faltbarer-doppel-napf-fur-unterwegs-609500`) | 4 | 4 | 2.3–2.3 | 15.90 | Orange, Light Blue, Army Green, Dark Gray |

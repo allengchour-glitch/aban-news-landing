@@ -3,8 +3,6 @@
 Alle unten haben **eine** Variante ohne Option. Der Text stammt aus dem
 CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
 
-- `15447589028225` · Elegante Quarzuhr mit Silikonarmband
-  - «…Erhältlich in verschiedenen Farbvarianten…»
 - `15447910678913` · Retro Sonnenbrille für Damen und Herren
   - «…Erhältlich in verschiedenen trendigen Farbkombinationen…»
 - `15448077697409` · Perlen-Bodychain Neckholder-Top
@@ -317,8 +315,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Erhältlich in verschiedenen Farben und Grössen…»
 - `15485736386945` · Faltbarer Einzelsessel mit Kissen
   - «…Erhältlich in verschiedenen Farben…»
-- `15488748257665` · Teleskop-Organizer für Gewürze & Flaschen
-  - «…Erhältlich in zwei Grössen und den Farben…»
 - `15490893218177` · Titanium Antihaft-Bratpfanne für Zuhause
   - «…in verschiedenen Grössen…»
 - `15490912125313` · Faltbarer Quadrocopter mit Synchronarm
@@ -1175,8 +1171,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Erhältlich in verschiedenen Ausführungen…»
 - `15503854436737` · Retro Rucksack für Schule und Freizeit
   - «…Erhältlich in verschiedenen Farben…»
-- `15503892808065` · Multifunktionale Kultur- & Aufbewahrungstasche
-  - «…Erhältlich in verschiedenen Farben…»
 - `15503901655425` · Wander- und Bergsteiger-Rucksack 15L
   - «…Erhältlich in verschiedenen Farben…»
 - `15503901852033` · Minimalistischer Kosmetik-Organizer aus Metall
@@ -1941,8 +1935,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Erhältlich in zwei praktischen Grössen…»
 - `15520404242817` · Taktische Hundeweste
   - «…Erhältlich in verschiedenen Farben…»
-- `15520404668801` · Hundegeschirr im Westen-Stil, verstellbar
-  - «…in verschiedenen Grössen…»
 - `15520406012289` · Reise-Rucksack Grosses Volumen
   - «…Erhältlich in verschiedenen Farben…»
 - `15520406503809` · Multifunktionale Wangenauflage-Tasche
@@ -2103,8 +2095,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…in verschiedenen Grössen…»
 - `15523185459585` · Fitnessstange für vielseitiges Training
   - «…Erhältlich in zwei praktischen Varianten…»
-- `15523186311553` · Verdunklungsvorhang Modern Minimalistisch
-  - «…Erhältlich in verschiedenen Grössen…»
 - `15523210068353` · Trendige Smartwatch für Damen und Herren
   - «…Erhältlich in verschiedenen attraktiven Farben…»
 - `15523222028673` · E600 Smartwatch
@@ -2161,3 +2151,17 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Farben: taro purple, haze blue, matcha green, cherry blossom powder, p…»
 - `16613871681927` · Hundelaufgurt mit Zugseil – Nylon, 2–30 kg
   - «…Farben: Rot, Lila, Grün, Blau, Schwarz Kein Skalierbar Nylon,…»
+- `16614563611015` · Hundebreitschiene für Spaziergänge
+  - «…Farben: Schwarz, Grün, Blau, Orange,…»
+- `16614568526215` · Hundeslinge mit Zugseil – 1,5 cm breit
+  - «…Farben: Grau, Rosa, Orange, See-Blau Breite 1,…»
+- `16614719291783` · Anti-Lost-Halsband für Hunde
+  - «…Farben: Schwarz, Grau, Grün, Rot, Blau,…»
+- `16614845251975` · Grosses Crossbody für Herren – urbanes Minimaldesign
+  - «…Verfügbare Farben:…»
+- `16615507362183` · Bambus-Section Leinen Viskose Cape für Damen
+  - «…Farben: Vintage Rot, Waldgrün, Käsegelb,…»
+- `16615802241415` · Bestickter Winter-Schal für Damen
+  - «…Verfügbare Farben:…»
+- `16615802929543` · Schwarzer Strickschal aus Wolle – 230 × 20 cm
+  - «…Farben: Rot, Schwarz, Weinrot, Hellblau, Marineblau, Hellgrau, Hautros…»

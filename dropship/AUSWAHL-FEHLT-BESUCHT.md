@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-12 23:34 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-13 01:10 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 139 · **72 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 48, teilweise: 17, keine: 7; Preisspanne > 2×: 14) · 1 CJ-Variante: 67 · ohne Antwort: 0
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 132 · **67 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 44, teilweise: 17, keine: 6; Preisspanne > 2×: 14) · 1 CJ-Variante: 65 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -16,7 +16,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Zirkon-Ring mit Silikon-Einlage im Tropfen-Design (`zirkon-ring-mit-silikon-einlage-im-tropfen-des-610900`) | 30 | 30 | 3.08–3.08 | 15.90 | Pink-No 6, Pink-No 7, Pink-No 8, Pink-No 9 |
 | Schmuckkasten (`schmuckkasten-618500`) | 30 | 30 | 0.55–0.9 | 15.90 | Black-Bracelet box, Black-Chain box, Black-Double ring box, Black-Pendant box |
 | Baumwoll-Leinen Vorhang mit Entenmotiv (`baumwoll-leinen-vorhang-mit-entenmotiv-671488`) | 28 | 28 | 3.51–4.09 | 22.90 | Super rich duck-80x120, Cheering duck-70x120, Cheering duck-80x120, Cheering duck today-70x120 |
-| Mesh Maxi Cape mit Fledermausärmeln (`mesh-maxi-cape-mit-fledermausarmeln-630400`) | 25 | 25 | 5.64–5.64 | 25.90 | Black-S, Black-M, Black-L, Black-XL |
 | Edelstahl-Armband «Amore» · Herz & Geburtsstein, Gold (`edelstahl-armband-amore-herz-geburtsstein-gold`) | 24 | 8 | 5.1–13.67 | 39.90 | Steel-Bracelet-1 heart, Steel-Bracelet-2 hearts, Steel-Bracelet-3 hearts, Steel-Bracelet-4 hearts |
 | Grosses Rückenkissen für Erker und Bett (`grosses-ruckenkissen-fur-erker-und-bett-625000`) | 24 | 24 | 7.46–10.78 | 46.90 | Smoky Gray-60x45x20cm, Smoky Gray-70x45x20cm, Smoky Gray-80x45x20cm, Lake Blue-60x45x20cm |
 | Edelstahl-Halskette «Goutte» · Tropfen-Anhänger, Silber (`edelstahl-halskette-goutte-tropfen-anhanger-silber`) | 24 | 24 | 3.25–11.48 | 36.90 | Steel color-1 birthstone 1 letter, Steel color-2 birthstone 2 letter, Steel color-3 birthstone 3 letter, Steel color-4 birthstone 4 letter |
@@ -53,7 +52,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Aromadiffusor Holzmaserung (`aroma-diffuser-holzoptik-hohl-design-ultraschall-luftbefeuchter-mit-led-licht`) | 4 | 4 | 13.86–14.12 | 44.90 | Light wood grain-AU, Light wood grain-UK, Light wood grain-US, Light wood grain-EU |
 | Magisches Katzenkratzbrett mit Orgel-Design (`magisches-katzenkratzbrett-mit-orgel-design-709120`) | 4 | 1 | 3.81–3.81 | 16.90 | Deep Wood Grain, White, Cartoon Print, Wansheng Bat |
 | Handkurbel-Schäler für Äpfel und Birnen (`handkurbel-schaler-fur-apfel-und-birnen-5235a8`) | 4 | 2 | 2.3–4.34 | 23.90 | Black gold, Set, White With Fruit Cutter, 8Generation With Fruit Cutter |
-| Teleskop-Organizer für Gewürze & Flaschen (`teleskop-organizer-fur-gewurze-flaschen-609800`) | 4 | 4 | 8.29–9.95 | 81.90 | Black-S, Black-L, White-S, White-L |
 | Sternenhimmel-Projektor mit USB (`starkenhimmel-wandlampe-609100`) | 4 | 4 | 1.07–1.26 | 15.90 | USB-Northern Lights-Without remote control, USB-Star Light-Without remote control, USB-Star Xuan-Without remote control, USB-Water Ripple-Without remote control |
 | Kreuz-Halskette Gold · Edelstahl-Anhänger (`kreuz-halskette-gold-edelstahl`) | 4 | 3 | 1.06–1.68 | 15.90 | Gold-Stainless Steel Gold Plated-55cm, Gold-Stainless Steel Gold Plated-60cm, Silver-Stainless Steel Gold Plated-55cm, Silver-Stainless Steel Gold Plated-60cm |
 | 10-teiliges Badset aus Baumwolle (`10-teiliges-badset-aus-baumwolle-620600`) | 4 | 4 | 20.28–22.22 | 41.90 | Gray Green-120X70CM, WHITE-120X70CM, Blue-120X70CM, Grey-120X70CM |
@@ -69,12 +67,9 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Edelstahl-Armband «Cœur» · Herz, Gold (`edelstahl-armband-coeur-herz-gold`) | 3 | 0 | 3.86–4.81 | 34.90 | Steel, Rose Gold, Gold |
 | Vintage Baseball-Cap «Liberty» · Washed Schwarz (`vintage-baseball-cap-liberty-washed-schwarz`) | 3 | 3 | 2.13–2.13 | 27.90 | Black, Deep Blue, Light blue |
 | Baseball-Cap «L.A.» · Hellblau (`baseball-cap-l-a-hellblau`) | 3 | 3 | 2.04–2.04 | 24.90 | Black, Light blue, Deep Blue |
-| Katzenfutterschüssel aus Keramik mit Bambusständer (`katzenfutterbowl-aus-keramik-mit-bambusstander-cf5da9`) | 3 | 0 | 4.88–4.88 | 19.90 | Grey, Black and white, Pink |
 | Studenten-Becher mit Sprühfunktion, 580 ml (`studenten-becher-mit-spruhfunktion-580-ml-614200`) | 3 | 3 | 19.57–19.57 | 43.90 | Jelly Galaxy-580ML, Cloud Diary-580ML, Sweet Dream Switch-580ML |
 | Dekorative Bücherregal-Laternenlampe (`dekorative-bucherregal-laternenlampe-607700`) | 3 | 2 | 2.71–5.42 | 19.90 | Lantern bookshelf lamp, Little ghost bookshelf lamp, Lantern bookshelf lamp 2pcs |
 | Aufblasbares Halloween-Kostüm für zwei Personen (`inflierbares-halloween-kostum-fur-zwei-persone-638900`) | 2 | 2 | 20.66–20.66 | 42.90 | Double Spring Dog-Free Size, Double Sausage Dog-Free Size |
 | Elektrischer Gemüseschneider Multifunktional – Schneiden, Reiben & Hobeln (`elektrischer-gemuseschneider-multifunktional-schneiden-reiben-hobeln`) | 2 | 0 | 11.87–12.44 | 74.90 | White with adapter-220V US, Green-USB |
-| Kleine Möwe LED-Nachtlicht (`kleine-mowe-led-nachtlicht-445440`) | 2 | 2 | 9.78–9.78 | 23.90 | Blue mouth-USB, Yellow mouth-USB |
 | USB-Ladebares Lithium-Batterie-Set AA (`usb-ladebares-lithium-batterie-set-aa-183360`) | 2 | 2 | 13.21–14.4 | 27.90 | Green-AAA, Green-AA |
-| Elektrischer Nagelknipser für Kinder & Senioren (`elektrischer-nagelclipper-fur-kinder-senioren-231040`) | 2 | 2 | 19.6–19.6 | 40.90 | Pink-USB, White-USB |
 | Moocare Aromatherapie-Öl (20 Stk.) (`moocare-aromatherapie-ol-20-stk-628100`) | 2 | 2 | 9.12–9.12 | 26.90 | Black Style, Red Style |
