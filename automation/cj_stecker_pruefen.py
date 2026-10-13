@@ -46,9 +46,14 @@ MAINS = re.compile(r"Gl[äa]tt(eisen|b[üu]rste)|Lockenstab|Haartrockner|F[öo]h
                    r"Fritteuse|Standmixer|Entsafter|Staubsauger|Netzteil|Ladeger[äa]t|Waffeleisen|"
                    r"Sandwichmaker|Reiskocher|N[äa]hmaschine|L[öo]tkolben|Airfryer|Hei(ss|ß)luft|"
                    r"Kontaktgrill|Eismaschine|Popcornmaschine|Stehlampe|Deckenleuchte|Epilierer|"
-                   r"IPL|Haarschneider|Warmluftb[üu]rste|Schallzahnb[üu]rste", re.I)
-NICHT = re.compile(r"Auto-?Ladeger|KFZ|Zigarettenanz|Kabel\b|Ladekabel|Akku-?Staubsauger|Solar", re.I)
+                   r"IPL|Haarschneider|Warmluftb[üu]rste|Schallzahnb[üu]rste|"
+                   # 13.10.2026 (Gegenpruefung): Lade-/Netzgeraete-Woerter fehlten — «Ladestation», «Charger», «Adapter»,
+                   # «Ladegeraet» (ae-Schreibung) kamen nie in den Einzel-Modus (gemessen: 217 ungepruefte Ein-Varianten-Produkte).
+                   r"Ladestation|Lade-?st[äa]nder|Ladedock|Ladeschale|Charger|Ladegeraet|Netz-?adapter|"
+                   r"Lade-?adapter|Strom-?adapter|Power-?adapter|Adapter", re.I)
+NICHT = re.compile(r"Auto-?Ladeger|KFZ|Zigarettenanz|Kabel\b|Ladekabel|Akku-?Staubsauger|Solar|f[üu]rs Auto\b", re.I)
 PLUG = {"CN", "US", "UK", "AU", "EU", "JP", "KR", "BR", "IN", "EUPLUG", "USPLUG", "UKPLUG", "AUPLUG"}
+NEU_TAGE = int(os.environ.get("NEU_TAGE", "0") or 0)   # >0: zuerst die in den letzten N Tagen angelegten Produkte (Shopify direkt)
 
 
 def sgql(q, v=None):
@@ -133,20 +138,53 @@ def stecker(v):
     if m:
         return m.group(1).upper()
     m = re.search(r"\b(CN|US|UK|AU|EU|JP|KR|BR|IN)[\s-]*plug\b", name, re.I)
-    return m.group(1).upper() if m else None
+    if m:
+        return m.group(1).upper()
+    # 13.10.2026: Langform im variantKey («American Standard», «Chinese plug», «National Standard») — NUR im Key, denn
+    # variantNameEn beginnt mit dem Produktnamen («65W GaN Charger With US-standard Conversion Plug …»).
+    cs = {c for c in stecker_text(key) if c != "UNIVERSAL"}
+    if len(cs) == 1:
+        c = cs.pop()
+        return "EU" if c in EU_GLEICH else c
+    return None
+
+
+def neue_produkte(tage):
+    """Aktive Produkte, die in den letzten `tage` Tagen angelegt wurden — direkt aus Shopify (der Export /tmp/export.jsonl
+    kann einen Tag alt sein; die Neuimporte sind genau die, die der Waechter nicht verpassen darf)."""
+    ab = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(time.time() - tage * 86400))
+    out, cur = [], None
+    for _ in range(200):
+        d = sgql("""query($q:String!,$c:String){products(first:250,after:$c,query:$q){pageInfo{hasNextPage endCursor}
+                    nodes{id title status}}}""", {"q": f"status:active created_at:>={ab}", "c": cur})["data"]["products"]
+        out += d["nodes"]
+        if not d["pageInfo"]["hasNextPage"]:
+            break
+        cur = d["pageInfo"]["endCursor"]
+    return out
 
 
 def main():
     fertig = {z.split("\t")[0] for z in open(LEDGER)} if os.path.exists(LEDGER) else set()
-    kand = []
-    for ln in open(EXPORT):
-        p = json.loads(ln)
-        if p.get("status") != "ACTIVE" or not MAINS.search(p["title"]) or NICHT.search(p["title"]):
-            continue
+    kand, gesehen = [], set()
+    def nimm(p):
+        t = p.get("title") or ""
+        if p.get("status") != "ACTIVE" or not MAINS.search(t) or NICHT.search(t) or REISE.search(t):
+            return   # Reiseadapter: der fremde Stecker ist dort der Zweck (13.10.)
         pid = p["id"].split("/")[-1]
-        if pid in fertig:
-            continue
-        kand.append((pid, p["title"]))
+        if pid in fertig or pid in gesehen:
+            return
+        gesehen.add(pid)
+        kand.append((pid, t))
+    if NEU_TAGE > 0:
+        for p in neue_produkte(NEU_TAGE):     # Neuimporte ZUERST — CAP trifft sonst die Altlast vor ihnen
+            nimm(p)
+        print(f"Neuimporte der letzten {NEU_TAGE} Tage im Kandidatenkreis: {len(kand)}")
+    if os.path.exists(EXPORT):
+        for ln in open(EXPORT):
+            nimm(json.loads(ln))
+    else:
+        print(f"⚠️ Export {EXPORT} fehlt — nur Neuimporte geprueft")
     print(f"Kandidaten (Titel, aktiv, nicht quittiert): {len(kand)} · CAP {CAP} · DRY {DRY}")
     unklar, gedraftet, ok, ohne, nicht_erreicht, mehrvar = [], [], 0, 0, 0, 0
     geprueft = 0
@@ -243,7 +281,8 @@ def main():
         if not DRY:
             open(BERICHT, "w").write("\n".join(out) + "\n")
     rest = len(kand) - geprueft
-    print("FERTIG: Klasse durchgeprueft" if rest <= 0 and geprueft < CAP else f"FORTSETZUNG: noch {rest} Kandidaten")
+    # 13.10.: «geprueft» zaehlt nur CJ-Abfragen; quittierte Mehr-Varianten/ohne-SKU kosten keinen CAP → Rest nie negativ melden
+    print("FERTIG: Klasse durchgeprueft" if geprueft < CAP else f"FORTSETZUNG: noch {max(rest, 1)} Kandidaten")
 
 
 # ════════════════════════════════════════════════════════════════════════════════════════════════
@@ -267,6 +306,8 @@ def main():
 #   python3 automation/cj_stecker_pruefen.py --klasse [TSV]      # nur messen (Bulk-Export), Liste als TSV
 #   DRY=1 python3 automation/cj_stecker_pruefen.py --varianten   # Trockenlauf
 #   python3 automation/cj_stecker_pruefen.py --varianten [NUR_PID=…]
+#   KEIN_DRAFT=1 LISTE=<tsv> …--varianten   # ohne EU: sperren + melden statt DRAFT; LISTE = jede Sperre/jede EU-Variante
+#   CAP=150 NEU_TAGE=3 python3 automation/cj_stecker_pruefen.py  # Einzel-Modus, Neuimporte der letzten 3 Tage zuerst
 #   python3 automation/cj_stecker_pruefen.py --rueckweg <pid>
 # ════════════════════════════════════════════════════════════════════════════════════════════════
 VAR_LEDGER = "dropship/_cj_stecker_varianten.tsv"
@@ -278,13 +319,91 @@ EU_GLEICH = {"EU", "CH", "EURO"}
 PLUG_FEST = re.compile(r"(?<![A-Za-z])(US|UK|AU|EU|CN|JP|KR|BR|IN|CH|EURO|Euro)[\s_-]*(?i:plug|stecker|standard(?![\s_-]*size))")
 # Freistehender Code (gross): «Schwarz UK-Samsung», «Samsung AU», «JP-9W-220to240W» — «USB» faellt durch die Grenze,
 # «Silver US Size / 36» (Schuhgroesse, gemessen 13.10. an «Schlichte Sandalen») durch den Groessen-Ausschluss.
-PLUG_LOSE = re.compile(r"(?<![A-Za-z0-9])(US|UK|AU|EU|CN|JP|KR)(?![A-Za-z0-9])(?![\s_/-]*(?i:size|gr[öo](?:ss|ß)e|gr\.))")
+PLUG_LOSE = re.compile(r"(?<![A-Za-z0-9])(US|UK|AU|EU|CN|JP|KR|AUS|Cn)(?![A-Za-z0-9])(?![\s_/-]*(?i:size|gr[öo](?:ss|ß)e|gr\.))")
+# 13.10.: «White-AUS» (Nageltrockner), «Beige-Cn-1PCS» (Mini-Dampfbuegel), «2GB/32GBUK» (TV-Box, Code an «GB» geklebt)
+LOSE_GEKLEBT = re.compile(r"(?<=\dGB)(US|UK|AU|EU)\s*$")
+LOSE_NORM = {"AUS": "AU", "Cn": "CN"}
 EURO_WORT = re.compile(r"\bEuro-?(?:stecker|plug)\b", re.I)
 UNIVERSAL = re.compile(r"\bUniversal-?(?:stecker|plug)\b|\bmulti-?plug\b", re.I)
+# ── LANGFORMEN (13.10.2026, Gegenpruefung der Varianten-Sperre) ─────────────────────────────────────────────────────
+# GEMESSEN 13.10.: Die Regeln oben kannten nur Kuerzel (US/UK/AU/EU/CN/JP). CJ schreibt den Stecker oft aus, und diese
+# Varianten waren LIVE kaufbar: Babyphone «American Standard»/«British Standard»/«Australian Regulations», Retro-Konsole,
+# LED-Maske «National Standard» (= chinesische GB-Norm), Luftbefeuchter «Blue flame bead-Chinese plug», Regensystem
+# «Miao Si GB Plug»/«English American Standard Plug», Vulkan-Luftbefeuchter «Japanese specifications».
+# Regel: Laenderwort + Stecker-Wort DIREKT dahinter (standard/regulations/specifications/gauge/plug/Stecker/Norm/Vorschriften).
+# ⚠️ Wortfallen (alle im Bestand gemessen): «C10 Full English Version» / «Englische Version» (Sprache), «Blue-Chinese» /
+# «Englisch» allein (Verpackung), «China Red» (Farbe), «French Classic» (Duft), «European Code» / «Euro Size» (Schuhgroesse),
+# «Army green-American version» (Radio-Frequenzband), «K3082 English Double Disk» (kein Stecker-Wort → ungeklaert, NIE sperren),
+# «64GB Plug and Play». Darum: Sprache/Verpackung zaehlt nie; «… version» nur bei Netzgeraeten und nie fuer Englisch/Chinesisch.
+LANG_WORT = (r"American|America|USA|British|Britain|English|England|Australian|Australia|European|Europe|Euro|German|Germany|"
+             r"Chinese|China|National|Japanese|Japan|Korean|Korea|Swiss|Switzerland|"
+             r"Amerikanisch\w*|Britisch\w*|Englisch\w*|Australisch\w*|Europ[äa]isch\w*|Deutsch\w*|Chinesisch\w*|"
+             r"Japanisch\w*|Koreanisch\w*|Schweizer\w*")
+PLUG_LANG = re.compile(r"(?<![A-Za-z0-9])((?i:" + LANG_WORT + r")|GB)[\s_-]*"
+                       r"(?i:standard(?![\s_-]*(?:size|edition|gr[öo]))|regulations?|specifications?|specs?\b|gauge|"
+                       r"plugs?(?![\s_-]*(?:and|&|n)[\s_-]*play)|stecker|norm(?:en)?\b|vorschriften?)")
+# Schwach: «US version» / «European version» — nur bei Netzgeraeten (Titel), nie Englisch/Chinesisch (= Sprache).
+PLUG_VERSION = re.compile(r"(?<![A-Za-z0-9])((?i:American|USA|British|Australian|European|Euro)|US|UK|AU|EU)[\s_-]*(?i:version)\b")
+# Lose Langform am ENDE («Cat Style China», «Blue-USA») — zaehlt wie ein loses Kuerzel nur bei Netzgeraeten.
+LOSE_LANG = re.compile(r"(?<![A-Za-z0-9])(USA|China)\s*$")
+# Spannung neben dem Code («Suit 9 US 110V», «Netzstecker-220 V US», «Schwarz-Gold-110 V US») = fester Stecker-Beleg.
+VOLT = re.compile(r"(?<![A-Za-z0-9])(?:US|UK|AU|EU|CN|JP)[\s_-]*\d{3}\s*V(?![A-Za-z])|"
+                  r"(?<![0-9])\d{3}\s*V[\s_-]*(?:US|UK|AU|EU|CN|JP)(?![A-Za-z0-9])")
+_LANG_KURZ = {"usa": "US", "gb": "UK", "national": "CN", "china": "CN", "japan": "JP", "korea": "KR"}
+_LANG_PRAEFIX = (("americ", "US"), ("amerik", "US"), ("brit", "UK"), ("engl", "UK"), ("austral", "AU"), ("europ", "EU"),
+                 ("euro", "EU"), ("german", "EU"), ("deutsch", "EU"), ("chin", "CN"), ("jap", "JP"), ("kor", "KR"),
+                 ("swiss", "CH"), ("switz", "CH"), ("schweiz", "CH"))
+
+
+def lang_code(wort):
+    """Laenderwort → Steckercode («American» → US, «National» → CN, «Swiss» → CH, «German» → EU)."""
+    w = (wort or "").lower()
+    if w in _LANG_KURZ:
+        return _LANG_KURZ[w]
+    if w in ("us", "uk", "au", "eu"):
+        return w.upper()
+    for pre, code in _LANG_PRAEFIX:
+        if w.startswith(pre):
+            return code
+    return None
+
+
+def ist_fest(s):
+    """Fester Stecker-Beleg im Text: Code/Langform + Stecker-Wort oder Code neben einer Spannung."""
+    s = s or ""
+    return bool(PLUG_FEST.search(s) or PLUG_LANG.search(s) or VOLT.search(s))
+
+
+# Positions-Code fuer die Stecker-ACHSE: Code am Ende («Weiss-US», «Cat AU», «2GB/32GB US») oder am Anfang mit Bindestrich
+# («AU-New Blue», «US-Weiss»). Eine Zahl direkt davor («38 / EU», «UK 8») ist eine Groesse, keine Achse.
+ACHSE_ENDE = re.compile(r"(?<![A-Za-z0-9])(US|UK|AU|EU|CN|JP|KR|USA|China)\s*$")
+ACHSE_ANFANG = re.compile(r"^(US|UK|AU|EU|CN|JP|KR)-(?=[A-Za-z])")
+
+
+def stecker_achse(varianten):
+    """Netzgeraete-Beleg aus der Variantenstruktur (13.10.2026): mindestens zwei VERSCHIEDENE Laendercodes in Steckerposition
+    (z. B. «Weiss-US» + «Weiss-EU»). GEMESSEN: 3D-Druckstifte, UV-Nageltrockner 120 W, Waffelmaker, TV-Box, Raumheizer,
+    Heizkamm («Cat Style China/UK/AU/US», kein EU) standen als «kein Netzgeraet» kaufbar, weil der Titel kein Geraetewort
+    traegt. Kleider («US 2 / US10»), Ringe («US 7»), Schuhe («UK7 / UK 12»), Bettwaesche («US Twin») bilden keine Achse."""
+    codes = set()
+    for v in varianten:
+        for s in (v.get("title") or "", sku_rest(v.get("sku"))):
+            s = s.strip()
+            m = ACHSE_ENDE.search(s)
+            if m and re.search(r"\d\s*[/·,-]?\s*$", s[:m.start()]):
+                m = None                         # «38 / EU», «Rot-US 7»: Groesse
+            m = m or ACHSE_ANFANG.search(s)
+            if m:
+                c = {"USA": "US", "China": "CN"}.get(m.group(1), m.group(1))
+                codes.add("EU" if c in EU_GLEICH else c)
+    return len(codes) >= 2
 # Netzgeraete-Woerter fuer FREISTEHENDE Codes (bei «US-Stecker»/«US plug» genuegt der Code selbst).
 NETZ_TITEL = re.compile(MAINS.pattern + r"|Ladestation|Lade-?st[äa]nder|Ladedock|Ladepad|Ladeschale|Charger|Adapter|"
                         r"Lampe|Leuchte|(?<![Ss]ch)licht|Projektor|Beamer|Luftbefeuchter|Diffuser|Luftreiniger|Ventilator|Massage|"
-                        r"Rasierer|Trimmer|Haarglätter|Netzger|Steckdose|Wireless|Kabellos|Ladegeraet|Netzgeraet", re.I)
+                        r"Rasierer|Trimmer|Haarglätter|Netzger|Steckdose|Wireless|Kabellos|Ladegeraet|Netzgeraet|"
+                        # 13.10.2026: Geraete, die als «kein Netzgeraet» durchfielen (gemessen, siehe stecker_achse)
+                        r"Heiz(?:er|ung|kamm|stab|platte|matte|ger)|Elektrisch|Trockner|Phototherap|Lichttherap|"
+                        r"Luftentfeuchter|Dampfb[üu]gel|Saugroboter|Spielkonsole|TV-?Box", re.I)
 # Reiseadapter: ein US-/UK-Stecker ist dort der ZWECK (Reise ins Ausland) — nie sperren, nur melden.
 REISE = re.compile(r"Reise-?(?:adapter|stecker)|Travel|Weltreise|Steckdosen-?adapter|Stecker-?adapter|Adapter-?stecker|"
                    r"Reisenetzteil|Länderadapter|Laenderadapter", re.I)
@@ -295,7 +414,11 @@ def stecker_text(s):
     s = s or ""
     if UNIVERSAL.search(s):
         return {"UNIVERSAL"}
-    codes = {m.group(1).upper() for m in PLUG_FEST.finditer(s)} | {m.group(1) for m in PLUG_LOSE.finditer(s)}
+    codes = {m.group(1).upper() for m in PLUG_FEST.finditer(s)} | {LOSE_NORM.get(m.group(1), m.group(1)) for m in PLUG_LOSE.finditer(s)}
+    codes |= {m.group(1) for m in LOSE_GEKLEBT.finditer(s)}
+    # 13.10.: Langformen («American Standard», «Chinese plug», «GB Plug») + lose Langform am Ende («Cat Style China»)
+    codes |= {lang_code(m.group(1)) for m in PLUG_LANG.finditer(s)} | {lang_code(m.group(1)) for m in LOSE_LANG.finditer(s)}
+    codes.discard(None)
     if EURO_WORT.search(s):
         codes.add("EURO")
     return {"EU" if c in ("EURO",) else c for c in codes}
@@ -310,9 +433,12 @@ def sku_rest(sku):
     return s.strip(" -_")
 
 
-def variante_stecker(titel, sku):
-    """Stecker einer Shop-Variante: 'EU' / fremder Code / 'MEHRFACH' / None (keine Kennung)."""
+def variante_stecker(titel, sku, netz=False):
+    """Stecker einer Shop-Variante: 'EU' / fremder Code / 'MEHRFACH' / None (keine Kennung).
+    netz=True (Titel ist ein Netzgeraet): zusaetzlich «US version»/«European version» werten (13.10.)."""
     codes = stecker_text(titel) | stecker_text(sku_rest(sku))
+    if not codes and netz:
+        codes = {lang_code(m.group(1)) for t in (titel or "", sku_rest(sku)) for m in PLUG_VERSION.finditer(t)} - {None}
     if not codes:
         return None
     if "UNIVERSAL" in codes or (len(codes) > 1 and codes & EU_GLEICH):
@@ -330,22 +456,24 @@ def produkt_urteil(titel, ptyp, varianten, cj_codes=None):
     cj_codes = cj_codes or {}
     eu, fremd, ohne, mehrfach = [], [], [], []
     hat_fest = False
+    text = f"{titel} {ptyp or ''}"
+    netz_titel = bool(NETZ_TITEL.search(text))
     for v in varianten:
-        st = variante_stecker(v.get("title"), v.get("sku"))
+        st = variante_stecker(v.get("title"), v.get("sku"), netz=netz_titel)
         if st is None and v["id"] in cj_codes and cj_codes[v["id"]]:
             st = cj_codes[v["id"]]
             st = "EU" if st in EU_GLEICH else st
-        if PLUG_FEST.search(v.get("title") or "") or PLUG_FEST.search(sku_rest(v.get("sku"))):
+        # Fest-Stecker-Test: Kuerzel + Stecker-Wort, Langform + Stecker-Wort (13.10.) oder Code neben Spannung
+        if ist_fest(v.get("title")) or ist_fest(sku_rest(v.get("sku"))):
             hat_fest = True
         (eu if st == "EU" else ohne if st is None else mehrfach if st == "MEHRFACH" else fremd).append((v, st))
     r = {"eu": eu, "fremd": fremd, "ohne": ohne, "mehrfach": mehrfach, "sperren": [], "art": "keine-klasse"}
     if not fremd:
         return r
-    text = f"{titel} {ptyp or ''}"
     if REISE.search(text):
         r["art"] = "reiseadapter-ausgenommen"
         return r
-    if not hat_fest and not NETZ_TITEL.search(text):
+    if not hat_fest and not netz_titel and not stecker_achse(varianten):
         r["art"] = "kein-netzgeraet"           # freistehendes «UK» in einem Nicht-Geraet (z. B. Groesse) → nicht Klasse
         return r
     if NICHT.search(titel or "") and not hat_fest:
@@ -532,6 +660,11 @@ def varianten_lauf(nur_messen=False, tsv=None):
                     pass
     zeilen, zaehl, cj_n = [], {}, 0
     gesperrt_v, gedraftet, fehler = 0, [], []
+    # 13.10.2026 (Betreiber-Auftrag): KEIN_DRAFT=1 → Produkte ohne EU-Version nicht draften, sondern die fremden Varianten
+    # sperren und das Produkt MELDEN (Liste «ohne kaufbare Variante»). LISTE=<datei> schreibt jede Sperre + jede bleibende
+    # EU-Variante einzeln (Pruefliste fuer den Trockenlauf: jede Sperre muss einen fremden Stecker tragen).
+    kein_draft = os.environ.get("KEIN_DRAFT") == "1"
+    liste, ohne_kaufbar = [], []
     for p in alle:
         if len(p["variants"]) < 2:
             continue
@@ -562,6 +695,18 @@ def varianten_lauf(nur_messen=False, tsv=None):
                        str(len(u["sperren"])), notiz])
         if nur_messen or not u["sperren"]:
             continue
+        gesp = {v["id"] for v in u["sperren"]}
+        for v, st in u["fremd"]:
+            if v["id"] in gesp:
+                liste.append([p["id"].split("/")[-1], v["id"].split("/")[-1], "SPERREN", st, v.get("title") or "", v.get("sku") or "", p["title"][:60]])
+        for v, st in u["eu"] + u["mehrfach"]:
+            liste.append([p["id"].split("/")[-1], v["id"].split("/")[-1], "BLEIBT", st, v.get("title") or "", v.get("sku") or "", p["title"][:60]])
+        rest = [v for v in p["variants"] if v.get("availableForSale") and v["id"] not in gesp]
+        if not rest:
+            ohne_kaufbar.append((p["id"].split("/")[-1], p["title"], u["art"]))
+        if u["art"] == "draft-kein-eu" and kein_draft:
+            print(f"  🔒⚠️ {p['title'][:55]} — nur fremde Stecker {cnt(u['fremd'])} → sperren statt DRAFT (KEIN_DRAFT), melden")
+            u["art"] = "kein-eu-gesperrt"
         if u["art"] == "draft-kein-eu":
             print(f"  ⛔ {p['title'][:55]} — nur fremde Stecker {cnt(u['fremd'])} → DRAFT")
             if not DRY:
@@ -596,6 +741,15 @@ def varianten_lauf(nur_messen=False, tsv=None):
           f"gedraftet {len(gedraftet)} · CJ-Abfragen {cj_n} · Fehler {len(fehler)}")
     for f in fehler[:10]:
         print("   ⛔", f)
+    if ohne_kaufbar:
+        print(f"\nOHNE kaufbare Variante nach diesem Lauf ({len(ohne_kaufbar)}) — {'nicht gedraftet, nur gemeldet' if kein_draft else 'gedraftet'}:")
+        for pid, t, art in ohne_kaufbar:
+            print(f"   ⚠️ {pid} {t[:60]} ({art})")
+    if os.environ.get("LISTE"):
+        with open(os.environ["LISTE"], "w") as fh:
+            fh.write("pid\tvid\taktion\tstecker\tvariante\tsku\tprodukt\n")
+            for z in liste:
+                fh.write("\t".join(str(c).replace("\t", " ") for c in z) + "\n")
     if not nur_messen and not DRY:
         b = [f"# Netzstecker je Variante — Stand {HEUTE}\n",
              "Waechter `automation/cj_stecker_pruefen.py --varianten` (taeglich im Aufseher). Klasse: aktive Produkte mit "
@@ -607,6 +761,9 @@ def varianten_lauf(nur_messen=False, tsv=None):
              "| Produkt | Urteil | EU | fremd | ohne Kennung |", "|---|---|---|---|---|"]
         for z in sorted(zeilen, key=lambda z: z[4]):
             b.append(f"| `{z[0]}` {z[2][:50]} | {z[4]} | {z[6]} | {z[7]} | {z[8]} |")
+        if ohne_kaufbar:
+            b.append(f"\n## Ohne kaufbare Variante nach diesem Lauf ({len(ohne_kaufbar)})\n")
+            b += [f"- `{pid}` {t[:60]} ({art})" for pid, t, art in ohne_kaufbar]
         open(VAR_BERICHT, "w").write("\n".join(b) + "\n")
     print("FERTIG: Varianten-Klasse gemessen" if nur_messen else "FERTIG: Varianten-Lauf")
 
@@ -670,6 +827,86 @@ def selbsttest():
     t("CJ-Kennung fuer Variante ohne Shop-Kennung", (u["art"], sorted(v["id"][-1] for v in u["sperren"])), ("sperren-ohne-eu", ["2", "3"]))
     u = produkt_urteil("Ladegeraet 20W", "", [V(1, "Schwarz"), V(2, "Weiss")])
     t("ohne jede Kennung keine Klasse (keine CJ-Abfrage)", u["art"], "keine-klasse")
+
+    # ── Langformen (13.10.2026) — alle Texte live im Bestand gemessen ──
+    t("L American Standard", variante_stecker("American Standard", "CJ-CJYD219271802BY"), "US")
+    t("L British Standard-1PCS", variante_stecker("British Standard-1PCS", "CJ-CJYD212305603CX"), "UK")
+    t("L Australian Regulations", variante_stecker("Australian Regulations-White", "CJ-CJYD247388804DW"), "AU")
+    t("L National Standard = CN", variante_stecker("National Standard-White", "CJ-CJYD247388803CX"), "CN")
+    t("L Chinese plug", variante_stecker("Blue flame bead-Chinese plug", "CJ-CJJT154703028BY"), "CN")
+    t("L Japanese specifications", variante_stecker("V21a white-Japanese specifications", "CJ-CJJT161379105EV"), "JP")
+    t("L GB Plug", variante_stecker("Miao Si GB Plug", "CJ-CJYD224110401AZ"), "UK")
+    t("L Englisch GB Stecker", variante_stecker("Englisch GB Stecker", "CJ-CJYD224110404DW"), "UK")
+    t("L English American Standard Plug", variante_stecker("English American Standard Plug", "CJ-CJYD224110405EV"), "US")
+    t("L English European Standard Plug = EU", variante_stecker("English European Standard Plug", "CJ-CJYD224110406FU"), "EU")
+    t("L European Standard = EU", variante_stecker("Wood Grain White-European Standard", "CJ-CJJT188575002BY"), "EU")
+    t("L Swiss plug = EU (passt)", variante_stecker("Weiss Swiss plug", ""), "EU")
+    t("L Schweizer Stecker = EU (passt)", variante_stecker("Schweizer Stecker", ""), "EU")
+    t("L American gauge", variante_stecker("Black American gauge", ""), "US")
+    t("L US-standard + EU = Doppel", variante_stecker("American Standard + European Standard", ""), "MEHRFACH")
+    t("L lose «Cat Style China»", variante_stecker("Cat Style China", "CJ-CJJF223947301AZ"), "CN")
+    t("L lose «Blue-USA»", variante_stecker("Blue-USA", "CJ-CJJSBGSD00004-Blue-USA"), "US")
+    t("L lose «White-AUS»", variante_stecker("White-AUS", "CJ-CJZJ25718660003"), "AU")
+    t("L lose «Beige-Cn-1PCS»", variante_stecker("Beige-Cn-1PCS", "CJ-CJYD194254025YB"), "CN")
+    t("L geklebt «2GB/32GBUK»", variante_stecker("2GB/32GBUK", "CJ-CJYD204139303CX"), "UK")
+    # Wortfallen: Sprache / Verpackung / Farbe / Groesse sind KEIN Stecker
+    t("F «C10 Full English Version» (Sprache)", variante_stecker("C10 Full English Version", "CJ-CJYD254751502BY", netz=True), None)
+    t("F «C10 Full Chinese Version» (Sprache)", variante_stecker("C10 Full Chinese Version", "CJ-CJYD254751501AZ", netz=True), None)
+    t("F «Englische Version»", variante_stecker("Englische Version", ""), None)
+    t("F «Blau-Englisch» (Verpackung)", variante_stecker("Blau-Englisch", "CJ-CJBJMRDD00195-Blue-English"), None)
+    t("F «Blue-Chinese»", variante_stecker("Blue-Chinese", "CJ-CJBJMRDD00195-Blue-Chinese"), None)
+    t("F «English Manual-Black-1PC»", variante_stecker("English Manual-Black-1PC", ""), None)
+    t("F «K3082 English Double Disk» ungeklaert", variante_stecker("K3082 English Double Disk", "CJ-CJYD214378209IR"), None)
+    t("F «China Red» Farbe", variante_stecker("China Red-38mm40mm41mm", ""), None)
+    t("F «French Classic» Duft", variante_stecker("Citrus-Best wishes-French Classic", ""), None)
+    t("F «European Code» Schuhgroesse", variante_stecker("Black-36 European Code", ""), None)
+    t("F «European Standard Size»", variante_stecker("European Standard Size / 38", ""), None)
+    t("F «64GB Plug and Play»", variante_stecker("USB Stick 64GB Plug and Play", ""), None)
+    t("F «Whiteset-German» ohne Stecker-Wort", variante_stecker("Whiteset-German", ""), None)
+    t("F «American version» ohne Netzgeraet", variante_stecker("Army green-American version 4000 mah", ""), None)
+    t("S «American version» bei Netzgeraet", variante_stecker("Army green-American version 4000 mah", "", netz=True), "US")
+    t("Spannung «Suit 9 US 110V» fest", ist_fest("Suit 9 US 110V"), True)
+    t("Spannung «Schwarz-Gold-110 V US» fest", ist_fest("Schwarz-Gold-110 V US"), True)
+    t("«Rot 220V» kein Stecker-Beleg", ist_fest("Rot 220V"), False)
+    t("Achse 3D-Stift USA/UK/EU", stecker_achse([V(1, "Blue-USA"), V(2, "Weiss-UK"), V(3, "Weiss-EU")]), True)
+    t("Achse Anfang «AU-New Blue»/«EU-New Blue»", stecker_achse([V(1, "AU-New Blue Waist"), V(2, "EU-New Blue Waist")]), True)
+    t("keine Achse: Kleid «US 2 / US10»", stecker_achse([V(1, "Marineblau-US 2 / US10"), V(2, "Marineblau-UK 4 / US10")]), False)
+    t("keine Achse: Schuh «38 / EU», «7 / US»", stecker_achse([V(1, "38 / EU"), V(2, "7 / US")]), False)
+    t("keine Achse: «US-4G-3 Million»", stecker_achse([V(1, "US-4G-3 Million"), V(2, "EU-4G-3 Million")]), False)
+    u = produkt_urteil("Babyphone mit HD-Kamera und App-Zugriff", "Gadget",
+                       [V(1, "European Standard"), V(2, "American Standard"), V(3, "British Standard"), V(4, "Australian Regulations")])
+    t("Babyphone: EU bleibt, US/UK/AU sperren", (u["art"], sorted(v["id"][-1] for v in u["sperren"])), ("sperren", ["2", "3", "4"]))
+    u = produkt_urteil("Festplatten-Dockingstation mit Klonfunktion", "Gadget",
+                       [V(1, "K3082 Euro Double Disk Reading"), V(2, "K3082 English Double Disk"), V(3, "K3082 US Standard Double Plate")])
+    t("Dockingstation: nur US Standard, «English Double Disk» bleibt", (u["art"], [v["id"][-1] for v in u["sperren"]],
+                                                                       [v["id"][-1] for v, _ in u["ohne"]]), ("sperren-ohne-eu", ["3"], ["1", "2"]))
+    u = produkt_urteil("Elektrischer Heizkamm für vielseitiges Styling", "Beauty-Tools",
+                       [V(1, "Cat Style China"), V(2, "Cat Style UK"), V(3, "Cat AU"), V(4, "Cat US")])
+    t("Heizkamm CN/UK/AU/US ohne EU → draft-kein-eu", (u["art"], len(u["sperren"])), ("draft-kein-eu", 4))
+    u = produkt_urteil("3D Mal- und Graffiti-Stift", "3D-Druck", [V(1, "Blue-USA"), V(2, "Grün-EU"), V(3, "Weiss-UK")])
+    t("3D-Stift ueber die Achse (Titel ohne Geraetewort)", (u["art"], sorted(v["id"][-1] for v in u["sperren"])), ("sperren", ["1", "3"]))
+    u = produkt_urteil("Notfallradio mit Solar- und Handkurbel", "Elektronik",
+                       [V(1, "Army green-American version 4000 mah"), V(2, "Army green-European version 4000 mah")])
+    t("Radio-Frequenzband «American version» keine Klasse", u["art"], "keine-klasse")
+    u = produkt_urteil("Silikon-Schalldusche fürs Gesicht", "Beauty-Tools", [V(1, "Blau-Englisch"), V(2, "Blue-Chinese")])
+    t("Verpackungssprache keine Klasse", u["art"], "keine-klasse")
+    u = produkt_urteil("Elegantes Abendkleid mit Rüschen", "Damenmode", [V(1, "Schwarz-US 6 / US10"), V(2, "Schwarz-US 8 / US10")])
+    t("Kleid «US 6 / US10» kein Netzgeraet", u["art"], "kein-netzgeraet")
+    # Einzel-Modus: neue Netzgeraete-Woerter (13.10.) + CJ-Key-Langform
+    t("MAINS Ladestation", bool(MAINS.search("3-in-1 Desktop Wireless Ladestation")), True)
+    t("MAINS Charger", bool(MAINS.search("Qi 15W Fast Wireless Charger")), True)
+    t("MAINS Ladegeraet (ae)", bool(MAINS.search("Magnetischer 4-in-1-Ladegeraet")), True)
+    t("MAINS Ladeadapter", bool(MAINS.search("65W USB-C PD Laptop Ladeadapter")), True)
+    t("MAINS Stromadapter", bool(MAINS.search("Stromadapter mit Ladefunktion")), True)
+    t("MAINS Netzteil", bool(MAINS.search("Universal Netzteil 12V")), True)
+    t("NICHT Auto-Ladeadapter", bool(NICHT.search("4-in-1 USB-Schnellladeadapter fürs Auto")), True)
+    t("REISE Reiseadapter bleibt draussen", bool(REISE.search("Universal Reiseadapter Weltweit")), True)
+    t("CJ-Key «American Standard»", stecker({"variantKey": "American Standard", "variantNameEn": "Baby Monitor American Standard"}), "US")
+    t("CJ-Key «Swiss plug» = EU", stecker({"variantKey": "Swiss plug", "variantNameEn": ""}), "EU")
+    t("CJ-Key «K3082 English Double Disk» ungeklaert", stecker({"variantKey": "K3082 English Double Disk",
+                                                              "variantNameEn": "Hard Disk Dock K3082 English Double Disk"}), None)
+    t("CJ-Name mit Produkt-«US-standard» zaehlt nicht", stecker({"variantKey": "White-Model A",
+                                                                "variantNameEn": "65W GaN Charger With US-standard Conversion Plug White-Model A"}), None)
     print("SELBSTTEST", "OK" if ok else "FEHLER")
     return ok
 
