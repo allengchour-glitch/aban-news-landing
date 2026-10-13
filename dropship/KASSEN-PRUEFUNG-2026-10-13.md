@@ -27,7 +27,8 @@ Workflow `wf_2a13fa79` (30 Agenten, nur lesend): 5 Prüfer (Kasse am Handy, Abbr
 
 ## Für den Betreiber (Entscheide)
 
-1. **Lieferdatum CH-Lager in der Kasse** (wegen Halloween zuerst):
+1. ✅ **ERLEDIGT 13.10. (Betreiber «entscheide du»):** dritte Variante: Profil «CH-Lager» mit 0.00-Tarifen unter den Namen des General profile. Damit zahlt niemand mehr als heute. In der Kasse steht für die Maske jetzt «20.–21. Okt KOSTENLOS» statt «28. Okt–11. Nov». Stufe 1 umfasst 1'607 Produkte. Details: `dropship/CH-LAGER-PROFIL-2026-10-13.md`. Ursprüngliche Frage:
+   **Lieferdatum CH-Lager in der Kasse** (wegen Halloween zuerst):
    - (a) Eigenes Versandprofil «CH-Lager» mit Transit 1–3 Tage. Dann zahlen gemischte Körbe (CH-Lager plus Asien) den Versand doppelt: CHF 14 statt 7, in LI CHF 29.80.
    - (b) Nichts ändern. Dann CH-Lager-Kostüme bis 31.10. nicht mit «vor Halloween da» bewerben. Für die Quittung «bleibt» in `dropship/_entscheid_ch_lager_profil.txt` schreiben.
 2. **WELCOME10 bei Einzelartikeln zu 45–49.99:**
