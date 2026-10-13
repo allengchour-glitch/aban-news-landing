@@ -7645,3 +7645,22 @@ lassige-umhangetasche-fur-herren-874240	1397092867670937600	16	11.12	ok	landesei
 mutze-mit-pferdeschwanz-offnung-551ed8	32BA3F6B-4389-47B2-AE8A-99F04D8D65D1	16	6.25	ok	landeseite
 langarm-sweatshirt-mit-totenkopf-print-17304a	12B76B70-61D1-402A-9312-C639BDA46479	16	8.79	ok	landeseite
 reise-organizer-fur-elektronik-zubehor-238464	1703055389639987200	0	-	KEINE CH-Option → DRAFT	landeseite
+sportliches-yoga-set-aus-nylon-4cfba1	00A40F90-C17E-43CC-8BD8-98105F9FD2EF	16	10.15	ok	landeseite
+haltungskorrektur-gurt-535232	1379005369111678976	16	5.69	ok	landeseite
+flammen-vulkan-luftbefeuchter-mit-aroma-diffus-915456	1592747932158275584	7	14.97	ok	landeseite
+elektrischer-weinoffner-mit-folienschneider-abe3a6	58DFD5D9-8F7F-4A8C-9984-5941267B3FA4	7	9.69	ok	landeseite
+kurzarm-freizeit-shirt-fur-herren-623100	2406080234401623600	16	8.66	ok	landeseite
+erhohter-futternapf-fur-katzen-mit-transparent-253504	1419871245301846016	16	7.35	ok	landeseite
+elektrische-zitruspresse-usb-526080	1738468600903634944	7	13.45	ok	landeseite
+perlenkette-mit-rundem-medaillon-und-susswasse-812672	1434695020828561408	16	4.57	ok	landeseite
+crystal-jelly-lippenbalsam-spiegelglanz-pflege-824576	1460852166121099264	3	5.37	ok	landeseite
+fashion-tube-dress-sommerliches-neckholder-kle-369088	1782588785532866560	16	9.07	ok	landeseite
+2-in-1-ol-spruhflasche-fur-kuche-bbq-376320	1773973494091485184	16	9.27	ok	landeseite
+magic-flame-luftbefeuchter-aroma-diffuser-337088	1371640026038931456	16	7.56	ok	landeseite
+fitness-shirt-aus-baumwoll-mix-d97476	03240F31-7407-4BF7-A60E-620C10288827	16	6.77	ok	landeseite
+faltbare-mini-bluetooth-tastatur-mit-stander-531968	1384842422479097856	7	11.13	ok	landeseite
+gesichtsmassage-roller-aus-bianstein-613248	1467087196950499328	16	6.64	ok	landeseite
+fingerschutz-aus-edelstahl-20afde	016EC083-5F4A-43FF-AEB9-A02B23CBA71F	16	4.71	ok	landeseite
+verstellbarer-haltungskorrektur-gurt-5c39c2	3D55BF36-752F-4222-8673-B0D45524AF4D	16	6.07	ok	landeseite
+keramik-futternapf-fur-haustiere-979b00	273AA7A5-9257-4075-A7AB-9B8EAEFD3F91	16	11.96	ok	landeseite
+pailletten-maxi-kleid-mit-langen-armeln-801536	1559419927126355968	16	11.04	ok	landeseite

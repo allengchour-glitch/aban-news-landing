@@ -49,6 +49,12 @@
 
 
 
+## 📏 Masstabellen Runde 2 + Titel-Widerspruch (2026-10-13 nachts, Folgeauftrag)
+- 10 weitere Seiten mit doppelt gelesener Herstellertabelle live (18/40), 21 CJ-Abrufe. Falle: Skripte ausserhalb von
+  `cj_takt.VORRANG_SKRIPTE` warten 00:00–01:30 bis 90 min ohne Aufruf — Lesejobs mit Vorrang-Präfix benennen.
+- Die Tabelle entlarvte einen falschen TITEL: «Kurzarm»-Hemd mit Ärmel 65 cm = Langarm-Rüschenhemd (Bilder, CJ «Long sleeves»).
+  Regel `titel_widerspruch()` (Kurzarm/ärmellos/Shorts gegen Ärmel/Länge) → nicht schreiben, melden. Daten können Titel prüfen.
+
 ## 🔎 Such-Boosts: Search & Discovery per Metafeld, ohne App-Klick (2026-10-12 spät, «weiter verbessern»)
 - Wer sucht, kommt 4,4× eher in den Warenkorb (90 T: 6,1 % gegen 1,4 %), aber die Enter-Suche zeigte bei «halloween» 0/8 ab
   Schweizer Lager, «kostüm» Zubehör vorn, «geschenk für frau» ein Intim-Serum. Hebel: Metafeld
