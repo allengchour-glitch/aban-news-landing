@@ -206,3 +206,94 @@ HEIKEL = re.compile(
 def ist_heikel(*texte):
     """True, wenn einer der Texte (Titel, productType, Tags) eine heikle Warengruppe nennt."""
     return any(HEIKEL.search(t or '') for t in texte)
+
+
+# ---------------------------------------------------------------------------
+# KOSTÜM-ERKENNUNG AM TITEL (13.10.2026) — EINE Regel für Tagger, Durchsetzer und Rückholer.
+#
+# GEMESSEN 13.10. (Messrunde, Admin-API): 7 Horror-/Cosplay-Masken mit productType «Hautpflege» und ein
+# «Kinderkostüm Falbala» (Tag «kinderkostuem») standen ACTIVE im Google-Kanal — gegen die Hausregel «Kostüme nie in
+# den Google-Kanal». Der Durchsetzer fragte nur EXAKTE Sperr-Tags («kinderkostuem» ≠ «kostuem»), und HEIKEL ist zum
+# Entfernen zu laut (62 Google-Produkte mit Maske/Perücke/Kostüm im Titel, die Mehrheit LED-/Kollagen-Masken,
+# Echthaar-Perücken, «Pulloverkleid»). Deshalb hier eine ENGE Regel: Maske NUR mit Kostüm-Kontext, «…kostüm» nur am
+# Wortende und nicht als Damenanzug. Kanarien in google_sperrtags_durchsetzen.py --kanarien (0 Fehler Pflicht).
+KOSTUEM_KONTEXT = re.compile(
+    r'horror|latex|zombie|totenkopf|skull|cosplay|halloween|grusel|vampir|hexe|clown|pl[üu]sch|fasnacht|fasching|'
+    r'karneval|steampunk|viking|wikinger|monster|teufel|d[äa]mon|geist|fratze|joker|scream|maskerade|party', re.I)
+KOSTUEM_MASKE = re.compile(r'\w*maske\b|\bmask\b', re.I)
+KOSTUEM_WORT = re.compile(r'\w*kost[üu]e?m(?:e|en)?\b|halbmaske|maskenb[aä]ll|(?<![\wäöüß])verkleidung\b', re.I)
+# «…verkleidung» als Wortteil (Heizkörper-, Kotflügel-, Wandverkleidung) ist Technik — nur MIT Kostüm-Kontext ein Kostüm.
+KOSTUEM_VERKLEIDUNG_TEIL = re.compile(r'\w+verkleidung\b', re.I)
+KOSTUEM_NICHT = re.compile(
+    r'\bled\b|photon|licht|infrarot|coll?agen|kollagen|peel|\bmud\b|schlaf|tuch|sheet|thermo|sport|atem|staub|'
+    r'\buv\b|gesichtspflege|feuchtigkeit|hydrat|ffp|chirurg|tauch|schnorchel|\bski|winddicht|motorrad|schweiss|'
+    r'blazer|hosenanzug|business|damenanzug|kost[üu]mjacke|kost[üu]mrock|'
+    r'wandverkleidung|verkleidungsleiste|wandpaneel|kopfteil|bettverkleidung|dekoration|wanddeko', re.I)
+POD_WARE = re.compile(r'(?:sticker|tasse|t-shirt|tasche|kissen|mauspad|poster|hoodie|sweatshirt|becher|handyh[üu]lle|leinwand|'
+                      r'puzzle|kalender|karte|fussmatte)\b', re.I)
+POD_TYPEN = {"sticker", "tasse", "t-shirt", "tasche", "kissen", "mauspad", "poster", "hoodie", "sweatshirt", "becher",
+             "handyhülle", "leinwand", "puzzle", "kalender"}
+
+
+def ist_kostuem(titel, typ=""):
+    """True, wenn das Produkt ein Kostüm / eine Kostüm-Maske ist (nie in den Google-Kanal).
+
+    Maske zählt nur mit Kostüm-Kontext im Titel (Horror, Latex, Cosplay …), «Kostüm» nur als Wortende und nie als
+    Damenanzug; Ausnahmen (LED, Kollagen, Schlaf, Sport, Thermo …) gewinnen immer.
+    """
+    t = titel or ""
+    if KOSTUEM_NICHT.search(t):
+        return False
+    # ⚠️ KEINE Typ-Regel: «Kostüme & Verkleidung» ist bei Fortura-Ware massenhaft falsch vergeben (GEMESSEN 13.10.:
+    # 113 aktive Google-Produkte mit diesem Typ, darunter Toilettenpapier, Spielzeug-Traktoren, Luftmatratzen, HARIBO).
+    # Druck-Ware mit Motivnamen («Tasse «Fasnacht Mask»») ist kein Kostüm.
+    if POD_WARE.match(t.strip()) or (typ or "").strip().lower() in POD_TYPEN:
+        return False
+    if KOSTUEM_WORT.search(t):
+        return True
+    return bool((KOSTUEM_MASKE.search(t) or KOSTUEM_VERKLEIDUNG_TEIL.search(t)) and KOSTUEM_KONTEXT.search(t))
+
+
+KOSTUEM_KANARIEN = [
+    # (Titel, Typ, erwartet)
+    ("Horror Maske Blutung Totenkopf", "Hautpflege", True),
+    ("Horror Maske für Halloween und Fasnacht", "Hautpflege", True),
+    ("Horror Totenkopf Latex-Maske", "Hautpflege", True),
+    ("Viking Ugly Latex Maske", "Hautpflege", True),
+    ("Skull Maske", "Hautpflege", True),
+    ("Horror Zombie Maske", "Hautpflege", True),
+    ("Steampunk Cosplay Maske", "Hautpflege", True),
+    ("Kinderkostüm Falbala", "Kinderkostüme", True),
+    ("Latex-Horrormaske «Verrottete Fratze»", "", True),
+    ("Halbmaske Löwe aus Plüsch", "", True),
+    ("Lustiges Teddy Cape Geist Kostüm", "", True),
+    ("Silikon Photon Maske LED", "Beauty-Tools", False),
+    ("Collagen Hydrating Maske", "Hautpflege", False),
+    ("Winddichte Thermo-Maske für Outdoor-Aktivitäten", "", False),
+    ("Atmungsaktive Maske für Sport", "", False),
+    ("Pailletten-Pulloverkleid mit Rollkragen", "Damenmode", False),
+    ("Wandverkleidung aus Stoff", "Wohnen & Deko", False),
+    ("HD-Lace Haarperücke aus echtem Haar", "Perücken", False),
+    ("Damen Kostüm Blazer", "Damenmode", False),
+    ("Seidene Schlafmaske mit Kühlgel", "", False),
+    ("Animatronic XXL Hexe 300 cm", "Partydeko & Ballone", False),
+    ("Plüsch-Teddybär 40 cm", "Spielzeug & Spiele", False),
+    ("LED-Gesichtsmaske mit 7 Farben", "Beauty-Tools", False),
+    ("Halloween Deko Kürbis mit Licht", "", False),
+    ("Heizkörperverkleidung aus Holz", "Wohnen & Deko", False),
+    ("Kotflügelverkleidung für E-Scooter", "", False),
+    ("Faschingsverkleidung Pirat für Kinder", "", True),
+    ("Verkleidung Polizist für Erwachsene", "", True),
+    ("Kostümjacke aus Tweed", "Damenmode", False),
+    ("Tasse «Fasnacht Mask»", "Tasse", False),
+    ("Sticker «Ch Fasnacht Mask» · 1 Stück", "Sticker", False),
+    ("Tengu Dämonenmaske Dekoration", "Aufbewahrung & Organizer", False),
+    ("WC Papier rosa 4 Rollen Red Label 3 lagig", "Kostüme & Verkleidung", False),
+    ("Claas Disco 8550 C Plus Dreifach-Mähwerk", "Kostüme & Verkleidung", False),
+    ("Plüsch Maske Werwolf", "Spielzeug & Spiele", True),
+]
+
+
+def kostuem_kanarien():
+    fehler = [(t, ty, e) for t, ty, e in KOSTUEM_KANARIEN if ist_kostuem(t, ty) != e]
+    return len(KOSTUEM_KANARIEN), fehler

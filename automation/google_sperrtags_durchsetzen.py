@@ -79,7 +79,78 @@ def kandidaten():
         nach = p["pageInfo"]["endCursor"]
 
 
+def kostuem_titel_kandidaten():
+    """13.10.2026: Kostüme/Kostüm-Masken OHNE Sperr-Tag im Google-Kanal finden (Titel-Regel gs.ist_kostuem).
+
+    GEMESSEN 13.10.: 18 standen drin — 8 Horror-/Latex-Masken mit Typ «Hautpflege», 8 Plüsch-Tiermasken, «Kinderkostüm
+    Falbala» (von einer Reaktivierung am 04.10. in alle 11 Kanäle gestellt), ein Haustier-Geisterkostüm. Dieser Wächter
+    fragte nur exakte Tags. Die Suche ist Vorfilter, entschieden wird an gs.ist_kostuem (Kanarien vorher, 0 Fehler).
+    """
+    worte = ["maske", "mask", "kostüm", "kostuem", "kostum", "verkleidung"]
+    q = (f"status:active AND publication_ids:{GOOGLE.rsplit('/', 1)[1]} AND ("
+         + " OR ".join(f"title:*{w}*" for w in worte) + ")")
+    raus, nach = [], None
+    while True:
+        d = gql("""query($q:String,$n:String){products(first:100,after:$n,query:$q){
+          pageInfo{hasNextPage endCursor} nodes{id handle title tags productType}}}""", {"q": q, "n": nach})
+        p = d["data"]["products"]
+        raus += [x for x in p["nodes"] if gs.ist_kostuem(x["title"], x.get("productType") or "")
+                 and not gs.ausschluss_tag(x["tags"])]
+        if not p["pageInfo"]["hasNextPage"]:
+            break
+        nach = p["pageInfo"]["endCursor"]
+    # ⚠️ Die Titelsuche findet «maske»/«kostüm» nur am WORTANFANG (GEMESSEN 13.10.: «Halbmaske», «Horrormaske»,
+    # «Kinderkostüm» fehlten — 11 statt 18). Deshalb zusätzlich der tägliche Voll-Export (hype_export_bauen.py,
+    # /tmp/export.jsonl, Felder status/title/productType/tags/g), jeder Treffer wird LIVE gegengeprüft.
+    gesehen = {x["id"] for x in raus}
+    exp = os.environ.get("EXPORT", "/tmp/export.jsonl")
+    if os.path.exists(exp) and time.time() - os.path.getmtime(exp) < 30 * 3600:
+        for zeile in open(exp, encoding="utf-8"):
+            try:
+                x = json.loads(zeile)
+            except Exception:
+                continue
+            if (x.get("status") != "ACTIVE" or not x.get("g") or x["id"] in gesehen
+                    or not gs.ist_kostuem(x.get("title") or "", x.get("productType") or "")
+                    or gs.ausschluss_tag(x.get("tags"))):
+                continue
+            live = gql("query($id:ID!,$g:ID!){product(id:$id){id handle title tags productType status "
+                       "publishedOnPublication(publicationId:$g)}}", {"id": x["id"], "g": GOOGLE})
+            lp = (live.get("data") or {}).get("product")
+            if (lp and lp["status"] == "ACTIVE" and lp["publishedOnPublication"]
+                    and gs.ist_kostuem(lp["title"], lp.get("productType") or "") and not gs.ausschluss_tag(lp["tags"])):
+                raus.append(lp)
+                gesehen.add(lp["id"])
+    else:
+        print(f"⚠️ Export fehlt/zu alt ({exp}) — nur Titelsuche (Wortanfang)")
+    return raus
+
+
 def main():
+    if "--kanarien" in sys.argv:
+        n, f = gs.kostuem_kanarien()
+        for t, ty, e in f:
+            print(f"  FEHLER: «{t}» ({ty}) erwartet {e}")
+        print(f"FERTIG: {n} Kostüm-Kanarien, {len(f)} Fehler")
+        sys.exit(1 if f else 0)
+    # Kostüm-Titelregel: erst Kanarien, dann taggen (exakter Tag «kostuem» — keine Smart-Kollektion filtert darauf,
+    # GEMESSEN 13.10.), danach greift der normale Ablauf unten.
+    n, f = gs.kostuem_kanarien()
+    if f:
+        print(f"⚠️ Kostüm-Kanarien: {len(f)} von {n} falsch — Titelregel übersprungen")
+    else:
+        neu = kostuem_titel_kandidaten()
+        print(f"Kostüm-Titelregel: {len(neu)} ohne Sperr-Tag im Google-Kanal")
+        for p in neu:
+            print(f"  + kostuem (Titel) | {(p.get('productType') or '')[:20]:20} | {p['title'][:70]}")
+            if DRY:
+                continue
+            d = gql("mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}",
+                    {"id": p["id"], "t": ["kostuem"]})
+            if (d.get("data") or {}).get("tagsAdd", {}).get("userErrors"):
+                print(f"    ⚠️ Tag nicht gesetzt: {d['data']['tagsAdd']['userErrors']}")
+        if neu and not DRY:
+            time.sleep(20)   # Suchindex braucht einen Moment, bis tag:'kostuem' die neuen Träger findet
     roh = kandidaten()
     # Shopifys tag:'kostuem' trifft auch «kostuem-hut» (Plüschmützen, 65 am 23.09.) — die Suche
     # ist nur der Vorfilter, entschieden wird am exakten Tag.

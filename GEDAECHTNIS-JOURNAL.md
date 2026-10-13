@@ -49,6 +49,21 @@
 
 
 
+## 🎭 Kostüme im Google-Kanal + Messrunde «Verkehr» (2026-10-13 vormittags, Verbesserungsrunde 08:25)
+- **Messrunde** (Workflow 5 Prüfer + 20 Skeptiker + Richter, nur lesend): Engpass = Verkehr. ChatGPT ist die beste Quelle
+  (5,5 % Korb, Produktlandung 12 %, wächst 7 → 25–32/Woche). Die IndexNow-These ist WIDERLEGT: ChatGPT schickte Halloween-Besucher
+  18 T vor der ersten Meldung. Saison-Kollektionen 0/12 indexiert, Menü-Links helfen nicht (5/5 Menü-Neuzugänge «unknown»).
+  Blocker sind kein Verkehrshebel. → `dropship/MESSRUNDE-2026-10-13.md`
+- **Workflow-Falle:** Das Richter-Material war bei 120'000 Zeichen abgeschnitten, 2 von 5 Prüfern fehlten in der Rangliste. Nächstes
+  Mal je Prüfer verdichten (Top-Vorschläge + Urteile) statt Rohdaten zu schneiden. **Eine stille Kappung lässt Lücken wie Vollständigkeit aussehen.**
+- **Umgesetzt (Richter Platz 2, Hausregel):** 18 Kostüme/Kostüm-Masken standen im Google-Kanal, 8 davon mit Typ «Hautpflege», 1 per
+  Reaktivierung in 11 Kanäle. Neue Regel `google_sperrliste.ist_kostuem()` (Maske nur mit Kostüm-Kontext, «…kostüm» am Wortende,
+  Ausnahmen gewinnen, OHNE Typ-Regel), 35 Kanarien. Im täglichen Durchsetzer: Titelsuche + Voll-Export + Live-Gegenprüfung → Tag
+  `kostuem` → 18 raus, 0 Fehler, Gegenprobe 0.
+- **Zwei Fallen:** (1) Die Shopify-Titelsuche `title:*maske*` findet nur Wortanfänge, «Halbmaske/Horrormaske/Kinderkostüm» fehlten
+  (11 statt 18). Für deutsche Komposita braucht es den Export. (2) Der Fortura-Typ «Kostüme & Verkleidung» deckt Toilettenpapier, Traktoren
+  und HARIBO ab (113) → ein Typ ist kein Beleg. Erst zählen, was drinsteckt.
+
 ## 🔥 Trendreihe: Regeln gelten für JEDES Mitglied, nicht nur bei der Aufnahme (2026-10-13 morgens, «mach bitte du alles weiter»)
 - Recherche 13.10. → neues Thema «Drehbares Gewürzregal» (Bestand 3 ab CHF 19); Pyjamas unter dem Preisboden, schwebende Regale 0.
 - Betreute Aufnahme: 2 Probeläufe, 10 von 23 Kandidaten wegen Bild abgelehnt (Werbetext EN, Bild ≠ Titel, Produkt unklar).
@@ -20151,3 +20166,4 @@ Verschoben am 04.10.2026:
 - 2026-10-10 · 🛒 **Betreiber leitete Sidekick-Empfehlungen weiter → Kaufweg am Handy wirklich gegangen (`tools/kaufweg_handy.mjs`, Chromium 390×844, Testadresse example.com): Preis erst bei y=910 (Brotkrumen 2 + Titel 3 Zeilen) → Handy-CSS, jetzt im 1. Bildschirm; Brotkrumen «Geschenke › Sets» für Leinen-Set (Elternmenü ungeprüft) → «Damen-Mode»; Warenkorb «Cart»/«Auschecken» → deutsch; Kasse «Zustellung 20. Okt» vs Produktseite «26. Okt–9. Nov» = `processingTime` P1D, API kann nicht schreiben → Betreiber-Klick 3 Werktage (CJ versendet nach Median 2/max 5 Werktagen; Wächter `kassen_lieferdatum_wache.py` + Ampel); 3 Seiten (Sirène/Aurora/Provence) + Lieferumfang/Anlässe/Lieferung, EU-Tabelle XS–3XL bei S–XL-Kleid entfernt; Startseite: `damenmode-favoriten` (12) als 1. Reihe; `tools/werbetest_trichter.py` (utm_campaign): TikTok 548→8→**6 Kasse→0 Kauf**, ChatGPT 112→6→2→1.** Kassen-Datum ist ein Versprechen — mit der Produktseite abgleichen, bevor Geld in Werbung geht; **17:24 erledigt: Ursache Modus «Automatisiert» (ersetzt Transportzeit) → «Manuell» + 3 WT, Kasse 29. Okt–12. Nov; Sirène 49.90 ist versandfrei (Kassen-Schwelle 45)** → `dropship/KAUFWEG-HANDY-2026-10-10.md`, `dropship/WERBETEST-PLAN-2026-10-10.md`
 - 2026-10-10 · 🏷️ **«weiter»: Wichtel-Seite (OpenSEO 2'400/Mt, KD 0) — `kleine-geschenke-mitbringsel` war Preisregel <20 = 27'033, oben Werkzeug → Welt «wichtel» in `geschenk_unterwelten.py` (243, Schmuck ≤60), Titel/SEO/Text; dabei «Harrods Keramik-Tasse» (Logo, am 24.09. nur aus der Herbst-Reihe genommen, weiter aktiv + Google) → Klasse Fremdmarke als Ware: 277 Markentitel, fast alle Kompatibilität/Fortura-Lizenz, 16 am Bild geprüft → 3 Entwurf (Harrods, Fake-Xbox-Controller, «iPhone 12» = Smartwatch), 13 `marken-pruefen` (aus Google 13/0); `marke_als_ware.py/.mjs` + Regeldatei (60 Kanarien, py=js), Aufseher täglich, Sperre in 3 CJ-Importern (deutscher Titel); Kuratier-Fallen «Zündkerze» = Kerze, «Tassel» = Tasse; «Geschenke bis CHF 30» zeigte 9'259 statt 400 (Shopify rechnete seit 05.10. nicht um) → neu angelegt (`kollektion_neu_anlegen.py`), Wächter `kollektion_mitgliedschaft_wache.py` (Stichprobe nach Titel/Preis, nicht von vorne).** Fund in einer Auswahl = Warenurteil, nicht Auswahl-Regel → `dropship/MARKE-ALS-WARE-2026-10-10.md`, `dropship/WICHTEL-GESCHENKE-2026-10-10.md`
 - 2026-10-10 · 🎄 **«weiter»: OpenSEO CH «weihnachtspullover» 2'400 (+Damen 1'900/Herren 1'000/«ugly christmas sweater» 1'900), «handwärmer» 2'400, KD 0 → Kollektionen `weihnachtspullover` (41, ohne Tierkleidung) + `handwaermer` (12), verlinkt; Filter der neuen Seite zeigte «Haustierbedarf» → 49 Kleidungsstücke mit fremdem Typ (Dessous = «Spass-Elektronik», Jeansjacke = «Werkzeug») → `produkttyp_vereinheitlichen.py` Durchgang «Kleidung mit Fremdtyp» (aa-1/aa-8, Titel-Schutz Tasche/Matte/Sohle, Kostüme nie) 43/43, 5 gesperrt.** Filter-Facetten einer neuen Seite lesen; Titel entscheidet, ob Typ oder Kategorie falsch ist → `dropship/SAISON-KOLLEKTIONEN-2026-10-10.md`
+- 2026-10-11 · 🎬 **«videos und bilder besser»: Reel-Motor auf `schnitt.py` umgestellt (`automation/reel/schnitt_motor.mjs`, Stimme danach gelegt) — Fremdmarke im Bild war drin, Hook auf Make-up-Reel falsch, Freisteller im Bild-Reel; Selbsttest 59/59 → Journal 11.10.**
