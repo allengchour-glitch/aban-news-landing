@@ -4350,3 +4350,5 @@ damen-a-linien-freizeitkleid-aus-baumwoll-lein-634100	hat-liste
 schwarz-weisses-color-block-tragerkleid-638700	hat-liste
 eleganter-jupe-anzug-im-business-stil-609200	gesetzt-4
 elegantes-mesh-panel-maxikleid-mit-ruckenaussc-610500	hat-liste
+strickhemd-mit-kubakragen-und-lochmuster-638400	gesetzt-2
+leinenmisch-hemd-fur-herren-634300	gesetzt-2
