@@ -7841,3 +7841,14 @@ zirkon-schmuckset-mit-quasten-anhanger-673728	1412689508939468800	16	6.01	ok	lan
 kabelloses-nacken-und-schultermassagegerat-mit-604900	2507290913441605100	7	16.86	ok	landeseite
 fitness-widerstandsband-figur-8-000640	1682008781620137984	0	-	KEINE CH-Option → DRAFT	landeseite
 getrocknete-blumen-deko-kerzen-969408	1587414995808301056	0	-	KEINE CH-Option → DRAFT	landeseite
+jellyfish-luftbefeuchter-mit-nachtlicht-367552	1561169952034533376	7	9.73	ok	landeseite
+baby-overall-weinrot-fur-jungen-885632	1601496527862771712	16	6.77	ok	landeseite
+business-fuller-fur-studenten-und-buro-58d84e	1717734569392218112	16	6.55	ok	landeseite
+mini-usb-luftbefeuchter-mit-nachtlicht-f7c593	2BE26FA7-2623-4A10-B2D8-864DE28592F1	16	7.62	ok	landeseite
+tevise-automatikuhr-fur-herren-87daef	4854F31D-C0BB-44EE-8FBC-5DB336239814	16	5.97	ok	landeseite
+pluschblumen-handyhulle-fur-iphone-546176	1471004284010237952	16	5.12	ok	landeseite
+latex-widerstandsband-mit-fusspedal-und-griff-afaa0a	1527270B-93A5-4158-A12F-E1CD241E03E9	16	8.24	ok	landeseite
+spaghetti-strap-jumpsuit-fur-sport-yoga-249216	1675765978510135296	16	6.48	ok	landeseite
+verstellbare-rutschfeste-hunde-outdoorschuhe-444288	1721449272610136064	16	6.67	ok	landeseite
+anion-fohn-burste-fur-glanz-volumen-090368	1543464078465839104	7	10.98	ok	landeseite
+verstellbarer-umarmungsring-aus-legierung-290176	1390862939115884544	16	4.50	ok	landeseite
