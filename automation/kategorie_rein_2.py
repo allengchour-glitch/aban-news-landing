@@ -25,7 +25,10 @@ Kleine Reste gehen weiter einzeln mit Eimer-Etikette (eimer_etikette.nachlauf).
   python3 automation/kategorie_rein_2.py [handle …]            (trocken, Stichprobe der Zu-/Abgänge)
   STICHPROBE=25 python3 automation/kategorie_rein_2.py handle   (mehr lesen)
   SCHARF=1 python3 automation/kategorie_rein_2.py [handle …]
-  python3 automation/kategorie_rein_2.py --nachmessen [handle …] (Regel + aktive Zahl live, wartet auf Shopify)
+  python3 automation/kategorie_rein_2.py --nachmessen [handle …] (Regel + aktive Zahl live, wartet auf Shopify;
+                                                                  bei Mode-Kategorien auch «Fremdtyp mit Tag», Soll 0)
+  python3 automation/kategorie_rein_2.py --selbsttest           (Kanarien; läuft auch vor jedem Lauf, rot = kein Lauf)
+13.10.2026 (K1): + damen-jacken-maentel, damen-strick-pullover, muetzen-schals (strenge Mode-Regel, siehe MODE_… unten).
 """
 import collections, json, os, random, re, subprocess, sys, time, urllib.request
 
@@ -41,7 +44,7 @@ SCHARF = os.environ.get("SCHARF") == "1"
 STICHPROBE = int(os.environ.get("STICHPROBE", "10"))
 SHOP = "au3j0y-hq.myshopify.com"
 R = lambda s: re.compile(s, re.I)
-TRENNER = R(r"\bmit\b|\binkl\.?\b|\binklusive\b|\bplus\b|\+")   # «und»/«&» NICHT: «Solar- und Kurbel-Powerbank» ist eine Powerbank
+TRENNER = R(r"\bmit\b|\binkl\.?\b|\binklusive\b|\bplus\b(?![-\s]?(size|grösse|grössen|größe))|\+")   # «und»/«&» NICHT: «Solar- und Kurbel-Powerbank» ist eine Powerbank
 
 # Typen, die in KEINE dieser Kategorien gehören, wenn nur der Titel trifft (Kleid «für Büro», Katzen-Ohrringe, Kinder-Kostüm
 # im Haustier-Regal). Je Kategorie wird die Liste ergänzt oder gekürzt.
@@ -66,6 +69,32 @@ LADE_BAN = (r"(ladestation|ladegerät|ladekabel|lader) für (haarschneide|rasier
             r"haarschneide|rasierer|hunde|haustier|katzen|usb-?stick|usb-?hub|\bhub\b|docking|tassenwärmer|pfeffermühle|lederarmband|"
             r"velo-?licht|fahrradlicht|\bradio\b|e-?scooter|e-?bike|balance board|kühlstation|ventilator|batterieladegerät|fahrzeugladegerät")
 LADE_BAN_HANDY = LADE_BAN + r"|smartwatch|apple watch|galaxy watch|laptop|macbook|notebook|oculus|quest|kopfband|handwärmer"
+
+# 13.10.2026 (SEO-Sofortpunkt K1, Wintersaison): Damen-Jacken & Mäntel, Damen-Strick & Pullover, Mützen & Schals.
+# GEMESSEN 13.10.: die drei Tags stammen vom Mode-Retagger vom 08.08. (lief in /tmp, ist weg) — seither kam KEIN Produkt
+# dazu: 140 Damenmode-Mäntel, nur 74 mit kat-damen-jacke; dafür in «Damen-Jacken & Mäntel» 121 Herrenmode + 43 Kostüme,
+# in «Damen-Strick & Pullover» 130 Herrenmode, in «Mützen & Schals» 30 Kostüme. Hier gilt die STRENGE Regel
+# (streng=True): Typ ∈ KERN UND Titel-Hauptteil trifft ECHT UND kein BAN — Damenmode hat 8'000 Artikel, der Typ allein
+# macht keine Jacke. Suche NUR über den Typ (suche_q), nie title:*wort* (findet nur Wortanfänge: «Steppmantel»,
+# «Wollmantel» fielen durch). Kostüm-TAGS sperren (tag_ban): Fortura-Kostüme tragen teils Typ «Mode» («Plüschjacke …»
+# mit damenkostuem). «ban_haupt» prüft nur den Hauptteil: «Trenchcoat mit Bindegürtel» bleibt, «Ledergürtel für Mäntel» nicht.
+MODE_TAG_BAN = r"kostuem|kostüm|cosplay|fasnacht|karneval|fasching"
+MODE_BAN_GEMEINSAM = (r"(?<!damen und )(?<!damen & )(?<!damen/)herren|männer|\bmann\b|\bmen\b|hunde?-?(mantel|mäntel|jacke|pullover|pulli|hoodie|weste|"
+                      r"kleidung|mütze|schal)|für (hunde|katzen|haustiere|welpen|hund|katze)|dogge|welpe|haustier|\bpets?\b|"
+                      r"kostüm|verkleidung|cosplay|karneval|fasnacht|fasching|kinder|\bkids?\b|baby|mädchen|\bjungen\b|\bjungs\b|"
+                      r"bademantel|morgenmantel|saunamantel|nachthemd|pyjama|schlafanzug|mutter-tochter|mama (und|&) kind|eltern-kind|für familien|"
+                      r"familien-?(look|set|outfit)")
+KLEIDUNG_ANDERE = (r"|kleid(?!ung)|dress\b|\bset\b|(?<!mock-)zweiteil(?!er-?(look|optik))|dreiteilig|\d-?teilig|hosenanzug|\bhosen?\b|\w+hosen?\b|shorts|"
+                   r"leggings|jupe|röcke|\w*rock\b(?!-?(stil|style|musik))|overall|jumpsuit|\w*bluse\b|\w*hemd\b|"
+                   r"(?<!sweat)shirt(?![-\s]?jacke)|top\b(?!-?jacke)|oberteil|bikini|"
+                   r"badeanzug|\bbody\b|unterwäsche|dessous")
+JACKE_ECHT = (r"jacke|jäckchen|jackett|mantel|mäntel|cardigan|blazer|trench(coat)?\b|parka|anorak|blouson|bolero|sakko|"
+              r"windbreaker|\bcoat\b|shacket|(daunen|stepp|puffer|fleece|softshell|kapuzen|plüsch|fell|teddy)-?weste|"
+              r"daunen-?baumwollweste|(gepolstert|gefüttert|wattiert)e weste|weste mit polster")
+PULLI_ECHT = (r"pullover|\bpullis?\b|sweater|sweatshirt|sweatjacke|hoodie|hoody|rollkragen|turtleneck|pullunder|jumper|"
+              r"strick|häkel|woll-?cardigan|kaschmir-?cardigan|(merino|mohair)\w*-?cardigan")
+MUETZE_ECHT = (r"mütze|beanie|schals?\b|stirnband|stirnbänder|ohrenwärmer|ohrenschützer|balaclava|sturmhaube|halstuch|kopftuch|"
+               r"\bstola\b|pashmina")
 
 CFG = {
     "sub-baby-kids": dict(
@@ -172,7 +201,124 @@ CFG = {
         kern=set(),
         fremd=MODE_SCHMUCK | {"Küche & Bar", "Haustierbedarf", "Heimtextilien", "Auto-Zubehör", "Baby & Kinder", "Kinder",
                               "Kinderschuhe", "Wohnen & Deko", "Wellness & Aromatherapie", "Spielzeug & Spiele"}),   # 05.10.: Schreibtisch-Luftbefeuchter sind kein Büromaterial
+    # 13.10.2026 (K1): Typ Damenmode (+ handkuratierte Typen Blazer/Cardigan/Jacke, «Mode» nur mit Tag «damen») UND Jacken-Wort.
+    "damen-jacken-maentel": dict(
+        tag="kat-damen-jacke", streng=True, haupt=True, suche=[],
+        suche_q=["product_type:Damenmode status:active"],
+        echt=R(JACKE_ECHT),
+        ban=R(MODE_BAN_GEMEINSAM + KLEIDUNG_ANDERE + r"|für (mäntel|mantel|jacken|jacke)|kleiderbügel|halterung|aufbewahrung|"
+              r"(mantel|jacken|blazer)-?knöpfe|knöpfe für|abnehmbare[rn]? \w*-?kragen|"
+              # Bildprüfung 13.10.: «Chiffon-/Strand-/Leinen-/Kurzarm-Cardigan» sind bei CJ Strandüberwürfe und Hemden
+              r"chiffon|strand|cover-?up|(uv|sonnen)-?schutz.{0,12}cardigan|cardigan.{0,25}(uv|sonnen)-?schutz|sonnen-cardigan|schutz-cardigan|"
+              r"kurzarm|leinen\w*.{0,15}cardigan|cardigan.{0,25}leinen"),
+        ban_haupt=R(r"gürtel|brosche|anstecker|kissen|decke\b|tasche\b|mütze|schal\b"),   # «Stehkragen-Mantel», «ohne Knöpfe» bleiben
+        tag_ban=R(MODE_TAG_BAN),
+        kern={"Damenmode", "Blazer", "Cardigan", "Jacke"},
+        kern_tag=("damen", {"Mode"}),
+        fremd={"Herrenmode", "Kostüme & Verkleidung", "Haustierbedarf"}),
+    "damen-strick-pullover": dict(
+        tag="kat-damen-pullover", streng=True, haupt=True, suche=[],
+        suche_q=["product_type:Damenmode status:active"],
+        echt=R(PULLI_ECHT),
+        ban=R(MODE_BAN_GEMEINSAM + KLEIDUNG_ANDERE + r"|mantel|mäntel|parka|daunen|stepp|tanktop|decke\b|kappe|\bcap\b|überzug|cover-?up|"
+              r"polsterung|gepolstert|wattiert"),   # Bildprüfung 13.10.: «Kapuzenpullover mit Polsterung» ist eine Steppjacke
+        ban_haupt=R(r"mütze|schal\b|schals\b|stirnband|handschuh|stulpen|socken|strümpfe|strumpf|kissen|tasche\b|garn\b|nadel|"
+                    r"strickmaschine|kleid"),   # NICHT «wolle»: «Pullover aus Merinowolle»
+        tag_ban=R(MODE_TAG_BAN),
+        kern={"Damenmode"},
+        kern_tag=("damen", {"Mode"}),
+        fremd={"Herrenmode", "Kostüme & Verkleidung", "Haustierbedarf"}),
+    # Mützen & Schals hängt unter «Herbst & Übergang» (nicht Damen) → Herrenmode nicht fremd; Typ-Liste statt Kern (falsch
+    # typisierte Schals wie «Lady Paisley Schal» (Aufbewahrung) bleiben drin, Plüschmützen (Spielzeug) und Kostüme nicht).
+    "muetzen-schals": dict(
+        tag="kat-muetze-schal", haupt=True, suche=[],
+        suche_q=["product_type:Damenmode status:active", "product_type:Accessoires status:active",
+                 "product_type:'Hüte & Caps' status:active"],
+        echt=R(MUETZE_ECHT),
+        ban=R(MODE_BAN_GEMEINSAM + r"|perücke|pirat|hexe|lolita|maske|massage|gel-?mütze|kühlend|bluetooth|kopfhörer|lautsprecher|"
+              r"musik|\bdiy\b|häkelset|strickset|bastel|kette\b|kettchen|halskette|anhänger|\bdeko\b|weihnachtsdeko|kleid(?!ung)|"
+              r"jumpsuit|hoodie|jacke|bluse|(?<!sweat)shirt|hemd\b|\bhosen?\b|schalkragen"),
+        tag_ban=R(MODE_TAG_BAN),
+        kern=set(),
+        fremd={"Kostüme & Verkleidung", "Spielzeug & Spiele", "Haustierbedarf", "Elektronik", "Spass-Elektronik", "Schmuck",
+               "Baby & Kinder", "Kinder", "Kinderschuhe", "Partydeko & Ballone", "Ring", "Halskette", "Ohrringe", "Armband"}),
 }
+
+# 13.10.2026 (K1): Kanarien — (Titel, Typ, Tags, gehört?). --selbsttest prüft sie VOR jedem Lauf.
+KANARIEN = {
+    "damen-jacken-maentel": [
+        ("Langer Steppmantel für Damen", "Damenmode", [], True),
+        ("Kaschmir-Mantel mit Kapuze", "Damenmode", [], True),
+        ("Retro-Wollmantel mit Farbblock-Kragen", "Damenmode", [], True),
+        ("Karierter Trenchcoat mit Bindegürtel", "Damenmode", [], True),
+        ("Leichte Steppweste aus Daunen und Baumwolle", "Damenmode", [], True),
+        ("Hellblaue Blazer", "Mode", ["damen"], True),
+        ("Legere Herrenjacke für Alltag", "Herrenmode", [], False),
+        ("Mantel Piratenlady", "Kostüme & Verkleidung", ["damenkostuem"], False),
+        ("Winter-Doggenmantel mit Plaidschur und Zipper", "Haustierbedarf", [], False),
+        ("Breiter Ledergürtel für Mäntel", "Damenmode", [], False),
+        ("Gothic-Stil Plüschmantel", "Kostüme & Verkleidung", [], False),
+        ("Plüschjacke lang, langes Flor", "Mode", ["damenkostuem", "fortura"], False),
+        ("Elegantes Blazer-Kleid im Slim-Fit", "Damenmode", [], False),
+        ("Mid-Langer Bademantel für Damen", "Damenmode", [], False),
+        ("Lamers Corduroy-Jacke", "Mode", ["herren"], False),
+        ("Damen-Set: Weste & Shorts mit Taschen", "Damenmode", [], False),
+        # Trockenlauf-Liste + Bildprüfung 13.10.
+        ("Eleganter Rollkragen-Mantel mit Schalkragen", "Damenmode", [], True),
+        ("Boho Plus-Grösse Langarm Strickcardigan mit Laternenärmeln", "Damenmode", [], True),
+        ("Long-Blazer «Milano» · uni, ohne Knöpfe (Damen)", "Blazer", [], True),
+        ("Leichte Steppjacke mit Stehkragen für Damen", "Damenmode", [], True),
+        ("Chiffon Cardigan – Strand-Cover-Up mit Sonnenschutz", "Damenmode", [], False),
+        ("Kurzarm-Cardigan mit Digitaldruck", "Damenmode", [], False),
+    ],
+    "damen-strick-pullover": [
+        ("Gestreifter Strickcardigan für Damen", "Damenmode", [], True),
+        ("Fleece-Sweatshirt mit Reverskragen für Damen", "Damenmode", [], True),
+        ("Kapuzenpullover mit Tasche", "Damenmode", [], True),
+        ("Ärmellose Strickweste mit V-Ausschnitt", "Damenmode", [], True),
+        ("Casual Herrenpullover Hua in 20 Farben", "Herrenmode", [], False),
+        ("Hoodie · Herren", "Damenmode", [], False),
+        ("Strickkleid mit Rollkragen", "Damenmode", [], False),
+        ("Rollkragen-Langarmshirt aus Modal", "Damenmode", [], False),
+        ("Strickmütze für Herbst & Winter", "Damenmode", [], False),
+        ("Langer Strickmantel mit Kapuze und Steppfutter", "Damenmode", [], False),
+        ("Hundepullover mit Zopfmuster", "Haustierbedarf", [], False),
+        ("Strickpullover aus Merinowolle", "Damenmode", [], True),
+        ("Hoodie für Damen und Herren", "Damenmode", [], True),
+        ("Gestreifter Mock-Zweiteiler Hoodie", "Damenmode", [], True),
+        ("Kapuzenpullover mit Polsterung – Baumwollmischung", "Damenmode", [], False),
+        ("Gestreiftes Stricktop mit Rundhals", "Damenmode", [], False),
+        ("Mutter-Tochter Sweater für Herbst & Winter", "Damenmode", [], False),
+    ],
+    "muetzen-schals": [
+        ("Strickmütze für Herbst & Winter", "Damenmode", [], True),
+        ("Kaschmir-Schal für Damen", "Damenmode", [], True),
+        ("Gestreifter Strickschal für Herbst und Winter", "Accessoires", [], True),
+        ("Lady Paisley Schal", "Aufbewahrung & Organizer", [], True),
+        ("Mütze weiss mit Strass", "Kostüme & Verkleidung", ["kostuem-hut"], False),
+        ("Schal Brasilien doppelt", "Accessoires", ["fortura", "ch-lager"], True),
+        ("Schmuck Set Stirnband", "Accessoires", ["fortura", "kostuem-accessoire"], False),
+        ("Plüschmütze Panda", "Spielzeug & Spiele", [], False),
+        ("Asymmetrisches Kleid mit Schal-Detail", "Damenmode", [], False),
+        ("Herren Strick-Cardigan mit Schalkragen", "Herrenmode", [], False),
+        ("Bluetooth-Stirnband für Fitness & Yoga", "Sport & Outdoor", [], False),
+        ("DIY-Set: Handgestrickter Schal aus Wolle", "Basteln & DIY", [], False),
+        ("Wintermütze für Kinder leuchtende LED Weihnachten", "Kostüme & Verkleidung", [], False),
+    ],
+}
+
+
+def selbsttest():
+    fehler = 0
+    for h, liste in KANARIEN.items():
+        for titel, typ, tags, soll in liste:
+            ist = gehoert(CFG[h], {"title": titel, "productType": typ, "tags": tags})
+            if ist != soll:
+                fehler += 1
+                print(f"❌ {h}: «{titel}» ({typ}) → {ist}, soll {soll}")
+    n = sum(len(v) for v in KANARIEN.values())
+    print(f"Selbsttest: {n - fehler}/{n} Kanarien richtig")
+    return fehler == 0
 
 
 def gql(q, v=None):
@@ -198,7 +344,20 @@ def gql(q, v=None):
     raise RuntimeError(grund)
 
 
+_ABFRAGEN = {}   # 13.10.: «product_type:Damenmode» (8'000 Artikel, 33 Seiten) brauchen drei Kategorien — einmal je Lauf holen.
+                # Sicher, weil jede Kategorie nur IHREN Tag schreibt; fremde Tags im Zwischenspeicher bleiben richtig.
+
+
 def produkte(query=None, handle=None):
+    if query and query in _ABFRAGEN:
+        return dict(_ABFRAGEN[query])
+    if query:
+        _ABFRAGEN[query] = _produkte(query=query)
+        return dict(_ABFRAGEN[query])
+    return _produkte(handle=handle)
+
+
+def _produkte(query=None, handle=None):
     cur, out = None, {}
     while True:
         if handle:
@@ -230,10 +389,20 @@ def gehoert(c, p):
     t, typ = p["title"], p["productType"]
     if pod(p):
         return False
+    if c.get("tag_ban") and any(c["tag_ban"].search(x) for x in p["tags"]):   # 13.10.: Kostüm-Tags (damenkostuem, kostuem-hut …)
+        return False
     kt = c.get("kern_tag")
-    if typ in c["kern"] or (kt and kt[0] in p["tags"] and typ in kt[1]):   # der Typ ist die Wahrheit («Hundeleine Ring» bleibt bei den Haustieren) — ausser kern_ban (Pet-Plüsch bei Kindern)
+    kern = typ in c["kern"] or bool(kt and kt[0] in p["tags"] and typ in kt[1])
+    if c.get("streng"):   # 13.10. (K1): Typ UND Titel — Typ ∈ KERN ∧ ECHT im Hauptteil ∧ kein BAN (ganzer Titel) ∧ kein ban_haupt
+        h = hauptteil(t)
+        return (kern and typ not in c["fremd"] and not c["ban"].search(t)
+                and not (c.get("ban_haupt") and c["ban_haupt"].search(h))
+                and bool(c["echt"].search(h if c.get("haupt") else t)))
+    if kern:   # der Typ ist die Wahrheit («Hundeleine Ring» bleibt bei den Haustieren) — ausser kern_ban (Pet-Plüsch bei Kindern)
         return not (c.get("kern_ban") and c["kern_ban"].search(t))
     if typ in c["fremd"] or (typ not in c.get("vertraut", ()) and c["ban"].search(t)):
+        return False
+    if c.get("ban_haupt") and c["ban_haupt"].search(hauptteil(t)):
         return False
     return bool(c["echt"].search(hauptteil(t) if c.get("haupt") else t))
 
@@ -381,13 +550,21 @@ def nachmessen(handles):
                 break
             time.sleep(30)
         print(f"{h}: Regel {regel} · aktiv {n} · mit Tag {soll} {'✅' if n == soll else '⏳ Shopify füllt noch'}")
+        if c.get("tag_ban"):   # 13.10. (K1): Fremdtypen mit Tag zählen — Soll 0 (Herrenmode, Kostüme, Haustier …)
+            fremd = {t: gql('query($q:String!){productsCount(query:$q,limit:null){count}}',
+                            {"q": f"tag:{c['tag']} product_type:'{t}' status:active"})["productsCount"]["count"] for t in sorted(c["fremd"])}
+            print(f"   Fremdtyp mit Tag: {sum(fremd.values())} {'✅' if not sum(fremd.values()) else {k: v for k, v in fremd.items() if v}}")
 
 
 def main():
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     ziele = args or list(CFG)
+    if "--selbsttest" in sys.argv:
+        sys.exit(0 if selbsttest() else 1)
     if "--nachmessen" in sys.argv:
         return nachmessen(ziele)
+    if not selbsttest():   # 13.10.: rote Kanarie = kein Lauf (auch nicht trocken)
+        sys.exit(1)
     for h in ziele:
         lauf(h, CFG[h])
 
