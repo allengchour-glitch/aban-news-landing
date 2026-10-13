@@ -59,8 +59,8 @@ import urllib.request
 HIER = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HIER)
 sys.path.insert(0, HIER)
-from ch_lager_profil import (GENERAL, GOOGLE, Q_PROFIL, STANDORT, gql, korb,  # noqa: E402
-                             tarife_pruefen, zonen_methoden)
+from ch_lager_profil import (GENERAL, GOOGLE, GRATIS_AB_CH, Q_PROFIL, STANDORT, gql, korb,  # noqa: E402
+                             schwelle_pruefen, tarife_pruefen, zonen_methoden)
 
 PROFIL_NAME = "Druck auf Bestellung"
 CH_LAGER_NAME = "CH-Lager"
@@ -530,7 +530,7 @@ def matrix_artikel(produkte, soll):
 
 def matrix(art, pid_druck):
     """→ (zeilen, fehler_teurer, fehler_soll). Erwartet: Korb nur aus 0.00-Profilen → 0.00; sonst General-Regel
-    (CH: 0 ab 45 nach Rabatt, sonst 7.00 · LI: 14.90). «Vorher» = derselbe Korb, Druck-Artikel im General profile."""
+    (CH: 0 ab GRATIS_AB_CH nach Rabatt, sonst 7.00 · LI: 14.90). «Vorher» = derselbe Korb, Druck-Artikel im General profile."""
     if not art.get("D"):
         return [], 0, 0
     inhalt_druck = set(profil_inhalt(pid_druck)) if pid_druck else set()
@@ -551,7 +551,7 @@ def matrix(art, pid_druck):
             falsch += 1
             continue
         billig = rates[0][0] if rates else None
-        general = (0.0 if sub >= 45 else 7.0) if land == "CH" else 14.9
+        general = (0.0 if sub >= GRATIS_AB_CH else 7.0) if land == "CH" else 14.9   # GRATIS_AB_CH: eine Quelle (ch_lager_profil)
         null_profil = all((k in ("D", "D2") and art[k][0] in inhalt_druck) or k == "K" for k in schl)
         erwartet = 0.0 if null_profil else general
         vorher_null = all(k == "K" for k in schl)          # ohne Druck-Profil: nur CH-Lager wäre 0.00
@@ -610,6 +610,10 @@ def lauf(scharf):
     gm = zonen_methoden(gql(Q_PROFIL, {"id": GENERAL}, ver="unstable")["deliveryProfile"])
     pm = zonen_methoden(gql(Q_PROFIL, {"id": pid}, ver="unstable")["deliveryProfile"])
     tarif_bef = tarife_pruefen(pm, gm)
+    # 13.10. abends: Schwelle absolut gegen GRATIS_AB_CH (eine Quelle, Entscheid D vorbereitet) — meldet nur, blockiert nichts.
+    stand["schwelle_befunde"] = schwelle_pruefen(gm, pm)
+    if stand["schwelle_befunde"]:
+        print(f"⚠️ DRUCK-PROFIL: Gratis-Schwelle {stand['schwelle_befunde']} → automation/gratis_schwelle_setzen.py")
     preis_bef = [b for b in tarif_bef if "Preis" in b]
     transit_bef = transit_pruefen(pid, bearb, scharf=scharf)
     stand.update({"bearbeitung_tage": bearb, "tarife_ok": not tarif_bef, "tarif_befunde": tarif_bef,

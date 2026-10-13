@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-13T21:04Z",
+ "stand": "2026-10-13T23:09Z",
  "profil": "gid://shopify/DeliveryProfile/152645108103",
  "stufe": 1,
  "stufe_roh": {
@@ -8,9 +8,14 @@
   "stufe1_anzahl": 10,
   "stufe2_ab": "2026-10-17",
   "plan": "Stufe 1 = 10 Motiv-T-Shirts ohne Editor (kleinste IDs, alle im Google-Kanal) ab 13.10. Stufe 2 = alle Mitglieder nach der Regel (heute 49: 46 Motiv-Shirts, Editor-Shirt, Hoodie, Jutebeutel) ab 17.10. — druck_profil.py --scharf schaltet SELBST um, wenn die Stufe-1-Produkte bei Google keine Versand-/Preis-Meldung tragen und Tarife, Transit und Korb-Matrix ok sind. 17.10. statt 14.10.: CH-Lager Stufe 2 wird 14.–17.10. beobachtet (Kritik Punkt 8), eine Konto-Warnung wäre sonst nicht zuzuordnen. Rückweg: python3 automation/druck_profil.py --rueckweg --scharf",
-  "warum": "dropship/DRUCK-PROFIL-2026-10-13.md"
+  "warum": "dropship/DRUCK-PROFIL-2026-10-13.md",
+  "google_basis": [
+   "Missing shipping info in some countries in [Free_listings,Shopping_ads] [LI]."
+  ],
+  "google_basis_grund": "13.10.2026 21:45 UTC gemessen an 5 der 10 Stufe-1-Shirts UND an 37 von 60 Printful-Produkten im General profile (shopweit 28'541, GOOGLE-FEEDBACK.md) — bestand vor dem Profil, hält Stufe 2 nicht auf."
  },
  "modus": "scharf",
+ "schwelle_befunde": [],
  "bearbeitung_tage": 1,
  "tarife_ok": true,
  "tarif_befunde": [],
@@ -30,9 +35,9 @@
   "shirt-bernhardiner",
   "shirt-braunvieh"
  ],
- "kosten_alter_tage": 0.0,
+ "kosten_alter_tage": 0.1,
  "geloest": 0,
- "zugeordnet": 50,
+ "zugeordnet": 0,
  "matrix": {
   "zeilen": [
    {

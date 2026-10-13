@@ -24,6 +24,8 @@ REGEL (eine, hier definiert, Liquid + JS + Kanarien daraus):
   (LUX-KASSENDATUM, seit 13.10.2026) · eu-lager +3..+10 · Druck auf Bestellung +9..+19 Kalendertage, Sa/So → Montag ·
   sonst Direktversand Asien wie Kasse: Bearbeitung (P1D) + 9–19 Werktage, Schluss 12 Uhr (LUX-KASSENDATUM).
   Die Zahlen (1 / 1–2 / 9–19) prüft automation/kassen_lieferdatum_wache.py gegen Bearbeitungszeit und Transitregel.
+  JS_NEU = der Live-Balken vom 13.10.2026 23:03 (LUX-CHLAGER-KORB: alle_chlager aus /cart?view=lux-chlager, Rückfall auf das
+  Merkmal data-lux-alle-chlager der Zusammenfassung). TARIF folgt ch_lager_profil.GRATIS_AB_CH (Entscheid D 40.50 vorbereitet).
   LI_NEU unten = der Live-Block lux_cart_trust vom 13.10.2026 abends (LUX-KASSENDATUM, P1D, 9/19, Zeichen profil-ch-lager);
   vorher stand hier die Kalendertage-Fassung vom 09.10. — ein Reparaturlauf hätte die Kassen-Rechnung überschrieben.
   Ändert sich der Live-Block, LI_NEU nachziehen (kassen_lieferdatum_wache prüft die Zahlen, nicht diese Vorlage).
@@ -41,7 +43,8 @@ sys.path.insert(0, HIER)
 from kaufwille_zeile import gql  # noqa: E402
 
 THEME = "gid://shopify/OnlineStoreTheme/187533001089"
-TARIF, VERSPRECHEN, VERSAND = 4500, 5000, 700           # Rappen
+from ch_lager_profil import GRATIS_AB_CH  # noqa: E402  (eine Quelle für die Tarif-Schwelle)
+TARIF, VERSPRECHEN, VERSAND = int(round(GRATIS_AB_CH * 100)), 5000, 700           # Rappen
 MARKE = "LUX-WARENKORB-EINIG"
 
 
@@ -82,13 +85,21 @@ def kanarien(still=False):
 JS_ANFANG = "    var el=document.createElement('div');el.className='luxe-ship-bar';\n"
 JS_ENDE = "    anchors[0].parentNode.insertBefore(el,anchors[0]);\n"
 JS_NEU = JS_ANFANG + """    // LUX-WARENKORB-EINIG (09.10.2026, automation/warenkorb_einig.py) — derselbe Rechenweg wie cart-summary:
-    // gratis, sobald der Betrag NACH Rabatt >= 45 (Tarif); «noch X» = 50 - Warenwert VOR Rabatt, weil jeder weitere
-    // Artikel «2+ Artikel -10%» ausloest. Gemessen 09.10.: 1x 39.90 zeigte hier «noch 5.10», darunter «noch 10.10»;
-    // wer 5.90 dazulegt, hat 45.80 Ware -> 41.22 -> die Kasse verlangt CHF 7.
-    var sub=cart.items_subtotal_price, tot=(cart.total_price!=null?cart.total_price:sub);
-    var gratis=tot>=%(TARIF)d, rest=gratis?0:Math.max(%(VERSPRECHEN)d-sub, Math.floor(((%(TARIF)d-tot)*10+8)/9));
+    // gratis, sobald der Betrag NACH Rabatt >= 45.00 (Tarif; Entscheid D «40.50» vorbereitet); «noch X» = 50 - Warenwert
+    // VOR Rabatt, weil jeder weitere Artikel «2+ Artikel -10%» ausloest. Gemessen 09.10.: 1x 39.90 zeigte hier «noch 5.10», darunter
+    // «noch 10.10»; wer 5.90 dazulegt, hat 45.80 Ware -> 41.22 -> die Kasse verlangte (bei Tarif 45) CHF 7.
+    // LUX-CHLAGER-KORB (13.10.2026, Entscheid C): traegt JEDE Position das Zeichen profil-ch-lager, rechnet die Kasse in der Schweiz
+    // 0.00 (Profil «CH-Lager»). Das Zeichen kennt nur Liquid -> eigene Ansicht /cart?view=lux-chlager (templates/cart.lux-chlager.liquid)
+    // liefert alle_chlager; faellt sie aus, gilt /cart.js (ohne Zeichen = Regel oben, nie zu frueh gratis).
+    // Faellt die Ansicht aus (gemessen 13.10.: Cloudflare-Pruefseite statt JSON fuer unsere IP), gilt das vom Server gerenderte
+    // Merkmal der Warenkorb-Zusammenfassung (cart-summary, data-lux-alle-chlager) — sonst sagte der Balken «+ CHF 7», darunter «Gratis».
+    var chlDom=document.querySelector('.lux-gratisversand[data-lux-alle-chlager="1"]');
+    var sub=cart.items_subtotal_price, tot=(cart.total_price!=null?cart.total_price:sub),
+        chl=(cart.alle_chlager===true)||(cart.alle_chlager===undefined&&!!chlDom);
+    var gratis=chl||tot>=%(TARIF)d, rest=gratis?0:Math.max(%(VERSPRECHEN)d-sub, Math.floor(((%(TARIF)d-tot)*10+8)/9));
     var end=((tot+(gratis?0:VERSAND))/100).toFixed(2);
-    if(gratis){el.innerHTML='🎉 <strong>Gratis-Versand gesichert</strong> · Du zahlst <strong>CHF '+end+'</strong>';}
+    if(chl){el.innerHTML='🎉 <strong>Gratis-Versand in der Schweiz</strong> · Ware ab Schweizer Lager · Du zahlst <strong>CHF '+end+'</strong>';}
+    else if(gratis){el.innerHTML='🎉 <strong>Gratis-Versand gesichert</strong> · Du zahlst <strong>CHF '+end+'</strong>';}
     else{
       el.innerHTML='🚚 Noch <strong>CHF '+(rest/100).toFixed(2)+'</strong> bis zum Gratis-Versand (ab CHF 50 Warenwert)'+
       '<div class="track"><div class="fill" style="width:'+Math.min(100,Math.round(sub/%(VERSPRECHEN)d*100))+'%%"></div></div>'+

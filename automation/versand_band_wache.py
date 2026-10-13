@@ -14,7 +14,12 @@ GEFUNDEN 12.10. (Voll-Export 53'568 aktive Produkte): 1'464 in der Spanne 45–4
 falschen Satz (Sirène, Wecker-Armband mit «darunter kostet der Versand CHF 7» in der FAQ). Kontrolle: unter
 45 CHF 10 Treffer (richtig), ab 50 CHF 2 (kein Satz zum Versandbetrag).
 
-REGEL. Preis 45 ≤ p < 50 → kein Versandbetrag in Produkt- oder FAQ-Text. Ersetzt wird NUR ein Satz aus
+NACHTRAG 13.10.2026 abends (Betreiber-Entscheid D, vorbereitet): Das Band beginnt bei UNTER = ch_lager_profil.GRATIS_AB_CH
+(eine Quelle; heute 45, nach der Profil-Umstellung automation/gratis_schwelle_setzen.py 40.50). Die Zusage «gratis ab CHF 50»
+bleibt erlaubt und stimmt weiter (2+ Artikel: 50 × 0,9 = 45 ≥ 40.50); eine genannte 40.50 ist dagegen KEINE Zusage (Regel 2,
+Kanarien). Die Ist-Schwelle liest die Wache live aus dem General profile (`ist_schwelle()`) und meldet, wenn sie von UNTER abweicht.
+
+REGEL. Preis UNTER ≤ p < 50 → kein Versandbetrag in Produkt- oder FAQ-Text. Ersetzt wird NUR ein Satz aus
 RUECKSCHREIBEN, der wörtlich und genau einmal im HTML steht. Alles andere wird nur gemeldet.
 
 REGEL 2 (13.10.2026, Kassen-Prüfung wf_2a13fa79, Richter Platz 3): Jede GENANNTE Gratis-Schwelle muss «50» sein.
@@ -37,7 +42,11 @@ from seo_autopilot import gql  # noqa: E402
 
 LEDGER = os.path.join(REPO, "dropship", "_versand_band.tsv")
 SCHARF = os.environ.get("SCHARF") == "1"
-UNTER, OBEN = 45.0, 50.0
+try:
+    from ch_lager_profil import GRATIS_AB_CH as UNTER   # eine Quelle (45; Entscheid D 40.50 vorbereitet)
+except Exception:  # pragma: no cover
+    UNTER = 45.0
+OBEN = 50.0
 
 # Exakte Ersetzungen. Jede Zeile: (alter Satz, neuer Satz). Nur was hier steht, wird geschrieben.
 RUECKSCHREIBEN = [
@@ -65,12 +74,12 @@ SCHWELLE_RX = [
 ]
 # Feste Satzmuster (Reihenfolge zählt). Nur diese schreiben; Zahl → 50, «in der Schweiz» dazu, wo es fehlt.
 SCHWELLE_FIX = [
-    (re.compile(r'(Gratis-Versand in der Schweiz ab CHF ?)(?:45|65)\b'), r'\g<1>50'),
-    (re.compile(r'(Gratis-Versand) ab (CHF ?)(?:45|65)\b'), r'\1 in der Schweiz ab \g<2>50'),
-    (re.compile(r'(Versand CHF 7, )gratis ab (CHF ?)(?:45|65)\b'), r'\1in der Schweiz gratis ab \g<2>50'),
-    (re.compile(r'\bab (CHF ?)(?:45|65)( Bestellwert ist (?:der Versand|er)) gratis'), r'ab \g<1>50\2 in der Schweiz gratis'),
-    (re.compile(r'(Innerhalb der Schweiz liefern wir ab einem Bestellwert von CHF )(?:45|65)( gratis)'), r'\g<1>50\2'),
-    (re.compile(r'\b(unter CHF ?)(?:45|65)(, kommen CHF 7 Versand dazu)'), r'\g<1>50\2'),
+    (re.compile(r'(Gratis-Versand in der Schweiz ab CHF ?)(?:40[.,]50|45|65)\b'), r'\g<1>50'),
+    (re.compile(r'(Gratis-Versand) ab (CHF ?)(?:40[.,]50|45|65)\b'), r'\1 in der Schweiz ab \g<2>50'),
+    (re.compile(r'(Versand CHF 7, )gratis ab (CHF ?)(?:40[.,]50|45|65)\b'), r'\1in der Schweiz gratis ab \g<2>50'),
+    (re.compile(r'\bab (CHF ?)(?:40[.,]50|45|65)( Bestellwert ist (?:der Versand|er)) gratis'), r'ab \g<1>50\2 in der Schweiz gratis'),
+    (re.compile(r'(Innerhalb der Schweiz liefern wir ab einem Bestellwert von CHF )(?:40[.,]50|45|65)( gratis)'), r'\g<1>50\2'),
+    (re.compile(r'\b(unter CHF ?)(?:40[.,]50|45|65)(, kommen CHF 7 Versand dazu)'), r'\g<1>50\2'),
 ]
 SCHWELLE_KANARIEN = [   # (Text, erwartete Zahl der Funde, Text nach Fix oder None = unverändert)
     ("Gratis-Versand in der Schweiz ab CHF 45 · 30 Tage Rückgabe", 1, "Gratis-Versand in der Schweiz ab CHF 50 · 30 Tage Rückgabe"),
@@ -82,6 +91,9 @@ SCHWELLE_KANARIEN = [   # (Text, erwartete Zahl der Funde, Text nach Fix oder No
     ("Innerhalb der Schweiz liefern wir ab einem Bestellwert von CHF 45 gratis, darunter", 1,
      "Innerhalb der Schweiz liefern wir ab einem Bestellwert von CHF 50 gratis, darunter"),
     ("Gratis-Versand in der Schweiz ab CHF 50", 0, None),
+    # 13.10. abends (Entscheid D): die Tarif-Zahl 40.50 ist KEINE Zusage — «ab 50» bleibt die einzige genannte Schwelle
+    ("Gratis-Versand ab CHF 40.50, 30 Tage Rückgabe", 1, "Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe"),
+    ("Versand CHF 7, gratis ab CHF 40.50", 1, "Versand CHF 7, in der Schweiz gratis ab CHF 50"),
     ("Ab 45 Grad Wassertemperatur waschen, kostenlos", 0, None),       # keine Währung → keine Schwelle
     ("Set ab CHF 45 – Lieferung 10–20 Tage", 0, None),                 # Preis, kein Gratiswort
     ("Bleibt deine Shop-Bestellung unter CHF 45, kommen CHF 7 Versand dazu.", 1,
@@ -159,7 +171,7 @@ def preis(o):
 
 
 def befunde(zeilen):
-    """Produkte in der Spanne 45–49,99 CHF mit mindestens einem falschen Versandsatz."""
+    """Produkte in der Spanne UNTER–49,99 CHF mit mindestens einem falschen Versandsatz."""
     treffer = []
     for o in zeilen:
         p = preis(o)
@@ -292,16 +304,32 @@ def regel2_schreiben(a, zeilen_nach_id):
     return True, "zurückgelesen"
 
 
+def ist_schwelle():
+    """Ist-Schwelle «Kostenloser Versand» CH im General profile (live) — None, wenn nicht lesbar."""
+    try:
+        from warenkorb_gratisversand import tarif
+        return tarif()[1]
+    except Exception as e:  # noqa: BLE001
+        print(f"Ist-Schwelle nicht lesbar: {type(e).__name__}: {str(e)[:120]}")
+        return None
+
+
 def main():
     if "--kanarien" in sys.argv:
         return 0 if schwelle_kanarien() else 1
+    ist = ist_schwelle()
+    if ist is not None and abs(ist - UNTER) > 0.005:
+        print(f"⚠️ VERSAND-BAND: Kasse gratis ab {ist:.2f}, Wache rechnet mit {UNTER:.2f} → ch_lager_profil.GRATIS_AB_CH / "
+              f"automation/gratis_schwelle_setzen.py prüfen")
+    elif ist is not None:
+        print(f"Ist-Schwelle Kasse: gratis ab {ist:.2f} = Band-Beginn")
     if not schwelle_kanarien():
         print("ABBRUCH: Kanarien Schwelle rot")
         return 1
     zeilen = voll_export()
     print(f"Voll-Export: {len(zeilen)} aktive Produkte")
     treffer = befunde(zeilen)
-    print(f"Spanne 45–49,99 CHF mit falschem Versandsatz: {len(treffer)}")
+    print(f"Spanne {UNTER:.2f}–49,99 CHF mit falschem Versandsatz: {len(treffer)}")
     for o, p, gefunden in treffer:
         print(f"  {p:6.2f}  {o['handle'][:60]}  ({len(gefunden)} Satz/Sätze)")
     r2 = regel2_lauf(zeilen)
