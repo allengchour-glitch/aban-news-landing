@@ -277,7 +277,7 @@ alles bekannte Fakten, also misst sie richtig.
 
 ### Eintragen (Dateien, die diese Sitzung nicht anfassen durfte)
 
-> **✅ Erledigt 13.10. ~23:00 UTC:** `betreiber_ampel.werbetest()` prüft alle `handles` über `werbetest_trichter.wache()` und zählt
+> **✅ Erledigt 13.10. ~22:40 UTC:** `betreiber_ampel.werbetest()` prüft alle `handles` über `werbetest_trichter.wache()` und zählt
 > erst ab Aktivierung (erster Tag mit Sitzungen der utm_campaign, oder Feld `aktiviert`); vorher «wartet auf Aktivierung», ab 3 Tagen
 > ohne Sitzungen ⚠️. Warnt, wenn die Schreibsperre vor Testende + 3 T abläuft. `ql()` wirft jetzt RuntimeError statt `sys.exit`
 > (SystemExit hätte die ganze Ampel beendet). Sperre zusätzlich in `variant_value_clean.py`, `styling_floskel_wache.py` (beide
@@ -388,7 +388,7 @@ utm_source=google&utm_medium=cpc&utm_campaign=geschenke-test
 
 **7. Aktivieren.** Kampagne → Status **Aktiviert**. Kein Nachladen ohne neuen Entscheid; Abbruch bei CHF 30 ohne Warenkorb
 (die Ampel meldet «STOPP-REGEL»). Den Tag musst du nirgends eintragen: die Ampel zählt ab dem ersten Tag, an dem Besuche mit
-`utm_campaign=geschenke-test` ankommen, und schiebt das Testende um gleich viele Tage nach hinten (Nachtrag 13.10. 23:00 UTC).
+`utm_campaign=geschenke-test` ankommen, und schiebt das Testende um gleich viele Tage nach hinten (Nachtrag 13.10. 22:40 UTC).
 Schreib der Sitzung kurz «aktiviert», dann trägt sie das Datum zusätzlich in `_werbetest_aktiv.json` ein.
 
 Menüpfade geprüft am 13.10. gegen die Google-Ads-Hilfe: Produktgruppen unterteilen / Bulk-Werte
