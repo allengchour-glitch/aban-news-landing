@@ -18,6 +18,15 @@ Schreibt Titel, Beschreibung, SEO-Titel/-Beschreibung (immer BEIDE SEO-Felder, L
 08.10. abends: nach dem Diamant-Lauf trugen die Bilder noch «… mit Diamanten – Bild 2», live gesehen), liest zurück.
 Handles bleiben (Umbenennen braucht 301) — sie stehen im Bericht.
 DRY=1 zeigt nur. CACHE_NUTZEN=1 nimmt den letzten Export. --selbsttest prüft die Kanarien.
+
+NACHTRAG 13.10.2026 (Kauf-Strecke Klasse 12, Abschnitt «kosmetik_beleg» der Regeldatei) — zwei ZÄHL-Regeln, schreiben nichts:
+  · «Geprüfte Angaben ohne Beleg»: Kosmetik (Hautpflege/Make-up/Haarpflege) ohne Inhaltsstoff-Liste im Text (Marker
+    INCI · «Inhaltsstoffe:» · «Ingredients:» · «Zutaten:» — dieselben Zeichenfolgen prüft die Theme-Bedingung). Gemessen 13.10.:
+    1'769 von 1'773 ohne Liste. Sichtbar ist «Geprüfte Angaben» dort nur, solange die Theme-Bedingung (Marker
+    «kosmetik-inci-bedingung» in templates/product.json) fehlt → Zeile «GEPRÜFT-OHNE-INCI: n Kosmetik ohne Liste · sichtbar m».
+  · «Reinstoff-Titel gegen INCI»: Titel nennt einen Reinstoff («Tunmate Rizinusöl», «… Arganöl», «Shea Butter»), der Text belegt
+    eine Mischung (Mineral Oil, Paraffin, Fragrance/Duftstoff, «Ölmischung») → Meldung im Bericht. Reinstoff-Titel OHNE Liste
+    stehen ebenfalls im Bericht (Karton im Bild zweimal lesen, erst dann Titel ändern). NUR=kosmetik zählt ohne den Rest.
 """
 import json, os, re, subprocess, sys, time
 
@@ -29,7 +38,8 @@ DRY = os.environ.get("DRY") == "1"
 CACHE = "/tmp/versprechen_export.jsonl"
 LEDGER = os.path.join(REPO, "dropship", "_versprechen_wache.tsv")
 BERICHT = os.path.join(REPO, "dropship", "VERSPRECHEN-WACHE.md")
-BULK = ('{ products(query: "status:active") { edges { node { id handle title tags descriptionHtml seo { title description } '
+K_BERICHT = os.path.join(REPO, "dropship", "KOSMETIK-BELEG.md")
+BULK = ('{ products(query: "status:active") { edges { node { id handle title productType tags descriptionHtml seo { title description } '
         'variants(first: 1) { edges { node { sku } } } media(first: 40) { edges { node { id alt } } } } } } }')
 ALT_LEDGER = os.path.join(REPO, "dropship", "_versprechen_alt.tsv")
 M_ALT = ('mutation($id:ID!,$m:[UpdateMediaInput!]!){productUpdateMedia(productId:$id,media:$m){media{id alt} '
@@ -130,6 +140,47 @@ def schweiz_lager(tags, sku):
         (sku or "").lower().startswith(p) for p in REGEL["schweiz_lager"]["sku_praefix"])
 
 
+# ── Kosmetik: Inhaltsstoff-Beleg und Reinstoff-Titel (13.10.2026, Kauf-Strecke Klasse 12) ──────────────────────────────────
+K = REGEL.get("kosmetik_beleg") or {}
+K_TYPEN = set(K.get("typen") or [])
+K_INCI = tuple(K.get("inci_marker") or ())
+K_REIN = re.compile(K.get("reinstoff") or r"(?!x)x", re.I)
+K_FORM = re.compile(K.get("reinstoff_form") or r"(?!x)x", re.I)
+K_MISCH = re.compile(K.get("mischung_beleg") or r"(?!x)x", re.I)
+
+
+def ist_kosmetik(p):
+    return (p.get("productType") or "") in K_TYPEN
+
+
+def inci_beleg(html):
+    """Steht eine Inhaltsstoff-LISTE im Text? Dieselben Zeichenfolgen wie die Theme-Bedingung («contains» in Liquid) — ein
+    «pflegende Inhaltsstoffe wie Honig» (62 Texte) ist keine Liste und zählt nicht."""
+    return any(m in (html or "") for m in K_INCI)
+
+
+def reinstoff_titel(t):
+    """Titel verspricht einen Reinstoff: Stoffname ist das Produkt selbst, kein «Serum mit …», «Lippenbalsam mit Kokosöl»."""
+    t = t or ""
+    return bool(K_REIN.search(t)) and not K_FORM.search(K_REIN.sub(" ", t))
+
+
+def mischung_beleg(html):
+    return bool(K_MISCH.search(re.sub(r"<[^>]+>", " ", html or "")))
+
+
+def theme_bedingung():
+    """True/False: trägt templates/product.json im Haupt-Theme den Marker der INCI-Bedingung? None = nicht lesbar."""
+    try:
+        d = gql('{ themes(first: 1, roles: [MAIN]) { nodes { files(filenames: ["templates/product.json"]) { nodes { body { '
+                '... on OnlineStoreThemeFileBodyText { content } } } } } } }')
+        inhalt = d["themes"]["nodes"][0]["files"]["nodes"][0]["body"]["content"]
+        return (K.get("theme_marker") or "kosmetik-inci-bedingung") in inhalt
+    except Exception as e:  # Zählung bleibt gültig, nur «sichtbar» ist dann unklar
+        print(f"   Theme nicht lesbar: {str(e)[:120]}", flush=True)
+        return None
+
+
 def selbsttest():
     f = 0
     for art, ein, soll in REGEL["kanarien"]:
@@ -142,7 +193,12 @@ def selbsttest():
         if ist != soll:
             f += 1
             print(f"  ✗ diamant: {ein!r}\n      ist  {ist!r}\n      soll {soll!r}")
-    n = len(REGEL["kanarien"]) + len(D.get("kanarien", []))
+    for art, fn in (("reinstoff", reinstoff_titel), ("inci", inci_beleg), ("mischung", mischung_beleg)):
+        for ein, soll in K.get(f"kanarien_{art}", []):
+            if fn(ein) != soll:
+                f += 1
+                print(f"  ✗ {art}: {ein!r} → {fn(ein)} (soll {soll})")
+    n = len(REGEL["kanarien"]) + len(D.get("kanarien", [])) + sum(len(K.get(f"kanarien_{a}", [])) for a in ("reinstoff", "inci", "mischung"))
     print(f"Selbsttest: {n - f}/{n} ok")
     return f == 0
 
@@ -209,12 +265,26 @@ def main():
         export()
     n = fix = fehl = 0
     zaehl, handles, beispiele, echt = {}, [], [], []
+    nur_k = os.environ.get("NUR") == "kosmetik"
+    kos_n = kos_ohne = 0
+    rein_widerspruch, rein_offen = [], []
     for p in produkte():
         n += 1
         lager = schweiz_lager(p.get("tags"), p["_sku"])
         s = p.get("seo") or {}
         neu = {}
         h = p.get("descriptionHtml") or ""
+        if ist_kosmetik(p):                     # 13.10.2026: zählen, nichts schreiben (Klasse 12)
+            kos_n += 1
+            beleg = inci_beleg(h)
+            kos_ohne += not beleg
+            if reinstoff_titel(p["title"]):
+                if mischung_beleg(h):
+                    rein_widerspruch.append((p["handle"], p["title"]))
+                elif not beleg:
+                    rein_offen.append((p["handle"], p["title"]))
+        if nur_k:
+            continue
         ctx = f"{p['title']} {h}"
         t_neu = diamant(p["title"] if lager else titel(p["title"]), ctx)
         if t_neu != p["title"] and t_neu:
@@ -284,6 +354,26 @@ def main():
         fix += 1
         with open(LEDGER, "a", encoding="utf-8") as f:
             f.write(f"{time.strftime('%Y-%m-%d')}\t{p['id']}\t{'+'.join(neu)}\t{p['handle']}\n")
+    sichtbar = theme_bedingung()
+    k_zeile = (f"GEPRÜFT-OHNE-INCI: {kos_ohne} von {kos_n} Kosmetik ohne Inhaltsstoff-Liste · sichtbar "
+               f"{0 if sichtbar else (kos_ohne if sichtbar is False else '?')} (Theme-Bedingung {'aktiv' if sichtbar else ('fehlt' if sichtbar is False else 'unklar')}) "
+               f"· Reinstoff-Titel mit Mischung {len(rein_widerspruch)} · ohne Liste {len(rein_offen)}")
+    print(k_zeile, flush=True)
+    with open(K_BERICHT, "w", encoding="utf-8") as f:
+        f.write(f"# Kosmetik: Inhaltsstoff-Beleg — Stand {time.strftime('%Y-%m-%d %H:%M', time.gmtime())} UTC\n\n{k_zeile}\n\n"
+                "Regel: `automation/data/versprechen_regel.json` → `kosmetik_beleg` (Kauf-Strecke Klasse 12, 13.10.2026). "
+                "Liste = einer der Marker " + " · ".join(f"«{m}»" for m in K_INCI) + " im Beschreibungstext. Der Wächter schreibt nichts: "
+                "INCI nur vom Karton (zweimal unabhängig gelesen) oder aus der CJ-Beschreibung nachtragen, Titel nur mit Beleg ändern "
+                "(Rückweg-Ledger `dropship/_kosmetik_produktwahrheit.tsv`).\n\n"
+                f"## Reinstoff-Titel, deren Text eine Mischung belegt ({len(rein_widerspruch)}) — Titel anpassen\n\n")
+        for hd, t in rein_widerspruch:
+            f.write(f"- `{hd}` — {t}\n")
+        f.write(f"\n## Reinstoff-Titel ohne Inhaltsstoff-Liste ({len(rein_offen)}) — Karton im Bild prüfen\n\n")
+        for hd, t in rein_offen:
+            f.write(f"- `{hd}` — {t}\n")
+    if nur_k:
+        print(f"FERTIG {time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}: {n} geprüft (nur Kosmetik) · {k_zeile}")
+        return
     with open(BERICHT, "w", encoding="utf-8") as f:
         f.write(f"# Versprechen ohne Beleg — Stand {time.strftime('%Y-%m-%d %H:%M', time.gmtime())} UTC\n\n"
                 f"Regel: `automation/data/versprechen_regel.json` (Lieferversprechen nur bei Schweizer Lager; «Qualität geprüft», "
@@ -300,7 +390,7 @@ def main():
         for hd, t in handles:
             f.write(f"- `{hd}` — {t}\n")
     print(f"FERTIG {time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}: {n} geprüft, {fix} {'zu ändern' if DRY else 'geändert'} "
-          f"{zaehl}, {fehl} Fehler, {len(handles)} Handles gemeldet")
+          f"{zaehl}, {fehl} Fehler, {len(handles)} Handles gemeldet · {k_zeile}")
 
 
 if __name__ == "__main__":
