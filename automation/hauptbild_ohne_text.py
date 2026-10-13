@@ -22,13 +22,19 @@ neue Bildquelle, nicht für diesen Lauf.
 geholt — sonst stünde am Ende womöglich ein totes Bild an erster Stelle. Dieselbe Verwechslung
 hat den Bild-Backfill heute schon 548 Produkte fälschlich abhaken lassen.
 
+⚠️ 13.10.2026 — KARTON-/MASSBILD IST KEIN ERSATZ (Kauf-Strecke Klasse 13). Beim Tunmate-Rizinusöl rückte der
+KARTON mit «4.33in/11cm» an die erste Stelle: Masslinien sind Ziffern, keine Wörter, das Bild galt als «sauber».
+Ein Ersatzkandidat muss jetzt bildtext_pruefen.von_url_hauptbild() bestehen: < WORTGRENZE Wörter UND keine Massangabe
+(Zahl+Einheit in/inch/cm/mm/ml/oz). Das AKTUELLE Hauptbild wird weiter nur an Wörtern gemessen — eine «50 ml» auf dem
+Flaschenetikett macht ein Produktfoto nicht schmutzig. Das Ledger trägt seit heute die Medien-IDs (alt → neu) als Rückweg.
+
 Der Lauf ist lang (ein OCR je Bild) und jederzeit fortsetzbar; der Supervisor hält ihn am Leben.
 DRY=1 meldet nur.
 """
 import json, os, subprocess, sys, time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from bildtext_pruefen import von_url, WORTGRENZE
+from bildtext_pruefen import von_url, von_url_hauptbild, WORTGRENZE
 
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
 DRY = os.environ.get("DRY") == "1"
@@ -116,9 +122,13 @@ def main():
 
         # Das erste sauber gelesene Bild weiter hinten rückt nach vorn.
         neu = None
+        mass_bilder = 0
         for m in medien[1:MAXPRUEF]:
-            w = von_url(m["image"]["url"])
+            w, ms = von_url_hauptbild(m["image"]["url"])
             if w == -1:
+                continue
+            if ms:                        # 13.10.: Karton-/Massbild nie als Hauptbild
+                mass_bilder += 1
                 continue
             if w < WORTGRENZE:
                 neu = m
@@ -137,7 +147,7 @@ def main():
             print(f"  ⚠️ {p['title'][:30]}: {fehler[0]['message'][:60]}", flush=True)
             continue
         umgestellt += 1
-        f.write(f"{gid}\tumgestellt\t{erste}\n")
+        f.write(f"{gid}\tumgestellt\t{erste}\t{medien[0]['id']}\t{neu['id']}\n")
         f.flush()
         if umgestellt % 25 == 0:
             print(f"   {umgestellt} umgestellt · {schon_sauber} waren schon sauber · "
@@ -147,5 +157,82 @@ def main():
           f"{ohne_alternative} haben nur Bilder mit Text, {gesperrt} Bildtausch-Sperre")
 
 
+def nachpruefen():
+    """13.10.2026 — NACHPRÜFEN der früher «umgestellt»-Produkte (3'744, Ledger ohne Medien-IDs).
+    Trägt das HEUTIGE Hauptbild eine Massangabe (Karton-/Massbild, bildtext_pruefen.masse) und gibt es unter den
+    nächsten Bildern eines ohne Werbetext UND ohne Mass, rückt dieses nach vorn. Sonst bleibt alles, wie es ist
+    (Zeile «karton-mass-ohne-ersatz» = Meldung). Jedes Produkt einmal (Ledger-Zeile «nachgeprueft-1013»).
+    Vision-Stichprobe 13.10. (100 zufällige): 6 klare Massbilder, der OCR-Melder fand 6 (3 klar, 3 Produktfoto
+    mit Grössenetikett) — er findet also nicht alle, aber was er findet, ist kein sauberes Produktfoto.
+    ⚠️ SCHREIBT NUR MIT SCHARF=1 — und nur nach Blick aufs Bild: Der «saubere» Ersatz kann eine grosse Werbezeile
+    tragen, die Tesseract nicht liest (Trinkflasche 611000: «Not just insulation, more peace of mind» = 2 Wörter
+    gelesen, auch mit KACHELN). Ohne SCHARF meldet der Lauf nur (Vorschlagsliste im Log).
+    ENV: NACHPRUEFEN=1 [SCHARF=1] [CAP=n] [NUR_ID=id,id]"""
+    schreiben = os.environ.get("SCHARF") == "1" and not DRY
+    from bildtext_pruefen import masse
+    zeilen = [l.rstrip("\n").split("\t") for l in open(LEDGER)]
+    fertig = {z[0] for z in zeilen if len(z) > 1 and z[1] in ("nachgeprueft-1013", "karton-mass-korrigiert",
+                                                              "karton-mass-ohne-ersatz")}
+    nur = {x if x.startswith("gid:") else "gid://shopify/Product/" + x
+           for x in (os.environ.get("NUR_ID") or "").split(",") if x.strip()}
+    ids = [z[0] for z in zeilen if len(z) > 1 and z[1] == "umgestellt" and z[0] not in fertig]
+    if nur:
+        ids = [i for i in ids if i in nur] or sorted(nur)
+    ids = list(dict.fromkeys(ids))[:CAP]
+    print(f"NACHPRÜFEN: {len(ids)} früher umgestellte Produkte · {'SCHREIBEN' if schreiben else 'NUR MELDEN'}", flush=True)
+    from bildtausch_sperre import gesperrte_handles, gesperrte_ids
+    sperre_h, sperre_id = gesperrte_handles(), gesperrte_ids()
+    f = open(LEDGER, "a")
+    korr = ohne = sauber = 0
+    for gid in ids:
+        d = gql('query($id:ID!){product(id:$id){status handle media(first:10){nodes{id '
+                '... on MediaImage{status image{url}}}}}}', {"id": gid})
+        p = (d.get("data") or {}).get("product")
+        if not p or p.get("status") != "ACTIVE" or "tunmate" in (p.get("handle") or "") \
+                or gid in sperre_id or p.get("handle") in sperre_h:
+            continue
+        medien = [m for m in p["media"]["nodes"] if m.get("image") and m.get("status") == "READY"]
+        if len(medien) < 2:
+            continue
+        n0, m0 = von_url_hauptbild(medien[0]["image"]["url"])
+        if n0 == -1:
+            continue
+        if not m0:
+            sauber += 1
+            if schreiben:
+                f.write(f"{gid}\tnachgeprueft-1013\t{n0}\n"); f.flush()
+            continue
+        neu = None
+        for m in medien[1:MAXPRUEF]:
+            w, ms = von_url_hauptbild(m["image"]["url"])
+            if w != -1 and not ms and w < WORTGRENZE:
+                neu = m
+                break
+        if not neu:
+            ohne += 1
+            print(f"  = {p['handle'][:60]}: Massbild {m0[:3]}, kein sauberer Ersatz", flush=True)
+            if schreiben:
+                f.write(f"{gid}\tkarton-mass-ohne-ersatz\t{n0}\t{medien[0]['id']}\t{','.join(m0[:4])}\n"); f.flush()
+            continue
+        print(f"  ~ {p['handle'][:60]}: Massbild {m0[:3]} → {neu['id'].split('/')[-1]}", flush=True)
+        if not schreiben:
+            korr += 1
+            continue
+        r = gql('mutation($id:ID!,$m:[MoveInput!]!){productReorderMedia(id:$id,moves:$m){userErrors{message}}}',
+                {"id": gid, "m": [{"id": neu["id"], "newPosition": "0"}]})
+        fe = ((r.get("data") or {}).get("productReorderMedia") or {}).get("userErrors")
+        if fe:
+            print(f"  ⚠️ {p['handle'][:40]}: {fe[0]['message'][:60]}", flush=True)
+            continue
+        korr += 1
+        f.write(f"{gid}\tkarton-mass-korrigiert\t{n0}\t{medien[0]['id']}\t{neu['id']}\n"); f.flush()
+        time.sleep(0.3)
+    print(f"FERTIG: Nachprüfung {korr} Massbilder {'ersetzt' if schreiben else 'mit Ersatzvorschlag (nur gemeldet)'}, {ohne} ohne sauberen Ersatz, "
+          f"{sauber} ohne Massangabe")
+
+
 if __name__ == "__main__":
-    main()
+    if os.environ.get("NACHPRUEFEN") == "1":
+        nachpruefen()
+    else:
+        main()
