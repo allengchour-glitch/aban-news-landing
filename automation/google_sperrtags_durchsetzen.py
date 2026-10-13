@@ -79,6 +79,26 @@ def kandidaten():
         nach = p["pageInfo"]["endCursor"]
 
 
+def nur_werbekanal_kandidaten():
+    """13.10.2026: Produkte mit einem Alle-Kanäle-Tag (ALLE_WERBEKANAELE), die NICHT mehr im Google-Kanal, aber noch in
+    TikTok / Facebook & Instagram / Pinterest stehen. kandidaten() fragt nur «im Google-Kanal UND Tag» — ein Heil-Schmuck,
+    der schon aus Google draussen war, wäre getaggt worden und trotzdem in den Werbekanälen geblieben. GEMESSEN 13.10.: 0
+    exakte Träger (die 9 Suchtreffer trugen «lizenz-nicht-bewerben» — Shopifys tag:-Suche trifft Wortteile; Lizenz ist
+    bewusst nur eine Google-Sperre). Entschieden wird am EXAKTEN Tag."""
+    tags = " OR ".join(f"tag:'{t}'" for t in sorted(ALLE_WERBEKANAELE))
+    pubs = " OR ".join(f"publication_ids:{v.rsplit('/', 1)[1]}" for v in WERBUNG.values())
+    q = f"status:active AND -publication_ids:{GOOGLE.rsplit('/', 1)[1]} AND ({pubs}) AND ({tags})"
+    raus, nach = [], None
+    while True:
+        d = gql("""query($q:String,$n:String){products(first:100,after:$n,query:$q){
+          pageInfo{hasNextPage endCursor} nodes{id handle title tags}}}""", {"q": q, "n": nach})
+        p = d["data"]["products"]
+        raus += [x for x in p["nodes"] if {t.lower() for t in x["tags"]} & ALLE_WERBEKANAELE]
+        if not p["pageInfo"]["hasNextPage"]:
+            return raus
+        nach = p["pageInfo"]["endCursor"]
+
+
 def kostuem_titel_kandidaten():
     """13.10.2026: Kostüme/Kostüm-Masken OHNE Sperr-Tag im Google-Kanal finden (Titel-Regel gs.ist_kostuem).
 
@@ -168,8 +188,58 @@ def feuerzeug_kandidaten():
     return raus
 
 
+HEILSCHMUCK_LEDGER = "dropship/_heilschmuck_getaggt.tsv"
+
+
+def heilschmuck_kandidaten():
+    """13.10.2026: Heil-Schmuck (gs.ist_heilschmuck, Regel data/heilschmuck_regel.json) im Google- ODER einem Werbekanal
+    ohne «nicht-bewerben». GEMESSEN 13.10.: «Terahertz Armband – Energie & Balance» und «Kupfer-Armband mit negativen Ionen»
+    standen in allen vier Kanälen — keine Wache kannte die Klasse (dieser Durchsetzer las nur Tags, die niemand setzte).
+    Titelsuche findet nur Wortanfänge («Magnettherapie-Armband» ja, «Kupfer-Magnettherapie…» nein) → zusätzlich der
+    Voll-Export, jeder Treffer LIVE gegengeprüft. Gibt Produkte samt Kanalstand (für das Altwerte-Ledger) zurück."""
+    kanaele = [GOOGLE] + list(WERBUNG.values())
+    ids, nach = [], None
+    q = "status:active AND (" + " OR ".join(f"title:*{w}*" for w in gs.HEILSCHMUCK_SUCHWORTE) + ")"
+    while True:
+        d = gql("""query($q:String,$n:String){products(first:100,after:$n,query:$q){pageInfo{hasNextPage endCursor}
+          nodes{id title}}}""", {"q": q, "n": nach})
+        p = d["data"]["products"]
+        ids += [x["id"] for x in p["nodes"] if gs.ist_heilschmuck(x["title"])]
+        if not p["pageInfo"]["hasNextPage"]:
+            break
+        nach = p["pageInfo"]["endCursor"]
+    exp = os.environ.get("EXPORT", "/tmp/export.jsonl")
+    if os.path.exists(exp) and time.time() - os.path.getmtime(exp) < 30 * 3600:
+        for zeile in open(exp, encoding="utf-8"):
+            try:
+                x = json.loads(zeile)
+            except Exception:
+                continue
+            if x.get("status") == "ACTIVE" and gs.ist_heilschmuck(x.get("title") or ""):
+                ids.append(x["id"])
+    else:
+        print(f"⚠️ Export fehlt/zu alt ({exp}) — Heil-Schmuck nur über die Titelsuche (Wortanfang)")
+    raus = []
+    for pid in dict.fromkeys(ids):
+        q = "query($id:ID!" + "".join(f",$k{i}:ID!" for i in range(len(kanaele))) + "){product(id:$id){id handle title tags status " + \
+            " ".join(f"p{i}:publishedOnPublication(publicationId:$k{i})" for i in range(len(kanaele))) + "}}"
+        lp = ((gql(q, {"id": pid, **{f"k{i}": k for i, k in enumerate(kanaele)}}).get("data") or {}).get("product")) or {}
+        if (lp.get("status") == "ACTIVE" and gs.ist_heilschmuck(lp["title"])
+                and "nicht-bewerben" not in {t.lower() for t in lp["tags"]}
+                and any(lp.get(f"p{i}") for i in range(len(kanaele)))):
+            lp["_kanaele"] = [k for i, k in enumerate(kanaele) if lp.get(f"p{i}")]
+            raus.append(lp)
+    return raus
+
+
 def main():
     if "--kanarien" in sys.argv:
+        n3, f3 = gs.heilschmuck_kanarien()
+        for t, e in f3:
+            print(f"  FEHLER Heil-Schmuck: «{t}» erwartet {e}")
+        print(f"FERTIG: {n3} Heil-Schmuck-Kanarien, {len(f3)} Fehler")
+        if f3:
+            sys.exit(1)
         n2, f2 = gs.feuerzeug_kanarien()
         for t, e in f2:
             print(f"  FEHLER Feuerzeug: «{t}» erwartet {e}")
@@ -217,13 +287,39 @@ def main():
                 print(f"    ⚠️ Tag nicht gesetzt: {ta.get('userErrors') or str(d.get('errors'))[:160]}")
         if fz and not DRY:
             time.sleep(20)
+    # Heil-Schmuck (13.10.2026): Tags «nicht-bewerben» + «heilschmuck» → unten raus aus Google + allen Werbekanälen.
+    # Altwerte-Ledger (Tags und Kanäle VORHER) = Rückweg: tagsRemove [nicht-bewerben, heilschmuck] + publishablePublish.
+    n3, f3 = gs.heilschmuck_kanarien()
+    if f3:
+        print(f"⚠️ Heil-Schmuck-Kanarien: {len(f3)} von {n3} falsch — Heil-Schmuck-Regel übersprungen")
+    else:
+        hs = heilschmuck_kandidaten()
+        print(f"Heil-Schmuck-Regel: {len(hs)} ohne nicht-bewerben in Google/Werbekanälen")
+        for p in hs:
+            print(f"  + nicht-bewerben, heilschmuck (Heil-Schmuck) | {p['title'][:70]}")
+            if DRY:
+                continue
+            d = gql("mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}",
+                    {"id": p["id"], "t": ["nicht-bewerben", "heilschmuck"]})
+            ta = (d.get("data") or {}).get("tagsAdd") or {}
+            if ta.get("userErrors") or d.get("errors") or not d.get("data"):
+                print(f"    ⚠️ Tag nicht gesetzt: {ta.get('userErrors') or str(d.get('errors'))[:160]}")
+                continue
+            with open(HEILSCHMUCK_LEDGER, "a") as f:
+                f.write(f"{time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}\t{p['id']}\t{p['handle']}\t{p['title']}\t"
+                        f"{','.join(p['tags'])}\t{','.join(p['_kanaele'])}\n")
+        if hs and not DRY:
+            time.sleep(20)
     roh = kandidaten()
     # Shopifys tag:'kostuem' trifft auch «kostuem-hut» (Plüschmützen, 65 am 23.09.) — die Suche
     # ist nur der Vorfilter, entschieden wird am exakten Tag.
     ks = [p for p in roh if gs.ausschluss_tag(p["tags"])]
     print(f"{len(roh)} Suchtreffer, {len(ks)} mit exaktem Ausschluss-Tag im Google-Kanal")
+    schon = {p["id"] for p in ks}
+    extra = [p for p in nur_werbekanal_kandidaten() if p["id"] not in schon]
+    print(f"{len(extra)} mit Alle-Kanäle-Tag nur noch in Werbekanälen (ausserhalb Google)")
     ok = fehl = 0
-    for p in ks:
+    for p in ks + extra:
         tg = {t.lower() for t in p["tags"]}
         grund = gs.ausschluss_tag(p["tags"])
         kanaele = {"Google & YouTube": GOOGLE}
@@ -236,9 +332,12 @@ def main():
                   userErrors{message}}}""",
                 {"id": p["id"], "in": [{"publicationId": v} for v in kanaele.values()]})
         fe = (d.get("data") or {}).get("publishableUnpublish", {}).get("userErrors") or d.get("errors")
-        chk = gql("query($id:ID!,$g:ID!){product(id:$id){publishedOnPublication(publicationId:$g)}}",
-                  {"id": p["id"], "g": GOOGLE})
-        noch = chk["data"]["product"]["publishedOnPublication"]
+        # 13.10.2026: Rücklesen JEDES Kanals, aus dem genommen wurde (vorher nur Google).
+        kv = list(kanaele.values())
+        chk = gql("query($id:ID!" + "".join(f",$k{i}:ID!" for i in range(len(kv))) + "){product(id:$id){"
+                  + " ".join(f"p{i}:publishedOnPublication(publicationId:$k{i})" for i in range(len(kv))) + "}}",
+                  {"id": p["id"], **{f"k{i}": k for i, k in enumerate(kv)}})
+        noch = any(chk["data"]["product"].get(f"p{i}") for i in range(len(kv)))
         if fe or noch:
             fehl += 1
             print(f"    ⚠️ nicht raus: {fe or 'noch publiziert'}")

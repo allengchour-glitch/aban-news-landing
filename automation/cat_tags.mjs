@@ -12,6 +12,21 @@
 // 29.09.2026: 11 weitere Modelle standen trotz Wache in der Halsketten-Kollektion — «Joskin Wannenkippanhänger»,
 // «Land Rover Defender, Einachsanhänger», «RAM 2500 … mit Anhänger», «Massey Ferguson …». Marken und Anhänger-Komposita
 // fehlten. Ausserdem: «Schlüsselanhänger» und «Anhänger für Hunde» sind kein Halsschmuck.
+import { readFileSync as _lies } from 'node:fs';
+
+// ── HEIL-SCHMUCK (13.10.2026) ─────────────────────────────────────────────────────────────────
+// Schmuck, der seiner ART nach als Therapie-Artikel verkauft wird (Magnettherapie, Lymph, Abnehm, Terahertz, Germanium,
+// negative Ionen …) bekommt beim Import «nicht-bewerben» + «heilschmuck» → Social-Poster überspringen ihn sofort,
+// google_sperrtags_durchsetzen nimmt ihn täglich aus Google und allen Werbekanälen; der Laden bleibt. Material (Kupfer,
+// Titan, Magnetverschluss) ist KEIN Grund. Regel + Kanarien EINMAL in data/heilschmuck_regel.json (Bestand-Zwilling:
+// google_sperrliste.ist_heilschmuck). Hier läuft der Text inkl. englischem Lieferantennamen («Magnetic Therapy Bracelet»).
+const _HS = JSON.parse(_lies(new URL('../data/heilschmuck_regel.json', import.meta.url), 'utf8'));
+const HEILSCHMUCK_SCHMUCK = new RegExp(_HS.schmuck), HEILSCHMUCK_HEIL = new RegExp(_HS.heil), HEILSCHMUCK_NICHT = new RegExp(_HS.nicht);
+export function istHeilschmuck(text) {
+  const s = normTitel(text);
+  return HEILSCHMUCK_SCHMUCK.test(s) && HEILSCHMUCK_HEIL.test(s) && !HEILSCHMUCK_NICHT.test(s);
+}
+
 const FAHRZEUG = /traktor|bagger|lkw|kipper|dozer|lader|schlepper|maehdrescher|bruder|john deere|fendt|claas|case ih|new holland|caterpillar|bworld|roadmax|beregnung|frontlader|teleskoplader|massey|joskin|land rover|defender|\bram \d|\bjeep\b|(?:wannenkipp|bordwand|fass|pferde|einachs|tank|holztransport|hakenlift|tieflade|vieh|ballen|abroll|mulden|rucke)anhanger|(?:transport|kipp)-?anhanger|fliegl|krampe/;
 
 // ── BELEUCHTUNG (23.09.2026, Audit-Befund 2) ─────────────────────────────────────────────────
@@ -167,6 +182,7 @@ export function catTags(text) {
   if (PARFUM_JA.test(s) && !PARFUM_NEIN.test(s)) { out.add('beauty'); out.add('parfum'); }
   if (istBeleuchtung(text)) out.add('beleuchtung');
   if (istGuertel(s)) out.add('Gurtel');
+  if (istHeilschmuck(text)) { out.add('nicht-bewerben'); out.add('heilschmuck'); }   // 13.10.2026, data/heilschmuck_regel.json
   return [...out];
 }
 
@@ -241,6 +257,8 @@ if (process.argv[1] && process.argv[1].endsWith('cat_tags.mjs') && process.argv.
   const hatGuertel = t => catTags(t).includes('Gurtel');
   pruefe('guertel', KANARIEN_GUERTEL.ja, true, hatGuertel);
   pruefe('guertel', KANARIEN_GUERTEL.nein, false, hatGuertel);
+  // Heil-Schmuck: dieselben Kanarien wie google_sperrliste.heilschmuck_kanarien() (py=js)
+  for (const [t, soll] of _HS.kanarien) if (istHeilschmuck(t) !== soll) { fehler++; console.log(`FALSCH heilschmuck soll=${soll}: ${t}`); }
   // Nebenwirkungsprobe: die übrigen Regeln bleiben unverändert (Stichprobe)
   const ring = catTags('Silberner Damenring mit Zirkonia');
   if (!ring.includes('schmuck')) { fehler++; console.log('FALSCH Nebenwirkung: Ring ohne schmuck', ring); }
