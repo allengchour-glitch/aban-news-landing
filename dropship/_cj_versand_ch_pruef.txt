@@ -8326,3 +8326,5 @@ wandtattoo-set-waldtiere-507905	-	-	-	unklar pid 1602002 Product has been remove
 rosegold-glattburste-fur-geschmeidiges-haar-222786	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 top-ten-wasserdichte-leuchtquarz-herrenuhr-601900	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 pflanzenbasierter-hautpflege-roll-on-stift-15m-481537	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+langanhaltender-parfum-balsam-fur-damen-653633	2075127803394568193	3	5.01	ok	landeseite
+59-teiliges-diamond-painting-werkzeugset-607937	2074710306871242754	0	-	KEINE CH-Option → DRAFT	landeseite
