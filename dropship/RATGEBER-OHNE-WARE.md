@@ -18,11 +18,6 @@ Suchverkehr ist der einzige Kanal, der in diesem Shop verkauft. Ein Ratgeber, de
 | [Gaming-Zubehör 2026: Maus, Headset & Tastatur richtig auswäh](/blogs/ratgeber/gaming-zubehoer-2026-maus-headset-tastatur) | 0 |
 | [Fitness zuhause 2026: Die richtige Ausrüstung für dein Heimt](/blogs/ratgeber/fitness-zuhause-2026-heimtraining-ausruestung) | 0 |
 | [Bartpflege & Rasur 2026: Der komplette Ratgeber für gepflegt](/blogs/ratgeber/bartpflege-rasur-2026-ratgeber) | 0 |
-| [Küchenhelfer 2026: Die nützlichsten Gadgets für jeden Hausha](/blogs/ratgeber/kuechenhelfer-2026-gadgets-haushalt) | 0 |
-| [Rucksack kaufen 2026: Schulranzen, Laptop- & Wanderrucksack ](/blogs/ratgeber/rucksack-kaufen-2026-ratgeber) | 0 |
-| [Beleuchtung & Lampen 2026: Stimmungsvolles Licht für jeden R](/blogs/ratgeber/beleuchtung-lampen-2026-ratgeber) | 0 |
-| [Garten & Balkon 2026: Die schönsten Ideen für draussen](/blogs/ratgeber/garten-balkon-2026-ideen) | 0 |
-| [Pool & Schwimmen 2026: Sommer-Spass im & am Wasser](/blogs/ratgeber/pool-schwimmen-2026-ratgeber) | 0 |
 | [Camping & Outdoor 2026: Die wichtigste Ausrüstung für unterw](/blogs/ratgeber/camping-outdoor-2026-ausruestung) | 0 |
 | [Haarstyling zuhause 2026: Föhn, Glätteisen & Lockenstab rich](/blogs/ratgeber/haarstyling-zuhause-2026-ratgeber) | 0 |
 | [Bar & Wein zuhause 2026: Stilvoll geniessen & servieren](/blogs/ratgeber/bar-wein-zuhause-2026-ratgeber) | 0 |
