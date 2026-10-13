@@ -366,3 +366,5 @@
 2026-10-13	gid://shopify/Product/16616502722951	natel	Sport Handy-Armband mit drehbarem Halter
 2026-10-13	gid://shopify/Product/16616502952327	natel	Bicycle Handy-Tasche aus PU-Leder
 2026-10-13	gid://shopify/Product/16616520679815	natel	Multifunktionale Armtasche fürs Handy
+2026-10-13	gid://shopify/Product/16616687010183	natel	HD Handy-Reparaturmikroskop mit Bildschirm
+2026-10-13	gid://shopify/Product/16616723579271	natel	Robuste Outdoor-Handytasche

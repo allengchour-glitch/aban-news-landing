@@ -52,13 +52,26 @@ def alle_urls(items, acc):
     return acc
 
 
-def main():
+# 13.10.2026 (Messrunde, Richter Platz 3): Saison-Kollektionen ohne Menüplatz — nur Sitemap/Suche führten hin.
+# Für MENSCHEN im Weihnachtsgeschäft, nicht für den Crawl (5/5 Menü-Neuzugänge vom 24.09. sind bei Google weiter «unknown»).
+# Pullover/Handwärmer unter «Herbst & Übergang», weil lux_breadcrumb Einträge unter «Geschenke» ausschliesst.
+#   python3 automation/menue_neue_kollektionen.py --saison          # DRY
+#   SCHARF=1 python3 automation/menue_neue_kollektionen.py --saison
+PLAN_SAISON = [
+    ("Weihnachtspullover 🎄", "weihnachtspullover", ["Herbst & Übergang"], "herren-pullover"),
+    ("Handwärmer", "handwaermer", ["Herbst & Übergang"], "waerme-komfort"),
+    ("Weihnachtspyjamas für die Familie", "weihnachtspyjama-familie", ["🎁 Geschenke & Weihnachten"], "adventskalender"),
+]
+
+
+def main(plan=None, anlass="keyword_kollektionen"):
+    plan = plan or PLAN
     m = _menu_lesen()
     vorher = _zaehle_items(m["items"])
     drin = alle_urls(m["items"], set())
     items = _als_input(m["items"])
     geplant = 0
-    for titel, handle, pfad, nach in PLAN:
+    for titel, handle, pfad, nach in plan:
         url = f"/collections/{handle}"
         if url in drin:
             print(f"  = «{titel}» steht schon im Menü"); continue
@@ -81,7 +94,7 @@ def main():
     print(f"Menü vorher: {vorher} Einträge · geplant: +{geplant}" + ("" if SCHARF else " · DRY"))
     if not SCHARF or not geplant:
         return 0
-    sich = os.path.join(REPO, "dropship", f"menu_backup_{datetime.now(timezone.utc):%Y-%m-%d_%H%M}_vor_keyword_kollektionen.json")
+    sich = os.path.join(REPO, "dropship", f"menu_backup_{datetime.now(timezone.utc):%Y-%m-%d_%H%M}_vor_{anlass}.json")
     json.dump(m, open(sich, "w"), ensure_ascii=False, indent=1)
     print("  Sicherung:", os.path.relpath(sich, REPO))
     r = gql('mutation($id:ID!,$t:String!,$h:String,$items:[MenuItemUpdateInput!]!){menuUpdate(id:$id,title:$t,handle:$h,'
@@ -98,10 +111,12 @@ def main():
         return acc
     verloren = ids(m["items"], set()) - ids(n["items"], set())
     neu_drin = alle_urls(n["items"], set())
-    fehlt = [h for _, h, _, _ in PLAN if f"/collections/{h}" not in neu_drin]
+    fehlt = [h for _, h, _, _ in plan if f"/collections/{h}" not in neu_drin]
     print(f"Menü nachher: {nachher} (vorher {vorher}, erwartet {vorher + geplant}) · verlorene IDs: {len(verloren)} · fehlt: {fehlt or 'nichts'}")
     return 0 if (nachher == vorher + geplant and not verloren and not fehlt) else 1
 
 
 if __name__ == "__main__":
+    if "--saison" in sys.argv:
+        sys.exit(main(PLAN_SAISON, "saison_kollektionen"))
     sys.exit(main())

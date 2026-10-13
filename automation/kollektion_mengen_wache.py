@@ -29,7 +29,8 @@ LEDGER = os.path.join(REPO, "dropship", "_kollektion_mengen.tsv")
 SCHARF = os.environ.get("SCHARF") == "1"
 MIN_AKTIV = 20
 ZAHL = r"(\d{1,3}(?:['’]\d{3})+|\d+)"
-ANSPRUCH = re.compile(r"\b(über|ueber|mehr als|rund|fast|knapp)(\s+)" + ZAHL + r"(\s*\+?\s+)(Artikel|Produkte|Produkten)\b", re.I)
+ANSPRUCH = re.compile(r"\b(über|ueber|mehr als|rund|fast|knapp)(\s+)" + ZAHL + r"(\s*\+?\s+)(Artikel|Produkte|Produkten|Kostüme|Kostueme)\b", re.I)
+# 13.10.2026 (Messrunde): «Über 2'000 Kostüme» stand auf kostueme-ch-lager bei 1'545 aktiven — das Nomen «Kostüme» fehlte.
 
 
 def zahl(s):
@@ -88,6 +89,9 @@ KANARIEN = [   # (Text, aktiv, Soll-Text)
     ("mehr als 50 Artikel", 50, "mehr als 40 Artikel"),                                         # «mehr als» heisst echt mehr
     ("knapp 90 Produkte", 47, "rund 50 Produkte"),                                             # «knapp/fast» → «rund»
     ("Über 1'000+ Artikel", 980, "Über 970+ Artikel"),
+    ("Über 2'000 Kostüme und Verkleidungen", 1545, "Über 1'500 Kostüme und Verkleidungen"),
+    ("über 200 Kostüme", 250, "über 200 Kostüme"),
+    ("Kostüme ab 2 Werktagen", 1545, "Kostüme ab 2 Werktagen"),                                # keine Mengenangabe
 ]
 
 
