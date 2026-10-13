@@ -62,3 +62,10 @@
 - An der CJ-API bestätigt: `cj_order_watch.py` meldet **LX1025 UNPAID → UNSHIPPED** und **LX1026 UNPAID → UNSHIPPED**, `cj_zahlung_offen.py` «nichts offen».
 - Bestell-Ampel danach: #1025, #1026 und #1023 «bezahlt, wartet auf Versand», #1024 bei Mister DTF. **Kein Zahllink offen.**
 - Die Sendungsnummern holt der Abgleich (alle 2 h) und schreibt sie an Shopify zurück.
+
+## 13.10.2026 16:15 UTC: Prüfung #1023 (Betreiber «check mal 1023»)
+- Shopify #1023: 11.10. 09:12 UTC, CHF 63.81 (Gratisversand), «Magnetische 3-in-1-Ladestation», Bern, Erstkundin, bezahlt, in Shopify noch UNERFÜLLT. Die Kundin hat also noch keine Sendungsnummer bekommen.
+- CJ LX1023 = SD2610110914560648000: bezahlt 11.10. 09:24, Status UNSHIPPED/PENDING, Lager Dongguan (CN), CJPacket EQ Sensitive. Kosten $59.52 = Ware 46.95 + Fracht 12.57.
+- Sendung EQKPT8613048701YQ: nur «Label created. Warehouse is processing» (11.10. 09:26), noch kein Scan beim Zusteller. Nach 2 T 7 h ist das normal (gemessen 1–5 T bis zur Übergabe).
+- Leere Hülle «#1023» DP2610110912410642200 (CREATED, Betrag 0) **nie bezahlen**. Sie ist nur der Shopify-Import.
+- Neu in der Bestell-Ampel: ab 5 T unversandt erscheint «⚠️ seit N T unversandt → CJ fragen». Für LX1023 wäre das am 16.10. ~09:15 UTC. Bisher gab es dafür keinen Wächter (versand_stillstand prüft nur erfüllte Sendungen).

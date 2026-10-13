@@ -35,6 +35,20 @@ def ledger_eintrag(nr, pfad=LEDGER):
     return None
 
 
+# 13.10.2026 (Betreiber «check mal 1023»): eine BEZAHLTE Bestellung, die CJ nicht versendet, sah keiner unserer Wächter —
+# versand_stillstand.py prüft nur Sendungen, die in Shopify schon ERFÜLLT sind (mit Nummer), die Ampel zeigte «bezahlt, wartet
+# auf Versand» ohne Frist. GEMESSEN: bezahlt → Übergabe an den Carrier 1–5 T (LX1012/LX1015 je 3 T, Journal 02.10.); ab 5 T
+# (= IRIS_H in versand_stillstand.py) ist es ein Fall für CJ (Agentin/Ticket).
+UNVERSANDT_H = float(os.environ.get("UNVERSANDT_H", "120"))
+
+
+def unversandt_warnung(stati, h):
+    """stati = CJ-Status der LX-Aufträge einer Bestellung, h = Stunden seit Bestellung → Warnzusatz oder ''."""
+    if h >= UNVERSANDT_H and any(x == "UNSHIPPED" for x in stati):
+        return f" ⚠️ seit {h / 24:.0f} T unversandt → CJ fragen (Ticket/Agentin)"
+    return ""
+
+
 def selbsttest():
     import tempfile
     with tempfile.NamedTemporaryFile("w", delete=False, suffix=".txt") as f:
@@ -44,6 +58,10 @@ def selbsttest():
               (ledger_eintrag("1026", f.name), None),      # nicht im Ledger
               (ledger_eintrag("102", f.name), None)]       # kein Präfix-Treffer (#102 ≠ #1025)
     os.unlink(f.name)
+    faelle += [(unversandt_warnung(["UNSHIPPED"], 55), ""),                        # #1023 am 13.10.: 2 T, normal
+               (unversandt_warnung(["UNSHIPPED"], 121), " ⚠️ seit 5 T unversandt → CJ fragen (Ticket/Agentin)"),
+               (unversandt_warnung(["SHIPPED"], 300), ""),                          # unterwegs = versand_stillstand
+               (unversandt_warnung([], 300), "")]
     ok = all(a == b for a, b in faelle)
     for i, (a, b) in enumerate(faelle):
         print(f"  {'OK  ' if a == b else 'FEHL'} Fall {i + 1}: {a}")
@@ -137,6 +155,7 @@ def main():
             if any(watch[k].get("status") in ("CREATED", "IN_CART", "UNPAID") for k in lx):
                 st += f" → 💳 zahlen: {ZAHLLISTE}"          # 12.10.: die Zeile führt direkt zum Bezahlen (Dauerauftrag 11.10.)
             warn = " ⚠️" if (not lx and h > 2) or any(watch[k].get("status") in ("TRASH", "CANCELLED") for k in lx) else ""
+            warn = warn or unversandt_warnung([watch[k].get("status") for k in lx], h)
             # 12.10.2026 (#1025): Der Bestell-Automat legt den CJ-Auftrag sofort an und schreibt ihn ins Ledger; der
             # Abgleich (cj_order_watch, Zustand oben) lief nur alle 2 h. Die Ampel zeigte «KEIN CJ-Auftrag», obwohl
             # LX1025 seit Minuten auf ZAHLUNG wartete — genau die Zeile, die der Betreiber zum Bezahlen braucht.
