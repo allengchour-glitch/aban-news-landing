@@ -19,8 +19,15 @@ Ablauf je bezahlter, unfulfillter Shopify-Bestellung:
 
 Idempotent ueber dropship/_cj_orders_done.txt (Shopify-Bestellnummer -> CJ-Order-ID).
 DRY=1 rechnet nur durch, ohne bei CJ anzulegen.
+
+13.10.2026 (Hetzner-Plan Schritt 3, Doppelbestellung): Der Automat laeuft auf ZWEI Rechnern (Server ubuntu-4gb-*
+und Cloud-Container), die flock-Sperre gilt nur je Rechner. Deshalb: der Server legt sofort an, die Cloud erst,
+wenn die Shopify-Bestellung aelter als CLOUD_WARTE_MIN (15) Minuten ist; und JEDER Rechner liest die CJ-Liste
+direkt vor createOrderV2 noch einmal. Von Hand sofort anlegen in der Cloud: CLOUD_WARTE_MIN=0.
+`--selbsttest` prueft das ohne einen einzigen echten CJ- oder Shopify-Aufruf.
 """
-import json, subprocess, time, os, re, sys
+import json, subprocess, time, os, re, sys, socket
+import datetime as dt
 import urllib.parse
 import os as _os_takt, sys as _sys_takt
 _sys_takt.path.insert(0, _os_takt.path.join(_os_takt.environ.get('REPO', '/home/user/aban-news-landing'), 'automation'))
@@ -40,13 +47,50 @@ def melde(schluessel, titel, text):
         except Exception as e:
             print(f"    (Push gescheitert: {type(e).__name__})", flush=True)
 
-CJTOK = open("/tmp/_cjtok").read().strip()
-STOK  = open("/tmp/cj_shop_token.txt").read().strip()
+# 13.10.2026: Selbsttest ohne Token-Dateien und ohne Kurs-Abruf (kein Netz, kein CJ).
+SELBSTTEST = __name__ == "__main__" and "--selbsttest" in sys.argv
+CJTOK = "" if SELBSTTEST else open("/tmp/_cjtok").read().strip()
+STOK  = "" if SELBSTTEST else open("/tmp/cj_shop_token.txt").read().strip()
 SHOP  = "au3j0y-hq.myshopify.com"
 DRY   = os.environ.get("DRY") == "1"
 LEDGER = "dropship/_cj_orders_done.txt"
 
 MAX_TAGE = int(os.environ.get("MAX_TAGE", "20"))       # Obergrenze fuers Lieferversprechen
+
+# 13.10.2026 (Hetzner-Plan Schritt 3): zeitliche Trennung Server/Cloud gegen eine doppelte CJ-Bestellung (echtes Geld).
+CLOUD_WARTE_MIN = float(os.environ.get("CLOUD_WARTE_MIN", "15"))
+# Legt der Server an, schreibt ER die Ledger-Zeile mit SD-Nummer (kommt per git). Eine zusaetzliche «(bereits-bei-cj)»-
+# Zeile der Cloud waere im Ledger ein falscher Doppel-Treffer — die Cloud schreibt sie erst, wenn die Bestellung
+# aelter als LEDGER_NACHZUG_MIN ist (dann ist der Server vermutlich zwischen Anlage und Ledger gestorben).
+LEDGER_NACHZUG_MIN = float(os.environ.get("LEDGER_NACHZUG_MIN", "60"))
+
+
+def ist_server(host=None):
+    """Hetzner-Server = Hostname ubuntu-4gb-* (wie engine_keepalive.sh); alles andere ist die Cloud."""
+    return (host if host is not None else socket.gethostname()).startswith("ubuntu-4gb-")
+
+
+def alter_min(created_at, jetzt=None):
+    """Shopify createdAt («2026-10-12T15:57:03Z») → Minuten seit der Bestellung; None, wenn unlesbar."""
+    try:
+        t = dt.datetime.fromisoformat(str(created_at).replace("Z", "+00:00"))
+    except Exception:
+        return None
+    if t.tzinfo is None:
+        t = t.replace(tzinfo=dt.timezone.utc)
+    return ((jetzt or dt.datetime.now(dt.timezone.utc)) - t).total_seconds() / 60
+
+
+def cloud_wartet(o, server, jetzt=None):
+    """'' = dieser Rechner darf anlegen; sonst der Grund, warum die Cloud (noch) nicht anlegt."""
+    if server or CLOUD_WARTE_MIN <= 0:
+        return ""
+    a = alter_min(o.get("createdAt"), jetzt)
+    if a is None:
+        return f"createdAt «{o.get('createdAt')}» unlesbar — Cloud legt nicht an, der Server übernimmt"
+    if a < CLOUD_WARTE_MIN:
+        return f"erst {a:.0f} min alt — Cloud wartet {CLOUD_WARTE_MIN:.0f} min, der Server legt an"
+    return ""
 
 
 try:  # 03.10.2026: Eimer-Etikette im gemeinsamen gql-Helfer (Regel «helfer-ohne-eimer»)
@@ -75,7 +119,7 @@ def usd_chf():
     raise SystemExit("Kein USD→CHF-Kurs abrufbar — lieber abbrechen als mit geratenem Kurs rechnen.")
 
 
-USD_CHF = usd_chf()
+USD_CHF = 0.80 if SELBSTTEST else usd_chf()
 
 
 def cj(path, body=None):
@@ -333,14 +377,17 @@ def waehle_versand(opts, ware_usd, vk_chf):
     return o, hin
 
 
-def cj_bestellnummern():
+def cj_bestellnummern(streng=False):
     """Die WAHRHEIT liegt bei CJ, nicht im lokalen Ledger. Ein Lauf, der zwischen Anlage und
     Ledger-Schreiben stirbt (passiert hier staendig), wuerde die Bestellung sonst ein zweites
     Mal anlegen — dieselbe Falle wie beim Social-Doppelpost, nur kostet sie hier echtes Geld.
-    Darum vor jeder Anlage die komplette CJ-Bestellliste gegenpruefen."""
+    Darum vor jeder Anlage die komplette CJ-Bestellliste gegenpruefen.
+    13.10.2026: streng=True → None, wenn CJ die Liste nicht liefert (sonst sieht ein Ausfall aus wie «leer»)."""
     nums, seite = set(), 1
     while seite <= 10:
         d = cj(f"/api2.0/v1/shopping/order/list?pageNum={seite}&pageSize=100")
+        if streng and str(d.get("code")) != "200":
+            return None
         lst = (d.get("data") or {}).get("list") or []
         if not lst:
             break
@@ -353,6 +400,18 @@ def cj_bestellnummern():
         seite += 1
         time.sleep(0.5)
     return nums
+
+
+def vor_anlage(nr, lesen=None):
+    """13.10.2026 (Hetzner-Plan Schritt 3): CJ-Liste DIREKT vor createOrderV2 neu lesen. Am Laufbeginn gelesen ist sie
+    nach Varianten- und Frachtabfragen Minuten alt — in der Zeit kann der andere Rechner LX<nr> angelegt haben.
+    → ('frei', '') | ('bereits', Grund) | ('unlesbar', Grund). `lesen` = Testhaken für den Selbsttest."""
+    nums = (lesen or (lambda: cj_bestellnummern(streng=True)))()
+    if nums is None:
+        return "unlesbar", "CJ-Bestellliste gerade nicht lesbar — lieber nächster Lauf als Doppelbestellung"
+    if f"LX{nr}".upper() in nums:
+        return "bereits", f"LX{nr} liegt inzwischen bei CJ (anderer Rechner war schneller) — kein Doppel-Anlegen"
+    return "frei", ""
 
 
 def token_pruefen():
@@ -379,9 +438,10 @@ def token_pruefen():
     return True
 
 
-def main():
+def main(host=None):
     if not token_pruefen():
         return
+    server = ist_server(host)      # 13.10.2026: Server legt sofort an, Cloud erst nach CLOUD_WARTE_MIN
     done = {}
     if os.path.exists(LEDGER):
         for l in open(LEDGER):
@@ -391,7 +451,8 @@ def main():
     print(f"CJ kennt bereits {len(bei_cj)} Bestellnummern", flush=True)
     f = open(LEDGER, "a")
     bestellungen = offene_bestellungen()
-    print(f"offene bezahlte Bestellungen: {len(bestellungen)} | schon angelegt: {len(done)} | DRY={DRY}", flush=True)
+    print(f"offene bezahlte Bestellungen: {len(bestellungen)} | schon angelegt: {len(done)} | DRY={DRY} | "
+          f"Rechner: {'Server (legt sofort an)' if server else f'Cloud (wartet {CLOUD_WARTE_MIN:.0f} min)'}", flush=True)
 
     for o in bestellungen:
         nr = o["name"].lstrip("#")
@@ -399,8 +460,18 @@ def main():
             print(f"  {o['name']}: schon angelegt ({done[o['name']]})", flush=True)
             continue
         if f"LX{nr}".upper() in bei_cj:
+            a = alter_min(o.get("createdAt"))
+            if not server and a is not None and a < LEDGER_NACHZUG_MIN:
+                # 13.10.2026: die Ledger-Zeile mit SD-Nummer schreibt der Rechner, der angelegt hat (kommt per git)
+                print(f"  {o['name']}: ⏭️ LX{nr} liegt bereits bei CJ — Ledger-Zeile kommt vom anlegenden Rechner", flush=True)
+                continue
             print(f"  {o['name']}: ⏭️ LX{nr} liegt bereits bei CJ — kein Doppel-Anlegen", flush=True)
             f.write(f"{o['name']}\t(bereits-bei-cj)\tLX{nr}\n"); f.flush()
+            continue
+        warte = cloud_wartet(o, server)
+        if warte:
+            # 13.10.2026 (Hetzner-Plan Schritt 3): VOR Varianten-/Frachtabfragen — eine wartende Bestellung kostet keine CJ-Punkte.
+            print(f"  {o['name']}: ⏳ {warte}", flush=True)
             continue
         sa = o.get("shippingAddress") or {}
         cust = o.get("customer") or {}
@@ -487,6 +558,12 @@ def main():
             "logisticName": wahl["logisticName"],
             "products": produkte,
         }
+        # 13.10.2026 (Hetzner-Plan Schritt 3): zweiter Blick auf die CJ-Liste unmittelbar vor dem Anlegen. Keine
+        # Ledger-Zeile bei «bereits» — die schreibt der Rechner, der angelegt hat; der nächste Lauf prüft erneut.
+        stand, grund = vor_anlage(nr)
+        if stand != "frei":
+            print(f"  {o['name']}: ⏭️ {grund}", flush=True)
+            continue
         r = cj("/api2.0/v1/shopping/order/createOrderV2", body)
         if r.get("code") != 200:
             print(f"    ❌ CJ lehnt ab: {r.get('message')}", flush=True)
@@ -502,5 +579,76 @@ def main():
         time.sleep(1)
 
 
+def selbsttest():
+    """13.10.2026 (Hetzner-Plan Schritt 3): main() mit gefälschtem CJ/Shopify — KEIN echter Aufruf, kein Push.
+    Je Fall: Rechner, Alter der Shopify-Bestellung, was die CJ-Liste beim 1. und 2. Lesen zeigt → angelegt ja/nein."""
+    import tempfile, io, contextlib
+    g = globals()
+    alt = {k: g[k] for k in ("cj", "offene_bestellungen", "vid_fuer", "fracht", "token_pruefen", "LEDGER", "DRY", "_push")}
+    jetzt = dt.datetime.now(dt.timezone.utc)
+    faelle = [  # (Name, Host, Alter min, CJ-Liste 1. Lesen, 2. Lesen, soll angelegt, soll Ledger-Zeile, Text im Log)
+        ("frisch, Cloud wartet",           "vm",                 5,  [],         None,       False, None, "Cloud wartet"),
+        ("alt, Cloud legt an",             "vm",                 20, [],         [],         True,  "SD",  "angelegt LX9001"),
+        ("frisch, Server legt sofort an",  "ubuntu-4gb-nbg1-1",  1,  [],         [],         True,  "SD",  "angelegt LX9001"),
+        ("LX schon bei CJ (Laufbeginn)",   "vm",                 20, ["LX9001"], None,       False, None, "Ledger-Zeile kommt"),
+        ("LX schon bei CJ, Server",        "ubuntu-4gb-nbg1-1",  1,  ["LX9001"], None,       False, "(bereits-bei-cj)", "kein Doppel"),
+        ("LX bei CJ seit > 60 min, Cloud", "vm",                 90, ["LX9001"], None,       False, "(bereits-bei-cj)", "kein Doppel"),
+        ("LX taucht vor Anlage auf",       "vm",                 20, [],         ["LX9001"], False, None, "anderer Rechner war schneller"),
+        ("CJ-Liste vor Anlage unlesbar",   "vm",                 20, [],         "FEHLER",   False, None, "nicht lesbar"),
+    ]
+    fehler = 0
+    try:
+        for name, host, alter, liste1, liste2, soll_an, soll_ledger, soll_text in faelle:
+            lesungen, angelegt = [liste1, liste2], []
+
+            def fake_cj(path, body=None):
+                if "shopping/order/list" in path:
+                    l = lesungen.pop(0) if lesungen else None
+                    if l is None:
+                        raise AssertionError("CJ-Liste öfter gelesen als erwartet")
+                    if l == "FEHLER":
+                        return {"code": 1600100, "message": "Testausfall"}
+                    return {"code": 200, "data": {"list": [{"orderNum": n} for n in l]}}
+                if "createOrderV2" in path:
+                    angelegt.append(body["orderNumber"])
+                    return {"code": 200, "data": {"orderId": "SDTEST" + body["orderNumber"]}}
+                raise AssertionError("unerwarteter CJ-Aufruf im Selbsttest: " + path)
+
+            created = (jetzt - dt.timedelta(minutes=alter)).strftime("%Y-%m-%dT%H:%M:%SZ")
+            bestellung = {"name": "#9001", "createdAt": created, "totalPriceSet": {"shopMoney": {"amount": "40.00"}},
+                          "shippingAddress": {"name": "Test", "address1": "Weg 1", "city": "Bern", "zip": "3000",
+                                              "countryCodeV2": "CH", "phone": "+41 79 000 00 00"},
+                          "customer": {}, "lineItems": {"nodes": [{"title": "T", "quantity": 1, "sku": "CJ-1234567890123",
+                                                                    "variantTitle": None}]}}
+            ledger = tempfile.NamedTemporaryFile("w", delete=False, suffix=".txt"); ledger.close()
+            g.update(cj=fake_cj, offene_bestellungen=lambda: [bestellung], token_pruefen=lambda: True,
+                     vid_fuer=lambda sku, vt: ({"vid": "V1", "variantSellPrice": 5}, None),
+                     fracht=lambda p, land="CH": [{"logisticName": "CJPacket", "logisticPrice": 6.0, "logisticAging": "6-10"}],
+                     LEDGER=ledger.name, DRY=False, _push=None)
+            log = io.StringIO()
+            try:
+                with contextlib.redirect_stdout(log):
+                    main(host=host)
+            except Exception as ex:          # z. B. CJ-Liste öfter gelesen als erwartet → Fall gilt als FEHL
+                log.write(f"\nAUSNAHME {type(ex).__name__}: {ex}")
+                angelegt.append("AUSNAHME")
+            zeilen = open(ledger.name).read().splitlines()
+            os.unlink(ledger.name)
+            ist_ledger = None if not zeilen else zeilen[0].split("\t")[1]
+            ok = ((bool(angelegt) == soll_an) and len(angelegt) <= 1 and len(zeilen) <= 1
+                  and (ist_ledger is None if soll_ledger is None else (ist_ledger or "").startswith(soll_ledger))
+                  and soll_text in log.getvalue())
+            fehler += not ok
+            print(f"  {'OK  ' if ok else 'FEHL'} {name}: angelegt={angelegt or '—'} Ledger={zeilen or '—'}")
+            if not ok:
+                print("       Log: " + log.getvalue().strip().replace("\n", "\n            "))
+    finally:
+        g.update(alt)
+    print("SELBSTTEST", "OK" if not fehler else f"FEHLER ({fehler})")
+    return 0 if not fehler else 1
+
+
 if __name__ == "__main__":
+    if SELBSTTEST:
+        sys.exit(selbsttest())
     main()
