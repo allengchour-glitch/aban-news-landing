@@ -4048,3 +4048,14 @@ gid://shopify/Product/16615656259975	kleider	Denimkleid im Loose Fit mit langen 
 gid://shopify/Product/16615656489351	kleider	Elegantes Hüftkleid mit langen Ärmeln
 gid://shopify/Product/16615656718727	kleider	Maxikleid mit Rundhalsausschnitt und Falten
 gid://shopify/Product/16615656751495	kleider	Weihnachts-Strickkleid mit langen Ärmeln
+gid://shopify/Product/16615798571399	ketten	Taillenkette mit Totenkopf-Hand
+gid://shopify/Product/16615802995079	ketten	Taillenkette mit Quasten
+gid://shopify/Product/16615803191687	ketten	Taillenkette mit Gürtel
+gid://shopify/Product/16615803355527	ketten	Taillenkette mit Gürtelschnalle
+gid://shopify/Product/16615806435719	kleider	Babykleid-Set aus Baumwolle, 0-3 Monate
+gid://shopify/Product/16615807222151	kleider	Hochzeitskleid-Set für Puppen
+gid://shopify/Product/16615810990471	taschen	Weihnachts-Hängetasche
+gid://shopify/Product/16615811318151	taschen	Umhängetasche mit USB-Ladefunktion
+gid://shopify/Product/16615811973511	taschen	Aktentasche aus Rindsleder und Canvas
+gid://shopify/Product/16615812039047	taschen	UV-Desinfektionstasche für Babyflaschen
+gid://shopify/Product/16615815479687	ketten	Retro Kupferkette-Tassel-Brosche
