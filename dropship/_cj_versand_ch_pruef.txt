@@ -8129,3 +8129,15 @@ bettuberwurf-619200	2607061025141610001	16	13.16	ok	landeseite
 kuscheldecke-613200	2607061020441614000	16	18.95	ok	landeseite
 vw-funkschlussel-gehause-3-tasten-633400	2605310916241634100	16	4.66	ok	landeseite
 auto-schlusselanhanger-sweet-couple-640400	2510200553061640600	7	6.49	ok	landeseite
+smart-key-fernbedienungsgehause-fur-chevrolet-621600	2412310604421622100	16	5.27	ok	landeseite
+rucksitz-organizer-mit-klapptisch-830657	1872848991685214210	16	15.42	ok	landeseite
+scheinwerfer-zierring-fur-golf-jetta-tiguan-600100	2410300210531600300	16	4.34	ok	landeseite
+wand-schlusselbox-mit-zahlencode-626300	2407200521401626500	16	10.55	ok	landeseite
+velo-rahmentasche-furs-smartphone-703936	1771047064781201408	16	8.23	ok	landeseite
+anti-knabber-spray-fur-haustiere-261633	2075136833000730626	3	6.34	ok	landeseite
+beissfester-haustier-traktionsball-mit-usb-lad-610800	2601290339571611100	7	9.99	ok	landeseite
+robustes-kauspielzeug-fur-hunde-610400	2601200856041610800	7	7.62	ok	landeseite
+smart-beissfester-hundeball-mit-zahnreinigung-628600	2601200843471628900	16	6.63	ok	landeseite
+giraffe-waschbar-baumwollseil-spielzeug-600000	2601120525481600200	16	7.17	ok	landeseite
+quietschendes-gummi-monster-fur-hunde-945217	2004008466410745857	0	-	KEINE CH-Option → DRAFT	landeseite
+hufeisen-kauspielzeug-aus-naturkautschuk-315842	2004014489188290562	0	-	KEINE CH-Option → DRAFT	landeseite
