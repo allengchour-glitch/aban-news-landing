@@ -31,21 +31,58 @@ frisch_gebootet() {   # frisch_gebootet [sekunden] — 0 = Uptime unter 1800 s; 
   case "$up" in ''|*[!0-9]*) return 1 ;; esac
   [ "$up" -lt 1800 ]
 }
+# 13.10.2026 (Hetzner-Plan Schritt 4, Prüfer-Nachtrag): Der «falsche» Rewind-Alarm war zugleich die EINZIGE Selbstheilung
+# des Server-Klons. autocommit.sh nimmt nur dropship/ auf; ändert ein Server-Wächter eine versionierte Datei ausserhalb
+# (ig_bildformat.py → social/posts_image.csv, 6 h, SCHARF=1), bricht jedes `git merge origin` ab, der Push wird abgewiesen
+# und die ungepushten Commits altern. Belege: 98 Stashes auf dem Server (letzter 13.10. 00:21), Union-Commit 883bef3aa
+# (12.10.) spielte social/posts_image.csv aus dem Server-Stash zurück. Darum: Alarm nur unterdrücken, wenn der Push NICHT
+# hängt — der älteste ungepushte Commit (origin..HEAD) ist im Normalbetrieb höchstens ~10–20 min alt.
+haengt_aus_zeiten() {   # haengt_aus_zeiten <jetzt> < Commit-Zeiten (%ct, je Zeile) → Alter des ältesten in s; keiner/unlesbar = 0
+  local jetzt="$1" t_alt
+  t_alt=$(grep -E '^[0-9]+$' | sort -n | head -1)
+  case "$jetzt" in ''|*[!0-9]*) echo 0; return ;; esac
+  case "$t_alt" in ''|*[!0-9]*) echo 0; return ;; esac
+  [ "$jetzt" -gt "$t_alt" ] && echo $(( jetzt - t_alt )) || echo 0
+}
+haengt_seit() {   # Alter (s) des ältesten ungepushten Commits auf diesem Klon; 0 = keiner (nur lesend: git log)
+  git log origin/claude/luxestyle-status-tztnn1..HEAD --format=%ct 2>/dev/null | haengt_aus_zeiten "$(date +%s)"
+}
+rewind_entscheid() {   # rewind_entscheid <hinten> <uptime_s> <haengt_s> → ruhig | unterdruecken | ausloesen
+  local hinten="${1:-0}" up="$2" haengt="${3:-0}"
+  case "$hinten" in ''|*[!0-9]*) hinten=0 ;; esac
+  case "$haengt" in ''|*[!0-9]*) haengt=0 ;; esac
+  [ "$hinten" -gt 5 ] || { echo ruhig; return; }
+  if ! frisch_gebootet "$up" && [ "$haengt" -lt 1800 ]; then echo unterdruecken; else echo ausloesen; fi
+}
 # Probe ohne Motoren: KEEPALIVE_SELBSTTEST=1 bash automation/engine_keepalive.sh  (optional KEEPALIVE_UPTIME=<s> als Zusatzfall)
 if [ -n "${KEEPALIVE_SELBSTTEST:-}" ]; then
-  st_fehler=0
+  st_fehler=0; st_zahl=0
   for st_fall in "0:ja" "120.55:ja" "1799.99:ja" "1800:nein" "1800.01:nein" "9158400.12:nein" ":nein" "abc:nein"; do
-    st_wert="${st_fall%:*}"; st_soll="${st_fall##*:}"
+    st_wert="${st_fall%:*}"; st_soll="${st_fall##*:}"; st_zahl=$((st_zahl+1))
     if frisch_gebootet "$st_wert"; then st_ist=ja; else st_ist=nein; fi
     [ "$st_ist" = "$st_soll" ] || { st_fehler=$((st_fehler+1)); echo "FEHLER: Uptime '$st_wert' → $st_ist (soll $st_soll)"; }
   done
+  # Rewind-Entscheid: hinten:uptime:haengt_s:soll — 2700 s ungepushter Commit auf einem Langläufer MUSS auslösen (Selbstheilung).
+  for st_fall in "10:9000000:2700:ausloesen" "10:9000000:0:unterdruecken" "10:9000000:1799:unterdruecken" \
+                 "10:9000000:1800:ausloesen" "10:120:0:ausloesen" "10:120:2700:ausloesen" "10::0:unterdruecken" \
+                 "10::2700:ausloesen" "3:9000000:2700:ruhig" "5:120:0:ruhig" "6:9000000::unterdruecken"; do
+    IFS=: read -r st_h st_u st_g st_soll <<< "$st_fall"; st_zahl=$((st_zahl+1))
+    st_ist=$(rewind_entscheid "$st_h" "$st_u" "$st_g")
+    [ "$st_ist" = "$st_soll" ] || { st_fehler=$((st_fehler+1)); echo "FEHLER: hinten=$st_h uptime='$st_u' haengt='$st_g' → $st_ist (soll $st_soll)"; }
+  done
+  # Alter des ältesten ungepushten Commits aus festen Zeiten (kein git): jetzt:zeiten(,):soll
+  for st_fall in "3000:300,2500,2900:2700" "3000::0" "3000:abc:0" "3000:3500:0" ":300:0"; do
+    IFS=: read -r st_j st_z st_soll <<< "$st_fall"; st_zahl=$((st_zahl+1))
+    st_ist=$(printf '%s\n' ${st_z//,/ } | haengt_aus_zeiten "$st_j")
+    [ "$st_ist" = "$st_soll" ] || { st_fehler=$((st_fehler+1)); echo "FEHLER: haengt_aus_zeiten jetzt=$st_j zeiten='$st_z' → $st_ist (soll $st_soll)"; }
+  done
   if [ -n "${KEEPALIVE_UPTIME+x}" ]; then
-    if frisch_gebootet "$KEEPALIVE_UPTIME"; then st_ist=ja; else st_ist=nein; fi
-    echo "Probe: Uptime '$KEEPALIVE_UPTIME' s → frisch gebootet: $st_ist (Rewind-Alarm würde $( [ "$st_ist" = ja ] && echo auslösen || echo schweigen ))"
+    st_ist=$(rewind_entscheid 10 "$KEEPALIVE_UPTIME" "${KEEPALIVE_HAENGT:-0}")
+    echo "Probe: hinten 10, Uptime '$KEEPALIVE_UPTIME' s, Push hängt ${KEEPALIVE_HAENGT:-0} s → Rewind-Alarm: $st_ist"
   fi
   if frisch_gebootet; then st_ist=ja; else st_ist=nein; fi
-  echo "Dieser Rechner: Uptime $(cut -d' ' -f1 /proc/uptime 2>/dev/null) s → frisch gebootet: $st_ist"
-  echo "SELBSTTEST frisch_gebootet: $((8-st_fehler))/8 ok"
+  echo "Dieser Rechner: Uptime $(cut -d' ' -f1 /proc/uptime 2>/dev/null) s → frisch gebootet: $st_ist · ältester ungepushter Commit: $(haengt_seit) s"
+  echo "SELBSTTEST Rewind-Entscheid: $((st_zahl-st_fehler))/$st_zahl ok"
   exit $(( st_fehler > 0 ))
 fi
 
@@ -654,12 +691,16 @@ echo "STAND: $(zaehle cj_runner) CJ-Runner, Aufseher=$(zaehle_aufseher)"
 find .git -name "*.lock" -delete 2>/dev/null
 if timeout 60 git fetch -q origin claude/luxestyle-status-tztnn1 2>/dev/null; then
   hinten=$(git rev-list --count HEAD..origin/claude/luxestyle-status-tztnn1 2>/dev/null || echo 0)
-  # 13.10.2026 (Hetzner-Plan Schritt 4): nur kurz nach dem Booten ist «hinten» ein Rewind; sonst merged der Autocommit.
-  if [ "${hinten:-0}" -gt 5 ] && ! frisch_gebootet; then
-    up_jetzt=$(cut -d' ' -f1 /proc/uptime 2>/dev/null)
-    echo "REWIND-ALARM aus: $hinten hinter origin, aber Uptime ${up_jetzt:-unlesbar} s nicht unter 1800 — kein Restore, der Autocommit merged"
-  elif [ "${hinten:-0}" -gt 5 ]; then
-    echo "REWIND erkannt ($hinten hinter origin) — repo_vorspulen"
+  # 13.10.2026 (Hetzner-Plan Schritt 4 + Prüfer-Nachtrag): nur unterdrücken, wenn NICHT frisch gebootet UND der Push nicht
+  # hängt (ältester ungepushter Commit < 1800 s). Hängt er, heilt der alte Ablauf (repo_vorspulen) den Server-Klon wie bisher.
+  up_jetzt=$(cut -d' ' -f1 /proc/uptime 2>/dev/null)
+  haengt_s=$(haengt_seit)
+  rw_entscheid=$(rewind_entscheid "${hinten:-0}" "$up_jetzt" "$haengt_s")
+  if [ "$rw_entscheid" = unterdruecken ]; then
+    echo "REWIND-ALARM aus: $hinten hinter origin, Uptime ${up_jetzt:-?} s nicht unter 1800, Push hängt nicht (${haengt_s} s) — kein Restore, der Autocommit merged"
+  elif [ "$rw_entscheid" = ausloesen ]; then
+    if frisch_gebootet "$up_jetzt"; then rw_grund="frisch gebootet (Uptime ${up_jetzt:-?} s)"; else rw_grund="Push hängt seit ${haengt_s} s"; fi
+    echo "REWIND erkannt ($hinten hinter origin, $rw_grund) — repo_vorspulen"
     git checkout origin/claude/luxestyle-status-tztnn1 -- automation/repo_vorspulen.sh 2>/dev/null
     bash automation/repo_vorspulen.sh 2>&1 | tail -2
     # ⚠️ VORSPULEN ALLEIN REICHT NICHT (28.08.2026). Der Rewind stellt den Stand vom 24.08.
