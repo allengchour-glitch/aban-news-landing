@@ -344,6 +344,19 @@ senden». Das hängt nicht an der PC-Uhr und gilt auch, wenn beim Start das Netz
 ausgeführt). `/stop` und `/weiter` laufen sofort — langsame Info-Befehle (`/lage`, `/status`, `/profit`) laufen nebenher
 und halten den Not-Aus nie auf.
 
+## 📰 News-Wächter — immer im Bild, aber kein News-Trading (`news_waechter.py`)
+
+Läuft mit dem Cockpit (`cockpit.py`) auf deinem PC und prüft **alle 30 Minuten**: Binance-Ankündigungen (Delistings,
+neue Listings, Binance-News) und die Krypto-Nachrichten von Cointelegraph, Decrypt, The Block und CoinDesk (mit
+`CRYPTOPANIC_KEY` zusätzlich CryptoPanic). Wichtiges kommt sofort aufs Handy, `/news` in Telegram zeigt die letzten Alarme:
+**Hack** · **Abhebungen gestoppt** · **Insolvenz** · **Stablecoin-Depeg** · **SEC/ETF-Entscheid** · **Delisting von BTC/ETH**.
+Jeder Eintrag kommt nur einmal; beim allerersten Start wird nichts gemeldet (sonst käme die ganze Liste).
+- **Twitter/X:** nur mit bezahltem X-Zugang lesbar — darum nicht dabei. **Telegram-Kanäle** liest dein PC mit deinem Konto
+  (`calls_leser.py`, siehe «Telegram-Call-Gruppen»).
+- **Warum der Bot nicht nach News handelt:** Bis eine Schlagzeile da ist, ist der Kurs meist schon gelaufen — und unsere
+  Stimmungs-Daten (Angst & Gier enthält auch Social-Media-Stimmung) haben den Prüfstand nicht bestanden (siehe «Alle Infos»).
+  Der Wächter meldet; entscheiden kannst du (z. B. Not-Aus per `/stop`).
+
 ## 📣 Telegram-Call-Gruppen kopieren — erst ehrlich prüfen, dann (vielleicht) kopieren
 
 Viele Call-Gruppen zeigen nur ihre Gewinner, löschen Verlierer oder sind Pump-Gruppen. Darum geht es in drei Stufen:
@@ -755,6 +768,7 @@ python3 tools/trading/krypto_bot/test_binance.py  # 21 Tests, inkl. nachgebautem
 python3 tools/trading/krypto_bot/test_pilot2_plan.py  # 23 Tests: Pilot-2.0-Rechnung (Richtung, Ernte, Pfand, Mindestbeträge)
 python3 tools/trading/krypto_bot/test_pilot2_live.py  # 101 Tests: Pilot 2.0 («Konto = Wahrheit») gegen eine strenge nachgebaute Binance
 python3 tools/trading/krypto_bot/test_scalping.py      # 50 Tests: kein Blick in die Zukunft, strenge Füll-Regeln, Kosten exakt, Entscheidungsregeln
+python3 tools/trading/krypto_bot/test_news_waechter.py # 24 Tests: Alarm-Regeln, keine Fehlalarme, nur einmal melden, kein Fluten beim Start
 python3 tools/trading/krypto_bot/test_alle_coins.py    # 12 Tests: Universen Top 10/Meme/Alle, Trend-Auswahl, kein Blick in die Zukunft
 python3 tools/trading/krypto_bot/alle_coins_pruefung.py # Prüfstand Meme-Coins, Top 10 und alles (lädt alle Binance-Paare)
 python3 tools/trading/krypto_bot/test_copytrading.py   # 24 Tests: Filter «kopierbar», Rangkorrelation, Vorwärts-Test (ohne Netz)
