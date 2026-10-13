@@ -239,21 +239,7 @@ def main():
         ap.print_help()
         return 0
     import broker_futures as BF
-    import pilot2_live as P2L
     import sperre
-    if a.lauf and not a.trocken and BF.einstellungen()["stop"] and (P2L.aktiv() or P2L.hat_bestand()):
-        # Pilot 2.0: Not-Aus schliesst BEIDE Konten (Perpetual zurückkaufen, eigene Spot-Coins verkaufen) — Vorrang vor allem
-        try:
-            with sperre.lauf_sperre(warten=120):
-                r2 = P2L.ausfuehren([], notaus=True, protokolliere=P2L.protokoll_schreiben)
-        except sperre.Besetzt as ex:
-            print(f"{ex} Not-Aus trotzdem: schliesse ohne Sperre.")
-            r2 = P2L.ausfuehren([], notaus=True, protokolliere=P2L.protokoll_schreiben)
-        text_na = "\n".join(r2["zeilen"])
-        print(text_na)
-        import signale as SG
-        SG.push(text_na + "\nKeine Anlageberatung.")
-        return 3 if r2["warnung"] else 0
     if a.lauf and not a.trocken and BF.einstellungen()["stop"]:  # Datei STOP oder KI_BOT_STOP=1
         # Not-Aus hat Vorrang (auch vor der Pause) und braucht keine Kurse von Yahoo: nur schliessen, alle Märkte
         try:
@@ -265,7 +251,8 @@ def main():
         text_na = ("🛑 Not-Aus aktiv." if alles_zu else "🛑 Not-Aus aktiv — ⚠️ NICHT ALLES GESCHLOSSEN!") + "\n" + "\n".join(zeilen)
         print(text_na)
         lauf_merken(alles_zu, ["Not-Aus-Lauf"] + zeilen)
-        if any(z.startswith(("✅", "❌")) and "keine offene Position" not in z for z in zeilen):
+        if not alles_zu or any((z.startswith(("✅", "❌")) and "keine offene Position" not in z) or "Not-Aus Pilot 2.0 (" in z
+                               for z in zeilen):
             import signale as SG
             SG.push(text_na + "\nKeine Anlageberatung.")
         return 0 if alles_zu else 3  # 3 = Warnung, schon gemeldet (1 bleibt für Abstürze)
@@ -296,24 +283,33 @@ def main():
         return 0
 
 
-def schliessen_alle(ausfuehren=None, heute=None):
+def schliessen_alle(ausfuehren=None, heute=None, env=None):
     """Not-Aus: ALLE bekannten Märkte schliessen (auch solche, die gerade nicht eingestellt sind). → (alles_zu, Zeilen).
-    «geschlossen» nur, wenn die Position danach wirklich 0 ist."""
+    «geschlossen» nur, wenn die Position danach wirklich 0 ist. Pilot 2.0 zuerst (jeder Modus mit Bestand)."""
+    import broker_futures as BF
     import pilot2_live as P2L
+    env = os.environ if env is None else env
     heute = heute or datetime.now(timezone.utc).date().isoformat()
     zeilen, alles_zu = [], True
-    p2 = P2L.aktiv() or P2L.hat_bestand()
-    if p2:  # Pilot 2.0: beide Konten (Spot + Futures) schliessen — BTC/ETH-Perps gehören dann ihm
-        try:
-            r2 = P2L.ausfuehren([], notaus=True, protokolliere=P2L.protokoll_schreiben)
+    try:
+        r2 = P2L.notaus_alle(env, protokolliere=P2L.protokoll_schreiben)
+        if r2["modus"]:
             zeilen += r2["zeilen"]
-            alles_zu = alles_zu and r2.get("alles_zu") is not False and not r2["warnung"]
-        except Exception as ex:  # noqa: BLE001
-            zeilen.append(f"❌ Pilot 2.0: Not-Aus-Fehler {type(ex).__name__} — bitte im Binance-Konto prüfen!")
-            alles_zu = False
+        alles_zu = r2.get("alles_zu") is True
+    except Exception as ex:  # noqa: BLE001
+        zeilen.append(f"❌ Pilot 2.0: Not-Aus-Fehler {type(ex).__name__} — bitte im Binance-Konto prüfen!")
+        alles_zu = False
     if ausfuehren is None:
-        import broker_futures as BF
-        ausfuehren = BF.ausfuehren
+        def ausfuehren(e, symbol, gewicht):
+            return BF.ausfuehren(e, env=env, symbol=symbol, gewicht=gewicht)
+    # Gehört das Konto, das der alte Pilot anspricht, Pilot 2.0 (dort gestartet)? Dann sind BTC/ETH-Perps seine Ernte —
+    # die hat er oben schon geschlossen (oder bewusst als Absicherung stehen lassen). Sonst: alte Positionen hier schliessen.
+    try:
+        p2_modus = "echt" if BF.einstellungen(env)["echtgeld"] else "testnetz"
+        b2 = P2L.buch_lesen(P2L.BESTAND, p2_modus)
+        p2 = bool(b2["start"]) and (P2L.aktiv(env) or P2L._offen(b2))
+    except Exception:  # noqa: BLE001
+        p2 = True
     ziele = [] if p2 else [(m, sym) for m, (sym, _, _) in MAERKTE.items()]
     try:  # kopierte Telegram-Calls schliesst der Not-Aus auch
         import calls_kopierer as CK
@@ -399,7 +395,7 @@ def handeln(ents, lage, trocken):
         # und mit einem closePosition-Stop die Absicherung zerstören → nichts tun, laut melden.
         import signale as SG
         t = ("⚠️ Pilot 2.0 hat noch offene Positionen, ist aber ausgeschaltet (KRYPTO_PILOT2). Der alte Pilot handelt nicht. "
-             "Entweder KRYPTO_PILOT2=an setzen oder zuerst Not-Aus (stop.bat) — dann weiter.bat.")
+             "Zuerst Not-Aus (stop.bat) — er schliesst Pilot 2.0 —, danach weiter.bat.")
         print(t)
         if not trocken:
             SG.push(t + "\nKeine Anlageberatung.")
