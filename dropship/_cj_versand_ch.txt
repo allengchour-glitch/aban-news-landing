@@ -1578,3 +1578,6 @@ gid://shopify/Product/16615231947143	ok	Grosses Leder-Outdoor-Rucksack
 gid://shopify/Product/16615227720071	ok	Leder-Reiserucksack für Herren
 gid://shopify/Product/16616394719623	ok	Abstandsklebeband 2 m
 gid://shopify/Product/16616543256967	ok	Sportwagen-Modellbausatz mit Fernsteuerung
+gid://shopify/Product/16616723448199	nicht-versendbar	Multifunktionaler Aluminium-Koffer
+gid://shopify/Product/16616694776199	ok	Regenkette aus Kupfer-Aluminium-Legierung
+gid://shopify/Product/16616719647111	ok	Tarn-Rucksack für Herren
