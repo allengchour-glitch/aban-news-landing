@@ -72,7 +72,11 @@ strenge Füll-Regeln. **Ergebnis: 0 von 14 bestanden, 0 von 52 Varianten netto i
 Echte Muster existieren (ETH-Ausbruch +4,8 bp brutto, RSI2 schlägt 100 % Zufall), aber ein Trade kostet ~12 bp. Maker-Limits = adverse Auswahl.
 **Kein Scalping-Bot.** README-Abschnitt «⏱️ Scalping». x100-Hebel: siehe `hebel_pruefung.py --minuten` (92–94 % liquidiert in < 9 h).
 Telegram «GF1BIGTAKEOFFICIAL» geprüft: 2 echte Calls in 4 Monaten, sonst Werbung → nicht prüfbar; VIP-Gruppe nur über PC (`calls_leser.py`).
-Pilot 2.0: Prüfungen 3–5 fanden je 2–3 Blocker, alle behoben (PRs #2632–#2634, 98 Tests); 6. Prüfung lief am 13.10. abends.
+Pilot 2.0: Prüfungen 3–6 fanden je 2–3 Blocker (PRs #2632–#2634). Wurzel der Runden 3–6 = eigenes Coin-/USDT-Buch neben dem Konto →
+**Umbau «Konto = Wahrheit»**: Pilot 2.0 handelt nur in einem Binance-UNTERKONTO nur für ihn (alle verifizierten Konten mit 2FA, bis 5 Stück;
+PILOT2_API_KEY des Unterkontos), liest jeden Lauf den Kontostand, Buch = nur Start/UID/Stop-Kennungen. UID-Bindung (fremdes/fehlendes UID →
+nichts tun, auch im Not-Aus), Startprüfung: nur USDT ≤ KRYPTO_PILOT2_KAPITAL. 101 Tests, Mutationen 16/18 (+1 nachgebessert, 1 gleichwertig).
+FREIGEGEBEN bleibt False bis eine Prüfung 0 Blocker findet (7. Prüfung gestartet 13.10. abends).
 
 **📌 2026-10-12 (🤖 KI-Bot übernommen — Schattenbuch auf GitHub, NUR Spielgeld):** User: „kannst du alles übernehmen“ → gewählt
 „Spielgeld-Lauf auf GitHub“. Job `ki-bot-schatten` in `tages-update.yml` (kein neuer Cron): Tests → `bot.py --lauf` mit eigenem Logbuch

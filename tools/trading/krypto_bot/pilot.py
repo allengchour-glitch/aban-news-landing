@@ -248,6 +248,9 @@ def main():
         except sperre.Besetzt as ex:
             print(f"{ex} Not-Aus trotzdem: schliesse ohne Sperre.")
             alles_zu, zeilen = schliessen_alle()
+            # ein anderer Lauf könnte gleichzeitig noch etwas aufgebaut haben → nie «alles zu» melden
+            alles_zu = False
+            zeilen.insert(0, "⚠️ Ein anderer Lauf war noch aktiv — Not-Aus trotzdem ausgeführt. In 5 Minuten nochmals stop.bat.")
         text_na = ("🛑 Not-Aus aktiv." if alles_zu else "🛑 Not-Aus aktiv — ⚠️ NICHT ALLES GESCHLOSSEN!") + "\n" + "\n".join(zeilen)
         print(text_na)
         lauf_merken(alles_zu, ["Not-Aus-Lauf"] + zeilen)
@@ -293,7 +296,7 @@ def schliessen_alle(ausfuehren=None, heute=None, env=None):
     zeilen, alles_zu = [], True
     try:
         r2 = P2L.notaus_alle(env, protokolliere=P2L.protokoll_schreiben)
-        if r2["modus"]:
+        if r2["modus"] or not r2.get("alles_zu"):  # bei kaputtem/fehlendem Buch die Erklärung immer zeigen
             zeilen += r2["zeilen"]
         alles_zu = r2.get("alles_zu") is True
     except Exception as ex:  # noqa: BLE001
@@ -310,7 +313,7 @@ def schliessen_alle(ausfuehren=None, heute=None, env=None):
         b2 = P2L.buch_lesen(P2L.BESTAND, p2_modus)
         # gleiches Konto? Echtgeld: Pilot 2.0 hat einen eigenen Schlüssel (PILOT2_API_KEY) → anderes Konto = alter Pilot schliessen
         gleiches_konto = not bf["echtgeld"] or bf.get("key") == env.get("PILOT2_API_KEY")
-        p2 = bool(b2["start"]) and (P2L.aktiv(env) or P2L._offen(b2)) and gleiches_konto
+        p2 = P2L._gestartet(b2) and gleiches_konto
     except Exception:  # noqa: BLE001
         p2 = True
     ziele = [] if p2 else [(m, sym) for m, (sym, _, _) in MAERKTE.items()]

@@ -50,6 +50,7 @@ for %%T in (test_pilot test_sammler test_infos test_cockpit test_profit test_cal
 set "PILOTLAUF="
 if not "%BINANCE_FUTURES_API_KEY%"=="" set PILOTLAUF=1
 if /i "%KRYPTO_PILOT2%"=="an" if not "%PILOT2_API_KEY%%BINANCE_API_KEY%"=="" set PILOTLAUF=1
+if exist "data\krypto-pilot2-bestand.json" set PILOTLAUF=1
 if defined PILOTLAUF (
   call :schritt Krypto-Pilot pilot.py --lauf
 ) else (
