@@ -8412,3 +8412,9 @@ lippenpflege-20-30g-122424	F86DE28D-3895-4637-A467-DD606C0D146C	3	6.68	ok	landes
 liebes-hoodie-449152	1645715139016003584	16	9.47	ok	landeseite
 smartphone-hud-6e9adb	0048D403-AFCD-4137-BA20-5EF991718228	16	6.77	ok	landeseite
 mobile-gaming-controller-af15f5	469EF161-1781-49D6-9A6A-506C9FD7C963	7	9.37	ok	landeseite
+haarentferner-4in1-237632	1654038654798540800	16	7.43	ok	landeseite
+temperglast-schutzfolie-562240	1452182126974865408	16	5.02	ok	landeseite
+drift-rennwagen-2-4g-447616	1663734047715110912	7	12.15	ok	landeseite
+kuechenloeffel-set-113792	1397462195645845504	16	6.65	ok	landeseite
+wlan-video-turklingel-8db6b1	13D2C5AF-AF7D-435A-AD97-8FC0B698A2BE	16	8.73	ok	landeseite
+kabellose-ohrhorer-212992	1467746365969928192	7	6.81	ok	landeseite
