@@ -1,7 +1,7 @@
 {
- "stand": "2026-10-13T13:52Z",
+ "stand": "2026-10-13T16:41Z",
  "datum_in_kasse": true,
- "bearbeitungszeit_tage": 3,
+ "bearbeitungszeit_tage": 1,
  "versand_werktage": [
   [
    "#1022",
@@ -47,7 +47,7 @@
  "ch_lager_profil": {
   "ch_lager": {
    "profile": [
-    "General profile"
+    "CH-Lager"
    ],
    "anzahl": 2375
   },
@@ -55,8 +55,15 @@
    "profile": [
     "General profile"
    ],
-   "anzahl": 51168
+   "anzahl": 51169
   }
  },
- "ch_lager_im_asien_profil": true
+ "ch_lager_im_asien_profil": false,
+ "theme_kassendatum": {
+  "befunde": [],
+  "md5": {
+   "templates/cart.json": "4fa843ce3766d86c1802e1dd92d473e8",
+   "templates/product.json": "81c862212620ae627e1413d88079b775"
+  }
+ }
 }

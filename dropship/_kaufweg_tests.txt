@@ -2,3 +2,4 @@ start_utc	produkt	ergebnis	ordner
 2026-10-13T11:37:00Z	2-teiliges-leinen-set-provence-hemd-wide-leg-hose	ok	/tmp/kaufweg_leinen	(nachgetragen aus wf_2a13fa79)
 2026-10-13T11:55:00Z	abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe	ok	/tmp/kaufweg_sirene	(nachgetragen, Code WELCOME10)
 2026-10-13T14:38:02.681Z	maske-mit-hornvieh-mit-moos-ftck13817	ok	/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufweg_chl
+2026-10-13T16:42:09.349Z	maske-mit-hornvieh-mit-moos-ftck13817	ok	/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufweg_p1d
