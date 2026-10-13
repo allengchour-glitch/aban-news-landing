@@ -118,15 +118,24 @@ def urteil(eintrag, shop_groessen):
         werte = [ta[g][i] for g in reihe]
         if any(w2 < w1 for w1, w2 in zip(werte, werte[1:])):
             return False, f"Spalte {sp} fällt mit der Grösse: {werte}", None
-    return True, "ok", {"spalten": a["spalten"], "reihe": reihe, "werte": ta,
+    # 13.10.2026 (Messrunde, Belege-Skeptiker): 7 von 18 Tabellen zeigten «2XL», die Grössenauswahl derselben Seite «XXL»
+    # (Aurora, Provence …) — verglichen wird normiert, ANGEZEIGT wird der Optionswert des Shops.
+    anzeige = {norm_gr(g): str(g).strip() for g in shop_groessen}
+    return True, "ok", {"spalten": a["spalten"], "reihe": reihe, "werte": ta, "anzeige": anzeige,
                         "messart": a.get("messart") if a.get("messart") == b.get("messart") else "unklar"}
 
 
 def block_html(t):
     zahl = lambda w: (f"{w:.1f}".rstrip("0").rstrip(".")).replace(".", ",")
     kopf = "".join(f"<th>{html.escape(s)}</th>" for s in t["spalten"])
-    zeilen = "".join(f"<tr><td>{g}</td>" + "".join(f"<td>{zahl(w)}</td>" for w in t["werte"][g]) + "</tr>" for g in t["reihe"])
-    hinweis = {"flach": "Flach gemessen (halber Umfang): Brust, Taille und Hüfte × 2 ergibt den Umfang. ",
+    anz = t.get("anzeige") or {}
+    zeilen = "".join(f"<tr><td>{html.escape(anz.get(g, g))}</td>" + "".join(f"<td>{zahl(w)}</td>" for w in t["werte"][g]) + "</tr>"
+                     for g in t["reihe"])
+    # 13.10.: Die Fussnote nennt nur Umfangsmasse, die die Tabelle wirklich hat (Aurora: «Hüfte» ohne Hüft-Spalte).
+    umf = [n for k, n in (("brust", "Brust"), ("taille", "Taille"), ("hüfte", "Hüfte")) if k in {kanon(x) for x in t["spalten"]}]
+    liste = (", ".join(umf[:-1]) + " und " + umf[-1]) if len(umf) > 1 else (umf[0] if umf else "")
+    hinweis = {"flach": (f"Flach gemessen (halber Umfang): {liste} × 2 ergibt den Umfang. " if liste
+                         else "Flach gemessen (halber Umfang). "),
                "umfang": "Umfang gemessen. "}.get(t["messart"], "")
     return ('<div class="ls-masstabelle"><h4>📏 Masse dieses Modells (cm, laut Hersteller)</h4>'
             f"<table><thead><tr><th>Grösse</th>{kopf}</tr></thead><tbody>{zeilen}</tbody></table>"
@@ -165,6 +174,14 @@ def selbsttest():
                  "pruefer": {**t["pruefer"], "zeilen": [{"groesse": "S", "werte": [44, 120]}, {"groesse": "M", "werte": [42, 121]}]}},
                 ["S", "M"])[0], False),                                                         # Spalte fällt
         (norm_gr("xxl") == "2XL", True),
+        ("<td>XXL</td>" in block_html({**urteil(t, ["S", "M"])[2], "reihe": ["S", "2XL"], "werte": {"S": [44, 120], "2XL": [50, 130]},
+                                       "anzeige": {"S": "S", "2XL": "XXL"}}), True),                 # Shop «XXL» → Tabelle «XXL»
+        ("<td>2XL</td>" in block_html({**urteil(t, ["S", "M"])[2], "reihe": ["S", "2XL"], "werte": {"S": [44, 120], "2XL": [50, 130]},
+                                       "anzeige": {"S": "S", "2XL": "2XL"}}), True),                 # Shop «2XL» → «2XL»
+        ("Hüfte" in block_html({"spalten": ["Länge", "Brust", "Taille"], "reihe": ["S"], "werte": {"S": [100, 44, 36]},
+                                "messart": "flach"}), False),                                         # Fussnote ohne Hüft-Spalte
+        ("Brust und Taille × 2" in block_html({"spalten": ["Länge", "Brust", "Taille"], "reihe": ["S"], "werte": {"S": [100, 44, 36]},
+                                               "messart": "flach"}), True),
         (gleich('<div>\n<p>a</p>\n</div><!--x-->', '<div><p>a</p></div>'), True),
         (kanon("Rocklänge") == kanon("Länge") and kanon("Brust (Bluse)") == "brust" and kanon("Länge (Bustier)") == "länge", True),
         (urteil({**t, "pruefer": {**t["pruefer"], "sicherheit": "mittel"}}, ["S", "M"])[0], False),     # unsicher → nie

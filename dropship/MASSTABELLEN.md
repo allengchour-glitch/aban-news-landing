@@ -1,4 +1,4 @@
-# Masstabellen des Modells — Stand 2026-10-13 00:57 UTC
+# Masstabellen des Modells — Stand 2026-10-13 09:19 UTC
 
 40 Produkte mit Doppellesung · 18 bestanden · 22 nicht geschrieben (Grund unten). Regel: `automation/masstabelle_schreiben.py`, Daten `dropship/_masstabellen.json`.
 
