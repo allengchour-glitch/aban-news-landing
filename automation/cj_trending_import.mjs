@@ -322,7 +322,11 @@ for(const p of cand){
  // konnte. Eine Ware, die nicht ankommen kann, darf gar nicht erst entstehen — deshalb
  // steht die Sperre VOR dem Anlegen. Zubehoer ohne Klinge im Paket (Messerblock,
  // -schaerfer, Schwertgurt) bleibt erlaubt; das trennt istHandklinge.
- if(istHandklinge(title)){
+ // 13.10.2026: auch den ENGLISCHEN CJ-Namen fragen — Groq machte aus «bone chopper/cleaver», «folding knife carabiner»
+ // und «9 pcs knife set» die Titel «Knochenspalter», «5-in-1 Outdoor-Tool», «Küchenhelfer-Set»; 14 Klingen waren ACTIVE.
+ // Bewusst in Kauf genommen: Zubehör mit «Knife» vorne («Knife Roll Bag») wird übersprungen — ein verlorener Import
+ // kostet nichts, eine Klinge im Warenkorb eine Rücksendung aus Shanghai (#1017).
+ if(istHandklinge(title)||istHandklinge(d.productNameEn||p.productNameEn||'')){
   console.log(`  ⛔ Handklinge — kein CH-Versand (Klasse #1017) uebersprungen: ${title.slice(0,60)}`);
   fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid)); continue;
  }
