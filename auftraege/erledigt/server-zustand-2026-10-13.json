@@ -1,0 +1,83 @@
+{
+  "id": "server-zustand-2026-10-13",
+  "typ": "wartung",
+  "aktion": "waechter_zustand",
+  "warum": "13.10.2026, Plan «Hetzner auf Maximum» Schritt 1 — erste Messung noch heute (rein lesend). Trägt absichtlich den Namen, den auftraege/wiederkehrend/server-zustand.json für heute anlegen würde: so sieht die Fälligkeitsprüfung diese Datei in offen/ und legt KEINEN zweiten Lauf an; ab morgen übernimmt der wiederkehrende Auftrag. Beantwortet: beendet systemd am Takt-Ende alle Motoren (KillMode, Takt-Dauer aus dem Journal, Einheit jedes Skripts)? scipy/av/ffmpeg da? Wie viele Stashes? Platte, /tmp, RAM, Swap.",
+  "stand": "ok",
+  "begonnen": "2026-10-13T19:58:40.752Z",
+  "dauer_s": 0.3,
+  "ergebnis": {
+    "aktion": "waechter_zustand",
+    "was": "Waechter-Takt messen: systemd-Zustand/KillMode, Takt-Dauer (Journal 3 h), laufende Skripte mit Einheit, scipy/av/ffmpeg, Stash-Zahl, Platte und /tmp, RAM, Swap, /tmp-Dateien, Fehlerzeilen zweier CJ-Wachen, luxe-m-*",
+    "aendert": false,
+    "ausgaben": [
+      {
+        "befehl": "date +%F %T %Z",
+        "ausgabe": "2026-10-13 19:58:40 UTC\n"
+      },
+      {
+        "befehl": "systemctl show luxe-waechter.service -p Type,KillMode,ExitType,RemainAfterExit,ActiveState,SubState,Result,ExecMainStartTimestamp,ExecMainExitTimestamp,ActiveEnterTimestamp,InactiveEnterTimestamp,TimeoutStartUSec,TasksCurrent,MemoryCurrent,MemoryPeak,FragmentPath,DropInPaths",
+        "ausgabe": "ActiveState=inactive\nSubState=dead\nFragmentPath=***\nDropInPaths=\nActiveEnterTimestamp=\nInactiveEnterTimestamp=Tue 2026-10-13 19:52:43 UTC\nType=oneshot\nExitType=main\nTimeoutStartUSec=15min\nRemainAfterExit=no\nResult=success\nExecMainStartTimestamp=Tue 2026-10-13 19:50:07 UTC\nExecMainExitTimestamp=Tue 2026-10-13 19:52:43 UTC\nMemoryCurrent=[not set]\nMemoryPeak=799793152\nTasksCurrent=[not set]\nKillMode=control-group\n"
+      },
+      {
+        "befehl": "systemctl show luxe-waechter.timer -p ActiveState,LastTriggerUSec,NextElapseUSecRealtime",
+        "ausgabe": "ActiveState=active\nNextElapseUSecRealtime=\nLastTriggerUSec=Tue 2026-10-13 19:50:06 UTC\n"
+      },
+      {
+        "befehl": "journalctl -u luxe-waechter.service --since=-3h --no-pager -o short-iso",
+        "ausgabe": "2026-10-13T17:05:30 Starting\n2026-10-13T17:08:17 Deactivated successfully.\n2026-10-13T17:08:17 Consumed 28.143s CPU time over 2min 47.304s wall clock time, 159.6M memory peak.\n2026-10-13T17:16:03 Starting\n2026-10-13T17:17:53 Deactivated successfully.\n2026-10-13T17:17:53 Consumed 30.696s CPU time over 1min 49.651s wall clock time, 164.6M memory peak.\n2026-10-13T17:26:06 Starting\n2026-10-13T17:28:06 Deactivated successfully.\n2026-10-13T17:28:06 Consumed 27.373s CPU time over 2min 171ms wall clock time, 183.7M memory peak.\n2026-10-13T17:36:12 Starting\n2026-10-13T17:37:55 Deactivated successfully.\n2026-10-13T17:37:55 Consumed 41.205s CPU time over 1min 43.051s wall clock time, 180.3M memory peak.\n2026-10-13T17:46:56 Starting\n2026-10-13T17:49:34 Deactivated successfully.\n2026-10-13T17:49:34 Consumed 28.170s CPU time over 2min 38.301s wall clock time, 610.1M memory peak.\n2026-10-13T17:57:06 Starting\n2026-10-13T17:58:55 Deactivated successfully.\n2026-10-13T17:58:55 Consumed 41.935s CPU time over 1min 49.172s wall clock time, 181.2M memory peak.\n2026-10-13T18:07:25 Starting\n2026-10-13T18:09:42 Deactivated successfully.\n2026-10-13T18:09:42 Consumed 26.668s CPU time over 2min 17.149s wall clock time, 154.5M memory peak.\n2026-10-13T18:17:40 Starting\n2026-10-13T18:19:36 Deactivated successfully.\n2026-10-13T18:19:36 Consumed 43.919s CPU time over 1min 56.181s wall clock time, 311.5M memory peak.\n2026-10-13T18:28:06 Starting\n2026-10-13T18:29:56 Deactivated successfully.\n2026-10-13T18:29:56 Consumed 28.159s CPU time over 1min 50.657s wall clock time, 187.7M memory peak.\n2026-10-13T18:38:06 Starting\n2026-10-13T18:39:52 Deactivated successfully.\n2026-10-13T18:39:52 Consumed 1min 4.851s CPU time over 1min 45.932s wall clock time, 691.1M memory peak.\n2026-10-13T18:48:47 Starting\n2026-10-13T18:51:25 Deactivated successfully.\n2026-10-13T18:51:25 Consumed 31.619s CPU time over 2min 37.504s wall clock time, 608.3M memory peak.\n2026-10-13T18:58:48 Starting\n2026-10-13T19:00:46 Deactivated successfully.\n2026-10-13T19:00:46 Consumed 45.858s CPU time over 1min 58.384s wall clock time, 307.2M memory peak.\n2026-10-13T19:09:06 Starting\n2026-10-13T19:11:00 Deactivated successfully.\n2026-10-13T19:11:00 Consumed 27.802s CPU time over 1min 54.446s wall clock time, 168.8M memory peak.\n2026-10-13T19:19:29 Starting\n2026-10-13T19:21:45 Deactivated successfully.\n2026-10-13T19:21:45 Consumed 37.504s CPU time over 2min 15.838s wall clock time, 244.7M memory peak.\n2026-10-13T19:29:35 Starting\n2026-10-13T19:32:20 Deactivated successfully.\n2026-10-13T19:32:20 Consumed 31.491s CPU time over 2min 44.615s wall clock time, 169.3M memory peak.\n2026-10-13T19:39:38 Starting\n2026-10-13T19:41:09 Deactivated successfully.\n2026-10-13T19:41:09 Consumed 31.246s CPU time over 1min 31.029s wall clock time, 165.3M memory peak.\n2026-10-13T19:50:06 Starting\n2026-10-13T19:52:43 Deactivated successfully.\n2026-10-13T19:52:43 Consumed 27.905s CPU time over 2min 36.708s wall clock time, 762.7M memory peak."
+      },
+      {
+        "befehl": "ps -ww -eo etimes=,unit=,args= --sort=etimes",
+        "ausgabe": "2s luxe-agent.service luxe_auftrag_runner.mjs\n3s luxe-agent.service git\n3s luxe-agent.service git\n3s luxe-agent.service git\n3s luxe-agent.service git\n3s luxe-agent.service bash\n33d chrony.service chronyd-starter.sh"
+      },
+      {
+        "befehl": "python3 -c import importlib, importlib.util as u\nfor m in (\"scipy\", \"av\", \"numpy\", \"PIL\"):\n    try: v = getattr(importlib.import_module(m), \"__version__\", \"da\") if u.find_spec(m) else \"FEHLT\"\n    except Exception as e: v = \"KAPUTT \" + type(e).__name__\n    print(m, v)",
+        "ausgabe": "scipy FEHLT\nav FEHLT\nnumpy 2.3.5\nPIL 12.1.1\n"
+      },
+      {
+        "befehl": "ffmpeg -hide_banner -version",
+        "fehler": "spawnSync ffmpeg ENOENT",
+        "ausgabe": ""
+      },
+      {
+        "befehl": "git -C /opt/luxe-waechter/repo stash list",
+        "ausgabe": "98"
+      },
+      {
+        "befehl": "git -C /opt/luxe-waechter/repo stash list -1 --format=%ci",
+        "ausgabe": "2026-10-13 00:21:56 +0000\n"
+      },
+      {
+        "befehl": "df -h / /tmp",
+        "ausgabe": "Filesystem      Size  Used Avail Use% Mounted on\n/dev/sda1        38G   32G  3.8G  90% /\ntmpfs           1.9G  606M  1.3G  32% /tmp\n"
+      },
+      {
+        "befehl": "free -m",
+        "ausgabe": "               total        used        free      shared  buff/cache   available\nMem:            3814        1461         206         680        3118        2352\nSwap:              0           0           0\n"
+      },
+      {
+        "befehl": "swapon --show",
+        "ausgabe": ""
+      },
+      {
+        "befehl": "find /tmp -maxdepth 1 ( -name _fixer_herzschlag -o -name export.jsonl -o -name kost28.jsonl -o -name fortura_env.sh -o -name cj_konten.env -o -name cj_ausgelistet_sichtbar.log -o -name besuchte_seiten_lieferbar.log ) -printf %TF %TH:%TM %TZ %s %p\n",
+        "ausgabe": "2026-09-28 00:44 UTC 17218285 /tmp/export.jsonl\n2026-10-13 19:50 UTC 11 /tmp/_fixer_herzschlag\n"
+      },
+      {
+        "befehl": "tail -n 3000 /tmp/cj_ausgelistet_sichtbar.log",
+        "fehler": "Command failed: tail -n 3000 /tmp/cj_ausgelistet_sichtbar.log\ntail: cannot open '/tmp/cj_ausgelistet_sichtbar.log' for reading: No such file or directory\n",
+        "ausgabe": ""
+      },
+      {
+        "befehl": "tail -n 3000 /tmp/besuchte_seiten_lieferbar.log",
+        "fehler": "Command failed: tail -n 3000 /tmp/besuchte_seiten_lieferbar.log\ntail: cannot open '/tmp/besuchte_seiten_lieferbar.log' for reading: No such file or directory\n",
+        "ausgabe": ""
+      },
+      {
+        "befehl": "systemctl list-units --all --plain --no-pager --no-legend luxe-m-*",
+        "ausgabe": ""
+      }
+    ]
+  }
+}
