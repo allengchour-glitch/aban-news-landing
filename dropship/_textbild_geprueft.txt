@@ -63432,3 +63432,4 @@ gid://shopify/Product/16617344369031	gid://shopify/MediaImage/77505209663879
 gid://shopify/Product/16617344631175	gid://shopify/MediaImage/77505210417543
 gid://shopify/Product/16617344893319	gid://shopify/MediaImage/77505212514695
 gid://shopify/Product/16617345089927	gid://shopify/MediaImage/77505213104519
+gid://shopify/Product/15453762388353	gid://shopify/MediaImage/70519618634113	bildtausch-sperre
