@@ -4359,3 +4359,6 @@ freizeit-hemd-fur-herren-613100	gesetzt-2
 v-ausschnitt-pullover-aus-baumwoll-leinen-610200	hat-liste
 leinenhemd-fur-herren-langarm-unifarben-608500	gesetzt-5
 atmungsaktives-sportshirt-fur-herren-617600	hat-liste
+casual-retro-hemd-fur-herren-627700	gesetzt-4
+baumwoll-langarm-hemdjacke-636900	hat-liste
+herren-strick-cardigan-mit-lochmuster-614000	hat-liste
