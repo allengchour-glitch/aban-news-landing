@@ -1417,3 +1417,5 @@
 16610145960327	Grösse:3:3	2026-10-12	schwarze-oxford-holzboden-box-fur-weihnachtsba-617700
 16610145567111	Farbe:4:4	2026-10-12	rucksack-mit-diebstahlschutz-234432
 16610142421383	Modell:4:4	2026-10-12	fahrradtasche-fur-gepacktrager-420992
+16610141438343	Farbe:2+Grösse:3:6	2026-10-12	reise-organizer-fur-elektronik-629000
+16610138653063	Grösse:2:2	2026-10-12	retro-bucher-aufbewahrungskorb-aus-holz-607400
