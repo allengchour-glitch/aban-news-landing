@@ -6,8 +6,7 @@ Decrypt, The Block und CoinDesk; mit CRYPTOPANIC_KEY zusätzlich CryptoPanic. Tw
 darum nicht dabei. Telegram-Kanäle liest dein PC (calls_leser.py) mit deinem Konto.
 
 Warum nur melden und nicht handeln? Stimmungs-Infos (z. B. Angst & Gier, das auch Social-Media-Stimmung enthält) haben unseren
-Prüfstand nicht bestanden (info_pruefung.py). Gehandelt wird nur nach Regeln, die ein Prüfstand vorher bestätigt
-(z. B. delisting_pruefung.py für «Binance kündigt Delisting an»).
+Prüfstand nicht bestanden (info_pruefung.py). Gehandelt wird nur nach Regeln, die ein Prüfstand vorher bestätigt.
 
 Alarm-Arten (Schlagworte im Titel, Gross/klein egal): Hack · Abhebungen gestoppt · Insolvenz · Stablecoin-Depeg ·
 Regulierung/ETF · Delisting (bei BTC/ETH oder beobachteten Coins). Jeder Eintrag wird nur einmal gemeldet.
