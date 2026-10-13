@@ -1,0 +1,6 @@
+{
+  "id": "alt-cron-aus-2026-10-13",
+  "typ": "wartung",
+  "aktion": "alt_cron_aus",
+  "warum": "Betreiber 13.10.2026 «mach du hetzner»: root-Cron startet täglich 04:00 UTC run-api-jobs.sh und alle 10 min vps-cmd-poll.sh aus dem toten Klon /opt/luxe/repo (Zweig CizQ6) — schreibt jeden Morgen den alten USA-Lieferblock in bis zu 1'000 Produkte. Befund: dropship/ZOMBIE-CRON-2026-10-13.md. Rückweg: Aktion alt_cron_zurueck."
+}
