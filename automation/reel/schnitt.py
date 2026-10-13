@@ -88,8 +88,10 @@ TOR = dict(lufs=-14.0, lufs_tol=1.0, tp_max=-1.5, versatz_max=1, sicht_min=2.5)
 CC_BY = {'voltaic.mp3', 'electrodoodle.mp3', 'digital-lemonade.mp3'}   # CREDITS.txt: Quellenangabe in jeder Caption
 # BPM-Rueckfall, falls CREDITS.txt kein Tempo nennt (GEMESSEN Inventur 23.09.; liquid-dnb-electronic = DnB-Variante)
 BPM_RUECKFALL = {'luxe-cinematic-house.wav': 122, 'luxe-liquid-dnb-electronic.wav': 174}
+# 13.10.2026 (Reel-Nachschub R11): + DROPSHIPPER — am 13.10. kamen 2 von 4 Reels mit «Dropshipper.com»-Wasserzeichen durch
+# (Exit 0) und fielen erst bei der Jury durch (sauberkeit 0); das Muster kannte nur DROPSHIPPING.
 MARKEN = re.compile(r'\b(CHANEL|GUCCI|PRADA|DIOR|VUITTON|HERMES|ROLEX|NIKE|ADIDAS|PORSCHE|BALENCIAGA|VERSACE|'
-                    r'CJDROPSHIPPING|DROPSHIPPING|TIKTOK|TEMU|ALIEXPRESS|TAOBAO|AMAZON|SHEIN|ALIBABA|1688)\b', re.I)
+                    r'CJDROPSHIPPING|DROPSHIPPING|DROPSHIPPERS?|TIKTOK|TEMU|ALIEXPRESS|TAOBAO|AMAZON|SHEIN|ALIBABA|1688)\b', re.I)
 CJK_EINFACH = set('一二三十丨卜乙八入口日中大人了小上下丁厂')
 
 

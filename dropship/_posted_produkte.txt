@@ -230,3 +230,4 @@ slug:frauenkreppsohlen-schnurstiefel-in-grossen-bis
 slug:nordische-fransen-strickdecke-8c46da
 slug:duales-stereo-karaoke-system-601000
 name:dualesstereokaraokesystem
+slug:wollpullover-mit-crewneck

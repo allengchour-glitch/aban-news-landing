@@ -295,7 +295,12 @@ KOSTUEM_ROLLE = [
     (re.compile(r'nikolaus|samichlaus|weihnachtsmann|\bsanta\b', re.I),
      re.compile(r'strampler|anzug|overall|kleid\b|mantel\b|robe\b', re.I), None),
     (re.compile(r'g[öo]ttin', re.I), re.compile(r'kleid|gewand|robe\b|toga', re.I), KOSTUEM_KONTEXT),
-    (re.compile(r'\baraber|scheich|sultan', re.I), re.compile(r'schuh|tunika|gewand|kopftuch|turban|umhang', re.I), None),
+    # Gegenprüfung 13.10. (A4d-Teil1-Regel): «Sultan Tunika Herren Leinen» / «Scheich Kopftuch» wären ohne Kontext als
+    # Kostüm gezählt worden. Ohne Kontext zählt deshalb nur der Fasnachts-Artikel «…Schuhüberzug» (Fortura, CH-Lager);
+    # Tunika/Gewand/Kopftuch/Turban/Umhang brauchen Kostüm-Kontext (Fasnacht, Halloween, Party …).
+    (re.compile(r'\baraber|scheich|sultan', re.I), re.compile(r'schuh[üu]e?berzug', re.I), None),
+    (re.compile(r'\baraber|scheich|sultan', re.I), re.compile(r'schuh|tunika|gewand|kopftuch|turban|umhang', re.I),
+     KOSTUEM_KONTEXT),
     (re.compile(r'(?:^|[\s-])(?:haus)?tier(?:e|-|\b)|(?<![\wäöüß])hunde?\b|(?<![\wäöüß])katzen?\b', re.I),
      re.compile(r'mantel|umhang|\bcape\b|outfit|anzug', re.I), re.compile(r'halloween', re.I)),
 ]
@@ -403,6 +408,9 @@ KOSTUEM_KANARIEN = [
     ("Zimmermädchenset", "Kostüme & Verkleidung", True),
     ("Waggishose kurz gelb", "Kostüme & Verkleidung", True),
     ("Araber Schuhüberzug", "Kostüme & Verkleidung", True),
+    ("Sultan Tunika Herren Leinen", "", False),          # Gegenprüfung 13.10.: Rolle + Stück ohne Kontext = Kleidung
+    ("Scheich Kopftuch", "", False),
+    ("Araber Gewand für Fasnacht", "", True),
     ("Göttinnen-Kleid für Mottopartys und Halloween", "Damenmode", True),
     ("Tier-Halloween-Mantel", "Haustierbedarf", True),
     ("Kunstblut 113.2 ml", "Kostüme & Verkleidung", False),

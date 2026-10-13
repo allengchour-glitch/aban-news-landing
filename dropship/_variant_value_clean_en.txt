@@ -20709,3 +20709,27 @@ gid://shopify/Product/16616538046855	Farbe	gid://shopify/ProductOptionValue/5841
 gid://shopify/Product/16616538046855	Farbe	gid://shopify/ProductOptionValue/58413757170055	Army Green-15.5cm	Armeegrün-15.5 cm	2026-10-13T12:03Z
 gid://shopify/Product/16616538046855	Farbe	gid://shopify/ProductOptionValue/58413757202823	Red-15.5cm	Rot-15.5 cm	2026-10-13T12:03Z
 gid://shopify/Product/16616538046855	Farbe	gid://shopify/ProductOptionValue/58413757235591	Red-13.5cm	Rot-13.5 cm	2026-10-13T12:03Z
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760429953	Pink plus cotton-24or25	Pink gefüttert-24/25	2026-10-13T18:19Z
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760462721	Pink plus cotton-26or27	Pink gefüttert-26/27	2026-10-13T18:19Z
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760495489	Pink plus cotton-28or29	Pink gefüttert-28/29	2026-10-13T18:19Z
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760528257	Pink plus cotton-30or31	Pink gefüttert-30/31	2026-10-13T18:19Z
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760561025	Pink plus cotton-32or33	Pink gefüttert-32/33	2026-10-13T18:19Z
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760593793	Pink plus cotton-34or35	Pink gefüttert-34/35	2026-10-13T18:19Z
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760626561	Blue plus cotton-24or25	Blau gefüttert-24/25	2026-10-13T18:19Z
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760659329	Blue plus cotton-26or27	Blau gefüttert-26/27	2026-10-13T18:19Z
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760692097	Blue plus cotton-28or29	Blau gefüttert-28/29	2026-10-13T18:19Z
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760724865	Blue plus cotton-30or31	Blau gefüttert-30/31	2026-10-13T18:19Z
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760757633	Blue plus cotton-32or33	Blau gefüttert-32/33	2026-10-13T18:19Z
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760790401	Blue plus cotton-34or35	Blau gefüttert-34/35	2026-10-13T18:19Z
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760823169	Purple plus cotton-24or25	Lila gefüttert-24/25	2026-10-13T18:19Z
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760855937	Purple plus cotton-26or27	Lila gefüttert-26/27	2026-10-13T18:19Z
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760888705	Purple plus cotton-28or29	Lila gefüttert-28/29	2026-10-13T18:19Z
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760921473	Purple plus cotton-30or31	Lila gefüttert-30/31	2026-10-13T18:19Z
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760954241	Purple plus cotton-32or33	Lila gefüttert-32/33	2026-10-13T18:19Z
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090760987009	Purple plus cotton-34or35	Lila gefüttert-34/35	2026-10-13T18:19Z
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090761019777	Black plus cotton-24or25	Schwarz gefüttert-24/25	2026-10-13T18:19Z
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090761052545	Black plus cotton-26or27	Schwarz gefüttert-26/27	2026-10-13T18:19Z
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090761085313	Black plus cotton-28or29	Schwarz gefüttert-28/29	2026-10-13T18:19Z
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090761118081	Black plus cotton-30or31	Schwarz gefüttert-30/31	2026-10-13T18:19Z
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090761150849	Black plus cotton-32or33	Schwarz gefüttert-32/33	2026-10-13T18:19Z
+gid://shopify/Product/15455520031105	Farbe	gid://shopify/ProductOptionValue/12090761183617	Black plus cotton-34or35	Schwarz gefüttert-34/35	2026-10-13T18:19Z

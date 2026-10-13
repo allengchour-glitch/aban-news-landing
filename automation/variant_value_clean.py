@@ -251,6 +251,7 @@ TERM_PHRASES = {
     "plus velvet": "gefüttert", "with velvet": "gefüttert", "velvet lined": "gefüttert",
     "fleece lined": "gefüttert", "with fleece": "gefüttert", "plus fleece": "gefüttert",
     "add velvet": "gefüttert", "and velvet": "gefüttert",
+    "plus cotton": "gefüttert",   # 13.10.: CJ «加棉» = mit Baumwollfutter (Regenstiefel Kinder 870400, Gegenprüfung C4)
     "without velvet": "ungefüttert", "no velvet": "ungefüttert",
     "patent leather": "Lackleder", "pu leather": "Kunstleder", "faux leather": "Kunstleder",
     "genuine leather": "Echtleder", "real leather": "Echtleder", "stainless steel": "Edelstahl",
@@ -1417,7 +1418,10 @@ SELBSTTEST_FAELLE = [
     ([], "Leather Pink", None),                                 # Farbname, kein Leder
     ([], "Square Pillow", None),                                # nie «Eckig Kissen»
     ([], "2pcs charger", None),                                 # nie «2 Stück Ladegerät»
-    ([], "Pink plus cotton-24or25", None),                      # «plus» ist hier kein Modellzusatz
+    ([], "Pink plus cotton-24or25", "Pink gefüttert-24/25"),    # «plus» ist kein Modellzusatz; seit 13.10. Phrase = gefüttert
+    ([], "Black plus cotton-34or35", "Schwarz gefüttert-34/35"),
+    ([], "Blue plus cotton", "Blau gefüttert"),
+    ([], "Plus cotton black", None),                            # Präfix-Form: nie «gefüttert Schwarz»
     ([], "Washed Black 1", None),                               # «Schwarz washed» aus farben_de.json
     ([], "Blue andKhaki Rose Red set-USB", None),               # «andKhaki» ist kein deutsches Wort
     ([], "B Black Army Color", None),                           # «Armee» ist kein Farbname

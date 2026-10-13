@@ -905,3 +905,9 @@
 15525493637505	kein-stecker-merkmal	2026-09-18	Multifunktions-Entsaftermixer
 15525498782081	kein-stecker-merkmal	2026-09-18	Mini-Eismaschine
 15525498913153	kein-stecker-merkmal	2026-09-18	Mobiler Entsafter mit 460 ml Kapazität
+16613767381383	mehrere-varianten	2026-10-13	2-in-1 10W kabelloses Ladegerät
+16613781864839	mehrere-varianten	2026-10-13	Intelligenter Staubsaugerroboter mit Wischfunktion
+16613785305479	kein-stecker-merkmal	2026-10-13	Haarschneider 5W mit Akku
+16613785698695	kein-stecker-merkmal	2026-10-13	Auto-Heizkissen mit 12V Stromversorgung
+16613786681735	mehrere-varianten	2026-10-13	Dreifach-USB-Adapter aus Aluminium-Legierung
+16613793792391	kein-stecker-merkmal	2026-10-13	USB-C Hub Adapter mit HDMI, VGA, LAN & Power-Port
