@@ -7832,3 +7832,23 @@ taillenmieder-korsett-fur-damen-b0e707	01522603-EC17-4D00-BCF8-1E9A0884830C	16	9
 straffendes-und-liftendes-serum-964160	1618527303611461632	3	8.10	ok	landeseite
 small-blanket-nap-blanket-61368a	4267DC15-46D7-4259-A6A0-60045D825930	16	13.76	ok	landeseite
 baby-gentleman-jumpsuit-aus-baumwolle-753856	1384129477117874176	16	7.03	ok	landeseite
+thermobeker-mit-henkel-und-deckel-30oz-948352	1710831974400663552	16	11.00	ok	landeseite
+atmungsaktive-sommer-sneakers-fur-herren-a8b63a	0B041F8A-DED2-49D8-95FE-82A1922D41A1	16	12.17	ok	landeseite
+mini-silikon-gesichtsreinigungsburste-415808	1410792776077021184	7	6.26	ok	landeseite
+fitness-huft-stretch-yoga-gurt-424448	1420963835665321984	16	13.40	ok	landeseite
+soft-comfort-elefanten-pluschtier-139840	1463053993734443009	16	19.58	ok	landeseite
+zirkon-schmuckset-mit-quasten-anhanger-673728	1412689508939468800	16	6.01	ok	landeseite
+kabelloses-nacken-und-schultermassagegerat-mit-604900	2507290913441605100	7	16.86	ok	landeseite
+fitness-widerstandsband-figur-8-000640	1682008781620137984	0	-	KEINE CH-Option → DRAFT	landeseite
+getrocknete-blumen-deko-kerzen-969408	1587414995808301056	0	-	KEINE CH-Option → DRAFT	landeseite
+jellyfish-luftbefeuchter-mit-nachtlicht-367552	1561169952034533376	7	9.73	ok	landeseite
+baby-overall-weinrot-fur-jungen-885632	1601496527862771712	16	6.77	ok	landeseite
+business-fuller-fur-studenten-und-buro-58d84e	1717734569392218112	16	6.55	ok	landeseite
+mini-usb-luftbefeuchter-mit-nachtlicht-f7c593	2BE26FA7-2623-4A10-B2D8-864DE28592F1	16	7.62	ok	landeseite
+tevise-automatikuhr-fur-herren-87daef	4854F31D-C0BB-44EE-8FBC-5DB336239814	16	5.97	ok	landeseite
+pluschblumen-handyhulle-fur-iphone-546176	1471004284010237952	16	5.12	ok	landeseite
+latex-widerstandsband-mit-fusspedal-und-griff-afaa0a	1527270B-93A5-4158-A12F-E1CD241E03E9	16	8.24	ok	landeseite
+spaghetti-strap-jumpsuit-fur-sport-yoga-249216	1675765978510135296	16	6.48	ok	landeseite
+verstellbare-rutschfeste-hunde-outdoorschuhe-444288	1721449272610136064	16	6.67	ok	landeseite
+anion-fohn-burste-fur-glanz-volumen-090368	1543464078465839104	7	10.98	ok	landeseite
+verstellbarer-umarmungsring-aus-legierung-290176	1390862939115884544	16	4.50	ok	landeseite

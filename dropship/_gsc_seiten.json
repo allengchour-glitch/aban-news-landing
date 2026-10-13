@@ -1,0 +1,5481 @@
+{
+"stand": "2026-10-13T09:19Z",
+"von": "2026-10-04",
+"bis": "2026-10-10",
+"tage": 7,
+"quelle": "OpenSEO get_search_console_performance [page] last_28_days",
+"zeilen": [
+{
+"page": "https://luxestyle.ch/products/usb-stick-lippenstift-design-9a6739",
+"clicks": 3,
+"impressions": 3,
+"position": 4
+},
+{
+"page": "https://luxestyle.ch/",
+"clicks": 2,
+"impressions": 9,
+"position": 38.3
+},
+{
+"page": "https://luxestyle.ch/products/22-teiliges-leder-nahset-fur-lederarbeiten-105857",
+"clicks": 2,
+"impressions": 2,
+"position": 19.5
+},
+{
+"page": "https://luxestyle.ch/products/3d-gedruckte-gummimatte-621900",
+"clicks": 1,
+"impressions": 2,
+"position": 31.5
+},
+{
+"page": "https://luxestyle.ch/products/aufblasbarer-blau-grun-planeten-schaukelstuhl-601100",
+"clicks": 1,
+"impressions": 2,
+"position": 5
+},
+{
+"page": "https://luxestyle.ch/products/eleganter-lebensbaum-armreif-fur-damen-608000",
+"clicks": 1,
+"impressions": 1,
+"position": 25
+},
+{
+"page": "https://luxestyle.ch/products/gel-nagellack-stifte-set-624900",
+"clicks": 1,
+"impressions": 3,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/herren-lumberjack-hosen-605700?variant=55983518089601&country=CH&currency=CHF",
+"clicks": 1,
+"impressions": 1,
+"position": 2
+},
+{
+"page": "https://luxestyle.ch/products/herzschlag-kissen-fur-hund-katze-600500",
+"clicks": 1,
+"impressions": 3,
+"position": 26.3
+},
+{
+"page": "https://luxestyle.ch/products/keramik-langsam-fress-schussel-fur-hunde-062016",
+"clicks": 1,
+"impressions": 1,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/kupfer-fusskettchen-unisex-verstellbar-633300",
+"clicks": 1,
+"impressions": 1,
+"position": 4
+},
+{
+"page": "https://luxestyle.ch/products/mattes-portugiesisches-besteck-set-24-teilig-059968",
+"clicks": 1,
+"impressions": 1,
+"position": 63
+},
+{
+"page": "https://luxestyle.ch/products/oulei-herren-quarzuhr-mit-d-formigem-zifferbla-958016",
+"clicks": 1,
+"impressions": 1,
+"position": 2
+},
+{
+"page": "https://luxestyle.ch/products/rotes-schaumstoff-flugzeug-mit-elektromotor-860418",
+"clicks": 1,
+"impressions": 1,
+"position": 2
+},
+{
+"page": "https://luxestyle.ch/products/sonnenbrille-photo-selbsttonend-polarisiert?variant=55748399268225&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+"clicks": 1,
+"impressions": 1,
+"position": 2
+},
+{
+"page": "https://luxestyle.ch/products/sport-smartwatch-mit-temperatur-und-pulsmessun-353536?variant=56219506311553&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+"clicks": 1,
+"impressions": 1,
+"position": 5
+},
+{
+"page": "https://luxestyle.ch/products/tunmate-rizinusol-382081",
+"clicks": 1,
+"impressions": 17,
+"position": 8.8
+},
+{
+"page": "https://luxestyle.ch/products/universal-ladegerat-fur-e-scooter-42v-2a-937ba4",
+"clicks": 1,
+"impressions": 1,
+"position": 5
+},
+{
+"page": "https://luxestyle.ch/products/usb-heizdecke-12v",
+"clicks": 1,
+"impressions": 2,
+"position": 24
+},
+{
+"page": "https://luxestyle.ch/products/vintage-taschenuhr-mit-blumenmuster-407872",
+"clicks": 1,
+"impressions": 1,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/collections/adventskalender",
+"clicks": 0,
+"impressions": 3,
+"position": 85.3
+},
+{
+"page": "https://luxestyle.ch/collections/beamer-heimkino",
+"clicks": 0,
+"impressions": 27,
+"position": 51.6
+},
+{
+"page": "https://luxestyle.ch/collections/beleuchtung-lampen",
+"clicks": 0,
+"impressions": 22,
+"position": 47.5
+},
+{
+"page": "https://luxestyle.ch/collections/erste-august",
+"clicks": 0,
+"impressions": 2,
+"position": 74
+},
+{
+"page": "https://luxestyle.ch/collections/fussball-fanshop",
+"clicks": 0,
+"impressions": 20,
+"position": 60.9
+},
+{
+"page": "https://luxestyle.ch/collections/herbst-favoriten",
+"clicks": 0,
+"impressions": 1,
+"position": 6
+},
+{
+"page": "https://luxestyle.ch/collections/jeans-denim",
+"clicks": 0,
+"impressions": 2,
+"position": 66.5
+},
+{
+"page": "https://luxestyle.ch/collections/premium-beauty",
+"clicks": 0,
+"impressions": 1,
+"position": 1
+},
+{
+"page": "https://luxestyle.ch/collections/schmuck-sets",
+"clicks": 0,
+"impressions": 6,
+"position": 56.7
+},
+{
+"page": "https://luxestyle.ch/collections/sneaker-sportschuhe",
+"clicks": 0,
+"impressions": 13,
+"position": 53.2
+},
+{
+"page": "https://luxestyle.ch/collections/sommer-2026",
+"clicks": 0,
+"impressions": 1,
+"position": 9
+},
+{
+"page": "https://luxestyle.ch/collections/sub-ballerinas",
+"clicks": 0,
+"impressions": 1,
+"position": 54
+},
+{
+"page": "https://luxestyle.ch/collections/sub-kleider",
+"clicks": 0,
+"impressions": 5,
+"position": 38.4
+},
+{
+"page": "https://luxestyle.ch/collections/sub-kueche",
+"clicks": 0,
+"impressions": 11,
+"position": 71.8
+},
+{
+"page": "https://luxestyle.ch/collections/sub-wander-arbeitsschuhe",
+"clicks": 0,
+"impressions": 2,
+"position": 95
+},
+{
+"page": "https://luxestyle.ch/collections/wohnen-dekoration",
+"clicks": 0,
+"impressions": 1,
+"position": 2
+},
+{
+"page": "https://luxestyle.ch/en/products/shirt-es-git-nu-eis-zueri",
+"clicks": 0,
+"impressions": 1,
+"position": 1
+},
+{
+"page": "https://luxestyle.ch/pages/selbst-gestalten",
+"clicks": 0,
+"impressions": 8,
+"position": 52.1
+},
+{
+"page": "https://luxestyle.ch/policies/terms-of-service",
+"clicks": 0,
+"impressions": 1,
+"position": 2
+},
+{
+"page": "https://luxestyle.ch/products/10-teiliges-silikon-kuchenhelfer-set-986048",
+"clicks": 0,
+"impressions": 1,
+"position": 88
+},
+{
+"page": "https://luxestyle.ch/products/14-teiliges-silikon-kuchenhelfer-set-076352?variant=56141986201985&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 49
+},
+{
+"page": "https://luxestyle.ch/products/2-5-sata3-ssd-1tb-fur-notebook-desktop-292544",
+"clicks": 0,
+"impressions": 1,
+"position": 36
+},
+{
+"page": "https://luxestyle.ch/products/30-teiliges-besteckset-mit-stander-302274",
+"clicks": 0,
+"impressions": 1,
+"position": 68
+},
+{
+"page": "https://luxestyle.ch/products/30ah-lifepo4-akku-fur-e-fahrzeuge-783616?variant=56115724484993&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 7
+},
+{
+"page": "https://luxestyle.ch/products/3d-holografischer-ventilator-388737",
+"clicks": 0,
+"impressions": 3,
+"position": 17
+},
+{
+"page": "https://luxestyle.ch/products/3d-hologramm-projektor-640768",
+"clicks": 0,
+"impressions": 1,
+"position": 15
+},
+{
+"page": "https://luxestyle.ch/products/3d-hologramm-ventilator-60cm-343362",
+"clicks": 0,
+"impressions": 1,
+"position": 3
+},
+{
+"page": "https://luxestyle.ch/products/3d-holzpuzzle-lasercut-bausatz-395968",
+"clicks": 0,
+"impressions": 1,
+"position": 12
+},
+{
+"page": "https://luxestyle.ch/products/3d-print-latzhose-mit-weitem-bein-634100",
+"clicks": 0,
+"impressions": 1,
+"position": 5
+},
+{
+"page": "https://luxestyle.ch/products/3u-hamorrhoidenkissen-2080ad",
+"clicks": 0,
+"impressions": 2,
+"position": 7.5
+},
+{
+"page": "https://luxestyle.ch/products/4-in-1-magnetischer-make-up-pinsel-600800",
+"clicks": 0,
+"impressions": 1,
+"position": 1
+},
+{
+"page": "https://luxestyle.ch/products/48-teiliges-besteckset-aus-edelstahl-607300",
+"clicks": 0,
+"impressions": 1,
+"position": 12
+},
+{
+"page": "https://luxestyle.ch/products/4er-set-feuchttucherboxen-fur-unterwegs-236674",
+"clicks": 0,
+"impressions": 1,
+"position": 64
+},
+{
+"page": "https://luxestyle.ch/products/4k-drohne-mit-3-seitiger-hindernisvermeidung-929408",
+"clicks": 0,
+"impressions": 4,
+"position": 41.5
+},
+{
+"page": "https://luxestyle.ch/products/6-teiliges-kuchenhelfer-set-aus-edelstahl-640128",
+"clicks": 0,
+"impressions": 1,
+"position": 91
+},
+{
+"page": "https://luxestyle.ch/products/6-teiliges-kuchenhelfer-set-rosegold-748800",
+"clicks": 0,
+"impressions": 1,
+"position": 24
+},
+{
+"page": "https://luxestyle.ch/products/a-linien-kleid-in-frischem-stil-fur-grosse-gro-608300?variant=56170882662785&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 32
+},
+{
+"page": "https://luxestyle.ch/products/a4-notizbuch-zum-loschen-5er-set-fur-smarte-notize-502208",
+"clicks": 0,
+"impressions": 1,
+"position": 7
+},
+{
+"page": "https://luxestyle.ch/products/absatz-reparaturset-fur-stockelschuhe-632100",
+"clicks": 0,
+"impressions": 1,
+"position": 52
+},
+{
+"page": "https://luxestyle.ch/products/abtropfgestell-mit-staubschutz-fur-baby-geschi-629800",
+"clicks": 0,
+"impressions": 1,
+"position": 2
+},
+{
+"page": "https://luxestyle.ch/products/abtropfmatte-aus-silikon-selbstentleerend-214145",
+"clicks": 0,
+"impressions": 1,
+"position": 96
+},
+{
+"page": "https://luxestyle.ch/products/akupressur-matte-mit-kissen-set",
+"clicks": 0,
+"impressions": 4,
+"position": 41.3
+},
+{
+"page": "https://luxestyle.ch/products/akupressur-sandalen-reflexzonen?variant=55741770170753",
+"clicks": 0,
+"impressions": 3,
+"position": 9
+},
+{
+"page": "https://luxestyle.ch/products/akupressurmatte-set-entspannung",
+"clicks": 0,
+"impressions": 2,
+"position": 88.5
+},
+{
+"page": "https://luxestyle.ch/products/alaunstein-rasurpflege-blutstillend-porenverfe-606500",
+"clicks": 0,
+"impressions": 2,
+"position": 9
+},
+{
+"page": "https://luxestyle.ch/products/alien-nachtvogel-c2adff",
+"clicks": 0,
+"impressions": 1,
+"position": 8
+},
+{
+"page": "https://luxestyle.ch/products/allover-rucksack-selbst-gestalten",
+"clicks": 0,
+"impressions": 1,
+"position": 5
+},
+{
+"page": "https://luxestyle.ch/products/allover-yoga-leggings-selbst-gestalten",
+"clicks": 0,
+"impressions": 1,
+"position": 6
+},
+{
+"page": "https://luxestyle.ch/products/aluminiumrahmen-koffer-mit-frontoffnung-869890",
+"clicks": 0,
+"impressions": 1,
+"position": 69
+},
+{
+"page": "https://luxestyle.ch/products/anti-aging-augencreme-615300",
+"clicks": 0,
+"impressions": 2,
+"position": 28
+},
+{
+"page": "https://luxestyle.ch/products/anti-bell-gerat-fur-hunde-614000",
+"clicks": 0,
+"impressions": 2,
+"position": 62
+},
+{
+"page": "https://luxestyle.ch/products/anti-haft-pfanne-ohne-beschichtung-604100",
+"clicks": 0,
+"impressions": 1,
+"position": 73
+},
+{
+"page": "https://luxestyle.ch/products/antirutsch-badematte-859393",
+"clicks": 0,
+"impressions": 2,
+"position": 64.5
+},
+{
+"page": "https://luxestyle.ch/products/arbeits-sicherheitsschuhe-mit-stahlkappe-622200",
+"clicks": 0,
+"impressions": 8,
+"position": 25.9
+},
+{
+"page": "https://luxestyle.ch/products/arcade-steuerung-621900",
+"clicks": 0,
+"impressions": 4,
+"position": 42
+},
+{
+"page": "https://luxestyle.ch/products/arm-strength-trainer-627900",
+"clicks": 0,
+"impressions": 1,
+"position": 86
+},
+{
+"page": "https://luxestyle.ch/products/armbanduhr-geschenkset-46c9c7",
+"clicks": 0,
+"impressions": 1,
+"position": 11
+},
+{
+"page": "https://luxestyle.ch/products/armelloser-leinen-jumpsuit-mit-v-ausschnitt-633000",
+"clicks": 0,
+"impressions": 6,
+"position": 45.3
+},
+{
+"page": "https://luxestyle.ch/products/armelloses-ramie-shirt-mit-kragen-613800?variant=56123445772673&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 12
+},
+{
+"page": "https://luxestyle.ch/products/armreif-korean-style-mit-mattblauen-zirkonia-900418",
+"clicks": 0,
+"impressions": 2,
+"position": 12
+},
+{
+"page": "https://luxestyle.ch/products/aroma-diffuser-holzmaserung-vogelkafig-dcb94f",
+"clicks": 0,
+"impressions": 1,
+"position": 7
+},
+{
+"page": "https://luxestyle.ch/products/aromadiffuser-mit-bluetooth-lautsprecher-057728",
+"clicks": 0,
+"impressions": 1,
+"position": 12
+},
+{
+"page": "https://luxestyle.ch/products/aromatherapie-duftol-fur-luftbefeuchter-640556",
+"clicks": 0,
+"impressions": 4,
+"position": 58.5
+},
+{
+"page": "https://luxestyle.ch/products/asymmetrisches-armelloses-top-mit-eckigem-auss-619200",
+"clicks": 0,
+"impressions": 1,
+"position": 20
+},
+{
+"page": "https://luxestyle.ch/products/atemaktiver-gurt-fur-schwangerschaft-633728",
+"clicks": 0,
+"impressions": 1,
+"position": 23
+},
+{
+"page": "https://luxestyle.ch/products/atmungsaktive-casual-sandalen-aus-leder-mit-ho-604000?variant=56001385267585&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 2,
+"position": 2
+},
+{
+"page": "https://luxestyle.ch/products/atmungsaktive-decke-aus-reiner-baumwolle-617400",
+"clicks": 0,
+"impressions": 1,
+"position": 34
+},
+{
+"page": "https://luxestyle.ch/products/atmungsaktive-herrenschuhe-aus-echtleder-618900",
+"clicks": 0,
+"impressions": 1,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/atmungsaktive-sneaker-mit-erhohter-passform-609900",
+"clicks": 0,
+"impressions": 1,
+"position": 44
+},
+{
+"page": "https://luxestyle.ch/products/atmungsaktive-sportschuhe-fur-herren-090240",
+"clicks": 0,
+"impressions": 1,
+"position": 88
+},
+{
+"page": "https://luxestyle.ch/products/atmungsaktiver-fersen-schutz-600100",
+"clicks": 0,
+"impressions": 1,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/atmungsaktiver-sportschuh-mit-dampfung-629100",
+"clicks": 0,
+"impressions": 2,
+"position": 57
+},
+{
+"page": "https://luxestyle.ch/products/atmungsaktives-korsett-zur-haltungskorrektur-623100",
+"clicks": 0,
+"impressions": 1,
+"position": 1
+},
+{
+"page": "https://luxestyle.ch/products/aufblasbarer-kindersitz-fur-das-auto-efa7e4",
+"clicks": 0,
+"impressions": 2,
+"position": 32
+},
+{
+"page": "https://luxestyle.ch/products/aufblasbares-auto-bett-63bf55",
+"clicks": 0,
+"impressions": 1,
+"position": 90
+},
+{
+"page": "https://luxestyle.ch/products/aufblasbares-lendenkissen-fur-unterwegs-634300",
+"clicks": 0,
+"impressions": 1,
+"position": 12
+},
+{
+"page": "https://luxestyle.ch/products/aufblasbares-sofa-fur-outdoor-und-camping-626700?variant=56118434038145&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 2,
+"position": 52.5
+},
+{
+"page": "https://luxestyle.ch/products/ausziehbarer-pfannen-und-deckelhalter-509633",
+"clicks": 0,
+"impressions": 1,
+"position": 69
+},
+{
+"page": "https://luxestyle.ch/products/ausziehregal-fur-kuche-ohne-bohren-604200",
+"clicks": 0,
+"impressions": 4,
+"position": 49
+},
+{
+"page": "https://luxestyle.ch/products/auto-booster-800a-852098",
+"clicks": 0,
+"impressions": 1,
+"position": 74
+},
+{
+"page": "https://luxestyle.ch/products/auto-duft-clip-woody-edler-holz-lufterfrischer-%F0%9F%8C%BF",
+"clicks": 0,
+"impressions": 1,
+"position": 61
+},
+{
+"page": "https://luxestyle.ch/products/auto-seifenspender-beruhrungslose-hygiene-sauber-h-42802",
+"clicks": 0,
+"impressions": 2,
+"position": 46.5
+},
+{
+"page": "https://luxestyle.ch/products/auto-tissue-box-607100",
+"clicks": 0,
+"impressions": 1,
+"position": 8
+},
+{
+"page": "https://luxestyle.ch/products/automatik-skelettuhr-heritage-mechanisch-offenes-werk",
+"clicks": 0,
+"impressions": 5,
+"position": 52.6
+},
+{
+"page": "https://luxestyle.ch/products/automatische-lockenstab-623600",
+"clicks": 0,
+"impressions": 1,
+"position": 48
+},
+{
+"page": "https://luxestyle.ch/products/automatische-mini-nahmaschine-679298",
+"clicks": 0,
+"impressions": 5,
+"position": 38.2
+},
+{
+"page": "https://luxestyle.ch/products/automatischer-futterspender-fur-katzen-hunde-653760",
+"clicks": 0,
+"impressions": 23,
+"position": 26.5
+},
+{
+"page": "https://luxestyle.ch/products/automatischer-futterspender-zum-einhangen-825408",
+"clicks": 0,
+"impressions": 1,
+"position": 56
+},
+{
+"page": "https://luxestyle.ch/products/automatischer-gie-automat-606400",
+"clicks": 0,
+"impressions": 2,
+"position": 4
+},
+{
+"page": "https://luxestyle.ch/products/automatischer-lockenstab-222848",
+"clicks": 0,
+"impressions": 1,
+"position": 47
+},
+{
+"page": "https://luxestyle.ch/products/automatischer-lockenstab-fur-langes-haar-542209",
+"clicks": 0,
+"impressions": 1,
+"position": 49
+},
+{
+"page": "https://luxestyle.ch/products/automatischer-schnur-knotter-fur-angelschnure-629300",
+"clicks": 0,
+"impressions": 2,
+"position": 65.5
+},
+{
+"page": "https://luxestyle.ch/products/automatischer-wi-fi-futterspender-fur-katzen-k-030338",
+"clicks": 0,
+"impressions": 37,
+"position": 24.5
+},
+{
+"page": "https://luxestyle.ch/products/automatisches-anti-bell-halsband-fur-hunde-612500",
+"clicks": 0,
+"impressions": 8,
+"position": 55.6
+},
+{
+"page": "https://luxestyle.ch/products/automatisches-sprudelbad-gerat-622400",
+"clicks": 0,
+"impressions": 2,
+"position": 89.5
+},
+{
+"page": "https://luxestyle.ch/products/baby-geh-und-lauflernhilfe-509440",
+"clicks": 0,
+"impressions": 2,
+"position": 6
+},
+{
+"page": "https://luxestyle.ch/products/baby-kissen-aus-reinem-baumwolle-614700",
+"clicks": 0,
+"impressions": 1,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/baby-milchwarmer-707072",
+"clicks": 0,
+"impressions": 1,
+"position": 22
+},
+{
+"page": "https://luxestyle.ch/products/bambus-baumwoll-pyjama-fur-eltern-kind-629000",
+"clicks": 0,
+"impressions": 1,
+"position": 9
+},
+{
+"page": "https://luxestyle.ch/products/bartburste-540865",
+"clicks": 0,
+"impressions": 1,
+"position": 99
+},
+{
+"page": "https://luxestyle.ch/products/bartpflege-set-600400",
+"clicks": 0,
+"impressions": 9,
+"position": 50.8
+},
+{
+"page": "https://luxestyle.ch/products/bartwuchs-set-mit-mikro-nadel-roller-d5add9",
+"clicks": 0,
+"impressions": 1,
+"position": 69
+},
+{
+"page": "https://luxestyle.ch/products/baseballjacke-mit-drachen-stickerei-634700",
+"clicks": 0,
+"impressions": 1,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/baumwoll-camisole-608000",
+"clicks": 0,
+"impressions": 1,
+"position": 46
+},
+{
+"page": "https://luxestyle.ch/products/baumwoll-pullover-mit-batik-technik-602200",
+"clicks": 0,
+"impressions": 1,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/bausteine-motorrad-stadt-serie-230272",
+"clicks": 0,
+"impressions": 1,
+"position": 25
+},
+{
+"page": "https://luxestyle.ch/products/bayrische-lederhosen-kurz-braun-fgsshb5030",
+"clicks": 0,
+"impressions": 1,
+"position": 7
+},
+{
+"page": "https://luxestyle.ch/products/bayrische-lederhosen-kurz-sandbraun-fgsshb5031",
+"clicks": 0,
+"impressions": 1,
+"position": 8
+},
+{
+"page": "https://luxestyle.ch/products/bequeme-hausschuhe-mit-weicher-sohle-615800",
+"clicks": 0,
+"impressions": 10,
+"position": 45.4
+},
+{
+"page": "https://luxestyle.ch/products/bequeme-laufschuhe-708864",
+"clicks": 0,
+"impressions": 2,
+"position": 78.5
+},
+{
+"page": "https://luxestyle.ch/products/bequeme-schlabberhosen-618700",
+"clicks": 0,
+"impressions": 5,
+"position": 22.8
+},
+{
+"page": "https://luxestyle.ch/products/bequeme-sneaker-623600",
+"clicks": 0,
+"impressions": 1,
+"position": 71
+},
+{
+"page": "https://luxestyle.ch/products/besteck-organizer-aus-edelstahl-044226",
+"clicks": 0,
+"impressions": 1,
+"position": 85
+},
+{
+"page": "https://luxestyle.ch/products/bestickte-tanzschuhe-im-antiken-stil-600600",
+"clicks": 0,
+"impressions": 1,
+"position": 7
+},
+{
+"page": "https://luxestyle.ch/products/bettwasche-set-mit-fixleintuch-und-kissenbezug-620600",
+"clicks": 0,
+"impressions": 1,
+"position": 12
+},
+{
+"page": "https://luxestyle.ch/products/bluetooth-aroma-diffuser-mit-musik-nachtlicht-541440",
+"clicks": 0,
+"impressions": 2,
+"position": 13
+},
+{
+"page": "https://luxestyle.ch/products/bluetooth-lautsprecher-bausatz-zum-selberbauen-925376?variant=56159483789697&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 7
+},
+{
+"page": "https://luxestyle.ch/products/bluetooth-one-hand-gaming-controller-d78536",
+"clicks": 0,
+"impressions": 1,
+"position": 4
+},
+{
+"page": "https://luxestyle.ch/products/bluetooth-speaker-mit-rgb-lampe-tws-641200",
+"clicks": 0,
+"impressions": 1,
+"position": 56
+},
+{
+"page": "https://luxestyle.ch/products/bluetooth-tastatur-047425",
+"clicks": 0,
+"impressions": 4,
+"position": 54.8
+},
+{
+"page": "https://luxestyle.ch/products/bluetooth-tastatur-maus-konverter-fur-tablets-e8f48e",
+"clicks": 0,
+"impressions": 1,
+"position": 11
+},
+{
+"page": "https://luxestyle.ch/products/blumen-frucht-print-bademantel-626300",
+"clicks": 0,
+"impressions": 1,
+"position": 9
+},
+{
+"page": "https://luxestyle.ch/products/blumenring-aus-metall-612200",
+"clicks": 0,
+"impressions": 2,
+"position": 96
+},
+{
+"page": "https://luxestyle.ch/products/blumentopf-katzen-kratzbaum-mit-sisal-202816",
+"clicks": 0,
+"impressions": 1,
+"position": 59
+},
+{
+"page": "https://luxestyle.ch/products/blutstillendes-pulver-fur-hunde-und-katzenkral-613600",
+"clicks": 0,
+"impressions": 2,
+"position": 9
+},
+{
+"page": "https://luxestyle.ch/products/bobo-bird-holz-quarzuhr-fur-damen-und-herren-7c3a5c",
+"clicks": 0,
+"impressions": 1,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/bobo-bird-holz-quarzuhr-fur-damen-und-herren-7c3a5c?variant=56203778949505&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+"clicks": 0,
+"impressions": 1,
+"position": 1
+},
+{
+"page": "https://luxestyle.ch/products/body-chain-top-mit-perlen-rosarot-636300",
+"clicks": 0,
+"impressions": 1,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/body-painting-pen-12-farben-614200",
+"clicks": 0,
+"impressions": 1,
+"position": 8
+},
+{
+"page": "https://luxestyle.ch/products/bohemian-mandala-wandteppich-e13828",
+"clicks": 0,
+"impressions": 1,
+"position": 50
+},
+{
+"page": "https://luxestyle.ch/products/britische-business-schuhe-aus-echtem-leder-498880",
+"clicks": 0,
+"impressions": 2,
+"position": 48.5
+},
+{
+"page": "https://luxestyle.ch/products/britische-freizeitschuhe-fur-herren-640300",
+"clicks": 0,
+"impressions": 2,
+"position": 74
+},
+{
+"page": "https://luxestyle.ch/products/britische-herrenschuhe-im-ubergrossen-stil-641800",
+"clicks": 0,
+"impressions": 3,
+"position": 68.3
+},
+{
+"page": "https://luxestyle.ch/products/britische-high-top-casual-lederschuhe-629800",
+"clicks": 0,
+"impressions": 1,
+"position": 79
+},
+{
+"page": "https://luxestyle.ch/products/britische-leder-sneaker-fur-herren-611300",
+"clicks": 0,
+"impressions": 1,
+"position": 72
+},
+{
+"page": "https://luxestyle.ch/products/bruder-fendt-rundballenpresse-fga02038",
+"clicks": 0,
+"impressions": 1,
+"position": 12
+},
+{
+"page": "https://luxestyle.ch/products/brustgeschirr-fur-mittlere-und-grosse-hunde-efe706",
+"clicks": 0,
+"impressions": 1,
+"position": 39
+},
+{
+"page": "https://luxestyle.ch/products/buegeltransfer-selbst-gestalten",
+"clicks": 0,
+"impressions": 1,
+"position": 6
+},
+{
+"page": "https://luxestyle.ch/products/bunte-cocktailglaser-6er-fur-frohliche-abende-449831",
+"clicks": 0,
+"impressions": 2,
+"position": 45.5
+},
+{
+"page": "https://luxestyle.ch/products/bunte-sport-silikonuhr-019584",
+"clicks": 0,
+"impressions": 1,
+"position": 13
+},
+{
+"page": "https://luxestyle.ch/products/business-rucksack-fur-herren-mit-laptopfach-824960",
+"clicks": 0,
+"impressions": 1,
+"position": 61
+},
+{
+"page": "https://luxestyle.ch/products/camping-geschirr-set-picknick-outdoor",
+"clicks": 0,
+"impressions": 1,
+"position": 39
+},
+{
+"page": "https://luxestyle.ch/products/campingliege-mit-fu-stutze-527361",
+"clicks": 0,
+"impressions": 1,
+"position": 38
+},
+{
+"page": "https://luxestyle.ch/products/carbon-platten-laufschuh-mit-dampfung-621500?variant=55897323700609&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 97
+},
+{
+"page": "https://luxestyle.ch/products/cashmere-hemd-606000",
+"clicks": 0,
+"impressions": 6,
+"position": 37.3
+},
+{
+"page": "https://luxestyle.ch/products/cellulite-massage-roller",
+"clicks": 0,
+"impressions": 1,
+"position": 56
+},
+{
+"page": "https://luxestyle.ch/products/cluster-vase-design-5-rohren-modern",
+"clicks": 0,
+"impressions": 3,
+"position": 7.7
+},
+{
+"page": "https://luxestyle.ch/products/cob-led-rotlicht-stirnlampe-117312?variant=56203643945345&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 11,
+"position": 60.2
+},
+{
+"page": "https://luxestyle.ch/products/cocktail-rauchergerat-aus-holz-629200",
+"clicks": 0,
+"impressions": 1,
+"position": 14
+},
+{
+"page": "https://luxestyle.ch/products/cocktail-shaker-set-edelstahl-bar-set",
+"clicks": 0,
+"impressions": 2,
+"position": 54.5
+},
+{
+"page": "https://luxestyle.ch/products/cord-minirock-im-franzosischen-stil-617500",
+"clicks": 0,
+"impressions": 2,
+"position": 7.5
+},
+{
+"page": "https://luxestyle.ch/products/corduroy-baseball-jacke-fur-herren-613000",
+"clicks": 0,
+"impressions": 1,
+"position": 48
+},
+{
+"page": "https://luxestyle.ch/products/d5-column-rucksack-15l-kinder-camouflage-961280",
+"clicks": 0,
+"impressions": 1,
+"position": 2
+},
+{
+"page": "https://luxestyle.ch/products/damast-kochmesser-mit-hammerschlag-finish-632600",
+"clicks": 0,
+"impressions": 4,
+"position": 70.5
+},
+{
+"page": "https://luxestyle.ch/products/damast-kochmesser-set-602200",
+"clicks": 0,
+"impressions": 6,
+"position": 80.5
+},
+{
+"page": "https://luxestyle.ch/products/damast-kuchenmesser-850816?variant=56115128369537&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 21
+},
+{
+"page": "https://luxestyle.ch/products/damast-kuchenmesser-set-619600",
+"clicks": 0,
+"impressions": 3,
+"position": 46
+},
+{
+"page": "https://luxestyle.ch/products/damen-armbanduhr-mit-lederarmband-094400",
+"clicks": 0,
+"impressions": 1,
+"position": 97
+},
+{
+"page": "https://luxestyle.ch/products/damen-fleece-jumpsuit-langarm-overall-639700",
+"clicks": 0,
+"impressions": 1,
+"position": 8
+},
+{
+"page": "https://luxestyle.ch/products/damen-high-waist-ripped-stretch-jeans-634100",
+"clicks": 0,
+"impressions": 3,
+"position": 27.3
+},
+{
+"page": "https://luxestyle.ch/products/damen-jumpsuit-mit-weitem-bein-622200",
+"clicks": 0,
+"impressions": 1,
+"position": 74
+},
+{
+"page": "https://luxestyle.ch/products/damen-neckholder-badeanzug-mit-ruckenausschnit-606600",
+"clicks": 0,
+"impressions": 2,
+"position": 35
+},
+{
+"page": "https://luxestyle.ch/products/damen-rucksack-aus-pu-leder-30c8db",
+"clicks": 0,
+"impressions": 1,
+"position": 63
+},
+{
+"page": "https://luxestyle.ch/products/damenkleid-626800",
+"clicks": 0,
+"impressions": 1,
+"position": 4
+},
+{
+"page": "https://luxestyle.ch/products/damenuhr-montres-de-luxe-exl-a-8301-35-mm-s0800456",
+"clicks": 0,
+"impressions": 1,
+"position": 9
+},
+{
+"page": "https://luxestyle.ch/products/dampfduse-fur-kaffeemaschine-513280?variant=56092816966017&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 65
+},
+{
+"page": "https://luxestyle.ch/products/dekorative-bucherregal-laternenlampe-607700",
+"clicks": 0,
+"impressions": 2,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/digitale-outdoor-herrenuhr-mit-kompass-000064",
+"clicks": 0,
+"impressions": 1,
+"position": 88
+},
+{
+"page": "https://luxestyle.ch/products/digitales-meridian-massagegerat-mit-farb-touch-753088",
+"clicks": 0,
+"impressions": 1,
+"position": 3
+},
+{
+"page": "https://luxestyle.ch/products/dirndlbluse-weiss-fgsshb2705",
+"clicks": 0,
+"impressions": 2,
+"position": 61.5
+},
+{
+"page": "https://luxestyle.ch/products/diy-hausschuhe-zum-selbermachen-883648",
+"clicks": 0,
+"impressions": 2,
+"position": 5
+},
+{
+"page": "https://luxestyle.ch/products/diy-nail-art-doodle-pen-886913",
+"clicks": 0,
+"impressions": 7,
+"position": 58.4
+},
+{
+"page": "https://luxestyle.ch/products/doppelseitiges-nail-art-stifte-set-603100",
+"clicks": 0,
+"impressions": 1,
+"position": 6
+},
+{
+"page": "https://luxestyle.ch/products/doppelwandiger-thermosbecher-624100",
+"clicks": 0,
+"impressions": 1,
+"position": 51
+},
+{
+"page": "https://luxestyle.ch/products/dr-japan-sakura-lotion-477826",
+"clicks": 0,
+"impressions": 1,
+"position": 7
+},
+{
+"page": "https://luxestyle.ch/products/drahtloser-bettnasser-alarm-fur-babys-618200",
+"clicks": 0,
+"impressions": 3,
+"position": 61.3
+},
+{
+"page": "https://luxestyle.ch/products/dream-sternenhimmel-projektor-hd-laser-849664?variant=56007165444481",
+"clicks": 0,
+"impressions": 1,
+"position": 5
+},
+{
+"page": "https://luxestyle.ch/products/dreamy-eau-de-parfum-floral-30ml-852162",
+"clicks": 0,
+"impressions": 1,
+"position": 3
+},
+{
+"page": "https://luxestyle.ch/products/e7-kinder-smartwatch-4g-mit-videocall-gps-846080",
+"clicks": 0,
+"impressions": 1,
+"position": 4
+},
+{
+"page": "https://luxestyle.ch/products/e88pro-faltbare-quadcopter-drohne-mit-screen-c-330625",
+"clicks": 0,
+"impressions": 1,
+"position": 3
+},
+{
+"page": "https://luxestyle.ch/products/edelstahl-aufbewahrungsregal-606900",
+"clicks": 0,
+"impressions": 1,
+"position": 60
+},
+{
+"page": "https://luxestyle.ch/products/edelstahl-becher-grosser-fassungsvermogen-port-633400",
+"clicks": 0,
+"impressions": 2,
+"position": 36.5
+},
+{
+"page": "https://luxestyle.ch/products/edelstahl-seifenschale-ohne-bohren",
+"clicks": 0,
+"impressions": 5,
+"position": 37.6
+},
+{
+"page": "https://luxestyle.ch/products/edelstahl-wok-mit-antihaft-und-dreischichtbode-449024?variant=56131228074369&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 2,
+"position": 59.5
+},
+{
+"page": "https://luxestyle.ch/products/edle-ringbox-aus-walnussholz-614100?variant=56141230408065&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+"clicks": 0,
+"impressions": 1,
+"position": 11
+},
+{
+"page": "https://luxestyle.ch/products/einfaches-v-ausschnitt-kleid-612600",
+"clicks": 0,
+"impressions": 4,
+"position": 35.3
+},
+{
+"page": "https://luxestyle.ch/products/einfaches-zelt-612400",
+"clicks": 0,
+"impressions": 4,
+"position": 75.5
+},
+{
+"page": "https://luxestyle.ch/products/einhorn-kinderkostum-fgack1096164",
+"clicks": 0,
+"impressions": 2,
+"position": 92.5
+},
+{
+"page": "https://luxestyle.ch/products/einseitige-schulter-meerjungfrau-schnitt-636000",
+"clicks": 0,
+"impressions": 1,
+"position": 2
+},
+{
+"page": "https://luxestyle.ch/products/elastischer-sofabezug-ohne-armlehnen-633800",
+"clicks": 0,
+"impressions": 4,
+"position": 9.5
+},
+{
+"page": "https://luxestyle.ch/products/elastisches-stoff-armband-fur-herrenuhr-629000",
+"clicks": 0,
+"impressions": 2,
+"position": 40.5
+},
+{
+"page": "https://luxestyle.ch/products/elefant-skulptur-aus-schmiedeeisen-095360",
+"clicks": 0,
+"impressions": 1,
+"position": 11
+},
+{
+"page": "https://luxestyle.ch/products/elegante-damenuhr-mit-lederarmband-888128",
+"clicks": 0,
+"impressions": 3,
+"position": 50.7
+},
+{
+"page": "https://luxestyle.ch/products/elegante-high-heels-mit-stiletto-absatz-025600",
+"clicks": 0,
+"impressions": 1,
+"position": 100
+},
+{
+"page": "https://luxestyle.ch/products/elegante-high-waist-stoffhose-627500",
+"clicks": 0,
+"impressions": 1,
+"position": 39
+},
+{
+"page": "https://luxestyle.ch/products/elegante-mid-heel-pumps-mit-eckiger-kappe-607000",
+"clicks": 0,
+"impressions": 1,
+"position": 67
+},
+{
+"page": "https://luxestyle.ch/products/eleganter-extra-langer-wollmantel-fur-damen-602200",
+"clicks": 0,
+"impressions": 2,
+"position": 57.5
+},
+{
+"page": "https://luxestyle.ch/products/eleganter-wollmantel-fur-damen-601200",
+"clicks": 0,
+"impressions": 2,
+"position": 51.5
+},
+{
+"page": "https://luxestyle.ch/products/eleganter-wollmantel-mit-revers-und-bindegurte-615500",
+"clicks": 0,
+"impressions": 3,
+"position": 57.3
+},
+{
+"page": "https://luxestyle.ch/products/elegantes-armelloses-midi-kleid-mit-a-linie-604200",
+"clicks": 0,
+"impressions": 1,
+"position": 48
+},
+{
+"page": "https://luxestyle.ch/products/elegantes-halterneck-kleid-639800",
+"clicks": 0,
+"impressions": 3,
+"position": 41.7
+},
+{
+"page": "https://luxestyle.ch/products/elegantes-leopard-kleid-627600",
+"clicks": 0,
+"impressions": 1,
+"position": 33
+},
+{
+"page": "https://luxestyle.ch/products/elegantes-neckholder-kleid-fur-damen-625500",
+"clicks": 0,
+"impressions": 6,
+"position": 60.3
+},
+{
+"page": "https://luxestyle.ch/products/elegantes-off-shoulder-kleid-602200",
+"clicks": 0,
+"impressions": 2,
+"position": 28.5
+},
+{
+"page": "https://luxestyle.ch/products/elegantes-tragerkleid-fur-damen-630300",
+"clicks": 0,
+"impressions": 1,
+"position": 50
+},
+{
+"page": "https://luxestyle.ch/products/elektrische-selbstruhrende-tasse-mit-usb-ladun-575680?variant=55889912594817&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 19
+},
+{
+"page": "https://luxestyle.ch/products/elektrischer-gemuseschneider-multifunktional-schneiden-reiben-hobeln",
+"clicks": 0,
+"impressions": 2,
+"position": 60.5
+},
+{
+"page": "https://luxestyle.ch/products/elektrischer-multifunktionsschaler-47e15f",
+"clicks": 0,
+"impressions": 1,
+"position": 7
+},
+{
+"page": "https://luxestyle.ch/products/elektrischer-ventilator-fur-buro-und-zuhause-633300",
+"clicks": 0,
+"impressions": 1,
+"position": 12
+},
+{
+"page": "https://luxestyle.ch/products/elektrischer-wasserdispenser-mit-usb-akku-597312",
+"clicks": 0,
+"impressions": 2,
+"position": 21
+},
+{
+"page": "https://luxestyle.ch/products/elektrisches-tranchiermesser-fur-grillfleisch-119552",
+"clicks": 0,
+"impressions": 2,
+"position": 13
+},
+{
+"page": "https://luxestyle.ch/products/elektronische-herrenuhr-mit-kompass-620600",
+"clicks": 0,
+"impressions": 1,
+"position": 84
+},
+{
+"page": "https://luxestyle.ch/products/ems-leitgel-fur-muskelentspannung-603200",
+"clicks": 0,
+"impressions": 1,
+"position": 7
+},
+{
+"page": "https://luxestyle.ch/products/ergo-mauspad-196802",
+"clicks": 0,
+"impressions": 1,
+"position": 96
+},
+{
+"page": "https://luxestyle.ch/products/erhohter-futternapf-fur-katzen-mit-transparent-253504",
+"clicks": 0,
+"impressions": 1,
+"position": 100
+},
+{
+"page": "https://luxestyle.ch/products/etuikleid-bureau-ruschenarmel-hohe-taille-damen-s-3xl-6-farben",
+"clicks": 0,
+"impressions": 1,
+"position": 18
+},
+{
+"page": "https://luxestyle.ch/products/europaisch-amerikanische-damenmode-606300",
+"clicks": 0,
+"impressions": 4,
+"position": 59.8
+},
+{
+"page": "https://luxestyle.ch/products/eva-hausschuhe-fur-drinnen-und-draussen-637500",
+"clicks": 0,
+"impressions": 1,
+"position": 5
+},
+{
+"page": "https://luxestyle.ch/products/explosionsgeschutzte-outdoor-campingmatte-625200",
+"clicks": 0,
+"impressions": 1,
+"position": 23
+},
+{
+"page": "https://luxestyle.ch/products/fahrzeug-tracker-604900",
+"clicks": 0,
+"impressions": 4,
+"position": 84.8
+},
+{
+"page": "https://luxestyle.ch/products/falsche-wimpern-set-635200",
+"clicks": 0,
+"impressions": 1,
+"position": 57
+},
+{
+"page": "https://luxestyle.ch/products/faltbare-abschliessbare-aufbewahrungsbox-634800",
+"clicks": 0,
+"impressions": 1,
+"position": 8
+},
+{
+"page": "https://luxestyle.ch/products/faltbare-kleidersack-reisetasche-733120",
+"clicks": 0,
+"impressions": 2,
+"position": 8.5
+},
+{
+"page": "https://luxestyle.ch/products/faltbare-mini-waschmaschine-mit-trocknerfunkti-621700",
+"clicks": 0,
+"impressions": 3,
+"position": 60.3
+},
+{
+"page": "https://luxestyle.ch/products/faltbare-silikonschussel-fur-unterwegs-631000",
+"clicks": 0,
+"impressions": 1,
+"position": 11
+},
+{
+"page": "https://luxestyle.ch/products/faltbarer-campingstuhl-601700",
+"clicks": 0,
+"impressions": 1,
+"position": 83
+},
+{
+"page": "https://luxestyle.ch/products/falttisch-428673",
+"clicks": 0,
+"impressions": 2,
+"position": 31
+},
+{
+"page": "https://luxestyle.ch/products/farbige-kunstlermappe-630800?variant=56114963972481&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 2,
+"position": 36.5
+},
+{
+"page": "https://luxestyle.ch/products/farbige-nageldesign-schablone-aus-metall-0dea5a",
+"clicks": 0,
+"impressions": 2,
+"position": 10.5
+},
+{
+"page": "https://luxestyle.ch/products/farbiger-tricolor-lidschatten-stick-607500",
+"clicks": 0,
+"impressions": 3,
+"position": 8.3
+},
+{
+"page": "https://luxestyle.ch/products/farblicht-gerat-fur-zu-hause-788480",
+"clicks": 0,
+"impressions": 1,
+"position": 38
+},
+{
+"page": "https://luxestyle.ch/products/fashion-automatikuhr-fur-damen-269312",
+"clicks": 0,
+"impressions": 11,
+"position": 63.1
+},
+{
+"page": "https://luxestyle.ch/products/federschmuck-ohrringe-626700",
+"clicks": 0,
+"impressions": 1,
+"position": 35
+},
+{
+"page": "https://luxestyle.ch/products/ferngesteuerte-infrarot-wurst-223168",
+"clicks": 0,
+"impressions": 1,
+"position": 3
+},
+{
+"page": "https://luxestyle.ch/products/ferngesteuertes-fluggerat-mit-hd-bildschirm-625500",
+"clicks": 0,
+"impressions": 3,
+"position": 29.7
+},
+{
+"page": "https://luxestyle.ch/products/fernsteuerung-fur-rc-autos-3f923d",
+"clicks": 0,
+"impressions": 1,
+"position": 55
+},
+{
+"page": "https://luxestyle.ch/products/fersenpolster-fersenschutz-8c1153",
+"clicks": 0,
+"impressions": 2,
+"position": 73
+},
+{
+"page": "https://luxestyle.ch/products/filterballe-fur-pool-700g-antibakteriell-221185",
+"clicks": 0,
+"impressions": 2,
+"position": 90
+},
+{
+"page": "https://luxestyle.ch/products/fini-happy-party-xl-fga33750",
+"clicks": 0,
+"impressions": 1,
+"position": 8
+},
+{
+"page": "https://luxestyle.ch/products/fischerschirm-454465",
+"clicks": 0,
+"impressions": 1,
+"position": 9
+},
+{
+"page": "https://luxestyle.ch/products/fitness-band-fur-korperstraffung-7e0d5a",
+"clicks": 0,
+"impressions": 3,
+"position": 52
+},
+{
+"page": "https://luxestyle.ch/products/flammen-diffuser-715840",
+"clicks": 0,
+"impressions": 10,
+"position": 33.5
+},
+{
+"page": "https://luxestyle.ch/products/frame-koffer-set-mit-frontoffnung-472194",
+"clicks": 0,
+"impressions": 1,
+"position": 4
+},
+{
+"page": "https://luxestyle.ch/products/franzosische-sandalen-mit-webmuster-617500",
+"clicks": 0,
+"impressions": 1,
+"position": 78
+},
+{
+"page": "https://luxestyle.ch/products/freizeit-hemd-aus-baumwoll-leinen-stehkragen-622200?variant=56156432793985&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 57
+},
+{
+"page": "https://luxestyle.ch/products/freizeit-hemd-fur-herren-613100",
+"clicks": 0,
+"impressions": 1,
+"position": 99
+},
+{
+"page": "https://luxestyle.ch/products/freizeit-laptop-rucksack-aus-oxford-stoff-274560",
+"clicks": 0,
+"impressions": 8,
+"position": 62.5
+},
+{
+"page": "https://luxestyle.ch/products/fressnapf-mit-wasserspender-fur-hunde-katzen-999168",
+"clicks": 0,
+"impressions": 1,
+"position": 14
+},
+{
+"page": "https://luxestyle.ch/products/frischer-susswasserperlen-schmuck-616384",
+"clicks": 0,
+"impressions": 1,
+"position": 50
+},
+{
+"page": "https://luxestyle.ch/products/frucht-infuser-wasserflasche-1000ml-678336",
+"clicks": 0,
+"impressions": 1,
+"position": 46
+},
+{
+"page": "https://luxestyle.ch/products/fruhlings-lauflernschuhe-fur-babys-612000",
+"clicks": 0,
+"impressions": 3,
+"position": 97.3
+},
+{
+"page": "https://luxestyle.ch/products/funksteckdosen-set-mit-5-steckdosen-2-fernbedi-548866",
+"clicks": 0,
+"impressions": 1,
+"position": 100
+},
+{
+"page": "https://luxestyle.ch/products/game-grip-zubehor-fur-switch2-616100",
+"clicks": 0,
+"impressions": 1,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/gaming-combo-138497",
+"clicks": 0,
+"impressions": 1,
+"position": 7
+},
+{
+"page": "https://luxestyle.ch/products/gaming-headset-rgb-7-1-surround?variant=55741766828417&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 42
+},
+{
+"page": "https://luxestyle.ch/products/gebetsteppich-fur-muslimische-kinder-618688",
+"clicks": 0,
+"impressions": 3,
+"position": 9
+},
+{
+"page": "https://luxestyle.ch/products/geblumtes-baumwoll-tragerkleid-mit-weitem-rock-607200",
+"clicks": 0,
+"impressions": 1,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/geburtsstein-herz-armband-coeur-personalisiert",
+"clicks": 0,
+"impressions": 1,
+"position": 7
+},
+{
+"page": "https://luxestyle.ch/products/gefleckter-hemd-635600",
+"clicks": 0,
+"impressions": 1,
+"position": 5
+},
+{
+"page": "https://luxestyle.ch/products/geflochtenes-armband-aus-titanstahl-627000",
+"clicks": 0,
+"impressions": 1,
+"position": 12
+},
+{
+"page": "https://luxestyle.ch/products/geflochtenes-lederarmband-mit-magnetverschluss-624800",
+"clicks": 0,
+"impressions": 4,
+"position": 53.3
+},
+{
+"page": "https://luxestyle.ch/products/gefutterte-lauflernschuhe-mit-weicher-sohle-620406?variant=56129983840641&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 60
+},
+{
+"page": "https://luxestyle.ch/products/gefutterter-kapuzenmantel-schlicht-vielseitig-632300",
+"clicks": 0,
+"impressions": 2,
+"position": 25
+},
+{
+"page": "https://luxestyle.ch/products/gehhilfer-fur-hunde-626200",
+"clicks": 0,
+"impressions": 1,
+"position": 63
+},
+{
+"page": "https://luxestyle.ch/products/gel-nagelsticker-784448",
+"clicks": 0,
+"impressions": 2,
+"position": 47
+},
+{
+"page": "https://luxestyle.ch/products/gemuse-kissen-fur-sofa-und-deko-669568",
+"clicks": 0,
+"impressions": 1,
+"position": 7
+},
+{
+"page": "https://luxestyle.ch/products/gepragtes-lederhalsband-mit-weichem-futter-604900",
+"clicks": 0,
+"impressions": 1,
+"position": 79
+},
+{
+"page": "https://luxestyle.ch/products/gesichtsmaske-mit-kurkuma-und-kojisaure-617100",
+"clicks": 0,
+"impressions": 2,
+"position": 15.5
+},
+{
+"page": "https://luxestyle.ch/products/gesichtsreinigungsburste-mit-7-geschwindigkeit-604700",
+"clicks": 0,
+"impressions": 3,
+"position": 56.3
+},
+{
+"page": "https://luxestyle.ch/products/gestreiftes-damenhemd-mit-reissverschluss-629200",
+"clicks": 0,
+"impressions": 1,
+"position": 1
+},
+{
+"page": "https://luxestyle.ch/products/gestreiftes-oxford-hemd-mit-langen-armeln-639800?variant=55910134645121&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 5
+},
+{
+"page": "https://luxestyle.ch/products/gestrickte-beanie-mit-katzenohren-cc1a87?variant=55889903845761&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/gitarren-wandhalterung-mit-auto-lock-319426",
+"clicks": 0,
+"impressions": 1,
+"position": 9
+},
+{
+"page": "https://luxestyle.ch/products/glatteisen-lockenstab-2-in-1-609100",
+"clicks": 0,
+"impressions": 1,
+"position": 40
+},
+{
+"page": "https://luxestyle.ch/products/glatteisen-und-lockenstab-2-in-1-aecfc8",
+"clicks": 0,
+"impressions": 1,
+"position": 62
+},
+{
+"page": "https://luxestyle.ch/products/glatteisen-und-lockenstab-2-in-1-mit-thermosta-22f4c1?variant=56115543802241&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 27
+},
+{
+"page": "https://luxestyle.ch/products/glitzer-make-up-stick-724290",
+"clicks": 0,
+"impressions": 1,
+"position": 14
+},
+{
+"page": "https://luxestyle.ch/products/glitzer-sneaker-fur-kinder-f42138",
+"clicks": 0,
+"impressions": 4,
+"position": 36.8
+},
+{
+"page": "https://luxestyle.ch/products/glitzer-spray-fur-haar-und-korper-784705",
+"clicks": 0,
+"impressions": 1,
+"position": 87
+},
+{
+"page": "https://luxestyle.ch/products/golden-caviar-augencreme-777da8",
+"clicks": 0,
+"impressions": 1,
+"position": 62
+},
+{
+"page": "https://luxestyle.ch/products/gps-auto-ortungstracker-298432",
+"clicks": 0,
+"impressions": 5,
+"position": 63.6
+},
+{
+"page": "https://luxestyle.ch/products/gps-auto-tracker-a3b10f",
+"clicks": 0,
+"impressions": 5,
+"position": 63.2
+},
+{
+"page": "https://luxestyle.ch/products/gps-locator-mit-90-tage-batterie-mini-design-u-21579f",
+"clicks": 0,
+"impressions": 1,
+"position": 78
+},
+{
+"page": "https://luxestyle.ch/products/gps-ortungsgerat-fur-fahrzeuge-623800",
+"clicks": 0,
+"impressions": 32,
+"position": 84.8
+},
+{
+"page": "https://luxestyle.ch/products/granitbohrer-mit-sechskantschaft-604800",
+"clicks": 0,
+"impressions": 1,
+"position": 33
+},
+{
+"page": "https://luxestyle.ch/products/gro-e-kristallglas-fruchtschale-couchtisch-612600",
+"clicks": 0,
+"impressions": 1,
+"position": 9
+},
+{
+"page": "https://luxestyle.ch/products/gro-es-reise-organizer-beutel-600500",
+"clicks": 0,
+"impressions": 1,
+"position": 51
+},
+{
+"page": "https://luxestyle.ch/products/grosse-outdoor-isolierflasche-aus-edelstahl-31-600300",
+"clicks": 0,
+"impressions": 1,
+"position": 12
+},
+{
+"page": "https://luxestyle.ch/products/grosse-trinkflasche-mit-strohhalm-fur-sport-fi-635300",
+"clicks": 0,
+"impressions": 1,
+"position": 26
+},
+{
+"page": "https://luxestyle.ch/products/grosser-damen-reise-rucksack-041920",
+"clicks": 0,
+"impressions": 1,
+"position": 55
+},
+{
+"page": "https://luxestyle.ch/products/grosser-freizeit-rucksack-mit-reissverschluss-711872",
+"clicks": 0,
+"impressions": 1,
+"position": 56
+},
+{
+"page": "https://luxestyle.ch/products/grune-britisch-karierte-strumpfhose-610100",
+"clicks": 0,
+"impressions": 1,
+"position": 12
+},
+{
+"page": "https://luxestyle.ch/products/h8-mini-rc-helikopter-02cd95",
+"clicks": 0,
+"impressions": 6,
+"position": 50.3
+},
+{
+"page": "https://luxestyle.ch/products/haaransatz-puder-wasserfest-611600",
+"clicks": 0,
+"impressions": 6,
+"position": 32.7
+},
+{
+"page": "https://luxestyle.ch/products/haarfang-fur-dusche-787265",
+"clicks": 0,
+"impressions": 1,
+"position": 45
+},
+{
+"page": "https://luxestyle.ch/products/haarschonender-2-in-1-glatteisen-624900?variant=56069788991873&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 67
+},
+{
+"page": "https://luxestyle.ch/products/haarserum-mit-applikatorburste-100ml-665666",
+"clicks": 0,
+"impressions": 1,
+"position": 4
+},
+{
+"page": "https://luxestyle.ch/products/haarstander-843584",
+"clicks": 0,
+"impressions": 1,
+"position": 12
+},
+{
+"page": "https://luxestyle.ch/products/haftcreme-fur-zahnprothesen-28g-780098",
+"clicks": 0,
+"impressions": 1,
+"position": 86
+},
+{
+"page": "https://luxestyle.ch/products/hair-identifier-spray-set-fur-gesichtsenthaaru-410880",
+"clicks": 0,
+"impressions": 1,
+"position": 3
+},
+{
+"page": "https://luxestyle.ch/products/halloween-glasbecher-622800?variant=55904813318529&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 3,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/hallux-valgus-korrektor-schiene-7238f6",
+"clicks": 0,
+"impressions": 2,
+"position": 61
+},
+{
+"page": "https://luxestyle.ch/products/halsband-mit-leine-aus-leder-602200",
+"clicks": 0,
+"impressions": 4,
+"position": 61.8
+},
+{
+"page": "https://luxestyle.ch/products/halskette-mit-totenkopfen-fga98597",
+"clicks": 0,
+"impressions": 1,
+"position": 58
+},
+{
+"page": "https://luxestyle.ch/products/handgefertigter-stoff-tiger-714688",
+"clicks": 0,
+"impressions": 2,
+"position": 43
+},
+{
+"page": "https://luxestyle.ch/products/handgenahte-herrenschuhe-633200",
+"clicks": 0,
+"impressions": 1,
+"position": 97
+},
+{
+"page": "https://luxestyle.ch/products/handheld-game-tv-spielkonsole-627700",
+"clicks": 0,
+"impressions": 2,
+"position": 42
+},
+{
+"page": "https://luxestyle.ch/products/handheld-mini-ventilator-600000",
+"clicks": 0,
+"impressions": 4,
+"position": 61.3
+},
+{
+"page": "https://luxestyle.ch/products/handliche-isoliertasche-fur-unterwegs-619900",
+"clicks": 0,
+"impressions": 1,
+"position": 32
+},
+{
+"page": "https://luxestyle.ch/products/hange-zelt-organizer-mit-stauraum-513410",
+"clicks": 0,
+"impressions": 1,
+"position": 35
+},
+{
+"page": "https://luxestyle.ch/products/happy-mary-kinder-sandalen-631100",
+"clicks": 0,
+"impressions": 2,
+"position": 7
+},
+{
+"page": "https://luxestyle.ch/products/hardcase-iphone%C2%AE-hulle-mit-magsafe%C2%AE-selbst-gestalten",
+"clicks": 0,
+"impressions": 1,
+"position": 8
+},
+{
+"page": "https://luxestyle.ch/products/hasenskelett-16-cm-fga910991",
+"clicks": 0,
+"impressions": 13,
+"position": 15.3
+},
+{
+"page": "https://luxestyle.ch/products/heatless-curls-set-seide",
+"clicks": 0,
+"impressions": 2,
+"position": 29.5
+},
+{
+"page": "https://luxestyle.ch/products/herren-fitness-vest-609000",
+"clicks": 0,
+"impressions": 1,
+"position": 46
+},
+{
+"page": "https://luxestyle.ch/products/herren-freizeit-hemd-kurzarm-616400?variant=56124576661889&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 100
+},
+{
+"page": "https://luxestyle.ch/products/herren-freizeitanzug-mit-3d-digitaldruck-616700",
+"clicks": 0,
+"impressions": 1,
+"position": 9
+},
+{
+"page": "https://luxestyle.ch/products/herren-fussballschuhe-high-top-ubergrossen-611200",
+"clicks": 0,
+"impressions": 1,
+"position": 72
+},
+{
+"page": "https://luxestyle.ch/products/herren-hemd-im-american-vintage-karodesign-622100?variant=56099878437249&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 2,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/herren-hemd-im-lassigen-beach-look-624200?variant=55984757113217",
+"clicks": 0,
+"impressions": 1,
+"position": 9
+},
+{
+"page": "https://luxestyle.ch/products/herren-hemd-mit-manschettenknopfen-626100",
+"clicks": 0,
+"impressions": 2,
+"position": 63
+},
+{
+"page": "https://luxestyle.ch/products/herren-hemd-mit-stehkragen-605100",
+"clicks": 0,
+"impressions": 7,
+"position": 57.7
+},
+{
+"page": "https://luxestyle.ch/products/herren-high-top-freizeit-sneaker-mit-dicker-so-46b704",
+"clicks": 0,
+"impressions": 9,
+"position": 48.1
+},
+{
+"page": "https://luxestyle.ch/products/herren-hoodie-leicht-und-unifarben-604100",
+"clicks": 0,
+"impressions": 1,
+"position": 20
+},
+{
+"page": "https://luxestyle.ch/products/herren-langarmhemd-geburstet-extra-dick-636100",
+"clicks": 0,
+"impressions": 2,
+"position": 4
+},
+{
+"page": "https://luxestyle.ch/products/herren-outdoor-freizeit-slipper-aus-leder-628900",
+"clicks": 0,
+"impressions": 1,
+"position": 9
+},
+{
+"page": "https://luxestyle.ch/products/herren-outdoor-freizeitschuh-601600",
+"clicks": 0,
+"impressions": 2,
+"position": 49.5
+},
+{
+"page": "https://luxestyle.ch/products/herren-outdoor-wanderschuh-low-top-603100?variant=55886267679105&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 57
+},
+{
+"page": "https://luxestyle.ch/products/herren-pullover-aus-seide-622300",
+"clicks": 0,
+"impressions": 6,
+"position": 54.2
+},
+{
+"page": "https://luxestyle.ch/products/herren-rollkragenpullover-638800",
+"clicks": 0,
+"impressions": 3,
+"position": 50.7
+},
+{
+"page": "https://luxestyle.ch/products/herren-rollkragenpullover-aus-wolle-604000",
+"clicks": 0,
+"impressions": 6,
+"position": 56.5
+},
+{
+"page": "https://luxestyle.ch/products/herren-sicherheitsschuhe-mit-stahlkappe-493696?variant=56116156563841&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 35
+},
+{
+"page": "https://luxestyle.ch/products/herren-skaterschuh-aus-rindsleder-601700",
+"clicks": 0,
+"impressions": 1,
+"position": 47
+},
+{
+"page": "https://luxestyle.ch/products/herren-sportschuh-ubergrossen-616000",
+"clicks": 0,
+"impressions": 6,
+"position": 77.7
+},
+{
+"page": "https://luxestyle.ch/products/herren-sportschuhe-new-balance-rc42-s64201854",
+"clicks": 0,
+"impressions": 1,
+"position": 38
+},
+{
+"page": "https://luxestyle.ch/products/herren-umhangetasche-aus-leder-616800",
+"clicks": 0,
+"impressions": 1,
+"position": 99
+},
+{
+"page": "https://luxestyle.ch/products/herrenhemd-mit-3d-digitaldruck-638900",
+"clicks": 0,
+"impressions": 1,
+"position": 6
+},
+{
+"page": "https://luxestyle.ch/products/herrenleichtgewichtige-arbeitsschuhe-mit-stoss-244160",
+"clicks": 0,
+"impressions": 1,
+"position": 89
+},
+{
+"page": "https://luxestyle.ch/products/herrenparfum-givenchy-pi-edt-50-ml-bb389582",
+"clicks": 0,
+"impressions": 1,
+"position": 39
+},
+{
+"page": "https://luxestyle.ch/products/herz-schmuck-set-798018",
+"clicks": 0,
+"impressions": 3,
+"position": 75.7
+},
+{
+"page": "https://luxestyle.ch/products/herzschlag-pluschtier-fur-haustiere-646848",
+"clicks": 0,
+"impressions": 1,
+"position": 60
+},
+{
+"page": "https://luxestyle.ch/products/hexagon-wandregal-set-aus-schmiedeeisen-628200",
+"clicks": 0,
+"impressions": 1,
+"position": 13
+},
+{
+"page": "https://luxestyle.ch/products/high-rise-bootcut-hose-im-motorrad-stil-601500",
+"clicks": 0,
+"impressions": 1,
+"position": 11
+},
+{
+"page": "https://luxestyle.ch/products/high-waist-leggings-fur-fitness-yoga-353152",
+"clicks": 0,
+"impressions": 2,
+"position": 38
+},
+{
+"page": "https://luxestyle.ch/products/himmelssturmendes-katzenbaumhaus-619600",
+"clicks": 0,
+"impressions": 1,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/hindernisvermeidender-drohne-mit-4k-dualkamera-643264",
+"clicks": 0,
+"impressions": 1,
+"position": 46
+},
+{
+"page": "https://luxestyle.ch/products/hintergrundbeleuchtete-tastatur-604800",
+"clicks": 0,
+"impressions": 3,
+"position": 62.7
+},
+{
+"page": "https://luxestyle.ch/products/hip-hop-ring-mit-funf-reihen-zirkonia-614500",
+"clicks": 0,
+"impressions": 3,
+"position": 44.3
+},
+{
+"page": "https://luxestyle.ch/products/hochtaillierte-leisure-yogahose-damen-629000",
+"clicks": 0,
+"impressions": 1,
+"position": 1
+},
+{
+"page": "https://luxestyle.ch/products/hollyland-lark-m2s-funkmikrofon-fur-kameras-616600",
+"clicks": 0,
+"impressions": 1,
+"position": 12
+},
+{
+"page": "https://luxestyle.ch/products/holz-armbanduhr-623300",
+"clicks": 0,
+"impressions": 4,
+"position": 13
+},
+{
+"page": "https://luxestyle.ch/products/holz-futterstation-608100",
+"clicks": 0,
+"impressions": 3,
+"position": 19.3
+},
+{
+"page": "https://luxestyle.ch/products/holzbaukasten-618500",
+"clicks": 0,
+"impressions": 1,
+"position": 26
+},
+{
+"page": "https://luxestyle.ch/products/holzratsche-waggis-gross-fga64663",
+"clicks": 0,
+"impressions": 4,
+"position": 8.8
+},
+{
+"page": "https://luxestyle.ch/products/holzverbrennungs-ofen-zelt-608100",
+"clicks": 0,
+"impressions": 2,
+"position": 11
+},
+{
+"page": "https://luxestyle.ch/products/horror-maske-fur-halloween-und-fasnacht-821504",
+"clicks": 0,
+"impressions": 2,
+"position": 56.5
+},
+{
+"page": "https://luxestyle.ch/products/hosen-20er-jahre-mit-hosen-trager-fgssor86702",
+"clicks": 0,
+"impressions": 4,
+"position": 38
+},
+{
+"page": "https://luxestyle.ch/products/hunde-brustgeschirr-aus-oxford-stoff-144832",
+"clicks": 0,
+"impressions": 1,
+"position": 43
+},
+{
+"page": "https://luxestyle.ch/products/hundehalsband-aus-titanstahl-mit-diamant-knopf-437376",
+"clicks": 0,
+"impressions": 1,
+"position": 2
+},
+{
+"page": "https://luxestyle.ch/products/hundeschutzmatte-620900",
+"clicks": 0,
+"impressions": 1,
+"position": 2
+},
+{
+"page": "https://luxestyle.ch/products/hyaluron-gesichtsserum-gegen-trockene-haut-424d35",
+"clicks": 0,
+"impressions": 1,
+"position": 24
+},
+{
+"page": "https://luxestyle.ch/products/induktives-auto-diebstahlschutzsystem-855680",
+"clicks": 0,
+"impressions": 3,
+"position": 82.3
+},
+{
+"page": "https://luxestyle.ch/products/infrarot-fernbedienung-fur-smart-home-gerate-0db2f4",
+"clicks": 0,
+"impressions": 1,
+"position": 30
+},
+{
+"page": "https://luxestyle.ch/products/infrarot-fernbedienung-fur-smartphones-020608",
+"clicks": 0,
+"impressions": 1,
+"position": 45
+},
+{
+"page": "https://luxestyle.ch/products/infrarot-haarwuchs-kamm-355072",
+"clicks": 0,
+"impressions": 2,
+"position": 16.5
+},
+{
+"page": "https://luxestyle.ch/products/ingwer-ol-fur-die-haut-681282",
+"clicks": 0,
+"impressions": 1,
+"position": 30
+},
+{
+"page": "https://luxestyle.ch/products/intelligente-uberwachungskamera-mit-alarmfunkt-425920",
+"clicks": 0,
+"impressions": 1,
+"position": 74
+},
+{
+"page": "https://luxestyle.ch/products/intelligenter-roboter-mit-gestensteuerung-prog-466626",
+"clicks": 0,
+"impressions": 1,
+"position": 54
+},
+{
+"page": "https://luxestyle.ch/products/intelligenter-sprachroboter-24g-fur-4-6-j-617600",
+"clicks": 0,
+"impressions": 2,
+"position": 68
+},
+{
+"page": "https://luxestyle.ch/products/intelligentes-schlafhilfe-gerat-mit-pulsfunkti-958656?variant=56115719373185&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 1
+},
+{
+"page": "https://luxestyle.ch/products/interaktives-spielzeug-fur-hunde-631200",
+"clicks": 0,
+"impressions": 1,
+"position": 37
+},
+{
+"page": "https://luxestyle.ch/products/isolierter-edelstahlbecher-607900",
+"clicks": 0,
+"impressions": 1,
+"position": 19
+},
+{
+"page": "https://luxestyle.ch/products/itag-bluetooth-itemfinder-530624",
+"clicks": 0,
+"impressions": 1,
+"position": 33
+},
+{
+"page": "https://luxestyle.ch/products/jade-gesichtsroller-fur-naturliche-massage-7f9ca2",
+"clicks": 0,
+"impressions": 4,
+"position": 75.5
+},
+{
+"page": "https://luxestyle.ch/products/japanische-gusseisen-bratpfanne-511808",
+"clicks": 0,
+"impressions": 1,
+"position": 78
+},
+{
+"page": "https://luxestyle.ch/products/japanische-umhangetasche-fur-herren-325376",
+"clicks": 0,
+"impressions": 1,
+"position": 6
+},
+{
+"page": "https://luxestyle.ch/products/japanischer-mini-grill-fur-eine-person-625600",
+"clicks": 0,
+"impressions": 1,
+"position": 9
+},
+{
+"page": "https://luxestyle.ch/products/japanischer-suppenteller-mit-hohem-rand-471296",
+"clicks": 0,
+"impressions": 1,
+"position": 99
+},
+{
+"page": "https://luxestyle.ch/products/japanisches-sake-set-aus-keramik-622100",
+"clicks": 0,
+"impressions": 1,
+"position": 98
+},
+{
+"page": "https://luxestyle.ch/products/japanisches-weinglas-aus-kristallglas-098048",
+"clicks": 0,
+"impressions": 2,
+"position": 16.5
+},
+{
+"page": "https://luxestyle.ch/products/kabelgebundene-in-ear-kopfhorer-aus-metall-625900",
+"clicks": 0,
+"impressions": 1,
+"position": 7
+},
+{
+"page": "https://luxestyle.ch/products/kabelgebundener-usb-game-controller-fur-xbox-o-c0073f",
+"clicks": 0,
+"impressions": 1,
+"position": 98
+},
+{
+"page": "https://luxestyle.ch/products/kabellose-2-in-1-glattburste-fur-schnelles-sty-599296",
+"clicks": 0,
+"impressions": 2,
+"position": 35
+},
+{
+"page": "https://luxestyle.ch/products/kabellose-elektrische-wc-reinigungsburste-756544",
+"clicks": 0,
+"impressions": 1,
+"position": 12
+},
+{
+"page": "https://luxestyle.ch/products/kabelloser-controller-fur-switch-ps3-bee6ad",
+"clicks": 0,
+"impressions": 1,
+"position": 44
+},
+{
+"page": "https://luxestyle.ch/products/kabelloser-mini-entsafter-fur-fruchte-gemuse-545600",
+"clicks": 0,
+"impressions": 1,
+"position": 39
+},
+{
+"page": "https://luxestyle.ch/products/kabelloses-auto-ladegerat-6f9006",
+"clicks": 0,
+"impressions": 1,
+"position": 43
+},
+{
+"page": "https://luxestyle.ch/products/kabelloses-einbau-ladegerat-fur-smartphones-c642d9",
+"clicks": 0,
+"impressions": 1,
+"position": 48
+},
+{
+"page": "https://luxestyle.ch/products/kabelloses-ladepad-mit-kuhlfunktion-853248",
+"clicks": 0,
+"impressions": 18,
+"position": 83.2
+},
+{
+"page": "https://luxestyle.ch/products/kamera-drohne-mit-4k-auflosung-und-hindernis-e-176512",
+"clicks": 0,
+"impressions": 1,
+"position": 45
+},
+{
+"page": "https://luxestyle.ch/products/kamera-drohne-mit-hindernis-vermeidung-622200",
+"clicks": 0,
+"impressions": 6,
+"position": 53.2
+},
+{
+"page": "https://luxestyle.ch/products/kamera-drohne-mit-hindernisvermeidung-055360",
+"clicks": 0,
+"impressions": 1,
+"position": 42
+},
+{
+"page": "https://luxestyle.ch/products/karottenmuster-jacket-603100",
+"clicks": 0,
+"impressions": 1,
+"position": 3
+},
+{
+"page": "https://luxestyle.ch/products/kaschmir-kurzmantel-fur-damen-611500",
+"clicks": 0,
+"impressions": 3,
+"position": 36.3
+},
+{
+"page": "https://luxestyle.ch/products/kaschmir-mantel-mit-kapuze-611900",
+"clicks": 0,
+"impressions": 10,
+"position": 29.6
+},
+{
+"page": "https://luxestyle.ch/products/kasemesser-set-4-tlg-akazienholz-griff",
+"clicks": 0,
+"impressions": 5,
+"position": 69.4
+},
+{
+"page": "https://luxestyle.ch/products/katzchen-schuttelspielzeug-621600",
+"clicks": 0,
+"impressions": 1,
+"position": 33
+},
+{
+"page": "https://luxestyle.ch/products/katzenkratzsaule-mit-klettergerust-626300",
+"clicks": 0,
+"impressions": 1,
+"position": 2
+},
+{
+"page": "https://luxestyle.ch/products/kau-spielsachen-fur-hunde-623600",
+"clicks": 0,
+"impressions": 1,
+"position": 36
+},
+{
+"page": "https://luxestyle.ch/products/keilabsatz-sandalen-mit-klettverschluss-632300",
+"clicks": 0,
+"impressions": 2,
+"position": 76.5
+},
+{
+"page": "https://luxestyle.ch/products/keramik-box-fur-kosmetiktucher-618800",
+"clicks": 0,
+"impressions": 1,
+"position": 12
+},
+{
+"page": "https://luxestyle.ch/products/keramik-doppelnapf-fur-katzen-und-hunde-895104?variant=56116130283905&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 13
+},
+{
+"page": "https://luxestyle.ch/products/keramik-futternapf-fur-hunde-und-katzen-629700",
+"clicks": 0,
+"impressions": 1,
+"position": 53
+},
+{
+"page": "https://luxestyle.ch/products/keramik-glattburste-fur-glattes-haar-d95c95",
+"clicks": 0,
+"impressions": 1,
+"position": 14
+},
+{
+"page": "https://luxestyle.ch/products/keramik-reibe-fur-ingwer-knoblauch-mini-morser-schalchen",
+"clicks": 0,
+"impressions": 2,
+"position": 60.5
+},
+{
+"page": "https://luxestyle.ch/products/keramik-tasse-selbst-gestalten",
+"clicks": 0,
+"impressions": 4,
+"position": 74
+},
+{
+"page": "https://luxestyle.ch/products/kerzenhalter-aus-schmiedeeisen-im-retro-stil-603400",
+"clicks": 0,
+"impressions": 1,
+"position": 89
+},
+{
+"page": "https://luxestyle.ch/products/kinder-badeschuhe-603300",
+"clicks": 0,
+"impressions": 2,
+"position": 94
+},
+{
+"page": "https://luxestyle.ch/products/kinder-badeschuhe-rutschfest-607800",
+"clicks": 0,
+"impressions": 1,
+"position": 13
+},
+{
+"page": "https://luxestyle.ch/products/kinder-badeschuhe-strandsocken-612500",
+"clicks": 0,
+"impressions": 1,
+"position": 99
+},
+{
+"page": "https://luxestyle.ch/products/kinder-basketball-grosse-5-6-oder-7-992192?variant=56222822105473&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 3,
+"position": 46
+},
+{
+"page": "https://luxestyle.ch/products/kinder-gps-smartwatch-4g-mit-wifi-797bbe",
+"clicks": 0,
+"impressions": 2,
+"position": 6
+},
+{
+"page": "https://luxestyle.ch/products/kinder-hausschuhe-socken-atmungsaktiv-rutschfe-199040",
+"clicks": 0,
+"impressions": 2,
+"position": 60
+},
+{
+"page": "https://luxestyle.ch/products/kinder-kart-helm-515520",
+"clicks": 0,
+"impressions": 1,
+"position": 15
+},
+{
+"page": "https://luxestyle.ch/products/kinder-kung-fu-tai-chi-schuhe-aus-leder-337408?variant=56086725001601",
+"clicks": 0,
+"impressions": 1,
+"position": 14
+},
+{
+"page": "https://luxestyle.ch/products/kinder-outdoor-und-badeschuhe-601000",
+"clicks": 0,
+"impressions": 2,
+"position": 96.5
+},
+{
+"page": "https://luxestyle.ch/products/kinder-schwimmschuhe-cartoon-614800",
+"clicks": 0,
+"impressions": 1,
+"position": 6
+},
+{
+"page": "https://luxestyle.ch/products/kinder-sportschuhe-fur-fruhling-und-herbst-695232?variant=56139114480001&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 2,
+"position": 43
+},
+{
+"page": "https://luxestyle.ch/products/kinder-sportschuhe-fur-jungen-119808?variant=56123218198913&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 48
+},
+{
+"page": "https://luxestyle.ch/products/kinder-velohelm-mit-magnetbrille-625600",
+"clicks": 0,
+"impressions": 2,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/kinderkostum-fortnite-brite-bomber-fgssru3300190",
+"clicks": 0,
+"impressions": 1,
+"position": 87
+},
+{
+"page": "https://luxestyle.ch/products/kinderweste-s-w-a-t-fga92855",
+"clicks": 0,
+"impressions": 1,
+"position": 97
+},
+{
+"page": "https://luxestyle.ch/products/king-queen-couple-hoodie-604100",
+"clicks": 0,
+"impressions": 2,
+"position": 24.5
+},
+{
+"page": "https://luxestyle.ch/products/kissen-zum-selbstgestalten",
+"clicks": 0,
+"impressions": 38,
+"position": 78.8
+},
+{
+"page": "https://luxestyle.ch/products/kissenbezug-modern-gestreift-935104",
+"clicks": 0,
+"impressions": 1,
+"position": 38
+},
+{
+"page": "https://luxestyle.ch/products/klangsystem-625400",
+"clicks": 0,
+"impressions": 1,
+"position": 52
+},
+{
+"page": "https://luxestyle.ch/products/klassisches-unisex-t-shirt-selbst-gestalten",
+"clicks": 0,
+"impressions": 5,
+"position": 73.2
+},
+{
+"page": "https://luxestyle.ch/products/kleiderschrank-aus-metall-618100",
+"clicks": 0,
+"impressions": 1,
+"position": 44
+},
+{
+"page": "https://luxestyle.ch/products/kleine-nahmaschine-fur-unterwegs-806849",
+"clicks": 0,
+"impressions": 1,
+"position": 61
+},
+{
+"page": "https://luxestyle.ch/products/kleinkinderschuhe-df9d08?variant=56115047661953&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 13
+},
+{
+"page": "https://luxestyle.ch/products/kleinkinderschuhe-mit-schnurung-f76be5",
+"clicks": 0,
+"impressions": 1,
+"position": 21
+},
+{
+"page": "https://luxestyle.ch/products/kochloffel-set-618600",
+"clicks": 0,
+"impressions": 1,
+"position": 9
+},
+{
+"page": "https://luxestyle.ch/products/koreanische-tier-taschen-2171e0?variant=56107188224385&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 3
+},
+{
+"page": "https://luxestyle.ch/products/koreanischer-grill-fur-3-5-personen-631400",
+"clicks": 0,
+"impressions": 1,
+"position": 88
+},
+{
+"page": "https://luxestyle.ch/products/kosmetik-stiftsatz-382208",
+"clicks": 0,
+"impressions": 1,
+"position": 57
+},
+{
+"page": "https://luxestyle.ch/products/kostum-aladdin-fgss1022",
+"clicks": 0,
+"impressions": 1,
+"position": 28
+},
+{
+"page": "https://luxestyle.ch/products/kostum-aladdin-weste-hose-gr-l-ft91022-3",
+"clicks": 0,
+"impressions": 1,
+"position": 11
+},
+{
+"page": "https://luxestyle.ch/products/kostum-cowgirl-belle-fgssbo8412d",
+"clicks": 0,
+"impressions": 1,
+"position": 83
+},
+{
+"page": "https://luxestyle.ch/products/kostum-haftling-overall-orange-fgss5842",
+"clicks": 0,
+"impressions": 1,
+"position": 71
+},
+{
+"page": "https://luxestyle.ch/products/kostum-hase-fgssck1091",
+"clicks": 0,
+"impressions": 2,
+"position": 83
+},
+{
+"page": "https://luxestyle.ch/products/kostum-meerjungfrau-fgss5814",
+"clicks": 0,
+"impressions": 3,
+"position": 60.7
+},
+{
+"page": "https://luxestyle.ch/products/kostum-meerjungfrau-fgssbo8236",
+"clicks": 0,
+"impressions": 1,
+"position": 86
+},
+{
+"page": "https://luxestyle.ch/products/kostum-meerjungfrau-fgsspc2118",
+"clicks": 0,
+"impressions": 1,
+"position": 100
+},
+{
+"page": "https://luxestyle.ch/products/kostum-mermaid-fgssor5465",
+"clicks": 0,
+"impressions": 1,
+"position": 88
+},
+{
+"page": "https://luxestyle.ch/products/kostum-miss-haftling-fgss3498",
+"clicks": 0,
+"impressions": 1,
+"position": 78
+},
+{
+"page": "https://luxestyle.ch/products/kostum-pj-masks-eulette-maske-fga58053",
+"clicks": 0,
+"impressions": 2,
+"position": 43.5
+},
+{
+"page": "https://luxestyle.ch/products/kostum-romer-tunika-fgss2288",
+"clicks": 0,
+"impressions": 3,
+"position": 61.7
+},
+{
+"page": "https://luxestyle.ch/products/kostum-sternenhexe-fgsspc2349",
+"clicks": 0,
+"impressions": 1,
+"position": 2
+},
+{
+"page": "https://luxestyle.ch/products/kostum-vampir-fgss0798",
+"clicks": 0,
+"impressions": 2,
+"position": 66.5
+},
+{
+"page": "https://luxestyle.ch/products/kostum-wachter-der-verlorenen-seele-fgssck4267",
+"clicks": 0,
+"impressions": 2,
+"position": 51
+},
+{
+"page": "https://luxestyle.ch/products/kostum-zombie-fgsspc2207",
+"clicks": 0,
+"impressions": 1,
+"position": 79
+},
+{
+"page": "https://luxestyle.ch/products/krabbelmatte-fur-babys-624000",
+"clicks": 0,
+"impressions": 1,
+"position": 40
+},
+{
+"page": "https://luxestyle.ch/products/kratzbrett-fur-katzen-4f6091?variant=56217365643649&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 88
+},
+{
+"page": "https://luxestyle.ch/products/kristall-kerzenhalter-620500",
+"clicks": 0,
+"impressions": 1,
+"position": 4
+},
+{
+"page": "https://luxestyle.ch/products/kristall-set-3-teilig",
+"clicks": 0,
+"impressions": 2,
+"position": 19.5
+},
+{
+"page": "https://luxestyle.ch/products/kuhlende-sommerdecke-cool-feel-atmungsaktiv-waschbar",
+"clicks": 0,
+"impressions": 1,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/kupfer-peptid-gesichtspflege-liquid-631900",
+"clicks": 0,
+"impressions": 1,
+"position": 9
+},
+{
+"page": "https://luxestyle.ch/products/kurzarm-strick-t-shirt-fur-herren-mit-mock-nec-600500",
+"clicks": 0,
+"impressions": 1,
+"position": 2
+},
+{
+"page": "https://luxestyle.ch/products/kurzarm-strickpullover-mit-reverskragen-937216?variant=55889741152641&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 8
+},
+{
+"page": "https://luxestyle.ch/products/kurze-daunenjacke-fur-damen-615100",
+"clicks": 0,
+"impressions": 2,
+"position": 58.5
+},
+{
+"page": "https://luxestyle.ch/products/kuscheldecke-selbst-gestalten",
+"clicks": 0,
+"impressions": 19,
+"position": 65.2
+},
+{
+"page": "https://luxestyle.ch/products/lackschuhe-mit-schleife-fur-madchen-540672",
+"clicks": 0,
+"impressions": 1,
+"position": 70
+},
+{
+"page": "https://luxestyle.ch/products/lackschuhe-mit-tupfen-und-schleife-849600?variant=56169322480001&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 72
+},
+{
+"page": "https://luxestyle.ch/products/langarm-golfhemd-mit-knopfleiste-620500",
+"clicks": 0,
+"impressions": 4,
+"position": 17.5
+},
+{
+"page": "https://luxestyle.ch/products/langarmhemd-slim-fit-diverse-farben-633800",
+"clicks": 0,
+"impressions": 1,
+"position": 40
+},
+{
+"page": "https://luxestyle.ch/products/langer-damenmantel-im-kaschmir-look-600600",
+"clicks": 0,
+"impressions": 17,
+"position": 44.2
+},
+{
+"page": "https://luxestyle.ch/products/langes-blumenkleid-im-french-style-625600",
+"clicks": 0,
+"impressions": 1,
+"position": 7
+},
+{
+"page": "https://luxestyle.ch/products/langes-kissen-aus-eisseide-kuhlend-629200",
+"clicks": 0,
+"impressions": 1,
+"position": 11
+},
+{
+"page": "https://luxestyle.ch/products/laptop-rucksack-business-travel-0c5364",
+"clicks": 0,
+"impressions": 5,
+"position": 40.4
+},
+{
+"page": "https://luxestyle.ch/products/laptop-rucksack-fur-studium-alltag-3ad538",
+"clicks": 0,
+"impressions": 1,
+"position": 97
+},
+{
+"page": "https://luxestyle.ch/products/laser-kamm-fur-die-kopfhautpflege-fdd6c9",
+"clicks": 0,
+"impressions": 1,
+"position": 33
+},
+{
+"page": "https://luxestyle.ch/products/lassiger-hoodie-im-zweiteiler-look-fur-herren-625900",
+"clicks": 0,
+"impressions": 1,
+"position": 54
+},
+{
+"page": "https://luxestyle.ch/products/lassiges-langarm-hemdblusenkleid-605600?variant=56095012979073&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 53
+},
+{
+"page": "https://luxestyle.ch/products/latex-katzen-nase-fgack023",
+"clicks": 0,
+"impressions": 2,
+"position": 6.5
+},
+{
+"page": "https://luxestyle.ch/products/latte-art-kannchen-aus-edelstahl-350-ml-622200",
+"clicks": 0,
+"impressions": 4,
+"position": 59.5
+},
+{
+"page": "https://luxestyle.ch/products/lauflernschuhe-fur-babys-0d604c",
+"clicks": 0,
+"impressions": 1,
+"position": 100
+},
+{
+"page": "https://luxestyle.ch/products/laufschuhe-fur-breite-zehen-627500",
+"clicks": 0,
+"impressions": 2,
+"position": 79.5
+},
+{
+"page": "https://luxestyle.ch/products/led-dimmer-wireless-rf-controller-905664",
+"clicks": 0,
+"impressions": 1,
+"position": 79
+},
+{
+"page": "https://luxestyle.ch/products/led-drehlampe-wiederaufladbar-443520",
+"clicks": 0,
+"impressions": 3,
+"position": 35.7
+},
+{
+"page": "https://luxestyle.ch/products/led-faltspiegel-fur-make-up-0c2a0a",
+"clicks": 0,
+"impressions": 1,
+"position": 33
+},
+{
+"page": "https://luxestyle.ch/products/led-leuchtsandalen-fur-kinder-596160?variant=56156191228289&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 20
+},
+{
+"page": "https://luxestyle.ch/products/led-lichtervorhang-santa-claus-637700",
+"clicks": 0,
+"impressions": 1,
+"position": 2
+},
+{
+"page": "https://luxestyle.ch/products/led-rose-mit-bluetooth-speaker-im-glas-454336",
+"clicks": 0,
+"impressions": 1,
+"position": 6
+},
+{
+"page": "https://luxestyle.ch/products/led-schminkbox-mit-lichtspiegel-885504",
+"clicks": 0,
+"impressions": 1,
+"position": 78
+},
+{
+"page": "https://luxestyle.ch/products/led-tagfahrlicht-fur-autos-2-stuck-896194",
+"clicks": 0,
+"impressions": 6,
+"position": 85
+},
+{
+"page": "https://luxestyle.ch/products/led-teelichter-flackernd-batteriebetrieben-594688",
+"clicks": 0,
+"impressions": 1,
+"position": 13
+},
+{
+"page": "https://luxestyle.ch/products/led-wasserwellen-projektionsleuchte-677504",
+"clicks": 0,
+"impressions": 1,
+"position": 12
+},
+{
+"page": "https://luxestyle.ch/products/leder-messenger-tasche-991168",
+"clicks": 0,
+"impressions": 3,
+"position": 56.3
+},
+{
+"page": "https://luxestyle.ch/products/leder-sneaker-mit-runder-kappe-540864",
+"clicks": 0,
+"impressions": 1,
+"position": 3
+},
+{
+"page": "https://luxestyle.ch/products/leder-umhangetasche-a4-139840",
+"clicks": 0,
+"impressions": 1,
+"position": 4
+},
+{
+"page": "https://luxestyle.ch/products/lederarmbanduhr-fur-unis-600300",
+"clicks": 0,
+"impressions": 1,
+"position": 64
+},
+{
+"page": "https://luxestyle.ch/products/lederarmbanduhr-mit-kleinem-zifferblatt-616300?variant=56066772140417&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 2,
+"position": 93
+},
+{
+"page": "https://luxestyle.ch/products/lederwerkzeug-set-4-teilig-531328?variant=56150637379969&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 32
+},
+{
+"page": "https://luxestyle.ch/products/legere-baseballjacke-im-flight-stil-606900",
+"clicks": 0,
+"impressions": 1,
+"position": 27
+},
+{
+"page": "https://luxestyle.ch/products/leichte-arbeitschuhe-mit-stahlkappe-630100",
+"clicks": 0,
+"impressions": 4,
+"position": 66.8
+},
+{
+"page": "https://luxestyle.ch/products/leichte-arbeitsschuhe-mit-schutz-091200?variant=55907233563009&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 7,
+"position": 33.7
+},
+{
+"page": "https://luxestyle.ch/products/leichte-atmungsaktive-laufschuhe-226432",
+"clicks": 0,
+"impressions": 1,
+"position": 47
+},
+{
+"page": "https://luxestyle.ch/products/leichte-sandalen-im-romer-stil-612700",
+"clicks": 0,
+"impressions": 1,
+"position": 90
+},
+{
+"page": "https://luxestyle.ch/products/leichte-sommerhose-herren-615000",
+"clicks": 0,
+"impressions": 1,
+"position": 38
+},
+{
+"page": "https://luxestyle.ch/products/leichte-stahlkappe-arbeitsschuhe-556032",
+"clicks": 0,
+"impressions": 2,
+"position": 46
+},
+{
+"page": "https://luxestyle.ch/products/leichte-wanderschuhe-954368",
+"clicks": 0,
+"impressions": 1,
+"position": 49
+},
+{
+"page": "https://luxestyle.ch/products/leichter-business-rucksack-mit-grossem-volumen-606600",
+"clicks": 0,
+"impressions": 2,
+"position": 51.5
+},
+{
+"page": "https://luxestyle.ch/products/leichter-multifunktionaler-rucksack-mit-grosse-617500",
+"clicks": 0,
+"impressions": 6,
+"position": 50.2
+},
+{
+"page": "https://luxestyle.ch/products/leinenhose-damen-baumwoll-leinen-locker-atmungsaktiv-viele-farben?variant=55747628171649&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+"clicks": 0,
+"impressions": 1,
+"position": 7
+},
+{
+"page": "https://luxestyle.ch/products/leopard-samt-stiefeletten-fur-kinder-0c7e2d?variant=56116130414977&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 12
+},
+{
+"page": "https://luxestyle.ch/products/leuchtturm-fischerdorf-klemmbausteine-620500",
+"clicks": 0,
+"impressions": 4,
+"position": 27.8
+},
+{
+"page": "https://luxestyle.ch/products/lippenstift-lipliner-set-12-farben-304256",
+"clicks": 0,
+"impressions": 6,
+"position": 28.3
+},
+{
+"page": "https://luxestyle.ch/products/lippenstift-mit-langanhaltender-wirkung-715648",
+"clicks": 0,
+"impressions": 2,
+"position": 36.5
+},
+{
+"page": "https://luxestyle.ch/products/lockerer-schweissabsorbierender-lauf-hoodie-fu-615100",
+"clicks": 0,
+"impressions": 1,
+"position": 1
+},
+{
+"page": "https://luxestyle.ch/products/loose-fit-high-waist-jeans-621700",
+"clicks": 0,
+"impressions": 2,
+"position": 37
+},
+{
+"page": "https://luxestyle.ch/products/lotto-abdeckplattli-box-15-mm-fga85530",
+"clicks": 0,
+"impressions": 1,
+"position": 16
+},
+{
+"page": "https://luxestyle.ch/products/luxus-schubladen-organizer-623700",
+"clicks": 0,
+"impressions": 1,
+"position": 99
+},
+{
+"page": "https://luxestyle.ch/products/maange-pinsel-set-fur-puder-rouge-609400",
+"clicks": 0,
+"impressions": 1,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/macro-programmierbarer-joystick-griff-mit-mete-639360",
+"clicks": 0,
+"impressions": 1,
+"position": 7
+},
+{
+"page": "https://luxestyle.ch/products/madchenschuhe-mit-schleife-im-college-stil-313664?variant=56221681844609",
+"clicks": 0,
+"impressions": 1,
+"position": 79
+},
+{
+"page": "https://luxestyle.ch/products/magischer-zauberstab-fga952815",
+"clicks": 0,
+"impressions": 2,
+"position": 64.5
+},
+{
+"page": "https://luxestyle.ch/products/magnetarmband-aus-gebursteter-bronze-618000",
+"clicks": 0,
+"impressions": 1,
+"position": 8
+},
+{
+"page": "https://luxestyle.ch/products/magnetische-falsche-wimpern-set-623700",
+"clicks": 0,
+"impressions": 3,
+"position": 63.3
+},
+{
+"page": "https://luxestyle.ch/products/magnetische-fliegengittertur-fur-turen-und-fen-315457",
+"clicks": 0,
+"impressions": 1,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/magnetische-stahlkugel-uhr-602400",
+"clicks": 0,
+"impressions": 1,
+"position": 11
+},
+{
+"page": "https://luxestyle.ch/products/magnetische-steckdosenleisten-halterung-638300",
+"clicks": 0,
+"impressions": 1,
+"position": 7
+},
+{
+"page": "https://luxestyle.ch/products/magnetischer-turvorhang-insektenschutz-mit-str-084418",
+"clicks": 0,
+"impressions": 4,
+"position": 39.8
+},
+{
+"page": "https://luxestyle.ch/products/magnetischer-turvorhang-mit-sonnenblumen-print-452545",
+"clicks": 0,
+"impressions": 1,
+"position": 12
+},
+{
+"page": "https://luxestyle.ch/products/magnetisches-fliegengitter-fur-turen-fenster-058241",
+"clicks": 0,
+"impressions": 10,
+"position": 51.8
+},
+{
+"page": "https://luxestyle.ch/products/magnetisches-make-up-pinselset-echthaar-3712a1",
+"clicks": 0,
+"impressions": 1,
+"position": 13
+},
+{
+"page": "https://luxestyle.ch/products/make-up-pinsel-set-fur-prazises-auftragen-873408?variant=56103636926849&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 3,
+"position": 44.3
+},
+{
+"page": "https://luxestyle.ch/products/makeup-set-621400",
+"clicks": 0,
+"impressions": 3,
+"position": 45
+},
+{
+"page": "https://luxestyle.ch/products/malen-nach-zahlen-landschaft-4-3b5e3f",
+"clicks": 0,
+"impressions": 1,
+"position": 38
+},
+{
+"page": "https://luxestyle.ch/products/manner-arbeitsschuhe-robust-isoliert-213312",
+"clicks": 0,
+"impressions": 4,
+"position": 67.8
+},
+{
+"page": "https://luxestyle.ch/products/manner-armbanduhr-mit-nachtlicht-613900",
+"clicks": 0,
+"impressions": 1,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/mannliche-hip-hop-armbanduhr-mit-volldiamanten-628300",
+"clicks": 0,
+"impressions": 2,
+"position": 24.5
+},
+{
+"page": "https://luxestyle.ch/products/manueller-pasta-maker-mit-kurbel-611714",
+"clicks": 0,
+"impressions": 1,
+"position": 5
+},
+{
+"page": "https://luxestyle.ch/products/marathon-carbon-racing-laufschuhe-609500?variant=56111088271745&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+"clicks": 0,
+"impressions": 1,
+"position": 6
+},
+{
+"page": "https://luxestyle.ch/products/marokkanisches-kissen-boho-stil-176320",
+"clicks": 0,
+"impressions": 1,
+"position": 46
+},
+{
+"page": "https://luxestyle.ch/products/mary-jane-slip-on-schuhe-mit-kettenverzierung-493762",
+"clicks": 0,
+"impressions": 1,
+"position": 56
+},
+{
+"page": "https://luxestyle.ch/products/massagekissen-fur-auto-und-zuhause-4c8ea8",
+"clicks": 0,
+"impressions": 1,
+"position": 14
+},
+{
+"page": "https://luxestyle.ch/products/mauspad-selbst-gestalten",
+"clicks": 0,
+"impressions": 10,
+"position": 72.5
+},
+{
+"page": "https://luxestyle.ch/products/mechanische-armbanduhr-mit-tourbillon-605000",
+"clicks": 0,
+"impressions": 4,
+"position": 50.3
+},
+{
+"page": "https://luxestyle.ch/products/mehrlagige-perlen-halskette-mit-seestern-anhan-626000",
+"clicks": 0,
+"impressions": 1,
+"position": 13
+},
+{
+"page": "https://luxestyle.ch/products/mehrzweck-aufbewahrungsregal-610300",
+"clicks": 0,
+"impressions": 1,
+"position": 51
+},
+{
+"page": "https://luxestyle.ch/products/memory-foam-kissen-fur-nacken-und-bauchschlafe-734528",
+"clicks": 0,
+"impressions": 2,
+"position": 81
+},
+{
+"page": "https://luxestyle.ch/products/meridian-burste-nacken-schultermassage-629100",
+"clicks": 0,
+"impressions": 4,
+"position": 7.3
+},
+{
+"page": "https://luxestyle.ch/products/mesh-haartrockenhaube-fur-locken-627900",
+"clicks": 0,
+"impressions": 1,
+"position": 7
+},
+{
+"page": "https://luxestyle.ch/products/midi-rock-mit-stickerei-und-elastikbund-617500?variant=55929607717249&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 92
+},
+{
+"page": "https://luxestyle.ch/products/mikrofaser-reinigungstucher-set-637600",
+"clicks": 0,
+"impressions": 1,
+"position": 11
+},
+{
+"page": "https://luxestyle.ch/products/mikrowellen-regal-einlagig-verstellbar-018754",
+"clicks": 0,
+"impressions": 1,
+"position": 27
+},
+{
+"page": "https://luxestyle.ch/products/militar-sicherheitsstiefel-mit-stahlkappe-639100?variant=55886180450689&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 13
+},
+{
+"page": "https://luxestyle.ch/products/mini-bluetooth-speaker-wasserdicht-dusche-outdoor-reise-mit-saugnapf",
+"clicks": 0,
+"impressions": 1,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/mini-drone-fur-luftaufnahmen-601600",
+"clicks": 0,
+"impressions": 2,
+"position": 58
+},
+{
+"page": "https://luxestyle.ch/products/mini-elektro-kochtopf-605500",
+"clicks": 0,
+"impressions": 1,
+"position": 20
+},
+{
+"page": "https://luxestyle.ch/products/mini-finger-skateboard-brucke-643400",
+"clicks": 0,
+"impressions": 1,
+"position": 71
+},
+{
+"page": "https://luxestyle.ch/products/mini-fotodrucker-c75644",
+"clicks": 0,
+"impressions": 21,
+"position": 47.6
+},
+{
+"page": "https://luxestyle.ch/products/mini-handheld-scanner-mit-bildschirm-und-wlan-613600",
+"clicks": 0,
+"impressions": 1,
+"position": 20
+},
+{
+"page": "https://luxestyle.ch/products/mini-heizlufter-fur-zuhause-buro-083392",
+"clicks": 0,
+"impressions": 5,
+"position": 50.4
+},
+{
+"page": "https://luxestyle.ch/products/mini-helikopter-3-5-kanal-fernsteuerung-608400",
+"clicks": 0,
+"impressions": 1,
+"position": 62
+},
+{
+"page": "https://luxestyle.ch/products/mini-kleid-aus-satin-polyester-mit-schlitz-621200?variant=55929544966529&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+"clicks": 0,
+"impressions": 1,
+"position": 3
+},
+{
+"page": "https://luxestyle.ch/products/mini-kuhlschrank-629100",
+"clicks": 0,
+"impressions": 13,
+"position": 53.2
+},
+{
+"page": "https://luxestyle.ch/products/mini-ladegerat-fur-sony-np-bx1-akkus-924864",
+"clicks": 0,
+"impressions": 1,
+"position": 26
+},
+{
+"page": "https://luxestyle.ch/products/mini-raumluft-heizer-mit-keramik-heizung-750720",
+"clicks": 0,
+"impressions": 1,
+"position": 14
+},
+{
+"page": "https://luxestyle.ch/products/mini-usb-luftbefeuchter-fur-zuhause-unterwegs-793472",
+"clicks": 0,
+"impressions": 2,
+"position": 53
+},
+{
+"page": "https://luxestyle.ch/products/mini-ventilator-akkubetrieben-312513",
+"clicks": 0,
+"impressions": 4,
+"position": 56
+},
+{
+"page": "https://luxestyle.ch/products/mini-waschmaschine-626400?variant=55999095243137&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 2,
+"position": 51
+},
+{
+"page": "https://luxestyle.ch/products/minimalist-led-mirror-clock-alarm-temperature",
+"clicks": 0,
+"impressions": 1,
+"position": 18
+},
+{
+"page": "https://luxestyle.ch/products/minimalistische-wasserdichte-digitaluhr-632800",
+"clicks": 0,
+"impressions": 1,
+"position": 95
+},
+{
+"page": "https://luxestyle.ch/products/minimalistischer-fleece-sofabezug-fur-alle-jah-605500",
+"clicks": 0,
+"impressions": 2,
+"position": 10.5
+},
+{
+"page": "https://luxestyle.ch/products/mittelalter-prinz-fgss0147?variant=55970689384833&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 8
+},
+{
+"page": "https://luxestyle.ch/products/mittelalterliches-trinkhorn-fgaru1676",
+"clicks": 0,
+"impressions": 1,
+"position": 47
+},
+{
+"page": "https://luxestyle.ch/products/mobelfolie-selbstklebend-mit-holzmaserung-772546",
+"clicks": 0,
+"impressions": 1,
+"position": 54
+},
+{
+"page": "https://luxestyle.ch/products/mobile-gaming-tastatur-f191d4",
+"clicks": 0,
+"impressions": 1,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/mobiles-sauerstoff-injektionsgerat-727424",
+"clicks": 0,
+"impressions": 6,
+"position": 67.7
+},
+{
+"page": "https://luxestyle.ch/products/moderne-weinglaser-entfaltet-wein-aroma-perfekt-451957",
+"clicks": 0,
+"impressions": 2,
+"position": 9
+},
+{
+"page": "https://luxestyle.ch/products/monchskutte-fur-cosplay-und-buhne-614100",
+"clicks": 0,
+"impressions": 1,
+"position": 45
+},
+{
+"page": "https://luxestyle.ch/products/mondphasen-sonnenuhr-taschenuhr-mit-klappdecke-616700",
+"clicks": 0,
+"impressions": 1,
+"position": 14
+},
+{
+"page": "https://luxestyle.ch/products/moskitos-toten-ohne-larm-6852a4",
+"clicks": 0,
+"impressions": 1,
+"position": 8
+},
+{
+"page": "https://luxestyle.ch/products/muckenabwehr-armband-099456?variant=56005604180353&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 9
+},
+{
+"page": "https://luxestyle.ch/products/multi-funktions-rucksack-fur-laptop-und-reisen-616000",
+"clicks": 0,
+"impressions": 6,
+"position": 35.7
+},
+{
+"page": "https://luxestyle.ch/products/multifunktionale-auto-sitzplatte-fur-kinder-143360",
+"clicks": 0,
+"impressions": 1,
+"position": 6
+},
+{
+"page": "https://luxestyle.ch/products/multifunktionaler-lockenstab-fur-wellen-610700",
+"clicks": 0,
+"impressions": 1,
+"position": 50
+},
+{
+"page": "https://luxestyle.ch/products/multifunktionaler-warmluft-kamm-haartrockner-639300",
+"clicks": 0,
+"impressions": 1,
+"position": 59
+},
+{
+"page": "https://luxestyle.ch/products/multifunktionales-reinigungsgerat-403136",
+"clicks": 0,
+"impressions": 2,
+"position": 19
+},
+{
+"page": "https://luxestyle.ch/products/multifunktions-bluetooth-headset-mit-powerbank-df6a8f",
+"clicks": 0,
+"impressions": 1,
+"position": 7
+},
+{
+"page": "https://luxestyle.ch/products/multifunktions-haarglattungskamm-fur-manner-0eef9c",
+"clicks": 0,
+"impressions": 1,
+"position": 8
+},
+{
+"page": "https://luxestyle.ch/products/multifunktions-outdoor-uhr-fur-herren-601500",
+"clicks": 0,
+"impressions": 7,
+"position": 72
+},
+{
+"page": "https://luxestyle.ch/products/musik-player-ee1d09",
+"clicks": 0,
+"impressions": 1,
+"position": 9
+},
+{
+"page": "https://luxestyle.ch/products/nacken-traktionsgerat-fur-zuhause-349120?variant=56159307039105&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 9
+},
+{
+"page": "https://luxestyle.ch/products/nacken-und-schultermassagegerat-mit-knetfunkti-188736",
+"clicks": 0,
+"impressions": 1,
+"position": 24
+},
+{
+"page": "https://luxestyle.ch/products/nackenstutzkissen-mit-magnetfeldtherapie-338240",
+"clicks": 0,
+"impressions": 1,
+"position": 52
+},
+{
+"page": "https://luxestyle.ch/products/nagelfeile-aus-glas-fur-glanz-623100?variant=56086755737985&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 100
+},
+{
+"page": "https://luxestyle.ch/products/nahtlose-hauchdunne-seiden-strumpfhose-605000",
+"clicks": 0,
+"impressions": 1,
+"position": 5
+},
+{
+"page": "https://luxestyle.ch/products/nano-kohlenstoff-ruckenstabilisator-312692",
+"clicks": 0,
+"impressions": 1,
+"position": 9
+},
+{
+"page": "https://luxestyle.ch/products/naturliche-su-wasserperlenkette-einfach-und-el-629800",
+"clicks": 0,
+"impressions": 1,
+"position": 28
+},
+{
+"page": "https://luxestyle.ch/products/nautilus-herrenuhr-mit-stahlarmband-628000",
+"clicks": 0,
+"impressions": 1,
+"position": 93
+},
+{
+"page": "https://luxestyle.ch/products/new-flame-aroma-diffuser-mit-flammeneffekt-620700",
+"clicks": 0,
+"impressions": 3,
+"position": 13.7
+},
+{
+"page": "https://luxestyle.ch/products/niedliches-wolken-regenbogen-kissen-628416",
+"clicks": 0,
+"impressions": 1,
+"position": 34
+},
+{
+"page": "https://luxestyle.ch/products/non-stick-bratpfanne-haushalt-ohne-beschichtun-618600",
+"clicks": 0,
+"impressions": 1,
+"position": 8
+},
+{
+"page": "https://luxestyle.ch/products/nordische-wandteppich-deko-aus-baumwolle-b3b58e",
+"clicks": 0,
+"impressions": 1,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/nordischer-kissenbezug-mit-quasten-613700",
+"clicks": 0,
+"impressions": 1,
+"position": 35
+},
+{
+"page": "https://luxestyle.ch/products/notruf-armband-mit-sturzsensor-und-bluetooth-747584",
+"clicks": 0,
+"impressions": 7,
+"position": 83.4
+},
+{
+"page": "https://luxestyle.ch/products/nylon-carbon-laufschuhe-609500",
+"clicks": 0,
+"impressions": 1,
+"position": 100
+},
+{
+"page": "https://luxestyle.ch/products/oceaura-body-care-cream-414721",
+"clicks": 0,
+"impressions": 1,
+"position": 2
+},
+{
+"page": "https://luxestyle.ch/products/oktopus-kleiderstander-601000",
+"clicks": 0,
+"impressions": 1,
+"position": 5
+},
+{
+"page": "https://luxestyle.ch/products/olfilter-sieb-fur-uhrenreparatur-614300",
+"clicks": 0,
+"impressions": 2,
+"position": 46.5
+},
+{
+"page": "https://luxestyle.ch/products/olgemalde-jesus-und-schafe-294336",
+"clicks": 0,
+"impressions": 1,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/outdoor-camping-erste-hilfe-und-survival-set-602800",
+"clicks": 0,
+"impressions": 2,
+"position": 76.5
+},
+{
+"page": "https://luxestyle.ch/products/outdoor-computer-rucksack-wasserdicht-348160",
+"clicks": 0,
+"impressions": 6,
+"position": 81.2
+},
+{
+"page": "https://luxestyle.ch/products/outdoor-sportuhr-626000",
+"clicks": 0,
+"impressions": 1,
+"position": 73
+},
+{
+"page": "https://luxestyle.ch/products/peeling-fussmaske-fur-zarte-fusse-244f6a",
+"clicks": 0,
+"impressions": 1,
+"position": 90
+},
+{
+"page": "https://luxestyle.ch/products/perlen-halskette-aus-su-wasserperlen-615700",
+"clicks": 0,
+"impressions": 1,
+"position": 29
+},
+{
+"page": "https://luxestyle.ch/products/personalisiertes-hunde-halsband-e22de7",
+"clicks": 0,
+"impressions": 3,
+"position": 55.3
+},
+{
+"page": "https://luxestyle.ch/products/personalisiertes-hundespielzeug-613700",
+"clicks": 0,
+"impressions": 1,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/personalisiertes-pailletten-kissen-mit-foto-325cf4",
+"clicks": 0,
+"impressions": 2,
+"position": 30.5
+},
+{
+"page": "https://luxestyle.ch/products/perucke-blond-extralang-fga90960",
+"clicks": 0,
+"impressions": 1,
+"position": 84
+},
+{
+"page": "https://luxestyle.ch/products/perucke-clown-grun-krausig-fga960045",
+"clicks": 0,
+"impressions": 1,
+"position": 44
+},
+{
+"page": "https://luxestyle.ch/products/petticoat-lang-fgssor40058",
+"clicks": 0,
+"impressions": 1,
+"position": 18
+},
+{
+"page": "https://luxestyle.ch/products/pickel-spitzhacke-fga948677",
+"clicks": 0,
+"impressions": 1,
+"position": 91
+},
+{
+"page": "https://luxestyle.ch/products/pilzsammel-taschen-set-421313",
+"clicks": 0,
+"impressions": 1,
+"position": 59
+},
+{
+"page": "https://luxestyle.ch/products/pinguin-aromadiffusor-mit-duftolen-828288",
+"clicks": 0,
+"impressions": 1,
+"position": 12
+},
+{
+"page": "https://luxestyle.ch/products/pinselreiniger-a6ad06",
+"clicks": 0,
+"impressions": 1,
+"position": 71
+},
+{
+"page": "https://luxestyle.ch/products/plattform-sandalen-aus-sued-621900",
+"clicks": 0,
+"impressions": 4,
+"position": 15.8
+},
+{
+"page": "https://luxestyle.ch/products/plusch-bush-baby-galagos-fga33587",
+"clicks": 0,
+"impressions": 1,
+"position": 100
+},
+{
+"page": "https://luxestyle.ch/products/plusch-esel-weiss-28-cm-fga41391",
+"clicks": 0,
+"impressions": 1,
+"position": 6
+},
+{
+"page": "https://luxestyle.ch/products/plusch-luchs-15-cm-fga25770",
+"clicks": 0,
+"impressions": 1,
+"position": 80
+},
+{
+"page": "https://luxestyle.ch/products/plusch-pferd-25-cm-fga41676",
+"clicks": 0,
+"impressions": 4,
+"position": 73.3
+},
+{
+"page": "https://luxestyle.ch/products/plusch-pinguin-fga10034",
+"clicks": 0,
+"impressions": 3,
+"position": 39.3
+},
+{
+"page": "https://luxestyle.ch/products/plusch-schildkrote-54-cm-fga17869",
+"clicks": 0,
+"impressions": 1,
+"position": 48
+},
+{
+"page": "https://luxestyle.ch/products/pod-sticker-ch-basel",
+"clicks": 0,
+"impressions": 1,
+"position": 13
+},
+{
+"page": "https://luxestyle.ch/products/pod-sticker-ch-braunvieh",
+"clicks": 0,
+"impressions": 3,
+"position": 4.3
+},
+{
+"page": "https://luxestyle.ch/products/pod-sticker-ch-chalet",
+"clicks": 0,
+"impressions": 1,
+"position": 5
+},
+{
+"page": "https://luxestyle.ch/products/pod-sticker-ch-feierabig",
+"clicks": 0,
+"impressions": 1,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/pod-sticker-ch-fondue-caquelon",
+"clicks": 0,
+"impressions": 1,
+"position": 12
+},
+{
+"page": "https://luxestyle.ch/products/pod-sticker-ch-fondue-caquelon?variant=55792113516929&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 4
+},
+{
+"page": "https://luxestyle.ch/products/pod-sticker-snail",
+"clicks": 0,
+"impressions": 1,
+"position": 1
+},
+{
+"page": "https://luxestyle.ch/products/pod-sticker-swiss-chocolate",
+"clicks": 0,
+"impressions": 1,
+"position": 8
+},
+{
+"page": "https://luxestyle.ch/products/polizei-einsatzhelm-fgaeu115371",
+"clicks": 0,
+"impressions": 1,
+"position": 69
+},
+{
+"page": "https://luxestyle.ch/products/polygel-nagelverlangerungs-kit-caefd5",
+"clicks": 0,
+"impressions": 1,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/pool-volleyball-set-mit-netz-und-ball",
+"clicks": 0,
+"impressions": 5,
+"position": 25.2
+},
+{
+"page": "https://luxestyle.ch/products/popcorn-platform-running-sneakers-402368",
+"clicks": 0,
+"impressions": 1,
+"position": 1
+},
+{
+"page": "https://luxestyle.ch/products/portabel-mini-elektrosewingmaschine-multifunkt-810113",
+"clicks": 0,
+"impressions": 4,
+"position": 49.3
+},
+{
+"page": "https://luxestyle.ch/products/portables-led-makeup-spiegelset-614848",
+"clicks": 0,
+"impressions": 1,
+"position": 13
+},
+{
+"page": "https://luxestyle.ch/products/poster-zum-selbstgestalten",
+"clicks": 0,
+"impressions": 3,
+"position": 76.3
+},
+{
+"page": "https://luxestyle.ch/products/premium-keramik-bodenvase-50-cm?variant=55740837888385",
+"clicks": 0,
+"impressions": 4,
+"position": 11.3
+},
+{
+"page": "https://luxestyle.ch/products/prodigi-poster-chalet",
+"clicks": 0,
+"impressions": 1,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/profi-messerscharfer-prazisions-schleifer-fur-scharfe-kuchenmesser",
+"clicks": 0,
+"impressions": 2,
+"position": 11.5
+},
+{
+"page": "https://luxestyle.ch/products/pullover-mit-buchstaben-druck-639800",
+"clicks": 0,
+"impressions": 1,
+"position": 7
+},
+{
+"page": "https://luxestyle.ch/products/pullover-mit-reissverschluss-und-reverskragen-626800",
+"clicks": 0,
+"impressions": 1,
+"position": 6
+},
+{
+"page": "https://luxestyle.ch/products/quallen-diffuser-medusa-mit-musik-led",
+"clicks": 0,
+"impressions": 2,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/quietsche-ente-aus-latex-fur-gesunde-hundezahn-986176",
+"clicks": 0,
+"impressions": 1,
+"position": 100
+},
+{
+"page": "https://luxestyle.ch/products/racing-carbon-laufschuhe-657100",
+"clicks": 0,
+"impressions": 2,
+"position": 52
+},
+{
+"page": "https://luxestyle.ch/products/radiant-damen-ohrringe-fein",
+"clicks": 0,
+"impressions": 1,
+"position": 7
+},
+{
+"page": "https://luxestyle.ch/products/rattan-look-aufbewahrungskorb-mit-deckel-634600",
+"clicks": 0,
+"impressions": 1,
+"position": 1
+},
+{
+"page": "https://luxestyle.ch/products/rc-kampfjet-heli-mit-fernsteuerung-527360",
+"clicks": 0,
+"impressions": 1,
+"position": 100
+},
+{
+"page": "https://luxestyle.ch/products/recycelte-allover-jogginghosen-selbst-gestalten",
+"clicks": 0,
+"impressions": 45,
+"position": 60.3
+},
+{
+"page": "https://luxestyle.ch/products/recycelter-unisex-allover-hoodie-selbst-gestalten",
+"clicks": 0,
+"impressions": 1,
+"position": 76
+},
+{
+"page": "https://luxestyle.ch/products/reflektierendes-band-622000",
+"clicks": 0,
+"impressions": 1,
+"position": 33
+},
+{
+"page": "https://luxestyle.ch/products/regen-laufschuhe-mit-weicher-sohle-870400",
+"clicks": 0,
+"impressions": 8,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/reise-organizer-fur-elektronik-zubehor-238464",
+"clicks": 0,
+"impressions": 1,
+"position": 59
+},
+{
+"page": "https://luxestyle.ch/products/reise-rucksack-mit-viel-platz-635000",
+"clicks": 0,
+"impressions": 1,
+"position": 62
+},
+{
+"page": "https://luxestyle.ch/products/reise-schuhtasche-vakuum-kompression-tasche-wa-150402",
+"clicks": 0,
+"impressions": 5,
+"position": 14.8
+},
+{
+"page": "https://luxestyle.ch/products/reise-seifenbeutel-wasserdicht-614500",
+"clicks": 0,
+"impressions": 1,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/reise-zahnburste-863424",
+"clicks": 0,
+"impressions": 1,
+"position": 39
+},
+{
+"page": "https://luxestyle.ch/products/reithelm-fur-erwachsene-und-kinder-622300?variant=56065573519745&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 14
+},
+{
+"page": "https://luxestyle.ch/products/retro-arcade-handheld-konsole-x9-615000",
+"clicks": 0,
+"impressions": 5,
+"position": 44.4
+},
+{
+"page": "https://luxestyle.ch/products/retro-hiking-leder-schuhe-fur-herren-601300",
+"clicks": 0,
+"impressions": 1,
+"position": 6
+},
+{
+"page": "https://luxestyle.ch/products/retro-pailletten-minikleid-633600",
+"clicks": 0,
+"impressions": 1,
+"position": 12
+},
+{
+"page": "https://luxestyle.ch/products/retro-slim-fit-jeans-610100",
+"clicks": 0,
+"impressions": 1,
+"position": 25
+},
+{
+"page": "https://luxestyle.ch/products/retro-super-console-x-cube-058112",
+"clicks": 0,
+"impressions": 1,
+"position": 60
+},
+{
+"page": "https://luxestyle.ch/products/rf-hautverjungungsgerat-fur-zuhause-604800",
+"clicks": 0,
+"impressions": 1,
+"position": 79
+},
+{
+"page": "https://luxestyle.ch/products/rf-welle-visage-straffung-instrument-d2fcaa",
+"clicks": 0,
+"impressions": 2,
+"position": 9
+},
+{
+"page": "https://luxestyle.ch/products/rgb-maus-pad-925570",
+"clicks": 0,
+"impressions": 1,
+"position": 49
+},
+{
+"page": "https://luxestyle.ch/products/riechende-mini-leuchtern-623200",
+"clicks": 0,
+"impressions": 6,
+"position": 31.8
+},
+{
+"page": "https://luxestyle.ch/products/rizinusol-wickel-wiederverwendbar-bauch-nacken",
+"clicks": 0,
+"impressions": 3,
+"position": 8.3
+},
+{
+"page": "https://luxestyle.ch/products/robuste-leichte-herren-arbeitsschuhe-607000",
+"clicks": 0,
+"impressions": 9,
+"position": 61.9
+},
+{
+"page": "https://luxestyle.ch/products/robuste-outdoor-sportuhr-mit-grossem-digitaldi-638700",
+"clicks": 0,
+"impressions": 14,
+"position": 70.8
+},
+{
+"page": "https://luxestyle.ch/products/robuste-sportuhr-fur-herren-653100",
+"clicks": 0,
+"impressions": 3,
+"position": 71.3
+},
+{
+"page": "https://luxestyle.ch/products/romer-sandalen-aus-echtem-leder-601500",
+"clicks": 0,
+"impressions": 2,
+"position": 73
+},
+{
+"page": "https://luxestyle.ch/products/romer-sandalen-mit-strass-schnalle-604300",
+"clicks": 0,
+"impressions": 1,
+"position": 55
+},
+{
+"page": "https://luxestyle.ch/products/romische-sandalen-635000",
+"clicks": 0,
+"impressions": 1,
+"position": 88
+},
+{
+"page": "https://luxestyle.ch/products/rosen-duftkerzen-rose-deko-kerzen-set",
+"clicks": 0,
+"impressions": 2,
+"position": 20
+},
+{
+"page": "https://luxestyle.ch/products/rosmarin-haarol-kraftigendes-haarwachstum-632600",
+"clicks": 0,
+"impressions": 1,
+"position": 87
+},
+{
+"page": "https://luxestyle.ch/products/rote-pumps-525761",
+"clicks": 0,
+"impressions": 1,
+"position": 80
+},
+{
+"page": "https://luxestyle.ch/products/roter-arbeitshoodie-fur-herren-mit-langarm-623900",
+"clicks": 0,
+"impressions": 1,
+"position": 7
+},
+{
+"page": "https://luxestyle.ch/products/rotierende-wiederaufladbare-zahnburste-620900",
+"clicks": 0,
+"impressions": 1,
+"position": 39
+},
+{
+"page": "https://luxestyle.ch/products/rotlicht-therapie-gurt-fur-katzen-hunde-612900",
+"clicks": 0,
+"impressions": 1,
+"position": 7
+},
+{
+"page": "https://luxestyle.ch/products/rucken-tattoo-sticker-609700",
+"clicks": 0,
+"impressions": 1,
+"position": 8
+},
+{
+"page": "https://luxestyle.ch/products/ruckenfreier-jumpsuit-mit-geradem-bein-608200",
+"clicks": 0,
+"impressions": 1,
+"position": 9
+},
+{
+"page": "https://luxestyle.ch/products/runder-aufbewahrungskorb-aus-stoff-mit-schleif-619400",
+"clicks": 0,
+"impressions": 2,
+"position": 10.5
+},
+{
+"page": "https://luxestyle.ch/products/rundes-led-rucklicht-fur-velos-b84096",
+"clicks": 0,
+"impressions": 1,
+"position": 8
+},
+{
+"page": "https://luxestyle.ch/products/rustikale-bestickte-denim-jeans-mit-hundemotiv-615300",
+"clicks": 0,
+"impressions": 1,
+"position": 41
+},
+{
+"page": "https://luxestyle.ch/products/rutschfeste-fussmatte-fur-den-eingangsbereich-629000",
+"clicks": 0,
+"impressions": 2,
+"position": 88.5
+},
+{
+"page": "https://luxestyle.ch/products/rutschfestes-saugfahiges-yoga-matten-handtuch-617700",
+"clicks": 0,
+"impressions": 2,
+"position": 81.5
+},
+{
+"page": "https://luxestyle.ch/products/s925-silber-dreireihiges-schlangenketten-armba-630000",
+"clicks": 0,
+"impressions": 1,
+"position": 8
+},
+{
+"page": "https://luxestyle.ch/products/s925-silber-halskette-minimalistische-goldkett-610100",
+"clicks": 0,
+"impressions": 1,
+"position": 13
+},
+{
+"page": "https://luxestyle.ch/products/s925-silber-perlen-armband-mit-funf-blutenblat-627400",
+"clicks": 0,
+"impressions": 2,
+"position": 3
+},
+{
+"page": "https://luxestyle.ch/products/samt-plateau-sneaker-fur-damen-336512?variant=56086870622593&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 14
+},
+{
+"page": "https://luxestyle.ch/products/samtige-gesichtsmaske-atmungsaktiv-schutzend-649900",
+"clicks": 0,
+"impressions": 1,
+"position": 85
+},
+{
+"page": "https://luxestyle.ch/products/samtrock-mit-ruschensaum-und-seitenschlitz-620300",
+"clicks": 0,
+"impressions": 1,
+"position": 18
+},
+{
+"page": "https://luxestyle.ch/products/samurai-schwert-deko-089216",
+"clicks": 0,
+"impressions": 1,
+"position": 88
+},
+{
+"page": "https://luxestyle.ch/products/sandalen-mit-dicker-sohle-und-geschlossener-ze-303360",
+"clicks": 0,
+"impressions": 1,
+"position": 11
+},
+{
+"page": "https://luxestyle.ch/products/saugstarkes-fusselfreies-tuch-639dc3",
+"clicks": 0,
+"impressions": 2,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/schalensage-fur-fisch-957248",
+"clicks": 0,
+"impressions": 1,
+"position": 4
+},
+{
+"page": "https://luxestyle.ch/products/schaum-abflussreiniger-604000",
+"clicks": 0,
+"impressions": 1,
+"position": 8
+},
+{
+"page": "https://luxestyle.ch/products/schlafmaske-625800",
+"clicks": 0,
+"impressions": 3,
+"position": 61.3
+},
+{
+"page": "https://luxestyle.ch/products/schlichter-laptop-rucksack-871232",
+"clicks": 0,
+"impressions": 1,
+"position": 2
+},
+{
+"page": "https://luxestyle.ch/products/schlusselbrett-aus-massivholz-612700",
+"clicks": 0,
+"impressions": 2,
+"position": 96.5
+},
+{
+"page": "https://luxestyle.ch/products/schnellheizender-wasserspender-fur-zuhause-639600",
+"clicks": 0,
+"impressions": 2,
+"position": 76
+},
+{
+"page": "https://luxestyle.ch/products/schnelltrocknende-strandschuhe-fur-paare-643900",
+"clicks": 0,
+"impressions": 5,
+"position": 31.2
+},
+{
+"page": "https://luxestyle.ch/products/schottenrock-fgss7075",
+"clicks": 0,
+"impressions": 2,
+"position": 95.5
+},
+{
+"page": "https://luxestyle.ch/products/schrank-organizer-mit-schubladen-620900",
+"clicks": 0,
+"impressions": 1,
+"position": 87
+},
+{
+"page": "https://luxestyle.ch/products/schweiz-magnet-fondue",
+"clicks": 0,
+"impressions": 3,
+"position": 7.3
+},
+{
+"page": "https://luxestyle.ch/products/schwimmring-fur-kleinkinder-fga25748",
+"clicks": 0,
+"impressions": 1,
+"position": 47
+},
+{
+"page": "https://luxestyle.ch/products/schwingerhose-fgahb2887ml",
+"clicks": 0,
+"impressions": 1,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/seiden-kissenbezug-1-paar-einfarbig-249344",
+"clicks": 0,
+"impressions": 4,
+"position": 41.3
+},
+{
+"page": "https://luxestyle.ch/products/seiden-satin-haarhaube-fur-die-nacht-205378",
+"clicks": 0,
+"impressions": 1,
+"position": 66
+},
+{
+"page": "https://luxestyle.ch/products/seiden-satin-schlafhaube-fur-alle-haartypen-028098",
+"clicks": 0,
+"impressions": 1,
+"position": 67
+},
+{
+"page": "https://luxestyle.ch/products/seiden-tragerkleid-fur-damen-611800",
+"clicks": 0,
+"impressions": 2,
+"position": 97
+},
+{
+"page": "https://luxestyle.ch/products/seidenkissenbezug-25-momme-48x74cm-619400",
+"clicks": 0,
+"impressions": 1,
+"position": 6
+},
+{
+"page": "https://luxestyle.ch/products/selbstklebende-mobelfolie-650114",
+"clicks": 0,
+"impressions": 19,
+"position": 58.6
+},
+{
+"page": "https://luxestyle.ch/products/selbstklebende-turfolie-2-stk-weiss-252866",
+"clicks": 0,
+"impressions": 2,
+"position": 37.5
+},
+{
+"page": "https://luxestyle.ch/products/sexy-langarmiges-mini-kleid-in-gold-620800",
+"clicks": 0,
+"impressions": 5,
+"position": 40.2
+},
+{
+"page": "https://luxestyle.ch/products/shirt-eidgenoss",
+"clicks": 0,
+"impressions": 6,
+"position": 10.8
+},
+{
+"page": "https://luxestyle.ch/products/shirt-zum-selbstgestalten",
+"clicks": 0,
+"impressions": 225,
+"position": 79.6
+},
+{
+"page": "https://luxestyle.ch/products/sicherer-arbeitsschuh-mit-stahlkappe-695168",
+"clicks": 0,
+"impressions": 6,
+"position": 68.5
+},
+{
+"page": "https://luxestyle.ch/products/sicherheitsgurt-fur-hunde-im-auto-614800",
+"clicks": 0,
+"impressions": 1,
+"position": 73
+},
+{
+"page": "https://luxestyle.ch/products/sicherheitsschuhe-mit-stahlkappe-636600",
+"clicks": 0,
+"impressions": 1,
+"position": 38
+},
+{
+"page": "https://luxestyle.ch/products/sicherheitsschuhe-mit-stahlkappe-fur-damen-und-813632",
+"clicks": 0,
+"impressions": 2,
+"position": 40.5
+},
+{
+"page": "https://luxestyle.ch/products/silikon-abtropfmatte-xl-rutschfest-hitzebestandig-furs-spulbecken",
+"clicks": 0,
+"impressions": 1,
+"position": 97
+},
+{
+"page": "https://luxestyle.ch/products/silikon-kuchenutensilien-set-12-tlg-602500",
+"clicks": 0,
+"impressions": 5,
+"position": 60.8
+},
+{
+"page": "https://luxestyle.ch/products/silikon-topfuntersetzer-fur-den-haushalt-261568?variant=56091842118017&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 2,
+"position": 53.5
+},
+{
+"page": "https://luxestyle.ch/products/silikonform-fur-mousse-und-kuchen-kreationen-083072",
+"clicks": 0,
+"impressions": 9,
+"position": 74.3
+},
+{
+"page": "https://luxestyle.ch/products/smart-anti-bell-halsband-fur-hunde-616400",
+"clicks": 0,
+"impressions": 10,
+"position": 68.3
+},
+{
+"page": "https://luxestyle.ch/products/smart-anzuchtset-mit-led-pflanzenlampe-12-zellen-fur-setzlinge-krauter",
+"clicks": 0,
+"impressions": 5,
+"position": 52
+},
+{
+"page": "https://luxestyle.ch/products/smart-armband-mit-herzfrequenz-und-temperatur-877504",
+"clicks": 0,
+"impressions": 1,
+"position": 70
+},
+{
+"page": "https://luxestyle.ch/products/smart-armband-mit-sportfunktionen-773504",
+"clicks": 0,
+"impressions": 1,
+"position": 67
+},
+{
+"page": "https://luxestyle.ch/products/smart-auto-lufterfrischer-nachfuellbar-aromatherapie",
+"clicks": 0,
+"impressions": 1,
+"position": 83
+},
+{
+"page": "https://luxestyle.ch/products/smart-band-sport-armband-mit-herzfrequenz-904576",
+"clicks": 0,
+"impressions": 1,
+"position": 62
+},
+{
+"page": "https://luxestyle.ch/products/smart-bellstopper-fur-haustiere-448896",
+"clicks": 0,
+"impressions": 1,
+"position": 23
+},
+{
+"page": "https://luxestyle.ch/products/smart-led-velo-rucklicht-mit-fernbedienung-f25b1c",
+"clicks": 0,
+"impressions": 1,
+"position": 8
+},
+{
+"page": "https://luxestyle.ch/products/smart-ring-mit-fitness-und-gesundheits-trackin-614500",
+"clicks": 0,
+"impressions": 5,
+"position": 55.2
+},
+{
+"page": "https://luxestyle.ch/products/smart-sportuhr-mit-herzfrequenz-blutdruckmessu-600600",
+"clicks": 0,
+"impressions": 1,
+"position": 5
+},
+{
+"page": "https://luxestyle.ch/products/smart-wlan-steuerung-632300",
+"clicks": 0,
+"impressions": 3,
+"position": 43
+},
+{
+"page": "https://luxestyle.ch/products/smarte-gesundheits-sportuhr-touch-625000",
+"clicks": 0,
+"impressions": 1,
+"position": 5
+},
+{
+"page": "https://luxestyle.ch/products/smarte-solar-jalousie-mit-fernbedienung-312065",
+"clicks": 0,
+"impressions": 1,
+"position": 21
+},
+{
+"page": "https://luxestyle.ch/products/smarter-futterautomat-mit-timer-606000",
+"clicks": 0,
+"impressions": 1,
+"position": 9
+},
+{
+"page": "https://luxestyle.ch/products/smarter-turspion-mit-hd-kamera-652736",
+"clicks": 0,
+"impressions": 2,
+"position": 56
+},
+{
+"page": "https://luxestyle.ch/products/smartes-ems-muskelstimulationsgerat-fur-zuhaus-714240?variant=56164345577857&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 2,
+"position": 40
+},
+{
+"page": "https://luxestyle.ch/products/smartwatch-119-plus-mit-herzfrequenzmesser-d6bd27",
+"clicks": 0,
+"impressions": 2,
+"position": 5.5
+},
+{
+"page": "https://luxestyle.ch/products/smartwatch-mit-bluetooth-anruf-und-musikwieder-352960",
+"clicks": 0,
+"impressions": 1,
+"position": 65
+},
+{
+"page": "https://luxestyle.ch/products/smartwatch-mit-bluetooth-anrufen-gesundheitsfu-613100",
+"clicks": 0,
+"impressions": 1,
+"position": 73
+},
+{
+"page": "https://luxestyle.ch/products/smartwatch-mit-bluetooth-anrufen-und-fitness-t-636600",
+"clicks": 0,
+"impressions": 1,
+"position": 77
+},
+{
+"page": "https://luxestyle.ch/products/smartwatch-mit-bluetooth-telefonie-und-touchsc-164672",
+"clicks": 0,
+"impressions": 1,
+"position": 71
+},
+{
+"page": "https://luxestyle.ch/products/smartwatch-mit-fitness-tracking-bluetooth-anru-624100",
+"clicks": 0,
+"impressions": 1,
+"position": 69
+},
+{
+"page": "https://luxestyle.ch/products/smartwatch-mit-kamera-und-telefonfunktion-619500",
+"clicks": 0,
+"impressions": 4,
+"position": 20.8
+},
+{
+"page": "https://luxestyle.ch/products/smartwatch-mit-musik-bluetooth-anruffunktion-331328",
+"clicks": 0,
+"impressions": 1,
+"position": 74
+},
+{
+"page": "https://luxestyle.ch/products/sofa-schoner-3er-set-601900",
+"clicks": 0,
+"impressions": 6,
+"position": 41
+},
+{
+"page": "https://luxestyle.ch/products/sofa-uberzug-einfarbig-rutschfest-321344",
+"clicks": 0,
+"impressions": 1,
+"position": 50
+},
+{
+"page": "https://luxestyle.ch/products/soja-milch-smoothie-maker-628100",
+"clicks": 0,
+"impressions": 4,
+"position": 3.3
+},
+{
+"page": "https://luxestyle.ch/products/solar-boost-controller-620000",
+"clicks": 0,
+"impressions": 2,
+"position": 48
+},
+{
+"page": "https://luxestyle.ch/products/solar-helm-mit-ventilator-334272",
+"clicks": 0,
+"impressions": 3,
+"position": 15
+},
+{
+"page": "https://luxestyle.ch/products/solar-powerbank-wasserdicht-outdoor",
+"clicks": 0,
+"impressions": 9,
+"position": 64.4
+},
+{
+"page": "https://luxestyle.ch/products/solar-ultraschall-tier-und-nagerschreck-630600",
+"clicks": 0,
+"impressions": 1,
+"position": 9
+},
+{
+"page": "https://luxestyle.ch/products/sonnenbrille-photo-selbsttonend-polarisiert",
+"clicks": 0,
+"impressions": 4,
+"position": 10.8
+},
+{
+"page": "https://luxestyle.ch/products/sonnenbrillen-set-retro-polarized",
+"clicks": 0,
+"impressions": 5,
+"position": 42
+},
+{
+"page": "https://luxestyle.ch/products/sonnensegel-fur-garten-camping-pool-620700",
+"clicks": 0,
+"impressions": 3,
+"position": 15.3
+},
+{
+"page": "https://luxestyle.ch/products/sos-armband-fur-senioren-mit-standortfunktion-617600",
+"clicks": 0,
+"impressions": 2,
+"position": 68.5
+},
+{
+"page": "https://luxestyle.ch/products/spaghetti-trager-bodycon-kleid-638700",
+"clicks": 0,
+"impressions": 1,
+"position": 26
+},
+{
+"page": "https://luxestyle.ch/products/sport-hoodie-fur-herren-624600",
+"clicks": 0,
+"impressions": 5,
+"position": 40.4
+},
+{
+"page": "https://luxestyle.ch/products/sport-sonnenbrille-velo-outdoor-radsport",
+"clicks": 0,
+"impressions": 2,
+"position": 65
+},
+{
+"page": "https://luxestyle.ch/products/sportliche-kinderstiefel-81f81c",
+"clicks": 0,
+"impressions": 1,
+"position": 7
+},
+{
+"page": "https://luxestyle.ch/products/sportlicher-langarm-turtleneck-fur-herren-630500?variant=67610902200711&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 8
+},
+{
+"page": "https://luxestyle.ch/products/sprachubersetzer-606600",
+"clicks": 0,
+"impressions": 2,
+"position": 54
+},
+{
+"page": "https://luxestyle.ch/products/stabkerzen-amore-herz-print-4er-set",
+"clicks": 0,
+"impressions": 1,
+"position": 48
+},
+{
+"page": "https://luxestyle.ch/products/stanzschablone-fur-pragearbeiten-792448",
+"clicks": 0,
+"impressions": 1,
+"position": 45
+},
+{
+"page": "https://luxestyle.ch/products/staubdichtes-schuhregal-mit-10-ablagen-606500",
+"clicks": 0,
+"impressions": 1,
+"position": 7
+},
+{
+"page": "https://luxestyle.ch/products/sternenhimmel-projektor-cosmos-led-nachtlicht-240961",
+"clicks": 0,
+"impressions": 9,
+"position": 72
+},
+{
+"page": "https://luxestyle.ch/products/sternenhimmel-projektor-galaxy-led-nachtlicht-527681",
+"clicks": 0,
+"impressions": 24,
+"position": 62.8
+},
+{
+"page": "https://luxestyle.ch/products/sternenhimmel-projektor-nova-led-nachtlicht-892738",
+"clicks": 0,
+"impressions": 13,
+"position": 58.6
+},
+{
+"page": "https://luxestyle.ch/products/sternenlicht-projektor-mit-bluetooth-618300",
+"clicks": 0,
+"impressions": 12,
+"position": 66.3
+},
+{
+"page": "https://luxestyle.ch/products/sticken-kit-625100",
+"clicks": 0,
+"impressions": 6,
+"position": 51.5
+},
+{
+"page": "https://luxestyle.ch/products/stiletto-high-heels-633500",
+"clicks": 0,
+"impressions": 1,
+"position": 94
+},
+{
+"page": "https://luxestyle.ch/products/straight-leg-jeans-im-street-style-628600",
+"clicks": 0,
+"impressions": 1,
+"position": 77
+},
+{
+"page": "https://luxestyle.ch/products/strandkleid-mare-boho-midi-mit-volants-quasten?variant=55775806161281&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+"clicks": 0,
+"impressions": 1,
+"position": 3
+},
+{
+"page": "https://luxestyle.ch/products/strandkleid-mit-v-ausschnitt-und-fledermausarm-616200",
+"clicks": 0,
+"impressions": 1,
+"position": 12
+},
+{
+"page": "https://luxestyle.ch/products/streifen-kleid-mit-spitze-630400?variant=55905574322561&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 100
+},
+{
+"page": "https://luxestyle.ch/products/stylische-stretch-stiefel-629800",
+"clicks": 0,
+"impressions": 1,
+"position": 38
+},
+{
+"page": "https://luxestyle.ch/products/styroporkopf-weiss-fga91383",
+"clicks": 0,
+"impressions": 2,
+"position": 63.5
+},
+{
+"page": "https://luxestyle.ch/products/superhelle-led-taschenlampe-mit-fokus-723e6c",
+"clicks": 0,
+"impressions": 1,
+"position": 104
+},
+{
+"page": "https://luxestyle.ch/products/superhelle-led-taschenlampe-mit-zoom-und-warnl-972674",
+"clicks": 0,
+"impressions": 1,
+"position": 7
+},
+{
+"page": "https://luxestyle.ch/products/swatch-uhr-swiss-made",
+"clicks": 0,
+"impressions": 1,
+"position": 12
+},
+{
+"page": "https://luxestyle.ch/products/sweet-spot-trainer-fur-prazises-tennis-trainin-610800",
+"clicks": 0,
+"impressions": 2,
+"position": 6
+},
+{
+"page": "https://luxestyle.ch/products/taktische-brusttasche-fur-herren-609900",
+"clicks": 0,
+"impressions": 2,
+"position": 57.5
+},
+{
+"page": "https://luxestyle.ch/products/tanzschuhe-outdoor-625100",
+"clicks": 0,
+"impressions": 2,
+"position": 32
+},
+{
+"page": "https://luxestyle.ch/products/tarnnetz-us-woodland-4x4-m-mit-packsack-765441",
+"clicks": 0,
+"impressions": 2,
+"position": 43
+},
+{
+"page": "https://luxestyle.ch/products/tasse-bernhardiner",
+"clicks": 0,
+"impressions": 1,
+"position": 8
+},
+{
+"page": "https://luxestyle.ch/products/tasse-buenzli",
+"clicks": 0,
+"impressions": 1,
+"position": 1
+},
+{
+"page": "https://luxestyle.ch/products/tasse-matterhorn-sun",
+"clicks": 0,
+"impressions": 1,
+"position": 12
+},
+{
+"page": "https://luxestyle.ch/products/tasse-text-gruezi",
+"clicks": 0,
+"impressions": 1,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/tasse-zum-selbstgestalten",
+"clicks": 0,
+"impressions": 103,
+"position": 63.1
+},
+{
+"page": "https://luxestyle.ch/products/tee-set-mit-filter-616400",
+"clicks": 0,
+"impressions": 1,
+"position": 92
+},
+{
+"page": "https://luxestyle.ch/products/teleskopisches-kuchenregal-bd5499",
+"clicks": 0,
+"impressions": 1,
+"position": 61
+},
+{
+"page": "https://luxestyle.ch/products/tengu-damonenmaske-dekoration-617700",
+"clicks": 0,
+"impressions": 1,
+"position": 2
+},
+{
+"page": "https://luxestyle.ch/products/thermo-outdoor-winterstiefel-mid-cut-603900",
+"clicks": 0,
+"impressions": 1,
+"position": 33
+},
+{
+"page": "https://luxestyle.ch/products/thermo-strumpfhose-mit-fleece-futter-065536?variant=55889681875329&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 4,
+"position": 26.3
+},
+{
+"page": "https://luxestyle.ch/products/thermosbecher-mit-keramik-innenseite-600-ml-626700",
+"clicks": 0,
+"impressions": 2,
+"position": 27
+},
+{
+"page": "https://luxestyle.ch/products/titan-schneidebrett-as-cj41x27t-973058",
+"clicks": 0,
+"impressions": 1,
+"position": 11
+},
+{
+"page": "https://luxestyle.ch/products/titan-schneidebrett-fur-outdoor-kuche-618800",
+"clicks": 0,
+"impressions": 2,
+"position": 2
+},
+{
+"page": "https://luxestyle.ch/products/titan-wok-pfanne-618600",
+"clicks": 0,
+"impressions": 1,
+"position": 11
+},
+{
+"page": "https://luxestyle.ch/products/toilettenset-339776",
+"clicks": 0,
+"impressions": 1,
+"position": 2
+},
+{
+"page": "https://luxestyle.ch/products/tote-basel",
+"clicks": 0,
+"impressions": 1,
+"position": 69
+},
+{
+"page": "https://luxestyle.ch/products/tote-bernhardiner",
+"clicks": 0,
+"impressions": 1,
+"position": 8
+},
+{
+"page": "https://luxestyle.ch/products/tote-cervelat?variant=55792264380801",
+"clicks": 0,
+"impressions": 1,
+"position": 1
+},
+{
+"page": "https://luxestyle.ch/products/tote-zum-selbstgestalten",
+"clicks": 0,
+"impressions": 17,
+"position": 84.6
+},
+{
+"page": "https://luxestyle.ch/products/totes-meer-schlamm-masken-4er-pack-620400",
+"clicks": 0,
+"impressions": 1,
+"position": 9
+},
+{
+"page": "https://luxestyle.ch/products/tpe-widerstandsband-set-fur-ganzkorpertraining-393280",
+"clicks": 0,
+"impressions": 1,
+"position": 6
+},
+{
+"page": "https://luxestyle.ch/products/trachtenbluse-damen-fgsshb2610",
+"clicks": 0,
+"impressions": 1,
+"position": 6
+},
+{
+"page": "https://luxestyle.ch/products/tragbarer-schminktischspiegel-600700",
+"clicks": 0,
+"impressions": 1,
+"position": 12
+},
+{
+"page": "https://luxestyle.ch/products/tragbarer-ultraschall-vernebler-fur-zuhause-195776",
+"clicks": 0,
+"impressions": 1,
+"position": 44
+},
+{
+"page": "https://luxestyle.ch/products/tragbares-hunde-brustgeschirr-mit-leine-602400",
+"clicks": 0,
+"impressions": 1,
+"position": 42
+},
+{
+"page": "https://luxestyle.ch/products/tragerkleid-mit-schleifendetail-617300",
+"clicks": 0,
+"impressions": 1,
+"position": 48
+},
+{
+"page": "https://luxestyle.ch/products/trainings-fitness-schuhe-622200",
+"clicks": 0,
+"impressions": 1,
+"position": 84
+},
+{
+"page": "https://luxestyle.ch/products/trainings-schuhe-fur-kids-und-teens-602500",
+"clicks": 0,
+"impressions": 1,
+"position": 96
+},
+{
+"page": "https://luxestyle.ch/products/transparente-extra-lange-mesh-handschuhe-619500",
+"clicks": 0,
+"impressions": 1,
+"position": 12
+},
+{
+"page": "https://luxestyle.ch/products/transparentes-kurzarmhemd-fur-herren-615100",
+"clicks": 0,
+"impressions": 3,
+"position": 25
+},
+{
+"page": "https://luxestyle.ch/products/transportbox-petgo-fur-hund-katze-beluftet-flugtauglich-%F0%9F%90%BE",
+"clicks": 0,
+"impressions": 32,
+"position": 100.4
+},
+{
+"page": "https://luxestyle.ch/products/trendige-freizeitschuhe-fur-herren-605200",
+"clicks": 0,
+"impressions": 1,
+"position": 57
+},
+{
+"page": "https://luxestyle.ch/products/trendige-fruhlings-und-herbst-sneaker-fur-kind-202688",
+"clicks": 0,
+"impressions": 1,
+"position": 48
+},
+{
+"page": "https://luxestyle.ch/products/trendiger-high-top-sneaker-mit-plateausohle-314368",
+"clicks": 0,
+"impressions": 1,
+"position": 5
+},
+{
+"page": "https://luxestyle.ch/products/trinkbrunnen-fur-haustiere-411520",
+"clicks": 0,
+"impressions": 24,
+"position": 22.2
+},
+{
+"page": "https://luxestyle.ch/products/trolley-koffer-set-887040",
+"clicks": 0,
+"impressions": 3,
+"position": 53.3
+},
+{
+"page": "https://luxestyle.ch/products/tulpen-diffuser-stein-fur-aromatherapie-600900",
+"clicks": 0,
+"impressions": 2,
+"position": 13
+},
+{
+"page": "https://luxestyle.ch/products/turkis-ohrringe-fur-frauen-614800",
+"clicks": 0,
+"impressions": 1,
+"position": 51
+},
+{
+"page": "https://luxestyle.ch/products/u-formiger-weindispenser-aus-kristallglas-747072",
+"clicks": 0,
+"impressions": 1,
+"position": 5
+},
+{
+"page": "https://luxestyle.ch/products/ultraschall-aroma-diffuser-mit-nachtlicht-d6c36d",
+"clicks": 0,
+"impressions": 1,
+"position": 88
+},
+{
+"page": "https://luxestyle.ch/products/ultraschall-massagegerat-zur-hautstraffung-e20115?variant=55889919836545&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 18
+},
+{
+"page": "https://luxestyle.ch/products/ultraschall-schonheitsgerat-bdcdd5",
+"clicks": 0,
+"impressions": 2,
+"position": 79
+},
+{
+"page": "https://luxestyle.ch/products/umhang-silber-fgack4050",
+"clicks": 0,
+"impressions": 1,
+"position": 20
+},
+{
+"page": "https://luxestyle.ch/products/unisex-allover-bomberjacke-selbst-gestalten",
+"clicks": 0,
+"impressions": 13,
+"position": 63.5
+},
+{
+"page": "https://luxestyle.ch/products/unisex-badeschuhe-610200",
+"clicks": 0,
+"impressions": 2,
+"position": 88.5
+},
+{
+"page": "https://luxestyle.ch/products/unisex-tischtennis-trainingsschuh-622600",
+"clicks": 0,
+"impressions": 1,
+"position": 82
+},
+{
+"page": "https://luxestyle.ch/products/universal-armlehnenpolster-fur-mittelkonsole-630900",
+"clicks": 0,
+"impressions": 1,
+"position": 10
+},
+{
+"page": "https://luxestyle.ch/products/universal-fernbedienung-fur-smartphones-386944",
+"clicks": 0,
+"impressions": 13,
+"position": 37.8
+},
+{
+"page": "https://luxestyle.ch/products/usb-3-0-festplattengehause-fur-2-5-3-5-zoll-hd-539584",
+"clicks": 0,
+"impressions": 2,
+"position": 41.5
+},
+{
+"page": "https://luxestyle.ch/products/usb-a-c-ladegerat-mit-vier-anschlussen-550144",
+"clicks": 0,
+"impressions": 3,
+"position": 3.7
+},
+{
+"page": "https://luxestyle.ch/products/usb-fahrradlicht-mit-3-leds-9be591",
+"clicks": 0,
+"impressions": 1,
+"position": 6
+},
+{
+"page": "https://luxestyle.ch/products/usb-hd-kamera-064832",
+"clicks": 0,
+"impressions": 9,
+"position": 28
+},
+{
+"page": "https://luxestyle.ch/products/usb-joystick-steuerungsset-aee55a",
+"clicks": 0,
+"impressions": 2,
+"position": 63.5
+},
+{
+"page": "https://luxestyle.ch/products/usb-leuchtschuhe-fur-kinder-mit-flugeln-892992",
+"clicks": 0,
+"impressions": 1,
+"position": 6
+},
+{
+"page": "https://luxestyle.ch/products/usb-rucklicht-fur-velos-a18d73",
+"clicks": 0,
+"impressions": 18,
+"position": 79.6
+},
+{
+"page": "https://luxestyle.ch/products/usb-schuh-und-handschuh-trockner-44b443",
+"clicks": 0,
+"impressions": 1,
+"position": 5
+},
+{
+"page": "https://luxestyle.ch/products/usb-stick-fur-apple-iphones-190016",
+"clicks": 0,
+"impressions": 1,
+"position": 11
+},
+{
+"page": "https://luxestyle.ch/products/uv-led-lichthartungsgerat-fur-beide-hande-96w-043968",
+"clicks": 0,
+"impressions": 1,
+"position": 14
+},
+{
+"page": "https://luxestyle.ch/products/uv-schutz-sportbrille-fur-outdoor-velo-632700",
+"clicks": 0,
+"impressions": 1,
+"position": 65
+},
+{
+"page": "https://luxestyle.ch/products/v-face-lifting-gesichtsmasken-bandage-625500",
+"clicks": 0,
+"impressions": 1,
+"position": 9
+},
+{
+"page": "https://luxestyle.ch/products/v76-gps-uhr-mit-kompass-und-hohenmesser-625300",
+"clicks": 0,
+"impressions": 4,
+"position": 31.5
+},
+{
+"page": "https://luxestyle.ch/products/vanity-spiegel-mit-wellenmuster-610900",
+"clicks": 0,
+"impressions": 1,
+"position": 48
+},
+{
+"page": "https://luxestyle.ch/products/velo-frontlicht-aus-aluminiumlegierung-620100?variant=55878361645441&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 1,
+"position": 49
+},
+{
+"page": "https://luxestyle.ch/products/verstellbarer-notenstander-fur-tisch-boden-636161",
+"clicks": 0,
+"impressions": 1,
+"position": 7
+},
+{
+"page": "https://luxestyle.ch/products/vibrations-massagegerat-fur-den-korper-605000",
+"clicks": 0,
+"impressions": 1,
+"position": 87
+},
+{
+"page": "https://luxestyle.ch/products/vielseitige-freizeit-herrenschuhe-624000?variant=56103749943681",
+"clicks": 0,
+"impressions": 1,
+"position": 59
+},
+{
+"page": "https://luxestyle.ch/products/vielseitiges-knitterfreies-business-freizeit-h-637200",
+"clicks": 0,
+"impressions": 1,
+"position": 6
+},
+{
+"page": "https://luxestyle.ch/products/vintage-keramikvase-mit-franzosischem-landhaus-246786",
+"clicks": 0,
+"impressions": 1,
+"position": 89
+},
+{
+"page": "https://luxestyle.ch/products/vintage-slim-hosen-mit-zip-629400",
+"clicks": 0,
+"impressions": 1,
+"position": 42
+},
+{
+"page": "https://luxestyle.ch/products/vogeltranke-und-futterstation-899906",
+"clicks": 0,
+"impressions": 3,
+"position": 15.3
+},
+{
+"page": "https://luxestyle.ch/products/vr-brillen-all-in-one-stosstasche-056576",
+"clicks": 0,
+"impressions": 1,
+"position": 9
+},
+{
+"page": "https://luxestyle.ch/products/wandgarderobe-mit-ablage-631900",
+"clicks": 0,
+"impressions": 5,
+"position": 55
+},
+{
+"page": "https://luxestyle.ch/products/wasser-flosser-620600",
+"clicks": 0,
+"impressions": 1,
+"position": 31
+},
+{
+"page": "https://luxestyle.ch/products/wasserdichte-action-kamera-mit-4k-auflosung-850880",
+"clicks": 0,
+"impressions": 1,
+"position": 49
+},
+{
+"page": "https://luxestyle.ch/products/wasserdichte-atmungsaktive-freizeitsneaker-728384",
+"clicks": 0,
+"impressions": 1,
+"position": 93
+},
+{
+"page": "https://luxestyle.ch/products/wasserdichte-kinderschuhe-943936",
+"clicks": 0,
+"impressions": 1,
+"position": 14
+},
+{
+"page": "https://luxestyle.ch/products/wasserdichte-sporttasche-mit-diebstahlschutz-628000",
+"clicks": 0,
+"impressions": 2,
+"position": 36.5
+},
+{
+"page": "https://luxestyle.ch/products/wasserdichter-damen-rucksack-798336",
+"clicks": 0,
+"impressions": 6,
+"position": 77.3
+},
+{
+"page": "https://luxestyle.ch/products/wasserfester-eyeliner-pflaume-121665",
+"clicks": 0,
+"impressions": 1,
+"position": 27
+},
+{
+"page": "https://luxestyle.ch/products/water-flosser-fur-saubere-zahne-289474",
+"clicks": 0,
+"impressions": 4,
+"position": 35.3
+},
+{
+"page": "https://luxestyle.ch/products/waterproof-stainless-steel-jewelry-set-18k-gold-tarnish-free",
+"clicks": 0,
+"impressions": 4,
+"position": 58
+},
+{
+"page": "https://luxestyle.ch/products/wc-reinigungstabletten-136449",
+"clicks": 0,
+"impressions": 3,
+"position": 12.7
+},
+{
+"page": "https://luxestyle.ch/products/weihnachts-pyjama-im-partnerlook-764352?variant=55873728250241&country=CH&currency=CHF",
+"clicks": 0,
+"impressions": 5,
+"position": 21.6
+},
+{
+"page": "https://luxestyle.ch/products/weihnachts-pyjama-sets-fur-die-ganze-familie-613100",
+"clicks": 0,
+"impressions": 15,
+"position": 30.9
+},
+{
+"page": "https://luxestyle.ch/products/weisser-sneaker-fur-kinder-5370a9",
+"clicks": 0,
+"impressions": 2,
+"position": 13
+},
+{
+"page": "https://luxestyle.ch/products/wi-fi-led-steuerung-fur-rgb-leds-969c24",
+"clicks": 0,
+"impressions": 1,
+"position": 40
+},
+{
+"page": "https://luxestyle.ch/products/widerstandsbander-set-fur-fitness-939393",
+"clicks": 0,
+"impressions": 1,
+"position": 32
+},
+{
+"page": "https://luxestyle.ch/products/wifi-solar-outdoor-kamera-8k-626800",
+"clicks": 0,
+"impressions": 1,
+"position": 11
+},
+{
+"page": "https://luxestyle.ch/products/winter-herren-fleece-gefutterte-jacke-mit-kapu-611700",
+"clicks": 0,
+"impressions": 4,
+"position": 42
+},
+{
+"page": "https://luxestyle.ch/products/winter-sneaker-fur-herren-warm-gefuttert-602700",
+"clicks": 0,
+"impressions": 8,
+"position": 56.3
+},
+{
+"page": "https://luxestyle.ch/products/winterstiefel-fur-herren-gefuttert-601300",
+"clicks": 0,
+"impressions": 1,
+"position": 97
+},
+{
+"page": "https://luxestyle.ch/products/wlan-temperatur-und-feuchtigkeitssensor-mit-co-899648",
+"clicks": 0,
+"impressions": 2,
+"position": 9
+},
+{
+"page": "https://luxestyle.ch/products/wochentlicher-pillendispenser-zur-wandmontage-639800",
+"clicks": 0,
+"impressions": 1,
+"position": 30
+},
+{
+"page": "https://luxestyle.ch/products/wolken-spiegel-nachtlicht-bausteine-614700",
+"clicks": 0,
+"impressions": 1,
+"position": 7
+},
+{
+"page": "https://luxestyle.ch/products/x6-smart-bracelet-bluetooth-anrufe-musik-989440",
+"clicks": 0,
+"impressions": 2,
+"position": 42
+},
+{
+"page": "https://luxestyle.ch/products/xbox-360-wireless-controller-adapter-fur-pc-783745",
+"clicks": 0,
+"impressions": 5,
+"position": 27.4
+},
+{
+"page": "https://luxestyle.ch/products/yoga-bodysuit-mit-brustpolster-603300",
+"clicks": 0,
+"impressions": 1,
+"position": 7
+},
+{
+"page": "https://luxestyle.ch/products/yoga-bolster-halbrund-baumwolle",
+"clicks": 0,
+"impressions": 19,
+"position": 58.2
+},
+{
+"page": "https://luxestyle.ch/products/yoga-gurt-fur-stretching-training-03d0d3",
+"clicks": 0,
+"impressions": 8,
+"position": 68.6
+},
+{
+"page": "https://luxestyle.ch/products/zauberstab-mit-kristallkugel-fgapc73304",
+"clicks": 0,
+"impressions": 1,
+"position": 11
+}
+]
+}
