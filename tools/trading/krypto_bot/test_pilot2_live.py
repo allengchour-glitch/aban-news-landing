@@ -28,7 +28,8 @@ class X(BaseHTTPRequestHandler):
                     "enableSpotAndMarginTrading": True, "enableFutures": True, "permitsUniversalTransfer": True}
         X.perp_fehler = False; X.spot_503 = False; X.nachfrage_kaputt = False; X.hedge = False; X.stop_fehler = False
         X.nach_order = None; X.perp_503 = None; X.perp_reduce_fehler = False; X.algo_del_fehler = False
-        X.stop_antwort_weg = False; X.algo_antwort_weg = False; X.marge = {}; X.spot_del_fehler = False; X.spot_sell_fehler = False
+        X.stop_antwort_weg = False; X.algo_antwort_weg = False; X.marge = {}; X.spot_del_fehler = False; X.spot_sell_fehler = False; X.uid = 4711
+        X.algo_liste_fehler = False; X.spot_del_antwort_weg = False
         for a, b in k.items(): setattr(X, a, b)
     def _a(self, o, code=200):
         b = json.dumps(o).encode(); self.send_response(code); self.send_header("Content-Type", "application/json"); self.end_headers(); self.wfile.write(b)
@@ -41,7 +42,7 @@ class X(BaseHTTPRequestHandler):
         if pfad in ("/api/v3/time", "/fapi/v1/time"): return self._a({"serverTime": 0})
         if pfad == "/sapi/v1/account/apiRestrictions": return self._a(X.rechte)
         if pfad == "/api/v3/account":
-            return self._a({"balances": [{"asset": a, "free": repr(X.frei[a]), "locked": repr(X.gesperrt[a])} for a in X.frei]})
+            return self._a({"uid": X.uid, "balances": [{"asset": a, "free": repr(X.frei[a]), "locked": repr(X.gesperrt[a])} for a in X.frei]})
         if pfad == "/api/v3/ticker/price": return self._a({"price": repr(X.kurs[p["symbol"]])})
         if pfad == "/api/v3/exchangeInfo":
             step = "0.00001" if p["symbol"] == "BTCUSDT" else "0.0001"
@@ -55,7 +56,9 @@ class X(BaseHTTPRequestHandler):
             if X.spot_del_fehler: return self._a({"code": -1001, "msg": "Internal error"}, 500)
             o = X.orders.get(int(p["orderId"]))
             if not o or o["status"] != "NEW": return self._a({"code": -2011, "msg": "Unknown order sent."}, 400)
-            o["status"] = "CANCELED"; coin = o["symbol"][:-4]; X.gesperrt[coin] -= o["qty"]; X.frei[coin] += o["qty"]; return self._a({"status": "CANCELED"})
+            o["status"] = "CANCELED"; coin = o["symbol"][:-4]; X.gesperrt[coin] -= o["qty"]; X.frei[coin] += o["qty"]
+            if X.spot_del_antwort_weg: X.spot_del_antwort_weg = False; return self._a({"code": -1001, "msg": "Unknown"}, 503)
+            return self._a({"status": "CANCELED"})
         if pfad == "/api/v3/order" and m == "GET":
             o = X.orders.get(int(p["orderId"])) if "orderId" in p else X.cids.get(p.get("origClientOrderId"))
             if X.nachfrage_kaputt: return self._a({"code": -1001}, 503)
@@ -129,6 +132,7 @@ class X(BaseHTTPRequestHandler):
             if X.nach_order: X.nach_order()
             return self._a({"status": "FILLED", "executedQty": p["quantity"]})
         if pfad == "/fapi/v1/openAlgoOrders":
+            if X.algo_liste_fehler: return self._a({"code": -1001, "msg": "Internal error"}, 503)
             return self._a([{"algoId": i, **a} for i, a in X.algos.items() if a["symbol"] == p["symbol"]])
         if pfad == "/fapi/v1/order" and m == "GET": return self._a({"code": -2013, "msg": "Order does not exist."}, 400)
         if pfad == "/fapi/v1/algoOrder" and m == "POST":
@@ -360,6 +364,7 @@ pruefe("−2013: alter Eintrag abgeschlossen, junger bleibt + Markt gesperrt", [
        and not [o for o in markt_orders() if o[3] == "ETHUSDT"] and n_vor > 0, (u, r["zeilen"]))
 
 # ════════ Funde der 3. Prüfung ════════
+def algo_menge(): return sum(float(a["quantity"]) for a in X.algos.values())
 def stops_offen(sym="BTCUSDT"): return [o for o in X.orders.values() if o.get("typ") and o["symbol"] == sym and o["status"] == "NEW"]
 # B1: Kauf gekürzt (wenig Spot-Geld) → Short nie grösser als die gekauften Coins
 X.reset(); X.frei["USDT"] = 1000.0; X.fut = 20000.0; d = neu_buch(); r = lauf([E("BTC", 0.0)], TEST, d)
@@ -382,6 +387,12 @@ X.reset(stop_antwort_weg=True); d = neu_buch(); lauf([E("BTC", 1.0)], TEST, d); 
 pruefe("B3 Spot: verlorene Stop-Antwort → danach genau EIN Stop, und zwar der im Buch", vor == 1 and len(stops_offen()) == 1
        and stops_offen()[0]["id"] == L.buch_lesen(d, "testnetz")["stops"]["BTC"]["spot"]
        and abs(stops_offen()[0]["qty"] - mein(d, "testnetz", "BTC")) < 2e-5, (vor, stops_offen(), L.buch_lesen(d, "testnetz"), r["zeilen"]))
+X.reset(stop_antwort_weg=True); d = neu_buch(); lauf([E("BTC", 1.0)], TEST, d); r = lauf([E("BTC", 0.5)], TEST, d)
+pruefe("B3 Spot: verwaister Stop mit alter (zu grosser) Menge wird ersetzt", len(stops_offen()) == 1
+       and abs(stops_offen()[0]["qty"] - mein(d, "testnetz", "BTC")) < 2e-5, (stops_offen(), mein(d, "testnetz", "BTC"), r["zeilen"]))
+X.reset(algo_antwort_weg=True); d = neu_buch(); lauf([E("BTC", -1.0)], ECHT, d); r = lauf([E("BTC", -0.5)], ECHT, d)
+pruefe("B3 Perp: verwaister Stop mit alter (zu grosser) Menge wird ersetzt", len(X.algos) == 1
+       and abs(algo_menge() + X.pos["BTCUSDT"] + (X.frei["BTC"] + X.gesperrt["BTC"])) < 0.0011, (X.algos, X.pos, r["zeilen"]))
 fremd_id = X.next_id + 1; X.next_id += 1
 X.orders[fremd_id] = {"id": fremd_id, "symbol": "BTCUSDT", "qty": 0.0, "stop": 1.0, "status": "NEW", "typ": "STOP_LOSS", "cid": "web_meins"}
 lauf([E("BTC", 1.0)], TEST, d)
@@ -418,7 +429,6 @@ pruefe("W3: Rückverkauf nach nachgefragtem Kauf klappt (keine ungesicherten Coi
        and X.pos["BTCUSDT"] == 0, (X.frei, X.pos, r["zeilen"]))
 
 # ════════ Funde der 4. Prüfung ════════
-def algo_menge(): return sum(float(a["quantity"]) for a in X.algos.values())
 # B1: Richtungswechsel über mehrere Tage (Auftrags-Deckel 1000) → der Rest bekommt jeden Tag einen Stop
 X.reset(); d = neu_buch(); env1k = {**ECHT, "KI_BOT_MAX_AUFTRAG": "1000"}
 for _ in range(5): lauf([E("BTC", -0.4)], env1k, d)
@@ -462,6 +472,66 @@ X.reset(); d = neu_buch(); r = lauf([E("BTC", 0.5)], ECHT, d, trocken=True)
 pruefe("Probelauf setzt keinen Start", not L.buch_lesen(d, "echt")["start"], L.buch_lesen(d, "echt"))
 X.frei["BTC"] = 0.5; r = lauf([E("BTC", 0.5)], ECHT, d)
 pruefe("… echter Lauf danach prüft das Konto wieder (fremde BTC → kein Auftrag)", not markt_orders() and X.frei["BTC"] == 0.5 and r["warnung"], r["zeilen"])
+
+# ════════ Funde der 5. Prüfung ════════
+# B1: Löschen der alten Stops scheitert halb (Futures-Liste nicht lesbar) → Long behält trotzdem genau einen Stop
+X.reset(); d = neu_buch(); lauf([E("BTC", 1.0)], TEST, d); X.algo_liste_fehler = True
+r = lauf([E("BTC", 1.0)], TEST, d)
+pruefe("B1 (5.): Futures-Liste weg → Spot-Stop trotzdem da (genau einer), kein «bleibt aktiv» gelogen", len(stops_offen()) == 1
+       and abs(stops_offen()[0]["qty"] - mein(d, "testnetz", "BTC")) < 2e-5 and not any("bleibt aktiv" in z for z in r["zeilen"]), (stops_offen(), r["zeilen"]))
+X.algo_liste_fehler = False
+# B1b: Storno ausgeführt, Antwort verloren → neuer Stop, nie ohne
+X.reset(); d = neu_buch(); lauf([E("BTC", 1.0)], TEST, d); X.spot_del_antwort_weg = True
+r = lauf([E("BTC", 1.0)], TEST, d)
+pruefe("B1b (5.): Storno-Antwort verloren → Long hat danach genau einen Stop", len(stops_offen()) == 1, (stops_offen(), r["zeilen"]))
+# B1c: Short, Perp-Stop lässt sich nicht löschen → kein zweiter, ehrliche Meldung
+X.reset(); d = neu_buch(); lauf([E("BTC", -1.0)], ECHT, d); X.algo_del_fehler = True
+r = lauf([E("BTC", -1.0)], ECHT, d)
+pruefe("B1c (5.): alter Perp-Stop noch offen → kein zweiter, Meldung «noch offen»", len(X.algos) == 1 and any("noch offen" in z for z in r["zeilen"]), (X.algos, r["zeilen"]))
+X.algo_del_fehler = False
+# B2a: unklarer Kauf im Echtgeld-Modus → Stop nach dem tatsächlichen Kontostand
+X.reset(spot_503=True, nachfrage_kaputt=True); d = neu_buch(); r = lauf([E("BTC", 1.0)], ECHT, d)
+ist = X.frei["BTC"] + X.gesperrt["BTC"]
+pruefe("B2a (5.): unklarer Kauf (echt) → gekaufte Coins haben einen Stop", ist > 0.05 and stops_offen() and abs(stops_offen()[0]["qty"] - ist) < 2e-5, (ist, stops_offen(), r["zeilen"]))
+# B2b: Ernte offen, Kauf der fehlenden Ernte-Coins unklar → Perp-Stop trifft nie die Absicherung
+X.reset(); X.fut = 20000.0; d = neu_buch(); lauf([E("BTC", -0.5)], TEST, d)
+X.spot_503 = True; X.nachfrage_kaputt = True; r = lauf([E("BTC", 0.0)], TEST, d)
+spot_ist = X.frei["BTC"] + X.gesperrt["BTC"]; short = -X.pos["BTCUSDT"]
+pruefe("B2b (5.): unklarer Ernte-Kauf → Perp-Stop ≤ ungesicherter Short (Absicherung bleibt)", algo_menge() <= max(0.0, short - spot_ist) + 0.001 + 1e-9,
+       (spot_ist, short, X.algos, r["zeilen"]))
+# W1: anderes Binance-Konto (UID) → kein Handel; Not-Aus verkauft höchstens das Buch
+X.reset(); d = neu_buch(); lauf([E("BTC", 1.0)], ECHT, d); vorher = X.frei["BTC"] + X.gesperrt["BTC"]
+X.uid = 999; X.frei["BTC"] += 0.5; n0 = len(markt_orders())
+r = lauf([E("BTC", 1.0)], ECHT, d)
+pruefe("W1 (5.): anderes Konto (UID) → kein Auftrag, Warnung", len(markt_orders()) == n0 and r["warnung"] and any("ANDERES" in z for z in r["zeilen"]), r["zeilen"])
+r = lauf([], ECHT, d, notaus=True)
+pruefe("W1 (5.): Not-Aus im fremden Konto verkauft höchstens das Buch (0.5 BTC des Nutzers bleiben)", X.frei["BTC"] + X.gesperrt["BTC"] >= 0.5 - 1e-9, (X.frei, r["zeilen"]))
+# W1b: Nutzer legt 0.5 BTC ins (selbe) Echtgeld-Konto → normaler Lauf fasst sie nie an, meldet sie
+X.reset(); d = neu_buch(); lauf([E("BTC", 0.0)], ECHT, d); X.frei["BTC"] += 0.5
+r = lauf([E("BTC", -1.0)], ECHT, d)
+pruefe("W1b (5.): eingelegte Coins bleiben beim normalen Lauf unberührt + Meldung", X.frei["BTC"] + X.gesperrt["BTC"] >= 0.5 - 1e-9
+       and any("nicht gekauft" in z for z in r["zeilen"]), (X.frei, r["zeilen"]))
+# B2 Testnetz: unklarer Kauf → gekaufte Coins bekommen trotzdem einen Stop
+X.reset(spot_503=True, nachfrage_kaputt=True); d = neu_buch(); r = lauf([E("BTC", 1.0)], TEST, d)
+ist = X.frei["BTC"] + X.gesperrt["BTC"]
+pruefe("B2 (5., Testnetz): unklarer Kauf → Stop über die gekauften Coins", stops_offen() and abs(stops_offen()[0]["qty"] - ist) < 2e-5, (ist, stops_offen(), r["zeilen"]))
+# Alter Spot-Stop lässt sich nicht löschen → genau einer bleibt, ehrliche Meldung
+X.reset(); d = neu_buch(); lauf([E("BTC", 1.0)], TEST, d); X.spot_del_fehler = True
+r = lauf([E("BTC", 1.0)], TEST, d)
+pruefe("alter Spot-Stop noch offen → kein zweiter, Meldung «noch offen», Buch kennt ihn", len(stops_offen()) == 1
+       and any("Spot-Stop ist noch offen" in z for z in r["zeilen"]) and L.buch_lesen(d, "testnetz")["stops"]["BTC"]["spot"] == stops_offen()[0]["id"],
+       (stops_offen(), r["zeilen"]))
+X.spot_del_fehler = False
+# Unklarer VERKAUF: Buch zählt ihn beim Klären genau einmal (nicht doppelt) → eigene Coins bleiben eigene, mit Stop
+X.reset(); d = neu_buch(); lauf([E("BTC", 1.0)], TEST, d); X.spot_503 = True; X.nachfrage_kaputt = True
+lauf([E("BTC", 0.5)], TEST, d); X.nachfrage_kaputt = False
+r = lauf([E("BTC", 0.5)], TEST, d); ist = X.frei["BTC"] + X.gesperrt["BTC"]
+pruefe("unklarer Verkauf → beim Klären einmal verbucht: Buch = Bestand, Stop drauf, keine «fremden» Coins",
+       abs(mein(d, "testnetz", "BTC") - ist) < 2e-5 and stops_offen() and not any("nicht gekauft" in z for z in r["zeilen"]),
+       (mein(d, "testnetz", "BTC"), ist, stops_offen(), r["zeilen"]))
+# Klein 2: Ernte mit Gebühren-Staub → kein Perp-Stop, der einen ganzen Futures-Schritt der Ernte schliessen würde
+X.reset(); d = neu_buch(); lauf([E("BTC", 0.0)], ECHT, d)
+pruefe("Klein (5.): Ernte mit Staub → kein Perp-Stop", not X.algos, X.algos)
 # ── Bot-Schalter + alter Pilot + schliessen_alle ──
 import pilot as PI  # noqa: E402
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "ki_bot"))
