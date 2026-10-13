@@ -7625,3 +7625,44 @@ usb-led-taschenlampe-extrem-hell-995841	-	-	-	unklar pid 1602002 Product has bee
 led-stirnlampe-super-hell-mit-bewegungssensor-877058	2043597803109928962	0	-	KEINE CH-Option → DRAFT	landeseite
 extrem-helle-taktische-led-taschenlampe-545282	2043597849526374402	0	-	KEINE CH-Option → DRAFT	landeseite
 superheller-led-handscheinwerfer-mit-usb-ladef-366594	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+moskitonetz-set-2-teilig-quadratisch-592898	1990708337594388481	0	-	KEINE CH-Option → DRAFT	landeseite
+moskitonetz-2-stk-rund-108097	1990708325099556865	0	-	KEINE CH-Option → DRAFT	landeseite
+camping-duschsack-blau-20-l-pvc-202241	1990700286711746561	0	-	KEINE CH-Option → DRAFT	landeseite
+hange-zelt-organizer-mit-stauraum-513410	1990499704474218497	0	-	KEINE CH-Option → DRAFT	landeseite
+moskitonetz-mit-uv-schutz-854785	1990499329042067457	0	-	KEINE CH-Option → DRAFT	landeseite
+aufbewahrungstasche-aus-oxford-gewebe-189889	1990499623385739266	0	-	KEINE CH-Option → DRAFT	landeseite
+radabdeckung-aus-oxford-gewebe-912769	1990499651567267841	0	-	KEINE CH-Option → DRAFT	landeseite
+moskitonetz-fur-sonnenschirm-626370	1990489346653478914	0	-	KEINE CH-Option → DRAFT	landeseite
+winter-warme-haussocken-mit-anti-rutsch-sohle-927808	1454754462106259456	16	7.43	ok	landeseite
+marmor-print-3-teiliger-bikini-853824	1646114206619545600	16	7.17	ok	landeseite
+grosser-rucksack-fur-business-reisen-272960	1806358167732244480	16	14.60	ok	landeseite
+feuchtigkeitspflege-fur-die-augenpartie-130944	1690633070828851200	3	5.30	ok	landeseite
+jungen-freizeit-set-baumwolle-langarmshirt-hos-092ff8	0DB5AC20-B81A-408E-8ACA-58A7405DAE7A	16	8.58	ok	landeseite
+babyflaschen-reinigungsset-aus-silikon-488768	1370182828783964160	16	6.17	ok	landeseite
+hundebett-sofa-5ede8d	1A2EDC80-D46B-4A6A-8E2A-6C611EA3EE36	16	26.68	ok	landeseite
+kaschmir-pullover-fur-haustiere-mit-zopfmuster-938304	1398838277800333312	16	6.48	ok	landeseite
+lassige-umhangetasche-fur-herren-874240	1397092867670937600	16	11.12	ok	landeseite
+mutze-mit-pferdeschwanz-offnung-551ed8	32BA3F6B-4389-47B2-AE8A-99F04D8D65D1	16	6.25	ok	landeseite
+langarm-sweatshirt-mit-totenkopf-print-17304a	12B76B70-61D1-402A-9312-C639BDA46479	16	8.79	ok	landeseite
+reise-organizer-fur-elektronik-zubehor-238464	1703055389639987200	0	-	KEINE CH-Option → DRAFT	landeseite
+sportliches-yoga-set-aus-nylon-4cfba1	00A40F90-C17E-43CC-8BD8-98105F9FD2EF	16	10.15	ok	landeseite
+haltungskorrektur-gurt-535232	1379005369111678976	16	5.69	ok	landeseite
+flammen-vulkan-luftbefeuchter-mit-aroma-diffus-915456	1592747932158275584	7	14.97	ok	landeseite
+elektrischer-weinoffner-mit-folienschneider-abe3a6	58DFD5D9-8F7F-4A8C-9984-5941267B3FA4	7	9.69	ok	landeseite
+kurzarm-freizeit-shirt-fur-herren-623100	2406080234401623600	16	8.66	ok	landeseite
+erhohter-futternapf-fur-katzen-mit-transparent-253504	1419871245301846016	16	7.35	ok	landeseite
+elektrische-zitruspresse-usb-526080	1738468600903634944	7	13.45	ok	landeseite
+perlenkette-mit-rundem-medaillon-und-susswasse-812672	1434695020828561408	16	4.57	ok	landeseite
+crystal-jelly-lippenbalsam-spiegelglanz-pflege-824576	1460852166121099264	3	5.37	ok	landeseite
+fashion-tube-dress-sommerliches-neckholder-kle-369088	1782588785532866560	16	9.07	ok	landeseite
+2-in-1-ol-spruhflasche-fur-kuche-bbq-376320	1773973494091485184	16	9.27	ok	landeseite
+magic-flame-luftbefeuchter-aroma-diffuser-337088	1371640026038931456	16	7.56	ok	landeseite
+fitness-shirt-aus-baumwoll-mix-d97476	03240F31-7407-4BF7-A60E-620C10288827	16	6.77	ok	landeseite
+faltbare-mini-bluetooth-tastatur-mit-stander-531968	1384842422479097856	7	11.13	ok	landeseite
+gesichtsmassage-roller-aus-bianstein-613248	1467087196950499328	16	6.64	ok	landeseite
+fingerschutz-aus-edelstahl-20afde	016EC083-5F4A-43FF-AEB9-A02B23CBA71F	16	4.71	ok	landeseite
+verstellbarer-haltungskorrektur-gurt-5c39c2	3D55BF36-752F-4222-8673-B0D45524AF4D	16	6.07	ok	landeseite
+keramik-futternapf-fur-haustiere-979b00	273AA7A5-9257-4075-A7AB-9B8EAEFD3F91	16	11.96	ok	landeseite
+pailletten-maxi-kleid-mit-langen-armeln-801536	1559419927126355968	16	11.04	ok	landeseite
+katzen-hangematte-fur-fenster-121d04	1597067499571523585	16	10.80	ok	landeseite
+trendige-blade-laufschuhe-fur-herren-213760	1374699759599751168	16	13.76	ok	landeseite

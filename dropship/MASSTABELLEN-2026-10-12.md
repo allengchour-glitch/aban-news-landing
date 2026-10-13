@@ -36,3 +36,19 @@ gemischte Körbe doppelt belasten — Messrunde).
 Aurora fiel 30 min nach der Label-Änderung ebenfalls aus dem Werbe-Kontingent («Over capacity … [CH]») → jede Produktänderung
 schickt das Produkt neu an Google; bei vollem Kontingent fällt es aus der Werbung. **Kampagne pausiert (Betreiber).**
 Offen: Kontingent im Merchant Center erhöhen lassen.
+
+## Runde 2 (13.10.2026, 00:20–01:15 UTC, Folgeauftrag)
+
+- **Auswahl:** Die meistbesuchten Landeseiten (30 Tage, Menschen) hatte Runde 1 schon abgedeckt. Die nächsten CJ-Kleidungs- und Schuhseiten mit Grössen-Option haben nur noch 1–2 Sitzungen. Ausgeschlossen: Armbänder, Ringe, Haushalt, Tierkleidung, Einheitsgrössen. **21 CJ-Abrufe** im Vorrang-Fenster, 19 Produkte mit Beschreibungsbildern.
+- **Falle:** Ein Skript, das nicht in `cj_takt.VORRANG_SKRIPTE` steht, wartet zwischen 00:00 und 01:30 bis zu 90 min, ohne einen einzigen Aufruf. Der Abruf lief deshalb unter dem Namen `masstabelle_probe_runde2.py` (gleicher Zweck wie die Stichprobe, nur lesen).
+- **Doppellesung per Workflow** (10 Agenten, 0 Fehler): 16 Tabellen gefunden, 3 Produkte ohne Tabelle (T-Shirt-Kleid «Casa», Hoodie, Wintermantel).
+- **Ergebnis:** **10 neue Seiten live**, geschrieben 10, Fehler 0; der zweite Lauf schreibt 0. Gesamt jetzt **18 von 40**.
+- **Nicht geschrieben (Absicht):**
+  - Mesh-Cape: Masse in Zoll ohne Angabe, nur erschlossen, Prüfer «mittel».
+  - Off-Shoulder-Kleid: Bereiche = Körpermasse, beide «mittel».
+  - Retro-Kleid, Leinenhose, Abendkleid: Leser «mittel».
+  - Langarmshirt: Prüfer «mittel».
+- **WebFetch:** Die Live-Seite «Monsieur» zeigt die Tabelle S–2XL (Schulter, Brust, Länge, Ärmel).
+- **Nebenfund → Klasse:**
+  - Befund: «Herren-Sommerhemd «Monsieur» … Kurzarm» bekam Ärmel 65–69 cm. Die Bilder zeigen ein Langarm-Rüschenhemd, CJ sagt «Long sleeves», Saison Herbst. Falsch war also der Titel. Korrigiert: Titel «Herren-Rüschenhemd «Monsieur» – French Court Style, Langarm», dazu Text und SEO.
+  - Neue Regel `titel_widerspruch()` im Schreiber: Kurzarm/ärmellos mit Ärmel > 35 cm oder Shorts mit Länge > 70 cm → nicht schreiben, Grund im Bericht. Selbsttest 14/14.

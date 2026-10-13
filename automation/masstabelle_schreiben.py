@@ -172,10 +172,33 @@ def selbsttest():
         (einsetzen('<h4>📏 Grössentabelle (Damen, cm)</h4><table><tr><td>84–88</td></tr></table><p>z</p>', "B").count("84–88"), 0),
         (einsetzen(einsetzen('<p>x</p><div class="ls-produktdetails">y</div>', block_html(urteil(t, ["S", "M"])[2])).replace("<!--/ls-masstabelle-->", ""),
                    block_html(urteil(t, ["S", "M"])[2])).count('class="ls-masstabelle"'), 1),     # idempotent, auch ohne Kommentar
+        (bool(titel_widerspruch("Herrenhemd «Monsieur» Kurzarm", {"spalten": ["Brust", "Ärmel"], "reihe": ["S"], "werte": {"S": [106, 65]}})), True),
+        (titel_widerspruch("Herrenhemd «Monsieur» Langarm", {"spalten": ["Brust", "Ärmel"], "reihe": ["S"], "werte": {"S": [106, 65]}}), None),
     ]
     ok = sum(a == b for a, b in faelle)
     print(f"SELBSTTEST {ok}/{len(faelle)}")
     return 0 if ok == len(faelle) else 1
+
+
+def titel_widerspruch(titel, t):
+    """13.10.: «Herren-Sommerhemd … Kurzarm» bekam eine Tabelle mit Ärmel 65–69 cm — die Bilder zeigten ein Langarm-Hemd,
+    CJ sagt «Long sleeves». Falsch war der TITEL. Widerspricht die Tabelle dem Titel, wird nicht geschrieben (Grund im
+    Bericht): erst Titel/Bilder klären. Kurzarm/Shorts/Mini → Ärmel > 35 cm bzw. Länge > 110 cm (Hose) ist ein Widerspruch."""
+    ti = titel.lower()
+    sp = [kanon(x) for x in t.get("spalten", [])]
+    def maxwert(name):
+        if name not in sp:
+            return None
+        i = sp.index(name)
+        return max((t["werte"][g][i] for g in t.get("reihe", []) if len(t["werte"].get(g, [])) > i), default=None)
+    arm = maxwert("ärmel")
+    if re.search(r"kurzarm|ärmellos|aermellos|tanktop|\btop\b.*träger", ti) and arm and arm > 35:
+        return f"Titel «{titel[:40]}» sagt kurz/ärmellos, Tabelle Ärmel bis {arm:g} cm — Titel oder Bilder prüfen"
+    if re.search(r"\bshorts?\b|kurze hose|bermuda", ti):
+        lg = maxwert("länge")
+        if lg and lg > 70:
+            return f"Titel «{titel[:40]}» sagt Shorts, Tabelle Länge bis {lg:g} cm — Titel oder Bilder prüfen"
+    return None
 
 
 def main():
@@ -184,11 +207,15 @@ def main():
     zeilen, geschrieben, fehler = [], 0, 0
     for e in daten:
         h = e["handle"]
-        p = gql('query($h:String!){productByHandle(handle:$h){id status descriptionHtml options{name values}}}', {"h": h}).get("productByHandle")
+        p = gql('query($h:String!){productByHandle(handle:$h){id title status descriptionHtml options{name values}}}', {"h": h}).get("productByHandle")
         if not p:
             zeilen.append((h, False, "Produkt nicht gefunden")); continue
         gr = next((o["values"] for o in p["options"] if re.search(r"gr(ö|oe)sse|size", o["name"], re.I)), [])
         ok, grund, t = urteil(e, gr)
+        if ok:
+            wid = titel_widerspruch(p.get("title") or "", t)
+            if wid:
+                ok, grund = False, wid
         zeilen.append((h, ok, grund))
         if not ok:
             continue
