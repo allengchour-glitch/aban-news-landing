@@ -347,15 +347,18 @@ und halten den Not-Aus nie auf.
 ## 📰 News-Wächter — immer im Bild, aber kein News-Trading (`news_waechter.py`)
 
 Läuft mit dem Cockpit (`cockpit.py`) auf deinem PC und prüft **alle 30 Minuten**: Binance-Ankündigungen (Delistings,
-neue Listings, Binance-News) und die Krypto-Nachrichten von Cointelegraph, Decrypt, The Block und CoinDesk (mit
-`CRYPTOPANIC_KEY` zusätzlich CryptoPanic). **Binance-Delistings prüft er jede Minute** (nächster Abschnitt: nach der
+neue Listings, Binance-News), die Krypto-Nachrichten von Cointelegraph, Decrypt, The Block und CoinDesk und **öffentliche
+Telegram-Kanäle** über die Web-Vorschau `t.me/s/…` — ohne Konto: **Watcher.Guru** und **Wu Blockchain** (beide spiegeln ihre
+X/Twitter-Meldungen, oft die schnellsten). Eigene öffentliche Kanäle: `setx NEWS_TELEGRAM "whale_alert_io,kanal2"`. Mit
+`CRYPTOPANIC_KEY` zusätzlich CryptoPanic. **Binance-Delistings prüft er jede Minute** (nächster Abschnitt: nach der
 Ankündigung fällt der Kurs im Median −4 % in der ersten Minute und −17 % in den ersten 30 Minuten). Wichtiges kommt sofort
 aufs Handy, `/news` in Telegram zeigt die letzten Alarme:
 **Hack** · **Abhebungen gestoppt** · **Insolvenz** · **Stablecoin-Depeg** · **SEC/ETF-Entscheid** · **Delisting** von BTC/ETH
 und von deinen eigenen Coins: `setx NEWS_COINS "SOL,DOGE,PEPE"` (alle Coins, die du irgendwo hältst).
-Jeder Eintrag kommt nur einmal; beim allerersten Start wird nichts gemeldet (sonst käme die ganze Liste).
-- **Twitter/X:** nur mit bezahltem X-Zugang lesbar — darum nicht dabei. **Telegram-Kanäle** liest dein PC mit deinem Konto
-  (`calls_leser.py`, siehe «Telegram-Call-Gruppen»).
+Jeder Eintrag kommt nur einmal, dieselbe Schlagzeile aus mehreren Quellen auch; beim allerersten Start wird nichts gemeldet
+(sonst käme die ganze Liste), und Meldungen älter als 12 Stunden lösen keinen Alarm mehr aus (neue Quelle, PC war aus).
+- **Twitter/X direkt:** nur mit bezahltem X-Zugang lesbar — darum über die Telegram-Spiegel (oben). **Private Telegram-Gruppen**
+  (z. B. VIP-Calls) liest dein PC mit deinem Konto (`calls_leser.py`, siehe «Telegram-Call-Gruppen»).
 - **Warum der Bot nicht nach News handelt:** Bis eine Schlagzeile da ist, ist der Kurs meist schon gelaufen — und unsere
   Stimmungs-Daten (Angst & Gier enthält auch Social-Media-Stimmung) haben den Prüfstand nicht bestanden (siehe «Alle Infos»).
   Der Wächter meldet; entscheiden kannst du (z. B. Not-Aus per `/stop`).
@@ -824,7 +827,7 @@ python3 tools/trading/krypto_bot/test_binance.py  # 21 Tests, inkl. nachgebautem
 python3 tools/trading/krypto_bot/test_pilot2_plan.py  # 23 Tests: Pilot-2.0-Rechnung (Richtung, Ernte, Pfand, Mindestbeträge)
 python3 tools/trading/krypto_bot/test_pilot2_live.py  # 101 Tests: Pilot 2.0 («Konto = Wahrheit») gegen eine strenge nachgebaute Binance
 python3 tools/trading/krypto_bot/test_scalping.py      # 50 Tests: kein Blick in die Zukunft, strenge Füll-Regeln, Kosten exakt, Entscheidungsregeln
-python3 tools/trading/krypto_bot/test_news_waechter.py # 28 Tests: Alarm-Regeln, keine Fehlalarme, nur einmal melden, kein Fluten beim Start, Delistings jede Minute
+python3 tools/trading/krypto_bot/test_news_waechter.py # 32 Tests: Alarm-Regeln, keine Fehlalarme, nur einmal melden, kein Fluten, Delistings jede Minute, Telegram-Kanäle
 python3 tools/trading/krypto_bot/test_delisting.py     # 36 Tests: Ankündigungen lesen, Einstieg/Ausstieg, Funding, Zufallsprobe (ohne Netz)
 python3 tools/trading/krypto_bot/delisting_pruefung.py # Prüfstand Delisting-Short (lädt Binance-Kurse); --bericht = Tabelle
 python3 tools/trading/krypto_bot/test_alle_coins.py    # 12 Tests: Universen Top 10/Meme/Alle, Trend-Auswahl, kein Blick in die Zukunft
