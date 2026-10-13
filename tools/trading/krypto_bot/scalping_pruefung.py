@@ -151,7 +151,28 @@ def pruefe(trades, b1, kosten, f):
             "stress": stress, "mit_bnb": bnb, "kriterien": kriterien, "bestanden": all(kriterien.values())}
 
 
+def bericht_md(erg):
+    """Markdown-Tabelle für die README direkt aus der Ergebnis-Datei (keine Zahl von Hand abgeschrieben)."""
+    zeilen = ["| Markt | Strategie (gewählte Variante) | Trades | Brutto je Trade | Netto je Trade | Netto Summe | "
+              "Treffer | Zufall geschlagen | Urteil |", "|---|---|---|---|---|---|---|---|---|"]
+    for sym, strat in erg["maerkte"].items():
+        for kurz, s in strat.items():
+            k, pr = s["pruefung"]["kennzahlen"], s["pruefung"]
+            if not k.get("n"):
+                zeilen.append(f"| {sym[:3]} | {kurz} {s['name']} ({s['gewaehlt']}) | 0 | – | – | – | – | – | ❌ |")
+                continue
+            fehlt = [n for n, ok in pr["kriterien"].items() if not ok]
+            anzahl = f"{k['n']:,}".replace(",", "'")
+            zeilen.append(f"| {sym[:3]} | {kurz} {s['name']} ({s['gewaehlt']}) | {anzahl} | {k['brutto_bp']:+.1f} bp | "
+                          f"{k['netto_bp']:+.1f} bp | {k['summe_pct']:+.1f} % | {k['treffer']:.0%} | "
+                          f"{pr['zufall_geschlagen']:.0%} | {'✅' if pr['bestanden'] else '❌ ' + ', '.join(fehlt)} |")
+    return "\n".join(zeilen)
+
+
 def main():
+    if "--bericht" in sys.argv:
+        print(bericht_md(json.loads(AUSGABE.read_text())))
+        return 0
     t0 = time.time()
     erg = {"stand": datetime.now(timezone.utc).isoformat(timespec="seconds"),
            "protokoll": {"daten": f"{VON[0]}-{VON[1]:02d} bis {BIS[0]}-{BIS[1]:02d}", "lernen_bis": "2023-12-31",

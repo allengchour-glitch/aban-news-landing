@@ -266,5 +266,12 @@ r = SP.pruefe(gut_trades(300, 0.00125, 0.00125), b1, kos, None)
 pruefe("Urteil: dünner Vorteil (12,5 bp brutto, ~0,5 bp netto) → durchgefallen (Puffer + Stresstest)", not r["bestanden"]
        and not r["kriterien"]["netto_je_trade"] and not r["kriterien"]["stress"], (r["kennzahlen"], r["kriterien"]))
 
+fake = {"maerkte": {"BTCUSDT": {"S1": {"name": "Band", "gewaehlt": "k=2.0", "pruefung": {
+    "kennzahlen": {"n": 12345, "brutto_bp": 1.04, "netto_bp": -5.2, "summe_pct": -3.0, "treffer": 0.5},
+    "zufall_geschlagen": 0.4, "kriterien": {"beide_haelften": False, "anzahl": True}, "bestanden": False}}}}}
+md = SP.bericht_md(fake)
+pruefe("Bericht: Tabelle direkt aus der Ergebnis-Datei (12'345 Trades, fehlende Kriterien genannt)",
+       "12'345" in md and "+1.0 bp" in md and "-5.2 bp" in md and "❌ beide_haelften" in md and "anzahl" not in md.split("❌")[-1], md)
+
 print(f"\n{n_ok} bestanden, {n_f} fehlgeschlagen")
 sys.exit(1 if n_f else 0)
