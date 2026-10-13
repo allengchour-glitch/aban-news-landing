@@ -141,8 +141,12 @@ const SPERR = new Set(['nicht-bewerben', 'nur-onlineshop', '18plus', 'raucher', 
   'medizinprodukt-pruefen', 'marken-pruefen', 'lizenz-risiko', 'lizenz-nicht-bewerben', 'adult-nicht-bewerben', 'gmc-adult-pull',
   'messer-nicht-bewerben', 'smoke-zubehoer', 'waffe-pruefen', 'verdeckte-ueberwachung', 'google-policy-flag', 'arzneimittel-ohne-zulassung']);
 const HEIL = /schmerz|heil|migräne|krampfader|fettverbrenn|abnehmen|cellulite|arthr|rheuma|diabetes|entgift|detox|blutdruck|haarausfall|schnarch|inkontinenz/i;
+// 13.10.2026 (Reel-Nachschub R3 Schritt 2): kleine Veto-Liste — Ware, die als Werbe-Reel pietätlos oder peinlich wirkt
+// (GEMESSEN unter den 24 freien Shopify-Videos: 2 Tier-Urnen, 1 Haftcreme für Zahnprothesen). Wortgrenze bei «Urne»,
+// sonst träfe es «Turnen»/«Turnschuh». Gilt für alle Quellen (Index, Scan, Shopify).
+const VETO_REEL = /\burnen?\b|tierasche|prothes/i;
 const sperrGrund = (tags, title) => (tags || []).map(t => String(t).toLowerCase()).some(t => SPERR.has(t) || /-nicht-bewerben$/.test(t)) ? 'sperr-tag'
-  : HEIL.test(title || '') ? 'heilwort-im-titel' : '';
+  : HEIL.test(title || '') ? 'heilwort-im-titel' : VETO_REEL.test(title || '') ? 'veto-titel' : '';
 
 
 const TOK = (process.env.SHOPIFY_ADMIN_TOKEN || (fs.existsSync('/tmp/cj_shop_token.txt') ? fs.readFileSync('/tmp/cj_shop_token.txt', 'utf8') : '')).trim();
@@ -365,7 +369,18 @@ function zeilen(title) {
     while (w.length > 1 && PRAEP.test(w[w.length - 1])) w.pop(); return w.join(' ').replace(/[\s,;:–—]+$/, ''); };
   // hängt an Zeile 1 eine Präposition («Heizjacke mit»), wandert sie an den Anfang von Zeile 2, wenn dort Platz ist
   const wa = a.trim().split(' ');
+  // 13.10.2026 (R3-Kontaktbogen Samtkleid): passte «mit» + Zeile 2 nicht in 30 Zeichen, fiel die Präposition weg
+  // («Samtkleid / Glockenärmeln und Stickerei»). Jetzt kürzt Zeile 2 am Wortende, bis die Präposition mitpasst
+  // («Samtkleid / mit Glockenärmeln»); geht es auch so nicht, bleibt es beim alten Weg.
+  // Ende nur auf einem Nomen (Grossbuchstabe, kein «-»-Bruchstück): sonst «aus Nylon mit wasserdichtem». «und/oder» wandern nicht.
+  const nomenEnde = w => { const x = String(w || '').replace(/,$/, ''); return /^[A-ZÄÖÜ]/.test(x) && !/-$/.test(x) && !PRAEP.test(x); };
   if (b && wa.length > 1 && PRAEP.test(wa[wa.length - 1]) && (wa[wa.length - 1] + ' ' + b).length <= 30) { b = wa.pop() + ' ' + b; a = wa.join(' '); }
+  else if (b && wa.length > 1 && PRAEP.test(wa[wa.length - 1]) && !/^(und|oder|&|\+|\/|–|—|-)$/i.test(wa[wa.length - 1])) {
+    const p = wa[wa.length - 1]; let bw = b.split(' ');
+    while (bw.length > 1 && (`${p} ${bw.join(' ')}`.length > 30 || !nomenEnde(bw[bw.length - 1]))) bw.pop();
+    const neu = `${p} ${bw.join(' ')}`.replace(/,$/, '');
+    if (neu.length <= 30 && nomenEnde(bw[bw.length - 1])) { wa.pop(); b = neu; a = wa.join(' '); }
+  }
   a = sauber(a); b = sauber(b);
   if (!b && /-$/.test(a)) a = a.replace(/-[^-\s]*-$/, '').replace(/-$/, '');      // nichts folgt → kein hängender Trennstrich
   return [a, b];
@@ -620,12 +635,67 @@ if (DRY) {
   const vari = kand.filter(x => x.idx && x.pid !== x.cjpid), dir = kand.filter(x => x.idx && x.pid === x.cjpid);
   for (const k of [...vari.slice(0, 8), ...dir.slice(0, 2)].slice(0, 10)) console.log(`   ${k.cjpid} → ${k.pid} → ${k.title.slice(0, 60)} · CHF ${k.price}`);
 }
+
+// ---------------------------------------------------------------- Quelle «Shopify» (R3, 13.10.2026)
+// GEMESSEN 13.10. (Prüf-Workflow, scratchpad h2b.py): Der Video-Nachtrag (cj_video_backfill.mjs / video_lokal_anhaengen.mjs,
+// Ledger dropship/_cj_video_backfill.txt) hat an 454 Produkten das Lieferantenvideo als VIDEO-Medium angehängt. Der Dateiname
+// trägt die CJ-pid (cj-<pid>.mp4 bzw. cj-video-<pid>.mp4; 456 Dateien, 0 Abweichungen). 393 davon haben schon ein Reel, 24 sind
+// frei. Der Motor kannte diese Quelle nicht und fragte CJ erneut (oder gar nicht). Jetzt: aktive Produkte mit VIDEO-Medium aus
+// dem Nachtrag (Status ok / ok-lokal / hat-schon-video) als eigene Quelle — ohne CJ-Frage:
+//   · pid NUR aus dem Dateinamen (ohne pid-förmigen Namen kein Kandidat); widerspricht die SKU-Zuordnung (Umkehrtabelle), raus.
+//   · Kennung + Poster-Probe wie R1 (k.pid = SKU-Rest, k.cjpid = echte pid).
+//   · Sperren: gebaut, inCsv, _reel_tor_abgelehnt (beide Schlüssel), produktGepostet, Sperr-Tags/HEIL/Veto, Schwellen wie oben.
+//     NICHT das kein-Video-Ledger des Motors: das Video hängt nachweislich am Produkt (3 Widersprüche GEMESSEN — sie zählen).
+//   · Ab 720 px kurzer Seite das Shopify-Original (cdn.shopify.com) direkt. Darunter (15 von 24 haben 540 px, weil der Nachtrag die
+//     KLEINSTE CJ-Fassung anhängt) einmal queryVideosByProductId → grösste Fassung laden und nur nehmen, wenn sie grösser ist.
+// Nachweis je Reel: Log «Quelle: …» + dropship/_reel_quelle.txt (Kennung, Datum, Quelle, kurze Seite) für den Jury-Vergleich.
+const BACKFILL = 'dropship/_cj_video_backfill.txt';
+const bfZeilen = fs.existsSync(BACKFILL) ? fs.readFileSync(BACKFILL, 'utf8').split('\n').map(z => z.split('\t')) : [];
+const BF_MIT = [...new Set(bfZeilen.filter(([g, s]) => g && /^(ok|ok-lokal|hat-schon-video)$/.test((s || '').trim())).map(([g]) => g.trim()))];
+// R3 Schritt 5: «kein-video-beim-lieferanten» = der Nachtrag hat CJ schon richtig gefragt (queryVideosByProductId, seit 07.09.)
+// → im Scan nicht noch einmal fragen (GID-genau, kostet keine Umrechnung).
+const BF_KEIN = new Set(bfZeilen.filter(([g, s]) => g && (s || '').trim() === 'kein-video-beim-lieferanten').map(([g]) => g.trim()));
+const VID_DATEI = /^cj-(?:video-)?([0-9A-Za-z-]+?)(?:_\d+)?\.mp4$/i;
+// Shopify-Quelle: dieselben Sperren wie gesperrt(), aber ohne kein-Video (Video liegt am Produkt) und ohne die CJ-Fehler-Sperre
+// (die gilt nur für die CJ-Frage, siehe Bau-Schleife).
+const gesperrtShop = (...s) => s.filter(Boolean).some(x => gebaut.has(x) || inCsv.has(x) || torAbgelehnt.has(x));
+let shopKand = 0, shopProbeAus = 0; const shopGruende = new Map(), shopListe = [];
+const SHOP_ZIEL = DRY ? Infinity : BATCH * 3;
+for (let i = 0; i < BF_MIT.length && shopKand < SHOP_ZIEL; i += 50) {
+  const r = await gql(`query($ids:[ID!]!){ nodes(ids:$ids){ ... on Product { id title handle status tags mediaCount{count} description(truncateAt:260)
+    variants(first:5){nodes{price sku}} media(first:25){ nodes{ mediaContentType ... on Video { filename status originalSource{ url width height } } } } } } }`, { ids: BF_MIT.slice(i, i + 50) });
+  if (!r) break;
+  for (const n of r.data.nodes || []) {
+    if (!n || !n.id || shopKand >= SHOP_ZIEL) continue;
+    const zaehl = g => shopGruende.set(g, (shopGruende.get(g) || 0) + 1);
+    const vids = (n.media?.nodes || []).filter(m => m.mediaContentType === 'VIDEO' && m.status !== 'FAILED' && m.originalSource?.url);
+    const v = vids.map(m => ({ m, p: (VID_DATEI.exec(m.filename || '') || [])[1] || '' })).find(x => istPidForm(x.p));
+    const vs = n.variants?.nodes || []; const sku = vs[0]?.sku || ''; const kennung = kennungAus(sku); const price = parseFloat(vs[0]?.price || '0');
+    const skuPid = vs.map(x => cjPidAus(x.sku)).find(Boolean) || '';
+    const grund = !vids.length ? 'kein-video-medium' : !v ? 'dateiname-ohne-pid' : !kennung ? 'sku-ohne-kennung'
+      : skuPid && skuPid !== v.p ? 'pid-widerspruch' : n.status !== 'ACTIVE' ? `status-${n.status}` : price < 14.9 ? 'preis-unter-14.90'
+      : (n.mediaCount?.count || 0) < 2 ? 'unter-2-medien' : VERBOTEN.test(n.title) ? 'verbots-titel' : sperrGrund(n.tags, n.title)
+      || (gesperrtShop(kennung, v.p) ? 'schon-reel-oder-tor' : '') || (kand.some(x => x.pid === kennung || x.cjpid === v.p) ? 'schon-index-kandidat' : '')
+      || (produktGepostet(`«${kurzTitel(n.title)}»`, `cjreel-${kennung}`) ? 'produkt-schon-gepostet' : '');
+    if (grund) { zaehl(grund); continue; }
+    const probe = await posterProbe(kennung, n.id);
+    if (probe) { shopProbeAus++; zaehl('probe:' + probe); continue; }
+    const o = v.m.originalSource; const kurz = Math.min(o.width || 0, o.height || 0);
+    kand.push({ pid: kennung, cjpid: v.p, gid: n.id, title: n.title.trim(), handle: n.handle, price, desc: n.description || '', tags: n.tags || [],
+      quelle: 'shopify', shopUrl: o.url, shopKurz: kurz, probe: true });
+    shopKand++; shopListe.push(`${v.p} → ${kennung} · ${kurz} px${keinVideo.has(v.p) ? ' · (kein-Video-Ledger widerspricht)' : ''} · ${n.title.slice(0, 55)} · CHF ${price}`);
+  }
+}
+console.log(`Shopify-Videos (Nachtrag): ${BF_MIT.length} Produkte → ${shopKand} Kandidaten (≥720 px ${kand.filter(x => x.quelle === 'shopify' && x.shopKurz >= 720).length}) · Poster-Probe durchgefallen ${shopProbeAus} · ausgeschieden: ${[...shopGruende].sort((a, b) => b[1] - a[1]).map(([g, z]) => `${g} ${z}`).join(', ') || '—'}`);
+if (DRY) for (const z of shopListe) console.log(`   Shopify ✓ ${z}`);
+let bfGespart = 0;
 while (gescannt < SCAN && idxKand < BATCH * 3) {
   const r = await gql(`query($c:String){ products(first:50, after:$c, sortKey:CREATED_AT, reverse:true, query:"status:active tag:cj-real"){ pageInfo{hasNextPage endCursor} nodes{ id title handle tags mediaCount{count} description(truncateAt:260) variants(first:1){nodes{price sku}} } } }`, { c: cursor });
   if (!r) break;
   const pg = r.data.products;
   for (const n of pg.nodes) {
     gescannt++;
+    if (BF_KEIN.has(n.id)) { bfGespart++; continue; }                 // R3 Schritt 5: CJ hat dem Nachtrag schon «kein Video» gesagt
     const sku = n.variants.nodes[0]?.sku || ''; const pid = kennungAus(sku); if (!pid) continue;
     // 13.10.2026 (R1): CJ nur mit der echten pid fragen. Varianten-SKU ohne Eintrag in der Umkehrtabelle → überspringen
     // (keine Frage, kein Ledger); vorher ging die Varianten-SKU selbst an CJ (29 % der Fragen seit 30.09., 0 Reels).
@@ -647,7 +717,12 @@ const prio = x => (x.tags.includes('hype-jetzt') ? 0 : x.tags.includes('neuheit'
 const _themen = lernen().themen || {};
 const tw = x => { const e = _themen[thema(x.title)]; return e && e.belastbar && typeof e.gewicht === 'number' ? e.gewicht : 1; };
 const ordnen = l => l.sort((a, b) => prio(a) - prio(b) || tw(b) - tw(a));
-let reihe = [...balanceByCategory(ordnen(kand.filter(x => x.idx)), x => x.title), ...balanceByCategory(ordnen(kand.filter(x => !x.idx)), x => x.title)];
+// 13.10.2026 (R3): Shopify-Quelle und Index im Reissverschluss (Shopify zuerst — kostet ab 720 px keinen CJ-Punkt), danach der
+// Scan. So kommen beide Quellen in jedem Lauf dran, und die Jury-Quote beider lässt sich vergleichen.
+const _shop = balanceByCategory(ordnen(kand.filter(x => x.quelle === 'shopify')), x => x.title);
+const _idx = balanceByCategory(ordnen(kand.filter(x => x.idx)), x => x.title);
+const _zipp = []; for (let i = 0; i < Math.max(_shop.length, _idx.length); i++) { if (_shop[i]) _zipp.push(_shop[i]); if (_idx[i]) _zipp.push(_idx[i]); }
+let reihe = [..._zipp, ...balanceByCategory(ordnen(kand.filter(x => !x.idx && x.quelle !== 'shopify')), x => x.title)];
 // 23.09.2026 (Halloween-Auftritt): NUR_PID=<pid> auch im Normalmodus — bisher galt es nur fuer NEU_RENDERN. Das Produkt muss
 // dieselben Schwellen passieren wie jeder Kandidat (ACTIVE, ≥ CHF 14.90, ≥ 2 Bilder, kein Verbots-Titel, nie gepostet, nicht
 // im Ledger/CSV); steht es nicht im Index-/Scan-Fenster, wird es per SKU nachgeschlagen. Nichts wird erzwungen.
@@ -680,7 +755,7 @@ if (process.env.NUR_PID && process.env.NEU_RENDERN !== '1') {
   console.log(`NUR_PID ${pid}: ${reihe.length ? 'Kandidat' : 'KEIN Kandidat (Ledger/CSV/Schwelle)'}`);
 }
 if (Object.keys(_themen).length) console.log(`Themen-Gewichte (Lernschleife): ${Object.entries(_themen).filter(([, e]) => e.belastbar).map(([k, e]) => `${k} ${e.gewicht}`).join(' · ')}`);
-console.log(`Kandidaten: ${kand.length} von ${gescannt} gescannt (Schwelle: ACTIVE, ≥CHF 14.90, ≥2 Bilder, nie gepostet)${DRY ? ' · DRY' : ''}`);
+console.log(`Kandidaten: ${kand.length} (Shopify ${kand.filter(x => x.quelle === 'shopify').length} · Index ${kand.filter(x => x.idx).length} · Scan ${kand.filter(x => !x.idx && x.quelle !== 'shopify').length}) von ${gescannt} gescannt, ${bfGespart} ohne CJ-Frage übersprungen (Nachtrag: kein Video) (Schwelle: ACTIVE, ≥CHF 14.90, ≥2 Bilder, nie gepostet)${DRY ? ' · DRY' : ''}`);
 
 // ---------------------------------------------------------------- Bauen
 fs.mkdirSync('/tmp/reelbuild', { recursive: true }); fs.mkdirSync(MEDIEN, { recursive: true });
@@ -710,23 +785,54 @@ if (!DRY) {
   }
   if (nachgetragen) gitPush([CSV, LEDGER], `Reel-Queue: ${nachgetragen} Zeilen nachgetragen`);
 }
-let made = 0, gefragt = 0;
+let made = 0, gefragt = 0, cjAus = false;
 const zumServer = [];
 const letzteMusik = fs.existsSync('/tmp/_reel_last_music') ? fs.readFileSync('/tmp/_reel_last_music', 'utf8').trim() : '';
+// R3: Quelle je Reel (Kennung · Datum · Quelle · kurze Seite in px) — für den Vergleich der Jury-Quote Shopify gegen CJ-Download
+const QUELLE_LOG = 'dropship/_reel_quelle.txt';
+// kurze Seite einer Videodatei über PyAV (der ffprobe im Pfad ist ein Python-Ersatz, der nur die Dauer kennt — Skill videoschnitt)
+function kurzeSeite(datei) {
+  try { return parseInt(execFileSync('python3', ['-c', 'import av,sys\nc=av.open(sys.argv[1]);s=c.streams.video[0];print(min(s.codec_context.width,s.codec_context.height))', datei],
+    { encoding: 'utf8', timeout: 60000, stdio: ['ignore', 'pipe', 'ignore'] }).trim(), 10) || 0; } catch { return 0; }
+}
+const laden = (url, ziel, referer) => {
+  try { execFileSync('curl', ['-s', '-L', '--fail', '--max-time', '180', ...(referer ? ['-H', `Referer: ${referer}`] : []), '-o', ziel, url], { stdio: 'ignore' }); } catch { fs.rmSync(ziel, { force: true }); }
+  if (fs.existsSync(ziel) && fs.statSync(ziel).size >= 200000) return true;
+  fs.rmSync(ziel, { force: true }); return false;
+};
 for (const k of reihe) {
   if (made >= BATCH || gefragt >= FRAGEN) break;
-  if (zumServer.length >= 3) break;   // 28.09.: ein Server-Auftrag trägt 3 Videos — weiter fragen kostet nur CJ-Punkte
+  // 28.09.: ein Server-Auftrag trägt 3 Videos — weiter fragen kostet nur CJ-Punkte. Die Shopify-Quelle (R3) braucht den Server nie.
+  if (zumServer.length >= 3 && k.quelle !== 'shopify') continue;
   // 13.10.2026 (R1): k.cjpid fehlt nur bei Altfällen → wie bisher die Kennung. Sperre über beide Schlüssel auch hier
   // (Index und Scan können im selben Lauf dasselbe Produkt liefern; gebaut wird nach jedem Reel nachgeführt).
   k.cjpid = k.cjpid || k.pid;
-  if (gesperrt(k.pid, k.cjpid)) continue;
-  gefragt++;
-  let cv;
-  try { cv = await cjVideo(k.cjpid); } catch (e) { console.log('  ✗ ' + e.message + ' — Lauf endet'); break; }
-  // R1 Schritt 1: nur «leer» ist «kein Video» (Ledger mit der echten pid); «fehler» → Tagessperre, morgen neu fragen
-  if (cv.fehler) { console.log(`   ${k.pid}: CJ-Fehler (${cv.fehler}) → Tagessperre, kein kein-Video-Eintrag`); if (!DRY) fehlerMerken(k.cjpid, cv.fehler); continue; }
-  if (!cv.url) { if (!DRY) fs.appendFileSync(KEINVIDEO, `${k.cjpid}\t${new Date().toISOString().slice(0, 10)}\n`); continue; }
-  const vurl = cv.url;
+  const shop = k.quelle === 'shopify';
+  if (shop ? gesperrtShop(k.pid, k.cjpid) : gesperrt(k.pid, k.cjpid)) continue;
+  let vurl = '', cjGross = '';
+  if (shop) {
+    // R3 Schritt 4: ab 720 px kurzer Seite das Shopify-Original ohne CJ-Frage. Darunter EINMAL CJ nach der grössten Fassung
+    // fragen — ausser CJ hat schon «kein Video» gesagt (Widerspruch: dann ist das Shopify-Video die einzige Quelle).
+    vurl = k.shopUrl;
+    if (k.shopKurz < 720 && !keinVideo.has(k.cjpid)) {
+      // CJ heute gestört → morgen neu (nicht mit 540 px bauen, solange die grosse Fassung nur vorübergehend fehlt)
+      if (cjAus || fehlerHeute.has(k.cjpid)) { console.log(`   ${k.pid}: Shopify ${k.shopKurz} px, CJ heute nicht erreichbar → morgen`); continue; }
+      gefragt++;
+      let cv;
+      try { cv = await cjVideo(k.cjpid); } catch (e) { console.log(`  ✗ ${e.message} — ab jetzt nur noch Shopify-Quellen ab 720 px`); cjAus = true; continue; }
+      if (cv.fehler) { console.log(`   ${k.pid}: CJ-Fehler (${cv.fehler}) → Tagessperre, morgen neu`); if (!DRY) fehlerMerken(k.cjpid, cv.fehler); continue; }
+      cjGross = cv.url || '';                 // «leer»: CJ hat das Video nicht mehr → Shopify-Fassung ist die einzige
+    }
+  } else {
+    if (cjAus) continue;
+    gefragt++;
+    let cv;
+    try { cv = await cjVideo(k.cjpid); } catch (e) { console.log(`  ✗ ${e.message} — keine CJ-Fragen mehr in diesem Lauf`); cjAus = true; continue; }
+    // R1 Schritt 1: nur «leer» ist «kein Video» (Ledger mit der echten pid); «fehler» → Tagessperre, morgen neu fragen
+    if (cv.fehler) { console.log(`   ${k.pid}: CJ-Fehler (${cv.fehler}) → Tagessperre, kein kein-Video-Eintrag`); if (!DRY) fehlerMerken(k.cjpid, cv.fehler); continue; }
+    if (!cv.url) { if (!DRY) fs.appendFileSync(KEINVIDEO, `${k.cjpid}\t${new Date().toISOString().slice(0, 10)}\n`); continue; }
+    vurl = cv.url;
+  }
   // R1 Schritt 4 für Scan-/NUR_PID-Kandidaten (Index-Kandidaten sind schon geprüft): erst nach dem Video-Fund, damit die
   // vielen Leerfragen des Scans keine Shopify-Abfrage kosten. Durchgefallen → überspringen, kein Ledger.
   if (!k.probe) { const pr = await posterProbe(k.pid, k.gid); if (pr) { console.log(`   ${k.pid}: Poster-Probe ✗ (${pr}) → übersprungen, kein Ledger`); continue; } k.probe = true; }
@@ -736,13 +842,26 @@ for (const k of reihe) {
   const benefit = nutzen(k.desc);
   const cap = caption(hook, k, benefit);
   const tags = hashtags(k.title, k.pid);
-  console.log(`→ ${k.pid}${k.cjpid !== k.pid ? ` (CJ-pid ${k.cjpid})` : ''} [${th}] ${k.title.slice(0, 60)} · CHF ${k.price}\n   Hook: ${hook} · Titel: ${z1} / ${z2}\n   Video: ${vurl.slice(0, 70)}`);
+  console.log(`→ ${k.pid}${k.cjpid !== k.pid ? ` (CJ-pid ${k.cjpid})` : ''} [${th}] ${k.title.slice(0, 60)} · CHF ${k.price}\n   Hook: ${hook} · Titel: ${z1} / ${z2}\n   Video: ${shop ? `Shopify ${k.shopKurz} px ` : ''}${vurl.slice(0, 70)}${cjGross ? `\n   CJ-Fassung zum Vergleich: ${cjGross.slice(0, 70)}` : ''}`);
   if (DRY) { console.log(`   Stimme: ${stimmeDry(k.pid, th, hook, k, benefit)}`); made++; continue; }
-  const src = `/tmp/reelbuild/src_${k.pid}.mp4`, out = `/tmp/reelbuild/reel_${k.pid}.mp4`;
-  let st = { ja: false, grund: 'anteil' };
+  const src = `/tmp/reelbuild/src_${k.pid}.mp4`, out = `/tmp/reelbuild/reel_${k.pid}.mp4`, srcCj = `/tmp/reelbuild/srccj_${k.pid}.mp4`;
+  let st = { ja: false, grund: 'anteil' }, quelleTxt = 'cj', kurzIst = 0;
   try {
-    const lokal = serverQuelle(k.cjpid);
-    if (lokal) { fs.copyFileSync(lokal, src); console.log(`   Quelle vom Server: ${lokal}`); }
+    const lokal = shop ? '' : serverQuelle(k.cjpid);
+    if (shop) {
+      // R3: grösste CJ-Fassung nur, wenn sie wirklich grösser ist als das Shopify-Original (gemessen an der Datei, PyAV)
+      if (cjGross) {
+        const kz = laden(cjGross, srcCj, 'https://developers.cjdropshipping.com/') ? kurzeSeite(srcCj) : 0;
+        console.log(`   CJ-Fassung: ${kz ? kz + ' px' : 'nicht ladbar/lesbar'} gegen Shopify ${k.shopKurz} px`);
+        if (kz > k.shopKurz) { fs.renameSync(srcCj, src); quelleTxt = 'cj-gross'; kurzIst = kz; }
+        else fs.rmSync(srcCj, { force: true });
+      }
+      if (quelleTxt !== 'cj-gross') {
+        if (!laden(k.shopUrl, src, '')) { console.log('   Shopify-Download leer → nächster Lauf (kein Ledger)'); continue; }
+        quelleTxt = 'shopify'; kurzIst = kurzeSeite(src) || k.shopKurz;
+      }
+      console.log(`   Quelle: ${quelleTxt === 'shopify' ? 'Shopify' : 'CJ (grösste Fassung)'} · ${kurzIst} px kurze Seite`);
+    } else if (lokal) { fs.copyFileSync(lokal, src); quelleTxt = 'server'; console.log(`   Quelle vom Server: ${lokal}`); }
     else {
       try { execFileSync('curl', ['-s', '-L', '--fail', '--max-time', '180', '-H', 'Referer: https://developers.cjdropshipping.com/', '-o', src, vurl], { stdio: 'ignore' }); }
       catch { fs.rmSync(src, { force: true }); }
@@ -752,6 +871,8 @@ for (const k of reihe) {
         console.log('   Download gesperrt/leer → über den Server'); continue;
       }
     }
+    if (!kurzIst) kurzIst = kurzeSeite(src);
+    const quelleMerken = erg => { try { fs.appendFileSync(QUELLE_LOG, `${k.pid}\t${new Date().toISOString().slice(0, 10)}\t${quelleTxt}\t${kurzIst}\t${erg}\n`); } catch {} };
     let dur = 0; try { dur = parseFloat(execFileSync('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', src], { encoding: 'utf8' })); } catch {}
     if (dur && dur < 3) { console.log('   Video kuerzer als 3 s'); continue; }
     const mw = musikWahl(th, k.pid), musik = mw.datei;
@@ -761,7 +882,7 @@ for (const k of reihe) {
     if (!rb.ok) {
       console.log(`   ⛔ schnitt Exit ${rb.code}: ${rb.grund} → nicht in die Queue`);
       // 3 = Quelle ungeeignet, 4 = Ausgabetor: dauerhaft → Ledger (nicht erneut fragen); 1 = Fehler (OCR, Musik) → vorübergehend
-      if (rb.code === 3 || rb.code === 4) fs.appendFileSync(TOR_ABGELEHNT, `${k.pid}\t${new Date().toISOString().slice(0, 10)}\tschnitt ${rb.code}: ${rb.grund}\n`);
+      if (rb.code === 3 || rb.code === 4) { fs.appendFileSync(TOR_ABGELEHNT, `${k.pid}\t${new Date().toISOString().slice(0, 10)}\tschnitt ${rb.code}: ${rb.grund}\n`); quelleMerken(`schnitt-${rb.code}`); }
       continue;
     }
     st = rb.st;
@@ -769,7 +890,7 @@ for (const k of reihe) {
     const tor = torPruefen(out, k.price);
     if (tor.rc !== 0) {
       console.log(`   ⛔ Meisterwerk-Tor: ${tor.gruende.join(' · ')} → nicht in die Queue`);
-      if (tor.rc === 4) fs.appendFileSync(TOR_ABGELEHNT, `${k.pid}\t${new Date().toISOString().slice(0, 10)}\t${tor.gruende.join(' · ')}\n`);
+      if (tor.rc === 4) { fs.appendFileSync(TOR_ABGELEHNT, `${k.pid}\t${new Date().toISOString().slice(0, 10)}\t${tor.gruende.join(' · ')}\n`); quelleMerken('meisterwerk-4'); }
       continue;
     }
     const datei = `reel_${k.pid}.mp4`;
@@ -801,12 +922,12 @@ for (const k of reihe) {
     appendReel(`cjreel-${k.pid}`, url, cap, tags, 'instagram,facebook');
     // 13.10.2026 (R1 Schritt 6): BEIDE Schlüssel ins gebaut-Ledger — Kennung und echte pid
     fs.appendFileSync(LEDGER, k.pid + '\n' + (k.cjpid !== k.pid ? k.cjpid + '\n' : '')); gebaut.add(k.pid); gebaut.add(k.cjpid);
-    fs.writeFileSync('/tmp/_reel_last_music', musik); musikMerken(`cjreel-${k.pid}`, mw, th, st);
-    gitPush([CSV, LEDGER, KEINVIDEO, VERLAUF], `Reel-Queue: ${k.pid} ready`);
+    fs.writeFileSync('/tmp/_reel_last_music', musik); musikMerken(`cjreel-${k.pid}`, mw, th, st); quelleMerken('ready');
+    gitPush([CSV, LEDGER, KEINVIDEO, VERLAUF, QUELLE_LOG], `Reel-Queue: ${k.pid} ready (Quelle ${quelleTxt})`);
     made++; console.log(`   ✅ Reel ${made}/${BATCH} → queue (${url.slice(-40)})`);
   } catch (e) { console.log('   Fehler:', String(e.message || e).slice(0, 120)); }
-  finally { fs.rmSync(src, { force: true }); fs.rmSync(out, { force: true }); fs.rmSync(`/tmp/reelbuild/vo_${k.pid}.wav`, { force: true }); }
+  finally { fs.rmSync(src, { force: true }); fs.rmSync(srcCj, { force: true }); fs.rmSync(out, { force: true }); fs.rmSync(`/tmp/reelbuild/vo_${k.pid}.wav`, { force: true }); }
 }
 if (!DRY) sqAuftrag(zumServer);
-if (!DRY && fs.existsSync(KEINVIDEO)) gitPush([KEINVIDEO, ...(fs.existsSync(TOR_ABGELEHNT) ? [TOR_ABGELEHNT] : [])], 'Reel-Motor: kein-Video- und Tor-Ledger');
+if (!DRY && fs.existsSync(KEINVIDEO)) gitPush([KEINVIDEO, ...[TOR_ABGELEHNT, QUELLE_LOG].filter(f => fs.existsSync(f))], 'Reel-Motor: kein-Video- und Tor-Ledger');
 console.log(`FERTIG. neue Reels: ${made} | nachgetragen: ${nachgetragen} | CJ gefragt: ${gefragt} | Kandidaten: ${kand.length}`);

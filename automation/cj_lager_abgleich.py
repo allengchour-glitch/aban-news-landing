@@ -35,6 +35,19 @@ EXPORT = "/tmp/cj_lager_export.jsonl"
 DRY = os.environ.get("DRY") == "1"
 CAP = int(os.environ.get("CAP", "1500"))
 RECHECK_S = int(os.environ.get("RECHECK_TAGE", "7")) * 86400
+# 13.10.2026 (Hetzner-Plan Schritt 2, GEMESSEN): 16'564 «ok»-Prüfungen vom 07.10. wurden gleichzeitig fällig (bis 2'307/h,
+# ~146'000 Punkte = mehr als ein Tagestopf) → fester Versatz je Produkt 0–7 Tage (crc32, auf Server und Cloud gleich; Pythons
+# hash() ist je Prozess zufällig). Besuchte Landeseiten bleiben schneller dran (2 Tage).
+STREU_TAGE = int(os.environ.get("STREU_TAGE", "8"))
+BESUCHT_S = int(os.environ.get("BESUCHT_TAGE", "2")) * 86400
+
+
+def recheck_s(pid, besucht=False):
+    """Prüfabstand je Produkt: besucht → 2 T, sonst 7 T + stabiler Versatz 0–7 T (verteilt einen Prüf-Berg über eine Woche)."""
+    import zlib
+    if besucht:
+        return BESUCHT_S
+    return RECHECK_S + (zlib.crc32(str(pid).encode()) % max(1, STREU_TAGE)) * 86400
 
 
 def kern(sku):
@@ -213,7 +226,8 @@ def main():
         prio = {l.split("\t")[0] for l in open(os.path.join(REPO, "dropship", "_besuchte_seiten_geprueft.tsv"), encoding="utf-8")}
     except Exception:
         pass
-    arbeit = sorted((pid for pid, p in P.items() if p.get("v") and jetzt - zuletzt.get(pid, 0) > RECHECK_S),
+    arbeit = sorted((pid for pid, p in P.items()
+                     if p.get("v") and jetzt - zuletzt.get(pid, 0) > recheck_s(pid, P[pid].get("handle") in prio)),
                     key=lambda pid: (P[pid].get("handle") not in prio, zuletzt.get(pid, 0)))[:CAP]
     print(f"CJ-Ware aktiv {len(P)} · fällig {len(arbeit)} (CAP {CAP}) · eigene DENY {len(eigene)} · {'DRY' if DRY else 'SCHARF'}", flush=True)
     stat = collections.Counter(); bsp = []; geprueft_format = False

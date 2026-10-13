@@ -462,3 +462,8 @@
 2026-10-13T18:34:52.854Z	luxe-epic-hero.wav	43	allgemein	cjreel-CJYDQTJM00295-Black-L	stimme:nein	anteil
 2026-10-13T18:39:09.824Z	luxe-epic-anime.wav	4.75	allgemein	cjreel-CJYD189137001AZ	stimme:ja	azure:de-CH-JanNeural
 2026-10-13T19:25:19.442Z	luxe-epic-hybrid.wav	37.5	kinder	cjreel-CJBB106954801AZ	stimme:nein	anteil
+2026-10-13T19:29:45.106Z	luxe-orchestra.wav	18	mode	cjreel-CJJJCFCF00248-Blue3	stimme:ja	azure:de-CH-JanNeural
+2026-10-13T19:30:44.000Z	luxe-epic-elegant.wav	39.5	allgemein	bildreel-rizinusol-wickel-wiederverwendbar-bauch-nacken	stimme:nein	anteil	quelle:bild
+2026-10-13T19:32:13.327Z	luxe-epic-winter.wav	34	mode	cjreel-CJLY303917302BY	stimme:ja	azure:de-CH-JanNeural
+2026-10-13T19:32:34.000Z	luxe-epic-winter.wav	34.0	mode	bildreel-hoodie-jogginghose-set-im-partnerlook-637400	stimme:ja	azure:de-CH-JanNeural	quelle:bild
+2026-10-13T19:36:02.000Z	luxe-epic-winter.wav	34.0	mode	bildreel-damen-strickpullover-mit-herzmuster-reissversc-602300	stimme:nein	anteil	quelle:bild

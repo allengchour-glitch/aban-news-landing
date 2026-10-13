@@ -20,6 +20,10 @@
  *      also genau wie ein Durchschnitts-Hook (v1: jeder gemessene Hook schlug jeden ungetesteten, auch ein schwacher).
  *   6. Musik und Stimme als Merkmal aus social/_musik_verlauf.txt (Reel-ID in Spalte 5), verknüpft über
  *      automation/reels_seed.csv (post_url = IG-Permalink bzw. «tiktok:…/video/<id>»).
+ *   7. (13.10.2026, R2 A/B-Test) Quelle des Reels: «bild» (bildreel-…, reel/bild_reel.py) oder «video» (cjreel-…) — aus Spalte 8
+ *      des Verlaufs («quelle:bild»), sonst aus dem Präfix der Reel-ID, bei Posts ohne Reel-ID (YouTube, FB) über den Produkt-Handle
+ *      der Caption, wenn genau eine Quelle dieses Produkt in der Queue hat. «quelle_je_kanal» = Median-Score je Kanal und Quelle,
+ *      nur Posts ab 48 h — daran misst bild_reel_auswahl.py die Abbruchregel (Bild < 0,7 × Video).
  * Score (unverändert): Reichweite + 3·Likes + 5·Kommentare + 5·Speichern + 5·Teilen + 0,2·Views (IG);
  *   TikTok: Views + 3·Likes + 5·Kommentare + 5·Teilen; Pinterest: Impressionen + 5·Merken + 3·Pin-Klicks + 10·Ausgehende Klicks.
  *
@@ -104,6 +108,8 @@ function parseCsv(text) {
   return rows;
 }
 const reelVon = new Map();      // 'ig:<shortcode>' | 'igid:<media-id>' | 'tt:<videoId>' → {id, caption}
+const handleQuellen = new Map(); // Produkt-Handle → Set der Reel-Quellen in der Queue (bild|video) — für Posts ohne Reel-ID
+const quelleVonId = id => /^bildreel-/.test(id || '') ? 'bild' : /^cjreel-/.test(id || '') ? 'video' : null;
 const reelCaption = new Map();  // Reel-ID → Caption aus der Queue (Hook = erste Zeile, Wahrheit des Motors)
 try {
   const rows = parseCsv(fs.readFileSync('automation/reels_seed.csv', 'utf8'));
@@ -111,6 +117,8 @@ try {
   for (const r of rows.slice(1)) {
     const id = (r[ix.id] || '').trim(), pu = r[ix.post_url] || ''; if (!id) continue;
     reelCaption.set(id, r[ix.caption] || '');
+    const q = quelleVonId(id), hq = id.startsWith('bildreel-') ? id.slice(9) : handleVon(r[ix.caption] || '');
+    if (q && hq) (handleQuellen.get(hq) || handleQuellen.set(hq, new Set()).get(hq)).add(q);
     for (const m of pu.matchAll(/instagram\.com\/(?:reel|reels|p)\/([\w-]+)/g)) reelVon.set('ig:' + m[1], id);
     for (const m of pu.matchAll(/tiktok\.com\/@[^/\s]+\/video\/(\d+)/g)) reelVon.set('tt:' + m[1], id);
     const nackt = /^\s*(\d{15,20})\s*$/.exec(pu); if (nackt) reelVon.set('igid:' + nackt[1], id);
@@ -125,7 +133,8 @@ let verlaufZeilen = 0;
 if (fs.existsSync(VERLAUF)) {
   for (const z of fs.readFileSync(VERLAUF, 'utf8').split('\n')) {
     const f = z.split('\t'); if (f.length < 5 || !f[4]) continue; verlaufZeilen++;
-    const e = { t: Date.parse(f[0]) || 0, musik: (f[1] || '').split('/').pop(), thema: f[3] || '', stimme: /stimme:ja/.test(f[5] || '') ? 'mit Stimme' : (f[5] ? 'ohne Stimme' : null) };
+    const e = { t: Date.parse(f[0]) || 0, musik: (f[1] || '').split('/').pop(), thema: f[3] || '', stimme: /stimme:ja/.test(f[5] || '') ? 'mit Stimme' : (f[5] ? 'ohne Stimme' : null),
+      quelle: (/^quelle:(\w+)/.exec(f[7] || '') || [])[1] || null };
     (musikZeilen.get(f[4]) || musikZeilen.set(f[4], []).get(f[4])).push(e);
   }
 }
@@ -203,8 +212,12 @@ if (MC) {
     const alsUtc = Date.UTC(+g.year, +g.month - 1, +g.day, +g.hour, +g.minute, +g.second);
     return roh - (alsUtc - roh);
   };
-  // 09.10.2026: Instagram über Metricool, wenn die Graph-API nichts geliefert hat (Meta-Datenzugang seit 05.10. aus)
-  if (!quellen.instagram) {
+  // 09.10.2026: Instagram über Metricool (Meta-Datenzugang seit 05.10. aus)
+  // 13.10.2026 (R2): die Graph-API liefert seit dem Ende des Meta-Datenzugangs (05.10.) nur noch alte Posts — mit «nur wenn die
+  // Graph-API nichts liefert» fehlten alle IG-Posts ab 06.10. (GEMESSEN: Bild-Reel «Provence» 06.10. fehlte, Graph 136 Posts).
+  // Jetzt immer Metricool dazu; Posts, die die Graph-API schon hat (gleicher Kurzcode), zählen nicht doppelt.
+  const igSchon = new Set(obs.filter(o => o.kanal === 'instagram').map(o => kurzcode(o.url)).filter(Boolean));
+  {
     for (const [ep, fmt] of [['posts/instagram', null], ['reels/instagram', 'reel']]) {
       for (const p of await mc(ep)) {
         const t = mcZeit(p.publishedAt); if (!t || t < AB) continue;
@@ -212,6 +225,8 @@ if (MC) {
         const format = fmt || (/CAROUSEL/.test(p.type || '') ? 'karussell' : 'bild');
         const reach = Number(p.reach || 0), likes = Number(p.likes || 0), comments = Number(p.comments || 0), saved = Number(p.saved || 0), shares = Number(p.shares || 0), views = Number(p.views || 0);
         const kc = kurzcode(p.url);
+        if (kc && igSchon.has(kc)) continue;
+        if (kc) igSchon.add(kc);
         obs.push({ kanal: 'instagram', format, t, caption: p.content || '', reach, likes, comments, saved, shares, views,
           score: reach + 3 * likes + 5 * comments + 5 * saved + 5 * shares + 0.2 * views, url: p.url || '', reelId: (kc && reelVon.get('ig:' + kc)) || null });
         quellen.instagram++;
@@ -244,6 +259,13 @@ if (MC) {
   }
 } else if (process.env.METRICOOL !== '0') quellen.fehler.push('Metricool: kein Token (Env oder /tmp/metricool.env) → nur Instagram');
 
+// Quelle je Reel-Beobachtung (R2): Reel-ID-Präfix, sonst eindeutiger Produkt-Handle der Caption (YouTube/FB tragen keine Reel-ID)
+for (const o of obs) {
+  if (o.format !== 'reel') continue;
+  const vq = o.reelId ? (musikZeilen.get(o.reelId) || []).map(e => e.quelle).find(Boolean) : null;
+  const hq = handleQuellen.get(handleVon(o.caption) || '');
+  o.quelle = vq || quelleVonId(o.reelId) || (hq && hq.size === 1 ? [...hq][0] : null);
+}
 const reif = obs.filter(o => JETZT - o.t >= MIN_ALTER_H * 3600000);
 const zuJung = obs.length - reif.length;
 if (!reif.length) { console.log('Keine auswertbaren Posts (Token/Netz?) → nichts gelernt.', quellen.fehler.join(' · ')); process.exit(0); }
@@ -290,6 +312,7 @@ for (const c of inhalte.values()) {
   // ohne Zeilenumbrüche — dort gäbe «erste Zeile» den ganzen Text.
   c.hook = istReel ? hookVon(queueCap || igCap) : null;
   c.musik = mz?.musik || null; c.stimme = mz?.stimme || null; if (mz) musikVerknuepft++;
+  c.quelle = istReel ? (mz?.quelle || quelleVonId(reelId) || c.obs.find(o => o.quelle)?.quelle || null) : null;
 }
 
 // ---------------------------------------------------------------- Gewichte mit n
@@ -310,6 +333,11 @@ const themen = gruppe(C, c => c.thema);
 const hooksDetail = gruppe(C, c => c.hook);
 const musik = gruppe(C, c => c.musik);
 const stimme = gruppe(C, c => c.stimme);
+const quelle = gruppe(C, c => c.quelle);
+// A/B-Rohwerte je Kanal und Quelle (Posts ab 48 h): Median des Kanal-Scores — Abbruchregel in bild_reel_auswahl.py
+const quelleJeKanal = {};
+for (const o of reif.filter(o => o.quelle && JETZT - o.t >= 48 * 3600000)) { const k = `${o.kanal} ${o.quelle}`; (quelleJeKanal[k] ||= []).push(o); }
+for (const [k, l] of Object.entries(quelleJeKanal)) quelleJeKanal[k] = { n: l.length, median_score: rund(median(l.map(o => o.score)), 1), median_views: rund(median(l.map(o => o.views)), 1) };
 const zeitfenster = gruppe(reif, o => `${o.kanal} ${block(o.t)}`);
 // 04.10.2026 (Betreiber «hastag auch setzten für mehr follower»): Hashtags je Post gemessen — jeder Tag eines Posts
 // bekommt dessen ln(rel). IG erlaubt seit 12/2025 nur 5 Tags; welche 5, entscheidet diese Tabelle (hashtag_wahl in lib/hashtags.mjs).
@@ -329,7 +357,7 @@ const ergebnis = {
   inhalte: C.length, posts: reif.length,
   musik_verlauf: { zeilen: verlaufZeilen, verknuepfte_inhalte: musikVerknuepft },
   quellen_fehler: quellen.fehler,
-  hooks, hooks_detail: hooksDetail, themen, zeitfenster, formate: formatTabelle, musik, stimme, hashtags,
+  hooks, hooks_detail: hooksDetail, themen, zeitfenster, formate: formatTabelle, musik, stimme, hashtags, quelle, quelle_je_kanal: quelleJeKanal,
 };
 
 // ---------------------------------------------------------------- Ausgabe
@@ -355,6 +383,9 @@ const md = [
   ...tabelle('Hooks (Top 12)', hooksDetail, false, 12).slice(2),
   `### Musik und Stimme`, '', verlaufZeilen ? `${musikVerknuepft} Inhalte mit Musik aus \`${VERLAUF}\` verknüpft (${verlaufZeilen} Verlaufszeilen).` : `\`${VERLAUF}\` fehlt oder ist leer — Musik/Stimme werden verknüpft, sobald der Reel-Motor Zeilen schreibt.`, '',
   ...(Object.keys(musik).length ? tabelle('Musik', musik).slice(2) : []), ...(Object.keys(stimme).length ? tabelle('Stimme', stimme).slice(2) : []),
+  `### Quelle: Bild- gegen Video-Reel (A/B-Test R2)`, '', ...(Object.keys(quelle).length ? tabelle('Quelle', quelle).slice(2) : ['_Noch keine Reels mit Quelle._', '']),
+  ...(Object.keys(quelleJeKanal).length ? ['| Kanal Quelle (Posts ≥ 48 h) | n | Median-Score | Median-Views |', '|---|---:|---:|---:|',
+    ...Object.entries(quelleJeKanal).sort().map(([k, v]) => `| ${k} | ${v.n} | ${v.median_score} | ${v.median_views} |`), ''] : []),
   '### Formate (roher Median-Score je Kanal)', '', '| Kanal Format | n | Median-Score |', '|---|---:|---:|',
   ...Object.entries(formatTabelle).map(([k, v]) => `| ${k} | ${v.n} | ${v.median_score} |`), '',
   '## Stärkste 5 (gegen den eigenen Kanal-Median)', ...beste.slice(0, 5).map(postZeile), '',
@@ -368,6 +399,7 @@ console.log(`Themen: ${kurz(themen, 10)}`);
 console.log(`Belastbare Hooks für den Reel-Motor: ${Object.keys(hooks).length ? Object.entries(hooks).map(([k, v]) => `${k} ${v}`).join(' · ') : 'keiner (alle n < ' + MIN_N + ') → Motor wählt neutral'}`);
 console.log(`Zeitfenster belastbar: ${kurz(Object.fromEntries(Object.entries(zeitfenster).filter(([, v]) => v.belastbar)), 8) || '—'}`);
 console.log(`Musik: ${verlaufZeilen ? `${musikVerknuepft} verknüpft · ${kurz(musik, 6)}` : 'Verlauf fehlt'}`);
+console.log(`Quelle (A/B): ${kurz(quelle, 4) || '—'} · je Kanal ≥ 48 h: ${Object.entries(quelleJeKanal).sort().map(([k, v]) => `${k} n=${v.n} Median ${v.median_score}`).join(' · ') || '—'}`);
 if (alt?.themen) console.log(`Vorher (v1) Themen: ${Object.entries(alt.themen).map(([k, v]) => `${k} ${typeof v === 'number' ? v : v.gewicht}`).join(' · ')}`);
 if (quellen.fehler.length) console.log('Lücken:', quellen.fehler.join(' · '));
 if (DRY) { console.log('\n[DRY] nichts geschrieben. Bericht wäre:\n'); console.log(md); process.exit(0); }

@@ -45,6 +45,9 @@ while true; do
   if [ -n "${AZURE_SPEECH_KEY:-}" ]; then export STIMME_MOTOR=azure STIMME_ANTEIL="${STIMME_ANTEIL:-0.5}"; else export STIMME_ANTEIL=0; fi
   # 23.09.: LAUTHEIT_2PASS=1 — der einstufige Weg schrieb AAC 96 kHz Mono (loudnorm gibt 192 kHz aus); zweistufig = -14 LUFS, 48 kHz Stereo.
   LAUTHEIT_2PASS=${LAUTHEIT_2PASS:-1} BATCH=${BATCH:-3} /opt/node22/bin/node automation/cj_video_reel_engine.mjs
+  # 13.10.2026 (R2, A/B-Test Bild- gegen Video-Reels): danach höchstens 1 Bild-Reel je Durchlauf. Tagesdeckel (3 ready / 6 Renders),
+  # Gemini-Jury vor «ready» und die Abbruchregeln stehen im Skriptkopf; es baut nur im Container (nicht auf dem Server).
+  timeout 2400 python3 automation/bild_reel_auswahl.py --scharf --max 1 9>&- || true
   INDEX_CALLS=${INDEX_CALLS:-150} flock -n /tmp/cj_video_index.lock /opt/node22/bin/node automation/cj_video_index.mjs 9>&- || true
   sleep "${TAKT:-21600}" 9>&-
 done
