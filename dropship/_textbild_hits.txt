@@ -17947,3 +17947,5 @@ gid://shopify/Product/16616395112839	64->0	Tungsten-Steel PCB-Fräser mit Beschi
 gid://shopify/Product/16616395374983	16->0	Zinklegierungs-Haken-Entkoppler 9,5 m
 gid://shopify/Product/16616395440519	32->0	Universaler Scooter-Griff aus Canvas
 gid://shopify/Product/16616396816775	107->0	Ratschen-Crimpzange
+gid://shopify/Product/16610147008903	26->0	Transparente Karten-Aufbewahrungsbox
+gid://shopify/Product/16610281521543	20->1	Aluminium Kopfhörerständer mit Getränkehalter
