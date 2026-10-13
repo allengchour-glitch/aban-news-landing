@@ -1,4 +1,4 @@
-# CJ — bezahlbereite Auftraege (Stand 2026-10-13 09:33 UTC)
+# CJ — bezahlbereite Auftraege (Stand 2026-10-13 09:23 UTC)
 
 CJ-Guthaben: **$0.00**. ⚠️ **CJ nimmt Guthaben erst ab USD 2000 an** — der Bestell-Automat kann deshalb NICHT selbst bezahlen. Jeder Auftrag hier braucht einen Klick in der CJ-Konsole.
 
