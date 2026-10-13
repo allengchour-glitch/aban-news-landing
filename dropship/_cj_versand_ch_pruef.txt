@@ -7625,3 +7625,23 @@ usb-led-taschenlampe-extrem-hell-995841	-	-	-	unklar pid 1602002 Product has bee
 led-stirnlampe-super-hell-mit-bewegungssensor-877058	2043597803109928962	0	-	KEINE CH-Option → DRAFT	landeseite
 extrem-helle-taktische-led-taschenlampe-545282	2043597849526374402	0	-	KEINE CH-Option → DRAFT	landeseite
 superheller-led-handscheinwerfer-mit-usb-ladef-366594	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+moskitonetz-set-2-teilig-quadratisch-592898	1990708337594388481	0	-	KEINE CH-Option → DRAFT	landeseite
+moskitonetz-2-stk-rund-108097	1990708325099556865	0	-	KEINE CH-Option → DRAFT	landeseite
+camping-duschsack-blau-20-l-pvc-202241	1990700286711746561	0	-	KEINE CH-Option → DRAFT	landeseite
+hange-zelt-organizer-mit-stauraum-513410	1990499704474218497	0	-	KEINE CH-Option → DRAFT	landeseite
+moskitonetz-mit-uv-schutz-854785	1990499329042067457	0	-	KEINE CH-Option → DRAFT	landeseite
+aufbewahrungstasche-aus-oxford-gewebe-189889	1990499623385739266	0	-	KEINE CH-Option → DRAFT	landeseite
+radabdeckung-aus-oxford-gewebe-912769	1990499651567267841	0	-	KEINE CH-Option → DRAFT	landeseite
+moskitonetz-fur-sonnenschirm-626370	1990489346653478914	0	-	KEINE CH-Option → DRAFT	landeseite
+winter-warme-haussocken-mit-anti-rutsch-sohle-927808	1454754462106259456	16	7.43	ok	landeseite
+marmor-print-3-teiliger-bikini-853824	1646114206619545600	16	7.17	ok	landeseite
+grosser-rucksack-fur-business-reisen-272960	1806358167732244480	16	14.60	ok	landeseite
+feuchtigkeitspflege-fur-die-augenpartie-130944	1690633070828851200	3	5.30	ok	landeseite
+jungen-freizeit-set-baumwolle-langarmshirt-hos-092ff8	0DB5AC20-B81A-408E-8ACA-58A7405DAE7A	16	8.58	ok	landeseite
+babyflaschen-reinigungsset-aus-silikon-488768	1370182828783964160	16	6.17	ok	landeseite
+hundebett-sofa-5ede8d	1A2EDC80-D46B-4A6A-8E2A-6C611EA3EE36	16	26.68	ok	landeseite
+kaschmir-pullover-fur-haustiere-mit-zopfmuster-938304	1398838277800333312	16	6.48	ok	landeseite
+lassige-umhangetasche-fur-herren-874240	1397092867670937600	16	11.12	ok	landeseite
+mutze-mit-pferdeschwanz-offnung-551ed8	32BA3F6B-4389-47B2-AE8A-99F04D8D65D1	16	6.25	ok	landeseite
+langarm-sweatshirt-mit-totenkopf-print-17304a	12B76B70-61D1-402A-9312-C639BDA46479	16	8.79	ok	landeseite
+reise-organizer-fur-elektronik-zubehor-238464	1703055389639987200	0	-	KEINE CH-Option → DRAFT	landeseite
