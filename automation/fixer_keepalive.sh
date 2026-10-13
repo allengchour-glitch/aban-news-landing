@@ -2593,13 +2593,20 @@ KLT=/tmp/test_klingen_tor.log
   # als CN/US/UK — kein EU-Stecker (die #1018-Klasse). Kein EU -> DRAFT stecker-unpassend-ch;
   # EU vorhanden, aber unsere SKU ist nicht die EU-SKU -> NUR melden (STECKER-UNKLAR.md).
   # 10 CJ-Punkte je Produkt, deshalb CAP 150 je Tag; laeuft mit 1 req/s.
+  # 13.10.2026 (Gegenpruefung): Der Block stand seit 28.09. still — `grep -q "^FERTIG"` fand die ALTE Schlusszeile im
+  # angehaengten Log, also prueft er nie wieder etwas, auch keine Neuimporte; MAINS kannte «Ladestation/Charger/Adapter»
+  # nicht (217 ungepruefte Ein-Varianten-Produkte). Jetzt: TAEGLICH ein Lauf mit NEU_TAGE=3 (Neuimporte der letzten 3 Tage
+  # zuerst, direkt aus Shopify — der Export kann alt sein); solange die LETZTE Schlusszeile FORTSETZUNG ist, alle 12 h.
   CST=/tmp/cj_stecker_pruefen.log
   if [ -f "$REPO/automation/cj_stecker_pruefen.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$CST" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 43200 ] && ! grep -q "^FERTIG" "$CST" 2>/dev/null; then
+    CST_LETZT=$(grep -E "^(FERTIG|FORTSETZUNG)" "$CST" 2>/dev/null | tail -n 1)
+    if [ "$ALTER" -gt 86400 ] || { [ "$ALTER" -gt 43200 ] && [ "${CST_LETZT#FORTSETZUNG}" != "$CST_LETZT" ]; }; then
+      touch "$CST"   # Anspruch VOR dem Start (Lehre 21.09.)
       ( cd "$REPO" && setsid flock -n /tmp/lock_cj_stecker.lock \
-          env CAP=150 python3 automation/cj_stecker_pruefen.py >> "$CST" 2>&1 9>&- & )
-      echo "$(date -u +%H:%M) cj_stecker_pruefen gestartet"
+          env CAP=150 NEU_TAGE=3 python3 automation/cj_stecker_pruefen.py >> "$CST" 2>&1 9>&- & )
+      # Ergebnis des VORIGEN Laufs melden, nicht den Start (Lehre 15.09.)
+      echo "$(date -u +%H:%M) cj_stecker_pruefen gestartet (Einzel-Varianten + Neuimporte 3 T) · zuletzt: ${CST_LETZT:-—}"
     fi
   fi
   # 14.09. Task #76: die «unklar-eu-vorhanden»-Faelle des Pruefers deterministisch aufloesen —

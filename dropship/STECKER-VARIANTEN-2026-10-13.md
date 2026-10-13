@@ -164,3 +164,10 @@ Rückweg Titel: alter Wert «65W GaN Ladegerät mit US-Stecker».
 | `15454234542465` Zeitgesteuertes Regensystem Regensimulation | Langform | UK 2, US 2 | 2 |
 | `15450848428417` Flammen-Vulkan-Luftbefeuchter mit Aroma-Diffusor | Langform (Rest) | JP 2 | 2 |
 | `15449425379713` Ultraschall-Luftbefeuchter mit Aromatherapie | Langform (Rest) | CN 1 | 6 |
+
+## Nachtrag 18:30 UTC (Hauptsitzung): 3 Produkte ohne kaufbare Variante gedraftet
+
+- Vogelbad-Heizer 15448891392385 (nur US), Wärmende Augenmaske 15455824413057 (nur UK/US), Heizkamm 15478569304449 (CN/UK/AU/US).
+- Regel des Einzel-Varianten-Blocks: CJ hat keine EU-Version → DRAFT + Tag `stecker-unpassend-ch`. Sie galt hier genauso, auch wenn die Sperre über die Varianten lief.
+- Ledger: `dropship/_stecker_ohne_kaufbare_variante.tsv`.
+- Rückweg: Status ACTIVE und Tag entfernen. Das ist nur sinnvoll, wenn CJ eine EU-Variante anbietet.
