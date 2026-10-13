@@ -1,16 +1,16 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-13 11:10 UTC, Stand 2026-10-13 11:36 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-13 11:10 UTC, Stand 2026-10-13 11:37 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **7'213**
-- Optionen mit englischen Werten (Kandidaten): 878
+- Produkte gesehen: **7'811**
+- Optionen mit englischen Werten (Kandidaten): 920
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 4'131
+- Werte mit unbekanntem Wort (unverändert): 4'325
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
 - übersprungen «kleidungsstueck-im-wert»: 32
 - übersprungen «kollision-nach-uebersetzung»: 18
@@ -83,5 +83,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`light` 185, `degrees` 159, `⟨satzbau:adjektiv-vor-nomen⟩` 153, `color` 117, `shell` 74, `rope` 58, `core` 53, `hat` 46, `dark` 41, `case` 40, `acupuncture` 40, `high` 38, `lens` 38, `powder` 38, `opp` 38, `magnetic` 36, `generation` 36, `bag` 34, `no` 33, `surface` 31, `mother` 30, `adjustable` 29, `tea` 27, `suit` 27, `bear` 27, `to` 27, `mushroom` 27, `of` 26, `carbon` 26, `insert` 26, `⟨satzbau:nomen-vor-farbe⟩` 26, `crotch` 26, `cocoa` 25, `batteries` 24, `perforated` 24, `ice` 23, `face` 23, `milk` 23, `electric` 22, `one` 22, `housing` 22, `stone` 21, `belt` 21, `nail` 21, `three` 21, `bead` 21, `deer` 21, `yadan` 21, `handle` 20, `noodles` 20, `cloud` 20, `flame` 20, `comfortable` 20, `therapy` 20, `cervical` 20, `stretcher` 20, `number` 19, `background` 18, `⟨satzbau:material-vor-farbe⟩` 18, `father` 18
+`light` 185, `degrees` 159, `⟨satzbau:adjektiv-vor-nomen⟩` 155, `color` 118, `shell` 74, `rope` 61, `core` 53, `hat` 46, `high` 44, `dark` 41, `case` 40, `powder` 40, `acupuncture` 40, `lens` 38, `opp` 38, `magnetic` 36, `generation` 36, `bag` 34, `no` 33, `surface` 31, `bear` 30, `mother` 30, `eyelets` 30, `adjustable` 29, `carbon` 28, `tea` 27, `suit` 27, `to` 27, `mushroom` 27, `of` 26, `insert` 26, `⟨satzbau:nomen-vor-farbe⟩` 26, `crotch` 26, `cocoa` 25, `ice` 24, `batteries` 24, `perforated` 24, `face` 23, `milk` 23, `ring` 23, `three` 22, `electric` 22, `one` 22, `housing` 22, `stone` 21, `belt` 21, `nail` 21, `bead` 21, `deer` 21, `yadan` 21, `handle` 20, `noodles` 20, `cloud` 20, `flame` 20, `comfortable` 20, `therapy` 20, `cervical` 20, `stretcher` 20, `⟨satzbau:material-vor-farbe⟩` 19, `number` 19
 
