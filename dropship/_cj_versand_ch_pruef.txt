@@ -7990,3 +7990,14 @@ kompakte-hand-kaffeemaschine-fur-kapseln-pulve-934784	1851205156294512640	0	-	KE
 powerbank-10000-mah-mit-schnellladefunktion-795202	2048311393618595842	0	-	KEINE CH-Option → DRAFT	landeseite
 mini-powerbank-5000mah-mit-20w-fast-charge-672130	2045400942546444289	0	-	KEINE CH-Option → DRAFT	landeseite
 solar-powerbank-10-000-mah-wasserdicht-076161	2045395743268179970	0	-	KEINE CH-Option → DRAFT	landeseite
+powerbank-10-000-mah-2x-usb-476993	2045393152186552321	0	-	KEINE CH-Option → DRAFT	landeseite
+magnetische-10000mah-powerbank-mit-20w-967745	2044607361200517122	0	-	KEINE CH-Option → DRAFT	landeseite
+tragbarer-hd-mini-projektor-mit-ausziehbarem-s-615809	2045397744586776577	0	-	KEINE CH-Option → DRAFT	landeseite
+fussmassagegerat-mit-heiz-und-vibrationsfunkti-998081	1998944596617187329	0	-	KEINE CH-Option → DRAFT	landeseite
+wasser-dumbbell-899136	1380823048986431488	16	8.53	ok	landeseite
+2er-set-kuhlhandtucher-blau-grun-834433	2074708079249440770	0	-	KEINE CH-Option → DRAFT	landeseite
+200-komprimierte-einwegtucher-fur-reisen-haush-445378	2074708120024051714	0	-	KEINE CH-Option → DRAFT	landeseite
+rosegold-glattburste-fur-geschmeidiges-haar-222786	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+gold-gel-nagelmaschine-fur-zuhause-795521	2074707417568624641	0	-	KEINE CH-Option → DRAFT	landeseite
+2-stockiges-ausziehregal-mit-haken-bechern-298370	2074708281951899650	0	-	KEINE CH-Option → DRAFT	landeseite
+20er-set-kochmutzen-aus-papier-verstellbar-539905	2074708198262951937	0	-	KEINE CH-Option → DRAFT	landeseite

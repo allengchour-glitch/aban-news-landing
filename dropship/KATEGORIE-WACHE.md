@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-13T12:07Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-13T13:03Z
 
-Aktive gescannt: 20 · ohne Kategorie: 20 · heute gesetzt: 12 (SCHARF, CAP 1500) · danach offen: 8 · Fehler: 0
+Aktive gescannt: 12 · ohne Kategorie: 12 · heute gesetzt: 4 (SCHARF, CAP 1500) · danach offen: 8 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -11,9 +11,8 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- minimalistische-wandlese-fur-leselicht-638900 · Beleuchtung → Home & Garden > Lighting
-- satinbedeckte-halbsandale-mit-flachem-absatz-100928 · Damenschuhe → Apparel & Accessories > Shoes
-- windseil-licht-10-2-1-5-cm-626700 · Beleuchtung → Home & Garden > Lighting
-- polka-dot-bogen-sandalen-damen-669248 · Damenschuhe → Apparel & Accessories > Shoes
-- tischlampe-mit-blattform-632300 · Beleuchtung → Home & Garden > Lighting
+- platform-ketten-slipper-fur-damen-068480 · Damenschuhe → Apparel & Accessories > Shoes
+- puff-high-heel-sandalen-484864 · Damenschuhe → Apparel & Accessories > Shoes
+- retro-slip-on-ankle-boots-in-drei-farben-617200 · Damenschuhe → Apparel & Accessories > Shoes
+- wedge-stiefel-mit-fellbesatz-621200 · Damenschuhe → Apparel & Accessories > Shoes
 
