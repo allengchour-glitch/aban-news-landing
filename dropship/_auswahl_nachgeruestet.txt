@@ -1797,3 +1797,4 @@
 16616529854855	Farbe:5:5	2026-10-13	grosser-outdoor-rucksack-mit-usb-anschluss-e151da
 16616529822087	Farbe:6:6	2026-10-13	sportarmtasche-5-5-zoll-e3fa27
 16616529789319	Farbe:5:5	2026-10-13	sporttasche-wasserdicht-62a38e
+16616529658247	Muster:6:6+ki	2026-10-13	outdoor-rucksack-36-55-l-camouflage-b5c2d3
