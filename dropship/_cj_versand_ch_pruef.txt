@@ -8380,3 +8380,5 @@ herren-mesh-wide-toe-casual-laufschuhe-607300	2607030805001607900	16	13.27	ok	la
 herren-loafer-weiter-zehenbereich-636500	2607030557281637200	16	13.76	ok	landeseite
 sommerliche-canvas-schuhe-fur-herren-621400	2607030528541622000	16	14.00	ok	landeseite
 herren-canvas-loafers-im-beijing-stil-616200	2607030313541616900	16	13.40	ok	landeseite
+atmungsaktive-trainingsschuhe-fur-herren-604400	2607020817141605400	16	13.76	ok	landeseite
+unifarbene-freizeit-sneaker-622200	2607020733281622900	16	14.00	ok	landeseite
