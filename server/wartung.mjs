@@ -24,6 +24,7 @@ import { fileURLToPath } from 'node:url';
 const KLONE = ['/opt/abannews', '/opt/luxe-waechter/repo', '/opt/luxe-agent/repo', '/opt/luxe/repo'];
 const HIER = fileURLToPath(new URL('.', import.meta.url));
 const PLATTE_SKRIPT = `${HIER}platte-schlank.sh`;
+const ALT_CRON_SKRIPT = `${HIER}alt-cron-aus.sh`;
 
 /**
  * Quittungen landen in einem OEFFENTLICHEN Repo. Jede Ausgabe laeuft deshalb hier durch, bevor sie
@@ -208,6 +209,30 @@ export const AKTIONEN = {
       ['systemctl', ['is-active', 'luxe-platte.service']],
       ['journalctl', ['-u', 'luxe-platte.service', '--no-pager', '-n', '80', '-o', 'cat']],
       ['df', ['-h', '/']],
+    ],
+  },
+
+  // ── Zombie-Cron (13.10.2026, Betreiber: «mach du hetzner») ─────────────────
+  // GEMESSEN: root-Cron startete taeglich 04:00 UTC run-api-jobs.sh und alle 10 min vps-cmd-poll.sh aus dem toten
+  // Klon /opt/luxe/repo (Zweig claude/luxestyle-product-CizQ6, Stand 06.09.) — delivery_block.mjs schrieb jeden
+  // Morgen den alten USA-Lieferblock in bis zu 1'000 Produkte zurueck (dropship/ZOMBIE-CRON-2026-10-13.md).
+  // Abschalten = auskommentieren mit Marke, Sicherung der ganzen Crontab vorher (600, nie ueberschrieben);
+  // alt_cron_zurueck nimmt genau die Marke wieder weg. Das Skript gibt nur Zahlen aus; die Zeilen zeigt der
+  // zweite Schritt in der Allowlist-Form (crontabZeile) — Kommentarzeilen erscheinen dort gar nicht.
+  alt_cron_aus: {
+    was: 'root-Cron-Zeilen abschalten, die Code aus dem toten Klon /opt/luxe/repo starten (auskommentiert, Sicherung vorher)',
+    aendert: true,
+    schritte: [
+      ['/bin/bash', [ALT_CRON_SKRIPT]],
+      ['crontab', ['-l'], { weiter: true, filter: '/opt|luxe|abannews|jarvis', form: crontabZeile }],
+    ],
+  },
+  alt_cron_zurueck: {
+    was: 'Rueckweg zu alt_cron_aus: die Marke «#luxe-aus-toter-zweig» wieder entfernen',
+    aendert: true,
+    schritte: [
+      ['/bin/bash', [ALT_CRON_SKRIPT, '--zurueck']],
+      ['crontab', ['-l'], { weiter: true, filter: '/opt|luxe|abannews|jarvis', form: crontabZeile }],
     ],
   },
 

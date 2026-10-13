@@ -1,0 +1,24 @@
+{
+  "id": "alt-cron-aus-2026-10-13",
+  "typ": "wartung",
+  "aktion": "alt_cron_aus",
+  "warum": "Betreiber 13.10.2026 «mach du hetzner»: root-Cron startet täglich 04:00 UTC run-api-jobs.sh und alle 10 min vps-cmd-poll.sh aus dem toten Klon /opt/luxe/repo (Zweig CizQ6) — schreibt jeden Morgen den alten USA-Lieferblock in bis zu 1'000 Produkte. Befund: dropship/ZOMBIE-CRON-2026-10-13.md. Rückweg: Aktion alt_cron_zurueck.",
+  "stand": "ok",
+  "begonnen": "2026-10-13T07:45:43.000Z",
+  "dauer_s": 0,
+  "ergebnis": {
+    "aktion": "alt_cron_aus",
+    "was": "root-Cron-Zeilen abschalten, die Code aus dem toten Klon /opt/luxe/repo starten (auskommentiert, Sicherung vorher)",
+    "aendert": true,
+    "ausgaben": [
+      {
+        "befehl": "/bin/bash /opt/luxe-agent/repo/server/alt-cron-aus.sh",
+        "ausgabe": "Sicherung: /var/lib/luxe-agent/***.txt\naktiv mit /opt/luxe/repo: 0\nabgeschaltet (Marke): 2\n"
+      },
+      {
+        "befehl": "crontab -l",
+        "ausgabe": ""
+      }
+    ]
+  }
+}

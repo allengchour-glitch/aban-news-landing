@@ -75,14 +75,16 @@ t('crontab_luxe: nur Zeitfelder und Pfade (Allowlist)', () => {
   assert.equal(crontabZeile('*/5 * * * * /opt/x/ftp://u:p@h'), '*/5 * * * * …');   // Pfad mit Zugangsdaten → weg
 });
 t('nur Namen aus der Liste, nichts anderes', () => {
-  for (const a of ['platte', 'dienste_server', 'crontab_luxe', 'platte_schlank', 'platte_bericht', 'speicher']) assert.ok(ist_erlaubt(a), a);
+  for (const a of ['platte', 'dienste_server', 'crontab_luxe', 'platte_schlank', 'platte_bericht', 'speicher', 'alt_cron_aus', 'alt_cron_zurueck']) assert.ok(ist_erlaubt(a), a);
   for (const a of ['rm -rf /', 'platte; reboot', '__proto__', 'constructor', 'toString', '', null, undefined, ['platte']]) assert.ok(!ist_erlaubt(a), String(a));
   assert.throws(() => fuehre_wartung_aus('reboot'), /nicht erlaubt/);
 });
+// Shell nur fuer Aktionen, die genau EIN Skript aus server/ starten (Pfad unten geprueft)
+const SKRIPT_AKTIONEN = new Set(['platte_schlank', 'alt_cron_aus', 'alt_cron_zurueck']);
 t('jeder Schritt ist eine feste argv-Liste (keine Shell)', () => {
   for (const [name, a] of Object.entries(AKTIONEN)) for (const [befehl, argv, opt] of a.schritte) {
     assert.equal(typeof befehl, 'string', name); assert.ok(Array.isArray(argv), name);
-    assert.ok(!['sh', 'bash', '/bin/sh'].includes(befehl) || name === 'platte_schlank', `${name}: Shell als Befehl`);
+    assert.ok(!['sh', 'bash', '/bin/sh', '/bin/bash'].includes(befehl) || SKRIPT_AKTIONEN.has(name), `${name}: Shell als Befehl`);
     for (const x of argv) assert.equal(typeof x, 'string', `${name}: Argument kein String`);
     if (opt !== undefined) assert.equal(typeof opt, 'object', `${name}: Schritt-Optionen`);
   }
@@ -92,6 +94,14 @@ t('jeder Schritt ist eine feste argv-Liste (keine Shell)', () => {
   assert.ok(s[1].includes('--setenv=AUS_AGENT=1'), 'platte_schlank: AUS_AGENT fehlt');
   assert.ok(!AKTIONEN.platte_schlank.weiter, 'platte_schlank: weiter darf nicht gesetzt sein (Pruefer 23.09.)');
   assert.ok(!AKTIONEN.platte_schlank.schritte.some(([, a]) => a.includes('reset-failed')), 'reset-failed gestrichen');
+  // alt_cron_aus/-zurueck: genau EIN Skript aus server/, feste Argumente, Crontab nur in Allowlist-Form
+  for (const [name, arg] of [['alt_cron_aus', []], ['alt_cron_zurueck', ['--zurueck']]]) {
+    const [b, a] = AKTIONEN[name].schritte[0];
+    assert.equal(b, '/bin/bash', name);
+    assert.ok(a[0].endsWith('/server/alt-cron-aus.sh') && a.length === 1 + arg.length && a.slice(1).join() === arg.join(), `${name}: Skriptpfad/Argumente`);
+    assert.ok(AKTIONEN[name].aendert && !AKTIONEN[name].weiter, `${name}: aendert ja, weiter nein`);
+    assert.equal(AKTIONEN[name].schritte[1][2].form, crontabZeile, `${name}: Crontab nur in Allowlist-Form`);
+  }
   const j = AKTIONEN.dienste_server.schritte.find(([b]) => b === 'journalctl');
   assert.ok(!j[1].includes('-g') && !j[1].includes('-n') && j[2].filter, 'journalctl: Filter hier, nicht -g/-n');
 });

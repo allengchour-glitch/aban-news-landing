@@ -49,6 +49,19 @@
 
 
 
+## 🔥 Trendreihe: Regeln gelten für JEDES Mitglied, nicht nur bei der Aufnahme (2026-10-13 morgens, «mach bitte du alles weiter»)
+- Recherche 13.10. → neues Thema «Drehbares Gewürzregal» (Bestand 3 ab CHF 19); Pyjamas unter dem Preisboden, schwebende Regale 0.
+- Betreute Aufnahme: 2 Probeläufe, 10 von 23 Kandidaten wegen Bild abgelehnt (Werbetext EN, Bild ≠ Titel, Produkt unklar).
+  12 aufgenommen. Gesamtsicht: 5 ältere Mitglieder mit Bildtext (CN «带条形码», EN «USB charging», «UK») entfernt.
+- **Klasse:** 8 Mitglieder ohne `hype-seit` (Spielzeug, Partydeko, Kostüm, 1.-August-Lampions), Herkunft im Code unbekannt.
+  «Ohne Datum = von Hand = bleibt» liess sie für immer stehen. Jetzt prüft `abgelaufene_raeumen()` täglich jedes Mitglied
+  gegen RAUS_TYP/NICHT_STARTSEITE/bild-schwach/aktiv. Undatierte werden **zurückdatiert** (7 T Frist). Mit HEUTE als Datum
+  stand das Lampion-Set als «jüngste Aufnahme» auf Platz 12: Wer einen Zeitstempel nachträgt, bestimmt damit auch die Sortierung.
+- Der tägliche Lauf liest Bilder nicht → Neuaufnahme bleibt betreut (NUR_RAEUMEN im Aufseher). Die Gesamtsicht aller Mitglieder
+  gehört in jede betreute Runde, nicht nur der Bogen der ersten 24.
+- Judge.me: 5★ = 11'283 > 10'000 (page-Deckel 100). Sortier-/Filter-Parameter wirkungslos. «unklar» bleibt, ehrlich.
+  → `dropship/HYPE-REIHE-REGELN-2026-10-13.md`
+
 ## 🧟 Zombie-Cron auf dem Hetzner-Server: der tägliche USA-Lieferblock (2026-10-13 früh, Verbesserungsrunde 04:25)
 - **Seit Wochen** schrieb etwas jeden Morgen ab ~04:07 UTC den alten Block «Lieferzeit (je nach Land) … 🇺🇸 USA» zurück
   (13.10.: 746 Produkte 04:10–04:22, ~60/min, darunter die Top-Kleider Sirène und Aurora). Ursache: Die root-Crontab des
@@ -63,6 +76,9 @@
   hätte («Remote Shell Writes»). Danach lehnte er auch einen Lesebefehl auf den Entwurf ab. Nicht umgangen: Entwurf
   gelöscht, Befehl für den Betreiber in `dropship/ZOMBIE-CRON-2026-10-13.md`. Eine Server-Konfiguration zu ändern braucht
   die ausdrückliche Freigabe des Betreibers, auch über den eigenen Auftragskanal.
+- **Nachtrag 07:45:** Betreiber «mach du hetzner» → Aktion `alt_cron_aus` gebaut (Sicherung 600 + noclobber, Marke statt
+  Löschen, Rückweg `alt_cron_zurueck`, Tests 13/13, End-to-End mit Ersatz-Crontab) → Server-Quittung «aktiv 0, abgeschaltet 2».
+  Mit der Freigabe ging dieselbe Aktion durch. Weg für Server-Änderungen: fragen → Freigabe → feste Aktion mit Rückweg.
 - **Wächter:** Die Ampel `alter_lieferblock()` zählt live (`productsCount`, «je nach Land»), 04:45: 917. Steigt die Zahl
   jeden Morgen, läuft der Cron noch.
 - **Reparatur nach Besuch sortieren:** 163 beschädigte Seiten mit Besuch in 60 Tagen per `LISTE=` zuerst. Aurora und
@@ -20134,3 +20150,4 @@ Verschoben am 04.10.2026:
 - 2026-10-10 · 👨‍👩‍👧 **«weiter»: Search Console «familien-weihnachtspyjama» Pos. 26 (Saison bis Dez.), aber Auswahl «Gray-Father S», «Hat Print-S For Mother» (43 Optionen) — `tools/varianten_deutsch.mjs` (12.09.) lief nur EINMAL von Hand → strenger Aufsatz `familienset_werte.mjs` (kein engl. Rest/Code, Grössen gleich) = `familienset_auswahl.py` (Aufseher) = beide Importer; 13/0 Optionen («Grau · Papa S», Option «Ausführung & Grösse»), 21/0 Faktenblock-Zeilen «Farbe: Black-Father …» gestrichen; Übersetzer-Fehler «9 m»→«9 M» behoben; Runde 2: Kollektion `weihnachtspyjama-familie` (CH Nov. 3'600 Suchen, KD 0; 30 Sets, verlinkt), Regel war zu streng («Kinder 3 4» stand schon im Original) → 17/0.** Einmal-Werkzeug ≠ Klasse zu; Rohliste steht oft an zwei Orten → `dropship/FAMILIENSETS-AUSWAHL-2026-10-10.md`  ← (aus dem CLAUDE.md-Index verschoben am 12.10. 16:40)
 - 2026-10-10 · 🛒 **Betreiber leitete Sidekick-Empfehlungen weiter → Kaufweg am Handy wirklich gegangen (`tools/kaufweg_handy.mjs`, Chromium 390×844, Testadresse example.com): Preis erst bei y=910 (Brotkrumen 2 + Titel 3 Zeilen) → Handy-CSS, jetzt im 1. Bildschirm; Brotkrumen «Geschenke › Sets» für Leinen-Set (Elternmenü ungeprüft) → «Damen-Mode»; Warenkorb «Cart»/«Auschecken» → deutsch; Kasse «Zustellung 20. Okt» vs Produktseite «26. Okt–9. Nov» = `processingTime` P1D, API kann nicht schreiben → Betreiber-Klick 3 Werktage (CJ versendet nach Median 2/max 5 Werktagen; Wächter `kassen_lieferdatum_wache.py` + Ampel); 3 Seiten (Sirène/Aurora/Provence) + Lieferumfang/Anlässe/Lieferung, EU-Tabelle XS–3XL bei S–XL-Kleid entfernt; Startseite: `damenmode-favoriten` (12) als 1. Reihe; `tools/werbetest_trichter.py` (utm_campaign): TikTok 548→8→**6 Kasse→0 Kauf**, ChatGPT 112→6→2→1.** Kassen-Datum ist ein Versprechen — mit der Produktseite abgleichen, bevor Geld in Werbung geht; **17:24 erledigt: Ursache Modus «Automatisiert» (ersetzt Transportzeit) → «Manuell» + 3 WT, Kasse 29. Okt–12. Nov; Sirène 49.90 ist versandfrei (Kassen-Schwelle 45)** → `dropship/KAUFWEG-HANDY-2026-10-10.md`, `dropship/WERBETEST-PLAN-2026-10-10.md`
 - 2026-10-10 · 🏷️ **«weiter»: Wichtel-Seite (OpenSEO 2'400/Mt, KD 0) — `kleine-geschenke-mitbringsel` war Preisregel <20 = 27'033, oben Werkzeug → Welt «wichtel» in `geschenk_unterwelten.py` (243, Schmuck ≤60), Titel/SEO/Text; dabei «Harrods Keramik-Tasse» (Logo, am 24.09. nur aus der Herbst-Reihe genommen, weiter aktiv + Google) → Klasse Fremdmarke als Ware: 277 Markentitel, fast alle Kompatibilität/Fortura-Lizenz, 16 am Bild geprüft → 3 Entwurf (Harrods, Fake-Xbox-Controller, «iPhone 12» = Smartwatch), 13 `marken-pruefen` (aus Google 13/0); `marke_als_ware.py/.mjs` + Regeldatei (60 Kanarien, py=js), Aufseher täglich, Sperre in 3 CJ-Importern (deutscher Titel); Kuratier-Fallen «Zündkerze» = Kerze, «Tassel» = Tasse; «Geschenke bis CHF 30» zeigte 9'259 statt 400 (Shopify rechnete seit 05.10. nicht um) → neu angelegt (`kollektion_neu_anlegen.py`), Wächter `kollektion_mitgliedschaft_wache.py` (Stichprobe nach Titel/Preis, nicht von vorne).** Fund in einer Auswahl = Warenurteil, nicht Auswahl-Regel → `dropship/MARKE-ALS-WARE-2026-10-10.md`, `dropship/WICHTEL-GESCHENKE-2026-10-10.md`
+- 2026-10-10 · 🎄 **«weiter»: OpenSEO CH «weihnachtspullover» 2'400 (+Damen 1'900/Herren 1'000/«ugly christmas sweater» 1'900), «handwärmer» 2'400, KD 0 → Kollektionen `weihnachtspullover` (41, ohne Tierkleidung) + `handwaermer` (12), verlinkt; Filter der neuen Seite zeigte «Haustierbedarf» → 49 Kleidungsstücke mit fremdem Typ (Dessous = «Spass-Elektronik», Jeansjacke = «Werkzeug») → `produkttyp_vereinheitlichen.py` Durchgang «Kleidung mit Fremdtyp» (aa-1/aa-8, Titel-Schutz Tasche/Matte/Sohle, Kostüme nie) 43/43, 5 gesperrt.** Filter-Facetten einer neuen Seite lesen; Titel entscheidet, ob Typ oder Kategorie falsch ist → `dropship/SAISON-KOLLEKTIONEN-2026-10-10.md`

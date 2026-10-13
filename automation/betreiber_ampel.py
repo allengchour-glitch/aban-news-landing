@@ -950,8 +950,11 @@ def alter_lieferblock():
         return f"LIEFERBLOCK ALT: unklar ({type(e).__name__})"
     if not c["count"]:
         return None
-    return (f"📦 LIEFERBLOCK ALT: {c['count']} aktive Produkte zeigen «je nach Land · USA» — alter Server-Cron "
-            "04:00 UTC (toter Klon /opt/luxe/repo) → Befehl in dropship/ZOMBIE-CRON-2026-10-13.md")
+    # 13.10. 07:45 UTC: Cron-Zeilen per Wartungsaktion alt_cron_aus abgeschaltet (Quittung auftraege/erledigt/
+    # alt-cron-aus-2026-10-13.json). Ab jetzt sinkt die Zahl nur noch (Reparatur versand_jenachland). Steigt sie nach
+    # 04:00 UTC wieder, schreibt ein ANDERER alter Job — dann Zeitpläne lesen (crontab_luxe, dienste_server).
+    return (f"📦 LIEFERBLOCK ALT: {c['count']} aktive Produkte zeigen «je nach Land · USA» — Reparatur läuft; "
+            "alter Server-Cron seit 13.10. aus. Steigt die Zahl wieder → dropship/ZOMBIE-CRON-2026-10-13.md")
 
 
 def offene_punkte():
