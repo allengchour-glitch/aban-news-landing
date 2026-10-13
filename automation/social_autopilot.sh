@@ -24,11 +24,11 @@ set -u
 cd "$(dirname "$0")/.." || exit 1
 NODE=/opt/node22/bin/node
 BILD_ABSTAND=${BILD_ABSTAND:-21600}      # 6 h zwischen zwei Bildposts
-REEL_ABSTAND=${REEL_ABSTAND:-28800}      # 8 h zwischen zwei Reels (Betreiber 22.09.: «täglich mehrmals überall»; vorher 48 h)
+REEL_ABSTAND=${REEL_ABSTAND:-43200}      # 12 h (13.10.2026, Betreiber «youtube sind super, pushe mehr»: IG-Reels Median 32 Aufrufe/14 T, FB-Reels 11, YouTube 183 — ein Reel-Platz wandert zu YouTube, der Reel-Vorrat (24 fertig, Nachschub 2–5/Tag) bleibt gleich belastet); davor 8 h (Betreiber 22.09.: «täglich mehrmals überall»; vorher 48 h)
 KARUSSELL_ABSTAND=${KARUSSELL_ABSTAND:-86400}   # 23.09.: 1 Instagram-Karussell je Tag (Betreiber «insta karusell brauchen»), FB-Album dazu
 TIKTOK_ABSTAND=${TIKTOK_ABSTAND:-21600}   # 6 h (06.10.2026, Betreiber «ja mach alles gratis sachen» auf «Pinterest zurück, frei werdende Posts auf TikTok am Abend»: 90 T TikTok Median 280 Aufrufe/Post, Pinterest 1); davor 8 h (27.09.2026, Betreiber «du bist metricool master … analysiert was am besten ist»: TikTok Median 272 Aufrufe/Post = bester Kanal; vorher 12 h)
 # 23.09.2026 «metricool maximal nutzen»: YouTube Shorts und Pinterest ueber denselben Metricool-Zugang.
-YOUTUBE_ABSTAND=${YOUTUBE_ABSTAND:-43200} # 12 h zwischen zwei YouTube Shorts (eigenes Reel je Post, Bestzeit-Planung)
+YOUTUBE_ABSTAND=${YOUTUBE_ABSTAND:-28800} # 8 h (13.10.2026, Betreiber «youtube sind super, pushe mehr»; GEMESSEN Metricool 14 T: 23 Shorts, Median 183 Aufrufe, Summe 6'409 = Platz 2 hinter TikTok 270); davor 12 h. Eigenes Reel je Post, Bestzeit-Planung
 PINTEREST_ABSTAND=${PINTEREST_ABSTAND:-172800}  # 48 h (06.10.2026: 176 Pins in 90 T, Median 1 Aufruf/Pin → Kraft zu TikTok); davor 24 h (27.09.2026: 44 Pins in 30 T = 55 Impressionen, 0 Klicks, 0 Merken → 1/Tag als Drossel-Test; vorher 6 h)
 MARKE_YOUTUBE=/tmp/_autopilot_letztes_youtube
 MARKE_PINTEREST=/tmp/_autopilot_letzter_pin
