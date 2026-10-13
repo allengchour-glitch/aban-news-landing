@@ -49,6 +49,19 @@
 
 
 
+## 🔎 «weiter»: Messrunden-Rest abgearbeitet (2026-10-13 vormittags)
+- **Menü** +3 (Weihnachtspullover, Handwärmer, Weihnachtspyjamas) per `menue_neue_kollektionen.py --saison`, Sicherung, 0 verlorene IDs.
+- **Mengenangabe:** «Über 2'000 Kostüme» bei 1'545 aktiven → `kollektion_mengen_wache` kannte das Nomen «Kostüme» nicht (jetzt Kanarien 15/15).
+- **Fremdlogos:** Kontaktbogen aller 113 Abendkleider. CHANEL-Tüte auf 8/12 Bildern → Entwurf. «MEIYINA»-Balken → sauberes
+  Variantenbild nach vorn, Markenbild entfernt.
+- **Masstabellen:** Die Tabelle zeigte «2XL», die Auswahl «XXL» (7/18). Verglichen wird normiert, angezeigt der Shop-Wert. Die Fussnote nennt
+  nur vorhandene Spalten.
+- **GSC als zweite Quelle für tote Seiten:** Shopify zählt 404-Landungen nicht als Sitzung → 44 tote Google-Seiten, die nie im
+  Wächter auftauchten. 9 strenge 301 gesetzt (Kategorie ≤ 3'000 aktive, Zwilling ≥ 0,70, Klingen nie), 24 offen. **Falle:** Das TITEL_ZIEL
+  «ladegeraete-powerbanks» gab es nie, und `kollektion_taugt()` lehnte still ab. Ein Ziel in einer Tabelle muss gegen den Bestand geprüft
+  werden, nicht nur beim Anlegen. **Gemessen:** Eine 301 auf /products/x greift auch auf /fr/products/x.
+  → `dropship/GSC-TOTE-SEITEN-2026-10-13.md`
+
 ## 🎭 Kostüme im Google-Kanal + Messrunde «Verkehr» (2026-10-13 vormittags, Verbesserungsrunde 08:25)
 - **Messrunde** (Workflow 5 Prüfer + 20 Skeptiker + Richter, nur lesend): Engpass = Verkehr. ChatGPT ist die beste Quelle
   (5,5 % Korb, Produktlandung 12 %, wächst 7 → 25–32/Woche). Die IndexNow-These ist WIDERLEGT: ChatGPT schickte Halloween-Besucher
@@ -20167,3 +20180,4 @@ Verschoben am 04.10.2026:
 - 2026-10-10 · 🏷️ **«weiter»: Wichtel-Seite (OpenSEO 2'400/Mt, KD 0) — `kleine-geschenke-mitbringsel` war Preisregel <20 = 27'033, oben Werkzeug → Welt «wichtel» in `geschenk_unterwelten.py` (243, Schmuck ≤60), Titel/SEO/Text; dabei «Harrods Keramik-Tasse» (Logo, am 24.09. nur aus der Herbst-Reihe genommen, weiter aktiv + Google) → Klasse Fremdmarke als Ware: 277 Markentitel, fast alle Kompatibilität/Fortura-Lizenz, 16 am Bild geprüft → 3 Entwurf (Harrods, Fake-Xbox-Controller, «iPhone 12» = Smartwatch), 13 `marken-pruefen` (aus Google 13/0); `marke_als_ware.py/.mjs` + Regeldatei (60 Kanarien, py=js), Aufseher täglich, Sperre in 3 CJ-Importern (deutscher Titel); Kuratier-Fallen «Zündkerze» = Kerze, «Tassel» = Tasse; «Geschenke bis CHF 30» zeigte 9'259 statt 400 (Shopify rechnete seit 05.10. nicht um) → neu angelegt (`kollektion_neu_anlegen.py`), Wächter `kollektion_mitgliedschaft_wache.py` (Stichprobe nach Titel/Preis, nicht von vorne).** Fund in einer Auswahl = Warenurteil, nicht Auswahl-Regel → `dropship/MARKE-ALS-WARE-2026-10-10.md`, `dropship/WICHTEL-GESCHENKE-2026-10-10.md`
 - 2026-10-10 · 🎄 **«weiter»: OpenSEO CH «weihnachtspullover» 2'400 (+Damen 1'900/Herren 1'000/«ugly christmas sweater» 1'900), «handwärmer» 2'400, KD 0 → Kollektionen `weihnachtspullover` (41, ohne Tierkleidung) + `handwaermer` (12), verlinkt; Filter der neuen Seite zeigte «Haustierbedarf» → 49 Kleidungsstücke mit fremdem Typ (Dessous = «Spass-Elektronik», Jeansjacke = «Werkzeug») → `produkttyp_vereinheitlichen.py` Durchgang «Kleidung mit Fremdtyp» (aa-1/aa-8, Titel-Schutz Tasche/Matte/Sohle, Kostüme nie) 43/43, 5 gesperrt.** Filter-Facetten einer neuen Seite lesen; Titel entscheidet, ob Typ oder Kategorie falsch ist → `dropship/SAISON-KOLLEKTIONEN-2026-10-10.md`
 - 2026-10-11 · 🎬 **«videos und bilder besser»: Reel-Motor auf `schnitt.py` umgestellt (`automation/reel/schnitt_motor.mjs`, Stimme danach gelegt) — Fremdmarke im Bild war drin, Hook auf Make-up-Reel falsch, Freisteller im Bild-Reel; Selbsttest 59/59 → Journal 11.10.**
+- 2026-10-11 · 💶 **Verkauf-Gewinn: Transfer-Varianten ohne EK (Verlustschutz blind) → EK 22.80, Preise 35.90; Ladestation 75.90; neue Wache `verkauf_gewinn_wache` hebt verkaufte Varianten auf CHF 12 Gewinn. Google Ads: 24 Sitzungen auf fremden Produkten → Betreiber → Journal 11.10.**
