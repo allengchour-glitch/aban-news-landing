@@ -5,6 +5,13 @@
 dieser Vorbereitung lautete trotzdem «Budget-Entscheid steht aus». Umgestellt wird deshalb erst im nächsten Schritt.
 Grundlage: Richter «mehr Käufer» Abschnitt 4A (`dropship/MEHR-KAEUFER-2026-10-13.md`).
 
+> **Nachtrag 13.10. ~22:40 UTC — scharf vorbereitet (Sitzung).** `dropship/_werbetest_aktiv.json` steht jetzt auf
+> `geschenke-test` (Start 14.10., Ende 21.10., CHF 10/Tag, Marge 21, Abbruch CHF 30 ohne Warenkorb, 13 `handles`).
+> Die Schreibsperre ist umgesetzt: `dropship/_werbetest_sperre.txt` (13 IDs, Ende 24.10.), gelesen von
+> `automation/werbetest_sperre.py` / `automation/lib/werbetest_sperre.mjs` in `cj_specs_backfill.mjs`, `auswahl_nachruesten.py`,
+> `geschenk_unterwelten.py`, `hype_kuratieren.py`, `nachfrage_liebling.py`, `variantenwert_ki.py` (Abschnitt 10).
+> Das Selbsttest-Tor von `variantenwert_ki.py` ist repariert (Abschnitt 8). Klickweg: Abschnitt «Für den Betreiber» unten.
+
 ## 1. Kurzfassung
 
 1. **13/13 aktiv, 13/13 im Kanal «Google & YouTube», 0/13 mit einer Meldung für CH** (GEMESSEN 21:05 UTC, `product.feedback`).
@@ -243,3 +250,138 @@ Quellen zum Format `shopify_ZZ_`:
 [Bidnamic: Shopify item ID changes](https://www.bidnamic.com/resources/shopify-item-id-changes-google-merchant-centre) ·
 [GoDataFeed Help Center](https://help.godatafeed.com/hc/en-us/articles/360042128851) ·
 [Google: Product and listing groups](https://support.google.com/merchants/answer/3517331)
+
+## 10. Umsetzung der Schreibsperre (13.10. ~22:40 UTC)
+
+**Datei** `dropship/_werbetest_sperre.txt`: Kopf `# ende: 2026-10-24` (Pflicht — ohne gültiges Ende gilt nichts), je Zeile
+Produkt-ID + Handle. Nach dem 24.10. (UTC) ignorieren alle Leser die Datei von selbst; aufräumen ist nicht nötig.
+**Leser:** `automation/werbetest_sperre.py` (`gesperrt(id|gid|handle)`, `gesperrte_ids()`) und `automation/lib/werbetest_sperre.mjs`
+(gleiche Regeln), Selbsttest je 17/17 (`--selbsttest`, inkl. Endtag, abgelaufen, fehlende Datei, fremder Handle).
+
+| Schreiber | was gesperrt wird | Nachweis (trocken, GEMESSEN 13.10. ~22:20 UTC) | Gegenprobe ohne Sperre |
+|---|---|---|---|
+| `cj_specs_backfill.mjs` | Faktenblock; keine Quittung → bleibt in der Prio-Liste, kommt nach dem 24.10. dran | `DRY=1 LIMIT=0`: 10 × «übersprungen (Werbetest-Sperre)» (Silberarmband zuerst), 0 CJ-Aufrufe | `WERBETEST_SPERRE=/nonexistent`: 0 übersprungen |
+| `auswahl_nachruesten.py` | Varianten-Umbau (kein MANUELL-Eintrag) | `CAP=0`: 18K, Retro, Silberarmband übersprungen (Elegante steht bis ~19.10. ohnehin in `_auswahl_manuell.tsv`) | – |
+| `geschenk_unterwelten.py` | `geschenkwelt-*`-Tags der 13 eingefroren (weder + noch −), nicht in die Reihenfolge | heute +0 −0 (eingefroren 6/5/5/3/7 mit Tag); provoziert mit `MAX_JE_WELT=40`: 14 Entfernungen übersprungen | gleicher Lauf ohne Sperre: 0 Hinweise |
+| `hype_kuratieren.py` | Aufnahme, Ablauf, Regelbruch, Rest-Räumen | Probe-Thema «Silberarmband\|Herrenholzarmbanduhr\|Retro-Damenuhr» (DRY, im Prozess): 3 übersprungen, fremdes «Kupferbeschichtetes Silberarmband» bleibt Kandidat | – |
+| `nachfrage_liebling.py` | Tag `nachfrage-liebling` + / − | `DRY=1`: **Sirène hätte den Tag heute VERLOREN** (unter Schwelle) → übersprungen | – |
+| `variantenwert_ki.py` | KI-Übersetzung der Varianten | `IDS=…Sonne & Mond`: Kandidat → «übersprungen»; `bearbeiten()` zweite Wache | ohne Sperre: Sonne & Mond ist Kandidat |
+
+**Nicht gesperrt (bewusst):** `besuchte_seiten_lieferbar.py` (DRAFT bei «nicht in die CH»), `cj_lager_abgleich.py` (DENY),
+`verkauf_gewinn_wache.py` / `preis_verlustschutz.py` — Lieferbarkeit und Preis gehen vor dem Kontingent.
+
+**Wache:** `python3 tools/werbetest_trichter.py --wache` prüft alle 13 Handles: fremde Landeseiten der Kampagne, Google-Meldung
+«Shopping ads [CH]», `updatedAt` seit Teststart. Heute: «Testprodukte 13/13 aktiv». Gegenprobe mit der alten Kampagne
+(sirene-test ab 10.10., Aurora): 25 Sitz. auf fremden Produkten, Aurora «nicht bewerbbar [CH]», Aurora geschrieben 13.10. 09:18 —
+alles bekannte Fakten, also misst sie richtig.
+
+### Eintragen (Dateien, die diese Sitzung nicht anfassen durfte)
+
+- `automation/betreiber_ampel.py` `werbetest()`: liest nur `handle` (ein String). Für `geschenke-test` steht absichtlich kein
+  `handle` in der JSON (sonst zählten 12 der 13 als «fremd»), damit fallen Fremd- und Kontingent-Prüfung dort weg. Zeile vor dem
+  `return`: `try: from werbetest_trichter import wache, zeile; regel += " · " + zeile(wache(w)).split(": ", 1)[1] if w.get("handles") else ""`
+  `except Exception: pass` — und vor dem Start (`heute < start`) «startet am …» statt «Tag 1 … 0 Sitzungen» melden.
+- `automation/variant_value_clean.py` (täglich, schreibt Optionswerte): Sonne & Mond hat 4 englische Werte («6012B All Black
+  Black Surface», «Gold Black Noodles» …), die die Tabelle heute NICHT übersetzt (`wert_de` = None, GEMESSEN) → heute kein
+  Schreiben. Wächst die Tabelle, wäre es eines. Zeile in der Schreibschleife:
+  `from werbetest_sperre import gesperrt; if gesperrt(pid): continue`.
+- `automation/styling_floskel_wache.py` (4 Schreibstellen, `productUpdate`): gleiche Zeile vor dem Schreiben. Heute nicht gemessen,
+  ob einer der 13 die Floskel trägt (VERMUTUNG: nein, alle 13 nach dem 23.09. importiert oder neu getextet).
+- `automation/hauptbild_ohne_text.py` (Hauptbild-Tausch): gleiche Zeile; ein Bildtausch wäre der teuerste Schreibvorgang
+  (Google prüft das Bild neu).
+- `automation/bildtext_pruefen.py`, `automation/auswahl_fehlt_messen.py`: 0 Produkt-Mutationen (gezählt) → kein Eintrag nötig.
+- Sitzungen / Routine «Autonome Verbesserungsrunde»: eine Zeile in CLAUDE.md «Aktueller Stand»: «Werbetest A bis 24.10.: die
+  13 Produkte in `dropship/_werbetest_sperre.txt` nicht schreiben; Helfer `automation/werbetest_sperre.py`».
+- Nicht auf der Liste, aber Schreiber ohne Sperre (heute 0/13 betroffen, Abschnitt 5c): `wahlversprechen.py` (Retro steht auf der
+  Arbeitsliste), `produktdetails_vereinen.py`, `produktdetails_wahrheit.py`, `such_boost.py`, `ig_gepostet_tags.py`,
+  `gfeed_anstupsen.py`, `alt_titel_abgleich.py` — Einbau je eine Zeile, falls die Ampel-Wache «geschrieben» meldet.
+
+## Für den Betreiber (Google Ads am Handy, ≈ 20 Min.)
+
+Am Handy im Browser **ads.google.com** öffnen und unten auf der Seite (oder im Browser-Menü) **«Desktop-Version»** wählen —
+die App kann Produktgruppen nicht unterteilen. Konto 719-826-3241.
+
+**1. Konto verknüpfen (Shopify, einmalig).** Shopify-Admin → **Vertriebskanäle → Google & YouTube** → **Einstellungen** →
+Abschnitt **«Dein Google-Konto»** / «Google Ads-Konto» → Konto **719-826-3241** wählen → **Verbinden**. Ohne diesen Schritt
+kommen Käufe nicht als Conversion zu Google zurück (bisher «übersprungen»). Steht dort schon ein Ads-Konto, nichts ändern.
+
+**2. Kampagne öffnen.** Google Ads → links **Kampagnen** → **«Sales-Shopping-1»** → Anzeigengruppe öffnen → links/oben
+**Produktgruppen**.
+
+**3. Nach Artikel-ID unterteilen.** Neben «Alle Produkte» auf **+** (bzw. das Stiftsymbol, wenn schon unterteilt — die alte
+Unterteilung nach Label «werbetest» vom 10.10. zuerst entfernen) → **«Alle Produkte» unterteilen nach: Artikel-ID**.
+Unten links **«Werte manuell im Bulk-Verfahren hinzufügen»** (falls angezeigt) → die 39 Zeilen unten einfügen → **Bestätigen**.
+Ist das Feld nicht da: im Suchfeld die Produkt-ID (die lange Zahl in der Mitte) eingeben und alle Treffer anhaken.
+→ **Fortfahren und Gebote überprüfen** → Gebot **0.50** für alle → **Speichern**.
+
+```
+shopify_zz_15450839286145_55889836212609
+shopify_zz_15450839286145_55889836245377
+shopify_zz_15450839286145_55889836278145
+shopify_zz_15450839286145_55889836310913
+shopify_zz_15450839286145_55889836343681
+shopify_zz_15450839286145_55889836376449
+shopify_zz_15450839286145_55889836409217
+shopify_zz_15450839286145_55889836441985
+shopify_zz_15450839286145_55889836474753
+shopify_zz_15454132961665_55907626090881
+shopify_zz_15449444057473_56054887448961
+shopify_zz_15449444057473_56054887481729
+shopify_zz_15455791907201_56069355995521
+shopify_zz_15455791907201_56069356028289
+shopify_zz_15455791907201_56069356061057
+shopify_zz_15455791907201_56069356093825
+shopify_zz_15480824037761_56005007442305
+shopify_zz_15454414111105_56067446145409
+shopify_zz_15454414111105_56067446178177
+shopify_zz_15454414111105_56067446210945
+shopify_zz_15454414111105_56067446243713
+shopify_zz_15454414111105_56067446276481
+shopify_zz_15454414111105_56067446309249
+shopify_zz_15454414111105_56067446342017
+shopify_zz_15454414111105_56067446374785
+shopify_zz_15495239106945_56087393239425
+shopify_zz_15497460810113_56099968450945
+shopify_zz_15465984491905_55951570862465
+shopify_zz_15449430851969_55881785901441
+shopify_zz_15412915110273_55747898114433
+shopify_zz_15412915110273_55747898147201
+shopify_zz_15412915110273_55747898179969
+shopify_zz_15412915110273_55747898212737
+shopify_zz_15412915110273_55747898245505
+shopify_zz_15412915110273_55747898278273
+shopify_zz_15412915110273_55747898311041
+shopify_zz_15412915110273_55747898343809
+shopify_zz_15493830443393_56080322724225
+shopify_zz_15453601890689_55903191204225
+```
+
+Gross-/Kleinschreibung: Ads zeigte die IDs am 10.10. klein (`shopify_zz_…`), das Merchant Center gross (`shopify_ZZ_…`).
+Meldet Ads eine Zeile als «nicht gefunden», die Zahl suchen statt der ganzen Zeile.
+
+**4. «Alles andere» ausschliessen.** In der Produktgruppen-Liste die Zeile **«Alles andere in ‹Alle Produkte›»** → in der
+Spalte «Max. CPC» auf den Wert tippen → **Ausgeschlossen** → **Speichern**. Diese Zeile lässt sich nicht löschen, nur
+ausschliessen. Am 10.10. lief genau sie mit — 25 Klicks auf fremde Ware.
+
+**5. Budget und URL-Suffix.** Kampagne → **Einstellungen** → **Budget: 10** (CHF/Tag) → Speichern. Dann
+**Kampagnen → Kampagnen → Tab «Einstellungen»** → bei «Sales-Shopping-1» in der Spalte **«Tracking-Vorlage»** das Stiftsymbol →
+Feld **«Suffix der finalen URL»**:
+
+```
+utm_source=google&utm_medium=cpc&utm_campaign=geschenke-test
+```
+
+→ **Speichern**. (Alternativ: Kampagne → Einstellungen → «Weitere Einstellungen» → «Kampagnen-URL-Optionen».)
+
+**6. Screenshot VOR dem Einschalten** an die Sitzung schicken. Richtig ist: 39 Zeilen «eingeschlossen» mit 0.50, 1 Zeile
+«Alles andere … Ausgeschlossen», Budget 10, Suffix wie oben.
+
+**7. Aktivieren.** Kampagne → Status **Aktiviert**. Kein Nachladen ohne neuen Entscheid; Abbruch bei CHF 30 ohne Warenkorb
+(die Ampel meldet «STOPP-REGEL»).
+
+Menüpfade geprüft am 13.10. gegen die Google-Ads-Hilfe: Produktgruppen unterteilen / Bulk-Werte
+([support.google.com/google-ads/answer/6275317](https://support.google.com/google-ads/answer/6275317?hl=de)), Suffix der finalen
+URL ([answer/9054021](https://support.google.com/google-ads/answer/9054021?hl=de)), Shopify-App «Your Google Account → Connect»
+([answer/13494537](https://support.google.com/google-ads/answer/13494537)). Ob das Bulk-Feld für die Artikel-ID erscheint, sagt die
+Hilfe nicht ausdrücklich («für bestimmte Attribute») — deshalb der Ersatzweg über die Suche. «Alles andere» ausschliessen steht in
+der Hilfe nicht wörtlich; belegt ist es durch Feed-Anbieter-Doku und die Ads-Ansicht vom 10.10.

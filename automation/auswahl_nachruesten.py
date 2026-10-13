@@ -43,6 +43,7 @@ from kollektionstexte_nachbessern import gql                 # noqa: E402
 from auswahl_fehlt_messen import stamm                       # noqa: E402
 from auswahl_werte import (farbe, ausfuehrung, plane_optionen,  # noqa: E402,F401  (farbe/ausfuehrung: alte Aufrufer)
                            uebersetze_ki)
+from werbetest_sperre import gesperrt as werbetest_gesperrt, HINWEIS as WERBETEST_HINWEIS  # noqa: E402
 
 MESSUNG = os.environ.get("MESSUNG", "dropship/_auswahl_fehlt.jsonl")
 VORRANG = os.environ.get("VORRANG", "")
@@ -505,6 +506,12 @@ def main():
     # 08.10.2026: jüngste Messungen zuerst — deren CJ-Antwort liegt schon im Cache (auswahl_fehlt_messen schreibt ihn), die alten
     # Nagel-Zeilen vom 24.09. kosten je eine neue CJ-Anfrage. Doppelte Zeilen (Nachmessung) → nur die jüngste.
     kand = list({r["handle"]: r for r in kand}.values())[::-1]
+    # 13.10.2026 Werbetest A: beworbene Produkte (dropship/_werbetest_sperre.txt) bis Testende nicht umbauen — ein Werbeklick macht
+    # sie zur «besuchten Seite» und zöge sie sonst nach vorn (18K, Retro, Silberarmband). Kein MANUELL-Eintrag: nach dem Ende
+    # kommen sie von selbst wieder dran.
+    for r in [r for r in kand if werbetest_gesperrt(r.get("id")) or werbetest_gesperrt(r["handle"])]:
+        print(f"  {WERBETEST_HINWEIS} {r['handle']}", flush=True)
+    kand = [r for r in kand if not (werbetest_gesperrt(r.get("id")) or werbetest_gesperrt(r["handle"]))]
     # 09.10.2026: VORRANG=<Liste> (z. B. dropship/_klassen/auswahl-besuchte-seiten.txt, Sitzungen absteigend) → diese Produkte
     # zuerst, in Listenfolge; der Rest bleibt «jüngste Messung zuerst» (stabile Sortierung).
     if VORRANG and os.path.exists(VORRANG):

@@ -23,6 +23,7 @@ HIER = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HIER)
 sys.path.insert(0, HIER)
 from seo_autopilot import gql
+from werbetest_sperre import gesperrte_ids, HINWEIS as WERBETEST_HINWEIS
 
 EXPORT = "/tmp/geschenk_export.jsonl"
 SCHARF = os.environ.get("SCHARF") == "1"
@@ -339,10 +340,13 @@ def main():
         print(f"\n== {w}: {len(reihe)} Produkte · {dict(zahl)}")
         for k in reihe[:18]:
             print(f"   {k['art']:9} CHF {k['preis']:6.2f} {k['titel'][:70]}")
-        if not SCHARF:
-            continue
         tag = f"geschenkwelt-{w}"
         soll = {k["id"] for k in reihe}
+        # 13.10.2026 Werbetest A: Tags der beworbenen Produkte einfrieren (dropship/_werbetest_sperre.txt) — der Lauf vom
+        # 12.10. schrieb 11 der 13 an einem Abend. Weder hinzufügen noch entfernen; nach dem Ende entscheidet die Regel wieder.
+        sperre = {f"gid://shopify/Product/{i}" for i in gesperrte_ids()}
+        if not SCHARF and not sperre:
+            continue
         ist = set()
         c = None
         while True:
@@ -352,6 +356,13 @@ def main():
             if not d["pageInfo"]["hasNextPage"]:
                 break
             c = d["pageInfo"]["endCursor"]
+        for pid in sorted((soll ^ ist) & sperre):
+            print(f"   {WERBETEST_HINWEIS} {pid.split('/')[-1]} ({'+' if pid in soll else '−'}{tag})", flush=True)
+        soll = (soll - sperre) | (ist & sperre)
+        if not SCHARF:
+            print(f"   Tags (trocken): +{len(soll - ist)} −{len(ist - soll)} · eingefroren {len(ist & sperre)} mit Tag", flush=True)
+            continue
+        reihe = [k for k in reihe if k["id"] in soll]   # gesperrte ohne Tag nicht in die Reihenfolge
         for pid in soll - ist:
             gql('mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}', {"id": pid, "t": [tag]})
         for pid in ist - soll:

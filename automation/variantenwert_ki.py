@@ -29,6 +29,7 @@ import datetime as dt, json, os, re, sys
 
 HIER = os.path.dirname(os.path.abspath(__file__)); REPO = os.path.dirname(HIER)
 sys.path.insert(0, HIER)
+from werbetest_sperre import gesperrt as werbetest_gesperrt, HINWEIS as WERBETEST_HINWEIS  # noqa: E402  (13.10.2026)
 EXPORT = os.environ.get("EXPORT", "/tmp/farbmuster_export.jsonl")
 HANDLES = os.environ.get("HANDLES", "/tmp/gkat_fein_export.jsonl")
 LEDGER = os.path.join(REPO, "dropship", "_variantenwert_ki.tsv")
@@ -70,6 +71,9 @@ def kandidaten():
         for o in p.get("options") or []:
             w = [v["name"] for v in o["optionValues"]]
             if OPT.match(o["name"]) and len(w) >= 1 and braucht_ki(w):
+                if werbetest_gesperrt(p["id"]):    # 13.10.2026 Werbetest A: «Sonne & Mond» wäre früh dran (besuchte Seite)
+                    print(f"  {WERBETEST_HINWEIS}: {p['title'][:60]}")
+                    break
                 out.append((p["id"], handle.get(p["id"]), p["title"]))
                 break
     return out
@@ -87,6 +91,8 @@ def vorrang(kand):
 
 
 def bearbeiten(pid):
+    if werbetest_gesperrt(pid):                    # zweite Wache, falls der Export älter ist als die Sperrliste
+        return [("—", "", WERBETEST_HINWEIS)]
     from kaufwille_zeile import gql
     import auswahl_werte as aw
     p = gql('query($i:ID!){product(id:$i){title status tags options{id name linkedMetafield{key} optionValues{id name}}}}',
@@ -148,12 +154,18 @@ def bearbeiten(pid):
 def main():
     if "--selbsttest" in sys.argv:
         import variant_value_clean as vvc, auswahl_werte as aw
-        a = vvc.selbsttest()
-        b = aw.selbsttest() if hasattr(aw, "selbsttest") else 0
+        # 13.10.2026: Die zwei Selbsttests sprechen VERSCHIEDENE Sprachen — vvc.selbsttest() gibt die Fehlerzahl (0 = gut),
+        # aw.selbsttest() gibt `fehler == 0` (True = gut). Das Tor prüfte beide als Fehlerzahl («not b») und endete deshalb
+        # bei 80/80 + 66/66 + 3/3 IMMER mit exit 1 → der Aufseher startete den Lauf seit 09.10. nie (Log 0 Byte, GEMESSEN).
+        # Jetzt je Baustein ausdrücklich «grün» und eine Zeile mit dem Gesamturteil.
+        a_ok = vvc.selbsttest() == 0
+        b_ok = (aw.selbsttest() is True) if hasattr(aw, "selbsttest") else True
         ok = braucht_ki(["Black", "Beige Without Chest Pad"]) and not braucht_ki(["Black", "White"]) \
             and not braucht_ki(["Schwarz", "Weiss"])
         print(f"VARIANTENWERT-KI Kanarien {'3/3' if ok else 'ROT'}")
-        sys.exit(0 if (a == 0 and not b and ok) else 1)
+        print(f"VARIANTENWERT-KI Tor: variant_value_clean {'grün' if a_ok else 'ROT'} · auswahl_werte {'grün' if b_ok else 'ROT'}"
+              f" · Kanarien {'grün' if ok else 'ROT'} → {'START frei' if a_ok and b_ok and ok else 'GESPERRT'}")
+        sys.exit(0 if (a_ok and b_ok and ok) else 1)
     if not os.path.exists(EXPORT):
         raise SystemExit(f"Export fehlt: {EXPORT}")
     kand = vorrang(kandidaten())
