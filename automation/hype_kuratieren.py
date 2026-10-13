@@ -205,6 +205,9 @@ THEMEN = {
 }
 # Warengruppen, die schon einmal aus der Startreihe genommen wurden.
 RAUS_TYP = {"Spielzeug & Spiele", "Partydeko & Ballone", "Kostüme & Verkleidung"}
+# 13.10. Prüfung (Nebenbefund): das 1.-August-Lampion-Set trägt den Typ «Schweizer Editionen» und rutschte am Typ vorbei.
+# Partydeko am TITEL (gebunden; «Ballonärmel»/«Ballonkleid» sind Mode — Hausregel Multipack-Titel).
+PARTY_TITEL = re.compile(r"lampion|girlande|luftballon|\bballone?\b|konfetti|partydeko|tischdeko|servietten|wimpelkette|pi[nñ]ata", re.I)
 # Die Startseite ist die Fläche, die jede Besucherin ungefragt sieht — auch die, die mit einem
 # Kind daneben sitzt. Der erste Lauf hätte ein «Intim-Pflegeserum für Frauen» dorthin gestellt.
 # Das Produkt ist völlig in Ordnung, der Platz ist es nicht.
@@ -361,6 +364,42 @@ def tage_her(datum):
 IN_REIHE = set()
 IN_REIHE_TITEL = []
 
+# Prüfung 13.10. (Workflow wf_1c367cd7-abd, Befund bestätigt): `next()` nahm das ERSTE hype-seit-Tag — Shopify liefert
+# Tags alphabetisch, also das ÄLTESTE Datum; die Neuaufnahme setzte ein neues Datum dazu, ohne alte zu entfernen, und die
+# Abräumpfade löschten nur eines. 44 Produkte trugen hype-seit-Reste ohne hype-jetzt. Jetzt: Datum = max(), Abräumen und
+# Neuaufnahme nehmen ALLE hype-seit-Tags weg, reste_raeumen() entfernt Reste ohne Reihen-Tag (täglich).
+def hype_seit_tags(tags):
+    return [t for t in (tags or []) if t.startswith("hype-seit-")]
+
+
+def hype_datum(tags):
+    d = [t.split("hype-seit-", 1)[1] for t in hype_seit_tags(tags)]
+    return max(d) if d else None
+
+
+def reste_raeumen():
+    """hype-seit-Tags auf Produkten OHNE hype-jetzt (abgelaufen, aber Rest geblieben) entfernen."""
+    cur, reste = None, []
+    while True:
+        d = gql('query($c:String){products(first:250,after:$c,query:"tag:hype-seit*")'
+                '{pageInfo{hasNextPage endCursor} nodes{id title tags}}}', {"c": cur})
+        pg = (d.get("data") or {}).get("products")
+        if not pg:
+            print("  ⚠️ hype-seit-Reste nicht lesbar — übersprungen", flush=True)
+            return 0
+        reste += [p for p in pg["nodes"] if TAG not in p["tags"] and hype_seit_tags(p["tags"])]
+        if not pg["pageInfo"]["hasNextPage"]:
+            break
+        cur = pg["pageInfo"]["endCursor"]
+    print(f"hype-seit-Reste ohne Reihen-Tag: {len(reste)}" + (" (DRY)" if DRY else ""), flush=True)
+    if not DRY:
+        for p in reste:
+            gql('mutation($id:ID!,$t:[String!]!){tagsRemove(id:$id,tags:$t){userErrors{message}}}',
+                {"id": p["id"], "t": hype_seit_tags(p["tags"])})
+            time.sleep(0.25)
+    return len(reste)
+
+
 def abgelaufene_raeumen():
     """Nimmt den Tag von allem, was länger als HYPE_TAGE in der Reihe steht."""
     cur, alle = None, []
@@ -378,8 +417,7 @@ def abgelaufene_raeumen():
 
     raus, regelbruch, ohne_datum = [], [], []
     for p in alle:
-        seit = next((t.split("hype-seit-")[1] for t in p["tags"] if t.startswith("hype-seit-")),
-                    None)
+        seit = hype_datum(p["tags"])
         # ⚠️ 13.10.2026: DIE REIHENREGELN GELTEN FÜR JEDES MITGLIED, nicht nur bei der Aufnahme. In der Reihe standen
         # 8 Produkte mit `hype-jetzt` OHNE Datum — Spinnennetz, Knicklichter, Skelett-Handschuhe, Patrick-Star-Plüsch,
         # Bruder-LKW, Plüsch-Dino, Schneeeule, 1.-August-Lampions. Kein Skript im Repo (auch nicht im alten Zweig)
@@ -387,7 +425,7 @@ def abgelaufene_raeumen():
         # nie ab, und Spielzeug/Partydeko/Kostüm verstösst gegen genau die Regeln, die die Aufnahme prüft.
         # Jetzt: (1) Regelbruch (RAUS_TYP, NICHT_STARTSEITE, hype-bild-schwach, nicht aktiv) → sofort raus, egal woher;
         # (2) ohne Datum → bekommt heute ein Datum und läuft nach HYPE_TAGE ab wie alles andere.
-        if (AUSGEMUSTERT in p["tags"] or (p.get("productType") or "") in RAUS_TYP
+        if (AUSGEMUSTERT in p["tags"] or (p.get("productType") or "") in RAUS_TYP or PARTY_TITEL.search(p["title"])
                 or NICHT_STARTSEITE.search(p["title"]) or p.get("status") not in (None, "ACTIVE")):
             regelbruch.append((p, seit))
         elif not seit:
@@ -402,7 +440,7 @@ def abgelaufene_raeumen():
     if not DRY:
         for p, seit in regelbruch:
             gql('mutation($id:ID!,$t:[String!]!){tagsRemove(id:$id,tags:$t){userErrors{message}}}',
-                {"id": p["id"], "t": [TAG] + (["hype-seit-" + seit] if seit else [])})
+                {"id": p["id"], "t": [TAG] + hype_seit_tags(p["tags"])})
             time.sleep(0.25)
         # Datum ZURÜCKDATIERT: noch 7 Tage Frist, und die Reihe sortiert es hinten ein. Mit HEUTE stand das
         # 1.-August-Lampion-Set am 13.10. als «jüngste Aufnahme» auf Platz 12 (gemessen).
@@ -422,7 +460,7 @@ def abgelaufene_raeumen():
         return len(raus)
     for p, seit in raus:
         gql('mutation($id:ID!,$t:[String!]!){tagsRemove(id:$id,tags:$t){userErrors{message}}}',
-            {"id": p["id"], "t": [TAG, "hype-seit-" + seit]})
+            {"id": p["id"], "t": [TAG] + hype_seit_tags(p["tags"])})
         time.sleep(0.25)
     return len(raus)
 
@@ -542,7 +580,7 @@ def reihe_ordnen():
         cur = pg["pageInfo"]["endCursor"]
     rnd = random.Random(zlib.crc32(HEUTE.encode()))
     def seit(p):
-        return next((t.split("hype-seit-")[1] for t in p["tags"] if t.startswith("hype-seit-")), "0000-00-00")
+        return hype_datum(p["tags"]) or "0000-00-00"
     alle.sort(key=lambda p: (seit(p), rnd.random()), reverse=True)
     moves = [{"id": p["id"], "newPosition": str(i)} for i, p in enumerate(alle)]
     r = gql('mutation($id:ID!,$m:[MoveInput!]!){collectionReorderProducts(id:$id,moves:$m){job{id} userErrors{message}}}',
@@ -557,6 +595,7 @@ def main():
         return
     print(f"Quelle der Themen: {QUELLE}\n", flush=True)
     abgelaufene_raeumen()
+    reste_raeumen()
     # ⚠️ NUR_RAEUMEN=1 (16.08.2026): Der tägliche Aufseher-Lauf räumt NUR Abgelaufenes ab und
     # nimmt NICHTS Neues auf. Grund, teuer gelernt am 15.08.: Die Zahlenprüfung ersetzt keinen
     # Blick — fünf Produkte mit untauglichen Bildern (Lieferanten-Collage, englische Infografik,
@@ -655,6 +694,10 @@ def main():
         if TAG in live_tags:
             print(f"   übersprungen (live, schon in der Reihe): {t[:48]}", flush=True)
             continue
+        alt_seit = [x for x in hype_seit_tags(live_tags) if x != "hype-seit-" + HEUTE]
+        if alt_seit:                       # Rest einer früheren Aufnahme — sonst zählt das alte Datum mit
+            gql('mutation($id:ID!,$t:[String!]!){tagsRemove(id:$id,tags:$t){userErrors{message}}}',
+                {"id": gid, "t": alt_seit})
         r = gql('mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}',
                 {"id": gid, "t": [TAG, "hype-seit-" + HEUTE]})
         if ((r.get("data") or {}).get("tagsAdd") or {}).get("userErrors"):

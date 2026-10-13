@@ -7887,3 +7887,7 @@ powerbank-mit-hoher-kapazitat-13532a	48982845-01E4-46D5-8CAA-E77244588912	0	-	KE
 tragbarer-auto-luftbefeuchter-x3-56a667	1AC5A55E-19DD-414E-BD6D-CFDD215B4C1A	7	7.80	ok	landeseite
 winterkleidung-fur-paare-ca24d2	050E3896-69A1-4FE0-BDED-C52C3DC661E7	16	9.07	ok	landeseite
 bronzing-bikini-eb01e4	0390181E-9A33-40C0-A7D0-79CE47DA9665	16	6.65	ok	landeseite
+vein-cream-gegen-besenreiser-krampfadern-202304	1379373705389543424	3	7.57	ok	landeseite
+thermodrucker-bluetooth-etiketten-express-358912	1645293774324633600	16	17.40	ok	landeseite
+armelloser-flared-jumpsuit-fur-yoga-fitness-735168	1778240647661621248	16	8.10	ok	landeseite
+gaming-zero-latency-bluetooth-headset-400448	1465971168317149184	7	5.94	ok	landeseite
