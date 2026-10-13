@@ -228,3 +228,5 @@ slug:quad-mit-fahrer-fga063000
 name:quadmitfahrer
 slug:frauenkreppsohlen-schnurstiefel-in-grossen-bis
 slug:nordische-fransen-strickdecke-8c46da
+slug:duales-stereo-karaoke-system-601000
+name:dualesstereokaraokesystem
