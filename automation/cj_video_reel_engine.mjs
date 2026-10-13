@@ -115,6 +115,35 @@ const STIMME_ANTEIL = Math.max(0, Math.min(1, parseFloat(process.env.STIMME_ANTE
 // pid → stabile Zahl (auch fuer UUID-pids wie F5BA858E-…; GEMESSEN 22.09.: Number(...) gab NaN → Hook «undefined», Musik «undefined»)
 const num = p => { let h = 0; for (const c of String(p)) h = (h * 31 + c.charCodeAt(0)) >>> 0; return h; };
 
+// 13.10.2026 (Reel-Nachschub R1, GEMESSEN): 146 aktive Produkte mit sicherem CJ-Video (Index isVideo=1) galten als
+// «nicht-im-shop», weil ihre SKU die Varianten-Form «CJ-CJxx…» hat und der Motor nur `sku:CJ-<pid>` suchte. Darum jetzt
+// zwei Schlüssel je Kandidat:
+//   k.pid   = KENNUNG = Shop-SKU ohne «CJ-», bis zum ersten Zeichen ausserhalb [0-9A-Za-z-] (also auch bis zum Leerzeichen).
+//             Gilt für Queue-ID cjreel-<Kennung>, Dateiname reel_<Kennung>.mp4 und die Ledger — alle Poster suchen das
+//             Produkt mit `sku:CJ-<Kennung>` (meta_reel_post / metricool_tiktok_post / ig_aufraeumen), mit der echten pid
+//             fänden sie 0 Produkte und verwürfen das Reel als «produkt-nicht-aktiv».
+//   k.cjpid = echte CJ-pid, NUR für cjVideo() und den Server-Weg (serverQuelle / Auftrag).
+// Umrechnung ohne CJ-Punkte: dropship/_cj_pid_cache.json (erste Varianten-SKU ohne «CJ-» → pid, cj_reviews_import.mjs),
+// dazu die direkten pid-SKUs (CJ-<Ziffern> / CJ-<UUID>).
+const PID_CACHE = (() => { try { return JSON.parse(fs.readFileSync('dropship/_cj_pid_cache.json', 'utf8')); } catch { return {}; } })();
+const istPidForm = p => /^\d{15,}$/.test(p) || /^[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}$/i.test(p);
+const kennungAus = sku => (/^CJ-([0-9A-Za-z-]{10,})/.exec(String(sku || '').trim()) || [])[1] || '';
+function cjPidAus(sku) {
+  const rest = String(sku || '').trim().replace(/^CJ-/i, '').trim();
+  if (PID_CACHE[rest]) return PID_CACHE[rest];
+  const k = kennungAus(sku); return k && istPidForm(k) ? k : '';
+}
+const UMKEHR = new Map();                                   // echte pid → [volle Shop-SKU, …] (Umkehrtabelle)
+for (const [s, p] of Object.entries(PID_CACHE)) { if (!UMKEHR.has(p)) UMKEHR.set(p, []); UMKEHR.get(p).push('CJ-' + s); }
+const kennungVon = pid => kennungAus((UMKEHR.get(pid) || [])[0]) || pid;
+// Sperr-Tags + Heilwörter wie metricool_pinterest_pin.mjs (13.10.2026, R1 Schritt 5): Werbeverbote gelten auch fürs Reel.
+const SPERR = new Set(['nicht-bewerben', 'nur-onlineshop', '18plus', 'raucher', 'erotik', 'kostuem', 'kostüm', 'refurbished',
+  'medizinprodukt-pruefen', 'marken-pruefen', 'lizenz-risiko', 'lizenz-nicht-bewerben', 'adult-nicht-bewerben', 'gmc-adult-pull',
+  'messer-nicht-bewerben', 'smoke-zubehoer', 'waffe-pruefen', 'verdeckte-ueberwachung', 'google-policy-flag', 'arzneimittel-ohne-zulassung']);
+const HEIL = /schmerz|heil|migräne|krampfader|fettverbrenn|abnehmen|cellulite|arthr|rheuma|diabetes|entgift|detox|blutdruck|haarausfall|schnarch|inkontinenz/i;
+const sperrGrund = (tags, title) => (tags || []).map(t => String(t).toLowerCase()).some(t => SPERR.has(t) || /-nicht-bewerben$/.test(t)) ? 'sperr-tag'
+  : HEIL.test(title || '') ? 'heilwort-im-titel' : '';
+
 
 const TOK = (process.env.SHOPIFY_ADMIN_TOKEN || (fs.existsSync('/tmp/cj_shop_token.txt') ? fs.readFileSync('/tmp/cj_shop_token.txt', 'utf8') : '')).trim();
 const CJT = (process.env.CJ_TOKEN || (fs.existsSync('/tmp/cj_token.json') ? (JSON.parse(fs.readFileSync('/tmp/cj_token.json', 'utf8')).accessToken || '') : '')).trim();
@@ -133,21 +162,33 @@ async function gql(q, v) {
   }
   return null;
 }
+// 13.10.2026 (Reel-Nachschub R1 Schritt 1): DREI Ergebnisse statt '' für alles. Vorher wurde jeder Fehlercode, Timeout und
+// jede dritte Drosselung als «kein Video» gebucht — 3 sichere Videos gingen so am 23./24.09. für immer verloren (GEMESSEN).
+//   { url }          Video gefunden
+//   { leer: true }   CJ antwortet Erfolg (code 0/200) ohne Video → das EINZIGE, was ins kein-Video-Ledger darf
+//   { fehler }       alles andere → Tagessperre /tmp/cj_reel_fehler_<datum>.txt, morgen neu fragen
+// Wie cj_video_backfill.mjs: Erfolg = code 0/200, data null zählt dort als leere Liste.
 async function cjVideo(pid) {
   await cjTakt();
+  let letzter = 'keine Antwort';
   for (let a = 0; a < 3; a++) {
     try {
       const r = await fetch('https://developers.cjdropshipping.com/api2.0/v1/product/queryVideosByProductId', { method: 'POST', headers: { 'CJ-Access-Token': CJT, 'Content-Type': 'application/json' }, body: JSON.stringify({ productId: String(pid) }) });
       const j = await r.json();
-      if (j && j.code === 1600200) { await sleep(8000); continue; }     // Drossel: warten
-      if (j && j.code === 16900500) throw new Error('CJ-Tagesbudget erschoepft');
+      if (j && Number(j.code) === 1600200) { letzter = 'Drossel 1600200'; await sleep(8000); continue; }     // Drossel: warten
+      if (j && (Number(j.code) === 16900500 || /Insufficient API points/i.test(String(j.message || '')))) throw new Error('CJ-Tagesbudget erschoepft');
       const d = Array.isArray(j?.data) ? j.data : [];
       const v = d.filter(x => x && x.videoUrl).sort((a, b) => (b.videoSize || 0) - (a.videoSize || 0))[0];
-      return v ? v.videoUrl : '';
-    } catch (e) { if (/Tagesbudget/.test(String(e))) throw e; await sleep(3000); }
+      if (v) return { url: v.videoUrl };
+      if (j && (Number(j.code) === 200 || Number(j.code) === 0) && (j.data == null || Array.isArray(j.data))) return { leer: true };
+      return { fehler: `code ${j?.code ?? '?'} ${String(j?.message || '').slice(0, 60)}`.trim() };
+    } catch (e) { if (/Tagesbudget/.test(String(e))) throw e; letzter = String(e.message || e).slice(0, 60); await sleep(3000); }
   }
-  return '';
+  return { fehler: letzter };
 }
+const FEHLER_SPERRE = `/tmp/cj_reel_fehler_${new Date().toISOString().slice(0, 10)}.txt`;   // pid<TAB>grund, gilt nur heute
+const fehlerHeute = new Set((() => { try { return fs.readFileSync(FEHLER_SPERRE, 'utf8').split('\n').map(z => z.split('\t')[0].trim()).filter(Boolean); } catch { return []; } })());
+function fehlerMerken(pid, grund) { fehlerHeute.add(pid); try { fs.appendFileSync(FEHLER_SPERRE, `${pid}\t${grund}\n`); } catch {} }
 
 // ---------------------------------------------------------------- Text
 const VERBOTEN = /kost[uü]m|erotik|sex|dildo|vibrator|messer|klinge|schwert|tabak|vape|e-?zigarette|waffe|airsoft/i;
@@ -181,11 +222,107 @@ const HOOKS = {
   allgemein: ['Neu bei LuxeStyle', 'Genau das hat gefehlt', 'Wusstest du das schon?'],
 };
 function lernen() { try { return JSON.parse(fs.readFileSync('social/_lernen.json', 'utf8')); } catch { return {}; } }
+// 13.10.2026 (Reel-Nachschub R9, GEMESSEN): Themen-Hooks passten oft nicht zum Produkt — «Endlich Ruhe beim Gassi?» fiel 37 von
+// 43 Mal durch (86 %), «Das Gadget, das alle wollen» 27 von 30; 81 Jury-Urteile rügen Hook oder Caption. Jetzt zuerst ein
+// Produkt-Hook (Skill videoschnitt Regel 3): Produktwort aus kurzTitel() + kurzer Nutzen, ≤ 24 Zeichen, ohne Heilwörter.
+// Die Themenliste bleibt nur Rückfall — mit Raum- und Tier-Prüfung (Gassi nur bei hund/leine/gassi im Titel usw.).
+const HOOK_MAX = 24;
+const FARBE_MASS = /^(schwarz|weiss|weiß|rot|blau|grün|gruen|gelb|orange|rosa|pink|lila|violett|grau|braun|beige|gold|silber|bunt|multicolor|mehrfarbig|transparent|damen|herren|unisex|paar|stück|stueck|stk|pack|packung|grösse|größe|farbe|farben|edelstahl|holz|bambus|leder|baumwolle|kunststoff|silikon|glas|keramik|metall|aluminium|satin|seide|samt|wolle|neu)$/i;
+// Adjektiv: unflektiert («wasserdicht», «faltbar») immer; flektiert («Leuchtendes», «Doppelköpfige») nur, wenn noch ein Wort
+// folgt — als LETZTES Wort sind -er/-e/-en meist Nomen (Spender, Reiniger, Sandalen, Futterschale).
+const ADJ_FEST = /^[^-]+(bar|los|voll|frei|dicht|fest|sicher|tauglich)$/i;      // auf dem letzten Bindestrich-Teil: «Yoga-Bar» bleibt Nomen
+const ADJ_FLEX = /(ig|isch|lich|end|haft|sam|förmig|farbig|teilig|seitig|köpfig|stufig|bar|los|voll|frei|dicht|fest|sicher|tauglich)(e|er|es|en|em)$/i;
+const NOMEN_AUSNAHME = /(reiniger|spender|kalender|sender|wender|ständer)$/i;
+const PRAEP = /^(mit|für|fuer|fürs|aus|zum|zur|zu|in|im|ins|ohne|und|&|\+|von|vom|gegen|bei|beim|als|auf|an|am|ans|unter|über|ueber|nach|je|pro|per|inkl\.?|inklusive|oder|\/|–|—|-)$/i;
+// Räume/Orte, in denen «Zuhause»/«Küche»/«Wohnzimmer» falsch wären (Auto-Organizer ≠ Wohnzimmer, LED-Rucksack ≠ Zuhause)
+const RAUM_FREMD = /auto|kfz|fahrzeug|reise|outdoor|camping|garten|büro|buero|unterwegs|wander|fahrrad|velo|bike|strand|rucksack|tasche/i;
+const HOOK_HEIL = /therap|heilung|genesung|medizin|linder/i;          // zusätzlich zu HEIL (Pinterest-Liste) — nur für den Hook
+const istNomen = (x, letztes) => /^[A-ZÄÖÜ0-9]/.test(x) && !/-$/.test(x) && x.replace(/[^A-Za-zÄÖÜäöüß]/g, '').length >= 3
+  && !ADJ_FEST.test(x.split('-').pop()) && (letztes || NOMEN_AUSNAHME.test(x) || !ADJ_FLEX.test(x))
+  && !FARBE_MASS.test(x) && !/^[A-ZÄÖÜ0-9-]{2,5}$/.test(x);          // LED, USB, XL, 115W … sind kein Produktwort
+// Produktwort: im ersten Komma-Teil vor der ersten Präposition, der ein Nomen trägt, das LETZTE Nomen (deutsche Titel:
+// Adjektive + Nomen + «mit/für …»). «Frucht- und Gemüseabtropfkorb»: «und» nach «X-» ist kein Ende. Namen in
+// Anführungszeichen («Schwebende Kette») zählen nicht. satz = «mit …»/«für …» direkt nach dem Produktwort (bis zur nächsten
+// Präposition) — der Nutzen aus dem Titel selbst.
+function produktWort(title) {
+  const t = kurzTitel(String(title || '')).replace(/\([^)]*\)|"[^"]*"|«[^»]*»|„[^“]*“/g, ' ').replace(/\s+/g, ' ').trim();
+  const woerter = t.split(' ');
+  const stopp = woerter.findIndex((x, i) => PRAEP.test(x) && !(/^(und|oder)$/i.test(x) && /-$/.test(woerter[i - 1] || '')));
+  const kopfTeil = (stopp < 0 ? woerter : woerter.slice(0, stopp)).join(' ');
+  let satz = '';
+  if (stopp >= 0 && /^(mit|für|fuer)$/i.test(woerter[stopp])) {
+    // Ende am Komma oder an der nächsten Präposition; endet er an «und/oder/&», wäre der Satz nur halb wahr
+    // («Trinknapf für Hunde» bei «für Hunde und Katzen») → dann kein Satz, der Warengruppen-Nutzen übernimmt.
+    const nach = woerter.slice(stopp + 1).join(' ').replace(/\s*&\s*/g, ' & ').split(/\s*[,;]\s*/)[0].split(' ').filter(Boolean);
+    const ende = nach.findIndex(x => PRAEP.test(x));
+    satz = ende >= 0 && /^(und|oder|&)$/i.test(nach[ende]) ? ''
+      : [woerter[stopp], ...(ende < 0 ? nach : nach.slice(0, ende))].join(' ').replace(/[.;:!?]+$/, '').trim();
+    if (satz.split(' ').length < 2) satz = '';
+  }
+  const teile = kopfTeil.split(/\s*,\s*/);
+  for (const [ti, teil] of teile.entries()) {
+    const w = teil.split(' ').map(x => x.replace(/[.;:!?]+$/, '')).filter(Boolean);
+    for (let i = w.length - 1; i >= 0; i--) {
+      if (!istNomen(w[i], ti === teile.length - 1 && i === w.length - 1)) continue;
+      const vor = i > 0 && /^[A-Za-zÄÖÜäöüß][A-Za-zÄÖÜäöüß-]{2,}$/.test(w[i - 1]) && !/-$/.test(w[i - 1]) && !FARBE_MASS.test(w[i - 1]) && !PRAEP.test(w[i - 1]) ? w[i - 1] : '';
+      // Kurzform = kürzestes Bindestrich-Ende mit ≥ 6 Zeichen («Bambus-Schneidebrett» → «Schneidebrett», «…-Hundespielzeug-Set» → «Hundespielzeug-Set»)
+      const st = w[i].split('-'); let kurz = '';
+      for (let j = st.length - 1; j >= 1; j--) { const k = st.slice(j).join('-'); if (k.length >= 6) { kurz = k; break; } }
+      return { wort: w[i], kurz, vor, kopf: w.slice(0, i + 1).join(' '), satz };
+    }
+  }
+  return null;
+}
+const gross1 = s => s ? s[0].toUpperCase() + s.slice(1) : s;
+// kurzer Nutzen je Warengruppe — nur wo er nie falsch ist (Tier nur, wenn der Titel es FÜR ein Tier ausweist:
+// «Roboter-Hund Sparbüchse» ist keine Ware «für Hunde»; Raum nur ohne Auto/Reise/Outdoor …)
+// Die Warengruppe stammt aus einem groben Titel-Raster (thema(): «Laptopfach» → Küche, «LED» → Wohnen) — darum hier je Gruppe
+// ein STRENGER Titel-Test, sonst stünde «Mini-Drohne fürs Zuhause» im Bild.
+const NUTZEN_STRENG = {
+  kueche: /küche|kueche|koch|back|pfanne|kochtopf|gewürz|kaffee|\btee\b|mixer|entsafter|schneidebrett|besteck|geschirr|dörr|abtropf|schüssel|teller/i,
+  home: /lampe|leuchte|deko|vase|kerze|diffuser|aroma|kissen|decke|teppich|regal|organizer|vorhang|bettwäsche|wohn/i,
+  beauty: /gerät|roller|bürste|massage|lockenstab|glätteisen|föhn|epilierer|rasierer|trimmer|schleuder/i,
+  kinder: /kind|baby|spielzeug/i, schmuck: /./, mode: /^(?!.*(teig|küche|form\b)).*/i,
+};
+function nutzenKurz(th, title) {
+  const s = title.toLowerCase(), fremd = RAUM_FREMD.test(title);
+  if (th === 'haustier') return /für\s+(hunde?|welpen)\b/.test(s) && !/katze/.test(s) ? 'für Hunde' : /für\s+(katzen?|kitten)\b/.test(s) && !/hund/.test(s) ? 'für Katzen'
+    : /für\s+(haustiere?|vierbeiner|hunde?|katzen?)\b/.test(s) ? 'für Vierbeiner' : '';
+  if (th === 'fitness') return !fremd && /yoga|hantel|training|widerstand|faszien|matte|trainer/.test(s) ? 'für zuhause' : '';
+  const n = ({ kueche: fremd ? '' : 'für die Küche', kinder: 'für Kinder', home: fremd ? '' : 'fürs Zuhause', beauty: fremd ? '' : 'für zuhause',
+    schmuck: 'für jeden Tag', mode: 'für jeden Tag' })[th] || '';
+  return n && NUTZEN_STRENG[th] && NUTZEN_STRENG[th].test(title) ? n : '';
+}
+function produktHook(th, title) {
+  const pw = produktWort(title); if (!pw) return '';
+  const besch = [...new Set([pw.kopf, pw.vor ? `${pw.vor} ${pw.wort}` : ''].filter(x => x && x !== pw.wort))];   // mit Beiwort («Baseball Cap»)
+  const voll = [...besch, pw.wort];
+  const kurz = pw.kurz ? [pw.kurz] : [];
+  const n = nutzenKurz(th, title);
+  // nicht doppelt: «Hundeleine für Hunde», «Küchenhelfer für die Küche», «Kindersitz für Kinder»
+  const plus = (f, z) => z && !z.split(' ').filter(x => x.length >= 4 && !/^fürs?$/i.test(x)).some(x => f.toLowerCase().includes(x.toLowerCase().slice(0, 4))) ? `${f} ${z}` : '';
+  // Reihenfolge: Titel-Nutzen vor Warengruppen-Nutzen, beschreibende Form vor dem nackten Wort («Baseball Cap» vor «Cap für jeden Tag»)
+  const kand = [
+    ...voll.map(f => plus(f, pw.satz)), ...kurz.map(f => plus(f, pw.satz)),      // Nutzen aus dem Titel («Schneidebrett mit Deckel»)
+    ...besch.map(f => plus(f, n)), ...besch,                                       // «Linnen Kissenbezug fürs Zuhause» / «Linnen Kissenbezug»
+    plus(pw.wort, n), pw.wort,                                                     // kurzer Nutzen je Warengruppe / Produktwort allein
+    ...kurz.map(f => plus(f, n)), ...kurz,
+  ].filter(Boolean);
+  return kand.map(h => gross1(h.replace(/\s+/g, ' ').trim())).find(h => h.length <= HOOK_MAX && h.length >= 4 && !HEIL.test(h) && !HOOK_HEIL.test(h)) || '';
+}
+// Themen-Hooks nur, wenn Raum und Tier zum Titel passen
+const HOOK_BEDINGT = [
+  [/gassi/i, t => /hund|leine|gassi/i.test(t)], [/hund/i, t => /hund|welpe/i.test(t)], [/katze/i, t => /katze|kater|kitten/i.test(t)],
+  [/wohnzimmer/i, t => /wohn|sofa|couch|lampe|leuchte|deko|vase|kissen|decke|teppich|regal|kerze/i.test(t) && !RAUM_FREMD.test(t)],
+  [/küche|frühstück/i, t => /küche|kueche|koch|back|frühstück|kaffee|tee|mixer|pfanne|topf/i.test(t)],
+  [/kinderzimmer/i, t => /kind|baby/i.test(t)], [/zuhause/i, t => !RAUM_FREMD.test(t)],
+];
 function hookFuer(th, pid, title = '') {
+  const ph = produktHook(th, title);
+  if (ph) return ph;
   const L = lernen(); let list = HOOKS[th] || HOOKS.allgemein;
-  // Tierart beachten (22.09.: «Für die Katze, die alles darf» stand auf dem Futterspender für Hunde)
-  if (/hund|welpe|gassi/i.test(title)) list = list.filter(h => !/katze/i.test(h));
-  else if (/katze|kater|kitten/i.test(title)) list = list.filter(h => !/hund|gassi/i.test(h));
+  // Tierart beachten (22.09.: «Für die Katze, die alles darf» stand auf dem Futterspender für Hunde); 13.10.: allgemein über HOOK_BEDINGT
+  list = list.filter(h => HOOK_BEDINGT.every(([wort, ok]) => !wort.test(h) || ok(title)));
   if (!list.length) list = HOOKS.allgemein;
   // 11.10.2026: schnitt.py nimmt bis 31 Zeichen (Bild 0 = LUXESTYLE + Hook ≤ 40); über 30 liest sich der Hook im Band schwer
   list = list.filter(h => h.length <= 30);
@@ -201,12 +338,36 @@ function kurzTitel(title) {
   if (t.length < 12) t = title.trim();
   return t;
 }
+// 13.10.2026 (R9 Schritt 3, GEMESSEN): ein Einzelwort über 26 Zeichen liess Zeile 1 leer und kürzte Zeile 2 mit «…»
+// (Log: «Titel:  / Multifunktions-Haarklammern-…»; die Jury nennt «abgeschnitten» 11-mal). Jetzt: Umbruch an der Wortgrenze,
+// ein überlanges Wort am Bindestrich getrennt, Zeile 1 nie leer, nie «…» — passt der Rest nicht, endet Zeile 2 am letzten
+// ganzen Wort.
 function zeilen(title) {
   const t = kurzTitel(title); const rest = title.slice(title.indexOf(t) + t.length).replace(/^\s*[·•|:–—-]\s*/, '').trim();
-  const w = t.split(/\s+/); let a = '', b = '';
-  for (const x of w) { if ((a + ' ' + x).trim().length <= 26 && !b) a = (a + ' ' + x).trim(); else b = (b + ' ' + x).trim(); }
+  const teile = [];                                                   // {s, neu}: neu = beginnt ein neues Wort
+  for (const x of t.split(/\s+/).filter(Boolean)) {
+    if (x.length <= 26 || !x.includes('-')) { teile.push({ s: x, neu: true }); continue; }
+    const st = x.split('-'); st.forEach((p, i) => teile.push({ s: p + (i < st.length - 1 ? '-' : ''), neu: i === 0 }));
+  }
+  const dazu = (z, tl) => z ? z + (tl.neu ? ' ' : '') + tl.s : tl.s;
+  let a = '', b = '', i = 0;
+  for (; i < teile.length; i++) { const n = dazu(a, teile[i]); if (n.length <= 26 || !a) a = n; else break; }   // Zeile 1 nie leer
+  let bTeile = [];
+  for (; i < teile.length; i++) { const n = dazu(b, teile[i]); if (n.length <= 30) { b = n; bTeile.push(teile[i]); } else { bTeile.push(null); break; } }
+  if (bTeile.includes(null)) {                                        // Rest passt nicht: am letzten GANZEN Wort enden
+    bTeile = bTeile.filter(Boolean);
+    let k = bTeile.length; while (k > 0 && /-$/.test(bTeile[k - 1].s)) k--;
+    bTeile = bTeile.slice(0, k); b = bTeile.reduce((z, tl) => dazu(z, tl), '');
+  }
   if (!b && rest && rest.length <= 30) b = rest;
-  if (b.length > 30) b = b.slice(0, 29).trim() + '…';
+  // Zeilenende ohne Satzzeichen und ohne hängende Präposition («Brusttasche mit»); der Trennstrich am Wortbruch bleibt
+  const sauber = z => { let x = z.replace(/[\s,;:–—]+$/, '').replace(/\s+-$/, '').trim(); let w = x.split(' ');
+    while (w.length > 1 && PRAEP.test(w[w.length - 1])) w.pop(); return w.join(' ').replace(/[\s,;:–—]+$/, ''); };
+  // hängt an Zeile 1 eine Präposition («Heizjacke mit»), wandert sie an den Anfang von Zeile 2, wenn dort Platz ist
+  const wa = a.trim().split(' ');
+  if (b && wa.length > 1 && PRAEP.test(wa[wa.length - 1]) && (wa[wa.length - 1] + ' ' + b).length <= 30) { b = wa.pop() + ' ' + b; a = wa.join(' '); }
+  a = sauber(a); b = sauber(b);
+  if (!b && /-$/.test(a)) a = a.replace(/-[^-\s]*-$/, '').replace(/-$/, '');      // nichts folgt → kein hängender Trennstrich
   return [a, b];
 }
 function nutzen(desc) {
@@ -330,7 +491,8 @@ if (process.env.NEU_RENDERN === '1') {
       const pid = m[1], k = { pid, title: n.title.trim(), price: parseFloat(n.variants.nodes[0]?.price || '0') };
       let st = { ja: false, grund: 'anteil' };
       if (n.status !== 'ACTIVE') { console.log(`   ${pid}: Produkt ${n.status} — nicht neu gerendert`); continue; }
-      let vurl = ''; try { vurl = await cjVideo(pid); } catch (e) { console.log('  ✗ ' + e.message); break; }
+      // 13.10.2026 (R1): die Kennung kann eine Varianten-SKU sein → CJ mit der echten pid fragen; cjVideo() liefert ein Objekt.
+      let vurl = ''; try { vurl = (await cjVideo(cjPidAus(n.variants.nodes[0]?.sku) || pid)).url || ''; } catch (e) { console.log('  ✗ ' + e.message); break; }
       if (!vurl) { console.log(`   ${pid}: CJ hat kein Video mehr`); continue; }
       const th = thema(k.title), hook = hookFuer(th, pid, k.title), [z1, z2] = zeilen(k.title);
       const src = `/tmp/reelbuild/src_${pid}.mp4`, out = `/tmp/reelbuild/reel_${pid}.mp4`;
@@ -361,10 +523,27 @@ if (process.env.NEU_RENDERN === '1') {
 
 // ---------------------------------------------------------------- Kandidaten
 const gebaut = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').split('\n').map(s => s.trim()).filter(Boolean) : []);
-const keinVideo = new Set([KEINVIDEO, TOR_ABGELEHNT].flatMap(f => fs.existsSync(f) ? fs.readFileSync(f, 'utf8').split('\n').map(s => s.split('\t')[0].trim()).filter(Boolean) : []));
+const ersteSpalte = f => fs.existsSync(f) ? fs.readFileSync(f, 'utf8').split('\n').map(s => s.split('\t')[0].trim()).filter(Boolean) : [];
+const keinVideo = new Set(ersteSpalte(KEINVIDEO));
+const torAbgelehnt = new Set(ersteSpalte(TOR_ABGELEHNT));
 // 29.09.2026: vorher /^cjreel-(\d+)/ — UUID-pids (9BDA360E-…, 56A53647-…) galten nie als «in der Queue» und wurden vom
 // Nachtrag erneut angehängt (5 IDs doppelt, gemessen 29.09.). Jede ID bis zum ersten Komma zählt.
 const inCsv = new Set((fs.readFileSync(CSV, 'utf8').match(/^cjreel-[^,\n]+/gm) || []).map(s => s.replace('cjreel-', '')));
+// 13.10.2026 (R1 Schritt 6): Sperre über BEIDE Schlüssel (Kennung UND echte pid) — nie zwei Reels aus einem CJ-Video.
+// kein-Video-Zeilen in Varianten-Form (CJxx…) stammen aus falsch gestellten Fragen (CJ kennt nur pids) und sperren
+// nicht mehr; sie bleiben in der Datei (nicht löschen). Dazu die heutige Fehler-Sperre (cjVideo «fehler»).
+const gesperrt = (...s) => s.filter(Boolean).some(x => gebaut.has(x) || inCsv.has(x) || torAbgelehnt.has(x) || fehlerHeute.has(x)
+  || (keinVideo.has(x) && istPidForm(x)));
+// R1 Schritt 4: dieselbe Abfrage wie produktAktiv() in metricool_tiktok_post.mjs / meta_reel_post.mjs —
+// products(first:1, query:"sku:CJ-<Kennung>") muss GENAU dieses Produkt mit ACTIVE + onlineStoreUrl liefern, sonst würde
+// der Poster das Reel später als «produkt-nicht-aktiv» verwerfen. '' = bestanden, sonst Grund.
+async function posterProbe(kennung, gid) {
+  if (!kennung || /^\d{12,15}$/.test(kennung)) return 'kennung-unbrauchbar';   // 12–15 Ziffern hielte der Poster für eine Shopify-ID
+  const r = await gql(`query($q:String){ products(first:1, query:$q){ nodes{ id status onlineStoreUrl } } }`, { q: `sku:CJ-${kennung}` });
+  if (!r) return 'ohne-antwort';
+  const p = r.data.products.nodes[0];
+  return !p ? 'findet-nichts' : p.id !== gid ? 'findet-anderes-produkt' : p.status !== 'ACTIVE' ? `status-${p.status}` : !p.onlineStoreUrl ? 'ohne-onlineshop' : '';
+}
 const kand = []; let cursor = null, gescannt = 0;
 // Index-Kandidaten zuerst (cj_video_index.mjs, 22.09.): Produkte, die laut CJ-Kategorieliste ein Video
 // haben — der Motor fragt dann fast nur noch Treffer statt 1 von 80. Nachschlag im Shop per SKU-OR-Suche
@@ -380,50 +559,79 @@ const INDEX_TOT = 'dropship/_cj_reel_index_tot.txt';
 const TOT_TAGE = 14;
 const _heute = Date.now();
 const tot = new Map();
+let totNeuBewertet = 0;
 if (fs.existsSync(INDEX_TOT)) for (const z of fs.readFileSync(INDEX_TOT, 'utf8').split('\n')) {
-  const [p, , d] = z.split('\t'); if (!p) continue;
+  const [p, g, d] = z.split('\t'); if (!p) continue;
+  // 13.10.2026 (R1 Schritt 7): «nicht-im-shop» (alle Zeilen vom 08.10.) war für Varianten-SKU-Produkte eine Fehlbuchung —
+  // gesucht wurde nur `sku:CJ-<pid>`. Kennt die Umkehrtabelle die pid, wird die Zeile beim Lesen neu bewertet (bleibt in der Datei).
+  if ((g || '').trim() === 'nicht-im-shop' && UMKEHR.has(p.trim())) { totNeuBewertet++; continue; }
   const t = Date.parse(d || ''); if (!isNaN(t) && (_heute - t) / 86400000 <= TOT_TAGE) tot.set(p.trim(), d);
 }
-const idxAlle = idx ? Object.keys(idx.shop_video || {}).filter(p => !gebaut.has(p) && !keinVideo.has(p) && !inCsv.has(p)) : [];
+const idxAlle = idx ? Object.keys(idx.shop_video || {}).filter(p => !gesperrt(p, kennungVon(p))) : [];
 const idxPids = idxAlle.filter(p => !tot.has(p));
-let idxKand = 0; const totNeu = [];
+let idxKand = 0, probeAus = 0; const totNeu = [], probeListe = [];
 // Fenster 200 → bis 600 pids, aber Schluss, sobald BATCH·3 Kandidaten stehen: ein Lauf kommt so an den toten pids vorbei,
 // statt erst beim naechsten (6 h spaeter) — jede 20er-Abfrage ist EIN Shopify-Aufruf, kein CJ-Punkt.
+// DRY zählt das ganze Fenster (Messung: wie viele Kandidaten gibt es?), scharf genügen BATCH·3.
 const IDX_MAX = parseInt(process.env.IDX_MAX || '600', 10);
-for (let i = 0; i < Math.min(idxPids.length, IDX_MAX) && idxKand < BATCH * 3; i += 20) {
+const IDX_ZIEL = DRY ? Infinity : BATCH * 3;
+for (let i = 0; i < Math.min(idxPids.length, IDX_MAX) && idxKand < IDX_ZIEL; i += 20) {
   const teil = idxPids.slice(i, i + 20);
-  const q = teil.map(p => `sku:CJ-${p}`).join(' OR ');
-  const r = await gql(`query($q:String){ products(first:20, query:$q){ nodes{ id title handle status tags mediaCount{count} description(truncateAt:260) variants(first:1){nodes{price sku}} } } }`, { q });
+  // 13.10.2026 (R1 Schritt 2): je pid BEIDE Formen suchen — die direkte pid-SKU und die volle Shop-SKU aus der Umkehrtabelle
+  // (in Anführungszeichen, 21 von 148 tragen Leerzeichen; GEMESSEN: `sku:"CJ-CJYDQTJM00565-Black Set"` findet das Produkt).
+  const q = teil.flatMap(p => [`sku:CJ-${p}`, ...(UMKEHR.get(p) || []).slice(0, 2).map(s => `sku:${JSON.stringify(s)}`)]).join(' OR ');
+  const r = await gql(`query($q:String){ products(first:50, query:$q){ nodes{ id title handle status tags mediaCount{count} description(truncateAt:260) variants(first:5){nodes{price sku}} } } }`, { q });
   if (!r) break;
   // Je pid EIN Urteil: eine pid kann mehrere Shop-Produkte tragen (Duplikat als DRAFT neben dem ACTIVE-Original) —
-  // qualifiziert eines, zaehlt die pid als Kandidat und landet NICHT im Ausfall-Ledger.
+  // qualifiziert eines, zaehlt die pid als Kandidat und landet NICHT im Ausfall-Ledger. Probe-/Sperr-Gründe gewinnen
+  // (die gehören nie ins Ausfall-Ledger, R1 Schritt 4).
   const gut = new Set(), grundJe = new Map();
+  const setzeGrund = (p, g) => { const alt = grundJe.get(p) || ''; if (alt === 'gesperrt' || alt.startsWith('probe:')) return; grundJe.set(p, g); };
   for (const n of r.data.products.nodes) {
-    const sku = n.variants.nodes[0]?.sku || ''; const m = /^CJ-([0-9A-Za-z-]{10,})/.exec(sku); if (!m || !idxPids.includes(m[1])) continue;
-    const pid = m[1]; const price = parseFloat(n.variants.nodes[0]?.price || '0');
-    if (gut.has(pid)) continue;
-    const grund = n.status !== 'ACTIVE' ? `status-${n.status}` : price < 14.9 ? 'preis-unter-14.90' : (n.mediaCount?.count || 0) < 2 ? 'unter-2-bilder' : VERBOTEN.test(n.title) ? 'verbots-titel'
-      : produktGepostet(`«${kurzTitel(n.title)}»`, `cjreel-${pid}`) ? 'produkt-schon-gepostet' : '';
-    if (grund) { grundJe.set(pid, grund); continue; }
-    gut.add(pid); grundJe.delete(pid);
-    kand.push({ pid, title: n.title.trim(), handle: n.handle, price, desc: n.description || '', tags: n.tags || [], idx: true }); idxKand++;
+    const vs = n.variants.nodes; const sku = vs[0]?.sku || '';
+    // Zuordnung Produkt → pid über die Umkehrtabelle (eine der ersten 5 Varianten-SKUs), nicht über den Text der SKU
+    const cjpid = vs.map(v => cjPidAus(v.sku)).find(p => p && teil.includes(p)); if (!cjpid) continue;
+    if (gut.has(cjpid)) continue;
+    const kennung = kennungAus(sku); const price = parseFloat(vs[0]?.price || '0');
+    const grund = !kennung ? 'sku-ohne-kennung' : n.status !== 'ACTIVE' ? `status-${n.status}` : price < 14.9 ? 'preis-unter-14.90' : (n.mediaCount?.count || 0) < 2 ? 'unter-2-bilder' : VERBOTEN.test(n.title) ? 'verbots-titel'
+      : sperrGrund(n.tags, n.title) || (produktGepostet(`«${kurzTitel(n.title)}»`, `cjreel-${kennung}`) ? 'produkt-schon-gepostet' : '');
+    if (grund) { setzeGrund(cjpid, grund); continue; }
+    if (gesperrt(kennung)) { setzeGrund(cjpid, 'gesperrt'); continue; }
+    const probe = await posterProbe(kennung, n.id);
+    if (probe) { probeAus++; probeListe.push(`${cjpid} → ${kennung}: ${probe}`); setzeGrund(cjpid, 'probe:' + probe); continue; }
+    gut.add(cjpid); grundJe.delete(cjpid);
+    kand.push({ pid: kennung, cjpid, gid: n.id, title: n.title.trim(), handle: n.handle, price, desc: n.description || '', tags: n.tags || [], idx: true, probe: true }); idxKand++;
   }
-  for (const p of teil) if (!gut.has(p)) totNeu.push([p, grundJe.get(p) || 'nicht-im-shop']);
+  for (const p of teil) {
+    if (gut.has(p)) continue;
+    const g = grundJe.get(p) || (UMKEHR.has(p) ? 'nicht-im-shop-auch-umkehr' : 'nicht-im-shop');   // R1 Schritt 7
+    if (g === 'gesperrt' || g.startsWith('probe:')) continue;
+    totNeu.push([p, g]);
+  }
 }
 if (totNeu.length && !DRY) fs.appendFileSync(INDEX_TOT, totNeu.map(([p, g]) => `${p}\t${g}\t${new Date().toISOString().slice(0, 10)}`).join('\n') + '\n');
-if (idx) console.log(`Video-Index: ${idxAlle.length} offene Treffer (${idxAlle.length - idxPids.length} im Ausfall-Ledger ≤ ${TOT_TAGE} T) → ${idxKand} Kandidaten · ${totNeu.length} neu ins Ausfall-Ledger (Index-Stand ${(idx.stand || '').slice(0, 16)})`);
+if (idx) console.log(`Video-Index: ${idxAlle.length} offene Treffer (${idxAlle.length - idxPids.length} im Ausfall-Ledger ≤ ${TOT_TAGE} T, ${totNeuBewertet} «nicht-im-shop» über die Umkehrtabelle neu bewertet) → ${idxKand} Kandidaten (davon Varianten-SKU ${kand.filter(x => x.idx && x.pid !== x.cjpid).length}) · Poster-Probe durchgefallen ${probeAus} · ${totNeu.length} neu ins Ausfall-Ledger (Index-Stand ${(idx.stand || '').slice(0, 16)})`);
+if (DRY) {
+  for (const z of probeListe.slice(0, 10)) console.log(`   Probe ✗ ${z}`);
+  console.log(`DRY Stichprobe (pid → Kennung → Titel):`);
+  const vari = kand.filter(x => x.idx && x.pid !== x.cjpid), dir = kand.filter(x => x.idx && x.pid === x.cjpid);
+  for (const k of [...vari.slice(0, 8), ...dir.slice(0, 2)].slice(0, 10)) console.log(`   ${k.cjpid} → ${k.pid} → ${k.title.slice(0, 60)} · CHF ${k.price}`);
+}
 while (gescannt < SCAN && idxKand < BATCH * 3) {
   const r = await gql(`query($c:String){ products(first:50, after:$c, sortKey:CREATED_AT, reverse:true, query:"status:active tag:cj-real"){ pageInfo{hasNextPage endCursor} nodes{ id title handle tags mediaCount{count} description(truncateAt:260) variants(first:1){nodes{price sku}} } } }`, { c: cursor });
   if (!r) break;
   const pg = r.data.products;
   for (const n of pg.nodes) {
     gescannt++;
-    const sku = n.variants.nodes[0]?.sku || ''; const m = /^CJ-([0-9A-Za-z-]{10,})/.exec(sku); if (!m) continue;
-    const pid = m[1]; const price = parseFloat(n.variants.nodes[0]?.price || '0');
-    if (gebaut.has(pid) || keinVideo.has(pid) || inCsv.has(pid)) continue;
-    if (price < 14.9 || (n.mediaCount?.count || 0) < 2 || VERBOTEN.test(n.title)) continue;
+    const sku = n.variants.nodes[0]?.sku || ''; const pid = kennungAus(sku); if (!pid) continue;
+    // 13.10.2026 (R1): CJ nur mit der echten pid fragen. Varianten-SKU ohne Eintrag in der Umkehrtabelle → überspringen
+    // (keine Frage, kein Ledger); vorher ging die Varianten-SKU selbst an CJ (29 % der Fragen seit 30.09., 0 Reels).
+    const cjpid = cjPidAus(sku); if (!cjpid) continue;
+    const price = parseFloat(n.variants.nodes[0]?.price || '0');
+    if (gesperrt(pid, cjpid) || kand.some(x => x.pid === pid || x.cjpid === cjpid)) continue;
+    if (price < 14.9 || (n.mediaCount?.count || 0) < 2 || VERBOTEN.test(n.title) || sperrGrund(n.tags, n.title)) continue;
     if (produktGepostet(`«${kurzTitel(n.title)}»`, `cjreel-${pid}`)) continue;
-    kand.push({ pid, title: n.title.trim(), handle: n.handle, price, desc: n.description || '', tags: n.tags || [] });
+    kand.push({ pid, cjpid, gid: n.id, title: n.title.trim(), handle: n.handle, price, desc: n.description || '', tags: n.tags || [] });
   }
   if (!pg.pageInfo.hasNextPage) break;
   cursor = pg.pageInfo.endCursor;
@@ -447,19 +655,23 @@ let reihe = [...balanceByCategory(ordnen(kand.filter(x => x.idx)), x => x.title)
 try {
   const heute = new Date().toISOString().slice(0, 10);
   const vor = fs.readFileSync('dropship/_reel_vorrang.txt', 'utf8').split('\n').map(z => z.split('\t')).filter(([p, bis]) => p && (!bis || bis.trim() >= heute)).map(([p]) => p.trim());
-  if (vor.length) { const rang = p => { const i = vor.indexOf(p); return i < 0 ? 1e9 : i; }; reihe = [...reihe].sort((a, b) => rang(a.pid) - rang(b.pid)); console.log(`Reel-Vorrang: ${vor.join(', ')} → ${reihe.filter(x => vor.includes(x.pid)).length} unter den Kandidaten`); }
+  // 13.10.2026 (R1): Vorrang-Zeilen dürfen Kennung ODER echte pid sein
+  if (vor.length) { const rang = p => { const i = vor.indexOf(p); return i < 0 ? 1e9 : i; }; const r2 = x => Math.min(rang(x.pid), rang(x.cjpid)); reihe = [...reihe].sort((a, b) => r2(a) - r2(b)); console.log(`Reel-Vorrang: ${vor.join(', ')} → ${reihe.filter(x => vor.includes(x.pid) || vor.includes(x.cjpid)).length} unter den Kandidaten`); }
 } catch {}
 if (process.env.NUR_PID && process.env.NEU_RENDERN !== '1') {
   const pid = process.env.NUR_PID;
-  reihe = reihe.filter(x => x.pid === pid);
-  if (!reihe.length && !gebaut.has(pid) && !keinVideo.has(pid) && !inCsv.has(pid)) {
-    const r = await gql(`query($q:String){ products(first:5, query:$q){ nodes{ id title handle status tags mediaCount{count} description(truncateAt:260) variants(first:1){nodes{price sku}} } } }`, { q: `sku:CJ-${pid}` });
+  reihe = reihe.filter(x => x.pid === pid || x.cjpid === pid);
+  // 13.10.2026 (R1): NUR_PID darf Kennung oder echte pid sein; CJ wird nur mit der echten pid gefragt (cjPidAus).
+  if (!reihe.length && !gesperrt(pid, kennungVon(pid))) {
+    const r = await gql(`query($q:String){ products(first:5, query:$q){ nodes{ id title handle status tags mediaCount{count} description(truncateAt:260) variants(first:1){nodes{price sku}} } } }`, { q: `sku:CJ-${kennungVon(pid)}` });
     for (const n of r?.data?.products?.nodes || []) {
-      const m = /^CJ-([0-9A-Za-z-]{10,})/.exec(n.variants.nodes[0]?.sku || ''); if (!m || m[1] !== pid) continue;
+      const sku = n.variants.nodes[0]?.sku || '', kennung = kennungAus(sku), cjpid = cjPidAus(sku);
+      if (!kennung || !cjpid || (kennung !== pid && cjpid !== pid)) continue;
       const price = parseFloat(n.variants.nodes[0]?.price || '0');
-      if (n.status !== 'ACTIVE' || price < 14.9 || (n.mediaCount?.count || 0) < 2 || VERBOTEN.test(n.title)) { console.log(`NUR_PID ${pid}: faellt an der Schwelle (${n.status}, CHF ${price}, ${n.mediaCount?.count} Bilder)`); continue; }
-      if (produktGepostet(`«${kurzTitel(n.title)}»`, `cjreel-${pid}`)) { console.log(`NUR_PID ${pid}: Produkt schon gepostet`); continue; }
-      reihe.push({ pid, title: n.title.trim(), handle: n.handle, price, desc: n.description || '', tags: n.tags || [] });
+      if (n.status !== 'ACTIVE' || price < 14.9 || (n.mediaCount?.count || 0) < 2 || VERBOTEN.test(n.title) || sperrGrund(n.tags, n.title)) { console.log(`NUR_PID ${pid}: faellt an der Schwelle (${n.status}, CHF ${price}, ${n.mediaCount?.count} Bilder, ${sperrGrund(n.tags, n.title) || 'keine Sperre'})`); continue; }
+      if (gesperrt(kennung, cjpid)) { console.log(`NUR_PID ${pid}: gesperrt (Ledger/CSV/Tor)`); continue; }
+      if (produktGepostet(`«${kurzTitel(n.title)}»`, `cjreel-${kennung}`)) { console.log(`NUR_PID ${pid}: Produkt schon gepostet`); continue; }
+      reihe.push({ pid: kennung, cjpid, gid: n.id, title: n.title.trim(), handle: n.handle, price, desc: n.description || '', tags: n.tags || [] });
     }
   }
   console.log(`NUR_PID ${pid}: ${reihe.length ? 'Kandidat' : 'KEIN Kandidat (Ledger/CSV/Schwelle)'}`);
@@ -487,7 +699,9 @@ if (!DRY) {
       if (n.status !== 'ACTIVE') { console.log(`   Nachtrag ${pid}: Produkt ${n.status} — keine Zeile`); continue; }
       const th = thema(k.title), hook = hookFuer(th, pid, k.title);
       appendReel(`cjreel-${pid}`, url, caption(hook, k, nutzen(n.description || '')), hashtags(k.title, pid), 'instagram,facebook');
-      fs.appendFileSync(LEDGER, pid + '\n'); gebaut.add(pid); inCsv.add(pid); nachgetragen++;
+      // 13.10.2026 (R1 Schritt 6): beide Schlüssel ins Ledger (Kennung + echte pid)
+      const cjp = cjPidAus(n.variants.nodes[0]?.sku);
+      fs.appendFileSync(LEDGER, pid + '\n' + (cjp && cjp !== pid ? cjp + '\n' : '')); gebaut.add(pid); if (cjp) gebaut.add(cjp); inCsv.add(pid); nachgetragen++;
       console.log(`   ✅ Nachtrag: ${pid} [${th}] ${k.title.slice(0, 50)} → queue`);
     }
   }
@@ -499,29 +713,39 @@ const letzteMusik = fs.existsSync('/tmp/_reel_last_music') ? fs.readFileSync('/t
 for (const k of reihe) {
   if (made >= BATCH || gefragt >= FRAGEN) break;
   if (zumServer.length >= 3) break;   // 28.09.: ein Server-Auftrag trägt 3 Videos — weiter fragen kostet nur CJ-Punkte
+  // 13.10.2026 (R1): k.cjpid fehlt nur bei Altfällen → wie bisher die Kennung. Sperre über beide Schlüssel auch hier
+  // (Index und Scan können im selben Lauf dasselbe Produkt liefern; gebaut wird nach jedem Reel nachgeführt).
+  k.cjpid = k.cjpid || k.pid;
+  if (gesperrt(k.pid, k.cjpid)) continue;
   gefragt++;
-  let vurl = '';
-  try { vurl = await cjVideo(k.pid); } catch (e) { console.log('  ✗ ' + e.message + ' — Lauf endet'); break; }
-  if (!vurl) { if (!DRY) fs.appendFileSync(KEINVIDEO, `${k.pid}\t${new Date().toISOString().slice(0, 10)}\n`); continue; }
+  let cv;
+  try { cv = await cjVideo(k.cjpid); } catch (e) { console.log('  ✗ ' + e.message + ' — Lauf endet'); break; }
+  // R1 Schritt 1: nur «leer» ist «kein Video» (Ledger mit der echten pid); «fehler» → Tagessperre, morgen neu fragen
+  if (cv.fehler) { console.log(`   ${k.pid}: CJ-Fehler (${cv.fehler}) → Tagessperre, kein kein-Video-Eintrag`); if (!DRY) fehlerMerken(k.cjpid, cv.fehler); continue; }
+  if (!cv.url) { if (!DRY) fs.appendFileSync(KEINVIDEO, `${k.cjpid}\t${new Date().toISOString().slice(0, 10)}\n`); continue; }
+  const vurl = cv.url;
+  // R1 Schritt 4 für Scan-/NUR_PID-Kandidaten (Index-Kandidaten sind schon geprüft): erst nach dem Video-Fund, damit die
+  // vielen Leerfragen des Scans keine Shopify-Abfrage kosten. Durchgefallen → überspringen, kein Ledger.
+  if (!k.probe) { const pr = await posterProbe(k.pid, k.gid); if (pr) { console.log(`   ${k.pid}: Poster-Probe ✗ (${pr}) → übersprungen, kein Ledger`); continue; } k.probe = true; }
   // HOOK=<Text> (23.09.2026, nur sinnvoll mit NUR_PID): Hook vorgeben, wenn die Themenliste nicht passt («Dein Zuhause,
   // gemütlicher» auf einer Halloween-Lampe). Kein Lernwert — die Lernschleife kennt nur ihre eigenen Hooks.
   const th = thema(k.title), hook = (process.env.NUR_PID && process.env.HOOK) || hookFuer(th, k.pid, k.title), [z1, z2] = zeilen(k.title);
   const benefit = nutzen(k.desc);
   const cap = caption(hook, k, benefit);
   const tags = hashtags(k.title, k.pid);
-  console.log(`→ ${k.pid} [${th}] ${k.title.slice(0, 60)} · CHF ${k.price}\n   Hook: ${hook} · Titel: ${z1} / ${z2}\n   Video: ${vurl.slice(0, 70)}`);
+  console.log(`→ ${k.pid}${k.cjpid !== k.pid ? ` (CJ-pid ${k.cjpid})` : ''} [${th}] ${k.title.slice(0, 60)} · CHF ${k.price}\n   Hook: ${hook} · Titel: ${z1} / ${z2}\n   Video: ${vurl.slice(0, 70)}`);
   if (DRY) { console.log(`   Stimme: ${stimmeDry(k.pid, th, hook, k, benefit)}`); made++; continue; }
   const src = `/tmp/reelbuild/src_${k.pid}.mp4`, out = `/tmp/reelbuild/reel_${k.pid}.mp4`;
   let st = { ja: false, grund: 'anteil' };
   try {
-    const lokal = serverQuelle(k.pid);
+    const lokal = serverQuelle(k.cjpid);
     if (lokal) { fs.copyFileSync(lokal, src); console.log(`   Quelle vom Server: ${lokal}`); }
     else {
       try { execFileSync('curl', ['-s', '-L', '--fail', '--max-time', '180', '-H', 'Referer: https://developers.cjdropshipping.com/', '-o', src, vurl], { stdio: 'ignore' }); }
       catch { fs.rmSync(src, { force: true }); }
       if (!fs.existsSync(src) || fs.statSync(src).size < 200000) {
         fs.rmSync(src, { force: true });
-        if (/^https:\/\/download-only-api\.cjdropshipping\.com\/.+\.mp4$/i.test(vurl) && !sqAngefragt(k.pid)) zumServer.push({ pid: k.pid, url: vurl });
+        if (/^https:\/\/download-only-api\.cjdropshipping\.com\/.+\.mp4$/i.test(vurl) && !sqAngefragt(k.cjpid)) zumServer.push({ pid: k.cjpid, url: vurl });
         console.log('   Download gesperrt/leer → über den Server'); continue;
       }
     }
@@ -572,7 +796,9 @@ for (const k of reihe) {
     try { code = execFileSync('curl', ['-s', '-o', '/dev/null', '-w', '%{http_code}', '--max-time', '30', '-r', '0-1000', url], { encoding: 'utf8' }); } catch {}
     if (!/^20[06]$/.test(code)) { console.log(`   Adresse antwortet ${code} — Reel bleibt im Repo, Zeile folgt beim naechsten Lauf`); continue; }
     appendReel(`cjreel-${k.pid}`, url, cap, tags, 'instagram,facebook');
-    fs.appendFileSync(LEDGER, k.pid + '\n'); fs.writeFileSync('/tmp/_reel_last_music', musik); musikMerken(`cjreel-${k.pid}`, mw, th, st);
+    // 13.10.2026 (R1 Schritt 6): BEIDE Schlüssel ins gebaut-Ledger — Kennung und echte pid
+    fs.appendFileSync(LEDGER, k.pid + '\n' + (k.cjpid !== k.pid ? k.cjpid + '\n' : '')); gebaut.add(k.pid); gebaut.add(k.cjpid);
+    fs.writeFileSync('/tmp/_reel_last_music', musik); musikMerken(`cjreel-${k.pid}`, mw, th, st);
     gitPush([CSV, LEDGER, KEINVIDEO, VERLAUF], `Reel-Queue: ${k.pid} ready`);
     made++; console.log(`   ✅ Reel ${made}/${BATCH} → queue (${url.slice(-40)})`);
   } catch (e) { console.log('   Fehler:', String(e.message || e).slice(0, 120)); }
