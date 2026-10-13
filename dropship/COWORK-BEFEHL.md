@@ -1,6 +1,6 @@
 # COWORK-BEFEHL — Fassung 21.09.2026, 09:40 UTC (für heute Abend)
 
-## 🆕 13.10. 05:00 UTC — Hetzner: zwei alte Cron-Zeilen abschalten (~2 Min, Hetzner-Konsole als root)
+## ✅ 13.10. 05:00 UTC — Hetzner: zwei alte Cron-Zeilen abschalten — ERLEDIGT 07:45 UTC von der Sitzung (Betreiber «mach du hetzner»; Wartungsaktion `alt_cron_aus`, Quittung `auftraege/erledigt/alt-cron-aus-2026-10-13.json`: aktiv 0, abgeschaltet 2, Sicherung auf dem Server). Nichts mehr zu tun.
 Der Server startet jeden Morgen um 04:00 UTC alten Code aus `/opt/luxe/repo` (toter Zweig vom 06.09.). Dieser Code
 schreibt in rund 750 Produkte «Lieferzeit … 🇺🇸 USA: 12–22 Tage» und fasst insgesamt rund 1'400 Produkte an.
 ```bash

@@ -8,8 +8,10 @@
 - **Ursache:** Die root-Crontab des Hetzner-Servers startet täglich um **04:00 UTC** `run-api-jobs.sh`. Das Skript
   stammt aus dem alten Klon `/opt/luxe/repo`, Zweig `claude/luxestyle-product-CizQ6`. Dieser Zweig ist seit dem
   06.09.2026 tot. Das Skript startet von dort rund 20 alte Shopify-Schreiber, darunter `delivery_block.mjs` (LIMIT 1000).
-- **Abschalten kann nur der Betreiber.** Mein Versuch, dafür eine feste Wartungsaktion für den Hetzner-Agenten zu
-  bauen, hat der Klassifikator abgelehnt («Remote Shell Writes»). Die Befehle für dich stehen unten.
+- **✅ ABGESCHALTET 13.10.2026 07:45:43 UTC** (Betreiber «mach du hetzner»): Wartungsaktion `alt_cron_aus` über den
+  Hetzner-Agenten — Quittung `auftraege/erledigt/alt-cron-aus-2026-10-13.json`: «aktiv mit /opt/luxe/repo: 0 ·
+  abgeschaltet (Marke): 2», Sicherung der ganzen Crontab unter `/var/lib/luxe-agent/` (600). Rückweg: Auftrag mit
+  `"aktion": "alt_cron_zurueck"`. (Vorher hatte der Klassifikator dieselbe Aktion ohne ausdrückliche Freigabe abgelehnt.)
 - **Bis dahin:** Die Ampel meldet den Zustand stündlich, die Reparatur läuft jeden Morgen ab 04:25. Seiten mit
   Besuchern werden zuerst repariert.
 
@@ -83,3 +85,14 @@ crontab -l | grep -c '^[^#].*/opt/luxe/repo'      # muss 0 ausgeben
 - Betreiber: die Cron-Zeilen abschalten (Befehl oben).
 - Danach prüfen, ob die übrigen alten Jobs etwas gehalten haben, das heute noch gebraucht wird. Das Metafeld
   `luxe.vps_last_run` (stamp_alive) liest im aktuellen Zweig niemand (`grep -r vps_last_run` über .py/.mjs/.sh/.js: 0 Treffer).
+
+## Nachtrag 13.10. 07:45 UTC — abgeschaltet
+- `server/alt-cron-aus.sh` (idempotent): setzt vor jede nicht auskommentierte Zeile mit `/opt/luxe/repo` die Marke
+  `#luxe-aus-toter-zweig `. Vorher sichert es die ganze Crontab (Modus 600, Name mit Modus + PID, `noclobber`; im Test
+  hatte «aus» + «zurück» in derselben Sekunde die erste Sicherung überschrieben). `--zurueck` entfernt genau die Marke.
+- `server/wartung.mjs`: Aktionen `alt_cron_aus` / `alt_cron_zurueck` (EIN Skript aus server/, feste Argumente, Crontab
+  in der Quittung nur in Allowlist-Form). `server/wartung.test.mjs` 13/13. End-to-End mit Ersatz-Crontab: «aus» → 2
+  markiert; zweiter Lauf «nichts zu tun»; «zurück» = Originaldatei Byte für Byte; `SECRET=abc` erscheint in der Quittung als «…».
+- Server-Quittung: `aktiv mit /opt/luxe/repo: 0`, `abgeschaltet (Marke): 2`; `crontab -l` zeigt keine aktive luxe-Zeile mehr.
+- **Wirkung messen:** Ampel `alter_lieferblock()` muss nach der Reparatur auf 0 fallen und **am 14.10. nach 04:00 UTC
+  bei 0 bleiben**. Steigt sie wieder, schreibt ein anderer Job.

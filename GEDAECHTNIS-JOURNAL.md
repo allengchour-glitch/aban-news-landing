@@ -76,6 +76,9 @@
   hätte («Remote Shell Writes»). Danach lehnte er auch einen Lesebefehl auf den Entwurf ab. Nicht umgangen: Entwurf
   gelöscht, Befehl für den Betreiber in `dropship/ZOMBIE-CRON-2026-10-13.md`. Eine Server-Konfiguration zu ändern braucht
   die ausdrückliche Freigabe des Betreibers, auch über den eigenen Auftragskanal.
+- **Nachtrag 07:45:** Betreiber «mach du hetzner» → Aktion `alt_cron_aus` gebaut (Sicherung 600 + noclobber, Marke statt
+  Löschen, Rückweg `alt_cron_zurueck`, Tests 13/13, End-to-End mit Ersatz-Crontab) → Server-Quittung «aktiv 0, abgeschaltet 2».
+  Mit der Freigabe ging dieselbe Aktion durch. Weg für Server-Änderungen: fragen → Freigabe → feste Aktion mit Rückweg.
 - **Wächter:** Die Ampel `alter_lieferblock()` zählt live (`productsCount`, «je nach Land»), 04:45: 917. Steigt die Zahl
   jeden Morgen, läuft der Cron noch.
 - **Reparatur nach Besuch sortieren:** 163 beschädigte Seiten mit Besuch in 60 Tagen per `LISTE=` zuerst. Aurora und
