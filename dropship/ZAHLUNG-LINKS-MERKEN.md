@@ -57,3 +57,8 @@
   Ledger 1 Eintrag (kein Doppel), `cj_zahlung_offen.py`: «2 zu bezahlen ($93.23): LX1025 LX1026».
 - Zahllink: https://cjdropshipping.com/mine/dropshipping/orderList?orderType=5 — dort **SD2610121602510642100 / LX1025 $73.29** und
   **SD2610121956040669300 / LX1026 $19.94** bezahlen, zusammen **$93.23**; leere `DP…`/«#…»-Hüllen ohne Betrag nie.
+
+## 13.10.2026 ~15:00 UTC: LX1025 + LX1026 bezahlt (Betreiber «alle zahlung bezahlt in cj»)
+- An der CJ-API bestätigt: `cj_order_watch.py` meldet **LX1025 UNPAID → UNSHIPPED** und **LX1026 UNPAID → UNSHIPPED**, `cj_zahlung_offen.py` «nichts offen».
+- Bestell-Ampel danach: #1025, #1026 und #1023 «bezahlt, wartet auf Versand», #1024 bei Mister DTF. **Kein Zahllink offen.**
+- Die Sendungsnummern holt der Abgleich (alle 2 h) und schreibt sie an Shopify zurück.
