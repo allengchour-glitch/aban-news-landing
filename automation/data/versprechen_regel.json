@@ -530,5 +530,101 @@
     ],
     "dativ_vor": "\\b(?:mit|aus|von|vom|zu|zum|zur|bei|beim|nach|seit|samt|mitsamt|den)\\b(?:(?!\\b(?:für|durch|gegen|ohne|um|die|ist|sind)\\b)[^.!?;:<>])*$",
     "singular_vor": "\\b(?:einen|einem|dem|(?:für|durch|gegen|ohne|um) den)\\s+(?:[^\\s<>.,;!?]+\\s+){0,2}$"
+  },
+  "kosmetik_beleg": {
+    "_zweck": "Kauf-Strecke Klasse 12 (13.10.2026): «Tunmate Rizinusöl» war laut Karton ein CASTOR HAIR OIL mit 12 Zutaten (Mineral Oil, Fragrance), der Text sagte «aus den Samen des Rizinusbaums gewonnen»; «Geprüfte Angaben» stand auf 1'769 Kosmetik-Seiten ohne Inhaltsstoff-Liste. Wächter versprechen_wache.py (täglich): zählt Kosmetik ohne INCI-Beleg und meldet Reinstoff-Titel, deren Text eine Mischung belegt. Schreibt nichts — Titel ändern nur mit Beleg (Karton zweimal gelesen).",
+    "typen": [
+      "Hautpflege",
+      "Make-up",
+      "Haarpflege"
+    ],
+    "inci_marker": [
+      "INCI",
+      "Inhaltsstoffe:",
+      "Ingredients:",
+      "Zutaten:"
+    ],
+    "theme_marker": "kosmetik-inci-bedingung",
+    "reinstoff": "(?:rizinus|argan|kokos(?:nuss)?|jojoba|mandel|teebaum|rosmarin|batana|hagebutten(?:kern)?|avocado|oliven|traubenkern|schwarzkümmel|lavendel|pfefferminz|kürbiskern|marula|tamanu|nachtkerzen|sesam|weizenkeim|hanf(?:samen)?|baobab|moringa|kamelien|macadamia)[- ]?öl|shea[- ]?butter|sheabutter|kakaobutter|mangobutter|aloe[- ]?vera[- ]?gel|\\bsqualan\\b|\\bvaseline\\b",
+    "reinstoff_form": "serum|creme|crème|cream|shampoo|spülung|maske|balsam|lippen|seife|spray|wickel|\\bset\\b|mischung|haaröl|körperöl|massageöl|gesichtsöl|bartöl|nagelöl|duft|parfum|kerze|lotion|peeling|scrub|stift|stick|tonic|essenz|ampulle|conditioner|\\bkur\\b|\\bgel\\b|\\bmit\\b|&|\\+|pads?\\b|patch|kapsel",
+    "mischung_beleg": "mineral ?oil|mineralöl|paraffin|petrolatum|fragrance|\\bparfum\\b|duftstoff|ölmischung|\\bblend\\b",
+    "kanarien_reinstoff": [
+      [
+        "Tunmate Rizinusöl",
+        true
+      ],
+      [
+        "Tunmate Marokkanisches Arganöl",
+        true
+      ],
+      [
+        "Tunmate Shea Butter 237g",
+        true
+      ],
+      [
+        "Rosmarinöl, ätherisch 10ml",
+        true
+      ],
+      [
+        "Rizinusöl Wimpernserum",
+        false
+      ],
+      [
+        "Tunmate Rizinus-Haaröl (Ölmischung) · 60 ml",
+        false
+      ],
+      [
+        "Feuchtigkeitsspendender Lippenbalsam mit Kokosöl",
+        false
+      ],
+      [
+        "Haarmaske & Batana-Öl Pflegeset",
+        false
+      ],
+      [
+        "Rizinusöl-Wickel wiederverwendbar · Bauch & Nacken",
+        false
+      ],
+      [
+        "Schleifenhaarband aus Samt",
+        false
+      ]
+    ],
+    "kanarien_inci": [
+      [
+        "<h3>Inhaltsstoffe (INCI, laut Verpackung)</h3><p>Ricinus Communis Seed Oil</p>",
+        true
+      ],
+      [
+        "<p><strong>Inhaltsstoffe:</strong> Wasser, Glycerin</p>",
+        true
+      ],
+      [
+        "<p>Enthält pflegende Inhaltsstoffe wie Honig.</p>",
+        false
+      ],
+      [
+        "<p>Mit feuchtigkeitsspendenden Inhaltsstoffen.</p>",
+        false
+      ]
+    ],
+    "kanarien_mischung": [
+      [
+        "Ricinus Communis Seed Oil, Mineral Oil, Fragrance",
+        true
+      ],
+      [
+        "100 % reines Rizinusöl, kaltgepresst",
+        false
+      ],
+      [
+        "Parfumfrei und mild",
+        false
+      ],
+      [
+        "Enthält Duftstoff",
+        true
+      ]
+    ]
   }
 }

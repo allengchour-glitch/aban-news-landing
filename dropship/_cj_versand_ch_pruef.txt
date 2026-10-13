@@ -8201,3 +8201,4 @@ zirkon-armband-mit-ring-608600	2607050044281609200	16	4.78	ok	landeseite
 minimalistisches-armreif-set-im-japanisch-kore-351041	2073898724235042817	16	4.81	ok	landeseite
 titan-stahl-armband-mit-schleife-617900	2607041154291618600	16	4.60	ok	landeseite
 business-quarzuhr-im-retro-look-fur-herren-637300	2606110646071638200	7	5.96	ok	landeseite
+engine-movement-herren-quarzuhr-638600	2606100255151639300	7	6.49	ok	landeseite
