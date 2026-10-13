@@ -22,9 +22,29 @@ REGEL (Tabelle data/anlass_kollektionen.json):
   → Wache rechtzeitig bis Mo 26.10. (Kasse: Di 27.10. vor 12 Uhr); ab 27.10. meldet sie «auch Schweizer Lager zu spät».
 Nichts wird gelöscht oder gedraftet — nur die Reihenfolge.
 
+13.10.2026 abends (Kauf-Strecke Klasse 3, Richter): Die CJ-Halloween-Ware zeigte «Lieferung 28. Okt – 11. Nov» ohne ein Wort
+zu Halloween, und die Wache meldete «alles rechtzeitig bis 29.10.», weil sie nach der KALIBRIERTEN Ankunft (12 WT) fragte,
+nicht nach dem, was Seite und Kasse ANZEIGEN (bis 21 WT). Jetzt:
+  (a) Umsortieren ab hinweis_ab = erster Tag, an dem heute + zusage_langsam_max (21 WT) nach dem Anlass liegt — also sobald
+      die Kasse für Direktversand ein Datum nach dem Anlass zeigen KANN (Halloween: seit Fr 02.10.), nicht erst ab dem Kipptag.
+  (c/d) Hinweis auf der Produktseite: Block «lux_anlass_hinweis» in templates/product.json liest das Shop-Metafeld
+      luxe.anlass_hinweis (JSON), das NUR diese Wache schreibt (ausserhalb aller Fenster gelöscht → Hinweis aus):
+        vor dem Kipptag  «Lieferung vor Halloween (Sa, 31. Okt.) nicht garantiert»
+        ab dem Kipptag   «Kommt erst nach Halloween (Sa, 31. Okt.) an»
+        Kipptag = erster Tag mit heute + langsam (12 WT, Kalibrierung) > Anlass → Halloween Do 15.10.
+        Link «Rechtzeitig: Halloween ab Schweizer Lager →» nur bis schnell_bis (letzter Tag mit + schnell 4 WT ≤ Anlass →
+        Mo 26.10.) und nur auf eine Kollektion, deren obersten 12 aktiven Artikel ALLE im Profil «CH-Lager» liegen.
+      Der Block zeigt NIE etwas auf Ware mit Tag «profil-ch-lager» (die Kasse rechnet dort kurz).
+  Wächter: prüft per Admin-API, dass der Block in der LIVE-Datei steht und das Metafeld dem Soll entspricht
+  (Stand dropship/_anlass_hinweis.json, Zeile «ANLASS-HINWEIS: …»).
+  (e) kostueme-ch-lager: Die Regel verknüpfte «peruecke»/«kostuem-hut» mit ODER und liess CJ-Perücken hinein (Platz 1 =
+      CJ-Perücke aus Asien). Regel jetzt mit «kostuem-ch-zubehoer» statt dieser beiden; das Zeichen setzt/entfernt diese
+      Wache täglich auf Ware mit ch-lager UND (peruecke ODER kostuem-hut) — fängt auch neue Fortura-Importe.
+
   python3 automation/anlass_lieferzeit_wache.py               # Trockenlauf (Standard)
   SCHARF=1 python3 automation/anlass_lieferzeit_wache.py      # umsortieren + zurücklesen
   python3 automation/anlass_lieferzeit_wache.py --selbsttest
+  python3 automation/anlass_lieferzeit_wache.py --hinweis   # nur Hinweis-Soll + Theme-/Metafeld-Prüfung (Trockenlauf)
 """
 import datetime as dt, json, os, sys, time
 
@@ -34,6 +54,16 @@ TABELLE = os.path.join(REPO, "data", "anlass_kollektionen.json")
 LEDGER = os.path.join(REPO, "dropship", "_anlass_sort.tsv")
 BERICHT = os.path.join(REPO, "dropship", "ANLASS-LIEFERZEIT.md")
 SCHARF = os.environ.get("SCHARF") == "1"
+STAND_HINWEIS = os.path.join(REPO, "dropship", "_anlass_hinweis.json")
+LEDGER_ZUBEHOER = os.path.join(REPO, "dropship", "_kostuem_ch_zubehoer.tsv")
+THEME = "gid://shopify/OnlineStoreTheme/187533001089"
+BLOCK_MARKE = "LUX-ANLASS-HINWEIS"
+META_NS, META_KEY = "luxe", "anlass_hinweis"
+MARKE_PROFIL = "profil-ch-lager"
+ZUBEHOER_TAG = "kostuem-ch-zubehoer"
+ZUBEHOER_QUELLE = ("peruecke", "kostuem-hut")
+WOCHENTAG = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]
+MONAT = ["Jan.", "Feb.", "März", "Apr.", "Mai", "Juni", "Juli", "Aug.", "Sept.", "Okt.", "Nov.", "Dez."]
 
 
 def plus_werktage(tag, n):
@@ -43,6 +73,40 @@ def plus_werktage(tag, n):
         if d.weekday() < 5:
             n -= 1
     return d
+
+
+def erster_tag_zu_spaet(datum, wt):
+    """Erster Kalendertag d, an dem plus_werktage(d, wt) > datum (ab hier ist eine Zusage von wt Werktagen zu spät)."""
+    d = datum - dt.timedelta(days=wt * 2 + 14)
+    while plus_werktage(d, wt) <= datum:
+        d += dt.timedelta(days=1)
+    return d
+
+
+def datum_text(d):
+    return f"{WOCHENTAG[d.weekday()]}, {d.day}. {MONAT[d.month - 1]}"
+
+
+def hinweis_fenster(datum, wt):
+    """→ dict mit ab / kipptag / schnell_bis (date) für einen Anlass, aus der Kalibrierung in data/anlass_kollektionen.json."""
+    return {"ab": erster_tag_zu_spaet(datum, wt["zusage_langsam_max"]),
+            "kipptag": erster_tag_zu_spaet(datum, wt["langsam"]),
+            "schnell_bis": erster_tag_zu_spaet(datum, wt["schnell"]) - dt.timedelta(days=1)}
+
+
+def hinweis_eintrag(a, datum, f, link):
+    """Ein Eintrag im Metafeld (Liquid vergleicht Zahlen JJJJMMTT, Texte sind fertig formatiert)."""
+    z = lambda d: d.strftime("%Y%m%d")  # noqa: E731
+    return {"tag": a["hinweis_tag"], "anlass": a["anlass"], "datum": z(datum), "datum_text": datum_text(datum),
+            "ab": z(f["ab"]), "kipptag": z(f["kipptag"]), "schnell_bis": z(f["schnell_bis"]),
+            "schnell_bis_text": datum_text(f["schnell_bis"]), "link": f"/collections/{link}" if link else ""}
+
+
+def top_schnell(prods, n=12):
+    """(alle obersten n aktiven schnell?, Zahl schnell unter den obersten n aktiven)."""
+    akt = [p for p in prods if p[1]][:n]
+    k = sum(1 for p in akt if p[2])
+    return (len(akt) > 0 and k == len(akt)), k
 
 
 def schnell(tags, sku):
@@ -125,25 +189,117 @@ def umsortieren(gql, c, ziel, alt_sort):
     return None
 
 
-def main():
-    from seo_autopilot import gql
+def _gql():
+    try:
+        from kaufwille_zeile import gql   # wartet bei Drosselung statt aufzugeben
+    except Exception:  # pragma: no cover
+        from seo_autopilot import gql
+    return gql
+
+
+def shop_id(gql):
+    return gql("{ shop { id } }")["shop"]["id"]
+
+
+def metafeld_lesen(gql):
+    m = gql('{ shop { metafield(namespace:"%s", key:"%s"){ value updatedAt } } }' % (META_NS, META_KEY))["shop"]["metafield"]
+    if not m:
+        return None, None
+    try:
+        return json.loads(m["value"]), m["updatedAt"]
+    except Exception:
+        return {"_kaputt": m["value"][:80]}, m["updatedAt"]
+
+
+def metafeld_schreiben(gql, wert):
+    """wert None → löschen (Hinweis aus). Sonst JSON setzen. → Fehlertext oder None."""
+    sid = shop_id(gql)
+    if wert is None:
+        r = gql('mutation($m:[MetafieldIdentifierInput!]!){ metafieldsDelete(metafields:$m){ deletedMetafields{ key } '
+                'userErrors{ message } } }', {"m": [{"ownerId": sid, "namespace": META_NS, "key": META_KEY}]})
+        e = (r.get("metafieldsDelete") or {}).get("userErrors")
+        return f"Löschen abgelehnt: {e}" if e else None
+    r = gql('mutation($m:[MetafieldsSetInput!]!){ metafieldsSet(metafields:$m){ metafields{ key } userErrors{ message } } }',
+            {"m": [{"ownerId": sid, "namespace": META_NS, "key": META_KEY, "type": "json",
+                    "value": json.dumps(wert, ensure_ascii=False)}]})
+    e = (r.get("metafieldsSet") or {}).get("userErrors")
+    return f"Setzen abgelehnt: {e}" if e else None
+
+
+def block_im_theme(gql):
+    """True/False: steht der Hinweis-Block (Marke + Metafeld-Zugriff) in der LIVE-Datei templates/product.json?"""
+    t = gql('query($id:ID!){ theme(id:$id){ role files(filenames:["templates/product.json"], first:1){ nodes{ '
+            'body{ ... on OnlineStoreThemeFileBodyText{ content } } } } } }', {"id": THEME})["theme"]
+    nodes = (t or {}).get("files", {}).get("nodes") or []
+    if not nodes:
+        return False
+    c = nodes[0]["body"]["content"]
+    return BLOCK_MARKE in c and f"metafields.{META_NS}.{META_KEY}" in c and MARKE_PROFIL in c
+
+
+def zubehoer_abgleich(gql):
+    """Zeichen «kostuem-ch-zubehoer» = ch-lager UND (peruecke ODER kostuem-hut). Hängt an der Regel von kostueme-ch-lager
+    (statt der beiden Lieferanten-übergreifenden Tags). Setzt/entfernt nur mit SCHARF. → (gesetzt, entfernt, soll, ist)."""
+    soll, ist, cur = set(), set(), None
+    q = " OR ".join(f"tag:'{t}'" for t in ZUBEHOER_QUELLE + (ZUBEHOER_TAG,))
+    while True:
+        d = gql('query($c:String,$q:String!){ products(first:250, after:$c, query:$q){ pageInfo{ hasNextPage endCursor } '
+                'nodes{ id tags } } }', {"c": cur, "q": q})["products"]
+        for p in d["nodes"]:
+            t = set(p["tags"])
+            if "ch-lager" in t and t & set(ZUBEHOER_QUELLE):
+                soll.add(p["id"])
+            if ZUBEHOER_TAG in t:
+                ist.add(p["id"])
+        if not d["pageInfo"]["hasNextPage"]:
+            break
+        cur = d["pageInfo"]["endCursor"]
+    add, weg = sorted(soll - ist), sorted(ist - soll)
+    n_add = n_weg = 0
+    if SCHARF:
+        for ids, mut, art in ((weg, "tagsRemove", "weg"), (add, "tagsAdd", "neu")):
+            for i in range(0, len(ids), 20):
+                teil = ids[i:i + 20]
+                q2 = "mutation{" + " ".join(f'a{j}:{mut}(id:"{x}",tags:["{ZUBEHOER_TAG}"]){{userErrors{{message}}}}'
+                                           for j, x in enumerate(teil)) + "}"
+                r = gql(q2)
+                with open(LEDGER_ZUBEHOER, "a", encoding="utf-8") as f:
+                    for j, x in enumerate(teil):
+                        if not (r.get(f"a{j}") or {}).get("userErrors", ["?"]):
+                            f.write(f"{dt.datetime.utcnow():%Y-%m-%dT%H:%MZ}\t{art}\t{x}\n")
+                            if art == "neu":
+                                n_add += 1
+                            else:
+                                n_weg += 1
+    return n_add, n_weg, len(soll), len(ist)
+
+
+def main(nur_hinweis=False):
+    gql = _gql()
     tab = json.load(open(TABELLE, encoding="utf-8"))
     wt = tab["lieferung_werktage"]
     heute = dt.date.today()
     zeilen, zahl = [], {"umsortiert": 0, "schon_richtig": 0, "rechtzeitig": 0, "zurueck": 0, "zu_spaet_alles": 0, "fehlt": 0}
+    hinweise, cache = {}, {}
+
+    def laden(h):
+        if h not in cache:
+            cache[h] = lade(gql, h)
+        return cache[h]
+
     for a in tab["anlaesse"]:
         datum = dt.date.fromisoformat(a["datum"])
-        frist_schnell, frist_langsam = plus_werktage(heute, wt["schnell"]), plus_werktage(heute, wt["langsam"])
-        c, prods = lade(gql, a["handle"])
+        frist_schnell = plus_werktage(heute, wt["schnell"])
+        fen = hinweis_fenster(datum, wt)
+        c, prods = laden(a["handle"])
         if not c:
             zahl["fehlt"] += 1; zeilen.append(f"| {a['handle']} | — | Kollektion fehlt | — |"); continue
         c["handle"] = a["handle"]
         n_akt = sum(1 for p in prods if p[1]); n_schnell = sum(1 for p in prods if p[1] and p[2])
-        oben = prods[:12]
-        oben_langsam = sum(1 for p in oben if p[1] and not p[2])
+        oben_langsam = sum(1 for p in prods[:12] if p[1] and not p[2])
         if heute > datum:
             alt = ledger_alt(a["handle"])
-            if alt and c["sortOrder"] == "MANUAL":
+            if alt and c["sortOrder"] == "MANUAL" and not nur_hinweis:
                 if SCHARF:
                     gql('mutation($i:CollectionInput!){ collectionUpdate(input:$i){ userErrors{ message } } }',
                         {"i": {"id": c["id"], "sortOrder": alt}})
@@ -152,39 +308,103 @@ def main():
                 zahl["zurueck"] += 1
                 zeilen.append(f"| {a['handle']} | {a['datum']} vorbei | Sortierung zurück auf {alt}{'' if SCHARF else ' (TROCKEN)'} | — |")
             continue
-        if frist_langsam <= datum:
+        if heute < fen["ab"]:
+            # Seite + Kasse zeigen für Direktversand noch ein Datum VOR dem Anlass → nichts zu tun
             zahl["rechtzeitig"] += 1
-            zeilen.append(f"| {a['handle']} | {a['datum']} | alles rechtzeitig (Direktversand bis {frist_langsam}) | {c['sortOrder']} |")
+            zeilen.append(f"| {a['handle']} | {a['datum']} | alles rechtzeitig (Kassen-Zusage Direktversand bis "
+                          f"{plus_werktage(heute, wt['zusage_langsam_max'])}; Hinweis/Sortierung ab {fen['ab']}) | {c['sortOrder']} |")
             continue
-        if frist_schnell > datum:
-            zahl["zu_spaet_alles"] += 1
-            zeilen.append(f"| {a['handle']} | {a['datum']} | auch Schweizer Lager zu spät — nichts umgestellt | {c['sortOrder']} |")
-            continue
-        ziel = ziel_reihenfolge(prods)
-        if [p[0] for p in prods] == ziel and c["sortOrder"] == "MANUAL":
-            zahl["schon_richtig"] += 1
-            zeilen.append(f"| {a['handle']} | {a['datum']} | schon richtig ({n_schnell} Lager-Artikel oben) | MANUAL |")
-            continue
-        fehler = umsortieren(gql, c, ziel, c["sortOrder"]) if SCHARF else None
-        if fehler:
-            zeilen.append(f"| {a['handle']} | {a['datum']} | ⚠️ {fehler} | {c['sortOrder']} |"); continue
-        nach = ""
+        if not nur_hinweis:
+            if frist_schnell > datum:
+                zahl["zu_spaet_alles"] += 1
+                zeilen.append(f"| {a['handle']} | {a['datum']} | auch Schweizer Lager zu spät — nichts umgestellt | {c['sortOrder']} |")
+            else:
+                ziel = ziel_reihenfolge(prods)
+                if [p[0] for p in prods] == ziel and c["sortOrder"] == "MANUAL":
+                    zahl["schon_richtig"] += 1
+                    zeilen.append(f"| {a['handle']} | {a['datum']} | schon richtig ({n_schnell} Lager-Artikel im Profil «CH-Lager» oben) | MANUAL |")
+                else:
+                    fehler = umsortieren(gql, c, ziel, c["sortOrder"]) if SCHARF else None
+                    if fehler:
+                        zeilen.append(f"| {a['handle']} | {a['datum']} | ⚠️ {fehler} | {c['sortOrder']} |"); continue
+                    nach = ""
+                    if SCHARF:
+                        time.sleep(3)
+                        cache.pop(a["handle"], None)
+                        _, neu = laden(a["handle"])
+                        nach = f" · zurückgelesen: oben 12 = {top_schnell(neu)[1]} Lager-Artikel im Profil"
+                    zahl["umsortiert"] += 1
+                    zeilen.append(f"| {a['handle']} | {a['datum']} | Kasse zeigt Direktversand bis "
+                                  f"{plus_werktage(heute, wt['zusage_langsam_max'])} → Lager-Ware (Profil «CH-Lager») nach oben "
+                                  f"({n_schnell} von {n_akt} aktiven; vorher oben 12: {oben_langsam} langsam){nach}"
+                                  f"{'' if SCHARF else ' (TROCKEN)'} | {c['sortOrder']} → MANUAL |")
+        # Hinweis für die Produktseite (einmal je Tag; erste Anlass-Zeile gewinnt)
+        tag = a.get("hinweis_tag")
+        if tag and tag not in hinweise:
+            link = ""
+            if heute <= fen["schnell_bis"]:
+                for k in a.get("link_kandidaten") or []:
+                    if not SCHARF and k == a["handle"] and not nur_hinweis:
+                        # Trockenlauf: die Kollektion wäre nach dem Umsortieren oben schnell, wenn es genug schnelle gibt
+                        ok = n_schnell >= 12
+                    else:
+                        _, kp = laden(k)
+                        ok = top_schnell(kp)[0]
+                    if ok:
+                        link = k
+                        break
+            hinweise[tag] = hinweis_eintrag(a, datum, fen, link)
+            zeilen.append(f"| {a['handle']} | {a['datum']} | Hinweis auf Tag «{tag}» (ohne {MARKE_PROFIL}): "
+                          f"{'«kommt erst nach» ' if heute >= fen['kipptag'] else '«nicht garantiert» '}(Kipptag {fen['kipptag']}, "
+                          f"schnell bis {fen['schnell_bis']}) · Link {('/collections/' + link) if link else '— (keine Kollektion oben schnell)'} | — |")
+
+    # ---- Metafeld (Soll) + Wächter (Theme-Block, Metafeld aktuell)
+    soll = {"stand": heute.isoformat(), "quelle": "automation/anlass_lieferzeit_wache.py",
+            "hinweise": list(hinweise.values())} if hinweise else None
+    ist, ist_upd = metafeld_lesen(gql)
+    vergleich = lambda x: [h for h in (x or {}).get("hinweise", [])]  # noqa: E731
+    mf_fehler = None
+    if vergleich(ist) != vergleich(soll) or (soll is None) != (ist is None):
         if SCHARF:
-            time.sleep(3)
-            _, neu = lade(gql, a["handle"])
-            nach = f" · zurückgelesen: oben 12 = {sum(1 for p in neu[:12] if p[1] and p[2])} Lager-Artikel"
-        zahl["umsortiert"] += 1
-        zeilen.append(f"| {a['handle']} | {a['datum']} | Direktversand erst bis {frist_langsam} → Lager-Ware nach oben "
-                      f"({n_schnell} von {n_akt} aktiven; vorher oben 12: {oben_langsam} Direktversand){nach}"
-                      f"{'' if SCHARF else ' (TROCKEN)'} | {c['sortOrder']} → MANUAL |")
-    with open(BERICHT, "w", encoding="utf-8") as f:
-        f.write(f"# Anlass-Kollektionen: rechtzeitige Ware oben — Stand {dt.datetime.utcnow():%Y-%m-%dT%H:%MZ}\n\n"
-                f"Regel: `automation/anlass_lieferzeit_wache.py`, Tabelle `data/anlass_kollektionen.json` (Schweizer Lager "
-                f"{wt['schnell']} WT, Direktversand {wt['langsam']} WT). Nur die Reihenfolge wird geändert.\n\n"
-                "| Kollektion | Anlass | Ergebnis | Sortierung |\n|---|---|---|---|\n" + "\n".join(zeilen) + "\n")
+            mf_fehler = metafeld_schreiben(gql, soll)
+            ist, ist_upd = metafeld_lesen(gql)
+    mf_aktuell = vergleich(ist) == vergleich(soll) and (soll is None) == (ist is None)
+    im_theme = block_im_theme(gql)
+    befunde = []
+    if hinweise and not im_theme:
+        befunde.append("Hinweis-Block fehlt in der Live-Datei templates/product.json (Marke LUX-ANLASS-HINWEIS)")
+    if not mf_aktuell:
+        befunde.append(f"Metafeld {META_NS}.{META_KEY} nicht aktuell" + (f" ({mf_fehler})" if mf_fehler else "")
+                       + ("" if SCHARF else " — SCHARF=1 schreibt es"))
+    zub = None
+    if not nur_hinweis:
+        try:
+            zub = zubehoer_abgleich(gql)
+        except Exception as e:  # pragma: no cover
+            befunde.append(f"Zubehör-Zeichen nicht abgeglichen: {e}"[:160])
+    stand = {"stand": f"{dt.datetime.utcnow():%Y-%m-%dT%H:%MZ}", "scharf": SCHARF, "hinweise": list(hinweise.values()),
+             "metafeld_aktuell": mf_aktuell, "metafeld_updated": ist_upd, "block_im_theme": im_theme, "befunde": befunde,
+             "zubehoer": dict(zip(("gesetzt", "entfernt", "soll", "ist_vorher"), zub)) if zub else None}
+    if SCHARF or nur_hinweis:
+        json.dump(stand, open(STAND_HINWEIS, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    if not nur_hinweis:
+        with open(BERICHT, "w", encoding="utf-8") as f:
+            f.write(f"# Anlass-Kollektionen: rechtzeitige Ware oben — Stand {dt.datetime.utcnow():%Y-%m-%dT%H:%MZ}\n\n"
+                    f"Regel: `automation/anlass_lieferzeit_wache.py`, Tabelle `data/anlass_kollektionen.json` (Schweizer Lager "
+                    f"{wt['schnell']} WT, Direktversand {wt['langsam']} WT kalibriert, Kassen-Zusage bis {wt['zusage_langsam_max']} WT). "
+                    f"Schnell = Profil «CH-Lager». Geändert wird nur die Reihenfolge, dazu das Metafeld für den Hinweis.\n\n"
+                    "| Kollektion | Anlass | Ergebnis | Sortierung |\n|---|---|---|---|\n" + "\n".join(zeilen) + "\n\n"
+                    f"Hinweis-Metafeld `{META_NS}.{META_KEY}`: {'aktuell' if mf_aktuell else '⚠️ NICHT aktuell'} · Block im Theme: "
+                    f"{'ja' if im_theme else 'NEIN'}" + (f" · Zubehör-Zeichen: +{zub[0]} −{zub[1]} (Soll {zub[2]})" if zub else "")
+                    + ("\n\n⚠️ " + "\n⚠️ ".join(befunde) if befunde else "") + "\n")
     print(f"ANLASS-LIEFERZEIT: umsortiert {zahl['umsortiert']} · schon richtig {zahl['schon_richtig']} · alles rechtzeitig "
           f"{zahl['rechtzeitig']} · zurück {zahl['zurueck']} · fehlt {zahl['fehlt']}{'' if SCHARF else ' (TROCKEN)'} → dropship/ANLASS-LIEFERZEIT.md")
-    return 0
+    print(f"ANLASS-HINWEIS: {len(hinweise)} aktiv ({', '.join(h['tag'] + (' → ' + h['link'] if h['link'] else ' ohne Link') for h in hinweise.values()) or '—'})"
+          f" · Metafeld {'aktuell' if mf_aktuell else 'NICHT aktuell'} · Block im Theme {'ja' if im_theme else 'NEIN'}"
+          + (f" · Zubehör-Zeichen +{zub[0]} −{zub[1]} (Soll {zub[2]})" if zub else ""))
+    for b in befunde:
+        print(f"⚠️ ANLASS-HINWEIS: {b}")
+    return 0 if not befunde else 1
 
 
 def selbsttest():
@@ -207,6 +427,20 @@ def selbsttest():
         (plus_werktage(dt.date(2026, 10, 27), 4) > dt.date(2026, 10, 31), True, "Lager 4 WT ab Di 27.10. zu spät (Mo 02.11.)"),
         (plus_werktage(dt.date(2026, 10, 15), 12) > dt.date(2026, 10, 31), True, "Direktversand 12 WT ab Do 15.10. zu spät → umsortieren"),
         (ziel_reihenfolge([("a", True, False), ("b", True, True), ("c", False, True), ("d", True, True)]), ["b", "d", "a", "c"], "stabil"),
+        # 13.10. Kauf-Strecke Klasse 3: Fenster aus der Kalibrierung (schnell 4, langsam 12, Kassen-Zusage 21 WT)
+        (hinweis_fenster(dt.date(2026, 10, 31), {"schnell": 4, "langsam": 12, "zusage_langsam_max": 21}),
+         {"ab": dt.date(2026, 10, 2), "kipptag": dt.date(2026, 10, 15), "schnell_bis": dt.date(2026, 10, 26)},
+         "Halloween: Hinweis ab Fr 02.10., Kipptag Do 15.10., Lager bis Mo 26.10."),
+        (plus_werktage(dt.date(2026, 10, 14), 12) <= dt.date(2026, 10, 31), True, "Mi 14.10. + 12 WT = Fr 30.10. noch rechtzeitig"),
+        (datum_text(dt.date(2026, 10, 31)), "Sa, 31. Okt.", "Datumstext"),
+        (hinweis_fenster(dt.date(2026, 12, 24), {"schnell": 4, "langsam": 12, "zusage_langsam_max": 21})["kipptag"],
+         dt.date(2026, 12, 9), "Weihnachten: Kipptag Mi 09.12."),
+        (top_schnell([("a", True, True), ("x", False, False), ("b", True, True)]), (True, 2), "oben schnell (Entwurf zählt nicht)"),
+        (top_schnell([("a", True, True), ("b", True, False)]), (False, 1), "oben ein langsamer → kein Link"),
+        (top_schnell([]), (False, 0), "leere Kollektion → kein Link"),
+        (hinweis_eintrag({"hinweis_tag": "halloween", "anlass": "Halloween"}, dt.date(2026, 10, 31),
+                         hinweis_fenster(dt.date(2026, 10, 31), {"schnell": 4, "langsam": 12, "zusage_langsam_max": 21}),
+                         "halloween")["kipptag"], "20261015", "Metafeld: Kipptag als Zahl JJJJMMTT"),
     ]
     for ist, soll, name in pruef:
         ok = ist == soll
@@ -217,4 +451,4 @@ def selbsttest():
 
 
 if __name__ == "__main__":
-    sys.exit(selbsttest() if "--selbsttest" in sys.argv else main())
+    sys.exit(selbsttest() if "--selbsttest" in sys.argv else main(nur_hinweis="--hinweis" in sys.argv))

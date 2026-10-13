@@ -483,6 +483,16 @@ KOSTUEM_KANARIEN = [
     ("Plüschmütze Panda", "Spielzeug & Spiele", False),
     ("Gesichtsvisier Regenbogen", "Kostüme & Verkleidung", False),
     ("Kinder Sommer-Strampler für Mädchen", "Baby & Kinder", False),
+    # 13.10. abends (Kauf-Strecke Klasse 3f): ist_kostuem gegen alle 99 aktiven Google-Produkte mit Tag «halloween» (79 CJ,
+    # 19 CH-Lager) → 0 Treffer. Von Hand + Bild geprüft (Kontaktbogen): Kopfschmuck/Mützen zählen nicht (Entscheid 23.09.),
+    # Motiv-Kleidung ist kein Kostüm. Diese Grenzfälle bleiben im Google-Kanal und halten die Regel fest:
+    ("Lolita-Stirnband mit Hexenhut und Rosen", "Damenmode", False),
+    ("Halloween Haustier-Kopfbedeckung & Halsband", "Haustierbedarf", False),
+    ("Baby-Strampler Halloween mit Kapuze", "Baby & Kinder", False),
+    ("Gelber Leopard-Hoodie mit Teufelshörnern", "Damenmode", False),
+    ("Gotischer Kopfschmuck schwarz", "Accessoires", False),
+    ("Animatronic XL Sensemann", "Kostüme & Verkleidung", False),
+    ("Horrorhand mit Klammer", "Kostüme & Verkleidung", False),
 ]
 
 
