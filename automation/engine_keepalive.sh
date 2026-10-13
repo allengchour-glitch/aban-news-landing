@@ -21,6 +21,34 @@ cd /home/user/aban-news-landing || exit 1
 REPO_AUTO=/home/user/aban-news-landing/automation
 REPO=$(dirname "$REPO_AUTO")   # 23.09.: Zeile 454 nutzte $REPO, ohne dass es je gesetzt war (cd "" = No-op, lief nur zufaellig im Repo)
 
+# 13.10.2026 (Hetzner-Plan Schritt 4): Der Rewind-Alarm unten («hinten > 5») schlug ~4× am Tag FALSCH an — auf dem
+# Server (106 Tage Uptime) heisst «hinten» nur, dass die Cloud seit dem letzten 10-Min-Takt mehr als 5 Commits gepusht hat.
+# Jeder Fehlalarm tötete alle Motoren, legte einen Stash an und holte per Ledger-Union gelöschte Zeilen zurück (27 Fälle
+# in 7 Tagen, git log). Ein echter Snapshot-Restore passiert nur beim BOOTEN — also nur auslösen, wenn der Rechner frisch läuft.
+frisch_gebootet() {   # frisch_gebootet [sekunden] — 0 = Uptime unter 1800 s; ohne Argument aus /proc/uptime; unlesbar = nein
+  local up="${1-$(cut -d' ' -f1 /proc/uptime 2>/dev/null)}"
+  up="${up%%.*}"
+  case "$up" in ''|*[!0-9]*) return 1 ;; esac
+  [ "$up" -lt 1800 ]
+}
+# Probe ohne Motoren: KEEPALIVE_SELBSTTEST=1 bash automation/engine_keepalive.sh  (optional KEEPALIVE_UPTIME=<s> als Zusatzfall)
+if [ -n "${KEEPALIVE_SELBSTTEST:-}" ]; then
+  st_fehler=0
+  for st_fall in "0:ja" "120.55:ja" "1799.99:ja" "1800:nein" "1800.01:nein" "9158400.12:nein" ":nein" "abc:nein"; do
+    st_wert="${st_fall%:*}"; st_soll="${st_fall##*:}"
+    if frisch_gebootet "$st_wert"; then st_ist=ja; else st_ist=nein; fi
+    [ "$st_ist" = "$st_soll" ] || { st_fehler=$((st_fehler+1)); echo "FEHLER: Uptime '$st_wert' → $st_ist (soll $st_soll)"; }
+  done
+  if [ -n "${KEEPALIVE_UPTIME+x}" ]; then
+    if frisch_gebootet "$KEEPALIVE_UPTIME"; then st_ist=ja; else st_ist=nein; fi
+    echo "Probe: Uptime '$KEEPALIVE_UPTIME' s → frisch gebootet: $st_ist (Rewind-Alarm würde $( [ "$st_ist" = ja ] && echo auslösen || echo schweigen ))"
+  fi
+  if frisch_gebootet; then st_ist=ja; else st_ist=nein; fi
+  echo "Dieser Rechner: Uptime $(cut -d' ' -f1 /proc/uptime 2>/dev/null) s → frisch gebootet: $st_ist"
+  echo "SELBSTTEST frisch_gebootet: $((8-st_fehler))/8 ok"
+  exit $(( st_fehler > 0 ))
+fi
+
 # --- ffmpeg/ffprobe bereitstellen (28.08.2026) ------------------------------------------
 # ZWOELF Werkzeuge dieses Repos rufen `ffmpeg` NACKT auf (reel/make_reel.sh, product_slideshow,
 # enhance_clips, make_montage, freegen_video, render_image_posts, dropship/ads/*). Im Container
@@ -61,6 +89,18 @@ if [ ! -x /usr/local/bin/ffprobe ] && [ -f "$REPO_AUTO/ffprobe_ersatz.py" ]; the
   printf '#!/bin/sh\nexec python3 %s/ffprobe_ersatz.py "$@"\n' "$REPO_AUTO" > /usr/local/bin/ffprobe
   chmod +x /usr/local/bin/ffprobe
   echo "$(date -u +%H:%M) ffprobe-Ersatz bereitgestellt"
+fi
+# Server: Geheimnis-Datei (root, 600) direkt in die Umgebung der Motoren laden — bisher reichte luxe-secrets-nach-tmp.sh nur
+# Shopify/CJ/Judge.me als /tmp-Dateien durch; GROQ_API_KEY*/DEEPSEEK/GEMINI und die CJ-Zusatzkonten kamen nie an. Werte nie loggen.
+# 13.10.2026 (Hetzner-Plan Schritt 5): Der Block stand hinter fortura_env und env_datei — die lasen die Umgebung, BEVOR die
+# Datei geladen war, und schrieben auf dem Server deshalb nie /tmp/fortura_env.sh oder /tmp/dienste.env. Jetzt zuerst.
+# In der Cloud fehlt die Datei → keine Wirkung.
+if [ -r /etc/luxe/secrets.env ]; then
+  set -a; . /etc/luxe/secrets.env; set +a
+  if [ -n "${CJ2_API_KEY:-}${CJ3_API_KEY:-}" ] && [ ! -s /tmp/cj_konten.env ]; then
+    ( umask 077; printf "CJ2_API_KEY='%s'\nCJ3_API_KEY='%s'\n" "${CJ2_API_KEY:-}" "${CJ3_API_KEY:-}" > /tmp/cj_konten.env )
+  fi
+  [ -n "${GEMINI_API_KEY:-}" ] && [ ! -s /tmp/gemini_key ] && ( umask 077; printf '%s' "$GEMINI_API_KEY" > /tmp/gemini_key )
 fi
 # 29.09.2026: OpenAI-Schlüssel aus der Umgebung (Betreiber hat OPENAI_API_KEY gesetzt; Variablen erreichen die Session
 # erst nach einem späteren Neustart). Nur nach /tmp (600), nie ins Repo. ⚠️ api.openai.com ist in der Netzwerk-
@@ -219,15 +259,7 @@ if [ "${TMPV:-0}" -ge 85 ]; then
   done
   echo "TMP-HYGIENE: /tmp ${TMPV}% → $(df --output=pcent /tmp | tail -1 | tr -d ' ')"
 fi
-#    Server: Geheimnis-Datei (root, 600) direkt in die Umgebung der Motoren laden — bisher reichte luxe-secrets-nach-tmp.sh nur
-#    Shopify/CJ/Judge.me als /tmp-Dateien durch; GROQ_API_KEY*/DEEPSEEK/GEMINI und die CJ-Zusatzkonten kamen nie an. Werte nie loggen.
-if [ -r /etc/luxe/secrets.env ]; then
-  set -a; . /etc/luxe/secrets.env; set +a
-  if [ -n "${CJ2_API_KEY:-}${CJ3_API_KEY:-}" ] && [ ! -s /tmp/cj_konten.env ]; then
-    ( umask 077; printf "CJ2_API_KEY='%s'\nCJ3_API_KEY='%s'\n" "${CJ2_API_KEY:-}" "${CJ3_API_KEY:-}" > /tmp/cj_konten.env )
-  fi
-  [ -n "${GEMINI_API_KEY:-}" ] && [ ! -s /tmp/gemini_key ] && ( umask 077; printf '%s' "$GEMINI_API_KEY" > /tmp/gemini_key )
-fi
+#    (Die Server-Geheimnisdatei /etc/luxe/secrets.env wird seit 13.10.2026 ganz oben geladen, vor den /tmp-Zugangsdateien.)
 #    Text-KI vorhanden? (für Grind/Such-Runner, Abschnitte 2/3) — früh berechnet, damit es auch im Vorrang-Fenster gilt.
 KI_DA=0
 for v in "${GROQ_API_KEY:-}" "${GROQ_API_KEY2:-}" "${GROQ_API_KEY3:-}" "${DEEPSEEK_API_KEY:-}" "${GEMINI_API_KEY:-}"; do [ -n "$v" ] && KI_DA=1; done
@@ -622,7 +654,11 @@ echo "STAND: $(zaehle cj_runner) CJ-Runner, Aufseher=$(zaehle_aufseher)"
 find .git -name "*.lock" -delete 2>/dev/null
 if timeout 60 git fetch -q origin claude/luxestyle-status-tztnn1 2>/dev/null; then
   hinten=$(git rev-list --count HEAD..origin/claude/luxestyle-status-tztnn1 2>/dev/null || echo 0)
-  if [ "${hinten:-0}" -gt 5 ]; then
+  # 13.10.2026 (Hetzner-Plan Schritt 4): nur kurz nach dem Booten ist «hinten» ein Rewind; sonst merged der Autocommit.
+  if [ "${hinten:-0}" -gt 5 ] && ! frisch_gebootet; then
+    up_jetzt=$(cut -d' ' -f1 /proc/uptime 2>/dev/null)
+    echo "REWIND-ALARM aus: $hinten hinter origin, aber Uptime ${up_jetzt:-unlesbar} s nicht unter 1800 — kein Restore, der Autocommit merged"
+  elif [ "${hinten:-0}" -gt 5 ]; then
     echo "REWIND erkannt ($hinten hinter origin) — repo_vorspulen"
     git checkout origin/claude/luxestyle-status-tztnn1 -- automation/repo_vorspulen.sh 2>/dev/null
     bash automation/repo_vorspulen.sh 2>&1 | tail -2
