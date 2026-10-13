@@ -147,8 +147,10 @@ def main():
                 continue
             d = gql("mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}",
                     {"id": p["id"], "t": ["kostuem"]})
-            if (d.get("data") or {}).get("tagsAdd", {}).get("userErrors"):
-                print(f"    ⚠️ Tag nicht gesetzt: {d['data']['tagsAdd']['userErrors']}")
+            # 13.10. Prüfung: `.get("tagsAdd", {})` stürzte bei `tagsAdd: null` ab, Top-Level-`errors` galten still als Erfolg.
+            ta = (d.get("data") or {}).get("tagsAdd") or {}
+            if ta.get("userErrors") or d.get("errors") or not d.get("data"):
+                print(f"    ⚠️ Tag nicht gesetzt: {ta.get('userErrors') or str(d.get('errors'))[:160]}")
         if neu and not DRY:
             time.sleep(20)   # Suchindex braucht einen Moment, bis tag:'kostuem' die neuen Träger findet
     roh = kandidaten()

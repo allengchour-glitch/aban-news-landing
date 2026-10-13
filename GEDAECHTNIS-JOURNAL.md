@@ -49,6 +49,23 @@
 
 
 
+## 🔍 Prüfung der Tagesskripte (Workflow, 11 Agenten) + Fremdware im Kostümtyp (2026-10-13 mittags)
+- **Ablauf:** Je Dateigruppe ein Finder (tote, google, hype, pflege, server), je Fund ein Gegenprüfer, nur lesend. Ergebnis: 6 Funde, 5 bestätigt, 1 widerlegt (Masstabelle XXL/2XL nur mit einer konstruierten Eingabe).
+  - Funde der Schwere «niedrig» bekamen keinen Gegenprüfer. Zwei davon habe ich selbst erledigt (tagsAdd null, Lampion-Set).
+- **Behoben:**
+  1. `kollektion_taugt()` prüfte die Veröffentlichung nicht (handy-powerbanks). War schon durch `weiterleitung_ziel_wache.py` gefunden und behoben.
+  2. `tools/gsc_schnappschuss.py` nahm EINE Datei und brach bei hasMore ab. Bei 912 Seiten nach 7 Tagen wäre das in 1–2 Tagen täglich gescheitert. Jetzt mehrere Seiten (startRow), Fenster-Gleichheit Pflicht, nur die letzte darf hasMore=false melden, Abruf mit Filter «/products/» (893 Zeilen in einer Antwort). Selbsttest 6/6, Runbook angepasst.
+  3. `tote_landeseiten.titel_ziel()`: Warenwort nur als Kopf des Wortes, das Bestimmungswort wechselt die Abteilung (Hunde-/Werkzeug-/Auto-), nur der Hauptteil vor «mit», «für Hunde» → Haustier (ausser einem genaueren Tierziel). Hundehalskette ≠ Halskette, Kofferraum ≠ Koffer, Werkzeugkoffer → Werkzeug. Kanarien 9 → 15 + Tabellenziele, live grün. Lehre 9b/16d zum dritten Mal.
+  4. `google_sperrliste.ist_kostuem()`: KOSTUEM_NICHT stand vor allem und schlug «Kinderkostüm … Kopftuch/LED/Kopfteil». Jetzt zählt beim Kostümwort nur die Damenanzug-Ausnahme. Masken-Ausnahmen gelten nur ohne Kostümwort; LED/Licht sind bei Kostüm-Kontext keine Ausnahme. Kanarien 35 → 50. Am Bestand: 14 neu erkannt (keines im Google-Kanal), 0 verloren.
+  5. `hype_kuratieren`: Das Datum kam per `next()` (ältestes, Tags sind alphabetisch). Jetzt `max()`. Abräumen und Neuaufnahme nehmen alle hype-seit-Tags weg, `reste_raeumen()` täglich: 44 → 0. PARTY_TITEL (Lampion/Girlande/Luftballon …) als Regelbruch. Das Lampion-Set (Typ «Schweizer Editionen») ist raus, die Reihe hat jetzt 59.
+- **Fremdware im Kostümtyp:** `produkttyp_vereinheitlichen.py`, neuer Durchgang. 80 umgelegt: Bruder 43 → Spielzeug, Caps 18, Toilettenpapier 10, Radsocken 5, Football/Wurfball 3, HARIBO 1.
+  - «American Football Helm» ist ein Kostüm-Helm und wurde zurückgesetzt; seither ist er Kanarienvogel (16/16).
+  - Die Fortura-Importer ziehen die Regel nach (Test 9/9 je Datei). Der Aufseher läuft täglich mit SCHARF=1.
+  - Wirkung nur im Filter «Produkttyp». Google-Kategorie und Google-Kanal stimmten bei Bruder schon (291/291).
+- **Lehren:**
+  - (a) Ein Patch per Python-`replace` mit doppelt maskierten Regex-Backslashes ist gescheitert. Das `assert` hat das gefangen, aber der folgende `&&`-Lauf lief trotzdem mit der alten Regel weiter, weil Heredoc und Lauf in einem Hintergrundbefehl standen. Patch und Schreiblauf deshalb nie in denselben Hintergrundbefehl packen.
+  - (b) Prüfer-Workflows bewerten den Stand von HEAD. Was ich parallel schon behoben habe, kommt als «echt, aber bereits behoben» zurück. Ein Commit vor dem Start erspart diese Doppelarbeit.
+
 ## ↪️ Weiterleitungen ins Leere: das ZIEL stirbt nach der Weiterleitung (2026-10-13 vormittags, «weiter», Messrunde Platz 9)
 - **GEMESSEN (alle 1'657 URL-Weiterleitungen, 10:00 UTC):**
   - 146 Produkt→Produkt-Weiterleitungen zeigten auf 51 inzwischen gedraftete Produkte, zum Beispiel Champion-Trainingsanzug, Gürteltasche Safta, Wanduhr Versa und Michael-Kors-Taschen.
@@ -19789,6 +19806,7 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
 ## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+- 2026-10-12 · 🧾 **Versandsatz gegen die Kasse: «Versand CHF 7» stimmte für 45–49,99 CHF nicht (Kasse gratis ab 45, Zusage ab 50) → Wächter `versand_band_wache.py`, 2 Produkte korrigiert. Gegenprobe: Bewertungs-Import hat Lieferanten-Kommentare mit Platzhalter-Namen als Shop-Bewertungen veröffentlicht → Stopp-Datei `dropship/_bewertungen_stopp.txt`, Betreiber entscheidet. Journal 12.10. 04:50.**
 - 2026-10-12 · 🖼️ **Google-Bilder: Bildtausch wirkt (getauscht 76–91 % frei vs. Vergleich 46 %); Waffenzubehör nie tauschen (Holster-Regel, Kanarien 8/0); `tools/bild_text_weg.py` entfernt Werbetext nur auf gleichmässigem Grund (Selbsttest 4/4, Balken-Regel), 1 von 24 sicher; «Unable to show image» = nicht bei uns (40/40 HTTP 200)** → `dropship/GOOGLE-BILDER-2026-10-12.md`
 - 2026-10-12 · 🧹 **Auftrag 1–8: Taschen-Vorschau auf das Printful-Blank (Farbe passt nur so), Shirt-Preise nach Formel (nur 9 Varianten, Repricer würde senken), Liechtenstein-Satz «in der Schweiz» in 3'720 Texten (Theme gesperrt → Liste), Verkauf ohne EK gesetzt. Lehren: pkill-Selbsttod, InventoryItemInput, Monitor 5-min-Limit, Container-Neustart beendet Läufe, Live-Schreiber = Hook-Lücke → `dropship/AUFTRAG-1-8-2026-10-12.md`, Journal 12.10. «Auftrag 1–8».**
 - 2026-10-07 · 💳 **«bei bestellung sofort … paylink schicken»: CJ-Anlage lief schon (createOrderV2), Meldung nur im Log → `betreiber_push.py` (ntfy, Thema nie im Repo) aus `cj_order_engine.py` (angelegt + jeder Fehlerfall) + tägliche Erinnerung `cj_zahlung_offen.py`; Runner 20 → 5 min.** Link = CJ-Konsole (Bestellseiten-URL unbelegt) → Journal 07.10. 16:35

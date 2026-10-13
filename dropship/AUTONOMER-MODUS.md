@@ -13,8 +13,8 @@ fulfillment-fähigen CJ-Dropshipping-Produkten füllen — pro Durchlauf 1–4 S
 6 Verkaufskanälen, deutsche Copy, verifizierte Bilder.
 
 **Verbesserungsrunde: einmal täglich GSC-Schnappschuss schreiben** (13.10.2026): mcp OpenSEO `get_search_console_performance`
-(projectId 443c940c-93c9-4feb-9d0c-1e4d1d88c6cf, dimensions ["page"], last_28_days, rowLimit 1000, 0 Credits) → Antwortdatei →
-`python3 tools/gsc_schnappschuss.py <datei>`. Ohne frischen Schnappschuss (≤ 3 T) ist der GSC-Teil von `tote_landeseiten.py` blind
+(projectId 443c940c-93c9-4feb-9d0c-1e4d1d88c6cf, dimensions ["page"], last_28_days, rowLimit 1000, Filter page contains «/products/», bei hasMore weiter mit startRow 1000, 2000 …; 0 Credits) → Antwortdatei(en) →
+`python3 tools/gsc_schnappschuss.py <datei_0> [<datei_1000> …]`. Ohne frischen Schnappschuss (≤ 3 T) ist der GSC-Teil von `tote_landeseiten.py` blind
 (Ampel «GSC-TOT»). Grund: Shopify zählt Landungen auf 404-Seiten nicht als Sitzung.
 
 ## 1. Credentials (NUR aus der Umgebung — niemals im Repo!)

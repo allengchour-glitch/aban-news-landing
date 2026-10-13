@@ -1,21 +1,15 @@
 {
-"stand": "2026-10-13T09:42Z",
+"stand": "2026-10-13T10:20Z",
 "von": "2026-10-04",
 "bis": "2026-10-10",
 "tage": 7,
-"quelle": "OpenSEO get_search_console_performance [page] last_28_days",
+"quelle": "OpenSEO get_search_console_performance [page] last_28_days, 1 Seite(n)",
 "zeilen": [
 {
 "page": "https://luxestyle.ch/products/usb-stick-lippenstift-design-9a6739",
 "clicks": 3,
 "impressions": 3,
 "position": 4
-},
-{
-"page": "https://luxestyle.ch/",
-"clicks": 2,
-"impressions": 9,
-"position": 38.3
 },
 {
 "page": "https://luxestyle.ch/products/22-teiliges-leder-nahset-fur-lederarbeiten-105857",
@@ -126,118 +120,10 @@
 "position": 10
 },
 {
-"page": "https://luxestyle.ch/collections/adventskalender",
-"clicks": 0,
-"impressions": 3,
-"position": 85.3
-},
-{
-"page": "https://luxestyle.ch/collections/beamer-heimkino",
-"clicks": 0,
-"impressions": 27,
-"position": 51.6
-},
-{
-"page": "https://luxestyle.ch/collections/beleuchtung-lampen",
-"clicks": 0,
-"impressions": 22,
-"position": 47.5
-},
-{
-"page": "https://luxestyle.ch/collections/erste-august",
-"clicks": 0,
-"impressions": 2,
-"position": 74
-},
-{
-"page": "https://luxestyle.ch/collections/fussball-fanshop",
-"clicks": 0,
-"impressions": 20,
-"position": 60.9
-},
-{
-"page": "https://luxestyle.ch/collections/herbst-favoriten",
-"clicks": 0,
-"impressions": 1,
-"position": 6
-},
-{
-"page": "https://luxestyle.ch/collections/jeans-denim",
-"clicks": 0,
-"impressions": 2,
-"position": 66.5
-},
-{
-"page": "https://luxestyle.ch/collections/premium-beauty",
-"clicks": 0,
-"impressions": 1,
-"position": 1
-},
-{
-"page": "https://luxestyle.ch/collections/schmuck-sets",
-"clicks": 0,
-"impressions": 6,
-"position": 56.7
-},
-{
-"page": "https://luxestyle.ch/collections/sneaker-sportschuhe",
-"clicks": 0,
-"impressions": 13,
-"position": 53.2
-},
-{
-"page": "https://luxestyle.ch/collections/sommer-2026",
-"clicks": 0,
-"impressions": 1,
-"position": 9
-},
-{
-"page": "https://luxestyle.ch/collections/sub-ballerinas",
-"clicks": 0,
-"impressions": 1,
-"position": 54
-},
-{
-"page": "https://luxestyle.ch/collections/sub-kleider",
-"clicks": 0,
-"impressions": 5,
-"position": 38.4
-},
-{
-"page": "https://luxestyle.ch/collections/sub-kueche",
-"clicks": 0,
-"impressions": 11,
-"position": 71.8
-},
-{
-"page": "https://luxestyle.ch/collections/sub-wander-arbeitsschuhe",
-"clicks": 0,
-"impressions": 2,
-"position": 95
-},
-{
-"page": "https://luxestyle.ch/collections/wohnen-dekoration",
-"clicks": 0,
-"impressions": 1,
-"position": 2
-},
-{
 "page": "https://luxestyle.ch/en/products/shirt-es-git-nu-eis-zueri",
 "clicks": 0,
 "impressions": 1,
 "position": 1
-},
-{
-"page": "https://luxestyle.ch/pages/selbst-gestalten",
-"clicks": 0,
-"impressions": 8,
-"position": 52.1
-},
-{
-"page": "https://luxestyle.ch/policies/terms-of-service",
-"clicks": 0,
-"impressions": 1,
-"position": 2
 },
 {
 "page": "https://luxestyle.ch/products/10-teiliges-silikon-kuchenhelfer-set-986048",
