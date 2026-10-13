@@ -8261,3 +8261,9 @@ farbwechselnder-concealer-foundation-stick-813313	2074742512610562050	3	5.37	ok	
 2-in-1-farbwechsel-foundation-stick-dunkel-533186	2074742066479087617	3	5.60	ok	landeseite
 thermo-reaktive-foundation-passt-sich-dem-haut-396737	2074734842398756866	3	5.95	ok	landeseite
 sonnenschutz-foundation-mit-farbwechsel-757825	2074742726624923649	3	5.86	ok	landeseite
+25-teiliges-make-up-pinselset-720194	2074341264390520833	0	-	KEINE CH-Option → DRAFT	landeseite
+vintage-soft-black-walnut-pinselset-24-stk-627300	2511200538071627500	16	4.71	ok	landeseite
+3d-4d-pyramid-contour-puder-foundation-pinsel-634600	2511161159171634800	16	5.02	ok	landeseite
+mini-pinselset-mit-etui-629700	2511120844491629900	16	9.20	ok	landeseite
+makeup-pinsel-dreiecks-puderquasten-set-647400	2510160719301647600	16	6.77	ok	landeseite
+26-teiliges-make-up-pinselset-613600	2509120207481613800	16	8.79	ok	landeseite
