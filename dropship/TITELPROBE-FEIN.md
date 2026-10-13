@@ -1,13 +1,18 @@
-# Titelprobe-Fein — Stand 2026-10-10 09:32 UTC
+# Titelprobe-Fein — Stand 2026-10-13 11:41 UTC
 
-Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 2 · gesetzt 2 · fehler 0.
+Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 6 · gesetzt 6 · fehler 0.
 
-- 2 → Shirts & Tops
+- 2 → Bracelets
+- 1 → Dresses
+- 1 → Anklets
+- 1 → Jewelry Sets
+- 1 → Earrings
 
-## «Rock» mit Ärmeln/Ausschnitt = Kleid — Titel umbenennen (0)
+## «Rock» mit Ärmeln/Ausschnitt = Kleid — Titel umbenennen (1)
 
+- Velours-Kolbenrock mit V-Ausschnitt
 
-## Ohne Treffer — bleibt grob (38)
+## Ohne Treffer — bleibt grob (45)
 
 - Ear-Cuffs «Papillon» – blauer Schmetterling  [G: Earrings]
 - Damen- und Kind-Freizeitanzug mit Print  [G: Activewear]
@@ -24,12 +29,6 @@ Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 2 · gese
 - Vintage-Steckerohr Sterlingsilber Luxus  [G: Earrings]
 - Premium-Herz-U-Form Hörlinge  [G: Earrings]
 - Blumenprint-Midi mit Volantsärmeln und A-Silhouette  [G: Dresses]
-- Farbenfrohes Handgeflecht  [G: Bracelets]
-- Sterling-Silber-Handschmuck  [G: Bracelets]
-- Grasformband  [G: Bracelets]
-- Kristall-Handschmeichler  [G: Bracelets]
-- Langärmelige Bead- und Diamanten-Verzierter Rock  [G: Dresses]
-- Blauer Striped-Langarm-Shirtrock  [G: Dresses]
 - Akryl-Blechlinge  [G: Bracelets]
 - Farbenfrohes Körperkreuz  [G: Dresses]
 - Türkisfarbener Boho-Handgelenk-Band  [G: Bracelets]
@@ -38,6 +37,13 @@ Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 2 · gese
 - Mesh Maxi Cape mit Fledermausärmeln  [G: Dresses]
 - Acryl-Hängeornament  [G: Necklaces]
 - Langarm-Base-Layer für Herren  [G: Activewear]
+- Wandlampe Glas Kürbis  [G: Necklaces]
+- Wandlampe modern 1- oder 2-Kopf 220 V  [G: Necklaces]
+- Wandleuchte für Aussenbereiche  [G: Necklaces]
+- Nordische Wandlampe für stimmungsvolles Licht  [G: Necklaces]
+- Pflanzen-Wachstumslampe für Setzlinge  [G: Necklaces]
+- Rattan Vintage Wandlampe  [G: Necklaces]
+- Herren-Baselayer mit Reissverschluss, Langarm  [G: Activewear]
 - Blaues Denim für Herren  [G: Pants]
 - Einseitige Schulter, Meerjungfrau-Schnitt  [G: Dresses]
 - Einseitiger Rüschensprunganzug  [G: Jumpsuits & Rompers]
@@ -47,3 +53,9 @@ Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 2 · gese
 - Leichte Golf-Bekleidung für Herren  [G: Activewear]
 - Damen-V-Ausschnitt-Maxi in A-Linie  [G: Dresses]
 - Obst-Nackchen · Damen  [G: Necklaces]
+- Farbenfrohes Handgeflecht  [G: Bracelets]
+- Sterling-Silber-Handschmuck  [G: Bracelets]
+- Grasformband  [G: Bracelets]
+- Kristall-Handschmeichler  [G: Bracelets]
+- Langärmelige Bead- und Diamanten-Verzierter Rock  [G: Dresses]
+- Blauer Striped-Langarm-Shirtrock  [G: Dresses]
