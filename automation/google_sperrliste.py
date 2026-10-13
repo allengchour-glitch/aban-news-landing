@@ -196,9 +196,8 @@ HEIKEL = re.compile(
     r'waffen?\b|munition|armbrust|'
     # Rauchzubehoer behandelt Google wie Tabak. 04.09.: `feuerzeug` ergaenzt — ein
     # «Sturmfeuerzeug fuer Outdoor & Kueche» stand auf der Veroeffentlichungsliste.
-    # Ob ein Allzweck-Feuerzeug wirklich darunter faellt, ist eine BETREIBER-Entscheidung;
-    # bis dahin gilt die teurere Seite des Irrtums nicht: draussen kostet einen Artikel,
-    # drinnen im schlimmsten Fall das Merchant-Konto.
+    # Ob ein Allzweck-Feuerzeug wirklich darunter faellt, war eine BETREIBER-Entscheidung —
+    # ENTSCHIEDEN 13.10.2026: ja, alle Feuerzeuge (siehe ist_feuerzeug() weiter unten).
     r'shisha|wasserpfeife|bong\b|vape|e-?zigarette|tabak|zigarre|feuerzeug|'
     r'(?<![\wäöüß])grinder\b|cbd\b', re.I)
 
@@ -206,6 +205,49 @@ HEIKEL = re.compile(
 def ist_heikel(*texte):
     """True, wenn einer der Texte (Titel, productType, Tags) eine heikle Warengruppe nennt."""
     return any(HEIKEL.search(t or '') for t in texte)
+
+
+# ---------------------------------------------------------------------------
+# FEUERZEUGE = RAUCHZUBEHÖR (Betreiber-Entscheid 13.10.2026: «3 ja und auch sonst normale feuerzeug»).
+# GEMESSEN 13.10. (Voll-Export): 30 Titel mit Feuer-/Anzünder-Wörtern, davon 18 Feuerzeuge im Google-Kanal ohne Sperr-Tag
+# (Sturm-, Stab-, USB-, Lichtbogen-, Kerosin-Feuerzeuge, Feuerzeug-Armbanduhr). KEINE Feuerzeuge: Auto-Ladegeräte für den
+# Zigarettenanzünder (Steckdose im Auto), Gasherd-Zünder, Feuerstahl, Kamin-/Grillanzünder (Brennstoff). Folge: Tag
+# «smoke-zubehoer» → google_sperrtags_durchsetzen nimmt die Ware aus Google UND allen Werbekanälen (ALLE_WERBEKANAELE),
+# der Laden bleibt. Entschieden wird am Titel (+ Typ), nie am Beschreibungstext.
+FEUERZEUG = re.compile(r'feuerzeug|(?<![\wäöü])lighters?\b|zigarrenanz[üu]nder|zippo\b|(?:lichtbogen|plasma|arc)-?(?:anz[üu]nder|zünder)',
+                       re.I)
+FEUERZEUG_NICHT = re.compile(r'zigarettenanz[üu]nder|kfz|ladeger[äa]t|auto-?lade|gasherd|herd-?z[üu]nder|feuerstahl|'
+                             r'kaminanz|grillanz|kohleanz', re.I)
+
+
+def ist_feuerzeug(titel, typ=""):
+    t = titel or ""
+    return bool(FEUERZEUG.search(t)) and not FEUERZEUG_NICHT.search(t)
+
+
+FEUERZEUG_KANARIEN = [
+    ("Windsicheres Feuerzeug für Outdoor", True),
+    ("Handlicher Outdoor-Stabfeuerzeug mit Holzgriff", True),
+    ("USB-Feuerzeug-Armbanduhr aus Metall", True),
+    ("Metall-Lighter", True),
+    ("Kerosin-Feuerzeug", True),
+    ("Sturmfeuerzeug Kupfer mit Gravur", True),
+    ("Zigarrenanzünder mit Locher – 4 Flammen", True),
+    ("Kabelloses Dual-Laser-Feuerzeug", True),
+    ("Faltbares Sturmfeuerzeug mit Jet-Flamme", True),
+    ("Auto-Zigarettenanzünder mit USB & Type-C", False),
+    ("USB-Autoladegerät für Zigarettenanzünder", False),
+    ("Elektronischer Gasherd-Zünder", False),
+    ("Feuerstahl für Camping und Bushcraft", False),
+    ("Kaminanzünder aus Holzwolle · 100 Stück", False),
+    ("Elektrischer Kohleanzünder für Shisha – 500W", False),   # schon «raucher», aber kein Feuerzeug
+    ("Leichter Daunenmantel für Damen", False),
+]
+
+
+def feuerzeug_kanarien():
+    f = [(t, s) for t, s in FEUERZEUG_KANARIEN if ist_feuerzeug(t) != s]
+    return len(FEUERZEUG_KANARIEN), f
 
 
 # ---------------------------------------------------------------------------

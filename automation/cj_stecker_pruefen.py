@@ -409,8 +409,10 @@ def _cj_codes_fuer(p, cj_fertig):
     """Varianten ohne Shop-Kennung: CJ-Variante lesen (EINMAL je Produkt). → ({vid: code|None}, notiz)."""
     pid = p["id"].split("/")[-1]
     ohne = [v for v in p["variants"] if variante_stecker(v.get("title"), v.get("sku")) is None]
-    if not ohne or pid in cj_fertig:
-        return {}, "cj-schon-gelesen" if ohne else ""
+    if not ohne:
+        return {}, ""
+    if pid in cj_fertig:                       # schon gelesen → gespeicherte Codes weiterverwenden (kein neuer Abruf)
+        return {f"gid://shopify/ProductVariant/{k}": c for k, c in cj_fertig[pid].items()}, "cj-aus-ledger"
     url = None
     for v in p["variants"]:
         url = cj_url(v.get("sku"))
@@ -427,7 +429,13 @@ def _cj_codes_fuer(p, cj_fertig):
         k = re.sub(r"\s+", "", (cv.get("variantSku") or "")).upper()
         txt = f"{cv.get('variantKey') or ''} {cv.get('variantNameEn') or ''}"
         cs = stecker_text(cv.get("variantKey") or "") or ({stecker(cv)} if stecker(cv) else set())
-        per_sku[k] = ("MEHRFACH" if len(cs) > 1 else (cs.pop() if cs else None), txt)
+        if not cs:
+            code = None
+        elif "UNIVERSAL" in cs or (len(cs) > 1 and cs & EU_GLEICH):
+            code = "MEHRFACH"
+        else:
+            code = "/".join(sorted(cs))
+        per_sku[k] = (code, txt)
     out = {}
     for v in ohne:
         k = re.sub(r"\s+", "", re.sub(r"^CJ-", "", v.get("sku") or "", flags=re.I)).upper()
@@ -513,7 +521,15 @@ def ein_produkt(pid):
 def varianten_lauf(nur_messen=False, tsv=None):
     nur = os.environ.get("NUR_PID")
     alle = ein_produkt(nur) if nur else varianten_export()
-    cj_fertig = {z.split("\t")[0] for z in open(VAR_CJ_LEDGER)} if os.path.exists(VAR_CJ_LEDGER) else set()
+    cj_fertig = {}
+    if os.path.exists(VAR_CJ_LEDGER):
+        for z in open(VAR_CJ_LEDGER):
+            f = z.rstrip("\n").split("\t")
+            if len(f) >= 4 and f[1].startswith("cj-gelesen"):
+                try:
+                    cj_fertig[f[0]] = json.loads(f[3])
+                except ValueError:
+                    pass
     zeilen, zaehl, cj_n = [], {}, 0
     gesperrt_v, gedraftet, fehler = 0, [], []
     for p in alle:
@@ -523,16 +539,17 @@ def varianten_lauf(nur_messen=False, tsv=None):
         if vor["art"] in ("keine-klasse", "kein-netzgeraet"):
             continue
         cj_codes, notiz = {}, ""
-        if vor["ohne"] and not nur_messen and cj_n < VAR_CJ_CAP:
-            pid = p["id"].split("/")[-1]
-            if pid not in cj_fertig:
-                cj_n += 1
-                cj_codes, notiz = _cj_codes_fuer(p, cj_fertig)
-                if cj_codes is None:
-                    cj_codes = {}
-                elif not DRY:
-                    with open(VAR_CJ_LEDGER, "a") as fh:
-                        fh.write(f"{pid}\t{notiz}\t{HEUTE}\t{json.dumps({k.split('/')[-1]: c for k, c in cj_codes.items()})}\n")
+        pid = p["id"].split("/")[-1]
+        if vor["ohne"] and pid in cj_fertig:
+            cj_codes, notiz = _cj_codes_fuer(p, cj_fertig)
+        elif vor["ohne"] and not nur_messen and cj_n < VAR_CJ_CAP:
+            cj_n += 1
+            cj_codes, notiz = _cj_codes_fuer(p, cj_fertig)
+            if cj_codes is None:
+                cj_codes = {}               # CJ nicht erreicht: KEINE Quittung, naechster Lauf fragt erneut
+            elif not DRY and notiz.startswith("cj-gelesen"):
+                with open(VAR_CJ_LEDGER, "a") as fh:
+                    fh.write(f"{pid}\t{notiz}\t{HEUTE}\t{json.dumps({k.split('/')[-1]: c for k, c in cj_codes.items()})}\n")
         u = produkt_urteil(p["title"], p.get("productType"), p["variants"], cj_codes)
         zaehl[u["art"]] = zaehl.get(u["art"], 0) + 1
         def cnt(lst):
