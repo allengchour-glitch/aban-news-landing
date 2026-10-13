@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-12T20:26:46Z",
+ "stand": "2026-10-13T11:43:37Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,68 +18,84 @@
  "fenster_h": 72,
  "items": [
   {
+   "t": "Dieses KI-Spiel auf Steam begeistert Gamer – und zwingt die Entwickler, einen Kredit aufzunehmen",
+   "u": "https://t3n.de/news/ki-spiel-steam-entwickler-kredit-1767939/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-10-13T11:35:33Z",
+   "s": "Auf Steam ist die Demo zu einem KI-Spiel ein echter Renner geworden. Leider hat das für die Entwickler:innen nicht nur positive Nachwirkungen. Sie müssen aufgrund des Andrangs jetzt tief in die Tasche…",
+   "sprache": "de"
+  },
+  {
+   "t": "heise+ | Wie verkettete Aktionen zum Risiko werden: Stille Post bei KI-Agenten",
+   "u": "https://www.heise.de/hintergrund/Wie-verkettete-Aktionen-zum-Risiko-werden-Stille-Post-bei-KI-Agenten-11480450.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
+   "q": "heise",
+   "d": "2026-10-13T11:30:00Z",
+   "s": "KI-Agenten auf dem Endpunkt lösen Probleme oft durch eine Kombination von Aktionen. Das birgt trotz Schutzmechanismen Risiken.",
+   "sprache": "de"
+  },
+  {
+   "t": "Physiker finden Formel: Wann lokale KI-Modelle plötzlich gefährlich werden",
+   "u": "https://www.heise.de/news/Physiker-finden-Formel-Wann-lokale-KI-Modelle-ploetzlich-gefaehrlich-werden-11486049.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-10-13T11:05:00Z",
+   "s": "KI-Modelle können unvermittelt von sicheren zu gefährlichen Ausgaben wechseln. Eine neue mathematische Formel soll helfen, diesen Kipppunkt früh zu erkennen.",
+   "sprache": "de"
+  },
+  {
+   "t": "Über Zero-Day-Lücke: Offenbar erster KI-Angriff auf deutsche Kommune",
+   "u": "https://www.golem.de/news/ueber-zero-day-luecke-offenbar-erster-ki-angriff-auf-deutsche-kommune-2610-214050.html",
+   "q": "Golem",
+   "d": "2026-10-13T11:02:02Z",
+   "s": "Das Ziel ist Tangerhütte in Sachsen-Anhalt. Unter anderem deutet die Geschwindigkeit der Angreifer auf den Einsatz von KI hin. (KI, Server)",
+   "sprache": "de"
+  },
+  {
+   "t": "Microsoft-President: KI wird lascher kontrolliert als Milch",
+   "u": "https://t3n.de/news/microsoft-ki-kontrolle-milch-1767917/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-10-13T11:00:23Z",
+   "s": "Nach Microsoft-Mitgründer Bill Gates und CEO Satya Nadella hat jetzt auch der Präsident des Softwarekonzerns Brad Smith nachdrücklich vor den potenziellen Gefahren von KI gewarnt. Jede Milch im Superm…",
+   "sprache": "de"
+  },
+  {
+   "t": "Anthropic warnt: Unsichere IoT-Geräte können KI-Würmer verbreiten",
+   "u": "https://www.golem.de/news/anthropic-warnt-unsichere-iot-geraete-koennen-ki-wuermer-verbreiten-2610-214047.html",
+   "q": "Golem",
+   "d": "2026-10-13T10:27:02Z",
+   "s": "Laut Tests von Anthropic reichen auch leistungsschwache Geräte wie Android-TV-Boxen aus, damit sich KI autonom ausbreiten kann. (KI, Security)",
+   "sprache": "de"
+  },
+  {
+   "t": "Open models have real benefits. Do they outweigh the risks?",
+   "u": "https://www.technologyreview.com/2026/10/13/1146366/open-models-have-real-benefits-do-they-outweigh-the-risks/",
+   "q": "MIT Tech Review",
+   "d": "2026-10-13T10:00:00Z",
+   "s": "MIT Technology Review Explains: Let our writers untangle the complex, messy world of science and technology to help you understand what’s coming next. You can read more from the series here. Late last…",
+   "sprache": "en"
+  },
+  {
+   "t": "Werbeindustrie liest mit: KI-Chatbots schicken Inhalte aus Gesprächen an Tracking-Firmen",
+   "u": "https://netzpolitik.org/2026/werbeindustrie-liest-mit-ki-chatbots-schicken-inhalte-aus-gespraechen-an-tracking-firmen/",
+   "q": "netzpolitik.org",
+   "d": "2026-10-13T09:48:26Z",
+   "s": "Wer erfährt, worüber ich mit meiner KI spreche? (Symbolbild) – Gemeinfrei-ähnlich freigegeben durch unsplash.com: Solen FeyissaSechs von neun untersuchten KI-Chatbots übermitteln laut einer Studie Ges…",
+   "sprache": "de"
+  },
+  {
+   "t": "AI labs are buying data from dead startups to train their models",
+   "u": "https://www.technologyreview.com/2026/10/13/1145755/ai-labs-buying-data-from-dead-startups-to-train-models/",
+   "q": "MIT Tech Review",
+   "d": "2026-10-13T09:00:00Z",
+   "s": "When Keelan Miskell began winding down his crypto startup this year, he didn’t think its data was worth much: the users were anonymous, the company just a few years old. But he’s since turned the firm…",
+   "sprache": "en"
+  },
+  {
    "t": "Meta releases its first frontier model, Muse Wonder",
    "u": "https://techcrunch.com/2026/10/12/meta-releases-its-first-frontier-model-muse-wonder/",
    "q": "TechCrunch AI",
    "d": "2026-10-12T17:56:56Z",
    "s": "Where Muse Spark aimed to be a lightweight model that could perform at low latency, the Wonder models are larger and said to be more capable, with higher benchmark scores and better results on complex…",
    "sprache": "en"
-  },
-  {
-   "t": "WindBorne wins a hefty US Air Force contract for its balloon data",
-   "u": "https://techcrunch.com/2026/10/12/windborne-wins-a-hefty-us-air-force-contract-for-its-balloon-data/",
-   "q": "TechCrunch AI",
-   "d": "2026-10-12T17:19:14Z",
-   "s": "A Silicon Valley startup that uses weather balloons and AI to predict the weather won a U.S. military contract worth almost $50 million.",
-   "sprache": "en"
-  },
-  {
-   "t": "Anzeige: KI für Pentesting, Schwachstellenanalyse und Reporting",
-   "u": "https://www.golem.de/news/anzeige-ki-fuer-pentesting-schwachstellenanalyse-und-reporting-2610-213849.html",
-   "q": "Golem",
-   "d": "2026-10-12T16:45:02Z",
-   "s": "KI in der IT-Sicherheit kann Tests unterstützen, liefert aber auch unzuverlässige Ergebnisse. Ein Workshop zeigt Verfahren und Grenzen. (Golem Karrierewelt, Server-Applikationen)",
-   "sprache": "de"
-  },
-  {
-   "t": "Airbus testet Kampfdrohne U740 Valkyrie",
-   "u": "https://www.heise.de/news/Airbus-testet-Kampfdrohne-U740-Valkyrie-11484973.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-12T16:07:00Z",
-   "s": "Airbus hat die US-Kampfdrohne U740 Valkyrie getestet. Für den Einsatz in der Bundeswehr soll sie eine von Airbus entwickelte, KI-gestützte Software bekommen.",
-   "sprache": "de"
-  },
-  {
-   "t": "(g+) Künstliche Intelligenz: Ein Blick in die 'Roboter-Fitnessstudios', in denen Maschinen für ...",
-   "u": "https://www.golem.de/news/kuenstliche-intelligenz-ein-blick-in-die-roboter-fitnessstudios-in-denen-maschinen-fuer-die-echte-welt-trainiert-werden-2610-214019.html",
-   "q": "Golem",
-   "d": "2026-10-12T16:00:02Z",
-   "s": "Robotern fehlen Trainingsdaten aus der echten Welt. Die Financial Times zeigt in unserem Lesetipp, wie Unternehmen das ändern wollen. Von Rafe Rosner-Uddin (Roboter, KI)",
-   "sprache": "de"
-  },
-  {
-   "t": "Satya Nadella will „Notbremse“, um KI abschalten zu können",
-   "u": "https://www.heise.de/news/Microsoft-Chef-will-Notbremse-fuer-kuenstliche-Intelligenz-11483617.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-12T13:58:00Z",
-   "s": "Nach Hacking-Attacken durch KI schlägt Satya Nadella Regeln für die Technologie vor. Die Maßnahmen offenbaren, wie besorgt der Microsoft-Chef ist.",
-   "sprache": "de"
-  },
-  {
-   "t": "Das Ende von Photoshop, Word & Co.? So schlagen sich KI-generierte Software-Kopien wirklich",
-   "u": "https://t3n.de/news/das-ende-von-photoshop-word-co-so-schlagen-sich-ki-generierte-software-kopien-wirklich-1767815/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-10-12T13:15:38Z",
-   "s": "Von Adobe Photoshop bis Microsoft Word: Artcraft bietet KI-generierte Kopien einiger der beliebtesten Software-Tools an. Wie gut sind die Gratis-Klone wirklich weiterlesen auf t3n.de",
-   "sprache": "de"
-  },
-  {
-   "t": "Entwickler lassen GPT, Claude und Grok einen Toyota fahren: So lief der Test",
-   "u": "https://t3n.de/news/gpt-claude-grok-steuern-toyota-1767731/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-10-12T12:30:09Z",
-   "s": "Drei Entwickler haben die großen Sprachmodelle GPT, Claude und Grok ans Steuer eines echten Fahrzeugs gelassen. Tatsächlich gelang es allen drei KI-Systemen, das Auto zu steuern. Aber nur ein Modell a…",
-   "sprache": "de"
   }
  ]
 }
