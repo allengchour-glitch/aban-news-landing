@@ -8141,3 +8141,9 @@ smart-beissfester-hundeball-mit-zahnreinigung-628600	2601200843471628900	16	6.63
 giraffe-waschbar-baumwollseil-spielzeug-600000	2601120525481600200	16	7.17	ok	landeseite
 quietschendes-gummi-monster-fur-hunde-945217	2004008466410745857	0	-	KEINE CH-Option → DRAFT	landeseite
 hufeisen-kauspielzeug-aus-naturkautschuk-315842	2004014489188290562	0	-	KEINE CH-Option → DRAFT	landeseite
+robustes-naturkautschuk-kauspielzeug-fur-hunde-716737	2004028160267431937	0	-	KEINE CH-Option → DRAFT	landeseite
+interaktives-plusch-hundespielzeug-orange-613300	2512200557551613500	16	6.90	ok	landeseite
+4er-set-latex-kauspielzeug-mit-sound-fur-hunde-459650	2001961361469648898	0	-	KEINE CH-Option → DRAFT	landeseite
+smart-ball-interaktives-kauball-spielzeug-fur-616500	2511300926431617300	7	7.45	ok	landeseite
+robuster-kauartikel-fur-hunde-618600	2511270553521618800	16	10.77	ok	landeseite
+farbiger-zahnreinigungs-und-kauspielball-927554	1992483683347230721	16	5.81	ok	landeseite
