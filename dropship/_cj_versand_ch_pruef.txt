@@ -7603,3 +7603,6 @@ holzol-fur-mobel-250-ml-526146	1990691894958018561	0	-	KEINE CH-Option → DRAFT
 gusseisen-grillpfanne-rund-30-cm-537857	1990708246515077122	0	-	KEINE CH-Option → DRAFT	landeseite
 drehbare-servierplatte-transparent-60-cm-870850	1990695402872557569	0	-	KEINE CH-Option → DRAFT	landeseite
 vorratsglaser-mit-bambusdeckel-6-stuck-600-ml-961090	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+bodenwischerkopf-aus-stahl-und-gummi-753921	1990487954605383681	0	-	KEINE CH-Option → DRAFT	landeseite
+waschmaschinen-tabs-gegen-kalk-geruche-100-stk-060737	1990513411744903170	0	-	KEINE CH-Option → DRAFT	landeseite
+bidetmischer-armatur-chrom-009921	1990428070568976385	0	-	KEINE CH-Option → DRAFT	landeseite
