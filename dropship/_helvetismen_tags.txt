@@ -363,3 +363,6 @@
 2026-10-11	gid://shopify/Product/16615706460551	finken	Hausschuhe für Kinder
 2026-10-12	gid://shopify/Product/16615818887559	natel	Fahrrad-Handytasche mit Touchscreen
 2026-10-12	gid://shopify/Product/16616395440519	trottinett	Universaler Scooter-Griff aus Canvas
+2026-10-13	gid://shopify/Product/16616502722951	natel	Sport Handy-Armband mit drehbarem Halter
+2026-10-13	gid://shopify/Product/16616502952327	natel	Bicycle Handy-Tasche aus PU-Leder
+2026-10-13	gid://shopify/Product/16616520679815	natel	Multifunktionale Armtasche fürs Handy
