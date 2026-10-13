@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-13T08:13Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-13T09:09Z
 
-Aktive gescannt: 55 · ohne Kategorie: 55 · heute gesetzt: 47 (SCHARF, CAP 1500) · danach offen: 8 · Fehler: 0
+Aktive gescannt: 71 · ohne Kategorie: 71 · heute gesetzt: 63 (SCHARF, CAP 1500) · danach offen: 8 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -11,9 +11,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- rucksack-fur-reisen-und-buro-47edec · Taschen → Luggage & Bags
-- multifunktionale-sporttasche-mit-nass-und-troc-533184 · Sport & Outdoor → Sporting Goods
-- lederrucksack-mit-klappe-fur-alltag-und-reisen-342784 · Sport & Outdoor → Sporting Goods
-- multifunktions-wecker-mit-nacht-und-wecklicht-634000 · Sport & Outdoor → Sporting Goods
-- abisolierzange-mit-ratschen-selbsthemmung-626700 · Sport & Outdoor → Sporting Goods
+- reise-portemonnaie-628600 · Taschen → Luggage & Bags
+- portemonnaie-aus-rindsleder-620200 · Taschen → Luggage & Bags
+- rfid-portemonnaie-mit-zwei-reissverschlussen-611600 · Taschen → Luggage & Bags
+- portemonnaie-mit-diebstahlschutz-602500 · Taschen → Luggage & Bags
+- retro-mini-portemonnaie-aus-leder-601200 · Taschen → Luggage & Bags
 
