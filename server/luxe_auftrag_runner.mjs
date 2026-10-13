@@ -15,6 +15,7 @@
 import { chromium } from 'playwright';
 import fs from 'node:fs';
 import path from 'node:path';
+import os from 'node:os';
 import { execFileSync } from 'node:child_process';
 import { ist_anmeldeseite, hat_ziel_erreicht, ist_wandtext, ist_fehlerseite } from './anmelde_erkennung.mjs';
 import { fuehre_wartung_aus, ist_erlaubt, AKTIONEN } from './wartung.mjs';
@@ -162,12 +163,26 @@ async function fuehre_aus(auftrag, ctx) {
  *   - Lässt sich ein öffentliches Bild nicht unter 200 KB bringen, bleibt es ebenfalls
  *     auf dem Server. Lieber ein Bild weniger im Repo als ein zu grosses.
  *
- * ⛔ Bestehende Dateien fasst die Weiche NICHT an. Sie sieht nur Bilder, die während
- * DIESES Auftrags neu entstanden sind (Vorher-Liste), und reste_sichern() nur Bilder,
- * die git noch nicht kennt. Videos (mp4) und JSON-Ergebnisse gehen unverändert ins Repo,
- * denn der Reel-Motor braucht die mp4 aus cj_quellvideo_holen.
+ * ⛔ Was VOR dem Auftrag schon da war und unverändert bleibt, fasst die Weiche nicht an.
+ * Sie sieht jedes Bild unter ERGEBNIS (auch in Unterordnern), das während DIESES Auftrags
+ * neu entstand ODER sich geändert hat (Vorher-Karte Pfad → mtime:Grösse). reste_sichern()
+ * sieht alles, was der Starter unter auftraege/ committen würde (`git status`): neue Bilder
+ * und überschriebene, committete Bilder — bei diesen kommt der neue Inhalt auf den Server
+ * und der committete Stand zurück (`git checkout HEAD -- <pfad>`). Videos (mp4) und
+ * JSON-Ergebnisse gehen unverändert ins Repo, denn der Reel-Motor braucht die mp4 aus
+ * cj_quellvideo_holen.
+ *
+ * Nachbesserung 13.10.2026 abends (Prüfer-Befund, drei Lecks, alle im Wegwerf-Repo belegt):
+ *   1. Bilder in UNTERORDNERN (ergebnis/<id>/x.png) gingen an beiden Sperren vorbei.
+ *   2. ÜBERSCHRIEBENE Dateien (gleiche Auftrags-ID, storefront-JJJJ-MM-TT bis 3×/Tag) galten
+ *      nicht als neu, reste_sichern sah nur unversionierte → neuer Inhalt kam ins Repo.
+ *   3. fail-OPEN: liess sich der Server-Ordner nicht anlegen, blieb das Bild liegen und der
+ *      nächste Commit nahm es mit. Jetzt fail-closed: Server → Notfall-Ordner in os.tmpdir()
+ *      → frisches Bild löschen bzw. committeten Stand zurückholen → sonst process.exit(3),
+ *      damit weder ein Claim noch der Starter (set -e) committet.
  */
 const BILDER_SERVER  = process.env.LUXE_BILDER_SERVER || '/var/lib/luxe-agent/ergebnis-angemeldet';
+const BILDER_NOTFALL = process.env.LUXE_BILDER_NOTFALL || path.join(os.tmpdir(), 'luxe-bilder-notfall');
 const BILD_MAX_BYTES = 200 * 1024;
 const IST_BILD       = /\.(png|jpe?g|webp|gif|bmp)$/i;
 // Öffentlich ist nur unser Laden von aussen. Pfade, die in ein Konto führen, sind es auch dort nicht.
@@ -176,9 +191,11 @@ const KONTO_PFAD          = /^\/(admin|account|accounts|login|checkouts?)(\/|$)/
 // Nur diese Skripte besuchen ausschliesslich öffentliche Seiten (storefront_wahrheit liest
 // luxestyle.ch von der echten Besucher-IP). Ein neues Skript gilt zuerst als angemeldet.
 const OEFFENTLICHE_SKRIPTE = new Set(['storefront_wahrheit.mjs']);
-// Bilder, die die Weiche in DIESEM Lauf fürs Repo freigegeben hat. Alles andere, was git
-// noch nicht kennt, räumt reste_sichern() auf den Server.
-const FREIGEGEBEN = new Set();
+// Bilder, die die Weiche in DIESEM Lauf fürs Repo freigegeben hat: Repo-relativer Pfad →
+// Stempel (mtime:Grösse) zum Zeitpunkt der Freigabe. Wird die Datei danach überschrieben,
+// gilt die Freigabe nicht mehr. Alles andere räumt reste_sichern() weg.
+const FREIGEGEBEN = new Map();
+const AUFTRAEGE_REL = path.relative(REPO, path.dirname(ERGEBNIS)) || '.';
 
 function ist_oeffentlich(auftrag) {
   if (!auftrag || typeof auftrag !== 'object') return false;
@@ -192,26 +209,106 @@ function ist_oeffentlich(auftrag) {
   return false;                      // wartung und alles Unbekannte: fail-closed
 }
 
-function bilder_jetzt() {
-  try { return new Set(fs.readdirSync(ERGEBNIS).filter(f => IST_BILD.test(f))); }
-  catch { return new Set(); }
+function stempel(datei) {
+  const st = fs.statSync(datei);
+  return `${st.mtimeMs}:${st.size}`;
 }
 
-/** Verschiebt ein Bild nach BILDER_SERVER (nur root lesbar) und liefert den neuen Pfad. */
-function auf_server_legen(datei) {
-  fs.mkdirSync(BILDER_SERVER, { recursive: true, mode: 0o700 });
-  let ziel = path.join(BILDER_SERVER, path.basename(datei));
+/** Alle Bilder unter ERGEBNIS, rekursiv (ohne Symlinks): Pfad relativ zu ERGEBNIS → Stempel. */
+function bilder_jetzt() {
+  const karte = new Map();
+  const gehe = (ordner, vor, tiefe) => {
+    if (tiefe > 20) return;
+    let eintraege;
+    try { eintraege = fs.readdirSync(ordner, { withFileTypes: true }); } catch { return; }
+    for (const e of eintraege) {
+      const rel = vor ? `${vor}/${e.name}` : e.name;
+      if (e.isDirectory()) gehe(path.join(ordner, e.name), rel, tiefe + 1);
+      else if (e.isFile() && IST_BILD.test(e.name)) {
+        try { karte.set(rel, stempel(path.join(ordner, e.name))); } catch {}
+      }
+    }
+  };
+  gehe(ERGEBNIS, '', 0);
+  return karte;
+}
+
+const git_weiche = (...a) => execFileSync('git', ['-C', REPO, ...a],
+                                          { stdio: ['ignore', 'pipe', 'ignore'] }).toString();
+
+/** Steht die Datei so im letzten Commit (HEAD)? Dann ist sie «versioniert». */
+function ist_versioniert(rel) {
+  try { git_weiche('cat-file', '-e', `HEAD:${rel}`); return true; } catch { return false; }
+}
+
+/** Was würde der Starter für diesen Pfad committen? '' = nichts. Wirft, wenn git nicht kann. */
+function git_stand(rel) {
+  return git_weiche('status', '--porcelain=v1', '-z', '-uall', '--no-renames', '--', rel);
+}
+
+/** Letzter Ausweg: lieber kein Commit als ein Bild aus einem angemeldeten Dienst im Repo. */
+function abbrechen(grund) {
+  console.error(`✗✗ BILDER-WEICHE: ${grund} — Abbruch mit Code 3, damit nichts committet wird`);
+  process.exit(3);
+  throw new Error(`Abbruch 3: ${grund}`);   // falls exit abgefangen wird (Test): nie weiterlaufen
+}
+
+/** Kopiert `datei` in `ordner` (0700), ohne etwas Vorhandenes zu überschreiben. */
+function ablegen(datei, ordner) {
+  fs.mkdirSync(ordner, { recursive: true, mode: 0o700 });
+  const rel = path.relative(ERGEBNIS, datei);
+  const name = (rel.startsWith('..') ? path.relative(REPO, datei) : rel).split(path.sep).join('__');
+  let ziel = path.join(ordner, name);
   // Nie ein älteres Server-Bild überschreiben (gleiche Auftrags-ID, zweiter Lauf).
-  if (fs.existsSync(ziel)) ziel = path.join(BILDER_SERVER, `${Date.now()}-${path.basename(datei)}`);
-  try { fs.renameSync(datei, ziel); }
-  catch (e) {
-    if (e.code !== 'EXDEV') throw e;   // anderes Dateisystem: kopieren, dann entfernen
-    fs.copyFileSync(datei, ziel);
-    fs.unlinkSync(datei);
+  for (let i = 0; fs.existsSync(ziel); i++) {
+    if (i > 50) throw new Error('kein freier Name');
+    ziel = path.join(ordner, `${Date.now()}${i ? `-${i}` : ''}-${name}`);
   }
+  try { fs.copyFileSync(datei, ziel, fs.constants.COPYFILE_EXCL); }
+  catch (e) { try { fs.rmSync(ziel, { force: true }); } catch {} throw e; }
   return ziel;
 }
 
+/**
+ * Nimmt ein Bild fail-closed aus dem Repo. Der Inhalt geht auf den Server (BILDER_SERVER),
+ * klappt das nicht in den Notfall-Ordner (os.tmpdir()), klappt auch das nicht, wird er
+ * verworfen. Danach im Repo: frisches Bild löschen, überschriebenes committetes Bild auf
+ * HEAD zurücksetzen. Steht danach für den Pfad immer noch etwas zum Committen an →
+ * process.exit(3). Liefert { ziel, notfall?, fehler? } (ziel null = verworfen).
+ */
+function wegraeumen(datei) {
+  const rel = path.relative(REPO, datei);
+  const ergebnis = { ziel: null };
+  const fehler = [];
+  for (const [ordner, notfall] of [[BILDER_SERVER, false], [BILDER_NOTFALL, true]]) {
+    try {
+      ergebnis.ziel = ablegen(datei, ordner);
+      if (notfall) ergebnis.notfall = true;
+      break;
+    } catch (e) { fehler.push(`${notfall ? 'Notfall' : 'Server'}: ${String(e.message || e).slice(0, 80)}`); }
+  }
+  if (fehler.length) ergebnis.fehler = fehler.join(' · ');
+  const versioniert = ist_versioniert(rel);
+  try {
+    if (versioniert) git_weiche('checkout', '-q', 'HEAD', '--', rel);
+    else {
+      fs.rmSync(datei, { force: true });
+      try { git_weiche('rm', '-q', '--cached', '--ignore-unmatch', '--', rel); } catch {}
+    }
+  } catch (e) { ergebnis.fehler = `${ergebnis.fehler || ''} · Repo: ${String(e.message || e).slice(0, 80)}`; }
+  let rest;
+  try { rest = git_stand(rel); } catch (e) { rest = `git: ${String(e.message || e).slice(0, 80)}`; }
+  if (rest) abbrechen(`${rel} liess sich nicht aus dem Repo nehmen (${ergebnis.fehler || rest})`);
+  if (ergebnis.fehler) console.log(`· ${rel}: ${ergebnis.notfall ? 'im Notfall-Ordner' : ergebnis.ziel ? 'gesichert' : 'VERWORFEN'} (${ergebnis.fehler})`);
+  return ergebnis;
+}
+
+/** Entfernt das Original eines verkleinerten Bildes: frisch → löschen, committet → HEAD. */
+function original_entfernen(datei) {
+  const rel = path.relative(REPO, datei);
+  if (ist_versioniert(rel)) git_weiche('checkout', '-q', 'HEAD', '--', rel);
+  else fs.unlinkSync(datei);
+}
 /** Freier JPEG-Name neben dem Original, ohne ein vorhandenes Bild zu überschreiben. */
 function jpeg_name(name) {
   const stamm = name.replace(IST_BILD, '');
@@ -260,25 +357,33 @@ async function verkleinere_jpeg(ctx, datei, maxBytes) {
 }
 
 /**
- * Schickt alle Bilder, die seit `vorher` in ERGEBNIS entstanden sind, durch die Weiche
- * und schreibt die Verweise in der Quittung um (alter Repo-Pfad → JPEG oder «server:…»).
- * `verkleinere(datei, maxBytes)` liefert einen JPEG-Buffer oder null.
+ * Schickt alle Bilder, die seit `vorher` unter ERGEBNIS entstanden sind oder sich geändert
+ * haben, durch die Weiche und schreibt die Verweise in der Quittung um (alter Repo-Pfad →
+ * JPEG oder «server:…»). `verkleinere(datei, maxBytes)` liefert einen JPEG-Buffer oder null.
  */
 async function bilder_weichen(auftrag, vorher, quittung, verkleinere) {
-  const neu = [...bilder_jetzt()].filter(f => !vorher.has(f)).sort();
+  const neu = [...bilder_jetzt()].filter(([f, s]) => vorher.get(f) !== s).map(([f]) => f).sort();
   if (!neu.length) return quittung;
   const oeffentlich = ist_oeffentlich(auftrag);
   const ersatz = [];                                  // [alter Repo-Pfad, neuer Verweis]
   const bericht = { oeffentlich, im_repo: [], auf_server: [] };
+  const weg = (datei, alt, bytes, grund) => {
+    const r = wegraeumen(datei);
+    const verweis = r.ziel ? `server:${r.ziel}` : 'verworfen (nicht zu sichern)';
+    bericht.auf_server.push({ datei: r.ziel || null, bytes, ...(grund ? { grund } : {}),
+                              ...(r.notfall ? { notfall: true } : {}), ...(r.fehler ? { fehler: r.fehler } : {}) });
+    ersatz.push([alt, verweis]);
+  };
   for (const name of neu) {
     const datei = path.join(ERGEBNIS, name);
     const alt = path.relative(REPO, datei);
+    FREIGEGEBEN.delete(alt);                          // überschrieben → alte Freigabe gilt nicht
     let bytes = 0;
     try { bytes = fs.statSync(datei).size; } catch { continue; }   // schon weg
     try {
       if (oeffentlich) {
         if (/\.jpe?g$/i.test(name) && bytes <= BILD_MAX_BYTES) {
-          FREIGEGEBEN.add(name);
+          FREIGEGEBEN.set(alt, stempel(datei));
           bericht.im_repo.push({ datei: alt, bytes });
           continue;
         }
@@ -290,24 +395,20 @@ async function bilder_weichen(auftrag, vorher, quittung, verkleinere) {
             && jpeg[0] === 0xFF && jpeg[1] === 0xD8) {
           const ziel = path.join(ERGEBNIS, zielname);
           fs.writeFileSync(ziel, jpeg);
-          if (ziel !== datei) fs.unlinkSync(datei);     // nur das NEUE Original dieses Auftrags
-          FREIGEGEBEN.add(zielname);
           const neuRel = path.relative(REPO, ziel);
+          if (ziel !== datei) original_entfernen(datei);   // nur das NEUE Original dieses Auftrags
+          FREIGEGEBEN.set(neuRel, stempel(ziel));
           bericht.im_repo.push({ datei: neuRel, bytes: jpeg.length, vorher_bytes: bytes });
           ersatz.push([alt, neuRel]);
           continue;
         }
-        const ziel = auf_server_legen(datei);
-        bericht.auf_server.push({ datei: ziel, bytes, grund });
-        ersatz.push([alt, `server:${ziel}`]);
+        weg(datei, alt, bytes, grund);
         continue;
       }
-      const ziel = auf_server_legen(datei);
-      bericht.auf_server.push({ datei: ziel, bytes });
-      ersatz.push([alt, `server:${ziel}`]);
+      weg(datei, alt, bytes);
     } catch (e) {
       // Nichts freigeben, was nicht sauber durch die Weiche ging: reste_sichern() räumt
-      // es nach diesem Auftrag auf den Server.
+      // es direkt nach diesem Auftrag weg (fail-closed, notfalls Abbruch).
       bericht.fehler = `${name}: ${String(e.message || e).slice(0, 120)}`;
     }
   }
@@ -325,30 +426,35 @@ async function bilder_weichen(auftrag, vorher, quittung, verkleinere) {
 }
 
 /**
- * Letzte Sperre vor jedem Commit: Bilder in ERGEBNIS, die git noch nicht kennt und die die
- * Weiche nicht freigegeben hat, kommen auf den Server.
+ * Letzte Sperre vor jedem Commit: jedes Bild unter auftraege/ (alle Unterordner), das der
+ * Starter mit `git add auftraege` committen würde und das die Weiche nicht in genau diesem
+ * Zustand freigegeben hat, kommt weg (wegraeumen: Server → Notfall → verwerfen → exit 3).
+ * Das sind neue, unversionierte Bilder UND überschriebene committete Bilder (dort geht der
+ * neue Inhalt auf den Server und der committete Stand kommt zurück).
  *
  * Warum es das braucht: systemd beendet den Dienst nach TimeoutStartSec=900 auch mitten im
  * Auftrag (19./20.09.: zwei Storefront-Läufe blieben auf «laufend»). Dann liegen neue Bilder
- * unversioniert in ERGEBNIS, `git checkout -B` lässt sie liegen, und der Starter committet
- * sie beim nächsten Lauf mit `git add auftraege` an der Weiche vorbei, auch in einem Lauf
- * ohne Auftrag. Wem sie gehören, weiss dann niemand mehr, also fail-closed.
- * Bilder, die git schon kennt (die bestehenden 366), fasst sie nicht an.
+ * in auftraege/, `git checkout -B` lässt sie liegen, und der Starter committet sie beim
+ * nächsten Lauf mit `git add auftraege` an der Weiche vorbei, auch in einem Lauf ohne
+ * Auftrag. Wem sie gehören, weiss dann niemand mehr, also fail-closed.
+ * Kann git den Stand nicht nennen → Abbruch (Code 3): dann scheitert auch der Starter.
  */
 function reste_sichern() {
   let roh;
-  try {
-    roh = execFileSync('git', ['-C', REPO, 'ls-files', '--others', '--exclude-standard', '-z',
-                               '--', path.relative(REPO, ERGEBNIS)],
-                       { stdio: ['ignore', 'pipe', 'ignore'] }).toString();
-  } catch { return 0; }              // kein git oder kein Repo: lieber nichts anfassen
+  try { roh = git_stand(AUFTRAEGE_REL); }
+  catch (e) { abbrechen(`git status geht nicht: ${String(e.message || e).slice(0, 100)}`); }
   let n = 0;
-  for (const rel of roh.split('\0').filter(Boolean)) {
+  for (const eintrag of roh.split('\0').filter(Boolean)) {
+    const rel = eintrag.slice(3);
+    if (!IST_BILD.test(rel)) continue;
     const datei = path.join(REPO, rel);
-    if (!IST_BILD.test(rel) || path.dirname(datei) !== ERGEBNIS) continue;
-    if (FREIGEGEBEN.has(path.basename(rel))) continue;
-    try { console.log(`· Bild ohne Freigabe auf den Server: ${rel} → ${auf_server_legen(datei)}`); n++; }
-    catch (e) { console.log(`✗ ${rel} nicht verschoben: ${String(e.message || e).slice(0, 100)}`); }
+    let st;
+    try { st = fs.lstatSync(datei); } catch { continue; }          // gelöscht: kein Bildinhalt
+    if (!st.isFile()) continue;                                    // Symlink/Ordner: kein Bildinhalt
+    if (FREIGEGEBEN.get(rel) === `${st.mtimeMs}:${st.size}`) continue;
+    const r = wegraeumen(datei);
+    console.log(`· Bild ohne Freigabe weg aus dem Repo: ${rel} → ${r.ziel || 'verworfen'}`);
+    n++;
   }
   return n;
 }

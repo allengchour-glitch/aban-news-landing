@@ -11,6 +11,10 @@
  * Ein Melder, der «0 Bilder im Repo» meldet, muss zeigen, dass er auch «1» kann: Probe 0
  * lässt ein Bild absichtlich an der Weiche vorbei und erwartet einen Treffer.
  *
+ * Proben 13–15 (Nachbesserung 13.10. abends, Prüfer-Befund): Unterordner, überschriebene
+ * Dateien, fail-closed bei kaputtem Server-Ordner (Notfall → verwerfen → Abbruch Code 3).
+ * Gegenprobe je Leck: Korrektur einzeln zurückgenommen (8 Mutanten) → jeweils rot.
+ *
  * Lauf: /opt/node22/bin/node server/bilder_weiche.test.mjs
  * Probe 12 (echtes JPEG aus Chromium) läuft nur, wenn Playwright und ein Chromium da sind,
  * sonst meldet sie «übersprungen» (kein Fehler).
@@ -43,7 +47,7 @@ const png = (bytes) => Buffer.concat([PNG_KOPF, Buffer.alloc(bytes - PNG_KOPF.le
 const jpg = (bytes) => Buffer.concat([Buffer.from([0xFF, 0xD8, 0xFF, 0xE0]), Buffer.alloc(bytes - 4, 3)]);
 
 /** Frisches Wegwerf-Repo mit zwei BESTEHENDEN, committeten Bildern + Weiche daraus. */
-function werkstatt() {
+function werkstatt(opt = {}) {
   const T = fs.mkdtempSync(path.join(os.tmpdir(), 'bildweiche-'));
   const REPO = path.join(T, 'repo');
   const ERGEBNIS = path.join(REPO, 'auftraege/ergebnis');
@@ -56,16 +60,21 @@ function werkstatt() {
   fs.writeFileSync(path.join(ERGEBNIS, 'storefront-alt.jpg'), jpg(10 * 1024));
   git('add', '-A');
   git('-c', 'user.name=t', '-c', 'user.email=t@t', 'commit', '-q', '-m', 'bestand');
-  const fabrik = new Function('fs', 'path', 'execFileSync', 'REPO', 'ERGEBNIS', 'process',
+  const NOTFALL = path.join(T, 'notfall');                 // statt os.tmpdir(), damit der Test zählen kann
+  const fabrik = new Function('fs', 'path', 'os', 'execFileSync', 'REPO', 'ERGEBNIS', 'process',
     `${block}\n return { ist_oeffentlich, bilder_jetzt, bilder_weichen, reste_sichern, verkleinere_jpeg, FREIGEGEBEN, BILDER_SERVER, BILD_MAX_BYTES };`);
-  const w = fabrik(fs, path, execFileSync, REPO, ERGEBNIS, { env: { LUXE_BILDER_SERVER: SERVER } });
+  // process.exit wird zur Ausnahme mit Code, damit Probe 15 den Abbruch sehen kann.
+  const prozess = { env: { LUXE_BILDER_SERVER: opt.server || SERVER, LUXE_BILDER_NOTFALL: opt.notfall || NOTFALL },
+                    exit: (c) => { throw Object.assign(new Error(`exit ${c}`), { exitCode: c }); } };
+  const w = fabrik(opt.fs || fs, path, os, execFileSync, REPO, ERGEBNIS, prozess);
   const bestand = () => Object.fromEntries(['alt-bestehend.png', 'alt-gross.jpg', 'storefront-alt.jpg']
     .map(n => { try { return [n, fs.statSync(path.join(ERGEBNIS, n)).size]; } catch { return [n, null]; } }));
   // Was der Starter mit `git add auftraege` committen würde, nur Bilder:
   const bilder_im_commit = () => git('status', '--porcelain', '-uall', '--', 'auftraege')
     .split('\n').filter(Boolean).map(z => z.slice(3)).filter(p => /\.(png|jpe?g|webp|gif|bmp)$/i.test(p));
   const server = () => (fs.existsSync(SERVER) ? fs.readdirSync(SERVER).sort() : []);
-  return { ...w, T, REPO, ERGEBNIS, SERVER, git, bestand, bilder_im_commit, server };
+  const notfall = () => (fs.existsSync(NOTFALL) ? fs.readdirSync(NOTFALL).sort() : []);
+  return { ...w, T, REPO, ERGEBNIS, SERVER, NOTFALL, git, bestand, bilder_im_commit, server, notfall };
 }
 
 const schreib = (w, name, buf) => { const d = path.join(w.ERGEBNIS, name); fs.writeFileSync(d, buf); return d; };
@@ -247,6 +256,112 @@ for (const [name, verkleinere] of [
   }
   const s = w.server();
   pruefe('11) zweites Server-Bild gleichen Namens überschreibt nicht', s.length === 2 && s.includes('p.png'), true);
+}
+
+// 13) Leck 1 (Prüfer 13.10.): Bilder in UNTERORDNERN von ergebnis/ und anderswo unter auftraege/.
+{
+  const w = werkstatt();
+  const auftrag = { id: 'a1-pinterest', typ: 'skript', skript: 'pinterest_pin_erstellen.mjs' };
+  const vorher = w.bilder_jetzt();
+  fs.mkdirSync(path.join(w.ERGEBNIS, 'a1-pinterest/tief'), { recursive: true });
+  schreib(w, 'a1-pinterest/unter.png', png(3000));
+  schreib(w, 'a1-pinterest/tief/noch.jpg', jpg(3000));
+  let q = { ...auftrag, stand: 'ok', ergebnis: { bild: 'auftraege/ergebnis/a1-pinterest/unter.png' } };
+  q = await w.bilder_weichen(auftrag, vorher, q, kleinJpeg);
+  pruefe('13) Unterordner: Weiche sieht beide Bilder', q.bilder_weiche?.auf_server.length ?? 0, 2);
+  pruefe('13) Unterordner: Quittung zeigt auf den Server', q.ergebnis.bild.startsWith(`server:${w.SERVER}/`), true);
+  w.reste_sichern();
+  pruefe('13) ergebnis/<id>/x.png → 0 Bilder im Commit', w.bilder_im_commit(), []);
+  // Reste ohne Weiche (abgebrochener Lauf), auch ausserhalb von ergebnis/:
+  fs.mkdirSync(path.join(w.REPO, 'auftraege/erledigt'), { recursive: true });
+  fs.mkdirSync(path.join(w.ERGEBNIS, 'b2/c3'), { recursive: true });
+  fs.writeFileSync(path.join(w.REPO, 'auftraege/erledigt/quer.png'), png(2000));
+  schreib(w, 'b2/c3/rest.webp', png(2000));
+  pruefe('13) Gegenprobe: Reste wären im Commit', w.bilder_im_commit().length, 2);
+  const n = w.reste_sichern();
+  pruefe('13) Reste in Unterordnern + erledigt/ weggeräumt', [n, w.bilder_im_commit()], [2, []]);
+  pruefe('13) bestehende Bilder unverändert', w.bestand(), BESTAND);
+  // Öffentlich im Unterordner: JPEG daneben, freigegeben, nur das im Commit.
+  const o = { id: 'sf', typ: 'skript', skript: 'storefront_wahrheit.mjs' };
+  const v2 = w.bilder_jetzt();
+  fs.mkdirSync(path.join(w.ERGEBNIS, 'sf'), { recursive: true });
+  schreib(w, 'sf/seite.png', png(600 * 1024));
+  await w.bilder_weichen(o, v2, { ...o }, kleinJpeg);
+  w.reste_sichern();
+  pruefe('13) öffentlich im Unterordner: nur das JPEG im Commit', w.bilder_im_commit(), ['auftraege/ergebnis/sf/seite.jpg']);
+}
+
+// 14) Leck 2: ÜBERSCHRIEBENE Dateien (gleiche Auftrags-ID, committetes Bild).
+{
+  const w = werkstatt();
+  // a) angemeldetes Skript überschreibt ein committetes PNG
+  const a = { id: 'alt', typ: 'skript', skript: 'pinterest_pin_erstellen.mjs' };
+  let vorher = w.bilder_jetzt();
+  schreib(w, 'alt-bestehend.png', png(123 * 1024));
+  pruefe('14) Gegenprobe: überschriebenes Bild stünde im Commit', w.bilder_im_commit(), ['auftraege/ergebnis/alt-bestehend.png']);
+  let q = await w.bilder_weichen(a, vorher, { ...a, d: 'auftraege/ergebnis/alt-bestehend.png' }, kleinJpeg);
+  pruefe('14) a) Weiche erkennt das überschriebene Bild', q.bilder_weiche?.auf_server.length ?? 0, 1);
+  pruefe('14) a) git status ohne Bild', w.bilder_im_commit(), []);
+  pruefe('14) a) committeter Stand zurück', w.bestand(), BESTAND);
+  pruefe('14) a) neuer Inhalt auf dem Server', fs.statSync(path.join(w.SERVER, 'alt-bestehend.png')).size, 123 * 1024);
+  pruefe('14) a) Quittung zeigt auf den Server', q.d, `server:${path.join(w.SERVER, 'alt-bestehend.png')}`);
+  // b) ohne Weiche überschrieben (abgebrochener Lauf) → reste_sichern holt es
+  schreib(w, 'alt-gross.jpg', jpg(77 * 1024));
+  const n = w.reste_sichern();
+  pruefe('14) b) Rest: überschriebenes committetes Bild weg', [n, w.bilder_im_commit()], [1, []]);
+  pruefe('14) b) committeter Stand zurück', w.bestand(), BESTAND);
+  // c) öffentlich (storefront-JJJJ-MM-TT, 3×/Tag): überschriebenes PNG → JPEG, PNG auf HEAD
+  const o = { id: 'alt-bestehend', typ: 'skript', skript: 'storefront_wahrheit.mjs' };
+  vorher = w.bilder_jetzt();
+  schreib(w, 'alt-bestehend.png', png(700 * 1024));
+  q = await w.bilder_weichen(o, vorher, { ...o }, kleinJpeg);
+  w.reste_sichern();
+  pruefe('14) c) öffentlich überschrieben: nur das neue JPEG im Commit', w.bilder_im_commit(), ['auftraege/ergebnis/alt-bestehend.jpg']);
+  pruefe('14) c) committetes PNG unverändert', w.bestand(), BESTAND);
+  // d) im selben Lauf freigegebenes JPEG, danach von einem angemeldeten Auftrag überschrieben
+  vorher = w.bilder_jetzt();
+  fs.writeFileSync(path.join(w.ERGEBNIS, 'alt-bestehend.jpg'), jpg(9000));
+  const z = new Date(Date.now() + 5000); fs.utimesSync(path.join(w.ERGEBNIS, 'alt-bestehend.jpg'), z, z);
+  pruefe('14) d) Gegenprobe: ohne Weiche bliebe es (Freigabe-Stempel passt nicht mehr)', w.bilder_im_commit(), ['auftraege/ergebnis/alt-bestehend.jpg']);
+  w.reste_sichern();
+  pruefe('14) d) überschriebenes freigegebenes JPEG weg', w.bilder_im_commit(), []);
+}
+
+// 15) Leck 3: fail-closed, wenn der Server-Ordner nicht geht.
+{
+  // a) LUXE_BILDER_SERVER zeigt unter eine Datei (ENOTDIR) → Notfall-Ordner, 0 im Commit
+  const T0 = fs.mkdtempSync(path.join(os.tmpdir(), 'bildweiche-datei-'));
+  fs.writeFileSync(path.join(T0, 'datei'), 'x');
+  const w = werkstatt({ server: path.join(T0, 'datei/unter') });
+  const a = { id: 'p', typ: 'skript', skript: 'pinterest_pin_erstellen.mjs' };
+  const vorher = w.bilder_jetzt();
+  schreib(w, 'p-1.png', png(2000));
+  const q = await w.bilder_weichen(a, vorher, { ...a }, kleinJpeg);
+  pruefe('15) a) Server kaputt: 0 Bilder im Commit', w.bilder_im_commit(), []);
+  pruefe('15) a) Bild im Notfall-Ordner', [w.notfall(), q.bilder_weiche?.auf_server[0]?.notfall], [['p-1.png'], true]);
+  schreib(w, 'rest-1.png', png(2000));                    // Rest am Laufanfang, gleicher Defekt
+  w.reste_sichern();
+  pruefe('15) a) Rest mit kaputtem Server: 0 Bilder im Commit (vorher 1)', w.bilder_im_commit(), []);
+  // b) Server UND Notfall kaputt → frisches Bild gelöscht, überschriebenes auf HEAD
+  const w2 = werkstatt({ server: path.join(T0, 'datei/a'), notfall: path.join(T0, 'datei/b') });
+  const v2 = w2.bilder_jetzt();
+  schreib(w2, 'q-1.png', png(2000));
+  schreib(w2, 'alt-bestehend.png', png(2222));
+  const q2 = await w2.bilder_weichen(a, v2, { ...a, x: 'auftraege/ergebnis/q-1.png' }, kleinJpeg);
+  pruefe('15) b) alles kaputt: 0 Bilder im Commit', w2.bilder_im_commit(), []);
+  pruefe('15) b) frisches Bild verworfen', fs.existsSync(path.join(w2.ERGEBNIS, 'q-1.png')), false);
+  pruefe('15) b) committetes Bild auf HEAD', w2.bestand(), BESTAND);
+  pruefe('15) b) Quittung sagt «verworfen»', q2.x, 'verworfen (nicht zu sichern)');
+  // c) nicht einmal löschen geht → Abbruch mit Code 3, Weiche läuft nicht weiter
+  const kaputt = Object.assign({}, fs, {
+    copyFileSync: () => { throw Object.assign(new Error('ENOSPC'), { code: 'ENOSPC' }); },
+    rmSync: (p, o) => { if (/zaeh\.png$/.test(p)) throw new Error('EPERM'); return fs.rmSync(p, o); },
+  });
+  const w3 = werkstatt({ fs: kaputt });
+  schreib(w3, 'zaeh.png', png(2000));
+  let code = null;
+  try { w3.reste_sichern(); } catch (e) { code = e.exitCode ?? String(e.message); }
+  pruefe('15) c) nichts geht: Abbruch mit Code 3 (Starter committet dann nicht)', code, 3);
 }
 
 // 12) Echter Verkleinerer in Chromium: Rauschbild (schwer zu packen) → JPEG ≤ 200 KB.
