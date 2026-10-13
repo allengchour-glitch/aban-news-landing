@@ -66,7 +66,7 @@ Auftrag: Betreiber-Entscheide C und D (`dropship/BETREIBER-ENTSCHEIDE-2026-10-13
 
 ## D — Gratis-Tarif CH ab 40.50 (LIVE seit 13.10.2026 ~23:30 UTC)
 
-> **Nachtrag 23:40 UTC (Sitzung, Betreiber-Freigabe «D ja»):** Schritte 1–5 ausgeführt.
+> **Nachtrag 23:36 UTC (Sitzung, Betreiber-Freigabe «D ja»):** Schritte 1–5 ausgeführt.
 > 1. `gratis_schwelle_setzen.py --scharf`: General, CH-Lager, Druck je 45.00 → 40.50, zurückgelesen (neue Versandarten …3485191,
 >    …3517959, …3550727; alte inaktiv), Ledger `dropship/_gratis_schwelle.tsv`.
 > 2. `versand_transit_wache.py --scharf`: «gesetzt 3» (Transit der neuen Versandarten = Zusage).

@@ -20367,6 +20367,6 @@ Verschoben am 04.10.2026:
 - 2026-10-12 · 📐 **Instagram «Media container not created» = Bildformat (209×666): Poster hatte 11 Schichten, keine fürs Format → `automation/ig_bildformat.py` (0,8 … 1,91, ≥ 320 px, Selbsttest 11/11), 12. Schicht im Poster, Wächter 6 h im Aufseher; Queue 42 → 39 ready, alle postbar. Falle: `csv.DictWriter` schreibt `\r\n` → 627 Zeilen Diff; `lineterminator="\n"`.** → `dropship/IG-BILDFORMAT-2026-10-12.md`
 <!-- aus CLAUDE.md verschoben 13.10.2026 22:55 UTC (VERBATIM) -->
 - 2026-10-12 · 💳 **`cj_zahlung_offen.py` zählte nur IN_CART → LX1025 (UNPAID, $73.29) = «nichts offen», Bericht gelöscht → `ist_zahlbar()` IN_CART/UNPAID + CREATED nur mit LX + Betrag (Hüllen nie), Selbsttest 7/7.**
-<!-- aus CLAUDE.md verschoben 13.10.2026 23:50 UTC (VERBATIM) -->
+<!-- aus CLAUDE.md verschoben 13.10.2026 23:38 UTC (VERBATIM) -->
 - 2026-10-12 · 💳 **Bestell-Ampel zeigte «KEIN CJ-Auftrag» für LX1025 (wartete auf Zahlung): Abgleich nur alle 2 h → Ampel liest das Bestell-Ledger + hängt bei UNPAID den Zahllink an; Abgleich startet sofort, wenn das Ledger jünger ist (`-nt`).** → `dropship/BESTELL-AMPEL-ZAHLUNG-2026-10-12.md`
 - 2026-10-12 · 📏 **Masstabellen des Modells: CJ-Tabellenbilder per Vision doppelt gelesen, `masstabelle_schreiben.py` (12/12) schreibt nur bei Übereinstimmung + «hoch» → 7/21 live, Aufseher täglich; Kasse = Bearbeitung + Transit → Transit = Zusage − P3D (CH 7–17); Werbe-Kontingent voll: jede Produktänderung wirft das Produkt aus der Werbung, Kampagne pausiert.** → `dropship/MASSTABELLEN-2026-10-12.md`
