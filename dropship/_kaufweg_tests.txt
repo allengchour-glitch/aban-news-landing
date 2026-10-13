@@ -4,3 +4,7 @@ start_utc	produkt	ergebnis	ordner
 2026-10-13T14:38:02.681Z	maske-mit-hornvieh-mit-moos-ftck13817	ok	/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufweg_chl
 2026-10-13T16:42:09.349Z	maske-mit-hornvieh-mit-moos-ftck13817	ok	/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufweg_p1d
 2026-10-13T19:02:34.077Z	shirt-zum-selbstgestalten	ok	/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufstrecke/shirt/lauf1	(Spur Kauf-Strecke, Editor-Upload)
+2026-10-13T18:45:00Z	herren-sneaker-mit-8-cm-plateausohle-610100	ok	/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufstrecke/sneaker-plateau	(Spur Kauf-Strecke, nachgetragen)
+2026-10-13T18:45:00Z	tunmate-rizinusol-382081	ok	/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufstrecke/rizinusoel	(Spur Kauf-Strecke, Kasse Adresse Zürich, nachgetragen)
+2026-10-13T18:59:00Z	inflierbares-halloween-kostum-fur-zwei-persone-638900	ok	/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufstrecke/kostuem-zwei	(Spur Kauf-Strecke, nachgetragen)
+2026-10-13T19:05:29Z	inflierbares-halloween-kostum-fur-zwei-persone-638900	ok	/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/kaufstrecke/kostuem-zwei	(Spur Kauf-Strecke, Korb 2 kaufweg-test@example.com, nachgetragen)
