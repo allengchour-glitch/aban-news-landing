@@ -24,8 +24,9 @@ REGEL (eine, hier definiert, Liquid + JS + Kanarien daraus):
   (LUX-KASSENDATUM, seit 13.10.2026) · eu-lager +3..+10 · Druck auf Bestellung +9..+19 Kalendertage, Sa/So → Montag ·
   sonst Direktversand Asien wie Kasse: Bearbeitung (P1D) + 9–19 Werktage, Schluss 12 Uhr (LUX-KASSENDATUM).
   Die Zahlen (1 / 1–2 / 9–19) prüft automation/kassen_lieferdatum_wache.py gegen Bearbeitungszeit und Transitregel.
-  ⚠️ LI_NEU unten ist die Fassung vom 09.10. (Kalendertage) — sie wird nur geschrieben, wenn die Marke fehlt; danach
-  LUX-KASSENDATUM neu einsetzen (Vorlage: Live-Block lux_cart_trust, Wache meldet «Marke fehlt»).
+  LI_NEU unten = der Live-Block lux_cart_trust vom 13.10.2026 abends (LUX-KASSENDATUM, P1D, 9/19, Zeichen profil-ch-lager);
+  vorher stand hier die Kalendertage-Fassung vom 09.10. — ein Reparaturlauf hätte die Kassen-Rechnung überschrieben.
+  Ändert sich der Live-Block, LI_NEU nachziehen (kassen_lieferdatum_wache prüft die Zahlen, nicht diese Vorlage).
 
   python3 automation/warenkorb_einig.py --kanarien   # Rechenregel gegen Fälle (auch: X dazulegen ⇒ wirklich gratis)
   python3 automation/warenkorb_einig.py              # Trockenlauf: zeigt die drei Ersetzungen
@@ -109,9 +110,10 @@ LI_NEU = """{%- comment -%} LUX-WARENKORB-EINIG (09.10.2026, automation/warenkor
 Korb, dieselben Tags/Tage wie der Produktseiten-Block lux_delivery (templates/product.json). Vorher stand hier pauschal
 «CH-Lager 1–2 Werktage», auch wenn der Korb nur Direktversand aus Asien enthielt. {%- endcomment -%}
 {%- assign lux_rang = -1 -%}
+{%- assign lux_ohne_marke = false -%}
 {%- for item in cart.items -%}
   {%- assign t = item.product.tags -%}
-  {%- if t contains 'fortura' or t contains 'ch-lager' or t contains 'blitzversand' -%}{%- assign r = 0 -%}
+  {%- if t contains 'fortura' or t contains 'ch-lager' or t contains 'blitzversand' -%}{%- assign r = 0 -%}{%- unless t contains 'profil-ch-lager' -%}{%- assign lux_ohne_marke = true -%}{%- endunless -%}
   {%- elsif t contains 'eu-lager' -%}{%- assign r = 1 -%}
   {%- elsif t contains 'printful_personalized_product' or t contains 'prodigi_personalized_product' or t contains 'selbst-gestalten' -%}{%- assign r = 2 -%}
   {%- else -%}{%- assign r = 3 -%}{%- endif -%}
@@ -120,11 +122,31 @@ Korb, dieselben Tags/Tage wie der Produktseiten-Block lux_delivery (templates/pr
 {%- if lux_rang >= 0 -%}
   {%- assign now_s = 'now' | date: '%s' | plus: 0 -%}
   {%- case lux_rang -%}
-    {%- when 0 -%}{%- assign d_from = now_s | plus: 86400 -%}{%- assign d_to = now_s | plus: 259200 -%}{%- assign lux_lager = 'aus dem Schweizer Lager' -%}
+    {%- when 0 -%}{%- assign lx_stufe = shop.metafields.luxe.ch_lager_stufe.value | default: 1 | plus: 0 -%}{%- if lux_ohne_marke -%}{%- assign lx_stufe = 0 -%}{%- endif -%}{%- if lx_stufe >= 1 -%}{%- assign lx_tmin = 1 -%}{%- assign lx_tmax = 2 -%}{%- else -%}{%- assign lx_tmin = 9 -%}{%- assign lx_tmax = 19 -%}{%- endif -%}{%- assign lux_lager = 'aus dem Schweizer Lager' -%}
     {%- when 1 -%}{%- assign d_from = now_s | plus: 259200 -%}{%- assign d_to = now_s | plus: 864000 -%}{%- assign lux_lager = 'aus dem EU-Lager' -%}
     {%- when 2 -%}{%- assign d_from = now_s | plus: 777600 -%}{%- assign d_to = now_s | plus: 1641600 -%}{%- assign lux_lager = 'Druck auf Bestellung' -%}
-    {%- else -%}{%- assign d_from = now_s | plus: 1209600 -%}{%- assign d_to = now_s | plus: 2419200 -%}{%- assign lux_lager = 'Direktversand aus Asien' -%}
+    {%- else -%}{%- assign lx_tmin = 9 -%}{%- assign lx_tmax = 19 -%}{%- assign lux_lager = 'Direktversand aus Asien' -%}
   {%- endcase -%}
+  {%- comment -%} LUX-KASSENDATUM 13.10.2026: Rang 0 (nur Schweizer Lager) und Rang 3 (Asien) = dieselbe Rechnung wie lux_delivery
+  (templates/product.json) und die Kasse: Werktage Mo–Fr, Annahmeschluss 12 Uhr, Bearbeitung P1D, Transit lx_tmin–lx_tmax Werktage. {%- endcomment -%}
+  {%- if lux_rang == 0 or lux_rang == 3 -%}
+    {%- assign lx_h = 'now' | date: '%H' | plus: 0 -%}
+    {%- assign lx_w = 'now' | date: '%w' | plus: 0 -%}
+    {%- assign lx_von = 1 | plus: lx_tmin -%}
+    {%- if lx_h >= 12 or lx_w == 0 or lx_w == 6 -%}{%- assign lx_von = lx_von | plus: 1 -%}{%- endif -%}
+    {%- assign lx_bis = lx_von | plus: lx_tmax | minus: lx_tmin -%}
+    {%- assign lx_t = lx_h | times: -3600 | plus: 43200 | plus: now_s -%}
+    {%- assign lx_n = 0 -%}
+    {%- for lx_i in (1..35) -%}
+      {%- assign lx_t = lx_t | plus: 86400 -%}
+      {%- assign lx_wt = lx_t | date: '%w' | plus: 0 -%}
+      {%- unless lx_wt == 0 or lx_wt == 6 -%}
+        {%- assign lx_n = lx_n | plus: 1 -%}
+        {%- if lx_n == lx_von -%}{%- assign d_from = lx_t -%}{%- endif -%}
+        {%- if lx_n == lx_bis -%}{%- assign d_to = lx_t -%}{%- break -%}{%- endif -%}
+      {%- endunless -%}
+    {%- endfor -%}
+  {%- endif -%}
   {%- assign wf = d_from | date: '%w' | plus: 0 -%}
   {%- if wf == 6 -%}{%- assign d_from = d_from | plus: 172800 -%}{%- elsif wf == 0 -%}{%- assign d_from = d_from | plus: 86400 -%}{%- endif -%}
   {%- assign wt = d_to | date: '%w' | plus: 0 -%}
