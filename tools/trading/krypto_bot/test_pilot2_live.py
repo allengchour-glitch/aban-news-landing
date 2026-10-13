@@ -9,7 +9,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import broker_futures as BF  # noqa: E402
 import pilot2_live as L  # noqa: E402
-GESPERRT_AUSGELIEFERT = L.FREIGEGEBEN is False and not L.aktiv({"KRYPTO_PILOT2": "an"})
+SPERRE_WIRKT = L.FREIGEGEBEN or not L.aktiv({"KRYPTO_PILOT2": "an"})  # solange FREIGEGEBEN False, ist KRYPTO_PILOT2=an wirkungslos
 L.FREIGEGEBEN = True  # für die Tests freischalten (ausgeliefert ist Pilot 2.0 gesperrt)
 BF.NACHFRAGE_WARTEN = (0.0, 0.0, 0.0)
 GEHEIM = "geheim"
@@ -347,11 +347,16 @@ pruefe("−2013: alter Eintrag abgeschlossen, junger bleibt + Markt gesperrt", [
        and not [o for o in markt_orders() if o[3] == "ETHUSDT"] and n_vor > 0, (u, r["zeilen"]))
 # ── Bot-Schalter + alter Pilot + schliessen_alle ──
 import pilot as PI  # noqa: E402
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "ki_bot"))
+import signale as SG  # noqa: E402
+SG.push = lambda *a, **k: None  # der Selbsttest läuft täglich auf dem PC → nie eine echte Nachricht senden
 PI.LOGBUCH = tmp / "pilot-log.json"; L.BESTAND = tmp / "schalter.json"; L.PROTOKOLL = tmp / "protokoll.json"
 alt = dict(os.environ)
 voll = dict(E("BTC", 1.0), symbol="BTCUSDT", kurs=100000.0, schnitt=90000.0, trend_tage=150, schwankung=0.4,
             mvrv={"tag": "2026-10-12", "wert": 2.0}, bremse=None, detektor={"ok": True, "skill_2j": 0.8, "einbruch_1j": -0.2})
 try:
+    # nur die Test-Werte: Schalter vom PC (ETH-Sparplan, Calls, Echtgeld …) dürfen den Selbsttest nicht beeinflussen
+    os.environ.clear(); os.environ.update({k: v for k, v in alt.items() if k.upper() in ("PATH", "SYSTEMROOT", "TEMP", "TMP", "HOME", "USERPROFILE")})
     os.environ.update(TEST); X.reset()
     PI.handeln([voll], "Lage", trocken=False)
     pruefe("KRYPTO_PILOT2=an: Bot kauft über Spot, kein Futures-Auftrag", any(o[0] == "/api/v3/order" for o in markt_orders()) and not X.pos["BTCUSDT"])
@@ -361,7 +366,7 @@ try:
         e["broker"] = {"position": X.pos[symbol]}; return []
     zu, zeilen = PI.schliessen_alle(alter_pilot)
     pruefe("Cockpit/Telegram-Not-Aus (schliessen_alle) schliesst Pilot 2.0", zu and mein(L.BESTAND, "testnetz", "BTC") * 100000 < 5, zeilen)
-    X.reset(); os.environ.clear(); os.environ.update(alt); lauf([E("BTC", 0.0)], ECHT, L.BESTAND); X.perp_reduce_fehler = True
+    X.reset(); lauf([E("BTC", 0.0)], ECHT, L.BESTAND); X.perp_reduce_fehler = True
     def anderes_konto(e, symbol, gewicht):  # alter Pilot im (leeren) Testnetz-Konto
         e["broker"] = {"position": 0.0}; return []
     zu, zeilen = PI.schliessen_alle(anderes_konto, env={k: v for k, v in ECHT.items() if k.startswith("PILOT2_")})
@@ -371,5 +376,5 @@ try:
     pruefe("schliessen_alle: zweiter Versuch schliesst", zu is True and X.pos["BTCUSDT"] == 0, zeilen)
 finally:
     os.environ.clear(); os.environ.update(alt)
-pruefe("ausgeliefert: Pilot 2.0 gesperrt, KRYPTO_PILOT2=an wirkungslos", GESPERRT_AUSGELIEFERT)
+pruefe("Sperre: ohne FREIGEGEBEN ist KRYPTO_PILOT2=an wirkungslos", SPERRE_WIRKT)
 print(f"\n{n_ok} bestanden, {n_f} fehlgeschlagen"); sys.exit(1 if n_f else 0)
