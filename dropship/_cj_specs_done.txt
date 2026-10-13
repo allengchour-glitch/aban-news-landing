@@ -4197,3 +4197,6 @@ dv3000-multifunktions-sportkamera-mit-taschenl-066176	gesetzt-3
 usb-hd-kamera-064832	gesetzt-2
 wasserdichtes-gehause-fur-gopro8-9-041216	gesetzt-3
 quadrocopter-mit-dual-kamera-und-langer-akkula-893888	nicht-aktiv
+h9r-outdoor-sportkamera-wasserdicht-mit-hd-309760	gesetzt-3
+tragbare-uberwachungskamera-a10-132608	gesetzt-4
+hd-kamera-quadcopter-drohne-610752	gesetzt-3
