@@ -7664,3 +7664,5 @@ fingerschutz-aus-edelstahl-20afde	016EC083-5F4A-43FF-AEB9-A02B23CBA71F	16	4.71	o
 verstellbarer-haltungskorrektur-gurt-5c39c2	3D55BF36-752F-4222-8673-B0D45524AF4D	16	6.07	ok	landeseite
 keramik-futternapf-fur-haustiere-979b00	273AA7A5-9257-4075-A7AB-9B8EAEFD3F91	16	11.96	ok	landeseite
 pailletten-maxi-kleid-mit-langen-armeln-801536	1559419927126355968	16	11.04	ok	landeseite
+katzen-hangematte-fur-fenster-121d04	1597067499571523585	16	10.80	ok	landeseite
+trendige-blade-laufschuhe-fur-herren-213760	1374699759599751168	16	13.76	ok	landeseite
