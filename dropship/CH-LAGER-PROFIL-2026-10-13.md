@@ -132,3 +132,30 @@ Ergebnis: **8/8 wie heute oder günstiger.**
 | `kassen_lieferdatum_wache.py` | Theme-Prüfung grün (Bearbeitung 1 T) | Selbsttest 7/7 |
 
 Die alte Regel «Bearbeitung < CJ-Versand-Median = Kasse zu früh» hätte nach der Umstellung Fehlalarm gegeben («empfohlen 3 Werktage»). Seit die Transitzeit die Bearbeitung abzieht, prüft sie jetzt das Zusage-Minimum (10) gegen den gemessenen Versand (80 % = 2,4 Werktage) plus 1 Werktag.
+
+## Nachtrag 13.10. ~18:30 UTC: Profil-Zeichen `profil-ch-lager` (Befund der Gegenprüfung «Restlücke General profile»)
+
+**Befund (GEMESSEN):** Von 2'375 aktiven CH-Lager-Produkten lagen 1'611 im Profil «CH-Lager», ~764 noch im General profile (Stufe 1 = nur Ware ausserhalb des Google-Kanals). Für diese ~764 zeigten Produktseite und Warenkorb das kurze Datum «16.–19. Okt.», die Kasse aber 28. Okt.–11. Nov. Betroffen waren auch alle 22 Artikel der Startseiten-Reihe «🇨🇭 Ab Schweizer Lager» (`blitzversand-highlights`).
+
+**Lösung:**
+- `ch_lager_profil.py` setzt den Tag `profil-ch-lager` genau auf die Produkte, die mindestens eine Variante im Profil haben, und entfernt ihn, wenn sie es verlassen. Beim Rückweg werden die Zeichen zuerst entfernt (lieber kurz das lange Datum als ein zu frühes).
+  - Die Tags werden gebündelt gesetzt, je 20 in einer Anfrage. Einzeln hätte es für 1'611 Produkte ~55 Min. gebraucht.
+- Theme:
+  - `lux_delivery` rechnet das kurze Datum nur noch mit dem Zeichen. Ohne Zeichen rechnet es 9–19 Werktage (wie die Kasse) und zeigt «🇨🇭 Ab Schweizer Lager» statt «Blitzversand».
+  - `lux_cart_trust` zeigt das lange Datum, sobald ein CH-Lager-Artikel im Korb kein Zeichen hat.
+- **Wächter:** `kassen_lieferdatum_wache.py` meldet, wenn das Zeichen im Theme fehlt (Selbsttest 8/8). Der tägliche Lauf von `ch_lager_profil.py --scharf` gleicht die Zeichen für neue Importe ab.
+
+**Mitgezogen (alle Aussagen «1–2 Werktage» für CH-Lager-Ware; die Kasse rechnet seit P1D 2–3 Werktage):**
+- **Versand-Akkordeon auf jeder Produktseite:** «ab Schweizer Lager meist 2–3 Werktage», Lieferdatum «oben beim Artikel und in der Kasse».
+- **Kollektionen:**
+  - `kostueme-ch-lager`, `blitzversand-schweiz` (Titel neu «🇨🇭 Alles ab Schweizer Lager»), `blitzversand-highlights`
+  - Backup unter `scratchpad/kollektion_lieferdatum/backup_20261013.json`
+- **Startseite:**
+  - `trust_advantages`: «meist in 2–3 Werktagen»
+  - `lux_spotlight_video`: «Lieferdatum auf jeder Produktseite»
+- **Social-Nachschub:** nur noch Ware mit Zeichen, Zeile «meist in 2–3 Werktagen bei dir».
+- **`zusagen_abgleich.py`:** «Lieferdatum oben auf dieser Seite».
+- **`anlass_lieferzeit_wache`:** schnell 6 → 4 Werktage (P1D). Die Wache hält Halloween bis Mo 26.10. für rechtzeitig.
+- **`warenkorb_einig.py` LI_NEU:** jetzt der aktuelle Live-Block. Vorher hätte ein Reparaturlauf die Kalendertage-Fassung vom 09.10. zurückgeschrieben.
+
+**Offen:** Stufe 3 (frühestens 17.10.) bringt die übrigen ~764 ins Profil. Dann zeigt auch deren Seite das kurze Datum.

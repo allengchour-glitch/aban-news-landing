@@ -1,10 +1,10 @@
 {
   "_zweck": "Anlass-Kollektionen für automation/anlass_lieferzeit_wache.py (12.10.2026). datum = Tag, an dem die Ware spätestens da sein muss. Neue Anlässe hier eintragen (Handle aus dem Shop, Datum JJJJ-MM-TT).",
   "lieferung_werktage": {
-    "schnell": 6,
+    "schnell": 4,
     "langsam": 12
   },
-  "_lieferung_quelle": "schnell = Schweizer Lager, nur mit Versandprofil «CH-Lager» — Kasse: P3D + 1–2 Werktage, 12-Uhr-Schluss → 6 WT (13.10.2026; vorher 2 WT aus dem Produkttext «1–2 Werktage», die Kasse rechnet aber die Bearbeitung mit). langsam = Direktversand CJ, KALIBRIERT 12.10. an der Wirklichkeit statt an der Zusage: CJ-Linie «CJPacket EQ Sensitive» 6–10 Tage (CJ-Angabe, #1025), Bearbeitung Median 2 / max 5 WT (kassen_lieferdatum_wache), gemessene Zustellungen 10–16 Kalendertage (n = 6, Gegenprüfung Workflow 12.10.) → 12 WT ≈ 16 KT. Erste Fassung (23 WT = Obergrenze der Zusage) stellte Halloween 4 Tage zu früh um.",
+  "_lieferung_quelle": "schnell = Schweizer Lager, nur mit Versandprofil «CH-Lager» — Kasse: P1D + 1–2 Werktage, 12-Uhr-Schluss → 4 WT (seit 13.10.2026 17:00; davor P3D → 6 WT, und vorher 2 WT aus dem Produkttext «1–2 Werktage», die Kasse rechnet aber die Bearbeitung mit). langsam = Direktversand CJ, KALIBRIERT 12.10. an der Wirklichkeit statt an der Zusage: CJ-Linie «CJPacket EQ Sensitive» 6–10 Tage (CJ-Angabe, #1025), Bearbeitung Median 2 / max 5 WT (kassen_lieferdatum_wache), gemessene Zustellungen 10–16 Kalendertage (n = 6, Gegenprüfung Workflow 12.10.) → 12 WT ≈ 16 KT. Erste Fassung (23 WT = Obergrenze der Zusage) stellte Halloween 4 Tage zu früh um.",
   "anlaesse": [
     {
       "handle": "halloween",

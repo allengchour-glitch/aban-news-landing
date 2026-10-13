@@ -867,3 +867,5 @@
 2026-10-13T16:54:58Z	gid://shopify/Product/15518194663809	smoke-zubehoer	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	sturmfeuerzeug-mit-spruhflammen-zundung-624200
 2026-10-13T16:55:02Z	gid://shopify/Product/15520409452929	smoke-zubehoer	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	sturmfeuerzeug-fur-outdoor-kuche-620900
 2026-10-13T16:55:04Z	gid://shopify/Product/15523863101825	smoke-zubehoer	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	minimalistisches-feuerzeug-mit-offenem-flammen-611900
+2026-10-13T18:11:18Z	gid://shopify/Product/15447893901697	kostuem	Google & YouTube	halloween-umhang-kleiner-teufel-aus-flanell-632800
+2026-10-13T18:15:35Z	gid://shopify/Product/15524700389761	nicht-bewerben	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	kupferarmband-mit-magneten-fur-damen-613200

@@ -49,6 +49,23 @@
 
 
 
+## 🏷️ Seite und Kasse während einer Stufen-Umstellung: das Zeichen am Produkt (2026-10-13 abends, Gegenprüfung «Restlücke»)
+- **Befund (GEMESSEN):** Das Profil «CH-Lager» ist in Stufen gestartet (Stufe 1 = 1'611 von 2'375). Das Theme kannte nur den Tag `ch-lager` und zeigte deshalb allen 2'375 das kurze Datum «16.–19. Okt.». Die ~764 Produkte ausserhalb des Profils bekamen in der Kasse aber 28. Okt.–11. Nov. Darunter waren alle 22 Artikel der Startseiten-Reihe «Ab Schweizer Lager».
+- **Regel:** Wenn eine Umstellung in Stufen läuft, darf das Theme nicht aus einem Merkmal rechnen, das ALLE tragen. Es braucht ein Zeichen, das genau die Umgestellten tragen. Das Skript, das umstellt, setzt und entfernt dieses Zeichen selbst. Beim Rückweg entfernt es das Zeichen ZUERST: lieber kurz das lange Datum als ein zu frühes.
+- **Umsetzung:**
+  - `ch_lager_profil.py` gleicht `profil-ch-lager` mit dem Profilinhalt ab. 1'611 Zeichen, offen 0.
+  - Theme `lux_delivery` und `lux_cart_trust` rechnen nur mit dem Zeichen kurz. Ohne Zeichen rechnen sie 9–19 Werktage und zeigen «Ab Schweizer Lager».
+  - `kassen_lieferdatum_wache.py` meldet, wenn das Zeichen im Theme fehlt.
+  - WebFetch Maske: «16.–19. Okt. · Blitzversand», die Kasse zeigt dasselbe. WebFetch Skibrille ohne Zeichen: «28. Okt.–11. Nov. · Ab Schweizer Lager», ebenfalls wie die Kasse.
+- **Tempo:** `tagsAdd` einzeln dauerte rund 2 s pro Produkt, für 1'611 Produkte also ~55 Min. Mit 20 Aliassen pro Anfrage ging es in Minuten. **Massen-Tags immer mit Aliassen bündeln.**
+- **Falle:** `until ! pgrep -f "ch_lager_profil.py --scharf"` wartete ewig. `pgrep -f` fand die eigene Bash-Zeile, in der der Suchtext steht. Das ist dieselbe Lehre wie am 11.08. (argv-basiert prüfen), diesmal in einer Warteschleife.
+- **Mitgezogen:**
+  - Alle «1–2 Werktage» für CH-Lager-Ware (Kasse seit P1D 2–3 WT): Akkordeon, 3 Kollektionen, 2 Startseiten-Texte, Social-Zeile (nur noch Ware mit Zeichen), `zusagen_abgleich`, Anlass-Fenster 6 → 4 WT.
+  - `warenkorb_einig` LI_NEU entspricht jetzt dem Live-Block. Vorher hätte ein Reparaturlauf die Fassung vom 09.10. zurückgeschrieben.
+  - TikTok/YouTube-Poster prüfen jetzt auch Bild-Reels (`bildreel-<Handle>`) auf ACTIVE. Vorher galt «keine Produkt-ID» als ok.
+- **Offen:** Der Produkttext «Lieferung in nur 1–2 Werktagen (DPD)» in ~2'375 Fortura-Beschreibungen bleibt bis zum A3-Durchgang am 17.10. stehen (zusammen mit Stufe 3).
+→ `dropship/CH-LAGER-PROFIL-2026-10-13.md` (Nachtrag 18:30)
+
 ## 🦺 «Sicherheitsschuhe» ohne Prüfnorm → Arbeitsschuhe + PSA-Hinweis (2026-10-13 abends, Betreiber «4 entscheide du sauber»)
 
 **Ausgangslage:** 134 aktive Schuhe nannten sich «Sicherheitsschuhe», «Schutzschuhe» oder «Sicherheitsstiefel», alle im Google-Kanal. Keiner hat eine Norm (EN ISO 20345) oder ein Zertifikat. «Sicherheitsschuh» ist ein PSA-Begriff, also ein Schutzversprechen ohne Prüfung.
@@ -20280,3 +20297,6 @@ Verschoben am 04.10.2026:
 - 2026-10-12 · 👗 **Kauf-Strecke Tag 1 (Abendkleider): 0 Sitzungen seit 05.10., 104 TikTok → 0 Korb, Sirène «crawled – not indexed» → Verkehr ist der Engpass; Hochformat-Hauptbild am Bestand widerlegt (kein Tausch). Klasse: Google-Wache hielt «nur CH» fest und riet LI zu entfernen → Lieferländer live aus Markets, Ampel «LI: 28230 ohne Google-Versandangabe».** → `dropship/KAUFSTRECKE-ABENDKLEIDER-2026-10-12.md`
 <!-- aus CLAUDE.md verschoben 13.10.2026 16:40 UTC (VERBATIM) -->
 - 2026-10-12 · 🔎 **Google-Gratis-Einträge = bester Kanal (44 → 6 Körbe → 1 Kauf), aber Juli 7–27/Woche → seit Aug 0–4: 34 von 48 Juli-Sitzungen auf heute gedrafteten Produkten → `google_nachfrage_wache.py` (197 mit Google-Besuch, 60 weg, 52 ohne Ersatz; Aufseher täglich; Prioritätsquelle für `cj_versand_ch_revive.py`).**
+<!-- aus CLAUDE.md verschoben 13.10.2026 18:40 UTC (VERBATIM) -->
+- 2026-10-12 · 🗓️ **Messrunde 5 Prüfer + Skeptiker: Platz 1/2 (Saison-Tags, Bestellschluss) widerlegt (kaum Verkehr, Wächter/Lieferdatum gibt es schon); bestätigt nur 12 Adventskalender ausserhalb der Kollektion → Advent-Regel `saison_tags_nachtragen.py` + `cat_tags.mjs` (15 → 27). Rest-Arbeitsliste: `dropship/KLASSEN-RANGLISTE-2026-10-12.md` (Kassen-Datum, Suche, Masstabellen).**
+- 2026-10-12 · 🎁 **Google Ads 0 Klicks = Testprodukt Sirène «Over capacity for Shopping ads (in CSS program) [CH]» (Merchant-Kontingent voll, ~21k/53k) → Label auf Aurora (Betreiber), Ampel prüft die Meldung; Geschenke-Einstieg (Menü 1, Median CHF 16.90, Strickblumen) → Welt «alle» + 12 Vetos + Gemini-Jury Plätze 1–48; Pinterest «kein Kandidat» = Exit 3 statt 0 (67 h Stille).** → `dropship/GESCHENKE-EINSTIEG-2026-10-12.md`

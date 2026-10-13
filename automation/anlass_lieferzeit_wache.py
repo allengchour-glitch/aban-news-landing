@@ -9,7 +9,7 @@ Schweizer Lager (1–2 Werktage, DPD) lagen darunter, obwohl der Kollektionstext
 verspricht. ChatGPT schickte 14 Besucher auf genau diese Seite (90 T, 0 Warenkörbe).
 
 REGEL (Tabelle data/anlass_kollektionen.json):
-  rechtzeitig(Quelle) = heute + Lieferwerktage(Quelle) ≤ Anlass-Datum   (schnell = Schweizer Lager 6 WT, langsam = 12 WT)
+  rechtzeitig(Quelle) = heute + Lieferwerktage(Quelle) ≤ Anlass-Datum   (schnell = Schweizer Lager 4 WT, langsam = 12 WT)
   Ist die LANGSAME Ware nicht mehr rechtzeitig, die schnelle aber schon:
     → Kollektion auf MANUAL, Reihenfolge = schnelle aktive Ware (in bisheriger Ordnung) · langsame aktive · Rest.
     → täglich neu (Neuimporte landen bei MANUAL hinten; neue Lager-Ware rückt so nach oben).
@@ -18,8 +18,8 @@ REGEL (Tabelle data/anlass_kollektionen.json):
   Alles andere gilt als langsam (vorsichtig).
   13.10.2026: Die Kasse rechnet nach dem VERSANDPROFIL, nicht nach dem Tag. GEMESSEN: in den obersten 24 der Halloween-
   Seite lagen 16 Artikel mit Lager-Tag im «General profile» → Kasse 28.10.–11.11. (nach Halloween). Deshalb zählt
-  ein Artikel nur als schnell, wenn auch sein Profil «CH-Lager» ist. Schnell = 6 WT (Kasse: P3D + 1–2 WT, 12-Uhr-Schluss)
-  → Bestellschluss Halloween Do 22.10. (Kasse spätestens Fr 30.10.); ab 23.10. meldet die Wache «auch Schweizer Lager zu spät».
+  ein Artikel nur als schnell, wenn auch sein Profil «CH-Lager» ist. Schnell = 4 WT (Kasse: P1D + 1–2 WT, 12-Uhr-Schluss; bis 13.10. 17:00 P3D → 6 WT)
+  → Wache rechtzeitig bis Mo 26.10. (Kasse: Di 27.10. vor 12 Uhr); ab 27.10. meldet sie «auch Schweizer Lager zu spät».
 Nichts wird gelöscht oder gedraftet — nur die Reihenfolge.
 
   python3 automation/anlass_lieferzeit_wache.py               # Trockenlauf (Standard)
@@ -203,8 +203,8 @@ def selbsttest():
         (schnell_profil([], "fortura-CK1", "General profile"), False, "fortura-SKU, General profile → langsam"),
         (schnell_profil(["ch-lager"], "x", None), False, "ch-lager-Tag, Profil unbekannt → langsam"),
         (schnell_profil(["cj-real"], "CJ-123", "CH-Lager"), False, "Profil CH-Lager ohne Lager-Tag/SKU → langsam"),
-        (plus_werktage(dt.date(2026, 10, 22), 6) <= dt.date(2026, 10, 31), True, "Lager 6 WT ab Do 22.10. rechtzeitig (Fr 30.10.)"),
-        (plus_werktage(dt.date(2026, 10, 23), 6) > dt.date(2026, 10, 31), True, "Lager 6 WT ab Fr 23.10. zu spät"),
+        (plus_werktage(dt.date(2026, 10, 26), 4) <= dt.date(2026, 10, 31), True, "Lager 4 WT ab Mo 26.10. rechtzeitig (Fr 30.10.)"),
+        (plus_werktage(dt.date(2026, 10, 27), 4) > dt.date(2026, 10, 31), True, "Lager 4 WT ab Di 27.10. zu spät (Mo 02.11.)"),
         (plus_werktage(dt.date(2026, 10, 15), 12) > dt.date(2026, 10, 31), True, "Direktversand 12 WT ab Do 15.10. zu spät → umsortieren"),
         (ziel_reihenfolge([("a", True, False), ("b", True, True), ("c", False, True), ("d", True, True)]), ["b", "d", "a", "c"], "stabil"),
     ]

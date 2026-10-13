@@ -400,7 +400,7 @@ def produkte():
             c = len(rx.findall(neu))
             if c: prot.append(f"{c}× RE {rx.pattern[:30]}"); neu = rx.sub(nn, neu)
         if BELP in neu:
-            ziel = 'Ab Schweizer Lager · 1–2 Werktage' if 'ch-lager' in p['tags'] else 'Direktversand ab Lieferantenlager · 10–20 Werktage'
+            ziel = 'Ab Schweizer Lager · Lieferdatum oben auf dieser Seite' if 'ch-lager' in p['tags'] else 'Direktversand ab Lieferantenlager · 10–20 Werktage'
             prot.append(f"{neu.count(BELP)}× Belp→{ziel[:20]}"); neu = neu.replace(BELP, ziel)
         if neu == h:
             # Kandidat ohne bekannte Regel: Kontext festhalten (nicht raten)

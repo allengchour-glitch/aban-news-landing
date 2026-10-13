@@ -15,9 +15,10 @@ Schreibt dropship/_kassen_lieferdatum.json (liest betreiber_ampel.kassen_lieferd
 
 NACHTRAG 13.10.2026 abends (A7, Verbesserungsrunde Spur A): Produktseite (templates/product.json, Block lux_delivery) und
 Warenkorb (templates/cart.json, Block lux_cart_trust) rechnen das Lieferdatum seit heute wie die Kasse (Marke LUX-KASSENDATUM):
-Werktage Mo–Fr, Annahmeschluss 12 Uhr, Bearbeitung + Transit. Die Zahlen sind im Theme FEST eingebaut: «3 | plus: lx_tmin» =
-Bearbeitung P3D, CH-Lager lx_tmin/lx_tmax 1/2 = Profil «CH-Lager» CH 4–5 minus Bearbeitung, Asien 7/17 = Zone CH 10–20 minus
-Bearbeitung (automation/data/versand_transit_regel.json). Ändert jemand die Bearbeitungszeit (Admin) oder die Transitregel, wird
+Werktage Mo–Fr, Annahmeschluss 12 Uhr, Bearbeitung + Transit. Die Zahlen sind im Theme FEST eingebaut: «N | plus: lx_tmin» =
+Bearbeitung (seit 13.10. 17:00 P1D, davor P3D), CH-Lager lx_tmin/lx_tmax 1/2 = Profil «CH-Lager» CH 2–3 minus Bearbeitung, Asien
+9/19 = Zone CH 10–20 minus Bearbeitung (automation/data/versand_transit_regel.json). Das kurze CH-Lager-Datum gilt nur mit Tag
+«profil-ch-lager» (setzt ch_lager_profil.py; ohne Zeichen rechnet die Kasse das General profile = Asien-Zeiten). Ändert jemand die Bearbeitungszeit (Admin) oder die Transitregel, wird
 die Seite still falsch → diese Wache liest beide Live-Dateien und meldet «⚠️ KASSEN-DATUM THEME» (Ampel).
   python3 automation/kassen_lieferdatum_wache.py
   python3 automation/kassen_lieferdatum_wache.py --selbsttest   # Theme-Prüfung offline: P3D ok, P2D je Datei ⚠️
@@ -32,6 +33,10 @@ STAND = os.path.join(REPO, "dropship", "_kassen_lieferdatum.json")
 CJ_SKU = re.compile(r"^CJ", re.I)
 THEME = "gid://shopify/OnlineStoreTheme/187533001089"
 MARKE = "LUX-KASSENDATUM"
+# 13.10.2026 abends: CH-Lager-Ware AUSSERHALB des Profils «CH-Lager» (Stufe 1/2: Google-Kanal) rechnet die Kasse mit dem
+# General profile (Direktversand-Zeiten). Das Theme darf das kurze Datum nur Produkten mit diesem Zeichen zeigen;
+# ch_lager_profil.py setzt/entfernt es passend zum Profil-Inhalt.
+PROFIL_ZEICHEN = "profil-ch-lager"
 THEME_DATEIEN = ("templates/product.json", "templates/cart.json")
 TRANSIT_REGEL = os.path.join(HIER, "data", "versand_transit_regel.json")
 # Liquid-Stellen (13.10.2026): Bearbeitung · CH-Lager-Zweig (Stufe ≥ 1, sonst General profile) · Asien-Zweig
@@ -88,6 +93,8 @@ def theme_pruefen(texte, bearb, regel):
             befunde.append(f"{name}: JSON unlesbar ({type(e).__name__})"); continue
         if not t:
             befunde.append(f"{name}: Marke {MARKE} fehlt (Theme-Editor/Update überschrieben?)"); continue
+        if PROFIL_ZEICHEN not in t:
+            befunde.append(f"{name}: Zeichen «{PROFIL_ZEICHEN}» fehlt — CH-Lager-Ware ausserhalb des Profils zeigt ein zu frühes Datum")
         von = [int(x) for x in RE_VON.findall(t)]
         if len(von) != 1:
             befunde.append(f"{name}: Bearbeitungs-Stelle «N | plus: lx_tmin» {len(von)}× (erwartet 1)")
@@ -124,12 +131,14 @@ def theme_live(bearb):
 
 # Selbsttest: die Liquid-Zeilen so, wie sie am 13.10.2026 live stehen (gekürzt auf die geprüften Stellen).
 _PROBE_PRODUKT = ("{%- comment -%} LUX-KASSENDATUM (Spur A) {%- endcomment -%}\n"
+                  "{%- unless closest.product.tags contains 'profil-ch-lager' -%}{%- assign lx_stufe = 0 -%}{%- endunless -%}\n"
                   "{%- if closest.product.tags contains 'ch-lager' -%}\n"
                   "  {%- if lx_stufe >= 1 -%}{%- assign lx_tmin = 1 -%}{%- assign lx_tmax = 2 -%}{%- else -%}{%- assign lx_tmin = 7 -%}{%- assign lx_tmax = 17 -%}{%- endif -%}\n"
                   "{%- else -%}\n  {%- assign lx_tmin = 7 -%}{%- assign lx_tmax = 17 -%}\n"
                   "  {%- assign lager = 'Direktversand vom Hersteller in Asien — deshalb die längere Lieferzeit' -%}\n{%- endif -%}\n"
                   "{%- if lx_tmin > 0 -%}\n  {%- assign lx_von = 3 | plus: lx_tmin -%}\n{%- endif -%}")
-_PROBE_KORB = ("{%- when 0 -%}{%- assign lx_stufe = 1 -%}{%- if lx_stufe >= 1 -%}{%- assign lx_tmin = 1 -%}{%- assign lx_tmax = 2 -%}"
+_PROBE_KORB = ("{%- when 0 -%}{%- assign lx_stufe = 1 -%}{%- if lux_ohne_marke -%}{%- assign lx_stufe = 0 -%}{%- endif -%}"
+               "{%- unless t contains 'profil-ch-lager' -%}{%- assign lux_ohne_marke = true -%}{%- endunless -%}{%- if lx_stufe >= 1 -%}{%- assign lx_tmin = 1 -%}{%- assign lx_tmax = 2 -%}"
                "{%- else -%}{%- assign lx_tmin = 7 -%}{%- assign lx_tmax = 17 -%}{%- endif -%}{%- assign lux_lager = 'aus dem Schweizer Lager' -%}\n"
                "{%- else -%}{%- assign lx_tmin = 7 -%}{%- assign lx_tmax = 17 -%}{%- assign lux_lager = 'Direktversand aus Asien' -%}\n"
                "{%- comment -%} LUX-KASSENDATUM {%- endcomment -%}\n{%- assign lx_von = 3 | plus: lx_tmin -%}")
@@ -162,6 +171,8 @@ def selbsttest():
         ("Marke fehlt in cart.json", {**gut, "templates/cart.json": _probe_datei(_PROBE_KORB.replace(MARKE, "X"), "korb")}, 3, regel, {"templates/cart.json"}),
         ("Asien 8/17 in product.json", {**gut, "templates/product.json": _probe_datei(_PROBE_PRODUKT.replace(
             "{%- else -%}\n  {%- assign lx_tmin = 7 -%}", "{%- else -%}\n  {%- assign lx_tmin = 8 -%}"), "produkt")}, 3, regel, {"templates/product.json"}),
+        ("Profil-Zeichen fehlt in product.json", {**gut, "templates/product.json": _probe_datei(_PROBE_PRODUKT.replace(
+            "profil-ch-lager", "X"), "produkt")}, 3, regel, {"templates/product.json"}),
         ("Regel CH-Lager 5–6 → beide ⚠️", gut, 3, {**regel, "profile_zonen": {"CH-Lager": {"CH": {"min_tage": 5, "max_tage": 6}}}},
          {"templates/product.json", "templates/cart.json"}),
     ]
