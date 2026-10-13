@@ -468,3 +468,4 @@
 2026-10-13T19:32:34.000Z	luxe-epic-winter.wav	34.0	mode	bildreel-hoodie-jogginghose-set-im-partnerlook-637400	stimme:ja	azure:de-CH-JanNeural	quelle:bild
 2026-10-13T19:36:02.000Z	luxe-epic-winter.wav	34.0	mode	bildreel-damen-strickpullover-mit-herzmuster-reissversc-602300	stimme:nein	anteil	quelle:bild
 2026-10-13T20:39:37.893Z	luxe-epic-anime.wav	10.5	mode	cjreel-CJLY299920801AZ	stimme:ja	azure:de-CH-JanNeural
+2026-10-13T20:44:13.266Z	luxe-epic-hybrid.wav	37.5	home	cjreel-CJJT193569901AZ	stimme:ja	azure:de-CH-JanNeural
