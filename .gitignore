@@ -147,5 +147,6 @@ data/selbsttest-*.log
 data/*.kaputt-*
 data/*.tmp*
 tools/trading/daten/funding/
+tools/trading/daten/binance_1m_fut/
 data/krypto-pilot2-broker.json
 data/krypto-pilot2-bestand.json
