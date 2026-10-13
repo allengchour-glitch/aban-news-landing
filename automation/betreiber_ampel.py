@@ -553,6 +553,13 @@ def kassen_lieferdatum():
     if tb:
         teile.append("⚠️ KASSEN-DATUM THEME: " + " · ".join(tb[:3]) + (f" (+{len(tb) - 3})" if len(tb) > 3 else "")
                      + " → automation/kassen_lieferdatum_wache.py --selbsttest, Zahlen in lux_delivery/lux_cart_trust anpassen")
+    # 13.10.2026 (VERB-M1): Lieferzusage «ab Schweizer Lager» kürzer als die Kasse (Profil CH-Lager)? Feld von kassen_lieferdatum_wache.py
+    # (Richtlinien, Seiten, Artikel, Kollektionen, KB, Theme, Social-Warteschlange, Vorlagen; Produkte korrigiert die Charge selbst).
+    zc = s.get("zusage_ch_lager") or {}
+    if zc.get("treffer") or zc.get("fehler"):
+        bsp = "; ".join(f"{x.get('quelle')} {x.get('kennung')}" for x in (zc.get("liste") or [])[:3])
+        teile.append(f"⚠️ ZUSAGE CH-LAGER: {zc.get('treffer', '?')} Stellen versprechen weniger als {zc.get('soll', '2–3')} Werktage"
+                     + (f" ({bsp})" if bsp else f" ({zc.get('fehler')})") + " → python3 automation/kassen_lieferdatum_wache.py --zusage-liste")
     if not s.get("zu_frueh"):
         return " · ".join(teile) or None
     return " · ".join(teile + [""]) + (f"KASSEN-DATUM zu früh: Bearbeitungszeit {s.get('bearbeitungszeit_tage')} T, CJ versendet nach Median {s.get('median')} "
@@ -1011,7 +1018,11 @@ def alter_lieferblock():
 def gsc_tot():
     """Tote Google-Seiten (13.10.2026): tote_landeseiten.py GSC=1 liest den Search-Console-Schnappschuss
     dropship/_gsc_seiten.json. Den kann nur eine Claude-Sitzung erneuern (OpenSEO-Konnektor, tools/gsc_schnappschuss.py).
-    Meldet NUR, wenn der Schnappschuss älter als 3 Tage ist — dann ist der GSC-Teil des Wächters blind."""
+    Meldet NUR, wenn der Schnappschuss älter als 3 Tage ist — dann ist der GSC-Teil des Wächters blind.
+    Auf dem Server still (13.10.2026, Befund IDX-Prüfer): dort startet die Ampel aus der /tmp-Spiegelkopie (REPO «/»), der
+    Schnappschuss fehlt immer, und erneuern kann ihn nur eine Claude-Sitzung — wie index_stand()."""
+    if AUF_SERVER:
+        return None
     p = os.path.join(REPO, "dropship", "_gsc_seiten.json")
     try:
         stand = json.load(open(p, encoding="utf-8"))["stand"]
@@ -1040,6 +1051,72 @@ def index_stand():
     from index_probe import bewerte, lies_stand
     r = bewerte(lies_stand(os.path.join(REPO, "dropship", "_index_stand.tsv")))
     return f"🔎 {r['zeile']}" if r["alarm"] else None
+
+
+def wearable_seo():
+    """WEARABLE-SEO (13.10.2026, SEO-Sofort ON-M1A): Messversprechen (Blutdruck/EKG/Blutzucker) in SEO-Titel/-Beschreibung
+    von Wearables. Der Aufseher startet automation/wearable_messversprechen.py täglich, Log /tmp/wearable_mess.log; dessen
+    letzte Zeile «WEARABLE-SEO: …» trägt ⚠️ bei offenen Stellen und «unklar», wenn der Export scheitert. Liest nur das Log.
+    Still: auf dem Server, ohne Log, ohne Lauf mit SEO-Teil, bei «0 offen»."""
+    if AUF_SERVER:
+        return None
+    try:
+        with open("/tmp/wearable_mess.log", encoding="utf-8", errors="ignore") as f:
+            z = [l.strip() for l in f if "WEARABLE-SEO:" in l][-1:]
+    except Exception:
+        return None
+    if z and ("⚠️" in z[0] or "unklar" in z[0]):
+        return z[0][:200]
+    return None
+
+
+def cj_suche_tor():
+    """K8 (13.10.2026): Relevanz-Tor der CJ-Suchaufträge (cj_sku_import.mjs --stand: 20 Kanarien, liest nur Dateien, kein
+    CJ-/Shopify-Aufruf). Meldet nur rote Kanarien — dann bleibt die Suchqueue zu. Braucht keinen Token (nicht in MIT_TOKEN).
+    Still auf dem Server und wenn Node oder das Skript fehlen."""
+    node = "/opt/node22/bin/node"
+    skript = os.path.join(REPO, "automation", "cj_sku_import.mjs")
+    if AUF_SERVER or not os.path.exists(node) or not os.path.exists(skript):
+        return None
+    try:
+        r = subprocess.run([node, skript, "--stand"], cwd=REPO, capture_output=True, text=True, timeout=60)
+    except Exception:
+        return None
+    z = (r.stdout or "").strip().splitlines()
+    z = z[-1] if z else ""
+    return f"🎯 {z}" if "ROT" in z else None
+
+
+def waisen_verzeichnis():
+    """WAISEN-KOLLEKTIONEN + VERZEICHNIS (13.10.2026, SEO-Sofort ON-M5): Tageslauf im Aufseher (kategorien_verzeichnis.py →
+    interne_links.py --waisen). Liest dropship/_waisen_kollektionen.json + dropship/_kategorien_verzeichnis_stand.json.
+    Meldet nur Befund oder einen Stand älter als 2 T. Still auf dem Server und wenn die Dateien fehlen."""
+    if AUF_SERVER:
+        return None
+    aus = []
+    pw = os.path.join(REPO, "dropship", "_waisen_kollektionen.json")
+    if os.path.exists(pw):
+        try:
+            w = json.load(open(pw, encoding="utf-8"))
+            alter = (datetime.datetime.utcnow() - datetime.datetime.strptime(w["stand"], "%Y-%m-%dT%H:%MZ")).days
+            if alter >= 2:
+                aus.append(f"🔗 WAISEN-KOLLEKTIONEN: Stand {alter} T alt — Aufseher-Block KATEGORIEN-VERZEICHNIS prüfen "
+                           "(/tmp/kategorien_verzeichnis.log)")
+            elif w.get("waisen"):
+                aus.append(f"🔗 WAISEN-KOLLEKTIONEN: {w['waisen']} ("
+                           + ", ".join(str(x.get("handle")) for x in (w.get("liste") or [])[:8]) + ")")
+        except Exception as e:
+            aus.append(f"🔗 WAISEN-KOLLEKTIONEN: unklar ({type(e).__name__})")
+    pv = os.path.join(REPO, "dropship", "_kategorien_verzeichnis_stand.json")
+    if os.path.exists(pv):
+        try:
+            v = json.load(open(pv, encoding="utf-8"))
+            if (v.get("rueckgang") or 0) > 5 and not v.get("geschrieben"):
+                aus.append(f"🔗 VERZEICHNIS: Rückgang {v['rueckgang']} ({v.get('links_alt')} → {v.get('links_neu')}) — nicht geschrieben; "
+                           "gewollt? ERZWINGEN=1 python3 automation/kategorien_verzeichnis.py")
+        except Exception:
+            pass
+    return " · ".join(aus) or None
 
 
 def offene_punkte():
@@ -1150,7 +1227,7 @@ def main():
     ohne_token = not os.path.exists(TOKPFAD)
     # Pruefungen, die den Shop-Token brauchen, laufen ohne ihn nicht — alle anderen schon (26.09.).
     MIT_TOKEN = (liechtenstein_gesperrt, klingen_pingpong, grow_zaehler, drafts_ohne_quittung, datei_speicher_voll, video_deckel, alter_lieferblock)
-    pruefungen = (bot_puls, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kassen_lieferdatum, werbetest, verkauf_gewinn, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik, such_boosts, alter_lieferblock, gsc_tot, index_stand)
+    pruefungen = (bot_puls, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kassen_lieferdatum, werbetest, verkauf_gewinn, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik, such_boosts, alter_lieferblock, gsc_tot, index_stand, wearable_seo, cj_suche_tor, waisen_verzeichnis)
     teile = [zugang_weg()]
     for f in pruefungen:
         if ohne_token and f in MIT_TOKEN:
