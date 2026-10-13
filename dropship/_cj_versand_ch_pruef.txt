@@ -7716,3 +7716,4 @@ haustierbett-hohle-7c2cfe	9F2E6C38-4AE8-419B-B696-BF5614F3A8C0	16	11.49	ok	lande
 mechanische-automatikuhr-fur-herren-863edd	16128095-6113-42E9-AEA8-39D4286432DD	7	7.78	ok	landeseite
 herren-business-quarzuhr-mit-edelstahl-armband-092032	1365596634410520576	7	7.30	ok	landeseite
 baby-lauflernschuhe-aus-weichem-kunstleder-0c9a9b	0DA2E578-FF0D-41E7-9C4D-23A951C578D6	16	7.17	ok	landeseite
+bridal-schmuckset-halskette-ohrringe-020672	1456105614232129536	16	4.79	ok	landeseite
