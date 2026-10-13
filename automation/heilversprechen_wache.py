@@ -217,6 +217,10 @@ TITEL_ERSATZ = [
     ("Vakuum-Cupping-Massage mit Fettverbrennung & Anti-Cellulite", "Vakuum-Cupping-Massagegerät für Körper & Haut"),
     ("Körperformungsgerät zur Fettverbrennung", "Körperformungsgerät für das Training zuhause"),
     ("Smartes Springseil für Fitness & Fettverbrennung", "Smartes Springseil für Fitness & Ausdauer"),
+    # 13.10.2026 Magnet-/Ionen-/Energie-Schmuck (MAGNETSCHMUCK-2026-10-13.md): Wirkung raus, Material/Optik bleibt.
+    ("Kupfer-Armband mit negativen Ionen", "Geometrisches Kupfer-Armband für Herren"),
+    ("Terahertz Armband – Energie & Balance", "Terahertz Perlenarmband für Damen und Herren"),
+    ("Balancierendes Energie-Armband Obsidian & Aquamarin", "Kristallarmband Obsidian & Aquamarin im Retro-Stil"),
 ]
 TITEL_ERSATZ_RE = [
     (re.compile(r" für Fitness & Fettverbrennung$"), " für Fitness & Ausdauer"),
@@ -266,6 +270,31 @@ ERSATZ += [
     ("Dieser Edelstein ist bekannt dafür, die Intuition zu stärken, vor negativen Energien zu schützen und die Verbindung zum inneren Selbst zu fördern.", "Der Labradorit ist für sein schillerndes Farbspiel bekannt, das je nach Lichteinfall wechselt."),
     ("einen heilenden Rauchring-Effekt", "einen beruhigenden Rauchring-Effekt"),
 ]
+# 13.10.2026 Magnet-/Kupfer-/Ionen-Schmuck (dropship/MAGNETSCHMUCK-2026-10-13.md). GEMESSEN: 4'262 aktive Schmuckstücke
+# (Titel/Typ/Tag), Beschreibung + SEO gelesen; 298 mit Kupfer/Titan/Magnet/Ionen im Titel, alle im Google-Kanal. Die
+# Grenze ist die AUSSAGE, nicht das Material: Kupfer/Titanstahl/Magnetverschluss bleiben. Diese Sätze waren am 22./23.09.
+# als «sauber» quittiert, weil MUSTER weder Magnettherapie noch negative Ionen kannte. Ersatz = Bauweise/Optik/Tragegefühl.
+ERSATZ += [
+    ("Das Armband ist speziell für Männer konzipiert, die Wert auf einen ausdrucksstarken Stil legen und gleichzeitig die Funktion der Magnettherapie schätzen.",
+     "Das Armband ist speziell für Männer konzipiert, die Wert auf einen ausdrucksstarken Stil legen."),
+    ("<li>Magnettherapie-Funktion.</li>", "<li>Mit eingesetzten Magneten.</li>"),
+    ("Dieses Retro-Kupferarmband ist aus reinem Kupfer gefertigt und besitzt eine magnetische Therapie-Funktion.",
+     "Dieses Retro-Kupferarmband ist aus reinem Kupfer gefertigt."),
+    ("<li>Magnetische Therapie-Funktion</li>", "<li>Mit eingesetzten Magneten</li>"),
+    ("Es ist vollständig magnetisch und enthält negative Ionen, die für zusätzliches Wohlbefinden sorgen können.", "Es ist vollständig magnetisch."),
+    ("Ein Accessoire, das sowohl Eleganz als auch eine subtile Energie in deinen Alltag bringt.", "Ein Accessoire, das Eleganz in deinen Alltag bringt."),
+    ("<li>Vollständig magnetisch mit negativen Ionen</li>", "<li>Vollständig magnetisch</li>"),
+    ("vereint zeitlosen Retro-Chic mit modernem Wohlbefinden.", "vereint zeitlosen Retro-Chic mit modernem Tragekomfort."),
+    ("Ein vielseitiges Schmuckstück, das sowohl Eleganz als auch eine energetisierende Wirkung verspricht.", "Ein vielseitiges Schmuckstück mit eleganter Note."),
+    ("Magnetarmband, das Eleganz und Wohlbefinden vereint.", "Magnetarmband, das Eleganz und Tragekomfort vereint."),
+    ("Magnetarmband, das Stil und Wohlbefinden auf einzigartige Weise verbindet.", "Magnetarmband, das Stil und Tragekomfort auf einzigartige Weise verbindet."),
+    ("Dieses handgefertigte Unisex-Armband kombiniert die Kraft von schwarzem Obsidian und Aquamarin.",
+     "Dieses handgefertigte Unisex-Armband kombiniert schwarzen Obsidian und Aquamarin."),
+    ("Das Armband ist nicht nur ein stilvolles Accessoire, sondern soll auch harmonisierende Energien fördern.",
+     "Das Armband ist ein stilvolles Accessoire für jeden Tag."),
+    ("vereint Stil mit potenziellen energetischen Eigenschaften.", "vereint Stil mit schlichter Eleganz."),
+    ("Set besteht aus Kristallen und Heilsteinen.", "Set besteht aus Kristallen und Natursteinen."),
+]
 ERSATZ.sort(key=lambda p: -len(p[0]))
 
 MUSTER = re.compile(
@@ -287,7 +316,21 @@ MUSTER = re.compile(
     # 30.09.2026: esoterische Heilaussagen fehlten — «3 handverlesene Heilsteine» (Kristall-Set = einzige Produktseite mit Kauf
     # der Woche), Fluorit «negative Energieansammlungen im Körper eliminieren». Vollscan 49'233 aktive: 4 Produkte.
     # «Chakra»/«Aura» bleiben draussen (beschreibend: Armband-Design, Parfum-Aura) — dropship/HEILVERSPRECHEN-ESOTERIK.md
-    r"|Heilstein\w*|Heilkristall\w*|Heilpraktik\w*|\bheilende[nrs]?\b|Heilkraft\w*|negative\w* Energie\w*", re.I)
+    r"|Heilstein\w*|Heilkristall\w*|Heilpraktik\w*|\bheilende[nrs]?\b|Heilkraft\w*|negative\w* Energie\w*"
+    # 13.10.2026: Magnet-/Ionen-/Energie-Schmuck — 10 Produkte mit Heilaussage waren am 22./23.09. «sauber» quittiert
+    # (MAGNETSCHMUCK-2026-10-13.md). «Heilung\b» verpasste das SEO-Kompositum «Stein-Heilungs-Kettenanhänger».
+    # Nur Aussagen, kein Material: «Magnetverschluss», «Titanstahl», «Kupfer» stehen hier bewusst NICHT.
+    # ⚠️ «negative Ionen» NUR im Schmuck-/Gesundheitskontext: nackt traf es im Trockenlauf den «USB Mini Luftreiniger als
+    # Halskette» (Ionisator-Technik) — und dieses MUSTER liest auch heilversprechen_seo_wache GLOBAL (würde SEO-Felder jedes
+    # Ionen-Haartrockners leeren). «Energiefluss»/«Bio-Energie» bleiben draussen (Powerstation-«Energiefluss-Anzeige»);
+    # Schmuck mit diesen Wörtern im Titel fängt die Titelregel google_sperrliste.ist_heilschmuck.
+    # ⚠️ Globaler Trockenlauf (54'064 aktive, 13.10.): nacktes «Therapie-Funktion» traf 20× «Aromatherapie-Funktion» (Diffuser,
+    # sogar Manschettenknöpfe) und «Infrarot-Physiotherapie-Funktion» → nur als eigenes Wort (kein Buchstabe/Bindestrich davor);
+    # «negative Ionen … gesund» traf «Haarglätter … für ein gesundes Haarbild» (Kosmetik) → nur «Wohlbefinden»/«Gesundheit».
+    r"|Magnet\w*therapie|magnetische\w* Therapie|(?<![\w-])Therapie-Funktion"
+    r"|(?:magnetisch|Armband|Armreif|Kette|Ring\b|Schmuck)[^.<]{0,60}negative\w* Ionen|negative\w* Ionen[^.<]{0,40}(?:Wohlbefinden|\bGesundheit)"
+    r"|energetisierende\w* Wirkung|energetische\w* Eigenschaft\w*|harmonisierende\w* Energie\w*|Energie\s*(?:&|und)\s*Balance|Energie-Armband"
+    r"|\bHeilungs-|Magnet\w*[^.<]{0,80}Wohlbefinden", re.I)
 FEHLALARM = re.compile(
     r"Bezug abnehmen|l[äa]sst sich \w* ?abnehmen|anbringen und \w* ?abnehmen|Anbringen und Abnehmen"
     r"|Ratgeber:|nicht für medizinische|selbst heilt|Spezialeffekt|Kunstblut|Halloween|Wundschminke|Beschaffenheit des Holzes|Digital Detox|Geräusche wie|schnarchende|durch Schnarchen gestört"

@@ -77,6 +77,11 @@ try:  # 04.10.2026: EINE Sperrliste — jeder Ausschluss-Tag, den google_sperrta
     from google_sperrliste import AUSSCHLUSS_TAGS as _AUSSCHLUSS  # (Sichtung: 26 «nicht-google-bewerben» + 36 «raucher»
 except Exception:                                                  #  galten sonst wieder als «publizierbar»)
     _AUSSCHLUSS = set()
+try:  # 13.10.2026: Heil-Schmuck (data/heilschmuck_regel.json) — die Klasse «Heilversprechen» oben kennt nur «…therapie»,
+    from google_sperrliste import ist_heilschmuck as _heilschmuck  # nicht Terahertz/Ionen/Lymph/Abnehm-Schmuck.
+except Exception:
+    def _heilschmuck(_t):
+        return False
 
 
 def grund(titel, tags):
@@ -97,6 +102,8 @@ def grund(titel, tags):
             return f"{name} im Titel («{m.group(0)}»)"
     if ist_klinge(titel or ""):
         return "Waffe/Klinge (Hausregel klingenregel.py)"
+    if _heilschmuck(titel or ""):
+        return "Heil-Schmuck (google_sperrliste.ist_heilschmuck)"
     return None
 
 

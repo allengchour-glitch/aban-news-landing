@@ -251,6 +251,55 @@ def feuerzeug_kanarien():
 
 
 # ---------------------------------------------------------------------------
+# HEIL-SCHMUCK (13.10.2026) — Schmuck, der seiner ART nach ein Therapie-Artikel ist (Magnettherapie-, Lymph-, Abnehm-,
+# Terahertz-, Germanium-, Ionen-Schmuck). Hausregel «Wellness-/Magnet-Armband = Heilversprechen», präzisiert: die Grenze
+# ist die AUSSAGE, nie das Material (Kupfer, Titanstahl, Magnetverschluss bleiben). GEMESSEN 13.10.: 298 aktive Schmuck-
+# stücke mit Kupfer/Titan/Magnet/Ionen im Titel im Google-Kanal, 2 davon mit Therapie-Identität im Titel, 10 mit einer
+# Heilaussage im Text/SEO/Bild (→ heilversprechen_wache ERSATZ, dropship/MAGNETSCHMUCK-2026-10-13.md). Regel und
+# Kanarien stehen EINMAL in data/heilschmuck_regel.json (cat_tags.mjs liest dieselbe Datei beim Import).
+import json as _json
+import unicodedata as _ud
+
+
+def _heilschmuck_regel():
+    for k in (os.path.join(_repo(), "data", "heilschmuck_regel.json"),
+              os.path.join(os.path.dirname(_HIER), "data", "heilschmuck_regel.json")):
+        if os.path.exists(k):
+            return _json.load(open(k, encoding="utf-8"))
+    # Kein harter Abbruch: dieses Modul importieren ein Dutzend Google-Publizierer (auch als /tmp-Spiegel). Fehlt die
+    # Datei, trifft die Regel nichts und ALLE Kanarien fallen durch → der Durchsetzer überspringt die Regel laut.
+    print("⚠️ google_sperrliste: data/heilschmuck_regel.json fehlt → Heil-Schmuck-Regel aus", file=sys.stderr, flush=True)
+    return {"schmuck": "(?!)", "heil": "(?!)", "nicht": "(?!)", "kanarien": [["Kupfer Magnetarmband gegen Arthritis", True]]}
+
+
+_HS = _heilschmuck_regel()
+HEILSCHMUCK_SCHMUCK = re.compile(_HS["schmuck"])
+HEILSCHMUCK_HEIL = re.compile(_HS["heil"])
+HEILSCHMUCK_NICHT = re.compile(_HS["nicht"])
+HEILSCHMUCK_KANARIEN = [tuple(k) for k in _HS["kanarien"]]
+# Prefilter-Wörter für die Titelsuche des Durchsetzers (Shopify findet nur Wortanfänge; entschieden wird an ist_heilschmuck).
+HEILSCHMUCK_SUCHWORTE = ["magnettherapie", "therapie", "lymph", "abnehm", "schlankheit", "terahertz", "germanium", "ionen",
+                         "negativ", "bio-energie", "energiefluss", "skalar", "arthritis", "rheuma", "schmerz", "detox",
+                         "entgift", "akupressur", "wellness", "durchblutung"]
+
+
+def heilschmuck_norm(titel):
+    """Wie normTitel() in cat_tags.mjs: klein, Umlaute ohne Punkte, Leerzeichen vorn und hinten."""
+    s = _ud.normalize("NFD", (titel or "").lower())
+    return " " + "".join(c for c in s if not _ud.combining(c)) + " "
+
+
+def ist_heilschmuck(titel):
+    s = heilschmuck_norm(titel)
+    return bool(HEILSCHMUCK_SCHMUCK.search(s) and HEILSCHMUCK_HEIL.search(s) and not HEILSCHMUCK_NICHT.search(s))
+
+
+def heilschmuck_kanarien():
+    f = [(t, s) for t, s in HEILSCHMUCK_KANARIEN if ist_heilschmuck(t) != s]
+    return len(HEILSCHMUCK_KANARIEN), f
+
+
+# ---------------------------------------------------------------------------
 # KOSTÜM-ERKENNUNG AM TITEL (13.10.2026) — EINE Regel für Tagger, Durchsetzer und Rückholer.
 #
 # GEMESSEN 13.10. (Messrunde, Admin-API): 7 Horror-/Cosplay-Masken mit productType «Hautpflege» und ein
