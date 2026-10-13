@@ -8348,3 +8348,4 @@ elektrisches-capybara-pluschtier-mit-gehfunkti-604000	2605070649441604600	7	29.6
 smarter-roboterhund-mit-fernsteuerung-615600	2605030809071616100	7	38.77	ok	landeseite
 rc-baustellenfahrzeug-set-bagger-bulldozer-668545	2044658600480497665	0	-	KEINE CH-Option → DRAFT	landeseite
 rc-muldenkipper-fur-kinder-489281	2044657706257707009	0	-	KEINE CH-Option → DRAFT	landeseite
+intelligenter-roboterhund-mit-sprachdialog-app-674241	2043945507432669186	0	-	KEINE CH-Option → DRAFT	landeseite
