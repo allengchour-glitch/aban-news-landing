@@ -361,3 +361,4 @@ gid://shopify/Product/16615800439175	quadratisches-seiden-halstuch-638000	Quadra
 gid://shopify/Product/16615802044807	baby-lauflernschuhe-warm-und-rutschfest-a662c1	Baby Lauflernschuhe warm und rutschfest
 gid://shopify/Product/16615802110343	bluetooth-smartwatch-mit-herzfrequenz-blutsaue-125760	Bluetooth Smartwatch mit Herzfrequenz & Blutsauerstoff
 gid://shopify/Product/16615812432263	led-lichterkette-stern-mond-fur-weihnachten-628400	LED-Lichterkette Stern & Mond für Weihnachten
+gid://shopify/Product/16616533459335	winter-babystiefel-mit-weicher-sohle-0dafce	Winter-Babystiefel mit weicher Sohle
