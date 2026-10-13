@@ -51,9 +51,11 @@ TEXTE = {
                          "Powerbanks, Kabel, Netzteile und kabelloses Laden für Handy und Tablet."),
     "werkzeug-maschinen": ("Werkzeug & Maschinen",
                            "Handwerkzeug, Akkugeräte und Zubehör für Werkstatt, Haus und Garten."),
-    "blitzversand-highlights": ("Blitzversand ab Schweizer Lager – in 1–2 Werktagen",
-                                "Unsere Auswahl ab Schweizer Lager: Beauty-Sets, Taschen und "
-                                "Wohnaccessoires, in 1–2 Werktagen bei dir."),
+    # 13.10.2026: ohne «1–2 Werktage» — die Kasse rechnet Bearbeitung + Transit (und Ware im General profile
+    # zeigt 28.10.–11.11.). Ein Satz ohne Zahl stimmt in jeder Stufe; live identisch geschrieben.
+    "blitzversand-highlights": ("Ab Schweizer Lager",
+                                "Artikel aus unserem Schweizer Lager – das genaue Lieferdatum steht "
+                                "auf jeder Produktseite."),
 }
 
 

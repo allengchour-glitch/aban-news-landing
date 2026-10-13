@@ -539,6 +539,12 @@ def kassen_lieferdatum():
     z = ch_lager_profil_zeile()
     if z:
         teile.append(z)
+    # 13.10.2026 (A7): Produktseite/Warenkorb rechnen das Kassen-Datum mit fest eingebauten Zahlen (LUX-KASSENDATUM) — weicht
+    # die Bearbeitungszeit oder die Transitregel ab, zeigt die Seite still ein anderes Datum als die Kasse.
+    tb = (s.get("theme_kassendatum") or {}).get("befunde") or []
+    if tb:
+        teile.append("⚠️ KASSEN-DATUM THEME: " + " · ".join(tb[:3]) + (f" (+{len(tb) - 3})" if len(tb) > 3 else "")
+                     + " → automation/kassen_lieferdatum_wache.py --selbsttest, Zahlen in lux_delivery/lux_cart_trust anpassen")
     if not s.get("zu_frueh"):
         return " · ".join(teile) or None
     return " · ".join(teile + [""]) + (f"KASSEN-DATUM zu früh: Bearbeitungszeit {s.get('bearbeitungszeit_tage')} T, CJ versendet nach Median {s.get('median')} "

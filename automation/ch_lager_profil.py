@@ -206,16 +206,60 @@ def stufe_lesen():
     return int(s.get("stufe", 1)), int(s.get("google_stichprobe", 25)), s
 
 
-def soll_menge(produkte, stufe, stichprobe):
-    """produkte: [{id, tags, aktiv, google}] → Menge der Produkt-IDs, die ins Profil gehören."""
+def _ist_kostuem(p):
+    """Kostüm nach der EINEN Titelregel (google_sperrliste.ist_kostuem). Ohne Regel → True (lieber nicht in die Stichprobe)."""
+    try:
+        from google_sperrliste import ist_kostuem
+    except Exception:  # pragma: no cover
+        return True
+    return ist_kostuem(p.get("titel") or "", p.get("typ") or "")
+
+
+def soll_menge(produkte, stufe, stichprobe, vorrang=None):
+    """produkte: [{id, tags, aktiv, google, titel?, typ?}] → Menge der Produkt-IDs, die ins Profil gehören.
+
+    Stufe 2 (13.10., Richter-Punkt A4d): die Google-Stichprobe nimmt ZUERST die Google-CH-Lager-Ware aus `vorrang`
+    (halloween ∪ kostueme-ch-lager, siehe halloween_vorrang) — sie zeigt heute in der Kasse 28.10.–11.11. und ist für
+    Halloween ohnehin verloren, als Stichprobe kommt sie vor Halloween an. Den Rest füllen die kleinsten IDs auf. Kostüme
+    (ist_kostuem) kommen nie in die Stichprobe: sie gehören nicht in den Google-Kanal und fallen nach dem Durchsetzer
+    ohnehin in Stufe 1."""
     ch = [p for p in produkte if p["aktiv"] and TAG in {t.lower() for t in p["tags"]}]
     if stufe >= 3:
         return {p["id"] for p in ch}
     soll = {p["id"] for p in ch if not p["google"]}
     if stufe == 2:
-        g = sorted((p["id"] for p in ch if p["google"]), key=lambda x: int(x.rsplit("/", 1)[1]))
-        soll |= set(g[:stichprobe])
+        nr = lambda x: int(x.rsplit("/", 1)[1])  # noqa: E731
+        vorrang = vorrang or set()
+        g = [p for p in ch if p["google"] and not _ist_kostuem(p)]
+        zuerst = sorted((p["id"] for p in g if p["id"] in vorrang), key=nr)
+        rest = sorted((p["id"] for p in g if p["id"] not in vorrang), key=nr)
+        soll |= set((zuerst + rest)[:stichprobe])
     return soll
+
+
+VORRANG_KOLLEKTIONEN = ("halloween", "kostueme-ch-lager")
+
+
+def halloween_vorrang():
+    """Produkt-IDs der Google-CH-Lager-Ware aus halloween ∪ kostueme-ch-lager (aktiv, im Google-Kanal, Tag ch-lager, kein
+    Kostüm) — Vorrang für die Stufe-2-Stichprobe. Mitgliedschaft live per collectionByHandle (Smart-Kollektionen)."""
+    aus = {}
+    for h in VORRANG_KOLLEKTIONEN:
+        nach = None
+        while True:
+            c = gql("""query($h:String!,$n:String,$g:ID!){collectionByHandle(handle:$h){products(first:100,after:$n){
+              pageInfo{hasNextPage endCursor} nodes{id handle title productType status tags
+              publishedOnPublication(publicationId:$g)}}}}""", {"h": h, "n": nach, "g": GOOGLE})["collectionByHandle"]
+            if not c:
+                raise RuntimeError(f"Kollektion «{h}» fehlt — Halloween-Vorrang nicht bestimmbar")
+            for p in c["products"]["nodes"]:
+                if (p["status"] == "ACTIVE" and p["publishedOnPublication"] and TAG in {t.lower() for t in p["tags"]}
+                        and not _ist_kostuem({"titel": p["title"], "typ": p.get("productType")})):
+                    aus[p["id"]] = p["handle"]
+            if not c["products"]["pageInfo"]["hasNextPage"]:
+                break
+            nach = c["products"]["pageInfo"]["endCursor"]
+    return aus
 
 
 def produkte_laden():
@@ -223,10 +267,11 @@ def produkte_laden():
     aus, nach = [], None
     while True:
         d = gql("""query($n:String,$g:ID!){products(first:50,after:$n,query:"tag:ch-lager"){pageInfo{hasNextPage endCursor}
-          nodes{id title status tags publishedOnPublication(publicationId:$g)
+          nodes{id handle title productType status tags publishedOnPublication(publicationId:$g)
             variants(first:100){nodes{id deliveryProfile{id}}}}}}""", {"n": nach, "g": GOOGLE})["products"]
         for p in d["nodes"]:
-            aus.append({"id": p["id"], "titel": p["title"], "tags": p["tags"], "aktiv": p["status"] == "ACTIVE",
+            aus.append({"id": p["id"], "handle": p["handle"], "titel": p["title"], "typ": p.get("productType") or "",
+                        "tags": p["tags"], "aktiv": p["status"] == "ACTIVE",
                         "google": bool(p["publishedOnPublication"]),
                         "varianten": [(v["id"], (v.get("deliveryProfile") or {}).get("id")) for v in p["variants"]["nodes"]]})
         if not d["pageInfo"]["hasNextPage"]:
@@ -267,11 +312,19 @@ def profil_aendern(pid, schluessel, ids, aktion, titel):
 def lauf(scharf, zurueck=False):
     pid = profil_finden()
     stufe, stichprobe, stufe_roh = stufe_lesen()
+    # 13.10. (A4d): STUFE=2 zeigt die künftige Liste im PROBELAUF, ohne zu schreiben (kein Stand, kein Ledger, kein Zuordnen).
+    vorschau = os.environ.get("STUFE")
+    if vorschau:
+        if scharf or zurueck:
+            print("⚠️ STUFE=… gilt nur im Probelauf — Stufe ändert man in dropship/_ch_lager_profil_stufe.json")
+            return 1
+        stufe = int(vorschau)
     stand = {"stand": dt.datetime.utcnow().strftime("%Y-%m-%dT%H:%MZ"), "profil": pid, "stufe": stufe,
              "stufe_seit": stufe_roh.get("seit"), "google_stichprobe": stichprobe}
     if not pid:
         stand.update({"fehler": f"Profil «{PROFIL_NAME}» fehlt"})
-        json.dump(stand, open(STAND, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+        if not vorschau:
+            json.dump(stand, open(STAND, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
         print(f"⚠️ CH-LAGER-PROFIL: Profil «{PROFIL_NAME}» fehlt — `--anlegen`")
         return 1
     gm = zonen_methoden(gql(Q_PROFIL, {"id": GENERAL}, ver="unstable")["deliveryProfile"])
@@ -286,8 +339,18 @@ def lauf(scharf, zurueck=False):
         print(f"FERTIG: {n} gelöst")
         return 0
     produkte = produkte_laden()
-    soll = soll_menge(produkte, stufe, stichprobe)
+    vorrang = halloween_vorrang() if stufe == 2 else {}
+    soll = soll_menge(produkte, stufe, stichprobe, set(vorrang))
     nach_id = {p["id"]: p for p in produkte}
+    if stufe == 2:
+        probe = sorted((p for p in produkte if p["google"] and p["id"] in soll),
+                       key=lambda p: (p["id"] not in vorrang, int(p["id"].rsplit("/", 1)[1])))
+        stand["halloween_vorrang"] = len(vorrang)
+        stand["stichprobe_handles"] = [p["handle"] for p in probe]
+        print(f"Stufe-2-Stichprobe: {len(probe)} Google-Produkte (Halloween-Vorrang {sum(1 for p in probe if p['id'] in vorrang)}"
+              f" von {len(vorrang)}, Grösse {stichprobe}):")
+        for p in probe:
+            print(f"  {'H' if p['id'] in vorrang else '·'} {p['handle'][:60]:60} | {p['titel'][:50]}")
     rein, titel = [], {}
     for p in produkte:
         if p["id"] in soll:
@@ -319,6 +382,9 @@ def lauf(scharf, zurueck=False):
             stand["im_profil_varianten"] = len(profil_inhalt(pid))
             stand["fehlt_varianten"] = max(0, len(rein) - stand["zugeordnet"])
             stand["falsch_varianten"] = max(0, len(raus) - stand["geloest"])
+    if vorschau:
+        print(f"VORSCHAU Stufe {stufe}: nichts geschrieben (Stand-Datei unverändert)")
+        return 0
     json.dump(stand, open(STAND, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print(f"CH-LAGER-PROFIL: Stufe {stufe} · {stand['im_profil_varianten']} Varianten im Profil · fehlt {stand['fehlt_varianten']} · "
           f"falsch {stand['falsch_varianten']}" + (f" · zugeordnet {stand.get('zugeordnet', 0)} · gelöst {stand.get('geloest', 0)}"
@@ -409,6 +475,10 @@ def selbsttest(leise=False):
          {"id": "gid://shopify/Product/9", "tags": ["ch-lager"], "aktiv": True, "google": True},
          {"id": "gid://shopify/Product/7", "tags": ["ch-lager-alt"], "aktiv": True, "google": False},
          {"id": "gid://shopify/Product/8", "tags": ["ch-lager"], "aktiv": False, "google": False}]
+    ph = p + [{"id": "gid://shopify/Product/11", "tags": ["ch-lager"], "aktiv": True, "google": True,
+               "titel": "Hasenskelett 16 cm", "typ": "Partydeko & Ballone"},
+              {"id": "gid://shopify/Product/13", "tags": ["ch-lager"], "aktiv": True, "google": True,
+               "titel": "Hemd Waggis rot", "typ": "Kostüme & Verkleidung"}]
     faelle = [
         ("Tarife gut", lambda: tarife_pruefen(gut, gen), []),
         ("Tarif 7.00", lambda: len(tarife_pruefen(teuer, gen)), 1),
@@ -417,6 +487,13 @@ def selbsttest(leise=False):
         ("LI fehlt", lambda: len(tarife_pruefen(ohne_li, gen)), 1),
         ("Stufe 1", lambda: sorted(soll_menge(p, 1, 1)), ["gid://shopify/Product/5"]),
         ("Stufe 2 (kleinste ID)", lambda: sorted(soll_menge(p, 2, 1)), ["gid://shopify/Product/3", "gid://shopify/Product/5"]),
+        # 13.10. A4d: Halloween-Vorrang vor kleinster ID; Kostüm (Titelregel) nie in der Stichprobe, auch nicht mit Vorrang
+        ("Stufe 2 Halloween-Vorrang", lambda: sorted(soll_menge(ph, 2, 1, {"gid://shopify/Product/11"})),
+         ["gid://shopify/Product/11", "gid://shopify/Product/5"]),
+        ("Stufe 2 Vorrang + Auffüllen", lambda: sorted(soll_menge(ph, 2, 3, {"gid://shopify/Product/11", "gid://shopify/Product/13"})),
+         ["gid://shopify/Product/11", "gid://shopify/Product/3", "gid://shopify/Product/5", "gid://shopify/Product/9"]),
+        ("Stufe 2 Kostüm raus", lambda: "gid://shopify/Product/13" in soll_menge(ph, 2, 9, {"gid://shopify/Product/13"}), False),
+        ("Stufe 1 ohne Vorrang-Wirkung", lambda: sorted(soll_menge(ph, 1, 3, {"gid://shopify/Product/11"})), ["gid://shopify/Product/5"]),
         ("Stufe 3", lambda: len(soll_menge(p, 3, 0)), 3),
     ]
     fehler = 0

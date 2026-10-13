@@ -237,6 +237,43 @@ KOSTUEM_NICHT = re.compile(
     r'\buv\b|gesichtspflege|feuchtigkeit|hydrat|ffp|chirurg|tauch|schnorchel|\bski|winddicht|motorrad|schweiss|'
     r'blazer|hosenanzug|business|damenanzug|kost[üu]mjacke|kost[üu]mrock|'
     r'wandverkleidung|verkleidungsleiste|wandpaneel|kopfteil|bettverkleidung|dekoration|wanddeko', re.I)
+# ROLLEN-KOSTÜME OHNE KOSTÜMWORT (13.10.2026, Richter-Punkt A4d). GEMESSEN 13.10.: unter den 172 aktiven Google-Produkten
+# (Typ «Kostüme & Verkleidung» ∪ Kollektionen halloween/kostueme-ch-lager) waren 6 Kostüme, die ist_kostuem() NICHT erkannte,
+# weil das Wort «Kostüm» fehlt — von Hand + Bild geprüft: «Hemd Waggis rot», «Nikolaus Baby-Strampler», «Zimmermädchenset»,
+# «Araber Schuhüberzug» (Fortura, CH-Lager), «Göttinnen-Kleid für Mottopartys und Halloween» und «Tier-Halloween-Mantel» (CJ;
+# beide nennen sich in der Beschreibung selbst «Kostüm»). Bewusst ENG: eine Rolle zählt nur zusammen mit einem Kleidungsstück
+# (Waggis-Ratsche, Weihnachtsmann-Figur, Kerzenform «Göttin» bleiben draussen), Motivware (Print/Muster/Druck) nie, und
+# KEINE Typ-Regel (siehe ist_kostuem). Mützen/Kopfschmuck/Perücken zählen hier nicht (Entscheid 23.09.: «kostuem-hut» ist kein
+# Ausschluss-Tag). Jede Zeile wurde am Voll-Export gezählt (aktive Treffer 13.10.: waggis 9, zimmermädchen 1, nikolaus+Kleid 1,
+# göttin+Kleid+Kontext 1, araber+Schuh 1, Tier+Halloween+Mantel 1). Kanarien unten.
+# (Rolle, Kleidungsstück oder None, zusätzlich nötiger Kontext oder None)
+KOSTUEM_ROLLE = [
+    (re.compile(r'waggis', re.I), re.compile(r'hemd|hose|zipfelm[üu]tze|kittel|larve|jacke', re.I), None),
+    (re.compile(r'zimmerm[äa]dchen', re.I), None, None),
+    (re.compile(r'nikolaus|samichlaus|weihnachtsmann|\bsanta\b', re.I),
+     re.compile(r'strampler|anzug|overall|kleid\b|mantel\b|robe\b', re.I), None),
+    (re.compile(r'g[öo]ttin', re.I), re.compile(r'kleid|gewand|robe\b|toga', re.I), KOSTUEM_KONTEXT),
+    (re.compile(r'\baraber|scheich|sultan', re.I), re.compile(r'schuh|tunika|gewand|kopftuch|turban|umhang', re.I), None),
+    (re.compile(r'(?:^|[\s-])(?:haus)?tier(?:e|-|\b)|(?<![\wäöüß])hunde?\b|(?<![\wäöüß])katzen?\b', re.I),
+     re.compile(r'mantel|umhang|\bcape\b|outfit|anzug', re.I), re.compile(r'halloween', re.I)),
+]
+KOSTUEM_ROLLE_NICHT = re.compile(r'print|muster|druck|motiv|figur|deko', re.I)
+# Prefilter-Wörter für die Titelsuche des Durchsetzers (Shopify findet nur Wortanfänge; entschieden wird an ist_kostuem).
+KOSTUEM_ROLLE_SUCHWORTE = ["waggis", "zimmermädchen", "nikolaus", "samichlaus", "weihnachtsmann", "santa", "göttin",
+                           "araber", "scheich", "sultan", "tier-halloween", "halloween"]
+
+
+def kostuem_rolle(titel):
+    """True, wenn der Titel eine Kostüm-Rolle MIT Kleidungsstück nennt (ohne das Wort «Kostüm»)."""
+    t = titel or ""
+    if KOSTUEM_ROLLE_NICHT.search(t):
+        return False
+    for rolle, stueck, kontext in KOSTUEM_ROLLE:
+        if rolle.search(t) and (stueck is None or stueck.search(t)) and (kontext is None or kontext.search(t)):
+            return True
+    return False
+
+
 POD_WARE = re.compile(r'(?:sticker|tasse|t-shirt|tasche|kissen|mauspad|poster|hoodie|sweatshirt|becher|handyh[üu]lle|leinwand|'
                       r'puzzle|kalender|karte|fussmatte)\b', re.I)
 POD_TYPEN = {"sticker", "tasse", "t-shirt", "tasche", "kissen", "mauspad", "poster", "hoodie", "sweatshirt", "becher",
@@ -257,6 +294,8 @@ def ist_kostuem(titel, typ=""):
         return False
     if KOSTUEM_WORT.search(t):
         return not KOSTUEM_ANZUG.search(t)
+    if kostuem_rolle(t):          # 13.10. A4d: Rolle + Kleidungsstück ohne Kostümwort («Hemd Waggis rot»)
+        return True
     if not (KOSTUEM_MASKE.search(t) or KOSTUEM_VERKLEIDUNG_TEIL.search(t)) or not KOSTUEM_KONTEXT.search(t):
         return False
     rest = re.sub(r'\bled\b|licht', ' ', t, flags=re.I)     # bei Kostüm-Kontext sind LED/Licht keine Ausnahme
@@ -316,6 +355,35 @@ KOSTUEM_KANARIEN = [
     ("Business Damen Kostüm zweiteilig", "Damenmode", False),
     ("Motorrad Sturmhaube Totenkopf Maske", "", False),
     ("Ski-Maske mit Totenkopf-Print", "", False),
+    # 13.10. A4d (Richter): Rollen-Kostüme ohne Kostümwort — und was trotz Rolle/Typ KEIN Kostüm ist
+    ("Hemd Waggis rot", "Kostüme & Verkleidung", True),
+    ("Nikolaus Baby-Strampler", "Kostüme & Verkleidung", True),
+    ("Zimmermädchenset", "Kostüme & Verkleidung", True),
+    ("Waggishose kurz gelb", "Kostüme & Verkleidung", True),
+    ("Araber Schuhüberzug", "Kostüme & Verkleidung", True),
+    ("Göttinnen-Kleid für Mottopartys und Halloween", "Damenmode", True),
+    ("Tier-Halloween-Mantel", "Haustierbedarf", True),
+    ("Kunstblut 113.2 ml", "Kostüme & Verkleidung", False),
+    ("Styroporkopf weiss", "Kostüme & Verkleidung", False),
+    ("Narbenplastiktube", "Kostüme & Verkleidung", False),
+    ("Tasse «Waggis»", "Tasse", False),
+    ("Holzratsche Waggis gross", "Kostüme & Verkleidung", False),
+    ("Kletternder singender Weihnachtsmann", "Partydeko & Ballone", False),
+    ("Weihnachtsmann-Mütze aus Plüsch, Rot oder Schwarz", "Spielzeug & Spiele", False),
+    ("Herren Hoodie mit Santa- und Biermuster", "Herrenmode", False),
+    ("Fransen-Minirock «Santa Fe» · Wildleder-Optik, 2-lagig", "Damenmode", False),
+    ("Kerzenform «Göttin von Athen»", "Küche & Bar", False),
+    ("Griechisches Göttinnen-Abendkleid", "Damenmode", False),
+    ("Camouflage Schuhüberzug Schlangenstichschutz", "Sportschuhe", False),
+    ("Aladins Wunderlampe", "Haushalt & Wohnen", False),
+    ("Halloween Haustier-Set mit Fliege", "Haustierbedarf", False),
+    ("Hundepullover Halloween", "Haustierbedarf", False),
+    ("Königliches Umhang-Set für Haustiere", "Haustierbedarf", False),
+    ("Halloween-Outfit für Mädchen", "Baby & Kinder", False),
+    ("Edelweisshemd langarm geknöpft", "Schweizer Editionen", False),
+    ("Plüschmütze Panda", "Spielzeug & Spiele", False),
+    ("Gesichtsvisier Regenbogen", "Kostüme & Verkleidung", False),
+    ("Kinder Sommer-Strampler für Mädchen", "Baby & Kinder", False),
 ]
 
 
