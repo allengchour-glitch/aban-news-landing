@@ -460,3 +460,4 @@
 2026-10-13T09:09:01.029Z	luxe-epic-trailer.wav	38.25	gadget	cjreel-ADAC0E5D-EFBB-4788-8AF2-AF2F319ECF00	stimme:ja	azure:de-CH-JanNeural
 2026-10-13T18:30:24.141Z	luxe-epic-fantasy.wav	31.25	schmuck	cjreel-CJSY102348201AZ	stimme:ja	azure:de-CH-LeniNeural
 2026-10-13T18:34:52.854Z	luxe-epic-hero.wav	43	allgemein	cjreel-CJYDQTJM00295-Black-L	stimme:nein	anteil
+2026-10-13T18:39:09.824Z	luxe-epic-anime.wav	4.75	allgemein	cjreel-CJYD189137001AZ	stimme:ja	azure:de-CH-JanNeural
