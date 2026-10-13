@@ -1,8 +1,8 @@
 # Index-Messgerät (tools/index_probe.py) — feste URL-Liste, 13.10.2026.
 # Format: <gruppe> <url>   (Gruppen: hub, saison, suchbegriff, produkt, ratgeber)
 # Die Liste bleibt FEST, damit zwei Läufe dieselben Seiten vergleichen. Wer eine Zeile ändert, ändert den Vergleich:
-# die Ampel vergleicht nur Seiten, die in beiden Läufen stehen. Neue Suchbegriff-Kollektion → hier unter «suchbegriff»
-# eintragen (Runbook-Regel b in dropship/AUTONOMER-MODUS.md zählt die Gruppe).
+# die Ampel vergleicht nur Seiten, die in beiden Läufen stehen. Neue Suchbegriff-Kollektionen aus
+# automation/data/suchbegriff_kollektionen.json hängt `index_probe.py --pakete` selbst unten an (Runbook-Regel b zählt sie).
 # Produkte: die 9 AKTIVEN mit den meisten Impressionen aus dropship/_gsc_seiten.json (Stand 13.10. 10:20Z, 7 Datentage).
 # Gedraftet und deshalb ausgelassen (gemessen 13.10.): Wi-Fi-Futterspender k-030338 (37 Impr.), Transportbox PetGo (32),
 # Sternenhimmel-Projektor 527681 (24), Futterspender 653760 (23), Yoga-Bolster (19).
@@ -47,3 +47,14 @@ produkt https://luxestyle.ch/products/selbstklebende-mobelfolie-650114
 
 ratgeber https://luxestyle.ch/blogs/ratgeber/weihnachtsgeschenke-2026-schweiz-ideen
 ratgeber https://luxestyle.ch/blogs/ratgeber/adventskalender-zum-befuellen-24-kleine-geschenke-ratgeber
+
+# automatisch aus automation/data/suchbegriff_kollektionen.json ergänzt 2026-10-13
+suchbegriff https://luxestyle.ch/collections/schminkspiegel
+suchbegriff https://luxestyle.ch/collections/schlafmasken
+suchbegriff https://luxestyle.ch/collections/kleiderstaender
+suchbegriff https://luxestyle.ch/collections/sicherheitsschuhe
+suchbegriff https://luxestyle.ch/collections/holzuhren
+suchbegriff https://luxestyle.ch/collections/camisole-traegertops
+suchbegriff https://luxestyle.ch/collections/smart-ring
+suchbegriff https://luxestyle.ch/collections/schrank-organizer
+suchbegriff https://luxestyle.ch/collections/weihnachtspyjama-familie
