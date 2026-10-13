@@ -598,7 +598,9 @@ fi
 python3 "$REPO_AUTO/bestell_ampel.py" 2>/dev/null || echo "BESTELLUNGEN: unklar (Ampel-Skript fehlt)"
 # 05.10.2026 Betreiber «jeder kauf muss auch automatisch auslösen bei fortuna»: Fortura-Positionen bezahlter Bestellungen
 # erkennen + Bestellpaket vorbereiten (Stufe 1; XML nach /home/ORDERS erst mit Fortura-Muster). Zeile nur bei Arbeit.
-( cd "$REPO" && timeout 120 python3 "$REPO_AUTO/fortura_bestell_engine.py" 2>/dev/null ) | grep -v "^FORTURA: 0 offen" || true
+# 13.10.2026 (Trockenlauf Fortura-Kette): ein Absturz/Timeout der Engine gab KEINE Zeile — dieselbe Stille wie «0 offen».
+_fo=$( cd "$REPO" && timeout 120 python3 "$REPO_AUTO/fortura_bestell_engine.py" 2>/dev/null ) || _fo="⚠️ FORTURA: unklar (Engine-Fehler oder Timeout) ${_fo}"
+printf '%s\n' "$_fo" | grep -v "^FORTURA: 0 offen" | grep -v "^$" || true
 # 29.09.2026 Betreiber «jeden tag ein verkauf machen»: Ziel sichtbar in jeder Meldung (fremde, nicht erstattete Käufe je Tag).
 python3 "$REPO_AUTO/verkauf_ziel.py" 2>/dev/null || echo "VERKAUF-ZIEL: unklar (Skript fehlt)"
 # 06.10.2026: zeitlich begrenzte Aktion (abendaktion.py) nach Ablauf zurückstellen — Leiste + Warenkorb-Zeitbedingung; Rabatt läuft selbst aus.
