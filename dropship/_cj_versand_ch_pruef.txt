@@ -8029,3 +8029,10 @@ solare-powerbank-3848bb	2FEC060A-987A-45F1-80BD-75CABF47857E	0	-	KEINE CH-Option
 ultrasonisches-reinigungsgerat-352128	1432187342675906560	7	8.57	ok	landeseite
 kabellose-bluetooth-kopfhoerer-82e2b5	C4EEFBA3-A9E2-4D97-BFA0-291C4D0B27C0	7	6.81	ok	landeseite
 lazy-phone-halter-b20132	170D9F7D-7071-4E4A-A73E-CC5A3B66F020	16	9.33	ok	landeseite
+reisebecher-doppelwand-697856	1395567298491846656	16	8.04	ok	landeseite
+wlan-uberwachungskamera-mit-bewegungserkennung-811520	1620261501900697600	7	20.17	ok	landeseite
+intelligente-dual-achsen-kamera-697216	1605101445500645376	7	10.81	ok	landeseite
+dv3000-multifunktions-sportkamera-mit-taschenl-066176	1443151308386340864	7	10.68	ok	landeseite
+4k-action-kamera-fur-outdoor-sport-967488	1422819069308047360	7	11.30	ok	landeseite
+usb-hd-kamera-064832	1395671328106876928	16	5.85	ok	landeseite
+wasserdichtes-gehause-fur-gopro8-9-041216	1395310102625521664	16	6.50	ok	landeseite
