@@ -225,22 +225,40 @@ def soll_berechnen(gql, regel, log=print):
     return soll, info
 
 
-def lies_metafeld(gql, pid):
-    d = gql('query($id:ID!){product(id:$id){handle metafield(namespace:"%s", key:"%s"){value}}}' % (NS, KEY), {"id": pid}).get("product")
+MARKE_TAG = "such-boost"
+
+
+def lies_metafeld(gql, pid, mit_tags=False):
+    d = gql('query($id:ID!){product(id:$id){handle tags metafield(namespace:"%s", key:"%s"){value}}}' % (NS, KEY), {"id": pid}).get("product")
     if not d:
-        return None, []
+        return (None, [], []) if mit_tags else (None, [])
     mf = d.get("metafield")
-    return d["handle"], (json.loads(mf["value"]) if mf and mf.get("value") else [])
+    werte = json.loads(mf["value"]) if mf and mf.get("value") else []
+    return (d["handle"], werte, d.get("tags") or []) if mit_tags else (d["handle"], werte)
+
+
+def tag_anstoss(gql, pid, tags, soll_aktiv):
+    """12.10.: Ein reines Metafeld-Update stösst die Such-Indexierung NICHT an — 90 min nach dem Schreiben standen nur
+    Boost-Produkte oben, die aus anderem Grund geändert worden waren (Geschenk-Tags); Kostüme ohne andere Änderung nicht,
+    Veto-Entfernungen auch nicht. Der Tag `such-boost` (setzen/entfernen) ist eine echte Produktänderung = Neu-Indexierung
+    und zugleich eine Markierung. → True, wenn geändert."""
+    hat = MARKE_TAG in tags
+    if soll_aktiv == hat or not SCHARF:
+        return False
+    m = "tagsAdd" if soll_aktiv else "tagsRemove"
+    r = gql('mutation($id:ID!,$t:[String!]!){%s(id:$id,tags:$t){userErrors{message}}}' % m, {"id": pid, "t": [MARKE_TAG]})[m]
+    return not r["userErrors"]
 
 
 def anwenden(gql, soll, log=print):
     stand = json.load(open(STAND)) if os.path.exists(STAND) else {}
-    neu_stand, gesetzt, geloescht, gleich, fehler, abgeschnitten = {}, 0, 0, 0, 0, 0
+    neu_stand, gesetzt, geloescht, gleich, fehler, abgeschnitten, angestossen = {}, 0, 0, 0, 0, 0, 0
     for pid in sorted(set(stand) | set(soll)):
         eigen_alt = {norm_begriff(b) for b in stand.get(pid, {}).get("begriffe", [])}
-        handle, ist = lies_metafeld(gql, pid)
+        handle, ist, tags = lies_metafeld(gql, pid, mit_tags=True)
         if handle is None:            # Produkt gelöscht
             continue
+        angestossen += tag_anstoss(gql, pid, tags, bool(soll.get(pid, {}).get("begriffe")))
         fremde = [b for b in ist if norm_begriff(b) not in eigen_alt]
         eigen_neu = soll.get(pid, {}).get("begriffe", [])
         ziel, weg = begriffe_zusammen(eigen_neu, fremde)
@@ -268,11 +286,15 @@ def anwenden(gql, soll, log=print):
             gesetzt += 1
         else:
             geloescht += 1
+            if MARKE_TAG not in tags:          # nie markiert → Anstoss über Setzen + Entfernen (Index vergisst den Boost sonst nicht)
+                for m in ("tagsAdd", "tagsRemove"):
+                    gql('mutation($id:ID!,$t:[String!]!){%s(id:$id,tags:$t){userErrors{message}}}' % m, {"id": pid, "t": [MARKE_TAG]})
+                angestossen += 1
         with open(LEDGER, "a", encoding="utf-8") as f:
             f.write(f"{dt.datetime.utcnow():%Y-%m-%dT%H:%MZ}\t{handle}\t{json.dumps(ist, ensure_ascii=False)}\t{json.dumps(ziel, ensure_ascii=False)}\n")
     if SCHARF:
         json.dump(neu_stand, open(STAND, "w"), ensure_ascii=False, indent=1, sort_keys=True)
-    return dict(gesetzt=gesetzt, geloescht=geloescht, gleich=gleich, fehler=fehler, abgeschnitten=abgeschnitten,
+    return dict(gesetzt=gesetzt, geloescht=geloescht, gleich=gleich, fehler=fehler, abgeschnitten=abgeschnitten, angestossen=angestossen,
                 eigene=len(neu_stand) if SCHARF else len(soll))
 
 
@@ -349,7 +371,7 @@ def main():
     soll, info = soll_berechnen(gql, regel)
     z = anwenden(gql, soll)
     print(f"SUCH-BOOSTS: {len(regel['familien'])} Familien · {len(soll)} Produkte im Soll · "
-          + (f"gesetzt {z['gesetzt']} · entfernt {z['geloescht']} · unverändert {z['gleich']} · Fehler {z['fehler']}"
+          + (f"gesetzt {z['gesetzt']} · entfernt {z['geloescht']} · unverändert {z['gleich']} · Tag-Anstoss {z['angestossen']} · Fehler {z['fehler']}"
              if SCHARF else "trocken") + (f" · {z['abgeschnitten']} Begriffe über dem Deckel" if z["abgeschnitten"] else ""))
     return 1 if z["fehler"] else 0
 
