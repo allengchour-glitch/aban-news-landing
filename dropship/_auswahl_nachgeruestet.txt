@@ -1428,3 +1428,5 @@
 16615798407559	Farbe:11:11+ki	2026-10-13	blumiger-seidenschal-mit-uv-schutz-623100
 16615798374791	Farbe:7:7+ki	2026-10-13	bestickter-schal-im-ethno-stil-636100
 16615798309255	Farbe:4:4	2026-10-13	doppelseitiger-jacquard-schal-601000
+16615798178183	Farbe:4:4	2026-10-13	seidenschal-mit-blumenmuster-623300
+16615797981575	Modell:12:12	2026-10-13	farbig-gestreifter-kopftuchschal-winter-603200
