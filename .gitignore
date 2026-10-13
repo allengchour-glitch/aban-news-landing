@@ -149,5 +149,6 @@ data/*.tmp*
 tools/trading/daten/funding/
 tools/trading/daten/binance_1m_fut/
 tools/trading/daten/copytrading/
+tools/trading/daten/delisting/
 data/krypto-pilot2-broker.json
 data/krypto-pilot2-bestand.json
