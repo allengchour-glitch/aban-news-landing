@@ -2016,6 +2016,17 @@ fi
       echo "$(date -u +%H:%M) tote-landeseiten geprüft"
     fi
   fi
+  # 13.10.2026 (Messrunde Platz 9): Weiterleitungen, deren ZIEL inzwischen tot ist (gedraftetes Produkt, abgemeldete
+  # Kollektion) — 169 von 1'657 führten ins Leere. Ketten glätten, totes Ziel bekommt Ersatz; Ledger + --zurueck.
+  WZW=/tmp/weiterleitung_ziel_wache.log
+  if [ -f "$REPO/automation/weiterleitung_ziel_wache.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$WZW" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$WZW"; then
+      touch "$WZW"
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_weiterleitung_ziel.lock; flock -n 9 || exit 0; FIX=1 exec python3 automation/weiterleitung_ziel_wache.py" >> "$WZW" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) weiterleitung-ziele geprüft"
+    fi
+  fi
   # GOOGLE-ATTRIBUT `size`, einmal täglich: Google verlangt es bei Bekleidung und Schuhen;
   # fehlt es, wird das Angebot in Shopping-Ergebnissen beschnitten — im einzigen Kanal mit
   # belegten Verkäufen. Am 28.08.2026 trug KEIN geprüftes Kleid ein `size`, obwohl alle eine
