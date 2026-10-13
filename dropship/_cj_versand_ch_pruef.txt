@@ -8382,3 +8382,4 @@ sommerliche-canvas-schuhe-fur-herren-621400	2607030528541622000	16	14.00	ok	land
 herren-canvas-loafers-im-beijing-stil-616200	2607030313541616900	16	13.40	ok	landeseite
 atmungsaktive-trainingsschuhe-fur-herren-604400	2607020817141605400	16	13.76	ok	landeseite
 unifarbene-freizeit-sneaker-622200	2607020733281622900	16	14.00	ok	landeseite
+herren-loafer-aus-rindsleder-623000	2607020702141624000	16	12.81	ok	landeseite
