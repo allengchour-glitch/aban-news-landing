@@ -18013,3 +18013,15 @@ gid://shopify/Product/16616518615431	39->0	Rutschfeste Prinzessin-Schuhe für M�
 gid://shopify/Product/16616518779271	33->0	Mesh-Lochschuhe für Kinder
 gid://shopify/Product/16616520253831	75->1	Sport-Rucksack für Outdoor und Reisen
 gid://shopify/Product/16616526545287	21->0	Wasserdichter Outdoor-Rucksack aus PVC
+gid://shopify/Product/16616526610823	11->1	Kleider- und Sporttasche mit Schultergurt
+gid://shopify/Product/16616526676359	37->0	Taktischer Rucksack 45 L, Oxford, schwarz
+gid://shopify/Product/16616526741895	79->0	Bauchtasche für Sport und Outdoor
+gid://shopify/Product/16616526807431	33->3	Kinder-Stiefeletten für Jungen und Mädchen
+gid://shopify/Product/16616529527175	87->0	Taktischer Rucksack Schultertasche Camouflage
+gid://shopify/Product/16616529625479	79->0	Reiserucksack Oxford Camouflage für Herren
+gid://shopify/Product/16616529658247	132->0	Outdoor-Rucksack 36-55 L, Camouflage
+gid://shopify/Product/16616529822087	18->0	Sportarmtasche 5.5 Zoll
+gid://shopify/Product/16616529887623	34->0	Multifunktions-Rucksack mit USB-Ladeanschluss
+gid://shopify/Product/16616529953159	126->1	Taktischer Rucksack 45L
+gid://shopify/Product/16616535097735	52->0	Grosser Reisesack mit getrennten Feuchtefächern
+gid://shopify/Product/16616535196039	18->1	Sport-Rucksack mit 36–55 Liter Volumen
