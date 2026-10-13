@@ -8383,3 +8383,9 @@ herren-canvas-loafers-im-beijing-stil-616200	2607030313541616900	16	13.40	ok	lan
 atmungsaktive-trainingsschuhe-fur-herren-604400	2607020817141605400	16	13.76	ok	landeseite
 unifarbene-freizeit-sneaker-622200	2607020733281622900	16	14.00	ok	landeseite
 herren-loafer-aus-rindsleder-623000	2607020702141624000	16	12.81	ok	landeseite
+retro-sportschuhe-aus-leder-fur-damen-522113	2074682328959574017	16	11.23	ok	landeseite
+carbon-platten-laufschuh-mit-dampfung-621500	2606030613581622200	16	10.69	ok	landeseite
+magnetische-schnursenkel-elastisch-kein-binden-964354	2033422431094210562	0	-	KEINE CH-Option → DRAFT	landeseite
+25er-set-zufallige-pvc-schuh-charms-464001	2033444631812681729	0	-	KEINE CH-Option → DRAFT	landeseite
+25er-set-hunde-schuh-charms-764481	2033429642713399297	0	-	KEINE CH-Option → DRAFT	landeseite
+elastische-schnursenkel-mit-schnallen-1-set-213314	2033419788221317121	0	-	KEINE CH-Option → DRAFT	landeseite
