@@ -1,0 +1,220 @@
+{
+ "stand": "2026-10-13T21:04Z",
+ "profil": "gid://shopify/DeliveryProfile/152645108103",
+ "stufe": 1,
+ "stufe_roh": {
+  "stufe": 1,
+  "seit": "2026-10-13",
+  "stufe1_anzahl": 10,
+  "stufe2_ab": "2026-10-17",
+  "plan": "Stufe 1 = 10 Motiv-T-Shirts ohne Editor (kleinste IDs, alle im Google-Kanal) ab 13.10. Stufe 2 = alle Mitglieder nach der Regel (heute 49: 46 Motiv-Shirts, Editor-Shirt, Hoodie, Jutebeutel) ab 17.10. — druck_profil.py --scharf schaltet SELBST um, wenn die Stufe-1-Produkte bei Google keine Versand-/Preis-Meldung tragen und Tarife, Transit und Korb-Matrix ok sind. 17.10. statt 14.10.: CH-Lager Stufe 2 wird 14.–17.10. beobachtet (Kritik Punkt 8), eine Konto-Warnung wäre sonst nicht zuzuordnen. Rückweg: python3 automation/druck_profil.py --rueckweg --scharf",
+  "warum": "dropship/DRUCK-PROFIL-2026-10-13.md"
+ },
+ "modus": "scharf",
+ "bearbeitung_tage": 1,
+ "tarife_ok": true,
+ "tarif_befunde": [],
+ "transit_ok": true,
+ "transit_befunde": [],
+ "mitglieder_regel": 49,
+ "soll_produkte": 10,
+ "soll_handles": [
+  "shirt-1-august",
+  "shirt-alpaufzug",
+  "shirt-alphorn",
+  "shirt-apero-time",
+  "shirt-baehnli",
+  "shirt-baern",
+  "shirt-basel",
+  "shirt-bernese-dog",
+  "shirt-bernhardiner",
+  "shirt-braunvieh"
+ ],
+ "kosten_alter_tage": 0.0,
+ "geloest": 0,
+ "zugeordnet": 50,
+ "matrix": {
+  "zeilen": [
+   {
+    "fall": "Druck allein CH",
+    "land": "CH",
+    "zwischensumme": 29.9,
+    "versand": 0.0,
+    "erwartet": 0.0,
+    "vorher": 7.0,
+    "tarife": [
+     [
+      0.0,
+      "Standard"
+     ]
+    ],
+    "urteil": "ok"
+   },
+   {
+    "fall": "Druck + Druck CH",
+    "land": "CH",
+    "zwischensumme": 53.82,
+    "versand": 0.0,
+    "erwartet": 0.0,
+    "vorher": 0.0,
+    "tarife": [
+     [
+      0.0,
+      "Kostenloser Versand"
+     ],
+     [
+      0.0,
+      "Standard"
+     ]
+    ],
+    "urteil": "ok"
+   },
+   {
+    "fall": "Druck + CJ klein CH",
+    "land": "CH",
+    "zwischensumme": 42.12,
+    "versand": 7.0,
+    "erwartet": 7.0,
+    "vorher": 7.0,
+    "tarife": [
+     [
+      7.0,
+      "Standard"
+     ]
+    ],
+    "urteil": "ok"
+   },
+   {
+    "fall": "Druck + CJ gross CH",
+    "land": "CH",
+    "zwischensumme": 67.32,
+    "versand": 0.0,
+    "erwartet": 0.0,
+    "vorher": 0.0,
+    "tarife": [
+     [
+      0.0,
+      "Kostenloser Versand"
+     ],
+     [
+      0.0,
+      "Standard"
+     ]
+    ],
+    "urteil": "ok"
+   },
+   {
+    "fall": "Druck + CH-Lager CH",
+    "land": "CH",
+    "zwischensumme": 44.82,
+    "versand": 0.0,
+    "erwartet": 0.0,
+    "vorher": 7.0,
+    "tarife": [
+     [
+      0.0,
+      "Standard"
+     ]
+    ],
+    "urteil": "ok"
+   },
+   {
+    "fall": "Druck allein LI",
+    "land": "LI",
+    "zwischensumme": 29.9,
+    "versand": 0.0,
+    "erwartet": 0.0,
+    "vorher": 14.9,
+    "tarife": [
+     [
+      0.0,
+      "Standard Liechtenstein"
+     ]
+    ],
+    "urteil": "ok"
+   },
+   {
+    "fall": "Druck + CJ klein LI",
+    "land": "LI",
+    "zwischensumme": 42.12,
+    "versand": 14.9,
+    "erwartet": 14.9,
+    "vorher": 14.9,
+    "tarife": [
+     [
+      14.9,
+      "Standard Liechtenstein"
+     ]
+    ],
+    "urteil": "ok"
+   },
+   {
+    "fall": "Sticker allein CH",
+    "land": "CH",
+    "zwischensumme": 4.9,
+    "versand": 7.0,
+    "erwartet": 7.0,
+    "vorher": 7.0,
+    "tarife": [
+     [
+      7.0,
+      "Standard"
+     ]
+    ],
+    "urteil": "ok"
+   },
+   {
+    "fall": "Sticker + Druck CH",
+    "land": "CH",
+    "zwischensumme": 31.32,
+    "versand": 7.0,
+    "erwartet": 7.0,
+    "vorher": 7.0,
+    "tarife": [
+     [
+      7.0,
+      "Standard"
+     ]
+    ],
+    "urteil": "ok"
+   }
+  ],
+  "teurer": 0,
+  "abweichend": 0,
+  "artikel": {
+   "D": [
+    "gid://shopify/ProductVariant/55792251076993",
+    29.9
+   ],
+   "D2": [
+    "gid://shopify/ProductVariant/55792251306369",
+    29.9
+   ],
+   "S": [
+    "gid://shopify/ProductVariant/55792018620801",
+    4.9
+   ],
+   "C": [
+    "gid://shopify/ProductVariant/55746180153729",
+    16.9
+   ],
+   "CG": [
+    "gid://shopify/ProductVariant/55743280021889",
+    44.9
+   ],
+   "K": [
+    "gid://shopify/ProductVariant/55970707276161",
+    19.9
+   ]
+  }
+ },
+ "im_profil_varianten": 50,
+ "im_profil_produkte": 10,
+ "zeichen": 10,
+ "im_profil_ohne_zeichen": [],
+ "zeichen_ohne_profil": [],
+ "gegen_regel": [],
+ "soll_fehlt": [],
+ "matrix_abweichend": 0,
+ "naechste_stufe_ab": "2026-10-17"
+}
