@@ -57,6 +57,14 @@ QUELLE MITREPARIERT (Regel 7) — sonst entsteht der Fehler täglich neu:
 
 AUFRUF:  python3 automation/gender_aus_titel.py --dry      (zeigt nur)
          python3 automation/gender_aus_titel.py            (schreibt)
+         python3 automation/gender_aus_titel.py --unisex [--dry]   (nur Titel mit «Unisex», live gesucht)
+         python3 automation/gender_aus_titel.py --pruefen  (Wächter: zählt nur, schreibt nichts, Exit 1 bei Befund)
+
+NACHTRAG 13.10.2026 (Kauf-Strecke Klasse 5, dropship/KAUFSTRECKE-SEITEN-2026-10-13.md): 50 von 168 Produkten mit «Unisex»
+im Titel standen auf `female` (Editor-Shirt «Unisex T-Shirt» → Google-Geschlecht weiblich, Brotkrumen «Damen»). Regel jetzt:
+\bunisex\b im Titel → `unisex` (geht vor Herren/Damen). Schreibt mit Altwert ins Ledger dropship/_gender_aus_titel_alt.tsv
+(Rückweg), lässt Werbetest-Sperre und Aurora aus. --pruefen meldet «GENDER-TITEL: n Unisex-Titel ≠ unisex · m Herren-Titel
+auf female» — läuft täglich (Aufseher), erfasst damit auch Neuimporte.
 """
 import json, os, re, subprocess, sys, time
 
@@ -80,10 +88,10 @@ def geschlecht_aus_titel(titel):
     """male / female / None. None heisst: Titel sagt es nicht eindeutig."""
     t = AUSNAHME_RE.sub(' ', titel or '')
     h, d = bool(HERREN_RE.search(t)), bool(DAMEN_RE.search(t))
+    if UNISEX_RE.search(t):
+        return 'unisex'      # 13.10.2026: Titel sagt selbst unisex → Google-Feld unisex (vorher: nicht angefasst, 50× female)
     if h and d:
         return None          # «Damen- und Herren» → unisex, bleibt
-    if UNISEX_RE.search(t):
-        return None          # Titel sagt selbst unisex
     if h:
         return 'male'
     if d:
@@ -136,6 +144,44 @@ def kandidaten_live(seit):
     return ids
 
 
+AUSNAHMEN = {'gid://shopify/Product/15422934647169'}     # Aurora = Google-Ads-Testprodukt
+ALT_LEDGER = os.path.join(os.path.dirname(__file__), '..', 'dropship', '_gender_aus_titel_alt.tsv')
+
+
+def live_suche(suche):
+    """[(id, titel, ist, soll)] aller aktiven Produkte zur Shopify-Suche, deren Titel-Geschlecht vom Metafeld abweicht."""
+    q = ('query($c:String,$q:String){products(first:250,after:$c,query:$q){pageInfo{hasNextPage endCursor}nodes{id title '
+         'm:metafield(namespace:"%s",key:"%s"){value}}}}' % (NS, KEY))
+    out, c = [], None
+    while True:
+        d = gql(q, {'c': c, 'q': 'status:active AND (%s)' % suche})
+        if d is None:
+            raise RuntimeError('Live-Suche ohne Antwort')
+        p = d['products']
+        for n in p['nodes']:
+            soll = geschlecht_aus_titel(n['title'])
+            ist = (n.get('m') or {}).get('value')
+            out.append((n['id'], n['title'], ist, soll))
+        if not p['pageInfo']['hasNextPage']:
+            return out
+        c = p['pageInfo']['endCursor']
+
+
+def pruefen():
+    """Wächter (13.10.2026): Unisex-Titel ohne unisex, Herren-Titel (ohne Damen/Unisex) auf female. Schreibt nichts."""
+    try:
+        uni = [x for x in live_suche('title:*unisex* OR title:*Unisex*') if x[3] == 'unisex' and x[2] != 'unisex']
+        her = [x for x in live_suche('title:*Herren* OR title:*herren*') if x[3] == 'male' and x[2] == 'female']
+    except Exception as e:  # noqa: BLE001
+        print(f'⚠️ GENDER-TITEL: unklar ({type(e).__name__}: {str(e)[:80]})')
+        return 1
+    zeile = f'GENDER-TITEL: {len(uni)} Unisex-Titel ≠ unisex · {len(her)} Herren-Titel auf female'
+    print(('⚠️ ' if uni or her else '') + zeile + (' → python3 automation/gender_aus_titel.py --unisex' if uni else ''))
+    for x in (uni + her)[:10]:
+        print(f'   {x[0].split("/")[-1]} {x[2]} → {x[3]} | {x[1][:60]}')
+    return 1 if uni or her else 0
+
+
 def kandidaten():
     """IDs aus dem Export vorauswählen — die Wahrheit kommt danach live."""
     ids = []
@@ -158,10 +204,22 @@ def kandidaten():
 
 
 def main():
+    if '--pruefen' in sys.argv:
+        sys.exit(pruefen())
     erledigt = set()
     if os.path.exists(LEDGER):
         erledigt = set(open(LEDGER).read().split())
-    kand = kandidaten()
+    if '--unisex' in sys.argv:          # 13.10.2026: nur Unisex-Titel, live; Ledger-Sperre gilt hier nicht
+        kand = [x[0] for x in live_suche('title:*unisex* OR title:*Unisex*') if x[3] == 'unisex' and x[2] != 'unisex']
+        erledigt = set()
+    else:
+        kand = kandidaten()
+    try:
+        from werbetest_sperre import gesperrt
+    except Exception:  # noqa: BLE001
+        def gesperrt(_):
+            return False
+    kand = [i for i in kand if i not in AUSNAHMEN and not gesperrt(i)]
     seit = next((a.split('=', 1)[1] for a in sys.argv if a.startswith('--seit=')), None)
     if seit:
         kand += kandidaten_live(seit)
@@ -216,10 +274,13 @@ def main():
             if fehler:
                 print('  ! userErrors:', fehler[:3])
                 continue
-            for pid, ist, soll, t in prot:
-                led.write(pid + '\n')
-                led.flush()                               # Regel 5
-                geaendert += 1
+            with open(ALT_LEDGER, 'a', encoding='utf-8') as alt_led:
+                for pid, ist, soll, t in prot:
+                    led.write(pid + '\n')
+                    led.flush()                               # Regel 5
+                    alt_led.write('\t'.join([time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime()), pid, str(ist), soll,
+                                              t.replace('\t', ' ')[:90]]) + '\n')   # 13.10.2026: Altwert = Rückweg
+                    geaendert += 1
         print(f'  {geaendert} geschrieben … zuletzt {protokoll[-1][3][:50]}')
     if led:
         led.close()
