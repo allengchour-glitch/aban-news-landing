@@ -54,9 +54,27 @@ def main():
     stand = {"stand": dt.datetime.utcnow().strftime("%Y-%m-%dT%H:%MZ"), "datum_in_kasse": s.get("deliveryDatesEnabled"),
              "bearbeitungszeit_tage": einstellung, "versand_werktage": werte, "median": median, "p80": p80,
              "empfohlen": int(np.ceil(p80)) if p80 is not None else None, "zu_frueh": zu_frueh}
+    # 13.10.2026 (Kassen-Prüfung wf_2a13fa79, Richter Platz 1): Ware ab CH-Lager (Fortura, 1–2 Tage) liegt im SELBEN
+    # Versandprofil wie CJ-Ware (10–20 Werktage) → die Kasse zeigt für ein Halloween-Kostüm ab Schweizer Lager «28. Okt–11. Nov»,
+    # die Produktseite «14.–16. Okt». Ein eigenes Profil würde gemischte Körbe doppelt verrechnen (CHF 14 statt 7) → Betreiber.
+    # Gemessen wird nur, ob CH-Lager- und CJ-Ware dasselbe Profil teilen; neue Fortura-Ware fällt über den Tag hinein.
+    try:
+        prof = {}
+        for name, q in (("ch_lager", "tag:ch-lager AND status:active"), ("cj", "sku:CJ* AND status:active")):
+            r = gql('query($q:String!){products(first:5,query:$q){nodes{variants(first:1){nodes{deliveryProfile{id name}}}}} '
+                    'c:productsCount(query:$q,limit:null){count}}', {"q": q})
+            ids = {((n["variants"]["nodes"] or [{}])[0].get("deliveryProfile") or {}).get("name") for n in r["products"]["nodes"]}
+            prof[name] = {"profile": sorted(x for x in ids if x), "anzahl": r["c"]["count"]}
+        stand["ch_lager_profil"] = prof
+        stand["ch_lager_im_asien_profil"] = bool(set(prof["ch_lager"]["profile"]) & set(prof["cj"]["profile"]))
+    except Exception as e:
+        stand["ch_lager_profil"] = {"fehler": str(e)[:160]}
     json.dump(stand, open(STAND, "w"), ensure_ascii=False, indent=1)
     print(f"KASSEN-DATUM: Bearbeitungszeit {einstellung} T · gemessen bis Versand Median {median} / 80 % {p80} Werktage "
           f"({len(werte)} CJ-Bestellungen) → {'⚠️ Kasse verspricht zu früh, empfohlen %s Werktage' % stand['empfohlen'] if zu_frueh else 'ok'}")
+    if stand.get("ch_lager_im_asien_profil"):
+        print(f"KASSEN-DATUM CH-LAGER: {stand['ch_lager_profil']['ch_lager']['anzahl']} aktive Produkte ab Schweizer Lager im selben "
+              f"Versandprofil wie CJ-Ware → Kasse zeigt das Asien-Lieferfenster")
 
 
 if __name__ == "__main__":

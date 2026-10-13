@@ -502,9 +502,17 @@ def kassen_lieferdatum():
         s = json.load(open(os.path.join(REPO, "dropship", "_kassen_lieferdatum.json"), encoding="utf-8"))
     except Exception:
         return None
+    teile = []
+    # 13.10.2026: CH-Lager-Ware im Asien-Profil (Entscheid des Betreibers; Quittung «bleibt» in der Datei stellt die Zeile ab)
+    quit = os.path.join(REPO, "dropship", "_entscheid_ch_lager_profil.txt")
+    if s.get("ch_lager_im_asien_profil") and not (os.path.exists(quit) and "bleibt" in open(quit, encoding="utf-8").read()):
+        n = ((s.get("ch_lager_profil") or {}).get("ch_lager") or {}).get("anzahl")
+        teile.append(f"KASSEN-DATUM CH-LAGER: {n} Produkte ab Schweizer Lager zeigen in der Kasse das Asien-Fenster (Kostüm: Seite "
+                     f"«14.–16. Okt», Kasse «28. Okt–11. Nov») → Entscheid: eigenes Versandprofil (gemischte Körbe zahlen Versand "
+                     f"doppelt) oder «bleibt» in dropship/_entscheid_ch_lager_profil.txt")
     if not s.get("zu_frueh"):
-        return None
-    return (f"KASSEN-DATUM zu früh: Bearbeitungszeit {s.get('bearbeitungszeit_tage')} T, CJ versendet nach Median {s.get('median')} "
+        return " · ".join(teile) or None
+    return " · ".join(teile + [""]) + (f"KASSEN-DATUM zu früh: Bearbeitungszeit {s.get('bearbeitungszeit_tage')} T, CJ versendet nach Median {s.get('median')} "
             f"Werktagen → Admin: Einstellungen → Versand und Zustellung → Voraussichtliche Zustellung → «Manuell» + {s.get('empfohlen')} Werktage")
 
 def werbetest():

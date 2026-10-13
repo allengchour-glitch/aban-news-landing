@@ -13,7 +13,7 @@
  *   /opt/node22/bin/node tools/kaufweg_handy.mjs [--produkt HANDLE] [--aus ORDNER]
  * Ergebnis: <ORDNER>/kaufweg.json + schritt-N.png (Standard: /tmp/kaufweg)
  */
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync, appendFileSync } from 'node:fs';
 import { starte } from './browser.mjs';
 
 const arg = (n, d) => { const i = process.argv.indexOf(n); return i > 0 ? process.argv[i + 1] : d; };
@@ -156,5 +156,11 @@ try {
   console.log('FEHLER', protokoll.fehler.slice(0, 400));
 } finally {
   writeFileSync(`${AUS}/kaufweg.json`, JSON.stringify(protokoll, null, 1));
+  // 13.10.2026 (Kassen-Prüfung wf_2a13fa79): jeder Prüflauf legt einen Korb an (kaufweg-test@example.com). Eine Zeile je
+  // Lauf, damit Prüfkörbe in abandonedCheckouts und in den Bot-Stunden von ShopifyQL wiedererkannt werden.
+  try {
+    appendFileSync(new URL('../dropship/_kaufweg_tests.txt', import.meta.url),
+      `${protokoll.start}\t${PRODUKT || '(erste Karte)'}\t${protokoll.fehler ? 'fehler' : 'ok'}\t${AUS}\n`);
+  } catch (e) { /* Protokoll ist Beiwerk */ }
   await browser.close();
 }

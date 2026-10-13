@@ -64,6 +64,28 @@ def art(korb, eigen):
         return "wegwerf"
     return "echt"
 
+SELBSTTEST = [   # (Kunde, eigene ID, erwartete Art) — Kassen-Prüfung 13.10. (wf_2a13fa79): 12 von 14 «Abbrüchen» waren
+    # Prüf-, Betreiber- und Wegwerf-Körbe; diese Zuordnung entscheidet, ob ein Bericht Scheinprobleme jagt.
+    ({"id": "gid://shopify/Customer/1", "email": "kaufweg-test@example.com"}, None, "test"),
+    ({"id": "gid://shopify/Customer/2", "email": "qa.user@bluewin.ch"}, None, "test"),
+    ({"id": "gid://shopify/Customer/3", "email": "mail0678498@ilovemyemail.net"}, None, "wegwerf"),
+    ({"id": "gid://shopify/Customer/4", "email": "mail0678498@gmail.com"}, None, "wegwerf"),
+    ({"id": "gid://shopify/Customer/24750075019649", "email": "x@gmail.com"}, "gid://shopify/Customer/24750075019649", "eigen"),
+    ({"id": "gid://shopify/Customer/5", "email": "anna.muster@gmail.com"}, None, "echt"),
+    ({"id": "gid://shopify/Customer/6", "email": "testimonial@bluewin.ch"}, None, "echt"),   # «test» nur mit Trenner
+    ({"id": "gid://shopify/Customer/7"}, None, "echt"),                                     # ohne Mail = echt
+]
+
+
+def selbsttest(leise=False):
+    fehler = [(k, e, soll, art({"customer": k}, e)) for k, e, soll in SELBSTTEST if art({"customer": k}, e) != soll]
+    if not leise or fehler:
+        for k, e, soll, ist in fehler:
+            print(f"  ✗ {k.get('email')} → {ist} (soll {soll})")
+        print(f"SELBSTTEST {len(SELBSTTEST) - len(fehler)}/{len(SELBSTTEST)}")
+    return not fehler
+
+
 Q_AC = """
 query($q:String,$after:String){
  abandonedCheckoutsCount(query:$q){count}
@@ -75,6 +97,11 @@ query($q:String,$after:String){
 
 
 def main():
+    if "--selbsttest" in sys.argv:
+        return 0 if selbsttest() else 1
+    if not selbsttest(leise=True):
+        print("CHECKOUT: unklar (Selbsttest der Korb-Arten rot — art() prüfen)")
+        return 1
     seit = (dt.datetime.utcnow() - dt.timedelta(days=TAGE)).strftime("%Y-%m-%d")
     try:
         koerbe, after, n = [], None, None
