@@ -4202,3 +4202,17 @@ tragbare-uberwachungskamera-a10-132608	gesetzt-4
 hd-kamera-quadcopter-drohne-610752	gesetzt-3
 full-hd-webcam-mit-ringlicht-und-mikrofon-728832	gesetzt-2
 hd-nachtsicht-uberwachungsroboter-mit-fernzugr-704000	gesetzt-3
+intelligente-uberwachungskamera-mit-alarmfunkt-425920	gesetzt-4
+kabellose-solar-uberwachungskamera-728832	gesetzt-4
+hd-uberwachungskamera-wlan-646336	gesetzt-2
+ring-makroblitz-fur-kameras-554368	gesetzt-2
+kamera-box-fur-modell-bl480-0cb048	gesetzt-2
+all-in-one-box-vr-headset-609100	gesetzt-3
+4k-all-in-one-3d-gaming-headset-mit-smart-vr-b-614300	gesetzt-3
+4-band-equalizer-tonabnehmer-fur-e-piano-627100	gesetzt-2
+fpv-display-screen-43-inch-mit-dvr-612300	gesetzt-3
+truerc-x-air-mkii-antennenbrille-619200	gesetzt-3
+vr-brille-fur-3d-filme-games-612200	nicht-aktiv
+smartplayer-air-electronic-drum-kit-618900	gesetzt-3
+baby-video-monitor-43-zoll-619500	gesetzt-3
+schutzrahmen-mit-griff-fur-osmo-pocket-3-627200	gesetzt-2
