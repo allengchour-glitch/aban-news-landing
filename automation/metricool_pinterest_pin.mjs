@@ -54,6 +54,42 @@ const LEDGER = 'dropship/_pinterest_pins.txt';
 const PINTEREST_PUB = 'gid://shopify/Publication/302994456961';
 const SHOP = 'au3j0y-hq.myshopify.com';
 const SHOPTOK = (process.env.SHOPIFY_ADMIN_TOKEN || (fs.existsSync('/tmp/cj_shop_token.txt') ? fs.readFileSync('/tmp/cj_shop_token.txt', 'utf8') : '')).trim();
+// ---- 13.10.2026 (Richter «mehr Käufer» S4): Kostüm am TITEL + Halloween nur ab CH-Lager --------------------------------
+// GEMESSEN: Die Halloween-Pins vom 04., 07. und 12.10. waren CJ-Ware (10–20 WT Lieferzeit, Ankunft nach dem 31.10.), zuletzt
+// «Halloween-Kostüm: Mittelalterliches Korsett-Dress» — ohne kostuem-Tag, und die Sperre prüfte nur Tags. Halloween-Kollektion
+// 13.10.: 225 aktiv, 93 CJ ohne profil-ch-lager, 113 mit; ALLE tragen den Tag «halloween».
+// Wortform wie google_sperrliste.KOSTUEM_WORT, aber in JS ist \b ASCII-blind → Grenzen über [a-zäöüß]. Komposita: «Kinderkostüm»,
+// «Halloween-Kostüm», «Kostümset» = Kostüm; «Kostümbildner», «Kostümjacke/-rock», Blazer/Business-Kostüm = kein Kostüm.
+const KOSTUEM_TITEL = /kost(?:ü|ue|u)m(?:e|en|s)?(?![a-zäöüß])|kost(?:ü|ue|u)m(?:kleid|handschuhe?|set|zubeh(?:ö|oe|o)r|perücke)|(?<![a-zäöüß])verkleidung(?![a-zäöüß])|(?:faschings|fasnachts|karnevals|halloween|kinder)-?verkleidung|\bcosplay\b/i;
+const KOSTUEM_ANZUG = /blazer|business|damenanzug|hosenanzug|kost(?:ü|ue|u)m(?:jacke|rock)/i;
+const istKostuemTitel = t => KOSTUEM_TITEL.test(t || '') && !KOSTUEM_ANZUG.test(t || '');
+const CH_LAGER_TAG = 'profil-ch-lager';
+// Halloween-Ware (Tag, Titel oder Quelle «halloween») ohne profil-ch-lager kommt aus Übersee → nie pinnen, in JEDER Quelle.
+const halloweenOhneChLager = (titel, tags, quelle) =>
+  (quelle === 'halloween' || tags.includes('halloween') || /halloween/i.test(titel || '')) && !tags.includes(CH_LAGER_TAG);
+if (process.env.SELBSTTEST === '1') {
+  const kan = [
+    ['Halloween-Kostüm: Mittelalterliches Korsett-Dress', true], ['Kinderkostüm Falbala', true], ['Kinderkostümset Pirat', true],
+    ['Halloweenkostüm Hexe', true], ['Kostüme für Paare', true], ['Damen Kostüm Hexe', true], ['Kostuem Clown', true],
+    ['Jedi Kostüm mit Lichtschwert', true], ['Kostümzubehör Set Pirat', true], ['Lustiges Teddy Cape Geist Kostüm', true],
+    ['Faschingsverkleidung Pirat für Kinder', true], ['Verkleidung Polizist für Erwachsene', true], ['Steampunk Cosplay Maske', true],
+    ['Kostümbildner-Buch', false], ['Kostümjacke aus Tweed', false], ['Kostümrock Wolle', false], ['Damen Kostüm Blazer', false],
+    ['Business-Kostüm Damen zweiteilig', false], ['Wandverkleidung aus Stoff', false], ['Heizkörperverkleidung aus Holz', false],
+    ['Kostenloser Versand Set', false], ['Kosmetiktasche mit Spiegel', false], ['Mittelalterliches Korsett-Dress', false],
+  ];
+  const hw = [
+    [['Halloween-Zauberkrug Gartenlicht', ['halloween'], 'neu-eingetroffen'], true],
+    [['Hexenhut Nachtlicht', ['halloween'], 'hype-jetzt'], true],
+    [['Kürbis-Laterne', [], 'halloween'], true],
+    [['Kinderkostüm Hexe', ['halloween', 'profil-ch-lager'], 'halloween'], false],
+    [['Herbstkranz Eukalyptus', ['herbst'], 'herbst-favoriten'], false],
+  ];
+  let fehl = 0;
+  for (const [t, soll] of kan) if (istKostuemTitel(t) !== soll) { fehl++; console.log(`✗ Kostüm «${t}»: ${!soll} statt ${soll}`); }
+  for (const [[t, tg, q], soll] of hw) if (halloweenOhneChLager(t, tg, q) !== soll) { fehl++; console.log(`✗ Halloween «${t}» (${q}): ${!soll} statt ${soll}`); }
+  console.log(`SELBSTTEST ${kan.length + hw.length - fehl}/${kan.length + hw.length}`);
+  process.exit(fehl ? 1 : 0);
+}
 if (!TOKEN && !DRY) { console.log('Kein METRICOOL_USER_TOKEN → No-op.'); process.exit(0); }
 if (!SHOPTOK) { console.log('Kein Shop-Token → No-op.'); process.exit(0); }
 
@@ -63,7 +99,12 @@ if (!SHOPTOK) { console.log('Kein Shop-Token → No-op.'); process.exit(0); }
 const VORRANG = 'dropship/_pinterest_vorrang.txt';
 const STANDARD_QUELLEN = ['hype-jetzt', 'bestseller', 'neu-eingetroffen', 'weihnachten-2026', 'halloween', 'geschenke-unter-50-franken'];
 const heute = new Date().toISOString().slice(0, 10);
-const vorrangRoh = fs.existsSync(VORRANG) ? fs.readFileSync(VORRANG, 'utf8').split('\n').map(z => z.split('\t')).filter(([h, bis]) => h && (!bis || bis.trim() >= heute)).map(([h]) => h.trim()) : [];
+// 13.10.2026 (Richter S4): optionale DRITTE Spalte = Pflicht-Tag — die Quelle hat nur für Ware mit diesem Tag Vorrang
+// (`halloween<TAB>2026-10-26<TAB>profil-ch-lager`: nur Kostüme/Deko ab Schweizer Lager, die bis Halloween ankommen).
+const vorrangZeilen = fs.existsSync(VORRANG) ? fs.readFileSync(VORRANG, 'utf8').split('\n').map(z => z.split('\t').map(s => s.trim()))
+  .filter(([h, bis]) => h && !h.startsWith('#') && (!bis || bis >= heute)) : [];
+const vorrangRoh = vorrangZeilen.map(([h]) => h);
+const vorrangPflicht = new Map(vorrangZeilen.filter(z => z[2]).map(z => [z[0], z[2].toLowerCase()]));
 // 24.09.2026 («pushe mehr herbstsachen»): mit ZWEI Saison-Quellen belegte die erste (Halloween) jeden Pin, die zweite
 // kam nie dran. Die Vorrang-Quellen wechseln sich jetzt ab — Takt = Anzahl Zeilen im Pin-Ledger (jeder Pin schiebt weiter).
 const pinZahl = fs.existsSync('dropship/_pinterest_pins.txt') ? fs.readFileSync('dropship/_pinterest_pins.txt', 'utf8').split('\n').filter(Boolean).length : 0;
@@ -202,7 +243,7 @@ async function pinFassung(k) {
   } catch (e) { return { ...roh, grund: `raw nicht erreichbar (${String(e.message || e).slice(0, 60)})` }; }
 }
 
-const kandidaten = [];
+const kandidaten = [], abgelehnt = new Map();
 const ZIEL = NUR_LISTE || 25;   // 23.09.: 5 · 12.10.2026: 25 — am 11.10. lehnte die Gemini-Jury alle 5 ab (Halloween-Titel passten nicht
                                 // zum Bild), der Poster meldete Erfolg und schwieg 67 h. Urteile sind gecacht (_gemini_jury.tsv): Abgelehnte kosten nichts.
 for (const quelle of QUELLEN) {
@@ -215,16 +256,22 @@ for (const quelle of QUELLEN) {
     const bild = p.images.nodes[0];
     const grund = p.status !== 'ACTIVE' ? 'nicht aktiv' : !p.onlineStoreUrl ? 'nicht im Onlineshop' : !p.publishedOnPublication ? 'nicht im Pinterest-Kanal'
       : p.images.nodes.length < 2 ? '<2 Bilder' : parseFloat(p.priceRangeV2.minVariantPrice.amount) < 19 ? 'unter CHF 19'
-      : tags.some(t => SPERR.has(t)) ? 'Sperr-Tag' : HEIL.test(p.title) ? 'Heilwort im Titel'
+      : tags.some(t => SPERR.has(t)) ? 'Sperr-Tag' : istKostuemTitel(p.title) ? 'Kostüm im Titel'
+      : halloweenOhneChLager(p.title, tags, quelle) ? `Halloween ohne ${CH_LAGER_TAG} (Übersee-Lieferzeit)`
+      : vorrangPflicht.has(quelle) && !tags.includes(vorrangPflicht.get(quelle)) ? `Vorrang «${quelle}» nur mit Tag ${vorrangPflicht.get(quelle)}`
+      : HEIL.test(p.title) ? 'Heilwort im Titel'
       : LIZENZ_FIGUR.test(p.title) ? 'Lizenzfigur im Titel'
       : gepinnt.has(p.handle) ? 'schon gepinnt' : karussellHandles.has(p.handle) ? 'schon als Karussell beworben' : postSeen(bild.url) ? 'Bild schon gepostet'
       : (bild.width && Math.min(bild.width, bild.height || bild.width) < 600) ? 'Bild zu klein'
       : bildtextAlle.has(p.handle) ? 'Lieferantentext in allen Bildern (OCR, _uebersprungen.tsv)'
       : kandidaten.some(k => k.handle === p.handle) ? 'doppelt in Quellen' : '';
     if (!grund) { kandidaten.push({ ...p, bild, quelle }); if (kandidaten.length >= ZIEL) break; }
+    else { const k = `${quelle}: ${grund}`; abgelehnt.set(k, (abgelehnt.get(k) || 0) + 1); }
   }
   if (kandidaten.length >= ZIEL) break;
 }
+// GRUENDE=1 (Trockenlauf, 13.10.): Ablehnungsgründe je Quelle auf stderr — stört NUR_LISTE nicht (stdout bleibt Handle-Liste).
+if (process.env.GRUENDE === '1') for (const [k, n] of [...abgelehnt].sort((x, y) => y[1] - x[1])) console.error(`  abgelehnt ${String(n).padStart(3)} × ${k}`);
 if (NUR_LISTE) { for (const k of kandidaten) console.log(k.handle); process.exit(0); }
 if (vorrang.length) log(`Vorrang-Quellen (${VORRANG}): ${vorrang.join(', ')}`);
 let kandidat = null, fassung = null;
