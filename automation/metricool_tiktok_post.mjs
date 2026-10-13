@@ -363,8 +363,11 @@ try {
     pid = await planen(bauBody(norm));
   }
   postMark(url);                                                   // Ledger SOFORT (plattformuebergreifend)
-  produktMerkenReel(get(cand, 'caption'), id, pa.gid, pa.handle);  // 13.10.2026 (Prüfer R2): WARE merken wie die Bild-Poster
   cand[idx.status] = POSTED; cand[idx.posted_at] = new Date().toISOString(); cand[idx.post_url] = pid ? `metricool:${pid}` : 'metricool'; writeLedger();
+  // 13.10.2026 (Prüfer R2): WARE merken wie die Bild-Poster — NACH writeLedger und in eigenem try/catch (13.10. abends,
+  // Prüfer «Empfohlen» 1): sonst setzte der äussere catch die schon geplante Zeile auf «ready» zurück (Exit 1, Kadenz doppelt).
+  try { produktMerkenReel(get(cand, 'caption'), id, pa.gid, pa.handle); }
+  catch (e) { console.error('⚠️ produktMerkenReel fehlgeschlagen (Post ist geplant, Ledger steht):', String(e.message || e).slice(0, 200)); }
   console.log(`✅ auf ${NETZ} geplant (${dateTime} ${TZ}), Metricool-Post ${pid || '?'} · Ledger aktualisiert → ${id} ${POSTED}`);
 } catch (e) {
   cand[idx.status] = 'ready'; cand[idx.posted_at] = ''; writeLedger();   // Claim zurueck: nichts ist raus

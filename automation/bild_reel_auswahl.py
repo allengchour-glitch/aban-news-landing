@@ -25,7 +25,7 @@ AUSWAHL (jede Bedingung muss gelten):
   - nie zweimal (Regel 10): post_guard.produktGepostet (Name, Shopify-ID, Handle), kein Produktbild in dropship/_posted_media.txt,
     nicht in _pinterest_pins.txt, _ig_karussell.txt, _tiktok_karussell.txt, social/ig_karussell.csv, social/posts_image.csv,
     nicht in automation/reels_seed.csv (weder bildreel-<handle> noch ein anderes Reel, dessen Caption das Produkt verlinkt)
-  - nicht schon in dropship/_bild_reel_auswahl.tsv: ready/tor/jury/ungeeignet = nie wieder; kein-urteil/fehler = am Folgetag neu
+  - nicht schon in dropship/_bild_reel_auswahl.tsv: ready/tor/jury/ungeeignet = nie wieder; kein-urteil/fehler/set-einzelteil = am Folgetag neu
 
 A/B-TEST (Gutachten R2, Schritte 4–6):
   - Tagesdeckel: höchstens MAX_TAG (3) neue ready-Bild-Reels und RENDER_TAG (6) Renders je UTC-Tag (gezählt im Ledger).
@@ -265,7 +265,7 @@ def merken(handle, ergebnis, detail=""):
 
 def tageszahlen(zeilen, tag):
     heute = [z for z in zeilen if z[0][:10] == tag]
-    return sum(1 for z in heute if z[2] == "ready"), sum(1 for z in heute if z[2] != "ungeeignet")
+    return sum(1 for z in heute if z[2] == "ready"), sum(1 for z in heute if z[2] not in ("ungeeignet", "set-einzelteil"))
 
 
 def abbruch(zeilen, lernen=None):
@@ -506,8 +506,10 @@ def kandidaten(sp, led, heute, protokoll, cache, dauerhaft_merken=False):
             if g:
                 protokoll.append((hh, g))
                 cache[hh] = g
+                # 13.10. abends (Prüfer «Empfohlen» 3): Set-Absagen NICHT mehr dauerhaft («ungeeignet») — nur Tagescache
+                # (+ Ledger «set-einzelteil», am Folgetag neu): Preise/Varianten ändern sich, die Regel kann sich irren.
                 if dauerhaft_merken and g.startswith("Set-Titel"):
-                    merken(p["handle"], "ungeeignet", g)
+                    merken(p["handle"], "set-einzelteil", g)
             else:
                 frisch.append((p, q, platz))
         if not frisch:
@@ -661,7 +663,9 @@ def bauen(k, bogen_dir, out_dir):
         if rc != 0 or not os.path.exists(datei):
             txt = (so + se).strip().split("\n")
             meld = next((z for z in reversed(txt) if "⛔" in z), txt[-1] if txt else f"Exit {rc}")
-            return ("ungeeignet" if "⛔" in meld and re.search(r"nicht aktiv|weniger als 2 Bilder|Einzelteil", meld) else "fehler"), meld[:200], ""
+            if "⛔" in meld and "Einzelteil" in meld:
+                return "set-einzelteil", meld[:200], ""      # Tagescache, nicht endgültig (13.10. abends)
+            return ("ungeeignet" if "⛔" in meld and re.search(r"nicht aktiv|weniger als 2 Bilder", meld) else "fehler"), meld[:200], ""
         os.makedirs(bogen_dir, exist_ok=True)
         bogen = os.path.join(bogen_dir, f"bildreel_{h[:60]}.jpg")
         lauf([sys.executable, os.path.join(HIER, "reel", "schnitt.py"), "--kontaktbogen", datei, "--bogen-out", bogen], 300)
@@ -746,7 +750,7 @@ def selbsttest():
           "const th=new Function(/function thema\\(t\\) \\{[\\s\\S]*?\\n\\}/.exec(src)[0]+';return thema;')();"
           "Promise.all([import('./automation/post_guard.mjs'),import('./automation/lib/reel-category.mjs')]).then(([m,rc])=>{"
           "const t=JSON.parse(fs.readFileSync(0,'utf8'));console.log(JSON.stringify({"
-          "kat:['Hitzebeständige Reinigungshandschuhe','Silikon-Ofenhandschuhe','Unisex Lederhandschuhe Winter'].map(x=>rc.catKey(x)),"
+          "kat:['Hitzebeständige Reinigungshandschuhe','Silikon-Ofenhandschuhe','Unisex Lederhandschuhe Winter','Arbeitshandschuhe aus Nitril','Gartenhandschuhe mit Krallen','Einweghandschuhe 100 Stück','Boxhandschuhe 12 oz','Velo-Handschuhe Halbfinger','Auto-Waschhandschuh Mikrofaser','Touchscreen Strickhandschuhe Damen'].map(x=>rc.catKey(x)),"
           "thema:t.map(x=>th(x)),anzeige:[m.preisAnzeige(20.9,41.9),m.preisAnzeige(21.9,21.9)],"
           "veraltet:[m.preisVeraltet('X\\nab CHF 20.90 · Gratis Versand ab CHF 50',20.9,41.9),m.preisVeraltet('ab CHF 24.90',20.9,41.9),"
           "m.preisVeraltet('CHF 24.90',20.9,41.9)],"
@@ -764,8 +768,9 @@ def selbsttest():
        [bild_reel.preis_anzeige(20.9, 41.9), bild_reel.preis_anzeige(21.9, 21.9)] == ["ab CHF 20.90", "CHF 21.90"] == jj.get("anzeige"))
     pr("preisVeraltet: «ab CHF 20.90» = Mindestpreis ok, «ab CHF 24.90» nicht, nacktes «CHF 24.90» in der Spanne ok",
        (jj.get("veraltet") or [None])[0] == "" and bool((jj.get("veraltet") or ["", ""])[1]) and (jj.get("veraltet") or ["", "", "x"])[2] == "")
-    pr("Hashtag-Gruppe (lib/reel-category catKey): Reinigungs-/Ofenhandschuh = kueche, Lederhandschuh = mode",
-       jj.get("kat") == ["kueche", "kueche", "mode"])
+    pr("Hashtag-Gruppe (lib/reel-category catKey): Reinigungs-/Ofenhandschuh = kueche, Lederhandschuh = mode, Arbeits-/"
+       "Einweg-/Velo-/Auto-Waschhandschuh ≠ mode, Garten = home, Box = fitness, Strick = mode",
+       jj.get("kat") == ["kueche", "kueche", "mode", "allgemein", "home", "allgemein", "fitness", "allgemein", "allgemein", "mode"])
     pr("Reel-Poster-Schlüssel = Prüfschlüssel der Auswahl (pid:<Shopify-ID>, slug:<Handle ohne Ziffernende>)",
        jj.get("keys") == ["pid:15449432916353", "slug:hoodie-jogginghose-set-im-partnerlook"])
     hood = [{"title": "Gray Sweater / S", "price": "24.90"}, {"title": "Gray Trousers / S", "price": "20.90"},
@@ -777,6 +782,20 @@ def selbsttest():
        and bild_reel.set_einzelteil("Partnerlook Hoodie", [{"title": "Hose / S", "price": "30.90"}], 30.9, 41.9) == ""
        and bild_reel.set_einzelteil("Damen Strickpullover", [{"title": "Grau / S", "price": "21.90"}], 21.9, 41.9) == ""
        and bild_reel.set_einzelteil("Headset mit Mikrofon", [{"title": "Schwarz", "price": "15.90"}], 15.9, 39.9) == "")
+    pr("Set-Regel eng (13.10. abends): Grössen-/Farb-/Mengenspanne ist kein Einzelteil (Familien-Pyjama, Kissen-6er-Set, "
+       "Nagellack einzeln/5er) · Bauteil «Hose» schon",
+       bild_reel.set_einzelteil("Familien-Pyjama-Set Weihnachten", [{"title": "Baby / 3M", "price": "14.90"},
+                                {"title": "Dad / XL", "price": "34.90"}], 14.9, 34.9) == ""
+       and bild_reel.set_einzelteil("Samt-Lendenkissenbezug (6er-Set)", [{"title": "30x50cm", "price": "12.90"},
+                                    {"title": "45x45cm", "price": "24.90"}], 12.9, 24.9) == ""
+       and bild_reel.set_einzelteil("3-in-1 Nagellackstift · einzeln oder 5er-Set", [{"title": "Einzeln", "price": "9.90"},
+                                    {"title": "5er-Set", "price": "29.90"}], 9.9, 29.9) == ""
+       and bild_reel.set_einzelteil("Zweiteiler Set Damen", [{"title": "Schwarz / Hose / M", "price": "15.90"},
+                                    {"title": "Schwarz / Set / M", "price": "39.90"}], 15.9, 39.9).startswith("Set-Titel")
+       and bild_reel.set_einzelteil("Partnerlook Set", [{"title": f"Rot / {g}", "price": "39.90"} for g in "SML"], 15.9, 39.9) == ""
+       and bild_reel.set_einzelteil("Partnerlook Set", [{"title": "Top / S", "price": "39.90"}], 15.9, 39.9).startswith("Set-Titel"))
+    pr("Set-Absage ist nicht endgültig (Tagescache): «set-einzelteil» nicht in ENDGUELTIG und zählt nicht als Render",
+       "set-einzelteil" not in ENDGUELTIG and tageszahlen([["2026-10-13T01:00:00Z", "h", "set-einzelteil", ""]], "2026-10-13") == (0, 0))
     pr("Caption Bild-Reel: «ab CHF 16.90» bei Spanne, sonst nackt",
        "\nab CHF 16.90 · " in bild_reel.caption_fuer({"title": "Wickel"}, 16.9, "h", 22.9)
        and "\nCHF 16.90 · " in bild_reel.caption_fuer({"title": "Wickel"}, 16.9, "h"))

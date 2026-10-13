@@ -214,6 +214,9 @@ async function produktAktiv(postId) {
       const d = await r.json();
       const p = istShopifyId ? (d && d.data && d.data.product) : ((d && d.data && d.data.products && d.data.products.nodes && d.data.products.nodes[0]) || (d && d.data ? null : undefined));
       if (p === null) return { ok: false, grund: 'Produkt existiert nicht mehr' };
+      // 13.10. abends (Prüfer «Empfohlen» 2): wie TikTok — ein unscharfer Suchtreffer (handle:… findet auch Präfixe) ist
+      // ein FREMDES Produkt; sonst würden Status/Preis/Merk-Schlüssel eines anderen Produkts genommen.
+      if (bh && p && p.handle !== bh[1]) return { ok: false, grund: 'Produkt existiert nicht mehr (Handle anders)' };
       if (p) return { ok: p.status === 'ACTIVE' && !!p.onlineStoreUrl, grund: `status ${p.status}, onlineStoreUrl ${p.onlineStoreUrl ? 'ja' : 'nein'}`, url: p.onlineStoreUrl || '', min: parseFloat(p.priceRangeV2?.minVariantPrice?.amount || 'NaN'), max: parseFloat(p.priceRangeV2?.maxVariantPrice?.amount || 'NaN'), gid: p.id || '', handle: p.handle || '' };
     } catch (e) { /* retry */ }
     await sleep(2000 * (a + 1));
@@ -345,8 +348,11 @@ if (pub.id) {
   postMark(url);                    // gemeinsamer Ledger: kein anderer Poster wiederholt dieses Video
   familieMerken(cand[idx.caption], 'reel');
   // 13.10.2026 (Prüfer R2): die WARE merken wie die Bild-Poster — sonst kommt sie später als Bildpost/Karussell/Bild-Reel
-  produktMerkenReel(cand[idx.caption], cand[idx.id], produktInfo.gid, produktInfo.handle);
-  writeLedger();
+  writeLedger();                    // erst die Zeile (Kadenz/Doppelpost), dann das Produkt-Merken
+  // Eigener try/catch (13.10. abends, Prüfer «Empfohlen» 1): ein Dateifehler beim Merken darf den Lauf nach dem IG-Publish
+  // nicht mit Exit 1 abbrechen (sonst entfällt Facebook und die Kadenz-Marke bleibt alt → nächster Lauf postet sofort).
+  try { produktMerkenReel(cand[idx.caption], cand[idx.id], produktInfo.gid, produktInfo.handle); }
+  catch (e) { console.error('⚠️ produktMerkenReel fehlgeschlagen (Post ist raus, Ledger steht):', String(e.message || e).slice(0, 200)); }
   const perma = await api(`${pub.id}`, { fields: 'permalink' }, 'GET');
   igPermalink = perma.permalink || pub.id;
   cand[idx.post_url] = igPermalink; writeLedger();
