@@ -55,6 +55,8 @@ try:   # 13.10.2026: Eimer-Etikette (Regel «helfer-ohne-eimer») — der Helfer
 except Exception:  # pragma: no cover
     def _nachlauf(d):
         return 0
+from bestandteil_regel import fehlt as bestandteil_fehlt   # 13.10.2026: Set → Einzelteil (Klasse 18)
+GEMELDET = []   # (Quelltitel, Kandidaten-Handle, fehlende Bestandteile) — ersatz() hat diesen Zwilling verworfen
 try:
     from klingenregel import ist_handklinge
 except Exception:  # pragma: no cover
@@ -216,6 +218,13 @@ def ersatz(titel, typ):
         # In beide Richtungen geprueft: leopard/edelstahl/kurzarm/blumenprint gesperrt,
         # identischer Titel (kein neues Wort) geht durch.
         if {w for w in b - a if len(w) >= 5}:
+            continue
+        # 13.10.2026 (Kauf-Strecke Klasse 18): Set → Einzelteil ist ein Köderwechsel. STOPP oben streicht «set»,
+        # «stk», «stück» und «mit» — darum eigene Regel (automation/bestandteil_regel.py): fehlt im Kandidaten ein Set-,
+        # Stück- oder «mit X»-Wort der Quelle, wird er NICHT genommen, sondern in GEMELDET gemerkt (Bericht).
+        fehlend = bestandteil_fehlt(titel, f"{p['title']} {p.get('handle', '')}")
+        if fehlend:
+            GEMELDET.append((titel, p.get("handle", ""), ", ".join(fehlend)))
             continue
         wert = len(a & b) / len(a | b)
         if typ and p.get("productType") == typ:
@@ -523,7 +532,11 @@ def kanarien():
         if not kollektion_taugt(z):
             print(f"  ✗ Tabellenziel /collections/{z} taugt nicht (fehlt, nicht veröffentlicht, leer oder Weiterleitung)")
             fehler += 1
-    print(f"KANARIEN {'OK' if not fehler else f'{fehler} FEHLER'} ({len(KANARIEN)} Titel + Tabellenziele)")
+    from bestandteil_regel import selbsttest as _bt_selbsttest
+    if not _bt_selbsttest(leise=True):
+        print("  ✗ bestandteil_regel: Selbsttest rot (Set → Einzelteil)")
+        fehler += 1
+    print(f"KANARIEN {'OK' if not fehler else f'{fehler} FEHLER'} ({len(KANARIEN)} Titel + Tabellenziele + Bestandteil-Regel)")
     return fehler == 0
 
 
@@ -626,7 +639,11 @@ def main():
     print(f"  {'gesetzt' if FIX else 'setzbar'}: {gesetzt if FIX else len(tot) - len(offen)} | "
           f"ohne eindeutigen Ersatz (Mensch entscheidet): {len(offen)}")
 
-    if offen:
+    if GEMELDET:
+        print(f"BESTANDTEIL: {len(GEMELDET)} Zwilling(e) verworfen — Set/Stück/«mit X» fehlt im Ziel (melden, nicht drehen)")
+        for q, h, w in GEMELDET[:10]:
+            print(f"  ⚠️ {q[:44]} ↛ /products/{h[:44]} (fehlt: {w})")
+    if offen or GEMELDET:
         with open(BERICHT, "w") as f:
             f.write("# Rankende Seiten ohne kaufbares Ziel\n\n")
             f.write("Diese Seiten hatten in den letzten Tagen Besucher, sind aber nicht mehr kaufbar\n")
@@ -637,6 +654,12 @@ def main():
             f.write("| Sitzungen | Titel | Handle |\n|---:|---|---|\n")
             for h, s, t in sorted(offen, key=lambda x: -x[1]):
                 f.write(f"| {s} | {t[:60]} | `{h}` |\n")
+            if GEMELDET:
+                f.write("\n## Zwilling verworfen: Set/Stück/«mit X» fehlt im Ziel (automation/bestandteil_regel.py)\n\n")
+                f.write("Ein Set darf nicht auf ein Einzelteil weiterleiten — hier entscheidet ein Mensch.\n\n")
+                f.write("| Quelle (Titel) | verworfener Zwilling | fehlt |\n|---|---|---|\n")
+                for q, h, w in GEMELDET:
+                    f.write(f"| {q[:60]} | `{h}` | {w} |\n")
         print(f"  Bericht: {BERICHT}")
     elif os.path.exists(BERICHT):
         # Ein Bericht ohne Befund wird nicht gelesen — er wird gelöscht (Lehre 21.08.).

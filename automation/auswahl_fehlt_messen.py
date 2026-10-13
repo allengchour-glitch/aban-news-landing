@@ -12,6 +12,19 @@ Anzahl CJ-Varianten, Preisspanne, ob die Variantenbilder schon als Medien am Pro
 Dateispeicher ist bis zum Grow-Plan voll, neue Bilder gingen nicht), und ein Beispiel der variantKeys.
 Ausgabe: dropship/AUSWAHL-FEHLT.md + dropship/_auswahl_fehlt.jsonl (eine Zeile je gemessenem Produkt, idempotent).
 ENV: QUERY (Shopify-Suche), LIMIT (Std. 400), MIN_BILDER (Std. 8).
+
+ZEICHEN «auswahl-offen» (13.10.2026, Kauf-Strecke Klasse 4): 3'442 aktive Produkte hatten laut dieser Messung ≥ 2 CJ-Varianten,
+im Shop aber nur «Default Title» (Kostüm 638900: Bilder Spiralhund + Dackel, kein Wahlfeld). Quelle: cj_sku_import.mjs legt
+immer EINE Variante an (setzt das Zeichen seit 13.10. selbst bei ≥ 2 CJ-Varianten). Regel:
+    Zeichen  ⇔  aktiv · genau 1 Shop-Variante · letzte Messung hier ≥ 2 CJ-Varianten · nicht in _auswahl_nachgeruestet.txt
+                (Werbetest-Sperre und Aurora werden nie geschrieben)
+  · Der Messlauf (main) setzt das Zeichen für jede NEU gemessene Zeile mit ≥ 2 CJ-Varianten (ZEICHEN=0 schaltet es ab)
+    → fängt auch Neuimporte anderer Importer (Lauf «Neuimporte 3 Tage» im Aufseher).
+  · --markieren gleicht den ganzen Bestand ab (Trockenlauf; SCHARF=1 schreibt): fehlende setzen, nach dem Nachrüsten
+    (≥ 2 Shop-Varianten, im Nachrüst-Ledger, neue Messung ≤ 1) wieder entfernen. Ledger dropship/_auswahl_offen.tsv,
+    Stand dropship/_auswahl_offen_stand.json (inkl. Kanarie «Neuimport ohne Zeichen»: ≤ 3 Tage alt, Soll, Zeichen fehlt).
+  · --ampel  → eine Zeile «AUSWAHL-OFFEN n (besucht m)» (live; m = davon in dropship/_klassen/auswahl-besuchte-seiten.txt).
+  · --rueckweg (SCHARF=1) nimmt das Zeichen überall weg, wo es laut Ledger gesetzt wurde. --selbsttest prüft die Regel.
 """
 import json, os, re, sys, time
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -94,6 +107,7 @@ def kandidaten():
 
 
 def main():
+    neu_zeichen = []
     fertig = {}
     if os.path.exists(AUS):
         for z in open(AUS):
@@ -134,9 +148,19 @@ def main():
         with open(AUS, "a") as fh:
             fh.write(json.dumps(zeile, ensure_ascii=False) + "\n")
         fertig[n["id"]] = zeile
+        if ZEICHEN_IM_MESSLAUF and (zeile.get("cj") or 0) >= 2:
+            neu_zeichen.append((n["id"], n["handle"]))
         if i % 25 == 0:
             print(f"{i}/{len(ks)} gemessen", flush=True)
     _cache_speichern()
+    if neu_zeichen:
+        try:
+            nachgeruestet = nachgeruestet_ids()
+            ziele = [(i, h) for i, h in neu_zeichen if _num(i) not in nachgeruestet and not schreibsperre(i, h)]
+            n_ok = zeichen_schreiben("tagsAdd", ziele, "messlauf") if ziele else 0
+            print(f"ZEICHEN {ZEICHEN_TAG}: {n_ok} von {len(neu_zeichen)} neu gemessenen mit ≥ 2 CJ-Varianten gesetzt", flush=True)
+        except Exception as e:  # Zeichen ist Beiwerk — die Messung selbst ist geschrieben
+            print(f"  ⚠️ Zeichen {ZEICHEN_TAG} nicht gesetzt: {str(e)[:160]}", flush=True)
     bericht([fertig[k["id"]] for k in ks if k["id"] in fertig])
 
 
@@ -160,5 +184,270 @@ def bericht(rows):
           f"({len(voll)} alle Bilder da) → {BERICHT}")
 
 
+# ───────────────────────── Zeichen «auswahl-offen» (13.10.2026, Kauf-Strecke Klasse 4) ─────────────────────────
+ZEICHEN_TAG = "auswahl-offen"
+ZEICHEN_IM_MESSLAUF = os.environ.get("ZEICHEN", "1") != "0"
+SCHARF = os.environ.get("SCHARF") == "1"
+NACHGERUESTET = "dropship/_auswahl_nachgeruestet.txt"
+BESUCHT = "dropship/_klassen/auswahl-besuchte-seiten.txt"
+ZEICHEN_LEDGER = "dropship/_auswahl_offen.tsv"
+ZEICHEN_STAND = "dropship/_auswahl_offen_stand.json"
+# Aurora: Testprodukt Shopping Ads (Kontingent voll) — bei jedem Massenlauf per ID ausnehmen (Richter Kauf-Strecke 13.10.).
+AUSNAHMEN = {"15422934647169"}
+NEUIMPORT_TAGE = 3
+NACH_TAG = "auswahl-nachgeruestet"   # setzt auswahl_nachruesten.py nach dem Umbau
+
+
+def _num(x):
+    return str(x or "").rsplit("/", 1)[-1].strip()
+
+
+def schreibsperre(pid, handle=""):
+    """Werbetest-Sperre (dropship/_werbetest_sperre.txt) + feste Ausnahmen. Fehlt der Leser, gilt vorsichtshalber alles
+    aus der Datei als gesperrt (lieber ein Zeichen zu wenig als ein Schreibvorgang an einem beworbenen Produkt)."""
+    if _num(pid) in AUSNAHMEN:
+        return True
+    try:
+        from werbetest_sperre import gesperrt
+        return gesperrt(pid) or (bool(handle) and gesperrt(handle))
+    except Exception:
+        try:
+            return _num(pid) in open("dropship/_werbetest_sperre.txt", encoding="utf-8").read()
+        except OSError:
+            return False
+
+
+def nachgeruestet_ids():
+    try:
+        return {z.split("\t", 1)[0].strip() for z in open(NACHGERUESTET, encoding="utf-8") if z.strip() and not z.startswith("#")}
+    except OSError:
+        return set()
+
+
+def besucht_ids():
+    try:
+        return {_num(z.split("\t", 1)[0]) for z in open(BESUCHT, encoding="utf-8") if z.strip() and not z.startswith("#")}
+    except OSError:
+        return set()
+
+
+def messung_lesen():
+    """Letzte Zeile je Produkt aus _auswahl_fehlt.jsonl (spätere Messung gewinnt)."""
+    rows = {}
+    if os.path.exists(AUS):
+        for z in open(AUS, encoding="utf-8"):
+            try:
+                d = json.loads(z)
+                rows[d["id"]] = d
+            except Exception:
+                pass
+    return rows
+
+
+def soll_zeichen(prod, messung, nachgeruestet, gesperrt=False):
+    """REGEL (rein, ohne API): True = Zeichen gehört an dieses Produkt.
+    prod: {status, variants (Zahl Shop-Varianten)}; messung: Zeile aus _auswahl_fehlt.jsonl oder None;
+    nachgeruestet: Produkt steht im Nachrüst-Ledger (umgebaut oder bewusst entschieden)."""
+    if gesperrt or nachgeruestet or not messung:
+        return False
+    return prod.get("status") == "ACTIVE" and prod.get("variants") == 1 and (messung.get("cj") or 0) >= 2
+
+
+def zeichen_weg(prod, messung, nachgeruestet):
+    """REGEL: True = vorhandenes Zeichen ist veraltet (nachgerüstet, ≥ 2 Shop-Varianten, neue Messung ≤ 1 CJ-Variante).
+    Ohne Messung bleibt es (der Importer setzt es bei ≥ 2 CJ-Varianten, bevor gemessen wurde)."""
+    if nachgeruestet or (prod.get("variants") or 0) >= 2:
+        return True
+    return bool(messung) and (messung.get("cj") or 0) <= 1
+
+
+def zeichen_schreiben(mutation, ziele, quelle):
+    """ziele [(gid, handle)] → tagsAdd/tagsRemove in Bündeln zu 20 Aliassen; jede bestätigte Änderung ins Ledger
+    (Rückweg: --rueckweg bzw. Gegenmutation). → Zahl bestätigter Änderungen."""
+    from datetime import datetime, timezone
+    art = "neu" if mutation == "tagsAdd" else "weg"
+    ok = 0
+    for k in range(0, len(ziele), 20):
+        teil = ziele[k:k + 20]
+        q = "mutation{" + " ".join(f'a{j}:{mutation}(id:"{gid}",tags:["{ZEICHEN_TAG}"]){{userErrors{{message}}}}'
+                                   for j, (gid, _) in enumerate(teil)) + "}"
+        try:
+            r = gql(q)
+        except Exception as e:
+            print(f"  ⚠️ Bündel {k // 20 + 1} abgelehnt: {str(e)[:160]}", flush=True)
+            continue
+        zeit = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        with open(ZEICHEN_LEDGER, "a", encoding="utf-8") as fh:
+            for j, (gid, handle) in enumerate(teil):
+                fehler = (r.get(f"a{j}") or {}).get("userErrors", ["?"])
+                if fehler:
+                    print(f"  ⚠️ {handle}: {fehler}", flush=True)
+                    continue
+                fh.write(f"{zeit}\t{art}\t{gid}\t{handle}\t{'ohne' if art == 'neu' else 'mit'}\t{quelle}\n")
+                ok += 1
+    return ok
+
+
+def _nodes(ids, felder="id handle status tags createdAt variantsCount{count}"):
+    out = {}
+    for k in range(0, len(ids), 250):
+        r = gql("query($i:[ID!]!){nodes(ids:$i){... on Product{" + felder + "}}}", {"i": ids[k:k + 250]})
+        for n in r["nodes"]:
+            if n and n.get("id"):
+                out[n["id"]] = n
+    return out
+
+
+def _mit_zeichen(query_zusatz="", felder="id handle status tags createdAt variantsCount{count}"):
+    out, after = {}, None
+    q = f"tag:{ZEICHEN_TAG}" + (f" AND {query_zusatz}" if query_zusatz else "")
+    while True:
+        r = gql("query($q:String!,$a:String){products(first:250,query:$q,after:$a){pageInfo{hasNextPage endCursor} nodes{"
+                + felder + "}}}", {"q": q, "a": after})["products"]
+        for n in r["nodes"]:
+            out[n["id"]] = n
+        if not r["pageInfo"]["hasNextPage"]:
+            return out
+        after = r["pageInfo"]["endCursor"]
+
+
+def _prod(n):
+    return {"status": n.get("status"), "variants": (n.get("variantsCount") or {}).get("count")}
+
+
+def markieren():
+    """Bestand abgleichen: Soll aus der Messung (live geprüft) gegen das Zeichen im Shop. Trockenlauf ohne SCHARF=1."""
+    import datetime as _dt
+    messung, nach = messung_lesen(), nachgeruestet_ids()
+    kand = [i for i, r in messung.items() if (r.get("cj") or 0) >= 2 and _num(i) not in nach]
+    live = _nodes(kand)
+    ist = _mit_zeichen()
+    jetzt = _dt.datetime.now(_dt.timezone.utc)
+    soll, gesperrt_n, neuimport_ohne = set(), 0, []
+    for i in kand:
+        n = live.get(i)
+        if not n:
+            continue
+        sp = schreibsperre(i, n.get("handle"))
+        if sp and n.get("status") == "ACTIVE" and (n.get("variantsCount") or {}).get("count") == 1:
+            gesperrt_n += 1
+        if soll_zeichen(_prod(n), messung.get(i), NACH_TAG in (n.get("tags") or []), sp):
+            soll.add(i)
+            try:
+                alt = (jetzt - _dt.datetime.fromisoformat(n["createdAt"].replace("Z", "+00:00"))).days
+            except Exception:
+                alt = 99
+            if alt <= NEUIMPORT_TAGE and ZEICHEN_TAG not in (n.get("tags") or []):
+                neuimport_ohne.append(n["handle"])
+    add = sorted(i for i in soll if ZEICHEN_TAG not in (live[i].get("tags") or []))
+    weg = sorted(i for i, n in ist.items()
+                 if i not in soll and not schreibsperre(i, n.get("handle"))
+                 and zeichen_weg(_prod(n), messung.get(i), _num(i) in nach or NACH_TAG in (n.get("tags") or [])))
+    besucht = besucht_ids()
+    print(f"AUSWAHL-OFFEN Abgleich: Messung {len(kand)} offen (≥ 2 CJ-Varianten, nicht nachgerüstet) · Soll {len(soll)} "
+          f"(aktiv, 1 Shop-Variante) · gesperrt {gesperrt_n} · Zeichen da {len(ist)} · setzen {len(add)} · entfernen {len(weg)}"
+          f" · Neuimport (≤ {NEUIMPORT_TAGE} T) ohne Zeichen {len(neuimport_ohne)}{'' if SCHARF else ' (TROCKEN)'}", flush=True)
+    for i in add[:8]:
+        print(f"  + {live[i]['handle']}")
+    for i in weg[:8]:
+        print(f"  − {ist[i]['handle']} ({_prod(ist[i])})")
+    n_add = n_weg = 0
+    if SCHARF:
+        n_add = zeichen_schreiben("tagsAdd", [(i, live[i]["handle"]) for i in add], "markieren")
+        n_weg = zeichen_schreiben("tagsRemove", [(i, ist[i]["handle"]) for i in weg], "markieren")
+        print(f"  geschrieben: +{n_add} −{n_weg}", flush=True)
+    stand = {"stand": jetzt.strftime("%Y-%m-%dT%H:%MZ"), "scharf": SCHARF, "messung_offen": len(kand), "soll": len(soll),
+             "soll_besucht": len({_num(i) for i in soll} & besucht), "gesperrt": gesperrt_n, "zeichen_vorher": len(ist),
+             "setzen": len(add), "entfernen": len(weg), "gesetzt": n_add, "entfernt": n_weg,
+             "neuimport_ohne_zeichen": neuimport_ohne[:50], "neuimport_ohne_zahl": len(neuimport_ohne)}
+    if SCHARF:
+        json.dump(stand, open(ZEICHEN_STAND, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    return 0
+
+
+def ampel():
+    """Eine Zeile für betreiber_ampel: «AUSWAHL-OFFEN n (besucht m)» — live: aktive Produkte mit Zeichen und genau 1 Shop-
+    Variante; m = davon besuchte Seiten (90 T, auswahl_besucht_liste.py). Zusatz nur, wenn etwas schief ist."""
+    import datetime as _dt
+    try:
+        ist = _mit_zeichen("status:active", "id variantsCount{count}")
+    except Exception as e:
+        print(f"AUSWAHL-OFFEN unklar (Shopify: {str(e)[:80]})")
+        return 1
+    offen = {i for i, n in ist.items() if (n.get("variantsCount") or {}).get("count") == 1}
+    m = len({_num(i) for i in offen} & besucht_ids())
+    zusatz = []
+    veraltet = len(ist) - len(offen)
+    if veraltet:
+        zusatz.append(f"{veraltet} Zeichen veraltet (schon nachgerüstet)")
+    try:
+        st = json.load(open(ZEICHEN_STAND, encoding="utf-8"))
+        alter = (_dt.datetime.now(_dt.timezone.utc)
+                 - _dt.datetime.strptime(st["stand"], "%Y-%m-%dT%H:%MZ").replace(tzinfo=_dt.timezone.utc)).total_seconds() / 3600
+        if st.get("neuimport_ohne_zahl"):
+            zusatz.append(f"{st['neuimport_ohne_zahl']} Neuimporte ohne Zeichen")
+        if alter > 30:
+            zusatz.append(f"Abgleich {alter:.0f} h alt")
+    except Exception:
+        zusatz.append("Abgleich fehlt (--markieren)")
+    print(f"AUSWAHL-OFFEN {len(offen)} (besucht {m})" + (" · " + " · ".join(zusatz) if zusatz else ""))
+    return 0
+
+
+def rueckweg():
+    """Zeichen überall entfernen, wo dieses Skript es laut Ledger gesetzt hat (SCHARF=1; sonst nur zählen)."""
+    gesetzt = {}
+    try:
+        for z in open(ZEICHEN_LEDGER, encoding="utf-8"):
+            t = z.rstrip("\n").split("\t")
+            if len(t) >= 4 and t[1] == "neu":
+                gesetzt[t[2]] = t[3]
+            elif len(t) >= 4 and t[1] == "weg":
+                gesetzt.pop(t[2], None)
+    except OSError:
+        pass
+    print(f"RÜCKWEG: {len(gesetzt)} Produkte mit gesetztem Zeichen{'' if SCHARF else ' (TROCKEN)'}")
+    if SCHARF and gesetzt:
+        print(f"  entfernt: {zeichen_schreiben('tagsRemove', sorted(gesetzt.items()), 'rueckweg')}")
+    return 0
+
+
+def selbsttest():
+    f = 0
+    A1 = {"status": "ACTIVE", "variants": 1}
+    faelle = [
+        (soll_zeichen(A1, {"cj": 2}, False), True, "Kostüm 638900: aktiv, 1 Variante, CJ 2 → Zeichen"),
+        (soll_zeichen(A1, {"cj": 91}, False), True, "Tischdecke CJ 91 → Zeichen"),
+        (soll_zeichen(A1, {"cj": 1}, False), False, "CJ 1 → kein Zeichen"),
+        (soll_zeichen(A1, {"cj": 0, "grund": "x"}, False), False, "ohne CJ-Antwort → kein Zeichen"),
+        (soll_zeichen(A1, None, False), False, "nicht gemessen → (Bestand) kein Zeichen"),
+        (soll_zeichen(A1, {"cj": 6}, True), False, "nachgerüstet → kein Zeichen"),
+        (soll_zeichen({"status": "DRAFT", "variants": 1}, {"cj": 6}, False), False, "Entwurf → kein Zeichen"),
+        (soll_zeichen({"status": "ACTIVE", "variants": 4}, {"cj": 6}, False), False, "schon 4 Shop-Varianten → kein Zeichen"),
+        (soll_zeichen(A1, {"cj": 2}, False, gesperrt=True), False, "Werbetest-Sperre → nie schreiben"),
+        (zeichen_weg({"status": "ACTIVE", "variants": 3}, {"cj": 3}, False), True, "nachgerüstet (3 Varianten) → weg"),
+        (zeichen_weg(A1, {"cj": 6}, True), True, "im Nachrüst-Ledger → weg"),
+        (zeichen_weg(A1, None, False), False, "Importer-Zeichen ohne Messung → bleibt"),
+        (zeichen_weg(A1, {"cj": 1}, False), True, "neue Messung CJ 1 → weg"),
+        (zeichen_weg(A1, {"cj": 2}, False), False, "offen → bleibt"),
+        (schreibsperre("gid://shopify/Product/15422934647169"), True, "Aurora nie schreiben"),
+        (_num("gid://shopify/Product/16603297251719"), "16603297251719", "GID → Ziffern"),
+    ]
+    for ist, soll, name in faelle:
+        ok = ist == soll
+        f += not ok
+        print(f"  {'OK  ' if ok else 'FEHL'} {name} → {ist}")
+    print("SELBSTTEST", "OK" if not f else f"FEHLER ({f})")
+    return 0 if not f else 1
+
+
 if __name__ == "__main__":
+    if "--selbsttest" in sys.argv:
+        sys.exit(selbsttest())
+    if "--markieren" in sys.argv:
+        sys.exit(markieren())
+    if "--ampel" in sys.argv:
+        sys.exit(ampel())
+    if "--rueckweg" in sys.argv:
+        sys.exit(rueckweg())
     main()

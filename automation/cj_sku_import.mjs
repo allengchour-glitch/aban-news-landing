@@ -202,7 +202,33 @@ function relevanzBuchen(delta) {
     fs.writeFileSync(RELEVANZ_STAT + '.tmp', JSON.stringify(st, null, 1) + '\n'); fs.renameSync(RELEVANZ_STAT + '.tmp', RELEVANZ_STAT);
   } catch (e) { console.log('  (Relevanz-Zähler nicht geschrieben:', e.message, ')'); }
 }
-if (process.argv.includes('--selbsttest')) process.exit(relevanzSelbsttest() ? 0 : 1);
+// 🎛️ 13.10.2026 (Kauf-Strecke Klasse 4): Dieser Importer legt IMMER genau eine Variante «Default Title» an (productSet
+// unten). Führt CJ ≥ 2 Varianten (Modelle/Farben/Grössen), sieht die Kundin auf den Bildern eine Wahl, die sie nicht treffen
+// kann, und der Bestell-Automat stoppt «manuell prüfen» (rät nie). Beispiel: Aufblasbares Halloween-Kostüm 638900 — Bilder
+// Spiralhund + Dackel, CJ 2 Varianten, Shop «Default Title». Das Zeichen «auswahl-offen» macht die Ware für den Nachrüster
+// (auswahl_nachruesten.py) und die Ampel («AUSWAHL-OFFEN n (besucht m)», auswahl_fehlt_messen.py --ampel) auffindbar;
+// den Bestand gleicht auswahl_fehlt_messen.py --markieren ab (setzt fehlende, nimmt es nach dem Nachrüsten wieder weg).
+const AUSWAHL_OFFEN_TAG = 'auswahl-offen';
+function auswahlOffenTags(variants) {
+  return (Array.isArray(variants) ? variants.filter(v => v && typeof v === 'object').length : 0) >= 2 ? [AUSWAHL_OFFEN_TAG] : [];
+}
+// Kanarien: [CJ-variants, erwartete Zusatz-Tags] — die erste Zeile ist das Kostüm 638900 (CJ pid 2610010401151638900).
+const AUSWAHL_KANARIEN = [
+  [[{ vid: 'v1', variantKey: 'Double Spring Dog-Free Size' }, { vid: 'v2', variantKey: 'Double Sausage Dog-Free Size' }], [AUSWAHL_OFFEN_TAG]],
+  [[{ vid: 'v1', variantKey: 'ABS' }], []],
+  [[], []], [null, []], [undefined, []], ['zwei', []], [[null, null], []],
+  [Array.from({ length: 36 }, (_, i) => ({ vid: 'c' + i })), [AUSWAHL_OFFEN_TAG]],
+];
+function auswahlSelbsttest() {
+  let rot = 0;
+  for (const [vs, soll] of AUSWAHL_KANARIEN) {
+    const ist = auswahlOffenTags(vs);
+    if (JSON.stringify(ist) !== JSON.stringify(soll)) { rot++; console.log(`  ✗ Auswahl-Kanarie: ${JSON.stringify(vs)?.slice(0, 60)} → ${JSON.stringify(ist)} (Soll ${JSON.stringify(soll)})`); }
+  }
+  console.log(`AUSWAHL-SELBSTTEST: ${AUSWAHL_KANARIEN.length - rot}/${AUSWAHL_KANARIEN.length} ${rot ? 'ROT' : 'grün'}`);
+  return rot === 0;
+}
+if (process.argv.includes('--selbsttest')) { const a = relevanzSelbsttest(), b = auswahlSelbsttest(); process.exit(a && b ? 0 : 1); }
 if (process.argv.includes('--stand')) {
   // Eine Zeile für den Aufseher: heutige Suchaufträge, verworfene Fremdware, #ohne-treffer (aus der Queue-Datei).
   const tag = new Date().toISOString().slice(0, 10);
@@ -372,6 +398,7 @@ for (let ji = 0; ji < JOBS.length; ji++) {
       ...(ess ? ['essbar-nicht-ch', 'essbar-' + ess] : []),
       ...((med || tsch || ess) ? [] : ['trend', 'viral', 'video-hit']), 'cj-real', 'dropship', 'neu', 'neuheit',   // «neuheit» speist die Startseiten-Reihe (03.09.)
       ...((process.env.WH || '').trim() ? ['schnell-versand', 'eu-lager'] : []),
+      ...auswahlOffenTags(d.variants),   // 13.10.: ≥ 2 CJ-Varianten, Shop nur «Default Title» → Nachrüster/Ampel finden es
       ...catTags(`${title} ${d.productNameEn || ''} ${val || ''}`),
       ...saisonTags(title, d.productNameEn || '')])];   // Halloween-Reihe (02.10.), nur Titel/EN-Name
   // 05.10.2026 (Plan Punkt 16): Typ aus der Google-Kategorie statt Sammeltyp «Trend-Produkt» — der Sammeltyp bleibt
