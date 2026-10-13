@@ -17949,3 +17949,15 @@ gid://shopify/Product/16616395440519	32->0	Universaler Scooter-Griff aus Canvas
 gid://shopify/Product/16616396816775	107->0	Ratschen-Crimpzange
 gid://shopify/Product/16610147008903	26->0	Transparente Karten-Aufbewahrungsbox
 gid://shopify/Product/16610281521543	20->1	Aluminium Kopfhörerständer mit Getränkehalter
+gid://shopify/Product/16610642231687	39->3	Porzellan-Schüssel für Hund und Katze
+gid://shopify/Product/16611118416263	21->2	Elektrischer Katzenspielzeug mit Fernsteuerung
+gid://shopify/Product/16611550265735	22->0	Keramik-Futternapf für Katze, blau/pink
+gid://shopify/Product/16611604431239	26->3	Katzenwasserschüssel aus Keramik
+gid://shopify/Product/16611613278599	37->0	Outdoor Kletterrucksack Unisex Canvas 20-35 L
+gid://shopify/Product/16611926638983	73->0	Sicherheitsschuhe Low-Cut mit Stahlkappe
+gid://shopify/Product/16611990798727	64->0	Acryl-Hundemantel Herbst/Winter
+gid://shopify/Product/16612196057479	8->0	Katzen- und Hundereisenschüssel mit schrägen Öffnung
+gid://shopify/Product/16612322673031	120->0	USB-Elektro-Schraubenzieher mit Magnetbox
+gid://shopify/Product/16612711465351	21->0	Silikon-Hundeschüssel Doppel
+gid://shopify/Product/16612758258055	11->2	Elastisches Uhrenarmband Set
+gid://shopify/Product/16612764385671	22->0	Bauchtrainer für Sit-ups
