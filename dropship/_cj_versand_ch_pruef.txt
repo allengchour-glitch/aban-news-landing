@@ -8349,3 +8349,6 @@ smarter-roboterhund-mit-fernsteuerung-615600	2605030809071616100	7	38.77	ok	land
 rc-baustellenfahrzeug-set-bagger-bulldozer-668545	2044658600480497665	0	-	KEINE CH-Option → DRAFT	landeseite
 rc-muldenkipper-fur-kinder-489281	2044657706257707009	0	-	KEINE CH-Option → DRAFT	landeseite
 intelligenter-roboterhund-mit-sprachdialog-app-674241	2043945507432669186	0	-	KEINE CH-Option → DRAFT	landeseite
+rc-roboterhund-mit-touch-und-sound-631300	2603300729531631700	7	21.95	ok	landeseite
+bionischer-roboterhund-grau-601100	2603300722571601500	7	23.19	ok	landeseite
+anime-style-elektronisches-badge-628000	2601170547081628300	7	6.14	ok	landeseite
