@@ -1,6 +1,6 @@
 # Judge.me-Wache — unechte Bewertungen (nur lesen)
 
-Stand: 2026-10-12 07:05 UTC · Skript `automation/judgeme_fake_wache.py` (taeglich im Aufseher) · Dauer 290 s
+Stand: 2026-10-13 08:15 UTC · Skript `automation/judgeme_fake_wache.py` (taeglich im Aufseher) · Dauer 326 s
 
 **JUDGEME: unklar (unvollstaendig: rating 5 >100 Seiten (API-Deckel page=100)) · bis dahin 0 verdaechtig · 2 Namen unmaskiert · 14417 von 15700 gelesen**
 
