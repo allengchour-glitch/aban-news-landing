@@ -72,9 +72,14 @@ User: «kopiere vom besten», «trade auch meme coins und alles … top 10 auch�
 - **Meme/Top 10/alles** `alle_coins_pruefung.py` (12 Tests, Daten `binance_daten.py` inkl. delisteter Coins): **keine Gruppe besteht.** Halten
   Top 10 ×0,25 (−85 %), Meme ×0,13 (−94 %), alles ×0,03 (−98 %); bester Herausforderer Top 10 mit BTC-Filter ×2,22 (−38 %) <
   **Bitcoin mit Trend 150 ×3,27 (−28 %)**. Fix: zwei am selben Tag verschwundene Coins liessen `gewinner_pruefung.simulieren` abstürzen.
-- **News-Wächter** `news_waechter.py` (24 Tests): Binance-Ankündigungen (Delisting/Listing/News) + 4 RSS-Feeds alle 30 Min. im Cockpit-Thread,
-  Alarme (Hack, Abhebungen gestoppt, Insolvenz, Depeg, SEC/ETF, Delisting BTC/ETH) aufs Handy, `/news`. **Handelt nicht** (News-Daten haben
-  keinen Prüfstand bestanden). Twitter/X nur mit bezahlter API, Telegram-Kanäle über PC (`calls_leser.py`).
+- **News-Wächter** `news_waechter.py` (28 Tests): Binance-Ankündigungen (Delisting/Listing/News) + 4 RSS-Feeds alle 30 Min. im Cockpit-Thread,
+  **Delistings jede Minute**, Alarme (Hack, Abhebungen gestoppt, Insolvenz, Depeg, SEC/ETF, Delisting BTC/ETH + `NEWS_COINS`) aufs Handy, `/news`.
+  **Handelt nicht.** Twitter/X nur mit bezahlter API, Telegram-Kanäle über PC (`calls_leser.py`).
+- **Delisting-Prüfstand** `delisting_pruefung.py` + `delisting_kern.py` (36 Tests, Mutationen 14/14, Protokoll vorab `fe3daf7`): 138 Coins/35
+  Ankündigungen 2022–09.2026. Kurs nach Ankündigung: Median −4,4 % nach 1 Min., −16,6 % nach 30 Min. Short über Perp im Mittel bis +12 %, schlägt
+  Zufall — **aber durchgefallen** (Regel «kein Short < −50 %»): ALPACA ×19 in 6 Tagen, HFT ×5, VIC ×2,4 (Squeeze). Kein Delisting-Short-Bot;
+  nächster ehrlicher Schritt = Schatten-Vorwärtstest MIT Stop (neues Protokoll). **Falle:** Mutationstest mit gleich langer Ersetzung + `.pyc`
+  im selben Sekundentakt → Python nahm den alten Bytecode (Tests liefen gegen mutierten Code) → Mutationen immer mit `python3 -B`.
 
 **📌 2026-10-13 (⏱️ Scalping ehrlich getestet → verliert; Pilot 2.0 nach 5 Prüfungen weiter gesperrt):** User: «mache scalping,
 höchste Präzision und Gewinn». `tools/trading/krypto_bot/scalping_pruefung.py` + `scalping_kern.py` (50 Tests, Mutationsprobe 16/16),

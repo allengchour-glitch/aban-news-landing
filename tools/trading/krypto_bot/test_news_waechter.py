@@ -88,7 +88,29 @@ def sammeln_fn():
     return eintraege, []
 
 
-N.schleife(gemeldet.append, runden=3, sammeln_fn=sammeln_fn, speicher=sp)
+N.schleife(gemeldet.append, runden=3, sammeln_fn=sammeln_fn, speicher=sp, schnell_fn=lambda: [], schlafen=lambda s: None)
 pruefe("Schleife: meldet neue Alarme einmal, übersteht eine Runde ohne Netz", len(gemeldet) == 1 and "nur Info" in gemeldet[0], gemeldet)
+pruefe("NEWS_COINS: deine Coins (Komma oder Strichpunkt, gross/klein egal) kommen zu BTC/ETH dazu",
+       N.beobachtete({"NEWS_COINS": "sol, doge;Pepe"}) == {"BTC", "ETH", "SOL", "DOGE", "PEPE"} and N.beobachtete({}) == {"BTC", "ETH"})
+sol = [{"quelle": "Binance Delisting", "titel": "Binance Will Delist SOL, XYZ on 2026-11-01", "zeit": 9, "link": "https://b/sol"}]
+schnell = N.nur_delistings(laden_json=lambda u: {"data": {"catalogs": [{"articles": [{"title": sol[0]["titel"], "releaseDate": 9,
+                                                                                    "code": "sol"}]}]}} if "catalogId=161" in u else None)
+pruefe("Schnell-Abfrage liest nur die Delisting-Liste (mit Coins und Kennung)", len(schnell) == 1 and "SOL" in schnell[0]["coins"]
+       and schnell[0]["id"], schnell)
+gem2, sp2, schlaf, abfragen = [], Path(tempfile.mkdtemp()) / "s.json", [], [0]
+sp2.write_text('{"gesehen": []}')
+
+
+def schnell_fn():
+    abfragen[0] += 1
+    return N._ergaenzen([dict(sol[0])]) if abfragen[0] >= 2 else []
+
+
+N.schleife(gem2.append, runden=1, sammeln_fn=lambda: ([], []), speicher=sp2, schnell_fn=schnell_fn, warte_s=180, takt_s=60,
+           beobachtet={"BTC", "ETH", "SOL"}, schlafen=schlaf.append)
+pruefe("Schnell-Takt: zwischen den 30-Minuten-Runden jede Minute die Delistings (180 s → 3 Abfragen à 60 s)",
+       abfragen[0] == 3 and schlaf == [60, 60, 60], (abfragen, schlaf))
+pruefe("… das Delisting eines eigenen Coins (NEWS_COINS) kommt in der nächsten Minute — und nur einmal",
+       len(gem2) == 1 and "SOL" in gem2[0] and "−17 % in 30 Min." in gem2[0], gem2)
 print(f"\n{n_ok} bestanden, {n_f} fehlgeschlagen")
 sys.exit(1 if n_f else 0)

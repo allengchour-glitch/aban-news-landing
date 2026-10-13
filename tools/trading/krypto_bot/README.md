@@ -348,14 +348,53 @@ und halten den Not-Aus nie auf.
 
 Läuft mit dem Cockpit (`cockpit.py`) auf deinem PC und prüft **alle 30 Minuten**: Binance-Ankündigungen (Delistings,
 neue Listings, Binance-News) und die Krypto-Nachrichten von Cointelegraph, Decrypt, The Block und CoinDesk (mit
-`CRYPTOPANIC_KEY` zusätzlich CryptoPanic). Wichtiges kommt sofort aufs Handy, `/news` in Telegram zeigt die letzten Alarme:
-**Hack** · **Abhebungen gestoppt** · **Insolvenz** · **Stablecoin-Depeg** · **SEC/ETF-Entscheid** · **Delisting von BTC/ETH**.
+`CRYPTOPANIC_KEY` zusätzlich CryptoPanic). **Binance-Delistings prüft er jede Minute** (nächster Abschnitt: nach der
+Ankündigung fällt der Kurs im Median −4 % in der ersten Minute und −17 % in den ersten 30 Minuten). Wichtiges kommt sofort
+aufs Handy, `/news` in Telegram zeigt die letzten Alarme:
+**Hack** · **Abhebungen gestoppt** · **Insolvenz** · **Stablecoin-Depeg** · **SEC/ETF-Entscheid** · **Delisting** von BTC/ETH
+und von deinen eigenen Coins: `setx NEWS_COINS "SOL,DOGE,PEPE"` (alle Coins, die du irgendwo hältst).
 Jeder Eintrag kommt nur einmal; beim allerersten Start wird nichts gemeldet (sonst käme die ganze Liste).
 - **Twitter/X:** nur mit bezahltem X-Zugang lesbar — darum nicht dabei. **Telegram-Kanäle** liest dein PC mit deinem Konto
   (`calls_leser.py`, siehe «Telegram-Call-Gruppen»).
 - **Warum der Bot nicht nach News handelt:** Bis eine Schlagzeile da ist, ist der Kurs meist schon gelaufen — und unsere
   Stimmungs-Daten (Angst & Gier enthält auch Social-Media-Stimmung) haben den Prüfstand nicht bestanden (siehe «Alle Infos»).
   Der Wächter meldet; entscheiden kannst du (z. B. Not-Aus per `/stop`).
+
+## 📉 Delisting-News: Short nach der Ankündigung? — ehrlich geprüft: durchgefallen (`delisting_pruefung.py`)
+
+Die klarste Krypto-News überhaupt: «Binance Will Delist …». Regeln vorab festgelegt (Commit `fe3daf7`), dann echte Daten:
+138 Coins aus 35 Ankündigungen 01.2022–09.2026 (ohne Stablecoins), 1-Minuten-Kurse von Spot und Perpetual, echtes Funding,
+Kosten (Taker 0,05 % + Schlupf 0,2 % je Seite). Zufallsprobe: derselbe Coin an 200 zufälligen Tagen 180–7 Tage vorher.
+
+- **Der Absturz kommt sofort:** 1 Minute nach der Veröffentlichung steht der Kurs im Median schon **−4,4 %** tiefer, nach
+  5 Minuten **−12,9 %**, nach 30 Minuten **−16,6 %** (112 Coins mit Spot-Kursen).
+- **Danach fällt er meist weiter:** Ein Short über den Perpetual (65 Coins hatten einen) verdiente im Mittel bis +12 %,
+  in beiden Hälften, und schlug den Zufall (gleicher Coin, andere Tage: ±1 %) fast immer.
+- **Trotzdem durchgefallen — an der vorab festgelegten Regel «kein Short schlechter als −50 %»:** Einzelne Delisting-Coins
+  werden nach der Ankündigung hochgejagt (Short-Squeeze). **ALPACA** stieg nach der Ankündigung vom 24.04.2025 innert einer
+  Stunde auf das 2,3-Fache und in 6 Tagen auf das **19-Fache**, **HFT** (03.08.2026) auf das 5-Fache, **VIC** auf das 2,4-Fache.
+  Ein Short ohne Hebel verliert dabei alles. Ein Stop-Loss hätte das begrenzt, war aber nicht Teil der Regel — ihn jetzt,
+  nach dem Blick auf die Daten, einzubauen, wäre Anpassen an die Vergangenheit.
+- **Für Halter ist es eindeutig:** Wer einen Coin hält, den Binance delistet, sparte mit sofortigem Verkauf (nach 1 Minute)
+  gegenüber Halten im Median **12 %** (1 Stunde) bis **34 %** (6 Tage); nach 30 Minuten Zögern nur noch 3–26 %. Darum
+  prüft der News-Wächter Delistings jetzt jede Minute und meldet sie für deine Coins (`NEWS_COINS`) sofort.
+- **Folge: kein Delisting-Short-Bot.** Ehrlicher nächster Schritt wäre ein Vorwärts-Test (Schatten, ohne Geld) mit Stop über
+  die nächsten Delistings — erst danach neu entscheiden. Keine Anlageberatung.
+
+| Reaktion / Halten | Shorts | Mittel netto | Median | im Plus | Hälfte 1 / 2 (Mittel) | Zufall: Mittel | Zufallsprobe | schlimmster | bestanden |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 Min./1h | 65 | +1,2 % | +1,7 % | 57 % | +3,2 % / +0,9 % | −0,5 % | 100 % | −100,0 % | ❌ |
+| 1 Min./24h | 65 | +5,5 % | +9,5 % | 63 % | +9,2 % / +4,9 % | −0,3 % | 100 % | −100,0 % | ❌ |
+| 1 Min./72h | 65 | +9,2 % | +8,7 % | 63 % | +10,3 % / +9,0 % | +0,2 % | 100 % | −100,0 % | ❌ |
+| 1 Min./6T | 65 | +11,9 % | +21,3 % | 65 % | +12,1 % / +11,8 % | +1,2 % | 100 % | −100,0 % | ❌ |
+| 5 Min./1h | 65 | −0,3 % | +1,3 % | 54 % | +2,8 % / −0,8 % | −0,5 % | 96 % | −100,0 % | ❌ |
+| 5 Min./24h | 65 | +4,0 % | +7,1 % | 58 % | +8,3 % / +3,3 % | −0,3 % | 100 % | −100,0 % | ❌ |
+| 5 Min./72h | 65 | +8,0 % | +9,4 % | 63 % | +9,7 % / +7,7 % | +0,2 % | 100 % | −100,0 % | ❌ |
+| 5 Min./6T | 65 | +11,0 % | +19,8 % | 63 % | +11,4 % / +10,9 % | +1,2 % | 100 % | −100,0 % | ❌ |
+| 30 Min./1h | 65 | +0,5 % | +1,2 % | 55 % | +3,2 % / +0,1 % | −0,5 % | 100 % | −100,0 % | ❌ |
+| 30 Min./24h | 65 | +3,5 % | +7,3 % | 63 % | +7,8 % / +2,7 % | −0,3 % | 100 % | −100,0 % | ❌ |
+| 30 Min./72h | 65 | +8,3 % | +11,3 % | 68 % | +9,9 % / +8,1 % | +0,2 % | 100 % | −100,0 % | ❌ |
+| 30 Min./6T | 65 | +11,2 % | +17,7 % | 68 % | +11,2 % / +11,2 % | +1,2 % | 100 % | −100,0 % | ❌ |
 
 ## 📣 Telegram-Call-Gruppen kopieren — erst ehrlich prüfen, dann (vielleicht) kopieren
 
@@ -768,7 +807,9 @@ python3 tools/trading/krypto_bot/test_binance.py  # 21 Tests, inkl. nachgebautem
 python3 tools/trading/krypto_bot/test_pilot2_plan.py  # 23 Tests: Pilot-2.0-Rechnung (Richtung, Ernte, Pfand, Mindestbeträge)
 python3 tools/trading/krypto_bot/test_pilot2_live.py  # 101 Tests: Pilot 2.0 («Konto = Wahrheit») gegen eine strenge nachgebaute Binance
 python3 tools/trading/krypto_bot/test_scalping.py      # 50 Tests: kein Blick in die Zukunft, strenge Füll-Regeln, Kosten exakt, Entscheidungsregeln
-python3 tools/trading/krypto_bot/test_news_waechter.py # 24 Tests: Alarm-Regeln, keine Fehlalarme, nur einmal melden, kein Fluten beim Start
+python3 tools/trading/krypto_bot/test_news_waechter.py # 28 Tests: Alarm-Regeln, keine Fehlalarme, nur einmal melden, kein Fluten beim Start, Delistings jede Minute
+python3 tools/trading/krypto_bot/test_delisting.py     # 36 Tests: Ankündigungen lesen, Einstieg/Ausstieg, Funding, Zufallsprobe (ohne Netz)
+python3 tools/trading/krypto_bot/delisting_pruefung.py # Prüfstand Delisting-Short (lädt Binance-Kurse); --bericht = Tabelle
 python3 tools/trading/krypto_bot/test_alle_coins.py    # 12 Tests: Universen Top 10/Meme/Alle, Trend-Auswahl, kein Blick in die Zukunft
 python3 tools/trading/krypto_bot/alle_coins_pruefung.py # Prüfstand Meme-Coins, Top 10 und alles (lädt alle Binance-Paare)
 python3 tools/trading/krypto_bot/test_copytrading.py   # 24 Tests: Filter «kopierbar», Rangkorrelation, Vorwärts-Test (ohne Netz)
