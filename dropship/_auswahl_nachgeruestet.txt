@@ -1933,3 +1933,4 @@
 16614606143879	Grösse:2:2+ki	2026-10-13	korperhalsband-mit-leine-75-105-cm-120-150-cm-d82c70
 16614568952199	Farbe:8+Grösse:3:24+ki	2026-10-13	hunde-halsband-s-873c4f
 16614568558983	Farbe:6+Grösse:4:24+ki	2026-10-13	tierschultergurt-mit-reflektierendem-stoff-08d8c5
+16614566297991	Farbe:4:4+ki	2026-10-13	taktische-hundetasche-aus-1000d-nylon-98b0c8
