@@ -9,6 +9,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import broker_futures as BF  # noqa: E402
 import pilot2_live as L  # noqa: E402
+GESPERRT_AUSGELIEFERT = L.FREIGEGEBEN is False and not L.aktiv({"KRYPTO_PILOT2": "an"})
+L.FREIGEGEBEN = True  # für die Tests freischalten (ausgeliefert ist Pilot 2.0 gesperrt)
 BF.NACHFRAGE_WARTEN = (0.0, 0.0, 0.0)
 GEHEIM = "geheim"
 n_ok = n_f = 0
@@ -281,4 +283,5 @@ try:
     pruefe("Cockpit/Telegram-Not-Aus (schliessen_alle) schliesst Pilot 2.0", zu and mein(L.BESTAND, "testnetz", "BTC") * 100000 < 5, zeilen)
 finally:
     os.environ.clear(); os.environ.update(alt)
+pruefe("ausgeliefert: Pilot 2.0 gesperrt, KRYPTO_PILOT2=an wirkungslos", GESPERRT_AUSGELIEFERT)
 print(f"\n{n_ok} bestanden, {n_f} fehlgeschlagen"); sys.exit(1 if n_f else 0)

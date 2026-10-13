@@ -499,6 +499,12 @@ Andere Strategie wählen: `setx KRYPTO_STRATEGIE "halten"` (immer 100 %) oder `"
 
 ## 🚀 Pilot 2.0 einschalten (Spot-Long + Short + Funding-Ernte)
 
+> ⛔ **NOCH NICHT FREIGEGEBEN (13.10.2026).** Zwei unabhängige Prüfungen fanden Blocker (zuletzt 7: Not-Aus-Modus nach dem
+> Ausschalten, veraltete Cockpit-Einstellungen, Doppel-Stops nach gescheitertem Storno, Deckel ≠ Verlustgrenze bei fremdem
+> Futures-Geld, unklarer Short, Übernahme alter Pilot-Positionen). Im Code ist `FREIGEGEBEN = False` — `KRYPTO_PILOT2=an` wirkt
+> nicht, der Pilot handelt wie bisher. Nächster Schritt: Pilot 2.0 verlangt ein Konto NUR für sich (beim Start leer bis auf
+> USDT), Funde beheben, dritte Prüfung. Bis dahin: den bestehenden Pilot nutzen (siehe «Starten» unten).
+
 Gleiche Signale wie der Pilot, klügere Ausführung über **beide** Binance-Konten (`pilot2_plan.py` rechnet, `pilot2_live.py`
 handelt; 18 + 27 Tests mit nachgebauter Binance, Mutationsproben). Ohne `KRYPTO_PILOT2=an` handelt der Pilot wie bisher.
 

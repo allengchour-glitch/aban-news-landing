@@ -84,7 +84,12 @@ eigenes Coin-Buch, Konflikt-Sperre (Spot-Bot/ETH-Sparplan/Calls), Rechteprüfung
 → konnten Ernte schliessen, Gebühr in Coins → Stop −2010, Fremd-Coins nach ausgelöstem Stop verkauft, ungesicherte Ernte bei fehlender Marge …).
 Alles behoben, `pilot2_live.py` neu geschrieben; Tests gegen STRENGE Fake-Binance (Gebühren, Sperren, Marge, Auslösen), 38 Tests, 10/10 Mutationen.
 **LEHRE: eigene Fake-Börse war zu gutmütig — Geld-Code immer gegen eine strenge Börse + zweiten Prüfer testen.**
-**Offen:** zweite Prüfung, dann Testnetz-Lauf + Trockenlauf durch den User; erst dann kleiner Betrag.
+**Zweite Prüfung: wieder 7 Blocker** (Not-Aus nach Ausschalten im Testnetz-Modus + falsches «alles zu», Cockpit-env veraltet,
+Doppel-Stop nach gescheitertem Storno, Deckel ≠ Verlustgrenze wegen fremdem Futures-Geld, unklarer Short → nackter Short,
+Übernahme alter Pilot-Positionen/closePosition-Stops, unklarer Kauf im Not-Aus). Vergleich: «nur Spot-Long» ist ab 2022 schlechter
+als P0 → Vereinfachung lohnt nicht. **User-Entscheid 13.10.: jetzt alter Pilot (P0) mit kleinem Betrag, P2 weiter härten.**
+`pilot2_live.FREIGEGEBEN = False` (hart gesperrt). Nächster Schritt P2: Konto NUR für P2 verlangen (beim Start leer bis auf USDT),
+alle Funde der 2. Prüfung beheben (Belege /tmp/claude-0/pruefung2 sind weg → Bericht steht in dieser Notiz), dritte Prüfung, erst bei 0 Blockern freigeben.
 
 **📌 2026-10-04 (🚚 Versand-Schwelle: Beinahe-Schaden abgewendet + „Mini-Kühlschrank" war eine Insulin-Kühlbox):**
 - **🚨 WICHTIGSTE LEHRE — `dropship/VERSAND-SCHWELLE.md` LESEN, bevor jemand eine Versand-Zahl ändert.**

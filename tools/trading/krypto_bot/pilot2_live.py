@@ -56,9 +56,15 @@ STOP_LIMIT_ABSTAND = 0.05
 PAUSE_DATEI = HIER.parent / "ki_bot" / "PAUSE"
 
 
+# Freigabe für den echten Bot. Bleibt False, bis eine unabhängige Prüfung KEINE Blocker mehr findet (Stand 13.10.2026:
+# zweite Prüfung fand 7 Blocker, u. a. Not-Aus-Modus, Doppel-Stops, Deckel). Solange False, ist KRYPTO_PILOT2=an wirkungslos
+# und der Pilot handelt wie bisher. Tests setzen FREIGEGEBEN gezielt auf True.
+FREIGEGEBEN = False
+
+
 def aktiv(env=None):
     env = os.environ if env is None else env
-    return (env.get("KRYPTO_PILOT2") or "").strip().lower() == "an"
+    return FREIGEGEBEN and (env.get("KRYPTO_PILOT2") or "").strip().lower() == "an"
 
 
 def einstellungen(env=None):
