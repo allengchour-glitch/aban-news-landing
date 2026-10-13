@@ -8023,3 +8023,7 @@ waschbeckenarmatur-gold-130x180-mm-924418	1990435549692080130	0	-	KEINE CH-Optio
 fussball-kick-trainer-mit-verstellbarem-huftgu-700673	2074711139478335490	0	-	KEINE CH-Option → DRAFT	landeseite
 sicherheitsgurt-fur-hund-katze-528768	1383313729126535168	16	5.65	ok	landeseite
 lippenstift-mit-langanhaltender-wirkung-715648	1423527080850755584	3	6.16	ok	landeseite
+seifenblasen-maschinenpistole-583168	1521796286008274944	3	26.22	ok	landeseite
+selbstkontrolle-box-995200	1383976638211035136	7	7.45	ok	landeseite
+solare-powerbank-3848bb	2FEC060A-987A-45F1-80BD-75CABF47857E	0	-	KEINE CH-Option → DRAFT	landeseite
+ultrasonisches-reinigungsgerat-352128	1432187342675906560	7	8.57	ok	landeseite
