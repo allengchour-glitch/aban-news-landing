@@ -8232,3 +8232,12 @@ neckholder-plisseekleid-mit-v-ausschnitt-617900	2607090514341618500	16	11.72	ok	
 luftiges-chiffon-kleid-mit-plisseerock-611200	2607090504441611800	16	8.79	ok	landeseite
 franzosisches-chic-bienen-stickerei-volant-kle-610500	2607090351071611100	16	8.79	ok	landeseite
 halter-v-ausschnitt-ruschenkleid-624100	2607090347471624800	16	8.79	ok	landeseite
+damen-a-linien-freizeitkleid-aus-baumwoll-lein-634100	2607090326521634800	16	8.79	ok	landeseite
+schwarz-weisses-color-block-tragerkleid-638700	2607090253301639300	16	9.33	ok	landeseite
+eleganter-jupe-anzug-im-business-stil-609200	2607090250401609800	16	13.40	ok	landeseite
+elegantes-mesh-panel-maxikleid-mit-ruckenaussc-610500	2607090212431611100	16	9.47	ok	landeseite
+strickhemd-mit-kubakragen-und-lochmuster-638400	2607080635461639100	16	7.71	ok	landeseite
+leinenmisch-hemd-fur-herren-634300	2607080238371634900	16	8.11	ok	landeseite
+herren-corduroy-hemd-jacke-mit-brusttasche-636900	2607070951441630100	16	8.53	ok	landeseite
+herren-langarmshirt-mit-print-612800	2607070400101613500	16	8.11	ok	landeseite
+herren-retro-loose-fit-rundhals-shirt-611300	2607070222481612400	16	7.17	ok	landeseite

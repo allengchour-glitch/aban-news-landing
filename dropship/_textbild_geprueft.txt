@@ -63434,3 +63434,10 @@ gid://shopify/Product/16617344893319	gid://shopify/MediaImage/77505212514695
 gid://shopify/Product/16617345089927	gid://shopify/MediaImage/77505213104519
 gid://shopify/Product/15453762388353	gid://shopify/MediaImage/70519618634113	bildtausch-sperre
 gid://shopify/Product/15524700389761	gid://shopify/MediaImage/70797375766913	pingpong-bremse
+gid://shopify/Product/16613870141831	gid://shopify/MediaImage/77489926537607	bildtausch-sperre
+gid://shopify/Product/16617547497863	gid://shopify/MediaImage/77505795064199
+gid://shopify/Product/16617547530631	gid://shopify/MediaImage/77505794998663
+gid://shopify/Product/16617547923847	gid://shopify/MediaImage/77505795850631
+gid://shopify/Product/16617547956615	gid://shopify/MediaImage/77505796243847
+gid://shopify/Product/16617548415367	gid://shopify/MediaImage/77505798013319
+gid://shopify/Product/16617607856519	gid://shopify/MediaImage/77506113012103
