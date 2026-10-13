@@ -25,3 +25,4 @@ CJLS187484201AZ	2026-10-13	schnitt 3: UNGEEIGNET: nur 3.5 s Reel moeglich ohne W
 CJJT1626220-Horizontal	2026-10-13	schnitt 3: UNGEEIGNET: nur 5.1 s sauberes Material (< 6 s, Regel Handwerk: dann das ganze Video verwerfen)
 CJJT153827201AZ	2026-10-13	schnitt 3: UNGEEIGNET: nur 3.3 s sauberes Material (< 6 s, Regel Handwerk: dann das ganze Video verwerfen)
 CJYR158132801AZ	2026-10-13	schnitt 3: UNGEEIGNET: nur 2.7 s sauberes Material (< 6 s, Regel Handwerk: dann das ganze Video verwerfen)
+CJJT170517301AZ	2026-10-13	schnitt 3: UNGEEIGNET: kein sauberes Material (Fremdtext: Textzeilen in 100% der Bilder ohne lesbares Latein (Verdacht chinesische/fremde Schrift — OCR liest Szenentext nicht))
