@@ -1,4 +1,4 @@
-# Füllmenge fehlt — Stand 2026-10-12 08:15 UTC
+# Füllmenge fehlt — Stand 2026-10-13 08:45 UTC
 
 Werkzeug `automation/fuellmenge_nachtragen.py` · Kandidaten: 143 aktive Kosmetik-Flüssigprodukte ohne ml-Angabe · diesmal geschrieben: 0 · Text-Sperre belegt: 0
 
