@@ -394,6 +394,42 @@ auch kopierte Calls, Pause = keine neuen. Telegram `/calls` zeigt die Bilanz. Un
 (`CALLS_CLAUDE=1`, ein paar Zehntel-Cent je Nachricht) — Claude liest nur ab, entscheidet nichts.
 `…\calls_kopierer.py --probe "LONG #SOLUSDT Entry 145-148 TP 152 SL 140"` zeigt, was mit einer Nachricht passieren würde.
 
+## 👥 «Die Besten kopieren» (Binance Copy-Trading) — ehrlich geprüft (`copytrading_pruefung.py`)
+
+Binance zeigt öffentlich, was jeder Leadtrader erreicht hat — auch, ob **seine Kopierer** Geld verdient haben, und wie oft
+er schon ein Portfolio geschlossen und neu angefangen hat. Fragen und Filter standen fest, bevor die Daten geladen wurden
+(Commit `2e8b5a7`). Stand 13.10.2026, 472 Leadtrader aus den Top 150 von fünf Ranglisten:
+
+| Rangliste (Binance) | Median-ROI der Top 10 | Top 10: Kopierer im Minus | Top 150: Kopierer im Minus | Schon neu gestartet (Top 150) |
+|---|---|---|---|---|
+| ROI 30 Tage | +3'816 % | 40 % | 32 % | 73 % |
+| ROI 90 Tage | +4'814 % | 30 % | 36 % | 76 % |
+| ROI 180 Tage | +5'834 % | 30 % | 41 % | 79 % |
+| Gewinn 90 Tage | +341 % | 30 % | 43 % | 56 % |
+| Kopierer-Gewinn 90 Tage | +482 % | 0 % | 0 % | 60 % |
+
+- **Die Rangliste zeigt vor allem Glück und Neustarts.** Rund drei Viertel der ROI-Besten haben schon Portfolios geschlossen
+  und neu angefangen — ein Totalverlust verschwindet so aus der Statistik. Bei 30–40 % der Besten sind die Kopierer
+  insgesamt im Minus, obwohl der Leadtrader Tausende Prozent zeigt (Beispiel: Platz 2 der 90-Tage-Liste +7'453 %,
+  Kopierer −477'739 USDT).
+- **Ein guter Rang hält nicht — er kippt.** Bei 217 Leadtradern mit mindestens 120 Tagen Kurve: Wer in der ersten
+  Hälfte zu den besten 10 % gehörte, machte in der zweiten Hälfte im Median **+16 %**,
+  alle anderen **+58 %** (Rangkorrelation **−0,40**: je besser vorher,
+  desto schlechter nachher). 32 % der Besten lagen in der zweiten Hälfte im Minus.
+  Und das ist noch geschönt: Wer pleite ging, fehlt in den Daten.
+- **Filter «kopierbar»** (≥ 180 Tage, nie neu gestartet, Kopierer im Plus, 30/90/180 Tage im Plus, Einbruch ≤ 25 %, kein
+  Hebel > 20×, kein Martingale-Muster): **3 von 472** bleiben. Die Hürden, an denen die meisten scheitern:
+  zu kurz dabei (309), schon neu gestartet (82), Kopierer im Minus (55).
+- Die 3 sind **keine Empfehlung**, sondern Kandidaten für den **Vorwärts-Test**: Ab heute werden sie mit den naiven Top 10
+  verglichen; nach 30 Tagen zählt, was Kopieren seither gebracht hätte (`copytrading_pruefung.py --auswerten`, fällig ab
+  12.11.2026, Daten `data/copytrading-schatten.json`). **Warnzeichen** trotz bestandenem Filter: «Kristofer Hogon SAzs»
+  schloss 253 Positionen ohne einen einzigen Verlust, mit bis zu 50× Hebel — so sieht es aus, wenn Verlierer offen liegen
+  bleiben (die zählen in der Statistik nicht). «iiTrader» (Hebel höchstens 3×, 300 Positionen,
+  Trefferquote 41 %) und «CryptoWizards» (446 Tage, Einbruch 7,8 %) sehen
+  solider aus. Dazu kommt die Gewinnbeteiligung (10–20 % deines Gewinns gehen an den Leadtrader).
+- **Wer trotzdem kopiert:** kleiner fester Betrag («Fixed Amount»), in Binance einen Copy-Stop-Loss setzen, keinen höheren
+  Hebel als der Leadtrader, und den Vorwärts-Test abwarten. Keine Anlageberatung.
+
 ## 🏆 «Top-Krypto traden, Gewinnern folgen» — ehrlich getestet: verliert
 
 `gewinner_pruefung.py` testet die beliebteste YouTube-Idee: jede Woche die Coins mit dem stärksten Anstieg kaufen.
@@ -688,6 +724,8 @@ python3 tools/trading/krypto_bot/test_binance.py  # 21 Tests, inkl. nachgebautem
 python3 tools/trading/krypto_bot/test_pilot2_plan.py  # 23 Tests: Pilot-2.0-Rechnung (Richtung, Ernte, Pfand, Mindestbeträge)
 python3 tools/trading/krypto_bot/test_pilot2_live.py  # 101 Tests: Pilot 2.0 («Konto = Wahrheit») gegen eine strenge nachgebaute Binance
 python3 tools/trading/krypto_bot/test_scalping.py      # 50 Tests: kein Blick in die Zukunft, strenge Füll-Regeln, Kosten exakt, Entscheidungsregeln
+python3 tools/trading/krypto_bot/test_copytrading.py   # 24 Tests: Filter «kopierbar», Rangkorrelation, Vorwärts-Test (ohne Netz)
+python3 tools/trading/krypto_bot/copytrading_pruefung.py  # Prüfstand Copy-Trading (Binance-Leadtrader); --auswerten = Vorwärts-Test nach 30 Tagen
 python3 tools/trading/krypto_bot/scalping_pruefung.py  # Prüfstand Scalping (lädt beim ersten Lauf ~200 MB Binance-Minutenarchive); --bericht = Tabelle
 python3 tools/trading/krypto_bot/pilot_pruefung.py   # Prüfstand: Stop, Trendlänge, Schwankungsziel, Ethereum
 python3 tools/trading/krypto_bot/info_pruefung.py    # Prüfstand: 13 freie Markt-Infos
