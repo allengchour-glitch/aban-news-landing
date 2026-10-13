@@ -15,3 +15,6 @@ start_utc	produkt	ergebnis	ordner
 2026-10-13T20:59:09.320Z	cart/55792251076993:1,55970707276161:1	ok	kasse_vorher	(Druck-Profil vorher: Druck + CH-Lager CH, kaufweg-test@example.com)
 2026-10-13T20:59:33.311Z	cart/55792251076993:1	ok	kasse_vorher	(Druck-Profil vorher: Druck allein LI, kaufweg-test@example.com)
 2026-10-13T20:59:57.674Z	cart/55792251076993:1,55746180153729:1	ok	kasse_vorher	(Druck-Profil vorher: Druck + CJ klein LI, kaufweg-test@example.com)
+2026-10-13T21:00:25.213Z	cart/55792018620801:1	ok	kasse_vorher	(Druck-Profil vorher: Sticker allein CH, kaufweg-test@example.com)
+2026-10-13T21:00:49.392Z	cart/55792018620801:1,55792251076993:1	ok	kasse_vorher	(Druck-Profil vorher: Sticker + Druck CH, kaufweg-test@example.com)
+2026-10-13T21:01:28.680Z	cart/55792251076993:1,55970707276161:1	ok	kasse_vorher	(Druck-Profil vorher: Druck + CH-Lager CH, kaufweg-test@example.com)

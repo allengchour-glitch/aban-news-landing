@@ -8205,3 +8205,12 @@ engine-movement-herren-quarzuhr-638600	2606100255151639300	7	6.49	ok	landeseite
 klassische-minimalistische-quarzuhr-mit-mesh-a-630000	2606060941111630600	7	6.18	ok	landeseite
 herren-quarzuhr-im-gurtel-stil-632600	2606041016301633400	7	6.18	ok	landeseite
 herren-quarzuhr-mit-leuchtzeigern-und-stahlban-605400	2606040815331606000	7	7.33	ok	landeseite
+solar-taucheruhr-aus-edelstahl-613600	2605310211401615600	7	9.06	ok	landeseite
+top-ten-wasserdichte-leuchtquarz-herrenuhr-601900	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+casual-reise-rucksack-unisex-628900	2607080123501629600	16	15.20	ok	landeseite
+reise-und-freizeit-rucksack-gross-636700	2607071055511637300	16	15.92	ok	landeseite
+atmungsaktiver-mesh-rucksack-mit-kordelzug-601400	2607050237481602000	16	13.40	ok	landeseite
+militar-stil-wanderrucksack-gross-600900	2606060521191601500	0	-	KEINE CH-Option → DRAFT	landeseite
+rfid-kartenetui-mit-munzfach-aus-pu-leder-623700	2607071158141624300	16	6.12	ok	landeseite
+retro-canvas-portemonnaie-und-necessaire-606900	2607070613081607500	16	7.43	ok	landeseite
+minimalistisches-portemonnaie-mit-airtag-chip-636900	2601081153211637100	16	6.63	ok	landeseite
