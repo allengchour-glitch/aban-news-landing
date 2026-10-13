@@ -298,6 +298,20 @@ TERM_PHRASES = {
     "short style": "kurze Ausführung", "long style": "lange Ausführung",
     # 23.09.: «Sole Length 11 CM» wurde «Sohle Länge 11 CM» (Nomen-Salat) — als Wendung gelesen.
     "sole length": "Sohlenlänge", "foot length": "Fusslänge",
+    # 13.10. (Kauf-Strecke Klasse 14): Herrenschuhe — 532 von 1'827 mit englischen Stilwerten, z. B.
+    # «White Hidden Elevator 6CM», «Black mesh fabric-Flat bottomed style», «Black Four Seasons».
+    # Wörtlich übersetzt (nichts dazuerfunden); Klasse NX = Ausführung, steht mit « · » hinter der Farbe.
+    "hidden elevator": "versteckte Erhöhung", "inner height increasing": "Innenerhöhung",
+    "inner heightening": "Innenerhöhung", "height increasing insole": "Erhöhungseinlage",
+    "heightening insole": "Erhöhungseinlage", "height increasing": "Erhöhung",
+    "flat bottom": "flache Sohle", "flat bottomed": "flache Sohle", "flat bottomed style": "flache Sohle",
+    "flat bottom style": "flache Sohle", "four seasons": "Ganzjahresmodell",
+    "four seasons style": "Ganzjahresmodell", "four season": "Ganzjahresmodell",
+    "thin shoes": "dünne Ausführung", "thin shoes style": "dünne Ausführung",
+    "with velvet style": "gefüttert", "plus velvet style": "gefüttert",
+    "mesh fabric": "Mesh", "hollow out": "durchbrochen", "hollowed out": "durchbrochen",
+    "inner length": "Innenlänge", "hidden wedge heel": "versteckter Keilabsatz",
+    "elevator style": "Erhöhung", "cotton lining": "Baumwollfutter",
     "fitted sheet": "Spannbettlaken", "flat sheet": "Bettlaken", "duvet cover": "Bettbezug",
     "quilt cover": "Bettbezug",
     "wood color": "Holzfarben", "wood colour": "Holzfarben", "flesh color": "Hautfarben",
@@ -351,6 +365,7 @@ TERM = {
 }
 # Begriffe aus TERM, die selbst eine FARBE sind (fuer Bindestrich-Verkettung «Bronze-Grün»).
 FARB_TERM = {"bronze", "golden", "caramel", "olive"}
+
 # Muster-Adjektive stehen im Deutschen HINTER der Farbe («Blau geblümt», wie farben_de.json).
 MUSTER_ADJ = {"geblümt", "gestreift", "kariert", "gepunktet", "bedruckt", "bestickt", "matt", "glänzend"}
 # Kleidungsstuecke — NIE uebersetzen, nur melden, wenn sie sich in einer Option widersprechen.
@@ -382,6 +397,33 @@ PASS = {"usb", "led", "lcd", "eu", "uk", "us", "au", "ch", "uv", "hd", "rgb", "i
         "oz", "m", "l", "w", "v", "mah", "gb", "tb", "x"}
 UNIT = {"cm": "cm", "mm": "mm", "m": "m", "ml": "ml", "l": "l", "g": "g", "kg": "kg", "oz": "oz",
         "w": "W", "v": "V", "mah": "mAh", "gb": "GB", "tb": "TB", "inch": "Zoll", "inches": "Zoll"}
+
+# 13.10. (Kauf-Strecke Klasse 14): Das Farbwörterbuch des CJ-Nachrüsters (auswahl_werte.FARBE_EXTRA,
+# farblexikon.EN2DE) kannte Wörter, die hier fehlten («wathet», «gunmetal», «claret», «rainbow»,
+# «fluorescent green»). Ergänzt wird NUR, was farben_de.json/TERM nicht schon kennt — dieselbe Richtung,
+# kein zweiter Wert für dasselbe Wort; Durchreich-
+# Wörter (PASS: «Camouflage», «Leopard») bleiben, wie sie sind. «army color» bleibt draussen (Selbsttest: «Armee» ist kein Farbname),
+# «rust»/«ginger» ebenso («Hellrost», «Ingwer» sind keine Farbnamen im Shop).
+def _fd_aus_auswahl():
+    try:
+        import auswahl_werte as _aw          # noqa: E402  (rein, ohne Netz)
+        import farblexikon as _fl            # noqa: E402
+    except Exception:
+        return {}
+    quelle = dict(getattr(_fl, "EN2DE", {}) or {})
+    quelle.update(getattr(_aw, "FARBE_EXTRA", {}) or {})
+    aus = {}
+    for k, v in quelle.items():
+        k = (k or "").lower().strip()
+        if (not k or not v or "/" in v or k in FD or k in TERM or k in TERM_PHRASES
+                or k in PASS or k in ("army color", "rust", "ginger") or not re.fullmatch(r"[a-z ]+", k)):
+            continue
+        aus[k] = v
+    return aus
+
+
+FD_AUSWAHL = _fd_aus_auswahl()
+FD.update(FD_AUSWAHL)
 
 # Deutsche Woerter, die schon richtig sind (ein bereits eingedeutschter Wert darf nicht an
 # einem «unbekannten» deutschen Wort scheitern — «Camouflage Grün»).
@@ -451,6 +493,17 @@ def _vorbereiten(s):
     s = re.sub(r"(?i)\b(\d{1,3})\s*styles?\b(?!\s+set)", r"musternr\1", s)
     s = re.sub(r"\b([A-Z])\s+[Ss]tyles?\b", r"musternr\1", s)
     s = re.sub(r"(?i)\bsize\s+(xxs|xs|s|m|l|xl|xxl|xxxl|\dxl)\b", r"gr.\1", s)
+    # 13.10.: Schuh-Erhöhung mit Mass — «Hidden Elevator 6CM», «Height Increased By 8CM», «Increase by 6
+    # centimeters», «6CM Height Increasing» → eine Einheit «(versteckte|Innen)Erhöhung N cm» (Klasse NX).
+    s = re.sub(r"(?i)\bmesh\s+fabric\b", "mesh", s)        # «Black mesh fabric» = farben_de «black mesh»
+    s = re.sub(r"(?i)\bhidden\s+elevator\s+(\d+(?:[.,]\d+)?)\s*(?:cm|centimeters?)\b", r"verstecktehoehung\1cm", s)
+    s = re.sub(r"(?i)\binner\s+height\s+increas(?:ed|ing)(?:\s+by)?\s+(\d+(?:[.,]\d+)?)\s*(?:cm|centimeters?)\b",
+               r"innenerhoehung\1cm", s)
+    s = re.sub(r"(?i)\bheight\s+increas(?:ed|ing)(?:\s+by)?\s+(\d+(?:[.,]\d+)?)\s*(?:cm|centimeters?)\b", r"erhoehung\1cm", s)
+    s = re.sub(r"(?i)\bincrease\s+by\s+(\d+(?:[.,]\d+)?)\s*(?:cm|centimeters?)\b", r"erhoehung\1cm", s)
+    s = re.sub(r"(?i)\b(\d+(?:[.,]\d+)?)\s*cm\s+height\s+increas(?:ed|ing)\b", r"erhoehung\1cm", s)
+    s = re.sub(r"(?i)\bincreasing\s+(\d+(?:[.,]\d+)?)\s*(?:cm|centimeters?)\b", r"erhoehung\1cm", s)
+    s = re.sub(r"(?i)\bheel\s+height\s+(\d+(?:[.,]\d+)?)\s*(?:cm|centimeters?)\b", r"absatzhoehe\1cm", s)
     s = re.sub(r"(?i)\b(?:increased?|heightening)(?:\s+by)?\s+(\d+)\s*cm\b", r"erhöht \1cm", s)
     s = re.sub(r"(?i)\b(\d+)\s*styles?\s+set\b", r"stilset\1", s)             # «3style Set»
     # Farbwoerter, die ihr Grundwort schon enthalten: navy = marineBLAU, wine = weinROT,
@@ -486,12 +539,12 @@ A_KL = ("A", "AS", "AM")
 KL_MAT = {"leder", "samt", "baumwolle", "leinen", "seide", "wolle", "wildleder", "kunststoff", "metall",
           "stahl", "holz", "bambus", "glas", "keramik", "silikon", "gummi", "acryl", "kristall", "spitze",
           "lackleder", "kunstleder", "echtleder", "edelstahl"}
-KL_NM = {"länge", "breite", "höhe", "durchmesser", "sohlenlänge", "fusslänge"}
+KL_NM = {"länge", "breite", "höhe", "durchmesser", "sohlenlänge", "fusslänge", "innenlänge"}
 KL_NS = {"set", "sets"}
 KL_ZG = {"damen", "herren", "kinder", "mädchen", "jungen", "erwachsene", "englisch", "deutsch", "baby", "unisex"}
 KL_CN = {"farbverlauf", "glitzer", "pailletten", "leopardenmuster", "blumenmuster", "camouflage", "leopard"}
 KL_AS = {"klein", "gross", "mittel", "extra gross"}
-KL_AM = set(MUSTER_ADJ) | {"uni"}
+KL_AM = set(MUSTER_ADJ) | {"uni", "durchbrochen"}
 KL_P = {"mesh", "pu", "transparent", "premium", "deluxe", "standard", "version", "fleece", "denim", "nylon",
         "canvas", "metallic", "neon", "retro", "vintage", "upgrade", "top", "warm"}
 KL_PM = {"pro", "max", "plus", "mini", "ultra", "lite", "se"}
@@ -622,7 +675,7 @@ def _satzbau(units):
                 return "praeposition"                         # «Stecker in version», «11 cm in»
         if prev == "Q" and k in ("N", "NM", "NS", "MAT", "NF", "CN", "P", "ZL", "PM"):
             return "menge-vor-nomen"                          # «2 Stück Ladegerät», «3 Stück Set»
-        if prev in ("N", "NS", "MAT", "NF", "NM") and k in ("N", "NM", "NS", "MAT", "NF"):
+        if prev in ("N", "NS", "MAT", "NF", "NM", "NX") and k in ("N", "NM", "NS", "MAT", "NF", "NX"):
             return "nomen-nomen"                              # «Sohle Länge», «Box Set»
         if prev == "MAT" and k in ("C", "CN", "P"):
             return "material-vor-farbe"                       # «Leder Pink» (Farbname), «Bambus Grün»
@@ -630,7 +683,7 @@ def _satzbau(units):
             return "nomen-vor-farbe"                          # «Rahmen Silber»
         if prev in ("NF", "NS", "NM") and k == "P":
             return "nomen-lehnwort"                           # «Fernbedienung Version»
-        if prev == "P" and k in ("N", "MAT", "NM", "CN", "P", "NF"):
+        if prev == "P" and k in ("N", "MAT", "NM", "CN", "P", "NF", "NX"):
             return "lehnwort-vor-nomen"                       # «Transparent Stil», «Leopard Rahmen»
         if prev == "CN" and k in ("N", "MAT", "CN", "NF", "P", "NM"):
             return "muster-vor-nomen"
@@ -643,6 +696,17 @@ def _satzbau(units):
             return "modellzusatz"                             # «Pink plus Baumwolle» (aber «Schwarz-Plus», «SE 2020»)
         if k == "NM" and nxt not in ("Z", "Q"):
             return "mass-ohne-zahl"                           # «Kurz Länge S»
+        # 13.10.: «Inner Length 135cm» bei Kinderschuh Gr. 21 = 13.5 cm mit verlorenem Komma. Englisch
+        # war es Kauderwelsch, deutsch saehe es wie eine geprüfte Angabe aus → unverändert lassen.
+        if k == "NM" and units[i][0].lower() in ("innenlänge", "sohlenlänge", "fusslänge") and nxt == "Z":
+            nach = units[i + 1][0] + (" " + units[i + 2][0] if i + 2 < n and units[i + 2][0] in ("cm", "mm") else "")
+            mz = re.match(r"(\d+(?:[.,]\d+)?)(?: (cm|mm))?$", nach)
+            if mz and not mz.group(2):
+                return "mass-ohne-einheit"                    # «Inner Length 142» (14.2? 142 mm?)
+            if mz and mz.group(2) == "cm" and float(mz.group(1).replace(",", ".")) > 40:
+                return "mass-unplausibel"
+        if prev == "C" and units[i][0] in ("Stil", "Stile"):
+            return "farbe-vor-stil"                           # «Natur Stil», «Schwarz Stil»
         if k == "F":
             if units[i][0].lower() in ("und", "oder") and prev is None:
                 return "konjunktion-am-anfang"
@@ -730,6 +794,14 @@ def _token_de(t, kx=None):
         return w(mass + (" " + x.group(4) if x.group(4) else ""), "Z")
     if re.fullmatch(r"(?:\d?x{0,5}[sl]|m|x{1,5}l|\d{1,2}xl|\d?xs|xxs)", k):
         return w(kern.upper(), "Z")
+    x = re.fullmatch(r"(verstecktehoehung|innenerhoehung|erhoehung|absatzhoehe)(\d+(?:[.,]\d+)?)cm", k)   # 13.10.
+    if x:
+        art = {"verstecktehoehung": "versteckte Erhöhung", "innenerhoehung": "Innenerhöhung",
+               "absatzhoehe": "Absatzhöhe"}.get(x.group(1), "Erhöhung")
+        return w(f"{art} {x.group(2)} cm", "NX")
+    x = re.fullmatch(r"us(\d{1,2}(?:[.,]5)?)", k)               # 13.10.: US-Schuhgrösse «US9.5»
+    if x:
+        return w(f"US {x.group(1)}", "Z")
     x = re.fullmatch(r"usgr(\d{1,2})w", k)                      # Marke aus _vorbereiten: «US 14W»
     if x:
         return w(f"US {x.group(1)}W", "Z")
@@ -882,7 +954,11 @@ def _stueck_de(seg, kx=None):
         # «·» nur vor Stueckzahlen («Schwarz · 2 Stück»), nicht vor «17 Farben» und nicht nach «und».
         if kl == "Q" and units and units[-1][1] != "F" and not r.endswith("Farben"):
             units.append(["·", "·"])
-        if kl == "C" and units and units[-1][1] == "C":
+        if kl == "NX" and units and units[-1][1] in ("C", "CN", "Z"):
+            units.append(["·", "·"]); units.append([r, kl])          # «Weiss · versteckte Erhöhung 6 cm»
+        elif kl == "C" and units and units[-1][1] == "NX":
+            units.append(["·", "·"]); units.append([r, kl])          # «Innenerhöhung · Schwarz»
+        elif kl == "C" and units and units[-1][1] == "C":
             if units[-1][0].split("-")[-1].lower() != r.lower():   # «Blue blue» → nicht «Blau-Blau»
                 units[-1][0] = units[-1][0] + "-" + r      # «Senfgrün-Grau», «Schwarz-Roségold»
         elif kl == "C" and units and units[-1][1] == "A" and units[-1][0].lower() in ("klassisch", "leuchtend"):
@@ -916,7 +992,14 @@ SCHUTZ = [("t-shirt", "tshirt"), ("type-c", "typec"), ("v-neck", "v neck"), ("wi
 TERM_KLASSE = {"picture": "C", "colorful": "A", "colourful": "A", "multicolor": "A", "multicolour": "A",
                "gradient": "CN", "plussize": "Z", "golden": "C", "bronze": "C", "caramel": "C", "olive": "C",
                "default": "Z", "typec": "Z", "in": "IN", "colors": "N", "colours": "N"}
-PHRASE_KLASSE = {"gradient color": "CN", "wood color": "C", "wood colour": "C", "flesh color": "C",
+PHRASE_KLASSE = {**{k: "NX" for k in ("hidden elevator", "inner height increasing", "inner heightening",
+                                        "height increasing insole", "heightening insole", "height increasing",
+                                        "flat bottom", "flat bottomed", "flat bottomed style", "flat bottom style",
+                                        "four seasons", "four seasons style", "four season", "thin shoes",
+                                        "thin shoes style", "hidden wedge heel", "elevator style",
+                                        "cotton lining")},
+                 "hollow out": "AM", "hollowed out": "AM", "inner length": "NM",
+                 "gradient color": "CN", "wood color": "C", "wood colour": "C", "flesh color": "C",
                  "skin color": "C", "titanium color": "C", "red rose": "C",
                  "polka dot": "AM", "polka dots": "AM", "leopard print": "CN", "floral print": "CN",
                  "flower print": "CN"}
@@ -1464,6 +1547,23 @@ SELBSTTEST_FAELLE = [
     (["Black 18W", "Black 20W", "White 30W charger"], "Black 18W", "Schwarz 18 W"),   # Ladegeraet = Watt
     ([], "Black 18W", "Schwarz 18 W"),                          # ohne Reihe: Watt
     ([], "White 100W", "Weiss 100 W"),
+    # 13.10. (Kauf-Strecke Klasse 14): Herrenschuh-Ausführungen — Farbe · Ausführung, Mass bleibt
+    ([], "White Hidden Elevator 6CM", "Weiss · versteckte Erhöhung 6 cm"),
+    ([], "Black mesh fabric-Flat bottomed style", "Schwarz Mesh-Flache Sohle"),
+    ([], "Black mesh fabric-Increase by 8 centimeters", "Schwarz Mesh-Erhöhung 8 cm"),
+    ([], "White Height Increased By 6CM", "Weiss · Erhöhung 6 cm"),
+    ([], "Inner Height Increasing Black", "Innenerhöhung · Schwarz"),
+    ([], "Black Four Seasons", "Schwarz · Ganzjahresmodell"),
+    ([], "Black Flat Bottom", "Schwarz · flache Sohle"),
+    ([], "Black Heel Height 6cm", "Schwarz · Absatzhöhe 6 cm"),
+    ([], "Brown With Velvet Style", "Braun gefüttert"),
+    ([], "Black-US9.5", "Schwarz-US 9.5"),
+    ([], "Blue-Inner length 12cm", "Blau-Innenlänge 12 cm"),
+    ([], "Claret", "Bordeaux"),                                  # Wörterbuch aus auswahl_werte/farblexikon
+    ([], "Wathet Blue", "Hellblau"),
+    ([], "Black Rice-39 Elevator Style", None),                 # «Rice» unbekannt → unverändert
+    ([], "Brown Single Lining", None),                          # bleibt: nie «Braun einzeln Futter»
+    ([], "Black-21 Inner Length 135cm", None),                  # 13.5 cm ohne Komma → nicht eindeutschen
 ]
 
 
