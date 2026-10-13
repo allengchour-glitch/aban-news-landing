@@ -49,6 +49,24 @@ def unversandt_warnung(stati, h):
     return ""
 
 
+FORTURA_LEDGER = os.path.join(REPO, "dropship/_fortura_bestellungen.tsv")
+
+
+def fortura_stand(nr, h, pfad=FORTURA_LEDGER):
+    """Reine Fortura-Bestellung → (Stand, Warnzusatz). 13.10.2026 (Trockenlauf Fortura-Kette): nur «bestellt» (Stufe 1, Quittung)
+    galt als in Ordnung — der Normalzustand von Stufe 2, «xml-hochgeladen», stand damit IMMER mit ⚠️ da. Jetzt: hochgeladen ist in
+    Ordnung bis 48 h (dieselbe Frist wie fortura_bestell_engine: «bei Fortura nachfragen»), «bereit»/«versandt»/unbekannt bleiben ⚠️."""
+    fst = "unbekannt"
+    try:
+        for z in open(pfad, encoding="utf-8"):
+            t = z.rstrip("\n").split("\t")
+            if len(t) > 3 and t[0] == nr: fst = t[3]
+    except Exception:
+        pass
+    ok = fst == "bestellt" or (fst == "xml-hochgeladen" and h <= 48)
+    return f"Fortura: {fst}", "" if ok else " ⚠️"
+
+
 def selbsttest():
     import tempfile
     with tempfile.NamedTemporaryFile("w", delete=False, suffix=".txt") as f:
@@ -62,6 +80,15 @@ def selbsttest():
                (unversandt_warnung(["UNSHIPPED"], 121), " ⚠️ seit 5 T unversandt → CJ fragen (Ticket/Agentin)"),
                (unversandt_warnung(["SHIPPED"], 300), ""),                          # unterwegs = versand_stillstand
                (unversandt_warnung([], 300), "")]
+    with tempfile.NamedTemporaryFile("w", delete=False, suffix=".tsv") as f:
+        f.write("nr\tzeit\tpositionen\tstatus\tfortura_auftrag\n1030\tx\t93583×1\txml-hochgeladen\tORDERS_LX1030.xml\n"
+                "1031\tx\t93583×1\tbereit\t\n1032\tx\t93583×1\tbestellt\t\n")
+    faelle += [(fortura_stand("1030", 5, f.name), ("Fortura: xml-hochgeladen", "")),
+               (fortura_stand("1030", 60, f.name), ("Fortura: xml-hochgeladen", " ⚠️")),
+               (fortura_stand("1031", 1, f.name), ("Fortura: bereit", " ⚠️")),
+               (fortura_stand("1032", 90, f.name), ("Fortura: bestellt", "")),
+               (fortura_stand("1099", 1, f.name), ("Fortura: unbekannt", " ⚠️"))]
+    os.unlink(f.name)
     ok = all(a == b for a, b in faelle)
     for i, (a, b) in enumerate(faelle):
         print(f"  {'OK  ' if a == b else 'FEHL'} Fall {i + 1}: {a}")
@@ -138,15 +165,7 @@ def main():
             # 05.10.2026: reine Fortura-Bestellung (Schweizer Lager) hat nie einen CJ-Auftrag — Stand aus dem Fortura-Ledger.
             skus = [(li.get("sku") or "") for li in o["lineItems"]["nodes"]]
             if skus and all(x.startswith("fortura-") for x in skus):
-                fst = "unbekannt"
-                try:
-                    for z in open(os.path.join(REPO, "dropship/_fortura_bestellungen.tsv"), encoding="utf-8"):
-                        t = z.rstrip("\n").split("\t")
-                        if t[0] == nr: fst = t[3]
-                except Exception:
-                    pass
-                st = f"Fortura: {fst}"
-                warn = "" if fst == "bestellt" else " ⚠️"
+                st, warn = fortura_stand(nr, h)
                 teile.append(f"#{nr} {alt} CHF {float(o['totalPriceSet']['shopMoney']['amount']):.2f} → {st}{warn}")
                 continue
             st = ", ".join(f"{k}: {CJ_STATUS.get(watch[k].get('status'), watch[k].get('status', '?'))}"

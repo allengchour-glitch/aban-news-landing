@@ -103,8 +103,10 @@ def stufe2(led, zeilen):
                 neu[nr] = f'⚠️ FORTURA: #{nr} Paket fehlt in {PAKETE} (Neustart?) — im Portal bestellen: {t[2]}'; continue
             pk = json.load(open(p, encoding='utf-8'))
             name = f'ORDERS_LX{nr}.xml'
+            ve = fx.ve_aus_feed([q['artnr'] for q in pk['positionen']])     # 13.10.: Bündel (VE>1) nie raten
             x, fehler = fx.bau_orders_xml(f'LX{nr}', pk.get('lieferadresse'), pk.get('email'),
-                                          [{'artnr': q['artnr'], 'ean': q.get('ean'), 'menge': int(q['menge'])} for q in pk['positionen']],
+                                          [{'artnr': q['artnr'], 'ean': q.get('ean'), 'menge': int(q['menge']), 've': ve.get(q['artnr'], 1)}
+                                           for q in pk['positionen']],
                                           f'LuxeStyle Dropship #{nr} - neutraler Versand an Endkundin')
             if fehler:
                 neu[nr] = f'⚠️ FORTURA: #{nr} XML NICHT gesendet ({"; ".join(fehler)[:120]}) — im Portal bestellen: {t[2]}'; continue
@@ -128,7 +130,11 @@ def stufe2(led, zeilen):
                         geliefert[a] = geliefert.get(a, 0) + int(float(g or 0))
                     ok, info = sendung_eintragen(nr, d['tracking'], geliefert) if d['tracking'] else (False, 'Lieferschein ohne Tracking')
                     if ok:
-                        led[nr][3] = 'erfuellt'
+                        # 13.10.2026 (Trockenlauf): eine Teillieferung wurde «erfuellt» — main() überspringt das, die Warnung
+                        # stand genau EINMAL da, der fehlende Artikel blieb danach still offen. Jetzt eigener Endstatus mit Dauerzeile.
+                        led[nr][3] = 'teilgeliefert' if teil else 'erfuellt'
+                        if teil:
+                            led[nr][4] = f"{led[nr][4]} · fehlt {', '.join(teil)}"
                     neu[nr] = (f"{'' if ok else '⚠️ '}FORTURA: #{nr} versandt {d['datum']} · DPD {','.join(d['tracking'])} · "
                                f"{'Shopify: ' + info if ok else 'Shopify-Sendung NICHT eingetragen: ' + info}"
                                + (f" · ⚠️ Teillieferung {', '.join(teil)}" if teil else ''))
@@ -179,6 +185,8 @@ def main():
             zeilen.append(f'⚠️ FORTURA: #{nr} versandt — {led[nr][4]} (Sendung in Shopify noch offen, nächster Lauf versucht es)'); continue
         if st == 'erfuellt':
             continue
+        if st == 'teilgeliefert':
+            zeilen.append(f'⚠️ FORTURA: #{nr} Teillieferung — {led[nr][4]} · Rest bei Fortura klären oder erstatten'); continue
         if st == 'bereit':
             alter = (dt.datetime.now(dt.timezone.utc) - dt.datetime.fromisoformat(o['createdAt'].replace('Z', '+00:00'))).total_seconds() / 3600
             zeilen.append(f"⚠️ FORTURA: #{nr} ({alter:.0f} h) bereit — im Fortura-Portal bestellen: {txt} · danach "
