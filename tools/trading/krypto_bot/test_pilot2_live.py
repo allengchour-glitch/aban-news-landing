@@ -28,7 +28,7 @@ class X(BaseHTTPRequestHandler):
                     "enableSpotAndMarginTrading": True, "enableFutures": True, "permitsUniversalTransfer": True}
         X.perp_fehler = False; X.spot_503 = False; X.nachfrage_kaputt = False; X.hedge = False; X.stop_fehler = False
         X.nach_order = None; X.perp_503 = None; X.perp_reduce_fehler = False; X.algo_del_fehler = False
-        X.stop_antwort_weg = False; X.algo_antwort_weg = False; X.marge = {}; X.spot_del_fehler = False
+        X.stop_antwort_weg = False; X.algo_antwort_weg = False; X.marge = {}; X.spot_del_fehler = False; X.spot_sell_fehler = False
         for a, b in k.items(): setattr(X, a, b)
     def _a(self, o, code=200):
         b = json.dumps(o).encode(); self.send_response(code); self.send_header("Content-Type", "application/json"); self.end_headers(); self.wfile.write(b)
@@ -78,6 +78,7 @@ class X(BaseHTTPRequestHandler):
                 geb = q * 0.001; X.frei["USDT"] -= wert; X.frei[coin] += q - geb
                 fills = [{"price": repr(preis), "qty": repr(q), "commission": repr(geb), "commissionAsset": coin}]
             else:
+                if X.spot_sell_fehler: return self._a({"code": -1013, "msg": "Filter failure: PERCENT_PRICE_BY_SIDE"}, 400)
                 if X.frei[coin] < q - 1e-12: return self._a({"code": -2010, "msg": "Account has insufficient balance"}, 400)
                 geb = wert * 0.001; X.frei[coin] -= q; X.frei["USDT"] += wert - geb
                 fills = [{"price": repr(preis), "qty": repr(q), "commission": repr(geb), "commissionAsset": "USDT"}]
@@ -415,6 +416,52 @@ pruefe("W1b: Buch fehlt + Echtgeld-Position → nicht «alles zu», nichts blind
 X.reset(spot_503=True, perp_fehler=True); d = neu_buch(); r = lauf([E("BTC", 0.0)], ECHT, d)
 pruefe("W3: Rückverkauf nach nachgefragtem Kauf klappt (keine ungesicherten Coins)", (X.frei["BTC"] + X.gesperrt["BTC"]) * 100000 < 15
        and X.pos["BTCUSDT"] == 0, (X.frei, X.pos, r["zeilen"]))
+
+# ════════ Funde der 4. Prüfung ════════
+def algo_menge(): return sum(float(a["quantity"]) for a in X.algos.values())
+# B1: Richtungswechsel über mehrere Tage (Auftrags-Deckel 1000) → der Rest bekommt jeden Tag einen Stop
+X.reset(); d = neu_buch(); env1k = {**ECHT, "KI_BOT_MAX_AUFTRAG": "1000"}
+for _ in range(5): lauf([E("BTC", -0.4)], env1k, d)
+r = lauf([E("BTC", 1.0)], env1k, d)
+netto_btc = X.frei["BTC"] + X.gesperrt["BTC"] + X.pos["BTCUSDT"]
+pruefe("B1 (4.): halber Wechsel short→long, Rest netto short → Perp-Stop deckt ihn", netto_btc < -0.005 and algo_menge() + 1e-9 >= -netto_btc,
+       (netto_btc, X.algos, r["zeilen"]))
+X.reset(); d = neu_buch()
+for _ in range(5): lauf([E("BTC", 0.4)], {**TEST, "KI_BOT_MAX_AUFTRAG": "1000"}, d)
+X.fut = 20000.0; r = lauf([E("BTC", -1.0)], {**TEST, "KI_BOT_MAX_AUFTRAG": "1000"}, d)
+netto_btc = X.frei["BTC"] + X.gesperrt["BTC"] + X.pos["BTCUSDT"]
+st = stops_offen()
+pruefe("B1 (4.): halber Wechsel long→short, Rest netto long → Spot-Stop deckt ihn", netto_btc > 0.005 and st and sum(o["qty"] for o in st) + 2e-5 >= netto_btc,
+       (netto_btc, st, r["zeilen"]))
+X.reset(); d = neu_buch(); lauf([E("BTC", 1.0)], TEST, d); X.spot_sell_fehler = True
+r = lauf([E("BTC", -1.0)], TEST, d); st = stops_offen()
+pruefe("B1 (4.): Verkauf beim Wechsel abgelehnt → Long behält einen Stop", st and abs(st[0]["qty"] - mein(d, "testnetz", "BTC")) < 2e-5, (st, r["zeilen"]))
+X.reset(); d = neu_buch(); lauf([E("BTC", 1.0), E("ETH", 1.0)], TEST, d); X.spot_sell_fehler = True
+r = lauf([E("BTC", 1.0)], TEST, d)
+pruefe("B1 (4.): abgewählter Markt, Verkauf scheitert → ETH behält einen Stop, zum bisherigen Stop-Kurs", stops_offen("ETHUSDT")
+       and abs(stops_offen("ETHUSDT")[0]["stop"] - 3600.0) < 0.02, (stops_offen("ETHUSDT"), r["zeilen"]))
+# B2: Buch fehlt, nur Spot-Coins im Echtgeld-Konto → Not-Aus meldet sie, nie «nichts offen»
+X.reset(); d = neu_buch(); lauf([E("BTC", 1.0)], ECHT, d); d.unlink()
+r = lauf([], {**ECHT, "KI_BOT_STOP": "1"}, d)
+pruefe("B2 (4.): Buch fehlt + nur Spot-Long → nicht «alles zu», Coins gemeldet", r["alles_zu"] is False and any("BTC" in z and "Konto zeigt" in z for z in r["zeilen"]), r["zeilen"])
+# B2b: Buch kennt die Coins nicht (Absturz vor dem Speichern) → Not-Aus echt verkauft alles im eigenen Konto
+X.reset(); d = neu_buch(); lauf([E("BTC", 1.0)], ECHT, d)
+b = json.loads(d.read_text()); b["echt"]["coins"] = {}; b["echt"]["stops"] = {}; d.write_text(json.dumps(b))
+for o in X.orders.values():
+    if o.get("typ") and o["status"] == "NEW": o["status"] = "CANCELED"; X.gesperrt["BTC"] -= o["qty"]; X.frei["BTC"] += o["qty"]
+r = lauf([], ECHT, d, notaus=True)
+pruefe("B2b (4.): Buch ohne Coins → Not-Aus echt verkauft trotzdem alles, «alles zu» stimmt", (X.frei["BTC"] + X.gesperrt["BTC"]) * 100000 < 5
+       and r["alles_zu"] is True, (X.frei, r["zeilen"]))
+# … und scheitert dabei der Verkauf, meldet die Nachprüfung ehrlich «nicht alles zu» (Kontostand statt Buch)
+X.reset(); d = neu_buch(); lauf([E("BTC", 1.0)], ECHT, d)
+b = json.loads(d.read_text()); b["echt"]["coins"] = {}; d.write_text(json.dumps(b)); X.spot_sell_fehler = True
+r = lauf([], ECHT, d, notaus=True)
+pruefe("B2b (4.): Verkauf scheitert → nicht «alles zu», Buch bleibt", r["alles_zu"] is False and L.hat_bestand(d), r["zeilen"])
+# Probelauf verbraucht die Startprüfung nicht
+X.reset(); d = neu_buch(); r = lauf([E("BTC", 0.5)], ECHT, d, trocken=True)
+pruefe("Probelauf setzt keinen Start", not L.buch_lesen(d, "echt")["start"], L.buch_lesen(d, "echt"))
+X.frei["BTC"] = 0.5; r = lauf([E("BTC", 0.5)], ECHT, d)
+pruefe("… echter Lauf danach prüft das Konto wieder (fremde BTC → kein Auftrag)", not markt_orders() and X.frei["BTC"] == 0.5 and r["warnung"], r["zeilen"])
 # ── Bot-Schalter + alter Pilot + schliessen_alle ──
 import pilot as PI  # noqa: E402
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "ki_bot"))

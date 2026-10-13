@@ -413,10 +413,13 @@ def ausfuehren(ents, trocken=False, env=None, spot=None, fut=None, protokolliere
     if not buch["start"]:  # erster Lauf: Zuteilung bis zum Deckel
         f_fremd = (f_saldo + f_offen) if cfg["echtgeld"] else 0.0  # Testnetz: eigenes Futures-Testkonto, getrennt
         buch["usdt"] = max(0.0, min(usdt_frei, cfg["deckel"] - coin_wert - f_fremd))
-        buch["start"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
-        erg["zeilen"].append(f"Pilot 2.0 gestartet: {buch['usdt']:.2f} USDT zugeteilt (Deckel {cfg['deckel']:.0f}).")
+        if not trocken:  # ein Probelauf verbraucht die Startprüfung nicht
+            buch["start"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        erg["zeilen"].append(f"Pilot 2.0 {'würde starten' if trocken else 'gestartet'}: {buch['usdt']:.2f} USDT zugeteilt"
+                             f" (Deckel {cfg['deckel']:.0f}).")
     buch["usdt"] = max(0.0, min(buch["usdt"] or 0.0, usdt_frei))
-    speichern()
+    if not trocken:
+        speichern()
     kapital = buch["usdt"] + coin_wert + f_saldo + f_offen
     erg["kapital"] = round(kapital, 2)
     verwaltet = min(kapital * cfg["anteil"], cfg["deckel"]) * (1 - GEBUEHREN_RESERVE)
@@ -476,7 +479,10 @@ def ausfuehren(ents, trocken=False, env=None, spot=None, fut=None, protokolliere
                 dc, du = fuellung(r, d["coin"])
                 buch["coins"][k] = max(0.0, buch["coins"].get(k, 0.0) + dc)
                 buch["usdt"] = max(0.0, (buch["usdt"] or 0.0) + du)
-                speichern()
+                try:
+                    speichern()
+                except OSError as ex:  # Auftrag IST ausgeführt — nur das Speichern hakt (z. B. Datei gesperrt)
+                    warn(f"{k}: Buch nicht gespeichert ({type(ex).__name__}) — Auftrag ausgeführt, nächster Speicherversuch folgt.")
                 gemacht = abs(dc) if seite == "SELL" else max(0.0, dc)
             else:
                 pos_vor = fut.position_info(d["sym"])[0]
@@ -626,32 +632,50 @@ def _stops_setzen(spot, fut, buch, speichern, ents, daten, plaene, ohne_stop_neu
             pos, _ = fut.position_info(d["sym"])
             netto = mein + pos
             z = e.get("z", 0)
-            stop_spot = PL.runde(min(max(0.0, netto), mein, frei), d["rs"]["step"]) if z > 0 else 0.0
+            st = buch["stops"].setdefault(k, {})
+            # Stop nach der TATSÄCHLICHEN Netto-Richtung (nicht nach dem Ziel): auch ein Rest aus einem halben Richtungswechsel,
+            # einem gescheiterten Auftrag oder einem abgewählten Markt bekommt einen Stop.
+            ungesichert = abs(netto) * d["kurs"] >= STAUB_USDT
+            stop_spot = PL.runde(min(max(0.0, netto), mein, frei), d["rs"]["step"]) if netto > 0 and ungesichert else 0.0
             short = abs(min(pos, 0.0))
             # Absicherung abrunden, NICHT den Stop: sonst bliebe bis zu ein Futures-Schritt Short ohne Stop
-            stop_perp = max(0.0, short - PL.runde(min(mein, short), d["rf"]["step"])) if z < 0 else 0.0
-            st = buch["stops"].setdefault(k, {})
+            stop_perp = max(0.0, short - PL.runde(min(mein, short), d["rf"]["step"])) if netto < 0 and ungesichert else 0.0
+            p_long = _stop_preis(e.get("stop_long"), st.get("p_long"), d["kurs"], +1)
+            p_short = _stop_preis(e.get("stop_short"), st.get("p_short"), d["kurs"], -1)
             if k in ohne_stop_neu:
-                if z:
+                if stop_spot or stop_perp:
                     warn(f"{k}: alter Stop bleibt aktiv (Löschen gescheitert) — kein neuer gesetzt.")
             else:
-                if stop_spot > 0 and stop_spot * e["stop_long"] >= d["rs"]["min_notional"]:
-                    r = spot.stop_verkauf(d["sym"], stop_spot, e["stop_long"], d["rs"])
-                    st["spot"], st["spot_menge"], st["spot_quote"] = r.get("orderId"), 0.0, 0.0
+                if stop_spot > 0 and stop_spot * p_long >= d["rs"]["min_notional"]:
+                    r = spot.stop_verkauf(d["sym"], stop_spot, p_long, d["rs"])
+                    st["spot"], st["spot_menge"], st["spot_quote"], st["p_long"] = r.get("orderId"), 0.0, 0.0, p_long
                 if stop_perp > 0:
-                    r = fut.stop_menge(d["sym"], "BUY", stop_perp, e["stop_short"], d["rf"]["tick"])
-                    st["perp"] = r.get("algoId")
+                    r = fut.stop_menge(d["sym"], "BUY", stop_perp, p_short, d["rf"]["tick"])
+                    st["perp"], st["p_short"] = r.get("algoId"), p_short
             speichern()
             richtung = netto * d["kurs"] / basis_g if basis_g else 0.0
             erg["zeilen"].append(f"{k}: Spot {mein:g} {d['coin']}, Perp {pos:+g}, Richtung {richtung:+.2f} (Ziel {z:+.2f})"
-                                 + (f", Stop {stop_spot:g} @ {e['stop_long']:g}" if stop_spot else "")
-                                 + (f", Stop {stop_perp:g} @ {e['stop_short']:g}" if stop_perp else ""))
-            if z and k not in ohne_stop_neu and not (stop_spot or stop_perp) and abs(netto) * d["kurs"] >= d["rs"]["min_notional"]:
-                warn(f"{k}: Richtungs-Position ohne Stop — bitte prüfen!")
-            if not z and basis_g and abs(netto) * d["kurs"] > 0.25 * basis_g:
-                warn(f"{k}: ungewollte Richtung {richtung:+.2f} ohne Stop (Ziel 0) — nächster Lauf gleicht aus, bitte prüfen.")
+                                 + (f", Stop {stop_spot:g} @ {p_long:g}" if stop_spot else "")
+                                 + (f", Stop {stop_perp:g} @ {p_short:g}" if stop_perp else ""))
+            if k not in ohne_stop_neu and ungesichert and not (st.get("spot") or st.get("perp")):
+                warn(f"{k}: Richtung {richtung:+.2f} ohne Stop (zu klein für Binance oder abgelehnt) — bitte prüfen!")
+            if basis_g and abs(richtung - z) > 0.25:
+                erg["zeilen"].append(f"{k}: Richtung {richtung:+.2f} weicht vom Ziel {z:+.2f} ab — Stop auf die tatsächliche Richtung gesetzt,"
+                                     " der nächste Lauf gleicht weiter aus.")
         except Exception as ex:  # noqa: BLE001
             warn(f"{k}: Stop nicht gesetzt ({type(ex).__name__} {str(ex)[:100]}) — Position läuft OHNE Stop, bitte prüfen!")
+
+
+NOT_STOP_ABSTAND = 0.05  # Ersatz-Stop, wenn kein gültiger Stop-Kurs da ist (5 % vom Kurs)
+
+
+def _stop_preis(signal, frueher, kurs, seite):
+    """Gültiger Stop-Kurs für long (seite +1, unter dem Kurs) bzw. short (−1, über dem Kurs): zuerst der des Signals, sonst
+    der zuletzt benutzte, sonst ein Ersatz 5 % vom Kurs — nie eine Position ohne Stop, nur weil der Kurs fehlt."""
+    for p in (signal, frueher):
+        if p and (p < kurs if seite > 0 else p > kurs):
+            return float(p)
+    return kurs * (1 - NOT_STOP_ABSTAND * seite)
 
 
 def _stops_weg(spot, fut, buch, k, sym):
@@ -744,7 +768,7 @@ def notaus_alle(env=None, datei=None, trocken=False, spot=None, fut=None, protok
                 menge = sum(bestand(s_.konto(), coin))
                 if pos:
                     funde.append(f"Futures {sym} {pos:+g}")
-                if menge * s_.kurs(sym) >= STAUB_USDT and (kaputt or pos):
+                if menge * s_.kurs(sym) >= STAUB_USDT:
                     funde.append(f"{menge:g} {coin}")
             if funde:
                 erg.update(alles_zu=False, warnung=True)
@@ -825,7 +849,8 @@ def _notaus(spot, fut, buch, speichern_b, modus, trocken):
             warn(f"Not-Aus {modus} {k}: Spot-Stop nicht gelöscht ({type(ex).__name__}) — verkaufe die freien Coins trotzdem.")
         try:  # 3b) Spot: alles Eigene verkaufen — ausser der Short ist noch offen: dann nur den ungesicherten Überschuss
             frei, gebunden = bestand(spot.konto(), coin)
-            mein = min(buch["coins"].get(k, 0.0), frei)
+            # echt: eigenes Konto (Startprüfung) → alles darin gehört Pilot 2.0, auch was das Buch nach einem Absturz nicht kennt
+            mein = frei if modus == "echt" else min(buch["coins"].get(k, 0.0), frei)
             behalten = 0.0 if perp_zu else max(0.0, -fut.position_info(sym)[0])
             regeln = spot.regeln2(sym)
             m = PL.runde(max(0.0, mein - behalten), regeln["step"])
@@ -843,7 +868,7 @@ def _notaus(spot, fut, buch, speichern_b, modus, trocken):
         try:  # 4) nachprüfen
             pos = fut.position_info(sym)[0]
             frei, gebunden = bestand(spot.konto(), coin)
-            rest = min(buch["coins"].get(k, 0.0), frei + gebunden)
+            rest = (frei + gebunden) if modus == "echt" else min(buch["coins"].get(k, 0.0), frei + gebunden)
             buch["coins"][k] = rest
             rest_wert = rest * spot.kurs(sym)
             regeln = spot.regeln2(sym)
