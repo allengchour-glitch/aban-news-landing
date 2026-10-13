@@ -1,0 +1,6 @@
+{
+  "id": "server-zustand-2026-10-13",
+  "typ": "wartung",
+  "aktion": "waechter_zustand",
+  "warum": "13.10.2026, Plan «Hetzner auf Maximum» Schritt 1 — erste Messung noch heute (rein lesend). Trägt absichtlich den Namen, den auftraege/wiederkehrend/server-zustand.json für heute anlegen würde: so sieht die Fälligkeitsprüfung diese Datei in offen/ und legt KEINEN zweiten Lauf an; ab morgen übernimmt der wiederkehrende Auftrag. Beantwortet: beendet systemd am Takt-Ende alle Motoren (KillMode, Takt-Dauer aus dem Journal, Einheit jedes Skripts)? scipy/av/ffmpeg da? Wie viele Stashes? Platte, /tmp, RAM, Swap."
+}

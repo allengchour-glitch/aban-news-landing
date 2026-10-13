@@ -2,7 +2,7 @@
 // Aufruf: node server/wartung.test.mjs   (Exit 0 = alle grün)
 // Die Zeilen unter «Pruefer 23.09.» sind die Faelle, die die ERSTE Fassung durchliess oder falsch schwaerzte.
 import assert from 'node:assert/strict';
-import { schwaerzen, crontabZeile, ist_erlaubt, fuehre_wartung_aus, AKTIONEN } from './wartung.mjs';
+import { schwaerzen, crontabZeile, psZeile, journalZeile, ist_erlaubt, fuehre_wartung_aus, AKTIONEN } from './wartung.mjs';
 
 let n = 0; const t = (name, fn) => { fn(); n++; console.log('✓', name); };
 const weg = (text, geheim) => assert.ok(!schwaerzen(text).includes(geheim), `nicht geschwärzt: ${text}`);
@@ -75,7 +75,7 @@ t('crontab_luxe: nur Zeitfelder und Pfade (Allowlist)', () => {
   assert.equal(crontabZeile('*/5 * * * * /opt/x/ftp://u:p@h'), '*/5 * * * * …');   // Pfad mit Zugangsdaten → weg
 });
 t('nur Namen aus der Liste, nichts anderes', () => {
-  for (const a of ['platte', 'dienste_server', 'crontab_luxe', 'platte_schlank', 'platte_bericht', 'speicher', 'alt_cron_aus', 'alt_cron_zurueck']) assert.ok(ist_erlaubt(a), a);
+  for (const a of ['platte', 'dienste_server', 'crontab_luxe', 'platte_schlank', 'platte_bericht', 'speicher', 'alt_cron_aus', 'alt_cron_zurueck', 'waechter_zustand']) assert.ok(ist_erlaubt(a), a);
   for (const a of ['rm -rf /', 'platte; reboot', '__proto__', 'constructor', 'toString', '', null, undefined, ['platte']]) assert.ok(!ist_erlaubt(a), String(a));
   assert.throws(() => fuehre_wartung_aus('reboot'), /nicht erlaubt/);
 });
@@ -117,5 +117,85 @@ t('verändernde Aktion mit gescheitertem Pflichtschritt wirft MIT Teilergebnis (
     AKTIONEN.__probe.schritte = [['false', [], { weiter: true }], ['true', []]];
     const r = fuehre_wartung_aus('__probe'); assert.equal(r.ausgaben.length, 2);   // Auskunftsschritt darf scheitern
   } finally { delete AKTIONEN.__probe; }
+});
+// ── 13.10.2026: waechter_zustand (Plan «Hetzner auf Maximum», Schritt 1) ─────────────────────────────────────────
+t('psZeile: Alter + Einheit + Skriptname, NIE Argumente', () => {
+  assert.equal(psZeile('   725 luxe-waechter.service python3 automation/cj_ausgelistet_sichtbar.py --token abc123'),
+               '12m luxe-waechter.service cj_ausgelistet_sichtbar.py');
+  assert.equal(psZeile('    30 luxe-agent.service /usr/bin/node /opt/luxe-agent/repo/server/luxe_auftrag_runner.mjs'),
+               '30s luxe-agent.service luxe_auftrag_runner.mjs');
+  // setsid-Huelle aus fixer_keepalive.sh: Satzzeichen am Wortrand, Lock- und Log-Pfade, Umgebungswert
+  assert.equal(psZeile('  4000 luxe-waechter.service bash -c exec 9>/tmp/lock_x.lock; flock -n 9 || exit 0; exec >> "/tmp/x.log" 2>&1; NUR_NEIN=1 exec python3 automation/besuchte_seiten_lieferbar.py;'),
+               '66m luxe-waechter.service besuchte_seiten_lieferbar.py');
+  assert.equal(psZeile('9200000 luxe-waechter.service bash automation/fixer_keepalive.sh'), '106d luxe-waechter.service fixer_keepalive.sh');
+  assert.equal(psZeile('   200 luxe-waechter.service bash -c curl -u luxe:S3cret https://api'), '3m luxe-waechter.service bash');
+  assert.equal(psZeile('    12 luxe-m-cj_ausgelistet.service /usr/bin/nice -n 10 python3 automation/cj_ausgelistet_sichtbar.py'),
+               '12s luxe-m-cj_ausgelistet.service cj_ausgelistet_sichtbar.py');
+  for (const z of ['  5 - [kworker/0:1-events]', '9000000 fail2ban.service /usr/bin/python3 /usr/bin/fail2ban-server -xf start',
+                   '  80 ssh.service sshd: root@pts/0', '', 'kaputt'])
+    assert.equal(psZeile(z), null, z);
+  for (const z of ['  9 luxe-waechter.service node x.mjs --api-key=abc123', '  9 luxe-waechter.service python3 y.py https://u:pw@h/x'])
+    assert.ok(!/abc123|pw@/.test(psZeile(z)), z);
+});
+t('journalZeile: nur systemds eigene Zeilen, gekürzt', () => {
+  assert.equal(journalZeile('2026-10-13T19:20:01+00:00 ubuntu-4gb-nbg1-1 systemd[1]: luxe-waechter.service: Consumed 1min 2.345s CPU time over 3min 4.567s wall clock time, 312.4M memory peak.'),
+               '2026-10-13T19:20:01 Consumed 1min 2.345s CPU time over 3min 4.567s wall clock time, 312.4M memory peak.');
+  assert.equal(journalZeile('2026-10-13T19:17:01+0000 srv systemd[1]: Starting luxe-waechter.service - LuxeStyle Aufseher-Keepalive (Tages-Waechter)...'),
+               '2026-10-13T19:17:01 Starting');
+  assert.equal(journalZeile('2026-10-13T19:20:01+00:00 srv systemd[1]: luxe-waechter.service: Deactivated successfully.'),
+               '2026-10-13T19:20:01 Deactivated successfully.');
+  // Ausgabe von engine_keepalive.sh steht im selben Journal — kommt nie durch, auch wenn sie «Consumed» sagt
+  assert.equal(journalZeile('2026-10-13T19:18:00+00:00 srv bash[1234]: Consumed GROQ_API_KEY=gsk_abc'), null);
+  assert.equal(journalZeile('Oct 13 19:20:01 srv systemd[1]: luxe-waechter.service: Consumed 3s'), null);   // ohne -o short-iso
+});
+t('Schritt-Optionen letzte/zaehlen/max; zaehlen nie neben einem Fehlschlag', () => {
+  AKTIONEN.__zaehl = { was: 'Probe', aendert: false, weiter: true, schritte: [
+    ['printf', ['a\nb\nc\n'], { zaehlen: true }],
+    ['printf', [''], { zaehlen: true }],
+    ['printf', ['1\n2\n3\n'], { letzte: 2 }],
+    ['printf', ['abcdefghi\n'.repeat(600)], { max: 5000 }],   // viele Zeilen: eine Einzelzeile kappt schon ZEILE_MAX
+    ['printf', ['abcdefghi\n'.repeat(600)]],
+    ['false', [], { zaehlen: true }],
+  ] };
+  try {
+    const r = fuehre_wartung_aus('__zaehl').ausgaben.map(x => x.ausgabe);
+    assert.deepEqual(r.slice(0, 3), ['3', '0', '2\n3']);
+    assert.equal(r[3].length, 5000); assert.equal(r[4].length, 4000);
+    assert.equal(r[5], '', 'gescheiterter Zählschritt meldet keine «0»');
+  } finally { delete AKTIONEN.__zaehl; }
+});
+t('waechter_zustand: rein lesend, feste Schritte, nichts aus /etc/luxe', () => {
+  const a = AKTIONEN.waechter_zustand;
+  assert.ok(!a.aendert && a.weiter, 'aendert nein, weiter ja');
+  const befehle = a.schritte.map(([b]) => b);
+  for (const b of ['systemctl', 'journalctl', 'ps', 'python3', 'ffmpeg', 'git', 'df', 'free', 'swapon', 'find', 'tail'])
+    assert.ok(befehle.includes(b), `Schritt ${b} fehlt`);
+  // systemctl/git nur lesende Unterbefehle
+  for (const [b, argv] of a.schritte) {
+    if (b === 'systemctl') assert.ok(['show', 'list-units'].includes(argv[0]), `systemctl ${argv[0]}`);
+    if (b === 'git') assert.deepEqual(argv.slice(0, 4), ['-C', '/opt/luxe-waechter/repo', 'stash', 'list']);
+    assert.ok(!argv.some(x => /\/etc\/luxe|secrets/.test(x)), `${b}: liest Geheimnisse`);
+  }
+  const ps = a.schritte.find(([b]) => b === 'ps');
+  assert.equal(ps[2].form, psZeile, 'ps nur über psZeile');
+  const j = a.schritte.find(([b]) => b === 'journalctl');
+  assert.equal(j[2].form, journalZeile, 'Journal nur über journalZeile');
+  assert.ok(!j[1].includes('-g') && !j[1].includes('-n') && j[1].includes('short-iso'), 'journalctl: aufsteigend, short-iso');
+  // der Python-Schritt importiert nur und druckt Versionen — kein Datei-, Prozess- oder Netzzugriff
+  const py = a.schritte.find(([b]) => b === 'python3')[1];
+  assert.equal(py[0], '-c');
+  assert.ok(!/open\(|os\.|subprocess|socket|exec\(|eval\(|urllib|sys\.argv/.test(py[1]), 'Python-Probe nur Import');
+  const st = a.schritte.find(([b, argv]) => b === 'git' && argv.includes('list') && !argv.includes('-1'));
+  assert.ok(st[2].zaehlen, 'Stash-Liste wird nur gezählt (Nachrichten bleiben auf dem Server)');
+});
+// Interpreter als Befehl nur für die feste Import-Probe in waechter_zustand
+t('Interpreter (python3/node) nur in waechter_zustand', () => {
+  for (const [name, a] of Object.entries(AKTIONEN)) for (const [b] of a.schritte)
+    if (['python3', 'python', 'node', 'perl'].includes(b)) assert.equal(name, 'waechter_zustand', name);
+});
+t('waechter_zustand läuft durch, auch ohne systemd und ohne Wächter-Klon (Container)', () => {
+  const r = fuehre_wartung_aus('waechter_zustand');
+  assert.equal(r.ausgaben.length, AKTIONEN.waechter_zustand.schritte.length, 'jeder Schritt gemeldet');
+  for (const x of r.ausgaben) assert.ok(!/GROQ|gsk_|shpat_|shpss_/.test(x.ausgabe), `${x.befehl}: Geheimnis in der Ausgabe`);
 });
 console.log(`\n${n} Gegenproben grün`);
