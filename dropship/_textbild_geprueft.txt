@@ -62860,3 +62860,4 @@ gid://shopify/Product/16616425226631	gid://shopify/MediaImage/77500733358471
 gid://shopify/Product/16616438825351	gid://shopify/MediaImage/77500808757639
 gid://shopify/Product/16616438989191	gid://shopify/MediaImage/77500809675143
 gid://shopify/Product/16616439185799	gid://shopify/MediaImage/77500810559879
+gid://shopify/Product/16609975075207	gid://shopify/MediaImage/77468610724231	bildtausch-sperre
