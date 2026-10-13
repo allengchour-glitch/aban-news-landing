@@ -1,8 +1,8 @@
-# CJ-Lagerabgleich (2026-10-13 05:08 UTC, SCHARF)
+# CJ-Lagerabgleich (2026-10-13 05:26 UTC, SCHARF)
 
 Werkzeug `automation/cj_lager_abgleich.py` — Regel im Kopf. Bestand 0 → Variante «ausverkauft» (DENY), Bestand zurück → wieder kaufbar. Nichts gelöscht, nichts gedraftet.
 
-CJ-Ware aktiv: 49707 · in diesem Lauf fällig: 0
+CJ-Ware aktiv: 49694 · in diesem Lauf fällig: 0
 
 | Zustand | Anzahl |
 |---|---:|
