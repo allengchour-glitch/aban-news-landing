@@ -231,3 +231,5 @@ slug:nordische-fransen-strickdecke-8c46da
 slug:duales-stereo-karaoke-system-601000
 name:dualesstereokaraokesystem
 slug:wollpullover-mit-crewneck
+slug:perucke-disco-gold-fgapc23986
+name:perückediscogold

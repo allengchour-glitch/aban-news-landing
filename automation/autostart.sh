@@ -67,7 +67,10 @@ fi
 #        Queue-Runner arbeitet automation/cj_search_queue.txt ab (4er-Batches, #done-Marker),
 #        danach Kategorie-Fill CAP=60. Braucht /tmp/cj_token.json (sonst No-op).
 if [ "$GRIND_AUS" = "0" ] && [ -s /tmp/cj_token.json ] && ! running 'cj_queue_runner.sh' && ! running 'cj_sku_import.mjs' && ! running 'cj_category_fill.mjs'; then
-  if [ ! -x /tmp/cj_queue_runner.sh ] && [ -f automation/cj_queue_runner.sh ]; then
+  # 13.10.2026: Repo-Fassung gewinnt IMMER (cmp), nicht nur wenn /tmp fehlt. Bis heute lief nach jedem
+  # Sitzungsstart die /tmp-Kopie vom 27.09. weiter — ohne Relevanz-Tor (Fremdware: Golfbag-Abdeckung,
+  # Toner-Trommel) und mit «#done» bei 0 Treffern (SEO-Sofort K8, Prüfbericht 13.10.).
+  if [ -f automation/cj_queue_runner.sh ] && ! cmp -s automation/cj_queue_runner.sh /tmp/cj_queue_runner.sh; then
     cp automation/cj_queue_runner.sh /tmp/cj_queue_runner.sh && chmod +x /tmp/cj_queue_runner.sh
   fi
   if [ -x /tmp/cj_queue_runner.sh ]; then

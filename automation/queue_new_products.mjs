@@ -95,7 +95,7 @@ function hashtags(pt = '') {
 // wie tiktok_karussell.py (Laden-Zeile aus Belp, Lieferzeit nur wenn belegt, Kommentar-Frage, Link in Bio).
 function ladenZeile(tags) {
   const t = new Set((tags || []).map(x => String(x).toLowerCase()));
-  const liefer = t.has('ch-lager') ? 'Versand ab Schweizer Lager in 1–2 Werktagen' : 'Lieferung 10–20 Werktage, dafür ehrlich angeschrieben';
+  const liefer = t.has('ch-lager') ? (t.has('profil-ch-lager') ? 'Versand ab Schweizer Lager, meist in 2–3 Werktagen' : 'Ab Schweizer Lager, Lieferdatum steht beim Artikel und in der Kasse') : 'Lieferung 10–20 Werktage, dafür ehrlich angeschrieben';  // 13.10.2026 (VERB-M1): Kasse zeigt für Profil CH-Lager 2–3 Werktage
   return `Kleiner Schweizer Shop aus Belp, kein Konzern. ${liefer} · 30 Tage Rückgabe · TWINT oder Rechnung.\nFragen? Schreib sie in die Kommentare 👇`;
 }
 function caption(title, handle, pt, price, tags) {

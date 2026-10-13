@@ -193,3 +193,30 @@ Ampel-Zeile «🖥️ Wächter laufen nur in Session-Arbeitszeit» verschwindet,
 unschädlich: alle Wächter sind ledger-idempotent, die Autocommitter mergen; doppelte CJ-Punkte
 bleiben — nach gelungenem Server-Start die Cloud-Routine `trig_01Uy3zVefXbzCZn9Dr2qvkwh` auf
 2 h strecken.
+
+## 📏 Takt-Messung 13.10.2026 — Befund 2 GEMESSEN (Plan «Hetzner auf Maximum», Schritt 1)
+
+Quelle: `auftraege/erledigt/server-zustand-2026-10-13.json` (Wartungsaktion `waechter_zustand`, rein lesend,
+gelaufen 19:58:40 UTC, 0,3 s, Stand `ok`). Ab 14.10. täglich neu über `auftraege/wiederkehrend/server-zustand.json`.
+
+| Frage | GEMESSEN 13.10. |
+|---|---|
+| Wie ist `luxe-waechter.service` gebaut? | `Type=oneshot`, `KillMode=control-group`, `ExitType=main`, `RemainAfterExit=no`, `TimeoutStartUSec=15min` |
+| Wie lange dauert ein Takt? | 17 abgeschlossene Takte in 3 h, laut systemd («Consumed … over X wall clock time») **1,5–2,8 min** (91–167 s); kein «Failed», «timed out» oder «Killing» |
+| Überlebt ein Motor das Takt-Ende? | **Nein.** Um 19:58 war der Dienst `inactive/dead` (seit 19:52:43), `ps` fand **keinen** Prozess in `luxe-waechter.service`. Mit `KillMode=control-group` räumt systemd am Takt-Ende die ganze cgroup ab. |
+| Reel-Bau auf dem Server möglich? | **Nein:** `scipy` FEHLT, `av` FEHLT, `ffmpeg` fehlt (ENOENT); vorhanden numpy 2.3.5, PIL 12.1.1 |
+| Stashes im Wächter-Klon | **98**, neuester 13.10. 00:21 UTC (Fehlalarm-Rewind, Plan-Schritt 4) |
+| Platte / RAM / Swap | `/` **90 %** (32 von 38 GB, 3,8 GB frei); `/tmp` (tmpfs) 32 %; RAM 3,8 GB, 2,35 GB verfügbar; **kein Swap** |
+| /tmp-Dateien | nur `_fixer_herzschlag` (19:50) und `export.jsonl` (28.09., 17 MB); die Logs der zwei CJ-Wachen fehlen; keine `luxe-m-*`-Einheiten |
+
+**Folge:** Befund 2 ist keine Vermutung mehr. Jeder Lauf, den `engine_keepalive.sh`/`fixer_keepalive.sh` im
+Wächter-Takt startet, stirbt nach spätestens ~3 Minuten mit dem Takt — lange Läufe (Kundenschutz ~45 min,
+Google-Feedback 466 s, Reel-Bau) kommen auf dem Server nie zu Ende. Sie brauchen eigene Einheiten
+(Plan-Schritt 8, `luxe-m-*`).
+
+**Nachgebessert nach Prüfer S1 (13.10. abends):** `psZeile` meldet ein unbekanntes Programm in einer
+luxe-/abannews-Einheit jetzt als «(anderes)» statt es wegzulassen (sonst falsches «nichts überlebt»); die
+Python-Probe läuft mit `python3 -I` (eine `scipy.py` im Arbeitsverzeichnis hätte das echte Modul verdeckt — im
+Container belegt: ohne `-I` «scipy GEFAELSCHT», mit `-I` «scipy 1.17.1»); `FragmentPath`/`DropInPaths` sind aus
+der Abfrage genommen (die Schwärzung traf «PAT» in «FragmentPATh» und zeigte «***»). Für Schritt 6 liegt der
+Einmal-Auftrag `auftraege/offen/platte-2026-10-14.json` (Git-Grössen je Klon inkl. `/opt/luxe/repo`, nur lesend).

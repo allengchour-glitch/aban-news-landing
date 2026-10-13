@@ -347,6 +347,13 @@ while true; do
     touch "/tmp/kb_wache_$(date -u +%F)"
     ( cd "$REPO" && timeout 120 python3 automation/knowledge_base_fakten.py --wache >> /tmp/knowledge_base_wache.log 2>&1 & )
   fi
+  # 🎯 CJ-SUCHE (13.10.2026, K8): Tageszahlen des Relevanz-Tors der CJ-Suchaufträge (Suchen · irrelevant verworfen · #ohne-treffer ·
+  # angelegt; rote Kanarien → «⛔ RELEVANZ-TOR ROT»). Liest nur Dateien (kein CJ-/Shopify-Aufruf). Einmal am Tag ab 22 UTC, damit
+  # die Zahl den Tag abdeckt; den roten Fall meldet die Ampel (cj_suche_tor) schon stündlich.
+  if [ "$(date -u +%H)" -ge 22 ] && [ -f "$REPO/automation/cj_sku_import.mjs" ] && [ ! -f /tmp/cj_suche_stand_$(date -u +%F) ]; then
+    touch "/tmp/cj_suche_stand_$(date -u +%F)"
+    echo "$(date -u +%H:%M) $( ( cd "$REPO" && timeout 60 /opt/node22/bin/node automation/cj_sku_import.mjs --stand ) 2>/dev/null || echo "CJ-SUCHE: --stand unklar")"
+  fi
   # ⚠️ HERZSCHLAG GLEICH ZU RUNDENBEGINN (29.08.2026). Bis heute stand er nur GANZ AM ENDE
   # der Runde (vor dem sleep 120). Eine Runde dauert aber laenger als die 10-Minuten-Schwelle,
   # gegen die engine_keepalive prueft — allein die 13 Reiniger werden mit je 10 s Abstand
@@ -2586,6 +2593,8 @@ KLT=/tmp/test_klingen_tor.log
           "exec 9>/tmp/lock_produkttext.lock; flock -n 9 || exit 0; exec >> \"$WM\" 2>&1; \
            QUELLE=live CAP=200 exec python3 automation/wearable_messversprechen.py" 9>&- & )
       echo "$(date -u +%H:%M) wearable_messversprechen geprüft"
+      # 13.10.2026 (ON-M1A): Stand des LETZTEN Laufs nur melden, wenn etwas offen oder unklar ist (der neue Lauf schreibt später).
+      WMS=$(grep -a "WEARABLE-SEO:" "$WM" 2>/dev/null | tail -n 1); case "$WMS" in *"⚠️"*|*unklar*) echo "$(date -u +%H:%M) $WMS";; esac
     fi
   fi
   # SELBSTKONTROLLE: zaehlt die bekannten Falschaussage-Klassen AM OBJEKT (voller

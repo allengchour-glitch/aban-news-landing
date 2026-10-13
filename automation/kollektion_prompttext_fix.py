@@ -29,7 +29,7 @@ anders formulierten Prompt übersehen.
 ENTSCHEIDUNG (was hier bewusst NICHT passiert):
 1. Nur belegte Aussagen. Erlaubt sind «Gratis-Versand ab CHF 50» und «30 Tage Rückgabe» (beides
    live in der Ankündigungsleiste und im Versandtext des Shops).
-2. «Blitzversand / Lieferung in 1–2 Werktagen» NUR für CH-Lager-Ware. Das Skript prüft das
+2. «Blitzversand / Lieferung meist in 2–3 Werktagen» NUR für CH-Lager-Ware. Das Skript prüft das
    selbst: der Satz wird nur geschrieben, wenn ALLE aktiven Produkte der Kollektion den Tag
    `ch-lager` tragen (ft-ballone 35/35, ft-kostuem-hut 165/165 — geprüft). Fehlt einer, bricht
    der Lauf für diese Kollektion ab, statt eine Lieferzeit zu erfinden. Das ist dieselbe Falle,
@@ -85,7 +85,7 @@ PROMPT_MUSTER = re.compile(
     r"as an AI|reasoning|\bprompt\b|\bbullet points?\b|\btone of voice\b", re.I)
 
 SCHLUSS = "Gratis-Versand ab CHF 50, 30 Tage Rückgabe."
-CH_SATZ = "Lieferung in 1–2 Werktagen"   # nur für 100 % CH-Lager erlaubt
+CH_SATZ = "Lieferung meist in 2–3 Werktagen"   # nur für 100 % CH-Lager erlaubt
 
 TEXTE = {
     "premium-marken-lager": {
@@ -100,19 +100,19 @@ TEXTE = {
         "body": "<p>Zylinder, Cowboy- und Hexenhüte, Helme, Kappen und Plüschmützen für "
                 "Fasnacht, Halloween und Motto-Partys – von der Waggis-Zipfelmütze bis zum "
                 "Piratenhut.</p>"
-                "<p>Alle Artikel liegen im Schweizer Lager: Lieferung in 1–2 Werktagen. "
+                "<p>Alle Artikel liegen im Schweizer Lager: Lieferung meist in 2–3 Werktagen. "
                 "Gratis-Versand ab CHF 50, 30 Tage Rückgabe.</p>",
         "seo": "Kostümhüte & Kopfbedeckungen: Zylinder, Cowboy- und Hexenhüte, Helme & Kappen "
-               "ab Schweizer Lager, Lieferung in 1–2 Werktagen.",
+               "ab Schweizer Lager, Lieferung meist in 2–3 Werktagen.",
         "ch_lager": True,
     },
     "ft-ballone": {
         "body": "<p>Luftballons im 100er-Pack, Folienballons und fertige Ballongirlanden für "
                 "Geburtstag, Hochzeit und jedes Fest.</p>"
-                "<p>Alles liegt im Schweizer Lager: Lieferung in 1–2 Werktagen. "
+                "<p>Alles liegt im Schweizer Lager: Lieferung meist in 2–3 Werktagen. "
                 "Gratis-Versand ab CHF 50, 30 Tage Rückgabe.</p>",
         "seo": "Luftballons im 100er-Pack, Folienballons & Ballongirlanden ab Schweizer Lager – "
-               "Lieferung in 1–2 Werktagen, gratis ab CHF 50.",
+               "Lieferung meist in 2–3 Werktagen, gratis ab CHF 50.",
         "ch_lager": True,
     },
 }

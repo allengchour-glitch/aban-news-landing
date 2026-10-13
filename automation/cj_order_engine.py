@@ -22,8 +22,13 @@ DRY=1 rechnet nur durch, ohne bei CJ anzulegen.
 
 13.10.2026 (Hetzner-Plan Schritt 3, Doppelbestellung): Der Automat laeuft auf ZWEI Rechnern (Server ubuntu-4gb-*
 und Cloud-Container), die flock-Sperre gilt nur je Rechner. Deshalb: der Server legt sofort an, die Cloud erst,
-wenn die Shopify-Bestellung aelter als CLOUD_WARTE_MIN (15) Minuten ist; und JEDER Rechner liest die CJ-Liste
-direkt vor createOrderV2 noch einmal. Von Hand sofort anlegen in der Cloud: CLOUD_WARTE_MIN=0.
+wenn die Shopify-Bestellung aelter als CLOUD_WARTE_MIN (45) Minuten ist; und JEDER Rechner liest die CJ-Liste
+direkt vor createOrderV2 noch einmal. Von Hand sofort anlegen in der Cloud: CLOUD_WARTE_MIN=0 — ⚠️ NUR wenn feststeht,
+dass der Server die Bestellung nicht schon anlegt (Server aus, oder LX<nr> nicht in der CJ-Liste UND kein Server-Lauf
+in den letzten 20 min); sonst schuetzt nur noch der zweite Blick (~2 s Fenster + unbekannter Verzug der CJ-Liste).
+createOrderV2 wird NIE wiederholt, wenn die Antwort verloren geht (cj(..., einmal=True)) — Ergebnis «unklar», Push
+«nicht bezahlen, bis cj_zahlung_offen geprueft hat». Nach der Anlage liest der Automat die CJ-Liste nochmals: liegen
+fuer LX<nr> zwei verschiedene Auftraege (cjOrderId-Staemme), geht statt des Zahl-Pushes eine ⛔-Warnung OHNE Link raus.
 `--selbsttest` prueft das ohne einen einzigen echten CJ- oder Shopify-Aufruf.
 """
 import json, subprocess, time, os, re, sys, socket
@@ -40,10 +45,11 @@ except Exception:          # Push darf den Bestell-Automaten nie aufhalten
     _push, CJ_BESTELLUNGEN = None, "https://cjdropshipping.com/mine/dropshipping/orderList?orderType=5"
 
 
-def melde(schluessel, titel, text):
+def melde(schluessel, titel, text, mit_link=True, **kw):
+    """mit_link=False: Warnung OHNE Klick auf die CJ-Zahlliste (13.10.2026: Doppel-Auftrag darf keinen Zahllink haben)."""
     if _push and not DRY:
         try:
-            _push(schluessel, titel, text, klick=CJ_BESTELLUNGEN)
+            _push(schluessel, titel, text, klick=CJ_BESTELLUNGEN if mit_link else None, **kw)
         except Exception as e:
             print(f"    (Push gescheitert: {type(e).__name__})", flush=True)
 
@@ -58,11 +64,17 @@ LEDGER = "dropship/_cj_orders_done.txt"
 MAX_TAGE = int(os.environ.get("MAX_TAGE", "20"))       # Obergrenze fuers Lieferversprechen
 
 # 13.10.2026 (Hetzner-Plan Schritt 3): zeitliche Trennung Server/Cloud gegen eine doppelte CJ-Bestellung (echtes Geld).
-CLOUD_WARTE_MIN = float(os.environ.get("CLOUD_WARTE_MIN", "15"))
+# 13.10.2026 abends (Pruefer-Befund): 15 min war KUERZER als der gemessene Server-Zyklus. Gemessen in den Takt-Berichten
+# dropship/_cj_takt_ubuntu-4gb-nbg1-1.json (09–20 UTC): cj_order_engine auf dem Server 6–12 CJ-Aufrufe/h bei 2 Aufrufen je
+# Leerlauf = 3–6 Laeufe/h, also alle 10–20 min (17-Uhr-Fenster: 20 min); die Cloud ~20–22 Aufrufe/h = alle ~5,5 min.
+# Der Server holt eine neue Bestellung also oft erst nach 12–20 min ab — mit 15 min legte die Cloud im selben Fenster an.
+# 45 min = 2 volle Server-Zyklen + Reserve; faellt der Server aus, kommt die Bestellung trotzdem nach ~45 min zu CJ.
+CLOUD_WARTE_MIN = float(os.environ.get("CLOUD_WARTE_MIN", "45"))
 # Legt der Server an, schreibt ER die Ledger-Zeile mit SD-Nummer (kommt per git). Eine zusaetzliche «(bereits-bei-cj)»-
 # Zeile der Cloud waere im Ledger ein falscher Doppel-Treffer — die Cloud schreibt sie erst, wenn die Bestellung
 # aelter als LEDGER_NACHZUG_MIN ist (dann ist der Server vermutlich zwischen Anlage und Ledger gestorben).
-LEDGER_NACHZUG_MIN = float(os.environ.get("LEDGER_NACHZUG_MIN", "60"))
+# Muss groesser sein als Cloud-Wartezeit + Server-Zyklus + git-Verzug (45 + 20 + ~10–20) → 90 (13.10.2026, vorher 60).
+LEDGER_NACHZUG_MIN = float(os.environ.get("LEDGER_NACHZUG_MIN", "90"))
 
 
 def ist_server(host=None):
@@ -122,23 +134,36 @@ def usd_chf():
 USD_CHF = 0.80 if SELBSTTEST else usd_chf()
 
 
-def cj(path, body=None):
+UNKLAR = "unklar"
+
+
+def cj(path, body=None, einmal=False):
+    """einmal=True (13.10.2026, Pflicht fuer createOrderV2): bei leerer/unlesbarer Antwort NICHT nochmals senden — die
+    Anlage kann bei CJ angekommen sein (curl --max-time 45 schneidet nur die Antwort ab). Gegenprobe des Pruefers: ohne
+    diese Sperre 4 POSTs = 4 Auftraege fuer dieselbe LX. → {'code': 'unklar', ...}; der naechste Lauf sieht in der
+    CJ-Liste, ob der Auftrag existiert. Drossel-Codes 1600200/1600201 = CJ hat abgewiesen → Wiederholen ist sicher."""
     a = ["curl", "-s", "--max-time", "45", "-H", "CJ-Access-Token: " + CJTOK]
     if body is not None:
         a += ["-X", "POST", "-H", "Content-Type: application/json", "-d", json.dumps(body)]
     a.append("https://developers.cjdropshipping.com" + path)
+    letzte = {}
     for att in range(4):
         takt()
         out = subprocess.run(a, capture_output=True, text=True).stdout
         try:
             d = json.loads(out)
+            if not isinstance(d, dict):
+                raise ValueError("keine JSON-Objekt-Antwort")
         except Exception:
+            if einmal:
+                return {"code": UNKLAR, "message": "Antwort leer/unlesbar — Anlage unklar, nächster Lauf prüft die CJ-Liste"}
             time.sleep(4); continue
         # CJ drosselt getAccessToken/Suchen; bei Drossel kurz warten statt aufgeben
         if str(d.get("code")) in ("1600200", "1600201"):
+            letzte = d
             time.sleep(8 * (att + 1)); continue
         return d
-    return {}
+    return letzte if einmal else {}
 
 
 def gql(q, v=None):
@@ -383,7 +408,15 @@ def cj_bestellnummern(streng=False):
     Mal anlegen — dieselbe Falle wie beim Social-Doppelpost, nur kostet sie hier echtes Geld.
     Darum vor jeder Anlage die komplette CJ-Bestellliste gegenpruefen.
     13.10.2026: streng=True → None, wenn CJ die Liste nicht liefert (sonst sieht ein Ausfall aus wie «leer»)."""
-    nums, seite = set(), 1
+    alle = cj_liste(streng)
+    if alle is None:
+        return None
+    return {n.lstrip("#").upper() for n in ((o.get("orderNum") or "").strip() for o in alle) if n}
+
+
+def cj_liste(streng=False):
+    """Alle CJ-Auftraege (Eintraege mit orderNum, cjOrderId, orderId, orderStatus …); streng=True → None bei Ausfall."""
+    alle, seite = [], 1
     while seite <= 10:
         d = cj(f"/api2.0/v1/shopping/order/list?pageNum={seite}&pageSize=100")
         if streng and str(d.get("code")) != "200":
@@ -391,15 +424,41 @@ def cj_bestellnummern(streng=False):
         lst = (d.get("data") or {}).get("list") or []
         if not lst:
             break
-        for o in lst:
-            n = (o.get("orderNum") or "").strip()
-            if n:
-                nums.add(n.lstrip("#").upper())
+        alle += lst
         if len(lst) < 100:
             break
         seite += 1
         time.sleep(0.5)
-    return nums
+    return alle
+
+
+# 13.10.2026: dieselbe Regel wie cj_zahlung_offen.stamm()/TOT (dort gemessen an LX1013: CJ teilt einen Auftrag VOR dem
+# Bezahlen in SD…, SD…-2 — Teile sind kein Doppel; ein zweites createOrderV2 bekommt eine eigene SD-Nummer).
+try:
+    from cj_zahlung_offen import stamm as _stamm, TOT as _TOT
+except Exception:          # pragma: no cover — der Bestell-Automat darf an diesem Import nie scheitern
+    _TOT = {"TRASH", "CANCELLED"}
+
+    def _stamm(o):
+        c = str(o.get("cjOrderId") or "").strip().upper()
+        return re.sub(r"-\d+$", "", c) if c else "orderId " + str(o.get("orderId") or id(o))
+
+
+def staemme_nach_anlage(nr, cjid, lesen=None):
+    """13.10.2026: CJ-Liste NACH createOrderV2 streng neu lesen → Menge der Auftrags-Staemme fuer LX<nr>, None = unlesbar.
+    Der eben angelegte Auftrag zaehlt immer mit (die Liste kann ihm hinterherhinken); er wird ueber cjOrderId/orderId
+    wiedererkannt, damit er nicht doppelt zaehlt. ≥ 2 Staemme = echtes Doppel → kein Zahl-Push."""
+    alle = (lesen or (lambda: cj_liste(streng=True)))()
+    if not alle:          # leer ist bei CJ nie echt (28 Auftraege) → wie unlesbar
+        return None
+    eigene = [o for o in alle if str(o.get("orderNum") or "").strip().lstrip("#").upper() == f"LX{nr}".upper()
+              and o.get("orderStatus") not in _TOT]
+    staemme = {_stamm(o) for o in eigene}
+    ids = {str(o.get(k) or "").strip().upper() for o in eigene for k in ("cjOrderId", "orderId")}
+    c = str(cjid or "").strip().upper()
+    if c and c not in ids:
+        staemme.add(re.sub(r"-\d+$", "", c))
+    return staemme
 
 
 def vor_anlage(nr, lesen=None):
@@ -407,7 +466,9 @@ def vor_anlage(nr, lesen=None):
     nach Varianten- und Frachtabfragen Minuten alt — in der Zeit kann der andere Rechner LX<nr> angelegt haben.
     → ('frei', '') | ('bereits', Grund) | ('unlesbar', Grund). `lesen` = Testhaken für den Selbsttest."""
     nums = (lesen or (lambda: cj_bestellnummern(streng=True)))()
-    if nums is None:
+    # 13.10.2026 (Pruefer): auch eine «erfolgreiche» LEERE Liste (code 200, list []) ist unlesbar — bei CJ liegen
+    # 28 Auftraege, leer ist nie echt; als «frei» gewertet waere sie ein Freibrief fuers Doppel-Anlegen.
+    if nums is None or not nums:
         return "unlesbar", "CJ-Bestellliste gerade nicht lesbar — lieber nächster Lauf als Doppelbestellung"
     if f"LX{nr}".upper() in nums:
         return "bereits", f"LX{nr} liegt inzwischen bei CJ (anderer Rechner war schneller) — kein Doppel-Anlegen"
@@ -564,7 +625,17 @@ def main(host=None):
         if stand != "frei":
             print(f"  {o['name']}: ⏭️ {grund}", flush=True)
             continue
-        r = cj("/api2.0/v1/shopping/order/createOrderV2", body)
+        # 13.10.2026 (Pruefer-Befund): einmal=True — geht die Antwort verloren, wird NICHT nochmals angelegt.
+        r = cj("/api2.0/v1/shopping/order/createOrderV2", body, einmal=True)
+        if r.get("code") == UNKLAR:
+            # Keine Ledger-Zeile: der naechste Lauf (dieser oder der andere Rechner) sieht in der CJ-Liste, ob LX<nr>
+            # existiert, und schreibt dann «(bereits-bei-cj)». Bezahlt wird erst, wenn cj_zahlung_offen EINEN Auftrag zeigt.
+            print(f"    ⚠️ Anlage unklar: {r.get('message')}", flush=True)
+            melde(f"{o['name']}-anlage-unklar", f"⚠️ Bestellung {o['name']}: Anlage bei CJ unklar",
+                  f"createOrderV2 für LX{nr} ohne lesbare Antwort — nicht bezahlen, bis cj_zahlung_offen geprüft hat "
+                  f"(zeigt genau EINEN Auftrag LX{nr} unter «Zu bezahlen»). Kein zweiter Versuch, damit kein Doppel entsteht.",
+                  mit_link=False, tags="warning")
+            continue
         if r.get("code") != 200:
             print(f"    ❌ CJ lehnt ab: {r.get('message')}", flush=True)
             melde(f"{o['name']}-abgelehnt", f"❌ Bestellung {o['name']}: CJ lehnt ab", f"{str(r.get('message'))[:180]}")
@@ -573,44 +644,111 @@ def main(host=None):
         cjid = d.get("orderId") or ""
         f.write(f"{o['name']}\t{cjid}\tLX{nr}\t${gesamt:.2f}\n"); f.flush()
         print(f"    ✅ angelegt LX{nr} ({cjid}) — liegt im CJ-Warenkorb, zu zahlen ${gesamt:.2f}", flush=True)
-        melde(f"LX{nr}-angelegt", f"💳 Bestellung {o['name']} bezahlen: ${gesamt:.2f}",
-              f"CJ-Auftrag LX{nr} liegt bezahlbereit im Warenkorb. Kunde zahlte CHF {vk:.2f}, Marge ≈ CHF {marge:.2f}, "
-              f"Versand {wahl['logisticName']} ({wahl['logisticAging']} Tage). Tippen → CJ → Bestellungen → LX{nr} → Pay.")
+        # 13.10.2026 (Pruefer-Befund): vor dem Zahl-Push die CJ-Liste streng neu lesen. Zwei verschiedene Auftraege
+        # (Staemme) fuer LX<nr> = Doppel (beide Rechner gleichzeitig) → ⛔-Warnung OHNE Zahllink statt «bezahlen».
+        staemme = staemme_nach_anlage(nr, cjid)
+        if staemme is not None and len(staemme) >= 2:
+            print(f"    ⛔ DOPPELT bei CJ: LX{nr} hat {len(staemme)} Aufträge ({', '.join(sorted(staemme))}) — kein Zahl-Push", flush=True)
+            melde(f"LX{nr}-doppelt-angelegt", f"⛔ DOPPELT bei CJ: LX{nr} — NICHTS bezahlen",
+                  f"Für {o['name']} liegen {len(staemme)} Aufträge bei CJ ({', '.join(sorted(staemme))}). Nichts bezahlen, "
+                  f"bis cj_zahlung_offen genau EINEN zum Bezahlen vorlegt; die anderen erst prüfen (Betrag/Artikel), dann "
+                  f"in der CJ-Konsole löschen.", mit_link=False, tags="warning")
+        else:
+            sd = cjid or "(SD-Nummer fehlt — erst cj_zahlung_offen prüfen)"
+            melde(f"LX{nr}-angelegt", f"💳 Bestellung {o['name']} bezahlen: nur {sd} · ${gesamt:.2f}",
+                  f"CJ-Auftrag LX{nr} ({sd}) liegt bezahlbereit im Warenkorb — nur {sd} bezahlen. Kunde zahlte "
+                  f"CHF {vk:.2f}, Marge ≈ CHF {marge:.2f}, Versand {wahl['logisticName']} ({wahl['logisticAging']} Tage). "
+                  f"Tippen → CJ → Bestellungen → LX{nr} → {sd} → Pay."
+                  + (" (CJ-Liste nach der Anlage nicht lesbar — Doppel-Prüfung macht cj_zahlung_offen.)" if staemme is None else ""))
         time.sleep(1)
 
 
+def selbsttest_cj_einmal():
+    """13.10.2026: cj() selbst, mit gefälschtem curl (subprocess) — kein Netz. «Antwort verloren» → genau 1 POST."""
+    import types
+    g = globals()
+    alt = {k: g[k] for k in ("subprocess", "time", "takt")}
+    faelle = [  # (Name, Antworten von curl der Reihe nach, einmal, soll Anzahl Aufrufe, soll code)
+        ("Antwort verloren → genau 1 POST",       ["", "", "", ""],                                   True,  1, UNKLAR),
+        ("Antwort unlesbar (HTML) → genau 1 POST", ["<html>502</html>", "", "", ""],                   True,  1, UNKLAR),
+        ("Drossel 1600200, dann OK → 2 POSTs",     ['{"code":1600200}', '{"code":200,"data":{}}'],     True,  2, 200),
+        ("Drossel 4× → abgewiesen, kein unklar",   ['{"code":1600201}'] * 4,                           True,  4, 1600201),
+        ("Lesen ohne einmal: leer → 4 Versuche",   ["", "", "", ""],                                   False, 4, None),
+    ]
+    fehler = 0
+    try:
+        for name, antworten, einmal, soll_n, soll_code in faelle:
+            aufrufe = []
+
+            def run(a, **kw):
+                aufrufe.append(a)
+                return types.SimpleNamespace(stdout=antworten[len(aufrufe) - 1] if len(aufrufe) <= len(antworten) else "")
+            g.update(subprocess=types.SimpleNamespace(run=run), time=types.SimpleNamespace(sleep=lambda s: None),
+                     takt=lambda: None)
+            r = cj("/api2.0/v1/shopping/order/createOrderV2", {"orderNumber": "LX9001"}, einmal=einmal)
+            ok = len(aufrufe) == soll_n and r.get("code") == soll_code
+            fehler += not ok
+            print(f"  {'OK  ' if ok else 'FEHL'} cj(): {name}: Aufrufe={len(aufrufe)} code={r.get('code')}")
+    finally:
+        g.update(alt)
+    return fehler
+
+
 def selbsttest():
-    """13.10.2026 (Hetzner-Plan Schritt 3): main() mit gefälschtem CJ/Shopify — KEIN echter Aufruf, kein Push.
-    Je Fall: Rechner, Alter der Shopify-Bestellung, was die CJ-Liste beim 1. und 2. Lesen zeigt → angelegt ja/nein."""
+    """13.10.2026 (Hetzner-Plan Schritt 3): main() mit gefälschtem CJ/Shopify/Push — KEIN echter Aufruf, kein Push.
+    Je Fall: Rechner, Alter der Shopify-Bestellung, was die CJ-Liste beim 1./2./3. Lesen zeigt (3. = nach der Anlage),
+    Antwort von createOrderV2 → angelegt ja/nein, Ledger-Zeile, Text im Log, Push (Titel-Teil, mit Zahllink ja/nein)."""
     import tempfile, io, contextlib
     g = globals()
     alt = {k: g[k] for k in ("cj", "offene_bestellungen", "vid_fuer", "fracht", "token_pruefen", "LEDGER", "DRY", "_push")}
     jetzt = dt.datetime.now(dt.timezone.utc)
-    faelle = [  # (Name, Host, Alter min, CJ-Liste 1. Lesen, 2. Lesen, soll angelegt, soll Ledger-Zeile, Text im Log)
-        ("frisch, Cloud wartet",           "vm",                 5,  [],         None,       False, None, "Cloud wartet"),
-        ("alt, Cloud legt an",             "vm",                 20, [],         [],         True,  "SD",  "angelegt LX9001"),
-        ("frisch, Server legt sofort an",  "ubuntu-4gb-nbg1-1",  1,  [],         [],         True,  "SD",  "angelegt LX9001"),
-        ("LX schon bei CJ (Laufbeginn)",   "vm",                 20, ["LX9001"], None,       False, None, "Ledger-Zeile kommt"),
-        ("LX schon bei CJ, Server",        "ubuntu-4gb-nbg1-1",  1,  ["LX9001"], None,       False, "(bereits-bei-cj)", "kein Doppel"),
-        ("LX bei CJ seit > 60 min, Cloud", "vm",                 90, ["LX9001"], None,       False, "(bereits-bei-cj)", "kein Doppel"),
-        ("LX taucht vor Anlage auf",       "vm",                 20, [],         ["LX9001"], False, None, "anderer Rechner war schneller"),
-        ("CJ-Liste vor Anlage unlesbar",   "vm",                 20, [],         "FEHLER",   False, None, "nicht lesbar"),
+    SV, CL = "ubuntu-4gb-nbg1-1", "vm"
+    EIGEN = {"orderNum": "LX9001", "cjOrderId": "SDTESTLX9001", "orderId": "SDTESTLX9001", "orderStatus": "UNPAID"}
+    ANDERER = {"orderNum": "LX9001", "cjOrderId": "SDANDERS0001", "orderId": "SDANDERS0001", "orderStatus": "UNPAID"}
+    TEIL2 = dict(EIGEN, cjOrderId="SDTESTLX9001-2", orderId="SDTESTLX9001-2")
+    VERW = dict(ANDERER, orderStatus="TRASH")
+    OK200 = None   # createOrderV2 → code 200 mit SDTEST<LX>
+    ZAHL = ("bezahlen: nur SDTESTLX9001", True)
+    faelle = [  # (Name, Host, Alter, Liste 1, 2, 3, createOrderV2-Antwort, soll angelegt, soll Ledger, Text im Log, soll Push)
+        ("frisch, Cloud wartet",            CL, 5,   [],         None,                None,              OK200, False, None, "Cloud wartet 45 min", None),
+        ("30 min alt, Cloud wartet noch",   CL, 30,  [],         None,                None,              OK200, False, None, "Cloud wartet 45 min", None),
+        ("alt, Cloud legt an",              CL, 50,  [],         ["LX1000"],          ["LX1000", EIGEN], OK200, True,  "SD",  "angelegt LX9001", ZAHL),
+        ("frisch, Server legt sofort an",   SV, 1,   [],         ["LX1000"],          ["LX1000", EIGEN], OK200, True,  "SD",  "angelegt LX9001", ZAHL),
+        ("LX schon bei CJ (Laufbeginn)",    CL, 50,  ["LX9001"], None,                None,              OK200, False, None, "Ledger-Zeile kommt", None),
+        ("LX schon bei CJ, Server",         SV, 1,   ["LX9001"], None,                None,              OK200, False, "(bereits-bei-cj)", "kein Doppel", None),
+        ("LX bei CJ seit > 90 min, Cloud",  CL, 120, ["LX9001"], None,                None,              OK200, False, "(bereits-bei-cj)", "kein Doppel", None),
+        ("LX taucht vor Anlage auf",        CL, 50,  [],         ["LX1000", "LX9001"], None,             OK200, False, None, "anderer Rechner war schneller", None),
+        ("CJ-Liste vor Anlage unlesbar",    CL, 50,  [],         "FEHLER",            None,              OK200, False, None, "nicht lesbar", None),
+        ("2. Lesen leer (code 200) → nicht anlegen", CL, 50, [], [],                  None,              OK200, False, None, "nicht lesbar", None),
+        ("Antwort verloren → unklar, kein Ledger", SV, 1, [],    ["LX1000"],          None,              "UNKLAR", True, None, "Anlage unklar",
+         ("Anlage bei CJ unklar", False)),
+        ("Doppel nach Anlage → ⛔ ohne Link", SV, 1, [],         ["LX1000"],          [EIGEN, ANDERER],  OK200, True,  "SD",  "DOPPELT bei CJ",
+         ("DOPPELT bei CJ: LX9001", False)),
+        ("CJ-Teilung SD…-2 ist kein Doppel", SV, 1, [],          ["LX1000"],          [EIGEN, TEIL2],    OK200, True,  "SD",  "angelegt LX9001", ZAHL),
+        ("verworfener Zweitauftrag zählt nicht", SV, 1, [],      ["LX1000"],          [EIGEN, VERW],     OK200, True,  "SD",  "angelegt LX9001", ZAHL),
+        ("Liste hinkt nach (eigener fehlt)", SV, 1, [],          ["LX1000"],          ["LX1000"],        OK200, True,  "SD",  "angelegt LX9001", ZAHL),
+        ("Liste nach Anlage unlesbar → Zahl-Push mit SD", SV, 1, [], ["LX1000"],      "FEHLER",          OK200, True,  "SD",  "angelegt LX9001", ZAHL),
     ]
-    fehler = 0
+    fehler = selbsttest_cj_einmal()
     try:
-        for name, host, alter, liste1, liste2, soll_an, soll_ledger, soll_text in faelle:
-            lesungen, angelegt = [liste1, liste2], []
+        for name, host, alter, liste1, liste2, liste3, antwort, soll_an, soll_ledger, soll_text, soll_push in faelle:
+            lesungen, angelegt, pushes = [liste1, liste2, liste3], [], []
 
-            def fake_cj(path, body=None):
+            def fake_cj(path, body=None, einmal=False):
                 if "shopping/order/list" in path:
                     l = lesungen.pop(0) if lesungen else None
                     if l is None:
                         raise AssertionError("CJ-Liste öfter gelesen als erwartet")
                     if l == "FEHLER":
                         return {"code": 1600100, "message": "Testausfall"}
-                    return {"code": 200, "data": {"list": [{"orderNum": n} for n in l]}}
+                    return {"code": 200, "data": {"list": [x if isinstance(x, dict) else {"orderNum": x, "cjOrderId": "SDX" + x}
+                                                           for x in l]}}
                 if "createOrderV2" in path:
+                    if not einmal:
+                        raise AssertionError("createOrderV2 ohne einmal=True")
                     angelegt.append(body["orderNumber"])
+                    if antwort == "UNKLAR":
+                        return {"code": UNKLAR, "message": "Testausfall: Antwort verloren"}
                     return {"code": 200, "data": {"orderId": "SDTEST" + body["orderNumber"]}}
                 raise AssertionError("unerwarteter CJ-Aufruf im Selbsttest: " + path)
 
@@ -624,7 +762,8 @@ def selbsttest():
             g.update(cj=fake_cj, offene_bestellungen=lambda: [bestellung], token_pruefen=lambda: True,
                      vid_fuer=lambda sku, vt: ({"vid": "V1", "variantSellPrice": 5}, None),
                      fracht=lambda p, land="CH": [{"logisticName": "CJPacket", "logisticPrice": 6.0, "logisticAging": "6-10"}],
-                     LEDGER=ledger.name, DRY=False, _push=None)
+                     LEDGER=ledger.name, DRY=False,
+                     _push=lambda schl, titel, text, klick=None, **kw: pushes.append((titel, text, klick)))
             log = io.StringIO()
             try:
                 with contextlib.redirect_stdout(log):
@@ -635,11 +774,17 @@ def selbsttest():
             zeilen = open(ledger.name).read().splitlines()
             os.unlink(ledger.name)
             ist_ledger = None if not zeilen else zeilen[0].split("\t")[1]
+            if soll_push is None:
+                push_ok = not pushes
+            else:
+                push_ok = (len(pushes) == 1 and soll_push[0] in pushes[0][0] and bool(pushes[0][2]) == soll_push[1]
+                           and (soll_push[1] or "nicht" in pushes[0][1].lower() or "nichts" in pushes[0][0].lower()))
             ok = ((bool(angelegt) == soll_an) and len(angelegt) <= 1 and len(zeilen) <= 1
                   and (ist_ledger is None if soll_ledger is None else (ist_ledger or "").startswith(soll_ledger))
-                  and soll_text in log.getvalue())
+                  and soll_text in log.getvalue() and push_ok)
             fehler += not ok
-            print(f"  {'OK  ' if ok else 'FEHL'} {name}: angelegt={angelegt or '—'} Ledger={zeilen or '—'}")
+            print(f"  {'OK  ' if ok else 'FEHL'} {name}: angelegt={angelegt or '—'} Ledger={zeilen or '—'} "
+                  f"Push={[(p[0], 'Link' if p[2] else 'ohne Link') for p in pushes] or '—'}")
             if not ok:
                 print("       Log: " + log.getvalue().strip().replace("\n", "\n            "))
     finally:

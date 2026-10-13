@@ -15,7 +15,7 @@ def gql(q,v=None):
 REG = {
  'faq-luxestyle': [
   ('🇨🇭 Schweiz: 7-12 Werktage · 🇩🇪 DE/AT: 8-14 Werktage',
-   '🇨🇭 Schweiz: ab CH-Lager 1–2 Werktage · ab EU-Lager 2–7 · auf Bestellung gedruckt 7–14 · '
+   '🇨🇭 Schweiz: ab CH-Lager meist 2–3 Werktage · ab EU-Lager 2–7 · auf Bestellung gedruckt 7–14 · '
    'Direktversand ab Werk 10–20 Werktage. Welche Stufe gilt, steht auf jeder Produktseite'),
   ('CHF 4.90 für CH · 9.90 EUR für DE/AT. Gratis ab CHF 50 / 99 EUR mit Code SHIP50.',
    'CHF 7.00 innerhalb der Schweiz. Gratis ab CHF 50 — automatisch, ohne Code. '
@@ -26,7 +26,7 @@ REG = {
   ('Flat CHF 4.90 within Switzerland. Free shipping over CHF 50.',
    'Flat CHF 7.00 within Switzerland. Free shipping from CHF 50 — applied automatically, no code needed.'),
   ('2-7 business days within Switzerland (incl. Liechtenstein)',
-   '1-2 business days from our Swiss warehouse, 2-7 from the EU warehouse. We ship to Switzerland and Liechtenstein'),
+   'usually 2–3 business days from our Swiss warehouse, 2-7 from the EU warehouse. We ship to Switzerland and Liechtenstein'),
  ],
 }
 j=gql('{ pages(first:10, query:"handle:faq-luxestyle OR handle:faq-en"){nodes{id handle body}} }')

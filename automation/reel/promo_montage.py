@@ -89,7 +89,7 @@ VARIANTEN["kuscheltiere"] = {
     "hook": ("Kuschelzeit für", "Klein & Gross"), "emoji": "\U0001F9F8", "gattung": "Plüschtiere", "deko": "sterne",
     "titel": "LuxeStyle Kuscheltiere",
     "stimme": {"text": "Kuschelzeit! Berner Sennenhund, Hochlandrind, Waschbär, Alpaka und Adler – ab einundzwanzig Franken, "
-                       "aus dem Schweizer Lager in ein bis zwei Werktagen bei dir. Jetzt bei LuxeStyle.",
+                       "aus dem Schweizer Lager meist in zwei bis drei Werktagen bei dir. Jetzt bei LuxeStyle.",
                "stimme": "de-CH-JanNeural", "start": 0.7},
     "produkte": [
         {"handle": "liegender-plusch-berner-sennenhund-fga88255", "name": "Liegender Plüsch Berner Sennenhund", "bilder": [0, 1]},

@@ -22,7 +22,7 @@ AENDERUNGEN = [
   {"descriptionHtml":"<p>Stolz auf die Schweiz: Edelweiss, Matterhorn, Alphorn und mehr — unsere Schweizer Editionen für Zuhause, Feste und als Geschenk. Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · Kauf auf Rechnung mit Klarna &amp; TWINT.</p>",
    "seo_beschreibung":"Schweizer Editionen online kaufen: Edelweiss-Mode, Matterhorn-Deko, Fan-Artikel & Geschenke. Gratis-Versand ab CHF 50, 30 Tage Rückgabe."}),
  ("690801967489",
-  {"descriptionHtml":"<p>💇 Haarpflege &amp; Styling bei LuxeStyle — kuratierte Auswahl, viele Artikel ab Schweizer Lager in 1–2 Werktagen. Gratis-Versand ab CHF 50 · 30 Tage Rückgabe.</p>"}),
+  {"descriptionHtml":"<p>💇 Haarpflege &amp; Styling bei LuxeStyle — kuratierte Auswahl, viele Artikel ab Schweizer Lager meist in 2–3 Werktagen. Gratis-Versand ab CHF 50 · 30 Tage Rückgabe.</p>"}),
  ("690626625921",
   {"descriptionHtml":"<p>Steh- und Deckenlampen, die deinen Raum ins richtige Licht rücken – vom sanften Ambiente bis zur hellen Grundbeleuchtung. Schweizer Online-Shop, Gratis-Versand ab CHF 50, 30 Tage Rückgabe.</p>",
    "seo_beschreibung":"Steh- & Deckenlampen für jeden Raum · Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · Kauf auf Rechnung mit Klarna & TWINT."}),
