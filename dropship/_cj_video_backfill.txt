@@ -1125,3 +1125,9 @@ gid://shopify/Product/15522117288321	ok	Hasen-Wecker mit Nachtlicht und Smart Ch
 gid://shopify/Product/15522128593281	ok	WLAN Überwachungskamera mit Nachtsicht & Gegensprechfunktion
 gid://shopify/Product/15522242527617	ok	Schwimmboje mit Doppelairbag & Rucksack
 gid://shopify/Product/15522930917761	ok	Business Travel Rucksack – Elegant Schwarz
+gid://shopify/Product/15523017490817	ok	Business Casual Laptop-Umhängetasche
+gid://shopify/Product/15523137225089	ok	Elektrischer Nagelpolierer mit Licht
+gid://shopify/Product/15446271623553	kein-video-beim-lieferanten
+gid://shopify/Product/15447595811201	kein-video-beim-lieferanten
+gid://shopify/Product/15447595975041	kein-video-beim-lieferanten
+gid://shopify/Product/15447596106113	kein-video-beim-lieferanten
