@@ -1659,16 +1659,16 @@ def _spot_stops_verkaufen(spot, k, d, st, alt, erg, warn, gesetzt, grund, soll=N
     Ein Stop, der bewusst stehen bleibt (Binance lehnte ab), zählt als Schutz (`schutz`) und als «jenseits gehalten»."""
     sym, regeln, coin = d["sym"], d["rs"], d["coin"]
 
-    def bleibt(o):
+    def bleibt(o, warum="Binance lehnte ab"):
         st["spot"] = o.get("orderId")
         if schutz is not None:
-            schutz.append(f"Stop {_rest(o):g} @ {float(o.get('stopPrice') or 0):g} bleibt (Binance lehnte ab)")
+            schutz.append(f"Stop {_rest(o):g} @ {float(o.get('stopPrice') or 0):g} bleibt ({warum})")
 
     if _handel_aus(regeln):
         warn(f"{k}: {grund}, aber {sym} laut Binance nicht im Handel ({regeln.get('status')}) — der Spot-Stop bleibt stehen.")
         for o in alt:
             if o.get("isWorking") is not True:
-                bleibt(o)
+                bleibt(o, f"{sym} nicht im Handel")
         d["jenseits_gehalten"] = all(o.get("isWorking") is not True for o in alt)
         return
     offen_soll = float("inf") if soll is None else soll
@@ -2937,6 +2937,13 @@ def _notaus_schutz(spot, fut, st, k, sym, coin, pos, pos_vor, frei, gebunden, ku
                     buch.setdefault("unklar", []).append(unklar_eintrag(k, sym, konto, seite, rest, konto == "perp", ex))
                 continue
             except Exception as ex:  # noqa: BLE001
+                # abgelehnt (z. B. Rate-Limit auf Marktaufträgen, Filter): wenigstens ein WEITER Not-Stop über den Rest — ein
+                # Stop-Auftrag geht über einen anderen Pfad und wird oft noch angenommen
+                p_breit = breiter_notstop(konto, rest)
+                if p_breit:
+                    warn(f"Not-Aus {modus} {k}: Kurs schon jenseits des Schutz-Stops, Marktauftrag {seite} {rest:g} abgelehnt "
+                         f"({type(ex).__name__}) — der Rest hat einen WEITEN Not-Stop @ {p_breit:g}. Not-Aus wiederholen!")
+                    return True
                 fehlt_schutz(f"Not-Aus {modus} {k}: Kurs schon jenseits des Schutz-Stops UND Marktauftrag {seite} {rest:g} abgelehnt "
                              f"({type(ex).__name__}) — {'Short' if konto == 'perp' else coin} ohne Stop. Sofort prüfen!")
                 return False

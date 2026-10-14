@@ -1570,8 +1570,10 @@ pruefe("12.K4 Symbol geht mitten im Lauf auf BREAK: der Abgleich ersetzt keinen 
 # Kurs unter dem Plan-Stop, aber noch über dem stehenden alten Stop; Binance lehnte heute in diesem Markt ab → der Stop bleibt
 # (kein cancelReplace). Der Ausstieg verkaufte danach die FREIEN Coins — die Absicherung des Shorts → zu grosser Stop und nach
 # seinem Auslösen ein nackter Short. Jetzt: verkauft wird nur, was nicht unter dem stehenden Stop liegt; der Stop zählt als
-# Schutz; keine Wiederholungs-Runden mit der falschen Meldung «Kontostand mehrmals geändert» oder «OHNE Stop»
-for name, zweiter in (("Plan-Verkauf abgelehnt (danach kein Ersetzen)", False), ("Verkauf im cancelReplace abgelehnt (Stop bleibt)", True)):
+# Schutz; keine Wiederholungs-Runden mit falschen Meldungen («Kontostand mehrmals geändert», «OHNE Stop», «gelang in N Runden
+# nicht»), dieselbe Warnung nur einmal. Dritte Variante: das Symbol ist nicht im Handel (BREAK) — der Stop bleibt ebenso
+for name, art in (("Plan-Verkauf abgelehnt (danach kein Ersetzen)", "plan"), ("Verkauf im cancelReplace abgelehnt (Stop bleibt)", "ersetzen"),
+                  ("Symbol nicht im Handel (BREAK)", "break")):
     k = neues_konto(20000)
     d = neu_buch()
     e = E("BTC", 0.5)
@@ -1579,14 +1581,20 @@ for name, zweiter in (("Plan-Verkauf abgelehnt (danach kein Ersetzen)", False), 
     lauf([e], env_echt(), d)
     B.bewegen("BTCUSDT", 85000.0)
     _n = []
-    _pred = (lambda m, p_, q, _n=_n: MARKT_VERKAUF(m, p_, q) and _n.append(1) is None and len(_n) >= 2) if zweiter else MARKT_VERKAUF
-    B.regeln = [regel(methode="POST", pfad="/api/v3/order", pred=_pred, art="ablehnen")]
-    r = lauf([dict(e, stop_long=90000.0)], env_echt(), d)
-    B.regeln = []
-    _falsch = [z for z in r["zeilen"] if "mehrmals geändert" in z or "OHNE Stop" in z]
+    _pred = (lambda m, p_, q, _n=_n: MARKT_VERKAUF(m, p_, q) and _n.append(1) is None and len(_n) >= 2) if art == "ersetzen" else MARKT_VERKAUF
+    B.regeln = [] if art == "break" else [regel(methode="POST", pfad="/api/v3/order", pred=_pred, art="ablehnen")]
+    if art == "break":
+        B.symbol_status["BTCUSDT"] = "BREAK"
+    try:
+        r = lauf([dict(e, stop_long=90000.0)], env_echt(), d)
+    finally:
+        B.regeln = []
+        B.symbol_status.clear()
+    _falsch = [z for z in r["zeilen"] if "mehrmals geändert" in z or "OHNE Stop" in z or "Runden nicht" in z]
+    _doppelt = [z for z in set(r["zeilen"]) if z.startswith("⚠️") and r["zeilen"].count(z) > 1]
     pruefe(f"12.F1 Kurs unter dem Plan-Stop, {name}: die Absicherung wird nie verkauft, der stehende Stop zählt als Schutz",
-           not befunde(k, d) and not _falsch and any("bleibt (Binance lehnte ab)" in z for z in r["zeilen"]),
-           (P.zeigen(k)["BTCUSDT"], befunde(k, d), _falsch, r["zeilen"][-4:]))
+           not befunde(k, d) and not _falsch and not _doppelt and any("@ 80000 bleibt (" in z for z in r["zeilen"]),
+           (P.zeigen(k)["BTCUSDT"], befunde(k, d), _falsch, _doppelt, r["zeilen"][-4:]))
 funde = P.laeufe_runde(9330, 13)
 pruefe("12.F1 Lauf-Seed 9330: keine Befunde", not P.echte(funde), [(f[0], f[1].get("tag")) for f in P.echte(funde)][:5])
 # 12.F2 (Lauf-Seed 9179):
@@ -1608,6 +1616,36 @@ L.Spot(L.einstellungen(env_echt())["spot"]).eigene_stops("BTCUSDT")  # Pilot 2.0
 _nach = [b[0] for b in P.schutz_befunde(k)]
 pruefe("12.F2 Gegenprobe: eine Limit-Lücke ist nur unvermeidbar, solange Pilot 2.0 die Liste nach dem Sprung nicht gesehen hat",
        "LIMIT_LUECKE_LONG_OHNE_STOP" in _vor and "LONG_OHNE_STOP" in _nach, (_vor, _nach))
+# 12.F3 (Not-Aus-Seed 7529):
+# Not-Aus, Rückkauf unklar → beidseitig; der Schutz-Stop für den Short «würde sofort auslösen» (Kurs +7 %, kein Kurs lesbar) →
+# zum Markt — der reduceOnly-Rückkauf scheitert aber am Rate-Limit (429 auf Marktaufträgen). Vorher blieb der Short ohne Stop;
+# jetzt bekommt er wenigstens einen WEITEN Not-Stop (Stop-Aufträge gehen über einen anderen Pfad)
+k = neues_konto(20000)
+d = neu_buch()
+lauf([E("BTC", 0.0)], env_echt(), d)
+gemacht = [0]
+
+
+def h12f3(m, pfad, p_):
+    if m == "POST" and pfad == "/fapi/v1/algoOrder" and not gemacht[0]:
+        gemacht[0] = 1
+        B.bewegen("BTCUSDT", B.kurs["BTCUSDT"] * 1.07)
+        B.regeln.extend([dict(r_) for r_ in KURS_WEG] + [regel(methode="POST", pfad="/fapi/v1/order", pred=REDUCE, art="429", anzahl=10 ** 6)])
+
+
+B.vor_jeder_anfrage = h12f3
+B.regeln = [regel(methode="POST", pfad="/fapi/v1/order", pred=REDUCE, art="vor503", anzahl=1)]
+try:
+    r = lauf([], env_echt(), d, notaus=True)
+finally:
+    B.vor_jeder_anfrage = None
+    B.regeln = []
+g = lage(k, "BTCUSDT")
+pruefe("12.F3 Not-Aus, Rückkauf zum Markt am Rate-Limit gescheitert: der Short bekommt einen weiten Not-Stop (nie ohne Stop)",
+       not befunde(k, d) and g["pos"] < 0 and g["p_qty"] >= -g["pos"] - 1e-9 and any("WEITEN Not-Stop" in z for z in r["zeilen"]),
+       (befunde(k, d), g, r["zeilen"][-4:]))
+funde = P.notaus_runde(7529)
+pruefe("12.F3 Not-Aus-Seed 7529: keine Befunde", not P.echte(funde), [(f[0], f[1].get("wann")) for f in P.echte(funde)][:5])
 
 # ── kleiner Fuzzer mit festen Seeds (der grosse: python3 -B pruef_fuzzer.py laeufe 0 200 / notaus 0 1600) ──
 funde = []
