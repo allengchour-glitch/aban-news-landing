@@ -2270,3 +2270,4 @@
 16617704096135	Farbe:6:6+ki	2026-10-14	warme-lederhandschuhe-fur-herren-3f8bf6
 16617703932295	Modell:2:2+ki	2026-10-14	magnetischer-handy-kuhler-mit-digitalanzeige-617300
 16617703833991	Ausführung:3:3+ki	2026-10-14	smarte-dimmbare-led-lampe-627100
+16617703670151	Farbe:2+Ausführung:2+Grösse:4:16+ki	2026-10-14	decken-einbaustrahler-ohne-leuchtmittel-607000
