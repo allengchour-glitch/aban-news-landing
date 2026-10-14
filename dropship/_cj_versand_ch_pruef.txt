@@ -9051,3 +9051,7 @@ perlencollier-385920	1411896250189615104	16	4.50	ok	landeseite
 herzfotoanhanger-991680	1732202749506768896	16	4.60	ok	landeseite
 herzanhanger-kette-470080	1732210363447791616	16	4.40	ok	landeseite
 perlen-halskette-619000	2607100706431619800	16	4.60	ok	landeseite
+naturliche-perlenkette-620800	2607100722161621700	16	4.71	ok	landeseite
+golduberzogene-ohrringe-628600	2607100705501629200	16	4.29	ok	landeseite
+vintag-ohrstecker-278145	2075448830485192706	16	5.20	ok	landeseite
+kreuzanhanger-607100	2607100540531607600	16	4.50	ok	landeseite
