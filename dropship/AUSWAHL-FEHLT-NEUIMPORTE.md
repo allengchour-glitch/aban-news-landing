@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-14 14:05 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-14 15:29 UTC)
 
-Suche: `status:active AND created_at:>=2026-10-11` · gemessen 906 · **514 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 425, teilweise: 58, keine: 31; Preisspanne > 2×: 78) · 1 CJ-Variante: 392 · ohne Antwort: 0
+Suche: `status:active AND created_at:>=2026-10-11` · gemessen 916 · **522 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 427, teilweise: 61, keine: 34; Preisspanne > 2×: 78) · 1 CJ-Variante: 394 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -307,6 +307,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Maitreya Buddha Statue auf Goldkröte (`maitreya-buddha-statue-auf-goldkrote-618500`) | 6 | 6 | 3.49–18.33 | 70.90 | Gold-Large Size, Gold-Medium, Gold-Small Size, Bronze-Large Size |
 | Ferngesteuertes Wand-Rennauto für Kinder (`ferngesteuertes-wand-rennauto-fur-kinder-560000`) | 6 | 6 | 8.18–11.58 | 23.90 | Dark Red-Luxury, Dark Red-Standard, Green-Luxury, Green-Standard |
 | Erhöhter Keramik-Napf für Haustiere (`erhohter-keramik-napf-fur-haustiere-632700`) | 6 | 6 | 3.68–3.68 | 19.90 | Brown-Flat Rim Bowl, Brown-Slanted Rim Bowl, Dark Blue-Flat Rim Bowl, Dark Blue-Slanted Rim Bowl |
+| Messenger-Tasche aus PU-Leder (`messenger-tasche-aus-pu-leder-1015de`) | 6 | 1 | 4.27–4.99 | 19.90 | Black A, Dark Brown A, Dark Brown B, Black B |
 | Dauerhafter Hundehalsband mit Zugtrennriemen XS (`dauerhafter-hundehalsband-mit-zugtrennriemen-x-534016`) | 5 | 5 | 5.77–5.77 | 16.90 | Blue-L, Blue-M, Blue-S, Blue-XL |
 | Holz-Bausatz zum Selberbauen (`holz-bausatz-zum-selberbauen-529600`) | 5 | 5 | 3.57–33.0 | 63.90 | TG406, TG302, AM601, MC502 |
 | Vierteiliges Ring-Set mit Zirkonia-Einlage (`vierteiliges-ring-set-mit-zirkonia-einlage-621100`) | 5 | 5 | 4.44–4.44 | 16.90 | White Gold Color-No 6, White Gold Color-No 7, White Gold Color-No 8, White Gold Color-No 9 |
@@ -349,6 +350,9 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Keramik-Doppelnapf für Katzen mit Holzrahmen (`keramik-doppelnapf-fur-katzen-mit-holzrahmen-605200`) | 5 | 5 | 7.96–19.07 | 65.90 | Double Bowl With Wooden Frame, Dining Mat With Wooden Frame, Hexagonal Double Bowl, Single Bowl With Wooden Frame |
 | Portemonnaie Damen – Schwarzes PU-Leather (`portemonnaie-damen-schwarzes-pu-leather-617100`) | 5 | 5 | 6.63–6.63 | 20.90 | Black, Purple Style, Gold Style, Sky Blue Style |
 | NFC Karte – beschriftete Chipkarte aus beschichtetem Papier (`nfc-karte-beschriftete-chipkarte-aus-beschicht-b50858`) | 5 | 5 | 0.44–20.0 | 29.90 | Q10pcs, Q20pcs, Q50pcs, Q1pcs |
+| Canvas-Handtasche mit Lederakzent (`canvas-handtasche-mit-lederakzent-6a45f8`) | 5 | 5 | 20.33–23.64 | 52.90 | Coffee, Black, Green, Khaki |
+| Outdoor-Reiserucksack (`outdoor-reiserucksack-5c9abf`) | 5 | 0 | 13.11–17.0 | 39.90 | Grey, Light grey ozuko, Black ozuko, Black |
+| Taktischer Rucksack für Outdoor (`taktischer-rucksack-fur-outdoor-de2b52`) | 5 | 0 | 15.19–15.19 | 48.90 | CP camouflage, Black, ACU Digital, Wolf brown |
 | Kleine Bausteine City Building Set (`kleine-bausteine-city-building-set-201728`) | 4 | 4 | 2.49–3.89 | 20.90 | 168PCS color box, 165pcs box packaging, 165pcs opp bag packaging, 336 particle color box |
 | Ultraschall-Fettabbaugerät (`ultraschall-fettabbaugerat-244032`) | 4 | 4 | 73.08–73.08 | 128.90 | White-U.S., White-EUR, White-UK, White-AUS |
 | Kleine ABS-Teile für Bau- und Experimentierspiel (`kleine-abs-teile-fur-bau-und-experimentierspie-987520`) | 4 | 4 | 4.25–4.25 | 19.90 | Sweetheart handmade, Afternoon time, Annies studio, Sunshine Flower House |
@@ -406,6 +410,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Handtuch-Set Schwarz aus Edelstahl (`handtuch-set-schwarz-aus-edelstahl-388480`) | 4 | 4 | 4.06–18.25 | 30.90 | Double Coat Hook, Tissue Holder, Towel Ring, Three |
 | Weihnachts-WC-Set (`weihnachts-wc-set-523264`) | 4 | 4 | 2.6–2.6 | 16.90 | Santa Claus Toilet Seat Cover, Striped Snowman Style, Elf Style, Deer Style |
 | Bausteine Villa und Auto (`bausteine-villa-und-auto-923008`) | 4 | 4 | 10.58–14.37 | 40.90 | A, B, C, D |
+| Grosser Laptop-Rucksack aus wasserdichtem Oxford (`grosser-laptop-rucksack-aus-wasserdichtem-oxfo-c9e487`) | 4 | 1 | 9.2–9.2 | 28.90 | Beige-15.6, black-15.6, Light Pink-15.6, Dark grey-15.6 |
 | Glühendes Hundehalsband 50 cm (`gluhendes-hundehalsband-50-cm-611300`) | 3 | 3 | 3.64–4.01 | 16.90 | Colorful Luminous-40cm, Colorful Luminous-50cm, Colorful Luminous-60cm |
 | Grosses Crossbody für Herren – urbanes Minimaldesign (`grosses-crossbody-fur-herren-urbanes-minimalde-639700`) | 3 | 3 | 20.66–20.66 | 40.90 | Elegant Black, Gray And Blue Contrast Color, Sky Blue |
 | Rucksack aus Polyester, schwarz, 17,8 L (`rucksack-aus-polyester-schwarz-17-8-l-fb9246`) | 3 | 0 | 10.04–10.04 | 30.90 | Dark grey, Waterproof black, Black |
@@ -457,6 +462,8 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Pilates-Stange mit Widerstandsbändern (`pilates-stange-mit-widerstandsbandern-dd3223`) | 3 | 3 | 11.61–14.93 | 58.90 | Cloth casing 2pipes, Cloth casing 4pipes, Cloth casing 6pipes |
 | Gänseblümchen Keramik-Vorratsdose (`ganseblumchen-keramik-vorratsdose-603200`) | 3 | 3 | 3.16–7.64 | 63.90 | Daisy Large, Daisy Small, 2PCS |
 | Kurze PU-Leder-Tasche mit Glitzeroptik (`kurze-pu-leder-tasche-mit-glitzeroptik-613400`) | 3 | 3 | 3.86–3.86 | 16.90 | Magic Fingernail Glitter, Crystal Blue, Symphony Green |
+| Herrenuhren Leder Crossbody Tasche (`herrenuhren-leder-crossbody-tasche-2a78de`) | 3 | 0 | 12.0–12.0 | 26.90 | Brown, Coffee, Black |
+| Batik-Canvas-Kamera­tasche mit Pferdehaut (`batik-canvas-kamera-tasche-mit-pferdehaut-dffb94`) | 3 | 1 | 21.94–21.94 | 57.90 | Army Green, Khaki, Grey black |
 | Magnetisches Bauklötzchen-Set für Mädchen (`magnetisches-bauklotzchen-set-fur-madchen-849024`) | 2 | 2 | 6.38–10.21 | 31.90 | 100straight bars and 50balls-2.7CM, 50straight rods plus 50balls-2.7CM |
 | Magnetisches Holzpuzzle für Kinder (`magnetisches-holzpuzzle-fur-kinder-813696`) | 2 | 2 | 3.6–4.04 | 19.90 | Classic box, Magnetic |
 | Hantel für Armtraining (`hantel-fur-armtraining-056064`) | 2 | 2 | 4.69–7.02 | 140.90 | A, B |
@@ -520,3 +527,4 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Grüner 2B/ HB Zeichenstift – 10 Stück (`gruner-2b-hb-zeichenstift-10-stuck-622800`) | 2 | 2 | 2.46–2.63 | 16.90 | HB-Green Rod Boxed 10pcs, 2B-Green Rod Boxed 10pcs |
 | Bilingual Lernmaschine für Kinder (`bilingual-lernmaschine-fur-kinder-604200`) | 2 | 2 | 10.78–11.61 | 25.90 | Yellow 50 Cards, Yellow 100 Cards |
 | Retro-Handheld Spiegel aus Kupfer, einseitig (`retro-handheld-spiegel-aus-kupfer-einseitig-627800`) | 2 | 2 | 5.31–5.31 | 16.90 | Glod, Silver |
+| Reise-Rucksack aus Oxford (`reise-rucksack-aus-oxford-02d866`) | 2 | 2 | 16.73–19.41 | 51.90 | Black, Black large 17inch |
