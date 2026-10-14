@@ -28,7 +28,7 @@ LEDGER = os.path.join(REPO, "dropship", "_startseite_gewicht.tsv")
 URL = "https://luxestyle.ch/"
 UA = ("Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) "
       "Version/17.0 Mobile/15E148 Safari/604.1")
-# 14.10. 10:40 nach A2–A5 nachgezogen (gemessen 2.46 MB · 833 Links · 30 Ü · 0× ?variant=) — Messwert + ~10 %:
+# 14.10. 10:30 nach A2–A5 nachgezogen (gemessen 2.46 MB · 833 Links · 30 Ü · 0× ?variant=) — Messwert + ~10 %:
 GRENZE = {"bytes": 2_700_000, "links": 920, "ueberschriften": 35, "variant_links": 10}
 H1_SICHTBAR_PFLICHT = True           # seit A5 steht die H1 sichtbar im Hero
 
