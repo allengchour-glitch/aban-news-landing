@@ -143,3 +143,10 @@ gid://shopify/Product/16615797752199	2026-10-13	Elektronik & Technik
 gid://shopify/Product/16615797326215	2026-10-13	Kinder & Baby
 gid://shopify/Product/16607464391047	2026-10-13	Spielzeug & Plüsch
 gid://shopify/Product/16612769071495	2026-10-13	Sport, Fitness & Outdoor
+gid://shopify/Product/16617330344327	2026-10-14	Damen-Mode
+gid://shopify/Product/16617344106887	2026-10-14	Schuhe
+gid://shopify/Product/16616720138631	2026-10-14	Elektronik & Technik
+gid://shopify/Product/16615814562183	2026-10-14	Kinder & Baby
+gid://shopify/Product/16610071019911	2026-10-14	Spielzeug & Plüsch
+gid://shopify/Product/16616590279047	2026-10-14	Sport, Fitness & Outdoor
+gid://shopify/Product/16616489451911	2026-10-14	Taschen & Rucksäcke
