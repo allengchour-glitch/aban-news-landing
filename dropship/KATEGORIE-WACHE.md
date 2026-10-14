@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-14T20:10Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-14T21:06Z
 
-Aktive gescannt: 23 · ohne Kategorie: 23 · heute gesetzt: 21 (SCHARF, CAP 1500) · danach offen: 2 · Fehler: 0
+Aktive gescannt: 14 · ohne Kategorie: 14 · heute gesetzt: 12 (SCHARF, CAP 1500) · danach offen: 2 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -11,9 +11,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- unterbauchstutzband-aus-nylon-verstellbar-2e27df · Sport & Outdoor → Sporting Goods
-- sportliches-elastikband-fur-krafttraining-4b942b · Sport & Outdoor → Sporting Goods
-- training-belt-door-buckle-aus-nylon-c80f96 · Sport & Outdoor → Sporting Goods
-- fitness-tension-band-yoga-widerstandsring-237d61 · Sport & Outdoor → Sporting Goods
-- weite-yogatasche-aus-baumwoll-canvas-539660 · Sport & Outdoor → Sporting Goods
+- manner-sweatshirt-mit-kapuze-feuchtigkeitsable-632700 · Herrenmode → Apparel & Accessories > Clothing
+- langarm-t-shirt-schnell-trocknend-fur-sport-602300 · Herrenmode → Apparel & Accessories > Clothing
+- manner-polo-shirt-langarm-einfarbig-slim-fit-611900 · Herrenmode → Apparel & Accessories > Clothing
+- langarmshirt-mit-druck-aus-polyester-606500 · Herrenmode → Apparel & Accessories > Clothing
+- langarmshirt-aus-baumwollmischung-618400 · Herrenmode → Apparel & Accessories > Clothing
 
