@@ -8499,3 +8499,21 @@ kabellose-haarglatter-899200	1668162556986396672	7	11.13	ok	landeseite
 3d-teddy-lampe-a92a5f	0266910B-0EF4-4461-9B8A-BF208DE034C5	7	8.57	ok	landeseite
 liebeshalskette-0bb6ab	1465687342797950976	16	4.50	ok	landeseite
 kuchenmesser-aufbewahrung-8b4831	9E240B34-74FD-430B-AF04-A3B5939BF91A	16	21.06	ok	landeseite
+smart-wifi-turklingel-763c29	12FA7107-8BEE-440C-B5D0-BE4A83C4ACD0	7	5.17	ok	landeseite
+rose-tischleuchte-441728	1727138944099299328	16	9.20	ok	landeseite
+baby-stroller-organizer-a3097b	CEB3ACD6-9812-464B-9D9F-D8A5E3F26E55	16	6.04	ok	landeseite
+fidget-spinner-schlusselanhanger-944448	1541333689765351424	16	4.42	ok	landeseite
+nagelkleber-stick-897088	1777909414205337600	3	5.54	ok	landeseite
+nagelpflege-set-896064	1776457645675782144	3	5.46	ok	landeseite
+gel-nagelsticker-784448	1763090531447476224	16	4.81	ok	landeseite
+nagelsticker-uv-gel-406336	1760201423809155072	0	-	KEINE CH-Option → DRAFT	landeseite
+wasserfeste-manikure-806080	1753271596413886464	0	-	KEINE CH-Option → DRAFT	landeseite
+nageldesign-kleber-013312	1752956210392870912	3	5.22	ok	landeseite
+nagelol-gel-set-207808	1727237934220316672	3	6.18	ok	landeseite
+intelligente-nagellampe-6bd0cb	A2AC725C-7AE1-4EF5-BE0B-D1FEC30F9555	16	7.64	ok	landeseite
+nageldesign-set-18c776	021EC803-9174-41BD-99EF-C60B8A7D91F1	16	6.84	ok	landeseite
+uv-nagellampe-bf9155	1402581154170802176	16	5.55	ok	landeseite
+uv-led-lampe-9fd25c	54838A30-A0A8-495D-A4C4-4294D2DE929E	16	10.55	ok	landeseite
+keramik-teekanne-602400	2602190244581602800	16	11.00	ok	landeseite
+rote-obstschale-636200	2601210747591636500	11	38.82	ok	landeseite
+keramik-halter-637600	2601090215351637800	16	14.84	ok	landeseite
