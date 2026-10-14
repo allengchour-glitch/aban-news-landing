@@ -51742,3 +51742,15 @@ regenkette-aus-metall-608000	hg-3-54	Büro & Home Office	2026-10-14T11:00Z
 farbiger-radierbarer-gelschreiber-12-stuck-622200	os-11-11-7-3-4	Büro & Home Office	2026-10-14T11:00Z
 bilingual-lernmaschine-fur-kinder-604200	tg-5-9	Büro & Home Office	2026-10-14T11:00Z
 digitaler-inklinometer-winkelmesser-605900	ha-15-36-23	Büro & Home Office	2026-10-14T11:00Z
+plum-blossom-magnetischer-bohrschrauber-fe11c7	ha-15	Werkzeug & Heimwerken	2026-10-14T11:58Z
+uv-hartender-epoxykleber-10-g-bis-100-g-9fe420	ha-15	Werkzeug & Heimwerken	2026-10-14T11:58Z
+mini-multi-funktionstool-pc18-12b605	ha-15	Werkzeug & Heimwerken	2026-10-14T11:58Z
+triangularer-schlusselzange-fur-elektrische-st-64777b	ha-15	Werkzeug & Heimwerken	2026-10-14T11:58Z
+karburator-einstellwerkzeug-aus-stahl-581615	ha-15	Werkzeug & Heimwerken	2026-10-14T11:58Z
+clip-wedge-steinspalter-16-mm-89e2e2	ha-15	Werkzeug & Heimwerken	2026-10-14T11:58Z
+aluminium-badezimmerschrank-mit-anodisierung-355ed4	ha-15	Werkzeug & Heimwerken	2026-10-14T11:58Z
+petg-rohr-14-mm-10-mm-50-cm-c3c3a0	ha-15	Werkzeug & Heimwerken	2026-10-14T11:58Z
+pleuelstangen-hulsen-set-1-4-6-mm-bis-1-2-12-5-6b75cd	ha-15	Werkzeug & Heimwerken	2026-10-14T11:58Z
+nfc-karte-beschriftete-chipkarte-aus-beschicht-b50858	ha-15	Werkzeug & Heimwerken	2026-10-14T11:58Z
+pvc-reparaturkleber-fur-luftmatratzen-und-boot-95b5f6	ha-15	Werkzeug & Heimwerken	2026-10-14T11:58Z
+edelstahl-sechskant-schrauben-set-mit-muttern-b322b2	ha-15	Werkzeug & Heimwerken	2026-10-14T11:58Z
