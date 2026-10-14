@@ -287,15 +287,26 @@ def eigene_listen():
     return {slug(k[0]) + '.txt' for k in KLASSEN}
 
 
+# Listen ANDERER Werkzeuge im selben Ordner (bekannt, bleiben unberührt). Alles, was weder eigen noch hier steht, wird gemeldet
+# (z. B. die alte Liste einer umbenannten Klasse) — nie gelöscht: Löschen nach Gefühl war genau der Fehler vom 13.10.
+FREMDE_LISTEN = {'mobilfunk-kandidaten.txt', 'auswahl-besuchte-seiten.txt'}
+
+
+def unbekannte_listen(ordner):
+    return sorted(f for f in os.listdir(ordner) if f.endswith('.txt') and f not in eigene_listen() | FREMDE_LISTEN)
+
+
 def listen_leeren(ordner):
     """Rundenbeginn: nur die eigenen Listen löschen. Fremde (mobilfunk-kandidaten.txt, auswahl-besuchte-seiten.txt …) bleiben."""
+    for f in unbekannte_listen(ordner):
+        print(f'⚠️ KLASSEN-ORDNER: unbekannte Liste {f} (weder eigene Klasse noch FREMDE_LISTEN) — bleibt, bitte prüfen', flush=True)
     for f in eigene_listen():
         p = os.path.join(ordner, f)
         if os.path.exists(p):
             os.remove(p)
 
 
-def selbsttest():
+def selbsttest(leise=False):
     """14.10.2026: fremde Listen im gemeinsamen Ordner überleben den Rundenbeginn, eigene werden geleert."""
     import tempfile
     d = tempfile.mkdtemp()
@@ -311,10 +322,12 @@ def selbsttest():
     for f in rest:
         os.remove(os.path.join(d, f))
     os.rmdir(d)
-    print(f"  {'✓' if ok1 else '✗'} fremde Listen bleiben ({', '.join(fremd)})")
-    print(f"  {'✓' if ok2 else '✗'} eigene Listen geleert ({len(eigen)})")
-    print(f"  {'✓' if ok3 else '✗'} eine eigene Liste je Klasse, keine fremde darunter")
-    print('SELBSTTEST', 'OK' if ok1 and ok2 and ok3 else 'ROT')
+    ok3 = ok3 and not (eigene_listen() & FREMDE_LISTEN)
+    if not leise or not (ok1 and ok2 and ok3):
+        print(f"  {'✓' if ok1 else '✗'} fremde Listen bleiben ({', '.join(fremd)})")
+        print(f"  {'✓' if ok2 else '✗'} eigene Listen geleert ({len(eigen)})")
+        print(f"  {'✓' if ok3 else '✗'} eine eigene Liste je Klasse, keine fremde darunter")
+        print('SELBSTTEST', 'OK' if ok1 and ok2 and ok3 else 'ROT')
     return 0 if ok1 and ok2 and ok3 else 1
 
 
@@ -394,6 +407,8 @@ def main():
         # ⚠️ 14.10.2026: NUR die eigenen (eine Datei je KLASSEN-Eintrag). Bis heute fiel jede *.txt im Ordner — auch
         # fremde Listen (mobilfunk-kandidaten.txt von mobilfunk_netz_pruefen.py, auswahl-besuchte-seiten.txt): der
         # 2G/3G-Nachtlauf fand seine Liste ab 13.10. nicht mehr und prüfte nur noch Neuimporte (FileNotFoundError).
+        if selbsttest(leise=True):          # 14.10.: Tor auch hier (nicht nur im Aufseher) — rot = nichts löschen
+            sys.exit('⛔ klassen_kontrolle --selbsttest rot — keine neue Runde, nichts gelöscht')
         listen_leeren(listen_ordner())
     while True:
         d = gql(Q, {'c': cursor})

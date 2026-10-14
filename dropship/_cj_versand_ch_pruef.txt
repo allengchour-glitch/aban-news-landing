@@ -8485,3 +8485,16 @@ nagel-phototherapie-gerat-032610	6CA9A142-DB48-4D61-80E0-D15CA965FF5A	16	12.21	o
 schnelltrockner-fur-nagelgel-fc8911	18F50617-96E5-4C57-81D9-126BA6D5547E	7	14.87	ok	landeseite
 nageltrockner-120w-9ebd7d	2AE4D647-0201-4C39-8F6A-06BF6E93346A	16	13.28	ok	landeseite
 gelentferner-62069e	5FC9CA9E-B82A-4D55-8FD0-7F85B716EF5F	16	14.37	ok	landeseite
+nagelpoliermaschine-aa09ee	296BB7D0-DDA1-445E-9281-21B50416DB02	16	17.66	ok	landeseite
+uv-desinfektionsset-10d265	19F06613-818E-450F-905A-6D71674FB006	16	9.07	ok	landeseite
+schnelltrocknende-led-lampe-825254	3F3F5A7E-D04C-45BF-800E-767FF64378C6	16	12.44	ok	landeseite
+nagellack-trockner-55400e	351530A7-69E0-491D-A518-AF576AC22E56	16	7.43	ok	landeseite
+nagelpoliergerat-4fcc9a	2EC113F2-41DE-42D6-B0C4-0D850D4A7E1B	16	19.76	ok	landeseite
+kabellose-nachtleuchte-376832	1581624650772262912	16	5.41	ok	landeseite
+ewiger-rosen-schmuck-166400	1668792648750075904	3	12.09	ok	landeseite
+sauberkeitspinsel-977856	1703944070093086720	16	7.43	ok	landeseite
+flammen-diffuser-715840	1591240048547213312	7	10.31	ok	landeseite
+magnetisch-ladecable-044e0c	093D062E-C51F-4AFE-AF3C-86C556C29425	7	5.49	ok	landeseite
+kabellose-haarglatter-899200	1668162556986396672	7	11.13	ok	landeseite
+3d-teddy-lampe-a92a5f	0266910B-0EF4-4461-9B8A-BF208DE034C5	7	8.57	ok	landeseite
+liebeshalskette-0bb6ab	1465687342797950976	16	4.50	ok	landeseite

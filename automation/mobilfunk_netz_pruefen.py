@@ -77,7 +77,13 @@ def kanarien():
         if u != k["soll"]:
             f += 1
             print(f"  ✗ {k['text'][:60]} → {u} (soll {k['soll']})")
-    print(f"MOBILFUNK-KANARIEN {len(R['kanarien']) - f}/{len(R['kanarien'])}")
+    # 14.10.2026: auch die Kandidaten-Auswahl (Titel) — «4g» war Gramm/GB (Lippenbalsam, DDR3-RAM)
+    for k in R.get("kandidat_kanarien", []):
+        if ist_kandidat(k["titel"]) != k["soll"]:
+            f += 1
+            print(f"  ✗ Kandidat? {k['titel'][:60]} → {not k['soll']} (soll {k['soll']})")
+    n = len(R["kanarien"]) + len(R.get("kandidat_kanarien", []))
+    print(f"MOBILFUNK-KANARIEN {n - f}/{n}")
     return f == 0
 
 
@@ -138,16 +144,16 @@ def main():
         import urllib.request
         ziel = os.path.join(REPO, "dropship", "_klassen", "mobilfunk-kandidaten.txt")
         inner = '{ products(query:"status:active"){ edges{ node{ id title } } } }'
-        for _ in range(40):
+        for _ in range(16):     # ≤ 8 Min. warten — der Aufseher bricht den ganzen Bau nach 15 Min. ab (timeout 900)
             d = gql('mutation($q:String!){bulkOperationRunQuery(query:$q){bulkOperation{id status} userErrors{field message}}}',
                     {"q": inner})["bulkOperationRunQuery"]
             if not d["userErrors"]:
                 break
             if "progress" not in json.dumps(d["userErrors"]):
-                print(f"⚠️ Bulk-Start abgelehnt: {d['userErrors']}"); return 1
+                print(f"⚠️ Bulk-Start abgelehnt: {d['userErrors']}", flush=True); return 1
             time.sleep(30)
         else:
-            print("⚠️ Bulk-Start: anderer Vorgang lief 20 Min. — später erneut"); return 1
+            print("⚠️ Bulk-Start: anderer Vorgang lief 8 Min. — Liste unverändert, nächste Nacht erneut", flush=True); return 1
         oid = d["bulkOperation"]["id"]
         while True:
             op = gql('query($i:ID!){node(id:$i){... on BulkOperation{status errorCode objectCount url}}}', {"i": oid})["node"]
@@ -155,7 +161,7 @@ def main():
                 break
             time.sleep(15)
         if op["status"] != "COMPLETED" or not op.get("url"):
-            print(f"⚠️ Bulk nicht abgeschlossen: {op}"); return 1
+            print(f"⚠️ Bulk nicht abgeschlossen: {op}", flush=True); return 1
         ids, n = [], 0
         with urllib.request.urlopen(op["url"], timeout=300) as fh:
             for raw in fh:
@@ -164,8 +170,9 @@ def main():
                     n += 1
                     if ist_kandidat(x.get("title")):
                         ids.append(x["id"])
-        if n < 1000:                      # Teilantwort ist kein Katalog — alte Liste lieber behalten
-            print(f"⚠️ nur {n} aktive Produkte gelesen — Liste NICHT überschrieben")
+        soll = int(op.get("objectCount") or 0)   # Hausregel 07.10. (Klingen-Wache): Teil-Download ≠ Katalog → ≥ 97 %
+        if n < 1000 or (soll and n < 0.97 * soll):
+            print(f"⚠️ nur {n} von {soll} Produkten gelesen — Liste NICHT überschrieben", flush=True)
             return 1
         os.makedirs(os.path.dirname(ziel), exist_ok=True)
         with open(ziel + ".tmp", "w", encoding="utf-8") as fh:

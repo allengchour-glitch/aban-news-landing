@@ -51,6 +51,17 @@
 
 
 
+
+## 🗂️ Gemeinsamer Ordner: ein Werkzeug löschte die Listen der anderen (2026-10-14, Runde 04:25 UTC)
+
+`klassen_kontrolle.py` leerte am Rundenbeginn JEDE *.txt in `dropship/_klassen/` → die 2G/3G-Kandidatenliste (fremdes
+Werkzeug) war seit 13.10. weg, der Nachtlauf brach mit FileNotFoundError ab und prüfte nur noch Neuimporte. Fix: nur
+eigene Listen löschen, unbekannte melden, Selbsttest als Tor (Aufseher + main); `mobilfunk --liste-bauen` per Bulk-Export
+(≥ 97 % objectCount, atomar), Aufseher baut bei Fehlen/> 7 T (Alter aus Kopfzeile, nicht mtime). Nebenbei «4g» = Gramm/GB
+(Lippenbalsam, DDR3-RAM) aus den Kandidaten + Kandidaten-Kanarien. **Lehre:** Wer in einem geteilten Ordner aufräumt,
+braucht eine Besitzerliste; Unbekanntes melden, nie löschen. Prüfer fanden dieselbe Klasse HOCH in `reels_seed.csv`
+(Poster schreiben ganze Queue aus alter Kopie zurück → 8 Reels verloren) — nächste Runde.
+Bericht `dropship/KLASSEN-ORDNER-2026-10-14.md`.
 ## 🧬 Regex-Kopie einer Funktion bricht still (2026-10-14, Verbesserungsrunde 00:25 UTC)
 
 `reel_neu_rendern.py` kopierte `kurzTitel()`/`zeilen()` per Regex aus `cj_video_reel_engine.mjs` und führte sie per `eval`
@@ -20382,3 +20393,6 @@ Verschoben am 04.10.2026:
 - 2026-10-12 · 📏 **Masstabellen des Modells: CJ-Tabellenbilder per Vision doppelt gelesen, `masstabelle_schreiben.py` (12/12) schreibt nur bei Übereinstimmung + «hoch» → 7/21 live, Aufseher täglich; Kasse = Bearbeitung + Transit → Transit = Zusage − P3D (CH 7–17); Werbe-Kontingent voll: jede Produktänderung wirft das Produkt aus der Werbung, Kampagne pausiert.** → `dropship/MASSTABELLEN-2026-10-12.md`
 <!-- aus CLAUDE.md verschoben 14.10.2026 00:32 UTC (VERBATIM) -->
 - 2026-10-12 · 🔎 **Such-Boosts per Metafeld `shopify--discovery--product_search_boost.queries` (kein App-Klick nötig, war 0): `such_boost.py` 10 Familien × ≤ 8 (Halloween/Kostüm ab CH-Lager, Geschenke, Powerbank, T-Shirt Herren …), nur eigene Begriffe, Jury + 11 Bild-Vetos, Aufseher täglich + Ampel «SUCHSEITE». ⚠️ Metafeld allein indexiert nicht neu → Tag `such-boost` als Anstoss: danach 8/8, Ampel 0 unter 6/8.** → `dropship/SUCH-BOOSTS-2026-10-12.md`
+<!-- aus CLAUDE.md verschoben 14.10.2026 04:53 UTC (VERBATIM) -->
+- 2026-10-12 · 🎄 **Weihnachts-Reihe zeigte oben 5/8 Kunstblumen/Tortenformen/Halloween-Deko: Gruppe `cjpartydeko` stempelte `weihnachten` auf alle 6 CJ-Kategorien → Tag nur mit Weihnachtswort im TITEL (`data/weihnachten_tag_regel.json`, 17 Kanarien py=js), 56 entfernt, Importer + Aufseher täglich; oben jetzt 12/12.** → `dropship/WEIHNACHTEN-TAG-2026-10-12.md`
+- 2026-10-12 · 🎃 **Halloween-Kollektion oben 12/12 CJ-Direktversand (Ankunft bis 12.11.) statt 132 Kostüme ab Schweizer Lager → `anlass_lieferzeit_wache.py` + `data/anlass_kollektionen.json` (MANUAL, Lager oben, nach Anlass zurück; Aufseher täglich); ChatGPT-Verkehr 1 → 17–32/Woche.** → `dropship/ANLASS-LIEFERZEIT-2026-10-12.md`

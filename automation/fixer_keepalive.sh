@@ -1758,10 +1758,14 @@ if [ -f "$REPO/automation/mobilfunk_netz_pruefen.py" ] && [ "$(date -u +%H)" = "
   touch /tmp/mobilfunk_nacht_$(date -u +%F).stamp
   # 14.10.2026: Liste fehlt (klassen_kontrolle löschte sie bis 14.10. mit) oder ist älter als 7 Tage → zuerst live bauen
   # (Bulk-Export, ~3 Min.); ohne Liste kein Nachtlauf, sonst FileNotFoundError statt Prüfung.
-  ( cd "$REPO" && ML=dropship/_klassen/mobilfunk-kandidaten.txt; \
-    if [ ! -s "$ML" ] || [ $(( $(date +%s) - $(stat -c %Y "$ML") )) -gt 604800 ]; then \
+  # Prüfer 14.10.: eigener Prozess (setsid, fd 9 zu) — sonst hält die Subshell die Aufseher-Sperre und fällt beim
+  # Aufseher-Wechsel mit; Alter aus der Kopfzeile «live gebaut <ISO>» (git reset --hard setzt die mtime neu).
+  ( cd "$REPO" && setsid bash -c 'ML=dropship/_klassen/mobilfunk-kandidaten.txt; \
+    GEBAUT=$(grep -o "gebaut [0-9T:-]*Z" "$ML" 2>/dev/null | head -1 | cut -d" " -f2); \
+    ALTER_S=$(( $(date +%s) - $(date -d "${GEBAUT:-1970-01-01T00:00Z}" +%s 2>/dev/null || echo 0) )); \
+    if [ ! -s "$ML" ] || [ "$ALTER_S" -gt 604800 ]; then \
       timeout 900 python3 automation/mobilfunk_netz_pruefen.py --liste-bauen 2>&1 | tail -1 | tee -a /tmp/mobilfunk_netz.log; fi; \
-    [ -s "$ML" ] && timeout 3000 bash automation/shopify_schranke.sh python3 automation/mobilfunk_netz_pruefen.py --liste "$ML" --scharf 2>&1 | tail -1 | tee -a /tmp/mobilfunk_netz.log ) &
+    [ -s "$ML" ] && timeout 3000 bash automation/shopify_schranke.sh python3 automation/mobilfunk_netz_pruefen.py --liste "$ML" --scharf 2>&1 | tail -1 | tee -a /tmp/mobilfunk_netz.log' 9>&- & )
 fi
 if [ -f "$REPO/automation/mobilfunk_netz_pruefen.py" ] && [ "$(date -u +%H)" -ge 2 ] && [ ! -f /tmp/mobilfunk_neu_$(date -u +%F).stamp ]; then
   touch /tmp/mobilfunk_neu_$(date -u +%F).stamp
