@@ -9428,3 +9428,13 @@ boho-chic-langarm-kleid-617400	2607080930391618000	16	8.79	ok	landeseite
 vintage-lace-midi-kleid-632300	2607080857561632900	16	9.47	ok	landeseite
 europaisch-amerikanische-damenmode-606300	2607080846281607400	16	10.29	ok	landeseite
 gestreiftes-kleid-mit-puffarmeln-607701	2607080748531608700	16	10.15	ok	landeseite
+20-streifen-langarmkleid-mit-v-ausschnitt-634600	2607080745281635200	16	6.65	ok	landeseite
+langarm-shirt-mit-gefalteter-taille-617100	2607100720321617700	16	7.71	ok	landeseite
+gestreiftes-langarm-shirt-mit-falten-633500	2607100642051634300	16	8.25	ok	landeseite
+damen-shirt-mit-mandarinenkragen-und-knopfleis-614600	2607081233241615200	16	8.25	ok	landeseite
+elegante-damenmode-mit-design-flair-634800	2607081112501635300	16	7.57	ok	landeseite
+ein-shoulder-gefaltelter-bauscharmel-weit-hemd-625600	2607070756081626600	16	8.11	ok	landeseite
+chiffon-bluse-mit-quadr-ausschnitt-locker-sitz-608900	2607070737591609500	16	8.25	ok	landeseite
+ruschen-top-mit-puffarmeln-und-schnurgurtel-626200	2607070547431627900	16	8.79	ok	landeseite
+modern-abstrakte-goldblatt-flussblau-leinwandk-108736	1576194919822274560	16	10.83	ok	landeseite
+stickset-fur-stofftasche-051264	1535071082489851904	16	7.99	ok	landeseite
