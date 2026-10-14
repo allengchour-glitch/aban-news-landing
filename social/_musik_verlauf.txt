@@ -490,3 +490,5 @@
 2026-10-14T03:11:07.442Z	luxe-epic-fantasy.wav	22	haustier	cjreel-CJGY150855501AZ	stimme:nein	mix-fehler
 2026-10-14T04:14:13.911Z	luxe-orchestra.wav	15	allgemein	cjreel-CJCJ170137301AZ	stimme:ja	azure:de-CH-JanNeural
 2026-10-14T04:15:01.271Z	luxe-epic-trailer.wav	7.75	home	cjreel-1477820492730732544	stimme:ja	azure:de-CH-JanNeural
+2026-10-14T04:29:30.897Z	luxe-epic-hero.wav	46	haustier	cjreel-CJGY174310101AZ	stimme:ja	azure:de-CH-JanNeural
+2026-10-14T04:31:55.427Z	luxe-epic-hybrid.wav	22.5	allgemein	cjreel-CJWZ133696301AZ	stimme:ja	azure:de-CH-JanNeural
