@@ -2136,3 +2136,4 @@
 16617679126919	Farbe:5:5	2026-10-14	floral-tassel-schal-aus-baumwolle-636800
 16609928872327	Farbe:4:4	2026-10-14	turstopper-aus-gummi-629500
 16609924415879	Gewicht:2:2	2026-10-14	industrieller-akku-turbofan-608100
+16609918747015	Menge:3:3	2026-10-14	multifunktionsschere-455788
