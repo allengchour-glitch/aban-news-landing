@@ -7098,3 +7098,78 @@ wimpernstempel-eyeliner-2-in-1-577600	Dieser Eyeliner ist ein praktisches 2-in-1
 15450729939329	Dieser elegante Slipper ist der ideale Begleiter für jeden Tag. Obermaterial aus TPU-Kunstleder.
 15450729972097	Diese stilvollen Pumps sind perfekt für den Alltag und verleihen jedem Outfit eine elegante Note. Obermaterial aus Rindsleder.
 15450730004865	Dieser sportliche Sneaker kombiniert Stil und Komfort für deine täglichen Aktivitäten. Absatzhöhe: Mid-heel (3–5 cm).
+15450730103169	Dieser sportliche Sneaker überzeugt mit einem modernen Design und hohem Tragekomfort. Robuste Gummisohle.
+15450730168705	Diese vielseitigen Damen-Halbschuhe im japanischen Stil sind die ideale Ergänzung für deine Garderobe. Komfortabler Mid-Heel (3–6 cm).
+15450730201473	Diese modischen Pumps sind in verschiedenen Farben und Mustern erhältlich, darunter Rot, Grün mit Flecken, Rotkariert, Gelbkariert, Braun-Grün, Orange …
+15450730267009	Diese stilvollen Damen-Sandalen sind perfekt für den Sommer und überzeugen durch ihr ansprechendes florales Design. Niedriger Absatz (unter 3 cm).
+15450730299777	Diese vielseitigen Zehensteg-Sandalen im Feen-Stil mit klobiger Sohle sind perfekt für den Sommer 2026. Grösse: 36, 37, 38, 39, 40.
+15450730332545	Diese eleganten Mules im französischen Stil sind die perfekte Wahl für den Sommer. Robuste Gummisohle.
+15450730365313	Diese lässigen Pantoletten für Damen sind die perfekte Ergänzung für deinen Alltag. Vulkanisierte Gummisohle.
+15450730398081	Diese modischen Damen-Sandalen im koreanischen Stil sind die ideale Wahl für den Sommer. Erhältlich in Schwarz und Beige mit 4 cm Sohlenhöhe.
+15450730430849	Diese stilvollen Keile-Slide-Sandalen sind die perfekte Wahl für den Sommer 2026. Mittlerer Keilabsatz (3-5 cm).
+15450730463617	Diese eleganten Slip-on Sandalen für Damen sind die ideale Wahl für den Sommer. Hoher Blockabsatz (6–8 cm).
+15450730496385	Diese stilvollen Keil-Sandalen wurden für den Sommer 2026 entworfen und sind die perfekte Ergänzung für jede Garderobe. Mittelhoher Keilabsatz (3-5 cm).
+15450730561921	Diese elegante Riemchen-Sandale ist die perfekte Wahl für Frauen, die einen stilvollen Auftritt lieben. Robuste Gummisohle für guten Halt.
+15450730660225	Diese eleganten Damen-Sandalen im Halbslipper-Stil sind die perfekte Ergänzung für deine Sommergarderobe. Flacher Absatz (1–3 cm).
+15450730692993	Diese modischen Outdoor-Sandalen im europäisch-amerikanischen Stil sind die perfekte Ergänzung für deine Sommergarderobe. Absatzhöhe: 3–5 cm (Mid-Heel).
+15450730758529	Diese Zehensteg-Sandalen vereinen Komfort und Stil für den Alltag. Obermaterial aus Mikrofaser, Innenfutter aus Leder.
+15450730791297	Diese stylischen Plateau-Slipper für Damen sind perfekt für den Sommer 2026. Absatzhöhe: Flach (unter 3cm).
+15450730824065	Diese Roma-Stil Sandalen für Damen sind ideal für diverse Outdoor-Aktivitäten. Mittelhoher Absatz (3–5 cm).
+15450730856833	Diese lässigen flachen Sandalen sind der ideale Begleiter für jeden Tag. Obermaterial aus erstklassigem Rindsleder (ohne Wildleder).
+15450730889601	Diese bequemen Hausschuhe sind perfekt für Paare, die Wert auf Komfort und Sicherheit legen. Verfügbar in den Grössen 36 bis 42.
+15450730922369	Die neuen Outdoor Slides für den Sommer 2026 sind die idealen Begleiter für warme Tage. Absatzhöhe: Tiefer Absatz (unter 3 cm).
+15450730955137	Diese vielseitigen Plateau-Sandalen für Damen sind die ideale Wahl für den Sommer 2026. Gefertigt aus strapazierfähigem PU-Leder mit Gummi-Laufsohle.
+15450730987905	Diese lässigen Keil-Sandalen im französischen Stil sind die perfekte Ergänzung für deine Sommergarderobe 2026. Absatzhöhe: Mittlerer Absatz (3-5 cm).
+15450733117825	Diese stilvollen Keilabsatzschuhe sind die perfekte Ergänzung für jede Garderobe. Sohlenmaterial: Gummi.
+15450733281665	Diese einzigartigen Slipper für Damen verbinden traditionelle chinesische Handwerkskunst mit modernem Design. Ideal für Frühling und Sommer.
+15450733412737	Diese einzigartigen Sandalen für Damen vereinen traditionelle chinesische Handwerkskunst mit modernem Design. Grösse: 34, 35, 36, 37, 38, 39, 40, 41.
+15450733445505	Diese eleganten Flip-Flops für Damen im traditionellen chinesischen Stil sind die perfekte Ergänzung für deine Sommergarderobe 2026. Gewicht: ca. 800 g.
+15450733511041	Diese stilvollen Plateau-Sandalen für Damen sind perfekt für den Alltag und Freizeitaktivitäten. Innenfutter aus Kunstleder.
+15450733576577	Diese modischen Retro-Sandalen mit eckiger Spitze sind die perfekte Ergänzung für jede Damenschuhkollektion. Gummilaufsohle (geklebt).
+15450733805953	Diese eleganten Riemchensandalen im französischen Stil sind perfekt für den Sommer. Obermaterial aus hochwertigem Kuhwildleder.
+15450734035329	Diese stilvollen Damen-Sandalen im koreanischen Stil sind perfekt für den Sommer. Rutschfeste Gummilaufsohle.
+15450734297473	Diese stilvollen Keilsandalen im europäischen und amerikanischen Design sind die perfekte Wahl für den Sommer. Hoher Absatz (6–8 cm).
+15450734559617	Diese lässigen Damen-Plateau-Sandalen sind perfekt für den Sommer. Verfügbare Grössen: 36–43.
+15450734854529	Diese stilvollen Zehensteg-Sandalen für Damen überzeugen durch ihr minimalistisches Design und hohen Tragekomfort. Obermaterial aus echtem Schafsleder.
+15450734952833	Diese Espadrille Sandalen im europäischen und amerikanischen Stil sind eine vielseitige Ergänzung für jede Damenschuhkollektion.
+15450735018369	Diese stilvollen Keilsandalen sind der perfekte Begleiter für jeden Tag. Rohgummisohle.
+15450735116673	Diese minimalistischen Zehensteg-Sandalen aus Wildleder sind die idealen Begleiter für legere Anlässe. Obermaterial aus Wildleder.
+15450735247745	Diese Mules sind die ideale Ergänzung für deine Schuhsammlung. Obermaterial aus beschichtetem Spaltleder.
+15450735411585	Diese bequemen Stoff-Hausschuhe sind ideal für den Gebrauch zu Hause. Grössen: 36–37, 38–39.
+15450735444353	Diese elegante Sandalette im französischen Stil ist die perfekte Ergänzung für deine Garderobe. Verfügbar in den Grössen 34 bis 39.
+15450735477121	Diese Damen-Sandalen vereinen Komfort mit Stil. Rutschfeste und abriebfeste Gummisohle.
+15450735509889	Diese stilvollen Pantoletten für Damen vereinen französisches Design mit hohem Tragekomfort. Gewicht: ca. 500 g – 600 g (je nach Variante).
+15450735575425	Diese Herren Flip-Flops eignen sich ideal für Fahrten im Auto oder als bequeme Begleiter für unterwegs. Obermaterial aus echtem Rindsleder.
+15450735608193	Diese stilvollen Keilsandalen für Damen präsentieren sich im angesagten koreanischen Stil und sind perfekt für den Sommer geeignet.
+15450735640961	Diese sommerlichen Pantoletten sind die idealen Begleiter für warme Tage. Gummisohle für weichen Auftritt.
+15450735706497	Diese stilvollen Plateau-Schuhe sind die perfekte Ergänzung für deine Sommergarderobe. Robuste Gummisohle für guten Halt.
+15450735739265	Diese stilvollen Damen Pantoletten sind der ideale Begleiter für jeden Tag. Gewicht: ca. 350 g – 470 g (je nach Variante).
+15450735804801	Diese modischen Zehentrenner-Sandalen bieten dir den ganzen Tag hohen Tragekomfort. Innenfutter aus Leder.
+15450735837569	Diese charmanten Slipper im Retro Mori-Stil sind perfekt für entspannte Tage im Freien. Obermaterial: Wildleder.
+15450735870337	Diese stilvollen Plateau-Slipper vereinen künstlerisches Flair mit Vintage-Charme. Obermaterial aus echtem Leder.
+15450735903105	Diese stilvollen Keil Sandalen sind die perfekte Wahl für den Sommer. Absatzhöhe: Ultrahoher Keilabsatz (8 cm oder mehr).
+15450735968641	Diese stilvollen Keilsandalen sind die perfekte Ergänzung für deine Sommer- und Herbstgarderobe. Verfügbar in den Grössen 36 bis 43.
+15450736001409	Diese stylischen Flip-Flops mit Stiletto-Absatz sind die perfekte Ergänzung für deine Sommergarderobe. Mittelhoher Absatz (3–5 cm).
+15450736034177	Diese stilvollen Keilsandalen mit Plateau sind die perfekte Wahl für den Sommer. Obermaterial aus weichem Wildleder.
+15450736066945	Diese eleganten Flip-Flops im koreanischen Stil sind der ideale Begleiter für entspannte Tage am Strand oder im Resort.
+15450736099713	Diese stilvollen Outdoor Sandalen für Damen sind in verschiedenen Farben erhältlich, darunter Pink, Rot, Leopard Print und Braun.
+15450736132481	Diese eleganten Sandalen für Damen präsentieren sich in einem einfarbigen Design und sind die perfekte Wahl für erwachsene Frauen.
+15450736165249	Diese Mules sind die perfekte Ergänzung für jede modebewusste Frau. Robuste Gummiaussensohle.
+15450736198017	Diese Keilsandalen für Damen überzeugen mit einer modernen Ästhetik und hohem Tragekomfort. Robuste Gummisohle für Komfort und Halt.
+15450736296321	Diese minimalistischen Keil-Flip-Flops für Damen sind die perfekte Ergänzung für deine Sommergarderobe 2026. Niedriger Keilabsatz (unter 3 cm).
+15450736329089	Diese modischen Herrenschuhe sind die idealen Begleiter für entspannte Tage am Strand oder in der Stadt. Atmungsaktives Obermaterial aus Spaltleder.
+15450736361857	Die Outdoor-Freizeitschuhe für Paare sind ideal für gemeinsame Abenteuer. Rutschfeste Gummiaussensohle.
+15450736394625	Diese Freizeitsandalen für Herren mit geschlossener Zehenpartie sind ideal für junge Erwachsene. Obermaterial aus Mikrofaserleder.
+15450736460161	Diese lässigen Outdoor-Sandalen sind ideal für warme Tage und Freizeitaktivitäten. Obermaterial aus Mikrofaserleder.
+15450736492929	Diese Herren-Sandalen im römischen Stil sind aus hochwertigem Mikrofasermaterial gefertigt, das sich weich anfühlt und langlebig ist.
+15450736525697	Diese Herren Sandalen sind die idealen Begleiter für warme Tage und vereinen Komfort mit Funktionalität. Obermaterial aus echtem Leder und Mesh.
+15450738491777	Diese handgefertigten Herren-Sandalen verbinden trendiges Design mit hohem Tragekomfort. Verfügbare Grössen: 38–39, 40–41, 42–43, 44–45, 46–47, 48–49.
+15450739278209	Diese vielseitigen Hausschuhe sind ideal für entspannte Stunden zu Hause. Breite Grössenpalette von 38 bis 47.
+15450739376513	Diese offenen Herren-Sandalen sind aus hochwertigem Vollnarbenleder gefertigt und bieten einen lässigen Stil für verschiedene Anlässe.
+15450739409281	Diese atmungsaktiven Herren-Sandalen sind ideal für entspannte Tage und bieten dank der weichen Sohle hohen Tragekomfort.
+15450739442049	Luftige Sandalen für Herren, ideal für warme Tage. Innenfutter aus Synthetikleder.
+15450739474817	Diese vielseitigen Herren-Sandalen im koreanischen Stil sind ideal für junge Erwachsene (18–40 Jahre) und bieten Komfort sowie Funktionalität.
+15450739507585	Diese vielseitigen Slip-on Sandalen für Herren sind ideal für den täglichen Gebrauch. Robuste, genähte Gummilaufsohle.
+15450739540353	Diese bequemen Herren-Sandalen sind ideal für den Sommer. Komfortables Lederfutter.
+15450739573121	Diese robusten Beach-Sandalen für Herren sind die idealen Begleiter für den Sommer. Rutschfeste und verschleissarme Gummisohle.
+15450739605889	Diese bequemen Outdoor-Strandsandalen für Herren sind ideal für sommerliche Aktivitäten. Verfügbar in den Grössen 30-45 (modellabhängig).
