@@ -9049,3 +9049,5 @@ kopfhaut-massagegeraet-mit-vibration-526080	1387972417938395136	7	7.47	ok	landes
 30-steine-hautroller-b724cc	16B4C289-E66D-4AD3-BC73-9837BB9F624E	16	6.17	ok	landeseite
 perlencollier-385920	1411896250189615104	16	4.50	ok	landeseite
 herzfotoanhanger-991680	1732202749506768896	16	4.60	ok	landeseite
+herzanhanger-kette-470080	1732210363447791616	16	4.40	ok	landeseite
+perlen-halskette-619000	2607100706431619800	16	4.60	ok	landeseite
