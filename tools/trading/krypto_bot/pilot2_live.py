@@ -115,6 +115,14 @@ class _Ausgeloest(Exception):
     """Der erste Stop-Kurs würde sofort auslösen (Kurs schon jenseits) → wie ein ausgelöster Stop zum Markt schliessen."""
 
 
+class _StopWeg(Exception):
+    """cancelReplace: Binance hat den Stop storniert, den Ersatz aber abgelehnt — die Coins sind frei und OHNE Stop."""
+
+    def __init__(self, verkauft, frei):
+        super().__init__("Stop storniert, Ersatz abgelehnt")
+        self.verkauft, self.frei = verkauft, frei
+
+
 def _jetzt_ms():
     return int(time.time() * 1000)
 
@@ -881,9 +889,22 @@ def ausfuehren(ents, trocken=False, env=None, spot=None, fut=None, protokolliere
                     try:
                         mit_stop, _frei = _spot_freigeben(spot, buch, k, d, rest, erg, unklar_neu)
                         gehandelt.add(k)
+                    except _StopWeg as ex:
+                        # der Stop ist storniert, der Ersatz abgelehnt: die Coins liegen frei — verkaufen, was der Plan verkaufen
+                        # wollte (sichert am meisten); der Rest bekommt am Laufende seinen Stop. Danach nichts mehr in diesem Markt
+                        gehandelt.add(k)
+                        warn(f"{k}: Spot-Stop storniert, Ersatz abgelehnt — die Coins sind frei; der geplante Verkauf folgt, der Rest "
+                             "bekommt am Laufende seinen Stop.")
+                        rest = PL.runde(rest - ex.verkauft, d["rs"]["step"])
+                        if rest * d["kurs"] >= d["rs"]["min_notional"]:
+                            schritt(k, "spot", "SELL", rest, False)
+                        gesperrt.add(k)
+                        abgelehnt.add(k)
+                        break
                     except Exception as ex:  # noqa: BLE001
-                        warn(f"{k}: gesperrte Coins nicht freigegeben ({type(ex).__name__} {str(ex)[:60]}) — der Spot-Stop bleibt, "
-                             "heute kein weiterer Verkauf in diesem Markt.")
+                        warn(f"{k}: gesperrte Coins nicht freigegeben ({type(ex).__name__} {str(ex)[:60]}) — "
+                             + ("Antwort unklar, die Stops werden am Laufende nachgelesen"
+                                if "unklar" in str(ex) else "der Spot-Stop bleibt") + ", heute kein weiterer Verkauf in diesem Markt.")
                         gesperrt.add(k)
                         abgelehnt.add(k)
                         break
@@ -1173,7 +1194,8 @@ def _spot_freigeben(spot, buch, k, d, menge, erg, unklar_neu):
     """Der Plan verkauft `menge` Coins, die eigene Spot-Stops sperren (die freien sind schon verkauft): pro Stop EIN cancelReplace
     — Stop → kleinerer Stop (gibt genau das Nötige frei), oder, bliebe vom Stop nichts Gültiges übrig, Stop → Marktverkauf
     seiner Coins. Lehnt Binance ab, bleibt der Stop (nie Schutz wegnehmen, ohne verkaufen zu können).
-    → (verkauft, frei): verkauft = schon mit dem Stop verkaufte Coins, frei = freigegebene Coins. Fehler → Ausnahme."""
+    → (verkauft, frei): verkauft = schon mit dem Stop verkaufte Coins, frei = freigegebene Coins. Fehler → Ausnahme;
+    _StopWeg = Binance hat den Stop storniert, den Ersatz aber abgelehnt (die Coins sind jetzt frei, ohne Stop)."""
     st = buch["stops"].setdefault(k, {})
     sym, rs = d["sym"], d["rs"]
     if _handel_aus(rs):
@@ -1184,11 +1206,19 @@ def _spot_freigeben(spot, buch, k, d, menge, erg, unklar_neu):
             break
         rest, p_o = _rest(o), float(o.get("stopPrice") or 0) or st.get("p_long") or d["kurs"] * (1 - NOT_STOP_ABSTAND)
         bleibt = PL.runde(rest - brauche, rs["step"])
-        if bleibt > 0 and bleibt * min(p_o, d["kurs"]) >= rs["min_notional"]:
-            res, ant = spot.ersetzen(sym, o["orderId"], spot.stop_params(sym, bleibt, p_o, rs, _kennung(CID_STOP_SPOT)))
+        # der kleinere Stop nie zu einem Kurs, der schon erreicht ist (Kurs unter dem alten Stop, z. B. ein hängender
+        # STOP_LOSS_LIMIT): Binance storniert zuerst und lehnt dann «würde sofort auslösen» ab → der Stop wäre weg
+        p_neu = _stop_preis(None, p_o, d["kurs"], +1)
+        if bleibt > 0 and bleibt * min(p_neu, d["kurs"]) >= rs["min_notional"]:
+            res, ant = spot.ersetzen(sym, o["orderId"], spot.stop_params(sym, bleibt, p_neu, rs, _kennung(CID_STOP_SPOT)))
+            if res == "nur_storno":
+                st["spot"] = None
+                raise _StopWeg(verkauft, frei + rest)
             if res != "ok":
                 raise RuntimeError(f"Spot-Stop nicht verkleinert ({res})")
             st["spot"], frei, brauche = ant.get("orderId"), frei + rest - bleibt, 0.0
+            if p_neu != p_o:
+                st["p_long"] = p_neu
             continue
         cid = f"p2{int(time.time() * 1000)}{random.randint(0, 999999):06d}"
         m = PL.runde(rest, rs["step"])
@@ -1198,6 +1228,9 @@ def _spot_freigeben(spot, buch, k, d, menge, erg, unklar_neu):
             u = unklar_eintrag(k, sym, "spot", "SELL", m, False)
             u["cid"] = cid
             unklar_neu.append(u)
+        if res == "nur_storno":
+            st["spot"] = None
+            raise _StopWeg(verkauft, frei + rest)
         if res != "ok":
             raise RuntimeError(f"Spot-Stop mit Verkauf nicht ersetzt ({res})")
         ausg = _ausgefuehrt(ant, m)
@@ -1440,7 +1473,8 @@ def _spot_abgleich(spot, k, d, st, e, s, erg, warn, gesetzt, schutz, lesen, geha
         _spot_rest_sichern(spot, k, d, st, dict(s, frei=frei, gebunden=gedeckt), soll, p, warn, gesetzt)
         return
     if jenseits and alt:  # Kurs schon jenseits: die gesperrten Coins mit ihrem Stop zusammen verkaufen (lehnt Binance ab: Stop bleibt)
-        _spot_stops_verkaufen(spot, k, d, st, alt, erg, warn, gesetzt, f"Kurs {kurs:g} schon unter dem Stop {grenze:g}")
+        _spot_stops_verkaufen(spot, k, d, st, alt, erg, warn, gesetzt, f"Kurs {kurs:g} schon unter dem Stop "
+                              + (f"{grenze:g}" if grenze else "(ausgelöster Stop-Limit hängt)"), soll=soll)
         alt = []
     offen = _alle_weg(alt, lambda o: spot.abbrechen(sym, o["orderId"]), k, "Spot", warn, schutz)
     if offen:
@@ -1529,17 +1563,21 @@ def _spot_stops_anpassen(spot, sym, regeln, alt, soll, kurs, frei, preis=None):
     return gedeckt, frei, texte, unklar
 
 
-def _spot_stops_verkaufen(spot, k, d, st, alt, erg, warn, gesetzt, grund):
+def _spot_stops_verkaufen(spot, k, d, st, alt, erg, warn, gesetzt, grund, soll=None):
     """Kurs schon jenseits des Stops: die Coins unter eigenen Stops zum Markt verkaufen — Stop und Verkauf in EINER Anfrage
-    (lehnt Binance den Verkauf ab, bleibt der Stop). Kennt Binance cancelReplace nicht: stornieren (der Verkauf folgt)."""
+    (lehnt Binance den Verkauf ab, bleibt der Stop). Kennt Binance cancelReplace nicht: stornieren (der Verkauf folgt).
+    Höchstens `soll` (die Netto-Richtung JETZT): wurden vorher schon freie Coins verkauft (z. B. weil der erste Versuch
+    abgelehnt wurde), deckt der Stop auch Absicherungs-Coins — die werden nie mitverkauft (sonst ein nackter Short)."""
     sym, regeln, coin = d["sym"], d["rs"], d["coin"]
     if _handel_aus(regeln):
         warn(f"{k}: {grund}, aber {sym} laut Binance nicht im Handel ({regeln.get('status')}) — der Spot-Stop bleibt stehen.")
         return
+    offen_soll = float("inf") if soll is None else soll
     for o in alt:
-        m = PL.runde(_rest(o), regeln["step"])
+        m = PL.runde(min(_rest(o), offen_soll), regeln["step"])
         if m * d["kurs"] < regeln["min_notional"]:
-            continue
+            continue  # nichts (mehr) zu verkaufen: der Stop deckt nur noch Absicherung — die nächste Runde räumt ihn ab
+        offen_soll -= m
         cid = f"p2{int(time.time() * 1000)}{random.randint(0, 999999):06d}"
         res, info = spot.ersetzen(sym, o["orderId"], {"side": "SELL", "type": "MARKET", "quantity": BB.format_menge(m),
                                                        "newOrderRespType": "FULL", "newClientOrderId": cid})
