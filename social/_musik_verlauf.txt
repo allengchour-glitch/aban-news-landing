@@ -518,3 +518,4 @@
 2026-10-14T16:37:20.764Z	luxe-epic-trailer.wav	38.25	beauty	cjreel-CJMJ185778101AZ	stimme:nein	anteil
 2026-10-14T16:44:20.202Z	luxe-epic-anime.wav	4.75	haustier	cjreel-CJJJCWGY01608-2pc	stimme:nein	mix-fehler
 2026-10-14T16:46:05.405Z	luxe-epic-hybrid.wav	37.5	allgemein	cjreel-CJHZ165535201AZ	stimme:ja	azure:de-CH-JanNeural
+2026-10-14T19:11:42.123Z	luxe-epic-elegant.wav	39.5	haustier	cjreel-CJJJCWGY03566-G	stimme:nein	anteil
