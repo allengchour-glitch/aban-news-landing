@@ -52,6 +52,24 @@
 
 
 
+## 📦 29'013 CJ-Produkte ohne Bestandsschutz (SKU nur «CJ-<pid>») · 20 festgefahrene Entwürfe · offener Ledger-Griff (2026-10-14, Runde 16:26 bis ~18:40 UTC)
+
+**Klasse:** `cj_lager_abgleich.py` leitete aus `CJ-<pid>` keine productSku ab → «keine-cj-sku», kein Wächter prüfte den Bestand
+(#1019-Klasse). Der Bestellweg (`cj_order_engine.vid_fuer`) bestellt bei 1 CJ-Variante diese, sonst Zuordnungsdatei, sonst
+Bildvergleich erst beim Bestellen — und prüft den Bestand nie. `product/query?pid=…&features=enable_inventory` geht (Zahl + UUID,
+10 Punkte). Fix: pid-Ware nur über die Zusatzkonten, CAP_PID 300/Lauf, PID_TAG 600/Tag (echte Abfragen gezählt), Regel = Bestellweg
+(eindeutig → diese Variante; mehrere → nur «alle 0» sperrt). Erster scharfer Lauf: 100 pid geprüft (72 einzeln/26 offen), **2 bei CJ
+entfernte Produkte gesperrt** (Mini-Drohne AeroX, Bratpfannen-Set). Bericht `dropship/CJ-LAGER-PID-2026-10-14.md`.
+**Festgefahrene Entwürfe:** lagerstand_hygiene draftet ganz gesperrte Ware, der Export las nur ACTIVE → 20 von 74 eigenen Sperren
+wurden nie mehr geprüft. Jetzt alle 2 T mitgeprüft (frei bei Bestand, gesperrt bei 0); 17 der 20 sind wirklich aus dem CJ-Sortiment.
+**Prüfung (wf_77b3cddc, 4 Prüfer + Gegenprobe):** Der Ledger-GRIFF blieb den ganzen Lauf offen — ein git-Merge (Autocommitter,
+Server-Zeilen) ersetzt die Datei, die Zeilen landen in der gelöschten → Sperre ohne Eintrag, nie wieder frei (galt schon vorher).
+«geplant» vor der Sperre half dagegen, machte aber eine NIE gesetzte Sperre zur «eigenen» → hätte später eine fremde Sperre
+freigegeben; jetzt Rücklesen + «plan-verworfen». CJ 1600201 «Quota used up» lief als Drossel endlos.
+**Lehre:** Ein Wächter, der über ein abgeleitetes Merkmal auswählt (productSku aus der SKU), sieht nur, was sich ableiten lässt —
+die Lücke zählt man über das Gegenmerkmal («keine-cj-sku» im eigenen Ledger: 29'013). Und: Ledger-Dateien in einem git-Baum mit
+Autocommitter nie als offenen Griff halten; je Zeile öffnen.
+
 ## 🔗 1'331 CJ-Produkte ohne «cj-real» = unsichtbar für alle Lieferbarkeits-Wächter · Waffenteile + Klingen nur am Bild · tote Seiten je Abfrage einzeln · Secret im Env verdorben (2026-10-14, Runde 12:26 bis ~16:05 UTC)
 
 **cj-real-Lücke:** Alle Lieferbarkeits-Wächter wählen über `tag:cj-real` (cj_lager_abgleich, cj_verfuegbarkeit, cj_stock_guard,
@@ -20564,3 +20582,5 @@ Verschoben am 04.10.2026:
 - 2026-10-13 · 🖨️ **Druck auf Bestellung: Profil «Druck auf Bestellung» (0.00 unter General-Namen, Transit 6–13 = Zusage 7–14) für 49 DTG-Produkte mit Marge ≥ 0 im schlechtesten Fall (−10 %, MWST 8,1 %, Wechselkurs); Stufe 1 = 10 Motiv-Shirts, Stufe 2 ab 17.10. selbst (Google-Halt mit Basis). Zeichen = Shop-Metafeld `luxe.druck_profil_ids` (keine Produkt-Schreibvorgänge). Kasse teilt Mischkörbe je Profil (eigenes Datum je Lieferung); Matrix 9/9, 0 teurer; Kasse Shirt «23. Okt–3. Nov KOSTENLOS». Theme-Patch + Aufseher/Ampel stehen im Bericht unter «Eintragen».** → `dropship/DRUCK-PROFIL-2026-10-13.md`
 <!-- aus CLAUDE.md verschoben 14.10.2026 15:49 UTC (VERBATIM) -->
 - 2026-10-13 · 🔎 **Shopify zählt 404-Landungen nicht als Sitzung → tote Google-Seiten waren für `tote_landeseiten.py` unsichtbar: GSC=1 (Schnappschuss `tools/gsc_schnappschuss.py` täglich, Ampel «GSC-TOT»), strenge Zielwahl, 9 × 301; dazu Menü +3, «Über 1'500 Kostüme», Fremdlogo-Bilder, Masstabellen XXL.** → `dropship/GSC-TOTE-SEITEN-2026-10-13.md`
+<!-- aus CLAUDE.md verschoben 14.10.2026 18:34 UTC (VERBATIM) -->
+- 2026-10-13 · 🇨🇭 **Kasse zeigte für CH-Lager-Kostüme «28. Okt–11. Nov» → Profil «CH-Lager» mit 0.00-Tarifen UNTER DEN NAMEN des General profile (gleichnamige Tarife addieren sich, Bedingung an der Korbsumme → Mischkorb 7+0, niemand zahlt mehr; Google liest nur General): Matrix 8/8, Kasse «20.–21. Okt KOSTENLOS», Stufe 1 = 1'607 Produkte ohne Google, Stufe 2/3 ab 14./17.10. (`ch_lager_profil.py`, Aufseher täglich). `versand_transit_wache` sah nur 50 von 55 Profilen → blättert jetzt.** → `dropship/CH-LAGER-PROFIL-2026-10-13.md`

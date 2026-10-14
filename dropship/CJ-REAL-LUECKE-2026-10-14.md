@@ -111,7 +111,7 @@ und dort fehlen 1'299 wegen der SKU-Form. Für die Existenzprüfung ist ein **Na
 1. ✅ **ERLEDIGT 14.10. ~15:30–15:45 UTC (Hauptsitzung):** drei SCHARF-Läufe 500 · 500 · 330 nachgetragen, 0 nicht bestätigt; Nachmessung `--pruefen` → «1 aktiv (CJ-Form 0 · unprüfbar 1)». Aufseher-Zeilen eingetragen (Tagesliste, NACH, EXP SCHARF=1); `/tmp/cj_lager_export.jsonl` gealtert, damit cj_lager_abgleich die 1'330 beim nächsten Lauf mitnimmt.
 2. **Gleichlauf nach dem Nachtrag messen:** `status:active AND tag:cj-real` 50'292 → ~51'622; `--pruefen` → `CJ-Form 0 · unprüfbar 1`.
    Die Rohzahl bleibt 1 (Dusch-Organizer, Slug) — Soll ist «CJ-Form 0».
-3. **Neue, grössere Klasse (nicht behoben):** cj_lager_abgleich kann pid-Formen nicht abfragen. Im eigenen Export
+3. ✅ **BEHOBEN 14.10. ~18:30 UTC (Runde 16:26, `dropship/CJ-LAGER-PID-2026-10-14.md`):** ~~Neue, grössere Klasse:~~ cj_lager_abgleich kann pid-Formen nicht abfragen. Im eigenen Export
    (50'293 cj-real) sind **23'209 `CJ-<Zahl>` + 4'610 `CJ-<UUID>` = 27'819 ohne Bestandsprüfung**; Ledger letzter Stand
    30'928 × `keine-cj-sku`. Weg: productSku per `product/query?pid=` holen (nicht geprüft).
 4. **cj_verfuegbarkeit verhungert** (Rückstand 4'105 vor dem Nachtrag, ~110/Tag): Priorisierung «besucht/beworben/neu zuerst»
