@@ -9180,3 +9180,15 @@ zweilagige-blutenhalskette-in-pink-633700	2607101052321634500	16	5.23	ok	landese
 doppel-sternfisch-halskette-623300	2607101049301623900	16	5.50	ok	landeseite
 geometrisches-pendant-600100	2607101045511600900	16	5.56	ok	landeseite
 farbblock-halskette-630300	2607101044101630900	16	6.07	ok	landeseite
+resin-kugelhalskette-630600	2607101033361631200	16	5.55	ok	landeseite
+buntes-steinperlen-halsband-627800	2607100956281628500	16	6.21	ok	landeseite
+herz-halskette-628800	2607100912111629500	16	5.06	ok	landeseite
+vintageschmuck-kollier-630500	2607100712181631200	16	6.51	ok	landeseite
+vintageschmuck-set-636300	2607100233241636900	16	4.71	ok	landeseite
+vintage-halskette-413570	2075420020473716738	16	4.66	ok	landeseite
+luxus-herz-kette-mit-perlen-009090	2075410792036032514	16	4.71	ok	landeseite
+modische-damen-halskette-mit-hip-hop-metall-de-497345	2075403483011715073	16	5.12	ok	landeseite
+hip-hop-kreuz-anhanger-mit-kubanische-kette-ve-021633	2075405244216741889	16	4.71	ok	landeseite
+perlen-abakus-halskette-casual-614400	2607091206531615000	16	4.81	ok	landeseite
+edelstahl-3d-katzenpendant-mit-blumenkranz-uni-600700	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+18k-gold-plated-anpassbarer-weizenahren-indexr-147201	2075029811435450370	16	4.50	ok	landeseite
