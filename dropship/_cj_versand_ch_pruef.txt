@@ -9097,3 +9097,10 @@ elegante-schultertasche-626900	2607100848091627800	16	7.57	ok	landeseite
 elegante-leder-tasche-601400	2607091242331602000	16	7.99	ok	landeseite
 wickel-tasche-633900	2607100046481634600	16	11.12	ok	landeseite
 leder-handtasche-677505	2075515564409786370	16	16.76	ok	landeseite
+leder-querformat-tasche-966721	2075491556559269889	16	16.76	ok	landeseite
+damen-munzborse-626900	2607060848131628000	16	5.48	ok	landeseite
+haarklammer-frosch-625600	2607090807191626700	16	4.50	ok	landeseite
+entfilzungs-burste-818370	2075301184172036098	0	-	KEINE CH-Option → DRAFT	landeseite
+haarklammer-wolke-609800	2607101132021600500	16	4.92	ok	landeseite
+gesichtsfirma-gel-609900	2607100854301600500	3	7.78	ok	landeseite
+schonheitspflaster-628100	2606190011281629000	16	4.92	ok	landeseite
