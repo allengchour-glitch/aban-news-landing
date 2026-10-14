@@ -115,6 +115,15 @@ if (idx.posted_at === undefined) { rows[0].push('posted_at', 'post_url'); idx.po
 // (gemeinsame Sperre + 3-Wege, atomar). Schlüssel = Spalte 0 (slug).
 let _queueBasis = queueSchnappschuss(rows);
 const writeLedger = () => { queueSchreiben(CSV, _queueBasis, rows); _queueBasis = queueSchnappschuss(rows); };
+// 14.10.2026: Anspruch nur unter der Poster-Sperre UND auf dem frischen Stand — ein zweiter Lauf, der vor der Sperre gewartet
+// hat, trägt eine Kopie von vor Minuten im Speicher und hielte einen inzwischen geposteten Kandidaten noch für «ready».
+const nochBereit = (r, bilder) => {
+  const frisch = queueLesen(CSV), si = frisch[0].map(h => h.trim()).indexOf('status');
+  const z = frisch.slice(1).find(x => x[0] === r[0]);
+  if (!z || (z[si] || '').trim() !== 'ready') return `Status jetzt «${z ? (z[si] || '').trim() : 'Zeile weg'}»`;
+  if (bilder.some(b => postSeen(b))) return 'Bild inzwischen im gemeinsamen Ledger';
+  return '';
+};
 
 // ---------------------------------------------------------------- Kandidat
 const capSig = s => (s || '').toLowerCase().replace(/[#@].*/s, '').replace(/[^a-z0-9 ]/g, '').replace(/\s+/g, ' ').trim().slice(0, 45);
@@ -254,6 +263,7 @@ if (DRY) {
 }
 if (VIA_MC) {
   const release = postLock(20);
+  { const w = nochBereit(cand, bilder); if (w) { console.log(`⛔ ${get(cand, 'slug')}: ${w} → nichts gepostet`); release(); process.exit(0); } }
   setzen(cand, 'status', 'posting'); setzen(cand, 'posted_at', new Date().toISOString()); writeLedger();
   let igPid = '';
   try {
@@ -283,6 +293,7 @@ if (!IG_ID || !TOK) { console.error('⛔ IG_USER_ID / META_ACCESS_TOKEN fehlen.'
 if (await igLiveHas(caption)) { console.log('⛔ Auf IG bereits live (Caption-Signatur) → posted-dup-live'); setzen(cand, 'status', 'posted-dup-live'); writeLedger(); process.exit(0); }
 
 const release = postLock(20);
+{ const w = nochBereit(cand, bilder); if (w) { console.log(`⛔ ${get(cand, 'slug')}: ${w} → nichts gepostet`); release(); process.exit(0); } }
 setzen(cand, 'status', 'posting'); setzen(cand, 'posted_at', new Date().toISOString()); writeLedger();
 let igId = null;
 try {

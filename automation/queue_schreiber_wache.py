@@ -79,7 +79,7 @@ AUSNAHMEN = {
     "dropship/ads/auto_render.sh": "nur GitHub-Workflow (reel-render.yml)",
     "dropship/ads/render_product_reel.sh": "nur GitHub-Workflow (product-reel.yml)",
     # Rewind-Maschinerie: setzt Dateien per git zurück (eigene Klasse, Bericht §OFFEN)
-    "automation/repo_vorspulen.sh": "git stash/reset nach Snapshot-Rewind (eigene Klasse, OFFEN im Bericht)",
+    "automation/repo_vorspulen.sh": "git stash/reset nach Snapshot-Rewind; nie committete Queue-Zeilen holt queue_rewind_retten.py zurück (14.10.)",
     "automation/engine_keepalive.sh": "startet repo_vorspulen.sh (eigene Klasse)",
     "automation/fixer_keepalive.sh": "Startliste (startet Schreiber, schreibt selbst keine Queue)",
     "automation/social_autopilot.sh": "Startliste (startet Poster, schreibt selbst keine Queue)",
