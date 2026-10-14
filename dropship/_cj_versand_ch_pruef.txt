@@ -9427,3 +9427,4 @@ sommerminikleid-601000	2607080932511601600	16	7.99	ok	landeseite
 boho-chic-langarm-kleid-617400	2607080930391618000	16	8.79	ok	landeseite
 vintage-lace-midi-kleid-632300	2607080857561632900	16	9.47	ok	landeseite
 europaisch-amerikanische-damenmode-606300	2607080846281607400	16	10.29	ok	landeseite
+gestreiftes-kleid-mit-puffarmeln-607701	2607080748531608700	16	10.15	ok	landeseite
