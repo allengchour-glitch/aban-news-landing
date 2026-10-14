@@ -9234,3 +9234,16 @@ anpassbares-armband-ring-set-525504	1433266536226885632	16	4.71	ok	landeseite
 marmergriff-gold-245888	1404309602916503552	16	5.12	ok	landeseite
 damenkleid-626800	2607110900551628000	16	9.88	ok	landeseite
 retro-stil-halter-ausschnitt-ruschentier-midi-634100	2607110755521634700	16	11.00	ok	landeseite
+quadratische-ausschnitt-taille-geknopft-elegan-606100	2607110707291606800	16	7.71	ok	landeseite
+cheongsam-kleid-damen-600600	2607110519311601300	16	9.47	ok	landeseite
+modisches-damenkleid-mit-digitaldruck-617300	2607110511421618100	16	8.79	ok	landeseite
+v-ausschnitt-minikleid-mit-schleife-und-kurzen-629900	2607110348281620600	16	8.79	ok	landeseite
+leopard-print-straps-gaze-kleid-633200	2607110342281633900	16	6.56	ok	landeseite
+kapuzen-kleid-damen-605300	2607110304191606000	16	9.07	ok	landeseite
+sommer-mini-kleid-631500	2607110253571632100	16	7.45	ok	landeseite
+einfaches-langarmliges-kleid-mit-kapuze-629800	2607110137511620700	16	11.00	ok	landeseite
+langes-freizeitkleid-fur-damen-618700	2607110113001619700	16	9.07	ok	landeseite
+sexy-patchwork-kleid-mit-ruschen-614800	2607101245541615500	16	8.53	ok	landeseite
+einseitige-midi-kleider-mit-farbblock-630300	2607101140081631000	16	9.27	ok	landeseite
+elegant-armlos-modischer-halsausschnitt-damenk-638400	2607101136491639100	16	9.14	ok	landeseite
+retro-kleid-mit-schnurung-623100	2607101123201623700	16	7.78	ok	landeseite
