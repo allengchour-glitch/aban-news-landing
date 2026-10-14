@@ -9316,3 +9316,8 @@ eleganter-stehkragen-multicolor-armelloses-sch-617900	2607100351211618700	16	9.4
 ruckenfreies-strickkleid-614000	2607100332291614600	16	8.79	ok	landeseite
 schwarzes-und-weisses-abstrakes-bild-981888	1576914814247645184	16	13.76	ok	landeseite
 rosa-puffrock-prinzessin-615000	2607100329331615600	16	9.61	ok	landeseite
+lace-panel-cheongsam-kleid-636400	2607100311411637000	16	7.71	ok	landeseite
+retro-schulterstreifen-slim-fit-kleid-armellos-618300	2607100258131618900	16	9.07	ok	landeseite
+gehhilfe-fur-senioren-654900	2510190637391655100	16	11.18	ok	landeseite
+midilange-kleid-mit-reverskragen-618600	2607100253361619200	16	9.33	ok	landeseite
+4-achsen-halter-621000	2505030144411621300	16	5.24	ok	landeseite
