@@ -52,6 +52,31 @@
 
 
 
+## 🔎 Halloween-Seite nie von Google abgerufen · Patch-Gerüst Startseite · Waffenmontage als «Kartenhalter» (2026-10-14, ~10:28–10:42 UTC)
+
+**Index:** Search Console (OpenSEO `inspect_urls`, 0 Credits) meldet `/collections/halloween` «Discovered – currently not indexed»,
+also nie abgerufen. Die Seite, die heute Morgen umgebaut wurde, bekam deshalb nie einen Besucher aus der Google-Suche, obwohl Google
+der einzige Kanal mit Verkäufen ist. In 28 Tagen gab es 0 Impressionen für «halloween», für «kost…» nur Produktseiten auf Pos. 25–100.
+Ebenso nie abgerufen: `geschenke-fuer-sie`, `kostueme-fasnacht`; `weihnachtspyjama-familie` ist Google unbekannt. Dagegen wurden
+`kostueme-ch-lager` und `weihnachten-2026` am 13.10. um 20:04 abgerufen. Am 13.10. um 19:34 waren beide noch 0, und beide
+haben einen Link auf der Startseite (zuletzt abgerufen am 12.10.). Die Halloween-Seite stand nicht im Index-Messgerät
+(`dropship/_index_probe_urls.txt`) und ist jetzt dort, mit Sirène und Aurora. Der Betreiber-Klick «Indexierung beantragen»
+(4 URLs) steht in COWORK-BEFEHL.
+**Lehre:** Eine Saison-Seite gilt erst als fertig, wenn Google sie abgerufen hat. Wer eine Landeseite baut, nimmt sie im selben
+Zug ins Messgerät, verlinkt sie von der Startseite oder aus dem Band und beantragt die Indexierung.
+
+**Patch-Gerüst (A1):** `automation/startseite_schlank_patch.py` hält die 12 Liquid-Bausteine von A2–A5 als Paare aus Anker und
+neuem Text. Gesetzt heisst, der neue Text steht da. Steht der alte Text genau 1× da, wird mit SCHARF ersetzt. Sonst gilt
+«Anker fehlt» und nichts wird geschrieben. Geschrieben wird nur ins Theme mit MAIN. `index.json` wird nur geprüft, nie geschrieben.
+Die beste Gegenprobe war «Patch(Backup) = Live-Datei, byte-gleich 6/6»: Sie beweist, dass die Bausteine genau das beschreiben,
+was von Hand gesetzt wurde. Die Grenzen des Messgeräts sind auf den Stand nach Stufe A nachgezogen.
+
+**Vision-QA:** «Aluminium-Halterung für Kartenhalter» war auf dem Bild eine Zielfernrohr-Seitenmontage mit Schnellspanner
+(Google «Guns and Parts»). Gedraftet, Ledger `dropship/_vision_qa_draft.tsv`. Die Titelsuche nach Waffenwörtern (picatinny,
+zielfernrohr, gewehr, holster …) fand im aktiven Bestand nichts Weiteres, also ein Einzelfall. Unsere eigene Kauderwelsch-SEO
+hatte den falschen Titel am Vortag noch «verbessert». Text-Reparatur sieht nicht, was das Bild zeigt.
+**Zeitangaben:** Zweimal heute stand eine geschätzte Uhrzeit im Bericht, die 10–12 Min. zu spät lag. `date -u` VOR jedem Zeitstempel.
+
 ## 🧯 Bau-Agent startete `herbst_kuratieren.py --help` = voller Schreiblauf (2026-10-14, 10:13–10:16 UTC, zurückgebaut 10:33)
 
 Ein Bau-Agent (S3-Workflow, Auftrag «nur lesen, nie SCHARF») rief `python3 automation/herbst_kuratieren.py --help` auf.
@@ -20496,3 +20521,5 @@ Verschoben am 04.10.2026:
 - 2026-10-13 · 🔥 **Trendreihe: Reihenregeln gelten für JEDES Mitglied (8 ohne `hype-seit` = Spielzeug/Partydeko/Kostüm, Herkunft unbekannt, liefen nie ab) → `abgelaufene_raeumen()` täglich: Regelbruch raus, Undatierte zurückdatiert (7 T Frist; mit HEUTE stand das Lampion-Set auf Platz 12). Neu: Thema Gewürzregal, 12 bildgeprüfte Aufnahmen, 15 Bildtext-Ausschüsse.** → `dropship/HYPE-REIHE-REGELN-2026-10-13.md`
 <!-- aus CLAUDE.md verschoben 14.10.2026 09:55 UTC (VERBATIM) -->
 - 2026-10-13 · 🎭 **Messrunde (5 Prüfer/20 Skeptiker): Engpass Verkehr; ChatGPT beste Quelle (5,5 % Korb), IndexNow-These widerlegt; Richter-Material war abgeschnitten (2/5 Prüfer fehlten). Umgesetzt: 18 Kostüme/Masken (Typ «Hautpflege») aus dem Google-Kanal — `ist_kostuem()` + 35 Kanarien im täglichen Durchsetzer; `title:*maske*` findet nur Wortanfänge → Export nötig.** → `dropship/MESSRUNDE-2026-10-13.md`, `dropship/KOSTUEM-GOOGLE-2026-10-13.md`
+<!-- aus CLAUDE.md verschoben 14.10.2026 10:40 UTC (VERBATIM) -->
+- 2026-10-13 · 🖨️ **Druck auf Bestellung: Profil «Druck auf Bestellung» (0.00 unter General-Namen, Transit 6–13 = Zusage 7–14) für 49 DTG-Produkte mit Marge ≥ 0 im schlechtesten Fall (−10 %, MWST 8,1 %, Wechselkurs); Stufe 1 = 10 Motiv-Shirts, Stufe 2 ab 17.10. selbst (Google-Halt mit Basis). Zeichen = Shop-Metafeld `luxe.druck_profil_ids` (keine Produkt-Schreibvorgänge). Kasse teilt Mischkörbe je Profil (eigenes Datum je Lieferung); Matrix 9/9, 0 teurer; Kasse Shirt «23. Okt–3. Nov KOSTENLOS». Theme-Patch + Aufseher/Ampel stehen im Bericht unter «Eintragen».** → `dropship/DRUCK-PROFIL-2026-10-13.md`
