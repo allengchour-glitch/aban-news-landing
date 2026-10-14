@@ -2354,3 +2354,7 @@
 15517550444929	Modell:3+Grösse:2:6	2026-10-14	leder-leine-mit-brustgeschirr-fur-kleine-hunde-547712
 15517430579585	Grösse:3:3	2026-10-14	vergoldetes-jade-armband-mit-gluckswolken-613000
 16638641734023	Farbe:2+Grösse:8:16	2026-10-14	katzen-schnitzeljacke-in-schwarz-violett-620500
+15516235071873	Farbe:3:3	2026-10-14	nordische-eisen-obstschale-9d0d65
+15516233761153	Farbe:3+Grösse:3:9	2026-10-14	doppelfuhrleine-fur-hunde-805440
+15516215509377	Farbe:3+Grösse:2:6	2026-10-14	leder-leine-fur-haustiere-092608
+15516215214465	Farbe:6:6	2026-10-14	verstellbare-hunde-leine-fur-unterwegs-607488
