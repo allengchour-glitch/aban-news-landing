@@ -250,3 +250,6 @@ name:ledwasserwellenprojektionsleuchte
 pid:15450836566401
 slug:led-wasserwellen-projektionsleuchte
 slug:damenstiefel-mit-klotzhacke-aus-nappaleder
+slug:bildreel-kurze-daunenjacke-mit-kapuze
+pid:15448673976705
+slug:kurze-daunenjacke-mit-kapuze

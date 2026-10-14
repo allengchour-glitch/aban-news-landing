@@ -1,19 +1,19 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-14T10:04Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-14T11:00Z
 
-Aktive gescannt: 30 · ohne Kategorie: 30 · heute gesetzt: 20 (SCHARF, CAP 1500) · danach offen: 10 · Fehler: 0
+Aktive gescannt: 10 · ohne Kategorie: 10 · heute gesetzt: 8 (SCHARF, CAP 1500) · danach offen: 2 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
 
 ## Unbekannte Typen (nicht geraten — Tabelle ergänzen)
 
-- Büro & Home Office: 10
+- Büro & Home Office: 2
 
 ## Beispiele (heute gesetzt)
 
-- gruner-2b-hb-zeichenstift-10-stuck-622800 · Büro & Home Office → Office Supplies
-- tastatur-maus-set-mit-stummschaltung-610300 · Büro & Home Office → Electronics
-- a5-notizbuch-schutzhulle-aus-crazy-horse-leder-601500 · Büro & Home Office → Office Supplies
-- 98-tasten-bluetooth-tastatur-wireless-604800 · Büro & Home Office → Electronics
-- diamantmalerei-desktop-clip-mit-bild-604000 · Büro & Home Office → Apparel & Accessories > Clothing
+- e-book-reader-mit-6-zoll-e-ink-bildschirm-623600 · Büro & Home Office → Electronics > Computers > Handheld Devices > E-Book Readers
+- lesezeichen-aus-pu-leder-mit-kristallen-6-stuc-610300 · Büro & Home Office → Office Supplies > Book Accessories > Bookmarks
+- regenkette-aus-kupfer-aluminium-legierung-605800 · Büro & Home Office → Home & Garden > Decor > Rain Chains
+- regenkette-mit-vogeln-638700 · Büro & Home Office → Home & Garden > Decor > Rain Chains
+- regenkette-aus-metall-608000 · Büro & Home Office → Home & Garden > Decor > Rain Chains
 

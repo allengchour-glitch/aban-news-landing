@@ -9083,3 +9083,24 @@ edelstahl-wassersportflasche-636400	2607100741291637100	16	9.29	ok	landeseite
 edelstahl-becher-587138	2075494994101776386	0	-	KEINE CH-Option → DRAFT	landeseite
 antirutsch-mat-624800	2607100557461625600	16	5.65	ok	landeseite
 18k-vergoldete-halskette-mit-zirkonia-604900	2607091148461605800	16	4.36	ok	landeseite
+geometrische-ohrringe-035970	2075420982441533441	16	4.60	ok	landeseite
+herz-ohrringe-442626	2075477650587357185	16	5.20	ok	landeseite
+anstecknadel-halter-639100	2606200341361639700	16	11.32	ok	landeseite
+punk-style-schlangenknochen-kette-625300	2607100919481625900	16	4.92	ok	landeseite
+schlanke-damenkleid-620900	2607100658451621500	16	10.15	ok	landeseite
+einfaches-baumwoll-pyjama-set-608000	2607100348251608600	16	11.37	ok	landeseite
+diamant-ohrhanger-621600	2607100516441622200	16	4.75	ok	landeseite
+polarisierte-sonnenbrille-625800	2607100137181626400	5	5.34	ok	landeseite
+doppelsteg-sonnenbrille-601300	2606240146381602400	5	5.18	ok	landeseite
+gro-e-schultasche-605100	2607100505401605700	16	12.21	ok	landeseite
+elegante-schultertasche-626900	2607100848091627800	16	7.57	ok	landeseite
+elegante-leder-tasche-601400	2607091242331602000	16	7.99	ok	landeseite
+wickel-tasche-633900	2607100046481634600	16	11.12	ok	landeseite
+leder-handtasche-677505	2075515564409786370	16	16.76	ok	landeseite
+leder-querformat-tasche-966721	2075491556559269889	16	16.76	ok	landeseite
+damen-munzborse-626900	2607060848131628000	16	5.48	ok	landeseite
+haarklammer-frosch-625600	2607090807191626700	16	4.50	ok	landeseite
+entfilzungs-burste-818370	2075301184172036098	0	-	KEINE CH-Option → DRAFT	landeseite
+haarklammer-wolke-609800	2607101132021600500	16	4.92	ok	landeseite
+gesichtsfirma-gel-609900	2607100854301600500	3	7.78	ok	landeseite
+schonheitspflaster-628100	2606190011281629000	16	4.92	ok	landeseite
