@@ -1581,3 +1581,4 @@ gid://shopify/Product/16616543256967	ok	Sportwagen-Modellbausatz mit Fernsteueru
 gid://shopify/Product/16616723448199	nicht-versendbar	Multifunktionaler Aluminium-Koffer
 gid://shopify/Product/16616694776199	ok	Regenkette aus Kupfer-Aluminium-Legierung
 gid://shopify/Product/16616719647111	ok	Tarn-Rucksack für Herren
+gid://shopify/Product/16617679487367	ok	Edelstahl-Hantel mit Beschichtung

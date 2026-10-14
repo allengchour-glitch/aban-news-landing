@@ -1756,7 +1756,12 @@ fi
 #     10.10. selbst (mobilfunk.mjs). Kanarien (14) im Skript vor jedem Lauf; «nur-2g-3g» → Entwurf, Rest wird gemeldet.
 if [ -f "$REPO/automation/mobilfunk_netz_pruefen.py" ] && [ "$(date -u +%H)" = "00" ] && [ "$(date -u +%M)" -ge 10 ] && [ ! -f /tmp/mobilfunk_nacht_$(date -u +%F).stamp ]; then
   touch /tmp/mobilfunk_nacht_$(date -u +%F).stamp
-  ( cd "$REPO" && timeout 3000 bash automation/shopify_schranke.sh python3 automation/mobilfunk_netz_pruefen.py --liste dropship/_klassen/mobilfunk-kandidaten.txt --scharf 2>&1 | tail -1 | tee -a /tmp/mobilfunk_netz.log ) &
+  # 14.10.2026: Liste fehlt (klassen_kontrolle löschte sie bis 14.10. mit) oder ist älter als 7 Tage → zuerst live bauen
+  # (Bulk-Export, ~3 Min.); ohne Liste kein Nachtlauf, sonst FileNotFoundError statt Prüfung.
+  ( cd "$REPO" && ML=dropship/_klassen/mobilfunk-kandidaten.txt; \
+    if [ ! -s "$ML" ] || [ $(( $(date +%s) - $(stat -c %Y "$ML") )) -gt 604800 ]; then \
+      timeout 900 python3 automation/mobilfunk_netz_pruefen.py --liste-bauen 2>&1 | tail -1 | tee -a /tmp/mobilfunk_netz.log; fi; \
+    [ -s "$ML" ] && timeout 3000 bash automation/shopify_schranke.sh python3 automation/mobilfunk_netz_pruefen.py --liste "$ML" --scharf 2>&1 | tail -1 | tee -a /tmp/mobilfunk_netz.log ) &
 fi
 if [ -f "$REPO/automation/mobilfunk_netz_pruefen.py" ] && [ "$(date -u +%H)" -ge 2 ] && [ ! -f /tmp/mobilfunk_neu_$(date -u +%F).stamp ]; then
   touch /tmp/mobilfunk_neu_$(date -u +%F).stamp
@@ -2816,6 +2821,9 @@ KLT=/tmp/test_klingen_tor.log
         ( cd "$REPO" && setsid flock -n /tmp/lock_klassen_kontrolle.lock \
             python3 automation/klassen_kontrolle.py >> "$KK" 2>&1 9>&- & )
         echo "$(date -u +%H:%M) klassen_kontrolle fortgesetzt"
+      elif [ "$ALTER" -gt 86400 ] && ! ( cd "$REPO" && timeout 60 python3 automation/klassen_kontrolle.py --selbsttest > /tmp/klassen_kontrolle_selbsttest.log 2>&1 ); then
+        # 14.10.2026: eine neue Runde leert dropship/_klassen/ — nur mit grünem Selbsttest (fremde Listen bleiben stehen)
+        echo "$(date -u +%H:%M) ⚠️ klassen_kontrolle Selbsttest rot (/tmp/klassen_kontrolle_selbsttest.log) — keine neue Runde"
       elif [ "$ALTER" -gt 86400 ]; then
         touch "$KK"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
         ( cd "$REPO" && setsid flock -n /tmp/lock_klassen_kontrolle.lock \
