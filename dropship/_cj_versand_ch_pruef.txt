@@ -8803,3 +8803,13 @@ wireless-gamepad-fur-smartphone-120896	1705107609394618368	7	8.23	ok	landeseite
 kabelloser-controller-mit-lederoptik-747840	1690919485378662400	7	10.18	ok	landeseite
 portabler-smartphone-kuhler-mit-clip-598208	1669292816494764032	6	7.13	ok	landeseite
 bluetooth-gaming-controller-mit-3d-vr-brille-341696	1653589220662976512	16	5.41	ok	landeseite
+wireless-mini-game-konsole-136000	1640935195828301824	16	8.79	ok	landeseite
+diy-diamantpuzzle-karte-mit-oma-motiv-256450	2008849942508445697	16	6.63	ok	landeseite
+diy-diamant-malerei-karte-geburtstag-fest-hand-389185	2008850674519080961	16	6.63	ok	landeseite
+diy-kaffeemuster-diamant-kunst-untersetzer-813569	2007351046700699650	16	7.17	ok	landeseite
+diy-diamantkunst-kuchenmatte-mit-halterung-932930	2007359182183624705	16	7.17	ok	landeseite
+diamond-art-coaster-set-mit-halterung-712962	2007360561303433218	16	7.17	ok	landeseite
+diy-diamantpuzzle-coaster-mit-halterung-467265	2007346992738381825	16	7.17	ok	landeseite
+diy-diamantmalerei-coaster-mit-halterung-357505	2007342704210243586	16	7.17	ok	landeseite
+diy-mandala-diamantkunst-becherkafer-set-673217	2007361877753753602	16	7.17	ok	landeseite
+diy-diamantmalerei-untersetzer-mit-halterung-k-416194	2007361152532525057	16	7.17	ok	landeseite

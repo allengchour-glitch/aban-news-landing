@@ -27,7 +27,7 @@
 Ein gemeinsamer Ordner hat Besitzer je Datei. Ein Werkzeug räumt nur, was es selbst schreibt; alles Unbekannte wird gemeldet.
 
 ## OFFEN — dieselbe Klasse an anderen Stellen (Prüfer A, für die nächsten Runden)
-1. **HOCH — `automation/reels_seed.csv`:** `meta_reel_post.mjs` und `metricool_tiktok_post.mjs` lesen die Queue beim Start und
+1. ✅ **ERLEDIGT 14.10. (→ `dropship/QUEUE-SCHREIBER-2026-10-14.md`, 13 Reels zurück, 27 Schreiber umgestellt, Wächter) — HOCH — `automation/reels_seed.csv`:** `meta_reel_post.mjs` und `metricool_tiktok_post.mjs` lesen die Queue beim Start und
    schreiben Minuten später die GANZE Datei aus der alten Kopie zurück → Zeilen, die der Reel-Motor dazwischen anhängt,
    verschwinden; der Waisen-Nachtrag holt sie nie (`!gebaut.has(p)`). GEMESSEN: 8 fertige Reels in `social/reels/` ohne
    Queue-Zeile, alle im Ledger `_cj_reel_gebaut.txt`. Vorschlag: vor jedem Schreiben neu lesen + nur eigene Zeile ändern,
