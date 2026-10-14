@@ -75,9 +75,9 @@ Ein «Vollständig»-Urteil über eine fremd geschriebene Datei braucht eine Sta
 ## OFFEN
 1. **Mittel — Rewind:** `repo_vorspulen.sh` (stash + reset auf origin) setzt die Queues auf den Commit-Stand zurück.
    Ungepushte Zeilen landen im Stash; `quittung_rueckspiel` holt nur gepostete zurück. Was schon committet war, holt der Tageslauf jetzt aus dem Verlauf.
-2. ✅ **14.10. 09:40 erledigt:** `engine_keepalive.sh` / `repo_vorspulen.sh` löschen nur noch verwaiste Sperren (Helfer `automation/lib/git_sperren.sh`: kein Halter laut `fuser` UND älter als 120 s; ohne `fuser` 600 s; Selbsttest). `repo_vorspulen.sh` läuft unter `/tmp/git_repo.lock`.
+2. ✅ **14.10. 09:15 erledigt:** `engine_keepalive.sh` / `repo_vorspulen.sh` löschen nur noch verwaiste Sperren (Helfer `automation/lib/git_sperren.sh`: kein Halter laut `fuser` UND älter als 120 s; ohne `fuser` 600 s; Selbsttest). `repo_vorspulen.sh` läuft unter `/tmp/git_repo.lock`.
 3. **Hetzner-Klon:** Er schreibt mit altem Poster-Code, bis er den Zweig zieht. Seine Rückschreiber kommen per Merge an.
    Abgefedert durch die Regel «fehlende Zeile bleibt» und den Tageslauf «zurückholen».
-4. ✅ **14.10. 09:45 erledigt:** `ig_karussell_post` prüft nach `postLock()` den frischen Stand (`nochBereit`: Status noch «ready», Bilder nicht im gemeinsamen Ledger), sonst kein Post. Probe am echten Queue: ready → frei, posted → gesperrt, fehlende Zeile → gesperrt; Trockenlauf läuft.
+4. ✅ **14.10. 09:20 erledigt:** `ig_karussell_post` prüft nach `postLock()` den frischen Stand (`nochBereit`: Status noch «ready», Bilder nicht im gemeinsamen Ledger), sonst kein Post. Probe am echten Queue: ready → frei, posted → gesperrt, fehlende Zeile → gesperrt; Trockenlauf läuft.
 5. Kosmetisch: Beispiele im Bericht von `bild_queue_captions_ehrlich`; `quittung_rueckspiel` ohne Warnzeile bei leerer Datei.
    Nur über GitHub-Workflows startbare Schreiber (Zeitplan aus) stehen begründet auf der Ausnahmeliste.
