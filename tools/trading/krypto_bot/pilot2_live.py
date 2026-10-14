@@ -1982,14 +1982,8 @@ def _perp_abgleich(fut, k, d, st, e, s, erg, warn, gesetzt, schutz, lesen, gehan
     except Exception as ex:  # noqa: BLE001
         _perp_ohne_liste(fut, k, d, st, e, s, warn, gesetzt, gehandelt, ex)
         return
-    if st.get("perp_weitere"):  # früher nicht löschbare alte Stops (gemerkt): jetzt weg — die Liste zeigt, was noch steht
-        if not _perp_weitere_weg(fut, sym, st, alt):
-            _zu_gross(d)
-        try:
-            alt = _nochmal(lambda: fut.eigene_stops(sym), SCHUTZ_WARTEN)
-        except Exception as ex:  # noqa: BLE001
-            _perp_ohne_liste(fut, k, d, st, e, s, warn, gesetzt, gehandelt, ex)
-            return
+    if st.get("perp_weitere"):  # früher nicht löschbare alte Stops (gemerkt): die lesbare Liste zeigt, welche noch stehen — die
+        _perp_weitere_pruefen(st, alt)  # löscht der Abgleich unten wie jeden alten Stop (nach dem neuen)
     if soll <= 0:
         if alt:  # verwaist (Position zu oder kleiner) — weg, damit er nie die Ernte trifft
             offen = _alle_weg(alt, lambda a: fut.algo_abbrechen(sym, a.get("algoId")), k, "Perp", warn, schutz)
@@ -2118,13 +2112,26 @@ def _perp_merken(st, aid, cid):
     st["perp_weitere"] = weitere
 
 
-def _perp_weitere_weg(fut, sym, st, liste=None):
+def _ist_aktuell(st, aid, cid):
+    return (aid is not None and str(aid) == str(st.get("perp"))) or (bool(cid) and cid == st.get("perp_cid"))
+
+
+def _perp_weitere_pruefen(st, liste):
+    """Lesbare Liste: was dort nicht mehr steht, ist weg (aus dem Gedächtnis); was noch steht, löscht der normale Abgleich (zuerst
+    den neuen setzen, dann die alten weg) — nie vorab."""
+    weitere = [list(w) for w in st.get("perp_weitere") or []
+               if any(str(a.get("algoId")) == str(w[0]) or (w[1] and a.get("clientAlgoId") == w[1]) for a in liste)]
+    st["perp_weitere"] = weitere or None
+
+
+def _perp_weitere_weg(fut, sym, st):
     """Gemerkte alte Perp-Stops jetzt löschen — über die Kennung (braucht keine Liste; «unbekannt» = schon weg), sonst über die ID.
-    liste (lesbare eigene Perp-Stops): was dort nicht mehr steht, ist weg. → True, wenn keiner mehr offen sein kann."""
+    Nur aufrufen, wenn gerade kein Perp-Stop nötig ist oder NACHDEM der neue steht (nie Schutz wegnehmen, bevor der Ersatz steht);
+    der aktuelle Stop (st["perp"]) wird hier nie gelöscht. → True, wenn keiner mehr offen sein kann."""
     rest = []
     for w in st.get("perp_weitere") or []:
         aid, cid = (list(w) + [None, None])[:2]
-        if liste is not None and not any(str(a.get("algoId")) == str(aid) or (cid and a.get("clientAlgoId") == cid) for a in liste):
+        if _ist_aktuell(st, aid, cid):
             continue
         try:
             if cid:
@@ -2168,8 +2175,9 @@ def _perp_ohne_liste(fut, k, d, st, e, s, warn, gesetzt, gehandelt, ex):
     auch wenn seine Antwort verloren ging) löschen; scheitert das Setzen, bleibt der alte stehen. Lässt sich der alte nicht
     löschen, stehen zwei → beidseitig (die Coins kommen ganz unter einen Spot-Stop)."""
     sym, regeln, soll, kurs = d["sym"], d["rf"], s["stop_perp"], s["kurs"]
-    if st.get("perp_weitere") and not _perp_weitere_weg(fut, sym, st) and s["pos"] < 0:
-        # früher nicht löschbare alte Stops (gemerkt) lassen sich noch nicht löschen: sie könnten über der Absicherung stehen
+    if soll <= 0 and st.get("perp_weitere") and not _perp_weitere_weg(fut, sym, st) and s["pos"] < 0:
+        # kein Stop nötig, aber früher nicht löschbare alte Stops (gemerkt) lassen sich noch nicht löschen: sie könnten über der
+        # Absicherung stehen
         _zu_gross(d)
         warn(f"{k}: offene Perp-Stops nicht lesbar ({type(ex).__name__}), gemerkte alte Stops noch nicht löschbar — beidseitig "
              "gesichert, die Nachkontrolle prüft nochmals.")
@@ -2232,6 +2240,9 @@ def _perp_ohne_liste(fut, k, d, st, e, s, warn, gesetzt, gehandelt, ex):
             _perp_merken(st, alt_id, alt_cid)  # zwei stehen: den alten merken — sonst bliebe er bei unlesbarer Liste unbekannt
             _zu_gross(d)
             d["neue_runde"] = True
+    if st.get("perp_weitere") and not _perp_weitere_weg(fut, sym, st):  # der neue steht: jetzt auch die gemerkten alten weg
+        _zu_gross(d)
+        weg = False
     warn(f"{k}: offene Perp-Stops nicht lesbar ({type(ex).__name__}) — Stop {soll:g} trotzdem gesetzt"
          + ("" if weg else "; der alte ließ sich nicht löschen (zwei stehen → Coins beidseitig gesichert)") + ". Bitte prüfen!")
 
@@ -3328,10 +3339,6 @@ def _notaus_schutz(spot, fut, st, k, sym, coin, pos, pos_vor, frei, gebunden, ku
                 eigene_p, gedeckt = None, 0.0
                 if st.get("perp") is not None or st.get("perp_cid"):
                     alt_bekannt = (st.get("perp"), st.get("perp_cid"))
-                if st.get("perp_weitere") and not _perp_weitere_weg(fut, sym, st):
-                    perp_zu_gross = True  # gemerkte alte Stops noch nicht löschbar: sie könnten die Absicherung treffen
-                    warn(f"Not-Aus {modus} {k}: Perp-Stop-Liste nicht lesbar, gemerkte alte Stops noch nicht löschbar — die Coins "
-                         "bekommen einen eigenen Stop. Not-Aus wiederholen!")
                 if not ganz and soll_p < rf["step"] / 2 and coins * kurs >= STAUB_USDT and st.get("perp_cid"):
                     # kein Perp-Stop nötig (der Short ist abgesichert), aber der bekannte alte (z. B. über den eben geschlossenen
                     # Richtungs-Short) wäre zu gross und träfe die Absicherung: über seine Kennung löschen — geht ohne Liste
@@ -3342,6 +3349,10 @@ def _notaus_schutz(spot, fut, st, k, sym, coin, pos, pos_vor, frei, gebunden, ku
                         perp_zu_gross = True
                         warn(f"Not-Aus {modus} {k}: Perp-Stop-Liste nicht lesbar und alter Stop nicht löschbar ({type(ex).__name__}) — "
                              "die Coins bekommen einen eigenen Stop. Not-Aus wiederholen!")
+                if not ganz and soll_p < rf["step"] / 2 and st.get("perp_weitere") and not _perp_weitere_weg(fut, sym, st):
+                    perp_zu_gross = True  # kein Stop nötig, gemerkte alte noch nicht löschbar: sie könnten die Absicherung treffen
+                    warn(f"Not-Aus {modus} {k}: Perp-Stop-Liste nicht lesbar, gemerkte alte Stops noch nicht löschbar — die Coins "
+                         "bekommen einen eigenen Stop. Not-Aus wiederholen!")
             if eigene_p and not ganz and gedeckt > soll_p + rf["step"] / 2 and coins * kurs >= STAUB_USDT:
                 # zu gross: löst er aus, kauft er mehr zurück als ungesichert ist → Coins ohne Short UND ohne Stop → ersetzen,
                 # und zwar ZUERST den passenden setzen (der alte schützt bis dahin), dann die alten löschen
@@ -3402,8 +3413,13 @@ def _notaus_schutz(spot, fut, st, k, sym, coin, pos, pos_vor, frei, gebunden, ku
                                 _nochmal(lambda: fut.algo_abbrechen(sym, alt_bekannt[0]), SCHUTZ_WARTEN)
                         except Exception as ex2:  # noqa: BLE001
                             perp_zu_gross = True
+                            _perp_merken(st, alt_bekannt[0], alt_bekannt[1])
                             warn(f"Not-Aus {modus} {k}: Perp-Stop-Liste nicht lesbar und alter Stop nicht löschbar "
                                  f"({type(ex2).__name__}) — zwei stehen, die Coins bekommen einen eigenen Stop. Not-Aus wiederholen!")
+                    if eigene_p is None and st.get("perp_weitere") and not _perp_weitere_weg(fut, sym, st):
+                        perp_zu_gross = True  # der neue steht: jetzt auch die gemerkten alten weg; geht das nicht → Coins mit Stop
+                        warn(f"Not-Aus {modus} {k}: gemerkte alte Perp-Stops nicht löschbar — die Coins bekommen einen eigenen Stop. "
+                             "Not-Aus wiederholen!")
                 except _Ausgeloest:
                     markt("perp", fehlt, rf["step"])
         except Exception as ex:  # noqa: BLE001

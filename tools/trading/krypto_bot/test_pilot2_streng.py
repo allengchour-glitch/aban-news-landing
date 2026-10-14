@@ -2080,6 +2080,30 @@ pruefe("13.F3 nicht löschbare alte Perp-Stops gemerkt und am nächsten Tag (Lis
        "Befunde", len(weitere13) >= 2 and "BTC" in (b13.get("schutz_offen") or []) and not funde,
        (len(weitere13), b13.get("schutz_offen"), funde, lage(k, "BTCUSDT")))
 
+# 13.F3b: das Gedächtnis löscht nie den AKTUELLEN Stop (er schützt den Short) — nur die alten, und eine lesbare Liste bereinigt
+#     es nur (löschen tut dann der Abgleich, erst nach dem neuen Stop)
+class _FutProbe:
+    def __init__(self):
+        self.weg = []
+
+    def algo_abbrechen_kennung(self, sym, cid):
+        self.weg.append(cid)
+
+    def algo_abbrechen(self, sym, aid):
+        self.weg.append(aid)
+        return True
+
+
+f13 = _FutProbe()
+st13 = {"perp": 7, "perp_cid": "neu", "perp_weitere": [[7, "neu"], [3, "alt3"], [5, None]]}
+alles_weg13 = L._perp_weitere_weg(f13, "BTCUSDT", st13)
+pruefe("13.F3b Gedächtnis: alte Perp-Stops gelöscht (Kennung, sonst ID), der aktuelle nie", f13.weg == ["alt3", 5] and alles_weg13
+       and st13["perp"] == 7, (f13.weg, st13))
+st13b = {"perp": 7, "perp_cid": "neu", "perp_weitere": [[3, "alt3"], [5, "alt5"]]}
+L._perp_weitere_pruefen(st13b, [{"algoId": 5, "clientAlgoId": "alt5"}])
+pruefe("13.F3b lesbare Liste: was nicht mehr steht, ist aus dem Gedächtnis; der Rest bleibt für den Abgleich",
+       st13b["perp_weitere"] == [[5, "alt5"]], st13b)
+
 # 13.K3: Buch 3-Wege zusammenführen — nur was ICH geändert habe, gilt von mir; Geklärtes fällt weg; die Einträge, die der Abgleich in der
 #     Hand hat, bleiben dieselben (in place)
 b0 = L.leer_buch()

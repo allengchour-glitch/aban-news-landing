@@ -797,7 +797,7 @@ Andere Strategie wählen: `setx KRYPTO_STRATEGIE "halten"` (immer 100 %) oder `"
 > mehr findet — bis dahin wirkt `KRYPTO_PILOT2=an` nicht (siehe «Starten» unten).
 
 Gleiche Signale wie der Pilot, klügere Ausführung über **beide** Binance-Konten (`pilot2_plan.py` rechnet, `pilot2_live.py`
-handelt; 23 + 154 + 175 Tests gegen zwei streng nachgebaute Binance, Fuzzer, Mutationsproben). Ohne `KRYPTO_PILOT2=an` handelt der
+handelt; 23 + 154 + 177 Tests gegen zwei streng nachgebaute Binance, Fuzzer, Mutationsproben). Ohne `KRYPTO_PILOT2=an` handelt der
 Pilot wie bisher.
 
 **Was er tut:** Richtung long → Coin im Spot-Konto (kein Funding). Richtung short → Short-Perpetual (Hebel 1, bekommt Funding).
@@ -1045,7 +1045,7 @@ python3 tools/trading/krypto_bot/test_calls.py    # 84 Tests: 40 typische Call-F
 python3 tools/trading/krypto_bot/test_binance.py  # 21 Tests, inkl. nachgebautem Binance-Server mit Signaturprüfung
 python3 tools/trading/krypto_bot/test_pilot2_plan.py  # 23 Tests: Pilot-2.0-Rechnung (Richtung, Ernte, Pfand, Mindestbeträge)
 python3 tools/trading/krypto_bot/test_pilot2_live.py  # 154 Tests: Pilot 2.0 («Konto = Wahrheit») gegen eine strenge nachgebaute Binance
-python3 -B tools/trading/krypto_bot/test_pilot2_streng.py  # 175 Tests: Belege der 8.–13. Prüfung, Schlussproben, Fuzzer-Funde gegen die Prüf-Börse, kleine Fuzzer
+python3 -B tools/trading/krypto_bot/test_pilot2_streng.py  # 177 Tests: Belege der 8.–13. Prüfung, Schlussproben, Fuzzer-Funde gegen die Prüf-Börse, kleine Fuzzer
 python3 -B tools/trading/krypto_bot/test_maxprofit.py      # 55 Tests: Max-Profit-Kern (gleiches Modell wie der Pilot, Kelly-Optimum, keine Zukunftsdaten, Kosten; Pilot 2.0 mit Hebel: = lauf2 bei 1×, Pfand-Regel, bei festem Kurs nie liquidiert)
 python3 -B tools/trading/krypto_bot/test_testnetz_pruefung.py  # 47 Tests: das Testnetz-Prüfskript gegen die Prüf-Börse (nur 127.0.0.1)
 python3 -B tools/trading/krypto_bot/pruef_fuzzer.py notaus 0 1600     # grosser Fuzzer (für Prüfungen): Not-Aus unter harten Störungen
