@@ -1,22 +1,24 @@
-# Google-Diagnosen (product.feedback der App «Google & YouTube») — Stand 2026-10-13T16:52Z
+# Google-Diagnosen (product.feedback der App «Google & YouTube») — Stand 2026-10-14T07:37Z
 
-Gescannt: 54068 aktive Produkte in 217 Seiten (vollständig), 466 s. Meldungen nur für Shopping Ads (ignoriert): 37131.
+Gescannt: 54511 aktive Produkte in 219 Seiten (vollständig), 279 s. Meldungen nur für Shopping Ads (ignoriert): 39491.
 
-## Free-Listings-Blocker: 456
+## Free-Listings-Blocker: 437
 
 | Klasse | Produkte | davon ohne onlineStoreUrl | davon Ziel «[]» |
 |---|---:|---:|---:|
-| Inappropriate image | 278 | 0 | 278 |
-| Unable to show image | 137 | 0 | – |
-| Promotional overlay on image | 29 | 0 | – |
-| Product page unavailable | 6 | 0 | – |
-| Image too small | 4 | 0 | – |
+| Inappropriate image | 270 | 0 | 270 |
+| Unable to show image | 126 | 0 | – |
+| Promotional overlay on image | 31 | 0 | – |
+| Image too small | 3 | 0 | – |
+| Product page unavailable | 3 | 0 | – |
 | Adult-oriented content | 1 | 0 | 1 |
+| Restricted adult content | 1 | 0 | 1 |
 | Image not processed | 1 | 0 | – |
+| Guns and Parts | 1 | 0 | – |
 
-## Wartet bei Google (Prüfung, kein Fehler bei uns): 671
+## Wartet bei Google (Prüfung, kein Fehler bei uns): 664
 
-- Image under review: 667
+- Image under review: 660
 - Title under review: 4
 
 Verweildauer (dropship/_google_pruefung_seit.json): 0 länger als 14 Tage, ältestes seit 2026-10-01.
@@ -28,15 +30,16 @@ Ziel «[]» = die App nennt kein betroffenes Ziel («… in [] [CH]» statt «in
 
 Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.
 
-- Missing shipping info in some countries [LI]: 28541
-- Alcoholic beverages [LI]: 4
+- Missing shipping info in some countries [LI]: 29428
+- Alcoholic beverages [LI]: 3
 
 «Missing shipping info … [LI]»: In Shopify gibt es den Tarif (General profile, Zone «Liechtenstein» CHF 14.90, seit 09.10.), Google hat ihn nicht übernommen. Abhilfe (Betreiber, UNBELEGT welcher Klick reicht): App «Google & YouTube» → Einstellungen → Versand neu importieren, sonst im Merchant Center einen Versandservice für Liechtenstein (CHF 14.90) anlegen. NICHT das Land entfernen — LI ist Lieferland. Wirkung = diese Zahl beim nächsten Scan.
 
 ## Nur personalisierte Werbung (blockiert Gratis-Einträge NICHT — Targeting-Regel, siehe Kopf)
 
-- Personalized advertising: personal hardships: 87
-- Personalized advertising: legal restrictions: 9
+- Personalized advertising: personal hardships: 91
+- Personalized advertising: legal restrictions: 8
+- Personalized advertising: Sexual interests: 1
 
 ## Meldungen anderer Kanal-Apps (kein Google-Blocker)
 
@@ -44,7 +47,7 @@ Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.
 
 «ohne onlineStoreUrl» = nicht im Onlineshop publiziert, aber im Google-Kanal — Google sieht eine 404. Reparatur: Onlineshop-Publikation nachziehen oder aus dem Google-Kanal nehmen (Fixer folgt).
 
-### Unable to show image (137)
+### Unable to show image (126)
 
 - tech-hero-geschenkbox-smartwatch-anc-ladestation
 - schweiz-magnet-matterhorn
@@ -59,7 +62,6 @@ Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.
 - herren-langarmhemd-aus-oxford-baumwolle-616400
 - armelloses-maxi-kleid-mit-rundhals-und-patchwo-637200
 - retro-baumwoll-leinen-t-shirt-mit-v-ausschnitt-617300
-- diamantmuster-cardigan-601900
 - kreative-bedruckte-flach-sneaker-605000
 - western-cowboy-wildleder-fransen-langarmshirt-637900
 - kinder-strandschuhe-mit-klettverschluss-623500
@@ -80,7 +82,6 @@ Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.
 - kaschmir-leggings-fur-herbst-winter-607600
 - armelloser-colorblock-strickpullover-603500
 - karoschuh-aus-leinwand-179200
-- bequeme-sneaker-608500
 - herren-t-shirt-aus-seide-lyocell-627400
 - herren-heavy-cotton-pullover-fur-den-herbst-624100
 - tailliertes-a-linien-blumenkleid-mit-schlitz-628800
@@ -99,16 +100,18 @@ Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.
 - langarm-t-shirt-mit-henley-tasche-601500
 - mittelalterliches-sommerkleid-607700
 - v-ausschnitt-maxi-kleid-628300
-- samt-hoodie-mit-laternenarmeln-601600
-- kabelstrick-pullover-620500
 - gestreiftes-hemd-601400
-- color-block-pullover-mit-kettenmuster-611200
 - herren-bootcut-jeans-mit-schmalem-schnitt-637600
 - slim-fit-flared-crossover-jeans-603800
 - high-waist-midi-faltenrock-fur-damen-602200
+- herren-jacquard-pullover-619300
+- freizeit-langarmshirt-fur-herren-609900
+- keile-plateau-sandalen-fur-damen-614200
+- retro-sport-sandale-mit-weicher-sohle-616300
+- herren-mid-top-schnurstiefeletten-mattleder-842496
 - …
 
-### Inappropriate image (278)
+### Inappropriate image (270)
 
 - herren-ring-vintage-edelstahl-retro
 - pod-sticker-flame-graffiti
@@ -123,11 +126,9 @@ Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.
 - vielseitiger-dreiecksschal-mit-bindebandern-616400
 - ice-silk-gesichtsmaske-mit-uv-schutz-622000
 - uv-schutz-gesichtsmaske-mit-ohrenschlaufen-606900
-- unisex-wind-und-staubschutz-gesichtsmaske-401536
 - sportlicher-taillenformer-mit-reissverschluss-633000
 - vielseitiger-pu-gurtel-mit-dornschliesse-622600
 - lederhandschuhe-mit-fleecefutter-638000
-- lolita-stirnband-mit-hexenhut-und-rosen-636900
 - weihnachts-hoodie-fur-die-ganze-familie-619500
 - leuchtendes-hai-t-shirt-fur-kinder-622300
 - weihnachts-loungewear-fur-die-ganze-familie-604200
@@ -161,7 +162,6 @@ Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.
 - pullover-jacke-quirky-personality-600800
 - silikon-photon-maske-led-620400
 - verdunkelungsvorhange-mit-osen-2-stuck-340353
-- ultraschall-luftbefeuchter-mit-aromatherapie-327744
 - personalisierbarer-zugfreier-reflektierender-h-4ce320
 - antigravitations-nebel-feuchter-580ml-354048
 - damen-loose-sweatshirt-mit-3d-digitaldruck-634800
@@ -170,13 +170,16 @@ Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.
 - casual-pullover-mit-print-609800
 - skull-print-hoodie-fur-herren-623600
 - pullover-mit-kapuze-und-print-633000
+- gruner-hoodie-mit-totenkopf-608400
+- infrarot-nachtsichtgerat-1080p-687680
+- stahlflasche-sport-damen-500-ml-631500
 - …
 
 ### Adult-oriented content (1)
 
 - schweiz-sticker-alphorn
 
-### Promotional overlay on image (29)
+### Promotional overlay on image (31)
 
 - painless-fast-nail-art-extension-set-621900
 - li-ion-akku-ladegerat-set-3000mah-626433
@@ -186,7 +189,6 @@ Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.
 - wlan-garagentor-steuerung-mit-app-161024
 - uberwachungskamera-mit-1080p-und-zoom-356544
 - klein-robust-4k-auflosung-626700
-- 3-in-1-wireless-ladestation-fur-mehrere-gerate-9b0c4e
 - tragbare-2-in-1-trinkflasche-fur-hunde-269760
 - mini-drohne-mit-dual-kamera-und-fernsteuerung-649344
 - mini-quadcopter-mit-dual-kamera-221888
@@ -199,6 +201,8 @@ Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.
 - hautfarbenkorektur-fur-die-stirnlinie-622500
 - happy-mary-kinder-und-lauflernschuhe-99e12e
 - leinenhemd-fur-herren-stehkragen-langarm-639300
+- concealer-repair-puder-nass-trocken-268544
+- mandel-kunstnagel-mit-kamelien-strass-568896
 - langanhaltender-lidschatten-pen-12er-set-836480
 - bambusfaser-stretch-businesshemd-fur-herren-656400
 - multifunktionale-slr-kameratasche-5505ab
@@ -207,28 +211,33 @@ Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.
 - kompakter-bluetooth-subwoofer-mit-mikrofon-ad9885
 - hawaiihemd-fur-herren-mit-3d-print-606700
 - 6-farben-wasserfester-nude-matt-lippenstift-798464
+- vital-smooth-rouge-creme-010560
 
-### Image too small (4)
+### Image too small (3)
 
 - geraffter-pullover-schal-fur-damen-623100
 - madchen-prinzessin-leder-ballerinas-mit-klettv-927552
-- kupferarmband-mit-magneten-fur-damen-613200
 - kinder-freizeitschuhe-e3de89
 
-### Product page unavailable (6)
+### Product page unavailable (3)
 
-- chunky-ankle-boots-mit-reissverschluss-636900
-- martin-boots-fur-herren-mid-top-608100
-- tragerloses-chiffon-maxi-kleid-613100
-- octopus-martin-boots-fur-herren-619100
+- einfache-denimjacke-605900
 - herren-strickjacke-mit-revers-612400
 - kinder-sandalen-mit-schnalle-97e0f9
+
+### Restricted adult content (1)
+
+- kardigan-kleid-605700
 
 ### Image not processed (1)
 
 - kochfeld-feuerabdeckung-aus-kupfer-e3007a
 
-### wartet: Image under review (667) — die ältesten zuerst
+### Guns and Parts (1)
+
+- aluminium-bracket-fur-kartenhalter-7bef48
+
+### wartet: Image under review (660) — die ältesten zuerst
 
 - kinder-retro-sneakers-mit-klettverschluss-611200 (seit 2026-10-01)
 - blumenkleid-mit-schnurung-613000 (seit 2026-10-02)
@@ -239,7 +248,6 @@ Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.
 - atmungsaktive-casual-schuhe-198016 (seit 2026-10-03)
 - franzosischer-stil-rock-mit-ruschen-600100 (seit 2026-10-03)
 - hawaiihemd-fur-herren-atmungsaktiv-stylisch-618400 (seit 2026-10-03)
-- hd-quadrocopter-mit-fernbedienung-622700 (seit 2026-10-03)
 - kinder-schuhe-aus-baumwolle-535552 (seit 2026-10-03)
 - lederarmbanduhr-fur-paare-601500 (seit 2026-10-03)
 - leuchtende-dreidimensionale-quarzuhr-72681a (seit 2026-10-03)
@@ -249,7 +257,6 @@ Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.
 - anti-diebstahlschnalle-mit-magnetverschluss-38cea4 (seit 2026-10-04)
 - bt40-klingenhandgriff-werkzeug-195776 (seit 2026-10-04)
 - edelstahl-anhanger-sternzeichen-und-monate-620600 (seit 2026-10-04)
-- fleecegefutterter-wollmantel-in-schwarz-635400 (seit 2026-10-04)
 - holz-steckspiel-mit-saulen-und-bausteinen-028480 (seit 2026-10-04)
 - kerosene-lampe-fur-camping-30-10-10-cm-621400 (seit 2026-10-04)
 - linen-sandalen-fur-zuhause-offene-zehen-bander-673216 (seit 2026-10-04)
@@ -270,6 +277,8 @@ Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.
 - acryl-stander-fur-lightsaber-3f40e7 (seit 2026-10-05)
 - anstecknadel-halter-639100 (seit 2026-10-05)
 - baby-set-aus-baumwolle-pullover-shorts-626600 (seit 2026-10-05)
+- bewegungssensor-schreibtischlampe-fur-schlafzi-610200 (seit 2026-10-05)
+- cartoons-regenstiefel-614200 (seit 2026-10-05)
 - …
 
 ### wartet: Title under review (4) — die ältesten zuerst
