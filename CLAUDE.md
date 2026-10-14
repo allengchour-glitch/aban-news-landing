@@ -64,6 +64,39 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-14 spätnachts (🔒 Pilot 2.0: 12. Prüfung — 3 Blocker + 3 wichtig + 4 klein + 4 eigene Funde behoben, bleibt GESPERRT):**
+Prüfer-Agent (Belege `scratchpad/pruefung12/` p1–p6, Fuzzer `fz_kurs.py`/`fz_streng.py`) fand: **B1** Not-Aus zum Markt meldete
+«zurückgekauft», obwohl Binance nur teilweise ausführte (EXPIRED) oder die Antwort unklar war → Rest ohne Stop; ohne jeden Kurs
+schloss er gar nichts. **B2** zu grosser Spot-Stop im Not-Aus → Short «ganz», Coins ohne Spot-Stop. **B3** zwei Not-Aus zugleich
+überschrieben das Buch (Lost Update: unklare Aufträge weg, Datei gelöscht). Behoben:
+- **`markt()` zielbasiert:** Ziel = frisch gelesener Stand − Ungesichertes (nie die Absicherung), bis `MARKT_VERSUCHE`=5 nachfassen,
+  Unklares höchstens 1× neu; geht zum Markt nicht (abgelehnt, Teil, unklar, **auch Rate-Limit**) → **weiter Not-Stop**
+  (`BREITE_NOTSTOPS` 10/20/35 % vom letzten Kurs). Zuletzt bekannter Kurs im Buch (`stops[k]["kurs"]`, jeder Lauf); ohne jeden Kurs
+  `_notaus_ohne_kurs` (nackter Short reduceOnly, freie Coins über den Short). Zweite Schutz-Runde bricht ohne Kurs nicht mehr ab.
+- **B2:** `if perp_zu_gross or (spot_zu_gross and not beidseitig)` → Spot-Stop über die übrigen Coins.
+- **B3:** `_buch_speichern_zusammen` + `_buch_vereinen` unter `_buch_sperre` (unklar = Vereinigung, offene Märkte/«Not-Aus offen»
+  = ODER, Paar-Pause = später), nach dem Zusammenführen nie «alles zu», Datei nur unter Sperre löschen; Cockpit-Not-Aus mit
+  `schliessen_alle(ohne_p2=True)`, wenn ein anderer Lauf die Sperre hält.
+- **W1** Perp-Liste unlesbar im Not-Aus → alten Stop nach dem neuen über Kennung löschen, sonst Spot-Stop. **W2** nach einer
+  Ablehnung kein zweites cancelReplace (auch IN `_spot_stops_anpassen`/`_verkaufen`/Not-Aus-Schleife), `nur_ergaenzen` gilt für
+  alle Runden. **W3** Not-Aus ohne lesbaren Kurs (s. B1) + Not-Aus-Fuzzer mit Kurssprung (25 %, `_kurssprung`). **K1** `_dauer`
+  streng (nur Stop-Setzen der Schutzseite oder Lage lesen), **K2** `_storno409` nur der erste 409 je Markt und nur laut, **K3**
+  Fuzzer-Klasse `LIMIT_LUECKE_` (Konto ohne STOP_LOSS, Sprung nach dem letzten Abgleich), **K4** exchangeInfo frisch im Abgleich.
+- **Eigene Prüfkampagne (12.F1–F4):** Seed 9330 — Kurs unter dem Plan-Stop, Stop bleibt nach Ablehnung, der Ausstieg verkaufte die
+  FREIEN Coins = Absicherung → jetzt nur, was nicht unter dem stehenden Stop liegt (zu grosser stehender → beidseitig), stehender
+  Stop zählt als Schutz, `jenseits_gehalten` beendet die Runden, gleiche Warnungen nur 1×. Seed 9179 — Fuzzer: `LIMIT_LUECKE_` auch
+  im Zweig «beidseitig», aber nur, wenn Pilot 2.0 die Liste seit dem Sprung NICHT gesehen hat (Ereignis-Takt `B.liste_takt`/
+  `B.bewegt_takt` in der Prüf-Börse). Seed 7529 — Rückkauf am Rate-Limit (429 auf `/fapi/v1/order`) → weiter Not-Stop über
+  `/fapi/v1/algoOrder` statt «Short ohne Stop». F4 — hängender STOP_LOSS_LIMIT + Marktverkäufe dauerhaft abgelehnt → nach allen
+  Runden (`haengend_abgelehnt`) per cancelReplace ein Not-Stop an seine Stelle (`_haengenden_ersetzen`; vorher Long ohne Stop 8'445 USDT).
+- Tests: streng 149, live 154, pilot 84, cockpit 115, testnetz 47, plan 23. Mutationsprobe auf dem Endstand **102/120** (R12: 40 neue + 3 neu formulierte) — 18 NICHT erkannt: R12-M1/M2/M3/M5 (`markt()` Ziel,
+  Nachfassen, Unklares, nur freie Coins), M16/M18/M19 (Buch zusammenführen), M21/M23/M25/M26/M27 (W1/W2-Merker), M34 (Extra-Runde),
+  R10-M15/M17, R11-M6/M19/F2 → Szenarien im Folge-PR schliessen, DANN 13. Prüfung.
+  Schlusskampagne auf `713f86597`: **9'480 Läufe, 0 echte** (172 begründet) — Not-Aus 0–1600/5000–6000/7000–8800/9000–11400,
+  Läufe 0–200/5000–5160/7000–7200/9000–9420 ×30, Monotonie 0–400/7000–7600/9000–9700. **Falle:** Kampagne mit `xargs -P 4` — Jobs, die nach einer Code-Änderung starten, laufen mit dem
+  NEUEN Code → nach jeder Verhaltensänderung die ganze Kampagne neu. **Nächster Schritt:** 13. unabhängige Prüfung
+  (Auftrag `scratchpad/pruefung13_auftrag.md`; Beträge der Belege p1–p6 am Stand 000d53782 gemessen: 5'029/5'111/9'405/5'111/7'951).
+
 **📌 2026-10-14 nachts (🔒 Pilot 2.0: 11. Prüfung — 1 Blocker + 5 wichtig + 5 klein + 3 aus der Schlussprobe behoben, bleibt GESPERRT):** Prüfer-Agent
 (Belege `scratchpad/pruefung11/` p1–p10) fand: **B1** Not-Aus setzte den Schutz-Stop mit VERALTETEM Kurs — Kurs gesprungen + Spot-Ticker
 429 → zweimal −2021 → Short ohne Stop (10'058 USDT), Meldung trotzdem «beidseitig gesichert»; Cockpit/Telegram-Not-Aus ohne Nachkontrolle. Behoben:
@@ -96,7 +129,7 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 - **Endstand (14.10. abends):** Mutationen **82/83** (1 gleichwertig: R11-M19), 0 fehlende Muster; Fuzzer-Schlusskampagne auf dem Endstand
   (Not-Aus 0–1600/5000–6000/7000–8800, Läufe 0–200/5000–5160/7000–7200 ×30, Monotonie 0–400/7000–7600) **5'960 Läufe, 0 echte**
   (89 begründet). Tests: live 154, streng 126, cockpit 115, pilot 82, testnetz 47, plan 23; alle 21 Dateien 1'026 grün.
-- **Nächster Schritt:** 12. unabhängige Prüfung (Auftrag `scratchpad/pruefung12_auftrag.md`).
+- 12. unabhängige Prüfung erledigt (Auftrag `scratchpad/pruefung12_auftrag.md`) — siehe Eintrag darüber.
 
 **📌 2026-10-14 abends (🔒 Pilot 2.0: 10. Prüfung — 2 Blocker + 4 wichtig + 4 klein behoben, bleibt GESPERRT):** Prüfer-Agent
 (Belege `scratchpad/pruefung10/`, Monotonie-Fuzzer fz10) fand: **B1** Not-Aus schloss zuerst den GANZEN Short (auch die Ernte-

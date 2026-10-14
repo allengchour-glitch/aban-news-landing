@@ -318,19 +318,28 @@ def alter_pilot_offen(env=None):
         return [], type(ex).__name__
 
 
-def schliessen_alle(ausfuehren=None, heute=None, env=None):
+def schliessen_alle(ausfuehren=None, heute=None, env=None, ohne_p2=False):
     """Not-Aus: ALLE bekannten Märkte schliessen (auch solche, die gerade nicht eingestellt sind). → (alles_zu, Zeilen).
-    «geschlossen» nur, wenn die Position danach wirklich 0 ist. Pilot 2.0 zuerst (jeder Modus mit Bestand)."""
+    «geschlossen» nur, wenn die Position danach wirklich 0 ist. Pilot 2.0 zuerst (jeder Modus mit Bestand).
+    ohne_p2: ein anderer Lauf hält die Lauf-Sperre (Nachkontrolle, Tageslauf) — Pilot 2.0 dann NICHT parallel schliessen
+    (zwei Not-Aus zugleich arbeiten auf demselben Konto und Buch); der andere Lauf sieht die STOP-Datei und schliesst selbst,
+    danach schliesst die Nachkontrolle nochmals."""
     import broker_futures as BF
     import pilot2_live as P2L
     env = os.environ if env is None else env
     heute = heute or datetime.now(timezone.utc).date().isoformat()
     zeilen, alles_zu, r2 = [], True, {}
     try:
-        r2 = P2L.notaus_alle(env, protokolliere=P2L.protokoll_schreiben)
-        if r2["modus"] or not r2.get("alles_zu"):  # bei kaputtem/fehlendem Buch die Erklärung immer zeigen
-            zeilen += r2["zeilen"]
-        alles_zu = r2.get("alles_zu") is True
+        if ohne_p2:
+            if P2L.modi_mit_bestand(P2L.BESTAND):
+                zeilen.append("⏳ Pilot 2.0: ein anderer Lauf hält gerade die Sperre (Nachkontrolle oder Tageslauf) — er sieht den "
+                              "Not-Aus und schliesst selbst; die Nachkontrolle schliesst danach nochmals. Nicht parallel geschlossen.")
+                alles_zu = False
+        else:
+            r2 = P2L.notaus_alle(env, protokolliere=P2L.protokoll_schreiben)
+            if r2["modus"] or not r2.get("alles_zu"):  # bei kaputtem/fehlendem Buch die Erklärung immer zeigen
+                zeilen += r2["zeilen"]
+            alles_zu = r2.get("alles_zu") is True
     except Exception as ex:  # noqa: BLE001
         zeilen.append(f"❌ Pilot 2.0: Not-Aus-Fehler {type(ex).__name__} — bitte im Binance-Konto prüfen!")
         alles_zu = False

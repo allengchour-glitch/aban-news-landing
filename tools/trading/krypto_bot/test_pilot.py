@@ -479,6 +479,26 @@ zu, zeilen_na = PI.schliessen_alle(_teil, heute="2026-10-08")
 pruefe("Not-Aus scheitert: nie «geschlossen», Stop bleibt erwähnt", not zu and "NICHT geschlossen" in zeilen_na[0] and "Stop bleibt" in zeilen_na[0]
        and "Fehler TimeoutError" in zeilen_na[1] and not any(z.startswith("✅") for z in zeilen_na), zeilen_na)
 
+# Cockpit-Not-Aus, während ein anderer Lauf die Sperre hält (12. Prüfung B3): Pilot 2.0 NICHT parallel schliessen (zwei Not-Aus
+# auf demselben Konto und Buch) — der andere Lauf sieht die STOP-Datei; ehrlich «nicht alles zu» melden
+import pilot2_live as P2L  # noqa: E402
+
+_p2_alt, _na_alt, _na_aufrufe = P2L.BESTAND, P2L.notaus_alle, []
+with _tf.TemporaryDirectory() as _p2d:
+    try:
+        P2L.notaus_alle = lambda *a, **kw: _na_aufrufe.append(1) or {"modus": None, "alles_zu": True, "zeilen": []}
+        P2L.BESTAND = Path(_p2d) / "krypto-pilot2-bestand.json"
+        P2L.BESTAND.write_text(json.dumps({"echt": {"start": {"usdt": 1000.0}, "uid": 1}}), encoding="utf-8")
+        zu, zeilen_na = PI.schliessen_alle(_zu, heute="2026-10-08", ohne_p2=True)
+        pruefe("Not-Aus während eines anderen Laufs: Pilot 2.0 nicht parallel geschlossen, ehrlich «nicht alles zu»",
+               not zu and not _na_aufrufe and any(z.startswith("⏳ Pilot 2.0") for z in zeilen_na), (zu, _na_aufrufe, zeilen_na))
+        P2L.BESTAND.unlink()
+        zu, zeilen_na = PI.schliessen_alle(_zu, heute="2026-10-08", ohne_p2=True)
+        pruefe("…ohne Buch von Pilot 2.0 keine Sperr-Meldung, der alte Pilot schliesst wie sonst",
+               zu and not _na_aufrufe and not any("Pilot 2.0" in z for z in zeilen_na), (zu, zeilen_na))
+    finally:
+        P2L.BESTAND, P2L.notaus_alle = _p2_alt, _na_alt
+
 # ── Logbuch: letzter echter Lauf, kaputte Datei, atomar, Testnetz/Echtgeld getrennt ──
 with _tf.TemporaryDirectory() as _ld:
     _lb = Path(_ld) / "pilot.json"

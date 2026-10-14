@@ -127,7 +127,7 @@ def notaus_an(schliessen=True, ausfuehren=None):
 
             def ausfuehren(e, symbol, gewicht):
                 return BF.ausfuehren(e, env=env, symbol=symbol, gewicht=gewicht)
-        zu, zeilen = PI.schliessen_alle(ausfuehren, env=env)
+        zu, zeilen = PI.schliessen_alle(ausfuehren, env=env, ohne_p2=gesperrt is None)  # Sperre besetzt: P2 schliesst der andere Lauf
         alles_zu = alles_zu and zu
     finally:
         if gesperrt is not None:
