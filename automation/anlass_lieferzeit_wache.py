@@ -332,6 +332,168 @@ def zubehoer_abgleich(gql):
     return n_add, n_weg, len(soll), len(ist)
 
 
+# ---- 14.10.2026 (MEHR-KAEUFER S2 b/c): Band + Kollektionssatz im Endspurt, danach zurück -------------------------------
+# GEMESSEN 14.10.: keiner der 5 Bandtexte hatte einen Link; «halloween» hatte einen Last-Minute-Satz ohne Datum,
+# «kostueme-ch-lager» gar keinen. Ein DATUM («bis Mo, 26. Okt. bestellt …») steht erst drin, wenn die erste echte
+# Fortura-Bestellung zugestellt ist (Tor dropship/_fortura_probe_ok.json) — vorher nur «Lieferdatum in der Kasse».
+LEDGER_BAND = os.path.join(REPO, "dropship", "_anlass_band.tsv")
+LEDGER_SATZ = os.path.join(REPO, "dropship", "_anlass_satz.tsv")
+PROBE_TOR = os.path.join(REPO, "dropship", "_fortura_probe_ok.json")
+BAND_DATEI = "sections/header-group.json"
+
+
+def endspurt(fen, heute):
+    return fen["ab"] <= heute <= fen["schnell_bis"]
+
+
+def mit_datum():
+    try:
+        return bool(json.load(open(PROBE_TOR, encoding="utf-8")).get("ok"))
+    except Exception:
+        return False
+
+
+def text_soll(cfg, eintrag):
+    """cfg: {"text": …, "text_datum": … {schnell_bis_text} …} → fertiger Text (Datum nur mit Tor)."""
+    return cfg["text_datum"].format(**eintrag) if mit_datum() and cfg.get("text_datum") else cfg["text"]
+
+
+def theme_datei(gql, name):
+    t = gql('query($id:ID!){ theme(id:$id){ files(filenames:["%s"], first:1){ nodes{ body{ ... on OnlineStoreThemeFileBodyText{ '
+            'content } } } } } }' % name, {"id": THEME})["theme"]
+    return t["files"]["nodes"][0]["body"]["content"]
+
+
+def json_teile(c):
+    k = c.find("{", c.find("*/")) if c.lstrip().startswith("/*") else c.find("{")
+    return c[:k], json.loads(c[k:])
+
+
+def ledger_offen(pfad, schluessel):
+    """Letzte «vorher»-Zeile für schluessel ohne spätere «zurueck»-Zeile → [Felder…] oder None."""
+    offen = None
+    if os.path.exists(pfad):
+        for z in open(pfad, encoding="utf-8"):
+            t = z.rstrip("\n").split("\t")
+            if len(t) >= 3 and t[1] == schluessel:
+                offen = t[3:] if t[2] == "vorher" else (None if t[2] == "zurueck" else offen)
+    return offen
+
+
+def ledger_zeile(pfad, schluessel, art, *felder):
+    with open(pfad, "a", encoding="utf-8") as f:
+        f.write("\t".join([f"{dt.datetime.utcnow():%Y-%m-%dT%H:%MZ}", schluessel, art,
+                           *[str(x).replace("\t", " ").replace("\n", " ") for x in felder]]) + "\n")
+
+
+def band_abgleich(gql, a, fen, eintrag, heute):
+    """→ (ok, info). Im Endspurt Soll-Text+Link im Block, danach den alten Stand aus dem Ledger zurück."""
+    cfg = a.get("band")
+    if not cfg:
+        return True, "kein Band"
+    c = theme_datei(gql, BAND_DATEI)
+    kopf, j = json_teile(c)
+    sec = next((x for x in j["sections"].values() if x.get("type") == "header-announcements"), None)
+    blk = (sec or {}).get("blocks", {}).get(cfg["block"])
+    if not blk:
+        return False, f"Block {cfg['block']} fehlt in {BAND_DATEI}"
+    st = blk.setdefault("settings", {})
+    ist = (st.get("text", ""), st.get("link", ""))
+    schl = f"{a['handle']}:{cfg['block']}"
+    offen = ledger_offen(LEDGER_BAND, schl)
+    if endspurt(fen, heute):
+        soll = (text_soll(cfg, eintrag), cfg["link"])
+        if ist == soll:
+            return True, "Band gesetzt"
+        if not SCHARF:
+            return False, f"Band ≠ Soll ({ist[0][:40]}…) — SCHARF=1 setzt"
+        if offen is None:
+            ledger_zeile(LEDGER_BAND, schl, "vorher", *ist)
+        open(f"/tmp/header-group.vor-anlass.{int(time.time())}.json", "w", encoding="utf-8").write(c)
+    else:
+        if offen is None:
+            return True, "Band nicht im Endspurt"
+        soll = (offen[0], offen[1] if len(offen) > 1 else "")
+        if not SCHARF:
+            return False, "Band nach dem Endspurt noch nicht zurück — SCHARF=1 setzt zurück"
+    st["text"], st["link"] = soll
+    r = gql('mutation($id:ID!,$files:[OnlineStoreThemeFilesUpsertFileInput!]!){ themeFilesUpsert(themeId:$id, files:$files){ '
+            'upsertedThemeFiles{ filename } userErrors{ field message } } }',
+            {"id": THEME, "files": [{"filename": BAND_DATEI, "body": {"type": "TEXT",
+                                                                     "value": kopf + json.dumps(j, ensure_ascii=False, indent=2) + "\n"}}]})
+    if (r.get("themeFilesUpsert") or {}).get("userErrors"):
+        return False, f"Band nicht geschrieben: {r['themeFilesUpsert']['userErrors']}"
+    for _ in range(8):
+        time.sleep(3)
+        _, j2 = json_teile(theme_datei(gql, BAND_DATEI))
+        s2 = next(x for x in j2["sections"].values() if x.get("type") == "header-announcements")["blocks"][cfg["block"]]["settings"]
+        if (s2.get("text", ""), s2.get("link", "")) == soll:
+            if not endspurt(fen, heute):
+                ledger_zeile(LEDGER_BAND, schl, "zurueck", *soll)
+            return True, "Band gesetzt (neu)" if endspurt(fen, heute) else "Band zurückgesetzt"
+    return False, "Band: Rücklesen bestätigt nicht"
+
+
+SATZ_RE = lambda tag: re.compile(r'<p data-lux-anlass="%s">.*?</p>' % re.escape(tag), re.S)  # noqa: E731
+
+
+def satz_abgleich(gql, a, fen, eintrag, heute):
+    """→ [(handle, ok, info)]. Markierter Absatz <p data-lux-anlass="…"> in den Kollektionen aus a["satz"]."""
+    cfg = a.get("satz")
+    if not cfg:
+        return []
+    out = []
+    for h in cfg["kollektionen"]:
+        c = gql('query($h:String!){ collectionByHandle(handle:$h){ id descriptionHtml } }', {"h": h}).get("collectionByHandle")
+        if not c:
+            out.append((h, False, "Kollektion fehlt")); continue
+        alt = c["descriptionHtml"] or ""
+        rx = SATZ_RE(a["hinweis_tag"])
+        schl = f"{h}:satz"
+        soll_p = f'<p data-lux-anlass="{a["hinweis_tag"]}">{text_soll(cfg, eintrag)}</p>'
+        if endspurt(fen, heute):
+            if soll_p in alt:
+                out.append((h, True, "Satz steht")); continue
+            if rx.search(alt):
+                neu = rx.sub(lambda m: soll_p, alt, count=1)
+            else:
+                ersetzt = re.search(cfg.get("ersetzt", r"$^"), alt, re.S) if cfg.get("ersetzt") else None
+                if ersetzt:
+                    if SCHARF and ledger_offen(LEDGER_SATZ, schl) is None:
+                        ledger_zeile(LEDGER_SATZ, schl, "vorher", ersetzt.group(0))
+                    neu = alt[:ersetzt.start()] + soll_p + alt[ersetzt.end():]
+                else:
+                    m = re.search(r"</p>", alt)
+                    neu = (alt[:m.end()] + soll_p + alt[m.end():]) if m else soll_p + alt
+                    if SCHARF and ledger_offen(LEDGER_SATZ, schl) is None:
+                        ledger_zeile(LEDGER_SATZ, schl, "vorher", "")
+        else:
+            if not rx.search(alt):
+                out.append((h, True, "kein Satz (nicht im Endspurt)")); continue
+            offen = ledger_offen(LEDGER_SATZ, schl)
+            neu = rx.sub(lambda m: (offen[0] if offen else ""), alt, count=1)
+        if not SCHARF:
+            out.append((h, False, "Satz ≠ Soll — SCHARF=1 schreibt")); continue
+        r = gql('mutation($i:CollectionInput!){ collectionUpdate(input:$i){ collection{ descriptionHtml } userErrors{ message } } }',
+                {"i": {"id": c["id"], "descriptionHtml": neu}})
+        e = (r.get("collectionUpdate") or {}).get("userErrors")
+        back = ((r.get("collectionUpdate") or {}).get("collection") or {}).get("descriptionHtml") or ""
+        if e:
+            out.append((h, False, f"nicht geschrieben: {e}")); continue
+        if endspurt(fen, heute):
+            ok = soll_p in back or (text_soll(cfg, eintrag) in back)
+            out.append((h, ok, "Satz gesetzt" if ok else "Satz: Rücklesen findet ihn nicht (Attribut entfernt?)"))
+        else:
+            ledger_zeile(LEDGER_SATZ, schl, "zurueck", "")
+            out.append((h, not rx.search(back), "Satz entfernt"))
+    return out
+
+
+def kostueme_oben(prods, n=12):
+    """Zahl ganzer Kostüme (Klasse 0) unter den obersten n aktiven."""
+    return sum(1 for p in [p for p in prods if p[1]][:n] if len(p) > 4 and p[4][0] == 0)
+
+
 def front_abgleich(gql):
     """Fanartikel und Wintermützen tragen kein «kostuem-ch-front» (Kollektion «Kostüme ab Schweizer Lager»). Nur mit SCHARF.
     → (gefunden, entfernt)."""
@@ -365,7 +527,7 @@ def main(nur_hinweis=False):
     wt = tab["lieferung_werktage"]
     heute = dt.date.today()
     zeilen, zahl = [], {"umsortiert": 0, "schon_richtig": 0, "rechtzeitig": 0, "zurueck": 0, "zu_spaet_alles": 0, "fehlt": 0}
-    hinweise, cache = {}, {}
+    hinweise, cache, befunde_anlass = {}, {}, []
 
     def laden(h):
         if h not in cache:
@@ -392,6 +554,16 @@ def main(nur_hinweis=False):
                         f.write(f"{a['handle']}\tzurueck\t{alt}\t{dt.datetime.utcnow():%Y-%m-%dT%H:%MZ}\n")
                 zahl["zurueck"] += 1
                 zeilen.append(f"| {a['handle']} | {a['datum']} vorbei | Sortierung zurück auf {alt}{'' if SCHARF else ' (TROCKEN)'} | — |")
+            if (a.get("band") or a.get("satz")) and not nur_hinweis:   # 14.10.: Band/Satz spätestens jetzt zurück
+                try:
+                    ok_b, info_b = band_abgleich(gql, a, fen, {}, heute)
+                    if not ok_b:
+                        befunde_anlass.append(f"{a['handle']}: {info_b}")
+                    for h_s, ok_s, info_s in satz_abgleich(gql, a, fen, {}, heute):
+                        if not ok_s:
+                            befunde_anlass.append(f"{h_s}: {info_s}")
+                except Exception as e:  # pragma: no cover
+                    befunde_anlass.append(f"{a['handle']}: Band/Satz-Rückbau gescheitert: {e}"[:200])
             continue
         if heute < fen["ab"]:
             # Seite + Kasse zeigen für Direktversand noch ein Datum VOR dem Anlass → nichts zu tun
@@ -423,6 +595,14 @@ def main(nur_hinweis=False):
                                   f"{plus_werktage(heute, wt['zusage_langsam_max'])} → Lager-Ware (Profil «CH-Lager») nach oben "
                                   f"({n_schnell} von {n_akt} aktiven; vorher oben 12: {oben_langsam} langsam){nach}"
                                   f"{'' if SCHARF else ' (TROCKEN)'} | {c['sortOrder']} → MANUAL |")
+        if a.get("kostuem_zuerst") and endspurt(fen, heute) and not nur_hinweis:
+            cache.pop(a["handle"], None) if SCHARF else None
+            _, aktuell = laden(a["handle"])
+            n_k = kostueme_oben(aktuell) if SCHARF else kostueme_oben([next(p for p in prods if p[0] == i) for i in
+                                                                       ziel_reihenfolge(prods, True)])
+            if n_k < 8:
+                befunde_anlass.append(f"{a['handle']}: nur {n_k} ganze Kostüme in den obersten 12 (Soll ≥ 8)")
+            zeilen.append(f"| {a['handle']} | {a['datum']} | ganze Kostüme oben 12: {n_k} | — |")
         # Hinweis für die Produktseite (einmal je Tag; erste Anlass-Zeile gewinnt)
         tag = a.get("hinweis_tag")
         if tag and tag not in hinweise:
@@ -439,6 +619,18 @@ def main(nur_hinweis=False):
                         link = k
                         break
             hinweise[tag] = hinweis_eintrag(a, datum, fen, link)
+            if not nur_hinweis:
+                try:
+                    ok_b, info_b = band_abgleich(gql, a, fen, hinweise[tag], heute)
+                    if not ok_b:
+                        befunde_anlass.append(f"{a['handle']}: {info_b}")
+                    zeilen.append(f"| {a['handle']} | {a['datum']} | Band: {info_b} | — |")
+                    for h_s, ok_s, info_s in satz_abgleich(gql, a, fen, hinweise[tag], heute):
+                        if not ok_s:
+                            befunde_anlass.append(f"{h_s}: {info_s}")
+                        zeilen.append(f"| {h_s} | {a['datum']} | Satz: {info_s} | — |")
+                except Exception as e:  # pragma: no cover
+                    befunde_anlass.append(f"{a['handle']}: Band/Satz gescheitert: {e}"[:200])
             zeilen.append(f"| {a['handle']} | {a['datum']} | Hinweis auf Tag «{tag}» (ohne {MARKE_PROFIL}): "
                           f"{'«kommt erst nach» ' if heute >= fen['kipptag'] else '«nicht garantiert» '}(Kipptag {fen['kipptag']}, "
                           f"schnell bis {fen['schnell_bis']}) · Link {('/collections/' + link) if link else '— (keine Kollektion oben schnell)'} | — |")
@@ -455,7 +647,7 @@ def main(nur_hinweis=False):
             ist, ist_upd = metafeld_lesen(gql)
     mf_aktuell = vergleich(ist) == vergleich(soll) and (soll is None) == (ist is None)
     im_theme = block_im_theme(gql)
-    befunde = []
+    befunde = list(befunde_anlass)
     if hinweise and not im_theme:
         befunde.append("Hinweis-Block fehlt in der Live-Datei templates/product.json (Marke LUX-ANLASS-HINWEIS)")
     if not mf_aktuell:
@@ -541,6 +733,10 @@ def selbsttest():
         (bool(KEIN_KOSTUEM_RE.search("Wintermütze für Kinder leuchtende LED Weihnachten")), True, "Wintermütze kein Kostüm-Zubehör"),
         (bool(KEIN_KOSTUEM_RE.search("Mütze Nikolaus · Weihnachtsmann")), False, "Nikolausmütze bleibt Kostüm-Zubehör"),
         (bool(KEIN_KOSTUEM_RE.search("Hexenhut mit Schleier")), False, "Hexenhut bleibt"),
+        (endspurt({"ab": dt.date(2026, 10, 2), "schnell_bis": dt.date(2026, 10, 26)}, dt.date(2026, 10, 26)), True, "Endspurt bis 26.10."),
+        (endspurt({"ab": dt.date(2026, 10, 2), "schnell_bis": dt.date(2026, 10, 26)}, dt.date(2026, 10, 27)), False, "ab 27.10. kein Endspurt"),
+        (bool(SATZ_RE("halloween").search('<p>a</p><p data-lux-anlass="halloween">x <a href="/y">y</a></p>')), True, "Satz-Marke gefunden"),
+        (SATZ_RE("halloween").sub("", '<p>a</p><p data-lux-anlass="halloween">x</p><p>b</p>'), "<p>a</p><p>b</p>", "Satz entfernt sauber"),
         # 13.10. Kauf-Strecke Klasse 3: Fenster aus der Kalibrierung (schnell 4, langsam 12, Kassen-Zusage 21 WT)
         (hinweis_fenster(dt.date(2026, 10, 31), {"schnell": 4, "langsam": 12, "zusage_langsam_max": 21}),
          {"ab": dt.date(2026, 10, 2), "kipptag": dt.date(2026, 10, 15), "schnell_bis": dt.date(2026, 10, 26)},

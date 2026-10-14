@@ -8978,3 +8978,10 @@ dual-kamera-modell-911106	-	-	-	unklar pid 1602002 Product has been removed from
 sandalholzkamm-fur-damen-herren-677376	1697136521280757760	16	5.41	ok	landeseite
 multifunktions-haarklammern-und-lockenstab-mit-024960	1677867740733911040	7	23.13	ok	landeseite
 negativ-ionen-lockenstab-kamm-mit-konstanter-t-231424	1673163188659032064	7	10.54	ok	landeseite
+vier-in-eins-fohn-kamm-fur-haushalt-021632	1669896933764239360	7	21.95	ok	landeseite
+multifunktionaler-3-in-1-haartrockner-742784	1733000323230343168	7	14.32	ok	landeseite
+multifunktionaler-drei-geschwindigkeits-trockn-411136	1669893020847714304	7	19.27	ok	landeseite
+multifunktionaler-haartrockner-mit-lufterkompo-071040	1669891325409374208	7	14.22	ok	landeseite
+tourmalin-keramik-lockenstab-31mm-943680	1669587051202744320	7	14.37	ok	landeseite
+zweifunktionaler-ionen-haarkamm-875840	1669584355469041664	7	12.67	ok	landeseite
+schnellheizende-klammer-zweifach-638400	1659043674270998528	7	13.48	ok	landeseite
