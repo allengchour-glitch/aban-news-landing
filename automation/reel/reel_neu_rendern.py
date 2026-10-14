@@ -44,6 +44,10 @@ SCHARF = os.environ.get("SCHARF") == "1"
 MODUS = os.environ.get("MODUS", "fenster")
 MIN_BREITE = 700
 CSV = "automation/reels_seed.csv"
+# 14.10.2026 (Lost-Update-Klasse): Queue-Schreiben nur noch über automation/queue_csv.py — gemeinsame Sperre mit allen
+# Postern/Motoren, frisch lesen, atomar über eine Nachbardatei je Prozess (die feste reels_seed.csv.tmp konnte kollidieren).
+sys.path.insert(0, os.path.join(REPO, "automation"))
+from queue_csv import umbauen as queue_umbauen
 
 
 def hook_start(quelle, d):
@@ -57,17 +61,17 @@ def hook_start(quelle, d):
 
 def status_setzen(ids, alt, neu):
     """Nur Zeilen, die noch `alt` tragen, auf `neu` — Datei frisch lesen, atomar schreiben. Gibt die Zahl zurück."""
-    import io
-    with open(CSV, newline="") as f:
-        rows = list(csv.reader(f))
-    h = rows[0]; iid, ist = h.index("id"), h.index("status"); n = 0
-    for r in rows[1:]:
-        if len(r) > ist and r[iid] in ids and r[ist] == alt:
-            r[ist] = neu; n += 1
-    buf = io.StringIO(); csv.writer(buf, lineterminator="\n").writerows(rows)
-    with open(CSV + ".tmp", "w", newline="") as f:
-        f.write(buf.getvalue())
-    os.replace(CSV + ".tmp", CSV)
+    # 14.10.2026: unter der gemeinsamen Sperre auf dem FRISCHEN Stand (queue_csv.umbauen) statt eigenem Lesen + fester
+    # reels_seed.csv.tmp; ohne Treffer wird nichts geschrieben.
+    n = 0
+    def aendern(rows):
+        nonlocal n
+        h = rows[0]; iid, ist = h.index("id"), h.index("status")
+        for r in rows[1:]:
+            if len(r) > ist and r[iid] in ids and r[ist] == alt:
+                r[ist] = neu; n += 1
+        return rows if n else None
+    queue_umbauen(CSV, aendern)
     return n
 
 
@@ -158,21 +162,21 @@ def caption_preis(cap, neu):
 def zeile_ersetzen(rid, alt_status, neu_status, neue_caption, neue_url=None):
     """Wie status_setzen, aber mit Caption (und optional video_url) — nur wenn die Zeile noch alt_status trägt
     (Lost-Update-Lehre 28.09.). neue_caption=None lässt die Caption stehen."""
-    import io
-    with open(CSV, newline="") as f:
-        rows = list(csv.reader(f))
-    h = rows[0]; iid, ist, ica, iur = h.index("id"), h.index("status"), h.index("caption"), h.index("video_url"); n = 0
-    for r in rows[1:]:
-        if len(r) > ist and r[iid] == rid and r[ist] == alt_status:
-            r[ist] = neu_status; n += 1
-            if neue_caption is not None:
-                r[ica] = neue_caption
-            if neue_url:
-                r[iur] = neue_url
-    buf = io.StringIO(); csv.writer(buf, lineterminator="\n").writerows(rows)
-    with open(CSV + ".tmp", "w", newline="") as f:
-        f.write(buf.getvalue())
-    os.replace(CSV + ".tmp", CSV)
+    # 14.10.2026: queue_csv.umbauen — Sperre, frisch lesen, nur diese Zeile ändern, atomar (vorher eigenes Lesen +
+    # feste reels_seed.csv.tmp ohne Sperre: ein Poster konnte zwischen Lesen und os.replace schreiben → Lost Update).
+    n = 0
+    def aendern(rows):
+        nonlocal n
+        h = rows[0]; iid, ist, ica, iur = h.index("id"), h.index("status"), h.index("caption"), h.index("video_url")
+        for r in rows[1:]:
+            if len(r) > max(ist, ica, iur) and r[iid] == rid and r[ist] == alt_status:
+                r[ist] = neu_status; n += 1
+                if neue_caption is not None:
+                    r[ica] = neue_caption
+                if neue_url:
+                    r[iur] = neue_url
+        return rows if n else None
+    queue_umbauen(CSV, aendern)
     return n
 
 
@@ -321,6 +325,29 @@ def selbsttest():
                         kopien.append(os.path.relpath(os.path.join(d, f), REPO))
     kopien = [k for k in kopien if k != "automation/reel/reel_neu_rendern.py"]
     pr(f"keine Regex-Kopie von zeilen/kurzTitel aus dem Motor ({', '.join(kopien) or '0'})", not kopien)
+    # 14.10.2026: Queue-Schreiben über queue_csv — auf einer Temp-Kopie (nie die echte Queue): nur die Zielzeile ändert
+    # sich, eine Zeile mit anderem Status bleibt, keine Nachbardatei bleibt liegen.
+    global CSV
+    echt, d = CSV, tempfile.mkdtemp(prefix="reelneu-test-")
+    try:
+        testkopie = CSV = os.path.join(d, "reels_seed.csv")   # eigener Name, damit queue_schreiber_wache keinen Rohschreiber meldet
+        with open(testkopie, "w", encoding="utf-8") as f:
+            f.write("id,scheduled_date,video_url,caption,hashtags,platforms,status,posted_at,post_url\n"
+                    'cjreel-a,1,u1,"c,1",,"instagram,facebook",meisterwerk-tor-skip,,\n'
+                    "cjreel-b,1,u2,c2,,instagram,ready,,\n")
+        n = (zeile_ersetzen("cjreel-a", "meisterwerk-tor-skip", "ready", "neu", "u1-neu"),
+             zeile_ersetzen("cjreel-b", "meisterwerk-tor-skip", "ready", None),
+             status_setzen({"cjreel-b"}, "ready", "posted"))
+        z = list(csv.reader(open(CSV, encoding="utf-8")))
+        pr("zeile_ersetzen/status_setzen über queue_csv (Temp-Kopie)",
+           n == (1, 0, 1) and len(z) == 3 and z[1][2:4] == ["u1-neu", "neu"] and z[1][5:7] == ["instagram,facebook", "ready"]
+           and z[2][6] == "posted" and os.listdir(d) == ["reels_seed.csv"])
+    except Exception as e:
+        pr(f"zeile_ersetzen/status_setzen über queue_csv ({type(e).__name__}: {str(e)[:80]})", False)
+    finally:
+        CSV = echt
+        import shutil
+        shutil.rmtree(d, ignore_errors=True)
     print(f"SELBSTTEST {'OK' if not fehler else f'ROT ({fehler})'}")
     return 1 if fehler else 0
 
@@ -391,12 +418,16 @@ def main():
                 neue_url = cdn_ersetzen(r["id"], pid, lokal, r["video_url"]); cdn_info = f" · CDN {neue_url[-14:]}"
             except Exception as e:
                 erg.append((pid, b, "CDN-ERSATZ GESCHEITERT", f"lokal neu, Status bleibt {soll}: {str(e)[:140]}")); continue
-        if MODUS == "hook":
-            zurueck = zeile_ersetzen(r["id"], "meisterwerk-tor-skip", "ready", None, neue_url)
-        elif MODUS == "preis":
-            zurueck = zeile_ersetzen(r["id"], "preis-veraltet-skip", "ready", cap, neue_url)
-        else:
-            zurueck = zeile_ersetzen(r["id"], "ready", "ready", None, neue_url) if neue_url else 0
+        try:
+            if MODUS == "hook":
+                zurueck = zeile_ersetzen(r["id"], "meisterwerk-tor-skip", "ready", None, neue_url)
+            elif MODUS == "preis":
+                zurueck = zeile_ersetzen(r["id"], "preis-veraltet-skip", "ready", cap, neue_url)
+            else:
+                zurueck = zeile_ersetzen(r["id"], "ready", "ready", None, neue_url) if neue_url else 0
+        except RuntimeError as e:
+            # 14.10.2026 (Prüfer): Queue-Sperre belegt / Datei halb — nicht den ganzen Lauf abbrechen; neue URL steht im CDN-Ledger
+            erg.append((pid, b, "ZEILE NICHT NACHGETRAGEN", f"{neue_url or 'lokal'} · {str(e)[:120]}")); continue
         erg.append((pid, b, "ERSETZT", f"neu {nb} px · Einstieg {st}s{cdn_info}" + (" · wieder ready" if zurueck and MODUS in ("hook", "preis") else "")))
     print("\nERGEBNIS:")
     for e in erg:

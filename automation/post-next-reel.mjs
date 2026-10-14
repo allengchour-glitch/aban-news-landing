@@ -16,7 +16,7 @@
  *   TELEGRAM_BOT_TOKEN    + TELEGRAM_CHAT_ID  (direkte Telegram-Meldung)
  *   DRY_RUN=1             (optional: nur loggen, nichts senden/schreiben)
  */
-import { schreiben as queueSchreiben, schnappschuss as queueSchnappschuss } from './lib/queue_csv.mjs';
+import { schreiben as queueSchreiben, schnappschuss as queueSchnappschuss, lesen as queueLesen } from './lib/queue_csv.mjs';
 import fs from 'node:fs';
 import { lock as postLock, seen as postSeen, mark as postMark, modelSperre } from './post_guard.mjs';
 
@@ -44,7 +44,7 @@ function parse(text){
 function esc(v){ v=String(v??''); return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v; }
 function serialize(rows){ return rows.map(r=>r.map(esc).join(',')).join('\n')+'\n'; }
 
-const rows = parse(fs.readFileSync(CSV,'utf8'));
+const rows = queueLesen(CSV);   // 14.10.2026: geprüft gelesen — nie eine halb geschriebene Datei als Basis (Stummel-Zeilen)
 // 14.10.2026: nie die ganze Datei aus dieser Start-Kopie zurückschreiben (andere Prozesse hängen an/ändern) —
 // queue_csv setzt nur die EIGENEN Änderungen in den frischen Stand (gemeinsame Sperre + 3-Wege).
 let _queueBasis = queueSchnappschuss(rows);

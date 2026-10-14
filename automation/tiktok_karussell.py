@@ -56,6 +56,10 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageEnhance
 # vorsichtige Fassung ohne die Zusage.
 from tiktok_biolink import cta_zeile, cta_slide
 from eimer_etikette import nachlauf
+# 14.10.2026 (Lost-Update-Klasse): Queue-Zeilen nur noch über automation/queue_csv.py — gemeinsame Sperre mit
+# ig_karussell_post.mjs/metricool_ledger_pruefen.mjs, frisch lesen, atomar.
+from queue_csv import anhaengen as queue_anhaengen, umbauen as queue_umbauen, mit_sperre as queue_sperre, \
+    atomar_schreiben as queue_atomar, serialisieren as queue_serialisieren
 
 HIER = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HIER)
@@ -581,27 +585,31 @@ def schreibe(slug, bilder_liste, caption, produkte):
     if NEU_BAUEN:
         # Bestehende ready-Zeile desselben Slugs ERSETZEN (Slides/Caption), keine zweite Zeile (der Poster nimmt die
         # erste ready-Zeile; eine zweite waere ein Doppelpost), keine neuen Ledger-Zeilen (Handle steht schon drin).
-        with open(QUEUE, newline="") as fh:
-            zeilen = list(csv.reader(fh))
-        kopf, rest = zeilen[0], zeilen[1:]
-        i_slug, i_st = kopf.index("slug"), kopf.index("status")
-        treffer = [r for r in rest if r[i_slug] == slug and r[i_st] == "ready"]
-        if len(treffer) != 1:
-            raise RuntimeError(f"NEU_BAUEN {slug}: {len(treffer)} ready-Zeilen in der Queue (erwartet 1) — nichts geschrieben")
-        r = treffer[0]
-        r[kopf.index("slides")] = str(len(pfade))
-        r[kopf.index("caption")] = caption.replace("\n", " ⏎ ")
-        with open(QUEUE, "w", newline="") as fh:
-            w = csv.writer(fh, lineterminator="\n")
-            w.writerow(kopf); w.writerows(rest)
+        # 14.10.2026: queue_csv.umbauen — unter der gemeinsamen Sperre auf dem FRISCHEN Stand, atomar (vorher ganze Datei
+        # aus eigener Kopie mit open(…, "w") zurück: nicht atomar, fremde Zeilen dazwischen gingen verloren).
+        def ersetzen(zeilen):
+            kopf, rest = zeilen[0], zeilen[1:]
+            i_slug, i_st = kopf.index("slug"), kopf.index("status")
+            treffer = [r for r in rest if len(r) > max(i_slug, i_st) and r[i_slug] == slug and r[i_st] == "ready"]
+            if len(treffer) != 1:
+                raise RuntimeError(f"NEU_BAUEN {slug}: {len(treffer)} ready-Zeilen in der Queue (erwartet 1) — nichts geschrieben")
+            r = treffer[0]
+            r[kopf.index("slides")] = str(len(pfade))
+            r[kopf.index("caption")] = caption.replace("\n", " ⏎ ")
+            return zeilen
+        queue_umbauen(QUEUE, ersetzen)
         return ordner, pfade
-    neu = not os.path.exists(QUEUE)
-    with open(QUEUE, "a", newline="") as fh:
-        w = csv.writer(fh, lineterminator="\n")
-        if neu:
-            w.writerow(["slug", "modus", "slides", "ordner", "produkte", "caption", "status"])
-        w.writerow([slug, MODUS, len(pfade), os.path.relpath(ordner, ROOT),
-                    " ".join(produkte), caption.replace("\n", " ⏎ "), "ready"])
+    # 14.10.2026: Kopf nur, wenn die Queue fehlt (oder leer ist) — unter der Sperre, atomar; dann die Zeile über
+    # queue_csv.anhaengen (Sperre, frisch lesen, atomar). Steht der Slug schon drin, keine zweite Zeile (Doppelpost-Schutz).
+    if not os.path.exists(QUEUE) or os.path.getsize(QUEUE) == 0:
+        with queue_sperre(QUEUE):
+            if not os.path.exists(QUEUE) or os.path.getsize(QUEUE) == 0:
+                queue_atomar(QUEUE, queue_serialisieren([["slug", "modus", "slides", "ordner", "produkte", "caption", "status"]]))
+    if not queue_anhaengen(QUEUE, [[slug, MODUS, len(pfade), os.path.relpath(ordner, ROOT),
+                                    " ".join(produkte), caption.replace("\n", " ⏎ "), "ready"]]):
+        # Prüfer 14.10.: Ledger trotzdem schreiben — der Slug ist beworben; ohne Eintrag wählte jeder Lauf (nach Rewind/
+        # Ledger-Verlust) dasselbe Produkt wieder aus (schon_verwendet() liest nur Ledger + reels_seed.csv).
+        print(f"   ⚠️ {slug}: Slug steht schon in {os.path.relpath(QUEUE, ROOT)} — keine zweite Zeile")
     with open(LEDGER, "a") as fh:
         for h in produkte:
             fh.write(f"{h}\t{slug}\t{MODUS}\n")

@@ -11,7 +11,8 @@ Was es tut, je wartendem Reel mit GitHub-URL:
   2. Upload über `upload_to_shopify_cdn.mjs` (READY abwarten) → CDN-URL
   3. CDN-URL per HTTP prüfen (200, video/*, Grösse = lokale Datei)
   4. `reels_seed.csv` NEU lesen und nur die Zeile ändern, die noch `ready` ist UND noch die alte URL trägt (atomar,
-     os.replace) — 20+ Skripte schreiben die Datei (Lost-Update-Lehre 28.09.)
+     os.replace) — 20+ Skripte schreiben die Datei (Lost-Update-Lehre 28.09.); seit 14.10.2026 über queue_csv.umbauen
+     (gemeinsame Sperre mit Postern/Motoren, Nachbardatei je Prozess statt fester reels_seed.csv.tmp)
 Der Dateiname bleibt gleich (`reel_<id>.mp4`) → die Doppelpost-Sperre über Video-Basenames greift weiter.
 Repo-Dateien werden NICHT gelöscht (Rückfall); Aufräumen ist ein eigener, späterer Schritt.
 
@@ -26,6 +27,8 @@ CSV = os.path.join(HIER, "reels_seed.csv")
 SCHARF = os.environ.get("SCHARF") == "1"
 MAX = int(os.environ.get("MAX", "80"))
 NODE = "/opt/node22/bin/node"
+sys.path.insert(0, HIER)
+from queue_csv import umbauen as queue_umbauen   # 14.10.2026: EIN Weg, die geteilte Queue zu schreiben (Lost-Update-Klasse)
 
 
 def lokal(url):
@@ -60,17 +63,17 @@ def pruefen(url, groesse):
 
 
 def zeile_umschreiben(rid, alt, neu):
-    with open(CSV, newline="", encoding="utf-8") as f:
-        rd = csv.DictReader(f); felder = rd.fieldnames; rows = list(rd)
+    # 14.10.2026: unter der gemeinsamen Sperre auf dem FRISCHEN Stand (queue_csv.umbauen), atomar über eine Nachbardatei je
+    # Prozess — vorher eigenes Lesen + feste reels_seed.csv.tmp ohne Sperre (ein Poster konnte dazwischen schreiben).
     n = 0
-    for r in rows:
-        if r.get("id") == rid and (r.get("status") or "").strip() == "ready" and r.get("video_url") == alt:
-            r["video_url"] = neu; n += 1
-    if n:
-        tmp = CSV + ".tmp"
-        with open(tmp, "w", newline="", encoding="utf-8") as f:
-            w = csv.DictWriter(f, fieldnames=felder, lineterminator="\n"); w.writeheader(); w.writerows(rows)
-        os.replace(tmp, CSV)
+    def aendern(rows):
+        nonlocal n
+        h = rows[0]; iid, ist, iur = h.index("id"), h.index("status"), h.index("video_url")
+        for r in rows[1:]:
+            if len(r) > max(iid, ist, iur) and r[iid] == rid and r[ist].strip() == "ready" and r[iur] == alt:
+                r[iur] = neu; n += 1
+        return rows if n else None
+    queue_umbauen(CSV, aendern)
     return n
 
 

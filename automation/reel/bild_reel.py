@@ -26,6 +26,7 @@ REPO = os.path.abspath(os.path.join(HIER, "..", ".."))
 sys.path.insert(0, os.path.join(REPO, "automation"))
 from kaufwille_zeile import gql  # noqa: E402  (Eimer-Etikette eingebaut)
 from fremdtext import woerter_url as fremdtext_woerter, GRENZE as FREMDTEXT_GRENZE  # noqa: E402
+from queue_csv import lesen as queue_lesen, anhaengen as queue_anhaengen  # noqa: E402  gemeinsame Queue-Sperre (14.10.2026)
 
 W, H, FPS = 1080, 1920, 30
 BOX_W, BOX_H, MITTE_Y = 1080, 1060, 740      # Produktfeld 210–1270 (Kopf 200–380 und Infofeld 1170–1440 liegen darüber)
@@ -327,19 +328,25 @@ def freigeben(a):
         sys.exit(f"⛔ CDN-Upload gescheitert: {url[:120]}")
     rid = f"bildreel-{a.handle}"
     csvp = os.path.join(REPO, "automation/reels_seed.csv")
-    csv = open(csvp, encoding="utf-8").read()
-    if re.search("^" + re.escape(rid) + ",", csv, re.M):
+    # 14.10.2026: Vorprüfung nur für den frühen Abbruch vor dem Hashtag-Aufruf — massgeblich ist anhaengen() unten.
+    q = queue_lesen(csvp)
+    ii = q[0].index("id") if q and "id" in q[0] else 0
+    if any(len(r) > ii and r[ii] == rid for r in q[1:]):
         sys.exit(f"(steht schon in der Queue: {rid})")
     tags = subprocess.run(["/opt/node22/bin/node", "-e",
                            "import('./automation/lib/hashtags.mjs').then(m=>console.log(m.hashtagText(process.argv[1])))", d["title"]],
                           capture_output=True, text=True, cwd=REPO).stdout.strip() or "#luxestyle #shoppingschweiz"
     cap = caption_fuer(d, preis, a.handle, preis_max)
-    esc = lambda x: '"' + x.replace('"', '""') + '"' if re.search(r'[",\n]', x) else x
     from datetime import date
-    if not csv.endswith("\n"):
-        csv += "\n"
-    csv += ",".join([rid, date.today().isoformat(), url, esc(cap), esc(tags), esc("instagram,facebook"), "ready", "", ""]) + "\n"
-    open(csvp, "w", encoding="utf-8").write(csv)
+    # 14.10.2026: unter der gemeinsamen Queue-Sperre (queue_csv.py) — frisch gelesen, id schon drin → nichts, atomar geschrieben;
+    # rohe Werte, das Quoting macht der Helfer. Vorher: Text gelesen, Node-Aufruf (Sekunden), dann die GANZE Datei mit open('w')
+    # aus dieser Kopie zurück — was ein Poster/Motor dazwischen schrieb, war weg (Lost Update, 8 Reels).
+    try:
+        neu = queue_anhaengen(csvp, [[rid, date.today().isoformat(), url, cap, tags, "instagram,facebook", "ready", "", ""]])
+    except RuntimeError as e:
+        sys.exit(f"⛔ CDN-URL {url} — Queue-Zeile {rid} nicht geschrieben ({e})")   # URL zuerst: der Aufrufer kürzt auf 200 Zeichen
+    if not neu:
+        sys.exit(f"(steht schon in der Queue: {rid})")
     print(json.dumps({"id": rid, "url": url}))
 
 

@@ -18,7 +18,10 @@ Ist das Produkt nicht mehr aktiv, wird die Zeile NICHT umgeschrieben, sondern al
 
 DRY=1 zeigt jede Änderung zum Lesen. Es wird NICHTS gepostet.
 """
-import csv, json, os, re, ssl, sys, urllib.request
+import json, os, re, ssl, sys, urllib.request
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from queue_csv import lesen, schnappschuss, schreiben  # noqa: E402  gemeinsame Queue-Sperre (14.10.2026)
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CSV = os.path.join(REPO, "social/posts_image.csv")
@@ -93,8 +96,14 @@ def saeubern(c, ch_lager):
     return n.strip()
 
 def main():
-    rows = list(csv.DictReader(open(CSV, encoding="utf-8")))
-    felder = list(rows[0].keys())
+    # 14.10.2026: Zwischen Lesen und Schreiben liegen die Shopify-Abfragen (Minuten). Früher wurde danach die GANZE Datei
+    # aus der alten Kopie zurückgeschrieben — Zeilen, die Motoren derweil angehängt, und Status, die Poster derweil
+    # gesetzt hatten, gingen verloren (Lost Update). Jetzt: Basis merken, am Ende nur die eigenen Änderungen (caption,
+    # status) über queue_csv.schreiben() in den FRISCHEN Stand setzen (gemeinsame Sperre, atomar).
+    roh = lesen(CSV)
+    basis = schnappschuss(roh)
+    felder = roh[0]
+    rows = [dict(zip(felder, z)) for z in roh[1:]]
     offen = [r for r in rows if (r.get("status") or "").strip() == "ready"]
     ids = {}
     for r in offen:
@@ -141,8 +150,8 @@ def main():
     print(f"Texte geaendert: {geaendert} · Produkt weg: {weg} · echte CH-Lager-Ware: {ch}")
     if DRY:
         print("DRY — nichts geschrieben"); return 0
-    with open(CSV, "w", encoding="utf-8", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=felder, lineterminator="\n"); w.writeheader(); w.writerows(rows)
+    meine = [felder] + [[r.get(c, "") for c in felder] for r in rows]
+    schreiben(CSV, basis, meine)
     print("geschrieben:", CSV)
     return 0
 

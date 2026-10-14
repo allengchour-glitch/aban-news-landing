@@ -16,7 +16,10 @@ Fortura-Ware (`ch-lager`) behält ihr Versprechen — dort ist es berechtigt.
 
 DRY=1 meldet nur.
 """
-import csv, json, os, re, subprocess, time
+import json, os, re, subprocess, sys, time
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from queue_csv import lesen, schnappschuss, schreiben  # noqa: E402  gemeinsame Queue-Sperre (14.10.2026)
 
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
 DRY = os.environ.get("DRY") == "1"
@@ -70,10 +73,17 @@ def aus_schweizer_lager(titel):
 
 
 def main():
-    rows = list(csv.DictReader(open(CSV)))
-    feld = list(rows[0].keys())
+    # 14.10.2026: Zwischen Lesen und Schreiben liegen Minuten (eine Shopify-Abfrage je Caption). Früher schrieb diese
+    # Funktion danach die GANZE Datei aus der alten Kopie zurück — Reels, die der Motor derweil angehängt, und Status, die
+    # Poster derweil gesetzt hatten, waren weg (Lost Update, 8 Reels verloren). Jetzt: Basis merken, am Ende nur die
+    # eigenen Caption-Änderungen über queue_csv.schreiben() in den FRISCHEN Stand setzen (gemeinsame Sperre, atomar).
+    zeilen = lesen(CSV)
+    basis = schnappschuss(zeilen)
+    feld = zeilen[0]
+    ci = feld.index("caption")
     geaendert = behalten = 0
-    for r in rows:
+    for z in zeilen[1:]:
+        r = dict(zip(feld, z))
         if r.get("status") != "ready":
             continue
         cap = r.get("caption") or ""
@@ -91,12 +101,9 @@ def main():
         geaendert += 1
         print(f"  ✏️  {cap[:70]}\n      → {neu[:70]}", flush=True)
         if not DRY:
-            r["caption"] = neu
+            z[ci] = neu
     if not DRY and geaendert:
-        with open(CSV, "w", newline="") as f:
-            w = csv.DictWriter(f, fieldnames=feld, lineterminator="\n")
-            w.writeheader()
-            w.writerows(rows)
+        schreiben(CSV, basis, zeilen)
     print(f"{'(DRY) ' if DRY else ''}FERTIG: {geaendert} Captions berichtigt, "
           f"{behalten} behalten (Schweizer Lager belegt)")
 

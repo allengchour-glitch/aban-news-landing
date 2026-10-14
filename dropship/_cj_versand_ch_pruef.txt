@@ -8793,3 +8793,13 @@ xbox-elite-2-tasten-set-069056	1767059506162315264	16	6.33	ok	landeseite
 g8-gamepad-mit-type-c-fur-android-087104	1765648620767944704	6	12.75	ok	landeseite
 drahtloses-bluetooth-gamepad-fur-android-ios-p-654528	1763756610293346304	7	10.18	ok	landeseite
 bluetooth-gamepad-mit-vibration-fur-tablet-swi-042624	1728248336030900224	7	9.06	ok	landeseite
+wireless-handgriff-mit-bewegungssteuerung-136128	1725752714774188032	7	8.10	ok	landeseite
+kabelloser-controller-mit-6-achsen-vibration-132480	1725363447874990080	7	9.37	ok	landeseite
+schlicht-farbe-jugendliche-kabelgebundener-gam-692288	1723897505005441024	16	11.72	ok	landeseite
+wireless-gamepad-fur-pc-tv-mobilgerate-895232	1719531872574771200	7	10.55	ok	landeseite
+kabelloser-bluetooth-controller-fur-pc-ps-swit-784256	1714538694071300096	7	8.80	ok	landeseite
+portabler-kuhler-fur-handys-mit-halterung-315456	1713097482432950272	0	-	KEINE CH-Option → DRAFT	landeseite
+wireless-gamepad-fur-smartphone-120896	1705107609394618368	7	8.23	ok	landeseite
+kabelloser-controller-mit-lederoptik-747840	1690919485378662400	7	10.18	ok	landeseite
+portabler-smartphone-kuhler-mit-clip-598208	1669292816494764032	6	7.13	ok	landeseite
+bluetooth-gaming-controller-mit-3d-vr-brille-341696	1653589220662976512	16	5.41	ok	landeseite

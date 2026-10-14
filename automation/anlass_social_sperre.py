@@ -21,7 +21,8 @@ FENSTER [ab, bis) — im Fenster (nur --scharf):
   1. aus den Publikationen der Regel (TikTok, Facebook & Instagram, Pinterest — live per Name aufgelöst, NIE Online
      Store/Shop/Google) abmelden, je 20 in einer Anfrage; Ledger dropship/_anlass_social_sperre.tsv (Rückweg)
   2. Tag «social-pause-<anlass>» setzen (Poster-Wache, siehe automation/lib/social_pause.mjs)
-  3. ready-Zeilen der Social-Queues dieser Ware → Status «social-pause-skip» (Datei vor dem Schreiben NEU gelesen)
+  3. ready-Zeilen der Social-Queues dieser Ware → Status «social-pause-skip» (Datei vor dem Schreiben NEU gelesen,
+     seit 14.10. unter der gemeinsamen Queue-Sperre automation/queue_csv.py)
   4. dropship/_social_pause.txt schreiben (Schlüssel pid:/h:/zeile: für die Poster, gilt nur bis «bis»)
   Ware, die im Fenster aus der Auswahl fällt (z. B. jetzt CH-Lager), wird sofort wieder angemeldet.
 AB «bis»: genau die im Ledger abgemeldeten Paare wieder anmelden, Tag weg, Pause-Datei leer. Queue-Zeilen bleiben
@@ -47,6 +48,7 @@ import urllib.request
 HIER = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HIER)
 sys.path.insert(0, HIER)
+from queue_csv import umbauen  # noqa: E402  gemeinsame Queue-Sperre (14.10.2026)
 try:
     from eimer_etikette import nachlauf
 except Exception:  # pragma: no cover
@@ -452,30 +454,38 @@ def queue_treffer(probe):
     return aus
 
 
-def queue_sperren(treffer, skip):
-    """Setzt ready-Zeilen auf skip. Datei direkt vor dem Schreiben NEU gelesen (Regel social_queue_saeubern 28.09.)."""
+def queue_sperren(treffer, skip, basis=REPO):
+    """Setzt ready-Zeilen auf skip. Datei direkt vor dem Schreiben NEU gelesen (Regel social_queue_saeubern 28.09.).
+    14.10.2026: Lesen + Setzen + Schreiben unter der GEMEINSAMEN Queue-Sperre (queue_csv.umbauen, dieselbe Sperre wie
+    Poster/Motoren in Node), atomar ohne feste «<csv>.tmp» — vorher konnte ein Poster, der zwischen Nachlesen und
+    os.replace schrieb, seine Zeile verlieren (Lost Update), und zwei Prozesse mit derselben .tmp schrieben ineinander.
+    Eine Queue, die leer/halb geschrieben ist oder deren Sperre 60 s belegt bleibt, wird mit Warnung übersprungen — der
+    Lauf schreibt Pause-Datei und Stand trotzdem (die Poster lesen die Sperre auch aus _social_pause.txt, «zeile:…»)."""
     n = 0
     for rel in sorted({t[0] for t in treffer if t[2] == "ready"}):
-        p = os.path.join(REPO, rel)
+        p = os.path.join(basis, rel)
         ziel = {(t[1], t[4]) for t in treffer if t[0] == rel and t[2] == "ready"}
-        with open(p, newline="", encoding="utf-8") as f:
-            rd = csv.DictReader(f)
-            felder, rows = rd.fieldnames, list(rd)
-        m = 0
-        for row in rows:
-            k = (row.get("id") or row.get("slug") or "",
-                 row.get("image_url") or row.get("video_url") or row.get("media_url") or row.get("ordner") or "")
-            if k in ziel and (row.get("status") or "").strip() == "ready":
-                row["status"] = skip
-                m += 1
-        if m:
-            tmp = p + ".tmp"
-            with open(tmp, "w", newline="", encoding="utf-8") as f:
-                w = csv.DictWriter(f, fieldnames=felder, lineterminator="\n")
-                w.writeheader()
-                w.writerows(rows)
-            os.replace(tmp, p)
-        n += m
+        m = [0]
+
+        def setzen(rows, ziel=ziel, m=m):
+            kopf = rows[0]
+            if "status" not in kopf:
+                return None
+            si = kopf.index("status")
+            for z in rows[1:]:
+                row = dict(zip(kopf, z))            # gleiche Lesart wie früher csv.DictReader (Spaltenname → Wert)
+                k = (row.get("id") or row.get("slug") or "",
+                     row.get("image_url") or row.get("video_url") or row.get("media_url") or row.get("ordner") or "")
+                if k in ziel and (row.get("status") or "").strip() == "ready":
+                    z[si] = skip
+                    m[0] += 1
+            return rows if m[0] else None
+        try:
+            umbauen(p, setzen)
+        except RuntimeError as e:
+            print(f"  ⚠️ Queue {rel}: {e}")
+            continue
+        n += m[0]
     return n
 
 

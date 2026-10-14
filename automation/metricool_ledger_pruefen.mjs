@@ -16,6 +16,7 @@
 //
 // ENV: CSV=social/posts_image.csv (oder social/ig_karussell.csv) · DRY=1 (nichts schreiben, nichts neu planen)
 import fs from 'node:fs';
+import { schreiben as queueSchreiben, schnappschuss as queueSchnappschuss, lesen as queueLesen } from './lib/queue_csv.mjs';
 
 const CSV = process.env.CSV || 'social/posts_image.csv';
 const DRY = process.env.DRY === '1';
@@ -45,8 +46,11 @@ function parse(txt) {
   if (f || row.length) { row.push(f); rows.push(row); }
   return rows;
 }
-const esc = x => /[",\n]/.test(x ?? '') ? '"' + String(x).replace(/"/g, '""') + '"' : (x ?? '');
-const rows = parse(fs.readFileSync(CSV, 'utf8'));
+const rows = queueLesen(CSV);   // 14.10.2026: geprüft gelesen — nie eine halb geschriebene Datei als Basis (Stummel-Zeilen)
+// 14.10.2026: zwischen diesem Lesen und dem Schreiben unten liegen Metricool-/Shopify-Abfragen (Minuten). Die ganze Datei
+// aus dieser Kopie zurückzuschreiben löschte, was Poster/Nachschub inzwischen angehängt oder quittiert hatten (Klasse
+// «8 fertige Reels verloren»). queue_csv setzt nur die EIGENEN Änderungen (status/post_url) in den frischen Stand.
+const _queueBasis = queueSchnappschuss(rows);
 const kopf = rows[0]; const idx = Object.fromEntries(kopf.map((k, i) => [k, i]));
 for (const k of ['status', 'post_url']) if (!(k in idx)) { console.error(`METRICOOL-PRUEFEN: ${CSV} ohne Spalte ${k}`); process.exit(1); }
 const get = (r, k) => (r[idx[k]] || '').trim();
@@ -111,6 +115,6 @@ for (const row of offen) {
   }
   wartet++; console.log(`   ${name}: ${st || 'ohne Status'} → offen`);
 }
-if (!DRY && (ok || retry || fehler)) fs.writeFileSync(CSV, rows.map(r => r.map(esc).join(',')).join('\n') + '\n');
+if (!DRY && (ok || retry || fehler)) queueSchreiben(CSV, _queueBasis, rows);   // 14.10.2026: Sperre + 3-Wege statt ganze Datei
 console.log(`METRICOOL-PRUEFEN ${CSV}: ${ok} veroeffentlicht · ${retry} neu geplant · ${fehler} Fehler · ${wartet} offen${DRY ? ' · DRY' : ''}`);
 process.exit(fehler ? 2 : 0);
