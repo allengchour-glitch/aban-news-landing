@@ -64,6 +64,40 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-14 abends (🔒 Pilot 2.0: 10. Prüfung — 2 Blocker + 4 wichtig + 4 klein behoben, bleibt GESPERRT):** Prüfer-Agent
+(Belege `scratchpad/pruefung10/`, Monotonie-Fuzzer fz10) fand: **B1** Not-Aus schloss zuerst den GANZEN Short (auch die Ernte-
+Absicherung) → lehnt Spot ab, liegen Coins ohne Absicherung UND Stop (9'391 USDT), nichts versucht es nochmals; **B2** «erst löschen,
+dann setzen» noch in `_stops_vorab` (jeden Tag mit Verkauf!), `_perp_ohne_liste`, `_spot_abgleich` ab 2 Stops, `_notaus_schutz`
+(fz10: 64/80 Seeds verlieren Schutz in einer Phase «nur Stornieren»). Behoben:
+- **Not-Aus «nie ein Bein allein»:** zuerst ungesicherte Teile (Short über Coins, Coins über Short), dann das Paar: erst Coins
+  verkaufen, dann Short auf die Rest-Coins zurückkaufen (nächster Futures-Schritt, nie ein neuer Long); Rückkauf abgelehnt →
+  Coins zurückgekauft. Futures-Aufträge erst bei Position 0 löschen. `buch["notaus_offen"]` → Nachkontrolle (Not-Aus-Modus)
+  schliesst in JEDEM Takt nochmals (W3: nie auf alle Unklaren warten). Schutz: Short über ungestoppte Coins behält Perp-Stop.
+- **Nie ersatzlos löschen:** `_stops_vorab` nur noch Perp «zuerst neu»; Spot-Verkauf: erst freie Coins, dann `_spot_freigeben`
+  (EIN cancelReplace: Stop → kleinerer Stop / Stop → Verkauf); mehrere Spot-Stops einzeln (`_spot_stops_anpassen`); Ausstieg
+  `raus()`: erst Rückkauf, dann alte Stops weg (abgelehnt → passender Not-Stop zuerst); `_perp_ohne_liste` zuerst neu.
+  Zu grosser Stop nicht korrigierbar → `_zu_gross` = beidseitig + Nachkontrolle. Ablehnung/Unklares im Lauf → `nur_ergaenzen`.
+  Hängender STOP_LOSS_LIMIT / Kurs jenseits → zum Markt + noch eine Abgleich-Runde (`_jenseits`).
+- **W1** Perp-Stop mit verlorener Antwort → über Kennung löschen (`_kennung_weg`), überzählige alte kürzen. **W2** Nachkontrolle:
+  STOP im Takt (2-s-Schritte) → schliesst selbst + endet; Buch-Konfliktschutz (`fremd_geaendert`); `pilot.py --nachkontrolle` im
+  Not-Aus-Modus wartet statt still zu überspringen (+Push). **K1** cancelReplace 409 ohne data / −2011 = `nur_storno`. **K3**
+  10 Min belegt (Binance «Timing security»: Spot prüft recvWindow auch vor der Matching Engine). **K4** Meldungen.
+- **Prüf-Werkzeuge:** Börse 429→429, `ersetzen_storno_zuerst` (K2); Fuzzer `monotonie` (W4), `DAUER_` nur bei Schutz-Pfaden UND
+  wenn Pilot 2.0 im Markt keinen Stop selbst entfernt hat (`_selbst_entfernt`, je Markt). **`testnetz_pruefung.py`** (A: reduceOnly-
+  Stop > Position, B: cancelReplace-Lesart; nur Testnetz, räumt auf; 47 Tests, Mutationen 10/10) für den PC des Users.
+- Fuzzer-Funde danach (eigene Läufe, auch Prüfer-Bereiche 5000–6000): Futures-Aufträge im Not-Aus erst bei Position 0 löschen;
+  alter Perp-Stop ohne Liste über Kennung löschen; Liste nicht lesbar + zu viel gesperrt → Stop über Buch-ID verkleinern;
+  Rückkauf abgelehnt → passender Not-Stop zuerst; `DAUER_` seitengenau (Long zählt Spot-Stops, Short Perp-Stops).
+- Tests: live 154, streng 89 (10.p1–p8, K1, K2, Seeds 45/46/156/165/5016/5033/5085/5087/5673). Fuzzer: Not-Aus 0–1600 + 5000–6000,
+  Läufe 0–200 + 5000–5160 ×30, Monotonie 0–400 → 0 echte (`STORNO_ZUERST_` = Restrisiko, README). Mutationen 57/57 (`python3 -B`).
+  **Nächster Schritt:** 11. Prüfung.
+- **📊 Dashboard «Pilot 2.0 Prüfstand»** (privates Claude-Artefakt `https://claude.ai/artifact/8P9LBcKm31gdz8eyvgkYG4`, User wollte
+  «dashboard … wie immer optimal»): Reiter Freigabe (Blocker je Runde, Weg zur Freigabe, Restrisiken), Prüfungen (alle Runden, Funde
+  der letzten), Tests und Fuzzer, Strategien (alle Prüfstände, Backtest P0/P2, Spielgeld-Vorwärtstest). Daten = angehängte JSON-Dateien
+  (kein Connector hält sie). **Nach jeder Prüfung nachführen:** `pruefungen` (neue Zeile), `funde_rN`, `tests` (alle `test_*.py` frisch),
+  `fuzzer` (Logs der Schlusskampagne), `freigabe`; Datei mit Artifact `asset:true` hochladen, dann `datasets/<id>` per ArtifactData
+  `update` (url, name, updated). Runden ohne Zählung bleiben leer (R4/R5 nur «2–3», R8 nicht gezählt) — nie Zahlen erfinden.
+
 **📌 2026-10-14 nachmittags (🔒 Pilot 2.0: 9. Prüfung — 2 Blocker + 5 wichtig + 3 klein behoben, bleibt GESPERRT):** Prüfer-Agent (enger
 Auftrag, Belege `scratchpad/pruefung9/`) fand: **B1** unklare Aufträge nur im Perp-`schritt` gebucht (Not-Aus-Schliessen, `_perp_raus`,
 Spot-Käufe/-Verkäufe nicht → verspätete Ankunft = Coins ohne Short UND ohne Stop), **B2** «erst löschen, dann setzen» (Phase «nur

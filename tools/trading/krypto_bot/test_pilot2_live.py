@@ -285,8 +285,9 @@ st = stops_offen()
 pruefe("Spot-Stop (STOP_LOSS = Markt beim Auslösen) über den GANZEN Bestand nach Gebühr", len(st) == 1 and abs(st[0]["qty"] - coins()) < 2e-5
        and st[0]["typ"] == "STOP_LOSS", st)
 pruefe("keine Warnung", not r["warnung"], r["zeilen"])
-pruefe("Buch: nur Start, Konto-ID, Stop-Kennungen, unklare Aufträge, Märkte ohne vollständigen Stop — kein Coin- oder USDT-Buch",
-       set(json.loads(d.read_text())["testnetz"]) == {"start", "uid", "stops", "perp_offen", "unklar", "schutz_offen"},
+pruefe("Buch: nur Start, Konto-ID, Stop-Kennungen, unklare Aufträge, Märkte ohne vollständigen Stop, Not-Aus offen — kein "
+       "Coin- oder USDT-Buch",
+       set(json.loads(d.read_text())["testnetz"]) == {"start", "uid", "stops", "perp_offen", "unklar", "schutz_offen", "notaus_offen"},
        json.loads(d.read_text()))
 n0 = len(markt_orders()); r = lauf([E("BTC", 1.0)], TEST, d)
 pruefe("zweiter Lauf: kein neuer Kauf, genau EIN offener Stop", len(markt_orders()) == n0 and len(stops_offen()) == 1, (markt_orders()[n0:], stops_offen()))
@@ -574,9 +575,11 @@ for name, stoerung in (("Verkauf abgelehnt (Filter)", {"spot_sell_fehler": True}
         for k_, v_ in stoerung.items(): setattr(X, k_, v_)
         r = lauf([], ECHT, d, notaus=True)
         for k_ in stoerung: setattr(X, k_, False)
-        pruefe(f"Not-Aus, {name}, Richtung {z}: Short zu, ALLE übrigen Coins sofort unter Schutz-Stop, nicht «alles zu»",
-               X.pos["BTCUSDT"] == 0 and coins() > 0.01 and gestoppt() + 2e-5 >= coins() and r["alles_zu"] is False
-               and any("Schutz-Stop" in x for x in r["zeilen"]), (coins(), gestoppt(), X.pos, r["zeilen"]))
+        pruefe(f"Not-Aus, {name}, Richtung {z}: Verkaufen geht nicht → das Paar (Coins + Short) bleibt abgesichert stehen, nie ein "
+               "Bein allein; was netto ungesichert ist, steht unter Stop; nicht «alles zu» (10. Prüfung B1)",
+               -X.pos["BTCUSDT"] - coins() < 0.0005 and max(0.0, coins() + X.pos["BTCUSDT"]) <= gestoppt() + 2e-5
+               and coins() > 0.01 and r["alles_zu"] is False and any("Paar" in x for x in r["zeilen"]),
+               (coins(), gestoppt(), X.pos, r["zeilen"]))
 X.reset(); d = neu_buch(); lauf([E("BTC", 0.5)], ECHT, d); X.teil = 0.5
 r = lauf([], ECHT, d, notaus=True)
 pruefe("Not-Aus: Verkauf nur teilweise ausgeführt (EXPIRED) → Rest im nächsten Versuch verkauft, «alles zu»",
@@ -591,12 +594,14 @@ pruefe("Not-Aus: Position von Anfang an nicht lesbar → NICHTS angefasst (Absic
        and (coins(), X.pos["BTCUSDT"], gestoppt()) == vor and r["alles_zu"] is False, (vor, schreib_auftraege()[n0:], r["zeilen"]))
 X.reset(); d = neu_buch(); lauf([E("BTC", 0.5)], ECHT, d); X.konto_fehler_ab = X.n_konto + 3
 r = lauf([], ECHT, d, notaus=True); X.konto_fehler_ab = None
-pruefe("Not-Aus: Spot-Konto nach dem Lesen nicht mehr lesbar → verkauft nach dem zuletzt bekannten Stand, nichts bleibt ungesichert",
-       X.pos["BTCUSDT"] == 0 and (coins() * 100000 < 5 or gestoppt() + 2e-5 >= coins()) and r["alles_zu"] is False, (coins(), gestoppt(), r["zeilen"]))
+pruefe("Not-Aus: Spot-Konto nach dem Lesen nicht mehr lesbar → verkauft nach dem zuletzt bekannten Stand, nie ein Bein allein, "
+       "nichts bleibt ungesichert", -X.pos["BTCUSDT"] - coins() < 0.0005 and max(0.0, coins() + X.pos["BTCUSDT"]) <= gestoppt() + 2e-5
+       and r["alles_zu"] is False, (coins(), gestoppt(), X.pos, r["zeilen"]))
 X.reset(); d = neu_buch(); lauf([E("BTC", 0.0)], ECHT, d); X.spot_sell_fehler = True; X.konto_fehler_ab = X.n_konto + 3
 r = lauf([], ECHT, d, notaus=True); X.spot_sell_fehler = False; X.konto_fehler_ab = None
-pruefe("Not-Aus: Verkauf abgelehnt UND Konto nicht lesbar → Schutz-Stop nach dem zuletzt bekannten Stand",
-       X.pos["BTCUSDT"] == 0 and gestoppt() + 2e-5 >= coins() > 0.01, (coins(), gestoppt(), r["zeilen"]))
+pruefe("Not-Aus: Verkauf abgelehnt UND Konto nicht lesbar → Paar bleibt, Schutz-Stop nach dem zuletzt bekannten Stand",
+       -X.pos["BTCUSDT"] - coins() < 0.0005 and max(0.0, coins() + X.pos["BTCUSDT"]) <= gestoppt() + 2e-5 and coins() > 0.01,
+       (coins(), gestoppt(), X.pos, r["zeilen"]))
 X.reset(); d = neu_buch(); lauf([E("BTC", 0.5)], ECHT, d); vor = (coins(), X.pos["BTCUSDT"], gestoppt()); X.konto_fehler_ab = X.n_konto + 2
 n0 = len(schreib_auftraege()); r = lauf([], ECHT, d, notaus=True); X.konto_fehler_ab = None
 pruefe("Not-Aus: Spot-Konto von Anfang an nicht lesbar → auch den Short NICHT schliessen (Absicherung bleibt)", len(schreib_auftraege()) == n0

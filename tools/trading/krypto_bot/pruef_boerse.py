@@ -11,7 +11,9 @@ Stammt aus der 8. unabhängigen Prüfung (Oktober 2026) und ist bewusst STRENGER
     reisst ab), 429, 418, kurs (Kurssprung vor der Anfrage), unsichtbar (ausgeführt, Antwort weg UND in den Listen erst nach
     n Listen-Abfragen sichtbar), spaet (Futures-Marktauftrag als NEW sichtbar, erst nach n weiteren Anfragen ausgeführt),
     spaet_u (Futures- oder Spot-Marktauftrag bis zur verspäteten Ankunft UNBEKANNT: Abfrage −2013, Storno −2011 — wie Binance
-    bei unklarem Status; aus der 9. Prüfung), teil (Teilausführung), ablehnen (−1013 PERCENT_PRICE)
+    bei unklarem Status; aus der 9. Prüfung), teil (Teilausführung), ablehnen (−1013 PERCENT_PRICE). cancelReplace: Filter
+    vor dem Storno (Doku); in einer Phase «nur Stornieren» scheitert die ganze Anfrage — mit ersetzen_storno_zuerst=True
+    die ungünstige Lesart: erst Storno, dann Ablehnung (409)
   * STOP_LOSS (Markt) und STOP_LOSS_LIMIT (bleibt bei Kurslücke unausgeführt liegen)
   * Futures: CROSS-Marge, Einstand, offener Gewinn, Liquidation, Funding (ADL nicht nachgebaut)
   * Protokoll aller schreibenden Anfragen je Konto (fremdes Konto angefasst? falscher Transfer-Typ?)
@@ -116,6 +118,8 @@ class Boerse:
         self.stop_typen = ["LIMIT", "MARKET", "STOP_LOSS", "STOP_LOSS_LIMIT", "TAKE_PROFIT", "TAKE_PROFIT_LIMIT", "LIMIT_MAKER"]
         self.vor_jeder_anfrage = None   # Haken: f(methode, pfad, params)
         self.reduce_algo_streng = False  # True: reduceOnly-Stop über mehr als die offene Position wird abgelehnt (−2022)
+        self.ersetzen_storno_zuerst = False  # True: cancelReplace in einer Phase «nur Stornieren» storniert den alten Auftrag
+        #                                     und lehnt erst DANN den neuen ab (409, −2021) — ungünstigste Lesart (10. Prüfung)
         self.nach_jeder_anfrage = None
 
     def konto_anlegen(self, keys, secret, uid, usdt=20000.0):
@@ -444,6 +448,7 @@ class Handler(BaseHTTPRequestHandler):
                 aid = next((i for i, a in k.algos.items() if a.get("clientAlgoId") == p.get("clientAlgoId")), None)
             if aid not in k.algos:
                 return {"code": -2011, "msg": "Unknown order sent."}, 400
+            p["_symbol"] = k.algos[aid]["symbol"]  # nur fürs Protokoll (der Fuzzer ordnet Löschungen dem Markt zu)
             del k.algos[aid]
             return {"algoId": aid, "code": "200", "msg": "success"}, 200
         if pfad == "/fapi/v1/algoOpenOrders" and m == "DELETE":
@@ -606,7 +611,9 @@ class Handler(BaseHTTPRequestHandler):
         if q * bezug < SPOT_MIN_NOTIONAL:
             return {"code": -1013, "msg": "Filter failure: NOTIONAL"}, 400
         regel_neu = self._regel("POST", "/api/v3/order", neu, ohne_kurs=True)
-        if regel_neu and regel_neu["art"] in ("vor503", "429", "418", "abriss_vor"):
+        if regel_neu and regel_neu["art"] in ("vor503", "429", "418", "abriss_vor") and not B.ersetzen_storno_zuerst:
+            if regel_neu["art"] in ("429", "418"):
+                return {"code": -1003, "msg": "Too many requests."}, int(regel_neu["art"])
             return {"code": -1001, "msg": "Internal error; unable to process your request. Please try again."}, 503
         if regel_neu and regel_neu["art"] == "ablehnen" and typ == "MARKET":
             return {"code": -1013, "msg": "Filter failure: PERCENT_PRICE_BY_SIDE"}, 400
@@ -620,7 +627,7 @@ class Handler(BaseHTTPRequestHandler):
             k.frei["USDT"] += rest * alt.get("preis", 0.0)
         alt["status"] = "CANCELED"
         storno = {"orderId": alt["id"], "status": "CANCELED"}
-        if art and art["art"] == "nur_storno":
+        if (art and art["art"] == "nur_storno") or (regel_neu and regel_neu["art"] in ("vor503", "429", "418", "abriss_vor")):
             antwort, code = {"code": -1013, "msg": "Fake: neuer Auftrag abgelehnt (nur Stornieren möglich)"}, 400
         else:
             art_neu = regel_neu if regel_neu and regel_neu["art"] in ("teil", "unsichtbar") else None

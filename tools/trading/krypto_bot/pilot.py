@@ -404,14 +404,21 @@ def lauf_merken(ok, hinweise, trocken=False, logbuch=None):
 def nachkontrolle():
     """Pilot 2.0 nach dem Lauf: blieb ein Auftrag unklar, bis zu ~11 Minuten nachfragen und danach die Stops nach dem
     Kontostand setzen (ein verspätet angekommener Kauf liegt so nie bis morgen ohne Stop). Ohne Unklares sofort fertig."""
+    import broker_futures as BF
     import pilot2_live as P2L
     import sperre
+    not_aus = BF.einstellungen()["stop"]  # Datei STOP oder KI_BOT_STOP=1
     try:
-        with sperre.lauf_sperre(warten=120):
+        # Not-Aus: nie still überspringen — eine laufende Nachkontrolle gibt bei STOP nach einem Takt ab, ein Not-Aus-Lauf ist
+        # in Sekunden fertig; darum länger warten
+        with sperre.lauf_sperre(warten=P2L.NACHKONTROLLE_MAX_S + 120 if not_aus else 120):
             r = P2L.nachkontrolle()
     except sperre.Besetzt as ex:
-        print(f"{ex} Nachkontrolle übersprungen — der andere Lauf prüft selbst.")
-        return 0
+        if not not_aus:
+            print(f"{ex} Nachkontrolle übersprungen — der andere Lauf prüft selbst.")
+            return 0
+        r = {"zeilen": [f"⚠️ Not-Aus: Nachkontrolle Pilot 2.0 konnte nicht laufen ({ex}) — stop.bat in 5 Minuten nochmals "
+                        "ausführen und das Binance-Konto prüfen!"], "warnung": True, "auftraege": []}
     except Exception as ex:  # noqa: BLE001
         r = {"zeilen": [f"⚠️ Nachkontrolle Pilot 2.0 abgebrochen ({type(ex).__name__}: {str(ex)[:150]}) — bitte im Binance-Konto prüfen!"],
              "warnung": True, "auftraege": []}
