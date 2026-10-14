@@ -8626,3 +8626,15 @@ faltbare-outdoor-stuhle-101313	2064601971697958913	16	27.59	ok	landeseite
 falttisch-428673	2064556382129926147	11	63.82	ok	landeseite
 falttisch-fur-outdoor-757826	2064329062130638849	0	-	KEINE CH-Option → DRAFT	landeseite
 faltbarer-grill-622000	2606070746531622500	0	-	KEINE CH-Option → DRAFT	landeseite
+wetterfestes-zelt-636000	2606060559291636700	16	21.75	ok	landeseite
+holzverbrennungs-ofen-zelt-608100	2606060518431608600	11	48.63	ok	landeseite
+faltzelt-fur-3-4-personen-663170	2063269538737852418	11	40.45	ok	landeseite
+faltbarer-campingstuhl-601700	2606020857551602300	0	-	KEINE CH-Option → DRAFT	landeseite
+einpersonen-schlafpad-638600	2606010527331639200	16	12.81	ok	landeseite
+pollinator-wasserstake-929089	2060610938003312642	0	-	KEINE CH-Option → DRAFT	landeseite
+type-c-wireless-mirroring-adapter-fur-pcs-617300	2512310650491617500	16	6.01	ok	landeseite
+3d-hologramm-fan-639800	2511260331151630100	7	11.62	ok	landeseite
+4k-wireless-controller-mit-android-11-bluetoot-604500	2511010243541604700	7	23.13	ok	landeseite
+nacktes-auge-3d-holografischer-projektor-616300	2509161009121616600	11	43.37	ok	landeseite
+schlaf-und-konzentrationshilfe-fur-babys-613100	2606081007191614000	7	11.30	ok	landeseite
+retro-cd-player-mit-vinyl-look-602800	2606050854181603500	7	13.19	ok	landeseite

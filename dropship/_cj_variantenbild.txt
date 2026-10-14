@@ -7100,3 +7100,16 @@ gid://shopify/Product/15468318032257	zugeordnet	25	Strickpullover im Color-Block
 gid://shopify/Product/15468318097793	zugeordnet	20	Herren Strick-Shirt Kurzarm Slim Fit
 gid://shopify/Product/15468318130561	zugeordnet	77	Herren Kurzarmhemd mit Knöpfen – Unifarben
 gid://shopify/Product/15468318196097	zugeordnet	30	Herren Kurzarmhemd gestreift aus Maulbeerseide
+gid://shopify/Product/15468318327169	zugeordnet	48	Herren Fleece-gefütterte Strickjacke
+gid://shopify/Product/15468318392705	zugeordnet	48	Herren Rollkragenpullover gestrickt
+gid://shopify/Product/15468336284033	zugeordnet	12	Sleeveless Weste mit Polster
+gid://shopify/Product/15468336447873	zugeordnet	25	Elegantes Langarm-Oberteil
+gid://shopify/Product/15468336677249	zugeordnet	4	Sequins-Shirt · Damen
+gid://shopify/Product/15468337004929	zugeordnet	18	Kuscheliger Strickpullover mit V-Ausschnitt
+gid://shopify/Product/15468337201537	zugeordnet	35	Gestreifter Strick-Cardigan mit Knopfleiste
+gid://shopify/Product/15468337529217	zugeordnet	40	Lange Yoga- und Laufhose mit Seitenfächern
+gid://shopify/Product/15468338676097	zugeordnet	16	3D-Druck Freizeitshirt Kurzarm
+gid://shopify/Product/15468339626369	zugeordnet	25	Herren Strickpullover mit Semi-Zip
+gid://shopify/Product/15468339954049	zugeordnet	20	Herren Strick-Cardigan mit Revers
+gid://shopify/Product/15468340314497	zugeordnet	35	Herren Rollkragen Strickpullover
+gid://shopify/Product/15468340642177	zugeordnet	25	Herren Strickpullover Rundhals Leinen-Mix
