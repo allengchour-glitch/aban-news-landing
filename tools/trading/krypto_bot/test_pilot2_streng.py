@@ -2037,6 +2037,15 @@ funde = P.notaus_runde(12527)
 pruefe("13.K2 Not-Aus-Seed 12527: keine Befunde (Staub mit frischem Kurs entschieden)", not P.echte(funde),
        [(f[0], f[1].get("wann")) for f in P.echte(funde)][:5])
 
+# 13.F1 (Schlusskampagne, Not-Aus-Seed 9123): im Schutz wird der Rückkauf des ungesicherten Short-Teils unklar (einmal neu
+#     geschickt), der Stand ist danach nicht lesbar. Vorher: mit dem alten Stand hielt die zweite Runde die Coins für gesperrt
+#     (ihren Stop hatte die erste eben gelöscht) und kaufte bei einem Kurs jenseits den ganzen Short zurück → Coins ohne Short und
+#     ohne Stop; ganz ohne zweite Runde fehlte der beidseitige Schutz (kommt der unklare Rückkauf an: Absicherung weg). Jetzt: Lage
+#     unbekannt → beidseitig, alle Coins als frei
+funde = P.notaus_runde(9123)
+pruefe("13.F1 Not-Aus-Seed 9123: Auftrag im Schutz unklar, Stand nicht lesbar → zweite Runde beidseitig, keine Befunde",
+       not funde, [(f[0], f[1].get("wann")) for f in funde][:5])
+
 # 13.K3: Buch 3-Wege zusammenführen — nur was ICH geändert habe, gilt von mir; Geklärtes fällt weg; die Einträge, die der Abgleich in der
 #     Hand hat, bleiben dieselben (in place)
 b0 = L.leer_buch()

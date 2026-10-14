@@ -2699,11 +2699,18 @@ def _notaus(spot, fut, buch, speichern_b, modus, trocken, wiederholung=False):
             geschuetzt = _notaus_schutz(spot, fut, st, k, sym, coin, pos, pos_vor, frei, gebunden, kurs, regeln, warn, modus,
                                         q_unklar, buch=buch, erg=erg)
             q_unklar = unklar_sell(buch, k)  # ein Marktauftrag im Schutz kann eben unklar geworden sein
-            # ist im Schutz ein Auftrag unklar geworden (z. B. der Rückkauf zum Markt), passt der Schutz nicht mehr: kommt er
-            # verspätet an, wäre ein weiter Not-Stop zu gross → noch eine Runde, jetzt beidseitig
+            # ist im Schutz ein Auftrag unklar geworden (z. B. der Rückkauf zum Markt, einmal neu geschickt), passt der Schutz nicht
+            # mehr: kommt er verspätet an, kauft er womöglich Absicherung zurück → noch eine Runde, jetzt beidseitig
             neu_unklar = q_unklar != q_vor
             if not pruefbar:
-                if neu_unklar:
+                if neu_unklar and _runde == 0:
+                    # ohne frischen Stand: Lage unbekannt (beidseitig), alle Coins als frei — ein Stop, den die erste Runde eben gelöscht
+                    # hat, darf nicht als Schutz zählen (sonst kein Spot-Stop, und bei einem Kurs jenseits ginge der ganze Short zum
+                    # Markt zurück → Coins ohne Short und ohne Stop, Not-Aus-Seed 9123). Steht er doch noch, lehnt Binance den
+                    # zweiten Stop ab — laut, nie still
+                    warn(f"Not-Aus {modus} {k}: ein Auftrag im Schutz blieb unklar, Stand nicht lesbar — Schutz beidseitig neu "
+                         "(alle Coins, ganzer Short).")
+                    pos, frei, gebunden = None, frei + gebunden, 0.0
                     continue
                 break
             try:
