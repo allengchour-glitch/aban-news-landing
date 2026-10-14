@@ -1,6 +1,6 @@
-# Google-Nachfrage: verschwundene Produkte — Stand 2026-10-13T16:17Z (120 Tage)
+# Google-Nachfrage: verschwundene Produkte — Stand 2026-10-14T16:52Z (120 Tage)
 
-Produkte mit Google-Besuch: 200 · heute nicht mehr bei Google: 62 · mit aktivem Ersatz: 8 · **ohne Ersatz: 54** (davon mit Warenkorb 11, behebbar 16)
+Produkte mit Google-Besuch: 201 · heute nicht mehr bei Google: 62 · mit aktivem Ersatz: 8 · **ohne Ersatz: 54** (davon mit Warenkorb 11, behebbar 16)
 
 Quelle: ShopifyQL (utm_campaign = sag_organic + Google-Suche ohne utm, nur Menschen). Regel: `automation/google_nachfrage_wache.py`. Nichts wird geändert — die Liste ist die Arbeitsliste.
 
@@ -24,20 +24,20 @@ Quelle: ShopifyQL (utm_campaign = sag_organic + Google-Suche ohne utm, nur Mensc
 | 2 | 0 | 0 | 22-teiliges Leder Nähset für Lederarbeiten (`22-teiliges-leder-nahset-fur-lederarbeiten-105857`) | DRAFT, nicht im Google-Kanal | Grund unbekannt (kein Grund-Tag) | — |
 | 2 | 0 | 0 | Silikon-Abtropfmatte für Geschirr (`silikon-abtropfmatte-fur-geschirr-637442`) | DRAFT, nicht im Google-Kanal | Grund unbekannt (kein Grund-Tag) | `abtropfmatte-aus-silikon-selbstentleerend-214` Zwilling (Ähnlichkeit 0.5) |
 | 2 | 0 | 0 | Morgenstern 71 cm (`morgenstern-71-cm-fgabo73235`) | ACTIVE, nicht im Google-Kanal | bewusst nicht bei Google (Kostüm) | — |
-| 1 | 0 | 0 | 3D-Drucker-Tisch mit Filamenthalterung (`3d-drucker-tisch-mit-filamenthalterung-781569`) | DRAFT, nicht im Google-Kanal | Sortiment-Entscheid | — |
 | 1 | 0 | 0 | Schwarzer Standventilator – Kraftvolle Kühle im Design (`schwarzer-standventilator-kraftvolle-kuhle-im-desi-551512`) | ARCHIVED, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |
-| 1 | 0 | 0 | Bladeless Nackenventilator – USB-Akku, 5 Stufen, flüsterleis (`bladeless-nackenventilator-usb-akku-5-stufen-flusterleise`) | DRAFT, nicht im Google-Kanal | Dublette → Zwilling muss aktiv sein | — |
+| 1 | 0 | 0 | 3D-Drucker-Tisch mit Filamenthalterung (`3d-drucker-tisch-mit-filamenthalterung-781569`) | DRAFT, nicht im Google-Kanal | Sortiment-Entscheid | — |
 | 1 | 0 | 0 | Freistehender Ventilator Esperanza EHF001WW Weiss 50 W (`freistehender-ventilator-esperanza-ehf001ww-weiss-681837`) | DRAFT, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |
+| 1 | 0 | 0 | Bladeless Nackenventilator – USB-Akku, 5 Stufen, flüsterleis (`bladeless-nackenventilator-usb-akku-5-stufen-flusterleise`) | DRAFT, nicht im Google-Kanal | Dublette → Zwilling muss aktiv sein | — |
 | 1 | 0 | 0 | Dreirad Ociotrends Zwillinge (Restauriert D) (`dreirad-ociotrends-zwillinge-restauriert-d-v0710203`) | DRAFT, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |
 | 1 | 0 | 0 | RC Motorrad 1:10 – Erlebe spannende Verfolgungsjagden (`rc-motorrad-1-10-erlebe-spannende-verfolgungsjagde-812004`) | DRAFT, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |
 | 1 | 0 | 0 | Damenparfüm Calyx Clinique EDP (`damenparfum-calyx-clinique-edp-edp-47377`) | DRAFT, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |
 | 1 | 0 | 0 | Bikini «Ysabel Mora» · Blau (`bikini-ysabel-mora-blau`) | DRAFT, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |
-| 1 | 0 | 0 | Kostüm Marsupilami (`kostum-marsupilami-fgssck4764f`) | DRAFT, nicht im Google-Kanal | bewusst nicht bei Google (Kostüm) | — |
 | 1 | 0 | 0 | Wandkunst Metall-Sonne · Boho Statement (`wandkunst-metall-sonne-boho-statement`) | DRAFT, nicht im Google-Kanal | ohne Lieferant → Lieferant suchen | — |
+| 1 | 0 | 0 | Kostüm Marsupilami (`kostum-marsupilami-fgssck4764f`) | DRAFT, nicht im Google-Kanal | bewusst nicht bei Google (Kostüm) | — |
+| 1 | 0 | 0 | Strand-Sonnenschirm · UV-Schutz mit Erdanker (`strand-sonnenschirm-uv-schutz-mit-erdanker`) | DRAFT, nicht im Google-Kanal | ohne Lieferant → Lieferant suchen | — |
 | 1 | 0 | 0 | Endless Hoop Ohrringe · Titan hypoallergen (`endless-hoop-ohrringe-titan-hypoallergen`) | DRAFT, nicht im Google-Kanal | ohne Lieferant → Lieferant suchen | — |
 | 1 | 0 | 0 | Tischventilator DOMO DO154A Weiss 6 W (`tischventilator-domo-do154a-weiss-6-w-902226`) | DRAFT, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |
 | 1 | 0 | 0 | Luftmatratze Intex 18 Gläser Silberfarben 188 x 30 x 71 cm (`schwimminsel-mit-haltern-dein-luxus-im-pool-659332`) | DRAFT, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |
-| 1 | 0 | 0 | Strand-Sonnenschirm · UV-Schutz mit Erdanker (`strand-sonnenschirm-uv-schutz-mit-erdanker`) | DRAFT, nicht im Google-Kanal | ohne Lieferant → Lieferant suchen | — |
 | 1 | 0 | 0 | Rundes Strandtuch XL · Mandala Mikrofaser (`rundes-strandtuch-xl-mandala-mikrofaser`) | DRAFT, nicht im Google-Kanal | ohne Lieferant → Lieferant suchen | `mikrofaser-strandtuch-277504` Zwilling (Ähnlichkeit 0.5) |
 | 1 | 0 | 0 | Kompakte Klimaanlage: Angenehme Kühle überall! (`kompakte-klimaanlage-angenehme-kuhle-uberall-1099314`) | DRAFT, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |
 | 1 | 0 | 0 | Schaum-Abflussreiniger (`schaum-abflussreiniger-604000`) | DRAFT, nicht im Google-Kanal | nicht in die Schweiz lieferbar | — |
