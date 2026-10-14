@@ -28,6 +28,7 @@ import { catKey, tagsFor, balanceByCategory } from './lib/reel-category.mjs';
 import { hashtagText } from './lib/hashtags.mjs';
 import { seen as postSeen, produktGepostet, preisAnzeige } from './post_guard.mjs';
 import { reelBauen } from './reel/schnitt_motor.mjs';
+import { PRAEP, kurzTitel, zeilen } from './lib/reel_titel.mjs';
 
 const SHOP = process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com';
 const BATCH = parseInt(process.env.BATCH || '3', 10);
@@ -241,7 +242,7 @@ const FARBE_MASS = /^(schwarz|weiss|weiß|rot|blau|grün|gruen|gelb|orange|rosa|
 const ADJ_FEST = /^[^-]+(bar|los|voll|frei|dicht|fest|sicher|tauglich)$/i;      // auf dem letzten Bindestrich-Teil: «Yoga-Bar» bleibt Nomen
 const ADJ_FLEX = /(ig|isch|lich|end|haft|sam|förmig|farbig|teilig|seitig|köpfig|stufig|bar|los|voll|frei|dicht|fest|sicher|tauglich)(e|er|es|en|em)$/i;
 const NOMEN_AUSNAHME = /(reiniger|spender|kalender|sender|wender|ständer)$/i;
-const PRAEP = /^(mit|für|fuer|fürs|aus|zum|zur|zu|in|im|ins|ohne|und|&|\+|von|vom|gegen|bei|beim|als|auf|an|am|ans|unter|über|ueber|nach|je|pro|per|inkl\.?|inklusive|oder|\/|–|—|-)$/i;
+// PRAEP steht seit 14.10.2026 in ./lib/reel_titel.mjs (Import oben).
 // Räume/Orte, in denen «Zuhause»/«Küche»/«Wohnzimmer» falsch wären (Auto-Organizer ≠ Wohnzimmer, LED-Rucksack ≠ Zuhause)
 const RAUM_FREMD = /auto|kfz|fahrzeug|reise|outdoor|camping|garten|büro|buero|unterwegs|wander|fahrrad|velo|bike|strand|rucksack|tasche/i;
 const HOOK_HEIL = /therap|heilung|genesung|medizin|linder/i;          // zusätzlich zu HEIL (Pinterest-Liste) — nur für den Hook
@@ -341,54 +342,7 @@ function hookFuer(th, pid, title = '') {
   const n = num(pid) % 3;
   return n === 2 ? list[num(pid) % list.length] : top[n % top.length];
 }
-function kurzTitel(title) {
-  let t = title.replace(/\s*[·•|]\s*.*$/, '').replace(/\s+[–—-]\s+.*$/, '').replace(/:.*$/, '').trim();
-  if (t.length < 12) t = title.trim();
-  return t;
-}
-// 13.10.2026 (R9 Schritt 3, GEMESSEN): ein Einzelwort über 26 Zeichen liess Zeile 1 leer und kürzte Zeile 2 mit «…»
-// (Log: «Titel:  / Multifunktions-Haarklammern-…»; die Jury nennt «abgeschnitten» 11-mal). Jetzt: Umbruch an der Wortgrenze,
-// ein überlanges Wort am Bindestrich getrennt, Zeile 1 nie leer, nie «…» — passt der Rest nicht, endet Zeile 2 am letzten
-// ganzen Wort.
-function zeilen(title) {
-  const t = kurzTitel(title); const rest = title.slice(title.indexOf(t) + t.length).replace(/^\s*[·•|:–—-]\s*/, '').trim();
-  const teile = [];                                                   // {s, neu}: neu = beginnt ein neues Wort
-  for (const x of t.split(/\s+/).filter(Boolean)) {
-    if (x.length <= 26 || !x.includes('-')) { teile.push({ s: x, neu: true }); continue; }
-    const st = x.split('-'); st.forEach((p, i) => teile.push({ s: p + (i < st.length - 1 ? '-' : ''), neu: i === 0 }));
-  }
-  const dazu = (z, tl) => z ? z + (tl.neu ? ' ' : '') + tl.s : tl.s;
-  let a = '', b = '', i = 0;
-  for (; i < teile.length; i++) { const n = dazu(a, teile[i]); if (n.length <= 26 || !a) a = n; else break; }   // Zeile 1 nie leer
-  let bTeile = [];
-  for (; i < teile.length; i++) { const n = dazu(b, teile[i]); if (n.length <= 30) { b = n; bTeile.push(teile[i]); } else { bTeile.push(null); break; } }
-  if (bTeile.includes(null)) {                                        // Rest passt nicht: am letzten GANZEN Wort enden
-    bTeile = bTeile.filter(Boolean);
-    let k = bTeile.length; while (k > 0 && /-$/.test(bTeile[k - 1].s)) k--;
-    bTeile = bTeile.slice(0, k); b = bTeile.reduce((z, tl) => dazu(z, tl), '');
-  }
-  if (!b && rest && rest.length <= 30) b = rest;
-  // Zeilenende ohne Satzzeichen und ohne hängende Präposition («Brusttasche mit»); der Trennstrich am Wortbruch bleibt
-  const sauber = z => { let x = z.replace(/[\s,;:–—]+$/, '').replace(/\s+-$/, '').trim(); let w = x.split(' ');
-    while (w.length > 1 && PRAEP.test(w[w.length - 1])) w.pop(); return w.join(' ').replace(/[\s,;:–—]+$/, ''); };
-  // hängt an Zeile 1 eine Präposition («Heizjacke mit»), wandert sie an den Anfang von Zeile 2, wenn dort Platz ist
-  const wa = a.trim().split(' ');
-  // 13.10.2026 (R3-Kontaktbogen Samtkleid): passte «mit» + Zeile 2 nicht in 30 Zeichen, fiel die Präposition weg
-  // («Samtkleid / Glockenärmeln und Stickerei»). Jetzt kürzt Zeile 2 am Wortende, bis die Präposition mitpasst
-  // («Samtkleid / mit Glockenärmeln»); geht es auch so nicht, bleibt es beim alten Weg.
-  // Ende nur auf einem Nomen (Grossbuchstabe, kein «-»-Bruchstück): sonst «aus Nylon mit wasserdichtem». «und/oder» wandern nicht.
-  const nomenEnde = w => { const x = String(w || '').replace(/,$/, ''); return /^[A-ZÄÖÜ]/.test(x) && !/-$/.test(x) && !PRAEP.test(x); };
-  if (b && wa.length > 1 && PRAEP.test(wa[wa.length - 1]) && (wa[wa.length - 1] + ' ' + b).length <= 30) { b = wa.pop() + ' ' + b; a = wa.join(' '); }
-  else if (b && wa.length > 1 && PRAEP.test(wa[wa.length - 1]) && !/^(und|oder|&|\+|\/|–|—|-)$/i.test(wa[wa.length - 1])) {
-    const p = wa[wa.length - 1]; let bw = b.split(' ');
-    while (bw.length > 1 && (`${p} ${bw.join(' ')}`.length > 30 || !nomenEnde(bw[bw.length - 1]))) bw.pop();
-    const neu = `${p} ${bw.join(' ')}`.replace(/,$/, '');
-    if (neu.length <= 30 && nomenEnde(bw[bw.length - 1])) { wa.pop(); b = neu; a = wa.join(' '); }
-  }
-  a = sauber(a); b = sauber(b);
-  if (!b && /-$/.test(a)) a = a.replace(/-[^-\s]*-$/, '').replace(/-$/, '');      // nichts folgt → kein hängender Trennstrich
-  return [a, b];
-}
+// kurzTitel() und zeilen() stehen seit 14.10.2026 in ./lib/reel_titel.mjs (eine Quelle mit reel_neu_rendern.py).
 function nutzen(desc) {
   const s = (desc || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
   // 23.09.: nur VOLLSTAENDIGE Saetze (enden auf . ! ?) — die Beschreibung kommt mit truncateAt:260, das letzte Stueck ist oft

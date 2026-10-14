@@ -50,6 +50,16 @@
 
 
 
+
+## 🧬 Regex-Kopie einer Funktion bricht still (2026-10-14, Verbesserungsrunde 00:25 UTC)
+
+`reel_neu_rendern.py` kopierte `kurzTitel()`/`zeilen()` per Regex aus `cj_video_reel_engine.mjs` und führte sie per `eval`
+aus. Die Reel-Nacharbeit vom 13.10. gab `zeilen()` eine Modul-Konstante (`PRAEP`) → seither brach JEDE Tor-/Preis-Reparatur
+mit `ReferenceError` ab; der Aufseher filterte die Ausgabe mit `grep ERSETZT|FERTIG`, der Traceback stand nur im Log.
+Fix: gemeinsames Modul `automation/lib/reel_titel.mjs` (Motor + Skript importieren), Gleichlauf 600/600 echte Titel,
+`--selbsttest` (Kanarien, Motor importiert, keine Regex-Kopie mehr) als Tor vor beiden Reparaturen im Aufseher.
+**Lehre:** Wer eine Funktion braucht, importiert sie. Eine Regex-Kopie testet nur den Tag, an dem sie geschrieben wurde.
+Bericht `dropship/REEL-TITEL-QUELLE-2026-10-14.md`. Offen: 2G/3G-Wächter `FileNotFoundError` (Kandidatenliste fehlt).
 ## 🔪 Klingen ohne das Wort «Messer» · Werbetest-Ampel ab Aktivierung (2026-10-13, ~22:40–23:00 UTC)
 
 **Befund (Prüfer der Halloween-Sperre, Nebenbefund):** «Kompakt-Küchenschneide-Set» (Import 21:39) war im Bild ein
@@ -20370,3 +20380,5 @@ Verschoben am 04.10.2026:
 <!-- aus CLAUDE.md verschoben 13.10.2026 23:38 UTC (VERBATIM) -->
 - 2026-10-12 · 💳 **Bestell-Ampel zeigte «KEIN CJ-Auftrag» für LX1025 (wartete auf Zahlung): Abgleich nur alle 2 h → Ampel liest das Bestell-Ledger + hängt bei UNPAID den Zahllink an; Abgleich startet sofort, wenn das Ledger jünger ist (`-nt`).** → `dropship/BESTELL-AMPEL-ZAHLUNG-2026-10-12.md`
 - 2026-10-12 · 📏 **Masstabellen des Modells: CJ-Tabellenbilder per Vision doppelt gelesen, `masstabelle_schreiben.py` (12/12) schreibt nur bei Übereinstimmung + «hoch» → 7/21 live, Aufseher täglich; Kasse = Bearbeitung + Transit → Transit = Zusage − P3D (CH 7–17); Werbe-Kontingent voll: jede Produktänderung wirft das Produkt aus der Werbung, Kampagne pausiert.** → `dropship/MASSTABELLEN-2026-10-12.md`
+<!-- aus CLAUDE.md verschoben 14.10.2026 00:45 UTC (VERBATIM) -->
+- 2026-10-12 · 🔎 **Such-Boosts per Metafeld `shopify--discovery--product_search_boost.queries` (kein App-Klick nötig, war 0): `such_boost.py` 10 Familien × ≤ 8 (Halloween/Kostüm ab CH-Lager, Geschenke, Powerbank, T-Shirt Herren …), nur eigene Begriffe, Jury + 11 Bild-Vetos, Aufseher täglich + Ampel «SUCHSEITE». ⚠️ Metafeld allein indexiert nicht neu → Tag `such-boost` als Anstoss: danach 8/8, Ampel 0 unter 6/8.** → `dropship/SUCH-BOOSTS-2026-10-12.md`

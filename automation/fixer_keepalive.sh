@@ -846,6 +846,8 @@ while true; do
         "exec 9>/tmp/lock_speicher_duplikat.lock; flock -n 9 || exit 0; EXPORT_DRAFT=/tmp/speicher_drafts.jsonl EXPORT_AKTIV=/tmp/speicher_aktiv.jsonl SCHARF=1 N=6000 python3 automation/speicher_duplikat_bilder.py" \
         >> /tmp/speicher_duplikat.log 2>&1 9>&- & )
   fi
+  # 14.10.2026: beide Reparaturen laufen nur nach grünem --selbsttest (Titelzeilen aus lib/reel_titel.mjs; vom 13.10. abends bis
+  # 14.10. brach jede Reparatur mit «ReferenceError: PRAEP is not defined» ab, weil die Funktion per Regex kopiert wurde).
   # 🎬 TOR-REPARATUR (30.09.2026): vom Meisterwerk-Tor gesperrte Reels (HOOK < 3,0, fester Einstieg 2 s) mit der
   # bewegtesten Sekunde neu schneiden (reel_neu_rendern.py MODUS=hook, Tor Pflicht → wieder ready); fehlende Quellen fragt
   # tor_quellen_anfragen.mjs beim Server an (Merkliste 24 h). Ergebnis-Dateien + Queue sichert git_sichern.sh.
@@ -853,8 +855,10 @@ while true; do
     touch "/tmp/reel_tor_reparatur_$(date -u +%F)"
     ( cd "$REPO" && setsid bash -c \
         "exec 9>/tmp/lock_reel_tor_reparatur.lock; flock -n 9 || exit 0; echo START \$(date -u +%FT%H:%MZ); \
+         if timeout 120 python3 automation/reel/reel_neu_rendern.py --selbsttest > /tmp/reel_neu_rendern_selbsttest.log 2>&1; then \
          MODUS=hook SCHARF=1 timeout 3000 python3 automation/reel/reel_neu_rendern.py | grep -E 'ERSETZT|DURCHGEFALLEN|FERTIG'; \
          MODUS=preis SCHARF=1 timeout 3000 python3 automation/reel/reel_neu_rendern.py | grep -E 'ERSETZT|DURCHGEFALLEN|FERTIG'; \
+         else echo '⚠️ REEL-NEURENDERN Selbsttest rot (/tmp/reel_neu_rendern_selbsttest.log) — keine Reparatur'; fi; \
          SCHARF=1 timeout 900 /opt/node22/bin/node automation/reel/tor_quellen_anfragen.mjs | grep -E '📮|FERTIG'; \
          bash automation/git_sichern.sh 'Reel-Tor-Reparatur: neu geschnitten + Quellen angefragt [skip ci]' social/reels automation/reels_seed.csv auftraege/offen" \
         >> /tmp/reel_tor_reparatur.log 2>&1 9>&- & )
@@ -870,7 +874,9 @@ while true; do
       touch "$RPR"
       ( cd "$REPO" && setsid bash -c \
           "exec 9>/tmp/lock_reel_tor_reparatur.lock; flock -n 9 || exit 0; echo START \$(date -u +%FT%H:%MZ); \
+           if timeout 120 python3 automation/reel/reel_neu_rendern.py --selbsttest > /tmp/reel_neu_rendern_selbsttest.log 2>&1; then \
            MODUS=preis SCHARF=1 timeout 3000 python3 automation/reel/reel_neu_rendern.py | grep -E 'ERSETZT|DURCHGEFALLEN|FERTIG'; \
+           else echo '⚠️ REEL-NEURENDERN Selbsttest rot (/tmp/reel_neu_rendern_selbsttest.log) — keine Reparatur'; fi; \
            bash automation/git_sichern.sh 'Reel-Preis-Reparatur [skip ci]' social/reels automation/reels_seed.csv" \
           >> "$RPR" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) start reel_preis_reparatur (3 h, wartende preis-veraltete Reels)"

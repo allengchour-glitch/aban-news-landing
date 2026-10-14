@@ -86,10 +86,12 @@ def fensterbreite(video):
 
 def zeilen(titel):
     """Titelzeilen genau wie der Reel-Motor (zeilen() aus cj_video_reel_engine.mjs)."""
-    js = r"""const src=require('fs').readFileSync('automation/cj_video_reel_engine.mjs','utf8');
-const k=src.match(/function kurzTitel\(title\) \{[\s\S]*?\n\}/)[0], z=src.match(/function zeilen\(title\) \{[\s\S]*?\n\}/)[0];
-eval(k); eval(z); console.log(JSON.stringify(zeilen(process.argv[1])));"""
-    return json.loads(subprocess.run(["/opt/node22/bin/node", "-e", js, titel], capture_output=True, text=True, check=True).stdout)
+    # 14.10.2026: echter Import aus automation/lib/reel_titel.mjs statt Regex-Kopie aus dem Motor — die Kopie verlor PRAEP
+    # (ReferenceError seit 13.10., jede Preis-/Tor-Reparatur brach ab). argv[1] im ESM-Modus = erstes Argument nach «-e».
+    js = ("import('./automation/lib/reel_titel.mjs').then(m => "
+          "console.log(JSON.stringify(m.zeilen(process.argv[1]))))")
+    return json.loads(subprocess.run(["/opt/node22/bin/node", "-e", js, titel], capture_output=True, text=True, check=True,
+                                     cwd=REPO).stdout)
 
 
 def dauer(p):
@@ -288,7 +290,44 @@ def modus_cdn():
           f"{sum(1 for e in erg if e[2]=='TROCKEN')} im Trockenlauf")
 
 
+def selbsttest():
+    """14.10.2026: Titelzeilen kommen aus automation/lib/reel_titel.mjs (eine Quelle mit dem Motor). Prüft (1) Kanarien mit
+    festen Erwartungen, (2) dass der Motor die Funktionen IMPORTIERT und nicht wieder selbst definiert (sonst laufen zwei
+    Fassungen auseinander), (3) dass keine Datei mehr Funktionen per Regex aus dem Motor kopiert, die PRAEP/kurzTitel brauchen."""
+    fehler = 0
+    def pr(name, ok):
+        nonlocal fehler
+        fehler += not ok
+        print(f"  {'✓' if ok else '✗'} {name}")
+    kan = {"Heizjacke mit USB für Damen und Herren": ["Heizjacke mit USB", "für Damen und Herren"],
+           "Samtkleid mit Glockenärmeln und Stickerei": ["Samtkleid", "mit Glockenärmeln"],
+           "Multifunktions-Haarklammern-Set aus Edelstahl mit Etui": ["Multifunktions-", "Haarklammern-Set aus Edelstahl"],
+           "Löffelfuchs": ["Löffelfuchs", ""]}
+    try:
+        for t, soll in kan.items():
+            pr(f"zeilen({t!r}) = {soll}", zeilen(t) == soll)
+    except Exception as e:                       # genau der Fehler vom 14.10. (ReferenceError im node-Aufruf)
+        pr(f"zeilen() läuft ({type(e).__name__})", False)
+    motor = open(os.path.join(REPO, "automation", "cj_video_reel_engine.mjs"), encoding="utf-8").read()
+    pr("Motor importiert kurzTitel/zeilen aus ./lib/reel_titel.mjs", "from './lib/reel_titel.mjs'" in motor)
+    pr("Motor definiert zeilen()/kurzTitel() NICHT selbst", not re.search(r"^function (zeilen|kurzTitel)\(", motor, re.M))
+    kopien = []
+    for wurzel in ("automation", "tools"):
+        for d, _, fs in os.walk(os.path.join(REPO, wurzel)):
+            for f in fs:
+                if f.endswith((".py", ".mjs", ".js")):
+                    q = open(os.path.join(d, f), encoding="utf-8", errors="ignore").read()
+                    if "cj_video_reel_engine.mjs" in q and re.search(r"function (zeilen|kurzTitel)\\\\?\(", q):
+                        kopien.append(os.path.relpath(os.path.join(d, f), REPO))
+    kopien = [k for k in kopien if k != "automation/reel/reel_neu_rendern.py"]
+    pr(f"keine Regex-Kopie von zeilen/kurzTitel aus dem Motor ({', '.join(kopien) or '0'})", not kopien)
+    print(f"SELBSTTEST {'OK' if not fehler else f'ROT ({fehler})'}")
+    return 1 if fehler else 0
+
+
 def main():
+    if "--selbsttest" in sys.argv:
+        sys.exit(selbsttest())
     if MODUS == "cdn":
         return modus_cdn()
     rows = list(csv.DictReader(open("automation/reels_seed.csv")))
