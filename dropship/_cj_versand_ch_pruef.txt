@@ -9209,3 +9209,4 @@ herz-ring-604200	2606180943481604800	16	4.37	ok	landeseite
 liebesring-606600	2606180935531607200	16	4.37	ok	landeseite
 perlenring-schmetterling-610200	2606180358361610900	16	4.50	ok	landeseite
 outdoor-schmuck-603800	2606180139541604400	16	4.50	ok	landeseite
+camellien-stein-offenring-608400	2606171157441609000	16	4.50	ok	landeseite
