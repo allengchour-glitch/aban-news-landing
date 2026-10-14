@@ -18340,3 +18340,9 @@ gid://shopify/Product/16618135159175	78->2	UV-Härtender Epoxykleber – 10 g bi
 gid://shopify/Product/16618136535431	23->1	Triangularer Schlüsselzange für elektrische Steuerkabinett
 gid://shopify/Product/16618137616775	64->0	Clip-Wedge-Steinspalter 16 mm
 gid://shopify/Product/16618158031239	105->2	Edelstahl-Sechskant-Schrauben-Set mit Muttern
+gid://shopify/Product/16617704096135	31->0	Warme Lederhandschuhe für Herren
+gid://shopify/Product/16638235836807	37->0	Elektrischer Wärmeschal mit USB-Anschluss
+gid://shopify/Product/16638236656007	38->0	Bunt gestrickter Wollschal – 28 × 165 cm
+gid://shopify/Product/16638237180295	34->0	Weicher Strickschal – warm und dick
+gid://shopify/Product/16638238065031	15->0	Triangular Schals mit Strassstein-Jacquard-Muster
+gid://shopify/Product/16638241833351	17->0	Strickschal mit Streifen

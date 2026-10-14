@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-13T23:09Z",
+ "stand": "2026-10-14T23:10Z",
  "profil": "gid://shopify/DeliveryProfile/152645108103",
  "stufe": 1,
  "stufe_roh": {
@@ -35,7 +35,7 @@
   "shirt-bernhardiner",
   "shirt-braunvieh"
  ],
- "kosten_alter_tage": 0.1,
+ "kosten_alter_tage": 1.1,
  "geloest": 0,
  "zugeordnet": 0,
  "matrix": {
@@ -78,10 +78,14 @@
     "fall": "Druck + CJ klein CH",
     "land": "CH",
     "zwischensumme": 42.12,
-    "versand": 7.0,
-    "erwartet": 7.0,
-    "vorher": 7.0,
+    "versand": 0.0,
+    "erwartet": 0.0,
+    "vorher": 0.0,
     "tarife": [
+     [
+      0.0,
+      "Kostenloser Versand"
+     ],
      [
       7.0,
       "Standard"
@@ -114,8 +118,12 @@
     "zwischensumme": 44.82,
     "versand": 0.0,
     "erwartet": 0.0,
-    "vorher": 7.0,
+    "vorher": 0.0,
     "tarife": [
+     [
+      0.0,
+      "Kostenloser Versand"
+     ],
      [
       0.0,
       "Standard"

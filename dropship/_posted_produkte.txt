@@ -271,3 +271,6 @@ pid:15495140508033
 slug:lenkradbezug-set-fur-frauen-af675c
 slug:kostum-hexe-schulerin-pink-fgsspc9815
 name:kostümhexeschülerinpink
+name:tomatenundtraubenschneider
+pid:15517578985857
+slug:tomaten-und-traubenschneider-1587e1

@@ -2372,3 +2372,6 @@
 15512259527041	Ausführung:4:4	2026-10-14	outdoor-camouflage-rucksack-20-35l-622800
 15512248189313	Farbe:8:8	2026-10-14	unicorn-sternenhimmel-quarzuhr-860352
 15512243601793	Modell:5:5	2026-10-14	machinelike-gold-herrenarmband-mit-mesh-design-634400
+15511943610753	Farbe:6:6	2026-10-14	microbead-nackenkissen-rolle-753600
+15511794844033	Modell:12:12	2026-10-14	retro-motorrad-satteltasche-602200
+15510959522177	Farbe:3:3	2026-10-14	nagelknipser-set-aus-edelstahl-754816
