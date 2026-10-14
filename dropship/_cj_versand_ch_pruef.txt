@@ -9168,3 +9168,27 @@ hohler-perlenring-im-franzosischen-stil-638700	2607080344141639600	16	4.42	ok	la
 schadel-piratenring-damen-622600	2607080329031623300	16	4.60	ok	landeseite
 q520-gesundheitsring-fur-schlaf-herzfrequenz-u-600400	2607080149371601100	6	8.89	ok	landeseite
 retro-titanstahl-ring-mit-edelsteinen-herren-604900	2607070743281605700	16	4.83	ok	landeseite
+gestapelte-ringkombination-europaisch-amerikan-638700	2607070638221639400	16	4.40	ok	landeseite
+viking-edelstahl-herren-ring-630800	2607070535091631400	16	4.75	ok	landeseite
+eleganter-valentinstag-ring-im-quadrat-design-636800	2607070340411637400	16	4.40	ok	landeseite
+meeresschmuck-set-mit-sternfisch-muscheldesign-842754	2074259708430671874	16	4.71	ok	landeseite
+kreuz-titanstahl-perlen-halskette-602200	2607110829371602800	16	4.79	ok	landeseite
+damen-glitzernder-zirkon-muschel-anhanger-610100	2607110614151610800	16	4.47	ok	landeseite
+personalisierter-geburtsstein-name-halskette-629700	2607110259191620300	16	4.50	ok	landeseite
+schlusselbein-halskette-mit-geometrischem-kreu-956034	2075751281201676289	16	4.60	ok	landeseite
+zweilagige-blutenhalskette-in-pink-633700	2607101052321634500	16	5.23	ok	landeseite
+doppel-sternfisch-halskette-623300	2607101049301623900	16	5.50	ok	landeseite
+geometrisches-pendant-600100	2607101045511600900	16	5.56	ok	landeseite
+farbblock-halskette-630300	2607101044101630900	16	6.07	ok	landeseite
+resin-kugelhalskette-630600	2607101033361631200	16	5.55	ok	landeseite
+buntes-steinperlen-halsband-627800	2607100956281628500	16	6.21	ok	landeseite
+herz-halskette-628800	2607100912111629500	16	5.06	ok	landeseite
+vintageschmuck-kollier-630500	2607100712181631200	16	6.51	ok	landeseite
+vintageschmuck-set-636300	2607100233241636900	16	4.71	ok	landeseite
+vintage-halskette-413570	2075420020473716738	16	4.66	ok	landeseite
+luxus-herz-kette-mit-perlen-009090	2075410792036032514	16	4.71	ok	landeseite
+modische-damen-halskette-mit-hip-hop-metall-de-497345	2075403483011715073	16	5.12	ok	landeseite
+hip-hop-kreuz-anhanger-mit-kubanische-kette-ve-021633	2075405244216741889	16	4.71	ok	landeseite
+perlen-abakus-halskette-casual-614400	2607091206531615000	16	4.81	ok	landeseite
+edelstahl-3d-katzenpendant-mit-blumenkranz-uni-600700	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+18k-gold-plated-anpassbarer-weizenahren-indexr-147201	2075029811435450370	16	4.50	ok	landeseite
