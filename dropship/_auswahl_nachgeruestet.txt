@@ -2052,3 +2052,5 @@
 16617704423815	Farbe:3:3	2026-10-14	strandschirm-ankerstange-f0f4c0
 16617703801223	Grösse:3:3	2026-10-14	rohrbursten-aufsatz-fur-elektro-werkzeuge-626700
 16617703571847	Farbe:2:2	2026-10-14	usb-messgerat-fur-spannung-und-ladestrom-621300
+16618014966151	Farbe:2:2	2026-10-14	leder-geldborse-mit-krokodilmuster-619900
+16618014245255	Farbe:3:3	2026-10-14	handtasche-mit-blumenpragung-und-reissverschlu-601700
