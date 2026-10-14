@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-14 09:55 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-14 11:17 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1571 · **1503 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1284, teilweise: 177, keine: 42; Preisspanne > 2×: 166) · 1 CJ-Variante: 66 · ohne Antwort: 2
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1570 · **1502 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1283, teilweise: 177, keine: 42; Preisspanne > 2×: 166) · 1 CJ-Variante: 66 · ohne Antwort: 2
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -632,7 +632,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Reise-Rucksack aus Canvas (`reise-rucksack-aus-canvas-245440`) | 7 | 7 | 9.29–10.42 | 35.90 | Black, Khaki, Dark Blue, Brown |
 | Vertikale Umhängetasche aus Rindsleder (`vertikale-umhangetasche-aus-rindsleder-490432`) | 7 | 7 | 5.26–12.4 | 24.90 | Coffee, Coffee2, Coffee3, Coffee4 |
 | Elektrisches Nagelpflege-Set (`elektrisches-nagelpflege-set-904960`) | 7 | 7 | 5.52–5.52 | 23.90 | Black US, Rose EU, Rose US, White EU |
-| Runde Teeschale mit Rundauslauf – Matcha-Serie (`runde-teeschale-mit-rundauslauf-matcha-serie-629800`) | 7 | 7 | 4.39–4.39 | 17.90 | Blue, Yellow, Red, Sky Blue |
 | Wasserdichte Automatikuhr für Herren (`wasserdichte-automatikuhr-fur-herren-626300`) | 6 | 6 | 17.8–17.8 | 39.90 | Golden White, Golden Black, Full Gold, Natural Black |
 | Smart Beissfester Hundeball mit Zahnreinigung (`smart-beissfester-hundeball-mit-zahnreinigung-628600`) | 6 | 6 | 2.81–3.34 | 19.90 | Paw Print Blue, Paw Print Orange, Paw Print In Blue 1 Rope, Red Paw Print 1 Rope |
 | Tiefes Salatschalen-Set (`tiefes-salatschalen-set-603300`) | 6 | 6 | 7.6–8.76 | 33.90 | Upgraded version 2.0-Emerald green, Upgraded version 2.0-Yellow, Upgraded version 2.0-Blue, Export version 3.0-Emerald green |
