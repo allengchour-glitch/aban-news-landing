@@ -12,6 +12,7 @@
       "anlass": "Halloween",
       "datum": "2026-10-31",
       "hinweis_tag": "halloween",
+      "kostuem_zuerst": true,
       "link_kandidaten": [
         "halloween",
         "kostueme-ch-lager"
@@ -43,5 +44,6 @@
     }
   ],
   "_zusage_quelle": "zusage_langsam_max = obere Grenze dessen, was die KASSE für Direktversand zeigt: P1D Bearbeitung + 19 WT Transit (versand_transit_wache, CJ 9–19) + 1 WT nach 12 Uhr = 21 WT. Ab dem Tag, an dem heute + 21 WT nach dem Anlass liegt, zeigt die Kasse ein Datum nach dem Anlass → Hinweis «nicht garantiert» an + Kollektion sortiert schnelle Ware nach oben (13.10.2026, Kauf-Strecke Klasse 3).",
+  "_kostuem_zuerst": "kostuem_zuerst (14.10.2026): innerhalb der schnellen Ware ganze Kostüme (Titel Kostüm + Auswahl Grösse, gemischt Kinder/Damen/Herren) vor Einheitsgrössen-Kostümen vor Zubehör vor Deko/Blut/Spielzeug (anlass_lieferzeit_wache.kostuem_klasse).",
   "_hinweis": "hinweis_tag: Produkte mit diesem Tag OHNE Tag «profil-ch-lager» bekommen auf der Produktseite den Block lux_anlass_hinweis (templates/product.json). Daten im Shop-Metafeld luxe.anlass_hinweis (JSON, schreibt die Wache; ausserhalb des Fensters gelöscht). link_kandidaten: Kollektionen, auf die «Rechtzeitig: … ab Schweizer Lager →» zeigen darf — nur wenn ihre obersten 12 aktiven Artikel alle im Profil «CH-Lager» liegen (sonst nächster Kandidat, sonst kein Link)."
 }

@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-13T20:09Z",
+ "stand": "2026-10-14T09:31Z",
  "scharf": true,
  "hinweise": [
   {
@@ -19,9 +19,13 @@
  "block_im_theme": true,
  "befunde": [],
  "zubehoer": {
-  "gesetzt": 353,
-  "entfernt": 0,
-  "soll": 353,
-  "ist_vorher": 0
+  "gesetzt": 0,
+  "entfernt": 1,
+  "soll": 352,
+  "ist_vorher": 353
+ },
+ "fanartikel_front": {
+  "gefunden": 14,
+  "entfernt": 14
  }
 }

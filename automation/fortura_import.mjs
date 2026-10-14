@@ -47,7 +47,9 @@ function forturaType(t){
 }
 // Kern-Kostümwörter (EINE Quelle: automation/kostuem_core.regex) → Tag kostuem-ch-front, an dem die Kollektion «Kostüme ab CH-Lager» hängt
 const KOSTUEM_CORE = new RegExp(fs.readFileSync(new URL('./kostuem_core.regex', import.meta.url), 'utf8').trim(), 'i');
-export function kostuemFrontTag(typ, title){ return (typ==='Kostüme & Verkleidung' && KOSTUEM_CORE.test(title||'')) ? ['kostuem-ch-front'] : []; }
+// 14.10.2026: Wintermützen/Beanies sind kein Kostüm (KOSTUEM_CORE trifft «Mütze»); gleiche Regel wie anlass_lieferzeit_wache.KEIN_KOSTUEM_RE
+const KEIN_KOSTUEM = /\bwinterm(ü|ue)tze|\bbeanie\b|\bstrickm(ü|ue)tze/i;
+export function kostuemFrontTag(typ, title){ return (typ==='Kostüme & Verkleidung' && KOSTUEM_CORE.test(title||'') && !KEIN_KOSTUEM.test(title||'')) ? ['kostuem-ch-front'] : []; }
 const CID = process.env.SHOPIFY_CLIENT_ID, CSEC = process.env.SHOPIFY_CLIENT_SECRET;
 const SHOP = 'au3j0y-hq.myshopify.com', LOC = 'gid://shopify/Location/109350125953';
 const PUBS = ['301970915713','301971014017','302032716161','302566834561','302872297857','302994456961']
@@ -234,8 +236,11 @@ for (const rec of recs.slice(0, LIMIT)) {
     + `<li>🔒 Kauf auf Rechnung mit Klarna · TWINT · Karten · PayPal · Apple Pay</li>`
     + `<li>💬 Schweizer Support: info@luxestyle.ch</li></ul>`;
   const slug = (normT(title).replace(/\s+/g,'-').slice(0,46)) + '-ft' + String(art).toLowerCase();
-  const tags = [...new Set(['fortura','dropship','ch-lager','schweiz-versand','neu', ...kostuemFrontTag(forturaType(title), title), ...FT_TAGS,
-    ...fortCatTags(rec['Grp-Bez'], rec['Kategorie'], title), ...catTags(title)])];
+  // 14.10.2026: Fanartikel (Länder-T-Shirts, Megafon) sind keine Kostüme — 13 standen in «Kostüme ab Schweizer Lager».
+  const grpTags = fortCatTags(rec['Grp-Bez'], rec['Kategorie'], title);
+  const tags = [...new Set(['fortura','dropship','ch-lager','schweiz-versand','neu',
+    ...(grpTags.includes('fanartikel') ? [] : kostuemFrontTag(forturaType(title), title)), ...FT_TAGS,
+    ...grpTags, ...catTags(title)])];
   const input = {
     title, handle: slug, productType: forturaType(title), vendor: 'LuxeStyle', status: 'ACTIVE', tags, descriptionHtml: desc,
     seo: { title: `${title} | LuxeStyle`.slice(0,70), description: `${title} – schnelle CH-Lieferung aus der Schweiz, Gratis-Versand ab CHF 50.`.slice(0,320) },

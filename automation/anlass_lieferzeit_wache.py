@@ -46,10 +46,11 @@ nicht nach dem, was Seite und Kasse ANZEIGEN (bis 21 WT). Jetzt:
   python3 automation/anlass_lieferzeit_wache.py --selbsttest
   python3 automation/anlass_lieferzeit_wache.py --hinweis   # nur Hinweis-Soll + Theme-/Metafeld-Prüfung (Trockenlauf)
 """
-import datetime as dt, json, os, sys, time
+import datetime as dt, json, os, re, sys, time
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(REPO, "automation"))
+from werbetest_sperre import gesperrt  # noqa: E402  jeder Schreiber fragt selbst (13.10.)
 TABELLE = os.path.join(REPO, "data", "anlass_kollektionen.json")
 LEDGER = os.path.join(REPO, "dropship", "_anlass_sort.tsv")
 BERICHT = os.path.join(REPO, "dropship", "ANLASS-LIEFERZEIT.md")
@@ -62,6 +63,11 @@ META_NS, META_KEY = "luxe", "anlass_hinweis"
 MARKE_PROFIL = "profil-ch-lager"
 ZUBEHOER_TAG = "kostuem-ch-zubehoer"
 ZUBEHOER_QUELLE = ("peruecke", "kostuem-hut")
+# 14.10.2026: keine Kostüme, obwohl Gruppe/Importer sie so markiert: Wintermützen/Beanies (Weihnacht nur MIT Mütze — sonst fiele
+# «Kostüm Nikolaus» heraus). Fanartikel (Länder-Caps/-Shirts, Megafon) verlieren «kostuem-ch-front» (front_abgleich).
+KEIN_KOSTUEM_RE = re.compile(r"\bwinterm(ü|ue)tze|\bbeanie\b|\bstrickm(ü|ue)tze", re.I)
+FRONT_TAG, FAN_TAG = "kostuem-ch-front", "fanartikel"
+LEDGER_FRONT = os.path.join(REPO, "dropship", "_kostuem_ch_front_fan.tsv")
 WOCHENTAG = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]
 MONAT = ["Jan.", "Feb.", "März", "Apr.", "Mai", "Juni", "Juli", "Aug.", "Sept.", "Okt.", "Nov.", "Dez."]
 
@@ -122,9 +128,56 @@ def schnell_profil(tags, sku, profil):
     return schnell(tags, sku) and (profil or "") == PROFIL_SCHNELL
 
 
-def ziel_reihenfolge(produkte):
-    """produkte: [(id, aktiv, schnell)] in aktueller Ordnung → stabile Aufteilung: schnell+aktiv · langsam+aktiv · inaktiv."""
-    a = [p[0] for p in produkte if p[1] and p[2]]
+# 14.10.2026 (MEHR-KAEUFER S2a): GEMESSEN — oben auf /collections/halloween standen 0 ganze Kostüme in den Top 24
+# (abgeschnittene Hand, Horrorpuppe, blutiges Herz, Theaterblut …), obwohl 57 ganze Kostüme ab Schweizer Lager da waren
+# (erstes auf Platz 37). Innerhalb der schnellen Ware gilt für Kollektionen mit «kostuem_zuerst» ein zweiter Schlüssel:
+#   0 ganzes Kostüm (Titel «Kostüm» UND Auswahl Grösse) · 1 Kostüm in Einheitsgrösse · 2 Zubehör · 3 Deko/Blut/Spielzeug.
+# Klasse 3 nach Typ und Titel, NIE nach dem Tag «kostuem-accessoire» (den tragen auch Hand, Herz und Puppe).
+# In Klasse 0 abwechselnd Kinder/Damen/Herren/Unisex (sonst 11 von 12 Hexe/Vampirin, Simulation 14.10.).
+KOSTUEM_RE = re.compile(r"kost(ü|ue)m", re.I)
+GROESSE_OPT = {"grösse", "größe", "groesse", "grosse", "size"}
+DEKO_TYP = {"Partydeko & Ballone", "Spielzeug & Spiele"}
+DEKO_RE = re.compile(r"\bblut|abgeschnitten|kreiss(ä|ae)ge|horrorpuppe|schl(ä|ae)ger|theaterblut|\bleiche\b|\bsarg\b", re.I)
+GRUPPEN = ("kinderkostuem", "damenkostuem", "herrenkostuem", "unisexkostuem")
+
+
+def kostuem_klasse(titel, typ, optionen, tags=()):
+    """→ (Klasse 0–3, Gruppe für die Mischung in Klasse 0)."""
+    t = titel or ""
+    gruppe = next((g for g in GRUPPEN if g in set(tags or ())), "andere")
+    if KOSTUEM_RE.search(t):
+        return (0 if {(o or "").strip().lower() for o in optionen or []} & GROESSE_OPT else 1), gruppe
+    if (typ or "") in DEKO_TYP or DEKO_RE.search(t):
+        return 3, gruppe
+    return 2, gruppe
+
+
+def gemischt(produkte):
+    """Klasse-0-Kostüme reihum nach Gruppe (Reihenfolge innerhalb der Gruppe bleibt)."""
+    toepfe, reihe = {}, []
+    for p in produkte:
+        g = p[4][1]
+        if g not in toepfe:
+            toepfe[g] = []
+            reihe.append(g)
+        toepfe[g].append(p)
+    out = []
+    while any(toepfe.values()):
+        for g in reihe:
+            if toepfe[g]:
+                out.append(toepfe[g].pop(0))
+    return out
+
+
+def ziel_reihenfolge(produkte, kostuem_zuerst=False):
+    """produkte: [(id, aktiv, schnell[, titel, (klasse, gruppe)])] in aktueller Ordnung → stabile Aufteilung:
+    schnell+aktiv · langsam+aktiv · inaktiv. kostuem_zuerst: schnelle aktive zusätzlich nach kostuem_klasse (stabil)."""
+    a = [p for p in produkte if p[1] and p[2]]
+    if kostuem_zuerst:
+        a = sorted(a, key=lambda p: p[4][0] if len(p) > 4 else 2)
+        k0 = [p for p in a if len(p) > 4 and p[4][0] == 0]
+        a = gemischt(k0) + [p for p in a if not (len(p) > 4 and p[4][0] == 0)]
+    a = [p[0] for p in a]
     b = [p[0] for p in produkte if p[1] and not p[2]]
     c = [p[0] for p in produkte if not p[1]]
     return a + b + c
@@ -137,14 +190,16 @@ def lade(gql, handle):
     out, cur = [], None
     while True:
         d = gql('query($id:ID!,$c:String){ collection(id:$id){ products(first:250, after:$c, sortKey:COLLECTION_DEFAULT){ '
-                'pageInfo{hasNextPage endCursor} nodes{ id title status tags variants(first:1){ nodes{ sku deliveryProfile{ name } } } } } } }',
+                'pageInfo{hasNextPage endCursor} nodes{ id title status tags productType options{ name } '
+                'variants(first:1){ nodes{ sku deliveryProfile{ name } } } } } } }',
                 {"id": c["id"], "c": cur})
         pg = d["collection"]["products"]
         for p in pg["nodes"]:
             v0 = (p["variants"]["nodes"] or [{}])[0] or {}
             sku = v0.get("sku") or ""
             prof = (v0.get("deliveryProfile") or {}).get("name")
-            out.append((p["id"], p["status"] == "ACTIVE", schnell_profil(p["tags"], sku, prof), p["title"]))
+            out.append((p["id"], p["status"] == "ACTIVE", schnell_profil(p["tags"], sku, prof), p["title"],
+                        kostuem_klasse(p["title"], p.get("productType"), [o["name"] for o in p.get("options") or []], p["tags"])))
         if not pg["pageInfo"]["hasNextPage"]:
             return c, out
         cur = pg["pageInfo"]["endCursor"]
@@ -244,10 +299,12 @@ def zubehoer_abgleich(gql):
     q = " OR ".join(f"tag:'{t}'" for t in ZUBEHOER_QUELLE + (ZUBEHOER_TAG,))
     while True:
         d = gql('query($c:String,$q:String!){ products(first:250, after:$c, query:$q){ pageInfo{ hasNextPage endCursor } '
-                'nodes{ id tags } } }', {"c": cur, "q": q})["products"]
+                'nodes{ id tags title } } }', {"c": cur, "q": q})["products"]
         for p in d["nodes"]:
             t = set(p["tags"])
-            if "ch-lager" in t and t & set(ZUBEHOER_QUELLE):
+            # 14.10.2026: «kostuem-hut» steht auf der ganzen Fortura-Gruppe «Hüte/Kopfbedeckung», auch auf Wintermützen
+            # (GEMESSEN: «Wintermütze für Kinder leuchtende LED Weihnachten» auf Platz 3 von kostueme-ch-lager).
+            if "ch-lager" in t and t & set(ZUBEHOER_QUELLE) and not KEIN_KOSTUEM_RE.search(p.get("title") or ""):
                 soll.add(p["id"])
             if ZUBEHOER_TAG in t:
                 ist.add(p["id"])
@@ -255,6 +312,7 @@ def zubehoer_abgleich(gql):
             break
         cur = d["pageInfo"]["endCursor"]
     add, weg = sorted(soll - ist), sorted(ist - soll)
+    add, weg = [x for x in add if not gesperrt(x)], [x for x in weg if not gesperrt(x)]   # Werbetest-Sperre (13.10.)
     n_add = n_weg = 0
     if SCHARF:
         for ids, mut, art in ((weg, "tagsRemove", "weg"), (add, "tagsAdd", "neu")):
@@ -272,6 +330,33 @@ def zubehoer_abgleich(gql):
                             else:
                                 n_weg += 1
     return n_add, n_weg, len(soll), len(ist)
+
+
+def front_abgleich(gql):
+    """Fanartikel und Wintermützen tragen kein «kostuem-ch-front» (Kollektion «Kostüme ab Schweizer Lager»). Nur mit SCHARF.
+    → (gefunden, entfernt)."""
+    ids, cur = [], None
+    while True:
+        d = gql('query($c:String,$q:String!){ products(first:250, after:$c, query:$q){ pageInfo{ hasNextPage endCursor } '
+                'nodes{ id title tags } } }', {"c": cur, "q": f"tag:'{FRONT_TAG}'"})["products"]
+        ids += [(p["id"], p["title"]) for p in d["nodes"]
+                if FAN_TAG in p["tags"] or KEIN_KOSTUEM_RE.search(p["title"] or "")]
+        if not d["pageInfo"]["hasNextPage"]:
+            break
+        cur = d["pageInfo"]["endCursor"]
+    n = 0
+    if SCHARF:
+        frei = [x for x in ids if not gesperrt(x[0])]
+        for i in range(0, len(frei), 20):
+            teil = frei[i:i + 20]
+            r = gql("mutation{" + " ".join(f'a{j}:tagsRemove(id:"{x[0]}",tags:["{FRONT_TAG}"]){{userErrors{{message}}}}'
+                                          for j, x in enumerate(teil)) + "}")
+            with open(LEDGER_FRONT, "a", encoding="utf-8") as f:
+                for j, x in enumerate(teil):
+                    if not (r.get(f"a{j}") or {}).get("userErrors", ["?"]):
+                        f.write(f"{dt.datetime.utcnow():%Y-%m-%dT%H:%MZ}\tweg {FRONT_TAG}\t{x[0]}\t{x[1]}\n")
+                        n += 1
+    return len(ids), n
 
 
 def main(nur_hinweis=False):
@@ -319,7 +404,7 @@ def main(nur_hinweis=False):
                 zahl["zu_spaet_alles"] += 1
                 zeilen.append(f"| {a['handle']} | {a['datum']} | auch Schweizer Lager zu spät — nichts umgestellt | {c['sortOrder']} |")
             else:
-                ziel = ziel_reihenfolge(prods)
+                ziel = ziel_reihenfolge(prods, a.get("kostuem_zuerst", False))
                 if [p[0] for p in prods] == ziel and c["sortOrder"] == "MANUAL":
                     zahl["schon_richtig"] += 1
                     zeilen.append(f"| {a['handle']} | {a['datum']} | schon richtig ({n_schnell} Lager-Artikel im Profil «CH-Lager» oben) | MANUAL |")
@@ -376,15 +461,22 @@ def main(nur_hinweis=False):
     if not mf_aktuell:
         befunde.append(f"Metafeld {META_NS}.{META_KEY} nicht aktuell" + (f" ({mf_fehler})" if mf_fehler else "")
                        + ("" if SCHARF else " — SCHARF=1 schreibt es"))
-    zub = None
+    zub = fan = None
     if not nur_hinweis:
         try:
             zub = zubehoer_abgleich(gql)
         except Exception as e:  # pragma: no cover
             befunde.append(f"Zubehör-Zeichen nicht abgeglichen: {e}"[:160])
+        try:
+            fan = front_abgleich(gql)
+            if fan[0] - fan[1] > 0:
+                befunde.append(f"{fan[0] - fan[1]} Fanartikel/Wintermützen tragen noch «{FRONT_TAG}»" + ("" if SCHARF else " — SCHARF=1 entfernt"))
+        except Exception as e:  # pragma: no cover
+            befunde.append(f"Fanartikel-Abgleich gescheitert: {e}"[:160])
     stand = {"stand": f"{dt.datetime.utcnow():%Y-%m-%dT%H:%MZ}", "scharf": SCHARF, "hinweise": list(hinweise.values()),
              "metafeld_aktuell": mf_aktuell, "metafeld_updated": ist_upd, "block_im_theme": im_theme, "befunde": befunde,
-             "zubehoer": dict(zip(("gesetzt", "entfernt", "soll", "ist_vorher"), zub)) if zub else None}
+             "zubehoer": dict(zip(("gesetzt", "entfernt", "soll", "ist_vorher"), zub)) if zub else None,
+             "fanartikel_front": dict(zip(("gefunden", "entfernt"), fan)) if fan else None}
     if SCHARF or nur_hinweis:
         json.dump(stand, open(STAND_HINWEIS, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     if not nur_hinweis:
@@ -427,6 +519,28 @@ def selbsttest():
         (plus_werktage(dt.date(2026, 10, 27), 4) > dt.date(2026, 10, 31), True, "Lager 4 WT ab Di 27.10. zu spät (Mo 02.11.)"),
         (plus_werktage(dt.date(2026, 10, 15), 12) > dt.date(2026, 10, 31), True, "Direktversand 12 WT ab Do 15.10. zu spät → umsortieren"),
         (ziel_reihenfolge([("a", True, False), ("b", True, True), ("c", False, True), ("d", True, True)]), ["b", "d", "a", "c"], "stabil"),
+        # 14.10.2026 S2a: Kostüm-Klassen + Mischung
+        (kostuem_klasse("Kostüm Sternenhexe", "Kostüm", ["Grösse"], ["damenkostuem"]), (0, "damenkostuem"), "Kostüm + Grösse = 0"),
+        (kostuem_klasse("Kostüm Hexe schwarz", "Kostüm", ["Title"], []), (1, "andere"), "Kostüm Einheitsgrösse = 1"),
+        (kostuem_klasse("Kinderkostüm Falbala", "", ["Title"], ["kinderkostuem"])[0], 1, "Kinderkostüm ohne Grösse = 1"),
+        (kostuem_klasse("Blutige abgeschnittene Hand", "Partydeko & Ballone", ["Title"], ["kostuem-accessoire"])[0], 3,
+         "Hand (Tag kostuem-accessoire!) = Deko 3"),
+        (kostuem_klasse("Horrorpuppe", "Spielzeug & Spiele", ["Title"], [])[0], 3, "Horrorpuppe = 3"),
+        (kostuem_klasse("Kanister Theaterblut 2 Liter", "Schminke", ["Title"], [])[0], 3, "Theaterblut = 3"),
+        (kostuem_klasse("Hexenbesen gekrümmt", "Kostüm-Zubehör", ["Title"], [])[0], 2, "Hexenbesen = Zubehör 2"),
+        (kostuem_klasse("Blumenkranz Hippie", "Kostüm-Zubehör", ["Title"], [])[0], 2, "Blumenkranz ≠ Blut (Wortanfang)"),
+        (kostuem_klasse("Plüsch-Overall Kostüm Einhorn", "Spielzeug & Spiele", ["Grösse"], [])[0], 0, "Kostüm vor Spielzeug-Typ"),
+        (kostuem_klasse("Kostüm Vampirin mit Blut", "Kostüm", ["Size"], [])[0], 0, "Kostüm vor Blut-Wort"),
+        (ziel_reihenfolge([("hand", True, True, "", (3, "andere")), ("k1", True, True, "", (0, "damenkostuem")),
+                           ("cj", True, False, "", (0, "andere")), ("k2", True, True, "", (0, "damenkostuem")),
+                           ("hut", True, True, "", (2, "andere")), ("k3", True, True, "", (0, "kinderkostuem")),
+                           ("eg", True, True, "", (1, "andere"))], True),
+         ["k1", "k3", "k2", "eg", "hut", "hand", "cj"], "Kostüme gemischt vor Einheitsgrösse vor Zubehör vor Deko, CJ danach"),
+        (ziel_reihenfolge([("a", True, False, "", (0, "x")), ("b", True, True, "", (3, "x"))]), ["b", "a"],
+         "ohne kostuem_zuerst unverändert"),
+        (bool(KEIN_KOSTUEM_RE.search("Wintermütze für Kinder leuchtende LED Weihnachten")), True, "Wintermütze kein Kostüm-Zubehör"),
+        (bool(KEIN_KOSTUEM_RE.search("Mütze Nikolaus · Weihnachtsmann")), False, "Nikolausmütze bleibt Kostüm-Zubehör"),
+        (bool(KEIN_KOSTUEM_RE.search("Hexenhut mit Schleier")), False, "Hexenhut bleibt"),
         # 13.10. Kauf-Strecke Klasse 3: Fenster aus der Kalibrierung (schnell 4, langsam 12, Kassen-Zusage 21 WT)
         (hinweis_fenster(dt.date(2026, 10, 31), {"schnell": 4, "langsam": 12, "zusage_langsam_max": 21}),
          {"ab": dt.date(2026, 10, 2), "kipptag": dt.date(2026, 10, 15), "schnell_bis": dt.date(2026, 10, 26)},
