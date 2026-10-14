@@ -511,3 +511,4 @@
 2026-10-14T08:33:46.549Z	luxe-epic-trailer.wav	38.25	kueche	cjreel-CJGE178028301AZ	stimme:ja	azure:de-CH-JanNeural
 2026-10-14T09:11:43.999Z	luxe-epic-winter.wav	21.5	beauty	cjreel-CJBJZJZJ00161-Star5	stimme:nein	anteil
 2026-10-14T09:13:21.370Z	luxe-epic-hero.wav	46	allgemein	cjreel-CJJJCFCJ00290-8pc	stimme:nein	anteil
+2026-10-14T09:15:17.348Z	luxe-epic-fantasy.wav	22	mode	cjreel-CJYD198606601AZ	stimme:ja	azure:de-CH-JanNeural
