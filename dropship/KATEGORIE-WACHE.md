@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-14T16:50Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-14T17:48Z
 
-Aktive gescannt: 21 · ohne Kategorie: 21 · heute gesetzt: 19 (SCHARF, CAP 1500) · danach offen: 2 · Fehler: 0
+Aktive gescannt: 25 · ohne Kategorie: 25 · heute gesetzt: 23 (SCHARF, CAP 1500) · danach offen: 2 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -11,9 +11,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- elektrischer-warmeschal-mit-usb-anschluss-610400 · Accessoires → Apparel & Accessories > Clothing Accessories
-- plaid-schal-in-mintgrun-pink-lila-schwarz-blau-605600 · Accessoires → Apparel & Accessories > Clothing Accessories
-- bunt-gestrickter-wollschal-28-165-cm-618400 · Accessoires → Apparel & Accessories > Clothing Accessories
-- weicher-strickschal-warm-und-dick-613500 · Accessoires → Apparel & Accessories > Clothing Accessories
-- triangular-schals-mit-strassstein-jacquard-mus-628900 · Accessoires → Apparel & Accessories > Clothing Accessories
+- leder-sneaker-herren-atmungsaktiv-615500 · Herrenschuhe → Apparel & Accessories > Shoes
+- indoor-fitness-schuhe-fur-manner-weiss-black-g-623100 · Herrenschuhe → Apparel & Accessories > Shoes
+- herrenschnee-stiefel-mit-fleece-sohle-603300 · Herrenschuhe → Apparel & Accessories > Shoes
+- atmungsaktive-mesh-sneaker-629200 · Herrenschuhe → Apparel & Accessories > Shoes
+- sneaker-mit-auflage-fur-mehr-hohe-600000 · Herrenschuhe → Apparel & Accessories > Shoes
 
