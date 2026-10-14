@@ -18,8 +18,6 @@ Suchverkehr ist der einzige Kanal, der in diesem Shop verkauft. Ein Ratgeber, de
 | [Gaming-Zubehör 2026: Maus, Headset & Tastatur richtig auswäh](/blogs/ratgeber/gaming-zubehoer-2026-maus-headset-tastatur) | 0 |
 | [Fitness zuhause 2026: Die richtige Ausrüstung für dein Heimt](/blogs/ratgeber/fitness-zuhause-2026-heimtraining-ausruestung) | 0 |
 | [Bartpflege & Rasur 2026: Der komplette Ratgeber für gepflegt](/blogs/ratgeber/bartpflege-rasur-2026-ratgeber) | 0 |
-| [Camping & Outdoor 2026: Die wichtigste Ausrüstung für unterw](/blogs/ratgeber/camping-outdoor-2026-ausruestung) | 0 |
-| [Haarstyling zuhause 2026: Föhn, Glätteisen & Lockenstab rich](/blogs/ratgeber/haarstyling-zuhause-2026-ratgeber) | 0 |
 | [Bar & Wein zuhause 2026: Stilvoll geniessen & servieren](/blogs/ratgeber/bar-wein-zuhause-2026-ratgeber) | 0 |
 | [Auto-Zubehör 2026: Mehr Ordnung & Komfort im Fahrzeug](/blogs/ratgeber/auto-zubehoer-2026-ratgeber) | 0 |
 | [Parfum kaufen 2026: Eau de Parfum, Toilette & Duftnoten vers](/blogs/ratgeber/parfum-kaufen-2026-duftnoten-ratgeber) | 0 |
@@ -190,7 +188,6 @@ Suchverkehr ist der einzige Kanal, der in diesem Shop verkauft. Ein Ratgeber, de
 | [Damenuhr kaufen: der Guide für Stil, Grösse & Uhrwerk](/blogs/ratgeber/damenuhr-kaufen-der-guide-fur-stil-grosse-uhrwerk) | 0 |
 | [Sonnenbrille nach Gesichtsform: so findest du dein Modell](/blogs/ratgeber/sonnenbrille-nach-gesichtsform-so-findest-du-dein-modell) | 0 |
 | [Parfum-Guide Schweiz: Dufttyp finden & richtig auftragen](/blogs/ratgeber/parfum-guide-schweiz-dufttyp-finden-richtig-auftragen) | 0 |
-| [Hautpflege-Routine 2026: die richtige Reihenfolge Schritt fü](/blogs/ratgeber/hautpflege-routine-2026-die-richtige-reihenfolge-schritt-fur-schritt) | 0 |
 | [Handtasche für jeden Anlass: der komplette Taschen-Ratgeber](/blogs/ratgeber/handtasche-fur-jeden-anlass-der-komplette-taschen-ratgeber) | 0 |
 | [Smartwatch kaufen 2026: welche passt zu deinem Alltag?](/blogs/ratgeber/smartwatch-kaufen-2026-welche-passt-zu-deinem-alltag) | 0 |
 | [Kopfhörer-Kaufberatung 2026: In-Ear, Over-Ear oder ANC?](/blogs/ratgeber/kopfhorer-kaufberatung-2026-in-ear-over-ear-oder-anc) | 0 |
