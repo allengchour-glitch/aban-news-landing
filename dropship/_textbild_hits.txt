@@ -18196,3 +18196,4 @@ gid://shopify/Product/16617547497863	15->0	Armbanduhr CHENXI CX-004a – Zifferb
 gid://shopify/Product/16617547956615	50->0	Stilettos mit spitzen Zehen und Querband aus Mesh
 gid://shopify/Product/16617548415367	74->0	Damensandalen mit Spitzspitze, Schnürung, Klappverschluss
 gid://shopify/Product/16617607856519	9->0	Magnetisches 3-in-1-Ladegerät – faltbar
+gid://shopify/Product/15524001448321	13->0	Training Seilspringen Fitness Schwungseil

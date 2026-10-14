@@ -241,3 +241,6 @@ slug:bildreel-eleganter-damenmantel-mit-fellkragen
 pid:15448671027585
 slug:eleganter-damenmantel-mit-fellkragen
 slug:usb-aroma-diffuser-mit-7-led-farben-1b3dcc
+slug:cjreel-cjcf176229001az
+pid:15450835452289
+slug:multifunktionaler-kurbel-schaler-mit-saugfuss
