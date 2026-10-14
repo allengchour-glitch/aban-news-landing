@@ -20,6 +20,9 @@ import csv, io, os, sys, urllib.request
 
 from PIL import Image
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from queue_csv import umbauen  # noqa: E402  gemeinsame Queue-Sperre (14.10.2026)
+
 MIN_V, MAX_V, MIN_BREITE = 0.8, 1.91, 320
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CSV_STD = os.path.join(REPO, "social/posts_image.csv")
@@ -69,14 +72,18 @@ def queue(pfad, scharf):
     for r, grund in raus:
         print(f"  ✗ {r['id'][:60]:60} {grund}")
     if scharf and raus:
-        for r, _ in raus:
-            r["status"] = "format-skip"
-        tmp = pfad + ".tmp"
-        with open(tmp, "w", encoding="utf-8", newline="") as f:
-            w = csv.DictWriter(f, fieldnames=felder, lineterminator="\n")   # wie das Original (sonst 627 Zeilen Diff)
-            w.writeheader()
-            w.writerows(rows)
-        os.replace(tmp, pfad)
+        # 14.10.2026: NICHT die Kopie von vor dem Bilderladen (Minuten) zurückschreiben — Poster/Motoren ändern die Queue
+        # derweil (Lost Update). Unter der gemeinsamen Queue-Sperre frisch lesen, nur eigene Zeilen umsetzen, die noch ready sind.
+        weg = {r["id"] for r, _ in raus}
+
+        def setzen(frisch):
+            k = frisch[0]
+            si, ii = k.index("status"), k.index("id")
+            for z in frisch[1:]:
+                if len(z) > si and z[ii] in weg and z[si].strip() == "ready":
+                    z[si] = "format-skip"
+            return frisch
+        umbauen(pfad, setzen)
     print(f"IG-FORMAT: {len(ready)} ready geprüft · {len(raus)} ausserhalb{' → format-skip' if scharf and raus else ''} · "
           f"{unklar} nicht ladbar · {len(ready) - len(raus) - unklar} postbar{'' if scharf else ' (TROCKEN)'}")
     return 0

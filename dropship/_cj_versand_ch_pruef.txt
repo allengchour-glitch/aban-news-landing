@@ -8603,3 +8603,47 @@ top-ten-wasserdichte-leuchtquarz-herrenuhr-601900	-	-	-	unklar pid 1602002 Produ
 pflanzenbasierter-hautpflege-roll-on-stift-15m-481537	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 schwimmteich-reiniger-032578	2059112135646302209	0	-	KEINE CH-Option → DRAFT	landeseite
 keramik-badset-616600	2605250751341618500	16	24.20	ok	landeseite
+anti-rutsch-cover-615700	2605220238411616300	16	15.44	ok	landeseite
+badezimmer-mat-606800	2605210736311607300	16	8.53	ok	landeseite
+automatischer-katzenspielball-628300	2412140237331628500	7	5.78	ok	landeseite
+doppelfutternapf-950209	2075273702450499585	0	-	KEINE CH-Option → DRAFT	landeseite
+heizbare-tierfutterschale-637600	2606030233011638200	7	14.22	ok	landeseite
+zweck-schalen-fur-hund-katze-175170	2052593798997004290	0	-	KEINE CH-Option → DRAFT	landeseite
+doppel-schale-635713	2052594069781270529	0	-	KEINE CH-Option → DRAFT	landeseite
+doppel-schale-aus-edelstahl-073794	2052592658206068737	0	-	KEINE CH-Option → DRAFT	landeseite
+faltbares-edelstahl-futtergeschirr-606700	2605070307301607200	16	11.23	ok	landeseite
+vogeltranke-und-futterstation-899906	2049417335293923329	0	-	KEINE CH-Option → DRAFT	landeseite
+erhohtes-futtergeschirr-608100	2604270526551608600	16	11.37	ok	landeseite
+keramikfutternapf-604100	2604270327091604600	16	11.03	ok	landeseite
+hundepuzzle-futter-spiel-605700	2604250054261606200	16	11.96	ok	landeseite
+edelstahl-napfchen-910657	2047934422887796737	16	6.84	ok	landeseite
+langsames-futterteller-621100	2604220233081621800	16	9.84	ok	landeseite
+gelenkol-fur-hunde-katzen-514433	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+hundepflegeol-mit-zitronenmelisse-969345	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+hundegelenkschutz-492353	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+fischerschirm-454465	2064643110556700673	11	34.61	ok	landeseite
+faltbare-outdoor-stuhle-101313	2064601971697958913	16	27.59	ok	landeseite
+falttisch-428673	2064556382129926147	11	63.82	ok	landeseite
+falttisch-fur-outdoor-757826	2064329062130638849	0	-	KEINE CH-Option → DRAFT	landeseite
+faltbarer-grill-622000	2606070746531622500	0	-	KEINE CH-Option → DRAFT	landeseite
+wetterfestes-zelt-636000	2606060559291636700	16	21.75	ok	landeseite
+holzverbrennungs-ofen-zelt-608100	2606060518431608600	11	48.63	ok	landeseite
+faltzelt-fur-3-4-personen-663170	2063269538737852418	11	40.45	ok	landeseite
+faltbarer-campingstuhl-601700	2606020857551602300	0	-	KEINE CH-Option → DRAFT	landeseite
+einpersonen-schlafpad-638600	2606010527331639200	16	12.81	ok	landeseite
+pollinator-wasserstake-929089	2060610938003312642	0	-	KEINE CH-Option → DRAFT	landeseite
+type-c-wireless-mirroring-adapter-fur-pcs-617300	2512310650491617500	16	6.01	ok	landeseite
+3d-hologramm-fan-639800	2511260331151630100	7	11.62	ok	landeseite
+4k-wireless-controller-mit-android-11-bluetoot-604500	2511010243541604700	7	23.13	ok	landeseite
+nacktes-auge-3d-holografischer-projektor-616300	2509161009121616600	11	43.37	ok	landeseite
+schlaf-und-konzentrationshilfe-fur-babys-613100	2606081007191614000	7	11.30	ok	landeseite
+retro-cd-player-mit-vinyl-look-602800	2606050854181603500	7	13.19	ok	landeseite
+vintage-auto-bluetooth-modell-mit-led-licht-622400	2602231151311622700	7	17.94	ok	landeseite
+ai-ubersetzungshorer-fur-165-sprachen-kabellos-761730	2073313027635699713	0	-	KEINE CH-Option → DRAFT	landeseite
+kabelloser-bluetooth-headset-mit-storschutz-488256	1441281328858402816	7	6.98	ok	landeseite
+vr-brille-fur-smartphone-3d-893184	1385145758742876160	5	11.15	ok	landeseite
+dual-bildschirm-halterung-f100a-teleskop-dreh-306432	1380159240685096960	16	11.23	ok	landeseite
+selfie-stativ-mit-farblicht-bluetooth-060480	1377561294936346624	7	17.96	ok	landeseite
+acacia-snackplatte-handpoliert-433600	1376050683916193792	16	9.88	ok	landeseite
+mini-led-fotolicht-mit-lithium-akku-636096	1371666744174841856	7	6.49	ok	landeseite
+gigabit-faserkabel-kategorie-6-727424	1369955243370090496	16	6.77	ok	landeseite

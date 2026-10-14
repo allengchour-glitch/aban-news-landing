@@ -499,3 +499,4 @@
 2026-10-14T05:23:01.490Z	luxe-epic-elegant.wav	42.5	haustier	cjreel-CJMY175296001AZ	stimme:ja	azure:de-CH-JanNeural
 2026-10-14T05:25:04.217Z	luxe-orchestra.wav	11.25	beauty	cjreel-CJGY176027001AZ	stimme:ja	azure:de-CH-LeniNeural
 2026-10-14T05:30:45.134Z	luxe-epic-hero.wav	7	haustier	cjreel-CJMY178964801AZ	stimme:nein	anteil
+2026-10-14T05:32:55.000Z	luxe-epic-fantasy.wav	26.25	mode	bildreel-retro-jacke-fur-herren-mit-revers-609800	stimme:nein	anteil	quelle:bild

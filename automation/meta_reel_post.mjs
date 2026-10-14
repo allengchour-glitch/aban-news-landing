@@ -14,6 +14,7 @@
 import fs from 'node:fs';
 import { socialPause, pauseSchluessel } from './lib/social_pause.mjs';   // 13.10.: Anlass-Social-Sperre (Halloween-CJ 15.10.–01.11.)
 const _socialPause = pauseSchluessel();
+import { schreiben as queueSchreiben, schnappschuss as queueSchnappschuss } from './lib/queue_csv.mjs';
 import { preisVeraltet, produktMerkenReel, markierungFehlt, lock as postLock, seen as postSeen, mark as postMark, fbSeitenIdentitaet, familieKuerzlich, familieMerken, nachVorrang, montageErst, montagePruefen, montageQuelle, juryPruefen, juryVorrang, igUserTags } from './post_guard.mjs';
 // 22.09.: Adresse vor dem Post pruefen — 14 von 22 «ready»-Reels waren 404 (CDN-Dateien weg). 4xx → archived-deadurl.
 import { execFileSync as _exf, spawnSync } from 'node:child_process';
@@ -102,7 +103,10 @@ const rows = parseCsv(fs.readFileSync(CSV, 'utf8'));
 const head = rows[0];
 const idx = Object.fromEntries(head.map((h, i) => [h.trim(), i]));
 const today = new Date().toISOString().slice(0, 10);
-const writeLedger = () => fs.writeFileSync(CSV, rows.map(r => r.map(esc).join(',')).join('\n') + '\n');
+// 14.10.2026: NIE die ganze Datei aus der Start-Kopie zurückschreiben — der Reel-Motor hängt währenddessen Zeilen an
+// (8 fertige Reels verloren). queue_csv setzt nur die EIGENEN Änderungen in den frischen Stand (Sperre + 3-Wege).
+let _queueBasis = queueSchnappschuss(rows);
+const writeLedger = () => { queueSchreiben(CSV, _queueBasis, rows); _queueBasis = queueSchnappschuss(rows); };
 
 // Stale-Recovery: hängengebliebene 'posting'-Zeilen (>30min ohne Abschluss) NICHT neu posten —
 // sie könnten live sein (Post-vor-Commit-Fenster). Auf 'posting-unklar' setzen für manuelle Prüfung.

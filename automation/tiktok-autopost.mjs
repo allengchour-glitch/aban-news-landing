@@ -21,6 +21,7 @@
  *   MAX_PER_RUN=1
  *   DRY_RUN=1
  */
+import { schreiben as queueSchreiben, schnappschuss as queueSchnappschuss } from './lib/queue_csv.mjs';
 import fs from 'node:fs';
 import { lock as postLock, seen as postSeen, mark as postMark, modelSperre } from './post_guard.mjs';
 import path from 'node:path';
@@ -157,6 +158,10 @@ if(!TOK){ console.log('Kein TT_ACCESS_TOKEN → No-op. Setze TT_ACCESS_TOKEN als
 if(!fs.existsSync(CSV)){ console.log('Kein reels_seed.csv → No-op.'); process.exit(0); }
 
 const rows = parse(fs.readFileSync(CSV,'utf8'));
+// 14.10.2026: nie die ganze Datei aus dieser Start-Kopie zurückschreiben (andere Prozesse hängen an/ändern) —
+// queue_csv setzt nur die EIGENEN Änderungen in den frischen Stand (gemeinsame Sperre + 3-Wege).
+let _queueBasis = queueSchnappschuss(rows);
+const queueWrite = () => { queueSchreiben(CSV, _queueBasis, rows); _queueBasis = queueSchnappschuss(rows); };
 const header = rows[0];
 const idx = Object.fromEntries(COLS.map(c=>[c, header.indexOf(c)]));
 const data = rows.slice(1);
@@ -174,7 +179,7 @@ for(const next of ready.slice(0, MAX)){
   // ⛔ INHALTS-SPERRE: Video schon je gepostet (auch auf IG/FB)? → nie zweimal, kein Cross-Plattform-Doppel.
   if(!DRY && postSeen(videoUrl)){
     console.log(`   ⛔ Video schon gepostet (gemeinsamer Ledger, evtl. IG) → skip: ${videoUrl}`);
-    next[idx.status] = 'posted-dup-skip'; fs.writeFileSync(CSV, serialize(rows)); continue;
+    next[idx.status] = 'posted-dup-skip'; queueWrite(); continue;
   }
   console.log(`→ Reel ${next[idx.id]} | ${videoUrl}`);
   if(DRY){ console.log('   DRY_RUN: würde an TikTok senden.'); postedCount++; continue; }
@@ -187,13 +192,13 @@ for(const next of ready.slice(0, MAX)){
       next[idx.status] = inbox ? 'tiktok-entwurf' : 'posted-tiktok';
       next[idx.posted_at] = new Date().toISOString();
       next[idx.post_url] = inbox ? pubId.slice(6) : `tt:${pubId}`;
-      fs.writeFileSync(CSV, serialize(rows));   // sofort committen (kein Post-vor-Commit-Fenster)
+      queueWrite();   // sofort committen (kein Post-vor-Commit-Fenster)
       postedCount++;
       console.log(inbox ? '   📥 in TikTok-Entwürfe geladen — in der App final posten' : '   ✅ veröffentlicht auf TikTok');
     } else { anyFail = true; }
   }catch(e){ console.error('TT error:', e.message); anyFail = true; }
 }
 
-if(!DRY && postedCount>0) fs.writeFileSync(CSV, serialize(rows));
+if(!DRY && postedCount>0) queueWrite();
 console.log(`Fertig: ${postedCount} TikTok-Post(s)${DRY?' (DRY)':''}.`);
 process.exit(anyFail && postedCount===0 ? 1 : 0);

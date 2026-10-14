@@ -19,6 +19,7 @@
  *
  * Der EINE Schritt für Dauerbetrieb: THREADS_ACCESS_TOKEN (+ IG/FB) als Repo-Secret → Cron postet 2×/Tag.
  */
+import { schreiben as queueSchreiben, schnappschuss as queueSchnappschuss } from './lib/queue_csv.mjs';
 import { mitFolgen, fbText as fbTextLib } from './lib/fb_text.mjs';   // 07.10.: FB ohne https-Link (Reichweite)
 import fs from 'node:fs';
 import { socialPause, pauseSchluessel } from './lib/social_pause.mjs';   // 13.10.: Anlass-Social-Sperre (Halloween-CJ 15.10.–01.11.)
@@ -210,6 +211,10 @@ if(configured.length===0 && !DRY){
 if(!fs.existsSync(CSV)){ console.log('Keine social/posts_image.csv vorhanden → nichts zu tun.'); process.exit(0); }
 
 const rows = parse(fs.readFileSync(CSV,'utf8'));
+// 14.10.2026: nie die ganze Datei aus dieser Start-Kopie zurückschreiben (andere Prozesse hängen an/ändern) —
+// queue_csv setzt nur die EIGENEN Änderungen in den frischen Stand (gemeinsame Sperre + 3-Wege).
+let _queueBasis = queueSchnappschuss(rows);
+const queueWrite = () => { queueSchreiben(CSV, _queueBasis, rows); _queueBasis = queueSchnappschuss(rows); };
 const header = rows[0];
 const idx = Object.fromEntries(COLS.map(c=>[c, header.indexOf(c)]));
 const data = rows.slice(1);
@@ -307,12 +312,12 @@ for(const next of ready.slice(0, MAX + VERSUCHE)){
   const caption = next[idx.caption] || '';
   if(!DRY && postSeen(imageUrl)){           // ⛔ Bild schon je gepostet → nie zweimal
     console.log(`   ⛔ Bild schon gepostet (gemeinsamer Ledger) → skip: ${imageUrl}`);
-    next[idx.status] = 'posted-dup-skip'; fs.writeFileSync(CSV, serialize(rows)); continue;
+    next[idx.status] = 'posted-dup-skip'; queueWrite(); continue;
   }
   const sig = capSig(caption);
   if(!DRY && sig && postedCaps.has(sig)){    // ⛔ gleiches Produkt/Caption schon gepostet (andere Bild-URL)
     console.log(`   ⛔ Caption schon gepostet (Inhalts-Sperre) → skip: ${sig}`);
-    next[idx.status] = 'posted-dup-caption'; fs.writeFileSync(CSV, serialize(rows)); continue;
+    next[idx.status] = 'posted-dup-caption'; queueWrite(); continue;
   }
   // ⛔ SIEBTE SCHICHT: dieselbe WARE, anderer Text (Betreiber-Screenshot 03.09.2026 — der
   // «Silber-Armreif Serpent» stand zweimal nebeneinander im Raster). Er steht dreimal in
@@ -320,7 +325,7 @@ for(const next of ready.slice(0, MAX + VERSUCHE)){
   // Live-Sperre sagen alle zu Recht «kenne ich nicht». Keine fragte nach dem PRODUKT.
   if(!DRY && produktGepostet(caption, next[idx.id])){
     console.log(`   ⛔ Produkt schon gepostet (Produkt-Sperre) → skip: ${produktKey(caption, next[idx.id])}`);
-    next[idx.status] = 'posted-dup-produkt'; fs.writeFileSync(CSV, serialize(rows)); continue;
+    next[idx.status] = 'posted-dup-produkt'; queueWrite(); continue;
   }
   // ⛔ NEUNTE SCHICHT (23.09.2026, «pinke steine 2mal?»): dieselbe Warengruppe innerhalb FAMILIEN_STUNDEN auf
   // irgendeinem Kanal → Zeile bleibt ready und wartet, die naechste Zeile kommt dran.
@@ -328,11 +333,11 @@ for(const next of ready.slice(0, MAX + VERSUCHE)){
   if(fk){ console.log(`   ⏸️ Warengruppe «${fk.familie}» vor ${fk.vorStunden} h gepostet → bleibt ready: ${next[idx.id]}`); continue; }
   if(!DRY && await igLiveHas(caption)){      // ⛔ auf IG bereits live (Wahrheit schlägt Ledger)
     console.log(`   ⛔ Auf IG bereits live (Live-Abgleich) → skip: ${sig}`);
-    next[idx.status] = 'posted-dup-live'; postMark(imageUrl); fs.writeFileSync(CSV, serialize(rows)); continue;
+    next[idx.status] = 'posted-dup-live'; postMark(imageUrl); queueWrite(); continue;
   }
   if(!isJpg(imageUrl)){
     console.error(`⏭️  Übersprungen (keine JPG-URL, Meta-Pflicht): ${imageUrl}`);
-    next[idx.status] = 'skipped-nonjpg'; if(!DRY) fs.writeFileSync(CSV, serialize(rows)); continue;   // gespeichert, sonst blockiert die Zeile jeden Lauf
+    next[idx.status] = 'skipped-nonjpg'; if(!DRY) queueWrite(); continue;   // gespeichert, sonst blockiert die Zeile jeden Lauf
   }
   // ⛔ ZWÖLFTE SCHICHT (12.10.2026): Instagram-Feed-Format. «Media container not created by unknown cause» bei einem
   // 209×666-Bild — keine Schicht prüfte das Seitenverhältnis, und Bild-Posts gehen seit 09.10. nur auf Instagram.
@@ -348,7 +353,7 @@ for(const next of ready.slice(0, MAX + VERSUCHE)){
       } catch (e) { rc = (e && typeof e.status === 'number') ? e.status : 2; grund = String((e && e.stdout) || '').trim(); }
       if (rc === 3) {
         console.log(`   ⛔ Instagram-Format: ${grund} → format-skip: ${next[idx.id]}`);
-        if(!DRY){ next[idx.status] = 'format-skip'; fs.writeFileSync(CSV, serialize(rows)); }
+        if(!DRY){ next[idx.status] = 'format-skip'; queueWrite(); }
         continue;
       }
       if (rc !== 0) { console.log(`   ⚠️ Bildformat nicht messbar → Zeile bleibt ready: ${next[idx.id]}`); continue; }
@@ -363,7 +368,7 @@ for(const next of ready.slice(0, MAX + VERSUCHE)){
   const pa = await produktAktiv(next[idx.id]);
   if(pa.ok === false){
     console.log(`   ⛔ Produkt nicht kaufbar (${pa.grund}) → produkt-nicht-aktiv: ${next[idx.id]}`);
-    if(!DRY){ next[idx.status] = 'produkt-nicht-aktiv'; fs.writeFileSync(CSV, serialize(rows)); }
+    if(!DRY){ next[idx.status] = 'produkt-nicht-aktiv'; queueWrite(); }
     continue;
   }
   if(pa.ok === null){ console.log(`   ⚠️ Produkt nicht pruefbar (${pa.grund}) → Zeile bleibt ready, naechster Lauf`); continue; }
@@ -382,7 +387,7 @@ for(const next of ready.slice(0, MAX + VERSUCHE)){
     if (Number.isNaN(n) || n < 0) { console.log(`   ⚠️ Bildtext nicht lesbar → Zeile bleibt ready: ${next[idx.id]}`); continue; }
     if (n >= 4) {
       console.log(`   ⛔ ${n} Wörter Lieferantentext im Bild → text-im-bild-skip: ${next[idx.id]}`);
-      if(!DRY){ next[idx.status] = 'text-im-bild-skip'; fs.writeFileSync(CSV, serialize(rows)); }
+      if(!DRY){ next[idx.status] = 'text-im-bild-skip'; queueWrite(); }
       continue;
     }
   }
@@ -393,7 +398,7 @@ for(const next of ready.slice(0, MAX + VERSUCHE)){
     const j = juryPruefen(imageUrl, caption, 'bild');
     if (j.status === 4) {
       console.log(`   ⛔ Gemini-Jury: ${j.info} → jury-skip: ${next[idx.id]}`);
-      if(!DRY){ next[idx.status] = 'jury-skip'; fs.writeFileSync(CSV, serialize(rows)); }
+      if(!DRY){ next[idx.status] = 'jury-skip'; queueWrite(); }
       continue;
     }
     if (j.status !== 0) { console.log(`   ⚠️ Gemini-Jury ohne Urteil (${j.info}) → Zeile bleibt ready: ${next[idx.id]}`); continue; }
@@ -428,7 +433,7 @@ for(const next of ready.slice(0, MAX + VERSUCHE)){
     const n = (parseInt((/^ig-fehler:(\d+)/.exec(next[idx.post_url] || '') || [])[1] || '0', 10)) + 1;
     next[idx.post_url] = `ig-fehler:${n}`;
     if (n >= 3) next[idx.status] = 'ig-fehler';
-    fs.writeFileSync(CSV, serialize(rows));
+    queueWrite();
     anyFail = true;
     console.error(`   ❌ Instagram zweimal gescheitert (Versuch ${n}) — FB NICHT gepostet, Zeile bleibt ${next[idx.status]}.`);
     continue;
@@ -446,7 +451,7 @@ for(const next of ready.slice(0, MAX + VERSUCHE)){
     next[idx.status] = 'posted';
     next[idx.posted_at] = new Date().toISOString();
     next[idx.post_url] = got[0];
-    fs.writeFileSync(CSV, serialize(rows));                     // sofort committen (kein Post-vor-Commit-Fenster)
+    queueWrite();                     // sofort committen (kein Post-vor-Commit-Fenster)
     postedCount++;
     console.log(`   ✅ veröffentlicht auf ${results.map((x,i)=>x&&x!==false?['IG','FB','Threads'][i]:null).filter(Boolean).join('+')}`);
   } else {
@@ -455,7 +460,7 @@ for(const next of ready.slice(0, MAX + VERSUCHE)){
   }
 }
 
-if(!DRY && postedCount>0) fs.writeFileSync(CSV, serialize(rows));
+if(!DRY && postedCount>0) queueWrite();
 console.log(`Fertig: ${postedCount} gepostet${DRY?' (DRY)':''}.`);
 // 28.09.2026: 0 gepostet ohne Fehler = «uebersprungen» (Exit 3, Vertrag wie meta_reel_post/metricool_tiktok_post) —
 // der Autopilot setzt dann seine Marke NICHT und versucht es im naechsten Lauf wieder.
