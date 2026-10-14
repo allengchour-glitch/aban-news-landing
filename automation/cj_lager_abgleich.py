@@ -126,7 +126,7 @@ def zuordnung_lesen(pfad=None):
                 continue
             t = l.rstrip("\n").split("\t")
             if len(t) >= 2 and t[0].strip() and t[1].strip():
-                z[t[0].strip().upper()] = t[1].strip()
+                z.setdefault(t[0].strip().upper(), t[1].strip())   # erste Zeile gewinnt — wie cj_order_engine.vid_fuer()
     except Exception:
         pass
     return z
@@ -145,7 +145,7 @@ def entscheiden_pid(shop_varianten, cj_varianten, eigene_deny, zuordnung):
     if len(shop_varianten) != 1 or not cj:
         return [], [], len(shop_varianten), "mehrere-shopvarianten" if len(shop_varianten) != 1 else "keine-cj-variante"
     v = shop_varianten[0]
-    vid = zuordnung.get(str(v.get("sku") or "").upper())
+    vid = None if len(cj) == 1 else zuordnung.get(str(v.get("sku") or "").upper())   # Engine: «1 Variante» vor der Datei
     treffer = [k for k in cj if vid and str(k.get("vid") or "").upper() == vid.upper()]
     if vid and len(treffer) != 1:
         return [], [], 1, "zuordnung-passt-nicht"
@@ -292,6 +292,7 @@ def zusatz_abfrage(frage):
     import subprocess
     if not frage.startswith(("productSku=", "pid=")):
         frage = "productSku=" + frage
+    drossel = 0
     while True:
         with _KLOCK:
             frei = [k for k in _konten() if k["aktiv"]]
@@ -310,12 +311,17 @@ def zusatz_abfrage(frage):
         except Exception:
             return None, "netz"
         msg = str(d.get("message") or "")
-        if str(d.get("code")) in ("1600200", "1600201") or "Too Many" in msg:
-            time.sleep(1.5); continue
-        if "quota" in msg.lower() or "Insufficient" in msg or "disabled" in msg or str(d.get("code")) in ("1600014", "16900500"):
+        # 14.10.2026: «Quota has been used up» (1600201) lief hier als Drossel in eine Endlosschleife → Kontingent ZUERST.
+        if "quota" in msg.lower() or "used up" in msg.lower() or "Insufficient" in msg or "disabled" in msg \
+                or str(d.get("code")) in ("1600014", "16900500"):
             with _KLOCK:
                 k["aktiv"] = False
             print(f"  Zusatzkonto {k['n']} erschöpft/gesperrt: {msg[:80]}", flush=True); continue
+        if str(d.get("code")) in ("1600200", "1600201") or "Too Many" in msg:
+            drossel += 1
+            if drossel > 20:
+                return None, "netz"
+            time.sleep(1.5); continue
         return (d.get("data") if isinstance(d.get("data"), dict) else {}), f"konto{k['n']} code {d.get('code')} {msg[:30]}"
 
 
@@ -343,6 +349,69 @@ def entwuerfe_mit_eigener_sperre(gql, P, pfad=None):
                                 "v": [{"id": v["id"], "sku": v.get("sku"), "availableForSale": v.get("availableForSale")}
                                       for v in n["variants"]["nodes"]]}
     return aus
+
+
+def ledger_zeile(zeile, pfad=None):
+    """14.10.2026: Datei JE ZEILE öffnen. Ein offener Griff schrieb nach einem git-Merge (Autocommitter, Server-Zeilen) in die
+    ersetzte, gelöschte Datei — «geplant»/«ok» waren dann weg und eine Sperre ohne Eintrag (nie wieder freigegeben)."""
+    if DRY:
+        return
+    with open(pfad or LEDGER, "a", encoding="utf-8") as f:
+        f.write(zeile if zeile.endswith("\n") else zeile + "\n")
+
+
+PID_ZAEHLER = "/tmp/cj_lager_pid_tag.json"
+import threading as _thz
+_ZLOCK = _thz.Lock()
+
+
+def pid_zaehlen(n=1, pfad=None):
+    """Echte pid-Abfragen je UTC-Tag (jede Abfrage kostet, auch ohne Ledger-Zeile: Kanarie, Bremse, Abbruch) → Stand."""
+    pfad = pfad or PID_ZAEHLER
+    tag = time.strftime("%Y-%m-%d", time.gmtime())
+    with _ZLOCK:
+        try:
+            d = json.load(open(pfad))
+        except Exception:
+            d = {}
+        d = {tag: int(d.get(tag, 0)) + n}
+        if n:
+            try:
+                tmp = pfad + ".tmp"
+                json.dump(d, open(tmp, "w")); os.replace(tmp, pfad)
+            except Exception:
+                pass
+        return d[tag]
+
+
+def verwaiste_plaene(pfad=None):
+    """→ {Produkt-gid: [Varianten-IDs]}, deren LETZTE Ledger-Zeile ein «geplant deny:…» ist (Lauf starb zwischen Plan und
+    Ergebnis). Der Aufrufer liest den Stand und nimmt nie gesetzte Sperren mit «geplant zurueck:…» wieder aus «eigene»."""
+    letzte = {}
+    try:
+        for l in open(pfad or LEDGER, encoding="utf-8"):
+            t = l.rstrip("\n").split("\t")
+            if len(t) >= 3:
+                letzte[t[0]] = t
+    except Exception:
+        return {}
+    aus = {}
+    for pid, t in letzte.items():
+        if t[2] == "geplant":
+            ids = [x for teil in t[3:] if teil.startswith("deny:") for x in teil[5:].split(",") if x]
+            if ids:
+                aus[pid] = ids
+    return aus
+
+
+def nie_gesperrt(gql, ids):
+    """Varianten, die NOCH kaufbar sind (die geplante Sperre wurde nie gesetzt) → Liste. Unlesbar → [] (lieber eigen behalten)."""
+    try:
+        import ausverkauft
+        stand = ausverkauft._lesen(gql, list(ids))
+        return [i for i in ids if (stand.get(i) or {}).get("availableForSale") is True]
+    except Exception:
+        return []
 
 
 def pid_des_produkts(p):
@@ -375,7 +444,7 @@ def main():
         return 0 if (pid in PIDS and status.get(pid) == "keine-cj-sku") else zuletzt.get(pid, 0)
 
     def abstand(pid):
-        if status.get(pid) in ("fehler", "netz"):
+        if status.get(pid) in ("fehler", "netz", "fehler-cj"):
             return 86400                                   # gescheitert → morgen wieder, nicht in 1–6 Wochen
         if P[pid].get("entwurf") or P[pid].get("handle") in prio:
             return BESUCHT_S
@@ -385,6 +454,7 @@ def main():
 
     faellig = [pid for pid, p in P.items() if p.get("v") and jetzt - zeit(pid) > abstand(pid)]
     a = sorted((x for x in faellig if x not in PIDS), key=lambda x: (P[x].get("handle") not in prio, zeit(x)))[:CAP]
+    pid_heute = max(pid_heute, pid_zaehlen(0))      # Ledger-Zeilen ODER echte Abfragen (Zähler), was grösser ist
     pid_rest = max(0, PID_TAG - pid_heute)
     b = sorted((x for x in faellig if x in PIDS and (PID_AN or x in eigene_prod)),
                key=lambda x: (x not in eigene_prod, P[x].get("handle") not in prio, zeit(x)))[:min(CAP_PID, pid_rest)]
@@ -393,7 +463,13 @@ def main():
           f"Entwürfe mit eigener Sperre) · fällig {len(faellig)} · Lauf {len(a)} SKU (CAP {CAP}) + {len(b)} pid (CAP_PID {CAP_PID}, "
           f"heute {pid_heute}/{PID_TAG}) · pid-Ware {len(PIDS)} · eigene DENY {len(eigene)} · {'DRY' if DRY else 'SCHARF'}", flush=True)
     stat = collections.Counter(); bsp = []; geprueft_format = False; pid_format = None
-    led = open(LEDGER if not DRY else os.devnull, "a", encoding="utf-8")   # DRY schreibt keinen Ledger (sonst gilt «geprüft»)
+    stopp = {"pid": False}                       # Kanarie/Bremse/Kontingent → keine weiteren pid-Abfragen in diesem Lauf
+    if not DRY:                                  # verwaiste «geplant»-Zeilen: nie gesetzte Sperren aus «eigene» nehmen
+        for gid, ids in verwaiste_plaene().items():
+            frei = nie_gesperrt(w.gql, ids)
+            if frei:
+                ledger_zeile(f"{gid}\t{jetzt:.0f}\tgeplant\tzurueck:{','.join(frei)}\tplan-verworfen")
+                eigene -= set(frei); stat["plan-verworfen"] += len(frei)
     # 06.10. 21:25: CJ-MCP nur auf Wunsch (USE_MCP=1) — gemessen: gleicher Punktetopf + gleiche Konto-QPS 1/s wie REST,
     # aber OHNE den gemeinsamen cj_takt → würde mit den Grind-Runnern um die QPS kollidieren («Too Many Requests»).
     mcp = None
@@ -404,9 +480,15 @@ def main():
         except Exception as e:
             print(f"  MCP nicht verfügbar ({str(e)[:80]}) → REST", flush=True)
 
+    def p_entwurf(pid):
+        return bool(P[pid].get("entwurf"))
+
     def holen(pid):
         shop_v = [{"id": v["id"], "sku": v.get("sku"), "kaufbar": v.get("availableForSale")} for v in P[pid]["v"]]
         if pid in PIDS:                              # pid-Ware: NUR Zusatzkonten, nie der Grind-Topf des Hauptkontos
+            if stopp["pid"] or (not p_entwurf(pid) and pid_zaehlen(0) >= PID_TAG):
+                return pid, shop_v, None, "PID-STOPP"
+            pid_zaehlen(1)
             data, grund = zusatz_abfrage("pid=" + PIDS[pid])
             if grund == "kein-konto":
                 return pid, shop_v, None, "PID-WARTET"
@@ -439,11 +521,17 @@ def main():
         """Erst die Zeile «geplant» (IDs), dann schreiben + rücklesen. Stirbt der Lauf dazwischen, kennt der nächste die Sperre."""
         import ausverkauft
         if deny:
-            led.write(f"{pid}\t{jetzt:.0f}\tgeplant\tdeny:{','.join(deny)}{q}\n"); led.flush()
-        ist = ausverkauft.sperren(w.gql, pid, deny)
-        ist2 = ausverkauft.freigeben(w.gql, pid, zurueck)
-        if any(ist.get(i) is not False for i in deny) or any(ist2.get(i) is not True for i in zurueck):
-            raise RuntimeError(f"Rücklesen: gesperrt {ist} / frei {ist2}")
+            ledger_zeile(f"{pid}\t{jetzt:.0f}\tgeplant\tdeny:{','.join(deny)}{q}")
+        try:
+            ist = ausverkauft.sperren(w.gql, pid, deny)
+            ist2 = ausverkauft.freigeben(w.gql, pid, zurueck)
+            if any(ist.get(i) is not False for i in deny) or any(ist2.get(i) is not True for i in zurueck):
+                raise RuntimeError(f"Rücklesen: gesperrt {ist} / frei {ist2}")
+        except Exception:
+            frei = nie_gesperrt(w.gql, deny) if deny else []
+            if frei:                              # geplant, aber nie gesetzt → nicht «eigen» (sonst gäbe sie später fremde Sperren frei)
+                ledger_zeile(f"{pid}\t{jetzt:.0f}\tgeplant\tzurueck:{','.join(frei)}\tplan-verworfen{q}")
+            raise
 
     MAX_PID_SPERREN = int(os.environ.get("MAX_PID_SPERREN", "60"))   # Bremse je Lauf (Ausgangswert SKU-Ware 0,4 %/Tag)
     from concurrent.futures import ThreadPoolExecutor
@@ -455,36 +543,43 @@ def main():
         if grund == "PUNKTE-LEER":
             stat["punkte-leer"] += 1; print("  CJ-Punkte leer — sauberer Abbruch", flush=True); break
         if grund == "PID-WARTET":
+            stopp["pid"] = True
             stat["pid-wartet-zusatzkonten-leer"] += 1; continue             # keine Zeile → nächster Lauf/Tag
+        if grund == "PID-STOPP":
+            stat["pid-gestoppt"] += 1; continue
         if data is None:
             g = "keine-cj-sku" if grund == "keine-cj-sku" else ("netz" if grund == "netz" else "unklar")
             stat[g] += 1
-            led.write(f"{pid}\t{jetzt:.0f}\t{g}\t{grund or ''}{q}\n"); continue
+            ledger_zeile(f"{pid}\t{jetzt:.0f}\t{g}\t{grund or ''}{q}"); continue
         vs = data.get("variants") if isinstance(data, dict) else None
         if not vs and cj_entfernt(grund):
-            deny = [] if p.get("entwurf") else [v["id"] for v in shop_v if v.get("kaufbar")]
+            deny = [v["id"] for v in shop_v if v.get("kaufbar")]
             stat["produkte-cj-entfernt"] += 1
             if deny and not DRY:
                 try:
                     sperren_mit_plan(pid, deny, [], q)
                 except Exception as e:
                     stat["schreibfehler"] += 1
-                    led.write(f"{pid}\t{jetzt:.0f}\tfehler\t{str(e)[:80]}{q}\n"); led.flush(); continue
+                    ledger_zeile(f"{pid}\t{jetzt:.0f}\tfehler\t{str(e)[:80]}{q}"); continue
             stat["varianten-ausverkauft"] += len(deny)
             if len(bsp) < 12:
                 bsp.append(f"{p.get('title', '')[:50]} — bei CJ aus dem Sortiment: {len(deny)} gesperrt")
-            led.write(f"{pid}\t{jetzt:.0f}\t{'dry' if DRY else 'ok'}\tdeny:{','.join(deny) if not DRY else ''}\tzurueck:\tcj-entfernt{q}\n"); led.flush()
+            ledger_zeile(f"{pid}\t{jetzt:.0f}\tok\tdeny:{','.join(deny)}\tzurueck:\tcj-entfernt{q}")
             continue
         if not vs:
-            stat["unklar"] += 1; led.write(f"{pid}\t{jetzt:.0f}\tunklar\t{grund or 'keine Varianten'}{q}\n"); continue
+            # 14.10.: CJ-Fehlercode ≠ 200/1602001 (z. B. 1600000 «System busy», Kontofehler) = vorübergehend → morgen wieder
+            vorueber = bool(grund) and "code 200" not in grund and "1602001" not in grund
+            stat["fehler-cj" if vorueber else "unklar"] += 1
+            ledger_zeile(f"{pid}\t{jetzt:.0f}\t{'fehler-cj' if vorueber else 'unklar'}\t{grund or 'keine Varianten'}{q}"); continue
         if ist_pid:
             if not antwort_passt(PIDS[pid], data):
                 stat["pid-antwort-fremd"] += 1
-                led.write(f"{pid}\t{jetzt:.0f}\tunklar\tpid-abweichung {str(data.get('pid'))[:40]}{q}\n"); continue
+                ledger_zeile(f"{pid}\t{jetzt:.0f}\tunklar\tpid-abweichung {str(data.get('pid'))[:40]}{q}"); continue
             if pid_format is None:                     # Kanarie pid: Format einmal je Lauf
                 pid_format = any(bestand(v) is not None for v in vs) or all(
                     isinstance(v.get("inventories"), list) and all("totalInventory" in x for x in v["inventories"]) for v in vs)
                 if not pid_format:
+                    stopp["pid"] = True
                     print(f"  ⛔ KANARIE pid: inventories/totalInventory fehlt ({p.get('title', '')[:40]}) — kein pid-Urteil in diesem Lauf", flush=True)
             if not pid_format:
                 stat["pid-format-fehlt"] += 1; continue                      # keine Zeile → nächster Lauf
@@ -496,13 +591,14 @@ def main():
         if ist_pid:
             deny, zurueck, unklar, art = entscheiden_pid(shop_v, vs, eigene, zuordnung)
             stat["pid-" + art] += 1
-            if deny and stat["pid-gesperrt"] >= MAX_PID_SPERREN:
+            if deny and not p.get("entwurf") and stat["pid-gesperrt"] >= MAX_PID_SPERREN:
+                stopp["pid"] = True
                 stat["pid-sperr-bremse"] += 1; continue                      # keine Zeile → nächster Lauf
-            stat["pid-gesperrt"] += bool(deny)
+            stat["pid-gesperrt"] += bool(deny) and not p.get("entwurf")
         else:
             deny, zurueck, unklar = entscheiden(shop_v, vs, eigene)
-        if p.get("entwurf"):
-            deny = []                                  # Entwürfe nie sperren, nur eigene Sperren freigeben
+        # 14.10. (Prüfung): Entwürfe werden wieder GESPERRT, wenn CJ 0 meldet — sonst holte lagerstand_hygiene ein
+        # ausverkauftes Produkt zurück, sobald es einmal freigegeben war (ein Entwurf ist unsichtbar, die Sperre kostet nichts).
         stat["geprüft"] += 1; stat["varianten-unklar"] += unklar
         if deny or zurueck:
             if len(bsp) < 12:
@@ -513,16 +609,14 @@ def main():
                     sperren_mit_plan(pid, deny, zurueck, q)
                 except Exception as e:
                     stat["schreibfehler"] += 1
-                    led.write(f"{pid}\t{jetzt:.0f}\tfehler\t{str(e)[:80]}{q}\n"); led.flush(); continue
+                    ledger_zeile(f"{pid}\t{jetzt:.0f}\tfehler\t{str(e)[:80]}{q}"); continue
             stat["varianten-ausverkauft"] += len(deny); stat["varianten-wieder-da"] += len(zurueck)
             stat["produkte-ganz-ausverkauft"] += int(len(deny) == len(shop_v))
             stat["entwürfe-freigegeben"] += int(bool(p.get("entwurf") and zurueck))
-        led.write(f"{pid}\t{jetzt:.0f}\t{'dry' if DRY else 'ok'}\tdeny:{','.join(deny) if not DRY else ''}\tzurueck:{','.join(zurueck) if not DRY else ''}{q}\n")
-        led.flush()
+        ledger_zeile(f"{pid}\t{jetzt:.0f}\tok\tdeny:{','.join(deny)}\tzurueck:{','.join(zurueck)}{q}")
         if stat["geprüft"] % 500 == 0:
             print(f"  … {stat['geprüft']} geprüft · ausverkauft {stat['varianten-ausverkauft']} · wieder da {stat['varianten-wieder-da']}", flush=True)
     pool.shutdown(wait=False, cancel_futures=True)
-    led.close()
     with open(BERICHT if not DRY else "/tmp/cj_lager_dry.md", "w", encoding="utf-8") as f:
         f.write(f"# CJ-Lagerabgleich ({datetime.datetime.utcnow():%Y-%m-%d %H:%M} UTC, {'DRY' if DRY else 'SCHARF'})\n\n"
                 "Werkzeug `automation/cj_lager_abgleich.py` — Regel im Kopf. Bestand 0 → Variante «ausverkauft» (DENY), "
@@ -613,6 +707,38 @@ def selbsttest():
         ("b1" not in eg, "zurueck hebt eigene Sperre auf"),
         (ph == 3, "pid-Abfragen heute (ohne geplant, ohne gestern)"),
         (st.get("gid://x/3") == "keine-cj-sku", "Status keine-cj-sku gelesen"),
+    ]
+    # ── 14.10.2026 (Prüfung wf_77b3cddc): Plan verworfen, verwaiste Pläne, Zuordnung wie Engine, Zähler, Datei je Zeile ──
+    tl2 = tempfile.NamedTemporaryFile("w", delete=False, suffix=".tsv")
+    tl2.write(f"gid://y/1\t{heute + 1}\tgeplant\tdeny:c1\tq:pid\n"            # Lauf starb nach dem Plan
+              f"gid://y/2\t{heute + 2}\tgeplant\tdeny:d1\n"
+              f"gid://y/2\t{heute + 3}\tok\tdeny:d1\tzurueck:\n"               # Plan + Ergebnis = nicht verwaist
+              f"gid://y/3\t{heute + 4}\tgeplant\tdeny:e1\n"
+              f"gid://y/3\t{heute + 5}\tgeplant\tzurueck:e1\tplan-verworfen\n") # nie gesetzt → wieder raus
+    tl2.close()
+    vp = verwaiste_plaene(tl2.name)
+    zl2, eg2, st2, _ = ledger(tl2.name, heute)
+    tz = tempfile.NamedTemporaryFile("w", delete=False, suffix=".tsv")
+    tz.write("# kopf\nCJ-1\tVA\tx\tbeleg\nCJ-1\tVB\tx\tbeleg\n"); tz.close()
+    zu2 = zuordnung_lesen(tz.name)
+    zp = tempfile.mktemp(suffix=".json")
+    z1 = pid_zaehlen(1, zp); z2 = pid_zaehlen(2, zp); z3 = pid_zaehlen(0, zp)
+    lz = tempfile.mktemp(suffix=".tsv")
+    if not DRY:
+        ledger_zeile("a\t1\tok", lz); ledger_zeile("b\t2\tok\n", lz)
+    for f_ in (tl2.name, tz.name, zp, lz):
+        try:
+            os.unlink(f_)
+        except OSError:
+            pass
+    t += [
+        (vp == {"gid://y/1": ["c1"], "gid://y/3": ["e1"]} or vp == {"gid://y/1": ["c1"]}, "verwaister Plan erkannt (nur ohne Ergebnis)"),
+        ("gid://y/2" not in vp, "Plan + Ergebnis ist nicht verwaist"),
+        ("e1" not in eg2 and "c1" in eg2, "plan-verworfen nimmt die nie gesetzte Sperre aus «eigene»"),
+        ("gid://y/3" not in st2, "geplant/plan-verworfen ist keine Prüfung"),
+        (zu2 == {"CJ-1": "VA"}, "Zuordnung: erste Zeile gewinnt (wie Engine)"),
+        (entscheiden_pid(sv1, ein5, set(), {"CJ-2606160740461633600": "VX"})[3] == "einzeln", "1 CJ-Variante schlägt die Zuordnung (wie Engine)"),
+        ((z1, z2, z3) == (1, 3, 3), "pid-Zähler je Tag"),
     ]
     ok = sum(b for b, _ in t)
     for b, n in t:
