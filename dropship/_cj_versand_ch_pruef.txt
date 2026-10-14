@@ -9210,3 +9210,9 @@ liebesring-606600	2606180935531607200	16	4.37	ok	landeseite
 perlenring-schmetterling-610200	2606180358361610900	16	4.50	ok	landeseite
 outdoor-schmuck-603800	2606180139541604400	16	4.50	ok	landeseite
 camellien-stein-offenring-608400	2606171157441609000	16	4.50	ok	landeseite
+mode-schmetterling-offener-ring-628500	2606171049241629200	16	4.50	ok	landeseite
+diamond-ring-set-fur-damen-613400	2606170939281614000	16	4.47	ok	landeseite
+personalisierter-edelstahlring-625100	2606170703181625900	16	4.57	ok	landeseite
+perlenkette-155008	1658005089107320832	16	5.12	ok	landeseite
+naturliche-su-wasserperlen-perlenkette-040384	1658003507963760640	16	5.08	ok	landeseite
+naturliche-diamantformige-su-wasserperlen-647104	1658002219196755968	16	5.27	ok	landeseite
