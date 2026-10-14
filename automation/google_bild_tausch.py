@@ -28,6 +28,14 @@ mit Sperre, siehe bildtausch_sperre.py). Neu:
   --rueckweg h1 h2 …      die ALTE erste Media-ID (Spalte 4) wieder nach vorne, Ledger-Art «rueckweg» (gibt die Sperre frei)
   Produkte ohne Google-Publikation werden übersprungen (kein Vision-Kontingent für Ware, die Google nicht sieht).
   dropship/_google_bild_tausch_ids.tsv (handle → Produkt-ID) pflegt dieser Lauf für die Sperre der anderen Umsortierer.
+
+14.10.2026 TOR «Variantenbild»: Google nimmt je Variante ihr VARIANTENBILD als image_link; productReorderMedia ändert nur die
+Reihenfolge der Produktbilder, die Variante behält ihr Bild. GEMESSEN 14.10. (Bilanz nach Variantenbild getrennt): getauscht
+OHNE Variantenbild 317/352 frei (90 %), MIT 119/182 (65 %) = Niveau der Unberührten (63–66 %). Trägt eine Variante ein eigenes
+Bild, wird nicht umsortiert, sondern Ledger-Art «variantenbild» geschrieben und übersprungen (vor dem Vision-Aufruf). Für
+«Promotional overlay on image» übernimmt automation/google_variantenbild_overlay.py. Die Art sperrt nichts
+(bildtausch_sperre.GETAUSCHT unverändert) und zählt nicht in der Bilanz.
+  python3 automation/google_bild_tausch.py --selbsttest     Tor + Waffenzubehör-Regel mit Wegwerf-Daten (kein Netz)
 """
 import base64, io, json, os, re, subprocess, sys, time, urllib.error, urllib.request
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -134,6 +142,31 @@ def chatgpt(bilder, text):
     return zweitmodell.chat_json(text, bilder)
 
 
+def variantenbilder(pid):
+    """Media-ID des Bildes jeder Variante (blätternd; None = Variante ohne eigenes Bild)."""
+    out, c = [], None
+    while True:
+        d = hw.gql('query($id:ID!,$c:String){product(id:$id){variants(first:100,after:$c){pageInfo{hasNextPage endCursor} '
+                   'nodes{media(first:1){nodes{id}}}}}}', {"id": pid, "c": c})
+        v = ((d.get("data") or {}).get("product") or {}).get("variants")
+        if v is None:
+            raise RuntimeError(f"Varianten von {pid} nicht lesbar: {str(d.get('errors'))[:150]}")
+        out += [((n.get("media") or {}).get("nodes") or [{}])[0].get("id") if (n.get("media") or {}).get("nodes") else None
+                for n in v["nodes"]]
+        if not v["pageInfo"]["hasNextPage"]:
+            return out
+        c = v["pageInfo"]["endCursor"]
+
+
+def variantenbild_tor(m0, variant_media):
+    """14.10.2026 → (anders, gleich): Anzahl verschiedener Variantenbilder ≠ media[0] bzw. == media[0]. Das Tor greift bei
+    anders > 0 (Messung: der Tausch von media[0] wirkt dort nicht) UND bei gleich > 0 — auch ein Variantenbild == media[0]
+    bleibt nach dem Umsortieren an der Variante hängen, Google zeigt für sie weiter das alte Bild. GEMESSEN 14.10.: von 270
+    «Inappropriate image» haben 0 nur diesen zweiten Fall; beide Lesarten zählen heute gleich."""
+    ids = {m for m in variant_media if m}
+    return len(ids - {m0}), len(ids & {m0})
+
+
 def main():
     stand = json.load(open(STAND))
     handles = stand["handles"].get(KLASSE) or []
@@ -152,7 +185,8 @@ def main():
     offen = [h for h in handles if h not in erledigt]
     print(f"START {time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())}: {KLASSE} · {len(handles)} gemeldet (Stand {stand['stand']}) · "
           f"{len(offen)} offen · N={N} KONTROLLE={KONTROLLE} · {'SCHARF' if SCHARF else 'TROCKEN'}", flush=True)
-    zaehl = {"tausch": 0, "behalten": 0, "motiv": 0, "uneinig": 0, "zu_wenig_bilder": 0, "fehler": 0, "nicht_in_google": 0}
+    zaehl = {"tausch": 0, "behalten": 0, "motiv": 0, "uneinig": 0, "zu_wenig_bilder": 0, "fehler": 0, "nicht_in_google": 0,
+             "variantenbild": 0}
     led = open(LEDGER, "a", encoding="utf-8") if SCHARF else None
     for h in offen[:KONTROLLE]:
         if led: led.write(f"{h}\t{time.strftime('%Y-%m-%d')}\tkontrolle\t\t\t\n")
@@ -176,6 +210,19 @@ def main():
         med = [m for m in p["media"]["nodes"] if (m.get("image") or {}).get("url")]
         if len(med) < 2:
             zaehl["zu_wenig_bilder"] += 1; continue
+        # 14.10.2026 TOR «Variantenbild» (siehe Kopf): vor dem Vision-Aufruf, damit kein Kontingent für Wirkungsloses fliesst.
+        try:
+            anders, gleich = variantenbild_tor(med[0]["id"], variantenbilder(p["id"]))
+        except RuntimeError as e:
+            zaehl["fehler"] += 1; print(f"  ⚠️ {h}: {e}", file=sys.stderr, flush=True); continue
+        if anders or gleich:
+            zaehl["variantenbild"] += 1
+            notiz = (f"{anders} Variantenbild(er) ≠ Hauptbild, {gleich} == Hauptbild — Umsortieren wirkt nicht"
+                     + (" → google_variantenbild_overlay.py" if KLASSE == "Promotional overlay on image" else ""))
+            print(f"  variantenbild {h[:51]:51} {notiz}", flush=True)
+            if led:
+                led.write(f"{h}\t{time.strftime('%Y-%m-%d')}\tvariantenbild\t{med[0]['id']}\t\t{notiz}\n"); led.flush()
+            continue
         bilder = jpgs([m["image"]["url"] for m in med])
         paare = [(m, b) for m, b in zip(med, bilder) if b]
         med, bilder = [m for m, _ in paare], [b for _, b in paare]
@@ -352,7 +399,33 @@ def rueckweg(handles):
     print(f"RUECKWEG: {ok} zurückgedreht · {fehler} Fehler" + ("" if SCHARF else " (TROCKEN)"), flush=True)
 
 
+def selbsttest():
+    """14.10.2026: Tor «Variantenbild» und Waffenzubehör-Regel mit Wegwerf-Daten — kein Netz, kein Ledger."""
+    faelle = [
+        ("Tor: keine Variante mit Bild → offen", variantenbild_tor("M0", [None, None]) == (0, 0)),
+        ("Tor: Variantenbild ≠ Hauptbild → zu", variantenbild_tor("M0", ["M3", None]) == (1, 0)),
+        ("Tor: Grössen teilen ein Farbbild → einmal gezählt", variantenbild_tor("M0", ["M3", "M3", "M4"]) == (2, 0)),
+        ("Tor: nur == Hauptbild → zu (Variante behält das alte Bild)", variantenbild_tor("M0", ["M0", "M0"]) == (0, 1)),
+        ("Tor: gemischt", variantenbild_tor("M0", ["M0", "M5"]) == (1, 1)),
+        ("Tor: leere Liste → offen", variantenbild_tor("M0", []) == (0, 0)),
+        ("Ledger-Art «variantenbild» sperrt nichts", "variantenbild" not in bs.GETAUSCHT),
+        ("Waffe: «Bauchtasche mit Holster»", bool(WAFFENZUBEHOER.search("Bauchtasche mit Holster"))),
+        ("Waffe: «Pistolenholster aus Leder»", bool(WAFFENZUBEHOER.search("Pistolenholster aus Leder"))),
+        ("Waffe: «Airsoft-Weste»", bool(WAFFENZUBEHOER.search("Airsoft-Weste"))),
+        ("Kanarie: «Hochdruckreiniger-Pistole» ist keine Waffe", not WAFFENZUBEHOER.search("Hochdruckreiniger-Pistole")),
+        ("Kanarie: «Heissluftpistole» ist keine Waffe", not WAFFENZUBEHOER.search("Heissluftpistole")),
+        ("Kanarie: «Waffeleisen» ist keine Waffe", not WAFFENZUBEHOER.search("Waffeleisen für Herzwaffeln")),
+    ]
+    fehler = [n for n, ok in faelle if not ok]
+    for n, ok in faelle:
+        print(("  ok  " if ok else "  FEHLER ") + n)
+    print(f"Selbsttest google_bild_tausch: {len(faelle) - len(fehler)}/{len(faelle)}")
+    return not fehler
+
+
 if __name__ == "__main__":
+    if "--selbsttest" in sys.argv:
+        sys.exit(0 if selbsttest() else 1)
     if "--ruecklesen" in sys.argv:
         ruecklesen()
     elif "--rueckweg" in sys.argv:
