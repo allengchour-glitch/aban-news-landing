@@ -6,14 +6,14 @@
 
 ## Zahlen
 
-- Produkte gesehen: **4'813**
-- Optionen mit englischen Werten (Kandidaten): 636
+- Produkte gesehen: **5'412**
+- Optionen mit englischen Werten (Kandidaten): 678
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 2'723
+- Werte mit unbekanntem Wort (unverändert): 2'943
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
 - übersprungen «kleidungsstueck-im-wert»: 26
-- übersprungen «kollision-nach-uebersetzung»: 15
+- übersprungen «kollision-nach-uebersetzung»: 16
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -49,6 +49,7 @@
 - `15447889740161` [Farbe] sonnen-cape-im-retro-stil-617300: Black Lake Blue → Schwarz-Seeblau; Rose Red Black → Rosarot-Schwarz; White Color → Weiss; Light Blue Silver → Hellblau-Silber
 - `15448539922817` [Farbe] eleganter-casual-jumpsuit-mit-weitem-bein-613100: Lemon Green → Zitronengrün
 - `15448673288577` [Farbe] gefutterter-coral-fleece-loungewear-hoodie-615800: Black Red Checkered → Schwarz-Rot kariert; Deep Green → Dunkelgrün; Dark Green → Dunkelgrün; Flower Gray → Graumeliert; Gray Brown → Grau-Braun
+- `15448903385473` [Farbe] herren-automatikuhr-skelettiert-609900: Black Golden Black → Schwarz-Gold-Schwarz; Black Gold Black → Schwarz-Gold-Schwarz; Black Silver Black → Schwarz-Silber-Schwarz; Brown With Gold And White → Braun mit Gold-Weiss; Brown Gold White → Braun-Gold-Weiss
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -75,5 +76,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`degrees` 159, `light` 115, `color` 88, `⟨satzbau:adjektiv-vor-nomen⟩` 67, `core` 53, `hat` 46, `rope` 44, `lens` 38, `high` 35, `generation` 33, `powder` 31, `mother` 30, `shell` 29, `no` 29, `adjustable` 29, `of` 26, `insert` 26, `crotch` 26, `tea` 24, `batteries` 24, `bag` 23, `electric` 23, `case` 21, `suit` 21, `nail` 21, `surface` 21, `⟨satzbau:nomen-vor-farbe⟩` 21, `bear` 21, `yadan` 21, `ice` 20, `stone` 20, `handle` 20, `to` 20, `cocoa` 20, `comfortable` 20, `number` 19, `deer` 19, `carbon` 18, `one` 18, `⟨satzbau:material-vor-farbe⟩` 18, `father` 18, `clothing` 18, `background` 17, `face` 17, `38mm40mm41mm` 17, `42mm44mm45mm` 17, `gallium` 16, `nitride` 16, `sunglasses` 16, `parent` 16, `grid` 15, `buckle` 15, `waist` 15, `pumpkin` 15, `blocking` 15, `cool brown` 15, `belt` 14, `milk` 14, `dark` 14, `simple` 14
+`degrees` 159, `light` 115, `color` 94, `⟨satzbau:adjektiv-vor-nomen⟩` 69, `core` 53, `shell` 50, `hat` 46, `rope` 44, `lens` 38, `high` 37, `case` 35, `generation` 33, `powder` 32, `surface` 30, `mother` 30, `no` 29, `adjustable` 29, `of` 26, `bag` 26, `insert` 26, `crotch` 26, `tea` 24, `batteries` 24, `electric` 23, `ice` 22, `face` 22, `housing` 22, `suit` 21, `nail` 21, `one` 21, `⟨satzbau:nomen-vor-farbe⟩` 21, `bear` 21, `yadan` 21, `belt` 20, `stone` 20, `handle` 20, `to` 20, `cocoa` 20, `comfortable` 20, `number` 19, `deer` 19, `carbon` 18, `noodles` 18, `⟨satzbau:material-vor-farbe⟩` 18, `father` 18, `clothing` 18, `background` 17, `waist` 17, `38mm40mm41mm` 17, `42mm44mm45mm` 17, `three` 16, `gallium` 16, `nitride` 16, `sunglasses` 16, `parent` 16, `grid` 15, `buckle` 15, `pumpkin` 15, `blocking` 15, `cool brown` 15
 
