@@ -18336,3 +18336,7 @@ gid://shopify/Product/16617976463751	56->2	Diamantmalerei Desktop-Clip mit Bild
 gid://shopify/Product/16617977381255	24->3	Tippstift mit Offline-Scan-Übersetzung
 gid://shopify/Product/16618012148103	27->2	Weibliches Kuhleder Anti-Diebstahl-Longwallet
 gid://shopify/Product/16618013327751	119->1	Reise-Dokumententasche PU, wasserfest, anti-Diebstahl
+gid://shopify/Product/16618135159175	78->2	UV-Härtender Epoxykleber – 10 g bis 100 g
+gid://shopify/Product/16618136535431	23->1	Triangularer Schlüsselzange für elektrische Steuerkabinett
+gid://shopify/Product/16618137616775	64->0	Clip-Wedge-Steinspalter 16 mm
+gid://shopify/Product/16618158031239	105->2	Edelstahl-Sechskant-Schrauben-Set mit Muttern
