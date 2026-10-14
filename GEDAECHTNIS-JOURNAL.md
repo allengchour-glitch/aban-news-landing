@@ -52,6 +52,16 @@
 
 
 
+## 🪦 Leeres Tageslog = still gestorben (2026-10-14, ~07:40 UTC, Erinnerung CH-Lager Stufe 2)
+
+`psa_schuhe_wache.log` und `ch_lager_profil.log` standen seit 13.10. 16:32 auf **0 Byte**: Der Aufseher setzt `touch` VOR dem Start
+(damit der Tag als beansprucht gilt), der Lauf starb beim stündlichen Container-Neustart, Python hatte noch nichts geschrieben
+(gepuffert). `absturz_nachholen` holte nur Logs mit «Traceback|Error|Exception» nach → 15 h kein Tageslauf. Von 30 Tagesblöcken
+nutzen 29 kein `still_gestorben` (das nur für Jobs mit FERTIG/PAUSE als Schlusszeile taugt). Fix an der gemeinsamen Stelle:
+leeres Log + mtime vor dem Container-Start = nachholen (≤ 3×/Tag). **Lehre:** Ein Anspruch («touch») vor der Arbeit braucht
+einen Beweis der Arbeit danach — sonst ist «leer» und «erledigt» dasselbe. Dazu CH-Lager Stufe 2 (31 Google-Artikel, 0 falsch)
+und Kasse = Seite für Maske/Hasenskelett/Leinen-Set. Bericht `dropship/CH-LAGER-PROFIL-2026-10-13.md` §Nachtrag 14.10.
+
 ## 🧷 Social-Queues: Poster schrieben fertige Reels aus alter Kopie weg (2026-10-14, ~05:10–07:10 UTC, Betreiber «ist alles fix»)
 
 13 fertige Reels wurden nie gepostet: Poster (metricool_tiktok_post, meta_reel_post …) lasen `reels_seed.csv` beim Start, arbeiteten
@@ -20413,3 +20423,5 @@ Verschoben am 04.10.2026:
 <!-- aus CLAUDE.md verschoben 14.10.2026 07:10 UTC (VERBATIM) -->
 - 2026-10-13 · ↪️ **Weiterleitungen ins Leere: 169 von 1'657 zeigten auf gedraftete Produkte/abgemeldete Kollektionen (404) → `weiterleitung_ziel_wache.py` (täglich, Ketten glätten, totes Ziel bekommt Ersatz, Ledger + Rückweg): 197 gedreht, 54 angelegt, 0 offen. `kollektion_taugt()` prüfte «veröffentlicht» nur im Docstring (handy-powerbanks) — Kanarien prüfen jetzt jedes Tabellenziel.** → Journal 13.10. ↪️
 - 2026-10-13 · 🧟 **Täglicher USA-Lieferblock 04:10 = root-Cron des Hetzner-Servers (04:00 `run-api-jobs.sh` + */10 `vps-cmd-poll.sh` aus dem toten Klon /opt/luxe/repo, Zweig CizQ6): ~1'400 Produkte/Morgen. ✅ abgeschaltet 13.10. 07:45 per Wartungsaktion `alt_cron_aus` (erst nach Betreiber «mach du hetzner» — ohne Freigabe lehnte der Klassifikator ab; Rückweg `alt_cron_zurueck`), Ampel `alter_lieferblock()`. Regel: Schaden zur festen Uhrzeit → zuerst ALLE Zeitpläne lesen.** → `dropship/ZOMBIE-CRON-2026-10-13.md`
+<!-- aus CLAUDE.md verschoben 14.10.2026 07:43 UTC (VERBATIM) -->
+- 2026-10-13 · 🔍 **Prüf-Workflow (11 Agenten) 5/6 bestätigt → behoben: GSC-Schnappschuss blättert (startRow, Filter /products/), Zielwahl nur Wortkopf (Hundehalskette ≠ Halskette), Kostümwort schlägt Ausnahmeliste (+14 erkannt), Trend-Datum max() + 44 Reste weg, Lampion raus; 80 Fortura-Fremdwaren aus dem Kostümtyp (Importer nachgezogen).** → Journal 13.10. 🔍
