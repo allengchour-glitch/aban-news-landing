@@ -1274,3 +1274,11 @@ gid://shopify/Product/15447632740737	kein-video-beim-lieferanten
 gid://shopify/Product/15447632937345	kein-video-beim-lieferanten
 gid://shopify/Product/15447633068417	kein-video-beim-lieferanten
 gid://shopify/Product/16614844137863	ok-lokal
+gid://shopify/Product/15447633330561	kein-video-beim-lieferanten
+gid://shopify/Product/15447633822081	kein-video-beim-lieferanten
+gid://shopify/Product/15447637787009	kein-video-beim-lieferanten
+gid://shopify/Product/15447637950849	kein-video-beim-lieferanten
+gid://shopify/Product/15447638868353	kein-video-beim-lieferanten
+gid://shopify/Product/15447864508801	kein-video-beim-lieferanten
+gid://shopify/Product/15447864934785	kein-video-beim-lieferanten
+gid://shopify/Product/15447865098625	kein-video-beim-lieferanten
