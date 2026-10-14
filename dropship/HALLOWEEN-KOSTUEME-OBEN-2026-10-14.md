@@ -58,5 +58,5 @@ Ein Lieferdatum steht nur dort, wo die Kette einmal echt durchgelaufen ist.
 3. Grenzfall LED-Handschuhe (Platz 1–2 in `kostueme-ch-lager`, Tag `winter-kaelte`): Ihre Einordnung wurde nicht entschieden.
 4. Nebenbefunde aus der Messung:
    - Beschreibung «Zimmermädchenset» ist anzüglich (Google-Risiko).
-   - «Fan-Megafon mit Musik» nennt «Gratis-Versand ab CHF 65» und existiert doppelt.
+   - «Fan-Megafon mit Musik»: Die Zeile «Gratis-Versand ab CHF 65» steht nur auf dem DRAFT-Doppel (`…-ftou612036`, gleiche SKU). Das aktive `…-fgaou612036` ist sauber, also kein Handlungsbedarf (GEMESSEN 09:42).
 5. Wirkung messen am 21.10. (ShopifyQL human + Switzerland): Landeseiten `halloween` und `kostueme-ch-lager`, Sitzungen → Warenkörbe (vorher 0 von 16).

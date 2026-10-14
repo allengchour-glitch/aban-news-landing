@@ -8990,3 +8990,15 @@ automatischer-lockenstab-32mm-054464	1620629313898950656	3	9.29	ok	landeseite
 usb-portable-haarwelle-458496	1618780891134832640	7	12.09	ok	landeseite
 keramik-haarglatter-mit-temperaturregelung-300992	1609061823716798464	7	13.79	ok	landeseite
 dampf-burste-mit-titan-keramik-784960	1608392258884218880	7	21.99	ok	landeseite
+doppelspitz-burste-fur-katzen-hunde-723840	1601869301454221312	16	6.63	ok	landeseite
+multifunktionales-haarstyling-gerat-052928	1599615924154413056	7	14.08	ok	landeseite
+kamm-mit-stahlklinge-704960	1598215278465396736	7	7.01	ok	landeseite
+elektrischer-dreh-kreisel-fur-volumenwellen-617472	1592849659561783296	16	10.29	ok	landeseite
+multifunktionales-glatte-und-lockengerat-430464	1540273515415482368	7	12.31	ok	landeseite
+negative-ionen-glatt-und-lockenstab-2in1-856320	1537648534546296832	7	15.05	ok	landeseite
+weichsohlen-laufschuhe-einfarbig-624900	2507240741131625100	16	8.66	ok	landeseite
+frauenleder-cortez-schuhe-mit-atmungsaktivem-m-600500	2506100605551601200	16	11.24	ok	landeseite
+mesh-low-top-mit-luftkissen-und-dicker-sohle-f-604400	2506040350461604600	16	10.88	ok	landeseite
+atmungsaktive-mesh-laufschuhe-herren-mit-weich-619900	2505300656341610100	16	9.88	ok	landeseite
+low-top-bergwanderschuhe-fur-alltag-sport-604500	2505300332421605100	16	11.23	ok	landeseite
+casual-dad-schuhe-mit-wedge-grossen-608200	2505290227501608500	16	9.88	ok	landeseite
