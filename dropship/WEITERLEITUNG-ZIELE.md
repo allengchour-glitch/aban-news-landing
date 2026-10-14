@@ -1,4 +1,4 @@
-# Weiterleitungen ins Leere — Stand 2026-10-13 22:31 UTC (DRY, Lauf 2026-10-13T2231)
+# Weiterleitungen ins Leere — Stand 2026-10-14 10:02 UTC (FIX, Lauf 2026-10-14T1002)
 
 Erzeugt von `automation/weiterleitung_ziel_wache.py` (täglich im Aufseher). Regel und Anlass: Kopf des Skripts.
 
