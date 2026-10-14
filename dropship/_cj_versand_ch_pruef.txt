@@ -9226,3 +9226,10 @@ perlen-splitter-145600	1541286268338974720	16	6.01	ok	landeseite
 perlen-strap-armband-207104	1514873755313647616	16	5.02	ok	landeseite
 naturlich-elegante-feinsilber-ohrstecker-mit-o-457536	1510089098877480960	16	4.50	ok	landeseite
 europaisch-amerikanischer-prinzessin-trauring-641664	1441653352759955456	16	4.57	ok	landeseite
+luxuriose-perlen-ohrhanger-fur-den-sommer-997760	1440139927860940800	16	4.57	ok	landeseite
+barocker-haarband-trend-887808	1434776098259996672	16	6.50	ok	landeseite
+s925-sterlingsilber-damen-ohrstecker-langbogen-047296	1434071101176156160	16	8.56	ok	landeseite
+anpassbares-armband-ring-set-525504	1433266536226885632	16	4.71	ok	landeseite
+925-sterlingsilber-barockperle-halskette-in-go-763520	1415223992696049664	16	4.57	ok	landeseite
+marmergriff-gold-245888	1404309602916503552	16	5.12	ok	landeseite
+damenkleid-626800	2607110900551628000	16	9.88	ok	landeseite
