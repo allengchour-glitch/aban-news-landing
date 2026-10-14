@@ -51840,3 +51840,6 @@ graffiti-pullover-hoodie-fur-herren-629800	aa-1	Herrenmode	2026-10-14T21:06Z
 herren-kapuzenpullover-halbtransparent-618200	aa-1	Herrenmode	2026-10-14T21:06Z
 henrys-langarmshirt-aus-polyester-625300	aa-1	Herrenmode	2026-10-14T21:06Z
 herren-kapuzenhemd-mit-fleece-futter-627400	aa-1	Herrenmode	2026-10-14T21:06Z
+katzen-schnitzeljacke-in-schwarz-violett-620500	ap-2	Haustierbedarf	2026-10-14T22:02Z
+acrylpullover-mit-horizontalem-reissverschluss-614300	ap-2	Haustierbedarf	2026-10-14T22:02Z
+hunde-sweater-mit-herz-und-schleifendesign-605200	ap-2	Haustierbedarf	2026-10-14T22:02Z
