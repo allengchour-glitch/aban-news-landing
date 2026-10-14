@@ -9561,3 +9561,17 @@ edelstahl-3d-katzenpendant-mit-blumenkranz-uni-600700	-	-	-	unklar pid 1602002 P
 zen-bodhidharma-flussuberquerung-ornament-607100	2505090349131607500	16	14.48	ok	landeseite
 herbststil-kapuze-mit-holz-ohrenschutzern-626000	2607070925161620600	16	9.07	ok	landeseite
 lassiger-farbblock-patchwork-hoodie-mit-tasche-610300	2607060841071611500	16	8.93	ok	landeseite
+holz-ornament-mit-edelstein-606100	2411070751481606300	11	29.00	ok	landeseite
+doppeltes-diamant-mesh-hauptband-616200	2408160939051616400	16	4.81	ok	landeseite
+sportliche-hoodie-624700	2606160642481625300	16	9.07	ok	landeseite
+kaschmir-hoodie-624100	2606050153591624800	16	7.43	ok	landeseite
+koreaner-stil-liebesmotiv-patchwork-langarmshi-625100	2607100730541625900	16	9.61	ok	landeseite
+damen-strickcardigan-632300	2607090508081633100	16	10.83	ok	landeseite
+trendiger-premium-strickcardigan-mit-farbblock-614800	2607080741001615400	16	10.15	ok	landeseite
+arm-strength-trainer-627900	2604070707061628400	11	32.03	ok	landeseite
+regenbogen-streifen-achsellos-mit-bootsnacken-624400	2607080649301625100	16	9.47	ok	landeseite
+2-in-1-bauchrad-mit-automatik-funktion-622200	2603250911191622600	3	38.23	ok	landeseite
+herbstsweater-mit-lochmuster-613900	2607070905181614500	16	9.88	ok	landeseite
+minimalistische-streifenjacke-mit-knopfen-614500	2607070336161615400	16	9.20	ok	landeseite
+pastellfarbener-casual-pullover-630900	2607070309101631600	16	8.66	ok	landeseite
+damen-strickpullover-mit-tassel-design-fur-her-625200	2607060859371626500	16	10.29	ok	landeseite

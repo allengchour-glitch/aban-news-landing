@@ -4494,3 +4494,7 @@ kabellose-nachtleuchte-376832	gesetzt-3
 ewiger-rosen-schmuck-166400	gesetzt-2
 sauberkeitspinsel-977856	gesetzt-2
 flammen-diffuser-715840	gesetzt-5
+magnetisch-ladecable-044e0c	gesetzt-3
+kabellose-haarglatter-899200	gesetzt-5
+3d-teddy-lampe-a92a5f	gesetzt-3
+liebeshalskette-0bb6ab	hat-liste
