@@ -1590,3 +1590,5 @@ gid://shopify/Product/16617704685959	ok	Solar Gartenleuchte zum Aufhängen
 gid://shopify/Product/16617715401095	ok	Holz Etagere für Früchte
 gid://shopify/Product/16617713140103	ok	Besteck-Set aus Edelstahl – Western-Stil
 gid://shopify/Product/16617717465479	ok	Waschtischarmatur aus Kupfer
+gid://shopify/Product/16638442373511	ok	Hexagonaler Gummieinsatz-Dumbbell 12,5 kg
+gid://shopify/Product/16638445453703	ok	Zusammenklappbarer Carbon-Trekkingstock 110 cm
