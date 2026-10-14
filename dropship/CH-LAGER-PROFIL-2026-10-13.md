@@ -90,7 +90,7 @@ Ergebnis: **8/8 wie heute oder günstiger.**
 | Stufe | Inhalt | ab |
 |---|---|---|
 | 1 | CH-Lager-Ware ausserhalb des Google-Kanals, Google-Risiko null | 13.10. ✅ |
-| 2 | dazu 25 Google-Produkte (kleinste IDs); 3 Tage `google_feedback_wache` auf «shipping»/«Inaccurate» prüfen | 14.10. |
+| 2 | dazu 31 Google-Produkte (Halloween ∪ kostueme-ch-lager ohne Kostüme); 3 Tage `google_feedback_wache` auf «shipping»/«Inaccurate» prüfen | 14.10. ✅ |
 | 3 | alle 2'375 | frühestens 17.10. |
 
 **Rückweg:** `python3 automation/ch_lager_profil.py --zurueck --scharf`. Damit fällt alles ins General profile zurück.
@@ -159,3 +159,20 @@ Die alte Regel «Bearbeitung < CJ-Versand-Median = Kasse zu früh» hätte nach 
 - **`warenkorb_einig.py` LI_NEU:** jetzt der aktuelle Live-Block. Vorher hätte ein Reparaturlauf die Kalendertage-Fassung vom 09.10. zurückgeschrieben.
 
 **Offen:** Stufe 3 (frühestens 17.10.) bringt die übrigen ~764 ins Profil. Dann zeigt auch deren Seite das kurze Datum.
+
+## Nachtrag 14.10. ~07:40 UTC — Stufe 2 gesetzt, Kasse vor 12 Uhr geprüft
+- **Basis vor dem Umstellen (GEMESSEN):** `google_feedback_wache` 14.10. 07:32 UTC, 54'511 aktive Produkte: 437 Free-Listings-Blocker,
+  davon **0 mit «shipping» oder «Inaccurate» für CH**. Die Klassen sind dieselben wie am 13.10. (Bilder 270/126/31).
+  «Missing shipping info [LI]» stammt vom 09.10. und hat mit den Profilen nichts zu tun.
+- **Vorschau:** Soll 1'642 Produkte, davon 31 Google-Produkte. Keines ist ein Kostüm nach `ist_kostuem` (30/30 geprüft), keines gehört zu den 13 Werbetest-Produkten.
+- **Scharf:** 37 Varianten zugeordnet, Zeichen `profil-ch-lager` auf 32 Produkten. **Zurückgelesen:** 3'260 Varianten im Profil,
+  0 fehlen, 0 falsch, Zeichen fehlt 0, Zeichen zu viel 0.
+- **Kaufweg Handy (`tools/kaufweg_handy.mjs`, 07:3x UTC = vor 12 Uhr Zürich) — Seite = Warenkorb = Kasse:**
+  - Maske (CH-Lager, nicht im Google-Kanal): «16. Okt. – 19. Okt.» · Kasse «Fr., 16. Okt – Mo., 19. Okt KOSTENLOS»
+  - Hasenskelett (CH-Lager, **Google, neu in Stufe 2**): dasselbe Datum, KOSTENLOS
+  - Leinen-Set (CJ): «28. Okt. – 11. Nov.» · Kasse «Mi., 28. Okt – Mi., 11. Nov CHF 7.00»
+- **Nächster Schritt:** 3 Tage die Ampel «GOOGLE» beobachten. Stufe 3 frühestens am 17.10., nur wenn keine «shipping»/«Inaccurate»-Meldung kommt.
+- **Nebenbefund:** Der Tageslauf `ch_lager_profil` (Aufseher) und `psa_schuhe_wache` hatten seit 13.10. 16:32 ein **leeres Log**:
+  Sie starben beim Container-Neustart still, und `absturz_nachholen` holte nur Traceback/Error nach.
+  **Fix:** Ein leeres Log, das älter ist als der letzte Container-Start, gilt jetzt als still gestorben und wird nachgeholt (höchstens 3×/Tag).
+  PSA sofort nachgeholt: 93 Kandidaten, 0 zu ändern, 0 offen.
