@@ -9276,3 +9276,16 @@ retro-kupfer-schadel-anhanger-604400	2604180920051605000	16	5.40	ok	landeseite
 herzanhanger-minimalistisch-633000	2604180540181633600	16	4.32	ok	landeseite
 usb-3-0-splitter-e8fa76	C4208E7D-6166-411D-9777-3AC66B02BF22	16	6.01	ok	landeseite
 herzformiger-silberchoker-634400	2606240944311635000	16	4.34	ok	landeseite
+vintage-rosen-ohrstecker-600000	2606230811071600600	16	4.34	ok	landeseite
+schnellladegerat-furs-auto-90858d	74040D74-EBAE-437A-98E9-5D905C3404EA	16	7.91	ok	landeseite
+klare-hd-box-649b2f	07B9BE0E-0151-429B-A4E4-ADB5519CBF5B	16	4.92	ok	landeseite
+tragbarer-harter-1eafce	415001C3-87EA-40E9-AF04-7E153031EE74	16	13.40	ok	landeseite
+elegante-damen-midi-robe-fur-buro-party-abend-616500	2607110341131617500	16	5.98	ok	landeseite
+chic-scharf-figurbetonter-tubedress-mit-schlit-621100	2607100851041621800	16	8.25	ok	landeseite
+stickset-mit-garn-799808	1626051346065534976	16	8.11	ok	landeseite
+langes-vintage-kleid-621700	2607100815131622400	16	10.15	ok	landeseite
+hellbeige-nachthemd-aus-baumwolle-seide-ohne-a-626500	2607100755111628700	16	8.79	ok	landeseite
+v-ausschnitt-kleid-mit-puffarmeln-626500	2607100729001622100	16	8.53	ok	landeseite
+kunstpavillon-wanddekoration-190656	1609056891085271040	16	11.23	ok	landeseite
+off-shoulder-langkleid-608100	2607100720351609300	16	8.11	ok	landeseite
+unregelmassiges-kleid-mit-ruschen-622600	2607100707551623500	16	9.47	ok	landeseite
