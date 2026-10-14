@@ -499,3 +499,122 @@ KOSTUEM_KANARIEN = [
 def kostuem_kanarien():
     fehler = [(t, ty, e) for t, ty, e in KOSTUEM_KANARIEN if ist_kostuem(t, ty) != e]
     return len(KOSTUEM_KANARIEN), fehler
+
+
+# ---------------------------------------------------------------------------
+# SCHUSSWAFFEN-ZUBEHÖR (14.10.2026) — Zielfernrohr-Montagen, Holster, Zweibeine, Gewehrriemen, Magazintaschen, Laser-Visiere.
+# GEMESSEN 14.10. (alle 54'523 aktiven Produkte, Titel/Typ/Tags/Beschreibung): 10 Treffer PER REGEL, 7 ohne «waffe-pruefen»,
+# 6 davon im Google-Kanal («Zielfernrohr-Halterungszubehör», zwei Gewehr-Zweibeine als «Taktisches Outdoor-Stativ», ein
+# Schulterholster als «Taktische Brusttasche» …). ⚠️ Das ist NICHT alles: die Nachprüfung (1'735 Bilder) fand ≥ 13 WEITERE
+# Waffenteile, die nur am BILD erkennbar sind — Titel UND CJ-Name harmlos («T6 Taschenlampe Set» = Waffenlicht,
+# «Multifunktions-Schraubenschlüssel» / CJ «Multifunctional tactical wrench» = AR-15-Schlüssel, «Taktischer Angelrucksack» =
+# Gewehrrucksack). Die stehen als Handliste «bild_geprueft» in der Regeldatei (SWZ_BILD); der Wächter taggt sie wie Treffer. HEIKEL kennt nur «waffen?\b|munition|armbrust», und die
+# Titel-Sperren von heikel_zweck.json («Halterung», «Rahmen» = Kamera-Zubehör) haben die Waffen-Regeln dort beschattet.
+# Folge eines Treffers: Tag «waffe-pruefen» → google_sperrtags_durchsetzen nimmt die Ware aus Google UND allen Werbe-/Social-
+# Kanälen (ALLE_WERBEKANAELE), der Laden bleibt (in der Schweiz legal). Regel + Kanarien EINMAL in
+# automation/data/schusswaffen_zubehoer_regel.json; der Importer-Zwilling schusswaffen_zubehoer.mjs liest dieselbe Datei
+# (Gleichlauf: automation/schusswaffen_zubehoer_gleichlauf_test.mjs). Der Text entscheidet nie allein (siehe «_» dort).
+def _swz_regel():
+    for k in (os.path.join(_repo(), "automation", "data", "schusswaffen_zubehoer_regel.json"),
+              os.path.join(_HIER, "data", "schusswaffen_zubehoer_regel.json")):
+        if os.path.exists(k):
+            return _json.load(open(k, encoding="utf-8"))
+    # Kein harter Abbruch (dieses Modul importieren ein Dutzend Publizierer): die Regel trifft nichts und die Kanarien
+    # fallen durch → der Wächter überspringt die Regel laut.
+    print("⚠️ google_sperrliste: automation/data/schusswaffen_zubehoer_regel.json fehlt → Schusswaffen-Zubehör-Regel aus",
+          file=sys.stderr, flush=True)
+    nie = "(?!)"
+    return {"stark": nie, "stark_en": nie, "schwach": nie, "kontext": nie, "kontext_kopf": nie, "text_tragen": nie,
+            "nicht_hart": nie, "nicht_weich": nie, "nicht_en": nie, "bild_geprueft": {}, "bild_ok": {},
+            "bild_pruefen": {"ab": "9999", "wort": nie, "ding": nie, "kanarien": []},
+            "kanarien": [["AK74 Zielfernrohrbrücke aus Metall", "", [], "", "", True]]}
+
+
+_SWZ = _swz_regel()
+SWZ = {k: re.compile(_SWZ.get(k) or "(?!)") for k in ("stark", "stark_en", "schwach", "kontext", "kontext_kopf", "text_tragen",
+                                                     "nicht_hart", "nicht_weich", "nicht_en")}
+SWZ_KANARIEN = [tuple(k) for k in _SWZ["kanarien"]]
+# 14.10.2026 (Nachbesserung): am BILD bestimmte Waffenware, Titel und CJ-Name harmlos → Wächter taggt wie einen Treffer.
+SWZ_BILD = dict(_SWZ.get("bild_geprueft") or {})
+SWZ_BILD_OK = dict(_SWZ.get("bild_ok") or {})
+_SWZ_BP = _SWZ.get("bild_pruefen") or {}
+SWZ_BILD_PRUEFEN_AB = _SWZ_BP.get("ab", "9999")
+_SWZ_BP_WORT = re.compile(_SWZ_BP.get("wort") or "(?!)")
+_SWZ_BP_DING = re.compile(_SWZ_BP.get("ding") or "(?!)")
+# Prefilter-Wörter für Titelsuchen (Shopify findet nur Wortanfänge); entschieden wird an ist_schusswaffen_zubehoer.
+SWZ_SUCHWORTE = ["zielfernrohr", "picatinny", "weaver", "glock", "ak74", "ak47", "holster", "magazin", "zweibein", "bipod",
+                 "gewehr", "munition", "taktisch", "tactical", "airsoft", "softair", "laservisier", "rotpunkt", "mündung"]
+
+
+def _swz_klar(html):
+    """Wie in schusswaffen_zubehoer.mjs: Tags weg, &nbsp;/&amp;, Leerraum zusammen, klein."""
+    s = re.sub(r"<[^>]+>", " ", html or "").replace("&nbsp;", " ").replace("&amp;", "&")
+    return re.sub(r"\s+", " ", s).lower()
+
+
+def ist_schusswaffen_zubehoer(titel, typ="", tags=(), text="", en=""):
+    """Grund (wahr) oder "" — Schusswaffen-Zubehör nach automation/data/schusswaffen_zubehoer_regel.json.
+
+    titel/typ/tags = was das Produkt IST; text = Beschreibung (HTML erlaubt, liefert nur Kontext); en = englischer
+    Lieferantenname (Importer; Bestand über dropship/_cj_name_en.tsv). Reihenfolge: nicht_hart (Titel/Typ) → nicht_en (CJ-Name
+    zählt dann nicht) → stark (Titel/Typ/Tags) → stark_en (CJ-Name eindeutig, schlägt nicht_weich) → stark im CJ-Namen ohne
+    nicht_weich → schwaches Titelwort + Waffen-Kontext ohne nicht_weich. Bildgeprüfte Ware (SWZ_BILD) kennt diese Funktion
+    nicht — sie entscheidet nur am Text.
+    """
+    t = (titel or "").lower()
+    ty = (typ or "").lower()
+    e = (en or "").lower()
+    if SWZ["nicht_hart"].search(t) or SWZ["nicht_hart"].search(ty):
+        return ""
+    if e and SWZ["nicht_en"].search(e):
+        e = ""
+    kopf = " | ".join([t, ty, " ".join(str(x) for x in (tags or [])).lower()])
+    m = SWZ["stark"].search(kopf)
+    if m:
+        return "stark:" + m.group(0)
+    m = SWZ["stark_en"].search(e)
+    if m:
+        return "stark-en-eindeutig:" + m.group(0)
+    weich = SWZ["nicht_weich"].search(t)
+    m = SWZ["stark"].search(e)
+    if m and not weich:
+        return "stark-en:" + m.group(0)
+    s = SWZ["schwach"].search(t) or SWZ["schwach"].search(e)
+    if s and not weich:
+        x = _swz_klar(text)
+        k = (SWZ["kontext"].search(kopf + " | " + e) or SWZ["kontext_kopf"].search(kopf + " | " + e)
+             or SWZ["kontext"].search(x) or SWZ["text_tragen"].search(x))
+        if k:
+            return "schwach:" + s.group(0) + "+kontext:" + k.group(0)[:40]
+    return ""
+
+
+def swz_en_verdacht(en):
+    """Kann dieser CJ-Name allein einen Treffer tragen? Vorauswahl für den Bestand (Cache dropship/_cj_name_en.tsv):
+    nur diese Produkte fragt der Wächter live nach und prüft sie dann mit Titel/Typ/Tags/Text + en ganz."""
+    e = (en or "").lower()
+    if not e or SWZ["nicht_en"].search(e):
+        return False
+    return bool(SWZ["stark_en"].search(e) or SWZ["stark"].search(e) or SWZ["schwach"].search(e))
+
+
+def swz_bild_pruefen(titel, typ="", en=""):
+    """Neue Ware zur BILDprüfung vormerken (kein Tag): Wort (taktisch/military/jagd …) UND Ding (Tasche/Werkzeug/Lampe/
+    Halterung …) in Titel oder CJ-Name, ohne nicht_hart. Grund (wahr) oder ""."""
+    t = (titel or "").lower()
+    if SWZ["nicht_hart"].search(t) or SWZ["nicht_hart"].search((typ or "").lower()):
+        return ""
+    x = t + " | " + (en or "").lower()
+    w, d = _SWZ_BP_WORT.search(x), _SWZ_BP_DING.search(x)
+    return f"{w.group(0)}+{d.group(0)}" if w and d else ""
+
+
+def schusswaffen_kanarien():
+    """(Anzahl, Fehler) über Regel-Kanarien, Bildprüf-Kanarien und die Handlisten (Form, keine Überschneidung)."""
+    f = [(k[0], k[5], ist_schusswaffen_zubehoer(*k[:5])) for k in SWZ_KANARIEN if bool(ist_schusswaffen_zubehoer(*k[:5])) != k[5]]
+    bp = _SWZ_BP.get("kanarien") or []
+    f += [(k[0], k[3], swz_bild_pruefen(k[0], k[1], k[2])) for k in bp if bool(swz_bild_pruefen(k[0], k[1], k[2])) != k[3]]
+    f += [(pid, "Handliste: nur Ziffern, nicht zugleich bild_ok", "") for pid in SWZ_BILD
+          if not pid.isdigit() or pid in SWZ_BILD_OK]
+    f += [(pid, "bild_ok: nur Ziffern", "") for pid in SWZ_BILD_OK if not pid.isdigit()]
+    return len(SWZ_KANARIEN) + len(bp) + len(SWZ_BILD) + len(SWZ_BILD_OK), f

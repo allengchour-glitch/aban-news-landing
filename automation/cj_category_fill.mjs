@@ -36,6 +36,7 @@ import { stempelKorrigieren, kanarienGruen as stempelKanarien } from './gruppens
 const GRUPPENSTEMPEL_OK=stempelKanarien(); if(!GRUPPENSTEMPEL_OK)console.error('gruppenstempel_typ: Kanarien rot — Typ bleibt');   // 09.10.2026: Codes im Farbfeld → «Modell N»
 const FARBCODE_OK=farbcodeKanarien(); if(!FARBCODE_OK)console.error('farbcode_modell: Kanarien rot — Codes bleiben unverändert');
 import { heikelZweck } from './heikel_zweck.mjs';
+import { schusswaffenHeikel } from './schusswaffen_zubehoer.mjs';   // 14.10.2026: Zielfernrohr-Montage, Holster, Zweibein …
 // ⚠️ 21.08.2026: Diese Zeile FEHLTE, während `echoVomLieferanten` an drei Stellen (708/710/714)
 // schon aufgerufen wurde. Folge: `ReferenceError: echoVomLieferanten is not defined` beim
 // Start — der Importer starb VOR dem Anlegen, also legte der CJ-Grind gar nichts mehr an,
@@ -856,7 +857,10 @@ for(const [cat,label] of grp.cats){
    // morgen wieder vor. Muster: automation/heikel_zweck.json (nach der FUNKTION, nicht nach
    // der Produktbezeichnung des Verkäufers — «Abwehrstock» statt Teleskopschlagstock,
    // «lässt sich diskret platzieren» statt «versteckte Kamera»).
-   const heik=heikelZweck(title, g.html);
+   // 14.10.2026: + Schusswaffen-Zubehör (data/schusswaffen_zubehoer_regel.json, = Bestand-Wächter ueberwachung_waffen_guard)
+   // — heikel_zweck.json liess «Zielfernrohr-Halterungszubehör» an seiner Kamera-Sperre «Halterung» durch. Gleiche Folge
+   // wie oben: Tag «waffe-pruefen», kein Kanal. Mit dem englischen CJ-Namen («Rifle Bipod», «Laser Bore Sighter»).
+   const heik=heikelZweck(title, g.html) || schusswaffenHeikel(title, g.html, d.productNameEn||p.productNameEn||'');
    if(DRY){console.log(`  [DRY]${med?' ⚕️DRAFT('+med.grund+')':''}${tsch?' 🐾DRAFT('+tsch.grund+')':''}${ess?' 🍬DRAFT('+ess+')':''}${heik?' 🕵️'+(heik.verboten?'DRAFT':'KEIN-KANAL')+'('+heik.grund+')':''} CHF${chf(p.sellPrice)} | ${title}`);got++;total++;continue;}
    const slug=slugStamm(title)+'-'+String(p.pid).slice(-6);
    const fash=(grp.fashion&&!FAST)?buildFashion(d):null; // FAST: keine Varianten-Details → Standard-Variante
@@ -965,6 +969,12 @@ for(const [cat,label] of grp.cats){
    // Regel data/gruppenstempel_typ.json (= Bestand-Wächter gruppenstempel_typ.py); Tag «elektronik» bleibt.
    if(GRUPPENSTEMPEL_OK){ const sk=stempelKorrigieren(typeFinal,googleKategorie(title,tagsFinal,typeFinal),title,tagsFinal);
      if(sk){ typeFinal=sk.typ; tagsFinal=sk.tags; } }
+   // CJ_REAL_PFLICHT (14.10.2026): Gruppe «cjwerkzeug» (cj_groups_extra.json) trug kein «cj-real» → 1'331 aktive CJ-Produkte
+   // waren für ALLE Lieferbarkeits-Wächter unsichtbar (sie wählen über tag:cj-real) und blieben kaufbar, auch wenn CJ
+   // ausverkauft hatte (Ghost-Sale #1019). Regel: jede Ware mit CJ-SKU trägt «cj-real», unabhängig von den Gruppen-Tags —
+   // hier, NACH allen Tag-Filtern, und in tagsFinal selbst (die Nachschreibe-Pfade unten bauen auf tagsFinal auf).
+   // Bestand-Wächter: automation/cj_real_luecke.py (prüft auch per Selbsttest, dass diese Zeile hier steht).
+   if(variants.some(v=>/^CJ/i.test(v?.inventoryItem?.sku||'')) && !tagsFinal.includes('cj-real')) tagsFinal=[...tagsFinal,'cj-real'];
    const input={title,handle:slug,productType:typeFinal,vendor:'LuxeStyle',
     status:(med||tsch||ess)?'DRAFT':'ACTIVE',
     tags:[...tagsFinal,
@@ -1181,8 +1191,12 @@ for(const [cat,label] of grp.cats){
    // ein leeres Feld, bei Google eine sichere Ablehnung. Ein Produkt ohne Bild ist kein
    // Produkt: dann lieber als Entwurf liegen lassen, als es unsichtbar zu verkaufen.
    if(!await hatBild(st,pid)){
+    // 14.10.2026: hier stand productUpdate(tags:['bilder-fehlgeschlagen']) — das ERSETZT alle Tags (auch «cj-real»); ein
+    // später wiederbelebter Entwurf war damit für die Lieferbarkeits-Wächter unsichtbar. Status und Tag getrennt setzen.
     await sgql(st,`mutation($i:ProductInput!){productUpdate(input:$i){userErrors{message}}}`,
-               {i:{id:pid,status:'DRAFT',tags:['bilder-fehlgeschlagen']}});
+               {i:{id:pid,status:'DRAFT'}});
+    await sgql(st,`mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}`,
+               {id:pid,t:['bilder-fehlgeschlagen']});
     console.log('  ⛔ kein Bild geladen → DRAFT:',title.slice(0,44));
     fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid));
     continue;
