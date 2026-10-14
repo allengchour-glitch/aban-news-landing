@@ -262,3 +262,6 @@ name:tshirtalgerien
 name:verstellbarerkatzenschüssel15
 pid:15523984146817
 slug:verstellbarer-katzenschussel-15-f0b6ca
+pid:1390978194169008128
+pid:15508423016833
+slug:anti-rutsch-gummifusse-fur-waschmaschinen

@@ -7350,3 +7350,9 @@ gid://shopify/Product/15472049848705	zugeordnet	12	Blumiges langes Damen-Kleid
 gid://shopify/Product/15472049881473	zugeordnet	36	Elegantes Hemdblusenkleid mit Schnürung
 gid://shopify/Product/15472050110849	zugeordnet	4	Digitales Kindermikroskop für draussen
 gid://shopify/Product/15472050176385	zugeordnet	60	Wasserdichtes dreieckiges Sonnensegel für Aussenbereiche
+gid://shopify/Product/15472050274689	zugeordnet	8	Wasserdichter Dry Bag mit Blumenprint, 10L
+gid://shopify/Product/15472050372993	zugeordnet	3	Minimalistische Laterne im Bücherregal-Design
+gid://shopify/Product/15472050536833	zugeordnet	4	Alien-Teppich für Sofa und Couchtisch
+gid://shopify/Product/15472050667905	zugeordnet	4	Kühlende Sommerdecke mit Sojafaserfüllung
+gid://shopify/Product/15472058597761	zugeordnet	4	Hollow-Out Wheel Uhr, wasserdicht, Stahlband
+gid://shopify/Product/15472058696065	zugeordnet	2	Kurzes Strickkleid mit Geometrischem Muster
