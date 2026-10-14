@@ -8810,3 +8810,6 @@ diy-kaffeemuster-diamant-kunst-untersetzer-813569	2007351046700699650	16	7.17	ok
 diy-diamantkunst-kuchenmatte-mit-halterung-932930	2007359182183624705	16	7.17	ok	landeseite
 diamond-art-coaster-set-mit-halterung-712962	2007360561303433218	16	7.17	ok	landeseite
 diy-diamantpuzzle-coaster-mit-halterung-467265	2007346992738381825	16	7.17	ok	landeseite
+diy-diamantmalerei-coaster-mit-halterung-357505	2007342704210243586	16	7.17	ok	landeseite
+diy-mandala-diamantkunst-becherkafer-set-673217	2007361877753753602	16	7.17	ok	landeseite
+diy-diamantmalerei-untersetzer-mit-halterung-k-416194	2007361152532525057	16	7.17	ok	landeseite
