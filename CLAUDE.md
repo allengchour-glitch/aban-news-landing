@@ -64,7 +64,7 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
-**📌 2026-10-14 nachts (🔒 Pilot 2.0: 11. Prüfung — 1 Blocker + 5 wichtig + 5 klein behoben, bleibt GESPERRT):** Prüfer-Agent
+**📌 2026-10-14 nachts (🔒 Pilot 2.0: 11. Prüfung — 1 Blocker + 5 wichtig + 5 klein + 3 aus der Schlussprobe behoben, bleibt GESPERRT):** Prüfer-Agent
 (Belege `scratchpad/pruefung11/` p1–p10) fand: **B1** Not-Aus setzte den Schutz-Stop mit VERALTETEM Kurs — Kurs gesprungen + Spot-Ticker
 429 → zweimal −2021 → Short ohne Stop (10'058 USDT), Meldung trotzdem «beidseitig gesichert»; Cockpit/Telegram-Not-Aus ohne Nachkontrolle. Behoben:
 - **`_notaus_schutz` neu:** frischer Kurs = Spot-Ticker, sonst Futures-Markpreis (`_kurs_oder_mark`, auch für die Lage im Not-Aus); auch
@@ -83,7 +83,17 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (eigener Zufall, alte Seeds gleich), Monotonie-Phase auch mitten im Lauf (`SCHUTZ_VERLOREN_MITTEN_*`), «Stop zu gross» = was nach dem
   Auslösen ungedeckt bliebe, 429 im vollen Protokoll, Prüf-Börse `B.symbol_status`.
 - Tests: live 154, streng 109 (11.p1–p9, K1/K2/K5, W2, F/F2/F3), cockpit 115. **Falle:** ein Stichproben-Skript ohne `cd "$(dirname "$0")"`
-  legte Fuzzer-Ordner im Repo-Root an → vor jedem Commit `git status`. **Nächster Schritt:** 12. unabhängige Prüfung.
+  legte Fuzzer-Ordner im Repo-Root an → vor jedem Commit `git status`.
+- **Schlussprobe (Mutationen) fand 15 nicht erkannte + 1 veraltetes Muster** — und dabei **3 echte Fehler (behoben):** F1 `_spot_freigeben`
+  verkleinerte den Stop zum schon ERREICHTEN alten Kurs → Binance storniert, lehnt «würde sofort auslösen» ab → Stop weg + Meldung «der
+  Spot-Stop bleibt» falsch (jetzt `_stop_preis`, `nur_storno` → `_StopWeg`: geplanten Verkauf ausführen, Rest am Laufende sichern); F2
+  `_spot_stops_verkaufen` verkaufte nach abgelehntem 1. Versuch die ganze Stop-Menge (auch die Ernte-Absicherung → nackter Short) → jetzt
+  höchstens Netto-Richtung; F3 hängender STOP_LOSS_LIMIT ohne bekannten Stop-Kurs → `f"{grenze:g}"` TypeError → Nachkontrolle liess den
+  Long in JEDEM Takt ohne wirksamen Stop. Neue Szenarien 11.F1/F1b/F2/F3 + 11.S1–S13 (streng **126**). Gleichwertig: R11-M19 (Staub-Paar,
+  Unterschied < Staubgrenze). **LEHRE:** die Zahl «57/57» der 10. Runde galt für einen Zwischenstand — am gemergten Stand waren M2,
+  R10-M11/M16/M19/M24 schon unerkannt → Mutationsprobe IMMER auf dem Endstand, kurz vor dem Merge, neu laufen lassen.
+  Harness: `scratchpad/mut11/szenario.py <sz.py> [Mutation|HEAD]` (Szenario gegen aktuell/mutiert/committet), `diagnose.py <commit> <Mut>`.
+- **Nächster Schritt:** 12. unabhängige Prüfung (Auftrag `scratchpad/pruefung12_auftrag.md`).
 
 **📌 2026-10-14 abends (🔒 Pilot 2.0: 10. Prüfung — 2 Blocker + 4 wichtig + 4 klein behoben, bleibt GESPERRT):** Prüfer-Agent
 (Belege `scratchpad/pruefung10/`, Monotonie-Fuzzer fz10) fand: **B1** Not-Aus schloss zuerst den GANZEN Short (auch die Ernte-
