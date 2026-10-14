@@ -674,14 +674,17 @@ Andere Strategie wählen: `setx KRYPTO_STRATEGIE "halten"` (immer 100 %) oder `"
 
 ## 🚀 Pilot 2.0 einschalten (Spot-Long + Short + Funding-Ernte)
 
-> ⛔ **NOCH NICHT FREIGEGEBEN (13.10.2026).** Sechs unabhängige Prüfungen fanden Blocker. Die Wurzel der letzten vier Runden war
-> dieselbe: ein eigenes Coin- und USDT-Buch, das vom Konto abweichen konnte (fremde Coins, verlorene Antworten, unklare Aufträge).
-> Darum ist Pilot 2.0 umgebaut auf **«Konto = Wahrheit»**: Er handelt nur in einem Binance-**Unterkonto**, das ihm allein gehört,
-> und liest jeden Lauf den Kontostand (101 Tests, Mutationsproben). `FREIGEGEBEN = False` bleibt, bis eine weitere unabhängige
-> Prüfung keine Blocker mehr findet — bis dahin wirkt `KRYPTO_PILOT2=an` nicht (siehe «Starten» unten).
+> ⛔ **NOCH NICHT FREIGEGEBEN (14.10.2026).** Acht unabhängige Prüfungen fanden Lücken. Die Wurzel der Runden 3–6 war ein
+> eigenes Coin- und USDT-Buch, das vom Konto abweichen konnte — darum ist Pilot 2.0 umgebaut auf **«Konto = Wahrheit»**: Er
+> handelt nur in einem Binance-**Unterkonto**, das ihm allein gehört, und liest jeden Lauf den Kontostand. Die 8. Prüfung brachte
+> eine noch strengere nachgebaute Binance und Fuzzer mit (`pruef_boerse.py`, `pruef_fuzzer.py`); ihre Funde sind behoben und als
+> feste Szenarien in `test_pilot2_streng.py`. Danach: 1600 Not-Aus und 200 × 30 Tage Läufe mit Störungen in jedem Schritt ohne
+> Befund (ausser Staub unter einem Futures-Schritt). `FREIGEGEBEN = False` bleibt, bis eine weitere unabhängige Prüfung keine
+> Blocker mehr findet — bis dahin wirkt `KRYPTO_PILOT2=an` nicht (siehe «Starten» unten).
 
 Gleiche Signale wie der Pilot, klügere Ausführung über **beide** Binance-Konten (`pilot2_plan.py` rechnet, `pilot2_live.py`
-handelt; 23 + 141 Tests mit einer streng nachgebauten Binance, Mutationsproben). Ohne `KRYPTO_PILOT2=an` handelt der Pilot wie bisher.
+handelt; 23 + 149 + 46 Tests gegen zwei streng nachgebaute Binance, Fuzzer, Mutationsproben). Ohne `KRYPTO_PILOT2=an` handelt der
+Pilot wie bisher.
 
 **Was er tut:** Richtung long → Coin im Spot-Konto (kein Funding). Richtung short → Short-Perpetual (Hebel 1, bekommt Funding).
 Freier Teil → Funding-Ernte: Coin im Spot + gleich grosser Short (marktneutral, Pfand 110 %, CROSS-Marge). Er verschiebt USDT
@@ -699,12 +702,14 @@ selbst zwischen Spot- und Futures-Teil des Unterkontos (wenn der Schlüssel das 
   (oder meldet Binance keine UID), handelt er nicht — und der Not-Aus fasst ein fremdes Konto nie an.
 - **Not-Aus hat Vorrang vor allem** (Pause, fehlende Einstellungen, andere Bots): `stop.bat`, Cockpit, Telegram `/stop` und die
   Tagesaufgabe schliessen jeden gestarteten Modus mit dessen Schlüsseln — auch wenn du die Schalter schon umgestellt hast. Erst
-  das Perpetual (lässt es sich nicht schliessen, bleibt so viel Spot als Absicherung stehen, wie der Short gross ist), dann alle
-  Aufträge auf BTC/ETH weg, alle BTC/ETH verkaufen (mehrere Versuche), USDT zurück ins Spot-Konto. Er liest zuerst die ganze Lage
-  — geht das nicht, fasst er nichts an. Scheitert der Verkauf (abgelehnt, Rate-Limit, nur teilweise ausgeführt, Konto kurz nicht
-  lesbar), bekommt alles Ungesicherte sofort einen **Schutz-Stop**: nie ein Long ohne Absicherung UND ohne Stop. «Alles zu» meldet
-  er nur, wenn nachgeprüft — danach beginnt Pilot 2.0 beim nächsten Einschalten neu (mit Startprüfung). Auch ein Not-Aus mitten
-  im Lauf stoppt den Aufbau.
+  das Perpetual (lässt es sich nicht schliessen, bleibt so viel Spot als Absicherung stehen, wie der Short gross ist), dann zuerst
+  die **freien** Coins verkaufen — erst wenn das geht, löscht er die Stops und verkauft den Rest (geht Verkaufen gerade nicht,
+  bleibt der Stop stehen); mehrere Versuche, USDT zurück ins Spot-Konto. Er liest zuerst die ganze Lage — geht das nicht, fasst
+  er nichts an. Scheitert der Verkauf (abgelehnt, Rate-Limit, nur teilweise ausgeführt, Konto kurz nicht lesbar), bekommt alles
+  Ungesicherte sofort einen **Schutz-Stop**: bestehende eigene Stops bleiben (gesperrte Coins gelten als gesichert), nur zu grosse
+  werden ersetzt (sie träfen die Absicherung) — nie ein Long ohne Absicherung UND ohne Stop. «Alles zu» meldet er nur, wenn
+  nachgeprüft, kein Futures-Auftrag mehr offen und kein Auftrag mehr unklar ist — danach beginnt Pilot 2.0 beim nächsten
+  Einschalten neu (mit Startprüfung). Auch ein Not-Aus mitten im Lauf stoppt den Aufbau.
 - **Stops nach dem Kontostand:** am Ende jedes Laufs auf die TATSÄCHLICHE Netto-Richtung (Spot-Coins + Perpetual), auch für Reste
   eines mehrtägigen Richtungswechsels: long → Spot-Stop (STOP_LOSS, beim Auslösen ein Marktauftrag), short → Perp-Stop mit Menge +
   reduceOnly (trifft nie die Ernte-Absicherung). Ein passender Stop **bleibt stehen** (nie ersatzlos löschen); nur wer ersetzt
@@ -712,11 +717,15 @@ selbst zwischen Spot- und Futures-Teil des Unterkontos (wenn der Schlüssel das 
   (Sturz während des Laufs, Binance «würde sofort auslösen»), schliesst er sofort zum Markt — wie ein ausgelöster Stop; geht auch
   das nicht, setzt er einen Not-Stop 5 % vom frischen Kurs. Fehlt ein gültiger Stop-Kurs: der zuletzt benutzte, sonst 5 % vom
   Kurs. Kurze Störungen (503, 429) wiederholt er. Eigene Stops tragen eine Kennung (`p2s…`/`p2a…`): keine Doppel-Stops, verwaiste
-  löscht der nächste Lauf. Fällt das Konto mitten im Lauf aus, setzt er die Stops trotzdem und meldet alles. Ist etwas nicht
-  prüfbar oder sind Coins durch einen anderen Auftrag gesperrt, warnt er laut «OHNE Stop» bzw. «nur … gesichert».
-- **Unklare Antworten:** Der Markt ist für den Rest des Laufs gesperrt; nichts wird nachträglich «verbucht» — der nächste Lauf
-  liest den Kontostand. Einen Ernte-Short mit unklarer Antwort rechnet er nie zurück: der Spot bleibt und bekommt als Long einen Stop,
-  und über die unklare Short-Menge kommt ein reduceOnly-Stop (harmlos, falls er nie ausgeführt wurde; schützt, falls er verspätet ankommt).
+  löscht der nächste Lauf. Fällt das Konto mitten im Lauf aus, setzt er die Stops trotzdem und meldet alles. Ist die Auftragsliste
+  oder der Kontostand nicht lesbar, sichert er trotzdem: länger warten, sonst nach dem Stand von vorhin; gesperrte Coins gelten im
+  Pilot-Konto als von einem eigenen Stop gehalten (ein neuer deckt nur den Rest — nie doppelt über die Absicherung). Was danach
+  noch offen ist, meldet er laut («OHNE Stop»).
+- **Unklare Antworten:** Der Markt ist für den Rest des Laufs gesperrt; nichts wird nachträglich «verbucht». Am Laufende fragt er
+  per Kennung nach (mehrmals; noch offen → storniert). Bleibt ein Futures-Auftrag unklar, steht er im Buch, sperrt den Markt, bis
+  Binance ihn bestätigt (nach 10 Minuten unbekannt = nie ausgeführt), und der Markt wird **beidseitig** gesichert: Spot-Stop über
+  alle Coins, reduceOnly-Perp-Stop über den ganzen Short plus die unklaren Shorts. Löst einer aus, schützt der andere den Rest (die
+  Ernte endet dann) — egal ob der unklare Auftrag nie oder verspätet ankommt: nie ein nackter Short, nie ein Long ohne Stop.
 - **Keine ungesicherte Ernte:** Pfand-Puffer in der Basis, Marge vor dem Short geprüft. Wird ein Kauf gekürzt, wird der Short
   gleich stark gekürzt; bliebe er unter dem Binance-Minimum, kauft er heute nur die Richtung. Lehnt Binance den Short ab, verkauft
   er nur die ungesicherten Ernte-Coins zurück — nie den Richtungs-Long.
@@ -825,7 +834,10 @@ python3 tools/trading/krypto_bot/test_cockpit.py  # 113 Tests: Claude, Schattenk
 python3 tools/trading/krypto_bot/test_calls.py    # 84 Tests: 40 typische Call-Formate, Plausibilität, Antworten/Wiederholungen, Nachspielen, Zufallsprobe, Kopierer gegen nachgebauten Binance-Server
 python3 tools/trading/krypto_bot/test_binance.py  # 21 Tests, inkl. nachgebautem Binance-Server mit Signaturprüfung
 python3 tools/trading/krypto_bot/test_pilot2_plan.py  # 23 Tests: Pilot-2.0-Rechnung (Richtung, Ernte, Pfand, Mindestbeträge)
-python3 tools/trading/krypto_bot/test_pilot2_live.py  # 101 Tests: Pilot 2.0 («Konto = Wahrheit») gegen eine strenge nachgebaute Binance
+python3 tools/trading/krypto_bot/test_pilot2_live.py  # 149 Tests: Pilot 2.0 («Konto = Wahrheit») gegen eine strenge nachgebaute Binance
+python3 -B tools/trading/krypto_bot/test_pilot2_streng.py  # 46 Tests: Belege der 8. Prüfung + Fuzzer-Funde gegen die Prüf-Börse, kleiner Fuzzer
+python3 -B tools/trading/krypto_bot/pruef_fuzzer.py notaus 0 1600     # grosser Fuzzer (für Prüfungen): Not-Aus unter harten Störungen
+python3 -B tools/trading/krypto_bot/pruef_fuzzer.py laeufe 0 200 30   # … Läufe über 30 Tage, Störungen in jedem Schritt
 python3 tools/trading/krypto_bot/test_scalping.py      # 50 Tests: kein Blick in die Zukunft, strenge Füll-Regeln, Kosten exakt, Entscheidungsregeln
 python3 tools/trading/krypto_bot/test_news_waechter.py # 32 Tests: Alarm-Regeln, keine Fehlalarme, nur einmal melden, kein Fluten, Delistings jede Minute, Telegram-Kanäle
 python3 tools/trading/krypto_bot/test_delisting.py     # 36 Tests: Ankündigungen lesen, Einstieg/Ausstieg, Funding, Zufallsprobe (ohne Netz)

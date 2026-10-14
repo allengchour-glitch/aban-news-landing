@@ -430,16 +430,16 @@ def handeln2(ents, lage, trocken, alt_offen=(), alt_fehler=None):
         if zusatz:
             r2["zeilen"] = zusatz + r2["zeilen"]
             r2["warnung"] = r2["warnung"] or bool(alt_offen)
-    if not trocken:
+    if not trocken:  # ein Probelauf schreibt und sendet nichts (auch kein Logbuch, keine Push-Nachricht)
         kontostand_merken(lb, ents[0]["stand"], r2.get("kapital"), f"pilot2-{r2.get('modus')}")
         lb["letzter_lauf"] = {"zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), "ok": not r2["warnung"],
                               "hinweise": [z for z in r2["zeilen"] if "⚠️" in z][:10]}
-    schreiben(lb)
+        schreiben(lb)
     zeilen = [text(e) for e in ents] + ["Pilot 2.0 (Spot-Long + Short + Ernte):"] + ["   " + z for z in r2["zeilen"]]
     bericht = None if trocken else wochenbericht(lb, date.today().isoformat())
     lage_text = lage() if callable(lage) else lage
     print("\n".join(zeilen))
-    if r2["auftraege"] or r2["warnung"] or bericht:
+    if not trocken and (r2["auftraege"] or r2["warnung"] or bericht):
         import signale as SG
         SG.push("\n".join(zeilen) + f"\n{lage_text}" + (f"\n\n{bericht}" if bericht else "") + "\nKeine Anlageberatung.")
     return 3 if r2["warnung"] else 0

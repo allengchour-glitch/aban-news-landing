@@ -14,6 +14,8 @@ SPERRE_WIRKT = L.FREIGEGEBEN or not L.aktiv({"KRYPTO_PILOT2": "an"})  # solange 
 L.FREIGEGEBEN = True  # für die Tests freischalten (ausgeliefert ist Pilot 2.0 gesperrt)
 BF.NACHFRAGE_WARTEN = (0.0, 0.0, 0.0)
 L.LESE_WARTEN = (0.0, 0.0)
+L.SCHUTZ_WARTEN = (0.0, 0.0, 0.0, 0.0)
+L.UNKLAR_WARTEN = (0.0, 0.0, 0.0)
 GEHEIM = "geheim"
 n_ok = n_f = 0
 def pruefe(name, c, info=""):
@@ -35,6 +37,7 @@ class X(BaseHTTPRequestHandler):
         X.einstand = {"BTCUSDT": 0.0, "ETHUSDT": 0.0}  # Einstandspreis je Perp → offener Gewinn/Verlust wie bei Binance
         X.teil = None; X.spot_sell_429 = False; X.konto_fehler_ab = None; X.n_konto = 0; X.pos_fehler_ab = None; X.n_pos = 0
         X.fkonto_fehler = False; X.konto_fehler_anzahl = None; X.pos_fehler_anzahl = None; X.vor_stop = None
+        X.fcids = {}; X.perp_spaet = False; X.spaet = []; X.storno_kaputt = False; X.abfrage_kaputt = False
         for a, b in k.items(): setattr(X, a, b)
     def gestoert(n, ab, anzahl):  # n-ter Aufruf im Störfenster [ab, ab+anzahl) (anzahl None = für immer)
         return ab is not None and n >= ab and (anzahl is None or n < ab + anzahl)
@@ -77,6 +80,8 @@ class X(BaseHTTPRequestHandler):
         if pfad == "/api/v3/order" and p.get("type") in ("STOP_LOSS", "STOP_LOSS_LIMIT"):
             coin = p["symbol"][:-4]; q = float(p["quantity"])
             if X.vor_stop: X.vor_stop()
+            if any(o.get("cid") == p.get("newClientOrderId") and o["status"] == "NEW" for o in X.orders.values()):
+                return self._a({"code": -2010, "msg": "Duplicate order sent."}, 400)
             if X.stop_fehler: return self._a({"code": -1013, "msg": "Filter failure"}, 400)
             if float(p["stopPrice"]) >= X.kurs[p["symbol"]]: return self._a({"code": -2010, "msg": "Stop price would trigger immediately."}, 400)
             if X.frei[coin] < q - 1e-12: return self._a({"code": -2010, "msg": "Account has insufficient balance for requested action."}, 400)
@@ -148,19 +153,34 @@ class X(BaseHTTPRequestHandler):
                 noetig = abs(q) * X.kurs[sym] / X.hebel[sym]
                 if X.verfuegbar() < noetig - 1e-6: return self._a({"code": -2019, "msg": "Margin is insufficient."}, 400)
             if X.perp_503 == "nein" and p.get("reduceOnly") != "true": X.perp_503 = None; return self._a({"code": -1001, "msg": "Unknown"}, 503)
+            if X.perp_spaet and p.get("reduceOnly") != "true":
+                X.perp_spaet = False; o = {"status": "NEW", "executedQty": "0", "sym": sym, "q": q}
+                X.fcids[p["newClientOrderId"]] = o; X.spaet.append(o)
+                return self._a({"code": -1001, "msg": "Unknown"}, 503)
             X.buchen(sym, q); X.cids[p["newClientOrderId"]] = {"status": "FILLED"}
+            X.fcids[p["newClientOrderId"]] = {"status": "FILLED", "executedQty": p["quantity"]}
             if X.perp_503 == "ja" and p.get("reduceOnly") != "true": X.perp_503 = None; return self._a({"code": -1001, "msg": "Unknown"}, 503)
             if X.nach_order: X.nach_order()
             return self._a({"status": "FILLED", "executedQty": p["quantity"]})
         if pfad == "/fapi/v1/openAlgoOrders":
             if X.algo_liste_fehler: return self._a({"code": -1001, "msg": "Internal error"}, 503)
             return self._a([{"algoId": i, **a} for i, a in X.algos.items() if a["symbol"] == p["symbol"]])
-        if pfad == "/fapi/v1/order" and m == "GET": return self._a({"code": -2013, "msg": "Order does not exist."}, 400)
+        if pfad == "/fapi/v1/order" and m == "GET":
+            if X.abfrage_kaputt: return self._a({"code": -1001, "msg": "Internal error"}, 503)
+            o = X.fcids.get(p.get("origClientOrderId"))
+            if not o: return self._a({"code": -2013, "msg": "Order does not exist."}, 400)
+            return self._a({"status": o["status"], "executedQty": o["executedQty"]})
+        if pfad == "/fapi/v1/order" and m == "DELETE":
+            o = X.fcids.get(p.get("origClientOrderId"))
+            if X.storno_kaputt or not o or o["status"] != "NEW": return self._a({"code": -2011, "msg": "Unknown order sent."}, 400)
+            o["status"] = "CANCELED"; return self._a({"status": "CANCELED"})
         if pfad == "/fapi/v1/algoOrder" and m == "POST":
             if "closePosition" in p and "quantity" in p: return self._a({"code": -1106}, 400)
             if X.vor_stop: X.vor_stop()
             if (p["side"] == "BUY") == (float(p["triggerPrice"]) <= X.kurs[p["symbol"]]):
                 return self._a({"code": -2021, "msg": "Order would immediately trigger."}, 400)
+            if any(a.get("clientAlgoId") == p.get("clientAlgoId") for a in X.algos.values()):
+                return self._a({"code": -4116, "msg": "ClientOrderId is duplicated."}, 400)
             X.next_id += 1; X.algos[X.next_id] = p
             if X.algo_antwort_weg: X.algo_antwort_weg = False; return self._a({"code": -1001, "msg": "Unknown"}, 503)
             return self._a({"algoId": X.next_id})
@@ -169,6 +189,12 @@ class X(BaseHTTPRequestHandler):
             if int(p["algoId"]) not in X.algos: return self._a({"code": -2011, "msg": "Unknown order"}, 400)
             del X.algos[int(p["algoId"])]; return self._a({"code": 200})
         return self._a({})
+    def spaet_ausfuehren():
+        """Unklare Perp-Aufträge, die Binance erst später ausführt."""
+        for o in X.spaet:
+            if o["status"] == "NEW":
+                X.buchen(o["sym"], o["q"]); o.update(status="FILLED", executedQty=repr(abs(o["q"])))
+        X.spaet = []
     def upnl():
         return sum(X.pos[s] * (X.kurs[s] - X.einstand[s]) for s in X.pos)
     def verfuegbar():
@@ -234,7 +260,8 @@ st = stops_offen()
 pruefe("Spot-Stop (STOP_LOSS = Markt beim Auslösen) über den GANZEN Bestand nach Gebühr", len(st) == 1 and abs(st[0]["qty"] - coins()) < 2e-5
        and st[0]["typ"] == "STOP_LOSS", st)
 pruefe("keine Warnung", not r["warnung"], r["zeilen"])
-pruefe("Buch: nur Start, Konto-ID, Stop-Kennungen — kein Coin- oder USDT-Buch", set(json.loads(d.read_text())["testnetz"]) == {"start", "uid", "stops", "perp_offen"},
+pruefe("Buch: nur Start, Konto-ID, Stop-Kennungen, unklare Aufträge — kein Coin- oder USDT-Buch",
+       set(json.loads(d.read_text())["testnetz"]) == {"start", "uid", "stops", "perp_offen", "unklar"},
        json.loads(d.read_text()))
 n0 = len(markt_orders()); r = lauf([E("BTC", 1.0)], TEST, d)
 pruefe("zweiter Lauf: kein neuer Kauf, genau EIN offener Stop", len(markt_orders()) == n0 and len(stops_offen()) == 1, (markt_orders()[n0:], stops_offen()))
@@ -289,8 +316,11 @@ X.reset(spot_503=True, nachfrage_kaputt=True); d = neu_buch(); lauf([E("BTC", 1.
 r = lauf([], TEST, d, notaus=True)
 pruefe("unklarer Kauf → Not-Aus verkauft trotzdem alles (Kontostand), «alles zu» stimmt", coins() * 100000 < 5 and r["alles_zu"] is True, (X.frei, r["zeilen"]))
 X.reset(perp_503="ja"); d = neu_buch(); r = lauf([E("BTC", 0.0)], ECHT, d)
-pruefe("Short-Antwort unklar, aber ausgeführt → Ernte bleibt (netto ≈ 0), als ausgeführt erkannt", coins() > 0.01
-       and abs(netto_btc()) * 100000 < 15 and any("zeigt AUSGEFÜHRT" in z for z in r["zeilen"]), (X.frei, X.pos, r["zeilen"]))
+pruefe("Short-Antwort verloren, aber ausgeführt → per Kennung als ausgeführt erkannt, Ernte bleibt (netto ≈ 0)", coins() > 0.01
+       and abs(netto_btc()) * 100000 < 15 and not L.buch_lesen(d, "echt")["unklar"], (X.frei, X.pos, r["zeilen"]))
+X.reset(perp_503="ja", abfrage_kaputt=True); d = neu_buch(); r = lauf([E("BTC", 0.0)], ECHT, d)  # Nachfrage per Kennung: keine Antwort
+pruefe("… ist die Kennung nicht abfragbar: Position nachlesen zeigt AUSGEFÜHRT", coins() > 0.01 and abs(netto_btc()) * 100000 < 15
+       and any("zeigt AUSGEFÜHRT" in z for z in r["zeilen"]), (X.frei, X.pos, r["zeilen"]))
 X.reset(perp_503="nein"); d = neu_buch(); r = lauf([E("BTC", 0.0)], ECHT, d)
 st = stops_offen()
 pruefe("Short-Antwort unklar, Position zeigt nichts → KEIN Rückverkauf, der Spot bekommt als Long einen Stop", X.pos["BTCUSDT"] == 0
@@ -469,8 +499,9 @@ X.next_id += 1; X.orders[X.next_id] = {"id": X.next_id, "symbol": "BTCUSDT", "qt
 X.frei["BTC"] -= 0.05; X.gesperrt["BTC"] += 0.05
 r = lauf([E("BTC", 1.0)], TEST, d)
 eigene = [o for o in stops_offen() if o.get("cid", "").startswith("p2s")]
-pruefe("Teil der Coins durch einen anderen Auftrag gesperrt → Stop über den freien Teil + laute Warnung", eigene
-       and abs(eigene[0]["qty"] - (coins() - 0.05)) < 2e-5 and any("gegen Stop gesichert" in z for z in r["zeilen"]), (eigene, r["zeilen"]))
+pruefe("Coins durch einen Auftrag ausserhalb der Liste gesperrt → gilt als Stop, neuer Stop nur über den Rest (nie doppelt) + laute Warnung",
+       eigene and abs(eigene[0]["qty"] - (coins() - 0.05)) < 2e-5 and any("nicht in der Auftragsliste" in z for z in r["zeilen"]),
+       (eigene, r["zeilen"]))
 X.reset(); d = neu_buch(); lauf([E("BTC", 0.0)], ECHT, d)
 pruefe("Ernte mit Gebühren-Staub → kein Perp-Stop", not X.algos, X.algos)
 X.reset(); d = neu_buch(); lauf([E("BTC", 0.0)], ECHT, d)
@@ -619,14 +650,41 @@ pruefe("Spot reicht knapp über die Richtung: Ernte-Rest unter dem Short-Minimum
 X.reset(perp_fehler=True); d = neu_buch(); r = lauf([E("BTC", 0.5)], ECHT, d)
 pruefe("Ernte-Short abgelehnt → nur die Ernte-Coins zurück, der Richtungs-Long bleibt (mit Stop)", 0.098 < coins() < 0.1
        and stops_offen() and abs(stops_offen()[0]["qty"] - coins()) < 2e-5, (coins(), stops_offen(), r["zeilen"]))
-# ── unklarer Short bekommt einen Schutz-Stop (W8) ──
+# ── unklare Perp-Aufträge: per Kennung klären; was offen bleibt → Markt BEIDSEITIG sichern (8. Prüfung p3/p9 + Fuzzer) ──
 X.reset(perp_503="nein"); d = neu_buch(); r = lauf([E("BTC", -0.5)], ECHT, d)
-schutz = [a for a in X.algos.values() if a.get("reduceOnly") == "true"]
-pruefe("Short mit unklarer Antwort → reduceOnly-Stop über die unklare Menge", schutz and float(schutz[0]["quantity"]) >= 0.09
-       and any("unklare Menge" in z for z in r["zeilen"]), (X.algos, r["zeilen"]))
-X.buchen("BTCUSDT", -float(schutz[0]["quantity"]) if schutz else 0.0)  # … kommt doch noch an (verspätet ausgeführt)
-X.ausloesen("BTCUSDT", 115000.0)
-pruefe("… kommt der Short verspätet doch an, schliesst ihn der Stop beim Anstieg", X.pos["BTCUSDT"] >= -1e-9, X.pos)
+b8 = L.buch_lesen(d, "echt")
+q8 = b8["unklar"][0]["menge"] if b8["unklar"] else 0.0
+perp8 = sum(float(a["quantity"]) for a in X.algos.values() if a["side"] == "BUY" and a.get("reduceOnly") == "true")
+pruefe("Short mit unklarer Antwort (bleibt unklar) → Auftrag im Buch, laut gemeldet, BEIDE Seiten ganz gesichert: Spot-Stop über alle "
+       "Coins, reduceOnly-Perp-Stop über Short + unklaren Short", len(b8["unklar"]) == 1 and b8["unklar"][0]["cid"] and r["warnung"]
+       and stops_offen() and abs(sum(o["qty"] for o in stops_offen()) - coins()) < 2e-5
+       and abs(perp8 - (abs(min(X.pos["BTCUSDT"], 0.0)) + q8)) < 1e-9, (X.algos, b8["unklar"], r["zeilen"]))
+pruefe("… die gekauften Ernte-Coins sind ohne Short ein Long — und haben einen Stop", stops_offen() and abs(stops_offen()[0]["qty"] - coins()) < 2e-5,
+       (stops_offen(), coins()))
+n0 = len([o for o in markt_orders() if o[3] == "BTCUSDT"]); r = lauf([E("BTC", -0.5)], ECHT, d)
+pruefe("nächster Lauf: noch unklar (jung) → Markt BTC gesperrt, kein neuer BTC-Auftrag", len([o for o in markt_orders() if o[3] == "BTCUSDT"]) == n0
+       and any("noch immer unklar" in z for z in r["zeilen"]), r["zeilen"])
+alter_max = L.UNKLAR_MAX_ALTER_MS; L.UNKLAR_MAX_ALTER_MS = -1
+r = lauf([E("BTC", -0.5)], ECHT, d); L.UNKLAR_MAX_ALTER_MS = alter_max
+pruefe("… nach 10 Minuten kennt Binance ihn immer noch nicht → «nie ausgeführt», Buch leer, Handel geht weiter",
+       not L.buch_lesen(d, "echt")["unklar"] and any("nie ausgeführt" in z for z in r["zeilen"]) and X.pos["BTCUSDT"] < -0.05, (r["zeilen"], X.pos))
+ungesichert8 = max(0.0, -(coins() + X.pos["BTCUSDT"]))
+perp8 = sum(float(a["quantity"]) for a in X.algos.values() if a["side"] == "BUY")
+pruefe("… danach wieder normale Stops: der beidseitige Perp-Stop ist weg, nur noch einer über den ungesicherten Short",
+       len(X.algos) == 1 and abs(perp8 - ungesichert8) <= 0.001 + 1e-9 and not stops_offen(), (X.algos, ungesichert8, stops_offen()))
+X.reset(perp_spaet=True); d = neu_buch(); r = lauf([E("BTC", -0.5)], ECHT, d)
+pruefe("unklarer Short noch offen (NEW) → am Laufende storniert → geklärt «nie ausgeführt», nichts im Buch",
+       not L.buch_lesen(d, "echt")["unklar"] and any("nie ausgeführt" in z for z in r["zeilen"]), r["zeilen"])
+X.spaet_ausfuehren()
+pruefe("… storniert heisst: er kommt auch später nicht mehr an", X.pos["BTCUSDT"] == 0, X.pos)
+X.reset(perp_spaet=True, storno_kaputt=True); d = neu_buch(); lauf([E("BTC", 0.0)], ECHT, d)
+r = lauf([], ECHT, d, notaus=True)
+pruefe("Not-Aus mit noch unklarem Auftrag → NICHT «alles zu», Buch bleibt (8. Prüfung p9)", r["alles_zu"] is False and L.hat_bestand(d)
+       and any("noch unklar" in z for z in r["zeilen"]), r["zeilen"])
+X.spaet_ausfuehren()  # … der Short kommt verspätet doch an
+r = lauf([], ECHT, d, notaus=True)
+pruefe("… der nächste Not-Aus findet den verspäteten Short über die Kennung und schliesst ihn: jetzt «alles zu»",
+       r["alles_zu"] is True and X.pos["BTCUSDT"] == 0 and not L.hat_bestand(d), (X.pos, r["zeilen"]))
 # ── Kleinigkeiten: Konflikte nur im selben Konto (K2), Testnetz-Adressen (K6), Hedge-Modus auch im Testnetz (K7) ──
 pruefe("echt: ETH-Sparplan mit EIGENEM Schlüssel (anderes Konto) ist kein Konflikt", not L.konflikte({**ECHT, "ETH_SPARPLAN_BETRAG": "50",
        "BINANCE_API_KEY": "haupt"}, True) and L.konflikte({**ECHT, "ETH_SPARPLAN_BETRAG": "50", "BINANCE_API_KEY": "k"}, True)

@@ -97,6 +97,7 @@ jobs:
           python tools/trading/krypto_bot/test_carry.py
           python tools/trading/krypto_bot/test_pilot2_plan.py
           python tools/trading/krypto_bot/test_pilot2_live.py
+          python tools/trading/krypto_bot/test_pilot2_streng.py
           python tools/trading/ki_bot/test_ki_bot.py
       - name: KI-Bot Tages-Depot (Spielgeld)
         # data/ki-bot.json ist gitignored (gehört dem PC). Der GitHub-Lauf führt sein eigenes Logbuch

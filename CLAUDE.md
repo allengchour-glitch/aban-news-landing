@@ -64,6 +64,21 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-14 (🔒 Pilot 2.0: Funde der 8. Prüfung behoben — bleibt GESPERRT):** Der Prüfer-Agent starb am Ausgabelimit, hinterliess
+aber Belege p1–p11 + zwei Fuzzer gegen eine noch strengere Börse. Alles behoben, Börse + Fuzzer + Belege jetzt im Repo:
+- **Unklarer Perp-Auftrag, nicht klärbar** → Markt **beidseitig** gesichert (Spot-Stop über ALLE Coins + reduceOnly-Perp-Stop über den
+  ganzen Short + unklare Shorts; `_soll` mit `d["unklar_sell"]`, `unklar_sell(buch, markt)`): sicher, ob er nie oder verspätet ankommt
+  (vorher: Spot-Stop über spätere Absicherungs-Coins → nackter Short). Am Laufende mehrmals per Kennung nachfragen (`UNKLAR_WARTEN`).
+- **Not-Aus:** erst FREIE Coins verkaufen, Stops nur löschen, wenn Verkaufen geht; Schutz additiv (gesperrte Coins = gedeckt, nie zweiter
+  Spot-Stop über die Absicherung), zu grosse Perp-Stops ersetzt; «alles zu» nur ohne offene Futures-Aufträge und ohne Unklares.
+- **Abgleich:** Liste/Konto nicht lesbar → trotzdem sichern (`SCHUTZ_WARTEN`, Stand von vorhin, `_spot_ohne_liste`/`_perp_ohne_liste`);
+  gesperrte Coins gelten als eigener Stop; `_perp_raus` kauft höchstens die offene Position.
+- **Neu:** `pruef_boerse.py` (strenge Börse der 8. Prüfung, + Storno per Kennung, reduceOnly > Position → −2022), `pruef_fuzzer.py`
+  (`laeufe`/`notaus`), `test_pilot2_streng.py` (46 Tests, im PC-Selbsttest, Cockpit + CI). 1600 Not-Aus + 200 × 30 Tage → **0 Befunde**
+  (nur Staub < 1 Futures-Schritt). Mutationen 15/15 (`python3 -B`!). test_pilot2_live 149.
+- **Nächster Schritt:** 9. unabhängige Prüfung (Ausgabelimit beachten → enger Auftrag, Fuzzer im Repo benutzen); erst bei 0 Blockern
+  FREIGEGEBEN=True (eigener PR) → Testnetz → Probelauf → kleiner Betrag.
+
 **📌 2026-10-13 abends (👥 Copy-Trading · 🐸 Meme/Top 10/alles · 📰 News-Wächter — alle Protokolle VORAB committet):**
 User: «kopiere vom besten», «trade auch meme coins und alles … top 10 auch», «checke immer news überall». Ergebnisse (README `tools/trading/krypto_bot/`):
 - **Copy-Trading** `copytrading_pruefung.py` + `copytrading_kern.py` (24 Tests): 472 Binance-Leadtrader über öffentliche bapi-Endpunkte (ohne Konto).
