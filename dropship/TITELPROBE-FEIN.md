@@ -1,12 +1,11 @@
-# Titelprobe-Fein — Stand 2026-10-13 11:41 UTC
+# Titelprobe-Fein — Stand 2026-10-14 11:49 UTC
 
-Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 6 · gesetzt 6 · fehler 0.
+Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 7 · gesetzt 7 · fehler 0.
 
-- 2 → Bracelets
-- 1 → Dresses
-- 1 → Anklets
-- 1 → Jewelry Sets
-- 1 → Earrings
+- 3 → Shirts & Tops
+- 2 → Pants
+- 1 → Swimwear
+- 1 → Shorts
 
 ## «Rock» mit Ärmeln/Ausschnitt = Kleid — Titel umbenennen (1)
 
@@ -29,6 +28,7 @@ Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 6 · gese
 - Vintage-Steckerohr Sterlingsilber Luxus  [G: Earrings]
 - Premium-Herz-U-Form Hörlinge  [G: Earrings]
 - Blumenprint-Midi mit Volantsärmeln und A-Silhouette  [G: Dresses]
+- Blaues Denim für Herren  [G: Pants]
 - Akryl-Blechlinge  [G: Bracelets]
 - Farbenfrohes Körperkreuz  [G: Dresses]
 - Türkisfarbener Boho-Handgelenk-Band  [G: Bracelets]
@@ -44,7 +44,6 @@ Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 6 · gese
 - Pflanzen-Wachstumslampe für Setzlinge  [G: Necklaces]
 - Rattan Vintage Wandlampe  [G: Necklaces]
 - Herren-Baselayer mit Reissverschluss, Langarm  [G: Activewear]
-- Blaues Denim für Herren  [G: Pants]
 - Einseitige Schulter, Meerjungfrau-Schnitt  [G: Dresses]
 - Einseitiger Rüschensprunganzug  [G: Jumpsuits & Rompers]
 - Einteiliger Rückenfreier Sommeranzug  [G: Jumpsuits & Rompers]
