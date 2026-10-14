@@ -2046,6 +2046,40 @@ funde = P.notaus_runde(9123)
 pruefe("13.F1 Not-Aus-Seed 9123: Auftrag im Schutz unklar, Stand nicht lesbar → zweite Runde beidseitig, keine Befunde",
        not funde, [(f[0], f[1].get("wann")) for f in funde][:5])
 
+# 13.F2 (Schlusskampagne, Listen-Seed 302): zwei Spot-Stops über ETH (ein zu grosser alter + ein Zusatz-Stop, beidseitig), das Buch
+#     kennt nur einen; am nächsten Tag ist die Spot-Liste unlesbar und das Paar voll abgesichert → der bekannte wird gelöscht, der
+#     unbekannte (1,43 ETH) blieb still über der Absicherung (fällt der Kurs: Short ohne Stop). Jetzt: nach dem Löschen am Kontostand
+#     nachsehen — noch zu viel gesperrt → beidseitig, laut, Nachkontrolle
+funde = P.listen_runde(302)
+pruefe("13.F2 Listen-Seed 302: unbekannter zweiter Spot-Stop bei unlesbarer Liste → beidseitig gesichert, keine Befunde", not funde,
+       [(f[0], f[1].get("tag")) for f in funde][:5])
+
+# 13.F3 (Perp-Gegenstück zu 13.F2, eigenes Szenario): Tag 2 ist die Perp-Liste unlesbar UND Löschen geht nicht → jede Abgleich-Runde
+#     setzt einen neuen Stop, die alten bleiben (vier stehen), das Buch kannte nur den letzten; Tag 3 ist die Liste wieder unlesbar und
+#     der Richtungs-Short weg → nur der bekannte wurde gelöscht, die unbekannten (0,387 BTC) blieben über der Absicherung (Kurs hoch:
+#     Coins ohne Short und ohne Stop, 2'555 USDT). Jetzt: nicht löschbare alte Stops merkt das Buch (perp_weitere), jeder Abgleich
+#     löscht sie zuerst (Kennung, ohne Liste), bis dahin beidseitig + Nachkontrolle
+k = neues_konto(20000)
+d = neu_buch()
+lauf([E("BTC", -0.5)], env_echt(), d)
+B.regeln = [regel(methode="GET", pfad="/fapi/v1/openAlgoOrders", art="vor503", anzahl=10 ** 6),
+            regel(methode="DELETE", pfad="/fapi/v1/algoOrder", art="vor503", anzahl=10 ** 6)]
+try:
+    lauf([E("BTC", -0.75)], env_echt(), d)
+finally:
+    B.regeln = []
+b13 = buch13(d)
+weitere13 = (b13.get("stops") or {}).get("BTC", {}).get("perp_weitere") or []
+B.regeln = [regel(methode="GET", pfad="/fapi/v1/openAlgoOrders", art="vor503", anzahl=10 ** 6)]  # Tag 3, ohne Nachkontrolle dazwischen
+try:
+    lauf([E("BTC", 0.5)], env_echt(), d)
+finally:
+    B.regeln = []
+funde = P.echte(P.schutz_befunde(k, P.unklar_je_markt(d)) + P.folgeschaden(k))
+pruefe("13.F3 nicht löschbare alte Perp-Stops gemerkt und am nächsten Tag (Liste wieder unlesbar) über die Kennung gelöscht — keine "
+       "Befunde", len(weitere13) >= 2 and "BTC" in (b13.get("schutz_offen") or []) and not funde,
+       (len(weitere13), b13.get("schutz_offen"), funde, lage(k, "BTCUSDT")))
+
 # 13.K3: Buch 3-Wege zusammenführen — nur was ICH geändert habe, gilt von mir; Geklärtes fällt weg; die Einträge, die der Abgleich in der
 #     Hand hat, bleiben dieselben (in place)
 b0 = L.leer_buch()

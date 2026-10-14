@@ -817,7 +817,8 @@ def listen_runde(seed):
     """Listen-Fuzzer (13. Prüfung, nach dem Fuzzer des Prüfers): 2–6 Tage mit wechselnder Richtung; an 60 % der Tage ist EINE
     Auftragsliste ab einer zufälligen Anfrage dauerhaft gestört (Setzen und Löschen gehen weiter). Lücke nach Lauf UND
     Nachkontrolle = Befund (keine DAUER-Ausnahme). In der Hälfte der Seeds zum Schluss ein Not-Aus mit gestörter Liste (manchmal
-    dazu ein abgelehnter Rückkauf/Verkauf): bleibt dann etwas ungeschützt und meldet er nicht «alles zu», ist das ein Befund."""
+    dazu ein abgelehnter Rückkauf/Verkauf): bleibt etwas ungeschützt, ist das ein Befund — ausser Binance lehnt dauerhaft genau den
+    nötigen Schutz ab (DAUER_, wie im Not-Aus-Fuzzer; laut gemeldet); nach Ankunft und Nachkontrolle zählt alles."""
     rng = random.Random(seed)
     k = neues_konto(rng.choice([5000, 20000, 60000]))
     d = neu_buch()
@@ -846,11 +847,13 @@ def listen_runde(seed):
         for s_ in SYMS:
             B.bewegen(s_, round(B.kurs[s_] * (1 + rng.gauss(0, 0.03)), 2))
     if rng.random() < 0.5:  # zum Schluss ein Not-Aus mit gestörter Liste (und manchmal abgelehntem Rückkauf/Verkauf)
-        B.regeln = [dict(methode="GET", pfad=rng.choice(["/fapi/v1/openAlgoOrders", "/api/v3/openOrders"]), pred=None,
-                         art=rng.choice(["vor503", "429"]), anzahl=10 ** 6, ab_req=B.n_req + rng.randint(1, 30))]
+        regeln_na = [dict(methode="GET", pfad=rng.choice(["/fapi/v1/openAlgoOrders", "/api/v3/openOrders"]), pred=None,
+                          art=rng.choice(["vor503", "429"]), anzahl=10 ** 6, ab_req=B.n_req + rng.randint(1, 30))]
         if rng.random() < 0.5:
-            B.regeln.append(dict(methode="POST", pfad=rng.choice(["/fapi/v1/order", "/api/v3/order"]), pred=None,
-                                 art=rng.choice(["429", "vor503"]), anzahl=rng.choice([1, 2, 10 ** 6])))
+            regeln_na.append(dict(methode="POST", pfad=rng.choice(["/fapi/v1/order", "/api/v3/order"]), pred=None,
+                                  art=rng.choice(["429", "vor503"]), anzahl=rng.choice([1, 2, 10 ** 6])))
+        B.regeln = list(regeln_na)
+        log_na = len(B.log)
         try:
             r = lauf([], env, d, notaus=True)
         except Exception:  # noqa: BLE001
@@ -859,9 +862,23 @@ def listen_runde(seed):
             return funde
         B.regeln = []
         if r.get("alles_zu") is not True:
+            # wie im Not-Aus-Fuzzer: lehnt Binance dauerhaft genau den nötigen Schutz ab (z. B. jeden Spot-Auftrag — weder Verkauf
+            # noch Stop möglich), ist eine laut gemeldete Lücke unvermeidbar (DAUER_); danach Ankunft + Nachkontrolle im
+            # Not-Aus-Modus (Störung vorbei) — was dann noch offen ist, zählt immer
             for b in schutz_befunde(k, unklar_je_markt(d)) + folgeschaden(k):
-                funde.append(("NOTAUS_" + ("LAUT_" if r.get("warnung") else "STILL_") + b[0],
-                              {"seed": seed, "lage": zeigen(k), "zeilen": [z for z in r["zeilen"] if "⚠" in z][-8:]}, b))
+                dauer = _dauer(regeln_na, b[0]) and r.get("warnung") and not _selbst_entfernt(log_na, b[1], b[0])
+                funde.append((("DAUER_" if dauer else "") + "NOTAUS_" + ("LAUT_" if r.get("warnung") else "STILL_") + b[0],
+                              {"seed": seed, "wann": "vor Ankunft", "regeln": [(x["methode"], x["pfad"], x["art"], x["anzahl"])
+                                                                               for x in regeln_na],
+                               "lage": zeigen(k), "zeilen": [z for z in r["zeilen"] if "⚠" in z][-8:]}, b))
+            pending_abarbeiten()
+            rn = nachkontrolle(dict(env, KI_BOT_STOP="1"), d)
+            if rn.get("alles_zu") is not True:
+                for b in schutz_befunde(k, unklar_je_markt(d)) + folgeschaden(k):
+                    funde.append(("NOTAUS_NACHKONTROLLE_" + b[0], {"seed": seed, "wann": "nach Nachkontrolle", "lage": zeigen(k),
+                                                                    "zeilen": [z for z in rn["zeilen"] if "⚠" in z][-8:]}, b))
+            elif not flach(k):
+                funde.append(("FALSCH_ALLES_ZU", {"seed": seed, "wann": "nach Nachkontrolle", "lage": zeigen(k)}, None))
         elif not flach(k):
             funde.append(("FALSCH_ALLES_ZU", {"seed": seed, "lage": zeigen(k)}, None))
     return funde
