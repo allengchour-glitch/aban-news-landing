@@ -1980,7 +1980,7 @@ def _perp_abgleich(fut, k, d, st, e, s, erg, warn, gesetzt, schutz, lesen, gehan
     try:
         alt = _nochmal(lambda: fut.eigene_stops(sym), SCHUTZ_WARTEN)
     except Exception as ex:  # noqa: BLE001
-        _perp_ohne_liste(fut, k, d, st, e, s, warn, gesetzt, gehandelt, ex)
+        _perp_ohne_liste(fut, k, d, st, e, s, warn, gesetzt, gehandelt, ex, erg, lesen)
         return
     if st.get("perp_weitere"):  # früher nicht löschbare alte Stops (gemerkt): die lesbare Liste zeigt, welche noch stehen — die
         _perp_weitere_pruefen(st, alt)  # löscht der Abgleich unten wie jeden alten Stop (nach dem neuen)
@@ -2170,7 +2170,7 @@ def _perp_ueberzaehlige_weg(fut, k, sym, regeln, alt, soll, st, warn):
     warn(f"{k}: {len(alt) - len(behalten)} überzählige Perp-Stops gelöscht (zusammen träfen sie die Ernte-Absicherung).")
 
 
-def _perp_ohne_liste(fut, k, d, st, e, s, warn, gesetzt, gehandelt, ex):
+def _perp_ohne_liste(fut, k, d, st, e, s, warn, gesetzt, gehandelt, ex, erg, lesen):
     """Eigene Perp-Stops nicht lesbar: den Stop trotzdem setzen und ERST DANACH den bekannten alten (Buch: ID oder Kennung —
     auch wenn seine Antwort verloren ging) löschen; scheitert das Setzen, bleibt der alte stehen. Lässt sich der alte nicht
     löschen, stehen zwei → beidseitig (die Coins kommen ganz unter einen Spot-Stop)."""
@@ -2217,7 +2217,11 @@ def _perp_ohne_liste(fut, k, d, st, e, s, warn, gesetzt, gehandelt, ex):
     cid = _kennung(CID_STOP_PERP)
     try:
         r, p_ok = _setze_stop(lambda preis, c: fut.stop_menge(sym, "BUY", soll, preis, regeln["tick"], cid=c),
-                              [p, kurs * (1 + NOT_STOP_ABSTAND)], cid, warten=SCHUTZ_WARTEN)
+                              [p, kurs * (1 + NOT_STOP_ABSTAND)], cid, sofort_raus=True, warten=SCHUTZ_WARTEN)
+    except _Ausgeloest:  # der Kurs ist seit dem Lesen über den Stop-Kurs gestiegen: zum Markt aussteigen wie mit Liste
+        _perp_ohne_liste_raus(fut, k, d, st, s, erg, warn, gesetzt, lesen,
+                              f"Stop {PL.runde(p, regeln['tick']):g} würde sofort auslösen (Kurs gestiegen)")
+        return
     except Exception as ex2:  # noqa: BLE001
         if not _kennung_weg(fut, sym, cid):
             _perp_merken(st, None, cid)
@@ -2247,6 +2251,45 @@ def _perp_ohne_liste(fut, k, d, st, e, s, warn, gesetzt, gehandelt, ex):
          + ("" if weg else "; der alte ließ sich nicht löschen (zwei stehen → Coins beidseitig gesichert)") + ". Bitte prüfen!")
 
 
+def _perp_ohne_liste_raus(fut, k, d, st, s, erg, warn, gesetzt, lesen, grund):
+    """Liste nicht lesbar, der Kurs schon über dem Stop-Kurs: wie mit Liste zum Markt aussteigen. Die alten Stops kennt nur das
+    Buch (ID oder Kennung, dazu die gemerkten) — sie schützen bis zum Rückkauf und kommen erst danach weg (dann wären sie zu
+    gross); lehnt Binance den Rückkauf ab, erst ein passender Not-Stop, dann die alten weg (wie _perp_raus)."""
+    weitere = [(list(w) + [None, None])[:2] for w in st.get("perp_weitere") or []]
+    alt = [{"algoId": a, "clientAlgoId": c} for a, c in [(st.get("perp"), st.get("perp_cid"))]
+           + [w for w in weitere if not _ist_aktuell(st, *w)] if a is not None or c]
+    try:
+        frei, gebunden, pos, kurs = lesen(SCHUTZ_WARTEN)
+    except Exception:  # noqa: BLE001 — nicht lesbar: der Stand von vorhin
+        frei, gebunden, pos, kurs = s["frei"], s["gebunden"], s["pos"], s["kurs"]
+    soll = _soll(frei + gebunden, pos, kurs, d)["stop_perp"]
+    if soll > 0:
+        _perp_raus(fut, k, d, st, soll, kurs, erg, warn, gesetzt, grund, lesen, pos, alt=alt)
+        return
+    if alt:  # nichts mehr ungesichert (ein Stop hat schon ausgelöst): die alten wären jetzt zu gross → weg
+        offen = _alle_weg(alt, lambda a: _perp_alt_weg(fut, d["sym"], st, a), k, "Perp", warn, [])
+        st["perp"], st["perp_cid"] = (offen.get("algoId"), offen.get("clientAlgoId")) if offen else (None, None)
+        if offen:
+            for a in alt[alt.index(offen) + 1:]:
+                _perp_merken(st, a.get("algoId"), a.get("clientAlgoId"))
+            _zu_gross(d)
+
+
+def _perp_alt_weg(fut, sym, st, a):
+    """Einen alten Perp-Stop löschen — über die ID, fehlt sie (Antwort verloren), über die Kennung («unbekannt» = schon weg).
+    Gelöscht → auch aus dem Gedächtnis (perp_weitere). → wie fut.algo_abbrechen (False = war schon weg)."""
+    aid, cid = a.get("algoId"), a.get("clientAlgoId")
+    if aid is not None:
+        r = fut.algo_abbrechen(sym, aid)
+    else:
+        fut.algo_abbrechen_kennung(sym, cid)
+        r = True
+    if st.get("perp_weitere"):
+        st["perp_weitere"] = [w for w in st["perp_weitere"]
+                              if not ((aid is not None and str(w[0]) == str(aid)) or (cid and w[1] == cid))] or None
+    return r
+
+
 def _perp_raus(fut, k, d, st, menge, kurs, erg, warn, gesetzt, grund, lesen, pos=None, alt=()):
     """Richtungs-Short sofort zurückkaufen (reduceOnly, höchstens die offene Position). Die alten Stops (alt) schützen bis dahin
     und werden erst NACH dem Rückkauf gelöscht (sie wären dann zu gross); lehnt Binance den Rückkauf ab, bleiben sie stehen.
@@ -2270,14 +2313,15 @@ def _perp_raus(fut, k, d, st, menge, kurs, erg, warn, gesetzt, grund, lesen, pos
             rest = _soll(frei + gebunden, pos, kurs, d)["stop_perp"]
         except Exception:  # noqa: BLE001
             rest = None
-        if rest is None or abs(sum(float(a.get("quantity") or 0) for a in alt) - rest) <= d["rf"]["step"] / 2:
+        bekannt = all(a.get("quantity") is not None for a in alt)  # ohne Liste (nur Buch) ist die Menge der alten unbekannt
+        if rest is None or (bekannt and abs(sum(float(a.get("quantity") or 0) for a in alt) - rest) <= d["rf"]["step"] / 2):
             warn(f"{k}: {grund}, Rückkauf abgelehnt ({type(fehler).__name__}) — der bisherige Stop bleibt stehen. Bitte prüfen!")
             return
         if rest >= d["rf"]["step"] / 2 and not _perp_notstop(fut, k, d, st, rest, kurs, warn, gesetzt,
                                                             f"{grund}, Rückkauf abgelehnt ({type(fehler).__name__})"):
             _zu_gross(d)  # kein passender Stop möglich: die alten bleiben (lieber zu gross als keiner) → beidseitig
             return
-        offen = _alle_weg(alt, lambda a: fut.algo_abbrechen(d["sym"], a.get("algoId")), k, "Perp", warn, [])
+        offen = _alle_weg(alt, lambda a: _perp_alt_weg(fut, d["sym"], st, a), k, "Perp", warn, [])
         if offen:
             for a in alt[alt.index(offen):]:
                 _perp_merken(st, a.get("algoId"), a.get("clientAlgoId"))
@@ -2285,7 +2329,7 @@ def _perp_raus(fut, k, d, st, menge, kurs, erg, warn, gesetzt, grund, lesen, pos
         return
     for a in alt:  # Rückkauf ausgeführt (oder unklar → beidseitig): die alten Stops wären jetzt zu gross
         try:
-            _nochmal(lambda a=a: fut.algo_abbrechen(d["sym"], a.get("algoId")))
+            _nochmal(lambda a=a: _perp_alt_weg(fut, d["sym"], st, a))
         except Exception as ex:  # noqa: BLE001
             warn(f"{k}: alter Perp-Stop ließ sich nach dem Rückkauf nicht löschen ({type(ex).__name__}) — die Coins kommen ganz unter "
                  "einen Spot-Stop (beidseitig). Bitte prüfen!")
