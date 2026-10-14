@@ -904,6 +904,39 @@ def startseiten_optik():
         arten[x["art"]] = arten.get(x["art"], 0) + 1
     return "⚠️ OPTIK Startseite: " + ", ".join(f"{k} {v}" for k, v in arten.items()) + " — dropship/STARTSEITE-OPTIK.md"
 
+def startseiten_gewicht():
+    """STARTSEITE-GEWICHT (14.10.2026, Stufe A): letzte echte Messung aus dropship/_startseite_gewicht.tsv gegen die Grenzen
+    von startseite_gewicht.py, dazu die letzte Zeile von startseite_schlank_patch (Theme-Update hat Bausteine überschrieben?).
+    Nur melden, wenn etwas zu tun ist oder der Wächter steht (> 48 h ohne echte Messung)."""
+    teile = []
+    try:
+        import startseite_gewicht as sg
+        zeilen = [l.rstrip("\n").split("\t") for l in open(os.path.join(REPO, "dropship", "_startseite_gewicht.tsv"), encoding="utf-8")][1:]
+        echt = [z for z in zeilen if len(z) >= 13 and z[12] == "0"]
+        if not echt:
+            teile.append("⚠️ STARTSEITE-GEWICHT: noch keine echte Messung (nur Cache-Kopien)")
+        else:
+            z = echt[-1]
+            alter = (datetime.datetime.now(datetime.timezone.utc)
+                     - datetime.datetime.strptime(z[0], "%Y-%m-%dT%H:%MZ").replace(tzinfo=datetime.timezone.utc)).total_seconds()
+            w = {"bytes": int(z[1]), "links": int(z[2]), "ueberschriften": int(z[3]), "h1": int(z[4]),
+                 "h1_versteckt": int(z[5]), "variant_links": int(z[6])}
+            b = sg.befunde(w, False)
+            if alter > 48 * 3600:
+                b.append(f"letzte echte Messung vor {alter / 3600:.0f} h (Wächter steht?)")
+            if b:
+                teile.append(f"⚠️ STARTSEITE-GEWICHT {w['bytes'] / 1e6:.2f} MB: " + "; ".join(b))
+    except Exception as e:
+        teile.append(f"STARTSEITE-GEWICHT: unklar ({type(e).__name__})")
+    try:
+        letzte = [l for l in open("/tmp/startseite_schlank_patch.log", encoding="utf-8") if l.startswith("SCHLANK:")]
+        if letzte and "⚠️" in letzte[-1]:
+            teile.append(letzte[-1].strip()[:200])
+    except OSError:
+        pass
+    return " · ".join(teile)
+
+
 def grow_zaehler():
     """GROW (23.09.2026, Betreiber: «wen noch 3 verkäufe dann upgrade ich shopyfi grow 300 gb»): zaehlt bezahlte,
     nicht erstattete Bestellungen FREMDER Kunden seit dem Start in dropship/_grow_bedingung.txt. Eigenbestellungen des
@@ -1306,7 +1339,7 @@ def main():
     ohne_token = not os.path.exists(TOKPFAD)
     # Pruefungen, die den Shop-Token brauchen, laufen ohne ihn nicht — alle anderen schon (26.09.).
     MIT_TOKEN = (liechtenstein_gesperrt, klingen_pingpong, grow_zaehler, drafts_ohne_quittung, datei_speicher_voll, video_deckel, alter_lieferblock)
-    pruefungen = (bot_puls, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kassen_lieferdatum, werbetest, verkauf_gewinn, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik, such_boosts, alter_lieferblock, social_sperre, gsc_tot, index_stand, wearable_seo, cj_suche_tor, waisen_verzeichnis)
+    pruefungen = (bot_puls, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kassen_lieferdatum, werbetest, verkauf_gewinn, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik, startseiten_gewicht, such_boosts, alter_lieferblock, social_sperre, gsc_tot, index_stand, wearable_seo, cj_suche_tor, waisen_verzeichnis)
     teile = [zugang_weg()]
     for f in pruefungen:
         if ohne_token and f in MIT_TOKEN:

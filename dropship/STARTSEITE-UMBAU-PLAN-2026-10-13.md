@@ -503,8 +503,15 @@ Im Shop und im Theme ist nichts geändert und nichts committet.
 
   Backup `theme_backup/card-gallery.liquid.vor-a4-2026-10-14`. Startseite **2.92 → 2.46 MB**, img 420 → 316, Pfeile 122 → 17 (Reihenpfeile), 0 «Liquid error».
   Screenshot 390 px `dropship/startseite-a4-390px-2026-10-14.png`: Karten unverändert, Halloween-Reihe zeigt Kostüme.
+- **A1 umgesetzt (10:45 UTC):** `automation/startseite_schlank_patch.py` hält die 12 Liquid-Bausteine aus A2–A5 fest (6 Dateien).
+  - Gesetzt = neuer Text steht da. Offen = alter Text genau 1× → mit SCHARF=1 ersetzen, Backup `theme_backup/<datei>.schlank-<datum>` + Zeile in `theme_backup/SCHLANK-MD5.tsv`, zurücklesen.
+  - Sonst «Anker fehlt»: nichts schreiben, Exit 1, Zeile im Log/Ampel. Schreibt nur ins Theme mit role MAIN.
+  - `templates/index.json` (Hero-H1, USP-Marke) wird nur geprüft, nie geschrieben (Editor + Rotation).
+  - Rückweg: `--zurueck A3` (einzelne Bausteine, nur wenn genau 1× gesetzt).
+  - Selbsttest 34/34 auf den Backups vor A2–A5 (Patch, zweiter Lauf, Rückweg = Original, fremde Änderung → anker_fehlt). Gegenprobe: Patch(Backup) = Live-Datei, 6/6 byte-gleich. DRY live: «12/12 Bausteine gesetzt».
+  - Aufseher täglich (`SCHARF=1`, NACH-Liste); Ampel-Funktion `startseiten_gewicht()` meldet Grenzverletzung, > 48 h ohne echte Messung oder ⚠️ aus dem Patch.
+  - `startseite_gewicht.py` Grenzen nachgezogen (Messwert + ~10 %): 2.70 MB · 920 Links · 35 Ü · 10× ?variant= · H1 genau 1, sichtbar.
 - **Offen:**
-  - A1 Patch-Gerüst (täglicher Wiederaufbau nach Theme-Updates; heute alle Patches mit Marke `lx-schlank-2026-10-14`, Rückweg = Backups)
   - A6 Kategorie-Liste (am Desktop sichtbar → Betreiber kurz informieren)
   - A7 Häkchen-SVG (Kaufknopf, mittleres Risiko, echter Warenkorbtest nötig)
   - A8 Kleinkram, A9 optional (Zoom-out-Titel, ?variant=, Karussell-Galerie/srcset, Kategorie-Liste, Häkchen-SVG, Kleinkram).

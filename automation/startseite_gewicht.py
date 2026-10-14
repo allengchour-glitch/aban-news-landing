@@ -14,8 +14,8 @@ und zählt nicht für Grenzen.
   python3 automation/startseite_gewicht.py              misst https://luxestyle.ch/ → Zeile + Ledger dropship/_startseite_gewicht.tsv
   python3 automation/startseite_gewicht.py --datei X     misst eine gespeicherte HTML-Datei (kein Ledger)
   python3 automation/startseite_gewicht.py --selbsttest
-GRENZEN (14.10. gesetzt, nach 7 Tagen mit Stufe-A-Werten nachziehen): Bytes 3'200'000 · Links 900 · Überschriften 170 ·
-sichtbare H1 = 1 erst nach Stufe A5 (bis dahin nur zählen).
+GRENZEN (14.10. nach Stufe A2–A5 nachgezogen, Messwert + ~10 %): Bytes 2'700'000 · Links 920 · Überschriften 35 ·
+?variant= 10 · genau 1 H1, sichtbar.
 """
 import datetime as dt
 import os
@@ -28,8 +28,9 @@ LEDGER = os.path.join(REPO, "dropship", "_startseite_gewicht.tsv")
 URL = "https://luxestyle.ch/"
 UA = ("Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) "
       "Version/17.0 Mobile/15E148 Safari/604.1")
-GRENZE = {"bytes": 3_200_000, "links": 900, "ueberschriften": 170}
-H1_SICHTBAR_PFLICHT = False          # nach A5 (sichtbare H1 im Hero) auf True
+# 14.10. 10:40 nach A2–A5 nachgezogen (gemessen 2.46 MB · 833 Links · 30 Ü · 0× ?variant=) — Messwert + ~10 %:
+GRENZE = {"bytes": 2_700_000, "links": 920, "ueberschriften": 35, "variant_links": 10}
+H1_SICHTBAR_PFLICHT = True           # seit A5 steht die H1 sichtbar im Hero
 
 
 def zaehlen(html):
@@ -88,7 +89,9 @@ def selbsttest():
         ("doppelte Reihe zählt", zaehlen(basis.replace(karte * 3, karte * 6))["karten"], 6),
         ("zweite H1 → Befund", bool(befunde(zaehlen(basis + '<h1>Neu</h1>'), False)), True),
         ("Cache-Kopie → keine Befunde", befunde(zaehlen(basis + '<h1>x</h1>'), True), []),
-        ("Grenze Links", any("links" in x for x in befunde(dict(z, links=901), False)), True),
+        ("Grenze Links", any("links" in x for x in befunde(dict(z, links=921), False)), True),
+        ("120× ?variant= → Befund", any("variant" in x for x in befunde(dict(z, variant_links=120, h1_versteckt=0), False)), True),
+        ("versteckte H1 → Befund", "H1 versteckt" in befunde(z, False), True),
         ("H1-Text", z["h1_text"], "LuxeStyle"),
         ("?variant= nur mit Ziffer", zaehlen('<a href="/p?variant=">x</a>')["variant_links"], 0),
     ]
