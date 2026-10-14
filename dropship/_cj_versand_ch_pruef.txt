@@ -8517,3 +8517,10 @@ uv-led-lampe-9fd25c	54838A30-A0A8-495D-A4C4-4294D2DE929E	16	10.55	ok	landeseite
 keramik-teekanne-602400	2602190244581602800	16	11.00	ok	landeseite
 rote-obstschale-636200	2601210747591636500	11	38.82	ok	landeseite
 keramik-halter-637600	2601090215351637800	16	14.84	ok	landeseite
+tiefes-salatschalen-set-603300	2512290243361603800	16	16.10	ok	landeseite
+keramiktopf-604600	2512280705571604800	16	11.23	ok	landeseite
+elektrischer-wasserkocher-611400	2512241243471611600	7	34.10	ok	landeseite
+chinesischer-teller-613600	2512241115491613800	16	13.89	ok	landeseite
+keramik-teller-633600	2512241109531633800	16	12.81	ok	landeseite
+keramik-schmortopf-612000	2512241039091612200	16	10.15	ok	landeseite
+keramik-schale-639400	2512161316591630400	16	8.79	ok	landeseite
