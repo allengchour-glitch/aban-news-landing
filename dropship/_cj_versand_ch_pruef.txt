@@ -8670,3 +8670,14 @@ winter-sitzauflage-mit-weicher-polsterung-606500	2410280539341613500	11	40.80	ok
 wasserdichter-rucksitzbeutel-fur-bmw-s1000rr-0-620000	2410130819291620200	16	12.32	ok	landeseite
 pu-sitzauflage-suv-viereckstuhle-614200	2410110803531614500	16	11.55	ok	landeseite
 3-teiliges-auto-kissen-set-winter-plusch-600200	2410020603591600500	16	15.56	ok	landeseite
+armlehnen-schutzauflage-mit-tasche-615800	2409300926031615900	16	9.65	ok	landeseite
+auto-hundematte-mit-erweiterter-stutze-fur-ruc-610000	2408151316401610200	11	41.03	ok	landeseite
+sommer-minimales-eissilk-autositze-polster-602400	2407011025221602600	16	17.40	ok	landeseite
+versteckter-sitzhaken-fur-ruckbank-kleine-gege-177216	1774969299774480384	16	5.85	ok	landeseite
+universelles-auto-nackenkissen-mit-memory-foam-900096	1752157799188008960	16	9.47	ok	landeseite
+leinen-auto-sitzkissen-universal-204736	1749715854394142720	16	9.61	ok	landeseite
+auto-lendenstutze-mit-memory-foam-603904	1747128167397072896	16	11.72	ok	landeseite
+hohenverstellbares-dickes-po-kissen-198912	1728341763334610944	16	9.84	ok	landeseite
+schaumgummi-auto-kissen-mit-fixiergurt-fur-aut-187264	1716356239753490432	16	14.12	ok	landeseite
+schmuck-gurt-schulterpolster-aus-kunstleder-860608	1701406761925746688	16	6.17	ok	landeseite
+48v-hochdruck-wasserkanone-6-in-1-duse-fur-aut-531649	2069692069004218369	0	-	KEINE CH-Option → DRAFT	landeseite
