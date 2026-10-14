@@ -1,8 +1,12 @@
 {
- "stand": "2026-10-14T01:17Z",
+ "stand": "2026-10-14T21:18Z",
  "datum_in_kasse": true,
  "bearbeitungszeit_tage": 1,
  "versand_werktage": [
+  [
+   "#1023",
+   2
+  ],
   [
    "#1022",
    2
@@ -41,7 +45,7 @@
   ]
  ],
  "median": 2.0,
- "p80": 2.4000000000000004,
+ "p80": 2.2,
  "empfohlen": 3,
  "zu_frueh": false,
  "ch_lager_profil": {
@@ -55,7 +59,7 @@
    "profile": [
     "General profile"
    ],
-   "anzahl": 51173
+   "anzahl": 51669
   }
  },
  "ch_lager_im_asien_profil": false,
