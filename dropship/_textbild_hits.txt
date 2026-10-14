@@ -18197,3 +18197,13 @@ gid://shopify/Product/16617547956615	50->0	Stilettos mit spitzen Zehen und Querb
 gid://shopify/Product/16617548415367	74->0	Damensandalen mit Spitzspitze, Schnürung, Klappverschluss
 gid://shopify/Product/16617607856519	9->0	Magnetisches 3-in-1-Ladegerät – faltbar
 gid://shopify/Product/15524001448321	13->0	Training Seilspringen Fitness Schwungseil
+gid://shopify/Product/16617625452935	41->0	Rucksack Männer multifunktional, 20-35 L
+gid://shopify/Product/16617625551239	8->1	UV-Desinfektionspaket mit USB-Ladeanschluss
+gid://shopify/Product/16617626534279	19->0	Oxford-Canvas Schultertasche
+gid://shopify/Product/16617638429063	21->0	Polyhedron Brusttasche 310x200x80 mm
+gid://shopify/Product/16617638789511	40->0	Schiessdecke Training 200x75 cm 1000D Nylon
+gid://shopify/Product/16617638986119	35->0	Reiserucksack 43,5×16×29 cm – Black
+gid://shopify/Product/16617639051655	13->0	Grosser Computer-Rucksack mit vielen Fächern
+gid://shopify/Product/16617639379335	32->0	Männer Lederrucksack – 30x12x42 cm
+gid://shopify/Product/16617640460679	106->0	Cargobag mit Kette – Schwarz, Gold, Silber
+gid://shopify/Product/16617640690055	109->2	Grosses wasserdichtes Schultertasche Retro
