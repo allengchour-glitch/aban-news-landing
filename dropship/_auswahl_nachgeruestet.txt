@@ -2231,3 +2231,4 @@
 15522166309249	Farbe:5+Typ:3+Volumen:2:26	2026-10-14	anti-kipp-napf-fur-gesunde-haltung-82c4a9
 15522165522817	Farbe:4+Grösse:3:12	2026-10-14	glitzerndes-strass-geschirr-fur-haustiere-913216
 15522164670849	Farbe:3:3	2026-10-14	robuster-canvas-rucksack-mit-lederdetails-557376
+15522153333121	Grösse:2:2	2026-10-14	edelstahl-leine-fur-haustiere-f9ab2e

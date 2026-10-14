@@ -1,10 +1,10 @@
 {
- "stand": "2026-10-13T09:42Z",
- "gsc_alter_tage": 0,
- "kandidaten": 32,
- "gesetzt": 8,
- "offen": 24,
- "impr_woche_offen": 148,
+ "stand": "2026-10-14T15:54Z",
+ "gsc_alter_tage": 1,
+ "kandidaten": 26,
+ "gesetzt": 0,
+ "offen": 26,
+ "impr_woche_offen": 155,
  "klicks_offen": 3,
- "fix": true
+ "fix": false
 }
