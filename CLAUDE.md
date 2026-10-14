@@ -89,7 +89,14 @@ dann setzen» noch in `_stops_vorab` (jeden Tag mit Verkauf!), `_perp_ohne_liste
   alter Perp-Stop ohne Liste über Kennung löschen; Liste nicht lesbar + zu viel gesperrt → Stop über Buch-ID verkleinern;
   Rückkauf abgelehnt → passender Not-Stop zuerst; `DAUER_` seitengenau (Long zählt Spot-Stops, Short Perp-Stops).
 - Tests: live 154, streng 89 (10.p1–p8, K1, K2, Seeds 45/46/156/165/5016/5033/5085/5087/5673). Fuzzer: Not-Aus 0–1600 + 5000–6000,
-  Läufe 0–200 + 5000–5160 ×30, Monotonie 0–400 → 0 echte (`STORNO_ZUERST_` = Restrisiko, README). **Nächster Schritt:** 11. Prüfung.
+  Läufe 0–200 + 5000–5160 ×30, Monotonie 0–400 → 0 echte (`STORNO_ZUERST_` = Restrisiko, README). Mutationen 57/57 (`python3 -B`).
+  **Nächster Schritt:** 11. Prüfung.
+- **📊 Dashboard «Pilot 2.0 Prüfstand»** (privates Claude-Artefakt `https://claude.ai/artifact/8P9LBcKm31gdz8eyvgkYG4`, User wollte
+  «dashboard … wie immer optimal»): Reiter Freigabe (Blocker je Runde, Weg zur Freigabe, Restrisiken), Prüfungen (alle Runden, Funde
+  der letzten), Tests und Fuzzer, Strategien (alle Prüfstände, Backtest P0/P2, Spielgeld-Vorwärtstest). Daten = angehängte JSON-Dateien
+  (kein Connector hält sie). **Nach jeder Prüfung nachführen:** `pruefungen` (neue Zeile), `funde_rN`, `tests` (alle `test_*.py` frisch),
+  `fuzzer` (Logs der Schlusskampagne), `freigabe`; Datei mit Artifact `asset:true` hochladen, dann `datasets/<id>` per ArtifactData
+  `update` (url, name, updated). Runden ohne Zählung bleiben leer (R4/R5 nur «2–3», R8 nicht gezählt) — nie Zahlen erfinden.
 
 **📌 2026-10-14 nachmittags (🔒 Pilot 2.0: 9. Prüfung — 2 Blocker + 5 wichtig + 3 klein behoben, bleibt GESPERRT):** Prüfer-Agent (enger
 Auftrag, Belege `scratchpad/pruefung9/`) fand: **B1** unklare Aufträge nur im Perp-`schritt` gebucht (Not-Aus-Schliessen, `_perp_raus`,
