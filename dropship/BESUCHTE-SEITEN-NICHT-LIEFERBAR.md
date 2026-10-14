@@ -19,3 +19,4 @@ Quelle: `automation/besuchte_seiten_lieferbar.py`. DRAFT erst nach zwei unabhän
 | `22-teiliges-leder-nahset-fur-lederarbeiten-105857` | ✅ DRAFT gesetzt 2026-10-13 (zweites NEIN) | KEINE Versandoption (Gewicht 213.0 g) · 2. Messung bestaetigt | `CJ-2074710394746105857` |
 | `pilzsammel-taschen-set-421313` | ✅ DRAFT gesetzt 2026-10-13 (zweites NEIN) | KEINE Versandoption (Gewicht 199.0 g) · 2. Messung bestaetigt | `CJ-2074709032065421313` |
 | `usb-ladebares-lithium-batterie-set-aa-183360` | ⏳ erstes NEIN (2026-10-13) — Draft beim nächsten NEIN (≥ 12 h später) | KEINE Versandoption (Gewicht 120.0 g) · 2. Messung bestaetigt | `CJ-1622471015383183360` |
+| `usb-ladebares-lithium-batterie-set-aa-183360` | ✅ DRAFT gesetzt 2026-10-14 (zweites NEIN) | KEINE Versandoption (Gewicht 120.0 g) · 2. Messung bestaetigt | `CJ-1622471015383183360` |
