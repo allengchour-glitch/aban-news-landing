@@ -77,9 +77,10 @@
 - **Lehre 2 (Duplikat-Schutz an der Quelle, nicht im Ledger):** Ein Ledger schützt nur, solange es dasselbe Ledger ist. Bei
   Snapshot-Rewind oder zwei Instanzen postet derselbe Kommentar zweimal. Das Tor muss das ZIEL fragen (Judge.me), und ein Lauf
   braucht eine Sperre.
-- **Lehre 3 (Wirkung messen, wo sie zählt):** Judge.me zeigte sofort 6 / 8 / 5 statt 17 / 24 / 10, das Shopify-Metafeld
-  `reviews.rating_count` (Quelle der strukturierten Daten für Google) stand direkt danach noch auf den alten Werten. Eine
-  Ausblendung ist erst fertig, wenn die Zahl dort angekommen ist, wo Google sie liest.
+- **Lehre 3 (Wirkung messen, wo sie zählt):** Judge.me zeigte sofort 6 / 8 / 5 statt 17 / 24 / 10. Das Shopify-Metafeld
+  `reviews.rating_count` (Quelle der strukturierten Daten für Google) zog ~2 min später von selbst nach (23:08:35).
+  Nachgemessen: 64/66 Produkte exakt; Summe 631 → 332. Eine Ausblendung ist erst fertig, wenn die Zahl dort angekommen ist,
+  wo Google sie liest. Gemessen ist das hier, nicht vermutet.
 - Offen:
   - 1'283 Bewertungen mit 5★ vor dem 29.08. nicht lesbar (API-Seitendeckel, Rezensent je Bewertung)
   - Nebenbefund für den Betreiber: 2'904 ausgeblendete Bewertungen, fast alle 1–3★ vom 24.09. (Rosinenauswahl?)

@@ -2368,3 +2368,5 @@
 15512303075713	Farbe:3+Grösse:3:9	2026-10-14	hai-pluschkissen-81ce3d
 15512282005889	Modell:4+Grösse:2:4	2026-10-14	marokkanisches-kissen-mit-geometrischem-muster-6de42e
 15512273191297	Farbe:2+Grösse:2:4	2026-10-14	business-rucksack-aus-oxford-stoff-607500
+15512263328129	Farbe:3+Grösse:3:9	2026-10-14	hundeleine-und-geschirr-set-536320
+15512259527041	Ausführung:4:4	2026-10-14	outdoor-camouflage-rucksack-20-35l-622800

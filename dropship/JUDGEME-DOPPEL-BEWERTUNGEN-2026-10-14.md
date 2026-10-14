@@ -59,8 +59,15 @@
   - Laufshirt 17 → **6**
   - Hunde-Winterjacke 24 → **8**
   - Teleskop-Organizer 10 → **5**
-- Shopify-Metafeld `reviews.rating_count` direkt nach dem Lauf: noch 17 / 24 / 10 (Stand September). Ergebnis der Beobachtung
-  siehe unten.
+- **Shopify übernimmt es von selbst:** Judge.me schrieb `reviews.rating_count`, `reviews.rating` und das Widget-Metafeld
+  `judgeme.review_widget_ssr_html` rund 2 Minuten nach dem Lauf neu (Laufshirt 23:08:35 UTC: 6, Ø 4,5).
+- **Alle 66 Produkte nachgemessen (Admin-API, 23:20 UTC):**
+  - Bei 64 ist `reviews.rating_count` = veröffentlichte Judge.me-Bewertungen ohne Kopien.
+  - Summe veröffentlicht 631 → **332**. 60 der 66 Produkte sind aktiv.
+  - Zwei Produkte zählen bei Shopify mehr als im Lese-Dump: 15450851148161 (6 statt 3) und der Augenbrauen-Epilierer
+    15450851967361 (10 statt 2). Dort stehen alte Bewertungen mit 5★, die die API nicht herausgibt (siehe OFFEN). Shopify ist
+    dort die richtige Zahl, nicht der Dump.
+- Damit stimmt die Zahl in den strukturierten Daten für Google (ratingCount aus `reviews.rating_count`) wieder mit dem Bestand.
 
 ## OFFEN
 - **1'283 Bewertungen mit 5★ vor dem 29.08. nicht lesbar.**
