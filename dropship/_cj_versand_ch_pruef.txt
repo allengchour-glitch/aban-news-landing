@@ -8498,3 +8498,4 @@ magnetisch-ladecable-044e0c	093D062E-C51F-4AFE-AF3C-86C556C29425	7	5.49	ok	lande
 kabellose-haarglatter-899200	1668162556986396672	7	11.13	ok	landeseite
 3d-teddy-lampe-a92a5f	0266910B-0EF4-4461-9B8A-BF208DE034C5	7	8.57	ok	landeseite
 liebeshalskette-0bb6ab	1465687342797950976	16	4.50	ok	landeseite
+kuchenmesser-aufbewahrung-8b4831	9E240B34-74FD-430B-AF04-A3B5939BF91A	16	21.06	ok	landeseite

@@ -1,4 +1,4 @@
-# Füllmenge fehlt — Stand 2026-10-13 08:45 UTC
+# Füllmenge fehlt — Stand 2026-10-14 04:53 UTC
 
 Werkzeug `automation/fuellmenge_nachtragen.py` · Kandidaten: 143 aktive Kosmetik-Flüssigprodukte ohne ml-Angabe · diesmal geschrieben: 0 · Text-Sperre belegt: 0
 
@@ -81,7 +81,7 @@ Sicher = ml und fl oz auf demselben Bild passen rechnerisch. «Vorschlag — sic
 | [Kopfhautpflege stärkendes Spray](https://luxestyle.ch/products/kopfhautpflege-starkendes-spray-473728) | — | nichts lesbar |  |
 | [Nährendes Wimpernserum](https://luxestyle.ch/products/nahrendes-wimpernserum-616600) | — | nichts lesbar |  |
 | [Straffendes Anti-Falten Körperöl mit Jojoba & Kollagen](https://luxestyle.ch/products/straffendes-anti-falten-korperol-mit-jojoba-ko-639900) | — | nichts lesbar | 1 @ 548b3575-9c1a-4a75-8f3a-c2917d9881da.jpg |
-| [Marokkanisches Arganöl für geschmeidiges Haar](https://luxestyle.ch/products/marokkanisches-arganol-fur-geschmeidiges-haar-066f7d) | — | nichts lesbar |  |
+| [Argan-Haaröl (Ölmischung) für geschmeidiges Haar](https://luxestyle.ch/products/marokkanisches-arganol-fur-geschmeidiges-haar-066f7d) | — | nichts lesbar |  |
 | [24k Roségold Elixir Make-up Öl](https://luxestyle.ch/products/24k-rosegold-elixir-make-up-ol-56a538) | — | nichts lesbar | 0.5 @ 68891925332.png |
 | [Orangen Enzym Peeling Gel](https://luxestyle.ch/products/orangen-enzym-peeling-gel-603300) | — | nichts lesbar |  |
 | [Intelligenter Ohrreiniger für zuhause](https://luxestyle.ch/products/intelligenter-ohrreiniger-fur-zuhause-629200) | — | nichts lesbar |  |
@@ -141,11 +141,11 @@ Sicher = ml und fl oz auf demselben Bild passen rechnerisch. «Vorschlag — sic
 | [Rainbow Highlighter Jelly Gel](https://luxestyle.ch/products/rainbow-highlighter-jelly-gel-28c4aa) | — | nichts lesbar |  |
 | [Focallure Abdeckcreme](https://luxestyle.ch/products/focallure-abdeckcreme-5f9003) | — | nichts lesbar |  |
 | [3D-Fibre Mascara mit Kollagen-Gel · 2 Stück](https://luxestyle.ch/products/3d-fibre-mascara-mit-kollagen-gel-2-stuck-7269a0) | — | nichts lesbar |  |
+| [Rizinusöl-Wickel wiederverwendbar · Bauch & Nacken](https://luxestyle.ch/products/rizinusol-wickel-wiederverwendbar-bauch-nacken) | — | nichts lesbar |  |
 | [Aufhellende Korrekturcreme für die Augenpartie](https://luxestyle.ch/products/korrekturcreme-fur-augenhelligkeit-611500) | — | nichts lesbar |  |
 | [Rouge-Creme in sechs Farbnuancen](https://luxestyle.ch/products/vital-smooth-rouge-creme-010560) | — | nichts lesbar |  |
 | [Feuchtigkeitsspendender Lippenbalsam](https://luxestyle.ch/products/feuchtigkeitsspendender-lippenbalsam-987968) | — | nichts lesbar |  |
 | [Aromatherapie-Öl im Kristallfläschchen](https://luxestyle.ch/products/aromatherapie-ol-im-kristallflaschchen-636500) | — | nichts lesbar |  |
 | [Tattoo-Abdeckcreme](https://luxestyle.ch/products/tattoo-abdeckcreme-601900) | — | nichts lesbar |  |
 | [Feuchtigkeitsspendende Sonnen-BB-Creme](https://luxestyle.ch/products/feuchtigkeitsspendende-sonnen-bb-creme-621100) | — | nichts lesbar |  |
-| [Farbbilder-Photosensitivdrum für Tonerkartusche](https://luxestyle.ch/products/farbbilder-photosensitivdrum-fur-tonerkartusch-626700) | — | nichts lesbar |  |
 | [Magnesiumcreme für besseren Schlaf](https://luxestyle.ch/products/magnesiumcreme-fur-besseren-schlaf-631100) | — | nichts lesbar |  |
