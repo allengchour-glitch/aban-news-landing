@@ -2104,6 +2104,14 @@ L._perp_weitere_pruefen(st13b, [{"algoId": 5, "clientAlgoId": "alt5"}])
 pruefe("13.F3b lesbare Liste: was nicht mehr steht, ist aus dem Gedächtnis; der Rest bleibt für den Abgleich",
        st13b["perp_weitere"] == [[5, "alt5"]], st13b)
 
+# 13.F4 (Schlusskampagne, Lauf-Seed 137): STOP erscheint mitten im Tageslauf → der Lauf schliesst selbst (B1), der Not-Aus kann
+#     den ETH-Short unter Störungen weder schliessen noch schützen (laut gemeldet); STOP ist danach wieder weg → die Nachkontrolle
+#     (normaler Modus) sah nichts Offenes → Short ohne Stop bis morgen. Jetzt: was der Not-Aus nicht sichern konnte, steht in
+#     «schutz_offen» → die Nachkontrolle setzt die Stops nach dem Kontostand
+funde = P.echte(P.laeufe_runde(137, 30))
+pruefe("13.F4 Lauf-Seed 137: Not-Aus mitten im Lauf scheitert am Schutz → Nachkontrolle sichert (keine Befunde)", not funde,
+       [(f[0], f[1].get("tag")) for f in funde][:5])
+
 # 13.K3: Buch 3-Wege zusammenführen — nur was ICH geändert habe, gilt von mir; Geklärtes fällt weg; die Einträge, die der Abgleich in der
 #     Hand hat, bleiben dieselben (in place)
 b0 = L.leer_buch()

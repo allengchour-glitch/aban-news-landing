@@ -2822,6 +2822,10 @@ def _notaus(spot, fut, buch, speichern_b, modus, trocken, wiederholung=False):
     elif ungeschuetzt:
         erg["alles_zu"] = False
         warn(f"Not-Aus {modus}: {', '.join(ungeschuetzt)} NICHT vollständig gesichert — sofort im Binance-Konto prüfen!")
+    if ungeschuetzt or ungeprueft:
+        # was der Not-Aus nicht sichern (oder nicht prüfen) konnte, versucht die Nachkontrolle nochmals: im Not-Aus-Modus schliesst
+        # sie, ist STOP inzwischen wieder weg, setzt sie wenigstens die Stops nach dem Kontostand (Lauf-Seed 137)
+        buch["schutz_offen"] = [m for m in COINS if m in (buch.get("schutz_offen") or []) or m in ungeschuetzt or m in ungeprueft]
     try:
         buch["perp_offen"] = any(_nochmal(lambda m=m: fut.position_info(COINS[m][0]))[0] != 0 for m in COINS)
     except Exception:  # noqa: BLE001
