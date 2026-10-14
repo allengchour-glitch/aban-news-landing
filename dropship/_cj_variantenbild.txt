@@ -6958,3 +6958,6 @@ gid://shopify/Product/15466041475457	zugeordnet	16	Sportlicher Sommerrock für D
 gid://shopify/Product/15466041770369	zugeordnet	54	Herren Kapuzenjacke im Retro-Stil
 gid://shopify/Product/15466041901441	zugeordnet	36	Herren Diamond-Check Half-Zip Sweatshirt
 gid://shopify/Product/15466041966977	zugeordnet	20	Herren Hoodie mit Fischgrat-Jacquard-Textur
+gid://shopify/Product/15466070409601	zugeordnet	15	Elegantes Blumenkleid mit Goldprägung
+gid://shopify/Product/15466070606209	zugeordnet	77	Herren Langarmhemd Kariert – Slim Fit
+gid://shopify/Product/15466072899969	zugeordnet	24	Damen Kapuzenpullover mit Reissverschluss
