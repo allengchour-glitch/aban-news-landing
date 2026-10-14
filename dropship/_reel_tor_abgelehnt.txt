@@ -46,3 +46,4 @@ CJMY179795801AZ	2026-10-14	schnitt 4: PRUEFUNG: Loop-Naht 19.7 > 1,3 x Referenz 
 2058836826180476929	2026-10-14	schnitt 4: PRUEFUNG: Loop-Naht 20.55 > 1,3 x Referenz 14.49
 CJJE295762801AZ	2026-10-14	HOOK 1.76 < 3.0
 2072225588842496001	2026-10-14	schnitt 3: UNGEEIGNET: kein sauberes Material (Fremdtext: 3 lateinische Woerter (marker, nail, rker); eingebranntes Logo/Einschub bei [58, 354, 276, 176]; Fremdtext: eingebranntes Logo/Einschub bei [58, 354, 276, 176]; kein nutzbarer Rest (Uebergang/S
+2072221258447155201	2026-10-14	schnitt 3: UNGEEIGNET: kein sauberes Material (Fremdtext: eingebranntes Logo/Einschub bei [28, 248, 98, 286])
