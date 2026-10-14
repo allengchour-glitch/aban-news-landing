@@ -24,6 +24,8 @@ Serpent-Armreif. Geprüft wird je ready-Zeile:
 die er zu Beginn gelesen hatte — ein Poster/Reel-Motor, der in der Zwischenzeit «posted…» oder eine neue Zeile schrieb,
 wurde überschrieben. Umgekehrt verlor ein Jury-Durchgang am 28.09. alle 23 Reel-Sperren an einen parallelen Schreiber.
 Jetzt: Datei direkt vor dem Schreiben NEU lesen, nur Zeilen ändern, die dort noch «ready» sind (Schlüssel id+Medium).
+14.10.2026: Nachlesen + Schreiben unter der gemeinsamen Queue-Sperre (automation/queue_csv.py, gleiche Sperre wie die
+Poster/Motoren in Node) und atomar ohne feste «<csv>.tmp» — das Nachlesen allein liess noch ein Fenster offen.
 
 ⚠️ 23.09.2026: Dieses Skript hatte seit dem 03.09. KEINEN Starter (kein Log je geschrieben) — gemessen: 3 von 73
 «ready»-Bildposts bewarben gedraftete Ware. Jetzt taeglich im Aufseher (fixer_keepalive.sh, Tagesliste).
@@ -33,6 +35,9 @@ lässt sich von Hand zurücksetzen. DRY=1 zeigt nur.
 """
 import csv, json, os, re, sys, time, urllib.request
 from collections import Counter
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from queue_csv import lesen, umbauen  # noqa: E402  gemeinsame Queue-Sperre (14.10.2026)
 
 DRY  = os.environ.get("DRY") == "1"
 SHOP = "au3j0y-hq.myshopify.com"
@@ -231,56 +236,83 @@ def jury_durchgefallen(medium, cap, typ):
 
 
 def schreiben_nachgelesen(datei, aenderungen):
-    """aenderungen: {(id, medium): neuer_status}. Liest die Datei NEU und setzt nur Zeilen, die dort noch ready sind."""
-    with open(datei, newline="", encoding="utf-8") as f:
-        rd = csv.DictReader(f); felder = rd.fieldnames; rows = list(rd)
+    """aenderungen: {(id, medium): neuer_status}. Liest die Datei NEU und setzt nur Zeilen, die dort noch ready sind.
+    14.10.2026: Lesen + Setzen + Schreiben jetzt unter der GEMEINSAMEN Queue-Sperre (queue_csv.umbauen: frisch lesen,
+    atomar über eine Nachbardatei je Prozess). Vorher ohne Sperre und über die feste Zwischendatei «<csv>.tmp»: ein Poster/
+    Motor, der zwischen Nachlesen und os.replace schrieb, verlor seine Zeile (Lost Update, 8 Reels am 14.10.), und zwei
+    Prozesse mit derselben .tmp schrieben ineinander. Rückgabe: Anzahl gesetzt; None = Datei leer/halb geschrieben oder
+    Sperre 60 s belegt — dann wird NICHTS geschrieben (der nächste Lauf holt die Sperren nach)."""
+    gesetzt = [0]
+
+    def setzen(frisch):
+        kopf = frisch[0]
+        if "status" not in kopf:
+            return None
+        si = kopf.index("status")
+        for z in frisch[1:]:
+            r = dict(zip(kopf, z))              # gleiche Lesart wie früher csv.DictReader (Spaltenname → Wert)
+            k = (r.get("id") or "", r.get("image_url") or r.get("video_url") or r.get("url") or "")
+            if k in aenderungen and (r.get("status") or "").strip() == "ready":
+                z[si] = aenderungen[k]; gesetzt[0] += 1
+        return frisch if gesetzt[0] else None
+    try:
+        umbauen(datei, setzen)
+    except RuntimeError as e:
+        print(f"   ⚠️ {datei}: {e}")
+        return None
+    return gesetzt[0]
+
+def doppel_markieren(rows):
+    """Kern von doppelte_zeilen() auf geparsten Zeilen (Kopf + Listen, wird an Ort und Stelle geändert): je doppelter ID
+    EINE weitere ready-Zeile → «dup-zeile-skip» (der Aufrufer wiederholt, bis nichts mehr doppelt ist). Rückgabe: Anzahl."""
+    if not rows or "id" not in rows[0] or "status" not in rows[0]:
+        return 0
+    ii, si = rows[0].index("id"), rows[0].index("status")
+
+    def feld(z, i):
+        return z[i] if i < len(z) else ""
+    daten = [z for z in rows[1:] if z]
+    ids = Counter(feld(z, ii) for z in daten if feld(z, si).strip() == "ready")
+    gepostet = {feld(z, ii) for z in daten if feld(z, si).strip().startswith("posted")}
+    # doppelt = mehrfach ready ODER ready + schon gepostet (sonst ginge dieselbe Datei ein zweites Mal raus)
+    doppelt = [i for i, n in ids.items() if i and (n > 1 or i in gepostet)]
     n = 0
-    for r in rows:
-        k = (r.get("id") or "", r.get("image_url") or r.get("video_url") or r.get("url") or "")
-        if k in aenderungen and (r.get("status") or "").strip() == "ready":
-            r["status"] = aenderungen[k]; n += 1
-    if n:
-        tmp = datei + ".tmp"
-        with open(tmp, "w", newline="", encoding="utf-8") as f:
-            w = csv.DictWriter(f, fieldnames=felder, lineterminator="\n"); w.writeheader(); w.writerows(rows)
-        os.replace(tmp, datei)
+    for zid in doppelt:
+        gesehen = zid in gepostet             # schon gepostet → auch die erste ready-Zeile ist ein Doppel
+        for z in daten:
+            # exakt «ready» wie früher der Rohtext-Treffer «,ready,» — aber nur in DIESER Zeile: der Rohtext-Suchbereich
+            # reichte bis zur nächsten Zeile derselben ID und konnte so eine fremde ready-Zeile dazwischen treffen
+            if feld(z, ii) != zid or feld(z, si) != "ready":
+                continue
+            if not gesehen:
+                gesehen = True; continue
+            z[si] = "dup-zeile-skip"
+            n += 1
+            break
     return n
 
 def doppelte_zeilen(datei):
     """29.09.2026: dieselbe Zeilen-ID mehrfach «ready» (Reel-Motor-Nachtrag + Merge-Union; gemessen 5 IDs doppelt in
     reels_seed.csv). Die ERSTE bleibt, jede weitere bekommt «dup-zeile-skip». Doppelte Zeilen sind textgleich — darum
-    zeilengenau über die Position im Text, nicht über den Schlüssel (id, Medium). Rückgabe: Anzahl markiert."""
-    import io
-    txt = open(datei, encoding="utf-8", newline="").read()
-    zeilen = list(csv.DictReader(io.StringIO(txt)))
-    ids = Counter(r.get("id") for r in zeilen if (r.get("status") or "").strip() == "ready")
-    gepostet = {r.get("id") for r in zeilen if (r.get("status") or "").strip().startswith("posted")}
-    # doppelt = mehrfach ready ODER ready + schon gepostet (sonst ginge dieselbe Datei ein zweites Mal raus)
-    doppelt = [i for i, n in ids.items() if i and (n > 1 or i in gepostet)]
-    n = 0
-    for zid in doppelt:
-        starts = [m.end() for m in re.finditer(r"(?:^|\n)" + re.escape(zid) + ",", txt)]
-        gesehen = zid in gepostet             # schon gepostet → auch die erste ready-Zeile ist ein Doppel
-        for st in starts:
-            ende = txt.find("\n" + zid + ",", st)
-            j = txt.find(",ready,", st, ende if ende > 0 else len(txt))
-            if j < 0:
-                continue
-            if not gesehen:
-                gesehen = True; continue
-            txt = txt[:j] + ",dup-zeile-skip," + txt[j + 7:]
-            n += 1
-            starts = [m.end() for m in re.finditer(r"(?:^|\n)" + re.escape(zid) + ",", txt)]
-            break
-    if n and not DRY:
-        neu = list(csv.DictReader(io.StringIO(txt)))
-        assert len(neu) == len(zeilen), "Zeilenzahl geändert — Abbruch"
-        tmp = datei + ".tmp"
-        open(tmp, "w", encoding="utf-8", newline="").write(txt)
-        os.replace(tmp, datei)
-    return n
+    zeilengenau über die Position in der Datei, nicht über den Schlüssel (id, Medium). Rückgabe: Anzahl markiert.
+    14.10.2026: statt Rohtext-Ersatz und fester Zwischendatei «<csv>.tmp» unter der gemeinsamen Queue-Sperre auf dem
+    FRISCHEN Stand (queue_csv.umbauen: Sperre, frisch lesen, atomar schreiben). DRY liest nur, ohne Sperre."""
+    if DRY:
+        return doppel_markieren(lesen(datei))
+    markiert = [0]
+
+    def markieren(frisch):
+        markiert[0] = doppel_markieren(frisch)
+        return frisch if markiert[0] else None
+    try:
+        umbauen(datei, markieren)
+    except RuntimeError as e:
+        print(f"   ⚠️ {datei}: {e}")
+        return 0
+    return markiert[0]
 
 gesamt = Counter()
+nicht_geschrieben = 0
 for datei in DATEIEN:
     if not os.path.exists(datei): continue
     for _ in range(10):                       # je Durchgang eine weitere Doppelung pro ID, bis nichts mehr doppelt ist
@@ -319,8 +351,13 @@ for datei in DATEIEN:
             if k: gesehen.add(k)
     if not DRY and aend:
         geschrieben = schreiben_nachgelesen(datei, aend)
-        if geschrieben != len(aend):
+        if geschrieben is None:
+            nicht_geschrieben += 1   # 14.10.2026 (Prüfer): sonst FERTIG trotz nichts geschrieben → Nachlauf erst nach ~20 h
+        if geschrieben is not None and geschrieben != len(aend):
             print(f"   (nachgelesen: {len(aend) - geschrieben} Zeile(n) hatte inzwischen ein anderer Schreiber geändert — bleiben so)")
     print(f"{datei:32s} ready {len(ready):4d} → " + " · ".join(f"{k} {v}" for k, v in n.most_common()))
     gesamt.update(n)
 print(("DRY — " if DRY else "") + "GESAMT: " + " · ".join(f"{k} {v}" for k, v in gesamt.most_common()))
+if nicht_geschrieben:
+    print(f"⚠️ {nicht_geschrieben} Queue(s) nicht geschrieben (Sperre belegt/Datei halb) — Exit 1, der Aufseher startet beim nächsten Tick neu")
+    sys.exit(1)

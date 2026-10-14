@@ -21,10 +21,11 @@ Was dieses Skript tut (je Lauf N Stories, Standard 1):
   python3 automation/story_bauen.py                 → Trockenlauf
   SCHARF=1 N=1 python3 automation/story_bauen.py    → bauen, Jury, einreihen, pushen
 """
-import csv, io, json, os, re, subprocess, sys, time, urllib.request
+import io, json, os, re, subprocess, sys, time, urllib.request
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import heilversprechen_wache as hw          # gql() mit Grund bei Fehlern
 from fremdtext import woerter_url as fremdtext_woerter, GRENZE as FREMDTEXT_GRENZE
+from queue_csv import anhaengen as queue_anhaengen   # 14.10.2026: EIN Weg, die geteilte Story-Queue zu schreiben
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -159,13 +160,12 @@ def jury(datei, caption):
 
 
 def einreihen(p, datei, kt):
-    rows = list(csv.reader(open(QUEUE, newline="", encoding="utf-8")))
-    rows.append([f"story-{p['handle']}"[:80], time.strftime("%Y-%m-%d"), "image", RAW + os.path.basename(datei),
-                 "instagram,facebook", "ready", "", ""])
-    buf = io.StringIO(); csv.writer(buf, lineterminator="\n").writerows(rows)
-    with open(QUEUE + ".tmp", "w", encoding="utf-8", newline="") as f:
-        f.write(buf.getvalue())
-    os.replace(QUEUE + ".tmp", QUEUE)
+    # 14.10.2026 (Lost-Update-Klasse): queue_csv.anhaengen — gemeinsame Sperre mit story-autopost-meta.mjs & Co., frisch
+    # lesen, atomar über eine Nachbardatei je Prozess (vorher eigenes Lesen + feste story_queue.csv.tmp ohne Sperre).
+    # Steht die id schon drin (paralleler Lauf), wird sie nicht doppelt angehängt.
+    if not queue_anhaengen(QUEUE, [[f"story-{p['handle']}"[:80], time.strftime("%Y-%m-%d"), "image",
+                                    RAW + os.path.basename(datei), "instagram,facebook", "ready", "", ""]]):
+        print(f"  ⚠️ {p['handle']}: story-{p['handle'][:74]} steht schon in der Queue — nicht doppelt eingereiht", flush=True)
     with open(P_LEDGER, "a", encoding="utf-8") as f:
         f.write(f"slug:{p['handle']}\n{name_key(kt)}\n")
 
@@ -201,8 +201,13 @@ def main():
             if os.path.exists(datei):   # 06.10.: fehlte die Karte schon, brach der Lauf ab, bevor die Sperre geschrieben war
                 os.unlink(datei)
             if rc == 4:   # nicht wieder versuchen: Produkt-Ledger nicht, aber Story-Sperre über die Queue-Zeile
-                with open(QUEUE, "a", encoding="utf-8") as f:
-                    f.write(f"story-{p['handle'][:74]},{time.strftime('%Y-%m-%d')},image,,instagram,jury-skip,,\n")
+                # 14.10.2026: über queue_csv.anhaengen (Sperre, frisch, atomar) statt Anhängen ohne Sperre; gleiche Zeile wie
+                # bisher, eine schon vorhandene Sperre derselben id wird nicht verdoppelt.
+                try:
+                    queue_anhaengen(QUEUE, [[f"story-{p['handle'][:74]}", time.strftime("%Y-%m-%d"), "image", "",
+                                             "instagram", "jury-skip", "", ""]])
+                except RuntimeError as e:
+                    print(f"  ⚠️ Story-Sperre {p['handle']} nicht geschrieben — {e}", file=sys.stderr)
             continue
         einreihen(p, datei, kt)
         gebaut.append(datei)

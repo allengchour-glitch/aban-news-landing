@@ -23,7 +23,7 @@ import { fbText, mitFolgen } from './lib/fb_text.mjs';   // 07.10.: FB-eigener T
 import fs from 'node:fs';
 import { socialPause, pauseSchluessel } from './lib/social_pause.mjs';   // 13.10.: Anlass-Social-Sperre (Halloween-CJ 15.10.–01.11.)
 const _socialPause = pauseSchluessel();
-import { schreiben as queueSchreiben, schnappschuss as queueSchnappschuss } from './lib/queue_csv.mjs';
+import { schreiben as queueSchreiben, schnappschuss as queueSchnappschuss, lesen as queueLesen } from './lib/queue_csv.mjs';
 import { lock as postLock, seen as postSeen, mark as postMark, preisVeraltet, produktMerkenReel, nachVorrang, montageErst, montagePruefen, montageQuelle, juryPruefen, modelSperre } from './post_guard.mjs';
 // 22.09.: Adresse vor dem Post pruefen — 14 von 22 «ready»-Reels waren 404 (CDN-Dateien weg). 4xx → archived-deadurl.
 import { execFileSync as _exf, spawnSync } from 'node:child_process';
@@ -99,7 +99,7 @@ function parseCsv(text) {
   return rows.filter(r => r.length > 1 || (r.length === 1 && r[0] !== ''));
 }
 const esc = v => { v = String(v ?? ''); return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; };
-const rows = parseCsv(fs.readFileSync(CSV, 'utf8'));
+const rows = queueLesen(CSV);   // 14.10.2026: geprüft gelesen — nie eine halb geschriebene Datei als Basis (Stummel-Zeilen)
 const idx = Object.fromEntries(rows[0].map((h, i) => [h.trim(), i]));
 // 14.10.2026: NIE die ganze Datei aus der Start-Kopie zurückschreiben — der Reel-Motor hängt währenddessen Zeilen an
 // (8 fertige Reels verloren). queue_csv setzt nur die EIGENEN Änderungen in den frischen Stand (Sperre + 3-Wege).

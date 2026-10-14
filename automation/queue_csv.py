@@ -47,38 +47,104 @@ def schnappschuss(rows):
     return [list(r) for r in rows]
 
 
-def lesen(datei):
-    if not os.path.exists(datei):
-        return []
-    with open(datei, encoding="utf-8", newline="") as f:
-        return parse_csv(f.read())
+# Grenzen (per Umgebung nur für Tests verkürzbar) — gleiche Werte wie queue_csv.mjs
+STABIL_S = float(os.environ.get("QUEUE_CSV_STABIL_MS", 1000)) / 1000      # fremd geschriebene Datei: so lange unverändert
+SCHRUMPF_S = float(os.environ.get("QUEUE_CSV_SCHRUMPF_MS", 10000)) / 1000  # … mit weniger Datensätzen als unser letzter Stand
+LESEN_MAX_S = float(os.environ.get("QUEUE_CSV_LESEN_MAX_MS", 20000)) / 1000
+LEERE_SPERRE_S = float(os.environ.get("QUEUE_CSV_LEERE_SPERRE_MS", 10000)) / 1000
+
+
+def _basis_pfad(datei):
+    return "/tmp/queuecsv_" + re.sub(r"[^A-Za-z0-9._-]", "_", os.path.abspath(datei))
+
+
+def sperr_pfad(datei):
+    return _basis_pfad(datei) + ".lock"
+
+
+def _stand_pfad(datei):
+    return _basis_pfad(datei) + ".stand"
 
 
 def _offenes_feld(text):
     return text.count('"') % 2 == 1
 
 
-def frisch_lesen(datei, versuche=50):
-    """Nur eine VOLLSTÄNDIGE Datei zählt (Prüfer 14.10.: git merge/checkout und nicht umgestellte Schreiber legen die Datei
-    neu an bzw. schreiben mit O_TRUNC). Gültig = nicht leer, endet auf Zeilenumbruch, kein offenes Anführungszeichen,
-    zweimal im Abstand von 30 ms gleich gelesen. Sonst bis ~4 s neu versuchen; danach None."""
-    for _ in range(versuche):
+def _vollstaendig(t):
+    return bool(t) and t.endswith("\n") and not _offenes_feld(t)
+
+
+def _kennung(datei):
+    st = os.stat(datei)
+    return {"ino": str(st.st_ino), "size": str(st.st_size), "mtime": str(st.st_mtime_ns)}
+
+
+def _stand_lesen(datei):
+    try:
+        import json
+        with open(_stand_pfad(datei), encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return None
+
+
+def _stand_schreiben(datei, n):
+    try:
+        import json
+        tmp = f"{_stand_pfad(datei)}.{os.getpid()}"
+        with open(tmp, "w", encoding="utf-8") as f:
+            json.dump({**_kennung(datei), "n": n}, f)
+        os.replace(tmp, _stand_pfad(datei))
+    except Exception:
+        pass
+
+
+def frisch_lesen(datei, max_s=None):
+    """Nur eine VOLLSTÄNDIGE Datei zählt (Stresstest 14.10.: git merge/checkout und O_TRUNC-Schreiber machen die Datei
+    zeitweise halb sichtbar; eine halbe Datei, die zufällig auf einer Satzgrenze endet, sieht vollständig aus).
+    1. Stimmt die Datei mit dem Stand überein, den der Helfer zuletzt geschrieben hat (Inode, Grösse, mtime) → sofort gültig.
+    2. Sonst hat ein Fremder geschrieben: gültig erst, wenn sie vollständig ist UND STABIL_S unverändert war; mit weniger
+       Datensätzen als unser letzter Stand (Queues sind Anhänge-Listen) erst nach SCHRUMPF_S.
+    Ungültiges UTF-8 (Schnitt mitten im Zeichen) zählt als unvollständig. Nach LESEN_MAX_S None."""
+    ende = time.time() + (LESEN_MAX_S if max_s is None else max_s)
+    letzt, seit = None, 0.0
+    while True:
+        k = text = None
         try:
-            with open(datei, encoding="utf-8", newline="") as f:
-                a = f.read()
-            time.sleep(0.03)
-            with open(datei, encoding="utf-8", newline="") as f:
-                b = f.read()
-            if a == b and a and a.endswith("\n") and not _offenes_feld(a):
-                return parse_csv(a)
-        except OSError:
-            pass
+            k = _kennung(datei)
+            with open(datei, "rb") as f:
+                roh = f.read()
+            text = roh.decode("utf-8") if len(roh) == int(k["size"]) else None
+        except (OSError, ValueError):
+            text = None
+        if k is not None and text is not None:
+            marke = _stand_lesen(datei)
+            if marke and all(marke.get(x) == k[x] for x in ("ino", "size", "mtime")):
+                return parse_csv(text)
+            sig = f"{k['ino']}:{k['size']}:{k['mtime']}"
+            if sig != letzt:
+                letzt, seit = sig, time.time()
+            if _vollstaendig(text):
+                rows = parse_csv(text)
+                schrumpft = bool(marke) and max(0, len(rows) - 1) < int(marke.get("n", 0))
+                if time.time() - seit >= (SCHRUMPF_S if schrumpft else STABIL_S):
+                    return rows
+        else:
+            letzt = None
+        if time.time() > ende:
+            return None
         time.sleep(0.05)
-    return None
 
 
-def sperr_pfad(datei):
-    return "/tmp/queuecsv_" + re.sub(r"[^A-Za-z0-9._-]", "_", os.path.abspath(datei)) + ".lock"
+def lesen(datei):
+    """Lesen für Leser/Poster am Anfang: dieselbe Prüfung wie frisch_lesen. Datei fehlt → []. Bleibt sie unvollständig →
+    RuntimeError (lieber kein Lauf als ein Lauf auf halben Daten — eine abgeschnittene letzte Zeile kam sonst als Stummel zurück)."""
+    if not os.path.exists(datei):
+        return []
+    r = frisch_lesen(datei)
+    if r is not None:
+        return r
+    raise RuntimeError(f"queue_csv: {datei} bleibt unvollständig (halb geschrieben?) — nicht gelesen")
 
 
 def _lebt(pid):
@@ -91,13 +157,61 @@ def _lebt(pid):
         return False
 
 
-def _veraltet(lp):
+def _sperre_nehmen(lp):
+    """Inhalt «pid zeit» entsteht atomar (Hilfsdatei + link) — eine leere Sperrdatei gibt es dadurch nicht mehr."""
+    tmp = f"{lp}.{os.getpid()}.{random.randrange(1 << 30):x}"
+    with open(tmp, "w") as f:
+        f.write(f"{os.getpid()} {int(time.time() * 1000)}")
+    try:
+        os.link(tmp, lp)
+        return True
+    except FileExistsError:
+        return False
+    finally:
+        try:
+            os.unlink(tmp)
+        except FileNotFoundError:
+            pass
+
+
+def _sperre_inhalt(lp):
     try:
         with open(lp) as f:
-            pid, t = f.read().split()[:2]
-        return not _lebt(int(pid)) or time.time() * 1000 - int(t) > SPERRE_ALT_S * 1000
-    except Exception:
-        return True
+            return f.read().strip(), os.stat(lp).st_mtime
+    except OSError:
+        return None
+
+
+def _veraltet(inh):
+    txt, mt = inh
+    teile = txt.split()
+    try:
+        pid, t = int(teile[0]), int(teile[1])
+    except (IndexError, ValueError):
+        return time.time() - mt > LEERE_SPERRE_S   # leer/kaputt (alte Fassung, Absturz beim Anlegen)
+    return not _lebt(pid) or time.time() * 1000 - t > SPERRE_ALT_S * 1000
+
+
+def _veraltet_wegraeumen(lp, inh):
+    weg = f"{lp}.weg.{os.getpid()}.{random.randrange(1 << 30):x}"
+    try:
+        os.rename(lp, weg)
+    except OSError:
+        return
+    try:
+        with open(weg) as f:
+            jetzt = f.read().strip()
+    except OSError:
+        jetzt = ""
+    if jetzt != inh[0]:   # inzwischen eine neue (lebende) Sperre → zurücklegen
+        try:
+            os.link(weg, lp)
+        except OSError:
+            pass
+    try:
+        os.unlink(weg)
+    except OSError:
+        pass
 
 
 class mit_sperre:
@@ -107,23 +221,15 @@ class mit_sperre:
     def __enter__(self):
         ende = time.time() + SPERRE_WARTEN_S
         while True:
-            try:
-                fd = os.open(self.lp, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o644)
-                os.write(fd, f"{os.getpid()} {int(time.time() * 1000)}".encode())
-                os.close(fd)
+            if _sperre_nehmen(self.lp):
                 return self
-            except FileExistsError:
-                if _veraltet(self.lp):
-                    time.sleep(0.03)
-                    if _veraltet(self.lp):
-                        try:
-                            os.unlink(self.lp)
-                        except FileNotFoundError:
-                            pass
-                    continue
-                if time.time() > ende:
-                    raise RuntimeError(f"queue_csv: Sperre {self.lp} seit {SPERRE_WARTEN_S} s belegt — nichts geschrieben")
-                time.sleep(0.025 + random.random() * 0.05)
+            inh = _sperre_inhalt(self.lp)
+            if inh and _veraltet(inh):
+                _veraltet_wegraeumen(self.lp, inh)
+                continue
+            if time.time() > ende:
+                raise RuntimeError(f"queue_csv: Sperre {self.lp} seit {SPERRE_WARTEN_S} s belegt — nichts geschrieben")
+            time.sleep(0.025 + random.random() * 0.05)
 
     def __exit__(self, *a):
         try:
@@ -137,10 +243,12 @@ class mit_sperre:
 
 
 def atomar_schreiben(datei, text):
+    """Atomar (Nachbardatei + os.replace) und den eigenen Stand merken (für frisch_lesen). Nur unter der Sperre aufrufen."""
     tmp = os.path.join(os.path.dirname(datei) or ".", f".{os.path.basename(datei)}.tmp-{os.getpid()}")
     with open(tmp, "w", encoding="utf-8", newline="") as f:
         f.write(text)
     os.replace(tmp, datei)
+    _stand_schreiben(datei, max(0, len(parse_csv(text)) - 1))
 
 
 def _schluessel(rows, id_i):
@@ -170,6 +278,10 @@ def _w(o, c):
     return "" if v is None else v
 
 
+POST = re.compile(r"^post(ed|ing)")
+POST_FELDER = {"status", "posted_at", "post_url"}
+
+
 def _gleich(a, b, kopf):
     return all(_w(a, c) == _w(b, c) for c in kopf)
 
@@ -182,15 +294,24 @@ def zusammenfuehren(basis, meine, frisch):
     B, _ = _karte(basis, kopf)
     M, m_reihe = _karte(meine, kopf)
     F, f_reihe = _karte(frisch, kopf)
-    stat = dict(fremd_behalten=0, eigen_geaendert=0, eigen_neu=0, eigen_geloescht=0, fremd_fehlend_behalten=0)
+    stat = dict(fremd_behalten=0, eigen_geaendert=0, eigen_neu=0, eigen_geloescht=0, fremd_fehlend_behalten=0,
+                fremd_gepostet_behalten=0)
     aus = []
     for s in f_reihe:
         f, m, b = F[s], M.get(s), B.get(s)
         if m is not None and b is not None:
+            # Posten ist unumkehrbar: fremd gesetztes posting/posted* gewinnt samt posted_at/post_url, ausser ich setze selbst
+            # einen Post-Status (gleiche Regel wie queue_csv.mjs).
+            fremd_gepostet = ("status" in kopf and POST.match(_w(f, "status")) and _w(f, "status") != _w(b, "status")
+                              and not POST.match(_w(m, "status")))
+            if fremd_gepostet:
+                stat["fremd_gepostet_behalten"] += 1
             o, eigen = {}, False
             for c in kopf:
                 mv, bv = _w(m, c), _w(b, c)
-                if m.get(c) is not None and mv != bv:
+                if fremd_gepostet and c in POST_FELDER:
+                    o[c] = _w(f, c)
+                elif m.get(c) is not None and mv != bv:
                     o[c] = mv
                     eigen = eigen or mv != _w(f, c)
                 else:
@@ -269,6 +390,25 @@ def umbauen(datei, fn):
 
 
 def selbsttest():
+    global STABIL_S, SCHRUMPF_S, LESEN_MAX_S, LEERE_SPERRE_S
+    alt = (STABIL_S, SCHRUMPF_S, LESEN_MAX_S, LEERE_SPERRE_S)
+    STABIL_S, SCHRUMPF_S, LESEN_MAX_S, LEERE_SPERRE_S = 0.2, 1.5, 2.5, 0.3
+    try:
+        return _selbsttest_innen()
+    finally:
+        STABIL_S, SCHRUMPF_S, LESEN_MAX_S, LEERE_SPERRE_S = alt
+
+
+def _fremd_schreiben(pfad, teil1, teil2, ms):
+    """Fremder Schreiber mit O_TRUNC: erst teil1, nach ms den Rest (eigener Prozess)."""
+    import subprocess
+    import base64
+    code = ("import sys,base64,time;p=sys.argv[1];open(p,'wb').write(base64.b64decode(sys.argv[2]));"
+            f"time.sleep({ms / 1000});open(p,'ab').write(base64.b64decode(sys.argv[3]))")
+    return subprocess.Popen([sys.executable, "-c", code, pfad, base64.b64encode(teil1).decode(), base64.b64encode(teil2).decode()])
+
+
+def _selbsttest_innen():
     import tempfile
     import shutil
     fehler = []
@@ -300,6 +440,15 @@ def selbsttest():
     m3[2][4] = "posted"
     r3, s3 = zusammenfuehren(b3, m3, [K])
     pruef(len(r3) == 3 and r3[2][4] == "posted" and s3["fremd_fehlend_behalten"] == 1, f"gekürzte Datei {r3} {s3}")
+    b6 = [K, ["a", "1", "u1", "c", "ready", ""]]
+    m6, f6 = schnappschuss(b6), schnappschuss(b6)
+    m6[1][4], f6[1][4], f6[1][5] = "jury-skip", "posted-ig-fb", "T9"
+    r6, s6 = zusammenfuehren(b6, m6, f6)
+    pruef(r6[1][4] == "posted-ig-fb" and r6[1][5] == "T9" and s6["fremd_gepostet_behalten"] == 1, f"fremd gepostet {r6[1]}")
+    m7, f7 = schnappschuss(b6), schnappschuss(b6)
+    m7[1][4], m7[1][5], f7[1][4] = "posted-tiktok", "T1", "posting"
+    r7 = zusammenfuehren(b6, m7, f7)[0][1]
+    pruef(r7[4] == "posted-tiktok" and r7[5] == "T1", f"eigener Post gewinnt {r7}")
     f4 = [K + ["neu_spalte"], ["a", "1", "u1", "c", "ready", "", "x"]]
     b4 = [K, ["a", "1", "u1", "c", "ready", ""]]
     m4 = schnappschuss(b4)
@@ -339,6 +488,39 @@ def selbsttest():
         pass
     with open(q, "w") as f:
         f.write(ganz)
+    # Stresstest 14.10. A/B: O_TRUNC-Schreiber, halbe Datei endet auf einer Satzgrenze, Rest 400 ms später
+    os.unlink(q)
+    atomar_schreiben(q, ganz)                       # eigener Stand (Marke) = 100 Datensätze
+    gb = ganz.encode()
+    grenze = gb.index(b"\n", len(gb) // 2) + 1
+    kind = _fremd_schreiben(q, gb[:grenze], gb[grenze:], 400)
+    time.sleep(0.25)
+    pruef(anhaengen(q, [["neuA", "1", "u", "c", "ready", ""]]) == 1, "A: anhaengen während Fremdschreiben")
+    kind.wait()
+    na = lesen(q)
+    pruef(len(na) == 102 and na[101][0] == "neuA", f"A: halbe Datei auf Satzgrenze — {len(na) - 1} statt 101 Datensätze")
+    kind = _fremd_schreiben(q, gb[:grenze], gb[grenze:], 400)
+    time.sleep(0.25)
+    lb = lesen(q)
+    kind.wait()
+    pruef(len(lb) == 101, f"B: lesen() während Fremdschreiben — {len(lb) - 1} statt 100")
+    # C: Schnitt mitten in einem UTF-8-Zeichen (früher UnicodeDecodeError)
+    et = serialisieren([K, ["e1", "1", "u", "Herbst 🍂 Deko", "ready", ""]]).encode()
+    sc = et.index("🍂".encode()) + 2
+    kind = _fremd_schreiben(q, et[:sc], et[sc:], 400)
+    time.sleep(0.25)
+    lc = lesen(q)
+    kind.wait()
+    pruef(len(lc) == 2 and lc[1][3] == "Herbst 🍂 Deko", f"C: UTF-8-Schnitt — {lc[1:] }")
+    # D: leere Sperrdatei: nicht sofort übernehmen, nach LEERE_SPERRE_S schon
+    with open(q, "w") as f:
+        f.write(ganz)
+    open(sperr_pfad(q), "w").close()
+    t0 = time.time()
+    pruef(anhaengen(q, [["neuD", "1", "u", "c", "ready", ""]]) == 1, "D: leere Sperre übernommen")
+    dauer = time.time() - t0
+    pruef(0.28 <= dauer < 5, f"D: leere Sperre nach {dauer:.2f} s übernommen (soll ≥ 0.3 s, < 5 s)")
+    pruef(not os.path.exists(sperr_pfad(q)), "D: keine Sperrdatei liegengeblieben")
     with open(sperr_pfad(q), "w") as f:
         f.write(f"999999 {int(time.time() * 1000)}")
     pruef(anhaengen(q, [["e", "3", "u", "x", "ready", ""]]) == 1, "tote Sperre übernommen")
@@ -353,6 +535,11 @@ def selbsttest():
         with open(q, encoding="utf-8") as f:
             pruef(ser == f.read(), "Node liest+schreibt die Datei identisch")
     shutil.rmtree(d, ignore_errors=True)
+    for x in (_stand_pfad(q), sperr_pfad(q)):
+        try:
+            os.unlink(x)
+        except OSError:
+            pass
     return fehler
 
 

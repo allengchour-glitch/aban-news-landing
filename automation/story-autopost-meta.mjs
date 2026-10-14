@@ -19,6 +19,7 @@ import fs from 'node:fs';
 import { socialPause, pauseSchluessel } from './lib/social_pause.mjs';   // 13.10.: Anlass-Social-Sperre (Halloween-CJ 15.10.–01.11.)
 const _socialPause = pauseSchluessel();
 import { lock as postLock, seen as postSeen, mark as postMark, fbSeitenIdentitaet, modelSperre } from './post_guard.mjs';
+import { schreiben as queueSchreiben, schnappschuss as queueSchnappschuss, lesen as queueLesen } from './lib/queue_csv.mjs';
 
 const CSV = new URL('../social/story_queue.csv', import.meta.url).pathname;
 const V = process.env.META_GRAPH_VERSION || 'v21.0';
@@ -76,8 +77,7 @@ function parse(text){
   if(field.length||row.length){row.push(field);rows.push(row);}
   return rows.filter(r=>r.length>1||(r.length===1&&r[0]!==''));
 }
-function esc(v){ v=String(v??''); return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v; }
-function serialize(rows){ return rows.map(r=>r.map(esc).join(',')).join('\n')+'\n'; }
+// 14.10.2026: eigener Serialisierer entfernt — geschrieben wird nur noch über queue_csv (queueWrite unten).
 
 async function gpost(url, params){
   const body = new URLSearchParams(params);
@@ -169,7 +169,12 @@ if(configured.length===0 && !DRY){ console.log('Kein Meta-Kanal für Stories kon
 if(!fs.existsSync(CSV)){ console.log('Keine social/story_queue.csv → nichts zu tun.'); process.exit(0); }
 
 const today = new Date().toISOString().slice(0,10);
-const rows = parse(fs.readFileSync(CSV,'utf8'));
+const rows = queueLesen(CSV);   // 14.10.2026: geprüft gelesen — nie eine halb geschriebene Datei als Basis (Stummel-Zeilen)
+// 14.10.2026: nie die ganze Datei aus dieser Start-Kopie zurückschreiben — zwischen Lesen und Schreiben liegen Minuten
+// (Upload/Metricool), in denen story_bauen.py Stories anhängt (Klasse «8 fertige Reels verloren»). queue_csv setzt nur
+// die EIGENEN Änderungen in den frischen Stand (gemeinsame Sperre + 3-Wege, atomar; doppelte ids getrennt geführt).
+let _queueBasis = queueSchnappschuss(rows);
+const queueWrite = () => { queueSchreiben(CSV, _queueBasis, rows); _queueBasis = queueSchnappschuss(rows); };
 const header = rows[0];
 const idx = Object.fromEntries(COLS.map(c=>[c, header.indexOf(c)]));
 const data = rows.slice(1);
@@ -187,7 +192,7 @@ for(const next of due.slice(0, MAX)){
   const url = next[idx.media_url].trim();
   // 30.09.2026 Betreiber «immer sie markieren und auch andere orte»: Model-Material nur mit @tatjanalarsinamoira (post_guard.modelSperre) — Story hat keinen Text
   { const ms = modelSperre([url], null); if (ms) { console.error('   ⛔', ms); continue; } }
-  if(!DRY && postSeen(url)){ console.log(`   ⛔ Story-Medium schon gepostet → skip: ${url}`); next[idx.status]='posted-dup-skip'; fs.writeFileSync(CSV, serialize(rows)); continue; }
+  if(!DRY && postSeen(url)){ console.log(`   ⛔ Story-Medium schon gepostet → skip: ${url}`); next[idx.status]='posted-dup-skip'; queueWrite(); continue; }
   const plat = (next[idx.platforms]||'').toLowerCase();
   const wantIG = !plat.trim() || /instagram|\big\b/.test(plat);
   const wantFB = !plat.trim() || /facebook|\bfb\b/.test(plat);
@@ -207,12 +212,12 @@ for(const next of due.slice(0, MAX)){
   if(got.length>0){
     if(results[0] && results[0]!==false) postMark(url);
     next[idx.status]='posted'; next[idx.posted_at]=new Date().toISOString(); next[idx.post_url]=got[0];
-    fs.writeFileSync(CSV, serialize(rows));
+    queueWrite();
     postedCount++;
     console.log(`   ✅ Story auf ${results.map((x,i)=>x&&x!==false?['IG','FB'][i]:null).filter(Boolean).join('+')}`);
   } else { anyFail = true; console.error('   ❌ keine Story erfolgreich — bleibt ready.'); }
 }
 
-if(!DRY && postedCount>0) fs.writeFileSync(CSV, serialize(rows));
+if(!DRY && postedCount>0) queueWrite();
 console.log(`Fertig: ${postedCount} Story(s)${DRY?' (DRY)':''}.`);
 process.exit(anyFail && postedCount===0 ? 1 : 0);

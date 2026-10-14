@@ -25,8 +25,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { spawn } from 'node:child_process';
 
-const SPERRE_WARTEN_MS = 60000;   // länger wartet niemand — dann ist etwas faul (Fehler statt stilles Überschreiben)
+let SPERRE_WARTEN_MS = 60000;   // länger wartet niemand — dann ist etwas faul (Fehler statt stilles Überschreiben)
 const SPERRE_ALT_MS = 120000;     // eine Sperre, die älter ist, gehört einem abgestürzten Prozess
 
 export function parseCsv(text) {
@@ -45,49 +46,100 @@ export function parseCsv(text) {
 const esc = v => { v = String(v ?? ''); return /[",\n\r]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; };
 export const serialisieren = rows => rows.map(r => r.map(esc).join(',')).join('\n') + (rows.length ? '\n' : '');
 export const schnappschuss = rows => rows.map(r => [...r]);
-export function lesen(datei) { return fs.existsSync(datei) ? parseCsv(fs.readFileSync(datei, 'utf8')) : []; }
+// Grenzen (per Umgebung nur für Tests verkürzbar)
+let STABIL_MS = +process.env.QUEUE_CSV_STABIL_MS || 1000;        // fremd geschriebene Datei: so lange unverändert, dann gültig
+let SCHRUMPF_MS = +process.env.QUEUE_CSV_SCHRUMPF_MS || 10000;   // … und weniger Datensätze als unser letzter Stand: so lange
+let LESEN_MAX_MS = +process.env.QUEUE_CSV_LESEN_MAX_MS || 20000;  // länger wartet kein Leser
+let LEERE_SPERRE_MS = +process.env.QUEUE_CSV_LEERE_SPERRE_MS || 10000;   // leere/kaputte Sperrdatei: erst danach übernehmen
+
+const basisPfad = datei => '/tmp/queuecsv_' + path.resolve(datei).replace(/[^A-Za-z0-9._-]/g, '_');
+export function sperrPfad(datei) { return basisPfad(datei) + '.lock'; }
+const standPfad = datei => basisPfad(datei) + '.stand';
+const schlafen = ms => Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
+function lebt(pid) { try { process.kill(pid, 0); return true; } catch (e) { return e.code === 'EPERM'; } }
 
 // Endet der Text innerhalb eines Feldes in Anführungszeichen? (= halb geschrieben)
 function offenesFeld(text) { let q = false; for (let i = 0; i < text.length; i++) if (text[i] === '"') q = !q; return q; }
-/** Frisch lesen für einen Schreibvorgang — nur eine VOLLSTÄNDIGE Datei zählt (Prüfer 14.10.: git merge/checkout und noch
- *  nicht umgestellte Schreiber legen die Datei neu an bzw. schreiben sie mit O_TRUNC; wer in diesem Moment liest, sieht eine
- *  leere oder halbe Datei). Gültig = existiert, nicht leer, endet auf Zeilenumbruch, kein offenes Anführungszeichen und
- *  zweimal im Abstand von 30 ms gleich gelesen. Sonst bis ~4 s neu versuchen; danach null. */
-export function frischLesen(datei, versuche = 50) {
-  for (let i = 0; i < versuche; i++) {
-    try {
-      const a = fs.readFileSync(datei, 'utf8'); schlafen(30); const b = fs.readFileSync(datei, 'utf8');
-      if (a === b && a.length && a.endsWith('\n') && !offenesFeld(a)) return parseCsv(a);
-    } catch {}
-    schlafen(50);
-  }
-  return null;
+const vollstaendig = t => t.length > 0 && t.endsWith('\n') && !offenesFeld(t);
+const datensaetze = rows => Math.max(0, rows.length - 1);
+function kennung(datei) { const s = fs.statSync(datei, { bigint: true }); return { ino: String(s.ino), size: String(s.size), mtime: String(s.mtimeNs) }; }
+function standLesen(datei) { try { return JSON.parse(fs.readFileSync(standPfad(datei), 'utf8')); } catch { return null; } }
+function standSchreiben(datei, n) {
+  try { const tmp = `${standPfad(datei)}.${process.pid}`; fs.writeFileSync(tmp, JSON.stringify({ ...kennung(datei), n })); fs.renameSync(tmp, standPfad(datei)); } catch {}
 }
 
-export function sperrPfad(datei) { return '/tmp/queuecsv_' + path.resolve(datei).replace(/[^A-Za-z0-9._-]/g, '_') + '.lock'; }
-const schlafen = ms => Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
-function lebt(pid) { try { process.kill(pid, 0); return true; } catch (e) { return e.code === 'EPERM'; } }
+/** Frisch lesen — nur eine VOLLSTÄNDIGE Datei zählt (Stresstest 14.10.: git merge/checkout und Schreiber mit O_TRUNC machen
+ *  die Datei zeitweise halb sichtbar; eine halbe Datei, die zufällig auf einer Satzgrenze endet, sieht vollständig aus).
+ *  1. Stimmt die Datei mit dem Stand überein, den DIESER Helfer zuletzt geschrieben hat (Inode, Grösse, mtime) → sofort gültig.
+ *  2. Sonst hat ein Fremder geschrieben: gültig erst, wenn sie syntaktisch vollständig ist UND STABIL_MS unverändert war;
+ *     hat sie weniger Datensätze als unser letzter Stand (Queues sind Anhänge-Listen — Schrumpfen ist verdächtig): SCHRUMPF_MS.
+ *  Nach LESEN_MAX_MS null. Ungültiges UTF-8 (Schnitt mitten im Zeichen) zählt als unvollständig. */
+export function frischLesen(datei, maxMs) {
+  const ende = Date.now() + (maxMs ?? LESEN_MAX_MS); let letzt = null, seit = 0;
+  for (;;) {
+    let k = null, text = null;
+    try { k = kennung(datei); const buf = fs.readFileSync(datei); text = new TextDecoder('utf-8', { fatal: true }).decode(buf); if (buf.length !== Number(k.size)) text = null; }
+    catch { text = null; }
+    if (k && text !== null) {
+      const marke = standLesen(datei);
+      if (marke && marke.ino === k.ino && marke.size === k.size && marke.mtime === k.mtime) return parseCsv(text);
+      const sig = `${k.ino}:${k.size}:${k.mtime}`;
+      if (sig !== letzt) { letzt = sig; seit = Date.now(); }
+      if (vollstaendig(text)) {
+        const rows = parseCsv(text), schrumpft = marke && datensaetze(rows) < marke.n;
+        if (Date.now() - seit >= (schrumpft ? SCHRUMPF_MS : STABIL_MS)) return rows;
+      }
+    } else letzt = null;
+    if (Date.now() > ende) return null;
+    schlafen(50);
+  }
+}
+/** Lesen für Leser/Poster am Anfang: dieselbe Prüfung (eine abgeschnittene letzte Zeile in der Basis wurde sonst als Stummel
+ *  zurückgeschrieben). Datei fehlt → []. Bleibt sie unvollständig → Fehler (lieber kein Lauf als ein Lauf auf halben Daten). */
+export function lesen(datei) {
+  if (!fs.existsSync(datei)) return [];
+  const r = frischLesen(datei); if (r) return r;
+  throw new Error(`queue_csv: ${datei} bleibt unvollständig (halb geschrieben?) — nicht gelesen`);
+}
+
+// Sperre: Inhalt «pid zeit» entsteht atomar (Hilfsdatei + link) — eine leere Sperrdatei gibt es dadurch nicht mehr.
+function sperreNehmen(lp) {
+  const tmp = `${lp}.${process.pid}.${Math.random().toString(36).slice(2)}`;
+  fs.writeFileSync(tmp, `${process.pid} ${Date.now()}`);
+  try { fs.linkSync(tmp, lp); return true; } catch (e) { if (e.code === 'EEXIST') return false; throw e; } finally { try { fs.unlinkSync(tmp); } catch {} }
+}
+function sperreInhalt(lp) { try { return { txt: fs.readFileSync(lp, 'utf8').trim(), mt: fs.statSync(lp).mtimeMs }; } catch { return null; } }
+function veraltet(inh) {
+  const [pid, t] = inh.txt.split(/\s+/).map(Number);
+  if (!pid || !t) return Date.now() - inh.mt > LEERE_SPERRE_MS;   // leer/kaputt (alte Fassung, Absturz beim Anlegen)
+  return !lebt(pid) || Date.now() - t > SPERRE_ALT_MS;
+}
+function veraltetWegraeumen(lp, inh) {
+  // erst wegbenennen, dann prüfen, ob es DIESELBE (veraltete) Sperre war — sonst zurücklegen (sie gehört einem Lebenden)
+  const weg = `${lp}.weg.${process.pid}.${Math.random().toString(36).slice(2)}`;
+  try { fs.renameSync(lp, weg); } catch { return; }
+  let jetzt = ''; try { jetzt = fs.readFileSync(weg, 'utf8').trim(); } catch {}
+  if (jetzt !== inh.txt) { try { fs.linkSync(weg, lp); } catch {} }
+  try { fs.unlinkSync(weg); } catch {}
+}
 
 export function mitSperre(datei, fn) {
   const lp = sperrPfad(datei), ende = Date.now() + SPERRE_WARTEN_MS;
   for (;;) {
-    try { const fd = fs.openSync(lp, 'wx'); fs.writeSync(fd, `${process.pid} ${Date.now()}`); fs.closeSync(fd); break; }
-    catch (e) {
-      if (e.code !== 'EEXIST') throw e;
-      let alt = false;
-      try { const [pid, t] = fs.readFileSync(lp, 'utf8').trim().split(/\s+/).map(Number); alt = !lebt(pid) || Date.now() - t > SPERRE_ALT_MS; }
-      catch { alt = true; }   // leer/halb geschrieben: nur übernehmen, wenn sie auch nach kurzer Pause noch so ist
-      if (alt) { schlafen(30); try { const [pid, t] = fs.readFileSync(lp, 'utf8').trim().split(/\s+/).map(Number); if (!lebt(pid) || Date.now() - t > SPERRE_ALT_MS) fs.unlinkSync(lp); } catch { try { fs.unlinkSync(lp); } catch {} } continue; }
-      if (Date.now() > ende) throw new Error(`queue_csv: Sperre ${lp} seit ${SPERRE_WARTEN_MS / 1000} s belegt — nichts geschrieben`);
-      schlafen(25 + Math.floor(Math.random() * 50));
-    }
+    if (sperreNehmen(lp)) break;
+    const inh = sperreInhalt(lp);
+    if (inh && veraltet(inh)) { veraltetWegraeumen(lp, inh); continue; }
+    if (Date.now() > ende) throw new Error(`queue_csv: Sperre ${lp} seit ${SPERRE_WARTEN_MS / 1000} s belegt — nichts geschrieben`);
+    schlafen(25 + Math.floor(Math.random() * 50));
   }
   try { return fn(); } finally { try { if (fs.readFileSync(lp, 'utf8').startsWith(`${process.pid} `)) fs.unlinkSync(lp); } catch {} }
 }
 
+/** Atomar schreiben (Nachbardatei + rename) und den eigenen Stand merken (für frischLesen). Nur unter der Sperre aufrufen. */
 export function atomarSchreiben(datei, text) {
   const tmp = path.join(path.dirname(datei), `.${path.basename(datei)}.tmp-${process.pid}`);
   fs.writeFileSync(tmp, text); fs.renameSync(tmp, datei);
+  standSchreiben(datei, datensaetze(parseCsv(text)));
 }
 
 function schluesselListe(rows, idI) {
@@ -101,19 +153,30 @@ function alsKarte(rows, kopf) {
   return { k, reihe: sl };
 }
 const gleich = (a, b, kopf) => kopf.every(c => (a[c] ?? '') === (b[c] ?? ''));
+const POST = /^post(ed|ing)/;   // posted, posted-ig-fb, posted-tiktok, posting … (nicht: posted-dup-* zählt mit — auch das ist ein Endzustand)
+const POST_FELDER = new Set(['status', 'posted_at', 'post_url']);
 
 /** 3-Wege-Zusammenführung. Liefert { rows, stat }. */
 export function zusammenfuehren(basis, meine, frisch) {
   const kopf = [...(frisch[0] || meine[0] || basis[0] || [])];
   for (const h of (meine[0] || [])) if (!kopf.includes(h)) kopf.push(h);
   const B = alsKarte(basis, kopf).k, M = alsKarte(meine, kopf), F = alsKarte(frisch, kopf);
-  const stat = { fremd_behalten: 0, eigen_geaendert: 0, eigen_neu: 0, eigen_geloescht: 0, fremd_fehlend_behalten: 0 };
+  const stat = { fremd_behalten: 0, eigen_geaendert: 0, eigen_neu: 0, eigen_geloescht: 0, fremd_fehlend_behalten: 0, fremd_gepostet_behalten: 0 };
   const aus = [], wert = (o, c) => o[c] === undefined ? '' : o[c];
   for (const s of F.reihe) {
     const f = F.k.get(s), m = M.k.get(s), b = B.get(s);
     if (m && b) {
+      // Posten ist unumkehrbar: hat ein ANDERER die Zeile inzwischen auf posting/posted* gesetzt und ich setze selbst keinen
+      // Post-Status, gewinnt sein Status samt posted_at/post_url (sonst überschriebe ein Skip-/Claim-Entscheid aus alter Sicht
+      // einen echten Post → Doppelpost-Gefahr, Prüfer 14.10.).
+      const fremdGepostet = kopf.includes('status') && POST.test(wert(f, 'status')) && wert(f, 'status') !== wert(b, 'status') && !POST.test(wert(m, 'status'));
       const o = {}; let eigen = false;
-      for (const c of kopf) { const mv = wert(m, c), bv = wert(b, c); if (m[c] !== undefined && mv !== bv) { o[c] = mv; eigen = eigen || mv !== wert(f, c); } else o[c] = wert(f, c); }
+      for (const c of kopf) {
+        const mv = wert(m, c), bv = wert(b, c);
+        if (fremdGepostet && POST_FELDER.has(c)) o[c] = wert(f, c);
+        else if (m[c] !== undefined && mv !== bv) { o[c] = mv; eigen = eigen || mv !== wert(f, c); } else o[c] = wert(f, c);
+      }
+      if (fremdGepostet) stat.fremd_gepostet_behalten++;
       if (eigen) stat.eigen_geaendert++; aus.push(o);
     } else if (m && !b) aus.push(f);                                     // beide haben dieselbe Zeile angelegt: die vorhandene gilt
     else if (!m && b) { if (gleich(f, b, kopf)) stat.eigen_geloescht++; else aus.push(f); }   // ich habe gelöscht; fremd geändert → bleibt
@@ -167,6 +230,12 @@ export function umbauen(datei, fn) {
 // ------------------------------------------------------------------------------------------------- Selbsttest
 export function selbsttest() {
   const fehler = [], pruef = (ok, was) => { if (!ok) fehler.push(was); };
+  // kurze Grenzen nur für den Test (Werte danach zurück)
+  const alt = [STABIL_MS, SCHRUMPF_MS, LESEN_MAX_MS, LEERE_SPERRE_MS];
+  [STABIL_MS, SCHRUMPF_MS, LESEN_MAX_MS, LEERE_SPERRE_MS] = [200, 1500, 2500, 300];
+  try { return selbsttestInnen(fehler, pruef); } finally { [STABIL_MS, SCHRUMPF_MS, LESEN_MAX_MS, LEERE_SPERRE_MS] = alt; }
+}
+function selbsttestInnen(fehler, pruef) {
   const K = ['id', 'scheduled_date', 'video_url', 'caption', 'status', 'posted_at'];
   const basis = [K, ['a', '1', 'u1', 'c,1', 'ready', ''], ['b', '1', 'u2', 'c2', 'ready', ''], ['c', '1', 'u3', 'c3', 'ready', '']];
   // Poster: liest basis, markiert a gepostet, löscht c
@@ -188,6 +257,12 @@ export function selbsttest() {
   const b3 = [K, ['a', '1', 'u', 'c', 'ready', ''], ['b', '1', 'u', 'c', 'ready', '']], m3 = schnappschuss(b3), f3 = [K];
   m3[2][4] = 'posted'; const r3 = zusammenfuehren(b3, m3, f3);
   pruef(r3.rows.length === 3 && r3.rows[2][4] === 'posted' && r3.stat.fremd_fehlend_behalten === 1, `Gekürzte Datei: ${JSON.stringify(r3)}`);
+  // fremd gepostet schlägt meinen Skip/Claim; mein eigener Post-Status schlägt fremdes «posting»
+  const b6 = [K, ['a', '1', 'u1', 'c', 'ready', '']], m6 = schnappschuss(b6), f6 = schnappschuss(b6);
+  m6[1][4] = 'jury-skip'; f6[1][4] = 'posted-ig-fb'; f6[1][5] = 'T9';
+  const r6 = zusammenfuehren(b6, m6, f6); pruef(r6.rows[1][4] === 'posted-ig-fb' && r6.rows[1][5] === 'T9' && r6.stat.fremd_gepostet_behalten === 1, `fremd gepostet: ${r6.rows[1]}`);
+  const m7 = schnappschuss(b6), f7 = schnappschuss(b6); m7[1][4] = 'posted-tiktok'; m7[1][5] = 'T1'; f7[1][4] = 'posting';
+  const r7 = zusammenfuehren(b6, m7, f7).rows[1]; pruef(r7[4] === 'posted-tiktok' && r7[5] === 'T1', `eigener Post gewinnt: ${r7}`);
   // Spalten über den Kopf: frischer Kopf hat eine Spalte mehr
   const f4 = [[...K, 'neu_spalte'], ['a', '1', 'u1', 'c', 'ready', '', 'x']], b4 = [K, ['a', '1', 'u1', 'c', 'ready', '']], m4 = schnappschuss(b4); m4[1][4] = 'posted';
   const r4 = zusammenfuehren(b4, m4, f4).rows; pruef(r4[0].length === 7 && r4[1][6] === 'x' && r4[1][4] === 'posted', `Spaltenabbildung ${JSON.stringify(r4)}`);
@@ -215,9 +290,27 @@ export function selbsttest() {
   let warf = false; try { anhaengen(d, [['neu', '1', 'u', 'c', 'ready', '']]); } catch { warf = true; }
   pruef(warf, 'anhaengen an halbe Datei bricht ab statt zu kürzen');
   fs.writeFileSync(d, ganz);
+  // Stresstest 14.10. A/B: fremder Schreiber mit O_TRUNC, halbe Datei endet genau auf einer Satzgrenze, Rest folgt 400 ms später
+  const NODE = process.execPath, fremd = (p, a, b, ms) => spawn(NODE, ['-e', `const fs=require('fs');fs.writeFileSync(process.argv[1],Buffer.from(process.argv[2],'base64'));setTimeout(()=>fs.appendFileSync(process.argv[1],Buffer.from(process.argv[3],'base64')),${ms})`, p, Buffer.from(a).toString('base64'), Buffer.from(b).toString('base64')], { stdio: 'ignore' });
+  fs.rmSync(d, { force: true }); atomarSchreiben(d, ganz);                 // eigener Stand (Marke) = 100 Datensätze
+  const grenze = ganz.indexOf('\n', Math.floor(ganz.length / 2)) + 1;
+  let kind = fremd(d, ganz.slice(0, grenze), ganz.slice(grenze), 400); schlafen(200);
+  pruef(anhaengen(d, [['neuA', '1', 'u', 'c', 'ready', '']]) === 1, 'A: anhaengen während Fremdschreiben');
+  const nachA = lesen(d); pruef(nachA.length === 102 && nachA[101][0] === 'neuA', `A: halbe Datei auf Satzgrenze — ${nachA.length - 1} statt 101 Datensätze`);
+  kind = fremd(d, ganz.slice(0, grenze), ganz.slice(grenze), 400); schlafen(200);
+  const lb = lesen(d); pruef(lb.length === 101, `B: lesen() während Fremdschreiben — ${lb.length - 1} statt 100`);
+  // C: Schnitt mitten in einem UTF-8-Zeichen
+  const emo = [K, ['e1', '1', 'u', 'Herbst 🍂 Deko', 'ready', '']], emoTxt = Buffer.from(serialisieren(emo)), schnitt = emoTxt.indexOf(Buffer.from('🍂')) + 2;
+  spawn(NODE, ['-e', `const fs=require('fs');const b=Buffer.from(process.argv[2],'base64');fs.writeFileSync(process.argv[1],b.subarray(0,${schnitt}));setTimeout(()=>fs.appendFileSync(process.argv[1],b.subarray(${schnitt})),400)`, d, emoTxt.toString('base64')], { stdio: 'ignore' });
+  schlafen(200); const lc = lesen(d); pruef(lc.length === 2 && lc[1][3] === 'Herbst 🍂 Deko', `C: UTF-8-Schnitt — ${JSON.stringify(lc[1])}`);
+  // D: leere Sperrdatei: nicht sofort übernehmen (könnte einem Lebenden gehören), nach LEERE_SPERRE_MS schon
+  fs.writeFileSync(d, ganz); fs.writeFileSync(sperrPfad(d), ''); const t0 = Date.now();
+  pruef(anhaengen(d, [['neuD', '1', 'u', 'c', 'ready', '']]) === 1, 'D: leere Sperre übernommen'); const dauer = Date.now() - t0;
+  pruef(dauer >= 280 && dauer < 5000, `D: leere Sperre nach ${dauer} ms übernommen (soll ≥ 300 ms, < 5 s)`);
+  pruef(!fs.existsSync(sperrPfad(d)), 'D: keine Sperrdatei liegengeblieben');
   // Sperre eines toten Prozesses wird übernommen
   fs.writeFileSync(sperrPfad(d), `999999 ${Date.now()}`); pruef(anhaengen(d, [['e', '3', 'u', 'x', 'ready', '']]) === 1, 'tote Sperre übernommen');
-  fs.rmSync(dir, { recursive: true, force: true });
+  fs.rmSync(dir, { recursive: true, force: true }); for (const x of [standPfad(d), sperrPfad(d)]) fs.rmSync(x, { force: true });
   return fehler;
 }
 

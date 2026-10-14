@@ -21,7 +21,7 @@
  *   MAX_PER_RUN=1
  *   DRY_RUN=1
  */
-import { schreiben as queueSchreiben, schnappschuss as queueSchnappschuss } from './lib/queue_csv.mjs';
+import { schreiben as queueSchreiben, schnappschuss as queueSchnappschuss, lesen as queueLesen } from './lib/queue_csv.mjs';
 import fs from 'node:fs';
 import { lock as postLock, seen as postSeen, mark as postMark, modelSperre } from './post_guard.mjs';
 import path from 'node:path';
@@ -157,7 +157,7 @@ const TOK = await refreshIfNeeded(process.env.TT_ACCESS_TOKEN || '');
 if(!TOK){ console.log('Kein TT_ACCESS_TOKEN → No-op. Setze TT_ACCESS_TOKEN als Secret.'); process.exit(0); }
 if(!fs.existsSync(CSV)){ console.log('Kein reels_seed.csv → No-op.'); process.exit(0); }
 
-const rows = parse(fs.readFileSync(CSV,'utf8'));
+const rows = queueLesen(CSV);   // 14.10.2026: geprüft gelesen — nie eine halb geschriebene Datei als Basis (Stummel-Zeilen)
 // 14.10.2026: nie die ganze Datei aus dieser Start-Kopie zurückschreiben (andere Prozesse hängen an/ändern) —
 // queue_csv setzt nur die EIGENEN Änderungen in den frischen Stand (gemeinsame Sperre + 3-Wege).
 let _queueBasis = queueSchnappschuss(rows);

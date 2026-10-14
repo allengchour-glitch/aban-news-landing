@@ -22,9 +22,11 @@ Produkt-Daten kommen live aus Shopify (Zeilen-ID endet auf die Produkt-ID); ohne
 DRY (Standard) zeigt Vorher/Nachher; SCHARF=1 schreibt. Bericht: dropship/BILD-QUEUE-CAPTIONS.md.
 Täglich im Aufseher (fixer_keepalive.sh) — auch für Zeilen, die der Nachschub künftig anhängt.
 """
-import csv, io, json, os, re, subprocess, sys, datetime
+import csv, json, os, re, subprocess, sys, datetime
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(ROOT, "automation"))
+from queue_csv import lesen as queue_lesen, umbauen as queue_umbauen  # noqa: E402  gemeinsame Queue-Sperre (14.10.2026)
 CSV = os.path.join(ROOT, "social", "posts_image.csv")
 BERICHT = os.path.join(ROOT, "dropship", "BILD-QUEUE-CAPTIONS.md")
 SCHARF = os.environ.get("SCHARF") == "1"
@@ -146,8 +148,7 @@ def braucht_umbau(cap):
 
 
 def main():
-    text = open(CSV, encoding="utf-8", newline="").read()
-    rows = list(csv.reader(io.StringIO(text)))
+    rows = queue_lesen(CSV)
     hdr = rows[0]; ci = {h: i for i, h in enumerate(hdr)}
     ready = [r for r in rows[1:] if len(r) > ci["status"] and r[ci["status"]].strip() == "ready"]
     kand = []
@@ -167,6 +168,7 @@ def main():
     live = produkte([pid for _, pid in kand if not pid.startswith("h:")])
     live.update(produkte_handle([pid[2:] for _, pid in kand if pid.startswith("h:")]))
     umgebaut, beispiele, uebersprungen = 0, [], 0
+    plan = {}                                       # (id, alte Caption) → neue Caption
     for r, pid in kand:
         p = live.get(pid)
         if not p or p["status"] != "ACTIVE" or not p.get("onlineStoreUrl"):
@@ -176,11 +178,26 @@ def main():
         if len(beispiele) < 3:
             beispiele.append((r[ci["id"]], alt, neu))
         if SCHARF:
-            r[ci["caption"]] = neu
+            plan[(r[ci["id"]], alt)] = neu
         umgebaut += 1
     if SCHARF and umgebaut:
-        out = io.StringIO(); w = csv.writer(out, lineterminator="\n"); w.writerows(rows)
-        open(CSV, "w", encoding="utf-8", newline="").write(out.getvalue())
+        # 14.10.2026: NICHT die Kopie von vor den Shopify-Abfragen zurückschreiben — Poster/Nachschub ändern die Queue derweil
+        # (Lost Update: angehängte Zeilen weg, gepostete Zeilen wieder «ready»). Unter der gemeinsamen Queue-Sperre frisch
+        # lesen und nur Zeilen umsetzen, die noch ready sind und noch die gelesene Caption tragen.
+        gesetzt = [0]
+
+        def setzen(frisch):
+            k = frisch[0]
+            ii, si, ki = k.index("id"), k.index("status"), k.index("caption")
+            for z in frisch[1:]:
+                if len(z) > max(ii, si, ki) and z[si].strip() == "ready" and (z[ii], z[ki]) in plan:
+                    z[ki] = plan[(z[ii], z[ki])]
+                    gesetzt[0] += 1
+            return frisch if gesetzt[0] else None
+        queue_umbauen(CSV, setzen)
+        if gesetzt[0] < umgebaut:
+            print(f"{umgebaut - gesetzt[0]} Zeile(n) inzwischen gepostet/geändert → unberührt")
+        umgebaut = gesetzt[0]
         # Ruecklesen: kein Scam-Marker mehr in ready-Zeilen
         rest = [r for r in csv.DictReader(open(CSV, encoding="utf-8")) if r["status"].strip() == "ready" and SCAM.search(r["caption"])]
         print(f"Ruecklesen: {len(rest)} ready-Zeilen mit Scam-Marker uebrig")

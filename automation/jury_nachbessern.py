@@ -15,13 +15,17 @@ Ablauf je Zeile (einmal je Zeile, Ledger dropship/_jury_nachbesserung.tsv):
      Bilder, die schon gepostet wurden (dropship/_posted_media.txt, Dateiname), fallen weg.
   3. gemini_jury.py je Kandidat (höchstens VERSUCHE=4 je Zeile). Der erste bestandene gewinnt.
   4. Zeile bekommt neues Bild + Caption + «ready» — nur wenn sie in der Datei NOCH «jury-skip» ist (nachgelesen,
-     atomar; Lehre Lost Update 28.09.). Der Poster prüft vor dem Post ohnehin noch einmal (gleicher Cache).
+     atomar; Lehre Lost Update 28.09.; seit 14.10. unter der gemeinsamen Queue-Sperre automation/queue_csv.py).
+     Der Poster prüft vor dem Post ohnehin noch einmal (gleicher Cache).
 
   DRY=1 python3 automation/jury_nachbessern.py        → Trockenlauf (urteilt, schreibt nichts in die Queue)
   python3 automation/jury_nachbessern.py              → schreiben;  MAX=n Zeilen je Lauf (Standard 12)
   Täglich im Aufseher (fixer_keepalive.sh, direkt nach social_queue_saeubern, das die Sperren setzt).
 """
 import csv, json, os, re, subprocess, sys, time, urllib.request
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from queue_csv import umbauen  # noqa: E402  gemeinsame Queue-Sperre (14.10.2026)
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(REPO)
@@ -69,6 +73,27 @@ def jpg(url):
     return url + ("&" if "?" in url else "?") + "format=jpg" if not re.search(r"\.jpe?g(\?|$)", url, re.I) else url
 
 
+def queue_zurueck(neu, pfad=Q):
+    """neu: {zeilen_id: (bild, caption)}. Zeilen, die in der Datei NOCH «jury-skip» sind, bekommen Bild + Caption + «ready».
+    Rückgabe: Anzahl. 14.10.2026: unter der gemeinsamen Queue-Sperre frisch gelesen und atomar geschrieben
+    (queue_csv.umbauen) — vorher ohne Sperre über die feste Zwischendatei «posts_image.csv.tmp»: ein Poster, der zwischen
+    Nachlesen und os.replace «posted» setzte, verlor den Status (Doppelpost-Gefahr), zwei Schreiber mit derselben .tmp
+    schrieben ineinander. Die Jury-Aufrufe (Minuten) laufen VORHER, unter der Sperre nur das Setzen im Speicher."""
+    n = [0]
+
+    def setzen(frisch):
+        k = frisch[0]
+        ii, si, bi, ci = k.index("id"), k.index("status"), k.index("image_url"), k.index("caption")
+        for z in frisch[1:]:
+            if len(z) > max(ii, si, bi, ci) and z[ii] in neu and z[si] == "jury-skip":
+                z[bi], z[ci] = neu[z[ii]]
+                z[si] = "ready"
+                n[0] += 1
+        return frisch if n[0] else None
+    umbauen(pfad, setzen)
+    return n[0]
+
+
 def main():
     gemacht = set()
     if os.path.exists(LEDGER):
@@ -112,17 +137,14 @@ def main():
             log.append((zid, "kein-kandidat", f"{len(bilder[:VERSUCHE])} versucht"))
     if SCHARF:
         if neu:
-            aktuell = list(csv.DictReader(open(Q, encoding="utf-8")))
-            felder = list(aktuell[0].keys())
-            n = 0
-            for r in aktuell:
-                if r["id"] in neu and r["status"] == "jury-skip":
-                    r["image_url"], r["caption"] = neu[r["id"]]; r["status"] = "ready"; n += 1
-            tmp = Q + ".tmp"
-            with open(tmp, "w", newline="", encoding="utf-8") as f:
-                w = csv.DictWriter(f, fieldnames=felder, lineterminator="\n"); w.writeheader(); w.writerows(aktuell)
-            os.replace(tmp, Q)
-            print(f"geschrieben: {n} Zeile(n) zurück auf ready")
+            try:
+                n = queue_zurueck(neu)   # 14.10.2026: gemeinsame Queue-Sperre statt fester «.tmp» (Lost Update)
+                print(f"geschrieben: {n} Zeile(n) zurück auf ready")
+            except RuntimeError as e:
+                # Sperre belegt / Datei halb geschrieben: «repariert» NICHT ins Ledger — die Zeilen bleiben offen und der
+                # nächste Lauf holt sie (Prüfer 14.10.); die übrigen Log-Zeilen bleiben erhalten.
+                print(f"⚠️ {Q}: {e} — repariert-Zeilen nicht verbucht, nächster Lauf")
+                log = [z for z in log if z[1] != "repariert"]
         with open(LEDGER, "a", encoding="utf-8") as f:
             for z in log:
                 f.write(f"{z[0]}\t{time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}\t{z[1]}\t{z[2]}\n")

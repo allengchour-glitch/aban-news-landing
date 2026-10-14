@@ -5,6 +5,7 @@
  */
 import fs from 'node:fs';
 import { kimi } from '/home/user/aban-news-landing/automation/kimi.mjs';
+import { anhaengen as queueAnhaengen, lesen as queueLesen } from './lib/queue_csv.mjs';   // gemeinsame Queue-Sperre (14.10.2026)
 const CID=process.env.SHOPIFY_CLIENT_ID,CSEC=process.env.SHOPIFY_CLIENT_SECRET,SHOP='au3j0y-hq.myshopify.com';
 const MAX=parseInt(process.env.KCAP_MAX||'2000',10);
 const SLEEP=parseInt(process.env.SLEEP||'400',10);
@@ -19,17 +20,20 @@ const g=async(q,v)=>{for(let a=0;a<6;a++){const r=await fetch(`https://${SHOP}/a
 
 const done=new Set(fs.existsSync(LEDGER)?fs.readFileSync(LEDGER,'utf8').split('\n').filter(Boolean):[]);
 const qsig=new Set();
-if(fs.existsSync(CSV)){ for(const m of fs.readFileSync(CSV,'utf8').matchAll(/,"([^"]{10,})"/g)) qsig.add(norm(m[1])); }
+if(fs.existsSync(CSV)){ for(const m of fs.readFileSync(CSV,'utf8').matchAll(/,"([^"]{10,})"/g)) qsig.add(norm(m[1]));
+  // 14.10.2026: anhaengen() quotet nur noch bei Bedarf (Komma, Anführungszeichen, Zeilenumbruch) — die Regex oben findet
+  // nur gequotete Felder (und bei «"» in der Caption nur das Stück davor). Darum zusätzlich die Spalte «caption» geparst:
+  // die Signatur-Sperre sieht jede Caption mindestens so wie vorher.
+  const q=queueLesen(CSV), capI=q.length?q[0].indexOf('caption'):-1;
+  if(capI>=0) for(const r of q.slice(1)) if((r[capI]||'').length>=10) qsig.add(norm(r[capI])); }
+// 14.10.2026: Früher eigene Sperre «posts_image.csv.lock» im Repo (nur 50 Sofortversuche, gilt für keinen anderen
+// Schreiber) + readFileSync/writeFileSync mit O_TRUNC — wer in dem Moment las oder schrieb, sah eine halbe Datei bzw.
+// verlor seine Änderung. Jetzt über anhaengen() aus lib/queue_csv.mjs: gemeinsame Sperre aller Queue-Schreiber, frisch
+// gelesen, atomar geschrieben; ROHE Werte (der Helfer quotet selbst). Eine id, die schon drinsteht, kommt nicht doppelt.
 function appendRow(id,img,cap){
-  const lock=CSV+'.lock';
-  for(let i=0;i<50;i++){ try{ fs.writeFileSync(lock,'1',{flag:'wx'}); break; }catch{ if(i===49)return false; } }
-  try{ let csv=fs.readFileSync(CSV,'utf8'); if(!csv.endsWith('\n'))csv+='\n';
-    const esc=x=>'"'+String(x).replace(/"/g,'""')+'"';
-    const slug=(cap.split('\n')[0]||'p').toLowerCase().replace(/[^a-z0-9]+/g,'-').slice(0,32);
-    csv+=['kimi-'+slug+'-'+id.split('/').pop(),'2026-08-01',img,esc(cap),esc('instagram,facebook'),'ready','',''].join(',')+'\n';
-    fs.writeFileSync(CSV,csv);
-  } finally { try{fs.unlinkSync(lock);}catch{} }
-  return true;
+  const slug=(cap.split('\n')[0]||'p').toLowerCase().replace(/[^a-z0-9]+/g,'-').slice(0,32);
+  try{ return queueAnhaengen(CSV,[['kimi-'+slug+'-'+id.split('/').pop(),'2026-08-01',img,cap,'instagram,facebook','ready','','']])>0; }
+  catch(e){ if(/Sperre/.test(e.message)){ console.error('  '+e.message); return false; } throw e; }   // Sperre belegt = wie früher «false»
 }
 const SYS='WICHTIG: Denke NICHT, keine Analyse, keine Anführungszeichen. Gib direkt die Caption. Schweizer Social-Copywriter für luxestyle.ch. Max 2 kurze Sätze mit 1-2 Emojis, dann Leerzeile, dann GENAU 6 Hashtags (Produkt + #schweiz #luxestyle). Hochdeutsch, kein Preis.';
 

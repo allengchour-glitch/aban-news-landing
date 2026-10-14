@@ -26,6 +26,7 @@ const _socialPause = pauseSchluessel();
 const FORMATE = (() => { try { return JSON.parse(fs.readFileSync(new URL('./data/kanal_formate.json', import.meta.url), 'utf8')); } catch { return {}; } })();
 import { execFileSync } from 'node:child_process';
 import { lock as postLock, seen as postSeen, mark as postMark, produktGepostet, produktMerken, fbSeitenIdentitaet, familieKuerzlich, familieMerken, warenFamilie, juryPruefen, modelSperre } from './post_guard.mjs';
+import { schreiben as queueSchreiben, schnappschuss as queueSchnappschuss, lesen as queueLesen } from './lib/queue_csv.mjs';
 
 const V = 'v21.0';
 const IG_ID = process.env.IG_USER_ID || (fs.existsSync('/tmp/meta_ig_id') ? fs.readFileSync('/tmp/meta_ig_id', 'utf8').trim() : '');
@@ -103,13 +104,17 @@ function parseCsv(text) {
   if (cur.length || row.length) { row.push(cur); rows.push(row); }
   return rows.filter(r => r.length > 1 || (r.length === 1 && r[0] !== ''));
 }
-const esc = v => { v = String(v ?? ''); return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; };
-const rows = parseCsv(fs.readFileSync(CSV, 'utf8'));
+const rows = queueLesen(CSV);   // 14.10.2026: geprüft gelesen — nie eine halb geschriebene Datei als Basis (Stummel-Zeilen)
 const idx = Object.fromEntries(rows[0].map((h, i) => [h.trim(), i]));
 const get = (r, k) => (r[idx[k]] || '').trim();
 const setzen = (r, k, v) => { r[idx[k]] = v; };
 if (idx.posted_at === undefined) { rows[0].push('posted_at', 'post_url'); idx.posted_at = rows[0].length - 2; idx.post_url = rows[0].length - 1; }
-const writeLedger = () => fs.writeFileSync(CSV, rows.map(r => r.map(esc).join(',')).join('\n') + '\n');
+// 14.10.2026: NIE die ganze Datei aus der Start-Kopie zurückschreiben — zwischen Lesen und Schreiben liegen Minuten
+// (Jury, Bild-Push, Upload), in denen tiktok_karussell.py Sets anhängt/ersetzt und metricool_ledger_pruefen.mjs post_url
+// nachträgt (Klasse «8 fertige Reels verloren»). queue_csv setzt nur die EIGENEN Änderungen in den frischen Stand
+// (gemeinsame Sperre + 3-Wege, atomar). Schlüssel = Spalte 0 (slug).
+let _queueBasis = queueSchnappschuss(rows);
+const writeLedger = () => { queueSchreiben(CSV, _queueBasis, rows); _queueBasis = queueSchnappschuss(rows); };
 
 // ---------------------------------------------------------------- Kandidat
 const capSig = s => (s || '').toLowerCase().replace(/[#@].*/s, '').replace(/[^a-z0-9 ]/g, '').replace(/\s+/g, ' ').trim().slice(0, 45);

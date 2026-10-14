@@ -14,7 +14,7 @@
 import fs from 'node:fs';
 import { socialPause, pauseSchluessel } from './lib/social_pause.mjs';   // 13.10.: Anlass-Social-Sperre (Halloween-CJ 15.10.–01.11.)
 const _socialPause = pauseSchluessel();
-import { schreiben as queueSchreiben, schnappschuss as queueSchnappschuss } from './lib/queue_csv.mjs';
+import { schreiben as queueSchreiben, schnappschuss as queueSchnappschuss, lesen as queueLesen } from './lib/queue_csv.mjs';
 import { preisVeraltet, produktMerkenReel, markierungFehlt, lock as postLock, seen as postSeen, mark as postMark, fbSeitenIdentitaet, familieKuerzlich, familieMerken, nachVorrang, montageErst, montagePruefen, montageQuelle, juryPruefen, juryVorrang, igUserTags } from './post_guard.mjs';
 // 22.09.: Adresse vor dem Post pruefen — 14 von 22 «ready»-Reels waren 404 (CDN-Dateien weg). 4xx → archived-deadurl.
 import { execFileSync as _exf, spawnSync } from 'node:child_process';
@@ -99,7 +99,7 @@ const esc = s => /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
 //    und der gemeinsame Ledger (_posted_media.txt) greift dadurch script-übergreifend.
 if (!DRY) postLock();
 
-const rows = parseCsv(fs.readFileSync(CSV, 'utf8'));
+const rows = queueLesen(CSV);   // 14.10.2026: geprüft gelesen — nie eine halb geschriebene Datei als Basis (Stummel-Zeilen)
 const head = rows[0];
 const idx = Object.fromEntries(head.map((h, i) => [h.trim(), i]));
 const today = new Date().toISOString().slice(0, 10);
