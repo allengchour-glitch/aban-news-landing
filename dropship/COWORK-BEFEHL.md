@@ -22,6 +22,7 @@ Der Reihe nach, je ~1 Min. (Google erlaubt ~10 am Tag):
 4. `https://luxestyle.ch/products/abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe` (letzter Abruf 18.08., vor dem neuen Text)
 
 Ich messe am Do 15.10. mit dem Index-Messgerät nach (`tools/index_probe.py`, die vier stehen jetzt in der Liste).
+**14.10. ~17:45 UTC (Betreiber):** «Kontingent überschritten» — Rest morgen. Erinnerung gesetzt für **15.10. 07:30 UTC** (`trig_01VESkjqwkZMfFjEpa8uAtii`): die Sitzung misst dann, welche Seiten noch nicht indexiert sind, und schickt nur diese als Links.
 
 ## 🆕 13.10. 17:00 UTC — vier kurze Entscheide (Verbesserungsrunde, alles Übrige macht die Sitzung) — Stand 18:15: 1 ✅ · 3 ✅ · 4 ✅ · **nur 2 offen**
 
