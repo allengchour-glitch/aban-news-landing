@@ -9247,3 +9247,14 @@ sexy-patchwork-kleid-mit-ruschen-614800	2607101245541615500	16	8.53	ok	landeseit
 einseitige-midi-kleider-mit-farbblock-630300	2607101140081631000	16	9.27	ok	landeseite
 elegant-armlos-modischer-halsausschnitt-damenk-638400	2607101136491639100	16	9.14	ok	landeseite
 retro-kleid-mit-schnurung-623100	2607101123201623700	16	7.78	ok	landeseite
+plus-grossengedrucktes-tragerkleid-628100	2607101122401628800	16	7.85	ok	landeseite
+farbenfroher-damen-casual-dress-629100	2607101116121620000	16	9.07	ok	landeseite
+klassisches-gerades-chic-kurzkleid-ohne-armel-606900	2607101031141607500	16	10.83	ok	landeseite
+damen-langarmkleid-mit-gespitzter-silhouette-622300	2607101001211623300	16	10.15	ok	landeseite
+ubergrosse-cardigan-kleider-617800	2607100934011618500	16	10.15	ok	landeseite
+stylisches-casual-kleid-614000	2607100928561614600	16	8.79	ok	landeseite
+damen-langarmkleid-mit-taille-610300	2607100927041611100	16	11.00	ok	landeseite
+chic-damenkleid-mit-halterneck-und-print-629400	2607100919171620100	16	10.83	ok	landeseite
+einseitig-schulter-gepflastertes-gerafftes-dam-601300	2607100905501601900	16	10.88	ok	landeseite
+blumenprint-midi-mit-volantsarmeln-und-a-silho-607500	2607100902481608100	16	10.15	ok	landeseite
+formschmeichelndes-bauchverdeckendes-anti-agin-602500	2607110602201603000	16	8.11	ok	landeseite
