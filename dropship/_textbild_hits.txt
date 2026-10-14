@@ -18350,3 +18350,7 @@ gid://shopify/Product/16638272045447	47->0	Romantischer Schal in hellen Weisstö
 gid://shopify/Product/16638275256711	16->0	Gestreifter Wollschal – schwarz-weiss
 gid://shopify/Product/16638315528583	18->0	Leder Sneaker Herren atmungsaktiv
 gid://shopify/Product/16638316544391	83->0	Herrenschnee-Stiefel mit Fleece-Sohle
+gid://shopify/Product/16638319296903	9->1	Schlichte weisse Sneaker mit dickem Boden
+gid://shopify/Product/16638319722887	56->3	Terrarium-Licht mit Metall-Clip
+gid://shopify/Product/16638319788423	24->0	LED Tulpen-Planet Nachtlicht für Tisch
+gid://shopify/Product/16638320116103	56->0	Kompakte Tischlampe Warmlicht Schwarz
