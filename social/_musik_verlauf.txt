@@ -481,3 +481,4 @@
 2026-10-14T00:32:09.348Z	luxe-epic-hero.wav	7	home	cjreel-CJZX290419401AZ	stimme:ja	azure:de-CH-JanNeural
 2026-10-14T00:36:19.000Z	luxe-epic-hybrid.wav	30.0	mode	bildreel-eleganter-damenmantel-mit-fellkragen-601300	stimme:nein	anteil	quelle:bild
 2026-10-14T01:10:03.510Z	luxe-epic-elegant.wav	48	mode	cjreel-1719534882407329792	stimme:nein	anteil
+2026-10-14T01:11:42.847Z	luxe-orchestra.wav	15	haustier	cjreel-CJJT131737102BY	stimme:ja	azure:de-CH-JanNeural
