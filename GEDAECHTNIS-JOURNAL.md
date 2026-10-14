@@ -52,6 +52,19 @@
 
 
 
+## 🎃 Halloween-Seite zeigte Blut statt Kostüme · Importer-Module laufen beim Import (2026-10-14, ~09:20–09:45 UTC, «fix weiter und verbessere»)
+
+`/collections/halloween` hatte in den Top 24 **kein einziges ganzes Kostüm**. Oben standen abgeschnittene Hand, Horrorpuppe und
+Theaterblut, das erste von 57 Lager-Kostümen erst auf Platz 37. Die Startseiten-Reihe zeigte dieselben Top 8. Die Sortierung
+kannte nur «schnell vor langsam». Ein zweiter Schlüssel nach Tag `kostuem-accessoire` hätte nicht geholfen, denn den trägt auch
+die Hand. **Lehre:** Eine Anlass-Seite zeigt oben, was man für den Anlass kauft. Die Klasse wird aus Typ + Titel gebildet,
+nie aus einem Tag, den eine Lieferanten-Gruppe breit vergibt (dieselbe Ursache: `kostuem-hut` auf Wintermützen, Kostümwort
+«Cap/Shirt» auf Länder-Fanartikeln in «Kostüme ab Schweizer Lager»). Jetzt Top 24 = 24 ganze Kostüme, gemischt Kinder/Damen/
+Herren. Startseite: Halloween bis 26.10. vor «Herbst». Band mit Link. Satz in beiden Kollektionen, Datum erst nach der echten
+Fortura-Probe. Alles selbstrückbauend über Ledger, Wächter zählt Kostüme oben. **Falle:** `import { kostuemFrontTag } from
+'./fortura_import_grouped.mjs'` STARTET den Importer (Top-Level-Schleife). 30 s, nichts angelegt (Ledger unverändert geprüft).
+Regex von Importern immer eigenständig testen. Bericht `dropship/HALLOWEEN-KOSTUEME-OBEN-2026-10-14.md`.
+
 ## 🖼️ «Unable to show image» = Google hat nicht abgeholt, das Bild ist gut (2026-10-14, Verbesserungsrunde 08:26 UTC)
 
 Die Klasse sprang von 2 (09.10.) auf 109 (10.10. 07:08), heute 126 — alle aus den Gratis-Einträgen. 87 davon sind CJ-Mode vom
@@ -20439,3 +20452,5 @@ Verschoben am 04.10.2026:
 - 2026-10-13 · 🔍 **Prüf-Workflow (11 Agenten) 5/6 bestätigt → behoben: GSC-Schnappschuss blättert (startRow, Filter /products/), Zielwahl nur Wortkopf (Hundehalskette ≠ Halskette), Kostümwort schlägt Ausnahmeliste (+14 erkannt), Trend-Datum max() + 44 Reste weg, Lampion raus; 80 Fortura-Fremdwaren aus dem Kostümtyp (Importer nachgezogen).** → Journal 13.10. 🔍
 <!-- aus CLAUDE.md verschoben 14.10.2026 09:01 UTC (VERBATIM) -->
 - 2026-10-13 · 🧾 **Kassen-Prüfung (30 Agenten): «Hälfte bricht ab» war Rohliste — 12/14 Abbrüche eigene Tests/Bots, seit 05.10. kauften 4/4 → Engpass Verkehr. Echt: 11 Texte «gratis ab 45/65» → `versand_band_wache.py` Regel 2 (Aufseher täglich), CH-Lager zeigt in der Kasse Asien-Fenster (Ampel, Betreiber), WELCOME10 +2.01 bei 45–49.99 (Betreiber). Vor jedem Auftrag BEREINIGT messen (`checkout_abbruch_messen.py`).** → `dropship/KASSEN-PRUEFUNG-2026-10-13.md`
+<!-- aus CLAUDE.md verschoben 14.10.2026 09:41 UTC (VERBATIM) -->
+- 2026-10-13 · 🔥 **Trendreihe: Reihenregeln gelten für JEDES Mitglied (8 ohne `hype-seit` = Spielzeug/Partydeko/Kostüm, Herkunft unbekannt, liefen nie ab) → `abgelaufene_raeumen()` täglich: Regelbruch raus, Undatierte zurückdatiert (7 T Frist; mit HEUTE stand das Lampion-Set auf Platz 12). Neu: Thema Gewürzregal, 12 bildgeprüfte Aufnahmen, 15 Bildtext-Ausschüsse.** → `dropship/HYPE-REIHE-REGELN-2026-10-13.md`
