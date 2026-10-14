@@ -9473,3 +9473,6 @@ orientalischer-robenstoff-aus-dubai-616000	2503031259291616200	16	6.56	ok	landes
 schwarzer-stoff-fur-robe-600500	2502260802481600700	16	8.16	ok	landeseite
 vintage-bluse-mit-schnalle-634100	2607061143591634700	16	8.11	ok	landeseite
 universal-sofa-bezug-607600	2502201300421607800	16	23.38	ok	landeseite
+glitzerndes-tanktop-mit-wellenformigem-kragen-601900	2607060848071602600	16	7.03	ok	landeseite
+liebes-pendant-puppe-629400	2501080810101629700	16	8.35	ok	landeseite
+samtbluse-mit-v-ausschnitt-639500	2607060730201630300	16	8.66	ok	landeseite
