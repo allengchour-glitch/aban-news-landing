@@ -684,6 +684,7 @@ echo "${VR:-VAULT: unklar (Skript-Fehler)}"
 python3 "$REPO_AUTO/nullrunden_wache.py" 2>/dev/null || true
 python3 "$REPO_AUTO/zustand_verklebt.py" 2>/dev/null || true
 python3 "$REPO_AUTO/reel_kadenz_wache.py" 2>/dev/null || true   # 28.09.: Reel-Kanal ausser Takt (still wenn ok)   # 28.09.: verklebte Einzelwert-Dateien (still bei 0)
+python3 "$REPO_AUTO/queue_schreiber_wache.py" --still 2>/dev/null || true   # 14.10.: Social-Queues — Roh-Schreiber, Reel-Waisen, verschwundene Zeilen (still wenn ok)
 echo "STAND: $(zaehle cj_runner) CJ-Runner, Aufseher=$(zaehle_aufseher)"
 
 # 💾 Snapshot-Rewind-Erkennung (25.08.2026, 4× an einem Morgen): Der Container stellt beim
