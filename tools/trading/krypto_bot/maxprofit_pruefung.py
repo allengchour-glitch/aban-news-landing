@@ -99,9 +99,10 @@ def p2_kurve(D, a, b, teuer=False):
         for coin, sym in (("btc", "BTC"), ("eth", "ETH")):
             h, l, c = D[coin]
             fl, fs, _ = D["fund"][sym]
-            f = list(fs)  # echtes Funding (vor Datenbeginn 0)
-            if teuer:
-                f = [x * 1.5 if x > 0 else x for x in f]
+            # echtes Funding (vor Datenbeginn 0). Bei P2 laufen Longs über Spot: Funding ist hier nur EINNAHME (Shorts, Ernte)
+            # bzw. Kosten, wenn es negativ ist — «Funding für Longs × 1,5» (Protokoll) trifft P2 also nicht. (Korrektur nach dem
+            # ersten Lauf: dort wurde versehentlich auch die Funding-Einnahme × 1,5 gerechnet — die teure P2-Zahl war zu gut.)
+            f = list(fs)
             w = P2.lauf2(D["z1"][coin], h, l, c, f, a, b, modus="P2")
             teile.append(w + [0.0] * (b - max(a, 1) + 1 - len(w)))
         return MK.mix_taeglich(*teile), any(t[-1] == 0.0 for t in teile)

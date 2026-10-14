@@ -107,14 +107,18 @@ pruefe("Bootstrap: konstante Rendite → jedes Jahr 1,001^365 − 1, kein Einbru
 a = MK.bootstrap_jahre(r, n=30, seed=5)
 b = MK.bootstrap_jahre(r, n=30, seed=5)
 pruefe("Bootstrap reproduzierbar mit gleichem Seed", a == b)
+# ein Block = die ganze Reihe (nur im Kreis gedreht): jedes Jahr ergibt genau das Produkt — ohne Blöcke (einzeln gezogen) nicht
+dreh = MK.bootstrap_jahre([0.1, -0.5, 0.2], n=40, laenge=3, block=3, seed=4)
+pruefe("Bootstrap zieht ganze Blöcke (Reihenfolge bleibt im Block)", all(abs(x - (1.1 * 0.5 * 1.2 - 1)) < 1e-12 for x, _ in dreh),
+       sorted(set(round(x, 4) for x, _ in dreh)))
 crash = [0.0] * 100 + [-0.1] * 20
 jahre = MK.bootstrap_jahre(crash, n=200, laenge=365, block=20, seed=2)
 pruefe("Bootstrap: Blöcke behalten Crash-Serien (Einbruch bis −88 % möglich)", min(dd for _, dd in jahre) < -0.85,
        min(dd for _, dd in jahre))
 
 # 7) Kennzahlen
-k = MK.kennzahlen([1.0, 2.0, 1.0, 1.5], tage_pro_jahr=3)
-pruefe("Kennzahlen: Rendite pro Jahr und schlimmster Einbruch", abs(k["cagr"] - 0.5) < 1e-12 and abs(k["einbruch"] + 0.5) < 1e-12, k)
+k = MK.kennzahlen([1.0, 2.0, 1.0, 1.5], tage_pro_jahr=6)  # ein halbes Jahr: +50 % → pro Jahr 1,5² − 1 = +125 %
+pruefe("Kennzahlen: Rendite pro Jahr und schlimmster Einbruch", abs(k["cagr"] - 1.25) < 1e-12 and abs(k["einbruch"] + 0.5) < 1e-12, k)
 pruefe("mix_taeglich = pilot_pruefung.mix_taeglich",
        MK.mix_taeglich([1, 1.1, 1.0], [1, 0.9, 0.95]) == P.mix_taeglich([1, 1.1, 1.0], [1, 0.9, 0.95]))
 
@@ -138,6 +142,53 @@ K2 = {"F-1": basis, "F-2": kand(0.50, 0.20, 0.42, hebel=2.0), "F-1.5": kand(0.45
 empf, u = MK.entscheidung(K2, "F-1")
 pruefe("Regel: ab 2022 schlechter oder mit doppelten Kosten schlechter → nein; keiner besteht → 1×",
        empf == "F-1" and not u["F-2"][0] and not u["F-1.5"][0], (empf, u))
+
+# 9) Prüfstand selbst (erfundene Kurse): doppelte Kosten können ein Ergebnis NIE verbessern — auch nicht bei Pilot 2.0, wo
+#    Funding Einnahme ist (der erste echte Lauf rechnete dort die Funding-Einnahme × 1,5 und war «teuer» fast gleich gut)
+import maxprofit_pruefung as MP  # noqa: E402
+
+
+def fake_daten(seed=11, n=1200):
+    rnd = random.Random(seed)
+    tage = [f"{2019 + i // 365}-{(i % 365) // 31 + 1:02d}-{(i % 365) % 28 + 1:02d}" for i in range(n)]
+    tage = sorted(set(tage))
+    out = {"tage": tage, "z1": {}, "fund": {}}
+    for coin, nn in (("btc", 150), ("eth", 200)):
+        hh, ll, cc = kurse(len(tage), seed=seed + nn, mu=0.001, sigma=0.03)
+        out[coin] = (hh, ll, cc)
+        out["z1"][coin] = P.hebel(cc, n_sma=nn, ziel_vol=0.40, max_hebel=1.0)
+    for sym in ("BTC", "ETH"):
+        f = [abs(rnd.gauss(0.0003, 0.0002)) for _ in tage]
+        out["fund"][sym] = (f, list(f), 0.0)
+    return out
+
+
+D = fake_daten()
+a, b = 300, len(D["tage"])
+w, _ = MP.kurve(D, [1.5] * b, a, b)
+wt, _ = MP.kurve(D, [1.5] * b, a, b, teuer=True)
+pruefe("Prüfstand: doppelte Kosten verschlechtern den Futures-Pilot", wt[-1] < w[-1], (w[-1], wt[-1]))
+D_g = fake_daten(seed=13)  # glatte Kurse ohne Funding: kein Stop löst aus → «teuer» unterscheidet sich NUR in der Gebühr
+for coin, nn in (("btc", 150), ("eth", 200)):
+    cc = [100 + 30 * math.sin(2 * math.pi * i / 400) for i in range(len(D_g["tage"]))]
+    D_g[coin] = (list(cc), list(cc), cc)
+    D_g["z1"][coin] = P.hebel(cc, n_sma=nn, ziel_vol=0.40, max_hebel=1.0)
+for sym in ("BTC", "ETH"):
+    D_g["fund"][sym] = ([0.0] * len(D_g["tage"]), [0.0] * len(D_g["tage"]), 0.0)
+wg, _ = MP.kurve(D_g, [1.0] * b, a, b)
+wgt, _ = MP.kurve(D_g, [1.0] * b, a, b, teuer=True)
+pruefe("… auch nur durch die doppelte Gebühr (ohne Funding und Stops)", wgt[-1] < wg[-1] - 1e-9, (wg[-1], wgt[-1]))
+D_f = fake_daten(seed=12)
+for sym in ("BTC", "ETH"):  # hohes Funding (0,2 %/Tag): bei P2 ist das Einnahme — würde sie × 1,5 gerechnet, wäre «teuer» besser
+    D_f["fund"][sym] = ([0.002] * len(D_f["tage"]), [0.002] * len(D_f["tage"]), 0.0)
+p2, _ = MP.p2_kurve(D_f, a, b)
+p2t, _ = MP.p2_kurve(D_f, a, b, teuer=True)
+pruefe("Prüfstand: doppelte Kosten verschlechtern auch Pilot 2.0 (Funding-Einnahme nicht × 1,5)", p2t[-1] < p2[-1], (p2[-1], p2t[-1]))
+import pilot_pruefung as _P  # noqa: E402
+import pilot2_pruefung as _P2  # noqa: E402
+import carry_pruefung as _C  # noqa: E402
+pruefe("… und stellt die Kosten danach wieder her", (_P.GEBUEHR, _P.SCHLUPF, _P2.SPOT_GEBUEHR, _C.KOSTEN) == (0.0005, 0.001, 0.001, 0.0015),
+       (_P.GEBUEHR, _P.SCHLUPF, _P2.SPOT_GEBUEHR, _C.KOSTEN))
 
 print(f"\n{n_ok} bestanden, {n_f} fehlgeschlagen")
 sys.exit(1 if n_f else 0)
