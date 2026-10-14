@@ -7113,3 +7113,5 @@ gid://shopify/Product/15468339626369	zugeordnet	25	Herren Strickpullover mit Sem
 gid://shopify/Product/15468339954049	zugeordnet	20	Herren Strick-Cardigan mit Revers
 gid://shopify/Product/15468340314497	zugeordnet	35	Herren Rollkragen Strickpullover
 gid://shopify/Product/15468340642177	zugeordnet	25	Herren Strickpullover Rundhals Leinen-Mix
+gid://shopify/Product/15468341395841	zugeordnet	30	Polo-Shirt Herren Kurzarm Strick Zopfmuster
+gid://shopify/Product/15468341657985	zugeordnet	20	Gestricktes Kurzarmshirt für Herren

@@ -736,7 +736,13 @@ fs.mkdirSync('/tmp/reelbuild', { recursive: true }); fs.mkdirSync(MEDIEN, { recu
 // also Zeile und Ledger nachtragen statt neu rendern. Bedingung: Adresse antwortet (= gepusht) und Produkt ACTIVE.
 let nachgetragen = 0;
 if (!DRY) {
-  const waisen = fs.readdirSync(MEDIEN).map(f => /^reel_(.+)\.mp4$/.exec(f)?.[1]).filter(p => p && !gebaut.has(p) && !inCsv.has(p));
+  // 14.10.2026: Waisen auch MIT gebaut-Eintrag — 8 Reels standen im Ledger, ihre Zeile hatte ein Poster mit seiner alten Kopie
+  // überschrieben (Lost Update, jetzt lib/queue_csv.mjs). `!gebaut.has(p)` liess sie nie zurück. Gesperrt bleiben: Tor
+  // abgelehnt und schon gepostet (gemeinsamer Ledger) — eine Zeile, die fehlt, ist nie eine bewusste Löschung (Queues sind
+  // Anhänge-Listen, niemand löscht Zeilen).
+  const waisen = fs.readdirSync(MEDIEN).map(f => /^reel_(.+)\.mp4$/.exec(f)?.[1])
+    .filter(p => p && !inCsv.has(p) && !torAbgelehnt.has(p) && !postSeen(RAW + `reel_${p}.mp4`));
+  if (waisen.length) console.log(`Nachtrag: ${waisen.length} Reel-Datei(en) ohne Queue-Zeile`);
   for (let i = 0; i < waisen.length; i += 20) {
     const teil = waisen.slice(i, i + 20);
     const r = await gql(`query($q:String){ products(first:20, query:$q){ nodes{ id title handle status mediaCount{count} description(truncateAt:260) priceRangeV2{minVariantPrice{amount} maxVariantPrice{amount}} variants(first:1){nodes{price sku}} } } }`, { q: teil.map(p => `sku:CJ-${p}`).join(' OR ') });
@@ -748,15 +754,22 @@ if (!DRY) {
       if (!/^20[06]$/.test(code)) { console.log(`   Nachtrag ${pid}: Adresse antwortet ${code} — Datei noch nicht gepusht`); continue; }
       if (n.status !== 'ACTIVE') { console.log(`   Nachtrag ${pid}: Produkt ${n.status} — keine Zeile`); continue; }
       const th = thema(k.title), hook = hookFuer(th, pid, k.title);
-      appendReel(`cjreel-${pid}`, url, caption(hook, k, nutzen(n.description || '')), hashtags(k.title, pid), 'instagram,facebook');
-      // 13.10.2026 (R1 Schritt 6): beide Schlüssel ins Ledger (Kennung + echte pid)
+      let angehaengt = false;
+      try { angehaengt = appendReel(`cjreel-${pid}`, url, caption(hook, k, nutzen(n.description || '')), hashtags(k.title, pid), 'instagram,facebook'); }
+      catch (e) { console.log(`   Nachtrag ${pid}: Queue nicht schreibbar (${String(e.message || e).slice(0, 80)}) — nächster Lauf`); continue; }
+      if (!angehaengt) continue;
+      // 13.10.2026 (R1 Schritt 6): beide Schlüssel ins Ledger (Kennung + echte pid) — 14.10.: nur, was noch fehlt
       const cjp = cjPidAus(n.variants.nodes[0]?.sku);
-      fs.appendFileSync(LEDGER, pid + '\n' + (cjp && cjp !== pid ? cjp + '\n' : '')); gebaut.add(pid); if (cjp) gebaut.add(cjp); inCsv.add(pid); nachgetragen++;
+      const fehlt = [pid, cjp].filter((x, j, a) => x && a.indexOf(x) === j && !gebaut.has(x));
+      if (fehlt.length) fs.appendFileSync(LEDGER, fehlt.join('\n') + '\n');
+      gebaut.add(pid); if (cjp) gebaut.add(cjp); inCsv.add(pid); nachgetragen++;
       console.log(`   ✅ Nachtrag: ${pid} [${th}] ${k.title.slice(0, 50)} → queue`);
     }
   }
   if (nachgetragen) gitPush([CSV, LEDGER], `Reel-Queue: ${nachgetragen} Zeilen nachgetragen`);
 }
+// 14.10.2026: NUR_NACHTRAG=1 → nur die Waisen nachtragen, nichts Neues bauen (Reparatur nach einem Lost Update).
+if (process.env.NUR_NACHTRAG === '1') { console.log(`NUR_NACHTRAG: ${nachgetragen} nachgetragen — Ende.`); process.exit(0); }
 let made = 0, gefragt = 0, cjAus = false;
 const zumServer = [];
 const letzteMusik = fs.existsSync('/tmp/_reel_last_music') ? fs.readFileSync('/tmp/_reel_last_music', 'utf8').trim() : '';

@@ -8638,3 +8638,4 @@ type-c-wireless-mirroring-adapter-fur-pcs-617300	2512310650491617500	16	6.01	ok	
 nacktes-auge-3d-holografischer-projektor-616300	2509161009121616600	11	43.37	ok	landeseite
 schlaf-und-konzentrationshilfe-fur-babys-613100	2606081007191614000	7	11.30	ok	landeseite
 retro-cd-player-mit-vinyl-look-602800	2606050854181603500	7	13.19	ok	landeseite
+vintage-auto-bluetooth-modell-mit-led-licht-622400	2602231151311622700	7	17.94	ok	landeseite
