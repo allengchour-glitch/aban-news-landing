@@ -18263,3 +18263,60 @@ gid://shopify/Product/16617703113095	32->1	Spannbacken-Schutzauflage
 gid://shopify/Product/16617703145863	22->1	Marmor-Tischlampe mit Klopf-Funktion
 gid://shopify/Product/16617703211399	19->0	Nachtlicht Figur
 gid://shopify/Product/16617703276935	61->0	Sneaker mit versteckter Absatzerhöhung
+gid://shopify/Product/16617703408007	10->2	Batteriekabel-Anschluss mit Kupferöse
+gid://shopify/Product/16617703637383	13->0	Bohrer-Set mit Sechskantschaft und Senker
+gid://shopify/Product/16617703833991	39->0	Smarte dimmbare LED-Lampe
+gid://shopify/Product/16617704653191	16->0	Heizwendel 3000 W
+gid://shopify/Product/16617705144711	90->0	Elektronisches Hygrometer WN1803
+gid://shopify/Product/16617705210247	51->0	Tragbares taktisches Helmlicht
+gid://shopify/Product/16617705243015	18->0	Mechanische Hot-Swap-Kampftastatur
+gid://shopify/Product/16617705505159	23->2	Reinigungsmittel für Daunenjacken & Vorhänge
+gid://shopify/Product/16617705865607	19->0	Sternen-Nachtlicht mit Vase und Schleierkraut
+gid://shopify/Product/16617706389895	53->3	Canvas Schnür-Sneaker für Herren
+gid://shopify/Product/16617706422663	66->1	Solar-Wandlampe mit Bewegungssensor
+gid://shopify/Product/16617706488199	47->1	Atmungsaktive Herren-Halbschuhe
+gid://shopify/Product/16617706520967	52->1	LED Nachtlicht für Entspannung und Schlaf
+gid://shopify/Product/16617706553735	15->0	Stossstangen-Reparaturmaschine
+gid://shopify/Product/16617706586503	9->2	Leichte Herren-Slipper aus Leder
+gid://shopify/Product/16617706619271	116->0	Sauerstofffreier Kupferverbinder
+gid://shopify/Product/16617706750343	31->0	Baby-Overall-Set aus Baumwolle
+gid://shopify/Product/16617707012487	29->0	Baby-Set mit Rundhals-Shirt und Shorts
+gid://shopify/Product/16617707045255	35->0	Kulturbeutel mit Haken für Reisen
+gid://shopify/Product/16617707078023	75->0	Herren-Boots mit Schnürung und dicker Sohle
+gid://shopify/Product/16617707176327	66->0	Mini-Fahrradpumpe
+gid://shopify/Product/16617708945799	42->0	Edelstahl-Blechschrauben M2, 800 Stück
+gid://shopify/Product/16617709863303	76->0	Jacquard Strickoberteil für Babys
+gid://shopify/Product/16617709928839	24->1	Atmungsaktive Lauflernschuhe für Mädchen
+gid://shopify/Product/16617710813575	24->0	Zitrus-Entsafter-Aufsatz für Küchenmaschinen
+gid://shopify/Product/16617711501703	14->0	Baby-Lauflernschuhe aus Mesh
+gid://shopify/Product/16617711534471	90->0	Weihnachtsbaumdecke mit Vergoldung
+gid://shopify/Product/16617711567239	12->0	Quadratische Antihaft-Bratpfanne
+gid://shopify/Product/16617712189831	8->1	Locker geschnittenes Strick-Oberteil für Herren
+gid://shopify/Product/16617712255367	19->0	Heissluftfritteuse 5–6 Liter
+gid://shopify/Product/16617712681351	33->0	Schwarzes Katzen-Buchstaben-Schneidebrett, wandmontiert
+gid://shopify/Product/16617712746887	105->0	Business Oxford Rucksack
+gid://shopify/Product/16617713009031	11->0	Frischhaltebox mit Silikondichtung
+gid://shopify/Product/16617713238407	81->1	Langarmshirt mit Print für Herren
+gid://shopify/Product/16617713336711	35->0	Langarmshirt mit Augen- und Buchstaben-Print
+gid://shopify/Product/16617713435015	126->2	Canvas-Schultertasche in Braun, Khaki oder Schwarz
+gid://shopify/Product/16617713566087	101->1	Leinwand Umhängetasche für Herren
+gid://shopify/Product/16617713729927	14->1	Umhängetasche für Herren im Retro-Stil
+gid://shopify/Product/16617714385287	24->0	Weihnachtsgirlande mit Licht
+gid://shopify/Product/16617714549127	15->2	Keramiktasse mit Deckel – Pflanzen & Tiere
+gid://shopify/Product/16617714680199	125->0	Weihnachts-Kamin-Dekoration
+gid://shopify/Product/16617715106183	25->0	Neon Wandleuchte «Moon cloud»
+gid://shopify/Product/16617715138951	69->0	Elektrischer Stabmixer mit Mixbecher
+gid://shopify/Product/16617716187527	38->1	Bohemian Bluse mit V-Ausschnitt
+gid://shopify/Product/16617716253063	11->1	Küchentablett mit Doppelgriff
+gid://shopify/Product/16617716482439	16->0	GPS Smart-Armband mit Herzfrequenz
+gid://shopify/Product/16617716515207	121->0	Handtuch-Set Schwarz aus Edelstahl
+gid://shopify/Product/16617716646279	42->0	Gänseblümchen-Brosche im Retro-Stil
+gid://shopify/Product/16617716810119	82->0	Leinenhemd Langarm Einfarbig
+gid://shopify/Product/16617716908423	30->0	Brosche Narzisse
+gid://shopify/Product/16617716973959	18->0	Kabelloser Bluetooth-Lautsprecher für unterwegs
+gid://shopify/Product/16617717039495	14->0	Vintage Blumenbrosche für Damen
+gid://shopify/Product/16617717203335	66->0	Kurzarm-T-Shirt für Herren
+gid://shopify/Product/16617717301639	13->0	Brosche mit Pfauenfeder-Schwanz und Kristallen
+gid://shopify/Product/16617717563783	101->1	Herren-Hemd aus Leinen
+gid://shopify/Product/16617717727623	10->0	Gehäkelter Schlüsselanhänger Pilz
+gid://shopify/Product/16617717793159	16->0	Staubschutzhülle für Waschmaschinen
