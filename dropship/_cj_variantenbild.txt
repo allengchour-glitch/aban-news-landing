@@ -7348,3 +7348,5 @@ gid://shopify/Product/15472047849857	zugeordnet	30	Sonnensegel mit Zubehör für
 gid://shopify/Product/15472049783169	zugeordnet	70	Vintage Langarm-Kleid mit Stehkragen
 gid://shopify/Product/15472049848705	zugeordnet	12	Blumiges langes Damen-Kleid
 gid://shopify/Product/15472049881473	zugeordnet	36	Elegantes Hemdblusenkleid mit Schnürung
+gid://shopify/Product/15472050110849	zugeordnet	4	Digitales Kindermikroskop für draussen
+gid://shopify/Product/15472050176385	zugeordnet	60	Wasserdichtes dreieckiges Sonnensegel für Aussenbereiche
