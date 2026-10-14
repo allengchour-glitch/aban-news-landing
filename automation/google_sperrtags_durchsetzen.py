@@ -37,7 +37,8 @@ WERBUNG = {
 # Tags, deren Grund für JEDE Bewerbung gilt, nicht nur für Google.
 ALLE_WERBEKANAELE = {"nicht-bewerben", "18plus", "erotik", "raucher", "smoke-zubehoer",
                      "adult-nicht-bewerben", "gmc-adult-pull", "waffengesetz-verboten",
-                     "verdeckte-ueberwachung", "messer-nicht-bewerben"}
+                     "verdeckte-ueberwachung", "messer-nicht-bewerben",
+                     "waffe-pruefen"}  # 14.10.2026: Glock-Holster/AK74-Montage/Gewehrriemen trugen den Tag, standen aber auf TikTok/FB-IG/Pinterest (Hausregel 29.08.: Waffe = alle Werbekanäle)
 
 
 def gql(q, v=None):

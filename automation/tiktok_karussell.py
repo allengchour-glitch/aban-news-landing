@@ -156,7 +156,7 @@ CLAIM = re.compile(
     re.I)
 # Tags, die ein Produkt aus jeder Werbung heraushalten.
 SPERR_TAGS = {"bild-zu-klein", "medizinprodukt-pruefen", "18plus", "raucher",
-              "waffengesetz-verboten", "nicht-bewerben", "nicht-live-moebel-sperrig",
+              "waffengesetz-verboten", "waffe-pruefen", "nicht-bewerben", "nicht-live-moebel-sperrig",
               "niedrig-bewertet-nicht-bewerben", "nur-onlineshop", "duplikat-auto-draft"}
 MIN_KANTE = 700        # unter 700 px sieht ein 1080er Slide ausgefranst aus
 # 24.09.2026: Die Kuerbis-Suessigkeitenschale hat 12 Dateien = 6 Motive; drei Motive (Kerzen-Szene, Unterseite, Massfoto)

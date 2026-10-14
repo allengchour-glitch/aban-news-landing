@@ -41,7 +41,7 @@ BERICHT = os.path.join(ROOT, "dropship", "SOCIAL-QUEUE-WACHE.md")
 HEUTE = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d")
 
 RISIKO = {"cj-abgekuendigt", "cj-nicht-versendbar-ch", "medizinprodukt-pruefen", "heilaussage-pruefen",
-          "waffengesetz-verboten", "verdeckte-ueberwachung", "abhoergeraet-pruefen", "lizenz-risiko",
+          "waffengesetz-verboten", "waffe-pruefen", "verdeckte-ueberwachung", "abhoergeraet-pruefen", "lizenz-risiko",
           "nicht-bewerben", "nur-onlineshop", "niedrig-bewertet-nicht-bewerben", "marge-verlust-draft",
           "duplikat-auto-draft", "preis-pruefen-cj-spanne", "keine-lieferanten-ref", "ausverkauft-lieferant",
           "regulatorisch-pruefen", "klinge-ch-unverifiziert", "lizenz-nicht-bewerben", "ghost-sale-schutz-bb-draft",

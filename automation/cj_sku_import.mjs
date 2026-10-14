@@ -34,9 +34,14 @@ const LEDGER = 'dropship/cj_niche_done.txt';
 // drei Fassungen dieser Funktion, und alle drei lasen nur die ANTWORT der Mutation
 // statt des Zustands. Ergebnis: am 27./28.08. erneut Produkte in 5 von 6 Kanaelen.
 import { publishVerified as _publishVerified, PUBS, GOOGLE_PUB } from './cj_publish.mjs';
-const publishVerified = (tok, pid, klinge) => _publishVerified(
+// 14.10.2026: Schusswaffen-Zubehör (Tag «waffe-pruefen») nur in Onlineshop + Shop — nie Google, TikTok, FB/IG, Pinterest.
+// Regel: data/schusswaffen_zubehoer_regel.json (= google_sperrliste.ist_schusswaffen_zubehoer, Bestand-Wächter).
+import { istSchusswaffenZubehoer, kanarienFehler as swzKanarienFehler } from './schusswaffen_zubehoer.mjs';
+const NUR_LADEN = ['301970915713', '301971014017'];   // Online Store · Shop
+const publishVerified = (tok, pid, klinge, waffe = false) => _publishVerified(
   sgql, tok, pid,
-  klinge ? PUBS.filter(x => !x.publicationId.endsWith(GOOGLE_PUB)) : PUBS);
+  waffe ? PUBS.filter(x => NUR_LADEN.some(id => x.publicationId.endsWith('/' + id)))
+        : klinge ? PUBS.filter(x => !x.publicationId.endsWith(GOOGLE_PUB)) : PUBS);
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 // ⚠️ 22.08.2026 — DIESER IMPORTER HATTE EINEN PREISBODEN VON CHF 4.90 und rechnete die
 // Fracht erst ab 0,4 kg ein. Er steht in vier Runner-Aufrufen, legte also täglich Ware an,
@@ -228,7 +233,13 @@ function auswahlSelbsttest() {
   console.log(`AUSWAHL-SELBSTTEST: ${AUSWAHL_KANARIEN.length - rot}/${AUSWAHL_KANARIEN.length} ${rot ? 'ROT' : 'grün'}`);
   return rot === 0;
 }
-if (process.argv.includes('--selbsttest')) { const a = relevanzSelbsttest(), b = auswahlSelbsttest(); process.exit(a && b ? 0 : 1); }
+if (process.argv.includes('--selbsttest')) {
+  const a = relevanzSelbsttest(), b = auswahlSelbsttest();
+  const swz = swzKanarienFehler();   // 14.10.2026: Schusswaffen-Zubehör-Regel (rot = Queue bleibt zu)
+  for (const k of swz) console.log(`  ✗ Schusswaffen-Kanarie: ${k[0]} (Soll ${k[5]})`);
+  console.log(`SCHUSSWAFFEN-SELBSTTEST: ${swz.length ? 'ROT' : 'grün'}`);
+  process.exit(a && b && !swz.length ? 0 : 1);
+}
 if (process.argv.includes('--stand')) {
   // Eine Zeile für den Aufseher: heutige Suchaufträge, verworfene Fremdware, #ohne-treffer (aus der Queue-Datei).
   const tag = new Date().toISOString().slice(0, 10);
@@ -392,11 +403,15 @@ for (let ji = 0; ji < JOBS.length; ji++) {
   // Registrierung/BLV-Bewilligung nicht einführbar — dieselbe Klasse wie die zurückgeschickte Klinge #1017. Geprüft: Titel +
   // CJ-Name (englisch), nie der Text. Regel automation/data/essbar_regel.json (Bestand: essbar_wache.py).
   const ess = essbar(title, d.productNameEn || '', '', 'CJ-' + pid);
+  // 🎯 14.10.2026: Schusswaffen-Zubehör (Zielfernrohr-Montage, Holster, Zweibein, Gewehrriemen …) — Tag «waffe-pruefen»,
+  // unten nur Onlineshop + Shop. Titel + deutscher Text (nur als Kontext) + englischer CJ-Name.
+  const waffeZub = istSchusswaffenZubehoer(title, '', [], g.html, d.productNameEn || '');
   const slug = title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 46) + '-' + String(pid).slice(-6);
   const tagsFinal = [...new Set([...(med ? ['medizinprodukt-pruefen', 'medizin-zweck-' + med.grund] : []),
       ...(tsch ? [tsch.tag || 'tierschutz-tschv76', 'tierschutz-' + tsch.grund] : []),
       ...(ess ? ['essbar-nicht-ch', 'essbar-' + ess] : []),
-      ...((med || tsch || ess) ? [] : ['trend', 'viral', 'video-hit']), 'cj-real', 'dropship', 'neu', 'neuheit',   // «neuheit» speist die Startseiten-Reihe (03.09.)
+      ...(waffeZub ? ['waffe-pruefen'] : []),
+      ...((med || tsch || ess || waffeZub) ? [] : ['trend', 'viral', 'video-hit']), 'cj-real', 'dropship', 'neu', 'neuheit',   // «neuheit» speist die Startseiten-Reihe (03.09.)
       ...((process.env.WH || '').trim() ? ['schnell-versand', 'eu-lager'] : []),
       ...auswahlOffenTags(d.variants),   // 13.10.: ≥ 2 CJ-Varianten, Shop nur «Default Title» → Nachrüster/Ampel finden es
       ...catTags(`${title} ${d.productNameEn || ''} ${val || ''}`),
@@ -489,7 +504,8 @@ for (let ji = 0; ji < JOBS.length; ji++) {
   // Pinterest — Google & YouTube fehlt, und es gibt auch kein «removed». Es wurde also nie
   // publiziert, nicht spaeter entfernt. Google ist der EINZIGE Kanal mit belegten
   // Verkaeufen; 85 Neuprodukte in drei Tagen fehlten dort.
-  await publishVerified(t, spid, klinge);
+  if (waffeZub) console.log(`  🎯 Schusswaffen-Zubehör (${waffeZub}) → Tag waffe-pruefen, nur Onlineshop + Shop: ${title.slice(0, 44)}`);
+  await publishVerified(t, spid, klinge, !!waffeZub);
   if (d.productVideo && /^https/.test(d.productVideo)) await attachVideo(t, spid, d.productVideo, String(pid).slice(-6));
   fs.appendFileSync(LEDGER, 'cj:' + pid + '\n');
   angelegt++;

@@ -126,7 +126,7 @@ function caption(title, handle, pt, price, tags) {
     if (rows.length >= QUEUE_MAX) break;
     const handle = (p.handle || '').toLowerCase();
     if (!handle || have.has(handle)) continue;       // schon in Queue
-    if ((p.tags || []).some(t => /^social-pause-/.test(String(t)))) continue;   // 13.10. Anlass-Social-Sperre (Halloween-CJ)
+    if ((p.tags || []).some(t => /^social-pause-|^(?:waffe-pruefen|waffengesetz-verboten|verdeckte-ueberwachung)$/.test(String(t).toLowerCase()))) continue;   // 13.10. Anlass-Social-Sperre (Halloween-CJ); 14.10. Waffen-/Überwachungs-Tags (AK74-Montage bekommt jetzt «cj-real»)
     // 07.10.2026 (Betreiber «das bild ist verzogen?» → «für die nächsten verbessern»): das Hauptbild ist bei CJ oft eine
     // englische Infografik, auf 800x800 gestaucht. Erstes JPG ohne montierten Text (automation/fremdtext.py, >= 4 Wörter);
     // keins sauber → Produkt auslassen. OCR nicht verfügbar (-1) → Bild zulassen wie bisher.
