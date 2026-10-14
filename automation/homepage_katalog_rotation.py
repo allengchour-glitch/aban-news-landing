@@ -65,6 +65,21 @@ except Exception:  # pragma: no cover
         return 0
 
 
+def saison_vorn(h, tag):
+    """True: Saison-Katalog h steht heute VOR pl_herbst — Anlass in data/anlass_kollektionen.json mit «kostuem_zuerst» und
+    heute im Fenster [Hinweis ab, schnell_bis] (anlass_lieferzeit_wache.hinweis_fenster, eine Quelle). Fehler → False."""
+    try:
+        import anlass_lieferzeit_wache as alw
+        tab = json.load(open(alw.TABELLE, encoding="utf-8"))
+        a = next((x for x in tab["anlaesse"] if x["handle"] == h and x.get("kostuem_zuerst")), None)
+        if not a:
+            return False
+        fen = alw.hinweis_fenster(datetime.date.fromisoformat(a["datum"]), tab["lieferung_werktage"])
+        return fen["ab"] <= tag <= fen["schnell_bis"]
+    except Exception:
+        return False
+
+
 def saison_fest_heute(tag):
     md = (tag.month, tag.day)
     return {k: h for k, h, von, bis in SAISON_FEST if von <= md <= bis}
@@ -137,15 +152,25 @@ def umbauen(t, tag, sichtbar=None):
     #    Im Saisonfenster steht die Reihe mit dem Saison-Katalog direkt unter der Herbst-/Trend-Reihe.
     md = (tag.month, tag.day)
     # 02.10.2026: bis zu ZWEI Saison-Reihen (Halloween + Weihnachten überlappen im Oktober), die zweite direkt unter der ersten.
-    vorige = None
+    # 14.10.2026 (MEHR-KAEUFER S2e): im Endspurt (Hinweisfenster bis «schnell_bis» = letzter Bestelltag ab Schweizer Lager)
+    # steht die Saison-Reihe VOR pl_herbst — nur für Anlässe mit «kostuem_zuerst» (deren Top 8 sind ganze Kostüme, sonst
+    # stünde die blutige Hand auf Platz 5 der Startseite). Eine zweite Saison-Reihe (Weihnachten) bleibt UNTER pl_herbst.
+    vorige, vorige_vorn = None, False
     for h in [h for h, von, bis in SAISON if von <= md <= bis][:2]:
         k = next((w for w in WECHSEL if w in secs and not secs[w].get("disabled") and secs[w]["settings"].get("collection") == h), None)
-        anker = vorige or next((a for a in ("pl_herbst", "pl_trends") if a in t["order"] and a != k), None)
+        vorn = bool(k) and k != "pl_herbst" and "pl_herbst" in t["order"] and saison_vorn(h, tag)
+        if vorige and vorige_vorn and "pl_herbst" in t["order"]:
+            anker = "pl_herbst"
+        else:
+            anker = vorige or next((a for a in ("pl_herbst", "pl_trends") if a in t["order"] and a != k), None)
         if k:
-            vorige = k
-        if k and anker:
+            vorige, vorige_vorn = k, vorn
+        if k and (anker or vorn):
             rest = [x for x in t["order"] if x != k]
-            rest.insert(rest.index(anker) + 1, k)
+            if vorn:
+                rest.insert(rest.index("pl_herbst"), k)
+            else:
+                rest.insert(rest.index(anker) + 1, k)
             if rest != t["order"]:
                 notizen.append(f"{k} ({h}): Platz {t['order'].index(k) + 1} -> {rest.index(k) + 1} (Saison nach oben)")
                 t["order"] = rest
@@ -210,6 +235,20 @@ def selbsttest():
     pruefe("halloween" in wc, "Saison: Halloween steht im September vorne")
     hk = next(k for k in WR if t["sections"][k]["settings"]["collection"] == "halloween")
     pruefe(t["order"].index(hk) == t["order"].index("pl_herbst") + 1, f"Saison: Halloween-Reihe ({hk}) direkt unter pl_herbst")
+    # 14.10.2026: Endspurt — Halloween vor pl_herbst (02.10.–26.10.), Weihnachten bleibt darunter; ab 27.10. wieder darunter
+    t_e = copy.deepcopy(t); umbauen(t_e, datetime.date(2026, 10, 14))
+    hk_e = next(k for k in WECHSEL if k in t_e["sections"] and t_e["sections"][k]["settings"].get("collection") == "halloween")
+    wk_e = next((k for k in WECHSEL if k in t_e["sections"] and t_e["sections"][k]["settings"].get("collection") == "weihnachten-2026"), None)
+    pruefe(t_e["order"].index(hk_e) == t_e["order"].index("pl_herbst") - 1, f"Endspurt 14.10.: Halloween ({hk_e}) direkt VOR pl_herbst")
+    pruefe(wk_e is None or t_e["order"].index(wk_e) == t_e["order"].index("pl_herbst") + 1, "Endspurt 14.10.: Weihnachten direkt UNTER pl_herbst")
+    ge_e, n_e = umbauen(t_e, datetime.date(2026, 10, 14))
+    pruefe(not ge_e and not n_e, "Endspurt: zweiter Lauf am selben Tag aendert nichts")
+    umbauen(t_e, datetime.date(2026, 10, 27))
+    hk_n = next((k for k in WECHSEL if k in t_e["sections"] and t_e["sections"][k]["settings"].get("collection") == "halloween"), None)
+    pruefe(hk_n is None or t_e["order"].index(hk_n) == t_e["order"].index("pl_herbst") + 1, "ab 27.10.: Halloween wieder unter pl_herbst")
+    pruefe(saison_vorn("halloween", datetime.date(2026, 10, 26)) and not saison_vorn("halloween", datetime.date(2026, 10, 27))
+           and not saison_vorn("halloween", datetime.date(2026, 9, 23)) and not saison_vorn("weihnachten-2026", datetime.date(2026, 12, 1)),
+           "saison_vorn: 26.10. ja, 27.10./23.09. nein, Weihnachten (ohne kostuem_zuerst) nein")
     ge2, n2 = umbauen(t, tag)
     pruefe(not ge2 and not n2, "Gegenprobe: zweiter Lauf am selben Tag aendert nichts (idempotent)")
     ge3, n3 = umbauen(t, tag + datetime.timedelta(days=1))

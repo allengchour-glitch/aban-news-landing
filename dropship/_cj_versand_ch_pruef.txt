@@ -8951,3 +8951,42 @@ grillpfanne-gusseisen-mit-holzgriff-20x20-cm-048449	-	-	-	unklar pid 1602002 Pro
 vorratsglaser-mit-bambusdeckel-6-stuck-600-ml-961090	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 led-handscheinwerfer-mit-4-leuchtmodi-902145	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 usb-led-taschenlampe-extrem-hell-995841	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+reinigungs-tucher-5er-set-mit-grunem-streifen-786946	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+sammelbehalter-fur-leergut-100l-beige-704130	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+wandtattoo-set-waldtiere-507905	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+rosegold-glattburste-fur-geschmeidiges-haar-222786	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+top-ten-wasserdichte-leuchtquarz-herrenuhr-601900	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+pflanzenbasierter-hautpflege-roll-on-stift-15m-481537	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+gelenkol-fur-hunde-katzen-514433	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+hundepflegeol-mit-zitronenmelisse-969345	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+hundegelenkschutz-492353	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+ferngesteuertes-hubschrauber-spielzeug-628100	2607090207571628700	7	10.85	ok	landeseite
+mx-a100-doppelbatterie-323906	2075033036323176449	0	-	KEINE CH-Option → DRAFT	landeseite
+e99pro-display-controller-mit-doppelt-energie-785153	2069600200396423170	0	-	KEINE CH-Option → DRAFT	landeseite
+e88pro-bildschirm-steuerung-doppelt-strom-837634	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+x01-mit-4-5-zoll-bildschirm-und-doppelter-stro-888577	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+s6-doppelt-kamera-rc-spielzeug-blau-orange-350210	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+3-in-1-rc-hubschrauber-kinderspielzeug-621100	2606010123081621800	0	-	KEINE CH-Option → DRAFT	landeseite
+fliegendes-gold-schwert-elektro-766914	2060191929915334658	0	-	KEINE CH-Option → DRAFT	landeseite
+doppelkamera-mit-zwei-batterien-205057	2055527986776948738	0	-	KEINE CH-Option → DRAFT	landeseite
+dual-kamera-rc-modell-494274	2055529070513393665	0	-	KEINE CH-Option → DRAFT	landeseite
+mini-blau-einzelbatterie-648834	2055524868753838082	0	-	KEINE CH-Option → DRAFT	landeseite
+schaumstoff-flugzeug-038530	2055526947446976514	0	-	KEINE CH-Option → DRAFT	landeseite
+fliegendes-schwert-000769	2055187968127819778	0	-	KEINE CH-Option → DRAFT	landeseite
+gb815-einzelbatterie-schwarz-897217	2055221007540195329	0	-	KEINE CH-Option → DRAFT	landeseite
+dual-kamera-modell-911106	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+sandalholzkamm-fur-damen-herren-677376	1697136521280757760	16	5.41	ok	landeseite
+multifunktions-haarklammern-und-lockenstab-mit-024960	1677867740733911040	7	23.13	ok	landeseite
+negativ-ionen-lockenstab-kamm-mit-konstanter-t-231424	1673163188659032064	7	10.54	ok	landeseite
+vier-in-eins-fohn-kamm-fur-haushalt-021632	1669896933764239360	7	21.95	ok	landeseite
+multifunktionaler-3-in-1-haartrockner-742784	1733000323230343168	7	14.32	ok	landeseite
+multifunktionaler-drei-geschwindigkeits-trockn-411136	1669893020847714304	7	19.27	ok	landeseite
+multifunktionaler-haartrockner-mit-lufterkompo-071040	1669891325409374208	7	14.22	ok	landeseite
+tourmalin-keramik-lockenstab-31mm-943680	1669587051202744320	7	14.37	ok	landeseite
+zweifunktionaler-ionen-haarkamm-875840	1669584355469041664	7	12.67	ok	landeseite
+schnellheizende-klammer-zweifach-638400	1659043674270998528	7	13.48	ok	landeseite
+kabelloser-usb-curler-736064	1637687311699816448	7	13.48	ok	landeseite
+automatischer-lockenstab-32mm-054464	1620629313898950656	3	9.29	ok	landeseite
+usb-portable-haarwelle-458496	1618780891134832640	7	12.09	ok	landeseite
+keramik-haarglatter-mit-temperaturregelung-300992	1609061823716798464	7	13.79	ok	landeseite
+dampf-burste-mit-titan-keramik-784960	1608392258884218880	7	21.99	ok	landeseite

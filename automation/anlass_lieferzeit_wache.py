@@ -46,10 +46,11 @@ nicht nach dem, was Seite und Kasse ANZEIGEN (bis 21 WT). Jetzt:
   python3 automation/anlass_lieferzeit_wache.py --selbsttest
   python3 automation/anlass_lieferzeit_wache.py --hinweis   # nur Hinweis-Soll + Theme-/Metafeld-Prüfung (Trockenlauf)
 """
-import datetime as dt, json, os, sys, time
+import datetime as dt, json, os, re, sys, time
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(REPO, "automation"))
+from werbetest_sperre import gesperrt  # noqa: E402  jeder Schreiber fragt selbst (13.10.)
 TABELLE = os.path.join(REPO, "data", "anlass_kollektionen.json")
 LEDGER = os.path.join(REPO, "dropship", "_anlass_sort.tsv")
 BERICHT = os.path.join(REPO, "dropship", "ANLASS-LIEFERZEIT.md")
@@ -62,6 +63,11 @@ META_NS, META_KEY = "luxe", "anlass_hinweis"
 MARKE_PROFIL = "profil-ch-lager"
 ZUBEHOER_TAG = "kostuem-ch-zubehoer"
 ZUBEHOER_QUELLE = ("peruecke", "kostuem-hut")
+# 14.10.2026: keine Kostüme, obwohl Gruppe/Importer sie so markiert: Wintermützen/Beanies (Weihnacht nur MIT Mütze — sonst fiele
+# «Kostüm Nikolaus» heraus). Fanartikel (Länder-Caps/-Shirts, Megafon) verlieren «kostuem-ch-front» (front_abgleich).
+KEIN_KOSTUEM_RE = re.compile(r"\bwinterm(ü|ue)tze|\bbeanie\b|\bstrickm(ü|ue)tze", re.I)
+FRONT_TAG, FAN_TAG = "kostuem-ch-front", "fanartikel"
+LEDGER_FRONT = os.path.join(REPO, "dropship", "_kostuem_ch_front_fan.tsv")
 WOCHENTAG = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]
 MONAT = ["Jan.", "Feb.", "März", "Apr.", "Mai", "Juni", "Juli", "Aug.", "Sept.", "Okt.", "Nov.", "Dez."]
 
@@ -122,9 +128,56 @@ def schnell_profil(tags, sku, profil):
     return schnell(tags, sku) and (profil or "") == PROFIL_SCHNELL
 
 
-def ziel_reihenfolge(produkte):
-    """produkte: [(id, aktiv, schnell)] in aktueller Ordnung → stabile Aufteilung: schnell+aktiv · langsam+aktiv · inaktiv."""
-    a = [p[0] for p in produkte if p[1] and p[2]]
+# 14.10.2026 (MEHR-KAEUFER S2a): GEMESSEN — oben auf /collections/halloween standen 0 ganze Kostüme in den Top 24
+# (abgeschnittene Hand, Horrorpuppe, blutiges Herz, Theaterblut …), obwohl 57 ganze Kostüme ab Schweizer Lager da waren
+# (erstes auf Platz 37). Innerhalb der schnellen Ware gilt für Kollektionen mit «kostuem_zuerst» ein zweiter Schlüssel:
+#   0 ganzes Kostüm (Titel «Kostüm» UND Auswahl Grösse) · 1 Kostüm in Einheitsgrösse · 2 Zubehör · 3 Deko/Blut/Spielzeug.
+# Klasse 3 nach Typ und Titel, NIE nach dem Tag «kostuem-accessoire» (den tragen auch Hand, Herz und Puppe).
+# In Klasse 0 abwechselnd Kinder/Damen/Herren/Unisex (sonst 11 von 12 Hexe/Vampirin, Simulation 14.10.).
+KOSTUEM_RE = re.compile(r"kost(ü|ue)m", re.I)
+GROESSE_OPT = {"grösse", "größe", "groesse", "grosse", "size"}
+DEKO_TYP = {"Partydeko & Ballone", "Spielzeug & Spiele"}
+DEKO_RE = re.compile(r"\bblut|abgeschnitten|kreiss(ä|ae)ge|horrorpuppe|schl(ä|ae)ger|theaterblut|\bleiche\b|\bsarg\b", re.I)
+GRUPPEN = ("kinderkostuem", "damenkostuem", "herrenkostuem", "unisexkostuem")
+
+
+def kostuem_klasse(titel, typ, optionen, tags=()):
+    """→ (Klasse 0–3, Gruppe für die Mischung in Klasse 0)."""
+    t = titel or ""
+    gruppe = next((g for g in GRUPPEN if g in set(tags or ())), "andere")
+    if KOSTUEM_RE.search(t):
+        return (0 if {(o or "").strip().lower() for o in optionen or []} & GROESSE_OPT else 1), gruppe
+    if (typ or "") in DEKO_TYP or DEKO_RE.search(t):
+        return 3, gruppe
+    return 2, gruppe
+
+
+def gemischt(produkte):
+    """Klasse-0-Kostüme reihum nach Gruppe (Reihenfolge innerhalb der Gruppe bleibt)."""
+    toepfe, reihe = {}, []
+    for p in produkte:
+        g = p[4][1]
+        if g not in toepfe:
+            toepfe[g] = []
+            reihe.append(g)
+        toepfe[g].append(p)
+    out = []
+    while any(toepfe.values()):
+        for g in reihe:
+            if toepfe[g]:
+                out.append(toepfe[g].pop(0))
+    return out
+
+
+def ziel_reihenfolge(produkte, kostuem_zuerst=False):
+    """produkte: [(id, aktiv, schnell[, titel, (klasse, gruppe)])] in aktueller Ordnung → stabile Aufteilung:
+    schnell+aktiv · langsam+aktiv · inaktiv. kostuem_zuerst: schnelle aktive zusätzlich nach kostuem_klasse (stabil)."""
+    a = [p for p in produkte if p[1] and p[2]]
+    if kostuem_zuerst:
+        a = sorted(a, key=lambda p: p[4][0] if len(p) > 4 else 2)
+        k0 = [p for p in a if len(p) > 4 and p[4][0] == 0]
+        a = gemischt(k0) + [p for p in a if not (len(p) > 4 and p[4][0] == 0)]
+    a = [p[0] for p in a]
     b = [p[0] for p in produkte if p[1] and not p[2]]
     c = [p[0] for p in produkte if not p[1]]
     return a + b + c
@@ -137,14 +190,16 @@ def lade(gql, handle):
     out, cur = [], None
     while True:
         d = gql('query($id:ID!,$c:String){ collection(id:$id){ products(first:250, after:$c, sortKey:COLLECTION_DEFAULT){ '
-                'pageInfo{hasNextPage endCursor} nodes{ id title status tags variants(first:1){ nodes{ sku deliveryProfile{ name } } } } } } }',
+                'pageInfo{hasNextPage endCursor} nodes{ id title status tags productType options{ name } '
+                'variants(first:1){ nodes{ sku deliveryProfile{ name } } } } } } }',
                 {"id": c["id"], "c": cur})
         pg = d["collection"]["products"]
         for p in pg["nodes"]:
             v0 = (p["variants"]["nodes"] or [{}])[0] or {}
             sku = v0.get("sku") or ""
             prof = (v0.get("deliveryProfile") or {}).get("name")
-            out.append((p["id"], p["status"] == "ACTIVE", schnell_profil(p["tags"], sku, prof), p["title"]))
+            out.append((p["id"], p["status"] == "ACTIVE", schnell_profil(p["tags"], sku, prof), p["title"],
+                        kostuem_klasse(p["title"], p.get("productType"), [o["name"] for o in p.get("options") or []], p["tags"])))
         if not pg["pageInfo"]["hasNextPage"]:
             return c, out
         cur = pg["pageInfo"]["endCursor"]
@@ -244,10 +299,12 @@ def zubehoer_abgleich(gql):
     q = " OR ".join(f"tag:'{t}'" for t in ZUBEHOER_QUELLE + (ZUBEHOER_TAG,))
     while True:
         d = gql('query($c:String,$q:String!){ products(first:250, after:$c, query:$q){ pageInfo{ hasNextPage endCursor } '
-                'nodes{ id tags } } }', {"c": cur, "q": q})["products"]
+                'nodes{ id tags title } } }', {"c": cur, "q": q})["products"]
         for p in d["nodes"]:
             t = set(p["tags"])
-            if "ch-lager" in t and t & set(ZUBEHOER_QUELLE):
+            # 14.10.2026: «kostuem-hut» steht auf der ganzen Fortura-Gruppe «Hüte/Kopfbedeckung», auch auf Wintermützen
+            # (GEMESSEN: «Wintermütze für Kinder leuchtende LED Weihnachten» auf Platz 3 von kostueme-ch-lager).
+            if "ch-lager" in t and t & set(ZUBEHOER_QUELLE) and not KEIN_KOSTUEM_RE.search(p.get("title") or ""):
                 soll.add(p["id"])
             if ZUBEHOER_TAG in t:
                 ist.add(p["id"])
@@ -255,6 +312,7 @@ def zubehoer_abgleich(gql):
             break
         cur = d["pageInfo"]["endCursor"]
     add, weg = sorted(soll - ist), sorted(ist - soll)
+    add, weg = [x for x in add if not gesperrt(x)], [x for x in weg if not gesperrt(x)]   # Werbetest-Sperre (13.10.)
     n_add = n_weg = 0
     if SCHARF:
         for ids, mut, art in ((weg, "tagsRemove", "weg"), (add, "tagsAdd", "neu")):
@@ -274,13 +332,202 @@ def zubehoer_abgleich(gql):
     return n_add, n_weg, len(soll), len(ist)
 
 
+# ---- 14.10.2026 (MEHR-KAEUFER S2 b/c): Band + Kollektionssatz im Endspurt, danach zurück -------------------------------
+# GEMESSEN 14.10.: keiner der 5 Bandtexte hatte einen Link; «halloween» hatte einen Last-Minute-Satz ohne Datum,
+# «kostueme-ch-lager» gar keinen. Ein DATUM («bis Mo, 26. Okt. bestellt …») steht erst drin, wenn die erste echte
+# Fortura-Bestellung zugestellt ist (Tor dropship/_fortura_probe_ok.json) — vorher nur «Lieferdatum in der Kasse».
+LEDGER_BAND = os.path.join(REPO, "dropship", "_anlass_band.tsv")
+LEDGER_SATZ = os.path.join(REPO, "dropship", "_anlass_satz.tsv")
+PROBE_TOR = os.path.join(REPO, "dropship", "_fortura_probe_ok.json")
+BAND_DATEI = "sections/header-group.json"
+
+
+def endspurt(fen, heute):
+    return fen["ab"] <= heute <= fen["schnell_bis"]
+
+
+def mit_datum():
+    try:
+        return bool(json.load(open(PROBE_TOR, encoding="utf-8")).get("ok"))
+    except Exception:
+        return False
+
+
+def text_soll(cfg, eintrag):
+    """cfg: {"text": …, "text_datum": … {schnell_bis_text} …} → fertiger Text (Datum nur mit Tor)."""
+    return cfg["text_datum"].format(**eintrag) if mit_datum() and cfg.get("text_datum") else cfg["text"]
+
+
+def theme_datei(gql, name):
+    t = gql('query($id:ID!){ theme(id:$id){ files(filenames:["%s"], first:1){ nodes{ body{ ... on OnlineStoreThemeFileBodyText{ '
+            'content } } } } } }' % name, {"id": THEME})["theme"]
+    return t["files"]["nodes"][0]["body"]["content"]
+
+
+def json_teile(c):
+    k = c.find("{", c.find("*/")) if c.lstrip().startswith("/*") else c.find("{")
+    return c[:k], json.loads(c[k:])
+
+
+def ledger_offen(pfad, schluessel):
+    """Letzte «vorher»-Zeile für schluessel ohne spätere «zurueck»-Zeile → [Felder…] oder None."""
+    offen = None
+    if os.path.exists(pfad):
+        for z in open(pfad, encoding="utf-8"):
+            t = z.rstrip("\n").split("\t")
+            if len(t) >= 3 and t[1] == schluessel:
+                offen = t[3:] if t[2] == "vorher" else (None if t[2] == "zurueck" else offen)
+    return offen
+
+
+def ledger_zeile(pfad, schluessel, art, *felder):
+    with open(pfad, "a", encoding="utf-8") as f:
+        f.write("\t".join([f"{dt.datetime.utcnow():%Y-%m-%dT%H:%MZ}", schluessel, art,
+                           *[str(x).replace("\t", " ").replace("\n", " ") for x in felder]]) + "\n")
+
+
+def band_abgleich(gql, a, fen, eintrag, heute):
+    """→ (ok, info). Im Endspurt Soll-Text+Link im Block, danach den alten Stand aus dem Ledger zurück."""
+    cfg = a.get("band")
+    if not cfg:
+        return True, "kein Band"
+    c = theme_datei(gql, BAND_DATEI)
+    kopf, j = json_teile(c)
+    sec = next((x for x in j["sections"].values() if x.get("type") == "header-announcements"), None)
+    blk = (sec or {}).get("blocks", {}).get(cfg["block"])
+    if not blk:
+        return False, f"Block {cfg['block']} fehlt in {BAND_DATEI}"
+    st = blk.setdefault("settings", {})
+    ist = (st.get("text", ""), st.get("link", ""))
+    schl = f"{a['handle']}:{cfg['block']}"
+    offen = ledger_offen(LEDGER_BAND, schl)
+    if endspurt(fen, heute):
+        soll = (text_soll(cfg, eintrag), cfg["link"])
+        if ist == soll:
+            return True, "Band gesetzt"
+        if not SCHARF:
+            return False, f"Band ≠ Soll ({ist[0][:40]}…) — SCHARF=1 setzt"
+        if offen is None:
+            ledger_zeile(LEDGER_BAND, schl, "vorher", *ist)
+        open(f"/tmp/header-group.vor-anlass.{int(time.time())}.json", "w", encoding="utf-8").write(c)
+    else:
+        if offen is None:
+            return True, "Band nicht im Endspurt"
+        soll = (offen[0], offen[1] if len(offen) > 1 else "")
+        if not SCHARF:
+            return False, "Band nach dem Endspurt noch nicht zurück — SCHARF=1 setzt zurück"
+    st["text"], st["link"] = soll
+    r = gql('mutation($id:ID!,$files:[OnlineStoreThemeFilesUpsertFileInput!]!){ themeFilesUpsert(themeId:$id, files:$files){ '
+            'upsertedThemeFiles{ filename } userErrors{ field message } } }',
+            {"id": THEME, "files": [{"filename": BAND_DATEI, "body": {"type": "TEXT",
+                                                                     "value": kopf + json.dumps(j, ensure_ascii=False, indent=2) + "\n"}}]})
+    if (r.get("themeFilesUpsert") or {}).get("userErrors"):
+        return False, f"Band nicht geschrieben: {r['themeFilesUpsert']['userErrors']}"
+    for _ in range(8):
+        time.sleep(3)
+        _, j2 = json_teile(theme_datei(gql, BAND_DATEI))
+        s2 = next(x for x in j2["sections"].values() if x.get("type") == "header-announcements")["blocks"][cfg["block"]]["settings"]
+        if (s2.get("text", ""), s2.get("link", "")) == soll:
+            if not endspurt(fen, heute):
+                ledger_zeile(LEDGER_BAND, schl, "zurueck", *soll)
+            return True, "Band gesetzt (neu)" if endspurt(fen, heute) else "Band zurückgesetzt"
+    return False, "Band: Rücklesen bestätigt nicht"
+
+
+SATZ_RE = lambda tag: re.compile(r'<p data-lux-anlass="%s">.*?</p>' % re.escape(tag), re.S)  # noqa: E731
+
+
+def satz_abgleich(gql, a, fen, eintrag, heute):
+    """→ [(handle, ok, info)]. Markierter Absatz <p data-lux-anlass="…"> in den Kollektionen aus a["satz"]."""
+    cfg = a.get("satz")
+    if not cfg:
+        return []
+    out = []
+    for h in cfg["kollektionen"]:
+        c = gql('query($h:String!){ collectionByHandle(handle:$h){ id descriptionHtml } }', {"h": h}).get("collectionByHandle")
+        if not c:
+            out.append((h, False, "Kollektion fehlt")); continue
+        alt = c["descriptionHtml"] or ""
+        rx = SATZ_RE(a["hinweis_tag"])
+        schl = f"{h}:satz"
+        soll_p = f'<p data-lux-anlass="{a["hinweis_tag"]}">{text_soll(cfg, eintrag)}</p>'
+        if endspurt(fen, heute):
+            if soll_p in alt:
+                out.append((h, True, "Satz steht")); continue
+            if rx.search(alt):
+                neu = rx.sub(lambda m: soll_p, alt, count=1)
+            else:
+                ersetzt = re.search(cfg.get("ersetzt", r"$^"), alt, re.S) if cfg.get("ersetzt") else None
+                if ersetzt:
+                    if SCHARF and ledger_offen(LEDGER_SATZ, schl) is None:
+                        ledger_zeile(LEDGER_SATZ, schl, "vorher", ersetzt.group(0))
+                    neu = alt[:ersetzt.start()] + soll_p + alt[ersetzt.end():]
+                else:
+                    m = re.search(r"</p>", alt)
+                    neu = (alt[:m.end()] + soll_p + alt[m.end():]) if m else soll_p + alt
+                    if SCHARF and ledger_offen(LEDGER_SATZ, schl) is None:
+                        ledger_zeile(LEDGER_SATZ, schl, "vorher", "")
+        else:
+            if not rx.search(alt):
+                out.append((h, True, "kein Satz (nicht im Endspurt)")); continue
+            offen = ledger_offen(LEDGER_SATZ, schl)
+            neu = rx.sub(lambda m: (offen[0] if offen else ""), alt, count=1)
+        if not SCHARF:
+            out.append((h, False, "Satz ≠ Soll — SCHARF=1 schreibt")); continue
+        r = gql('mutation($i:CollectionInput!){ collectionUpdate(input:$i){ collection{ descriptionHtml } userErrors{ message } } }',
+                {"i": {"id": c["id"], "descriptionHtml": neu}})
+        e = (r.get("collectionUpdate") or {}).get("userErrors")
+        back = ((r.get("collectionUpdate") or {}).get("collection") or {}).get("descriptionHtml") or ""
+        if e:
+            out.append((h, False, f"nicht geschrieben: {e}")); continue
+        if endspurt(fen, heute):
+            ok = soll_p in back or (text_soll(cfg, eintrag) in back)
+            out.append((h, ok, "Satz gesetzt" if ok else "Satz: Rücklesen findet ihn nicht (Attribut entfernt?)"))
+        else:
+            ledger_zeile(LEDGER_SATZ, schl, "zurueck", "")
+            out.append((h, not rx.search(back), "Satz entfernt"))
+    return out
+
+
+def kostueme_oben(prods, n=12):
+    """Zahl ganzer Kostüme (Klasse 0) unter den obersten n aktiven."""
+    return sum(1 for p in [p for p in prods if p[1]][:n] if len(p) > 4 and p[4][0] == 0)
+
+
+def front_abgleich(gql):
+    """Fanartikel und Wintermützen tragen kein «kostuem-ch-front» (Kollektion «Kostüme ab Schweizer Lager»). Nur mit SCHARF.
+    → (gefunden, entfernt)."""
+    ids, cur = [], None
+    while True:
+        d = gql('query($c:String,$q:String!){ products(first:250, after:$c, query:$q){ pageInfo{ hasNextPage endCursor } '
+                'nodes{ id title tags } } }', {"c": cur, "q": f"tag:'{FRONT_TAG}'"})["products"]
+        ids += [(p["id"], p["title"]) for p in d["nodes"]
+                if FAN_TAG in p["tags"] or KEIN_KOSTUEM_RE.search(p["title"] or "")]
+        if not d["pageInfo"]["hasNextPage"]:
+            break
+        cur = d["pageInfo"]["endCursor"]
+    n = 0
+    if SCHARF:
+        frei = [x for x in ids if not gesperrt(x[0])]
+        for i in range(0, len(frei), 20):
+            teil = frei[i:i + 20]
+            r = gql("mutation{" + " ".join(f'a{j}:tagsRemove(id:"{x[0]}",tags:["{FRONT_TAG}"]){{userErrors{{message}}}}'
+                                          for j, x in enumerate(teil)) + "}")
+            with open(LEDGER_FRONT, "a", encoding="utf-8") as f:
+                for j, x in enumerate(teil):
+                    if not (r.get(f"a{j}") or {}).get("userErrors", ["?"]):
+                        f.write(f"{dt.datetime.utcnow():%Y-%m-%dT%H:%MZ}\tweg {FRONT_TAG}\t{x[0]}\t{x[1]}\n")
+                        n += 1
+    return len(ids), n
+
+
 def main(nur_hinweis=False):
     gql = _gql()
     tab = json.load(open(TABELLE, encoding="utf-8"))
     wt = tab["lieferung_werktage"]
     heute = dt.date.today()
     zeilen, zahl = [], {"umsortiert": 0, "schon_richtig": 0, "rechtzeitig": 0, "zurueck": 0, "zu_spaet_alles": 0, "fehlt": 0}
-    hinweise, cache = {}, {}
+    hinweise, cache, befunde_anlass = {}, {}, []
 
     def laden(h):
         if h not in cache:
@@ -307,6 +554,16 @@ def main(nur_hinweis=False):
                         f.write(f"{a['handle']}\tzurueck\t{alt}\t{dt.datetime.utcnow():%Y-%m-%dT%H:%MZ}\n")
                 zahl["zurueck"] += 1
                 zeilen.append(f"| {a['handle']} | {a['datum']} vorbei | Sortierung zurück auf {alt}{'' if SCHARF else ' (TROCKEN)'} | — |")
+            if (a.get("band") or a.get("satz")) and not nur_hinweis:   # 14.10.: Band/Satz spätestens jetzt zurück
+                try:
+                    ok_b, info_b = band_abgleich(gql, a, fen, {}, heute)
+                    if not ok_b:
+                        befunde_anlass.append(f"{a['handle']}: {info_b}")
+                    for h_s, ok_s, info_s in satz_abgleich(gql, a, fen, {}, heute):
+                        if not ok_s:
+                            befunde_anlass.append(f"{h_s}: {info_s}")
+                except Exception as e:  # pragma: no cover
+                    befunde_anlass.append(f"{a['handle']}: Band/Satz-Rückbau gescheitert: {e}"[:200])
             continue
         if heute < fen["ab"]:
             # Seite + Kasse zeigen für Direktversand noch ein Datum VOR dem Anlass → nichts zu tun
@@ -319,7 +576,7 @@ def main(nur_hinweis=False):
                 zahl["zu_spaet_alles"] += 1
                 zeilen.append(f"| {a['handle']} | {a['datum']} | auch Schweizer Lager zu spät — nichts umgestellt | {c['sortOrder']} |")
             else:
-                ziel = ziel_reihenfolge(prods)
+                ziel = ziel_reihenfolge(prods, a.get("kostuem_zuerst", False))
                 if [p[0] for p in prods] == ziel and c["sortOrder"] == "MANUAL":
                     zahl["schon_richtig"] += 1
                     zeilen.append(f"| {a['handle']} | {a['datum']} | schon richtig ({n_schnell} Lager-Artikel im Profil «CH-Lager» oben) | MANUAL |")
@@ -338,6 +595,14 @@ def main(nur_hinweis=False):
                                   f"{plus_werktage(heute, wt['zusage_langsam_max'])} → Lager-Ware (Profil «CH-Lager») nach oben "
                                   f"({n_schnell} von {n_akt} aktiven; vorher oben 12: {oben_langsam} langsam){nach}"
                                   f"{'' if SCHARF else ' (TROCKEN)'} | {c['sortOrder']} → MANUAL |")
+        if a.get("kostuem_zuerst") and endspurt(fen, heute) and not nur_hinweis:
+            cache.pop(a["handle"], None) if SCHARF else None
+            _, aktuell = laden(a["handle"])
+            n_k = kostueme_oben(aktuell) if SCHARF else kostueme_oben([next(p for p in prods if p[0] == i) for i in
+                                                                       ziel_reihenfolge(prods, True)])
+            if n_k < 8:
+                befunde_anlass.append(f"{a['handle']}: nur {n_k} ganze Kostüme in den obersten 12 (Soll ≥ 8)")
+            zeilen.append(f"| {a['handle']} | {a['datum']} | ganze Kostüme oben 12: {n_k} | — |")
         # Hinweis für die Produktseite (einmal je Tag; erste Anlass-Zeile gewinnt)
         tag = a.get("hinweis_tag")
         if tag and tag not in hinweise:
@@ -354,6 +619,18 @@ def main(nur_hinweis=False):
                         link = k
                         break
             hinweise[tag] = hinweis_eintrag(a, datum, fen, link)
+            if not nur_hinweis:
+                try:
+                    ok_b, info_b = band_abgleich(gql, a, fen, hinweise[tag], heute)
+                    if not ok_b:
+                        befunde_anlass.append(f"{a['handle']}: {info_b}")
+                    zeilen.append(f"| {a['handle']} | {a['datum']} | Band: {info_b} | — |")
+                    for h_s, ok_s, info_s in satz_abgleich(gql, a, fen, hinweise[tag], heute):
+                        if not ok_s:
+                            befunde_anlass.append(f"{h_s}: {info_s}")
+                        zeilen.append(f"| {h_s} | {a['datum']} | Satz: {info_s} | — |")
+                except Exception as e:  # pragma: no cover
+                    befunde_anlass.append(f"{a['handle']}: Band/Satz gescheitert: {e}"[:200])
             zeilen.append(f"| {a['handle']} | {a['datum']} | Hinweis auf Tag «{tag}» (ohne {MARKE_PROFIL}): "
                           f"{'«kommt erst nach» ' if heute >= fen['kipptag'] else '«nicht garantiert» '}(Kipptag {fen['kipptag']}, "
                           f"schnell bis {fen['schnell_bis']}) · Link {('/collections/' + link) if link else '— (keine Kollektion oben schnell)'} | — |")
@@ -370,21 +647,28 @@ def main(nur_hinweis=False):
             ist, ist_upd = metafeld_lesen(gql)
     mf_aktuell = vergleich(ist) == vergleich(soll) and (soll is None) == (ist is None)
     im_theme = block_im_theme(gql)
-    befunde = []
+    befunde = list(befunde_anlass)
     if hinweise and not im_theme:
         befunde.append("Hinweis-Block fehlt in der Live-Datei templates/product.json (Marke LUX-ANLASS-HINWEIS)")
     if not mf_aktuell:
         befunde.append(f"Metafeld {META_NS}.{META_KEY} nicht aktuell" + (f" ({mf_fehler})" if mf_fehler else "")
                        + ("" if SCHARF else " — SCHARF=1 schreibt es"))
-    zub = None
+    zub = fan = None
     if not nur_hinweis:
         try:
             zub = zubehoer_abgleich(gql)
         except Exception as e:  # pragma: no cover
             befunde.append(f"Zubehör-Zeichen nicht abgeglichen: {e}"[:160])
+        try:
+            fan = front_abgleich(gql)
+            if fan[0] - fan[1] > 0:
+                befunde.append(f"{fan[0] - fan[1]} Fanartikel/Wintermützen tragen noch «{FRONT_TAG}»" + ("" if SCHARF else " — SCHARF=1 entfernt"))
+        except Exception as e:  # pragma: no cover
+            befunde.append(f"Fanartikel-Abgleich gescheitert: {e}"[:160])
     stand = {"stand": f"{dt.datetime.utcnow():%Y-%m-%dT%H:%MZ}", "scharf": SCHARF, "hinweise": list(hinweise.values()),
              "metafeld_aktuell": mf_aktuell, "metafeld_updated": ist_upd, "block_im_theme": im_theme, "befunde": befunde,
-             "zubehoer": dict(zip(("gesetzt", "entfernt", "soll", "ist_vorher"), zub)) if zub else None}
+             "zubehoer": dict(zip(("gesetzt", "entfernt", "soll", "ist_vorher"), zub)) if zub else None,
+             "fanartikel_front": dict(zip(("gefunden", "entfernt"), fan)) if fan else None}
     if SCHARF or nur_hinweis:
         json.dump(stand, open(STAND_HINWEIS, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     if not nur_hinweis:
@@ -427,6 +711,32 @@ def selbsttest():
         (plus_werktage(dt.date(2026, 10, 27), 4) > dt.date(2026, 10, 31), True, "Lager 4 WT ab Di 27.10. zu spät (Mo 02.11.)"),
         (plus_werktage(dt.date(2026, 10, 15), 12) > dt.date(2026, 10, 31), True, "Direktversand 12 WT ab Do 15.10. zu spät → umsortieren"),
         (ziel_reihenfolge([("a", True, False), ("b", True, True), ("c", False, True), ("d", True, True)]), ["b", "d", "a", "c"], "stabil"),
+        # 14.10.2026 S2a: Kostüm-Klassen + Mischung
+        (kostuem_klasse("Kostüm Sternenhexe", "Kostüm", ["Grösse"], ["damenkostuem"]), (0, "damenkostuem"), "Kostüm + Grösse = 0"),
+        (kostuem_klasse("Kostüm Hexe schwarz", "Kostüm", ["Title"], []), (1, "andere"), "Kostüm Einheitsgrösse = 1"),
+        (kostuem_klasse("Kinderkostüm Falbala", "", ["Title"], ["kinderkostuem"])[0], 1, "Kinderkostüm ohne Grösse = 1"),
+        (kostuem_klasse("Blutige abgeschnittene Hand", "Partydeko & Ballone", ["Title"], ["kostuem-accessoire"])[0], 3,
+         "Hand (Tag kostuem-accessoire!) = Deko 3"),
+        (kostuem_klasse("Horrorpuppe", "Spielzeug & Spiele", ["Title"], [])[0], 3, "Horrorpuppe = 3"),
+        (kostuem_klasse("Kanister Theaterblut 2 Liter", "Schminke", ["Title"], [])[0], 3, "Theaterblut = 3"),
+        (kostuem_klasse("Hexenbesen gekrümmt", "Kostüm-Zubehör", ["Title"], [])[0], 2, "Hexenbesen = Zubehör 2"),
+        (kostuem_klasse("Blumenkranz Hippie", "Kostüm-Zubehör", ["Title"], [])[0], 2, "Blumenkranz ≠ Blut (Wortanfang)"),
+        (kostuem_klasse("Plüsch-Overall Kostüm Einhorn", "Spielzeug & Spiele", ["Grösse"], [])[0], 0, "Kostüm vor Spielzeug-Typ"),
+        (kostuem_klasse("Kostüm Vampirin mit Blut", "Kostüm", ["Size"], [])[0], 0, "Kostüm vor Blut-Wort"),
+        (ziel_reihenfolge([("hand", True, True, "", (3, "andere")), ("k1", True, True, "", (0, "damenkostuem")),
+                           ("cj", True, False, "", (0, "andere")), ("k2", True, True, "", (0, "damenkostuem")),
+                           ("hut", True, True, "", (2, "andere")), ("k3", True, True, "", (0, "kinderkostuem")),
+                           ("eg", True, True, "", (1, "andere"))], True),
+         ["k1", "k3", "k2", "eg", "hut", "hand", "cj"], "Kostüme gemischt vor Einheitsgrösse vor Zubehör vor Deko, CJ danach"),
+        (ziel_reihenfolge([("a", True, False, "", (0, "x")), ("b", True, True, "", (3, "x"))]), ["b", "a"],
+         "ohne kostuem_zuerst unverändert"),
+        (bool(KEIN_KOSTUEM_RE.search("Wintermütze für Kinder leuchtende LED Weihnachten")), True, "Wintermütze kein Kostüm-Zubehör"),
+        (bool(KEIN_KOSTUEM_RE.search("Mütze Nikolaus · Weihnachtsmann")), False, "Nikolausmütze bleibt Kostüm-Zubehör"),
+        (bool(KEIN_KOSTUEM_RE.search("Hexenhut mit Schleier")), False, "Hexenhut bleibt"),
+        (endspurt({"ab": dt.date(2026, 10, 2), "schnell_bis": dt.date(2026, 10, 26)}, dt.date(2026, 10, 26)), True, "Endspurt bis 26.10."),
+        (endspurt({"ab": dt.date(2026, 10, 2), "schnell_bis": dt.date(2026, 10, 26)}, dt.date(2026, 10, 27)), False, "ab 27.10. kein Endspurt"),
+        (bool(SATZ_RE("halloween").search('<p>a</p><p data-lux-anlass="halloween">x <a href="/y">y</a></p>')), True, "Satz-Marke gefunden"),
+        (SATZ_RE("halloween").sub("", '<p>a</p><p data-lux-anlass="halloween">x</p><p>b</p>'), "<p>a</p><p>b</p>", "Satz entfernt sauber"),
         # 13.10. Kauf-Strecke Klasse 3: Fenster aus der Kalibrierung (schnell 4, langsam 12, Kassen-Zusage 21 WT)
         (hinweis_fenster(dt.date(2026, 10, 31), {"schnell": 4, "langsam": 12, "zusage_langsam_max": 21}),
          {"ab": dt.date(2026, 10, 2), "kipptag": dt.date(2026, 10, 15), "schnell_bis": dt.date(2026, 10, 26)},
