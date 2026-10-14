@@ -287,7 +287,7 @@ pruefe("Spot-Stop (STOP_LOSS = Markt beim Auslösen) über den GANZEN Bestand na
 pruefe("keine Warnung", not r["warnung"], r["zeilen"])
 pruefe("Buch: nur Start, Konto-ID, Stop-Kennungen, unklare Aufträge, Märkte ohne vollständigen Stop, Not-Aus offen — kein "
        "Coin- oder USDT-Buch",
-       set(json.loads(d.read_text())["testnetz"]) == {"start", "uid", "stops", "perp_offen", "unklar", "schutz_offen", "notaus_offen"},
+       set(json.loads(d.read_text())["testnetz"]) == {"start", "uid", "stops", "perp_offen", "unklar", "schutz_offen", "notaus_offen", "paar_pause"},
        json.loads(d.read_text()))
 n0 = len(markt_orders()); r = lauf([E("BTC", 1.0)], TEST, d)
 pruefe("zweiter Lauf: kein neuer Kauf, genau EIN offener Stop", len(markt_orders()) == n0 and len(stops_offen()) == 1, (markt_orders()[n0:], stops_offen()))
