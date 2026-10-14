@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-14 21:35 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-14 22:54 UTC)
 
-Suche: `status:active AND created_at:>=2026-10-11` · gemessen 891 · **492 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 406, teilweise: 58, keine: 28; Preisspanne > 2×: 74) · 1 CJ-Variante: 399 · ohne Antwort: 0
+Suche: `status:active AND created_at:>=2026-10-11` · gemessen 894 · **495 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 409, teilweise: 58, keine: 28; Preisspanne > 2×: 74) · 1 CJ-Variante: 399 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -34,6 +34,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Hunde-Jumpsuit atmungsaktiv (`hunde-jumpsuit-atmungsaktiv-633000`) | 30 | 30 | 4.35–5.23 | 16.90 | Light yellow sun-S, Light yellow sun-M, Light yellow sun-L, Light yellow sun-XL |
 | Hüftgurt mit Zugseil für H (`huftgurt-mit-zugseil-fur-h-4bce96`) | 28 | 28 | 4.09–20.61 | 33.90 | Pink-M, Yellow-L, Blue Leash-M, Light blue Leash-L |
 | Japanische Laterne – wasserfest & sonnenbeständig (`japanische-laterne-wasserfest-sonnenbestandig-628600`) | 28 | 18 | 7.49–7.49 | 16.90 | Bird Beige-Red, Bird Beige-Beige, Burnt Beige-Red, Burnt Beige-Beige |
+| Acrylpullover mit horizontalem Reissverschluss für Hunde (`acrylpullover-mit-horizontalem-reissverschluss-614300`) | 28 | 28 | 3.0–4.04 | 16.90 | Gray-XXS, Gray-XS, Gray-S, Gray-M |
 | Wollpullover mit hohlgewebtem Design (`wollpullover-mit-hohlgewebtem-design-635000`) | 27 | 27 | 12.15–12.15 | 24.90 | Raw Velvet Rice-M, Raw Velvet Rice-L, Raw Velvet Rice-XL, Raw Velvet Camel-M |
 | Nylon-Hundeleine – schwarz, orange, grün, blau, rosa (`nylon-hundeleine-schwarz-orange-grun-blau-rosa-ae90fb`) | 27 | 27 | 4.14–12.21 | 26.90 | Green-2.5CM×200CM, Green-2.0CM×200CM, Rose red-2.0CM×200CM, Green-2.5CM×110CM |
 | T-Shirt mit Rüschen für haarlose Katzen (`t-shirt-mit-ruschen-fur-haarlose-katzen-639700`) | 26 | 26 | 6.47–6.47 | 16.90 | Devon Cornish a hairless cat-XS, Devon Cornish a hairless cat-S, Devon Cornish a hairless cat-S plus, Devon Cornish a hairless cat-M |
@@ -99,6 +100,8 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Vintage Kapuzenpullover mit Cartoon-Print (`vintage-kapuzenpullover-mit-cartoon-print-604400`) | 16 | 16 | 5.97–5.97 | 22.90 | Black-Hoodie-S, Black-Hoodie-M, Black-Hoodie-L, Black-Hoodie-XL |
 | Hexagonaler Gummieinsatz-Dumbbell 12,5 kg (`hexagonaler-gummieinsatz-dumbbell-12-5-kg-39a41a`) | 16 | 16 | 3.35–42.84 | 961.90 | 2.5kg, 5kg, 7.5kg, 10kg |
 | Zusammenklappbarer Carbon-Trekkingstock 110 cm (`zusammenklappbarer-carbon-trekkingstock-110-cm-625500`) | 16 | 16 | 64.46–145.28 | 183.90 | 105CM Pair Folding, 110CM Pair Folding, 130CM Pair Folding, Gold Gray 110CM Folding |
+| Katzen-Schnitzeljacke in Schwarz/Violett (`katzen-schnitzeljacke-in-schwarz-violett-620500`) | 16 | 16 | 4.92–5.97 | 16.90 | Black-XS, Black-S, Black-M, Black-L |
+| Hunde-Sweater mit Herz- und Schleifendesign (`hunde-sweater-mit-herz-und-schleifendesign-605200`) | 16 | 16 | 3.0–3.0 | 16.90 | Red Love-XS, Red Love-S, Red Love-M, Red Love-L |
 | Tierkette Victoria's Secret Cute (`tierkette-victoria-s-secret-cute-ec8d71`) | 15 | 15 | 9.37–9.37 | 25.90 | Pink pink-L, White white-S, White white-L, Pink pink-M |
 | Weiche faltbare Trinkflasche 500 ml aus TPU (`weiche-faltbare-trinkflasche-500-ml-aus-tpu-622400`) | 15 | 15 | 3.97–8.11 | 16.90 | Dark Blue 150ml, Dark Blue 250ml, Dark Blue 500ml, Sky Blue 150ml |
 | Armband mit Kleeblatt-Design für Damen (`armband-mit-kleeblatt-design-fur-damen-622000`) | 15 | 15 | 6.12–9.95 | 18.90 | Wishing Star, Fortune Strikes, Qianshan Is Rich In Snow, Clover |
