@@ -8990,3 +8990,5 @@ automatischer-lockenstab-32mm-054464	1620629313898950656	3	9.29	ok	landeseite
 usb-portable-haarwelle-458496	1618780891134832640	7	12.09	ok	landeseite
 keramik-haarglatter-mit-temperaturregelung-300992	1609061823716798464	7	13.79	ok	landeseite
 dampf-burste-mit-titan-keramik-784960	1608392258884218880	7	21.99	ok	landeseite
+doppelspitz-burste-fur-katzen-hunde-723840	1601869301454221312	16	6.63	ok	landeseite
+multifunktionales-haarstyling-gerat-052928	1599615924154413056	7	14.08	ok	landeseite
