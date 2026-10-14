@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-14 07:57 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-14 08:58 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1565 · **1498 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1280, teilweise: 176, keine: 42; Preisspanne > 2×: 166) · 1 CJ-Variante: 65 · ohne Antwort: 2
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1571 · **1503 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1284, teilweise: 177, keine: 42; Preisspanne > 2×: 166) · 1 CJ-Variante: 66 · ohne Antwort: 2
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -343,6 +343,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Hundewinterjacke aus Wolle (`hundewinterjacke-aus-wolle-839168`) | 12 | 12 | 7.58–7.58 | 16.90 | Green-XS, Green-S, Green-M, Green-L |
 | Hundemantel Elch Reh Fellweste (`hundemantel-elch-reh-fellweide-f72cfb`) | 12 | 12 | 2.41–2.41 | 16.90 | Blue-S, Blue-L, Red-XXL, Blue-XL |
 | Edelstahl Automatische Trinkschüssel für Hunde (`stainless-automatic-trinkschussel-fur-hunde-457b0f`) | 12 | 12 | 2.02–4.76 | 22.90 | pink-big-1, green-big-1, Blue-L-2, pink-small-1 |
+| Hitzebeständige Glas-Schüssel mit Pflanzenmuster (`hitzebestandige-glas-schussel-mit-pflanzenmust-141120`) | 12 | 8 | 3.69–4.9 | 20.90 | Chamomile-M, Chamomile-L, Citrus Tea-M, Citrus Tea-L |
 | Plüschtier mit Quietscher für Hunde (`pluschtier-mit-quietscher-fur-hunde-705474`) | 11 | 7 | 4.99–5.29 | 19.90 | Brown dog, Blue Donkey, Green Dog, Giraffe |
 | Halskette im traditionellen chinesischen Stil (`halskette-im-traditionellen-chinesischen-stil-610100`) | 11 | 11 | 2.68–2.68 | 15.90 | No 1 Incense Burner Necklace, No 2 Maple Leaf Necklace, No 3 Mirror Necklace, No 4 Folding Fan Necklace |
 | Jacquard Kissenbezug mit Stickerei (`jacquard-kissenbezug-mit-stickerei-629200`) | 11 | 11 | 3.04–3.04 | 15.90 | B2409091-45x45cm, B2409101-45x45cm, B2409111-45x45cm, B2409131-45x45cm |
@@ -631,6 +632,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Reise-Rucksack aus Canvas (`reise-rucksack-aus-canvas-245440`) | 7 | 7 | 9.29–10.42 | 35.90 | Black, Khaki, Dark Blue, Brown |
 | Vertikale Umhängetasche aus Rindsleder (`vertikale-umhangetasche-aus-rindsleder-490432`) | 7 | 7 | 5.26–12.4 | 24.90 | Coffee, Coffee2, Coffee3, Coffee4 |
 | Elektrisches Nagelpflege-Set (`elektrisches-nagelpflege-set-904960`) | 7 | 7 | 5.52–5.52 | 23.90 | Black US, Rose EU, Rose US, White EU |
+| Runde Teeschale mit Rundauslauf – Matcha-Serie (`runde-teeschale-mit-rundauslauf-matcha-serie-629800`) | 7 | 7 | 4.39–4.39 | 17.90 | Blue, Yellow, Red, Sky Blue |
 | Wasserdichte Automatikuhr für Herren (`wasserdichte-automatikuhr-fur-herren-626300`) | 6 | 6 | 17.8–17.8 | 39.90 | Golden White, Golden Black, Full Gold, Natural Black |
 | Smart Beissfester Hundeball mit Zahnreinigung (`smart-beissfester-hundeball-mit-zahnreinigung-628600`) | 6 | 6 | 2.81–3.34 | 19.90 | Paw Print Blue, Paw Print Orange, Paw Print In Blue 1 Rope, Red Paw Print 1 Rope |
 | Tiefes Salatschalen-Set (`tiefes-salatschalen-set-603300`) | 6 | 6 | 7.6–8.76 | 33.90 | Upgraded version 2.0-Emerald green, Upgraded version 2.0-Yellow, Upgraded version 2.0-Blue, Export version 3.0-Emerald green |
@@ -942,6 +944,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Keramik Servierplatte rechteckig (`keramik-servierplatte-rechteckig-609600`) | 5 | 5 | 3.24–5.34 | 22.90 | 7 Inch Dinner Plate, 8.5inch Shallow Plate, 9.5 Inch Deep Plates, 9 Inch Dinner Plate |
 | Uhrenarmband aus Kautschuk mit Dornschliesse (`uhrenarmband-aus-kautschuk-mit-dornschliesse-519744`) | 5 | 5 | 3.56–3.56 | 22.90 | Black line-20mm, White line-20mm, Red thread-20mm, Blue line-20mm |
 | Retro Leder Portemonnaie Clutch (`retro-leder-portemonnaie-clutch-635700`) | 5 | 5 | 6.47–6.47 | 16.90 | Black, Wine Red, Coffee, Dark Green |
+| Schiessdecke Training 200x75 cm 1000D Nylon (`schiessdecke-training-200x75-cm-1000d-nylon-b8ed7f`) | 5 | 5 | 12.65–12.65 | 27.90 | Black, Khaki, Camouflage A, Ruin camouflage |
 | Freizeit-Schultertasche (`freizeit-schultertasche-520770`) | 4 | 4 | 5.8–5.8 | 14.90 | Pink, Black, Gray, Whirt |
 | Ma Pi Brusttasche aus Echtleder (`ma-pi-brusttasche-aus-echtleder-611900`) | 4 | 4 | 28.36–32.67 | 56.90 | Crazy Horse Coffee-17x8x31.5cm, Black-17x8x31.5cm, Rub Color-17x8x31.5cm, Brown-17x8x31.5cm |
 | HD8ultra Smartwatch mit Bluetooth-Telefonie (`hd8ultra-smartwatch-mit-bluetooth-telefonie-608300`) | 4 | 4 | 16.58–16.58 | 36.90 | Black Belt, Blue Ribbon, Orange Belt, Leucorrhea |
@@ -1175,6 +1178,8 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Transparentes Puder für mattes Finish (`transparentes-puder-fur-mattes-finish-2eca22`) | 4 | 4 | 4.35–4.35 | 23.90 | Banana, Medium dee, Beige, Translucent |
 | Karierter Hundepullover in Lila (`dogger-plaid-pullover-in-lila-877696`) | 4 | 4 | 5.8–5.8 | 16.90 | Purple-L, Purple-XL, Purple-2XL, Purple-3XL |
 | Sanda Box-Target für Muay Thai und Taekwondo (`sanda-box-target-fur-muay-thai-und-taekwondo-767616`) | 4 | 4 | 15.96–15.96 | 34.90 | Orange, Blue, Yellow, Silver |
+| Keramischer Teekopf mit Untertasse (`keramischer-teekopf-mit-untertasse-617100`) | 4 | 4 | 3.65–3.65 | 17.90 | Peach Pink-201to300ml, Ice Mist Blue-201to300ml, Light Tea Green-201to300ml, Smoke Purple-201to300ml |
+| Tee-Becher aus Keramik – Dunhuang Apsaras (`tee-becher-aus-keramik-dunhuang-apsaras-636300`) | 4 | 4 | 2.21–2.94 | 16.90 | Azure-Portable, Azure-Simple Package, Beige-Portable, Beige-Simple Package |
 | Nackenstützkissen mit Massageperlen (`nackenstutzkissen-mit-massageperlen-609000`) | 3 | 3 | 5.2–5.51 | 22.90 | Low Loft Pillow, Medium Pillow, High Pillow |
 | Velo-Scheinwerfer mit USB-Ladefunktion (`velo-scheinwerfer-mit-usb-ladefunktion-725376`) | 3 | 3 | 6.1–16.78 | 22.90 | Standard Model, Upgrade, Flagship |
 | Ausziehbares Staufach für Mittelkonsole (`ausziehbares-staufach-fur-mittelkonsole-634700`) | 3 | 3 | 5.47–5.47 | 14.90 | Old Style, New And Refreshed Model, ModelY YL |
