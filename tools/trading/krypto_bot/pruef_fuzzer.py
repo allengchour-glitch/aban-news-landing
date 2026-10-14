@@ -174,8 +174,10 @@ def schutz_befunde(k, unklar=None, tol_usdt=TOL_USDT):
         if g["netto"] > 0:
             luecke = min(g["netto"], g["coins"]) - g["s_qty"]
             if luecke * p > tol_usdt + STEP_S[sym] * p:
-                out.append(("LONG_OHNE_STOP" if luecke * p > STAUB_MAX_USDT else "STAUB_LONG_OHNE_STOP", sym, round(luecke, 6),
-                            round(luecke * p, 2)))
+                name = "LONG_OHNE_STOP" if luecke * p > STAUB_MAX_USDT else "STAUB_LONG_OHNE_STOP"
+                if "STOP_LOSS" not in B.stop_typen and luecke <= _haengend(k, sym) + STEP_S[sym]:
+                    name = "LIMIT_LUECKE_" + name  # die Lücke ist genau ein über dem Kurs hängender STOP_LOSS_LIMIT
+                out.append((name, sym, round(luecke, 6), round(luecke * p, 2)))
         if g["netto"] < 0:
             luecke = -g["netto"] - g["p_qty"]
             if luecke * p > max(tol_usdt, 0.5 * STEP_P[sym] * p) + 1e-6:
@@ -243,8 +245,17 @@ def zeigen(k):
 
 def echte(befunde):
     """Befunde ohne Staub und ohne «DAUER_» (laut gemeldete Lücke, solange Binance dauerhaft ablehnt — die Nachkontrolle holt
-    den Schutz nach, sobald es wieder geht; danach wird erneut geprüft)."""
-    return [b for b in befunde if "STAUB" not in b[0] and not b[0].startswith(("DAUER_", "STORNO_ZUERST_"))]
+    den Schutz nach, sobald es wieder geht; danach wird erneut geprüft), «STORNO_ZUERST_» (Testnetz-Prüfpunkt B) und
+    «LIMIT_LUECKE_» (Konto ohne STOP_LOSS: eine Kurslücke über das Limit eines eben ausgelösten STOP_LOSS_LIMIT — er hängt bis
+    zum nächsten Lauf, der dann zum Markt aussteigt; bekanntes Restrisiko, README)."""
+    return [b for b in befunde if "STAUB" not in b[0] and "LIMIT_LUECKE_" not in b[0]
+            and not b[0].startswith(("DAUER_", "STORNO_ZUERST_"))]
+
+
+def _haengend(k, sym):
+    """Coins unter einem AUSGELÖSTEN STOP_LOSS_LIMIT, dessen Limit über dem Kurs liegt (Kurslücke): er hängt, schützt nicht."""
+    return sum(o["qty"] - o["ausgefuehrt"] for o in k.orders.values() if o["symbol"] == sym and o["typ"] == "STOP_LOSS_LIMIT"
+               and o["status"] in ("NEW", "PARTIALLY_FILLED") and o.get("aktiv") and o.get("preis", 0.0) > B.kurs[sym])
 
 
 DAUER_SPOT = ("/api/v3/order", "/api/v3/order/cancelReplace", "/api/v3/openOrders")
@@ -263,14 +274,30 @@ def _schutzseite(befund):
     return "perp" if "SHORT" in befund else "spot"
 
 
+_STOP_SPOT = ({"type": "STOP_LOSS", "side": "SELL", "symbol": "BTCUSDT"}, {"type": "STOP_LOSS_LIMIT", "side": "SELL", "symbol": "BTCUSDT"})
+_STOP_PERP = ({"algoType": "CONDITIONAL", "type": "STOP_MARKET", "side": "BUY", "reduceOnly": "true", "symbol": "BTCUSDT"},)
+_LESEN_LISTEN = DAUER_LESEN + ("/api/v3/openOrders", "/fapi/v1/openAlgoOrders")
+
+
 def _dauer(regeln, befund=None):
-    """Lehnt Binance in diesem Schritt dauerhaft ab, was Schutz braucht (Aufträge, Stops, Kontostand, Auftragslisten)? Nur das
-    zählt — eine Dauerstörung auf dem Kurs-Abruf o. ä. macht keine Lücke unvermeidbar (10. Prüfung W4). Mit Befund: nur
-    Störungen auf der Seite, die den Schutz bräuchte (oder beim Lesen der Lage) — funktionierte die andere Seite, ist die
-    Lücke kein Dauer-Fall (11. Prüfung K3)."""
-    pfade = DAUER_PFADE if befund is None else (DAUER_PERP if _schutzseite(befund) == "perp" else DAUER_SPOT) + DAUER_LESEN
-    return any(r.get("anzahl", 1) >= 50 and r.get("pfad") in pfade and r.get("art") not in ("kurs", "teil", "spaet", "spaet_u",
-                                                                                              "unsichtbar") for r in regeln)
+    """Lehnt Binance in diesem Schritt dauerhaft genau die SCHUTZ-HANDLUNG ab — einen neuen Stop der betroffenen Seite setzen
+    (POST /api/v3/order mit Stop-Typ bzw. POST /fapi/v1/algoOrder, die Störungsregel muss einen solchen Auftrag treffen) — oder
+    das Lesen der Lage bzw. der eigenen Auftragslisten? Nur das macht eine Lücke unvermeidbar. Dauerhaft abgelehnte
+    Marktaufträge, Löschungen oder cancelReplace NICHT (12. Prüfung K1: so blieben vermeidbare Lücken versteckt), ebensowenig
+    eine Störung auf dem Kurs-Abruf (10. Prüfung W4). Mit Befund: nur die Seite, die den Schutz bräuchte (11. Prüfung K3)."""
+    seite = None if befund is None else _schutzseite(befund)
+    for r in regeln:
+        if r.get("anzahl", 1) < 50 or r.get("art") in ("kurs", "teil", "spaet", "spaet_u", "unsichtbar"):
+            continue
+        if r.get("pfad") in _LESEN_LISTEN and r.get("methode") in (None, "GET"):
+            return True
+        if r.get("methode") not in (None, "POST"):
+            continue
+        ziele = (_STOP_SPOT if seite in (None, "spot") and r.get("pfad") == "/api/v3/order" else ()) + \
+            (_STOP_PERP if seite in (None, "perp") and r.get("pfad") == "/fapi/v1/algoOrder" else ())
+        if any(r.get("pred") is None or r["pred"]("POST", r["pfad"], z) for z in ziele):
+            return True
+    return False
 
 
 def _selbst_entfernt(ab, sym=None, befund=None):
@@ -415,9 +442,18 @@ def _klassieren(befunde, erg, kontext, dauer=False, storno=False):
     return out
 
 
-def _storno409(ab):
-    """Kam seit B.log[ab] ein cancelReplace mit 409 (storniert, Ersatz abgelehnt)?"""
-    return any(x[1] == "POST" and x[2] == "/api/v3/order/cancelReplace" and x[4] == 409 for x in B.log[ab:])
+def _storno409(ab, sym=None):
+    """Kam seit B.log[ab] GENAU EIN cancelReplace mit 409 (storniert, Ersatz abgelehnt) — je Markt (sym) bzw. in keinem Markt mehr
+    als einer? Nur dieser erste ist das Restrisiko «Storno zuerst»; ein zweiter danach wäre vermeidbar gewesen (nach einer
+    Ablehnung ersetzt Pilot 2.0 nichts mehr per cancelReplace — 12. Prüfung W2/K2)."""
+    zahl = {}
+    for x in B.log[ab:]:
+        if x[1] == "POST" and x[2] == "/api/v3/order/cancelReplace" and x[4] == 409:
+            s = x[3].get("symbol")
+            zahl[s] = zahl.get(s, 0) + 1
+    if sym is not None:
+        return zahl.get(sym, 0) == 1
+    return bool(zahl) and max(zahl.values()) == 1
 
 
 # ───────────────────────── Fuzzer: Schutz-Monotonie (10. Prüfung) ─────────────────────────
@@ -484,16 +520,16 @@ def monotonie_runde(seed):
     if mitten:
         if phase_log[0] is None:  # die Phase begann erst nach dem Lauf: nichts zu prüfen
             return funde
-        teil409 = _storno409(phase_log[0])
         for m in ms:
+            teil409 = _storno409(phase_log[0], m + "USDT") and r.get("warnung")  # nur der erste 409 je Markt, laut gemeldet
             nach = ungesichert(k, m + "USDT")
             for seite, b in (("LONG", nach[0]), ("SHORT", nach[1])):
                 if b > STAUB_MAX_USDT and _selbst_entfernt(phase_log[0], m + "USDT", seite):
                     funde.append((("STORNO_ZUERST_" if storno and teil409 else "") + "SCHUTZ_VERLOREN_MITTEN_" + seite,
                                   dict(kx, markt=m, lage=zeigen(k), zeilen=r["zeilen"][-8:]), (m, round(b, 2))))
         return funde
-    teil409 = _storno409(log0)
     for m in ms:
+        teil409 = _storno409(log0, m + "USDT") and r.get("warnung")  # nur der erste 409 je Markt, laut gemeldet
         nach = ungesichert(k, m + "USDT")
         for seite, a, b in (("LONG", vor[m][0], nach[0]), ("SHORT", vor[m][1], nach[1])):
             if b > a + STAUB_MAX_USDT:
