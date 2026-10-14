@@ -63903,3 +63903,5 @@ gid://shopify/Product/16617719038343	gid://shopify/MediaImage/77507450470791
 gid://shopify/Product/16617719071111	gid://shopify/MediaImage/77507450503559
 gid://shopify/Product/15412899676545	gid://shopify/MediaImage/69551858450817	pingpong-bremse
 gid://shopify/Product/15412902855041	gid://shopify/MediaImage/69650084888961	pingpong-bremse
+gid://shopify/Product/15430408438145	gid://shopify/MediaImage/69683272352129	pingpong-bremse
+gid://shopify/Product/15450851934593	gid://shopify/MediaImage/69887443042689	pingpong-bremse
