@@ -691,7 +691,9 @@ echo "STAND: $(zaehle cj_runner) CJ-Runner, Aufseher=$(zaehle_aufseher)"
 # Restart einen ALTEN Disk-Snapshot her — der Baum faellt hinter origin zurueck, die
 # CJ-Zahl SINKT, jeder Push waere non-fast-forward. Erkennung braucht ERST einen fetch:
 # die origin-Ref des Snapshots ist selbst veraltet und meldet ohne fetch "up to date".
-find .git -name "*.lock" -delete 2>/dev/null
+# 14.10.2026: nicht mehr blind ALLE Sperren löschen — der Autocommitter/git_sichern/die Sitzung arbeiten parallel.
+if [ -f "$REPO_AUTO/lib/git_sperren.sh" ]; then . "$REPO_AUTO/lib/git_sperren.sh"; verwaiste_git_sperren_weg 120
+else find .git -name "*.lock" -mmin +10 -delete 2>/dev/null; fi   # Rewind-Snapshot ohne Helfer: nur sicher Altes
 if timeout 60 git fetch -q origin claude/luxestyle-status-tztnn1 2>/dev/null; then
   hinten=$(git rev-list --count HEAD..origin/claude/luxestyle-status-tztnn1 2>/dev/null || echo 0)
   # 13.10.2026 (Hetzner-Plan Schritt 4 + Prüfer-Nachtrag): nur unterdrücken, wenn NICHT frisch gebootet UND der Push nicht
