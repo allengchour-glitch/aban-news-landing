@@ -54,6 +54,7 @@ AUSNAHMEN = {
     "automation/dateispeicher_videos.py": "liest nur",
     "automation/cj_ausgelistet_sichtbar.py": "liest nur",
     "automation/kassen_lieferdatum_wache.py": "liest nur",
+    "automation/google_bild_abruf.py": "liest nur (Dateinamen-Schutz vor dem Umbenennen), schreibt eigene Dateien",
     "automation/betreiber_ampel.py": "liest nur",
     "automation/reel_gesicht.py": "liest nur (eigene TSV)",
     "automation/reel_kadenz_wache.py": "liest nur",

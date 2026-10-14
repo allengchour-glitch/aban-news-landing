@@ -1,16 +1,16 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-14 08:10 UTC, Stand 2026-10-14 09:06 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-14 08:10 UTC, Stand 2026-10-14 09:09 UTC — **vollständig**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **54'000**
-- Optionen mit englischen Werten (Kandidaten): 2'977
-- Optionen übersetzt: **5** · Werte übersetzt: **18**
-- Optionen nur codebereinigt: 1
-- Werte mit unbekanntem Wort (unverändert): 15'218
+- Produkte gesehen: **54'513**
+- Optionen mit englischen Werten (Kandidaten): 3'005
+- Optionen übersetzt: **21** · Werte übersetzt: **58**
+- Optionen nur codebereinigt: 2
+- Werte mit unbekanntem Wort (unverändert): 15'272
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
 - übersprungen «kleidungsstueck-im-wert»: 90
 - übersprungen «kollision-nach-uebersetzung»: 42
@@ -132,5 +132,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 590, `light` 451, `color` 414, `size` 164, `shell` 159, `degrees` 159, `⟨satzbau:material-vor-farbe⟩` 151, `core` 137, `surface` 131, `powder` 129, `skin` 110, `diamond` 109, `high` 104, `inside` 104, `three` 102, `shoes` 99, `yards` 98, `no` 97, `bag` 93, `belt` 92, `dinosaur` 90, `⟨satzbau:mass-ohne-einheit⟩` 90, `french` 89, `rain` 88, `dark` 86, `to` 86, `code` 85, `case` 84, `four` 82, `opp` 81, `inner` 79, `buckle` 78, `cloth` 78, `cherry` 76, `rope` 75, `net` 75, `spring` 72, `chain` 70, `autumn` 69, `little` 68, `dual` 68, `petal` 68, `half` 67, `hat` 66, `base` 63, `strap` 62, `feet` 62, `⟨satzbau:mass-unplausibel⟩` 62, `bear` 61, `of` 60, `⟨satzbau:menge-vor-nomen⟩` 60, `tea` 59, `plush` 59, `one` 56, `rice` 56, `background` 54, `night` 54, `bottom` 54, `face` 53, `suit` 52
+`⟨satzbau:adjektiv-vor-nomen⟩` 591, `light` 451, `color` 416, `size` 164, `shell` 159, `degrees` 159, `⟨satzbau:material-vor-farbe⟩` 151, `core` 137, `surface` 131, `powder` 129, `skin` 110, `diamond` 109, `high` 107, `inside` 104, `three` 102, `shoes` 99, `yards` 98, `no` 97, `bag` 93, `belt` 92, `dinosaur` 90, `to` 90, `⟨satzbau:mass-ohne-einheit⟩` 90, `french` 89, `rain` 88, `dark` 86, `code` 85, `case` 84, `four` 82, `opp` 81, `buckle` 80, `inner` 79, `cloth` 78, `cherry` 76, `rope` 75, `net` 75, `spring` 72, `chain` 70, `autumn` 69, `little` 68, `dual` 68, `petal` 68, `half` 67, `hat` 66, `base` 63, `strap` 62, `feet` 62, `⟨satzbau:mass-unplausibel⟩` 62, `bear` 61, `of` 60, `⟨satzbau:menge-vor-nomen⟩` 60, `tea` 59, `plush` 59, `one` 56, `rice` 56, `background` 54, `night` 54, `bottom` 54, `face` 53, `suit` 52
 

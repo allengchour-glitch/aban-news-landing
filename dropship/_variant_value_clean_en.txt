@@ -21341,3 +21341,43 @@ gid://shopify/Product/16617344106887	Farbe	gid://shopify/ProductOptionValue/5841
 gid://shopify/Product/16617344106887	Farbe	gid://shopify/ProductOptionValue/58418843124103	Black increased by 7CM	Schwarz erhöht 7 cm	2026-10-14T09:06Z
 gid://shopify/Product/16617344106887	Farbe	gid://shopify/ProductOptionValue/58418843156871	Black Flat Bottom	Schwarz · flache Sohle	2026-10-14T09:06Z
 gid://shopify/Product/16617344369031	Farbe	gid://shopify/ProductOptionValue/58418843746695	Blue Upgrade	Blau Upgrade	2026-10-14T09:06Z
+gid://shopify/Product/16617696133511	Farbe	gid://shopify/ProductOptionValue/58421162049927	Sky Blue Gray Blue	Himmelblau-Grau-Blau	2026-10-14T09:09Z
+gid://shopify/Product/16617696526727	Farbe	gid://shopify/ProductOptionValue/58421163950471	Apricot B	Aprikose B	2026-10-14T09:09Z
+gid://shopify/Product/16617696526727	Farbe	gid://shopify/ProductOptionValue/58421163983239	Black B	Schwarz B	2026-10-14T09:09Z
+gid://shopify/Product/16617699180935	Farbe	gid://shopify/ProductOptionValue/58421187576199	Black short	Schwarz kurz	2026-10-14T09:09Z
+gid://shopify/Product/16617699180935	Farbe	gid://shopify/ProductOptionValue/58421187608967	Black long	Schwarz lang	2026-10-14T09:09Z
+gid://shopify/Product/16617701048711	Farbe	gid://shopify/ProductOptionValue/58421225095559	Khaki Black 2	Khaki-Schwarz 2	2026-10-14T09:09Z
+gid://shopify/Product/16617703276935	Farbe	gid://shopify/ProductOptionValue/58421266547079	White Increased By 10CM	Weiss erhöht 10 cm	2026-10-14T09:09Z
+gid://shopify/Product/16617703276935	Farbe	gid://shopify/ProductOptionValue/58421266579847	White Increased By 8CM	Weiss erhöht 8 cm	2026-10-14T09:09Z
+gid://shopify/Product/16617703276935	Farbe	gid://shopify/ProductOptionValue/58421266612615	White Increased 6CM	Weiss erhöht 6 cm	2026-10-14T09:09Z
+gid://shopify/Product/16617703276935	Farbe	gid://shopify/ProductOptionValue/58421266678151	Black, Hidden Elevator 10CM	Schwarz, Versteckte Erhöhung 10 cm	2026-10-14T09:09Z
+gid://shopify/Product/16617703276935	Farbe	gid://shopify/ProductOptionValue/58421266710919	Black, Hidden Elevator 8CM	Schwarz, Versteckte Erhöhung 8 cm	2026-10-14T09:09Z
+gid://shopify/Product/16617703276935	Farbe	gid://shopify/ProductOptionValue/58421266743687	Black, Hidden Elevator 6CM	Schwarz, Versteckte Erhöhung 6 cm	2026-10-14T09:09Z
+gid://shopify/Product/16617704554887	Farbe	gid://shopify/ProductOptionValue/58421327888775	Dark Green Yellow	Dunkelgrün-Gelb	2026-10-14T09:09Z
+gid://shopify/Product/16617704718727	Farbe	gid://shopify/ProductOptionValue/58421328544135	Bright Orange	Leuchtendes Orange	2026-10-14T09:09Z
+gid://shopify/Product/16617704718727	Farbe	gid://shopify/ProductOptionValue/58421328675207	Stone Blue	Steinblau	2026-10-14T09:09Z
+gid://shopify/Product/16617705177479	Farbe	gid://shopify/ProductOptionValue/58421331001735	666 Black	666 Schwarz	2026-10-14T09:09Z
+gid://shopify/Product/16617705177479	Farbe	gid://shopify/ProductOptionValue/58421331034503	666 Light Gray	666 Hellgrau	2026-10-14T09:09Z
+gid://shopify/Product/16617705177479	Farbe	gid://shopify/ProductOptionValue/58421331067271	666 Dark Gray	666 Dunkelgrau	2026-10-14T09:09Z
+gid://shopify/Product/16617705177479	Farbe	gid://shopify/ProductOptionValue/58421331100039	666 Army Green	666 Armeegrün	2026-10-14T09:09Z
+gid://shopify/Product/16617705177479	Farbe	gid://shopify/ProductOptionValue/58421331132807	666 White	666 Weiss	2026-10-14T09:09Z
+gid://shopify/Product/16617705177479	Farbe	gid://shopify/ProductOptionValue/58421331198343	6820 Black	6820 Schwarz	2026-10-14T09:09Z
+gid://shopify/Product/16617705177479	Farbe	gid://shopify/ProductOptionValue/58421331231111	6820 Dark Gray	6820 Dunkelgrau	2026-10-14T09:09Z
+gid://shopify/Product/16617705177479	Farbe	gid://shopify/ProductOptionValue/58421331263879	6820 White	6820 Weiss	2026-10-14T09:09Z
+gid://shopify/Product/16617707078023	Farbe	gid://shopify/ProductOptionValue/58421341585799	Black Cotton	Schwarz Baumwolle	2026-10-14T09:09Z
+gid://shopify/Product/16617708585351	Farbe	gid://shopify/ProductOptionValue/58421350859143	10cm-Pink	10 cm-Pink	2026-10-14T09:09Z
+gid://shopify/Product/16617708585351	Farbe	gid://shopify/ProductOptionValue/58421350891911	10cm-Blue	10 cm-Blau	2026-10-14T09:09Z
+gid://shopify/Product/16617711305095	Farbe	gid://shopify/ProductOptionValue/58421397553543	Cream color-28 to 29	Creme-28/29	2026-10-14T09:09Z
+gid://shopify/Product/16617711305095	Farbe	gid://shopify/ProductOptionValue/58421397586311	Cream color-30 to 31	Creme-30/31	2026-10-14T09:09Z
+gid://shopify/Product/16617711305095	Farbe	gid://shopify/ProductOptionValue/58421397619079	Cream color-22 to 23	Creme-22/23	2026-10-14T09:09Z
+gid://shopify/Product/16617711305095	Farbe	gid://shopify/ProductOptionValue/58421397684615	Cream color-32 to 33	Creme-32/33	2026-10-14T09:09Z
+gid://shopify/Product/16617711305095	Farbe	gid://shopify/ProductOptionValue/58421397717383	Cream color-24 to 25	Creme-24/25	2026-10-14T09:09Z
+gid://shopify/Product/16617712550279	Farbe	gid://shopify/ProductOptionValue/58421410070919	Dark Coffee	Dunkelbraun	2026-10-14T09:09Z
+gid://shopify/Product/16617712550279	Ausführung	gid://shopify/ProductOptionValue/58421410300295	Fleece Lined	Gefüttert	2026-10-14T09:09Z
+gid://shopify/Product/16617712550279	Ausführung	gid://shopify/ProductOptionValue/58421410333063	No Velvet	Ungefüttert	2026-10-14T09:09Z
+gid://shopify/Product/16617713828231	Farbe	gid://shopify/ProductOptionValue/58421414855047	Dark brown coffee	Dunkelbraun-Kaffeebraun	2026-10-14T09:09Z
+gid://shopify/Product/16617715827079	Farbe	gid://shopify/ProductOptionValue/58421501919623	Leopard Print	Leopardenmuster	2026-10-14T09:09Z
+gid://shopify/Product/16617719660935	Farbe	gid://shopify/ProductOptionValue/58421692006791	Black-12XL	Schwarz-12XL	2026-10-14T09:09Z
+gid://shopify/Product/16617719660935	Farbe	gid://shopify/ProductOptionValue/58421692039559	Black-13XL	Schwarz-13XL	2026-10-14T09:09Z
+gid://shopify/Product/16617719660935	Farbe	gid://shopify/ProductOptionValue/58421692105095	Red-12XL	Rot-12XL	2026-10-14T09:09Z
+gid://shopify/Product/16617719660935	Farbe	gid://shopify/ProductOptionValue/58421692137863	Red-13XL	Rot-13XL	2026-10-14T09:09Z
