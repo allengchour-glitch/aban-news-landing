@@ -8803,3 +8803,5 @@ wireless-gamepad-fur-smartphone-120896	1705107609394618368	7	8.23	ok	landeseite
 kabelloser-controller-mit-lederoptik-747840	1690919485378662400	7	10.18	ok	landeseite
 portabler-smartphone-kuhler-mit-clip-598208	1669292816494764032	6	7.13	ok	landeseite
 bluetooth-gaming-controller-mit-3d-vr-brille-341696	1653589220662976512	16	5.41	ok	landeseite
+wireless-mini-game-konsole-136000	1640935195828301824	16	8.79	ok	landeseite
+diy-diamantpuzzle-karte-mit-oma-motiv-256450	2008849942508445697	16	6.63	ok	landeseite
