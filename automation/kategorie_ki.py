@@ -11,7 +11,8 @@ täglich ~250 Produkte an; solche Titel kommen immer wieder. Eine Regel je Einze
 REGEL (eng, Zweitprüfer-Prinzip wie google_fein_ki.py):
   * Nur aktive Produkte OHNE Kategorie, für die kategorie_wache.ziel_fuer() nichts liefert (die Regeln bleiben erste Wahl).
   * Kandidaten = NUR die Taxonomie-IDs, die kategorie_wache.py schon kennt und beim Start verifiziert (TABELLE +
-    TITELREGELN + KINDERREGELN, ~100 Pfade). Kein freier Text, keine erfundene ID.
+    TITELREGELN + KINDERREGELN + BUEROREGELN + BUERO_TATTOO, ~150 Pfade; 14.10.: Büro-Pfade ergänzt — vorher wählte die KI
+    für Büro-Ware nur aus den alten Pfaden). Kein freier Text, keine erfundene ID.
   * 05.10.: UNEINIG/KEINER sperren nur SPERRTAGE_UNEINIG (1) Tag, GESETZT/FEHLER weiter SPERRTAGE (30).
   * Erstprüfer (titel_kauderwelsch_wache.gemini: Gemini, bei leerem Guthaben Groq qwen) und Zweitprüfer
     (titel_kauderwelsch_wache.gpt: ChatGPT, bei leerem Guthaben Groq gpt-oss) wählen UNABHÄNGIG je eine Nummer aus
@@ -69,7 +70,8 @@ Antworte NUR als JSON: {{"wahl": {{"<Produktnummer>": <Pfadnummer>, ...}}}} — 
 
 def kandidaten():
     """Alle Taxonomie-IDs, die kategorie_wache kennt, mit fullName (verifiziert über nodes(ids:))."""
-    ids = sorted(set(kw.TABELLE.values()) | {z for _, z in kw.TITELREGELN} | {z for _, z in kw.KINDERREGELN} | {"aa-1-25"})
+    ids = sorted(set(kw.TABELLE.values()) | {z for _, z in kw.TITELREGELN} | {z for _, z in kw.KINDERREGELN}
+                 | {z for _, z in kw.BUEROREGELN} | {z for _, z in getattr(kw, "BUERO_TATTOO", [])} | {"aa-1-25"})   # Gleichlauf mit ids_pruefen()
     d = gql("query($ids:[ID!]!){ nodes(ids:$ids){ ... on TaxonomyCategory { id fullName } } }", {"ids": [TC + i for i in ids]})
     out = []
     for i, n in zip(ids, d["nodes"]):

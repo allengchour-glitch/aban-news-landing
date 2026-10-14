@@ -176,7 +176,11 @@ TITELREGELN = [   # Reihenfolge = Vorrang; Wortfallen (Lehre 9b): Handschuh ≠ 
     (r"ohrhörer|earbuds|headset|kopfhörer|lautsprecher|soundbar", "el-2"),
     (r"gaming|controller|konsole|joystick", "el-18"),
     (r"tastatur|(?<!fleder)maus\b|handy\w*|iphone|smartphone|ladestation|wlan|wi-?fi|kamera|tablet|ladeger|powerbank|türklingel|drohne|walkie|\bfunk\w*|gimbal|selfie|stativ|projektor|adapter\b|drucker", "el"),
-    (r"(jacke|hosen?|shorts|hemd|mantel|overall|pullover|sweatshirt|kleid|shirt|bluse|weste|leggings|pyjama|pajama|unterwäsche|socken|anzug|strampler|cardigan|tunika|outfits?|jumpsuit|top)\b", "aa-1"),
+    # 14.10.2026 (Prüfer Büro-Regeln): `top\b` ohne linke Grenze machte «Laptop-Tasche», «Desktop-Clip», «Stop-Schild» zu Clothing.
+    # Eine harte Wortgrenze `(?<![a-zäöü])top` hätte 87 Komposita verloren (Tanktop 64×, Stricktop 24×, Trägertop, Spitzentop …;
+    # Korpus 54'523 aktive, als ob Sammeltyp) → nur die drei gemessenen Nicht-Kleider-Wurzeln (+ Tabletop/Rooftop/Countertop/Hardtop)
+    # ausschliessen: 39 Titel wechseln, alle aus aa-1, 0 von richtig nach falsch.
+    (r"(jacke|hosen?|shorts|hemd|mantel|overall|pullover|sweatshirt|kleid|shirt|bluse|weste|leggings|pyjama|pajama|unterwäsche|socken|anzug|strampler|cardigan|tunika|outfits?|jumpsuit|(?<!lap)(?<!desk)(?<!s)(?<!table)(?<!roof)(?<!counter)(?<!hard)top)\b", "aa-1"),
     (r"(?<!tier)(?<!tier-)haar\w*|glätter|lockenstab|föhn|haartrockner|glätteisen", "hb-3-10"),
     (r"wimpern|augenbrauen|pinzette|kosmetik-?pinsel|schminkpinsel|make-?up-?(pinsel|schwamm)|nagel\w*", "hb-3-2-5"),
     (r"gesicht\w*|\bhaut\w*|poren\w*|nasenreiniger|creme|serum|peeling|schönheitsmaske|gesichtsmaske|reinigungsbürste", "hb-3-2-9"),
@@ -188,7 +192,12 @@ TITELREGELN = [   # Reihenfolge = Vorrang; Wortfallen (Lehre 9b): Handschuh ≠ 
     (r"garten|pflanz\w*|blumentopf|bewässerung|gießkanne|giesskanne", "hg-12-1"),
     (r"ukulele|gitarre|klavier|keyboard|trommel|mundharmonika", "ae-2-8"),
     (r"spielzeug|puppe|\bspiel\b|kreisel|seifenblase|rennwagen|\bdrift\b", "tg-5"),
-    (r"camping|zelt|wander\w*|fahrrad\w*|angel\w*|\bsport\w*|golf|tennis|ski\b", "sg"),
+    # 14.10.: «Wanderer» ist eine Figur, kein Wandern («Glücksmünze mit Opossum-Wanderer-Motiv» wurde Sport)
+    (r"camping|zelt|wander(?!er\b|erin\b|ers\b)\w*|fahrrad\w*|angel\w*|\bsport\w*|golf|tennis|ski\b", "sg"),
+    # 14.10.: «Bleistiftrock/Bleistift-Jeans/Bleistiftabsatz» sind Mode, kein Bürobedarf — VOR `stift` → os (die Bleistiftrock-Regel
+    # der 4. Welle kam zu spät; ein Ausschluss im os-Muster liess «Bleistiftrock mit Perlenstickerei» über `perl\w*` zu Schmuck fallen).
+    (r"bleistift-?(?:rock|r[öo]cke?|hose|jeans|kleid)\w*", "aa-1"),
+    (r"bleistift-?(?:absatz|abs[äa]tze)\w*", "aa-8"),
     (r"stift|notizbuch|schreibtisch|büro\w*|kalender|etikett", "os"),
     (r"badezimmer|dusch\w*|\bbad\b|toilette|seifenspender|zahnpasta|dispenser", "hg-1"),
     (r"putz\w*|reinig\w*|fusselroller|mopp|besen|wäsche\w*", "hg-10"),
@@ -210,7 +219,11 @@ TITELREGELN = [   # Reihenfolge = Vorrang; Wortfallen (Lehre 9b): Handschuh ≠ 
     (r"perl\w*|collier|ohrhänger|zirkon\w*|fingerkette|armbänder|medaillon|klangkette|goldgarnitur|anhanger\b|(schlangen|umarmungs|kreuz)ring\b", "aa-6"),
     (r"airpods|kopfhoerer", "el-2"),
     (r"schutzglas|glas-schutz|panzerglas", "el-7-11-5"),
-    (r"hülle|\bcase\b", "el-4-8-4-2"),
+    # 14.10.: Kartenhüllen für Sammel-/Spielkarten, Pass-/Ausweishüllen und Laptop-/Notebook-Hüllen sind keine Handyhüllen (vorher:
+    # «Glitzer-Schutzhüllen für Sammelkarten», «Canvas Laptop-Schutzhülle» → Mobile Phone Cases). Messung 14.10.: die Regel entscheidet
+    # 63 Korpus-Titel (als ob Sammeltyp), fast keiner ist eine Handyhülle — eine Positivliste (nur mit Telefonwort) hätte 13 echte
+    # Aufbewahrungs-Produkte auf den Typ-Rückfall hg-10-16 geschoben (8 davon falsch) → NICHT übernommen, siehe Bericht.
+    (r"^(?!.*(?:sammel-?karte|spiel-?karte|trading-?card|f[üu]r (?:sammel|spiel|trading)-?karten|reisepass|ausweis|laptop|notebook|macbook))(?:.*(?:hülle|\bcase\b))", "el-4-8-4-2"),
     (r"mauspad", "el"),
     (r"mausarm\w*|handgelenkauflage", "os"),
     (r"hemden|jogger|sakko|blazer|oberteil\w*|kardigan|pulli\w*|trenchcoat|pareo\w*|\w*kleider\b|\w*kleidung\w*|jeans|\w*dress\b|sommeroben|schlüpfer", "aa-1"),
@@ -248,7 +261,9 @@ TITELREGELN = [   # Reihenfolge = Vorrang; Wortfallen (Lehre 9b): Handschuh ≠ 
     (r"journal\b|tagebuch|notizheft|notizblock|skizzenbuch", "os-4-9-9"),
     (r"glücksmünze|gedenkmünze|sammelmünze|\bmünze\b", "ae-2-2-2-2"),
     (r"tastenkappe\w*|keycaps?\b", "el-7-9-11-3-2"),
-    (r"federmäppchen|federmappe|federtasche|mäppchen|(stifte|schreibwaren|stift)-?etui", "os-3-16"),
+    # 14.10.: Brillen-, Ausweis-, Impfpass-, Schlüssel-, Näh- und Kosmetikmäppchen sind keine Federmäppchen
+    (r"^(?!.*(?:brille|ausweis|impf|reisepass|\bpass\b|pass-?(?:m[äa]ppchen|h[üu]lle)|n[äa]h-?(?:m[äa]ppchen|set|zeug|zubeh[öo]r|etui|kit)|schl[üu]ssel|kosmetik|schmink|make-?up))"
+     r"(?:.*(?:federmäppchen|federmappe|federtasche|mäppchen|(stifte|schreibwaren|stift)-?etui))", "os-3-16"),
     (r"regenschirm|faltschirm|taschenschirm|stockschirm", "hg-16-2"),
     (r"filterstrohhalm|wasserfilter-?strohhalm", "sg-4-2-12"),   # «Wasserfilter für Küche» bleibt Küche (hg-11)
     (r"regentonne|regenfass|regenwassertonne", "hg-12-1-17"),
@@ -290,6 +305,278 @@ KINDERREGELN = [
 ]
 _KR = [(_re.compile(m, _re.I), z) for m, z in KINDERREGELN]
 
+# 14.10.2026 (Messung google_bilder Schritt 8): 18 aktive «Büro & Home Office» ohne Kategorie (CJ-Gruppe «Büro, Schule &
+# Foto-Zubehör», Grind 13./14.10.) — Tastaturen, Gelschreiber, Regenketten, Lesezeichen, Inklinometer … Keine Titelregel
+# traf, kategorie_ki.py brach am Groq-Kontingent ab → bis zu 48 h ohne Kategorie. Eigene Liste wie KINDERREGELN, gilt NUR
+# für BUEROTYPEN (sonst würde ein «Lippenstift» oder «Mausefalle» im Haushaltstyp Bürobedarf). Reihenfolge = Vorrang:
+# Zubehör vor Gerät (Tastenkappe/Handgelenkauflage/Mauspad vor Tastatur/Maus), Set vor Einzelgerät, Hülle vor Notizbuch,
+# Spitzer/Verlängerer vor Bleistift, Bleistift vor Radiergummi («Bleistifte mit Radiergummi»). Trifft keine Büro-Regel,
+# gelten die allgemeinen Titelregeln. IDs am 14.10. per taxonomy.categories(search:) gemessen, beim Start per nodes(ids:)
+# verifiziert. Computerzubehör-Muster aus automation/data/buero_korb.json (Google-Seite, dort mit Kanarien).
+BUEROTYPEN = {"Büro & Home Office"}
+# Korpus-Probe 14.10. (54'226 Titel aus /tmp/kategorie_fein_export.jsonl, als wären sie Büro-Typ): die CJ-Gruppe stempelt
+# JEDEN Suchtreffer als Büro — deshalb sind die Muster eng und die Ausschlüsse lang. Gefundene Fallen (Lehre 9b): «spitzer
+# Zehe» (69 Schuhe) ≠ Spitzer, «Quarzuhr mit Kalender» (164 Uhren) ≠ Kalender, «Etui-Kleid»/«Pinselset mit Etui» ≠
+# Federmäppchen, «Moissanit-Ring» ≠ Diamanttester, «Übersetzungs-Earbuds» ≠ Übersetzungsstift, «Zahnaufhellungs-Gelstift» ≠
+# Gelschreiber, «Keyboard Lidschattenpalette» ≠ Tastatur, «Buntstifte-Decke» ≠ Buntstift, «Kopfkissen mit Armauflagen» ≠
+# Handgelenkauflage, «Golf-Entfernungsmesser» = Optik. Ein «Schreibtisch»-Muster (Möbel) ist bewusst NICHT drin: 22 von 23
+# Treffern waren «… für den Schreibtisch».
+# Tätowier-Stift/-Nadel/-Maschine ist kein Schreibgerät («Tattoo-Stift mit integrierter Nadel», 14.10.) — auch nicht über die
+# allgemeine Regel `stift` → Office Supplies. Aufkleber-Tattoos und «Tattoo-Print» laufen weiter allgemein.
+# Härtung 14.10. (Prüfer): Tätowiergeräte bekommen ihren eigenen Zweig statt LEER (bi-21-2-3-2 Pen Tattooing Machines, im Korpus
+# stehen 6 Tattoo-Maschinen auf bi-21-2-3). Pen-Maschine nur mit Gerätewort (Motor/Akku/USB/Kartusche …); ein Stift ohne Gerätewort
+# («Tattoo-Stift mit integrierter Nadel», Kunststoff, 90 g, «präzise Linien zeichnen») = Elternpfad Tattooing Supplies, nicht geraten.
+# Temporäre/Abdeck-/Henna-Stifte sind Kosmetik → bleiben bei der Sperre (LEER). Was hier nicht greift, sperrt BUERO_SPERRE.
+# Nachbesserung 14.10. (2. Prüfung): Kosmetikstifte mit «Tattoo» im Namen («Augenbrauen-Tattoo-Stift», «Lippen-Tattoo-Stift», «Eyeliner
+# Tattoo Pen») und Körper-/Kinder-/Glitzer-Tattoostifte sind keine Tätowiergeräte — der Zweig lief VOR allen Kosmetik-Schutzregeln und
+# machte sie zu Tattooing Supplies (HEAD: Health & Beauty). Kosmetik → nach der Sperre nur ein Beauty-Ergebnis (hb-…) der allgemeinen
+# Regeln, sonst LEER (ziel_fuer); Körper/Kinder/Glitzer/Haut → Sperre (LEER, kategorie_ki entscheidet mit Beschreibung).
+_TATTOO_KOSMETIK = (r"augenbrau\w*|\bbrauen\w*|brow(?!n)|microblading|lippe\w*|\blips?\b|eyeliner|lidstrich|wimper\w*|kajal|semi-?perman\w*|"
+                    r"permanent-?make|\bpmu\b|make-?up|kosmetik")
+BUERO_TATTOO_KOSM = _re.compile(_TATTOO_KOSMETIK, _re.I)
+_TATTOO_NICHT = (r"^(?!.*(?:tempor|abdeck|kosmetik|make-?up|henna|marker|filzstift|klebe|aufkleber|sticker|print|motiv|muster|"
+                 + _TATTOO_KOSMETIK + r"|k[öo]rper|glitzer|kinder|\bkids?\b|\bhaut))")
+BUERO_TATTOO = [
+    (_TATTOO_NICHT + r"(?:.*(?:tattoo|t[äa]towier)\w*[- ]?(?:pen|stift)\w*[- ]?(?:maschine|machine)"
+     r"|.*(?:tattoo|t[äa]towier)\w*[- ]?(?:pen|stift)\w*(?=.*(?:motor|rotary|kabellos|wireless|akku|usb|netzteil|kartusche|cartridge)))", "bi-21-2-3-2"),
+    (_TATTOO_NICHT + r".*(?:tattoo|t[äa]towier)\w*[- ]?(?:maschine|machine)\w*", "bi-21-2-3"),
+    (_TATTOO_NICHT + r".*(?:tattoo|t[äa]towier)\w*[- ]?(?:pen|stift)\w*", "bi-21-2"),
+]
+_BT = [(_re.compile(m, _re.I), z) for m, z in BUERO_TATTOO]
+BUERO_SPERRE = _re.compile(r"tattoo\w*[- ]?(?:stift|pen\b|nadel|maschine|ger[äa]t|tinte)|(?:stift|\bpen\b|nadel|maschine)\w*.*tattoo", _re.I)
+# Allgemeine Regeln mit Vorrang: Adventskalender («ein Kalender bleibt ein Kalender»), Lehrmodelle, Uhren/Wecker (die
+# Kalender-, Kugelschreiber- und Füller-Regel träfen sonst «Quarzuhr mit Kalender», «Uhr mit Manschettenknöpfen & Füller»).
+BUERO_VORRANG = _re.compile(r"advent\w*|anatomi\w*|\w*skelett-?modell|verdauungssystem|organmodell|"
+                            r"(?<![a-zäöü])uhr\b|\w+uhr\b|\buhren\b|\w+uhren\b|armbanduhr\w*|\bwecker\b|\w+wecker\b", _re.I)
+# 14.10. (Prüfer, Punkt 5): für Laptop-/Desktop-Ware ist ein Kleidungs-/Accessoire-Ergebnis (aa-…) der ALLGEMEINEN Regeln immer ein
+# Wortfehler («Laptop», «Desktop-Clip» → `top`) — dann lieber LEER (kategorie_ki entscheidet mit Beschreibung). Ausnahme (2. Prüfung):
+# steht ein Kleidungs-/Schmuckwort im Titel («Laptop Hoodie», «Notebook-Print Kleid»), ist es Mode und aa-… richtig.
+_BUERO_KEIN_AA = _re.compile(r"laptop|desktop|notebook|macbook", _re.I)
+# Nachbesserung 14.10. (2. Prüfung): im Büro-Zweig schlug das Nebenwort/Motiv das Hauptwort — Kleidung/Schmuck MIT Büromotiv
+# («Hoodie mit Tastatur-Print», «Kugelschreiber-Ohrringe», «Notizbuch-Halskette», «Kalender-Shirt») wurde Tastatur/Kugelschreiber/
+# Notizbuch/Kalender, weil die Büro-Regeln vor den Mode-/Schmuckregeln laufen. _KEIN_MODE steht vor jeder Waren-Regel (Schreibgerät,
+# Tastatur, Tastenkappe, Papier, Planer, Kalender); dann entscheiden die allgemeinen Regeln (aa-1/aa-6). Ein blankes «Kette» fehlt
+# bewusst (Regenkette, «Kugelschreiber mit Kette»), ebenso «Motiv/Print» allein («Notizbuch mit Katzen-Motiv» bleibt Notizbuch) —
+# nur das Büro-Wort als Motiv («Tastatur-Print», «Keyboard-Motiv») zählt.
+_MODE = (r"\w*shirt\b|hoodie|pullover|\bpulli|sweatjacke|socken|\bkleid(?:er)?\b|\w+kleid(?:er)?\b|krawatte|bluse|leggings|"
+         r"ohrring\w*|ohrstecker|ohrh[äa]nger|(?<!uhr)armband(?!uhr)|halskette|brosche|anh[äa]nger|schmuck")
+_MOTIV = (r"(?:tastatur|keyboard|kugelschreiber|bleistift|stift|f[üu]ller|notizbuch|kalender|tastenkappe|keycap|b[üu]ro)\w*"
+          r"[- ]?(?:print|motiv|muster|design|aufdruck)")
+_KEIN_MODE = r"^(?!.*(?:" + _MODE + r"|" + _MOTIV + r"))"
+BUERO_MODE = _re.compile(_MODE + r"|" + _MOTIV, _re.I)
+# Hauptwort = Text VOR dem ersten Verbindungswort («Notizbuch mit Kugelschreiber» → Notizbuch, «Planer-Sticker und Washi-Tape Set» →
+# Planer-Sticker, «Füller-Set mit Tintenfass» → Füller-Set). Waren-Regeln für Stift, Mine, Behälter, Papier, Planer, Kalender und Bastel
+# verlangen ihr Wort im Hauptwort (`^` + _KOPF + Wort); was nur NACH «mit/und/&/im» steht, ist Beigabe oder Inhalt.
+_VERB = r"(?<!-)\b(?:mit|und|inkl\w*|samt|plus|im|in)\b(?!-)|\s[&+]"   # «2-in-1», «Bluetooth 5.3+» sind keine Verbindung
+_KOPF = r"(?:(?!" + _VERB + r").)*?"
+_KOPF_FUER = r"(?:(?!" + _VERB + r"|\bf[üu]r\b).)*?"     # Tastatur: «Spiralkabel für mechanische Tastatur» ist ein Kabel
+# Kosmetik-, Zahn- und Motivware mit Stift-/Papierwort («Augenbrauenstift», «Zahnaufhellungs-Gelstift», «Buntstifte-Decke»)
+_KOSM = (r"^(?!.*(?:lippen|kajal|augenbrauen|eyeliner|lidschatten|make-?up|kosmetik|concealer|haar|nagel|nägel|nail|zahn|aufhell|"
+         r"whitening|bleaching|massage|decke|kissen|bezug|bettwäsche|tasse|becher|shirt|pullover|kleid|socken|aufkleber|sticker|"
+         r"anhänger|ohrring|halskette|silikonform|backform|schokolade))")
+# 14.10. (Prüfer): «Notebook» heisst bei CJ auch Notizbuch («Notebook Hülle aus Leder A5», «Notebook mit Innentasche … A5») —
+# Papierformat/Papierwort/Stift schliessen den Laptop aus. Im Korpus (54'523 aktive) hat KEIN Laptop-Titel eines dieser Wörter.
+_LAPTOP = (r"^(?=.*(?:laptop|notebook|macbook))(?!.*(?:st[äa]nder|halter|k[üu]hl|ladeger|netzteil|akku|tastatur|maus|lampe|kamera|drohne|"
+           r"\ba[4-6]\b|notiz-?(?:buch|b[üu]cher|block|bl[öo]cke|heft)\w*|papier\b|\bblatt\b|\bseiten\b|\d+\s*(?:seiten|blatt)\b|\bstift(?:e|en)?\b|stiftetasche|\bpen\b))")
+# Pen-/Schreibkontext für Patronen/Tinte/Minen (Druckerpatronen, E-Tinte, Gas-/Filterpatronen sind keine Schreibware). Kein blankes
+# «Roller»/«Feder» (Fusselroller-Nachfüllpack, Federn), Kosmetik über _KOSM («Lippenstift-Nachfüllung»).
+_SCHREIB = r"f[üu]ller|f[üu]llfeder\w*|federhalter|kugelschreiber|stift|kalligra\w*|\w*schreiber|tintenroller|gelroller"
+_KEIN_SCHREIBBEDARF = (r"(?!.*(?:drucker|printer|officejet|deskjet|laserjet|toner|\bhp\b|canon|epson|brother|tattoo|t[äa]towier|filter|\bgas\b|"
+                       r"co2|wasser|vape|e-?zig|kartusche|e-?tinte|e-?ink|fussel))")
+# «Kugelschreiber mit 10 Ersatzminen» ist ein Kugelschreiber, keine Mine
+_NICHT_MIT_MINE = r"(?!.*\b(?:mit|inkl\w*|plus|samt|und)\b[^,;–]{0,25}(?:ersatz)?(?:minen?|patronen?|tinte)\b)"
+_PLANERKONTEXT = r"(?=.*(?:planer|kalender|journal|tage-?buch|notiz-?buch|scrapbook|bullet))"
+# «Wochenplaner mit 200 Stickern» bleibt Planer; «Planer-Sticker»/«Journal Stempel Set» ist Bastelbedarf.
+# Nachbesserung 14.10. (2. Prüfung): die alte doppelte Verneinung (`_NICHT_MIT_BASTEL` in `_KEIN_BASTEL`) liess die Planer-Regel durch,
+# sobald IRGENDWO «und/mit + Bastelwort» folgte («Planer-Sticker und Washi-Tape Set» → Planners, «Journal-Sticker und Stempel Set» →
+# Notebooks, HEAD: Sticker). Jetzt entscheidet das Hauptwort: Bastelwort vor dem ersten Verbindungswort = Bastelbedarf, sonst Planer.
+_BASTEL = r"(?:aufkleber|sticker|stempel|schablone|washi)"
+_KEIN_BASTEL = r"^(?!" + _KOPF + _BASTEL + r")"
+# Planer-/Notizbuch-/Kalender-TASCHE ist eine Tasche (allgemein lb), kein Planer
+_KEINE_PAPIERTASCHE = r"(?!.*(?:planer|kalender|notiz-?buch|journal|tage-?buch|heft)\w*-?(?:tasche|beutel|rucksack)\b)"
+# Behälter für Schreibgeräte («Bleistifttasche», «Kugelschreiberhalter», «Füller-Etui») — das Behälterwort ist das Hauptwort. Blankes
+# «stift» nur am Wortanfang («Stifthalter»), sonst träfe es «Lippenstifthalter»/«Klebestift-Box».
+_STIFTWORT = (r"(?:(?<![a-zäöü])stift|bleistift|buntstift|farbstift|filzstift|zeichenstift|gel-?stift|kugelschreiber|"
+              r"f[üu]ller|f[üu]llfederhalter|f[üu]llfeder(?!halter)|f[üu]llhalter|schreibger[äa]t)")   # «Füllfederhalter» ist ein Stift, kein Halter
+_KEIN_KOSM_BEHAELTER = r"(?!.*(?:lippen|kajal|augenbrauen|eyeliner|make-?up|kosmetik|concealer|nagel|n[äa]gel|nail|zahn|pinsel|schmink|tattoo|geschenk-?box))"
+BUEROREGELN = [
+    # Computerzubehör (Zubehör vor Gerät, Set vor Einzelgerät)
+    # Nachbesserung 14.10. (2. Prüfung): Leertaste/Spacebar sind Tastenkappen («PBT-Leertaste für mechanische Tastaturen» war Keyboards);
+    # Keycap-Ohrringe/-Schlüsselanhänger sind Schmuck (_KEIN_MODE → allgemeine Regeln).
+    (_KEIN_MODE + r"^" + _KOPF + r"(?:tastenkappe\w*|tastaturkappe\w*|keycaps?\b|leertaste\w*|space-?bar\w*)", "el-7-9-11-3-2"),   # «Tastatur mit PBT-Tastenkappen» = Tastatur
+    # 14.10. (Prüfer): Bandage/Schiene ist Stützbandage (hb-1-24-6 Wrist Braces), keine Handgelenkauflage («… für Büroarbeit»)
+    (r"handgelenk\w*-?(?:bandage|schiene|orthese)\w*|(?:bandage|schiene|orthese)\w* f[üu]r (?:das |dein )?handgelenk", "hb-1-24-6"),
+    # Armlehne/Armauflage nur mit Maus/Tastatur, nie Stuhl/Bandage/Stütze («Armlehnen-Kissen für Bürostuhl»)
+    # Nachbesserung 14.10. (2. Prüfung): Auflage und Mauspad nur als Hauptwort — «Mauspad mit Handgelenkauflage» ist ein Mauspad,
+    # «Tastatur und Maus mit Mauspad» ein Set, «Tastatur mit Handballenauflage» eine Tastatur.
+    (r"^(?:" + _KOPF + r"(?:handgelenk-?(?:auflage|kissen|polster)\w*|handballenauflage|mausarm\w*)"
+     r"|(?!.*(?:bandage|schiene|orthese))" + _KOPF + r"handgelenk\w*(?=.*(?:maus|tastatur|keyboard|computer|laptop|büro))"
+     r"|(?!.*(?:stuhl|bandage|st[üu]tze))(?=.*(?:maus|tastatur|keyboard))" + _KOPF + r"(?:armauflage|armlehne|hand-?auflage)\w*)", "el-7-8-5"),   # «Tastatur-Handauflage aus Holz»
+    (r"^" + _KOPF + r"(?:maus-?pad\w*|mausmatte\w*|mouse-?pad\w*|schreibtischunterlage\w*|desk-?pad\w*)", "el-7-8-8"),
+    # 14.10.: auch mit Leerzeichen («Laptop Ständer aus Aluminium» wurde über `top\b` Clothing) und «Ständer für Laptop»
+    (r"monitorst[äa]nder|monitorerh[öo]hung|bildschirmst[äa]nder|bildschirmerh[öo]hung|(?:laptop|notebook|macbook)[- ]?st[äa]nder|"
+     r"st[äa]nder\w* f[üu]r (?:den |das |deinen |dein )?(?:laptop|notebook|macbook)", "el-7-8-3"),
+    # 14.10. (Prüfer): Tastatur-Zubehör hat eigene Blätter — Aufkleber el-7-8-13, Schublade/Auszug el-7-8-6 (live per nodes(ids:) geprüft)
+    (r"(?:tastatur|keyboard)\w*-?(?:aufkleber|sticker)\w*|(?:aufkleber|sticker)\w* f[üu]r (?:die |deine )?(?:tastatur|keyboard)", "el-7-8-13"),
+    (r"(?:tastatur|keyboard)\w*-?(?:schublade|auszug|ablage|tablett|tray)\w*|(?:schublade|auszug|ablage)\w* f[üu]r (?:die |deine )?(?:tastatur|keyboard)", "el-7-8-6"),
+    # Tastatur-/Maus-Konverter für Konsolen = Konsolenzubehör (el-18-3, so steht der Konverter im Bestand)
+    (r"^(?=.*(?:tastatur|keyboard|\bmaus\b))(?=.*(?:konverter|adapter)).*(?:\bps[345]\b|playstation|xbox|\bswitch\b|konsole\w*)", "el-18-3"),
+    # Nachbesserung 14.10. (2. Prüfung): mit Ergänzungsstrich («Tastatur- und Maus-Set», «Maus- und Tastatur-Set», «Tastatur- & Maus-Set»,
+    # «Tastatur- und Mausset») griff die Regel nicht — die Sets fielen auf Keyboards. Pads/Matten/Reiniger sind kein Set.
+    (r"^(?!.*(?:klavier|piano|musik|midi|orgel|synthesizer|konverter|adapter|(?:tastatur|keyboard)-?(?:pad|matte|unterlage)|reinig|kvm|umschalter|\bhub\b))"   # «KVM-Switch für Tastatur und Maus» ist kein Set
+     r"(?:.*(?:tastatur|keyboard)\w*-?\s*(?:&|\+|und|/|mit|,)\s*(?:\w+-)?maus(?:-?(?:set|kombi|paket|combo))?\b(?!-)"
+     r"|.*\bmaus\w*-?\s*(?:&|\+|und|/|,)\s*(?:\w+-)?(?:tastatur|keyboard)|.*(?:tastatur|keyboard)[- ]?maus[- ]?(?:set|kombi)\w*)", "el-7-9-12-15"),   # 14.10.: auch «Tastatur-Maus-Set»
+    # 14.10. (Prüfer): Tastatur-Zubehör und fremde Geräte raus («Mini Roboter Staubsauger für Tastatur & Tisch» war Keyboards).
+    # «Licht/Leuchte» nur als Tastaturlicht — «Tastatur mit RGB-Licht», «Beleuchtetes Tastatur-Maus-Set» bleiben Tastatur/Set.
+    # Konsolenwörter (ps4/xbox/switch/gamepad/controller) bewusst NICHT ausgeschlossen: Konverter/Adapter fängt die Regel davor
+    # bzw. «konverter|adapter» hier; «Chat-Tastatur für Xbox One» fiele sonst über die allgemeine Regel `box\b` (X-BOX) in Storage.
+    # Nachbesserung 14.10. (2. Prüfung): Tastatur-Switches und Tastaturschutz haben eigene Blätter (live per nodes(ids:) geprüft) — vorher
+    # Keyboards. Nur als Hauptwort; «Tastatur mit Blue Switches» bleibt Tastatur. KVM-/Netzwerk-/Konsolen-Switches sind keine Tasten-Switches,
+    # Tablet-Tastaturhüllen («Keyboard Cover für iPad») kein Tastaturschutz.
+    (r"^(?!.*(?:nintendo|konsole|controller|lichtschalter|steckdose|netzwerk|ethernet|\blan\b|hdmi|kvm|usb-?switch|umschalter))^" + _KOPF +
+     r"(?:(?:tastatur|keyboard)\w*?-?switch\w*|switch(?:es)?\b(?=.*(?:tastatur|keyboard|mechanisch|gateron|cherry|kailh|outemu|akko)))", "el-7-9-11-5"),
+    (r"^(?!.*(?:ipad|tablet|samsung|galaxy|h[üu]lle|\bcase\b|tasche|klavier|piano|musik))^" + _KOPF +
+     r"(?:(?:tastatur|keyboard)\w*?[- ]?(?:schutz\w*|abdeckung\w*|skins?\b|cover\b|folie\w*|protector\w*)"
+     r"|(?:silikon-?|staub-?)?(?:schutz\w*|abdeckung\w*|skins?\b|folie\w*|protector\w*) f[üu]r (?:die |deine |das |den )?(?:\w+[- ])?(?:tastatur|keyboard))", "el-7-11-3"),
+    # Nachbesserung 14.10. (2. Prüfung, Korpus als ob Büro: 8 von 54 Keyboards falsch = 15 %): das Tastaturwort muss im Hauptwort stehen
+    # (vor «für/mit/und»: «Spiralkabel für mechanische Tastatur», «Switches für Tastatur»); «Tastatur-Schutz», «Tastatur-Desinfektionsgerät»,
+    # «Tastatur-Switches» (Bindestrich + Zubehörwort) und «Tastatur Licht» sind Zubehör; E-Keyboard/Roll-Piano/Lautsprecher = Instrument.
+    # Ein Ausschluss «switches|schutz|kabel» als blankes Wort hätte «Tastatur mit Blue Switches», «Tastatur mit Spritzwasserschutz» und
+    # «PS/2-Tastatur mit Kabel» verloren → nur VOR dem Tastaturwort oder als Kompositum.
+    (_KEIN_MODE + r"(?!.*(?:klavier|piano|musik|midi|orgel|synthesizer|reinig|abdeck|folie|h[üu]lle|cover|ablage|halter|st[äa]nder|kappe\w*\b.*(?:tastatur|keyboard)|lidschatten|"
+     r"palette|make-?up|schokolade|\bform\b|backform|kinder|baby|spielzeug|aufbewahrung|tasche|"
+     r"sauger|staub|konverter|adapter|aufkleber|sticker|schublade|auszug|tablett|pinsel|b[üu]rste|lampe|"
+     r"tastatur-?(?:licht|leuchte)|(?:licht|leuchte)\w* f[üu]r|schl[üu]ssel|leertaste|space-?bar|desinfekt|\bskins?\b|protector|"
+     r"\be-?keyboard|roll-?(?:up-?)?(?:piano|klavier|keyboard)|lautsprecher|"
+     r"(?:tastatur|keyboard)\w*\s+(?:schutz|licht|leuchte|kabel(?!los|gebunden)|switch\w*|hand-?auflage|handballen\w*|auflage)|"
+     r"(?:schutz|handauflage|handballen\w*|switch\w*|\w*kabel(?!gebunden|los))\w*\b.*(?:tastatur|keyboard)))"
+     r"^" + _KOPF_FUER + r"(?:\w*tastatur(?:en)?|\bkeyboards?)\b(?!-(?!(?:set|kit|kombi|bundle|combo)\b)[a-zäöü])", "el-7-9-12-8"),
+    # 14.10. (Prüfer): Maus-Zubehör (Bungee, Grip-Tape, Skates/Füsse, Jiggler) und Konverter sind keine Maus
+    (_KEIN_MODE + r"(?!.*(?:falle|spielzeug|pl[üu]sch|kost[üu]m|figur|katze|\bhund|\btier|kuschel|mick[e]?y|minnie|konverter|adapter|"
+     r"bungee|grip-?tape|grip-?aufkleber|maus-?grips?\b|\btape\b|skates|f[üu]sse\b|\bfeet\b|jiggler))"
+     r"(?=.*(?:dpi|bluetooth|kabellos|kabelgebunden|wireless|\bfunk|usb|klick|tasten|e-?sport|gaming|ergonomisch|büro|computer|laptop|\bpc\b|optisch|akku))"
+     r"^" + _KOPF + r"\b(?:\w+-)?maus\b(?!-?(?:pad|matte|arm|falle))", "el-7-9-12-11"),
+    # Laptop-Taschen/-Hüllen: die allgemeine Kleidungsregel `top\b` (ohne linke Wortgrenze) machte «Laptop-Tasche» und
+    # «Laptop-Hülle» zu Clothing (Trockenlauf 14.10., 2 Entwürfe) — hier vorher abfangen.
+    (_LAPTOP + r".*(?:rucksack|backpack)", "lb-1-16"),
+    # «Reisetasche mit Laptopfach» ist eine Reisetasche (Korpus: 2 Titel, heute lb-6), nur «Laptoptasche mit Laptopfach» bleibt Laptoptasche
+    (_LAPTOP + r"(?!(?!.*laptop-?tasche)(?:.*laptop-?fach|.*fach f[üu]r (?:den |deinen |dein )?laptop)).*(?:tasche|\bbags?\b)", "lb-15"),
+    (_LAPTOP + r".*(?:h[üu]lle|sleeve)", "el-7-8-2-4"),
+    # «Notebook» mit Papierformat = Notizbuch, nicht Laptop («Premium Notebook & Pen Set A5»); direkt angehängte Hülle = Buchhülle
+    (r"^(?!.*(?:laptop|macbook|zoll))(?=.*\ba[4-6]\b).*\bnotebooks?[- ]?(?:schutz)?(?:h[üu]lle|umschlag|einband|cover)\w*", "os-1-1"),
+    (r"^(?!.*(?:laptop|macbook|zoll|notebook-?(?:tasche|rucksack|st[äa]nder|k[üu]hl|netzteil)|k[üu]hl|st[äa]nder|netzteil))(?=.*\ba[4-6]\b).*\bnotebooks?\b", "os-4-9-9"),
+    (r"^(?!.*(?:notizbuch|notebook|journal|planer|\ba[4-6]\b|kugelschreiber))"
+     r".*(?:eingabestift\w*|touch-?stift\w*|touchscreen-?stift\w*|stylus\w*|touch-?pen\w*|tablet-?stift\w*)", "el-7-8-10"),
+    # E-Book-Reader (Hülle vor Gerät); 14.10. (Prüfer): Kindle/Tolino/Kobo sind E-Reader («Hülle für Kindle Paperwhite» wurde Handyhülle)
+    (r"(?:e-?book-?reader|e-?reader)\w*[- ]?(?:schutz)?(?:h[üu]lle|case|tasche|cover)|(?:h[üu]lle|case|tasche|cover)\w* f[üu]r (?:den |das |deinen )?(?:e-?book|e-?reader|kindle|tolino|kobo)|"
+     r"(?:\bkindle|\btolino|\bkobo)(?:[- ](?:paperwhite|oasis|scribe|basic|colorsoft|kids|vision|shine|clara|libra|sage|epos|page|\d+))*[- ]?(?:schutz)?(?:h[üu]lle|case|tasche|cover)", "el-7-8-4-1-1"),
+    (r"e-?book-?reader|\be-?reader\b|ebook-?reader|e-?book-?leseger[äa]t|e-?ink-?(?:reader|leseger[äa]t)|\bkindle\b|\btolino\b|\bkobo\b", "el-6-4-2"),
+    # Nachbesserung 14.10. (2. Prüfung): Tablet-Hülle/-Tasche = Tablet Computer Accessories (el-7-8-4-3); «Tablet-Hülle mit Stifthalter»
+    # wurde Desk Organizers (HEAD: Storage). Nur als Hauptwort; «Bluetooth-Tastatur mit Hülle für iPad» bleibt bei den Tastatur-Ausschlüssen.
+    (r"^(?!.*(?:laptop|notebook|macbook|handy|smartphone|iphone|kindle|e-?reader))^" + _KOPF +
+     r"(?:(?:tablet|ipad)\w*[- ]?(?:schutz)?(?:h[üu]lle|case|cover|tasche|sleeve)\w*|(?<![a-zäöü])(?:schutz)?(?:h[üu]lle|case|cover|sleeve)\w* f[üu]r (?:das |dein |den |deinen )?(?:tablet|ipad))", "el-7-8-4-3"),
+    # Übersetzer-/Scan-Stifte (wie die zwei bestehenden Übersetzungsstifte); Übersetzungs-Kopfhörer/-Brillen bleiben Audio/Optik
+    (r"^(?!.*(?:kopfh[öo]rer|ohrh[öo]rer|earbuds|headset|in-?ear|open-?ear|h[öo]rer|brille|kamera))"
+     r".*(?:[üu]bersetz\w*|(?:scan|scanner)-?stift\w*|w[öo]rterbuch-?stift\w*)", "os-10-3"),
+    (r"(?:vor)?lese-?stift\w*", "tg-5-9-5"),        # Kinder-Lesestift = Reading Toys (wie der Bestand)
+    # Malen mit Diamanten (VOR Notizbuch/Stift: «Diamond Painting Notizbuch» = Mosaic Kits wie 193 im Bestand)
+    (r"^(?!.*(?:bilderrahmen|rahmen f[üu]r|kissenbezug|kunstn[äa]gel|n[äa]gel))"
+     r".*(?:diamant-?mal\w*|diamond[- ]?painting\w*|diamant-?bild\w*|diamant-?stickerei\w*|5d-?diamant\w*)", "ae-2-1-1-6"),
+    # Etuis, Schreibtisch-Ordnung (vor den Stiften: «Bleistift-Etui», «Stiftehalter»)
+    # 14.10. (Prüfer): ein blankes «Mäppchen» nur mit Stift-/Schulkontext; Brillen-, Ausweis-, Impfpass-, Pass-, Nähmäppchen nie
+    (r"^(?!.*(?:kosmetik|make-?up|schmink|pinsel|wasch|kultur|schl[üu]ssel|brille|ausweis|impf|reisepass|\bpass\b|pass-?(?:m[äa]ppchen|h[üu]lle)|"
+     r"n[äa]h-?(?:m[äa]ppchen|set|zeug|zubeh[öo]r|nadel|garn|etui|kit)))"
+     r"^" + _KOPF + r"(?:federm[äa]ppchen|federmappe|federtasche|(?:schul|stift|stifte|bleistift|schreib)-?m[äa]ppchen|\bm[äa]ppchen\b(?=.*(?:stift|schul|schreib|kapazit|\bpen\b|büro))|"
+     r"(?:stifte?|bleistift|schreibwaren)-?etui\w*|stifte-?tasche|stifte-?rolle)", "os-3-16"),
+    (r"^(?!.*(?:brille|schmuck|handy|karten|kosmetik|make-?up|schmink|pinsel|zigarett|zigarr|cigar|messer|werkzeug|kamm|ausweis|schlüssel|"
+     r"näh|häkel|strick|manik|pedik|\bohr|airpods|kopfhörer|tablet|kamera|zahn|kleid|schärf|mikroskop|schirm|uhr))"
+     r"(?!.*\b(?:mit|im|inkl|samt|und)\b.*etui)(?!.*etui-(?!set))(?=.*(?:stift|schreib|schul|büro|feder|kapazität|\bpen))"
+     r".*\w*etui\b", "os-3-16"),                      # «Karo-Etui» als Hauptwort; «… mit Etui», «Etui-Kleid» nicht
+    # Nachbesserung 14.10. (2. Prüfung): nur als Hauptwort («Notizbuch mit Stifthalter» ist ein Notizbuch, «Schreibtisch-Organizer mit
+    # Kugelschreiber» ein Organizer), dazu Behälter-Komposita jedes Schreibgeräts («Bleistifttasche», «Bleistiftbox», «Kugelschreiberhalter»,
+    # «Füller-Etui» wurden über das Vorderwort Bleistift/Kugelschreiber/Füller; HEAD: Taschen/Storage/leer).
+    (r"^(?!.*(?:make-?up|pinsel|kosmetik|lippen|pigment|aquarium|ladestation|schmink))^" + _KOPF +
+     r"(?:stifte?-?halter|stifte?-?k[öo]cher|stifte?-?becher|schreibtisch-?organizer|dokumentenhalter|briefablage|schreibtisch-?ablage)", "os-3-10"),
+    (_KEIN_MODE + _KEIN_KOSM_BEHAELTER + r"^" + _KOPF + _STIFTWORT + r"\w*?-?(?:taschen?|box|boxen|etuis?|rolle|h[üu]llen?|m[äa]ppchen|dosen?|beutel|schachtel)\b", "os-3-16"),
+    (_KEIN_MODE + _KEIN_KOSM_BEHAELTER + r"^" + _KOPF + _STIFTWORT + r"\w*?-?(?:halter(?:ung)?|st[äa]nder|becher|k[öo]cher|organizer|ablage|tablett|schale)\b", "os-3-10"),
+    # Schreibgeräte
+    (_KOSM + r"^" + _KOPF + r"(?:(?:bleistift|stift|stifte|buntstift|farbstift)-?(?:an)?spitzer\w*|anspitzer\w*|spitzmaschine\w*|\bspitzer\b(?=.*stift))", "os-11-6"),
+    (r"(?:bleistift|stift)-?verl[äa]ngerer\w*|stift-?verl[äa]ngerung\w*", "os-11-10"),
+    # 14.10. (Prüfer): Minen/Patronen/Tinte VOR den Stiften — «Tintenpatronen für Füller» war Pens, «Kugelschreibermine» fiel allgemein auf
+    # Writing Instruments. Bleistiftminen = os-11-10-3 Pencil Lead & Refills, Tinte/Patronen/Minen = os-11-10-2 Pen Ink & Refills.
+    # Nachbesserung 14.10. (2. Prüfung): Mine/Tinte nur als Hauptwort — «Füller-Set mit Tintenfass» war Pen Ink (HEAD leer).
+    (_KOSM + _KEIN_SCHREIBBEDARF + _NICHT_MIT_MINE + r"^" + _KOPF +
+     r"(?:(?:druck)?bleistift-?minen?\b|bleiminen?\b|(?:graphit|grafit)-?minen?\b|\bminen?\b(?=.*(?:druck)?bleistift))", "os-11-10-3"),
+    (_KOSM + _KEIN_SCHREIBBEDARF + _NICHT_MIT_MINE +
+     r"(?:^" + _KOPF + r"(?:tinten-?patrone\w*|ersatzmine\w*|kugelschreibermine\w*|gel-?mine\w*|(?:roller|stift|schreib)-?minen?\b|tintenf[äa]ss\w*)"
+     r"|(?=.*(?:" + _SCHREIB + r"))^" + _KOPF + r"(?:\bpatronen?\b|\w+-?patronen?\b|\btinte\b|\w+-?tinte\b|\bminen?\b|nachf[üu]ll-?(?:minen?|tinte|patronen?|pack\w*|set)\b))", "os-11-10-2"),
+    # Nachbesserung 14.10. (2. Prüfung): Schreibgeräte nur als Hauptwort und nie als Mode-/Schmuckmotiv («Notizbuch A5 mit Kugelschreiber»,
+    # «Skizzenbuch mit 12 Buntstiften», «Tagebuch mit Schloss und Gelstift» sind Papier; «Kugelschreiber-Ohrringe» Schmuck).
+    (_KEIN_MODE + _KOSM + r"^" + _KOPF + r"\bgel-?(?:schreiber|stifte?|pens?\b|roller|kugelschreiber|tintenroller)\w*", "os-11-11-7-3-4"),
+    # 14.10. (Prüfer): Kamera-/Aufnahme-Stifte sind Geräte («Kugelschreiber mit versteckter Kamera» war Ballpoint Pens)
+    (_KEIN_MODE + r"(?!.*(?:kugelschreibermine\w*|kamera|camera|aufnahme|recorder|diktier|mikrofon|usb))^" + _KOPF +
+     r"kugelschreiber(?!-?geschenk-?(?:box|schachtel|verpackung|t[üu]te))\w*", "os-11-11-7-3-1"),
+    (_KEIN_MODE + r"(?!.*(?:falten|l[üu]cken|hyaluron|lippen|dermal|kamera|camera|aufnahme|recorder|diktier|mikrofon|usb))^" + _KOPF +
+     r"(?:\bf[üu]ller\b|f[üu]llfeder\w*|f[üu]llhalter\w*|tintenroller\w*|tintenschreiber\w*|faserschreiber\w*|kalligra(?:f|ph)\w*-?(?:stift|feder)\w*)", "os-11-11-7-3"),
+    (_KEIN_MODE + r"^" + _KOPF + r"(?:wachsmal\w*|wachsstift\w*|wachskreide\w*)", "os-11-11-3"),
+    (_KEIN_MODE + _KOSM + r"^" + _KOPF + r"(?:buntstift\w*|farbstift\w*|aquarellstift\w*|aquarell-?buntstift\w*)", "os-11-11-7-2-1"),
+    (_KEIN_MODE + _KOSM + r"(?!.*(?:zimmermann|tischler|schreiner|maurer|handwerk|\bbau))^" + _KOPF +
+     r"bleistift(?!-?(?:rock|r[öo]cke|absatz|abs[äa]tze|hose|jeans|kleid|kaktus))\w*", "os-11-11-7-2"),
+    # 3D-Stifte wie der Bestand: für Kinder / «Zeichenstift» = Art & Drawing Toys (4×), sonst 3D-Druck (4×); Filament allgemein
+    (r"^(?!.*filament)(?:(?=.*(?:kind(?!le)|kids)).*\b3d[- ]?(?:druck|zeichen|mal)?-?(?:stift\w*|pens?\b)|.*\b3d[- ]?(?:zeichen|mal)-?stift\w*)", "tg-5-2"),
+    (r"^(?!.*filament)(?:.*\b3d[- ]?(?:druck)?-?stift\w*|.*\b3d[- ]?pens?\b)", "el-13-2"),
+    (_KEIN_MODE + _KOSM + r"^" + _KOPF + r"(?:zeichen|schreib|(?<![a-zäöü])mal|skizzen|grafit|graphit)-?stift\w*", "os-11-11-7"),
+    (_KEIN_MODE + r"^" + _KOPF + r"(?:radiergummi\w*|\bradierer\b|knetradierer\w*)", "os-4-3"),
+    # Papier, Bücher, Ordnung (Hülle vor Notizbuch, Haftnotiz vor Notizblock, Planer vor Notizbuch: «Tagesplaner-Notizbuch»)
+    # 14.10. (Prüfer): «MacBook-Cover»/«Notebook-Cover» sind keine Buchhüllen
+    (r"(?:notiz|tage|skizzen|schul)?buch-?(?:schutz)?(?:h[üu]lle|umschlag|einband|cover)\w*|(?:notizbuch|planer|kalender|heft)-?(?:schutz)?(?:h[üu]lle|umschlag|einband|cover)\w*|(?<!mac)(?<!note)book-?cover\w*", "os-1-1"),
+    (r"lesezeichen\w*", "os-1-4"),
+    (r"post-?its?\b|haftnoti\w*|klebezettel\w*|sticky ?notes?|haftzettel\w*", "os-4-9-14"),
+    # 14.10. (Prüfer): Bastelbedarf für Planer/Journal ist kein Planer/Notizbuch («Planer-Sticker Washi» war Planners, «Journal Stempel
+    # Set» Notebooks). Sticker vor Washi («Washi-Sticker» = Sticker). Datum-/Firmenstempel (Bürostempel) und Nagel-/Brauenstempel nicht.
+    # Nachbesserung 14.10. (2. Prüfung): das Bastelwort muss das Hauptwort sein (vor dem ersten «mit/und/&») — Bündel «Planer-Sticker und
+    # Washi-Tape Set» bleiben Sticker, «Washi Tape und Sticker für Planer» Washi, «Wochenplaner mit 200 Stickern» Planer.
+    (r"^" + _PLANERKONTEXT + r"(?!.*(?:wand|fenster|fliesen|m[öo]bel|tastatur|keyboard|laptop|tattoo))" + _KOPF + r"(?:aufkleber|sticker)\w*", "ae-2-1-2-8-4"),
+    (r"^" + _KOPF + r"(?:washi-?(?:tape|band|klebeband)\w*|\bwashi\b)", "ae-2-1-2-5-3"),
+    (r"^" + _PLANERKONTEXT + r"(?!.*(?:nagel|n[äa]gel|nail|augenbrauen|wimpern|datum|adress|firmen|selbstf[äa]rb))" + _KOPF + r"stempel\w*", "ae-2-1-4-6-3"),
+    (r"^" + _PLANERKONTEXT + r"(?!.*(?:nagel|n[äa]gel|nail|augenbrauen|make-?up))" + _KOPF + r"schablone\w*", "ae-2-1-4-6-7"),
+    # Planer/Kalender/Notizbuch: Hauptwort, kein Mode-/Schmuckmotiv («Kalender-Shirt», «Notizbuch-Halskette»), keine Planer-Tasche
+    (_KEIN_MODE + _KEIN_BASTEL + _KEINE_PAPIERTASCHE + r"^" + _KOPF + r"\w*(?<!hobel)planer\w*", "os-3-5-3"),
+    (_KEIN_MODE + _KEIN_BASTEL + _KEINE_PAPIERTASCHE + r"(?!.*(?:weihnacht|countdown|armband|chronograph|\bdeko))^" + _KOPF +
+     r"\w*(?<!advents)(?<!advent)(?<!advent-)kalender\w*", "os-3-5"),
+    (_KEIN_MODE + _KEIN_BASTEL + _KEINE_PAPIERTASCHE + r"(?!.*(?:messer|klinge|dolch|schwert|r[äa]tsel|comic|malbuch|ausmal|zeichenbuch))^" + _KOPF +
+     r"(?:\w*notiz-?(?:buch|b[üu]cher|heft|hefte|block|bl[öo]cke)\w*|schreib-?heft\w*|schul-?heft\w*|[üu]bungs-?heft\w*|vokabel-?heft\w*|"
+     r"hausaufgaben-?heft\w*|skizzen-?buch\w*|\w*tage-?buch\w*|\bjournal\b|collegeblock\w*|schreibblock\w*|\bhefte?\b)", "os-4-9-9"),
+    (r"\w*ordner\b|ringbuch\w*", "os-3-2-2"),
+    (r"sammelmappe\w*|schnellhefter\w*|sichtmappe\w*|zeugnismappe\w*|bewerbungsmappe\w*|pr[äa]sentationsmappe\w*|eckspanner\w*|prospekth[üu]lle\w*", "os-3-13"),
+    (r"(?:sammel|spiel|trading)-?karten\w*.*(?:h[üu]lle|sleeve)|(?:h[üu]lle|sleeve)\w*.*f[üu]r (?:sammel|spiel)-?karten", "os-3-7"),
+    (r"siegelger[äa]t\w*|folien-?schweiss\w*|folien-?versiegl\w*|t[üu]ten-?versiegl\w*|beutel-?versiegl\w*", "os-5"),
+    (r"heftklammer\w*", "os-4-11"),
+    (r"(?<!schnell)hefter\b|heftger[äa]t\w*|heftmaschine\w*", "os-11-8"),
+    # 14.10. (Prüfer): «Mini-Rechner Intel N100 16GB» ist ein Computer
+    (r"^(?!.*(?:notizbuch|notizblock|kalorien|waage|\bpc\b|computer|laptop|prozessor|intel|\bamd\b|ryzen|\bram\b|ddr\d|\bssd\b|windows|"
+     r"\d+\s?[gt]b\b|mini-?pc)).*(?:taschenrechner\w*|\w*rechner\b)", "os-10-2"),
+    # Fremdware der CJ-Gruppe (Suche liefert auch Garten, Werkzeug, Spielzeug, Spiegel, Münzen, Geldbörsen)
+    (r"regenkette\w*", "hg-3-54"),
+    (r"^(?!.*(?:anhänger|kette|schmuck|\bring\b|ohrring|silikonform|backform|kuchen|\bform\b))"
+     r".*(?:glücksmünze|gedenkmünze|sammelmünze|\bmünze\b)", "ae-2-2-2-2"),   # «Opossum-Wanderer-Motiv»: allgemein `wander\w*` → Sport
+    (r"(?:moissanit\w*|diamant\w*|edelstein)-?(?:tester|test|detektor|pr[üu]fer)\w*|(?:tester|detektor|pr[üu]fer)\w* f[üu]r (?:moissanit|diamant|edelstein)\w*", "ha-15-36"),
+    # 14.10. (Prüfer): Inklinometer/Neigungsmesser VOR Winkelmesser — «Digitaler Inklinometer-Winkelmesser» zeigt eine digitale
+    # Wasserwaage (Bild 40, HW300), Measuring Tools (ha-15-36) ist sicherer als Protractors
+    (r"inklinometer\w*|neigungsmesser\w*", "ha-15-36"),
+    (r"winkelmesser\w*|goniometer\w*", "ha-15-36-23"),
+    (r"wasserwaage\w*", "ha-15-36-17"),
+    (r"lern-?spielzeug\w*|\blernspiele?\b|lernspiel-\w+", "tg-5-9"),
+    # 14.10. (Prüfer): `kind` traf «Kindle» → kind(?!le)
+    (r"^(?=.*(?:kind(?!le)|kids|baby|kleinkind|vorschul|jungen|m[äa]dchen)).*(?:(?:lern|lese|sprach)\w*-?(?:maschine|computer|laptop|tablet|ger[äa]t)\w*|spiel-?maschine\w*)", "tg-5-9"),
+    (r"hand-?spiegel\w*|handheld[- ]spiegel\w*|stiel-?spiegel\w*", "hb-3-2-5-1-6-2"),
+    (r"taschen-?spiegel\w*|kompakt-?spiegel\w*|klapp-?spiegel\w*", "hb-3-2-5-1-6-1"),
+    (r"^(?!.*(?:powerbank|lade))(?:.*(?:schmink-?spiegel\w*|kosmetik-?spiegel\w*|make-?up-?spiegel\w*|vergr[öo]sserungs-?spiegel\w*))", "hb-3-2-5-1-6"),
+    (r"^(?!.*(?:krypto|crypto|hardware-?wallet|bitcoin|h[üu]lle|wallet-?case|handy|smartphone|iphone|samsung))"
+     r".*(?:geldb[öo]rse\w*|portemonnaie\w*|portmonee\w*|portmonnaie\w*|brieftasche\w*|geldbeutel\w*|\w*wallet\b|m[üu]nzb[öo]rse\w*|kartenetui\w*|geldklammer\w*)", "aa-5-5-7"),
+]
+_BR = [(_re.compile(m, _re.I), z) for m, z in BUEROREGELN]
+
 
 # Ohne passende Titelregel: bisheriger Typ-Wert, AUSSER bei «Trend-Gadget» — dort gibt es keinen Warenbegriff (None =
 # nicht raten). Gemessen 23.09.: Spass-Elektronik ohne Bau-/Puzzlewort ist tatsaechlich Elektronik-Spielkram,
@@ -311,6 +598,25 @@ def ziel_fuer(typ, titel):
             if rx.search(titel or ""):
                 return "aa-1-25" if z == "aa-1" or z.startswith("aa-1-") else z
         return None
+    if typ in BUEROTYPEN:   # 14.10.: Tätowiergeräte, Sperre, Büro-Regeln, dann die allgemeinen Titelregeln
+        t = titel or ""
+        for rx, z in _BT:
+            if rx.search(t):
+                return z
+        if BUERO_SPERRE.search(t):
+            if BUERO_TATTOO_KOSM.search(t):   # «Augenbrauen-Tattoo-Stift», «Lippen-Tattoo-Stift»: Beauty oder nichts (2. Prüfung 14.10.)
+                for rx, z in _TR:
+                    if rx.search(t):
+                        return z if z.startswith("hb") else None
+            return None
+        if not BUERO_VORRANG.search(t):
+            for rx, z in _BR:
+                if rx.search(t):
+                    return z
+        for rx, z in _TR:
+            if rx.search(t):   # «Desktop-Clip» ist keine Kleidung, «Laptop Hoodie» schon (Kleidungswort im Titel)
+                return None if (z.startswith("aa") and _BUERO_KEIN_AA.search(t) and not BUERO_MODE.search(t)) else z
+        return SAMMEL_FALLBACK.get(typ)
     if typ in SAMMELTYPEN:
         for rx, z in _TR:
             if rx.search(titel or ""):
@@ -340,7 +646,7 @@ def gql(q, v=None):
 
 def ids_pruefen():
     """Kanarienvogel: jede Tabellen-ID muss als TaxonomyCategory existieren, sonst kein einziger Schreibvorgang."""
-    ids = sorted(set(TABELLE.values()) | {z for _, z in TITELREGELN} | {z for _, z in KINDERREGELN} | {"aa-1-25"})
+    ids = sorted(set(TABELLE.values()) | {z for _, z in TITELREGELN} | {z for _, z in KINDERREGELN} | {z for _, z in BUEROREGELN} | {z for _, z in BUERO_TATTOO} | {"aa-1-25"})
     d = gql("query($ids:[ID!]!){ nodes(ids:$ids){ ... on TaxonomyCategory { id fullName } } }", {"ids": [TC + i for i in ids]})
     namen = {}
     for i, n in zip(ids, d["data"]["nodes"]):
@@ -460,6 +766,8 @@ def korrektur():
                 ist = ((p.get("category") or {}).get("id") or "").replace(TC, "")
                 if ist and ist not in PAUSCHAL:
                     continue          # eine spezifische Kategorie stammt nicht aus dem Pauschal-Mapping → nie anfassen
+                if ist and typ in BUEROTYPEN:
+                    continue          # 14.10.: Büro-Regeln füllen nur leere Kategorien (Trockenlauf: Widersprüche bleiben stehen)
                 neu = ziel_fuer(typ, p["title"])
                 if (neu or "") != ist and (neu or ist):
                     zu_tun.append((p["id"], p["handle"], typ, ist, neu, p["title"]))
@@ -518,17 +826,310 @@ KANARIEN = [
     ("Trend-Gadget", "Kreatives Sturmfeuerzeug mit Doppelflamme", "hg-19"),
     ("Trend-Gadget", "Press Lock Schnürsenkel", "aa-8"),
     ("Baby & Kinder", "Pyjama-Set für Mädchen", "aa-1-25-6"),
+    # 14.10.2026 Büro-Regeln (BUEROREGELN): die 18 offenen Fälle vom 13./14.10. + Wortfallen (Lehre 9b) als Nicht-Treffer.
+    ("Büro & Home Office", "Tastatur & Maus Set mit Stummschaltung", "el-7-9-12-15"),
+    ("Büro & Home Office", "98-Tasten-Bluetooth-Tastatur (Wireless)", "el-7-9-12-8"),
+    ("Büro & Home Office", 'Bluetooth-Tastatur für Tablet 10" mit Hintergrundbeleuchtung', "el-7-9-12-8"),
+    ("Büro & Home Office", "Kabellose Drei-Modi-Maus für Büro und E-Sport", "el-7-9-12-11"),
+    ("Büro & Home Office", "Bluetooth-Maus mit 5-Gang-DPI und Silikon-Handauflage", "el-7-9-12-11"),
+    ("Büro & Home Office", "Anti-Rutsch Wolken-Handgelenkauflage für die Maus", "el-7-8-5"),
+    ("Büro & Home Office", "Farbiger radierbarer Gelschreiber – 12 Stück", "os-11-11-7-3-4"),
+    ("Büro & Home Office", "Grüner 2B/ HB Zeichenstift – 10 Stück", "os-11-11-7"),
+    ("Büro & Home Office", "12er-Set HB Bleistifte mit Radiergummi", "os-11-11-7-2"),
+    ("Büro & Home Office", "Kugelschreiber mit Perlen", "os-11-11-7-3-1"),
+    ("Büro & Home Office", "Elektrischer Bleistiftspitzer für Kinder", "os-11-6"),
+    ("Büro & Home Office", "Lesezeichen aus PU-Leder mit Kristallen · 6 Stück", "os-1-4"),
+    ("Büro & Home Office", "A5 Notizbuch-Schutzhülle aus Crazy Horse Leder", "os-1-1"),
+    ("Büro & Home Office", "Notizbuch mit PU-Leder-Einband", "os-4-9-9"),
+    ("Büro & Home Office", "Tagesplaner-Notizbuch Cherry Red", "os-3-5-3"),
+    ("Büro & Home Office", "A4 Leder Ordner mit Multifunktion", "os-3-2-2"),
+    ("Büro & Home Office", "Regenkette mit Vögeln", "hg-3-54"),
+    ("Büro & Home Office", "Digitaler Inklinometer-Winkelmesser", "ha-15-36"),       # 14.10.: Inklinometer vor Winkelmesser (Bild = Wasserwaage)
+    ("Büro & Home Office", "Bilingual Lernmaschine für Kinder", "tg-5-9"),
+    ("Büro & Home Office", "Retro-Handheld Spiegel aus Kupfer, einseitig", "hb-3-2-5-1-6-2"),
+    ("Büro & Home Office", "Diamantmalerei Desktop-Clip mit Bild", "ae-2-1-1-6"),   # allgemein: «Desktop» → `top\b` → Clothing
+    ("Büro & Home Office", "Tippstift mit Offline-Scan-Übersetzung", "os-10-3"),
+    ("Büro & Home Office", "E-Book-Reader mit 6-Zoll-E-Ink-Bildschirm", "el-6-4-2"),
+    ("Büro & Home Office", "Kleinere PU Leder Geldbörse mit Münzfach", "aa-5-5-7"),
+    ("Büro & Home Office", "Kalorienrechner-Notizbuch", "os-4-9-9"),          # Rechner-Regel nimmt kein Notizbuch
+    # Nicht-Treffer: Büro-Regel darf NICHT greifen (Ergebnis = allgemeine Regel oder leer)
+    ("Büro & Home Office", "Matter Lippenstift in 12 Farben", "hb-3-2-6"),
+    ("Büro & Home Office", "Tattoo-Stift mit integrierter Nadel – 100 g", "bi-21-2"),  # 14.10.: kein Schreibgerät; ohne Gerätewort Elternpfad
+    ("Büro & Home Office", "Temporäre Tattoos Sticker-Set für Kinder", "hb-3-2-6-7"),   # Aufkleber-Tattoo bleibt erlaubt
+    ("Büro & Home Office", "Mausefalle aus Kunststoff, wiederverwendbar", None),
+    ("Büro & Home Office", "Spiegelreflexkamera mit Objektiv", "el"),
+    ("Büro & Home Office", "Plüsch-Maus Katzenspielzeug", "ap-2"),
+    ("Büro & Home Office", "Fledermaus-Lichterkette für Halloween", "ae-3-2"),
+    ("Büro & Home Office", "Keyboard-Klavier für Kinder mit 37 Tasten", "ae-2-8"),
+    ("Büro & Home Office", "Tastatur-Reinigungsgel", "el"),
+    ("Büro & Home Office", "Golf Adventskalender 24 Stück", "hg-3-58-1"),
+    ("Büro & Home Office", "Notizbuch-Adventskalender 2026", "hg-3-58-1"),     # Vorrang Adventskalender
+    ("Büro & Home Office", "Stossfeste Laptoptasche für Notebooks", "lb-15"),   # «Notebook» = Laptop, kein Notizbuch
+    ("Büro & Home Office", "Hardware-Wallet für Kryptowährung", None),
+    ("Büro & Home Office", "Augenbrauenstift wasserfest", "hb-3-2-5"),
+    ("Büro & Home Office", "Kajal-Spitzer", None),
+    ("Büro & Home Office", "Faltenfüller Serum", "hb-3-2-9"),
+    ("Büro & Home Office", "HD-Rekorder für Konferenz und Aussenbereich", None),  # Video oder Ton? nicht raten → kategorie_ki
+    ("Büro & Home Office", "Handgelenkbandage für Sport", "hb-1-24-6"),           # Bandage ≠ Handgelenkauflage → Wrist Braces (14.10.)
+    ("Büro & Home Office", "Schlüsseletui aus Leder", None),                      # Etui ≠ Federmäppchen
+    ("Büro & Home Office", "Brillenetui aus Leder", None),
+    ("Büro & Home Office", "Gel-Nagellack Stift", "hb-3-2-6"),                    # Kosmetik-Sperre vor der Gelschreiber-Regel
+    ("Büro & Home Office", "Kugelschreibermine 10 Stück", "os-11-10-2"),          # Mine ≠ Kugelschreiber → Pen Ink & Refills (14.10.)
+    # Gegenprobe am Bestand: diese aktiven Büro-Produkte tragen ihre Kategorie schon — die Büro-Regel muss sie gleich sehen
+    ("Büro & Home Office", "Ergonomischer Mausarmlehnen-Schutz aus Silikongel", "el-7-8-5"),
+    ("Büro & Home Office", "Mauspad mit kabelloser Ladefunktion", "el-7-8-8"),
+    ("Büro & Home Office", "PBT-Tastenkappen in Lila, Originalhöhe", "el-7-9-11-3-2"),
+    ("Büro & Home Office", "Monitorständer mit zwei Ablagen", "el-7-8-3"),
+    ("Büro & Home Office", "Plissiertes Karo-Etui mit grosser Kapazität", "os-3-16"),
+    ("Büro & Home Office", "Post-It-Set mit Papier-Tasche", "os-4-9-14"),
+    ("Büro & Home Office", "Solarbambus-Rechner für Büro", "os-10-2"),
+    ("Büro & Home Office", "Wandkalender aus Holz", "os-3-5"),
+    ("Büro & Home Office", "Business Füller für Studenten und Büro", "os-11-11-7-3"),
+    ("Büro & Home Office", "Elektronischer Übersetzungsstift", "os-10-3"),
+    ("Büro & Home Office", "Glitzer-Schutzhüllen für Sammelkarten", "os-3-7"),
+    ("Büro & Home Office", "Mini-Hand-Siegelgerät, USB-C aufladbar", "os-5"),
+    ("Büro & Home Office", "Glücksmünze aus Metall mit Opossum-Wanderer-Motiv", "ae-2-2-2-2"),
+    ("Büro & Home Office", "Doppelkopf-Klemmleuchte für den Schreibtisch", "hg-13"),   # Lampe ≠ Schreibtisch
+    ("Büro & Home Office", "Leichte Laptop-Tasche für Pendler", "lb-15"),              # allgemein: `top\b` → Clothing
+    ("Büro & Home Office", "Stossfeste Laptop-Hülle mit Frontöffnung", "el-7-8-2-4"),
+    ("Büro & Home Office", "Premium Notebook & Pen Set A5 – Echtleder, Touch-Pen, Business-Geschenk", "os-4-9-9"),
+    ("Büro & Home Office", "Monitorständer für Laptop", "el-7-8-3"),                   # Ständer ≠ Laptoptasche
+    ("Büro & Home Office", "3D-Druckstift mit OLED-Display", "el-13-2"),
+    ("Büro & Home Office", "3D Zeichenstift für Kinder und Studenten", "tg-5-2"),
+    ("Büro & Home Office", "3D-Druckstift für Kinder", "tg-5-2"),
+    ("Büro & Home Office", "Plüsch-Etui für Stifte und Utensilien", "os-3-16"),
+    ("Büro & Home Office", "Moissanite-Detektor zum Diamantentest", "ha-15-36"),
+    ("Büro & Home Office", "Diamond Painting Notizbuch A5", "ae-2-1-1-6"),            # Mosaic Kits wie 193 im Bestand
+    # 14.10.2026 Härtung (Prüfer-Befunde buero.pruefer): BUERO_NICHT-Fälle mit bekanntem Ziel als echte Kanarien + je 2 für jede neue Regel
+    ("Büro & Home Office", "Bleistiftrock mit hoher Taille", "aa-1"),
+    ("Büro & Home Office", "Bleistift-Jeans für Damen", "aa-1"),
+    ("Büro & Home Office", "Bleistiftabsätze Pumps", "aa-8"),
+    ("Büro & Home Office", "Laptop Ständer aus Aluminium", "el-7-8-3"),
+    ("Büro & Home Office", "Verstellbarer Ständer für Laptop und Tablet", "el-7-8-3"),
+    ("Büro & Home Office", "Kamera-Kugelschreiber mit 1080p", "el"),
+    ("Büro & Home Office", "Kugelschreiber mit versteckter Kamera", "el"),
+    ("Büro & Home Office", "Kugelschreiber mit 10 Ersatzminen", "os-11-11-7-3-1"),
+    ("Büro & Home Office", "Tintenpatronen für Füller 30 Stück", "os-11-10-2"),
+    ("Büro & Home Office", "Füller-Tintenpatronen", "os-11-10-2"),
+    ("Büro & Home Office", "Tinte für Füller, 50 ml", "os-11-10-2"),
+    ("Büro & Home Office", "Füller mit 6 Tintenpatronen", "os-11-11-7-3"),
+    ("Büro & Home Office", "HTL 903XL Tintenpatronen-Set für HP Officejet Pro", None),
+    ("Büro & Home Office", "Fusselroller Nachfüllpack", "hg-10"),
+    ("Büro & Home Office", "Druckbleistift-Minen 0,5 mm HB", "os-11-10-3"),
+    ("Büro & Home Office", "Bleistiftminen 2B, 12 Röhrchen", "os-11-10-3"),
+    ("Büro & Home Office", "Planer-Sticker Washi", "ae-2-1-2-8-4"),
+    ("Büro & Home Office", "Planer-Aufkleber Set 40 Blatt", "ae-2-1-2-8-4"),
+    ("Büro & Home Office", "Kalender-Aufkleber", "ae-2-1-2-8-4"),
+    ("Büro & Home Office", "Washi-Tape-Set 12 Rollen", "ae-2-1-2-5-3"),
+    ("Büro & Home Office", "Washi Tape für Bullet Journal", "ae-2-1-2-5-3"),
+    ("Büro & Home Office", "Journal Stempel Set", "ae-2-1-4-6-3"),
+    ("Büro & Home Office", "Holzstempel für Bullet Journal und Planer", "ae-2-1-4-6-3"),
+    ("Büro & Home Office", "Bullet Journal Schablonen Set", "ae-2-1-4-6-7"),
+    ("Büro & Home Office", "Planer-Schablone aus Kunststoff", "ae-2-1-4-6-7"),
+    ("Büro & Home Office", "Wochenplaner A5 mit 200 Stickern", "os-3-5-3"),
+    ("Büro & Home Office", "Notizbuch mit Stickern und Schloss", "os-4-9-9"),
+    ("Büro & Home Office", "Notebook Hülle aus Leder A5", "os-1-1"),
+    ("Büro & Home Office", "A5 Notebook-Schutzhülle aus Kunstleder", "os-1-1"),
+    ("Büro & Home Office", "Notebook mit Innentasche und Gummiband A5", "os-4-9-9"),
+    ("Büro & Home Office", "Premium Notebook mit Stiftetasche A5", "os-4-9-9"),
+    ("Büro & Home Office", "MacBook-Cover 13 Zoll", None),
+    ("Büro & Home Office", "Notebook-Cover für 15.6 Zoll", None),
+    ("Büro & Home Office", "Funktionale Outdoor-Reisetasche mit Laptopfach", "lb"),
+    ("Büro & Home Office", "Laptoptasche mit Laptopfach 15 Zoll", "lb-15"),
+    ("Büro & Home Office", "Mini Roboter Staubsauger für Tastatur & Tisch", "hg-9"),
+    ("Büro & Home Office", "USB-Tastatur-Lampe", "hg-13"),
+    ("Büro & Home Office", "Tastatur-Ohrringe", "aa-6"),
+    ("Büro & Home Office", "Mechanische Gaming-Tastatur mit RGB-Licht", "el-7-9-12-8"),
+    ("Büro & Home Office", "Mechanische Tastatur mit 104 Tasten, USB-C, Blue Switches", "el-7-9-12-8"),
+    ("Büro & Home Office", "Tastatur- & Maus-Konverter für PS/Xbox/Switch", "el-18-3"),
+    ("Büro & Home Office", "Tastatur- & Maus-Adapter für Spielkonsolen", "el-18-3"),
+    ("Büro & Home Office", "Gamepad Tastatur- & Maus-Konverter", "el"),
+    ("Büro & Home Office", "Tastatur-Aufkleber", "el-7-8-13"),
+    ("Büro & Home Office", "Tastaturaufkleber Deutsch QWERTZ", "el-7-8-13"),
+    ("Büro & Home Office", "Tastatur-Schublade", "el-7-8-6"),
+    ("Büro & Home Office", "Untertisch Tastaturauszug", "el-7-8-6"),
+    ("Büro & Home Office", "Gaming-Maus-Grip-Tape", "el-18"),
+    ("Büro & Home Office", "USB Maus-Jiggler", "el"),
+    ("Büro & Home Office", "Ergonomische Maus mit Palm-Grip, kabellos", "el-7-9-12-11"),
+    ("Büro & Home Office", "Hülle für Kindle Paperwhite", "el-7-8-4-1-1"),
+    ("Büro & Home Office", "Tolino Shine Schutzhülle", "el-7-8-4-1-1"),
+    ("Büro & Home Office", "Kindle Lesegerät", "el-6-4-2"),
+    ("Büro & Home Office", "Kindle Paperwhite 16 GB", "el-6-4-2"),
+    ("Büro & Home Office", "Desktop-Clip für Fotos und Notizen", None),
+    ("Büro & Home Office", "Desktop-Uhr aus Holz", None),
+    ("Büro & Home Office", "Handgelenkbandage für Büroarbeit", "hb-1-24-6"),
+    ("Büro & Home Office", "Armlehnen-Kissen für Bürostuhl", "hg-15"),
+    ("Büro & Home Office", "Armauflage für Maus und Tastatur", "el-7-8-5"),
+    ("Büro & Home Office", "Handgelenkstütze für Tastatur und Maus", "el-7-8-5"),
+    ("Büro & Home Office", "Brillenmäppchen aus Leder", None),
+    ("Büro & Home Office", "Nähmäppchen mit Zubehör", None),
+    ("Büro & Home Office", "Mäppchen mit grosser Kapazität", "os-3-16"),
+    ("Büro & Home Office", "Mini-Rechner Intel N100 16GB", None),
+    ("Büro & Home Office", "Mini-PC Rechner mit Windows 11", None),
+    ("Büro & Home Office", "Digitaler Neigungsmesser und Winkelmesser", "ha-15-36"),
+    ("Büro & Home Office", "Winkelmesser 180 Grad aus Metall", "ha-15-36-23"),
+    ("Büro & Home Office", "Mini Tattoo Pen mit USB-Ladekabel", "bi-21-2-3-2"),
+    ("Büro & Home Office", "Tattoo-Pen-Set mit Motor und Zubehör", "bi-21-2-3-2"),
+    ("Büro & Home Office", "Kabellose Tattoo-Maschine, 4-Gang, einstellbar", "bi-21-2-3"),
+    ("Büro & Home Office", "Professionelle Tattoo-Maschine", "bi-21-2-3"),
+    ("Büro & Home Office", "Danhui Hand Tattoo Stift Set", "bi-21-2"),
+    ("Büro & Home Office", "Tattoo-Stift für temporäre Tattoos", None),
+    ("Büro & Home Office", "Abdeckstift wasserfest für Tattoos", None),
+    ("Büro & Home Office", "Beleuchtetes Gaming Tastatur-Maus-Set", "el-7-9-12-15"),
+    ("Büro & Home Office", "Kabelloses Tastatur-Maus-Set für Büro", "el-7-9-12-15"),
+    ("Büro & Home Office", "ONE Handle Wireless Chat-Tastatur für Xbox One", "el-7-9-12-8"),   # Konsolenwort allein ≠ Konverter
+    ("Büro & Home Office", "Bluetooth-Tastatur für PS4 Controller", "el-7-9-12-8"),
+    ("Büro & Home Office", "Business-Rucksack für Laptop & Notizen", "lb-1-16"),
+    # 14.10.2026 Nachbesserung (2. Prüfung): (1) Bastel-Bündel — das Hauptwort entscheidet, nicht «irgendwo und/mit + Bastelwort»
+    ("Büro & Home Office", "Planer-Sticker und Washi-Tape Set", "ae-2-1-2-8-4"),
+    ("Büro & Home Office", "Journal-Sticker und Stempel Set", "ae-2-1-2-8-4"),
+    ("Büro & Home Office", "Washi Tape und Sticker für Planer", "ae-2-1-2-5-3"),
+    ("Büro & Home Office", "Planer Sticker mit Washi Tape", "ae-2-1-2-8-4"),
+    ("Büro & Home Office", "Planer-Stempel und Schablonen-Set", "ae-2-1-4-6-3"),
+    ("Büro & Home Office", "Wochenplaner mit 200 Stickern", "os-3-5-3"),
+    ("Büro & Home Office", "Bullet Journal mit Stempel und Washi Tape", "os-4-9-9"),
+    # (2) Kosmetik-/Körper-/Kinder-Tattoostifte sind keine Tätowiergeräte (HEAD: Health & Beauty; erste Härtung: Tattooing Supplies)
+    ("Büro & Home Office", "Augenbrauen-Tattoo-Stift wasserfest", "hb-3-2-5"),
+    ("Büro & Home Office", "Augenbrauen Tattoo Pen 4 Spitzen", "hb-3-2-5"),
+    ("Büro & Home Office", "Lippen-Tattoo-Stift", "hb-3-2-6"),
+    ("Büro & Home Office", "Eyeliner Tattoo Pen", "hb-3-2-6"),
+    ("Büro & Home Office", "Tattoo-Stifte für Kinder, 12 Farben", None),
+    ("Büro & Home Office", "Glitzer-Tattoo-Stift", None),
+    ("Büro & Home Office", "Semi-permanentes Tattoo Stift", None),
+    # (3) Hauptwort vor Nebenwort: Sets «X mit/und Y», Behälter-Komposita, Mode/Schmuck mit Büromotiv
+    ("Büro & Home Office", "Notizbuch & Kugelschreiber Geschenkset", "os-4-9-9"),
+    ("Büro & Home Office", "Notizbuch A5 mit Kugelschreiber", "os-4-9-9"),
+    ("Büro & Home Office", "Journal mit Füller Geschenkset", "os-4-9-9"),
+    ("Büro & Home Office", "Skizzenbuch mit 12 Buntstiften", "os-4-9-9"),
+    ("Büro & Home Office", "Tagebuch mit Schloss und Gelstift", "os-4-9-9"),
+    ("Büro & Home Office", "Planer 2026 mit Kugelschreiber", "os-3-5-3"),
+    ("Büro & Home Office", "Füller-Set mit Tintenfass", "os-11-11-7-3"),
+    ("Büro & Home Office", "Notizbuch mit Stifthalter", "os-4-9-9"),
+    ("Büro & Home Office", "Tablet-Hülle mit Stifthalter", "el-7-8-4-3"),
+    ("Büro & Home Office", "Schutzhülle für iPad 9.7", "el-7-8-4-3"),
+    ("Büro & Home Office", "Umhängetasche für iPad mit USB-Ladeanschluss", "lb"),
+    ("Büro & Home Office", "Keyboard Cover für iPad", "el-7-8-4-3"),
+    ("Büro & Home Office", "Bleistifttasche", "os-3-16"),
+    ("Büro & Home Office", "Bleistiftbox aus Holz", "os-3-16"),
+    ("Büro & Home Office", "6-Stift-Beutel – schlicht weiss", "os-3-16"),
+    ("Büro & Home Office", "Füller-Etui Leder", "os-3-16"),
+    ("Büro & Home Office", "Bleistift-Organizer", "os-3-10"),
+    ("Büro & Home Office", "Kugelschreiberhalter", "os-3-10"),
+    ("Büro & Home Office", "Füllfederhalter mit Etui", "os-11-11-7-3"),
+    ("Büro & Home Office", "Kugelschreiber-Geschenkbox", "hg-10-16"),
+    ("Büro & Home Office", "Lippenstifthalter aus Acryl", "hb-3-2-6"),
+    ("Büro & Home Office", "Klebestift-Box 12 Stück", "hg-10-16"),
+    ("Büro & Home Office", "3-in-1 Kugelschreiber mit Stylus", "os-11-11-7-3-1"),
+    ("Büro & Home Office", "Minen für Druckbleistift", "os-11-10-3"),
+    ("Büro & Home Office", "Druckbleistift mit Minen", "os-11-11-7-2"),
+    ("Büro & Home Office", "Hoodie mit Tastatur-Print", "aa-1"),
+    ("Büro & Home Office", "T-Shirt mit Keyboard-Motiv", "aa-1"),
+    ("Büro & Home Office", "Socken mit Kugelschreiber-Muster", "aa-1"),
+    ("Büro & Home Office", "Kugelschreiber-Ohrringe", "aa-6"),
+    ("Büro & Home Office", "Notizbuch-Halskette", "aa-6"),
+    ("Büro & Home Office", "Keycap Ohrringe", "aa-6"),
+    ("Büro & Home Office", "Kalender-Shirt 2026", "aa-1"),
+    ("Büro & Home Office", "Planer-Tasche Leder", "lb"),
+    ("Büro & Home Office", "Laptop Hoodie", "aa-1"),
+    ("Büro & Home Office", "Notizbuch mit Katzen-Motiv", "os-4-9-9"),
+    ("Büro & Home Office", "Kugelschreiber mit Tattoo-Design", "os-11-11-7-3-1"),
+    # (4) Tastatur: Ergänzungsstrich-Sets, Zubehör vor/nach dem Tastaturwort, Instrumente; echte Tastaturen bleiben
+    ("Büro & Home Office", "Kabelloses Tastatur- und Maus-Set", "el-7-9-12-15"),
+    ("Büro & Home Office", "Kabelloses Maus- und Tastatur-Set", "el-7-9-12-15"),
+    ("Büro & Home Office", "Kabelloses Gaming Tastatur- & Maus-Set", "el-7-9-12-15"),
+    ("Büro & Home Office", "Kabelloses Tastatur- und Mausset", "el-7-9-12-15"),
+    ("Büro & Home Office", "Tastatur und Maus mit Mauspad", "el-7-9-12-15"),
+    ("Büro & Home Office", "Gaming-Set mit beleuchteter Tastatur, Maus, Headset und Lautsprechern", "el-7-9-12-15"),
+    ("Büro & Home Office", "KVM-Switch für Tastatur und Maus", "el"),
+    ("Büro & Home Office", "PBT-Leertaste für mechanische Tastaturen (6.25U)", "el-7-9-11-3-2"),
+    ("Büro & Home Office", "Mechanische Tastatur mit PBT-Tastenkappen", "el-7-9-12-8"),
+    ("Büro & Home Office", "PBT Space Bar Tastenkappe für mechanische Tastatur", "el-7-9-11-3-2"),
+    ("Büro & Home Office", "Kontaktloses Tastatur-Desinfektionsgerät", "el"),
+    ("Büro & Home Office", "Faltbares E-Keyboard mit 49 Tasten & Lautsprecher", "el"),
+    ("Büro & Home Office", "Spiralkabel für mechanische Tastatur", "el"),
+    ("Büro & Home Office", "Tastatur-Switches 70 Stück", "el-7-9-11-5"),
+    ("Büro & Home Office", "Gateron Switches für mechanische Tastatur", "el-7-9-11-5"),
+    ("Büro & Home Office", "Nintendo Switch Tastatur", "el"),
+    ("Büro & Home Office", "Tastatur-Handauflage aus Holz", "el-7-8-5"),
+    ("Büro & Home Office", "Tastatur-Schutz aus Silikon für MacBook", "el-7-11-3"),
+    ("Büro & Home Office", "Keyboard Skin für MacBook Air", "el-7-11-3"),
+    ("Büro & Home Office", "Tastatur mit Spritzwasserschutz", "el-7-9-12-8"),
+    ("Büro & Home Office", "PS/2-Tastatur mit Kabel", "el-7-9-12-8"),
+    ("Büro & Home Office", "Office-Keyboard kabellos", "el-7-9-12-8"),
+    ("Büro & Home Office", "Kabelgebundene Gaming-Tastatur", "el-7-9-12-8"),
+    ("Büro & Home Office", "Tastatur mit Handballenauflage", "el-7-9-12-8"),
+    ("Büro & Home Office", "Mauspad mit Handgelenkauflage", "el-7-8-8"),
+    ("Büro & Home Office", "S1 Mini Wireless Bygoad mit Maus-Tastatur", "el"),
+    # 14.10.2026 allgemeine Titelregeln (a)–(e), gelten für ALLE Sammeltypen
+    ("Trend-Gadget", "Stop-Schild für Kinder", None),
+    ("Trend-Gadget", "Laptop-Ständer aus Aluminium", None),
+    ("Trend-Gadget", "Laptop-Tasche für Damen", "lb"),
+    ("Trend-Gadget", "Crop-Top mit Spitze", "aa-1"),
+    ("Trend-Gadget", "Tank Top Damen", "aa-1"),
+    ("Trend-Gadget", "Top mit Spitze", "aa-1"),
+    ("Trend-Gadget", "Gestreiftes Stricktop mit Rundhals", "aa-1"),
+    ("Trend-Gadget", "Herren Tanktop ärmellos", "aa-1"),
+    ("Trend-Gadget", "Bleistiftrock mit hoher Taille", "aa-1"),
+    ("Trend-Gadget", "Eleganter Bleistiftrock mit Perlenstickerei", "aa-1"),
+    ("Trend-Gadget", "Bleistiftabsätze Pumps", "aa-8"),
+    ("Trend-Gadget", "Glücksmünze mit Opossum-Wanderer-Motiv", "ae-2-2-2-2"),
+    ("Trend-Gadget", "Wanderstock mit Sitz", "sg"),
+    ("Trend-Gadget", "Glitzer-Schutzhüllen für Sammelkarten", None),
+    ("Trend-Gadget", "Telefonhülle mit Diamantmuster", "el-4-8-4-2"),
+    ("Trend-Gadget", "Impfpass-Mäppchen", None),
+    ("Trend-Gadget", "Federmäppchen mit Patchwork-Design", "os-3-16"),
+    ("Trend-Gadget", "Tastatur & Maus Set mit Stummschaltung", "el"),           # Büro-Regeln gelten NUR für BUEROTYPEN
+    ("Trend-Gadget", "Regenkette mit Vögeln", None),
 ]
+
+
+# 14.10.2026: Titel, bei denen KEINE Büro-Regel greifen darf (Korpus-Probe über 54'226 Titel, Lehre 9b). Das Ergebnis
+# bestimmen dann die allgemeinen Regeln oder niemand — hier wird nur geprüft, dass BUEROREGELN still bleibt.
+BUERO_NICHT = [
+    "Overknee-Stiefel mit Stiletto-Absatz und spitzer Zehe", "Herren-Quarzuhr mit Kalender und Edelstahlarmband",
+    "Digitaler Kalenderwecker mit Medikamenten-Erinnerung", "Armbanduhr Manschettenknöpfe Kugelschreiber Geschenkset",
+    "Quarz-Uhr mit Kalender, Manschettenknöpfen & Füller", "Figurbetontes Etui-Abendkleid mit Rückenschnürung",
+    "Mini-Pinselset mit Etui", "Kettensägen-Schärfset im Etui", "UV-Schutz Faltregenschirm mit Etui",
+    "Moissanit-Ring «Marquise» 4 ct · 925 Sterling-Silber", "AI Übersetzungs-Earbuds (144 Sprachen)",
+    "Smart-Brille mit 8 MP Kamera und Übersetzung", "Zahnaufhellungs-Gelstift (4er-Pack)", "Keyboard Lidschattenpalette – 9 Farben",
+    "Schokoladenform Tastatur", "Kinder-Elektronik-Keyboard", "Buntstifte-Decke", "Kopfkissen aus Memory-Schaum mit Armauflagen",
+    "Handheld Golf-Entfernungsmesser Outdoor", "Wasserdichte Kameratasche für Drohne & Laptop", "Magnetische Kartenhülle mit Ständer",
+    "Retro Leder Dokumentenmappe mit Anti-Diebstahl", "999 Silber-Anhänger «Fortuna» – Glücksmünze filigran",
+    "Silikonform chinesische Glücksmünzen für Kuchen", "Rosafarbene Diamant-Kunstnägel", "Pastoraler Bilderrahmen für Diamond Paintings",
+    "Powerbank mit Schminkspiegel und integriertem Kabel", "Magnetischer Handyhalter mit Kartenetui", "Zimmermannsbleistifte, 12 Stück",
+    "Diamond Make-up Pinsel- & Stiftehalter", "Büro-Nickerchen Kissen für den Schreibtisch", "Rattan-Schubladenbox für Schreibtisch",
+    "Nahtlose Sommerstrümpfe mit Sternen & Tattoo-Print", "Mausefalle aus Kunststoff, wiederverwendbar", "Spiegelreflexkamera mit Objektiv",
+    "Matter Lippenstift in 12 Farben", "Bleistiftrock mit hoher Taille", "Hardware-Wallet für Kryptowährung",
+    "DIY Weihnachtskalender Geschenkbeutel 50x100 cm", "Wasserdichtes Kalender-Armband", "Halloween Countdown Kalender Set",
+    "Universal Hüft-Etui für Outdoor", "Spiegel-Etui mit 100 ölbindenden Tüchern", "Schlüsselmäppchen mit Strass und Rosen",
+    "PLA Filament für 3D-Drucker und 3D-Stifte",
+]
+
+
+def buero_regel(titel):
+    """Index der greifenden Büro-Regel oder None (Sperre/Vorrang/kein Treffer) — für Kanarien und Trockenläufe."""
+    t = titel or ""
+    if BUERO_SPERRE.search(t) or BUERO_VORRANG.search(t):
+        return None
+    for i, (rx, _z) in enumerate(_BR):
+        if rx.search(t):
+            return i
+    return None
 
 
 def test():
     fehler = 0
+    for titel in BUERO_NICHT:
+        i = buero_regel(titel)
+        fehler += i is not None
+        print(f"  {'✅' if i is None else '❌'} Büro-Nicht-Tref | {titel[:48]:48s} → {'still' if i is None else 'Regel #%d %s' % (i, BUEROREGELN[i][1])}")
     for typ, titel, soll in KANARIEN:
         ist = ziel_fuer(typ, titel)
         ok = ist == soll
         fehler += (not ok)
         print(f"  {'✅' if ok else '❌'} {typ[:16]:16s} | {titel[:48]:48s} → {ist or 'LEER':10s} (soll {soll})")
-    print(f"KANARIEN: {len(KANARIEN) - fehler}/{len(KANARIEN)} richtig")
+    print(f"KANARIEN: {len(KANARIEN) + len(BUERO_NICHT) - fehler}/{len(KANARIEN) + len(BUERO_NICHT)} richtig "
+          f"(davon {len(BUERO_NICHT)} Büro-Nicht-Treffer)")
     fehler += len(typen_abgleich())
     return fehler
 
@@ -552,6 +1153,6 @@ def typen_abgleich():
 
 
 if __name__ == "__main__":
-    if "--test" in sys.argv:
+    if "--test" in sys.argv or "--selbsttest" in sys.argv:   # --selbsttest = Alias (14.10.), Aufseher ruft --test
         sys.exit(1 if test() else 0)
     korrektur() if os.environ.get("KORREKTUR") == "1" else main()
