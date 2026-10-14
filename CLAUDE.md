@@ -64,6 +64,27 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-14 nachts (🔒 Pilot 2.0: 11. Prüfung — 1 Blocker + 5 wichtig + 5 klein behoben, bleibt GESPERRT):** Prüfer-Agent
+(Belege `scratchpad/pruefung11/` p1–p10) fand: **B1** Not-Aus setzte den Schutz-Stop mit VERALTETEM Kurs — Kurs gesprungen + Spot-Ticker
+429 → zweimal −2021 → Short ohne Stop (10'058 USDT), Meldung trotzdem «beidseitig gesichert»; Cockpit/Telegram-Not-Aus ohne Nachkontrolle. Behoben:
+- **`_notaus_schutz` neu:** frischer Kurs = Spot-Ticker, sonst Futures-Markpreis (`_kurs_oder_mark`, auch für die Lage im Not-Aus); auch
+  jenseits / kein Kurs → `_Ausgeloest` → sofort zum Markt (Short reduceOnly, Coins verkaufen); gibt zurück, ob alles geschützt ist →
+  «beidseitig gesichert» nur dann (sonst «NICHT vollständig gesichert»). Cockpit `notaus_an` → `nachkontrolle_starten()` (nur mit P2-Buch).
+- **W1** Verkleinern unklar → mit dem alten Stop rechnen; zu grosser Perp-Stop nicht löschbar → Spot-Stop über alle Coins. **W2**
+  `nur_ergaenzen`/`_handel_aus` (exchangeInfo-Status) → nie cancelReplace, zu grosser Stop bleibt → `_zu_gross(d, merken=False)`
+  (beidseitig, keine Nachkontrolle nötig). **W3** `_perp_abgleich`: zu grosser alter bleibt → `_zu_gross`. **W4** `_stops_vorab`
+  ZWEISTUFIG: nach dem Verkleinern nur auf «jetzt» (`nur_jetzt=True`), aufs Plan-Ende erst NACH erfolgreichem Ernte-Kauf (Gebühr
+  eingerechnet). **W5** Rückkauf abgelehnt → `buch["paar_pause"]` 15 Min., nur für automatische Wiederholung (`notaus_alle(..., wiederholung=True)`
+  aus der Nachkontrolle); Not-Aus von Hand versucht immer. K1 Meldungen, K2 `_ausgefuehrt`, K4 README (Futures-10-Min = Annahme),
+  K5 `_buch_sperre` (Nachkontrolle vergleicht + schreibt unter EINER Sperre; `buch_schreiben` immer gesperrt).
+- **Eigene Schlusskampagne fand noch:** Staub-Paar im Not-Aus blieb ewig (Staub sichert nichts → Short ganz zurück), eben gesetzter
+  Spot-Stop noch nicht in der Liste → verwaist zu gross (über Buch-ID löschen / beidseitig), Vorab vor unklarem Ernte-Kauf (→ zweistufig).
+- **Fuzzer (K3):** `DAUER_` + `_selbst_entfernt` je **Schutzseite** (`_schutzseite`), «Storno zuerst» auch in 15 % der Lauf-Tage/Not-Aus
+  (eigener Zufall, alte Seeds gleich), Monotonie-Phase auch mitten im Lauf (`SCHUTZ_VERLOREN_MITTEN_*`), «Stop zu gross» = was nach dem
+  Auslösen ungedeckt bliebe, 429 im vollen Protokoll, Prüf-Börse `B.symbol_status`.
+- Tests: live 154, streng 109 (11.p1–p9, K1/K2/K5, W2, F/F2/F3), cockpit 115. **Falle:** ein Stichproben-Skript ohne `cd "$(dirname "$0")"`
+  legte Fuzzer-Ordner im Repo-Root an → vor jedem Commit `git status`. **Nächster Schritt:** 12. unabhängige Prüfung.
+
 **📌 2026-10-14 abends (🔒 Pilot 2.0: 10. Prüfung — 2 Blocker + 4 wichtig + 4 klein behoben, bleibt GESPERRT):** Prüfer-Agent
 (Belege `scratchpad/pruefung10/`, Monotonie-Fuzzer fz10) fand: **B1** Not-Aus schloss zuerst den GANZEN Short (auch die Ernte-
 Absicherung) → lehnt Spot ab, liegen Coins ohne Absicherung UND Stop (9'391 USDT), nichts versucht es nochmals; **B2** «erst löschen,
@@ -94,7 +115,7 @@ dann setzen» noch in `_stops_vorab` (jeden Tag mit Verkauf!), `_perp_ohne_liste
 - **📊 Dashboard «Pilot 2.0 Prüfstand»** (privates Claude-Artefakt `https://claude.ai/artifact/8P9LBcKm31gdz8eyvgkYG4`, User wollte
   «dashboard … wie immer optimal»): Reiter Freigabe (Blocker je Runde, Weg zur Freigabe, Restrisiken), Prüfungen (alle Runden, Funde
   der letzten), Tests und Fuzzer, Strategien (alle Prüfstände, Backtest P0/P2, Spielgeld-Vorwärtstest). Daten = angehängte JSON-Dateien
-  (kein Connector hält sie). **Nach jeder Prüfung nachführen:** `pruefungen` (neue Zeile), `funde_rN`, `tests` (alle `test_*.py` frisch),
+  (kein Connector hält sie). **Nach jeder Prüfung nachführen:** `pruefungen` (neue Zeile), `funde_letzte` (Funde der letzten Runde), `tests` (alle `test_*.py` frisch),
   `fuzzer` (Logs der Schlusskampagne), `freigabe`; Datei mit Artifact `asset:true` hochladen, dann `datasets/<id>` per ArtifactData
   `update` (url, name, updated). Runden ohne Zählung bleiben leer (R4/R5 nur «2–3», R8 nicht gezählt) — nie Zahlen erfinden.
 

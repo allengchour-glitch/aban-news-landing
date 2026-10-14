@@ -14,6 +14,7 @@ Stammt aus der 8. unabhängigen Prüfung (Oktober 2026) und ist bewusst STRENGER
     bei unklarem Status; aus der 9. Prüfung), teil (Teilausführung), ablehnen (−1013 PERCENT_PRICE). cancelReplace: Filter
     vor dem Storno (Doku); in einer Phase «nur Stornieren» scheitert die ganze Anfrage — mit ersetzen_storno_zuerst=True
     die ungünstige Lesart: erst Storno, dann Ablehnung (409)
+  * exchangeInfo-Status je Symbol einstellbar (symbol_status, z. B. BREAK/HALT; Standard TRADING — 11. Prüfung)
   * STOP_LOSS (Markt) und STOP_LOSS_LIMIT (bleibt bei Kurslücke unausgeführt liegen)
   * Futures: CROSS-Marge, Einstand, offener Gewinn, Liquidation, Funding (ADL nicht nachgebaut)
   * Protokoll aller schreibenden Anfragen je Konto (fremdes Konto angefasst? falscher Transfer-Typ?)
