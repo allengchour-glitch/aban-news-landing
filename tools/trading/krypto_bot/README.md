@@ -618,7 +618,7 @@ auf Dauer** (Rendite pro Jahr) — nicht der grösste Erwartungswert: der wird m
   - Bitcoin halten schlägt sie in beiden Zeiträumen, mit kleinerem Einbruch.
 - **Effizienter ist Pilot 2.0 mit 1×:** +45,4 % pro Jahr bei nur −24 % Einbruch, also fast so viel wie 1,75× bei halbem Risiko.
   Mit doppelten Kosten ist er sogar besser (+41,5 % gegen +38,4 %). Pilot 2.0 ist aber noch gesperrt (unabhängige Prüfungen).
-  Nächster ehrlicher Schritt ist «Pilot 2.0 + Hebel» als eigener Prüfstand mit Protokoll vorab.
+  «Pilot 2.0 mit Hebel» steht als eigener Prüfstand im nächsten Abschnitt.
 - Ehrlich:
   - Bei 12 Kandidaten schönt die Auswahl die beste Zahl etwas.
   - Yahoo-Tageskurse: Echte Dochte an der Börse können tiefer sein, eine Liquidation käme dann früher.
@@ -627,6 +627,55 @@ auf Dauer** (Rendite pro Jahr) — nicht der grösste Erwartungswert: der wird m
     (44,9 % statt richtig 41,5 %). Die Empfehlung blieb gleich; ein Test fängt das jetzt.
 - Live: Die Risiko-Stufe 1,5× ist heute im Cockpit wählbar (`KRYPTO_RISIKO=1.5`). 1,75× gibt es noch nicht, Werte werden auf
   1 / 1,5 / 2 gerundet. Keine Anlageberatung — nur Geld einsetzen, dessen Verlust du verkraftest.
+
+## 💰 «Max Profit 2» — Pilot 2.0 mit Hebel (`maxprofit_p2_pruefung.py`)
+
+Frage (14.10.2026): Pilot 2.0 mit 1× war oben der effizienteste Kandidat. Bringt er **mit Hebel** noch mehr, ohne das Konto zu
+riskieren?
+
+Die Regeln standen fest, bevor gerechnet wurde (Git-Commit `f330a1421`, Kopf von `maxprofit_p2_pruefung.py`): gleiche Signale,
+Daten, Risikomasse und Entscheidungsregel wie oben, Basis ist Pilot 2.0 mit 1×.
+
+Das Modell (`maxprofit_kern.lauf_p2`):
+- Long bis 1× ganz über Spot (kein Funding), darüber teils über einen Futures-Long (zahlt Funding).
+- Short über Futures.
+- Pfand je Futures-Position = Volumen ÷ Hebel. Spot-Coins zählen nicht als Pfand.
+- Freies Geld liegt in der Funding-Ernte.
+
+| Kandidat | ab 2020 pro Jahr / Einbruch | ab 2022 | doppelte Kosten | P(Einbruch < −60 % im Jahr) | schlechtestes 5-%-Jahr | Urteil |
+|---|---|---|---|---|---|---|
+| Pilot 2.0 1× | +45,7 % / −24 % | +34,0 % / −23 % | +42,1 % | 0,0 % | −14 % | Basis |
+| 1,25× | +48,5 % / −34 % | +36,5 % / −31 % | +43,4 % | 0,1 % | −22 % | bestanden |
+| 1,5× | +55,4 % / −40 % | +40,3 % / −37 % | +48,7 % | 0,7 % | −28 % | bestanden |
+| **1,75×** | **+58,7 % / −49 %** | **+44,1 % / −44 %** | **+50,1 %** | **3,0 %** | **−35 %** | **bestanden → Empfehlung** |
+| 2× | +62,9 % / −58 % | +47,0 % / −51 % | +51,2 % | 7,2 % | −42 % | nein (Einbruch-Risiko) |
+| zum Vergleich: Live-Pilot 1,75× (alles Futures) | +48,7 % / −53 % | +43,8 % / −45 % | +38,4 % | 3,6 % | −39 % | erster Prüfstand |
+
+- **Pilot 2.0 mit 1,75× schlägt den Live-Pilot mit 1,75×**, also die Empfehlung des ersten Prüfstands:
+  - +58,7 % statt +48,7 % pro Jahr, bei kleinerem Einbruch (−49 % statt −53 %);
+  - mit doppelten Kosten +50,1 % statt +38,4 %.
+  Grund: Longs bis 1× laufen über Spot ohne Funding, und freies Geld verdient in der Ernte.
+- **Die Effizienz sinkt mit dem Hebel.** 1× bringt +45,7 % bei −24 % Einbruch, 1,75× bringt +58,7 % bei −49 %: doppelter
+  Einbruch für 13 Prozentpunkte mehr. Bei 1,75× liegt das Einbruch-Risiko mit 3,0 % nahe an der Grenze von 5 %.
+- **Korrektur nach dem ersten Lauf (Modellfehler, offen gelegt):**
+  - Was passierte: Der erste Lauf meldete bei 1,75× und 2× mit doppelten Kosten «BTC liquidiert».
+  - Warum: Der Umbau zog Gebühren und das Auflösen der Ernte erst nach dem Pfand ab. Bei einem winzigen Futures-Long fiel das
+    Futures-Konto so unter null, obwohl sich der Kurs kaum bewegte.
+  - Behoben: Tests 13b prüfen jetzt, dass bei festem Kurs nie liquidiert wird. Am alten Code scheitern sie.
+  - Folge: Der erste Lauf empfahl 1,5× (1,75× mit doppelten Kosten nur 30,9 %), korrigiert ist es 1,75×. Die Zahlen ohne
+    doppelte Kosten änderten sich höchstens um 0,1 Prozentpunkte.
+  - Beide Läufe stehen in `data/krypto-maxprofit-p2-pruefung.json`.
+- Ehrlich:
+  - Kurslücken über den Stop hinaus sind nicht abgebildet. Bei 1,75× wird der Futures-Teil nach einer Gegenbewegung von 57 %
+    liquidiert (Pfand = Volumen ÷ 1,75).
+  - Ein Börsenausfall ist nicht abgebildet.
+  - Bei 5 Kandidaten schönt die Auswahl die beste Zahl nur wenig.
+- Live: **Pilot 2.0 ist gesperrt und kann nur 1×.** Ein Hebel wäre ein Umbau (Futures-Long-Teil, Pfand-Regel) mit eigenen
+  Prüfungen. Die Reihenfolge:
+  1. 1× freigeben: unabhängige Prüfung ohne Blocker → Testnetz → Probelauf → kleiner Betrag.
+  2. Monatelang mit 1× laufen lassen.
+  3. Erst danach den Hebel in Stufen erhöhen.
+  Keine Anlageberatung.
 
 ## ⏱️ Scalping (Minuten-Handel) — ehrlich getestet: verliert (`scalping_pruefung.py`)
 
@@ -976,7 +1025,7 @@ python3 tools/trading/krypto_bot/test_binance.py  # 21 Tests, inkl. nachgebautem
 python3 tools/trading/krypto_bot/test_pilot2_plan.py  # 23 Tests: Pilot-2.0-Rechnung (Richtung, Ernte, Pfand, Mindestbeträge)
 python3 tools/trading/krypto_bot/test_pilot2_live.py  # 154 Tests: Pilot 2.0 («Konto = Wahrheit») gegen eine strenge nachgebaute Binance
 python3 -B tools/trading/krypto_bot/test_pilot2_streng.py  # 159 Tests: Belege der 8.–12. Prüfung, Schlussproben, Fuzzer-Funde gegen die Prüf-Börse, kleine Fuzzer
-python3 -B tools/trading/krypto_bot/test_maxprofit.py      # 26 Tests: Max-Profit-Kern (gleiches Modell wie der Pilot, Kelly-Optimum, keine Zukunftsdaten, Kosten)
+python3 -B tools/trading/krypto_bot/test_maxprofit.py      # 55 Tests: Max-Profit-Kern (gleiches Modell wie der Pilot, Kelly-Optimum, keine Zukunftsdaten, Kosten; Pilot 2.0 mit Hebel: = lauf2 bei 1×, Pfand-Regel, bei festem Kurs nie liquidiert)
 python3 -B tools/trading/krypto_bot/test_testnetz_pruefung.py  # 47 Tests: das Testnetz-Prüfskript gegen die Prüf-Börse (nur 127.0.0.1)
 python3 -B tools/trading/krypto_bot/pruef_fuzzer.py notaus 0 1600     # grosser Fuzzer (für Prüfungen): Not-Aus unter harten Störungen
 python3 -B tools/trading/krypto_bot/pruef_fuzzer.py laeufe 0 200 30   # … Läufe über 30 Tage, Störungen in jedem Schritt

@@ -38,6 +38,18 @@ Nicht abgebildet:
     mehr Pfand.
 Keine Anlageberatung.
 
+KORREKTUR NACH DEM ERSTEN LAUF MIT ECHTEN DATEN (Modellfehler, das Protokoll oben gilt unverändert):
+  Der erste Lauf meldete bei 1,75× und 2× mit doppelten Kosten «BTC liquidiert» (6.3.2025 bzw. 23.9.2021). Ursache:
+  - Beim Umbau bekam der Spot alles ausser dem Pfand.
+  - Gebühren und das Auflösen der Ernte gingen danach vom Futures-Konto ab.
+  - Bei einem winzigen Futures-Long (Ziel knapp über 1×) fiel es so unter null, obwohl sich der Kurs kaum bewegte.
+  Das widerspricht der Pfand-Regel oben («Volumen ÷ L als Pfand»). Jetzt rechnet der Umbau die höchstmöglichen Kosten vorab
+  heraus, und die Ernte trägt ihre Kosten selbst (Tests 13b: bei festem Kurs nie liquidiert).
+  Ergebnis des ersten Lauf steht unten in ERSTER_LAUF und in der JSON-Datei:
+  - P2-1,75 «teuer» 30,9 % statt 50,1 %, P2-2 «teuer» 23,8 % statt 51,2 %;
+  - Empfehlung damals P2-1,5, korrigiert P2-1,75.
+  Die Zahlen ohne doppelte Kosten änderten sich höchstens um 0,1 Prozentpunkte.
+
 Aufruf: python3 -B tools/trading/krypto_bot/maxprofit_p2_pruefung.py   → Tabelle + data/krypto-maxprofit-p2-pruefung.json
 """
 from __future__ import annotations
@@ -55,6 +67,16 @@ ROOT = HIER.parents[2]
 AUSGABE = ROOT / "data" / "krypto-maxprofit-p2-pruefung.json"
 HEBEL = [1.0, 1.25, 1.5, 1.75, 2.0]
 VERGLEICH = [1.0, 1.75]
+# erster Lauf mit echten Daten (Stand 13.10.2026), VOR der Korrektur des Modellfehlers (Kopf) — ab 2020 / ab 2022 / teuer, Urteil
+ERSTER_LAUF = {
+    "P2-1": {"cagr_oos": 0.457, "cagr_2022": 0.340, "cagr_oos_teuer": 0.421, "p_einbruch60": 0.000, "bestanden": True},
+    "P2-1.25": {"cagr_oos": 0.485, "cagr_2022": 0.365, "cagr_oos_teuer": 0.434, "p_einbruch60": 0.001, "bestanden": True},
+    "P2-1.5": {"cagr_oos": 0.554, "cagr_2022": 0.403, "cagr_oos_teuer": 0.488, "p_einbruch60": 0.007, "bestanden": True},
+    "P2-1.75": {"cagr_oos": 0.587, "cagr_2022": 0.441, "cagr_oos_teuer": 0.309, "p_einbruch60": 0.030, "bestanden": False},
+    "P2-2": {"cagr_oos": 0.630, "cagr_2022": 0.470, "cagr_oos_teuer": 0.238, "p_einbruch60": 0.072, "bestanden": False},
+    "empfehlung": "P2-1.5",
+    "fehler": "teuer: BTC-Teilkonto fälschlich «liquidiert» (1,75×: 6.3.2025, 2×: 23.9.2021) — Kosten nach dem Pfand abgezogen",
+}
 
 
 def p2l_kurve(D, L, a, b, teuer=False, info=None):
@@ -80,7 +102,7 @@ def main():
     a, b = MP.idx(tage, MP.OOS_AB), len(tage)
     a22 = MP.idx(tage, MP.BAISSE_AB)
     erg = {"stand": tage[-1], "protokoll": __doc__.split("PROTOKOLL")[1].split("Aufruf:")[0].strip(), "kandidaten": {},
-           "vergleich": {}}
+           "vergleich": {}, "erster_lauf_vor_korrektur": ERSTER_LAUF}
     for L in HEBEL:
         info = {}
         w, liq = p2l_kurve(D, L, a, b, info=info)

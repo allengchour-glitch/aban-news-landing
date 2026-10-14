@@ -286,6 +286,34 @@ w_f, lq_f = MK.lauf_hebel([1.5] * 4, [100.0] * 4, [100.0, 100.0, 50.0, 100.0], [
 pruefe("Vergleich F-1,5 (ganzes Konto als Pfand) übersteht −50 % — der Futures-Teil von P2 nicht (Pfand-Regel ehrlich)",
        not lq_f and lq, (lq_f, lq))
 
+# 13b) Korrektur nach dem ersten Lauf: Bei festem Kurs darf NIE liquidiert werden. Vorher reservierte der Umbau das Pfand vor den
+#      Kosten — Short mit grosser Ernte → Long knapp über 1× (winziger Futures-Long): Gebühren + Ernte-Auflösung drückten das
+#      Futures-Konto unter null → «liquidiert» (echt: BTC 6.3.2025 bei 1,75× mit doppelten Kosten)
+n = 7
+cc = [100.0] * n
+w, lq = MK.lauf_p2([-1.0, -1.0, -1.0, 1.002, 1.002, 1.002, 1.002], cc, cc, cc, [0.0] * n, [0.0] * n, 1, n, L=1.75, stop_k=0,
+                   gebuehr=0.001, spot_gebuehr=0.002, park_kosten=0.003)
+pruefe("Short mit Ernte → Long 1,002× bei 1,75× (doppelte Kosten), Kurs fest → nicht liquidiert", not lq and w[-1] > 0.99, (lq, w))
+w, lq = MK.lauf_p2([-1.0, -1.0, -1.0, 1.0001, 1.0001, 1.0001, 1.0001], cc, cc, cc, [0.0] * n, [0.0] * n, 1, n, L=1.75, stop_k=0,
+                   park_kosten=0.02)
+pruefe("… Long 1,0001× mit hohen Ernte-Kosten (2 %): die Reserve deckt auch das Auflösen der Ernte → nicht liquidiert", not lq,
+       (lq, w))
+rnd = random.Random(31)
+falsch = []
+for versuch in range(300):
+    L = rnd.choice([1.25, 1.5, 1.75, 2.0, 3.0])
+    k = rnd.choice([1, 2, 5])
+    n = 40
+    zz = [round(rnd.uniform(-1, 1) * L, 3) if rnd.random() < 0.5 else 0.0 for _ in range(n)]
+    cc = [100.0] * n
+    fl = [rnd.uniform(0, 0.003) for _ in range(n)]
+    w, lq = MK.lauf_p2(zz, cc, cc, cc, fl, fl, 1, n, L=L, stop_k=0, gebuehr=MK.GEBUEHR * k, spot_gebuehr=MK.SPOT_GEBUEHR * k,
+                       park_kosten=MK.PARK_KOSTEN * k)
+    if lq:
+        falsch.append((versuch, L, k))
+pruefe("300 Zufallsfolgen von Zielen (1,25–3×, Kosten × 1/2/5, Funding bis 0,3 %/Tag), Kurs fest → nie liquidiert", not falsch,
+       falsch[:5])
+
 # 14) Prüfstand selbst: P2-1 nie schlechter als «P2» des ersten Prüfstands (gleiches Funding, nur genauere Gebühr beim Wechsel),
 #     doppelte Kosten verschlechtern jeden Hebel (Funding-Einnahme nicht × 1,5)
 import maxprofit_p2_pruefung as MP2  # noqa: E402
