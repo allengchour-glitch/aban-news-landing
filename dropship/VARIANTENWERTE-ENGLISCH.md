@@ -6,13 +6,13 @@
 
 ## Zahlen
 
-- Produkte gesehen: **10'833**
-- Optionen mit englischen Werten (Kandidaten): 1'265
+- Produkte gesehen: **11'431**
+- Optionen mit englischen Werten (Kandidaten): 1'297
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 6'358
+- Werte mit unbekanntem Wort (unverändert): 6'444
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 33
+- übersprungen «kleidungsstueck-im-wert»: 34
 - übersprungen «kollision-nach-uebersetzung»: 25
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
@@ -92,5 +92,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 241, `light` 241, `color` 173, `degrees` 159, `shell` 78, `skin` 78, `high` 68, `rope` 66, `feet` 62, `three` 57, `core` 53, `size` 49, `surface` 49, `line` 48, `dark` 47, `powder` 47, `of` 46, `hat` 46, `buckle` 42, `no` 42, `bag` 42, `perforated` 42, `⟨satzbau:material-vor-farbe⟩` 41, `case` 40, `acupuncture` 40, `opp` 39, `lens` 38, `adjustable` 37, `electric` 37, `magnetic` 36, `generation` 36, `to` 36, `person` 35, `tea` 34, `carbon` 34, `suit` 34, `⟨satzbau:menge-vor-nomen⟩` 34, `belt` 32, `⟨satzbau:adjektivfolge⟩` 32, `fiber` 32, `four` 30, `⟨satzbau:nomen-vor-farbe⟩` 30, `bear` 30, `mother` 30, `eyelets` 30, `button` 30, `plush` 30, `iphone13` 29, `ice` 28, `lamp` 28, `mushroom` 27, `full` 26, `simple` 26, `insert` 26, `number` 26, `flame` 26, `crotch` 26, `cocoa` 26, `face` 25, `code` 25
+`⟨satzbau:adjektiv-vor-nomen⟩` 253, `light` 242, `color` 173, `degrees` 159, `shell` 78, `skin` 78, `high` 68, `rope` 66, `feet` 62, `three` 57, `core` 53, `size` 50, `dark` 49, `surface` 49, `line` 48, `of` 47, `powder` 47, `hat` 46, `bag` 43, `buckle` 42, `no` 42, `perforated` 42, `⟨satzbau:material-vor-farbe⟩` 41, `case` 40, `acupuncture` 40, `opp` 39, `lens` 38, `adjustable` 37, `electric` 37, `magnetic` 36, `generation` 36, `to` 36, `person` 35, `belt` 34, `tea` 34, `carbon` 34, `suit` 34, `⟨satzbau:menge-vor-nomen⟩` 34, `⟨satzbau:adjektivfolge⟩` 32, `fiber` 32, `four` 30, `⟨satzbau:nomen-vor-farbe⟩` 30, `bear` 30, `mother` 30, `eyelets` 30, `button` 30, `plush` 30, `iphone13` 29, `ice` 28, `lamp` 28, `mushroom` 27, `full` 26, `simple` 26, `insert` 26, `number` 26, `flame` 26, `crotch` 26, `cocoa` 26, `face` 25, `regular` 25
 
