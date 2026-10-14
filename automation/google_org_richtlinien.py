@@ -28,7 +28,10 @@ import warenkorb_gratisversand as wg  # noqa: E402  (tarif(), THEME)
 
 DATEI = "sections/header.liquid"
 MARKE = "LUX-ORG-RICHTLINIEN"
-ANKER = '''    "url": {{ request.origin | append: page.url | json }}
+# 14.10.2026: url zeigt auf die Startseite (routes.root_url), nicht auf die gerade offene Seite — Organization ist die Firma,
+# nicht die Seite; dazu @id #org, E-Mail, areaServed (die zweite Organization in layout/theme.liquid ist weg, S3 Schritt 9).
+URL_ZEILE = '    "url": {{ request.origin | append: routes.root_url | json }}'
+ANKER = URL_ZEILE + '''
   }
 </script>'''
 RUECKGABE_TAGE = 30
@@ -75,7 +78,7 @@ def markup():
 
 
 def neu_aus(alt):
-    block = ('    "url": {{ request.origin | append: page.url | json }},\n'
+    block = (URL_ZEILE + ',\n'
              f'    {{%- comment -%}} {MARKE} (06.10.2026, automation/google_org_richtlinien.py) {{%- endcomment -%}}\n'
              f'    {markup()}\n  }}\n</script>')
     return alt.replace(ANKER, block, 1)
