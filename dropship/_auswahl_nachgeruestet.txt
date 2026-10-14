@@ -2207,3 +2207,4 @@
 16638076354951	Farbe:3:3	2026-10-14	batik-canvas-kamera-tasche-mit-pferdehaut-dffb94
 16638005019015	Farbe:3:3	2026-10-14	herrenuhren-leder-crossbody-tasche-2a78de
 16638003577223	Farbe:5:5	2026-10-14	canvas-handtasche-mit-lederakzent-6a45f8
+15523186114945	Farbe:8+Grösse:6:48	2026-10-14	doppelter-vorhang-fur-schlafzimmer-687232
