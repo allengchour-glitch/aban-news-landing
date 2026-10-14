@@ -936,3 +936,28 @@
 15447875158401	kein-stecker-merkmal	2026-10-14	HDMI Adapter für Amazon Fire TV Stick
 15447875584385	kein-stecker-merkmal	2026-10-14	Pushbao Dual-Band WiFi Adapter für TV/Projektor
 15448846664065	kein-stecker-merkmal	2026-10-14	Mirascreen 2.4G WiFi HDMI Adapter
+15448849121665	mehrere-varianten	2026-10-14	BlueRetro Wireless Controller Adapter für PS1/PS2
+15448851546497	mehrere-varianten	2026-10-14	Multifunktions-Ladestation mit Kühlung für PS5
+15448890311041	kein-stecker-merkmal	2026-10-14	Wireless-Controller-Adapter für Xbox 360 (PC)
+15449429410177	mehrere-varianten	2026-10-14	3-in-1 Wireless Charger & Bluetooth Speaker mit Touchlampe
+15449430851969	kein-stecker-merkmal	2026-10-14	3-in-1 Magnetische Falt-Ladestation
+15449469387137	kein-stecker-merkmal	2026-10-14	Kopfhörer-Adapter für Xbox One
+15449485869441	kein-stecker-merkmal	2026-10-14	Astronomisches Teleskop mit Telefonadapter
+15449487114625	kein-stecker-merkmal	2026-10-14	Universeller Stromadapter 6ft
+15449487868289	kein-stecker-merkmal	2026-10-14	Schnelllade-Adapter für MacBook & iPhone
+15449825673601	kein-stecker-merkmal	2026-10-14	Magnetischer Wireless-Ladegeraet
+15449826165121	kein-stecker-merkmal	2026-10-14	Magnetischer 4-in-1-Ladegeraet
+15450170982785	kein-stecker-merkmal	2026-10-14	2-in-1 Wireless Auto-Adapter
+15450828636545	mehrere-varianten	2026-10-14	3-in-1 Wireless Ladestation für mehrere Geräte
+15450831192449	mehrere-varianten	2026-10-14	Magnetische biegbare Auto-Halterung mit 15W Wireless Charger
+15450836861313	mehrere-varianten	2026-10-14	3-in-1 Wireless Ladestation für iPhone & Android
+15450837287297	mehrere-varianten	2026-10-14	4-in-1 Ladestation für alle Geräte
+15450839548289	mehrere-varianten	2026-10-14	3-in-1 Faltbares Wireless Charger Nachtlicht
+15452680782209	kein-stecker-merkmal	2026-10-14	Type-C Wireless Mirroring Adapter für PCs
+15452719350145	kein-stecker-merkmal	2026-10-14	Gelenkte 3-in-1-Ladestation für Smartphone, Uhren & Airpods
+15500928582017	kein-stecker-merkmal	2026-10-14	Auto-Ladestation mit Drahtloser Ladeunterstützung
+15500929073537	kein-stecker-merkmal	2026-10-14	Nickel-Batterie zu Kabelausgang Adapter
+15500936184193	kein-stecker-merkmal	2026-10-14	USB-C Audio-Adapter 2-in-1
+15500953813377	kein-stecker-merkmal	2026-10-14	Magnetischer Ladestation
+15500988580225	kein-stecker-merkmal	2026-10-14	Wireless Ladestation
+15500988809601	kein-stecker-merkmal	2026-10-14	Grossraum-Ladestation
