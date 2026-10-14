@@ -362,3 +362,4 @@ gid://shopify/Product/16615802044807	baby-lauflernschuhe-warm-und-rutschfest-a66
 gid://shopify/Product/16615802110343	bluetooth-smartwatch-mit-herzfrequenz-blutsaue-125760	Bluetooth Smartwatch mit Herzfrequenz & Blutsauerstoff
 gid://shopify/Product/16615812432263	led-lichterkette-stern-mond-fur-weihnachten-628400	LED-Lichterkette Stern & Mond für Weihnachten
 gid://shopify/Product/16616533459335	winter-babystiefel-mit-weicher-sohle-0dafce	Winter-Babystiefel mit weicher Sohle
+gid://shopify/Product/16617689907591	doppelseitiger-schal-621300	Doppelseitiger Schal

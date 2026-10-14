@@ -1,7 +1,7 @@
 {
   "zweck": "Geräte mit SIM-Karte, die nur 2G (GSM/GPRS) oder 3G (WCDMA/UMTS) können, funktionieren in der Schweiz nicht: 2G ist seit Januar 2023 bei allen drei Anbietern abgeschaltet (Swisscom 2022, Salt Anfang 2022, Sunrise 03.01.2023), 3G folgt 2025/2026. Betroffen sind GPS-Tracker, Kinder- und Senioren-Uhren mit SOS-Knopf und GSM-Alarmanlagen — bei Kinderuhren wäre ein Notruf stumm. Prüfer: automation/mobilfunk_netz_pruefen.py (CJ-Angaben + eigener Text), Bericht dropship/MOBILFUNK-2G-2026-10-10.md.",
   "kandidat_titel": "gps|ortung|locator|lokator|tracker|telefonuhr|telefon-uhr|kinder[- ]?(smart)?watch|smartwatch (f(ü|ue)r )?kinder|kinder[- ]?uhr|senioren[- ]?(smart)?(watch|uhr|handy|telefon|tracker)|smartwatch.*(sim|4g|videoanruf|video-ortung|sos|ortung|alle netze)|\\bgsm\\b|alarm(anlage|system)|(?<![\\d.,])\\b4g\\b|\\bsim\\b|wildkamera|notruf",
-  "nicht_titel": "drohne|quadrocopter|fitness-tracker|fitness tracker|blutsauerstoff|herzfrequenz-tracker|lese(zähler|zaehler)|h(ü|ue)lle|halter\\b|halterung|st(ä|ae)nder|ladekabel|kabel\\b|ladeger(ä|ae)t|ladestation|charger|powerbank|tasche|\\bbag\\b|\\bcase\\b|schutzfolie|panzerglas|kost(ü|ue)m|k(ü|ue)hler|clicker|klicker|drucker|beamer|projektor|mikrofon|stativ|gimbal|werkzeug|organizer|portemonnaie|lanyard|weste|kartenleser|festplatte|speicherkarte|tf card|reiniger|sterilisator|netzteil|signalverst(ä|ae)rker|detektor|isolation|sperrbox|kontrollbox|spielzeug|uhrenarmband|armband f(ü|ue)r|fahrradcomputer|velo-alarmanlage|anzeigeger(ä|ae)t|geschwindigkeitsmesser|kopf-display|motorrad-kamera|halsband f(ü|ue)r gps|brustgeschirr",
+  "nicht_titel": "drohne|quadrocopter|fitness-tracker|fitness tracker|blutsauerstoff|herzfrequenz-tracker|lese(zähler|zaehler)|h(ü|ue)lle|halter\\b|halterung|st(ä|ae)nder|ladekabel|kabel\\b|ladeger(ä|ae)t|ladestation|charger|powerbank|tasche|\\bbag\\b|\\bcase\\b|schutzfolie|panzerglas|kost(ü|ue)m|k(ü|ue)hler|clicker|klicker|drucker|beamer|projektor|mikrofon|stativ|gimbal|werkzeug|organizer|portemonnaie|lanyard|weste|kartenleser|festplatte|speicherkarte|tf card|reiniger|sterilisator|netzteil|signalverst(ä|ae)rker|detektor|isolation|sperrbox|kontrollbox|spielzeug|uhrenarmband|armband f(ü|ue)r|fahrradcomputer|velo-alarmanlage|anzeigeger(ä|ae)t|geschwindigkeitsmesser|kopf-display|motorrad-kamera|halsband f(ü|ue)r gps|brustgeschirr|lippenbalsam|lip ?balm|arbeitsspeicher|ram-?riegel|\\bddr\\d\\b",
   "neu": "(?<![\\d.,])\\b4G\\b|\\b5G[- ]?(NR|network|netz|mobilfunk)\\b|\\b(LTE|Cat[- ]?M1?|NB[- ]?IoT|VoLTE)\\b|all[- ]?net(com)?\\b|full[- ]?net(com)?\\b|alle netze|全网通|\\b(FDD|TDD)(-?LTE)?\\b|LTE-?(FDD|TDD)",
   "alt": "(?<![\\d.,])\\b(2G|3G)\\b|\\b(GSM|GPRS|WCDMA|UMTS|CDMA)\\b",
   "sim": "\\bSIM\\b|nano[- ]?SIM|micro[- ]?SIM|SIM[- ]?(card|karte)|插卡|Telefonkarte",
@@ -75,5 +75,27 @@
     }
   ],
   "wlan": "\\b(wi-?fi|wlan)\\b",
-  "ok_tag": "netz-geprueft"
+  "ok_tag": "netz-geprueft",
+  "kandidat_kanarien": [
+    {
+      "titel": "Farbwechselnder Lippenbalsam 4g",
+      "soll": false,
+      "warum": "14.10.2026: «4g» = Gramm (stand als 4g-Gerät im Ledger)"
+    },
+    {
+      "titel": "Z040 Desktop DDR3 4G 1600 AMD Arbeitsspeicher",
+      "soll": false,
+      "warum": "14.10.2026: «4G» = 4 GB RAM"
+    },
+    {
+      "titel": "4G LTE Kinder-Smartwatch mit Videoanruf",
+      "soll": true,
+      "warum": "echtes 4G-Gerät bleibt Kandidat"
+    },
+    {
+      "titel": "GPS Tracker für Auto mit SIM-Karte",
+      "soll": true,
+      "warum": "Tracker bleibt Kandidat"
+    }
+  ]
 }

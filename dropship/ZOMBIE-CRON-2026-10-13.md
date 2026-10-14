@@ -96,3 +96,12 @@ crontab -l | grep -c '^[^#].*/opt/luxe/repo'      # muss 0 ausgeben
 - Server-Quittung: `aktiv mit /opt/luxe/repo: 0`, `abgeschaltet (Marke): 2`; `crontab -l` zeigt keine aktive luxe-Zeile mehr.
 - **Wirkung messen:** Ampel `alter_lieferblock()` muss nach der Reparatur auf 0 fallen und **am 14.10. nach 04:00 UTC
   bei 0 bleiben**. Steigt sie wieder, schreibt ein anderer Job.
+
+## Nachkontrolle 14.10. (04:46 UTC, Routine `trig_01HW7U9qfYb4J8779VeCNzv7`)
+
+- **Ampel `alter_lieferblock()`:** `None` — keine Meldung (GEMESSEN).
+- **Admin-Suche Fenster heute 03:59–04:30 UTC:** 47 aktive Produkte in diesem Fenster aktualisiert, **0** davon mit
+  «je nach Land»/USA-Lieferblock; aktive Produkte mit «je nach Land» im ganzen Shop: **0** (GEMESSEN, `productsCount`).
+- **Kanarienvogel `/tmp/zombie_stand.txt`** (zuletzt geschrieben 04:28 UTC): alle Einträge `USA=nein`.
+- **Urteil:** Der Zombie-Cron des alten Hetzner-Klons schreibt nicht mehr — die Abschaltung vom 13.10. 07:45 hält.
+  Kein Auftrag an den Hetzner-Agenten nötig.
