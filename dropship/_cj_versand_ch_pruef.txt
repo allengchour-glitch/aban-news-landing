@@ -9312,3 +9312,7 @@ sommerkleid-rundhals-600100	2607100539111600800	16	10.01	ok	landeseite
 boho-chic-kleid-mit-halter-top-604300	2607100531091604900	16	8.79	ok	landeseite
 hohl-ausgebuchtes-halterneck-kleid-623100	2607100506401624400	16	10.83	ok	landeseite
 selbstgemaltes-oldigitalbild-216128	1577274214896381952	3	23.13	ok	landeseite
+eleganter-stehkragen-multicolor-armelloses-sch-617900	2607100351211618700	16	9.47	ok	landeseite
+ruckenfreies-strickkleid-614000	2607100332291614600	16	8.79	ok	landeseite
+schwarzes-und-weisses-abstrakes-bild-981888	1576914814247645184	16	13.76	ok	landeseite
+rosa-puffrock-prinzessin-615000	2607100329331615600	16	9.61	ok	landeseite
