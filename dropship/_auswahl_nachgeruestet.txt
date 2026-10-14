@@ -2265,3 +2265,5 @@
 16617706520967	Muster:2:2+ki	2026-10-14	led-nachtlicht-fur-entspannung-und-schlaf-612200
 16617706291591	Farbe:4:4+ki	2026-10-14	kreuz-positionierbohrer-fur-gipskartonplatten-0fe484
 16617706062215	Farbe:4+Grösse:3:12+ki	2026-10-14	interstellar-epoxidharz-lampe-619000
+16617705439623	Modell:2:2+ki	2026-10-14	smart-multimeter-mit-grossem-display-605800
+16617705243015	Ausführung:5:5+ki	2026-10-14	mechanische-hot-swap-kampftastatur-621000
