@@ -52,6 +52,20 @@
 
 
 
+## 🧷 Social-Queues: Poster schrieben fertige Reels aus alter Kopie weg (2026-10-14, ~05:10–07:10 UTC, Betreiber «ist alles fix»)
+
+13 fertige Reels wurden nie gepostet: Poster (metricool_tiktok_post, meta_reel_post …) lasen `reels_seed.csv` beim Start, arbeiteten
+Minuten (Tor, Gemini-Jury, Upload) und schrieben die GANZE Datei aus der Start-Kopie zurück → Zeilen, die der Reel-Motor dazwischen
+anhängte, weg (git: Zeile angelegt, < 1 min später im «CJ-Ledger»-Commit verschwunden). 8 lagen als Datei im Repo (Waisen-Nachtrag
+filterte `!gebaut.has(p)` → nie zurück), 5 auf dem Shopify-Speicher (nur über den git-Verlauf sichtbar). 55 Dateien berühren
+Queue-CSVs, 11 schrieben aus alter Kopie, 4 teilten den festen Namen `<csv>.tmp`; die Klasse stand seit 28.09. als Kommentar im Code.
+Fix: `lib/queue_csv.mjs` + `queue_csv.py` (Sperre, frisch lesen, 3-Wege je Feld, posted* gewinnt, fehlende Zeile bleibt, atomar,
+Stand-Marke), 27 Schreiber umgestellt, 13 Reels zurück, Wächter `queue_schreiber_wache.py` (Quelltext/Waisen/verschwundene IDs,
+täglich Rückholen aus dem Verlauf nach grünem Selbsttest). **Stresstest-Lehre:** «vollständig» aus dem INHALT raten genügt nicht —
+eine halbe Datei, die auf einer Satzgrenze endet, sieht ganz aus (330 statt 662 Datensätze bei ≥ 33 ms Pause eines O_TRUNC-
+Schreibers) → Stand-Marke (Inode/Grösse/mtime des eigenen letzten Schreibens), Fremdes erst nach Ruhezeit, Schrumpfen erst nach 10 s.
+Eine Sperrdatei entsteht mit Inhalt (link), sonst ist «leer» mehrdeutig. Bericht `dropship/QUEUE-SCHREIBER-2026-10-14.md`.
+
 ## 🗂️ Gemeinsamer Ordner: ein Werkzeug löschte die Listen der anderen (2026-10-14, Runde 04:25 UTC)
 
 `klassen_kontrolle.py` leerte am Rundenbeginn JEDE *.txt in `dropship/_klassen/` → die 2G/3G-Kandidatenliste (fremdes
@@ -20396,3 +20410,6 @@ Verschoben am 04.10.2026:
 <!-- aus CLAUDE.md verschoben 14.10.2026 04:53 UTC (VERBATIM) -->
 - 2026-10-12 · 🎄 **Weihnachts-Reihe zeigte oben 5/8 Kunstblumen/Tortenformen/Halloween-Deko: Gruppe `cjpartydeko` stempelte `weihnachten` auf alle 6 CJ-Kategorien → Tag nur mit Weihnachtswort im TITEL (`data/weihnachten_tag_regel.json`, 17 Kanarien py=js), 56 entfernt, Importer + Aufseher täglich; oben jetzt 12/12.** → `dropship/WEIHNACHTEN-TAG-2026-10-12.md`
 - 2026-10-12 · 🎃 **Halloween-Kollektion oben 12/12 CJ-Direktversand (Ankunft bis 12.11.) statt 132 Kostüme ab Schweizer Lager → `anlass_lieferzeit_wache.py` + `data/anlass_kollektionen.json` (MANUAL, Lager oben, nach Anlass zurück; Aufseher täglich); ChatGPT-Verkehr 1 → 17–32/Woche.** → `dropship/ANLASS-LIEFERZEIT-2026-10-12.md`
+<!-- aus CLAUDE.md verschoben 14.10.2026 07:10 UTC (VERBATIM) -->
+- 2026-10-13 · ↪️ **Weiterleitungen ins Leere: 169 von 1'657 zeigten auf gedraftete Produkte/abgemeldete Kollektionen (404) → `weiterleitung_ziel_wache.py` (täglich, Ketten glätten, totes Ziel bekommt Ersatz, Ledger + Rückweg): 197 gedreht, 54 angelegt, 0 offen. `kollektion_taugt()` prüfte «veröffentlicht» nur im Docstring (handy-powerbanks) — Kanarien prüfen jetzt jedes Tabellenziel.** → Journal 13.10. ↪️
+- 2026-10-13 · 🧟 **Täglicher USA-Lieferblock 04:10 = root-Cron des Hetzner-Servers (04:00 `run-api-jobs.sh` + */10 `vps-cmd-poll.sh` aus dem toten Klon /opt/luxe/repo, Zweig CizQ6): ~1'400 Produkte/Morgen. ✅ abgeschaltet 13.10. 07:45 per Wartungsaktion `alt_cron_aus` (erst nach Betreiber «mach du hetzner» — ohne Freigabe lehnte der Klassifikator ab; Rückweg `alt_cron_zurueck`), Ampel `alter_lieferblock()`. Regel: Schaden zur festen Uhrzeit → zuerst ALLE Zeitpläne lesen.** → `dropship/ZOMBIE-CRON-2026-10-13.md`

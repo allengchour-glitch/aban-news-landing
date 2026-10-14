@@ -8805,3 +8805,6 @@ portabler-smartphone-kuhler-mit-clip-598208	1669292816494764032	6	7.13	ok	landes
 bluetooth-gaming-controller-mit-3d-vr-brille-341696	1653589220662976512	16	5.41	ok	landeseite
 wireless-mini-game-konsole-136000	1640935195828301824	16	8.79	ok	landeseite
 diy-diamantpuzzle-karte-mit-oma-motiv-256450	2008849942508445697	16	6.63	ok	landeseite
+diy-diamant-malerei-karte-geburtstag-fest-hand-389185	2008850674519080961	16	6.63	ok	landeseite
+diy-kaffeemuster-diamant-kunst-untersetzer-813569	2007351046700699650	16	7.17	ok	landeseite
+diy-diamantkunst-kuchenmatte-mit-halterung-932930	2007359182183624705	16	7.17	ok	landeseite
