@@ -26,6 +26,11 @@ saison https://luxestyle.ch/collections/kleine-geschenke-mitbringsel
 saison https://luxestyle.ch/collections/premium-geschenke
 saison https://luxestyle.ch/collections/weihnachtspullover
 saison https://luxestyle.ch/collections/handwaermer
+# 14.10.2026 ergänzt: Halloween-Seite (inspect 14.10. ~10:37: «Discovered – currently not indexed», nie abgerufen) und die
+# zwei Abendkleid-Seiten der Kauf-Strecke (Sirène «Crawled – currently not indexed», letzter Abruf 18.08.).
+saison https://luxestyle.ch/collections/halloween
+produkt https://luxestyle.ch/products/abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe
+produkt https://luxestyle.ch/products/abendkleid-aurora-satin-spaghettitrager-schlitz
 
 suchbegriff https://luxestyle.ch/collections/futterautomaten
 suchbegriff https://luxestyle.ch/collections/trinkbrunnen-katzen

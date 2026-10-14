@@ -1,5 +1,20 @@
 # COWORK-BEFEHL — Fassung 21.09.2026, 09:40 UTC (für heute Abend)
 
+## 🆕 14.10. 10:39 UTC — Google: Halloween-Seite «Indexierung beantragen» (2 Min., am Handy möglich, eilt: Halloween in 17 Tagen)
+**Gemessen (Search Console, URL-Prüfung):** `/collections/halloween` ist «Discovered – currently not indexed». Google hat die Seite
+**noch nie abgerufen**, sie bekommt also keinen einzigen Besucher aus der Google-Suche. Seiten mit Link auf der Startseite wurden
+dagegen gestern abgerufen: `kostueme-ch-lager` und `weihnachten-2026` am 13.10. um 20:04.
+Seit heute verlinken das Band oben auf jeder Seite und die Startseiten-Reihe auf Halloween. Ein Antrag beschleunigt das um Tage.
+
+**Klickweg:** search.google.com/search-console → Property `luxestyle.ch` → oben in die Suchleiste die Adresse einfügen → «Indexierung beantragen».
+Der Reihe nach, je ~1 Min. (Google erlaubt ~10 am Tag):
+1. `https://luxestyle.ch/collections/halloween`
+2. `https://luxestyle.ch/collections/weihnachtspyjama-familie` (Google kennt die Adresse noch gar nicht)
+3. `https://luxestyle.ch/collections/geschenke-fuer-sie`
+4. `https://luxestyle.ch/products/abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe` (letzter Abruf 18.08., vor dem neuen Text)
+
+Ich messe am Do 15.10. mit dem Index-Messgerät nach (`tools/index_probe.py`, die vier stehen jetzt in der Liste).
+
 ## 🆕 13.10. 17:00 UTC — vier kurze Entscheide (Verbesserungsrunde, alles Übrige macht die Sitzung) — Stand 18:15: 1 ✅ · 3 ✅ · 4 ✅ · **nur 2 offen**
 
 1. ✅ **ERLEDIGT 13.10. (Betreiber-Klick «P1D ja»; API gemessen 18:10 UTC: `processingTime` = P1D; Transit nachgezogen in Commit 5e315c409).** ~~**Bearbeitungszeit 3 → 1 Werktag?**~~ (Admin → Einstellungen → Versand und Zustellung → Voraussichtliche Zustellung, ~1 Min.; per API nicht schreibbar.)
