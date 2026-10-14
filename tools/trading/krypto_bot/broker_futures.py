@@ -202,7 +202,9 @@ class Futures:
                     return {**o, "nachgefragt": True}
                 if o.get("status") in ("CANCELED", "EXPIRED", "REJECTED", "EXPIRED_IN_MATCH"):
                     raise ex
-            raise UnklarFehler(f"Status unklar nach {type(ex).__name__}: {getattr(ex, 'msg', '') or ex}") from ex
+            unklar = UnklarFehler(f"Status unklar nach {type(ex).__name__}: {getattr(ex, 'msg', '') or ex}")
+            unklar.cid = cid  # damit der Aufrufer später per Kennung nachfragen kann (Pilot 2.0)
+            raise unklar from ex
 
     def offene_stops(self, symbol):
         """Stop-Aufträge (closePosition) für dieses Symbol: [{algoId|orderId, side, stopPrice}].
