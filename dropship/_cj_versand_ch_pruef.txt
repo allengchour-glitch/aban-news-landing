@@ -8765,3 +8765,13 @@ vitamin-c-konzentrat-956097	2075400270448287746	3	6.02	ok	landeseite
 dr-japan-sakura-lotion-477826	2075402340172226561	3	6.75	ok	landeseite
 vitamin-c-gesichtsreiniger-dr-213250	2075401291206156290	3	6.58	ok	landeseite
 24k-anti-aging-serum-710722	2075402929673265154	3	8.57	ok	landeseite
+collagen-verstarkende-multi-effekt-lotion-326081	2075399845452046338	3	8.16	ok	landeseite
+sakura-gesichtspflege-440706	2075402244391800833	3	5.46	ok	landeseite
+sakura-gesichtswasche-608770	2075402421886357505	3	6.66	ok	landeseite
+ingwer-gesichtcreme-714625	2075397969792851969	3	7.08	ok	landeseite
+gesichtsreiniger-mit-ingwer-143041	2075398072250503169	3	6.49	ok	landeseite
+multi-effekt-augencreme-859458	2075400006797025282	3	5.80	ok	landeseite
+ubernachtige-kollagen-gesichtspflege-751297	2075400092379111425	3	7.24	ok	landeseite
+ingwer-ol-fur-die-haut-681282	2075398339884847105	3	6.45	ok	landeseite
+dr-24k-anti-aging-reinigungsgel-142402	2075402712081862657	3	6.59	ok	landeseite
+dr-collagen-multi-effekt-starkendes-serum-110274	2075399491834470402	3	6.85	ok	landeseite

@@ -7339,3 +7339,12 @@ gid://shopify/Product/15472047358337	zugeordnet	25	Corduroy Hoodie mit halber Kn
 gid://shopify/Product/15472047391105	zugeordnet	49	Freizeit-Set mit Pullover und Midirock
 gid://shopify/Product/15472047423873	zugeordnet	8	Bunter Polka-Dot Patchwork Pullover
 gid://shopify/Product/15472047456641	zugeordnet	60	Herzring aus Titanstahl mit Zirkonia
+gid://shopify/Product/15472047522177	zugeordnet	5	Strick-Cardigan mit Stehkragen
+gid://shopify/Product/15472047554945	zugeordnet	3	Grosse Holzperlenkette mit Hanfquasten
+gid://shopify/Product/15472047587713	zugeordnet	60	Leichtes Hunde-Brustgeschirr mit Leine
+gid://shopify/Product/15472047784321	zugeordnet	6	French Press Kaffeebereiter aus Borosilikatglas
+gid://shopify/Product/15472047817089	zugeordnet	1	Katzenpfoten-Massagebürste für die Kopfhaut
+gid://shopify/Product/15472047849857	zugeordnet	30	Sonnensegel mit Zubehör für Aussenbereiche
+gid://shopify/Product/15472049783169	zugeordnet	70	Vintage Langarm-Kleid mit Stehkragen
+gid://shopify/Product/15472049848705	zugeordnet	12	Blumiges langes Damen-Kleid
+gid://shopify/Product/15472049881473	zugeordnet	36	Elegantes Hemdblusenkleid mit Schnürung
