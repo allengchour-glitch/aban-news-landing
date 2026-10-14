@@ -1,6 +1,6 @@
 # SEO-Autopilot — Wirkung
 
-Stand 2026-10-14 12:34 UTC · Quelle ShopifyQL (human, 90 T)
+Stand 2026-10-14 12:50 UTC · Quelle ShopifyQL (human, 90 T)
 
 | Datum | Artikel | Phrase | Sitzungen | Warenkörbe | Urteil |
 |---|---|---|---|---|---|
@@ -16,3 +16,4 @@ Stand 2026-10-14 12:34 UTC · Quelle ShopifyQL (human, 90 T)
 | 2026-10-11 | [ein-gemuetliches-zuhause-ratgeber-xxl-hundebetten](https://luxestyle.ch/blogs/ratgeber/ein-gemuetliches-zuhause-ratgeber-xxl-hundebetten) | hundebetten xxl | 0 | 0 | zu jung (4 T) |
 | 2026-10-12 | [fahrzeuge-fuer-kinder-ratgeber](https://luxestyle.ch/blogs/ratgeber/fahrzeuge-fuer-kinder-ratgeber) | fahrzeuge für kinder | 0 | 0 | zu jung (3 T) |
 | 2026-10-13 | [roecke-fuer-maenner-guide](https://luxestyle.ch/blogs/ratgeber/roecke-fuer-maenner-guide) | röcke für männer | 0 | 0 | zu jung (2 T) |
+| 2026-10-14 | [jumpsuits-damen-kaufen-guide](https://luxestyle.ch/blogs/ratgeber/jumpsuits-damen-kaufen-guide) | jumpsuits damen kaufen | 0 | 0 | zu jung (1 T) |
