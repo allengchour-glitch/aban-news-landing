@@ -2269,3 +2269,4 @@
 16617705243015	Ausführung:5:5+ki	2026-10-14	mechanische-hot-swap-kampftastatur-621000
 16617704096135	Farbe:6:6+ki	2026-10-14	warme-lederhandschuhe-fur-herren-3f8bf6
 16617703932295	Modell:2:2+ki	2026-10-14	magnetischer-handy-kuhler-mit-digitalanzeige-617300
+16617703833991	Ausführung:3:3+ki	2026-10-14	smarte-dimmbare-led-lampe-627100
