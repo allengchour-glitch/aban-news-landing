@@ -9575,3 +9575,5 @@ herbstsweater-mit-lochmuster-613900	2607070905181614500	16	9.88	ok	landeseite
 minimalistische-streifenjacke-mit-knopfen-614500	2607070336161615400	16	9.20	ok	landeseite
 pastellfarbener-casual-pullover-630900	2607070309101631600	16	8.66	ok	landeseite
 damen-strickpullover-mit-tassel-design-fur-her-625200	2607060859371626500	16	10.29	ok	landeseite
+yoga-dehnband-fur-ruckenoffnung-615800	2603130333301616100	16	6.63	ok	landeseite
+gestreifter-rollkragenpullover-615600	2607060827041616400	16	10.15	ok	landeseite
