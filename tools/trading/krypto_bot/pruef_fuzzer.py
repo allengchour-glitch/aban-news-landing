@@ -6,6 +6,8 @@ die Invarianten. NUR Spielgeld gegen 127.0.0.1; schaltet Pilot 2.0 nur in DIESEM
   python3 -B pruef_fuzzer.py laeufe VON BIS [TAGE]   # Tage mit zufälligen Signalen, Kursen, Störungen und Not-Aus
   python3 -B pruef_fuzzer.py notaus VON BIS          # zufälliger Bestand, dann Not-Aus mit harten (auch dauerhaften) Störungen
   python3 -B pruef_fuzzer.py monotonie VON BIS       # Phase «nur Stornieren» (ab Laufbeginn oder mitten im Lauf): nie Schutz verlieren
+  python3 -B pruef_fuzzer.py listen VON BIS          # Tage mit EINER dauerhaft unlesbaren Auftragsliste (Setzen/Löschen gehen),
+                                                     # in der Hälfte der Seeds zum Schluss ein Not-Aus (13. Prüfung, Prüfer-Fuzzer)
 
 Befunde (jeder ist ein Fehler):
   AUSNAHME           ausfuehren()/Not-Aus warf eine Ausnahme nach aussen
@@ -30,9 +32,10 @@ Bewusst NICHT gezählt (begründet):
     NACH_SPRUNG-Prüfung gilt weiter.
   • Läufe ohne Lauf-Warnung sind still (STILL_*), mit Warnung laut (LAUT_*) — beides zählt als Befund. Ausnahme DAUER_*: Binance
     lehnt in diesem Schritt dauerhaft (≥ 50 Wiederholungen) GENAU DIE SCHUTZ-HANDLUNG ab — einen neuen Stop der Seite setzen, die
-    den fehlenden Schutz bräuchte (die Störungsregel muss einen solchen Stop-Auftrag treffen), oder das Lesen der Lage bzw. der
-    eigenen Auftragslisten; dauerhaft abgelehnte Marktaufträge, Löschungen oder cancelReplace zählen NICHT (12. Prüfung K1),
-    der Kurs-Abruf auch nicht —, Pilot 2.0 meldet die Lücke laut UND hat in diesem Schritt keinen eigenen Stop entfernt (sonst
+    den fehlenden Schutz bräuchte (die Störungsregel muss einen solchen Stop-Auftrag treffen), oder das Lesen der Lage (Konto,
+    Position); dauerhaft abgelehnte Marktaufträge, Löschungen oder cancelReplace zählen NICHT (12. Prüfung K1), der Kurs-Abruf
+    auch nicht, und seit der 13. Prüfung (W2) auch keine unlesbare Auftragsliste (dafür hat Pilot 2.0 eigene Wege: Kennung im
+    Buch, Stop zuerst setzen, beidseitig) —, Pilot 2.0 meldet die Lücke laut UND hat in diesem Schritt keinen eigenen Stop entfernt (sonst
     hätte er ihn stehen lassen können) — dann kann kein Code schützen; geprüft wird der Stand NACH der Nachkontrolle (Störung
     vorbei), der muss sauber sein.
   • STORNO_ZUERST_* (monotonie, und seit der 11. Prüfung auch in 15 % der Lauf-Tage und Not-Aus): Schutzverlust nur, weil
@@ -41,10 +44,14 @@ Bewusst NICHT gezählt (begründet):
     solange ein Stop überhaupt ersetzt werden muss; Testnetz-Prüfpunkt (README). Stille Lücken zählen weiter als Befund.
   • LIMIT_LUECKE_* (Konto ohne STOP_LOSS): die Lücke ist genau ein ausgelöster STOP_LOSS_LIMIT, dessen Limit eine Kurslücke
     übersprungen hat — er hängt bis zum nächsten Lauf (der steigt dann zum Markt aus); bekanntes Restrisiko (README). Gilt nur,
-    wenn der Sprung NACH dem letzten Blick von Pilot 2.0 auf die Spot-Auftragsliste kam (Ereignis-Takt der Prüf-Börse) — sah er
-    den hängenden Stop und blieb trotzdem drin, ist es ein echter Befund (12. Prüfung, auch im Zweig «beidseitig»).
+    wenn der Stop NACH dem letzten Blick von Pilot 2.0 auf die Spot-Auftragsliste zu hängen begann (Ereignis-Takt der Prüf-Börse,
+    je Auftrag — 13. Prüfung K1: eine spätere kleine Kursbewegung entschuldigt ihn nicht wieder) — sah er den hängenden Stop und
+    blieb trotzdem drin, ist es ein echter Befund (12. Prüfung, auch im Zweig «beidseitig»).
 Not-Aus-Fuzzer: in 25 % der Seeds springt der Kurs genau beim ersten Schutz-Stop um 5,5–15 %, oft mit gesperrtem Spot-Ticker UND
 Futures-Markpreis (12. Prüfung W3) — eigener Zufall, die Szenarien alter Seeds bleiben gleich.
+Listen-Fuzzer (13. Prüfung): an zufälligen Tagen ist EINE eigene Auftragsliste (Spot openOrders oder Perp openAlgoOrders) ab einer
+zufälligen Anfrage dauerhaft gestört — Pilot 2.0 hat dafür eigene Wege (Kennung im Buch, zuerst setzen, beidseitig): jede Lücke
+nach Lauf + Nachkontrolle ist ein Befund, KEINE DAUER-Ausnahme.
 """
 from __future__ import annotations
 
@@ -268,12 +275,20 @@ def _haengend(k, sym):
                and o["status"] in ("NEW", "PARTIALLY_FILLED") and o.get("aktiv") and o.get("preis", 0.0) > B.kurs[sym])
 
 
+def _haengend_seit(k, sym):
+    """Seit wann (Ereignis-Takt der Prüf-Börse) hängt der jüngste ausgelöste STOP_LOSS_LIMIT über dem Kurs? −1 = keiner."""
+    return max((o.get("haengt_takt", -1) for o in k.orders.values() if o["symbol"] == sym and o["typ"] == "STOP_LOSS_LIMIT"
+                and o["status"] in ("NEW", "PARTIALLY_FILLED") and o.get("aktiv") and o.get("preis", 0.0) > B.kurs[sym]),
+               default=-1)
+
+
 def _limit_luecke(k, sym, luecke):
     """Unvermeidbare Limit-Lücke: Konto ohne STOP_LOSS, die Lücke ist genau ein über dem Kurs hängender STOP_LOSS_LIMIT, UND
-    Pilot 2.0 hat die Spot-Auftragsliste seit der letzten Kursbewegung nicht mehr gesehen (der Sprung kam nach seinem letzten
-    Blick). Hat er die Liste danach gelesen, hätte er den hängenden Stop erkennen und zum Markt aussteigen müssen → echter Befund."""
+    Pilot 2.0 hat die Spot-Auftragsliste nicht mehr gesehen, seit der Stop zu hängen begann (der Sprung kam nach seinem letzten
+    Blick). Hat er die Liste danach gelesen, hätte er den hängenden Stop erkennen und zum Markt aussteigen müssen → echter Befund
+    — auch wenn sich der Kurs danach noch ein wenig bewegt hat (13. Prüfung K1: die Zeit zählt je Auftrag, nicht je Bewegung)."""
     return ("STOP_LOSS" not in B.stop_typen and luecke <= _haengend(k, sym) + STEP_S[sym]
-            and B.liste_takt.get(sym, -1) < B.bewegt_takt.get(sym, -1))
+            and B.liste_takt.get(sym, -1) < _haengend_seit(k, sym))
 
 
 DAUER_SPOT = ("/api/v3/order", "/api/v3/order/cancelReplace", "/api/v3/openOrders")
@@ -294,20 +309,20 @@ def _schutzseite(befund):
 
 _STOP_SPOT = ({"type": "STOP_LOSS", "side": "SELL", "symbol": "BTCUSDT"}, {"type": "STOP_LOSS_LIMIT", "side": "SELL", "symbol": "BTCUSDT"})
 _STOP_PERP = ({"algoType": "CONDITIONAL", "type": "STOP_MARKET", "side": "BUY", "reduceOnly": "true", "symbol": "BTCUSDT"},)
-_LESEN_LISTEN = DAUER_LESEN + ("/api/v3/openOrders", "/fapi/v1/openAlgoOrders")
 
 
 def _dauer(regeln, befund=None):
     """Lehnt Binance in diesem Schritt dauerhaft genau die SCHUTZ-HANDLUNG ab — einen neuen Stop der betroffenen Seite setzen
     (POST /api/v3/order mit Stop-Typ bzw. POST /fapi/v1/algoOrder, die Störungsregel muss einen solchen Auftrag treffen) — oder
-    das Lesen der Lage bzw. der eigenen Auftragslisten? Nur das macht eine Lücke unvermeidbar. Dauerhaft abgelehnte
-    Marktaufträge, Löschungen oder cancelReplace NICHT (12. Prüfung K1: so blieben vermeidbare Lücken versteckt), ebensowenig
-    eine Störung auf dem Kurs-Abruf (10. Prüfung W4). Mit Befund: nur die Seite, die den Schutz bräuchte (11. Prüfung K3)."""
+    das Lesen der Lage (Konto, Position)? Nur das macht eine Lücke unvermeidbar. Dauerhaft abgelehnte Marktaufträge, Löschungen
+    oder cancelReplace NICHT (12. Prüfung K1: so blieben vermeidbare Lücken versteckt), ebensowenig eine Störung auf dem
+    Kurs-Abruf (10. Prüfung W4) oder auf den eigenen Auftragslisten (13. Prüfung W2: Pilot 2.0 sichert auch ohne Liste — über die
+    Kennung im Buch, «zuerst setzen», beidseitig). Mit Befund: nur die Seite, die den Schutz bräuchte (11. Prüfung K3)."""
     seite = None if befund is None else _schutzseite(befund)
     for r in regeln:
         if r.get("anzahl", 1) < 50 or r.get("art") in ("kurs", "teil", "spaet", "spaet_u", "unsichtbar"):
             continue
-        if r.get("pfad") in _LESEN_LISTEN and r.get("methode") in (None, "GET"):
+        if r.get("pfad") in DAUER_LESEN and r.get("methode") in (None, "GET"):
             return True
         if r.get("methode") not in (None, "POST"):
             continue
@@ -798,8 +813,62 @@ def notaus_runde(seed):
     return funde
 
 
+def listen_runde(seed):
+    """Listen-Fuzzer (13. Prüfung, nach dem Fuzzer des Prüfers): 2–6 Tage mit wechselnder Richtung; an 60 % der Tage ist EINE
+    Auftragsliste ab einer zufälligen Anfrage dauerhaft gestört (Setzen und Löschen gehen weiter). Lücke nach Lauf UND
+    Nachkontrolle = Befund (keine DAUER-Ausnahme). In der Hälfte der Seeds zum Schluss ein Not-Aus mit gestörter Liste (manchmal
+    dazu ein abgelehnter Rückkauf/Verkauf): bleibt dann etwas ungeschützt und meldet er nicht «alles zu», ist das ein Befund."""
+    rng = random.Random(seed)
+    k = neues_konto(rng.choice([5000, 20000, 60000]))
+    d = neu_buch()
+    env = env_echt(kapital=k.frei["USDT"])
+    funde = []
+    for tag in range(rng.randint(2, 6)):
+        ents = [E(m, rng.choice([-1, -0.5, -0.25, 0, 0.25, 0.5, 1]), stop_abstand=rng.uniform(0.03, 0.12))
+                for m in rng.choice([["BTC"], ["ETH"], ["BTC", "ETH"]])]
+        stoer = rng.random() < 0.6
+        if stoer:
+            B.regeln = [dict(methode="GET", pfad=rng.choice(["/fapi/v1/openAlgoOrders", "/api/v3/openOrders"]), pred=None,
+                             art=rng.choice(["vor503", "429"]), anzahl=10 ** 6, ab_req=B.n_req + rng.randint(1, 60))]
+        try:
+            r = lauf(ents, env, d)
+        except Exception:  # noqa: BLE001
+            B.regeln = []
+            funde.append(("AUSNAHME", {"seed": seed, "tag": tag, "trace": traceback.format_exc()[-1500:]}, None))
+            return funde
+        B.regeln = []
+        if [b for b in schutz_befunde(k, unklar_je_markt(d)) + folgeschaden(k) if "STAUB" not in b[0]]:
+            nachkontrolle(env, d)
+            for b in schutz_befunde(k, unklar_je_markt(d)) + folgeschaden(k):
+                funde.append((("LAUT_" if r.get("warnung") else "STILL_") + b[0],
+                              {"seed": seed, "tag": tag, "stoer": stoer, "ents": [(e["markt"], e["hebel"]) for e in ents],
+                               "lage": zeigen(k), "zeilen": [z for z in r["zeilen"] if "⚠" in z][-6:]}, b))
+        for s_ in SYMS:
+            B.bewegen(s_, round(B.kurs[s_] * (1 + rng.gauss(0, 0.03)), 2))
+    if rng.random() < 0.5:  # zum Schluss ein Not-Aus mit gestörter Liste (und manchmal abgelehntem Rückkauf/Verkauf)
+        B.regeln = [dict(methode="GET", pfad=rng.choice(["/fapi/v1/openAlgoOrders", "/api/v3/openOrders"]), pred=None,
+                         art=rng.choice(["vor503", "429"]), anzahl=10 ** 6, ab_req=B.n_req + rng.randint(1, 30))]
+        if rng.random() < 0.5:
+            B.regeln.append(dict(methode="POST", pfad=rng.choice(["/fapi/v1/order", "/api/v3/order"]), pred=None,
+                                 art=rng.choice(["429", "vor503"]), anzahl=rng.choice([1, 2, 10 ** 6])))
+        try:
+            r = lauf([], env, d, notaus=True)
+        except Exception:  # noqa: BLE001
+            B.regeln = []
+            funde.append(("AUSNAHME", {"seed": seed, "notaus": True, "trace": traceback.format_exc()[-1500:]}, None))
+            return funde
+        B.regeln = []
+        if r.get("alles_zu") is not True:
+            for b in schutz_befunde(k, unklar_je_markt(d)) + folgeschaden(k):
+                funde.append(("NOTAUS_" + ("LAUT_" if r.get("warnung") else "STILL_") + b[0],
+                              {"seed": seed, "lage": zeigen(k), "zeilen": [z for z in r["zeilen"] if "⚠" in z][-8:]}, b))
+        elif not flach(k):
+            funde.append(("FALSCH_ALLES_ZU", {"seed": seed, "lage": zeigen(k)}, None))
+    return funde
+
+
 def main():
-    if len(sys.argv) < 4 or sys.argv[1] not in ("laeufe", "notaus", "monotonie"):
+    if len(sys.argv) < 4 or sys.argv[1] not in ("laeufe", "notaus", "monotonie", "listen"):
         print(__doc__)
         return 2
     art, von, bis = sys.argv[1], int(sys.argv[2]), int(sys.argv[3])
@@ -807,6 +876,8 @@ def main():
     for seed in range(von, bis):
         if art == "laeufe":
             alle += laeufe_runde(seed, int(sys.argv[4]) if len(sys.argv) > 4 else 30)
+        elif art == "listen":
+            alle += listen_runde(seed)
         else:
             alle += notaus_runde(seed) if art == "notaus" else monotonie_runde(seed)
     zaehler = Counter(x[0] for x in alle)
