@@ -139,6 +139,12 @@ def _doppelt(ex):
     return "duplicate" in t or "-4116" in t
 
 
+def _reduce_abgelehnt(ex):
+    """Binance lehnt einen reduceOnly-Auftrag ab (−2022), z. B. einen Stop über mehr als die offene Position."""
+    t = _text(ex).lower()
+    return "-2022" in t or "reduceonly" in t
+
+
 def _auth_fehler(ex):
     return getattr(ex, "code", None) == 401 or any(c in _text(ex) for c in AUTH_FEHLER)
 
@@ -1208,6 +1214,16 @@ def _perp_abgleich(fut, k, d, st, e, s, erg, warn, gesetzt, schutz, lesen, gehan
     except _Ausgeloest:
         _perp_raus(fut, k, d, st, soll, kurs, erg, warn, gesetzt, f"Stop {p_r:g} würde sofort auslösen (Kurs gestiegen)", lesen, pos)
         return
+    except Exception as ex:  # noqa: BLE001
+        offen = PL.runde(abs(min(pos, 0.0)), regeln["step"])
+        if not (_reduce_abgelehnt(ex) and regeln["step"] / 2 <= offen < soll - regeln["step"] / 2):
+            raise
+        # beidseitig: nimmt Binance keinen reduceOnly-Stop über mehr als den offenen Short, dann wenigstens den sichern
+        r, p_ok = _setze_stop(lambda preis, c: fut.stop_menge(sym, "BUY", offen, preis, regeln["tick"], cid=c), preise,
+                              _kennung(CID_STOP_PERP))
+        warn(f"{k}: Binance nimmt keinen reduceOnly-Stop über mehr als den offenen Short — Stop nur über {offen:g}; ein unklarer "
+             "Short hätte keinen Stop, bis er geklärt ist. Bitte im Binance-Konto prüfen!")
+        soll = offen
     st["perp"], st["p_short"] = r.get("algoId"), p_ok
     gesetzt.append(f"Stop {soll:g} @ {PL.runde(p_ok, regeln['tick']):g}")
     if p_ok != p:
@@ -1617,8 +1633,19 @@ def _notaus_schutz(spot, fut, st, k, sym, coin, pos, pos_vor, frei, gebunden, ku
                 st["perp"], gedeckt = None, 0.0
         fehlt = PL.runde(soll_p - gedeckt, rf["step"]) if soll_p - gedeckt > rf["step"] / 2 else 0.0
         if fehlt > 0 and fehlt * kurs >= STAUB_USDT:
-            r, p = setzen(lambda preis, c: fut.stop_menge(sym, "BUY", fehlt, preis, rf["tick"], cid=c),
-                          _stop_preis(None, st.get("p_short"), kurs, -1), -1, _kennung(CID_STOP_PERP))
+            try:
+                r, p = setzen(lambda preis, c: fut.stop_menge(sym, "BUY", fehlt, preis, rf["tick"], cid=c),
+                              _stop_preis(None, st.get("p_short"), kurs, -1), -1, _kennung(CID_STOP_PERP))
+            except Exception as ex:  # noqa: BLE001
+                kleiner = PL.runde(max(0.0, short - gedeckt), rf["step"])
+                if not (beidseitig and _reduce_abgelehnt(ex) and rf["step"] / 2 <= kleiner < fehlt - rf["step"] / 2):
+                    raise
+                # nimmt Binance keinen reduceOnly-Stop über mehr als den offenen Short: wenigstens den sichern
+                r, p = setzen(lambda preis, c: fut.stop_menge(sym, "BUY", kleiner, preis, rf["tick"], cid=c),
+                              _stop_preis(None, st.get("p_short"), kurs, -1), -1, _kennung(CID_STOP_PERP))
+                warn(f"Not-Aus {modus} {k}: Binance nimmt keinen reduceOnly-Stop über mehr als den offenen Short — Stop nur über "
+                     f"{kleiner:g}. Bitte prüfen!")
+                fehlt = kleiner
             st["perp"], st["p_short"] = r.get("algoId"), p
             warn(f"Not-Aus {modus} {k}: Schutz-Stop für den Short gesetzt — {fehlt:g} @ {PL.runde(p, rf['tick']):g}. Not-Aus wiederholen!")
     except Exception as ex:  # noqa: BLE001

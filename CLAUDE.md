@@ -74,8 +74,10 @@ aber Belege p1–p11 + zwei Fuzzer gegen eine noch strengere Börse. Alles behob
 - **Abgleich:** Liste/Konto nicht lesbar → trotzdem sichern (`SCHUTZ_WARTEN`, Stand von vorhin, `_spot_ohne_liste`/`_perp_ohne_liste`);
   gesperrte Coins gelten als eigener Stop; `_perp_raus` kauft höchstens die offene Position.
 - **Neu:** `pruef_boerse.py` (strenge Börse der 8. Prüfung, + Storno per Kennung, reduceOnly > Position → −2022), `pruef_fuzzer.py`
-  (`laeufe`/`notaus`), `test_pilot2_streng.py` (46 Tests, im PC-Selbsttest, Cockpit + CI). 1600 Not-Aus + 200 × 30 Tage → **0 Befunde**
-  (nur Staub < 1 Futures-Schritt). Mutationen 15/15 (`python3 -B`!). test_pilot2_live 149.
+  (`laeufe`/`notaus`), `test_pilot2_streng.py` (48 Tests, im PC-Selbsttest, Cockpit + CI). 1600 Not-Aus + 200 × 30 Tage → **0 Befunde**
+  (nur Staub < 1 Futures-Schritt). Mutationen 17/17 (`python3 -B`!). test_pilot2_live 149.
+- **Offen (nur Testnetz klärt es):** nimmt Binance einen reduceOnly-Algo-Stop mit Menge > Position an und bleibt er stehen? Lehnt es ab
+  (−2022), sichert Pilot 2.0 wenigstens den offenen Short + Warnung (getestet mit `B.reduce_algo_streng`).
 - **Nächster Schritt:** 9. unabhängige Prüfung (Ausgabelimit beachten → enger Auftrag, Fuzzer im Repo benutzen); erst bei 0 Blockern
   FREIGEGEBEN=True (eigener PR) → Testnetz → Probelauf → kleiner Betrag.
 

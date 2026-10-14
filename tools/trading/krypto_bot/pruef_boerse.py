@@ -114,6 +114,7 @@ class Boerse:
         self.verletzungen = []
         self.stop_typen = ["LIMIT", "MARKET", "STOP_LOSS", "STOP_LOSS_LIMIT", "TAKE_PROFIT", "TAKE_PROFIT_LIMIT", "LIMIT_MAKER"]
         self.vor_jeder_anfrage = None   # Haken: f(methode, pfad, params)
+        self.reduce_algo_streng = False  # True: reduceOnly-Stop über mehr als die offene Position wird abgelehnt (−2022)
         self.nach_jeder_anfrage = None
 
     def konto_anlegen(self, keys, secret, uid, usdt=20000.0):
@@ -642,6 +643,11 @@ class Handler(BaseHTTPRequestHandler):
         cid = p.get("clientAlgoId") or f"web_{B.neue_id()}"
         if any(a.get("clientAlgoId") == cid for a in k.algos.values()):
             return {"code": -4116, "msg": "ClientOrderId is duplicated."}, 400
+        if B.reduce_algo_streng and p.get("reduceOnly") == "true" and "quantity" in p:
+            pos = k.pos[sym]
+            offen = -pos if p["side"] == "BUY" else pos
+            if float(p["quantity"]) > max(0.0, offen) + 1e-12:
+                return {"code": -2022, "msg": "ReduceOnly Order is rejected."}, 400
         trig = float(p["triggerPrice"])
         mark = B.kurs[sym]
         if (p["side"] == "BUY" and trig <= mark) or (p["side"] == "SELL" and trig >= mark):

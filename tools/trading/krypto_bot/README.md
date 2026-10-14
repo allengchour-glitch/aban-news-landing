@@ -683,7 +683,7 @@ Andere Strategie wählen: `setx KRYPTO_STRATEGIE "halten"` (immer 100 %) oder `"
 > Blocker mehr findet — bis dahin wirkt `KRYPTO_PILOT2=an` nicht (siehe «Starten» unten).
 
 Gleiche Signale wie der Pilot, klügere Ausführung über **beide** Binance-Konten (`pilot2_plan.py` rechnet, `pilot2_live.py`
-handelt; 23 + 149 + 46 Tests gegen zwei streng nachgebaute Binance, Fuzzer, Mutationsproben). Ohne `KRYPTO_PILOT2=an` handelt der
+handelt; 23 + 149 + 48 Tests gegen zwei streng nachgebaute Binance, Fuzzer, Mutationsproben). Ohne `KRYPTO_PILOT2=an` handelt der
 Pilot wie bisher.
 
 **Was er tut:** Richtung long → Coin im Spot-Konto (kein Funding). Richtung short → Short-Perpetual (Hebel 1, bekommt Funding).
@@ -760,6 +760,10 @@ setx KRYPTO_PILOT2 "an"
 python tools\trading\krypto_bot\pilot.py --lauf --trocken     (zeigt den Plan, sendet nichts)
 python tools\trading\krypto_bot\pilot.py --lauf
 ```
+Im Testnetz zusätzlich prüfen (nicht dokumentiertes Binance-Verhalten): Nimmt Binance einen reduceOnly-Perp-Stop an, dessen Menge
+grösser ist als der offene Short (so sichert Pilot 2.0 einen Markt mit unklarem Auftrag beidseitig), und bleibt er stehen? Lehnt
+Binance ab, sichert er wenigstens den offenen Short und meldet es; bleibt der Stop nicht stehen, gehört das vor dem Echtgeld-Start
+in die nächste Prüfung.
 **2. Echtes Geld — mit eigenem Unterkonto, klein anfangen:**
 1. Binance → Konto → **Unterkonten** → «Unterkonto erstellen» (für verifizierte Konten mit 2FA, laut
    [Binance-FAQ](https://www.binance.com/en/support/faq/binance-sub-account-functions-and-frequently-asked-questions-360020632811)
@@ -835,7 +839,7 @@ python3 tools/trading/krypto_bot/test_calls.py    # 84 Tests: 40 typische Call-F
 python3 tools/trading/krypto_bot/test_binance.py  # 21 Tests, inkl. nachgebautem Binance-Server mit Signaturprüfung
 python3 tools/trading/krypto_bot/test_pilot2_plan.py  # 23 Tests: Pilot-2.0-Rechnung (Richtung, Ernte, Pfand, Mindestbeträge)
 python3 tools/trading/krypto_bot/test_pilot2_live.py  # 149 Tests: Pilot 2.0 («Konto = Wahrheit») gegen eine strenge nachgebaute Binance
-python3 -B tools/trading/krypto_bot/test_pilot2_streng.py  # 46 Tests: Belege der 8. Prüfung + Fuzzer-Funde gegen die Prüf-Börse, kleiner Fuzzer
+python3 -B tools/trading/krypto_bot/test_pilot2_streng.py  # 48 Tests: Belege der 8. Prüfung + Fuzzer-Funde gegen die Prüf-Börse, kleiner Fuzzer
 python3 -B tools/trading/krypto_bot/pruef_fuzzer.py notaus 0 1600     # grosser Fuzzer (für Prüfungen): Not-Aus unter harten Störungen
 python3 -B tools/trading/krypto_bot/pruef_fuzzer.py laeufe 0 200 30   # … Läufe über 30 Tage, Störungen in jedem Schritt
 python3 tools/trading/krypto_bot/test_scalping.py      # 50 Tests: kein Blick in die Zukunft, strenge Füll-Regeln, Kosten exakt, Entscheidungsregeln

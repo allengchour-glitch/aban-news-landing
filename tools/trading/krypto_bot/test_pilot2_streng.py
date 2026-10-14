@@ -435,6 +435,27 @@ B.regeln, B.vor_jeder_anfrage = [], None
 pruefe("Lauf: unklarer Short + Kurs schon über dem Short-Stop → ganzer Short zurückgekauft (nur so viel, wie offen ist), "
        "Coins und unklarer Short gesichert", k.pos["ETHUSDT"] == 0 and not befunde(k, d), (P.zeigen(k)["ETHUSDT"], befunde(k, d), r["zeilen"]))
 
+# Binance nimmt keinen reduceOnly-Stop über mehr als die offene Position (unbekannt, ob es so ist → beides prüfen):
+# beidseitig gesichert wird dann wenigstens der offene Short — im Lauf und im Not-Aus
+for wo in ("Lauf", "Not-Aus"):
+    k = neues_konto(20000)
+    d = neu_buch()
+    lauf([E("ETH", -0.5)], env_echt(), d)
+    B.reduce_algo_streng = True
+    B.regeln = [regel(methode="POST", pfad="/fapi/v1/order", pred=NEUER_SHORT, art="vor503")]
+    r = lauf([E("ETH", -1.0)], env_echt(), d)
+    B.regeln = []
+    if wo == "Not-Aus":  # Stop des Laufs ist weg (z. B. von Hand gelöscht) → der Not-Aus muss selbst sichern
+        k.algos.clear()
+        B.regeln = [regel(methode="POST", pfad="/fapi/v1/order", pred=REDUCE, art="vor503", anzahl=99)]
+        r = lauf([], env_echt(), d, notaus=True)
+        B.regeln = []
+    B.reduce_algo_streng = False
+    g = lage(k, "ETHUSDT")
+    pruefe(f"{wo}: Binance lehnt reduceOnly-Stop über der Position ab → wenigstens der offene Short hat seinen Stop, laut",
+           g["pos"] < 0 and g["p_qty"] >= -g["pos"] - 1e-9 and r["warnung"] and any("reduceOnly-Stop" in z for z in r["zeilen"]),
+           (g, r["zeilen"]))
+
 # ── kleiner Fuzzer mit festen Seeds (der grosse: python3 -B pruef_fuzzer.py laeufe 0 200 / notaus 0 1600) ──
 funde = []
 for seed in range(60):
