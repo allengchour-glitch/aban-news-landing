@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-14T14:51Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-14T15:49Z
 
-Aktive gescannt: 9 · ohne Kategorie: 9 · heute gesetzt: 7 (SCHARF, CAP 1500) · danach offen: 2 · Fehler: 0
+Aktive gescannt: 6 · ohne Kategorie: 6 · heute gesetzt: 4 (SCHARF, CAP 1500) · danach offen: 2 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -11,9 +11,8 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- business-casual-rucksack-20-35l-f3bcf9 · Taschen → Luggage & Bags
-- damenkleid-fur-alltag-626100 · Damenmode → Apparel & Accessories > Clothing
-- manner-shoulderbag-mit-usb-ladefunktion-10-20e045 · Taschen → Luggage & Bags
-- canvas-handtasche-mit-lederakzent-6a45f8 · Taschen → Luggage & Bags
-- outdoor-reiserucksack-5c9abf · Taschen → Luggage & Bags
+- taktischer-rucksack-fur-outdoor-de2b52 · Taschen → Luggage & Bags
+- messenger-tasche-aus-pu-leder-1015de · Taschen → Luggage & Bags
+- batik-canvas-kamera-tasche-mit-pferdehaut-dffb94 · Taschen → Luggage & Bags
+- grosser-laptop-rucksack-aus-wasserdichtem-oxfo-c9e487 · Taschen → Luggage & Bags
 
