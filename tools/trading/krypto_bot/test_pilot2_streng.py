@@ -1068,10 +1068,20 @@ pruefe("11.K5 Buch-Sperre: während ein anderer schreibt, wird nicht gleichzeiti
        _gesperrt and L.buch_lesen(_d, "echt")["start"] is None)
 # K3: Fuzzer-Seeds der 11. Prüfung (neue Bereiche, Not-Aus mit «Storno zuerst», Phase mitten im Lauf)
 funde = []
-for seed in (7249, 7315, 8444, 7569):
+for seed in (7249, 7315, 8444, 7569, 7785):  # 7785: Spot- und Perp-Stop decken je den Rest der anderen Seite (Schlusskampagne)
     funde += P.notaus_runde(seed)
-pruefe("11.F Not-Aus-Seeds der 11. Prüfung (7249, 7315, 8444, 7569): keine Befunde", not P.echte(funde),
+pruefe("11.F Not-Aus-Seeds der 11. Prüfung (7249, 7315, 8444, 7569, 7785): keine Befunde", not P.echte(funde),
        [(f[0], f[1].get("seed")) for f in P.echte(funde)][:5])
+# Schlusskampagne der 11. Runde: Staub-Paar im Not-Aus (7039), Stop noch nicht in der Liste (7047), teils beidseitig (20)
+funde = []
+for seed, tage in ((7039, 30), (7047, 3), (20, 19)):
+    funde += P.laeufe_runde(seed, tage)
+pruefe("11.F2 Lauf-Seeds der Schlusskampagne (7039 Staub-Paar, 7047 Stop noch nicht in der Liste, 20 teils beidseitig): keine Befunde",
+       not P.echte(funde), [(f[0], f[1].get("seed"), f[1].get("tag")) for f in P.echte(funde)][:5])
+funde = []
+for seed in (7454, 7469):  # Phase mitten im Lauf, Ernte-Kauf unklar: der Perp-Stop darf vorher nicht auf das Plan-Ende schrumpfen
+    funde += P.monotonie_runde(seed)
+pruefe("11.F3 Monotonie mitten im Lauf (7454, 7469): kein Schutzverlust", not P.echte(funde), [(f[0], f[1].get("seed")) for f in P.echte(funde)][:5])
 
 # ── kleiner Fuzzer mit festen Seeds (der grosse: python3 -B pruef_fuzzer.py laeufe 0 200 / notaus 0 1600) ──
 funde = []

@@ -685,7 +685,7 @@ Andere Strategie wählen: `setx KRYPTO_STRATEGIE "halten"` (immer 100 %) oder `"
 > mehr findet — bis dahin wirkt `KRYPTO_PILOT2=an` nicht (siehe «Starten» unten).
 
 Gleiche Signale wie der Pilot, klügere Ausführung über **beide** Binance-Konten (`pilot2_plan.py` rechnet, `pilot2_live.py`
-handelt; 23 + 154 + 107 Tests gegen zwei streng nachgebaute Binance, Fuzzer, Mutationsproben). Ohne `KRYPTO_PILOT2=an` handelt der
+handelt; 23 + 154 + 109 Tests gegen zwei streng nachgebaute Binance, Fuzzer, Mutationsproben). Ohne `KRYPTO_PILOT2=an` handelt der
 Pilot wie bisher.
 
 **Was er tut:** Richtung long → Coin im Spot-Konto (kein Funding). Richtung short → Short-Perpetual (Hebel 1, bekommt Funding).
@@ -711,7 +711,8 @@ selbst zwischen Spot- und Futures-Teil des Unterkontos (wenn der Schlüssel das 
   danach den Short auf die verbliebenen Coins zurückkaufen (gerundet auf den nächsten Futures-Schritt). Geht Verkaufen gerade
   nicht, bleibt das Paar stehen (netto 0); lehnt Binance den Rückkauf des Shorts ab, kauft er die verkauften Coins zurück
   (wieder netto 0) — und die Nachkontrolle löst dieses Paar danach 15 Minuten lang nicht nochmals auf (sonst kostete jeder Takt
-  Gebühren); ein Not-Aus von Hand versucht es immer. Futures-Aufträge löscht er erst, wenn keine Position mehr offen ist (bis
+  Gebühren); ein Not-Aus von Hand versucht es immer. Staub-Coins unter dem Binance-Minimum (unverkäuflich) sichern nichts ab: der
+  Short darf dann ganz zurück, der Staub bleibt. Futures-Aufträge löscht er erst, wenn keine Position mehr offen ist (bis
   dahin schützt ein Stop den Short).
   Was danach ungesichert ist, bekommt sofort einen **Schutz-Stop**: bestehende eigene Stops bleiben (gesperrte Coins gelten als
   gesichert; ein ausgelöster, über dem Kurs hängender STOP_LOSS_LIMIT nicht), zu grosse werden verkleinert (Spot per
@@ -737,8 +738,11 @@ selbst zwischen Spot- und Futures-Teil des Unterkontos (wenn der Schlüssel das 
   Abgleich dort **keinen** Stop per cancelReplace: ein nicht zu grosser bleibt (er ergänzt nur), ein zu grosser bleibt AUCH stehen
   und der Markt wird beidseitig gesichert — der nächste reguläre Lauf korrigiert; ebenso die Nachkontrolle. Lässt sich ein zu
   grosser Stop nicht korrigieren (er träfe die Absicherung), sichert er den Markt beidseitig und merkt ihn für die Nachkontrolle.
-  Den Perp-Stop verkleinert er vor dem Vergrössern erst, NACHDEM die Position verkleinert ist (frisch gelesen, die Kauf-Gebühr in
-  Coins eingerechnet) — wird das Verkleinern abgelehnt, bleibt der alte, grössere Stop. Liegt der Kurs schon jenseits eines Stops
+  Den Perp-Stop verkleinert er erst, NACHDEM die Position verkleinert ist, und nur auf das, was dann ungesichert ist; auf die
+  Grösse am Plan-Ende erst, wenn die neuen Ernte-Coins wirklich gekauft sind (frisch gelesen, Kauf-Gebühr in Coins eingerechnet) —
+  wird ein Schritt abgelehnt oder bleibt er unklar, bleibt der grössere Stop. Zeigt die Auftragsliste einen eben gesetzten eigenen
+  Stop noch nicht an (Coins gesperrt, Liste leer) und braucht es dort keinen Stop, löscht er ihn über die im Buch gemerkte ID; ist
+  ein solcher unsichtbarer Stop grösser als nötig, sichert er beidseitig. Liegt der Kurs schon jenseits eines Stops
   (oder hängt ein ausgelöster STOP_LOSS_LIMIT über dem Kurs), steigt er zum Markt aus — die gesperrten Coins mit ihrem Stop in
   einer Anfrage; lehnt Binance einen Short-Rückkauf ab, bleibt der alte Stop bzw. ein passender Not-Stop ersetzt ihn (zuerst der
   neue). Netto short: der Coin-Rest unter einem Futures-Schritt bekommt einen eigenen Spot-Stop
@@ -899,7 +903,7 @@ python3 tools/trading/krypto_bot/test_calls.py    # 84 Tests: 40 typische Call-F
 python3 tools/trading/krypto_bot/test_binance.py  # 21 Tests, inkl. nachgebautem Binance-Server mit Signaturprüfung
 python3 tools/trading/krypto_bot/test_pilot2_plan.py  # 23 Tests: Pilot-2.0-Rechnung (Richtung, Ernte, Pfand, Mindestbeträge)
 python3 tools/trading/krypto_bot/test_pilot2_live.py  # 154 Tests: Pilot 2.0 («Konto = Wahrheit») gegen eine strenge nachgebaute Binance
-python3 -B tools/trading/krypto_bot/test_pilot2_streng.py  # 107 Tests: Belege der 8.–11. Prüfung + Fuzzer-Funde gegen die Prüf-Börse, kleine Fuzzer
+python3 -B tools/trading/krypto_bot/test_pilot2_streng.py  # 109 Tests: Belege der 8.–11. Prüfung + Fuzzer-Funde gegen die Prüf-Börse, kleine Fuzzer
 python3 -B tools/trading/krypto_bot/test_testnetz_pruefung.py  # 47 Tests: das Testnetz-Prüfskript gegen die Prüf-Börse (nur 127.0.0.1)
 python3 -B tools/trading/krypto_bot/pruef_fuzzer.py notaus 0 1600     # grosser Fuzzer (für Prüfungen): Not-Aus unter harten Störungen
 python3 -B tools/trading/krypto_bot/pruef_fuzzer.py laeufe 0 200 30   # … Läufe über 30 Tage, Störungen in jedem Schritt

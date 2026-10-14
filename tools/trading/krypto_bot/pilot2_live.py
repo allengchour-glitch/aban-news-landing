@@ -899,7 +899,7 @@ def ausfuehren(ents, trocken=False, env=None, spot=None, fut=None, protokolliere
         for k, p in plaene.items():
             if p["schritte"] and k not in gesperrt and not notaus_neu():
                 try:
-                    if _stops_vorab(spot, fut, buch, k, daten[k], p):
+                    if _stops_vorab(spot, fut, buch, k, daten[k], p, nur_jetzt=True):
                         gehandelt.add(k)
                 except Exception as ex:  # noqa: BLE001
                     warn(f"{k}: alte Stops nicht anpassbar ({type(ex).__name__} {str(ex)[:60]}) — heute nichts mehr in diesem Markt; "
@@ -967,6 +967,17 @@ def ausfuehren(ents, trocken=False, env=None, spot=None, fut=None, protokolliere
                 gekauft += r if isinstance(r, float) else 0.0
             if k in gesperrt:
                 continue  # unklarer oder abgelehnter Kauf: kein Short dazu; die Stops am Ende richten sich nach dem Kontostand
+            if gekauft > 0:  # die Ernte-Coins sind da: erst JETZT den Perp-Stop auf das verkleinern, was bis zum Plan-Ende ungesichert bleibt
+                try:
+                    if _stops_vorab(spot, fut, buch, k, d, p):
+                        gehandelt.add(k)
+                except Exception as ex:  # noqa: BLE001
+                    warn(f"{k}: Perp-Stop nach dem Kauf nicht anpassbar ({type(ex).__name__} {str(ex)[:60]}) — heute kein Short dazu; "
+                         "die Stops werden am Ende nach dem Kontostand geprüft.")
+                    gesperrt.add(k)
+                    abgelehnt.add(k)
+                    gehandelt.add(k)
+                    continue
             fehlt = max(0.0, geplant - gekauft)  # gekürzter/ausgelassener Kauf (Gebühr in Coins zählt nicht als Fehlbetrag)
             if fehlt > geplant * 0.002 + d["rs"]["step"]:
                 neu = []
@@ -1195,7 +1206,7 @@ def _spot_freigeben(spot, buch, k, d, menge, erg, unklar_neu):
     return verkauft, frei
 
 
-def _stops_vorab(spot, fut, buch, k, d, plan):
+def _stops_vorab(spot, fut, buch, k, d, plan, nur_jetzt=False):
     """Vor dem Handeln, ohne je einen Stop ersatzlos wegzunehmen: ist der eigene Perp-Stop grösser als das, was während des
     ganzen Laufs sicher ungesichert ist (er träfe sonst mitten im Lauf die neue Ernte-Absicherung), ZUERST den kleineren setzen,
     dann den alten löschen. Gehört gar keiner mehr hin, bleibt er bis zum Abgleich am Laufende stehen (reduceOnly). Spot-Stops
@@ -1213,7 +1224,9 @@ def _stops_vorab(spot, fut, buch, k, d, plan):
     coins_jetzt, ziel = frei + gebunden, max(0.0, info["spot_ziel"])
     ziel = coins_jetzt + (ziel - coins_jetzt) * (1 - GEB_SPOT_KAUF) if ziel > coins_jetzt else ziel
     ende = _soll(ziel, info["perp_ziel"], kurs, d)
-    sicher_p = PL.runde(min(jetzt["stop_perp"], ende["stop_perp"]), rf["step"])
+    # nur_jetzt (nach dem Verkleinern, vor den Käufen): nie unter das, was JETZT ungesichert ist — die Ernte-Coins sind noch nicht
+    # gekauft (bleibt ein Kauf unklar oder abgelehnt, wäre der Short sonst teilweise ohne Stop); erst nach den Käufen bis zum Plan-Ende
+    sicher_p = PL.runde(jetzt["stop_perp"] if nur_jetzt else min(jetzt["stop_perp"], ende["stop_perp"]), rf["step"])
     alt_p = _nochmal(lambda: fut.eigene_stops(sym))
     if not (alt_p and sicher_p >= rf["step"] and sum(float(a.get("quantity") or 0) for a in alt_p) > sicher_p + rf["step"] / 2):
         return False
@@ -1333,6 +1346,19 @@ def _spot_abgleich(spot, k, d, st, e, s, erg, warn, gesetzt, schutz, lesen, geha
             st["spot"] = offen.get("orderId") if offen else None
             if offen:
                 _zu_gross(d)
+        elif s["gebunden"] * kurs >= STAUB_USDT:
+            # Coins gesperrt, aber kein eigener Stop in der Liste: die Liste hinkt nach (z. B. eben beim Freigeben gesetzt). Hier
+            # braucht es keinen Stop → den im Buch bekannten über seine ID löschen (geht, auch wenn die Liste ihn noch nicht
+            # zeigt); ohne ID oder wenn das scheitert: beidseitig (der Short bekommt seinen Stop über die ganze Menge)
+            try:
+                if not st.get("spot"):
+                    raise LookupError("keine Stop-ID im Buch")
+                _nochmal(lambda: spot.abbrechen(sym, st["spot"]))
+                st["spot"] = None
+                d["neue_runde"] = True  # frisch nachsehen, ob die Coins jetzt frei sind
+                schutz.append("verwaister Stop (noch nicht in der Liste) über seine ID gelöscht")
+            except Exception:  # noqa: BLE001
+                _zu_gross(d)
         return
     # ein ausgelöster STOP_LOSS_LIMIT, dessen Limit über dem Kurs hängt (Kurslücke), schützt nicht mehr — sein Stop-Kurs ist
     # erreicht: wie jenseits behandeln (Stop und Verkauf zum Markt in einer Anfrage)
@@ -1438,6 +1464,8 @@ def _spot_abgleich(spot, k, d, st, e, s, erg, warn, gesetzt, schutz, lesen, geha
             schutz.append(f"{gebunden:g} {d['coin']} in einem Auftrag ausserhalb der Liste")
             warn(f"{k}: {gebunden:g} {d['coin']} sind durch einen Auftrag gesperrt, der (noch) nicht in der Auftragsliste steht — gilt "
                  "als Stop, kein zweiter gesetzt. Bitte im Binance-Konto prüfen!")
+            if gebunden > soll + regeln["step"] / 2:  # grösser als nötig: löst er aus, träfe er die Absicherung → beidseitig
+                _zu_gross(d)
         return  # sonst: der Rest ist am Stop-Kurs zu klein für Binance (Sammelmeldung «zu klein» am Ende)
     preise = [p] + ([p_alt] if p_alt and p_alt < kurs and not _gleich(p_alt, p, regeln["tick"]) else []) + [kurs * (1 - NOT_STOP_ABSTAND)]
     try:
@@ -2213,7 +2241,9 @@ def _notaus(spot, fut, buch, speichern_b, modus, trocken, wiederholung=False):
         # nicht, bleibt das Paar stehen (netto 0); scheitert der Rückkauf eindeutig, werden die Coins zurückgekauft.
         # Die Coins sichert der Short auf den NÄCHSTEN ganzen Futures-Schritt ab — so bleibt in jeder Richtung höchstens ein halber
         # Schritt übrig, und der Not-Aus erzeugt nie eine neue ungesicherte Position (Staub-Coins sichern nichts ab)
-        paar = min(-pos, _schritte(frei + gebunden, fstep)) if pos < 0 else 0.0
+        # Staub-Coins (unter dem Binance-Minimum, unverkäuflich) sichern nichts ab: der Short darf dann ganz zurück
+        verkaufbar0 = PL.runde(frei + gebunden, regeln["step"]) * kurs >= regeln["min_notional"]
+        paar = min(-pos, _schritte(frei + gebunden, fstep)) if pos < 0 and verkaufbar0 else 0.0
         ueber = PL.runde(-pos - paar, fstep) if pos < 0 else 0.0  # Short über die Coins hinaus
         if pos:  # 1) Perpetual: der ungesicherte Teil (ein Long-Perp ganz) — sein Stop bleibt bis dahin stehen
             seite, r, unklar_ex = ("BUY" if pos < 0 else "SELL"), None, None
@@ -2450,7 +2480,8 @@ def _notaus_paar(spot, fut, k, sym, coin, short, frei, gebunden, fstep, kurs, re
         short = max(0.0, -_nochmal(lambda: fut.position_info(sym), SCHUTZ_WARTEN)[0])
     except Exception:  # noqa: BLE001 — nicht lesbar: der zuletzt bekannte Short
         frisch = False
-    kauf = PL.runde(max(0.0, short - _schritte(frei + gebunden, fstep)), fstep)  # Short, der keine Coins mehr absichert
+    rest = frei + gebunden if PL.runde(frei + gebunden, regeln["step"]) * kurs >= regeln["min_notional"] else 0.0  # Staub sichert nichts
+    kauf = PL.runde(max(0.0, short - _schritte(rest, fstep)), fstep)  # Short, der keine (verkäuflichen) Coins mehr absichert
     if kauf < fstep / 2:
         if not ok:
             netto = frei + gebunden - short

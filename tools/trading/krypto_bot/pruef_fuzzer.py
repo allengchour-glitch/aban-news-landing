@@ -14,7 +14,8 @@ Befunde (jeder ist ein Fehler):
   TROCKEN            ein Probelauf schrieb oder sendete etwas
   ENDE_NICHT_ZU      ein sauberer Not-Aus (nach 10 Minuten) schliesst nicht alles
   LONG_OHNE_STOP / SHORT_OHNE_STOP           Netto-Position ohne Stop
-  SPOT_STOP_UEBER_NETTO / PERP_STOP_UEBER_NETTO  ein Stop ist grösser als ungesichert (träfe die Absicherung)
+  SPOT_STOP_UEBER_NETTO / PERP_STOP_UEBER_NETTO  ein Stop ist so gross, dass nach seinem Auslösen etwas ohne Stop bleibt
+                     (er träfe die Absicherung und der Rest hat keinen Stop der anderen Seite)
   NACH_SPRUNG_*      der Kurs springt durch alle Stops — bleibt danach etwas ohne Absicherung und ohne Stop?
   SCHUTZ_VERLOREN_*  (monotonie) in einer Phase «nur Stornieren» ging Schutz verloren — ein Stop wurde ersatzlos entfernt
   SCHUTZ_VERLOREN_MITTEN_*  (monotonie, Phase beginnt mitten im Lauf) seit Phasenbeginn hat Pilot 2.0 selbst einen Stop entfernt
@@ -179,18 +180,24 @@ def schutz_befunde(k, unklar=None, tol_usdt=TOL_USDT):
             luecke = -g["netto"] - g["p_qty"]
             if luecke * p > max(tol_usdt, 0.5 * STEP_P[sym] * p) + 1e-6:
                 out.append(("SHORT_OHNE_STOP", sym, round(luecke, 6), round(luecke * p, 2)))
-        erlaubt_s = max(0.0, g["netto"])
+        # Ein zu grosser Stop schadet erst, wenn er auslöst und danach etwas UNGEDECKT ist (11. Prüfung: statt «grösser als
+        # netto» genau nachrechnen — deckt der Perp-Stop den Short, der nach dem Auslösen des Spot-Stops übrig ist, ist ein
+        # «zu grosser» Spot-Stop harmlos, und umgekehrt). In den üblichen Lagen (nur eine Seite gestoppt) ist das dasselbe.
+        short = max(0.0, -g["pos"])
+        # Spot-Stop löst aus (verkauft s_qty Coins): der Short über die verbleibenden Coins braucht so viel Perp-Stop
+        ohne_perp = max(0.0, short - max(0.0, g["coins"] - g["s_qty"])) - g["p_qty"]
         if g["netto"] < 0 < g["coins"]:  # netto short: Coin-Rest unter einem Futures-Schritt darf einen Spot-Stop haben,
-            boden = int(min(g["coins"], -g["pos"]) / STEP_P[sym] + 1e-9) * STEP_P[sym]  # wenn der Perp-Stop den Short darüber deckt
-            if g["p_qty"] >= -g["pos"] - boden - 1e-9:
-                erlaubt_s = g["coins"] - boden
-        if g["s_qty"] > erlaubt_s + STEP_S[sym] + tol_usdt / p:
-            out.append(("SPOT_STOP_UEBER_NETTO", sym, round(g["s_qty"] - erlaubt_s, 6)))
-        # zu grosser Perp-Stop schadet nur mit Short UND Coins (er kauft die Absicherung zurück → Coins ohne Short)
-        if g["p_qty"] > max(0.0, -g["netto"]) + STEP_P[sym] + 1e-9 and g["pos"] < 0 and g["coins"] * p >= tol_usdt:
-            zu_viel = g["p_qty"] - max(0.0, -g["netto"])  # so viel Absicherung kaufte er beim Auslösen zurück
-            out.append(("PERP_STOP_UEBER_NETTO" if min(zu_viel, g["coins"]) * p > STAUB_MAX_USDT else "STAUB_PERP_STOP_UEBER_NETTO",
-                        sym, round(zu_viel, 6)))
+            boden = int(min(g["coins"], short) / STEP_P[sym] + 1e-9) * STEP_P[sym]  # wenn der Perp-Stop den Short darüber deckt
+            if g["p_qty"] >= short - boden - 1e-9 and g["s_qty"] <= g["coins"] - boden + STEP_S[sym]:
+                ohne_perp = 0.0
+        if g["s_qty"] > 0 and ohne_perp > STEP_S[sym] + tol_usdt / p:
+            out.append(("SPOT_STOP_UEBER_NETTO", sym, round(ohne_perp, 6)))
+        # Perp-Stop löst aus (kauft bis p_qty zurück): die Coins über den verbleibenden Short brauchen so viel Spot-Stop
+        if g["pos"] < 0 and g["coins"] * p >= tol_usdt and g["p_qty"] > 0:
+            ohne_spot = max(0.0, g["coins"] - max(0.0, short - g["p_qty"])) - g["s_qty"]
+            if ohne_spot > STEP_P[sym] + 1e-9:
+                out.append(("PERP_STOP_UEBER_NETTO" if ohne_spot * p > STAUB_MAX_USDT else "STAUB_PERP_STOP_UEBER_NETTO",
+                            sym, round(ohne_spot, 6)))
     return out
 
 
@@ -269,9 +276,10 @@ def _dauer(regeln, befund=None):
 def _selbst_entfernt(ab, sym=None, befund=None):
     """Hat Pilot 2.0 seit B.log[ab] in diesem Markt selbst einen Stop DER BETROFFENEN SEITE entfernt — storniert (DELETE ok) oder per
     cancelReplace storniert, ohne dass der Ersatz kam (409)? Dann ist eine Lücke dort NICHT unvermeidbar — er hätte den
-    funktionierenden Stop stehen lassen können (10. Prüfung W4). Long-Befunde (LONG/SPOT) zählen Spot-Stops, Short-Befunde
-    (SHORT/PERP) Perp-Stops. Ein cancelReplace mit Ersatz (neuer Stop oder ausgeführter Verkauf) zählt nicht."""
-    seite = None if not befund else ("perp" if ("SHORT" in befund or "PERP" in befund) else "spot")
+    funktionierenden Stop stehen lassen können (10. Prüfung W4). Betroffen ist die Seite, die den fehlenden Schutz bräuchte
+    (_schutzseite: Long → Spot-Stops, Short → Perp-Stops, zu grosser Spot-Stop → Perp, zu grosser Perp-Stop → Spot). Ein
+    cancelReplace mit Ersatz (neuer Stop oder ausgeführter Verkauf) zählt nicht."""
+    seite = None if not befund else _schutzseite(befund)
     for x in B.log[ab:]:
         if sym and (x[3].get("symbol") or x[3].get("_symbol")) != sym:
             continue
