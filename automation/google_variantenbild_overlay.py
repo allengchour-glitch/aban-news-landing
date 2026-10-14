@@ -378,30 +378,31 @@ def seiten_von(ort):
 
 
 def aenderung_im_rand(orig, kand, orte, band=BAND):
-    """text-weg: JEDES geänderte Pixel (exakter Vergleich, kein JPEG dazwischen) muss in einem Randband der Tiefe «band» ‰
-    an einer Seite liegen, die ALLE Prüfer nennen (ecke-oben-links = oberes ODER linkes Band). → (ok, grund)."""
-    from PIL import ImageChops, ImageDraw
+    """text-weg: ALLE geänderten Pixel zusammen (ihre umschliessende Box; exakter Vergleich, kein JPEG dazwischen) müssen in
+    EIN Randband der Tiefe «band» ‰ an EINER Seite passen, die ALLE Prüfer nennen. ecke-oben-links erlaubt das obere ODER das
+    linke Band — nie beide zugleich: die Vereinigung (L-Form, ~44 % der Fläche) liess einen Aufdruck AUF dem Artikel weit
+    unter der Ecke durch (Prüfer-Gegenprobe 14.10.: «SALE» bei (60,520), Diff-Box ‰ [44,49,320,698] → «zuschneiden
+    text-weg»). Getrennte Gruppen je in ein anderes Band liessen dieselbe L-Form zu; alle in ein gemeinsames Band = die Box.
+    → (ok, grund)."""
+    from PIL import ImageChops
     if orig.size != kand.size:
         return False, f"Grösse geändert {orig.size} → {kand.size}"
     gemeinsam = set.intersection(*[seiten_von(o) for o in orte]) if orte else set()
     if not gemeinsam:
         return False, f"Prüfer nennen keine gemeinsame Seite ({', '.join(str(o) for o in orte)})"
     r, g, b = ImageChops.difference(orig.convert("RGB"), kand.convert("RGB")).split()
-    diff = ImageChops.lighter(ImageChops.lighter(r, g), b).point(lambda x: 255 if x else 0)
-    if not diff.getbbox():
+    bb = ImageChops.lighter(ImageChops.lighter(r, g), b).point(lambda x: 255 if x else 0).getbbox()
+    if not bb:
         return False, "nichts geändert"
     w, h = orig.size
     dy, dx = round(h * band / 1000), round(w * band / 1000)
-    verboten = Image.new("L", (w, h), 255)
-    d = ImageDraw.Draw(verboten)
-    for s in gemeinsam:
-        d.rectangle({"oben": (0, 0, w, dy - 1), "unten": (0, h - dy, w, h), "links": (0, 0, dx - 1, h),
-                     "rechts": (w - dx, 0, w, h)}[s], fill=0)
-    bb = ImageChops.multiply(diff, verboten).getbbox()
-    if bb:
-        rel = [round(v * 1000 / s) for v, s in zip(bb, (w, h, w, h))]
-        return False, f"text-weg ändert ausserhalb des Randbands {'/'.join(sorted(gemeinsam))} (‰ x0,y0,x1,y1 {rel})"
-    return True, ""
+    x0, y0, x1, y1 = bb                                   # x1/y1 exklusiv (PIL)
+    passt = {"oben": y1 <= dy, "unten": y0 >= h - dy, "links": x1 <= dx, "rechts": x0 >= w - dx}
+    if any(passt[s] for s in gemeinsam):
+        return True, ""
+    rel = [round(v * 1000 / s) for v, s in zip(bb, (w, h, w, h))]
+    return False, (f"text-weg ändert ausserhalb des Randbands {'/'.join(sorted(gemeinsam))} (‰ x0,y0,x1,y1 {rel} passt in "
+                   f"kein einzelnes Band von {band} ‰)")
 
 
 def je_bild(antwort):
@@ -758,25 +759,53 @@ def _ruhig_gelesen(vids, ziel, ruhe):
     return True
 
 
-def _senden(mut, feld, pid, vids, media):
+AUSNAHME = "AUSNAHME"            # _senden/fehl: Antwort verloren — ausgeführt oder nicht, unbekannt
+# Lösen von «neu» scheiterte mit einem dieser Codes → «neu» hängt nachweislich NICHT an der Variante (nicht angehängt; das
+# Medium gibt es am Produkt nicht mehr — ein gelöschtes Medium hängt an keiner Variante). Jeder andere Ausgang (z. B.
+# MEDIA_CANNOT_BE_MODIFIED, Fehler ohne Code, Ausnahme) heisst: «neu» hängt womöglich noch daran.
+NICHT_DARAN = frozenset({"MEDIA_IS_NOT_ATTACHED_TO_VARIANT", "MEDIA_DOES_NOT_EXIST", "MEDIA_DOES_NOT_EXIST_ON_PRODUCT"})
+
+
+def _codes(d, feld):
+    """userError-Codes einer Mutationsantwort ('' = Fehler ohne Code, «GRAPHQL» = Fehler ohne Nutzdaten)."""
+    if not isinstance(d, dict):
+        return frozenset({""})
+    out = {str((e or {}).get("code") or "") for e in (((d.get("data") or {}).get(feld) or {}).get("userErrors") or [])}
+    if d.get("errors") or not isinstance((d.get("data") or {}).get(feld), dict):
+        out.add("GRAPHQL")
+    return frozenset(out or {""})
+
+
+def _senden(mut, feld, pid, vids, media, fehl=None):
     """«media» an alle «vids» lösen/anhängen: erst in Teilen; scheitert ein Teil (userError, Ausnahme), je Variante.
     → Menge der Varianten, für die Shopify die Mutation OHNE userError quittiert hat. Eine Ausnahme heisst «unbekannt»
-    (Antwort verloren, Mutation womöglich doch ausgeführt) und zählt nie als Quittung."""
+    (Antwort verloren, Mutation womöglich doch ausgeführt) und zählt nie als Quittung.
+    fehl (dict): für jede Variante OHNE Quittung der Ausgang ihres Einzelaufrufs — Menge der userError-Codes (_codes)
+    oder {AUSNAHME}."""
     ok = set()
-    for t in _teile(list(vids)):
+    fehl = {} if fehl is None else fehl
+
+    def einzeln(t):
         try:
-            if _quittiert(gql(mut, {"p": pid, "vm": [{"variantId": v, "mediaIds": [media]} for v in t]}), feld):
-                ok.update(t)
-                continue
+            d = gql(mut, {"p": pid, "vm": [{"variantId": v, "mediaIds": [media]} for v in t]})
         except Exception:
-            pass
-        if len(t) > 1:
-            for v in t:
-                try:
-                    if _quittiert(gql(mut, {"p": pid, "vm": [{"variantId": v, "mediaIds": [media]}]}), feld):
-                        ok.add(v)
-                except Exception:
-                    pass
+            return False, frozenset({AUSNAHME})
+        return (True, frozenset()) if _quittiert(d, feld) else (False, _codes(d, feld))
+
+    for t in _teile(list(vids)):
+        quitt, codes = einzeln(t)
+        if quitt:
+            ok.update(t)
+            continue
+        if len(t) == 1:
+            fehl[t[0]] = codes
+            continue
+        for v in t:
+            quitt, codes = einzeln([v])
+            if quitt:
+                ok.add(v)
+            else:
+                fehl[v] = codes
     return ok
 
 
@@ -788,16 +817,26 @@ def _zurueckbauen(pid, vids, alt, neu, verloren=None, ruhe=0):
       (a) mit QUITTUNG: jede Variante aus «verloren» hat das Wieder-Anhängen von «alt» ohne userError bestätigt bekommen, UND
           das Zurücklesen zeigt «alt» — eine Lesung allein beweist nichts, das Rückbau-Ziel ist der Startzustand, den auch eine
           hinkende Lesung zeigt (GEMESSEN 14.10., Prüfer-Gegenprobe: hinkt 12 + MEDIA_CANNOT_BE_MODIFIED → falsch «alt»);
-      (b) nur mit ruhe > 0 (--zurueck): zweimal «alt» gelesen, die erste Lesung «ruhe» s nach der letzten Mutation.
+      (b) nur mit ruhe > 0 (--zurueck): zweimal «alt» gelesen, die erste Lesung «ruhe» s nach der letzten Mutation — und
+          NUR, wenn das Lösen von «neu» bei JEDER Variante quittiert wurde oder mit einem NICHT_DARAN-Code endete. Klemmt es
+          (z. B. MEDIA_CANNOT_BE_MODIFIED, Fehler ohne Code, Antwort verloren), hängt «neu» womöglich noch daran, und eine
+          hinkende Lesung zeigt trotzdem «alt» (Prüfer-Gegenprobe 14.10., Lesung hinkt 4 / 1000: --zurueck rc 0, Zuschnitt-
+          Medium gelöscht, 3 Varianten bildlos). Die Mutationsantwort ist der Gegenbeweis, den keine Lesung aufhebt.
     → (bestaetigt, wie)."""
     vids = list(vids)
     verloren = set(vids) if verloren is None else set(verloren) & set(vids)
+    los_fehl = {}
     if neu:
-        _senden(M_DET, "productVariantDetachMedia", pid, vids, neu)
+        _senden(M_DET, "productVariantDetachMedia", pid, vids, neu, fehl=los_fehl)
+    klemmt = {v: c for v, c in los_fehl.items() if not c or not c <= NICHT_DARAN}
     quittiert = _senden(M_APP, "productVariantAppendMedia", pid, vids, alt) if alt else set()
     offen = verloren - quittiert
     if not offen and _warten_auf(vids, alt)[0]:
         return True, "Wieder-Anhängen quittiert und zurückgelesen"
+    if ruhe > 0 and klemmt:
+        codes = ", ".join(sorted({x or "ohne Code" for c in klemmt.values() for x in c}))
+        return False, (f"Lösen von «neu» klemmt bei {len(klemmt)} von {len(vids)} Var. ({codes}) — «neu» hängt womöglich "
+                       f"noch daran, die Ruhe-Lesung zählt nicht; nichts gelöscht, Zeile bleibt offen")
     if ruhe > 0 and _ruhig_gelesen(vids, alt, ruhe):
         return True, f"zweimal «alt» gelesen ({ruhe} s Ruhe)"
     return False, (f"{len(offen)} von {len(vids)} Var. ohne Quittung fürs Wieder-Anhängen" if offen
@@ -1172,7 +1211,8 @@ def _aendern(p, h, m, vids, plan, ersatz_id, kandidat, alt_text, methode, befund
 def zurueck(handles, ruhe=None):
     """Rückweg: Varianten wieder an die alte Media-ID — zustandsunabhängig (auch aus «begonnen-…»/«fehler-teil-…», wo ein Teil
     der Varianten am alten, ein Teil am neuen oder an keinem Bild hängt). Bestätigt mit Quittung fürs Wieder-Anhängen oder,
-    weil dieser Prozess später läuft, mit zwei Lesungen im Abstand «ruhe» (GVO_RUHE). Ein selbst angelegtes Zuschnitt-Medium
+    weil dieser Prozess später läuft, mit zwei Lesungen im Abstand «ruhe» (GVO_RUHE) — Letzteres nie, wenn Shopify das Lösen
+    von «neu» verweigert hat (_zurueckbauen b): dann nichts löschen, Zeile offen, rc 1. Ein selbst angelegtes Zuschnitt-Medium
     wird danach entfernt, sofern keine Variante des Produkts daran hängt; schon gelöscht (fehlt zweimal gelesen in den
     Produkt-Medien) zählt als entfernt. Ein getauschtes Ersatzbild (fremdes Galeriebild) bleibt immer. Gleiche Handles nur
     einmal. Ledger-Art «zurueck» (quittiert)."""
@@ -1546,6 +1586,7 @@ def selbsttest():
             s.lesen, s.hinkt, s.reads, s.absturz, s.zaehl, s.n = lesen, hinkt, 0, absturz, {}, 0
             s.klemmt, s.del_doppelt, s.nach = dict(klemmt or {}), del_doppelt, nach   # nach: (art, n, Ausnahme) NACH der Ausführung
             s.ledger_vor_erster_mutation = None
+            s.hinkt_varianten = False
 
         def _mut(s, art, media):
             if s.ledger_vor_erster_mutation is None and art in ("det", "app"):
@@ -1562,10 +1603,11 @@ def selbsttest():
                 return {"data": {"p": {"id": P, "handle": v["h"], "title": "Lesebrille", "status": "ACTIVE",
                                        "publishedOnPublication": True,
                                        "media": {"nodes": [{"id": m, "image": {"url": "u:" + m}} for m in s.medien]}}}}
-            if "variants(first:100" in q:
+            if "variants(first:100" in q:          # hinkt_varianten: product.variants hinkt mit (wie nodes(ids:))
+                zeig = s.start if (s.hinkt_varianten and s.lesen == "hinkt" and s.reads <= s.hinkt) else s.v
                 return {"data": {"product": {"variants": {"pageInfo": {"hasNextPage": False, "endCursor": None}, "nodes": [
                     {"id": k, "title": TITEL[k], "selectedOptions": [{"name": "Farbe", "value": TITEL[k]}],
-                     "media": {"nodes": [{"id": m}] if m else []}} for k, m in s.v.items()]}}}}
+                     "media": {"nodes": [{"id": zeig[k]}] if zeig.get(k) else []}} for k in s.v]}}}}
             if "nodes(ids:" in q:
                 s.reads += 1
                 q2 = {} if s.lesen == "leer" else s.start if (s.lesen == "hinkt" and s.reads <= s.hinkt) else s.v
@@ -1588,7 +1630,14 @@ def selbsttest():
                         s.v[x["variantId"]] = None if los else x["mediaIds"][0]
                 if s.nach and s.nach[:2] == (art, s.zaehl[art]):
                     raise s.nach[2]                # ausgeführt, Antwort verloren (gfw.gql gibt auf)
-                return {"data": {feld: {"userErrors": [{"field": ["variantMedia"], "message": "abgelehnt " + k} for k in nein]}}}
+
+                def code(k, m):                    # MediaUserErrorCode (Schema 14.10. gelesen); «gibt es nicht» = Annahme
+                    if m not in s.medien:
+                        return "MEDIA_DOES_NOT_EXIST_ON_PRODUCT"
+                    return "MEDIA_IS_NOT_ATTACHED_TO_VARIANT" if los else "PRODUCT_VARIANT_ALREADY_HAS_MEDIA"
+                return {"data": {feld: {"userErrors": [{"code": code(x["variantId"], x["mediaIds"][0]), "field": ["variantMedia"],
+                                                        "message": "abgelehnt " + x["variantId"]}
+                                                       for x in v["vm"] if x["variantId"] in nein]}}}
             if "productCreateMedia" in q:
                 s._mut("neu", "")
                 mid = f"gid://shopify/MediaImage/9{len(s.eigene) + 1}"
@@ -1633,9 +1682,10 @@ def selbsttest():
         raise AssertionError("Netz im Selbsttest")
 
     def lauf(plan, freigabe=(), lesen="frisch", hinkt=0, absturz=None, zurueck_danach=False, teil=None, klemmt=None,
-             del_doppelt=False, vor_zurueck=None, zurueck_handles=("h-test",), nach=None):
+             del_doppelt=False, vor_zurueck=None, zurueck_handles=("h-test",), nach=None, nochmal=False):
         """Ein Produkt SCHARF gegen die falsche API; alles Gepatchte wird danach wiederhergestellt. --zurueck läuft danach
-        mit frischen Lesungen und ohne Klemmen (eigener, späterer Prozess); vor_zurueck(shop) verändert den Shop vorher."""
+        mit frischen Lesungen und ohne Klemmen (eigener, späterer Prozess); vor_zurueck(shop) verändert den Shop vorher.
+        nochmal: danach ein zweites --zurueck, wieder frisch und ohne Klemmen (Shopify lässt das Medium wieder los)."""
         shop = Laden(lesen, hinkt, absturz, klemmt, del_doppelt, nach)
         namen = ("gql", "laden", "hochladen", "plane_produkt", "urteil_netz", "SCHARF", "LEDGER", "TAUSCH_FREIGABE")
         vorher = {k: globals()[k] for k in namen if k in globals()}
@@ -1646,7 +1696,8 @@ def selbsttest():
                              hochladen=lambda daten, name: "https://example.invalid/neu.jpg", plane_produkt=fake_plan(plan),
                              urteil_netz=kein_netz, LEDGER=os.path.join(tmp, "ledger.tsv"), TAUSCH_FREIGABE=frozenset(freigabe))
             globals()["SCHARF"] = True                    # erst NACH dem Austausch von gql
-            with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+            fehlerausgabe = io.StringIO()
+            with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(fehlerausgabe):
                 z = {"prod": {}, "bild": {}, "zeilen": []}
                 try:
                     ein_produkt("h-test", set(), z, Frei, types.SimpleNamespace(bearbeite=None),
@@ -1661,9 +1712,15 @@ def selbsttest():
                     shop.lesen, shop.klemmt, shop.del_doppelt, shop.zaehl, shop.absturz, shop.nach = "frisch", {}, False, {}, None, None
                     if vor_zurueck:
                         vor_zurueck(shop)
-                    out["muts_vor_zurueck"] = len(shop.muts)
+                    out["muts_vor_zurueck"], stderr_ab = len(shop.muts), len(fehlerausgabe.getvalue())
                     out["zurueck_rc"] = zurueck(list(zurueck_handles))
                     out["ledger_danach"] = ledger_lesen()
+                    out["v_nach_zurueck"], out["medien_nach_zurueck"] = dict(shop.v), list(shop.medien)
+                    out["muts_zurueck"], out["stderr_zurueck"] = list(shop.muts[out["muts_vor_zurueck"]:]), fehlerausgabe.getvalue()[stderr_ab:]
+                    if nochmal:
+                        shop.lesen, shop.klemmt, shop.zaehl, shop.reads, shop.hinkt_varianten = "frisch", {}, {}, 0, False
+                        out["zurueck2_rc"] = zurueck(list(zurueck_handles))
+                        out["ledger_danach2"] = ledger_lesen()
         finally:
             for k in namen:
                 if k in vorher:
@@ -1711,9 +1768,21 @@ def selbsttest():
         # Lösen ausgeführt, Antwort verloren; Lesung hinkt; Wieder-Anhängen verweigert → nur die Quittung zählt
         r17 = sicher(lambda: lauf("zuschneiden", lesen="hinkt", hinkt=12, nach=("det", 1, RuntimeError("Antwort verloren")),
                                   klemmt={"app": (1, 99)}, zurueck_danach=True))
+
+        # Schluss-Prüfung 14.10.: Lösen klemmt AUCH in --zurueck (MEDIA_CANNOT_BE_MODIFIED) und die Lesung hinkt dort weiter
+        # (Annahme «GVO_RUHE reicht» verletzt) — die Ruhe-Lesung zeigt «alt», obwohl die Varianten am neuen Bild hängen
+        def klemmt_weiter(lag):
+            def vor(shop):
+                shop.klemmt, shop.lesen, shop.hinkt, shop.reads = {"det": (1, 10 ** 6)}, "hinkt", lag, 0
+                shop.hinkt_varianten = True             # auch product.variants (haengt-Prüfung vor dem Löschen) hinkt
+            return vor
+        r18 = sicher(lambda: lauf("zuschneiden", lesen="hinkt", hinkt=12, klemmt={"det": (2, 99)}, zurueck_danach=True,
+                                  vor_zurueck=klemmt_weiter(10 ** 6), nochmal=True))
+        r19 = sicher(lambda: lauf("tauschen", freigabe={("h-test", "11", "12")}, lesen="hinkt", hinkt=12,
+                                  klemmt={"det": (2, 99)}, zurueck_danach=True, vor_zurueck=klemmt_weiter(4), nochmal=True))
     finally:
         time.sleep = schlaf
-    alle_r = (r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15, r16, r17)
+    alle_r = (r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19)
     alt_am_alten = {V1: M1, V2: M1}
 
     # Befund 1, Teil 2: Tausch im SCHARF-Lauf nur mit Freigabeliste; Zuschneiden ohne Liste
@@ -1791,20 +1860,30 @@ def selbsttest():
       lambda: not r17["geloescht_vor"] and r17["ledger"][-1]["art"] == "fehler-teil-zuschneiden"
       and r17["zurueck_rc"] == 0 and r17["laden"].v == alt_am_alten and r17["laden"].geloescht == r17["laden"].eigene)
 
-    def bau_probe(lesung, quittung, verloren, ruhe=0):
-        """_zurueckbauen allein: Lesung zeigt immer «lesung»; quittung = Wieder-Anhängen ohne userError?"""
+    def bau_probe(lesung, quittung, verloren, ruhe=0, los="MEDIA_IS_NOT_ATTACHED_TO_VARIANT", nur=None, wie=None):
+        """_zurueckbauen allein: Lesung zeigt immer «lesung»; quittung = Wieder-Anhängen ohne userError?
+        los = Code der Antwort aufs Lösen von «neu» (None = userError ohne Code, Exception = Antwort verloren);
+        nur = nur diese Variante bekommt «los», die andere MEDIA_IS_NOT_ATTACHED_TO_VARIANT; wie (Liste) bekommt den Grund."""
         def g(q, v=None):
             if "nodes(ids:" in q:
                 return {"data": {"nodes": [{"id": k, "media": {"nodes": [{"id": lesung}] if lesung else []}} for k in v["ids"]]}}
             if "productVariantDetachMedia" in q:
-                return {"data": {"productVariantDetachMedia": {"userErrors": [{"message": "nicht angehängt"}]}}}
+                eigen = nur is None or any(x["variantId"] == nur for x in v["vm"])
+                if eigen and isinstance(los, Exception):
+                    raise los
+                c = los if eigen else "MEDIA_IS_NOT_ATTACHED_TO_VARIANT"
+                return {"data": {"productVariantDetachMedia": {"userErrors": [dict({"message": "nicht gelöst"}, **({"code": c} if c else {}))]}}}
             if "productVariantAppendMedia" in q:
-                return {"data": {"productVariantAppendMedia": {"userErrors": [] if quittung else [{"message": "hat schon ein Bild"}]}}}
+                return {"data": {"productVariantAppendMedia": {"userErrors": [] if quittung else
+                                                               [{"code": "PRODUCT_VARIANT_ALREADY_HAS_MEDIA", "message": "hat schon ein Bild"}]}}}
             raise AssertionError(q[:60])
         vorher, schl = globals()["gql"], time.sleep
         globals()["gql"], time.sleep = g, (lambda sek: None)
         try:
-            return _zurueckbauen("P", ["V1", "V2"], "ALT", "NEU", verloren=verloren, ruhe=ruhe)[0]
+            ok, grund = _zurueckbauen("P", ["V1", "V2"], "ALT", "NEU", verloren=verloren, ruhe=ruhe)
+            if wie is not None:
+                wie.append(grund)
+            return ok
         finally:
             globals()["gql"], time.sleep = vorher, schl
     f("_zurueckbauen: Lesung «alt» OHNE Quittung (im Lauf) → NICHT bestätigt", lambda: bau_probe("ALT", False, {"V1", "V2"}) is False)
@@ -1813,6 +1892,39 @@ def selbsttest():
     f("_zurueckbauen: Varianten nie gelöst (verloren leer) + Lesung «alt» → bestätigt", lambda: bau_probe("ALT", False, set()) is True)
     f("_zurueckbauen: --zurueck (Ruhe > 0), keine Quittung, zweimal «alt» gelesen → bestätigt",
       lambda: bau_probe("ALT", False, None, ruhe=60) is True)
+
+    # ── Schluss-Prüfung 14.10. (niedrig) 1: die Antwort aufs Lösen ist Gegenbeweis gegen die Ruhe-Lesung in --zurueck ──
+    grund_klemmt = []
+    f("_zurueckbauen --zurueck: Lösen von «neu» MEDIA_CANNOT_BE_MODIFIED, zweimal «alt» gelesen → NICHT bestätigt, Grund nennt den Code",
+      lambda: bau_probe("ALT", False, None, ruhe=60, los="MEDIA_CANNOT_BE_MODIFIED", wie=grund_klemmt) is False
+      and "MEDIA_CANNOT_BE_MODIFIED" in grund_klemmt[-1])
+    f("_zurueckbauen --zurueck: nur EINE Variante klemmt (die andere «nicht angehängt») → NICHT bestätigt",
+      lambda: bau_probe("ALT", False, None, ruhe=60, los="MEDIA_CANNOT_BE_MODIFIED", nur="V2") is False)
+    f("_zurueckbauen --zurueck: Lösen mit userError OHNE Code → NICHT bestätigt (unbekannt zählt nicht als «nicht angehängt»)",
+      lambda: bau_probe("ALT", False, None, ruhe=60, los=None) is False)
+    f("_zurueckbauen --zurueck: Antwort aufs Lösen verloren (Ausnahme) → NICHT bestätigt",
+      lambda: bau_probe("ALT", False, None, ruhe=60, los=RuntimeError("Antwort verloren")) is False)
+    f("_zurueckbauen --zurueck: Medium gibt es nicht mehr (MEDIA_DOES_NOT_EXIST_ON_PRODUCT) → bestätigt (keine Sackgasse)",
+      lambda: bau_probe("ALT", False, None, ruhe=60, los="MEDIA_DOES_NOT_EXIST_ON_PRODUCT") is True
+      and bau_probe("ALT", False, None, ruhe=60, los="MEDIA_DOES_NOT_EXIST") is True)
+    f("_zurueckbauen: Lösen klemmt, aber Wieder-Anhängen quittiert + «alt» gelesen → bestätigt (Quittung schlägt die Lesung)",
+      lambda: bau_probe("ALT", True, None, ruhe=60, los="MEDIA_CANNOT_BE_MODIFIED") is True)
+    f("--zurueck, Lösen klemmt dauerhaft + Lesungen hinken (Zuschnitt, Prüfer-Gegenprobe «hinkt 1000»): rc 1, NICHTS gelöscht, "
+      "Varianten am Zuschnitt (nicht bildlos), keine Ledger-Zeile dazu, Handle offen, Meldung nennt den Code",
+      lambda: r18["zurueck_rc"] == 1 and not [m for m in r18["muts_zurueck"] if m[0] == "del"]
+      and r18["v_nach_zurueck"] == {V1: r18["laden"].eigene[0], V2: r18["laden"].eigene[0]}
+      and r18["laden"].eigene[0] in r18["medien_nach_zurueck"]
+      and [z["art"] for z in r18["ledger_danach"]] == [z["art"] for z in r18["ledger"]] == ["begonnen-zuschneiden", "fehler-teil-zuschneiden"]
+      and teil_offen_aus(r18["ledger_danach"]) == {"h-test"} and "MEDIA_CANNOT_BE_MODIFIED" in r18["stderr_zurueck"])
+    f("… klemmt nicht mehr: nächstes --zurueck rc 0, Varianten am alten Bild, Zuschnitt-Medium entfernt, Handle frei",
+      lambda: r18["zurueck2_rc"] == 0 and r18["laden"].v == alt_am_alten and r18["laden"].geloescht == r18["laden"].eigene
+      and r18["ledger_danach2"][-1]["art"] == "zurueck" and not teil_offen_aus(r18["ledger_danach2"]))
+    f("--zurueck, Lösen klemmt dauerhaft + Lesung hinkt 4 (Tausch): rc 1, Ledger bleibt «fehler-teil-tauschen» "
+      "(kein falsches «zurueck»), Varianten am Ersatz; danach rc 0 → alt, Ersatz bleibt",
+      lambda: r19["zurueck_rc"] == 1 and r19["v_nach_zurueck"] == {V1: M2, V2: M2}
+      and [z["art"] for z in r19["ledger_danach"]] == [z["art"] for z in r19["ledger"]]
+      and r19["ledger_danach"][-1]["art"] == "fehler-teil-tauschen" and teil_offen_aus(r19["ledger_danach"]) == {"h-test"}
+      and r19["zurueck2_rc"] == 0 and r19["laden"].v == alt_am_alten and M2 in r19["laden"].medien and not r19["laden"].geloescht)
 
     def del_probe(antwort):
         """medium_entfernen (im Lauf): nur deletedMediaIds zählt."""
@@ -1935,6 +2047,26 @@ def selbsttest():
     f("Randband: 1 Pixel Unterschied bei 0,1 Helligkeit zählt (exakt, nicht L > 40)",
       lambda: (lambda k: (k.putpixel((400, 400), (255, 255, 254)), aenderung_im_rand(leer_bild, k, ("rand-oben", "rand-oben"))[0])[1]
                is False)(leer_bild.copy()))
+    # ── Schluss-Prüfung 14.10. (niedrig) 2: EIN Band, nicht die L-Form aus oberem UND linkem Band ──
+    l_form = ecke.copy(); ImageDraw.Draw(l_form).rectangle((40, 520, 150, 560), fill=(250, 250, 250))   # «SALE» links unten
+    f("Randband L-Form: Ecke oben links + Aufdruck im LINKEN Band weit unter der Ecke (Prüfer-Gegenprobe «SALE») → abgelehnt",
+      lambda: (lambda r: r[0] is False and "kein einzelnes Band" in r[1])(
+          aenderung_im_rand(leer_bild, l_form, ("ecke-oben-links", "ecke-oben-links"))))
+    f("Randband: Änderung nur im linken Band (hoch, schmal), ecke-oben-links → ok",
+      lambda: (lambda k: (ImageDraw.Draw(k).rectangle((10, 20, 150, 600), fill=(250, 250, 250)),
+                          aenderung_im_rand(leer_bild, k, ("ecke-oben-links", "rand-links"))[0])[1] is True)(leer_bild.copy()))
+    f("Randband: Ecke unten rechts, Änderung im unteren Band → ok",
+      lambda: (lambda k: (ImageDraw.Draw(k).rectangle((500, 700, 790, 790), fill=(250, 250, 250)),
+                          aenderung_im_rand(leer_bild, k, ("ecke-unten-rechts", "ecke-unten-rechts"))[0])[1] is True)(leer_bild.copy()))
+
+    def echt_kandidat(box, ort):
+        """Diff-Box (‰, x1/y1 exklusiv) eines echten text-weg-Kandidaten (messen.txt der Prüfer) auf 1000×1000 nachgestellt."""
+        o = Image.new("RGB", (1000, 1000), (255, 255, 255)); k = o.copy()
+        ImageDraw.Draw(k).rectangle((box[0], box[1], box[2] - 1, box[3] - 1), fill=(250, 250, 250))
+        return aenderung_im_rand(o, k, (ort, ort))[0]
+    f("Randband: die 4 echten Kandidaten (Lesebrille ×3 rand-oben, Socken ecke-oben-links; y1 ≤ 158 ‰) bleiben erlaubt",
+      lambda: all(echt_kandidat(b, o) for b, o in (([330, 16, 670, 128], "rand-oben"), ([386, 52, 648, 158], "rand-oben"),
+                                                    ([391, 20, 615, 139], "rand-oben"), ([20, 30, 360, 120], "ecke-oben-links"))))
     tw_aufrufe = []
 
     def tw_urteil(antwort_pruef):
@@ -1961,12 +2093,18 @@ def selbsttest():
                and [a[0] for a in tw_aufrufe] == ["AUFGABE-PRODUKT", "AUFGABE-BOX", "AUFGABE-PRUEF"])(tw_plan(mitte)))
     f("text-weg: Prüfer bestätigen «Artikel unverändert» nicht (Feld fehlt) → lassen",
       lambda: tw_plan(ecke, {"einblendung": False, "artikel_vollstaendig": True})["plan"] == "lassen")
+    f("text-weg mit L-Form (Ecke + «SALE» links unten), Prüfer sagen sogar «unverändert»: nie «text-weg», Box-Weg",
+      lambda: (lambda r: r["methode"] != "text-weg" and "Randband" in r["grund"]
+               and [a[0] for a in tw_aufrufe] == ["AUFGABE-PRODUKT", "AUFGABE-BOX", "AUFGABE-PRUEF"])(tw_plan(l_form)))
 
     f("Gelöscht wird in allen Abläufen nur, was der Lauf selbst angelegt hat (nie Original, nie Ersatz)",
       lambda: all(set(r["laden"].geloescht) <= set(r["laden"].eigene) for r in alle_r))
     f("Kein Ablauf lässt eine Variante bildlos oder an einem gelöschten Medium zurück, ohne dass das Ledger offen ist",
       lambda: all(all(m is not None and m not in r["geloescht_vor"] for m in r["v_vor"].values())
                   or teil_offen_aus(r["ledger"]) for r in alle_r))
+    f("Kein --zurueck lässt eine Variante bildlos oder an einem gelöschten Medium zurück, ohne dass das Ledger offen ist",
+      lambda: all(all(m is not None and m in r["medien_nach_zurueck"] for m in r["v_nach_zurueck"].values())
+                  or teil_offen_aus(r["ledger_danach"]) for r in alle_r if "ledger_danach" in r))
     f("Abläufe ohne unerwartete Ausnahme (ausser dem gewollten harten Abbruch)",
       lambda: all(r["ausnahme"] is None for r in alle_r))
 
