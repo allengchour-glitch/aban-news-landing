@@ -481,3 +481,15 @@ Der DOM-Rückgang senkt vermutlich auch die Kosten des Clarity-Pixels, denn die 
 **Stufe B:** zuerst der Kassen-Check, dann Massnahme 12. Massnahme 14, bevor über Reihen entschieden wird. Massnahme 13 ist Betreiber-Entscheid.
 
 Im Shop und im Theme ist nichts geändert und nichts committet.
+## Umsetzung 14.10.2026 (Stufe A, erste Schritte)
+- **A0 Messgerät** `automation/startseite_gewicht.py` (täglich im Aufseher, Ledger `dropship/_startseite_gewicht.tsv`, erkennt Cache-Kopien).
+  Ausgangswert 09:56 UTC: 2.94 MB · 833 Links · 151 Ü · H1 versteckt «LuxeStyle» · 360× ?variant= · 124 Karten · 419 img · 120× Häkchen-SVG.
+- **A5 umgesetzt (09:58 UTC)**, Backups `theme_backup/*.vor-a5-2026-10-14`, Marke `lx-schlank-2026-10-14 A5`:
+  - versteckte H1 in `sections/header.liquid` entfernt;
+  - Hero-Text `<h2>` → `<h1>` «Premium-Style. Schweizer Shop.»; Text-Schatten-Regel in `layout/theme.liquid` gilt jetzt auch für h1;
+  - USP-Kacheln: Gratis-Versand (in der Schweiz ab CHF 50) · **Kauf auf Rechnung (Klarna · TWINT · Karten)** · 30 Tage Rückgabe (mit Link) · Schweizer Shop. Die doppelte Rückgabe-Kachel ist weg.
+  - Hero-Zeile 3 lautet «🚚 Gratis-Versand in der Schweiz ab CHF 50 · 💳 Klarna & TWINT» (die doppelte Rückgabe ist weg).
+
+  Nachgemessen: H1 1× sichtbar, 150 Ü. Handy-Screenshot 390 px: `dropship/startseite-a5-390px-2026-10-14.png`, Hero unverändert, Klarna im ersten Bildschirm.
+- **Offen:** A1 Patch-Gerüst und A2–A4, A6–A9 (Zoom-out-Titel, ?variant=, Karussell-Galerie/srcset, Kategorie-Liste, Häkchen-SVG, Kleinkram).
+  Die Prüfer-Messung mit Ankern und Zeilennummern liegt in `scratchpad`; die wesentlichen Anker stehen oben im Plan.
