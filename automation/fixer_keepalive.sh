@@ -1177,7 +1177,7 @@ while true; do
     fi
   fi
   # 05.10.2026 (Bereich «kategorie», unverändert aus dem Ursprungsergebnis; Nachbesserung erhöht nur die Kanarienzahl 17 → 26):
-  # Kanarienvögel der Titelregeln VOR dem scharfen kategorie_wache-Lauf — eine Regeländerung, die einen der 26 Fälle (Steckdose,
+  # Kanarienvögel der Titelregeln VOR dem scharfen kategorie_wache-Lauf — eine Regeländerung, die einen der Fälle (316 am 14.10.; Steckdose,
   # Adventskalender Blind Box, Stunt-Hund mit Fernbedienung, Saugroboter/Staubsauger-Roboter/Roboter-Staubsauger, Tierkamera,
   # Katzen-Laserpointer, Futterautomat, Trainingsjacke …) kippt, darf nicht schreiben. Ohne Shop-Zugriff, < 1 s.
   if [ -f "$REPO/automation/kategorie_wache.py" ]; then
