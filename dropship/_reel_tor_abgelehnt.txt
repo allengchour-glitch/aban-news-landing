@@ -48,3 +48,4 @@ CJJE295762801AZ	2026-10-14	HOOK 1.76 < 3.0
 2072225588842496001	2026-10-14	schnitt 3: UNGEEIGNET: kein sauberes Material (Fremdtext: 3 lateinische Woerter (marker, nail, rker); eingebranntes Logo/Einschub bei [58, 354, 276, 176]; Fremdtext: eingebranntes Logo/Einschub bei [58, 354, 276, 176]; kein nutzbarer Rest (Uebergang/S
 2072221258447155201	2026-10-14	schnitt 3: UNGEEIGNET: kein sauberes Material (Fremdtext: eingebranntes Logo/Einschub bei [28, 248, 98, 286])
 CJCS199574701AZ	2026-10-14	DAUER 5.8 s
+CJLY298916401AZ	2026-10-14	schnitt 3: UNGEEIGNET: kein sauberes Material (kein nutzbarer Rest (Uebergang/Standbild/Wisch/Intro))
