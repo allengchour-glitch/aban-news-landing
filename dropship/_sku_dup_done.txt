@@ -713,3 +713,4 @@ gid://shopify/Product/15522211594625	CJ-CJYD280080801AZ	Patchwork Floral Baumwol
 gid://shopify/Product/15522211987841	CJ-CJYD280079701AZ	Plissiertes Baumwoll-Shirt mit Umlegekragen
 gid://shopify/Product/15522212151681	CJ-CJCS280077401AZ	Distressed Baumwoll-Shirt für Damen
 gid://shopify/Product/15447589028225	CJNS291439601AZ	Elegante Quarzuhr mit Silikonarmband
+gid://shopify/Product/15412361593217	CJSN290228901AZ	3D-Druck Nachttischlampe – warmes Nachtlicht & Deko-Objekt fürs Schlafzimmer

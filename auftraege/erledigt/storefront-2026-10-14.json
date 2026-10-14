@@ -1,11 +1,11 @@
 {
+  "id": "storefront-2026-10-14",
   "typ": "skript",
   "skript": "storefront_wahrheit.mjs",
-  "id": "storefront-2026-10-14",
-  "warum": "Der Agent ist das EINZIGE ehrliche Fenster auf luxestyle.ch: unsere Rechenzentrums-IP bekommt vom Shopify-Edge eine eigene, stundenalte Bot-Cache-Kopie (19.08. zweimal belegt, 125 Abrufe ueber 50 Minuten lieferten ausnahmslos die alte Seite). Am 17.09. meldete der bisher EINZIGE Lauf die Startseite als nicht erreichbar (202 Zeichen, waehrend Kollektion und FAQ sauber luden) — und diese Messung steht seither allein da. Eine Momentaufnahme ohne Wiederholung beantwortet nicht, ob es ein Aussetzer war oder der Normalzustand. Taeglich, rein lesend, in Handy-Breite (77 % des Verkehrs). [wiederkehrend, alle 1 Tag(e)]",
+  "warum": "Taegliche Pruefung der oeffentlichen Seite von einer ECHTEN Besucher-IP. Von unserer eigenen IP ist sie nicht pruefbar (Bot-Cache, 19.08. gemessen). Handy-Breite, weil 77 % des Verkehrs Handy ist.",
   "stand": "ok",
-  "begonnen": "2026-10-14T00:00:35.405Z",
-  "dauer_s": 62.5,
+  "begonnen": "2026-10-14T13:19:28.988Z",
+  "dauer_s": 66.2,
   "ergebnis": {
     "zusammenfassung": "✅ 3 Seiten sauber, jede mehrfach geladen (5/5 · 2/2 · 2/2) — von echter Besucher-IP",
     "befunde": [
@@ -24,12 +24,12 @@
         "versandzusage": "CHF 50 — richtig",
         "preis_sichtbar": true,
         "fehlertexte": [],
-        "zeichen": 5594,
+        "zeichen": 5566,
         "zeichen_spanne": [
-          5553,
-          5594
+          5525,
+          5566
         ],
-        "bild": "auftraege/ergebnis/storefront-2026-10-14-startseite.jpg"
+        "bild": "auftraege/ergebnis/storefront-2026-10-14-startseite-klein.jpg"
       },
       {
         "seite": "kollektion",
@@ -46,12 +46,12 @@
         "versandzusage": "CHF 50 — richtig",
         "preis_sichtbar": true,
         "fehlertexte": [],
-        "zeichen": 3784,
+        "zeichen": 3748,
         "zeichen_spanne": [
-          3784,
-          3784
+          3748,
+          3748
         ],
-        "bild": "auftraege/ergebnis/storefront-2026-10-14-kollektion.jpg"
+        "bild": "auftraege/ergebnis/storefront-2026-10-14-kollektion-klein.jpg"
       },
       {
         "seite": "faq",
@@ -73,7 +73,7 @@
           3114,
           3114
         ],
-        "bild": "auftraege/ergebnis/storefront-2026-10-14-faq.jpg"
+        "bild": "auftraege/ergebnis/storefront-2026-10-14-faq-klein.jpg"
       }
     ]
   },
@@ -81,19 +81,19 @@
     "oeffentlich": true,
     "im_repo": [
       {
-        "datei": "auftraege/ergebnis/storefront-2026-10-14-faq.jpg",
+        "datei": "auftraege/ergebnis/storefront-2026-10-14-faq-klein.jpg",
         "bytes": 59286,
         "vorher_bytes": 74346
       },
       {
-        "datei": "auftraege/ergebnis/storefront-2026-10-14-kollektion.jpg",
-        "bytes": 51249,
-        "vorher_bytes": 94763
+        "datei": "auftraege/ergebnis/storefront-2026-10-14-kollektion-klein.jpg",
+        "bytes": 52527,
+        "vorher_bytes": 93137
       },
       {
-        "datei": "auftraege/ergebnis/storefront-2026-10-14-startseite.jpg",
-        "bytes": 55909,
-        "vorher_bytes": 265348
+        "datei": "auftraege/ergebnis/storefront-2026-10-14-startseite-klein.jpg",
+        "bytes": 56604,
+        "vorher_bytes": 266234
       }
     ],
     "auf_server": []
