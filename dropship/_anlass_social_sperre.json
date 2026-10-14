@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-13T23:09Z",
+ "stand": "2026-10-14T19:09Z",
  "scharf": true,
  "anlaesse": {
   "halloween": {
@@ -11,20 +11,20 @@
     "Facebook & Instagram": "gid://shopify/Publication/302566834561",
     "Pinterest": "gid://shopify/Publication/302994456961"
    },
-   "auswahl": 54,
+   "auswahl": 56,
    "nach_grund": {
-    "Kostüm": 24,
+    "Kostüm": 26,
     "Verkleidungsteil": 2,
     "Partydeko": 28
    },
    "grenzfaelle": 76,
-   "abmelden_paare": 162,
+   "abmelden_paare": 168,
    "pro_kanal": {
-    "TikTok": 54,
-    "Facebook & Instagram": 54,
-    "Pinterest": 54
+    "TikTok": 56,
+    "Facebook & Instagram": 56,
+    "Pinterest": 56
    },
-   "tag_fehlt": 54,
+   "tag_fehlt": 56,
    "tag_zuviel": 0,
    "queue_zeilen": 6,
    "queue_ready": 0,
@@ -438,6 +438,18 @@
      ]
     },
     {
+     "id": "gid://shopify/Product/16617724576135",
+     "handle": "hundekostum-fur-halloween-und-weihnachten-636800",
+     "titel": "Hundekostüm für Halloween und Weihnachten",
+     "typ": "Haustierbedarf",
+     "grund": "Kostüm",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
      "id": "gid://shopify/Product/16615812596103",
      "handle": "kurbis-totenkopf-grimasse-ornament-615600",
      "titel": "Kürbis Totenkopf Grimasse Ornament",
@@ -539,6 +551,18 @@
      "titel": "Retro Patchwork Geist Anhänger mit Halloween-Beleuchtung",
      "typ": "Partydeko & Ballone",
      "grund": "Partydeko",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
+    },
+    {
+     "id": "gid://shopify/Product/16638242226567",
+     "handle": "samtumhang-fur-kostum-halloween-632500",
+     "titel": "Samtumhang für Kostüm – Halloween",
+     "typ": "Accessoires",
+     "grund": "Kostüm",
      "kanaele": [
       "TikTok",
       "Facebook & Instagram",
@@ -1175,7 +1199,7 @@
     }
    ],
    "gesperrt": 0,
-   "offen": 54
+   "offen": 56
   }
  }
 }
