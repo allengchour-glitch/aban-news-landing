@@ -8639,3 +8639,11 @@ nacktes-auge-3d-holografischer-projektor-616300	2509161009121616600	11	43.37	ok	
 schlaf-und-konzentrationshilfe-fur-babys-613100	2606081007191614000	7	11.30	ok	landeseite
 retro-cd-player-mit-vinyl-look-602800	2606050854181603500	7	13.19	ok	landeseite
 vintage-auto-bluetooth-modell-mit-led-licht-622400	2602231151311622700	7	17.94	ok	landeseite
+ai-ubersetzungshorer-fur-165-sprachen-kabellos-761730	2073313027635699713	0	-	KEINE CH-Option → DRAFT	landeseite
+kabelloser-bluetooth-headset-mit-storschutz-488256	1441281328858402816	7	6.98	ok	landeseite
+vr-brille-fur-smartphone-3d-893184	1385145758742876160	5	11.15	ok	landeseite
+dual-bildschirm-halterung-f100a-teleskop-dreh-306432	1380159240685096960	16	11.23	ok	landeseite
+selfie-stativ-mit-farblicht-bluetooth-060480	1377561294936346624	7	17.96	ok	landeseite
+acacia-snackplatte-handpoliert-433600	1376050683916193792	16	9.88	ok	landeseite
+mini-led-fotolicht-mit-lithium-akku-636096	1371666744174841856	7	6.49	ok	landeseite
+gigabit-faserkabel-kategorie-6-727424	1369955243370090496	16	6.77	ok	landeseite
