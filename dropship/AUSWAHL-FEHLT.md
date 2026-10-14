@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-14 12:39 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-14 14:05 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1570 · **1502 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1283, teilweise: 177, keine: 42; Preisspanne > 2×: 166) · 1 CJ-Variante: 66 · ohne Antwort: 2
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1569 · **1501 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1282, teilweise: 177, keine: 42; Preisspanne > 2×: 166) · 1 CJ-Variante: 66 · ohne Antwort: 2
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -1177,7 +1177,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Transparentes Puder für mattes Finish (`transparentes-puder-fur-mattes-finish-2eca22`) | 4 | 4 | 4.35–4.35 | 23.90 | Banana, Medium dee, Beige, Translucent |
 | Karierter Hundepullover in Lila (`dogger-plaid-pullover-in-lila-877696`) | 4 | 4 | 5.8–5.8 | 16.90 | Purple-L, Purple-XL, Purple-2XL, Purple-3XL |
 | Sanda Box-Target für Muay Thai und Taekwondo (`sanda-box-target-fur-muay-thai-und-taekwondo-767616`) | 4 | 4 | 15.96–15.96 | 34.90 | Orange, Blue, Yellow, Silver |
-| Keramischer Teekopf mit Untertasse (`keramischer-teekopf-mit-untertasse-617100`) | 4 | 4 | 3.65–3.65 | 17.90 | Peach Pink-201to300ml, Ice Mist Blue-201to300ml, Light Tea Green-201to300ml, Smoke Purple-201to300ml |
 | Tee-Becher aus Keramik – Dunhuang Apsaras (`tee-becher-aus-keramik-dunhuang-apsaras-636300`) | 4 | 4 | 2.21–2.94 | 16.90 | Azure-Portable, Azure-Simple Package, Beige-Portable, Beige-Simple Package |
 | Nackenstützkissen mit Massageperlen (`nackenstutzkissen-mit-massageperlen-609000`) | 3 | 3 | 5.2–5.51 | 22.90 | Low Loft Pillow, Medium Pillow, High Pillow |
 | Velo-Scheinwerfer mit USB-Ladefunktion (`velo-scheinwerfer-mit-usb-ladefunktion-725376`) | 3 | 3 | 6.1–16.78 | 22.90 | Standard Model, Upgrade, Flagship |

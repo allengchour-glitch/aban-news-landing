@@ -10,7 +10,7 @@ Nichts im Shop geschrieben (nur gelesen). Nichts gedraftet.
 |---|---|---|
 | Aktive Produkte, ganz gelesen (Titel, Typ, Tags, Beschreibung, Kanäle G/T/F/P, Hauptbild) | **54'523** | `productsCount(status:active)` = 54'523; Paging 273 Seiten à 200 (scratchpad `waffen/pager.py`) |
 | Grobe Vorauswahl (breites Muster inkl. Text: taktisch, Pistole, Jagd, Militär, Magazin, Holster …) | 1'170 | `waffen_treffer.jsonl` |
-| Davon Schusswaffen-Zubehör nach der neuen Regel | **10** | `python3 automation/ueberwachung_waffen_guard.py` mit `DRY=1` (Abschnitt 3) bzw. Prototyp |
+| Davon Schusswaffen-Zubehör nach der neuen Regel | **10** | Ende-zu-Ende, nur lesen: `DRY=1 SEIT=2020-01-01 EXPORT=/nonexistent python3 automation/ueberwachung_waffen_guard.py` → «Live-Nachzug: 546 Seiten» · «10 Treffer» · «Ohne «waffe-pruefen»: 7 (davon im Google-Kanal: 6)» · Exit 0. Der alte heikel-Teil im selben Lauf: 4 Treffer (Sturmfeuerzeug, Gewehrriemen, Glock, AK74), «Zielfernrohr-Halterungszubehör» NICHT — Titel-Sperre «Halterung» |
 | … von Hand am Hauptbild bestätigt | **10 / 10** | Kontaktbögen (PIL), 428 Bilder angesehen |
 | … ohne `waffe-pruefen` | **7** | |
 | … ohne `waffe-pruefen` UND im Google-Kanal | **6** | |
@@ -59,7 +59,8 @@ Prüfung:
 - Kanarien 93/93 (`python3 automation/ueberwachung_waffen_guard.py --selbsttest` → «93/93 · heikel()-Stichprobe ok»).
   Gegenprobe: eine falsche Kanarie eingeschleust → `selbsttest()` = False, `zubehoer_lauf` schreibt nichts.
 - Gleichlauf py=js: `node automation/schusswaffen_zubehoer_gleichlauf_test.mjs` → 0 Abweichungen über 93 Kanarien;
-  mit `EXPORT=…waffen_treffer.jsonl` 0 über 1'263 Proben (mit Text), mit `EXPORT=…waffen_alle.jsonl` 0 über 54'616 Proben.
+  mit `EXPORT=…waffen_treffer.jsonl` 0 über 1'263 Proben (mit Text), mit dem Voll-Export (Titel/Typ/Tags aller 54'523,
+  Scratch-Datei danach gelöscht) 0 über 54'616 Proben.
 - Bestehende Kanarien unverändert grün: Kostüm 88/88, Feuerzeug 16/16, Heil-Schmuck 38/38; `gesperrte_ids()` = 17.
 
 Konsequenz: Tag **`waffe-pruefen`** (bestehend). Wer liest ihn (gemessen, `grep -rn waffe-pruefen automation`):
@@ -135,3 +136,25 @@ Bestand). Damit der neue Teil schreibt, dort `SCHARF=1` ergänzen:
 `SEIT=$UW_SEIT EXPORT=/nonexistent SCHARF=1 python3 automation/ueberwachung_waffen_guard.py`
 Erster scharfer Lauf von Hand (Hauptsitzung): `SEIT=2020-01-01 EXPORT=/nonexistent SCHARF=1 python3 automation/ueberwachung_waffen_guard.py`
 → erwartet 7 × `tagsAdd waffe-pruefen`; danach nimmt `google_sperrtags_durchsetzen` die 10 aus Google/TikTok/FB-IG/Pinterest.
+
+## 6. Nicht geprüft
+
+- Rechtslage: dass Laser-Zielgeräte/Boresights in der Schweiz verbotenes Waffenzubehör sind, steht so im Wächter-Kommentar
+  vom 06.10. (Art. 4 Abs. 2 WG) — von mir nicht nachgelesen. Ob Google Zweibeine, Holster-Taschen und Gewehrriemen als
+  «Guns and Parts» wertet: nicht geprüft; belegt ist nur die Google-Meldung am Stativ 15449030984065 (`google-policy-waffen`).
+- Fortura-, BigBuy- und Trending-Importer: nicht geprüft, ob deren Quellen Schusswaffen-Zubehör führen; nicht angepasst.
+- Der scharfe Lauf (`SCHARF=1`) und die Wirkung des Durchsetzers auf die 10 Produkte: nicht ausgeführt (nur DRY gelesen).
+- Wechselwirkung mit der cj-real-Runde: `queue_new_products.mjs` nimmt die 50 neuesten `cj-real`-Produkte; die AK74-Montage
+  (heute angelegt) trug kein `cj-real` und war deshalb nie in der Bild-Queue. Bekommt sie es durch den cj-real-Nachtrag, hält
+  sie jetzt die neue Filterzeile draussen. Weitere Sperr-Tags (raucher, erotik, nicht-bewerben, heilschmuck …) prüft
+  `queue_new_products.mjs` weiterhin NICHT — eigene Runde (gemeinsame SPERR-Liste wie in bild_reel_auswahl.py).
+
+## Geänderte Dateien
+
+Neu: `automation/data/schusswaffen_zubehoer_regel.json`, `automation/schusswaffen_zubehoer.mjs`,
+`automation/schusswaffen_zubehoer_gleichlauf_test.mjs`, dieser Bericht.
+Geändert: `automation/google_sperrliste.py` (+ ist_schusswaffen_zubehoer, schusswaffen_kanarien),
+`automation/ueberwachung_waffen_guard.py` (zubehoer_lauf, --selbsttest, nachlauf, Typ/Tags in der Live-Abfrage),
+`automation/cj_category_fill.mjs` (Import + eine Zeile), `automation/cj_sku_import.mjs` (Tag, nur Laden, Selbsttest),
+Einzeiler: `automation/google_sperrtags_durchsetzen.py` (ALLE_WERBEKANAELE), `automation/tiktok_karussell.py` (SPERR_TAGS),
+`automation/queue_new_products.mjs` (Filterzeile), `automation/social_queue_wache.py` (RISIKO).
