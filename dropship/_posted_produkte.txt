@@ -237,3 +237,6 @@ slug:bildreel-damen-strickpullover-mit-herzmuster-reissversc
 pid:15448590614913
 slug:damen-strickpullover-mit-herzmuster-reissversc
 slug:plusch-schildkrote-fga83828
+slug:bildreel-eleganter-damenmantel-mit-fellkragen
+pid:15448671027585
+slug:eleganter-damenmantel-mit-fellkragen

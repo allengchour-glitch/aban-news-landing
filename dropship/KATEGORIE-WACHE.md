@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-14T00:10Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-14T01:09Z
 
-Aktive gescannt: 22 · ohne Kategorie: 22 · heute gesetzt: 14 (SCHARF, CAP 1500) · danach offen: 8 · Fehler: 0
+Aktive gescannt: 10 · ohne Kategorie: 10 · heute gesetzt: 2 (SCHARF, CAP 1500) · danach offen: 8 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -11,9 +11,6 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- klassisches-strickhemd-mit-karomuster-624200 · Herrenmode → Apparel & Accessories > Clothing
-- lange-armel-leinen-shirt-in-khaki-605800 · Herrenmode → Apparel & Accessories > Clothing
-- langarm-hemd-corduroy-in-braun-grau-lake-blue-621300 · Herrenmode → Apparel & Accessories > Clothing
-- manner-linen-long-sleeve-top-mit-stand-up-hals-612400 · Herrenmode → Apparel & Accessories > Clothing
-- freizeitshirt-mit-patchwork-streifen-kurzarmli-629600 · Herrenmode → Apparel & Accessories > Clothing
+- keramikkaffee-tasse-untertasse-set-632000 · Haushalt & Wohnen → Home & Garden > Kitchen & Dining
+- keramischer-teekopf-mit-untertasse-617100 · Haushalt & Wohnen → Home & Garden > Household Supplies
 
