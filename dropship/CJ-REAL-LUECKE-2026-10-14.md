@@ -108,7 +108,7 @@ und dort fehlen 1'299 wegen der SKU-Form. Für die Existenzprüfung ist ein **Na
 
 ## OFFEN
 
-1. **Aufseher-Zeile eintragen** (Hauptsitzung, siehe unten). Erster Lauf: 500 · 500 · 330 Nachträge über ~3 Ticks, dann FERTIG täglich.
+1. ✅ **ERLEDIGT 14.10. ~15:30–15:45 UTC (Hauptsitzung):** drei SCHARF-Läufe 500 · 500 · 330 nachgetragen, 0 nicht bestätigt; Nachmessung `--pruefen` → «1 aktiv (CJ-Form 0 · unprüfbar 1)». Aufseher-Zeilen eingetragen (Tagesliste, NACH, EXP SCHARF=1); `/tmp/cj_lager_export.jsonl` gealtert, damit cj_lager_abgleich die 1'330 beim nächsten Lauf mitnimmt.
 2. **Gleichlauf nach dem Nachtrag messen:** `status:active AND tag:cj-real` 50'292 → ~51'622; `--pruefen` → `CJ-Form 0 · unprüfbar 1`.
    Die Rohzahl bleibt 1 (Dusch-Organizer, Slug) — Soll ist «CJ-Form 0».
 3. **Neue, grössere Klasse (nicht behoben):** cj_lager_abgleich kann pid-Formen nicht abfragen. Im eigenen Export
