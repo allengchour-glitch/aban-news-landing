@@ -1,4 +1,4 @@
-# Klimaaussagen — Stand 2026-10-13T10:26Z
+# Klimaaussagen — Stand 2026-10-14T10:29Z
 
 Regel: `automation/data/klima_regel.json` (Art. 3 Abs. 1 lit. x UWG). Produkte bereinigt `klimaaussagen_wache.py` selbst; Seiten unten bitte von Hand (mit Sicherung).
 
