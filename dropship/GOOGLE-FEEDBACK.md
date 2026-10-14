@@ -2,11 +2,10 @@
 
 Gescannt: 54511 aktive Produkte in 219 Seiten (vollständig), 279 s. Meldungen nur für Shopping Ads (ignoriert): 39491.
 
-## Free-Listings-Blocker: 437
+## Free-Listings-Blocker: 167
 
 | Klasse | Produkte | davon ohne onlineStoreUrl | davon Ziel «[]» |
 |---|---:|---:|---:|
-| Inappropriate image | 270 | 0 | 270 |
 | Unable to show image | 126 | 0 | – |
 | Promotional overlay on image | 31 | 0 | – |
 | Image too small | 3 | 0 | – |
@@ -24,7 +23,7 @@ Gescannt: 54511 aktive Produkte in 219 Seiten (vollständig), 279 s. Meldungen n
 Verweildauer (dropship/_google_pruefung_seit.json): 0 länger als 14 Tage, ältestes seit 2026-10-01.
 Nicht reagieren, solange die Verweildauer kurz ist: Google prüft. Wer hier ein Bild tauscht, setzt die Prüfung neu.
 
-Ziel «[]» = die App nennt kein betroffenes Ziel («… in [] [CH]» statt «in [Free_listings,Shopping_ads]»). Was das bei Google heisst, ist UNBELEGT (keine Doku gefunden, 08.10.) — Wahrheit = Status im Merchant Center.
+Ziel «[]» = die App nennt kein betroffenes Ziel («… in [] [CH]» statt «in [Free_listings,Shopping_ads]»). Seit 14.10.: bei «Inappropriate image» vermutlich der Meldekontext Demand-Gen-Werbung (eigener Topf unten); für andere Klassen weiter UNBELEGT — Wahrheit = Status je Ziel im Merchant Center.
 
 ## Weiteres Lieferland betroffen (Lieferländer gemessen in Shopify Markets: CH, LI)
 
@@ -34,6 +33,12 @@ Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.
 - Alcoholic beverages [LI]: 3
 
 «Missing shipping info … [LI]»: In Shopify gibt es den Tarif (General profile, Zone «Liechtenstein» CHF 14.90, seit 09.10.), Google hat ihn nicht übernommen. Abhilfe (Betreiber, UNBELEGT welcher Klick reicht): App «Google & YouTube» → Einstellungen → Versand neu importieren, sonst im Merchant Center einen Versandservice für Liechtenstein (CHF 14.90) anlegen. NICHT das Land entfernen — LI ist Lieferland. Wirkung = diese Zahl beim nächsten Scan.
+
+## Nur Demand-Gen-Werbung (blockiert Gratis-Einträge vermutlich NICHT — wir schalten keine Demand-Gen-Werbung)
+
+- Inappropriate image: 270
+
+Quelle: Google Merchant Help «Demand Gen product ads format requirements» (answer/13389785): Waffen, Totenköpfe, Körperfokus, Rauch/Flammen u. a. sind nur für Demand-Gen-Bilder verboten; «disapproved Demand Gen assets may continue to run on Google's other properties». Bestätigung = Status je Ziel im Merchant Center (Betreiber). Kein Bildtausch dafür (Aufseher seit 14.10.).
 
 ## Nur personalisierte Werbung (blockiert Gratis-Einträge NICHT — Targeting-Regel, siehe Kopf)
 
@@ -109,70 +114,6 @@ Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.
 - keile-plateau-sandalen-fur-damen-614200
 - retro-sport-sandale-mit-weicher-sohle-616300
 - herren-mid-top-schnurstiefeletten-mattleder-842496
-- …
-
-### Inappropriate image (270)
-
-- herren-ring-vintage-edelstahl-retro
-- pod-sticker-flame-graffiti
-- pod-sticker-pumpkin-jack
-- pod-sticker-tattoo-skull-rose
-- retro-flammen-tischlampe-led
-- herren-cargo-hose-trail-multi-pocket-outdoor
-- rc-fernsteuerung-fur-modellautos-boote-600600
-- abendkleid-mit-perlen-ruschen-604000
-- punk-motorrad-seiten-taschen-602000
-- gedruckter-baumwoll-leinen-schal-fur-herbst-wi-626100
-- vielseitiger-dreiecksschal-mit-bindebandern-616400
-- ice-silk-gesichtsmaske-mit-uv-schutz-622000
-- uv-schutz-gesichtsmaske-mit-ohrenschlaufen-606900
-- sportlicher-taillenformer-mit-reissverschluss-633000
-- vielseitiger-pu-gurtel-mit-dornschliesse-622600
-- lederhandschuhe-mit-fleecefutter-638000
-- weihnachts-hoodie-fur-die-ganze-familie-619500
-- leuchtendes-hai-t-shirt-fur-kinder-622300
-- weihnachts-loungewear-fur-die-ganze-familie-604200
-- french-chic-color-block-bandeau-top-607000
-- spitzen-neckholder-top-mit-integrierten-pads-632800
-- strick-top-mit-eckigem-ausschnitt-und-volantsa-603500
-- satin-camisole-mit-neckholder-622900
-- figurbetonte-bandeau-spitzencorsage-603100
-- damen-spitzen-tube-top-mit-offener-ruckenparti-601800
-- samt-camisole-mit-schnurung-958338
-- gepolsterte-half-zip-jacke-fur-damen-611400
-- halloween-kapuzenpullover-mit-totenkopf-print-603500
-- nahtloser-body-mit-bauch-und-po-kontrolle-386434
-- high-compression-shapewear-mit-frontreissversc-360578
-- shapewear-bodysuit-mit-bauchkontrolle-534274
-- skelett-digital-jumpsuit-fur-damen-639800
-- nahtloser-leopard-jumpsuit-fur-yoga-fitness-466946
-- sportlicher-jumpsuit-mit-v-ausschnitt-und-knop-615900
-- sexy-bikini-jumpsuit-mit-tiefem-v-601500
-- gerippter-bodycon-jumpsuit-mit-spaghettitrager-604100
-- overall-playsuit-mit-spaghettitragern-654594
-- a-linien-tennisrock-mit-anti-expositions-unter-618900
-- chic-halter-top-shorts-mit-spitze-630000
-- high-waist-yoga-pants-huftstraffend-schnelltro-607900
-- legging-tights-621800
-- kurze-wattierte-jacke-mit-karomuster-607300
-- taillierte-jeansjacke-fur-herren-824321
-- west-moon-hals-pflege-pads-glatte-zarte-halsha-898498
-- lassiger-hoodie-mit-uberschnittenen-armeln-619800
-- winter-herren-fleece-gefutterte-jacke-mit-kapu-611700
-- pullover-jacke-quirky-personality-600800
-- silikon-photon-maske-led-620400
-- verdunkelungsvorhange-mit-osen-2-stuck-340353
-- personalisierbarer-zugfreier-reflektierender-h-4ce320
-- antigravitations-nebel-feuchter-580ml-354048
-- damen-loose-sweatshirt-mit-3d-digitaldruck-634800
-- casual-pullover-mit-print-614300
-- casual-polyester-pullover-609400
-- casual-pullover-mit-print-609800
-- skull-print-hoodie-fur-herren-623600
-- pullover-mit-kapuze-und-print-633000
-- gruner-hoodie-mit-totenkopf-608400
-- infrarot-nachtsichtgerat-1080p-687680
-- stahlflasche-sport-damen-500-ml-631500
 - …
 
 ### Adult-oriented content (1)

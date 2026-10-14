@@ -50,6 +50,12 @@ NUR_PERSONALISIERT = re.compile(r"^\s*Personalized advertising:", re.I)
 # Zielliste «[]», nur «Product page unavailable», «Promotional overlay», «Image too small» nennen [Free_listings,Shopping_ads].
 # Bedeutung unbelegt → nur zählen (Spalte im Bericht), nicht umdeuten.
 ZIEL_LEER = re.compile(r" in \[\]")
+# 14.10.2026: «Inappropriate image» trägt zu 100 % Ziel «[]» (270 von 270). Google-Hilfe «Demand Gen product ads format
+# requirements» (support.google.com/merchants/answer/13389785) verbietet für Demand-Gen-Bilder genau diese Motive (Waffen,
+# Tod/Totenkopf, anzüglich/Körperfokus, Rauch/Flammen, Medizin) — «disapproved Demand Gen product ad assets may continue to run
+# on Google's other properties». Echte Gratis-Eintrag-Blocker nennen [Free_listings,…]. → eigener Topf «nur Demand Gen»
+# (Werbeform, die wir nicht schalten), NICHT in den Blockern. VERMUTUNG bis der Status je Ziel im Merchant Center gelesen ist.
+DEMAND_GEN_KLASSEN = {"Inappropriate image"}
 TEIL = os.environ.get("GFW_TEIL") or "/tmp/google_feedback_teil.json"   # Zwischenstand je Seite (überlebt Neustarts in /tmp)
 # 13.10.2026 (Urteil B1): Prüf-Warteschlange bei Google — kein Fehler bei uns, kein Blocker. «Image not processed» bleibt Blocker.
 WARTET = {"Image under review", "Title under review"}
@@ -135,7 +141,7 @@ def teile_ausland(nur_ausland, liefer):
 
 
 def einordnen(txt):
-    """Meldung der App «Google & YouTube» → 'anzeigen' | 'ausland' | 'personalisiert' | 'wartet' | 'blocker'.
+    """Meldung der App «Google & YouTube» → 'anzeigen' | 'ausland' | 'personalisiert' | 'demand_gen' | 'wartet' | 'blocker'.
     Reihenfolge = Zählschleife in main(): nur Anzeigen → anderes Land → nur personalisierte Werbung → Prüfung bei Google
     (13.10., WARTET) → Free-Listings-Blocker."""
     if NUR_ANZEIGEN.search(txt):
@@ -144,6 +150,8 @@ def einordnen(txt):
         return "ausland"
     if NUR_PERSONALISIERT.search(txt):
         return "personalisiert"
+    if klasse(txt) in DEMAND_GEN_KLASSEN and ZIEL_LEER.search(txt):
+        return "demand_gen"
     if klasse(txt) in WARTET:
         return "wartet"
     return "blocker"
@@ -255,7 +263,8 @@ def bericht_schreiben(stand):
                     + (" — ⚠️ Handle-Liste gedeckelt (umgerechneter Altstand), Zahl unvollständig" if stand.get("wartet_gedeckelt") else "")
                     + ".\nNicht reagieren, solange die Verweildauer kurz ist: Google prüft. Wer hier ein Bild tauscht, setzt die Prüfung neu.\n")
         f.write("\nZiel «[]» = die App nennt kein betroffenes Ziel («… in [] [CH]» statt «in [Free_listings,Shopping_ads]»). "
-                "Was das bei Google heisst, ist UNBELEGT (keine Doku gefunden, 08.10.) — Wahrheit = Status im Merchant Center.\n")
+                "Seit 14.10.: bei «Inappropriate image» vermutlich der Meldekontext Demand-Gen-Werbung (eigener Topf unten); für "
+                "andere Klassen weiter UNBELEGT — Wahrheit = Status je Ziel im Merchant Center.\n")
         liefer = stand.get("lieferlaender")
         lief, rest = teile_ausland(stand.get("nur_ausland"), liefer)
         if lief:
@@ -271,6 +280,13 @@ def bericht_schreiben(stand):
             f.write("\n## Nur andere Länder (kein Lieferland — blockiert keinen Verkauf)\n\n"
                     + "\n".join(f"- {k}: {v}" for k, v in rest.items())
                     + "\n\nAbhilfe (Betreiber, optional): im Google Merchant Center unter Zielländer/Versand das Land entfernen.\n")
+        if stand.get('nur_demand_gen'):
+            f.write("\n## Nur Demand-Gen-Werbung (blockiert Gratis-Einträge vermutlich NICHT — wir schalten keine Demand-Gen-Werbung)\n\n"
+                    + "\n".join(f"- {k}: {v}" for k, v in stand["nur_demand_gen"].items())
+                    + "\n\nQuelle: Google Merchant Help «Demand Gen product ads format requirements» (answer/13389785): Waffen, "
+                      "Totenköpfe, Körperfokus, Rauch/Flammen u. a. sind nur für Demand-Gen-Bilder verboten; «disapproved Demand Gen "
+                      "assets may continue to run on Google's other properties». Bestätigung = Status je Ziel im Merchant Center "
+                      "(Betreiber). Kein Bildtausch dafür (Aufseher seit 14.10.).\n")
         if stand.get('nur_personalisiert'):
             f.write("\n## Nur personalisierte Werbung (blockiert Gratis-Einträge NICHT — Targeting-Regel, siehe Kopf)\n\n"
                     + "\n".join(f"- {k}: {v}" for k, v in stand["nur_personalisiert"].items()) + "\n")
@@ -315,7 +331,9 @@ def main():
         wart = [("Image under review in [] [CH,LI].", "wartet"),
                 ("Title under review in [] [CH].", "wartet"),
                 ("Image not processed in [Free_listings,Shopping_ads] [CH,LI].", "blocker"),
-                ("Inappropriate image in [] [CH,LI].", "blocker"),
+                ("Inappropriate image in [] [CH,LI].", "demand_gen"),
+                ("Inappropriate image in [Free_listings] [CH].", "blocker"),           # nennt Gratis-Einträge → Blocker
+                ("Promotional overlay on image in [Free_listings,Shopping_ads] [CH,LI].", "blocker"),
                 ("Image under review in [Shopping_ads] [CH].", "anzeigen"),
                 ("Image under review in [] [LI].", "ausland")]
         ok += sum(einordnen(t) == soll for t, soll in wart)
@@ -350,6 +368,14 @@ def main():
             (st.get("ziel_leer") or {}).pop(k, None)
             st["wartet_gedeckelt"] = True                # Altstand: Handle-Liste trug HANDLES_MAX — Verweildauer nur Teilmenge
         st["wartet"] = dict(sorted(wt.items(), key=lambda x: -x[1]))
+        dg = st.setdefault("nur_demand_gen", {})          # 14.10.2026: nur, wenn ALLE Meldungen der Klasse Ziel «[]» tragen
+        hdg = st.setdefault("handles_demand_gen", {})
+        for k in [k for k in st["klassen"] if k in DEMAND_GEN_KLASSEN
+                  and (st.get("ziel_leer") or {}).get(k) == st["klassen"][k]]:
+            dg[k] = dg.get(k, 0) + st["klassen"].pop(k)
+            hdg[k] = list(dict.fromkeys(hdg.get(k, []) + st["handles"].pop(k, [])))
+            st["ohne_onlineStoreUrl"].pop(k, None)
+            (st.get("ziel_leer") or {}).pop(k, None)
         heute = datetime.datetime.utcnow().strftime("%Y-%m-%d")
         if hw:
             seit = seit_neu(seit_lesen(), {h for v in hw.values() for h in v}, heute, False)   # nur ergänzen, nie löschen
@@ -362,13 +388,14 @@ def main():
         json.dump(st, open(STAND, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
         bericht_schreiben(st)
         print(f"UMGERECHNET: {st['blocker']} Free-Listings-Blocker · {sum(st.get('wartet', {}).values())} warten bei Google · "
-              f"nur personalisiert {sum(st['nur_personalisiert'].values())}")
+              f"nur personalisiert {sum(st['nur_personalisiert'].values())} · nur Demand Gen {sum(st['nur_demand_gen'].values())}")
         return
     if not TOK:
         print("kein Shop-Token → No-op"); return
     cursor, seiten, gescannt = None, 0, 0
     klassen, handles, ohne_url, andere, ausland, personal, handles_pers, ziel_leer = {}, {}, {}, {}, {}, {}, {}, {}
     wartet, handles_wartet = {}, {}
+    demand, handles_demand = {}, {}
     anzeigen_meldungen = 0
     t0 = time.time()
     # 03.10.2026 FORTSETZEN: Der Vollscan (~206 Seiten, Eimer-Wartezeiten) braucht länger als eine Stunde; der Container
@@ -388,6 +415,7 @@ def main():
         personal, handles_pers = teil_alt.get("personal", {}), teil_alt.get("handles_pers", {})
         ziel_leer = teil_alt.get("ziel_leer", {})
         wartet, handles_wartet = teil_alt.get("wartet", {}), teil_alt.get("handles_wartet", {})
+        demand, handles_demand = teil_alt.get("demand", {}), teil_alt.get("handles_demand", {})
         t0 -= teil_alt.get("dauer_s", 0)
         print(f"FORTSETZEN ab Seite {seiten} ({gescannt} gescannt)", flush=True)
     while True:
@@ -421,6 +449,12 @@ def main():
                         if len(hp) < HANDLES_MAX:
                             hp.append(n["handle"])
                         continue
+                    if art == "demand_gen":         # 14.10.2026: nur Demand-Gen-Werbung (nicht geschaltet)
+                        demand[k] = demand.get(k, 0) + 1
+                        hd = handles_demand.setdefault(k, [])
+                        if not hd or hd[-1] != n["handle"]:
+                            hd.append(n["handle"])
+                        continue
                     if art == "wartet":             # 13.10.2026 (B1): Prüfung bei Google — Handles OHNE Deckel
                         wartet[k] = wartet.get(k, 0) + 1
                         hw = handles_wartet.setdefault(k, [])
@@ -441,7 +475,7 @@ def main():
         tmp = TEIL + ".neu"
         json.dump({"cursor": cursor, "seiten": seiten, "gescannt": gescannt, "klassen": klassen, "handles": handles,
                    "ohne_url": ohne_url, "andere": andere, "ausland": ausland, "anzeigen": anzeigen_meldungen, "personal": personal, "handles_pers": handles_pers, "ziel_leer": ziel_leer,
-                   "wartet": wartet, "handles_wartet": handles_wartet,
+                   "wartet": wartet, "handles_wartet": handles_wartet, "demand": demand, "handles_demand": handles_demand,
                    "dauer_s": round(time.time() - t0)}, open(tmp, "w", encoding="utf-8"), ensure_ascii=False)
         os.replace(tmp, TEIL)
     voll = seiten < SEITEN_MAX
@@ -457,6 +491,8 @@ def main():
              "handles_personalisiert": handles_pers,          # google_bildtausch_bilanz liest sie mit (Bildsignal)
              "wartet": dict(sorted(wartet.items(), key=lambda x: -x[1])),   # 13.10. (B1): Prüfung bei Google, kein Blocker
              "handles_wartet": handles_wartet,                # ohne Deckel; google_bildtausch_bilanz: Gruppe «in Prüfung»
+             "nur_demand_gen": dict(sorted(demand.items(), key=lambda x: -x[1])),   # 14.10.: kein Gratis-Eintrag-Blocker
+             "handles_demand_gen": handles_demand,
              "dauer_s": round(time.time() - t0)}
     heute = stand["stand"][:10]
     seit = seit_neu(seit_lesen(), {h for v in handles_wartet.values() for h in v}, heute, voll)

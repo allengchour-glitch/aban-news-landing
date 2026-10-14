@@ -84,6 +84,7 @@ def main():
     for k in KLASSEN:
         blockiert |= set(stand["handles"].get(k) or [])
         blockiert |= set((stand.get("handles_personalisiert") or {}).get(k) or [])   # 08.10.: dort seit der Umbuchung
+        blockiert |= set((stand.get("handles_demand_gen") or {}).get(k) or [])     # 14.10.: dort seit der Umbuchung
     pruefung = in_pruefung(stand)
     letzte = bs.letzte_zeilen()
     alle = bs.alle_zeilen()

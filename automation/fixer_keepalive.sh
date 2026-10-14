@@ -1399,10 +1399,13 @@ while true; do
       # (~11 Produkte/h, Container-Neustart stündlich) — 265 «Restricted adult content» warteten unbegrenzt. Jetzt
       # beginnt jeder Lauf bei der nächsten Klasse (Zähler /tmp/gbt_klasse_idx) und nimmt je Klasse höchstens 8.
       GBT_IDX=$(( ($(cat /tmp/gbt_klasse_idx 2>/dev/null || echo 0) + 1) % 3 )); echo "$GBT_IDX" > /tmp/gbt_klasse_idx
+      # 14.10.2026: «Inappropriate image» mit Ziel «[]» ist laut Google-Hilfe (Demand-Gen-Bildanforderungen, merchants/answer/
+      # 13389785) eine Prüfung für Demand-Gen-/Discover-Werbung, die wir nicht schalten — kein Gratis-Eintrag-Blocker
+      # (alle 270 tragen «[]», echte Blocker nennen [Free_listings,…]). Kein Hauptbild-Tausch mehr dafür, bis der Status je
+      # Ziel im Merchant Center das widerlegt (Betreiber-Blick). Rücklese/Bilanz laufen weiter, Rückweg bleibt.
       case "$GBT_IDX" in
-        0) GBT_REIHE="'Inappropriate image' 'Restricted adult content' 'Promotional overlay on image'" ;;
-        1) GBT_REIHE="'Restricted adult content' 'Promotional overlay on image' 'Inappropriate image'" ;;
-        *) GBT_REIHE="'Promotional overlay on image' 'Inappropriate image' 'Restricted adult content'" ;;
+        0|2) GBT_REIHE="'Promotional overlay on image' 'Restricted adult content'" ;;
+        *) GBT_REIHE="'Restricted adult content' 'Promotional overlay on image'" ;;
       esac
       ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_google_bild_tausch.lock; flock -n 9 || exit 0; echo \"START \$(date -u +%FT%TZ) (Aufseher)\"; \
           for K in $GBT_REIHE; do \
@@ -1509,7 +1512,9 @@ while true; do
   if [ -f "$REPO/automation/kategorie_ki.py" ]; then
     KK=/tmp/kategorie_ki.log
     ALTER=$(( $(date +%s) - $(stat -c %Y "$KK" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    # 14.10.2026: Ein Kontingent-ABBRUCH hielt den Lauf 24 h an (13.10. 16:31 → frühestens 14.10. 16:31, 20 Neuimporte ohne
+    # Kategorie). Nach ABBRUCH neuer Versuch nach 6 h (die Leer-Marken der Modelle gelten 6 h).
+    if [ "$ALTER" -gt 86400 ] || { [ "$ALTER" -gt 21600 ] && tail -n 3 "$KK" 2>/dev/null | grep -q ABBRUCH; }; then
       ( cd "$REPO" && SCHARF=1 MAX=60 timeout 900 python3 automation/kategorie_ki.py >> "$KK" 2>&1 )
       echo "KATEGORIE-KI: $(grep -E '^FERTIG|ABBRUCH' "$KK" | tail -1)"
     fi

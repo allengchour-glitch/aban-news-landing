@@ -9002,3 +9002,6 @@ mesh-low-top-mit-luftkissen-und-dicker-sohle-f-604400	2506040350461604600	16	10.
 atmungsaktive-mesh-laufschuhe-herren-mit-weich-619900	2505300656341610100	16	9.88	ok	landeseite
 low-top-bergwanderschuhe-fur-alltag-sport-604500	2505300332421605100	16	11.23	ok	landeseite
 casual-dad-schuhe-mit-wedge-grossen-608200	2505290227501608500	16	9.88	ok	landeseite
+unisex-bergfahrradschuhe-624400	2504260258071624900	16	11.72	ok	landeseite
+luftpolster-mesh-sneaker-damen-fruhling-herbst-607300	2412280348091607500	16	10.42	ok	landeseite
+frauensneaker-mit-air-cushion-dampfung-619000	2411230955021619600	16	9.20	ok	landeseite
