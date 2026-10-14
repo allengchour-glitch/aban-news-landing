@@ -2375,3 +2375,4 @@
 15511943610753	Farbe:6:6	2026-10-14	microbead-nackenkissen-rolle-753600
 15511794844033	Modell:12:12	2026-10-14	retro-motorrad-satteltasche-602200
 15510959522177	Farbe:3:3	2026-10-14	nagelknipser-set-aus-edelstahl-754816
+15510930555265	Grösse:2:2	2026-10-14	keramikschale-lvsen-verschiedene-grossen-623700

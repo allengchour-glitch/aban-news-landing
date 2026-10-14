@@ -18349,3 +18349,4 @@ gid://shopify/Product/16638241833351	17->0	Strickschal mit Streifen
 gid://shopify/Product/16638272045447	47->0	Romantischer Schal in hellen Weisstönen
 gid://shopify/Product/16638275256711	16->0	Gestreifter Wollschal – schwarz-weiss
 gid://shopify/Product/16638315528583	18->0	Leder Sneaker Herren atmungsaktiv
+gid://shopify/Product/16638316544391	83->0	Herrenschnee-Stiefel mit Fleece-Sohle
