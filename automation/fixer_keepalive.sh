@@ -2375,7 +2375,7 @@ fi
   KLW=/tmp/klinge_ch_wache.log
   if [ -f "$REPO/automation/klinge_ch_wache.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$KLW" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$KLW"; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$KLW" || still_gestorben "$KLW"; then   # 14.10.: START/FERTIG im Skript
       touch "$KLW"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       # Umleitung hinter dem Schloss und mit `>>` — siehe wahlversprechen oben.
       ( cd "$REPO" && setsid bash -c \

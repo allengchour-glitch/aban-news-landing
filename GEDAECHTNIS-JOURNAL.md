@@ -52,6 +52,35 @@
 
 
 
+## 🔪 Klingen nur am Bild: 13 gedraftet · Schnitzwerkzeug in der Regel · Messerset kam als «Stahlsatz» durch · Wächter ohne Schlusszeile (2026-10-14, ~19:00–20:10 UTC)
+
+- **Gemessen:** Eine weite Titelsuche fand 306 aktive Treffer (Zange, Hobel, Schnitz, Survival, Schaber, Kamm, Rasier …). 193 davon
+  liefen mit allen Bildern über 49 Kontaktbögen (Workflow wf_1225cc56, Leser → unabhängige Gegenprobe → eigene Sichtprüfung).
+  Ergebnis: 25 Verdachtsfälle, **11 bestätigt**. Dazu kamen ein Rasiermesser ohne Klingenwort und ein **Messerset**, das
+  `klinge_ch_wache.py` bei einem Messlauf fand.
+- **Getan:**
+  - 13 Produkte gedraftet (Tags `cj-nicht-versendbar-ch` + `handklinge-kein-ch-versand`, Zeilen in `_klinge_handliste.tsv`).
+  - `handklinge_stamm` um `schnitz-(werkzeug|eisen|set|satz)` und `(wood) carving tools/sets/chisels/kits` erweitert.
+    Kanarien 84/84, Python = JS.
+- **Lehre 1 (Ursache statt Etikett):** Der Wächter schrieb «reaktiviert von unbekannt». Die Ereignisliste zeigte etwas anderes:
+  Das Messerset war **nie gedraftet**. Der Import legte es am 07.10. aktiv an, als «Stahlsatz mit Sternmuster» (so steht es noch
+  im Handle). Erst eine spätere Titel-Politur machte daraus «Messerset».
+  - Die Spur hätte zu einem Rückholer gezeigt, den es nicht gibt.
+  - `verursacher()` erkennt jetzt auch «created a new product» → «im Verkauf durch Import (aktiv angelegt)».
+  - Die Sperrliste ist korrigiert.
+  - Regel: **Ein Ursachen-Etikett darf keine Kategorie raten. Kennt es den Fall nicht, sagt es «unbekannt», nicht «reaktiviert».**
+- **Lehre 2 (Titel-Politur ist ein Eingangstor):** Die Klingenprüfung läuft beim Import. Eine spätere Umbenennung kann ein
+  harmloses Wort durch das Klingenwort ersetzen, und dann sieht nur der tägliche Wächter das Produkt. Seit 13.10. fragt der Import
+  auch `productNameEn` ab. Der Altbestand davor ist noch nicht gegen die CJ-Namen geprüft (offen, braucht einen Namens-Cache ohne
+  neue API-Last).
+- **Lehre 3 (stiller Tod des Tageslaufs):** Mehrere Läufe endeten nach «Voll-Export gelesen» ohne Schlusszeile, also beim
+  Container-Neustart. `absturz_nachholen` sieht nur Traceback/Error, deshalb kam der nächste Lauf erst 24 h später.
+  - Das Skript schreibt jetzt START/FERTIG mit Zeilenpuffer, der Aufseher fragt `still_gestorben`.
+  - Probe mit zwei Logs: beide richtig.
+  - **Jeder Tageswächter, der länger als ein paar Minuten liest, braucht START/FERTIG**, sonst bleibt ein Neustart-Tod 24 h unbemerkt.
+- Grenzfälle bewusst aktiv: Kreditkarten-Werkzeug (Sägekante), Hobelmesser/Plotter-Klingen (Maschinenersatzteil), Mandolinen.
+  Bericht: `dropship/KLINGEN-AM-BILD-2026-10-14.md`.
+
 ## 📦 29'013 CJ-Produkte ohne Bestandsschutz (SKU nur «CJ-<pid>») · 20 festgefahrene Entwürfe · offener Ledger-Griff (2026-10-14, Runde 16:26 bis ~18:40 UTC)
 
 **Klasse:** `cj_lager_abgleich.py` leitete aus `CJ-<pid>` keine productSku ab → «keine-cj-sku», kein Wächter prüfte den Bestand
@@ -20584,3 +20613,5 @@ Verschoben am 04.10.2026:
 - 2026-10-13 · 🔎 **Shopify zählt 404-Landungen nicht als Sitzung → tote Google-Seiten waren für `tote_landeseiten.py` unsichtbar: GSC=1 (Schnappschuss `tools/gsc_schnappschuss.py` täglich, Ampel «GSC-TOT»), strenge Zielwahl, 9 × 301; dazu Menü +3, «Über 1'500 Kostüme», Fremdlogo-Bilder, Masstabellen XXL.** → `dropship/GSC-TOTE-SEITEN-2026-10-13.md`
 <!-- aus CLAUDE.md verschoben 14.10.2026 18:34 UTC (VERBATIM) -->
 - 2026-10-13 · 🇨🇭 **Kasse zeigte für CH-Lager-Kostüme «28. Okt–11. Nov» → Profil «CH-Lager» mit 0.00-Tarifen UNTER DEN NAMEN des General profile (gleichnamige Tarife addieren sich, Bedingung an der Korbsumme → Mischkorb 7+0, niemand zahlt mehr; Google liest nur General): Matrix 8/8, Kasse «20.–21. Okt KOSTENLOS», Stufe 1 = 1'607 Produkte ohne Google, Stufe 2/3 ab 14./17.10. (`ch_lager_profil.py`, Aufseher täglich). `versand_transit_wache` sah nur 50 von 55 Profilen → blättert jetzt.** → `dropship/CH-LAGER-PROFIL-2026-10-13.md`
+<!-- aus CLAUDE.md verschoben 14.10.2026 20:02 UTC (VERBATIM) -->
+- 2026-10-13 · 🦺 **134 «Sicherheitsschuhe/Schutzschuhe» ohne Norm (PSA-Begriff) → `psa_schuhe_wache.py`: 91 → Arbeitsschuh + PSA-Hinweis, Aufseher täglich; Trockenlauf-Liste fand 5 Fehler, die 16 grüne Kanarien nicht sahen (Arbeitsarbeitsschuhe, Verbandsschuh). Dazu YouTube 12→8 h, IG-Reels 8→12 h (Betreiber «youtube pushe mehr», Median 183 vs 32).** → `dropship/PSA-SCHUHE-2026-10-13.md`
