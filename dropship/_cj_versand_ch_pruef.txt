@@ -9450,3 +9450,11 @@ gestreiftes-langarm-shirt-fur-herren-635000	2606250545341635600	16	7.85	ok	lande
 925-silber-ring-313216	1402936458431565824	16	4.60	ok	landeseite
 goldblatt-haarklammer-868544	1402551090590912512	16	5.12	ok	landeseite
 korperschmuck-kette-384896	1402517791499751424	16	7.43	ok	landeseite
+perlen-haarband-870528	1399656113376464896	16	5.41	ok	landeseite
+tasseli-ohrhanger-669056	1396715351517040640	16	5.12	ok	landeseite
+kunstwerk-leinwand-639616	1584157593554137088	16	11.12	ok	landeseite
+3d-kugelpendant-782016	1394844803035959296	16	5.50	ok	landeseite
+kunst-canvas-175040	1580526033667895296	16	9.47	ok	landeseite
+schmuckwerkzeug-set-094208	1394126361542660096	16	11.96	ok	landeseite
+kreuzring-aus-acryl-172800	1392091117473894400	16	5.41	ok	landeseite
+quilted-paper-malerei-932416	1464220590465486848	16	7.17	ok	landeseite
