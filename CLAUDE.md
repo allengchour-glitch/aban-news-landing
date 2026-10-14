@@ -64,6 +64,40 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-14 nachts (🔒 Pilot 2.0: 11. Prüfung — 1 Blocker + 5 wichtig + 5 klein + 3 aus der Schlussprobe behoben, bleibt GESPERRT):** Prüfer-Agent
+(Belege `scratchpad/pruefung11/` p1–p10) fand: **B1** Not-Aus setzte den Schutz-Stop mit VERALTETEM Kurs — Kurs gesprungen + Spot-Ticker
+429 → zweimal −2021 → Short ohne Stop (10'058 USDT), Meldung trotzdem «beidseitig gesichert»; Cockpit/Telegram-Not-Aus ohne Nachkontrolle. Behoben:
+- **`_notaus_schutz` neu:** frischer Kurs = Spot-Ticker, sonst Futures-Markpreis (`_kurs_oder_mark`, auch für die Lage im Not-Aus); auch
+  jenseits / kein Kurs → `_Ausgeloest` → sofort zum Markt (Short reduceOnly, Coins verkaufen); gibt zurück, ob alles geschützt ist →
+  «beidseitig gesichert» nur dann (sonst «NICHT vollständig gesichert»). Cockpit `notaus_an` → `nachkontrolle_starten()` (nur mit P2-Buch).
+- **W1** Verkleinern unklar → mit dem alten Stop rechnen; zu grosser Perp-Stop nicht löschbar → Spot-Stop über alle Coins. **W2**
+  `nur_ergaenzen`/`_handel_aus` (exchangeInfo-Status) → nie cancelReplace, zu grosser Stop bleibt → `_zu_gross(d, merken=False)`
+  (beidseitig, keine Nachkontrolle nötig). **W3** `_perp_abgleich`: zu grosser alter bleibt → `_zu_gross`. **W4** `_stops_vorab`
+  ZWEISTUFIG: nach dem Verkleinern nur auf «jetzt» (`nur_jetzt=True`), aufs Plan-Ende erst NACH erfolgreichem Ernte-Kauf (Gebühr
+  eingerechnet). **W5** Rückkauf abgelehnt → `buch["paar_pause"]` 15 Min., nur für automatische Wiederholung (`notaus_alle(..., wiederholung=True)`
+  aus der Nachkontrolle); Not-Aus von Hand versucht immer. K1 Meldungen, K2 `_ausgefuehrt`, K4 README (Futures-10-Min = Annahme),
+  K5 `_buch_sperre` (Nachkontrolle vergleicht + schreibt unter EINER Sperre; `buch_schreiben` immer gesperrt).
+- **Eigene Schlusskampagne fand noch:** Staub-Paar im Not-Aus blieb ewig (Staub sichert nichts → Short ganz zurück), eben gesetzter
+  Spot-Stop noch nicht in der Liste → verwaist zu gross (über Buch-ID löschen / beidseitig), Vorab vor unklarem Ernte-Kauf (→ zweistufig).
+- **Fuzzer (K3):** `DAUER_` + `_selbst_entfernt` je **Schutzseite** (`_schutzseite`), «Storno zuerst» auch in 15 % der Lauf-Tage/Not-Aus
+  (eigener Zufall, alte Seeds gleich), Monotonie-Phase auch mitten im Lauf (`SCHUTZ_VERLOREN_MITTEN_*`), «Stop zu gross» = was nach dem
+  Auslösen ungedeckt bliebe, 429 im vollen Protokoll, Prüf-Börse `B.symbol_status`.
+- Tests: live 154, streng 109 (11.p1–p9, K1/K2/K5, W2, F/F2/F3), cockpit 115. **Falle:** ein Stichproben-Skript ohne `cd "$(dirname "$0")"`
+  legte Fuzzer-Ordner im Repo-Root an → vor jedem Commit `git status`.
+- **Schlussprobe (Mutationen) fand 15 nicht erkannte + 1 veraltetes Muster** — und dabei **3 echte Fehler (behoben):** F1 `_spot_freigeben`
+  verkleinerte den Stop zum schon ERREICHTEN alten Kurs → Binance storniert, lehnt «würde sofort auslösen» ab → Stop weg + Meldung «der
+  Spot-Stop bleibt» falsch (jetzt `_stop_preis`, `nur_storno` → `_StopWeg`: geplanten Verkauf ausführen, Rest am Laufende sichern); F2
+  `_spot_stops_verkaufen` verkaufte nach abgelehntem 1. Versuch die ganze Stop-Menge (auch die Ernte-Absicherung → nackter Short) → jetzt
+  höchstens Netto-Richtung; F3 hängender STOP_LOSS_LIMIT ohne bekannten Stop-Kurs → `f"{grenze:g}"` TypeError → Nachkontrolle liess den
+  Long in JEDEM Takt ohne wirksamen Stop. Neue Szenarien 11.F1/F1b/F2/F3 + 11.S1–S13 (streng **126**). Gleichwertig: R11-M19 (Staub-Paar,
+  Unterschied < Staubgrenze). **LEHRE:** die Zahl «57/57» der 10. Runde galt für einen Zwischenstand — am gemergten Stand waren M2,
+  R10-M11/M16/M19/M24 schon unerkannt → Mutationsprobe IMMER auf dem Endstand, kurz vor dem Merge, neu laufen lassen.
+  Harness: `scratchpad/mut11/szenario.py <sz.py> [Mutation|HEAD]` (Szenario gegen aktuell/mutiert/committet), `diagnose.py <commit> <Mut>`.
+- **Endstand (14.10. abends):** Mutationen **82/83** (1 gleichwertig: R11-M19), 0 fehlende Muster; Fuzzer-Schlusskampagne auf dem Endstand
+  (Not-Aus 0–1600/5000–6000/7000–8800, Läufe 0–200/5000–5160/7000–7200 ×30, Monotonie 0–400/7000–7600) **5'960 Läufe, 0 echte**
+  (89 begründet). Tests: live 154, streng 126, cockpit 115, pilot 82, testnetz 47, plan 23; alle 21 Dateien 1'026 grün.
+- **Nächster Schritt:** 12. unabhängige Prüfung (Auftrag `scratchpad/pruefung12_auftrag.md`).
+
 **📌 2026-10-14 abends (🔒 Pilot 2.0: 10. Prüfung — 2 Blocker + 4 wichtig + 4 klein behoben, bleibt GESPERRT):** Prüfer-Agent
 (Belege `scratchpad/pruefung10/`, Monotonie-Fuzzer fz10) fand: **B1** Not-Aus schloss zuerst den GANZEN Short (auch die Ernte-
 Absicherung) → lehnt Spot ab, liegen Coins ohne Absicherung UND Stop (9'391 USDT), nichts versucht es nochmals; **B2** «erst löschen,
@@ -94,7 +128,7 @@ dann setzen» noch in `_stops_vorab` (jeden Tag mit Verkauf!), `_perp_ohne_liste
 - **📊 Dashboard «Pilot 2.0 Prüfstand»** (privates Claude-Artefakt `https://claude.ai/artifact/8P9LBcKm31gdz8eyvgkYG4`, User wollte
   «dashboard … wie immer optimal»): Reiter Freigabe (Blocker je Runde, Weg zur Freigabe, Restrisiken), Prüfungen (alle Runden, Funde
   der letzten), Tests und Fuzzer, Strategien (alle Prüfstände, Backtest P0/P2, Spielgeld-Vorwärtstest). Daten = angehängte JSON-Dateien
-  (kein Connector hält sie). **Nach jeder Prüfung nachführen:** `pruefungen` (neue Zeile), `funde_rN`, `tests` (alle `test_*.py` frisch),
+  (kein Connector hält sie). **Nach jeder Prüfung nachführen:** `pruefungen` (neue Zeile), `funde_letzte` (Funde der letzten Runde), `tests` (alle `test_*.py` frisch),
   `fuzzer` (Logs der Schlusskampagne), `freigabe`; Datei mit Artifact `asset:true` hochladen, dann `datasets/<id>` per ArtifactData
   `update` (url, name, updated). Runden ohne Zählung bleiben leer (R4/R5 nur «2–3», R8 nicht gezählt) — nie Zahlen erfinden.
 

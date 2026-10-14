@@ -134,7 +134,24 @@ def notaus_an(schliessen=True, ausfuehren=None):
             gesperrt.__exit__(None, None, None)
     zeilen = vorab + zeilen
     PI.lauf_merken(alles_zu, ["Not-Aus (Cockpit/Telegram)"] + zeilen, logbuch=DATA / "krypto-pilot.json")
+    try:  # wie stop.bat: blieb bei Pilot 2.0 etwas unklar oder offen, versucht es die Nachkontrolle in jedem Takt nochmals
+        if nachkontrolle_starten():
+            zeilen.append("Nachkontrolle Pilot 2.0 läuft im Hintergrund (bis ~11 Minuten: klärt Unklares, schliesst nochmals) — "
+                          "sie meldet sich per Telegram.")
+    except Exception as ex:  # noqa: BLE001
+        zeilen.append(f"⚠️ Nachkontrolle Pilot 2.0 nicht gestartet ({type(ex).__name__}) — zusätzlich stop.bat ausführen!")
     return ("🛑 Not-Aus aktiv." if alles_zu else "🛑 Not-Aus aktiv — ⚠️ NICHT ALLES GESCHLOSSEN!") + "\n" + "\n".join(zeilen)
+
+
+def nachkontrolle_starten():
+    """Wie stop.bat: nach dem Not-Aus die Nachkontrolle von Pilot 2.0 als eigenen Prozess im Hintergrund (bis ~11 Minuten:
+    unklare Aufträge klären, in jedem Takt nochmals schliessen) — nur, wenn Pilot 2.0 einen Bestand hat. Sie meldet sich selbst
+    per Telegram. → True = gestartet"""
+    import pilot2_live as P2L
+    if not Path(P2L.BESTAND).exists():
+        return False
+    threading.Thread(target=_skript, args=(["pilot.py", "--nachkontrolle"], P2L.NACHKONTROLLE_MAX_S + 600), daemon=True).start()
+    return True
 
 
 def pause_an():

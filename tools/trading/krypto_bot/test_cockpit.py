@@ -23,6 +23,8 @@ import ki_trader as KT  # noqa: E402
 import testumgebung  # noqa: E402
 
 testumgebung.schalter_umbiegen()  # offene Telegram-Calls des Nutzers dürfen den Not-Aus-Test nicht ändern
+NACHKONTROLLE = []  # der Test startet nie die echte Nachkontrolle (auf dem PC liegt vielleicht ein Pilot-2.0-Buch)
+_NK_ECHT, C.nachkontrolle_starten = C.nachkontrolle_starten, lambda: (NACHKONTROLLE.append(1), True)[1]
 
 OK, FEHLER = 0, []
 
@@ -400,6 +402,25 @@ with tempfile.TemporaryDirectory() as tmp:
         meldung = C.notaus_an(ausfuehren=schliesst)
         pruefe("Not-Aus schliesst BTC und ETH (Ziel 0), meldet «geschlossen»", aufrufe == [(0.0, "BTCUSDT", 0.5), (0.0, "ETHUSDT", 0.5)] and C.STOP.exists()
                and meldung.count("✅") == 2 and "NICHT" not in meldung, (aufrufe, meldung))
+        pruefe("Not-Aus aus Cockpit/Telegram startet die Nachkontrolle von Pilot 2.0 (wie stop.bat)", NACHKONTROLLE == [1]
+               and "Nachkontrolle Pilot 2.0 läuft" in meldung, (NACHKONTROLLE, meldung))
+        import pilot2_live as _P2L
+        _alt_bestand, _alt_skript, _gestartet = _P2L.BESTAND, C._skript, []
+        try:
+            _P2L.BESTAND = Path(tmp) / "kein-pilot2-bestand.json"
+            _kein = _NK_ECHT()
+            _P2L.BESTAND.write_text("{}")
+            C._skript = lambda args, zeit: _gestartet.append((args, zeit))
+            _ja = _NK_ECHT()
+            for _ in range(100):
+                if _gestartet:
+                    break
+                time.sleep(0.01)
+        finally:
+            _P2L.BESTAND, C._skript = _alt_bestand, _alt_skript
+        pruefe("Nachkontrolle startet nur mit Pilot-2.0-Bestand, als eigener Prozess «pilot.py --nachkontrolle» mit genug Zeit",
+               _kein is False and _ja is True and _gestartet and _gestartet[0][0] == ["pilot.py", "--nachkontrolle"]
+               and _gestartet[0][1] > _P2L.NACHKONTROLLE_MAX_S, (_kein, _ja, _gestartet))
 
         def scheitert(e, symbol, gewicht):
             e["broker"] = {"position": 0.2 if symbol == "BTCUSDT" else None, "hinweis": "Binance lehnt ab (HTTP 503)"}

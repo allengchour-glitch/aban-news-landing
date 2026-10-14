@@ -14,6 +14,7 @@ Stammt aus der 8. unabhängigen Prüfung (Oktober 2026) und ist bewusst STRENGER
     bei unklarem Status; aus der 9. Prüfung), teil (Teilausführung), ablehnen (−1013 PERCENT_PRICE). cancelReplace: Filter
     vor dem Storno (Doku); in einer Phase «nur Stornieren» scheitert die ganze Anfrage — mit ersetzen_storno_zuerst=True
     die ungünstige Lesart: erst Storno, dann Ablehnung (409)
+  * exchangeInfo-Status je Symbol einstellbar (symbol_status, z. B. BREAK/HALT; Standard TRADING — 11. Prüfung)
   * STOP_LOSS (Markt) und STOP_LOSS_LIMIT (bleibt bei Kurslücke unausgeführt liegen)
   * Futures: CROSS-Marge, Einstand, offener Gewinn, Liquidation, Funding (ADL nicht nachgebaut)
   * Protokoll aller schreibenden Anfragen je Konto (fremdes Konto angefasst? falscher Transfer-Typ?)
@@ -118,6 +119,7 @@ class Boerse:
         self.stop_typen = ["LIMIT", "MARKET", "STOP_LOSS", "STOP_LOSS_LIMIT", "TAKE_PROFIT", "TAKE_PROFIT_LIMIT", "LIMIT_MAKER"]
         self.vor_jeder_anfrage = None   # Haken: f(methode, pfad, params)
         self.reduce_algo_streng = False  # True: reduceOnly-Stop über mehr als die offene Position wird abgelehnt (−2022)
+        self.symbol_status = {}  # Symbol → exchangeInfo-Status (Standard TRADING; z. B. BREAK/HALT = keine neuen Aufträge)
         self.ersetzen_storno_zuerst = False  # True: cancelReplace in einer Phase «nur Stornieren» storniert den alten Auftrag
         #                                     und lehnt erst DANN den neuen ab (409, −2021) — ungünstigste Lesart (10. Prüfung)
         self.nach_jeder_anfrage = None
@@ -280,6 +282,11 @@ class Handler(BaseHTTPRequestHandler):
                 B.voll.append((B.n_req, "KURS", art["sym"], art["preis"], None, "kurs", "", {}))
             B.bewegen(art["sym"], art["preis"])
             art = None
+        if art and art["art"] in ("429", "418", "vor503", "abriss_vor") and getattr(B, "voll", None) is not None:
+            # auch abgewiesene Anfragen ins volle Protokoll (11. Prüfung K3): sonst fehlt in Belegen, was Binance ablehnte
+            B.voll.append((B.n_req, m, pfad, {kk: v for kk, v in p.items() if kk not in ("signature", "timestamp", "recvWindow")},
+                           {"429": 429, "418": 418, "vor503": 503}.get(art["art"], 0), art["art"], "abgewiesen vor der Verarbeitung",
+                           dict(B.kurs)))
         if art and art["art"] in ("429", "418"):
             return self._a({"code": -1003, "msg": "Too many requests"}, int(art["art"]))
         if art and art["art"] == "vor503":
@@ -338,7 +345,7 @@ class Handler(BaseHTTPRequestHandler):
             return {"symbol": p["symbol"], "price": repr(kurs[p["symbol"]])}, 200
         if pfad == "/api/v3/exchangeInfo":
             s = p["symbol"]
-            return {"symbols": [{"symbol": s, "status": "TRADING", "orderTypes": list(B.stop_typen),
+            return {"symbols": [{"symbol": s, "status": B.symbol_status.get(s, "TRADING"), "orderTypes": list(B.stop_typen),
                                  "filters": [{"filterType": "PRICE_FILTER", "tickSize": SPOT_TICK[s], "minPrice": SPOT_TICK[s]},
                                              {"filterType": "LOT_SIZE", "stepSize": SPOT_STEP[s], "minQty": SPOT_STEP[s]},
                                              {"filterType": "MARKET_LOT_SIZE", "stepSize": "0.00000000", "minQty": "0.00000000"},
