@@ -51220,3 +51220,17 @@ taktische-angeltasche-schwarz-100-cm-9b8af2	lb	Taschen	2026-10-13T22:11Z
 oxford-canvas-schultertasche-3a38dd	lb	Taschen	2026-10-13T22:11Z
 business-computer-tasche-aus-wasserdichtem-oxf-bac557	lb	Taschen	2026-10-13T22:11Z
 ski-goggles-mit-doppel-schicht-anti-fog-611900	sg	Trend-Produkt	2026-10-13T22:11Z
+klassisches-strickhemd-mit-karomuster-624200	aa-1	Herrenmode	2026-10-14T00:10Z
+lange-armel-leinen-shirt-in-khaki-605800	aa-1	Herrenmode	2026-10-14T00:10Z
+langarm-hemd-corduroy-in-braun-grau-lake-blue-621300	aa-1	Herrenmode	2026-10-14T00:10Z
+manner-linen-long-sleeve-top-mit-stand-up-hals-612400	aa-1	Herrenmode	2026-10-14T00:10Z
+freizeitshirt-mit-patchwork-streifen-kurzarmli-629600	aa-1	Herrenmode	2026-10-14T00:10Z
+manner-shirt-mit-kariertem-muster-622500	aa-1	Herrenmode	2026-10-14T00:10Z
+weicher-lockerer-langer-halswarmer-mit-pompons-637200	aa-2	Accessoires	2026-10-14T00:10Z
+winterthermal-schal-mit-langen-pompons-622700	aa-2	Accessoires	2026-10-14T00:10Z
+seidenschal-quadratisch-53-53-cm-612900	aa-2	Accessoires	2026-10-14T00:10Z
+winterethnischer-schal-mit-tasseln-625800	aa-2	Accessoires	2026-10-14T00:10Z
+handgestrickter-fleece-schal-mit-schneemann-606500	aa-2	Accessoires	2026-10-14T00:10Z
+winter-schal-aus-polyester-einfarbig-619800	aa-2	Accessoires	2026-10-14T00:10Z
+wollschal-fur-winter-einfarbig-630800	aa-2	Accessoires	2026-10-14T00:10Z
+dreiecksschal-aus-100-wolle-623600	aa-2	Accessoires	2026-10-14T00:10Z
