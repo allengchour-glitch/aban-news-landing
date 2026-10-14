@@ -9073,3 +9073,13 @@ mobelheber-299330	2075500830918877185	0	-	KEINE CH-Option → DRAFT	landeseite
 freizeitschuhe-615400	2607100751311616000	16	11.84	ok	landeseite
 sommerperlen-anklet-637000	2607100607011637600	16	4.50	ok	landeseite
 metall-sonnenbrille-609000	2607100129031609600	5	5.28	ok	landeseite
+elegante-handtasche-609900	2607100846531600900	16	13.40	ok	landeseite
+kristall-stein-set-619400	2607100403381610000	16	4.50	ok	landeseite
+rucken-tattoo-sticker-609700	2607091018461600300	16	5.41	ok	landeseite
+handy-powerbank-622700	2607101041361623700	0	-	KEINE CH-Option → DRAFT	landeseite
+telefonhulle-mit-diamantmuster-602800	2607090152051603300	16	5.12	ok	landeseite
+hundekau-spielzeug-618600	2607100623091619500	16	6.01	ok	landeseite
+edelstahl-wassersportflasche-636400	2607100741291637100	16	9.29	ok	landeseite
+edelstahl-becher-587138	2075494994101776386	0	-	KEINE CH-Option → DRAFT	landeseite
+antirutsch-mat-624800	2607100557461625600	16	5.65	ok	landeseite
+18k-vergoldete-halskette-mit-zirkonia-604900	2607091148461605800	16	4.36	ok	landeseite
