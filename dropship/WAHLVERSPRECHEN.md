@@ -65,8 +65,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Erhältlich in drei Grössen…»
 - `15450258145665` · Handgenähtes Lenkradbezug Modifiziert
   - «…Verfügbare Farben:…»
-- `15450781942145` · Teleskop Eckregal, 4 Etagen, Silber
-  - «…Farben: Silber und …»
 - `15451889336705` · Smart Beissfester Hundeball mit Zahnreinigung
   - «…Erhältlich in verschiedenen ansprechenden Designs…»
 - `15451919712641` · Reflektierendes Nylon-Halsband, verstellbar

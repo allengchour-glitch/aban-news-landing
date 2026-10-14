@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-13 23:40 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-14 03:13 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 133 · **66 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 43, teilweise: 17, keine: 6; Preisspanne > 2×: 14) · 1 CJ-Variante: 67 · ohne Antwort: 0
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 132 · **65 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 42, teilweise: 17, keine: 6; Preisspanne > 2×: 14) · 1 CJ-Variante: 67 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -70,5 +70,4 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Dekorative Bücherregal-Laternenlampe (`dekorative-bucherregal-laternenlampe-607700`) | 3 | 2 | 2.71–5.42 | 19.90 | Lantern bookshelf lamp, Little ghost bookshelf lamp, Lantern bookshelf lamp 2pcs |
 | Aufblasbares Halloween-Kostüm für zwei Personen (`inflierbares-halloween-kostum-fur-zwei-persone-638900`) | 2 | 2 | 20.66–20.66 | 42.90 | Double Spring Dog-Free Size, Double Sausage Dog-Free Size |
 | Elektrischer Gemüseschneider Multifunktional – Schneiden, Reiben & Hobeln (`elektrischer-gemuseschneider-multifunktional-schneiden-reiben-hobeln`) | 2 | 0 | 11.87–12.44 | 74.90 | White with adapter-220V US, Green-USB |
-| USB-Ladebares Lithium-Batterie-Set AA (`usb-ladebares-lithium-batterie-set-aa-183360`) | 2 | 2 | 13.21–14.4 | 27.90 | Green-AAA, Green-AA |
 | Moocare Aromatherapie-Öl (20 Stk.) (`moocare-aromatherapie-ol-20-stk-628100`) | 2 | 2 | 9.12–9.12 | 26.90 | Black Style, Red Style |
