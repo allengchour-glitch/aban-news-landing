@@ -52,6 +52,17 @@
 
 
 
+## 🧯 Bau-Agent startete `herbst_kuratieren.py --help` = voller Schreiblauf (2026-10-14, 10:13–10:16 UTC, zurückgebaut 10:33)
+
+Ein Bau-Agent (S3-Workflow, Auftrag «nur lesen, nie SCHARF») rief `python3 automation/herbst_kuratieren.py --help` auf.
+Das Skript wertet argv nicht aus und schreibt ohne DRY-Standard. Es setzte `herbst-2026` auf 34 ungesichtete Produkte, die damit
+in der Herbst-Reihe der Startseite standen, und überschrieb die SEO von `herbst-favoriten`. Der Agent beendete es nach ~3 Min.
+per pkill, sicherte IDs und alte Werte (`scratchpad/s3/herbst_unfall_2026-10-14.json`) und meldete den Vorfall ehrlich.
+Zurückgebaut: tagsRemove auf 34/34, SEO = vorher (Ledger `dropship/_herbst_unfall_rueckbau.tsv`). **Lehre (zum zweiten Mal
+heute, nach dem Fortura-Importer):** Ein Repo-Skript wird nie «zum Anschauen» gestartet. Erst argv/Kopf lesen (Selbsttest-
+Schalter heissen hier oft `SELBSTTEST=1` oder `--selbsttest`). Skripte, die ohne Schalter scharf schreiben, sind eine Klasse für
+sich: Standard muss Trockenlauf sein. Und «nur lesen» im Agenten-Auftrag schützt nicht vor einem Skript, das beim Start schreibt.
+
 ## 🪶 Startseite Stufe A: 2.94 → 2.46 MB, 151 → 30 Überschriften, sichtbare H1, Klarna im ersten Bildschirm (2026-10-14, 09:56–10:04 UTC)
 
 Messgerät zuerst (`automation/startseite_gewicht.py`, täglich, erkennt Cache-Kopien am Server-Timing). Danach fünf kleine
