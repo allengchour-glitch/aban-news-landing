@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-13T19:25Z",
+ "stand": "2026-10-14T01:17Z",
  "datum_in_kasse": true,
  "bearbeitungszeit_tage": 1,
  "versand_werktage": [
@@ -49,84 +49,27 @@
    "profile": [
     "CH-Lager"
    ],
-   "anzahl": 2375
+   "anzahl": 2376
   },
   "cj": {
    "profile": [
     "General profile"
    ],
-   "anzahl": 51165
+   "anzahl": 51173
   }
  },
  "ch_lager_im_asien_profil": false,
  "theme_kassendatum": {
   "befunde": [],
   "md5": {
-   "templates/cart.json": "6b98843def3e3a5cce401a96af5729cc",
-   "templates/product.json": "61681116b5b901ddb366723a8eb0428f"
+   "templates/cart.json": "24c11d674873cd3ce8d5832afc871573",
+   "templates/product.json": "6e823bd00682cc6167112222f5f8ff77"
   }
  },
  "zusage_ch_lager": {
   "soll": "2–3",
-  "treffer": 8,
-  "je_quelle": {
-   "Social-Warteschlange": 6,
-   "Vorlage (Quelltext)": 2
-  },
-  "liste": [
-   {
-    "quelle": "Social-Warteschlange",
-    "kennung": "social/posts_image.csv:loffelfuchs-fga87710",
-    "stelle": "🇨🇭 Ab Schweizer Lager – in 1–2 Werktagen bei dir Löffelfuchs · CHF 27.90 "
-   },
-   {
-    "quelle": "Social-Warteschlange",
-    "kennung": "social/posts_image.csv:loffelfuchs-fga87710",
-    "stelle": " kein Konzern. Versand ab Schweizer Lager in 1–2 Werktagen · 30 Tage Rückgabe · TWINT oder "
-   },
-   {
-    "quelle": "Social-Warteschlange",
-    "kennung": "social/posts_image.csv:schone-schleiereule-fga87623",
-    "stelle": "🇨🇭 Ab Schweizer Lager – in 1–2 Werktagen bei dir Schöne Schleiereule · CH"
-   },
-   {
-    "quelle": "Social-Warteschlange",
-    "kennung": "social/posts_image.csv:schone-schleiereule-fga87623",
-    "stelle": " kein Konzern. Versand ab Schweizer Lager in 1–2 Werktagen · 30 Tage Rückgabe · TWINT oder "
-   },
-   {
-    "quelle": "Social-Warteschlange",
-    "kennung": "social/posts_image.csv:plusch-schildkrote-fga83828",
-    "stelle": "🇨🇭 Ab Schweizer Lager – in 1–2 Werktagen bei dir Plüsch Schildkröte · CHF"
-   },
-   {
-    "quelle": "Social-Warteschlange",
-    "kennung": "social/posts_image.csv:plusch-schildkrote-fga83828",
-    "stelle": " kein Konzern. Versand ab Schweizer Lager in 1–2 Werktagen · 30 Tage Rückgabe · TWINT oder "
-   },
-   {
-    "quelle": "Vorlage (Quelltext)",
-    "kennung": "automation/queue_new_products.mjs",
-    "stelle": "'ch-lager') ? 'Versand ab Schweizer Lager in 1–2 Werktagen' : 'Lieferung 10–20 Werktage, da"
-   },
-   {
-    "quelle": "Vorlage (Quelltext)",
-    "kennung": "automation/reel/promo_montage.py",
-    "stelle": " \"aus dem Schweizer Lager in ein bis zwei Werktagen bei dir. Jetzt bei LuxeStyle.\", "
-   }
-  ],
-  "produkte": {
-   "gelesen": 1611,
-   "offen_vorher": 1311,
-   "geschrieben": 0,
-   "unloesbar": 0,
-   "fehler": 0,
-   "beispiele": [
-    "15469949321601",
-    "15469949354369",
-    "15469949419905"
-   ],
-   "offen_nachher": 1311
-  }
+  "treffer": 0,
+  "je_quelle": {},
+  "liste": []
  }
 }
