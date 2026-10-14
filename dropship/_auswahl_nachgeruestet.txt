@@ -2193,3 +2193,5 @@
 16609705460103	Farbe:2:2	2026-10-14	magnetischer-verlangerungsstab-90-mm-aus-chrom-04af03
 15525201871233	Modell:6:6	2026-10-14	abdeckstift-2d0865
 15524862001537	Farbe:5+Grösse:3:15	2026-10-14	multifunktionale-hunde-leine-330432
+15524853514625	Grösse:3:3	2026-10-14	memory-schaum-kissen-619100
+15524001448321	Länge:2:2	2026-10-14	training-seilspringen-fitness-schwungseil-792640
