@@ -9321,3 +9321,13 @@ retro-schulterstreifen-slim-fit-kleid-armellos-618300	2607100258131618900	16	9.0
 gehhilfe-fur-senioren-654900	2510190637391655100	16	11.18	ok	landeseite
 midilange-kleid-mit-reverskragen-618600	2607100253361619200	16	9.33	ok	landeseite
 4-achsen-halter-621000	2505030144411621300	16	5.24	ok	landeseite
+4-achsen-steuerung-kit-614300	2504270528001614500	0	-	KEINE CH-Option → DRAFT	landeseite
+ultra-leicht-toothpick-maschine-621200	2504080553101621500	16	4.50	ok	landeseite
+fpv-maschine-mit-spider-stand-609100	2503261052271609300	16	7.43	ok	landeseite
+kopter-fur-luftaufnahmen-627100	2503260258341627300	0	-	KEINE CH-Option → DRAFT	landeseite
+modal-damenkleid-mit-rundhalsausschnitt-und-ku-636600	2607090154501637200	16	8.79	ok	landeseite
+drohnen-display-stander-600700	2503081350211600900	16	6.39	ok	landeseite
+blumen-strap-bandeau-kleid-608200	2607090110041608800	16	7.43	ok	landeseite
+schwangerschafts-kleid-mit-streifen-623600	2607081528381624200	16	9.47	ok	landeseite
+uav-positionierung-8k-luftaufnahmen-601800	2503060748431602000	0	-	KEINE CH-Option → DRAFT	landeseite
+langlebiger-quadrokopter-mit-optischem-fluss-621900	2502220636421622100	0	-	KEINE CH-Option → DRAFT	landeseite
