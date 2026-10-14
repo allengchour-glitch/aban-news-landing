@@ -190,5 +190,178 @@ import carry_pruefung as _C  # noqa: E402
 pruefe("… und stellt die Kosten danach wieder her", (_P.GEBUEHR, _P.SCHLUPF, _P2.SPOT_GEBUEHR, _C.KOSTEN) == (0.0005, 0.001, 0.001, 0.0015),
        (_P.GEBUEHR, _P.SCHLUPF, _P2.SPOT_GEBUEHR, _C.KOSTEN))
 
+# 10) Pilot 2.0 mit Hebel (lauf_p2): bei 1× und gleicher Gebühr genau das bewährte pilot2_pruefung.lauf2 (Modus P2)
+h, l, c = kurse(n=900, seed=5)
+z = P.hebel(c, n_sma=150, ziel_vol=0.40, max_hebel=1.0)
+rnd = random.Random(7)
+f = [rnd.gauss(0.0002, 0.0004) for _ in c]  # auch negatives Funding
+alt_spot = _P2.SPOT_GEBUEHR
+try:
+    _P2.SPOT_GEBUEHR = _P.GEBUEHR  # lauf2 rechnet einen Wechsel Long ↔ Short ganz zur Spot-Gebühr → gleich setzen
+    alt = _P2.lauf2(z, h, l, c, f, 200, len(c), modus="P2")
+finally:
+    _P2.SPOT_GEBUEHR = alt_spot
+neu, liq = MK.lauf_p2(z, h, l, c, [0.05] * len(c), f, 200, len(c), L=1.0, gebuehr=MK.GEBUEHR, spot_gebuehr=MK.GEBUEHR)
+pruefe("lauf_p2 bei 1× = pilot2_pruefung.lauf2 (P2) bei gleicher Gebühr — Futures-Long-Funding (5 %/Tag!) zahlt bei 1× nie",
+       len(alt) == len(neu) and max(abs(x - y) for x, y in zip(alt, neu)) < 1e-12 and not liq, (len(alt), len(neu), alt[-1], neu[-1]))
+pruefe("Konstanten wie Funding-Ernte und Pilot 2.0", (MK.SPOT_GEBUEHR, MK.PARK_KOSTEN, MK.KAPITAL_FAKTOR) ==
+       (_P2.SPOT_GEBUEHR, _C.KOSTEN, _C.KAPITAL_FAKTOR), (MK.SPOT_GEBUEHR, MK.PARK_KOSTEN, MK.KAPITAL_FAKTOR))
+# mit echten Gebühren: beim Wechsel Long ↔ Short kostet jeder Teil seine eigene Gebühr (lauf2: alles zur Spot-Gebühr)
+for z0, z1_, teil in ((0.5, -0.5, "Long → Short: der neue Short"), (-0.5, 0.5, "Short → Long: der alte Short")):
+    n = 4
+    cc = [100.0] * n
+    zz = [z0, z1_, z1_, z1_]
+    l2 = _P2.lauf2(zz, cc, cc, cc, [0.0] * n, 1, n, modus="P2", stop_k=0)
+    p2_, _ = MK.lauf_p2(zz, cc, cc, cc, [0.0] * n, [0.0] * n, 1, n, L=1.0, stop_k=0)
+    short = 0.5 * (l2[1] if z0 > 0 else 1.0)  # Volumen des Shorts, der beim Wechsel geöffnet bzw. geschlossen wird
+    erwartet = (MK.SPOT_GEBUEHR - MK.GEBUEHR) * short
+    pruefe(f"Wechsel {teil} kostet nur die Futures-Gebühr (Unterschied zu lauf2 = 0,05 % × {short:.4f})",
+           abs((p2_[2] - l2[2]) - erwartet) < 1e-6 and abs(p2_[1] - l2[1]) < 1e-15, (p2_[2] - l2[2], erwartet))
+for vz, art in ((1, "nur Long"), (-1, "nur Short")):  # ohne Wechsel rechnen beide auch mit echten Gebühren gleich (inkl. Stops)
+    zz = [vz * abs(x) for x in z]
+    l2 = _P2.lauf2(zz, h, l, c, f, 200, len(c), modus="P2")
+    p2_, _ = MK.lauf_p2(zz, h, l, c, [0.05] * len(c), f, 200, len(c), L=1.0)
+    pruefe(f"{art} (ohne Wechsel): mit echten Gebühren, Stops und Ernte genau wie lauf2",
+           max(abs(x - y) for x, y in zip(l2, p2_)) < 1e-12, (l2[-1], p2_[-1]))
+alt = _P2.lauf2(z, h, l, c, f, 200, len(c), modus="P2")
+neu, _ = MK.lauf_p2(z, h, l, c, [0.0] * len(c), f, 200, len(c), L=1.0)
+wechsel = sum(1 for i in range(200, len(c) - 1) if z[i - 1] * z[i] < 0)
+pruefe(f"… über 700 Tage mit {wechsel} Wechseln: P2-1 am Ende vor lauf2 (genauere Gebühr)", wechsel > 0 and neu[-1] > alt[-1] * 1.001,
+       (wechsel, neu[-1] / alt[-1]))
+
+
+def erster_tag(ziel, L, f_long=0.0, f_short=0.0, tage=2, l_tief=None, stop_k=0):
+    """Kurs steht bei 100; ziel gilt ab Tag 1. → (Werte, liquidiert, Anteile am ersten Handelstag)"""
+    n = tage + 1
+    cc, hh, ll = [100.0] * n, [100.0] * n, [100.0] * n
+    if l_tief:
+        ll[2] = l_tief
+    info = {}
+    w, lq = MK.lauf_p2([ziel] * n, hh, ll, cc, [f_long] * n, [f_short] * n, 1, n, L=L, stop_k=stop_k, info=info)
+    return w, lq, info
+
+
+def nahe(x, y, tol=0.005):
+    return abs(x - y) < tol
+
+
+# 11) Pfand-Regel am ersten Tag (Anteile am Konto): bis 1× ganz über Spot, darüber teils über Futures
+_, _, i1 = erster_tag(2.0, 2.0, tage=1)
+pruefe("2× Ziel bei 2×: alles über Futures-Long, keine Ernte (Pfand = ganzes Konto)",
+       nahe(i1["spot"], 0) and nahe(i1["perp_long"], 2.0) and nahe(i1["park"], 0), i1)
+_, _, i1 = erster_tag(1.0, 2.0, tage=1)
+pruefe("1× Ziel bei 2×: ganz über Spot, kein Futures-Long", nahe(i1["spot"], 1.0) and nahe(i1["perp_long"], 0) and nahe(i1["park"], 0), i1)
+_, _, i1 = erster_tag(1.5, 2.0, tage=1)
+pruefe("1,5× Ziel bei 2×: Spot 0,5 + Futures-Long 1,0 (Pfand 0,5 = 1,0 ÷ 2), keine Ernte",
+       nahe(i1["spot"], 0.5) and nahe(i1["perp_long"], 1.0) and nahe(i1["park"], 0), i1)
+_, _, i1 = erster_tag(0.6, 1.5, tage=1)
+pruefe("0,6× Ziel bei 1,5×: ganz Spot, Rest (0,4) als Ernte-Volumen 0,4 ÷ 1,5",
+       nahe(i1["spot"], 0.6) and nahe(i1["perp_long"], 0) and nahe(i1["park"], 0.4 / 1.5), i1)
+_, _, i1 = erster_tag(-1.0, 2.0, tage=1)
+pruefe("Short 1× bei 2×: Pfand 0,5 → Ernte 0,5 ÷ 1,5", nahe(i1["perp_short"], 1.0) and nahe(i1["park"], 0.5 / 1.5), i1)
+_, _, i1 = erster_tag(-1.0, 1.0, tage=1)
+pruefe("Short 1× bei 1×: Pfand 100 % wie live → keine Ernte", nahe(i1["perp_short"], 1.0) and nahe(i1["park"], 0), i1)
+
+# 12) Funding: Spot-Long zahlt keins, Futures-Long zahlt, die Ernte bekommt
+w, _, _ = erster_tag(1.0, 2.0, f_long=0.01, tage=20)
+pruefe("Long über Spot zahlt kein Funding (auch bei 1 %/Tag)", abs(w[-1] - w[1]) < 1e-12, (w[1], w[-1]))
+w, _, _ = erster_tag(2.0, 2.0, f_long=0.001, tage=20)
+pruefe("Futures-Long zahlt Funding (2 × 0,1 % je Tag)", nahe(w[-1] / w[1], (1 - 0.002) ** 19, 1e-3), (w[1], w[-1]))
+w, _, _ = erster_tag(0.0, 2.0, f_short=0.001, tage=20)
+pruefe("ohne Position: ganzes Konto in der Ernte, sie bekommt Funding", w[-1] > w[1] > 0.99, (w[1], w[-1]))
+w_s, _, _ = erster_tag(-1.0, 2.0, f_short=0.001, tage=20)
+w_l, _, _ = erster_tag(1.0, 2.0, f_short=0.001, tage=20)
+pruefe("Short bekommt Funding auf Position + Ernte, Spot-Long nur nichts", w_s[-1] > w_s[1] and abs(w_l[-1] - w_l[1]) < 1e-12,
+       (w_s[-1], w_l[-1]))
+
+# 13) Liquidation: nur der Futures-Teil — Spot-Coins tragen kein Pfand
+_, lq, _ = erster_tag(1.5, 2.0, tage=3, l_tief=50.0)
+pruefe("Spot 0,5 + Futures-Long 1,0 (Pfand 0,5), Tagestief −50 % → Futures-Teil liquidiert", lq)
+_, lq, _ = erster_tag(1.5, 2.0, tage=3, l_tief=60.0)
+pruefe("… Tagestief −40 % → noch nicht liquidiert", not lq)
+w, lq, _ = erster_tag(1.0, 1.0, tage=3, l_tief=40.0)
+pruefe("nur Spot (1×), Tagestief −60 % → nie liquidiert, Konto nach Erholung zurück", not lq and nahe(w[-1], w[1], 1e-9), (lq, w))
+_, lq, _ = erster_tag(1.5, 2.0, tage=3, l_tief=50.0, stop_k=3.0)
+w_f, lq_f = MK.lauf_hebel([1.5] * 4, [100.0] * 4, [100.0, 100.0, 50.0, 100.0], [100.0] * 4, [0.0] * 4, [0.0] * 4, 1, 4, stop_k=0)
+pruefe("Vergleich F-1,5 (ganzes Konto als Pfand) übersteht −50 % — der Futures-Teil von P2 nicht (Pfand-Regel ehrlich)",
+       not lq_f and lq, (lq_f, lq))
+
+# 13b) Korrektur nach dem ersten Lauf: Bei festem Kurs darf NIE liquidiert werden. Vorher reservierte der Umbau das Pfand vor den
+#      Kosten — Short mit grosser Ernte → Long knapp über 1× (winziger Futures-Long): Gebühren + Ernte-Auflösung drückten das
+#      Futures-Konto unter null → «liquidiert» (echt: BTC 6.3.2025 bei 1,75× mit doppelten Kosten)
+n = 7
+cc = [100.0] * n
+w, lq = MK.lauf_p2([-1.0, -1.0, -1.0, 1.002, 1.002, 1.002, 1.002], cc, cc, cc, [0.0] * n, [0.0] * n, 1, n, L=1.75, stop_k=0,
+                   gebuehr=0.001, spot_gebuehr=0.002, park_kosten=0.003)
+pruefe("Short mit Ernte → Long 1,002× bei 1,75× (doppelte Kosten), Kurs fest → nicht liquidiert", not lq and w[-1] > 0.99, (lq, w))
+w, lq = MK.lauf_p2([-1.0, -1.0, -1.0, 1.0001, 1.0001, 1.0001, 1.0001], cc, cc, cc, [0.0] * n, [0.0] * n, 1, n, L=1.75, stop_k=0,
+                   park_kosten=0.02)
+pruefe("… Long 1,0001× mit hohen Ernte-Kosten (2 %): die Reserve deckt auch das Auflösen der Ernte → nicht liquidiert", not lq,
+       (lq, w))
+rnd = random.Random(31)
+falsch = []
+for versuch in range(300):
+    L = rnd.choice([1.25, 1.5, 1.75, 2.0, 3.0])
+    k = rnd.choice([1, 2, 5])
+    n = 40
+    zz = [round(rnd.uniform(-1, 1) * L, 3) if rnd.random() < 0.5 else 0.0 for _ in range(n)]
+    cc = [100.0] * n
+    fl = [rnd.uniform(0, 0.003) for _ in range(n)]
+    w, lq = MK.lauf_p2(zz, cc, cc, cc, fl, fl, 1, n, L=L, stop_k=0, gebuehr=MK.GEBUEHR * k, spot_gebuehr=MK.SPOT_GEBUEHR * k,
+                       park_kosten=MK.PARK_KOSTEN * k)
+    if lq:
+        falsch.append((versuch, L, k))
+pruefe("300 Zufallsfolgen von Zielen (1,25–3×, Kosten × 1/2/5, Funding bis 0,3 %/Tag), Kurs fest → nie liquidiert", not falsch,
+       falsch[:5])
+
+# 14) Prüfstand selbst: P2-1 nie schlechter als «P2» des ersten Prüfstands (gleiches Funding, nur genauere Gebühr beim Wechsel),
+#     doppelte Kosten verschlechtern jeden Hebel (Funding-Einnahme nicht × 1,5)
+import maxprofit_p2_pruefung as MP2  # noqa: E402
+
+D = fake_daten(seed=21)
+a, b = 300, len(D["tage"])
+w_neu, _ = MP2.p2l_kurve(D, 1.0, a, b)
+w_alt, _ = MP.p2_kurve(D, a, b)
+pruefe("P2-1 ≥ «P2» des ersten Prüfstands (gleiche Daten)", w_neu[-1] >= w_alt[-1] - 1e-12 and len(w_neu) == len(w_alt),
+       (w_neu[-1], w_alt[-1]))
+D_f = fake_daten(seed=22)
+for sym in ("BTC", "ETH"):
+    D_f["fund"][sym] = ([0.002] * len(D_f["tage"]), [0.002] * len(D_f["tage"]), 0.0)
+ok = []
+for L in MP2.HEBEL:
+    w, _ = MP2.p2l_kurve(D_f, L, a, b)
+    wt, _ = MP2.p2l_kurve(D_f, L, a, b, teuer=True)
+    ok.append((L, wt[-1] < w[-1], w[-1], wt[-1]))
+pruefe("doppelte Kosten verschlechtern Pilot 2.0 bei jedem Hebel (auch bei hohem Funding)", all(x[1] for x in ok), ok)
+# «teuer» heisst genau: Gebühren, Schlupf, Ernte-Kosten × 2, Funding der Futures-Longs × 1,5, Funding-Einnahmen unverändert
+teile = []
+for coin, sym in (("btc", "BTC"), ("eth", "ETH")):
+    hh, ll, cc = D_f[coin]
+    fl, fs, _ = D_f["fund"][sym]
+    w, _ = MK.lauf_p2([1.5 * x for x in D_f["z1"][coin]], hh, ll, cc, [x * 1.5 for x in fl], fs, a, b, L=1.5, gebuehr=0.001,
+                      spot_gebuehr=0.002, schlupf=0.002, park_kosten=0.003)
+    teile.append(w)
+soll_t = MK.mix_taeglich(*teile)
+ist_t, _ = MP2.p2l_kurve(D_f, 1.5, a, b, teuer=True)
+pruefe("«teuer» = genau doppelte Gebühren/Schlupf/Ernte-Kosten, Futures-Long-Funding × 1,5, Einnahmen gleich",
+       max(abs(x - y) for x, y in zip(soll_t, ist_t)) < 1e-12, (soll_t[-1], ist_t[-1]))
+# der Hebel kommt im Modell an: Kurs fest, Ziel 0,75 je Coin → bei 2× Ziel 1,5 = Spot 0,5 + Futures-Long 1,0
+D_k = fake_daten(seed=23)
+for coin in ("btc", "eth"):
+    cc = [100.0] * len(D_k["tage"])
+    D_k[coin] = (list(cc), list(cc), cc)
+    D_k["z1"][coin] = [0.75] * len(cc)
+for sym in ("BTC", "ETH"):  # ohne Funding: sonst zehrt es am Konto, und die Anteile wandern bis zum nächsten Nachkauf
+    D_k["fund"][sym] = ([0.0] * len(D_k["tage"]), [0.0] * len(D_k["tage"]), 0.0)
+info = {}
+MP2.p2l_kurve(D_k, 2.0, a, b, info=info)
+nt = info["tage"]
+pruefe("Prüfstand gibt den Hebel ans Modell: Ziel 0,75 × 2 → Spot 0,5 + Futures-Long 1,0 (Pfand ÷ 2)",
+       nahe(info["spot"] / nt, 0.5, 0.01) and nahe(info["perp_long"] / nt, 1.0, 0.01), {k: v / nt for k, v in info.items()})
+info = {}
+MP2.p2l_kurve(D, 2.0, a, b, info=info)
+pruefe("bei 2× läuft ein Teil des Longs über Futures (Signale bis 2× Ziel)", info.get("perp_long", 0) > 0 and info.get("spot", 0) > 0,
+       info)
+
 print(f"\n{n_ok} bestanden, {n_f} fehlgeschlagen")
 sys.exit(1 if n_f else 0)

@@ -64,6 +64,29 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-14 nachts (💰 «Max Profit 2»: Pilot 2.0 mit Hebel — Empfehlung 1,75×, schlägt den Live-Pilot mit 1,75×):** Folge des
+Eintrags unten. `maxprofit_p2_pruefung.py` + `maxprofit_kern.lauf_p2`, Protokoll VORAB committet (`f330a1421`).
+- **Modell:** Long bis 1× über Spot, darüber teils Futures-Long. Pfand je Futures-Position = Volumen ÷ L, Spot zählt nicht als Pfand.
+  Freies Geld liegt in der Ernte.
+- **Kandidaten** P2-1 … P2-2, Regel wie im ersten Prüfstand, Basis P2-1.
+- **Ergebnis:**
+  - P2-1: +45,7 %/−24 %;
+  - P2-1,5: +55,4 %/−40 %;
+  - **P2-1,75: +58,7 %/−49 %, ab 2022 +44,1 %, teuer +50,1 %, P 3,0 %** → Empfehlung;
+  - P2-2 fällt (P 7,2 %);
+  - zum Vergleich F-1,75 (Live-Pilot): +48,7 %/−53 %, teuer +38,4 %.
+- **Modellfehler im 1. Lauf, offen gelegt:** «teuer» meldete BTC-Liquidation bei 1,75×/2×. Ursache: Umbau-Kosten und Auflösen der
+  Ernte gingen erst NACH dem Pfand ab, bei winzigem Futures-Long fiel das Futures-Konto bei festem Kurs unter null.
+  - Fix: Umbau rechnet die höchstmöglichen Kosten vorab heraus; die Ernte trägt ihre Kosten selbst.
+  - Neue Tests: «bei festem Kurs nie liquidiert», 300 Zufallsfolgen; Gegenprobe am alten Code rot.
+  - Erste Empfehlung war 1,5×; beide Läufe stehen in der JSON.
+- **Prüfung:** Tests 55, Mutationen 21/23. N3/N5 sind gleichwertig: am echten Lauf Unterschied 0,0.
+- **LEHRE:** Ein unplausibler Sprung (1,5× teuer 48,8 % → 1,75× teuer 30,9 %) ist zuerst ein Modellfehler-Verdacht. Erst zerlegen,
+  dann berichten.
+- **Live:** Pilot 2.0 ist gesperrt und kann nur 1×. Hebel = Umbau + eigene Prüfungen. Reihenfolge: erst 1× freigeben, monatelang
+  laufen lassen, dann stufenweise.
+- Die Arbeit lief in einem eigenen `git worktree` (scratchpad/wt_mp2), damit die laufende 13. Prüfung im Haupt-Checkout ungestört blieb.
+
 **📌 2026-10-14 spätabends (💰 «Max Profit» ehrlich gerechnet — Empfehlung 1,75×, effizienter wäre Pilot 2.0):** User: «entwickle eine
 strategie für max profit». `tools/trading/krypto_bot/maxprofit_pruefung.py` + `maxprofit_kern.py` (26 Tests, Mutationen 17/17), Protokoll
 VORAB committet (`fb9a08cad`): Ziel = Vermögenswachstum auf Dauer (Kelly), NICHT Erwartungswert (Alles-auf-Hebel = Ruin); Signale wie der
@@ -73,8 +96,8 @@ Live-Pilot (nichts Neues gesucht), echtes Funding, Liquidation, gezählt ab 2020
 P 3,6 %). 2× fällt (P 8,2 %), 3× +61 %/−79 % (P 41 %); Kelly aus den Vorjahren will jedes Jahr ≥ 3× (gedeckelt). **Pilot 2.0 1×: +45,4 %/−24 %**
 (fast gleich viel bei halbem Risiko, mit doppelten Kosten besser — aber gesperrt). Bitcoin halten +43,4 %/−77 %. **Fehler im 1. Lauf:** P2
 «teuer» rechnete die Funding-EINNAHME × 1,5 (44,9 → richtig 41,5 %) → korrigiert, Test mit Gegenprobe. Live gibt es nur Stufen 1/1,5/2
-(`pilot_kern.STUFEN`, 1,75 wird gerundet) → ob 1,75× eingebaut wird, entscheidet der User (echtes Geld). Nächster Schritt: «Pilot 2.0 + Hebel»
-als eigener Prüfstand (Protokoll vorab).
+(`pilot_kern.STUFEN`, 1,75 wird gerundet) → ob 1,75× eingebaut wird, entscheidet der User (echtes Geld). «Pilot 2.0 + Hebel» →
+Eintrag oben.
 
 **📌 2026-10-14 spätnachts (🔒 Pilot 2.0: 12. Prüfung — 3 Blocker + 3 wichtig + 4 klein + 4 eigene Funde behoben, bleibt GESPERRT):**
 Prüfer-Agent (Belege `scratchpad/pruefung12/` p1–p6, Fuzzer `fz_kurs.py`/`fz_streng.py`) fand: **B1** Not-Aus zum Markt meldete

@@ -1,0 +1,190 @@
+{
+ "stand": "2026-10-13",
+ "protokoll": "— VORAB FESTGELEGT (committet vor dem ersten Lauf mit echten Daten):\nAnlass: Der erste Max-Profit-Prüfstand (maxprofit_pruefung.py) empfahl für den Live-Pilot (alles über Futures) 1,75×; Pilot 2.0\nmit 1× war dort effizienter (mehr Rendite je Einbruch). Offen blieb: Was bringt Pilot 2.0 MIT Hebel?\nSignale wie dort, unverändert: Bitcoin Trend 150 + Ethereum Trend 200, Schwankungsziel 40 % × L mit Deckel L, MVRV-Bremse,\nBörsen-Stop 3 Tages-Schwankungen mit 0,1 % Schlupf, BTC/ETH täglich 50/50 neu aufgeteilt.\nModell «Pilot 2.0 mit Hebel L» (maxprofit_kern.lauf_p2):\n  Long:  zuerst über Spot (Gebühr 0,10 %, kein Funding); über einen Futures-Long nur der Teil, für den das Pfand sonst nicht\n         reicht (zahlt echtes Funding; vor Beginn der Funding-Daten pauschal 0,01 % je 8 Stunden).\n  Short: über Futures (bekommt Funding bzw. zahlt es, wenn es negativ ist).\n  Pfand: jede Futures-Position hat Volumen ÷ L als Pfand im Futures-Konto (bei 1× 100 % wie live). Spot-Coins zählen NICHT als\n         Pfand. Der Futures-Teil verträgt so eine Gegenbewegung von 1/L, bevor er liquidiert wird (2×: 50 %), also so viel wie\n         F-L bei vollem Ziel. Bei Teil-Ziel liegt seine Liquidation näher als bei F-L, weil dort das ganze Konto trägt.\n         Folge: bis 1× Ziel läuft der Long ganz über Spot, darüber teils über Futures.\n  Ernte: freies Geld (Konto − Spot − Pfand) liegt in der Funding-Ernte (Spot + Short desselben Coins, 1,5× Kapital je Volumen,\n         0,15 % Kosten auf jede Änderung).\n  Liquidation des Futures-Teils über Tagestief/-hoch, Wartungsmarge 0,5 % → gilt vorsichtig als Konto 0 («liquidiert»).\n  Ein Wechsel Long ↔ Short kostet je Teil die eigene Gebühr (pilot2_pruefung.lauf2 rechnete dort alles zur Spot-Gebühr;\n  darum liegt P2-1 hier leicht über «P2» des ersten Prüfstands).\nKandidaten: P2-L mit L ∈ {1; 1,25; 1,5; 1,75; 2}. Nur feste Hebel, weil wenige Kandidaten die Zahl des besten wenig schönen.\nGezählt wird ab 1.1.2020, zusätzlich ab 2022 (Baisse + Erholung) und mit «doppelten Kosten» ab 2020: alle Gebühren, Schlupf und\nErnte-Kosten × 2, Funding der Futures-Longs × 1,5. Die Funding-EINNAHMEN (Shorts, Ernte) werden dabei nicht erhöht.\nRisiko wie dort: 10'000 Zufallsjahre aus den echten Tagesrenditen ab 2020 (Blöcke à 20 Tage).\nENTSCHEIDUNGSREGEL (maxprofit_kern.entscheidung, Basis P2-1): bestanden hat ein Kandidat, wenn ALLES gilt\n  1) nie liquidiert, 2) P(Einbruch tiefer als −60 % in einem Zufallsjahr) ≤ 5 %, 3) Rendite pro Jahr ab 2022 ≥ die von P2-1,\n  4) mit doppelten Kosten ab 2020 ≥ P2-1 (ebenfalls doppelte Kosten).\nEmpfehlung = bestandener Kandidat mit der höchsten Rendite pro Jahr ab 2020. Liegt einer mit kleinerem Hebel weniger als\n2 Prozentpunkte darunter, gilt der kleinere. Besteht ausser P2-1 keiner, bleibt 1×.\nZum Vergleich (kein Kriterium): F-1 und F-1,75 (Empfehlung des ersten Prüfstands), mit denselben Daten neu gerechnet.\nWichtig: Pilot 2.0 ist gesperrt (FREIGEGEBEN = False) und kann heute nur 1×. Ein Hebel wäre ein Umbau des Live-Codes\n(Futures-Long-Teil, Pfand-Regel) mit eigenen Prüfungen. Dieser Prüfstand sagt nur, ob sich das lohnen WÜRDE.\nNicht abgebildet:\n  - Börsenausfall (FTX 2022), Spot/Future-Kursdifferenz.\n  - Kurslücken über den Stop hinaus (Ausführung zum Stop-Kurs + Schlupf).\n  - Verrechnung von Futures-Long und Ernte-Short im selben Paar. Das ist vorsichtig gerechnet: getrennt heisst mehr Gebühren und\n    mehr Pfand.\nKeine Anlageberatung.\n\nKORREKTUR NACH DEM ERSTEN LAUF MIT ECHTEN DATEN (Modellfehler, das Protokoll oben gilt unverändert):\n  Der erste Lauf meldete bei 1,75× und 2× mit doppelten Kosten «BTC liquidiert» (6.3.2025 bzw. 23.9.2021). Ursache:\n  - Beim Umbau bekam der Spot alles ausser dem Pfand.\n  - Gebühren und das Auflösen der Ernte gingen danach vom Futures-Konto ab.\n  - Bei einem winzigen Futures-Long (Ziel knapp über 1×) fiel es so unter null, obwohl sich der Kurs kaum bewegte.\n  Das widerspricht der Pfand-Regel oben («Volumen ÷ L als Pfand»). Jetzt rechnet der Umbau die höchstmöglichen Kosten vorab\n  heraus, und die Ernte trägt ihre Kosten selbst (Tests 13b: bei festem Kurs nie liquidiert).\n  Ergebnis des ersten Lauf steht unten in ERSTER_LAUF und in der JSON-Datei:\n  - P2-1,75 «teuer» 30,9 % statt 50,1 %, P2-2 «teuer» 23,8 % statt 51,2 %;\n  - Empfehlung damals P2-1,5, korrigiert P2-1,75.\n  Die Zahlen ohne doppelte Kosten änderten sich höchstens um 0,1 Prozentpunkte.",
+ "kandidaten": {
+  "P2-1": {
+   "cagr_oos": 0.4573926731786657,
+   "einbruch_oos": -0.24190028071753844,
+   "cagr_2022": 0.33974422476148836,
+   "einbruch_2022": -0.23176626378780096,
+   "liquidiert": false,
+   "p_einbruch60": 0.0,
+   "p_minus50": 0.0002,
+   "jahr_median": 0.44361452420343317,
+   "jahr_5pct": -0.13567771406945942,
+   "cagr_oos_teuer": 0.4211269828008919,
+   "hebel_schnitt": 1.0,
+   "anteile": {
+    "spot": 0.3860352315950791,
+    "perp_long": 0.0,
+    "perp_short": 0.1814820736734356,
+    "park": 0.28850707137006676
+   },
+   "bestanden": true,
+   "gruende": []
+  },
+  "P2-1.25": {
+   "cagr_oos": 0.48453064581658967,
+   "einbruch_oos": -0.3366344403327618,
+   "cagr_2022": 0.3648403587444853,
+   "einbruch_2022": -0.30582038495029973,
+   "liquidiert": false,
+   "p_einbruch60": 0.0007,
+   "p_minus50": 0.002,
+   "jahr_median": 0.4651457738367195,
+   "jahr_5pct": -0.22317399280380049,
+   "cagr_oos_teuer": 0.43374261908978595,
+   "hebel_schnitt": 1.25,
+   "anteile": {
+    "spot": 0.3598402059479471,
+    "perp_long": 0.12426193379960779,
+    "perp_short": 0.23343962971749332,
+    "park": 0.23714077114121304
+   },
+   "bestanden": true,
+   "gruende": []
+  },
+  "P2-1.5": {
+   "cagr_oos": 0.5540395190236331,
+   "einbruch_oos": -0.40370623103695424,
+   "cagr_2022": 0.40273266330417745,
+   "einbruch_2022": -0.36618000698552133,
+   "liquidiert": false,
+   "p_einbruch60": 0.0066,
+   "p_minus50": 0.0062,
+   "jahr_median": 0.5340097174917422,
+   "jahr_5pct": -0.28464029791270784,
+   "cagr_oos_teuer": 0.4872423427632211,
+   "hebel_schnitt": 1.5,
+   "anteile": {
+    "spot": 0.3468852098638627,
+    "perp_long": 0.23213322283085835,
+    "perp_short": 0.2842785707478587,
+    "park": 0.2074509862133214
+   },
+   "bestanden": true,
+   "gruende": []
+  },
+  "P2-1.75": {
+   "cagr_oos": 0.5870768857278037,
+   "einbruch_oos": -0.49449642010291284,
+   "cagr_2022": 0.44100702418177407,
+   "einbruch_2022": -0.4429368739648929,
+   "liquidiert": false,
+   "p_einbruch60": 0.0296,
+   "p_minus50": 0.016,
+   "jahr_median": 0.5632728990802851,
+   "jahr_5pct": -0.35495766295416553,
+   "cagr_oos_teuer": 0.5007896149869557,
+   "hebel_schnitt": 1.75,
+   "anteile": {
+    "spot": 0.3340698299120473,
+    "perp_long": 0.3434222496555137,
+    "perp_short": 0.3331187581173691,
+    "park": 0.1884855630805521
+   },
+   "bestanden": true,
+   "gruende": []
+  },
+  "P2-2": {
+   "cagr_oos": 0.6290480325868288,
+   "einbruch_oos": -0.5848615672080004,
+   "cagr_2022": 0.470042526972696,
+   "einbruch_2022": -0.5135034690440285,
+   "liquidiert": false,
+   "p_einbruch60": 0.0717,
+   "p_minus50": 0.0283,
+   "jahr_median": 0.6085922338670073,
+   "jahr_5pct": -0.42092366047801083,
+   "cagr_oos_teuer": 0.512459462384613,
+   "hebel_schnitt": 2.0,
+   "anteile": {
+    "spot": 0.3116944190016395,
+    "perp_long": 0.4696575104213321,
+    "perp_short": 0.385807265504539,
+    "park": 0.17640753002863077
+   },
+   "bestanden": false,
+   "gruende": [
+    "P(Einbruch < −60 %) 7.2 %"
+   ]
+  }
+ },
+ "vergleich": {
+  "F-1": {
+   "cagr_oos": 0.33439091648320995,
+   "einbruch_oos": -0.29568404114795277,
+   "cagr_2022": 0.2932824263795881,
+   "einbruch_2022": -0.2633241293396238,
+   "liquidiert": false,
+   "p_einbruch60": 0.0001,
+   "p_minus50": 0.0002,
+   "jahr_median": 0.32480240360393264,
+   "jahr_5pct": -0.1978993616064399,
+   "cagr_oos_teuer": 0.2779179404338519
+  },
+  "F-1.75": {
+   "cagr_oos": 0.4867920767414071,
+   "einbruch_oos": -0.5310660325580066,
+   "cagr_2022": 0.43759798772553404,
+   "einbruch_2022": -0.4549380202015538,
+   "liquidiert": false,
+   "p_einbruch60": 0.0362,
+   "p_minus50": 0.0206,
+   "jahr_median": 0.47032875302818555,
+   "jahr_5pct": -0.3897134687267543,
+   "cagr_oos_teuer": 0.38382377887673536
+  },
+  "P2 (erster Prüfstand)": {
+   "cagr_oos": 0.4544448727012118,
+   "einbruch_oos": -0.24399688632250816,
+   "cagr_2022": 0.33657031286625383,
+   "einbruch_2022": -0.23348286267347762,
+   "liquidiert": false,
+   "p_einbruch60": 0.0,
+   "p_minus50": 0.0002,
+   "jahr_median": 0.44096450956510747,
+   "jahr_5pct": -0.13724686780527048
+  }
+ },
+ "erster_lauf_vor_korrektur": {
+  "P2-1": {
+   "cagr_oos": 0.457,
+   "cagr_2022": 0.34,
+   "cagr_oos_teuer": 0.421,
+   "p_einbruch60": 0.0,
+   "bestanden": true
+  },
+  "P2-1.25": {
+   "cagr_oos": 0.485,
+   "cagr_2022": 0.365,
+   "cagr_oos_teuer": 0.434,
+   "p_einbruch60": 0.001,
+   "bestanden": true
+  },
+  "P2-1.5": {
+   "cagr_oos": 0.554,
+   "cagr_2022": 0.403,
+   "cagr_oos_teuer": 0.488,
+   "p_einbruch60": 0.007,
+   "bestanden": true
+  },
+  "P2-1.75": {
+   "cagr_oos": 0.587,
+   "cagr_2022": 0.441,
+   "cagr_oos_teuer": 0.309,
+   "p_einbruch60": 0.03,
+   "bestanden": false
+  },
+  "P2-2": {
+   "cagr_oos": 0.63,
+   "cagr_2022": 0.47,
+   "cagr_oos_teuer": 0.238,
+   "p_einbruch60": 0.072,
+   "bestanden": false
+  },
+  "empfehlung": "P2-1.5",
+  "fehler": "teuer: BTC-Teilkonto fälschlich «liquidiert» (1,75×: 6.3.2025, 2×: 23.9.2021) — Kosten nach dem Pfand abgezogen"
+ },
+ "empfehlung": "P2-1.75"
+}

@@ -3,6 +3,8 @@
 
   lauf_hebel        Futures-Konto wie pilot_pruefung.lauf (Band, Börsen-Stop, Liquidation über Tagestief/-hoch), aber mit
                     Funding je Tag getrennt für Longs (zahlen f_long) und Shorts (bekommen f_short; negativ = zahlen)
+  lauf_p2           Pilot 2.0 mit Hebel L (maxprofit_p2_pruefung.py): Long zuerst über Spot, Rest über Futures-Long; Short über
+                    Futures; Pfand je Futures-Position = Volumen ÷ L; freies Geld in der Funding-Ernte
   kelly_hebel       Wachstums-optimaler Hebel einer Tagesrenditen-Reihe: μ / σ² (Kelly für eine skalierte Strategie)
   walk_forward      Hebel je Kalenderjahr — NUR aus den Tagen VOR dem Jahr geschätzt (keine Zukunftsdaten)
   bootstrap_jahre   Zufallsjahre aus echten Tagesrenditen (Blöcke, damit Serien wie Crashs zusammen bleiben)
@@ -15,6 +17,7 @@ import math
 import random
 
 GEBUEHR, SCHLUPF, MARGE_MIN, BAND = 0.0005, 0.001, 0.005, 0.25
+SPOT_GEBUEHR, PARK_KOSTEN, KAPITAL_FAKTOR = 0.001, 0.0015, 1.5  # wie pilot2_pruefung / carry_pruefung (Funding-Ernte)
 
 
 def vol(p):
@@ -61,6 +64,81 @@ def lauf_hebel(z, h, l, c, f_long, f_short, a, b, stop_k=3.0, gebuehr=GEBUEHR, s
                 return werte, True
             E += N * (c[i] / ref - 1) - (N * f_long[i] if N > 0 else N * f_short[i])
             N *= c[i] / ref
+        werte.append(E)
+    return werte, False
+
+
+def lauf_p2(z, h, l, c, f_long, f_short, a, b, L=1.0, stop_k=3.0, gebuehr=GEBUEHR, spot_gebuehr=SPOT_GEBUEHR,
+            schlupf=SCHLUPF, park_kosten=PARK_KOSTEN, kapital_faktor=KAPITAL_FAKTOR, info=None):
+    """Pilot 2.0 mit Hebel L — Kontowert-Verlauf (Start 1.0) von Tag a bis b. z[i-1] = Ziel-Anteil (schon L-fach, Vorzeichen =
+    Richtung); Handel am Folgetag, Band 25 %, Börsen-Stop stop_k Tages-Schwankungen (Schlupf) wie lauf_hebel.
+      Long:  zuerst über Spot S (Gebühr spot_gebuehr, kein Funding); über Futures-Long P nur, soweit das Pfand nicht reicht
+             (zahlt f_long). Short: über Futures P < 0 (bekommt f_short; negativ = zahlt).
+      Pfand: jede Futures-Position braucht Volumen ÷ L im Futures-Konto (bei 1× 100 % wie live); Spot-Coins zählen NICHT als Pfand.
+             → S ≤ (E' − N/L) ÷ (1 − 1/L), E' = Konto minus die höchstmöglichen Kosten dieses Umbaus (Gebühren + Auflösen der
+             Ernte) — so reicht das Pfand auch NACH den Kosten; bis 1× Ziel (und bei L = 1): S = N, ganz über Spot.
+      Ernte: freies Geld E − S − |P|/L liegt in der Funding-Ernte (Volumen = frei ÷ kapital_faktor, Kosten park_kosten auf jede
+             Änderung — die trägt die Ernte selbst —, Einnahme f_short je Tag).
+      Liquidation: nur der Futures-Teil — wenn das Futures-Konto (E − S − Ernte-Kapital) über das Tagesextrem unter die
+             Wartungsmarge fällt; gilt vorsichtig als Konto 0 und Ende.
+    Korrektur nach dem ersten Lauf mit echten Daten: vorher bekam der Spot beim Umbau ALLES ausser dem Pfand, und Gebühren wie
+    Ernte-Kosten gingen danach vom Futures-Konto ab — bei einem winzigen Futures-Long fiel es so unter null, und das Modell
+    meldete «liquidiert» (BTC, 6.3.2025, 1,75× teuer), obwohl sich der Kurs kaum bewegte.
+    info (dict, optional): summiert je Tag die Anteile am Konto: spot, perp_long, perp_short, park, tage.
+    Bei L = 1 und gebuehr = spot_gebuehr rechnet das genau wie pilot2_pruefung.lauf2(modus="P2"); sonst kostet ein Wechsel
+    Long ↔ Short je Teil die richtige Gebühr (lauf2 rechnet dort alles zur Spot-Gebühr). → (Werte, liquidiert)"""
+    v = vol(c)
+    D = 1.0 / L
+    E, S, P, park, K, werte = 1.0, 0.0, 0.0, 0.0, 0.0, [1.0]
+    for i in range(max(a, 1), b):
+        ziel = z[i - 1]
+        N = S + P
+        ist = N / E if E > 0 else 0.0
+        if (ziel == 0 and N != 0) or (ziel != 0 and (abs(ist - ziel) > BAND or (ist > 0) != (ziel > 0) or N == 0)):
+            neu = ziel * E
+            if neu <= 0:
+                s_neu = 0.0
+            elif D >= 1 or neu <= E:  # bis 1× ganz über Spot (kein Futures-Teil, kein Pfand)
+                s_neu = min(neu, E)
+            else:  # Pfand muss auch nach den Kosten reichen: höchstmögliche Gebühren + ganze Ernte auflösen abziehen
+                netto = E - (abs(neu) + abs(S) + abs(P)) * max(gebuehr, spot_gebuehr) - park * park_kosten
+                s_neu = max(0.0, min(neu, (netto - neu * D) / (1 - D)))
+            p_neu = neu - s_neu
+            E -= abs(s_neu - S) * spot_gebuehr + abs(p_neu - P) * gebuehr
+            S, P = s_neu, p_neu
+        frei = max(0.0, E - S - abs(P) * D)
+        soll = frei / kapital_faktor
+        kosten = abs(soll - park) * park_kosten
+        E -= kosten
+        K = max(0.0, frei - kosten)  # Ernte-Kapital — trägt ihre Kosten selbst (reicht es nicht: den Rest das Futures-Konto)
+        park = soll
+        E += park * f_short[i]
+        if info is not None and E > 0:
+            for k_, x in (("spot", S), ("perp_long", max(P, 0.0)), ("perp_short", max(-P, 0.0)), ("park", park), ("tage", E)):
+                info[k_] = info.get(k_, 0.0) + x / E
+        if S != 0 or P != 0:
+            ref = c[i - 1]
+            N = S + P
+            if stop_k and v[i - 1]:
+                abstand = stop_k * v[i - 1] / math.sqrt(365) * ref
+                stop = ref - abstand if N > 0 else ref + abstand
+                if (N > 0 and l[i] <= stop) or (N < 0 and h[i] >= stop):
+                    aus = stop * (1 - schlupf) if N > 0 else stop * (1 + schlupf)
+                    E += N * (aus / ref - 1) - abs(S) * spot_gebuehr - abs(P) * gebuehr
+                    S = P = 0.0
+                    werte.append(max(E, 0.0))
+                    if E <= 0:
+                        return werte, True
+                    continue
+            if P != 0:
+                extrem = l[i] if P > 0 else h[i]
+                konto_f = E - S - K  # Futures-Konto inkl. offenem Gewinn — ohne Spot-Coins und Ernte
+                if konto_f + P * (extrem / ref - 1) <= MARGE_MIN * abs(P * extrem / ref):
+                    werte.append(0.0)
+                    return werte, True
+            E += N * (c[i] / ref - 1) - (P * f_long[i] if P > 0 else P * f_short[i])
+            S *= c[i] / ref
+            P *= c[i] / ref
         werte.append(E)
     return werte, False
 
