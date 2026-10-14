@@ -58,7 +58,14 @@ absturz_nachholen() {
   [ -f "$log" ] || return 1
   a=$(( $(date +%s) - $(stat -c %Y "$log") ))
   [ "$a" -ge 3600 ] || return 1
-  tail -n 3 "$log" | grep -qE "Traceback|Error|Exception" || return 1
+  # 14.10.2026: LEERES Log aus der Zeit vor dem letzten Container-Start = der Lauf starb still beim Neustart (der Block setzt
+  # «touch» VOR dem Start, Python puffert die Ausgabe → keine einzige Zeile). Gemessen: psa_schuhe_wache.log und
+  # ch_lager_profil.log 0 Byte seit 13.10. 16:32 — 15 h ohne Tageslauf, weil nur «Traceback|Error» nachgeholt wurde.
+  if [ ! -s "$log" ]; then
+    [ "$(stat -c %Y "$log")" -lt "$(( $(date +%s) - $(cut -d. -f1 /proc/uptime) ))" ] || return 1
+  else
+    tail -n 3 "$log" | grep -qE "Traceback|Error|Exception" || return 1
+  fi
   z="/tmp/_nachgeholt_$(basename "$log" .log)_$(date -u +%Y%m%d)"
   n=$(cat "$z" 2>/dev/null); case "$n" in (''|*[!0-9]*) n=0 ;; esac
   [ "$n" -lt 3 ] || return 1
