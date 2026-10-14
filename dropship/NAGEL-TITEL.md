@@ -1,5 +1,5 @@
-# Nagel-Titel und Nagel-Korb — Stand 2026-10-13 11:40 UTC
+# Nagel-Titel und Nagel-Korb — Stand 2026-10-14 11:48 UTC
 
-Werkzeug `automation/nagel_titel.py`, Regel `automation/data/nagel_titel_regel.json` (Importer: `nagel_titel.mjs`). 1019 aktive Nagel-Produkte (Typ «Nageldesign» oder Nagel-Tag) · geändert: {}
+Werkzeug `automation/nagel_titel.py`, Regel `automation/data/nagel_titel_regel.json` (Importer: `nagel_titel.mjs`). 1014 aktive Nagel-Produkte (Typ «Nageldesign» oder Nagel-Tag) · geändert: {}
 
 Nichts zu tun.
