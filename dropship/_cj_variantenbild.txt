@@ -7176,3 +7176,8 @@ gid://shopify/Product/15469436240257	zugeordnet	10	Gefütterte Fleece-Hose mit h
 gid://shopify/Product/15469436731777	zugeordnet	42	High-Elastic Fitness- & Yoga-Hose
 gid://shopify/Product/15469437485441	bild-urls-tot
 gid://shopify/Product/15469437682049	zugeordnet	60	High-Waist Yoga-Hose mit Print
+gid://shopify/Product/15469438108033	zugeordnet	60	High Waist Business Hose für Damen
+gid://shopify/Product/15469438501249	zugeordnet	15	Pailletten-Leopardenprint Hose mit geradem Bein
+gid://shopify/Product/15469445349761	zugeordnet	30	Elegantes Halterneck-Kleid für Damen
+gid://shopify/Product/15470075314561	zugeordnet	40	Wollplüschvorhang
+gid://shopify/Product/15470075871617	zugeordnet	59	Cotton-Bettbezug

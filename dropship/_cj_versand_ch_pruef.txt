@@ -8681,3 +8681,6 @@ hohenverstellbares-dickes-po-kissen-198912	1728341763334610944	16	9.84	ok	landes
 schaumgummi-auto-kissen-mit-fixiergurt-fur-aut-187264	1716356239753490432	16	14.12	ok	landeseite
 schmuck-gurt-schulterpolster-aus-kunstleder-860608	1701406761925746688	16	6.17	ok	landeseite
 48v-hochdruck-wasserkanone-6-in-1-duse-fur-aut-531649	2069692069004218369	0	-	KEINE CH-Option → DRAFT	landeseite
+hochdruck-waschduse-fur-auto-haushalt-504770	2067983128757002242	16	13.04	ok	landeseite
+2er-set-multifunktions-schaumreiniger-100ml-zi-004226	2067093643079639041	0	-	KEINE CH-Option → DRAFT	landeseite
+badezimmer-eingangsteppich-mit-farbverlauf-622200	2601040419521622500	16	8.25	ok	landeseite
