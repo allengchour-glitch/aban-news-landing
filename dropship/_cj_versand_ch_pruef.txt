@@ -9412,3 +9412,12 @@ s6-doppelt-kamera-rc-spielzeug-blau-orange-350210	-	-	-	unklar pid 1602002 Produ
 dual-kamera-modell-911106	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 edelstahl-3d-katzenpendant-mit-blumenkranz-uni-600700	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 blumen-druck-strick-damenkleid-610000	2607081407501610700	16	6.77	ok	landeseite
+kurzes-plaid-kleid-mit-spitze-611300	2607081322011611900	16	7.87	ok	landeseite
+digitale-druck-damenkleid-639100	2607081216281630000	16	8.53	ok	landeseite
+retro-hofkleid-631900	2607081208041632500	16	12.68	ok	landeseite
+atmungsaktives-nackthautgefuhl-yoga-dress-dame-628300	2607081151321628900	16	8.28	ok	landeseite
+sommerliches-vintage-kleid-636500	2607081135361637000	16	6.90	ok	landeseite
+herbstdruck-damenkleid-mit-farbdruck-603300	2607081022211604200	16	6.90	ok	landeseite
+einteiliges-kleid-fur-damen-locker-plus-gro-e-620700	2607081007241621500	16	8.79	ok	landeseite
+v-ausschnitt-jumpsuit-kleid-604800	2607080959591605700	16	8.79	ok	landeseite
+vintage-kleid-mit-slim-strap-624601	2607080952421625300	16	9.33	ok	landeseite
