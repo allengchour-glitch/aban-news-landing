@@ -18,7 +18,26 @@ REGEL (umkehrbar, nichts löschen, nichts draften):
   * Fabrikbestand ZÄHLT (Journal 05.10. #1021: factory 20'000 bei «out of stock» — n=1, noch keine Regel).
   * KANARIENVOGEL: erste Antwort muss variants[].inventories tragen, sonst Abbruch (Format geändert = blind).
   * Punkte: Lauf endet sauber bei «Insufficient API points» (kein Ledger-Eintrag, nächster Lauf holt nach).
-Reihenfolge: nie geprüfte zuerst, dann die am längsten nicht geprüften (Ledger `dropship/_cj_lager.tsv`).
+PID-SKU (14.10.2026): 29'013 aktive Produkte tragen nur «CJ-<pid>» (Zahl oder UUID, fast alle 1 Shop-Variante «Default
+Title») — produkt_sku() leitet daraus nichts ab, sie standen als «keine-cj-sku» ohne jeden Bestandsschutz (#1019).
+GEMESSEN 14.10.: `product/query?pid=…&features=enable_inventory` geht für Zahl UND UUID, 10 Punkte, data.pid + variants[]
+mit vid/inventories. Welche CJ-Variante eine Bestellung nimmt, entscheidet cj_order_engine.vid_fuer(): CJ hat 1 Variante →
+diese; Zeile in dropship/_cj_varianten_zuordnung.tsv → diese; sonst erst beim Bestellen (Bildvergleich). Deshalb:
+  * eindeutig (1 CJ-Variante oder Zuordnung) → Bestand genau dieser Variante.
+  * offen (mehrere CJ-Varianten) → sperren nur, wenn ALLE 0; eigene Sperre frei, sobald eine > 0 (Zustand = Funktion des
+    Bestands, nie des Verlaufs). Restrisiko: die beim Bestellen gewählte Variante kann 0 haben, während andere Bestand haben.
+  * Shop-Produkt mit mehreren Varianten unter derselben pid-SKU (3 Stück) → unklar.
+  * Antwort gehört zu einer anderen pid → unklar. Nur über die ZUSATZKONTEN (nie Hauptkonto/Grind-Topf), höchstens
+    CAP_PID je Lauf und PID_TAG je UTC-Tag (gezählt an Ledger-Zeilen «q:pid»), immer NACH der SKU-Ware des Laufs.
+  * Kanarie pid: erste pid-Antwort mit Varianten muss inventories mit totalInventory tragen, sonst kein pid-Urteil im Lauf.
+BESTAND UNBEKANNT (14.10.): inventories fehlt, ist leer oder ein Eintrag ohne totalInventory → None (nie 0).
+LEDGER-REIHENFOLGE (14.10.): vor jeder Sperre steht eine Zeile «geplant» mit den IDs (ein Abbruch zwischen Mutation und
+Ledger hinterliess sonst eine Sperre, die nie mehr freigegeben wird); «fehler» wird nach 1 Tag wieder vorgelegt.
+ENTWÜRFE (14.10., gemessen 20 von 74): lagerstand_hygiene macht ein ganz gesperrtes Produkt zum DRAFT «ausverkauft-lieferant»;
+der Export kennt nur ACTIVE → nie mehr geprüft, nie freigegeben, nie zurück. Jetzt werden Entwürfe mit eigener Sperre
+mitgeprüft (nur FREIGEBEN, nie sperren); die Reaktivierung macht danach lagerstand_hygiene mit ihren eigenen Prüfungen.
+Reihenfolge: besuchte Seiten, dann nie geprüfte, dann die am längsten nicht geprüften (Ledger `dropship/_cj_lager.tsv`),
+pid-Ware am Ende.
 Läuft im CJ-Vorrang-Fenster (00:00–01:30 UTC, direkt nach dem Punkte-Reset) mit CAP; Bericht `dropship/CJ-LAGER.md`.
   DRY=1 python3 automation/cj_lager_abgleich.py          # messen
   CAP=1500 python3 automation/cj_lager_abgleich.py       # schreiben
@@ -34,6 +53,13 @@ BERICHT = os.path.join(REPO, "dropship", "CJ-LAGER.md")
 EXPORT = "/tmp/cj_lager_export.jsonl"
 DRY = os.environ.get("DRY") == "1"
 CAP = int(os.environ.get("CAP", "1500"))
+PID_AN = os.environ.get("PID", "1") == "1"                       # PID=0: pid-Teil aus (eigene pid-Sperren werden trotzdem geprüft)
+CAP_PID = int(os.environ.get("CAP_PID", "300"))                  # pid-Produkte je Lauf (am Ende der Liste)
+PID_TAG = int(os.environ.get("PID_TAG", "600"))                  # pid-Abfragen je UTC-Tag (Zusatzkonten, Rest bleibt der SKU-Ware)
+RECHECK_PID_S = int(os.environ.get("RECHECK_PID_TAGE", "21")) * 86400
+STREU_PID_TAGE = int(os.environ.get("STREU_PID_TAGE", "15"))
+ZUORDNUNG = os.path.join(REPO, "dropship", "_cj_varianten_zuordnung.tsv")
+_UUID = r"[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}"
 RECHECK_S = int(os.environ.get("RECHECK_TAGE", "7")) * 86400
 # 13.10.2026 (Hetzner-Plan Schritt 2, GEMESSEN): 16'564 «ok»-Prüfungen vom 07.10. wurden gleichzeitig fällig (bis 2'307/h,
 # ~146'000 Punkte = mehr als ein Tagestopf) → fester Versatz je Produkt 0–7 Tage (crc32, auf Server und Cloud gleich; Pythons
@@ -65,13 +91,73 @@ def produkt_sku(variant_sku):
 
 
 def bestand(variante):
+    """Summe totalInventory über alle Lager → int, oder None = unbekannt. 14.10.2026: leere Liste und Einträge ohne
+    totalInventory zählten als 0 (`or 0`) — ein umbenanntes Feld hätte jedes Produkt gesperrt. Unbekannt ist nie 0."""
     inv = variante.get("inventories")
-    if not isinstance(inv, list):
+    if not isinstance(inv, list) or not inv:
         return None
     try:
-        return sum(int(x.get("totalInventory") or 0) for x in inv)
+        werte = [x.get("totalInventory") for x in inv]
+        if any(w is None or isinstance(w, bool) for w in werte):
+            return None
+        return sum(int(w) for w in werte)
     except Exception:
         return None
+
+
+def pid_aus_sku(sku):
+    """«CJ-2606160740461633600» / «CJ-5AF5A72D-…» → pid; jede andere Form → None (gleiche Erkennung wie cj_order_engine)."""
+    m = re.match(r"^CJ-([0-9]{10,}|" + _UUID + r")$", (sku or "").strip(), re.I)
+    return m.group(1) if m else None
+
+
+def recheck_pid_s(pid):
+    """pid-Ware: 21 T + stabiler Versatz 0–14 T (29'000 Produkte ≈ 1'000/Tag; die Tages-Deckel bremsen zusätzlich)."""
+    import zlib
+    return RECHECK_PID_S + (zlib.crc32(str(pid).encode()) % max(1, STREU_PID_TAGE)) * 86400
+
+
+def zuordnung_lesen(pfad=None):
+    """dropship/_cj_varianten_zuordnung.tsv → {shopify_sku (gross): cj_vid} — dieselbe Datei, die cj_order_engine liest."""
+    z = {}
+    try:
+        for l in open(pfad or ZUORDNUNG, encoding="utf-8"):
+            if l.startswith("#") or not l.strip():
+                continue
+            t = l.rstrip("\n").split("\t")
+            if len(t) >= 2 and t[0].strip() and t[1].strip():
+                z[t[0].strip().upper()] = t[1].strip()
+    except Exception:
+        pass
+    return z
+
+
+def antwort_passt(pid_cj, data):
+    """Gehört die CJ-Antwort zur gefragten pid? Fehlt data.pid → passt nicht (nie ein fremdes Produkt beurteilen)."""
+    return isinstance(data, dict) and str(data.get("pid") or "").upper() == str(pid_cj or "").upper() != ""
+
+
+def entscheiden_pid(shop_varianten, cj_varianten, eigene_deny, zuordnung):
+    """→ (sperren_ids, freigeben_ids, unklar, art). Nur die Variante(n), die cj_order_engine.vid_fuer() bestellen könnte:
+    Zuordnung (genau 1 vid-Treffer) → eindeutig · CJ 1 Variante → eindeutig · sonst offen (alle). Gesperrt wird, wenn
+    ALLE Kandidaten 0 haben; eine EIGENE Sperre wird frei, sobald ein Kandidat > 0 hat. Bestand unbekannt → unklar."""
+    cj = [v for v in (cj_varianten or []) if isinstance(v, dict)]
+    if len(shop_varianten) != 1 or not cj:
+        return [], [], len(shop_varianten), "mehrere-shopvarianten" if len(shop_varianten) != 1 else "keine-cj-variante"
+    v = shop_varianten[0]
+    vid = zuordnung.get(str(v.get("sku") or "").upper())
+    treffer = [k for k in cj if vid and str(k.get("vid") or "").upper() == vid.upper()]
+    if vid and len(treffer) != 1:
+        return [], [], 1, "zuordnung-passt-nicht"
+    kand, art = (treffer, "zuordnung") if vid else ((cj, "einzeln") if len(cj) == 1 else (cj, "offen"))
+    b = [bestand(k) for k in kand]
+    if any(x is None for x in b):
+        return [], [], 1, art
+    if all(x == 0 for x in b):
+        return ([v["id"]] if v.get("kaufbar") else []), [], 0, art
+    if not v.get("kaufbar") and v["id"] in eigene_deny:
+        return [], [v["id"]], 0, art
+    return [], [], 0, art
 
 
 def cj_entfernt(grund):
@@ -132,20 +218,33 @@ def produkte():
     return P
 
 
-def ledger():
-    zuletzt, eigene = {}, set()
-    if os.path.exists(LEDGER):
-        for l in open(LEDGER, encoding="utf-8"):
+def ledger(pfad=None, heute_ab=None):
+    """→ (zuletzt, eigene, status, pid_heute). zuletzt/status = letzte Prüfzeile je Produkt; «geplant»-Zeilen (vor einer
+    Sperre geschrieben) zählen nur für eigene, nicht als Prüfung; pid_heute = Zeilen mit «q:pid» seit 00:00 UTC."""
+    if heute_ab is None:
+        heute_ab = time.time() // 86400 * 86400
+    zuletzt, eigene, status, pid_heute = {}, set(), {}, 0
+    pfad = pfad or LEDGER
+    if os.path.exists(pfad):
+        for l in open(pfad, encoding="utf-8"):
             t = l.rstrip("\n").split("\t")
             if len(t) < 3:
                 continue
-            zuletzt[t[0]] = float(t[1])
+            try:
+                ts = float(t[1])
+            except ValueError:
+                continue
+            if t[2] != "geplant":
+                zuletzt[t[0]] = ts
+                status[t[0]] = t[2]
+            if "q:pid" in t[3:] and ts >= heute_ab and t[2] != "geplant":
+                pid_heute += 1
             for teil in t[3:]:
                 if teil.startswith("deny:"):
                     eigene |= set(filter(None, teil[5:].split(",")))
                 elif teil.startswith("zurueck:"):
                     eigene -= set(filter(None, teil[8:].split(",")))
-    return zuletzt, eigene
+    return zuletzt, eigene, status, pid_heute
 
 
 # ── Zusatzkonten (Betreiber 06.10. «beide reaktiviert»): GEMESSEN get_account_settings je Konto: /product/query 1000/Tag,
@@ -187,9 +286,12 @@ def _konten():
     return _KONTEN
 
 
-def zusatz_abfrage(product_sku):
-    """→ (data|None, grund). None + 'kein-konto' = alle Zusatzkonten erschöpft → Hauptkonto nehmen."""
+def zusatz_abfrage(frage):
+    """frage = «productSku=…» oder «pid=…» (nackte productSku geht auch) → (data|None, grund).
+    None + 'kein-konto' = alle Zusatzkonten erschöpft → Hauptkonto nehmen (SKU-Ware) bzw. pid-Teil für heute beenden."""
     import subprocess
+    if not frage.startswith(("productSku=", "pid=")):
+        frage = "productSku=" + frage
     while True:
         with _KLOCK:
             frei = [k for k in _konten() if k["aktiv"]]
@@ -201,7 +303,7 @@ def zusatz_abfrage(product_sku):
         if warte > 0:
             time.sleep(warte)
         out = subprocess.run(["curl", "-s", "-m", "40", "-H", "CJ-Access-Token: " + k["t"],
-            f"https://developers.cjdropshipping.com/api2.0/v1/product/query?productSku={product_sku}&features=enable_inventory"],
+            f"https://developers.cjdropshipping.com/api2.0/v1/product/query?{frage}&features=enable_inventory"],
             capture_output=True, text=True).stdout
         try:
             d = json.loads(out)
@@ -217,20 +319,80 @@ def zusatz_abfrage(product_sku):
         return (d.get("data") if isinstance(d.get("data"), dict) else {}), f"konto{k['n']} code {d.get('code')} {msg[:30]}"
 
 
+def entwuerfe_mit_eigener_sperre(gql, P, pfad=None):
+    """14.10.2026: Produkte mit EIGENER Sperre (Ledger), die lagerstand_hygiene inzwischen zum DRAFT «ausverkauft-lieferant»
+    gemacht hat — der Export kennt nur ACTIVE, also prüfte sie niemand mehr. → {gid: {"v": [...], "entwurf": True, …}}."""
+    sperr_prod = {}
+    try:
+        for l in open(pfad or LEDGER, encoding="utf-8"):
+            t = l.rstrip("\n").split("\t")
+            for teil in t[3:]:
+                if teil.startswith("deny:") and teil[5:]:
+                    sperr_prod[t[0]] = True
+    except Exception:
+        return {}
+    ids = [i for i in sperr_prod if i not in P and i.startswith("gid://shopify/Product/")]
+    aus = {}
+    for i in range(0, len(ids), 50):
+        d = gql('query($i:[ID!]!){nodes(ids:$i){... on Product{id handle title status tags '
+                'variants(first:100){nodes{id sku availableForSale}}}}}', {"i": ids[i:i + 50]})
+        d = d.get("data", d) if isinstance(d, dict) else {}
+        for n in (d.get("nodes") or []):
+            if n and n.get("status") == "DRAFT" and "ausverkauft-lieferant" in (n.get("tags") or []):
+                aus[n["id"]] = {"id": n["id"], "handle": n.get("handle"), "title": n.get("title"), "entwurf": True,
+                                "v": [{"id": v["id"], "sku": v.get("sku"), "availableForSale": v.get("availableForSale")}
+                                      for v in n["variants"]["nodes"]]}
+    return aus
+
+
+def pid_des_produkts(p):
+    """Produkt mit pid-SKU → pid, wenn KEINE Variante eine productSku hergibt und alle Varianten dieselbe pid tragen."""
+    skus = [v.get("sku") for v in p.get("v") or []]
+    if not skus or any(produkt_sku(s) for s in skus):
+        return None
+    pids = {(pid_aus_sku(s) or "").upper() for s in skus}
+    return next(iter(pids)) if len(pids) == 1 and "" not in pids else None
+
+
 def main():
     import cj_varianten_wache as w          # gemeinsamer CJ-Takt, Token, Drossel (gleiches cj() wie die Varianten-Wache)
     export_holen()
-    P = produkte(); zuletzt, eigene = ledger(); jetzt = time.time()
+    P = produkte(); zuletzt, eigene, status, pid_heute = ledger(); jetzt = time.time()
+    try:
+        P.update(entwuerfe_mit_eigener_sperre(w.gql, P))
+    except Exception as e:
+        print(f"  Entwürfe mit eigener Sperre nicht lesbar ({str(e)[:80]}) — nur ACTIVE", flush=True)
+    zuordnung = zuordnung_lesen()
+    PIDS = {pid: x for pid, p in P.items() if (x := pid_des_produkts(p))}
+    eigene_prod = {pid for pid, p in P.items() if any(v["id"] in eigene for v in p.get("v") or [])}
     prio = set()   # besuchte Landeseiten zuerst (Liste der Lieferbarkeits-Wache), dann nie geprüft, dann älteste Prüfung
     try:
         prio = {l.split("\t")[0] for l in open(os.path.join(REPO, "dropship", "_besuchte_seiten_geprueft.tsv"), encoding="utf-8")}
     except Exception:
         pass
-    arbeit = sorted((pid for pid, p in P.items()
-                     if p.get("v") and jetzt - zuletzt.get(pid, 0) > recheck_s(pid, P[pid].get("handle") in prio)),
-                    key=lambda pid: (P[pid].get("handle") not in prio, zuletzt.get(pid, 0)))[:CAP]
-    print(f"CJ-Ware aktiv {len(P)} · fällig {len(arbeit)} (CAP {CAP}) · eigene DENY {len(eigene)} · {'DRY' if DRY else 'SCHARF'}", flush=True)
-    stat = collections.Counter(); bsp = []; geprueft_format = False
+
+    def zeit(pid):          # «keine-cj-sku» von früher ist für pid-Ware keine Prüfung
+        return 0 if (pid in PIDS and status.get(pid) == "keine-cj-sku") else zuletzt.get(pid, 0)
+
+    def abstand(pid):
+        if status.get(pid) in ("fehler", "netz"):
+            return 86400                                   # gescheitert → morgen wieder, nicht in 1–6 Wochen
+        if P[pid].get("entwurf") or P[pid].get("handle") in prio:
+            return BESUCHT_S
+        if pid in PIDS and pid not in eigene_prod:
+            return recheck_pid_s(pid)
+        return recheck_s(pid)
+
+    faellig = [pid for pid, p in P.items() if p.get("v") and jetzt - zeit(pid) > abstand(pid)]
+    a = sorted((x for x in faellig if x not in PIDS), key=lambda x: (P[x].get("handle") not in prio, zeit(x)))[:CAP]
+    pid_rest = max(0, PID_TAG - pid_heute)
+    b = sorted((x for x in faellig if x in PIDS and (PID_AN or x in eigene_prod)),
+               key=lambda x: (x not in eigene_prod, P[x].get("handle") not in prio, zeit(x)))[:min(CAP_PID, pid_rest)]
+    arbeit = a + b
+    print(f"CJ-Ware aktiv {sum(1 for p in P.values() if not p.get('entwurf'))} (+{sum(1 for p in P.values() if p.get('entwurf'))} "
+          f"Entwürfe mit eigener Sperre) · fällig {len(faellig)} · Lauf {len(a)} SKU (CAP {CAP}) + {len(b)} pid (CAP_PID {CAP_PID}, "
+          f"heute {pid_heute}/{PID_TAG}) · pid-Ware {len(PIDS)} · eigene DENY {len(eigene)} · {'DRY' if DRY else 'SCHARF'}", flush=True)
+    stat = collections.Counter(); bsp = []; geprueft_format = False; pid_format = None
     led = open(LEDGER if not DRY else os.devnull, "a", encoding="utf-8")   # DRY schreibt keinen Ledger (sonst gilt «geprüft»)
     # 06.10. 21:25: CJ-MCP nur auf Wunsch (USE_MCP=1) — gemessen: gleicher Punktetopf + gleiche Konto-QPS 1/s wie REST,
     # aber OHNE den gemeinsamen cj_takt → würde mit den Grind-Runnern um die QPS kollidieren («Too Many Requests»).
@@ -244,6 +406,11 @@ def main():
 
     def holen(pid):
         shop_v = [{"id": v["id"], "sku": v.get("sku"), "kaufbar": v.get("availableForSale")} for v in P[pid]["v"]]
+        if pid in PIDS:                              # pid-Ware: NUR Zusatzkonten, nie der Grind-Topf des Hauptkontos
+            data, grund = zusatz_abfrage("pid=" + PIDS[pid])
+            if grund == "kein-konto":
+                return pid, shop_v, None, "PID-WARTET"
+            return pid, shop_v, data, grund
         ps = next((produkt_sku(v["sku"]) for v in shop_v if produkt_sku(v["sku"])), None)
         if not ps:
             return pid, shop_v, None, "keine-cj-sku"
@@ -268,69 +435,101 @@ def main():
             return pid, shop_v, None, "PUNKTE-LEER"
         return pid, shop_v, (d.get("data") if isinstance(d.get("data"), dict) else {}), f"code {d.get('code')} {msg[:40]}"
 
+    def sperren_mit_plan(pid, deny, zurueck, q):
+        """Erst die Zeile «geplant» (IDs), dann schreiben + rücklesen. Stirbt der Lauf dazwischen, kennt der nächste die Sperre."""
+        import ausverkauft
+        if deny:
+            led.write(f"{pid}\t{jetzt:.0f}\tgeplant\tdeny:{','.join(deny)}{q}\n"); led.flush()
+        ist = ausverkauft.sperren(w.gql, pid, deny)
+        ist2 = ausverkauft.freigeben(w.gql, pid, zurueck)
+        if any(ist.get(i) is not False for i in deny) or any(ist2.get(i) is not True for i in zurueck):
+            raise RuntimeError(f"Rücklesen: gesperrt {ist} / frei {ist2}")
+
+    MAX_PID_SPERREN = int(os.environ.get("MAX_PID_SPERREN", "60"))   # Bremse je Lauf (Ausgangswert SKU-Ware 0,4 %/Tag)
     from concurrent.futures import ThreadPoolExecutor
     pool = ThreadPoolExecutor(2)   # 2 Zusatzkonten je 1/s parallel; das Hauptkonto bleibt über cj_takt gedrosselt
     for pid, shop_v, data, grund in pool.map(holen, arbeit):
         p = P[pid]
+        ist_pid = pid in PIDS
+        q = "\tq:pid" if ist_pid else ""
         if grund == "PUNKTE-LEER":
             stat["punkte-leer"] += 1; print("  CJ-Punkte leer — sauberer Abbruch", flush=True); break
+        if grund == "PID-WARTET":
+            stat["pid-wartet-zusatzkonten-leer"] += 1; continue             # keine Zeile → nächster Lauf/Tag
         if data is None:
-            stat["keine-cj-sku" if grund == "keine-cj-sku" else "unklar"] += 1
-            led.write(f"{pid}\t{jetzt:.0f}\t{grund or 'unklar'}\n"); continue
+            g = "keine-cj-sku" if grund == "keine-cj-sku" else ("netz" if grund == "netz" else "unklar")
+            stat[g] += 1
+            led.write(f"{pid}\t{jetzt:.0f}\t{g}\t{grund or ''}{q}\n"); continue
         vs = data.get("variants") if isinstance(data, dict) else None
         if not vs and cj_entfernt(grund):
-            deny = [v["id"] for v in shop_v if v.get("kaufbar")]
+            deny = [] if p.get("entwurf") else [v["id"] for v in shop_v if v.get("kaufbar")]
             stat["produkte-cj-entfernt"] += 1
             if deny and not DRY:
-                import ausverkauft
                 try:
-                    ist = ausverkauft.sperren(w.gql, pid, deny)
-                    if any(ist.get(i) is not False for i in deny):
-                        raise RuntimeError(f"Rücklesen: {ist}")
+                    sperren_mit_plan(pid, deny, [], q)
                 except Exception as e:
                     stat["schreibfehler"] += 1
-                    led.write(f"{pid}\t{jetzt:.0f}\tfehler\t{str(e)[:80]}\n"); led.flush(); continue
+                    led.write(f"{pid}\t{jetzt:.0f}\tfehler\t{str(e)[:80]}{q}\n"); led.flush(); continue
             stat["varianten-ausverkauft"] += len(deny)
             if len(bsp) < 12:
                 bsp.append(f"{p.get('title', '')[:50]} — bei CJ aus dem Sortiment: {len(deny)} gesperrt")
-            led.write(f"{pid}\t{jetzt:.0f}\t{'dry' if DRY else 'ok'}\tdeny:{','.join(deny) if not DRY else ''}\tzurueck:\tcj-entfernt\n"); led.flush()
+            led.write(f"{pid}\t{jetzt:.0f}\t{'dry' if DRY else 'ok'}\tdeny:{','.join(deny) if not DRY else ''}\tzurueck:\tcj-entfernt{q}\n"); led.flush()
             continue
         if not vs:
-            stat["unklar"] += 1; led.write(f"{pid}\t{jetzt:.0f}\tunklar\t{grund or 'keine Varianten'}\n"); continue
-        if not geprueft_format:
+            stat["unklar"] += 1; led.write(f"{pid}\t{jetzt:.0f}\tunklar\t{grund or 'keine Varianten'}{q}\n"); continue
+        if ist_pid:
+            if not antwort_passt(PIDS[pid], data):
+                stat["pid-antwort-fremd"] += 1
+                led.write(f"{pid}\t{jetzt:.0f}\tunklar\tpid-abweichung {str(data.get('pid'))[:40]}{q}\n"); continue
+            if pid_format is None:                     # Kanarie pid: Format einmal je Lauf
+                pid_format = any(bestand(v) is not None for v in vs) or all(
+                    isinstance(v.get("inventories"), list) and all("totalInventory" in x for x in v["inventories"]) for v in vs)
+                if not pid_format:
+                    print(f"  ⛔ KANARIE pid: inventories/totalInventory fehlt ({p.get('title', '')[:40]}) — kein pid-Urteil in diesem Lauf", flush=True)
+            if not pid_format:
+                stat["pid-format-fehlt"] += 1; continue                      # keine Zeile → nächster Lauf
+        elif not geprueft_format:
             if not any(isinstance(v.get("inventories"), list) for v in vs):
                 print(f"  ⛔ KANARIENVOGEL: variants[].inventories fehlt ({p.get('title', '')[:40]}) — CJ-Format geändert, Abbruch ohne Schreiben", flush=True)
                 stat["format-fehlt"] += 1; break
             geprueft_format = True
-        deny, zurueck, unklar = entscheiden(shop_v, vs, eigene)
+        if ist_pid:
+            deny, zurueck, unklar, art = entscheiden_pid(shop_v, vs, eigene, zuordnung)
+            stat["pid-" + art] += 1
+            if deny and stat["pid-gesperrt"] >= MAX_PID_SPERREN:
+                stat["pid-sperr-bremse"] += 1; continue                      # keine Zeile → nächster Lauf
+            stat["pid-gesperrt"] += bool(deny)
+        else:
+            deny, zurueck, unklar = entscheiden(shop_v, vs, eigene)
+        if p.get("entwurf"):
+            deny = []                                  # Entwürfe nie sperren, nur eigene Sperren freigeben
         stat["geprüft"] += 1; stat["varianten-unklar"] += unklar
         if deny or zurueck:
             if len(bsp) < 12:
-                bsp.append(f"{p.get('title', '')[:50]} — {len(deny)} ausverkauft, {len(zurueck)} wieder da (von {len(shop_v)})")
+                bsp.append(f"{p.get('title', '')[:50]} — {len(deny)} ausverkauft, {len(zurueck)} wieder da (von {len(shop_v)})"
+                           + (" [pid]" if ist_pid else "") + (" [Entwurf]" if p.get("entwurf") else ""))
             if not DRY:
-                import ausverkauft
                 try:
-                    ist = ausverkauft.sperren(w.gql, pid, deny)
-                    ist2 = ausverkauft.freigeben(w.gql, pid, zurueck)
-                    if any(ist.get(i) is not False for i in deny) or any(ist2.get(i) is not True for i in zurueck):
-                        raise RuntimeError(f"Rücklesen: gesperrt {ist} / frei {ist2}")
+                    sperren_mit_plan(pid, deny, zurueck, q)
                 except Exception as e:
                     stat["schreibfehler"] += 1
-                    led.write(f"{pid}\t{jetzt:.0f}\tfehler\t{str(e)[:80]}\n"); led.flush(); continue
+                    led.write(f"{pid}\t{jetzt:.0f}\tfehler\t{str(e)[:80]}{q}\n"); led.flush(); continue
             stat["varianten-ausverkauft"] += len(deny); stat["varianten-wieder-da"] += len(zurueck)
             stat["produkte-ganz-ausverkauft"] += int(len(deny) == len(shop_v))
-        led.write(f"{pid}\t{jetzt:.0f}\t{'dry' if DRY else 'ok'}\tdeny:{','.join(deny) if not DRY else ''}\tzurueck:{','.join(zurueck) if not DRY else ''}\n")
+            stat["entwürfe-freigegeben"] += int(bool(p.get("entwurf") and zurueck))
+        led.write(f"{pid}\t{jetzt:.0f}\t{'dry' if DRY else 'ok'}\tdeny:{','.join(deny) if not DRY else ''}\tzurueck:{','.join(zurueck) if not DRY else ''}{q}\n")
         led.flush()
         if stat["geprüft"] % 500 == 0:
             print(f"  … {stat['geprüft']} geprüft · ausverkauft {stat['varianten-ausverkauft']} · wieder da {stat['varianten-wieder-da']}", flush=True)
     pool.shutdown(wait=False, cancel_futures=True)
     led.close()
-    with open(BERICHT, "w", encoding="utf-8") as f:
+    with open(BERICHT if not DRY else "/tmp/cj_lager_dry.md", "w", encoding="utf-8") as f:
         f.write(f"# CJ-Lagerabgleich ({datetime.datetime.utcnow():%Y-%m-%d %H:%M} UTC, {'DRY' if DRY else 'SCHARF'})\n\n"
                 "Werkzeug `automation/cj_lager_abgleich.py` — Regel im Kopf. Bestand 0 → Variante «ausverkauft» (DENY), "
-                "Bestand zurück → wieder kaufbar. Nichts gelöscht, nichts gedraftet.\n\n"
-                f"CJ-Ware aktiv: {len(P)} · in diesem Lauf fällig: {len(arbeit)}\n\n| Zustand | Anzahl |\n|---|---:|\n" +
-                "".join(f"| {k} | {v} |\n" for k, v in sorted(stat.items())) + "\n## Beispiele\n\n" + "".join(f"- {b}\n" for b in bsp))
+                "Bestand zurück → wieder kaufbar. Nichts gelöscht, nichts gedraftet. pid-Ware (CJ-<pid>) seit 14.10. über die "
+                "Zusatzkonten, Entwürfe mit eigener Sperre werden mitgeprüft (nur Freigabe).\n\n"
+                f"CJ-Ware aktiv: {len(P)} · pid-Ware: {len(PIDS)} · in diesem Lauf: {len(a)} SKU + {len(b)} pid\n\n| Zustand | Anzahl |\n|---|---:|\n" +
+                "".join(f"| {k} | {v} |\n" for k, v in sorted(stat.items())) + "\n## Beispiele\n\n" + "".join(f"- {b_}\n" for b_ in bsp))
     print(f"CJ-LAGER: {dict(stat)}", flush=True)
     return 0
 
@@ -364,6 +563,56 @@ def selbsttest():
         (cj_entfernt("code 1602002 Product has been removed"), "Hauptkonto-Wortlaut"),
         (not cj_entfernt("konto2 code 200 Success"), "Kanarie: Erfolg ist nicht entfernt"),
         (not cj_entfernt("netz"), "Kanarie: Netzfehler bleibt unklar"),
+    ]
+    # ── 14.10.2026: pid-Ware, unbekannter Bestand, Ledger «geplant»/«q:pid» ──
+    inv = lambda n: [{"countryCode": "CN", "totalInventory": n}]
+    sv1 = [{"id": "p", "sku": "CJ-2606160740461633600", "kaufbar": True}]
+    sv1g = [{"id": "p", "sku": "CJ-2606160740461633600", "kaufbar": False}]
+    ein0 = [{"vid": "V1", "variantSku": "CJYD1", "inventories": inv(0)}]
+    ein5 = [{"vid": "V1", "variantSku": "CJYD1", "inventories": inv(5)}]
+    mehr00 = [{"vid": "V1", "inventories": inv(0)}, {"vid": "V2", "inventories": inv(0)}]
+    mehr05 = [{"vid": "V1", "inventories": inv(0)}, {"vid": "V2", "inventories": inv(5)}]
+    zu = {"CJ-2606160740461633600": "V2"}
+    import tempfile
+    tl = tempfile.NamedTemporaryFile("w", delete=False, suffix=".tsv")
+    heute = time.time() // 86400 * 86400
+    tl.write(f"gid://x/1\t{heute + 10}\tgeplant\tdeny:a1,a2\tq:pid\n"
+             f"gid://x/1\t{heute + 11}\tfehler\tTHROTTLED\tq:pid\n"
+             f"gid://x/2\t{heute + 12}\tok\tdeny:b1\tzurueck:\tq:pid\n"
+             f"gid://x/2\t{heute + 13}\tok\tdeny:\tzurueck:b1\tq:pid\n"
+             f"gid://x/3\t{heute - 99999}\tkeine-cj-sku\t\tq:pid\n"
+             f"gid://x/4\t{heute + 14}\tok\tdeny:\tzurueck:\n")
+    tl.close()
+    zl, eg, st, ph = ledger(tl.name, heute)
+    os.unlink(tl.name)
+    t += [
+        (pid_aus_sku("CJ-2606160740461633600") == "2606160740461633600", "pid Zahl"),
+        (pid_aus_sku("CJ-5AF5A72D-0897-4AF6-AFF5-D6A33F2D3A01") == "5AF5A72D-0897-4AF6-AFF5-D6A33F2D3A01", "pid UUID"),
+        (pid_aus_sku("CJ-CJDS233779601AZ") is None and pid_aus_sku("CJ-SHOWERCADDY-5SET") is None, "Varianten-SKU/Slug ≠ pid"),
+        (pid_des_produkts({"v": [{"sku": "CJ-2606160740461633600"}]}) == "2606160740461633600", "Produkt-pid"),
+        (pid_des_produkts({"v": [{"sku": "CJ-CJDS233779601AZ"}]}) is None, "SKU-Ware bleibt SKU-Weg"),
+        (bestand({"inventories": []}) is None, "leere inventories = unbekannt (nie 0)"),
+        (bestand({"inventories": [{"countryCode": "CN"}]}) is None, "ohne totalInventory = unbekannt"),
+        (bestand({"inventories": [{"totalInventory": 0}, {"totalInventory": 3}]}) == 3, "Summe über Lager"),
+        (entscheiden_pid(sv1, ein0, set(), {})[:2] == (["p"], []), "eine CJ-Variante 0 → sperren"),
+        (entscheiden_pid(sv1, ein5, set(), {})[:2] == ([], []), "eine CJ-Variante > 0 → bleibt"),
+        (entscheiden_pid(sv1g, ein5, {"p"}, {})[:2] == ([], ["p"]), "eigene Sperre + Bestand → frei"),
+        (entscheiden_pid(sv1g, ein5, set(), {})[:2] == ([], []), "fremde Sperre bleibt"),
+        (entscheiden_pid(sv1, mehr00, set(), {})[0] == ["p"], "offen: alle 0 → sperren"),
+        (entscheiden_pid(sv1, mehr05, set(), {})[:2] == ([], []), "offen: teilweise → kaufbar bleiben"),
+        (entscheiden_pid(sv1g, mehr05, {"p"}, {})[1] == ["p"], "offen: eigene Sperre, eine > 0 → frei"),
+        (entscheiden_pid(sv1, mehr05, set(), zu)[:2] == ([], []), "Zuordnung V2 (5) → bleibt"),
+        (entscheiden_pid(sv1, mehr05, set(), {"CJ-2606160740461633600": "V1"})[0] == ["p"], "Zuordnung V1 (0) → sperren"),
+        (entscheiden_pid(sv1, mehr05, set(), {"CJ-2606160740461633600": "V9"})[2:] == (1, "zuordnung-passt-nicht"), "Zuordnung ohne Treffer → unklar"),
+        (entscheiden_pid(sv1 * 2, ein0, set(), {})[2:] == (2, "mehrere-shopvarianten"), "mehrere Shop-Varianten → unklar"),
+        (entscheiden_pid(sv1, [{"vid": "V1", "inventories": []}], set(), {})[:3] == ([], [], 1), "unbekannter Bestand → nichts"),
+        (antwort_passt("2606160740461633600", {"pid": "2606160740461633600"}) and not antwort_passt("1", {"pid": "2"})
+         and not antwort_passt("1", {}), "Antwort gehört zur pid"),
+        ({"a1", "a2"} <= eg, "«geplant» zählt als eigene Sperre"),
+        (st.get("gid://x/1") == "fehler" and zl.get("gid://x/1") == heute + 11, "«geplant» ist keine Prüfung, «fehler» schon"),
+        ("b1" not in eg, "zurueck hebt eigene Sperre auf"),
+        (ph == 3, "pid-Abfragen heute (ohne geplant, ohne gestern)"),
+        (st.get("gid://x/3") == "keine-cj-sku", "Status keine-cj-sku gelesen"),
     ]
     ok = sum(b for b, _ in t)
     for b, n in t:
