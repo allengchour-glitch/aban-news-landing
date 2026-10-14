@@ -496,5 +496,16 @@ Im Shop und im Theme ist nichts geändert und nichts committet.
 - **A3 umgesetzt (10:02 UTC):** Kartenlinks nur auf `template.name == 'index'` → `product.url`.
   Betroffen sind `snippets/product-card.liquid` (1×), `snippets/card-gallery.liquid` (2×) und `blocks/product-title.liquid` (1×). Backups `theme_backup/*.vor-a3-2026-10-14`.
   Startseite **0× ?variant=** (vorher 360). Kollektion Halloween 72×, Produktseite Provence 109× unverändert, 0 «Liquid error».
-- **Offen:** A1 Patch-Gerüst (täglicher Wiederaufbau nach Theme-Updates) und A4, A6–A9 (Zoom-out-Titel, ?variant=, Karussell-Galerie/srcset, Kategorie-Liste, Häkchen-SVG, Kleinkram).
+- **A4 umgesetzt (10:03 UTC):** `snippets/card-gallery.liquid`, nur bei `section.settings.layout_type == 'carousel'`:
+  - höchstens 2 Folien (Erstbild + Hover-Bild), keine Kartenpfeile;
+  - srcset `240, 352, 480, 600, 832, 1200` (vorher bis 3840);
+  - die sizes-Anker von mobil_tempo_patch bleiben unberührt.
+
+  Backup `theme_backup/card-gallery.liquid.vor-a4-2026-10-14`. Startseite **2.92 → 2.46 MB**, img 420 → 316, Pfeile 122 → 17 (Reihenpfeile), 0 «Liquid error».
+  Screenshot 390 px `dropship/startseite-a4-390px-2026-10-14.png`: Karten unverändert, Halloween-Reihe zeigt Kostüme.
+- **Offen:**
+  - A1 Patch-Gerüst (täglicher Wiederaufbau nach Theme-Updates; heute alle Patches mit Marke `lx-schlank-2026-10-14`, Rückweg = Backups)
+  - A6 Kategorie-Liste (am Desktop sichtbar → Betreiber kurz informieren)
+  - A7 Häkchen-SVG (Kaufknopf, mittleres Risiko, echter Warenkorbtest nötig)
+  - A8 Kleinkram, A9 optional (Zoom-out-Titel, ?variant=, Karussell-Galerie/srcset, Kategorie-Liste, Häkchen-SVG, Kleinkram).
   Die Prüfer-Messung mit Ankern und Zeilennummern liegt in `scratchpad`; die wesentlichen Anker stehen oben im Plan.

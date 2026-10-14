@@ -2093,3 +2093,7 @@
 16617702687111	Farbe:3:3	2026-10-14	akkuschrauber-set-mit-mikro-usb-ladefunktion-3555e2
 16617700786567	Farbe:4+Leistung:2:8	2026-10-14	dopamin-farb-glas-tischlampe-628700
 16617700753799	Modell:2+Grösse:2:4	2026-10-14	mobelgriff-mit-transparentem-kristall-cc3663
+16617700688263	Grösse:2:2	2026-10-14	rattan-laterne-fur-den-aussenbereich-617900
+16617700458887	Farbe:3:3	2026-10-14	nachtlicht-mit-planeten-design-636200
+16617700426119	Grösse:2:2	2026-10-14	daumensage-zum-ernten-03f22d
+16617700295047	stecker-eu	2026-10-14	nachttischlampe-mit-integrierter-steckdose-625700
