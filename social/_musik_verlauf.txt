@@ -485,3 +485,4 @@
 2026-10-14T01:14:13.620Z	luxe-epic-trailer.wav	15.5	fitness	cjreel-CJYD192716001AZ	stimme:nein	anteil
 2026-10-14T02:10:38.958Z	luxe-epic-anime.wav	4.75	mode	cjreel-CJNS290181001AZ	stimme:nein	anteil
 2026-10-14T02:11:58.400Z	luxe-epic-hero.wav	46	haustier	cjreel-CJWJWJYZ01315-Set-25cm	stimme:ja	azure:de-CH-JanNeural
+2026-10-14T02:14:50.480Z	luxe-epic-winter.wav	38.75	fitness	cjreel-CJTZ200810301AZ	stimme:ja	azure:de-CH-JanNeural
