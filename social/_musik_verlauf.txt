@@ -493,3 +493,4 @@
 2026-10-14T04:29:30.897Z	luxe-epic-hero.wav	46	haustier	cjreel-CJGY174310101AZ	stimme:ja	azure:de-CH-JanNeural
 2026-10-14T04:31:55.427Z	luxe-epic-hybrid.wav	22.5	allgemein	cjreel-CJWZ133696301AZ	stimme:ja	azure:de-CH-JanNeural
 2026-10-14T04:35:13.488Z	luxe-epic-anime.wav	10.5	kueche	cjreel-CJYD179601501AZ	stimme:ja	azure:de-CH-JanNeural
+2026-10-14T04:39:14.000Z	luxe-adventure-uplift.wav	41.0	mode	bildreel-kurze-daunenjacke-mit-kapuze-634500	stimme:ja	azure:de-CH-JanNeural	quelle:bild
