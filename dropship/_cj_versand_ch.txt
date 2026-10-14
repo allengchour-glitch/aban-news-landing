@@ -1582,3 +1582,8 @@ gid://shopify/Product/16616723448199	nicht-versendbar	Multifunktionaler Aluminiu
 gid://shopify/Product/16616694776199	ok	Regenkette aus Kupfer-Aluminium-Legierung
 gid://shopify/Product/16616719647111	ok	Tarn-Rucksack für Herren
 gid://shopify/Product/16617679487367	ok	Edelstahl-Hantel mit Beschichtung
+gid://shopify/Product/16617715171719	ok	Elektrischer Teig- und Rahm-Mixer
+gid://shopify/Product/16617716679047	ok	8-Kanal-Mischpult mit USB und Bluetooth
+gid://shopify/Product/16617695445383	ok	Muskelentspannungsgerät für Beine, Nacken, Rücken
+gid://shopify/Product/16617717662087	ok	Handtuchhalter zur Wandmontage
+gid://shopify/Product/16617704685959	ok	Solar Gartenleuchte zum Aufhängen
