@@ -9112,3 +9112,12 @@ schreibtisch-organizer-613700	2607100107151614200	16	10.15	ok	landeseite
 kottensack-fur-wohnzimmer-623000	2607100822581623800	16	23.50	ok	landeseite
 grauer-einfahrtsflor-mit-tpe-ruckseite-726786	2075499406866100226	0	-	KEINE CH-Option → DRAFT	landeseite
 glas-lebensbox-mit-dichtverschluss-608300	2607090745371608900	16	11.00	ok	landeseite
+stahlteestropfenfilter-160961	2075112807125643265	0	-	KEINE CH-Option → DRAFT	landeseite
+schutzcover-fuer-fiat-schlussel-638900	2607101107241639500	16	4.71	ok	landeseite
+ubersetzungs-ohrhorer-428481	2073310635141783553	0	-	KEINE CH-Option → DRAFT	landeseite
+tiger-augen-ohrstecker-600300	2607100351541600800	16	4.52	ok	landeseite
+katzenspielzeug-622200	2607101022551623100	3	33.78	ok	landeseite
+hundebademantel-412801	2075500021929910273	16	5.81	ok	landeseite
+leopard-print-kleid-617900	2607091039161618500	16	10.42	ok	landeseite
+hundeschutzmatte-620900	2607100611451621600	16	24.67	ok	landeseite
+katzen-geburtstag-163522	2074425366145826817	16	4.55	ok	landeseite
