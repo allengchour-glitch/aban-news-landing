@@ -1,6 +1,6 @@
 # Rankende Seiten, die es nicht mehr zu kaufen gibt
 
-> **Stand: 13.10.2026 04:32 UTC.** An einem Katalog, an dem taeglich Waechter arbeiten, altert
+> **Stand: 14.10.2026 04:34 UTC.** An einem Katalog, an dem taeglich Waechter arbeiten, altert
 > diese Liste in Stunden. Vor jeder Reparatur den Status am OBJEKT nachmessen.
 
 Automatisch erzeugt von `automation/tote_rankings.py`. Google schickt Besucher
@@ -25,14 +25,6 @@ Automatischer Hühner-Futterautomat · rattensicher, 4 Öffnungen  ·  **~170 Su
 ## /products/holz-kleiderstander-617200  — **DRAFT**
 Holz-Kleiderständer  ·  **~140 Suchen/Monat** betroffen
 - «holz kleiderständer» — Position 53, 140/Monat
-
-## /products/gusseiserne-grillpfanne-637400  — **301 → totes Ziel**
-Gusseiserne Grillpfanne  ·  **~140 Suchen/Monat** betroffen
-- «grillpfanne gusseisen» — Position 47, 140/Monat
-
-## /products/gewichtete-decke-fur-besseren-schlaf-096066  — **301 → totes Ziel**
-Gewichtete Decke für besseren Schlaf  ·  **~140 Suchen/Monat** betroffen
-- «schwere decken» — Position 68, 140/Monat
 
 ## /products/automatisches-anti-bell-halsband-544512  — **DRAFT**
 Automatisches Anti-Bell Halsband  ·  **~140 Suchen/Monat** betroffen
