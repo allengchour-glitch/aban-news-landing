@@ -93,6 +93,9 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Unterschied < Staubgrenze). **LEHRE:** die Zahl «57/57» der 10. Runde galt für einen Zwischenstand — am gemergten Stand waren M2,
   R10-M11/M16/M19/M24 schon unerkannt → Mutationsprobe IMMER auf dem Endstand, kurz vor dem Merge, neu laufen lassen.
   Harness: `scratchpad/mut11/szenario.py <sz.py> [Mutation|HEAD]` (Szenario gegen aktuell/mutiert/committet), `diagnose.py <commit> <Mut>`.
+- **Endstand (14.10. abends):** Mutationen **82/83** (1 gleichwertig: R11-M19), 0 fehlende Muster; Fuzzer-Schlusskampagne auf dem Endstand
+  (Not-Aus 0–1600/5000–6000/7000–8800, Läufe 0–200/5000–5160/7000–7200 ×30, Monotonie 0–400/7000–7600) **5'960 Läufe, 0 echte**
+  (89 begründet). Tests: live 154, streng 126, cockpit 115, pilot 82, testnetz 47, plan 23; alle 21 Dateien 1'026 grün.
 - **Nächster Schritt:** 12. unabhängige Prüfung (Auftrag `scratchpad/pruefung12_auftrag.md`).
 
 **📌 2026-10-14 abends (🔒 Pilot 2.0: 10. Prüfung — 2 Blocker + 4 wichtig + 4 klein behoben, bleibt GESPERRT):** Prüfer-Agent
