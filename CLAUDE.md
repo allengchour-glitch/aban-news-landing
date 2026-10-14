@@ -103,7 +103,10 @@ schloss er gar nichts. **B2** zu grosser Spot-Stop im Not-Aus → Short «ganz»
   Runden (`haengend_abgelehnt`) per cancelReplace ein Not-Stop an seine Stelle (`_haengenden_ersetzen`; vorher Long ohne Stop 8'445 USDT).
 - Tests: streng 149, live 154, pilot 84, cockpit 115, testnetz 47, plan 23. Mutationsprobe auf dem Endstand **102/120** (R12: 40 neue + 3 neu formulierte) — 18 NICHT erkannt: R12-M1/M2/M3/M5 (`markt()` Ziel,
   Nachfassen, Unklares, nur freie Coins), M16/M18/M19 (Buch zusammenführen), M21/M23/M25/M26/M27 (W1/W2-Merker), M34 (Extra-Runde),
-  R10-M15/M17, R11-M6/M19/F2 → Szenarien im Folge-PR schliessen, DANN 13. Prüfung.
+  R10-M15/M17, R11-M6/M19/F2 → **Folge-PR:** 13 davon mit Szenario (12.S1–S10 inkl. Funktions-Tests mit Hand-Kontostand
+  `handlage()`, geschärft 12.p1/12.p5b) → **115/120**, 5 begründet gleichwertig (R12-M5/M23/M34, R10-M17, R11-M19; README).
+  **Lehre:** neue Schutzschichten (z. B. `_spot_raus` nur Netto) können ALTE Tests entwerten (R11-F2 war vorher erkannt) →
+  nach jeder Runde die GANZE Probe, nicht nur die neuen Mutationen. Streng-Tests jetzt 159.
   Schlusskampagne auf `713f86597`: **9'480 Läufe, 0 echte** (172 begründet) — Not-Aus 0–1600/5000–6000/7000–8800/9000–11400,
   Läufe 0–200/5000–5160/7000–7200/9000–9420 ×30, Monotonie 0–400/7000–7600/9000–9700. **Falle:** Kampagne mit `xargs -P 4` — Jobs, die nach einer Code-Änderung starten, laufen mit dem
   NEUEN Code → nach jeder Verhaltensänderung die ganze Kampagne neu. **Nächster Schritt:** 13. unabhängige Prüfung
