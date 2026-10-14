@@ -368,3 +368,5 @@
 2026-10-13	gid://shopify/Product/16616520679815	natel	Multifunktionale Armtasche fürs Handy
 2026-10-13	gid://shopify/Product/16616687010183	natel	HD Handy-Reparaturmikroskop mit Bildschirm
 2026-10-13	gid://shopify/Product/16616723579271	natel	Robuste Outdoor-Handytasche
+2026-10-14	gid://shopify/Product/16617703932295	natel	Magnetischer Handy-Kühler mit Digitalanzeige
+2026-10-14	gid://shopify/Product/16617711993223	natel	Wandmontierter Handyhalter

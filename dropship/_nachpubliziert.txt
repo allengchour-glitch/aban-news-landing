@@ -363,3 +363,5 @@ gid://shopify/Product/16615802110343	bluetooth-smartwatch-mit-herzfrequenz-bluts
 gid://shopify/Product/16615812432263	led-lichterkette-stern-mond-fur-weihnachten-628400	LED-Lichterkette Stern & Mond für Weihnachten
 gid://shopify/Product/16616533459335	winter-babystiefel-mit-weicher-sohle-0dafce	Winter-Babystiefel mit weicher Sohle
 gid://shopify/Product/16617689907591	doppelseitiger-schal-621300	Doppelseitiger Schal
+gid://shopify/Product/16617703014791	ak74-zielfernrohrbrucke-aus-metall-89140c	AK74 Zielfernrohrbrücke aus Metall
+gid://shopify/Product/16617703932295	magnetischer-handy-kuhler-mit-digitalanzeige-617300	Magnetischer Handy-Kühler mit Digitalanzeige
