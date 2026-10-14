@@ -9129,3 +9129,8 @@ schreibhilfe-fur-kinder-635600	2606120650551636200	16	4.34	ok	landeseite
 farbblock-strickpullover-604700	2607101202111605300	16	13.40	ok	landeseite
 lederfreie-strickjacke-638300	2607101055541638900	16	10.83	ok	landeseite
 hochtaillierte-caprihosen-638600	2607110608011639300	16	7.17	ok	landeseite
+punktiertes-spitzen-top-und-maxi-rock-682818	2075823630311649282	16	11.23	ok	landeseite
+japanischer-segler-anzug-617900	2607110553261618600	16	8.25	ok	landeseite
+retro-damen-jacket-611700	2607090050031612500	16	9.47	ok	landeseite
+hellblaue-blazer-601000	2607110759011601600	16	10.15	ok	landeseite
+rundhals-top-630100	2607110541481631700	16	10.69	ok	landeseite
