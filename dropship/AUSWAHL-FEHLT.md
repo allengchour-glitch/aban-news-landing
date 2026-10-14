@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-14 21:34 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-14 22:53 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1490 · **1422 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1216, teilweise: 172, keine: 34; Preisspanne > 2×: 166) · 1 CJ-Variante: 66 · ohne Antwort: 2
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1471 · **1403 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1200, teilweise: 170, keine: 33; Preisspanne > 2×: 165) · 1 CJ-Variante: 66 · ohne Antwort: 2
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -179,7 +179,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Leuchtendes Haustierhalsband mit LED (`leuchtendes-haustierhalsband-mit-led-626000`) | 18 | 18 | 3.83–3.83 | 23.90 | Red Lamp Beads Style-S, Red Lamp Beads Style-M, Blue Lamp Beads Style-S, Blue Lamp Beads Style-M |
 | Buntes Leder-Geschirr für Katzen (`buntes-leder-geschirr-fur-katzen-526848`) | 18 | 12 | 4.7–8.36 | 34.90 | Colorful Pink-S, Colorful Pink-M, Colorful Pink-L, Colorful Purple-S |
 | Hautfreundliche, wasserdichte Hundeleine (`hautfreundliche-wasserdichte-hundeleine-917824`) | 18 | 18 | 10.1–32.36 | 30.90 | Blue-Towing rope collar-S, Blue-Towing rope collar-M, Blue-Towing rope collar-L, Blue-Traction rope-S |
-| Reflektierendes Haustier-Geschirr mit Strass (`reflektierendes-haustier-geschirr-mit-strass-987584`) | 18 | 18 | 2.32–3.36 | 21.90 | Blue-S, Blue-M, Blue-L, Red-S |
 | Niedliches Plüsch-Lendenkissen mit Handwärmer (`niedliches-plusch-lendenkissen-mit-handwarmer-12e549`) | 18 | 18 | 4.6–8.18 | 24.90 | 5-M, 3-M, 3-Triple, 4-M |
 | Fussgewölbe-Korrektur Einlegesohlen (`fussgewolbe-korrektur-einlegesohlen-987776`) | 18 | 18 | 3.71–5.39 | 23.90 | A, B, C, D |
 | Zierkissenhülle mit Federfüllung (`zierkissenhulle-mit-federfullung-623100`) | 18 | 18 | 5.03–14.59 | 24.90 | Secret Code 1style-50x50cm-Pillow, Secret Code 1style-50x50cm-Pillowcase, Secret Code 1style-30x50cm-Pillow, Secret Code 1style-30x50cm-Pillowcase |
@@ -207,7 +206,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Ausbruchsicheres Geschirr für Katzen (`ausbruchsicheres-geschirr-fur-katzen-999552`) | 16 | 16 | 5.33–6.73 | 39.90 | TCCO0049A1-M, TCCO0049A2-M, TCCO0049A3-M, TCCO0049A4-M |
 | Multifunktionale, reflektierende Doppel-Hundeleine (`multifunktionale-reflektierende-doppel-hundele-735872`) | 16 | 16 | 2.93–4.08 | 22.90 | Sapphire Blue4210, Orange4210, Fluorescent Green4210, Aqua Green4210 |
 | Verstellbares geflochtenes Hundehalsband (`verstellbares-geflochtenes-hundehalsband-107392`) | 16 | 16 | 4.06–4.51 | 23.90 | Retro red and green-S, Retro red and green-M, Retro red and green-L, Retro red and green-XL |
-| Schutzhülle für Apple Watch mit Strasssteinen (`schutzhulle-fur-apple-watch-mit-strasssteinen-336768`) | 16 | 16 | 2.62–2.62 | 21.90 | Black-38mm, Black-40mm, Black-42mm, Black-44mm |
 | Hundegeschirr mit Leine und Tasche (`hundegeschirr-mit-leine-und-tasche-107200`) | 16 | 16 | 2.35–2.35 | 21.90 | Blue Camouflage-XS, Blue Camouflage-S, Blue Camouflage-M, Blue Camouflage-L |
 | Retro Sonnenbrille für Damen und Herren (`retro-sonnenbrille-fur-damen-und-herren-613700`) | 15 | 8 | 2.63–9.12 | 21.90 | Bright Black Frame Gray Piece, Gray Frame, Sand Black Gradient Leopard, Bright Leopard Print Gradient |
 | Retro Canvas Rucksack für Reise & Freizeit (`retro-canvas-rucksack-fur-reise-freizeit-611100`) | 15 | 15 | 6.62–8.28 | 39.90 | Khaki-Small Size, Khaki-Large Size, Khaki-Oversized, Black-Small Size |
@@ -318,8 +316,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Retro Motorrad-Satteltasche (`retro-motorrad-satteltasche-602200`) | 12 | 12 | 9.34–9.34 | 29.90 | FBG321BK, FBG395BK, FBG344BK, FBG375BK |
 | Minimalistisches Armband mit Kette (`minimalistisches-armband-mit-kette-600300`) | 12 | 12 | 3.09–3.73 | 22.90 | 18inch-7inch, 20inch-7inch, 22inch-7inch, 24inch-7inch |
 | Niedliches Schleifen-Geschirr für Welpen (`niedliches-schleifen-geschirr-fur-welpen-616500`) | 12 | 12 | 7.05–8.37 | 26.90 | Pink-S, Pink-M, Pink-L, Pink-XL |
-| INS Baumwoll-Brustgeschirr für Hunde (`ins-baumwoll-brustgeschirr-fur-hunde-020288`) | 12 | 12 | 2.25–2.25 | 21.90 | Red-S, Red-M, Red-L, Yellow-S |
-| Echtleder Armband für Smartwatch (`echtleder-armband-fur-smartwatch-44bfbb`) | 12 | 2 | 2.7–2.7 | 21.90 | Wine white-42to44mm, Wine pink-38to40mm, Light Brown-42to44mm, Dark Blue-42to44mm |
 | Edelstahl Futternapf für Hunde (`edelstahl-futternapf-fur-hunde-702592`) | 12 | 12 | 6.33–7.53 | 25.90 | White-32oz, White-64oz, Blue-32oz, Blue-64oz |
 | Automatische LED-Hundeleine für Nachtsicherheit (`automatische-led-hundeleine-fur-nachtsicherhei-2a923a`) | 12 | 12 | 6.1–8.04 | 25.90 | Yellow-5m, Red No logo-3m, Red No logo-5m, White No logo-3m |
 | Alice Wonderland aufklebbare Nägel (`alice-wonderland-aufklebbare-nagel-669824`) | 12 | 12 | 2.41–2.41 | 21.90 | Short Ladder-Extra Small XS, Short Ladder-Small Size S, Short Ladder-Medium M, Short Ladder-Large L |
@@ -604,7 +600,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Freihändige, reflektierende Hundeleine mit Bauchgurt (`freihandige-reflektierende-hundeleine-mit-bauc-606800`) | 7 | 7 | 4.04–5.47 | 23.90 | Red Suit, Fluorescent Green Suit, Dream Blue Suit, Lake Water Green Color Suit |
 | Tarnfarbener Assault Rucksack für Outdoor (`tarnfarbener-assault-rucksack-fur-outdoor-616900`) | 7 | 7 | 9.78–9.78 | 41.90 | Black, Khaki, Army Green, CP Camouflage |
 | Mechanische Herrenuhr im quadratischen Design (`mechanische-herrenuhr-im-quadratischen-design-228480`) | 7 | 7 | 14.59–14.59 | 35.90 | Gold shell black face, Golden Shell Golden Noodles, Black faced blue purple, Black faced orange |
-| Vielseitiger 5L Velo-Rucksack (`vielseitiger-5l-velo-rucksack-301440`) | 7 | 7 | 18.0–18.0 | 38.90 | 1057 Black And Blue-About 5L, 1057 Black And Green-About 5L, 1057 Pure Black-About 5L, 1057 Gray Black-About 5L |
 | Vertikale Umhängetasche aus Rindsleder (`vertikale-umhangetasche-aus-rindsleder-490432`) | 7 | 7 | 5.26–12.4 | 24.90 | Coffee, Coffee2, Coffee3, Coffee4 |
 | Elektrisches Nagelpflege-Set (`elektrisches-nagelpflege-set-904960`) | 7 | 7 | 5.52–5.52 | 23.90 | Black US, Rose EU, Rose US, White EU |
 | Wasserdichte Automatikuhr für Herren (`wasserdichte-automatikuhr-fur-herren-626300`) | 6 | 6 | 17.8–17.8 | 39.90 | Golden White, Golden Black, Full Gold, Natural Black |
@@ -734,9 +729,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Leder-Leine für Haustiere (`leder-leine-fur-haustiere-092608`) | 6 | 6 | 14.86–14.86 | 35.90 | Red-1.2x120cm, Red-1.8x120cm, Blue-1.2x120cm, Blue-1.8x120cm |
 | Mechanische Herrenuhr mit Leuchtzeiger und Kalender (`mechanische-herrenuhr-mit-leuchtzeiger-und-kal-339776`) | 6 | 6 | 25.93–25.93 | 47.90 | Black noodles, Gradient blue noodles, Pure blue noodles, White noodles |
 | Retro Canvas Rucksack für Herren (20-35L) (`retro-canvas-rucksack-fur-herren-20-35l-615200`) | 6 | 6 | 24.88–24.88 | 55.90 | Black, Khaki, Coffee, Gray Green |
-| Leder-Leine mit Brustgeschirr für kleine Hunde (`leder-leine-mit-brustgeschirr-fur-kleine-hunde-547712`) | 6 | 6 | 32.81–47.48 | 55.90 | 1Style-S, 1Style-M, 2Style-S, 2Style-M |
 | Retro Tischuhr – verschiedene Stile (`retro-tischuhr-verschiedene-stile-845504`) | 6 | 6 | 53.66–78.24 | 94.90 | Ceramic ice cracked-12 inches, Enamel style-12 inches, Ceramic ice crack belt pendulu-12 inches, Enamel ribbon pendulum-12 inches |
-| Hundeleine mit Licht, automatisch einziehbar (`hundeleine-mit-licht-automatisch-einziehbar-691136`) | 6 | 6 | 3.74–4.46 | 23.90 | Green-3M, Green-5M, Pink-3M, Pink-5M |
 | Tamper für gleichmässige Kaffee-Extraktion (`tamper-fur-gleichmassige-kaffee-extraktion-612200`) | 6 | 6 | 10.08–10.87 | 30.90 | Gravity-Black-51mm, Gravity-Black-53mm, Gravity-Black-58.35mm, Elastic-Black-51mm |
 | Big Belly Eisenkochtopf Antihaft (`big-belly-eisenkochtopf-antihaft-601200`) | 6 | 6 | 3.34–5.62 | 30.90 | 24cm Single Pot, 24c Pot Glass Cover, 24cm Pot Wooden Lid, 28cm Single Pot |
 | Wärmehaube für Speisen, 3-5 Etagen (`warmehaube-fur-speisen-3-5-etagen-440448`) | 6 | 6 | 5.17–10.4 | 24.90 | 3layers-Ordinary, 3layers-Heightened, 4layers-Ordinary, 4layers-Heightened |
@@ -886,8 +879,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Craft Engine Whiskyflasche (`craft-engine-whiskyflasche-633400`) | 5 | 5 | 3.35–3.86 | 22.90 | Style 1, Style 2, Style 3, Style 4 |
 | Handbemalte Keramikschale, 6 Zoll (`handbemalte-keramikschale-6-zoll-616600`) | 5 | 5 | 3.02–11.94 | 22.90 | Yellow Apricot-6 Inches, Red With Red Painting-6 Inches, Olive Branch-6 Inches, Red Flower-6 Inches |
 | Edelstahl-Eis-Sieb für Cocktails (`edelstahl-eis-sieb-fur-cocktails-630600`) | 5 | 5 | 5.64–7.76 | 25.90 | Wolf Head Ice Filter, Skull Ice Filter, Pineapple Ice Filter, Mechanical Ice Filter |
-| Halsband- und Leinen-Set Graffiti (`halsband-und-leinen-set-graffiti-876608`) | 5 | 5 | 5.97–5.97 | 25.90 | Blue Graffiti Pet Collar Leash-XS, Blue Graffiti Pet Collar Leash-S, Blue Graffiti Pet Collar Leash-M, Blue Graffiti Pet Collar Leash-L |
-| Meerjungfrauen-Halsband mit Leine (`meerjungfrauen-halsband-mit-leine-212800`) | 5 | 5 | 5.61–5.61 | 25.90 | Blue-XS, Blue-S, Blue-M, Blue-L |
 | Leder-Gürteltasche für Coiffeur-Werkzeuge (`leder-gurteltasche-fur-coiffeur-werkzeuge-900544`) | 5 | 5 | 17.88–26.4 | 38.90 | 6Position Shear Brown New, 4bit cut brown, New 7bit cut brown, 4Position Cut Brown Nylon St |
 | Multifunktionale Wangenauflage-Tasche (`multifunktionale-wangenauflage-tasche-766016`) | 5 | 5 | 3.28–3.28 | 22.90 | Black, Wolf brown, Army Green, Desert digital |
 | Hölzerner Massage-Roller für Gesicht und Körper (`holzerner-massage-roller-fur-gesicht-und-korpe-612600`) | 5 | 5 | 3.68–3.68 | 23.90 | 9 rounds, T type roller, 12 rounds straight, 13 rounds |
@@ -1108,7 +1099,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Sport-Rucksack 30L (`sport-rucksack-30l-609600`) | 4 | 4 | 6.97–6.97 | 32.90 | Black-30L, Gray-30L, Sapphire Blue-30L, Black With Green-30L |
 | Titan-Antihaftpfanne mit Hammerschlag (`titan-antihaftpfanne-mit-hammerschlag-607300`) | 4 | 4 | 24.89–28.04 | 62.90 |  Flat bottomed Lidlessdless, 32 Cm Flat bottomed With Lid, 34cm Flat bottomed With Lid, Inner diameter 30cm |
 | Plüschtier-Rucksack für Kinder (`pluschtier-rucksack-fur-kinder-009152`) | 4 | 4 | 6.91–10.08 | 26.90 | Children's 35cm, Adult Style, Head Tilt Children's 35cm, Head Tilt Adult Model 46cm |
-| Reflektierende Multifunktions-Hundeleine mit Bauchgurt (`reflektierende-multifunktions-hundeleine-mit-b-631700`) | 4 | 4 | 6.68–6.68 | 26.90 | Gray-145to200CM, Black-145to200CM, Pink-145to200CM, Sapphire Blue-145to200CM |
 | High Gloss Rouge Duo für natürliche Konturen (`high-gloss-rouge-duo-fur-naturliche-konturen-666816`) | 4 | 4 | 17.24–17.24 | 38.90 | Peach flour cheese, Sweet apricot cheese, Red currant cheese, Purple Berry Cheese |
 | Casual Messenger Bag für Herren (`casual-messenger-bag-fur-herren-515328`) | 4 | 4 | 10.72–12.36 | 30.90 | Black-Small, Black-large, Leather black-Small, Leather black-large |
 | Sport-Freizeittasche – Robust & Vielseitig (`sport-freizeittasche-robust-vielseitig-840640`) | 4 | 4 | 7.84–7.84 | 27.90 | Camouflage white-40x21x21cm, Ccamouflage red-40x21x21cm, Camouflage blue-40x21x21cm, Camouflage green-40x21x21cm |
@@ -1274,11 +1264,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Magnetische Bausteine Dinosaurier-Welt (`magnetische-bausteine-dinosaurier-welt-313728`) | 3 | 3 | 6.67–13.51 | 40.90 | X5109, X5108, X5107 |
 | Nagelknipser-Set aus Edelstahl (`nagelknipser-set-aus-edelstahl-754816`) | 3 | 3 | 3.08–3.24 | 22.90 | Regular-Silver, Regular-Silver Gray, Regular-Golden Gray |
 | Nordische Eisen-Obstschale (`nordische-eisen-obstschale-9d0d65`) | 3 | 0 | 5.84–7.51 | 31.90 | White, Gold, Black |
-| Vergoldetes Jade Armband mit Glückswolken (`vergoldetes-jade-armband-mit-gluckswolken-613000`) | 3 | 3 | 3.1–3.1 | 22.90 | Bracelet-58mm, Bracelet-60mm, Bracelet-62mm |
-| Computer Rucksack Gross – Wasserdicht & Multifunktional (`computer-rucksack-gross-wasserdicht-multifunkt-602200`) | 3 | 3 | 19.97–21.7 | 46.90 | Black-17 Inches, Black-20 Inches, Black-22 Inches |
-| Robustes Präzisions-Rollmassband für Holzbearbeitung (`robustes-prazisions-rollmassband-fur-holzbearb-b2d115`) | 3 | 1 | 2.36–6.59 | 21.90 | 5M, 8M, 3M |
-| Universal Halteklammer mit Feinjustierung (`universal-halteklammer-mit-feinjustierung-9bef9f`) | 3 | 0 | 6.01–6.19 | 25.90 | Yellow, Black, Red |
-| Smartwatch: Herzfrequenz, Blutsauerstoff (`smartwatch-herzfrequenz-blutsauerstoff-665280`) | 3 | 3 | 17.2–17.2 | 37.90 | Black, Golden, silver gray |
 | Hundeleine mit Cartoon-Muster (`hundeleine-mit-cartoon-muster-615360`) | 3 | 3 | 2.93–2.93 | 22.90 | Teddy-Length 2m, Fox-Length 2m, Koala-Length 2m |
 | Regenbogen-Spielzeug mit Sound (`regenbogen-spielzeug-mit-sound-603600`) | 3 | 3 | 2.57–3.17 | 21.90 | Rainbow Twisted Sugar, Rainbow Sniffing Ball, Rainbow Dumbbell |
 | Kugelbahn Bausatz (293 Teile) (`kugelbahn-bausatz-293-teile-561024`) | 3 | 3 | 12.8–15.37 | 58.90 | 293 Animal Slide Bag, 293 Animal Slide Color Box, 293 Animal Slide Barrel |
@@ -1418,10 +1403,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Uhrenbox aus Massivholz (2er-Pack) (`uhrenbox-aus-massivholz-2er-pack-034496`) | 2 | 2 | 20.1–20.1 | 46.90 | Yellow, Coffee |
 | Rider Liefertasche mit Isolierung (`rider-liefertasche-mit-isolierung-607300`) | 2 | 2 | 5.97–5.97 | 25.90 | Black-Small, Navy Blue-Small |
 | Reflektierende Hunde-Leine für kleine bis grosse Hunde (`reflektierende-hunde-leine-fur-kleine-bis-gros-227968`) | 2 | 2 | 10.18–13.73 | 30.90 | Red-One size, Red-Extended version |
-| Wasserdichter, skalierbarer Reise-Rucksack (`wasserdichter-skalierbarer-reise-rucksack-600100`) | 2 | 2 | 11.9–11.9 | 37.90 | Black-17 Inches, Gray-17 Inches |
-| Japanische Keramikplatte – 11 Zoll (`japanische-keramikplatte-11-zoll-627700`) | 2 | 2 | 10.78–10.78 | 30.90 | Type A, Type B |
-| Kurze Lederleine mit Wirbel für grosse Hunde (`kurze-lederleine-mit-wirbel-fur-grosse-hunde-660160`) | 2 | 2 | 5.42–5.42 | 24.90 | Black, Dark brown |
-| Leuchtende LED-Hundeleine mit USB-Ladefunktion (`leuchtende-led-hundeleine-mit-usb-ladefunktion-160832`) | 2 | 2 | 5.93–5.93 | 25.90 | Green-USB-M, Orange-USB-M |
 | Holz-Wippe mit Tiermotiv für Kinder (`holz-wippe-waldtiere-oder-dinosaurier-690816`) | 2 | 2 | 3.55–3.55 | 22.90 | Dinosaur Balance Seesaw, Animal Balance Seesaw |
 | Gusseisen Tortenpresse Rund (`gusseisen-tortenpresse-rund-614800`) | 2 | 2 | 9.29–13.1 | 85.90 | 8 InchCake Press, 10 InchCake Press |
 | Kreativer Weindekanter – Pinguin oder Bohnensprosse (`kreativer-weindekanter-pinguin-oder-bohnenspro-613700`) | 2 | 2 | 14.93–18.24 | 41.90 | Penguin Wine Decanter, Bean Sprouts Wine Decanter |

@@ -2353,3 +2353,4 @@
 15517553099137	Grösse:3:3	2026-10-14	computer-rucksack-gross-wasserdicht-multifunkt-602200
 15517550444929	Modell:3+Grösse:2:6	2026-10-14	leder-leine-mit-brustgeschirr-fur-kleine-hunde-547712
 15517430579585	Grösse:3:3	2026-10-14	vergoldetes-jade-armband-mit-gluckswolken-613000
+16638641734023	Farbe:2+Grösse:8:16	2026-10-14	katzen-schnitzeljacke-in-schwarz-violett-620500
