@@ -19,6 +19,10 @@ S=$(mktemp -d)
 cp dropship/*.txt "$S"/ 2>/dev/null
 # 07.10.2026: auch die .tsv-Ledger sichern (85 Dateien, bisher bei reset --hard verloren) — Union unten nur als Schwanz-Union.
 cp dropship/*.tsv "$S"/ 2>/dev/null
+# 14.10.2026: Social-Queues mitsichern — nie committete Zeilen (neues Reel, neuer Bild-Post) lagen nach reset --hard nur im
+# Stash. Kopie per cp (kein Skript nötig, ein alter Snapshot kennt queue_rewind_retten.py evtl. nicht); zurück unten.
+mkdir -p "$S/queues"
+for q in automation/reels_seed.csv social/*.csv; do [ -f "$q" ] && cp -p "$q" "$S/queues/$(printf '%s' "$q" | sed 's#/#__#g')"; done
 if [ -f automation/lib/git_sperren.sh ]; then . automation/lib/git_sperren.sh; verwaiste_git_sperren_weg 120
 else find .git -name "*.lock" -mmin +10 -delete 2>/dev/null; fi
 # Snapshot kann einen Tracking-Ref hinterlassen, dessen erwarteter Stand nicht mehr
@@ -73,11 +77,15 @@ else echo "  [tsv] ⚠️ ledger_union Selbsttest rot — .tsv-Union übersprung
 if [ "$HAT_STASH" = 1 ]; then
   STASH='stash@{0}' SCHARF=1 timeout 700 python3 automation/quittung_rueckspiel.py 2>&1 | sed "s/^/  [quittung] /"
 fi
+# 14.10.2026: nach dem Quittungs-Rückspiel die nie committeten Queue-Zeilen anhängen (bewusst Entferntes bleibt draussen).
+if [ -f automation/queue_rewind_retten.py ] && python3 automation/queue_rewind_retten.py --selbsttest >/dev/null 2>&1; then
+  timeout 300 python3 automation/queue_rewind_retten.py --zurueck "$S/queues" 2>&1 | sed "s/^/  [queue] /"
+else echo "  [queue] ⚠️ queue_rewind_retten fehlt/Selbsttest rot — Queue-Kopien bleiben in $S/queues"; KEEP_S=1; fi
 if [ "$HAT_STASH" = 1 ]; then
   echo "STASH BEHALTEN (nicht verworfen) — unversionierte Arbeit lag im Baum:"
   git stash show --name-only stash@{0} 2>/dev/null | sed "s/^/  /"
   echo "  zurueckholen: git checkout stash@{0} -- <datei>   ·  Liste: git stash list"
 fi
 [ "${KEEP_S:-0}" = 1 ] || rm -rf "$S"
-git add -A dropship/ social/posts_image.csv social/ig_karussell.csv social/tiktok_karussell.csv automation/reels_seed.csv && git commit -q -m "Ledger-Union + Quittungs-Rückspiel nach Snapshot-Restore [skip ci]" 2>/dev/null
+git add -A dropship/ social/*.csv automation/reels_seed.csv && git commit -q -m "Ledger-Union + Quittungs-Rückspiel nach Snapshot-Restore [skip ci]" 2>/dev/null
 timeout 45 git push origin "$B" 2>&1 | tail -1

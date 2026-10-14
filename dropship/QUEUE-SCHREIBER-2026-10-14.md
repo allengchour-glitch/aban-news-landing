@@ -73,8 +73,7 @@ Wartezeit gelesen wurde. Geschrieben wird nur über den gemeinsamen Helfer: Sper
 Ein «Vollständig»-Urteil über eine fremd geschriebene Datei braucht eine Stand-Marke, nicht nur den Inhalt.
 
 ## OFFEN
-1. **Mittel — Rewind:** `repo_vorspulen.sh` (stash + reset auf origin) setzt die Queues auf den Commit-Stand zurück.
-   Ungepushte Zeilen landen im Stash; `quittung_rueckspiel` holt nur gepostete zurück. Was schon committet war, holt der Tageslauf jetzt aus dem Verlauf.
+1. ✅ **14.10. 09:30 erledigt — Rewind:** `repo_vorspulen.sh` kopiert die Queues vor stash/reset (`cp`, kein Skript nötig). Nach dem Quittungs-Rückspiel hängt `automation/queue_rewind_retten.py --zurueck` die Zeilen wieder an, die NIE in einem Commit standen (`git log -S<id>` leer); bewusst Entferntes bleibt draussen. Das läuft über `queue_csv.anhaengen`, das Log steht in `_queue_zurueckgeholt.tsv`, Grund «rewind». Selbsttest mit Wegwerf-Repo 4/4.
 2. ✅ **14.10. 09:15 erledigt:** `engine_keepalive.sh` / `repo_vorspulen.sh` löschen nur noch verwaiste Sperren (Helfer `automation/lib/git_sperren.sh`: kein Halter laut `fuser` UND älter als 120 s; ohne `fuser` 600 s; Selbsttest). `repo_vorspulen.sh` läuft unter `/tmp/git_repo.lock`.
 3. **Hetzner-Klon:** Er schreibt mit altem Poster-Code, bis er den Zweig zieht. Seine Rückschreiber kommen per Merge an.
    Abgefedert durch die Regel «fehlende Zeile bleibt» und den Tageslauf «zurückholen».
