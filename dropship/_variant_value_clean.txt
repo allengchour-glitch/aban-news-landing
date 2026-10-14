@@ -3830,3 +3830,4 @@ gid://shopify/Product/16613636342151	Farbe	4
 gid://shopify/Product/16613782028679	Farbe	3
 gid://shopify/Product/16613782258055	Farbe	4
 gid://shopify/Product/16616357396871	Farbe	6
+gid://shopify/Product/15503083405697	Farbe	4

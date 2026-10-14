@@ -52,6 +52,18 @@
 
 
 
+## 🖼️ «Unable to show image» = Google hat nicht abgeholt, das Bild ist gut (2026-10-14, Verbesserungsrunde 08:26 UTC)
+
+Die Klasse sprang von 2 (09.10.) auf 109 (10.10. 07:08), heute 126 — alle aus den Gratis-Einträgen. 87 davon sind CJ-Mode vom
+August mit unverändertem Hauptbild, 39 Neuimporte. Alle 126 Hauptbilder liefern als `Googlebot-Image` HTTP 200, JPEG/PNG, normale
+Grösse — Format, Speicherort und Variantenbild scheiden aus. Google (Help 12159032): Abruf gescheitert, Neuabruf ≤ 72 h, aber bis
+30 Tage, bei gleicher Adresse bis 6 Wochen; neue Adresse = schneller Abruf. Probe: `fileUpdate filename` gibt der Datei eine neue
+Adresse (`…-g1014.jpg`), das Produkt gilt als geändert, die App meldet neu. **Lehre:** Eine Google-Meldung über ein Bild heisst nicht,
+dass das Bild schlecht ist — erst wie der Crawler abrufen; ist es gut, braucht es eine neue ADRESSE, keinen Bildtausch (der setzt
+nur die Prüfung neu). Und: Liechtenstein am 09.10. 22:40 als zweites Land → alle Angebote neu gemeldet → Sprung im nächsten Stand
+(zeitlich passend, nicht belegt). Wächter `automation/google_bild_abruf.py` (Aufseher täglich: 3 T warten, umbenennen, 21 T Ruhe,
+dann Eskalation). Bericht `dropship/GOOGLE-BILD-NICHT-ABRUFBAR-2026-10-14.md`.
+
 ## 🪦 Leeres Tageslog = still gestorben (2026-10-14, ~07:40 UTC, Erinnerung CH-Lager Stufe 2)
 
 `psa_schuhe_wache.log` und `ch_lager_profil.log` standen seit 13.10. 16:32 auf **0 Byte**: Der Aufseher setzt `touch` VOR dem Start
@@ -20425,3 +20437,5 @@ Verschoben am 04.10.2026:
 - 2026-10-13 · 🧟 **Täglicher USA-Lieferblock 04:10 = root-Cron des Hetzner-Servers (04:00 `run-api-jobs.sh` + */10 `vps-cmd-poll.sh` aus dem toten Klon /opt/luxe/repo, Zweig CizQ6): ~1'400 Produkte/Morgen. ✅ abgeschaltet 13.10. 07:45 per Wartungsaktion `alt_cron_aus` (erst nach Betreiber «mach du hetzner» — ohne Freigabe lehnte der Klassifikator ab; Rückweg `alt_cron_zurueck`), Ampel `alter_lieferblock()`. Regel: Schaden zur festen Uhrzeit → zuerst ALLE Zeitpläne lesen.** → `dropship/ZOMBIE-CRON-2026-10-13.md`
 <!-- aus CLAUDE.md verschoben 14.10.2026 07:43 UTC (VERBATIM) -->
 - 2026-10-13 · 🔍 **Prüf-Workflow (11 Agenten) 5/6 bestätigt → behoben: GSC-Schnappschuss blättert (startRow, Filter /products/), Zielwahl nur Wortkopf (Hundehalskette ≠ Halskette), Kostümwort schlägt Ausnahmeliste (+14 erkannt), Trend-Datum max() + 44 Reste weg, Lampion raus; 80 Fortura-Fremdwaren aus dem Kostümtyp (Importer nachgezogen).** → Journal 13.10. 🔍
+<!-- aus CLAUDE.md verschoben 14.10.2026 09:01 UTC (VERBATIM) -->
+- 2026-10-13 · 🧾 **Kassen-Prüfung (30 Agenten): «Hälfte bricht ab» war Rohliste — 12/14 Abbrüche eigene Tests/Bots, seit 05.10. kauften 4/4 → Engpass Verkehr. Echt: 11 Texte «gratis ab 45/65» → `versand_band_wache.py` Regel 2 (Aufseher täglich), CH-Lager zeigt in der Kasse Asien-Fenster (Ampel, Betreiber), WELCOME10 +2.01 bei 45–49.99 (Betreiber). Vor jedem Auftrag BEREINIGT messen (`checkout_abbruch_messen.py`).** → `dropship/KASSEN-PRUEFUNG-2026-10-13.md`

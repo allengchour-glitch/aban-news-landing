@@ -21323,3 +21323,7 @@ gid://shopify/Product/16616357396871	Farbe	gid://shopify/ProductOptionValue/5841
 gid://shopify/Product/16616357396871	Farbe	gid://shopify/ProductOptionValue/58412208226695	Black Hidden Elevator 4cm	Schwarz · versteckte Erhöhung 4 cm	2026-10-13T21:07Z
 gid://shopify/Product/16616357396871	Farbe	gid://shopify/ProductOptionValue/58412208259463	Black Hidden Elevator 6cm	Schwarz · versteckte Erhöhung 6 cm	2026-10-13T21:07Z
 gid://shopify/Product/16616357396871	Farbe	gid://shopify/ProductOptionValue/58412208292231	Black Hidden Elevator 8cm	Schwarz · versteckte Erhöhung 8 cm	2026-10-13T21:07Z
+gid://shopify/Product/15503083405697	Farbe	gid://shopify/ProductOptionValue/12404882014593	Black plus cotton	Schwarz gefüttert	2026-10-14T08:58Z
+gid://shopify/Product/15503083405697	Farbe	gid://shopify/ProductOptionValue/12404882047361	Green plus cotton	Grün gefüttert	2026-10-14T08:58Z
+gid://shopify/Product/15503083405697	Farbe	gid://shopify/ProductOptionValue/12404882080129	Gray plus cotton	Grau gefüttert	2026-10-14T08:58Z
+gid://shopify/Product/15503083405697	Farbe	gid://shopify/ProductOptionValue/12404882112897	Blue plus cotton	Blau gefüttert	2026-10-14T08:58Z
