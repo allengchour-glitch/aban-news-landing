@@ -52,6 +52,20 @@
 
 
 
+## 🪶 Startseite Stufe A: 2.94 → 2.46 MB, 151 → 30 Überschriften, sichtbare H1, Klarna im ersten Bildschirm (2026-10-14, 09:56–10:04 UTC)
+
+Messgerät zuerst (`automation/startseite_gewicht.py`, täglich, erkennt Cache-Kopien am Server-Timing). Danach fünf kleine
+Theme-Patches, je Live-Datei + Backup + Marke `lx-schlank-2026-10-14`, nach jedem neu gemessen:
+- A5: H1 sichtbar im Hero, USP Versand · Rechnung · Rückgabe · Shop
+- A2: Zoom-out-Titel als `<p>`, nur im Kollektionsraster → 150 → 30 Überschriften
+- A3: Kartenlinks auf der Startseite ohne `?variant=` → 360 → 0
+- A4: Karussell 2 Folien, ohne Kartenpfeile, kürzeres srcset → −0.46 MB, 420 → 316 img
+
+Kollektions- und Produktseiten gegengeprüft (variant-Links unverändert, 0 «Liquid error»). Handy-Screenshot je Schritt.
+**Lehre:** Eine Bedingung im Theme (`template.name == 'index'`, `layout_type == 'carousel'`, `product_card_size != blank`)
+trennt Startseite und Kollektionsraster sauber, statt globaler Schalter. Unser curl war heute frisch gerendert
+(processing 955–1536 ms) — das Messgerät prüft das bei jedem Lauf. Plan + Stand: `dropship/STARTSEITE-UMBAU-PLAN-2026-10-13.md` §Umsetzung.
+
 ## 🎯 «Inappropriate image» ist Demand-Gen, kein Gratis-Eintrag-Blocker · productUpdate(tags) ersetzt ALLE Tags (2026-10-14, ~09:45–09:55 UTC)
 
 Die Ampel zählte 437 Free-Listings-Blocker, davon 270 «Inappropriate image». Alle 270 tragen Ziel «[]», echte Blocker nennen
