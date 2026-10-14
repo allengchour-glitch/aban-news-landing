@@ -9216,3 +9216,6 @@ personalisierter-edelstahlring-625100	2606170703181625900	16	4.57	ok	landeseite
 perlenkette-155008	1658005089107320832	16	5.12	ok	landeseite
 naturliche-su-wasserperlen-perlenkette-040384	1658003507963760640	16	5.08	ok	landeseite
 naturliche-diamantformige-su-wasserperlen-647104	1658002219196755968	16	5.27	ok	landeseite
+naturliche-su-wasserperle-feine-kette-schmuckm-555712	1658001151536664576	16	4.40	ok	landeseite
+hotan-wei-nephrit-ziegenfett-rundperle-armreif-119744	1613068336055726080	16	4.60	ok	landeseite
+naturliche-su-wasserperlen-fur-diy-083200	1612358374803386368	16	4.66	ok	landeseite
