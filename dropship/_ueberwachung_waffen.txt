@@ -26,3 +26,25 @@
 16608572670343	waffe	schusswaffen-laser	tag:waffe-pruefen	Laser-Boresight für Gewehr und Flinte
 16608572670343	2026-10-06	DRAFT	schusswaffen-laser (Bild geprüft)
 16612324344199	waffe	waffennachbildung-schusswaffe	tag:waffe-pruefen	Glock-Holster mit Infrarot-Ziel
+16617703014791	waffe	waffennachbildung-schusswaffe	tag:waffe-pruefen	AK74 Zielfernrohrbrücke aus Metall
+15449030984065	waffe	schusswaffen-zubehoer	tag:waffe-pruefen	Taktisches Outdoor-Stativ, faltbar & ausziehbar	stark:taktisches outdoor-stativ
+15453805707649	waffe	schusswaffen-zubehoer	tag:waffe-pruefen	T6 Taschenlampe Set	bild: Waffenlicht mit Schienenklemme und Kabel-Druckschalter — Titel «T6 Taschenlampe Set», CJ «WF 502B T6 Flashligh
+15453920985473	waffe	schusswaffen-zubehoer	tag:waffe-pruefen	Taktische Sporttasche	bild: Dreifach-Magazintasche (MOLLE, Gewehrmagazine) — Titel «Taktische Sporttasche», CJ «Triple Quick Pull … Tactic
+15453953032577	waffe	schusswaffen-zubehoer	tag:waffe-pruefen	Taktische Brusttasche	stark-en-eindeutig:pistol bag
+15454248829313	waffe	schusswaffen-zubehoer	tag:waffe-pruefen	Taktische Handy-Tasche	bild: Doppel-Granatentasche (MOLLE), Bild 5 zeigt eine Handgranate in der Tasche — Titel «Taktische Handy-Tasche», C
+15462220595585	waffe	schusswaffen-zubehoer	tag:waffe-pruefen	Kettenpistole	bild: KEINE Schusswaffe: Kettenwaffe mit zwei 29-cm-Speerspitzen, CJ «Stainless Steel Nunchaku Chain Gun» — Tag nur 
+15480340185473	waffe	schusswaffen-zubehoer	tag:waffe-pruefen	Taktisches Outdoor-Stativ, faltbar, V8	stark:taktisches outdoor-stativ
+15490615542145	waffe	schusswaffen-zubehoer	tag:waffe-pruefen	Outdoor Tactical Bauchtasche mit Holster	schwach:tactical+kontext:versteckte holster
+15493778735489	waffe	schusswaffen-zubehoer	tag:waffe-pruefen	Taktischer Modularer Schnellverschluss-Adapter	stark:taktischer modularer schnellverschluss-adapter
+15500510757249	waffe	schusswaffen-zubehoer	tag:waffe-pruefen	Multifunktions-Kombischlüssel aus Stahl	bild: AR-15-Kombischlüssel mit Laufmutter-Zähnen — Titel «Multifunktions-Kombischlüssel aus Stahl», CJ «… Combined W
+15506285134209	waffe	schusswaffen-zubehoer	tag:waffe-pruefen	Taktische Tarn-Tragetasche	bild: Gewehrtasche 94 cm — Titel «Taktische Tarn-Tragetasche», CJ «Tactical Camouflage Carrying Picture Bag»
+15509234516353	waffe	schusswaffen-zubehoer	tag:waffe-pruefen	Taktischer Angelrucksack, 85 cm	bild: Gewehrrucksack 85 cm (Futteral mit Trageriemen) — Titel «Taktischer Angelrucksack», CJ «Outdoor tactical fishi
+15510314451329	waffe	schusswaffen-zubehoer	tag:waffe-pruefen	Outdoor Carbon Entferner Werkzeug	bild: AR-15-Carbon-Schaber (Verschlussträger) — Titel «Outdoor Carbon Entferner Werkzeug», CJ «Hunting Accessories O
+15510791389569	waffe	schusswaffen-zubehoer	tag:waffe-pruefen	Multifunktionaler Brustgurt mit Zubehörtasche	bild: Chest-Rig mit vier Gewehrmagazin-Taschen — Titel «Multifunktionaler Brustgurt mit Zubehörtasche», CJ «… Chest 
+16606107337095	waffe	schusswaffen-zubehoer	tag:waffe-pruefen	Aluminium-Schienenhalter 25,4 mm	stark-en:scope bracket [CJ-Name]
+16608485638535	waffe	schusswaffen-zubehoer	tag:waffe-pruefen	Infrarot-Kalibrator	bild: Laser-Einschiessgerät (Box «Laser bore sighter», Kaliber-Adapter, Zielscheiben) — Titel «Infrarot-Kalibrator»,
+16609737867655	waffe	schusswaffen-zubehoer	tag:waffe-pruefen	Zielfernrohr-Halterungszubehör	stark:zielfernrohr
+16609856192903	waffe	schusswaffen-zubehoer	tag:waffe-pruefen	8-förmige Rohrschelle aus Aluminium	bild: Laufklemme (Offset) für Lampe/Laser + Bild 2 Zielfernrohrringe mit Schienenfuss — Titel «8-förmige Rohrschelle
+16612764352903	waffe	schusswaffen-zubehoer	tag:waffe-pruefen	Multifunktionale taktische Aufbewahrungstasche	schwach:taktisch+kontext:pistole
+16617626141063	waffe	schusswaffen-zubehoer	tag:waffe-pruefen	Taktische Angeltasche Schwarz 100 cm	bild: Gewehrfutterale 100 cm in ACU/Black/Mud/Green/CP — Titel «Taktische Angeltasche», CJ «Camouflage fishing tacti
+16617699148167	waffe	schusswaffen-zubehoer	tag:waffe-pruefen	Multifunktions-Schraubenschlüssel	bild: AR-15-Schaftschlüssel (Armorer-Wrench) — Titel «Multifunktions-Schraubenschlüssel», CJ «Multifunctional tactic

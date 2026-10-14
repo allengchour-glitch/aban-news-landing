@@ -871,3 +871,28 @@
 2026-10-13T18:15:35Z	gid://shopify/Product/15524700389761	nicht-bewerben	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	kupferarmband-mit-magneten-fur-damen-613200
 2026-10-13T18:53:03Z	gid://shopify/Product/15494984499585	nicht-bewerben	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	terahertz-armband-energie-balance-608900
 2026-10-14T06:56:54Z	gid://shopify/Product/16617724576135	kostuem	Google & YouTube	hundekostum-fur-halloween-und-weihnachten-636800
+2026-10-14T15:56:37Z	gid://shopify/Product/15453805707649	waffe-pruefen	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	t6-taschenlampe-set-201024
+2026-10-14T15:56:39Z	gid://shopify/Product/15453920985473	waffe-pruefen	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	taktische-sporttasche-620000
+2026-10-14T15:56:40Z	gid://shopify/Product/15453953032577	waffe-pruefen	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	taktische-brusttasche-611200
+2026-10-14T15:56:41Z	gid://shopify/Product/15454248829313	waffe-pruefen	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	taktische-handy-tasche-639200
+2026-10-14T15:56:42Z	gid://shopify/Product/15462220595585	waffe-pruefen	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	kettenpistole-637300
+2026-10-14T15:56:44Z	gid://shopify/Product/15480340185473	waffe-pruefen	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	taktisches-outdoor-stativ-faltbar-v8-611100
+2026-10-14T15:56:46Z	gid://shopify/Product/15490615542145	waffe-pruefen	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	outdoor-tactical-bauchtasche-mit-holster-630200
+2026-10-14T15:56:47Z	gid://shopify/Product/15493778735489	waffe-pruefen	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	taktischer-modularer-schnellverschluss-adapter-621100
+2026-10-14T15:56:48Z	gid://shopify/Product/15500510757249	waffe-pruefen	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	multifunktions-kombischlussel-aus-stahl-547008
+2026-10-14T15:56:49Z	gid://shopify/Product/15506285134209	waffe-pruefen	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	taktische-tarn-tragetasche-407680
+2026-10-14T15:56:50Z	gid://shopify/Product/15509234516353	waffe-pruefen	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	taktischer-angelrucksack-85-cm-d89dfa
+2026-10-14T15:56:52Z	gid://shopify/Product/15510314451329	waffe-pruefen	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	outdoor-carbon-entferner-werkzeug-228736
+2026-10-14T15:56:53Z	gid://shopify/Product/15510791389569	waffe-pruefen	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	multifunktionaler-brustgurt-mit-zubehortasche-616200
+2026-10-14T15:56:54Z	gid://shopify/Product/16606107337095	waffe-pruefen	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	aluminium-schienenhalter-25-4-mm-810752
+2026-10-14T15:56:56Z	gid://shopify/Product/16608485638535	waffe-pruefen	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	infrarot-kalibrator-e30ae8
+2026-10-14T15:56:57Z	gid://shopify/Product/16609737867655	waffe-pruefen	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	zielfernrohr-halterungszubehor-82c82b
+2026-10-14T15:56:58Z	gid://shopify/Product/16609856192903	waffe-pruefen	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	8-formige-rohrschelle-aus-aluminium-30e93b
+2026-10-14T15:56:59Z	gid://shopify/Product/16612764352903	waffe-pruefen	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	multifunktionale-taktische-aufbewahrungstasche-432064
+2026-10-14T15:57:00Z	gid://shopify/Product/16617626141063	waffe-pruefen	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	taktische-angeltasche-schwarz-100-cm-9b8af2
+2026-10-14T15:57:01Z	gid://shopify/Product/16617699148167	waffe-pruefen	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	multifunktions-schraubenschlussel-ca2079
+2026-10-14T15:57:02Z	gid://shopify/Product/15449030984065	google-policy-flag, waffe-pruefen	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	taktisches-outdoor-stativ-faltbar-ausziehbar-519234
+2026-10-14T15:57:03Z	gid://shopify/Product/15477425176961	waffe-pruefen	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	nylon-gewehrriemen-2-punkt-verstellbar-634200
+2026-10-14T15:57:05Z	gid://shopify/Product/16603763179911	waffe-pruefen	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	schutzweste-fur-training-und-outdoor-448256
+2026-10-14T15:57:06Z	gid://shopify/Product/16612324344199	waffe-pruefen	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	glock-holster-mit-infrarot-ziel-c1f827
+2026-10-14T15:57:07Z	gid://shopify/Product/16617703014791	waffe-pruefen	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	ak74-zielfernrohrbrucke-aus-metall-89140c

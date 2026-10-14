@@ -283,6 +283,9 @@ TITEL_ZIEL = [
     ("dashcam", "auto-kfz-zubehoer"), ("powerbank", "elektronik-laden"),
     ("kulturbeutel", "sub-reise"), ("koffer", "sub-reise"),
     ("wolldecke", "kissen-wohntextilien"), ("kuscheldecke", "kissen-wohntextilien"),
+    # 14.10.2026: Stiefel fielen über den Typ «Damenschuhe» auf Sneaker («Winter Mid-Calf Stiefel aus Faux-Fell» → Sneaker &
+    # Sportschuhe). Ziel ist die Endadresse (schuhe-stiefel ist selbst eine 301; Shopify lehnt eine Weiterleitung darauf ab).
+    ("stiefel", "sub-stiefel-boots"),
     # ganz zuletzt, weil grob: Geschlechtswort im Titel → Modekategorie
     ("damen", "damen-mode"), ("herren", "fur-ihn"),
 ]
@@ -464,8 +467,12 @@ def gsc_seiten():
     return aus, alter
 
 
-def status_viele(handles):
-    """{handle: produkt|None} — in Paketen statt je Handle eine Abfrage (GSC liefert ~900 Seiten)."""
+def status_viele(handles, nur_gefundene=False):
+    """{handle: produkt|None} — in Paketen statt je Handle eine Abfrage (GSC liefert ~900 Seiten).
+
+    nur_gefundene=True (14.10.2026, Hauptschleife): nur Handles, die eine Antwort WIRKLICH enthielt. Ein gescheitertes
+    Paket oder ein fehlender Handle heisst dann «unbekannt», nicht «gelöscht» — der Aufrufer fragt einzeln nach. Sonst
+    würde ein Netzfehler ein aktives Produkt als tot melden und mit FIX=1 eine Weiterleitung darüberlegen."""
     aus = {}
     hs = list(handles)
     for i in range(0, len(hs), 40):
@@ -474,6 +481,8 @@ def status_viele(handles):
         d = gql('query($q:String!){products(first:100,query:$q){nodes{id handle title status productType tags}}}', {"q": q})
         for n in ((d.get("data") or {}).get("products") or {}).get("nodes") or []:
             aus[n["handle"]] = n
+    if nur_gefundene:
+        return {h: aus[h] for h in hs if h in aus}
     return {h: aus.get(h) for h in hs}
 
 
@@ -494,6 +503,7 @@ KANARIEN = [   # (Titel, verbotenes Wort im Ziel oder None, erlaubte Kategorie o
     ("Bluetooth Aroma Diffuser mit Musik & Nachtlicht", "lampe", "/collections/sub-aroma-diffuser"),
     ("Solar Helm mit Ventilator", None, None),
     ("Kuscheldecke für Hunde", None, "/collections/sub-haustier"),
+    ("Winter Mid-Calf Stiefel aus Faux-Fell", "sneaker", "/collections/sub-stiefel-boots"),   # 14.10.: vorher Sneaker
 ]
 
 
@@ -565,10 +575,19 @@ def main():
 
     tot, gesetzt, offen = [], 0, []
     nur_gsc = os.environ.get("NUR_GSC") == "1"   # Einzeltest: nur GSC-Funde schreiben
+    # 14.10.2026: Hier stand je Landeseite EINE Abfrage (~1'150 nacheinander). Seit dem 13.10. endeten alle Läufe nach der
+    # Zeile «GSC: n tote Kandidaten» ohne Schlusszeile — der Container startet etwa stündlich neu und nahm den Lauf mit;
+    # der Aufseher holt nur Abstürze mit Traceback nach, also lag die Prüfung bis zum nächsten Tag still. Jetzt Pakete à 40;
+    # einzeln nur noch, was ein Paket nicht sicher beantwortet hat.
+    vorab = status_viele([h for h, _ in seiten if h not in erledigt], nur_gefundene=True)
+    einzeln = 0
     for handle, sitzungen in seiten:
         if handle in erledigt or (nur_gsc and herkunft.get(handle) != "gsc"):
             continue
-        p = produkt(handle)
+        if handle in vorab:
+            p = vorab[handle]
+        else:
+            p = produkt(handle); einzeln += 1
         if p and p["status"] == "ACTIVE":
             continue
         pfad = "/products/" + handle
@@ -635,6 +654,7 @@ def main():
               f"{gsc_gesetzt if FIX else gsc_kand - len(gsc_offen)} · offen {len(gsc_offen)} "
               f"({stand['impr_woche_offen']} Impr./Woche, {stand['klicks_offen']} Klicks)")
         offen += [(h, 0, f"{t[:50]} [GSC {kl} Kl./{im} Impr./W. — {w}]") for h, kl, im, t, w in gsc_offen]
+    print(f"Abfragen: {len(vorab)} aus Paketen à 40, {einzeln} einzeln (nicht im Paket gefunden)")
     print(f"Landeseiten mit Verkehr: {len(seiten)} | nicht mehr kaufbar und ohne Weiterleitung: {len(tot)}")
     print(f"  {'gesetzt' if FIX else 'setzbar'}: {gesetzt if FIX else len(tot) - len(offen)} | "
           f"ohne eindeutigen Ersatz (Mensch entscheidet): {len(offen)}")

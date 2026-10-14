@@ -52,6 +52,45 @@
 
 
 
+## 🔗 1'331 CJ-Produkte ohne «cj-real» = unsichtbar für alle Lieferbarkeits-Wächter · Waffenteile + Klingen nur am Bild · tote Seiten je Abfrage einzeln · Secret im Env verdorben (2026-10-14, Runde 12:26 bis ~16:05 UTC)
+
+**cj-real-Lücke:** Alle Lieferbarkeits-Wächter wählen über `tag:cj-real` (cj_lager_abgleich, cj_verfuegbarkeit, cj_stock_guard,
+cj_varianten_wache, cj_versand_ch_sichtbar). Die Importgruppe «cjwerkzeug» in `cj_groups_extra.json` trug den Tag nicht. GEMESSEN 13:15:
+1'331 aktive Produkte mit CJ-SKU ohne Tag, alle CONTINUE + ohne Lagerführung → immer kaufbar, auch wenn CJ ausverkauft hat
+(Ghost-Sale #1019-Klasse). Quelle: Gruppe + Zwangszeile `CJ_REAL_PFLICHT` in `cj_category_fill.mjs` (nach ALLEN Tag-Filtern; dazu der
+Bildfehler-Pfad, der mit `productUpdate(tags:['bilder-fehlgeschlagen'])` alle Tags ersetzte → jetzt Status + tagsAdd getrennt).
+Bestand: `cj_real_luecke.py` (nur tagsAdd, 20er-Alias-Bündel, CAP 500, Rücklesen, Ledger `_cj_real_nachtrag.tsv`, Rückweg, Selbsttest 23/23;
+«CJ-» vor einem frei getippten Slug zählt NICHT, nur pid-Zahl/UUID/CJ-Varianten-SKU). 15:30–15:45: 500 · 500 · 330 nachgetragen,
+0 unbestätigt; Nachmessung «CJ-Form 0 · unprüfbar 1» (`CJ-SHOWERCADDY-5SET`). Aufseher täglich (SCHARF, NACH-Liste).
+**Lehre:** Wer über ein Merkmal auswählt, erbt jede Lücke in diesem Merkmal. Den Auswahl-Tag an der Quelle unabhängig von der
+Gruppen-Konfiguration erzwingen und die Lücke über ein ZWEITES Merkmal (SKU-Form) zählen.
+**Neue, grössere Klasse (offen):** cj_lager_abgleich kann pid-Formen nicht abfragen — 23'209 `CJ-<Zahl>` + 4'610 `CJ-<UUID>` = 27'819
+ohne Bestandsprüfung (Weg: productSku über `product/query?pid=`). cj_verfuegbarkeit hat ~4'105 Rückstand bei ~110/Tag.
+
+**Schusswaffen-Zubehör:** Das Urteil «Einzelfall» von 10:40 (Titelsuche nach Waffenwörtern ohne weiteren Treffer) war falsch. Eine Regel
+über Titel/Typ/Tags/Beschreibung/englischen CJ-Namen fand 10 (7 ohne `waffe-pruefen`, 6 im Google-Kanal: «Zielfernrohr-Halterungszubehör»,
+Zweibeine als «Taktisches Outdoor-Stativ», Schulterholster als «Taktische Brusttasche»). Die Bildprüfung von 1'735 Kandidaten fand
+≥ 13 weitere mit harmlosem Titel UND CJ-Namen (Waffenlicht «T6 Taschenlampe Set», AR-15-Schlüssel «Multifunktions-Schraubenschlüssel»,
+Gewehrrucksack «Angelrucksack»). Regel + Kanarien EINMAL in `data/schusswaffen_zubehoer_regel.json` (Bildbefunde als Handliste
+`bild_geprueft`), Python `google_sperrliste.ist_schusswaffen_zubehoer` = JS `schusswaffen_zubehoer.mjs` (py=js 118 Proben, 0 Abweichungen),
+Importer cj_category_fill + cj_sku_import fragen sie VOR dem Anlegen. Folge: Tag `waffe-pruefen` → `google_sperrtags_durchsetzen` nimmt die
+Ware aus Google und allen Werbe-/Social-Kanälen, der Laden bleibt (in der Schweiz legal). Waffen-Wächter läuft im Aufseher jetzt mit SCHARF=1.
+SCHARF-Lauf über den ganzen Bestand (15:35–15:55): **21 getaggt**, danach `google_sperrtags_durchsetzen`: 25 aus Google + TikTok/FB-IG/Pinterest genommen (21 Waffen + 4 mit anderen Sperr-Tags), Gegenprobe DRY 0. Grenzfälle offen (Betreiber): Schiessdecke, Plattenträger JPC, NVG-Attrappe.
+**Nebenbefund Klingen am Bild (#1017-Klasse):** «Klappzange aus Edelstahl» = Klappmesser, «Rostfreie Zange mit flacher Backe» = Multitool mit Wellenschliff-Klinge, «Smaragd-Pfeil Spielpfeil» = Jagdspitzen (Broadheads). Bild selbst angesehen, 15:51 gedraftet + `cj-nicht-versendbar-ch` + `handklinge-kein-ch-versand`, Ledger `_klinge_handliste.tsv`. `ist_handklinge` trifft keinen der drei Titel (auch nicht «Broadhead»); im Titelbestand 0 weitere Pfeil-/Broadhead-Titel → keine Regeländerung, Klasse «Klinge nur am Bild» bleibt offen (Vision-Sweep).
+
+**Tote Google-Seiten (`tote_landeseiten.py`) starben seit 13.10. still:** Jede Landeseite wurde EINZELN abgefragt (~1'150 Abfragen nacheinander, gemessen 13,5 Min. im Trockenlauf). Die Läufe vom 13./14.10. endeten nach «GSC: n tote Kandidaten» ohne Schlusszeile; der Aufseher holt nur Abstürze mit Traceback nach → bis zum nächsten Tag kein Lauf. Jetzt Pakete à 40 (`status_viele(nur_gefundene=True)`: fehlt ein Handle im Paket = unbekannt, einzeln nachfragen, nie «gelöscht»): **1,5 Min.**, gleiche Funde. FIX-Lauf: 4 × 301 gesetzt; der Stiefel ging über den Typ «Damenschuhe» auf Sneaker → Tabelle `stiefel → sub-stiefel-boots` (Endadresse; `schuhe-stiefel` ist selbst eine 301) + Kanarie 16/16, Weiterleitung umgebogen. Rest: 28 «Mensch entscheidet» (26 GSC, 155 Impr./Woche, 3 Klicks) in `dropship/TOTE-LANDESEITEN.md`.
+**Lehre:** Ein Wächter, der je Datensatz eine Abfrage stellt, wächst mit dem Bestand über das Neustart-Fenster hinaus und stirbt dann ohne Spur. Pakete zuerst; und «nicht im Paket» heisst «unbekannt», nicht «weg».
+**Lehre:** «Nichts weiter gefunden» nur behaupten, wenn der schwächste Kanal (das Bild) mitgeprüft ist.
+
+**Shopify-Secret im Env verdorben (13:30):** `SHOPIFY_CLIENT_SECRET` in der Umgebung war 60 statt 38 Zeichen lang, der Grant scheiterte; die
+Datei `/tmp/secrets_env.sh` trug den gültigen Wert. `engine_keepalive.sh` prüft jetzt beide per Grant (Werte nur über env, nie argv; Urteil
+im Cache `/tmp/_shop_secret_pruef` nach md5-Präfix), exportiert den gültigen und startet den Aufseher neu, wenn er den falschen geerbt hat.
+Betreiber-Klick (COWORK-BEFEHL 13:30): Umgebungsvariable korrigieren. **Disk:** Allowance war bis auf 399 MB voll → /tmp + alter
+Scratchpad geräumt, 5.0 GB frei; TMP-HYGIENE gab keinen Platz frei (offen).
+
+**S3 umgesetzt (14:51–15:20):** 478 Kollektionen / 855 Felder, jedes «geplant» + «ok» im Ledger; Wächter 0 veröffentlicht (vorher ~313),
+WebFetch bestätigt. Bericht `dropship/KOLLEKTION-VERSPRECHEN-S3-2026-10-14.md`. Offen: alte Sätze nennen Ware, die nicht mehr aktiv ist.
+
 ## 🔎 Halloween-Seite nie von Google abgerufen · Patch-Gerüst Startseite · Waffenmontage als «Kartenhalter» (2026-10-14, ~10:28–10:42 UTC)
 
 **Index:** Search Console (OpenSEO `inspect_urls`, 0 Credits) meldet `/collections/halloween` «Discovered – currently not indexed»,
@@ -20523,3 +20562,5 @@ Verschoben am 04.10.2026:
 - 2026-10-13 · 🎭 **Messrunde (5 Prüfer/20 Skeptiker): Engpass Verkehr; ChatGPT beste Quelle (5,5 % Korb), IndexNow-These widerlegt; Richter-Material war abgeschnitten (2/5 Prüfer fehlten). Umgesetzt: 18 Kostüme/Masken (Typ «Hautpflege») aus dem Google-Kanal — `ist_kostuem()` + 35 Kanarien im täglichen Durchsetzer; `title:*maske*` findet nur Wortanfänge → Export nötig.** → `dropship/MESSRUNDE-2026-10-13.md`, `dropship/KOSTUEM-GOOGLE-2026-10-13.md`
 <!-- aus CLAUDE.md verschoben 14.10.2026 10:40 UTC (VERBATIM) -->
 - 2026-10-13 · 🖨️ **Druck auf Bestellung: Profil «Druck auf Bestellung» (0.00 unter General-Namen, Transit 6–13 = Zusage 7–14) für 49 DTG-Produkte mit Marge ≥ 0 im schlechtesten Fall (−10 %, MWST 8,1 %, Wechselkurs); Stufe 1 = 10 Motiv-Shirts, Stufe 2 ab 17.10. selbst (Google-Halt mit Basis). Zeichen = Shop-Metafeld `luxe.druck_profil_ids` (keine Produkt-Schreibvorgänge). Kasse teilt Mischkörbe je Profil (eigenes Datum je Lieferung); Matrix 9/9, 0 teurer; Kasse Shirt «23. Okt–3. Nov KOSTENLOS». Theme-Patch + Aufseher/Ampel stehen im Bericht unter «Eintragen».** → `dropship/DRUCK-PROFIL-2026-10-13.md`
+<!-- aus CLAUDE.md verschoben 14.10.2026 15:49 UTC (VERBATIM) -->
+- 2026-10-13 · 🔎 **Shopify zählt 404-Landungen nicht als Sitzung → tote Google-Seiten waren für `tote_landeseiten.py` unsichtbar: GSC=1 (Schnappschuss `tools/gsc_schnappschuss.py` täglich, Ampel «GSC-TOT»), strenge Zielwahl, 9 × 301; dazu Menü +3, «Über 1'500 Kostüme», Fremdlogo-Bilder, Masstabellen XXL.** → `dropship/GSC-TOTE-SEITEN-2026-10-13.md`
