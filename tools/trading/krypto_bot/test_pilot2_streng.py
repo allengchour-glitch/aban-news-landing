@@ -1646,6 +1646,26 @@ pruefe("12.F3 Not-Aus, Rückkauf zum Markt am Rate-Limit gescheitert: der Short 
        (befunde(k, d), g, r["zeilen"][-4:]))
 funde = P.notaus_runde(7529)
 pruefe("12.F3 Not-Aus-Seed 7529: keine Befunde", not P.echte(funde), [(f[0], f[1].get("wann")) for f in P.echte(funde)][:5])
+# 12.F4 (eigene Prüfung nach 12.F1/F2):
+# Konto ohne STOP_LOSS: eine Kurslücke lässt den STOP_LOSS_LIMIT über dem Kurs hängen (er schützt nicht mehr), und Binance lehnt
+# Marktverkäufe dauerhaft ab (PERCENT_PRICE) — Stops setzen geht aber. Vorher blieb der Long ohne wirksamen Stop (8445 USDT);
+# jetzt kommt an die Stelle des hängenden ein Not-Stop unter dem Kurs (cancelReplace; lehnt Binance ab, bleibt der hängende)
+for hebel in (0.5, 1.0):
+    k = neues_konto(20000)
+    B.stop_typen = [x for x in B.stop_typen if x != "STOP_LOSS"]
+    d = neu_buch()
+    e = E("BTC", hebel)
+    e["stop_long"] = 90000.0
+    lauf([e], env_echt(), d)
+    B.bewegen("BTCUSDT", 85000.0)
+    B.regeln = [regel(methode="POST", pfad="/api/v3/order", pred=MARKT_VERKAUF, art="ablehnen", anzahl=10 ** 6)]
+    try:
+        r = lauf([e], env_echt(), d)
+    finally:
+        B.regeln = []
+    pruefe(f"12.F4 hängender Stop-Limit, Verkaufen dauerhaft abgelehnt (Hebel {hebel}): ein Not-Stop unter dem Kurs schützt den Long",
+           not befunde(k, d) and not P._haengend(k, "BTCUSDT") and lage(k, "BTCUSDT")["s_qty"] > 0,
+           (befunde(k, d), P.zeigen(k)["BTCUSDT"], r["zeilen"][-4:]))
 
 # ── kleiner Fuzzer mit festen Seeds (der grosse: python3 -B pruef_fuzzer.py laeufe 0 200 / notaus 0 1600) ──
 funde = []

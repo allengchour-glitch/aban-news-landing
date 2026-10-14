@@ -1345,6 +1345,7 @@ def _stops_setzen(spot, fut, buch, speichern, ents, daten, basis_g, erg, warn, g
             pass
         vorher, s, stabil, jenseits_offen = None, None, False, False
         d.pop("jenseits_gehalten", None)
+        d.pop("haengend_abgelehnt", None)
         fehlt = [False]
         warn_aussen = warn
         schon = set()
@@ -1400,6 +1401,21 @@ def _stops_setzen(spot, fut, buch, speichern, ents, daten, basis_g, erg, warn, g
                 break
             if d.pop("neue_runde", False):  # z. B. ein alter Stop hat inzwischen ausgelöst → nicht als «gleich geblieben» werten
                 vorher = None
+        haengend = d.pop("haengend_abgelehnt", None)
+        if haengend and not gescheitert:
+            # der Verkauf eines hängenden STOP_LOSS_LIMIT wurde bis zuletzt abgelehnt: hängt er noch (frisch gelesen), kommt
+            # wenigstens ein Not-Stop an seine Stelle
+            try:
+                kurs_jetzt = lesen(SCHUTZ_WARTEN)[3]
+                o_h = next((o for o in _nochmal(lambda d=d: spot.eigene_stops(d["sym"]), SCHUTZ_WARTEN)
+                            if o.get("orderId") == haengend[0] and o.get("isWorking") is True
+                            and float(o.get("price") or 0) > kurs_jetzt), None)
+            except Exception:  # noqa: BLE001 — nicht lesbar: trotzdem versuchen (ist er weg, lehnt Binance ab — nichts verloren)
+                kurs_jetzt, o_h = (s["kurs"] if s else d["kurs"]), {"orderId": haengend[0]}
+            menge_h = PL.runde(min(haengend[1], _rest(o_h) if "origQty" in o_h else haengend[1]), d["rs"]["step"]) if o_h else 0.0
+            if o_h and not _haengenden_ersetzen(spot, k, d, st, o_h, menge_h, kurs_jetzt, warn, gesetzt):
+                warn(f"{k}: der ausgelöste Stop-Limit hängt über dem Kurs, Verkauf und Not-Stop abgelehnt — {menge_h:g} "
+                     f"{d['coin']} OHNE Stop, bitte sofort prüfen!")
         offen = [m for m in buch.get("schutz_offen") or [] if m != k]
         nochmal = d.pop("nachkontrolle", False)  # ein zu grosser Stop liess sich nicht korrigieren
         buch["schutz_offen"] = offen + ([k] if fehlt[0] or gescheitert or nochmal else [])  # → die Nachkontrolle versucht es nochmals
@@ -1546,7 +1562,7 @@ def _spot_abgleich(spot, k, d, st, e, s, erg, warn, gesetzt, schutz, lesen, geha
         return
     if jenseits and alt:  # Kurs schon jenseits: die gesperrten Coins mit ihrem Stop zusammen verkaufen (lehnt Binance ab: Stop bleibt)
         _spot_stops_verkaufen(spot, k, d, st, alt, erg, warn, gesetzt, f"Kurs {kurs:g} schon unter dem Stop "
-                              + (f"{grenze:g}" if grenze else "(ausgelöster Stop-Limit hängt)"), soll=soll, schutz=schutz)
+                              + (f"{grenze:g}" if grenze else "(ausgelöster Stop-Limit hängt)"), soll=soll, schutz=schutz, kurs=kurs)
         alt = []
     offen = _alle_weg(alt, lambda o: spot.abbrechen(sym, o["orderId"]), k, "Spot", warn, schutz)
     if offen:
@@ -1651,13 +1667,16 @@ def _spot_stops_anpassen(spot, sym, regeln, alt, soll, kurs, frei, preis=None, m
     return gedeckt, frei, texte, unklar
 
 
-def _spot_stops_verkaufen(spot, k, d, st, alt, erg, warn, gesetzt, grund, soll=None, schutz=None):
+def _spot_stops_verkaufen(spot, k, d, st, alt, erg, warn, gesetzt, grund, soll=None, schutz=None, kurs=None):
     """Kurs schon jenseits des Stops: die Coins unter eigenen Stops zum Markt verkaufen — Stop und Verkauf in EINER Anfrage
     (lehnt Binance den Verkauf ab, bleibt der Stop). Kennt Binance cancelReplace nicht: stornieren (der Verkauf folgt).
     Höchstens `soll` (die Netto-Richtung JETZT): wurden vorher schon freie Coins verkauft (z. B. weil der erste Versuch
     abgelehnt wurde), deckt der Stop auch Absicherungs-Coins — die werden nie mitverkauft (sonst ein nackter Short).
-    Ein Stop, der bewusst stehen bleibt (Binance lehnte ab), zählt als Schutz (`schutz`) und als «jenseits gehalten»."""
+    Ein Stop, der bewusst stehen bleibt (Binance lehnte ab), zählt als Schutz (`schutz`) und als «jenseits gehalten». Lehnt
+    Binance den Verkauf eines ausgelösten, über dem Kurs HÄNGENDEN STOP_LOSS_LIMIT ab, wird das gemerkt: die nächste Runde
+    versucht den Ausstieg nochmals, und gelingt er bis zum Schluss nicht, kommt ein Not-Stop an seine Stelle (_stops_setzen)."""
     sym, regeln, coin = d["sym"], d["rs"], d["coin"]
+    kurs = d["kurs"] if kurs is None else kurs
 
     def bleibt(o, warum="Binance lehnte ab"):
         st["spot"] = o.get("orderId")
@@ -1681,7 +1700,7 @@ def _spot_stops_verkaufen(spot, k, d, st, alt, erg, warn, gesetzt, grund, soll=N
             d["jenseits_gehalten"] = True  # eine weitere Abgleich-Runde änderte nichts daran
             continue
         m = PL.runde(min(_rest(o), offen_soll), regeln["step"])
-        if m * d["kurs"] < regeln["min_notional"]:
+        if m * kurs < regeln["min_notional"]:
             continue  # nichts (mehr) zu verkaufen: der Stop deckt nur noch Absicherung — die nächste Runde räumt ihn ab
         offen_soll -= m
         cid = f"p2{int(time.time() * 1000)}{random.randint(0, 999999):06d}"
@@ -1692,6 +1711,8 @@ def _spot_stops_verkaufen(spot, k, d, st, alt, erg, warn, gesetzt, grund, soll=N
             erg["auftraege"].append((k, "spot", "SELL", ausg))
             gesetzt.append(f"{grund} → {ausg:g} {coin} verkauft")
             st["spot"] = None
+            if (d.get("haengend_abgelehnt") or (None,))[0] == o.get("orderId"):
+                d.pop("haengend_abgelehnt", None)  # doch noch verkauft
         elif res == "unklar":
             u = unklar_eintrag(k, sym, "spot", "SELL", m, False)
             u["cid"] = cid
@@ -1705,13 +1726,38 @@ def _spot_stops_verkaufen(spot, k, d, st, alt, erg, warn, gesetzt, grund, soll=N
                 warn(f"{k}: alter Spot-Stop ließ sich nicht löschen ({type(ex).__name__}) — er bleibt stehen.")
         elif res == "nichts":
             warn(f"{k}: {grund}, Verkauf abgelehnt ({_text(info)[:80]}) — der Spot-Stop bleibt stehen.")
-            if o.get("isWorking") is not True:  # ein wirksamer Stop bleibt; ein hängender schützt nicht → nächste Runde versucht es
+            if o.get("isWorking") is not True:  # ein wirksamer Stop bleibt
                 bleibt(o)
                 d["jenseits_gehalten"] = True
+            else:  # ein hängender schützt nicht: die nächste Runde versucht den Ausstieg nochmals, zum Schluss ein Not-Stop
+                d["haengend_abgelehnt"] = (o.get("orderId"), m)
         # «nur_storno»: Stop weg, Verkauf abgelehnt → der Aufrufer verkauft die (jetzt freien) Coins bzw. setzt einen Not-Stop
         if res in ("nichts", "nur_storno", "unklar"):
             d["nur_ergaenzen"] = True  # auch in den weiteren Abgleich-Runden nicht mehr ersetzen
             break  # nach einer Ablehnung kein weiteres cancelReplace (der nächste Stop bliebe sonst womöglich auch weg)
+
+
+def _haengenden_ersetzen(spot, k, d, st, o, m, kurs, warn, gesetzt):
+    """Ein ausgelöster STOP_LOSS_LIMIT hängt über dem Kurs (Kurslücke, er schützt nicht mehr) und Binance lehnte seinen Verkauf
+    zum Markt eben ab: an seine Stelle einen Not-Stop über `m` Coins unter dem Kurs (5 %, sonst 10/20/35 %) — per cancelReplace,
+    lehnt Binance den neuen ab, bleibt der hängende (nichts verloren). → True, wenn der Not-Stop steht."""
+    sym, regeln = d["sym"], d["rs"]
+    for f in (NOT_STOP_ABSTAND,) + BREITE_NOTSTOPS:
+        p = kurs * (1 - f)
+        if m * p < regeln["min_notional"]:
+            break
+        res, info = spot.ersetzen(sym, o["orderId"], spot.stop_params(sym, m, p, regeln, _kennung(CID_STOP_SPOT)))
+        if res == "ok":
+            st["spot"], st["p_long"] = info.get("orderId"), p
+            gesetzt.append(f"Not-Stop {m:g} @ {PL.runde(p, regeln['tick']):g} statt des hängenden Stop-Limits")
+            warn(f"{k}: der ausgelöste Stop-Limit hing über dem Kurs und Verkaufen geht gerade nicht — an seiner Stelle steht ein "
+                 f"Not-Stop @ {PL.runde(p, regeln['tick']):g}. Bitte prüfen!")
+            return True
+        if res == "unklar":
+            d["neue_runde"] = True  # die nächste Runde liest die Liste und gleicht ab
+        if res != "nichts":
+            break  # «nur_storno»: die Coins sind frei (der Aufrufer verkauft bzw. stoppt sie), «unklar»: nachlesen
+    return False
 
 
 def _spot_rest_sichern(spot, k, d, st, s, soll, p, warn, gesetzt):
