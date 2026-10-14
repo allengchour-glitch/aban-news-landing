@@ -52,6 +52,39 @@
 
 
 
+## ⭐ 310 doppelt importierte Lieferanten-Bewertungen ausgeblendet · Wahrheit nur im Widget · Importer-Tor (2026-10-14, Runde 20:25 bis ~23:30 UTC)
+
+- **Gemessen** (Workflow wf_3c125add-ef9, Gegenprobe über den ganzen Bestand): 296 Doppel auf 67 Produkten. Auf den 59 aktiven
+  davon waren 277 von 591 Bewertungen Kopien. Beispiele: Teleskop 10 = 5 × 2, Laufshirt 17 = 5 + 6 + 6, Hunde-Jacke 24 = 8 × 3.
+  `reviews.rating_count` geht als ratingCount an Google. Ursache: `cj_reviews_import.mjs` fragte nur sein Ledger, nie Judge.me.
+  Die 169 Doppel vom 22.09. entstanden NACH der «Reparatur» vom 21.09.
+- **Getan:**
+  - `judgeme_doppel_wache.py` (Lauf-Regel, Selbsttest 14/14) blendete per curated=spam **310 Kopien auf 66 Produkten** aus,
+    310/310 zurückgelesen.
+  - Importer-Tor: Der Importer liest vor dem POST die Judge.me-Bewertungen des Produkts (`lib/review_doppel.mjs`, Test 16/16)
+    und hat eine Lauf-Sperre.
+  - Die Wache läuft täglich im Aufseher. Bericht: `dropship/JUDGEME-DOPPEL-BEWERTUNGEN-2026-10-14.md`.
+- **Lehre 1 (Eichung braucht die Wahrheitsquelle):** Den Autornamen gibt es NUR im Widget-Metafeld
+  `judgeme.review_widget_ssr_html`. In der API tragen 690 von 709 Bewertungen «C***t» (gemeinsamer Platzhalter-Rezensent).
+  - Erst die Eichung an allen 273 Kandidaten zeigte 5 Schwächen der ersten Regel:
+    - difflib-`autojunk` machte Texte über 200 Zeichen unvergleichbar (0,17 statt 0,86)
+    - 8 s Lauflücke liess zwei Läufe verschmelzen
+    - Zuordnung in Zeitreihenfolge statt nach bestem Treffer
+    - keine Sperre für echte Kunden
+    - der Bericht meldete «vollständig» trotz Seitendeckel
+  - Nach der Korrektur: 299/299 prüfbare Kopien autorengleich, 0 falsch.
+  - **difflib.SequenceMatcher immer mit `autojunk=False` (und in beide Richtungen), sobald Texte länger als 200 Zeichen sein können.**
+- **Lehre 2 (Duplikat-Schutz an der Quelle, nicht im Ledger):** Ein Ledger schützt nur, solange es dasselbe Ledger ist. Bei
+  Snapshot-Rewind oder zwei Instanzen postet derselbe Kommentar zweimal. Das Tor muss das ZIEL fragen (Judge.me), und ein Lauf
+  braucht eine Sperre.
+- **Lehre 3 (Wirkung messen, wo sie zählt):** Judge.me zeigte sofort 6 / 8 / 5 statt 17 / 24 / 10. Das Shopify-Metafeld
+  `reviews.rating_count` (Quelle der strukturierten Daten für Google) zog ~2 min später von selbst nach (23:08:35).
+  Nachgemessen: 64/66 Produkte exakt; Summe 631 → 332. Eine Ausblendung ist erst fertig, wenn die Zahl dort angekommen ist,
+  wo Google sie liest. Gemessen ist das hier, nicht vermutet.
+- Offen:
+  - 1'283 Bewertungen mit 5★ vor dem 29.08. nicht lesbar (API-Seitendeckel, Rezensent je Bewertung)
+  - Nebenbefund für den Betreiber: 2'904 ausgeblendete Bewertungen, fast alle 1–3★ vom 24.09. (Rosinenauswahl?)
+
 ## 🔪 Klingen nur am Bild: 13 gedraftet · Schnitzwerkzeug in der Regel · Messerset kam als «Stahlsatz» durch · Wächter ohne Schlusszeile (2026-10-14, ~19:00–20:10 UTC)
 
 - **Gemessen:** Eine weite Titelsuche fand 306 aktive Treffer (Zange, Hobel, Schnitz, Survival, Schaber, Kamm, Rasier …). 193 davon
@@ -20615,3 +20648,5 @@ Verschoben am 04.10.2026:
 - 2026-10-13 · 🇨🇭 **Kasse zeigte für CH-Lager-Kostüme «28. Okt–11. Nov» → Profil «CH-Lager» mit 0.00-Tarifen UNTER DEN NAMEN des General profile (gleichnamige Tarife addieren sich, Bedingung an der Korbsumme → Mischkorb 7+0, niemand zahlt mehr; Google liest nur General): Matrix 8/8, Kasse «20.–21. Okt KOSTENLOS», Stufe 1 = 1'607 Produkte ohne Google, Stufe 2/3 ab 14./17.10. (`ch_lager_profil.py`, Aufseher täglich). `versand_transit_wache` sah nur 50 von 55 Profilen → blättert jetzt.** → `dropship/CH-LAGER-PROFIL-2026-10-13.md`
 <!-- aus CLAUDE.md verschoben 14.10.2026 20:02 UTC (VERBATIM) -->
 - 2026-10-13 · 🦺 **134 «Sicherheitsschuhe/Schutzschuhe» ohne Norm (PSA-Begriff) → `psa_schuhe_wache.py`: 91 → Arbeitsschuh + PSA-Hinweis, Aufseher täglich; Trockenlauf-Liste fand 5 Fehler, die 16 grüne Kanarien nicht sahen (Arbeitsarbeitsschuhe, Verbandsschuh). Dazu YouTube 12→8 h, IG-Reels 8→12 h (Betreiber «youtube pushe mehr», Median 183 vs 32).** → `dropship/PSA-SCHUHE-2026-10-13.md`
+<!-- aus CLAUDE.md verschoben 14.10.2026 23:08 UTC (VERBATIM) -->
+- 2026-10-13 · 🧾 **CJ teilt einen Auftrag VOR dem Bezahlen (LX1013: SD2608141614440663500 und …-2, beide bezahlt) → Doppel-Erkennung zählt den STAMM der cjOrderId (ohne «-n»), nur eine andere SD-Nummer ist ein Doppel; Hetzner-Server GEMESSEN: Type=oneshot + KillMode=control-group → das Takt-Ende (1,5–2,8 min) beendet ALLE Motoren; der «falsche» Rewind-Alarm war die einzige Selbstheilung des Server-Klons (98 Stashes) → nie abschalten, ohne die Heilung zu ersetzen; cj() wiederholte createOrderV2 bei verlorener Antwort (Gegenprobe: 4 POSTs = 4 Aufträge) → Anlage nur EINMAL senden.** → Journal 13.10. 🧾
