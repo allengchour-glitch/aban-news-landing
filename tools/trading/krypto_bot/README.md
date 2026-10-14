@@ -730,12 +730,16 @@ Andere Strategie wählen: `setx KRYPTO_STRATEGIE "halten"` (immer 100 %) oder `"
 > und dabei drei echte Fehler (Szenarien 11.F/11.S); die 12. einen Not-Aus, der zum Markt mit Teil-Ausführungen und unklaren
 > Antworten umgehen kann (nachfassen bis zum Ziel, sonst ein weiter Not-Stop), ohne Kurs das Ungesicherte trotzdem schliesst und
 > bei zwei gleichzeitigen Not-Aus das Buch zusammenführt statt überschreibt; die eigene Prüfkampagne danach fand vier weitere
-> Fehler (Szenarien 12.F1–12.F4). Alle Funde sind behoben und
+> Fehler (Szenarien 12.F1–12.F4); ihre Mutationsprobe fand 18 eingebaute Fehler, die kein Test bemerkte — 13 haben jetzt ein
+> eigenes Szenario (12.S1–12.S10, geschärft 12.p1/12.p5b), 5 sind gleichwertig: R12-M5 (der Not-Aus sperrt zwischen Lesen und
+> Verkaufen nie Coins), R12-M23 (nach einer Ablehnung überspringt `nur_ergaenzen` wirksame Stops ohnehin), R12-M34 (nur eine
+> Abgleich-Runde mehr), R10-M17 (ein Spot-Stop über mehr als den Rest gilt als zu gross → der Short bekommt ohnehin den ganzen
+> Stop), R11-M19 (Staub-Paar). Alle Funde sind behoben und
 > als feste Szenarien in `test_pilot2_streng.py`. `FREIGEGEBEN = False` bleibt, bis eine weitere unabhängige Prüfung keine Blocker
 > mehr findet — bis dahin wirkt `KRYPTO_PILOT2=an` nicht (siehe «Starten» unten).
 
 Gleiche Signale wie der Pilot, klügere Ausführung über **beide** Binance-Konten (`pilot2_plan.py` rechnet, `pilot2_live.py`
-handelt; 23 + 154 + 149 Tests gegen zwei streng nachgebaute Binance, Fuzzer, Mutationsproben). Ohne `KRYPTO_PILOT2=an` handelt der
+handelt; 23 + 154 + 159 Tests gegen zwei streng nachgebaute Binance, Fuzzer, Mutationsproben). Ohne `KRYPTO_PILOT2=an` handelt der
 Pilot wie bisher.
 
 **Was er tut:** Richtung long → Coin im Spot-Konto (kein Funding). Richtung short → Short-Perpetual (Hebel 1, bekommt Funding).
@@ -971,7 +975,7 @@ python3 tools/trading/krypto_bot/test_calls.py    # 84 Tests: 40 typische Call-F
 python3 tools/trading/krypto_bot/test_binance.py  # 21 Tests, inkl. nachgebautem Binance-Server mit Signaturprüfung
 python3 tools/trading/krypto_bot/test_pilot2_plan.py  # 23 Tests: Pilot-2.0-Rechnung (Richtung, Ernte, Pfand, Mindestbeträge)
 python3 tools/trading/krypto_bot/test_pilot2_live.py  # 154 Tests: Pilot 2.0 («Konto = Wahrheit») gegen eine strenge nachgebaute Binance
-python3 -B tools/trading/krypto_bot/test_pilot2_streng.py  # 149 Tests: Belege der 8.–12. Prüfung, Schlussproben, Fuzzer-Funde gegen die Prüf-Börse, kleine Fuzzer
+python3 -B tools/trading/krypto_bot/test_pilot2_streng.py  # 159 Tests: Belege der 8.–12. Prüfung, Schlussproben, Fuzzer-Funde gegen die Prüf-Börse, kleine Fuzzer
 python3 -B tools/trading/krypto_bot/test_maxprofit.py      # 26 Tests: Max-Profit-Kern (gleiches Modell wie der Pilot, Kelly-Optimum, keine Zukunftsdaten, Kosten)
 python3 -B tools/trading/krypto_bot/test_testnetz_pruefung.py  # 47 Tests: das Testnetz-Prüfskript gegen die Prüf-Börse (nur 127.0.0.1)
 python3 -B tools/trading/krypto_bot/pruef_fuzzer.py notaus 0 1600     # grosser Fuzzer (für Prüfungen): Not-Aus unter harten Störungen

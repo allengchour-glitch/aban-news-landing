@@ -3,6 +3,7 @@
 11. Prüfung (11.*, dazu die Schlussprobe 11.F/11.S: eigene Funde und Lücken der Mutationsprobe), der 12. Prüfung (12.*) und die
 Fuzzer-Funde als feste Szenarien, dazu ein kleiner Fuzzer mit festen Seeds (pruef_fuzzer.py). Ohne Netz, nur 127.0.0.1.
     python3 -B tools/trading/krypto_bot/test_pilot2_streng.py"""
+import json
 import os
 import sys
 from pathlib import Path
@@ -1410,8 +1411,11 @@ for name, anzahl in (("einmal nur halb ausgeführt", 1), ("immer nur halb ausgef
     B.regeln = []
     g = lage(k, "BTCUSDT")
     _falsch = [z for z in r["zeilen"] if "Short 0.094 zum Markt zurückgekauft" in z and g["pos"] != 0]
+    # nachgefasst (erkennt R12-M2): «einmal halb» → der zweite Versuch kauft den Rest (Short ganz zu); «immer halb» → nach 5
+    # Versuchen bleibt nur ein kleiner Rest unter dem weiten Not-Stop (ohne Nachfassen bliebe die Hälfte)
+    nachgefasst = abs(g["pos"]) < 1e-9 if anzahl == 1 else abs(g["pos"]) < 0.01
     pruefe(f"12.p1 Not-Aus zum Markt, Rückkauf {name}: der Rest wird nachgefasst bzw. weit gestoppt, keine falsche Meldung",
-           not befunde(k, d) and not _falsch and g["p_qty"] >= -g["pos"] - 1e-9 and ungesichert_usdt(k) <= 10,
+           not befunde(k, d) and not _falsch and g["p_qty"] >= -g["pos"] - 1e-9 and ungesichert_usdt(k) <= 10 and nachgefasst,
            (befunde(k, d), g, r["zeilen"][-3:]))
 # p1c (B1): kein Kurs lesbar UND kein zuletzt bekannter Kurs im Buch → der ungesicherte Short (über die Coins hinaus) wird trotzdem
 # reduceOnly geschlossen — das braucht keinen Kurs; das abgesicherte Paar bleibt stehen
@@ -1505,11 +1509,12 @@ g = lage(k, "BTCUSDT")
 pruefe("12.p5 zwei Not-Aus gleichzeitig: das Buch wird zusammengeführt (Datei bleibt, nicht «alles zu»), die Nachkontrolle schliesst "
        "den verspätet angekommenen Kauf", rB["alles_zu"] is False and _datei_da and g["pos"] == 0 and g["coins"] * B.kurs["BTCUSDT"] < 10,
        (rB["alles_zu"], _datei_da, g))
-_v = L._buch_vereinen(dict(L.leer_buch(), start="2026-10-14", unklar=[{"markt": "BTC", "cid": "a"}], notaus_offen=True),
-                      dict(L.leer_buch(), unklar=[{"markt": "ETH", "cid": "b"}], schutz_offen=["ETH"], paar_pause={"BTC": 5}))
-pruefe("12.p5b Buch zusammenführen: Unklares beider, offene Märkte, «Not-Aus offen», Start und Paar-Pause bleiben",
-       len(_v["unklar"]) == 2 and _v["notaus_offen"] and _v["schutz_offen"] == ["ETH"] and _v["start"] == "2026-10-14"
-       and _v["paar_pause"] == {"BTC": 5}, _v)
+_v = L._buch_vereinen(dict(L.leer_buch(), start="2026-10-14", unklar=[{"markt": "BTC", "cid": "a"}], notaus_offen=True,
+                           schutz_offen=["BTC"], paar_pause={"BTC": 9}),
+                      dict(L.leer_buch(), unklar=[{"markt": "ETH", "cid": "b"}], schutz_offen=["ETH"], paar_pause={"BTC": 5, "ETH": 3}))
+pruefe("12.p5b Buch zusammenführen: Unklares beider, offene Märkte BEIDER, «Not-Aus offen», Start und je Markt die spätere Paar-Pause",
+       len(_v["unklar"]) == 2 and _v["notaus_offen"] and sorted(_v["schutz_offen"]) == ["BTC", "ETH"] and _v["start"] == "2026-10-14"
+       and _v["paar_pause"] == {"BTC": 9, "ETH": 3}, _v)
 # p6 (W2): nach dem ersten 409 (Binance storniert, lehnt den Ersatz ab) ersetzt Pilot 2.0 keinen weiteren Stop per cancelReplace
 funde = []
 for seed in (9193, 9217, 9464, 9652):
@@ -1666,6 +1671,170 @@ for hebel in (0.5, 1.0):
     pruefe(f"12.F4 hängender Stop-Limit, Verkaufen dauerhaft abgelehnt (Hebel {hebel}): ein Not-Stop unter dem Kurs schützt den Long",
            not befunde(k, d) and not P._haengend(k, "BTCUSDT") and lage(k, "BTCUSDT")["s_qty"] > 0,
            (befunde(k, d), P.zeigen(k)["BTCUSDT"], r["zeilen"][-4:]))
+
+# ── Schlussprobe der 12. Runde: Lücken der Mutationsprobe (je ein festes Szenario; gleichwertig sind R12-M5/M23/M34, R10-M17,
+#    R11-M19 — Begründung im README) ──
+
+
+def handlage(coins=0.0, short=0.0, kurs=100000.0, usdt=20000.0):
+    """Kontostand von Hand: Coins im Spot, Short im Perp, Kurs — dazu Spot-/Futures-Anschluss und die Markt-Daten d."""
+    k_ = neues_konto(usdt)
+    B.bewegen("BTCUSDT", kurs)
+    cfg_ = L.einstellungen(env_echt())
+    sp_, fu_ = L.Spot(cfg_["spot"]), L.Fut(cfg_["futures"])
+    k_.frei["BTC"] = coins
+    if short:
+        k_.buchen("BTCUSDT", -short, kurs)
+    return k_, sp_, fu_, {"sym": "BTCUSDT", "coin": "BTC", "kurs": kurs, "rs": sp_.regeln2("BTCUSDT"), "rf": fu_.regeln("BTCUSDT")}
+
+
+def eigener_spot_stop(sp_, d_, menge, preis):
+    return sp_.stop_verkauf(d_["sym"], menge, preis, d_["rs"], cid=L._kennung(L.CID_STOP_SPOT))
+
+
+def cr_zahl(n0):
+    return sum(1 for x in B.log[n0:] if x[2] == "/api/v3/order/cancelReplace")
+
+
+_W = []
+# 12.S1 (R12-M1): Not-Aus, Verkaufen geht nicht (das Paar bleibt), Rückkauf des Richtungs-Shorts abgelehnt (429), der alte Perp-Stop ist
+# weg; der neue Schutz-Stop würde sofort auslösen (Kurs +12 % über den Plan-Stop, kein Kurs lesbar) → zum Markt NUR den Richtungs-Short
+k = neues_konto(20000)
+d = neu_buch()
+lauf([E("BTC", -0.5)], env_echt(), d)
+k.algos.clear()
+gemacht = [0]
+
+
+def h12s1(m, pfad, p_):
+    if m == "POST" and pfad == "/fapi/v1/algoOrder" and not gemacht[0]:
+        gemacht[0] = 1
+        B.bewegen("BTCUSDT", B.kurs["BTCUSDT"] * 1.12)
+        B.regeln.extend([dict(r_) for r_ in KURS_WEG])
+
+
+B.vor_jeder_anfrage = h12s1
+B.regeln = [regel(methode="POST", pfad="/api/v3/order", pred=MARKT_VERKAUF, art="ablehnen", anzahl=10 ** 6),
+            regel(methode="POST", pfad="/fapi/v1/order", pred=lambda m, p_, q: REDUCE(m, p_, q) and not gemacht[0], art="429", anzahl=10 ** 6)]
+try:
+    lauf([], env_echt(), d, notaus=True)
+finally:
+    B.vor_jeder_anfrage = None
+    B.regeln = []
+g = lage(k, "BTCUSDT")
+pruefe("12.S1 Not-Aus zum Markt kauft nur den ungesicherten Short zurück — die Absicherung des Paars bleibt (Ziel = Stand − Menge)",
+       gemacht[0] and g["pos"] < 0 and abs(-g["pos"] - g["coins"]) <= 0.001 + 1e-9, g)
+# 12.S2 (R12-M3): Not-Aus-Rückkauf zum Markt kommt UNKLAR zurück (503 vor der Verarbeitung) → einmal neu geschickt → Short zu
+k = neues_konto(20000)
+d = neu_buch()
+lauf([E("BTC", 0.0)], env_echt(), d)
+gemacht = [0]
+
+
+def h12s2(m, pfad, p_):
+    if m == "POST" and pfad == "/fapi/v1/algoOrder" and not gemacht[0]:
+        gemacht[0] = 1
+        B.bewegen("BTCUSDT", B.kurs["BTCUSDT"] * 1.07)
+        B.regeln.extend([dict(r_) for r_ in KURS_WEG] + [regel(methode="POST", pfad="/fapi/v1/order", pred=REDUCE, art="vor503")])
+
+
+B.vor_jeder_anfrage = h12s2
+B.regeln = [regel(methode="POST", pfad="/fapi/v1/order", pred=REDUCE, art="vor503")]
+try:
+    lauf([], env_echt(), d, notaus=True)
+finally:
+    B.vor_jeder_anfrage = None
+    B.regeln = []
+pruefe("12.S2 Not-Aus: unklarer Rückkauf zum Markt wird einmal neu geschickt — Short zu, nicht nur weit gestoppt",
+       abs(lage(k, "BTCUSDT")["pos"]) < 1e-9, lage(k, "BTCUSDT"))
+# 12.S3 (R12-M18): der Not-Aus schliesst «echt» sauber; währenddessen trägt ein anderer Lauf einen gestarteten Testnetz-Modus ein →
+# die Buch-Datei darf nicht gelöscht werden (sonst ginge dessen Stand verloren)
+k = neues_konto(20000)
+d = neu_buch()
+lauf([E("BTC", 1.0)], env_echt(), d)
+
+
+def h12s3(m, pfad, p_):
+    try:
+        alles_ = json.loads(Path(d).read_text())
+    except (OSError, ValueError):
+        alles_ = {}
+    if "testnetz" not in alles_:
+        L.buch_schreiben(d, "testnetz", dict(L.leer_buch(), start={"usdt": 100.0}, uid=1))
+
+
+B.vor_jeder_anfrage = h12s3
+try:
+    r = lauf([], env_echt(), d, notaus=True)
+finally:
+    B.vor_jeder_anfrage = None
+pruefe("12.S3 «echt» alles zu, aber ein anderer Modus kam dazu: die Buch-Datei bleibt",
+       r["alles_zu"] and Path(d).exists() and "testnetz" in json.loads(Path(d).read_text()), (r["alles_zu"], Path(d).exists()))
+# 12.S4 (R12-M21): Perp-Liste unlesbar UND der alte Perp-Stop nicht löschbar → zwei stehen → die Coins bekommen einen Spot-Stop
+k = neues_konto(20000)
+d = neu_buch()
+lauf([E("BTC", -0.5)], env_echt(), d)
+B.regeln = [regel(methode="GET", pfad="/fapi/v1/openAlgoOrders", art="429", anzahl=10 ** 6),
+            regel(methode="POST", pfad="/fapi/v1/order", pred=REDUCE, art="429", anzahl=10 ** 6),
+            regel(methode="DELETE", pfad="/fapi/v1/algoOrder", art="429", anzahl=10 ** 6)]
+lauf([], env_echt(), d, notaus=True)
+B.regeln = []
+g = lage(k, "BTCUSDT")
+if g["p_preise"]:
+    B.bewegen("BTCUSDT", max(g["p_preise"]) * 1.01)
+h = lage(k, "BTCUSDT")
+_lang = max(0.0, min(h["netto"], h["coins"]) - h["s_qty"]) * h["kurs"]
+pruefe("12.S4 zwei Perp-Stops (alter nicht löschbar): lösen beide aus, liegt kein Long ohne Stop da", g["n_p"] == 2 and _lang < 10, (g, _lang))
+# 12.S5 (R11-M6): Not-Aus, Spot-Ticker gesperrt, Futures-Markpreis lesbar → frischer Markpreis, nicht der zuletzt bekannte Kurs
+k = neues_konto(20000)
+d = neu_buch()
+lauf([E("BTC", 1.0)], env_echt(), d)
+B.regeln = [regel(methode="GET", pfad="/api/v3/ticker/price", art="429", anzahl=10 ** 6)]
+r = lauf([], env_echt(), d, notaus=True)
+B.regeln = []
+pruefe("12.S5 Not-Aus, Ticker gesperrt, Markpreis da: frischer Kurs (keine Meldung «zuletzt bekannter Kurs»), alles zu",
+       r["alles_zu"] and not any("zuletzt bekannten Kurs" in z for z in r["zeilen"]), r["zeilen"][-3:])
+# 12.S6 (R11-F2): Stop über 0,2 BTC, Short 0,1 (Absicherung) → Netto 0,1; Kurs unter dem Plan-Stop → zum Markt NUR die Netto-Richtung
+k, sp, fu, dd = handlage(coins=0.2, short=0.1, kurs=85000.0)
+eigener_spot_stop(sp, dd, 0.2, 80000.0)
+L._spot_stops_verkaufen(sp, "BTC", dd, {}, sp.eigene_stops("BTCUSDT"), {"auftraege": []}, _W.append, [], "Test", soll=0.1, schutz=[],
+                        kurs=85000.0)
+pruefe("12.S6 Ausstieg über einen Stop, der auch Absicherung deckt: verkauft nur die Netto-Richtung (0,1 BTC bleiben)",
+       abs(lage(k, "BTCUSDT")["coins"] - 0.1) < 1e-6, lage(k, "BTCUSDT"))
+# 12.S7 (R12-M25) und 12.S8 (R12-M26): Ersetzen abgelehnt (429) → der Abgleich merkt es sich (kein cancelReplace mehr in diesem Lauf)
+for name, stops in (("ein Stop", (0.2,)), ("zwei Stops", (0.1, 0.1))):
+    k, sp, fu, dd = handlage(coins=0.2, kurs=100000.0)
+    for x in stops:
+        eigener_spot_stop(sp, dd, x, 80000.0)
+    s_ = L._soll(0.2, 0.0, 100000.0, dd)
+    s_.update(frei=0.0, gebunden=0.2)
+    B.regeln = [regel(methode="POST", pfad="/api/v3/order/cancelReplace", art="429", anzahl=10 ** 6)]
+    L._spot_abgleich(sp, "BTC", dd, {}, {"stop_long": 85000.0}, s_, {"auftraege": []}, _W.append, [], [],
+                     lambda w=None, sp=sp, fu=fu, dd=dd: L._lage(sp, fu, dd, w), False)
+    B.regeln = []
+    pruefe(f"12.S{7 if len(stops) == 1 else 8} Abgleich, {name}: Ersetzen abgelehnt → gemerkt (nur ergänzen, kein cancelReplace mehr)",
+           dd.get("nur_ergaenzen") is True, dd)
+# 12.S9 (R12-M27): Not-Aus, zwei gesperrte Stops, das erste cancelReplace storniert und lehnt ab (409) → KEIN zweites (der zweite schützt)
+k, sp, fu, dd = handlage(coins=0.2, kurs=100000.0)
+eigener_spot_stop(sp, dd, 0.1, 80000.0)
+eigener_spot_stop(sp, dd, 0.1, 80000.0)
+n0 = len(B.log)
+B.regeln = [regel(methode="POST", pfad="/api/v3/order/cancelReplace", art="nur_storno", anzahl=10 ** 6)]
+L._notaus_gesperrte_verkaufen(sp, "BTC", "BTCUSDT", "BTC", 0.0, 0.0, 100000.0, dd["rs"], {"auftraege": []}, _W.append, "echt", L.leer_buch(), {})
+B.regeln = []
+pruefe("12.S9 Not-Aus: nach einem 409 kein zweites cancelReplace — der zweite Stop steht noch", cr_zahl(n0) == 1
+       and lage(k, "BTCUSDT")["s_qty"] >= 0.1 - 1e-9, (cr_zahl(n0), lage(k, "BTCUSDT")))
+# 12.S10 (R10-M15): ein zu grosser Stop (0,2 bei Netto 0,1), Ersetzen unklar (Antwort verloren) → sofort beidseitig gesichert
+k, sp, fu, dd = handlage(coins=0.2, short=0.1, kurs=100000.0)
+eigener_spot_stop(sp, dd, 0.2, 80000.0)
+s_ = L._soll(0.2, -0.1, 100000.0, dd)
+s_.update(frei=0.0, gebunden=0.2)
+B.regeln = [regel(methode="POST", pfad="/api/v3/order/cancelReplace", art="nach503")]
+L._spot_abgleich(sp, "BTC", dd, {}, {"stop_long": 85000.0}, s_, {"auftraege": []}, _W.append, [], [],
+                 lambda w=None: L._lage(sp, fu, dd, w), False)
+B.regeln = []
+pruefe("12.S10 zu grosser Stop, Ersetzen unklar → beidseitig gesichert (er könnte noch stehen und die Absicherung treffen)",
+       dd.get("beidseitig") is True, dd)
 
 # ── kleiner Fuzzer mit festen Seeds (der grosse: python3 -B pruef_fuzzer.py laeufe 0 200 / notaus 0 1600) ──
 funde = []
