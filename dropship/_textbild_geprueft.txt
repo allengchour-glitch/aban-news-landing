@@ -63905,3 +63905,5 @@ gid://shopify/Product/15412899676545	gid://shopify/MediaImage/69551858450817	pin
 gid://shopify/Product/15412902855041	gid://shopify/MediaImage/69650084888961	pingpong-bremse
 gid://shopify/Product/15430408438145	gid://shopify/MediaImage/69683272352129	pingpong-bremse
 gid://shopify/Product/15450851934593	gid://shopify/MediaImage/69887443042689	pingpong-bremse
+gid://shopify/Product/15461729796481	gid://shopify/MediaImage/70040394203521	bildtausch-sperre
+gid://shopify/Product/15469436731777	gid://shopify/MediaImage/70126595375489	bildtausch-sperre
