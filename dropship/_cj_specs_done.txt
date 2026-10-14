@@ -4527,3 +4527,15 @@ keramik-schale-639400	gesetzt-1
 kleine-porzellan-schale-601900	gesetzt-4
 keramik-essstabchen-halter-600000	gesetzt-1
 schneeflocken-teller-600300	gesetzt-2
+3-stufiger-obstteller-614600	gesetzt-2
+holz-desktop-organizer-631200	gesetzt-2
+toiletten-reinigungssatz-489601	nicht-aktiv
+haushaltsreinigungstucher-832321	gesetzt-1
+badezimmerhahn-600900	gesetzt-2
+badezimmerreinigungspads-724866	gesetzt-1
+antirutsch-badematte-859393	nicht-aktiv
+2-in-1-tierpflegeshampoo-603900	nicht-aktiv
+haarfang-fur-dusche-787265	gesetzt-2
+keramikpumpflasche-616500	gesetzt-2
+duschkopf-mit-3-strahlmodi-058177	nicht-aktiv
+regendusche-mit-6-spruheinstellungen-854977	nicht-aktiv
