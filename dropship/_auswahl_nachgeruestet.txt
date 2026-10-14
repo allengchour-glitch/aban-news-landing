@@ -2099,3 +2099,4 @@
 16617700295047	stecker-eu	2026-10-14	nachttischlampe-mit-integrierter-steckdose-625700
 16617699377543	Farbe:3+Modell:6:16	2026-10-14	kabelhalter-fur-den-schreibtisch-769a50
 16617698722183	Grösse:2:2	2026-10-14	kunststoff-rechtwinkelfuhrungsblock-55e0bf
+16617696887175	Farbe:2:2	2026-10-14	klappzange-aus-edelstahl-d45053
