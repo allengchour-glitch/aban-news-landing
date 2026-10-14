@@ -350,3 +350,6 @@ gid://shopify/Product/15470077477249	draft-ausverkauft	Skelett, lebensgross
 gid://shopify/Product/15469969146241	draft-ausverkauft	Schwingerhose
 gid://shopify/Product/15470023803265	draft-ausverkauft	Zubehör: Amazone Düngerstreuer
 gid://shopify/Product/15470074626433	draft-ausverkauft	Plüsch Elefant · Laurana, 70 cm
+gid://shopify/Product/15469876314497	draft-ausverkauft	Lederhose 100% Polyester kurz
+gid://shopify/Product/15470001783169	reaktiviert	Cat Bulldozer
+gid://shopify/Product/15469969146241	reaktiviert	Schwingerhose
