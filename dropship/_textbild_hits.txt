@@ -18308,3 +18308,15 @@ gid://shopify/Product/16617715106183	25->0	Neon Wandleuchte «Moon cloud»
 gid://shopify/Product/16617715138951	69->0	Elektrischer Stabmixer mit Mixbecher
 gid://shopify/Product/16617716187527	38->1	Bohemian Bluse mit V-Ausschnitt
 gid://shopify/Product/16617716253063	11->1	Küchentablett mit Doppelgriff
+gid://shopify/Product/16617716482439	16->0	GPS Smart-Armband mit Herzfrequenz
+gid://shopify/Product/16617716515207	121->0	Handtuch-Set Schwarz aus Edelstahl
+gid://shopify/Product/16617716646279	42->0	Gänseblümchen-Brosche im Retro-Stil
+gid://shopify/Product/16617716810119	82->0	Leinenhemd Langarm Einfarbig
+gid://shopify/Product/16617716908423	30->0	Brosche Narzisse
+gid://shopify/Product/16617716973959	18->0	Kabelloser Bluetooth-Lautsprecher für unterwegs
+gid://shopify/Product/16617717039495	14->0	Vintage Blumenbrosche für Damen
+gid://shopify/Product/16617717203335	66->0	Kurzarm-T-Shirt für Herren
+gid://shopify/Product/16617717301639	13->0	Brosche mit Pfauenfeder-Schwanz und Kristallen
+gid://shopify/Product/16617717563783	101->1	Herren-Hemd aus Leinen
+gid://shopify/Product/16617717727623	10->0	Gehäkelter Schlüsselanhänger Pilz
+gid://shopify/Product/16617717793159	16->0	Staubschutzhülle für Waschmaschinen
