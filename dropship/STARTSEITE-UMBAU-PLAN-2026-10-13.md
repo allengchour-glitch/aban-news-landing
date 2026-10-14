@@ -491,7 +491,7 @@ Im Shop und im Theme ist nichts geändert und nichts committet.
   - Hero-Zeile 3 lautet «🚚 Gratis-Versand in der Schweiz ab CHF 50 · 💳 Klarna & TWINT» (die doppelte Rückgabe ist weg).
 
   Nachgemessen: H1 1× sichtbar, 150 Ü. Handy-Screenshot 390 px: `dropship/startseite-a5-390px-2026-10-14.png`, Hero unverändert, Klarna im ersten Bildschirm.
-- **A2 umgesetzt (10:03 UTC):** `blocks/_product-card-gallery.liquid`. Die Zoom-out-Details erscheinen nur noch bei `section.settings.product_card_size`, Titel als `<p class="h4">` statt `<h3>`.
+- **A2 umgesetzt (10:00 UTC):** `blocks/_product-card-gallery.liquid`. Die Zoom-out-Details erscheinen nur noch bei `section.settings.product_card_size`, Titel als `<p class="h4">` statt `<h3>`.
   Backup `theme_backup/_product-card-gallery.liquid.vor-a2-2026-10-14`. Startseite 150 → **30 Überschriften**. Kollektionsseite (Halloween, frisch gerendert, proc 665 ms): 24 Zoom-out-Titel als `<p>`, 0 `<h3 class="h4">`.
 - **Offen:** A1 Patch-Gerüst und A3–A4, A6–A9 (Zoom-out-Titel, ?variant=, Karussell-Galerie/srcset, Kategorie-Liste, Häkchen-SVG, Kleinkram).
   Die Prüfer-Messung mit Ankern und Zeilennummern liegt in `scratchpad`; die wesentlichen Anker stehen oben im Plan.
