@@ -911,3 +911,28 @@
 16613785698695	kein-stecker-merkmal	2026-10-13	Auto-Heizkissen mit 12V Stromversorgung
 16613786681735	mehrere-varianten	2026-10-13	Dreifach-USB-Adapter aus Aluminium-Legierung
 16613793792391	kein-stecker-merkmal	2026-10-13	USB-C Hub Adapter mit HDMI, VGA, LAN & Power-Port
+16614817628551	kein-stecker-merkmal	2026-10-14	Friseur-Toolkit mit elektrischer Schere und Haartrockner
+16615231390087	mehrere-varianten	2026-10-14	Handstaubsauger für das Auto – 12V, 120W
+16615386743175	kein-stecker-merkmal	2026-10-14	Handkurbel-Eismaschine
+16615390314887	mehrere-varianten	2026-10-14	Heissluftfritteuse mit Sichtfenster
+16615804731783	kein-stecker-merkmal	2026-10-14	Deckenleuchte im Wabi-Sabi-Stil
+16617607856519	mehrere-varianten	2026-10-14	Magnetisches 3-in-1-Ladegerät – faltbar
+16617710813575	kein-stecker-merkmal	2026-10-14	Zitrus-Entsafter-Aufsatz für Küchenmaschinen
+16617711763847	mehrere-varianten	2026-10-14	Tragbarer Entsafter mit USB-Ladefunktion
+16617712255367	mehrere-varianten	2026-10-14	Heissluftfritteuse 5–6 Liter
+15406765801857	keine-cj-sku	2026-10-14	Tech Hero Geschenkbox – Smartwatch Pro + ANC-Kopfhörer + 3-i
+15443531760001	mehrere-varianten	2026-10-14	Wireless-Charger «QiFast» · kabellos laden
+15443531792769	kein-stecker-merkmal	2026-10-14	Wireless-Charger «ChargeSpot» · kabellos laden
+15446266970497	kein-stecker-merkmal	2026-10-14	Wireless Controller Ladestation mit LED-Anzeige
+15446267134337	mehrere-varianten	2026-10-14	Kabellose Gamecontroller-Ladestation
+15446267789697	kein-stecker-merkmal	2026-10-14	VR2 Ladestation mit Brillenhalterung
+15447560978817	mehrere-varianten	2026-10-14	3-in-1 Magnetische Ladestation
+15447561109889	kein-stecker-merkmal	2026-10-14	4-in-1 Faltbare Kabellose Ladestation
+15447864508801	mehrere-varianten	2026-10-14	3-in-1 Ladestation mit Uhr & Wireless Charging
+15447867588993	mehrere-varianten	2026-10-14	3-in-1 Faltbarer Magnetischer Wireless Charger
+15447867687297	mehrere-varianten	2026-10-14	3-in-1 faltbarer Ladeständer mit MagSafe
+15447867949441	kein-stecker-merkmal	2026-10-14	Ladedock für PlayStation Portal
+15447868146049	mehrere-varianten	2026-10-14	Organizer mit Wireless Charger
+15447875158401	kein-stecker-merkmal	2026-10-14	HDMI Adapter für Amazon Fire TV Stick
+15447875584385	kein-stecker-merkmal	2026-10-14	Pushbao Dual-Band WiFi Adapter für TV/Projektor
+15448846664065	kein-stecker-merkmal	2026-10-14	Mirascreen 2.4G WiFi HDMI Adapter
