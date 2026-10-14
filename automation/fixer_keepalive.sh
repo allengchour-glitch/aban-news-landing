@@ -589,7 +589,7 @@ while true; do
     ( cd "$REPO" && flock -n /tmp/lock_hype_export.lock python3 automation/hype_export_bauen.py >> /tmp/hype_export_bauen.log 2>&1 )
     echo "$(date -u +%H:%M) export.jsonl im falschen Format → neu gebaut"
   fi
-  for L in verkauf_gewinn_wache preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache produkttexte_du_form verlustbringer social_queue_saeubern jury_nachbessern bild_queue_captions_ehrlich google_feedback_wache bild_mini_entfernen kategorie_wache bild_heilversprechen styling_floskel_wache heilversprechen_seo_wache koll_seo_laengen beleuchtung_tags_fix kollektion_accessoires_fix ig_gepostet_tags herbst_kuratieren google_titel_reparatur bild_werbetext_rueckholer kollektion_doppel preis_verlustschutz fortura_ek_nachtragen kinder_sicherheit fuellmenge_nachtragen nachfrage_liebling social_saison_vorrang gfeed_anstupsen google_kategorie_fein schmuck_tag_heilen saison_tags_nachtragen anlass_social_sperre; do
+  for L in verkauf_gewinn_wache queue_schreiber_wache preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache produkttexte_du_form verlustbringer social_queue_saeubern jury_nachbessern bild_queue_captions_ehrlich google_feedback_wache bild_mini_entfernen kategorie_wache bild_heilversprechen styling_floskel_wache heilversprechen_seo_wache koll_seo_laengen beleuchtung_tags_fix kollektion_accessoires_fix ig_gepostet_tags herbst_kuratieren google_titel_reparatur bild_werbetext_rueckholer kollektion_doppel preis_verlustschutz fortura_ek_nachtragen kinder_sicherheit fuellmenge_nachtragen nachfrage_liebling social_saison_vorrang gfeed_anstupsen google_kategorie_fein schmuck_tag_heilen saison_tags_nachtragen anlass_social_sperre; do
     fehlt "$REPO/automation/$L.py" && continue
     # ⚠️ FERTIG IST KEIN AUSSCHALTER (04.09.2026). Bis heute hiess «FERTIG im Log» =
     # nie wieder starten — nur ein /tmp-Wipe hat die Waechter je wieder geweckt. Gemessen:
@@ -681,6 +681,9 @@ while true; do
     # 13.10. Betreiber «cj kostüme ja»: Halloween-CJ-Ware 15.10.–01.11. aus TikTok/FB-IG/Pinterest, ab 01.11. Rückweg aus
     # dem Ledger. Vor dem Fenster schreibt der scharfe Lauf nur die Pause-Datei (Poster lesen das Fenster selbst).
     [ "$L" = anlass_social_sperre ] && EXP="SCHARF=1"
+    # 14.10.2026: Social-Queues sind Anhänge-Listen — verschwundene, nicht gepostete Zeilen der letzten 26 h aus dem git-Verlauf
+    # zurück (Lost Update, 13 Reels verloren). Läuft nur, wenn die Helfer-Selbsttests grün sind (lib/queue_csv + queue_csv.py).
+    [ "$L" = queue_schreiber_wache ] && EXP="SCHARF=1"
     # 23.09.: herbst_kuratieren nur RAEUMEN (Sperr-Tags raus, nach 30.11. Tag weg) — Neuaufnahmen nur in betreuten Laeufen.
     [ "$L" = herbst_kuratieren ] && EXP="NUR_RAEUMEN=1"
     if [ "$L" = verlustbringer ]; then [ -f /tmp/kost28.jsonl ] || continue; EXP="SCHARF=1 CAP=300 EXPORT=/tmp/kost28.jsonl"; fi
@@ -747,7 +750,7 @@ while true; do
     # solange Arbeit offen ist (verlustbringer, versand_jenachland …) — die bleiben ausserhalb der Liste.
     NACH=""
     # anlass_social_sperre: Exit 0 = FERTIG; Exit 1 bei offenen Kanal-Einträgen/Tags → nächster Tick versucht erneut.
-    case " social_queue_saeubern bild_queue_captions_ehrlich ig_gepostet_tags suchwort_mehrzahl herbst_kuratieren koll_seo_laengen anlass_social_sperre " in
+    case " social_queue_saeubern bild_queue_captions_ehrlich ig_gepostet_tags suchwort_mehrzahl herbst_kuratieren koll_seo_laengen anlass_social_sperre queue_schreiber_wache " in
       *" $L "*) NACH=1 ;;
     esac
     date +%s > "/tmp/_start_$L"

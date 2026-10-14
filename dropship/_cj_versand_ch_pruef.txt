@@ -8647,3 +8647,40 @@ selfie-stativ-mit-farblicht-bluetooth-060480	1377561294936346624	7	17.96	ok	land
 acacia-snackplatte-handpoliert-433600	1376050683916193792	16	9.88	ok	landeseite
 mini-led-fotolicht-mit-lithium-akku-636096	1371666744174841856	7	6.49	ok	landeseite
 gigabit-faserkabel-kategorie-6-727424	1369955243370090496	16	6.77	ok	landeseite
+virtueller-helm-mit-smartphone-display-131a2b	EC97404E-F7C4-4220-B05C-68560768204D	0	-	KEINE CH-Option → DRAFT	landeseite
+faltbare-silikon-handroll-trommel-609df7	81003F09-C865-438E-BFE6-216F1926C894	7	19.72	ok	landeseite
+3d-vr-brille-fur-smartphone-4-7-6-zoll-0b113f	05F656B7-9633-4DEC-BD08-72C24605673E	1	9.27	ok	landeseite
+romantischer-sternenhimmel-projektor-066dbc	213F17C7-8C63-44D4-B53F-DACA96F682B6	7	10.41	ok	landeseite
+rg106pro-drohne-mit-hindernisvermeidung-und-3-605300	2510280348121605500	0	-	KEINE CH-Option → DRAFT	landeseite
+mini-drohne-mit-4k-fernbedienung-625900	2510251256451626100	0	-	KEINE CH-Option → DRAFT	landeseite
+m7-brushless-drohne-mit-bildschirmsteuerung-un-619400	2510210928271619600	0	-	KEINE CH-Option → DRAFT	landeseite
+hd-quadrocopter-mit-fernbedienung-622700	2509120833021623000	0	-	KEINE CH-Option → DRAFT	landeseite
+ferngesteuertes-fluggerat-mit-hd-bildschirm-625500	2508220311531625700	0	-	KEINE CH-Option → DRAFT	landeseite
+10-zoll-fpv-traverse-maschine-626200	2508130631081626500	0	-	KEINE CH-Option → DRAFT	landeseite
+sg901pro-quadcopter-fur-luftaufnahmen-604800	2507220823511605000	0	-	KEINE CH-Option → DRAFT	landeseite
+drohne-mit-3-kameras-fur-hd-aufnahmen-607300	2507030513581607600	0	-	KEINE CH-Option → DRAFT	landeseite
+kabelfreier-quadrocopter-p25-mit-gefahrenverme-613000	2507010543571613200	0	-	KEINE CH-Option → DRAFT	landeseite
+m22-fernbedienung-mit-45-zoll-bildschirm-und-b-608100	2506130550011608900	7	13.34	ok	landeseite
+mini-drone-mit-gestensensorik-618200	2506120709411618500	7	6.34	ok	landeseite
+mini-drone-fur-luftaufnahmen-601600	2505220804441602000	0	-	KEINE CH-Option → DRAFT	landeseite
+gt3-mini-drone-mit-doppelfunktion-und-hinderni-605000	2505160712341605200	0	-	KEINE CH-Option → DRAFT	landeseite
+kinder-auto-zeichenbrett-reise-606900	2411070357291607100	16	15.56	ok	landeseite
+universeller-halb-autorestsitz-5-sitzer-621400	2411040834191621700	11	52.36	ok	landeseite
+winter-sitzauflage-mit-weicher-polsterung-606500	2410280539341613500	11	40.80	ok	landeseite
+wasserdichter-rucksitzbeutel-fur-bmw-s1000rr-0-620000	2410130819291620200	16	12.32	ok	landeseite
+pu-sitzauflage-suv-viereckstuhle-614200	2410110803531614500	16	11.55	ok	landeseite
+3-teiliges-auto-kissen-set-winter-plusch-600200	2410020603591600500	16	15.56	ok	landeseite
+armlehnen-schutzauflage-mit-tasche-615800	2409300926031615900	16	9.65	ok	landeseite
+auto-hundematte-mit-erweiterter-stutze-fur-ruc-610000	2408151316401610200	11	41.03	ok	landeseite
+sommer-minimales-eissilk-autositze-polster-602400	2407011025221602600	16	17.40	ok	landeseite
+versteckter-sitzhaken-fur-ruckbank-kleine-gege-177216	1774969299774480384	16	5.85	ok	landeseite
+universelles-auto-nackenkissen-mit-memory-foam-900096	1752157799188008960	16	9.47	ok	landeseite
+leinen-auto-sitzkissen-universal-204736	1749715854394142720	16	9.61	ok	landeseite
+auto-lendenstutze-mit-memory-foam-603904	1747128167397072896	16	11.72	ok	landeseite
+hohenverstellbares-dickes-po-kissen-198912	1728341763334610944	16	9.84	ok	landeseite
+schaumgummi-auto-kissen-mit-fixiergurt-fur-aut-187264	1716356239753490432	16	14.12	ok	landeseite
+schmuck-gurt-schulterpolster-aus-kunstleder-860608	1701406761925746688	16	6.17	ok	landeseite
+48v-hochdruck-wasserkanone-6-in-1-duse-fur-aut-531649	2069692069004218369	0	-	KEINE CH-Option → DRAFT	landeseite
+hochdruck-waschduse-fur-auto-haushalt-504770	2067983128757002242	16	13.04	ok	landeseite
+2er-set-multifunktions-schaumreiniger-100ml-zi-004226	2067093643079639041	0	-	KEINE CH-Option → DRAFT	landeseite
+badezimmer-eingangsteppich-mit-farbverlauf-622200	2601040419521622500	16	8.25	ok	landeseite
