@@ -8419,3 +8419,5 @@ kuechenloeffel-set-113792	1397462195645845504	16	6.65	ok	landeseite
 wlan-video-turklingel-8db6b1	13D2C5AF-AF7D-435A-AD97-8FC0B698A2BE	16	8.73	ok	landeseite
 kabellose-ohrhorer-212992	1467746365969928192	7	6.81	ok	landeseite
 kurzarm-hemd-921280	1653941346384105472	16	7.71	ok	landeseite
+baby-rucksack-mit-isolierfach-543552	1636285455366893568	16	21.99	ok	landeseite
+fischschuppen-scraper-c60881	1475747210271526912	16	5.50	ok	landeseite
