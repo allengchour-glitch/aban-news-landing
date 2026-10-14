@@ -8808,3 +8808,4 @@ diy-diamantpuzzle-karte-mit-oma-motiv-256450	2008849942508445697	16	6.63	ok	land
 diy-diamant-malerei-karte-geburtstag-fest-hand-389185	2008850674519080961	16	6.63	ok	landeseite
 diy-kaffeemuster-diamant-kunst-untersetzer-813569	2007351046700699650	16	7.17	ok	landeseite
 diy-diamantkunst-kuchenmatte-mit-halterung-932930	2007359182183624705	16	7.17	ok	landeseite
+diamond-art-coaster-set-mit-halterung-712962	2007360561303433218	16	7.17	ok	landeseite
