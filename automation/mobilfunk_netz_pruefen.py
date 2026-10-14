@@ -23,6 +23,7 @@ WAS ES TUT (Regeln: automation/data/mobilfunk_netz_regel.json):
     python3 automation/mobilfunk_netz_pruefen.py --export DATEI.jsonl --scharf   # nur-2g-3g → Entwurf
     python3 automation/mobilfunk_netz_pruefen.py --export DATEI.jsonl --liste-schreiben   # Kandidaten → dropship/_klassen/mobilfunk-kandidaten.txt
     python3 automation/mobilfunk_netz_pruefen.py --liste dropship/_klassen/mobilfunk-kandidaten.txt --scharf   # Nachtlauf (CJ-Punkte)
+    python3 automation/mobilfunk_netz_pruefen.py --liste-bauen   # Liste live aus allen aktiven Produkten (Aufseher, wenn fehlt/> 7 T)
     … --ohne-cj   nur eigener Text: entscheidet nur eindeutige 2G/3G-Fälle, alles andere bleibt «offen» für den CJ-Lauf
     TAGE=3 python3 automation/mobilfunk_netz_pruefen.py --scharf                # Wächter: Neuimporte (Aufseher, täglich)
 Ledger: dropship/_mobilfunk_netz.tsv (Zeit, Produkt-ID, Urteil, Beleg, Titel). Bericht: dropship/MOBILFUNK-NETZ-STAND.md.
@@ -127,6 +128,53 @@ def main():
     if os.path.exists(LEDGER):
         erledigt = {z.split("\t")[1] for z in open(LEDGER, encoding="utf-8") if "\t" in z}
     ohne_cj = "--ohne-cj" in sys.argv   # 10.10.: CJ-Tagesbudget leer (37 Punkte) → nur eigener Text, nur eindeutige Fälle
+    if "--liste-bauen" in sys.argv:
+        # 14.10.2026: Die Kandidatenliste baute bisher nur `--export … --liste-schreiben` von Hand. klassen_kontrolle.py
+        # löschte sie am 13.10. (leerte JEDE *.txt in dropship/_klassen/) → der Nachtlauf brach mit FileNotFoundError ab
+        # und prüfte nur noch Neuimporte. Jetzt baut der Aufseher sie selbst, wenn sie fehlt oder älter als 7 Tage ist:
+        # alle AKTIVEN Produkte (id, title) seitenweise, Kandidat = ist_kandidat(Titel) — dieselbe Regel wie überall.
+        # Bulk-Export (seitenweise brauchte > 10 Min. für 54k Produkte); startet nur den EIGENEN Vorgang (Muster
+        # versand_band_wache.voll_export), wartet bei «already in progress» bis 20 Min.
+        import urllib.request
+        ziel = os.path.join(REPO, "dropship", "_klassen", "mobilfunk-kandidaten.txt")
+        inner = '{ products(query:"status:active"){ edges{ node{ id title } } } }'
+        for _ in range(40):
+            d = gql('mutation($q:String!){bulkOperationRunQuery(query:$q){bulkOperation{id status} userErrors{field message}}}',
+                    {"q": inner})["bulkOperationRunQuery"]
+            if not d["userErrors"]:
+                break
+            if "progress" not in json.dumps(d["userErrors"]):
+                print(f"⚠️ Bulk-Start abgelehnt: {d['userErrors']}"); return 1
+            time.sleep(30)
+        else:
+            print("⚠️ Bulk-Start: anderer Vorgang lief 20 Min. — später erneut"); return 1
+        oid = d["bulkOperation"]["id"]
+        while True:
+            op = gql('query($i:ID!){node(id:$i){... on BulkOperation{status errorCode objectCount url}}}', {"i": oid})["node"]
+            if op["status"] in ("COMPLETED", "FAILED", "CANCELED", "EXPIRED"):
+                break
+            time.sleep(15)
+        if op["status"] != "COMPLETED" or not op.get("url"):
+            print(f"⚠️ Bulk nicht abgeschlossen: {op}"); return 1
+        ids, n = [], 0
+        with urllib.request.urlopen(op["url"], timeout=300) as fh:
+            for raw in fh:
+                x = json.loads(raw)
+                if str(x.get("id", "")).startswith("gid://shopify/Product/"):
+                    n += 1
+                    if ist_kandidat(x.get("title")):
+                        ids.append(x["id"])
+        if n < 1000:                      # Teilantwort ist kein Katalog — alte Liste lieber behalten
+            print(f"⚠️ nur {n} aktive Produkte gelesen — Liste NICHT überschrieben")
+            return 1
+        os.makedirs(os.path.dirname(ziel), exist_ok=True)
+        with open(ziel + ".tmp", "w", encoding="utf-8") as fh:
+            fh.write(f"# Kandidaten für automation/mobilfunk_netz_pruefen.py --liste (Titel = SIM-fähiges Gerät), "
+                     f"live gebaut {time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())} aus {n} aktiven Produkten\n")
+            fh.write("\n".join(i.rsplit("/", 1)[-1] for i in ids) + "\n")
+        os.replace(ziel + ".tmp", ziel)
+        print(f"MOBILFUNK-LISTE: {len(ids)} Kandidaten aus {n} aktiven Produkten → {os.path.relpath(ziel, REPO)}")
+        return 0
     if "--liste" in sys.argv:
         pfad = sys.argv[sys.argv.index("--liste") + 1]
         ids = [z.strip() if z.strip().startswith("gid:") else f"gid://shopify/Product/{z.strip()}"

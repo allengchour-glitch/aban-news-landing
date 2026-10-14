@@ -282,6 +282,42 @@ def slug(name):
     return re.sub(r'[^a-z0-9]+', '-', name.lower()).strip('-')[:50]
 
 
+def eigene_listen():
+    """Dateinamen, die DIESER Scan in dropship/_klassen/ schreibt (und am Rundenbeginn leeren darf) — sonst keine."""
+    return {slug(k[0]) + '.txt' for k in KLASSEN}
+
+
+def listen_leeren(ordner):
+    """Rundenbeginn: nur die eigenen Listen löschen. Fremde (mobilfunk-kandidaten.txt, auswahl-besuchte-seiten.txt …) bleiben."""
+    for f in eigene_listen():
+        p = os.path.join(ordner, f)
+        if os.path.exists(p):
+            os.remove(p)
+
+
+def selbsttest():
+    """14.10.2026: fremde Listen im gemeinsamen Ordner überleben den Rundenbeginn, eigene werden geleert."""
+    import tempfile
+    d = tempfile.mkdtemp()
+    fremd = ['mobilfunk-kandidaten.txt', 'auswahl-besuchte-seiten.txt', 'irgendwas-neues.txt']
+    eigen = sorted(eigene_listen())
+    for f in fremd + eigen:
+        open(os.path.join(d, f), 'w').write('x\n')
+    listen_leeren(d)
+    rest = set(os.listdir(d))
+    ok1 = all(f in rest for f in fremd)
+    ok2 = not any(f in rest for f in eigen)
+    ok3 = 'mobilfunk-kandidaten.txt' not in eigene_listen() and len(eigen) == len(KLASSEN)
+    for f in rest:
+        os.remove(os.path.join(d, f))
+    os.rmdir(d)
+    print(f"  {'✓' if ok1 else '✗'} fremde Listen bleiben ({', '.join(fremd)})")
+    print(f"  {'✓' if ok2 else '✗'} eigene Listen geleert ({len(eigen)})")
+    print(f"  {'✓' if ok3 else '✗'} eine eigene Liste je Klasse, keine fremde darunter")
+    print('SELBSTTEST', 'OK' if ok1 and ok2 and ok3 else 'ROT')
+    return 0 if ok1 and ok2 and ok3 else 1
+
+
 NACHPRUEF_MAX = int(os.environ.get('NACHPRUEF_MAX', '3000'))
 Q_IDS = """query($ids:[ID!]!){ nodes(ids:$ids){ ... on Product{
         id title descriptionHtml variantsCount{count} } } }"""
@@ -355,9 +391,10 @@ def main():
             cursor = None; n = 0
     if cursor is None:
         # Neue Runde: alte Arbeitslisten leeren, sonst mischen sich zwei Staende.
-        for f in os.listdir(listen_ordner()):
-            if f.endswith('.txt'):
-                os.remove(os.path.join(listen_ordner(), f))
+        # ⚠️ 14.10.2026: NUR die eigenen (eine Datei je KLASSEN-Eintrag). Bis heute fiel jede *.txt im Ordner — auch
+        # fremde Listen (mobilfunk-kandidaten.txt von mobilfunk_netz_pruefen.py, auswahl-besuchte-seiten.txt): der
+        # 2G/3G-Nachtlauf fand seine Liste ab 13.10. nicht mehr und prüfte nur noch Neuimporte (FileNotFoundError).
+        listen_leeren(listen_ordner())
     while True:
         d = gql(Q, {'c': cursor})
         if d is None:
@@ -499,4 +536,6 @@ def main():
 
 
 if __name__ == '__main__':
+    if '--selbsttest' in sys.argv:
+        sys.exit(selbsttest())
     main()
