@@ -3831,3 +3831,8 @@ gid://shopify/Product/16613782028679	Farbe	3
 gid://shopify/Product/16613782258055	Farbe	4
 gid://shopify/Product/16616357396871	Farbe	6
 gid://shopify/Product/15503083405697	Farbe	4
+gid://shopify/Product/16615820034439	Motiv	3
+gid://shopify/Product/16617334210951	Farbe	2
+gid://shopify/Product/16617339289991	Farbe	7
+gid://shopify/Product/16617344106887	Farbe	4
+gid://shopify/Product/16617344369031	Farbe	1

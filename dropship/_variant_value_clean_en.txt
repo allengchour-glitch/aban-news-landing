@@ -21327,3 +21327,17 @@ gid://shopify/Product/15503083405697	Farbe	gid://shopify/ProductOptionValue/1240
 gid://shopify/Product/15503083405697	Farbe	gid://shopify/ProductOptionValue/12404882047361	Green plus cotton	Grün gefüttert	2026-10-14T08:58Z
 gid://shopify/Product/15503083405697	Farbe	gid://shopify/ProductOptionValue/12404882080129	Gray plus cotton	Grau gefüttert	2026-10-14T08:58Z
 gid://shopify/Product/15503083405697	Farbe	gid://shopify/ProductOptionValue/12404882112897	Blue plus cotton	Blau gefüttert	2026-10-14T08:58Z
+gid://shopify/Product/16617334210951	Farbe	gid://shopify/ProductOptionValue/58418813796743	Green-35to37	Grün-35/37	2026-10-14T09:06Z
+gid://shopify/Product/16617334210951	Farbe	gid://shopify/ProductOptionValue/58418813829511	Green-38to40	Grün-38/40	2026-10-14T09:06Z
+gid://shopify/Product/16617339289991	Farbe	gid://shopify/ProductOptionValue/58418833686919	Black increase 8CM	Schwarz erhöht 8 cm	2026-10-14T09:06Z
+gid://shopify/Product/16617339289991	Farbe	gid://shopify/ProductOptionValue/58418833719687	Black increase 6CM	Schwarz erhöht 6 cm	2026-10-14T09:06Z
+gid://shopify/Product/16617339289991	Farbe	gid://shopify/ProductOptionValue/58418833752455	Black increase 4CM	Schwarz erhöht 4 cm	2026-10-14T09:06Z
+gid://shopify/Product/16617339289991	Farbe	gid://shopify/ProductOptionValue/58418833817991	Brown increase 8CM	Braun erhöht 8 cm	2026-10-14T09:06Z
+gid://shopify/Product/16617339289991	Farbe	gid://shopify/ProductOptionValue/58418833850759	Brown increase 6CM	Braun erhöht 6 cm	2026-10-14T09:06Z
+gid://shopify/Product/16617339289991	Farbe	gid://shopify/ProductOptionValue/58418833883527	Brown increase 4CM	Braun erhöht 4 cm	2026-10-14T09:06Z
+gid://shopify/Product/16617339289991	Farbe	gid://shopify/ProductOptionValue/58418833916295	Brown increase 7cm	Braun erhöht 7 cm	2026-10-14T09:06Z
+gid://shopify/Product/16617344106887	Farbe	gid://shopify/ProductOptionValue/58418843058567	White Increased By 7CM	Weiss erhöht 7 cm	2026-10-14T09:06Z
+gid://shopify/Product/16617344106887	Farbe	gid://shopify/ProductOptionValue/58418843091335	White Flat Bottom	Weiss · flache Sohle	2026-10-14T09:06Z
+gid://shopify/Product/16617344106887	Farbe	gid://shopify/ProductOptionValue/58418843124103	Black increased by 7CM	Schwarz erhöht 7 cm	2026-10-14T09:06Z
+gid://shopify/Product/16617344106887	Farbe	gid://shopify/ProductOptionValue/58418843156871	Black Flat Bottom	Schwarz · flache Sohle	2026-10-14T09:06Z
+gid://shopify/Product/16617344369031	Farbe	gid://shopify/ProductOptionValue/58418843746695	Blue Upgrade	Blau Upgrade	2026-10-14T09:06Z
