@@ -123,6 +123,11 @@ class Boerse:
         self.ersetzen_storno_zuerst = False  # True: cancelReplace in einer Phase «nur Stornieren» storniert den alten Auftrag
         #                                     und lehnt erst DANN den neuen ab (409, −2021) — ungünstigste Lesart (10. Prüfung)
         self.nach_jeder_anfrage = None
+        # Ereignis-Takt (12. Prüfung): letzte Kursbewegung und letzte GELESENE Spot-Auftragsliste je Symbol — ein hängender
+        # STOP_LOSS_LIMIT ist nur dann eine unvermeidbare Lücke, wenn Pilot 2.0 die Liste seit dem Sprung nicht mehr gesehen hat
+        self.takt = 0
+        self.bewegt_takt = {}
+        self.liste_takt = {}
 
     def konto_anlegen(self, keys, secret, uid, usdt=20000.0):
         k = Konto(uid, usdt)
@@ -138,6 +143,8 @@ class Boerse:
     def bewegen(self, sym, preis):
         with self.lock:
             self.kurs[sym] = float(preis)
+            self.takt += 1
+            self.bewegt_takt[sym] = self.takt
             for k in self.alle_konten():
                 self._ausloesen(k, sym)
             for k in self.alle_konten():
@@ -303,6 +310,11 @@ class Handler(BaseHTTPRequestHandler):
         if getattr(B, "voll", None) is not None:
             B.voll.append((B.n_req, m, pfad, {kk: v for kk, v in p.items() if kk not in ("signature", "timestamp", "recvWindow")},
                            code, (art or {}).get("art"), str(antwort)[:160], dict(B.kurs)))
+        if (m == "GET" and pfad == "/api/v3/openOrders" and code == 200
+                and not (art and art["art"] in ("nach503", "unsichtbar", "abriss"))):  # Antwort kam an: die Liste ist gesehen
+            B.takt += 1
+            for s in ([p["symbol"]] if p.get("symbol") else SYMS):
+                B.liste_takt[s] = B.takt
         if B.nach_jeder_anfrage:
             B.nach_jeder_anfrage(m, pfad, p, code)
         if art and art["art"] in ("nach503", "unsichtbar") and code == 200:

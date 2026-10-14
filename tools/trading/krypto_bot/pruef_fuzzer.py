@@ -29,13 +29,22 @@ Bewusst NICHT gezählt (begründet):
     Short — löst einer aus, schützt der andere den Rest): dort zählt «alles gedeckt» statt «nicht über netto»; die
     NACH_SPRUNG-Prüfung gilt weiter.
   • Läufe ohne Lauf-Warnung sind still (STILL_*), mit Warnung laut (LAUT_*) — beides zählt als Befund. Ausnahme DAUER_*: Binance
-    lehnt in diesem Schritt dauerhaft ab, was Schutz braucht (≥ 50 Wiederholungen auf Aufträgen, Stops oder Auftragslisten
-    GENAU DER SEITE, die den fehlenden Schutz bräuchte, oder beim Lesen der Lage — nicht auf dem Kurs-Abruf; 11. Prüfung K3),
-    Pilot 2.0 meldet die Lücke laut UND hat in diesem Schritt keinen eigenen Stop entfernt (sonst hätte er ihn stehen lassen
-    können) — dann kann kein Code schützen; geprüft wird der Stand NACH der Nachkontrolle (Störung vorbei), der muss sauber sein.
+    lehnt in diesem Schritt dauerhaft (≥ 50 Wiederholungen) GENAU DIE SCHUTZ-HANDLUNG ab — einen neuen Stop der Seite setzen, die
+    den fehlenden Schutz bräuchte (die Störungsregel muss einen solchen Stop-Auftrag treffen), oder das Lesen der Lage bzw. der
+    eigenen Auftragslisten; dauerhaft abgelehnte Marktaufträge, Löschungen oder cancelReplace zählen NICHT (12. Prüfung K1),
+    der Kurs-Abruf auch nicht —, Pilot 2.0 meldet die Lücke laut UND hat in diesem Schritt keinen eigenen Stop entfernt (sonst
+    hätte er ihn stehen lassen können) — dann kann kein Code schützen; geprüft wird der Stand NACH der Nachkontrolle (Störung
+    vorbei), der muss sauber sein.
   • STORNO_ZUERST_* (monotonie, und seit der 11. Prüfung auch in 15 % der Lauf-Tage und Not-Aus): Schutzverlust nur, weil
-    cancelReplace in der ungünstigen Lesart erst storniert und dann ablehnt (409) — laut gemeldet; nicht vermeidbar, solange ein
-    Stop überhaupt ersetzt werden muss; Testnetz-Prüfpunkt (README). Stille Lücken zählen weiter als Befund.
+    cancelReplace in der ungünstigen Lesart erst storniert und dann ablehnt (409) — laut gemeldet, und nur der ERSTE 409 je Markt
+    (danach ersetzt Pilot 2.0 nichts mehr per cancelReplace; ein zweiter wäre vermeidbar — 12. Prüfung K2); nicht vermeidbar,
+    solange ein Stop überhaupt ersetzt werden muss; Testnetz-Prüfpunkt (README). Stille Lücken zählen weiter als Befund.
+  • LIMIT_LUECKE_* (Konto ohne STOP_LOSS): die Lücke ist genau ein ausgelöster STOP_LOSS_LIMIT, dessen Limit eine Kurslücke
+    übersprungen hat — er hängt bis zum nächsten Lauf (der steigt dann zum Markt aus); bekanntes Restrisiko (README). Gilt nur,
+    wenn der Sprung NACH dem letzten Blick von Pilot 2.0 auf die Spot-Auftragsliste kam (Ereignis-Takt der Prüf-Börse) — sah er
+    den hängenden Stop und blieb trotzdem drin, ist es ein echter Befund (12. Prüfung, auch im Zweig «beidseitig»).
+Not-Aus-Fuzzer: in 25 % der Seeds springt der Kurs genau beim ersten Schutz-Stop um 5,5–15 %, oft mit gesperrtem Spot-Ticker UND
+Futures-Markpreis (12. Prüfung W3) — eigener Zufall, die Szenarien alter Seeds bleiben gleich.
 """
 from __future__ import annotations
 
@@ -166,7 +175,8 @@ def schutz_befunde(k, unklar=None, tol_usdt=TOL_USDT):
             # beidseitig: alle Coins unter Spot-Stop, der ganze Short unter Perp-Stop — löst einer aus, schützt der andere den Rest
             luecke_s = g["coins"] - g["s_qty"]
             if luecke_s * p > tol_usdt + STEP_S[sym] * p and g["coins"] * p >= FB.SPOT_MIN_NOTIONAL:
-                out.append(("LONG_OHNE_STOP", sym, round(luecke_s, 6), round(luecke_s * p, 2), "beidseitig"))
+                name = "LIMIT_LUECKE_LONG_OHNE_STOP" if _limit_luecke(k, sym, luecke_s) else "LONG_OHNE_STOP"
+                out.append((name, sym, round(luecke_s, 6), round(luecke_s * p, 2), "beidseitig"))
             luecke_p = max(0.0, -g["pos"]) - g["p_qty"]
             if luecke_p * p > max(tol_usdt, 0.5 * STEP_P[sym] * p) + 1e-6:
                 out.append(("SHORT_OHNE_STOP", sym, round(luecke_p, 6), round(luecke_p * p, 2), "beidseitig"))
@@ -175,8 +185,8 @@ def schutz_befunde(k, unklar=None, tol_usdt=TOL_USDT):
             luecke = min(g["netto"], g["coins"]) - g["s_qty"]
             if luecke * p > tol_usdt + STEP_S[sym] * p:
                 name = "LONG_OHNE_STOP" if luecke * p > STAUB_MAX_USDT else "STAUB_LONG_OHNE_STOP"
-                if "STOP_LOSS" not in B.stop_typen and luecke <= _haengend(k, sym) + STEP_S[sym]:
-                    name = "LIMIT_LUECKE_" + name  # die Lücke ist genau ein über dem Kurs hängender STOP_LOSS_LIMIT
+                if _limit_luecke(k, sym, luecke):
+                    name = "LIMIT_LUECKE_" + name
                 out.append((name, sym, round(luecke, 6), round(luecke * p, 2)))
         if g["netto"] < 0:
             luecke = -g["netto"] - g["p_qty"]
@@ -256,6 +266,14 @@ def _haengend(k, sym):
     """Coins unter einem AUSGELÖSTEN STOP_LOSS_LIMIT, dessen Limit über dem Kurs liegt (Kurslücke): er hängt, schützt nicht."""
     return sum(o["qty"] - o["ausgefuehrt"] for o in k.orders.values() if o["symbol"] == sym and o["typ"] == "STOP_LOSS_LIMIT"
                and o["status"] in ("NEW", "PARTIALLY_FILLED") and o.get("aktiv") and o.get("preis", 0.0) > B.kurs[sym])
+
+
+def _limit_luecke(k, sym, luecke):
+    """Unvermeidbare Limit-Lücke: Konto ohne STOP_LOSS, die Lücke ist genau ein über dem Kurs hängender STOP_LOSS_LIMIT, UND
+    Pilot 2.0 hat die Spot-Auftragsliste seit der letzten Kursbewegung nicht mehr gesehen (der Sprung kam nach seinem letzten
+    Blick). Hat er die Liste danach gelesen, hätte er den hängenden Stop erkennen und zum Markt aussteigen müssen → echter Befund."""
+    return ("STOP_LOSS" not in B.stop_typen and luecke <= _haengend(k, sym) + STEP_S[sym]
+            and B.liste_takt.get(sym, -1) < B.bewegt_takt.get(sym, -1))
 
 
 DAUER_SPOT = ("/api/v3/order", "/api/v3/order/cancelReplace", "/api/v3/openOrders")
@@ -681,6 +699,32 @@ def laeufe_runde(seed, tage=30):
 
 
 # ───────────────────────── Fuzzer: Not-Aus unter harten Störungen ─────────────────────────
+def _kurssprung(rng, anteil=0.25):
+    """12. Prüfung W3: in einem Teil der Not-Aus springt der Kurs GENAU beim ersten Schutz-Stop um 5,5–15 % (über den Not-Stop-
+    Abstand hinaus), oft zusammen mit gesperrtem Spot-Ticker UND gestörtem Futures-Markpreis — der Weg Schutz-Stop → «würde
+    sofort auslösen» → zum Markt, den die übrigen Störungen kaum treffen."""
+    if rng.random() >= anteil:
+        return
+    modus, faktor = rng.choice(["perp", "spot", "beide"]), rng.uniform(1.055, 1.15)
+    weg, dauer = rng.random() < 0.6, rng.choice([3, 10 ** 6])
+    gemacht = [0]
+
+    def haken(m, pfad, p):
+        if gemacht[0] or m != "POST":
+            return
+        perp = pfad == "/fapi/v1/algoOrder" and modus in ("perp", "beide")
+        spot = pfad == "/api/v3/order" and str(p.get("type", "")).startswith("STOP") and modus in ("spot", "beide")
+        if not (perp or spot):
+            return
+        gemacht[0] = 1
+        s = p.get("symbol")
+        B.bewegen(s, round(B.kurs[s] * (faktor if perp else 1 / faktor), 2))
+        if weg:
+            B.regeln.append(dict(methode="GET", pfad="/api/v3/ticker/price", art="429", anzahl=dauer))
+            B.regeln.append(dict(methode="GET", pfad="/fapi/v1/premiumIndex", art="vor503", anzahl=dauer))
+    B.vor_jeder_anfrage = haken
+
+
 def notaus_runde(seed):
     rng = random.Random(seed)
     echt = rng.random() < 0.85
@@ -719,14 +763,17 @@ def notaus_runde(seed):
     B.regeln = regeln
     log_na = len(B.log)
     B.ersetzen_storno_zuerst = random.Random(f"{seed}-storno").random() < 0.15  # ungünstige cancelReplace-Lesart
+    _kurssprung(random.Random(f"{seed}-kurssprung"))  # eigener Zufall: alte Seeds bleiben gleich
     vorher = zeigen(k)
     try:
         r = lauf([], env, d, notaus=True)
     except Exception:  # noqa: BLE001
         B.regeln = []
         B.ersetzen_storno_zuerst = False
+        B.vor_jeder_anfrage = None
         return [("AUSNAHME", {"seed": seed}, traceback.format_exc()[-600:])]
     B.regeln = []
+    B.vor_jeder_anfrage = None
     storno = B.ersetzen_storno_zuerst and _storno409(log_na) and r.get("warnung")
     B.ersetzen_storno_zuerst = False
     funde = []
