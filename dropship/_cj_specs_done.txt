@@ -4557,3 +4557,11 @@ faltbares-edelstahl-futtergeschirr-606700	gesetzt-1
 vogeltranke-und-futterstation-899906	nicht-aktiv
 erhohtes-futtergeschirr-608100	gesetzt-2
 keramikfutternapf-604100	gesetzt-2
+hundepuzzle-futter-spiel-605700	gesetzt-2
+edelstahl-napfchen-910657	gesetzt-1
+langsames-futterteller-621100	gesetzt-3
+probiotika-tabletten-fur-hunde-katzen-591682	nicht-aktiv
+probiotika-tabletten-330306	nicht-aktiv
+fischol-tabletten-fur-katzen-119425	nicht-aktiv
+fischerschirm-454465	gesetzt-1
+faltbare-outdoor-stuhle-101313	gesetzt-2
