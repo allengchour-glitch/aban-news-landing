@@ -7,6 +7,11 @@
 # macht sie fruehere Purges rueckgaengig (Zombie-Ledger-Klasse, Lehre 15.08.).
 set -u
 cd "$(dirname "$0")/.." || exit 1
+# 14.10.2026: stash + reset --hard laufen unter DERSELBEN Repo-Sperre wie Autocommitter und git_sichern.sh — sonst
+# setzt der Reset einen Commit/Merge, der gerade läuft, mitten drin zurück. Nicht bekommen = dieses Mal nicht vorspulen.
+if [ "${GIT_SPERRE_GEHALTEN:-0}" != 1 ]; then
+  exec flock -w 180 /tmp/git_repo.lock env GIT_SPERRE_GEHALTEN=1 bash "$0" "$@"
+fi
 B=claude/luxestyle-status-tztnn1
 S=$(mktemp -d)
 # 13.10.2026: auch bei Abbruch (Container-Neustart, timeout) aufräumen — 12 verwaiste Kopien à ~120 MB lagen in /tmp (1,3 GB, Platte voll).
@@ -14,7 +19,8 @@ S=$(mktemp -d)
 cp dropship/*.txt "$S"/ 2>/dev/null
 # 07.10.2026: auch die .tsv-Ledger sichern (85 Dateien, bisher bei reset --hard verloren) — Union unten nur als Schwanz-Union.
 cp dropship/*.tsv "$S"/ 2>/dev/null
-find .git -name "*.lock" -delete 2>/dev/null
+if [ -f automation/lib/git_sperren.sh ]; then . automation/lib/git_sperren.sh; verwaiste_git_sperren_weg 120
+else find .git -name "*.lock" -mmin +10 -delete 2>/dev/null; fi
 # Snapshot kann einen Tracking-Ref hinterlassen, dessen erwarteter Stand nicht mehr
 # existiert («cannot lock ref … is at X but expected Y», 26.08.) — Ref loeschen,
 # fetch legt ihn frisch an.
