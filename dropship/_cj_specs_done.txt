@@ -4612,3 +4612,6 @@ mini-drone-mit-gestensensorik-618200	gesetzt-3
 mini-drone-fur-luftaufnahmen-601600	nicht-aktiv
 gt3-mini-drone-mit-doppelfunktion-und-hinderni-605000	nicht-aktiv
 kinder-auto-zeichenbrett-reise-606900	gesetzt-1
+universeller-halb-autorestsitz-5-sitzer-621400	gesetzt-2
+winter-sitzauflage-mit-weicher-polsterung-606500	gesetzt-1
+wasserdichter-rucksitzbeutel-fur-bmw-s1000rr-0-620000	gesetzt-2
