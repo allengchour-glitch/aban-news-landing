@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-13T22:11Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-14T00:10Z
 
-Aktive gescannt: 17 · ohne Kategorie: 17 · heute gesetzt: 9 (SCHARF, CAP 1500) · danach offen: 8 · Fehler: 0
+Aktive gescannt: 22 · ohne Kategorie: 22 · heute gesetzt: 14 (SCHARF, CAP 1500) · danach offen: 8 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -11,9 +11,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- magnetisches-3-in-1-ladegerat-faltbar-601700 · Elektronik → Electronics
-- rucksack-manner-multifunktional-20-35-l-2ed11a · Taschen → Luggage & Bags
-- uv-desinfektionspaket-mit-usb-ladeanschluss-c6bdef · Taschen → Luggage & Bags
-- business-backpack-fur-reisen-20-35-l-0b5893 · Taschen → Luggage & Bags
-- kompakt-kuchenschneide-set-1498de · Taschen → Luggage & Bags
+- klassisches-strickhemd-mit-karomuster-624200 · Herrenmode → Apparel & Accessories > Clothing
+- lange-armel-leinen-shirt-in-khaki-605800 · Herrenmode → Apparel & Accessories > Clothing
+- langarm-hemd-corduroy-in-braun-grau-lake-blue-621300 · Herrenmode → Apparel & Accessories > Clothing
+- manner-linen-long-sleeve-top-mit-stand-up-hals-612400 · Herrenmode → Apparel & Accessories > Clothing
+- freizeitshirt-mit-patchwork-streifen-kurzarmli-629600 · Herrenmode → Apparel & Accessories > Clothing
 
