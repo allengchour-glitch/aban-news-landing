@@ -2642,7 +2642,9 @@ KLT=/tmp/test_klingen_tor.log
   PPP=/tmp/pinterest_pins_pruefen.log
   if [ -f "$REPO/automation/pinterest_pins_pruefen.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$PPP" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 604800 ]; then
+    # 14.10.2026: Lauf vom 12.10. starb an URLError (Connection refused) — mit nur «älter als 7 T» wäre der nächste Versuch
+    # erst am 19.10. gekommen. Ein Absturz wird wie bei den Tageswächtern nachgeholt (ab 1 h, höchstens 3×/Tag).
+    if [ "$ALTER" -gt 604800 ] || absturz_nachholen "$PPP"; then
       ( cd "$REPO" && setsid bash -c \
           "exec 9>/tmp/lock_pin_pruef.lock; flock -n 9 || exit 0; exec >> \"$PPP\" 2>&1; \
            exec python3 automation/pinterest_pins_pruefen.py" 9>&- & )
