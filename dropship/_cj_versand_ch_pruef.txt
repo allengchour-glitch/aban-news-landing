@@ -8992,3 +8992,5 @@ keramik-haarglatter-mit-temperaturregelung-300992	1609061823716798464	7	13.79	ok
 dampf-burste-mit-titan-keramik-784960	1608392258884218880	7	21.99	ok	landeseite
 doppelspitz-burste-fur-katzen-hunde-723840	1601869301454221312	16	6.63	ok	landeseite
 multifunktionales-haarstyling-gerat-052928	1599615924154413056	7	14.08	ok	landeseite
+kamm-mit-stahlklinge-704960	1598215278465396736	7	7.01	ok	landeseite
+elektrischer-dreh-kreisel-fur-volumenwellen-617472	1592849659561783296	16	10.29	ok	landeseite
