@@ -14,6 +14,7 @@
  * Optional: QUEUE_MAX (Default 3) — wie viele neue Produkte pro Lauf einreihen.
  * Fehlt ein Secret → No-Op (exit 0). Keine Secrets im Log.
  */
+import { anhaengen as queueAnhaengen } from './lib/queue_csv.mjs';
 import { hashtagText } from './lib/hashtags.mjs';
 import fs from 'node:fs';
 import https from 'node:https';
@@ -109,7 +110,7 @@ function caption(title, handle, pt, price, tags) {
   await ensureToken();
   if (!SHOP_TOKEN) { console.log('Shopify-Auth fehlgeschlagen.'); process.exit(0); }
 
-  let csv = fs.readFileSync(CSV, 'utf8');
+  const csv = fs.readFileSync(CSV, 'utf8');
   const have = existingHandles(csv);
 
   // zuletzt angelegte ACTIVE cj-real Produkte
@@ -139,14 +140,15 @@ function caption(title, handle, pt, price, tags) {
     if (img !== kandidaten[0]) console.log(`  · ${handle}: Hauptbild trägt Text (${zahl.get(kandidaten[0])} Wörter) → Bild ${kandidaten.indexOf(img) + 1}`);
     const price = p.priceRangeV2?.minVariantPrice?.amount || '';
     const cap = caption(p.title, handle, p.productType || '', price, p.tags || []);
-    rows.push([handle, today, img, q(cap), q('instagram,facebook'), 'ready', '', ''].join(','));
+    rows.push([handle, today, img, cap, 'instagram,facebook', 'ready', '', '']);
     have.add(handle);
   }
 
   if (rows.length === 0) { console.log('Keine neuen Produkte für die Queue (alles schon drin oder keine .jpg-Titelbilder).'); process.exit(0); }
 
-  if (!csv.endsWith('\n')) csv += '\n';
-  fs.writeFileSync(CSV, csv + rows.join('\n') + '\n');
-  console.log(`✅ ${rows.length} neue Produkt(e) in die Post-Queue eingereiht:`);
-  rows.forEach(r => console.log('  + ' + r.split(',')[0]));
+  // 14.10.2026: NICHT die Start-Kopie (vor bis zu 50 × 2 Min. OCR gelesen) + neue Zeilen zurückschreiben — ein Poster hat
+  // währenddessen Zeilen auf posted gesetzt (Lost Update). anhaengen() liest frisch unter der gemeinsamen Queue-Sperre.
+  const neu = queueAnhaengen(CSV, rows);
+  console.log(`✅ ${neu} neue Produkt(e) in die Post-Queue eingereiht${neu < rows.length ? ` (${rows.length - neu} standen inzwischen schon drin)` : ''}:`);
+  rows.forEach(r => console.log('  + ' + r[0]));
 })().catch(e => { console.error('Auto-Queue-Fehler:', e.message); process.exit(0); });

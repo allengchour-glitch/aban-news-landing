@@ -20,6 +20,7 @@
  *     (Schweizer edge-Stimme, piper als Notnagel), make_reel.sh duckt die Musik darunter. Merkmal im Verlauf
  *     social/_musik_verlauf.txt, Spalten 6/7 = «stimme:ja|nein» + Stimme/Grund. Messung: automation/music/STIMME.md.
  */
+import { anhaengen as queueAnhaengen } from './lib/queue_csv.mjs';
 import fs from 'node:fs';
 import { execFileSync, execSync, spawnSync } from 'node:child_process';
 import { nachlauf } from './eimer_etikette.mjs';
@@ -360,11 +361,10 @@ function hashtags(title, pid) {
 }
 const esc = x => /[",\n]/.test(x) ? '"' + String(x).replace(/"/g, '""') + '"' : x;
 function appendReel(id, url, cap, tags, platforms) {
-  let csv = fs.readFileSync(CSV, 'utf8'); if (!csv.endsWith('\n')) csv += '\n';
-  // 29.09.2026: Datei direkt vor dem Schreiben neu gelesen — steht die ID schon drin (anderer Lauf, Merge), nichts anhängen.
-  if (new RegExp('^' + id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ',', 'm').test(csv)) { console.log(`   (Zeile ${id} steht schon in der Queue — nicht doppelt)`); return false; }
-  csv += [id, new Date().toISOString().slice(0, 10), url, esc(cap), esc(tags), esc(platforms), 'ready', '', ''].join(',') + '\n';
-  fs.writeFileSync(CSV, csv);
+  // 14.10.2026: unter der gemeinsamen Queue-Sperre (lib/queue_csv.mjs) — frisch gelesen, id schon drin → nichts, atomar geschrieben.
+  // Vorher: lesen+anhängen ohne Sperre, während ein Poster die ganze Datei aus seiner Start-Kopie zurückschrieb (8 Reels verloren).
+  if (!queueAnhaengen(CSV, [[id, new Date().toISOString().slice(0, 10), url, cap, tags, platforms, 'ready', '', '']])) { console.log(`   (Zeile ${id} steht schon in der Queue — nicht doppelt)`); return false; }
+  return true;
 }
 function gitPush(dateien, msg) {
   // 23.09.2026: ueber automation/git_sichern.sh (Merge statt Rebase, KEIN rebase.autoStash). Der Autostash stashte die

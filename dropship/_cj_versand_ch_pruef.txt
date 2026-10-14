@@ -8624,3 +8624,5 @@ hundegelenkschutz-492353	-	-	-	unklar pid 1602002 Product has been removed from 
 fischerschirm-454465	2064643110556700673	11	34.61	ok	landeseite
 faltbare-outdoor-stuhle-101313	2064601971697958913	16	27.59	ok	landeseite
 falttisch-428673	2064556382129926147	11	63.82	ok	landeseite
+falttisch-fur-outdoor-757826	2064329062130638849	0	-	KEINE CH-Option → DRAFT	landeseite
+faltbarer-grill-622000	2606070746531622500	0	-	KEINE CH-Option → DRAFT	landeseite

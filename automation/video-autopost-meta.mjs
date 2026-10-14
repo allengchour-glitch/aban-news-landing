@@ -20,6 +20,7 @@
  *   THREADS_USER_ID + THREADS_ACCESS_TOKEN                            → Threads (Video)
  *   MAX_PER_RUN=1 · DRY_RUN=1
  */
+import { schreiben as queueSchreiben, schnappschuss as queueSchnappschuss } from './lib/queue_csv.mjs';
 import fs from 'node:fs';
 import { lock as postLock, seen as postSeen, mark as postMark, fbSeitenIdentitaet, modelSperre } from './post_guard.mjs';
 
@@ -137,6 +138,10 @@ if(!fs.existsSync(CSV)){ console.log('Keine social/video_queue.csv → nichts zu
 
 const today = new Date().toISOString().slice(0,10);
 const rows = parse(fs.readFileSync(CSV,'utf8'));
+// 14.10.2026: nie die ganze Datei aus dieser Start-Kopie zurückschreiben (andere Prozesse hängen an/ändern) —
+// queue_csv setzt nur die EIGENEN Änderungen in den frischen Stand (gemeinsame Sperre + 3-Wege).
+let _queueBasis = queueSchnappschuss(rows);
+const queueWrite = () => { queueSchreiben(CSV, _queueBasis, rows); _queueBasis = queueSchnappschuss(rows); };
 const header = rows[0];
 const idx = Object.fromEntries(COLS.map(c=>[c, header.indexOf(c)]));
 const data = rows.slice(1);
@@ -157,7 +162,7 @@ for(const next of due.slice(0, MAX)){
   // ⛔ INHALTS-SPERRE: dieses Video schon je gepostet (script-übergreifend)? → nie zweimal.
   if(!DRY && postSeen(videoUrl)){
     console.log(`   ⛔ Video schon gepostet (gemeinsamer Ledger) → skip, kein Doppelpost: ${videoUrl}`);
-    next[idx.status] = 'posted-dup-skip'; fs.writeFileSync(CSV, serialize(rows)); continue;
+    next[idx.status] = 'posted-dup-skip'; queueWrite(); continue;
   }
   const plat = (next[idx.platforms]||'').toLowerCase();
   const wantIG = !plat.trim() || /instagram|\big\b/.test(plat);
@@ -177,7 +182,7 @@ for(const next of due.slice(0, MAX)){
     next[idx.status] = 'posted';
     next[idx.posted_at] = new Date().toISOString();
     next[idx.post_url] = got[0];
-    fs.writeFileSync(CSV, serialize(rows));                     // sofort committen (kein Post-vor-Commit-Fenster)
+    queueWrite();                     // sofort committen (kein Post-vor-Commit-Fenster)
     postedCount++;
     console.log(`   ✅ veröffentlicht auf ${results.map((x,i)=>x&&x!==false?['IG','FB','Threads'][i]:null).filter(Boolean).join('+')}`);
   } else {
@@ -186,6 +191,6 @@ for(const next of due.slice(0, MAX)){
   }
 }
 
-if(!DRY && postedCount>0) fs.writeFileSync(CSV, serialize(rows));
+if(!DRY && postedCount>0) queueWrite();
 console.log(`Fertig: ${postedCount} Video(s) gepostet${DRY?' (DRY)':''}.`);
 process.exit(anyFail && postedCount===0 ? 1 : 0);

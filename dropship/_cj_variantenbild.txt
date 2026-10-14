@@ -7098,3 +7098,5 @@ gid://shopify/Product/15468317868417	zugeordnet	20	Kapuzen-Cardigan aus Strick
 gid://shopify/Product/15468317933953	zugeordnet	48	Gerippter V-Pullover mit Turn-Down-Kragen
 gid://shopify/Product/15468318032257	zugeordnet	25	Strickpullover im Color-Blocking-Design
 gid://shopify/Product/15468318097793	zugeordnet	20	Herren Strick-Shirt Kurzarm Slim Fit
+gid://shopify/Product/15468318130561	zugeordnet	77	Herren Kurzarmhemd mit Knöpfen – Unifarben
+gid://shopify/Product/15468318196097	zugeordnet	30	Herren Kurzarmhemd gestreift aus Maulbeerseide

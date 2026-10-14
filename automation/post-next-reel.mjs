@@ -16,6 +16,7 @@
  *   TELEGRAM_BOT_TOKEN    + TELEGRAM_CHAT_ID  (direkte Telegram-Meldung)
  *   DRY_RUN=1             (optional: nur loggen, nichts senden/schreiben)
  */
+import { schreiben as queueSchreiben, schnappschuss as queueSchnappschuss } from './lib/queue_csv.mjs';
 import fs from 'node:fs';
 import { lock as postLock, seen as postSeen, mark as postMark, modelSperre } from './post_guard.mjs';
 
@@ -44,6 +45,10 @@ function esc(v){ v=String(v??''); return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""
 function serialize(rows){ return rows.map(r=>r.map(esc).join(',')).join('\n')+'\n'; }
 
 const rows = parse(fs.readFileSync(CSV,'utf8'));
+// 14.10.2026: nie die ganze Datei aus dieser Start-Kopie zurückschreiben (andere Prozesse hängen an/ändern) —
+// queue_csv setzt nur die EIGENEN Änderungen in den frischen Stand (gemeinsame Sperre + 3-Wege).
+let _queueBasis = queueSchnappschuss(rows);
+const queueWrite = () => { queueSchreiben(CSV, _queueBasis, rows); _queueBasis = queueSchnappschuss(rows); };
 const header = rows[0];
 const idx = Object.fromEntries(COLS.map(c=>[c, header.indexOf(c)]));
 const data = rows.slice(1);
@@ -60,7 +65,7 @@ const videoUrl = next[idx.video_url];
 // 30.09.2026 Betreiber «immer sie markieren und auch andere orte»: Model-Material nur mit @tatjanalarsinamoira (post_guard.modelSperre)
 { const ms = modelSperre([videoUrl], caption); if (ms) { console.error('⛔', ms); process.exit(3); } }
 if(!DRY) postLock();
-if(!DRY && postSeen(videoUrl)){ console.log('⛔ Video schon gepostet (gemeinsamer Ledger) → skip, kein Doppelpost.'); next[idx.status]='posted'; fs.writeFileSync(CSV, serialize(rows)); process.exit(0); }
+if(!DRY && postSeen(videoUrl)){ console.log('⛔ Video schon gepostet (gemeinsamer Ledger) → skip, kein Doppelpost.'); next[idx.status]='posted'; queueWrite(); process.exit(0); }
 // Webhook-Payload: Reel-Felder + abannews-kompatible Felder (text/url/tags) für social/post.py-artige n8n-Flows.
 const payload = {
   id: next[idx.id], video_url: videoUrl, caption, hashtags,
@@ -103,5 +108,5 @@ if(!ok){ console.error('Kein Kanal erfolgreich — Zeile bleibt ready (nächster
 postMark(videoUrl);              // sofort in gemeinsamen Ledger: kein anderer Poster wiederholt dieses Video
 next[idx.status] = 'posted';
 next[idx.posted_at] = payload.posted_at;
-fs.writeFileSync(CSV, serialize(rows));
+queueWrite();
 console.log('✅ Reel', payload.id, 'veröffentlicht (', active.join('+'), ') + als posted markiert.');
