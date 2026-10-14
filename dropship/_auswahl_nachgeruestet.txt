@@ -2189,3 +2189,7 @@
 16610642231687	Farbe:3:3	2026-10-14	porzellan-schussel-fur-hund-und-katze-392512
 16608156877191	Farbe:5:5	2026-10-14	retro-leder-portemonnaie-clutch-635700
 16607462818183	Farbe:2+Grösse:6:12	2026-10-14	hundewinterjacke-aus-wolle-839168
+16609705722247	stecker-eu	2026-10-14	uhrenbeweger-mit-piano-lack-03c222
+16609705460103	Farbe:2:2	2026-10-14	magnetischer-verlangerungsstab-90-mm-aus-chrom-04af03
+15525201871233	Modell:6:6	2026-10-14	abdeckstift-2d0865
+15524862001537	Farbe:5+Grösse:3:15	2026-10-14	multifunktionale-hunde-leine-330432
