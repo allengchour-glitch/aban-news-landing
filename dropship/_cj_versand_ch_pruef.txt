@@ -8813,3 +8813,8 @@ diy-diamantpuzzle-coaster-mit-halterung-467265	2007346992738381825	16	7.17	ok	la
 diy-diamantmalerei-coaster-mit-halterung-357505	2007342704210243586	16	7.17	ok	landeseite
 diy-mandala-diamantkunst-becherkafer-set-673217	2007361877753753602	16	7.17	ok	landeseite
 diy-diamantmalerei-untersetzer-mit-halterung-k-416194	2007361152532525057	16	7.17	ok	landeseite
+diy-diamant-mal-unterlage-mit-obstmuster-fur-a-002113	2007344466866499586	16	7.17	ok	landeseite
+diy-diamantmalerei-untersetzer-set-mit-halteru-116801	2007357799602614274	16	7.17	ok	landeseite
+diy-diamant-mal-untertasse-mit-halterung-479425	2007355371045171202	16	7.17	ok	landeseite
+diy-diamant-malcoaster-mit-halt-rosenmuster-873601	2007348672313593857	16	7.17	ok	landeseite
+diy-diamant-malerei-untersetzer-valentinstag-f-115905	2007359889992224769	16	7.17	ok	landeseite
