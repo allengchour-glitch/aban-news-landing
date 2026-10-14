@@ -2304,3 +2304,5 @@
 15521233797505	Farbe:2+Grösse:3:6	2026-10-14	hundegeschirr-und-leine-aus-baumwolle-3b0689
 15521233404289	Farbe:5+Grösse:2:10	2026-10-14	kinderrucksack-atmungsaktiv-entlastend-490880
 15521229275521	Grösse:2:2	2026-10-14	futterloffel-mit-bambusgriff-885120
+15521216627073	Menge:3:3	2026-10-14	antihaft-silikon-spatel-set-mit-holzgriff-908288
+15520409780609	Grösse:2:2	2026-10-14	antihaft-wok-induktion-gasherd-universal-611500
