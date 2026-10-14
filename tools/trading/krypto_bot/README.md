@@ -583,6 +583,51 @@ L-mal so gross):
   Rückfrage und den Zahlen oben. Der Pilot nutzt dabei weiterhin höchstens `KI_BOT_ANTEIL` (Standard 50 %) des Kontos —
   die Prozente oben gelten für diesen Teil.
 
+## 💰 «Max Profit» — welcher Hebel bringt auf Dauer am meisten? (`maxprofit_pruefung.py`)
+
+Frage (14.10.2026): Wie holt der Pilot den grössten Gewinn heraus? «Max Profit» heisst hier das grösste **Vermögenswachstum
+auf Dauer** (Rendite pro Jahr) — nicht der grösste Erwartungswert: der wird mit Alles-auf-Hebel maximiert und endet im Ruin
+(oben: ab 5× ist das Konto weg). Die Regeln standen fest, bevor gerechnet wurde (Git-Commit `fb9a08cad`, Kopf von
+`maxprofit_pruefung.py`):
+- gleiche Signale wie der Live-Pilot (nichts Neues gesucht);
+- echtes Binance-Funding und Liquidation;
+- gezählt nur **ab 2020** — der Kelly-Hebel wird jedes Jahr nur aus den Jahren davor geschätzt;
+- dazu ab 2022, doppelte Kosten und 10'000 Zufallsjahre aus den echten Tagesrenditen.
+
+| Kandidat | ⌀ Hebel | ab 2020 pro Jahr / Einbruch | ab 2022 | doppelte Kosten | P(Einbruch < −60 % im Jahr) | schlechtestes 5-%-Jahr | Urteil |
+|---|---|---|---|---|---|---|---|
+| 1× (live) | 1,00 | +33,4 % / −30 % | +29,3 % / −26 % | +27,8 % | 0,0 % | −20 % | bestanden |
+| 1,25× | 1,25 | +36,2 % / −39 % | +32,7 % / −33 % | +28,3 % | 0,2 % | −27 % | bestanden |
+| 1,5× | 1,50 | +43,5 % / −45 % | +38,2 % / −38 % | +33,2 % | 1,1 % | −33 % | bestanden |
+| **1,75×** | **1,75** | **+48,7 % / −53 %** | **+43,8 % / −45 %** | **+38,4 %** | **3,6 %** | **−39 %** | **bestanden → Empfehlung** |
+| 2× | 2,00 | +51,7 % / −61 % | +45,4 % / −53 % | +39,0 % | 8,2 % | −45 % | nein (Einbruch-Risiko) |
+| 2,5× | 2,50 | +57,7 % / −69 % | +46,2 % / −68 % | +40,9 % | 22,8 % | −55 % | nein |
+| 3× | 3,00 | +61,4 % / −79 % | +48,7 % / −79 % | +38,7 % | 40,9 % | −65 % | nein |
+| Kelly ¼ (je Jahr neu) | 1,20 | +37,3 % / −44 % | +29,9 % / −28 % | +29,1 % | 0,3 % | −29 % | bestanden |
+| Kelly ½ | 2,37 | +59,7 % / −73 % | +46,4 % / −54 % | +40,9 % | 22,6 % | −55 % | nein |
+| Kelly ¾ / voll | 2,97 / 3,00 | +59,9 % / +61,4 %, −79 % | +46,7 % / +48,7 % | +37,4 % / +38,7 % | 40 % | −65 % | nein |
+| **Pilot 2.0 (1×)** | 1,00 | **+45,4 % / −24 %** | +33,7 % / −23 % | +41,5 % | 0,0 % | −14 % | bestanden |
+| Bitcoin halten (Spot) | – | +43,4 % / −77 % | +13,0 % / −67 % | – | – | – | Vergleich |
+
+- **Das Wachstum steigt mit dem Hebel — bis zur Klippe.** 3× brachte ab 2020 am meisten (+61 % pro Jahr). In 41 % der
+  Zufallsjahre fällt das Konto dabei aber tiefer als −60 %. Der Kelly-Hebel, nur aus den Vorjahren geschätzt, wollte jedes Jahr
+  3× oder mehr (gedeckelt). Wer so handelt, erlebt sehr wahrscheinlich einen fast totalen Einbruch, bevor die Rendite kommt.
+- **Empfehlung nach der Regel: 1,75×.**
+  - Ab 2020 +48,7 % statt +33,4 % pro Jahr, ab 2022 +43,8 % statt +29,3 %, auch mit doppelten Kosten besser.
+  - Der Preis: schlimmster Einbruch −53 %, und jedes 20. Jahr endet bei −39 % oder schlechter.
+  - Bitcoin halten schlägt sie in beiden Zeiträumen, mit kleinerem Einbruch.
+- **Effizienter ist Pilot 2.0 mit 1×:** +45,4 % pro Jahr bei nur −24 % Einbruch, also fast so viel wie 1,75× bei halbem Risiko.
+  Mit doppelten Kosten ist er sogar besser (+41,5 % gegen +38,4 %). Pilot 2.0 ist aber noch gesperrt (unabhängige Prüfungen).
+  Nächster ehrlicher Schritt ist «Pilot 2.0 + Hebel» als eigener Prüfstand mit Protokoll vorab.
+- Ehrlich:
+  - Bei 12 Kandidaten schönt die Auswahl die beste Zahl etwas.
+  - Yahoo-Tageskurse: Echte Dochte an der Börse können tiefer sein, eine Liquidation käme dann früher.
+  - Ein Börsenausfall (FTX 2022) ist nicht abgebildet.
+  - Korrektur nach dem ersten Lauf: Die «teure» Zahl für Pilot 2.0 rechnete die Funding-*Einnahme* versehentlich × 1,5
+    (44,9 % statt richtig 41,5 %). Die Empfehlung blieb gleich; ein Test fängt das jetzt.
+- Live: Die Risiko-Stufe 1,5× ist heute im Cockpit wählbar (`KRYPTO_RISIKO=1.5`). 1,75× gibt es noch nicht, Werte werden auf
+  1 / 1,5 / 2 gerundet. Keine Anlageberatung — nur Geld einsetzen, dessen Verlust du verkraftest.
+
 ## ⏱️ Scalping (Minuten-Handel) — ehrlich getestet: verliert (`scalping_pruefung.py`)
 
 Frage: Lässt sich auf Binance-Futures mit Minuten-Handel **nach Gebühren** Geld verdienen? Die Regeln standen fest, bevor
@@ -927,6 +972,7 @@ python3 tools/trading/krypto_bot/test_binance.py  # 21 Tests, inkl. nachgebautem
 python3 tools/trading/krypto_bot/test_pilot2_plan.py  # 23 Tests: Pilot-2.0-Rechnung (Richtung, Ernte, Pfand, Mindestbeträge)
 python3 tools/trading/krypto_bot/test_pilot2_live.py  # 154 Tests: Pilot 2.0 («Konto = Wahrheit») gegen eine strenge nachgebaute Binance
 python3 -B tools/trading/krypto_bot/test_pilot2_streng.py  # 149 Tests: Belege der 8.–12. Prüfung, Schlussproben, Fuzzer-Funde gegen die Prüf-Börse, kleine Fuzzer
+python3 -B tools/trading/krypto_bot/test_maxprofit.py      # 26 Tests: Max-Profit-Kern (gleiches Modell wie der Pilot, Kelly-Optimum, keine Zukunftsdaten, Kosten)
 python3 -B tools/trading/krypto_bot/test_testnetz_pruefung.py  # 47 Tests: das Testnetz-Prüfskript gegen die Prüf-Börse (nur 127.0.0.1)
 python3 -B tools/trading/krypto_bot/pruef_fuzzer.py notaus 0 1600     # grosser Fuzzer (für Prüfungen): Not-Aus unter harten Störungen
 python3 -B tools/trading/krypto_bot/pruef_fuzzer.py laeufe 0 200 30   # … Läufe über 30 Tage, Störungen in jedem Schritt

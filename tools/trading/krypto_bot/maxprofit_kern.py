@@ -1,0 +1,172 @@
+#!/usr/bin/env python3
+"""Rechenkern des Max-Profit-Prüfstands (maxprofit_pruefung.py) — reine Funktionen, ohne Netz, getestet in test_maxprofit.py.
+
+  lauf_hebel        Futures-Konto wie pilot_pruefung.lauf (Band, Börsen-Stop, Liquidation über Tagestief/-hoch), aber mit
+                    Funding je Tag getrennt für Longs (zahlen f_long) und Shorts (bekommen f_short; negativ = zahlen)
+  kelly_hebel       Wachstums-optimaler Hebel einer Tagesrenditen-Reihe: μ / σ² (Kelly für eine skalierte Strategie)
+  walk_forward      Hebel je Kalenderjahr — NUR aus den Tagen VOR dem Jahr geschätzt (keine Zukunftsdaten)
+  bootstrap_jahre   Zufallsjahre aus echten Tagesrenditen (Blöcke, damit Serien wie Crashs zusammen bleiben)
+  kennzahlen        Rendite pro Jahr, schlimmster Einbruch, Rendite ÷ Einbruch
+  entscheidung      die VORAB festgelegte Regel (Kopf von maxprofit_pruefung.py)
+Keine Anlageberatung."""
+from __future__ import annotations
+
+import math
+import random
+
+GEBUEHR, SCHLUPF, MARGE_MIN, BAND = 0.0005, 0.001, 0.005, 0.25
+
+
+def vol(p):
+    """Schwankung pro Jahr (EWMA λ 0,94 der Tagesrenditen, ab Tag 30) — wie pilot_pruefung.vol."""
+    var, o = None, [None] * len(p)
+    for i in range(1, len(p)):
+        r = p[i] / p[i - 1] - 1
+        var = r * r if var is None else 0.94 * var + 0.06 * r * r
+        if i >= 30:
+            o[i] = math.sqrt(var * 365)
+    return o
+
+
+def lauf_hebel(z, h, l, c, f_long, f_short, a, b, stop_k=3.0, gebuehr=GEBUEHR, schlupf=SCHLUPF):
+    """Kontowert-Verlauf (Start 1.0) von Tag a bis b: Ziel-Anteil z[i-1] (Vorzeichen = Richtung, Betrag = Hebel), Handel
+    am Folgetag, Band 25 %, Börsen-Stop stop_k Tages-Schwankungen vom Vortags-Schluss (Schlupf), Liquidation, sobald das
+    Konto über das Tagesextrem unter die Wartungsmarge fällt (dann 0 und Ende). Funding je Tag: Long zahlt f_long[i] × Volumen,
+    Short bekommt f_short[i] × Volumen (negativ: zahlt). → (Werte, liquidiert)"""
+    v = vol(c)
+    E, N, werte = 1.0, 0.0, [1.0]
+    for i in range(max(a, 1), b):
+        ziel = z[i - 1]
+        ist = N / E if E > 0 else 0.0
+        if (ziel == 0 and N != 0) or (ziel != 0 and (abs(ist - ziel) > BAND or (ist > 0) != (ziel > 0) or N == 0)):
+            neu = ziel * E
+            E -= abs(neu - N) * gebuehr
+            N = neu
+        if N != 0:
+            ref = c[i - 1]
+            if stop_k and v[i - 1]:
+                abstand = stop_k * v[i - 1] / math.sqrt(365) * ref
+                stop = ref - abstand if N > 0 else ref + abstand
+                if (N > 0 and l[i] <= stop) or (N < 0 and h[i] >= stop):
+                    aus = stop * (1 - schlupf) if N > 0 else stop * (1 + schlupf)
+                    E += N * (aus / ref - 1) - abs(N) * gebuehr
+                    N = 0.0
+                    werte.append(max(E, 0.0))
+                    if E <= 0:
+                        return werte, True
+                    continue
+            extrem = l[i] if N > 0 else h[i]
+            if E + N * (extrem / ref - 1) <= MARGE_MIN * abs(N * extrem / ref):
+                werte.append(0.0)
+                return werte, True
+            E += N * (c[i] / ref - 1) - (N * f_long[i] if N > 0 else N * f_short[i])
+            N *= c[i] / ref
+        werte.append(E)
+    return werte, False
+
+
+def mix_taeglich(*kurven, gewichte=None):
+    """Konto, das jeden Tag neu auf die Teilkonten aufgeteilt wird (wie live) — wie pilot_pruefung.mix_taeglich."""
+    g = gewichte or [1 / len(kurven)] * len(kurven)
+    m = [1.0]
+    for i in range(1, min(len(k) for k in kurven)):
+        m.append(m[-1] * sum(gj * (k[i] / k[i - 1] if k[i - 1] > 0 else 1.0) for gj, k in zip(g, kurven)))
+    return m
+
+
+def renditen(werte):
+    """Tagesrenditen einer Kontokurve (ein Teilkonto bei 0 bleibt flach)."""
+    return [(werte[i] / werte[i - 1] - 1) if werte[i - 1] > 0 else 0.0 for i in range(1, len(werte))]
+
+
+def kennzahlen(werte, tage_pro_jahr=365):
+    spitze, dd = werte[0], 0.0
+    for w in werte:
+        spitze = max(spitze, w)
+        dd = min(dd, w / spitze - 1 if spitze > 0 else -1.0)
+    jahre = (len(werte) - 1) / tage_pro_jahr
+    cagr = (werte[-1] / werte[0]) ** (1 / jahre) - 1 if werte[-1] > 0 and jahre > 0 else -1.0
+    return {"cagr": cagr, "einbruch": dd, "mar": cagr / abs(dd) if dd < 0 else float("inf")}
+
+
+def kelly_hebel(r):
+    """Wachstums-optimaler Hebel für eine Strategie mit Tagesrenditen r (die Strategie L-fach skaliert): Wachstum pro Tag
+    ≈ L·μ − L²·σ²/2 → Optimum L* = μ / σ². μ ≤ 0 → 0 (dann gar nicht handeln)."""
+    n = len(r)
+    if n < 2:
+        return 0.0
+    mu = sum(r) / n
+    var = sum((x - mu) ** 2 for x in r) / (n - 1)
+    if var <= 0 or mu <= 0:
+        return 0.0
+    return mu / var
+
+
+def walk_forward(tage, r, jahre, anteil, hebel_min, hebel_max, ab=0):
+    """Hebel je Kalenderjahr: Kelly aus ALLEN Tagesrenditen r[ab:i] VOR dem 1. Januar des Jahres, mal `anteil`
+    (¼, ½ … Kelly), begrenzt auf [hebel_min, hebel_max]. tage[i] ist das Datum von r[i]. → {Jahr: Hebel}"""
+    out = {}
+    for j in jahre:
+        bis = next((i for i, t in enumerate(tage) if t >= f"{j}-01-01"), len(tage))
+        roh = kelly_hebel(r[ab:bis]) * anteil
+        out[j] = min(hebel_max, max(hebel_min, roh))
+    return out
+
+
+def bootstrap_jahre(r, n=10000, laenge=365, block=20, seed=1):
+    """n Zufallsjahre aus den Tagesrenditen r: Blöcke von `block` aufeinanderfolgenden Tagen (zufälliger Start, im Kreis),
+    aneinandergereiht bis `laenge` Tage. → Liste (Jahresrendite, schlimmster Einbruch im Jahr)."""
+    rnd = random.Random(seed)
+    m, out = len(r), []
+    for _ in range(n):
+        w, spitze, dd, tag = 1.0, 1.0, 0.0, 0
+        while tag < laenge:
+            s = rnd.randrange(m)
+            for k in range(min(block, laenge - tag)):
+                w *= 1 + r[(s + k) % m]
+                if w <= 0:
+                    w = 0.0
+                spitze = max(spitze, w)
+                dd = min(dd, w / spitze - 1 if spitze > 0 else -1.0)
+            tag += block
+        out.append((w - 1, dd))
+    return out
+
+
+def quantil(xs, q):
+    s = sorted(xs)
+    if not s:
+        return float("nan")
+    k = (len(s) - 1) * q
+    lo, hi = math.floor(k), math.ceil(k)
+    return s[lo] + (s[hi] - s[lo]) * (k - lo)
+
+
+def entscheidung(kandidaten, basis, schwelle_pp=0.02):
+    """Die VORAB festgelegte Regel (maxprofit_pruefung.py, Kopf). kandidaten: {Name: Ergebnis} mit den Feldern
+    liquidiert, p_einbruch60, cagr_oos, cagr_2022, cagr_oos_teuer, hebel_schnitt; basis: Name der 1×-Variante.
+    Bestanden hat ein Kandidat, wenn ALLES gilt:
+      1) nie liquidiert, 2) P(Einbruch tiefer als −60 % innert eines Zufallsjahres) ≤ 5 %,
+      3) Rendite pro Jahr ab 2022 ≥ die der 1×-Variante, 4) mit doppelten Kosten ab 2020 ≥ die der 1×-Variante (ebenfalls teuer).
+    Empfehlung = bestandener Kandidat mit der höchsten Rendite pro Jahr ab 2020 (ausserhalb der Schätz-Stichprobe); liegt ein
+    bestandener Kandidat mit kleinerem mittlerem Hebel weniger als 2 Prozentpunkte darunter, wird der kleinere genommen.
+    Besteht keiner (ausser der Basis), bleibt 1×. → (Empfehlung, {Name: (bestanden, Gründe)})"""
+    b = kandidaten[basis]
+    urteil = {}
+    for name, k in kandidaten.items():
+        gruende = []
+        if k["liquidiert"]:
+            gruende.append("liquidiert")
+        if k["p_einbruch60"] > 0.05:
+            gruende.append(f"P(Einbruch < −60 %) {k['p_einbruch60'] * 100:.1f} %")
+        if k["cagr_2022"] < b["cagr_2022"]:
+            gruende.append("ab 2022 schlechter als 1×")
+        if k["cagr_oos_teuer"] < b["cagr_oos_teuer"]:
+            gruende.append("mit doppelten Kosten schlechter als 1×")
+        urteil[name] = (not gruende, gruende)
+    ok = [n for n, (b_, _) in urteil.items() if b_]
+    if not ok:
+        return basis, urteil
+    beste = max(ok, key=lambda n: kandidaten[n]["cagr_oos"])
+    nah = [n for n in ok if kandidaten[beste]["cagr_oos"] - kandidaten[n]["cagr_oos"] < schwelle_pp]
+    return min(nah, key=lambda n: (kandidaten[n]["hebel_schnitt"], -kandidaten[n]["cagr_oos"])), urteil

@@ -1,0 +1,249 @@
+{
+ "stand": "2026-10-13",
+ "protokoll": "— VORAB FESTGELEGT (committet vor dem ersten Lauf mit echten Daten):\nZiel «Max Profit» heisst hier: das grösste VERMÖGENSWACHSTUM auf Dauer (geometrisch, Rendite pro Jahr), nicht der grösste\nErwartungswert — der wird mit Alles-auf-Hebel maximiert und endet im Ruin (hebel_pruefung.py: ab 5× Konto weg).\nSignale wie der Live-Pilot, unverändert (keine neuen Regeln gesucht): Bitcoin Trend 150 + Ethereum Trend 200 (über dem Schnitt\nlong, darunter short), Schwankungsziel 40 % × L mit Deckel L (= jede Position L-fach), MVRV-Bremse (kein Short bei MVRV < 1),\nBörsen-Stop 3 Tages-Schwankungen mit 0,1 % Schlupf, BTC/ETH täglich 50/50 neu aufgeteilt.\nModell: Perpetual-Futures, Gebühr 0,05 %, Liquidation über Tagestief/-hoch (Wartungsmarge 0,5 %), ECHTES Binance-Funding je\nTag (Longs zahlen, Shorts bekommen bzw. zahlen bei negativem Funding); vor Beginn der Funding-Daten zahlen Longs pauschal\n0,01 % je 8 Stunden und Shorts bekommen nichts (vorsichtig).\nKandidaten:\n  F-L     fester Hebel L ∈ {1; 1,25; 1,5; 1,75; 2; 2,5; 3}\n  K-a     Kelly-Hebel, jedes Kalenderjahr neu: a × (μ ÷ σ²) der Tagesrenditen der 1×-Strategie AUS ALLEN TAGEN VOR DEM JAHR\n          (a ∈ {¼, ½, ¾, 1}), begrenzt auf 0,5…3 — so sieht die Hebel-Wahl nie in die Zukunft\n  P2      Pilot 2.0 mit 1× (Long über Spot, Short über Futures, freies Geld in der Funding-Ernte), Signale wie oben\nGezählt wird nur ausserhalb der Schätz-Stichprobe: ab 1.1.2020 (Kelly schätzt ab Mitte 2018). Zusätzlich «ab 2022» (Baisse +\nErholung) und «doppelte Kosten» (Gebühr 0,10 %, Schlupf 0,2 %, Funding für Longs × 1,5) ab 2020.\nRisiko: 10'000 Zufallsjahre aus den echten Tagesrenditen ab 2020 (Blöcke à 20 Tage) → Wahrscheinlichkeit eines Einbruchs\ntiefer als −60 % innert eines Jahres, schlechtestes 5-%-Jahr.\nENTSCHEIDUNGSREGEL (maxprofit_kern.entscheidung): bestanden hat ein Kandidat, wenn ALLES gilt\n  1) nie liquidiert (kein Teilkonto, ab 2020), 2) P(Einbruch tiefer als −60 % in einem Zufallsjahr) ≤ 5 %,\n  3) Rendite pro Jahr ab 2022 ≥ die von F-1 (1× live), 4) mit doppelten Kosten ab 2020 ≥ F-1 mit doppelten Kosten.\nEmpfehlung = bestandener Kandidat mit der höchsten Rendite pro Jahr ab 2020; liegt einer mit kleinerem mittlerem Hebel weniger\nals 2 Prozentpunkte darunter, gilt der kleinere. Besteht ausser F-1 keiner, bleibt 1×. Ehrlich: 12 Kandidaten — die Auswahl\ndes besten schönt dessen Zahl etwas; darum zählen die Regeln 2–4 und nicht die Spitzenrendite allein.\nNicht abgebildet: Börsenausfall (FTX 2022), Spot/Future-Kursdifferenz, Teilfüllungen, Steuern. Keine Anlageberatung.",
+ "kelly_je_jahr": {
+  "K-0.25": {
+   "2020": 1.536855774273647,
+   "2021": 1.5611786543174269,
+   "2022": 1.0666589837967173,
+   "2023": 1.1821380786432034,
+   "2024": 1.086500290772056,
+   "2025": 1.00631392743305,
+   "2026": 0.9051365507275662
+  },
+  "K-0.5": {
+   "2020": 3.0,
+   "2021": 3.0,
+   "2022": 2.1333179675934346,
+   "2023": 2.364276157286407,
+   "2024": 2.173000581544112,
+   "2025": 2.0126278548661,
+   "2026": 1.8102731014551323
+  },
+  "K-0.75": {
+   "2020": 3.0,
+   "2021": 3.0,
+   "2022": 3.0,
+   "2023": 3.0,
+   "2024": 3.0,
+   "2025": 3.0,
+   "2026": 2.7154096521826983
+  },
+  "K-1": {
+   "2020": 3.0,
+   "2021": 3.0,
+   "2022": 3.0,
+   "2023": 3.0,
+   "2024": 3.0,
+   "2025": 3.0,
+   "2026": 3.0
+  }
+ },
+ "kandidaten": {
+  "F-1": {
+   "cagr_oos": 0.33439091648320995,
+   "einbruch_oos": -0.29568404114795277,
+   "cagr_2022": 0.2932824263795881,
+   "einbruch_2022": -0.2633241293396238,
+   "liquidiert": false,
+   "p_einbruch60": 0.0001,
+   "p_minus50": 0.0002,
+   "jahr_median": 0.32480240360393264,
+   "jahr_5pct": -0.1978993616064399,
+   "cagr_oos_teuer": 0.2779179404338519,
+   "hebel_schnitt": 1.0,
+   "bestanden": true,
+   "gruende": []
+  },
+  "F-1.25": {
+   "cagr_oos": 0.3620637453043354,
+   "einbruch_oos": -0.38592943357313503,
+   "cagr_2022": 0.3266159384206737,
+   "einbruch_2022": -0.3304255722821263,
+   "liquidiert": false,
+   "p_einbruch60": 0.002,
+   "p_minus50": 0.0031,
+   "jahr_median": 0.3509178923620063,
+   "jahr_5pct": -0.2729733749321462,
+   "cagr_oos_teuer": 0.2827380076753605,
+   "hebel_schnitt": 1.25,
+   "bestanden": true,
+   "gruende": []
+  },
+  "F-1.5": {
+   "cagr_oos": 0.4354409056354689,
+   "einbruch_oos": -0.44709935784908716,
+   "cagr_2022": 0.3816850384133692,
+   "einbruch_2022": -0.38076840806671475,
+   "liquidiert": false,
+   "p_einbruch60": 0.0111,
+   "p_minus50": 0.0095,
+   "jahr_median": 0.4169437957248209,
+   "jahr_5pct": -0.3329583741604986,
+   "cagr_oos_teuer": 0.3322891016061127,
+   "hebel_schnitt": 1.5,
+   "bestanden": true,
+   "gruende": []
+  },
+  "F-1.75": {
+   "cagr_oos": 0.4867920767414071,
+   "einbruch_oos": -0.5310660325580066,
+   "cagr_2022": 0.43759798772553404,
+   "einbruch_2022": -0.4549380202015538,
+   "liquidiert": false,
+   "p_einbruch60": 0.0362,
+   "p_minus50": 0.0206,
+   "jahr_median": 0.47032875302818555,
+   "jahr_5pct": -0.3897134687267543,
+   "cagr_oos_teuer": 0.38382377887673536,
+   "hebel_schnitt": 1.75,
+   "bestanden": true,
+   "gruende": []
+  },
+  "F-2": {
+   "cagr_oos": 0.5165798815359426,
+   "einbruch_oos": -0.6102210686974612,
+   "cagr_2022": 0.45431517822539713,
+   "einbruch_2022": -0.5324721877263159,
+   "liquidiert": false,
+   "p_einbruch60": 0.0822,
+   "p_minus50": 0.0363,
+   "jahr_median": 0.4979655581500323,
+   "jahr_5pct": -0.45181578108514,
+   "cagr_oos_teuer": 0.3900202195134783,
+   "hebel_schnitt": 2.0,
+   "bestanden": false,
+   "gruende": [
+    "P(Einbruch < −60 %) 8.2 %"
+   ]
+  },
+  "F-2.5": {
+   "cagr_oos": 0.5773578499220526,
+   "einbruch_oos": -0.6856748887698525,
+   "cagr_2022": 0.46173433006895603,
+   "einbruch_2022": -0.6829366734768835,
+   "liquidiert": false,
+   "p_einbruch60": 0.2284,
+   "p_minus50": 0.0704,
+   "jahr_median": 0.5511591855721059,
+   "jahr_5pct": -0.5549205576859826,
+   "cagr_oos_teuer": 0.40906352060003415,
+   "hebel_schnitt": 2.5,
+   "bestanden": false,
+   "gruende": [
+    "P(Einbruch < −60 %) 22.8 %"
+   ]
+  },
+  "F-3": {
+   "cagr_oos": 0.6141677410305304,
+   "einbruch_oos": -0.7946616825148076,
+   "cagr_2022": 0.4866148508570731,
+   "einbruch_2022": -0.7946616825148076,
+   "liquidiert": false,
+   "p_einbruch60": 0.409,
+   "p_minus50": 0.11,
+   "jahr_median": 0.5890863024487425,
+   "jahr_5pct": -0.6544670289924016,
+   "cagr_oos_teuer": 0.38661436535101124,
+   "hebel_schnitt": 3.0,
+   "bestanden": false,
+   "gruende": [
+    "P(Einbruch < −60 %) 40.9 %"
+   ]
+  },
+  "K-0.25": {
+   "cagr_oos": 0.37302024431014114,
+   "einbruch_oos": -0.44433970606847994,
+   "cagr_2022": 0.2988265723791743,
+   "einbruch_2022": -0.2756708889896564,
+   "liquidiert": false,
+   "p_einbruch60": 0.003,
+   "p_minus50": 0.0047,
+   "jahr_median": 0.36063566254109003,
+   "jahr_5pct": -0.2857217239064123,
+   "cagr_oos_teuer": 0.2913482429442511,
+   "hebel_schnitt": 1.201357180566726,
+   "bestanden": true,
+   "gruende": []
+  },
+  "K-0.5": {
+   "cagr_oos": 0.5970686587325786,
+   "einbruch_oos": -0.7327172289178085,
+   "cagr_2022": 0.464327141249272,
+   "einbruch_2022": -0.5400499722188661,
+   "liquidiert": false,
+   "p_einbruch60": 0.2261,
+   "p_minus50": 0.0681,
+   "jahr_median": 0.5744186767749325,
+   "jahr_5pct": -0.554032897037943,
+   "cagr_oos_teuer": 0.409053086674241,
+   "hebel_schnitt": 2.3738044158469056,
+   "bestanden": false,
+   "gruende": [
+    "P(Einbruch < −60 %) 22.6 %"
+   ]
+  },
+  "K-0.75": {
+   "cagr_oos": 0.5991877332618281,
+   "einbruch_oos": -0.7883988629278078,
+   "cagr_2022": 0.46708384225863053,
+   "einbruch_2022": -0.7883988629278078,
+   "liquidiert": false,
+   "p_einbruch60": 0.4039,
+   "p_minus50": 0.1105,
+   "jahr_median": 0.5750097252898656,
+   "jahr_5pct": -0.6534701492207893,
+   "cagr_oos_teuer": 0.3739820390790696,
+   "hebel_schnitt": 2.9671538178063908,
+   "bestanden": false,
+   "gruende": [
+    "P(Einbruch < −60 %) 40.4 %"
+   ]
+  },
+  "K-1": {
+   "cagr_oos": 0.6141677410305304,
+   "einbruch_oos": -0.7946616825148076,
+   "cagr_2022": 0.4866148508570731,
+   "einbruch_2022": -0.7946616825148076,
+   "liquidiert": false,
+   "p_einbruch60": 0.409,
+   "p_minus50": 0.11,
+   "jahr_median": 0.5890863024487425,
+   "jahr_5pct": -0.6544670289924016,
+   "cagr_oos_teuer": 0.38661436535101124,
+   "hebel_schnitt": 3.0,
+   "bestanden": false,
+   "gruende": [
+    "P(Einbruch < −60 %) 40.9 %"
+   ]
+  },
+  "P2": {
+   "cagr_oos": 0.4544448727012118,
+   "einbruch_oos": -0.24399688632250816,
+   "cagr_2022": 0.33657031286625383,
+   "einbruch_2022": -0.23348286267347762,
+   "liquidiert": false,
+   "p_einbruch60": 0.0,
+   "p_minus50": 0.0002,
+   "jahr_median": 0.44096450956510747,
+   "jahr_5pct": -0.13724686780527048,
+   "cagr_oos_teuer": 0.41542410595075596,
+   "hebel_schnitt": 1.0,
+   "bestanden": true,
+   "gruende": []
+  }
+ },
+ "empfehlung": "F-1.75",
+ "bitcoin_halten": {
+  "ab_2020": {
+   "cagr": 0.43390793113132853,
+   "einbruch": -0.7663456370856909,
+   "mar": 0.5662039556738678
+  },
+  "ab_2022": {
+   "cagr": 0.12993730885133625,
+   "einbruch": -0.6689381539248928,
+   "mar": 0.19424412868207455
+  }
+ }
+}

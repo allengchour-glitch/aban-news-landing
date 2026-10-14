@@ -64,6 +64,18 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-14 spätabends (💰 «Max Profit» ehrlich gerechnet — Empfehlung 1,75×, effizienter wäre Pilot 2.0):** User: «entwickle eine
+strategie für max profit». `tools/trading/krypto_bot/maxprofit_pruefung.py` + `maxprofit_kern.py` (26 Tests, Mutationen 17/17), Protokoll
+VORAB committet (`fb9a08cad`): Ziel = Vermögenswachstum auf Dauer (Kelly), NICHT Erwartungswert (Alles-auf-Hebel = Ruin); Signale wie der
+Live-Pilot (nichts Neues gesucht), echtes Funding, Liquidation, gezählt ab 2020 (Kelly-Hebel je Jahr nur aus den Vorjahren), doppelte Kosten,
+10'000 Zufallsjahre. Regel: nie liquidiert, P(Einbruch < −60 % im Jahr) ≤ 5 %, ab 2022 + doppelte Kosten ≥ 1×; höchste Rendite ab 2020,
+< 2 Pp. → kleinerer Hebel. **Ergebnis: 1,75× = Empfehlung** (ab 2020 +48,7 %/−53 % statt 1× +33,4 %/−30 %; ab 2022 +43,8 %; 5-%-Jahr −39 %;
+P 3,6 %). 2× fällt (P 8,2 %), 3× +61 %/−79 % (P 41 %); Kelly aus den Vorjahren will jedes Jahr ≥ 3× (gedeckelt). **Pilot 2.0 1×: +45,4 %/−24 %**
+(fast gleich viel bei halbem Risiko, mit doppelten Kosten besser — aber gesperrt). Bitcoin halten +43,4 %/−77 %. **Fehler im 1. Lauf:** P2
+«teuer» rechnete die Funding-EINNAHME × 1,5 (44,9 → richtig 41,5 %) → korrigiert, Test mit Gegenprobe. Live gibt es nur Stufen 1/1,5/2
+(`pilot_kern.STUFEN`, 1,75 wird gerundet) → ob 1,75× eingebaut wird, entscheidet der User (echtes Geld). Nächster Schritt: «Pilot 2.0 + Hebel»
+als eigener Prüfstand (Protokoll vorab).
+
 **📌 2026-10-14 spätnachts (🔒 Pilot 2.0: 12. Prüfung — 3 Blocker + 3 wichtig + 4 klein + 4 eigene Funde behoben, bleibt GESPERRT):**
 Prüfer-Agent (Belege `scratchpad/pruefung12/` p1–p6, Fuzzer `fz_kurs.py`/`fz_streng.py`) fand: **B1** Not-Aus zum Markt meldete
 «zurückgekauft», obwohl Binance nur teilweise ausführte (EXPIRED) oder die Antwort unklar war → Rest ohne Stop; ohne jeden Kurs
