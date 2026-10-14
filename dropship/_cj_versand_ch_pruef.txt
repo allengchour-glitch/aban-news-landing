@@ -8888,3 +8888,11 @@ diy-unterlage-mit-diamantmalerei-muster-und-ha-765441	2003756732163485697	16	7.2
 diamant-malerei-untersetzer-diy-set-fur-erwach-934082	2001564882593431553	16	6.96	ok	landeseite
 handgestricktes-garn-bouquet-638500	2606160652571639300	16	9.65	ok	landeseite
 vintage-keramikblumenampel-mit-griffflache-396801	2006755196221837313	16	15.20	ok	landeseite
+vintage-french-keramikvase-blumenvase-529409	2006765098994552833	16	15.20	ok	landeseite
+elektro-roboterhund-8-radantrieb-613500	2509060911331613600	7	19.72	ok	landeseite
+intelligenter-sprachroboter-24g-fur-4-6-j-617600	2509060841191617800	7	34.80	ok	landeseite
+intelligentes-robo-hundchen-mit-stimme-gestenk-611600	2509060838401611800	7	25.25	ok	landeseite
+gro-es-interaktives-rc-roboter-modell-fur-kind-606500	2508311027201606700	7	39.89	ok	landeseite
+metall-upgrade-fur-weili-1-12-rc-car-602000	2508250844361602200	16	5.04	ok	landeseite
+ferngesteuertes-elektro-katzen-spielzeug-613900	2508200651061614300	3	34.86	ok	landeseite
+kindersmartphone-silikon-pinguin-spielzeug-626500	2502060153331626700	7	7.49	ok	landeseite
