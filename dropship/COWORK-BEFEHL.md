@@ -1,10 +1,10 @@
 # COWORK-BEFEHL — Fassung 21.09.2026, 09:40 UTC (für heute Abend)
 
-## 🆕 14.10. 13:31 UTC — Umgebungsvariable SHOPIFY_CLIENT_SECRET korrigieren (1 Min., Einfügefehler)
+## 🆕 14.10. 13:30 UTC — Umgebungsvariable SHOPIFY_CLIENT_SECRET korrigieren (1 Min., Einfügefehler)
 **Gemessen:** In den Claude-Umgebungseinstellungen hat `SHOPIFY_CLIENT_SECRET` **60 Zeichen**, gültig sind **38** (Format `shpss_` + 32).
 Die ersten 38 Zeichen stimmen, dahinter hängen 22 Zeichen zu viel. Shopify lehnt den Wert ab (HTTP 400), der Wert in
 `/tmp/secrets_env.sh` funktioniert (HTTP 200). Betroffen waren der Aufseher und alles, was er startet (`alt_text_backfill`: 6'470 Fehler).
-**Überbrückt:** `engine_keepalive.sh` prüft das seit 13:31 und verwendet den gültigen Wert; der Aufseher wurde damit neu gestartet.
+**Überbrückt:** `engine_keepalive.sh` prüft das seit 13:30 und verwendet den gültigen Wert; der Aufseher wurde damit neu gestartet.
 **Klick:** claude.ai/code → Umgebung bearbeiten → Variable `SHOPIFY_CLIENT_SECRET` → die 22 Zeichen am Ende löschen (nur `shpss_…` mit
 32 Zeichen danach) → speichern. Danach verschwindet die Zeile «⚠️ SHOPIFY-SECRET» aus der Keepalive-Meldung (nach dem nächsten Container-Neustart).
 
