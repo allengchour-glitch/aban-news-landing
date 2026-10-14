@@ -8985,3 +8985,8 @@ multifunktionaler-haartrockner-mit-lufterkompo-071040	1669891325409374208	7	14.2
 tourmalin-keramik-lockenstab-31mm-943680	1669587051202744320	7	14.37	ok	landeseite
 zweifunktionaler-ionen-haarkamm-875840	1669584355469041664	7	12.67	ok	landeseite
 schnellheizende-klammer-zweifach-638400	1659043674270998528	7	13.48	ok	landeseite
+kabelloser-usb-curler-736064	1637687311699816448	7	13.48	ok	landeseite
+automatischer-lockenstab-32mm-054464	1620629313898950656	3	9.29	ok	landeseite
+usb-portable-haarwelle-458496	1618780891134832640	7	12.09	ok	landeseite
+keramik-haarglatter-mit-temperaturregelung-300992	1609061823716798464	7	13.79	ok	landeseite
+dampf-burste-mit-titan-keramik-784960	1608392258884218880	7	21.99	ok	landeseite
