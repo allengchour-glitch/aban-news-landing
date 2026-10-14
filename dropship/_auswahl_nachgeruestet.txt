@@ -2267,3 +2267,5 @@
 16617706062215	Farbe:4+Grösse:3:12+ki	2026-10-14	interstellar-epoxidharz-lampe-619000
 16617705439623	Modell:2:2+ki	2026-10-14	smart-multimeter-mit-grossem-display-605800
 16617705243015	Ausführung:5:5+ki	2026-10-14	mechanische-hot-swap-kampftastatur-621000
+16617704096135	Farbe:6:6+ki	2026-10-14	warme-lederhandschuhe-fur-herren-3f8bf6
+16617703932295	Modell:2:2+ki	2026-10-14	magnetischer-handy-kuhler-mit-digitalanzeige-617300
