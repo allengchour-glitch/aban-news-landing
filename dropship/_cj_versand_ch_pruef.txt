@@ -9121,3 +9121,11 @@ hundebademantel-412801	2075500021929910273	16	5.81	ok	landeseite
 leopard-print-kleid-617900	2607091039161618500	16	10.42	ok	landeseite
 hundeschutzmatte-620900	2607100611451621600	16	24.67	ok	landeseite
 katzen-geburtstag-163522	2074425366145826817	16	4.55	ok	landeseite
+faltenhundebett-aus-kunststoff-622800	2607101001511623400	16	24.09	ok	landeseite
+haarbancken-fur-madchen-601900	2607110130471602400	16	5.02	ok	landeseite
+widerstands-bander-set-524610	2061735106632187905	0	-	KEINE CH-Option → DRAFT	landeseite
+minimassager-604900	2607090204081605500	7	14.77	ok	landeseite
+schreibhilfe-fur-kinder-635600	2606120650551636200	16	4.34	ok	landeseite
+farbblock-strickpullover-604700	2607101202111605300	16	13.40	ok	landeseite
+lederfreie-strickjacke-638300	2607101055541638900	16	10.83	ok	landeseite
+hochtaillierte-caprihosen-638600	2607110608011639300	16	7.17	ok	landeseite

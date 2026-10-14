@@ -253,3 +253,6 @@ slug:damenstiefel-mit-klotzhacke-aus-nappaleder
 slug:bildreel-kurze-daunenjacke-mit-kapuze
 pid:15448673976705
 slug:kurze-daunenjacke-mit-kapuze
+slug:bildreel-retro-jacke-fur-herren-mit-revers
+pid:15448720671105
+slug:retro-jacke-fur-herren-mit-revers
