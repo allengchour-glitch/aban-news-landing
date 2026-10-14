@@ -12,6 +12,9 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from klingenregel import ist_handklinge, ist_klinge
 
 SPERREN = [
+    "Holzschnitz-Set aus Manganstahl, 12-teilig",          # 14.10.2026 Bildprüfung: 12 offene Schnitzmesser, Titel ohne «messer»
+    "12-teiliges Schnitzwerkzeug-Set",
+    "Wood Carving Tools 12pcs",
     "Keramikmesser-Set mit vier Messern und Schäler",        # 07.10.2026 Kopfwort: Beigabe «Schäler» kippte das Urteil
     "Boningmesser MTG15 Blut Sandelholz ohne Schutzhülle",   # 07.10.2026 Kopfwort: «ohne Schutzhülle» las als Zubehör
     "Fuda Taschenmesser aus Damaststahl",          # die zurueckgesandte Ware selbst
@@ -49,6 +52,10 @@ SPERREN = [
     "Chinesisches Hackbeil aus Damaststahl",
 ]
 DURCHLASSEN = [
+    "Retro-Lederarmband mit Schnitzereien",                # 14.10.2026 Gegenproben zu «schnitz-…»
+    "Handstück für Schleif- und Schnitzmaschine",
+    "Fräser-Set für Holzschnitzereien, 5-teilig",
+    "Holzgeschnitzte Bärenfigur mit LED-Licht",
     "Knochenschneider-Schere für Geflügel",                   # 13.10.2026: Schere hinter dem Kompositum = Gerät
     "Kauknochen für Hunde",                                   # 13.10.2026: «knochen» allein ist keine Klinge
     "Knochenspalter-Motiv T-Shirt",                           # 13.10.2026: Motiv/Druck

@@ -242,6 +242,7 @@ def aktive_ohne_ch_option():
 
 
 _AKTIVIERT = re.compile(r"status from draft to active", re.I)
+_ANGELEGT = re.compile(r"created a new product", re.I)   # 14.10.: Messerset kam so durch, nie gedraftet
 
 
 def verursacher(pid):
@@ -254,9 +255,14 @@ def verursacher(pid):
     try:
         d = gql("""query($id:ID!){ product(id:$id){ events(first:20, sortKey:CREATED_AT, reverse:true){
                      nodes{ appTitle createdAt message } } } }""", {"id": pid})
+        angelegt = None
         for e in ((d["data"].get("product") or {}).get("events") or {}).get("nodes") or []:
             if _AKTIVIERT.search(e.get("message") or ""):
                 return f"{e.get('appTitle') or 'unbekannt'} {e.get('createdAt')}"
+            if _ANGELEGT.search(e.get("message") or ""):
+                angelegt = e
+        if angelegt:                        # nie gedraftet: der Import hat es aktiv angelegt
+            return f"Import (aktiv angelegt) {angelegt.get('appTitle') or 'unbekannt'} {angelegt.get('createdAt')}"
     except Exception as e:                  # Verursacher ist Zusatzinfo, kein Tor
         return f"unklar ({type(e).__name__})"
     return "unbekannt (kein draft→active-Ereignis in den letzten 20)"
@@ -303,8 +309,8 @@ def draften(produkte, grund):
         st, tags = _ruecklesen(p["id"])
         if st == "DRAFT" and set(TAGS) <= tags:
             ok += 1
-            zeilen.append(f"{p['handle']}\tDRAFT\t{grund} · reaktiviert von {wer}")
-            print(f"  ⛔ gedraftet: {p['handle'][:55]} — reaktiviert von {wer}")
+            zeilen.append(f"{p['handle']}\tDRAFT\t{grund} · im Verkauf durch {wer}")
+            print(f"  ⛔ gedraftet: {p['handle'][:55]} — im Verkauf durch {wer}")
         else:
             print(f"  ⚠️ nicht gedraftet: {p['handle']} status={st} {r.get('userErrors')}")
     if zeilen:
@@ -337,7 +343,7 @@ def main():
               f"({len(nach_regel)} nach Hausregel, {len(nach_ledger)} mit Lieferanten-Urteil)")
         for p in zusammen[:15]:
             print("   ", p["handle"][:60], "|", (p["title"] or "")[:50],
-                  "| reaktiviert von", verursacher(p["id"]))
+                  "| im Verkauf durch", verursacher(p["id"]))
         if len(zusammen) > 15:
             print(f"    … und {len(zusammen)-15} weitere")
     if draft_ohne_tag:
@@ -365,4 +371,11 @@ def main():
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    # 14.10.2026: START/FERTIG-Rahmen fuer `still_gestorben` im Aufseher. Gemessen: mehrere Laeufe endeten nach
+    # «Voll-Export gelesen» ohne Schlusszeile (Container-Neustart) — der naechste Versuch kam erst nach 24 h.
+    # Zeilenpuffer, damit ein Abbruch die Zeilen bis dahin im Log laesst.
+    sys.stdout.reconfigure(line_buffering=True)
+    print(f"START {time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())} klinge_ch_wache FIX={os.environ.get('FIX', '0')}")
+    rc = main()
+    print(f"FERTIG rc={rc} {time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}")
+    sys.exit(rc)
