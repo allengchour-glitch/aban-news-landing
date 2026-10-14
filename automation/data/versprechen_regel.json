@@ -2,14 +2,12 @@
   "_zweck": "EINE Regel für Liefer- und Eigenversprechen ohne Beleg (UWG Art. 3 Abs. 1 lit. b/i). Wächter automation/versprechen_wache.py (täglich, Bestand) und Importer cj_copy_prompt.mjs versprechenSicher (Neuware) lesen dieselbe Datei. Angelegt 08.10.2026: 106 aktive Produkte mit «schnelle Lieferung» in der Google-Beschreibung bei 7–20 Werktagen, Titel «Zigarettenhalter mit Band – Sofort Lieferbar» (CJ, wieder eingeschleppt nach dem Fix vom 12.08.), 4× «Schweizer Shop · Qualität geprüft», 6× «meistverkauft» (3 Verkäufe in 30 Tagen). Muster ohne \\b neben Umlauten (JS ohne u-Flag).",
   "schweiz_lager": {
     "tags": [
-      "ch-lager",
-      "fortura",
-      "eu-lager"
+      "profil-ch-lager"
     ],
     "sku_praefix": [
       "fortura-"
     ],
-    "_hinweis": "Ware, bei der ein Tempo-Wort stimmt: Schweizer Lager (ch-lager 1–2 Werktage, Fortura) und EU-Lager (gemessen 08.10.: Vertrauensblock «Lieferung 2–7 Werktage»). Eigenversprechen gelten trotzdem."
+    "_hinweis": "Ware, bei der ein Tempo-Wort stimmt: NUR Ware im Versandprofil «CH-Lager» (Zeichen profil-ch-lager, gesetzt von automation/ch_lager_profil.py; Kasse zeigt dort das 2–3-Werktage-Datum). Bis 14.10.2026 standen hier ch-lager, fortura und eu-lager — S3-Messung 14.10.: ch-lager OHNE profil-ch-lager (~734 aktive bis Stufe 3) zeigt in der Kasse 10–20 Werktage, eu-lager liegt im General profile (5/5 gemessen). Wirkung der Umstellung (Trockenlauf 14.10., Export 54'512 aktive): geschützt 2'397 → 1'642 Produkte, zu ändern vorher 0 / nachher 0 (kein geschützter Text trägt heute ein Liefermuster). sku_praefix fortura- fügt heute 0 hinzu. Eigenversprechen gelten trotzdem. sku_praefix [fortura-] bleibt BEWUSST bis Stufe 3 (ab 17.10.2026; ch_lager_profil.py setzt dann profil-ch-lager auch auf die Fortura-Ware, die heute nur über die SKU geschützt ist) — Stufe 3 ersetzt den Präfix; erst danach auf [] stellen (Prüfung S3, 14.10.: heute fügt er 0 Produkte hinzu, schadet also nicht)."
   },
   "liefer_titel": [
     [
@@ -654,6 +652,2241 @@
     "theme_verboten": {
       "templates/cart.json": [
         "Versand CHF 7.00 · <strong>gratis ab CHF 50</strong>"
+      ]
+    }
+  },
+  "kollektion": {
+    "_zweck": "S3 (14.10.2026, Messung scratchpad S3_messung.json Schritte 11/12): unbelegte Versprechen in KOLLEKTIONS-Texten (title, descriptionHtml, seo.title, seo.description) — der Wächter automation/versprechen_wache.py ZÄHLT nur (keine Schreibwege auf Kollektionen), alle Kollektionen paginiert, im Onlineshop veröffentlicht und unveröffentlicht GETRENNT (158 der unveröffentlichten hängen am Kanal «Luxe Style Headless»). Zeile «KOLL-VERSPRECHEN: n veröffentlicht / m unveröffentlicht · JSON-LD Organization k (Soll 1) · Slogan ok|FEHLT». Text = sichtbarer Text ohne Tags/Kommentare und ohne den Block <!-- ls-verwandt -->…<!-- /ls-verwandt --> (gehört interne_links.py, enthält Produktnamen). Satzteile getrennt an satzteil_trenner (Punkt nur ausserhalb von Zahlen — «CHF 99.00» bleibt ein Satzteil; Komma trennt NICHT: «Versand innerhalb der Schweiz, gratis ab CHF 50» trägt das Land). Python-only (nicht im Importer), daher Lookbehind statt \\b neben Umlauten erlaubt. Gemessen 14.10. (Roh-Export): R1 96/79, R3 107/80, R6 285/148 Kollektionen (veröffentlicht/unveröffentlicht).",
+    "satzteil_trenner": "(?<!\\d)\\.|\\.(?!\\d)|[!?;·|•\\n]",
+    "finder": {
+      "R1": {
+        "name": "✔ Geprüfte …",
+        "muster": "[✔✓✅☑]\\ufe0f?\\s*Gepr(?:ü|ue)ft"
+      },
+      "R3": {
+        "name": "Geprüft…",
+        "muster": "(?<![\\w])(?:gepr(?:ü|ue)fte?[rsnm]?\\s+(?:Angaben|Qualit(?:ä|ae)t|Markenqualit(?:ä|ae)t|Ware|Auswahl|Marken\\w*|Produkte)|von\\s+uns\\s+gepr(?:ü|ue)ft)"
+      },
+      "R5": {
+        "name": "Premium-Marken/-Qualität ausserhalb Premium-Kollektionen",
+        "muster": "(?<![\\w])Premium[- ]?(?:Marken\\w*|Qualit(?:ä|ae)t)"
+      },
+      "R6": {
+        "name": "ab CHF 50 ohne Land im Satzteil",
+        "muster": "(?:(?:gratis[\\s-]*versand|gratisversand|kostenlose[nrm]?\\s+versand|versand(?:kosten)?frei|portofrei|gratis|kostenlos)\\b[^.·|•]{0,40}?\\b(?:ab|über)\\s+(?:CHF\\s*50|50\\s*(?:CHF|Fr\\.|Franken))\\b|\\b(?:ab|über)\\s+(?:CHF\\s*50|50\\s*(?:CHF|Fr\\.|Franken))\\b[^.·|•]{0,40}?(?:gratis|kostenlos|versand(?:kosten)?frei|portofrei))",
+        "land": "(?:(?<![\\w])[Ii]n|(?<![\\w])[Ii]nnerhalb|(?<![\\w])[Ff]ür|(?<![\\w])[Nn]ach|(?<![\\w])[Dd]urch)\\s+(?:der\\s+|die\\s+)?(?:ganzen?\\s+)?Schweiz(?![\\w])|(?<![\\w])schweizweit(?![\\w])|(?<![\\w])(?<!LuxeStyle )CH(?![\\w])(?![-\\u2011 ]?Lager)",
+        "_hinweis": "beide Reihenfolgen («Gratis-Versand ab CHF 50» und «ab CHF 50 versandkostenfrei»). Land-BELEG (14.10.2026 abends, eine Quelle für versprechen_wache.py UND kollektion_versprechen_s3.py, ohne Flag i): «in/innerhalb/für/nach/durch (der/die) (ganze) Schweiz», «schweizweit» oder «CH» (gross; nicht «CH-Lager»/«CH Lager», nicht «LuxeStyle CH», nicht «.ch»). KEIN Beleg: «Schweizer Shop», «LuxeStyle Schweiz», «Schweizer Lager», «aus der Schweiz», «Liechtenstein». Nähe: das Land zählt nur, wenn es im selben Satzteil höchstens land_naehe Zeichen vor dem Anfang oder hinter dem Ende der Gratis-Aussage steht — «Profitiere von unserem Gratis-Versand ab CHF 50 und einem 30-Tage-Rückgaberecht für alle Bestellungen in der Schweiz» und «Gratis-Versand ab CHF 50, 30 Tage Rückgabe, Lieferung in die ganze Schweiz» sind Funde (Prüfung S3, 14.10.: 13 veröffentlichte Sätze). Dieselbe Funktion zählt versand_band_wache.py Regel 3.",
+        "land_naehe": 25
+      }
+    },
+    "tempo": {
+      "_zweck": "R4: Tempo-Versprechen (harte Tempo-Wörter und Werktage-Angaben) sind nur belegt, wenn die Kollektion zu ≥ voll aus Ware im Profil «CH-Lager» besteht (Anteil marke/aktiv, LIVE gemessen). teil ≤ Anteil < voll: nur Werktage-Angaben («weich») in einem qualifizierten Satzteil («viele Artikel …», «Vieles, was …», «das genaue Datum steht beim Artikel») — harte Tempo-Wörter nie. Anteil < teil: jede Werktage-Zusage ist ein Fund (PLAN-Regel S3 Schritt 3: unter 50 % wird sie gestrichen, wie «kaum»). Der LAGER-ORT allein («ab Schweizer Lager», «Spielzeug ab CH-Lager», Titel «🇨🇭 Alles ab Schweizer Lager») ist KEIN Fund (14.10. abends): er sagt, wo die Ware liegt, nicht wie schnell sie kommt; das Werkzeug prüft ihn am Anteil ch-lager (lager_viele). Liefer-Substantiv Pflicht (Regel 9b: Schnellladegerät, schnell abgespült, am schnellsten wachsend, «blitzschnelle Raumerfrischung» sind KEINE Treffer).",
+      "marke": "profil-ch-lager",
+      "voll": 0.95,
+      "teil": 0.5,
+      "hart": [
+        "(?<![\\w])schnell(?:e|er|en|em|es)?\\s+(?:CH-|EU-)?(?:Lieferung|Versand|Zustellung|Lieferzeit(?:en)?)",
+        "(?<![\\w])schnell(?:er)?\\s+(?:geliefert|bei\\s+dir|zu\\s+dir)",
+        "(?<![\\w])blitz[- ]?(?:versand|lieferung)|(?<![\\w])blitzschnell\\s+(?:zu|bei)\\s+dir",
+        "(?<![\\w])express[- ]?(?:versand|lieferung)",
+        "(?<![\\w])sofort\\s+lieferbar",
+        "(?<![\\w])kurze[rn]?\\s+Lieferzeit(?:en)?"
+      ],
+      "weich": [
+        "(?<![\\d])[1-3]\\s*[–-]\\s*[1-7](?!\\d)\\s*(?:Werk)?tag"
+      ],
+      "qualifiziert": "(?<![\\w])(?:viele[sn]?|fast\\s+alles|ein(?:en)?\\s+(?:gro(?:ss|ß)en?\\s+)?Teil|teilweise|zum\\s+Teil|einige|manche)(?![\\w])|genaue\\s+(?:Liefer)?datum",
+      "qualifiziert_nicht": "(?<![\\w])(?<!fast )(?:alles|alle\\s+(?:Artikel|Produkte|Sachen))(?![\\w])",
+      "_qualifiziert_hinweis": "Ein Allquantor im selben Satzteil («Alles, was bei uns in der Schweiz liegt — meist 2–3 Werktage, das genaue Lieferdatum …», «Alle Artikel liegen im Schweizer Lager») hebt die Einschränkung auf — «Fast alles» nicht (S3 Schritt 3: blitzversand-schweiz bis Stufe 3 «Fast alles …»).",
+      "lager_ort": [
+        "(?<![\\w])(?:ab|aus|in|im)\\s+(?:dem\\s+|unserem\\s+)?(?:Schweizer|CH)[- ]?Lager"
+      ],
+      "lager_viele": 0.2,
+      "_stufen_hinweis": "Eine Quelle für Wächter und Werkzeug (kollektion_versprechen_s3.py stufe()): VOLL ≥ voll, VIEL ≥ teil, sonst KAUM. Das frühere Werkzeug-Band TEIL (20–50 %) gibt es nicht mehr. lager_viele (nur Werkzeug): «viele Artikel/vieles ab Schweizer Lager» bleibt nur ab diesem Anteil Tag ch-lager stehen, sonst «die Lieferzeit steht bei jedem Artikel».",
+      "kontrast": [
+        "(?<![\\w])(?:(?:der|die|das)\\s+)?(?:übrige[nrs]?|restliche[nrs]?)\\s+(?:Katalog|Sortiment|Artikel|Ware|Produkte)[^.]{0,80}?(?<![\\d])\\d{1,2}\\s*[–-]\\s*\\d{1,2}\\s*(?:Werk)?tag",
+        "(?<![\\w])was\\s+hier\\s+nicht\\s+(?:steht|liegt)[^.]{0,80}?(?<![\\d])\\d{1,2}\\s*[–-]\\s*\\d{1,2}\\s*(?:Werk)?tag",
+        "(?<![\\w])Rest\\s+(?:des|vom)\\s+(?:Sortiment|Katalog)s?[^.]{0,80}?(?<![\\d])\\d{1,2}\\s*[–-]\\s*\\d{1,2}\\s*(?:Werk)?tag",
+        "(?<![\\w])andere[n]?\\s+(?:Artikel|Ware|Produkte)[^.]{0,80}?(?<![\\d])\\d{1,2}\\s*[–-]\\s*\\d{1,2}\\s*(?:Werk)?tag"
+      ],
+      "_kontrast_hinweis": "R4 (Prüfung S3, 14.10. spät): ein GEGENSATZ zur übrigen Ware mit Werktage-Angabe («Der übrige Katalog kommt direkt ab Werk (10–20 Werktage)», «Was hier nicht steht, kommt direkt ab Werk und braucht 10–20 Werktage») sagt implizit «diese hier sind schneller» — zählt wie ein hartes Tempo-Wort, solange der Anteil profil-ch-lager unter voll liegt (blitzversand-highlights 0 %, blitzversand-schweiz 69 % gemessen). Kein Gegensatz: «Ware ohne Schweizer Lager kommt direkt ab Werk …» (Aussage über ANDERE Ware). Gemessen 14.10. 12:25 über 568 Kollektionen: nur diese 2 Sätze. Runde 3 (14.10. 13:45): + «Rest des/vom Sortiment(s)/Katalog(s)» und «andere(n) Artikel/Ware/Produkte» mit Werktage-Angabe (Probesätze der Prüfung: vorher False). Kanarien: 4 Funde, 3 Nicht-Funde (andere Farben, «Rest ist …», Anteil ≥ voll)."
+    },
+    "premium_kollektionen": [
+      "luxestyle-premium",
+      "luxus-highend",
+      "premium-schmuck",
+      "💎-premium-ab-chf-80",
+      "made-in-switzerland-premium",
+      "premium-beauty",
+      "premium-bundles",
+      "premium-marken-lager"
+    ],
+    "_premium_hinweis": "Premium-Kollektionen (Preisklasse/Material; seit dem BigBuy-Ende keine Markenware) zählen für R5 nicht. Zusätzlich gilt jede Kollektion, deren Handle «premium» oder «highend» enthält, AUSSER Geschenk-/Bestseller-Sammlungen (premium-geschenke, bestseller-premium-heroes) — die stehen nicht in der Liste und werden über premium_handle_ausnahme ausgeschlossen.",
+    "premium_handle": "premium|highend",
+    "premium_handle_ausnahme": [
+      "premium-geschenke",
+      "bestseller-premium-heroes"
+    ],
+    "theme_verboten": {
+      "layout/theme.liquid": [
+        "Schweizer Seele"
+      ],
+      "templates/collection.json": [
+        "schneller Versand.",
+        "<strong>Gratis-Versand</strong> ab CHF 50"
+      ]
+    },
+    "jsonld": {
+      "dateien": [
+        "layout/theme.liquid",
+        "sections/header.liquid"
+      ],
+      "muster": "\"@type\"\\s*:\\s*\"Organization\"",
+      "soll": 1,
+      "slogan": "Schweizer Seele",
+      "_hinweis": "Gemessen 14.10.: 2 Organization-Blöcke (header.liquid jede Seite + theme.liquid:221 nur Startseite, dort der Slogan «Premium Style. Schweizer Seele.»). Soll nach S3 Schritt 9: genau 1 (header.liquid), kein Slogan. google_org_richtlinien.py ankert an der url-Zeile in header.liquid."
+    },
+    "kanarien": [
+      [
+        "✔ Geprüfte Angaben · 🚚 Lieferzeit auf jeder Produktseite · Gratis-Versand ab CHF 50 · ↩️ 30 Tage Rückgabe",
+        null,
+        [
+          "R1",
+          "R3",
+          "R6"
+        ]
+      ],
+      [
+        "🚚 Lieferzeit auf jeder Produktseite · Gratis-Versand in der Schweiz ab CHF 50 · ↩️ 30 Tage Rückgabe",
+        null,
+        []
+      ],
+      [
+        "Gratis-Versand in der Schweiz ab CHF 50",
+        null,
+        []
+      ],
+      [
+        "Versand innerhalb der Schweiz, gratis ab CHF 50",
+        null,
+        []
+      ],
+      [
+        "Ab 45 Grad Wassertemperatur waschen, kostenlos",
+        null,
+        []
+      ],
+      [
+        "Set ab CHF 50 – Lieferung 10–20 Tage",
+        null,
+        []
+      ],
+      [
+        "Gratis-Versand ab CHF 50 · 30 Tage Rückgabe",
+        null,
+        [
+          "R6"
+        ]
+      ],
+      [
+        "🇨🇭 Schweizer Shop · Gratis-Versand ab CHF 50",
+        null,
+        [
+          "R6"
+        ]
+      ],
+      [
+        "Ab CHF 50 versandkostenfrei, 30 Tage Rückgabe.",
+        null,
+        [
+          "R6"
+        ]
+      ],
+      [
+        "Versandfrei ab CHF 50 · TWINT & Klarna",
+        null,
+        [
+          "R6"
+        ]
+      ],
+      [
+        "Versandfrei CH ab CHF 50 · TWINT & Klarna",
+        null,
+        []
+      ],
+      [
+        "Gratis-Versand ab CHF 50 bei luxestyle.ch",
+        null,
+        [
+          "R6"
+        ]
+      ],
+      [
+        "Das Wellness Bundle für CHF 99.00 ist ein guter Ausgangspunkt – versandkostenfrei ab CHF 50 und mit 30-Tage-Rückgabe.",
+        null,
+        [
+          "R6"
+        ]
+      ],
+      [
+        "Lieferung in die CH: gratis ab CHF 50",
+        null,
+        []
+      ],
+      [
+        "ab CH-Lager, gratis ab CHF 50",
+        1.0,
+        [
+          "R6"
+        ]
+      ],
+      [
+        "Kostüme für Herren – schnelle Lieferung aus der Schweiz.",
+        1.0,
+        []
+      ],
+      [
+        "Kostüme für Herren – schnelle Lieferung aus der Schweiz.",
+        0.3,
+        [
+          "R4"
+        ]
+      ],
+      [
+        "Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schwe…",
+        0.0,
+        [
+          "R4",
+          "R6"
+        ]
+      ],
+      [
+        "Schnellladegeräte, Schnellspannmuttern und der am schnellsten wachsende Trend — schnell abgespült.",
+        0.0,
+        []
+      ],
+      [
+        "Gruselig gut: Kostüme — vieles ab Schweizer Lager mit Blitzversand",
+        0.59,
+        [
+          "R4"
+        ]
+      ],
+      [
+        "Halloween: viele Artikel ab Schweizer Lager (meist 2–3 Werktage), das genaue Datum steht beim Artikel",
+        0.59,
+        []
+      ],
+      [
+        "Haarpflege — viele Artikel ab Schweizer Lager meist in 2–3 Werktagen",
+        0.37,
+        [
+          "R4"
+        ]
+      ],
+      [
+        "Alles, was bei uns in der Schweiz liegt — meist in 2–3 Werktagen bei dir",
+        0.69,
+        [
+          "R4"
+        ]
+      ],
+      [
+        "Alles, was bei uns in der Schweiz liegt — meist in 2–3 Werktagen bei dir, das genaue Lieferdatum steht auf jeder Produktseite",
+        0.69,
+        [
+          "R4"
+        ]
+      ],
+      [
+        "Fast alles, was bei uns in der Schweiz liegt — meist in 2–3 Werktagen, das genaue Lieferdatum steht beim Artikel",
+        0.69,
+        []
+      ],
+      [
+        "Alle Artikel liegen im Schweizer Lager: Lieferung meist in 2–3 Werktagen, das genaue Datum steht beim Artikel",
+        0.6,
+        [
+          "R4"
+        ]
+      ],
+      [
+        "Lieferung meist 10–20 Werktage · Gratis-Versand in der Schweiz ab CHF 50",
+        0.0,
+        []
+      ],
+      [
+        "✓ 100 % Original · 🚚 EU-Lager (2–7 Werktage) · 🇨🇭 Gratis ab CHF 50",
+        0.0,
+        [
+          "R4",
+          "R6"
+        ]
+      ],
+      [
+        "Diese Produkte sind meist schneller bei dir als der Direktversand aus Asien.",
+        0.0,
+        [
+          "R4"
+        ]
+      ],
+      [
+        "Plüschtiere, Spiele und Kinderfreuden — schnell bei dir.",
+        0.1,
+        [
+          "R4"
+        ]
+      ],
+      [
+        "⚡ Express-Lieferung EU",
+        0.0,
+        [
+          "R4"
+        ]
+      ],
+      [
+        "100 % echt, schnelle EU-Lieferung, Gratis-Versand in der Schweiz ab CHF 50",
+        0.0,
+        [
+          "R4"
+        ]
+      ],
+      [
+        "Was gerade wirklich läuft — von uns geprüft, mit Bildern",
+        null,
+        [
+          "R3"
+        ]
+      ],
+      [
+        "Geprüfte Auswahl, Gratis-Versand ab CHF 50 und 30 Tage Rückgabe.",
+        null,
+        [
+          "R3",
+          "R6"
+        ]
+      ],
+      [
+        "In unserer Kategorie findest du geprüfte Marken-Produkte und clevere Helfer.",
+        null,
+        [
+          "R3"
+        ]
+      ],
+      [
+        "Dermatologisch getestet, TÜV-Siegel auf der Verpackung.",
+        null,
+        []
+      ],
+      [
+        "Premium-Marken, versandkostenfrei ab CHF 50.",
+        null,
+        [
+          "R5",
+          "R6"
+        ]
+      ],
+      [
+        "Premium-Qualitaet, sorgfaeltig fuer den Schweizer Markt kuratiert.",
+        null,
+        [
+          "R5"
+        ]
+      ],
+      [
+        "✔ Premium-Qualität · ✔ Gratis-Versand in der Schweiz ab CHF 50",
+        null,
+        [
+          "R5"
+        ]
+      ],
+      [
+        "Rutscher-Motorräder wie das Premium Grün von Moltó und Premium Bambus Aroma Diffuser",
+        null,
+        [
+          "R9"
+        ]
+      ],
+      [
+        "Haustier-Gadgets: Fluesterleise Brunnen, Premium Headsets",
+        null,
+        []
+      ],
+      [
+        "Viele Masken ab Schweizer Lager",
+        0.31,
+        []
+      ],
+      [
+        "Spielzeug ab CH-Lager",
+        0.0,
+        []
+      ],
+      [
+        "🇨🇭 Alles ab Schweizer Lager",
+        0.69,
+        []
+      ],
+      [
+        "Vieles, was bei uns in der Schweiz liegt — meist in 2–3 Werktagen bei dir, das genaue Lieferdatum steht auf jeder Produktseite",
+        0.69,
+        []
+      ],
+      [
+        "Artikel ab Schweizer Lager – viele in 2–3 Werktagen bei dir, das genaue Lieferdatum steht auf jeder Produktseite",
+        0.69,
+        []
+      ],
+      [
+        "Haarpflege — viele Artikel ab Schweizer Lager",
+        0.37,
+        []
+      ],
+      [
+        "Weihnachtsdeko, die in die ganze Schweiz blitzschnell zu dir kommt",
+        0.02,
+        [
+          "R4"
+        ]
+      ],
+      [
+        "Mobil-Klima für blitzschnelle Raumerfrischung",
+        0.0,
+        []
+      ],
+      [
+        "Profitiere von unserem Gratis-Versand ab CHF 50 und einem sorgenfreien 30-Tage-Rückgaberecht für alle deine Einkäufe in der Schweiz",
+        null,
+        [
+          "R6"
+        ]
+      ],
+      [
+        "Gratis-Versand ab CHF 50, 30 Tage Rückgabe, Lieferung in die ganze Schweiz",
+        null,
+        [
+          "R6"
+        ]
+      ],
+      [
+        "Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe",
+        null,
+        []
+      ],
+      [
+        "Schweizer Shop, Gratis-Versand ab CHF 50",
+        null,
+        [
+          "R6"
+        ]
+      ],
+      [
+        "Gratis-Versand ab CHF 50 – LuxeStyle Schweiz",
+        null,
+        [
+          "R6"
+        ]
+      ],
+      [
+        "Jetzt bei LuxeStyle CH entdecken – Gratis-Versand ab CHF 50",
+        null,
+        [
+          "R6"
+        ]
+      ],
+      [
+        "Gratis-Versand ab CHF 50 ab Schweizer Lager",
+        null,
+        [
+          "R6"
+        ]
+      ],
+      [
+        "Gratis-Versand ab CHF 50 für Bestellungen in der Schweiz",
+        null,
+        []
+      ],
+      [
+        "Lieferung meist 10–20 Werktage, in der Schweiz gratis ab CHF 50",
+        0.0,
+        []
+      ],
+      [
+        "Pflege-Sets von Sonax, Turtle Wax & Goodyear",
+        null,
+        [
+          "R9"
+        ]
+      ],
+      [
+        "Damenparfüms wie Givenchy L'Interdit oder Nina Ricci Rouge",
+        null,
+        [
+          "R9"
+        ]
+      ],
+      [
+        "Gesichtscremes wie Estée Lauder Advanced Night Repair",
+        null,
+        [
+          "R9"
+        ]
+      ],
+      [
+        "Ein Champion-Set für Puma-Fans, Staub weg",
+        null,
+        []
+      ],
+      [
+        "Spielekonsole Nintendo Switch und Xbox-Controller",
+        null,
+        []
+      ],
+      [
+        "Der übrige Katalog kommt direkt ab Werk (10–20 Werktage)",
+        0.0,
+        [
+          "R4"
+        ]
+      ],
+      [
+        "Was hier nicht steht, kommt direkt ab Werk und braucht 10–20 Werktage",
+        0.69,
+        [
+          "R4"
+        ]
+      ],
+      [
+        "Was hier nicht steht, kommt direkt ab Werk und braucht 10–20 Werktage",
+        0.96,
+        []
+      ],
+      [
+        "Ware ohne Schweizer Lager kommt direkt ab Werk und braucht 10–20 Werktage",
+        0.69,
+        []
+      ],
+      [
+        "Lieferung: Direktversand vom Hersteller in 10–20 Werktagen",
+        0.0,
+        []
+      ],
+      [
+        "Der Rest des Sortiments kommt ab Werk in 10–20 Werktagen",
+        0.0,
+        [
+          "R4"
+        ]
+      ],
+      [
+        "Der Rest vom Katalog braucht 10–20 Werktage",
+        0.69,
+        [
+          "R4"
+        ]
+      ],
+      [
+        "Andere Artikel brauchen 10–20 Werktage",
+        0.0,
+        [
+          "R4"
+        ]
+      ],
+      [
+        "Alle anderen Produkte kommen direkt ab Werk (10–20 Werktage)",
+        0.69,
+        [
+          "R4"
+        ]
+      ],
+      [
+        "Der Rest des Sortiments kommt ab Werk in 10–20 Werktagen",
+        0.96,
+        []
+      ],
+      [
+        "Andere Farben kommen in 10–20 Werktagen",
+        0.0,
+        []
+      ],
+      [
+        "Der Rest ist Geschichte – Lieferung 10–20 Werktage",
+        0.0,
+        []
+      ]
+    ],
+    "kanarien_premium": [
+      [
+        "Premium-Marken, versandkostenfrei in der Schweiz ab CHF 50.",
+        "luxestyle-premium",
+        []
+      ],
+      [
+        "Premium-Marken, versandkostenfrei in der Schweiz ab CHF 50.",
+        "herren-jacken",
+        [
+          "R5"
+        ]
+      ],
+      [
+        "Premium-Qualität für Geschenke",
+        "premium-geschenke",
+        [
+          "R5"
+        ]
+      ],
+      [
+        "Premium-Qualität aus 925er Silber",
+        "luxus-highend",
+        []
+      ]
+    ],
+    "manuell_felder": [
+      "title",
+      "seo.title"
+    ],
+    "_manuell_hinweis": "Kollektionstitel und SEO-Titel schreibt das Werkzeug nur in Handfällen (eu-lager-schnell, 3d-drucker) — Funde dort sind «manuell»: sie stehen mit Handle im Bericht, zählen aber NICHT in die Rot-Zahl der Zeile/Ampel. Ebenso Funde in Premium-Kollektionen («Premium-Hinweis»): dort setzt das Werkzeug nur Satzpaare, solange PREMIUM_VOLL aus ist (Betreiber-Entscheid).",
+    "_werkzeug": "kollektion_versprechen_s3.py liest aus diesem Abschnitt: finder.R6.land + land_naehe, premium_kollektionen/premium_handle/premium_handle_ausnahme, tempo.voll/teil/lager_viele/hart/weich/kontrast — keine eigene Kopie; den Rest nach seinen Regeln zählt es mit versprechen_wache.koll_funde (derselbe Finder wie der Wächter, inkl. R9 marken_ohne_ware). R9-Satzpaare (Marke/Ware ohne aktive Ware) stehen im Werkzeug (INHALT_PAARE, live gemessen 14.10.); ware_im_text ist die Hinweis-Wache dazu.",
+    "marken_ohne_ware": {
+      "_hinweis": "R9 «Marke ohne Ware» (Prüfung S3, 14.10. spät): Markennamen in Kollektionstexten, zu denen es im ganzen Shop KEIN aktives Produkt gibt (Titel oder Tags; Export 14.10. 09:46, 54'512 aktive), sind eine Marken-Behauptung ohne Beleg — dieselbe Klasse wie R5. Gefunden 14.10. 12:25 in 568 Kollektionen (Liste = alle Treffer mit 0 aktiven; veröffentlicht: make-up, beauty-makeup, hautpflege, beauty-tools, auto-zubehoer, auto-kfz-zubehoer, auto-pflege, bar-glaeser, bar-wein-accessoires, kuschel-heizdecken, wellness-gesundheit, modellautos, sub-ringe, spielzeug-schminkset, caps-huete, gaming-controller, spielzeug-fahrzeuge). Ausgelassen, weil auch gewöhnliche Wörter: Champion, Guess, Puma, Staub; «Pokémon» hat aktive Ware (2 Kostüme «Pokemon …», gefunden von der Export-Gegenprobe des Wächters 14.10.). Gross/klein zählt (ohne Flag i). Der Wächter prüft jede Marke gegen den Produkt-Export (wenn jünger als 48 h): hat sie wieder ein aktives Produkt, zählt sie nicht und steht als «Marke wieder aktiv» im Bericht — dann aus der Liste nehmen. Rot (zählt in der Ampel); Titel/SEO-Titel wie immer «manuell». Nachtrag 14.10. 13:45 (Prüfung S3, Runde 3): + Dewalt/DeWalt, Facom, Ferrestock (Export 09:46: 0 Titel/Tags/Vendor, Live-Produktsuche «status:active …» 0/0/0; stehen in messwerkzeug und werkzeugkoffer-sets, beide unveröffentlicht). Dazu Metabo (elektriker-werkzeug, in 6 Kanälen veröffentlicht; Export 0, live 0). Bosch und Makita NICHT: 1 bzw. 3 aktive Produkte («Bosch-Makita-Umrichter», Makita-Ladegerät/-Schutzplatine).",
+      "muster": [
+        "Givenchy",
+        "Nina Ricci",
+        "Est[eé]e Lauder",
+        "Michelin",
+        "Sonax",
+        "Turtle Wax",
+        "Goodyear",
+        "Rain-X",
+        "Luminarc",
+        "Bormioli",
+        "Arcoroc",
+        "Chef & Sommelier",
+        "Medisana",
+        "Beurer",
+        "Solac",
+        "Hot Wheels",
+        "Ferrari",
+        "Marvel",
+        "Panarea",
+        "Breil",
+        "Folli Follie",
+        "Deborah",
+        "Lakers",
+        "New Era",
+        "NBA",
+        "Ninebot",
+        "Brio",
+        "Molt[oó]",
+        "PlayGo",
+        "T-Racers",
+        "Adidas",
+        "Calvin Klein",
+        "Casio",
+        "Chanel",
+        "Citizen",
+        "Clinique",
+        "Columbia",
+        "Dior",
+        "Festina",
+        "Fila",
+        "Fisher-Price",
+        "Hugo Boss",
+        "Intex",
+        "Jack & Jones",
+        "L'Or[eé]al",
+        "La Roche-Posay",
+        "Lanc[oô]me",
+        "Logitech",
+        "Melitta",
+        "Michael Kors",
+        "Morellato",
+        "New Balance",
+        "Nike",
+        "North Face",
+        "Pierre Cardin",
+        "Playmobil",
+        "Ravensburger",
+        "Reebok",
+        "Revlon",
+        "Stanley",
+        "Superdry",
+        "Swatch",
+        "Tissot",
+        "Tommy Hilfiger",
+        "Under Armour",
+        "Weleda",
+        "De[Ww]alt",
+        "Facom",
+        "Ferrestock",
+        "Metabo"
+      ]
+    },
+    "ware_im_text": {
+      "_hinweis": "Hinweis-Klasse «Ware im Text nicht aktiv» (Prüfung S3, 14.10. spät; Betreiber-Regel 05.10.: jede Klasse = Regel + Wächter). [handle, muster, was]: steht muster im Text der Kollektion (Klartext, alle 4 Felder) und trägt KEIN aktives Produkt DIESER Kollektion muster im Titel, meldet der Wächter einen Hinweis (zählt NICHT in die Rot-Zahl/Ampel, steht mit Handle im Bericht). Gepflegt von Hand: gemessen 14.10. 12:00–12:13 (aktive Titel je veröffentlichter Kollektion); Einträge für Texte, die kollektion_versprechen_s3.py R9 ersetzt (sollen danach 0 zeigen — Rückfall-Wache) und für Texte, die noch offen sind (reise-gadgets, wellness-selfcare, 3d-filament, kuechen-gadgets, haustier-gadgets). Runde 3 (Prüfung S3 14.10. 13:36, Befund 1; aktive Titel live 13:40): ZWEI Arten von Einträgen — (a) Nein-Einträge «(0/n)»: Ware, die NICHT aktiv ist (Rückfall-Wache für entfernte Wörter und Hinweis auf manuelle Felder Titel/SEO-Titel); (b) «im Ersatztext genannt»: JEDE Ware, die ein R9-Ersatztext von kollektion_versprechen_s3.py nennt (INHALT_PAARE, R8 hightech-gadgets) — das Muster trifft den Ersatztext UND mindestens einen aktiven Produkttitel (Beispiel je Eintrag in genannt_beleg, vom S3-Selbsttest geprüft). Fällt die Ware weg, meldet der Wächter den Hinweis, und S3 setzt das Satzpaar nicht mehr (r9_ware_pruefen → «offen»). 3d-drucker «3D-Drucker»: Muster nimmt «für 3D-Drucker» und «3D-Drucker-…» aus (Zubehör), trifft also nur ein Gerät bzw. den Kollektionstitel (manuell).",
+      "liste": [
+        [
+          "ipl-haarentfernung",
+          "(?<![\\w])IPL",
+          "IPL-Geräte (0/17)"
+        ],
+        [
+          "ipl-haarentfernung",
+          "[Ll]aser",
+          "Laser (0/17)"
+        ],
+        [
+          "beauty-geraete",
+          "(?<![\\w])IPL",
+          "IPL-Geräte (0/113)"
+        ],
+        [
+          "beauty-geraete",
+          "[Ee]pilier",
+          "Epilierer (0/113)"
+        ],
+        [
+          "beauty-geraete",
+          "[Gg]esichtssauna|[Gg]esichtssaunen",
+          "Gesichtssaunen (0/113)"
+        ],
+        [
+          "beauty-geraete",
+          "[Hh]ochfrequenz",
+          "Hochfrequenz-Geräte (0/113)"
+        ],
+        [
+          "beauty-geraete",
+          "[Ll]aser",
+          "Laser (0/113)"
+        ],
+        [
+          "gesichtspflege-geraete",
+          "[Gg]esichtssauna|[Gg]esichtssaunen",
+          "Gesichtssaunen (0/40)"
+        ],
+        [
+          "top-5-start",
+          "[Jj]ade",
+          "Jade-Roller (0/2)"
+        ],
+        [
+          "top-5-start",
+          "[Ss]onnenbrille",
+          "Sonnenbrille (0/2)"
+        ],
+        [
+          "bestseller-shop",
+          "[Hh]errenuhr",
+          "Herrenuhr (0/6)"
+        ],
+        [
+          "bestseller-shop",
+          "[Pp]ortemonnaie",
+          "Portemonnaie (0/6)"
+        ],
+        [
+          "bestseller-shop",
+          "[Dd]iffuser",
+          "Aroma-Diffuser (0/6)"
+        ],
+        [
+          "bestseller-shop",
+          "[Kk]issenbezug",
+          "Seiden-Kissenbezug (0/6)"
+        ],
+        [
+          "favoriten",
+          "[Hh]errenuhr",
+          "Herrenuhr (0/5)"
+        ],
+        [
+          "favoriten",
+          "[Ww]allet",
+          "Slim Wallet (0/5)"
+        ],
+        [
+          "favoriten",
+          "[Mm]axir(?:ö|oe)ck",
+          "Strand-Maxiröcke (0/5)"
+        ],
+        [
+          "strand",
+          "[Ss]chlauchboot",
+          "Schlauchboote (0/7)"
+        ],
+        [
+          "strand",
+          "[Bb]ollerwagen",
+          "Bollerwagen (0/7)"
+        ],
+        [
+          "strand",
+          "[Ll]uftpumpe",
+          "Luftpumpen (0/7)"
+        ],
+        [
+          "hightech-gadgets",
+          "[Aa]ction-?[Cc]am",
+          "Action-Cams (0/251)"
+        ],
+        [
+          "hightech-gadgets",
+          "[Ll]aser-?[Gg]ravier",
+          "Laser-Gravierer (0/251)"
+        ],
+        [
+          "wellness-gesundheit",
+          "[Bb]lutdruck",
+          "Blutdruckmessgeräte (0/27)"
+        ],
+        [
+          "wellness-gesundheit",
+          "[Hh]eizkissen",
+          "Heizkissen (0/27)"
+        ],
+        [
+          "wellness-gesundheit",
+          "[Ll]uftreiniger",
+          "Luftreiniger (0/27)"
+        ],
+        [
+          "wellness-gesundheit",
+          "[Hh]antel",
+          "Hanteln (0/27)"
+        ],
+        [
+          "auto-zubehoer",
+          "[Ss]chneekette",
+          "Schneeketten (0/467)"
+        ],
+        [
+          "auto-zubehoer",
+          "[Kk]ompressor",
+          "Kompressoren (0/467)"
+        ],
+        [
+          "auto-kfz-zubehoer",
+          "[Ss]chneekette",
+          "Schneeketten (0/467)"
+        ],
+        [
+          "auto-kfz-zubehoer",
+          "[Ss]cheibenwischer",
+          "Scheibenwischer (0/467)"
+        ],
+        [
+          "auto-kfz-zubehoer",
+          "[Kk]ompressor",
+          "Kompressoren (0/467)"
+        ],
+        [
+          "auto-kfz-zubehoer",
+          "[Ss]hampoo",
+          "Shampoos (0/467)"
+        ],
+        [
+          "auto-pflege",
+          "[Ss]hampoo",
+          "Autoshampoo (0/8)"
+        ],
+        [
+          "auto-pflege",
+          "[Ff]elgenreiniger",
+          "Felgenreiniger (0/8)"
+        ],
+        [
+          "auto-pflege",
+          "[Aa]utowachs",
+          "Autowachs (0/8)"
+        ],
+        [
+          "auto-pflege",
+          "[Pp]olitur",
+          "Politur (0/8)"
+        ],
+        [
+          "make-up",
+          "[Pp]arf(?:ü|ue)m",
+          "Parfüms (0/781)"
+        ],
+        [
+          "beauty-makeup",
+          "[Pp]arf(?:ü|ue)m",
+          "Parfüms (0/806)"
+        ],
+        [
+          "kuschel-heizdecken",
+          "[Ww]olldecke",
+          "Wolldecken (0/18)"
+        ],
+        [
+          "kuschel-heizdecken",
+          "[Ff]leece",
+          "Fleece (0/18)"
+        ],
+        [
+          "bar-glaeser",
+          "[Cc]ocktail",
+          "Cocktailgläser (0/14)"
+        ],
+        [
+          "bar-wein-accessoires",
+          "[Ww]hisky",
+          "Whisky (0/49)"
+        ],
+        [
+          "bar-wein-accessoires",
+          "[Cc]ocktail",
+          "Cocktail-Tools (0/49)"
+        ],
+        [
+          "reise-gadgets",
+          "[Pp]ackw(?:ü|ue)rfel",
+          "Packwürfel (0/309)"
+        ],
+        [
+          "reise-gadgets",
+          "[Nn]ackenkissen",
+          "Nackenkissen (0/309)"
+        ],
+        [
+          "wellness-selfcare",
+          "[Aa]kupressur",
+          "Akupressurmatten (0/99)"
+        ],
+        [
+          "wellness-selfcare",
+          "[Ss]hiatsu",
+          "Shiatsu-Massagegeräte (0/99)"
+        ],
+        [
+          "3d-filament",
+          "(?<![\\w])ABS(?![\\w])",
+          "ABS-Filament (0/9)"
+        ],
+        [
+          "3d-filament",
+          "[Rr]esin",
+          "Resin (0/9)"
+        ],
+        [
+          "kuechen-gadgets",
+          "[Vv]akuumierer",
+          "Vakuumierer (0/85)"
+        ],
+        [
+          "kuechen-gadgets",
+          "[Ss]ous-?[Vv]ide",
+          "Sous-Vide-Garer (0/85)"
+        ],
+        [
+          "haustier-gadgets",
+          "7,5\\s?L",
+          "7,5-L-Modell (0/23)"
+        ],
+        [
+          "haustier-gadgets",
+          "[Ee]delstahl",
+          "Edelstahl-Varianten (0/23)"
+        ],
+        [
+          "make-up",
+          "[Ff]oundation",
+          "Foundations — im Ersatztext genannt (14.10.: 42/781 aktiv)"
+        ],
+        [
+          "make-up",
+          "[Cc]oncealer",
+          "Concealer — im Ersatztext genannt (14.10.: 36/781 aktiv)"
+        ],
+        [
+          "make-up",
+          "[Ll]idschatten",
+          "Lidschatten-Paletten — im Ersatztext genannt (14.10.: 184/781 aktiv)"
+        ],
+        [
+          "make-up",
+          "[Mm]ascara",
+          "Mascara — im Ersatztext genannt (14.10.: 25/781 aktiv)"
+        ],
+        [
+          "make-up",
+          "[Ee]yeliner",
+          "Eyeliner — im Ersatztext genannt (14.10.: 50/781 aktiv)"
+        ],
+        [
+          "make-up",
+          "[Ll]ippenstift",
+          "Lippenstifte — im Ersatztext genannt (14.10.: 76/781 aktiv)"
+        ],
+        [
+          "make-up",
+          "[Pp]insel",
+          "Make-up-Pinsel — im Ersatztext genannt (14.10.: 199/781 aktiv)"
+        ],
+        [
+          "beauty-makeup",
+          "[Ff]oundation",
+          "Foundations — im Ersatztext genannt (14.10.: 42/806 aktiv)"
+        ],
+        [
+          "beauty-makeup",
+          "[Cc]oncealer",
+          "Concealer — im Ersatztext genannt (14.10.: 36/806 aktiv)"
+        ],
+        [
+          "beauty-makeup",
+          "[Ll]idschatten",
+          "Lidschatten-Paletten — im Ersatztext genannt (14.10.: 184/806 aktiv)"
+        ],
+        [
+          "beauty-makeup",
+          "[Mm]ascara",
+          "Mascara — im Ersatztext genannt (14.10.: 25/806 aktiv)"
+        ],
+        [
+          "beauty-makeup",
+          "[Ee]yeliner",
+          "Eyeliner — im Ersatztext genannt (14.10.: 50/806 aktiv)"
+        ],
+        [
+          "beauty-makeup",
+          "[Ll]ippenstift",
+          "Lippenstifte — im Ersatztext genannt (14.10.: 76/806 aktiv)"
+        ],
+        [
+          "beauty-makeup",
+          "[Pp]insel",
+          "Make-up-Pinsel — im Ersatztext genannt (14.10.: 199/806 aktiv)"
+        ],
+        [
+          "hautpflege",
+          "Gesichts- und Nachtcreme|[Gg]esichtscreme",
+          "Gesichtscremes — im Ersatztext genannt (14.10.: 10/350 aktiv)"
+        ],
+        [
+          "hautpflege",
+          "[Nn]achtcreme",
+          "Nachtcremes — im Ersatztext genannt (14.10.: 3/350 aktiv)"
+        ],
+        [
+          "beauty-tools",
+          "[Ff]u(?:ss|ß)massage",
+          "Fussmassagegeräte — im Ersatztext genannt (14.10.: 5/521 aktiv)"
+        ],
+        [
+          "beauty-tools",
+          "[Vv]ibration",
+          "Vibrations-Massagegeräte — im Ersatztext genannt (14.10.: 13/521 aktiv)"
+        ],
+        [
+          "beauty-tools",
+          "[Jj]ade[- ]?(?:[Gg]esichts)?[Rr]oller",
+          "Jade-Roller — im Ersatztext genannt (14.10.: 2/521 aktiv)"
+        ],
+        [
+          "beauty-tools",
+          "[Gg]ua[ -]?[Ss]ha",
+          "Gua Sha — im Ersatztext genannt (14.10.: 6/521 aktiv)"
+        ],
+        [
+          "auto-zubehoer",
+          "Sitz- und Lenkrad|[Ss]itzbez",
+          "Sitzbezüge — im Ersatztext genannt (14.10.: 19/467 aktiv)"
+        ],
+        [
+          "auto-zubehoer",
+          "[Ll]enkradbez",
+          "Lenkradbezüge — im Ersatztext genannt (14.10.: 54/467 aktiv)"
+        ],
+        [
+          "auto-zubehoer",
+          "[Dd]ash ?[Cc]am",
+          "Dashcams — im Ersatztext genannt (14.10.: 5/467 aktiv)"
+        ],
+        [
+          "auto-zubehoer",
+          "[Ll]adeger(?:ä|ae)t",
+          "Ladegeräte — im Ersatztext genannt (14.10.: 4/467 aktiv)"
+        ],
+        [
+          "auto-zubehoer",
+          "[Ss]taubsauger",
+          "kabellose Auto-Staubsauger — im Ersatztext genannt (14.10.: 3/467 aktiv)"
+        ],
+        [
+          "auto-kfz-zubehoer",
+          "[Pp]oliermaschine",
+          "Poliermaschinen — im Ersatztext genannt (14.10.: 6/467 aktiv)"
+        ],
+        [
+          "auto-kfz-zubehoer",
+          "[Pp]olier-?(?:[Ss]et|schwamm)",
+          "Polier-Sets — im Ersatztext genannt (14.10.: 2/467 aktiv)"
+        ],
+        [
+          "auto-kfz-zubehoer",
+          "[Ww]achs(?!en)",
+          "Wachse — im Ersatztext genannt (14.10.: 3/467 aktiv)"
+        ],
+        [
+          "auto-kfz-zubehoer",
+          "[Bb]ürste",
+          "Reinigungsbürsten — im Ersatztext genannt (14.10.: 3/467 aktiv)"
+        ],
+        [
+          "auto-kfz-zubehoer",
+          "[Dd]ash ?[Cc]am",
+          "Dashcams — im Ersatztext genannt (14.10.: 5/467 aktiv)"
+        ],
+        [
+          "auto-kfz-zubehoer",
+          "[Hh]alterung",
+          "Halterungen — im Ersatztext genannt (14.10.: 2/467 aktiv)"
+        ],
+        [
+          "auto-kfz-zubehoer",
+          "[Ll]adeger(?:ä|ae)t",
+          "Ladegeräte — im Ersatztext genannt (14.10.: 4/467 aktiv)"
+        ],
+        [
+          "auto-pflege",
+          "[Ss]taubsauger",
+          "kabellose Auto-Staubsauger — im Ersatztext genannt (14.10.: 2/8 aktiv)"
+        ],
+        [
+          "auto-pflege",
+          "[Bb]ürste",
+          "Innenraum-Bürsten — im Ersatztext genannt (14.10.: 2/8 aktiv)"
+        ],
+        [
+          "bar-glaeser",
+          "[Ww]eingl(?:as|äser)(?![\\w-])",
+          "Weingläser — im Ersatztext genannt (14.10.: 4/14 aktiv)"
+        ],
+        [
+          "bar-glaeser",
+          "Glas für jeden Tag|Alltagsgl(?:as|äser)|[Ww]hiskyglas|[Tt]rinkglas mit Strohhalm",
+          "Alltagsgläser — im Ersatztext genannt (14.10.: 2/14 aktiv)"
+        ],
+        [
+          "bar-wein-accessoires",
+          "[Dd]ekanter",
+          "Weindekanter — im Ersatztext genannt (14.10.: 11/49 aktiv)"
+        ],
+        [
+          "bar-wein-accessoires",
+          "[Kk]orkenzieher",
+          "Korkenzieher — im Ersatztext genannt (14.10.: 5/49 aktiv)"
+        ],
+        [
+          "bar-wein-accessoires",
+          "[Ff]laschenöffner",
+          "(elektrische) Flaschenöffner — im Ersatztext genannt (14.10.: 13/49 aktiv)"
+        ],
+        [
+          "bar-wein-accessoires",
+          "[Ww]einkühler",
+          "Weinkühler — im Ersatztext genannt (14.10.: 3/49 aktiv)"
+        ],
+        [
+          "bar-wein-accessoires",
+          "[Ww]einregal",
+          "Weinregale — im Ersatztext genannt (14.10.: 6/49 aktiv)"
+        ],
+        [
+          "kuschel-heizdecken",
+          "[Hh]eiz(?:decke|bar)",
+          "Heizdecken (beheizbar) — im Ersatztext genannt (14.10.: 2/18 aktiv)"
+        ],
+        [
+          "kuschel-heizdecken",
+          "[Kk]uscheldecke",
+          "Kuscheldecken — im Ersatztext genannt (14.10.: 17/18 aktiv)"
+        ],
+        [
+          "kuschel-heizdecken",
+          "[Mm]uster|[Mm]otiv|[Pp]rint|[Dd]ruck|[Kk]ariert|Tie-Dye|[Ss]treifen",
+          "Decken mit Muster/Motiv — im Ersatztext genannt (14.10.: 7/18 aktiv)"
+        ],
+        [
+          "wellness-gesundheit",
+          "[Mm]assage",
+          "Massagegeräte — im Ersatztext genannt (14.10.: 14/27 aktiv)"
+        ],
+        [
+          "wellness-gesundheit",
+          "[Aa]ugenmassage|[Aa]ugen-[Mm]assage",
+          "Augenmassagegeräte — im Ersatztext genannt (14.10.: 4/27 aktiv)"
+        ],
+        [
+          "wellness-gesundheit",
+          "[Dd]iffuser",
+          "Aroma-Diffuser — im Ersatztext genannt (14.10.: 5/27 aktiv)"
+        ],
+        [
+          "modellautos",
+          "[Mm]etall",
+          "Metall-Modellautos — im Ersatztext genannt (14.10.: 3/28 aktiv)"
+        ],
+        [
+          "modellautos",
+          "[Bb]austein",
+          "Bausteine-Modelle — im Ersatztext genannt (14.10.: 10/28 aktiv)"
+        ],
+        [
+          "modellautos",
+          "[Ss]pielzeugauto",
+          "Spielzeugautos — im Ersatztext genannt (14.10.: 7/28 aktiv)"
+        ],
+        [
+          "sub-ringe",
+          "[Vv]erstellbar",
+          "verstellbare Ringe — im Ersatztext genannt (14.10.: 47/506 aktiv)"
+        ],
+        [
+          "sub-ringe",
+          "[Bb]lumen",
+          "Blumenringe — im Ersatztext genannt (14.10.: 15/506 aktiv)"
+        ],
+        [
+          "sub-ringe",
+          "[Zz]irkon",
+          "Zirkonia-Ringe — im Ersatztext genannt (14.10.: 93/506 aktiv)"
+        ],
+        [
+          "sub-ringe",
+          "[Rr]ing-?[Ss]et",
+          "Ring-Sets — im Ersatztext genannt (14.10.: 16/506 aktiv)"
+        ],
+        [
+          "sub-ringe",
+          "925|[Ss]ilber",
+          "925 Sterling-Silber — im Ersatztext genannt (14.10.: 87/506 aktiv)"
+        ],
+        [
+          "spielzeug-schminkset",
+          "[Aa]qua-?[Ss]chminke|[Aa]quaschminke",
+          "Aqua-Schminke — im Ersatztext genannt (14.10.: 5/39 aktiv)"
+        ],
+        [
+          "spielzeug-schminkset",
+          "[Ss]chminkset",
+          "Schminksets — im Ersatztext genannt (14.10.: 7/39 aktiv)"
+        ],
+        [
+          "spielzeug-schminkset",
+          "Spielsachen aus Holz|Holz-Schmink(?:-|tisch)",
+          "Schmink-Spielsachen aus Holz — im Ersatztext genannt (14.10.: 2/39 aktiv)"
+        ],
+        [
+          "caps-huete",
+          "[Ll]änder-?[Cc]ap|[Ff]lag-?[Cc]ap|Cap (?:Frankreich|Serbien)",
+          "Länder-Caps — im Ersatztext genannt (14.10.: 7/128 aktiv)"
+        ],
+        [
+          "caps-huete",
+          "[Bb]aseball",
+          "Baseball-Caps — im Ersatztext genannt (14.10.: 32/128 aktiv)"
+        ],
+        [
+          "caps-huete",
+          "[Bb]eanie",
+          "Beanies — im Ersatztext genannt (14.10.: 2/128 aktiv)"
+        ],
+        [
+          "caps-huete",
+          "(?<![\\w])[Hh]ut(?![\\w])|[Ss]onnenhut|[Ss]trohhut",
+          "Hüte — im Ersatztext genannt (14.10.: 53/128 aktiv)"
+        ],
+        [
+          "gaming-controller",
+          "[Ll]adestation",
+          "Ladestationen — im Ersatztext genannt (14.10.: 10/137 aktiv)"
+        ],
+        [
+          "hightech-gadgets",
+          "[Dd]rohne",
+          "Drohnen — im Ersatztext genannt (14.10.: 144/251 aktiv)"
+        ],
+        [
+          "hightech-gadgets",
+          "[Üü]berwachungskamera",
+          "Überwachungskameras — im Ersatztext genannt (14.10.: 51/251 aktiv)"
+        ],
+        [
+          "hightech-gadgets",
+          "[Ss]augroboter",
+          "Saugroboter — im Ersatztext genannt (14.10.: 16/251 aktiv)"
+        ],
+        [
+          "hightech-gadgets",
+          "VR-?[Bb]rille",
+          "VR-Brillen — im Ersatztext genannt (14.10.: 13/251 aktiv)"
+        ],
+        [
+          "hightech-gadgets",
+          "[Gg]imbal",
+          "Gimbals — im Ersatztext genannt (14.10.: 10/251 aktiv)"
+        ],
+        [
+          "hightech-gadgets",
+          "[Mm]assagepistole",
+          "Massagepistolen — im Ersatztext genannt (14.10.: 2/251 aktiv)"
+        ],
+        [
+          "hightech-gadgets",
+          "E-Scooter",
+          "E-Scooter-Zubehör — im Ersatztext genannt (14.10.: 8/251 aktiv)"
+        ],
+        [
+          "ipl-haarentfernung",
+          "[Ee]pilier",
+          "Epilierer — im Ersatztext genannt (14.10.: 3/17 aktiv)"
+        ],
+        [
+          "ipl-haarentfernung",
+          "[Hh]aarentfernungsger",
+          "Haarentfernungsgeräte — im Ersatztext genannt (14.10.: 6/17 aktiv)"
+        ],
+        [
+          "ipl-haarentfernung",
+          "[Ll]ady[- ]?[Ss]haver|[Rr]asierer",
+          "Lady-Shaver — im Ersatztext genannt (14.10.: 2/17 aktiv)"
+        ],
+        [
+          "ipl-haarentfernung",
+          "[Ww]achsw(?:ä|ae)rmer|[Ww]achs-?(?:[Hh]eiz)?ger(?:ä|ae)t",
+          "Wachswärmer — im Ersatztext genannt (14.10.: 3/17 aktiv)"
+        ],
+        [
+          "beauty-geraete",
+          "LED-[Mm]aske|LED.{0,40}[Mm]aske",
+          "LED-Masken — im Ersatztext genannt (14.10.: 15/113 aktiv)"
+        ],
+        [
+          "beauty-geraete",
+          "[Mm]ikrostrom",
+          "Mikrostrom-Geräte — im Ersatztext genannt (14.10.: 15/113 aktiv)"
+        ],
+        [
+          "beauty-geraete",
+          "[Gg]esichts(?:reinigungs)?bürste",
+          "Gesichtsreinigungsbürsten — im Ersatztext genannt (14.10.: 22/113 aktiv)"
+        ],
+        [
+          "beauty-geraete",
+          "[Hh]aarentfernungsger",
+          "Haarentfernungsgeräte — im Ersatztext genannt (14.10.: 6/113 aktiv)"
+        ],
+        [
+          "beauty-geraete",
+          "[Ll]ady[- ]?[Ss]haver|[Rr]asierer",
+          "Lady-Shaver — im Ersatztext genannt (14.10.: 2/113 aktiv)"
+        ],
+        [
+          "beauty-geraete",
+          "[Ww]achsw(?:ä|ae)rmer|[Ww]achs-?(?:[Hh]eiz)?ger(?:ä|ae)t",
+          "Wachswärmer — im Ersatztext genannt (14.10.: 3/113 aktiv)"
+        ],
+        [
+          "beauty-geraete",
+          "[Gg]esichtsroller|[Dd]oppelroller",
+          "Gesichtsroller — im Ersatztext genannt (14.10.: 2/113 aktiv)"
+        ],
+        [
+          "beauty-geraete",
+          "[Mm]assage",
+          "Massagegeräte — im Ersatztext genannt (14.10.: 9/113 aktiv)"
+        ],
+        [
+          "gesichtspflege-geraete",
+          "[Pp]orenreiniger",
+          "Porenreiniger — im Ersatztext genannt (14.10.: 26/40 aktiv)"
+        ],
+        [
+          "gesichtspflege-geraete",
+          "[Vv]akuum",
+          "Porenreiniger mit Vakuum — im Ersatztext genannt (14.10.: 4/40 aktiv)"
+        ],
+        [
+          "gesichtspflege-geraete",
+          "[Uu]ltraschall",
+          "Porenreiniger mit Ultraschall — im Ersatztext genannt (14.10.: 4/40 aktiv)"
+        ],
+        [
+          "gesichtspflege-geraete",
+          "[Gg]esichtsroller",
+          "Gesichtsroller — im Ersatztext genannt (14.10.: 4/40 aktiv)"
+        ],
+        [
+          "gesichtspflege-geraete",
+          "LED-[Mm]aske",
+          "LED-Masken — im Ersatztext genannt (14.10.: 2/40 aktiv)"
+        ],
+        [
+          "gesichtspflege-geraete",
+          "[Gg]ua[ -]?[Ss]ha",
+          "Gua Sha — im Ersatztext genannt (14.10.: 6/40 aktiv)"
+        ],
+        [
+          "top-5-start",
+          "[Kk]leid",
+          "Sommerkleider — im Ersatztext genannt (14.10.: 2/2 aktiv)"
+        ],
+        [
+          "bestseller-shop",
+          "[Kk]leid",
+          "Sommerkleider — im Ersatztext genannt (14.10.: 5/6 aktiv)"
+        ],
+        [
+          "favoriten",
+          "[Kk]leid",
+          "luftige Kleider — im Ersatztext genannt (14.10.: 3/5 aktiv)"
+        ],
+        [
+          "strand",
+          "[Ll]uftmatratze",
+          "Luftmatratzen — im Ersatztext genannt (14.10.: 3/7 aktiv)"
+        ],
+        [
+          "strand",
+          "[Ss]trandt(?:uch|ücher)",
+          "Strandtücher — im Ersatztext genannt (14.10.: 2/7 aktiv)"
+        ],
+        [
+          "reise-gadgets",
+          "[Kk]ompressions-?[Rr]ucks",
+          "Vakuum-Kompressions-Rucksäcke — im Ersatztext genannt (14.10.: 8/309 aktiv)"
+        ],
+        [
+          "reise-gadgets",
+          "[Kk]ompressionsbeutel",
+          "Kompressionsbeutel — im Ersatztext genannt (14.10.: 10/309 aktiv)"
+        ],
+        [
+          "reise-gadgets",
+          "[Aa]dapter",
+          "Reiseadapter — im Ersatztext genannt (14.10.: 3/309 aktiv)"
+        ],
+        [
+          "reise-gadgets",
+          "[Kk]ulturbeutel",
+          "Kulturbeutel — im Ersatztext genannt (14.10.: 2/309 aktiv)"
+        ],
+        [
+          "reise-gadgets",
+          "[Rr]ucks(?:a|ä)ck",
+          "Reiserucksäcke — im Ersatztext genannt (14.10.: 146/309 aktiv)"
+        ],
+        [
+          "reise-gadgets",
+          "[Rr]eisetasche",
+          "Reisetaschen — im Ersatztext genannt (14.10.: 123/309 aktiv)"
+        ],
+        [
+          "wellness-selfcare",
+          "[Mm]assagepistole",
+          "Massagepistolen — im Ersatztext genannt (14.10.: 2/99 aktiv)"
+        ],
+        [
+          "wellness-selfcare",
+          "[Ff]aszienroll",
+          "Faszienrollen — im Ersatztext genannt (14.10.: 7/99 aktiv)"
+        ],
+        [
+          "wellness-selfcare",
+          "[Aa]ugenmassage",
+          "Augenmassagegeräte — im Ersatztext genannt (14.10.: 19/99 aktiv)"
+        ],
+        [
+          "wellness-selfcare",
+          "[Dd]iffuser",
+          "Aroma-Diffuser — im Ersatztext genannt (14.10.: 71/99 aktiv)"
+        ],
+        [
+          "3d-filament",
+          "(?<![\\w])PLA(?![\\w])",
+          "PLA — im Ersatztext genannt (14.10.: 4/9 aktiv)"
+        ],
+        [
+          "3d-filament",
+          "[Ss]eide",
+          "Seiden-Filament — im Ersatztext genannt (14.10.: 2/9 aktiv)"
+        ],
+        [
+          "3d-filament",
+          "[Mm]ehrfarbig|Regenbogen",
+          "mehrfarbiges Filament — im Ersatztext genannt (14.10.: 2/9 aktiv)"
+        ],
+        [
+          "3d-filament",
+          "[Ff]lexib|(?<![\\w])TPU(?![\\w])",
+          "flexibles Filament — im Ersatztext genannt (14.10.: 2/9 aktiv)"
+        ],
+        [
+          "3d-filament",
+          "[Cc]arbonfaser",
+          "carbonfaserverstärktes Filament — im Ersatztext genannt (14.10.: 2/9 aktiv)"
+        ],
+        [
+          "kuechen-gadgets",
+          "[Gg]emüseschneider",
+          "Gemüseschneider — im Ersatztext genannt (14.10.: 39/85 aktiv)"
+        ],
+        [
+          "kuechen-gadgets",
+          "[Rr]eibe",
+          "Reiben — im Ersatztext genannt (14.10.: 4/85 aktiv)"
+        ],
+        [
+          "kuechen-gadgets",
+          "[Zz]erkleinerer",
+          "Zerkleinerer — im Ersatztext genannt (14.10.: 21/85 aktiv)"
+        ],
+        [
+          "kuechen-gadgets",
+          "[Kk]üchenwaage",
+          "Küchenwaagen — im Ersatztext genannt (14.10.: 9/85 aktiv)"
+        ],
+        [
+          "haustier-gadgets",
+          "kompakten Brunnen|1[,.][58]\\s?L(?![\\w])",
+          "kompakte Brunnen — im Ersatztext genannt (14.10.: 2/23 aktiv)"
+        ],
+        [
+          "haustier-gadgets",
+          "grossen Modellen|, gross|(?<![\\d,.])[34][,.]?\\d?\\s?L(?![\\w])",
+          "grosse Modelle — im Ersatztext genannt (14.10.: 3/23 aktiv)"
+        ],
+        [
+          "haustier-gadgets",
+          "[Kk]eramik",
+          "Keramik-Brunnen — im Ersatztext genannt (14.10.: 4/23 aktiv)"
+        ],
+        [
+          "haustier-gadgets",
+          "[Ff]utternapf|[Ff]utter- und|[Dd]oppelnapf",
+          "Modelle mit Futternapf — im Ersatztext genannt (14.10.: 5/23 aktiv)"
+        ],
+        [
+          "haustier-gadgets",
+          "[Kk]abellos|ohne Strom|[Uu]nplugged",
+          "kabellose Brunnen — im Ersatztext genannt (14.10.: 3/23 aktiv)"
+        ],
+        [
+          "3d-drucker",
+          "(?<!und )3D-(?:Druck)?[Ss]tift",
+          "3D-Stifte — im Ersatztext genannt (14.10.: 6/13 aktiv)"
+        ],
+        [
+          "3d-drucker",
+          "Ersatzteil|Druckkopf|[Dd]üse|Motherboard|[Ss]ensor|[Nn]etzteil|Federstahlplatte",
+          "Ersatzteile für 3D-Drucker — im Ersatztext genannt (14.10.: 6/13 aktiv)"
+        ],
+        [
+          "3d-druck",
+          "(?<!und )3D-(?:Druck)?[Ss]tift|3D Mal-",
+          "3D-Stifte — im Ersatztext genannt (14.10.: 7/26 aktiv)"
+        ],
+        [
+          "3d-druck",
+          "[Hh]eizbett",
+          "Heizbetten — im Ersatztext genannt (14.10.: 2/26 aktiv)"
+        ],
+        [
+          "3d-druck",
+          "[Dd]ruckplatte|[Gg]lasplatte|PEI-[Pp]latte",
+          "Druckplatten — im Ersatztext genannt (14.10.: 2/26 aktiv)"
+        ],
+        [
+          "3d-druck",
+          "[Ss]ensor",
+          "Sensoren — im Ersatztext genannt (14.10.: 2/26 aktiv)"
+        ],
+        [
+          "kochen-backen",
+          "[Mm]esserhalter|Messer- und Schneidebrett(?:ständer|halter)|[Kk]üchenmesser Aufbewahrung",
+          "Messerhalter — im Ersatztext genannt (14.10.: 4/195 aktiv)"
+        ],
+        [
+          "kochen-backen",
+          "[Mm]esserschärfer|[Mm]esser-[Ss]chärfer|mit Schärfer|[Ss]chleifstein",
+          "Messerschärfer — im Ersatztext genannt (14.10.: 5/195 aktiv)"
+        ],
+        [
+          "3d-drucker",
+          "(?<!für )(?<![\\w-])3D-Drucker(?![-\\w])",
+          "3D-Drucker als Gerät (nur Zubehör «für 3D-Drucker») (0/13)"
+        ],
+        [
+          "3d-druck",
+          "Drucker-Tische|-Ständer|-Schränke",
+          "3D-Drucker-Tische/-Ständer/-Schränke (0/26)"
+        ],
+        [
+          "3d-druck",
+          "[Dd]üsen",
+          "Düsen (0/26)"
+        ],
+        [
+          "kuschel-heizdecken",
+          "[Cc]ashmere|[Kk]aschmir",
+          "Cashmere-Look (0/18)"
+        ],
+        [
+          "bar-glaeser",
+          "[Ss]ektgl(?:as|äser)(?!-)",
+          "Sektgläser (nur ein Organizer) (0/14)"
+        ],
+        [
+          "auto-kfz-zubehoer",
+          "[Bb]echerhalter",
+          "Becherhalter (0/467)"
+        ],
+        [
+          "auto-kfz-zubehoer",
+          "[Pp]olitur",
+          "Politur(-Sets) (0/467)"
+        ]
+      ],
+      "genannt_beleg": [
+        [
+          "make-up",
+          "Foundations — im Ersatztext genannt (14.10.: 42/781 aktiv)",
+          "Feinabgleichende und Aufhellende Foundation"
+        ],
+        [
+          "make-up",
+          "Concealer — im Ersatztext genannt (14.10.: 36/781 aktiv)",
+          "Cushion-Concealer"
+        ],
+        [
+          "make-up",
+          "Lidschatten-Paletten — im Ersatztext genannt (14.10.: 184/781 aktiv)",
+          "Lidschatten-Palette · 10 Farben"
+        ],
+        [
+          "make-up",
+          "Mascara — im Ersatztext genannt (14.10.: 25/781 aktiv)",
+          "Wimpernmascara mit Metalltube"
+        ],
+        [
+          "make-up",
+          "Eyeliner — im Ersatztext genannt (14.10.: 50/781 aktiv)",
+          "Doppelkopf-Eyeliner-Set"
+        ],
+        [
+          "make-up",
+          "Lippenstifte — im Ersatztext genannt (14.10.: 76/781 aktiv)",
+          "Lippenstift mit Karotin und Bienenwachs"
+        ],
+        [
+          "make-up",
+          "Make-up-Pinsel — im Ersatztext genannt (14.10.: 199/781 aktiv)",
+          "Make-up-Pinsel-Organizer mit Deckel"
+        ],
+        [
+          "beauty-makeup",
+          "Foundations — im Ersatztext genannt (14.10.: 42/806 aktiv)",
+          "Feinabgleichende und Aufhellende Foundation"
+        ],
+        [
+          "beauty-makeup",
+          "Concealer — im Ersatztext genannt (14.10.: 36/806 aktiv)",
+          "Cushion-Concealer"
+        ],
+        [
+          "beauty-makeup",
+          "Lidschatten-Paletten — im Ersatztext genannt (14.10.: 184/806 aktiv)",
+          "Lidschatten-Palette · 10 Farben"
+        ],
+        [
+          "beauty-makeup",
+          "Mascara — im Ersatztext genannt (14.10.: 25/806 aktiv)",
+          "Wimpernmascara mit Metalltube"
+        ],
+        [
+          "beauty-makeup",
+          "Eyeliner — im Ersatztext genannt (14.10.: 50/806 aktiv)",
+          "Doppelkopf-Eyeliner-Set"
+        ],
+        [
+          "beauty-makeup",
+          "Lippenstifte — im Ersatztext genannt (14.10.: 76/806 aktiv)",
+          "Lippenstift mit Karotin und Bienenwachs"
+        ],
+        [
+          "beauty-makeup",
+          "Make-up-Pinsel — im Ersatztext genannt (14.10.: 199/806 aktiv)",
+          "Make-up-Pinsel-Organizer mit Deckel"
+        ],
+        [
+          "hautpflege",
+          "Gesichtscremes — im Ersatztext genannt (14.10.: 10/350 aktiv)",
+          "Gesichtscreme für einen ebenmässigen Teint"
+        ],
+        [
+          "hautpflege",
+          "Nachtcremes — im Ersatztext genannt (14.10.: 3/350 aktiv)",
+          "Feuchtigkeitsspendende Nachtcreme · mildert feine Linien"
+        ],
+        [
+          "beauty-tools",
+          "Fussmassagegeräte — im Ersatztext genannt (14.10.: 5/521 aktiv)",
+          "Fussmassage-Set: 3-teiliger Faszienball"
+        ],
+        [
+          "beauty-tools",
+          "Vibrations-Massagegeräte — im Ersatztext genannt (14.10.: 13/521 aktiv)",
+          "Tiefen-Vibrationsmassagegerät"
+        ],
+        [
+          "beauty-tools",
+          "Jade-Roller — im Ersatztext genannt (14.10.: 2/521 aktiv)",
+          "Jade-Gesichtsroller für natürliche Massage"
+        ],
+        [
+          "beauty-tools",
+          "Gua Sha — im Ersatztext genannt (14.10.: 6/521 aktiv)",
+          "Elektrisches Schröpf- und Gua Sha Massagegerät"
+        ],
+        [
+          "auto-zubehoer",
+          "Sitzbezüge — im Ersatztext genannt (14.10.: 19/467 aktiv)",
+          "Sitzbezug aus Leder für Auto"
+        ],
+        [
+          "auto-zubehoer",
+          "Lenkradbezüge — im Ersatztext genannt (14.10.: 54/467 aktiv)",
+          "Plüsch-Lenkradbezug · weich & rutschfest"
+        ],
+        [
+          "auto-zubehoer",
+          "Dashcams — im Ersatztext genannt (14.10.: 5/467 aktiv)",
+          "4-Kamera-Dashcam"
+        ],
+        [
+          "auto-zubehoer",
+          "Ladegeräte — im Ersatztext genannt (14.10.: 4/467 aktiv)",
+          "Doppel-Ladegerät"
+        ],
+        [
+          "auto-zubehoer",
+          "kabellose Auto-Staubsauger — im Ersatztext genannt (14.10.: 3/467 aktiv)",
+          "Kabelloser Mini-Staubsauger mit Gebläse"
+        ],
+        [
+          "auto-kfz-zubehoer",
+          "Poliermaschinen — im Ersatztext genannt (14.10.: 6/467 aktiv)",
+          "Kabellose Poliermaschine für dein Auto"
+        ],
+        [
+          "auto-kfz-zubehoer",
+          "Polier-Sets — im Ersatztext genannt (14.10.: 2/467 aktiv)",
+          "Auto Polier-Set 9-teilig"
+        ],
+        [
+          "auto-kfz-zubehoer",
+          "Wachse — im Ersatztext genannt (14.10.: 3/467 aktiv)",
+          "Auto Waschhandschuh & Wachsschwamm Set"
+        ],
+        [
+          "auto-kfz-zubehoer",
+          "Reinigungsbürsten — im Ersatztext genannt (14.10.: 3/467 aktiv)",
+          "Stahlfelgen- und Nabenbürste"
+        ],
+        [
+          "auto-kfz-zubehoer",
+          "Dashcams — im Ersatztext genannt (14.10.: 5/467 aktiv)",
+          "4-Kamera-Dashcam"
+        ],
+        [
+          "auto-kfz-zubehoer",
+          "Halterungen — im Ersatztext genannt (14.10.: 2/467 aktiv)",
+          "Auto-Halterung mit Ladefunktion und Ablage"
+        ],
+        [
+          "auto-kfz-zubehoer",
+          "Ladegeräte — im Ersatztext genannt (14.10.: 4/467 aktiv)",
+          "Doppel-Ladegerät"
+        ],
+        [
+          "auto-pflege",
+          "kabellose Auto-Staubsauger — im Ersatztext genannt (14.10.: 2/8 aktiv)",
+          "Kabelloser Auto-Staubsauger"
+        ],
+        [
+          "auto-pflege",
+          "Innenraum-Bürsten — im Ersatztext genannt (14.10.: 2/8 aktiv)",
+          "Reinigungsbürste für Fahrzeuginnenraum"
+        ],
+        [
+          "bar-glaeser",
+          "Weingläser — im Ersatztext genannt (14.10.: 4/14 aktiv)",
+          "Glas-Weindekanter oder Rotweingläser"
+        ],
+        [
+          "bar-glaeser",
+          "Alltagsgläser — im Ersatztext genannt (14.10.: 2/14 aktiv)",
+          "Kristall-Whiskyglas Luxus-Design"
+        ],
+        [
+          "bar-wein-accessoires",
+          "Weindekanter — im Ersatztext genannt (14.10.: 11/49 aktiv)",
+          "Weinkühler-Set mit Dekanter und Gläsern"
+        ],
+        [
+          "bar-wein-accessoires",
+          "Korkenzieher — im Ersatztext genannt (14.10.: 5/49 aktiv)",
+          "Korkenzieher aus Zinklegierung – Roségold"
+        ],
+        [
+          "bar-wein-accessoires",
+          "(elektrische) Flaschenöffner — im Ersatztext genannt (14.10.: 13/49 aktiv)",
+          "Elektrischer Flaschenöffner mit USB-Ladung"
+        ],
+        [
+          "bar-wein-accessoires",
+          "Weinkühler — im Ersatztext genannt (14.10.: 3/49 aktiv)",
+          "Weinkühler mit Ausgiesser aus Edelstahl"
+        ],
+        [
+          "bar-wein-accessoires",
+          "Weinregale — im Ersatztext genannt (14.10.: 6/49 aktiv)",
+          "LED-Streifen für Weinregal – kabellose Beleuchtung"
+        ],
+        [
+          "kuschel-heizdecken",
+          "Heizdecken (beheizbar) — im Ersatztext genannt (14.10.: 2/18 aktiv)",
+          "Heizbare Kuscheldecke mit Ärmeln und Kapuze"
+        ],
+        [
+          "kuschel-heizdecken",
+          "Kuscheldecken — im Ersatztext genannt (14.10.: 17/18 aktiv)",
+          "Hundekuscheldecke mit V-Ausschnitt, Streifen"
+        ],
+        [
+          "kuschel-heizdecken",
+          "Decken mit Muster/Motiv — im Ersatztext genannt (14.10.: 7/18 aktiv)",
+          "Hundekuscheldecke mit V-Ausschnitt, Streifen"
+        ],
+        [
+          "wellness-gesundheit",
+          "Massagegeräte — im Ersatztext genannt (14.10.: 14/27 aktiv)",
+          "Minimassager"
+        ],
+        [
+          "wellness-gesundheit",
+          "Augenmassagegeräte — im Ersatztext genannt (14.10.: 4/27 aktiv)",
+          "Augen-Massager"
+        ],
+        [
+          "wellness-gesundheit",
+          "Aroma-Diffuser — im Ersatztext genannt (14.10.: 5/27 aktiv)",
+          "Aroma-Diffuser «Persimmon» · Kaki-Frucht-Design mit Licht 🍂"
+        ],
+        [
+          "modellautos",
+          "Metall-Modellautos — im Ersatztext genannt (14.10.: 3/28 aktiv)",
+          "Metall-Spielzeugauto mit Rückziehfunktion"
+        ],
+        [
+          "modellautos",
+          "Bausteine-Modelle — im Ersatztext genannt (14.10.: 10/28 aktiv)",
+          "Baustein-Spielzeugauto mit kleinen Partikeln"
+        ],
+        [
+          "modellautos",
+          "Spielzeugautos — im Ersatztext genannt (14.10.: 7/28 aktiv)",
+          "Metall-Spielzeugauto mit Rückziehfunktion"
+        ],
+        [
+          "sub-ringe",
+          "verstellbare Ringe — im Ersatztext genannt (14.10.: 47/506 aktiv)",
+          "Verstellbarer Ring für Paare"
+        ],
+        [
+          "sub-ringe",
+          "Blumenringe — im Ersatztext genannt (14.10.: 15/506 aktiv)",
+          "Verstellbarer Kristall-Blumenring"
+        ],
+        [
+          "sub-ringe",
+          "Zirkonia-Ringe — im Ersatztext genannt (14.10.: 93/506 aktiv)",
+          "Goldfarbener Ring aus Wolframstahl mit Zirkonia"
+        ],
+        [
+          "sub-ringe",
+          "Ring-Sets — im Ersatztext genannt (14.10.: 16/506 aktiv)",
+          "Geometrisches Ring-Set für Frauen"
+        ],
+        [
+          "sub-ringe",
+          "925 Sterling-Silber — im Ersatztext genannt (14.10.: 87/506 aktiv)",
+          "Minimalistischer Ring aus Silber mit geometrischer Form"
+        ],
+        [
+          "spielzeug-schminkset",
+          "Aqua-Schminke — im Ersatztext genannt (14.10.: 5/39 aktiv)",
+          "Eulenspiegel Aqua-Schminke rot"
+        ],
+        [
+          "spielzeug-schminkset",
+          "Schminksets — im Ersatztext genannt (14.10.: 7/39 aktiv)",
+          "Wasserfarben-Schminkset für Gesicht und Körper"
+        ],
+        [
+          "spielzeug-schminkset",
+          "Schmink-Spielsachen aus Holz — im Ersatztext genannt (14.10.: 2/39 aktiv)",
+          "Holz-Schmink- & Frisier-Set für Kinder"
+        ],
+        [
+          "caps-huete",
+          "Länder-Caps — im Ersatztext genannt (14.10.: 7/128 aktiv)",
+          "Cap Frankreich"
+        ],
+        [
+          "caps-huete",
+          "Baseball-Caps — im Ersatztext genannt (14.10.: 32/128 aktiv)",
+          "Baseball Cap"
+        ],
+        [
+          "caps-huete",
+          "Beanies — im Ersatztext genannt (14.10.: 2/128 aktiv)",
+          "Kaschmir-Beanie für Damen und Herren"
+        ],
+        [
+          "caps-huete",
+          "Hüte — im Ersatztext genannt (14.10.: 53/128 aktiv)",
+          "Zylinder Hut schwarz"
+        ],
+        [
+          "gaming-controller",
+          "Ladestationen — im Ersatztext genannt (14.10.: 10/137 aktiv)",
+          "LED Dual-Ladestation für PS4 Controller"
+        ],
+        [
+          "hightech-gadgets",
+          "Drohnen — im Ersatztext genannt (14.10.: 144/251 aktiv)",
+          "Mobile Fernsteuerungs-Drohne"
+        ],
+        [
+          "hightech-gadgets",
+          "Überwachungskameras — im Ersatztext genannt (14.10.: 51/251 aktiv)",
+          "Kabellose Überwachungskamera"
+        ],
+        [
+          "hightech-gadgets",
+          "Saugroboter — im Ersatztext genannt (14.10.: 16/251 aktiv)",
+          "Saugroboter mit Fernbedienung und App-Steuerung"
+        ],
+        [
+          "hightech-gadgets",
+          "VR-Brillen — im Ersatztext genannt (14.10.: 13/251 aktiv)",
+          "VR-Brillen All-in-one Stosstasche"
+        ],
+        [
+          "hightech-gadgets",
+          "Gimbals — im Ersatztext genannt (14.10.: 10/251 aktiv)",
+          "Kamera-Arm 360° Drehgimbal aus Aluminium"
+        ],
+        [
+          "hightech-gadgets",
+          "Massagepistolen — im Ersatztext genannt (14.10.: 2/251 aktiv)",
+          "Faszien Massagepistole"
+        ],
+        [
+          "hightech-gadgets",
+          "E-Scooter-Zubehör — im Ersatztext genannt (14.10.: 8/251 aktiv)",
+          "E-Scooter Ladegerät 42 V / 2 A · EU-Stecker, Xiaomi-Anschluss"
+        ],
+        [
+          "ipl-haarentfernung",
+          "Epilierer — im Ersatztext genannt (14.10.: 3/17 aktiv)",
+          "Lady Epiliergerät 5-in-1"
+        ],
+        [
+          "ipl-haarentfernung",
+          "Haarentfernungsgeräte — im Ersatztext genannt (14.10.: 6/17 aktiv)",
+          "Tragbares USB-Haarentfernungsgerät"
+        ],
+        [
+          "ipl-haarentfernung",
+          "Lady-Shaver — im Ersatztext genannt (14.10.: 2/17 aktiv)",
+          "Doppelköpfiges Lady Shaver Haarentfernungsgerät"
+        ],
+        [
+          "ipl-haarentfernung",
+          "Wachswärmer — im Ersatztext genannt (14.10.: 3/17 aktiv)",
+          "Bienenwachs-Heizgerät für Ganzkörper-Haarentfernung"
+        ],
+        [
+          "beauty-geraete",
+          "LED-Masken — im Ersatztext genannt (14.10.: 15/113 aktiv)",
+          "LED Photon Gesichts- und Halsmaske"
+        ],
+        [
+          "beauty-geraete",
+          "Mikrostrom-Geräte — im Ersatztext genannt (14.10.: 15/113 aktiv)",
+          "EMS-Mikrostrom Augenmassagegerät mit Farblicht"
+        ],
+        [
+          "beauty-geraete",
+          "Gesichtsreinigungsbürsten — im Ersatztext genannt (14.10.: 22/113 aktiv)",
+          "Gesichtsreinigungsbürste mit Wireless Charging"
+        ],
+        [
+          "beauty-geraete",
+          "Haarentfernungsgeräte — im Ersatztext genannt (14.10.: 6/113 aktiv)",
+          "Tragbares USB-Haarentfernungsgerät"
+        ],
+        [
+          "beauty-geraete",
+          "Lady-Shaver — im Ersatztext genannt (14.10.: 2/113 aktiv)",
+          "Doppelköpfiges Lady Shaver Haarentfernungsgerät"
+        ],
+        [
+          "beauty-geraete",
+          "Wachswärmer — im Ersatztext genannt (14.10.: 3/113 aktiv)",
+          "Bienenwachs-Heizgerät für Ganzkörper-Haarentfernung"
+        ],
+        [
+          "beauty-geraete",
+          "Gesichtsroller — im Ersatztext genannt (14.10.: 2/113 aktiv)",
+          "Mikrostrom-Gesichtsroller für V-Linien-Formung"
+        ],
+        [
+          "beauty-geraete",
+          "Massagegeräte — im Ersatztext genannt (14.10.: 9/113 aktiv)",
+          "EMS-Mikrostrom Augenmassagegerät mit Farblicht"
+        ],
+        [
+          "gesichtspflege-geraete",
+          "Porenreiniger — im Ersatztext genannt (14.10.: 26/40 aktiv)",
+          "Porenreiniger mit Vakuumfunktion"
+        ],
+        [
+          "gesichtspflege-geraete",
+          "Porenreiniger mit Vakuum — im Ersatztext genannt (14.10.: 4/40 aktiv)",
+          "Porenreiniger mit Vakuumfunktion"
+        ],
+        [
+          "gesichtspflege-geraete",
+          "Porenreiniger mit Ultraschall — im Ersatztext genannt (14.10.: 4/40 aktiv)",
+          "Ultraschall-Porenreiniger"
+        ],
+        [
+          "gesichtspflege-geraete",
+          "Gesichtsroller — im Ersatztext genannt (14.10.: 4/40 aktiv)",
+          "Feuchtigkeitsspendendes Gesichtsroller-Set"
+        ],
+        [
+          "gesichtspflege-geraete",
+          "LED-Masken — im Ersatztext genannt (14.10.: 2/40 aktiv)",
+          "LED-Maske für Hautverjüngung"
+        ],
+        [
+          "gesichtspflege-geraete",
+          "Gua Sha — im Ersatztext genannt (14.10.: 6/40 aktiv)",
+          "Elektrisches Schröpf- und Gua Sha Massagegerät"
+        ],
+        [
+          "top-5-start",
+          "Sommerkleider — im Ersatztext genannt (14.10.: 2/2 aktiv)",
+          "Strand-Maxikleid «Bali» – luftiges Stufenkleid"
+        ],
+        [
+          "bestseller-shop",
+          "Sommerkleider — im Ersatztext genannt (14.10.: 5/6 aktiv)",
+          "Boho-Kleid «Ibiza» – Baumwoll-Leinen, locker"
+        ],
+        [
+          "favoriten",
+          "luftige Kleider — im Ersatztext genannt (14.10.: 3/5 aktiv)",
+          "Mini-Kleid mit Rüschen · Spaghetti-Träger, elastisch"
+        ],
+        [
+          "strand",
+          "Luftmatratzen — im Ersatztext genannt (14.10.: 3/7 aktiv)",
+          "Luftmatratze Ananas"
+        ],
+        [
+          "strand",
+          "Strandtücher — im Ersatztext genannt (14.10.: 2/7 aktiv)",
+          "Strandtuch & Badetuch bedrucken · selbst gestalten"
+        ],
+        [
+          "reise-gadgets",
+          "Vakuum-Kompressions-Rucksäcke — im Ersatztext genannt (14.10.: 8/309 aktiv)",
+          "Multifunktionaler Vakuum-Kompressionsrucksack"
+        ],
+        [
+          "reise-gadgets",
+          "Kompressionsbeutel — im Ersatztext genannt (14.10.: 10/309 aktiv)",
+          "Vakuumkompressionsbeutel aus TPU"
+        ],
+        [
+          "reise-gadgets",
+          "Reiseadapter — im Ersatztext genannt (14.10.: 3/309 aktiv)",
+          "Multi-Funktions Reiseadapter mit Dual-USB-Charger"
+        ],
+        [
+          "reise-gadgets",
+          "Kulturbeutel — im Ersatztext genannt (14.10.: 2/309 aktiv)",
+          "Reise-Kulturbeutel, ultraleicht & wasserdicht"
+        ],
+        [
+          "reise-gadgets",
+          "Reiserucksäcke — im Ersatztext genannt (14.10.: 146/309 aktiv)",
+          "Reiserucksack 43,5×16×29 cm – Black"
+        ],
+        [
+          "reise-gadgets",
+          "Reisetaschen — im Ersatztext genannt (14.10.: 123/309 aktiv)",
+          "Reisetasche Herren – Leicht & robust"
+        ],
+        [
+          "wellness-selfcare",
+          "Massagepistolen — im Ersatztext genannt (14.10.: 2/99 aktiv)",
+          "Faszien Massagepistole"
+        ],
+        [
+          "wellness-selfcare",
+          "Faszienrollen — im Ersatztext genannt (14.10.: 7/99 aktiv)",
+          "Faszienrolle für Massage und Fitness"
+        ],
+        [
+          "wellness-selfcare",
+          "Augenmassagegeräte — im Ersatztext genannt (14.10.: 19/99 aktiv)",
+          "EMS-Mikrostrom Augenmassagegerät mit Farblicht"
+        ],
+        [
+          "wellness-selfcare",
+          "Aroma-Diffuser — im Ersatztext genannt (14.10.: 71/99 aktiv)",
+          "Smarter Auto Aroma Diffuser"
+        ],
+        [
+          "3d-filament",
+          "PLA — im Ersatztext genannt (14.10.: 4/9 aktiv)",
+          "PLA 3D-Druckfilament 1 kg, 1,75 mm, Mehrfarbig"
+        ],
+        [
+          "3d-filament",
+          "Seiden-Filament — im Ersatztext genannt (14.10.: 2/9 aktiv)",
+          "Seiden-PLA Filament 1.75mm, 1.1kg, Glanz-Finish"
+        ],
+        [
+          "3d-filament",
+          "mehrfarbiges Filament — im Ersatztext genannt (14.10.: 2/9 aktiv)",
+          "PLA 3D-Druckfilament 1 kg, 1,75 mm, Mehrfarbig"
+        ],
+        [
+          "3d-filament",
+          "flexibles Filament — im Ersatztext genannt (14.10.: 2/9 aktiv)",
+          "Flexibles, transparentes 3D-Druck-Filament"
+        ],
+        [
+          "3d-filament",
+          "carbonfaserverstärktes Filament — im Ersatztext genannt (14.10.: 2/9 aktiv)",
+          "PETG-CF Filament, Carbonfaserverstärkt"
+        ],
+        [
+          "kuechen-gadgets",
+          "Gemüseschneider — im Ersatztext genannt (14.10.: 39/85 aktiv)",
+          "Multifunktionaler Gemüseschneider mit Rollen"
+        ],
+        [
+          "kuechen-gadgets",
+          "Reiben — im Ersatztext genannt (14.10.: 4/85 aktiv)",
+          "Küchenreibe und Gemüseschneider"
+        ],
+        [
+          "kuechen-gadgets",
+          "Zerkleinerer — im Ersatztext genannt (14.10.: 21/85 aktiv)",
+          "Elektrischer Mini-Zerkleinerer für Küche"
+        ],
+        [
+          "kuechen-gadgets",
+          "Küchenwaagen — im Ersatztext genannt (14.10.: 9/85 aktiv)",
+          "Aufladbare Küchenwaage aus Edelstahl"
+        ],
+        [
+          "haustier-gadgets",
+          "kompakte Brunnen — im Ersatztext genannt (14.10.: 2/23 aktiv)",
+          "Automatischer Trinkbrunnen für Haustiere, 1.5L"
+        ],
+        [
+          "haustier-gadgets",
+          "grosse Modelle — im Ersatztext genannt (14.10.: 3/23 aktiv)",
+          "Futter- und Trinkbrunnen für Katzen, gross"
+        ],
+        [
+          "haustier-gadgets",
+          "Keramik-Brunnen — im Ersatztext genannt (14.10.: 4/23 aktiv)",
+          "Keramik Elefanten Trinkbrunnen für Katzen"
+        ],
+        [
+          "haustier-gadgets",
+          "Modelle mit Futternapf — im Ersatztext genannt (14.10.: 5/23 aktiv)",
+          "Doppelnapf mit Trinkbrunnen für Haustiere"
+        ],
+        [
+          "haustier-gadgets",
+          "kabellose Brunnen — im Ersatztext genannt (14.10.: 3/23 aktiv)",
+          "Transparenter, kabelloser Trinkbrunnen für Haustiere"
+        ],
+        [
+          "3d-drucker",
+          "3D-Stifte — im Ersatztext genannt (14.10.: 6/13 aktiv)",
+          "3D-Druckstift"
+        ],
+        [
+          "3d-drucker",
+          "Ersatzteile für 3D-Drucker — im Ersatztext genannt (14.10.: 6/13 aktiv)",
+          "3D-Drucker-Motherboard SKR V1.4"
+        ],
+        [
+          "3d-druck",
+          "3D-Stifte — im Ersatztext genannt (14.10.: 7/26 aktiv)",
+          "3D Mal- und Graffiti-Stift"
+        ],
+        [
+          "3d-druck",
+          "Heizbetten — im Ersatztext genannt (14.10.: 2/26 aktiv)",
+          "Prusa Mini Magnetisches Heizbett mit PEI-Platte"
+        ],
+        [
+          "3d-druck",
+          "Druckplatten — im Ersatztext genannt (14.10.: 2/26 aktiv)",
+          "Ender-3 Karbon-Kristall Silikon-Glasplatte"
+        ],
+        [
+          "3d-druck",
+          "Sensoren — im Ersatztext genannt (14.10.: 2/26 aktiv)",
+          "3D Touch Sensor für 3D-Drucker"
+        ],
+        [
+          "kochen-backen",
+          "Messerhalter — im Ersatztext genannt (14.10.: 4/195 aktiv)",
+          "Messerhalter mit Schneidebrett"
+        ],
+        [
+          "kochen-backen",
+          "Messerschärfer — im Ersatztext genannt (14.10.: 5/195 aktiv)",
+          "Emery Küchenmesser-Schärfer 12 Zoll"
+        ]
+      ]
+    },
+    "kanaele": {
+      "_hinweis": "Prüfung S3 14.10. 13:36 (Befund 3): Kollektionen, die im Onlineshop NICHT veröffentlicht sind, können in anderen Verkaufskanälen veröffentlicht sein (gemessen 14.10.: damen-uhren in Facebook & Instagram, Google & YouTube, Pinterest, Shop, TikTok, POS). Der Wächter liest für jede unveröffentlichte Kollektion mit rotem Fund die Kanäle (nur lesen) und nennt sie im Bericht; die Ampel zählt weiter nur den Onlineshop. «nicht_schaufenster» = Kanäle ohne eigene Schaufenster-Seite für Kollektionstexte: Inbox (Chat) und die beiden Headless-Kanäle (Zweck unbekannt, Journal 09.10.; die tokenlose Storefront-API sieht Ware auch ohne sie). Ob Shop/Meta/Google/TikTok/Pinterest/POS Kollektionsbeschreibungen anzeigen: nicht geprüft. «Point of Sale» (Kassen-App) zählt ebenfalls nicht als Schaufenster — ANNAHME, nicht gemessen (kein Ladengeschäft im Gedächtnis); 30 der 45 unveröffentlichten R9-Kollektionen hängen nur an POS/Headless. Im Bericht stehen trotzdem ALLE Kanäle je Kollektion.",
+      "nicht_schaufenster": [
+        "Online Store",
+        "Inbox",
+        "Headless",
+        "Luxe Style Headless",
+        "Point of Sale"
       ]
     }
   }

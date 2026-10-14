@@ -1150,6 +1150,50 @@ def wearable_seo():
     return None
 
 
+def koll_versprechen(stand="/tmp/koll_versprechen_stand.json", log="/tmp/versprechen_wache.log", jetzt=None):
+    """KOLL-VERSPRECHEN (14.10.2026, S3): unbelegte Versprechen in Kollektionstexten. versprechen_wache.py (Aufseher, täglich) schreibt
+    den Stand nach /tmp/koll_versprechen_stand.json (koll_stand_schreiben: zeit, pub, unpub, pub_handles, manuell, premium) und die
+    Zeile «KOLL-VERSPRECHEN: …» (an der FERTIG-Zeile) nach /tmp/versprechen_wache.log — ohne Stand-Datei gilt die letzte FERTIG-Zeile.
+    ⚠️ NUR bei veröffentlichten Kollektionen mit Verstoss (ohne «manuell» = Titel/SEO-Titel, ohne Premium-Hinweis) oder wenn der
+    Stand älter als 48 h ist. Liest nur Dateien. Still: auf dem Server, ohne Stand/Log solange das Log jünger als 48 h ist."""
+    if AUF_SERVER:
+        return None
+    jetzt = time.time() if jetzt is None else jetzt
+    zeit = pub = None
+    handles = []
+    try:
+        d = json.load(open(stand, encoding="utf-8"))
+        zeit = datetime.datetime.strptime(d["zeit"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=datetime.timezone.utc).timestamp()
+        pub, handles = int(d["pub"]), list(d.get("pub_handles") or [])
+    except Exception:
+        try:
+            with open(log, encoding="utf-8", errors="ignore") as f:
+                z = [l for l in f if l.startswith("FERTIG ") and "KOLL-VERSPRECHEN:" in l]
+        except OSError:
+            z = []
+        m = re.match(r"FERTIG (\d{4}-\d\d-\d\dT\d\d:\d\d:\d\dZ).*?KOLL-VERSPRECHEN: (\d+) veröffentlicht", z[-1]) if z else None
+        if m:
+            zeit = datetime.datetime.strptime(m.group(1), "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=datetime.timezone.utc).timestamp()
+            pub = int(m.group(2))
+    teile = []
+    if zeit is None:
+        try:
+            log_alter = jetzt - os.path.getmtime(log)
+        except OSError:
+            log_alter = None
+        if log_alter is not None and log_alter <= 48 * 3600:
+            return None                     # Wächter läuft, der Kollektionsteil kommt mit dem nächsten Lauf
+        return "⚠️ KOLL-VERSPRECHEN: kein Stand seit über 48 h (automation/versprechen_wache.py im Aufseher?)"
+    alter_h = (jetzt - zeit) / 3600
+    if pub:
+        teile.append(f"{pub} veröffentlichte Kollektion{'en' if pub != 1 else ''} mit unbelegtem Versprechen"
+                     + (f" ({', '.join(handles[:3])}{' …' if len(handles) > 3 else ''})" if handles else "")
+                     + " — dropship/KOLL-VERSPRECHEN.md, beheben mit automation/kollektion_versprechen_s3.py")
+    if alter_h > 48:
+        teile.append(f"Stand {alter_h:.0f} h alt (Wächter steht?)")
+    return ("⚠️ KOLL-VERSPRECHEN: " + " · ".join(teile)) if teile else None
+
+
 def cj_suche_tor():
     """K8 (13.10.2026): Relevanz-Tor der CJ-Suchaufträge (cj_sku_import.mjs --stand: 20 Kanarien, liest nur Dateien, kein
     CJ-/Shopify-Aufruf). Meldet nur rote Kanarien — dann bleibt die Suchqueue zu. Braucht keinen Token (nicht in MIT_TOKEN).
@@ -1339,7 +1383,7 @@ def main():
     ohne_token = not os.path.exists(TOKPFAD)
     # Pruefungen, die den Shop-Token brauchen, laufen ohne ihn nicht — alle anderen schon (26.09.).
     MIT_TOKEN = (liechtenstein_gesperrt, klingen_pingpong, grow_zaehler, drafts_ohne_quittung, datei_speicher_voll, video_deckel, alter_lieferblock)
-    pruefungen = (bot_puls, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kassen_lieferdatum, werbetest, verkauf_gewinn, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik, startseiten_gewicht, such_boosts, alter_lieferblock, social_sperre, gsc_tot, index_stand, wearable_seo, cj_suche_tor, waisen_verzeichnis)
+    pruefungen = (bot_puls, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kassen_lieferdatum, werbetest, verkauf_gewinn, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik, startseiten_gewicht, such_boosts, alter_lieferblock, social_sperre, gsc_tot, index_stand, wearable_seo, koll_versprechen, cj_suche_tor, waisen_verzeichnis)
     teile = [zugang_weg()]
     for f in pruefungen:
         if ohne_token and f in MIT_TOKEN:
