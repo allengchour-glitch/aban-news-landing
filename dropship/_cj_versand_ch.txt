@@ -1587,3 +1587,6 @@ gid://shopify/Product/16617716679047	ok	8-Kanal-Mischpult mit USB und Bluetooth
 gid://shopify/Product/16617695445383	ok	Muskelentspannungsgerät für Beine, Nacken, Rücken
 gid://shopify/Product/16617717662087	ok	Handtuchhalter zur Wandmontage
 gid://shopify/Product/16617704685959	ok	Solar Gartenleuchte zum Aufhängen
+gid://shopify/Product/16617715401095	ok	Holz Etagere für Früchte
+gid://shopify/Product/16617713140103	ok	Besteck-Set aus Edelstahl – Western-Stil
+gid://shopify/Product/16617717465479	ok	Waschtischarmatur aus Kupfer
