@@ -16,12 +16,16 @@ Befunde (jeder ist ein Fehler):
   SPOT_STOP_UEBER_NETTO / PERP_STOP_UEBER_NETTO  ein Stop ist grösser als ungesichert (träfe die Absicherung)
   NACH_SPRUNG_*      der Kurs springt durch alle Stops — bleibt danach etwas ohne Absicherung und ohne Stop?
 Bewusst NICHT gezählt (begründet):
-  • Staub unter einem Futures-Schritt (feiner lässt sich die Ernte nicht absichern) — als STAUB_* ausgewiesen.
+  • Staub unter STAUB_MAX_USDT (10 USDT: darunter nimmt Binance keinen Stop an) — als STAUB_* ausgewiesen. Den Coin-Rest unter
+    einem Futures-Schritt sichert Pilot 2.0 seit der 9. Prüfung mit einem eigenen Spot-Stop.
   • mehrere Spot-Stops, deren Summe die Netto-Position nicht übersteigt (der Not-Aus sichert unter Störungen additiv,
     statt einen funktionierenden Stop wegzunehmen); zu grosse Perp-Stops ohne Coins (reduceOnly: schliessen nur den Short).
-  • Märkte mit unklarem Auftrag sind BEIDSEITIG gesichert (Spot-Stop über alle Coins, Perp-Stop über den ganzen Short plus
-    die unklaren Shorts): dort zählt «alles gedeckt» statt «nicht über netto»; die NACH_SPRUNG-Prüfung gilt weiter.
-  • Läufe ohne Lauf-Warnung sind still (STILL_*), mit Warnung laut (LAUT_*) — beides zählt als Befund.
+  • Märkte mit unklarem Auftrag oder sonst BEIDSEITIG gesichert (Spot-Stop über alle Coins UND Perp-Stop über den ganzen
+    Short — löst einer aus, schützt der andere den Rest): dort zählt «alles gedeckt» statt «nicht über netto»; die
+    NACH_SPRUNG-Prüfung gilt weiter.
+  • Läufe ohne Lauf-Warnung sind still (STILL_*), mit Warnung laut (LAUT_*) — beides zählt als Befund. Ausnahme DAUER_*: Binance
+    lehnt in diesem Schritt dauerhaft ab (Störung mit ≥ 50 Wiederholungen) und Pilot 2.0 meldet die Lücke laut — dann kann kein
+    Code schützen; geprüft wird der Stand NACH der Nachkontrolle (Störung vorbei), der muss sauber sein.
 """
 from __future__ import annotations
 
@@ -60,6 +64,7 @@ SYMS = FB.SYMS
 STEP_S = {s: float(v) for s, v in FB.SPOT_STEP.items()}
 STEP_P = {s: float(v) for s, v in FB.FUT_STEP.items()}
 TOL_USDT = 6.0
+STAUB_MAX_USDT = 10.0  # darunter kann Binance nichts mehr absichern (Mindestbetrag 5 USDT, Schrittweiten) — echter Staub
 _n = [0]
 
 
@@ -107,8 +112,10 @@ def pending_abarbeiten():
 
 
 def stops(k, sym):
+    """Eigene offene Stops — ein ausgelöster STOP_LOSS_LIMIT, dessen Limit über dem Kurs liegt (Lücke), schützt nicht mehr."""
     sp = [o for o in k.orders.values() if o["symbol"] == sym and o["status"] in ("NEW", "PARTIALLY_FILLED")
-          and o["typ"].startswith("STOP") and str(o["cid"]).startswith(L.CID_STOP_SPOT)]
+          and o["typ"].startswith("STOP") and str(o["cid"]).startswith(L.CID_STOP_SPOT)
+          and not (o.get("aktiv") and o.get("preis", 0.0) > B.kurs[sym])]
     pp = [a for a in k.algos.values() if a["symbol"] == sym and str(a.get("clientAlgoId", "")).startswith(L.CID_STOP_PERP)]
     return sp, pp
 
@@ -144,7 +151,9 @@ def schutz_befunde(k, unklar=None, tol_usdt=TOL_USDT):
     for sym in SYMS:
         g = lage(k, sym)
         p = g["kurs"]
-        if sym in unklar:  # beidseitig: alle Coins unter Spot-Stop, der ganze Short unter Perp-Stop
+        beidseitig_stand = (g["coins"] - g["s_qty"]) * p <= tol_usdt + STEP_S[sym] * p and g["p_qty"] >= max(0.0, -g["pos"]) - 1e-9
+        if sym in unklar or beidseitig_stand:
+            # beidseitig: alle Coins unter Spot-Stop, der ganze Short unter Perp-Stop — löst einer aus, schützt der andere den Rest
             luecke_s = g["coins"] - g["s_qty"]
             if luecke_s * p > tol_usdt + STEP_S[sym] * p and g["coins"] * p >= FB.SPOT_MIN_NOTIONAL:
                 out.append(("LONG_OHNE_STOP", sym, round(luecke_s, 6), round(luecke_s * p, 2), "beidseitig"))
@@ -155,15 +164,21 @@ def schutz_befunde(k, unklar=None, tol_usdt=TOL_USDT):
         if g["netto"] > 0:
             luecke = min(g["netto"], g["coins"]) - g["s_qty"]
             if luecke * p > tol_usdt + STEP_S[sym] * p:
-                out.append(("LONG_OHNE_STOP" if luecke > STEP_P[sym] * 1.05 else "STAUB_LONG_OHNE_STOP", sym, round(luecke, 6),
+                out.append(("LONG_OHNE_STOP" if luecke * p > STAUB_MAX_USDT else "STAUB_LONG_OHNE_STOP", sym, round(luecke, 6),
                             round(luecke * p, 2)))
         if g["netto"] < 0:
             luecke = -g["netto"] - g["p_qty"]
             if luecke * p > max(tol_usdt, 0.5 * STEP_P[sym] * p) + 1e-6:
                 out.append(("SHORT_OHNE_STOP", sym, round(luecke, 6), round(luecke * p, 2)))
-        if g["s_qty"] > max(0.0, g["netto"]) + STEP_S[sym] + tol_usdt / p:
-            out.append(("SPOT_STOP_UEBER_NETTO", sym, round(g["s_qty"] - max(0.0, g["netto"]), 6)))
-        if g["p_qty"] > max(0.0, -g["netto"]) + STEP_P[sym] + 1e-9 and g["coins"] * p >= tol_usdt:
+        erlaubt_s = max(0.0, g["netto"])
+        if g["netto"] < 0 < g["coins"]:  # netto short: Coin-Rest unter einem Futures-Schritt darf einen Spot-Stop haben,
+            boden = int(min(g["coins"], -g["pos"]) / STEP_P[sym] + 1e-9) * STEP_P[sym]  # wenn der Perp-Stop den Short darüber deckt
+            if g["p_qty"] >= -g["pos"] - boden - 1e-9:
+                erlaubt_s = g["coins"] - boden
+        if g["s_qty"] > erlaubt_s + STEP_S[sym] + tol_usdt / p:
+            out.append(("SPOT_STOP_UEBER_NETTO", sym, round(g["s_qty"] - erlaubt_s, 6)))
+        # zu grosser Perp-Stop schadet nur mit Short UND Coins (er kauft die Absicherung zurück → Coins ohne Short)
+        if g["p_qty"] > max(0.0, -g["netto"]) + STEP_P[sym] + 1e-9 and g["pos"] < 0 and g["coins"] * p >= tol_usdt:
             out.append(("PERP_STOP_UEBER_NETTO", sym, round(g["p_qty"] - max(0.0, -g["netto"]), 6)))
     return out
 
@@ -190,7 +205,7 @@ def folgeschaden(k):
             p2 = sum(float(a["quantity"]) for a in pp2 if a["side"] == "BUY")
             lang = min(netto2, coins2) - s2
             if netto2 > 0 and lang * ziel > TOL_USDT + STEP_S[sym] * ziel:
-                out.append(("NACH_SPRUNG_LONG_OHNE_STOP" if lang > STEP_P[sym] * 1.05 else "STAUB_NACH_SPRUNG_LONG", sym, richtung,
+                out.append(("NACH_SPRUNG_LONG_OHNE_STOP" if lang * ziel > STAUB_MAX_USDT else "STAUB_NACH_SPRUNG_LONG", sym, richtung,
                             round(lang, 6), round(lang * ziel, 2)))
             if netto2 < 0 and (-netto2 - p2) * ziel > max(TOL_USDT, 0.5 * STEP_P[sym] * ziel) + 1e-6:
                 out.append(("NACH_SPRUNG_SHORT_OHNE_STOP", sym, richtung, round(-netto2 - p2, 6), round((-netto2 - p2) * ziel, 2)))
@@ -198,7 +213,9 @@ def folgeschaden(k):
 
 
 def flach(k, min_notional=5.0):
-    return all(k.pos[s] == 0 and (k.frei[s[:-4]] + k.gesperrt[s[:-4]]) * B.kurs[s] < min_notional for s in SYMS)
+    """Keine Position und kein verkaufbarer Coin-Rest (Binance verkauft nur ganze Schritte ab dem Mindestbetrag)."""
+    return all(k.pos[s] == 0 and int((k.frei[s[:-4]] + k.gesperrt[s[:-4]]) / STEP_S[s] + 1e-9) * STEP_S[s] * B.kurs[s] < min_notional
+               for s in SYMS)
 
 
 def zeigen(k):
@@ -207,8 +224,13 @@ def zeigen(k):
 
 
 def echte(befunde):
-    """Befunde ohne Staub."""
-    return [b for b in befunde if "STAUB" not in b[0]]
+    """Befunde ohne Staub und ohne «DAUER_» (laut gemeldete Lücke, solange Binance dauerhaft ablehnt — die Nachkontrolle holt
+    den Schutz nach, sobald es wieder geht; danach wird erneut geprüft)."""
+    return [b for b in befunde if "STAUB" not in b[0] and not b[0].startswith("DAUER_")]
+
+
+def _dauer(regeln):
+    return any(r.get("anzahl", 1) >= 50 for r in regeln)
 
 
 def sauber_schliessen(env, datei, versuche=2):
@@ -223,6 +245,20 @@ def sauber_schliessen(env, datei, versuche=2):
             if r.get("alles_zu") is True:
                 break
         return r
+    finally:
+        L.UNKLAR_MAX_ALTER_MS = alt
+
+
+def nachkontrolle(env, datei):
+    """Die Nachkontrolle nach einem Lauf/Not-Aus, «10 Minuten später» (unbekannte Aufträge gelten dann als nie ausgeführt)."""
+    alt = L.UNKLAR_MAX_ALTER_MS
+    L.UNKLAR_MAX_ALTER_MS = -1
+    zeit = [0.0]  # simulierte Uhr: jeder Takt «dauert» NACHKONTROLLE_TAKT_S, nach NACHKONTROLLE_MAX_S ist Schluss
+
+    def schlafen(s):
+        zeit[0] += s
+    try:
+        return L.nachkontrolle(env=env, datei=datei, schlafen=schlafen, uhr=lambda: zeit[0])
     finally:
         L.UNKLAR_MAX_ALTER_MS = alt
 
@@ -246,6 +282,10 @@ ZIELE_LAUF = [
     ("POST", "/sapi/v1/asset/transfer", None, ["vor503", "nach503", "abriss"]),
     ("GET", "/fapi/v1/order", None, ["vor503", "abriss_vor"]),
     ("POST", "/fapi/v1/marginType", None, ["vor503", "429"]),
+    ("POST", "/fapi/v1/order", lambda m, p, q: q.get("reduceOnly") != "true", ["spaet_u"]),   # 9. Prüfung: unbekannt bis zur
+    ("POST", "/fapi/v1/order", lambda m, p, q: q.get("reduceOnly") == "true", ["spaet_u"]),   # verspäteten Ankunft
+    ("POST", "/api/v3/order", lambda m, p, q: q.get("type") == "MARKET", ["spaet_u"]),
+    ("POST", "/api/v3/order/cancelReplace", None, ["vor503", "nach503", "nur_storno", "429"]),
 ]
 ZIELE_NOTAUS = [
     ("POST", "/api/v3/order", lambda m, p, q: q.get("type") == "MARKET", ["vor503", "nach503", "abriss", "429", "teil", "ablehnen"]),
@@ -261,6 +301,9 @@ ZIELE_NOTAUS = [
     ("GET", "/fapi/v2/account", None, ["vor503", "429"]),
     ("GET", "/api/v3/ticker/price", None, ["vor503", "429"]),
     ("POST", "/sapi/v1/asset/transfer", None, ["vor503", "nach503"]),
+    ("POST", "/fapi/v1/order", lambda m, p, q: q.get("reduceOnly") == "true", ["spaet_u"]),
+    ("POST", "/api/v3/order", lambda m, p, q: q.get("type") == "MARKET", ["spaet_u"]),
+    ("POST", "/api/v3/order/cancelReplace", None, ["vor503", "nach503", "nur_storno", "429"]),
 ]
 
 
@@ -274,7 +317,7 @@ def zufall_regeln(rng, n, kurse, ziele=ZIELE_LAUF, haerte=1.0):
             continue
         m, pfad, pred, arten = rng.choice(ziele)
         art = rng.choice(arten)
-        r = dict(methode=m, pfad=pfad, pred=pred, art=art, anzahl=rng.choice([1, 1, 1, 2, 3, 99 if haerte > 1 else 2]))
+        r = dict(methode=m, pfad=pfad, pred=pred, art=art, anzahl=rng.choice([1, 1, 1, 2, 3, 99 if haerte > 1 or rng.random() < 0.3 else 2]))
         if rng.random() < 0.6:
             r["ab_req"] = B.n_req + rng.randint(1, 150)
         if art == "unsichtbar":
@@ -299,9 +342,11 @@ def signal(rng, m, kurs_heute, kurs_gestern):
     return e
 
 
-def _klassieren(befunde, erg, kontext):
+def _klassieren(befunde, erg, kontext, dauer=False):
+    """dauer: Binance lehnte in diesem Schritt dauerhaft ab — eine LAUT gemeldete Lücke ist dann unvermeidbar (DAUER_)."""
     laut = bool(erg.get("warnung"))
-    return [(("LAUT_" if laut else "STILL_") + b[0], kontext, b) for b in befunde]
+    vor = (("DAUER_" if dauer else "") + "LAUT_") if laut else "STILL_"
+    return [(vor + b[0], kontext, b) for b in befunde]
 
 
 # ───────────────────────── Fuzzer: Läufe über viele Tage ─────────────────────────
@@ -317,6 +362,8 @@ def laeufe_runde(seed, tage=30):
     if rng.random() < 0.15:
         k.bnb_gebuehr = True
         k.frei["BNB"] = 0.5
+    if rng.random() < 0.15:  # Konto/Paar ohne STOP_LOSS (Markt-Stop): Pilot 2.0 nimmt STOP_LOSS_LIMIT (kann bei Lücken hängen)
+        B.stop_typen = [x for x in B.stop_typen if x != "STOP_LOSS"]
     d = neu_buch()
     funde = []
     max_auftrag = rng.choice(["100000", "100000", "1000", "300"])
@@ -334,6 +381,7 @@ def laeufe_runde(seed, tage=30):
         gestern = dict(B.kurs)
         B.regeln = zufall_regeln(rng, rng.choice([0, 0, 1, 2, 3, 5]), B.kurs)
         aktiv_regeln = [r["art"] for r in B.regeln]
+        dauer = _dauer(B.regeln)
         stop_mitten = rng.random() < 0.04
         if stop_mitten:
             zaehler = [rng.randint(3, 60)]
@@ -363,8 +411,20 @@ def laeufe_runde(seed, tage=30):
         if stop_mitten and BF.STOP_DATEI.exists():
             BF.STOP_DATEI.unlink()
             stop_aktiv = True
-        pending_abarbeiten()
         kontext["zeilen"] = erg.get("zeilen", [])[-12:]
+        if not fremd and not trocken:  # Stand, wie der Lauf ihn verlässt — verspätete Aufträge noch unterwegs
+            funde += _klassieren(schutz_befunde(k, unklar_je_markt(d)), erg, dict(kontext, wann="nach Lauf (vor Ankunft)", lage=zeigen(k)),
+                                 dauer)
+        pending_abarbeiten()  # verspätete Aufträge kommen an …
+        if not fremd and not trocken:
+            try:  # … und die Nachkontrolle (pilot.py --nachkontrolle nach jedem Lauf) klärt sie und setzt die Stops
+                rn = nachkontrolle(env_heute(), d)
+                if any("nicht alles geklärt" in z for z in rn.get("zeilen", [])):  # ohne Störung muss sie fertig werden
+                    funde.append(("NACHKONTROLLE_OFFEN", dict(kontext, wann="Nachkontrolle", zeilen=rn["zeilen"][-6:]), zeigen(k)))
+            except Exception:  # noqa: BLE001
+                funde.append(("AUSNAHME", dict(kontext, wann="Nachkontrolle"), traceback.format_exc()[-800:]))
+                rn = {"warnung": True}
+            erg = dict(erg, warnung=erg.get("warnung") or rn.get("warnung"))
         if trocken and (B.log[log0:] or (d.read_text() if d.exists() else None) != vor_buch):
             funde.append(("TROCKEN", kontext, B.log[log0:][:3]))
         fremde_schreib = [x for x in B.log[log0:] if x[5] == 999]
@@ -388,6 +448,7 @@ def laeufe_runde(seed, tage=30):
         if stop_aktiv or rng.random() < 0.12:  # Not-Aus (zufällig oder weil er mitten im Lauf kam), mit harten Störungen
             stop_aktiv = False
             B.regeln = zufall_regeln(rng, rng.choice([0, 1, 2, 3, 4]), B.kurs, haerte=2.0)
+            dauer_n = _dauer(B.regeln)
             kx = dict(kontext, wann="Not-Aus", regeln=[r["art"] for r in B.regeln])
             try:
                 r = lauf([], env_heute(), d, notaus=True)
@@ -395,7 +456,16 @@ def laeufe_runde(seed, tage=30):
                 funde.append(("AUSNAHME", kx, traceback.format_exc()[-800:]))
                 r = {"alles_zu": False, "warnung": True, "zeilen": []}
             B.regeln = []
+            if r.get("alles_zu") is not True:  # Stand direkt nach dem Not-Aus (verspätete Aufträge noch unterwegs)
+                funde += _klassieren(schutz_befunde(k, unklar_je_markt(d)), r, dict(kx, wann="Not-Aus (vor Ankunft)", lage=zeigen(k)),
+                                     dauer_n)
             pending_abarbeiten()
+            if r.get("alles_zu") is not True:  # stop.bat/Tagesaufgabe: Nachkontrolle im Not-Aus-Modus schliesst Verspätetes
+                try:
+                    rn = nachkontrolle(dict(env_heute(), KI_BOT_STOP="1"), d)
+                    r = rn if rn.get("alles_zu") is not None else r
+                except Exception:  # noqa: BLE001
+                    funde.append(("AUSNAHME", dict(kx, wann="Nachkontrolle Not-Aus"), traceback.format_exc()[-800:]))
             kx["zeilen"], kx["lage"] = r.get("zeilen", [])[-14:], zeigen(k)
             if r.get("alles_zu") is True and not flach(k):
                 funde.append(("FALSCH_ALLES_ZU", kx, zeigen(k)))
@@ -453,6 +523,7 @@ def notaus_runde(seed):
             r["listen"] = rng.choice([1, 2])
         regeln.append(r)
     B.regeln = regeln
+    dauer = _dauer(regeln)
     vorher = zeigen(k)
     try:
         r = lauf([], env, d, notaus=True)
@@ -460,10 +531,17 @@ def notaus_runde(seed):
         B.regeln = []
         return [("AUSNAHME", {"seed": seed}, traceback.format_exc()[-600:])]
     B.regeln = []
+    funde = []
+    if r["alles_zu"] is not True:  # Stand direkt nach dem Not-Aus (verspätete Aufträge noch unterwegs)
+        funde += [(("DAUER_" if dauer and r.get("warnung") else "") + b[0],
+                   {"seed": seed, "wann": "vor Ankunft", "lage": zeigen(k), "zeilen": r["zeilen"][-10:]}, b)
+                  for b in schutz_befunde(k, unklar_je_markt(d))]
     pending_abarbeiten()
+    if r["alles_zu"] is not True:  # Nachkontrolle im Not-Aus-Modus (stop.bat, Tagesaufgabe) schliesst Verspätetes
+        rn = nachkontrolle(dict(env, KI_BOT_STOP="1"), d)
+        r = rn if rn.get("alles_zu") is not None else r
     kx = {"seed": seed, "echt": echt, "regeln": [x["art"] for x in regeln], "vorher": vorher, "nachher": zeigen(k),
           "zeilen": r["zeilen"][-10:]}
-    funde = []
     if r["alles_zu"] is True and not flach(k):
         funde.append(("FALSCH_ALLES_ZU", kx, None))
     if r["alles_zu"] is not True:
@@ -486,8 +564,8 @@ def main():
     print(json.dumps(dict(zaehler), ensure_ascii=False, indent=1))
     out = Path.cwd() / f"pruef_{art}_{von}_{bis}.json"
     out.write_text(json.dumps(alle, ensure_ascii=False, indent=1, default=str))
-    fehler = [x for x in alle if "STAUB" not in x[0]]
-    print(f"{len(fehler)} Befunde (ohne Staub) → {out}")
+    fehler = echte(alle)
+    print(f"{len(fehler)} Befunde (ohne Staub und laut gemeldete Dauerstörungen) → {out}")
     return 1 if fehler else 0
 
 

@@ -64,6 +64,23 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-14 nachmittags (🔒 Pilot 2.0: 9. Prüfung — 2 Blocker + 5 wichtig + 3 klein behoben, bleibt GESPERRT):** Prüfer-Agent (enger
+Auftrag, Belege `scratchpad/pruefung9/`) fand: **B1** unklare Aufträge nur im Perp-`schritt` gebucht (Not-Aus-Schliessen, `_perp_raus`,
+Spot-Käufe/-Verkäufe nicht → verspätete Ankunft = Coins ohne Short UND ohne Stop), **B2** «erst löschen, dann setzen» (Phase «nur
+Stornieren» → Long ohne Stop). Behoben:
+- Unklares ÜBERALL ins Buch (Spot+Perp, `unklar_eintrag`, Spot-Klärung per `GET /api/v3/order`), beidseitig; **Nachkontrolle**
+  (`pilot.py --nachkontrolle`, in `krypto-auto.bat` nach dem Lauf + `stop.bat`): alle 30 s bis 11 Min., setzt sofort Stops / schliesst im
+  Not-Aus-Modus nochmals; holt auch Märkte nach, die im Lauf ohne Stop blieben (`buch["schutz_offen"]`).
+- Perp-Stop: **zuerst neu setzen, dann alten löschen** (geht das Löschen nicht → beidseitig); Spot-Stop + Not-Aus-Verkauf per
+  **cancelReplace** (`Spot.ersetzen`, STOP_ON_FAILURE: lehnt Binance den neuen Auftrag ab, bleibt der Stop; 404 → alter Weg).
+- Kennung des Perp-Stops im Buch (`perp_cid`) → Storno über `clientAlgoId`; alter Stop löst beim Ersetzen aus + Konto unlesbar →
+  `_spot_vorsorge`; Not-Aus prüft nach dem Schutz nochmals; hängender STOP_LOSS_LIMIT zählt nicht als Schutz; Coin-Rest unter einem
+  Futures-Schritt bekommt (netto short) einen eigenen Spot-Stop; Staub im Not-Aus gerundet.
+- Prüf-Börse: `spaet_u` (unbekannt bis zur Ankunft, Spot+Perp), `cancelReplace` (Doku-Semantik), Storno per Kennung, `reduce_algo_streng`;
+  Fuzzer: späte Ankunft + Nachkontrolle, Dauerstörungen auch in Läufen, Konten ohne STOP_LOSS, Staub nur < 10 USDT, `DAUER_`-Klasse.
+- Tests: test_pilot2_live 154, test_pilot2_streng 66, Mutationen 33/33. **Testnetz-Prüfpunkte** (README): reduceOnly-Stop > Position, cancelReplace-Verhalten.
+- **Nächster Schritt:** 10. unabhängige Prüfung (eng, Fuzzer im Repo); erst bei 0 Blockern FREIGEGEBEN=True (eigener PR).
+
 **📌 2026-10-14 (🔒 Pilot 2.0: Funde der 8. Prüfung behoben — bleibt GESPERRT):** Der Prüfer-Agent starb am Ausgabelimit, hinterliess
 aber Belege p1–p11 + zwei Fuzzer gegen eine noch strengere Börse. Alles behoben, Börse + Fuzzer + Belege jetzt im Repo:
 - **Unklarer Perp-Auftrag, nicht klärbar** → Markt **beidseitig** gesichert (Spot-Stop über ALLE Coins + reduceOnly-Perp-Stop über den
