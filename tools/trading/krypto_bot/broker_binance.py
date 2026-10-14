@@ -105,7 +105,9 @@ class Binance:
                 d = json.loads(ex.read().decode() or "{}")
             except Exception:  # noqa: BLE001
                 d = {}
-            raise BinanceFehler(pfad, ex.code, f"{pfad}: Binance-Code {d.get('code')} {d.get('msg', '')}".strip(), ex.headers, None) from None
+            fehler = BinanceFehler(pfad, ex.code, f"{pfad}: Binance-Code {d.get('code')} {d.get('msg', '')}".strip(), ex.headers, None)
+            fehler.daten = d if isinstance(d, dict) else {}  # ganze Antwort (z. B. cancelReplace: welche Hälfte gelang)
+            raise fehler from None
 
     def konto(self):
         return self._req("GET", "/api/v3/account", signiert=True)

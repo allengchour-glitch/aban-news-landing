@@ -229,6 +229,7 @@ def main():
     ap.add_argument("--offline", action="store_true")
     ap.add_argument("--bericht", action="store_true")
     ap.add_argument("--backtest", action="store_true")
+    ap.add_argument("--nachkontrolle", action="store_true", help="Pilot 2.0: unklare Aufträge klären, danach Stops setzen")
     a = ap.parse_args()
     if a.backtest:
         backtest()
@@ -236,6 +237,8 @@ def main():
     if a.bericht:
         print(wochenbericht(lies(), date.today().isoformat(), erzwingen=True) or "Noch kein Kontostand im Logbuch — erst ein --lauf.")
         return 0
+    if a.nachkontrolle:
+        return nachkontrolle()
     if not (a.status or a.lauf):
         ap.print_help()
         return 0
@@ -396,6 +399,28 @@ def lauf_merken(ok, hinweise, trocken=False, logbuch=None):
     lb["letzter_lauf"] = {"zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), "ok": bool(ok),
                           "hinweise": [h for h in hinweise if h][:10]}
     schreiben(lb, datei)
+
+
+def nachkontrolle():
+    """Pilot 2.0 nach dem Lauf: blieb ein Auftrag unklar, bis zu ~11 Minuten nachfragen und danach die Stops nach dem
+    Kontostand setzen (ein verspätet angekommener Kauf liegt so nie bis morgen ohne Stop). Ohne Unklares sofort fertig."""
+    import pilot2_live as P2L
+    import sperre
+    try:
+        with sperre.lauf_sperre(warten=120):
+            r = P2L.nachkontrolle()
+    except sperre.Besetzt as ex:
+        print(f"{ex} Nachkontrolle übersprungen — der andere Lauf prüft selbst.")
+        return 0
+    except Exception as ex:  # noqa: BLE001
+        r = {"zeilen": [f"⚠️ Nachkontrolle Pilot 2.0 abgebrochen ({type(ex).__name__}: {str(ex)[:150]}) — bitte im Binance-Konto prüfen!"],
+             "warnung": True, "auftraege": []}
+    if r["zeilen"]:
+        text_n = "\n".join(r["zeilen"])
+        print(text_n)
+        import signale as SG
+        SG.push(text_n + "\nKeine Anlageberatung.")
+    return 3 if r["warnung"] else 0
 
 
 def handeln2(ents, lage, trocken, alt_offen=(), alt_fehler=None):

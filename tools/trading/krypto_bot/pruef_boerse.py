@@ -9,8 +9,9 @@ Stammt aus der 8. unabhängigen Prüfung (Oktober 2026) und ist bewusst STRENGER
   * Futures-Auftrag per origClientOrderId abfragbar und stornierbar (auch «spaet» = NEW, später ausgeführt)
   * Störungsregeln je Anfrage: vor503 (nicht ausgeführt), nach503 (ausgeführt, Antwort weg), abriss / abriss_vor (Verbindung
     reisst ab), 429, 418, kurs (Kurssprung vor der Anfrage), unsichtbar (ausgeführt, Antwort weg UND in den Listen erst nach
-    n Listen-Abfragen sichtbar), spaet (Futures-Marktauftrag erst nach n weiteren Anfragen ausgeführt), teil (Teilausführung),
-    ablehnen (−1013 PERCENT_PRICE)
+    n Listen-Abfragen sichtbar), spaet (Futures-Marktauftrag als NEW sichtbar, erst nach n weiteren Anfragen ausgeführt),
+    spaet_u (Futures- oder Spot-Marktauftrag bis zur verspäteten Ankunft UNBEKANNT: Abfrage −2013, Storno −2011 — wie Binance
+    bei unklarem Status; aus der 9. Prüfung), teil (Teilausführung), ablehnen (−1013 PERCENT_PRICE)
   * STOP_LOSS (Markt) und STOP_LOSS_LIMIT (bleibt bei Kurslücke unausgeführt liegen)
   * Futures: CROSS-Marge, Einstand, offener Gewinn, Liquidation, Funding (ADL nicht nachgebaut)
   * Protokoll aller schreibenden Anfragen je Konto (fremdes Konto angefasst? falscher Transfer-Typ?)
@@ -269,23 +270,7 @@ class Handler(BaseHTTPRequestHandler):
         if B.vor_jeder_anfrage:
             B.vor_jeder_anfrage(m, pfad, p)
         # Stoerungsregeln
-        art = None
-        for r in B.regeln:
-            if r.get("anzahl", 1) <= 0:
-                continue
-            if r.get("methode") and r["methode"] != m:
-                continue
-            if r.get("pfad") and r["pfad"] != pfad:
-                continue
-            if r.get("pred") and not r["pred"](m, pfad, p):
-                continue
-            if r.get("ab_req") and B.n_req < r["ab_req"]:
-                continue
-            if r.get("zufall") is not None and r["zufall"]() >= r.get("p", 1.0):
-                continue
-            r["anzahl"] = r.get("anzahl", 1) - 1
-            art = r
-            break
+        art = self._regel(m, pfad, p)
         if art and art["art"] == "kurs":
             if getattr(B, "voll", None) is not None:
                 B.voll.append((B.n_req, "KURS", art["sym"], art["preis"], None, "kurs", "", {}))
@@ -314,6 +299,26 @@ class Handler(BaseHTTPRequestHandler):
         if art and art["art"] == "abriss" and code == 200:
             return self._abriss()
         return self._a(antwort, code)
+
+    @staticmethod
+    def _regel(m, pfad, p, ohne_kurs=False):
+        """Erste passende Störungsregel (wird verbraucht) oder None."""
+        for r in B.regeln:
+            if r.get("anzahl", 1) <= 0 or (ohne_kurs and r.get("art") == "kurs"):
+                continue
+            if r.get("methode") and r["methode"] != m:
+                continue
+            if r.get("pfad") and r["pfad"] != pfad:
+                continue
+            if r.get("pred") and not r["pred"](m, pfad, p):
+                continue
+            if r.get("ab_req") and B.n_req < r["ab_req"]:
+                continue
+            if r.get("zufall") is not None and r["zufall"]() >= r.get("p", 1.0):
+                continue
+            r["anzahl"] = r.get("anzahl", 1) - 1
+            return r
+        return None
 
     # ------------------------------------------------------------------
     def _verarbeiten(self, m, pfad, p, k, art):
@@ -360,6 +365,8 @@ class Handler(BaseHTTPRequestHandler):
             return {"orderId": o["id"], "status": "CANCELED"}, 200
         if pfad == "/api/v3/order" and m == "POST":
             return self._spot_auftrag(p, k, art)
+        if pfad == "/api/v3/order/cancelReplace" and m == "POST":
+            return self._ersetzen(p, k, art)
         if pfad == "/sapi/v1/asset/transfer":
             typ, b = p.get("type"), float(p["amount"])
             if typ not in ("MAIN_UMFUTURE", "UMFUTURE_MAIN"):
@@ -431,7 +438,10 @@ class Handler(BaseHTTPRequestHandler):
         if pfad == "/fapi/v1/algoOrder" and m == "POST":
             return self._algo_neu(p, k, art)
         if pfad == "/fapi/v1/algoOrder" and m == "DELETE":
-            aid = int(p["algoId"])
+            if "algoId" in p:
+                aid = int(p["algoId"])
+            else:  # Storno über die eigene Kennung (clientAlgoId)
+                aid = next((i for i, a in k.algos.items() if a.get("clientAlgoId") == p.get("clientAlgoId")), None)
             if aid not in k.algos:
                 return {"code": -2011, "msg": "Unknown order sent."}, 400
             del k.algos[aid]
@@ -473,6 +483,11 @@ class Handler(BaseHTTPRequestHandler):
             return {"code": -2010, "msg": "Duplicate order sent."}, 400
         q = float(p["quantity"])
         preis = B.kurs[sym]
+        if typ == "MARKET" and art and art["art"] == "spaet_u":
+            # Antwort 503, Auftrag bis zur verspäteten Ankunft unbekannt (Abfrage −2013), dann zum dann gültigen Kurs ausgeführt
+            p2 = dict(p)
+            B.pending.append((B.n_req + art.get("nach", 10 ** 12), lambda: self._spot_auftrag(p2, k, None)))
+            return {"code": -1001, "msg": "Internal error; unable to process your request. Please try again."}, 503
         if typ == "MARKET":
             if q * preis < SPOT_MIN_NOTIONAL:
                 return {"code": -1013, "msg": "Filter failure: NOTIONAL"}, 400
@@ -562,6 +577,60 @@ class Handler(BaseHTTPRequestHandler):
             return {"orderId": oid}, 200
         return {"code": -1116, "msg": "Invalid orderType."}, 400
 
+    # ---- Spot: Storno + neuer Auftrag in einer Anfrage (cancelReplace, wie Binance dokumentiert)
+    def _ersetzen(self, p, k, art):
+        """Filter und Auftragszahl des neuen Auftrags werden VOR dem Storno geprüft (Binance-Doku) — lehnt er dort ab, bleibt
+        der alte. Danach Storno, dann der neue Auftrag; scheitert erst der (z. B. «würde sofort auslösen», Guthaben), ist der
+        alte weg: «teilweise gescheitert» (−2021, HTTP 409). Störungsregeln auf POST /api/v3/order gelten für den neuen
+        Auftrag: 503/429 (Phase «nur Stornieren») → die ganze Anfrage scheitert, «ablehnen» (Filter) → nichts passiert.
+        Eigene Störung auf diesem Pfad: «nur_storno» = Storno gelingt, der neue Auftrag wird abgelehnt."""
+        sym = p["symbol"]
+        if p.get("cancelReplaceMode") not in ("STOP_ON_FAILURE", "ALLOW_FAILURE"):
+            return {"code": -1102, "msg": "Mandatory parameter 'cancelReplaceMode' was not sent."}, 400
+        alt = k.orders.get(int(p["cancelOrderId"])) if "cancelOrderId" in p else k.cids.get(p.get("cancelOrigClientOrderId"))
+        if not alt or alt["status"] not in ("NEW", "PARTIALLY_FILLED"):
+            return {"code": -2022, "msg": "Order cancel-replace failed.",
+                    "data": {"cancelResult": "FAILURE", "newOrderResult": "NOT_ATTEMPTED",
+                             "cancelResponse": {"code": -2011, "msg": "Unknown order sent."}, "newOrderResponse": None}}, 400
+        neu = {kk: v for kk, v in p.items() if kk not in ("cancelReplaceMode", "cancelOrderId", "cancelOrigClientOrderId",
+                                                         "cancelNewClientOrderId", "signature", "timestamp", "recvWindow")}
+        typ = neu.get("type")
+        if typ not in B.stop_typen or "quantity" not in neu:
+            return {"code": -1116, "msg": "Invalid orderType."}, 400
+        if not vielfaches(neu["quantity"], SPOT_STEP[sym]) or float(neu["quantity"]) < float(SPOT_STEP[sym]):
+            return {"code": -1013, "msg": "Filter failure: LOT_SIZE"}, 400
+        q = float(neu["quantity"])
+        bezug = float(neu["stopPrice"]) if typ.startswith("STOP") else B.kurs[sym]
+        if typ.startswith("STOP") and not vielfaches(neu["stopPrice"], SPOT_TICK[sym]):
+            return {"code": -1013, "msg": "Filter failure: PRICE_FILTER"}, 400
+        if q * bezug < SPOT_MIN_NOTIONAL:
+            return {"code": -1013, "msg": "Filter failure: NOTIONAL"}, 400
+        regel_neu = self._regel("POST", "/api/v3/order", neu, ohne_kurs=True)
+        if regel_neu and regel_neu["art"] in ("vor503", "429", "418", "abriss_vor"):
+            return {"code": -1001, "msg": "Internal error; unable to process your request. Please try again."}, 503
+        if regel_neu and regel_neu["art"] == "ablehnen" and typ == "MARKET":
+            return {"code": -1013, "msg": "Filter failure: PERCENT_PRICE_BY_SIDE"}, 400
+        coin = sym[:-4]
+        rest = alt["qty"] - alt["ausgefuehrt"]
+        if alt["side"] == "SELL":
+            k.gesperrt[coin] -= rest
+            k.frei[coin] += rest
+        else:
+            k.gesperrt["USDT"] -= rest * alt.get("preis", 0.0)
+            k.frei["USDT"] += rest * alt.get("preis", 0.0)
+        alt["status"] = "CANCELED"
+        storno = {"orderId": alt["id"], "status": "CANCELED"}
+        if art and art["art"] == "nur_storno":
+            antwort, code = {"code": -1013, "msg": "Fake: neuer Auftrag abgelehnt (nur Stornieren möglich)"}, 400
+        else:
+            art_neu = regel_neu if regel_neu and regel_neu["art"] in ("teil", "unsichtbar") else None
+            antwort, code = self._spot_auftrag(neu, k, art_neu)
+        if code != 200:
+            return {"code": -2021, "msg": "Order cancel-replace partially failed.",
+                    "data": {"cancelResult": "SUCCESS", "newOrderResult": "FAILURE", "cancelResponse": storno,
+                             "newOrderResponse": antwort}}, 409
+        return {"cancelResult": "SUCCESS", "newOrderResult": "SUCCESS", "cancelResponse": storno, "newOrderResponse": antwort}, 200
+
     # ---- Futures-Auftrag
     def _fut_auftrag(self, p, k, art):
         sym = p["symbol"]
@@ -605,6 +674,23 @@ class Handler(BaseHTTPRequestHandler):
         if fehler:
             return fehler, 400
         oid = B.neue_id()
+        if art and art["art"] == "spaet_u":
+            # wie Binance bei unklarem Status: Antwort 503, der Auftrag ist bis zu seiner (verspäteten) Ankunft UNBEKANNT
+            # (Abfrage −2013, Storno −2011) und wird erst dann ausgeführt — nach «nach» Anfragen oder bei pending_abarbeiten()
+            rec = {"orderId": oid, "clientOrderId": cid, "symbol": sym, "status": "NEW", "executedQty": "0", "side": p["side"],
+                   "origQty": p["quantity"], "reduceOnly": reduce}
+
+            def ankunft_u():
+                k.fcids[cid] = rec
+                f2 = pruefen()
+                if f2:
+                    rec["status"] = "EXPIRED"
+                    return
+                qq = ausfuehren()
+                rec.update(status="FILLED", executedQty=repr(abs(qq)))
+                B.verletzungen.append(("SPAET-AUSGEFUEHRT", sym, qq))
+            B.pending.append((B.n_req + art.get("nach", 10 ** 12), ankunft_u))
+            return {"code": -1001, "msg": "Internal error; unable to process your request. Please try again."}, 503
         if art and art["art"] == "spaet":
             rec = {"orderId": oid, "clientOrderId": cid, "symbol": sym, "status": "NEW", "executedQty": "0", "side": p["side"],
                    "origQty": p["quantity"], "reduceOnly": reduce}

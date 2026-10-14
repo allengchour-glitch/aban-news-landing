@@ -15,6 +15,10 @@ if exist "data\krypto-pilot2-bestand.json" set PILOTDA=1
 if defined PILOTDA (
   echo Krypto-Pilot schliesst jetzt seine Positionen ^(Futures und bei Pilot 2.0 auch Spot^) ...
   %PY% tools\trading\krypto_bot\pilot.py --lauf
+  if exist "data\krypto-pilot2-bestand.json" (
+    echo Pilot 2.0: blieb ein Auftrag unklar, wartet er bis zu 11 Minuten auf Binance und schliesst danach nochmals ...
+    %PY% tools\trading\krypto_bot\pilot.py --nachkontrolle
+  )
 )
 echo.
 echo Not-Aus aktiv. Pruefe das Ergebnis oben ^(bei einem Fehler: im Binance-Konto nachsehen^).
