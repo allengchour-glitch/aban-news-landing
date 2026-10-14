@@ -9331,3 +9331,48 @@ blumen-strap-bandeau-kleid-608200	2607090110041608800	16	7.43	ok	landeseite
 schwangerschafts-kleid-mit-streifen-623600	2607081528381624200	16	9.47	ok	landeseite
 uav-positionierung-8k-luftaufnahmen-601800	2503060748431602000	0	-	KEINE CH-Option → DRAFT	landeseite
 langlebiger-quadrokopter-mit-optischem-fluss-621900	2502220636421622100	0	-	KEINE CH-Option → DRAFT	landeseite
+messer-scharfer-fur-haushalt-617500	2511220910491617700	16	6.48	ok	klinge
+elektrischer-schleifer-fur-bohrer-und-messer-600000	2412300744551600400	7	23.88	ok	klinge
+srdpn1616h10-pei-10-klingen-rpmt10t3-schwarz-614800	2412291122021615000	16	8.79	ok	klinge
+schleifstein-fur-die-kuche-724736	1771836024688222208	16	5.69	ok	klinge
+hobelmesser-fur-elektrohobel-hss-374720	1397141019094552576	1	6.02	ok	klinge
+roland-plotter-klingen-15er-set-314688	1394489322496987136	16	5.41	ok	klinge
+winkel-scharfhilfe-fur-hobel-stecheisen-185344	1380512840242302976	16	23.15	ok	klinge
+rubin-doppelseitiger-ol-wetzstein-066304	1367460849962323968	16	5.81	ok	klinge
+handhobel-aus-ebenholz-mit-weissstahlklinge-588160	1357284307483365376	16	5.72	ok	klinge
+roland-schneidklinge-30-60-inkl-halter-048128	1378906008713302016	1	5.94	ok	klinge
+haarmesser-6-17-5-cm-12-zahn-schere-785152	1375391057025568768	1	5.69	ok	klinge
+hexagon-scharfer-universell-4bef5f	317AD644-A95E-4FC7-80DA-32BCB7996850	16	5.69	ok	klinge
+aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben	-	-	-	unklar keine CJ-SKU	landeseite
+aroma-diffuser-holzoptik-hohl-design-ultraschall-luftbefeuchter-mit-led-licht	-	-	-	unklar keine CJ-SKU	landeseite
+mittelalterlicher-doppel-schwertgurt-aus-pu-le-394304	1427840914134536192	16	5.80	ok	landeseite
+streifen-bluse-marbella-color-block-kurzarm	-	-	-	unklar keine CJ-SKU	landeseite
+spitzen-bluse-dentelle-v-ausschnitt-loose-fit	-	-	-	unklar keine CJ-SKU	landeseite
+strick-bluse-maglia-hollow-out-loose-langarm	-	-	-	unklar keine CJ-SKU	landeseite
+chiffon-set-solare-bluse-weite-hose	-	-	-	unklar keine CJ-SKU	landeseite
+flat-cap-brigade-camouflage-baumwolle	-	-	-	unklar keine CJ-SKU	landeseite
+vintage-baseball-cap-liberty-washed-schwarz	-	-	-	unklar keine CJ-SKU	landeseite
+baseball-cap-mama-mintgrun	-	-	-	unklar keine CJ-SKU	landeseite
+vintage-cap-tuesday-washed-grau	-	-	-	unklar keine CJ-SKU	landeseite
+5-panel-cap-sprint-nylon-schwarz	-	-	-	unklar keine CJ-SKU	landeseite
+baseball-cap-l-a-hellblau	-	-	-	unklar keine CJ-SKU	landeseite
+baseball-cap-classic-rot-baumwolle	-	-	-	unklar keine CJ-SKU	landeseite
+bucket-hat-banana-schwarz-print	-	-	-	unklar keine CJ-SKU	landeseite
+cord-bucket-hat-manchester-navy	-	-	-	unklar keine CJ-SKU	landeseite
+denim-cap-bleu-washed-hellblau	-	-	-	unklar keine CJ-SKU	landeseite
+baseball-cap-wellness-rot-stickerei	-	-	-	unklar keine CJ-SKU	landeseite
+baseball-cap-paris-schwarz-stickerei	-	-	-	unklar keine CJ-SKU	landeseite
+edelstahl-armband-amore-herz-geburtsstein-gold	-	-	-	unklar keine CJ-SKU	landeseite
+edelstahl-armband-coeur-herz-gold	-	-	-	unklar keine CJ-SKU	landeseite
+edelstahl-armband-tresor-doppellagig-mit-charms-silber	-	-	-	unklar keine CJ-SKU	landeseite
+edelstahl-halskette-goutte-tropfen-anhanger-silber	-	-	-	unklar keine CJ-SKU	landeseite
+edelstahl-armreif-couleur-verstellbar-gold	-	-	-	unklar keine CJ-SKU	landeseite
+titan-edelstahl-armband-noeud-knoten-anlauffrei-silber	-	-	-	unklar keine CJ-SKU	landeseite
+schmetterling-ohrhanger-papillon-kristall-grun	-	-	-	unklar keine CJ-SKU	landeseite
+ohrstecker-minou-katzchen-925-silber	-	-	-	unklar keine CJ-SKU	landeseite
+ohrhanger-fleur-herz-mit-trockenblumen-gold	-	-	-	unklar keine CJ-SKU	landeseite
+creolen-ohrhanger-cascade-mit-tropfen-gold	-	-	-	unklar keine CJ-SKU	landeseite
+statement-ohrstecker-etincelle-blute-kristall	-	-	-	unklar keine CJ-SKU	landeseite
+halskette-rosee-kristall-tropfen-silber	-	-	-	unklar keine CJ-SKU	landeseite
+oversize-sonnenbrille-riviera-getont-uv400	-	-	-	unklar keine CJ-SKU	landeseite
+ring-astra-stern-mond-drehbar-verstellbar	-	-	-	unklar keine CJ-SKU	landeseite

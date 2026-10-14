@@ -1,4 +1,4 @@
-# Anlass-Kollektionen: rechtzeitige Ware oben — Stand 2026-10-14T09:36Z
+# Anlass-Kollektionen: rechtzeitige Ware oben — Stand 2026-10-14T17:18Z
 
 Regel: `automation/anlass_lieferzeit_wache.py`, Tabelle `data/anlass_kollektionen.json` (Schweizer Lager 4 WT, Direktversand 12 WT kalibriert, Kassen-Zusage bis 21 WT). Schnell = Profil «CH-Lager». Geändert wird nur die Reihenfolge, dazu das Metafeld für den Hinweis.
 
