@@ -246,3 +246,6 @@ pid:15450835452289
 slug:multifunktionaler-kurbel-schaler-mit-saugfuss
 slug:paradefrack-fur-herren-fgss5145
 name:paradefrackfürherren
+name:ledwasserwellenprojektionsleuchte
+pid:15450836566401
+slug:led-wasserwellen-projektionsleuchte
