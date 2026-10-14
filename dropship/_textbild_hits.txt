@@ -18346,3 +18346,6 @@ gid://shopify/Product/16638236656007	38->0	Bunt gestrickter Wollschal – 28 × 
 gid://shopify/Product/16638237180295	34->0	Weicher Strickschal – warm und dick
 gid://shopify/Product/16638238065031	15->0	Triangular Schals mit Strassstein-Jacquard-Muster
 gid://shopify/Product/16638241833351	17->0	Strickschal mit Streifen
+gid://shopify/Product/16638272045447	47->0	Romantischer Schal in hellen Weisstönen
+gid://shopify/Product/16638275256711	16->0	Gestreifter Wollschal – schwarz-weiss
+gid://shopify/Product/16638315528583	18->0	Leder Sneaker Herren atmungsaktiv
