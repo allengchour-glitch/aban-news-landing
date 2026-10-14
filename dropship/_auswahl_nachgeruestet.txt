@@ -2366,3 +2366,5 @@
 15512311366017	Grösse:6:6	2026-10-14	hunde-und-katzen-geschirr-im-prinzessinnen-sti-605100
 15512307073409	Farbe:2:2	2026-10-14	rider-liefertasche-mit-isolierung-607300
 15512303075713	Farbe:3+Grösse:3:9	2026-10-14	hai-pluschkissen-81ce3d
+15512282005889	Modell:4+Grösse:2:4	2026-10-14	marokkanisches-kissen-mit-geometrischem-muster-6de42e
+15512273191297	Farbe:2+Grösse:2:4	2026-10-14	business-rucksack-aus-oxford-stoff-607500
