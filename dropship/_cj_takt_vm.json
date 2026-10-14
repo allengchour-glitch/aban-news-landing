@@ -1,17 +1,19 @@
 {
  "host": "vm",
- "stunde": "2026-10-14T14:00Z",
- "stand": "2026-10-14T14:07:36Z",
+ "stunde": "2026-10-14T15:00Z",
+ "stand": "2026-10-14T15:10:07Z",
  "fenster_min": 60,
- "summe": 709,
+ "summe": 650,
  "skripte": {
-  "cj_versand_ch_sichtbar.py": 506,
-  "cj_fulfill_engine.py": 139,
+  "cj_versand_ch_sichtbar.py": 285,
+  "cj_fulfill_engine.py": 144,
+  "schusswaffen_en_namen.py": 75,
+  "auswahl_nachruesten.py": 66,
+  "cj_category_fill.mjs": 44,
   "cj_order_engine.py": 20,
-  "cj_category_fill.mjs": 20,
-  "versand_stillstand.py": 13,
-  "cj_zahlung_offen.py": 8,
+  "versand_stillstand.py": 7,
+  "cj_zahlung_offen.py": 6,
   "cj_perpetual.mjs": 2,
-  "cj_order_watch.py": 1
+  "besuchte_seiten_lieferbar.py": 1
  }
 }
