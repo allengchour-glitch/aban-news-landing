@@ -4519,3 +4519,11 @@ rote-obstschale-636200	gesetzt-2
 keramik-halter-637600	gesetzt-1
 tiefes-salatschalen-set-603300	gesetzt-2
 keramiktopf-604600	gesetzt-5
+elektrischer-wasserkocher-611400	gesetzt-3
+chinesischer-teller-613600	gesetzt-2
+keramik-teller-633600	gesetzt-3
+keramik-schmortopf-612000	gesetzt-4
+keramik-schale-639400	gesetzt-1
+kleine-porzellan-schale-601900	gesetzt-4
+keramik-essstabchen-halter-600000	gesetzt-1
+schneeflocken-teller-600300	gesetzt-2
