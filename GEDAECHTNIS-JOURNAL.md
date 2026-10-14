@@ -52,6 +52,21 @@
 
 
 
+## 🎯 «Inappropriate image» ist Demand-Gen, kein Gratis-Eintrag-Blocker · productUpdate(tags) ersetzt ALLE Tags (2026-10-14, ~09:45–09:55 UTC)
+
+Die Ampel zählte 437 Free-Listings-Blocker, davon 270 «Inappropriate image». Alle 270 tragen Ziel «[]», echte Blocker nennen
+[Free_listings,…]. Googles Demand-Gen-Bildregeln (merchants/answer/13389785) verbieten genau die gefundenen Motive: Waffen-
+Anmutung 48, Totenkopf/Skelett 41, körpernah 40, Rauch/Flammen 36, Haut/Medizin 14. Dazu der Satz «may continue to run on
+Google's other properties». Der Bildtausch hat seit 30.09. dafür 538 Hauptbilder umgestellt. Seine «76–90 % frei» massen Googles
+Demand-Gen-Urteil, nicht die Gratis-Einträge. **Lehre:** Erst klären, WELCHE Werbeform eine Meldung betrifft (Ziel-Liste lesen),
+bevor man den Shop dafür umbaut. Die «[]»-Spalte stand seit 08.10. als «unbelegt» im Bericht, und trotzdem lief der Tausch weiter.
+Jetzt eigener Topf «nur Demand Gen», Blocker 437 → 167, kein Tausch mehr (Aufseher). Bestätigung = Status je Ziel im Merchant
+Center (Betreiber). Zweite Lehre: Google nimmt je Variante das VARIANTENBILD. Ein Tausch von media[0] wirkt bei Produkten mit
+Variantenbildern nicht (65 % vs. 63–66 % unberührt), deshalb wurde die Lesebrille trotz bereinigtem Hauptbild weiter gemeldet.
+**Falle:** `productUpdate(product:{tags:[…]})` ERSETZT die Tag-Liste. Beim Draften der Tätowier-Nadelkartusche («Tattoo-Stift»,
+Typ Büro) gingen so alle Tags verloren. Wiederhergestellt aus dem identischen Satz der Geschwister-Importe (09:09–09:16).
+Immer `tagsAdd`/`tagsRemove`.
+
 ## 🎃 Halloween-Seite zeigte Blut statt Kostüme · Importer-Module laufen beim Import (2026-10-14, ~09:20–09:45 UTC, «fix weiter und verbessere»)
 
 `/collections/halloween` hatte in den Top 24 **kein einziges ganzes Kostüm**. Oben standen abgeschnittene Hand, Horrorpuppe und
@@ -20454,3 +20469,5 @@ Verschoben am 04.10.2026:
 - 2026-10-13 · 🧾 **Kassen-Prüfung (30 Agenten): «Hälfte bricht ab» war Rohliste — 12/14 Abbrüche eigene Tests/Bots, seit 05.10. kauften 4/4 → Engpass Verkehr. Echt: 11 Texte «gratis ab 45/65» → `versand_band_wache.py` Regel 2 (Aufseher täglich), CH-Lager zeigt in der Kasse Asien-Fenster (Ampel, Betreiber), WELCOME10 +2.01 bei 45–49.99 (Betreiber). Vor jedem Auftrag BEREINIGT messen (`checkout_abbruch_messen.py`).** → `dropship/KASSEN-PRUEFUNG-2026-10-13.md`
 <!-- aus CLAUDE.md verschoben 14.10.2026 09:41 UTC (VERBATIM) -->
 - 2026-10-13 · 🔥 **Trendreihe: Reihenregeln gelten für JEDES Mitglied (8 ohne `hype-seit` = Spielzeug/Partydeko/Kostüm, Herkunft unbekannt, liefen nie ab) → `abgelaufene_raeumen()` täglich: Regelbruch raus, Undatierte zurückdatiert (7 T Frist; mit HEUTE stand das Lampion-Set auf Platz 12). Neu: Thema Gewürzregal, 12 bildgeprüfte Aufnahmen, 15 Bildtext-Ausschüsse.** → `dropship/HYPE-REIHE-REGELN-2026-10-13.md`
+<!-- aus CLAUDE.md verschoben 14.10.2026 09:55 UTC (VERBATIM) -->
+- 2026-10-13 · 🎭 **Messrunde (5 Prüfer/20 Skeptiker): Engpass Verkehr; ChatGPT beste Quelle (5,5 % Korb), IndexNow-These widerlegt; Richter-Material war abgeschnitten (2/5 Prüfer fehlten). Umgesetzt: 18 Kostüme/Masken (Typ «Hautpflege») aus dem Google-Kanal — `ist_kostuem()` + 35 Kanarien im täglichen Durchsetzer; `title:*maske*` findet nur Wortanfänge → Export nötig.** → `dropship/MESSRUNDE-2026-10-13.md`, `dropship/KOSTUEM-GOOGLE-2026-10-13.md`
