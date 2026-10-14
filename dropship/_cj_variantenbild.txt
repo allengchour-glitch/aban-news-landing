@@ -7313,3 +7313,29 @@ gid://shopify/Product/15471974875521	bild-urls-tot
 gid://shopify/Product/15471974908289	zugeordnet	9	Augenbrauen-Schere
 gid://shopify/Product/15471974941057	zugeordnet	28	Fleece-Unterhemd mit V-Ausschnitt
 gid://shopify/Product/15471974973825	zugeordnet	35	Stossfeste iPhone-Hülle aus Silikon, transparent
+gid://shopify/Product/15471977136513	zugeordnet	4	Frauen Tote Bag
+gid://shopify/Product/15471977202049	zugeordnet	2	Wollmütze mit Tarnmuster
+gid://shopify/Product/15471977300353	zugeordnet	30	Stiletto-Sandalen · gewobene Mules
+gid://shopify/Product/15472044048769	zugeordnet	60	Stiletto High Heels
+gid://shopify/Product/15472044081537	zugeordnet	2	Luftventil-Halter
+gid://shopify/Product/15472044114305	zugeordnet	6	Warme Ski-Socken
+gid://shopify/Product/15472044147073	zugeordnet	3	Retro-Kariert-Schal
+gid://shopify/Product/15472044540289	zugeordnet	12	Hundepullover
+gid://shopify/Product/15472044671361	zugeordnet	15	Samt-Jacke mit Revers für Hunde und Katzen
+gid://shopify/Product/15472044704129	zugeordnet	24	Reflektierende Winterweste für grosse Hunde
+gid://shopify/Product/15472044736897	zugeordnet	60	Hundemantel aus Baumwolle
+gid://shopify/Product/15472044802433	zugeordnet	18	Hunde-Reissverschlussjacke mit integriertem Geschirr
+gid://shopify/Product/15472044835201	zugeordnet	15	Hundekleidung mit Wollmütze
+gid://shopify/Product/15472044867969	zugeordnet	12	Winter-Hundejacke mit Kapuze
+gid://shopify/Product/15472044933505	zugeordnet	60	Warme, wasserdichte Winterjacke für kleine Hunde
+gid://shopify/Product/15472044966273	zugeordnet	10	Zeitungsdruck Baumwoll-Kleid für Haustiere
+gid://shopify/Product/15472044999041	zugeordnet	24	Winter-Weste für Hunde und Katzen
+gid://shopify/Product/15472047128961	zugeordnet	12	Makeup-Set
+gid://shopify/Product/15472047161729	zugeordnet	1	Digitale Herren-Sportuhr
+gid://shopify/Product/15472047260033	zugeordnet	48	V-Ausschnitt Langarm-Bluse
+gid://shopify/Product/15472047292801	zugeordnet	30	Gerüschtes Langarm-Shirt mit Rundhals
+gid://shopify/Product/15472047325569	zugeordnet	36	Lässiges Rundhals-Shirt mit Dreiviertelarm
+gid://shopify/Product/15472047358337	zugeordnet	25	Corduroy Hoodie mit halber Knopfleiste
+gid://shopify/Product/15472047391105	zugeordnet	49	Freizeit-Set mit Pullover und Midirock
+gid://shopify/Product/15472047423873	zugeordnet	8	Bunter Polka-Dot Patchwork Pullover
+gid://shopify/Product/15472047456641	zugeordnet	60	Herzring aus Titanstahl mit Zirkonia
