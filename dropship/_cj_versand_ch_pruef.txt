@@ -9055,3 +9055,31 @@ naturliche-perlenkette-620800	2607100722161621700	16	4.71	ok	landeseite
 golduberzogene-ohrringe-628600	2607100705501629200	16	4.29	ok	landeseite
 vintag-ohrstecker-278145	2075448830485192706	16	5.20	ok	landeseite
 kreuzanhanger-607100	2607100540531607600	16	4.50	ok	landeseite
+herz-schmuck-set-798018	2075404763758518274	16	5.12	ok	landeseite
+barockperlenring-621100	2607100738411622100	16	4.29	ok	landeseite
+bunte-armbanduhr-608300	2607091238061609000	16	4.71	ok	landeseite
+teleskop-handyhalter-621122	2075515748907118594	16	5.54	ok	landeseite
+atemschutzmaske-142914	2075490772428972034	0	-	KEINE CH-Option → DRAFT	landeseite
+augen-massager-852034	2075509164895932417	16	5.81	ok	landeseite
+kurzreiniger-553089	2075507537361661954	16	6.93	ok	landeseite
+kleiner-lufter-621900	2607100651491623500	7	8.65	ok	landeseite
+strandsandalen-620500	2607100248521621500	16	12.56	ok	landeseite
+schlafmaske-625800	2607081103281626700	16	4.79	ok	landeseite
+manner-armband-636600	2607100923031637300	16	4.92	ok	landeseite
+goldene-streifenohrringe-617500	2607100555381618400	16	4.48	ok	landeseite
+silberner-tassel-schmuck-629400	2607100643201620000	16	4.50	ok	landeseite
+teufelsaugen-ohrhanger-622800	2607080549481623500	16	4.40	ok	landeseite
+mobelheber-299330	2075500830918877185	0	-	KEINE CH-Option → DRAFT	landeseite
+freizeitschuhe-615400	2607100751311616000	16	11.84	ok	landeseite
+sommerperlen-anklet-637000	2607100607011637600	16	4.50	ok	landeseite
+metall-sonnenbrille-609000	2607100129031609600	5	5.28	ok	landeseite
+elegante-handtasche-609900	2607100846531600900	16	13.40	ok	landeseite
+kristall-stein-set-619400	2607100403381610000	16	4.50	ok	landeseite
+rucken-tattoo-sticker-609700	2607091018461600300	16	5.41	ok	landeseite
+handy-powerbank-622700	2607101041361623700	0	-	KEINE CH-Option → DRAFT	landeseite
+telefonhulle-mit-diamantmuster-602800	2607090152051603300	16	5.12	ok	landeseite
+hundekau-spielzeug-618600	2607100623091619500	16	6.01	ok	landeseite
+edelstahl-wassersportflasche-636400	2607100741291637100	16	9.29	ok	landeseite
+edelstahl-becher-587138	2075494994101776386	0	-	KEINE CH-Option → DRAFT	landeseite
+antirutsch-mat-624800	2607100557461625600	16	5.65	ok	landeseite
+18k-vergoldete-halskette-mit-zirkonia-604900	2607091148461605800	16	4.36	ok	landeseite

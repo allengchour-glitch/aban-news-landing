@@ -15,8 +15,12 @@ WAS ES TUT (nur Kollektionen, die im Onlineshop veröffentlicht sind; ALLE=1 nim
      «Schweizer Shop», WELCOME10, Rückgabe), die Versand-Aussage «Gratis-Versand ab CHF 50» bleibt so
      lange wie möglich. Reicht das nicht, wird die Aufzählung im ersten Satz an einer Komma-Grenze
      gekürzt (nie mitten in «Stand-, Tisch- & Akku-…», nie in einer Markenliste «von A, B & C»).
-     Ist danach Platz und fehlt jede CHF-50-Aussage, kommt «Gratis-Versand ab CHF 50.» dazu
+     Ist danach Platz und fehlt jede CHF-50-Aussage, kommt «Gratis-Versand in der Schweiz ab CHF 50.» dazu
      (die Schwelle ist am lebenden Warenkorb geprüft; kein anderes Versprechen wird ergänzt).
+     14.10.2026 (S3, kollektion_versprechen_s3.py): Gratis gilt nur in der Schweiz (LI zahlt immer CHF 14.90).
+     Passt die Aussage mit Land nicht, dann die Kurzform «Gratis-Versand CH ab CHF 50» statt sie fallen zu lassen;
+     «Geprüfte Angaben», «schnelle Lieferung», «schnell geliefert», «Premium-Qualität/-Marken» sind Rauschen (fallen
+     zuerst); geschützt wird «meist 2–3 Werktage» (Kasse ab Schweizer Lager), nicht mehr «in 1–2 Werktagen».
   2. seo.title > 70 → ≤ 65: Kopf bleibt, die Aufzählung verliert Glieder von hinten, die Marke
      «| LuxeStyle …» bleibt nur, wenn Platz ist (Inhalt vor Marke).
   3. seo.title leer → «<Titel> kaufen | LuxeStyle Schweiz» (≤ 65, Emojis und Klammern weg).
@@ -61,7 +65,8 @@ SPERRE = "/tmp/lock_koll_seo_laengen_intern.lock"
 
 DESC_GRENZE, DESC_ZIEL = 160, 155
 TITEL_GRENZE, TITEL_ZIEL = 70, 65
-USP = "Gratis-Versand ab CHF 50."
+# 14.10.2026 S3 (kollektion_versprechen_s3.py R6): Gratis gilt nur in der Schweiz — Liechtenstein zahlt immer CHF 14.90.
+USP = "Gratis-Versand in der Schweiz ab CHF 50."
 MARKEN = [" | LuxeStyle Schweiz", " | LuxeStyle CH", " | LuxeStyle"]
 
 # Leere SEO-Titel, bei denen «<Titel> kaufen» falsch oder schief wäre. Jeder Text ist aus der
@@ -107,14 +112,19 @@ ABK = re.compile(r"(?:^|\s)(?:Mio|Mrd|Stk|ca|bzw|inkl|exkl|evtl|usw|etc|Nr|Tel|S
 # Teilaussagen der Beschreibung und ihr Gewicht (höher = bleibt länger stehen).
 AUSSAGEN = [
     (re.compile(r"WELCOME10"), 40),
-    (re.compile(r"gratis[- ]?versand|versand\b[^.]*\bgratis|gratis ab CHF|versandkostenfrei", re.I), 90),
+    # 14.10.2026: + «Versandfrei CH ab CHF 50» (Kurzform von kollektion_versprechen_s3.py, wenn «in der Schweiz» nicht passt)
+    (re.compile(r"gratis[- ]?versand|versand\b[^.]*\bgratis|gratis ab CHF|versand(?:kosten)?frei", re.I), 90),
     (re.compile(r"\b\d+\s*Tage\s+Rückgabe|Rückgaberecht", re.I), 50),
     (re.compile(r"klarna|twint|auf Rechnung", re.I), 45),
-    (re.compile(r"in 1[–-]2 Werktagen", re.I), 55),
+    # 14.10.2026: Kasse zeigt ab Schweizer Lager «meist 2–3 Werktage» (P1D + 1–2 T), nicht mehr 1–2
+    (re.compile(r"(?:in |meist )2[–-]3 Werktage", re.I), 55),
+    # unbelegte Sammelversprechen (für CJ-Ware aus China ist «EU-Versand»/«Blitzversand» falsch) → Rauschen.
+    # 14.10.2026 S3: + «Geprüfte Angaben», «schnelle Lieferung», «schnell geliefert», «Premium-Qualität/-Marken»;
+    # VOR der Schweiz-Zeile, sonst zählt «schnelle Lieferung in die Schweiz» als Liefer-Aussage (35) statt als Rauschen
+    (re.compile(r"geprüfte (Ware|Qualität|Angaben|Auswahl)|Marken-Qualität|EU-Versand|Blitzversand|schnelle Lieferung|"
+                r"schnell geliefert|Premium-(Qualität|Qualitaet|Marken)", re.I), 24),
     (re.compile(r"Lieferung in die (ganze )?Schweiz|Schweizer (Online-?)?Shop|Schweizer Onlineshop|"
                 r"Versand in die Schweiz", re.I), 35),
-    # unbelegte Sammelversprechen (für CJ-Ware aus China ist «EU-Versand»/«Blitzversand» falsch) → Rauschen
-    (re.compile(r"geprüfte (Ware|Qualität)|Marken-Qualität|EU-Versand|Blitzversand", re.I), 24),
     (re.compile(r"(^|\s)jetzt\b.*\b(entdecken|bestellen|kaufen|shoppen)\b", re.I), 25),
     (re.compile(r"nach Preis sortiert", re.I), 20),
 ]
@@ -262,10 +272,27 @@ def _komma_schnitte(kern):
     return out
 
 
+USP_KURZ = "Gratis-Versand CH ab CHF 50."
+KOMPAKT_RX = re.compile(r"(Gratis-Versand|Gratisversand|Gratis Versand|[Kk]ostenlose[nrm]? Versand) in der Schweiz ab (CHF\s?50)")
+
+
 def kuerzen_beschreibung(s):
     s = norm(s)
     if len(s) <= DESC_GRENZE:
         return s
+    erg = _kuerzen_einmal(s)
+    # 14.10.2026 S3: Passt die Versand-Aussage MIT Land nicht mehr hinein, erst die Kurzform «… CH ab CHF 50» versuchen,
+    # statt sie ganz fallen zu lassen (ohne Land wäre sie für Liechtenstein falsch, dort kostet der Versand immer 14.90).
+    if re.search(r"CHF\s*50", s) and not re.search(r"CHF\s*50", erg):
+        kurz = KOMPAKT_RX.sub(r"\1 CH ab \2", s)
+        if kurz != s:
+            erg2 = _kuerzen_einmal(kurz)
+            if re.search(r"CHF\s*50", erg2):
+                return erg2
+    return erg
+
+
+def _kuerzen_einmal(s):
     saetze = _zerlegen(s)
     if not saetze:
         return kuerzen_notfall(s)
@@ -295,8 +322,11 @@ def kuerzen_beschreibung(s):
         kern["text"] = original
     if bestes is None:
         return kuerzen_notfall(s)
-    if not re.search(r"CHF\s*50", bestes) and len(bestes) + 1 + len(USP) <= DESC_ZIEL:
-        bestes = f"{bestes} {USP}"
+    if not re.search(r"CHF\s*50", bestes):
+        for usp in (USP, USP_KURZ):
+            if len(bestes) + 1 + len(usp) <= DESC_ZIEL:
+                bestes = f"{bestes} {usp}"
+                break
     return bestes
 
 
@@ -568,17 +598,20 @@ def selbsttest():
     k = kuerzen_beschreibung(a)
     t.append(("«16 Mio.» ist kein Satzende", "16 Mio." not in k or "16 Mio. Farben" in k))
     t.append(("≤155", len(k) <= 155))
-    b = ("Halsketten online kaufen in der Schweiz: feine Ketten, Anhänger & Statement-Ketten aus Edelstahl, teils "
-         "wasserfest & anlauffrei. Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · -10% mit WELCOME10.")
+    # 14.10.2026: Testtexte mit der neuen, 15 Zeichen längeren Versand-Aussage (Kern je um ein Wort gekürzt)
+    b = ("Halsketten online kaufen in der Schweiz: feine Ketten, Anhänger & Statement-Ketten aus Edelstahl, "
+         "wasserfest & anlauffrei. Gratis-Versand in der Schweiz ab CHF 50 · 30 Tage Rückgabe · -10% mit WELCOME10.")
     k = kuerzen_beschreibung(b)
-    t.append(("Versand-Aussage bleibt stehen", "Gratis-Versand ab CHF 50" in k and len(k) <= 155))
+    t.append(("Versand-Aussage bleibt stehen (passt das Land nicht, dann Kurzform «CH»)",
+              re.search(r"Gratis-Versand (in der Schweiz|CH) ab CHF 50", k) is not None and len(k) <= 155))
     c = ("Auto-Pflege & Reinigung bei LuxeStyle: Autoshampoo, Reifen- & Felgenreiniger, Armaturenbrett-Pflege, "
-         "Autowachs, Politur & Auto-Staubsauger von Sonax, Turtle Wax & Rain-X. Gratis-Versand ab CHF 50.")
+         "Autowachs, Politur & Auto-Staubsauger von Sonax, Turtle Wax & Rain-X. Gratis-Versand in der Schweiz ab CHF 50.")
     k = kuerzen_beschreibung(c)
     t.append(("Kern an Komma gekürzt, nie in Markenliste, USP bleibt",
-              k.endswith("Gratis-Versand ab CHF 50.") and "von Sonax" not in k and len(k) <= 155))
+              k.endswith("Gratis-Versand in der Schweiz ab CHF 50.") and "von Sonax" not in k and len(k) <= 155))
     d = ("Ringe für Damen bei LuxeStyle Schweiz: funkelnde Zirkonia-Ringe als günstige Diamant-Alternative, "
-         "verstellbare Blumenringe, Statement-, Herz- & Stapelringe aus Edelstahl, hautfreundlich. Gratis-Versand ab CHF 50.")
+         "verstellbare Blumenringe, Statement-, Herz- & Stapelringe aus Edelstahl, hautfreundlich. Gratis-Versand in der Schweiz "
+         "ab CHF 50.")
     k = kuerzen_beschreibung(d)
     t.append(("kein Schnitt nach Ergänzungsstrich", "Statement-." not in k and "Statement- &" not in k and len(k) <= 155))
     e = ("Clevere Küchenhelfer: elektrische Zerkleinerer, Gemüseschneider, Milchaufschäumer & praktische Gadgets. "
@@ -586,20 +619,38 @@ def selbsttest():
     k = kuerzen_beschreibung(e)
     t.append(("Floskeln («Geprüfte Ware», «EU-Versand») fallen zuerst, Rückgabe bleibt",
               "Geprüfte Ware" not in k and "EU-Versand" not in k and "Rückgabe" in k and len(k) <= 155))
-    g = ("Wasserfester Edelstahl-Schmuck: läuft nicht an beim Duschen, Schwimmen & am See. Ketten, Ohrringe, "
-         "Armbänder. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. –10% mit Code WELCOME10.")
+    g = ("Wasserfester Edelstahl-Schmuck: läuft beim Duschen nicht an. Ketten, Ringe, Armbänder. "
+         "Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe. –10% mit Code WELCOME10.")
     k = kuerzen_beschreibung(g)
     t.append(("WELCOME10 fällt vor Rückgabe", "WELCOME10" not in k and "Rückgabe" in k and len(k) <= 155))
     h = ("Futter & Näpfe bei LuxeStyle: Futterautomaten, Futterspender, Trinkbrunnen sowie Näpfe aus Edelstahl, "
-         "Keramik & Silikon für Hund und Katze. Nach Preis sortiert. Gratis-Versand ab CHF 50.")
+         "Keramik & Silikon für Hund und Katze. Nach Preis sortiert. Gratis-Versand in der Schweiz ab CHF 50.")
     k = kuerzen_beschreibung(h)
     t.append(("Materialliste «aus Edelstahl, Keramik» wird nicht zerschnitten, Rauschen fällt",
               "Keramik & Silikon" in k and "Nach Preis" not in k and len(k) <= 155))
     i2 = ("Gesichtssaunen, Poren-Tools, Gesichtsroller & Gua Sha online kaufen bei LuxeStyle. Gesichtspflege-Geräte "
-          "für einen frischen Teint. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.")
+          "für einen frischen Teint. Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe.")
     k = kuerzen_beschreibung(i2)
     t.append(("Auswahl nutzt den Platz (Rückgabe passt noch dazu)", "Rückgabe" in k and len(k) <= 155))
-    t.append(("≤160 bleibt unverändert", kuerzen_beschreibung("Kurz. Gratis-Versand ab CHF 50.") == "Kurz. Gratis-Versand ab CHF 50."))
+    # 14.10.2026 S3: angehängte USP trägt das Land; neue Rausch-Floskeln fallen zuerst; Kurzform zählt als Versand-Aussage
+    u = ("Weihnachtsdeko für drinnen und draussen: Lichterketten, Sterne, Kränze, Kerzenhalter, Christbaumschmuck, "
+         "Fensterbilder, Tischläufer & Nussknacker aus Holz, Glas und Metall.")
+    k = kuerzen_beschreibung(u)
+    t.append(("angehängte USP = «Gratis-Versand in der Schweiz ab CHF 50.»",
+              "CHF 50" not in u and (k.endswith(USP) or len(k) + 1 + len(USP) > 155) and len(k) <= 155))
+    v = ("Gaming-Mäuse, Tastaturen & Headsets für Büro und Gaming: kabellos, RGB, ergonomisch und leise. Geprüfte Angaben, "
+         "schnelle Lieferung, Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe.")
+    k = kuerzen_beschreibung(v)
+    t.append(("«Geprüfte Angaben» / «schnelle Lieferung» fallen als Rauschen zuerst",
+              "Geprüfte" not in k and "schnelle Lieferung" not in k and "in der Schweiz ab CHF 50" in k and len(k) <= 155))
+    w = ("Katzenbetten & Kratzmöbel für drinnen: robust, waschbar, in vielen Farben und Grössen. Jetzt bei LuxeStyle "
+         "entdecken. Versandfrei CH ab CHF 50, 30 Tage Rückgabe. –10% mit Code WELCOME10.")
+    t.append(("«Versandfrei CH ab CHF 50» zählt als Versand-Aussage (Gewicht 90)",
+              gewicht("Versandfrei CH ab CHF 50") == 90 and "Versandfrei CH ab CHF 50" in kuerzen_beschreibung(w)))
+    t.append(("«meist 2–3 Werktage» geschützt (55), «1–2» nicht mehr", gewicht("Lieferung meist 2–3 Werktage") == 55
+              and gewicht("in 1–2 Werktagen") is None))
+    t.append(("≤160 bleibt unverändert", kuerzen_beschreibung("Kurz. Gratis-Versand in der Schweiz ab CHF 50.")
+              == "Kurz. Gratis-Versand in der Schweiz ab CHF 50."))
     t.append(("idempotent", kuerzen_beschreibung(kuerzen_beschreibung(b)) == kuerzen_beschreibung(b)))
     f = "Ab dem 1. August gibt es Fahnen, Lampions und Deko in grosser Auswahl für den Nationalfeiertag bei uns im Shop. " * 2
     t.append(("«1. August» ist kein Satzende", "1. August gibt" in kuerzen_beschreibung(f)))

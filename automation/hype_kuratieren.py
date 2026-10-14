@@ -493,12 +493,14 @@ def kollektion_sichern():
     r = gql('mutation($i:CollectionInput!){collectionCreate(input:$i)'
             '{collection{id} userErrors{message}}}',
             {"i": {"title": "🔥 Gerade im Trend", "handle": HANDLE,
-                   "descriptionHtml": "<p>Was gerade wirklich läuft — von uns geprüft, mit "
+                   # 14.10.2026 S3: «von uns geprüft» / «geprüfte Auswahl» unbelegt, Gratis nur in der
+                   # Schweiz — gleich wie kollektion_versprechen_s3.py (R3/R6) am Live-Text
+                   "descriptionHtml": "<p>Was gerade gefragt ist — mit "
                                       "Bildern, echtem Preis und Lieferung in die Schweiz. "
                                       "Die Auswahl wechselt regelmässig.</p>",
                    "seo": {"title": "Trend-Produkte 2026 – aktuell beliebt | LuxeStyle CH",
                            "description": "Aktuell gefragte Produkte im Schweizer Shop: "
-                                          "geprüfte Auswahl, Gratis-Versand ab CHF 50, "
+                                          "Gratis-Versand in der Schweiz ab CHF 50, "
                                           "30 Tage Rückgabe."},
                    "ruleSet": {"appliedDisjunctively": False,
                                "rules": [{"column": "TAG", "relation": "EQUALS",
