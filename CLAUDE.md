@@ -89,8 +89,11 @@ schloss er gar nichts. **B2** zu grosser Spot-Stop im Not-Aus → Short «ganz»
   `B.bewegt_takt` in der Prüf-Börse). Seed 7529 — Rückkauf am Rate-Limit (429 auf `/fapi/v1/order`) → weiter Not-Stop über
   `/fapi/v1/algoOrder` statt «Short ohne Stop». F4 — hängender STOP_LOSS_LIMIT + Marktverkäufe dauerhaft abgelehnt → nach allen
   Runden (`haengend_abgelehnt`) per cancelReplace ein Not-Stop an seine Stelle (`_haengenden_ersetzen`; vorher Long ohne Stop 8'445 USDT).
-- Tests: streng 149, live 154, pilot 84, cockpit 115, testnetz 47, plan 23. Mutationsprobe (120: R12 40 neue + 3 neu formulierte) läuft auf dem Endstand.
-  Schlusskampagne auf `713f86597`: Not-Aus 0–1600/5000–6000/7000–8800/9000–11400 = 6'800 Läufe, 0 echte; Läufe + Monotonie laufen. **Falle:** Kampagne mit `xargs -P 4` — Jobs, die nach einer Code-Änderung starten, laufen mit dem
+- Tests: streng 149, live 154, pilot 84, cockpit 115, testnetz 47, plan 23. Mutationsprobe auf dem Endstand **102/120** (R12: 40 neue + 3 neu formulierte) — 18 NICHT erkannt: R12-M1/M2/M3/M5 (`markt()` Ziel,
+  Nachfassen, Unklares, nur freie Coins), M16/M18/M19 (Buch zusammenführen), M21/M23/M25/M26/M27 (W1/W2-Merker), M34 (Extra-Runde),
+  R10-M15/M17, R11-M6/M19/F2 → Szenarien im Folge-PR schliessen, DANN 13. Prüfung.
+  Schlusskampagne auf `713f86597`: **9'480 Läufe, 0 echte** (172 begründet) — Not-Aus 0–1600/5000–6000/7000–8800/9000–11400,
+  Läufe 0–200/5000–5160/7000–7200/9000–9420 ×30, Monotonie 0–400/7000–7600/9000–9700. **Falle:** Kampagne mit `xargs -P 4` — Jobs, die nach einer Code-Änderung starten, laufen mit dem
   NEUEN Code → nach jeder Verhaltensänderung die ganze Kampagne neu. **Nächster Schritt:** 13. unabhängige Prüfung
   (Auftrag `scratchpad/pruefung13_auftrag.md`; Beträge der Belege p1–p6 am Stand 000d53782 gemessen: 5'029/5'111/9'405/5'111/7'951).
 
