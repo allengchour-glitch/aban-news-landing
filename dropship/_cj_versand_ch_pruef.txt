@@ -8524,3 +8524,21 @@ chinesischer-teller-613600	2512241115491613800	16	13.89	ok	landeseite
 keramik-teller-633600	2512241109531633800	16	12.81	ok	landeseite
 keramik-schmortopf-612000	2512241039091612200	16	10.15	ok	landeseite
 keramik-schale-639400	2512161316591630400	16	8.79	ok	landeseite
+kleine-porzellan-schale-601900	2512150813271602100	16	9.20	ok	landeseite
+keramik-essstabchen-halter-600000	2512121033521600200	16	12.21	ok	landeseite
+schneeflocken-teller-600300	2512110315441600600	16	10.31	ok	landeseite
+3-stufiger-obstteller-614600	2512090136281614800	11	31.69	ok	landeseite
+holz-desktop-organizer-631200	2607090855291631800	16	19.99	ok	landeseite
+toiletten-reinigungssatz-489601	2075291872141873154	0	-	KEINE CH-Option → DRAFT	landeseite
+haushaltsreinigungstucher-832321	2075135488086552578	16	5.27	ok	landeseite
+badezimmerhahn-600900	2607070644591601500	11	36.13	ok	landeseite
+badezimmerreinigungspads-724866	2074408838675193858	16	5.55	ok	landeseite
+antirutsch-badematte-859393	2062834621830963203	0	-	KEINE CH-Option → DRAFT	landeseite
+2-in-1-tierpflegeshampoo-603900	2606040743181601900	0	-	KEINE CH-Option → DRAFT	landeseite
+haarfang-fur-dusche-787265	2098842814598316033	16	5.85	ok	landeseite
+keramikpumpflasche-616500	2606010921211617100	16	11.60	ok	landeseite
+duschkopf-mit-3-strahlmodi-058177	2061276877846716418	0	-	KEINE CH-Option → DRAFT	landeseite
+regendusche-mit-6-spruheinstellungen-854977	2061274467531878401	0	-	KEINE CH-Option → DRAFT	landeseite
+edelstahl-aufbewahrungsregal-606900	2605300659061607500	16	15.56	ok	landeseite
+badebursten-set-637300	2605300557101638300	16	8.93	ok	landeseite
+kopfmassagkamm-624400	2605280226571624900	16	7.09	ok	landeseite
