@@ -6,7 +6,8 @@
  *
  * Pipeline pro Produkt:
  *   Shopify-Produkt (tag:cj-real) → erste Varianten-SKU (`CJ-<sku>`) → CJ `product/query?variantSku` → pid
- *   → CJ `product/productComments?pid&score>=MIN` → (optional Gemini-DE-Übersetzung) → POST Judge.me /reviews
+ *   → CJ `product/productComments?pid&score>=MIN` → TOR: vorhandene Judge.me-Bewertungen DIESES Produkts lesen
+ *   → (optional Gemini-DE-Übersetzung) → Doppel überspringen (lib/review_doppel.mjs) → POST Judge.me /reviews
  *
  * No-op-safe: ohne CJ-/Judge.me-/Shopify-Creds passiert nichts (Exit 0). Idempotent über Ledger.
  * ENV: CJ_EMAIL, CJ_API_KEY · JUDGEME_PRIVATE_TOKEN [, JUDGEME_SHOP_DOMAIN] · SHOPIFY_CLIENT_ID/SECRET (o. ADMIN_TOKEN), SHOPIFY_SHOP
@@ -16,6 +17,7 @@
 import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { nachlauf } from './eimer_etikette.mjs';
+import { laufSperre, torEntscheid, sterne, AEHNLICH } from './lib/review_doppel.mjs';   // 14.10.2026: Tor + Lauf-Sperre
 
 // STOPP-Schalter (12.10.2026, Gegenprobe wf_52c03c1d): Die Importe erschienen als Shop-Bewertungen mit Platzhalter-
 // Name «Käufer:in beim Lieferanten» und Platzhalter-Mail; Lieferanten-Kommentare sind keine Kundenbewertungen des Shops.
@@ -70,6 +72,22 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 if (!CJ_EMAIL || !CJ_API_KEY) { console.log('Keine CJ-Creds (CJ_EMAIL/CJ_API_KEY) → No-op.'); process.exit(0); }
 if (!JM_TOKEN) { console.log('Kein JUDGEME_PRIVATE_TOKEN → No-op.'); process.exit(0); }
 if (!ADMIN_TOKEN && !(CID && CSEC)) { console.log('Keine Shopify-Creds → No-op.'); process.exit(0); }
+
+// ── Lauf-Sperre (14.10.2026) ──
+// GEMESSEN 14.10. (judgeme_doppel_wache.py): 296 doppelt gepostete Bewertungen auf 67 Produkten, auf den 59 aktiven davon
+// 277 von 591 Kopien (47 %). Eine Ursache: zwei Instanzen lasen dasselbe Ledger, wählten dieselben Produkte und posteten
+// dieselben Kommentare — das Tor unten sieht die Bewertung der anderen Instanz nicht, solange beide gleichzeitig lesen.
+// Darum EIN Lauf zur Zeit (beide Modi, NACHHOLEN überlappt mit MIN_SCORE=1). Verwaiste Sperre (Besitzer tot oder PID nach
+// dem Container-Neustart neu vergeben) wird entfernt. DRY schreibt nichts nach Judge.me → braucht keine Sperre.
+const SPERRE = '/tmp/cj_reviews_import.lock';
+if (!DRY) {
+  const sp = laufSperre(SPERRE, { skript: 'cj_reviews_import.mjs' });
+  if (!sp.ok) { console.log(`PAUSE: ${sp.grund}${sp.pid ? ` (PID ${sp.pid})` : ''} — dieser Lauf schreibt nichts nach Judge.me.`); process.exit(0); }
+  process.on('exit', sp.freigeben);
+  // Ohne Handler endet node bei SIGTERM/SIGHUP ohne «exit»-Ereignis → die Sperre bliebe liegen (die nächste Instanz räumte
+  // sie zwar als verwaist ab, aber erst nach der Prozessprüfung).
+  for (const [sig, nr] of [['SIGINT', 2], ['SIGTERM', 15], ['SIGHUP', 1]]) process.on(sig, () => process.exit(128 + nr));
+}
 
 // ── Shopify ──
 // ⚠️ Eine Drosselung ist kein Katalog-Ende (28.08.2026). Ohne Wiederholung reichte EINE
@@ -203,6 +221,47 @@ async function jmPost(pid, r) {
   return { ok: res.ok, status: res.status, text: (await res.text()).slice(0, 160) };
 }
 
+// ── Judge.me LESEN für das Tor (14.10.2026) ──
+// Bisher fragte das Skript nur sein Ledger, nie Judge.me — ein verlorenes Ledger (Snapshot-Rewind) oder eine zweite Instanz
+// postete dieselben Kommentare neu übersetzt noch einmal (296 Doppel auf 67 Produkten, gemessen 14.10.). Jetzt: vor dem
+// Posten ALLE vorhandenen Bewertungen DIESES Produkts lesen (auch ausgeblendete). GEMESSEN 14.10. (nur GET): /products/-1
+// kennt auch Produkte ohne Bewertung (neuestes Produkt 16638642618759 → product.id, 0 Bewertungen); eine unbekannte ID gibt
+// 404. /reviews?product_id liefert genau die Bewertungen des Produkts inkl. curated=spam (Hunde-Winterjacke: 30 = 24 + 6
+// ausgeblendet, wie im Voll-Dump). Jede Unsicherheit (Netz, 404, fremde Bewertung in der Antwort, > 100 Seiten) heisst
+// «nicht lesbar» → für dieses Produkt NICHTS posten und NICHT quittieren (der nächste Lauf versucht es erneut).
+// Der Token steht in der URL — nie die URL ausgeben.
+const JM_BASE = 'https://judge.me/api/v1';
+async function jmGet(path, params) {
+  const qs = new URLSearchParams({ ...params, shop_domain: JM_DOMAIN, api_token: JM_TOKEN }).toString();
+  let status = 0;
+  for (let v = 0; v < 4; v++) {
+    try {
+      const r = await fetch(`${JM_BASE}${path}?${qs}`, { headers: { 'User-Agent': 'luxestyle-reviews-tor/1.0' }, signal: AbortSignal.timeout(60000) });
+      status = r.status;
+      if (r.ok) return { status, json: await r.json() };
+      if ([401, 403, 404].includes(r.status)) return { status, json: null };   // Antwort, kein Aussetzer — Wiederholen hilft nicht
+    } catch { status = 0; }
+    await sleep(3000 * (v + 1));                                                 // 429/5xx/Netz: warten, erneut
+  }
+  return { status, json: null };
+}
+async function jmVorhandene(shopifyId) {
+  const p = await jmGet('/products/-1', { external_id: shopifyId });
+  const prod = p.json?.product;
+  if (!prod?.id) return { ok: false, grund: p.status === 404 ? 'Judge.me kennt das Produkt nicht' : `Produkt nicht lesbar (HTTP ${p.status || 'Netz'})` };
+  if (String(prod.external_id) !== String(shopifyId)) return { ok: false, grund: `Judge.me lieferte fremdes Produkt ${prod.external_id}` };
+  const liste = [];
+  for (let page = 1; page <= 100; page++) {                    // die API klemmt page bei 100 (judgeme_doppel_wache.py)
+    const r = await jmGet('/reviews', { product_id: prod.id, per_page: 100, page });
+    const rs = r.json?.reviews;
+    if (!Array.isArray(rs)) return { ok: false, grund: `Bewertungen nicht lesbar (Seite ${page}, HTTP ${r.status || 'Netz'})` };
+    if (rs.some(x => String(x.product_external_id) !== String(shopifyId))) return { ok: false, grund: 'Antwort enthält Bewertungen anderer Produkte (Filter unwirksam)' };
+    liste.push(...rs);
+    if (rs.length < 100) return { ok: true, liste };
+  }
+  return { ok: false, grund: 'über 10\'000 Bewertungen — nicht vollständig lesbar' };
+}
+
 const numId = (gid) => String(gid).split('/').pop();
 // NACHHOLEN quittiert zusätzlich den Handle («h:…»): bewertungen_nachholen.sh führt seine Liste nach Handles und fand
 // die Zahlen-IDs nie — jedes Paket nach dem ersten meldete «Nichts zu tun» (24.09.). Eine «h:»-Zeile ist nie eine Zahl-ID.
@@ -282,7 +341,7 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
     return null;
   }
 
-  let totalReviews = 0, prodWith = 0, fails = 0, quittiert = 0, ohnePunkte = 0;
+  let totalReviews = 0, prodWith = 0, fails = 0, quittiert = 0, ohnePunkte = 0, torDoppel = 0, jmUnlesbar = 0;
   for (const p of prods) {
     const pidNum = numId(p.id);
     const rawSku = p.variants?.edges?.[0]?.node?.sku || '';
@@ -313,9 +372,24 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
         .slice(0, PER);
       if (!picked.length) { console.log(`· ${p.handle}: 0 echte ${MIN_SCORE}–${MAX_SCORE}★-Kommentare bei CJ → skip`); if (!DRY) { try { quittiere(pidNum, p.handle); } catch {} } continue; }
 
+      // TOR (14.10.2026): erst lesen, was Judge.me für DIESES Produkt schon hat. Nicht lesbar → nichts posten, nicht
+      // quittieren (vor der Übersetzung, damit kein Gemini-Aufruf verpufft). Nie blind posten.
+      const jm = await jmVorhandene(pidNum);
+      if (!jm.ok) { jmUnlesbar++; console.log(`· ${p.handle}: ${jm.grund} → nichts gepostet, später erneut`); continue; }
+
       const bodiesDE = await translateDE(picked.map(c => c.comment.trim()));
+      // Gleiche Sterne + ähnlicher Text (Original ODER Übersetzung, Trigramm-Dice ≥ AEHNLICH) zu irgendeiner vorhandenen
+      // Bewertung → Kopie, nicht posten. Eichung (268/273 Kopien, 4,4 % Fehlalarm) im Kopf von lib/review_doppel.mjs.
+      const tor = torEntscheid(picked.map((c, i) => ({ i, rating: sterne(c.score), texte: [c.comment.trim(), bodiesDE[i]] })), jm.liste);
+      for (const d of tor.doppel) {
+        torDoppel++;
+        console.log(`  = ${p.handle} ★${d.neu.rating} schon bei Judge.me (#${d.vorlage.id}, Ähnlichkeit ${d.vorlage.sim.toFixed(2)} ≥ ${AEHNLICH})`
+          + ` → nicht gepostet: «${String(bodiesDE[d.neu.i] || '').slice(0, 50)}» ↔ «${d.vorlage.text.slice(0, 50)}»`);
+      }
+      const frei = new Set(tor.posten.map(x => x.i));
       let sent = 0;
       for (let i = 0; i < picked.length; i++) {
+        if (!frei.has(i)) continue;
         const c = picked[i];
         const rev = {
           name: (c.commentUser || '').trim() || 'Käufer:in beim Lieferanten',
@@ -329,7 +403,12 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
         if (out.ok) { sent++; } else { fails++; console.error(`  ✗ ${p.handle} HTTP ${out.status}: ${out.text}`); }
         await sleep(700);
       }
-      if (sent) { prodWith++; totalReviews += sent; console.log(`✓ ${p.handle}: ${sent} echte Reviews (CJ-pid ${cjpid})`); }
+      // «✓» auch, wenn das Tor ALLES übersprungen hat: das Produkt ist erledigt (bewertungen_nachholen.sh zählt «^✓» als Fortschritt).
+      if (sent || tor.doppel.length) {
+        if (sent) prodWith++;
+        totalReviews += sent;
+        console.log(`✓ ${p.handle}: ${sent} echte Reviews (CJ-pid ${cjpid})${tor.doppel.length ? ` · ${tor.doppel.length} schon bei Judge.me (Tor)` : ''}`);
+      }
       if (!DRY) { try { quittiere(pidNum, p.handle); } catch {} }
     } catch (e) { fails++; console.error(`✗ ${p.handle}: ${e.message}`); }
   }
@@ -338,6 +417,8 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
   // Ohne Fortschritt (nur «keine Punkte») kein WEITER, sonst drehte sich der Lauf stündlich um dieselben Produkte.
   const weiter = !DRY && prods.length >= LIMIT && quittiert >= 50;
   console.log(`\nFERTIG: ${totalReviews} echte Reviews auf ${prodWith} Produkt(e) · quittiert ${quittiert}/${prods.length}`
-    + `${ohnePunkte ? ` · ${ohnePunkte} ohne Punkte offen` : ''}${DRY ? ' [DRY]' : ''}${fails ? `, ${fails} Fehler` : ''}${weiter ? ' · WEITER' : ''}.`);
+    + `${ohnePunkte ? ` · ${ohnePunkte} ohne Punkte offen` : ''}`
+    + `${torDoppel ? ` · ${torDoppel} Doppel vom Tor übersprungen` : ''}${jmUnlesbar ? ` · ${jmUnlesbar} Judge.me nicht lesbar (offen)` : ''}`
+    + `${DRY ? ' [DRY]' : ''}${fails ? `, ${fails} Fehler` : ''}${weiter ? ' · WEITER' : ''}.`);
   process.exit(0);
 })();

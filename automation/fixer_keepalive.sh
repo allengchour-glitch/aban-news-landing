@@ -2393,6 +2393,24 @@ fi
       fi
     fi
   fi
+  # ⭐ JUDGE.ME-DOPPEL-WACHE (14.10.2026): doppelt importierte Lieferanten-Bewertungen ausblenden (curated=spam).
+  # Gemessen: 296 Doppel auf 67 Produkten, auf 59 aktiven 277 von 591 Bewertungen Kopien — die Zahl ging als ratingCount an
+  # Google. Regel + Eichung im Skriptkopf; Bremsen 8 % / CAP 400 / Kanarienvogel. START/FERTIG → still_gestorben greift.
+  JDW=/tmp/judgeme_doppel_wache.log
+  if [ -f "$REPO/automation/judgeme_doppel_wache.py" ] && [ -s /tmp/judgeme.env ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$JDW" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$JDW" || still_gestorben "$JDW"; then
+      touch "$JDW"
+      ( cd "$REPO" && setsid bash -c \
+          "exec 9>/tmp/lock_judgeme_doppel.lock; flock -n 9 || exit 0; exec >> \"$JDW\" 2>&1; \
+           FIX=1 exec timeout 1800 python3 automation/judgeme_doppel_wache.py" 9>&- & )
+      if [ -s "$JDW" ] && tail -n 6 "$JDW" | grep -q "unklar\|STOPP"; then
+        echo "$(date -u +%H:%M) ⚠️ $(grep 'JUDGEME-DOPPEL' "$JDW" | tail -n 1)"
+      elif [ -s "$JDW" ]; then
+        echo "$(date -u +%H:%M) $(grep 'JUDGEME-DOPPEL' "$JDW" | tail -n 1)"
+      fi
+    fi
+  fi
   # 🔪 KLINGEN-TOR-KANARIENVOGEL (22.09.2026): taeglich rein lesend, ~2 s — faellt er, laeuft das Ping-Pong wieder.
 KLT=/tmp/test_klingen_tor.log
   if [ -f "$REPO/automation/test_klingen_tor.py" ]; then
