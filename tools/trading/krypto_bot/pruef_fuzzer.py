@@ -5,6 +5,7 @@ die Invarianten. NUR Spielgeld gegen 127.0.0.1; schaltet Pilot 2.0 nur in DIESEM
 
   python3 -B pruef_fuzzer.py laeufe VON BIS [TAGE]   # Tage mit zufälligen Signalen, Kursen, Störungen und Not-Aus
   python3 -B pruef_fuzzer.py notaus VON BIS          # zufälliger Bestand, dann Not-Aus mit harten (auch dauerhaften) Störungen
+  python3 -B pruef_fuzzer.py monotonie VON BIS       # Phase «nur Stornieren»: darf nie Schutz verlieren (10. Prüfung)
 
 Befunde (jeder ist ein Fehler):
   AUSNAHME           ausfuehren()/Not-Aus warf eine Ausnahme nach aussen
@@ -15,6 +16,7 @@ Befunde (jeder ist ein Fehler):
   LONG_OHNE_STOP / SHORT_OHNE_STOP           Netto-Position ohne Stop
   SPOT_STOP_UEBER_NETTO / PERP_STOP_UEBER_NETTO  ein Stop ist grösser als ungesichert (träfe die Absicherung)
   NACH_SPRUNG_*      der Kurs springt durch alle Stops — bleibt danach etwas ohne Absicherung und ohne Stop?
+  SCHUTZ_VERLOREN_*  (monotonie) in einer Phase «nur Stornieren» ging Schutz verloren — ein Stop wurde ersatzlos entfernt
 Bewusst NICHT gezählt (begründet):
   • Staub unter STAUB_MAX_USDT (10 USDT: darunter nimmt Binance keinen Stop an) — als STAUB_* ausgewiesen. Den Coin-Rest unter
     einem Futures-Schritt sichert Pilot 2.0 seit der 9. Prüfung mit einem eigenen Spot-Stop.
@@ -24,8 +26,12 @@ Bewusst NICHT gezählt (begründet):
     Short — löst einer aus, schützt der andere den Rest): dort zählt «alles gedeckt» statt «nicht über netto»; die
     NACH_SPRUNG-Prüfung gilt weiter.
   • Läufe ohne Lauf-Warnung sind still (STILL_*), mit Warnung laut (LAUT_*) — beides zählt als Befund. Ausnahme DAUER_*: Binance
-    lehnt in diesem Schritt dauerhaft ab (Störung mit ≥ 50 Wiederholungen) und Pilot 2.0 meldet die Lücke laut — dann kann kein
-    Code schützen; geprüft wird der Stand NACH der Nachkontrolle (Störung vorbei), der muss sauber sein.
+    lehnt in diesem Schritt dauerhaft ab, was Schutz braucht (≥ 50 Wiederholungen auf Aufträgen, Stops, Kontostand oder
+    Auftragslisten — nicht auf dem Kurs-Abruf), Pilot 2.0 meldet die Lücke laut UND hat in diesem Schritt keinen eigenen Stop
+    entfernt (sonst hätte er ihn stehen lassen können) — dann kann kein Code schützen; geprüft wird der Stand NACH der
+    Nachkontrolle (Störung vorbei), der muss sauber sein.
+  • STORNO_ZUERST_* (monotonie): Schutzverlust nur, weil cancelReplace in der ungünstigen Lesart erst storniert und dann
+    ablehnt (409) — nicht vermeidbar, solange ein Stop überhaupt ersetzt werden muss; Testnetz-Prüfpunkt (README).
 """
 from __future__ import annotations
 
@@ -179,7 +185,9 @@ def schutz_befunde(k, unklar=None, tol_usdt=TOL_USDT):
             out.append(("SPOT_STOP_UEBER_NETTO", sym, round(g["s_qty"] - erlaubt_s, 6)))
         # zu grosser Perp-Stop schadet nur mit Short UND Coins (er kauft die Absicherung zurück → Coins ohne Short)
         if g["p_qty"] > max(0.0, -g["netto"]) + STEP_P[sym] + 1e-9 and g["pos"] < 0 and g["coins"] * p >= tol_usdt:
-            out.append(("PERP_STOP_UEBER_NETTO", sym, round(g["p_qty"] - max(0.0, -g["netto"]), 6)))
+            zu_viel = g["p_qty"] - max(0.0, -g["netto"])  # so viel Absicherung kaufte er beim Auslösen zurück
+            out.append(("PERP_STOP_UEBER_NETTO" if min(zu_viel, g["coins"]) * p > STAUB_MAX_USDT else "STAUB_PERP_STOP_UEBER_NETTO",
+                        sym, round(zu_viel, 6)))
     return out
 
 
@@ -226,11 +234,36 @@ def zeigen(k):
 def echte(befunde):
     """Befunde ohne Staub und ohne «DAUER_» (laut gemeldete Lücke, solange Binance dauerhaft ablehnt — die Nachkontrolle holt
     den Schutz nach, sobald es wieder geht; danach wird erneut geprüft)."""
-    return [b for b in befunde if "STAUB" not in b[0] and not b[0].startswith("DAUER_")]
+    return [b for b in befunde if "STAUB" not in b[0] and not b[0].startswith(("DAUER_", "STORNO_ZUERST_"))]
+
+
+DAUER_PFADE = ("/api/v3/order", "/api/v3/order/cancelReplace", "/fapi/v1/order", "/fapi/v1/algoOrder", "/api/v3/account",
+               "/fapi/v2/positionRisk", "/api/v3/openOrders", "/fapi/v1/openAlgoOrders")
 
 
 def _dauer(regeln):
-    return any(r.get("anzahl", 1) >= 50 for r in regeln)
+    """Lehnt Binance in diesem Schritt dauerhaft ab, was Schutz braucht (Aufträge, Stops, Kontostand, Auftragslisten)? Nur das
+    zählt — eine Dauerstörung auf dem Kurs-Abruf o. ä. macht keine Lücke unvermeidbar (10. Prüfung W4)."""
+    return any(r.get("anzahl", 1) >= 50 and r.get("pfad") in DAUER_PFADE and r.get("art") not in ("kurs", "teil", "spaet", "spaet_u",
+                                                                                                    "unsichtbar") for r in regeln)
+
+
+def _selbst_entfernt(ab, sym=None, befund=None):
+    """Hat Pilot 2.0 seit B.log[ab] in diesem Markt selbst einen Stop DER BETROFFENEN SEITE entfernt — storniert (DELETE ok) oder per
+    cancelReplace storniert, ohne dass der Ersatz kam (409)? Dann ist eine Lücke dort NICHT unvermeidbar — er hätte den
+    funktionierenden Stop stehen lassen können (10. Prüfung W4). Long-Befunde (LONG/SPOT) zählen Spot-Stops, Short-Befunde
+    (SHORT/PERP) Perp-Stops. Ein cancelReplace mit Ersatz (neuer Stop oder ausgeführter Verkauf) zählt nicht."""
+    seite = None if not befund else ("perp" if ("SHORT" in befund or "PERP" in befund) else "spot")
+    for x in B.log[ab:]:
+        if sym and (x[3].get("symbol") or x[3].get("_symbol")) != sym:
+            continue
+        if x[1] == "DELETE" and x[2] == "/api/v3/order" and x[4] == 200 and seite != "perp":
+            return True
+        if x[1] == "DELETE" and x[2] == "/fapi/v1/algoOrder" and x[4] == 200 and seite != "spot":
+            return True
+        if x[1] == "POST" and x[2] == "/api/v3/order/cancelReplace" and x[4] == 409 and seite != "perp":
+            return True
+    return False
 
 
 def sauber_schliessen(env, datei, versuche=2):
@@ -343,10 +376,70 @@ def signal(rng, m, kurs_heute, kurs_gestern):
 
 
 def _klassieren(befunde, erg, kontext, dauer=False):
-    """dauer: Binance lehnte in diesem Schritt dauerhaft ab — eine LAUT gemeldete Lücke ist dann unvermeidbar (DAUER_)."""
+    """dauer: Binance lehnte in diesem Schritt dauerhaft ab — eine LAUT gemeldete Lücke ist dann unvermeidbar (DAUER_).
+    dauer darf eine Funktion des Befunds sein (z. B. je Markt: hat Pilot 2.0 dort selbst einen Stop entfernt?)."""
     laut = bool(erg.get("warnung"))
-    vor = (("DAUER_" if dauer else "") + "LAUT_") if laut else "STILL_"
-    return [(vor + b[0], kontext, b) for b in befunde]
+    out = []
+    for b in befunde:
+        d_ = dauer(b) if callable(dauer) else dauer
+        vor = (("DAUER_" if d_ else "") + "LAUT_") if laut else "STILL_"
+        out.append((vor + b[0], kontext, b))
+    return out
+
+
+# ───────────────────────── Fuzzer: Schutz-Monotonie (10. Prüfung) ─────────────────────────
+def ungesichert(k, sym):
+    """(Long, Short) in USDT, die über die eigenen Stops hinaus ungesichert sind."""
+    g = lage(k, sym)
+    lang = max(0.0, min(g["netto"], g["coins"]) - g["s_qty"]) if g["netto"] > 0 else 0.0
+    kurz = max(0.0, -g["netto"] - g["p_qty"]) if g["netto"] < 0 else 0.0
+    return lang * g["kurs"], kurz * g["kurs"]
+
+
+def monotonie_runde(seed):
+    """In einer Phase «nur Stornieren» (alle NEUEN Aufträge abgelehnt, Storno und Lesen gehen) kann sich keine Position ändern —
+    also darf auch kein Schutz verloren gehen (ein Fund heisst: Pilot 2.0 hat einen funktionierenden Stop ersatzlos entfernt).
+    In 30 % der Seeds die ungünstige Binance-Lesart von cancelReplace: erst Storno, dann Ablehnung (409) — Verluste daraus
+    heissen STORNO_ZUERST_* (Testnetz-Prüfpunkt; nur bei cancelReplace-Antwort 409 im Lauf)."""
+    rng = random.Random(seed)
+    k = neues_konto(rng.choice([2500, 8000, 20000]))
+    d = neu_buch()
+    ms = rng.choice([["BTC"], ["ETH"], ["BTC", "ETH"]])
+    z1 = {m: rng.choice([-1.0, -0.5, -0.25, 0.25, 0.5, 1.0]) for m in ms}
+    lauf([E(m, z1[m]) for m in ms], env_echt(), d)
+    if rng.random() < 0.5:  # Vortag mit Störung → evtl. zwei Spot-Stops (Stop + Zusatz-Stop)
+        B.regeln = [dict(methode="POST", pfad="/api/v3/order/cancelReplace", art="429", anzahl=99)]
+        lauf([E(m, z1[m] + rng.choice([0, 0.25, 0.5])) for m in ms], env_echt(), d)
+        B.regeln = []
+    vor = {m: ungesichert(k, m + "USDT") for m in ms}
+    z2 = {m: rng.choice([-1.0, -0.5, -0.25, 0.0, 0.25, 0.5, 1.0]) for m in ms}
+    ab = {m: rng.choice([0.06, 0.08, 0.10, 0.12]) for m in ms}
+    storno = rng.random() < 0.3
+    B.ersetzen_storno_zuerst = storno
+    # «Storno zuerst»: cancelReplace selbst geht durch, erst der neue Auftrag darin scheitert (die Regel auf /api/v3/order)
+    pfade = ("/api/v3/order", "/fapi/v1/order", "/fapi/v1/algoOrder") + (() if storno else ("/api/v3/order/cancelReplace",))
+    B.regeln = [dict(methode="POST", pfad=p_, art=rng.choice(["vor503", "429"]), anzahl=10 ** 6) for p_ in pfade]
+    if rng.random() < 0.3:
+        B.regeln.append(dict(methode="GET", pfad=rng.choice(["/fapi/v1/openAlgoOrders", "/api/v3/openOrders"]), art="vor503",
+                             anzahl=10 ** 6))
+    log0 = len(B.log)
+    kx = {"seed": seed, "z1": z1, "z2": z2, "storno_zuerst": storno}
+    try:
+        r = lauf([E(m, z2[m], stop_abstand=ab[m]) for m in ms], env_echt(), d)
+    except Exception:  # noqa: BLE001
+        return [("AUSNAHME", kx, traceback.format_exc()[-600:])]
+    finally:
+        B.regeln = []
+        B.ersetzen_storno_zuerst = False
+    teil409 = any(x[1] == "POST" and x[2] == "/api/v3/order/cancelReplace" and x[4] == 409 for x in B.log[log0:])
+    funde = []
+    for m in ms:
+        nach = ungesichert(k, m + "USDT")
+        for seite, a, b in (("LONG", vor[m][0], nach[0]), ("SHORT", vor[m][1], nach[1])):
+            if b > a + STAUB_MAX_USDT:
+                funde.append((("STORNO_ZUERST_" if storno and teil409 else "") + "SCHUTZ_VERLOREN_" + seite,
+                              dict(kx, markt=m, lage=zeigen(k), zeilen=r["zeilen"][-8:]), (m, round(a, 2), round(b, 2))))
+    return funde
 
 
 # ───────────────────────── Fuzzer: Läufe über viele Tage ─────────────────────────
@@ -381,7 +474,7 @@ def laeufe_runde(seed, tage=30):
         gestern = dict(B.kurs)
         B.regeln = zufall_regeln(rng, rng.choice([0, 0, 1, 2, 3, 5]), B.kurs)
         aktiv_regeln = [r["art"] for r in B.regeln]
-        dauer = _dauer(B.regeln)
+        dauer_regeln = _dauer(B.regeln)
         stop_mitten = rng.random() < 0.04
         if stop_mitten:
             zaehler = [rng.randint(3, 60)]
@@ -414,7 +507,7 @@ def laeufe_runde(seed, tage=30):
         kontext["zeilen"] = erg.get("zeilen", [])[-12:]
         if not fremd and not trocken:  # Stand, wie der Lauf ihn verlässt — verspätete Aufträge noch unterwegs
             funde += _klassieren(schutz_befunde(k, unklar_je_markt(d)), erg, dict(kontext, wann="nach Lauf (vor Ankunft)", lage=zeigen(k)),
-                                 dauer)
+                                 lambda b, log0=log0: dauer_regeln and not _selbst_entfernt(log0, b[1], b[0]))
         pending_abarbeiten()  # verspätete Aufträge kommen an …
         if not fremd and not trocken:
             try:  # … und die Nachkontrolle (pilot.py --nachkontrolle nach jedem Lauf) klärt sie und setzt die Stops
@@ -448,7 +541,7 @@ def laeufe_runde(seed, tage=30):
         if stop_aktiv or rng.random() < 0.12:  # Not-Aus (zufällig oder weil er mitten im Lauf kam), mit harten Störungen
             stop_aktiv = False
             B.regeln = zufall_regeln(rng, rng.choice([0, 1, 2, 3, 4]), B.kurs, haerte=2.0)
-            dauer_n = _dauer(B.regeln)
+            dauer_n, log_na = _dauer(B.regeln), len(B.log)
             kx = dict(kontext, wann="Not-Aus", regeln=[r["art"] for r in B.regeln])
             try:
                 r = lauf([], env_heute(), d, notaus=True)
@@ -458,7 +551,7 @@ def laeufe_runde(seed, tage=30):
             B.regeln = []
             if r.get("alles_zu") is not True:  # Stand direkt nach dem Not-Aus (verspätete Aufträge noch unterwegs)
                 funde += _klassieren(schutz_befunde(k, unklar_je_markt(d)), r, dict(kx, wann="Not-Aus (vor Ankunft)", lage=zeigen(k)),
-                                     dauer_n)
+                                     lambda b, log_na=log_na: dauer_n and not _selbst_entfernt(log_na, b[1], b[0]))
             pending_abarbeiten()
             if r.get("alles_zu") is not True:  # stop.bat/Tagesaufgabe: Nachkontrolle im Not-Aus-Modus schliesst Verspätetes
                 try:
@@ -523,7 +616,7 @@ def notaus_runde(seed):
             r["listen"] = rng.choice([1, 2])
         regeln.append(r)
     B.regeln = regeln
-    dauer = _dauer(regeln)
+    dauer, log_na = _dauer(regeln), len(B.log)
     vorher = zeigen(k)
     try:
         r = lauf([], env, d, notaus=True)
@@ -533,7 +626,7 @@ def notaus_runde(seed):
     B.regeln = []
     funde = []
     if r["alles_zu"] is not True:  # Stand direkt nach dem Not-Aus (verspätete Aufträge noch unterwegs)
-        funde += [(("DAUER_" if dauer and r.get("warnung") else "") + b[0],
+        funde += [(("DAUER_" if dauer and r.get("warnung") and not _selbst_entfernt(log_na, b[1], b[0]) else "") + b[0],
                    {"seed": seed, "wann": "vor Ankunft", "lage": zeigen(k), "zeilen": r["zeilen"][-10:]}, b)
                   for b in schutz_befunde(k, unklar_je_markt(d))]
     pending_abarbeiten()
@@ -553,13 +646,16 @@ def notaus_runde(seed):
 
 
 def main():
-    if len(sys.argv) < 4 or sys.argv[1] not in ("laeufe", "notaus"):
+    if len(sys.argv) < 4 or sys.argv[1] not in ("laeufe", "notaus", "monotonie"):
         print(__doc__)
         return 2
     art, von, bis = sys.argv[1], int(sys.argv[2]), int(sys.argv[3])
     alle = []
     for seed in range(von, bis):
-        alle += laeufe_runde(seed, int(sys.argv[4]) if len(sys.argv) > 4 else 30) if art == "laeufe" else notaus_runde(seed)
+        if art == "laeufe":
+            alle += laeufe_runde(seed, int(sys.argv[4]) if len(sys.argv) > 4 else 30)
+        else:
+            alle += notaus_runde(seed) if art == "notaus" else monotonie_runde(seed)
     zaehler = Counter(x[0] for x in alle)
     print(json.dumps(dict(zaehler), ensure_ascii=False, indent=1))
     out = Path.cwd() / f"pruef_{art}_{von}_{bis}.json"
