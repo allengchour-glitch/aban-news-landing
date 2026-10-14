@@ -473,3 +473,4 @@ gid://shopify/Product/16615816266119	Türkis
 gid://shopify/Product/16616489156999	Schwarz
 gid://shopify/Product/16616489288071	Gelb
 gid://shopify/Product/16617626141063	Schwarz
+gid://shopify/Product/16618012770695	Schwarz
