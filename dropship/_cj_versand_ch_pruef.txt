@@ -9233,3 +9233,4 @@ anpassbares-armband-ring-set-525504	1433266536226885632	16	4.71	ok	landeseite
 925-sterlingsilber-barockperle-halskette-in-go-763520	1415223992696049664	16	4.57	ok	landeseite
 marmergriff-gold-245888	1404309602916503552	16	5.12	ok	landeseite
 damenkleid-626800	2607110900551628000	16	9.88	ok	landeseite
+retro-stil-halter-ausschnitt-ruschentier-midi-634100	2607110755521634700	16	11.00	ok	landeseite
