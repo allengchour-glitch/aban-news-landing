@@ -2287,3 +2287,4 @@
 16617693708679	Ausführung:4+Grösse:2:8+ki	2026-10-14	kunstpelz-schal-fur-damen-625000
 16617692725639	Farbe:5:5+ki	2026-10-14	isolierter-trinkbecher-aus-edelstahl-626400
 16617692692871	Farbe:6+Grösse:3:18+ki	2026-10-14	kapuzen-kragenweste-605700
+16617685909895	Stil:8:8+ki	2026-10-14	keramik-matcha-schale-mit-zitronenpresse-610400
