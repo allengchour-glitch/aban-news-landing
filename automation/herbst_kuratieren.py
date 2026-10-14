@@ -19,11 +19,31 @@ Was es tut:
 Aufräumen: Wer den Tag trägt, aber live nicht mehr passt (DRAFT, Sperr-Tag, nicht mehr im
 Onlineshop), verliert ihn beim nächsten Lauf. Nach SAISON_ENDE nimmt der Lauf den Tag überall weg.
 
-  DRY=1 python3 automation/herbst_kuratieren.py        zeigt Auswahl, schreibt /tmp/herbst_auswahl.json
-  KONTAKT=1 python3 automation/herbst_kuratieren.py    Kontaktbogen der Auswahl (PFLICHT vor dem Schreiben)
-  python3 automation/herbst_kuratieren.py              schreibt (Tags, Kollektion, Reihenfolge)
-  NUR_RAEUMEN=1 …                                      nur Unpassendes entfernen, nichts Neues
-  SELBSTTEST=1 python3 automation/herbst_kuratieren.py  Kanarienvögel der Regeln (kein Netz)
+AUFRUF — KEINE Argumente, nur Umgebungsvariablen. «--help»/«-h» zeigt diese Hilfe (Exit 0); jedes andere Argument
+bricht mit Exit 2 ab, BEVOR irgendetwas gelesen oder geschrieben wird (14.10.2026: «--help» lief als voller
+Schreiblauf, 34 ungesichtete Produkte getaggt, Kollektions-SEO überschrieben).
+  python3 automation/herbst_kuratieren.py                    TROCKEN (Standard): räumt und wählt nur auf dem
+                                                             Bildschirm, schreibt NICHTS (kein Shopify, keine Datei)
+  AUSWAHL_TROCKEN=<a.json> python3 …                         TROCKEN, Auswahl nach <a.json> (nie die Reihenfolge-Quelle)
+  KONTAKT=1 AUSWAHL_TROCKEN=<a.json> python3 …               Kontaktbogen dieser Auswahl (PFLICHT vor jeder Neuaufnahme;
+                                                             Bilder nach KONTAKT_DIR, sonst neben <a.json>)
+  SCHARF=1 GESICHTET=<ids.json> python3 …                    schreibt: räumt, nimmt NUR gesichtete IDs neu auf,
+                                                             Kollektion, Reihenfolge; Auswahl → /tmp/herbst_auswahl.json
+  SCHARF=1 python3 …                                         ohne GESICHTET: NUR räumen (wie NUR_RAEUMEN), nichts Neues
+  NUR_RAEUMEN=1 SCHARF=1 python3 …                           Aufseher (fixer_keepalive.sh): nur Unpassendes entfernen
+  SELBSTTEST=1 python3 automation/herbst_kuratieren.py       Regeln + Schreibsperren (kein Netz, Attrappe statt Shopify)
+  DRY=1 ist ein Alias für TROCKEN und gewinnt gegen SCHARF=1. Nach SAISON_ENDE entfernt SCHARF=1 den Tag überall
+  (auch ohne GESICHTET). Kollektions-SEO wird nur gesetzt, wenn sie live LEER ist — gepflegte SEO bleibt.
+  GESICHTET = JSON-Liste von Produkt-IDs (oder Objekten mit "id") aus der Kontaktbogen-Sichtung.
+
+EXIT-CODES: 0 = sauber (Aufseher schreibt FERTIG, 20 h Ruhe) · 2 = Aufruf/GESICHTET unbrauchbar, nichts getan ·
+  3 = NUR_RAEUMEN=1 OHNE Schreibrecht (SCHARF=1 fehlt oder DRY=1), aber es GIBT etwas zu räumen (Unpassendes oder
+  Saisonende). Letzte Zeile «PAUSE: …» → der Aufseher schreibt kein FERTIG, kühlt 1 h und versucht es neu; das Log
+  nennt die fehlende Startzeile. Ohne diese Regel endete der unbewaffnete Aufseher-Lauf mit 0 = FERTIG, und Sperr-/
+  DRAFT-Ware behielt den Tag still (Prüferbefund 14.10.2026). Ist nichts zu räumen, endet NUR_RAEUMEN auch trocken
+  mit 0 — ein scharfer Lauf hätte genau dasselbe (nichts) getan.
+  SELBSTTEST prüft auch die Startzeile im Aufseher (automation/fixer_keepalive.sh, oder AUFSEHER_SKRIPT=<pfad>):
+  sie muss «NUR_RAEUMEN=1 SCHARF=1» setzen — sonst ✘ (Commit-Tor).
 
 ⚠️ Fallen, die die Regeln abfangen (Kanarienvögel im Selbsttest):
    «schmEICHELhaft» ≠ Eichel · «Kürbis-SüssigkeitenSCHALE» ≠ Schal · «LederHANDSCHUH» ≠ Schuh ·
@@ -31,6 +51,29 @@ Onlineshop), verliert ihn beim nächsten Lauf. Nach SAISON_ENDE nimmt der Lauf d
    «Strickkleid für den STRANDurlaub» = Sommer · «BADEmantel» ≠ Mantel.
 """
 import datetime, json, os, re, subprocess, sys, time, zlib
+
+HILFE_ARGV = ("--help", "-h")
+
+
+def argv_tor(argv):
+    """Exit-Code für argv oder None (= weiter). Läuft VOR jedem weiteren Import und jedem Lesen/Schreiben:
+    leer → weiter · genau «--help»/«-h» → Hilfe, 0 · alles andere → Hilfe, 2. Das Werkzeug kennt keine Argumente;
+    ein «--help», das nicht ausgewertet wird, IST ein Schreiblauf (Vorfall 14.10.2026)."""
+    if not argv:
+        return None
+    if len(argv) == 1 and argv[0] in HILFE_ARGV:
+        print(__doc__)
+        return 0
+    sys.stderr.write(f"herbst_kuratieren: unbekannte Argumente {argv!r} — nichts gelesen, nichts geschrieben. "
+                     "Das Werkzeug nimmt KEINE Argumente, nur Umgebungsvariablen:\n")
+    sys.stderr.write((__doc__ or "") + "\n")
+    return 2
+
+
+if __name__ == "__main__":
+    _tor = argv_tor(sys.argv[1:])
+    if _tor is not None:
+        sys.exit(_tor)
 
 HIER = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HIER)
@@ -50,10 +93,34 @@ SHOP = "au3j0y-hq.myshopify.com"
 API = f"https://{SHOP}/admin/api/2026-01/graphql.json"
 TOKENDATEI = "/tmp/cj_shop_token.txt"
 EXPORT = os.environ.get("EXPORT", "/tmp/export.jsonl")
+# Reihenfolge-Quelle (ORDNEN_AUS_AUSWAHL=1): NUR der scharfe Lauf schreibt sie, und nur mit dem, was er WIRKLICH getaggt
+# hat. Bis 14.10. schrieb auch DRY hierher — eine nie geschriebene Trocken-Auswahl wäre dann Rang einer Reparatur.
+# Trockenläufe schreiben ihre Auswahl nur nach AUSWAHL_TROCKEN (Umgebungsvariable), sonst gar nicht.
 AUSWAHL = "/tmp/herbst_auswahl.json"
-DRY = os.environ.get("DRY") == "1"
 HEUTE = datetime.date.today()
-SAISON_ENDE = datetime.date(2026, 11, 30)   # danach übernimmt Weihnachten (Reihe ab 15.10. im Wechsel)
+
+
+def scharf():
+    """Schreiben NUR mit SCHARF=1; DRY=1 (Alias für trocken) gewinnt. Zur Laufzeit gelesen, nicht beim Import."""
+    return os.environ.get("SCHARF") == "1" and os.environ.get("DRY") != "1"
+
+
+# Startzeile des Aufsehers (fixer_keepalive.sh: `[ "$L" = herbst_kuratieren ] && EXP="…"`). Der Selbsttest liest sie dort
+# nach — bis 14.10. stand da nur «NUR_RAEUMEN=1», seit dem SCHARF-Tor räumt das nichts mehr.
+AUFSEHER_EXP = "NUR_RAEUMEN=1 SCHARF=1"
+EXIT_SCHARF_FEHLT = 3
+
+
+def raeumen_ohne_scharf(n, was):
+    """NUR_RAEUMEN ohne Schreibrecht, aber mit offener Arbeit → KEIN sauberes Ende (Exit 3, letzte Zeile PAUSE).
+    Exit 0 hiesse für den Aufseher FERTIG und 20 h Ruhe, während n Produkte den Tag zu Unrecht tragen."""
+    grund = "DRY=1 gesetzt" if os.environ.get("DRY") == "1" else "SCHARF=1 fehlt"
+    print(f"PAUSE: {grund} — {n} {was}, NICHTS geschrieben. Der Aufseher (fixer_keepalive.sh) muss mit "
+          f'EXP="{AUFSEHER_EXP}" starten · Exit {EXIT_SCHARF_FEHLT}, kein FERTIG', flush=True)
+    raise SystemExit(EXIT_SCHARF_FEHLT)
+
+
+SAISON_ENDE =datetime.date(2026, 11, 30)   # danach übernimmt Weihnachten (Reihe ab 15.10. im Wechsel)
 TAG = "herbst-2026"
 HANDLE = "herbst-favoriten"
 TITEL = "🍂 Herbst-Favoriten"
@@ -64,8 +131,30 @@ ZIEL_MIN, ZIEL_MAX = 40, int(os.environ.get("ZIEL_MAX", "150"))
 QUOTE_FAKTOR = float(os.environ.get("QUOTE_FAKTOR", "2"))
 # GESICHTET=<json-Liste von IDs>: Neuaufnahme NUR aus einer per Kontaktbogen freigegebenen Liste. Ohne diese Sperre
 # rückt nach jedem Ausschluss ein ungesehener Kandidat nach, und der scharfe Lauf schreibt ihn (24.09.: 3 Runden,
-# 67 → 16 → 7 Nachrücker, immer schwächer in den dünnen Themen Wärme/Tee).
-GESICHTET = set(json.load(open(os.environ["GESICHTET"]))) if os.environ.get("GESICHTET") else None
+# 67 → 16 → 7 Nachrücker, immer schwächer in den dünnen Themen Wärme/Tee). Seit 14.10. PFLICHT für jede Neuaufnahme:
+# SCHARF=1 ohne GESICHTET räumt nur. Gelesen erst in main() (gesichtet_laden), nicht beim Import.
+GESICHTET_ID = re.compile(r"^gid://shopify/Product/\d+$")
+
+
+def gesichtet_laden():
+    """None (keine Liste) oder Menge der freigegebenen IDs. Kaputte/fehlende Liste → Exit 2, bevor Shopify gefragt wird."""
+    pfad = os.environ.get("GESICHTET")
+    if not pfad:
+        return None
+    try:
+        roh = json.load(open(pfad))
+        if not isinstance(roh, list):
+            raise ValueError("keine JSON-Liste")
+        ids = {x.get("id") if isinstance(x, dict) else x for x in roh}
+        falsch = [i for i in ids if not (isinstance(i, str) and GESICHTET_ID.match(i))]
+        if falsch:
+            raise ValueError(f"{len(falsch)} Einträge sind keine Produkt-ID, z. B. {falsch[0]!r}")
+    except Exception as e:
+        sys.stderr.write(f"ABBRUCH: GESICHTET={pfad} unbrauchbar ({type(e).__name__}: {e}) — nichts gelesen, nichts geschrieben\n")
+        raise SystemExit(2)
+    return ids
+
+
 MIN_PREIS = 19.0
 MIN_KANTE = 600
 GOOGLE = "gid://shopify/Publication/302872297857"
@@ -73,13 +162,25 @@ ONLINESHOP = "gid://shopify/Publication/301970915713"
 # Dieselben sechs Kanäle wie hype-jetzt (gemessen 23.09.: Online Store, Shop, TikTok, FB & IG, Google, Pinterest)
 KANAELE = ["301970915713", "301971014017", "302032716161", "302566834561", "302872297857", "302994456961"]
 
-SEO_TITEL = "Herbst-Favoriten: Strick, Hoodies & Boots | LuxeStyle"
-SEO_TEXT = ("Herbst-Favoriten für die Schweiz: Hoodies, Strick, Übergangsjacken, Boots, Kerzen und "
-            "Kuscheldecken. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.")
+# 14.10.2026: Vorlage = LIVE gepflegter Stand (collectionByHandle herbst-favoriten, gelesen 14.10. ~11 UTC, updatedAt
+# 10:26:36Z): keyword-gepflegt («Herbstmode»), S3-konform (kein «gratis», kein «geprüft», keine Tempo-Zusage; S3-Werkzeug
+# bearbeiten() lässt beide Felder unverändert). Die alte Vorlage «Herbst-Favoriten: Strick, Hoodies & Boots» hat der
+# Fehlstart vom 14.10. 10:14 live geschrieben und damit «Herbstmode» verdrängt. kollektion_sichern() setzt SEO ohnehin
+# nur noch, wenn sie live LEER ist (bzw. beim Anlegen) — eine gepflegte SEO überschreibt kein Lauf mehr.
+SEO_TITEL = "Herbstmode: Hoodies, Strick, Jacken & Stiefel | LuxeStyle"
+SEO_TEXT = ("Herbstmode für Damen und Herren: Hoodies, Strickpullover, Jacken, Mäntel, Stiefel und Handschuhe, "
+            "dazu Kürbis-Kissen. Versand in die ganze Schweiz.")
+# Nur beim ANLEGEN der Kollektion benutzt (ein bestehender Text wird nie überschrieben). = live gepflegter Text in der
+# S3-Fassung («Gratis-Versand in der Schweiz ab CHF 50», wie kollektion_versprechen_s3.py R6 ihn plant), OHNE den
+# Block <!-- ls-verwandt --> (gehört interne_links.py, der ihn selbst setzt).
 BESCHREIBUNG = ("<p>Wenn die Tage kürzer werden: warme Hoodies und Strick, Übergangsjacken und Boots für "
                 "nasse Tage, dazu Kerzen, Kuscheldecken und alles für die Tasse Tee am Abend. Jeder Artikel "
                 "hat mehrere Bilder, die Lieferzeit steht auf der Produktseite.</p>"
-                "<p>Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · Bezahlen mit TWINT, Klarna oder Karte.</p>")
+                "<p>Gratis-Versand in der Schweiz ab CHF 50 · 30 Tage Rückgabe · Bezahlen mit TWINT, Klarna oder Karte.</p>\n"
+                "<p><strong>Mehr Ideen:</strong> <a href=\"/collections/halloween\">Halloween</a> · "
+                "<a href=\"/collections/winter-kaelte\">Winter &amp; Kälte</a> · "
+                "<a href=\"/collections/winterjacken\">Winterjacken</a> · "
+                "<a href=\"/blogs/ratgeber/wohn-ideen-herbst-2026\">Ratgeber: Herbst-Deko</a></p>")
 
 # ── Themen ─────────────────────────────────────────────────────────────────────────────────
 # Reihenfolge = Vorrang (erster Treffer gewinnt): «Heizjacke» ist Wärme, nicht Jacke;
@@ -321,7 +422,17 @@ def aehnlich(a, b):
 
 
 # ── Netz ───────────────────────────────────────────────────────────────────────────────────
+class SchreibSperre(RuntimeError):
+    """Mutation ohne SCHARF=1 — wird VOR dem Token-Lesen und vor jedem Netzaufruf geworfen."""
+
+
+MUTATION = re.compile(r"^\s*mutation\b")
+
+
 def gql(q, v=None):
+    # Letzte Schranke: welcher Ablauf auch immer hierher findet — ohne SCHARF=1 verlässt keine Mutation den Prozess.
+    if MUTATION.match(q) and not scharf():
+        raise SchreibSperre("Mutation ohne SCHARF=1 abgelehnt, nichts geschrieben: " + q.strip()[:70])
     tok = open(TOKENDATEI).read().strip()
     drossel = 0
     for versuch in range(8):
@@ -409,7 +520,7 @@ def kanarienvogel():
 
 
 # ── Auswahl ────────────────────────────────────────────────────────────────────────────────
-def kandidaten():
+def kandidaten(gesichtet=None):
     alter_h = (time.time() - os.path.getmtime(EXPORT)) / 3600
     print(f"Export {EXPORT}: {alter_h:.1f} h alt", flush=True)
     if alter_h > 72:
@@ -430,7 +541,7 @@ def kandidaten():
         k = thema_von(p["title"], p.get("productType"))
         if not k or not netz_ok(p["title"], tags) or p["id"] in AUSGESCHLOSSEN:
             continue
-        if GESICHTET is not None and p["id"] not in GESICHTET:
+        if gesichtet is not None and p["id"] not in gesichtet:
             continue
         mc = (p.get("mediaCount") or {}).get("count", 0)
         punkte = (2 if "ch-lager" in tags else 0) + (1 if "eu-lager" in tags else 0) + min(mc, 8) / 2 \
@@ -498,8 +609,12 @@ def kollektion_sichern():
     d = gql('query($h:String!){collectionByHandle(handle:$h){id title sortOrder descriptionHtml seo{title description}'
             ' ruleSet{rules{column relation condition}} resourcePublicationsCount{count}}}', {"h": HANDLE})
     c = d["data"]["collectionByHandle"]
-    if DRY:
-        print(f"(DRY) Kollektion {'vorhanden' if c else 'würde angelegt'}: {HANDLE}", flush=True)
+    seo = (c or {}).get("seo") or {}
+    seo_t, seo_d = (seo.get("title") or "").strip(), (seo.get("description") or "").strip()
+    if not scharf():
+        print(f"(TROCKEN) Kollektion {'vorhanden' if c else 'würde angelegt'}: {HANDLE}", flush=True)
+        if c and seo_t and seo_d and (seo["title"], seo["description"]) != (SEO_TITEL, SEO_TEXT):
+            print("(TROCKEN) SEO live gepflegt und ≠ Vorlage — bleibt unverändert (nur leere SEO wird gefüllt)", flush=True)
         return c and c["id"]
     if not c:
         r = gql('mutation($i:CollectionInput!){collectionCreate(input:$i){collection{id} userErrors{field message}}}',
@@ -517,8 +632,13 @@ def kollektion_sichern():
         upd = {}
         if c["title"] != TITEL:
             upd["title"] = TITEL
-        if (c.get("seo") or {}).get("title") != SEO_TITEL or (c.get("seo") or {}).get("description") != SEO_TEXT:
-            upd["seo"] = {"title": SEO_TITEL, "description": SEO_TEXT}
+        # 14.10.2026: NUR leere Felder füllen. Bis heute setzte jeder betreute Lauf die Vorlage durch und überschrieb die
+        # keyword-gepflegte SEO («Herbstmode: …», Fehlstart 10:14 UTC). Gepflegte SEO gehört den SEO-Werkzeugen.
+        if not seo_t or not seo_d:
+            upd["seo"] = {"title": seo["title"] if seo_t else SEO_TITEL,
+                          "description": seo["description"] if seo_d else SEO_TEXT}
+        elif (seo["title"], seo["description"]) != (SEO_TITEL, SEO_TEXT):
+            print("SEO live gepflegt und ≠ Vorlage — bleibt unverändert (nur leere SEO wird gefüllt)", flush=True)
         if c["sortOrder"] != "MANUAL":
             upd["sortOrder"] = "MANUAL"
         if upd:
@@ -552,7 +672,7 @@ def ordnen(cid, themen_von_id, rang=None):
         for k in reihenfolge:
             if toepfe.get(k):
                 liste.append(toepfe[k].pop(0))
-    if DRY or not cid:
+    if not scharf() or not cid:
         return liste
     moves = [{"id": pid, "newPosition": str(i)} for i, pid in enumerate(liste)]
     r = gql('mutation($id:ID!,$m:[MoveInput!]!){collectionReorderProducts(id:$id,moves:$m){job{id} userErrors{message}}}',
@@ -604,12 +724,21 @@ def tag_setzen(pid, add=True):
 
 
 def kontaktbogen():
+    """Kontaktbogen der TROCKEN-Auswahl (AUSWAHL_TROCKEN). Bis 14.10. las er /tmp/herbst_auswahl.json — dieselbe Datei,
+    die der scharfe Lauf als Reihenfolge-Quelle schreibt; man konnte so die ALTE Auswahl sichten und die neue freigeben."""
+    quelle = os.environ.get("AUSWAHL_TROCKEN")
+    if not quelle or not os.path.exists(quelle):
+        sys.stderr.write("KONTAKT=1 braucht AUSWAHL_TROCKEN=<a.json> — die Auswahl eines Trockenlaufs "
+                         f"(gesetzt: {quelle!r}). Nichts getan.\n")
+        return 2
     from PIL import Image, ImageDraw
-    a = json.load(open(AUSWAHL))
+    a = json.load(open(quelle))
     if os.environ.get("KONTAKT_NEU"):   # nur, was im vorigen Bogen noch nicht zu sehen war
         alt = {c["id"] for c in json.load(open(os.environ["KONTAKT_NEU"]))}
         a = [c for c in a if c["id"] not in alt]
-    os.makedirs("/tmp/herbst_bilder", exist_ok=True)
+    ordner = os.environ.get("KONTAKT_DIR") or os.path.dirname(os.path.abspath(quelle))
+    bilder = os.path.join(ordner, "herbst_bilder")
+    os.makedirs(bilder, exist_ok=True)
     S, SP = 300, 6
     for teil in range(0, len(a), 36):
         stueck = a[teil:teil + 36]
@@ -617,7 +746,7 @@ def kontaktbogen():
         bl = Image.new("RGB", (SP * S, zeilen * (S + 34)), "white")
         zd = ImageDraw.Draw(bl)
         for i, c in enumerate(stueck):
-            f = f"/tmp/herbst_bilder/{zlib.crc32(c['id'].encode())}.jpg"
+            f = os.path.join(bilder, f"{zlib.crc32(c['id'].encode())}.jpg")
             if not os.path.exists(f) and c.get("bild"):
                 subprocess.run(["curl", "-s", "--max-time", "40", "-o", f, c["bild"].split("?")[0] + "?width=400"])
             x, y = (i % SP) * S, (i // SP) * (S + 34)
@@ -627,12 +756,430 @@ def kontaktbogen():
                 zd.text((x + 8, y + 8), "KEIN BILD", fill="red")
             zd.text((x + 4, y + S + 4), f"{teil + i + 1}. [{c['thema']}] CHF {c['preis']:.0f}", fill="black")
             zd.text((x + 4, y + S + 18), c["title"][:44], fill="black")
-        pfad = f"/tmp/herbst_kontakt_{teil // 36 + 1}.png"
+        pfad = os.path.join(ordner, f"herbst_kontakt_{teil // 36 + 1}.png")
         bl.save(pfad)
         print(f"Kontaktbogen: {pfad} ({len(stueck)} Bilder)", flush=True)
+    return 0
 
 
-def selbsttest():
+# ── Selbsttest ─────────────────────────────────────────────────────────────────────────────
+# argv-Probe: ein Kindprozess führt das Skript unter einem Audit-Haken aus, der JEDES Öffnen einer Nicht-Code-Datei
+# (Token, Export, GESICHTET, Auswahl …), jeden Fremdprozess (curl) und jeden Netzaufruf abweist UND protokolliert.
+# Soll: Exit-Code wie verlangt, Hilfe ausgegeben, Protokoll leer. Ein ignoriertes Argument kann so nichts anrichten —
+# auch nicht in der Gegenprobe gegen eine Fassung ohne Tor.
+_TORPROBE = "--herbst-torprobe-0f3c"
+_TORPROBE_KIND = r"""
+import os, runpy, sys
+ziel, args, spuren = sys.argv[2], sys.argv[3:], []
+def _haken(ev, a):
+    if ev == "open":
+        p = a[0] if a else None
+        if p is None or isinstance(p, int):
+            return
+        p = os.fsdecode(p)
+        if p.endswith((".py", ".pyc", ".so")) or os.path.isdir(p):
+            return
+        spuren.append("open " + p)
+        raise PermissionError("Torprobe: Datei gesperrt: " + p)
+    if ev in ("subprocess.Popen", "os.system", "os.exec", "os.spawn", "os.posix_spawn", "os.fork",
+              "socket.connect", "socket.getaddrinfo", "urllib.Request"):
+        spuren.append(ev)
+        raise PermissionError("Torprobe: gesperrt: " + ev)
+sys.addaudithook(_haken)
+sys.argv = [ziel] + args
+code = 0
+try:
+    runpy.run_path(ziel, run_name="__main__")
+except SystemExit as e:
+    code = e.code if isinstance(e.code, int) else (0 if e.code is None else 1)
+except BaseException as e:
+    code = 99
+    spuren.append(type(e).__name__)
+sys.stderr.write("\nTORPROBE " + repr((code, spuren)) + "\n")
+"""
+_SPERRE = []
+_SCHALTER = ("SCHARF", "DRY", "NUR_RAEUMEN", "GESICHTET", "AUSWAHL_TROCKEN", "KONTAKT", "KONTAKT_NEU", "KONTAKT_DIR",
+             "SELBSTTEST", "ORDNEN_AUS_AUSWAHL")
+_SENTINEL = '["REIHENFOLGE-QUELLE-UNVERAENDERT"]'
+_P = {k: "gid://shopify/Product/9%012d" % n for n, k in enumerate(("bleibt", "raus", "neu_g", "neu_u"), 1)}
+_P_TITEL = {"bleibt": "Damen Strickpullover mit Zopfmuster", "raus": "Herren Kapuzenpullover aus Fleece",
+            "neu_g": "Flanell Kuscheldecke in Grau", "neu_u": "Damen Chelsea Boots aus Wildleder"}
+
+
+def _netzsperre():
+    """Selbsttest = kein Netz, keine Fremdprozesse ausser der argv-Probe (Audit-Haken; gilt bis zum Prozessende —
+    der Selbsttest läuft als eigener Prozess)."""
+    if _SPERRE:
+        return
+
+    def haken(ev, a):
+        if ev == "subprocess.Popen":
+            argv = a[1] if len(a) > 1 else None
+            if isinstance(argv, (list, tuple)) and _TORPROBE in argv:
+                return
+            raise PermissionError(f"Selbsttest: Fremdprozess gesperrt: {str(argv)[:80]}")
+        if ev in ("os.system", "os.exec", "os.spawn", "socket.connect", "socket.getaddrinfo", "urllib.Request"):
+            raise PermissionError(f"Selbsttest: {ev} gesperrt (kein Netz)")
+    sys.addaudithook(haken)
+    _SPERRE.append(1)
+
+
+class _VerboteneMutation(Exception):
+    pass
+
+
+class _Attrappe:
+    """Shopify-Attrappe: beantwortet die Abfragen dieses Werkzeugs aus einer Fixture-Welt. Mutationen werden
+    protokolliert; ohne Erlaubnis wirft sie _VerboteneMutation (der Ablauf bricht ab → Test rot)."""
+
+    def __init__(self, m, welt, erlaubt):
+        self.m, self.w, self.erlaubt, self.mut, self.n = m, welt, erlaubt, [], 0
+
+    def __call__(self, q, v=None):
+        self.n += 1
+        v, w = v or {}, self.w
+        if re.match(r"\s*mutation\b", q):
+            name = re.search(r"\)\s*\{\s*(\w+)", q).group(1)
+            self.mut.append((name, v))
+            if not self.erlaubt:
+                raise _VerboteneMutation(f"{name} ohne Schreiberlaubnis")
+            antwort = {"collectionCreate": {"collection": {"id": w["kid"]}, "userErrors": []},
+                       "collectionReorderProducts": {"job": {"id": "gid://shopify/Job/1"}, "userErrors": []}}
+            return {"data": {name: antwort.get(name, {"userErrors": []})}}
+        ids = [{"id": i} for i in w["getaggt"]]
+        seite = {"pageInfo": {"hasNextPage": False, "endCursor": None}, "nodes": ids}
+        if "zzz-kanarienvogel" in q:
+            return {"data": {"a": {"count": 0}}}
+        if 'query:"tag:' in q and "products(first:250" in q:
+            return {"data": {"products": seite}}
+        if "nodes(ids:" in q:
+            return {"data": {"nodes": [w["live"].get(i) for i in v["ids"]]}}
+        if "a:productsCount" in q:
+            return {"data": {"a": {"count": len(ids)}, "c": {
+                "id": w["kid"], "title": self.m.TITEL, "seo": w["koll"]["seo"], "productsCount": {"count": len(ids)},
+                "resourcePublicationsCount": {"count": 6}, "products": {"nodes": [{"title": "x"}]}}}}
+        if "ruleSet" in q:
+            return {"data": {"collectionByHandle": w["koll"]}}
+        if "publishedOnPublication" in q:
+            return {"data": {"collection": {"p": True}}}
+        if "c:collectionByHandle" in q:
+            return {"data": {"c": {"productsCount": {"count": 10 ** 6}}}}
+        if "job(id:" in q:
+            return {"data": {"job": {"done": True}}}
+        if "products(first:8)" in q:
+            return {"data": {"collection": {"products": {"nodes": ids[:8]}}}}
+        if "products(first:250" in q:
+            return {"data": {"collection": {"products": seite}}}
+        raise AssertionError("Attrappe kennt die Abfrage nicht: " + q[:80])
+
+
+def _welt(m, tmp, seo=None):
+    """Fixture: getaggt «bleibt» (passt) + «raus» (DRAFT); im Export zwei Neue, nur «neu_g» ist gesichtet."""
+    def node(k, status="ACTIVE"):
+        return {"id": _P[k], "title": _P_TITEL[k], "status": status, "tags": [], "productType": "",
+                "onlineStoreUrl": "https://luxestyle.ch/products/x", "tracksInventory": False, "totalInventory": 0,
+                "mediaCount": {"count": 4}, "priceRangeV2": {"minVariantPrice": {"amount": "39.90"}},
+                "featuredMedia": {"image": {"url": "https://cdn.shopify.com/x.jpg", "width": 1000, "height": 1000}},
+                "g": True}
+    live = {_P["bleibt"]: node("bleibt"), _P["raus"]: node("raus", "DRAFT"), _P["neu_g"]: node("neu_g"),
+            _P["neu_u"]: node("neu_u")}
+    w = {"kid": "gid://shopify/Collection/1", "live": live, "getaggt": [_P["bleibt"], _P["raus"]], "tmp": tmp,
+         "export": os.path.join(tmp, "export.jsonl"), "auswahl": os.path.join(tmp, "reihenfolge_quelle.json"),
+         "gesichtet": os.path.join(tmp, "gesichtet.json"), "trocken": os.path.join(tmp, "trocken.json")}
+    with open(w["export"], "w") as f:
+        for k in ("bleibt", "neu_g", "neu_u"):
+            f.write(json.dumps(dict(live[_P[k]], tags=[m.TAG] if k == "bleibt" else []), ensure_ascii=False) + "\n")
+    with open(w["auswahl"], "w") as f:
+        f.write(_SENTINEL)
+    with open(w["gesichtet"], "w") as f:
+        json.dump([_P["neu_g"]], f)
+    w["koll"] = {"id": w["kid"], "title": m.TITEL, "sortOrder": "MANUAL", "descriptionHtml": "<p>x</p>",
+                 "seo": seo if seo is not None else {"title": "Herbstmode gepflegt | LuxeStyle",
+                                                     "description": "Gepflegte Beschreibung mit Suchwort."},
+                 "ruleSet": {"rules": [{"column": "TAG", "relation": "EQUALS", "condition": m.TAG}]},
+                 "resourcePublicationsCount": {"count": 6}}
+    return w
+
+
+class _Umgebung:
+    """Setzt GENAU die genannten Schalter (alle anderen aus _SCHALTER weg) und stellt danach alles wieder her."""
+
+    def __init__(self, **werte):
+        self.werte = {k: str(x) for k, x in werte.items()}
+
+    def __enter__(self):
+        self.alt = {k: os.environ.get(k) for k in set(_SCHALTER) | set(self.werte)}
+        for k in _SCHALTER:
+            os.environ.pop(k, None)
+        os.environ.update(self.werte)
+
+    def __exit__(self, *a):
+        for k, x in self.alt.items():
+            if x is None:
+                os.environ.pop(k, None)
+            else:
+                os.environ[k] = x
+
+
+def _lauf(m, w, erlaubt, heute, **umgebung):
+    """main() des Moduls m gegen die Attrappe; Rückgabe (Attrappe, Exit-Code, Ausnahme, Ausgabe)."""
+    import contextlib, io
+    att = _Attrappe(m, w, erlaubt)
+    alt = {k: getattr(m, k) for k in ("gql", "EXPORT", "AUSWAHL", "HEUTE")}
+    for k, x in (("gql", att), ("EXPORT", w["export"]), ("AUSWAHL", w["auswahl"]), ("HEUTE", heute)):
+        setattr(m, k, x)
+    puffer, code, fehler = io.StringIO(), None, None
+    try:
+        with _Umgebung(**umgebung), contextlib.redirect_stdout(puffer), contextlib.redirect_stderr(puffer):
+            try:
+                m.main()
+                code = 0
+            except SystemExit as e:
+                code = e.code if isinstance(e.code, int) else (0 if e.code is None else 1)
+            except Exception as e:
+                fehler = f"{type(e).__name__}: {e}"
+    finally:
+        for k, x in alt.items():
+            setattr(m, k, x)
+    return att, code, fehler, puffer.getvalue()
+
+
+_S3_LAND = re.compile(r"(?:\b[Ii]n|\b[Ii]nnerhalb|\b[Ff]ür|\b[Nn]ach|\b[Dd]urch)\s+(?:der\s+|die\s+)?(?:ganzen?\s+)?Schweiz\b"
+                      r"|\bschweizweit\b|\bCH\b(?![-‑]Lager)|Liechtenstein")   # = kollektion_versprechen_s3.LAND_RX
+
+
+def _versprechen_verstoesse(text):
+    """S3-Regeln für die Vorlagen: Gratis nur mit Land im selben Satzteil, kein «geprüft», keine Tempo-/Lager-Zusage,
+    kein «…»."""
+    v = []
+    for teil in re.split(r"[.!?](?=\s|<|$)|[·|•]|</?(?:p|li|ul|ol|h\d|div|br)\b[^>]*>", text):
+        if re.search(r"gratis|versandkostenfrei|versandfrei|kostenlose[nrm]?\s+Versand", teil, re.I) \
+                and not _S3_LAND.search(teil):
+            v.append("Gratis ohne Land: «" + re.sub(r"\s+", " ", teil).strip()[:50] + "»")
+    if re.search(r"gepr[üu]ft", text, re.I):
+        v.append("«geprüft»")
+    if re.search(r"schnell|blitz|express|kurze Lieferzeit|sofort lieferbar|Werktag|\b\d+\s*[–-]\s*\d+\s*Tage\b|"
+                 r"Schweizer Lager|CH-Lager|EU-Lager", text, re.I):
+        v.append("Tempo-/Lager-Zusage")
+    if "…" in text or "..." in text:
+        v.append("«…»")
+    return v
+
+
+# Aufseher-Tor nachgebaut (fixer_keepalive.sh, NACH-Liste): `python3 … && echo FERTIG`; Tor «erledigt» =
+# `letzter_lauf LOG | tail -n 3 | grep -qE "^(Zeit )?FERTIG"`; pause_kuehlt = `tail -1 LOG | grep -qE "^(Zeit )?PAUSE"`.
+_AUFSEHER_ZEIT = r"([0-9:]{8} |[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]{8,12}Z )?"   # wörtlich aus fixer_keepalive.sh
+
+
+def _aufseher_sieht(code, ausgabe):
+    """(FERTIG-Tor, PAUSE-Kühlung), wie der Aufseher einen Lauf mit diesem Exit-Code und dieser Ausgabe wertet."""
+    zeilen = ["START 2026-01-01T00:00:00Z (Aufseher)"] + ausgabe.splitlines()
+    if code == 0:
+        zeilen.append("FERTIG 2026-01-01T00:00:01Z (Tageslauf sauber beendet, Aufseher)")
+    fertig = any(re.match("^" + _AUFSEHER_ZEIT + "FERTIG", z) for z in zeilen[-3:])
+    pause = bool(re.match("^" + _AUFSEHER_ZEIT + "PAUSE", zeilen[-1]))
+    return fertig, pause
+
+
+def _aufseher_startzeilen(pfad):
+    """EXP-Werte, mit denen der Aufseher dieses Werkzeug startet ([] = ohne EXP); None = Datei fehlt / startet es nicht."""
+    try:
+        text = open(pfad, encoding="utf-8").read()
+    except OSError:
+        return None
+    exps, erwaehnt = [], False
+    for z in text.splitlines():
+        if z.lstrip().startswith("#") or not re.search(r"\bherbst_kuratieren\b", z):
+            continue
+        erwaehnt = True
+        t = re.search(r'"\$L"\s*=\s*"?herbst_kuratieren"?\s*\].*?\bEXP="([^"]*)"', z)
+        if t:
+            exps.append(t.group(1))
+    return exps if erwaehnt else None
+
+
+def _aufseher_zeile_pruefen(pruef):
+    """Commit-Tor: die Startzeile im Aufseher muss «NUR_RAEUMEN=1 SCHARF=1» setzen. Ohne SCHARF=1 räumt der Tageslauf
+    seit dem SCHARF-Tor nichts mehr (er endet dann mit Exit 3/PAUSE statt FERTIG — sichtbar, aber wirkungslos)."""
+    pfad = os.environ.get("AUFSEHER_SKRIPT") or os.path.join(HIER, "fixer_keepalive.sh")
+    exps = _aufseher_startzeilen(pfad)
+    if exps is None:
+        pruef(True, f"Aufseher-Startzeile: {os.path.basename(pfad)} fehlt oder startet das Werkzeug nicht — nichts zu prüfen")
+        return
+    schlecht = [e for e in exps if not {"NUR_RAEUMEN=1", "SCHARF=1"} <= set(e.split())
+                or "DRY=1" in e.split() or "GESICHTET" in e]
+    pruef(bool(exps) and not schlecht,
+          f'Aufseher-Startzeile ({os.path.basename(pfad)}) setzt EXP="{AUFSEHER_EXP}" — sonst räumt der Tageslauf nichts',
+          f"gefunden EXP={exps or 'keins'} in {pfad} → ersetzen durch: "
+          f'[ "$L" = herbst_kuratieren ] && EXP="{AUFSEHER_EXP}"')
+
+
+def _sicherheit(m):
+    """Schreibsperren gegen die Attrappe (Modul m; Gegenprobe: m = alte Fassung)."""
+    import ast, shutil, tempfile
+    fehler = 0
+
+    def pruef(ok, text, detail=""):
+        nonlocal fehler
+        fehler += not ok
+        print(("  ✔ " if ok else "  ✘ ") + text + ("" if ok or not detail else f"   [{detail}]"), flush=True)
+
+    # 1. argv-Tor
+    tor = getattr(m, "argv_tor", None)
+    pruef(callable(tor) and tor([]) is None, "argv-Tor: ohne Argumente weiter (so startet der Aufseher)",
+          "argv_tor fehlt" if not callable(tor) else "")
+    ziel = os.path.abspath(m.__file__)
+    env = {k: x for k, x in os.environ.items() if k not in _SCHALTER}
+    env["SCHARF"] = "1"   # schlimmster Fall: ein ignoriertes Argument wäre ein Schreiblauf
+    for args, soll in ((["--help"], 0), (["-h"], 0), (["--bogus"], 2), (["SCHARF=1"], 2), (["--help", "x"], 2)):
+        try:
+            r = subprocess.run([sys.executable, "-I", "-c", _TORPROBE_KIND, _TORPROBE, ziel] + args,
+                               capture_output=True, text=True, timeout=120, env=env)
+            zeile = [z for z in r.stderr.splitlines() if z.startswith("TORPROBE ")][-1]
+            code, spuren = ast.literal_eval(zeile[len("TORPROBE "):])
+            ok = code == soll and not spuren and "SCHARF=1" in (r.stdout if soll == 0 else r.stderr)
+            detail = f"Exit {code}, Zugriffe {spuren[:3]}"
+        except Exception as e:
+            ok, detail = False, f"{type(e).__name__}: {e}"[:120]
+        pruef(ok, f"argv-Tor: {' '.join(args):<12} → Exit {soll} + Hilfe, nichts gelesen/geschrieben/gesendet", detail)
+
+    tmp = tempfile.mkdtemp(prefix="herbst_selbsttest_")
+    try:
+        # 2. Letzte Schranke in gql(): Mutation ohne SCHARF=1 verlässt den Prozess nicht (vor Token und Netz)
+        alt_tok = getattr(m, "TOKENDATEI", None)
+        m.TOKENDATEI = os.path.join(tmp, "kein_token.txt")
+        try:
+            for umg, name in (({}, "ohne Schalter"), ({"SCHARF": "1", "DRY": "1"}, "SCHARF=1 + DRY=1")):
+                with _Umgebung(**umg):
+                    try:
+                        m.gql('mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}',
+                              {"id": _P["neu_u"], "t": ["zzz"]})
+                        ok, detail = False, "keine Ausnahme"
+                    except Exception as e:
+                        ok, detail = type(e).__name__ == "SchreibSperre", f"{type(e).__name__}: {e}"[:100]
+                pruef(ok, f"gql(): Mutation {name} → SchreibSperre, kein Token gelesen", detail)
+        finally:
+            m.TOKENDATEI = alt_tok
+
+        mitte = m.SAISON_ENDE - datetime.timedelta(days=30)
+        nach = m.SAISON_ENDE + datetime.timedelta(days=1)
+
+        def ablauf(erlaubt, heute=mitte, seo=None, vorbereiten=None, **umg):
+            w = _welt(m, tempfile.mkdtemp(dir=tmp), seo)
+            if vorbereiten:
+                vorbereiten(w)
+            umg = {k: w.get(x[1:-1], x) if x.startswith("<") else x for k, x in umg.items()}
+            att, code, f, aus = _lauf(m, w, erlaubt, heute, **umg)
+            return w, att, code, f, aus
+
+        def quelle_unveraendert(w):
+            return open(w["auswahl"]).read() == _SENTINEL
+
+        def kurz(att, f, code, aus=""):
+            return f"Exit {code}, Ausnahme {f}, Mutationen {[(n, (v.get('id') or '')[-4:]) for n, v in att.mut][:5]}"
+
+        # 3. Trocken (Standard, ohne Schalter) — mit GESICHTET, damit Auswahl + Vorschau wirklich laufen
+        w, att, code, f, aus = ablauf(False, GESICHTET="<gesichtet>")
+        pruef(f is None and code == 0 and not att.mut and quelle_unveraendert(w) and not os.path.exists(w["trocken"]),
+              "TROCKEN ohne SCHARF: räumt/wählt nur auf dem Bildschirm — 0 Mutationen, keine Datei, Quelle unberührt",
+              kurz(att, f, code))
+        w, att, code, f, aus = ablauf(False, GESICHTET="<gesichtet>", AUSWAHL_TROCKEN="<trocken>")
+        try:
+            ids = [c["id"] for c in json.load(open(w["trocken"]))]
+        except Exception as e:
+            ids = [f"{type(e).__name__}"]
+        pruef(f is None and not att.mut and ids == [_P["neu_g"]] and quelle_unveraendert(w),
+              "TROCKEN + AUSWAHL_TROCKEN: Auswahl nur dorthin (nur Gesichtete), Reihenfolge-Quelle unberührt",
+              kurz(att, f, code) + f", Datei {ids}")
+        w, att, code, f, aus = ablauf(False, GESICHTET="<gesichtet>", AUSWAHL_TROCKEN="<auswahl>")
+        pruef(f is None and not att.mut and quelle_unveraendert(w),
+              "TROCKEN: AUSWAHL_TROCKEN = Reihenfolge-Quelle wird verweigert", kurz(att, f, code))
+        # 4. NUR_RAEUMEN ohne SCHARF (= Aufseher-Zeile vor dem Umstellen) und DRY gewinnt gegen SCHARF: 0 Mutationen,
+        #    aber KEIN sauberes Ende — Exit 3, letzte Zeile PAUSE, der Aufseher schreibt kein FERTIG (Prüferbefund 14.10.:
+        #    bis dahin Exit 0 → FERTIG → 20 h Ruhe, der DRAFT behielt den Tag still).
+        for umg, name in (({"NUR_RAEUMEN": "1"}, "NUR_RAEUMEN ohne SCHARF"),
+                          ({"NUR_RAEUMEN": "1", "SCHARF": "1", "DRY": "1"}, "NUR_RAEUMEN + SCHARF + DRY=1")):
+            w, att, code, f, aus = ablauf(False, **umg)
+            fertig, pause = _aufseher_sieht(code, aus)
+            pruef(f is None and code == 3 and not att.mut and not fertig and pause and AUFSEHER_EXP in aus,
+                  f"{name}, 1 zu räumen: 0 Mutationen, Exit 3 + PAUSE → Aufseher schreibt KEIN FERTIG",
+                  kurz(att, f, code) + f", Aufseher: FERTIG={fertig} PAUSE={pause}, letzte Zeile "
+                  f"{(aus.splitlines() or [''])[-1][:60]!r}")
+        # 4b. … und ohne offene Arbeit endet derselbe Lauf sauber (ein scharfer Lauf hätte auch nichts getan)
+        w, att, code, f, aus = ablauf(False, vorbereiten=lambda w: w["live"][_P["raus"]].update(status="ACTIVE"),
+                                      NUR_RAEUMEN="1")
+        fertig, pause = _aufseher_sieht(code, aus)
+        pruef(f is None and code == 0 and not att.mut and fertig,
+              "NUR_RAEUMEN ohne SCHARF, nichts zu räumen: Exit 0 → FERTIG ist wahr",
+              kurz(att, f, code) + f", Aufseher: FERTIG={fertig}")
+        # 5. NUR_RAEUMEN + SCHARF räumt (genau der DRAFT), nichts sonst — und endet sauber
+        w, att, code, f, aus = ablauf(True, NUR_RAEUMEN="1", SCHARF="1")
+        fertig, pause = _aufseher_sieht(code, aus)
+        pruef(f is None and code == 0 and fertig
+              and [(n, v.get("id")) for n, v in att.mut] == [("tagsRemove", _P["raus"])],
+              "NUR_RAEUMEN + SCHARF: entfernt den Tag beim DRAFT, nichts sonst, Exit 0", kurz(att, f, code))
+        # 6. SCHARF ohne GESICHTET: nur räumen, KEINE Neuaufnahme, keine Kollektion/Reihenfolge
+        w, att, code, f, aus = ablauf(True, SCHARF="1")
+        pruef(f is None and code == 0 and [(n, v.get("id")) for n, v in att.mut] == [("tagsRemove", _P["raus"])],
+              "SCHARF ohne GESICHTET: Neuaufnahme blockiert, nur geräumt", kurz(att, f, code))
+        # 7. SCHARF + GESICHTET: nur Gesichtete neu, gepflegte SEO bleibt, Reihenfolge-Quelle = wirklich Getaggte
+        w, att, code, f, aus = ablauf(True, SCHARF="1", GESICHTET="<gesichtet>")
+        adds = {v["id"] for n, v in att.mut if n == "tagsAdd"}
+        rems = {v["id"] for n, v in att.mut if n == "tagsRemove"}
+        seo_upd = [v for n, v in att.mut if n == "collectionUpdate" and "seo" in (v.get("i") or {})]
+        try:
+            quelle = [c["id"] for c in json.load(open(w["auswahl"]))]
+        except Exception as e:
+            quelle = [f"{type(e).__name__}"]
+        pruef(f is None and code == 0 and adds == {_P["neu_g"]} and rems == {_P["raus"]},
+              "SCHARF + GESICHTET: tagsAdd NUR für die gesichtete ID, der Ungesichtete bleibt draussen",
+              kurz(att, f, code) + f", neu {sorted(a[-4:] for a in adds)}")
+        pruef(f is None and not seo_upd, "SCHARF + GESICHTET: gepflegte Kollektions-SEO wird NICHT überschrieben",
+              f"collectionUpdate seo: {[u['i']['seo'] for u in seo_upd][:1]}")
+        pruef(f is None and quelle == [_P["neu_g"]], "SCHARF + GESICHTET: Reihenfolge-Quelle = die wirklich getaggten",
+              f"Quelle {quelle}")
+        w, att, code, f, aus = ablauf(True, seo={"title": "", "description": ""}, SCHARF="1", GESICHTET="<gesichtet>")
+        seo_upd = [v["i"]["seo"] for n, v in att.mut if n == "collectionUpdate" and "seo" in (v.get("i") or {})]
+        pruef(f is None and seo_upd == [{"title": m.SEO_TITEL, "description": m.SEO_TEXT}],
+              "SCHARF + GESICHTET: LEERE Kollektions-SEO wird mit der Vorlage gefüllt", kurz(att, f, code))
+        # 8. Saisonende: ohne SCHARF nichts, mit SCHARF (auch ohne GESICHTET) alle Tags weg
+        w, att, code, f, aus = ablauf(False, heute=nach)
+        pruef(f is None and code == 0 and not att.mut, "Saisonende ohne SCHARF: 0 Mutationen", kurz(att, f, code))
+        w, att, code, f, aus = ablauf(True, heute=nach, SCHARF="1")
+        pruef(f is None and sorted((n, v.get("id")) for n, v in att.mut)
+              == sorted([("tagsRemove", _P["bleibt"]), ("tagsRemove", _P["raus"])]),
+              "Saisonende + SCHARF (ohne GESICHTET): Tag überall entfernt, sonst nichts", kurz(att, f, code))
+        # 8b. Saisonende im Aufseher: ohne SCHARF Exit 3 + PAUSE (kein FERTIG), mit der neuen Startzeile alles weg
+        w, att, code, f, aus = ablauf(False, heute=nach, NUR_RAEUMEN="1")
+        fertig, pause = _aufseher_sieht(code, aus)
+        pruef(f is None and code == 3 and not att.mut and not fertig and pause,
+              "Saisonende + NUR_RAEUMEN ohne SCHARF: 0 Mutationen, Exit 3 + PAUSE → KEIN FERTIG",
+              kurz(att, f, code) + f", Aufseher: FERTIG={fertig} PAUSE={pause}")
+        w, att, code, f, aus = ablauf(True, heute=nach, NUR_RAEUMEN="1", SCHARF="1")
+        fertig, pause = _aufseher_sieht(code, aus)
+        pruef(f is None and code == 0 and fertig and sorted((n, v.get("id")) for n, v in att.mut)
+              == sorted([("tagsRemove", _P["bleibt"]), ("tagsRemove", _P["raus"])]),
+              "Saisonende + NUR_RAEUMEN + SCHARF (neue Aufseher-Zeile): Tag überall entfernt, Exit 0", kurz(att, f, code))
+        # 9. Kaputte GESICHTET-Liste: Exit 2, Shopify nicht gefragt
+        w, att, code, f, aus = ablauf(True, SCHARF="1", GESICHTET=os.path.join(tmp, "fehlt.json"))
+        pruef(f is None and code == 2 and att.n == 0, "GESICHTET unlesbar → Exit 2, keine einzige Shopify-Abfrage",
+              f"Exit {code}, {att.n} Abfragen, Ausnahme {f}")
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+    # 10. Vorlagen nach S3 (Gratis nur mit Land, kein «geprüft», keine Tempo-Zusage, Längen)
+    for name, text, laenge in (("SEO_TITEL", m.SEO_TITEL, 70), ("SEO_TEXT", m.SEO_TEXT, 155),
+                               ("BESCHREIBUNG", m.BESCHREIBUNG, 10 ** 6)):
+        v = _versprechen_verstoesse(text) + ([f"{len(text)} > {laenge} Zeichen"] if len(text) > laenge else [])
+        pruef(not v, f"Vorlage {name}: S3-konform", "; ".join(v))
+    # 11. Startzeile im Aufseher (unabhängig von m — geprüft wird die Datei, mit der der Tageslauf startet)
+    _aufseher_zeile_pruefen(pruef)
+    return fehler
+
+
+def selbsttest(m=None):
+    """Kanarienvögel der Regeln + Schreibsperren. m = zu prüfendes Modul (Standard: dieses; Gegenprobe: alte Fassung)."""
+    m = m or sys.modules[__name__]
+    _netzsperre()
     faelle = [
         ("High-Waist Rock mit schmeichelhaftem Schnitt", None),
         ("Sprechende Kürbis-Süssigkeitenschale", None),
@@ -668,16 +1215,21 @@ def selbsttest():
     ]
     fehler = 0
     for titel, soll in faelle:
-        ist = thema_von(titel)
+        ist = m.thema_von(titel)
         ok = ist == soll
         fehler += not ok
         print(("  ✔ " if ok else "  ✘ ") + f"{titel[:55]:<55} → {ist} (soll {soll})")
-    ok = not netz_ok("Beheizbare Hausschuhe mit Temperaturregelung", []) and netz_ok("USB-Handwärmer", [])
+    ok = not m.netz_ok("Beheizbare Hausschuhe mit Temperaturregelung", []) and m.netz_ok("USB-Handwärmer", [])
     fehler += not ok
     print(("  ✔ " if ok else "  ✘ ") + "Netzgerät ohne USB/Akku fällt raus, USB-Gerät bleibt")
-    ok = not tags_ok(["preis-pruefen-cj-spanne"]) and not tags_ok(["18plus"]) and tags_ok(["bild-ok", "ch-lager"])
+    ok = not m.tags_ok(["preis-pruefen-cj-spanne"]) and not m.tags_ok(["18plus"]) and m.tags_ok(["bild-ok", "ch-lager"])
     fehler += not ok
     print(("  ✔ " if ok else "  ✘ ") + "Sperr-Tags (Präfix + Liste) greifen, harmlose Tags nicht")
+    # Fixture-Titel müssen ihr Thema treffen, sonst prüfen die Ablauf-Tests ins Leere
+    ok = [m.thema_von(_P_TITEL[k]) for k in ("bleibt", "raus", "neu_g", "neu_u")] == ["strick", "hoodie", "decke", "boots"]
+    fehler += not ok
+    print(("  ✔ " if ok else "  ✘ ") + "Fixture-Titel treffen ihre Themen (strick/hoodie/decke/boots)")
+    fehler += _sicherheit(m)
     print("SELBSTTEST BESTANDEN" if not fehler else f"SELBSTTEST FEHLGESCHLAGEN ({fehler})")
     return fehler
 
@@ -686,32 +1238,55 @@ def main():
     if os.environ.get("SELBSTTEST") == "1":
         sys.exit(selbsttest())
     if os.environ.get("KONTAKT") == "1":
-        kontaktbogen()
-        return
+        sys.exit(kontaktbogen())
+    s = scharf()
+    nur_raeumen = os.environ.get("NUR_RAEUMEN") == "1"
+    gesichtet = gesichtet_laden()               # kaputte Liste → Exit 2, bevor Shopify gefragt wird
+    # Neuaufnahme: trocken immer (nur Vorschau), scharf NUR aus der gesichteten Liste. SCHARF=1 ohne GESICHTET räumt nur.
+    darf_neu = not nur_raeumen and (gesichtet is not None or not s)
+    if not s:
+        modus = "TROCKEN — schreibt nichts (SCHARF=1 fehlt" + (", DRY=1 gesetzt" if os.environ.get("DRY") == "1" else "") + ")"
+    elif nur_raeumen:
+        modus = "SCHARF · nur räumen (NUR_RAEUMEN=1)"
+    elif gesichtet is None:
+        modus = "SCHARF · nur räumen — Neuaufnahme gesperrt, GESICHTET=<ids.json> fehlt"
+    else:
+        modus = f"SCHARF · räumen + Neuaufnahme NUR aus GESICHTET ({len(gesichtet)} IDs)"
+    print(f"MODUS: {modus}", flush=True)
     kanarienvogel()
     vorhanden = getaggte()
     print(f"Live getaggt «{TAG}»: {len(vorhanden)}", flush=True)
-    # 1. Saisonende: alles abräumen
+    # 1. Saisonende: alles abräumen (mit SCHARF=1 auch ohne GESICHTET)
     if HEUTE > SAISON_ENDE:
         print(f"Saison vorbei ({SAISON_ENDE}) — Tag wird überall entfernt", flush=True)
-        if not DRY:
+        if s:
             n = sum(tag_setzen(pid, add=False) for pid in vorhanden)
             print(f"FERTIG: {n} Tags entfernt", flush=True)
+        else:
+            print(f"TROCKEN: {len(vorhanden)} würden den Tag verlieren — nichts geschrieben (SCHARF=1 fehlt)", flush=True)
+            if nur_raeumen and vorhanden:   # unbewaffneter Aufseher nach Saisonende: nicht FERTIG melden
+                raeumen_ohne_scharf(len(vorhanden), f"tragen «{TAG}» nach Saisonende {SAISON_ENDE}")
         return
     # 2. Unpassendes abräumen
     lv = live(vorhanden) if vorhanden else {}
-    bleiben, themen = [], {}
+    bleiben, themen, raus = [], {}, 0
     for pid in vorhanden:
         grund = live_grund(lv.get(pid))
         if grund:
+            raus += 1
             print(f"  raus ({grund}): {(lv.get(pid) or {}).get('title', pid)[:60]}", flush=True)
-            if not DRY:
+            if s:
                 tag_setzen(pid, add=False)
         else:
             bleiben.append(pid)
             themen[pid] = thema_von(lv[pid]["title"], lv[pid].get("productType"))
-    if os.environ.get("NUR_RAEUMEN") == "1":
-        print(f"NUR_RAEUMEN: {len(bleiben)} bleiben", flush=True)
+    if raus and not s:
+        print(f"⚠️ TROCKEN: {raus} würden den Tag verlieren — nichts geschrieben (SCHARF=1 fehlt)", flush=True)
+    if not darf_neu:
+        print(f"{'NUR_RAEUMEN' if nur_raeumen else 'NUR RÄUMEN (ohne GESICHTET keine Neuaufnahme)'}: "
+              f"{len(bleiben)} bleiben, {raus} {'entfernt' if s else 'würden entfernt'}", flush=True)
+        if nur_raeumen and raus and not s:   # unbewaffneter Aufseher mit offener Arbeit: nicht FERTIG melden
+            raeumen_ohne_scharf(raus, f"tragen «{TAG}» zu Unrecht (DRAFT/Sperr-Tag/nicht im Onlineshop)")
         return
     # 3. Auffüllen bis ZIEL_MAX (Quote je Thema)
     je_thema = {}
@@ -720,7 +1295,12 @@ def main():
     platz = ZIEL_MAX - len(bleiben)
     neu, gruende = ([], {})
     if platz > 0:
-        neu, gruende = waehlen(kandidaten(), [lv[p]["title"] for p in bleiben], je_thema, platz)
+        neu, gruende = waehlen(kandidaten(gesichtet), [lv[p]["title"] for p in bleiben], je_thema, platz)
+    if gesichtet is not None:   # doppelt genäht: kandidaten() filtert schon — hier nur die harte Gegenprobe
+        fremd = [c["id"] for c in neu if c["id"] not in gesichtet]
+        if fremd:
+            raise SystemExit(f"ABBRUCH: {len(fremd)} gewählte IDs stehen nicht in GESICHTET (z. B. {fremd[0]}) — "
+                             "keine Neuaufnahme geschrieben")
     print(f"\nNeu gewählt: {len(neu)} · Live-Absagen: {gruende}", flush=True)
     for k, name, quote, _ in THEMEN:
         liste = [c for c in neu if c["thema"] == k]
@@ -730,9 +1310,18 @@ def main():
     gesamt = len(bleiben) + len(neu)
     if gesamt < ZIEL_MIN:
         print(f"⚠️ nur {gesamt} — unter dem Ziel {ZIEL_MIN}", flush=True)
-    if neu:   # ein Lauf ohne Neuaufnahme überschreibt die letzte Auswahl nicht (sie ist Reihenfolge-Quelle)
-        json.dump(neu, open(AUSWAHL, "w"), ensure_ascii=False, indent=1)
-    if DRY:
+    if not s:
+        # Trocken: Auswahl NUR nach AUSWAHL_TROCKEN, nie in die Reihenfolge-Quelle AUSWAHL.
+        ziel = os.environ.get("AUSWAHL_TROCKEN")
+        if not neu:
+            hinweis = "keine Neuaufnahme gewählt"
+        elif not ziel:
+            hinweis = "Auswahl NICHT gespeichert (AUSWAHL_TROCKEN=<a.json> setzen, dann KONTAKT=1 für den Kontaktbogen)"
+        elif os.path.abspath(ziel) == os.path.abspath(AUSWAHL):
+            hinweis = f"Auswahl NICHT gespeichert: AUSWAHL_TROCKEN zeigt auf die Reihenfolge-Quelle {AUSWAHL}"
+        else:
+            json.dump(neu, open(ziel, "w"), ensure_ascii=False, indent=1)
+            hinweis = f"Auswahl in {ziel} · KONTAKT=1 AUSWAHL_TROCKEN={ziel} für den Kontaktbogen"
         kollektion_sichern()
         reihe = ordnen(None, dict(themen, **{c["id"]: c["thema"] for c in neu}), {c["id"]: i for i, c in enumerate(neu)})
         titel = {c["id"]: c["title"] for c in neu}
@@ -740,16 +1329,18 @@ def main():
         print("Startseite (erste 8 Karten):", flush=True)
         for pid in reihe[:8]:
             print("   ", titel.get(pid, pid)[:70], flush=True)
-        print(f"DRY: nichts geschrieben · Auswahl in {AUSWAHL} · KONTAKT=1 für den Kontaktbogen", flush=True)
+        print(f"TROCKEN: nichts geschrieben · {hinweis}", flush=True)
         return
-    # 4. Schreiben
-    n = 0
+    # 4. Schreiben (SCHARF=1 + GESICHTET)
+    getaggt = []
     for c in neu:
         if tag_setzen(c["id"]):
-            n += 1
+            getaggt.append(c)
             themen[c["id"]] = c["thema"]
         time.sleep(0.2)
-    print(f"Getaggt: {n} von {len(neu)}", flush=True)
+    print(f"Getaggt: {len(getaggt)} von {len(neu)}", flush=True)
+    if getaggt:   # Reihenfolge-Quelle = was WIRKLICH geschrieben wurde; ein Lauf ohne Neuaufnahme lässt sie stehen
+        json.dump(getaggt, open(AUSWAHL, "w"), ensure_ascii=False, indent=1)
     cid = kollektion_sichern()
     # ⚠️ 23.09.2026: Erster Lauf ordnete nach 3 s — die Smart-Regel hatte die 65 frischen Tags da noch nicht
     # übernommen, collectionReorderProducts meldete «ok» und die Reihe stand nach Produkt-ID sortiert
@@ -759,19 +1350,19 @@ def main():
         if d["data"]["c"]["productsCount"]["count"] >= len(themen):
             break
         time.sleep(4)
-    ordnen(cid, themen, rang_holen(cid, neu))
+    ordnen(cid, themen, rang_holen(cid, getaggt))
     # 5. Rücklesen
     d = gql('query($h:String!){c:collectionByHandle(handle:$h){id title seo{title description}'
             ' productsCount{count} resourcePublicationsCount{count} products(first:8){nodes{title}}}'
             ' a:productsCount(query:"tag:%s status:active",limit:null){count}}' % TAG, {"h": HANDLE})
     c = d["data"]["c"]
     print(f"RÜCKGELESEN: {d['data']['a']['count']} aktiv getaggt · Kollektion {c['productsCount']['count']} Produkte "
-          f"· {c['resourcePublicationsCount']['count']} Kanäle · SEO {len(c['seo']['title'])}/{len(c['seo']['description'])} Zeichen",
+          f"· {c['resourcePublicationsCount']['count']} Kanäle · SEO {len(c['seo']['title'] or '')}/{len(c['seo']['description'] or '')} Zeichen",
           flush=True)
     for p in c["products"]["nodes"]:
         print("   ", p["title"][:70], flush=True)
     print(bilanz(), flush=True)
-    print(f"FERTIG {HEUTE}: {gesamt} in der Herbst-Reihe", flush=True)
+    print(f"FERTIG {HEUTE}: {len(bleiben) + len(getaggt)} in der Herbst-Reihe", flush=True)
 
 
 if __name__ == "__main__":

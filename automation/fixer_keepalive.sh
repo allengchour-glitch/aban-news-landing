@@ -695,8 +695,9 @@ while true; do
     [ "$L" = google_bild_abruf ] && EXP="SCHARF=1"
     # 14.10.2026: Startseite schlank (A2–A5) nach Theme-Update/Editor wieder setzen; Anker fehlt → nichts schreiben, Exit 1, Zeile im Log.
     [ "$L" = startseite_schlank_patch ] && EXP="SCHARF=1"
-    # 23.09.: herbst_kuratieren nur RAEUMEN (Sperr-Tags raus, nach 30.11. Tag weg) — Neuaufnahmen nur in betreuten Laeufen.
-    [ "$L" = herbst_kuratieren ] && EXP="NUR_RAEUMEN=1"
+    # 23.09.: herbst_kuratieren nur RAEUMEN (Sperr-Tags/DRAFT raus, nach 30.11. Tag weg) — Neuaufnahme nur betreut mit GESICHTET.
+    # 14.10.: seit dem «--help»-Vorfall schreibt das Skript nur noch mit SCHARF=1 (ohne: Exit 3 + PAUSE-Zeile, kein FERTIG).
+    [ "$L" = herbst_kuratieren ] && EXP="NUR_RAEUMEN=1 SCHARF=1"
     if [ "$L" = verlustbringer ]; then [ -f /tmp/kost28.jsonl ] || continue; EXP="SCHARF=1 CAP=300 EXPORT=/tmp/kost28.jsonl"; fi
     # 24.09.2026 Betreiber «ändere preise so das ich nie verlust mache» → Entscheid «Codes bleiben, Preise decken 25 %»:
     # jeder Preis muss den grössten Code (25 %) plus Gratisversand tragen. Nur heben; Faktor > 2 → Variante DENY statt
