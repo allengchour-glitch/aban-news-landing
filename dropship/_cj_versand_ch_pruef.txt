@@ -8421,3 +8421,6 @@ kabellose-ohrhorer-212992	1467746365969928192	7	6.81	ok	landeseite
 kurzarm-hemd-921280	1653941346384105472	16	7.71	ok	landeseite
 baby-rucksack-mit-isolierfach-543552	1636285455366893568	16	21.99	ok	landeseite
 fischschuppen-scraper-c60881	1475747210271526912	16	5.50	ok	landeseite
+aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben	-	-	-	unklar keine CJ-SKU	landeseite
+aroma-diffuser-holzoptik-hohl-design-ultraschall-luftbefeuchter-mit-led-licht	-	-	-	unklar keine CJ-SKU	landeseite
+streifen-bluse-marbella-color-block-kurzarm	-	-	-	unklar keine CJ-SKU	landeseite
