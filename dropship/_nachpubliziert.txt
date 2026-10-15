@@ -370,3 +370,5 @@ gid://shopify/Product/16639111692679	harz-skulptur-madchen-mit-ballon-627900	Har
 gid://shopify/Product/16639120179591	rucksack-aus-pu-leder-e68df8	Rucksack aus PU-Leder
 gid://shopify/Product/16639254954375	rucksack-mit-usb-ladeanschluss-und-laptopfach-a6dc12	Rucksack mit USB-Ladeanschluss und Laptopfach
 gid://shopify/Product/16639256068487	bluetooth-sportarmband-mit-anruferinnerung-359040	Bluetooth Sportarmband mit Anruferinnerung
+gid://shopify/Product/16639256527239	herren-sneaker-mit-farbblock-und-netzstoff-617900	Herren-Sneaker mit Farbblock und Netzstoff
+gid://shopify/Product/16639260557703	outdoor-smartwatch-mit-dreifach-positionierung-134592	Outdoor-Smartwatch mit Dreifach-Positionierung
