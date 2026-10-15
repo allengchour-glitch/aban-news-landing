@@ -370,3 +370,4 @@
 2026-10-13	gid://shopify/Product/16616723579271	natel	Robuste Outdoor-Handytasche
 2026-10-14	gid://shopify/Product/16617703932295	natel	Magnetischer Handy-Kühler mit Digitalanzeige
 2026-10-14	gid://shopify/Product/16617711993223	natel	Wandmontierter Handyhalter
+2026-10-15	gid://shopify/Product/16638828118407	natel	3D Projektor für Smartphone-Mirroring 1080p
