@@ -532,3 +532,4 @@
 2026-10-15T03:16:46.373Z	luxe-epic-trailer.wav	7.75	haustier	cjreel-CJYD189003201AZ	stimme:ja	azure:de-CH-JanNeural
 2026-10-15T03:18:20.422Z	luxe-epic-hybrid.wav	37.5	home	cjreel-CJYDQCZX00334-love	stimme:nein	anteil
 2026-10-15T03:21:08.000Z	luxe-epic-winter.wav	34.0	fitness	bildreel-sportlicher-herren-hoodie-mit-taschen-615200	stimme:nein	anteil	quelle:bild
+2026-10-15T04:14:57.627Z	luxe-orchestra.wav	18	allgemein	cjreel-CJXFLPJY00674-Black	stimme:ja	azure:de-CH-JanNeural
