@@ -2400,3 +2400,6 @@
 16617684959623	Muster:6:6+ki	2026-10-15	winterlicher-streifen-schal-625000
 16617679716743	Motiv:2:2+ki	2026-10-15	keramiktasse-mit-untertasse-tiermotiv-600800
 16617679651207	Motiv:2:2+ki	2026-10-15	keramiktasse-retro-mit-blumenmuster-250-ml-615500
+16616679113095	Farbe:6+Grösse:4:21+ki	2026-10-15	high-waist-yoga-shorts-mit-raffung-602200
+16616677966215	Farbe:5+Grösse:4:20+ki	2026-10-15	zweiteilige-laufshorts-fur-damen-612600
+16616677015943	Farbe:7+Grösse:6:42+ki	2026-10-15	tie-dye-waffel-shorts-fur-sport-und-freizeit-638400
