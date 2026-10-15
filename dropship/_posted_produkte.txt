@@ -275,3 +275,6 @@ name:tomatenundtraubenschneider
 pid:15517578985857
 slug:tomaten-und-traubenschneider-1587e1
 slug:u-formige-warmflasche-fur-nacken-und-schultern-bd844c
+name:haustierreisemattefürdasauto
+pid:15480279761281
+slug:haustier-reisematte-fur-das-auto
