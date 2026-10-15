@@ -534,3 +534,4 @@
 2026-10-15T03:21:08.000Z	luxe-epic-winter.wav	34.0	fitness	bildreel-sportlicher-herren-hoodie-mit-taschen-615200	stimme:nein	anteil	quelle:bild
 2026-10-15T04:14:57.627Z	luxe-orchestra.wav	18	allgemein	cjreel-CJXFLPJY00674-Black	stimme:ja	azure:de-CH-JanNeural
 2026-10-15T04:18:17.004Z	luxe-epic-anime.wav	4.75	haustier	cjreel-CJYD196025501AZ	stimme:nein	anteil
+2026-10-15T04:27:15.914Z	luxe-adventure-uplift.wav	41	allgemein	cjreel-CJXFZNKC00131-Black	stimme:nein	anteil
