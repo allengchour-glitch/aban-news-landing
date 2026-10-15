@@ -2403,3 +2403,7 @@
 16616679113095	Farbe:6+Grösse:4:21+ki	2026-10-15	high-waist-yoga-shorts-mit-raffung-602200
 16616677966215	Farbe:5+Grösse:4:20+ki	2026-10-15	zweiteilige-laufshorts-fur-damen-612600
 16616677015943	Farbe:7+Grösse:6:42+ki	2026-10-15	tie-dye-waffel-shorts-fur-sport-und-freizeit-638400
+16616675312007	Farbe:4+Grösse:6:24+ki	2026-10-15	baumwoll-top-mit-prinzessarmeln-614200
+16616674984327	Ausführung:2+Grösse:2:4+ki	2026-10-15	knieschoner-mit-patella-stabilisierung-605500
+16616558166407	Farbe:4:4+ki	2026-10-15	wasserdichte-fahrrad-hecktasche-604300
+16616556691847	Farbe:5:5+ki	2026-10-15	outdoor-wanderrucksack-20-35-l-wasserdicht-628900
