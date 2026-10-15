@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-15T02:07Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-15T03:14Z
 
-Aktive gescannt: 77 · ohne Kategorie: 77 · heute gesetzt: 72 (SCHARF, CAP 1500) · danach offen: 5 · Fehler: 0
+Aktive gescannt: 15 · ohne Kategorie: 15 · heute gesetzt: 10 (SCHARF, CAP 1500) · danach offen: 5 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -11,9 +11,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- walnuss-holzschraubensockel-fur-werkzeuge-610000 · Elektronik → Electronics
-- kopfhorer-stander-doppelseitig-schwarz-silber-624800 · Elektronik → Electronics
-- elektrischer-farbroller-burste-fur-101-150-m-619000 · Elektronik → Electronics
-- fab-rbs-dekorative-schrage-zielvorrichtung-616600 · Elektronik → Electronics
-- farbsteuerungs-pad-fur-live-broadcast-15-taste-611900 · Elektronik → Electronics
+- grunes-lendenkissen-im-minimalistischen-stil-623700 · Wohnen & Deko → Home & Garden > Decor
+- strass-flip-flops-aus-lackleder-083904 · Damenschuhe → Apparel & Accessories > Shoes
+- funfschichtige-mull-decke-626100 · Wohnen & Deko → Home & Garden > Decor
+- stiefelett-sandalen-mit-fischgrat-muster-009920 · Damenschuhe → Apparel & Accessories > Shoes
+- sofabezug-180-260-cm-fur-grosse-doppel-sitzer-612800 · Wohnen & Deko → Home & Garden > Decor
 
