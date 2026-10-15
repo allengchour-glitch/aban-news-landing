@@ -174,46 +174,17 @@ env_datei /tmp/cj_creds.env CJ_EMAIL CJ_API_KEY
 env_datei /tmp/dienste.env GEMINI_API_KEY GROQ_API_KEY GROQ_API_KEY2 GROQ_API_KEY3 DEEPSEEK_API_KEY PRINTFUL_STORE_ID PRINTFUL_API_KEY KIMI_API_KEY KIMI_BASE
 env_datei /tmp/judgeme.env JUDGEME_PRIVATE_TOKEN JUDGEME_PUBLIC_TOKEN JUDGEME_SHOP_DOMAIN
 # 14.10.2026: SHOPIFY_CLIENT_SECRET in der UMGEBUNG hatte 22 Zeichen zu viel (60 statt 38, Einfügefehler) → jeder Client-
-# Credentials-Grant HTTP 400 (alt_text_backfill 6'470× «DOCTYPE»; 110 Skripte lesen die Variable). /tmp/secrets_env.sh trug den
-# gültigen Wert (HTTP 200). Weichen beide ab, prüft dieser Block EINMAL je Umgebungswert beide per Grant (nur Statuscode,
-# Werte nie ausgegeben, nie in argv). Lehnt Shopify den Umgebungswert ab und nimmt den Dateiwert, wird der Dateiwert für alles
-# exportiert, was dieses Skript startet, und der Aufseher einmal ersetzt (er erbt die Umgebung). Dauerlösung: Betreiber
-# korrigiert die Umgebungsvariable in den Claude-Umgebungseinstellungen — die Zeile unten steht in jeder Keepalive-Meldung.
-SEC_KORRIGIERT=0
-if [ -s /tmp/secrets_env.sh ] && [ -n "${SHOPIFY_CLIENT_SECRET:-}" ] && [ -n "${SHOPIFY_CLIENT_ID:-}" ]; then
-  _sec_datei=$(bash -c '. /tmp/secrets_env.sh >/dev/null 2>&1; printf %s "${SHOPIFY_CLIENT_SECRET:-}"')
-  if [ -n "$_sec_datei" ] && [ "$_sec_datei" != "$SHOPIFY_CLIENT_SECRET" ]; then
-    _sec_md5=$(printf %s "$SHOPIFY_CLIENT_SECRET" | md5sum | cut -c1-12)
-    _sec_urteil=$(grep -s "^$_sec_md5 " /tmp/_shop_secret_pruef | tail -1 | cut -d' ' -f2)
-    if [ -z "$_sec_urteil" ]; then
-      _sec_urteil=$(SEC_DATEI="$_sec_datei" timeout 70 python3 - <<'PYSEC' 2>/dev/null || echo UNKLAR
-import json, os, urllib.request, urllib.error
-def grant(sec):
-    req = urllib.request.Request("https://au3j0y-hq.myshopify.com/admin/oauth/access_token",
-        data=json.dumps({"client_id": os.environ["SHOPIFY_CLIENT_ID"], "client_secret": sec, "grant_type": "client_credentials"}).encode(),
-        headers={"Content-Type": "application/json", "User-Agent": "luxe-keepalive"})
-    try:
-        r = urllib.request.urlopen(req, timeout=30)
-        return 200 if json.load(r).get("access_token") else 0
-    except urllib.error.HTTPError as e:
-        return e.code
-    except Exception:
-        return -1
-u, d = grant(os.environ["SHOPIFY_CLIENT_SECRET"]), grant(os.environ["SEC_DATEI"])
-print("DATEI" if u in (400, 401, 403) and d == 200 else "OK" if u == 200 else "UNKLAR")
-PYSEC
-)
-      [ "$_sec_urteil" = UNKLAR ] || echo "$_sec_md5 $_sec_urteil $(date -u +%FT%TZ)" >> /tmp/_shop_secret_pruef
-      [ "$_sec_urteil" = DATEI ] && SEC_KORRIGIERT=1
-    fi
-    if [ "$_sec_urteil" = DATEI ]; then
-      _sec_len_env=${#SHOPIFY_CLIENT_SECRET}
-      export SHOPIFY_CLIENT_SECRET="$_sec_datei"
-      echo "⚠️ SHOPIFY-SECRET: Umgebungswert von Shopify abgelehnt (${_sec_len_env} Zeichen, gültig ${#_sec_datei} — Einfügefehler?) — gültiger Dateiwert wird verwendet · Betreiber: Umgebungsvariable SHOPIFY_CLIENT_SECRET in den Claude-Umgebungseinstellungen korrigieren"
-    fi
-  fi
-  unset _sec_datei _sec_md5
-fi
+# Credentials-Grant HTTP 400 (alt_text_backfill 6'470× «DOCTYPE»; 110 Skripte lesen die Variable). /tmp/secrets_env.sh trägt den
+# gültigen Wert. Prüfung + Export stehen seit 15.10. in automation/lib/shopify_secret.sh (EIN Ort für alle Startwege — bis
+# dahin heilte nur dieser Block, und autostart.sh startete cj_perpetual/cj_queue_runner/autocommit mit dem abgelehnten Wert:
+# 6'832× «shTok: kein Token»). Lehnt Shopify den Umgebungswert ab, wird der Dateiwert für alles exportiert, was dieses Skript
+# startet, und der Aufseher einmal ersetzt (er erbt die Umgebung). Schon laufende Prozesse mit dem abgelehnten Wert beendet
+# automation/secret_umgebung_wache.py (unten, vor dem Neustart-Block). Dauerlösung: Betreiber korrigiert die Variable.
+. "$REPO/automation/lib/shopify_secret.sh" && shopify_secret_heilen melden
+# Was VORHER schon lief (autostart-Hook beim Container-Start, alter Lauf), trägt den abgelehnten Wert weiter — der Export oben
+# erreicht nur Neues. Bekannte Motoren mit abgelehntem Wert beenden: cj_queue_runner startet Abschnitt 3 unten neu, cj_perpetual
+# autostart.sh am Ende dieses Laufs (Marke /tmp/_secret_neustart_autostart). Gezählt werden nur node/python-Verbraucher.
+[ "${SEC_GEHEILT:-0}" = 1 ] && python3 "$REPO/automation/secret_umgebung_wache.py" --heilen 2>&1 | head -8
 [ -n "${ZOHO_APP_PASSWORD:-}" ] && [ ! -s /tmp/zoho_app_pw ] && ( umask 077; printf '%s' "$ZOHO_APP_PASSWORD" > /tmp/zoho_app_pw )
 if [ ! -s /tmp/cj_token.json ] && [ -n "${CJ_EMAIL:-}" ] && [ -n "${CJ_API_KEY:-}" ]; then
   ( umask 077; curl -s --max-time 40 -X POST https://developers.cjdropshipping.com/api2.0/v1/authentication/getAccessToken \
@@ -734,6 +705,13 @@ python3 "$REPO_AUTO/nullrunden_wache.py" 2>/dev/null || true
 python3 "$REPO_AUTO/zustand_verklebt.py" 2>/dev/null || true
 python3 "$REPO_AUTO/reel_kadenz_wache.py" 2>/dev/null || true   # 28.09.: Reel-Kanal ausser Takt (still wenn ok)   # 28.09.: verklebte Einzelwert-Dateien (still bei 0)
 python3 "$REPO_AUTO/queue_schreiber_wache.py" --still 2>/dev/null || true   # 14.10.: Social-Queues — Roh-Schreiber, Reel-Waisen, verschwundene Zeilen (still wenn ok)
+# 15.10.2026: cj_perpetual startet NUR autostart.sh (SessionStart-Hook). Hat die Secret-Wache oben ihn wegen des abgelehnten
+# Schlüssels beendet, startet ihn hier derselbe Starter mit dem gültigen Wert neu — nicht im Vorrang-Fenster/Grind-Pause
+# (dann bleibt die Marke für den nächsten Lauf liegen).
+if [ -f /tmp/_secret_neustart_autostart ] && [ "${VORRANG:-0}" = 0 ]; then
+  rm -f /tmp/_secret_neustart_autostart
+  bash "$REPO/automation/autostart.sh" 2>&1 | grep -E "gestartet|abgelehnt" | head -5
+fi
 echo "STAND: $(zaehle cj_runner) CJ-Runner, Aufseher=$(zaehle_aufseher)"
 
 # 💾 Snapshot-Rewind-Erkennung (25.08.2026, 4× an einem Morgen): Der Container stellt beim

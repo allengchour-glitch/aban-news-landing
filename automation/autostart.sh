@@ -12,6 +12,13 @@ log(){ echo "[autostart] $*"; }
 
 [ -z "$SHOPIFY_CLIENT_ID" ] && { log "SHOPIFY_CLIENT_ID fehlt → No-op. Secrets als Environment-Variablen setzen (Claude-Code-Umgebung) oder inline übergeben."; exit 0; }
 
+# 15.10.2026: Dieser Hook startete cj_perpetual/cj_queue_runner/autocommit mit dem abgelehnten SHOPIFY_CLIENT_SECRET der
+# Umgebung (60 statt 38 Zeichen) — nur engine_keepalive.sh prüfte ihn. Folge: cj_category_fill 6'832× «shTok: kein Token».
+# Jetzt prüft jeder Startweg mit DERSELBEN Funktion (Urteil zwischengespeichert, Werte nie ausgegeben) und exportiert den
+# gültigen Dateiwert, bevor hier irgendetwas startet.
+. automation/lib/shopify_secret.sh && shopify_secret_heilen
+[ "${SEC_GEHEILT:-0}" = 1 ] && log "Shopify-Secret der Umgebung abgelehnt → gültiger Dateiwert für alle Starts (Betreiber: Umgebungsvariable korrigieren)"
+
 # ── CJ-Token besorgen (Cache → sonst frisch via CJ_EMAIL/CJ_API_KEY) ──
 # 28.09.: Schreibweise «CJ_API_Key» (Betreiber) mit abdecken — Umgebungsvariablen sind gross-/kleinschreibungs-sensitiv.
 CJ_API_KEY="${CJ_API_KEY:-${CJ_API_Key:-}}"; [ -n "$CJ_API_KEY" ] && export CJ_API_KEY
