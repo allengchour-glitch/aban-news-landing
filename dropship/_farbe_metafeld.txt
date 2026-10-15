@@ -488,3 +488,4 @@ gid://shopify/Product/16642534474119	Schwarz
 gid://shopify/Product/16642953871751	Schwarz
 gid://shopify/Product/16642975990151	Schwarz
 gid://shopify/Product/16642976842119	Schwarz
+gid://shopify/Product/16643122364807	Schwarz
