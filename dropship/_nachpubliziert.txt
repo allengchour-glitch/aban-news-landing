@@ -367,3 +367,6 @@ gid://shopify/Product/16617703014791	ak74-zielfernrohrbrucke-aus-metall-89140c	A
 gid://shopify/Product/16617703932295	magnetischer-handy-kuhler-mit-digitalanzeige-617300	Magnetischer Handy-Kühler mit Digitalanzeige
 gid://shopify/Product/16639110775175	manner-schuhe-aus-leder-schwarze-casual-schuhe-601300	Männer Schuhe aus Leder – schwarze Casual Schuhe
 gid://shopify/Product/16639111692679	harz-skulptur-madchen-mit-ballon-627900	Harz-Skulptur Mädchen mit Ballon
+gid://shopify/Product/16639120179591	rucksack-aus-pu-leder-e68df8	Rucksack aus PU-Leder
+gid://shopify/Product/16639254954375	rucksack-mit-usb-ladeanschluss-und-laptopfach-a6dc12	Rucksack mit USB-Ladeanschluss und Laptopfach
+gid://shopify/Product/16639256068487	bluetooth-sportarmband-mit-anruferinnerung-359040	Bluetooth Sportarmband mit Anruferinnerung
