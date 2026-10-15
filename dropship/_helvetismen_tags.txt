@@ -372,3 +372,4 @@
 2026-10-14	gid://shopify/Product/16617711993223	natel	Wandmontierter Handyhalter
 2026-10-15	gid://shopify/Product/16638828118407	natel	3D Projektor für Smartphone-Mirroring 1080p
 2026-10-15	gid://shopify/Product/16639199478151	natel	Reisebeutel mit Smartphone-Fach – schwarz
+2026-10-15	gid://shopify/Product/16640749404551	natel	Einheits-Schultertasche für iPhone

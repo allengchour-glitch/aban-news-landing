@@ -372,3 +372,4 @@ gid://shopify/Product/16639254954375	rucksack-mit-usb-ladeanschluss-und-laptopfa
 gid://shopify/Product/16639256068487	bluetooth-sportarmband-mit-anruferinnerung-359040	Bluetooth Sportarmband mit Anruferinnerung
 gid://shopify/Product/16639256527239	herren-sneaker-mit-farbblock-und-netzstoff-617900	Herren-Sneaker mit Farbblock und Netzstoff
 gid://shopify/Product/16639260557703	outdoor-smartwatch-mit-dreifach-positionierung-134592	Outdoor-Smartwatch mit Dreifach-Positionierung
+gid://shopify/Product/16640418709895	einseitige-umhangetasche-urban-leicht-wasserdi-608300	Einseitige Umhängetasche – urban, leicht, wasserdicht
