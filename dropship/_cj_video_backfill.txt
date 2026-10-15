@@ -1390,3 +1390,7 @@ gid://shopify/Product/15447891771777	kein-video-beim-lieferanten
 gid://shopify/Product/15447891902849	kein-video-beim-lieferanten
 gid://shopify/Product/15447892099457	kein-video-beim-lieferanten
 gid://shopify/Product/15447892230529	kein-video-beim-lieferanten
+gid://shopify/Product/15447892361601	kein-video-beim-lieferanten
+gid://shopify/Product/15447892656513	kein-video-beim-lieferanten
+gid://shopify/Product/15447892787585	kein-video-beim-lieferanten
+gid://shopify/Product/15447892885889	kein-video-beim-lieferanten
