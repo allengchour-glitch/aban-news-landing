@@ -1,9 +1,9 @@
 {
- "stand": "2026-10-14T19:09Z",
+ "stand": "2026-10-15T00:14Z",
  "scharf": true,
  "anlaesse": {
   "halloween": {
-   "phase": "vor",
+   "phase": "im",
    "ab": "2026-10-15T00:00:00Z",
    "bis": "2026-11-01T00:00:00Z",
    "kanaele": {
@@ -1198,8 +1198,13 @@
      "schluessel": "h:halloween-gartenstecker-mit-kunstblumen-626100"
     }
    ],
-   "gesperrt": 0,
-   "offen": 56
+   "zurueck_angemeldet": 0,
+   "tag_entfernt": 0,
+   "tag_gesetzt": 56,
+   "abgemeldet": 168,
+   "queue_gesperrt": 0,
+   "offen": 0,
+   "gesperrt": 56
   }
  }
 }
