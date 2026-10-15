@@ -9743,3 +9743,17 @@ atmungsaktive-laufschuhe-fur-herren-604200	2408270708091604400	16	19.76	ok	lande
 falsche-wimpern-set-635200	2511050825391635400	3	5.86	ok	landeseite
 damenmode-einfarbig-geradliniger-schlitz-midi-621800	2607090931331622600	16	7.43	ok	landeseite
 fahrradhelm-fur-sicheres-radfahren-237632	1790654783766929408	16	11.32	ok	landeseite
+dicke-sohle-freizeitschuhe-610200	2408251001141610400	16	14.72	ok	landeseite
+magnetische-falsche-wimpern-mit-seifenhalter-631700	2511040142041631900	7	6.98	ok	landeseite
+retro-fringe-rock-620000	2607090849231620700	16	8.53	ok	landeseite
+fahrradhelm-fur-mountainbiken-675584	1788856357513338880	16	9.78	ok	landeseite
+magnetische-falschaugenwimpern-636500	2510120229401636700	7	6.09	ok	landeseite
+damen-gepolsterte-kniepolster-fur-laufschuhe-m-606700	2408220923101607000	16	11.37	ok	landeseite
+korperbetonter-rock-mit-hohem-bund-614100	2607090635431614700	16	8.79	ok	landeseite
+reithelm-sommer-678976	1780169113575370752	16	17.45	ok	landeseite
+weite-wanderschuhe-mit-weicher-sohle-617800	2408190132281618000	16	11.37	ok	landeseite
+hochausgestellte-mittellange-gefaltelte-strick-632100	2607090559011632800	16	9.20	ok	landeseite
+weiche-magnetische-wimpern-dicht-haltbar-und-w-602500	2509280806401602700	7	7.30	ok	landeseite
+smarte-helmleuchte-furs-radfahren-003584	1779028182688083968	7	16.21	ok	landeseite
+tutu-kleid-620500	2607090318431621100	16	7.43	ok	landeseite
+damen-sportschuhe-fur-alltag-sport-611000	2408100742101611200	16	10.69	ok	landeseite
