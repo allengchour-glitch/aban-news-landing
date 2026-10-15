@@ -18383,3 +18383,4 @@ gid://shopify/Product/16614569181575	64->0	Hochwertiges Hundeleder-Rutschband
 gid://shopify/Product/16615193051527	46->2	Leuchtender Rucksack – mittelgross, atmungsaktiv
 gid://shopify/Product/16615376880007	9->0	USB-Soundkarte mit Multifunktion
 gid://shopify/Product/16615806075271	20->2	Nordische Wandlampe für stimmungsvolles Licht
+gid://shopify/Product/16616355529095	11->3	Freizeitschuhe aus echtem Schweinsleder
