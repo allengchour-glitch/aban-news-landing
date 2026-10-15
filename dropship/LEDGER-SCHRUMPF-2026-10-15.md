@@ -34,11 +34,31 @@
 4. **Stündliche Rückschau** im Aufseher (`--verlauf 26`): Ist ein Ledger bei HEAD noch geschrumpft, wird es geheilt; die Ampel
    meldet ⚠️. Erster Lauf: **`_cj_nachpruefung.tsv` 190 → 9'040 Zeilen geheilt** (8'842 alte + 198 neue). origin trägt jetzt 9'044.
 
+## PRÜFUNG UND NACHBESSERUNG (Workflow wf_52c54405, 3 Prüfer + 15 Gegenproben, 01:00–02:10 UTC)
+| Befund (bestätigt) | Behoben |
+|---|---|
+| Hand-Commits und Hand-Pulls gingen am Tor vorbei (ad98acf1d war einer) | **Git-Hooks** `automation/githooks/pre-commit` (heilt, Exit 0) + `pre-merge-commit` (heilt → Exit 1, `git commit --no-edit` schliesst geheilt); `core.hooksPath` setzt `engine_keepalive.sh` bei jedem Lauf (Cloud + Server) |
+| Saubere Merges eines geschrumpften origin liefen ohne Tor | wie oben (pre-merge-commit); Test K: Merge angehalten, Abschluss 1'001 Zeilen, 2 Eltern |
+| Rückschau nahm je Datei nur den ÄLTESTEN Schrumpf (erlaubte Kürzung zurückgedreht / neuer Schrumpf übersehen) | alle Schrumpf-Commits je Datei; der neueste entscheidet; Basis = Vereinigung der Vorfassungen aller unerlaubten |
+| Heilung verwarf wortgleich wieder angehängte Zeilen → «letzte Zeile gewinnt» kippte (16 Ledger haben dieses Muster) | Arbeitszeilen ab der ersten unbekannten übernehmen (Überbleibsel davor fallen weg, Wiederholungen danach bleiben) |
+| Erlaubnis am Merge-Datum gemessen (Merge nach Mitternacht) | Rückschau akzeptiert Commit-Tag und Vortag |
+| Ein Fehler (z. B. UTF-8) schaltete das Tor für alle Dateien ab; Bytes wurden umkodiert | Fehler je Datei; byteweise, CRLF bleibt (Test J) |
+| Volle Platte: nach truncate halb geschrieben, neue Zeilen weg | `posix_fallocate` vor dem Kürzen |
+| Rückschau ohne Repo-Sperre heilte in offene Merges; stand hinter der API-Sperre und spät im Loop | unter `/tmp/git_repo.lock`, übersprungen bei offenem Merge, an den Anfang der Aufseher-Schleife, im Hintergrund |
+| Umbenennen erweckte den alten Pfad | `-M`, Umbenennung ist kein Schrumpf (Test E) |
+| 5 Neubau-Listen wären zurückgeholt worden | ausgenommen: `_social_vorrang.txt`, `_gratis_schwelle_marge.tsv`, `_bewertungen_nachholen.txt`, `_video_prio_index.txt`, `_social_pause.txt` |
+| Nebenfund: Aufseher rief bei Shopify-Ausfall `autocommit.sh` OHNE `--einmal` → Endlosschleife, Aufseher hing | `flock … autocommit.sh --einmal` |
+Selbsttest danach 14/14 (A–L, inkl. Hooks im Wegwerf-Repo).
+
+**Regel für Sitzungen:** Wer ein echtes Ledger absichtlich kürzt (Quittungen entfernen, entdoppeln, Runde rotieren), schreibt am
+selben UTC-Tag `pfad<TAB>JJJJ-MM-TT<TAB>Grund` in `dropship/_ledger_schrumpf_erlaubt.txt` — sonst holt die Rückschau die Zeilen
+binnen einer Stunde zurück. Nur ab ≥ 200 Zeilen UND > 50 % greift das Tor überhaupt.
+
 ## NACHGEMESSEN
 - origin `_cj_lager.tsv` 59'386 Zeilen, chronologisch; `_cj_nachpruefung.tsv` 9'044.
 - Das Tor lief in `git_sichern.sh` beim eigenen Commit mit, ohne Fehlalarm (Log `/tmp/ledger_schrumpf.log`).
 
 ## OFFEN
 - Der Auslöser des Leerens am 15.10. ist unbekannt. Das Tor fängt die Folge ab, nicht die Ursache.
-- Hand-Commits der Sitzung (`git add -A && git commit`) laufen nicht durch das Tor. Ab jetzt über
-  `bash automation/git_sichern.sh "<Nachricht>" <pfade>` sichern (mit `GIT_ZUSCHREIBUNG`); die Rückschau fängt den Rest stündlich.
+- Geschlossen durch die Git-Hooks (pre-commit/pre-merge-commit). Commits mit `--no-verify` gehen weiter vorbei — dafür bleibt die Rückschau.
+- Schreiber ohne Repo-Sperre (cj_fulfill_runner.sh, commit_translation_ledger.sh, merge_ledger_union.sh) laufen jetzt durch die Hooks, nehmen aber weiter keine Sperre.

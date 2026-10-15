@@ -325,7 +325,9 @@ def selbsttest():
                 ziel = os.path.join(d, "automation", "githooks", h)
                 open(ziel, "w").write(open(q).read().replace(
                     '"$(git rev-parse --show-toplevel)/automation/ledger_schrumpf_tor.py"',
-                    f'"{os.path.abspath(__file__)}" --repo "$(git rev-parse --show-toplevel)"'))
+                    f'"{os.path.abspath(__file__)}" --repo "$(git rev-parse --show-toplevel)"').replace(
+                    "/tmp/ledger_schrumpf.log", os.path.join(tempfile.gettempdir(), "ledger_schrumpf_test_haken.log")))
+                # Test-Hooks nie ins echte Log — und nie IN das Test-Repo (eine Log-Datei dort störte den Merge-Test K)
                 os.chmod(ziel, 0o755)
         g("config", "core.hooksPath", "automation/githooks")
         led = os.path.join(d, "dropship", "_m.tsv")

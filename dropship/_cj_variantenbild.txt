@@ -7399,3 +7399,8 @@ gid://shopify/Product/15472066691457	zugeordnet	3	Wasserdichter Outdoor-Rucksack
 gid://shopify/Product/15472066724225	zugeordnet	3	Wasserdichte Outdoor-Sling Bag für Handy
 gid://shopify/Product/15472066888065	zugeordnet	24	Leichte Langarmbluse im französischen Stil
 gid://shopify/Product/15472066920833	zugeordnet	36	Corduroy-Button Kapuzenpullover für Damen
+gid://shopify/Product/15472066986369	zugeordnet	15	Samtener Rollkragenpullover für Damen
+gid://shopify/Product/15472067182977	zugeordnet	10	High-Waist Bodycon Jupe mit Stufen
+gid://shopify/Product/15472067248513	zugeordnet	30	Cardigan mit 3/4-Ärmeln & weite Hosen
+gid://shopify/Product/15472217260417	zugeordnet	26	Titan Ohrringe · Damen
+gid://shopify/Product/15472217555329	zugeordnet	28	Damen Bodycon Minikleid mit Rollkragen und Rückenfrei
