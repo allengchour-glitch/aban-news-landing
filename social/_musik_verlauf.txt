@@ -527,3 +527,4 @@
 2026-10-15T00:21:07.693Z	luxe-epic-hybrid.wav	37.5	allgemein	cjreel-CJYD212338601AZ	stimme:nein	mix-fehler
 2026-10-15T00:22:28.867Z	luxe-epic-elegant.wav	48	gadget	cjreel-CJJT129901001AZ	stimme:nein	anteil
 2026-10-15T00:25:44.583Z	luxe-epic-anime.wav	23.25	haustier	cjreel-CJJJCWGY00105-Beige	stimme:nein	anteil
+2026-10-15T00:27:57.000Z	luxe-epic-hero.wav	46.0	mode	bildreel-leichter-daunenmantel-mit-kapuze-613300	stimme:nein	anteil	quelle:bild
