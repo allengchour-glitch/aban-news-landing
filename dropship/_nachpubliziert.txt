@@ -365,3 +365,5 @@ gid://shopify/Product/16616533459335	winter-babystiefel-mit-weicher-sohle-0dafce
 gid://shopify/Product/16617689907591	doppelseitiger-schal-621300	Doppelseitiger Schal
 gid://shopify/Product/16617703014791	ak74-zielfernrohrbrucke-aus-metall-89140c	AK74 Zielfernrohrbrücke aus Metall
 gid://shopify/Product/16617703932295	magnetischer-handy-kuhler-mit-digitalanzeige-617300	Magnetischer Handy-Kühler mit Digitalanzeige
+gid://shopify/Product/16639110775175	manner-schuhe-aus-leder-schwarze-casual-schuhe-601300	Männer Schuhe aus Leder – schwarze Casual Schuhe
+gid://shopify/Product/16639111692679	harz-skulptur-madchen-mit-ballon-627900	Harz-Skulptur Mädchen mit Ballon
