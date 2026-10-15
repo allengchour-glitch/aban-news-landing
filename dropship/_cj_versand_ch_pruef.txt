@@ -9649,3 +9649,12 @@ sommerrock-mit-orangemuster-635700	2607100715591636500	16	7.43	ok	landeseite
 kettlebell-gewichtshalter-619100	2603090218081619500	16	11.23	ok	landeseite
 unregelmassiger-denimrock-630300	2607100623531631300	16	8.79	ok	landeseite
 rocke-fur-fruhjahr-und-herbst-636000	2607100603011637200	16	8.79	ok	landeseite
+old-money-stil-vintage-standkragen-utility-jac-633200	2607110029381633900	16	11.00	ok	landeseite
+fussball-spielzeug-fur-hunde-638700	2511130625321639000	16	9.10	ok	landeseite
+herren-slim-fit-pilotenjacke-mit-kentkragen-608300	2607100653531608900	16	14.60	ok	landeseite
+teleskop-spielstab-fur-hunde-630000	2511120735541630500	16	10.15	ok	landeseite
+herren-freizeitjacke-627500	2607070101411629200	16	11.00	ok	landeseite
+minimalistische-herrenjacke-616800	2607060252361617900	16	10.15	ok	landeseite
+naturlicher-gummispielzeug-lebensmittel-vertei-602800	2511090851001603000	16	5.42	ok	landeseite
+einreihiger-anzug-618700	2606250752081619300	16	12.21	ok	landeseite
+intelligentes-katzen-spielgerat-613500	2510140626421613700	7	14.07	ok	landeseite
