@@ -78,6 +78,19 @@
   "soll": "2–3",
   "treffer": 0,
   "je_quelle": {},
-  "liste": []
+  "liste": [],
+  "produkte": {
+   "gelesen": 1642,
+   "offen_vorher": 755,
+   "geschrieben": 300,
+   "unloesbar": 0,
+   "fehler": 0,
+   "beispiele": [
+    "15469973864833",
+    "15469973897601",
+    "15469973930369"
+   ],
+   "offen_nachher": 455
+  }
  }
 }

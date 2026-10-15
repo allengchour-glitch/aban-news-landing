@@ -18394,3 +18394,9 @@ gid://shopify/Product/16616702476679	34->0	Leder Portemonnaie mit Schnalle
 gid://shopify/Product/16616719352199	54->0	Rucksack mit Zahlenschloss
 gid://shopify/Product/16617625551239	10->1	UV-Desinfektionspaket mit USB-Ladeanschluss
 gid://shopify/Product/16617692627335	92->2	Trinkflasche mit Tragegurt – 450 ml
+gid://shopify/Product/16617702818183	144->3	3D-gedrucktes Nachtlicht für Schlafzimmer
+gid://shopify/Product/16617703539079	20->0	Elektrische Nagelfräse
+gid://shopify/Product/16617707307399	65->1	Astschere für Obstbäume
+gid://shopify/Product/16617715663239	34->0	Glas-Lunchbox mit Fächern – 4er-Set
+gid://shopify/Product/16617968533895	130->2	Grüner 2B/ HB Zeichenstift – 10 Stück
+gid://shopify/Product/16638316020103	21->0	Indoor Fitness Schuhe für Männer – weiss/black/gray
