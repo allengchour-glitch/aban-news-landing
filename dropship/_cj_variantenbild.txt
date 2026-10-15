@@ -7404,3 +7404,4 @@ gid://shopify/Product/15472067182977	zugeordnet	10	High-Waist Bodycon Jupe mit S
 gid://shopify/Product/15472067248513	zugeordnet	30	Cardigan mit 3/4-Ärmeln & weite Hosen
 gid://shopify/Product/15472217260417	zugeordnet	26	Titan Ohrringe · Damen
 gid://shopify/Product/15472217555329	zugeordnet	28	Damen Bodycon Minikleid mit Rollkragen und Rückenfrei
+gid://shopify/Product/15472217653633	zugeordnet	6	Spitzenkleid «Hollow-out Strap»
