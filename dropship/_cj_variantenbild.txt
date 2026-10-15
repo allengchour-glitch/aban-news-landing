@@ -7356,3 +7356,4 @@ gid://shopify/Product/15472050536833	zugeordnet	4	Alien-Teppich für Sofa und Co
 gid://shopify/Product/15472050667905	zugeordnet	4	Kühlende Sommerdecke mit Sojafaserfüllung
 gid://shopify/Product/15472058597761	zugeordnet	4	Hollow-Out Wheel Uhr, wasserdicht, Stahlband
 gid://shopify/Product/15472058696065	zugeordnet	2	Kurzes Strickkleid mit Geometrischem Muster
+gid://shopify/Product/15472058761601	zugeordnet	18	Elegantes Plissée-Kleid mit ausgestellten Ärmeln
