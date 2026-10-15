@@ -345068,3 +345068,7 @@
 67673802834311	heben	23.90	24.90	19.64	2026-10-14	foto-nachtlicht-mit-personalisiertem-bild-637100
 67674173964679	heben	30.90	33.90	27.15	2026-10-14	15-zoll-computer-rucksack-mit-usb-53b4da
 67675683586439	heben	30.90	33.90	27.15	2026-10-14	15-zoll-computer-rucksack-mit-usb-53b4da
+67677479829895	heben	76.90	78.90	63.40	2026-10-15	e-book-reader-mit-6-zoll-e-ink-bildschirm-623600
+67677479862663	heben	76.90	81.90	65.48	2026-10-15	e-book-reader-mit-6-zoll-e-ink-bildschirm-623600
+67677479895431	heben	76.90	86.90	69.66	2026-10-15	e-book-reader-mit-6-zoll-e-ink-bildschirm-623600
+67677477732743	heben	21.90	23.90	18.39	2026-10-15	regenkette-mit-vogeln-638700
