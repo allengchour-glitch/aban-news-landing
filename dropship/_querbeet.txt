@@ -150,3 +150,10 @@ gid://shopify/Product/16615814562183	2026-10-14	Kinder & Baby
 gid://shopify/Product/16610071019911	2026-10-14	Spielzeug & Plüsch
 gid://shopify/Product/16616590279047	2026-10-14	Sport, Fitness & Outdoor
 gid://shopify/Product/16616489451911	2026-10-14	Taschen & Rucksäcke
+gid://shopify/Product/16617699410311	2026-10-15	Damen-Mode
+gid://shopify/Product/16638317625735	2026-10-15	Herren-Mode
+gid://shopify/Product/16638317625735	2026-10-15	Schuhe
+gid://shopify/Product/16638898897287	2026-10-15	Wohnen & Dekoration
+gid://shopify/Product/16617712484743	2026-10-15	Küche & Kochen
+gid://shopify/Product/16614810321287	2026-10-15	Haustierwelt
+gid://shopify/Product/16638892474759	2026-10-15	Spielzeug & Plüsch
