@@ -18393,3 +18393,4 @@ gid://shopify/Product/16616687993223	64->1	HD-Rekorder für Konferenz und Aussen
 gid://shopify/Product/16616702476679	34->0	Leder Portemonnaie mit Schnalle
 gid://shopify/Product/16616719352199	54->0	Rucksack mit Zahlenschloss
 gid://shopify/Product/16617625551239	10->1	UV-Desinfektionspaket mit USB-Ladeanschluss
+gid://shopify/Product/16617692627335	92->2	Trinkflasche mit Tragegurt – 450 ml
