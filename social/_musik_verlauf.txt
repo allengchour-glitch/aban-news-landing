@@ -536,3 +536,4 @@
 2026-10-15T04:18:17.004Z	luxe-epic-anime.wav	4.75	haustier	cjreel-CJYD196025501AZ	stimme:nein	anteil
 2026-10-15T04:27:15.914Z	luxe-adventure-uplift.wav	41	allgemein	cjreel-CJXFZNKC00131-Black	stimme:nein	anteil
 2026-10-15T04:28:43.545Z	luxe-epic-hero.wav	46	haustier	cjreel-CJGY114829701AZ	stimme:nein	anteil
+2026-10-15T04:30:02.503Z	luxe-epic-trailer.wav	15.5	home	cjreel-CJCD154096301AZ	stimme:nein	anteil
