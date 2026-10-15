@@ -2480,3 +2480,4 @@
 15509385838977	Farbe:2+Ausführung:4:8	2026-10-15	armband-mit-zirkonia-steinen-18k-vergoldet-639700
 15509385347457	Farbe:3:3	2026-10-15	anti-umkipp-futternapf-fur-haustiere-506432
 15509385085313	Farbe:7+Grösse:3:15	2026-10-15	anti-schling-napf-fur-haustiere-121664
+15509380661633	Volumen:2:2	2026-10-15	ton-schmortopf-fur-reis-und-eintopfe-09f11d
