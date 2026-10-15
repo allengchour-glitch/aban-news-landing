@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-15 00:22 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-15 01:56 UTC)
 
-Suche: `status:active AND created_at:>=2026-10-12` · gemessen 565 · **317 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 260, teilweise: 39, keine: 18; Preisspanne > 2×: 51) · 1 CJ-Variante: 248 · ohne Antwort: 0
+Suche: `status:active AND created_at:>=2026-10-12` · gemessen 597 · **337 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 277, teilweise: 42, keine: 18; Preisspanne > 2×: 58) · 1 CJ-Variante: 260 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -9,10 +9,9 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Winter-Windjacke für H (`winter-windjacke-fur-h-621800`) | 70 | 70 | 5.06–8.59 | 20.90 | Red And Gray MF1-XS, Red And Gray MF1-S, Red And Gray MF1-M, Red And Gray MF1-L |
 | Baby-Mobile für Wiege und Kinderwagen (`baby-mobile-fur-wiege-und-kinderwagen-630900`) | 57 | 18 | 5.89–17.71 | 28.90 | Flower bed bell, Beige Starry Bed Bell, Pink Starry Bed Bell, Gray Starry Bed Bell |
 | Quadratisches Seiden-Halstuch (`quadratisches-seiden-halstuch-638000`) | 50 | 17 | 3.35–3.35 | 16.90 | Style14305-53X53cm, Style13102-53X53cm, Style13104-53X53cm, Style13106-53X53cm |
-| Knieschoner mit langen Riemen (`knieschoner-mit-langen-riemen-884992`) | 48 | 48 | 3.09–11.66 | 20.90 | Green-S, Green-M, Green-L, Green-XL |
 | Leichter Schal aus Kaschmirimitat (`leichter-schal-aus-kaschmirimitat-616200`) | 42 | 18 | 2.9–2.9 | 16.90 | T003 02, T003 05, T003 06, T003 08 |
-| Tie-Dye Waffel-Shorts für Sport und Freizeit (`tie-dye-waffel-shorts-fur-sport-und-freizeit-638400`) | 42 | 42 | 4.41–4.41 | 16.90 | Black And Gray Dyeing-S, Black And Gray Dyeing-M, Black And Gray Dyeing-L, Black And Gray Dyeing-XL |
 | Seidenschal quadratisch 53 × 53 cm (`seidenschal-quadratisch-53-53-cm-612900`) | 41 | 19 | 3.35–3.35 | 16.90 | Green Flower Mango-53x53cm, Blooming Flowers Yellow-53x53cm, Blooming Blue With Flowers-53x53cm, Blooming Flowers Green-53x53cm |
+| Mauspad mit US-Dollar-Muster, 40 × 60 cm (`mauspad-mit-us-dollar-muster-40-60-cm-628900`) | 40 | 40 | 3.22–5.32 | 17.90 | Style A-40x60cm, Style A-40x70cm, Style A-40x80cm, Style A-40x90cm |
 | Aluminium-Case für Apple Watch – Schutzschale (`aluminium-case-fur-apple-watch-schutzschale-406144`) | 36 | 36 | 2.08–2.08 | 16.90 | Black-38mm, Black-40mm, Black-41mm, Black-42mm |
 | Taschenschal mit grossem Karomuster (`taschenschal-mit-grossem-karomuster-637500`) | 33 | 17 | 2.0–2.0 | 16.90 | 01 Red Plaid-200X60CM, 02 Green And Pink Grid-200X60CM, 03 Blue And Green-200X60CM, 04 Black And Gray-200X60CM |
 | Faux-Kaschmir Schal für Herbst und Winter (`faux-kaschmir-schal-fur-herbst-und-winter-634800`) | 31 | 16 | 2.63–2.63 | 16.90 | T635 02-70X190, T635 01-70X190, T635 12-70X190, T635 13-70X190 |
@@ -20,29 +19,26 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Schmuckset mit Wassertropfen-Anhänger (`schmuckset-mit-wassertropfen-anhanger-634400`) | 30 | 27 | 3.49–11.48 | 20.90 | Gold-5, Gold-6, Gold-7, Gold-8 |
 | Hunde-Jumpsuit atmungsaktiv (`hunde-jumpsuit-atmungsaktiv-633000`) | 30 | 30 | 4.35–5.23 | 16.90 | Light yellow sun-S, Light yellow sun-M, Light yellow sun-L, Light yellow sun-XL |
 | Japanische Laterne – wasserfest & sonnenbeständig (`japanische-laterne-wasserfest-sonnenbestandig-628600`) | 28 | 18 | 7.49–7.49 | 16.90 | Bird Beige-Red, Bird Beige-Beige, Burnt Beige-Red, Burnt Beige-Beige |
-| Acrylpullover mit horizontalem Reissverschluss für Hunde (`acrylpullover-mit-horizontalem-reissverschluss-614300`) | 28 | 28 | 3.0–4.04 | 16.90 | Gray-XXS, Gray-XS, Gray-S, Gray-M |
 | T-Shirt mit Rüschen für haarlose Katzen (`t-shirt-mit-ruschen-fur-haarlose-katzen-639700`) | 26 | 26 | 6.47–6.47 | 16.90 | Devon Cornish a hairless cat-XS, Devon Cornish a hairless cat-S, Devon Cornish a hairless cat-S plus, Devon Cornish a hairless cat-M |
 | Tie-Dye Hoodie für Hunde (`tie-dye-hoodie-fur-hunde-600100`) | 26 | 26 | 2.63–6.3 | 19.90 | Pink-XS, Pink-S, Pink-M, Pink-L |
 | Taktischer Camouflage-Rucksack 40L (`taktischer-camouflage-rucksack-40l-15a3c2`) | 26 | 20 | 5.65–28.71 | 42.90 | Desert digital35L, ACU 35L, Military color 35L, Black 35L |
 | Haustier-Pyjama (`haustier-pyjama-624800`) | 25 | 25 | 2.11–2.11 | 16.90 | Banana-S, Banana-M, Banana-L, Banana-XL |
 | Geflochtene Ledertasche (`geflochtene-ledertasche-629600`) | 25 | 25 | 32.99–39.06 | 71.90 | Black-21x15x15CM, Black-30x20x26CM, White-21x15x15CM, White-30x20x26CM |
 | Uhrenarmband aus Nubukleder mit Drei-Ring-Schnalle (`uhrenarmband-aus-nubukleder-mit-drei-ring-schn-806080`) | 24 | 24 | 6.3–6.85 | 16.90 | Black-38or40or41MM, Black-42or44or45MM, Black-20MM, Black-22MM |
-| Baumwoll-Top mit Prinzessärmeln (`baumwoll-top-mit-prinzessarmeln-614200`) | 24 | 24 | 14.15–14.15 | 38.90 | White Pearl Buckle-100, White Pearl Buckle-110, White Pearl Buckle-120, White Pearl Buckle-130 |
 | Seidenschal mit digitalem Print – leichte Luftigkeit (`seidenschal-mit-digitalem-print-leichte-luftig-637900`) | 24 | 15 | 11.03–11.03 | 19.90 | Golden Tulip, Paisley Paisley, Flowers Blossoming, Large Ginkgo Leaf |
 | Kaschmir-Schal mit Lilien-Stickerei (`kaschmir-schal-mit-lilien-stickerei-619200`) | 23 | 16 | 4.01–4.01 | 16.90 | Hole Blue-70x200cm, Black-70x200cm, Light Purple-70x200cm, Bright Red-70x200cm |
 | Schal mit Kronen-Stickerei (`schal-mit-kronen-stickerei-601700`) | 23 | 17 | 4.01–4.01 | 17.90 | Navy Blue-200cm, Milky White-200cm, Denim Blue-200cm, Purplish Red-200cm |
 | Winterthermal-Schal mit langen Pompons (`winterthermal-schal-mit-langen-pompons-622700`) | 23 | 17 | 2.22–2.46 | 16.90 | WT771 Beige-240x38cm, WT773 Cherry Blossom Powder-240x38cm, WT774 Camel Gray-240x38cm, WT775 Light Coffee-240x38cm |
 | Medizinball für Balance-Training (`medizinball-fur-balance-training-726464`) | 23 | 23 | 4.96–17.88 | 31.90 | Red-A, Red-B, Red-C, Red-D |
+| Dekokissen Weihnachtsbaum-Puppe (`dekokissen-weihnachtsbaum-puppe-611900`) | 23 | 21 | 3.59–10.8 | 26.90 | Snowman Square Pillow 45 X45CM-Without Core, Snowman Square Pillow 45 X45CM-With Core, Christmas Red 45x45CM-Without Core, Christmas Red 45x45CM-With Core |
 | Fahrzeug-Wechselrichter (`fahrzeug-wechselrichter-6467f8`) | 22 | 19 | 10.22–40.04 | 52.90 | 1200W48V, 1200W60V, 1600W60V, 1600W24V |
 | Nachtlicht Seeigel-Muschel (`nachtlicht-seeigel-muschel-638100`) | 22 | 22 | 3.66–7.4 | 18.90 | Battery Type-Sea Urchin Bunny, Battery Type-Beach, Battery Type-Coral, Battery Type-Forest Style |
 | Chiffon-Schal mit Strasssteinen und Perlen (`chiffon-schal-mit-strasssteinen-und-perlen-610300`) | 21 | 19 | 3.1–3.1 | 16.90 | C1 Skin Red, C2 Chick Yellow, C3 Purple, C4 Grass Green |
 | Weihnachtsbaumkugeln – 100er-Set (`weihnachtsbaumkugeln-100er-set-637300`) | 21 | 19 | 5.03–5.03 | 24.90 | Deep Red, Navy Blue, Golden Red Green, Silver Blue And White |
-| High-Waist Yoga-Shorts mit Raffung (`high-waist-yoga-shorts-mit-raffung-602200`) | 21 | 21 | 4.97–4.97 | 16.90 | Chestnut-S, Chestnut-M, Chestnut-L, Chestnut-XL |
 | Schlafzimmer Nachtlicht mit verstellbarer Wachsmelderlampe (`schlafzimmer-nachtlicht-mit-verstellbarer-wach-637900`) | 20 | 20 | 7.46–8.29 | 39.90 | UK-White, UK-Black, UK-White Timing, UK-Black Timing |
 | Seidenschal mit Druck und UV-Schutz (`seidenschal-mit-druck-und-uv-schutz-631900`) | 20 | 15 | 2.46–2.46 | 16.90 | XK YRS 01-125X180cm, XK YRS 02-125X180cm, XK YRS 03-125X180cm, XK YRS 04-125X180cm |
 | Hundemantel wasserdicht und winddicht (`hundemantel-wasserdicht-und-winddicht-659400`) | 20 | 20 | 4.39–6.3 | 16.90 | Black-L, Black-M, Black-S, Black-XS |
 | Faltbarer Silikon-Dampfgarer (`faltbarer-silikon-dampfgarer-621700`) | 20 | 17 | 3.34–4.04 | 17.90 | Round  Green Steaming, Round Beige Steaming Rack, Round  Blue Steaming, Round Gray  Rack |
-| Zweiteilige Laufshorts für Damen (`zweiteilige-laufshorts-fur-damen-612600`) | 20 | 20 | 7.72–7.72 | 18.90 | Pine Needle Fog-S, Pine Needle Fog-M, Pine Needle Fog-L, Pine Needle Fog-XL |
 | Doppelseitiger Schal (`doppelseitiger-schal-621300`) | 20 | 20 | 2.95–2.95 | 16.90 | 02 Korean Fans, 03 Apricot Beige, 05 Pink Orange, 06 Light Gray |
 | Wollschal in Grautönen – 100 × 210 cm (`wollschal-in-grautonen-100-210-cm-602800`) | 20 | 20 | 4.19–4.7 | 16.90 | Gray Wool, Khaki Wool, Coffee, Gray Purple |
 | Sporttasche Fussball-Rucksack (`sporttasche-fussball-rucksack-38b2f6`) | 19 | 19 | 4.7–7.22 | 27.90 | Black blue-Big upgrade, Orange-Big upgrade, Orange-Ordinary, Orange-Thicker version |
@@ -56,6 +52,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Doppelseitiger Wollschal mit Pailletten (`doppelseitiger-wollschal-mit-pailletten-639700`) | 18 | 17 | 3.98–3.98 | 16.90 | Dark Blue-32x175CM, Purplish Red-32x175CM, Camel-32x175CM, Black-32x175CM |
 | Langer Wollschal aus Polyester 40 × 210 cm (`langer-wollschal-aus-polyester-40-210-cm-629100`) | 18 | 15 | 4.02–4.02 | 16.90 | coffee-40X210cm, dark coffee-40X210cm, sky blue-40X210cm, rose pink-40X210cm |
 | Gestreifter Schlafanzug für Katzen (`gestreifter-schlafanzug-fur-katzen-600400`) | 18 | 18 | 4.57–11.43 | 21.90 | Four legged Pet Clothing-XS, Four legged Pet Clothing-S, Four legged Pet Clothing-M, Four legged Pet Clothing-L |
+| Kissen aus Baumwoll-Twist-Feder-Velours (`kissen-aus-baumwoll-twist-feder-velours-619600`) | 18 | 18 | 3.69–4.36 | 33.90 | White-800g, White-1000g, White-1200g, Gray-800g |
 | Extralerner Kaschmir-Schal mit Stickerei (`extralerner-kaschmir-schal-mit-stickerei-627500`) | 17 | 15 | 3.5–3.5 | 16.90 | Black-200cm, Purple-200cm, Sapphire Blue-200cm, Hole Blue-200cm |
 | Hundemantel wasserdicht und warm (`hundemantel-wasserdicht-und-warm-606200`) | 17 | 17 | 5.8–6.55 | 21.90 | Melon Red-S, Melon Red-M, Melon Red-XL, Melon Red-2XL |
 | Badmintontasche wasserdicht (`badmintontasche-wasserdicht-607200`) | 17 | 17 | 4.86–19.57 | 42.90 | PG01-One size, SA01-One size, SA02-One size, SA03-One size |
@@ -64,7 +61,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Vintage Kapuzenpullover mit Cartoon-Print (`vintage-kapuzenpullover-mit-cartoon-print-604400`) | 16 | 16 | 5.97–5.97 | 22.90 | Black-Hoodie-S, Black-Hoodie-M, Black-Hoodie-L, Black-Hoodie-XL |
 | Hexagonaler Gummieinsatz-Dumbbell 12,5 kg (`hexagonaler-gummieinsatz-dumbbell-12-5-kg-39a41a`) | 16 | 16 | 3.35–42.84 | 961.90 | 2.5kg, 5kg, 7.5kg, 10kg |
 | Zusammenklappbarer Carbon-Trekkingstock 110 cm (`zusammenklappbarer-carbon-trekkingstock-110-cm-625500`) | 16 | 16 | 64.46–145.28 | 183.90 | 105CM Pair Folding, 110CM Pair Folding, 130CM Pair Folding, Gold Gray 110CM Folding |
-| Hunde-Sweater mit Herz- und Schleifendesign (`hunde-sweater-mit-herz-und-schleifendesign-605200`) | 16 | 16 | 3.0–3.0 | 16.90 | Red Love-XS, Red Love-S, Red Love-M, Red Love-L |
+| Stahlarmband für Apple Watch, 5,5–8,5 Zoll (`stahlarmband-fur-apple-watch-5-5-8-5-zoll-742656`) | 16 | 16 | 4.66–4.66 | 16.90 | Black-38 40mm, Black-42 44mm, Rose Gold-38 40mm, Rose Gold-42 44mm |
 | Mehrfarbiger Krempel-Schal aus Kaschmir-Optik (`mehrfarbiger-krempel-schal-aus-kaschmir-optik-604000`) | 15 | 15 | 4.02–4.02 | 16.90 | Color-190x60CM, Dark Green-190x60CM, Pink Black-190x60CM, Camel-190x60CM |
 | Wandleuchte für Aussenbereiche (`wandleuchte-fur-aussenbereiche-625300`) | 15 | 15 | 9.12–33.17 | 61.90 | Warm Light-30CM10W, Warm Light-40CM12W, Warm Light-60CM20W, Warm Light-90CM25W |
 | LED-Weihnachtsgeschenkboxen – 3er-Set (`led-weihnachtsgeschenkboxen-3er-set-615300`) | 15 | 15 | 7.93–7.93 | 30.90 | Three Colors Gift Box-Battery Box, Red Christmas Gift Box-Battery Box, Silver Star Gift Box-Battery Box, Rainbow Christmas Gift Box-Battery Box |
@@ -92,7 +89,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Weihnachtsbaum-Unterlage Schneeflocke (`weihnachtsbaum-unterlage-schneeflocke-612600`) | 12 | 12 | 2.11–5.8 | 23.90 | Christmas Tree Style-78CM, Christmas Tree Style-90CM, Christmas Tree Style-122CM, Christmas Tree Style-150CM |
 | Outdoor-Rucksack aus Nylon – wasserdicht, leicht (`outdoor-rucksack-aus-nylon-wasserdicht-leicht-d50768`) | 12 | 0 | 6.06–8.72 | 23.90 | Lake Blue set, Green set, Black, Red set |
 | Taktischer Outdoor-Rucksack Tarnmuster 20–35 L (`taktischer-outdoor-rucksack-tarnmuster-20-35-l-ed63f3`) | 12 | 0 | 4.6–5.41 | 27.90 | Python Khaki, Desert digital color, Black Python, Maple leaf fan color |
-| Bestickter Seiden-Optik Schal (`bestickter-seiden-optik-schal-635700`) | 12 | 12 | 4.36–4.36 | 16.90 | Green-175cm, Red-175cm, Beige-175cm, Yellow-175cm |
 | Kapuzenumhang für Zuhause und Büro (`kapuzenumhang-fur-zuhause-und-buro-610300`) | 12 | 12 | 4.19–8.29 | 25.90 | Reindeer-S, Reindeer-M, Reindeer-L, Reindeer-XL |
 | Hitzebeständige Glas-Schüssel mit Pflanzenmuster (`hitzebestandige-glas-schussel-mit-pflanzenmust-141120`) | 12 | 8 | 3.69–4.9 | 20.90 | Chamomile-M, Chamomile-L, Citrus Tea-M, Citrus Tea-L |
 | Holz-Sanduhr 15 Minuten (`holz-sanduhr-15-minuten-628400`) | 12 | 12 | 5.32–11.11 | 49.90 | Square Rotating Large, Double Bubble Rotation, Bow Hourglass, Solid Wood Rotating Small Size |
@@ -110,11 +106,12 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Glasmalerei-Set für Bilderrahmen (`glasmalerei-set-fur-bilderrahmen-627400`) | 11 | 11 | 3.18–9.45 | 49.90 | Anchor Photo Frame Gift Box, Christmas tree set, Flamingo Photo Frame Gift Box, HAILANG Photo Frame Gift Box |
 | Keramiktasse mit Deckel – Pflanzen & Tiere (`keramiktasse-mit-deckel-pflanzen-tiere-621500`) | 11 | 11 | 6.47–6.47 | 22.90 | Cactus-500ML, Cangjia-500ML, Colorful Life-500ML, Confession Balloon-500ML |
 | Romantischer Schal in hellen Weisstönen (`romantischer-schal-in-hellen-weisstonen-610200`) | 11 | 11 | 5.0–5.0 | 16.90 | Deep Khaki-165cm, Brick Red-165cm, Mixed Flower Black-165cm, Solid Black-165cm |
+| Plüschkissen in Milchweiss (`pluschkissen-in-milchweiss-619500`) | 11 | 10 | 3.61–7.13 | 34.90 | Milky White-45X35CM, Pink Color-45X35CM, Light Gray-45X35CM, Dark Gray-45X35CM |
+| Seidenkissenbezug 48×74 cm (`seidenkissenbezug-48-74-cm-624300`) | 11 | 7 | 7.35–14.7 | 23.90 | White-48X74, Light Pink-48X74, Grass And Wood Gray-48X74, Navy Blue-48X74 |
 | Weihnachtsbaum mit Lichtern (`weihnachtsbaum-mit-lichtern-628300`) | 10 | 10 | 6.1–13.1 | 34.90 | Red and White Balls-45cm, Red and White Balls-60cm, Red Acorn-45cm, Red Acorn-60cm |
 | Grauer Fair Isle Hundepullover (`grauer-fair-isle-hundepullover-611800`) | 10 | 10 | 2.63–3.51 | 16.90 | gray Fair Isle pattern-XS, gray Fair Isle pattern-S, gray Fair Isle pattern-M, gray Fair Isle pattern-L |
 | Katzenpullover mit Kapuze in Marineblau (`katzenpullover-mit-kapuze-in-marineblau-635900`) | 10 | 10 | 6.71–6.71 | 16.90 | Navy Blue Braided Rope-XS, Navy Blue Braided Rope-S, Navy Blue Braided Rope-M, Navy Blue Braided Rope-L |
 | Wasserdichte Outdoor-Tasche 4 L (`wasserdichte-outdoor-tasche-4-l-442722`) | 10 | 10 | 3.54–3.65 | 16.90 | 07 digital, Black, Desert digital, Jungle digital |
-| Cartoon Keramik-Schüssel- und Teller-Set (`cartoon-keramik-schussel-und-teller-set-613600`) | 10 | 10 | 4.2–5.89 | 26.90 | Little Bear Cube-5 Inch, Bears Home-5 Inch, Bears Home-8.5 Inch, Bears Home-9 Inch |
 | Isolierbecher mit Keramikbeschichtung und Strohhalm (`isolierbecher-mit-keramikbeschichtung-und-stro-603600`) | 10 | 10 | 17.34–19.08 | 31.90 | Deep Coffee-850ml-Stainless Steel, Deep Coffee-850ml-Ceramic, Ice Blue-850ml-Stainless Steel, Ice Blue-850ml-Ceramic |
 | Diamant-Bohrer für Beton und Keramik (`diamant-bohrer-fur-beton-und-keramik-fe8933`) | 10 | 10 | 0.22–3.71 | 16.90 | 4MM, 5MM, 6MM, 8MM |
 | Besteck-Set aus Edelstahl – Western-Stil (`besteck-set-aus-edelstahl-western-stil-317696`) | 10 | 10 | 3.01–34.33 | 104.90 | Silver, Black, Gold, Blue |
@@ -123,6 +120,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Pleuelstangen-Hülsen-Set 1/4-6 mm bis 1/2-12,5 mm (`pleuelstangen-hulsen-set-1-4-6-mm-bis-1-2-12-5-6b75cd`) | 10 | 0 | 0.46–2.41 | 16.90 | A 75mm, C 100mm, A 150mm, B 250mm |
 | Kurzschal aus Wolle, koreanischer Stil (`kurzschal-aus-wolle-koreanischer-stil-611200`) | 10 | 10 | 2.46–2.46 | 16.90 | Caramel Color, Gray, Green Velvet, Haze Blue |
 | Uhrenarmband aus weissem Agate 40/38 mm (`uhrenarmband-aus-weissem-agate-40-38-mm-182336`) | 10 | 10 | 5.62–5.62 | 16.90 | White onyx-40to38mm, White onyx-42to44mm, Grey agate-40to38mm, Grey agate-42to44mm |
+| Intelligenter Fernbedienungs-Dimmer mit Farbwechsel (`intelligenter-fernbedienungs-dimmer-mit-farbwe-623500`) | 10 | 10 | 3.5–9.12 | 17.90 | FUT035S, FUT037S, FUT035SV2, FUT036SV2 |
 | Mini Projektor Schreibtischlampe mit Sternenhimmel (`mini-projektor-schreibtischlampe-mit-sternenhi-635400`) | 9 | 9 | 6.47–37.81 | 50.90 | 3 Pack Touch Panels-USB, 5 Pack Touch Panels A-USB, 5 Pack Touch Panels B-USB, 6 Pack Touch Panels-USB |
 | Kupfer Wandleuchte für Flure (`kupfer-wandleuchte-fur-flure-632900`) | 9 | 9 | 32.84–36.15 | 64.90 | Milky White-LED White Light, Milky White-LED Warm Light, Milky White-Tricolor Light, Custard-LED White Light |
 | Schwarzer Strickschal aus Wolle – 230 × 20 cm (`schwarzer-strickschal-aus-wolle-230-20-cm-616900`) | 9 | 9 | 2.99–2.99 | 16.90 | Red, Black, Wine Red, Light Blue |
@@ -143,6 +141,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Keramik-Tasse 400 ml Retro-Stil (`keramik-tasse-400-ml-retro-stil-635100`) | 9 | 9 | 3.69–3.69 | 19.90 | Oil Painting Blue-400ml, Oil Painting Red-400ml, Cherry Blossom Blue-400ml, Cherry Blossom Red-400ml |
 | Faltbarer Organizer-Korb für die Küche (`faltbarer-organizer-korb-fur-die-kuche-605700`) | 9 | 9 | 2.28–2.28 | 20.90 | Black Pink, Light Green, Orange, Milk Cap Red |
 | Karburator-Einstellwerkzeug aus Stahl (`karburator-einstellwerkzeug-aus-stahl-581615`) | 9 | 0 | 0.89–6.82 | 18.90 | 7 teeth, Small 1 tooth, 6 angles, Double D |
+| Atmungsaktives Nackenstützkissen für Sommer (`atmungsaktives-nackenstutzkissen-fur-sommer-613700`) | 9 | 9 | 2.46–5.26 | 42.90 | Light Blue-48x 74 Low Loft Pillow-1PC, Light Blue-48x74 Medium Pillow-1PC, Light Blue-48 X74 High Pillow-1PC, Lotus Root Color-48 X74 High Pillow-1PC |
 | Canvas-Uhrarmband für Apple Watch (`canvas-uhrarmband-fur-apple-watch-082944`) | 8 | 8 | 3.1–3.1 | 16.90 | Black-42or44or45mm, Black-38or40or41mm, Blue-42or44or45mm, Blue-38or40or41mm |
 | Gestrickter Schal mit Stickerei (`gestrickter-schal-mit-stickerei-604800`) | 8 | 8 | 4.34–4.34 | 17.90 | Black-70x200cm, White-70x200cm, Purplish Red-70x200cm, Blue-70x200cm |
 | Gepunkteter Strickschal für Damen (`gepunkteter-strickschal-fur-damen-616900`) | 8 | 8 | 3.61–3.61 | 16.90 | Dark Gray, Light Gray, Redmi, Black And White |
@@ -162,6 +161,11 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Alloy Auto Modell 1:32 (`alloy-auto-modell-1-32-583616`) | 8 | 8 | 9.0–10.15 | 31.90 | Red-Paperback, Red-With nonslip pad, Black-Paperback, Black-With nonslip pad |
 | Portemonnaie mit Reissverschluss & Anti-Diebstahl (`portemonnaie-mit-reissverschluss-anti-diebstah-602600`) | 8 | 8 | 6.14–6.14 | 16.90 | Midnight Black, Dark Purple, Wine Red, Light Pink |
 | Tragbare Camping-Dusche 8000 mA (`tragbare-camping-dusche-8000-ma-625000`) | 8 | 8 | 14.76–19.9 | 56.90 | 6000mA Gray, 6000mA Gray With Mesh Sponge, 6000mA Black, 6000mA Black With Mesh Sponge |
+| PU Armband für Smartwatch – Grün, Grau, Blau, Rot (`pu-armband-fur-smartwatch-grun-grau-blau-rot-431040`) | 8 | 8 | 3.62–3.62 | 16.90 | Grass green-38to40to41mm, Grass green-42to44to45MM, Grey green-38to40to41mm, Grey green-42to44to45MM |
+| Zwei-Ton Leder-Uhrenarmband – Fashion (`zwei-ton-leder-uhrenarmband-fashion-352000`) | 8 | 8 | 6.48–6.48 | 16.90 | Pink-38or40mm, Pink-42or44mm, Wine Red-38or40mm, Wine Red-42or44mm |
+| Stahl-Uhrenarmband mit Butterfly-Buckle (`stahl-uhrenarmband-mit-butterfly-buckle-965632`) | 8 | 8 | 5.45–7.66 | 16.90 | Black-38or40mm, Black-42or44mm, Silver-38or40mm, Silver-42or44mm |
+| Uhrenarmband Edelstahl Halbkreis mit drei Perlen (`uhrenarmband-edelstahl-halbkreis-mit-drei-perl-046848`) | 8 | 8 | 3.43–4.31 | 16.90 | Black-38to40to41mm, Black-42to44to45mm, Silver-38to40to41mm, Silver-42to44to45mm |
+| Mehrzweck-Babypflaster für Muttermilch-Stillkissen (`mehrzweck-babypflaster-fur-muttermilch-stillki-629200`) | 8 | 8 | 4.66–6.72 | 30.90 | Forest Paradise, Cherry Blossom Powder, Sea Sky Blue, Oko Pink |
 | Uhrenarmband aus Edelstahl (`uhrenarmband-aus-edelstahl-983680`) | 7 | 7 | 3.28–4.48 | 16.90 | Rose Gold, Silver, Blue, Space Grey |
 | Weihnachtskugeln – Antik-Look (`weihnachtskugeln-antik-look-601300`) | 7 | 7 | 4.53–5.03 | 16.90 | Antique Gold 8cm 9pcs-Christmas Ball, Archaism Silver 8cm 9pcs-Christmas Ball, Antique Red 8cm 9pcs-Christmas Ball, Antique Rose Gold 8cm 9pcs-Christmas Ball |
 | Tarn-Rucksack für Outdoor und Reisen 50L (`tarn-rucksack-fur-outdoor-und-reisen-50l-3b3be9`) | 7 | 7 | 5.62–5.62 | 25.90 | black, City Camouflage, Army Green Camouflage, CP camouflage |
@@ -189,14 +193,18 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Acryl-Marker-Set für Kunst und Graffiti (`acryl-marker-set-fur-kunst-und-graffiti-602800`) | 6 | 6 | 3.0–18.17 | 45.90 | 12 Colors Suit, 24 Colors Suit, 36 Colors Suit, 48 Colors Suit |
 | Rucksack 600D Oxford, 38x26x14 cm, 0,7 kg (`rucksack-600d-oxford-38x26x14-cm-0-7-kg-823ba6`) | 6 | 1 | 16.74–18.14 | 40.90 | Black brown belt, Brown stripe, Black belt, Grey pinstripe |
 | Grosses Keramikgewürzglas 1,2 L (`grosses-keramikgewurzglas-1-2-l-617300`) | 6 | 6 | 7.03–7.9 | 35.90 | Equipped with filter and spoon-Black, Equipped with filter and spoon-Cream White, Equipped with filter and spoon-Vintage Brown, Paired with a spoon-Black |
-| Winterlicher Streifen-Schal (`winterlicher-streifen-schal-625000`) | 6 | 6 | 7.79–7.79 | 16.90 | Blue brown, Black and white, Reddish gray, Black and white stripes |
 | Keramiktasse 420 ml – Schmetterling (`keramiktasse-420-ml-schmetterling-615800`) | 6 | 6 | 5.07–5.71 | 19.90 | 1 Style-420ml, 2 Style-420ml, 3 Style-350ml, 4 Style-350ml |
-| Langer Tassel-Schal aus Polyester, 200 × 70 cm (`langer-tassel-schal-aus-polyester-200-70-cm-613600`) | 6 | 6 | 4.02–4.02 | 16.90 | Sapphire Blue-200x70cm, White-200x70cm, Skin Color-200x70cm, Gray-200x70cm |
 | Keramikbecher mit Strohhalm (`keramikbecher-mit-strohhalm-618100`) | 6 | 6 | 13.87–15.61 | 28.90 | Chestnut Peach-Stainless Steel, Chestnut Peach-Ceramic, Frost Peach-Stainless Steel, Frost Peach-Ceramic |
 | Stossstangen-Reparaturmaschine (`stossstangen-reparaturmaschine-14fb8a`) | 6 | 0 | 30.66–30.66 | 68.90 | Black EU-K13523US, Black US-K13523EU, Black US-K13523US, Black EU-K13820EU |
 | Maitreya Buddha Statue auf Goldkröte (`maitreya-buddha-statue-auf-goldkrote-618500`) | 6 | 6 | 3.49–18.33 | 70.90 | Gold-Large Size, Gold-Medium, Gold-Small Size, Bronze-Large Size |
 | Ferngesteuertes Wand-Rennauto für Kinder (`ferngesteuertes-wand-rennauto-fur-kinder-560000`) | 6 | 6 | 8.18–11.58 | 23.90 | Dark Red-Luxury, Dark Red-Standard, Green-Luxury, Green-Standard |
-| Uhr Tulip Metallset mit Strasssteinen (`uhr-tulip-metallset-mit-strasssteinen-744576`) | 6 | 6 | 8.52–8.52 | 17.90 | Silver-38to40MM, Silver-42to44MM, Black-38to40MM, Black-42to44MM |
+| Smart Bracelet mit Herzfrequenz & Musik (`smart-bracelet-mit-herzfrequenz-musik-331201`) | 6 | 6 | 20.17–22.14 | 32.90 | Black glue, Silver glue, Black leather, Silver leather |
+| Sternenhimmel-Projektor für Auto-Interieur (`sternenhimmel-projektor-fur-auto-interieur-618800`) | 6 | 6 | 6.6–10.07 | 20.90 | USB-Delivery 3 Cards, USB-Delivery 6 Cards, USB-Deliver 12 Cards, USB-Upgrade Delivery 3 Cards |
+| Silikon-Hülle für Spielkonsole – Drop-Protection (`silikon-hulle-fur-spielkonsole-drop-protection-612600`) | 6 | 6 | 2.28–2.63 | 16.90 | Red, Yellow, Blue, Black |
+| Elastischer Sofa-Bezug mit Pflanzenmuster (`elastischer-sofa-bezug-mit-pflanzenmuster-770c7e`) | 6 | 6 | 3.04–11.04 | 22.90 | Rich in flower-Seat of four, Blue pink-Three people, Blue pink-Four people, Blue pink-Single |
+| Boho Wandteppich mit Tiermuster (`boho-wandteppich-mit-tiermuster-232c50`) | 6 | 6 | 2.57–5.06 | 21.90 | 150x130cm, 150x130cm thick, 150x100cm, 150x230cm |
+| Wandteppich Naturbaum mit Sternenhimmel (`wandteppich-naturbaum-mit-sternenhimmel-456fc5`) | 6 | 6 | 2.68–5.06 | 21.90 | 150x130cm thick, 150x230cm, 150x230cm thick, 150x130cm |
+| Wandteppich mit Tiermuster (`wandteppich-mit-tiermuster-dc96ef`) | 6 | 6 | 2.57–5.06 | 21.90 | 150x130cm, 150x100cm, 150x130cm thick, 150x100cm thick |
 | Ethnischer Schal Ankeila in Rot (`ethnischer-schal-ankeila-in-rot-609800`) | 5 | 5 | 4.3–4.3 | 16.90 | Color One, Color 2, Color Three, Color Four |
 | LED-Dekoleuchte für Hof und Garten (`led-dekoleuchte-fur-hof-und-garten-602900`) | 5 | 5 | 3.52–21.12 | 58.90 | Warm Light Always Bright-Ordinary Style-USB, Warm Light Always Bright-Remote Control Style-USB, White Light Is Always Bright-Ordinary Style-USB, White Light Is Always Bright-Remote Control Style-USB |
 | Uhr mit Zeiger, Quarz, 40 mm Zifferblatt (`uhr-mit-zeiger-quarz-40-mm-zifferblatt-025280`) | 5 | 5 | 15.7–15.7 | 24.90 | Steel blue finish, Golden blue surface, Stainless steel black surface, Full gold black face |
@@ -207,7 +215,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Gestrickter Blumenstrauss (`gestrickter-blumenstrauss-617200`) | 5 | 5 | 9.29–9.29 | 20.90 | Double Orange, Double Powder, Solid Yellow, Double Purple |
 | Multifunktionale Fahrradtasche (`multifunktionale-fahrradtasche-0d05dc`) | 5 | 1 | 20.44–20.44 | 57.90 | Grey A, Grey, Camouflage, Black |
 | 40-Liter Taktik-Rucksack in Tarnmuster (`40-liter-taktik-rucksack-in-tarnmuster-d021b8`) | 5 | 5 | 15.27–17.96 | 54.90 | Black, ACU Digital, Wolf brown, Desert digital |
-| Outdoor Wanderrucksack 20-35 L wasserdicht (`outdoor-wanderrucksack-20-35-l-wasserdicht-628900`) | 5 | 5 | 19.07–19.07 | 49.90 | Gray-35L, Red-35L, Matcha-35L, Blue-35L |
 | Multifunktions-Wecker mit Nacht- und Wecklicht (`multifunktions-wecker-mit-nacht-und-wecklicht-634000`) | 5 | 5 | 34.55–34.55 | 51.90 | US, EU, UK, AU |
 | Notizbuch mit Kunstledercover und 80 Blatt (`notizbuch-mit-kunstledercover-und-80-blatt-615200`) | 5 | 5 | 2.1–8.25 | 19.90 | 14.5x11.5-40 Notebooks, 14.5x11.5-Book 80 Pieces Pendant, 14.5x11.5-80 Inner Pages, 14.5x11.5-40 Puppy Pendants |
 | Schutzhülle für Bluetooth-Headset, Blumenmuster (`schutzhulle-fur-bluetooth-headset-blumenmuster-608200`) | 5 | 5 | 2.11–2.11 | 16.90 | airpods1or2, Airpods3, Airpodspro, Airpodspro2 |
@@ -215,7 +222,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Robuste Outdoor-Handytasche (`robuste-outdoor-handytasche-614100`) | 5 | 5 | 2.57–2.57 | 16.90 | Black-16.5X9.5CM, Khaki-16.5X9.5CM, Green-16.5X9.5CM, ACU-16.5X9.5CM |
 | Taktische Angeltasche Schwarz 100 cm (`taktische-angeltasche-schwarz-100-cm-9b8af2`) | 5 | 0 | 6.74–6.74 | 30.90 | ACU-1m, Black-1m, Nissan-1m, CP-1m |
 | Schiessdecke Training 200x75 cm 1000D Nylon (`schiessdecke-training-200x75-cm-1000d-nylon-b8ed7f`) | 5 | 5 | 12.65–12.65 | 27.90 | Black, Khaki, Camouflage A, Ruin camouflage |
-| Thermischer Strickschal mit Totenkopf-Design (`thermischer-strickschal-mit-totenkopf-design-600300`) | 5 | 5 | 2.5–2.5 | 16.90 | Big Ghost Head-160x16cm, Multiple ghost heads-160x16cm, Big And Small Ghost Head-160x16cm, Wave Ghost Head-160x16cm |
 | Kaschmirschal mit Streifen (`kaschmirschal-mit-streifen-634200`) | 5 | 5 | 8.96–8.96 | 17.90 | Free Size-White, Free Size-Green Velvet, Free Size-Collect Pollen, Free Size-Purple Cashmere |
 | Kaschmirschal (`kaschmirschal-606800`) | 5 | 5 | 3.96–3.96 | 16.90 | Black And White Plaid-71x180cm, Red And White Plaid-71x180cm, Yellow Green Grid-71x180cm, Purple And White Plaid-71x180cm |
 | Tungstenstahl-Bohrausfräser 2 mm (`tungstenstahl-bohrausfraser-2-mm-b37ae1`) | 5 | 0 | 3.9–6.61 | 16.90 | Handle 4 deep 15, Handle 3 deep 10, 2MM single head, Handle 3 deep 15 |
@@ -227,6 +233,11 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | NFC Karte – beschriftete Chipkarte aus beschichtetem Papier (`nfc-karte-beschriftete-chipkarte-aus-beschicht-b50858`) | 5 | 5 | 0.44–20.0 | 29.90 | Q10pcs, Q20pcs, Q50pcs, Q1pcs |
 | Outdoor-Reiserucksack (`outdoor-reiserucksack-5c9abf`) | 5 | 0 | 13.11–17.0 | 39.90 | Grey, Light grey ozuko, Black ozuko, Black |
 | Taktischer Rucksack für Outdoor (`taktischer-rucksack-fur-outdoor-de2b52`) | 5 | 0 | 15.19–15.19 | 48.90 | CP camouflage, Black, ACU Digital, Wolf brown |
+| Bürstenloser Modellmotor V2 5-Zoll (`burstenloser-modellmotor-v2-5-zoll-606900`) | 5 | 5 | 11.61–11.61 | 20.90 | V2207 V2 KV1750 , V2207 V2 KV1950, V2207 V2 KV2550 , V2306 V2 KV1950  |
+| RGB-Keyboard mit Kabel und Bluetooth (`rgb-keyboard-mit-kabel-und-bluetooth-621800`) | 5 | 5 | 11.11–15.75 | 45.90 | Cream Knight, Xinghai, Sea Salt, Snow Green |
+| Gamecube-Optiklauf-Simulator (`gamecube-optiklauf-simulator-621400`) | 5 | 5 | 14.59–49.75 | 63.90 | Install Stent Black, Install Stent White, Black Optical Drive Board, White Optical Drive Board |
+| Kühlkörper mit digitaler Anzeige und Lichtabschaltung (`kuhlkorper-mit-digitaler-anzeige-und-lichtabsc-616500`) | 5 | 5 | 3.66–4.93 | 16.90 | TL07 White, TL07 Black, TL01 Transparent, X122 Transparent |
+| Programmierbares USB-Pedal mit Ultraschall-Schalter (`programmierbares-usb-pedal-mit-ultraschall-sch-602700`) | 5 | 5 | 2.46–9.93 | 18.90 | FS220P Photoelectric Switch, FS220PM Mechanical Switch, FS220Pro Mechanical Switch, FS220Proc Mechanical Switch |
 | Schwenkbare Wandlampe für Arbeitszimmer (`schwenkbare-wandlampe-fur-arbeitszimmer-601900`) | 4 | 4 | 37.65–37.65 | 63.90 | Brushed Gold, Brushed Coffee Gold, Brushed Fog Bronze, Brushed Black |
 | Deckenlampe aus Kupfer mit Sternenmotiv (`deckenlampe-aus-kupfer-mit-sternenmotiv-615300`) | 4 | 4 | 29.93–40.33 | 69.90 | Copper-No light source, Copper-With light source, Iron-No light source, Iron-With light source |
 | Weihnachtskranz mit Pappel- und Kugeldetails (`weihnachtskranz-mit-pappel-und-kugeldetails-607200`) | 4 | 4 | 12.44–15.75 | 40.90 | Garland-40cm, Garland-50cm, Garland Light-40cm, Garland Light-50cm |
@@ -238,17 +249,11 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Umhängetasche für Schüler (`umhangetasche-fur-schuler-602700`) | 4 | 4 | 11.11–11.11 | 29.90 | Blue, Black, Reddish Yellow Color Matching, Red And White Color Matching |
 | Minimalistische geometrische Ohrstecker aus Edelstahl (`minimalistische-geometrische-ohrstecker-aus-ed-609100`) | 4 | 4 | 2.77–8.73 | 17.90 | JDE0111128, JDE0310001, JDE0308016, Set |
 | Holz-Miniflugzeug (`holz-miniflugzeug-285440`) | 4 | 4 | 9.88–9.88 | 18.90 | Aircraft, A, B, Military vehicle |
-| Wasserdichte Fahrrad-Hecktasche (`wasserdichte-fahrrad-hecktasche-604300`) | 4 | 4 | 3.17–3.17 | 16.90 | Black-15L, Brown-15L, Light Purple-15L, Colorful Color-15L |
-| Knieschoner mit Patella-Stabilisierung (`knieschoner-mit-patella-stabilisierung-605500`) | 4 | 4 | 5.48–5.48 | 16.90 | Left leg-S, Left leg-M, Right leg-S, Right leg-M |
 | Badge- und Kartenhalter Cube Academy Rot (`badge-und-kartenhalter-cube-academy-rot-632100`) | 4 | 4 | 2.09–2.09 | 16.90 | Dark Green-Badge Holder, Dark Green-Card Holder, Red-Badge Holder, Red-Card Holder |
 | Regenkette aus Metall (`regenkette-aus-metall-608000`) | 4 | 4 | 4.86–6.63 | 24.90 | Rotating Rain Chain, Umbrella Rain Chain, Mushroom Rain Chain, Pinecone Rain Chain |
 | Retro-Oktagonalblumenkeramik Tasse & Untersetzer (`retro-oktagonalblumenkeramik-tasse-untersetzer-611900`) | 4 | 4 | 4.56–4.56 | 19.90 | Pink Chinese Rose-250ml, Green Gold Spike-250ml, Rose Bouquet-250ml, Brown Wild Color-250ml |
-| Keramiktasse Dunhuang Fliegende Apsaras (`keramiktasse-dunhuang-fliegende-apsaras-629500`) | 4 | 4 | 2.21–2.94 | 16.90 | Azure-Portable, Azure-Simple Package, Beige-Portable, Beige-Simple Package |
 | Keramikbecher mit Cartoon-Katzenmotiv (`keramikbecher-mit-cartoon-katzenmotiv-608900`) | 4 | 4 | 3.3–3.3 | 18.90 | Chef Cap Cat-400ml, Baguette Cat-400ml, Croissant Cat-400ml, Donut Cat-400ml |
 | Keramikschale mit Beerenmuster (`keramikschale-mit-beerenmuster-602200`) | 4 | 4 | 4.92–4.92 | 30.90 | Pink, Blue, Turn Blue, Green |
-| Faux-Cashmere Schal mit Cartoon-Design (`faux-cashmere-schal-mit-cartoon-design-622300`) | 4 | 4 | 3.5–3.86 | 16.90 | Really Cute Kitty Gray-180x65cm Imitation Cashmere, Really Cute Kitty Black-180x65cm Imitation Cashmere, Really Cute Kitty Camel-180x65cm Imitation Cashmere, Grey-180x65cm Imitation Cashmere |
-| Tee-Becher aus Keramik – Dunhuang Apsaras (`tee-becher-aus-keramik-dunhuang-apsaras-636300`) | 4 | 4 | 2.21–2.94 | 16.90 | Azure-Portable, Azure-Simple Package, Beige-Portable, Beige-Simple Package |
-| Trinkflasche aus Kunststoff – 500 ml (`trinkflasche-aus-kunststoff-500-ml-610400`) | 4 | 4 | 2.19–2.19 | 16.90 | Pink Zebra Pattern-500ML, Black And White Leopard Print-500ML, Macaron Camouflage-500ML, Star Diamond Pattern-500ML |
 | Edelstahl-Trinkflasche mit Teesieb (`edelstahl-trinkflasche-mit-teesieb-629900`) | 4 | 4 | 6.34–6.34 | 26.90 | Black-64oz, Purple-64oz, Orange-64oz, Eight White-64oz |
 | LED-Tischlampe modern und schlicht (`led-tischlampe-modern-und-schlicht-639700`) | 4 | 4 | 13.53–14.79 | 44.90 | CN, With Adapter Plug, Cubical Sugar 5W LED Sealed, Suit |
 | Winkelklemmen-Set für Holzbearbeitung (`winkelklemmen-set-fur-holzbearbeitung-65d163`) | 4 | 4 | 2.56–7.68 | 17.90 | Black opp packing-Q4PC 2sets, Black opp packing-Q4PC 3sets, Angle measurer-1PC, Black opp packing-Q4PC |
@@ -259,6 +264,12 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Handtuch-Set Schwarz aus Edelstahl (`handtuch-set-schwarz-aus-edelstahl-388480`) | 4 | 4 | 4.06–18.25 | 30.90 | Double Coat Hook, Tissue Holder, Towel Ring, Three |
 | Weihnachts-WC-Set (`weihnachts-wc-set-523264`) | 4 | 4 | 2.6–2.6 | 16.90 | Santa Claus Toilet Seat Cover, Striped Snowman Style, Elf Style, Deer Style |
 | Bausteine Villa und Auto (`bausteine-villa-und-auto-923008`) | 4 | 4 | 10.58–14.37 | 40.90 | A, B, C, D |
+| Smartwatch GPS Herzfrequenz Outdoor (`smartwatch-gps-herzfrequenz-outdoor-278912`) | 4 | 4 | 66.1–66.1 | 83.90 | Black-USB, Army Green-USB, Brown-USB, Black B-USB |
+| Smartwatch mit HD-Display, Herzfrequenz (`smartwatch-mit-hd-display-herzfrequenz-482624`) | 4 | 4 | 42.62–42.62 | 55.90 | Black frame black leather, Silver frame brown leather, Black frame vinyl, Silver frame orange |
+| Mini-Projektor für Heimkino (`mini-projektor-fur-heimkino-624300`) | 4 | 4 | 33.85–33.85 | 58.90 | EU, US, UK, AU |
+| Walnuss Holzschraubensockel für Werkzeuge (`walnuss-holzschraubensockel-fur-werkzeuge-610000`) | 4 | 4 | 2.0–5.51 | 16.90 | 4Switches Dual Control-Walnut Colors, 1Switch Dual Control-Walnut Colors, 2Section Dual Control-Walnut Colors, 3Switches Dual Control-Walnut Colors |
+| Elektrischer Farbroller-Bürste für 101-150 m² (`elektrischer-farbroller-burste-fur-101-150-m-619000`) | 4 | 4 | 2.28–2.28 | 16.90 | V6/V7, V8, V10, V11 |
+| Kühles Kopfkissen mit Memory-Schaum (`kuhles-kopfkissen-mit-memory-schaum-607800`) | 4 | 4 | 5.44–7.05 | 48.90 | White-51x66cm  950g, White-51x66cm 1.3kg, White-51x76.2cm  1.4kg, White-51x91.5cm  1.8kg |
 | Langer Schal mit Kaschmunster und Quasten (`langer-schal-mit-kaschmunster-und-quasten-634500`) | 3 | 3 | 2.9–2.9 | 16.90 | 1 Green-172X70cm, 2 Red-172X70cm, 3 Brown-172X70cm |
 | LED-Pendelleuchte für Schlafzimmer (`led-pendelleuchte-fur-schlafzimmer-605400`) | 3 | 3 | 8.62–9.29 | 36.90 | Warm Light, White Light, Three Colors |
 | Deckenleuchte im Wabi-Sabi-Stil (`deckenleuchte-im-wabi-sabi-stil-610200`) | 3 | 3 | 19.24–20.07 | 50.90 | Huangdong-White light, Huangdong-Three Colors, Huangdong-Warm light |
@@ -275,7 +286,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Sensor-Seifenspender zur Wandmontage (`sensor-seifenspender-zur-wandmontage-627400`) | 3 | 3 | 32.81–32.81 | 58.90 | Matte Black, Mirror Silver, Ice Silk Silver |
 | Rucksack mit Zahlenschloss (`rucksack-mit-zahlenschloss-a44781`) | 3 | 3 | 20.93–22.02 | 60.90 | Upgrade gray, Upgrade Black, Regular Black |
 | Taktische Umhängetasche (`taktische-umhangetasche-626100`) | 3 | 3 | 5.04–5.04 | 16.90 | Black-Below 20L, Scorpio-Below 20L, Dark Night-Below 20L |
-| Keramik-Kaffeetasse mit Farbblock-Streifen (`keramik-kaffeetasse-mit-farbblock-streifen-610000`) | 3 | 3 | 4.0–4.0 | 16.90 | Sea Salt-260mL, Negative Space-260mL, Colorful-260mL |
 | Trinkflasche mit Strohhalm 720 ml (`trinkflasche-mit-strohhalm-720-ml-631100`) | 3 | 3 | 34.55–34.55 | 53.90 | Butter Little Paw-720ml, Mint Roundie-720ml, Sesame Little Wang-720ml |
 | Camping-Lichterkette (`camping-lichterkette-624200`) | 3 | 3 | 4.86–4.86 | 16.90 | M07 Field Green, M07 Desert Yellow, M07 Dreamy Black |
 | Keramikdüse für Sandstrahlgerät (`keramikduse-fur-sandstrahlgerat-fff6be`) | 3 | 0 | 4.34–5.29 | 24.90 | Karcher K, Commonly used, Copper joint |
@@ -286,6 +296,9 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Kurze PU-Leder-Tasche mit Glitzeroptik (`kurze-pu-leder-tasche-mit-glitzeroptik-613400`) | 3 | 3 | 3.86–3.86 | 16.90 | Magic Fingernail Glitter, Crystal Blue, Symphony Green |
 | Fringe Fashion Casual Versatile Schal (`fringe-fashion-casual-versatile-schal-605200`) | 3 | 3 | 2.9–2.9 | 16.90 | Color-140cm, Red-140cm, Black-140cm |
 | Octagonales Push-Up-Board (`octagonales-push-up-board-d84f09`) | 3 | 3 | 6.3–6.33 | 39.90 | Star anise, Foldable board with drawstring, Candy bar |
+| Projektor mit 30 Szenen – Weihnachten, Halloween, Galaxie (`projektor-mit-30-szenen-weihnachten-halloween-638400`) | 3 | 3 | 3.16–3.16 | 16.90 | 10 Christmas Scenes, 10 Halloween Scenes, Galaxy 10 Scene |
+| Internationaler Universal-Reiseadapter (`internationaler-universal-reiseadapter-627000`) | 3 | 3 | 5.97–5.97 | 16.90 | Black-Multinational Converter-8 Bit, Blue-Multinational Converter-8 Bit, Orange-Multinational Converter-8 Bit |
+| Kuschelkissen H (`kuschelkissen-h-619200`) | 3 | 3 | 3.24–3.24 | 16.90 | Brown-50cm, Black-50cm, Gray-50cm |
 | Aufladbare Tischlampe im Band-Design, 3-Farb-Touch (`aufladbare-tischlampe-im-band-design-3-farb-to-626200`) | 2 | 2 | 7.46–8.29 | 29.90 | 1200 MA-18XH32cm, 2000 MA-18XH32cm |
 | Nachtlicht-Figur aus Kunstharz (`nachtlicht-figur-aus-kunstharz-628200`) | 2 | 2 | 3.18–3.18 | 16.90 | Combined Ten Models, Bouquet Style |
 | Retro Weihnachtskugeln – 12er-Set (`retro-weihnachtskugeln-12er-set-615500`) | 2 | 2 | 6.1–6.1 | 17.90 | Coffee Color-8CM, White Gold Color-8CM |
@@ -301,11 +314,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Windseil-Licht 10×2×1,5 cm (`windseil-licht-10-2-1-5-cm-626700`) | 2 | 2 | 5.47–65.64 | 97.90 | Wind Rope Lamp-1PC, Wind Rope Lamp-12PCS |
 | Reiserucksack 43,5×16×29 cm – Black (`reiserucksack-43-5-16-29-cm-black-555f4e`) | 2 | 2 | 29.68–33.0 | 68.90 | Flagship Edition, Luxury Edition |
 | Edelstahl-Hantel mit Beschichtung (`edelstahl-hantel-mit-beschichtung-399040`) | 2 | 2 | 17.03–33.88 | 265.90 | A, B |
-| Keramiktasse Retro mit Blumenmuster, 250 ml (`keramiktasse-retro-mit-blumenmuster-250-ml-615500`) | 2 | 2 | 5.71–5.71 | 20.90 | Lemon-201to300ml, Pomegranate-201to300ml |
-| Keramiktasse mit Untertasse, Tiermotiv (`keramiktasse-mit-untertasse-tiermotiv-600800`) | 2 | 2 | 5.71–5.71 | 20.90 | Brown Swallow-201to300ml, White Butterfly-201to300ml |
-| Keramiktasse mit Schmetterlingsmuster (`keramiktasse-mit-schmetterlingsmuster-632400`) | 2 | 2 | 5.07–5.07 | 19.90 | Swallow-201to300ml, White Butterfly-201to300ml |
-| Retro-Vogel-Keramikbecher mit Ballgriff (`retro-vogel-keramikbecher-mit-ballgriff-637200`) | 2 | 2 | 5.07–5.07 | 17.90 | Swallow-201to300ml, White Butterfly-201to300ml |
-| Teetasse aus Keramik mit Dunhuang-Motiv (`teetasse-aus-keramik-mit-dunhuang-motiv-600300`) | 2 | 2 | 5.44–5.44 | 20.90 | Beige, Azure |
 | Tragbarer Ultraschall-Vernebler für Kinder (`tragbarer-ultraschall-vernebler-fur-kinder-600800`) | 2 | 2 | 4.74–4.92 | 16.90 | Plug In, Charging |
 | Wärmeleitpaste mit Silbernadel (`warmeleitpaste-mit-silbernadel-86e8a9`) | 2 | 0 | 0.09–0.56 | 16.90 | M, S |
 | Solar Tischlampe für draussen (`solar-tischlampe-fur-draussen-631000`) | 2 | 2 | 3.19–3.19 | 16.90 | Round Life Wheel Warm White, Round Life Wheel Colorful Rgb |
@@ -322,4 +330,16 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Faltenlampe aus Stoff und Metall – Aufladbare Tischlampe (`faltenlampe-aus-stoff-und-metall-aufladbare-ti-638500`) | 2 | 2 | 5.8–5.8 | 17.90 | Second Gear, Third Gear |
 | Zelt Doppelperson Regenfest 210x110 cm (`zelt-doppelperson-regenfest-210x110-cm-629900`) | 2 | 2 | 27.36–27.36 | 120.90 | Army Green Bottomless-1 To 2 People, Army Green Bottom-1 To 2 People |
 | Automatisches Campingzelt, wasserfest, Allwetter (`automatisches-campingzelt-wasserfest-allwetter-622200`) | 2 | 2 | 10.78–15.45 | 69.90 | One Door And One Window-Double, Two doors and two windows-2 to 3people |
-| Uhr mit Schmuckarmband aus blauem Kristall (`uhr-mit-schmuckarmband-aus-blauem-kristall-682816`) | 2 | 2 | 5.8–5.8 | 16.90 | Sapphire crystal watch-38to40to41MM, Sapphire crystal watch-42to44to45MM |
+| Laserprojektor mit USB für Weihnachtslicht (`laserprojektor-mit-usb-fur-weihnachtslicht-637500`) | 2 | 2 | 2.94–4.92 | 16.90 | Film Projector Lamp, Laser Projection Lamp |
+| Bluetooth Lautsprecher Mini Outdoor (`bluetooth-lautsprecher-mini-outdoor-603500`) | 2 | 2 | 7.25–7.25 | 18.90 | Black, White |
+| Wasserdichter Bluetooth-Speaker 5 W (schwarz) (`wasserdichter-bluetooth-speaker-5-w-schwarz-626300`) | 2 | 2 | 9.78–9.78 | 19.90 | Black, Sky Blue |
+| Transparenter Bluetooth-Lautsprecher 13,6×12 cm (`transparenter-bluetooth-lautsprecher-13-6-12-c-628400`) | 2 | 2 | 4.23–4.23 | 18.90 | Fully Transparent M9, Black M7 |
+| Kompakter USB-Lautsprecher mit Alarmfunktion (`kompakter-usb-lautsprecher-mit-alarmfunktion-603100`) | 2 | 2 | 20.9–21.72 | 51.90 | Air Column Bag Packaging, Color Box Packaging |
+| Kopfhörer-Ständer, doppelseitig schwarz / silber (`kopfhorer-stander-doppelseitig-schwarz-silber-624800`) | 2 | 2 | 4.18–4.28 | 16.90 | Double headed Silver	, Black |
+| FAB RBS dekorative schräge Zielvorrichtung (`fab-rbs-dekorative-schrage-zielvorrichtung-616600`) | 2 | 2 | 9.62–10.78 | 19.90 |   YR470, YR470 Oblique Pattern |
+| Farbsteuerungs-Pad für Live-Broadcast, 15 Tasten (`farbsteuerungs-pad-fur-live-broadcast-15-taste-611900`) | 2 | 2 | 54.57–54.57 | 68.90 | AKP153E White, AKP153E Black |
+| Aktivkohle HEPA-Filter für Life Air Purifier (`aktivkohle-hepa-filter-fur-life-air-purifier-629900`) | 2 | 2 | 5.03–15.09 | 39.90 | X 080-1pc, X 080-3pcs |
+| Maus-Tail-Cover aus Metall, immer leuchtend (`maus-tail-cover-aus-metall-immer-leuchtend-623100`) | 2 | 2 | 14.59–14.59 | 23.90 | G075 BK Only Tail Hood, G075 DE Only Tail Hood |
+| Clip-Fan Desktop mit 5 Geschwindigkeiten (`clip-fan-desktop-mit-5-geschwindigkeiten-627900`) | 2 | 2 | 7.46–7.46 | 16.90 | White-Clip Wrist Hanging Fan, Apricot-Clip Wrist Hanging Fan |
+| Griffhalter-Set für Virtual-Shooting, orange-weiss (`griffhalter-set-fur-virtual-shooting-orange-we-629000`) | 2 | 2 | 6.3–6.3 | 17.90 | Orange White Suit, Dark Blue Sets |
+| Plüschtier-Kissen – Kreative Nische (`pluschtier-kissen-kreative-nische-627100`) | 2 | 2 | 3.24–3.24 | 20.90 | Red-45X50cm, Yellow-45X50cm |
