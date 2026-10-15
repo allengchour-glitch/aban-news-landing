@@ -278,3 +278,4 @@ slug:u-formige-warmflasche-fur-nacken-und-schultern-bd844c
 name:haustierreisemattefürdasauto
 pid:15480279761281
 slug:haustier-reisematte-fur-das-auto
+slug:ruckenstutzkissen-fur-sofa-und-bett

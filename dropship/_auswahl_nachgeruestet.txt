@@ -2477,3 +2477,6 @@
 15509391507841	Grösse:2:2	2026-10-15	knieschoner-zur-patella-fixation-676800
 15509389115777	Farbe:5:5	2026-10-15	rosen-seifenblumen-bouquet-geschenkbox-28c214
 15509385904513	Farbe:2:2	2026-10-15	vielseitiges-moissanit-armband-aus-925er-silbe-626700
+15509385838977	Farbe:2+Ausführung:4:8	2026-10-15	armband-mit-zirkonia-steinen-18k-vergoldet-639700
+15509385347457	Farbe:3:3	2026-10-15	anti-umkipp-futternapf-fur-haustiere-506432
+15509385085313	Farbe:7+Grösse:3:15	2026-10-15	anti-schling-napf-fur-haustiere-121664
