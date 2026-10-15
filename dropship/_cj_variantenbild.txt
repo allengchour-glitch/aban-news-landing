@@ -7376,3 +7376,9 @@ gid://shopify/Product/15472059810177	zugeordnet	48	Western Fransenhemd aus Wildl
 gid://shopify/Product/15472062595457	zugeordnet	6	Elegantes Spitzenkleid mit Spaghettiträgern
 gid://shopify/Product/15472062628225	zugeordnet	21	Off-Shoulder Kleid mit geradem Schnitt
 gid://shopify/Product/15472062693761	zugeordnet	35	Elegantes Puffärmel-Maxikleid zum Schnüren
+gid://shopify/Product/15472062824833	zugeordnet	36	Elegantes, tailliertes Bodycon-Kleid mit Falten
+gid://shopify/Product/15472062890369	zugeordnet	24	Taillenbetontes A-Linien Kleid
+gid://shopify/Product/15472062955905	zugeordnet	2	Strickkleid mit Spitze und Blumenmuster
+gid://shopify/Product/15472063054209	zugeordnet	42	Elegantes, figurbetontes Sommerkleid mit Schlitz
+gid://shopify/Product/15472063152513	zugeordnet	35	Ärmelloses V-Ausschnitt-Kleid mit Stufenrock
+gid://shopify/Product/15472063250817	zugeordnet	42	Elegantes Plisseekleid mit Blumenmuster
