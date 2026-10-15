@@ -2407,3 +2407,7 @@
 16616674984327	Ausführung:2+Grösse:2:4+ki	2026-10-15	knieschoner-mit-patella-stabilisierung-605500
 16616558166407	Farbe:4:4+ki	2026-10-15	wasserdichte-fahrrad-hecktasche-604300
 16616556691847	Farbe:5:5+ki	2026-10-15	outdoor-wanderrucksack-20-35-l-wasserdicht-628900
+15510927409537	Farbe:8:8	2026-10-15	wasserdichter-wanderrucksack-621300
+15510926786945	Modell:4:4	2026-10-15	smartes-ems-muskelstimulationsgerat-fur-zuhaus-714240
+15510926164353	Farbe:2:2	2026-10-15	geometrisches-silikon-stapelspielzeug-fur-kind-260864
+15510925967745	Modell:3:3	2026-10-15	magnetische-bausteine-dinosaurier-welt-313728
