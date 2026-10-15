@@ -1,21 +1,18 @@
 {
  "host": "vm",
- "stunde": "2026-10-15T03:00Z",
- "stand": "2026-10-15T03:13:09Z",
+ "stunde": "2026-10-15T04:00Z",
+ "stand": "2026-10-15T04:09:22Z",
  "fenster_min": 60,
- "summe": 319,
+ "summe": 360,
  "skripte": {
-  "cj_ausgelistet_sichtbar.py": 111,
-  "cj_category_fill.mjs": 87,
-  "auswahl_nachruesten.py": 39,
-  "cj_versand_ch_sichtbar.py": 23,
-  "cj_verfuegbarkeit.py": 20,
-  "cj_fulfill_engine.py": 17,
-  "cj_perpetual.mjs": 11,
-  "versand_stillstand.py": 3,
-  "cj_order_engine.py": 3,
-  "cj_zahlung_offen.py": 2,
-  "cj_kosten_backfill.mjs": 2,
-  "cj_video_reel_engine.mjs": 1
+  "cj_category_fill.mjs": 206,
+  "cj_video_index.mjs": 62,
+  "cj_perpetual.mjs": 38,
+  "cj_fulfill_engine.py": 31,
+  "versand_stillstand.py": 6,
+  "cj_video_reel_engine.mjs": 5,
+  "cj_order_engine.py": 4,
+  "cj_zahlung_offen.py": 4,
+  "cj_versand_ch_guard.py": 4
  }
 }
