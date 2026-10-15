@@ -1593,3 +1593,5 @@ gid://shopify/Product/16617717465479	ok	Waschtischarmatur aus Kupfer
 gid://shopify/Product/16638442373511	ok	Hexagonaler Gummieinsatz-Dumbbell 12,5 kg
 gid://shopify/Product/16638445453703	ok	Zusammenklappbarer Carbon-Trekkingstock 110 cm
 gid://shopify/Product/16638446207367	ok	Steuerungsrad aus Edelstahl 400 mm
+gid://shopify/Product/16638443422087	nicht-versendbar	Zelt Doppelperson Regenfest 210x110 cm
+gid://shopify/Product/16639094194567	ok	Wandbild mit abstraktem Muster
