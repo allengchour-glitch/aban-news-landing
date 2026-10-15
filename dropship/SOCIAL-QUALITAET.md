@@ -1,42 +1,42 @@
-# Social-Qualität — Stand 2026-10-14 00:09 UTC
+# Social-Qualität — Stand 2026-10-15 00:14 UTC
 
 Erzeugt von `automation/social_qualitaet_wache.mjs` — **nur lesend**: kein Post, keine Caption, kein Profil und keine Planung wurde geändert. Jede Aktion unten ist ein **Vorschlag**.
 
 ## Gelesen
 
 - Instagram: 100 Beiträge (letzte 100, mit Aufrufen/Reichweite aus Insights)
-- Facebook: 117 Seitenbeiträge + 0 Reels ohne Seitenbeitrag (letzte 60 Tage; Profil-/Titelbildwechsel ausgenommen)
-- Metricool-Planer: 275 Einträge (−30/+7 Tage) · Pinterest-Analyse: 196 Pins
-- Geprüft: 688 Beiträge, 762 Medien (ffprobe/ebur128/Tesseract)
-- Shopify live: Gratisversand CH ab CHF ? Warenkorb nach Rabatt (öffentliche Aussage «ab CHF 50» ist damit gedeckt) · Standard CHF ? · Kanarienvogel Suche: ok (sku: und title: liefern 0 für Unsinn)
+- Facebook: 119 Seitenbeiträge + 0 Reels ohne Seitenbeitrag (letzte 60 Tage; Profil-/Titelbildwechsel ausgenommen)
+- Metricool-Planer: 297 Einträge (−30/+7 Tage) · Pinterest-Analyse: 206 Pins
+- Geprüft: 722 Beiträge, 778 Medien (ffprobe/ebur128/Tesseract)
+- Shopify live: Gratisversand CH ab CHF 40.5 Warenkorb nach Rabatt (öffentliche Aussage «ab CHF 50» ist damit gedeckt) · Standard CHF 7 · Kanarienvogel Suche: ok (sku: und title: liefern 0 für Unsinn)
 
 ## Zusammenfassung
 
-**88 Fehler · 305 Warnungen · 243 Hinweise** — Fehler/Warnungen in 342 von 688 Beiträgen.
+**88 Fehler · 322 Warnungen · 251 Hinweise** — Fehler/Warnungen in 356 von 722 Beiträgen.
 
 Vorgeschlagene Aktionen (nichts davon ausgeführt):
 
-- Facebook: 63 × Caption korrigieren · 44 × löschen/neu posten — beides per API möglich, sobald freigegeben [Q1]
-- Instagram: 49 × Caption in der App korrigieren (API kann es nicht [Q2]) · 55 × löschen/neu posten (nur App/PC oder Facebook-User-Token [Q2])
-- TikTok/YouTube/Pinterest: 131 × in der jeweiligen App (Metricool löscht nur Geplantes [Q3])
+- Facebook: 66 × Caption korrigieren · 46 × löschen/neu posten — beides per API möglich, sobald freigegeben [Q1]
+- Instagram: 48 × Caption in der App korrigieren (API kann es nicht [Q2]) · 61 × löschen/neu posten (nur App/PC oder Facebook-User-Token [Q2])
+- TikTok/YouTube/Pinterest: 135 × in der jeweiligen App (Metricool löscht nur Geplantes [Q3])
 - Schutzregel: 0 Beiträge über 500 Aufrufe → nie löschen, nur Caption
 
 | Klasse | Instagram | Facebook | TikTok | YouTube | Pinterest | Summe |
 |---|---:|---:|---:|---:|---:|---:|
-| DIREKTLINK | · | · | · | · | 126 | 126 |
-| DOPPEL | 49 | 37 | · | · | 10 | 96 |
+| DIREKTLINK | · | · | · | · | 132 | 132 |
+| DOPPEL | 55 | 39 | · | · | 10 | 104 |
 | ENGLISCH | 2 | · | · | · | · | 2 |
 | FLOSKEL | · | 1 | · | · | 1 | 2 |
-| FORMAT | 55 | 50 | · | · | 19 | 124 |
-| PREIS | 23 | 35 | 17 | 8 | 91 | 174 |
-| PRODUKT | 1 | 2 | · | 2 | 7 | 12 |
-| TEXT | 25 | 25 | · | · | · | 50 |
+| FORMAT | 57 | 50 | · | · | 19 | 126 |
+| PREIS | 18 | 35 | 17 | 8 | 94 | 172 |
+| PRODUKT | 1 | 2 | · | 3 | 7 | 13 |
+| TEXT | 28 | 28 | · | · | · | 56 |
 | TON | 1 | 2 | · | · | · | 3 |
-| VERSAND | 12 | 22 | · | · | 13 | 47 |
+| VERSAND | 16 | 22 | · | · | 13 | 51 |
 
-Produkt zugeordnet: 577 von 688 Beiträgen (Titel 148, Link 415, Ledger 13, CJ-SKU 1).
+Produkt zugeordnet: 604 von 722 Beiträgen (Titel 157, Link 433, Ledger 13, CJ-SKU 1).
 
-Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Preis, aber ohne sichere Produktzuordnung · 3 Beiträge mit nicht messbaren Medien.
+Dazu: 37 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Preis, aber ohne sichere Produktzuordnung · 4 Beiträge mit nicht messbaren Medien.
 
 ## Befunde (Fehler zuerst, dann nach Aufrufen; Hinweise stehen gesammelt weiter unten)
 
@@ -75,32 +75,48 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
 - **FEHLER PREIS:** Lockpreis: Caption CHF 29.90, Shop CHF 34.90 («Cosmo Dog Sternenhimmel Projektionslampe», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: TikTok-App / Hetzner-Agent (veröffentlicht, nicht per API) [Q3]
 
-### FEHLER · Pinterest pin · 2026-09-22 13:07 UTC · 33 Aufrufe
+### FEHLER · Pinterest pin · 2026-09-22 13:07 UTC · 37 Aufrufe
 - Post: https://www.pinterest.com/pin/1111333645581093873/
 - Text: «Figurformendes ärmelloses Kleid Dieses elegante ärmellose Kleid schmeichelt der Figur und sorgt für einen raffinierten Auftritt. Der hohe T…»
 - Produkt: Figurformendes ärmelloses Kleid (ACTIVE, https://luxestyle.ch/products/figurformendes-armelloses-kleid-600300, SKU CJ-CJLY293212301AZ) — Zuordnung: Link im Text
 - **FEHLER PREIS:** Lockpreis: Caption CHF 27.90, Shop CHF 29.90 («Figurformendes ärmelloses Kleid», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
-### FEHLER · Instagram karussell · 2026-09-26 07:09 UTC · 30 Aufrufe
-- Post: https://www.instagram.com/p/DdvdzC8ETg1/ · Zwilling: https://www.facebook.com/122102579637350792/posts/122140953051350792
-- Text: «Damen Hoodie Bequem mit Taschen und Langarm · CHF 19.90 Kleiner Schweizer Shop aus Belp, kein Konzern. Lieferung 10–20 Werktage, dafür ehrl…»
-- Produkt: Damen Hoodie Bequem mit Taschen und Langarm (ACTIVE, https://luxestyle.ch/products/damen-hoodie-bequem-mit-taschen-und-langarm-610500, SKU CJ-CJWY298995901AZ) — Zuordnung: erste Zeile
-- **FEHLER PREIS:** Lockpreis: Caption CHF 19.90, Shop CHF 21.90–23.90 («Damen Hoodie Bequem mit Taschen und Langarm», Zuordnung: erste Zeile)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
-
-### FEHLER · Pinterest pin · 2026-09-22 13:02 UTC · 24 Aufrufe
+### FEHLER · Pinterest pin · 2026-09-22 13:02 UTC · 28 Aufrufe
 - Post: https://www.pinterest.com/pin/1111333645581093478/
 - Text: «Futterspender für Hunde Dieser Futterspender ist ein interaktives Spielzeug für deinen Hund, das die Futteraufnahme verlangsamt. Er besteht…»
 - Produkt: Futterspender für Hunde (ACTIVE, https://luxestyle.ch/products/futterspender-fur-hunde-bc09f6, SKU CJ-F5BA858E-89C8-4A3C-8DDD-4) — Zuordnung: Link im Text
 - **FEHLER PREIS:** Lockpreis: Caption CHF 19.90, Shop CHF 21.90 («Futterspender für Hunde», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
-### FEHLER · Pinterest pin · 2026-09-22 13:04 UTC · 22 Aufrufe
+### FEHLER · Pinterest pin · 2026-09-22 13:04 UTC · 26 Aufrufe
 - Post: https://www.pinterest.com/pin/1111333645581093635/
 - Text: «Intelligenter Sensor-Seifenspender aus Edelstahl Der JAVA Jiahua Intelligente Sensor-Seifenspender überzeugt durch sein modernes, schlichte…»
 - Produkt: Intelligenter Sensor-Seifenspender aus Edelstahl (ACTIVE, https://luxestyle.ch/products/intelligenter-sensor-seifenspender-aus-edelsta-068032, SKU CJ-1744234003089068032) — Zuordnung: Link im Text
 - **FEHLER PREIS:** Lockpreis: Caption CHF 38.90, Shop CHF 40.90 («Intelligenter Sensor-Seifenspender aus Edelstahl», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
+### FEHLER · Pinterest pin · 2026-09-22 13:05 UTC · 24 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645581093717/
+- Text: «Webcam mit Full HD & LED-Ringlicht Die Full HD Webcam mit integriertem Ringlicht ist ideal für Online-Kurse, Live-Streams und Videokonferen…»
+- Produkt: Webcam mit Full HD & LED-Ringlicht (ACTIVE, https://luxestyle.ch/products/webcam-mit-full-hd-led-ringlicht-108608, SKU CJ-1387226045287108608) — Zuordnung: Link im Text
+- **FEHLER PREIS:** Lockpreis: Caption CHF 23.90, Shop CHF 24.90 («Webcam mit Full HD & LED-Ringlicht», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
+### FEHLER · Pinterest pin · 2026-10-01 20:26 UTC · 23 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645581888945/
+- Text: «Elektrischer Fleischwolf 5L – Küchenmaschine Dieser elektrische Fleischwolf ist eine vielseitige Küchenmaschine, die dir bei der Zubereitun…»
+- Produkt: Elektrischer Fleischwolf 5L – Küchenmaschine (DRAFT, nicht im Onlineshop, SKU CJ-2046148911407656962) — Zuordnung: Link im Text
+- **FEHLER PRODUKT:** Beworbenes Produkt «Elektrischer Fleischwolf 5L – Küchenmaschine» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
+  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
+### FEHLER · Pinterest pin · 2026-10-02 20:26 UTC · 21 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645581976832/
+- Text: «Nibosi Quarzuhr mit Edelstahlband Diese Quarzuhr ist ein praktisches Accessoire für deinen Alltag und zeigt dir stets zuverlässig die Zeit …»
+- Produkt: Nibosi Quarzuhr mit Edelstahlband (DRAFT, nicht im Onlineshop, SKU CJ-65D5329E-AA72-43AD-910B-F) — Zuordnung: Link im Text
+- **FEHLER PRODUKT:** Beworbenes Produkt «Nibosi Quarzuhr mit Edelstahlband» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
+  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+- **WARNUNG PREIS:** veraltet: Caption CHF 38.90, Shop CHF 34.90 («Nibosi Quarzuhr mit Edelstahlband», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
 ### FEHLER · Instagram reel · 2026-09-28 04:09 UTC · 20 Aufrufe
@@ -110,19 +126,30 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
 - **FEHLER PREIS:** Lockpreis: Caption CHF 14.90, Shop CHF 27.90–41.90 («Arbeitsschuhe mit Stahlkappe», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
 
-### FEHLER · Pinterest pin · 2026-09-22 13:05 UTC · 20 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645581093717/
-- Text: «Webcam mit Full HD & LED-Ringlicht Die Full HD Webcam mit integriertem Ringlicht ist ideal für Online-Kurse, Live-Streams und Videokonferen…»
-- Produkt: Webcam mit Full HD & LED-Ringlicht (ACTIVE, https://luxestyle.ch/products/webcam-mit-full-hd-led-ringlicht-108608, SKU CJ-1387226045287108608) — Zuordnung: Link im Text
-- **FEHLER PREIS:** Lockpreis: Caption CHF 23.90, Shop CHF 24.90 («Webcam mit Full HD & LED-Ringlicht», Zuordnung: Link im Text)  
+### FEHLER · Pinterest pin · 2026-10-09 03:18 UTC · 18 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582522574/
+- Text: «Elektrischer Nagelclipper für Kinder & Senioren Für den Alltag von Kindern und Senioren, die ihre Nägel selbst schneiden möchten. Masse 75,…»
+- Produkt: Elektrischer Nagelknipser für Kinder & Senioren (ACTIVE, https://luxestyle.ch/products/elektrischer-nagelclipper-fur-kinder-senioren-231040, SKU CJMJ142697601AZ) — Zuordnung: Link im Text
+- **FEHLER PREIS:** Lockpreis: Caption CHF 38.90, Shop CHF 40.90 («Elektrischer Nagelknipser für Kinder & Senioren», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-08 16:42 UTC gepostet: https://www.pinterest.com/pin/1111333645582483861/  
+  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
-### FEHLER · Pinterest pin · 2026-10-01 20:26 UTC · 19 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645581888945/
-- Text: «Elektrischer Fleischwolf 5L – Küchenmaschine Dieser elektrische Fleischwolf ist eine vielseitige Küchenmaschine, die dir bei der Zubereitun…»
-- Produkt: Elektrischer Fleischwolf 5L – Küchenmaschine (DRAFT, nicht im Onlineshop, SKU CJ-2046148911407656962) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Elektrischer Fleischwolf 5L – Küchenmaschine» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+### FEHLER · Pinterest pin · 2026-10-09 03:11 UTC · 18 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582522235/
+- Text: «Elektrischer Nagelclipper für Kinder & Senioren Für den Alltag von Kindern und Senioren, die ihre Nägel selbst schneiden möchten. Masse 75,…»
+- Produkt: Elektrischer Nagelknipser für Kinder & Senioren (ACTIVE, https://luxestyle.ch/products/elektrischer-nagelclipper-fur-kinder-senioren-231040, SKU CJMJ142697601AZ) — Zuordnung: Link im Text
+- **FEHLER PREIS:** Lockpreis: Caption CHF 38.90, Shop CHF 40.90 («Elektrischer Nagelknipser für Kinder & Senioren», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-08 16:42 UTC gepostet: https://www.pinterest.com/pin/1111333645582483861/  
+  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
+### FEHLER · Pinterest pin · 2026-10-08 16:42 UTC · 18 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582483861/
+- Text: «Elektrischer Nagelclipper für Kinder & Senioren Für den Alltag von Kindern und Senioren, die ihre Nägel selbst schneiden möchten. Masse 75,…»
+- Produkt: Elektrischer Nagelknipser für Kinder & Senioren (ACTIVE, https://luxestyle.ch/products/elektrischer-nagelclipper-fur-kinder-senioren-231040, SKU CJMJ142697601AZ) — Zuordnung: Link im Text
+- **FEHLER PREIS:** Lockpreis: Caption CHF 38.90, Shop CHF 40.90 («Elektrischer Nagelknipser für Kinder & Senioren», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
 ### FEHLER · Instagram reel · 2026-10-04 13:10 UTC · 18 Aufrufe
 - Post: https://www.instagram.com/reel/DeEta4YlMAG/ · Zwilling: https://www.facebook.com/reel/2185021565388865/
@@ -131,30 +158,21 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
 - **FEHLER PREIS:** Lockpreis: Caption CHF 22.90, Shop CHF 24.90–25.90 («Weihnachtsgirlande Handschuh-Design mit Lichtern», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
 
-### FEHLER · Pinterest pin · 2026-10-02 20:26 UTC · 17 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645581976832/
-- Text: «Nibosi Quarzuhr mit Edelstahlband Diese Quarzuhr ist ein praktisches Accessoire für deinen Alltag und zeigt dir stets zuverlässig die Zeit …»
-- Produkt: Nibosi Quarzuhr mit Edelstahlband (DRAFT, nicht im Onlineshop, SKU CJ-65D5329E-AA72-43AD-910B-F) — Zuordnung: Link im Text
-- **FEHLER PRODUKT:** Beworbenes Produkt «Nibosi Quarzuhr mit Edelstahlband» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
-  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-- **WARNUNG PREIS:** veraltet: Caption CHF 38.90, Shop CHF 34.90 («Nibosi Quarzuhr mit Edelstahlband», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-
-### FEHLER · Pinterest pin · 2026-10-02 20:34 UTC · 14 Aufrufe
+### FEHLER · Pinterest pin · 2026-10-02 20:34 UTC · 18 Aufrufe
 - Post: https://www.pinterest.com/pin/1111333645581977242/
 - Text: «LED-Schneeflocken-String mit Farbwechsel Für festliche Dekorationen in heimischer Atmosphäre sorgt dieser LED-String. Er besteht aus 4 Mete…»
 - Produkt: LED-Schneeflocken-Lichterkette mit Farbwechsel (ACTIVE, https://luxestyle.ch/products/led-schneeflocken-string-mit-farbwechsel-607700, SKU CJ-2608240915361607700) — Zuordnung: Link im Text
 - **FEHLER PREIS:** Lockpreis: Caption CHF 24.90, Shop CHF 26.90 («LED-Schneeflocken-Lichterkette mit Farbwechsel», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
-### FEHLER · Instagram reel · 2026-09-26 08:26 UTC · 14 Aufrufe
-- Post: https://www.instagram.com/reel/DdvmkBckZrO/ · Zwilling: https://www.facebook.com/reel/1684116469801173/
-- Text: «Genau das hat gefehlt 👀 «Multifunktionaler Gemüseschneider mit Spiralschneider» — Dieser multifunktionale Gemüseschneider mit Handkurbel u…»
-- Produkt: Multifunktionaler Gemüseschneider mit Spiralschneider (ACTIVE, https://luxestyle.ch/products/multifunktionaler-gemuseschneider-mit-spiralsc-623700, SKU CJ-2409131134451623700) — Zuordnung: Link im Text
-- **FEHLER PREIS:** Lockpreis: Caption CHF 17.90, Shop CHF 21.90 («Multifunktionaler Gemüseschneider mit Spiralschneider», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
+### FEHLER · Pinterest pin · 2026-10-03 20:28 UTC · 17 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582067413/
+- Text: «Bluetooth Smartwatch MAX7 – 1,32" Display Für den Alltag, wenn du unterwegs bist, bietet diese Smartwatch ein kompaktes 1,32" Display. Die …»
+- Produkt: Bluetooth Smartwatch MAX7 – 1,32" Display (ACTIVE, https://luxestyle.ch/products/bluetooth-smartwatch-max7-1-32-display-578688, SKU CJ-1634490915710578688) — Zuordnung: Link im Text
+- **FEHLER PREIS:** Lockpreis: Caption CHF 44.90, Shop CHF 47.90 («Bluetooth Smartwatch MAX7 – 1,32" Display», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
-### FEHLER · Pinterest pin · 2026-09-22 13:03 UTC · 14 Aufrufe
+### FEHLER · Pinterest pin · 2026-09-22 13:03 UTC · 17 Aufrufe
 - Post: https://www.pinterest.com/pin/1111333645581093546/
 - Text: «Beheizbare Hausschuhe mit Temperaturregelung Diese beheizbaren Hausschuhe halten deine Füsse im Haus warm. · CHF 34.90 bei LuxeStyle CH — G…»
 - Produkt: Beheizbare Hausschuhe mit Temperaturregelung (DRAFT, nicht im Onlineshop, SKU CJ-CJYD216355003CX) — Zuordnung: Link im Text
@@ -163,11 +181,25 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
 - **FEHLER PRODUKT:** Beworbenes Produkt «Beheizbare Hausschuhe mit Temperaturregelung» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
   → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
-### FEHLER · Pinterest pin · 2026-10-03 20:28 UTC · 13 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645582067413/
-- Text: «Bluetooth Smartwatch MAX7 – 1,32" Display Für den Alltag, wenn du unterwegs bist, bietet diese Smartwatch ein kompaktes 1,32" Display. Die …»
-- Produkt: Bluetooth Smartwatch MAX7 – 1,32" Display (ACTIVE, https://luxestyle.ch/products/bluetooth-smartwatch-max7-1-32-display-578688, SKU CJ-1634490915710578688) — Zuordnung: Link im Text
-- **FEHLER PREIS:** Lockpreis: Caption CHF 44.90, Shop CHF 47.90 («Bluetooth Smartwatch MAX7 – 1,32" Display», Zuordnung: Link im Text)  
+### FEHLER · Pinterest pin · 2026-10-03 20:27 UTC · 16 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582067326/
+- Text: «Cowboy-Longsleeve-Kleid in Dunkelblau Für den Büroalltag bietet es ein luftiges, lockeres Design. Das Kleid ist aus 100 % Baumwolle geferti…»
+- Produkt: Jeanskleid mit langen Ärmeln in Dunkelblau (ACTIVE, https://luxestyle.ch/products/cowboy-longsleeve-kleid-in-dunkelblau-618000, SKU CJ-2610010909131618000) — Zuordnung: Link im Text
+- **FEHLER PREIS:** Lockpreis: Caption CHF 23.90, Shop CHF 24.90 («Jeanskleid mit langen Ärmeln in Dunkelblau», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
+### FEHLER · Pinterest pin · 2026-09-22 18:16 UTC · 16 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645581116334/
+- Text: «Verstellbare Teleskop-Faszienrolle aus Schaumstoff Diese anpassbare Teleskop-Faszienrolle aus Schaumstoff ist ein vielseitiges Hilfsmittel …»
+- Produkt: Verstellbare Teleskop-Faszienrolle aus Schaumstoff (ACTIVE, https://luxestyle.ch/products/verstellbare-teleskop-faszienrolle-aus-schaums-877824, SKU CJ-1797463325324877824) — Zuordnung: Link im Text
+- **FEHLER PREIS:** Lockpreis: Caption CHF 31.90, Shop CHF 38.90 («Verstellbare Teleskop-Faszienrolle aus Schaumstoff», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
+### FEHLER · Pinterest pin · 2026-10-04 21:16 UTC · 13 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582161803/
+- Text: «Mini Bluetooth Lautsprecher mit Spiegel Für den Alltag, wenn du Musik hören und gleichzeitig dein Make‑up prüfen willst, bietet dieser komp…»
+- Produkt: Mini Bluetooth Lautsprecher mit Spiegel (ACTIVE, https://luxestyle.ch/products/mini-bluetooth-lautsprecher-mit-spiegel-821120, SKU CJ-1635901211666821120) — Zuordnung: Link im Text
+- **FEHLER PREIS:** Lockpreis: Caption CHF 20.90, Shop CHF 21.90 («Mini Bluetooth Lautsprecher mit Spiegel», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
 ### FEHLER · Instagram reel · 2026-09-28 14:19 UTC · 13 Aufrufe
@@ -177,99 +209,131 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
 - **FEHLER PREIS:** Lockpreis: Caption CHF 16.90, Shop CHF 17.90 («Laptop-Tasche für Herren», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
 
-### FEHLER · Pinterest pin · 2026-10-03 20:27 UTC · 12 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645582067326/
-- Text: «Cowboy-Longsleeve-Kleid in Dunkelblau Für den Büroalltag bietet es ein luftiges, lockeres Design. Das Kleid ist aus 100 % Baumwolle geferti…»
-- Produkt: Jeanskleid mit langen Ärmeln in Dunkelblau (ACTIVE, https://luxestyle.ch/products/cowboy-longsleeve-kleid-in-dunkelblau-618000, SKU CJ-2610010909131618000) — Zuordnung: Link im Text
-- **FEHLER PREIS:** Lockpreis: Caption CHF 23.90, Shop CHF 24.90 («Jeanskleid mit langen Ärmeln in Dunkelblau», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-
-### FEHLER · Pinterest pin · 2026-09-22 18:16 UTC · 12 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645581116334/
-- Text: «Verstellbare Teleskop-Faszienrolle aus Schaumstoff Diese anpassbare Teleskop-Faszienrolle aus Schaumstoff ist ein vielseitiges Hilfsmittel …»
-- Produkt: Verstellbare Teleskop-Faszienrolle aus Schaumstoff (ACTIVE, https://luxestyle.ch/products/verstellbare-teleskop-faszienrolle-aus-schaums-877824, SKU CJ-1797463325324877824) — Zuordnung: Link im Text
-- **FEHLER PREIS:** Lockpreis: Caption CHF 31.90, Shop CHF 38.90 («Verstellbare Teleskop-Faszienrolle aus Schaumstoff», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-
-### FEHLER · Pinterest pin · 2026-10-04 21:16 UTC · 9 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645582161803/
-- Text: «Mini Bluetooth Lautsprecher mit Spiegel Für den Alltag, wenn du Musik hören und gleichzeitig dein Make‑up prüfen willst, bietet dieser komp…»
-- Produkt: Mini Bluetooth Lautsprecher mit Spiegel (ACTIVE, https://luxestyle.ch/products/mini-bluetooth-lautsprecher-mit-spiegel-821120, SKU CJ-1635901211666821120) — Zuordnung: Link im Text
-- **FEHLER PREIS:** Lockpreis: Caption CHF 20.90, Shop CHF 21.90 («Mini Bluetooth Lautsprecher mit Spiegel», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-
-### FEHLER · Pinterest pin · 2026-10-04 21:15 UTC · 8 Aufrufe
+### FEHLER · Pinterest pin · 2026-10-04 21:15 UTC · 12 Aufrufe
 - Post: https://www.pinterest.com/pin/1111333645582161737/
 - Text: «Slim-Fit Down-Jackett mit weissem Federfüllung An kalten Wintertagen hält dieser Jackett dich warm, ohne dich zu beschweren. Er enthält 51–…»
 - Produkt: Slim-Fit Daunenjacke mit weisser Federfüllung (ACTIVE, https://luxestyle.ch/products/slim-fit-down-jackett-mit-weissem-federfullung-636300, SKU CJ-CJYD290729202BY) — Zuordnung: Link im Text
 - **FEHLER PREIS:** Lockpreis: Caption CHF 28.90, Shop CHF 30.90–31.90 («Slim-Fit Daunenjacke mit weisser Federfüllung», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
-### FEHLER · Pinterest pin · 2026-10-09 03:18 UTC · 6 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645582522574/
-- Text: «Elektrischer Nagelclipper für Kinder & Senioren Für den Alltag von Kindern und Senioren, die ihre Nägel selbst schneiden möchten. Masse 75,…»
-- Produkt: Elektrischer Nagelknipser für Kinder & Senioren (ACTIVE, https://luxestyle.ch/products/elektrischer-nagelclipper-fur-kinder-senioren-231040, SKU CJMJ142697601AZ) — Zuordnung: Link im Text
-- **FEHLER PREIS:** Lockpreis: Caption CHF 38.90, Shop CHF 40.90 («Elektrischer Nagelknipser für Kinder & Senioren», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-08 16:42 UTC gepostet: https://www.pinterest.com/pin/1111333645582483861/  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-
-### FEHLER · Pinterest pin · 2026-10-09 03:11 UTC · 6 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645582522235/
-- Text: «Elektrischer Nagelclipper für Kinder & Senioren Für den Alltag von Kindern und Senioren, die ihre Nägel selbst schneiden möchten. Masse 75,…»
-- Produkt: Elektrischer Nagelknipser für Kinder & Senioren (ACTIVE, https://luxestyle.ch/products/elektrischer-nagelclipper-fur-kinder-senioren-231040, SKU CJMJ142697601AZ) — Zuordnung: Link im Text
-- **FEHLER PREIS:** Lockpreis: Caption CHF 38.90, Shop CHF 40.90 («Elektrischer Nagelknipser für Kinder & Senioren», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-08 16:42 UTC gepostet: https://www.pinterest.com/pin/1111333645582483861/  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-
-### FEHLER · Pinterest pin · 2026-10-08 16:42 UTC · 6 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645582483861/
-- Text: «Elektrischer Nagelclipper für Kinder & Senioren Für den Alltag von Kindern und Senioren, die ihre Nägel selbst schneiden möchten. Masse 75,…»
-- Produkt: Elektrischer Nagelknipser für Kinder & Senioren (ACTIVE, https://luxestyle.ch/products/elektrischer-nagelclipper-fur-kinder-senioren-231040, SKU CJMJ142697601AZ) — Zuordnung: Link im Text
-- **FEHLER PREIS:** Lockpreis: Caption CHF 38.90, Shop CHF 40.90 («Elektrischer Nagelknipser für Kinder & Senioren», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-
-### FEHLER · Pinterest pin · 2026-10-06 16:24 UTC · 6 Aufrufe
+### FEHLER · Pinterest pin · 2026-10-06 16:24 UTC · 10 Aufrufe
 - Post: https://www.pinterest.com/pin/1111333645582305877/
 - Text: «Smartwatch mit Herzfrequenz, SpO2 und Bluetooth Für den Alltag bei sportlichen Aktivitäten bietet diese Smartwatch Schrittzählung, Herzfreq…»
 - Produkt: Smartwatch mit Herzfrequenz, SpO2 und Bluetooth (ACTIVE, https://luxestyle.ch/products/smartwatch-mit-herzfrequenz-spo2-und-bluetooth-379648, SKU CJ-1643060762996379648) — Zuordnung: Link im Text
 - **FEHLER PREIS:** Lockpreis: Caption CHF 47.90, Shop CHF 50.90 («Smartwatch mit Herzfrequenz, SpO2 und Bluetooth», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
-### FEHLER · Pinterest pin · 2026-10-04 21:29 UTC · 6 Aufrufe
+### FEHLER · Pinterest pin · 2026-10-04 21:29 UTC · 10 Aufrufe
 - Post: https://www.pinterest.com/pin/1111333645582162811/
 - Text: «Smartwatch mit Sprachassistent und NFC Für den Alltag und beim Sport hast du mit dieser Smartwatch alle wichtigen Funktionen am Handgelenk.…»
 - Produkt: Smartwatch mit Sprachassistent und NFC (ACTIVE, https://luxestyle.ch/products/smartwatch-mit-sprachassistent-und-nfc-909376, SKU CJ-1640991018503909376) — Zuordnung: Link im Text
 - **FEHLER PREIS:** Lockpreis: Caption CHF 42.90, Shop CHF 45.90 («Smartwatch mit Sprachassistent und NFC», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
-### FEHLER · Pinterest pin · 2026-10-04 21:28 UTC · 6 Aufrufe
+### FEHLER · Pinterest pin · 2026-10-04 21:28 UTC · 10 Aufrufe
 - Post: https://www.pinterest.com/pin/1111333645582162695/
 - Text: «Weitläufiger Flurblumen‑Mantel XL Für kalte Tage, wenn du dich warm halten möchtest, bietet dieser Flurblumen‑Mantel aus Polyester einen an…»
 - Produkt: Weiter Mantel mit Blumenmuster, XL (ACTIVE, https://luxestyle.ch/products/weitlaufiger-flurblumen-mantel-xl-601800, SKU CJ-CJYD290999401AZ) — Zuordnung: Link im Text
 - **FEHLER PREIS:** Lockpreis: Caption CHF 23.90, Shop CHF 25.90 («Weiter Mantel mit Blumenmuster, XL», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
-### FEHLER · Pinterest pin · 2026-10-03 20:34 UTC · 6 Aufrufe
+### FEHLER · Pinterest pin · 2026-10-03 20:34 UTC · 10 Aufrufe
 - Post: https://www.pinterest.com/pin/1111333645582067880/
 - Text: «Künstliche Nägel im Magazin-Stil Für einen besonderen Anlass oder einfach, um deine Hände zu verschönern, sind diese künstlichen Nägel eine…»
 - Produkt: Künstliche Nägel im Magazin-Stil (ACTIVE, https://luxestyle.ch/products/kunstliche-nagel-im-magazin-stil-985728, SKU CJ-1485148178150985728) — Zuordnung: Link im Text
 - **FEHLER PREIS:** Lockpreis: Caption CHF 19.90, Shop CHF 21.90 («Künstliche Nägel im Magazin-Stil», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
-### FEHLER · Pinterest pin · 2026-10-10 04:21 UTC · 5 Aufrufe
+### FEHLER · Pinterest pin · 2026-10-10 04:21 UTC · 9 Aufrufe
 - Post: https://www.pinterest.com/pin/1111333645582611889/
 - Text: «Smartwatch mit Herzfrequenz& Sauerstoff Für den aktiven Alltag, wenn du deine körperlichen Daten im Blick behalten möchtest. Das Gerät miss…»
 - Produkt: Smartwatch mit Herzfrequenz& Sauerstoff (ACTIVE, https://luxestyle.ch/products/smartwatch-mit-herzfrequenz-sauerstoff-018624, SKU CJ-1643490634357018624) — Zuordnung: Link im Text
 - **FEHLER PREIS:** Lockpreis: Caption CHF 27.90, Shop CHF 29.90 («Smartwatch mit Herzfrequenz& Sauerstoff», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
-### FEHLER · Pinterest pin · 2026-10-06 16:22 UTC · 5 Aufrufe
+### FEHLER · Pinterest pin · 2026-10-06 16:22 UTC · 9 Aufrufe
 - Post: https://www.pinterest.com/pin/1111333645582305751/
 - Text: «Plus-Size Retro-Hornknopf-Dufflemantel Für kalte Tage, wenn Wärme und Komfort gefragt sind, bietet dieser Dufflemantel aus Polyester mit we…»
 - Produkt: Plus-Size Retro-Hornknopf-Dufflemantel (ACTIVE, https://luxestyle.ch/products/plus-size-retro-hornknopf-dufflemantel-609000, SKU CJ-CJYD293229201AZ) — Zuordnung: Link im Text
 - **FEHLER PREIS:** Lockpreis: Caption CHF 32.90, Shop CHF 34.90 («Plus-Size Retro-Hornknopf-Dufflemantel», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
+### FEHLER · Pinterest pin · 2026-10-10 04:20 UTC · 8 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582611820/
+- Text: «Wärmende Kapuzenjacke mit Daunenfüllung Für kalte Tage bietet diese Kapuzenjacke Schutz und Wärme. · CHF 69.90 bei LuxeStyle CH — Gratis-Ve…»
+- Produkt: Wärmende Kapuzenjacke mit Daunenfüllung (ACTIVE, https://luxestyle.ch/products/warmende-kapuzenjacke-mit-daunenfullung-635800, SKU CJ-CJYD294488801AZ) — Zuordnung: Link im Text
+- **FEHLER PREIS:** Lockpreis: Caption CHF 69.90, Shop CHF 70.90 («Wärmende Kapuzenjacke mit Daunenfüllung», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
+### FEHLER · Pinterest pin · 2026-10-10 04:31 UTC · 7 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582612351/
+- Text: «Smart Motion Meter Handgelenkarmband Für den Alltag, wenn du deine Schritte, Schlaf und Herzfrequenz im Blick behalten möchtest, bietet die…»
+- Produkt: Fitness-Armband mit Bewegungsmesser (ACTIVE, https://luxestyle.ch/products/smart-motion-meter-handgelenkarmband-596288, SKU CJ-1643492544195596288) — Zuordnung: Link im Text
+- **FEHLER PREIS:** Lockpreis: Caption CHF 24.90, Shop CHF 25.90 («Fitness-Armband mit Bewegungsmesser», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
+### FEHLER · Pinterest pin · 2026-10-10 04:29 UTC · 7 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582612266/
+- Text: «Koreanischer Oversize-Polstermantel Für den Alltag, wenn du einen lockeren, wärmenden Look suchst. Der Mantel ist in Schwarz, Weiss, Khaki,…»
+- Produkt: Koreanischer Oversize-Polstermantel (ACTIVE, https://luxestyle.ch/products/koreanischer-oversize-polstermantel-621500, SKU CJ-CJYD294794001AZ) — Zuordnung: Link im Text
+- **FEHLER PREIS:** Lockpreis: Caption CHF 25.90, Shop CHF 26.90 («Koreanischer Oversize-Polstermantel», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
+### FEHLER · Pinterest pin · 2026-10-10 04:28 UTC · 6 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582612224/
+- Text: «Ultraschall‑Reinigungsmaschine für Nagelwerkzeuge Für die tägliche Pflege von Nageldesign‑Werkzeugen sorgt die Ultraschall‑Reinigungsmaschi…»
+- Produkt: Ultraschall-Reinigungsmaschine für Nagelwerkzeuge (ACTIVE, https://luxestyle.ch/products/ultraschall-reinigungsmaschine-fur-nagelwerkze-947840, SKU CJ-1510423564086947840) — Zuordnung: Link im Text
+- **FEHLER PREIS:** Lockpreis: Caption CHF 44.90, Shop CHF 46.90 («Ultraschall-Reinigungsmaschine für Nagelwerkzeuge», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
+### FEHLER · Pinterest pin · 2026-10-06 16:20 UTC · 6 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582305646/
+- Text: «Nageldesign-Set mit Kristallpulver Weiss Transparent Für kreative Maniküre bei zu Hause. Das Set enthält 23 einzelne Pakete. · CHF 22.90 be…»
+- Produkt: Nageldesign-Set mit Kristallpulver Weiss Transparent (ACTIVE, https://luxestyle.ch/products/nageldesign-set-mit-kristallpulver-weiss-trans-483392, SKU CJ-1494605538183483392) — Zuordnung: Link im Text
+- **FEHLER PREIS:** Lockpreis: Caption CHF 22.90, Shop CHF 24.90 («Nageldesign-Set mit Kristallpulver Weiss Transparent», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
+### FEHLER · Pinterest pin · 2026-10-04 21:27 UTC · 6 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582162603/
+- Text: «MP3-Player mit Touch-Display Für unterwegs, wenn du Musik hören möchtest. Der kompakte MP3-Player wiegt 150 g, unterstützt die Wiedergabe v…»
+- Produkt: MP3-Player mit Touch-Display (ACTIVE, https://luxestyle.ch/products/mp3-player-mit-touch-display-075584, SKU CJ-1493151552075075584) — Zuordnung: Link im Text
+- **FEHLER PREIS:** Lockpreis: Caption CHF 25.90, Shop CHF 27.90 («MP3-Player mit Touch-Display», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
+### FEHLER · Pinterest pin · 2026-10-10 04:27 UTC · 5 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582612161/
+- Text: «Ankle Boots mit 10 cm Plattform‑Absatz Für den Alltag bei kühlem Wetter bieten diese Ankle Boots einen stabilen, hohen Absatz, der die Körp…»
+- Produkt: Ankle Boots mit 10 cm Plattform-Absatz (ACTIVE, https://luxestyle.ch/products/ankle-boots-mit-10-cm-plattform-absatz-617300, SKU CJ-2609300853271617300) — Zuordnung: Link im Text
+- **FEHLER PREIS:** Lockpreis: Caption CHF 41.90, Shop CHF 43.90 («Ankle Boots mit 10 cm Plattform-Absatz», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
+### FEHLER · Pinterest pin · 2026-10-08 16:37 UTC · 5 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582483441/
+- Text: «Mid-Calf Lederstiefel mit Schnallen-Design Für den Alltag, wenn du einen sicheren Halt brauchst, sind diese Mid-Calf-Lederstiefel mit Schna…»
+- Produkt: Wadenhohe Lederstiefel mit Schnallen-Design (ACTIVE, https://luxestyle.ch/products/mid-calf-lederstiefel-mit-schnallen-design-605900, SKU CJ-2610011251371605900) — Zuordnung: Link im Text
+- **FEHLER PREIS:** Lockpreis: Caption CHF 32.90, Shop CHF 34.90 («Wadenhohe Lederstiefel mit Schnallen-Design», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
+### FEHLER · Pinterest pin · 2026-10-06 16:19 UTC · 5 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582305574/
+- Text: «Weiche Winterbettmütze und rutschfeste Hausschuhe Für gemütliche Nächte im Bett sorgt diese Kombination aus Mütze und Hausschuhe für Wärme …»
+- Produkt: Weiche Plüsch-Hausschuhe mit Hundemotiv, rutschfest (ACTIVE, https://luxestyle.ch/products/weiche-winterbettmutze-und-rutschfeste-haussch-614800, SKU CJ-2609301330171614800) — Zuordnung: Link im Text
+- **FEHLER PREIS:** Lockpreis: Caption CHF 24.90, Shop CHF 25.90 («Weiche Plüsch-Hausschuhe mit Hundemotiv, rutschfest», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
+### FEHLER · Pinterest pin · 2026-10-04 21:26 UTC · 5 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582162491/
+- Text: «Krokodillmuster Lederschuhe mit Metallbremse Für den Büroalltag und legere Anlässe schützen diese Lederschuhe mit spitzem Zeh und Metallbre…»
+- Produkt: Herren-Lederschuhe mit Krokomuster und Metallschnallen (ACTIVE, https://luxestyle.ch/products/krokodillmuster-lederschuhe-mit-metallbremse-630900, SKU CJ-2610011000311630900) — Zuordnung: Link im Text
+- **FEHLER PREIS:** Lockpreis: Caption CHF 33.90, Shop CHF 35.90 («Herren-Lederschuhe mit Krokomuster und Metallschnallen», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
+### FEHLER · Pinterest pin · 2026-09-25 04:50 UTC · 5 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645581314558/
+- Text: «Das eine Teil fürs Wohnzimmer 👀 «Farbprojektionslampe» — Die Farbprojektionslampe ist ein einzigartiges Lichtobjekt, das deine Räume in ei…»
+- Produkt: Farbprojektionslampe (ACTIVE, https://luxestyle.ch/products/farbprojektionslampe-619700, SKU CJYD211644701AZ) — Zuordnung: Link im Text
+- (+ 1 Hinweis, siehe Hinweis-Liste)
+- **FEHLER PREIS:** Lockpreis: Caption CHF 16.90, Shop CHF 20.90–33.90 («Farbprojektionslampe», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
 ### FEHLER · Facebook reel · 2026-09-23 04:09 UTC · 5 Aufrufe
@@ -279,40 +343,25 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
 - **FEHLER PREIS:** Lockpreis: Caption CHF 19.90, Shop CHF 21.90 («Futterspender für Hunde», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: FB-API POST /{post-id} message=… [Q1]
 
-### FEHLER · Pinterest pin · 2026-10-10 04:20 UTC · 4 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645582611820/
-- Text: «Wärmende Kapuzenjacke mit Daunenfüllung Für kalte Tage bietet diese Kapuzenjacke Schutz und Wärme. · CHF 69.90 bei LuxeStyle CH — Gratis-Ve…»
-- Produkt: Wärmende Kapuzenjacke mit Daunenfüllung (ACTIVE, https://luxestyle.ch/products/warmende-kapuzenjacke-mit-daunenfullung-635800, SKU CJ-CJYD294488801AZ) — Zuordnung: Link im Text
-- **FEHLER PREIS:** Lockpreis: Caption CHF 69.90, Shop CHF 70.90 («Wärmende Kapuzenjacke mit Daunenfüllung», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-
-### FEHLER · Pinterest pin · 2026-09-25 04:50 UTC · 4 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645581314558/
-- Text: «Das eine Teil fürs Wohnzimmer 👀 «Farbprojektionslampe» — Die Farbprojektionslampe ist ein einzigartiges Lichtobjekt, das deine Räume in ei…»
-- Produkt: Farbprojektionslampe (ACTIVE, https://luxestyle.ch/products/farbprojektionslampe-619700, SKU CJYD211644701AZ) — Zuordnung: Link im Text
-- (+ 1 Hinweis, siehe Hinweis-Liste)
-- **FEHLER PREIS:** Lockpreis: Caption CHF 16.90, Shop CHF 20.90–33.90 («Farbprojektionslampe», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-
 ### FEHLER · Facebook reel · 2026-09-24 08:25 UTC · 4 Aufrufe
 - Post: https://www.facebook.com/reel/1074059645370975/
 - Text: «Dein neues Lieblingsteil? 👀 «Schwimmboje mit Doppelairbag & Rucksack» CHF 24.90 · Gratis Versand ab CHF 50 · Klarna & TWINT 🇨🇭 🔗 https:…»
-- Produkt: Schwimmboje mit Doppelairbag & Rucksack (ACTIVE, https://luxestyle.ch/products/schwimmboje-mit-doppelairbag-rucksack-782336, SKU CJ-1408332641408782336) — Zuordnung: Link im Text
+- Produkt: Schwimmboje mit Doppelairbag & Rucksack (ACTIVE, https://luxestyle.ch/products/schwimmboje-mit-doppelairbag-rucksack-782336, SKU CJJM119129001AZ) — Zuordnung: Link im Text
 - **FEHLER PREIS:** Lockpreis: Caption CHF 24.90, Shop CHF 26.90 («Schwimmboje mit Doppelairbag & Rucksack», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: FB-API POST /{post-id} message=… [Q1]
 
-### FEHLER · Pinterest pin · 2026-10-10 04:31 UTC · 3 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645582612351/
-- Text: «Smart Motion Meter Handgelenkarmband Für den Alltag, wenn du deine Schritte, Schlaf und Herzfrequenz im Blick behalten möchtest, bietet die…»
-- Produkt: Fitness-Armband mit Bewegungsmesser (ACTIVE, https://luxestyle.ch/products/smart-motion-meter-handgelenkarmband-596288, SKU CJ-1643492544195596288) — Zuordnung: Link im Text
-- **FEHLER PREIS:** Lockpreis: Caption CHF 24.90, Shop CHF 25.90 («Fitness-Armband mit Bewegungsmesser», Zuordnung: Link im Text)  
+### FEHLER · Pinterest pin · 2026-10-12 01:21 UTC · 3 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582792278/
+- Text: «Angora‑Roter, lockerer Kurzmantel Für den Alltag, wenn du einen lockeren, aber warmen Mantel brauchst, bietet dieser Kurzmantel mit Memory‑…»
+- Produkt: Lockere kurze Pufferjacke in Rosa (ACTIVE, https://luxestyle.ch/products/angora-roter-lockerer-kurzmantel-619500, SKU CJ-CJJK294795601AZ) — Zuordnung: Link im Text
+- **FEHLER PREIS:** Lockpreis: Caption CHF 25.90, Shop CHF 26.90 («Lockere kurze Pufferjacke in Rosa», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
-### FEHLER · Pinterest pin · 2026-10-10 04:29 UTC · 3 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645582612266/
-- Text: «Koreanischer Oversize-Polstermantel Für den Alltag, wenn du einen lockeren, wärmenden Look suchst. Der Mantel ist in Schwarz, Weiss, Khaki,…»
-- Produkt: Koreanischer Oversize-Polstermantel (ACTIVE, https://luxestyle.ch/products/koreanischer-oversize-polstermantel-621500, SKU CJ-CJYD294794001AZ) — Zuordnung: Link im Text
-- **FEHLER PREIS:** Lockpreis: Caption CHF 25.90, Shop CHF 26.90 («Koreanischer Oversize-Polstermantel», Zuordnung: Link im Text)  
+### FEHLER · Pinterest pin · 2026-10-12 01:19 UTC · 3 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582792235/
+- Text: «Nageldesign-Set mit Kristallpaste Für kreative Nageldesigns und längere Maniküre. Das Set enthält 15 ml Gelatine-Glues, 7 ml Extension‑Glue…»
+- Produkt: Nageldesign-Set mit Kristallpaste (ACTIVE, https://luxestyle.ch/products/nageldesign-set-mit-kristallpaste-785088, SKU CJ-1511723652205785088) — Zuordnung: Link im Text
+- **FEHLER PREIS:** Lockpreis: Caption CHF 26.90, Shop CHF 28.90 («Nageldesign-Set mit Kristallpaste», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
 ### FEHLER · Pinterest pin · 2026-09-30 04:46 UTC · 3 Aufrufe
@@ -325,53 +374,11 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
 - **WARNUNG PREIS:** veraltet: Caption CHF 41.90, Shop CHF 36.90–38.90 («Overknee-Stiefel mit Schnürung und Blockabsatz», Zuordnung: erste Zeile)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
-### FEHLER · Pinterest pin · 2026-10-10 04:28 UTC · 2 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645582612224/
-- Text: «Ultraschall‑Reinigungsmaschine für Nagelwerkzeuge Für die tägliche Pflege von Nageldesign‑Werkzeugen sorgt die Ultraschall‑Reinigungsmaschi…»
-- Produkt: Ultraschall-Reinigungsmaschine für Nagelwerkzeuge (ACTIVE, https://luxestyle.ch/products/ultraschall-reinigungsmaschine-fur-nagelwerkze-947840, SKU CJ-1510423564086947840) — Zuordnung: Link im Text
-- **FEHLER PREIS:** Lockpreis: Caption CHF 44.90, Shop CHF 46.90 («Ultraschall-Reinigungsmaschine für Nagelwerkzeuge», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-
-### FEHLER · Pinterest pin · 2026-10-10 04:27 UTC · 2 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645582612161/
-- Text: «Ankle Boots mit 10 cm Plattform‑Absatz Für den Alltag bei kühlem Wetter bieten diese Ankle Boots einen stabilen, hohen Absatz, der die Körp…»
-- Produkt: Ankle Boots mit 10 cm Plattform-Absatz (ACTIVE, https://luxestyle.ch/products/ankle-boots-mit-10-cm-plattform-absatz-617300, SKU CJ-2609300853271617300) — Zuordnung: Link im Text
-- **FEHLER PREIS:** Lockpreis: Caption CHF 41.90, Shop CHF 43.90 («Ankle Boots mit 10 cm Plattform-Absatz», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-
-### FEHLER · Pinterest pin · 2026-10-08 16:37 UTC · 2 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645582483441/
-- Text: «Mid-Calf Lederstiefel mit Schnallen-Design Für den Alltag, wenn du einen sicheren Halt brauchst, sind diese Mid-Calf-Lederstiefel mit Schna…»
-- Produkt: Wadenhohe Lederstiefel mit Schnallen-Design (ACTIVE, https://luxestyle.ch/products/mid-calf-lederstiefel-mit-schnallen-design-605900, SKU CJ-2610011251371605900) — Zuordnung: Link im Text
-- **FEHLER PREIS:** Lockpreis: Caption CHF 32.90, Shop CHF 34.90 («Wadenhohe Lederstiefel mit Schnallen-Design», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-
-### FEHLER · Pinterest pin · 2026-10-06 16:20 UTC · 2 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645582305646/
-- Text: «Nageldesign-Set mit Kristallpulver Weiss Transparent Für kreative Maniküre bei zu Hause. Das Set enthält 23 einzelne Pakete. · CHF 22.90 be…»
-- Produkt: Nageldesign-Set mit Kristallpulver Weiss Transparent (ACTIVE, https://luxestyle.ch/products/nageldesign-set-mit-kristallpulver-weiss-trans-483392, SKU CJ-1494605538183483392) — Zuordnung: Link im Text
-- **FEHLER PREIS:** Lockpreis: Caption CHF 22.90, Shop CHF 24.90 («Nageldesign-Set mit Kristallpulver Weiss Transparent», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-
-### FEHLER · Pinterest pin · 2026-10-06 16:19 UTC · 2 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645582305574/
-- Text: «Weiche Winterbettmütze und rutschfeste Hausschuhe Für gemütliche Nächte im Bett sorgt diese Kombination aus Mütze und Hausschuhe für Wärme …»
-- Produkt: Weiche Plüsch-Hausschuhe mit Hundemotiv, rutschfest (ACTIVE, https://luxestyle.ch/products/weiche-winterbettmutze-und-rutschfeste-haussch-614800, SKU CJ-2609301330171614800) — Zuordnung: Link im Text
-- **FEHLER PREIS:** Lockpreis: Caption CHF 24.90, Shop CHF 25.90 («Weiche Plüsch-Hausschuhe mit Hundemotiv, rutschfest», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-
-### FEHLER · Pinterest pin · 2026-10-04 21:27 UTC · 2 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645582162603/
-- Text: «MP3-Player mit Touch-Display Für unterwegs, wenn du Musik hören möchtest. Der kompakte MP3-Player wiegt 150 g, unterstützt die Wiedergabe v…»
-- Produkt: MP3-Player mit Touch-Display (ACTIVE, https://luxestyle.ch/products/mp3-player-mit-touch-display-075584, SKU CJ-1493151552075075584) — Zuordnung: Link im Text
-- **FEHLER PREIS:** Lockpreis: Caption CHF 25.90, Shop CHF 27.90 («MP3-Player mit Touch-Display», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-
-### FEHLER · Pinterest pin · 2026-10-04 21:26 UTC · 2 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645582162491/
-- Text: «Krokodillmuster Lederschuhe mit Metallbremse Für den Büroalltag und legere Anlässe schützen diese Lederschuhe mit spitzem Zeh und Metallbre…»
-- Produkt: Herren-Lederschuhe mit Krokomuster und Metallschnallen (ACTIVE, https://luxestyle.ch/products/krokodillmuster-lederschuhe-mit-metallbremse-630900, SKU CJ-2610011000311630900) — Zuordnung: Link im Text
-- **FEHLER PREIS:** Lockpreis: Caption CHF 33.90, Shop CHF 35.90 («Herren-Lederschuhe mit Krokomuster und Metallschnallen», Zuordnung: Link im Text)  
+### FEHLER · Pinterest pin · 2026-10-12 01:18 UTC · 2 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582792185/
+- Text: «Herren Freizeitstiefel Für einen entspannten Auftritt im Alltag sind diese Freizeitstiefel eine gute Wahl. Das Obermaterial besteht aus atm…»
+- Produkt: Herren Freizeitstiefel (ACTIVE, https://luxestyle.ch/products/herren-freizeitstiefel-816640, SKU CJ-CJNS181314801AZ) — Zuordnung: Link im Text
+- **FEHLER PREIS:** Lockpreis: Caption CHF 32.90, Shop CHF 34.90 («Herren Freizeitstiefel», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
 ### FEHLER · Facebook reel · 2026-10-04 13:11 UTC · 2 Aufrufe
@@ -382,7 +389,7 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: FB-API POST /{post-id} message=… [Q1]
 
 ### FEHLER · Facebook album · 2026-09-26 07:10 UTC · 2 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122140953051350792 · Zwilling: https://www.instagram.com/p/DdvdzC8ETg1/
+- Post: https://www.facebook.com/122102579637350792/posts/122140953051350792
 - Text: «Damen Hoodie Bequem mit Taschen und Langarm · CHF 19.90 Kleiner Schweizer Shop aus Belp, kein Konzern. Lieferung 10–20 Werktage, dafür ehrl…»
 - Produkt: Damen Hoodie Bequem mit Taschen und Langarm (ACTIVE, https://luxestyle.ch/products/damen-hoodie-bequem-mit-taschen-und-langarm-610500, SKU CJ-CJWY298995901AZ) — Zuordnung: Link im Text
 - **FEHLER PREIS:** Lockpreis: Caption CHF 19.90, Shop CHF 21.90–23.90 («Damen Hoodie Bequem mit Taschen und Langarm», Zuordnung: Link im Text)  
@@ -401,6 +408,30 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
 - Produkt: Wasserdichte Damenuhr mit Metallarmband (ACTIVE, https://luxestyle.ch/products/wasserdichte-damenuhr-mit-metallarmband-2a910e, SKU CJZBNSSY02003-Golden white) — Zuordnung: Link im Text
 - **FEHLER PREIS:** Lockpreis: Caption CHF 32.90, Shop CHF 34.90 («Wasserdichte Damenuhr mit Metallarmband», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: FB-API POST /{post-id} message=… [Q1]
+
+### FEHLER · Pinterest pin · 2026-09-23 04:53 UTC · 2 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645581152467/
+- Text: «Endlich Ruhe beim Gassi? 👀 «Futterspender für Hunde» — Dieser Futterspender ist ein interaktives Spielzeug für deinen Hund, das die Futter…»
+- Produkt: Futterspender für Hunde (ACTIVE, https://luxestyle.ch/products/futterspender-fur-hunde-bc09f6, SKU CJ-F5BA858E-89C8-4A3C-8DDD-4) — Zuordnung: Link im Text
+- (+ 1 Hinweis, siehe Hinweis-Liste)
+- **FEHLER PREIS:** Lockpreis: Caption CHF 19.90, Shop CHF 21.90 («Futterspender für Hunde», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-09-22 13:02 UTC gepostet: https://www.pinterest.com/pin/1111333645581093478/  
+  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
+### FEHLER · Pinterest pin · 2026-10-12 01:26 UTC · 1 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582792536/
+- Text: «Slim-Fit Daunen-Weste in Schwarz Für winterliche Tage, wenn du Wärme und Leichtigkeit kombinieren willst. Die Weste ist aus Cashmere‑Wolle …»
+- Produkt: Slim-Fit Daunen-Weste in Schwarz (ACTIVE, https://luxestyle.ch/products/slim-fit-daunen-weste-in-schwarz-617100, SKU CJ-CJYD294920201AZ) — Zuordnung: Link im Text
+- **FEHLER PREIS:** Lockpreis: Caption CHF 35.90, Shop CHF 37.90–39.90 («Slim-Fit Daunen-Weste in Schwarz», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
+### FEHLER · Pinterest pin · 2026-10-12 01:25 UTC · 1 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582792480/
+- Text: «Transparent Jade Fat Ice Nagellack Nude Für ein elegantes, neutrales Nageldesign. 12 ml Inhalt, 30 Tage Haltbarkeit, wasserdicht, geruchsne…»
+- Produkt: Transparent Jade Fat Ice Nagellack Nude (ACTIVE, https://luxestyle.ch/products/transparent-jade-fat-ice-nagellack-nude-770176, SKU CJ-1513333576014770176) — Zuordnung: Link im Text
+- **FEHLER PREIS:** Lockpreis: Caption CHF 21.90, Shop CHF 22.90 («Transparent Jade Fat Ice Nagellack Nude», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
 ### FEHLER · Pinterest pin · 2026-09-29 05:05 UTC · 1 Aufrufe
 - Post: https://www.pinterest.com/pin/1111333645581667871/
@@ -426,7 +457,7 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: FB-API POST /{post-id} message=… [Q1]
 
 ### FEHLER · Facebook reel · 2026-09-26 08:27 UTC · 1 Aufrufe
-- Post: https://www.facebook.com/reel/1684116469801173/ · Zwilling: https://www.instagram.com/reel/DdvmkBckZrO/
+- Post: https://www.facebook.com/reel/1684116469801173/
 - Text: «Genau das hat gefehlt 👀 «Multifunktionaler Gemüseschneider mit Spiralschneider» — Dieser multifunktionale Gemüseschneider mit Handkurbel u…»
 - Produkt: Multifunktionaler Gemüseschneider mit Spiralschneider (ACTIVE, https://luxestyle.ch/products/multifunktionaler-gemuseschneider-mit-spiralsc-623700, SKU CJ-2409131134451623700) — Zuordnung: Link im Text
 - **FEHLER PREIS:** Lockpreis: Caption CHF 17.90, Shop CHF 21.90 («Multifunktionaler Gemüseschneider mit Spiralschneider», Zuordnung: Link im Text)  
@@ -456,15 +487,12 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
 - **FEHLER PREIS:** Lockpreis: Caption CHF 32.90, Shop CHF 34.90 («Wasserdichte Damenuhr mit Metallarmband», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
-### FEHLER · Pinterest pin · 2026-09-23 04:53 UTC · 1 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645581152467/
-- Text: «Endlich Ruhe beim Gassi? 👀 «Futterspender für Hunde» — Dieser Futterspender ist ein interaktives Spielzeug für deinen Hund, das die Futter…»
-- Produkt: Futterspender für Hunde (ACTIVE, https://luxestyle.ch/products/futterspender-fur-hunde-bc09f6, SKU CJ-F5BA858E-89C8-4A3C-8DDD-4) — Zuordnung: Link im Text
-- (+ 1 Hinweis, siehe Hinweis-Liste)
-- **FEHLER PREIS:** Lockpreis: Caption CHF 19.90, Shop CHF 21.90 («Futterspender für Hunde», Zuordnung: Link im Text)  
+### FEHLER · Pinterest pin · 2026-10-14 03:20 UTC · 0 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582969274/
+- Text: «Kerosene-Lampe für Camping – 30×10×10 cm An nächtlichen Wanderungen sorgt die Kerosene‑Lampe für warmes Licht. · CHF 29.90 bei LuxeStyle CH…»
+- Produkt: Petroleumlampe für Camping – 30×10×10 cm (ACTIVE, https://luxestyle.ch/products/kerosene-lampe-fur-camping-30-10-10-cm-621400, SKU CJ-2608230121491621400) — Zuordnung: Link im Text
+- **FEHLER PREIS:** Lockpreis: Caption CHF 29.90, Shop CHF 32.90 («Petroleumlampe für Camping – 30×10×10 cm», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-09-22 13:02 UTC gepostet: https://www.pinterest.com/pin/1111333645581093478/  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
 ### FEHLER · Pinterest pin · 2026-10-13 01:29 UTC · 0 Aufrufe
 - Post: https://www.pinterest.com/pin/1111333645582877088/
@@ -501,46 +529,18 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
 - **FEHLER PREIS:** Lockpreis: Caption CHF 25.90, Shop CHF 27.90 («Winter High Top Stiefel mit dicker Sohle», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
-### FEHLER · Pinterest pin · 2026-10-12 01:26 UTC · 0 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645582792536/
-- Text: «Slim-Fit Daunen-Weste in Schwarz Für winterliche Tage, wenn du Wärme und Leichtigkeit kombinieren willst. Die Weste ist aus Cashmere‑Wolle …»
-- Produkt: Slim-Fit Daunen-Weste in Schwarz (ACTIVE, https://luxestyle.ch/products/slim-fit-daunen-weste-in-schwarz-617100, SKU CJ-CJYD294920201AZ) — Zuordnung: Link im Text
-- **FEHLER PREIS:** Lockpreis: Caption CHF 35.90, Shop CHF 37.90–39.90 («Slim-Fit Daunen-Weste in Schwarz», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-
-### FEHLER · Pinterest pin · 2026-10-12 01:25 UTC · 0 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645582792480/
-- Text: «Transparent Jade Fat Ice Nagellack Nude Für ein elegantes, neutrales Nageldesign. 12 ml Inhalt, 30 Tage Haltbarkeit, wasserdicht, geruchsne…»
-- Produkt: Transparent Jade Fat Ice Nagellack Nude (ACTIVE, https://luxestyle.ch/products/transparent-jade-fat-ice-nagellack-nude-770176, SKU CJ-1513333576014770176) — Zuordnung: Link im Text
-- **FEHLER PREIS:** Lockpreis: Caption CHF 21.90, Shop CHF 22.90 («Transparent Jade Fat Ice Nagellack Nude», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+### FEHLER · YouTube video · 2026-10-12 16:05 UTC · n/a Aufrufe
+- Post: https://www.youtube.com/shorts/cgSbUowdGKM
+- Text: «Das Gadget, das alle wollen 👀 «USB-Ladebares Lithium-Batterie-Set AA» — Dieses Set enthält vier wiederaufladbare AA-Lithium-Batterien (No.…»
+- Produkt: USB-Ladebares Lithium-Batterie-Set AA (DRAFT, nicht im Onlineshop, SKU CJ-1622471015383183360) — Zuordnung: Link im Text
+- **FEHLER PRODUKT:** Beworbenes Produkt «USB-Ladebares Lithium-Batterie-Set AA» ist DRAFT, nicht im Onlineshop (Zuordnung: Link im Text)  
+  → Vorschlag: Produkt nicht kaufbar: löschen und sauber neu posten. Weg: YouTube Studio (kein YouTube-Token hier) [Q3]
 
 ### FEHLER · Pinterest pin · 2026-10-12 01:24 UTC · 0 Aufrufe
 - Post: https://www.pinterest.com/pin/1111333645582792421/
 - Text: «Herrenschuhe High-Top mit dicker Sohle Für den Alltag, wenn du stabile, rutschfeste Schuhe brauchst. Die Schuhe sind in Schwarz, Khaki, Bei…»
 - Produkt: Herrenschuhe High-Top mit dicker Sohle (ACTIVE, https://luxestyle.ch/products/herrenschuhe-high-top-mit-dicker-sohle-805440, SKU CJ-CJNS181578101AZ) — Zuordnung: Link im Text
 - **FEHLER PREIS:** Lockpreis: Caption CHF 25.90, Shop CHF 27.90 («Herrenschuhe High-Top mit dicker Sohle», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-
-### FEHLER · Pinterest pin · 2026-10-12 01:21 UTC · 0 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645582792278/
-- Text: «Angora‑Roter, lockerer Kurzmantel Für den Alltag, wenn du einen lockeren, aber warmen Mantel brauchst, bietet dieser Kurzmantel mit Memory‑…»
-- Produkt: Lockere kurze Pufferjacke in Rosa (ACTIVE, https://luxestyle.ch/products/angora-roter-lockerer-kurzmantel-619500, SKU CJ-CJJK294795601AZ) — Zuordnung: Link im Text
-- **FEHLER PREIS:** Lockpreis: Caption CHF 25.90, Shop CHF 26.90 («Lockere kurze Pufferjacke in Rosa», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-
-### FEHLER · Pinterest pin · 2026-10-12 01:19 UTC · 0 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645582792235/
-- Text: «Nageldesign-Set mit Kristallpaste Für kreative Nageldesigns und längere Maniküre. Das Set enthält 15 ml Gelatine-Glues, 7 ml Extension‑Glue…»
-- Produkt: Nageldesign-Set mit Kristallpaste (ACTIVE, https://luxestyle.ch/products/nageldesign-set-mit-kristallpaste-785088, SKU CJ-1511723652205785088) — Zuordnung: Link im Text
-- **FEHLER PREIS:** Lockpreis: Caption CHF 26.90, Shop CHF 28.90 («Nageldesign-Set mit Kristallpaste», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-
-### FEHLER · Pinterest pin · 2026-10-12 01:18 UTC · 0 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645582792185/
-- Text: «Herren Freizeitstiefel Für einen entspannten Auftritt im Alltag sind diese Freizeitstiefel eine gute Wahl. Das Obermaterial besteht aus atm…»
-- Produkt: Herren Freizeitstiefel (ACTIVE, https://luxestyle.ch/products/herren-freizeitstiefel-816640, SKU CJ-CJNS181314801AZ) — Zuordnung: Link im Text
-- **FEHLER PREIS:** Lockpreis: Caption CHF 32.90, Shop CHF 34.90 («Herren Freizeitstiefel», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
 ### FEHLER · YouTube video · 2026-10-07 15:05 UTC · n/a Aufrufe
@@ -638,7 +638,7 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
 ### FEHLER · Pinterest pin · 2026-09-25 04:52 UTC · 0 Aufrufe
 - Post: https://www.pinterest.com/pin/1111333645581314612/
 - Text: «Dein neues Lieblingsteil? 👀 «Schwimmboje mit Doppelairbag & Rucksack» CHF 24.90 · Gratis Versand ab CHF 50 · Klarna & TWINT 🇨🇭 🔗 luxest…»
-- Produkt: Schwimmboje mit Doppelairbag & Rucksack (ACTIVE, https://luxestyle.ch/products/schwimmboje-mit-doppelairbag-rucksack-782336, SKU CJ-1408332641408782336) — Zuordnung: Link im Text
+- Produkt: Schwimmboje mit Doppelairbag & Rucksack (ACTIVE, https://luxestyle.ch/products/schwimmboje-mit-doppelairbag-rucksack-782336, SKU CJJM119129001AZ) — Zuordnung: Link im Text
 - (+ 1 Hinweis, siehe Hinweis-Liste)
 - **FEHLER PREIS:** Lockpreis: Caption CHF 24.90, Shop CHF 26.90 («Schwimmboje mit Doppelairbag & Rucksack», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
@@ -679,7 +679,7 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
 - **FEHLER PREIS:** Lockpreis: Caption CHF 27.90, Shop CHF 35.90 («Matcha-Set mit Schale und Zubehör», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: YouTube Studio (kein YouTube-Token hier) [Q3]
 
-<details><summary>255 Beiträge nur mit Warnungen (aufklappen)</summary>
+<details><summary>269 Beiträge nur mit Warnungen (aufklappen)</summary>
 
 ### WARNUNG · TikTok video · 2026-09-23 06:37 UTC · 555 Aufrufe
 - Post: https://www.tiktok.com/@luxestyle.ch/video/7688585316826877216
@@ -758,7 +758,7 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
 - **WARNUNG PREIS:** veraltet: Caption CHF 27.90, Shop CHF 24.90 («LED Leuchtgeschirr für Hunde», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: TikTok-App / Hetzner-Agent (veröffentlicht, nicht per API) [Q3]
 
-### WARNUNG · TikTok video · 2026-09-29 18:37 UTC · 267 Aufrufe
+### WARNUNG · TikTok video · 2026-09-29 18:37 UTC · 268 Aufrufe
 - Post: https://www.tiktok.com/@luxestyle.ch/video/7690997466870697248
 - Text: «Kennst du das schon? 👀 «Dream Sternenhimmel Projektor HD Laser» — Der Dream Sternenhimmel Projektor HD Laser verwandelt jeden Raum in eine…»
 - Produkt: Dream Sternenhimmel Projektor HD Laser (ACTIVE, https://luxestyle.ch/products/dream-sternenhimmel-projektor-hd-laser-849664, SKU CJ-1747176162884849664) — Zuordnung: Link im Text
@@ -809,23 +809,7 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
 - **WARNUNG PREIS:** veraltet: Caption CHF 27.90, Shop CHF 23.90 («Strickpullover Rundhals Loose-Fit», Zuordnung: erste Zeile)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
 
-### WARNUNG · Instagram bild · 2026-09-25 23:08 UTC · 27 Aufrufe
-- Post: https://www.instagram.com/p/Ddumv_9lNi3/ · Zwilling: https://www.facebook.com/122102579637350792/posts/122140880307350792
-- Text: «🍂 Herbst-Favorit USB Aroma Diffusor mit Befeuchter · CHF 24.90 Kleiner Schweizer Shop aus Belp, kein Konzern. Lieferung 10–20 Werktage, da…»
-- Produkt: USB Aroma Diffusor mit Befeuchter (ACTIVE, https://luxestyle.ch/products/usb-aroma-diffusor-mit-befeuchter-465152, SKU CJ-1525035291772465152) — Zuordnung: erste Zeile
-- (+ 1 Hinweis, siehe Hinweis-Liste)
-- **WARNUNG PREIS:** veraltet: Caption CHF 24.90, Shop CHF 21.90 («USB Aroma Diffusor mit Befeuchter», Zuordnung: erste Zeile)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
-
-### WARNUNG · Instagram bild · 2026-09-27 20:01 UTC · 24 Aufrufe
-- Post: https://www.instagram.com/p/Ddza2rvHVMo/ · Zwilling: https://www.facebook.com/122102579637350792/posts/122141356965350792
-- Text: «🍂 Herbst-Favorit Kapuzen-Sweatshirt-Kleid mit Gürtel · CHF 28.90 Kleiner Schweizer Shop aus Belp, kein Konzern. Lieferung 10–20 Werktage, …»
-- Produkt: Kapuzen-Sweatshirt-Kleid mit Gürtel (ACTIVE, https://luxestyle.ch/products/kapuzen-sweatshirt-kleid-mit-gurtel-604900, SKU CJ-CJLY291801901AZ) — Zuordnung: erste Zeile
-- (+ 1 Hinweis, siehe Hinweis-Liste)
-- **WARNUNG PREIS:** veraltet: Caption CHF 28.90, Shop CHF 25.90 («Kapuzen-Sweatshirt-Kleid mit Gürtel», Zuordnung: erste Zeile)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
-
-### WARNUNG · Pinterest pin · 2026-10-01 20:16 UTC · 23 Aufrufe
+### WARNUNG · Pinterest pin · 2026-10-01 20:16 UTC · 27 Aufrufe
 - Post: https://www.pinterest.com/pin/1111333645581888230/
 - Text: «Midikleid mit Zopfmuster und Blumenprint Dieses ärmellose Midikleid präsentiert sich im eleganten Zopfmuster und ist mit einem charmanten b…»
 - Produkt: Midikleid mit Zopfmuster und Blumenprint (ACTIVE, https://luxestyle.ch/products/midikleid-mit-zopfmuster-und-blumenprint-600200, SKU CJ-CJLY296508601AZ) — Zuordnung: Link im Text
@@ -839,6 +823,13 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
 - **WARNUNG PREIS:** veraltet: Caption CHF 20.90, Shop CHF 18.90–19.90 («Y2K Harajuku Hoodie mit Nieten», Zuordnung: erste Zeile)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
 
+### WARNUNG · Pinterest pin · 2026-10-02 20:17 UTC · 20 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645581976237/
+- Text: «Multifunktionaler runder Gemüseschneider Der multifunktionale Gemüseschneider ist ein praktisches Küchengerät, das dir hilft, Gemüse, Karto…»
+- Produkt: Multifunktionaler runder Gemüseschneider (ACTIVE, https://luxestyle.ch/products/multifunktionaler-runder-gemuseschneider-be2e21, SKU CJ-CJJJCFCF00364-Red) — Zuordnung: Link im Text
+- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-09-29 04:47 UTC gepostet: https://www.pinterest.com/pin/1111333645581667021/  
+  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
 ### WARNUNG · Instagram bild · 2026-10-11 16:17 UTC · 19 Aufrufe
 - Post: https://www.instagram.com/p/DeXESdoiK14/
 - Text: «Stressfreie Krallenpflege für deine Fellnase – leise, schonend und dank LED super präzise! Elektrischer Krallenschleifer für Hund & Katze ·…»
@@ -846,20 +837,46 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
 - **WARNUNG FORMAT:** Bild 479×465 — Breite unter 1080  
   → Vorschlag: unscharf: löschen und sauber neu posten. Weg: IG-App/PC (API-Löschen nur mit Facebook-User-Token) [Q2]
 
+### WARNUNG · Pinterest pin · 2026-10-01 20:27 UTC · 19 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645581889000/
+- Text: «Y2K Harajuku Hoodie mit Nieten Dieses trendige zweiteilige Set im Harajuku-Stil ist perfekt für Teenager und junge Erwachsene, die einen au…»
+- Produkt: Y2K Harajuku Hoodie mit Nieten (ACTIVE, https://luxestyle.ch/products/y2k-harajuku-hoodie-mit-nieten-629700, SKU CJ-CJLS273231201AZ) — Zuordnung: Link im Text
+- **WARNUNG PREIS:** veraltet: Caption CHF 20.90, Shop CHF 18.90–19.90 («Y2K Harajuku Hoodie mit Nieten», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-01 04:46 UTC gepostet: https://www.pinterest.com/pin/1111333645581833288/  
+  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
+### WARNUNG · Pinterest pin · 2026-10-08 16:36 UTC · 18 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582483360/
+- Text: «Hundeleine aus Rindsleder für mittlere bis grosse Hunde Diese Hundeleine aus Rindsleder ist für das Führen von Hunden mit einem Gewicht von…»
+- Produkt: Hundeleine aus Rindsleder für mittlere bis grosse Hunde (ACTIVE, https://luxestyle.ch/products/hundeleine-aus-rindsleder-fur-mittlere-bis-gro-634112, SKU CJ-1385464349740634112) — Zuordnung: Link im Text
+- **WARNUNG PREIS:** veraltet: Caption CHF 26.90, Shop CHF 23.90 («Hundeleine aus Rindsleder für mittlere bis grosse Hunde», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-08 16:20 UTC gepostet: https://www.pinterest.com/pin/1111333645582482193/  
+  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
+### WARNUNG · Pinterest pin · 2026-10-08 16:25 UTC · 18 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582482518/
+- Text: «Hundeleine aus Rindsleder für mittlere bis grosse Hunde Diese Hundeleine aus Rindsleder ist für das Führen von Hunden mit einem Gewicht von…»
+- Produkt: Hundeleine aus Rindsleder für mittlere bis grosse Hunde (ACTIVE, https://luxestyle.ch/products/hundeleine-aus-rindsleder-fur-mittlere-bis-gro-634112, SKU CJ-1385464349740634112) — Zuordnung: Link im Text
+- **WARNUNG PREIS:** veraltet: Caption CHF 26.90, Shop CHF 23.90 («Hundeleine aus Rindsleder für mittlere bis grosse Hunde», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-08 16:20 UTC gepostet: https://www.pinterest.com/pin/1111333645582482193/  
+  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
+### WARNUNG · Pinterest pin · 2026-10-08 16:20 UTC · 18 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582482193/
+- Text: «Hundeleine aus Rindsleder für mittlere bis grosse Hunde Diese Hundeleine aus Rindsleder ist für das Führen von Hunden mit einem Gewicht von…»
+- Produkt: Hundeleine aus Rindsleder für mittlere bis grosse Hunde (ACTIVE, https://luxestyle.ch/products/hundeleine-aus-rindsleder-fur-mittlere-bis-gro-634112, SKU CJ-1385464349740634112) — Zuordnung: Link im Text
+- **WARNUNG PREIS:** veraltet: Caption CHF 26.90, Shop CHF 23.90 («Hundeleine aus Rindsleder für mittlere bis grosse Hunde», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
 ### WARNUNG · Instagram bild · 2026-10-06 04:14 UTC · 18 Aufrufe
 - Post: https://www.instagram.com/p/DeI5qoiCldf/
 - Text: «🍂 Herbst-Favorit XXL Hoodie-Decke mit Taschen für Sie & Ihn · CHF 37.90 Kleiner Schweizer Shop aus Belp, kein Konzern. Lieferung 10–20 Wer…»
 - Produkt: XXL Hoodie-Decke mit Taschen für Sie & Ihn (ACTIVE, https://luxestyle.ch/products/xxl-hoodie-decke-mit-taschen-fur-sie-ihn-059264, SKU CJ-CJSY1589450-Short pink-On) — Zuordnung: erste Zeile
 - **WARNUNG FORMAT:** Bild 719×720 — Breite unter 1080  
   → Vorschlag: unscharf: löschen und sauber neu posten. Weg: IG-App/PC (API-Löschen nur mit Facebook-User-Token) [Q2]
-
-### WARNUNG · Instagram bild · 2026-09-26 06:09 UTC · 18 Aufrufe
-- Post: https://www.instagram.com/p/DdvW8OwFLBZ/ · Zwilling: https://www.facebook.com/122102579637350792/posts/122140943505350792
-- Text: «🍂 Herbst-Favorit Martin Ankle Boots im britischen Casual-Stil · CHF 43.90 Kleiner Schweizer Shop aus Belp, kein Konzern. Lieferung 10–20 W…»
-- Produkt: Martin Ankle Boots im britischen Casual-Stil (ACTIVE, https://luxestyle.ch/products/martin-ankle-boots-im-britischen-casual-stil-600000, SKU CJ-CJNS217947101AZ) — Zuordnung: erste Zeile
-- (+ 1 Hinweis, siehe Hinweis-Liste)
-- **WARNUNG PREIS:** veraltet: Caption CHF 43.90, Shop CHF 38.90 («Martin Ankle Boots im britischen Casual-Stil», Zuordnung: erste Zeile)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
 
 ### WARNUNG · Instagram karussell · 2026-10-04 21:23 UTC · 17 Aufrufe
 - Post: https://www.instagram.com/p/DeFl3ChjZAe/ · Zwilling: https://www.facebook.com/122102579637350792/posts/122143403307350792
@@ -876,11 +893,11 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
 - **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-05 23:16 UTC gepostet: (geplant, Metricool 388937521)  
   → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: IG-App/PC (API-Löschen nur mit Facebook-User-Token) [Q2]
 
-### WARNUNG · Pinterest pin · 2026-10-02 20:17 UTC · 16 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645581976237/
-- Text: «Multifunktionaler runder Gemüseschneider Der multifunktionale Gemüseschneider ist ein praktisches Küchengerät, das dir hilft, Gemüse, Karto…»
-- Produkt: Multifunktionaler runder Gemüseschneider (ACTIVE, https://luxestyle.ch/products/multifunktionaler-runder-gemuseschneider-be2e21, SKU CJ-CJJJCFCF00364-Red) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-09-29 04:47 UTC gepostet: https://www.pinterest.com/pin/1111333645581667021/  
+### WARNUNG · Pinterest pin · 2026-10-02 20:24 UTC · 16 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645581976713/
+- Text: «Blumenkleid mit Schnürung Dieses schicke Kleid ist mit einem blumigen Muster bedruckt und hat eine figurbetonte Taille. Es ist aus Polyeste…»
+- Produkt: Blumenkleid mit Schnürung (ACTIVE, https://luxestyle.ch/products/blumenkleid-mit-schnurung-613000, SKU CJ-CJLY299268001AZ) — Zuordnung: Link im Text
+- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-09-29 04:47 UTC gepostet: https://www.pinterest.com/pin/1111333645581667027/  
   → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
 ### WARNUNG · Instagram reel · 2026-09-30 13:00 UTC · 16 Aufrufe
@@ -901,21 +918,19 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
 - **WARNUNG PREIS:** veraltet: Caption CHF 29.90, Shop CHF 26.90 («Plüsch Alligator», Zuordnung: erste Zeile)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
 
+### WARNUNG · Pinterest pin · 2026-10-02 20:28 UTC · 15 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645581976932/
+- Text: «2-in-1 Glätteisen & Lockenstab mit Display Dieses vielseitige 2-in-1 Styling-Tool vereint Glätteisen und Lockenstab in einem Gerät. Kreiere…»
+- Produkt: 2-in-1 Glätteisen & Lockenstab mit Display (ACTIVE, https://luxestyle.ch/products/2-in-1-glatteisen-lockenstab-mit-display-590400, SKU CJ-1603213630399590400) — Zuordnung: Link im Text
+- **WARNUNG PREIS:** veraltet: Caption CHF 27.90, Shop CHF 24.90 («2-in-1 Glätteisen & Lockenstab mit Display», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
 ### WARNUNG · Instagram reel · 2026-10-02 07:13 UTC · 15 Aufrufe
 - Post: https://www.instagram.com/reel/Dd-695XlAkF/ · Zwilling: https://www.facebook.com/reel/2590638451401655/
 - Text: «Küche, aber einfacher 👀 «Handmixer mit 5 Geschwindigkeiten» — Dieser Handmixer ist ein unverzichtbarer Helfer in jeder Küche. CHF 28.90 · …»
 - Produkt: Handmixer mit 5 Geschwindigkeiten (ACTIVE, https://luxestyle.ch/products/handmixer-mit-5-geschwindigkeiten-694c50, SKU CJ-44E4345F-E33C-49EF-B436-9) — Zuordnung: Link im Text
 - **WARNUNG PREIS:** veraltet: Caption CHF 28.90, Shop CHF 25.90 («Handmixer mit 5 Geschwindigkeiten», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
-
-### WARNUNG · Pinterest pin · 2026-10-01 20:27 UTC · 15 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645581889000/
-- Text: «Y2K Harajuku Hoodie mit Nieten Dieses trendige zweiteilige Set im Harajuku-Stil ist perfekt für Teenager und junge Erwachsene, die einen au…»
-- Produkt: Y2K Harajuku Hoodie mit Nieten (ACTIVE, https://luxestyle.ch/products/y2k-harajuku-hoodie-mit-nieten-629700, SKU CJ-CJLS273231201AZ) — Zuordnung: Link im Text
-- **WARNUNG PREIS:** veraltet: Caption CHF 20.90, Shop CHF 18.90–19.90 («Y2K Harajuku Hoodie mit Nieten», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-01 04:46 UTC gepostet: https://www.pinterest.com/pin/1111333645581833288/  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
 ### WARNUNG · Instagram karussell · 2026-09-30 20:27 UTC · 15 Aufrufe
 - Post: https://www.instagram.com/p/Dd7MPHWj3ku/ · Zwilling: https://www.facebook.com/122102579637350792/posts/122142184773350792
@@ -955,12 +970,19 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
 - **WARNUNG PREIS:** veraltet: Caption CHF 35.90, Shop CHF 31.90–32.90 («Gemüseschneider mit Reiben und Hobeln», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
 
-### WARNUNG · Pinterest pin · 2026-10-02 20:24 UTC · 12 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645581976713/
-- Text: «Blumenkleid mit Schnürung Dieses schicke Kleid ist mit einem blumigen Muster bedruckt und hat eine figurbetonte Taille. Es ist aus Polyeste…»
-- Produkt: Blumenkleid mit Schnürung (ACTIVE, https://luxestyle.ch/products/blumenkleid-mit-schnurung-613000, SKU CJ-CJLY299268001AZ) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-09-29 04:47 UTC gepostet: https://www.pinterest.com/pin/1111333645581667027/  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+### WARNUNG · Pinterest pin · 2026-10-03 20:26 UTC · 12 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582067229/
+- Text: «Silikon-Gesichtsreinigungsbürste Diese Silikon-Gesichtsreinigungsbürste nutzt Ultraschall-Vibrationen, um deine Haut sanft und effektiv zu …»
+- Produkt: Silikon-Gesichtsreinigungsbürste (ACTIVE, https://luxestyle.ch/products/silikon-gesichtsreinigungsburste-0787a2, SKU CJ-9AFB5911-3201-45F6-905D-1) — Zuordnung: Link im Text
+- **WARNUNG PREIS:** veraltet: Caption CHF 36.90, Shop CHF 32.90 («Silikon-Gesichtsreinigungsbürste», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
+### WARNUNG · Pinterest pin · 2026-10-03 20:25 UTC · 12 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582067156/
+- Text: «Kinder Erdbeer-Halbschuhe Diese Kinder-Halbschuhe sind für Kinder im Alter von 1 bis 3 Jahren geeignet und begleiten sie bei ihren ersten S…»
+- Produkt: Kinder Erdbeer-Halbschuhe (ACTIVE, https://luxestyle.ch/products/kinder-erdbeer-halbschuhe-332480, SKU CJ-CJBB105690701AZ) — Zuordnung: Link im Text
+- **WARNUNG PREIS:** veraltet: Caption CHF 27.90, Shop CHF 23.90–26.90 («Kinder Erdbeer-Halbschuhe», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
 ### WARNUNG · Instagram reel · 2026-10-01 06:15 UTC · 12 Aufrufe
 - Post: https://www.instagram.com/reel/Dd8Phq_GZlZ/ · Zwilling: https://www.facebook.com/reel/1675461947335590/
@@ -971,32 +993,43 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
 - **WARNUNG TON:** übersteuert: True Peak +1.1 dBTP  
   → Vorschlag: Ton verzerrt: löschen und sauber neu posten. Weg: IG-App/PC (API-Löschen nur mit Facebook-User-Token) [Q2]
 
-### WARNUNG · Pinterest pin · 2026-10-02 20:28 UTC · 11 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645581976932/
-- Text: «2-in-1 Glätteisen & Lockenstab mit Display Dieses vielseitige 2-in-1 Styling-Tool vereint Glätteisen und Lockenstab in einem Gerät. Kreiere…»
-- Produkt: 2-in-1 Glätteisen & Lockenstab mit Display (ACTIVE, https://luxestyle.ch/products/2-in-1-glatteisen-lockenstab-mit-display-590400, SKU CJ-1603213630399590400) — Zuordnung: Link im Text
-- **WARNUNG PREIS:** veraltet: Caption CHF 27.90, Shop CHF 24.90 («2-in-1 Glätteisen & Lockenstab mit Display», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+### WARNUNG · Instagram bild · 2026-10-14 12:46 UTC · 11 Aufrufe
+- Post: https://www.instagram.com/p/Deeai7xiIFW/
+- Text: «🇨🇭 Ab Schweizer Lager – meist in 2–3 Werktagen bei dir Cap Frankreich · CHF 23.90 Kleiner Schweizer Shop aus Belp, kein Konzern. Versand …»
+- Produkt: Cap Frankreich (ACTIVE, https://luxestyle.ch/products/cap-frankreich-fga66365, SKU fortura-66365) — Zuordnung: erste Zeile
+- (+ 1 Hinweis, siehe Hinweis-Liste)
+- **WARNUNG VERSAND:** Lieferzeit-Zusage kürzer als die ehrliche Angabe 10–20 Werktage: «eizer Lager – meist in 2–3 Werktagen bei dir Cap Frankre»  
+  → Vorschlag: nur stehen lassen, wenn das Produkt ab CH-Lager kommt; sonst Caption korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
+- **WARNUNG VERSAND:** Lieferzeit-Zusage kürzer als die ehrliche Angabe 10–20 Werktage: «weizer Lager, meist in 2–3 Werktagen · 30 Tage Rückgabe»  
+  → Vorschlag: nur stehen lassen, wenn das Produkt ab CH-Lager kommt; sonst Caption korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
 
-### WARNUNG · Pinterest pin · 2026-10-03 20:25 UTC · 9 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645582067156/
-- Text: «Kinder Erdbeer-Halbschuhe Diese Kinder-Halbschuhe sind für Kinder im Alter von 1 bis 3 Jahren geeignet und begleiten sie bei ihren ersten S…»
-- Produkt: Kinder Erdbeer-Halbschuhe (ACTIVE, https://luxestyle.ch/products/kinder-erdbeer-halbschuhe-332480, SKU CJ-CJBB105690701AZ) — Zuordnung: Link im Text
-- **WARNUNG PREIS:** veraltet: Caption CHF 27.90, Shop CHF 23.90–26.90 («Kinder Erdbeer-Halbschuhe», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-
-### WARNUNG · Pinterest pin · 2026-10-03 20:26 UTC · 8 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645582067229/
-- Text: «Silikon-Gesichtsreinigungsbürste Diese Silikon-Gesichtsreinigungsbürste nutzt Ultraschall-Vibrationen, um deine Haut sanft und effektiv zu …»
-- Produkt: Silikon-Gesichtsreinigungsbürste (ACTIVE, https://luxestyle.ch/products/silikon-gesichtsreinigungsburste-0787a2, SKU CJ-9AFB5911-3201-45F6-905D-1) — Zuordnung: Link im Text
-- **WARNUNG PREIS:** veraltet: Caption CHF 36.90, Shop CHF 32.90 («Silikon-Gesichtsreinigungsbürste», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-
-### WARNUNG · Pinterest pin · 2026-10-03 20:30 UTC · 7 Aufrufe
+### WARNUNG · Pinterest pin · 2026-10-03 20:30 UTC · 10 Aufrufe
 - Post: https://www.pinterest.com/pin/1111333645582067570/
 - Text: «Kinder-Halbstiefel aus Kunstleder Diese modischen Halbstiefel sind für Kinder konzipiert, die bequeme und robuste Schuhe für den Alltag ben…»
 - Produkt: Kinder-Halbstiefel aus Kunstleder (ACTIVE, https://luxestyle.ch/products/kinder-halbstiefel-aus-kunstleder-356928, SKU CJ-CJBB106168901AZ) — Zuordnung: Link im Text
 - **WARNUNG PREIS:** veraltet: Caption CHF 27.90, Shop CHF 23.90–24.90 («Kinder-Halbstiefel aus Kunstleder», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
+### WARNUNG · Instagram bild · 2026-10-06 12:34 UTC · 7 Aufrufe
+- Post: https://www.instagram.com/p/DeJyx5GCAz9/
+- Text: «🍂 Herbst-Favorit Warme, wasserdichte High-Top Winterschuhe für Damen · CHF 30.90 Kleiner Schweizer Shop aus Belp, kein Konzern. Lieferung …»
+- Produkt: Warme, wasserdichte High-Top Winterschuhe für Damen (ACTIVE, https://luxestyle.ch/products/warme-wasserdichte-high-top-winterschuhe-fur-d-825024, SKU CJ-CJPB157107601AZ) — Zuordnung: erste Zeile
+- (+ 1 Hinweis, siehe Hinweis-Liste)
+- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-06 12:28 UTC gepostet: (geplant, Metricool 389315472)  
+  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: IG-App/PC (API-Löschen nur mit Facebook-User-Token) [Q2]
+
+### WARNUNG · Pinterest pin · 2026-10-04 21:30 UTC · 7 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582162899/
+- Text: «Plüsch-Hundegeschirr mit Leine Dieses weiche Hundegeschirr mit Leine ist für tägliche Spaziergänge mit deinem Haustier gedacht. Es besteht …»
+- Produkt: Plüsch-Hundegeschirr mit Leine (ACTIVE, https://luxestyle.ch/products/plusch-hundegeschirr-mit-leine-744320, SKU CJ-1612024004418744320) — Zuordnung: Link im Text
+- **WARNUNG PREIS:** veraltet: Caption CHF 25.90, Shop CHF 22.90 («Plüsch-Hundegeschirr mit Leine», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
+### WARNUNG · Pinterest pin · 2026-10-04 21:17 UTC · 7 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582161862/
+- Text: «USB-Heizkissen mit Graphen-Technologie Dieses tragbare Heizkissen sorgt für wohlige Wärme, egal ob zu Hause oder unterwegs. Das weiche Flan…»
+- Produkt: USB-Heizkissen mit Graphen-Technologie (ACTIVE, https://luxestyle.ch/products/usb-heizkissen-mit-graphen-technologie-acad9f, SKU CJ-FFDB5A27-5965-46FE-A884-3) — Zuordnung: Link im Text
+- **WARNUNG PREIS:** veraltet: Caption CHF 25.90, Shop CHF 22.90 («USB-Heizkissen mit Graphen-Technologie», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
 ### WARNUNG · Facebook bild · 2026-09-30 19:09 UTC · 7 Aufrufe
@@ -1006,38 +1039,12 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
 - **WARNUNG PREIS:** veraltet: Caption CHF 20.90, Shop CHF 18.90–19.90 («Y2K Harajuku Hoodie mit Nieten», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: FB-API POST /{post-id} message=… [Q1]
 
-### WARNUNG · Pinterest pin · 2026-10-08 16:36 UTC · 6 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645582483360/
-- Text: «Hundeleine aus Rindsleder für mittlere bis grosse Hunde Diese Hundeleine aus Rindsleder ist für das Führen von Hunden mit einem Gewicht von…»
-- Produkt: Hundeleine aus Rindsleder für mittlere bis grosse Hunde (ACTIVE, https://luxestyle.ch/products/hundeleine-aus-rindsleder-fur-mittlere-bis-gro-634112, SKU CJ-1385464349740634112) — Zuordnung: Link im Text
-- **WARNUNG PREIS:** veraltet: Caption CHF 26.90, Shop CHF 23.90 («Hundeleine aus Rindsleder für mittlere bis grosse Hunde», Zuordnung: Link im Text)  
+### WARNUNG · Pinterest pin · 2026-10-10 04:26 UTC · 6 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582612105/
+- Text: «Verstellbare Fleece-Weste mit Brustgeschirr Diese verstellbare Fleece-Weste mit Brustgeschirr hilft dir, deinen Hund einfach zu führen und …»
+- Produkt: Verstellbare Fleece-Weste mit Brustgeschirr (ACTIVE, https://luxestyle.ch/products/verstellbare-fleece-weste-mit-brustgeschirr-310543, SKU CJ-FB1F11B0-4743-47AB-818B-A) — Zuordnung: Link im Text
+- **WARNUNG PREIS:** veraltet: Caption CHF 24.90, Shop CHF 21.90 («Verstellbare Fleece-Weste mit Brustgeschirr», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-08 16:20 UTC gepostet: https://www.pinterest.com/pin/1111333645582482193/  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-
-### WARNUNG · Pinterest pin · 2026-10-08 16:25 UTC · 6 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645582482518/
-- Text: «Hundeleine aus Rindsleder für mittlere bis grosse Hunde Diese Hundeleine aus Rindsleder ist für das Führen von Hunden mit einem Gewicht von…»
-- Produkt: Hundeleine aus Rindsleder für mittlere bis grosse Hunde (ACTIVE, https://luxestyle.ch/products/hundeleine-aus-rindsleder-fur-mittlere-bis-gro-634112, SKU CJ-1385464349740634112) — Zuordnung: Link im Text
-- **WARNUNG PREIS:** veraltet: Caption CHF 26.90, Shop CHF 23.90 («Hundeleine aus Rindsleder für mittlere bis grosse Hunde», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-08 16:20 UTC gepostet: https://www.pinterest.com/pin/1111333645582482193/  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-
-### WARNUNG · Pinterest pin · 2026-10-08 16:20 UTC · 6 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645582482193/
-- Text: «Hundeleine aus Rindsleder für mittlere bis grosse Hunde Diese Hundeleine aus Rindsleder ist für das Führen von Hunden mit einem Gewicht von…»
-- Produkt: Hundeleine aus Rindsleder für mittlere bis grosse Hunde (ACTIVE, https://luxestyle.ch/products/hundeleine-aus-rindsleder-fur-mittlere-bis-gro-634112, SKU CJ-1385464349740634112) — Zuordnung: Link im Text
-- **WARNUNG PREIS:** veraltet: Caption CHF 26.90, Shop CHF 23.90 («Hundeleine aus Rindsleder für mittlere bis grosse Hunde», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-
-### WARNUNG · Instagram bild · 2026-10-06 12:34 UTC · 6 Aufrufe
-- Post: https://www.instagram.com/p/DeJyx5GCAz9/
-- Text: «🍂 Herbst-Favorit Warme, wasserdichte High-Top Winterschuhe für Damen · CHF 30.90 Kleiner Schweizer Shop aus Belp, kein Konzern. Lieferung …»
-- Produkt: Warme, wasserdichte High-Top Winterschuhe für Damen (ACTIVE, https://luxestyle.ch/products/warme-wasserdichte-high-top-winterschuhe-fur-d-825024, SKU CJ-CJPB157107601AZ) — Zuordnung: erste Zeile
-- (+ 1 Hinweis, siehe Hinweis-Liste)
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-06 12:28 UTC gepostet: (geplant, Metricool 389315472)  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: IG-App/PC (API-Löschen nur mit Facebook-User-Token) [Q2]
 
 ### WARNUNG · Facebook album · 2026-09-30 20:27 UTC · 6 Aufrufe
 - Post: https://www.facebook.com/122102579637350792/posts/122142184773350792 · Zwilling: https://www.instagram.com/p/Dd7MPHWj3ku/
@@ -1062,18 +1069,34 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
 - **WARNUNG PREIS:** veraltet: Caption CHF 20.90, Shop CHF 18.90–19.90 («Y2K Harajuku Hoodie mit Nieten», Zuordnung: erste Zeile)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
-### WARNUNG · Pinterest pin · 2026-10-04 21:30 UTC · 3 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645582162899/
-- Text: «Plüsch-Hundegeschirr mit Leine Dieses weiche Hundegeschirr mit Leine ist für tägliche Spaziergänge mit deinem Haustier gedacht. Es besteht …»
-- Produkt: Plüsch-Hundegeschirr mit Leine (ACTIVE, https://luxestyle.ch/products/plusch-hundegeschirr-mit-leine-744320, SKU CJ-1612024004418744320) — Zuordnung: Link im Text
-- **WARNUNG PREIS:** veraltet: Caption CHF 25.90, Shop CHF 22.90 («Plüsch-Hundegeschirr mit Leine», Zuordnung: Link im Text)  
+### WARNUNG · Pinterest pin · 2026-09-26 04:46 UTC · 4 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645581395389/
+- Text: «🍂 Herbst-Favorit USB Aroma Diffusor mit Befeuchter · CHF 24.90 Kleiner Schweizer Shop aus Belp, kein Konzern. Lieferung 10–20 Werktage, da…»
+- Produkt: USB Aroma Diffusor mit Befeuchter (ACTIVE, https://luxestyle.ch/products/usb-aroma-diffusor-mit-befeuchter-465152, SKU CJ-1525035291772465152) — Zuordnung: erste Zeile
+- (+ 1 Hinweis, siehe Hinweis-Liste)
+- **WARNUNG PREIS:** veraltet: Caption CHF 24.90, Shop CHF 21.90 («USB Aroma Diffusor mit Befeuchter», Zuordnung: erste Zeile)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
-### WARNUNG · Pinterest pin · 2026-10-04 21:17 UTC · 3 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645582161862/
-- Text: «USB-Heizkissen mit Graphen-Technologie Dieses tragbare Heizkissen sorgt für wohlige Wärme, egal ob zu Hause oder unterwegs. Das weiche Flan…»
-- Produkt: USB-Heizkissen mit Graphen-Technologie (ACTIVE, https://luxestyle.ch/products/usb-heizkissen-mit-graphen-technologie-acad9f, SKU CJ-FFDB5A27-5965-46FE-A884-3) — Zuordnung: Link im Text
-- **WARNUNG PREIS:** veraltet: Caption CHF 25.90, Shop CHF 22.90 («USB-Heizkissen mit Graphen-Technologie», Zuordnung: Link im Text)  
+### WARNUNG · Pinterest pin · 2026-10-12 01:22 UTC · 3 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582792319/
+- Text: «F64 Smart Armbanduhr mit Bluetooth Dieses Smart Armband ist eine praktische Ergänzung für dein Handgelenk, um deine Aktivitäten im Alltag z…»
+- Produkt: F64 Smart Armbanduhr mit Bluetooth (ACTIVE, https://luxestyle.ch/products/f64-smart-armbanduhr-mit-bluetooth-318912, SKU CJ-1662721478657318912) — Zuordnung: Link im Text
+- **WARNUNG PREIS:** veraltet: Caption CHF 32.90, Shop CHF 28.90 («F64 Smart Armbanduhr mit Bluetooth», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
+### WARNUNG · Pinterest pin · 2026-10-12 01:17 UTC · 3 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582792149/
+- Text: «Fressnapf aus Keramik für Haustiere Dieser Fressnapf ist für die Fütterung deines Haustiers gedacht. Er eignet sich für den täglichen Gebra…»
+- Produkt: Fressnapf aus Keramik für Haustiere (ACTIVE, https://luxestyle.ch/products/fressnapf-aus-keramik-fur-haustiere-a94de9, SKU CJ-8BF112A9-BCFB-4790-91FE-8) — Zuordnung: Link im Text
+- **WARNUNG PREIS:** veraltet: Caption CHF 27.90, Shop CHF 24.90 («Fressnapf aus Keramik für Haustiere», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
+### WARNUNG · Pinterest pin · 2026-10-03 04:51 UTC · 3 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582005286/
+- Text: «Wusstest du das schon? 👀 «Handkurbel-Schäler für Äpfel und Birnen» — Dieser handliche Schäler revolutioniert das Schälen von Äpfeln und Bi…»
+- Produkt: Handkurbel-Schäler für Äpfel und Birnen (ACTIVE, https://luxestyle.ch/products/handkurbel-schaler-fur-apfel-und-birnen-5235a8, SKU CJ-89D3EA68-37A4-4F3C-ADBE-8) — Zuordnung: Link im Text
+- (+ 1 Hinweis, siehe Hinweis-Liste)
+- **WARNUNG PREIS:** veraltet: Caption CHF 26.90, Shop CHF 23.90 («Handkurbel-Schäler für Äpfel und Birnen», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
 ### WARNUNG · Facebook reel · 2026-10-01 06:16 UTC · 3 Aufrufe
@@ -1119,19 +1142,12 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
 - **WARNUNG PREIS:** veraltet: Caption CHF 37.90, Shop CHF 33.90 («Schnellauftauplatte für die Küche», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: FB-API POST /{post-id} message=… [Q1]
 
-### WARNUNG · Pinterest pin · 2026-09-26 04:46 UTC · 3 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645581395389/
-- Text: «🍂 Herbst-Favorit USB Aroma Diffusor mit Befeuchter · CHF 24.90 Kleiner Schweizer Shop aus Belp, kein Konzern. Lieferung 10–20 Werktage, da…»
-- Produkt: USB Aroma Diffusor mit Befeuchter (ACTIVE, https://luxestyle.ch/products/usb-aroma-diffusor-mit-befeuchter-465152, SKU CJ-1525035291772465152) — Zuordnung: erste Zeile
+### WARNUNG · Pinterest pin · 2026-10-03 05:08 UTC · 2 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582006191/
+- Text: «Küche, aber einfacher 👀 «Handmixer mit 5 Geschwindigkeiten» — Dieser Handmixer ist ein unverzichtbarer Helfer in jeder Küche. CHF 28.90 · …»
+- Produkt: Handmixer mit 5 Geschwindigkeiten (ACTIVE, https://luxestyle.ch/products/handmixer-mit-5-geschwindigkeiten-694c50, SKU CJ-44E4345F-E33C-49EF-B436-9) — Zuordnung: Link im Text
 - (+ 1 Hinweis, siehe Hinweis-Liste)
-- **WARNUNG PREIS:** veraltet: Caption CHF 24.90, Shop CHF 21.90 («USB Aroma Diffusor mit Befeuchter», Zuordnung: erste Zeile)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-
-### WARNUNG · Pinterest pin · 2026-10-10 04:26 UTC · 2 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645582612105/
-- Text: «Verstellbare Fleece-Weste mit Brustgeschirr Diese verstellbare Fleece-Weste mit Brustgeschirr hilft dir, deinen Hund einfach zu führen und …»
-- Produkt: Verstellbare Fleece-Weste mit Brustgeschirr (ACTIVE, https://luxestyle.ch/products/verstellbare-fleece-weste-mit-brustgeschirr-310543, SKU CJ-FB1F11B0-4743-47AB-818B-A) — Zuordnung: Link im Text
-- **WARNUNG PREIS:** veraltet: Caption CHF 24.90, Shop CHF 21.90 («Verstellbare Fleece-Weste mit Brustgeschirr», Zuordnung: Link im Text)  
+- **WARNUNG PREIS:** veraltet: Caption CHF 28.90, Shop CHF 25.90 («Handmixer mit 5 Geschwindigkeiten», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
 ### WARNUNG · Facebook reel · 2026-10-01 23:12 UTC · 2 Aufrufe
@@ -1176,6 +1192,20 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
 - **WARNUNG PREIS:** veraltet: Caption CHF 33.90, Shop CHF 29.90 («Warme Winter-Hausschuhe», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: FB-API POST /{post-id} message=… [Q1]
 
+### WARNUNG · Pinterest pin · 2026-10-12 01:27 UTC · 1 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582792603/
+- Text: «Bluetooth Sportuhr mit Runddisplay Diese Bluetooth Sportuhr zeigt dir Uhrzeit und Benachrichtigungen direkt am Handgelenk an. · CHF 42.90 b…»
+- Produkt: Bluetooth Sportuhr mit Runddisplay (ACTIVE, https://luxestyle.ch/products/bluetooth-sportuhr-mit-runddisplay-193216, SKU CJ-1683411165965193216) — Zuordnung: Link im Text
+- **WARNUNG PREIS:** veraltet: Caption CHF 42.90, Shop CHF 37.90 («Bluetooth Sportuhr mit Runddisplay», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
+### WARNUNG · Pinterest pin · 2026-10-12 01:23 UTC · 1 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582792378/
+- Text: «Weinöffner mit Luftdruckpumpe Dieser handliche Weinöffner macht das Entkorken jeder Weinflasche zum Kinderspiel. Dank der innovativen Luftd…»
+- Produkt: Weinöffner mit Luftdruckpumpe (ACTIVE, https://luxestyle.ch/products/weinoffner-mit-luftdruckpumpe-198db1, SKU CJ-0EA586E3-C468-433C-8E4E-B) — Zuordnung: Link im Text
+- **WARNUNG PREIS:** veraltet: Caption CHF 25.90, Shop CHF 22.90 («Weinöffner mit Luftdruckpumpe», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
 ### WARNUNG · Facebook bild · 2026-10-03 23:09 UTC · 1 Aufrufe
 - Post: https://www.facebook.com/122102579637350792/posts/122143127673350792
 - Text: «🇨🇭 Ab Schweizer Lager – in 1–2 Werktagen bei dir Geldbörse Kellner · CHF 38.90 Kleiner Schweizer Shop aus Belp, kein Konzern. Versand ab …»
@@ -1184,22 +1214,6 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
   → Vorschlag: nur stehen lassen, wenn das Produkt ab CH-Lager kommt; sonst Caption korrigieren. Weg: FB-API POST /{post-id} message=… [Q1]
 - **WARNUNG VERSAND:** Lieferzeit-Zusage kürzer als die ehrliche Angabe 10–20 Werktage: «ab Schweizer Lager in 1–2 Werktagen · 30 Tage Rückgabe»  
   → Vorschlag: nur stehen lassen, wenn das Produkt ab CH-Lager kommt; sonst Caption korrigieren. Weg: FB-API POST /{post-id} message=… [Q1]
-
-### WARNUNG · Pinterest pin · 2026-10-03 05:08 UTC · 1 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645582006191/
-- Text: «Küche, aber einfacher 👀 «Handmixer mit 5 Geschwindigkeiten» — Dieser Handmixer ist ein unverzichtbarer Helfer in jeder Küche. CHF 28.90 · …»
-- Produkt: Handmixer mit 5 Geschwindigkeiten (ACTIVE, https://luxestyle.ch/products/handmixer-mit-5-geschwindigkeiten-694c50, SKU CJ-44E4345F-E33C-49EF-B436-9) — Zuordnung: Link im Text
-- (+ 1 Hinweis, siehe Hinweis-Liste)
-- **WARNUNG PREIS:** veraltet: Caption CHF 28.90, Shop CHF 25.90 («Handmixer mit 5 Geschwindigkeiten», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-
-### WARNUNG · Pinterest pin · 2026-10-03 04:51 UTC · 1 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645582005286/
-- Text: «Wusstest du das schon? 👀 «Handkurbel-Schäler für Äpfel und Birnen» — Dieser handliche Schäler revolutioniert das Schälen von Äpfeln und Bi…»
-- Produkt: Handkurbel-Schäler für Äpfel und Birnen (ACTIVE, https://luxestyle.ch/products/handkurbel-schaler-fur-apfel-und-birnen-5235a8, SKU CJ-89D3EA68-37A4-4F3C-ADBE-8) — Zuordnung: Link im Text
-- (+ 1 Hinweis, siehe Hinweis-Liste)
-- **WARNUNG PREIS:** veraltet: Caption CHF 26.90, Shop CHF 23.90 («Handkurbel-Schäler für Äpfel und Birnen», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
 ### WARNUNG · Facebook reel · 2026-10-02 07:14 UTC · 1 Aufrufe
 - Post: https://www.facebook.com/reel/2590638451401655/ · Zwilling: https://www.instagram.com/reel/Dd-695XlAkF/
@@ -1277,7 +1291,7 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
 ### WARNUNG · Facebook bild · 2026-09-26 06:10 UTC · 1 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122140943505350792 · Zwilling: https://www.instagram.com/p/DdvW8OwFLBZ/
+- Post: https://www.facebook.com/122102579637350792/posts/122140943505350792
 - Text: «🍂 Herbst-Favorit Martin Ankle Boots im britischen Casual-Stil · CHF 43.90 Kleiner Schweizer Shop aus Belp, kein Konzern. Lieferung 10–20 W…»
 - Produkt: Martin Ankle Boots im britischen Casual-Stil (ACTIVE, https://luxestyle.ch/products/martin-ankle-boots-im-britischen-casual-stil-600000, SKU CJ-CJNS217947101AZ) — Zuordnung: erste Zeile
 - (+ 1 Hinweis, siehe Hinweis-Liste)
@@ -1298,14 +1312,126 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
 - **WARNUNG FLOSKEL:** Scam-Marker: «omente jeden Tag. ✨ Bezahl bequem auf Rechnung mit Kl»  
   → Vorschlag: Caption korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
+### WARNUNG · Instagram bild · 2026-10-14 22:59 UTC · n/a Aufrufe
+- Post: https://www.instagram.com/stories/luxestyle.ch/4008007859853510601 · Zwilling: https://facebook.com/122108214291350792/posts/1033832376365374
+- Text: «»
+- **WARNUNG TEXT:** Beitrag ohne Text  
+  → Vorschlag: Caption ergänzen. Weg: IG-App (API ändert keine Caption) [Q2]
+
+### WARNUNG · Facebook bild · 2026-10-14 22:59 UTC · n/a Aufrufe
+- Post: https://facebook.com/122108214291350792/posts/1033832376365374 · Zwilling: https://www.instagram.com/stories/luxestyle.ch/4008007859853510601
+- Text: «»
+- **WARNUNG TEXT:** Beitrag ohne Text  
+  → Vorschlag: Caption ergänzen. Weg: FB-API POST /{post-id} message=… [Q1]
+
+### WARNUNG · Instagram bild · 2026-10-14 21:15 UTC · n/a Aufrufe
+- Post: https://www.instagram.com/p/DefHK6SCiaY/
+- Text: «🍂 Herbst-Favorit Heizjacke mit USB-Anschluss · CHF 33.90 Kleiner Schweizer Shop aus Belp, kein Konzern. Lieferung 10–20 Werktage, dafür eh…»
+- Produkt: Heizjacke mit USB-Anschluss (ACTIVE, https://luxestyle.ch/products/heizjacke-mit-usb-anschluss-907264, SKU CJ-CJYR158132801AZ) — Zuordnung: erste Zeile
+- (+ 1 Hinweis, siehe Hinweis-Liste)
+- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-14 19:16 UTC gepostet: https://www.instagram.com/p/DefHK6SCiaY/  
+  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: IG-App/PC (API-Löschen nur mit Facebook-User-Token) [Q2]
+
+### WARNUNG · Instagram video · 2026-10-14 18:05 UTC · n/a Aufrufe
+- Post: https://www.instagram.com/reel/Deex5cNAlVT/ · Zwilling: https://facebook.com/reel/2568460890318386
+- Text: «Katzenschüssel 👀 «Verstellbarer Katzenschüssel 15°» — Das transparente Schüsselmaterial ist PC, die Basis aus ABS. CHF 34.90 · Gratis Vers…»
+- Produkt: Verstellbarer Katzenschüssel 15° (ACTIVE, https://luxestyle.ch/products/verstellbarer-katzenschussel-15-f0b6ca, SKU CJ-1265790C-29A8-4EAD-A9DB-8) — Zuordnung: Link im Text
+- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-14 16:11 UTC gepostet: https://www.instagram.com/reel/Deex5cNAlVT/  
+  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: IG-App/PC (API-Löschen nur mit Facebook-User-Token) [Q2]
+
+### WARNUNG · Facebook video · 2026-10-14 18:05 UTC · n/a Aufrufe
+- Post: https://facebook.com/reel/2568460890318386 · Zwilling: https://www.instagram.com/reel/Deex5cNAlVT/
+- Text: «Katzenschüssel 👀 «Verstellbarer Katzenschüssel 15°» — Das transparente Schüsselmaterial ist PC, die Basis aus ABS. CHF 34.90 · Gratis Vers…»
+- Produkt: Verstellbarer Katzenschüssel 15° (ACTIVE, https://luxestyle.ch/products/verstellbarer-katzenschussel-15-f0b6ca, SKU CJ-1265790C-29A8-4EAD-A9DB-8) — Zuordnung: Link im Text
+- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-14 16:10 UTC gepostet: https://www.facebook.com/reel/2568460890318386/  
+  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
+
+### WARNUNG · Instagram bild · 2026-10-14 14:45 UTC · n/a Aufrufe
+- Post: https://www.instagram.com/p/Deeai7xiIFW/
+- Text: «🇨🇭 Ab Schweizer Lager – meist in 2–3 Werktagen bei dir Cap Frankreich · CHF 23.90 Kleiner Schweizer Shop aus Belp, kein Konzern. Versand …»
+- Produkt: Cap Frankreich (ACTIVE, https://luxestyle.ch/products/cap-frankreich-fga66365, SKU fortura-66365) — Zuordnung: erste Zeile
+- **WARNUNG VERSAND:** Lieferzeit-Zusage kürzer als die ehrliche Angabe 10–20 Werktage: «eizer Lager – meist in 2–3 Werktagen bei dir Cap Frankre»  
+  → Vorschlag: nur stehen lassen, wenn das Produkt ab CH-Lager kommt; sonst Caption korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
+- **WARNUNG VERSAND:** Lieferzeit-Zusage kürzer als die ehrliche Angabe 10–20 Werktage: «weizer Lager, meist in 2–3 Werktagen · 30 Tage Rückgabe»  
+  → Vorschlag: nur stehen lassen, wenn das Produkt ab CH-Lager kommt; sonst Caption korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
+- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-14 12:46 UTC gepostet: https://www.instagram.com/p/Deeai7xiIFW/  
+  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: IG-App/PC (API-Löschen nur mit Facebook-User-Token) [Q2]
+
+### WARNUNG · Instagram bild · 2026-10-14 14:45 UTC · n/a Aufrufe
+- Post: https://www.instagram.com/stories/luxestyle.ch/4007757829707978279
+- Text: «»
+- **WARNUNG TEXT:** Beitrag ohne Text  
+  → Vorschlag: Caption ergänzen. Weg: IG-App (API ändert keine Caption) [Q2]
+
+### WARNUNG · Facebook bild · 2026-10-14 14:45 UTC · n/a Aufrufe
+- Post: https://facebook.com/122108214291350792/posts/1105629988875784
+- Text: «»
+- **WARNUNG TEXT:** Beitrag ohne Text  
+  → Vorschlag: Caption ergänzen. Weg: FB-API POST /{post-id} message=… [Q1]
+
+### WARNUNG · Instagram video · 2026-10-14 09:05 UTC · n/a Aufrufe
+- Post: https://www.instagram.com/reel/Dedzmhbilva/ · Zwilling: https://facebook.com/reel/1435030561403873
+- Text: «Eleganter Damenmantel mit Fellkragen ab CHF 23.90 · Gratis Versand ab CHF 50 · Klarna & TWINT 🇨🇭 🔗 luxestyle.ch/products/eleganter-damen…»
+- Produkt: Eleganter Damenmantel mit Fellkragen (ACTIVE, https://luxestyle.ch/products/eleganter-damenmantel-mit-fellkragen-601300, SKU CJ-CJYD270208401AZ) — Zuordnung: Link im Text
+- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-14 07:05 UTC gepostet: https://www.instagram.com/reel/Dedzmhbilva/  
+  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: IG-App/PC (API-Löschen nur mit Facebook-User-Token) [Q2]
+
+### WARNUNG · Facebook video · 2026-10-14 09:05 UTC · n/a Aufrufe
+- Post: https://facebook.com/reel/1435030561403873 · Zwilling: https://www.instagram.com/reel/Dedzmhbilva/
+- Text: «Eleganter Damenmantel mit Fellkragen ab CHF 23.90 · Gratis Versand ab CHF 50 · Klarna & TWINT 🇨🇭 🔗 luxestyle.ch/products/eleganter-damen…»
+- Produkt: Eleganter Damenmantel mit Fellkragen (ACTIVE, https://luxestyle.ch/products/eleganter-damenmantel-mit-fellkragen-601300, SKU CJ-CJYD270208401AZ) — Zuordnung: Link im Text
+- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-14 07:05 UTC gepostet: https://www.facebook.com/reel/1435030561403873/  
+  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
+
+### WARNUNG · Instagram bild · 2026-10-14 08:38 UTC · n/a Aufrufe
+- Post: https://www.instagram.com/p/DedwjaJjVgG/
+- Text: «🍂 Herbst-Favorit Damenstiefel mit Klotzhacke aus Nappaleder · CHF 100.90 Kleiner Schweizer Shop aus Belp, kein Konzern. Lieferung 10–20 We…»
+- Produkt: Damenstiefel mit Klotzhacke aus Nappaleder (ACTIVE, https://luxestyle.ch/products/damenstiefel-mit-klotzhacke-aus-nappaleder-639701, SKU CJ-CJNS294784301AZ) — Zuordnung: erste Zeile
+- (+ 1 Hinweis, siehe Hinweis-Liste)
+- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-14 06:39 UTC gepostet: https://www.instagram.com/p/DedwjaJjVgG/  
+  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: IG-App/PC (API-Löschen nur mit Facebook-User-Token) [Q2]
+
+### WARNUNG · Instagram bild · 2026-10-14 06:30 UTC · n/a Aufrufe
+- Post: https://www.instagram.com/stories/luxestyle.ch/4007508642131091076
+- Text: «»
+- **WARNUNG TEXT:** Beitrag ohne Text  
+  → Vorschlag: Caption ergänzen. Weg: IG-App (API ändert keine Caption) [Q2]
+
+### WARNUNG · Facebook bild · 2026-10-14 06:30 UTC · n/a Aufrufe
+- Post: https://facebook.com/122108214291350792/posts/1150424940979046
+- Text: «»
+- **WARNUNG TEXT:** Beitrag ohne Text  
+  → Vorschlag: Caption ergänzen. Weg: FB-API POST /{post-id} message=… [Q1]
+
+### WARNUNG · Pinterest pin · 2026-10-14 03:18 UTC · 0 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582969224/
+- Text: «Armbanduhr mit Herzfrequenz und Blutsauerstoff Diese Armbanduhr zeigt dir Herzfrequenz und Blutsauerstoff an, wenn du sie trägst. · CHF 53.…»
+- Produkt: Armbanduhr mit Herzfrequenz und Blutsauerstoff (ACTIVE, https://luxestyle.ch/products/armbanduhr-mit-herzfrequenz-und-blutsauerstoff-d2da5c, SKU CJ-7B78E09F-DC5D-4D83-9B5E-7) — Zuordnung: Link im Text
+- **WARNUNG PREIS:** veraltet: Caption CHF 53.90, Shop CHF 46.90 («Armbanduhr mit Herzfrequenz und Blutsauerstoff», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
+### WARNUNG · Pinterest pin · 2026-10-14 03:16 UTC · 0 Aufrufe
+- Post: https://www.pinterest.com/pin/1111333645582969114/
+- Text: «Ohrlochstech-Set mit Ohrsteckern Dieses Ohrlochstech-Set ermöglicht dir das Stechen von Ohrlöchern zu Hause. Es ist ein praktisches Werkzeu…»
+- Produkt: Ohrlochstech-Set mit Ohrsteckern (ACTIVE, https://luxestyle.ch/products/ohrlochstech-set-mit-ohrsteckern-489600, SKU CJ-1543129579886489600) — Zuordnung: Link im Text
+- **WARNUNG PREIS:** veraltet: Caption CHF 25.90, Shop CHF 22.90 («Ohrlochstech-Set mit Ohrsteckern», Zuordnung: Link im Text)  
+  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
+### WARNUNG · Instagram bild · 2026-10-14 02:31 UTC · n/a Aufrufe
+- Post: https://www.instagram.com/p/DedGguMiJIS/
+- Text: «Plüsch Schildkröte · CHF 27.90 Kleiner Schweizer Shop aus Belp, kein Konzern. Ab Schweizer Lager, Lieferdatum steht beim Artikel und in der…»
+- Produkt: Plüsch Schildkröte (ACTIVE, https://luxestyle.ch/products/plusch-schildkrote-fga83828, SKU fortura-83828) — Zuordnung: erste Zeile
+- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-14 00:32 UTC gepostet: https://www.instagram.com/p/DedGguMiJIS/  
+  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: IG-App/PC (API-Löschen nur mit Facebook-User-Token) [Q2]
+
 ### WARNUNG · Instagram bild · 2026-10-13 22:28 UTC · n/a Aufrufe
-- Post: https://www.instagram.com/stories/luxestyle.ch/4007265566620733240 · Zwilling: https://facebook.com/122108214291350792/posts/1132919076087166
+- Post: https://www.instagram.com/stories/luxestyle.ch/4007265566620733240
 - Text: «»
 - **WARNUNG TEXT:** Beitrag ohne Text  
   → Vorschlag: Caption ergänzen. Weg: IG-App (API ändert keine Caption) [Q2]
 
 ### WARNUNG · Facebook bild · 2026-10-13 22:28 UTC · n/a Aufrufe
-- Post: https://facebook.com/122108214291350792/posts/1132919076087166 · Zwilling: https://www.instagram.com/stories/luxestyle.ch/4007265566620733240
+- Post: https://facebook.com/122108214291350792/posts/1132919076087166
 - Text: «»
 - **WARNUNG TEXT:** Beitrag ohne Text  
   → Vorschlag: Caption ergänzen. Weg: FB-API POST /{post-id} message=… [Q1]
@@ -1502,34 +1628,6 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
 - Text: «»
 - **WARNUNG TEXT:** Beitrag ohne Text  
   → Vorschlag: Caption ergänzen. Weg: FB-API POST /{post-id} message=… [Q1]
-
-### WARNUNG · Pinterest pin · 2026-10-12 01:27 UTC · 0 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645582792603/
-- Text: «Bluetooth Sportuhr mit Runddisplay Diese Bluetooth Sportuhr zeigt dir Uhrzeit und Benachrichtigungen direkt am Handgelenk an. · CHF 42.90 b…»
-- Produkt: Bluetooth Sportuhr mit Runddisplay (ACTIVE, https://luxestyle.ch/products/bluetooth-sportuhr-mit-runddisplay-193216, SKU CJ-1683411165965193216) — Zuordnung: Link im Text
-- **WARNUNG PREIS:** veraltet: Caption CHF 42.90, Shop CHF 37.90 («Bluetooth Sportuhr mit Runddisplay», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-
-### WARNUNG · Pinterest pin · 2026-10-12 01:23 UTC · 0 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645582792378/
-- Text: «Weinöffner mit Luftdruckpumpe Dieser handliche Weinöffner macht das Entkorken jeder Weinflasche zum Kinderspiel. Dank der innovativen Luftd…»
-- Produkt: Weinöffner mit Luftdruckpumpe (ACTIVE, https://luxestyle.ch/products/weinoffner-mit-luftdruckpumpe-198db1, SKU CJ-0EA586E3-C468-433C-8E4E-B) — Zuordnung: Link im Text
-- **WARNUNG PREIS:** veraltet: Caption CHF 25.90, Shop CHF 22.90 («Weinöffner mit Luftdruckpumpe», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-
-### WARNUNG · Pinterest pin · 2026-10-12 01:22 UTC · 0 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645582792319/
-- Text: «F64 Smart Armbanduhr mit Bluetooth Dieses Smart Armband ist eine praktische Ergänzung für dein Handgelenk, um deine Aktivitäten im Alltag z…»
-- Produkt: F64 Smart Armbanduhr mit Bluetooth (ACTIVE, https://luxestyle.ch/products/f64-smart-armbanduhr-mit-bluetooth-318912, SKU CJ-1662721478657318912) — Zuordnung: Link im Text
-- **WARNUNG PREIS:** veraltet: Caption CHF 32.90, Shop CHF 28.90 («F64 Smart Armbanduhr mit Bluetooth», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-
-### WARNUNG · Pinterest pin · 2026-10-12 01:17 UTC · 0 Aufrufe
-- Post: https://www.pinterest.com/pin/1111333645582792149/
-- Text: «Fressnapf aus Keramik für Haustiere Dieser Fressnapf ist für die Fütterung deines Haustiers gedacht. Er eignet sich für den täglichen Gebra…»
-- Produkt: Fressnapf aus Keramik für Haustiere (ACTIVE, https://luxestyle.ch/products/fressnapf-aus-keramik-fur-haustiere-a94de9, SKU CJ-8BF112A9-BCFB-4790-91FE-8) — Zuordnung: Link im Text
-- **WARNUNG PREIS:** veraltet: Caption CHF 27.90, Shop CHF 24.90 («Fressnapf aus Keramik für Haustiere», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
 ### WARNUNG · Instagram bild · 2026-10-12 00:28 UTC · n/a Aufrufe
 - Post: https://www.instagram.com/p/DeXu4_kCkbL/
@@ -2522,7 +2620,7 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
 ### WARNUNG · Facebook bild · 2026-09-27 20:01 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122141356965350792 · Zwilling: https://www.instagram.com/p/Ddza2rvHVMo/
+- Post: https://www.facebook.com/122102579637350792/posts/122141356965350792
 - Text: «🍂 Herbst-Favorit Kapuzen-Sweatshirt-Kleid mit Gürtel · CHF 28.90 Kleiner Schweizer Shop aus Belp, kein Konzern. Lieferung 10–20 Werktage, …»
 - Produkt: Kapuzen-Sweatshirt-Kleid mit Gürtel (ACTIVE, https://luxestyle.ch/products/kapuzen-sweatshirt-kleid-mit-gurtel-604900, SKU CJ-CJLY291801901AZ) — Zuordnung: erste Zeile
 - (+ 1 Hinweis, siehe Hinweis-Liste)
@@ -2544,7 +2642,7 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
   → Vorschlag: unscharf: löschen und sauber neu posten. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
 ### WARNUNG · Facebook bild · 2026-09-25 23:08 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122140880307350792 · Zwilling: https://www.instagram.com/p/Ddumv_9lNi3/
+- Post: https://www.facebook.com/122102579637350792/posts/122140880307350792
 - Text: «🍂 Herbst-Favorit USB Aroma Diffusor mit Befeuchter · CHF 24.90 Kleiner Schweizer Shop aus Belp, kein Konzern. Lieferung 10–20 Werktage, da…»
 - Produkt: USB Aroma Diffusor mit Befeuchter (ACTIVE, https://luxestyle.ch/products/usb-aroma-diffusor-mit-befeuchter-465152, SKU CJ-1525035291772465152) — Zuordnung: erste Zeile
 - (+ 1 Hinweis, siehe Hinweis-Liste)
@@ -2569,43 +2667,43 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
 
 ## Hinweise (gesammelt)
 
-243 Hinweise in 238 Beiträgen — kein Handlungsdruck, aber Muster für die Motoren. Dazu 51 Beiträge mit generischen Reichweiten-Hashtags (#foryou #trending #fyp #viral) — die Bild-Queue ersetzt sie seit 23.09. durch Sach-Tags; bestehende Posts deswegen nicht anfassen.
+251 Hinweise in 246 Beiträgen — kein Handlungsdruck, aber Muster für die Motoren. Dazu 49 Beiträge mit generischen Reichweiten-Hashtags (#foryou #trending #fyp #viral) — die Bild-Queue ersetzt sie seit 23.09. durch Sach-Tags; bestehende Posts deswegen nicht anfassen.
 
 <details><summary>Liste</summary>
 
 | Plattform | Datum | Aufrufe | Klasse | Hinweis | Post |
 |---|---|---:|---|---|---|
-| Pinterest | 2026-09-29 | 28 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/Dd0ucPOjRpC/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645581667020/ |
-| Instagram | 2026-09-25 | 27 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/Ddumv_9lNi3/ |
-| Instagram | 2026-10-09 | 24 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DeQTc5Vipym/ |
-| Instagram | 2026-09-27 | 24 | FORMAT | Bild 1000×1000 — Breite unter 1080 | https://www.instagram.com/p/Ddza2rvHVMo/ |
+| Pinterest | 2026-09-29 | 41 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/Dd0ucPOjRpC/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645581667020/ |
+| Instagram | 2026-10-09 | 25 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DeQTc5Vipym/ |
+| Facebook | 2026-10-05 | 22 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122143702881350792 |
 | Instagram | 2026-09-30 | 21 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/Dd5qYj2AKyw/ |
 | Instagram | 2026-10-09 | 19 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DeRnDOrCJjU/ |
 | Instagram | 2026-10-13 | 18 | FORMAT | Bild 1000×1000 — Breite unter 1080 | https://www.instagram.com/p/DebzXSjCNR9/ |
 | Instagram | 2026-10-10 | 18 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DeS_HKKiGnr/ |
 | Instagram | 2026-10-09 | 18 | DOPPEL | gleiche Warengruppe «diffuser» 6 h nach https://www.instagram.com/reel/DeRyvAYjoHV/ (Raster wirkt doppelt) | https://www.instagram.com/reel/DeSbdrIDCs2/ |
-| Instagram | 2026-09-26 | 18 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DdvW8OwFLBZ/ |
-| Facebook | 2026-10-05 | 18 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122143702881350792 |
 | Instagram | 2026-10-03 | 17 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DeBKvd7jhgS/ |
 | Instagram | 2026-10-01 | 17 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/Dd8c9kQkWlV/ |
 | Instagram | 2026-10-06 | 16 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DeJQ7fniEOK/ |
+| Instagram | 2026-10-13 | 15 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DebJMZ_iNbe/ |
 | Instagram | 2026-10-03 | 15 | FORMAT | Bild 1000×1000 — Breite unter 1080 | https://www.instagram.com/p/DeB0D9QldRF/ |
 | Instagram | 2026-09-30 | 15 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/Dd6UQDolC60/ |
+| Instagram | 2026-10-07 | 14 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DeMPyrgDSTK/ |
 | Instagram | 2026-09-29 | 14 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/Dd2wskBlPZN/ |
-| Instagram | 2026-10-13 | 13 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DebJMZ_iNbe/ |
 | Instagram | 2026-10-07 | 13 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DeM6_g-CGPE/ |
+| Pinterest | 2026-09-29 | 13 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/Dd2CntDjDZs/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645581667027/ |
+| Instagram | 2026-10-10 | 12 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DeTrzCDiAqr/ |
 | Instagram | 2026-10-06 | 12 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DeKOacViqwo/ |
+| Instagram | 2026-10-14 | 11 | FORMAT | Bild 1079×984 — Breite unter 1080 | https://www.instagram.com/p/Deeai7xiIFW/ |
 | Instagram | 2026-09-28 | 11 | FORMAT | Bild 720×964 — Breite unter 1080 | https://www.instagram.com/p/Dd0ucPOjRpC/ |
-| Instagram | 2026-10-10 | 10 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DeTrzCDiAqr/ |
-| Instagram | 2026-10-07 | 10 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DeMPyrgDSTK/ |
 | Instagram | 2026-10-03 | 10 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DeCfMMDjHDg/ |
+| Instagram | 2026-10-14 | 9 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DedwjaJjVgG/ |
 | Instagram | 2026-10-02 | 9 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DeAcgz8DcUF/ |
 | Instagram | 2026-10-08 | 8 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DeORyZ1CMY-/ |
 | Instagram | 2026-10-02 | 8 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/Dd_IenVDLiC/ |
+| Instagram | 2026-10-13 | 7 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/Decc3rbiHnM/ |
+| Instagram | 2026-10-06 | 7 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DeJyx5GCAz9/ |
 | Instagram | 2026-10-08 | 6 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DePmCTTFQxD/ |
-| Instagram | 2026-10-06 | 6 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DeJyx5GCAz9/ |
 | Facebook | 2026-09-23 | 6 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122140069977350792 |
-| Pinterest | 2026-09-29 | 6 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/Dd2CntDjDZs/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645581667027/ |
 | Facebook | 2026-09-23 | 5 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122140221003350792 |
 | Facebook | 2026-09-03 | 5 | FORMAT | Bild 1000×1000 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) (Medium 1/8) | https://www.facebook.com/122102579637350792/posts/122135105943350792 |
 | Facebook | 2026-09-03 | 5 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) (Medium 3/8) | https://www.facebook.com/122102579637350792/posts/122135105943350792 |
@@ -2613,19 +2711,23 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
 | Facebook | 2026-09-03 | 5 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) (Medium 5/8) | https://www.facebook.com/122102579637350792/posts/122135105943350792 |
 | Facebook | 2026-09-03 | 5 | FORMAT | Bild 1024×1024 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) (Medium 6/8) | https://www.facebook.com/122102579637350792/posts/122135105943350792 |
 | Facebook | 2026-09-03 | 5 | FORMAT | Bild 888×888 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) (Medium 7/8) | https://www.facebook.com/122102579637350792/posts/122135105943350792 |
+| Pinterest | 2026-09-25 | 5 | DIREKTLINK | Pin verlinkt https://www.instagram.com/reel/Ddsmdr2CdwM/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645581314558/ |
 | Pinterest | 2026-09-23 | 5 | DIREKTLINK | Pin verlinkt https://www.instagram.com/reel/DdmhRxtjUIZ/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645581153922/ |
-| Instagram | 2026-10-13 | 4 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/Decc3rbiHnM/ |
+| Pinterest | 2026-10-03 | 4 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/DeAcgz8DcUF/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582005057/ |
 | Pinterest | 2026-10-01 | 4 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/Dd7DUIujzrT/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645581833288/ |
-| Pinterest | 2026-09-25 | 4 | DIREKTLINK | Pin verlinkt https://www.instagram.com/reel/Ddsmdr2CdwM/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645581314558/ |
+| Pinterest | 2026-09-26 | 4 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/Ddumv_9lNi3/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645581395389/ |
 | Facebook | 2026-10-06 | 3 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122143921845350792 |
+| Pinterest | 2026-10-03 | 3 | DIREKTLINK | Pin verlinkt https://www.instagram.com/reel/Dd_ywlfoMaE/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582005286/ |
 | Pinterest | 2026-10-01 | 3 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/Dd5qYj2AKyw/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645581833286/ |
 | Pinterest | 2026-09-30 | 3 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/Dd3g5S9FA18/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645581751252/ |
-| Pinterest | 2026-09-26 | 3 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/Ddumv_9lNi3/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645581395389/ |
+| Instagram | 2026-10-14 | 2 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DefHK6SCiaY/ |
 | Facebook | 2026-09-30 | 2 | FORMAT | Bild 750×750 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122142095595350792 |
 | Facebook | 2026-09-30 | 2 | FORMAT | Bild 900×900 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122141997921350792 |
 | Facebook | 2026-09-29 | 2 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122141690895350792 |
-| Pinterest | 2026-10-03 | 2 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/DeAcgz8DcUF/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582005057/ |
+| Pinterest | 2026-10-11 | 2 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/DeVdFD2iN9N/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582710626/ |
+| Pinterest | 2026-10-03 | 2 | DIREKTLINK | Pin verlinkt https://www.instagram.com/reel/Dd-695XlAkF/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582006191/ |
 | Pinterest | 2026-10-01 | 2 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/Dd7zdhfFDPa/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645581833289/ |
+| Pinterest | 2026-09-23 | 2 | DIREKTLINK | Pin verlinkt https://www.instagram.com/reel/DdnatlxD0nV/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645581152467/ |
 | Facebook | 2026-10-06 | 1 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122143842081350792 |
 | Facebook | 2026-10-03 | 1 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122143004745350792 |
 | Facebook | 2026-10-03 | 1 | FORMAT | Bild 1000×1000 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122142918267350792 |
@@ -2637,6 +2739,7 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
 | Pinterest | 2026-10-11 | 1 | DIREKTLINK | Pin verlinkt https://www.instagram.com/reel/DeUePPLEcKR/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582711512/ |
 | Pinterest | 2026-10-11 | 1 | DIREKTLINK | Pin verlinkt https://www.instagram.com/reel/DeTnSaJDaDU/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582711404/ |
 | Pinterest | 2026-10-11 | 1 | DIREKTLINK | Pin verlinkt https://www.instagram.com/reel/DeVwqBeilD9/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582711133/ |
+| Pinterest | 2026-10-11 | 1 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/DeTrzCDiAqr/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582710624/ |
 | Pinterest | 2026-10-10 | 1 | DIREKTLINK | Pin verlinkt https://www.instagram.com/reel/DeRyvAYjoHV/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582613582/ |
 | Pinterest | 2026-10-10 | 1 | DIREKTLINK | Pin verlinkt https://www.instagram.com/reel/DeRCgwZiMNx/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582613534/ |
 | Pinterest | 2026-10-10 | 1 | DIREKTLINK | Pin verlinkt https://www.instagram.com/reel/DeSbdrIDCs2/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582613528/ |
@@ -2649,9 +2752,7 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
 | Pinterest | 2026-10-04 | 1 | DIREKTLINK | Pin verlinkt https://www.instagram.com/reel/DeBrflzjQ2Z/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582098666/ |
 | Pinterest | 2026-10-04 | 1 | DIREKTLINK | Pin verlinkt https://www.instagram.com/reel/DeCj3d4ggAV/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582097301/ |
 | Pinterest | 2026-10-04 | 1 | DIREKTLINK | Pin verlinkt https://www.instagram.com/reel/DeDo7wrlPRO/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582097098/ |
-| Pinterest | 2026-10-03 | 1 | DIREKTLINK | Pin verlinkt https://www.instagram.com/reel/Dd-695XlAkF/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582006191/ |
 | Pinterest | 2026-10-03 | 1 | DIREKTLINK | Pin verlinkt https://www.instagram.com/reel/DeAx76wEZSU/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582005789/ |
-| Pinterest | 2026-10-03 | 1 | DIREKTLINK | Pin verlinkt https://www.instagram.com/reel/Dd_ywlfoMaE/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582005286/ |
 | Pinterest | 2026-10-03 | 1 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/DeAY2AIH1i3/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582005059/ |
 | Pinterest | 2026-10-03 | 1 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/DeBKvd7jhgS/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582005058/ |
 | Pinterest | 2026-10-03 | 1 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/Dd_IenVDLiC/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582005056/ |
@@ -2669,7 +2770,6 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
 | Pinterest | 2026-09-27 | 1 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/DdvW8OwFLBZ/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645581487082/ |
 | Pinterest | 2026-09-25 | 1 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/DdqcqhXm4wX/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645581314388/ |
 | Pinterest | 2026-09-24 | 1 | DIREKTLINK | Pin verlinkt https://www.instagram.com/reel/DdoSCmhkuU7/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645581236221/ |
-| Pinterest | 2026-09-23 | 1 | DIREKTLINK | Pin verlinkt https://www.instagram.com/reel/DdnatlxD0nV/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645581152467/ |
 | Pinterest | 2026-09-23 | 1 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/DdnNSHEDMja/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645581152144/ |
 | Facebook | 2026-10-09 | 0 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122144834175350792 |
 | Facebook | 2026-10-09 | 0 | FORMAT | Bild 750×750 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122144664459350792 |
@@ -2739,6 +2839,14 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
 | Instagram | 2026-10-13 | n/a | FORMAT | Bild 1000×1000 — Breite unter 1080 | https://www.instagram.com/p/DebzXSjCNR9/ |
 | Instagram | 2026-10-13 | n/a | FORMAT | Bild 800×800 — Breite unter 1080 | https://www.instagram.com/p/Decc3rbiHnM/ |
 | Pinterest | 2026-10-14 | n/a | FORMAT | Bild 1000×1400 — Breite unter 1080 | https://www.pinterest.es/pin/1111333645582952604 |
+| Instagram | 2026-10-14 | n/a | FORMAT | Bild 800×800 — Breite unter 1080 | https://www.instagram.com/p/DedwjaJjVgG/ |
+| Instagram | 2026-10-14 | n/a | FORMAT | Bild 800×800 — Breite unter 1080 | https://www.instagram.com/p/DefHK6SCiaY/ |
+| Pinterest | 2026-10-14 | 0 | DIREKTLINK | Pin verlinkt https://www.instagram.com/reel/DecNTqiFIRn/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582973327/ |
+| Pinterest | 2026-10-14 | 0 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/DedSQZwiCEQ/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582973182/ |
+| Pinterest | 2026-10-14 | 0 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/DedGguMiJIS/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582973181/ |
+| Pinterest | 2026-10-14 | 0 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/DebzXSjCNR9/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582973177/ |
+| Pinterest | 2026-10-14 | 0 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/Decc3rbiHnM/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582973178/ |
+| Pinterest | 2026-10-14 | 0 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/DebJMZ_iNbe/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582973176/ |
 | Pinterest | 2026-10-13 | 0 | DIREKTLINK | Pin verlinkt https://www.instagram.com/reel/DeZoLVmm3d9/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582887134/ |
 | Pinterest | 2026-10-13 | 0 | DIREKTLINK | Pin verlinkt https://www.instagram.com/reel/DeYw4c8jyf2/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582886819/ |
 | Pinterest | 2026-10-13 | 0 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/Deam-qLCtFY/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582886532/ |
@@ -2750,9 +2858,7 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
 | Pinterest | 2026-10-12 | 0 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/DeYB53qCntC/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582803226/ |
 | Pinterest | 2026-10-12 | 0 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/DeXu4_kCkbL/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582803222/ |
 | Pinterest | 2026-10-12 | 0 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/DeXESdoiK14/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582803221/ |
-| Pinterest | 2026-10-11 | 0 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/DeVdFD2iN9N/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582710626/ |
 | Pinterest | 2026-10-11 | 0 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/DeUWqhPijlX/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582710625/ |
-| Pinterest | 2026-10-11 | 0 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/DeTrzCDiAqr/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582710624/ |
 | Pinterest | 2026-10-09 | 0 | DIREKTLINK | Pin verlinkt https://www.instagram.com/reel/DeOd84ij9XP/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582527656/ |
 | Pinterest | 2026-10-09 | 0 | DIREKTLINK | Pin verlinkt https://www.instagram.com/reel/DePxs6iiEY9/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582527565/ |
 | Pinterest | 2026-10-09 | 0 | DIREKTLINK | Pin verlinkt https://www.instagram.com/reel/DePVOL1iMvu/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582527228/ |
@@ -2823,7 +2929,7 @@ Dazu: 34 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Pr
 
 ## Facebook ohne Direktlink
 
-Auf Facebook ist ein Link in der Beschreibung klickbar; «Link in Bio» verschenkt dort den Klick. 34 Beiträge ohne `luxestyle.ch/products/…`. Vorschlag: künftige FB-Beiträge mit Produktlink (Poster), bestehende nur bei Beiträgen mit Reichweite nachtragen — Weg: FB-API POST /{post-id} message=… [Q1]
+Auf Facebook ist ein Link in der Beschreibung klickbar; «Link in Bio» verschenkt dort den Klick. 37 Beiträge ohne `luxestyle.ch/products/…`. Vorschlag: künftige FB-Beiträge mit Produktlink (Poster), bestehende nur bei Beiträgen mit Reichweite nachtragen — Weg: FB-API POST /{post-id} message=… [Q1]
 
 <details><summary>Liste</summary>
 
@@ -2861,13 +2967,16 @@ Auf Facebook ist ein Link in der Beschreibung klickbar; «Link in Bio» verschen
 - 2026-10-13 06:13 UTC · n/a Aufrufe · https://facebook.com/122108214291350792/posts/2016723762361517 · «»
 - 2026-10-13 14:25 UTC · n/a Aufrufe · https://facebook.com/122108214291350792/posts/1886878665627199 · «»
 - 2026-10-13 22:28 UTC · n/a Aufrufe · https://facebook.com/122108214291350792/posts/1132919076087166 · «»
+- 2026-10-14 06:30 UTC · n/a Aufrufe · https://facebook.com/122108214291350792/posts/1150424940979046 · «»
+- 2026-10-14 14:45 UTC · n/a Aufrufe · https://facebook.com/122108214291350792/posts/1105629988875784 · «»
+- 2026-10-14 22:59 UTC · n/a Aufrufe · https://facebook.com/122108214291350792/posts/1033832376365374 · «»
 
 </details>
 
 ## Nicht prüfbar
 
 - Preis ohne sichere Produktzuordnung (14): https://www.instagram.com/p/DebzXSjCNR9/ · https://www.instagram.com/p/DeRnDOrCJjU/ · https://www.instagram.com/p/Dd5qYj2AKyw/ · https://www.instagram.com/p/Dd0EM26kdvw/ · https://www.facebook.com/122102579637350792/posts/122140221003350792 · https://www.facebook.com/122102579637350792/posts/122135105943350792 · https://www.tiktok.com/@luxestyle.ch/video/7691427221021527329 · https://www.tiktok.com/@luxestyle.ch/video/7691432399791476000 · https://www.tiktok.com/@luxestyle.ch/video/7691437492066733344 · https://www.instagram.com/p/DeRnDOrCJjU/ · (geplant, Metricool 393520121) · (geplant, Metricool 393520246) · (geplant, Metricool 393520277) · https://www.instagram.com/p/DebzXSjCNR9/
-- Medien nicht messbar (3): https://www.pinterest.es/pin/1111333645581220663 (Download gescheitert) · (geplant, Metricool 393176017) (Download gescheitert) · (geplant, Metricool 393176023) (Download gescheitert)
+- Medien nicht messbar (4): https://www.facebook.com/reel/1684116469801173/ (Download gescheitert) · https://www.pinterest.es/pin/1111333645581220663 (Download gescheitert) · (geplant, Metricool 393176017) (Download gescheitert) · (geplant, Metricool 393176023) (Download gescheitert)
 - TikTok/YouTube: Format und Ton werden an der hochgeladenen Datei gemessen (Repo `social/reels/` bzw. Metricool-Medium), nicht an der Plattform-Fassung.
 
 ## Was per API ginge — Quellen (abgerufen 23.09.2026)
