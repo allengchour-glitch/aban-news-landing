@@ -9699,3 +9699,16 @@ kinder-make-up-set-630800	2605240822201631400	3	10.98	ok	landeseite
 apricot-peach-rouge-625400	2605130308191626100	3	5.00	ok	landeseite
 casual-sport-hoodie-mit-abgeflachten-schultern-622000	2606150534411624800	16	7.43	ok	landeseite
 einweg-stickereinlagen-mit-dicker-baumwoll-pol-602900	2605080342371603400	16	8.11	ok	landeseite
+kapuzen-sweatshirt-mit-dicker-polsterung-619000	2605200818021619700	16	13.46	ok	landeseite
+wimpern-lift-kit-auf-pflanzenbasis-617600	2605060647061618100	3	5.53	ok	landeseite
+einfarbiges-pullover-fur-damen-601500	2605200811551602100	16	10.15	ok	landeseite
+abdeckstift-fur-ein-strahlendes-gesicht-625900	2604300246381626500	3	5.37	ok	landeseite
+holzblumentopf-mit-getrockneten-blumen-778176	1744922086042247168	16	6.48	ok	landeseite
+temperaturregulierende-sonnencreme-foundation-630400	2604300237251630900	3	6.41	ok	landeseite
+digitale-olgemalde-rose-362560	1723520929394860032	3	6.18	ok	landeseite
+zweifarbige-kompaktpuder-615100	2604290750591615600	3	6.45	ok	landeseite
+mandala-vorlage-fur-wandmalerei-182144	1719537624362262528	16	5.69	ok	landeseite
+handgemalte-farbolmalerei-949504	1714924295224299520	3	9.86	ok	landeseite
+casual-sports-hoodie-611900	2605060258431612500	16	8.11	ok	landeseite
+tagliche-funkelnde-augen-make-up-palette-603500	2603231150041603900	1	6.16	ok	landeseite
+sparkling-augen-schatten-620600	2602010604381621000	3	5.30	ok	landeseite
