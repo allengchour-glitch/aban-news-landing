@@ -18,25 +18,11 @@ Suchverkehr ist der einzige Kanal, der in diesem Shop verkauft. Ein Ratgeber, de
 | [Gaming-Zubehör 2026: Maus, Headset & Tastatur richtig auswäh](/blogs/ratgeber/gaming-zubehoer-2026-maus-headset-tastatur) | 0 |
 | [Fitness zuhause 2026: Die richtige Ausrüstung für dein Heimt](/blogs/ratgeber/fitness-zuhause-2026-heimtraining-ausruestung) | 0 |
 | [Bartpflege & Rasur 2026: Der komplette Ratgeber für gepflegt](/blogs/ratgeber/bartpflege-rasur-2026-ratgeber) | 0 |
-| [Bar & Wein zuhause 2026: Stilvoll geniessen & servieren](/blogs/ratgeber/bar-wein-zuhause-2026-ratgeber) | 0 |
-| [Auto-Zubehör 2026: Mehr Ordnung & Komfort im Fahrzeug](/blogs/ratgeber/auto-zubehoer-2026-ratgeber) | 0 |
-| [Parfum kaufen 2026: Eau de Parfum, Toilette & Duftnoten vers](/blogs/ratgeber/parfum-kaufen-2026-duftnoten-ratgeber) | 0 |
-| [Trainingsanzug & Jogging-Set 2026: Bequem & stylish für Spor](/blogs/ratgeber/trainingsanzug-jogging-set-2026-ratgeber) | 0 |
-| [Damenmode-Basics 2026: Die Teile, die in keinem Kleiderschra](/blogs/ratgeber/damenmode-basics-2026-kleiderschrank) | 0 |
 | [Markenprodukte günstig kaufen 2026: So erkennst du echte Qua](/blogs/ratgeber/markenprodukte-guenstig-kaufen-2026) | 0 |
-| [Schmuck verschenken 2026: Geschenkideen mit Bedeutung](/blogs/ratgeber/schmuck-verschenken-2026-geschenkideen) | 0 |
-| [Schuhe richtig pflegen & auswählen 2026: Länger schön & bequ](/blogs/ratgeber/schuhe-pflegen-auswaehlen-2026) | 0 |
-| [Socken & Strümpfe 2026: Material, Komfort & Pflege](/blogs/ratgeber/socken-struempfe-2026-ratgeber) | 0 |
-| [Damenuhren 2026: Elegante Uhren für jeden Anlass](/blogs/ratgeber/damenuhren-2026-elegante-uhren-ratgeber) | 0 |
-| [Powerbank kaufen 2026: Kapazität, Schnellladen & Grösse](/blogs/ratgeber/powerbank-kaufen-2026-ratgeber) | 0 |
-| [Smartwatch Damen 2026: Elegant & smart fürs Handgelenk](/blogs/ratgeber/smartwatch-damen-2026-ratgeber) | 0 |
 | [Wasserfester Schmuck 2026: Duschen, Schwimmen & Sport ohne A](/blogs/ratgeber/wasserfester-schmuck-2026-ratgeber) | 0 |
 | [Personalisierte Geschenke 2026: Mit Namen, Foto & eigenem De](/blogs/ratgeber/personalisierte-geschenke-2026-selbst-gestalten) | 0 |
 | [Schweizer Geschenke & Mitbringsel 2026: Von Edelweiss bis Ma](/blogs/ratgeber/schweizer-geschenke-mitbringsel-2026) | 0 |
-| [Parfum finden: EdP vs. EdT & die 4 Duftfamilien – der Ratgeb](/blogs/ratgeber/parfum-finden-edp-vs-edt-die-4-duftfamilien-der-ratgeber) | 0 |
-| [Nägel & Maniküre zuhause: UV-Lampe, Press-on & Polygel – der](/blogs/ratgeber/nagel-manikure-zuhause-uv-lampe-press-on-polygel-der-anfanger-ratgeber) | 0 |
 | [Magnetische Wimpern & Cluster-Lashes auftragen: Schritt für ](/blogs/ratgeber/magnetische-wimpern-cluster-lashes-auftragen-schritt-fur-schritt) | 0 |
-| [Werkzeug-Grundausstattung: Was jeder Haushalt & Heimwerker b](/blogs/ratgeber/werkzeug-grundausstattung-was-jeder-haushalt-heimwerker-braucht) | 0 |
 | [3D-Drucker kaufen: der grosse Einsteiger-Ratgeber 2026](/blogs/ratgeber/3d-drucker-kaufen-der-grosse-einsteiger-ratgeber-2026) | 0 |
 | [PLA, PETG oder Resin? Das richtige Filament finden](/blogs/ratgeber/pla-petg-oder-resin-das-richtige-filament-finden) | 0 |
 | [3D-Stifte für Kinder & Kreative: worauf achten?](/blogs/ratgeber/3d-stifte-fur-kinder-kreative-worauf-achten) | 0 |

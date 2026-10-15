@@ -1,0 +1,23 @@
+{
+ "_zweck": "Welche Dateien in dropship/ Ledger sind (nur anhängen) — gelesen von automation/ledger_schrumpf_tor.py. 15.10.2026.",
+ "_gemessen": "14 T Verlauf (git log --numstat): 38 Schrumpf-Ereignisse ≥ 200 Zeilen. Absichtlich: _klassen/* (Listen werden je Lauf neu gebaut, 19×) und _bewertungen_prio.txt (Prioritätsliste, 14×). Unfälle: _cj_lager.tsv 58'834→198 und _cj_nachpruefung.tsv 8'842→10 (15.10. 00:21), _versand_jenachland.txt 14'403→1'452 (02.10., Konfliktmarker-Bereinigung).",
+ "muster": [
+  "dropship/*.tsv",
+  "dropship/*.txt",
+  "dropship/*.jsonl",
+  "dropship/*/*.tsv",
+  "dropship/*/*.txt",
+  "dropship/*/*.jsonl"
+ ],
+ "ausgenommen": [
+  "dropship/_klassen/*",
+  "dropship/_bewertungen_prio.txt",
+  "dropship/*cursor*",
+  "dropship/*_stand*",
+  "dropship/semrush/*"
+ ],
+ "_ausgenommen_warum": "Neu gebaute Listen und Zustände dürfen schrumpfen. Neue Ausnahme nur mit Beleg (welcher Schreiber baut die Datei neu?) und Eintrag hier.",
+ "min_verlust": 200,
+ "anteil": 0.5,
+ "_schwelle_warum": "Geheilt wird nur, wenn mindestens 200 Zeilen UND mehr als die Hälfte fehlen. Kleinere Kürzungen (bewusstes Entfernen einzelner Quittungen, z. B. cj-ohne-antwort) bleiben unberührt."
+}

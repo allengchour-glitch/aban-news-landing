@@ -18,6 +18,8 @@ if [ -d .git/rebase-merge ] || [ -d .git/rebase-apply ]; then git rebase --quit 
 if [ -f .git/MERGE_HEAD ] || [ -n "$(git ls-files -u)" ]; then aufloesen || exit 1; fi
 [ $# -gt 0 ] && git add -- "$@"
 git add -A dropship/ 2>/dev/null
+# 15.10.2026: Ledger-Schrumpf-Tor — _cj_lager.tsv ging hier am 15.10. mit 58'834 → 198 Zeilen durch (Commit ab536a2f1).
+python3 "$REPO/automation/ledger_schrumpf_tor.py" --staged >> /tmp/ledger_schrumpf.log 2>&1 || true
 # Zuschreibung (Vorgabe der Sitzung, 23.09.2026) — als Trailer, damit die erste Zeile die Nachricht bleibt.
 ZU="${GIT_ZUSCHREIBUNG:-Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
 Claude-Session: https://claude.ai/code/session_01MCYpvsTg9cwVa1SwQZ39f3}"

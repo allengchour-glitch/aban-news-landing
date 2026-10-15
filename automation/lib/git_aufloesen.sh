@@ -11,10 +11,16 @@ aufloesen() {
         git checkout --ours -- "$f" 2>/dev/null || git checkout --theirs -- "$f" ;;
       dropship/*.txt|dropship/*.tsv|dropship/*.jsonl|dropship/*/*.txt)
         b=$(mktemp); o=$(mktemp); t=$(mktemp)
-        git show ":1:$f" > "$b" 2>/dev/null || : > "$b"
-        git show ":2:$f" > "$o" 2>/dev/null || : > "$o"
-        git show ":3:$f" > "$t" 2>/dev/null || : > "$t"
-        git merge-file --union "$o" "$b" "$t"; cp "$o" "$f"; rm -f "$b" "$o" "$t" ;;
+        # 15.10.2026: Fehlt eine Seite (geändert/gelöscht, oder ein anderer Prozess hat schon aufgelöst), wurde sie bisher
+        # als LEERE Datei vereinigt und das Ergebnis über das Ledger kopiert. Jetzt: nur mit beiden Seiten vereinigen,
+        # sonst die vorhandene Seite nehmen — nie eine leere Fassung schreiben.
+        if git show ":2:$f" > "$o" 2>/dev/null && git show ":3:$f" > "$t" 2>/dev/null; then
+          git show ":1:$f" > "$b" 2>/dev/null || : > "$b"
+          git merge-file --union "$o" "$b" "$t"; cp "$o" "$f"
+        else
+          git checkout --ours -- "$f" 2>/dev/null || git checkout --theirs -- "$f" 2>/dev/null || true
+        fi
+        rm -f "$b" "$o" "$t" ;;
       *)
         echo "$(date -u +%H:%M) Konflikt ausserhalb der Ledger ($f) — abgebrochen"
         [ -f .git/MERGE_HEAD ] && git merge --abort
@@ -22,6 +28,8 @@ aufloesen() {
     esac
     git add -- "$f"
   done
+  # 15.10.2026: Ledger-Schrumpf-Tor auch vor dem Merge-Commit (Vergleich gegen HEAD UND MERGE_HEAD).
+  [ -f .git/MERGE_HEAD ] && python3 "$(git rev-parse --show-toplevel)/automation/ledger_schrumpf_tor.py" --merge >> /tmp/ledger_schrumpf.log 2>&1
   [ -f .git/MERGE_HEAD ] && git commit -q --no-edit 2>/dev/null
   return 0
 }
