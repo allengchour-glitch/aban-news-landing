@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-14 22:53 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-15 00:21 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1471 · **1403 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1200, teilweise: 170, keine: 33; Preisspanne > 2×: 165) · 1 CJ-Variante: 66 · ohne Antwort: 2
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1445 · **1377 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1175, teilweise: 170, keine: 32; Preisspanne > 2×: 163) · 1 CJ-Variante: 66 · ohne Antwort: 2
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -312,10 +312,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Damen Armreif mit Strass-Besatz (`damen-armreif-mit-strass-besatz-633800`) | 12 | 12 | 14.59–15.16 | 35.90 | Blue-5.7cm diameter, Blue-6.2cm diameter, Color-5.7cm diameter, Color-6.2cm diameter |
 | Geometrischer Kissenbezug aus Baumwolle, bestickt (`geometrischer-kissenbezug-aus-baumwolle-bestic-457792`) | 12 | 12 | 3.51–3.51 | 22.90 | as shown-A-45x45cm, as shown-B-45x45cm, as shown-C-45x45cm, as shown-D-45x45cm |
 | Lammfell-Aufbewahrungseimer mit Cartoon-Motiv (`lammfell-aufbewahrungseimer-mit-cartoon-motiv-604000`) | 12 | 12 | 2.21–4.16 | 21.90 | White 35X39cm, Brown 26 X26cm, Brown 35 X39cm, White 26X26cm |
-| Edelstahl-Napf für Hunde & Katzen (`edelstahl-napf-fur-hunde-katzen-743168`) | 12 | 12 | 3.37–7.67 | 34.90 | Yellow-S, Yellow-M, Yellow-L, Blue-S |
-| Retro Motorrad-Satteltasche (`retro-motorrad-satteltasche-602200`) | 12 | 12 | 9.34–9.34 | 29.90 | FBG321BK, FBG395BK, FBG344BK, FBG375BK |
 | Minimalistisches Armband mit Kette (`minimalistisches-armband-mit-kette-600300`) | 12 | 12 | 3.09–3.73 | 22.90 | 18inch-7inch, 20inch-7inch, 22inch-7inch, 24inch-7inch |
-| Niedliches Schleifen-Geschirr für Welpen (`niedliches-schleifen-geschirr-fur-welpen-616500`) | 12 | 12 | 7.05–8.37 | 26.90 | Pink-S, Pink-M, Pink-L, Pink-XL |
 | Edelstahl Futternapf für Hunde (`edelstahl-futternapf-fur-hunde-702592`) | 12 | 12 | 6.33–7.53 | 25.90 | White-32oz, White-64oz, Blue-32oz, Blue-64oz |
 | Automatische LED-Hundeleine für Nachtsicherheit (`automatische-led-hundeleine-fur-nachtsicherhei-2a923a`) | 12 | 12 | 6.1–8.04 | 25.90 | Yellow-5m, Red No logo-3m, Red No logo-5m, White No logo-3m |
 | Alice Wonderland aufklebbare Nägel (`alice-wonderland-aufklebbare-nagel-669824`) | 12 | 12 | 2.41–2.41 | 21.90 | Short Ladder-Extra Small XS, Short Ladder-Small Size S, Short Ladder-Medium M, Short Ladder-Large L |
@@ -440,10 +437,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Faltbarer Reise-Wasserkocher mit 0.6 L (`faltbarer-reise-wasserkocher-mit-0-6-l-623600`) | 9 | 9 | 2.99–7.21 | 22.90 | White-EU, White-US, White-UK, Pink-EU |
 | Siegellack-Geschenkset (`siegellack-geschenkset-745856`) | 9 | 9 | 3.81–3.81 | 23.90 | A, B, C, D |
 | Grosse isolierte Umhängetasche (`grosse-isolierte-umhangetasche-616700`) | 9 | 9 | 3.35–4.28 | 22.90 | Black Without Logo, Dark Blue Peony, Gray, Navy Blue |
-| Hundeleine und Geschirr Set (`hundeleine-und-geschirr-set-536320`) | 9 | 9 | 2.93–2.93 | 22.90 | Pink-S, Pink-M, Pink-L, Blue-S |
-| Hai Plüschkissen (`hai-pluschkissen-81ce3d`) | 9 | 9 | 2.23–5.74 | 21.90 | Pink-50cm, Pink-100cm, Pink-75cm, Blue-75cm |
-| Hundegeschirr mit Leine, bedruckt (`hundegeschirr-mit-leine-bedruckt-613500`) | 9 | 9 | 2.93–4.48 | 22.90 | Blue-M, Blue-L, Blue-XL, Pink-M |
-| Doppelführleine für Hunde (`doppelfuhrleine-fur-hunde-805440`) | 9 | 9 | 4.66–6.93 | 24.90 | Black-S, Black-M, Black-L, Orange-S |
 | Keramik-Servierplatte «New Bohemian» (`keramik-servierplatte-new-bohemian-604500`) | 9 | 9 | 3.76–6.92 | 23.90 | Orange Persian 10 Inches, Blue Persia 10 Inches, Green Persia 10 Inches, Baroque 10 Inches |
 | Multifunktionale Bluetooth-Uhr mit Schrittzähler (`multifunktionale-bluetooth-pedometer-uhr-865920`) | 9 | 9 | 6.48–6.48 | 16.90 | All Black, Black Gold, Black Rose Gold, Haze blue |
 | Schwarzer Strickschal aus Wolle – 230 × 20 cm (`schwarzer-strickschal-aus-wolle-230-20-cm-616900`) | 9 | 9 | 2.99–2.99 | 16.90 | Red, Black, Wine Red, Light Blue |
@@ -538,11 +531,8 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Metall Wasserhahn-Filteraufsatz (`metall-wasserhahn-filteraufsatz-130552`) | 8 | 8 | 7.3–7.6 | 27.90 | M20 fine Inside-Silver, M24 Fine outer-Silver, M20 Crude Inside-Silver, M18 Inside-Silver |
 | Edelstahl-Armband für Smartwatches (`edelstahl-armband-fur-smartwatches-412608`) | 8 | 8 | 3.08–3.08 | 22.90 | Silver-38or40mm, Silver-42or44mm, Gold-38or40mm, Gold-42or44mm |
 | Wasserdichter Wanderrucksack (`wasserdichter-wanderrucksack-621300`) | 8 | 8 | 4.04–4.04 | 23.90 | Black, Gray, Blue, Green |
-| Unicorn Sternenhimmel Quarzuhr (`unicorn-sternenhimmel-quarzuhr-860352`) | 8 | 8 | 17.88–17.88 | 38.90 | Blue, Purple, Red, Wine Red |
 | Herren Ring aus Edelstahl mit Schlangen-Design (`herren-ring-aus-edelstahl-mit-schlangen-design-616400`) | 8 | 8 | 2.63–2.63 | 21.90 | Steel Color-No 6, Steel Color-No 7, Steel Color-No 8, Steel Color-No 9 |
 | Halteseil für Haustiere (`halteseil-fur-haustiere-607300`) | 8 | 8 | 2.9–2.9 | 22.90 | Mint Green, Grape Purple, Minute Maid, Sea Salt Blue |
-| Lammfell-Leine mit Tier-Design (`lammfell-leine-mit-tier-design-620700`) | 8 | 8 | 2.07–2.37 | 21.90 | White-S, White-M, White-L, White-XL |
-| Halsband & Leine Set mit Spitze & Schleife (`halsband-leine-set-mit-spitze-schleife-606400`) | 8 | 8 | 3.53–3.99 | 22.90 | Green Cream Lace-Small Size, Green Cream Lace-Large Size, Yellow Cream Lace-Small Size, Yellow Cream Lace-Large Size |
 | Halsband- und Leinen-Set mit Schleife (`halsband-und-leinen-set-mit-schleife-532096`) | 8 | 8 | 4.17–9.07 | 23.90 | Blue-Collar-S, Blue-Collar-M, Blue-Collar and Leash-S, Blue-Collar and Leash-M |
 | Spiegelkasten-Seitenregal, 3er- oder 4er-Set (`spiegelkasten-seitenregal-3er-oder-4er-set-620300`) | 8 | 8 | 3.63–4.25 | 28.90 | Elegant Black-Three Baskets, Elegant Black-Four Baskets, Elegant White-Three Baskets, Elegant White-Four Baskets |
 | Armband mit Zirkonia und Hufeisen-Schnalle (`armband-mit-zirkonia-und-hufeisen-schnalle-637800`) | 8 | 8 | 5.77–6.27 | 25.90 | Golden White Zirconium, White White Zircon, Golden Pink Zircon, Golden Green Zirconium |
@@ -721,12 +711,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Teigmatte aus Edelstahl (`teigmatte-aus-edelstahl-632300`) | 6 | 6 | 4.12–8.68 | 36.90 | 30X40cm -1.5mm, 30X40cm -2.0mm, 40X50cm -1.5mm, 40X50cm -2.0mm |
 | Moderne Sofakissen mit Geometermuster (`moderne-sofakissen-mit-geometermuster-737856`) | 6 | 6 | 8.59–9.12 | 31.90 | A, B, C, D |
 | Uhrenarmband-Positionierungsperlen aus Metall (`uhrenarmband-positionierungsperlen-aus-metall-704704`) | 6 | 6 | 3.38–3.81 | 22.90 | Black-38or40or41mm, Black-42or44or45mm, Silver-38or40or41mm, Silver-42or44or45mm |
-| Microbead Nackenkissen Rolle (`microbead-nackenkissen-rolle-753600`) | 6 | 6 | 7.28–7.28 | 26.90 | Red, Green, Black, Pink |
 | Herren-Tourbillon Automatikuhr mit grossem Zifferblatt (`herren-tourbillon-automatikuhr-mit-grossem-zif-052160`) | 6 | 6 | 19.27–19.27 | 40.90 | Gold with blue surface, Golden strip white noodles, Black belt black face, Silver with black face |
-| Hunde- und Katzen-Geschirr im Prinzessinnen-Stil (`hunde-und-katzen-geschirr-im-prinzessinnen-sti-605100`) | 6 | 6 | 2.63–2.63 | 34.90 | Classic Style Traction-XS, Classic Style Traction-S, Classic Style Traction-M, Classic Style Traction-L |
-| Wasserdichter Outdoor Rucksack mit Nass-/Trockenfach (`wasserdichter-outdoor-rucksack-mit-nass-trocke-604700`) | 6 | 6 | 25.37–36.52 | 47.90 | Lemon Yellow 20L, Khaki 20L, Lemon Yellow 30L, Khaki 30L |
-| Verstellbare Hunde-Leine für unterwegs (`verstellbare-hunde-leine-fur-unterwegs-607488`) | 6 | 6 | 3.69–3.69 | 23.90 | Green White-5 M, Gray White-5 M, Pink White-5 M, Yellow White-5 M |
-| Leder-Leine für Haustiere (`leder-leine-fur-haustiere-092608`) | 6 | 6 | 14.86–14.86 | 35.90 | Red-1.2x120cm, Red-1.8x120cm, Blue-1.2x120cm, Blue-1.8x120cm |
 | Mechanische Herrenuhr mit Leuchtzeiger und Kalender (`mechanische-herrenuhr-mit-leuchtzeiger-und-kal-339776`) | 6 | 6 | 25.93–25.93 | 47.90 | Black noodles, Gradient blue noodles, Pure blue noodles, White noodles |
 | Retro Canvas Rucksack für Herren (20-35L) (`retro-canvas-rucksack-fur-herren-20-35l-615200`) | 6 | 6 | 24.88–24.88 | 55.90 | Black, Khaki, Coffee, Gray Green |
 | Retro Tischuhr – verschiedene Stile (`retro-tischuhr-verschiedene-stile-845504`) | 6 | 6 | 53.66–78.24 | 94.90 | Ceramic ice cracked-12 inches, Enamel style-12 inches, Ceramic ice crack belt pendulu-12 inches, Enamel ribbon pendulum-12 inches |
@@ -865,9 +850,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | U-förmiges Memory Foam Reisekissen (`u-formiges-memory-foam-reisekissen-416512`) | 5 | 5 | 3.76–3.76 | 23.90 | Blue, Red, Grey, Rose Red |
 | Wind Kissen Sofa Kissen Retro Wind Getuftetes Kissen (`wind-kissen-sofa-kissen-retro-wind-getuftetes-857792`) | 5 | 5 | 4.59–4.84 | 24.90 | 	 PE20078E-1-45*45cm, PE20048E-2-45*45cm, PE20049E-2-45*45cm, PE20079E-1-45*45cm |
 | Elektrischer Meridian-Massageball (`elektrischer-meridian-massageball-050496`) | 5 | 5 | 11.7–11.7 | 31.90 | Black-USB, Grey-USB, Light pink-USB, Rose Red-USB |
-| Polierscheibe aus feiner Wolle (`polierscheibe-aus-feiner-wolle-348736`) | 5 | 5 | 0.51–0.87 | 19.90 | 85cm, 90mm, 95mm, 100mm |
-| Halsband mit Früchte-Print (`halsband-mit-fruchte-print-610600`) | 5 | 5 | 2.17–2.17 | 21.90 | Pitaya-XS , Pitaya-S, Pitaya-M, Pitaya-L |
-| Machinelike Gold Herrenarmband mit Mesh-Design (`machinelike-gold-herrenarmband-mit-mesh-design-634400`) | 5 | 5 | 4.93–4.93 | 24.90 | SB0457-18K, SB0458-18K, SB0459-18K, SB0460-18K |
 | Taktischer Multifunktions-Rucksack 20-35L (`taktischer-multifunktions-rucksack-20-35l-602000`) | 5 | 5 | 11.94–11.94 | 33.90 | Black, Green, Khaki, Green Ruins |
 | Japanisches Schälchen-Set mit Ablage (`japanisches-schalchen-set-mit-ablage-644000`) | 5 | 5 | 7.46–7.46 | 28.90 | Aurora Green-4 plates 1 tray, Coffee Gold-4 plates 1 tray, Emerald Green-4 plates 1 tray, Marbling-4 plates 1 tray |
 | Doppelseitiger Rasierklingenhalter aus Metall (`doppelseitiger-rasierklingenhalter-aus-metall-5e0bcf`) | 5 | 5 | 3.19–3.19 | 22.90 | Chrome, Silver, Black, Gold |
@@ -1083,12 +1065,8 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Handgemachte Strass-Nagelsticker (`handgemachte-strass-nagelsticker-929984`) | 4 | 4 | 9.14–9.14 | 27.90 | Default New Trapezoid-XS, Default New Trapezoid-S, Default New Trapezoid-M, Default New Trapezoid-L |
 | Glitzerndes Körper-Puder (`glitzerndes-korper-puder-939456`) | 4 | 4 | 2.84–2.84 | 22.90 | Light Gold, Champagne Gold, Soft Pink, Metallic Silver |
 | Smartes EMS-Muskelstimulationsgerät für Zuhause (`smartes-ems-muskelstimulationsgerat-fur-zuhaus-714240`) | 4 | 4 | 9.73–29.17 | 29.90 | 1style-Usb, 2style-Usb, 3style-Usb, 4style-Usb |
-| Keramik Servierplatte – Rechteckig, mattiert (`keramik-servierplatte-rechteckig-mattiert-607400`) | 4 | 4 | 3.35–5.03 | 22.90 | Frosted White-10inch, Frosted White-12inch, Matte Black-10inch, Matte Black-12inch |
 | Vintage Armband mit Mohnblüten-Design (`vintage-armband-mit-mohnbluten-design-617800`) | 4 | 4 | 2.07–2.07 | 21.90 | Red, Blue, Color, Coffee |
-| Outdoor Camouflage Rucksack 20-35L (`outdoor-camouflage-rucksack-20-35l-622800`) | 4 | 4 | 4.78–4.78 | 24.90 | Black, Brown Camouflage, Yellow Camouflage, Khaki |
 | Tisch-Organizer für Teetassen und Sets (`tisch-organizer-fur-teetassen-und-sets-640500`) | 4 | 4 | 3.0–3.79 | 22.90 | Two layers-Primary colors, Two layers-Tea color, Three floors-Primary colors, Three floors-Tea color |
-| Business Rucksack aus Oxford-Stoff (`business-rucksack-aus-oxford-stoff-607500`) | 4 | 4 | 15.75–16.42 | 46.90 | Silver White-17 Inches, Silver White-15Inches, Black-17 Inches, Black-15Inches |
-| Marokkanisches Kissen mit geometrischem Muster (`marokkanisches-kissen-mit-geometrischem-muster-6de42e`) | 4 | 4 | 4.86–4.86 | 24.90 | 1 style-45x45cm, 4 style-50x30cm, 2 style-45x45cm, 3 style-45x45cm |
 | Eleganter Fingerring mit Strasssteinen (`eleganter-fingerring-mit-strasssteinen-603000`) | 4 | 4 | 7.79–7.79 | 27.90 | White Diamond Ring-No 5, White Diamond Ring-No 6, White Diamond Ring-No 7, White Diamond Ring-No 8 |
 | Reise-Rucksack Canvas & Leder (`reise-rucksack-canvas-leder-615500`) | 4 | 4 | 24.05–24.05 | 53.90 | Black, Khaki, Army Green, Khaki1 |
 | Leder Rucksack für Herren, 16 Zoll (`leder-rucksack-fur-herren-16-zoll-614400`) | 4 | 4 | 43.95–50.58 | 75.90 | Single Zipper Leather Black, Single Zipper Leather Brown, Single Zipper Breathable Brown, Double Zipper Main Bag |
@@ -1262,8 +1240,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Multifunktionale Leucht-Quarzuhr (`multifunktionale-leucht-quarzuhr-351936`) | 3 | 3 | 11.3–11.3 | 31.90 | Black shell black face, Black shell white noodles, Silver shell black surface |
 | Fitness Gürtel für Kniebeugen und Krafttraining (`fitness-gurtel-fur-kniebeugen-und-krafttrainin-945152`) | 3 | 3 | 4.45–4.45 | 23.90 | Red-M, Red-L, Red-XL |
 | Magnetische Bausteine Dinosaurier-Welt (`magnetische-bausteine-dinosaurier-welt-313728`) | 3 | 3 | 6.67–13.51 | 40.90 | X5109, X5108, X5107 |
-| Nagelknipser-Set aus Edelstahl (`nagelknipser-set-aus-edelstahl-754816`) | 3 | 3 | 3.08–3.24 | 22.90 | Regular-Silver, Regular-Silver Gray, Regular-Golden Gray |
-| Nordische Eisen-Obstschale (`nordische-eisen-obstschale-9d0d65`) | 3 | 0 | 5.84–7.51 | 31.90 | White, Gold, Black |
 | Hundeleine mit Cartoon-Muster (`hundeleine-mit-cartoon-muster-615360`) | 3 | 3 | 2.93–2.93 | 22.90 | Teddy-Length 2m, Fox-Length 2m, Koala-Length 2m |
 | Regenbogen-Spielzeug mit Sound (`regenbogen-spielzeug-mit-sound-603600`) | 3 | 3 | 2.57–3.17 | 21.90 | Rainbow Twisted Sugar, Rainbow Sniffing Ball, Rainbow Dumbbell |
 | Kugelbahn Bausatz (293 Teile) (`kugelbahn-bausatz-293-teile-561024`) | 3 | 3 | 12.8–15.37 | 58.90 | 293 Animal Slide Bag, 293 Animal Slide Color Box, 293 Animal Slide Barrel |
@@ -1399,9 +1375,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Gepolstertes Kissen mit geometrischem Muster (`gepolstertes-kissen-mit-geometrischem-muster-077376`) | 2 | 2 | 5.68–5.98 | 25.90 | PE20174E-1- 45*45cm, PE20175E-1-30x50cm |
 | Geometrisches Silikon-Stapelspielzeug für Kinder (`geometrisches-silikon-stapelspielzeug-fur-kind-260864`) | 2 | 2 | 4.89–4.89 | 24.90 | Yellowish Brown, Pink |
 | Sägeblätter mit Löchern für Holz, Emery, Jade · 10 Stück (`sageblatter-mit-lochern-fur-holz-emery-jade-859776`) | 2 | 2 | 1.55–1.93 | 20.90 | 22mm, 25mm |
-| Keramikschale Lvsen – verschiedene Grössen (`keramikschale-lvsen-verschiedene-grossen-623700`) | 2 | 2 | 4.19–5.8 | 23.90 | 4.3inch, 5.5inch |
 | Uhrenbox aus Massivholz (2er-Pack) (`uhrenbox-aus-massivholz-2er-pack-034496`) | 2 | 2 | 20.1–20.1 | 46.90 | Yellow, Coffee |
-| Rider Liefertasche mit Isolierung (`rider-liefertasche-mit-isolierung-607300`) | 2 | 2 | 5.97–5.97 | 25.90 | Black-Small, Navy Blue-Small |
 | Reflektierende Hunde-Leine für kleine bis grosse Hunde (`reflektierende-hunde-leine-fur-kleine-bis-gros-227968`) | 2 | 2 | 10.18–13.73 | 30.90 | Red-One size, Red-Extended version |
 | Holz-Wippe mit Tiermotiv für Kinder (`holz-wippe-waldtiere-oder-dinosaurier-690816`) | 2 | 2 | 3.55–3.55 | 22.90 | Dinosaur Balance Seesaw, Animal Balance Seesaw |
 | Gusseisen Tortenpresse Rund (`gusseisen-tortenpresse-rund-614800`) | 2 | 2 | 9.29–13.1 | 85.90 | 8 InchCake Press, 10 InchCake Press |
