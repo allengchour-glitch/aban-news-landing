@@ -373,3 +373,6 @@ gid://shopify/Product/16639256068487	bluetooth-sportarmband-mit-anruferinnerung-
 gid://shopify/Product/16639256527239	herren-sneaker-mit-farbblock-und-netzstoff-617900	Herren-Sneaker mit Farbblock und Netzstoff
 gid://shopify/Product/16639260557703	outdoor-smartwatch-mit-dreifach-positionierung-134592	Outdoor-Smartwatch mit Dreifach-Positionierung
 gid://shopify/Product/16640418709895	einseitige-umhangetasche-urban-leicht-wasserdi-608300	Einseitige Umhängetasche – urban, leicht, wasserdicht
+gid://shopify/Product/16642451865991	grosses-handgepack-mit-trocken-feucht-trennung-623500	Grosses Handgepäck mit Trocken-Feucht-Trennung
+gid://shopify/Product/16642553741703	business-rucksack-mit-hoher-kapazitat-612400	Business Rucksack mit hoher Kapazität
+gid://shopify/Product/16642981855623	magazinbeutel-fur-feldweste-aus-1000d-nylon-613400	Magazinbeutel für Feldweste aus 1000D Nylon

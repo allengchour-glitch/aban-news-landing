@@ -359,3 +359,4 @@ gid://shopify/Product/15446270771585	draft-ausverkauft	Interaktiver Ball mit Sei
 gid://shopify/Product/15447928045953	draft-ausverkauft	Unisex Strickhandschuhe mit Touchscreen-Funktion
 gid://shopify/Product/15448033001857	draft-ausverkauft	Samt-Shirt mit Wasserfallausschnitt
 gid://shopify/Product/15448525046145	draft-ausverkauft	Eleganter Jumpsuit mit geradem Bein und Zierbändern
+gid://shopify/Product/15512245895553	draft-ausverkauft	Herren Freizeitschuh aus Rindsleder
