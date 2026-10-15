@@ -18368,3 +18368,10 @@ gid://shopify/Product/16638536581511	88->0	Langarmshirt mit 3D-Print für Herren
 gid://shopify/Product/16638538252679	111->1	Kapuzen-Zipup Jacke mit 3D-Druck
 gid://shopify/Product/16638545494407	16->3	Henrys Langarmshirt aus Polyester
 gid://shopify/Product/16638641734023	91->0	Katzen-Schnitzeljacke in Schwarz/Violett
+gid://shopify/Product/16609371095431	27->0	Federklappe für Waschbecken
+gid://shopify/Product/16610281521543	20->0	Aluminium Kopfhörerständer mit Getränkehalter
+gid://shopify/Product/16611990798727	64->2	Acryl-Hundemantel Herbst/Winter
+gid://shopify/Product/16612322673031	120->0	USB-Elektro-Schraubenzieher mit Magnetbox
+gid://shopify/Product/16612711465351	21->2	Silikon-Hundeschüssel Doppel
+gid://shopify/Product/16612772053383	82->0	Emery Küchenmesser-Schärfer 12 Zoll
+gid://shopify/Product/16612778770823	29->0	Baby- und Kinderschuhe mit Lichtern
