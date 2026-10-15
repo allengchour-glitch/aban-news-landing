@@ -18400,3 +18400,14 @@ gid://shopify/Product/16617707307399	65->1	Astschere für Obstbäume
 gid://shopify/Product/16617715663239	34->0	Glas-Lunchbox mit Fächern – 4er-Set
 gid://shopify/Product/16617968533895	130->2	Grüner 2B/ HB Zeichenstift – 10 Stück
 gid://shopify/Product/16638316020103	21->0	Indoor Fitness Schuhe für Männer – weiss/black/gray
+gid://shopify/Product/16638747214215	21->0	Aluminium-Case für Apple Watch – Schutzschale
+gid://shopify/Product/16638820450695	13->0	Smartwatch GPS Herzfrequenz Outdoor
+gid://shopify/Product/16638824415623	9->0	Stahl-Uhrenarmband mit Butterfly-Buckle
+gid://shopify/Product/16638824644999	58->0	Stahlarmband für Apple Watch, 5,5–8,5 Zoll
+gid://shopify/Product/16638824939911	19->0	Uhrenarmband Edelstahl Halbkreis mit drei Perlen
+gid://shopify/Product/16638827594119	94->0	Mini-Projektor für Heimkino
+gid://shopify/Product/16638828118407	39->0	3D Projektor für Smartphone-Mirroring 1080p
+gid://shopify/Product/16638854955399	15->1	Walnuss Holzschraubensockel für Werkzeuge
+gid://shopify/Product/16638858166663	33->3	Wasserfilterbox Low-Water-Level 3-in-1, 850 L, 8 W
+gid://shopify/Product/16638859018631	59->0	Programmierbares USB-Pedal mit Ultraschall-Schalter
+gid://shopify/Product/16638859182471	20->0	Internationaler Universal-Reiseadapter
