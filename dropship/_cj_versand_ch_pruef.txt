@@ -9647,3 +9647,5 @@ tpe-falt-yogamatte-verstarkt-und-rutschfest-624800	2603120217591625200	16	18.01	
 korperbetonte-rock-mit-digitaldruck-615300	2607101015211616000	16	7.43	ok	landeseite
 sommerrock-mit-orangemuster-635700	2607100715591636500	16	7.43	ok	landeseite
 kettlebell-gewichtshalter-619100	2603090218081619500	16	11.23	ok	landeseite
+unregelmassiger-denimrock-630300	2607100623531631300	16	8.79	ok	landeseite
+rocke-fur-fruhjahr-und-herbst-636000	2607100603011637200	16	8.79	ok	landeseite
