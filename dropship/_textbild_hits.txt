@@ -18376,3 +18376,10 @@ gid://shopify/Product/16612711465351	21->2	Silikon-Hundeschüssel Doppel
 gid://shopify/Product/16612772053383	82->0	Emery Küchenmesser-Schärfer 12 Zoll
 gid://shopify/Product/16612778770823	29->0	Baby- und Kinderschuhe mit Lichtern
 gid://shopify/Product/16612780704135	27->3	Überwachungskamera mit Auto-Tracking
+gid://shopify/Product/16613788418439	10->0	Lordosenstütze und Nackenkissen für Autositze
+gid://shopify/Product/16613846811015	33->3	Notebook-Kühler 294×65×65 cm
+gid://shopify/Product/16613848056199	12->0	Mechanische Gaming-Tastatur mit dreifarbiger Beleuchtung
+gid://shopify/Product/16614569181575	64->0	Hochwertiges Hundeleder-Rutschband
+gid://shopify/Product/16615193051527	46->2	Leuchtender Rucksack – mittelgross, atmungsaktiv
+gid://shopify/Product/16615376880007	9->0	USB-Soundkarte mit Multifunktion
+gid://shopify/Product/16615806075271	20->2	Nordische Wandlampe für stimmungsvolles Licht
