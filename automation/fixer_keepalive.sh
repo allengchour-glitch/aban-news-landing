@@ -191,6 +191,22 @@ while true; do
     ( cd "$REPO" && setsid bash -c "exec 8>&- 9>&-; exec bash automation/fortura_bestand_taeglich.sh" >> "$FBL" 2>&1 & )
     echo "$(date -u +%H:%M) Fortura-Bestand: Tageslauf gestartet (letzter Erfolg vor $(( ( $(date +%s) - $(stat -c %Y "$FB" 2>/dev/null || echo 0) ) / 3600 )) h)"
   fi
+  # 🧾 LEDGER-SCHRUMPF-RÜCKSCHAU (15.10.2026): stündlich die Commits der letzten 26 h — ist ein Ledger in dropship/ bei HEAD noch
+  # um ≥ 200 Zeilen und > 50 % geschrumpft gegenüber der Fassung vor dem Schrumpf-Commit, wird es vereinigt und gestaged (der
+  # nächste Committer nimmt es mit). Gemessen 15.10.: _cj_nachpruefung.tsv 8'842 → 190 lag unbemerkt auf origin. Erste Verteidigung
+  # sind die Git-Hooks (automation/githooks, core.hooksPath); dies ist die zweite. VORN und vor der API-Sperre (Prüfung
+  # wf_52c54405: hinten erreichte der Aufseher den Block vor dem Neustart oft nicht), unter der Repo-Sperre (sonst heilte sie
+  # mitten in einen offenen Merge), im Hintergrund.
+  LSV=/tmp/ledger_schrumpf_verlauf.log
+  if [ -f "$REPO/automation/ledger_schrumpf_tor.py" ] && \
+     [ $(( $(date +%s) - $(stat -c %Y "$LSV" 2>/dev/null || echo 0) )) -gt 3300 ]; then
+    touch "$LSV"
+    ( cd "$REPO" && setsid bash -c "exec 8>&- 9>&-; exec flock -w 60 /tmp/git_repo.lock timeout 120 \
+        python3 automation/ledger_schrumpf_tor.py --verlauf 26" >> "$LSV" 2>&1 & )
+    if tail -n 8 "$LSV" | grep -q " geheilt auf "; then
+      echo "$(date -u +%H:%M) ⚠️ $(grep ' geheilt auf ' "$LSV" | tail -n 1)"
+    fi
+  fi
   # 06.10.2026: billige Hintergrund-Starter ebenfalls VORN (der Aufseher erreicht späte Blöcke vor dem Neustart oft nicht).
   # KATEGORIE-FEIN (06.10.2026, Betreiber «feinkategorie und filter verbessern»): grobe Shopify-Kategorie (Typ-Signal) über die
   # feine Google-Kategorie verfeinern — nur Nachfahren, Titelprobe für Kleid/Rock/Hose/Schmuck/Fitness, Shopifys offizielle
@@ -474,7 +490,8 @@ while true; do
       echo "$(date -u +%H:%M)    Grund pruefen: Custom-App installiert? Token erneuerbar? Danach laeuft alles von selbst weiter."
       echo "$_jetzt" > /tmp/_api_tot_gemeldet
     fi
-    [ -x "$REPO/automation/autocommit.sh" ] && bash "$REPO/automation/autocommit.sh" >/dev/null 2>&1
+    # 15.10.2026: ohne --einmal startete das die ENDLOS-Schleife von autocommit.sh — der Aufseher hing dort, solange Shopify schwieg.
+    [ -x "$REPO/automation/autocommit.sh" ] && flock -w 120 /tmp/git_repo.lock bash "$REPO/automation/autocommit.sh" --einmal >/dev/null 2>&1
     sleep 120
     continue
   fi
@@ -2390,21 +2407,6 @@ fi
         echo "$(date -u +%H:%M) $(grep 'KLINGEN-WACHE' "$KLW" | tail -n 1)"
       else
         echo "$(date -u +%H:%M) Klingen-Wache gestartet (erster Lauf)"
-      fi
-    fi
-  fi
-  # 🧾 LEDGER-SCHRUMPF-RÜCKSCHAU (15.10.2026): stündlich die Commits der letzten 26 h — ist ein Ledger in dropship/ bei HEAD
-  # noch um ≥ 200 Zeilen und > 50 % geschrumpft gegenüber der Fassung vor dem Schrumpf-Commit, wird es vereinigt und gestaged
-  # (der nächste Committer nimmt es mit). Gemessen 15.10.: _cj_nachpruefung.tsv 8'842 → 190 lag 18 Min. unbemerkt auf origin.
-  # Das Tor an den Commits (git_sichern/autocommit/aufloesen) ist die erste Verteidigung, diese Rückschau die zweite.
-  LSV=/tmp/ledger_schrumpf_verlauf.log
-  if [ -f "$REPO/automation/ledger_schrumpf_tor.py" ]; then
-    ALTER=$(( $(date +%s) - $(stat -c %Y "$LSV" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 3300 ]; then
-      touch "$LSV"
-      ( cd "$REPO" && timeout 120 python3 automation/ledger_schrumpf_tor.py --verlauf 26 >> "$LSV" 2>&1 )
-      if tail -n 5 "$LSV" | grep -q " geheilt auf "; then
-        echo "$(date -u +%H:%M) ⚠️ $(grep ' geheilt auf ' "$LSV" | tail -n 1)"
       fi
     fi
   fi

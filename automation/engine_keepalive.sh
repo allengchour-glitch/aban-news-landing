@@ -20,6 +20,9 @@
 cd /home/user/aban-news-landing || exit 1
 REPO_AUTO=/home/user/aban-news-landing/automation
 REPO=$(dirname "$REPO_AUTO")   # 23.09.: Zeile 454 nutzte $REPO, ohne dass es je gesetzt war (cd "" = No-op, lief nur zufaellig im Repo)
+# 15.10.2026: Git-Hooks des Ledger-Schrumpf-Tors (automation/githooks) bei JEDEM Lauf setzen — idempotent, auch auf dem
+# Server-Klon. Ohne sie gingen Hand-Commits und saubere Merges am Tor vorbei (Prüfung wf_52c54405; ad98acf1d war ein Hand-Commit).
+python3 "$REPO/automation/ledger_schrumpf_tor.py" --haken 2>/dev/null || true
 
 # 13.10.2026 (Hetzner-Plan Schritt 4): Der Rewind-Alarm unten («hinten > 5») schlug ~4× am Tag FALSCH an — auf dem
 # Server (106 Tage Uptime) heisst «hinten» nur, dass die Cloud seit dem letzten 10-Min-Takt mehr als 5 Commits gepusht hat.

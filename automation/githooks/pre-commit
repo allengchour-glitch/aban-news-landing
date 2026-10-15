@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# pre-commit (15.10.2026): Ledger-Schrumpf-Tor für JEDEN Commit dieses Klons — auch Hand-Commits der Sitzung (ad98acf1d
+# war einer) und Merge-Abschlüsse. Gesetzt über `git config core.hooksPath automation/githooks` (engine_keepalive, jeder Lauf).
+# Verhindert nie einen Commit (exit 0); heilt nur einen Schrumpf ≥ 200 Zeilen und > 50 % (automation/ledger_schrumpf_tor.py).
+M=--staged
+[ -f "$(git rev-parse --git-dir)/MERGE_HEAD" ] && M=--merge
+timeout 120 python3 "$(git rev-parse --show-toplevel)/automation/ledger_schrumpf_tor.py" $M >> /tmp/ledger_schrumpf.log 2>&1
+exit 0

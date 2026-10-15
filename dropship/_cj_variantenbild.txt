@@ -7382,3 +7382,20 @@ gid://shopify/Product/15472062955905	zugeordnet	2	Strickkleid mit Spitze und Blu
 gid://shopify/Product/15472063054209	zugeordnet	42	Elegantes, figurbetontes Sommerkleid mit Schlitz
 gid://shopify/Product/15472063152513	zugeordnet	35	Ärmelloses V-Ausschnitt-Kleid mit Stufenrock
 gid://shopify/Product/15472063250817	zugeordnet	42	Elegantes Plisseekleid mit Blumenmuster
+gid://shopify/Product/15472063283585	zugeordnet	18	Retro-Chic Quasten-Spitzenkleid
+gid://shopify/Product/15472063414657	zugeordnet	56	Lässiges Hoodie-Kleid mit langen Ärmeln
+gid://shopify/Product/15472063447425	zugeordnet	40	Midikleid mit Laternenärmeln und Reissverschluss
+gid://shopify/Product/15472063480193	zugeordnet	8	Besticktes Midi-Kleid mit Gürtel
+gid://shopify/Product/15472063611265	zugeordnet	24	Strick-Top mit Kragen und Knopfleiste
+gid://shopify/Product/15472063644033	zugeordnet	4	Elegantes Top mit Kerbkragen
+gid://shopify/Product/15472063676801	zugeordnet	40	V-Ausschnitt Langarmshirt mit Knopfleiste
+gid://shopify/Product/15472063709569	zugeordnet	40	Stehkragen-Bluse mit langen Ärmeln und Taschen
+gid://shopify/Product/15472063742337	zugeordnet	12	Digitales Sport-Trikot im Retro-Stil
+gid://shopify/Product/15472063775105	zugeordnet	40	V-Ausschnitt Langarm-Top mit Spitze
+gid://shopify/Product/15472066560385	zugeordnet	12	Ärmelloses Maxi-Kleid mit Spitze und Blumenprint
+gid://shopify/Product/15472066593153	zugeordnet	8	Grosse Reisetasche
+gid://shopify/Product/15472066658689	zugeordnet	30	Gerades Kleid mit Langarm
+gid://shopify/Product/15472066691457	zugeordnet	3	Wasserdichter Outdoor-Rucksack 35L
+gid://shopify/Product/15472066724225	zugeordnet	3	Wasserdichte Outdoor-Sling Bag für Handy
+gid://shopify/Product/15472066888065	zugeordnet	24	Leichte Langarmbluse im französischen Stil
+gid://shopify/Product/15472066920833	zugeordnet	36	Corduroy-Button Kapuzenpullover für Damen

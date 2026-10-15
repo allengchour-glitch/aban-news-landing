@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# pre-merge-commit (15.10.2026): ein sauberer Merge darf ein Ledger nicht still schrumpfen (z. B. origin trägt die geschrumpfte
+# Fassung). Heilt das Tor, endet der Hook mit 1: der Merge bleibt offen (MERGE_HEAD), `git commit --no-edit` schliesst ihn mit dem
+# geheilten Index — git_sichern.sh/autocommit.sh tun das über aufloesen() bereits. Nur heilen und 0 liefern reicht NICHT
+# (Prüfung wf_52c54405: der automatische Merge-Commit trug danach trotzdem die geschrumpfte Fassung).
+A=$(timeout 120 python3 "$(git rev-parse --show-toplevel)/automation/ledger_schrumpf_tor.py" --vor-merge 2>&1)
+RC=$?
+echo "$A" >> /tmp/ledger_schrumpf.log
+[ -n "$A" ] && echo "$A" >&2
+[ "$RC" = 1 ] && { echo "Ledger-Schrumpf geheilt — Merge mit 'git commit --no-edit' abschliessen." >&2; exit 1; }
+exit 0

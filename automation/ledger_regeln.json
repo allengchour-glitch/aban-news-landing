@@ -14,10 +14,16 @@
   "dropship/_bewertungen_prio.txt",
   "dropship/*cursor*",
   "dropship/*_stand*",
-  "dropship/semrush/*"
+  "dropship/semrush/*",
+  "dropship/_social_vorrang.txt",
+  "dropship/_gratis_schwelle_marge.tsv",
+  "dropship/_bewertungen_nachholen.txt",
+  "dropship/_video_prio_index.txt",
+  "dropship/_social_pause.txt"
  ],
  "_ausgenommen_warum": "Neu gebaute Listen und Zustände dürfen schrumpfen. Neue Ausnahme nur mit Beleg (welcher Schreiber baut die Datei neu?) und Eintrag hier.",
  "min_verlust": 200,
  "anteil": 0.5,
- "_schwelle_warum": "Geheilt wird nur, wenn mindestens 200 Zeilen UND mehr als die Hälfte fehlen. Kleinere Kürzungen (bewusstes Entfernen einzelner Quittungen, z. B. cj-ohne-antwort) bleiben unberührt."
+ "_schwelle_warum": "Geheilt wird nur, wenn mindestens 200 Zeilen UND mehr als die Hälfte fehlen. Kleinere Kürzungen (bewusstes Entfernen einzelner Quittungen, z. B. cj-ohne-antwort) bleiben unberührt.",
+ "_ausgenommen_15_10_pruefung": "Prüfung wf_52c54405 (Neuaufbau-Suche über Code + 30 T Verlauf): _social_vorrang.txt (Neubau-Liste, nach Saisonende geleert), _gratis_schwelle_marge.tsv (Bericht, sortiert neu geschrieben), _bewertungen_nachholen.txt (Arbeitsliste, kürzer neu gebaut), _video_prio_index.txt (Arbeitsliste), _social_pause.txt (Neubau je Lauf). Echte Ledger von Hand absichtlich kürzen → Zeile in dropship/_ledger_schrumpf_erlaubt.txt (pfad<TAB>JJJJ-MM-TT<TAB>Grund), sonst holt die stündliche Rückschau die Zeilen zurück."
 }
