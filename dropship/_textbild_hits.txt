@@ -18375,3 +18375,4 @@ gid://shopify/Product/16612322673031	120->0	USB-Elektro-Schraubenzieher mit Magn
 gid://shopify/Product/16612711465351	21->2	Silikon-Hundeschüssel Doppel
 gid://shopify/Product/16612772053383	82->0	Emery Küchenmesser-Schärfer 12 Zoll
 gid://shopify/Product/16612778770823	29->0	Baby- und Kinderschuhe mit Lichtern
+gid://shopify/Product/16612780704135	27->3	Überwachungskamera mit Auto-Tracking
