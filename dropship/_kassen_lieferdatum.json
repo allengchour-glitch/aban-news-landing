@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-14T21:18Z",
+ "stand": "2026-10-15T00:22Z",
  "datum_in_kasse": true,
  "bearbeitungszeit_tage": 1,
  "versand_werktage": [
@@ -59,7 +59,7 @@
    "profile": [
     "General profile"
    ],
-   "anzahl": 51669
+   "anzahl": 51671
   }
  },
  "ch_lager_im_asien_profil": false,
