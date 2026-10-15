@@ -2411,3 +2411,7 @@
 15510926786945	Modell:4:4	2026-10-15	smartes-ems-muskelstimulationsgerat-fur-zuhaus-714240
 15510926164353	Farbe:2:2	2026-10-15	geometrisches-silikon-stapelspielzeug-fur-kind-260864
 15510925967745	Modell:3:3	2026-10-15	magnetische-bausteine-dinosaurier-welt-313728
+15510925050241	Farbe:4+Grösse:2:8	2026-10-15	edelstahl-armband-fur-smartwatches-412608
+15510924591489	Modell:5+Ausführung:2+Grösse:2:5	2026-10-15	wind-kissen-sofa-kissen-retro-wind-getuftetes-857792
+15510924493185	Modell:2+Grösse:2:2	2026-10-15	gepolstertes-kissen-mit-geometrischem-muster-077376
+15510922723713	Farbe:5:5	2026-10-15	u-formiges-memory-foam-reisekissen-416512

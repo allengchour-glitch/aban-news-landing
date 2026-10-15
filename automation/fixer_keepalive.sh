@@ -2393,6 +2393,21 @@ fi
       fi
     fi
   fi
+  # 🧾 LEDGER-SCHRUMPF-RÜCKSCHAU (15.10.2026): stündlich die Commits der letzten 26 h — ist ein Ledger in dropship/ bei HEAD
+  # noch um ≥ 200 Zeilen und > 50 % geschrumpft gegenüber der Fassung vor dem Schrumpf-Commit, wird es vereinigt und gestaged
+  # (der nächste Committer nimmt es mit). Gemessen 15.10.: _cj_nachpruefung.tsv 8'842 → 190 lag 18 Min. unbemerkt auf origin.
+  # Das Tor an den Commits (git_sichern/autocommit/aufloesen) ist die erste Verteidigung, diese Rückschau die zweite.
+  LSV=/tmp/ledger_schrumpf_verlauf.log
+  if [ -f "$REPO/automation/ledger_schrumpf_tor.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$LSV" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 3300 ]; then
+      touch "$LSV"
+      ( cd "$REPO" && timeout 120 python3 automation/ledger_schrumpf_tor.py --verlauf 26 >> "$LSV" 2>&1 )
+      if tail -n 5 "$LSV" | grep -q " geheilt auf "; then
+        echo "$(date -u +%H:%M) ⚠️ $(grep ' geheilt auf ' "$LSV" | tail -n 1)"
+      fi
+    fi
+  fi
   # ⭐ JUDGE.ME-DOPPEL-WACHE (14.10.2026): doppelt importierte Lieferanten-Bewertungen ausblenden (curated=spam).
   # Gemessen: 296 Doppel auf 67 Produkten, auf 59 aktiven 277 von 591 Bewertungen Kopien — die Zahl ging als ratingCount an
   # Google. Regel + Eichung im Skriptkopf; Bremsen 8 % / CAP 400 / Kanarienvogel. START/FERTIG → still_gestorben greift.
