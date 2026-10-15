@@ -9658,3 +9658,17 @@ minimalistische-herrenjacke-616800	2607060252361617900	16	10.15	ok	landeseite
 naturlicher-gummispielzeug-lebensmittel-vertei-602800	2511090851001603000	16	5.42	ok	landeseite
 einreihiger-anzug-618700	2606250752081619300	16	12.21	ok	landeseite
 intelligentes-katzen-spielgerat-613500	2510140626421613700	7	14.07	ok	landeseite
+bissfeste-elektro-jump-ball-fur-katzen-hunde-633300	2509300351251633500	7	5.86	ok	landeseite
+lassig-geschnittene-herrenjacke-625900	2605220808471626400	16	12.21	ok	landeseite
+winter-cardigan-fur-herren-616500	2605210530591617000	16	12.21	ok	landeseite
+interaktiver-ball-mit-3-modi-usb-ladekugel-fur-602900	2509300344371603200	7	7.30	ok	landeseite
+kratzbrett-fuer-katzen-schont-moebel-und-krallen-606500	2509201044191606700	16	24.56	ok	landeseite
+casual-langarm-pullover-herren-621300	2607100212511621900	16	9.47	ok	landeseite
+farbwechsler-fur-haustiere-614800	2509200833591615000	3	6.49	ok	landeseite
+intelligenter-springball-fur-hund-und-katze-610800	2509110747211611000	7	8.10	ok	landeseite
+herren-sommer-streifen-kurzarm-polo-shirt-609300	2607090929101609900	16	8.11	ok	landeseite
+fruhlings-herbst-pullover-fur-herren-607300	2607090228171607900	16	9.07	ok	landeseite
+langsamfutterer-fur-hunde-637700	2601180856581638000	16	5.33	ok	landeseite
+hunde-katzen-futterschale-aus-lebensmittelecht-616600	2601140613251617100	16	7.43	ok	landeseite
+blutstillendes-pulver-fur-hunde-und-katzenkral-613600	2601130818251613800	1	5.86	ok	landeseite
+trendiger-canvas-laptop-rucksack-600000	2606030645221600700	16	14.37	ok	landeseite

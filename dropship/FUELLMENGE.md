@@ -1,4 +1,4 @@
-# Füllmenge fehlt — Stand 2026-10-14 04:53 UTC
+# Füllmenge fehlt — Stand 2026-10-15 01:17 UTC
 
 Werkzeug `automation/fuellmenge_nachtragen.py` · Kandidaten: 143 aktive Kosmetik-Flüssigprodukte ohne ml-Angabe · diesmal geschrieben: 0 · Text-Sperre belegt: 0
 
@@ -21,7 +21,7 @@ Sicher = ml und fl oz auf demselben Bild passen rechnerisch. «Vorschlag — sic
 | [SOUTH MOON Perianalpflege-Creme](https://luxestyle.ch/products/south-moon-perianalpflege-creme-056513) | — | nichts lesbar |  |
 | [OUHOE Feuchtigkeitsspendender Lippenbalsam](https://luxestyle.ch/products/ouhoe-feuchtigkeitsspendender-lippenbalsam-218241) | — | nichts lesbar |  |
 | [Florales festes Parfum](https://luxestyle.ch/products/florales-festes-parfum-956865) | — | nichts lesbar |  |
-| [Classic Aromatic Cologne Spray](https://luxestyle.ch/products/classic-aromatic-cologne-spray-843329) | — | nichts lesbar | 1.7 @ 7b38f857-9c1d-48a3-87f0-b2c914795ab1.jpg |
+| [Classic Aromatic Cologne Spray](https://luxestyle.ch/products/classic-aromatic-cologne-spray-843329) | — | nichts lesbar |  |
 | [Kameliensqualan Gesichtsöl](https://luxestyle.ch/products/kameliensqualan-gesichtsol-206978) | — | nichts lesbar |  |
 | [Langanhaltendes Unisex Parfum mit natürlichen Inhaltsstoffen](https://luxestyle.ch/products/langanhaltendes-unisex-parfum-mit-naturlichen-181186) | — | nichts lesbar |  |
 | [Natürliches Agarwood-Ätherisches Öl](https://luxestyle.ch/products/naturliches-agarwood-atherisches-ol-381634) | — | nichts lesbar |  |
