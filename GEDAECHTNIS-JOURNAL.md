@@ -52,6 +52,30 @@
 
 
 
+## 🧾 Ledger schrumpfen still: _cj_lager.tsv 58'834 → 198, _cj_nachpruefung.tsv 8'842 → 10 → Tor an jedem Commit + Git-Hooks + Rückschau (2026-10-15, Runde 00:25 bis ~02:15 UTC)
+
+- **Gemessen:** 15.10. 00:18–00:21 UTC wurden zwei Ledger im Arbeitsbaum geleert:
+  - `_cj_lager.tsv` (eigene Lagersperren, Wiedervorlagen) und `_cj_nachpruefung.tsv`.
+  - Der Reel-Motor (`git_sichern.sh`, `git add -A dropship/`) und ein Hand-Commit der Sitzung committeten das.
+  - Gerettet hat zufällig ein Hand-Merge; `_cj_nachpruefung.tsv` lag 18 Min. geschrumpft auf origin.
+  - 14 T Verlauf: 3 Unfälle (dazu `_versand_jenachland.txt` 14'403 → 1'452 am 02.10., «Konfliktmarker entfernt», nie bemerkt).
+  - Auslöser NICHT belegbar: Schreiber nur «a», im reflog kein Merge/Stash/Reset, keine Filter, Platte nicht voll.
+- **Getan:**
+  - `automation/ledger_schrumpf_tor.py` + `ledger_regeln.json` + Git-Hooks `automation/githooks/` (pre-commit heilt;
+    pre-merge-commit heilt → Exit 1); `core.hooksPath` setzt engine_keepalive bei jedem Lauf.
+  - Stündliche Rückschau vorn im Aufseher, unter der Repo-Sperre.
+  - `git_aufloesen.sh` vereinigt nie mehr eine fehlende Konfliktstufe als leere Datei.
+  - Selbsttest 14/14. `_cj_nachpruefung.tsv` 190 → 9'040 geheilt. Bericht `dropship/LEDGER-SCHRUMPF-2026-10-15.md`.
+- **Lehre 1 (eine Tür statt vieler Ursachen):** Ist der Auslöser nicht belegbar, an die eine Stelle setzen, durch die jeder Verlust
+  muss — den Commit. Git-Hooks fangen dort auch Hand-Commits und Merges, nicht nur die eigenen Skripte.
+- **Lehre 2 (Prüfung fand, was der Selbsttest nicht sah):** Die Rückschau nahm nur den ältesten Schrumpf je Datei. Die Heilung
+  per Mengen-Abgleich verlor wortgleich wieder angehängte Zeilen («letzte Zeile gewinnt» kippte; 16 Ledger haben dieses Muster).
+  Ein Hook, der beim Merge nur heilt, erreicht den Merge-Commit nicht mehr; er muss den Merge anhalten (Exit 1).
+- **Lehre 3 (Nebenfund):** Bei einem Shopify-Ausfall rief der Aufseher `autocommit.sh` OHNE `--einmal` auf und hing damit in dessen
+  Endlosschleife.
+- **Regel ab jetzt:** Ein echtes Ledger absichtlich kürzen (ab 200 Zeilen und > 50 %) → am selben UTC-Tag
+  `pfad<TAB>JJJJ-MM-TT<TAB>Grund` in `dropship/_ledger_schrumpf_erlaubt.txt`, sonst holt die Rückschau es zurück.
+
 ## ⭐ 310 doppelt importierte Lieferanten-Bewertungen ausgeblendet · Wahrheit nur im Widget · Importer-Tor (2026-10-14, Runde 20:25 bis ~23:30 UTC)
 
 - **Gemessen** (Workflow wf_3c125add-ef9, Gegenprobe über den ganzen Bestand): 296 Doppel auf 67 Produkten. Auf den 59 aktiven
@@ -20650,3 +20674,5 @@ Verschoben am 04.10.2026:
 - 2026-10-13 · 🦺 **134 «Sicherheitsschuhe/Schutzschuhe» ohne Norm (PSA-Begriff) → `psa_schuhe_wache.py`: 91 → Arbeitsschuh + PSA-Hinweis, Aufseher täglich; Trockenlauf-Liste fand 5 Fehler, die 16 grüne Kanarien nicht sahen (Arbeitsarbeitsschuhe, Verbandsschuh). Dazu YouTube 12→8 h, IG-Reels 8→12 h (Betreiber «youtube pushe mehr», Median 183 vs 32).** → `dropship/PSA-SCHUHE-2026-10-13.md`
 <!-- aus CLAUDE.md verschoben 14.10.2026 23:08 UTC (VERBATIM) -->
 - 2026-10-13 · 🧾 **CJ teilt einen Auftrag VOR dem Bezahlen (LX1013: SD2608141614440663500 und …-2, beide bezahlt) → Doppel-Erkennung zählt den STAMM der cjOrderId (ohne «-n»), nur eine andere SD-Nummer ist ein Doppel; Hetzner-Server GEMESSEN: Type=oneshot + KillMode=control-group → das Takt-Ende (1,5–2,8 min) beendet ALLE Motoren; der «falsche» Rewind-Alarm war die einzige Selbstheilung des Server-Klons (98 Stashes) → nie abschalten, ohne die Heilung zu ersetzen; cj() wiederholte createOrderV2 bei verlorener Antwort (Gegenprobe: 4 POSTs = 4 Aufträge) → Anlage nur EINMAL senden.** → Journal 13.10. 🧾
+<!-- aus CLAUDE.md verschoben 15.10.2026 02:15 UTC (VERBATIM) -->
+- 2026-10-13 · 🏷️ **Stufen-Umstellung braucht ein Zeichen am Produkt: Theme rechnete «16.–19. Okt.» für ALLE `ch-lager`, die Kasse für 764 noch 28. Okt.–11. Nov. → `profil-ch-lager` setzt/entfernt `ch_lager_profil.py` (Rückweg: Zeichen zuerst weg), Theme kurz nur mit Zeichen, Wache meldet fehlendes Zeichen; WebFetch beide Fälle = Kasse. Massen-Tags mit 20 Aliassen bündeln (einzeln ~55 Min.); `pgrep -f` in Warteschleife fand sich selbst.** → `dropship/CH-LAGER-PROFIL-2026-10-13.md`
