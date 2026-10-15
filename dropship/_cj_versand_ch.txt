@@ -1595,3 +1595,4 @@ gid://shopify/Product/16638445453703	ok	Zusammenklappbarer Carbon-Trekkingstock 
 gid://shopify/Product/16638446207367	ok	Steuerungsrad aus Edelstahl 400 mm
 gid://shopify/Product/16638443422087	nicht-versendbar	Zelt Doppelperson Regenfest 210x110 cm
 gid://shopify/Product/16639094194567	ok	Wandbild mit abstraktem Muster
+gid://shopify/Product/16641879933319	ok	Rindsleder-Leder Crossbody Business Tasche
