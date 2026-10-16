@@ -170,3 +170,34 @@ der Rest des CJ-Katalogs ist ungeprüft.
 **Regel (gilt ab sofort für jede Sitzung):** Bevor an einer CJ-Produktseite Text geschrieben wird, das
 **erste Produktbild ansehen**. Die Herstellerbilder tragen oft die Masse und den echten Produktnamen —
 beim Faltbrett standen 23 × 28,5 cm darauf, während die Beschreibung gar kein Mass hatte.
+
+---
+
+## Runde 5 (16.10.2026) — Review-Import mit dem pid-Fix, und was dabei auffiel
+
+**Gemini übersetzt wieder.** Am 04.10. meldete die API noch HTTP 402 („prepayment credits are depleted"),
+heute **HTTP 200** — die importierten Bewertungen kommen jetzt **auf Deutsch** statt in der Originalsprache.
+
+**Ausbeute ist ehrlicherweise mager.** Von 12 Seiten mit Google-Position haben **2** echte ≥4★-Kommentare
+bei CJ: Fingerboard-Achsen (3) und Mini-Fotodrucker (1). Die anderen 10 haben **null** — das ist keine
+Störung, der Resolver fand die pids. Importiert: die 3 Fingerboard-Bewertungen → Seite steht jetzt auf
+**4,67 ★ aus 6**.
+
+### ⚠️ Eine ≥4★-Bewertung ist nicht automatisch eine gute Bewertung
+Die einzige Bewertung des Mini-Fotodruckers lautet im Original:
+
+> ★5 · „i thought it was the printer cuz i didn't read it lol"
+
+Das ist **der Kunde, der am 29.09. in die Variantenfalle getreten ist** — die Seite zeigte „ab CHF 15.90"
+und hatte „Nur Thermopapier (ohne Drucker)" vorausgewählt (am 04.10. behoben, PR #2597). Die Bewertung
+belegt also, dass der Defekt real zugeschlagen hat, **bevor** er behoben wurde.
+
+**Bewusst NICHT importiert.** Fünf Sterne über einem Text, der von einem Fehlkauf erzählt, verwirren die
+nächsten Käufer mehr, als sie helfen. Der Importer filtert nach `score`, nicht nach Inhalt — und soll das
+auch nicht automatisch tun (eine Inhaltsprüfung für einen Einzelfall wäre mehr Code, als sie verhindert).
+**Regel: bei Produkten mit sehr wenigen Kommentaren den Text vor dem scharfen Lauf einmal lesen.**
+
+### 💸 Probeläufe kosten echte CJ-Punkte
+Ein `DRY_RUN=1` über 12 Produkte verbrauchte **~2100 von 2661 Punkten**. „Trocken" heisst nur: es wird
+nichts nach Judge.me geschrieben — die CJ-Abfragen laufen trotzdem. **Probelauf immer mit kleinem `ONLY`**,
+nicht über die ganze Charge.
