@@ -206,6 +206,24 @@
 
 ## 🧱 Geteilte Ressourcen (alle teilen sich diese!)
 
+### ⚠️ VERALTETE ARBEITSBRANCHES LIEFERN VERALTETE ANWEISUNGEN (16.10.2026)
+Eine Sitzung startete auf `claude/lade-projekt-luxestyle-fUo70`. Der Branch steht auf dem **27. Juni** —
+**1131 Commits hinter `main`** — und sein `CLAUDE.md` wurde als Projektanweisung geladen: alter
+Autonom-Auftrag, alter Branch (`…SrAs5`), alte „Kernfakten", **ohne** die Merge-Regel vom 01.10. und ohne
+jeden Stand seit Juli. Wer das nicht prüft, arbeitet nach vier Monate alten Regeln.
+
+**Regel: beim Sitzungsstart zuerst `git log -1 --format=%ad -- CLAUDE.md` gegen `origin/main` halten.**
+Weicht es ab, das Gedächtnis von `origin/main` lesen (`git show origin/main:CLAUDE.md`), nicht das lokale.
+
+**Den Branch NICHT zurücksetzen:** er trägt **23 Dateien, die nie auf `main` gelandet sind** — darunter
+`dropship/shop_audit.mjs` (read-only Shop-Gesundheitscheck), `dropship/BIGBUY-IMPORT-BEFUND.md` +
+`bigbuy-risiko-kandidaten.csv` (Juni-Befund: 1082 Risiko-Produkte, 765 Marken/IP) und 5 Workflows
+(`veo-render`, `second-brain`, `youtube-learn*`, `attach-media`). Ein `force-push` auf `main`-Stand
+würde diese Arbeit löschen. Wer sie braucht: einzeln per `git checkout <branch> -- <pfad>` holen und
+als eigenen PR nach `main` bringen — der Juni-Befund ist vorher **neu zu messen**, der Katalog ist
+seitdem von ~4800 auf ~24 000 aktive Produkte gewachsen.
+
+
 ### 🚨 VERSAND-SCHWELLE: 50 im Text, 45 in der Regel — BEIDES RICHTIG (04.10.2026)
 **Nicht „korrigieren".** Die Versandregel gibt gratis ab **CHF 45 auf den Korb NACH Rabatt**; in allen Texten
 steht **CHF 50**, weil 50 × 0,9 = 45 und WELCOME10 (−10 %) sonst das Versprechen bricht. Am 04.10. haben
