@@ -9,6 +9,7 @@ Bündelt die vorhandenen Bausteine (erfindet nichts neu) zu EINEM no-op-sicheren
   3. Newsletter-Entwurf schreiben (nur Entwurf)  (draft_with_gemini.py)
   4. Wachstums-Audit schreiben                   (tools/growth_audit.py)
   5. Funnel-Block aktuell halten (idempotent)    (tools/add_branchen_funnel.py)
+     dazu der Kauf-Kasten je Branche            (tools/add_kit_crosslink.py)
 
 Der Autopilot POSTET NICHT selbst und VERSENDET KEINEN Newsletter — Posten bleibt bei den
 eigenen Cron-Workflows (telegram-autopost / linkedin-autopost), Versand beim Menschen.
@@ -108,6 +109,7 @@ def main() -> int:
         run([py, "automation/ls_stats.py"], "Lemon-Squeezy Live-Zahlen (MRR/Abos)")
         dry = ["--dry"] if args.dry_run else []
         run([py, "tools/add_branchen_funnel.py"] + dry, "Funnel-Block aktualisieren")
+        run([py, "tools/add_kit_crosslink.py"] + dry, "Kauf-Kasten der Branchen-Kits (Preis/Link frisch)")
         run([py, "tools/related_hubs.py"] + dry, "Interne Verlinkung (verwandte Branchen)")
         run([py, "tools/related_themen.py"] + dry, "Interne Verlinkung (verwandte Themen)")
         run([py, "tools/add_newsletter_cta.py"] + dry, "Newsletter-CTA auf Content-Seiten")
