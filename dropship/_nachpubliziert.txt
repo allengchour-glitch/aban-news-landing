@@ -376,3 +376,4 @@ gid://shopify/Product/16640418709895	einseitige-umhangetasche-urban-leicht-wasse
 gid://shopify/Product/16642451865991	grosses-handgepack-mit-trocken-feucht-trennung-623500	Grosses Handgepäck mit Trocken-Feucht-Trennung
 gid://shopify/Product/16642553741703	business-rucksack-mit-hoher-kapazitat-612400	Business Rucksack mit hoher Kapazität
 gid://shopify/Product/16642981855623	magazinbeutel-fur-feldweste-aus-1000d-nylon-613400	Magazinbeutel für Feldweste aus 1000D Nylon
+gid://shopify/Product/16644181066119	schultertasche-business-mit-usb-anschluss-610800	Schultertasche Business mit USB-Anschluss
