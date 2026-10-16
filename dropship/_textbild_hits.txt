@@ -18411,3 +18411,14 @@ gid://shopify/Product/16638854955399	15->1	Walnuss Holzschraubensockel für Werk
 gid://shopify/Product/16638858166663	33->3	Wasserfilterbox Low-Water-Level 3-in-1, 850 L, 8 W
 gid://shopify/Product/16638859018631	59->0	Programmierbares USB-Pedal mit Ultraschall-Schalter
 gid://shopify/Product/16638859182471	20->0	Internationaler Universal-Reiseadapter
+gid://shopify/Product/16638895686023	16->2	Kühles Kopfkissen mit Memory-Schaum
+gid://shopify/Product/16638898897287	8->0	Atmungsaktives Nackenstützkissen für Sommer
+gid://shopify/Product/16638910497159	104->0	Malen nach Zahlen – Eigenes Motiv
+gid://shopify/Product/16638910759303	30->0	Spitze-Perlen Sandalen mit Strass
+gid://shopify/Product/16638910923143	37->1	Pumps aus Schafsleder mit mittlerem Absatz
+gid://shopify/Product/16638913479047	142->0	Sandalen mit transparentem Absatz
+gid://shopify/Product/16638916592007	38->0	Mesh-Sandalen mit Stilettoabsatz
+gid://shopify/Product/16638918099335	16->1	Mechanische Gaming-Tastatur mit Maus-Konverter
+gid://shopify/Product/16638919246215	62->0	Klassisches Windspiel aus Holz und Metall
+gid://shopify/Product/16638919541127	8->1	Tastenkappen-Set für Tastaturen – Welpe
+gid://shopify/Product/16638920688007	83->1	Abstraktes Wandbild aus Aluminiumlegierung
