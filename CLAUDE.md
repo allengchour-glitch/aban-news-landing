@@ -64,6 +64,55 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-04 (🔍 Shop-QA-Tag: 4 falsch beschriftete Top-Seiten, 37 % blinder Fleck im Review-Import, ein selbst verursachter Verlustverkauf):**
+Nachtrag am 16.10., weil diese Funde nur in den Einzeldokumenten standen und nicht im Gedächtnis — die nächste
+Sitzung liest CLAUDE.md, nicht `dropship/*.md`. Alles gemessen, alles live geprüft, PRs #2596–#2609 gemergt.
+
+- **🐛 37 % DES KATALOGS WAREN FÜR DEN REVIEW-IMPORT UNSICHTBAR** (`automation/cj_reviews_import.mjs`, gefixt):
+  **4466 von 12 000** aktiven `cj-real`-Produkten tragen als SKU eine **reine Ziffernfolge — das IST die CJ-pid**,
+  keine SKU. Der Resolver probierte nur `variantSku`/`productSku`, traf nie, und verwarf sie still als
+  „keine CJ-pid → skip". **Dieselbe Fehlerklasse wie der `apiKey`/`password`-Auth-Bug: ein stummer Skip sieht aus
+  wie „keine Daten".** Fix: bei `/^\d{15,}$/` zuerst `pid=` abfragen. Belegt am Faltbrett (Platz 32): vorher
+  „keine pid", danach **8 echte ≥4★-Reviews**, live importiert, Judge.me zeigt **4,75★ aus 16**.
+- **🖼️ VOR TEXTARBEIT AN EINEM CJ-PRODUKT IMMER DAS ERSTE BILD ANSEHEN.** 4 von 5 geprüften Top-Seiten waren
+  falsch beschriftet — und die Abweichung stand **nie im Text, immer auf dem Herstellerfoto**:
+  | Keyword (Vol./Mt) | hiess | ist |
+  |---|---|---|
+  | kleiner kühlschrank (4400) | „Mini-Kühlschrank für den Haushalt" | **Insulin-Kühlbox** → DRAFT |
+  | fotodrucker (1900) | „Mini Fotodrucker" | **Paperang-Thermodrucker, s/w, 57 mm** |
+  | finger skateboard (1300) | „Finger-Skateboard-Brücke" | **2 Achsen, kein Board** |
+  | schrank organizer (720, Platz 32) | „Organizer mit Schubladen" | **Wäsche-Faltbrett 23 × 28,5 cm** |
+  Die 5. Prüfung (`baumwoll-camisole-608000`) war **sauber** → Stand 4 von 5, keine Verallgemeinerung auf den Katalog.
+- **⛔ EIN DRAFT HAT MEISTENS EINEN GRUND — TAGS LESEN, BEVOR MAN AKTIVIERT.** Ich hatte `holzspiegel-…-621200`
+  als „gerettete 404-Chance" live geschaltet und die Tags `marge-verlust-draft`/`verlust-auto-draft` übersehen:
+  **VK CHF 15.90 bei EK CHF 33.62 = −17.72 je Stück**, in 9 Kanälen. Zurück auf DRAFT, keine Bestellung betroffen.
+  Rentabel erst ab ~CHF 50 → **Preisentscheid beim User**. Gegenprobe katalogweit: **0 von 23 701** Produkten
+  mit Kostenangabe verkaufen unter Einkauf.
+- **⚖️ Rechtsrisiko:** `ir-nachtsicht-kamera-stift-…-607000` (Tag `verdeckte-ueberwachung`) war aktiv → DRAFT.
+  `mini-gps-tracker-…-254336` bleibt bewusst gesperrt. **Beides StGB Art. 179bis ff. — nicht aktivieren.**
+  Zwei Beckenboden-Trainer klangen durch Übersetzungsartefakte („Reparatursonde", „Beurteilung", „analysieren")
+  nach Diagnosegerät (MepV) → nur Wortlaut entschärft, Produkte bleiben verkäuflich.
+- **📏 GRÖSSTE OFFENE LÜCKE: 72 % ohne Masse.** 6476 von 9000 aktiven `cj-real`-Produkten nennen **keine einzige
+  Zahl mit cm/mm/ml/Liter**. Kein Textproblem — die Masse stehen bei CJ, sind nur nie in die Beschreibung gewandert.
+  Vollautomatisierbar, Bremse ist nur das CJ-Tagespunktelimit. Zweitgrösste Fläche: **62,6 % (25 032 von 40 000)
+  ohne eigenen SEO-Titel** (ohne SEO-Beschreibung dagegen nur 53).
+- **🚚 VERSAND-SCHWELLE: 50 im Text, 45 in der Regel — BEIDES RICHTIG, nicht „korrigieren".** Siehe
+  `dropship/VERSAND-SCHWELLE.md`. Am 04.10. haben **zwei Sitzungen unabhängig** auf 45 „korrigiert" (ich auf
+  365 Objekten + Theme, vollständig zurückgesetzt und nachgeprüft).
+- **✅ Was sauber war (12 000–40 000 aktive Produkte gemessen):** 0 ohne Bild · 0 mit defektem Bild · 0 in 0 Kanälen ·
+  0 mit Preis 0 · 98,7 % der Mehr-Varianten-Produkte voll verfügbar · alle 118 internen Link-Ziele 200 ·
+  **183 Menü-Einträge, 163 Ziele, kein toter Link** · 0 doppelte SEO-Titel (4 aufgelöst).
+- **🔑 MESS-LEHREN (jede hat mich heute einmal erwischt):**
+  1. **HTTP 429 ist nicht 404.** Dreimal hätte ich gesunde Seiten für tot erklärt.
+  2. **Messgerät zuerst gegenprüfen.** „10 Produkte nicht kaufbar" kam davon, dass ich nur die **ersten 4 Varianten**
+     las; „23 611 falsche Versand-Schwellen" davon, dass das Muster „Länge von 50-65 cm" mitzählte.
+  3. **Live-Prüfung mit Cache-Buster**, sonst hält man eine gelungene Änderung für kaputt (Rand-Cache ~20 s).
+  4. Der Scanner las **Theme-Kommentare** als Produkttext — Fundstelle immer im Kontext ansehen.
+- **🟡 BEIM USER:** Widmann-Preise **1,4–2,3× über Schweizer Händlern** (761 Artikel, `dropship/PREIS-STICHPROBE-FORTURA.md`) ·
+  **~60 % des Katalogs per Metafeld aus Google Shopping ausgeschlossen**, Grund unbekannt (`dropship/GOOGLE-SHOPPING-AUSSCHLUSS.md`) ·
+  **Gemini-Credits aufgebraucht (HTTP 402)** → importierte Reviews bleiben in der Originalsprache ·
+  Holzspiegel-Preis. Volle Messberichte: `dropship/QA-BEFUNDE-0410.md`, `CHANCEN-LIVE-ABGLEICH.md`, `KATALOG-AUDIT-9000.md`.
+
 **📌 2026-10-14 nachts (💰 «Max Profit 2»: Pilot 2.0 mit Hebel — Empfehlung 1,75×, schlägt den Live-Pilot mit 1,75×):** Folge des
 Eintrags unten. `maxprofit_p2_pruefung.py` + `maxprofit_kern.lauf_p2`, Protokoll VORAB committet (`f330a1421`).
 - **Modell:** Long bis 1× über Spot, darüber teils Futures-Long. Pfand je Futures-Position = Volumen ÷ L, Spot zählt nicht als Pfand.
