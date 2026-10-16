@@ -45,3 +45,37 @@ Mehr davon ändert daran nichts — das ist dieselbe Lehre wie im Juni, jetzt mi
 
 **Was nur der User kann:** bezahlten Verkehr mit Kaufabsicht (Kampagne auf Conversion statt Reichweite)
 oder Pinterest als intent-starken Gratiskanal aufsetzen.
+
+---
+
+## Wo der Suchverkehr tatsächlich ankommt (90 Tage, 214 Sitzungen)
+
+Erstmals gemessen — das stand bisher nirgends:
+
+| Landeseite | Sitzungen | Zustand |
+|---|---|---|
+| `/` (Markensuchen) | 76 | — |
+| **`/products/rizinusol-wickel-set-mit-bio-ol-323457`** | **53** | DRAFT/0 Kanäle, **aber korrekt weitergeleitet** ✓ |
+| `/blogs/ratgeber/himalaya-salzlampe-wirkung-mythen` | 19 | Ratgeber, verlinkt eine **kaufbare** Lampe ✓ |
+| `/collections/erste-august` | 11 | saisonal (1. August), Verkehr veraltet |
+| `/products/tunmate-rizinusol-382081` | 11 | ACTIVE, 7 Kanäle ✓ |
+| `/collections/camping-kueche` | 6 | |
+| 14 weitere Seiten | je 2–5 | |
+
+### Zwei Erkenntnisse
+
+**1. Rizinusöl ist das stärkste Suchthema des Shops.** 64 der 214 Suchsitzungen landen auf zwei
+Rizinusöl-Seiten, dazu ein französischer Ratgeber zum Rizinusöl-Wickel. Der Katalog hat dazu **vier
+aktive Produkte** (Wimpernserum, Haaröl, Roll-on, Wickel) — ein eigener kleiner Themenbereich, der
+ohne Zutun Suchverkehr zieht. Das ist der naheliegendste Ort, um den funktionierenden Kanal auszubauen.
+
+**2. Ratgeber-Artikel ziehen Suchverkehr.** Der Salzlampen-Artikel bringt 19 Sitzungen, dazu zwei
+weitere Ratgeber mit je 2. Sie führen zu kaufbaren Produkten — die Kette stimmt.
+
+### Geprüft und intakt (nicht angefasst)
+Der Verdacht, die stärkste Suchseite sei tot, hat sich **nicht** bestätigt: `rizinusol-wickel-set-…`
+ist zwar DRAFT in 0 Kanälen, liefert aber **HTTP 200 über eine bestehende Weiterleitung** auf
+`rizinusol-wickel-wiederverwendbar-bauch-nacken` (ACTIVE, CHF 16.90) — eine frühere Sitzung hat das
+sauber gelöst. Auch die vom Ratgeber verlinkte `ufo-kristall-salzlampe-900a8e` ist ACTIVE, 7 Kanäle,
+CHF 26.90, kaufbar.
+**Lehre:** DRAFT + 0 Kanäle heisst nicht automatisch 404 — erst die URL abrufen, dann urteilen.
