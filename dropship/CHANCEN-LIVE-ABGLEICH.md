@@ -221,3 +221,26 @@ Ende **39**. Dazu: **jede Punkteabfrage kostet selbst 10 Punkte.** Für die rest
 Marker `<!-- ls-depth-v1 -->` reichte es nicht mehr. **Nächster Lauf: kein breiter DRY_RUN, direkt mit
 kleinem `ONLY` arbeiten** und die Punkte für die Produkte aufheben, bei denen die fehlende Angabe
 kaufentscheidend ist.
+
+## Zwei offene Fäden geschlossen (16.10.2026)
+
+**1. `aufblasbares sofa` (880/Mt) — kein Canonical-Defekt.** Am 04.10. stand hier «rankt über eine
+`?variant=`-URL → Canonical prüfen». Geprüft: **das Canonical ist korrekt.** Sowohl die saubere URL als
+auch `?variant=56118434038145&country=CH&currency=CHF` tragen
+`<link rel="canonical" href="https://luxestyle.ch/products/aufblasbares-sofa-fur-outdoor-und-camping-626700">`.
+Google kennt die richtige Adresse; die `?variant=`-Form in Semrush ist nur die zufällig erfasste.
+**Nichts zu tun.**
+*Falle dabei:* Mein erster `grep '<link rel="canonical"[^>]*>'` fand nichts, weil das Theme das Tag über
+**mehrere Zeilen** schreibt. Ein einzeiliges Muster hätte hier einen Defekt gemeldet, den es nicht gibt.
+
+**2. `elektrischer-kopfhaut-massagekamm-mit-rotlicht-604800` — der Titel stimmt, die Beschreibung war
+unvollständig.** Am 04.10. notiert: «heisst ‹mit Rotlicht›, die Beschreibung erwähnt Rotlicht nirgends».
+Auf dem Herstellerbild ist der Kammkopf **dicht mit roten LEDs besetzt** — das Rotlicht ist da. Ergänzt
+wurden nur Dinge, die auf dem Foto zu sehen sind: Rotlicht-Kopf, drei Tasten (eine mit **EMS**), **USB**-
+Ladekabel und Anleitung im Lieferumfang, Farbe rot/schwarz. Dazu ausdrücklich: zu Laufzeit, Wellenlänge
+oder medizinischer Wirkung **macht der Hersteller keine Angabe und wir behaupten nichts**.
+Text 1083 → 1714 Zeichen, Marker `<!-- ls-bild-belegt-v1 -->`, live geprüft.
+
+**Damit kippt die Erwartung aus der Bildprüfung einmal in die andere Richtung:** bisher war das Produkt
+immer weniger, als der Titel versprach. Hier war es **mehr** — die Beschreibung verschwieg die
+Hauptfunktion.
