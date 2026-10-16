@@ -1,0 +1,101 @@
+{
+  "typ": "skript",
+  "skript": "storefront_wahrheit.mjs",
+  "id": "storefront-2026-10-16",
+  "warum": "Der Agent ist das EINZIGE ehrliche Fenster auf luxestyle.ch: unsere Rechenzentrums-IP bekommt vom Shopify-Edge eine eigene, stundenalte Bot-Cache-Kopie (19.08. zweimal belegt, 125 Abrufe ueber 50 Minuten lieferten ausnahmslos die alte Seite). Am 17.09. meldete der bisher EINZIGE Lauf die Startseite als nicht erreichbar (202 Zeichen, waehrend Kollektion und FAQ sauber luden) — und diese Messung steht seither allein da. Eine Momentaufnahme ohne Wiederholung beantwortet nicht, ob es ein Aussetzer war oder der Normalzustand. Taeglich, rein lesend, in Handy-Breite (77 % des Verkehrs). [wiederkehrend, alle 1 Tag(e)]",
+  "stand": "ok",
+  "begonnen": "2026-10-16T00:01:31.400Z",
+  "dauer_s": 55.9,
+  "ergebnis": {
+    "zusammenfassung": "✅ 3 Seiten sauber, jede mehrfach geladen (5/5 · 2/2 · 2/2) — von echter Besucher-IP",
+    "befunde": [
+      {
+        "seite": "startseite",
+        "ziel": "https://luxestyle.ch/?frisch=storefront-2026-10-16-5",
+        "erreichbar": true,
+        "geladen": "5/5",
+        "ohne_cachebust": "1/1",
+        "kalt_gerendert": "4/4",
+        "querscrollen": false,
+        "breite": {
+          "dok": 390,
+          "fenster": 390
+        },
+        "versandzusage": "CHF 50 — richtig",
+        "preis_sichtbar": true,
+        "fehlertexte": [],
+        "zeichen": 5574,
+        "zeichen_spanne": [
+          5533,
+          5574
+        ],
+        "bild": "auftraege/ergebnis/storefront-2026-10-16-startseite.jpg"
+      },
+      {
+        "seite": "kollektion",
+        "ziel": "https://luxestyle.ch/collections/neu-eingetroffen?frisch=storefront-2026-10-16-2",
+        "erreichbar": true,
+        "geladen": "2/2",
+        "ohne_cachebust": "1/1",
+        "kalt_gerendert": "1/1",
+        "querscrollen": false,
+        "breite": {
+          "dok": 390,
+          "fenster": 390
+        },
+        "versandzusage": "CHF 50 — richtig",
+        "preis_sichtbar": true,
+        "fehlertexte": [],
+        "zeichen": 3763,
+        "zeichen_spanne": [
+          3763,
+          3763
+        ],
+        "bild": "auftraege/ergebnis/storefront-2026-10-16-kollektion.jpg"
+      },
+      {
+        "seite": "faq",
+        "ziel": "https://luxestyle.ch/pages/faq?frisch=storefront-2026-10-16-2",
+        "erreichbar": true,
+        "geladen": "2/2",
+        "ohne_cachebust": "1/1",
+        "kalt_gerendert": "1/1",
+        "querscrollen": false,
+        "breite": {
+          "dok": 390,
+          "fenster": 390
+        },
+        "versandzusage": "CHF 50 — richtig",
+        "preis_sichtbar": true,
+        "fehlertexte": [],
+        "zeichen": 3114,
+        "zeichen_spanne": [
+          3114,
+          3114
+        ],
+        "bild": "auftraege/ergebnis/storefront-2026-10-16-faq.jpg"
+      }
+    ]
+  },
+  "bilder_weiche": {
+    "oeffentlich": true,
+    "im_repo": [
+      {
+        "datei": "auftraege/ergebnis/storefront-2026-10-16-faq.jpg",
+        "bytes": 59286,
+        "vorher_bytes": 74346
+      },
+      {
+        "datei": "auftraege/ergebnis/storefront-2026-10-16-kollektion.jpg",
+        "bytes": 53302,
+        "vorher_bytes": 94104
+      },
+      {
+        "datei": "auftraege/ergebnis/storefront-2026-10-16-startseite.jpg",
+        "bytes": 56431,
+        "vorher_bytes": 266178
+      }
+    ],
+    "auf_server": []
+  }
+}
