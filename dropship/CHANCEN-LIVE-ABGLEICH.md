@@ -201,3 +201,23 @@ auch nicht automatisch tun (eine Inhaltsprüfung für einen Einzelfall wäre meh
 Ein `DRY_RUN=1` über 12 Produkte verbrauchte **~2100 von 2661 Punkten**. „Trocken" heisst nur: es wird
 nichts nach Judge.me geschrieben — die CJ-Abfragen laufen trotzdem. **Probelauf immer mit kleinem `ONLY`**,
 nicht über die ganze Charge.
+
+### Massangaben nachgetragen (16.10.2026)
+Mit den letzten CJ-Punkten des Tages die **zwei Angaben geholt, die über den Kauf entscheiden** — beide
+waren auf den Seiten nirgends zu finden:
+
+| Seite | fehlte | jetzt belegt (CJ) |
+|---|---|---|
+| `selbstklebende-mobelfolie-650114` (CHF 32.90) | **Rollenmass** | **500 × 90 cm = 4,5 m²**, PVC, 445 g |
+| `edelstahl-trinkflasche-mit-strohhalm-638900` (CHF 15.90) | **Fassungsvermögen** | **600 ml**, 316er Edelstahl, 380 g |
+
+Beide Titel tragen die Angabe jetzt vorne («Möbelfolie · 500 × 90 cm Rolle», «Trinkflasche 600 ml»), weil
+genau danach gesucht wird. Marker `<!-- ls-specs-v1 -->` für Idempotenz, live geprüft.
+Bei CHF 32.90 für 4,5 m² lässt sich der Preis überhaupt erst beurteilen — vorher stand da eine Zahl ohne Bezug.
+
+### 💸 Das Punktebudget ist der echte Engpass
+Tagesverlauf 16.10.: Start **2661** → Probelauf über 12 Produkte **−2100** → scharfer Import + Prüfungen →
+Ende **39**. Dazu: **jede Punkteabfrage kostet selbst 10 Punkte.** Für die restlichen 7 Seiten mit dem
+Marker `<!-- ls-depth-v1 -->` reichte es nicht mehr. **Nächster Lauf: kein breiter DRY_RUN, direkt mit
+kleinem `ONLY` arbeiten** und die Punkte für die Produkte aufheben, bei denen die fehlende Angabe
+kaufentscheidend ist.
