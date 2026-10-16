@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-15T09:07:39Z",
+ "stand": "2026-10-16T08:59:54Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,83 +18,83 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Wenige Wochen vor der Premiere: KI-Agent soll ganze Staffel einer TV-Serie gelöscht haben",
-   "u": "https://t3n.de/news/wenige-wochen-vor-der-premiere-ki-agent-soll-ganze-staffel-einer-tv-serie-geloescht-haben-1768359/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-10-15T09:00:46Z",
-   "s": "Eigentlich war die Ausstrahlung der zweiten Staffel von „The Challenge Sverige“ für November geplant. Jetzt muss das Rohmaterial noch einmal neu geschnitten werden. weiterlesen auf t3n.de",
-   "sprache": "de"
-  },
-  {
-   "t": "Launcher: Epic Games provoziert mit Vibe Coding und erntet Spott",
-   "u": "https://www.golem.de/news/launcher-epic-games-provoziert-mit-vibe-coding-und-erntet-spott-2610-214134.html",
+   "t": "Zweites Update in einer Woche: Google schließt erneut kritische Lücke in Chrome",
+   "u": "https://www.golem.de/news/zweites-update-in-einer-woche-google-schliesst-erneut-kritische-luecke-in-chrome-2610-214175.html",
    "q": "Golem",
-   "d": "2026-10-15T08:40:02Z",
-   "s": "Ein neuer Launcher ist mit KI entstanden. Epic Games stellt das positiv dar, in der Community sorgt das für Spott und Kritik. (Epic Games, KI)",
+   "d": "2026-10-16T08:47:02Z",
+   "s": "Das Update verhindert eine Remotecodeausführung außerhalb der Sandbox von Chrome. Die Lücke entdeckte ein Mitarbeiter von Anthropic. (Chrome, Google)",
    "sprache": "de"
   },
   {
-   "t": "Datenschutz beim HomeView: Was Apple plant und wo Defizite liegen",
-   "u": "https://www.heise.de/news/Datenschutz-beim-HomeView-Was-Apple-plant-und-wo-Defizite-liegen-11486783.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-15T08:40:00Z",
-   "s": "Apples Heimzentrale hat kein Face ID, nutzt aber dennoch Gesichtserkennung. So hält das Gerät Personen auseinander – auch für Siri AI.",
-   "sprache": "de"
-  },
-  {
-   "t": "heise-Angebot: CLC 2026: KI, Platform Engineering, Software Delivery – noch Ticket sichern",
-   "u": "https://www.heise.de/news/CLC-2026-KI-Platform-Engineering-Software-Delivery-noch-Ticket-sichern-11487286.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-15T08:00:00Z",
-   "s": "Die CLC 2026 zeigt am 11. und 12. November KI-gestützte Softwareentwicklung, DevEx, Platform Engineering und Kubernetes-Betrieb.",
-   "sprache": "de"
-  },
-  {
-   "t": "Hype um Three.js: Warum KI-Agenten diese JavaScript-Bibliothek lieben",
-   "u": "https://t3n.de/news/three-js-ki-agenten-javascript-bibliothek-1767987/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Muse Spark Open: Für dieses KI-Modell brauchst du einen Mac, den es noch gar nicht gibt",
+   "u": "https://t3n.de/news/meta-muse-spark-open-mac-studio-m5-ultra-1768510/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-10-15T07:30:21Z",
-   "s": "Eigentlich ist Three.js nur bei Webentwicklungsprofis bekannt. Plötzlich schreibt das Tool wöchentliche Downloadzahlen im zweistelligen Millionenbereich. Was stweiterlesen auf t3n.de",
+   "d": "2026-10-16T08:45:23Z",
+   "s": "Metas neues Modell Muse Spark Open läuft offline auf dem Mac – allerdings nicht auf jedem beliebigen Apple-Computer. Man braucht vorzugsweise eine Konfiguration des Mac Studio, die es noch gar nicht g…",
    "sprache": "de"
   },
   {
-   "t": "Jugendschutz: Acht US-Bundesstaaten verklagen OpenAI",
-   "u": "https://www.golem.de/news/jugendschutz-acht-us-bundesstaaten-verklagen-openai-2610-214126.html",
+   "t": "Kolibri-1 denkt deutsch. Hilft das auch beim Antworten?",
+   "u": "https://www.heise.de/hintergrund/Kolibri-1-denkt-deutsch-Hilft-das-auch-beim-Antworten-11489670.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-10-16T08:39:00Z",
+   "s": "Aleph Alphas Kolibri-1 ist ein neues KI-Modell, das speziell für deutsche Texte optimiert wurde und auch auf Deutsch argumentiert. iX hat es ausprobiert.",
+   "sprache": "de"
+  },
+  {
+   "t": "Scraping in den Nutzungsbedingungen: Meta zwingt Webseiten KI-Zugriff zu erlauben",
+   "u": "https://www.golem.de/news/scraping-in-den-nutzungsbedingungen-meta-zwingt-webseiten-ki-zugriff-zu-erlauben-2610-214174.html",
    "q": "Golem",
-   "d": "2026-10-15T06:36:01Z",
-   "s": "ChatGPT soll Minderjährige gefährden und Wahnvorstellungen verstärken. Daher ziehen US-Bundesstaaten nun gegen OpenAI vor Gericht. (OpenAI, KI)",
+   "d": "2026-10-16T08:11:02Z",
+   "s": "Die Meta-Nutzungsbedingungen sehen auch Test-Accounts für KI-Bots vor, um auf geschützte Inhalte für das LLM-Training zugreifen zu können. (Meta, KI)",
    "sprache": "de"
   },
   {
-   "t": "Figma announces new features to define how agents work on its platform",
-   "u": "https://techcrunch.com/2026/10/14/figma-announces-new-features-to-define-how-agents-work-on-its-platform/",
-   "q": "TechCrunch AI",
-   "d": "2026-10-15T04:30:00Z",
-   "s": "Figma is also releasing its code layers feature in open beta.",
-   "sprache": "en"
+   "t": "Siri AI bleibt draußen: Apple-Intelligence-Start in China naht",
+   "u": "https://www.heise.de/news/Apple-Intelligence-kommt-nach-China-ohne-Siri-AI-11489007.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-10-16T08:07:00Z",
+   "s": "Seit zwei Jahren versucht Apple, sein KI-System im Reich der Mitte auf die Geräte zu holen. Die Zulassung liegt nun offenbar vor – ein Starttermin auch.",
+   "sprache": "de"
   },
   {
-   "t": "Ricursive Intelligence is betting on AI-designed chips to help solve the compute crisis",
-   "u": "https://techcrunch.com/2026/10/14/ricursive-intelligence-is-betting-on-ai-designed-chips-to-help-solve-the-compute-crisis/",
-   "q": "TechCrunch AI",
-   "d": "2026-10-15T01:01:32Z",
-   "s": "The founders detailed how their startup is developing AI that can design chips, learn from each iteration, and improve subsequent designs, all with the goal of automating and accelerating the chip des…",
-   "sprache": "en"
+   "t": "Gleiche Person in jedem Bild: Wie visuelle Workflow-Tools das größte KI-Problem lösen",
+   "u": "https://t3n.de/news/visuelles-arbeiten-fuer-ki-bilder-und-videos-1731511/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-10-16T07:55:00Z",
+   "s": "Hochwertige KI-Bilder und -Videos entstehen selten mit einem einzigen Tool. Der kreative Prozess zerfällt oft in eine Schnitzeljagd über verschiedene Browser-Tabs – unterbrochen von Downloads, Uploads…",
+   "sprache": "de"
   },
   {
-   "t": "HiRO-ACEv2: Simulating extreme weather at 3 km resolution for a fraction of the cost",
-   "u": "https://huggingface.co/blog/allenai/hiro-acev2",
+   "t": "Scaling Indic Pretraining: 2.8 Trillion Tokens and an Open Data Generation Pipeline",
+   "u": "https://huggingface.co/blog/nvidia/scaling-indic-pretraining",
    "q": "Hugging Face",
-   "d": "2026-10-14T16:12:42Z",
+   "d": "2026-10-16T01:44:47Z",
    "s": "",
    "sprache": "en"
   },
   {
-   "t": "Amp puts AI agents to work beyond code with OpenAI models",
-   "u": "https://openai.com/index/amp-beyond-coding",
-   "q": "OpenAI",
-   "d": "2026-10-14T12:00:00Z",
-   "s": "See how Amp pushes the frontier of what agents can do with GPT-6 Astra, Ultrafast, GPT-Live-1, and Sign in with ChatGPT.",
+   "t": "When it came to Cal AI’s viral success, a small army of influencers paid off",
+   "u": "https://techcrunch.com/2026/10/15/when-it-came-to-cal-ais-viral-success-a-small-army-of-influencers-paid-off/",
+   "q": "TechCrunch AI",
+   "d": "2026-10-15T23:44:56Z",
+   "s": "The company generated over $30 million in revenue in two years and was acquired by MyFitnessPal for an undisclosed amount of money in March.",
+   "sprache": "en"
+  },
+  {
+   "t": "Granite Switch 4.1: Chat, Decisions, and Speech from One Endpoint",
+   "u": "https://huggingface.co/blog/ibm-granite/granite-switch-4-1",
+   "q": "Hugging Face",
+   "d": "2026-10-15T20:34:01Z",
+   "s": "",
+   "sprache": "en"
+  },
+  {
+   "t": "Meta launches an open-weight AI model that runs on Macs",
+   "u": "https://techcrunch.com/2026/10/15/meta-launches-an-open-weight-model-that-runs-on-macs/",
+   "q": "TechCrunch AI",
+   "d": "2026-10-15T20:04:53Z",
+   "s": "Meta and Apple have teamed up for the launch of the social media giant's newest model, Muse Spark Open, which will run locally on Apple silicon.",
    "sprache": "en"
   }
  ]
