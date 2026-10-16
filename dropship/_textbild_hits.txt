@@ -18422,3 +18422,12 @@ gid://shopify/Product/16638918099335	16->1	Mechanische Gaming-Tastatur mit Maus-
 gid://shopify/Product/16638919246215	62->0	Klassisches Windspiel aus Holz und Metall
 gid://shopify/Product/16638919541127	8->1	Tastenkappen-Set für Tastaturen – Welpe
 gid://shopify/Product/16638920688007	83->1	Abstraktes Wandbild aus Aluminiumlegierung
+gid://shopify/Product/16638921769351	74->1	Tastenkappen-Set für Tastaturen – Katzenmotiv
+gid://shopify/Product/16638923276679	12->0	Holzkerzenhalter Vintage
+gid://shopify/Product/16638923342215	21->0	Pumps mit Blockabsatz und Plateau
+gid://shopify/Product/16638923473287	55->0	Abstrakte Linien – Wandbild mit Holzrahmen
+gid://shopify/Product/16638924784007	84->0	Gaze-Handtuchdecke mit Pflanzenmuster
+gid://shopify/Product/16638924980615	50->1	Wand-Fotohalter aus Holz
+gid://shopify/Product/16639097602439	39->3	Wander-Halbschuhe für Herren, wasserdicht
+gid://shopify/Product/16639099470215	14->0	Reiserucksack 36–55 L – Oxford, mittelhart
+gid://shopify/Product/16639102517639	54->0	Herren-Sneaker aus Schweinsleder
