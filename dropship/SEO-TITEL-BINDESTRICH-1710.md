@@ -63,3 +63,49 @@ Schweizer Online-Shop · **Gratis-Versand ab CHF 50** (bewusst 50, s. `dropship/
 
 **Gegenprobe am alten Code:** dieselben drei echten Titel, durch die alte `mkSeo` geschickt → **3 von 3
 kaputt**. Die Prüfung greift also wirklich.
+
+---
+
+## Nachmessung: war schon Schaden entstanden? — Nein. Und mein erstes Messgerät log.
+
+Nach dem scharfen Lauf wollte ich wissen, ob frühere Läufe des alten Codes bereits kaputte Titel in
+den Katalog geschrieben haben. Die erste, grobe Prüfung meldete **291 „zerlegte" Titel** unter den
+2000 ältesten Produkten. Das Muster war:
+
+```js
+/\S-\S/.test(produktTitel) && / – /.test(seoTitel)
+```
+
+**Das ist Unsinn** — es flaggt ein Produkt, dessen Titel *irgendwo* einen Bindestrich im Wort hat und
+dessen SEO-Titel *irgendwo* einen Trenner hat. Beides kann an völlig verschiedenen Stellen stehen und
+völlig richtig sein. Wieder die Lehre vom 07.09.: **ein Messgerät, das Bauteile als Fehler zählt,
+treibt die Arbeit in die falsche Richtung** — und beinahe hätte ich 291 „Schäden" gemeldet, die es
+nicht gibt.
+
+Die richtige Messung vergleicht den gespeicherten SEO-Titel mit **beidem**: was das neue Modul
+erzeugen würde und was der alte Code erzeugt hätte (alte `mkSeo` nachgebildet). Ergebnis über die
+2000 ältesten aktiven Produkte, 1226 davon mit SEO-Titel:
+
+| Herkunft | Anzahl |
+|---|---|
+| passt zum neuen Modul | **1061** |
+| stammt vom alten Code | **0** |
+| von früheren Sitzungen handgeschrieben | 165 |
+
+**Es gibt keinen Altschaden.** Der Fehler wurde verhindert, nicht repariert — das Skript kam in dieser
+Umgebung nie bis zu einer Shopify-Anfrage (`SHOPIFY-AUTH-STILLER-NOOP.md`), und in GitHub Actions lief
+es offenbar nie scharf.
+
+**Die 165 handgeschriebenen sind besser als meine** und werden nicht angetastet (der Optimizer füllt
+nur fehlende):
+
+> Jade Roller & Gua Sha Premium Set · Anti-Aging Facelift
+> Kristallspitzen-Set 8-teilig in Holzbox · Rosenquarz, Amethyst & mehr
+
+Das sind echte Keyword-Titel. 29 von ihnen sind **über 60 Zeichen** — ein kleiner Altbefund, aber
+nicht meiner zum Massenumschreiben: ein etwas zu langer, inhaltlich guter Titel ist besser als ein
+kurzer, der nur den Produktnamen wiederholt.
+
+**Ehrlich zur Wirkung meiner 60-Zeichen-Titel:** Shopify setzt ohne SEO-Titel ohnehin den Produkttitel
+ein. Der Gewinn ist der Marken-Zusatz und vor allem die **kontrollierte Meta-Beschreibung** — ein
+CTR-Hebel, keine Keyword-Strategie. Für echte Keyword-Titel bräuchte es Suchvolumen pro Produkt.
