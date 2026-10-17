@@ -11,6 +11,8 @@ on:
       - 'automation/video-autopost-meta.mjs'
       - 'automation/review_safety_test.mjs'
       - 'dropship/cj_enrich.mjs'
+      - 'dropship/ads/render_brand_video.py'
+      - 'dropship/ads/test_render_brand_video.py'
       - '.github/workflows/luxestyle-automation-tests.yml'
   workflow_dispatch: {}
 
@@ -33,10 +35,17 @@ jobs:
             automation/video-autopost-meta.mjs
             automation/review_safety_test.mjs
             dropship/cj_enrich.mjs
+            dropship/ads/render_brand_video.py
+            dropship/ads/test_render_brand_video.py
           sparse-checkout-cone-mode: false
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Renderer stays text-only (no rendering or network)
+        run: python3 -B -m unittest -v dropship/ads/test_render_brand_video.py
       - name: Syntax
         run: |
           node --check automation/cj_reviews_import.mjs
