@@ -100,8 +100,22 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (`dropship/CJ-REVIEWS-QUOTE-1710.md`) hat CJ nur für einen kleinen Teil der 1489 sternlosen
   Produkte Kommentare — **1 von 60** im neuesten Katalogteil, **14 von 139** tiefer gestreut
   (dort Ø 5,9 brauchbare ≥4★). Die alte Zahl stammte aus **Repo-Ledger-pids** (ältere Produkte).
-  Resolver arbeitet (60/60 bzw. 139/150 pids). **Erster scharfer Lauf: 3 echte Reviews live,
-  auf Deutsch.** Rizinusöl bleibt sternlos — dort hat CJ `total: 0`.
+  Resolver arbeitet (60/60 bzw. 139/150 pids). Rizinusöl bleibt sternlos — dort hat CJ `total: 0`.
+- **⭐ SCHARFER LAUF: 1200 Produkte geprüft → 29 Treffer, 169 echte ≥4★-Bewertungen live, 0 Fehler.**
+  Live gegengeprüft: `kabelloser-elite-gaming-controller` **4,62★ aus 8**, `mechanische-tastatur`
+  **4,93★ aus 14**, `smartwatch-pulsefit` **4,6★ aus 5**.
+  **🎯 DAS ENTSCHEIDENDE MUSTER: nicht die Katalogregion, sondern die WARENGRUPPE.** 15 der 29
+  Treffer sind Gaming-Zubehör, dazu Smartwatch/Lautsprecher/Thermodrucker/Drohne. **Mode, Kostüme
+  und Haushalt haben fast nie Kommentare** — in den ersten 369 Produkten (Mode-Region) waren es 0.
+  CJ-Käufer kommentieren Elektronik, keine Sommerkleider. **→ künftige Läufe gezielt auf
+  `tag:gaming` (369), `tag:gadgets` (1482), `tag:elektronik` (4494) statt blind über den Katalog.**
+  Das Leer-Ledger hält schon **1437** Produkte fest = ~28 700 Punkte, die kein Lauf mehr verbrennt.
+- **✅ GEGENBEWEIS GLEICH NACHGELIEFERT:** Lauf nur über `tag:gaming` → **317 geprüft, 37 Treffer
+  (11,7 %), 196 Bewertungen** — gegen blind **1200 geprüft, 29 Treffer (2,4 %), 169 Bewertungen**.
+  **Mehr Bewertungen aus einem Viertel der CJ-Punkte.** **Heute gesamt: 368 echte ≥4★-Bewertungen
+  auf 67 Produkten, 0 Fehler.** Punkte: 56 730 von 68 875 verbraucht.
+  **→ Nächste Sitzung (nach Punkte-Reset): `tag:gadgets` (1482), dann `tag:elektronik` (4494).
+  Mode/Kostüme/Haushalt zuletzt — dort ist die Quote nahe null.**
 - **🔤 Übersetzung: der 402-Blocker ist weg UND hat jetzt einen Rückfall.** Gemini antwortet wieder
   (verifiziert). Neu `automation/lib/uebersetzen.mjs` + Test (10 Fälle): **Gemini → Groq → Original**.
   `GROQ_API_KEY` funktioniert, aber **nicht mit den Llama-Namen** (HTTP 404) — es sind

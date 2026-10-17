@@ -68,3 +68,62 @@ eine andere Katalogregion ansehen lässt — die Trefferquote hängt messbar dav
 **Erster scharfer Lauf heute:** 3 echte ≥4★-Bewertungen auf
 `mini-spruhventilator-mit-wasserkuhlung-usb-6-stufen-flusterleise` (CJ-pid 2605280514131608300),
 auf Deutsch über Gemini. Keine erfundene Bewertung, kein Doppel-Import (Ledger-Eintrag gesetzt).
+
+---
+
+## Der scharfe Lauf: 169 echte Bewertungen auf 29 Produkten — und ein klares Muster
+
+**1200 Produkte geprüft, 29 Treffer, 169 echte ≥4★-Bewertungen importiert, 0 Fehler.**
+Live gegengeprüft (Shopify-Metafelder `reviews.rating`):
+
+| Produkt | jetzt |
+|---|---|
+| `kabelloser-elite-gaming-controller-619800` | **4,62★ aus 8** |
+| `mechanische-tastatur-617400` | **4,93★ aus 14** |
+| `smartwatch-pulsefit-fitness-anrufe-611100` | **4,6★ aus 5** |
+
+### Das Muster ist nicht „wo im Katalog", sondern „welche Warengruppe"
+
+Von den 29 Treffern sind **15 Gaming-Zubehör** (Controller, Gamepads, Joysticks, Thumbsticks,
+Ladestation, mechanische Tastatur), dazu Smartwatch, Fitness-Tracker, Bluetooth-Lautsprecher,
+Thermodrucker, Drohnen-Modul. **Mode, Kostüme und Haushalt haben fast nie Kommentare** — in den
+ersten 369 geprüften Produkten (Mode/Deko-Region) war die Trefferquote **0**.
+
+Das erklärt die scheinbar widersprüchlichen Stichproben weiter oben: nicht die Katalog-*Region*
+entscheidet, sondern **was für ein Produkt es ist**. CJ-Käufer kommentieren Elektronik, nicht
+Sommerkleider.
+
+**Folge für die Arbeit:** zuerst die Warengruppen abgrasen, in denen es Bewertungen gibt.
+Gemessene Segmentgrössen (aktiv, `cj-real`): `tag:elektronik` **4494** · `tag:gadgets` **1482** ·
+`tag:gaming` **369**. Ein Lauf über `tag:gaming` kostet ~7400 CJ-Punkte und trifft nach diesem
+Befund weit häufiger als ein blinder Lauf über den ganzen Katalog.
+
+### Das Leer-Ledger trägt sofort
+
+`dropship/cj_reviews_leer.txt` hält jetzt **1157 Produkte** fest (1056 ohne Kommentare, 101 ohne
+auflösbare CJ-pid). Diese 1157 kosten den nächsten Lauf **keinen einzigen Punkt** mehr — vorher
+wären das 23 140 Punkte gewesen, ein Drittel des Tagesvorrats, für ein garantiert leeres Ergebnis.
+
+**CJ-Punkte heute:** 52 280 von 68 875 verbraucht, 23 927 übrig.
+
+---
+
+## Der Gegenbeweis: gezielt schlägt blind um das Fünffache
+
+Direkt nach dem Befund „die Warengruppe entscheidet" ein Lauf nur über `tag:gaming` — gleiche
+Werkzeuge, gleicher Tag, nur eine andere Auswahl:
+
+| Lauf | geprüft | Treffer | Quote | Bewertungen | CJ-Punkte (ca.) |
+|---|---|---|---|---|---|
+| blind über den Katalog | 1200 | 29 | **2,4 %** | 169 | 24 000 |
+| gezielt `tag:gaming` | 317 | **37** | **11,7 %** | **196** | 6 300 |
+
+**Mehr Bewertungen aus einem Viertel der Punkte.** Der gezielte Lauf hat ausserdem 40 Produkte
+übersprungen, weil das Leer-Ledger sie schon kannte — die Ersparnis fängt sofort an zu wirken.
+
+**Heute insgesamt: 368 echte ≥4★-Bewertungen auf 67 Produkten, 0 Fehler.**
+CJ-Punkte: 56 730 von 68 875 verbraucht, 20 464 übrig. Leer-Ledger: 1437 Produkte.
+
+**Nächster Schritt für die nächste Sitzung** (Punkte-Reset abwarten):
+`QUERY="status:active AND tag:cj-real AND tag:gadgets"` (1482 Produkte, ~30 000 Punkte), danach
+`tag:elektronik` (4494). Mode, Kostüme und Haushalt erst zuletzt — dort ist die Quote nahe null.
