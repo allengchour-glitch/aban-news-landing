@@ -8,10 +8,11 @@
  * ENV: PRINTFUL_API_KEY (Pflicht) · [PRINTFUL_STORE_ID] · SHOPIFY_SHOP · SHOPIFY_CLIENT_ID/SECRET (oder _ADMIN_TOKEN)
  *      [PF_USD_CHF=0.90] · [MARKUP=2.3] · [MIN_MARGE=12] · [TAG=printful_personalized_product] · [MAX=300] · [DRY_RUN=1]
  */
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 const SHOPraw=process.env.SHOPIFY_SHOP||'';
 const ADMIN_TOKEN=(process.env.SHOPIFY_ADMIN_TOKEN||'').trim();
 const CID=(process.env.SHOPIFY_CLIENT_ID||'').trim();
-const CSEC=(process.env.SHOPIFY_CLIENT_SECRET||'').trim();
+const CSEC=(shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET)||'').trim();
 const PF_KEY=(process.env.PRINTFUL_API_KEY||'').trim();
 const PF_STORE=(process.env.PRINTFUL_STORE_ID||'').trim();
 const RATE=parseFloat(process.env.PF_USD_CHF||'0.90')||0.90;

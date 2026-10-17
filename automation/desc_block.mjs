@@ -9,10 +9,11 @@
  *   - SHOPIFY_CLIENT_ID + SHOPIFY_CLIENT_SECRET = Client-Credentials-Grant.
  * ENV: SHOPIFY_SHOP · COLLECTION (Default 'damen-mode') · MAX (Default 60) · DRY_RUN=1
  */
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 const SHOPraw = process.env.SHOPIFY_SHOP || '';
 const ADMIN_TOKEN = (process.env.SHOPIFY_ADMIN_TOKEN || '').trim();
 const CID = (process.env.SHOPIFY_CLIENT_ID || '').trim();
-const CSEC = (process.env.SHOPIFY_CLIENT_SECRET || '').trim();
+const CSEC = (shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET) || '').trim();
 const COLLECTION = process.env.COLLECTION || 'damen-mode';
 const MAX = Math.max(1, parseInt(process.env.MAX || '60', 10) || 60);
 const DRY = process.env.DRY_RUN === '1';

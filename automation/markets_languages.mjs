@@ -5,8 +5,9 @@
  * fasst die Markt-Web-Presence der Parallel-Session NICHT an (nur Report). No-op ohne Creds. DRY_RUN=1.
  * ENV: SHOPIFY_SHOP + SHOPIFY_CLIENT_ID/SECRET (oder _ADMIN_TOKEN) · [LOCALES=fr,it,en] · [DRY_RUN=1]
  */
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 const SHOPraw=process.env.SHOPIFY_SHOP||''; const ADMIN_TOKEN=(process.env.SHOPIFY_ADMIN_TOKEN||'').trim();
-const CID=(process.env.SHOPIFY_CLIENT_ID||'').trim(); const CSEC=(process.env.SHOPIFY_CLIENT_SECRET||'').trim();
+const CID=(process.env.SHOPIFY_CLIENT_ID||'').trim(); const CSEC=(shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET)||'').trim();
 const DRY=process.env.DRY_RUN==='1'; const API='2025-01';
 const WANT=(process.env.LOCALES||'fr,it,en').split(',').map(s=>s.trim().toLowerCase()).filter(Boolean);
 let SHOP=SHOPraw.replace(/^https?:\/\//,'').replace(/\/.*$/,'').trim(); if(!/myshopify\.com$/.test(SHOP)) SHOP='au3j0y-hq.myshopify.com';

@@ -11,8 +11,10 @@
  * No-op-sicher · DRY-Default · LIVE=1 schreibt · SCAN=Anzahl zuletzt geänderter Produkte.
  * ENV: SHOPIFY_SHOP + (SHOPIFY_ADMIN_TOKEN | SHOPIFY_CLIENT_ID+SHOPIFY_CLIENT_SECRET)
  */
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
+import { shopifyGql } from './lib/shopify_gql.mjs';
 const SHOP=process.env.SHOPIFY_SHOP||'', TOK_ST=process.env.SHOPIFY_ADMIN_TOKEN||'',
-  CID=process.env.SHOPIFY_CLIENT_ID||'', CS=process.env.SHOPIFY_CLIENT_SECRET||'',
+  CID=process.env.SHOPIFY_CLIENT_ID||'', CS=shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET)||'',
   LIVE=process.env.LIVE==='1', SCAN=Math.min(parseInt(process.env.SCAN||'250',10),3000), API='2025-01';
 
 async function getToken(){
@@ -22,11 +24,8 @@ async function getToken(){
     const j=await r.json().catch(()=>({})); return j.access_token||''; }
   return TOK_ST||'';
 }
-async function gql(token,query,variables){
-  const r=await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`,{method:'POST',
-    headers:{'Content-Type':'application/json','X-Shopify-Access-Token':token},body:JSON.stringify({query,variables})});
-  const j=await r.json(); if(j.errors) throw new Error('GraphQL: '+JSON.stringify(j.errors).slice(0,300)); return j.data;
-}
+// Drosselung aussitzen statt aufgeben — Begruendung + Tests in automation/lib/shopify_gql.mjs
+const gql=(token,query,variables)=>shopifyGql(SHOP,API,token,query,variables);
 
 async function main(){
   const report={ ts:new Date().toISOString(), live:LIVE };

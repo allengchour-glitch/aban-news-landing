@@ -18,10 +18,11 @@
  *      LIVE=1             (schreibt; sonst Trockenlauf)
  *      TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID  (optional, für Digest)
  */
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 const SHOP    = process.env.SHOPIFY_SHOP || '';
 const TOK_ST  = process.env.SHOPIFY_ADMIN_TOKEN || '';
 const CID     = process.env.SHOPIFY_CLIENT_ID || '';
-const CSECRET = process.env.SHOPIFY_CLIENT_SECRET || '';
+const CSECRET = shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET) || '';
 const LIVE    = process.env.LIVE === '1';
 const TASK    = (process.env.TASK || 'all').toLowerCase();
 const SCAN    = Math.min(parseInt(process.env.SCAN || '250', 10), 2000);

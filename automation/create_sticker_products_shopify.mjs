@@ -6,8 +6,9 @@
  * Idempotent über Ledger social/designs/_shop_created.txt. DRY_RUN=1 = Vorschau.
  * ENV: SHOPIFY_SHOP, SHOPIFY_CLIENT_ID/SECRET (oder _ADMIN_TOKEN) · [LIMIT=20] · [ONLY=...] · [DRY_RUN=1]
  */
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 const SHOPraw=process.env.SHOPIFY_SHOP||''; const ADMIN_TOKEN=(process.env.SHOPIFY_ADMIN_TOKEN||'').trim();
-const CID=(process.env.SHOPIFY_CLIENT_ID||'').trim(); const CSEC=(process.env.SHOPIFY_CLIENT_SECRET||'').trim();
+const CID=(process.env.SHOPIFY_CLIENT_ID||'').trim(); const CSEC=(shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET)||'').trim();
 const LIMIT=Math.max(1,parseInt(process.env.LIMIT||'20',10)||20);
 const ONLY=(process.env.ONLY||'').split(',').map(s=>s.trim()).filter(Boolean);
 const DRY=process.env.DRY_RUN==='1'; const API='2025-01';

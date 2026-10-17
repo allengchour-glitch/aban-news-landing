@@ -10,8 +10,9 @@
  * ENV: SHOPIFY_SHOP + SHOPIFY_CLIENT_ID/SECRET (oder _ADMIN_TOKEN) · GEMINI_API_KEY · SCOPE · [TARGETS=fr,it,en] · [MAX=1000] · [DRY_RUN=1]
  */
 import fs from 'node:fs';
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 const SHOPraw=process.env.SHOPIFY_SHOP||''; const ADMIN_TOKEN=(process.env.SHOPIFY_ADMIN_TOKEN||'').trim();
-const CID=(process.env.SHOPIFY_CLIENT_ID||'').trim(); const CSEC=(process.env.SHOPIFY_CLIENT_SECRET||'').trim();
+const CID=(process.env.SHOPIFY_CLIENT_ID||'').trim(); const CSEC=(shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET)||'').trim();
 const GEMINI=(process.env.GEMINI_API_KEY||'').trim();
 const SCOPE=(process.env.SCOPE||'hero').trim().toLowerCase();
 const TARGETS=(process.env.TARGETS||'fr,it,en').split(',').map(s=>s.trim().toLowerCase()).filter(Boolean);

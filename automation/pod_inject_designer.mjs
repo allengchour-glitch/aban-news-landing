@@ -5,7 +5,8 @@
  * Auth: Client-Credentials-Grant. No-op-safe ohne Creds. DRY_RUN=1 = nur anzeigen.
  * ENV: SHOPIFY_SHOP, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET, [DRY_RUN]
  */
-const SHOP=process.env.SHOPIFY_SHOP||'', CID=process.env.SHOPIFY_CLIENT_ID||'', SECRET=process.env.SHOPIFY_CLIENT_SECRET||'';
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
+const SHOP=process.env.SHOPIFY_SHOP||'', CID=process.env.SHOPIFY_CLIENT_ID||'', SECRET=shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET)||'';
 const DRY=process.env.DRY_RUN==='1', API='2024-10', JS='https://abannews.com/pod/designer.js';
 if(!SHOP||!CID||!SECRET){ console.log('Shopify-Creds fehlen → No-op.'); process.exit(0); }
 

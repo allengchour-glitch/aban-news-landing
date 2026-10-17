@@ -14,6 +14,7 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 
 const SHOP_FALLBACK = 'au3j0y-hq.myshopify.com';
 let SHOP = (process.env.SHOPIFY_SHOP || '').trim().replace(/^https?:\/\//i, '').replace(/\/.*$/, '').replace(/\s+/g, '');
@@ -23,7 +24,7 @@ if(!/\.myshopify\.com$/i.test(SHOP)){
 }
 const TOK_STATIC = (process.env.SHOPIFY_ADMIN_TOKEN || '').trim();
 const CID = (process.env.SHOPIFY_CLIENT_ID || '').trim();
-const CSECRET = (process.env.SHOPIFY_CLIENT_SECRET || '').trim();
+const CSECRET = (shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET) || '').trim();
 const OUT_BASE = (process.env.OUT_BASE_URL || 'https://abannews.com').replace(/\/$/, '');
 const DRY = process.env.DRY_RUN === '1';
 

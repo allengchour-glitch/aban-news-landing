@@ -10,8 +10,10 @@
  * No-op-sicher · DRY-Default · LIVE=1 · SCAN=Anzahl zuletzt geänderter Produkte (Default 300, max 3000).
  * ENV: SHOPIFY_SHOP + (SHOPIFY_ADMIN_TOKEN | SHOPIFY_CLIENT_ID+SHOPIFY_CLIENT_SECRET)
  */
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
+import { shopifyGql } from './lib/shopify_gql.mjs';
 const SHOP=process.env.SHOPIFY_SHOP||'', TOK_ST=process.env.SHOPIFY_ADMIN_TOKEN||'',
-  CID=process.env.SHOPIFY_CLIENT_ID||'', CS=process.env.SHOPIFY_CLIENT_SECRET||'',
+  CID=process.env.SHOPIFY_CLIENT_ID||'', CS=shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET)||'',
   LIVE=process.env.LIVE==='1', SCAN=Math.min(parseInt(process.env.SCAN||'300',10),3000),
   MAXFIX=Math.min(parseInt(process.env.MAXFIX||'150',10),1000), API='2025-01';
 
@@ -22,11 +24,8 @@ async function getToken(){
     const j=await r.json().catch(()=>({})); return j.access_token||''; }
   return TOK_ST||'';
 }
-async function gql(token,query,variables){
-  const r=await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`,{method:'POST',
-    headers:{'Content-Type':'application/json','X-Shopify-Access-Token':token},body:JSON.stringify({query,variables})});
-  const j=await r.json(); if(j.errors) throw new Error('GraphQL: '+JSON.stringify(j.errors).slice(0,300)); return j.data;
-}
+// Drosselung aussitzen statt aufgeben — Begruendung + Tests in automation/lib/shopify_gql.mjs
+const gql=(token,query,variables)=>shopifyGql(SHOP,API,token,query,variables);
 // verifizierte Collection-Handles → Label
 const C={schmuck:['premium-schmuck','Schmuck & Uhren'],herren:['fur-ihn','Für Ihn'],damen:['damen-mode','Damenmode'],
   premium:['luxestyle-premium','Premium-Marken'],wohnen:['wohnen-dekoration','Wohnen & Deko'],gadget:['trends-gadgets','Trends & Gadgets'],

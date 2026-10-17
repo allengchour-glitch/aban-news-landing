@@ -18,11 +18,12 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 
 const KEY = process.env.GEMINI_API_KEY || '';
 const SHOP = process.env.SHOPIFY_SHOP || '';
 const CID = process.env.SHOPIFY_CLIENT_ID || '';
-const CSECRET = process.env.SHOPIFY_CLIENT_SECRET || '';
+const CSECRET = shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET) || '';
 const MODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
 const GBASE = process.env.GEMINI_BASE_URL || 'https://generativelanguage.googleapis.com/v1beta';
 const API_VER = process.env.SHOPIFY_API_VERSION || '2025-01';

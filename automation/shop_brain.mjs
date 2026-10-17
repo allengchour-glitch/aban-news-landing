@@ -13,9 +13,10 @@
  *      [SHOPIFY_API_VERSION=2025-01] [SCAN_LIMIT=50] [TELEGRAM_BOT_TOKEN] [TELEGRAM_CHAT_ID] [DRY=1]
  * Aufruf:  node automation/shop_brain.mjs
  */
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 const SHOP = process.env.SHOPIFY_SHOP || "";
 const CID = process.env.SHOPIFY_CLIENT_ID || "";
-const SECRET = process.env.SHOPIFY_CLIENT_SECRET || "";
+const SECRET = shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET) || "";
 const API = process.env.SHOPIFY_API_VERSION || "2025-01";
 const LIMIT = parseInt(process.env.SCAN_LIMIT || "50", 10);
 const DRY = process.env.DRY === "1";
