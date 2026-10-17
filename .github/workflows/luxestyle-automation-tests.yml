@@ -71,6 +71,7 @@ jobs:
           node automation/lib/cj_response_test.mjs
           node automation/lib/cj_fetch_test.mjs
           node automation/lib/judgeme_antwort_test.mjs
+          node automation/lib/bewertung_sichtbarkeit_test.mjs
           node automation/review_safety_test.mjs
           node automation/metricool_checkpoint_test.mjs
           node automation/meta_checkpoint_test.mjs
