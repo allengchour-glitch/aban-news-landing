@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-16T08:59:54Z",
+ "stand": "2026-10-17T08:32:03Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,84 +18,84 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Zweites Update in einer Woche: Google schließt erneut kritische Lücke in Chrome",
-   "u": "https://www.golem.de/news/zweites-update-in-einer-woche-google-schliesst-erneut-kritische-luecke-in-chrome-2610-214175.html",
-   "q": "Golem",
-   "d": "2026-10-16T08:47:02Z",
-   "s": "Das Update verhindert eine Remotecodeausführung außerhalb der Sandbox von Chrome. Die Lücke entdeckte ein Mitarbeiter von Anthropic. (Chrome, Google)",
-   "sprache": "de"
-  },
-  {
-   "t": "Muse Spark Open: Für dieses KI-Modell brauchst du einen Mac, den es noch gar nicht gibt",
-   "u": "https://t3n.de/news/meta-muse-spark-open-mac-studio-m5-ultra-1768510/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Wissenschaftlicher Durchbruch oder Marketing? Wie Anthropics KI-Labor forscht",
+   "u": "https://t3n.de/news/anthropic-ki-forschung-durchbruch-skepsis-1765931/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-10-16T08:45:23Z",
-   "s": "Metas neues Modell Muse Spark Open läuft offline auf dem Mac – allerdings nicht auf jedem beliebigen Apple-Computer. Man braucht vorzugsweise eine Konfiguration des Mac Studio, die es noch gar nicht g…",
+   "d": "2026-10-17T08:10:00Z",
+   "s": "KI-Firmen bestehen darauf, dass ihre Agenten und Sprachmodelle bahnbrechende Fortschritte erzielen. Jüngstes Beispiel aus der Biologie ist ein Vorstoß von Anthrweiterlesen auf t3n.de",
    "sprache": "de"
   },
   {
-   "t": "Kolibri-1 denkt deutsch. Hilft das auch beim Antworten?",
-   "u": "https://www.heise.de/hintergrund/Kolibri-1-denkt-deutsch-Hilft-das-auch-beim-Antworten-11489670.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-16T08:39:00Z",
-   "s": "Aleph Alphas Kolibri-1 ist ein neues KI-Modell, das speziell für deutsche Texte optimiert wurde und auch auf Deutsch argumentiert. iX hat es ausprobiert.",
-   "sprache": "de"
-  },
-  {
-   "t": "Scraping in den Nutzungsbedingungen: Meta zwingt Webseiten KI-Zugriff zu erlauben",
-   "u": "https://www.golem.de/news/scraping-in-den-nutzungsbedingungen-meta-zwingt-webseiten-ki-zugriff-zu-erlauben-2610-214174.html",
-   "q": "Golem",
-   "d": "2026-10-16T08:11:02Z",
-   "s": "Die Meta-Nutzungsbedingungen sehen auch Test-Accounts für KI-Bots vor, um auf geschützte Inhalte für das LLM-Training zugreifen zu können. (Meta, KI)",
-   "sprache": "de"
-  },
-  {
-   "t": "Siri AI bleibt draußen: Apple-Intelligence-Start in China naht",
-   "u": "https://www.heise.de/news/Apple-Intelligence-kommt-nach-China-ohne-Siri-AI-11489007.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-16T08:07:00Z",
-   "s": "Seit zwei Jahren versucht Apple, sein KI-System im Reich der Mitte auf die Geräte zu holen. Die Zulassung liegt nun offenbar vor – ein Starttermin auch.",
-   "sprache": "de"
-  },
-  {
-   "t": "Gleiche Person in jedem Bild: Wie visuelle Workflow-Tools das größte KI-Problem lösen",
-   "u": "https://t3n.de/news/visuelles-arbeiten-fuer-ki-bilder-und-videos-1731511/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "KI entschlüsselt Monsterwellen: So wird das Meer jetzt berechenbar",
+   "u": "https://t3n.de/news/ki-monsterwellen-vorhersage-ozean-1767973/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-10-16T07:55:00Z",
-   "s": "Hochwertige KI-Bilder und -Videos entstehen selten mit einem einzigen Tool. Der kreative Prozess zerfällt oft in eine Schnitzeljagd über verschiedene Browser-Tabs – unterbrochen von Downloads, Uploads…",
+   "d": "2026-10-17T06:50:00Z",
+   "s": "Über Jahrhunderte galten plötzlich auftretende Wasserwände als unberechenbare Gefahr für die Seefahrt. Eine detaillierte Analyse von Milliarden Sensordaten durch künstliche Intelligenz ändert das nun …",
    "sprache": "de"
   },
   {
-   "t": "Scaling Indic Pretraining: 2.8 Trillion Tokens and an Open Data Generation Pipeline",
-   "u": "https://huggingface.co/blog/nvidia/scaling-indic-pretraining",
-   "q": "Hugging Face",
-   "d": "2026-10-16T01:44:47Z",
-   "s": "",
-   "sprache": "en"
-  },
-  {
-   "t": "When it came to Cal AI’s viral success, a small army of influencers paid off",
-   "u": "https://techcrunch.com/2026/10/15/when-it-came-to-cal-ais-viral-success-a-small-army-of-influencers-paid-off/",
+   "t": "Replit is no longer working with Anthropic, CEO says",
+   "u": "https://techcrunch.com/2026/10/16/replit-is-no-longer-working-with-anthropic-ceo-says/",
    "q": "TechCrunch AI",
-   "d": "2026-10-15T23:44:56Z",
-   "s": "The company generated over $30 million in revenue in two years and was acquired by MyFitnessPal for an undisclosed amount of money in March.",
+   "d": "2026-10-16T21:22:28Z",
+   "s": "Masad said the decision was made for a number of different reasons, including cost. Replit announced a partnership with OpenAI in August, but there was never any indication that it was no longer with …",
    "sprache": "en"
   },
   {
-   "t": "Granite Switch 4.1: Chat, Decisions, and Speech from One Endpoint",
-   "u": "https://huggingface.co/blog/ibm-granite/granite-switch-4-1",
-   "q": "Hugging Face",
-   "d": "2026-10-15T20:34:01Z",
-   "s": "",
+   "t": "How Itaú is building generative AI for its entire customer base",
+   "u": "https://openai.com/index/itau-generative-ai",
+   "q": "OpenAI",
+   "d": "2026-10-16T19:00:00Z",
+   "s": "With ia.i, a conversational interface, and the IARA governance platform, Itaú is applying its AI First strategy to customers and employees — in one of Brazil’s most regulated sectors.",
    "sprache": "en"
   },
   {
-   "t": "Meta launches an open-weight AI model that runs on Macs",
-   "u": "https://techcrunch.com/2026/10/15/meta-launches-an-open-weight-model-that-runs-on-macs/",
+   "t": "Roundtables: A Conversation With the Creator of AI-Designed Viruses",
+   "u": "https://www.technologyreview.com/2026/10/16/1146224/roundtables-a-conversation-with-the-creator-of-ai-designed-viruses/",
+   "q": "MIT Tech Review",
+   "d": "2026-10-16T18:00:00Z",
+   "s": "Listen to the session or watch below Can AI design new life forms? In 2025, Stanford University PhD student Samuel King came up with a preliminary answer when he used a generative AI model to propose …",
+   "sprache": "en"
+  },
+  {
+   "t": "India becomes the latest country to report rogue AI agent activity",
+   "u": "https://techcrunch.com/2026/10/16/india-becomes-the-latest-country-to-report-rogue-ai-agent-activity/",
    "q": "TechCrunch AI",
-   "d": "2026-10-15T20:04:53Z",
-   "s": "Meta and Apple have teamed up for the launch of the social media giant's newest model, Muse Spark Open, which will run locally on Apple silicon.",
+   "d": "2026-10-16T17:52:24Z",
+   "s": "The agents got in through credentials and connection settings left exposed in app configurations, public code repositories, and overly permissive cloud roles.",
    "sprache": "en"
+  },
+  {
+   "t": "Stellar Intelligent Network: Huawei rüstet Netzwerke in Europa für den KI-Boom auf",
+   "u": "https://www.golem.de/news/stellar-intelligent-network-huawei-ruestet-netzwerke-in-europa-fuer-den-ki-boom-auf-2610-214207.html",
+   "q": "Golem",
+   "d": "2026-10-16T17:38:01Z",
+   "s": "Mit einer Aktualisierung seiner Enterprise-Network-Produktlinie reagiert Huawei auf KI-Agenten und Rechencluster. Der Druck auf etablierte US-Ausrüster im europäischen Markt wächst damit spürbar. (Hua…",
+   "sprache": "de"
+  },
+  {
+   "t": "(g+) Gehirn-Computer-Schnittstelle: Was passiert, wenn KI unsere Gedanken lesen kann?",
+   "u": "https://www.golem.de/news/gehirn-computer-schnittstelle-was-passiert-wenn-ki-unsere-gedanken-lesen-kann-2610-214203.html",
+   "q": "Golem",
+   "d": "2026-10-16T16:00:02Z",
+   "s": "Kann KI bald Gedanken lesen? In seinem Kommentar in der Financial Times wirft John Thornhill einen Blick auf Chancen und Risiken. Unsere Leseempfehlung. Von John Thornhill (BCI, Silicon Valley)",
+   "sprache": "de"
+  },
+  {
+   "t": "RTX Spark im Test: Nvidias erster Notebook-Chip für lokale KI",
+   "u": "https://www.heise.de/news/RTX-Spark-im-Test-Nvidias-erster-Notebook-Chip-fuer-lokale-KI-11490664.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-10-16T15:38:00Z",
+   "s": "Das erste RTX-Spark-Notebook im c’t-3003-Testlabor: Kann das Asus ProArt P14 die KI-Versprechen einlösen? Und: Läuft es wirklich nur mit Windows?",
+   "sprache": "de"
+  },
+  {
+   "t": "KI-Update: Schwarzer Donnerstag, Neue Open-Weight-Modelle, Klagen gegen OpenAI",
+   "u": "https://www.heise.de/news/KI-Update-Schwarzer-Donnerstag-Neue-Open-Weight-Modelle-Klagen-gegen-OpenAI-11489303.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-10-16T13:00:00Z",
+   "s": "Das „KI-Update“ liefert drei mal pro Woche eine Zusammenfassung der wichtigsten KI-Entwicklungen.",
+   "sprache": "de"
   }
  ]
 }
