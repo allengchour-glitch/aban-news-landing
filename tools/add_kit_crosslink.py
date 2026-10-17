@@ -81,6 +81,45 @@ KIT2SICHT = {
 # Versprechen passt.
 ALLGEMEIN_KIT = "prompt-bibliothek"
 
+# Seiten ausserhalb der Branchen-Familien, die viel verlinkt sind und bisher
+# GAR KEINEN Kaufweg hatten (kein Stripe-Link, kein Shop-Link, kein Kasten).
+# Gemessen über eingehende interne Links; die Zuordnung ist von Hand geprüft,
+# Seite für Seite — eine Pauschal-Zuordnung wäre hier genauso falsch wie bei
+# den Themen-Seiten der ki-fuer-Familie. Bewusst NICHT aufgenommen:
+# ki-hype-detektor (Buzzword-Prüfer, kein Produkt passt), kaufberater-schweiz
+# (fremde Angebote), die Sichtbarkeits-Seiten, deren eigenes Produkt noch
+# keinen Kauf-Link hat, und cockpit-app (steht auf noindex; der Generator
+# überspringt solche Seiten ohnehin, ein Eintrag hier sähe nur nach Wirkung aus).
+KIT2THEMA = {
+    # Zielgruppe: Solopreneure, die mit KI arbeiten wollen.
+    "prompt-bibliothek": [
+        "geld-verdienen-mit-ki",
+        "ebook",
+        "welche-ki-fuer-was",
+        "ki-tool-vergleich",
+        "tools",
+        # Diese beiden trugen schon einen Kasten von Hand — mit fest
+        # eingetipptem "Einmalig 19 CHF". Der Preis wurde am 01.10. auf 14
+        # gesenkt, der Text nie. Der Generator ersetzt ihn durch den Preis
+        # aus dem Katalog; genau dafür liest er die Daten.
+        "ki-prompts-beispiele",
+        "ki-prompts-schreiben",
+    ],
+    # Zielgruppe: Büro-Alltag — Rechnung, Mahnung, Kundentexte.
+    "vorlagen-set": [
+        "selbststaendig-ratgeber",
+        "rechnung-generator",
+        # Ebenfalls mit "19 CHF" von Hand, siehe oben.
+        "ki-email-schreiben",
+        "ki-text-umschreiben",
+        "ki-text-humanisieren",
+    ],
+    # Sammelseite für Geld-Themen: Budget, Miete, Schulden in einem Plan.
+    "finanz-kompass": [
+        "geld-und-ki",
+    ],
+}
+
 
 # Nicht jede ki-fuer-Seite ist ein Betrieb: "KI für Bewerbung", "KI für Excel"
 # oder "KI für Lehrer" sind Themen-Seiten. Eine Prompt-Bibliothek "für
@@ -110,6 +149,7 @@ def familien() -> tuple:
         ("ki-fuer-", KIT2BRANCH, "Direkt loslegen?"),
         ("ki-sichtbarkeit-", KIT2SICHT, "Passend dazu:"),
         ("ki-fuer-", {ALLGEMEIN_KIT: uebrige_branchen()}, "Für jede Branche:"),
+        ("", KIT2THEMA, "Passend dazu:"),
     )
 
 # Ein vorhandener Block endet beim ersten </aside> — er enthält keine weiteren.
@@ -135,7 +175,7 @@ def block(slug: str, p: dict, einleitung: str = "Direkt loslegen?") -> str:
 
     rahmen = ("max-width:760px;margin:22px auto;padding:16px 18px;background:#fff7ed;"
               "border:1px solid #fed7aa;border-left:4px solid #d97706;border-radius:14px;"
-              "font-size:.95rem;line-height:1.55")
+              "color:#1f2937;font-size:.95rem;line-height:1.55")
     knopf = ("display:inline-block;background:#b45309;color:#fff;text-decoration:none;"
              "font-weight:700;padding:11px 18px;border-radius:8px;margin:.7rem 0 .2rem")
     klein = "font-size:.84rem;color:#6b7280;margin:.35rem 0 0"
@@ -212,10 +252,12 @@ def main() -> int:
                         f.write_text(neu_h, encoding="utf-8")
                     geaendert += 1
         art = "wären geändert" if dry else "geändert"
-        print(f"  {praefix}*: {geaendert} Seiten {art}")
+        name = f"{praefix}*" if praefix else "Themen-Seiten"
+        print(f"  {name}: {geaendert} Seiten {art}")
         gesamt += geaendert
 
-    ohne = [s for s in set(list(KIT2BRANCH) + list(KIT2SICHT) + [ALLGEMEIN_KIT])
+    ohne = [s for s in set(list(KIT2BRANCH) + list(KIT2SICHT) + list(KIT2THEMA)
+                           + [ALLGEMEIN_KIT])
             if kat.get(s) and not kat[s].get("buy")]
     print(f"✔ Kauf-Kasten auf {gesamt} Seiten"
           + (f" · {len(ohne)} Kits ohne Kauf-Link (Fallback Shop)" if ohne else ""))

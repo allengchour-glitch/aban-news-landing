@@ -37,14 +37,14 @@ ROOT_CONTENT = ["ki-videos-erstellen.html", "ki-lifestyle.html", "ki-stimmen.htm
 # Englische Inhaltsseiten (eigener englischer Block).
 EN_CONTENT = ["en/about.html", "en/faq.html"]
 
-BLOCK = f"""<aside {MARKER} style="max-width:760px;margin:2rem auto;padding:1.2rem 1.4rem;border:1px solid #ece3d4;border-radius:14px;background:#fffbf5;text-align:center">
+BLOCK = f"""<aside {MARKER} aria-label="Newsletter abonnieren" style="max-width:760px;margin:2rem auto;padding:1.2rem 1.4rem;border:1px solid #ece3d4;border-radius:14px;background:#fffbf5;text-align:center">
   <h2 style="margin:0 0 .4rem;font-size:1.1rem;color:#1f2937">KI verständlich, werktäglich</h2>
   <p style="margin:0 0 .9rem;color:#374151;font-size:.95rem;line-height:1.6">aban news ist ein kurzer, ehrlicher KI-Newsletter für DACH-Profis — 3–5 Minuten, kein Hype.</p>
   <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:600;padding:10px 20px;border-radius:8px;font-size:.95rem">Gratis abonnieren →</a>
 </aside>
 """
 
-BLOCK_EN = f"""<aside {MARKER} style="max-width:760px;margin:2rem auto;padding:1.2rem 1.4rem;border:1px solid #ece3d4;border-radius:14px;background:#fffbf5;text-align:center">
+BLOCK_EN = f"""<aside {MARKER} aria-label="Subscribe to the newsletter" style="max-width:760px;margin:2rem auto;padding:1.2rem 1.4rem;border:1px solid #ece3d4;border-radius:14px;background:#fffbf5;text-align:center">
   <h2 style="margin:0 0 .4rem;font-size:1.1rem;color:#1f2937">AI made clear, every weekday</h2>
   <p style="margin:0 0 .9rem;color:#374151;font-size:.95rem;line-height:1.6">aban news is a short, honest AI newsletter for professionals — 3–5 minutes, no hype.</p>
   <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:600;padding:10px 20px;border-radius:8px;font-size:.95rem">Subscribe free →</a>
