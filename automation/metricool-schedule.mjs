@@ -11,22 +11,25 @@
  *                    media:[<normalisierte URL>], autoPublish:true }
  *
  * ENV: METRICOOL_USER_TOKEN (Pflicht) · METRICOOL_USER_ID (Default 4801419) ·
- *      METRICOOL_BLOG_ID (Default 6394001) · MC_TZ (Default Europe/Zurich) ·
- *      MAX_PER_RUN (Default 50) · DRY_RUN=1
+ *      METRICOOL_BLOG_ID (explizit erforderlich für Live) · MC_TZ (Default Europe/Zurich) ·
+ *      MAX_PER_RUN (Default 50) · DRY_RUN=0 + APPROVE_PUBLISH=1 für Live; sonst Dry-Run.
  */
 import fs from 'node:fs';
 
 const TOKEN = process.env.METRICOOL_USER_TOKEN || '';
 const USER  = process.env.METRICOOL_USER_ID || '4801419';
-const BLOG  = process.env.METRICOOL_BLOG_ID || '6394001';
+const BLOG  = process.env.METRICOOL_BLOG_ID || '';
 const TZ    = process.env.MC_TZ || 'Europe/Zurich';
-const DRY   = process.env.DRY_RUN === '1';
+const DRY   = process.env.DRY_RUN !== '0' || process.env.APPROVE_PUBLISH !== '1';
 const MAX   = Math.max(1, parseInt(process.env.MAX_PER_RUN || '50', 10) || 50);
 const BASE  = 'https://app.metricool.com/api';
 const CSV   = new URL('../social/metricool_queue.csv', import.meta.url).pathname;
 const COLS  = ['id','publish_date','media_url','text','networks','status','scheduled_at','note'];
 
-if (!TOKEN && !DRY) { console.log('Kein METRICOOL_USER_TOKEN → No-op.'); process.exit(0); }
+if (!DRY && (!TOKEN || !BLOG || !process.env.METRICOOL_USER_ID)) {
+  console.error('Metricool: Token, User-ID und verifizierte Marken-ID für Live explizit setzen.');
+  process.exit(1);
+}
 if (!fs.existsSync(CSV)) { console.log('Keine metricool_queue.csv → No-op.'); process.exit(0); }
 
 // --- CSV (gleiche Mechanik wie die anderen Poster) ---
@@ -98,4 +101,4 @@ for(const r of ready.slice(0,MAX)){
 }
 if(!DRY && done>0) fs.writeFileSync(CSV, serialize(rows));
 console.log(`Fertig: ${done} geplant${DRY?' (DRY)':''}.`);
-process.exit(fail && done===0 ? 1 : 0);
+process.exit(fail ? 1 : 0);
