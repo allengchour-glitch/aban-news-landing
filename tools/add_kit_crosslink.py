@@ -22,6 +22,7 @@ import html
 import json
 import re
 import sys
+import pathlib
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -51,6 +52,66 @@ KIT2BRANCH = {
     "goldschmiede": ["goldschmiede"],
 }
 
+# kit-slug -> ki-sichtbarkeit-<alias>-Seiten. Diese Seiten haben ein EIGENES
+# Hauptangebot (das Sichtbarkeits-Paket); der Kit-Kasten ist dort die Ergänzung
+# und steht deshalb am Ende des Inhalts, nicht über dem eigenen Angebot.
+KIT2SICHT = {
+    "aerzte": ["praxen", "zahnaerzte"],
+    "handwerker": ["handwerk"],
+    "steuerberater": ["steuerberatung"],
+    "anwaelte": ["kanzleien"],
+    "gastronomie": ["gastronomie"],
+    "coaches": ["coaches"],
+    "immobilienmakler": ["immobilienmakler"],
+    "friseure": ["friseure"],
+    "fotografen": ["fotografen"],
+    "architekten": ["architekten"],
+    "fitnessstudios": ["fitnessstudios"],
+    "kosmetikstudios": ["kosmetikstudios"],
+    "kfz-werkstaetten": ["kfz-werkstaetten"],
+    "maler": ["maler"],
+    "hotels": ["hotels"],
+    "physiotherapeuten": ["physiotherapie"],
+}
+
+# Für die restlichen ~340 ki-fuer-Seiten gibt es kein eigenes Kit. Ihnen eines
+# der 19 Branchen-Kits anzubieten wäre unehrlich (ein Kit für Ärzte hilft keiner
+# Bäckerei). Die Prompt-Bibliothek ist laut Katalog ausdrücklich
+# "branchen-übergreifend" — das ist das einzige Produkt, das hier ohne falsches
+# Versprechen passt.
+ALLGEMEIN_KIT = "prompt-bibliothek"
+
+
+# Nicht jede ki-fuer-Seite ist ein Betrieb: "KI für Bewerbung", "KI für Excel"
+# oder "KI für Lehrer" sind Themen-Seiten. Eine Prompt-Bibliothek "für
+# Solopreneure" passt dort nicht. Echte Branchen-Seiten tragen die Navigation
+# "Verwandte Branchen" (tools/related_hubs.py), Themen-Seiten nicht.
+BRANCHEN_MARKE = "Verwandte Branchen"
+
+
+def ist_branchenseite(f: pathlib.Path) -> bool:
+    try:
+        return BRANCHEN_MARKE in f.read_text(encoding="utf-8", errors="ignore")
+    except OSError:
+        return False
+
+
+def uebrige_branchen() -> list:
+    """Echte Branchen-Seiten ohne eigenes Kit, alphabetisch (stabil)."""
+    mit_kit = {a for al in KIT2BRANCH.values() for a in al}
+    alle = sorted(f.name[len("ki-fuer-"):-len(".html")]
+                  for f in ROOT.glob("ki-fuer-*.html") if ist_branchenseite(f))
+    return [a for a in alle if a not in mit_kit]
+
+
+# Seitenfamilien: Präfix -> (Zuordnung, Einleitung des Kastens)
+def familien() -> tuple:
+    return (
+        ("ki-fuer-", KIT2BRANCH, "Direkt loslegen?"),
+        ("ki-sichtbarkeit-", KIT2SICHT, "Passend dazu:"),
+        ("ki-fuer-", {ALLGEMEIN_KIT: uebrige_branchen()}, "Für jede Branche:"),
+    )
+
 # Ein vorhandener Block endet beim ersten </aside> — er enthält keine weiteren.
 BLOCK_RE = re.compile(r"<aside[^>]*\bdata-aban-kit\b.*?</aside>\s*", re.S | re.I)
 
@@ -65,7 +126,7 @@ def produkte() -> dict:
     return {p["slug"]: p for p in liste if p.get("slug")}
 
 
-def block(slug: str, p: dict) -> str:
+def block(slug: str, p: dict, einleitung: str = "Direkt loslegen?") -> str:
     """Kauf-Kasten. Mit Kauf-Link: ein Klick zur Zahlung. Ohne: zum Shop."""
     titel = html.escape(p.get("title") or f"KI-Starter-Kit {slug}")
     beschr = html.escape(p.get("desc") or "")
@@ -91,9 +152,9 @@ def block(slug: str, p: dict) -> str:
         fuss = f'<p style="{klein}">Im <a href="/shop.html" style="color:#b45309">Shop</a>.</p>'
 
     beschr_html = f" {beschr}" if beschr else ""
-    return (f'<aside {MARK} data-kit-slug="{slug}" aria-label="Branchen-Kit kaufen" '
+    return (f'<aside {MARK} data-kit-slug="{slug}" aria-label="{titel} kaufen" '
             f'style="{rahmen}">'
-            f'<strong>Direkt loslegen?</strong>{beschr_html} '
+            f'<strong>{html.escape(einleitung)}</strong>{beschr_html} '
             f'Einmalig zahlen, sofort herunterladen, kein Abo.<br>'
             f'{ziel}{fuss}</aside>\n')
 
@@ -103,7 +164,14 @@ def einfuegen(h: str, neu: str) -> str:
     if BLOCK_RE.search(h):
         return BLOCK_RE.sub(lambda _m: neu, h, count=1)
     m = re.search(r"<h2[^>]*>\s*Häufige Fragen", h, re.I)
-    pos = m.start() if m else h.lower().rfind("</body>")
+    if m:
+        pos = m.start()
+    else:
+        # Ohne FAQ ans Ende des Inhalts — vor </body> stünde der Kasten hinter
+        # dem Footer und wäre für die Leserschaft praktisch unsichtbar.
+        pos = h.lower().rfind("</main>")
+        if pos < 0:
+            pos = h.lower().rfind("</body>")
     if pos < 0:
         return h
     return h[:pos] + neu + h[pos:]
@@ -124,29 +192,33 @@ def main() -> int:
         print("✖ data/shop-products.json nicht lesbar — nichts geändert.")
         return 1
 
-    geaendert = ohne_link = 0
-    for slug, aliase in KIT2BRANCH.items():
-        p = kat.get(slug)
-        if not p:
-            continue
-        if not p.get("buy"):
-            ohne_link += 1
-        for a in aliase:
-            f = ROOT / f"ki-fuer-{a}.html"
-            if not f.is_file():
+    gesamt = 0
+    for praefix, zuordnung, einleitung in familien():
+        geaendert = 0
+        for slug, aliase in zuordnung.items():
+            p = kat.get(slug)
+            if not p:
                 continue
-            h = f.read_text(encoding="utf-8", errors="ignore")
-            if re.search(r'<meta[^>]+name=["\']robots["\'][^>]*noindex', h, re.I):
-                continue
-            neu = skript(einfuegen(h, block(slug, p)))
-            if neu != h:
-                if not dry:
-                    f.write_text(neu, encoding="utf-8")
-                geaendert += 1
+            for a in aliase:
+                f = ROOT / f"{praefix}{a}.html"
+                if not f.is_file():
+                    continue
+                h = f.read_text(encoding="utf-8", errors="ignore")
+                if re.search(r'<meta[^>]+name=["\']robots["\'][^>]*noindex', h, re.I):
+                    continue
+                neu_h = skript(einfuegen(h, block(slug, p, einleitung)))
+                if neu_h != h:
+                    if not dry:
+                        f.write_text(neu_h, encoding="utf-8")
+                    geaendert += 1
+        art = "wären geändert" if dry else "geändert"
+        print(f"  {praefix}*: {geaendert} Seiten {art}")
+        gesamt += geaendert
 
-    art = "wären geändert" if dry else "geändert"
-    print(f"✔ Kauf-Kasten auf {geaendert} Branchen-Seiten {art}"
-          + (f" · {ohne_link} Kits ohne Kauf-Link (Fallback Shop)" if ohne_link else ""))
+    ohne = [s for s in set(list(KIT2BRANCH) + list(KIT2SICHT) + [ALLGEMEIN_KIT])
+            if kat.get(s) and not kat[s].get("buy")]
+    print(f"✔ Kauf-Kasten auf {gesamt} Seiten"
+          + (f" · {len(ohne)} Kits ohne Kauf-Link (Fallback Shop)" if ohne else ""))
     return 0
 
 
