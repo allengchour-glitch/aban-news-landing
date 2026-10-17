@@ -7,6 +7,7 @@
  *
  * ENV: SHOPIFY_SHOP, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET (oder SHOPIFY_ADMIN_TOKEN),
  *      LIMIT (max Produkte/Lauf, default 120), DRY_RUN=1,
+ *      PQUERY="status:active AND tag:…", SORT=UPDATED_AT|CREATED_AT, REVERSE=0 (älteste zuerst),
  *      TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
  */
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
@@ -19,6 +20,14 @@ const CSECRET = shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET) || '';
 const TG_T = process.env.TELEGRAM_BOT_TOKEN || '';
 const TG_C = process.env.TELEGRAM_CHAT_ID || '';
 const LIMIT = parseInt(process.env.LIMIT || '120', 10);
+// PQUERY/SORT/REVERSE: der Lauf durchsucht sonst IMMER die zuletzt geaenderten Produkte zuerst —
+// und genau die hat der vorige Lauf schon versorgt. Gemessen 2026-10-17: der zweite Lauf brauchte
+// 15 Minuten fuer 74 Treffer, weil er erst 3315 fertige Produkte neu durchblaettern musste
+// (jede Seite eine Abfrage, mit Drosselpausen). Mit SORT=CREATED_AT REVERSE=0 faengt er dort an,
+// wo die Luecke noch ist.
+const PQUERY = process.env.PQUERY || 'status:active';
+const SORT = (process.env.SORT || 'UPDATED_AT').toUpperCase();
+const REVERSE = process.env.REVERSE !== '0';
 const DRY = process.env.DRY_RUN === '1';
 
 if(!(SHOP && (TOK_STATIC || (CID && CSECRET)))){ console.log('Keine Shopify-Credentials → No-op.'); process.exit(0); }
@@ -57,14 +66,14 @@ TOKEN = await getToken();
 if(!TOKEN){ console.error('Kein Token.'); process.exit(0); }
 
 let after = null, scanned = 0, updated = 0, failedImgs = [];
-const Q = `query($after:String){ products(first:50, after:$after, query:"status:active", sortKey:UPDATED_AT, reverse:true){
+const Q = `query($after:String,$q:String){ products(first:50, after:$after, query:$q, sortKey:${SORT}, reverse:${REVERSE}){
   pageInfo{ hasNextPage endCursor }
   nodes{ id title seo{ title description } featuredMedia{ ... on MediaImage{ id alt } } media(first:3){ nodes{ status } } } } }`;
 const M = `mutation($input:ProductInput!){ productUpdate(input:$input){ product{ id } userErrors{ field message } } }`;
 
 outer:
 while(true){
-  const j = await gql(Q, { after });
+  const j = await gql(Q, { after, q: PQUERY });
   const conn = j?.data?.products;
   if(!conn){ console.error('Query-Fehler:', JSON.stringify(j).slice(0,300)); break; }
   for(const p of conn.nodes){
@@ -86,7 +95,7 @@ while(true){
   after = conn.pageInfo.endCursor;
 }
 
-const msg = `🔎 SEO-Optimizer: ${scanned} Produkte gescannt · ${updated} SEO ${DRY?'(DRY)':'gefüllt'}`
+const msg = `🔎 SEO-Optimizer: ${scanned} Produkte gescannt (${PQUERY}, ${SORT}${REVERSE?'':' aufsteigend'}) · ${updated} SEO ${DRY?'(DRY)':'gefüllt'}`
   + (failedImgs.length ? `\n⚠️ ${failedImgs.length} Produkt(e) mit FAILED-Bild: ${failedImgs.slice(0,8).join(', ')}` : `\n✅ keine FAILED-Bilder`);
 console.log(msg);
 if(TG_T && TG_C && (updated>0 || failedImgs.length)){
