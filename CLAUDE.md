@@ -72,6 +72,43 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-17 spätnachts (👁️ Bewertungen sind da, aber 55 gut bewertete Produkte sind DRAFT):**
+Voller Bericht: `dropship/BEWERTUNGEN-SICHTBARKEIT-1710.md`. Wiederholbar (nur lesen, **0 CJ-Punkte**):
+`PQUERY='tag:elektronik' SCAN=5000 node automation/bewertungen_sichtbar.mjs`.
+- **✅ KORREKTUR der Notiz vom 02.06. („Judge.me-Sterne auf Kacheln" offen): ist ERLEDIGT.** Das Theme malt
+  die Sterne selbst (`lx-card-sterne` in `snippets/product-card.liquid`, seit 01.09., Schwelle **≥ 3 Stimmen
+  UND ≥ 4,0★**); `/collections/gaming` zeigt 2 von 28 Kacheln mit Abzeichen (`5.0 (8)`, `4.8 (8)`). Auch die
+  Produktseite ist sauber: Judge.me rendert server-seitig, der App-Loader deckt das `display:none` am
+  Vorschau-Abzeichen auf. **Meine erste Messung suchte nach Judge.mes Klassen und meldete darum „fehlt".**
+- **Der echte Verlust: 55 stark bewertete Produkte sind DRAFT**, 318 sichtbar. Quote mit Bewertung:
+  `tag:gaming` 10,3 % (728) · `tag:gadgets` 4,2 % (2298) · `tag:elektronik` 6,3 % (5000). Spitzenfall ist der
+  aus dem Importer-Bericht: **`m8-puls-4k-retro-game-console-956928`, 12 Bewertungen, 4,75★, DRAFT, HTTP 404**
+  — Grund `marge-verlust-draft` (VK 15.90 unter EK), also **richtig** gesperrt → Preisentscheid beim User.
+  Dazu **109 Produkte mit 1–2 Stimmen** unter der Kartenschwelle (mehr CJ-Bewertungen helfen dort kaum,
+  CJ liefert pro Produkt alles auf einmal).
+- **🔑 MEIN MESSGERÄT MELDETE 32 GELEGENHEITEN — ES GAB KEINE.** Die erste Fassung kannte nur die Sperrgründe,
+  die hier namentlich stehen. Nachgesehen trug fast jeder „Kandidat" einen anderen, genauso triftigen Grund:
+  **`duplikat-auto-draft` (4000+, davon 3998 OHNE BILD)**, `bilder-geloescht-speicher` (382, 335 ohne Bild),
+  `nicht-fit-elektronik-draft`/`nicht-fit-auto-draft` (170), `dublette-bild`, **`lizenz-nicht-bewerben`**
+  (PS4/PS5/Xbox = Kontosperr-Risiko), `cj-entfernt-…`, `ohne-ek-cj-weg`, `bigbuy-paket-ausgelaufen`.
+  Fix `automation/lib/bewertung_sichtbarkeit.mjs` (Grund-FAMILIEN als Muster) + 29 Tests; danach **0 Kandidaten**.
+  **Wichtigster Test ist die Gegenprobe in die andere Richtung:** harmlose Chargen-Tags dürfen NICHT sperren —
+  `rueckhol-0907` liegt auf über 10 000 aktiven Produkten. **Dieselbe Fehlerklasse wie das Sperrmuster im
+  Merchant-Feed, nur umgekehrt: zu kurz erzeugt Arbeit, die es nicht gibt; zu breit wirft den halben Katalog weg.**
+- **`auto-entwurf-0926` ist die EINZIGE Familie ohne harten Grund:** 3223 Produkte, 3193 DRAFT / **30 längst
+  ACTIVE**, **kein einziges ohne Bild**. Das ist die Fläche des Dauerauftrags „Autopilot-Drafts veredeln".
+- **✅ Eine Freischaltung, vollständig geprüft: `smartwatch-pulsefit-fitness-anrufe-611100` ist LIVE** —
+  VK 53.90 / EK 24.76 = **+29.14 (54 %)**, 4,6★ aus 5 echten Bewertungen, 5 Medien READY, Lieferzeit-Block da,
+  `tracked:false`+`CONTINUE`, 0 Kanal-Sperrtags. Nachgeprüft: HTTP 200, Abzeichen `4.60 / 5`, in 7 Kanälen.
+  **Die drei anderen margen-positiven bleiben bewusst DRAFT** (Rohmarge nur CHF 3–6: `mini-hd-projektor…`
+  +6.15, `usb-mehrfachsteckdose…` +4.47, `…herren-sportuhr-166400` +3.45 — **eine** Rückerstattung frisst
+  den Gewinn mehrerer Verkäufe, und der Shop hatte 4 Rückerstattungen auf 12 Bestellungen).
+  **Preisentscheid beim User, nicht ein Klick auf ACTIVE.**
+- **🟡 BEIM USER:** Preis `m8-puls-4k-retro-game-console-956928` (12 Bewertungen, 4,75★, VK unter EK) ·
+  Preise der drei Dünnmargen-Produkte · **nächster Lauf nach Punkte-Reset:
+  `QUERY='tag:elektronik AND tag:cj-real' SORT=UPDATED_AT REVERSE=1 LIMIT=150–250`** (4684 von 5000 dort
+  noch sternlos).
+
 **📌 2026-10-17 spätabends (⭐ Bewertungs-Import: er HAT Bewertungen live gestellt und „0" gemeldet):**
 Voller Bericht: `dropship/BEWERTUNGEN-STILLER-ERFOLG-1710.md`.
 - **🐛 HTTP 429 verbrannte 36 von 45 Produkten in einem Lauf.** `cjGet()` machte EINEN `fetch` ohne
