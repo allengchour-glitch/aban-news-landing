@@ -82,7 +82,9 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 - **🐌 Alle 8 Wächter gaben bei der ersten Drosselung auf** (gleicher `gql()`-Block ohne Wiederholung;
   ein `SCAN=3000`-Lauf schrieb 0 Alt-Texte). Fix `automation/lib/shopify_gql.mjs` (wachsende Pausen bei
   Throttled/429/5xx) + Test — **wichtigster Test ist die Gegenprobe: ein echter Fehler fliegt sofort**,
-  sonst verschwindet ein falsches Feld in der Warteschleife. `alt_text_guard`: 7 Bilder ohne Alt → 7 gesetzt.
+  sonst verschwindet ein falsches Feld in der Warteschleife. `alt_text_guard`: **526 Bilder ohne Alt-Text gesetzt**
+  (513 davon in den zuletzt geänderten 3000; neu `PQUERY`/`SORT`/`REVERSE=0`, weil der SCAN-Deckel 3000 ist).
+  Nachgeprüft DRY: 0 offen in den letzten 3000 und in den 1200 ältesten.
 - **Sauber:** WELCOME10 aktiv bis 31.12.2027 · 0 schwach bewertete in Werbeflächen · 0 Preis-0 ·
   0 leere Collections. **Offen:** `site-health.mjs` hat keinen DRY-Modus und wertet **jeden** Status
   ≠ 200 als Problem (429 ≠ 404). Volle Berichte: `dropship/WAECHTER-GEPRUEFT-1710.md`.

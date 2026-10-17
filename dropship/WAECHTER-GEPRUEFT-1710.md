@@ -84,7 +84,13 @@ Netzfehlern) + Test mit gefälschtem `fetch`. **Wichtigster Test ist die Gegenpr
 Fehler (`Field 'menu' is missing required arguments`) fliegt **sofort** und wird nicht wiederholt —
 sonst verschwindet ein falsches Feld in einer Warteschleife. Danach lief `SCAN=600` glatt durch.
 
-- **`alt_text_guard`: 7 Bilder ohne Alt-Text gefunden, 7 gesetzt** (SEO + Barrierefreiheit).
+- **`alt_text_guard`: 526 Bilder ohne Alt-Text gesetzt** (SEO + Barrierefreiheit) — 7 in den
+  zuletzt geänderten 600, **513 in den zuletzt geänderten 3000**, dazu 6 in den ältesten Scheiben.
+  Dafür hat der Wächter `PQUERY`, `SORT` und `REVERSE=0` bekommen: der `SCAN`-Deckel liegt bei 3000,
+  der Katalog ist grösser — ohne Scheiben bleibt der Rest unerreichbar.
+  **Nachgeprüft (DRY): 0 offen** in den letzten 3000, in den 1200 ältesten aktiven und in den
+  1200 ältesten Fortura-Produkten. Stichprobe vorher: die älteren Produkte waren schon zu
+  **99 %** versorgt — die Lücke sass fast vollständig im neuen Teil des Katalogs.
 
 ---
 
