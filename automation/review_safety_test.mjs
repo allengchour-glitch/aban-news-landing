@@ -12,8 +12,14 @@ function fixture(t, script) {
   fs.mkdirSync(path.join(root, 'social'));
   const file = path.join(root, 'automation', script);
   fs.copyFileSync(new URL(script, import.meta.url), file);
-  for (const lib of ['shopify_secret.mjs', 'shopify_gql.mjs', 'cj_response.mjs', 'cj_review_ledger.mjs', 'uebersetzen.mjs']) {
-    fs.copyFileSync(new URL('lib/' + lib, import.meta.url), path.join(root, 'automation/lib', lib));
+  // Den ganzen lib-Ordner kopieren statt einer Namensliste: die Liste war beim Hinzufuegen
+  // von automation/lib/cj_fetch.mjs stillschweigend veraltet, das Skript fand sein eigenes
+  // Modul im Fixture nicht (ERR_MODULE_NOT_FOUND) und die Pruefung fiel aus einem Grund,
+  // der mit dem geprueften Verhalten nichts zu tun hat.
+  const libDir = new URL('lib/', import.meta.url);
+  for (const lib of fs.readdirSync(libDir)) {
+    if (!lib.endsWith('.mjs') || lib.endsWith('_test.mjs')) continue;
+    fs.copyFileSync(new URL(lib, libDir), path.join(root, 'automation/lib', lib));
   }
   fs.writeFileSync(path.join(root, 'social/metricool_queue.csv'),
     'id,publish_date,media_url,text,networks,status,scheduled_at,note\n' +
