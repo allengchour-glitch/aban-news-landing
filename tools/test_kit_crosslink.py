@@ -103,6 +103,89 @@ class TestSkript(unittest.TestCase):
         self.assertEqual(k.skript(s), s)
 
 
+class TestSichtbarkeitsSeiten(unittest.TestCase):
+    """Die ki-sichtbarkeit-*-Seiten haben ein eigenes Hauptangebot und keine FAQ."""
+
+    SEITE = ("<html><body><main><section><h2>Mehr</h2></section>\n"
+             "</main>\n<footer>Impressum</footer>\n</body></html>")
+
+    def test_ohne_faq_steht_der_kasten_im_inhalt_nicht_hinter_dem_footer(self):
+        out = k.einfuegen(self.SEITE, k.block("aerzte", P_KAUF))
+        self.assertLess(out.index(k.MARK), out.index("</main>"))
+        self.assertLess(out.index(k.MARK), out.index("<footer>"))
+
+    def test_eigene_einleitung_wird_verwendet(self):
+        b = k.block("aerzte", P_KAUF, "Passend dazu:")
+        self.assertIn("<strong>Passend dazu:</strong>", b)
+        self.assertNotIn("Direkt loslegen?", b)
+
+    def test_jede_zuordnung_zeigt_auf_ein_kit_und_eine_seite(self):
+        kat = k.produkte()
+        fehlende_kits = [s for s in k.KIT2SICHT if s not in kat]
+        self.assertEqual(fehlende_kits, [], f"Kits ohne Produkt: {fehlende_kits}")
+        fehlende_seiten = [a for al in k.KIT2SICHT.values() for a in al
+                           if not (k.ROOT / f"ki-sichtbarkeit-{a}.html").is_file()]
+        self.assertEqual(fehlende_seiten, [], f"Seiten fehlen: {fehlende_seiten}")
+
+    def test_familien_decken_alle_seitentypen_ab(self):
+        praefixe = [f[0] for f in k.familien()]
+        self.assertEqual(praefixe, ["ki-fuer-", "ki-sichtbarkeit-", "ki-fuer-"])
+
+    def test_zweiter_lauf_aendert_die_sichtbarkeitsseite_nicht(self):
+        einmal = bauen(self.SEITE, "aerzte", P_KAUF)
+        self.assertEqual(einmal, bauen(einmal, "aerzte", P_KAUF))
+
+
+class TestAllgemeinesAngebot(unittest.TestCase):
+    """Die ~340 Branchen ohne eigenes Kit bekommen das branchen-übergreifende."""
+
+    def test_seiten_mit_eigenem_kit_sind_ausgenommen(self):
+        # Sonst überschriebe der spätere Lauf den passenden Kit-Kasten durch den
+        # allgemeinen — die 25 besten Seiten würden stillschweigend schlechter.
+        mit_kit = {a for al in k.KIT2BRANCH.values() for a in al}
+        doppelt = mit_kit & set(k.uebrige_branchen())
+        self.assertEqual(doppelt, set(), f"Seiten in beiden Familien: {doppelt}")
+
+    def test_zusammen_ergeben_sie_alle_echten_branchen_seiten(self):
+        mit_kit = {a for al in k.KIT2BRANCH.values() for a in al}
+        echte = {f.name[len("ki-fuer-"):-len(".html")]
+                 for f in k.ROOT.glob("ki-fuer-*.html") if k.ist_branchenseite(f)}
+        self.assertEqual(mit_kit | set(k.uebrige_branchen()), echte)
+
+    def test_themenseiten_sind_keine_branchen(self):
+        # "KI für Bewerbung" oder "KI für Excel" sind Themen, keine Betriebe.
+        # Eine Prompt-Bibliothek "für Solopreneure" gehört dort nicht hin.
+        uebrig = set(k.uebrige_branchen())
+        for thema in ("bewerbung", "excel", "lehrer", "youtube", "hausarbeiten",
+                      "marketing", "podcast", "praesentationen"):
+            if (k.ROOT / f"ki-fuer-{thema}.html").is_file():
+                self.assertNotIn(thema, uebrig, f"Themen-Seite {thema} eingeschlossen")
+
+    def test_filter_erkennt_den_unterschied(self):
+        import tempfile, pathlib as pl
+        with tempfile.TemporaryDirectory() as d:
+            branche = pl.Path(d, "a.html"); branche.write_text(
+                "<h2>Verwandte Branchen</h2>", encoding="utf-8")
+            thema = pl.Path(d, "b.html"); thema.write_text("<p>nur Text</p>",
+                                                           encoding="utf-8")
+            self.assertTrue(k.ist_branchenseite(branche))
+            self.assertFalse(k.ist_branchenseite(thema))
+
+    def test_allgemeines_kit_ist_laut_katalog_branchenuebergreifend(self):
+        p = k.produkte().get(k.ALLGEMEIN_KIT)
+        self.assertIsNotNone(p, f"{k.ALLGEMEIN_KIT} fehlt im Katalog")
+        self.assertIn("branchen-übergreifend", (p.get("desc") or "").lower())
+
+    def test_reihenfolge_ist_stabil(self):
+        self.assertEqual(k.uebrige_branchen(), k.uebrige_branchen())
+        self.assertEqual(k.uebrige_branchen(), sorted(k.uebrige_branchen()))
+
+    def test_allgemeine_familie_laeuft_nach_den_kit_familien(self):
+        f = k.familien()
+        self.assertEqual(f[-1][1], {k.ALLGEMEIN_KIT: k.uebrige_branchen()})
+        self.assertEqual(f[0][1], k.KIT2BRANCH)
+
+
 class TestDaten(unittest.TestCase):
     def test_jede_branche_hat_ein_produkt_im_katalog(self):
         kat = k.produkte()
