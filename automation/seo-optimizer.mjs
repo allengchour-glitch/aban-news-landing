@@ -10,6 +10,8 @@
  *      TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
  */
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
+import { seoTitel } from './lib/seo_titel.mjs';
+import { shopifyGql } from './lib/shopify_gql.mjs';
 const SHOP = process.env.SHOPIFY_SHOP || '';
 const TOK_STATIC = process.env.SHOPIFY_ADMIN_TOKEN || '';
 const CID = process.env.SHOPIFY_CLIENT_ID || '';
@@ -35,20 +37,21 @@ async function getToken(){
   }
   return TOK_STATIC;
 }
-const API = `https://${SHOP}/admin/api/2025-01/graphql.json`;
 let TOKEN = '';
+// Drosselung aussitzen statt aufgeben (automation/lib/shopify_gql.mjs). Der Lauf geht ueber
+// tausende Produkte — ohne Wiederholung endet er nach wenigen Seiten mit „Throttled".
+// shopifyGql liefert `data` direkt und wirft bei echten Fehlern; die Aufrufer unten erwarten
+// die Form { data }, darum hier wieder einpacken.
 async function gql(query, variables){
-  const r = await fetch(API,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':TOKEN},
-    body:JSON.stringify({query, variables})});
-  return r.json();
+  try { return { data: await shopifyGql(SHOP, '2025-01', TOKEN, query, variables) }; }
+  catch (e) { return { errors: [{ message: e.message }] }; }
 }
-const clip = (s,n) => s.length<=n ? s : s.slice(0,n-1).replace(/\s+\S*$/,'')+'…';
-function mkSeo(title){
-  const base = title.replace(/\s*[·–—-]\s*/g,' – ').replace(/\s+/g,' ').trim();
-  const seoTitle = clip(`${base} | LuxeStyle CH`, 60);
-  const seoDesc = clip(`${base} bei LuxeStyle – Schweizer Online-Shop, schnelle Lieferung. Jetzt –10% mit Code WELCOME10.`, 155);
-  return { title: seoTitle, description: seoDesc };
-}
+// Begruendung, Muster und Tests: automation/lib/seo_titel.mjs
+// Kurz: das alte Muster `\s*[·–—-]\s*` traf den Bindestrich MITTEN im Wort und machte aus
+// „Gaming-Controller" → „Gaming – Controller" (985 von 2415 Titeln = 41 % betroffen); die Marke
+// fiel bei langen Titeln ab und hinterliess „|…" (255 = 11 %); und die Beschreibung versprach
+// „schnelle Lieferung", obwohl CJ 10–20 Werktage braucht.
+const mkSeo = (title) => seoTitel(title);
 
 TOKEN = await getToken();
 if(!TOKEN){ console.error('Kein Token.'); process.exit(0); }
