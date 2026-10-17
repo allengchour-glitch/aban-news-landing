@@ -50,5 +50,22 @@ for (const code of [429, 503]) {
   const d = await l.erg;
   pruef('Netzfehler → wiederholt', d?.ok === 1 && l.gewartet.length === 1);
 }
+// Gegenprobe: Auth-/Berechtigungsfehler dürfen nicht als leere Daten durchlaufen.
+for (const status of [401, 403, 404]) {
+  const l = lauf([antwort({ message: 'Access denied' }, status)]);
+  let error = '';
+  try { await l.erg; } catch (e) { error = e.message; }
+  pruef(`HTTP ${status} wird als Fehler gemeldet`, error.includes(`HTTP ${status}`) && l.aufrufe() === 1);
+}
+{
+  const l = lauf([antwort({})]);
+  let error = '';
+  try { await l.erg; } catch (e) { error = e.message; }
+  pruef('HTTP 200 ohne Daten ist kein Erfolg', error.includes('keine Daten'));
+}
+{
+  const l = lauf([antwort({ errors: [], data: { ok: 1 } })]);
+  pruef('Leere Fehlerliste mit Daten ist Erfolg', (await l.erg).ok === 1);
+}
 console.log(fehler ? `\n${fehler} FEHLER` : '\nalle Tests gruen');
 process.exit(fehler ? 1 : 0);

@@ -2,19 +2,20 @@
 # LuxeStyle Marken-Video (60s + 30s) — reproduzierbar. Siehe Doku-Header unten.
 # PRÄFERENZ (User 2026-06-12, aktualisiert): KEIN Voiceover — Text-only-Version bevorzugen
 #   (...-text.mp4 = nur Premium-Musik + on-screen Text). Reels/Marketing ohne Stimme.
-# SETUP: apt-get install -y ffmpeg ; pip install piper-tts ; Kerstin-Voice de_DE-kerstin-low.onnx laden.
-# VO (piper --length_scale 1.08) Texte + Musik (luxe-premium.wav — eigene elegante Komposition, geduckt) + Assets (reels/veo-hero-*, social/enhanced/*).
+# SETUP: Python 3 + ffmpeg + vorhandene Produktmedien und luxe-premium.wav.
+# Ohne --render werden nur Assets geprüft. Kein Piper/TTS nötig, kein Voiceover.
 # Effekte: Ken-Burns, eq+vignette, drawtext-Fade, xfade. WICHTIG: kein '%' in drawtext -> "Prozent".
-# Männerstimme: piper de_DE-thorsten-medium --length_scale 1.15 -> vo60-mann/vo30-mann.wav, build(...,-mann).
 # LEHRE (2026-06-12): Render-Outputs IMMER nach reels/ kopieren (cp /tmp/brand/*.mp4 reels/) BEVOR man sie
 #   an den User schickt — sonst haengt der Download (Datei nur in /tmp, nicht persistent).
 #!/usr/bin/env python3
-import subprocess, sys, os, json
-HERE="/home/user/aban-news-landing"
-TMP="/tmp/brand"; SEG=f"{TMP}/seg"
+import argparse
+from pathlib import Path
+import subprocess, sys, os, json, tempfile
+HERE=str(Path(__file__).resolve().parents[2])
+TMP=None
+SEG=None
 F="/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 GRADE="eq=contrast=1.06:saturation=1.10:brightness=0.012,vignette=angle=PI/5"
-os.makedirs(SEG,exist_ok=True)
 
 def esc(t): return t.replace(":","\\:").replace("'","’")
 def overlay(label,sub):
@@ -27,7 +28,8 @@ def overlay(label,sub):
             f"drawtext=fontfile={F}:text='{s}':fontcolor=0xF5D08A:fontsize=44:x=(w-text_w)/2:y=1680:"
             f"alpha='min(max((t-0.45)/0.4\\,0)\\,1)'")
 def run(args):
-    r=subprocess.run(args,capture_output=True,text=True)
+    args=[args[0],'-nostdin',*args[1:]]
+    r=subprocess.run(args,capture_output=True,text=True,timeout=180)
     if r.returncode!=0: print("FFMPEG ERR:",' '.join(args)[:200],"\n",r.stderr[-600:]); sys.exit(1)
 
 def seg_vid(src,out,D,label,sub):
@@ -49,7 +51,7 @@ def seg_card(out,D,title,sub,sub2=""):
     run(["ffmpeg","-y","-loglevel","error","-f","lavfi","-i",f"color=c=0x16110d:s=1080x1920:r=30","-t",str(D),
          "-vf",f"{dt},vignette=angle=PI/4","-c:v","libx264","-pix_fmt","yuv420p","-preset","veryfast",out])
 
-def build(version, segs, D, C, vo, out):
+def build(version, segs, D, C, out):
     # render segments
     paths=[]
     for i,sp in enumerate(segs):
@@ -74,11 +76,11 @@ def build(version, segs, D, C, vo, out):
     # music bed looped to T
     bed=f"{TMP}/{version}_bed.wav"
     run(["ffmpeg","-y","-loglevel","error","-stream_loop","-1","-i",f"{HERE}/automation/music/luxe-premium.wav","-t",str(T),
-         "-af",f"volume=0.16,afade=t=in:st=0:d=1,afade=t=out:st={T-2}:d=2",bed])
-    # mix vo (delayed) + bed
-    run(["ffmpeg","-y","-loglevel","error","-i",vidonly,"-i",vo,"-i",bed,
-         "-filter_complex",f"[1:a]adelay=2200|2200,loudnorm=I=-15:TP=-1.5[vo];[2:a]aresample=44100[mu];[vo][mu]amix=inputs=2:duration=longest:dropout_transition=3,loudnorm=I=-14:TP=-1[a]",
-         "-map","0:v","-map","[a]","-t",str(T),"-c:v","copy","-c:a","aac","-b:a","192k","-movflags","+faststart",out])
+         "-af",f"afade=t=in:st=0:d=1,afade=t=out:st={T-2}:d=2",bed])
+    # Feste Inhaber-Vorgabe: ausschliesslich Premium-Musik, kein Voiceover.
+    run(["ffmpeg","-y","-loglevel","error","-i",vidonly,"-i",bed,
+         "-af","loudnorm=I=-14:TP=-1,aresample=44100",
+         "-map","0:v","-map","1:a","-t",str(T),"-c:v","copy","-c:a","aac","-b:a","192k","-movflags","+faststart",out])
     print(f"{version}: {out}  ~{T}s")
 
 LONG=[
@@ -111,5 +113,34 @@ SHORT=[
  ("vid","reels/veo-hero-mountaintee-2026-06-09.mp4","Eigene Designs","T-Shirt, Tasse & mehr"),
  ("card","luxestyle.ch","−10 Prozent · WELCOME10","Weltweiter Versand"),
 ]
-build("long",LONG,3.7,0.45,f"{TMP}/vo60.wav",f"{TMP}/luxestyle-brand-60s.mp4")
-build("short",SHORT,3.0,0.4,f"{TMP}/vo30.wav",f"{TMP}/luxestyle-brand-30s.mp4")
+def required_assets(segments):
+    return [Path(HERE)/'automation/music/luxe-premium.wav'] + [
+        Path(HERE)/s[1] for s in segments if s[0] != 'card']
+
+
+def main():
+    parser=argparse.ArgumentParser(description='LuxeStyle Markenfilm: Text + Premium-Musik, kein Voiceover')
+    parser.add_argument('--version',choices=['short','long'],default='short')
+    parser.add_argument('--render',action='store_true',help='Explizit rendern; ohne Schalter nur Assets prüfen')
+    args=parser.parse_args()
+    segments=SHORT if args.version=='short' else LONG
+    missing=[str(p.relative_to(HERE)) for p in required_assets(segments) if not p.is_file()]
+    if missing:
+        print('Fehlende echte Medien/Markenmusik: '+', '.join(missing),file=sys.stderr)
+        return 2
+    if not args.render:
+        print('Assets vorhanden. Vor Rendern Produktidentität und aktuelle Aussagen visuell prüfen. Kein Film erzeugt.')
+        return 0
+    global TMP, SEG
+    TMP=tempfile.mkdtemp(prefix='luxestyle-brand-')
+    SEG=str(Path(TMP)/'seg')
+    Path(SEG).mkdir()
+    duration_name='30s' if args.version=='short' else '60s'
+    output=Path(HERE)/'reels'/f'luxestyle-brand-{duration_name}-text.mp4'
+    output.parent.mkdir(exist_ok=True)
+    build(args.version,segments,3.0 if args.version=='short' else 3.7,0.4 if args.version=='short' else 0.45,str(output))
+    return 0
+
+
+if __name__=='__main__':
+    sys.exit(main())

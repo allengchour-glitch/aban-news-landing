@@ -38,7 +38,7 @@ async function getToken() {
     if (t.exp > Date.now() + 60000) return t.accessToken; }
   const c = await ctx();
   const r = await c.request.post(`${BASE}/authentication/getAccessToken`,
-    { data: { email: EMAIL, apiKey: APIKEY }, headers: { 'Content-Type': 'application/json' }, timeout: 30000 });
+    { data: { email: EMAIL, password: APIKEY }, headers: { 'Content-Type': 'application/json' }, timeout: 30000 });
   const j = await r.json(); if (!j.result) throw new Error('AUTH FAIL: ' + JSON.stringify(j));
   fs.writeFileSync(TOKEN_FILE, JSON.stringify({ accessToken: j.data.accessToken, exp: Date.now() + 14 * 864e5 }));
   return j.data.accessToken;
@@ -112,6 +112,6 @@ function stockByCountry(variants) {
       name: o.nameEn.slice(0, 60), sku: o.sku, cost$: `${o.costUsdFrom}-${o.costUsdTo}`,
       vars: o.variantCount, imgs: o.images.length, video: o.hasVideo, stock: o.stock, listed: o.listedNum,
     })), null, 2));
-  } catch (e) { console.error('❌', e.message); }
+  } catch (e) { console.error('CJ-Anreicherung fehlgeschlagen:', e.message); process.exitCode = 1; }
   finally { if (_b) await _b.close(); }
 })();

@@ -1,8 +1,9 @@
 name: Metricool Scheduler
 
 # Plant Posts aus social/metricool_queue.csv über die Metricool-API (öffentlich, inkl. TikTok).
-# ERST manuell + DRY testen, dann scharf — damit nichts doppelt zu den alten Pipelines postet.
-# No-op ohne METRICOOL_USER_TOKEN.
+# Nur manuell starten. Testlauf ist Standard; Live braucht die ausdrueckliche Freigabe.
+# Keine automatische Zeitplanung aktiviert. Nach einem gescheiterten Checkpoint-Push
+# das Wiederherstellungsartefakt vor dem naechsten Live-Lauf abgleichen.
 
 on:
   workflow_dispatch:
@@ -11,6 +12,18 @@ on:
         description: 'Nur testen (nichts planen)'
         type: boolean
         default: true
+      approve_publish:
+        description: 'Veroeffentlichung der vorbereiteten Queue ausdruecklich freigeben'
+        type: boolean
+        default: false
+      blog_id:
+        description: 'Verifizierte Metricool-Marken-ID (LuxeStyle: 6227837)'
+        type: string
+        default: '6227837'
+      max_per_run:
+        description: 'Maximale Anzahl vorbereiteter Posts in diesem Lauf'
+        type: string
+        default: '1'
 
 permissions:
   contents: write
@@ -20,33 +33,67 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
-    # runs-on: ubuntu-latest
-    # timeout-minutes: 10
-    # steps:
-      # - uses: actions/checkout@v4
-        # with:
-          # fetch-depth: 1
-          # sparse-checkout: |
-            # automation/metricool-schedule.mjs
-            # social/metricool_queue.csv
-          # sparse-checkout-cone-mode: false
-      # - uses: actions/setup-node@v4
-        # with:
-          # node-version: '20'
-      # - name: Metricool planen
-        # env:
-          # METRICOOL_USER_TOKEN: ${{ secrets.METRICOOL_USER_TOKEN }}
-          # METRICOOL_USER_ID: '4801419'
-          # METRICOOL_BLOG_ID: '6394001'
-          # MC_TZ: 'Europe/Zurich'
-          # DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
-        # run: node automation/metricool-schedule.mjs
-      # - name: Queue-Status committen
-        # run: |
-          # if [ -n "$(git status --porcelain social/metricool_queue.csv)" ]; then
-            # git config user.name "metricool-bot"; git config user.email "actions@users.noreply.github.com"
-            # git add social/metricool_queue.csv
-            # git commit -m "chore(metricool): Queue-Status [skip ci]"
-            # for _i in 1 2 3 4 5; do git push && break; git pull --rebase --autostash origin main || true; sleep 3; done
-          # else echo "nichts"; fi
+  schedule:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            automation/metricool-schedule.mjs
+            social/metricool_queue.csv
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Require a branch for durable planning checkpoints
+        run: |
+          if [[ "$GITHUB_REF" != refs/heads/* ]]; then
+            echo "Select a branch; planning checkpoints cannot be saved to a tag." >&2
+            exit 1
+          fi
+      - name: Metricool planen
+        id: plan
+        env:
+          METRICOOL_USER_TOKEN: ${{ secrets.METRICOOL_USER_TOKEN }}
+          METRICOOL_USER_ID: '4801419'
+          METRICOOL_BLOG_ID: ${{ inputs.blog_id }}
+          MC_TZ: 'Europe/Zurich'
+          MAX_PER_RUN: ${{ inputs.max_per_run }}
+          DRY_RUN: ${{ inputs.dry_run && '1' || '0' }}
+          APPROVE_PUBLISH: ${{ inputs.approve_publish && '1' || '0' }}
+        run: node automation/metricool-schedule.mjs
+      - name: Save Metricool queue recovery checkpoint
+        if: ${{ always() && steps.plan.outcome != 'skipped' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: metricool-queue-checkpoint-${{ github.run_id }}-${{ github.run_attempt }}
+          path: social/metricool_queue.csv
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Commit planning checkpoint, including partial failures
+        if: ${{ always() && steps.plan.outcome != 'skipped' }}
+        env:
+          TARGET_BRANCH: ${{ github.ref_name }}
+        run: |
+          if [ -n "$(git status --porcelain -- social/metricool_queue.csv)" ]; then
+            git config user.name "metricool-bot"
+            git config user.email "actions@users.noreply.github.com"
+            git add -- social/metricool_queue.csv
+            git commit -m "chore(metricool): save planning checkpoint [skip ci]"
+            for attempt in 1 2 3 4 5; do
+              if git push origin "HEAD:refs/heads/$TARGET_BRANCH"; then
+                exit 0
+              fi
+              if ! git pull --rebase --autostash origin "$TARGET_BRANCH"; then
+                echo "Checkpoint rebase failed; recover the queue from the workflow artifact." >&2
+                exit 1
+              fi
+              sleep 3
+            done
+            echo "Checkpoint push failed after 5 attempts; recover the queue from the workflow artifact." >&2
+            exit 1
+          else
+            echo "Kein Checkpoint-Update."
+          fi

@@ -11,23 +11,25 @@
  *                    media:[<normalisierte URL>], autoPublish:true }
  *
  * ENV: METRICOOL_USER_TOKEN (Pflicht) · METRICOOL_USER_ID (Default 4801419) ·
- *      METRICOOL_BLOG_ID (Default 6394001) · MC_TZ (Default Europe/Zurich) ·
- *      MAX_PER_RUN (Default 50) · DRY_RUN=1
+ *      METRICOOL_BLOG_ID (explizit erforderlich für Live) · MC_TZ (Default Europe/Zurich) ·
+ *      MAX_PER_RUN (Default 50) · DRY_RUN=0 + APPROVE_PUBLISH=1 für Live; sonst Dry-Run.
+ * Vor jedem POST wird inflight atomar gespeichert. Antworten ohne bestätigte Post-ID
+ * bleiben uncertain: vor einem erneuten Versuch im Metricool-Planer abgleichen.
  */
 import fs from 'node:fs';
+import path from 'node:path';
 
 const TOKEN = process.env.METRICOOL_USER_TOKEN || '';
 const USER  = process.env.METRICOOL_USER_ID || '4801419';
-const BLOG  = process.env.METRICOOL_BLOG_ID || '6394001';
+const BLOG  = process.env.METRICOOL_BLOG_ID || '';
 const TZ    = process.env.MC_TZ || 'Europe/Zurich';
-const DRY   = process.env.DRY_RUN === '1';
+const DRY   = process.env.DRY_RUN !== '0' || process.env.APPROVE_PUBLISH !== '1';
 const MAX   = Math.max(1, parseInt(process.env.MAX_PER_RUN || '50', 10) || 50);
 const BASE  = 'https://app.metricool.com/api';
 const CSV   = new URL('../social/metricool_queue.csv', import.meta.url).pathname;
 const COLS  = ['id','publish_date','media_url','text','networks','status','scheduled_at','note'];
-
-if (!TOKEN && !DRY) { console.log('Kein METRICOOL_USER_TOKEN → No-op.'); process.exit(0); }
-if (!fs.existsSync(CSV)) { console.log('Keine metricool_queue.csv → No-op.'); process.exit(0); }
+const RESULT_COLS = ['metricool_post_id', 'metricool_post_uuid', 'request_started_at'];
+const TIMEOUT_MS = 60000;
 
 // --- CSV (gleiche Mechanik wie die anderen Poster) ---
 function parse(text){
@@ -43,20 +45,69 @@ function parse(text){
 const esc = v => { v=String(v??''); return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v; };
 const serialize = rows => rows.map(r=>r.map(esc).join(',')).join('\n')+'\n';
 
-async function normalize(url){
-  const u = `${BASE}/actions/normalize/image/url?url=${encodeURIComponent(url)}&userId=${USER}&blogId=${BLOG}`;
-  const r = await fetch(u, { headers: { 'X-Mc-Auth': TOKEN } });
-  const txt = await r.text();
-  if(!r.ok){ console.error('  normalize', r.status, txt.slice(0,200)); return ''; }
-  // Antwort ist die URL — evtl. als JSON umhüllt
-  try { const j = JSON.parse(txt); return j.data?.url || j.url || j.data || (typeof j==='string'?j:''); }
-  catch { return txt.trim().replace(/^"|"$/g,''); }
+// Same-directory rename leaves either the old or the complete new queue on disk.
+// An inflight row survives a crash after POST but before receiving its response.
+function checkpoint(rows) {
+  const temp = `${CSV}.${process.pid}.${Math.random().toString(16).slice(2)}.tmp`;
+  let fd;
+  try {
+    fd = fs.openSync(temp, 'wx', 0o600);
+    fs.writeFileSync(fd, serialize(rows));
+    fs.fsyncSync(fd);
+    fs.closeSync(fd); fd = undefined;
+    fs.renameSync(temp, CSV);
+  } finally {
+    if (fd !== undefined) fs.closeSync(fd);
+    if (fs.existsSync(temp)) fs.unlinkSync(temp);
+  }
 }
 
-async function schedule(row){
-  const norm = await normalize(row.media_url);
-  if(!norm){ console.error('  ✗ Medium-Normalisierung fehlgeschlagen:', row.id); return false; }
+function requestError(error) {
+  // Do not print a request URL or a token reflected in an upstream exception.
+  return String(error?.cause?.code || error?.name || 'RequestError').replace(/[^a-z0-9_-]/gi, '').slice(0, 60);
+}
+
+async function normalize(url){
+  const u = `${BASE}/actions/normalize/image/url?url=${encodeURIComponent(url)}&userId=${USER}&blogId=${BLOG}`;
+  const r = await fetch(u, { headers: { 'X-Mc-Auth': TOKEN }, signal: AbortSignal.timeout(TIMEOUT_MS) });
+  const txt = await r.text();
+  if(!r.ok){ console.error('  normalize HTTP', r.status); return ''; }
+  // Antwort ist die URL — evtl. als JSON umhüllt
+  let normalized;
+  try {
+    const j = JSON.parse(txt);
+    if (j?.success === false || j?.result === false || j?.error) return '';
+    normalized = j?.data?.url || j?.url || j?.data || (typeof j === 'string' ? j : '');
+  } catch { normalized = txt.trim().replace(/^"|"$/g,''); }
+  if (typeof normalized !== 'string') return '';
+  try { return new URL(normalized).protocol === 'https:' ? normalized : ''; }
+  catch { return ''; }
+}
+
+function confirmedPost(txt) {
+  let body;
+  try { body = JSON.parse(txt); } catch { return null; }
+  if (!body || body.success === false || body.result === false || body.error || body.errors?.length) return null;
+  const post = body.data?.post || body.data || body.post || body;
+  if (!post || post.draft === true || post.autoPublish === false || post.success === false || post.result === false || post.error) return null;
+  const id = post.id;
+  const uuid = post.uuid;
+  const validId = (typeof id === 'number' && Number.isSafeInteger(id) && id > 0) ||
+    (typeof id === 'string' && /^[1-9]\d*$/.test(id));
+  const validUuid = typeof uuid === 'string' && /^-?[0-9]+$|^[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}$/i.test(uuid);
+  return validId || validUuid ? { id: validId ? String(id) : '', uuid: validUuid ? uuid : '' } : null;
+}
+
+async function schedule(row, beforePost){
+  let norm;
+  try { norm = await normalize(row.media_url); }
+  catch (error) {
+    console.error(`  ✗ Normalisierungs-Anfrage fehlgeschlagen (${requestError(error)}): ${row.id}; kein POST gesendet.`);
+    return { status: 'not_sent' };
+  }
+  if(!norm){ console.error('  ✗ Medium-Normalisierung fehlgeschlagen:', row.id); return { status: 'not_sent' }; }
   const providers = row.networks.split(/[;, ]+/).map(s=>s.trim()).filter(Boolean).map(n=>({ network:n }));
+  if (!providers.length) { console.error('  ✗ Zielkanal fehlt:', row.id); return { status: 'not_sent' }; }
   const body = {
     publicationDate: { dateTime: row.publish_date, timezone: TZ },
     text: row.text,
@@ -68,34 +119,104 @@ async function schedule(row){
   };
   if (providers.some(p=>p.network==='instagram')) body.instagramData = { autoPublish: true };
   if (providers.some(p=>p.network==='tiktok'))    body.tiktokData    = { autoPublish: true };
-  const r = await fetch(`${BASE}/v2/scheduler/posts?userId=${USER}&blogId=${BLOG}`,
-    { method:'POST', headers:{ 'X-Mc-Auth':TOKEN, 'Content-Type':'application/json' }, body: JSON.stringify(body) });
-  const txt = await r.text();
-  if(!r.ok){ console.error('  ✗ schedule', r.status, txt.slice(0,300)); return false; }
+  beforePost(); // If this checkpoint fails, no publication request is made.
+  let r, txt;
+  try {
+    r = await fetch(`${BASE}/v2/scheduler/posts?userId=${USER}&blogId=${BLOG}`,
+      { method:'POST', headers:{ 'X-Mc-Auth':TOKEN, 'Content-Type':'application/json' }, body: JSON.stringify(body), signal: AbortSignal.timeout(TIMEOUT_MS) });
+    txt = await r.text();
+  } catch (error) {
+    console.error(`  ✗ Planungs-Anfrage unbestätigt (${requestError(error)}): ${row.id}; vor Wiederholung in Metricool abgleichen.`);
+    return { status: 'uncertain', note: `Metricool: POST unbestätigt (${requestError(error)}); im Planer abgleichen, nicht automatisch wiederholen.` };
+  }
+  const post = r.ok ? confirmedPost(txt) : null;
+  if(!post){
+    console.error(`  ✗ Planung nicht bestätigt (HTTP ${r.status}, keine sichere Post-ID): ${row.id}; in Metricool abgleichen.`);
+    return { status: 'uncertain', note: `Metricool: HTTP ${r.status}, keine sichere Planungsbestätigung; im Planer abgleichen, nicht automatisch wiederholen.` };
+  }
   console.log('  ✓ geplant:', row.id, '→', providers.map(p=>p.network).join('+'), '@', row.publish_date);
-  return true;
+  return { status: 'scheduled', ...post };
 }
 
 // --- Hauptlauf ---
+async function runQueue() {
 const rows = parse(fs.readFileSync(CSV,'utf8'));
 const header = rows[0];
-const idx = Object.fromEntries(COLS.map(c=>[c, header.indexOf(c)]));
+if (!header || COLS.some(c => !header.includes(c))) throw new Error('Metricool-Queue: erforderliche Spalten fehlen');
+for (const col of RESULT_COLS) {
+  if (!header.includes(col)) {
+    const column = header.length;
+    header.push(col);
+    for (const row of rows.slice(1)) row[column] = '';
+  }
+}
+const idx = Object.fromEntries([...COLS, ...RESULT_COLS].map(c=>[c, header.indexOf(c)]));
 const data = rows.slice(1);
 const get = (r,k)=> (r[idx[k]]||'').trim();
+const unresolved = data.filter(r => ['inflight', 'uncertain'].includes(get(r,'status')));
+if (unresolved.length) console.error(`Metricool: ${unresolved.length} unbestätigte Zeile(n) gesperrt; vor Wiederholung im Planer abgleichen.`);
 const ready = data.filter(r => get(r,'status')==='ready' && get(r,'media_url') && get(r,'publish_date'));
-if(ready.length===0){ console.log('Nichts mit status=ready.'); process.exit(0); }
+if(ready.length===0){ console.log('Nichts mit status=ready.'); return unresolved.length ? 1 : 0; }
 
 console.log(`Metricool: ${ready.length} Posts · userId=${USER} blogId=${BLOG} · TZ=${TZ}${DRY?' · DRY':''}`);
-let done=0, fail=false;
+let done=0, fail=unresolved.length > 0;
 for(const r of ready.slice(0,MAX)){
   const row = { id:get(r,'id'), publish_date:get(r,'publish_date'), media_url:get(r,'media_url'),
                 text:get(r,'text'), networks:get(r,'networks') };
   console.log(`→ ${row.id} (${row.networks})`);
   if(DRY){ console.log('  DRY: würde normalisieren + planen'); done++; continue; }
-  const ok = await schedule(row);
-  if(ok){ r[idx.status]='scheduled'; r[idx.scheduled_at]=new Date().toISOString(); done++; }
-  else { fail=true; }
+  const result = await schedule(row, () => {
+    r[idx.status] = 'inflight';
+    r[idx.request_started_at] = new Date().toISOString();
+    checkpoint(rows);
+  });
+  if(result.status === 'scheduled'){
+    r[idx.status]='scheduled'; r[idx.scheduled_at]=new Date().toISOString();
+    r[idx.metricool_post_id]=result.id; r[idx.metricool_post_uuid]=result.uuid;
+    checkpoint(rows);
+    done++;
+  } else {
+    fail=true;
+    if (result.status === 'uncertain') {
+      r[idx.status]='uncertain';
+      r[idx.note]=[get(r,'note'), result.note].filter(Boolean).join(' | ');
+      checkpoint(rows);
+    }
+  }
 }
-if(!DRY && done>0) fs.writeFileSync(CSV, serialize(rows));
 console.log(`Fertig: ${done} geplant${DRY?' (DRY)':''}.`);
-process.exit(fail && done===0 ? 1 : 0);
+return fail ? 1 : 0;
+}
+
+async function main() {
+  if (!DRY && (!TOKEN || !BLOG || !process.env.METRICOOL_USER_ID)) {
+    console.error('Metricool: Token, User-ID und verifizierte Marken-ID für Live explizit setzen.');
+    return 1;
+  }
+  if (!fs.existsSync(CSV)) { console.log('Keine metricool_queue.csv → No-op.'); return 0; }
+  // All live invocations share one lock, including runs started outside Actions.
+  const lock = path.join(path.dirname(CSV), 'metricool_queue.csv.lock');
+  let lockFd;
+  try {
+    if (!DRY) {
+      try { lockFd = fs.openSync(lock, 'wx', 0o600); }
+      catch (error) {
+        if (error.code === 'EEXIST') {
+          console.error('Metricool-Queue gesperrt: anderer Lauf aktiv oder abgebrochen. Prozess und inflight-Zeilen prüfen, bevor die Sperrdatei entfernt wird.');
+          return 1;
+        }
+        throw error;
+      }
+      fs.writeFileSync(lockFd, String(process.pid));
+    }
+    return await runQueue();
+  } finally {
+    if (lockFd !== undefined) { fs.closeSync(lockFd); fs.unlinkSync(lock); }
+  }
+}
+
+try { process.exitCode = await main(); }
+catch (error) {
+  console.error(`Metricool-Lauf abgebrochen (${requestError(error)}). Queue und inflight-Zeilen vor einem erneuten Versuch prüfen.`);
+  process.exitCode = 1;
+}

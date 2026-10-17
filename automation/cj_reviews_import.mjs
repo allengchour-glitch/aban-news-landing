@@ -17,6 +17,9 @@
 import fs from 'node:fs';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 import { nachDeutsch } from './lib/uebersetzen.mjs';
+import { readCjResponse } from './lib/cj_response.mjs';
+import { shopifyGql } from './lib/shopify_gql.mjs';
+import { reviewKey, loadReviewStates, recordReviewState } from './lib/cj_review_ledger.mjs';
 
 const CJ_EMAIL = (process.env.CJ_EMAIL || '').trim();
 const CJ_API_KEY = (process.env.CJ_API_KEY || '').trim();
@@ -33,6 +36,7 @@ if (!/myshopify\.com$/.test(SHOP)) SHOP = 'au3j0y-hq.myshopify.com';
 const QUERY = process.env.QUERY || 'tag:cj-real';
 const ONLY = (process.env.ONLY || '').split(',').map(s => s.trim()).filter(Boolean);
 const LIMIT = Math.max(1, parseInt(process.env.LIMIT || '250', 10) || 250);
+const SCAN = Math.min(5000, Math.max(1, parseInt(process.env.SCAN || String(LIMIT * 5), 10) || LIMIT * 5));
 const PER = Math.max(1, parseInt(process.env.PER || '8', 10) || 8);
 const MIN_SCORE = Math.max(1, Math.min(5, parseInt(process.env.MIN_SCORE || '4', 10) || 4));
 const DRY = process.env.DRY_RUN === '1';
@@ -43,8 +47,9 @@ const REVERSE = process.env.REVERSE === '1';                // mit SORT: andere 
 const CJ_BASE = 'https://developers.cjdropshipping.com/api2.0/v1';
 const SHOP_API = '2025-01';
 const JM_API = 'https://judge.me/api/v1/reviews';
-const TOKEN_FILE = '/tmp/cj_token.json';
+const TOKEN_FILE = process.env.CJ_TOKEN_CACHE || '/tmp/cj_token.json';
 const LEDGER = 'dropship/cj_reviews_done.txt';
+const ITEM_LEDGER = 'dropship/cj_review_items.jsonl';
 // Zweites Ledger: Produkte, bei denen CJ NICHTS hatte. Ohne das kostet jeder Lauf erneut
 // Punkte fuer dieselben leeren Produkte — und gemessen am 2026-10-17 sind das 90-98 % aller
 // geprueften (siehe dropship/CJ-REVIEWS-QUOTE-1710.md). 20 Punkte je Produkt, Tagesvorrat
@@ -57,11 +62,24 @@ if (!CJ_EMAIL || !CJ_API_KEY) { console.log('Keine CJ-Creds (CJ_EMAIL/CJ_API_KEY
 if (!JM_TOKEN) { console.log('Kein JUDGEME_PRIVATE_TOKEN → No-op.'); process.exit(0); }
 if (!ADMIN_TOKEN && !(CID && CSEC)) { console.log('Keine Shopify-Creds → No-op.'); process.exit(0); }
 
+// Vor dem Lesen des Review-Ledgers exklusiv sperren. Auch zwei lokale Aufrufe
+// dürfen nicht denselben sending-Checkpoint unabhängig voneinander anlegen.
+if (!DRY) {
+  const lock = `${ITEM_LEDGER}.lock`;
+  let fd;
+  try { fd = fs.openSync(lock,'wx',0o600); }
+  catch (error) {
+    console.error(error.code === 'EEXIST'
+      ? 'CJ_REVIEW_LOCK: Import gesperrt; aktiven Lauf und unklare Ergebnisse vor Entfernen der Sperre abgleichen'
+      : 'CJ_REVIEW_LOCK: Sperre konnte nicht angelegt werden');
+    process.exit(1);
+  }
+  process.on('exit',() => { try { fs.closeSync(fd); fs.unlinkSync(lock); } catch {} });
+}
+
 // ── Shopify ──
 async function sgql(tok, q, v) {
-  const r = await fetch(`https://${SHOP}/admin/api/${SHOP_API}/graphql.json`, { method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': tok }, body: JSON.stringify({ query: q, variables: v }) });
-  return r.json();
+  return { data: await shopifyGql(SHOP, SHOP_API, tok, q, v) };
 }
 async function sWorks(t) { try { const r = await sgql(t, '{shop{name}}'); return !!r?.data?.shop?.name; } catch { return false; } }
 async function sCC() {
@@ -97,7 +115,7 @@ async function cjToken() {
 async function cjGet(tok, path, params) {
   const qs = new URLSearchParams(params).toString();
   const r = await fetch(`${CJ_BASE}${path}?${qs}`, { headers: { 'CJ-Access-Token': tok } });
-  return r.json().catch(() => ({}));
+  return readCjResponse(r, path);
 }
 
 // ── DE-Übersetzung: Gemini zuerst, Groq als Rückfall ──
@@ -119,17 +137,26 @@ async function translateDE(texts) {
 // ── Judge.me POST ──
 async function jmPost(pid, r) {
   const body = { shop_domain: JM_DOMAIN, platform: 'shopify', id: pid,
-    name: r.name || 'Verifizierter Käufer',
+    name: r.name || 'CJ-Kundenbewertung',
     email: r.email || `cj-import+${Math.random().toString(36).slice(2, 9)}@luxestyle.ch`,
     rating: Math.max(1, Math.min(5, Number(r.rating) || 5)), title: r.title || '', body: r.body || '', api_token: JM_TOKEN };
   if (r.created_at) body.created_at = r.created_at;
   if (Array.isArray(r.picture_urls) && r.picture_urls.length) body.picture_urls = r.picture_urls.slice(0, 3);
   const res = await fetch(JM_API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
-  return { ok: res.ok, status: res.status, text: (await res.text()).slice(0, 160) };
+  const text = await res.text();
+  let result;
+  try { result = JSON.parse(text); } catch {}
+  const rejected = result && (result.success === false || result.result === false || result.error ||
+    (Array.isArray(result.errors) ? result.errors.length > 0 : !!result.errors));
+  const id = result?.review?.id ?? result?.id;
+  const confirmed = typeof id === 'number' ? Number.isFinite(id) && id > 0 : typeof id === 'string' && id.trim().length > 0;
+  return { ok: res.ok && !rejected && confirmed, status: res.status,
+    uncertain: res.status >= 500 || (res.ok && !rejected && !confirmed) };
 }
 
 const numId = (gid) => String(gid).split('/').pop();
 const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').split('\n').map(s => s.trim()).filter(Boolean) : []);
+const reviewStates = loadReviewStates(ITEM_LEDGER);
 
 // Leer-Ledger: pid<TAB>JJJJ-MM-TT. Eintraege, die aelter als LEER_TAGE sind, zaehlen nicht mehr —
 // CJ bekommt mit der Zeit neue Kommentare, ein „leer" ist kein Urteil fuer immer.
@@ -149,7 +176,7 @@ const leerFrisch = (id) => {
 };
 let leerUebersprungen = 0, leerNeu = 0;
 const merkeLeer = (id, grund) => {
-  if (DRY || leerMap.has(id)) return;
+  if (DRY || leerFrisch(id)) return;
   leerMap.set(id, heute); leerNeu++;
   try { fs.appendFileSync(LEER, `${id}\t${heute}\t${grund}\n`); }
   catch (e) { console.error(`  ⚠️  LEER-LEDGER nicht geschrieben (${id}): ${e.message}`); }
@@ -164,18 +191,24 @@ const merkeLeer = (id, grund) => {
   // Cursor-Pagination: sammelt bis LIMIT Produkte ueber mehrere Seiten (Shopify max 250/Seite)
   const prods = [];
   let cursor = null;
-  while (prods.length < LIMIT) {
-    const page = Math.min(250, LIMIT - prods.length);
+  let scanned = 0, hasMore = false;
+  while (prods.length < LIMIT && scanned < SCAN) {
+    const page = Math.min(250, LIMIT - prods.length, SCAN - scanned);
     const sortTeil = SORT ? `, sortKey:${SORT}, reverse:${REVERSE}` : '';
     const pr = await sgql(stok, `query($q:String!,$n:Int!,$c:String){ products(first:$n, query:$q, after:$c${sortTeil}){ pageInfo{ hasNextPage endCursor } edges{ node{ id title handle variants(first:1){ edges{ node{ sku } } } } } } }`, { q, n: page, c: cursor });
     const conn = pr?.data?.products;
+    if (!conn || !Array.isArray(conn.edges)) throw new Error('Shopify: Produktliste fehlt, Scan nicht als leer werten');
+    scanned += conn.edges.length;
+    hasMore = !!conn.pageInfo?.hasNextPage;
+    console.log(`SCAN: ${scanned}/${SCAN}, ${prods.length}/${LIMIT} Kandidaten vor dieser Seite`);
     const roh = (conn?.edges || []).map(e => e.node).filter(x => !done.has(numId(x.id)));
     const batch = roh.filter(x => { if (leerFrisch(numId(x.id))) { leerUebersprungen++; return false; } return true; });
     prods.push(...batch);
-    if (!conn?.pageInfo?.hasNextPage) break;
+    if (!hasMore) break;
     cursor = conn.pageInfo.endCursor;
     await sleep(250);
   }
+  console.log(`Teilmessung: ${scanned} Produkte geprüft; weitere Seiten: ${hasMore ? 'ja' : 'nein'}.`);
   console.log(`${prods.length} Produkt(e) zu prüfen (QUERY="${q}", LIMIT=${LIMIT}${SORT ? `, SORT=${SORT}${REVERSE ? ' umgekehrt' : ''}` : ''})${DRY ? ' [DRY]' : ''}`
     + (leerUebersprungen ? ` · ${leerUebersprungen} übersprungen, weil CJ dort vor < ${LEER_TAGE} Tagen nichts hatte` : ''));
   if (!prods.length) { console.log('Nichts zu tun.'); process.exit(0); }
@@ -237,7 +270,8 @@ const merkeLeer = (id, grund) => {
       if (DEBUG) console.log(`    [DEBUG] ${p.handle}: pid ${cjpid} via ${resolved.via}`);
       const cr = await cjGet(ctok, '/product/productComments', { pid: cjpid, pageNum: 1, pageSize: 30 });
       await sleep(1100);
-      const list = cr?.data?.list || cr?.data?.comments || cr?.data?.content || cr?.data?.commentList || (Array.isArray(cr?.data) ? cr.data : []);
+      const list = cr?.data?.list ?? cr?.data?.comments ?? cr?.data?.content ?? cr?.data?.commentList ?? (Array.isArray(cr?.data) ? cr.data : null);
+      if (!Array.isArray(list)) throw new Error('CJ_DATA: Kommentar-Liste fehlt; nicht als leeres Produkt speichern');
       if (DEBUG) console.log(`    [DEBUG] comments(${cjpid}): result=${cr?.result} dataKeys=${cr?.data && typeof cr.data === 'object' ? Object.keys(cr.data).join(',') : typeof cr?.data} listLen=${Array.isArray(list) ? list.length : 'n/a'}${cr?.message ? ' msg=' + cr.message : ''}`);
       const picked = (list || [])
         .filter(c => Number(c.score) >= MIN_SCORE && (c.comment || '').trim().length >= 8)
@@ -245,19 +279,42 @@ const merkeLeer = (id, grund) => {
       if (!picked.length) { console.log(`· ${p.handle}: 0 echte ≥${MIN_SCORE}★-Kommentare bei CJ → skip`); merkeLeer(pidNum, 'keine-kommentare'); continue; }
 
       const bodiesDE = await translateDE(picked.map(c => c.comment.trim()));
-      let sent = 0;
+      let sent = 0, complete = true;
       for (let i = 0; i < picked.length; i++) {
         const c = picked[i];
+        const key = reviewKey(pidNum,cjpid,c);
+        const previous = reviewStates.get(key);
+        if (previous === 'sent') { console.log(`  Bereits importierte Bewertung übersprungen (${key.slice(0,12)})`); continue; }
+        if (previous === 'sending' || previous === 'uncertain') {
+          complete = false; fails++;
+          console.error(`  CJ_REVIEW_UNCERTAIN: ${key.slice(0,12)} vor erneutem Import in Judge.me abgleichen`);
+          continue;
+        }
         const rev = {
-          name: (c.commentUser || '').trim() || 'Verifizierter Käufer',
+          name: (c.commentUser || '').trim() || 'CJ-Kundenbewertung',
           rating: Number(c.score) || 5,
           body: bodiesDE[i] || c.comment.trim(),
           created_at: (c.commentDate || '').slice(0, 10) || undefined,
           picture_urls: (Array.isArray(c.commentUrls) ? c.commentUrls : []).filter(u => /^https?:\/\//.test(u)),
         };
         if (DRY) { console.log(`  [DRY] ${p.handle} ★${rev.rating} ${rev.body.slice(0, 50)}`); sent++; continue; }
-        const out = await jmPost(pidNum, rev);
-        if (out.ok) { sent++; } else { fails++; console.error(`  ✗ ${p.handle} HTTP ${out.status}: ${out.text}`); }
+        // Intent vor dem externen POST dauerhaft festhalten. Ein abgebrochener Lauf
+        // mit unbekanntem Ergebnis darf denselben Kommentar nicht blind wiederholen.
+        recordReviewState(ITEM_LEDGER,reviewStates,key,'sending');
+        let out;
+        try { out = await jmPost(pidNum, rev); }
+        catch {
+          recordReviewState(ITEM_LEDGER,reviewStates,key,'uncertain');
+          complete = false; fails++;
+          console.error(`  CJ_REVIEW_UNCERTAIN: Netzwerkfehler bei ${key.slice(0,12)}; erst abgleichen`);
+          continue;
+        }
+        if (out.ok) {
+          recordReviewState(ITEM_LEDGER,reviewStates,key,'sent'); sent++;
+        } else {
+          recordReviewState(ITEM_LEDGER,reviewStates,key,out.uncertain?'uncertain':'failed');
+          complete = false; fails++; console.error(`  Import nicht bestätigt: ${p.handle}, HTTP ${out.status}${out.uncertain ? '; vor Wiederholung abgleichen' : '; Anfrage abgelehnt'}`);
+        }
         await sleep(700);
       }
       if (sent) { prodWith++; totalReviews += sent; console.log(`✓ ${p.handle}: ${sent} echte Reviews (CJ-pid ${cjpid})`); }
@@ -265,12 +322,13 @@ const merkeLeer = (id, grund) => {
       // der naechste Lauf dieselben Reviews ein zweites Mal. Der stumme catch hat das
       // verdeckt (2026-10-04 aufgefallen, nachdem ein versehentliches `git checkout -- .`
       // den frischen Eintrag zurueckgesetzt hatte und niemand es gemerkt haette).
-      if (!DRY) {
+      if (!DRY && complete) {
         try { fs.appendFileSync(LEDGER, pidNum + '\n'); }
         catch (e) { console.error(`  ⚠️  LEDGER NICHT GESCHRIEBEN fuer ${p.handle} (${pidNum}): ${e.message}`); console.error('     Ohne Eintrag importiert der naechste Lauf diese Reviews doppelt.'); }
       }
     } catch (e) {
       if (String(e.message).startsWith('CJ_QUOTA')) {
+        fails++;
         console.error(`\n⛔ CJ-TAGESPUNKTE ERSCHOEPFT — Lauf hier beendet (${e.message}).`);
         console.error('   Das ist KEIN Hinweis darauf, dass die Produkte keine Reviews haben!');
         console.error('   Morgen erneut laufen lassen (Punkte setzen taeglich zurueck) oder LIMIT kleiner setzen.');
@@ -280,5 +338,5 @@ const merkeLeer = (id, grund) => {
     }
   }
   console.log(`\nFertig: ${totalReviews} echte Reviews auf ${prodWith} Produkt(e)${DRY ? ' [DRY]' : ''}${fails ? `, ${fails} Fehler` : ''}.`);
-  process.exit(0);
+  process.exit(fails ? 1 : 0);
 })();

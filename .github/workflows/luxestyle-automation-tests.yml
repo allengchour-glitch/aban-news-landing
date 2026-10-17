@@ -1,0 +1,75 @@
+name: LuxeStyle automation tests
+
+on:
+  pull_request:
+    paths:
+      - 'automation/lib/**'
+      - 'automation/metricool-schedule.mjs'
+      - 'automation/price_guard.mjs'
+      - 'automation/publish_guard.mjs'
+      - 'automation/cj_reviews_import.mjs'
+      - 'automation/video-autopost-meta.mjs'
+      - 'automation/review_safety_test.mjs'
+      - 'automation/metricool_checkpoint_test.mjs'
+      - 'automation/meta_checkpoint_test.mjs'
+      - 'automation/cj_import_checkpoint_test.mjs'
+      - 'dropship/cj_enrich.mjs'
+      - 'dropship/ads/render_brand_video.py'
+      - 'dropship/ads/test_render_brand_video.py'
+      - '.github/workflows/luxestyle-automation-tests.yml'
+      - '.github/workflows/video-meta-autopost.yml'
+      - '.github/workflows/cj-reviews.yml'
+      - '.github/workflows/metricool-schedule.yml'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            automation/lib
+            automation/metricool-schedule.mjs
+            automation/price_guard.mjs
+            automation/publish_guard.mjs
+            automation/cj_reviews_import.mjs
+            automation/video-autopost-meta.mjs
+            automation/review_safety_test.mjs
+            automation/metricool_checkpoint_test.mjs
+            automation/meta_checkpoint_test.mjs
+            automation/cj_import_checkpoint_test.mjs
+            dropship/cj_enrich.mjs
+            dropship/ads/render_brand_video.py
+            dropship/ads/test_render_brand_video.py
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Renderer stays text-only (no rendering or network)
+        run: python3 -B -m unittest -v dropship/ads/test_render_brand_video.py
+      - name: Syntax
+        run: |
+          node --check automation/cj_reviews_import.mjs
+          node --check dropship/cj_enrich.mjs
+          node --check automation/publish_guard.mjs
+          node --check automation/video-autopost-meta.mjs
+      - name: Existing helper checks
+        run: |
+          node automation/lib/shopify_gql_test.mjs
+          node automation/lib/shopify_secret_test.mjs
+          node automation/lib/kanal_sperren_test.mjs
+      - name: CJ failures and publication regressions (mock APIs only)
+        run: |
+          node automation/lib/cj_response_test.mjs
+          node automation/review_safety_test.mjs
+          node automation/metricool_checkpoint_test.mjs
+          node automation/meta_checkpoint_test.mjs
+          node automation/cj_import_checkpoint_test.mjs

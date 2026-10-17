@@ -5,10 +5,10 @@
  * Dropship-Regel (CLAUDE.md): Produkte müssen dauerhaft kaufbar sein. Eine Variante mit
  * inventoryPolicy=DENY + getracktem Bestand kann auf 0 fallen → "ausverkauft" → verlorene Verkäufe.
  * Dieser Wächter:
- *   1) findet aktive Varianten mit inventoryPolicy=DENY  → setzt sie (LIVE) auf CONTINUE (Weiterverkauf erlaubt)
+ *   1) meldet Varianten mit inventoryPolicy=DENY; ändert keine Bestandsregel ohne Lieferantennachweis
  *   2) meldet Preis-Anomalien (Preis 0 / leer; compareAtPrice <= Preis = sinnlose „Rabatt"-Anzeige)
  *
- * No-op-sicher · DRY-Default · LIVE=1 schreibt · SCAN=Anzahl zuletzt geänderter Produkte.
+ * Nur Bericht, auch mit LIVE=1 keine Bestandsänderung · SCAN=Anzahl zuletzt geänderter Produkte.
  * ENV: SHOPIFY_SHOP + (SHOPIFY_ADMIN_TOKEN | SHOPIFY_CLIENT_ID+SHOPIFY_CLIENT_SECRET)
  */
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
@@ -55,15 +55,10 @@ async function main(){
   report.priceZero=[...new Set(priceZero)];
   report.badCompareAt=[...new Set(badCompare)];
 
-  if(LIVE && denyByProduct.length){
-    let fixed=0;
-    for(const pr of denyByProduct){
-      const vars=pr.vids.map(id=>`{id:"${id}", inventoryPolicy:CONTINUE}`).join(',');
-      const d=await gql(token,`mutation{ productVariantsBulkUpdate(productId:"${pr.id}", variants:[${vars}]){ productVariants{id} userErrors{message} } }`);
-      const e=d.productVariantsBulkUpdate.userErrors; if(e.length) console.log('var err',pr.id,e); else fixed+=pr.vids.length;
-    }
-    report.setToContinue=fixed;
-  }
+  // DENY ist kein Preisfehler. Lieferantenbestand und Varianten-Mapping müssen erst
+  // geprüft werden; pauschales CONTINUE kann nicht lieferbare Bestellungen erzeugen.
+  report.inventoryPolicyChanged=0;
+  report.inventoryReviewRequired=denyByProduct;
   console.log(JSON.stringify(report,null,2));
 }
-main().catch(e=>{ console.error('Fehler:',e.message); process.exit(0); });
+main().catch(e=>{ console.error('Fehler:',e.message); process.exit(1); });
