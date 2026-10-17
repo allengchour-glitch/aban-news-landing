@@ -20,6 +20,21 @@ window.ABAN_CHECKOUT = {
   COMPLIANCE_BUY_URL: "",   // KI-Compliance-Paket regulierte Berufe (39 €)
   SCHNELLSTART_BUY_URL: "", // KI-Schnellstart-Workbook (29 €)
   AUDIT_BUY_URL:     "",   // KI-Sichtbarkeits-Audit Workbook (29 €, einmalig)
+  /* Ersatz für die PLATZHALTER-Gumroad-Links (alle 404, 17.10.2026).
+     Leer = Mail-Bestellung; sobald hier ein Link steht, wird daraus
+     wieder der Kauf-Knopf mit Preis. */
+  ARBEITSVERTRAG_VORLAGE_SCHWEIZ_BUY_URL: "",
+  DATENSCHUTZERKLAERUNG_VORLAGE_SCHWEIZ_BUY_URL: "",
+  FREELANCER_STEUERN_CHECKLISTE_BUY_URL: "",
+  GMBH_STATUTEN_VORLAGE_SCHWEIZ_BUY_URL: "",
+  IMPRESSUM_VORLAGE_SCHWEIZ_BUY_URL: "",
+  KI_COMPLIANCE_PAKET_BUY_URL: "",
+  KI_PROFI_PROMPTS_BUY_URL: "",
+  KUENDIGUNG_VORLAGE_SCHWEIZ_BUY_URL: "",
+  MIETVERTRAG_VORLAGE_SCHWEIZ_BUY_URL: "",
+  NDA_VORLAGE_SCHWEIZ_BUY_URL: "",
+  RECHNUNG_VORLAGEN_BUNDLE_BUY_URL: "",
+  VOLLMACHT_VORLAGE_SCHWEIZ_BUY_URL: "",
   TEXTE_STARTER_URL: "",   // Texte-Service Starter (CHF 49, einmalig) — leer = Mail-Anfrage
   TEXTE_FLAT_URL:    ""    // Texte-Service Monats-Flat (CHF 39/Monat) — leer = Mail-Anfrage
 };
