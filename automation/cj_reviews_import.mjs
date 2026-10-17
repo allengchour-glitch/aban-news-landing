@@ -17,7 +17,8 @@
 import fs from 'node:fs';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 import { nachDeutsch } from './lib/uebersetzen.mjs';
-import { readCjResponse } from './lib/cj_response.mjs';
+import { cjFetch } from './lib/cj_fetch.mjs';
+import { bewerteAntwort } from './lib/judgeme_antwort.mjs';
 import { shopifyGql } from './lib/shopify_gql.mjs';
 import { reviewKey, loadReviewStates, recordReviewState } from './lib/cj_review_ledger.mjs';
 
@@ -114,8 +115,10 @@ async function cjToken() {
 }
 async function cjGet(tok, path, params) {
   const qs = new URLSearchParams(params).toString();
-  const r = await fetch(`${CJ_BASE}${path}?${qs}`, { headers: { 'CJ-Access-Token': tok } });
-  return readCjResponse(r, path);
+  // Mit Geduld: CJ erlaubt ~1 Abfrage/Sekunde und antwortet sonst mit HTTP 429. Ohne
+  // Wiederholung verbrennt jeder 429 ein Produkt, das nie geprueft wurde (gemessen
+  // 2026-10-17: 36 von 45 Fehlern in einem Lauf). Siehe automation/lib/cj_fetch.mjs.
+  return cjFetch(`${CJ_BASE}${path}?${qs}`, { headers: { 'CJ-Access-Token': tok }, context: path });
 }
 
 // ── DE-Übersetzung: Gemini zuerst, Groq als Rückfall ──
@@ -146,12 +149,31 @@ async function jmPost(pid, r) {
   const text = await res.text();
   let result;
   try { result = JSON.parse(text); } catch {}
-  const rejected = result && (result.success === false || result.result === false || result.error ||
-    (Array.isArray(result.errors) ? result.errors.length > 0 : !!result.errors));
-  const id = result?.review?.id ?? result?.id;
-  const confirmed = typeof id === 'number' ? Number.isFinite(id) && id > 0 : typeof id === 'string' && id.trim().length > 0;
-  return { ok: res.ok && !rejected && confirmed, status: res.status,
-    uncertain: res.status >= 500 || (res.ok && !rejected && !confirmed) };
+  // Lesart der Antwort samt Gegenproben: automation/lib/judgeme_antwort.mjs
+  return { ...bewerteAntwort(res.status, result), status: res.status };
+}
+
+// Gegenprobe zum Abgleich: der Produktfilter der Judge.me-Liste wird STILL IGNORIERT
+// (gemessen 2026-10-17: `external_id=99999999` liefert dieselben 5 neuesten Bewertungen wie
+// ohne Filter — dieselbe Falle wie der Metafeld-Filter in der Shopify-Produktsuche). Darum
+// die neuesten Bewertungen OHNE Filter lesen und selbst auf Produkt + Text pruefen.
+async function jmAbgleich(pid, bodies) {
+  const treffer = new Set();
+  const qs = new URLSearchParams({ api_token: JM_TOKEN, shop_domain: JM_DOMAIN, per_page: '100' });
+  let j;
+  try {
+    const res = await fetch(`${JM_API}?${qs}`);
+    if (!res.ok) { console.error(`  Abgleich nicht moeglich: Judge.me HTTP ${res.status}`); return treffer; }
+    j = await res.json();
+  } catch (e) { console.error(`  Abgleich nicht moeglich: ${e.message}`); return treffer; }
+  const liste = Array.isArray(j?.reviews) ? j.reviews : [];
+  const gesucht = new Set(bodies.map(b => String(b).trim()));
+  for (const r of liste) {
+    if (String(r?.product_external_id) !== String(pid)) continue;
+    const b = String(r?.body || '').trim();
+    if (gesucht.has(b)) treffer.add(b);
+  }
+  return treffer;
 }
 
 const numId = (gid) => String(gid).split('/').pop();
@@ -280,6 +302,7 @@ const merkeLeer = (id, grund) => {
 
       const bodiesDE = await translateDE(picked.map(c => c.comment.trim()));
       let sent = 0, complete = true;
+      const offen = [];   // gesendet, Antwort ohne ID → wird gleich nachgelesen
       for (let i = 0; i < picked.length; i++) {
         const c = picked[i];
         const key = reviewKey(pidNum,cjpid,c);
@@ -311,11 +334,27 @@ const merkeLeer = (id, grund) => {
         }
         if (out.ok) {
           recordReviewState(ITEM_LEDGER,reviewStates,key,'sent'); sent++;
+        } else if (out.abgleichen) {
+          // Zustand bleibt 'sending': bricht der Lauf hier ab, gilt die Bewertung beim
+          // naechsten Mal als unklar und wird NICHT blind ein zweites Mal gesendet.
+          offen.push({ key, body: rev.body });
         } else {
           recordReviewState(ITEM_LEDGER,reviewStates,key,out.uncertain?'uncertain':'failed');
           complete = false; fails++; console.error(`  Import nicht bestätigt: ${p.handle}, HTTP ${out.status}${out.uncertain ? '; vor Wiederholung abgleichen' : '; Anfrage abgelehnt'}`);
         }
         await sleep(700);
+      }
+      if (offen.length) {
+        const gefunden = await jmAbgleich(pidNum, offen.map(o => o.body));
+        for (const o of offen) {
+          if (gefunden.has(String(o.body).trim())) {
+            recordReviewState(ITEM_LEDGER,reviewStates,o.key,'sent'); sent++;
+          } else {
+            recordReviewState(ITEM_LEDGER,reviewStates,o.key,'uncertain');
+            complete = false; fails++;
+            console.error(`  CJ_REVIEW_UNCERTAIN: ${o.key.slice(0,12)} im Shop nicht gefunden; vor Wiederholung abgleichen`);
+          }
+        }
       }
       if (sent) { prodWith++; totalReviews += sent; console.log(`✓ ${p.handle}: ${sent} echte Reviews (CJ-pid ${cjpid})`); }
       // Ledger laut melden, wenn er nicht geschrieben werden kann: ohne Eintrag importiert
@@ -332,6 +371,15 @@ const merkeLeer = (id, grund) => {
         console.error(`\n⛔ CJ-TAGESPUNKTE ERSCHOEPFT — Lauf hier beendet (${e.message}).`);
         console.error('   Das ist KEIN Hinweis darauf, dass die Produkte keine Reviews haben!');
         console.error('   Morgen erneut laufen lassen (Punkte setzen taeglich zurueck) oder LIMIT kleiner setzen.');
+        break;
+      }
+      // Haelt die Drosselung auch nach allen Wiederholungen an, ist weiterlaufen sinnlos:
+      // jedes weitere Produkt wuerde als „Fehler" gezaehlt, OBWOHL es nie geprueft wurde.
+      if (String(e.message).startsWith('CJ_THROTTLED')) {
+        fails++;
+        console.error(`\n⏳ CJ DROSSELT DAUERHAFT — Lauf hier beendet (${e.message}).`);
+        console.error('   Die uebrigen Produkte sind NICHT geprueft und NICHT als leer vermerkt.');
+        console.error('   Spaeter erneut laufen lassen, LIMIT kleiner setzen.');
         break;
       }
       fails++; console.error(`✗ ${p.handle}: ${e.message}`);

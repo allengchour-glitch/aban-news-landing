@@ -72,6 +72,36 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-17 spätabends (⭐ Bewertungs-Import: er HAT Bewertungen live gestellt und „0" gemeldet):**
+Voller Bericht: `dropship/BEWERTUNGEN-STILLER-ERFOLG-1710.md`.
+- **🐛 HTTP 429 verbrannte 36 von 45 Produkten in einem Lauf.** `cjGet()` machte EINEN `fetch` ohne
+  Wiederholung, die 1100-ms-Pause stand NACH dem Aufruf — CJ erlaubt ~1 Abfrage/Sekunde. Jedes so
+  abgehakte Produkt zählte als „Fehler", obwohl CJ nie gesagt hat, ob es Kommentare hat, und landete auch
+  nicht im Leer-Ledger. Fix `automation/lib/cj_fetch.mjs` (wachsende Pausen bei 429/5xx/Netz) + 19 Tests;
+  **Dauerdrosselung wirft `CJ_THROTTLED` → der Lauf endet, statt ungeprüfte Produkte als Fehler zu zählen.**
+  Gegenproben: erschöpfte Punkte fliegen SOFORT (auch als 429 verpackt), echter Code 1602002 fliegt sofort,
+  eine leere Erfolgsantwort bleibt leer. Nachher am echten Lauf (120 Produkte): **0 × 429.**
+  Dieselbe Fehlerklasse wie `shopify_gql.mjs` und `url_status.mjs`. **Die 19 anderen CJ-Skripte haben den
+  alten `cjGet`-Block noch** — offene Fläche.
+- **🚨 Judge.me bestätigt mit HTTP 201 OHNE Review-ID → der Importer verbuchte echte Erfolge als „unklar".**
+  Der Lauf meldete „0 echte Reviews", LIVE nachgelesen lagen **7 Bewertungen auf 2 Produkten** im Shop
+  (`m8-puls-4k-retro-game-console-956928` 4 × 5,00★, `walkie-talkie-mit-frequenz-scanning-639000` 3 × 5,00★).
+  Zustand `uncertain` heisst: nie wieder angefasst, kein Ledger-Eintrag. **Dritter Fall derselben
+  Fehlerklasse** (nach `apiKey`/`password` und pid-SKU-Skip) — hier ein stiller ERFOLG, der wie ein Fehler aussah.
+  Fix `automation/lib/judgeme_antwort.mjs` (drei Ausgänge: `ok` / `abgleichen` / `uncertain`) + `jmAbgleich()`
+  im Importer: nach dem Senden die neuesten Bewertungen lesen und auf Produkt-ID + Text prüfen. 25 Tests.
+  **Zwischen POST und Abgleich bleibt der Zustand `sending` → ein Abbruch führt weiter nicht zum Doppel-Import.**
+- **🔑 GEGENPROBE, die den Abgleich gerettet hat: der Produktfilter der Judge.me-Liste wird STILL IGNORIERT.**
+  `external_id=99999999` liefert dieselben 5 neuesten Bewertungen wie ohne Filter. Darum liest `jmAbgleich`
+  ohne Filter und prüft `product_external_id` selbst. Dieselbe Falle wie der Metafeld-Filter in der
+  Shopify-Produktsuche.
+- **🗺️ KORREKTUR der Notiz von heute Vormittag („nächste Sitzung `tag:gadgets` (1482)"):** die ältesten 150
+  `tag:gadgets` sind **ausnahmslos BigBuy** (`bb-…`, Xiaomi/KSIX/Denver) = keine CJ-Quelle; die Schicht darunter
+  (`AND tag:cj-real`) ist **RC-Spielzeug und Roboterhunde — 0 Kommentare**. **IMMER `AND tag:cj-real` anhängen.**
+  **Nächste Sitzung: `QUERY='tag:elektronik AND tag:cj-real' SORT=UPDATED_AT REVERSE=1 LIMIT=150–250`.**
+- **Punkte:** waren schon fast weg (Vormittag 56 730 von 68 875); „erschöpft" kam zweimal, dazwischen gingen
+  einzelne Abfragen durch — die Grenze ist ein Eimer, der sich langsam füllt, kein harter Riegel.
+
 **📌 2026-10-17 abends (🛒 Google Merchant: Feed war schwach, zwei Fehler im Sperrmuster, Lücke vermessen):**
 Voller Bericht: `dropship/GOOGLE-MERCHANT-STAND-1710.md`. Wiederholbar: `node automation/gmc_audit.mjs` (nur lesen).
 - **Der Feed verschwieg, was der Shop hat.** `merchant_feed.mjs` schrieb bei JEDEM Artikel
