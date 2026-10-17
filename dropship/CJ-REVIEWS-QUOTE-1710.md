@@ -105,3 +105,25 @@ auflösbare CJ-pid). Diese 1157 kosten den nächsten Lauf **keinen einzigen Punk
 wären das 23 140 Punkte gewesen, ein Drittel des Tagesvorrats, für ein garantiert leeres Ergebnis.
 
 **CJ-Punkte heute:** 52 280 von 68 875 verbraucht, 23 927 übrig.
+
+---
+
+## Der Gegenbeweis: gezielt schlägt blind um das Fünffache
+
+Direkt nach dem Befund „die Warengruppe entscheidet" ein Lauf nur über `tag:gaming` — gleiche
+Werkzeuge, gleicher Tag, nur eine andere Auswahl:
+
+| Lauf | geprüft | Treffer | Quote | Bewertungen | CJ-Punkte (ca.) |
+|---|---|---|---|---|---|
+| blind über den Katalog | 1200 | 29 | **2,4 %** | 169 | 24 000 |
+| gezielt `tag:gaming` | 317 | **37** | **11,7 %** | **196** | 6 300 |
+
+**Mehr Bewertungen aus einem Viertel der Punkte.** Der gezielte Lauf hat ausserdem 40 Produkte
+übersprungen, weil das Leer-Ledger sie schon kannte — die Ersparnis fängt sofort an zu wirken.
+
+**Heute insgesamt: 368 echte ≥4★-Bewertungen auf 67 Produkten, 0 Fehler.**
+CJ-Punkte: 56 730 von 68 875 verbraucht, 20 464 übrig. Leer-Ledger: 1437 Produkte.
+
+**Nächster Schritt für die nächste Sitzung** (Punkte-Reset abwarten):
+`QUERY="status:active AND tag:cj-real AND tag:gadgets"` (1482 Produkte, ~30 000 Punkte), danach
+`tag:elektronik` (4494). Mode, Kostüme und Haushalt erst zuletzt — dort ist die Quote nahe null.
