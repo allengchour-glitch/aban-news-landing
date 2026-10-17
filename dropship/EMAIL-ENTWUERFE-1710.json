@@ -1,0 +1,198 @@
+{
+  "schema": "luxestyle.checkout-drafts.v1",
+  "status": "review_only",
+  "sending_enabled": false,
+  "existing_flow_unchanged": true,
+  "source_flow_id": "Vse76a",
+  "templates": [
+    {
+      "source_template_id": "TTQSWH",
+      "created_template_id": "U5qvBK",
+      "name": "LuxeStyle | Checkout 1 | Prüfung 17.10.2026",
+      "subject_line": "Deine Auswahl bei LuxeStyle",
+      "preview_text": "Du kannst dir deine Auswahl in Ruhe nochmals ansehen.",
+      "html": "<!DOCTYPE html>\n<html lang=\"de\">\n<head>\n<meta charset=\"utf-8\"/>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>\n<title>Deine Auswahl bei LuxeStyle</title>\n<style>@media only screen and (max-width:620px){.email-content{padding:26px 22px!important;}.email-outer{padding:16px 12px!important;}}</style>\n</head>\n<body style=\"margin:0;padding:0;background:#faf8f4;font-family:Helvetica,Arial,sans-serif;color:#1a1a1a;\">\n<div style=\"display:none;max-height:0;overflow:hidden;opacity:0;color:transparent;mso-hide:all;\">Du kannst dir deine Auswahl in Ruhe nochmals ansehen.</div>\n<table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#faf8f4;\" width=\"100%\">\n<tr><td class=\"email-outer\" align=\"center\" style=\"padding:24px 12px;\">\n<table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" style=\"width:100%;max-width:600px;background:#ffffff;border-radius:12px;overflow:hidden;border:1px solid #ece6dc;\" width=\"600\">\n<tr><td style=\"background:#6b5641;padding:22px;text-align:center;color:#ffffff;font-size:22px;letter-spacing:2px;\">LUXESTYLE CH</td></tr>\n<tr><td class=\"email-content\" style=\"padding:34px;\">\n<h1 style=\"font-size:25px;line-height:1.3;font-weight:400;margin:0 0 20px;\">Deine Auswahl. In deinem Tempo.</h1>\n<p style=\"font-size:15px;line-height:1.7;color:#5a5a5a;margin:0 0 18px;\">{% if first_name %}Hallo {{ first_name|escape }},{% else %}Hallo,{% endif %}<br/><br/>du hast bei LuxeStyle etwas entdeckt und deinen Einkauf noch nicht abgeschlossen. Hier kannst du dir deine Auswahl nochmals ansehen.</p>\n<p style=\"font-size:14px;line-height:1.65;color:#6b6b6b;margin:0;\">Preise, Verfügbarkeit und Versandkosten siehst du aktuell im Shop und im Checkout.</p>\n<div style=\"text-align:center;margin:28px 0;\">{% if event.extra.checkout_url %}\n<a href=\"{{ event.extra.checkout_url|escape }}\" style=\"background:#6b5641;color:#ffffff;text-decoration:none;padding:15px 30px;border-radius:8px;font-size:15px;font-weight:600;display:inline-block;\">Auswahl ansehen</a>\n{% elif event.extra.responsive_checkout_url %}\n<a href=\"{{ event.extra.responsive_checkout_url|escape }}\" style=\"background:#6b5641;color:#ffffff;text-decoration:none;padding:15px 30px;border-radius:8px;font-size:15px;font-weight:600;display:inline-block;\">Auswahl ansehen</a>\n{% else %}\n<a href=\"https://luxestyle.ch\" style=\"background:#6b5641;color:#ffffff;text-decoration:none;padding:15px 30px;border-radius:8px;font-size:15px;font-weight:600;display:inline-block;\">Shop besuchen</a>\n{% endif %}</div>\n<p style=\"font-size:14px;line-height:1.65;color:#5a5a5a;margin:0 0 22px;\">Fragen zu einem Produkt oder zum Bestellen? Antworte auf diese E-Mail oder schreibe uns an <a href=\"mailto:info@luxestyle.ch\" style=\"color:#6b5641;text-decoration:underline;\">info@luxestyle.ch</a>.</p>\n<p style=\"font-size:13px;line-height:1.6;color:#6b6b6b;margin:0;\">Dein LuxeStyle-Team</p>\n</td></tr>\n<tr><td style=\"padding:22px;text-align:center;font-size:12px;line-height:1.7;color:#6b6b6b;background:#f5f1eb;\">LuxeStyle CH<br/>Hühnerhubelstrasse 37 · 3123 Belp · Schweiz<br/><a href=\"https://luxestyle.ch\" style=\"color:#6b5641;text-decoration:underline;\">luxestyle.ch</a> · {% unsubscribe 'Abmelden' %}</td></tr>\n</table>\n</td></tr>\n</table>\n</body>\n</html>\n",
+      "text": "Deine Auswahl. In deinem Tempo.\n\n{% if first_name %}Hallo {{ first_name }},{% else %}Hallo,{% endif %}\n\ndu hast bei LuxeStyle etwas entdeckt und deinen Einkauf noch nicht abgeschlossen. Hier kannst du dir deine Auswahl nochmals ansehen.\n\nPreise, Verfügbarkeit und Versandkosten siehst du aktuell im Shop und im Checkout.\n\n{% if event.extra.checkout_url %}Auswahl ansehen: {{ event.extra.checkout_url }}\n{% elif event.extra.responsive_checkout_url %}Auswahl ansehen: {{ event.extra.responsive_checkout_url }}\n{% else %}Shop besuchen: https://luxestyle.ch\n{% endif %}\n\nFragen zu einem Produkt oder zum Bestellen? Antworte auf diese E-Mail oder schreibe uns an info@luxestyle.ch.\n\nDein LuxeStyle-Team\n\nLuxeStyle CH\nHühnerhubelstrasse 37 · 3123 Belp · Schweiz\nhttps://luxestyle.ch\nAbmelden: {% unsubscribe_link %}\n"
+    },
+    {
+      "source_template_id": "TDX7Ux",
+      "created_template_id": "Vac6ad",
+      "name": "LuxeStyle | Checkout 2 | Prüfung 17.10.2026",
+      "subject_line": "Noch Fragen zu deiner Auswahl?",
+      "preview_text": "WELCOME10: 10 % Rabatt, falls du den Code noch nicht genutzt hast.",
+      "html": "<!DOCTYPE html>\n<html lang=\"de\">\n<head>\n<meta charset=\"utf-8\"/>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>\n<title>Noch Fragen zu deiner Auswahl?</title>\n<style>@media only screen and (max-width:620px){.email-content{padding:26px 22px!important;}.email-outer{padding:16px 12px!important;}}</style>\n</head>\n<body style=\"margin:0;padding:0;background:#faf8f4;font-family:Helvetica,Arial,sans-serif;color:#1a1a1a;\">\n<div style=\"display:none;max-height:0;overflow:hidden;opacity:0;color:transparent;mso-hide:all;\">WELCOME10: 10 % Rabatt, falls du den Code noch nicht genutzt hast.</div>\n<table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#faf8f4;\" width=\"100%\">\n<tr><td class=\"email-outer\" align=\"center\" style=\"padding:24px 12px;\">\n<table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" style=\"width:100%;max-width:600px;background:#ffffff;border-radius:12px;overflow:hidden;border:1px solid #ece6dc;\" width=\"600\">\n<tr><td style=\"background:#6b5641;padding:22px;text-align:center;color:#ffffff;font-size:22px;letter-spacing:2px;\">LUXESTYLE CH</td></tr>\n<tr><td class=\"email-content\" style=\"padding:34px;\">\n<h1 style=\"font-size:25px;line-height:1.3;font-weight:400;margin:0 0 20px;\">Noch Fragen zu deiner Auswahl?</h1>\n<p style=\"font-size:15px;line-height:1.7;color:#5a5a5a;margin:0 0 18px;\">{% if first_name %}Hallo {{ first_name|escape }},{% else %}Hallo,{% endif %}<br/><br/>wenn du dir bei einem Produkt noch unsicher bist, helfen wir dir gerne weiter.</p>\n<p style=\"font-size:15px;line-height:1.7;color:#5a5a5a;margin:0 0 16px;\">Falls du <strong>WELCOME10</strong> noch nicht genutzt hast, kannst du den Code im Checkout für <strong>10 % Rabatt auf deine Bestellung</strong> eingeben.</p>\n<div style=\"text-align:center;margin:20px 0;\"><div style=\"display:inline-block;border:2px dashed #8b7355;border-radius:8px;padding:12px 24px;font-size:20px;letter-spacing:2px;color:#6b5641;font-weight:600;\">WELCOME10</div></div>\n<p style=\"font-size:12px;line-height:1.65;color:#6b6b6b;margin:0;\">Einmal pro Kunde. Mindestbestellwert CHF 0.01. Die Anwendbarkeit wird im Checkout geprüft. Bitte gib den Code dort ein.</p>\n<div style=\"text-align:center;margin:28px 0;\">{% if event.extra.checkout_url %}\n<a href=\"{{ event.extra.checkout_url|escape }}\" style=\"background:#6b5641;color:#ffffff;text-decoration:none;padding:15px 30px;border-radius:8px;font-size:15px;font-weight:600;display:inline-block;\">Auswahl ansehen</a>\n{% elif event.extra.responsive_checkout_url %}\n<a href=\"{{ event.extra.responsive_checkout_url|escape }}\" style=\"background:#6b5641;color:#ffffff;text-decoration:none;padding:15px 30px;border-radius:8px;font-size:15px;font-weight:600;display:inline-block;\">Auswahl ansehen</a>\n{% else %}\n<a href=\"https://luxestyle.ch\" style=\"background:#6b5641;color:#ffffff;text-decoration:none;padding:15px 30px;border-radius:8px;font-size:15px;font-weight:600;display:inline-block;\">Shop besuchen</a>\n{% endif %}</div>\n<p style=\"font-size:14px;line-height:1.65;color:#5a5a5a;margin:0 0 22px;\">Fragen zu einem Produkt oder zum Bestellen? Antworte auf diese E-Mail oder schreibe uns an <a href=\"mailto:info@luxestyle.ch\" style=\"color:#6b5641;text-decoration:underline;\">info@luxestyle.ch</a>.</p>\n<p style=\"font-size:13px;line-height:1.6;color:#6b6b6b;margin:0;\">Dein LuxeStyle-Team</p>\n</td></tr>\n<tr><td style=\"padding:22px;text-align:center;font-size:12px;line-height:1.7;color:#6b6b6b;background:#f5f1eb;\">LuxeStyle CH<br/>Hühnerhubelstrasse 37 · 3123 Belp · Schweiz<br/><a href=\"https://luxestyle.ch\" style=\"color:#6b5641;text-decoration:underline;\">luxestyle.ch</a> · {% unsubscribe 'Abmelden' %}</td></tr>\n</table>\n</td></tr>\n</table>\n</body>\n</html>\n",
+      "text": "Noch Fragen zu deiner Auswahl?\n\n{% if first_name %}Hallo {{ first_name }},{% else %}Hallo,{% endif %}\n\nwenn du dir bei einem Produkt noch unsicher bist, helfen wir dir gerne weiter.\n\nFalls du WELCOME10 noch nicht genutzt hast, kannst du den Code im Checkout für 10 % Rabatt auf deine Bestellung eingeben.\n\nCode: WELCOME10\nEinmal pro Kunde. Mindestbestellwert CHF 0.01. Die Anwendbarkeit wird im Checkout geprüft. Bitte gib den Code dort ein.\n\n{% if event.extra.checkout_url %}Auswahl ansehen: {{ event.extra.checkout_url }}\n{% elif event.extra.responsive_checkout_url %}Auswahl ansehen: {{ event.extra.responsive_checkout_url }}\n{% else %}Shop besuchen: https://luxestyle.ch\n{% endif %}\n\nFragen zu einem Produkt oder zum Bestellen? Antworte auf diese E-Mail oder schreibe uns an info@luxestyle.ch.\n\nDein LuxeStyle-Team\n\nLuxeStyle CH\nHühnerhubelstrasse 37 · 3123 Belp · Schweiz\nhttps://luxestyle.ch\nAbmelden: {% unsubscribe_link %}\n"
+    }
+  ],
+  "suggested_definition": {
+    "triggers": [
+      {
+        "type": "metric",
+        "id": "XhnJPv",
+        "trigger_filter": null
+      }
+    ],
+    "profile_filter": {
+      "condition_groups": [
+        {
+          "conditions": [
+            {
+              "type": "profile-metric",
+              "metric_id": "W7XTVD",
+              "measurement": "count",
+              "measurement_filter": {
+                "type": "numeric",
+                "operator": "equals",
+                "value": 0
+              },
+              "timeframe_filter": {
+                "type": "date",
+                "operator": "flow-start"
+              },
+              "metric_filters": null
+            }
+          ]
+        }
+      ]
+    },
+    "actions": [
+      {
+        "id": "106812817",
+        "type": "time-delay",
+        "data": {
+          "unit": "hours",
+          "value": 1,
+          "secondary_value": 0,
+          "timezone": "profile"
+        },
+        "links": {
+          "next": "106812819"
+        }
+      },
+      {
+        "id": "106812819",
+        "type": "send-email",
+        "data": {
+          "message": {
+            "from_email": "info@luxestyle.ch",
+            "from_label": "LuxeStyle CH",
+            "reply_to_email": "info@luxestyle.ch",
+            "cc_email": null,
+            "bcc_email": null,
+            "subject_line": "Deine Auswahl bei LuxeStyle",
+            "preview_text": "Du kannst dir deine Auswahl in Ruhe nochmals ansehen.",
+            "template_id": "U5qvBK",
+            "smart_sending_enabled": true,
+            "transactional": false,
+            "add_tracking_params": true,
+            "custom_tracking_params": null,
+            "additional_filters": null,
+            "name": "Abandoned Checkout - Email 1",
+            "id": "Yq4Puv"
+          },
+          "status": "draft"
+        },
+        "links": {
+          "next": "106812826"
+        }
+      },
+      {
+        "id": "106812826",
+        "type": "time-delay",
+        "data": {
+          "unit": "hours",
+          "value": 23,
+          "secondary_value": 0,
+          "timezone": "profile"
+        },
+        "links": {
+          "next": "106812827"
+        }
+      },
+      {
+        "id": "106812827",
+        "type": "send-email",
+        "data": {
+          "message": {
+            "from_email": "info@luxestyle.ch",
+            "from_label": "LuxeStyle CH",
+            "reply_to_email": "info@luxestyle.ch",
+            "cc_email": null,
+            "bcc_email": null,
+            "subject_line": "Noch Fragen zu deiner Auswahl?",
+            "preview_text": "WELCOME10: 10 % Rabatt, falls du den Code noch nicht genutzt hast.",
+            "template_id": "Vac6ad",
+            "smart_sending_enabled": true,
+            "transactional": false,
+            "add_tracking_params": true,
+            "custom_tracking_params": null,
+            "additional_filters": null,
+            "name": "Abandoned Checkout - Email 2",
+            "id": "VPmnEB"
+          },
+          "status": "draft"
+        },
+        "links": {
+          "next": null
+        }
+      }
+    ],
+    "entry_action_id": "106812817"
+  },
+  "native_render_checks": [
+    {
+      "source": "TTQSWH",
+      "id": "U5qvBK",
+      "case": "checkout",
+      "expected_target_present": true,
+      "expected_label_present": true,
+      "unresolved_condition": false,
+      "has_personalization": true
+    },
+    {
+      "source": "TDX7Ux",
+      "id": "Vac6ad",
+      "case": "checkout",
+      "expected_target_present": true,
+      "expected_label_present": true,
+      "unresolved_condition": false,
+      "has_personalization": true
+    },
+    {
+      "source": "TTQSWH",
+      "id": "U5qvBK",
+      "case": "responsive",
+      "expected_target_present": true,
+      "expected_label_present": true,
+      "unresolved_condition": false,
+      "has_personalization": true
+    },
+    {
+      "source": "TDX7Ux",
+      "id": "Vac6ad",
+      "case": "responsive",
+      "expected_target_present": true,
+      "expected_label_present": true,
+      "unresolved_condition": false,
+      "has_personalization": true
+    },
+    {
+      "source": "TTQSWH",
+      "id": "U5qvBK",
+      "case": "fallback",
+      "expected_target_present": true,
+      "expected_label_present": true,
+      "unresolved_condition": false,
+      "has_personalization": true
+    },
+    {
+      "source": "TDX7Ux",
+      "id": "Vac6ad",
+      "case": "fallback",
+      "expected_target_present": true,
+      "expected_label_present": true,
+      "unresolved_condition": false,
+      "has_personalization": true
+    }
+  ]
+}

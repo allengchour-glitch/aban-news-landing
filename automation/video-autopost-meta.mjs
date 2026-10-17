@@ -23,11 +23,13 @@
  * inflight/uncertain erst mit dem Plattformkonto abgleichen, niemals blind wiederholen.
  */
 import fs from 'node:fs';
+import { QueueInputError, readSocialQueue, validateMetaRow, localDateInZone, parseRunLimit } from './lib/social_queue.mjs';
 
 const CSV = new URL('../social/video_queue.csv', import.meta.url).pathname;
 const V = process.env.META_GRAPH_VERSION || 'v21.0';
 const DRY = process.env.DRY_RUN !== '0' || process.env.APPROVE_PUBLISH !== '1';
-const MAX = Math.max(1, parseInt(process.env.MAX_PER_RUN || '1', 10) || 1);
+let MAX;
+const TZ = process.env.SOCIAL_TZ || process.env.MC_TZ || 'Europe/Zurich';
 // Cover-Frame (ms) für IG-Reels: das 3.0s-Marken-Intro ist off-white → ohne Offset nimmt IG einen
 // weissen Frame als Grid-Vorschau. ~3800ms landet sauber im ERSTEN Produktbild (nach Intro-Fade,
 // vor dem nächsten Übergang) = Produkt-Cover statt weisser Kachel. Via THUMB_OFFSET überschreibbar.
@@ -43,17 +45,7 @@ const SKIP_THREADS = process.env.SKIP_THREADS === '1';  // Threads-Drossel (s. s
 
 const COLS = ['id','scheduled_date','video_url','caption','platforms','status','posted_at','post_url'];
 
-// --- minimal CSV (identisch zum Bild-Poster) ---
-function parse(text){
-  const rows=[]; let row=[], field='', q=false;
-  for(let i=0;i<text.length;i++){const c=text[i];
-    if(q){ if(c==='"'){ if(text[i+1]==='"'){field+='"';i++;} else q=false; } else field+=c; }
-    else { if(c==='"')q=true; else if(c===','){row.push(field);field='';}
-      else if(c==='\n'){row.push(field);rows.push(row);row=[];field='';}
-      else if(c==='\r'){} else field+=c; } }
-  if(field.length||row.length){row.push(field);rows.push(row);}
-  return rows.filter(r=>r.length>1||(r.length===1&&r[0]!==''));
-}
+// Validation and parsing are shared with the Metricool publisher.
 function esc(v){ v=String(v??''); return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v; }
 function serialize(rows){ return rows.map(r=>r.map(esc).join(',')).join('\n')+'\n'; }
 
@@ -168,10 +160,8 @@ async function postThreads(videoUrl, caption, beforePublish){
 
 // --- Hauptlauf ---
 async function runQueue(configured) {
-const today = new Date().toISOString().slice(0,10);
-const rows = parse(fs.readFileSync(CSV,'utf8'));
-const header = rows[0];
-if (!header || COLS.some(c => !header.includes(c))) throw new Error('Video-Queue: erforderliche Spalten fehlen');
+const today = localDateInZone(TZ);
+const { rows, header } = readSocialQueue(fs.readFileSync(CSV,'utf8'), COLS);
 if (!header.includes('platform_results')) {
   const column = header.length;
   header.push('platform_results');
@@ -181,21 +171,29 @@ const idx = Object.fromEntries(COLS.map(c=>[c, header.indexOf(c)]));
 const resultIndex = header.indexOf('platform_results');
 const data = rows.slice(1);
 
-const due = data.filter(r => ['ready', 'partial', 'uncertain'].includes((r[idx.status]||'').trim()) && (r[idx.video_url]||'').trim()
-  && ((r[idx.scheduled_date]||'').trim()==='' || (r[idx.scheduled_date]||'').trim() <= today));
+const prepared = new Map();
+for (let i = 0; i < data.length; i++) {
+  const source = data[i];
+  if (!['ready', 'partial', 'uncertain'].includes((source[idx.status] || '').trim())) continue;
+  const record = Object.fromEntries(COLS.map(key => [key, source[idx[key]] || '']));
+  prepared.set(source, validateMetaRow(record, { row:i + 2, skipThreads:SKIP_THREADS }));
+}
+const due = data.filter(source => {
+  const record = prepared.get(source);
+  return record && (!record.scheduledDate || record.scheduledDate <= today);
+});
 if(due.length===0){ console.log('Kein Video fällig (status=ready, scheduled_date<=heute).'); return 0; }
 
 console.log(`Kanäle: ${configured.join('+')||'(DRY)'} · fällig: ${due.length} · MAX_PER_RUN: ${MAX}`);
 let postedCount = 0, anyFail = false;
 
 for(const next of due.slice(0, MAX)){
-  const videoUrl = next[idx.video_url].trim();
+  const { mediaUrl:videoUrl, networks } = prepared.get(next);
   const caption = next[idx.caption] || '';
-  const plat = (next[idx.platforms]||'').toLowerCase();
-  const wantIG = !plat.trim() || /instagram|\big\b/.test(plat);
-  const wantFB = !plat.trim() || /facebook|\bfb\b/.test(plat);
-  const wantTH = !SKIP_THREADS && (!plat.trim() || /threads/.test(plat));
-  console.log(`→ ${next[idx.id]} | ${[wantIG&&'IG',wantFB&&'FB',wantTH&&'Threads'].filter(Boolean).join('+')} | ${videoUrl}`);
+  const wantIG = networks.includes('instagram');
+  const wantFB = networks.includes('facebook');
+  const wantTH = !SKIP_THREADS && networks.includes('threads');
+  console.log(`→ ${next[idx.id]} | ${[wantIG&&'IG',wantFB&&'FB',wantTH&&'Threads'].filter(Boolean).join('+')}`);
   if(DRY){ console.log('   DRY_RUN: würde senden.'); postedCount++; continue; }
 
   // Jeden bestätigten Kanal sofort speichern. Ein späterer Fehler darf weder den
@@ -253,6 +251,8 @@ return anyFail ? 1 : 0;
 }
 
 async function main() {
+  MAX = parseRunLimit(process.env.MAX_PER_RUN, 1);
+  if (MAX === 0) { console.log('MAX_PER_RUN=0 → pausiert, keine Veröffentlichung.'); return 0; }
   const configured = [IG_ID&&IG_TOK&&'IG', FB_ID&&FB_TOK&&'FB', TH_TOK&&'Threads'].filter(Boolean);
   if(configured.length===0 && !DRY){ console.log('Kein Meta-Kanal konfiguriert → No-op.'); return 0; }
   if(!fs.existsSync(CSV)){ console.log('Keine social/video_queue.csv → nichts zu tun.'); return 0; }
@@ -278,6 +278,7 @@ async function main() {
 
 try { process.exitCode = await main(); }
 catch (error) {
-  console.error(`Meta-Lauf abgebrochen (${safeError(error)}). Queue und unbestätigte Kanäle vor Wiederholung prüfen.`);
+  console.error(error instanceof QueueInputError ? error.message :
+    `Meta-Lauf abgebrochen (${safeError(error)}). Queue und unbestätigte Kanäle vor Wiederholung prüfen.`);
   process.exitCode = 1;
 }
