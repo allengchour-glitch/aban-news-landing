@@ -90,7 +90,7 @@ footer a{color:var(--muted)}</style>
     <div class="buybox">
       <div class="price">9 €<small> / Monat · KI-Sichtbarkeits-Monitor</small></div>
       <p>Monatlicher Report, ob KI deine Kanzlei nennt — mit Veränderung zum Vormonat und konkreten Maßnahmen (Schema, Verzeichnisse, Bewertungen, NAP-Konsistenz). Jederzeit kündbar, kein Login.</p>
-      <p><a class="btn" href="/ki-sichtbarkeit-monitor.html">Monitor ansehen →</a>
+      <p><a class="btn" data-aban-monitor href="/ki-sichtbarkeit-monitor.html">Monitor abonnieren →</a>
          <a class="btn ghost" href="/ki-sichtbarkeit-paket.html">Komplett-Paket (29 €) →</a></p>
     </div>
     <p class="note">Den Maßnahmen-Report kann dir die KI <strong>sofort automatisch erstellen</strong> — <a href="/ki-audit.html">KI-Sichtbarkeits-Audit (aban Pro)</a>. Lieber einmal selbst durchziehen? Das <a href="/ki-sichtbarkeit-audit.html">KI-Sichtbarkeits-Audit</a> (29 € einmalig) führt dich Schritt für Schritt + 90-Tage-Plan. Oder das <a href="/ki-sichtbarkeit-buch.html">Buch „Von KI gefunden werden“</a> für den ganzen Hintergrund.</p>
@@ -117,5 +117,7 @@ footer a{color:var(--muted)}</style>
   <a href="/suchmaschine.html">Suche</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
 </div></footer>
 <script defer src="/js/kit-preis.js"></script>
+<script src="/js/checkout-config.js"></script>
+<script data-aban-monitor-js>(function(){var u=(window.ABAN_CHECKOUT&&window.ABAN_CHECKOUT.MONITOR_ABO_URL)||"";if(!u)return;var a=document.querySelectorAll("a[data-aban-monitor]");for(var i=0;i<a.length;i++){a[i].href=u;a[i].target="_blank";a[i].rel="noopener";}})();</script>
 </body>
 </html>

@@ -51,7 +51,7 @@
     "price": "29",
     "priceCurrency": "CHF",
     "availability": "https://schema.org/InStock",
-    "url": "https://gumroad.com/l/PLATZHALTER",
+    "url": "https://abannews.com/ki-profi-prompts.html",
     "seller": {
       "@type": "Organization",
       "name": "aban news",
@@ -79,7 +79,7 @@
       "name": "Bekomme ich Updates, wenn neue Prompts hinzukommen?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Bei wesentlichen Ergänzungen oder Überarbeitungen erhalten alle bisherigen Käufer ein Update ohne Aufpreis über ihre Gumroad-Bestellbestätigung. Es gibt kein Abo — du kaufst einmal und erhältst dauerhaften Zugriff auf alle Versionen dieses Produkts."
+        "text": "Bei wesentlichen Ergänzungen oder Überarbeitungen erhalten alle bisherigen Käufer ein Update ohne Aufpreis über ihre Bestellbestätigung. Es gibt kein Abo — du kaufst einmal und erhältst dauerhaften Zugriff auf alle Versionen dieses Produkts."
       }
     },
     {
@@ -194,7 +194,7 @@ footer .inner{display:flex;flex-wrap:wrap;gap:6px 12px}
     <h1>100 fertige KI-Prompts —<br><span class="a">sofort im Einsatz</span></h1>
     <p class="lead">Keine Bastel-Experimente mehr. 100 durchdachte Prompts für 10 Berufsbereiche — direkt kopieren, Platzhalter füllen, loslegen. Für ChatGPT, Claude und alle anderen gängigen KI-Tools.</p>
     <div class="price-hero">CHF&nbsp;29.<sup style="font-size:.5em;vertical-align:super">—</sup> <small>· einmalig · sofort als Download</small></div>
-    <a href="https://gumroad.com/l/PLATZHALTER" class="btn-buy" target="_blank" rel="noopener">Jetzt kaufen — CHF 29.—</a>
+    <a href="mailto:hallo@abannews.com?subject=100%20KI-Profi-Prompts%20f%C3%BCr%20DACH-KMU&amp;body=Hallo%20Aban%2C%20ich%20m%C3%B6chte%20bestellen%3A%20100%20KI-Profi-Prompts%20f%C3%BCr%20DACH-KMU." class="btn-buy" data-aban-buy="KI_PROFI_PROMPTS_BUY_URL" data-aban-buy-label="Jetzt kaufen — CHF 29.—">Per Mail bestellen</a><p data-aban-buy-hinweis style="font-size:.82rem;color:#6b7280;margin:.5rem 0 0">Bestellung per E-Mail: du bekommst eine Antwort mit Zahlungsweg und danach den Download-Link. Kein Sofort-Download.</p>
   </section>
 
   <hr class="divider">
@@ -351,9 +351,9 @@ Hinweis am Ende: "Kein Ersatz für individuelle Rechtsberatung."</pre>
     <div class="buybox">
       <div class="price">CHF&nbsp;29.<sup style="font-size:.45em;vertical-align:super">—</sup> <small>· einmalig · sofort als Download</small></div>
       <p>100 Prompts in 10 Kategorien · PDF + Markdown · 25+ Seiten A4 · für alle gängigen KI-Tools · Updates inklusive</p>
-      <a href="https://gumroad.com/l/PLATZHALTER" class="btn-buy" target="_blank" rel="noopener">Jetzt kaufen — CHF 29.—</a>
+      <a href="mailto:hallo@abannews.com?subject=100%20KI-Profi-Prompts%20f%C3%BCr%20DACH-KMU&amp;body=Hallo%20Aban%2C%20ich%20m%C3%B6chte%20bestellen%3A%20100%20KI-Profi-Prompts%20f%C3%BCr%20DACH-KMU." class="btn-buy" data-aban-buy="KI_PROFI_PROMPTS_BUY_URL" data-aban-buy-label="Jetzt kaufen — CHF 29.—">Per Mail bestellen</a><p data-aban-buy-hinweis style="font-size:.82rem;color:#6b7280;margin:.5rem 0 0">Bestellung per E-Mail: du bekommst eine Antwort mit Zahlungsweg und danach den Download-Link. Kein Sofort-Download.</p>
       <div class="guarantee">✓ 30 Tage Geld-zurück — wenn du nicht zufrieden bist, reicht eine kurze Mail an hallo@abannews.com</div>
-      <p class="meta">Abwicklung über Gumroad · Kreditkarte, PayPal, Apple/Google Pay · sofortiger Download-Link per E-Mail</p>
+      <p class="meta">Bestellung per E-Mail · den Download-Link bekommst du nach der Zahlung</p>
     </div>
   </section>
 
@@ -385,7 +385,7 @@ Hinweis am Ende: "Kein Ersatz für individuelle Rechtsberatung."</pre>
       </details>
       <details>
         <summary>Bekomme ich Updates, wenn neue Prompts hinzukommen?</summary>
-        <p>Bei wesentlichen Ergänzungen oder Überarbeitungen erhalten alle bisherigen Käufer ein Update ohne Aufpreis über ihre Gumroad-Bestellbestätigung. Es gibt kein Abo — du kaufst einmal und erhältst dauerhaften Zugriff auf alle Versionen dieses Produkts.</p>
+        <p>Bei wesentlichen Ergänzungen oder Überarbeitungen erhalten alle bisherigen Käufer ein Update ohne Aufpreis über ihre Bestellbestätigung. Es gibt kein Abo — du kaufst einmal und erhältst dauerhaften Zugriff auf alle Versionen dieses Produkts.</p>
       </details>
       <details>
         <summary>Was ist der Unterschied zur kostenlosen Version?</summary>
@@ -416,5 +416,7 @@ Hinweis am Ende: "Kein Ersatz für individuelle Rechtsberatung."</pre>
 </footer>
 
 <script defer src="/js/announce.js"></script>
+<script src="/js/checkout-config.js"></script>
+<script data-aban-buy-js>(function(){var k=window.ABAN_CHECKOUT||{};var a=document.querySelectorAll("a[data-aban-buy]");for(var i=0;i<a.length;i++){var u=k[a[i].getAttribute("data-aban-buy")]||"";if(!u)continue;a[i].href=u;a[i].target="_blank";a[i].rel="noopener";var t=a[i].getAttribute("data-aban-buy-label");if(t)a[i].textContent=t;var n=a[i].nextElementSibling;if(n&&n.hasAttribute("data-aban-buy-hinweis"))n.parentNode.removeChild(n);}})();</script>
 </body>
 </html>
