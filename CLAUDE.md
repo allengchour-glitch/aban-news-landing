@@ -86,8 +86,13 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (513 davon in den zuletzt geänderten 3000; neu `PQUERY`/`SORT`/`REVERSE=0`, weil der SCAN-Deckel 3000 ist).
   Nachgeprüft DRY: 0 offen in den letzten 3000 und in den 1200 ältesten.
 - **Sauber:** WELCOME10 aktiv bis 31.12.2027 · 0 schwach bewertete in Werbeflächen · 0 Preis-0 ·
-  0 leere Collections. **Offen:** `site-health.mjs` hat keinen DRY-Modus und wertet **jeden** Status
-  ≠ 200 als Problem (429 ≠ 404). Volle Berichte: `dropship/WAECHTER-GEPRUEFT-1710.md`.
+  0 leere Collections. - **🕓 `site-health.mjs` hielt eine Drosselung für einen kaputten Shop:** jeder Status ≠ 200 war ein
+  Problem, bei 404 publizierte es automatisch + Telegram-Alarm. **HTTP 429 ist nicht 404** (Lehre vom
+  04.10., dreimal zugeschlagen). Fix `automation/lib/url_status.mjs` + Test: bei 429/5xx/Netzfehler
+  nachfassen, bleibt es dabei → **„nicht messbar"** statt Befund; **Gegenprobe: ein echter 404 gilt
+  sofort.** Dazu `DRY=1`. Lauf danach: alle 7 Seiten 200, keine Platzhalter, kein Admin-Leak.
+- **Sauber:** `conversion_guard` 0 Blocker / 5 ok. **Offen:** `image-audit` braucht Gemini (Credits
+  aufgebraucht). Volle Berichte: `dropship/WAECHTER-GEPRUEFT-1710.md`.
 - **🔑 ALLE 60 Shopify-Automatisierungen konnten in dieser Umgebung NICHTS tun — und meldeten das als
   Normalfall.** `SHOPIFY_CLIENT_SECRET` kommt als `shpss_<32 hex>=SHOPIFY_CLIENT_SECRET` an (60 statt
   38 Zeichen, Folge der vertauschten Env-Felder vom 04.10.) → Client-Credentials-Grant **HTTP 400** →

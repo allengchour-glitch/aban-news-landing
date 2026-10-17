@@ -102,9 +102,23 @@ sonst verschwindet ein falsches Feld in einer Warteschleife. Danach lief `SCAN=6
 - **`price_guard`:** 0 Produkte mit Preis 0, 0 mit falschem Vergleichspreis.
 - **`hero_image_guard`:** 0 leere Collections ohne Produkt.
 
-## 5. Noch nicht geprüft
+## 5. 🕓 `site-health.mjs` hielt eine Drosselung für einen kaputten Shop
 
-`site-health.mjs` hat **keinen DRY-Modus**: es publiziert 404-Homepage-Collections sofort und
-schickt eine Telegram-Nachricht. Deshalb hier nicht gestartet. Nebenbei fällt auf, dass es jeden
-Status ≠ 200 als Problem meldet — **HTTP 429 ist nicht 404** (die Lehre vom 04.10., die an einem Tag
-dreimal zugeschlagen hat). Das wäre der nächste Handgriff an den Wächtern.
+Es wertete **jeden** Status ≠ 200 als Problem — und bei 404 publizierte es die Collection
+automatisch und schickte einen Telegram-Alarm. **HTTP 429 ist nicht 404**: das ist die Lehre vom
+04.10., die an einem einzigen Tag dreimal zugeschlagen hat (dreimal hätte ich gesunde Seiten für tot
+erklärt). Eine Drosselung des Rand-Caches sah damit wie ein kaputter Shop aus — mit einer unnötigen
+Änderung am Shop als Folge.
+
+**Behoben:** `automation/lib/url_status.mjs` + Test (8 Fälle). Bei 429, 5xx und Netzfehlern wird mit
+wachsender Pause nachgefasst; bleibt es dabei, lautet das Ergebnis **„nicht messbar"** statt
+„Befund" — kein Alarm, kein Auto-Publish. **Gegenprobe:** ein echter **404 gilt sofort** und wird
+nicht verschleppt (ein Wächter, der echte Fehler wegwartet, ist genauso falsch).
+Dazu `DRY=1`: nur messen, nichts publizieren, nichts senden.
+
+**Lauf danach:** alle 7 geprüften Seiten 200, keine Theme-Platzhalter, kein fremder Admin-Link.
+
+## 6. Noch nicht geprüft
+
+`image-audit.mjs` braucht Gemini-Vision — die Credits des Users sind aufgebraucht (HTTP 402).
+`cross_sell.mjs` schreibt in Produktbeschreibungen; noch nicht angesehen.
