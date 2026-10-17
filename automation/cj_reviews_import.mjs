@@ -15,6 +15,7 @@
  *      [MIN_SCORE=4] · [DRY_RUN=1]
  */
 import fs from 'node:fs';
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 
 const CJ_EMAIL = (process.env.CJ_EMAIL || '').trim();
 const CJ_API_KEY = (process.env.CJ_API_KEY || '').trim();
@@ -23,7 +24,7 @@ const JM_DOMAIN = (process.env.JUDGEME_SHOP_DOMAIN || 'au3j0y-hq.myshopify.com')
 const GKEY = (process.env.GEMINI_API_KEY || '').trim();
 const ADMIN_TOKEN = (process.env.SHOPIFY_ADMIN_TOKEN || '').trim();
 const CID = (process.env.SHOPIFY_CLIENT_ID || '').trim();
-const CSEC = (process.env.SHOPIFY_CLIENT_SECRET || '').trim();
+const CSEC = shopifyClientSecret();  // s. automation/lib/shopify_secret.mjs (vertauschte Env-Felder)
 let SHOP = (process.env.SHOPIFY_SHOP || '').replace(/^https?:\/\//, '').replace(/\/.*$/, '').trim();
 if (!/myshopify\.com$/.test(SHOP)) SHOP = 'au3j0y-hq.myshopify.com';
 
@@ -53,7 +54,16 @@ async function sgql(tok, q, v) {
   return r.json();
 }
 async function sWorks(t) { try { const r = await sgql(t, '{shop{name}}'); return !!r?.data?.shop?.name; } catch { return false; } }
-async function sCC() { const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ client_id: CID, client_secret: CSEC, grant_type: 'client_credentials' }) }); const j = await r.json().catch(() => ({})); return j.access_token || null; }
+async function sCC() {
+  const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ client_id: CID, client_secret: CSEC, grant_type: 'client_credentials' }) });
+  const roh = await r.text();
+  let j = {}; try { j = JSON.parse(roh); } catch {}
+  // Den Grund NENNEN. Ein stiller Fehlschlag sieht aus wie „keine Creds" und kostet
+  // die naechste Sitzung Stunden (gemessen 2026-10-17: HTTP 400, weil der Secret-Wert
+  // 60 statt 38 Zeichen lang war).
+  if (!r.ok) console.error(`  Shopify-Grant HTTP ${r.status}: ${String(j.error_description || j.error || roh).slice(0, 160)}  (client_secret ${CSEC.length} Zeichen)`);
+  return j.access_token || null;
+}
 async function sToken() { if (ADMIN_TOKEN && await sWorks(ADMIN_TOKEN)) return ADMIN_TOKEN; if (CID && CSEC) { const t = await sCC(); if (t && await sWorks(t)) return t; } return null; }
 
 // ── CJ ──
@@ -122,7 +132,7 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
 
 (async () => {
   const stok = await sToken();
-  if (!stok) { console.log('Shopify-Auth fehlgeschlagen → No-op.'); process.exit(0); }
+  if (!stok) { console.log('Shopify-Auth fehlgeschlagen → No-op. (Grund steht in der Zeile darueber.)'); process.exit(0); }
 
   // Produkte holen
   const q = ONLY.length ? ONLY.map(h => `handle:${h}`).join(' OR ') : QUERY;

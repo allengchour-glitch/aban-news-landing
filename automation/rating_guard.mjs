@@ -12,8 +12,9 @@
  * ENV: SHOPIFY_SHOP + (SHOPIFY_ADMIN_TOKEN | SHOPIFY_CLIENT_ID+SHOPIFY_CLIENT_SECRET)
  *      RATING_MAX=3.8  MIN_COUNT=3  BESTSELLER_COLLECTION_GID=gid://shopify/Collection/687774499201
  */
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 const SHOP=process.env.SHOPIFY_SHOP||'', TOK_ST=process.env.SHOPIFY_ADMIN_TOKEN||'',
-  CID=process.env.SHOPIFY_CLIENT_ID||'', CS=process.env.SHOPIFY_CLIENT_SECRET||'',
+  CID=process.env.SHOPIFY_CLIENT_ID||'', CS=shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET)||'',
   LIVE=process.env.LIVE==='1', SCAN=Math.min(parseInt(process.env.SCAN||'400',10),5000),
   RATING_MAX=parseFloat(process.env.RATING_MAX||'3.8'), MIN_COUNT=parseInt(process.env.MIN_COUNT||'3',10),
   BEST=process.env.BESTSELLER_COLLECTION_GID||'gid://shopify/Collection/687774499201',

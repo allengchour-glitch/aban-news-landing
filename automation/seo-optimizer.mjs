@@ -9,10 +9,11 @@
  *      LIMIT (max Produkte/Lauf, default 120), DRY_RUN=1,
  *      TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
  */
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 const SHOP = process.env.SHOPIFY_SHOP || '';
 const TOK_STATIC = process.env.SHOPIFY_ADMIN_TOKEN || '';
 const CID = process.env.SHOPIFY_CLIENT_ID || '';
-const CSECRET = process.env.SHOPIFY_CLIENT_SECRET || '';
+const CSECRET = shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET) || '';
 const TG_T = process.env.TELEGRAM_BOT_TOKEN || '';
 const TG_C = process.env.TELEGRAM_CHAT_ID || '';
 const LIMIT = parseInt(process.env.LIMIT || '120', 10);

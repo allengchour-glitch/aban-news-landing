@@ -5,8 +5,9 @@
  * ENV: CJ_TOKEN · SHOPIFY_CLIENT_ID/SECRET · GEMINI(/tmp/gemini_key) · GRP=nagel · CAP=40 · DRY=1
  */
 import fs from 'node:fs';
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 const SHOP='au3j0y-hq.myshopify.com',API='2025-01';
-const CID=process.env.SHOPIFY_CLIENT_ID,CSEC=process.env.SHOPIFY_CLIENT_SECRET;
+const CID=process.env.SHOPIFY_CLIENT_ID,CSEC=shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET);
 const CJT=(process.env.CJ_TOKEN||'').trim();
 const GK=(fs.existsSync('/tmp/gemini_key')?fs.readFileSync('/tmp/gemini_key','utf8'):process.env.GEMINI_API_KEY||'').trim();
 const DRY=process.env.DRY==='1', CAP=parseInt(process.env.CAP||'40',10);

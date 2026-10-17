@@ -6,7 +6,8 @@
  * ENV: SHOPIFY_SHOP, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET, [POD_PAGE_ID]
  */
 import fs from 'node:fs';
-const SHOP=process.env.SHOPIFY_SHOP||'', CID=process.env.SHOPIFY_CLIENT_ID||'', SECRET=process.env.SHOPIFY_CLIENT_SECRET||'';
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
+const SHOP=process.env.SHOPIFY_SHOP||'', CID=process.env.SHOPIFY_CLIENT_ID||'', SECRET=shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET)||'';
 const PAGE=process.env.POD_PAGE_ID||'gid://shopify/Page/698444710273', API='2024-10';
 if(!SHOP||!CID||!SECRET){ console.log('Creds fehlen → No-op.'); process.exit(0); }
 const data=JSON.parse(fs.readFileSync('dropship/pod/wunsch_raw.json','utf8'));

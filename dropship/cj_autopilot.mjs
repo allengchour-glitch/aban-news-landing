@@ -24,8 +24,11 @@
  * Fehlt ein Pflicht-Secret → sauberer No-Op (exit 0). Keine Secrets im Log.
  */
 import https from 'node:https';
+import { shopifyClientSecret } from '../automation/lib/shopify_secret.mjs';
 
-const { CJ_EMAIL, CJ_API_KEY, SHOPIFY_SHOP, SHOPIFY_ADMIN_TOKEN, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET, GEMINI_API_KEY } = process.env;
+const { CJ_EMAIL, CJ_API_KEY, SHOPIFY_SHOP, SHOPIFY_ADMIN_TOKEN, SHOPIFY_CLIENT_ID, GEMINI_API_KEY } = process.env;
+// s. automation/lib/shopify_secret.mjs — vertauschte Env-Felder
+const SHOPIFY_CLIENT_SECRET = shopifyClientSecret();
 let SHOP_TOKEN = SHOPIFY_ADMIN_TOKEN || '';  // wird ggf. per Client-Credentials befüllt
 const MAX = Number(process.env.AUTOPILOT_MAX || 6);
 const TARGET_STATUS = (process.env.AUTOPILOT_STATUS || 'ACTIVE').toUpperCase() === 'DRAFT' ? 'DRAFT' : 'ACTIVE';

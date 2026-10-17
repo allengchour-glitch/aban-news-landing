@@ -9,6 +9,7 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import { shopifyClientSecret } from '../lib/shopify_secret.mjs';
 
 const ROOT = path.resolve(new URL('../..', import.meta.url).pathname);
 const OUT = path.join(ROOT, 'automation', 'autopilot', 'google-merchant-feed.xml');
@@ -18,7 +19,7 @@ const API = `https://${SHOP}/admin/api/2025-01/graphql.json`;
 
 async function getToken() {
   if (process.env.SHOPIFY_ADMIN_TOKEN) return process.env.SHOPIFY_ADMIN_TOKEN;
-  const id = process.env.SHOPIFY_CLIENT_ID, sec = process.env.SHOPIFY_CLIENT_SECRET;
+  const id = process.env.SHOPIFY_CLIENT_ID, sec = shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET);
   if (!id || !sec) return null;
   const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ client_id: id, client_secret: sec, grant_type: 'client_credentials' }) });
   return (await r.json()).access_token || null;

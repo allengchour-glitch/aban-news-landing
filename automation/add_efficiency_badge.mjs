@@ -7,7 +7,8 @@
  * KEINE erfundene Energieklasse. No-op ohne Creds. DRY_RUN=1 = Vorschau.
  * ENV: SHOPIFY_SHOP + SHOPIFY_CLIENT_ID/SECRET · [DRY_RUN=1]
  */
-const SHOP=(process.env.SHOPIFY_SHOP||'').trim(); const CID=(process.env.SHOPIFY_CLIENT_ID||'').trim(); const CSEC=(process.env.SHOPIFY_CLIENT_SECRET||'').trim();
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
+const SHOP=(process.env.SHOPIFY_SHOP||'').trim(); const CID=(process.env.SHOPIFY_CLIENT_ID||'').trim(); const CSEC=(shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET)||'').trim();
 const DRY=process.env.DRY_RUN==='1'; const API='2025-01';
 if(!SHOP||!CID||!CSEC){ console.log('Kein Shopify-Cred → No-op.'); process.exit(0); }
 

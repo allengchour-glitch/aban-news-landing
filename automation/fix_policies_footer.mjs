@@ -4,7 +4,8 @@
  * (2) Footer-Social-Block: custom_url (abannews) entfernen, TikTok auf @luxestyle.ch, YouTube/Twitter-Platzhalter leeren.
  * Auth: Client-Credentials (raw Admin-API). No-op ohne Creds. DRY_RUN=1 = nur anzeigen.
  */
-const SHOPraw=process.env.SHOPIFY_SHOP||'', CID=(process.env.SHOPIFY_CLIENT_ID||'').trim(), SEC=(process.env.SHOPIFY_CLIENT_SECRET||'').trim();
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
+const SHOPraw=process.env.SHOPIFY_SHOP||'', CID=(process.env.SHOPIFY_CLIENT_ID||'').trim(), SEC=(shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET)||'').trim();
 const ADMIN=(process.env.SHOPIFY_ADMIN_TOKEN||'').trim(); const DRY=process.env.DRY_RUN==='1'; const API='2025-01';
 let SHOP=SHOPraw.replace(/^https?:\/\//,'').replace(/\/.*$/,'').trim(); if(!/myshopify\.com$/.test(SHOP)) SHOP='au3j0y-hq.myshopify.com';
 if(!ADMIN && !(CID&&SEC)){ console.log('Keine Creds → No-op.'); process.exit(0); }

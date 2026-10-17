@@ -26,11 +26,12 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 
 const SHOP    = process.env.SHOPIFY_SHOP || '';
 const TOK_ST  = process.env.SHOPIFY_ADMIN_TOKEN || '';
 const CID     = process.env.SHOPIFY_CLIENT_ID || '';
-const CSECRET = process.env.SHOPIFY_CLIENT_SECRET || '';
+const CSECRET = shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET) || '';
 const LIVE    = process.env.LIVE === '1';
 // Ziel = die auf der STARTSEITE sichtbare Collection "⭐ Top 10 Bestseller" (handle bestseller-premium-heroes).
 const COLL    = process.env.BESTSELLER_COLLECTION_GID || 'gid://shopify/Collection/687774499201';

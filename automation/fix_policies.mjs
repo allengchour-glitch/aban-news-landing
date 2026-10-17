@@ -15,7 +15,8 @@
  *   SHOPIFY_SHOP, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET   (oder SHOPIFY_TOKEN direkt)
  * Lauf:  node automation/fix_policies.mjs        ·   DRY=1 …  (nur anzeigen)
  */
-const SHOP = process.env.SHOPIFY_SHOP, CID = process.env.SHOPIFY_CLIENT_ID, SEC = process.env.SHOPIFY_CLIENT_SECRET;
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
+const SHOP = process.env.SHOPIFY_SHOP, CID = process.env.SHOPIFY_CLIENT_ID, SEC = shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET);
 const DRY = process.env.DRY === '1', API = '2025-01';
 const REPLACE = [
   [/info@luxestyle\.com/gi, 'info@luxestyle.ch'],

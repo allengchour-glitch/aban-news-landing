@@ -79,3 +79,39 @@ ist zwar DRAFT in 0 Kanälen, liefert aber **HTTP 200 über eine bestehende Weit
 sauber gelöst. Auch die vom Ratgeber verlinkte `ufo-kristall-salzlampe-900a8e` ist ACTIVE, 7 Kanäle,
 CHF 26.90, kaufbar.
 **Lehre:** DRAFT + 0 Kanäle heisst nicht automatisch 404 — erst die URL abrufen, dann urteilen.
+
+---
+
+## Nachtrag 2026-10-17 — Rizinusöl-Themenbereich gebaut (live)
+
+### Was fehlte (gemessen, `rizcluster.mjs`)
+Die vier aktiven Rizinusöl-Produkte hatten **null Querverweise** aufeinander und es gab **keine
+Rizinusöl-Collection**. Sie lagen nur in breiten Sammlungen (`beauty-pflege`, `hautpflege`,
+`bestseller-unter-50`). Wer aus Google auf einem landete, sah **eins statt vier**.
+
+### Was jetzt live ist
+- **Collection `/collections/rizinusoel`** (Smart Collection, Regel TITLE enthält „Rizinus"),
+  eigener Text + SEO-Titel, **in alle 9 Kanäle publiziert** (Publish-Falle beachtet) → HTTP 200.
+  Sie enthält 6 Produkte, davon 4 aktive.
+- **Querverweis-Block in allen 4 aktiven Produkten** (Marker `<!-- ls-riz-link-v1 -->`, idempotent,
+  eingefügt vor der Trust-Box): je 3 Links auf die Geschwisterprodukte mit einem Wort zum Unterschied
+  (Wimpern/Haaröl/Roll-on/Wickel) + Link auf die Collection. **Live geprüft mit Cache-Buster:
+  4 × HTTP 200, Block vorhanden.** Zweiter Lauf des Skripts ändert nichts (Gegenprobe gelaufen).
+
+### Die zwei DRAFTs bleiben DRAFT — begründet
+Die Lehre „ein Draft hat meistens einen Grund — Tags lesen, bevor man aktiviert" angewandt:
+| Produkt | VK | EK | Grund |
+|---|---|---|---|
+| `rizinusol-atherisches-ol-622500` | 23.90 | **46.21** | `marge-verlust-draft` — jedes Stück −22.31 |
+| `rizinusol-wickel-set-mit-bio-ol-323457` | 39.90 | 26.93 | `cj-nicht-versendbar-ch` — CJ liefert es nicht in die Schweiz |
+
+Das Set wäre rentabel und trägt zusätzlich den Tag `besucht-aber-nicht-lieferbar-0918` —
+es wurde also von Kund:innen angeklickt. **Nur ein anderer Lieferant würde das lösen**, nicht ein
+Klick auf ACTIVE.
+
+### Sackgasse, ehrlich: für diese vier gibt es bei CJ keine Bewertungen
+Alle vier haben **0 Judge.me-Bewertungen**. Der Review-Importer wurde gezielt darauf angesetzt —
+Ergebnis **0**. Gegengeprüft mit direkten CJ-Abfragen (nicht dem Importer vertraut):
+alle vier pids lösen auf, `productComments` gibt **`total: 0`** zurück. Das ist eine echte Null,
+kein stiller Skip. **Erfundene Bewertungen sind ausgeschlossen** — die vier bleiben ohne Sterne,
+bis echte Käufer:innen welche schreiben (Judge.me-Mail nach Kauf läuft).

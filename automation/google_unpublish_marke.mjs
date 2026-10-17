@@ -2,9 +2,10 @@
 // Depubliziert tag:marke-Produkte vom Google-Kanal (Publication 302872297857).
 // Grund: Marken-Sperr-Risiko im Google Merchant Center (SHARED-MEMORY-Handoff 06-27).
 // Idempotent: fragt nur Produkte ab, die NOCH auf Google publiziert sind.
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 const SHOP = 'au3j0y-hq.myshopify.com';
 const GOOGLE_PUB = 'gid://shopify/Publication/302872297857';
-const CID = process.env.SHOPIFY_CLIENT_ID, CSEC = process.env.SHOPIFY_CLIENT_SECRET;
+const CID = process.env.SHOPIFY_CLIENT_ID, CSEC = shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET);
 const QUERY = process.env.PQUERY || 'tag:marke status:active publication_ids:302872297857';
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 

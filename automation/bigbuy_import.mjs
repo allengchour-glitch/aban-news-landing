@@ -20,6 +20,7 @@
  *      [CATS=schmuck,taschen,uhren,sonnenbrillen] · [PER=4] · [MARGIN=2.6] · [MAX_COST_EUR=60] · [LIVE=1]
  */
 import fs from 'node:fs';
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 
 const BB_KEY = (process.env.BIGBUY_API_KEY || '').trim();
 const BB_BASE = (process.env.BIGBUY_ENV || 'prod').toLowerCase() === 'sandbox'
@@ -27,7 +28,7 @@ const BB_BASE = (process.env.BIGBUY_ENV || 'prod').toLowerCase() === 'sandbox'
 const GKEY = (process.env.GEMINI_API_KEY || '').trim();
 const ADMIN_TOKEN = (process.env.SHOPIFY_ADMIN_TOKEN || '').trim();
 const CID = (process.env.SHOPIFY_CLIENT_ID || '').trim();
-const CSEC = (process.env.SHOPIFY_CLIENT_SECRET || '').trim();
+const CSEC = (shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET) || '').trim();
 let SHOP = (process.env.SHOPIFY_SHOP || '').replace(/^https?:\/\//, '').replace(/\/.*$/, '').trim();
 if (!/myshopify\.com$/.test(SHOP)) SHOP = 'au3j0y-hq.myshopify.com';
 const API = '2025-01';

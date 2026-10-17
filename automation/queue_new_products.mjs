@@ -17,8 +17,11 @@
 import fs from 'node:fs';
 import https from 'node:https';
 import { balanceByCategory } from './lib/reel-category.mjs';
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 
-const { SHOPIFY_SHOP, SHOPIFY_ADMIN_TOKEN, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET } = process.env;
+const { SHOPIFY_SHOP, SHOPIFY_ADMIN_TOKEN, SHOPIFY_CLIENT_ID } = process.env;
+// s. automation/lib/shopify_secret.mjs — vertauschte Env-Felder
+const SHOPIFY_CLIENT_SECRET = shopifyClientSecret();
 const QUEUE_MAX = Number(process.env.QUEUE_MAX || 3);
 const API_VER = '2024-10';
 const CSV = 'social/posts_image.csv';

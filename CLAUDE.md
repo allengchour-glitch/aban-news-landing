@@ -64,6 +64,30 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-17 (🔑 60 Skripte liefen ins Leere + Rizinusöl-Themenbereich gebaut):**
+- **🔑 ALLE 60 Shopify-Automatisierungen konnten in dieser Umgebung NICHTS tun — und meldeten das als
+  Normalfall.** `SHOPIFY_CLIENT_SECRET` kommt als `shpss_<32 hex>=SHOPIFY_CLIENT_SECRET` an (60 statt
+  38 Zeichen, Folge der vertauschten Env-Felder vom 04.10.) → Client-Credentials-Grant **HTTP 400** →
+  jedes Skript „keine Shopify-Creds → No-op". **Dritter Fall derselben Fehlerklasse** nach dem
+  CJ-`apiKey`/`password`-Bug und dem pid-SKU-Skip: **ein stummer Skip sieht aus wie „keine Daten".**
+  Fix: `automation/lib/shopify_secret.mjs` (+ Test, 8 Fälle, Gegenprobe in beide Richtungen) in allen
+  60 Stellen; ein sauberes 38-Zeichen-Secret bleibt unverändert, also auch in GitHub Actions richtig.
+  Gegenprobe am echten Skript: `price_guard.mjs` vorher „no-op: kein Token", nachher `scanned: 40`.
+  Voller Bericht: `dropship/SHOPIFY-AUTH-STILLER-NOOP.md`. **🟡 Beim User:** Env-Eintrag umdrehen.
+  **REGEL: ein Guard darf aussteigen, aber er muss den Grund nennen** (Status + Antworttext + Länge).
+- **🌿 Rizinusöl ist das stärkste Suchthema (64 von 214 Suchsitzungen) — jetzt ein Themenbereich:**
+  Collection **`/collections/rizinusoel`** (Smart, TITLE enthält „Rizinus", eigener Text + SEO,
+  **in alle 9 Kanäle publiziert**, HTTP 200) + **Querverweis-Block in allen 4 aktiven Produkten**
+  (Marker `<!-- ls-riz-link-v1 -->`, idempotent, je 3 Geschwister-Links + Collection-Link, live
+  geprüft 4 × 200). Vorher: **null Querverweise, keine Collection** — wer aus Google kam, sah eins
+  statt vier. Suche ist der einzige Kanal, der Käufer bringt (1 Kauf je 110 Sitzungen).
+- **Sackgasse, ehrlich:** für diese vier gibt es bei CJ **0 Kommentare** (alle pids lösen auf,
+  `total: 0` direkt gegengeprüft, nicht dem Importer geglaubt) → keine Sterne, bis echte Käufer:innen
+  welche schreiben. **Die zwei DRAFTs bleiben DRAFT:** `rizinusol-atherisches-ol-622500` EK 46.21 >
+  VK 23.90 (`marge-verlust-draft`), `rizinusol-wickel-set-…-323457` `cj-nicht-versendbar-ch` —
+  letzteres wäre rentabel und wird angeklickt, braucht aber **einen anderen Lieferanten**, nicht
+  einen Klick auf ACTIVE. Details: Nachtrag in `dropship/KANAELE-GEMESSEN-1610.md`.
+
 **📌 2026-10-04 (🔍 Shop-QA-Tag: 4 falsch beschriftete Top-Seiten, 37 % blinder Fleck im Review-Import, ein selbst verursachter Verlustverkauf):**
 Nachtrag am 16.10., weil diese Funde nur in den Einzeldokumenten standen und nicht im Gedächtnis — die nächste
 Sitzung liest CLAUDE.md, nicht `dropship/*.md`. Alles gemessen, alles live geprüft, PRs #2596–#2609 gemergt.
