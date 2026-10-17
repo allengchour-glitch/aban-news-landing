@@ -98,4 +98,4 @@ async function main(){
   }
   console.log(JSON.stringify(report,null,2));
 }
-main().catch(e=>{ console.error('Fehler:',e.message); process.exit(0); });
+main().catch(e=>{ console.error('Fehler:',e.message); process.exit(1); });
