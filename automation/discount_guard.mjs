@@ -9,6 +9,7 @@
  *      DISCOUNT_CODE=WELCOME10  EXTEND_DAYS=30  EXTEND_MONTHS=12
  */
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
+import { shopifyGql } from './lib/shopify_gql.mjs';
 const SHOP=process.env.SHOPIFY_SHOP||'', TOK_ST=process.env.SHOPIFY_ADMIN_TOKEN||'',
   CID=process.env.SHOPIFY_CLIENT_ID||'', CS=shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET)||'',
   LIVE=process.env.LIVE==='1', CODE=process.env.DISCOUNT_CODE||'WELCOME10',
@@ -21,11 +22,8 @@ async function getToken(){
     const j=await r.json().catch(()=>({})); return j.access_token||''; }
   return TOK_ST||'';
 }
-async function gql(token,query,variables){
-  const r=await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`,{method:'POST',
-    headers:{'Content-Type':'application/json','X-Shopify-Access-Token':token},body:JSON.stringify({query,variables})});
-  const j=await r.json(); if(j.errors) throw new Error('GraphQL: '+JSON.stringify(j.errors).slice(0,300)); return j.data;
-}
+// Drosselung aussitzen statt aufgeben — Begruendung + Tests in automation/lib/shopify_gql.mjs
+const gql=(token,query,variables)=>shopifyGql(SHOP,API,token,query,variables);
 
 async function main(){
   const report={ ts:new Date().toISOString(), live:LIVE, code:CODE };

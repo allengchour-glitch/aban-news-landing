@@ -8,6 +8,7 @@
  * ENV: SHOPIFY_SHOP + (SHOPIFY_ADMIN_TOKEN | SHOPIFY_CLIENT_ID+SHOPIFY_CLIENT_SECRET)  MENU_HANDLE=main-menu
  */
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
+import { shopifyGql } from './lib/shopify_gql.mjs';
 const SHOP=process.env.SHOPIFY_SHOP||'', TOK_ST=process.env.SHOPIFY_ADMIN_TOKEN||'',
   CID=process.env.SHOPIFY_CLIENT_ID||'', CS=shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET)||'',
   LIVE=process.env.LIVE==='1', MENU=process.env.MENU_HANDLE||'main-menu', API='2025-01';
@@ -19,11 +20,8 @@ async function getToken(){
     const j=await r.json().catch(()=>({})); return j.access_token||''; }
   return TOK_ST||'';
 }
-async function gql(token,query,variables){
-  const r=await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`,{method:'POST',
-    headers:{'Content-Type':'application/json','X-Shopify-Access-Token':token},body:JSON.stringify({query,variables})});
-  const j=await r.json(); if(j.errors) throw new Error('GraphQL: '+JSON.stringify(j.errors).slice(0,300)); return j.data;
-}
+// Drosselung aussitzen statt aufgeben — Begruendung + Tests in automation/lib/shopify_gql.mjs
+const gql=(token,query,variables)=>shopifyGql(SHOP,API,token,query,variables);
 
 async function main(){
   const report={ ts:new Date().toISOString(), live:LIVE };
@@ -32,7 +30,11 @@ async function main(){
 
   const handles=new Set();
   try{
-    const m=await gql(token,`query($h:String!){ menu(handle:$h){ items{ url items{ url items{ url } } } } }`,{h:MENU});
+    // `menu(handle:)` gibt es in der Admin-API nicht (sie verlangt menu(id:)) — derselbe Fehler
+    // wie im link_guard: der Waechter lief in einen GraphQL-Fehler und hat NIE eine Collection
+    // geprueft. Gemessen 2026-10-17: mit `menus(query:)` sind es 190 Einträge / 166 Ziele.
+    const mr=await gql(token,`query($q:String){ menus(first:5, query:$q){ nodes{ handle items{ url items{ url items{ url } } } } } }`,{q:`handle:${MENU}`});
+    const m={ menu: (mr.menus?.nodes||[]).find(x=>x.handle===MENU) || null };
     const walk=items=>{ for(const it of items||[]){ const mm=(it.url||'').match(/\/collections\/([a-z0-9\-]+)/i); if(mm) handles.add(mm[1]); walk(it.items); } };
     if(m.menu) walk(m.menu.items);
   }catch(e){ report.menuError=e.message; }

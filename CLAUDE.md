@@ -65,6 +65,27 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 
 ## Stand
 **📌 2026-10-17 (🔑 60 Skripte liefen ins Leere + Rizinusöl-Themenbereich gebaut):**
+- **⚠️ `publish_guard.mjs` WAR GEFÄHRLICH — und ist jetzt der beste Beleg für „Tags lesen, bevor man
+  handelt".** Er meldete 250/250 „Kanal fehlt"; davon war der grösste Teil **Absicht**: die Produkte,
+  die auf TikTok/Facebook/Instagram/Pinterest/Shop fehlen, tragen `adult-nicht-bewerben`, `18plus`,
+  `nicht-bewerben`, `niedrig-bewertet-nicht-bewerben`, `gmc-adult-pull`, `compliance-pruefen`,
+  `social-pause-halloween`, `raucher-rueckhol-0809`. **LIVE hätte er Erwachsenen-, 18-plus-, Tabak-
+  und schwach bewertete Artikel auf alle Social-Kanäle zurückgeschoben.** Fix:
+  `automation/lib/kanal_sperren.mjs` + Test (18 echte Tag-Sätze) → Sperrprodukte bekommen nur den
+  Onlineshop. Gegenprobe beide Richtungen: 18/18 gesperrt blockiert, 30/30 saubere erkannt.
+  Nebenbefund: „alle Kanäle ausser Point of Sale" zählte **Inbox** (Chat-App) und **Headless** mit.
+- **🔍 Zwei 404-Wächter haben NIE hingesehen:** `link_guard` + `hero_image_guard` fragten
+  `menu(handle:)` ab — **das gibt es in der Admin-API nicht** (nur `menu(id:)`), also GraphQL-Fehler,
+  0 Menü-Einträge, keine Prüfung. Mit `menus(query:)`: **190 Einträge, 164 Collection-Ziele.**
+  `link_guard` 0 kaputt (bestätigt die Handmessung vom 04.10.) · `hero_image_guard` fand **42 von 164
+  Menü-Collections ohne Titelbild** → LIVE gesetzt, nachgeprüft **42 → 0**.
+- **🐌 Alle 8 Wächter gaben bei der ersten Drosselung auf** (gleicher `gql()`-Block ohne Wiederholung;
+  ein `SCAN=3000`-Lauf schrieb 0 Alt-Texte). Fix `automation/lib/shopify_gql.mjs` (wachsende Pausen bei
+  Throttled/429/5xx) + Test — **wichtigster Test ist die Gegenprobe: ein echter Fehler fliegt sofort**,
+  sonst verschwindet ein falsches Feld in der Warteschleife. `alt_text_guard`: 7 Bilder ohne Alt → 7 gesetzt.
+- **Sauber:** WELCOME10 aktiv bis 31.12.2027 · 0 schwach bewertete in Werbeflächen · 0 Preis-0 ·
+  0 leere Collections. **Offen:** `site-health.mjs` hat keinen DRY-Modus und wertet **jeden** Status
+  ≠ 200 als Problem (429 ≠ 404). Volle Berichte: `dropship/WAECHTER-GEPRUEFT-1710.md`.
 - **🔑 ALLE 60 Shopify-Automatisierungen konnten in dieser Umgebung NICHTS tun — und meldeten das als
   Normalfall.** `SHOPIFY_CLIENT_SECRET` kommt als `shpss_<32 hex>=SHOPIFY_CLIENT_SECRET` an (60 statt
   38 Zeichen, Folge der vertauschten Env-Felder vom 04.10.) → Client-Credentials-Grant **HTTP 400** →
