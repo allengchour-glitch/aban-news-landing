@@ -51,5 +51,23 @@ pruef('Gross-/Kleinschreibung egal', sperrTags(['NICHT-BEWERBEN']), ['NICHT-BEWE
 // „bild-ok" enthaelt kein Sperrwort — eine zu breite Regel waere hier sofort sichtbar
 pruef('harmlose Tags loesen nichts aus', sperrTags(['bild-ok','neu','damen','kleider','beauty','sommer-2026']), []);
 
+// ── 4. Nachtrag 17.10.: die Google-eigenen Sperrtags (vorher NICHT erkannt) ──
+pruef('nicht-google-bewerben sperrt', sperrTags(['damen', 'nicht-google-bewerben']), ['nicht-google-bewerben']);
+pruef('google-policy-flag sperrt', sperrTags(['mode', 'google-policy-flag']), ['google-policy-flag']);
+pruef('Strumpfhose: nur Google-Kanal weg, Onlineshop bleibt',
+  erlaubteKanaele(['google-policy-flag', 'nicht-google-bewerben', 'damen'], K).erlaubt.map(k => k.name), ['Online Store']);
+// Gegenprobe: das erweiterte Muster darf harmlose „google"-Tags NICHT fangen.
+pruef('„google-ok"/„gfeed-anstupsen" sperren nicht', sperrTags(['google-ok', 'gfeed-anstupsen-261004', 'bewerben-ok']), []);
+
+// ── 5. Nachtrag 17.10.: `rueckhol` war zu breit (gemessen am Live-Katalog) ──
+// `raucher-rueckhol-0809`: 64 aktive Artikel, 0 davon auf dem Google-Kanal → echte Sperre.
+// `rueckhol-0907`: > 10 000 aktive Artikel, auf Google UND TikTok publiziert → Chargen-Markierung.
+pruef('Tabak-Rueckholung sperrt', sperrTags(['becher', 'raucher', 'raucher-rueckhol-0809']), ['raucher-rueckhol-0809']);
+pruef('Chargen-Markierung rueckhol-0907 sperrt NICHT', sperrTags(['bild-ok', 'damen', 'rueckhol-0907']), []);
+pruef('menue-/verkehr-rueckhol-0907 sperren NICHT',
+  sperrTags(['menue-rueckhol-0907', 'verkehr-rueckhol-0907']), []);
+pruef('Artikel nur mit Chargen-Tag behaelt alle Kanaele',
+  erlaubteKanaele(['rueckhol-0907', 'damen', 'kleider'], K).erlaubt.length, 6);
+
 console.log(fehler ? `\n${fehler} FEHLER` : '\nalle Tests gruen');
 process.exit(fehler ? 1 : 0);

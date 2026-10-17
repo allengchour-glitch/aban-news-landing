@@ -50,7 +50,7 @@ Diese kann nur der User; sie sind laut allen Analysen der einzige echte Reichwei
 - [ ] **Mobile entschlacken:** Startseite 20→6–8 Sektionen, HTML <1 MB, Bilder von `width=3840` auf ~750–1080px; **Sticky-ATC** mobil.
 - [ ] **robots.txt** prüfen: KI-/Such-Bots (OAI-SearchBot, PerplexityBot, Googlebot, Bingbot, GPTBot…) NICHT blocken.
 - [ ] **JSON-LD erweitern** (Product+Offer CHF+AggregateRating echt+BreadcrumbList+Organization+FAQPage), mit Rich Results Test prüfen.
-- [ ] **`google_product_category`** in den Merchant-Feed ergänzen (Generator `merchant_feed.mjs`).
+- [x] **`google_product_category`** im Merchant-Feed (17.10. erledigt — aus dem Metafeld `mm-google-shopping`; dazu GTIN, Versand, eindeutige IDs: `dropship/GOOGLE-MERCHANT-STAND-1710.md`).
 - [ ] **FAQ-Seite + 3–4 Kaufratgeber + Collection-Texte** aus `SEO-CONTENT-PACK.md` einsetzen (Platzhalter füllen, kein CJ-Leak).
 - [ ] **FR-Versionen** (Translate & Adapt) für Top-Seiten; hreflang `de-ch`/`fr-ch`.
 
