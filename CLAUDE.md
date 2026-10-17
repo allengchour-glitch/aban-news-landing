@@ -133,6 +133,30 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 - **💰 Der Importer hatte kein Gedächtnis für Leerläufe** → jeder Lauf bezahlte dieselben 90–98 %
   leeren Produkte neu (20 CJ-Punkte je Stück). Neu `dropship/cj_reviews_leer.txt` (`pid·Datum·Grund`,
   gültig `LEER_TAGE`=60) + `SORT`/`REVERSE` für eine andere Katalogregion.
+- **🔤 SEO-TITEL: 6644 gesetzt (CJ-Punkte waren weg, also die punktefreie Fläche genommen).** Der
+  `conversion_radar` misst 1373 von 1500 ohne SEO-Titel (91,5 %); der letzte Lauf fand in den ältesten
+  5244 Produkten **5000 ohne** (95 %). Gesetzt: 1500 + 144 + 5000, **0 Fehler**. Die Lücke ist weiter
+  gross (Altaudit: 25 032 von 40 000) → nächste Sitzung einfach weiterlaufen lassen.
+- **⚠️ DABEI HÄTTE DAS ALTE MUSTER 41 % DER TITEL KAPUTT GESCHRIEBEN — in die Google-Überschrift.**
+  `seo-optimizer.mjs` normalisierte mit `\s*[·–—-]\s*` → ` – ` und traf damit den **Bindestrich MITTEN
+  im Wort**: „Gaming-Controller" → „Gaming – Controller", „Joy-Con" → „Joy – Con", „Type-C" → „Type – C".
+  **985 von 2415** betroffen. Dazu: Marke fiel bei langen Titeln ab (hängendes `|…`, 255 = 11 %) und die
+  Beschreibung versprach **„schnelle Lieferung"**, obwohl CJ 10–20 Werktage braucht. Fix
+  `automation/lib/seo_titel.mjs` + Test (28 Fälle); Beschreibung nennt nur geprüfte Fakten
+  (Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · WELCOME10). Gegenprobe am alten Code: 3 von 3 kaputt.
+  **Dieselbe Fehlerklasse wie „3-5 Minuten" → „3." auf 264 Seiten — beide Male ein blanker Bindestrich.**
+- **✅ KEIN ALTSCHADEN — und mein erstes Messgerät log.** Die grobe Prüfung meldete „291 zerlegte Titel";
+  das Muster (`\S-\S` im Produkttitel UND ` – ` im SEO-Titel) flaggt zwei unabhängige Stellen und ist
+  Unsinn. Richtig gemessen (Vergleich gegen **beides**: neues Modul und nachgebauter alter Code):
+  **1620 vom neuen Modul, 0 vom alten Code, 164 von früheren Sitzungen handgeschrieben.** Der Fehler war
+  **verhindert, nicht repariert**. Die 164 handgeschriebenen sind **besser** (echte Keyword-Titel) und
+  bleiben unangetastet — der Optimizer füllt nur fehlende.
+- **Ehrlich zur Wirkung:** ohne SEO-Titel nimmt Shopify den Produkttitel. Der Gewinn ist der Marken-Zusatz
+  und vor allem die **kontrollierte Meta-Beschreibung** — CTR-Hebel, **keine Keyword-Strategie**.
+- **🐌 Zweiter Lauf brauchte 15 Min für 74 Treffer**, weil der Scan immer bei den zuletzt geänderten
+  beginnt — genau denen, die der vorige Lauf versorgt hat (3315 fertige Seiten neu durchblättert).
+  Fix `PQUERY`/`SORT`/`REVERSE` (wie beim `alt_text_guard`): mit `SORT=CREATED_AT REVERSE=0`
+  **5 Treffer nach 38 statt nach 3315**. Berichte: `dropship/SEO-TITEL-BINDESTRICH-1710.md`.
 - **Sauber:** `conversion_guard` 0 Blocker / 5 ok. **Offen:** `image-audit` braucht Gemini (Credits
   aufgebraucht). Volle Berichte: `dropship/WAECHTER-GEPRUEFT-1710.md`.
 - **🔑 ALLE 60 Shopify-Automatisierungen konnten in dieser Umgebung NICHTS tun — und meldeten das als
