@@ -54,6 +54,15 @@ function run(f, config = {}) {
       if(url.hostname==='developers.cjdropshipping.com' && url.pathname.endsWith('/product/productComments')) {
         return response(200,config.commentsResponse || {result:true,data:{list:comments}});
       }
+      if(url.hostname==='judge.me' && url.pathname==='/api/v1/reviews' && opts.method!=='POST') {
+        // Abgleich: Judge.me bestaetigt einen POST mit HTTP 201 OHNE Review-ID, der Importer
+        // liest darum die neuesten Bewertungen nach. Standardmaessig liegt dort, was gepostet
+        // wurde; config.shopReviews deckt den Fall ab, dass sie NICHT angekommen ist.
+        if(config.shopReviews!==undefined) return response(200,{reviews:config.shopReviews});
+        const gepostet=fs.existsSync('judge-posts.jsonl')
+          ? fs.readFileSync('judge-posts.jsonl','utf8').trim().split('\\n').filter(Boolean).map(JSON.parse) : [];
+        return response(200,{reviews:gepostet.map(p=>({product_external_id:'${PRODUCT_ID}',body:p.body}))});
+      }
       if(url.hostname==='judge.me' && url.pathname==='/api/v1/reviews' && opts.method==='POST') {
         const body=JSON.parse(opts.body);
         const ledger=fs.readFileSync('dropship/cj_review_items.jsonl','utf8').trim().split('\\n').map(JSON.parse);
@@ -157,14 +166,40 @@ test('HTTP200 mit explizitem Fehlerbody wird als failed gespeichert und nicht al
   }
 });
 
-test('Unbekannter HTTP200-Erfolg ohne bestätigte Review-ID bleibt uncertain und wird nicht erneut gesendet', t => {
+// Judge.me bestaetigt einen erfolgreichen POST mit HTTP 201 und OHNE Review-ID im Body
+// (live gemessen 2026-10-17: die Bewertungen lagen danach im Shop, der Importer meldete „0").
+// Darum liest der Importer nach — und nur was er im Shop findet, zaehlt als gesendet.
+test('HTTP201 ohne Review-ID zählt als gesendet, wenn die Bewertung im Shop liegt', t => {
   const f = fixture(t);
-  const first = run(f, { comments: [COMMENTS[0]], outcomes: [{ status: 200, body: {} }] });
+  const first = run(f, { comments: [COMMENTS[0]], outcomes: [{ status: 201, body: {} }] });
+  assert.equal(first.status, 0, first.stdout + first.stderr);
+  assert.equal(states(f).get(key(COMMENTS[0])), 'sent');
+  assert.deepEqual(lines(f, 'dropship/cj_reviews_done.txt'), [PRODUCT_ID]);
+  assert.match(first.stdout, /1 echte Reviews/);
+  const second = run(f, { comments: [COMMENTS[0]] });
+  assert.equal(second.status, 0, second.stdout + second.stderr);
+  assert.equal(posts(f).length, 1, 'kein zweiter POST derselben Bewertung');
+});
+
+// GEGENPROBE: findet der Abgleich die Bewertung NICHT, bleibt es beim alten, sicheren Verhalten.
+test('HTTP201 ohne Review-ID bleibt uncertain, wenn der Shop sie nicht hat, und wird nicht erneut gesendet', t => {
+  const f = fixture(t);
+  const first = run(f, { comments: [COMMENTS[0]], outcomes: [{ status: 200, body: {} }], shopReviews: [] });
   assert.equal(first.status, 1, first.stdout + first.stderr);
   assert.equal(states(f).get(key(COMMENTS[0])), 'uncertain');
-  const second = run(f, { comments: [COMMENTS[0]] });
+  const second = run(f, { comments: [COMMENTS[0]], shopReviews: [] });
   assert.equal(second.status, 1, second.stdout + second.stderr);
   assert.equal(posts(f).length, 1);
+  assert.deepEqual(lines(f, 'dropship/cj_reviews_done.txt'), []);
+});
+
+// GEGENPROBE: eine Bewertung eines ANDEREN Produkts darf den Abgleich nicht bestaetigen.
+test('Abgleich zählt nur Bewertungen desselben Produkts', t => {
+  const f = fixture(t);
+  const r = run(f, { comments: [COMMENTS[0]], outcomes: [{ status: 201, body: {} }],
+    shopReviews: [{ product_external_id: '999', body: COMMENTS[0].comment }] });
+  assert.equal(r.status, 1, r.stdout + r.stderr);
+  assert.equal(states(f).get(key(COMMENTS[0])), 'uncertain');
   assert.deepEqual(lines(f, 'dropship/cj_reviews_done.txt'), []);
 });
 
