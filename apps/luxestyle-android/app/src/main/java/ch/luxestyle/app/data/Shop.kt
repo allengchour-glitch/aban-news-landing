@@ -11,7 +11,7 @@ class Shop(context: Context) {
         .connectTimeout(15, TimeUnit.SECONDS)
         .readTimeout(20, TimeUnit.SECONDS)
         .build()
-    val api = Storefront(http)
+    val api = Storefront(http, token = ch.luxestyle.app.BuildConfig.STOREFRONT_TOKEN)
     private val prefs = context.getSharedPreferences("luxestyle", Context.MODE_PRIVATE)
     val cart = CartRepository(api, prefs)
     val wishlist = Wishlist(prefs)
@@ -25,12 +25,13 @@ class Shop(context: Context) {
     val recent = RecentlyViewed(prefs)
 
     // Kategorie-Bilder ändern sich selten → pro App-Start einmal je Kollektion
-    private val imageCache = mutableMapOf<String, Image?>()
+    // Je Aufruf (ein Bereich, eine Kachelreihe) bekommt jede Kollektion ein anderes Bild
+    private val imageCache = mutableMapOf<String, List<Image>>()
     private val imageLock = kotlinx.coroutines.sync.Mutex()
     suspend fun collectionImages(handles: List<String>): Map<String, Image?> = imageLock.withLock {
         val missing = handles.filter { it !in imageCache }.distinct()
         if (missing.isNotEmpty()) missing.chunked(20).forEach { imageCache.putAll(api.collectionImages(it)) }
-        handles.associateWith { imageCache[it] }
+        pickDistinct(handles, imageCache)
     }
     val searches = RecentSearches(prefs)
 }

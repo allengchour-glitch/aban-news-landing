@@ -23,6 +23,9 @@ android {
         targetSdk = 36
         versionCode = (System.getenv("LUXE_VERSION_CODE") ?: "104").toInt()
         versionName = System.getenv("LUXE_VERSION_NAME") ?: "1.0.4"
+        // Öffentlicher Storefront-Schlüssel (Headless-Kanal) – nur für Bewertungen nötig, darf in die App.
+        // Kommt aus dem GitHub-Secret LUXE_STOREFRONT_TOKEN; ohne ihn läuft die App wie bisher, ohne Sterne.
+        buildConfigField("String", "STOREFRONT_TOKEN", "\"${System.getenv("LUXE_STOREFRONT_TOKEN").orEmpty().trim()}\"")
     }
 
     signingConfigs {

@@ -4,6 +4,8 @@
  * Lieferanten-Reste (Fremdtext, Wasserzeichen, Collagen, fremde Logos, verpixelte Gesichter).
  * Liest den Shop tokenlos (Storefront API), ändert nichts. Ergebnis: bild-check.md + bild-check.json.
  * Aufruf: GEMINI_API_KEY=… node tools/image_audit.mjs [pro-kollektion=24]
+ * Andere Auswahl: COLLECTIONS="damen-strick-pullover,make-up,q:product_type:Damenschuhe AND title:*stiefel*"
+ * (Einträge mit „q:" sind Produktsuchen wie die Such-Reihen der Startseite).
  */
 import fs from 'node:fs';
 
@@ -13,10 +15,11 @@ const PER = Number(process.argv[2] || 24);
 const MODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
 const SHOP = 'https://au3j0y-hq.myshopify.com/api/2025-07/graphql.json';
 // Was die App zeigt: Startseiten-Reihen und die wichtigsten Kategorien
-const COLLECTIONS = [
+const DEFAULT_COLLECTIONS = [
   'damen-mode', 'sub-kleider', 'jacken-outdoor', 'schmuck-uhren', 'sub-halsketten', 'sub-armbaender',
   'sub-taschen', 'schuhe', 'damen-strick-pullover', 'bestseller', 'premium-geschenke', 'beauty-pflege',
 ];
+const COLLECTIONS = process.env.COLLECTIONS ? process.env.COLLECTIONS.split(',').map((x) => x.trim()).filter(Boolean) : DEFAULT_COLLECTIONS;
 
 async function gql(query) {
   const r = await fetch(SHOP, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ query }) });
@@ -25,9 +28,11 @@ async function gql(query) {
 
 const products = new Map();
 for (const h of COLLECTIONS) {
-  const d = await gql(`{ collection(handle: "${h}") { products(first: ${PER}, sortKey: BEST_SELLING) { nodes {
-    handle title onlineStoreUrl featuredImage { url } images(first: 8) { nodes { url } } } } } }`);
-  for (const p of d?.collection?.products?.nodes ?? []) {
+  const fields = 'handle title onlineStoreUrl featuredImage { url } images(first: 8) { nodes { url } }';
+  const d = h.startsWith('q:')
+    ? await gql(`{ products(first: ${PER}, sortKey: BEST_SELLING, query: ${JSON.stringify(h.slice(2))}) { nodes { ${fields} } } }`)
+    : await gql(`{ collection(handle: "${h}") { products(first: ${PER}, sortKey: BEST_SELLING) { nodes { ${fields} } } } }`);
+  for (const p of (h.startsWith('q:') ? d?.products?.nodes : d?.collection?.products?.nodes) ?? []) {
     if (!p.featuredImage || products.has(p.handle)) continue;
     products.set(p.handle, { ...p, collection: h, images: p.images.nodes.map((i) => i.url) });
   }

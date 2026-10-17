@@ -24,8 +24,19 @@ fun deliveryDays(html: String): DeliveryDays? {
 }
 
 /** „Lieferung ca. 13.–27. Okt." – gerechnet ab heute, Werktage ohne Samstag und Sonntag. */
-fun deliveryWindow(html: String, today: Calendar = Calendar.getInstance()): String? {
-    val d = deliveryDays(html) ?: return null
+fun deliveryWindow(html: String, today: Calendar = Calendar.getInstance()): String? =
+    deliveryDays(html)?.let { deliveryWindow(it, today) }
+
+/**
+ * Lieferzeit für mehrere Stücke: das langsamste bestimmt, wann alles da ist.
+ * Mischt sich „Tage" mit „Werktagen", wird vorsichtig in Werktagen gerechnet (dauert länger).
+ */
+fun slowest(all: List<DeliveryDays>): DeliveryDays? {
+    if (all.isEmpty()) return null
+    return DeliveryDays(all.maxOf { it.days.first }..all.maxOf { it.days.last }, all.any { it.workdays })
+}
+
+fun deliveryWindow(d: DeliveryDays, today: Calendar = Calendar.getInstance()): String {
     val from = addDays(today, d.days.first, d.workdays)
     val to = addDays(today, d.days.last, d.workdays)
     val sameMonth = from.get(Calendar.MONTH) == to.get(Calendar.MONTH)

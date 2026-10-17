@@ -141,7 +141,8 @@ fun LuxeApp(shop: Shop, links: Flow<String>) {
                         shape = Radius.Card,
                         containerColor = MaterialTheme.colorScheme.primary,
                         contentColor = MaterialTheme.colorScheme.onPrimary,
-                        actionColor = MaterialTheme.colorScheme.secondary,
+                        // Weiss statt Gold: Gold auf Dunkel war zu schwach lesbar
+                        actionColor = MaterialTheme.colorScheme.onPrimary,
                         dismissActionContentColor = MaterialTheme.colorScheme.onPrimary,
                     )
                 }

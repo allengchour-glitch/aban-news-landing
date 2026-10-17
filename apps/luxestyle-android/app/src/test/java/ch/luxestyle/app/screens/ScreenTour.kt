@@ -5,6 +5,8 @@ import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.semantics.getOrNull
 import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.hasText
+import androidx.compose.ui.test.hasTestTag
+import androidx.compose.ui.test.hasAnyAncestor
 import androidx.compose.ui.test.hasSetTextAction
 import androidx.compose.ui.test.isDialog
 import androidx.compose.ui.test.performImeAction
@@ -94,18 +96,41 @@ abstract class TourBase {
         listOf("In den Warenkorb", "wählen").any { rule.onAllNodesWithText(it, substring = true).fetchSemanticsNodes().isNotEmpty() }
     }
 
-    /** Grösse wählen (wird nicht vorausgewählt), dann in den Warenkorb. */
-    protected fun addToCart() {
+    /** Grösse wählen (wird nicht vorausgewählt) – im Kauf-Blatt –, dann in den Warenkorb. */
+    protected fun addToCart(sheetShot: String? = null) {
         if (rule.onAllNodesWithText("Grösse wählen").fetchSemanticsNodes().isNotEmpty()) {
             rule.onAllNodesWithText("Grösse wählen").onFirst().performClick()
-            settle(1500)
-            val size = listOf("M", "S", "L", "XL", "2XL", "XXL", "XS").firstOrNull { v ->
-                rule.onAllNodes(hasText(v) and isEnabled() and hasClickAction()).fetchSemanticsNodes().isNotEmpty()
-            } ?: error("Keine lieferbare Grösse gefunden")
-            rule.onAllNodes(hasText(size) and isEnabled() and hasClickAction()).onFirst().performClick()
-            settle(800)
+            completeSheet(sheetShot)
+            return
         }
         rule.onAllNodesWithText("In den Warenkorb", substring = true).onFirst().performClick()
+    }
+
+    /**
+     * Offenes Kauf-Blatt fertig ausfüllen: so lange Optionen im Blatt antippen, bis der Knopf
+     * „In den Warenkorb · CHF …" zeigt, dann tippen. Ohne Blatt (nur eine Ausführung) nichts tun.
+     */
+    protected fun completeSheet(sheetShot: String? = null) {
+        settle(2500)
+        val inSheet = hasAnyAncestor(hasTestTag("kaufblatt"))
+        if (rule.onAllNodes(hasTestTag("kaufblatt")).fetchSemanticsNodes().isEmpty()) return
+        sheetShot?.let { rule.onAllNodes(isDialog()).onFirst().captureRoboImage("$out/$it.png") }
+        val ready = hasTestTag("kaufblatt-knopf") and hasText("In den Warenkorb", substring = true)
+        val choices = listOf("M", "S", "L", "XL", "2XL", "XXL", "XS")
+        var i = 0
+        while (rule.onAllNodes(ready).fetchSemanticsNodes().isEmpty() && i < 12) {
+            val size = choices.firstOrNull { rule.onAllNodes(hasText(it) and inSheet).fetchSemanticsNodes().isNotEmpty() && i < choices.size }
+            val nodes = rule.onAllNodes(inSheet and hasClickAction() and SemanticsMatcher("wahl") {
+                it.config.getOrNull(SemanticsProperties.Role) == androidx.compose.ui.semantics.Role.RadioButton
+            })
+            val n = nodes.fetchSemanticsNodes().size
+            if (n == 0) break
+            if (size != null && i == 0) rule.onAllNodes(hasText(size) and inSheet).onFirst().performClick()
+            else nodes[i % n].performClick()
+            settle(600)
+            i++
+        }
+        rule.onNodeWithTag("kaufblatt-knopf").performClick()
     }
 
     protected fun start() {
@@ -136,7 +161,7 @@ class ScreenTour : TourBase() {
         shot("02-start-reihen")
 
         go("https://luxestyle.ch/collections/sub-kleider")
-        waitFor("Empfohlen"); settle()
+        waitFor("Sortieren"); settle()
         shot("03-kollektion")
 
         go("https://luxestyle.ch/products/damen-polka-dot-sommerkleid-mit-spaghettitrage-636400")
@@ -151,7 +176,7 @@ class ScreenTour : TourBase() {
         settle(1500)
         shot("05-produkt-details")
 
-        addToCart()
+        addToCart(sheetShot = "05b-kaufblatt")
         waitFor("Im Warenkorb"); settle(1500)
         shot("06-hinzugefuegt")
 
@@ -171,13 +196,19 @@ class ScreenTour : TourBase() {
         waitFor("Alles ansehen"); settle(6000)
         shot("09-kategorien")
         rule.onAllNodesWithText("Schmuck & Uhren").onFirst().performClick()
-        settle(12000)
+        settle(20000)
         shot("09a-kategorien-schmuck")
+        rule.onAllNodesWithText("Geschenke &", substring = true).onFirst().performClick()
+        settle(20000)
+        shot("09a2-kategorien-geschenke")
         rule.onAllNodesWithText("Damen").onFirst().performClick()
         settle(1500)
         rule.onAllNodesWithText("Alles ansehen").onFirst().performClick()
-        waitFor("Empfohlen"); settle()
+        waitFor("Sortieren"); settle()
         shot("09b-damen-unterkategorien")
+        rule.onAllNodesWithText("Preis").onFirst().performClick()
+        settle(1200)
+        shot("09c0-preis-menue")
         rule.onAllNodesWithText("Bis CHF 25").onFirst().performClick()
         waitForPrices(); settle()
         shot("09c-filter-bis-25")
@@ -217,6 +248,7 @@ class ScreenTour : TourBase() {
         waitForPrices(); settle()
         shot("15-halsketten-schnellkauf")
         rule.onAllNodesWithContentDescription("In den Warenkorb").onFirst().performClick()
+        completeSheet("15a-schnellkauf-blatt")
         waitFor("Im Warenkorb"); settle(1500)
         shot("15b-schnellkauf-hinzugefuegt")
         go("https://luxestyle.ch/cart")
@@ -241,7 +273,7 @@ class ScreenTour : TourBase() {
         shot("22b-start-budget")
         scrollTo("home", "Beliebte Kategorien"); settle(5000)
         shot("22c-start-kacheln")
-        scrollTo("home", "Premium Geschenke"); settle(3000)
+        scrollTo("home", "Make-up"); settle(3000)
         shot("22d-start-unten")
     }
 
@@ -349,7 +381,7 @@ class StoreShots : TourBase() {
         settle()
         shot("store-1-start")
         go("https://luxestyle.ch/collections/sub-kleider")
-        waitFor("Empfohlen"); settle()
+        waitFor("Sortieren"); settle()
         shot("store-2-kleider")
         go("https://luxestyle.ch/products/gestreiftes-armelloses-mini-kleid-mit-v-aussch-612500")
         waitForBuy(); settle()

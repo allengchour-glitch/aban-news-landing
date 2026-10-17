@@ -30,11 +30,19 @@ data class ProductCard(
     val quickVariant: String? = null,
     /** Nur bei Vorschlägen geladen – damit bleiben sie in derselben Abteilung. */
     val collections: Set<String> = emptySet(),
+    /** Echte Judge.me-Bewertungen (Durchschnitt, Anzahl); null ohne Bewertung oder ohne Storefront-Token. */
+    val rating: Rating? = null,
 ) {
     val discountPercent: Int?
         get() = compareAt?.takeIf { it.amount > price.amount }
             ?.let { (((it.amount - price.amount) / it.amount) * 100).toInt() }
             ?.takeIf { it >= 5 }
+}
+
+/** Durchschnitt 1–5 und Anzahl. Angezeigt wird nur, was es wirklich gibt (mindestens eine Bewertung). */
+data class Rating(val average: Double, val count: Int) {
+    /** „4.9" – eine Stelle, Schweizer Punkt. */
+    fun label(): String = String.format(Locale.ROOT, "%.1f", average)
 }
 
 data class ProductOption(val name: String, val values: List<String>)
@@ -59,6 +67,7 @@ data class Product(
     val variants: List<Variant>,
     /** Kollektionen in Shop-Reihenfolge – daraus entsteht der Kategorie-Pfad. */
     val collections: List<String> = emptyList(),
+    val rating: Rating? = null,
 ) {
     val url: String get() = "https://luxestyle.ch/products/$handle"
 
@@ -100,7 +109,7 @@ data class Product(
 
     fun toCard(): ProductCard {
         val v = variants.firstOrNull { it.available } ?: variants.first()
-        return ProductCard(id, handle, title, images.firstOrNull(), v.price, v.compareAt, variants.any { it.available })
+        return ProductCard(id, handle, title, images.firstOrNull(), v.price, v.compareAt, variants.any { it.available }, rating = rating)
     }
 }
 
@@ -109,8 +118,12 @@ data class ProductPage(val products: List<ProductCard>, val cursor: String?, val
 data class CollectionInfo(val handle: String, val title: String, val description: String, val image: Image?)
 
 data class MenuItem(val title: String, val url: String, val children: List<MenuItem>, val image: Image? = null) {
-    /** Handle der Kollektion, falls der Menüpunkt auf eine zeigt. */
+    /**
+     * Handle der Kollektion, falls der Menüpunkt auf eine zeigt. Das Menü liefert Emoji-Handles
+     * prozent-kodiert („%F0%9F%8E%81-geschenke-bis-chf-30“) – so findet die Storefront sie nicht.
+     */
     val collectionHandle: String? get() = Regex("/collections/([^/?#]+)").find(url)?.groupValues?.get(1)
+        ?.let { runCatching { java.net.URLDecoder.decode(it, "UTF-8") }.getOrDefault(it) }
 }
 
 /**

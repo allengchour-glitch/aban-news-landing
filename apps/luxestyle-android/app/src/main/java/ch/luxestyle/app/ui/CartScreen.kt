@@ -55,6 +55,9 @@ import ch.luxestyle.app.data.Money
 import ch.luxestyle.app.data.Storefront
 import ch.luxestyle.app.data.breadcrumb
 import ch.luxestyle.app.data.cartSuggestions
+import ch.luxestyle.app.data.deliveryDays
+import ch.luxestyle.app.data.deliveryWindow
+import ch.luxestyle.app.data.slowest
 import ch.luxestyle.app.data.sameDepartment
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
@@ -137,13 +140,21 @@ private fun CartContent(c: Cart) {
     val missing = missingForFreeShipping(c.total)
     val ship = if (missing == null) 0.0 else CartRepository.SHIPPING_CHF
     val grand = Money(c.total.amount + ship, c.total.currency)
+    // Lieferzeit wie auf der Produktseite, für den ganzen Korb: das langsamste Stück zählt
+    val handles = remember(c.lines) { c.lines.map { it.productHandle }.distinct() }
+    val arrival = (rememberLoad("lieferung", handles) {
+        coroutineScope {
+            handles.map { h -> async { runCatching { deliveryDays(shop.api.product(h).descriptionHtml) }.getOrNull() } }
+                .mapNotNull { it.await() }
+        }.let { slowest(it)?.let { d -> deliveryWindow(d) } }
+    }.state as? Load.Ok)?.value
     val wish by shop.wishlist.items.collectAsState()
     val suggestions = remember(recs.state, c.lines, missing) {
         (recs.state as? Load.Ok)?.value.orEmpty().let { cartSuggestions(it, c.lines.map { l -> l.productHandle }.toSet(), missing) }
     }
 
     Box(Modifier.fillMaxSize()) {
-        LazyColumn(Modifier.testTag("cart"), contentPadding = PaddingValues(bottom = 120.dp)) {
+        LazyColumn(Modifier.testTag("cart"), contentPadding = PaddingValues(bottom = 140.dp)) {
             item { Box(Modifier.padding(horizontal = 16.dp)) { ShippingProgress(c.total) } }
             items(c.lines, key = { it.id }) { line ->
                 Column(Modifier.padding(horizontal = 16.dp)) {
@@ -166,6 +177,14 @@ private fun CartContent(c: Cart) {
                         Text("Total", style = MaterialTheme.typography.titleLarge, modifier = Modifier.weight(1f))
                         Text(grand.format(), style = MaterialTheme.typography.titleLarge)
                     }
+                    arrival?.let {
+                        Gap(10)
+                        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.testTag("cart-lieferung")) {
+                            Icon(painterResource(R.drawable.ic_truck), null, tint = MaterialTheme.colorScheme.secondary, modifier = Modifier.size(18.dp))
+                            Spacer(Modifier.width(8.dp))
+                            Text(it, style = MaterialTheme.typography.bodySmall, color = LocalLuxe.current.muted)
+                        }
+                    }
                 }
             }
             if (suggestions.isNotEmpty()) item(key = "suggest") {
@@ -185,6 +204,16 @@ private fun CartContent(c: Cart) {
                 "Zur Kasse · ${grand.format()}",
                 modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 12.dp),
             ) { nav.web(c.checkoutUrl, "Kasse") }
+            // Am Entscheidungspunkt: wie man zahlt und dass man zurückgeben kann
+            Row(
+                Modifier.fillMaxWidth().padding(bottom = 10.dp),
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Icon(painterResource(R.drawable.ic_lock), null, tint = LocalLuxe.current.muted, modifier = Modifier.size(14.dp))
+                Spacer(Modifier.width(6.dp))
+                Text("TWINT · Karte · Klarna  ·  30 Tage Rückgabe", style = MaterialTheme.typography.labelSmall, color = LocalLuxe.current.muted)
+            }
         }
     }
 }

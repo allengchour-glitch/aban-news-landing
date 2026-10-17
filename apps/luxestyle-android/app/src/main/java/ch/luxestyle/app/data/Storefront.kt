@@ -17,23 +17,28 @@ import java.io.IOException
 class ShopException(message: String) : IOException(message)
 
 /**
- * Shopify Storefront API (ohne Token – Shopify erlaubt öffentliche Lesezugriffe und den Warenkorb).
+ * Shopify Storefront API. Ohne Token gehen Katalog und Warenkorb; Metafelder (Judge.me-Bewertungen)
+ * liefert Shopify nur mit öffentlichem Storefront-Token ([token]). Fehlt er, fragt die App sie nicht ab.
  * Preise immer im Schweizer Kontext (CHF, Deutsch).
  */
 class Storefront(
     private val http: OkHttpClient,
     private val endpoint: String = "https://au3j0y-hq.myshopify.com/api/2025-07/graphql.json",
+    private val token: String = "",
 ) {
+    val hasRatings: Boolean get() = token.isNotBlank()
+
     private val json = Json { ignoreUnknownKeys = true }
 
     suspend fun run(query: String, variables: JsonObject = JsonObject(emptyMap())): JsonObject =
         withContext(Dispatchers.IO) {
             val body = buildJsonObject {
-                put("query", JsonPrimitive(withSwissContext(query)))
+                put("query", JsonPrimitive(withSwissContext(withRatings(query, hasRatings))))
                 put("variables", variables)
             }.toString().toRequestBody("application/json".toMediaType())
             val req = Request.Builder().url(endpoint).post(body)
                 .header("Accept-Language", "de-CH")
+                .apply { if (hasRatings) header("X-Shopify-Storefront-Access-Token", token) }
                 .build()
             http.newCall(req).execute().use { res ->
                 if (!res.isSuccessful) throw ShopException("Shop antwortet nicht (${res.code})")
@@ -119,6 +124,7 @@ class Storefront(
     suspend fun product(handle: String): Product {
         val d = run(
             """query P(${'$'}h: String!) { product(handle: ${'$'}h) { id handle title descriptionHtml
+              $RATING_MARK
               options { name optionValues { name } }
               images(first: 12) { nodes { url altText width height } }
               collections(first: 40) { nodes { handle } }
@@ -140,17 +146,22 @@ class Storefront(
     }
 
     /** Bild je Kollektion; ohne eigenes Bild das des ersten Produkts. */
-    suspend fun collectionImages(handles: List<String>): Map<String, Image?> {
+    /**
+     * Bildkandidaten je Kollektion: zuerst Fotos der meistverkauften Produkte, das eigene Kollektionsbild
+     * nur als Rückfall. Die Kollektionsbilder wurden einmal von Hand gesetzt und veralten (Netzteil bei
+     * „Geschenke für Ihn"); Produktfotos folgen dem Sortiment von selbst, auch wenn neue Produkte dazukommen.
+     */
+    suspend fun collectionImages(handles: List<String>): Map<String, List<Image>> {
         if (handles.isEmpty()) return emptyMap()
         val q = handles.mapIndexed { i, h ->
             "c$i: collection(handle: ${JsonPrimitive(h)}) { image { url altText width height } " +
-                "products(first: 1) { nodes { featuredImage { url altText width height } } } }"
+                "products(first: 6, sortKey: BEST_SELLING) { nodes { featuredImage { url altText width height } } } }"
         }
         val d = run("query Img { ${q.joinToString(" ")} }")
         return handles.withIndex().associate { (i, h) ->
             val c = d.o("c$i")
             val own = Parse.image(c.o("image"))?.takeUnless(::isWebBanner)
-            h to (own ?: c.nodes("products").firstOrNull()?.o("featuredImage")?.let(Parse::image))
+            h to (c.nodes("products").mapNotNull { it.o("featuredImage")?.let(Parse::image) } + listOfNotNull(own))
         }
     }
 
@@ -244,7 +255,16 @@ class Storefront(
                 query.substring(m.range.last + 1)
         }
 
+        /** Platzhalter für die Bewertungsfelder – ohne Token bleibt er als GraphQL-Kommentar stehen. */
+        const val RATING_MARK = "#rating"
+        private const val RATING_FIELDS = """rating: metafield(namespace: "reviews", key: "rating") { value }
+            ratingCount: metafield(namespace: "reviews", key: "rating_count") { value }"""
+
+        fun withRatings(query: String, enabled: Boolean): String =
+            if (enabled) query.replace(RATING_MARK, RATING_FIELDS) else query
+
         private const val CARD = """fragment Card on Product { id handle title availableForSale
+            $RATING_MARK
             featuredImage { url altText width height }
             priceRange { minVariantPrice { amount currencyCode } }
             compareAtPriceRange { maxVariantPrice { amount currencyCode } }
@@ -263,5 +283,23 @@ class Storefront(
  * Breite Web-Banner (1600×620) tragen Titel und Knopf ins Bild gebrannt („Frauen … Jetzt entdecken").
  * In der App werden sie abgeschnitten und doppeln den eigenen Text – dort lieber ein Produktbild.
  */
+/**
+ * Je Kollektion ein Bild, das in dieser Auswahl noch nicht vorkommt. Im Shop haben z. B. vier
+ * Preis-Kollektionen dasselbe Jade-Roller-Foto – Shopify hängt beim erneuten Hochladen nur „_<uuid>“ an.
+ * Ist jeder Kandidat schon vergeben, bleibt die Kachel ohne Bild (Anfangsbuchstabe) statt doppelt.
+ */
+fun pickDistinct(handles: List<String>, candidates: Map<String, List<Image>>): Map<String, Image?> {
+    val used = mutableSetOf<String>()
+    return handles.distinct().associateWith { h ->
+        candidates[h].orEmpty().firstOrNull { imageKey(it) !in used }?.also { used += imageKey(it) }
+    }
+}
+
+private val UPLOAD_SUFFIX = Regex("_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$")
+
+/** Dateiname ohne Endung und ohne Shopifys Upload-Zusatz: gleiche Fotos haben denselben Schlüssel. */
+internal fun imageKey(image: Image): String =
+    image.url.substringBefore('?').substringAfterLast('/').substringBeforeLast('.').replace(UPLOAD_SUFFIX, "").lowercase()
+
 fun isWebBanner(image: Image): Boolean =
     image.height > 0 && image.width.toDouble() / image.height > 2.2

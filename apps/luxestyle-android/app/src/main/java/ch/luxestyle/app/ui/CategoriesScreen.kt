@@ -46,12 +46,14 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.Hyphens
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import ch.luxestyle.app.R
 import ch.luxestyle.app.data.Image
 import ch.luxestyle.app.data.MenuItem
+import ch.luxestyle.app.data.priceItems
 import coil3.compose.AsyncImage
 
 /**
@@ -76,7 +78,7 @@ fun CategoriesScreen() {
             val sel = selected.coerceIn(0, (items.size - 1).coerceAtLeast(0))
             Row(Modifier.fillMaxSize()) {
                 LazyColumn(
-                    Modifier.width(112.dp).fillMaxHeight().background(MaterialTheme.colorScheme.surfaceVariant).testTag("bereiche"),
+                    Modifier.width(120.dp).fillMaxHeight().background(MaterialTheme.colorScheme.surfaceVariant).testTag("bereiche"),
                 ) {
                     itemsIndexed(items, key = { _, m -> m.url }) { i, m ->
                         RailItem(m.title, i == sel) { selected = i }
@@ -98,8 +100,9 @@ private fun RailItem(title: String, selected: Boolean, onClick: () -> Unit) {
     ) {
         Box(Modifier.width(3.dp).height(44.dp).background(if (selected) c.secondary else Color.Transparent))
         Text(
-            title, Modifier.padding(horizontal = 10.dp, vertical = 14.dp),
-            style = MaterialTheme.typography.labelLarge,
+            title, Modifier.padding(start = 10.dp, end = 6.dp, top = 14.dp, bottom = 14.dp),
+            // Silbentrennung: „Geschenke & Weihnachten" passt sonst nicht in die schmale Spalte
+            style = MaterialTheme.typography.labelLarge.copy(hyphens = Hyphens.Auto),
             fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Normal,
             color = if (selected) c.onSurface else LocalLuxe.current.muted,
             maxLines = 3, overflow = TextOverflow.Ellipsis,
@@ -107,11 +110,15 @@ private fun RailItem(title: String, selected: Boolean, onClick: () -> Unit) {
     }
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun Department(top: MenuItem) {
     val shop = LocalShop.current
     val nav = LocalNav.current
-    val handles = remember(top) { listOfNotNull(top.collectionHandle) + top.children.mapNotNull { it.collectionHandle } }
+    // „unter CHF 20", „bis CHF 30" … als eine Budget-Zeile statt sechs Kacheln mit demselben Foto
+    val prices = remember(top) { priceItems(top.children).takeIf { it.size >= 2 }.orEmpty() }
+    val tiles = remember(top) { top.children.filter { c -> prices.none { it.second == c } } }
+    val handles = remember(top) { tiles.mapNotNull { it.collectionHandle } }
     val images by produceState<Map<String, Image?>>(emptyMap(), top.url) {
         value = runCatching { shop.collectionImages(handles) }.getOrDefault(emptyMap())
     }
@@ -123,9 +130,25 @@ private fun Department(top: MenuItem) {
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         item(span = { GridItemSpan(maxLineSpan) }) {
-            DepartmentBanner(top, top.image ?: images[top.collectionHandle]) { top.collectionHandle?.let { nav.collection(it, top.title) } }
+            // Drei Unterkategorien nebeneinander statt des Web-Banners mit eingebrannter Schrift.
+            // Die Bilder sind schon untereinander verschieden (pickDistinct).
+            val collage = tiles.mapNotNull { c -> c.collectionHandle?.let { images[it] } }.take(3)
+            DepartmentBanner(top, if (collage.size >= 2) collage else listOfNotNull(top.image)) {
+                top.collectionHandle?.let { nav.collection(it, top.title) }
+            }
         }
-        top.children.forEach { child ->
+        if (prices.isNotEmpty()) item(span = { GridItemSpan(maxLineSpan) }) {
+            Column(Modifier.testTag("budget")) {
+                Text("Nach Budget", style = MaterialTheme.typography.titleSmall)
+                Spacer(Modifier.height(8.dp))
+                FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    prices.forEach { (label, m) ->
+                        ChoiceChip(label, selected = false) { m.collectionHandle?.let { nav.collection(it, m.title) } }
+                    }
+                }
+            }
+        }
+        tiles.forEach { child ->
             item(key = child.url) {
                 SubTile(child, images[child.collectionHandle]) { child.collectionHandle?.let { nav.collection(it, child.title) } }
             }
@@ -134,19 +157,23 @@ private fun Department(top: MenuItem) {
 }
 
 @Composable
-private fun DepartmentBanner(top: MenuItem, image: Image?, onClick: () -> Unit) {
+private fun DepartmentBanner(top: MenuItem, pictures: List<Image>, onClick: () -> Unit) {
     Box(
         Modifier.fillMaxWidth().aspectRatio(2.1f).clip(Radius.Card).background(LocalLuxe.current.card)
             .clickable(role = Role.Button, onClickLabel = "Alles aus ${top.title}", onClick = onClick),
     ) {
-        image?.let { AsyncImage(it.sized(720), null, contentScale = ContentScale.Crop, modifier = Modifier.fillMaxSize()) }
+        Row(Modifier.fillMaxSize(), horizontalArrangement = Arrangement.spacedBy(2.dp)) {
+            pictures.forEach {
+                AsyncImage(it.sized(if (pictures.size == 1) 720 else 300), null, contentScale = ContentScale.Crop, modifier = Modifier.weight(1f).fillMaxHeight())
+            }
+        }
         Box(Modifier.fillMaxSize().background(Brush.verticalGradient(0.3f to Color.Transparent, 1f to Color.Black.copy(alpha = 0.6f))))
         Row(
             Modifier.align(Alignment.BottomStart).fillMaxWidth().padding(14.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Column(Modifier.weight(1f)) {
-                Text(top.title, style = MaterialTheme.typography.titleLarge, color = Color.White, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                Text(top.title, style = MaterialTheme.typography.titleLarge, color = Color.White, maxLines = 2, overflow = TextOverflow.Ellipsis)
                 Text("Alles ansehen", style = MaterialTheme.typography.labelMedium, color = Color.White.copy(alpha = 0.85f))
             }
             Icon(painterResource(R.drawable.ic_chevron), null, tint = Color.White, modifier = Modifier.size(18.dp))
@@ -160,8 +187,10 @@ internal fun SubTile(item: MenuItem, image: Image?, onClick: () -> Unit) {
         Modifier.clip(Radius.Small).clickable(role = Role.Button, onClick = onClick),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Box(Modifier.fillMaxWidth().aspectRatio(1f).clip(Radius.Card).background(LocalLuxe.current.card)) {
-            image?.let { AsyncImage(it.sized(300), null, contentScale = ContentScale.Crop, modifier = Modifier.fillMaxSize()) }
+        Box(Modifier.fillMaxWidth().aspectRatio(1f).clip(Radius.Card).background(LocalLuxe.current.card), contentAlignment = Alignment.Center) {
+            if (image != null) AsyncImage(image.sized(300), null, contentScale = ContentScale.Crop, modifier = Modifier.fillMaxSize())
+            // Ohne Bild keine leere Fläche: Anfangsbuchstabe in Markenfarbe
+            else Text(shortLabel(item.title).take(1), style = MaterialTheme.typography.headlineMedium, color = MaterialTheme.colorScheme.secondary)
         }
         Spacer(Modifier.height(6.dp))
         Text(
