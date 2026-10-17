@@ -11,6 +11,9 @@ export function assertCjSuccess(body, status, context = 'CJ') {
     const code = String(body?.code ?? 'unbekannt').replace(/[^0-9A-Za-z_-]/g, '').slice(0, 40);
     throw new Error(`CJ_API: Antwort nicht erfolgreich, code=${code} (${context})`);
   }
+  if (!Object.hasOwn(body,'data') || body.data === undefined) {
+    throw new Error(`CJ_DATA: Erfolgsantwort enthält kein data-Feld (${context})`);
+  }
   return body;
 }
 

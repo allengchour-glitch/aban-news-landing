@@ -19,6 +19,7 @@ import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 import { nachDeutsch } from './lib/uebersetzen.mjs';
 import { readCjResponse } from './lib/cj_response.mjs';
 import { shopifyGql } from './lib/shopify_gql.mjs';
+import { reviewKey, loadReviewStates, recordReviewState } from './lib/cj_review_ledger.mjs';
 
 const CJ_EMAIL = (process.env.CJ_EMAIL || '').trim();
 const CJ_API_KEY = (process.env.CJ_API_KEY || '').trim();
@@ -48,6 +49,7 @@ const SHOP_API = '2025-01';
 const JM_API = 'https://judge.me/api/v1/reviews';
 const TOKEN_FILE = process.env.CJ_TOKEN_CACHE || '/tmp/cj_token.json';
 const LEDGER = 'dropship/cj_reviews_done.txt';
+const ITEM_LEDGER = 'dropship/cj_review_items.jsonl';
 // Zweites Ledger: Produkte, bei denen CJ NICHTS hatte. Ohne das kostet jeder Lauf erneut
 // Punkte fuer dieselben leeren Produkte — und gemessen am 2026-10-17 sind das 90-98 % aller
 // geprueften (siehe dropship/CJ-REVIEWS-QUOTE-1710.md). 20 Punkte je Produkt, Tagesvorrat
@@ -59,6 +61,21 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 if (!CJ_EMAIL || !CJ_API_KEY) { console.log('Keine CJ-Creds (CJ_EMAIL/CJ_API_KEY) → No-op.'); process.exit(0); }
 if (!JM_TOKEN) { console.log('Kein JUDGEME_PRIVATE_TOKEN → No-op.'); process.exit(0); }
 if (!ADMIN_TOKEN && !(CID && CSEC)) { console.log('Keine Shopify-Creds → No-op.'); process.exit(0); }
+
+// Vor dem Lesen des Review-Ledgers exklusiv sperren. Auch zwei lokale Aufrufe
+// dürfen nicht denselben sending-Checkpoint unabhängig voneinander anlegen.
+if (!DRY) {
+  const lock = `${ITEM_LEDGER}.lock`;
+  let fd;
+  try { fd = fs.openSync(lock,'wx',0o600); }
+  catch (error) {
+    console.error(error.code === 'EEXIST'
+      ? 'CJ_REVIEW_LOCK: Import gesperrt; aktiven Lauf und unklare Ergebnisse vor Entfernen der Sperre abgleichen'
+      : 'CJ_REVIEW_LOCK: Sperre konnte nicht angelegt werden');
+    process.exit(1);
+  }
+  process.on('exit',() => { try { fs.closeSync(fd); fs.unlinkSync(lock); } catch {} });
+}
 
 // ── Shopify ──
 async function sgql(tok, q, v) {
@@ -126,11 +143,20 @@ async function jmPost(pid, r) {
   if (r.created_at) body.created_at = r.created_at;
   if (Array.isArray(r.picture_urls) && r.picture_urls.length) body.picture_urls = r.picture_urls.slice(0, 3);
   const res = await fetch(JM_API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
-  return { ok: res.ok, status: res.status, text: (await res.text()).slice(0, 160) };
+  const text = await res.text();
+  let result;
+  try { result = JSON.parse(text); } catch {}
+  const rejected = result && (result.success === false || result.result === false || result.error ||
+    (Array.isArray(result.errors) ? result.errors.length > 0 : !!result.errors));
+  const id = result?.review?.id ?? result?.id;
+  const confirmed = typeof id === 'number' ? Number.isFinite(id) && id > 0 : typeof id === 'string' && id.trim().length > 0;
+  return { ok: res.ok && !rejected && confirmed, status: res.status,
+    uncertain: res.status >= 500 || (res.ok && !rejected && !confirmed) };
 }
 
 const numId = (gid) => String(gid).split('/').pop();
 const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').split('\n').map(s => s.trim()).filter(Boolean) : []);
+const reviewStates = loadReviewStates(ITEM_LEDGER);
 
 // Leer-Ledger: pid<TAB>JJJJ-MM-TT. Eintraege, die aelter als LEER_TAGE sind, zaehlen nicht mehr —
 // CJ bekommt mit der Zeit neue Kommentare, ein „leer" ist kein Urteil fuer immer.
@@ -244,7 +270,8 @@ const merkeLeer = (id, grund) => {
       if (DEBUG) console.log(`    [DEBUG] ${p.handle}: pid ${cjpid} via ${resolved.via}`);
       const cr = await cjGet(ctok, '/product/productComments', { pid: cjpid, pageNum: 1, pageSize: 30 });
       await sleep(1100);
-      const list = cr?.data?.list || cr?.data?.comments || cr?.data?.content || cr?.data?.commentList || (Array.isArray(cr?.data) ? cr.data : []);
+      const list = cr?.data?.list ?? cr?.data?.comments ?? cr?.data?.content ?? cr?.data?.commentList ?? (Array.isArray(cr?.data) ? cr.data : null);
+      if (!Array.isArray(list)) throw new Error('CJ_DATA: Kommentar-Liste fehlt; nicht als leeres Produkt speichern');
       if (DEBUG) console.log(`    [DEBUG] comments(${cjpid}): result=${cr?.result} dataKeys=${cr?.data && typeof cr.data === 'object' ? Object.keys(cr.data).join(',') : typeof cr?.data} listLen=${Array.isArray(list) ? list.length : 'n/a'}${cr?.message ? ' msg=' + cr.message : ''}`);
       const picked = (list || [])
         .filter(c => Number(c.score) >= MIN_SCORE && (c.comment || '').trim().length >= 8)
@@ -252,9 +279,17 @@ const merkeLeer = (id, grund) => {
       if (!picked.length) { console.log(`· ${p.handle}: 0 echte ≥${MIN_SCORE}★-Kommentare bei CJ → skip`); merkeLeer(pidNum, 'keine-kommentare'); continue; }
 
       const bodiesDE = await translateDE(picked.map(c => c.comment.trim()));
-      let sent = 0;
+      let sent = 0, complete = true;
       for (let i = 0; i < picked.length; i++) {
         const c = picked[i];
+        const key = reviewKey(pidNum,cjpid,c);
+        const previous = reviewStates.get(key);
+        if (previous === 'sent') { console.log(`  Bereits importierte Bewertung übersprungen (${key.slice(0,12)})`); continue; }
+        if (previous === 'sending' || previous === 'uncertain') {
+          complete = false; fails++;
+          console.error(`  CJ_REVIEW_UNCERTAIN: ${key.slice(0,12)} vor erneutem Import in Judge.me abgleichen`);
+          continue;
+        }
         const rev = {
           name: (c.commentUser || '').trim() || 'CJ-Kundenbewertung',
           rating: Number(c.score) || 5,
@@ -263,8 +298,23 @@ const merkeLeer = (id, grund) => {
           picture_urls: (Array.isArray(c.commentUrls) ? c.commentUrls : []).filter(u => /^https?:\/\//.test(u)),
         };
         if (DRY) { console.log(`  [DRY] ${p.handle} ★${rev.rating} ${rev.body.slice(0, 50)}`); sent++; continue; }
-        const out = await jmPost(pidNum, rev);
-        if (out.ok) { sent++; } else { fails++; console.error(`  ✗ ${p.handle} HTTP ${out.status}: ${out.text}`); }
+        // Intent vor dem externen POST dauerhaft festhalten. Ein abgebrochener Lauf
+        // mit unbekanntem Ergebnis darf denselben Kommentar nicht blind wiederholen.
+        recordReviewState(ITEM_LEDGER,reviewStates,key,'sending');
+        let out;
+        try { out = await jmPost(pidNum, rev); }
+        catch {
+          recordReviewState(ITEM_LEDGER,reviewStates,key,'uncertain');
+          complete = false; fails++;
+          console.error(`  CJ_REVIEW_UNCERTAIN: Netzwerkfehler bei ${key.slice(0,12)}; erst abgleichen`);
+          continue;
+        }
+        if (out.ok) {
+          recordReviewState(ITEM_LEDGER,reviewStates,key,'sent'); sent++;
+        } else {
+          recordReviewState(ITEM_LEDGER,reviewStates,key,out.uncertain?'uncertain':'failed');
+          complete = false; fails++; console.error(`  Import nicht bestätigt: ${p.handle}, HTTP ${out.status}${out.uncertain ? '; vor Wiederholung abgleichen' : '; Anfrage abgelehnt'}`);
+        }
         await sleep(700);
       }
       if (sent) { prodWith++; totalReviews += sent; console.log(`✓ ${p.handle}: ${sent} echte Reviews (CJ-pid ${cjpid})`); }
@@ -272,7 +322,7 @@ const merkeLeer = (id, grund) => {
       // der naechste Lauf dieselben Reviews ein zweites Mal. Der stumme catch hat das
       // verdeckt (2026-10-04 aufgefallen, nachdem ein versehentliches `git checkout -- .`
       // den frischen Eintrag zurueckgesetzt hatte und niemand es gemerkt haette).
-      if (!DRY) {
+      if (!DRY && complete) {
         try { fs.appendFileSync(LEDGER, pidNum + '\n'); }
         catch (e) { console.error(`  ⚠️  LEDGER NICHT GESCHRIEBEN fuer ${p.handle} (${pidNum}): ${e.message}`); console.error('     Ohne Eintrag importiert der naechste Lauf diese Reviews doppelt.'); }
       }

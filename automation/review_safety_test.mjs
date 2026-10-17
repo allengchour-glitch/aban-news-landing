@@ -12,7 +12,7 @@ function fixture(t, script) {
   fs.mkdirSync(path.join(root, 'social'));
   const file = path.join(root, 'automation', script);
   fs.copyFileSync(new URL(script, import.meta.url), file);
-  for (const lib of ['shopify_secret.mjs', 'shopify_gql.mjs', 'cj_response.mjs', 'uebersetzen.mjs']) {
+  for (const lib of ['shopify_secret.mjs', 'shopify_gql.mjs', 'cj_response.mjs', 'cj_review_ledger.mjs', 'uebersetzen.mjs']) {
     fs.copyFileSync(new URL('lib/' + lib, import.meta.url), path.join(root, 'automation/lib', lib));
   }
   fs.writeFileSync(path.join(root, 'social/metricool_queue.csv'),
@@ -62,12 +62,12 @@ test('Teilerfolg wird als Fehler gemeldet, erfolgreiche Zeile gespeichert', t =>
     globalThis.fetch=async (url, opts={}) => {
       if (!opts.method) return {ok:true,text:async()=>JSON.stringify({url:'https://example.com/normalized.mp4'})};
       count++;
-      return {ok:count===1,status:count===1?200:500,text:async()=>count===1?'{}':'failed'};
+      return {ok:count===1,status:count===1?200:500,text:async()=>count===1?'{"id":123}':'failed'};
     };`);
   assert.equal(r.status, 1, r.stderr);
   const csv=fs.readFileSync(path.join(f.root, 'social/metricool_queue.csv'), 'utf8');
   assert.match(csv, /one,.*scheduled/);
-  assert.match(csv, /two,.*ready/);
+  assert.match(csv, /two,.*uncertain/);
 });
 test('Preiswächter schreibt selbst mit LIVE=1 keine Bestandsregel', t => {
   const r = run(fixture(t, 'price_guard.mjs'), { SHOPIFY_SHOP: 'test.myshopify.com',
@@ -140,7 +140,7 @@ test('Meta-Teilerfolg wird kanalweise gespeichert und ohne IG-Doppelpost fortges
     globalThis.setTimeout=(fn)=>{fn();return 0;};
     globalThis.fetch=async(url,opts={})=>{
       if(url.includes('/me/accounts'))return {ok:true,json:async()=>({data:[]})};
-      if(url.includes('/fb/videos'))return {ok:false,status:500,json:async()=>({error:'test'})};
+      if(url.includes('/fb/videos'))return {ok:false,status:400,json:async()=>({error:{code:100,message:'Invalid request'}})};
       if(url.includes('/media_publish'))return {ok:true,json:async()=>({id:'published-ig'})};
       if(url.includes('/media'))return {ok:true,json:async()=>({id:'container'})};
       if(url.includes('/container?'))return {ok:true,json:async()=>({status_code:'FINISHED'})};

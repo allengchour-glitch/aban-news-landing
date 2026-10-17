@@ -16,5 +16,6 @@ test('HTTP-Fehler mit JSON werden nicht als leer übernommen', () => {
 test('CJ-Fachfehler und kaputte JSON-Daten stoppen den Import', async () => {
   assert.throws(() => assertCjSuccess({ result: false, code: 1600000 }, 200), /CJ_API/);
   assert.throws(() => assertCjSuccess({}, 200), /CJ_API/);
+  assert.throws(() => assertCjSuccess({ result: true }, 200), /CJ_DATA/);
   await assert.rejects(readCjResponse({ status: 200, json: async () => { throw new Error('bad json'); } }, 'test'), /CJ_JSON/);
 });

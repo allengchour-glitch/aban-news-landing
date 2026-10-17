@@ -10,10 +10,16 @@ on:
       - 'automation/cj_reviews_import.mjs'
       - 'automation/video-autopost-meta.mjs'
       - 'automation/review_safety_test.mjs'
+      - 'automation/metricool_checkpoint_test.mjs'
+      - 'automation/meta_checkpoint_test.mjs'
+      - 'automation/cj_import_checkpoint_test.mjs'
       - 'dropship/cj_enrich.mjs'
       - 'dropship/ads/render_brand_video.py'
       - 'dropship/ads/test_render_brand_video.py'
       - '.github/workflows/luxestyle-automation-tests.yml'
+      - '.github/workflows/video-meta-autopost.yml'
+      - '.github/workflows/cj-reviews.yml'
+      - '.github/workflows/metricool-schedule.yml'
   workflow_dispatch: {}
 
 permissions:
@@ -34,6 +40,9 @@ jobs:
             automation/cj_reviews_import.mjs
             automation/video-autopost-meta.mjs
             automation/review_safety_test.mjs
+            automation/metricool_checkpoint_test.mjs
+            automation/meta_checkpoint_test.mjs
+            automation/cj_import_checkpoint_test.mjs
             dropship/cj_enrich.mjs
             dropship/ads/render_brand_video.py
             dropship/ads/test_render_brand_video.py
@@ -61,3 +70,6 @@ jobs:
         run: |
           node automation/lib/cj_response_test.mjs
           node automation/review_safety_test.mjs
+          node automation/metricool_checkpoint_test.mjs
+          node automation/meta_checkpoint_test.mjs
+          node automation/cj_import_checkpoint_test.mjs
