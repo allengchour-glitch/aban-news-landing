@@ -12,7 +12,7 @@ function fixture(t, script) {
   fs.mkdirSync(path.join(root, 'social'));
   const file = path.join(root, 'automation', script);
   fs.copyFileSync(new URL(script, import.meta.url), file);
-  for (const lib of ['shopify_secret.mjs', 'shopify_gql.mjs', 'cj_response.mjs', 'cj_review_ledger.mjs', 'uebersetzen.mjs']) {
+  for (const lib of ['shopify_secret.mjs', 'shopify_gql.mjs', 'shopify_host.mjs', 'social_queue.mjs', 'cj_response.mjs', 'cj_review_ledger.mjs', 'uebersetzen.mjs']) {
     fs.copyFileSync(new URL('lib/' + lib, import.meta.url), path.join(root, 'automation/lib', lib));
   }
   fs.writeFileSync(path.join(root, 'social/metricool_queue.csv'),
