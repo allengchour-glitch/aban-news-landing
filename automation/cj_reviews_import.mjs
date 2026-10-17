@@ -17,6 +17,8 @@
 import fs from 'node:fs';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 import { nachDeutsch } from './lib/uebersetzen.mjs';
+import { readCjResponse } from './lib/cj_response.mjs';
+import { shopifyGql } from './lib/shopify_gql.mjs';
 
 const CJ_EMAIL = (process.env.CJ_EMAIL || '').trim();
 const CJ_API_KEY = (process.env.CJ_API_KEY || '').trim();
@@ -33,6 +35,7 @@ if (!/myshopify\.com$/.test(SHOP)) SHOP = 'au3j0y-hq.myshopify.com';
 const QUERY = process.env.QUERY || 'tag:cj-real';
 const ONLY = (process.env.ONLY || '').split(',').map(s => s.trim()).filter(Boolean);
 const LIMIT = Math.max(1, parseInt(process.env.LIMIT || '250', 10) || 250);
+const SCAN = Math.min(5000, Math.max(1, parseInt(process.env.SCAN || String(LIMIT * 5), 10) || LIMIT * 5));
 const PER = Math.max(1, parseInt(process.env.PER || '8', 10) || 8);
 const MIN_SCORE = Math.max(1, Math.min(5, parseInt(process.env.MIN_SCORE || '4', 10) || 4));
 const DRY = process.env.DRY_RUN === '1';
@@ -43,7 +46,7 @@ const REVERSE = process.env.REVERSE === '1';                // mit SORT: andere 
 const CJ_BASE = 'https://developers.cjdropshipping.com/api2.0/v1';
 const SHOP_API = '2025-01';
 const JM_API = 'https://judge.me/api/v1/reviews';
-const TOKEN_FILE = '/tmp/cj_token.json';
+const TOKEN_FILE = process.env.CJ_TOKEN_CACHE || '/tmp/cj_token.json';
 const LEDGER = 'dropship/cj_reviews_done.txt';
 // Zweites Ledger: Produkte, bei denen CJ NICHTS hatte. Ohne das kostet jeder Lauf erneut
 // Punkte fuer dieselben leeren Produkte — und gemessen am 2026-10-17 sind das 90-98 % aller
@@ -59,9 +62,7 @@ if (!ADMIN_TOKEN && !(CID && CSEC)) { console.log('Keine Shopify-Creds → No-op
 
 // ── Shopify ──
 async function sgql(tok, q, v) {
-  const r = await fetch(`https://${SHOP}/admin/api/${SHOP_API}/graphql.json`, { method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': tok }, body: JSON.stringify({ query: q, variables: v }) });
-  return r.json();
+  return { data: await shopifyGql(SHOP, SHOP_API, tok, q, v) };
 }
 async function sWorks(t) { try { const r = await sgql(t, '{shop{name}}'); return !!r?.data?.shop?.name; } catch { return false; } }
 async function sCC() {
@@ -97,7 +98,7 @@ async function cjToken() {
 async function cjGet(tok, path, params) {
   const qs = new URLSearchParams(params).toString();
   const r = await fetch(`${CJ_BASE}${path}?${qs}`, { headers: { 'CJ-Access-Token': tok } });
-  return r.json().catch(() => ({}));
+  return readCjResponse(r, path);
 }
 
 // ── DE-Übersetzung: Gemini zuerst, Groq als Rückfall ──
@@ -119,7 +120,7 @@ async function translateDE(texts) {
 // ── Judge.me POST ──
 async function jmPost(pid, r) {
   const body = { shop_domain: JM_DOMAIN, platform: 'shopify', id: pid,
-    name: r.name || 'Verifizierter Käufer',
+    name: r.name || 'CJ-Kundenbewertung',
     email: r.email || `cj-import+${Math.random().toString(36).slice(2, 9)}@luxestyle.ch`,
     rating: Math.max(1, Math.min(5, Number(r.rating) || 5)), title: r.title || '', body: r.body || '', api_token: JM_TOKEN };
   if (r.created_at) body.created_at = r.created_at;
@@ -149,7 +150,7 @@ const leerFrisch = (id) => {
 };
 let leerUebersprungen = 0, leerNeu = 0;
 const merkeLeer = (id, grund) => {
-  if (DRY || leerMap.has(id)) return;
+  if (DRY || leerFrisch(id)) return;
   leerMap.set(id, heute); leerNeu++;
   try { fs.appendFileSync(LEER, `${id}\t${heute}\t${grund}\n`); }
   catch (e) { console.error(`  ⚠️  LEER-LEDGER nicht geschrieben (${id}): ${e.message}`); }
@@ -164,18 +165,24 @@ const merkeLeer = (id, grund) => {
   // Cursor-Pagination: sammelt bis LIMIT Produkte ueber mehrere Seiten (Shopify max 250/Seite)
   const prods = [];
   let cursor = null;
-  while (prods.length < LIMIT) {
-    const page = Math.min(250, LIMIT - prods.length);
+  let scanned = 0, hasMore = false;
+  while (prods.length < LIMIT && scanned < SCAN) {
+    const page = Math.min(250, LIMIT - prods.length, SCAN - scanned);
     const sortTeil = SORT ? `, sortKey:${SORT}, reverse:${REVERSE}` : '';
     const pr = await sgql(stok, `query($q:String!,$n:Int!,$c:String){ products(first:$n, query:$q, after:$c${sortTeil}){ pageInfo{ hasNextPage endCursor } edges{ node{ id title handle variants(first:1){ edges{ node{ sku } } } } } } }`, { q, n: page, c: cursor });
     const conn = pr?.data?.products;
+    if (!conn || !Array.isArray(conn.edges)) throw new Error('Shopify: Produktliste fehlt, Scan nicht als leer werten');
+    scanned += conn.edges.length;
+    hasMore = !!conn.pageInfo?.hasNextPage;
+    console.log(`SCAN: ${scanned}/${SCAN}, ${prods.length}/${LIMIT} Kandidaten vor dieser Seite`);
     const roh = (conn?.edges || []).map(e => e.node).filter(x => !done.has(numId(x.id)));
     const batch = roh.filter(x => { if (leerFrisch(numId(x.id))) { leerUebersprungen++; return false; } return true; });
     prods.push(...batch);
-    if (!conn?.pageInfo?.hasNextPage) break;
+    if (!hasMore) break;
     cursor = conn.pageInfo.endCursor;
     await sleep(250);
   }
+  console.log(`Teilmessung: ${scanned} Produkte geprüft; weitere Seiten: ${hasMore ? 'ja' : 'nein'}.`);
   console.log(`${prods.length} Produkt(e) zu prüfen (QUERY="${q}", LIMIT=${LIMIT}${SORT ? `, SORT=${SORT}${REVERSE ? ' umgekehrt' : ''}` : ''})${DRY ? ' [DRY]' : ''}`
     + (leerUebersprungen ? ` · ${leerUebersprungen} übersprungen, weil CJ dort vor < ${LEER_TAGE} Tagen nichts hatte` : ''));
   if (!prods.length) { console.log('Nichts zu tun.'); process.exit(0); }
@@ -249,7 +256,7 @@ const merkeLeer = (id, grund) => {
       for (let i = 0; i < picked.length; i++) {
         const c = picked[i];
         const rev = {
-          name: (c.commentUser || '').trim() || 'Verifizierter Käufer',
+          name: (c.commentUser || '').trim() || 'CJ-Kundenbewertung',
           rating: Number(c.score) || 5,
           body: bodiesDE[i] || c.comment.trim(),
           created_at: (c.commentDate || '').slice(0, 10) || undefined,
@@ -271,6 +278,7 @@ const merkeLeer = (id, grund) => {
       }
     } catch (e) {
       if (String(e.message).startsWith('CJ_QUOTA')) {
+        fails++;
         console.error(`\n⛔ CJ-TAGESPUNKTE ERSCHOEPFT — Lauf hier beendet (${e.message}).`);
         console.error('   Das ist KEIN Hinweis darauf, dass die Produkte keine Reviews haben!');
         console.error('   Morgen erneut laufen lassen (Punkte setzen taeglich zurueck) oder LIMIT kleiner setzen.');
@@ -280,5 +288,5 @@ const merkeLeer = (id, grund) => {
     }
   }
   console.log(`\nFertig: ${totalReviews} echte Reviews auf ${prodWith} Produkt(e)${DRY ? ' [DRY]' : ''}${fails ? `, ${fails} Fehler` : ''}.`);
-  process.exit(0);
+  process.exit(fails ? 1 : 0);
 })();
