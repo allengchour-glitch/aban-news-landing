@@ -11,10 +11,11 @@ Basis: `c2d7d8cd12b756b66ef2a91a9ff89367b342f085`, 17.10.2026. Kein Live-Posting
 - CJ-Reviews: Auch beim Kommentar-Endpunkt werden Quota-, HTTP-, Fach- und JSON-Fehler von echten leeren Listen getrennt. Solche Fehler erzeugen keinen Leer-Ledger-Eintrag. Der Scan hat einen separaten `SCAN`-Deckel (maximal 5000, standardmässig LIMIT × 5) und nennt Teilmessungen. Abgelaufene Leer-Einträge können erneuert werden. Der Import nutzt den bestehenden Shopify-Retry-Helfer. Fehlende Namen werden nicht als «verifizierter Käufer» bezeichnet. Der Ausgangsfilter nach Mindestbewertung wurde nicht verändert; vor neuen Importen Quelle, Zuordnung und Darstellung prüfen.
 - Alter CJ-Anreicherer: Token-Anfrage verwendet das im Projekt dokumentierte Feld `password`; Fehler liefern Exit-Code 1. Seine alte Playwright-Abhängigkeit bleibt bestehen und wurde hier nicht installiert oder live ausgeführt.
 - Price-/Publish-Guard und Scheduler melden erkannte Laufzeit-/Teilfehler mit Exit-Code 1 statt fälschlichem Erfolg.
+- Markenfilm-Renderer: portabler Projektpfad, kein Rendern beim Import, kein Voiceover-Eingang. Nur die vorhandene Premium-Musik wird gemischt; Ausgabe direkt nach `reels/*-text.mp4`. Ohne `--render` werden nur die benötigten echten Assets geprüft. Alte Produktbilder/-aussagen müssen vor Wiederverwendung visuell und sachlich geprüft werden; diese Codekorrektur ist kein neu produzierter professioneller Film.
 
 ## Prüfung
 
-13 neue Verhaltenstests mit ausschliesslich simulierten APIs: vier CJ-Antworttests und neun Prozess-/Publikationstests. Dazu bestehende Tests für Shopify-Retry, Secret-Normalisierung und Kanal-Sperren. Die neue manuelle/PR-Test-Action benötigt keine Zugangsdaten, installiert keine npm-Pakete und veröffentlicht nichts.
+16 neue Verhaltenstests mit ausschliesslich simulierten APIs/Render-Aufrufen: vier CJ-Antworttests, neun Prozess-/Publikationstests und drei Renderer-Tests. Dazu bestehende Tests für Shopify-Retry, Secret-Normalisierung und Kanal-Sperren. Die neue manuelle/PR-Test-Action benötigt keine Zugangsdaten, installiert keine npm-Pakete und veröffentlicht nichts.
 
 Ausführung:
 
@@ -24,6 +25,7 @@ node automation/review_safety_test.mjs
 node automation/lib/shopify_gql_test.mjs
 node automation/lib/shopify_secret_test.mjs
 node automation/lib/kanal_sperren_test.mjs
+python3 -B -m unittest -v dropship/ads/test_render_brand_video.py
 ```
 
 ## Aktuelle Daten und Grenzen
