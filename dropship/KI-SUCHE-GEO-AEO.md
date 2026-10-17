@@ -86,8 +86,8 @@ KI zitiert Seiten mit **direkten, strukturierten Antworten**: Frage als H2 → *
       Googlebot/Bingbot/Applebot/GPTBot; evtl. „AI-blockieren"-App deaktivieren.
 - [ ] **JSON-LD erweitern** (App oder Snippet): Product+Offer(CHF)+AggregateRating(echt)+BreadcrumbList+Organization+
       FAQPage; mit Rich Results Test validieren; nur eine Quelle aktiv.
-- [ ] **GTIN/Marke als Metafields** pflegen (wo vorhanden), sonst `identifier_exists=no` (im Merchant-Feed schon korrekt).
-- [ ] **`google_product_category`** in den Merchant-Feed ergänzen (Generator `automation/autopilot/merchant_feed.mjs`).
+- [x] **GTIN** im Merchant-Feed (17.10.): der Feed schrieb bisher pauschal `identifier_exists=no`, obwohl **97 % der Fortura-Artikel einen Barcode haben** → jetzt echte `g:gtin`, sonst `g:mpn`, erst dann `no`.
+- [x] **`google_product_category`** im Merchant-Feed (17.10. erledigt, aus dem Metafeld `mm-google-shopping`).
 - [ ] **FAQ-Seite + `FAQPage`-Schema** + 2–4 Kaufratgeber (mit Kollektions-Links), faktische Produkttexte.
 - [ ] **Echte Judge.me-Reviews** in JSON-LD einspeisen (nur ≥4★, kein Fake).
 - [ ] Merchant-Center-Diagnostics auf Disapprovals checken (User-Login).

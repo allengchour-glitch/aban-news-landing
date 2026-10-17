@@ -14,8 +14,22 @@
  * TAGS LESEN, BEVOR MAN HANDELT.
  *
  * Der Onlineshop ist ausgenommen: dort auffindbar zu sein ist Verkauf, nicht Werbung.
+ *
+ * NACHTRAG 2026-10-17 (beim Bau des Merchant-Feeds aufgefallen): zwei echte Sperrtags fehlten im
+ * Muster — `nicht-google-bewerben` (das alte `nicht-bewerben` passt darauf NICHT, es steht ein
+ * Wort dazwischen) und `google-policy-flag`. Beide tragen Artikel, die genau deshalb nicht auf dem
+ * Google-Kanal liegen. Ein Wächter mit `INCLUDE_GOOGLE=1` hätte sie in den Merchant-Feed
+ * zurückgeschoben — das kann eine Kontosperre kosten.
+ *
+ * NACHTRAG 2 (gleicher Tag, beim ersten Feed-Lauf aufgeflogen): `rueckhol` als Muster war VIEL zu
+ * breit. Gemeint war `raucher-rueckhol-0809` (Tabak, 64 aktive Artikel, davon 0 auf Google).
+ * Getroffen hat es aber `rueckhol-0907` — eine reine Chargen-Markierung, die **über 10 000 aktive
+ * Produkte** tragen und die auf Google UND TikTok publiziert sind. Der erste Feed-Lauf warf
+ * deshalb 3142 von 4000 Produkten als „Sperrtag" weg. Ein Muster, das den halben Katalog sperrt,
+ * ist kein Schutz, sondern ein Ausfall — und er wäre stumm geblieben, weil „weniger Artikel im
+ * Feed" harmlos aussieht. Darum nennt jeder Lauf jetzt die Zahl je Grund.
  */
-export const SPERR_MUSTER = /nicht-bewerben|nicht-live|18plus|adult|gmc-adult|compliance-pruefen|verdeckte-ueberwachung|medizinprodukt|social-pause|rueckhol|-raus-|geprueft-gesperrt|marge-verlust|verlust-auto|us-netzteil|nicht-versendbar/i;
+export const SPERR_MUSTER = /nicht-(?:[a-z]+-)?bewerben|google-policy-flag|nicht-live|18plus|adult|gmc-adult|compliance-pruefen|verdeckte-ueberwachung|medizinprodukt|social-pause|raucher-rueckhol|-raus-|geprueft-gesperrt|marge-verlust|verlust-auto|us-netzteil|nicht-versendbar/i;
 
 /** Die Sperrtags eines Produkts (leer = keine Sperre). */
 export function sperrTags(tags = []) {

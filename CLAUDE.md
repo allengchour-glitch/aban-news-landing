@@ -72,6 +72,41 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-17 abends (🛒 Google Merchant: Feed war schwach, zwei Fehler im Sperrmuster, Lücke vermessen):**
+Voller Bericht: `dropship/GOOGLE-MERCHANT-STAND-1710.md`. Wiederholbar: `node automation/gmc_audit.mjs` (nur lesen).
+- **Der Feed verschwieg, was der Shop hat.** `merchant_feed.mjs` schrieb bei JEDEM Artikel
+  `identifier_exists: no` — dabei haben **97 % der Fortura-Ware einen Barcode (1569 von 1611)**; und
+  `google_product_category` fehlte ganz, obwohl **100 %** der zuletzt geänderten 600 Produkte das Metafeld
+  `mm-google-shopping.google_product_category` tragen. Jetzt: echte `g:gtin` → sonst `g:mpn` → erst dann `no`,
+  Kategorie aus dem Metafeld, `g:shipping` CH 7.00 (behebt „Missing shipping info"), `sale_price` nur bei echter
+  Senkung. Neu `automation/lib/gmc_feed_item.mjs` + Test (40 Fälle, Gegenproben in beide Richtungen).
+- **🐛 450 von 3932 Artikeln teilten sich eine Feed-ID** — CJ vergibt dieselbe Varianten-SKU mehrfach, der
+  Generator nahm `sku || handle`. Google weist einen Feed mit doppelten IDs ab. Jetzt ID = `handle`, SKU als
+  `g:mpn`, Doppel werden gezählt und genannt. Nachgeprüft: 3932 Artikel, **0 Doppel, 0 fehlende Pflichtfelder**.
+- **🚨 `rueckhol` im Sperrmuster hätte 78 % des Katalogs aus dem Feed geworfen.** `kanal_sperren.mjs` meinte
+  `raucher-rueckhol-0809` (Tabak, 64 aktiv, **0 auf Google** = echte Sperre), traf aber `rueckhol-0907` — eine
+  Chargen-Markierung auf **über 10 000 aktiven Produkten**, die auf Google UND TikTok publiziert sind. Erster
+  Lauf: 3142 von 4000 weggeworfen. **Ein zu breites Sperrmuster sieht aus wie „weniger Artikel", nicht wie ein
+  Fehler** — darum nennt jeder Lauf jetzt die Zahl je Grund. Muster verengt + Test mit Gegenprobe.
+- **🚨 Zwei echte Google-Sperrtags fehlten:** `nicht-google-bewerben` (34) und `google-policy-flag` (38). Das alte
+  `nicht-bewerben` passt auf `nicht-google-bewerben` **nicht** (ein Wort dazwischen) → ein Wächter mit
+  `INCLUDE_GOOGLE=1` hätte sie in den Merchant-Feed zurückgeschoben. Gegenprobe am alten Muster: beide `false`.
+- **Die Kanal-Lücke ehrlich: 1890 nicht auf „Google & YouTube", davon nur 201 (10,6 %) mit Sperrtag.** 1604 der
+  1689 Übrigen sind **ein einziger Import** (Fortura, Schweizer Lager, 23.07.) — und das beste Shopping-Material
+  des Shops: **1569 von 1611 mit GTIN**, 2–3 Tage Lieferzeit. **Aber:** 104 fallen unters Marken-/Safety-Muster,
+  **21 tragen Lizenznamen** (Harry Potter, Batman, Paw Patrol, Pokémon) = klassischer Grund für eine Kontosperre,
+  294 sind Kinderkostüme, und die Preise liegen **1,4–2,3× über Schweizer Händlern** → mit GTIN zeigt Google die
+  Preisvergleichskarte. **Nichts publiziert, Entscheid beim User.** `FEED_QUERY` ist jetzt `status:active` statt
+  „nur was schon auf Google liegt" — der Feed ist genau der Weg für das, was dort fehlt.
+- **Unverändert offen:** `excluded_destination:["Shopping_ads"]` auf **70,3 %** (422/600), Fortura 61 % — deckt
+  sich mit dem 04.10.-Befund, Ursache weiter unbekannt, nicht angefasst.
+- **🔑 ZWEI MESS-LEHREN:** (1) **Der Metafeld-Filter in der Produktsuche wird stillschweigend ignoriert** —
+  `metafields.…:*Shopping_ads*` liefert dieselbe Zahl wie ohne Filter (Gegenprobe `tag:gaming`: 369 = 369).
+  (2) **Eine Stichprobe beantwortet die Kanalfrage nicht:** erste 200 → „67 % mit Sperrtag", Vollzählung über
+  alle 1890 → **10,6 %** (die Standardsortierung schiebt die zuletzt geänderten nach vorn).
+- **🟡 BEIM USER:** Feed-URL als „geplanter Abruf" eintragen · Entscheid Fortura (~1500 saubere CH-Lager-Artikel
+  rein oder bewusst draussen) · Entscheid `excluded_destination` · Merchant-Center-Diagnose durchsehen.
+
 **📌 2026-10-17 (🔑 60 Skripte liefen ins Leere + Rizinusöl-Themenbereich gebaut):**
 - **⚠️ `publish_guard.mjs` WAR GEFÄHRLICH — und ist jetzt der beste Beleg für „Tags lesen, bevor man
   handelt".** Er meldete 250/250 „Kanal fehlt"; davon war der grösste Teil **Absicht**: die Produkte,
