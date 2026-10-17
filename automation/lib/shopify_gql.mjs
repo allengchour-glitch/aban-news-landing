@@ -34,11 +34,17 @@ export async function shopifyGql(shop, api, token, query, variables, opt = {}) {
       if (i + 1 < versuche) { await warte(basis * 2 ** i); continue; }
       throw new Error('GraphQL: ' + letzter);
     }
+    if (r.status < 200 || r.status >= 300) {
+      throw new Error(`GraphQL: HTTP ${r.status}`);
+    }
     try { j = await r.json(); } catch (e) { throw new Error('GraphQL: Antwort nicht lesbar (HTTP ' + r.status + ')'); }
-    if (j.errors) {
+    if (j?.errors?.length) {
       const txt = JSON.stringify(j.errors).slice(0, 300);
       if (DROSSEL.test(txt) && i + 1 < versuche) { letzter = txt; await warte(basis * 2 ** i); continue; }
       throw new Error('GraphQL: ' + txt);
+    }
+    if (!j || typeof j.data !== 'object' || j.data === null) {
+      throw new Error('GraphQL: Antwort enthält keine Daten');
     }
     return j.data;
   }
