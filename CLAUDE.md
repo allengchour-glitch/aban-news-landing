@@ -86,8 +86,33 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (513 davon in den zuletzt geänderten 3000; neu `PQUERY`/`SORT`/`REVERSE=0`, weil der SCAN-Deckel 3000 ist).
   Nachgeprüft DRY: 0 offen in den letzten 3000 und in den 1200 ältesten.
 - **Sauber:** WELCOME10 aktiv bis 31.12.2027 · 0 schwach bewertete in Werbeflächen · 0 Preis-0 ·
-  0 leere Collections. **Offen:** `site-health.mjs` hat keinen DRY-Modus und wertet **jeden** Status
-  ≠ 200 als Problem (429 ≠ 404). Volle Berichte: `dropship/WAECHTER-GEPRUEFT-1710.md`.
+  0 leere Collections. - **🕓 `site-health.mjs` hielt eine Drosselung für einen kaputten Shop:** jeder Status ≠ 200 war ein
+  Problem, bei 404 publizierte es automatisch + Telegram-Alarm. **HTTP 429 ist nicht 404** (Lehre vom
+  04.10., dreimal zugeschlagen). Fix `automation/lib/url_status.mjs` + Test: bei 429/5xx/Netzfehler
+  nachfassen, bleibt es dabei → **„nicht messbar"** statt Befund; **Gegenprobe: ein echter 404 gilt
+  sofort.** Dazu `DRY=1`. Lauf danach: alle 7 Seiten 200, keine Platzhalter, kein Admin-Leak.
+- **⏳ `conversion_radar.mjs` wurde NIE fertig** (`while(true)` über 12 000+ Produkte → nach 15 Min
+  abgebrochen, 0 Zeilen Bericht). Fix: `SCAN`-Deckel (3000) + `FORTSCHRITT=1`, und der Bericht sagt
+  „Teilmessung", wenn der Deckel greift. **Erster Lauf (1500 Produkte): 1489 ohne Sterne (99 %),
+  1373 ohne SEO-Titel (91,5 %), 0 FAILED-Bilder, 0 unter 4★.** Die Sterne sind der grösste Hebel —
+  aber **zuerst messen, für wie viele CJ überhaupt Kommentare hat** (beim Rizinusöl waren es 0).
+- **⭐ KORREKTUR der Notiz vom 07.09. („realistisch tausende Reviews"):** gemessen heute
+  (`dropship/CJ-REVIEWS-QUOTE-1710.md`) hat CJ nur für einen kleinen Teil der 1489 sternlosen
+  Produkte Kommentare — **1 von 60** im neuesten Katalogteil, **14 von 139** tiefer gestreut
+  (dort Ø 5,9 brauchbare ≥4★). Die alte Zahl stammte aus **Repo-Ledger-pids** (ältere Produkte).
+  Resolver arbeitet (60/60 bzw. 139/150 pids). **Erster scharfer Lauf: 3 echte Reviews live,
+  auf Deutsch.** Rizinusöl bleibt sternlos — dort hat CJ `total: 0`.
+- **🔤 Übersetzung: der 402-Blocker ist weg UND hat jetzt einen Rückfall.** Gemini antwortet wieder
+  (verifiziert). Neu `automation/lib/uebersetzen.mjs` + Test (10 Fälle): **Gemini → Groq → Original**.
+  `GROQ_API_KEY` funktioniert, aber **nicht mit den Llama-Namen** (HTTP 404) — es sind
+  `openai/gpt-oss-120b`, `openai/gpt-oss-20b`, `qwen/qwen3.8-27b`. Gegenproben: fällt beides aus,
+  kommen die Originaltexte zurück; **eine Antwort mit falscher Anzahl wird verworfen** (sonst steht
+  der Text einer Bewertung unter einer anderen).
+- **💰 Der Importer hatte kein Gedächtnis für Leerläufe** → jeder Lauf bezahlte dieselben 90–98 %
+  leeren Produkte neu (20 CJ-Punkte je Stück). Neu `dropship/cj_reviews_leer.txt` (`pid·Datum·Grund`,
+  gültig `LEER_TAGE`=60) + `SORT`/`REVERSE` für eine andere Katalogregion.
+- **Sauber:** `conversion_guard` 0 Blocker / 5 ok. **Offen:** `image-audit` braucht Gemini (Credits
+  aufgebraucht). Volle Berichte: `dropship/WAECHTER-GEPRUEFT-1710.md`.
 - **🔑 ALLE 60 Shopify-Automatisierungen konnten in dieser Umgebung NICHTS tun — und meldeten das als
   Normalfall.** `SHOPIFY_CLIENT_SECRET` kommt als `shpss_<32 hex>=SHOPIFY_CLIENT_SECRET` an (60 statt
   38 Zeichen, Folge der vertauschten Env-Felder vom 04.10.) → Client-Credentials-Grant **HTTP 400** →

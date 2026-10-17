@@ -102,9 +102,48 @@ sonst verschwindet ein falsches Feld in einer Warteschleife. Danach lief `SCAN=6
 - **`price_guard`:** 0 Produkte mit Preis 0, 0 mit falschem Vergleichspreis.
 - **`hero_image_guard`:** 0 leere Collections ohne Produkt.
 
-## 5. Noch nicht geprüft
+## 5. 🕓 `site-health.mjs` hielt eine Drosselung für einen kaputten Shop
 
-`site-health.mjs` hat **keinen DRY-Modus**: es publiziert 404-Homepage-Collections sofort und
-schickt eine Telegram-Nachricht. Deshalb hier nicht gestartet. Nebenbei fällt auf, dass es jeden
-Status ≠ 200 als Problem meldet — **HTTP 429 ist nicht 404** (die Lehre vom 04.10., die an einem Tag
-dreimal zugeschlagen hat). Das wäre der nächste Handgriff an den Wächtern.
+Es wertete **jeden** Status ≠ 200 als Problem — und bei 404 publizierte es die Collection
+automatisch und schickte einen Telegram-Alarm. **HTTP 429 ist nicht 404**: das ist die Lehre vom
+04.10., die an einem einzigen Tag dreimal zugeschlagen hat (dreimal hätte ich gesunde Seiten für tot
+erklärt). Eine Drosselung des Rand-Caches sah damit wie ein kaputter Shop aus — mit einer unnötigen
+Änderung am Shop als Folge.
+
+**Behoben:** `automation/lib/url_status.mjs` + Test (8 Fälle). Bei 429, 5xx und Netzfehlern wird mit
+wachsender Pause nachgefasst; bleibt es dabei, lautet das Ergebnis **„nicht messbar"** statt
+„Befund" — kein Alarm, kein Auto-Publish. **Gegenprobe:** ein echter **404 gilt sofort** und wird
+nicht verschleppt (ein Wächter, der echte Fehler wegwartet, ist genauso falsch).
+Dazu `DRY=1`: nur messen, nichts publizieren, nichts senden.
+
+**Lauf danach:** alle 7 geprüften Seiten 200, keine Theme-Platzhalter, kein fremder Admin-Link.
+
+## 6. ⏳ `conversion_radar.mjs` wurde nie fertig — und misst jetzt
+
+Der Radar paginiert mit `while(true)` über **alle** aktiven `cj-real`-Produkte. Das sind über
+12 000 Stück = 240+ Seiten mit verschachtelten Medien, plus Drossel-Pausen. **Gemessen: der Lauf
+endete nach 15 Minuten im Abbruch, ohne eine einzige Zeile Bericht.** Ein Werkzeug, das nicht fertig
+wird, liefert nichts.
+
+**Behoben:** `SCAN`-Deckel (Standard 3000) + `FORTSCHRITT=1`. Erreicht der Lauf den Deckel, steht im
+Bericht ausdrücklich **„Teilmessung"** — eine Teilmessung, die ankommt und sich als solche zu
+erkennen gibt, ist mehr wert als eine Vollmessung, die niemand zu sehen bekommt.
+
+**Erster Lauf (1500 Produkte, `automation/autopilot/CONVERSION-RADAR.md`):**
+
+| Leck | Anzahl |
+|---|---|
+| ohne Reviews/Sterne | **1489 (99 %)** |
+| unter 4★ | 0 |
+| FAILED-Bilder | **0** |
+| ohne SEO-Titel | **1373 (91,5 %)** |
+
+Die 99 % ohne Sterne sind der grösste Conversion-Hebel des Shops — und beim Rizinusöl-Versuch heute
+hat sich gezeigt, dass CJ für manche Produkte **gar keine** Kommentare hat. Der nächste ehrliche
+Schritt ist also nicht „den Importer laufen lassen", sondern erst **messen, für wie viele der 1489
+CJ überhaupt Bewertungen hat** — sonst hält man eine leere Quelle für einen vollen Eimer.
+
+## 7. Noch nicht geprüft
+
+`image-audit.mjs` braucht Gemini-Vision — die Credits des Users sind aufgebraucht (HTTP 402).
+`cross_sell.mjs` schreibt in Produktbeschreibungen; noch nicht angesehen.

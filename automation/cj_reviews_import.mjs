@@ -11,17 +11,19 @@
  *
  * No-op-safe: ohne CJ-/Judge.me-/Shopify-Creds passiert nichts (Exit 0). Idempotent über Ledger.
  * ENV: CJ_EMAIL, CJ_API_KEY · JUDGEME_PRIVATE_TOKEN [, JUDGEME_SHOP_DOMAIN] · SHOPIFY_CLIENT_ID/SECRET (o. ADMIN_TOKEN), SHOPIFY_SHOP
- *      [GEMINI_API_KEY → DE-Übersetzung] · [QUERY="tag:cj-real"] · [ONLY=handle,handle] · [LIMIT=25] · [PER=6]
- *      [MIN_SCORE=4] · [DRY_RUN=1]
+ *      [GEMINI_API_KEY | GROQ_API_KEY → DE-Übersetzung] · [QUERY="tag:cj-real"] · [ONLY=handle,handle] · [LIMIT=25] · [PER=6]
+ *      [MIN_SCORE=4] · [DRY_RUN=1] · [LEER_TAGE=60] · [SORT=CREATED_AT REVERSE=1]
  */
 import fs from 'node:fs';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
+import { nachDeutsch } from './lib/uebersetzen.mjs';
 
 const CJ_EMAIL = (process.env.CJ_EMAIL || '').trim();
 const CJ_API_KEY = (process.env.CJ_API_KEY || '').trim();
 const JM_TOKEN = (process.env.JUDGEME_PRIVATE_TOKEN || '').trim();
 const JM_DOMAIN = (process.env.JUDGEME_SHOP_DOMAIN || 'au3j0y-hq.myshopify.com').trim();
 const GKEY = (process.env.GEMINI_API_KEY || '').trim();
+const GROQKEY = (process.env.GROQ_API_KEY || '').trim();   // Rückfall, s. lib/uebersetzen.mjs
 const ADMIN_TOKEN = (process.env.SHOPIFY_ADMIN_TOKEN || '').trim();
 const CID = (process.env.SHOPIFY_CLIENT_ID || '').trim();
 const CSEC = shopifyClientSecret();  // s. automation/lib/shopify_secret.mjs (vertauschte Env-Felder)
@@ -34,12 +36,20 @@ const LIMIT = Math.max(1, parseInt(process.env.LIMIT || '250', 10) || 250);
 const PER = Math.max(1, parseInt(process.env.PER || '8', 10) || 8);
 const MIN_SCORE = Math.max(1, Math.min(5, parseInt(process.env.MIN_SCORE || '4', 10) || 4));
 const DRY = process.env.DRY_RUN === '1';
+const LEER_TAGE = Math.max(1, parseInt(process.env.LEER_TAGE || '60', 10) || 60);  // so lange gilt „CJ hat nichts"
+const SORT = (process.env.SORT || '').toUpperCase();        // z. B. UPDATED_AT, CREATED_AT, TITLE
+const REVERSE = process.env.REVERSE === '1';                // mit SORT: andere Katalogregion abgrasen
 
 const CJ_BASE = 'https://developers.cjdropshipping.com/api2.0/v1';
 const SHOP_API = '2025-01';
 const JM_API = 'https://judge.me/api/v1/reviews';
 const TOKEN_FILE = '/tmp/cj_token.json';
 const LEDGER = 'dropship/cj_reviews_done.txt';
+// Zweites Ledger: Produkte, bei denen CJ NICHTS hatte. Ohne das kostet jeder Lauf erneut
+// Punkte fuer dieselben leeren Produkte — und gemessen am 2026-10-17 sind das 90-98 % aller
+// geprueften (siehe dropship/CJ-REVIEWS-QUOTE-1710.md). 20 Punkte je Produkt, Tagesvorrat
+// ~69 000: ohne Gedaechtnis fuer Leerlaeufe kommt man nie tief in den Katalog.
+const LEER = 'dropship/cj_reviews_leer.txt';
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
 // ── Guards (No-op statt Fehler) ──
@@ -90,29 +100,20 @@ async function cjGet(tok, path, params) {
   return r.json().catch(() => ({}));
 }
 
-// ── Gemini DE-Übersetzung (optional, Batch je Produkt) ──
+// ── DE-Übersetzung: Gemini zuerst, Groq als Rückfall ──
+// Begründung + Tests in automation/lib/uebersetzen.mjs. Kurz: die Gemini-Credits sind
+// aufgebraucht (HTTP 402), GROQ_API_KEY ist gesetzt und funktioniert. Scheitert beides,
+// kommen die ORIGINALTEXTE zurück — eine Bewertung in der Originalsprache ist ehrlich,
+// eine erfundene Übersetzung wäre es nicht.
+let uebersetzWeg = '';
 async function translateDE(texts) {
-  if (!GKEY || !texts.length) return texts;
-  const prompt = `Übersetze diese Produktbewertungen in natürliches, flüssiges Deutsch (Du-Form, kurz, authentisch). `
-    + `Gib AUSSCHLIESSLICH ein JSON-Array von Strings in exakt gleicher Reihenfolge zurück, nichts anderes.\n`
-    + JSON.stringify(texts);
-  try {
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(GKEY)}`;
-    const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { temperature: 0.3 } }) });
-    const roh = await r.text();
-    let j = {};
-    try { j = JSON.parse(roh); } catch { /* unten als Klartext melden */ }
-    // Den ECHTEN Grund nennen. Vorher wurde jeder Fehler zu „Unexpected end of JSON input",
-    // weil r.json() auf einer Fehlerantwort scheitert — gemessen 2026-10-04: Gemini
-    // antwortete HTTP 402 „Your prepayment credits are depleted", und im Log stand nur der
-    // Parse-Fehler. Ein Fehler, der seine Ursache verdeckt, kostet die naechste Sitzung Stunden.
-    if (!r.ok) throw new Error(`Gemini HTTP ${r.status}: ${String(j?.error?.message || roh).slice(0, 160)}`);
-    let t = (j?.candidates?.[0]?.content?.parts || []).map(p => p.text || '').join('');
-    t = t.replace(/^```(json)?/i, '').replace(/```$/, '').trim();
-    const arr = JSON.parse(t);
-    if (Array.isArray(arr) && arr.length === texts.length) return arr.map((s, i) => (s && String(s).trim()) || texts[i]);
-  } catch (e) { console.error('  Übersetzung fehlgeschlagen, nutze Original:', e.message); }
-  return texts;
+  const r = await nachDeutsch(texts, { geminiKey: GKEY, groqKey: GROQKEY });
+  if (r.weg !== uebersetzWeg) {
+    uebersetzWeg = r.weg;
+    if (r.weg === 'original') console.error(`  Übersetzung nicht möglich, nutze Originalsprache: ${r.grund}`);
+    else console.log(`  Übersetzung über ${r.weg}.`);
+  }
+  return r.texte;
 }
 
 // ── Judge.me POST ──
@@ -130,6 +131,30 @@ async function jmPost(pid, r) {
 const numId = (gid) => String(gid).split('/').pop();
 const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').split('\n').map(s => s.trim()).filter(Boolean) : []);
 
+// Leer-Ledger: pid<TAB>JJJJ-MM-TT. Eintraege, die aelter als LEER_TAGE sind, zaehlen nicht mehr —
+// CJ bekommt mit der Zeit neue Kommentare, ein „leer" ist kein Urteil fuer immer.
+const heute = new Date().toISOString().slice(0, 10);
+const leerMap = new Map();
+if (fs.existsSync(LEER)) {
+  for (const z of fs.readFileSync(LEER, 'utf8').split('\n')) {
+    const [id, datum] = z.trim().split(/\s+/);
+    if (id) leerMap.set(id, datum || '1970-01-01');
+  }
+}
+const leerFrisch = (id) => {
+  const d = leerMap.get(id);
+  if (!d) return false;
+  const alter = (Date.parse(heute) - Date.parse(d)) / 864e5;
+  return Number.isFinite(alter) && alter < LEER_TAGE;
+};
+let leerUebersprungen = 0, leerNeu = 0;
+const merkeLeer = (id, grund) => {
+  if (DRY || leerMap.has(id)) return;
+  leerMap.set(id, heute); leerNeu++;
+  try { fs.appendFileSync(LEER, `${id}\t${heute}\t${grund}\n`); }
+  catch (e) { console.error(`  ⚠️  LEER-LEDGER nicht geschrieben (${id}): ${e.message}`); }
+};
+
 (async () => {
   const stok = await sToken();
   if (!stok) { console.log('Shopify-Auth fehlgeschlagen → No-op. (Grund steht in der Zeile darueber.)'); process.exit(0); }
@@ -141,15 +166,18 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
   let cursor = null;
   while (prods.length < LIMIT) {
     const page = Math.min(250, LIMIT - prods.length);
-    const pr = await sgql(stok, `query($q:String!,$n:Int!,$c:String){ products(first:$n, query:$q, after:$c){ pageInfo{ hasNextPage endCursor } edges{ node{ id title handle variants(first:1){ edges{ node{ sku } } } } } } }`, { q, n: page, c: cursor });
+    const sortTeil = SORT ? `, sortKey:${SORT}, reverse:${REVERSE}` : '';
+    const pr = await sgql(stok, `query($q:String!,$n:Int!,$c:String){ products(first:$n, query:$q, after:$c${sortTeil}){ pageInfo{ hasNextPage endCursor } edges{ node{ id title handle variants(first:1){ edges{ node{ sku } } } } } } }`, { q, n: page, c: cursor });
     const conn = pr?.data?.products;
-    const batch = (conn?.edges || []).map(e => e.node).filter(x => !done.has(numId(x.id)));
+    const roh = (conn?.edges || []).map(e => e.node).filter(x => !done.has(numId(x.id)));
+    const batch = roh.filter(x => { if (leerFrisch(numId(x.id))) { leerUebersprungen++; return false; } return true; });
     prods.push(...batch);
     if (!conn?.pageInfo?.hasNextPage) break;
     cursor = conn.pageInfo.endCursor;
     await sleep(250);
   }
-  console.log(`${prods.length} Produkt(e) zu prüfen (QUERY="${q}", LIMIT=${LIMIT})${DRY ? ' [DRY]' : ''}`);
+  console.log(`${prods.length} Produkt(e) zu prüfen (QUERY="${q}", LIMIT=${LIMIT}${SORT ? `, SORT=${SORT}${REVERSE ? ' umgekehrt' : ''}` : ''})${DRY ? ' [DRY]' : ''}`
+    + (leerUebersprungen ? ` · ${leerUebersprungen} übersprungen, weil CJ dort vor < ${LEER_TAGE} Tagen nichts hatte` : ''));
   if (!prods.length) { console.log('Nichts zu tun.'); process.exit(0); }
 
   const ctok = await cjToken();
@@ -205,7 +233,7 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
     try {
       const resolved = await resolvePid(cjSku);
       const cjpid = resolved?.pid;
-      if (!cjpid) { console.log(`· ${p.handle}: keine CJ-pid für ${cjSku} → skip`); continue; }
+      if (!cjpid) { console.log(`· ${p.handle}: keine CJ-pid für ${cjSku} → skip`); merkeLeer(pidNum, 'keine-pid'); continue; }
       if (DEBUG) console.log(`    [DEBUG] ${p.handle}: pid ${cjpid} via ${resolved.via}`);
       const cr = await cjGet(ctok, '/product/productComments', { pid: cjpid, pageNum: 1, pageSize: 30 });
       await sleep(1100);
@@ -214,7 +242,7 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
       const picked = (list || [])
         .filter(c => Number(c.score) >= MIN_SCORE && (c.comment || '').trim().length >= 8)
         .slice(0, PER);
-      if (!picked.length) { console.log(`· ${p.handle}: 0 echte ≥${MIN_SCORE}★-Kommentare bei CJ → skip`); continue; }
+      if (!picked.length) { console.log(`· ${p.handle}: 0 echte ≥${MIN_SCORE}★-Kommentare bei CJ → skip`); merkeLeer(pidNum, 'keine-kommentare'); continue; }
 
       const bodiesDE = await translateDE(picked.map(c => c.comment.trim()));
       let sent = 0;

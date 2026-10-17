@@ -11,8 +11,10 @@
  *
  * ENV: SHOPIFY_SHOP, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET (oder SHOPIFY_ADMIN_TOKEN),
  *      TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, BASEURL(=https://luxestyle.ch), ALWAYS_NOTIFY=1(optional)
+ *      DRY=1 → nur messen: kein Auto-Publish, kein Telegram.
  */
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
+import { statusMitGeduld } from './lib/url_status.mjs';
 const SHOP = process.env.SHOPIFY_SHOP || '';
 const TOK_STATIC = process.env.SHOPIFY_ADMIN_TOKEN || '';
 const CID = process.env.SHOPIFY_CLIENT_ID || '';
@@ -21,6 +23,9 @@ const TG_T = process.env.TELEGRAM_BOT_TOKEN || '';
 const TG_C = process.env.TELEGRAM_CHAT_ID || '';
 const BASE = (process.env.BASEURL || 'https://luxestyle.ch').replace(/\/$/, '');
 const ALWAYS = process.env.ALWAYS_NOTIFY === '1';
+// DRY=1: nur messen — nichts publizieren, nichts senden. Damit kann eine Sitzung den
+// Wächter gefahrlos laufen lassen, bevor er von sich aus am Shop etwas ändert.
+const DRY = process.env.DRY === '1';
 
 // Homepage-gebundene Kollektionen (Handle → GID) für Auto-Publish bei 404.
 const HOMEPAGE = {
@@ -34,10 +39,10 @@ const CHECK = ['/', '/collections/sommer', '/collections/damen-mode', ...Object.
 
 const problems = [], fixes = [];
 
-async function status(path){
-  try{ const r = await fetch(BASE + path + '?_=' + Date.now(), { headers:{'Cache-Control':'no-cache'} }); return r.status; }
-  catch(e){ return 0; }
-}
+// HTTP 429 ist nicht 404 — Begruendung + Tests in automation/lib/url_status.mjs.
+// Vorher galt jeder Status != 200 als Problem, und bei 404 wurde sogar automatisch publiziert:
+// eine Drosselung sah damit wie ein kaputter Shop aus (Lehre vom 04.10., dreimal zugeschlagen).
+const status = (path) => statusMitGeduld(BASE + path);
 async function getToken(){
   if(!(CID && CSECRET) && TOK_STATIC) return TOK_STATIC;
   if(SHOP && CID && CSECRET){
@@ -59,18 +64,24 @@ async function publish(gid, token){
 
 // 1) URL-Status (+ Auto-Fix 404-Homepage-Kollektionen)
 let token = '';
+const unmessbar = [];
 for(const path of CHECK){
-  const s = await status(path);
-  if(s !== 200){
-    const handle = path.startsWith('/collections/') ? path.split('/').pop() : '';
-    if(s === 404 && HOMEPAGE[handle]){
-      if(!token) token = await getToken();
-      if(token){ const err = await publish(HOMEPAGE[handle], token);
-        if(err) problems.push(`❌ ${path} → 404, Auto-Publish-Fehler: ${err}`);
-        else fixes.push(`🔧 ${path} war 404 → automatisch im Onlineshop veröffentlicht`);
-      } else problems.push(`❌ ${path} → 404 (kein Token zum Auto-Fix)`);
-    } else problems.push(`❌ ${path} → HTTP ${s||'Fehler'}`);
+  const { status: s, unsicher, nachgefasst } = await status(path);
+  if(s === 200) continue;
+  if(unsicher){
+    // Drosselung/Serverfehler bleibt Drosselung: KEIN Befund, kein Auto-Fix, kein Alarm.
+    unmessbar.push(`🕓 ${path} → HTTP ${s||'Netzfehler'} nach ${nachgefasst}× nachfassen — nicht messbar, kein Befund.`);
+    continue;
   }
+  const handle = path.startsWith('/collections/') ? path.split('/').pop() : '';
+  if(s === 404 && HOMEPAGE[handle]){
+    if(DRY){ fixes.push(`🔎 ${path} ist 404 → würde im Onlineshop veröffentlicht (DRY)`); continue; }
+    if(!token) token = await getToken();
+    if(token){ const err = await publish(HOMEPAGE[handle], token);
+      if(err) problems.push(`❌ ${path} → 404, Auto-Publish-Fehler: ${err}`);
+      else fixes.push(`🔧 ${path} war 404 → automatisch im Onlineshop veröffentlicht`);
+    } else problems.push(`❌ ${path} → 404 (kein Token zum Auto-Fix)`);
+  } else problems.push(`❌ ${path} → HTTP ${s||'Fehler'}`);
 }
 
 // 2) Startseiten-Platzhalter + 3) Admin-Leak
@@ -87,11 +98,12 @@ if(fixes.length) lines.push(...fixes);
 if(ok && !fixes.length) lines.push('✅ Alles in Ordnung — alle Seiten 200, keine Platzhalter, kein Leak.');
 else if(ok) lines.push('✅ Rest in Ordnung.');
 else lines.push(...problems);
+if(unmessbar.length) lines.push(...unmessbar);
 const msg = lines.join('\n');
 console.log(msg);
 
 // Telegram nur bei Problemen/Fixes (oder ALWAYS_NOTIFY)
-if(TG_T && TG_C && (!ok || fixes.length || ALWAYS)){
+if(!DRY && TG_T && TG_C && (!ok || fixes.length || ALWAYS)){
   try{ await fetch(`https://api.telegram.org/bot${TG_T}/sendMessage`,{method:'POST',headers:{'Content-Type':'application/json'},
     body:JSON.stringify({chat_id:TG_C,text:msg,disable_web_page_preview:true})}); console.log('Telegram gesendet.'); }
   catch(e){ console.error('Telegram-Fehler:', e.message); }
