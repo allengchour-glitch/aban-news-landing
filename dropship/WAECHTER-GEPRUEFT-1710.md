@@ -118,7 +118,32 @@ Dazu `DRY=1`: nur messen, nichts publizieren, nichts senden.
 
 **Lauf danach:** alle 7 geprüften Seiten 200, keine Theme-Platzhalter, kein fremder Admin-Link.
 
-## 6. Noch nicht geprüft
+## 6. ⏳ `conversion_radar.mjs` wurde nie fertig — und misst jetzt
+
+Der Radar paginiert mit `while(true)` über **alle** aktiven `cj-real`-Produkte. Das sind über
+12 000 Stück = 240+ Seiten mit verschachtelten Medien, plus Drossel-Pausen. **Gemessen: der Lauf
+endete nach 15 Minuten im Abbruch, ohne eine einzige Zeile Bericht.** Ein Werkzeug, das nicht fertig
+wird, liefert nichts.
+
+**Behoben:** `SCAN`-Deckel (Standard 3000) + `FORTSCHRITT=1`. Erreicht der Lauf den Deckel, steht im
+Bericht ausdrücklich **„Teilmessung"** — eine Teilmessung, die ankommt und sich als solche zu
+erkennen gibt, ist mehr wert als eine Vollmessung, die niemand zu sehen bekommt.
+
+**Erster Lauf (1500 Produkte, `automation/autopilot/CONVERSION-RADAR.md`):**
+
+| Leck | Anzahl |
+|---|---|
+| ohne Reviews/Sterne | **1489 (99 %)** |
+| unter 4★ | 0 |
+| FAILED-Bilder | **0** |
+| ohne SEO-Titel | **1373 (91,5 %)** |
+
+Die 99 % ohne Sterne sind der grösste Conversion-Hebel des Shops — und beim Rizinusöl-Versuch heute
+hat sich gezeigt, dass CJ für manche Produkte **gar keine** Kommentare hat. Der nächste ehrliche
+Schritt ist also nicht „den Importer laufen lassen", sondern erst **messen, für wie viele der 1489
+CJ überhaupt Bewertungen hat** — sonst hält man eine leere Quelle für einen vollen Eimer.
+
+## 7. Noch nicht geprüft
 
 `image-audit.mjs` braucht Gemini-Vision — die Credits des Users sind aufgebraucht (HTTP 402).
 `cross_sell.mjs` schreibt in Produktbeschreibungen; noch nicht angesehen.

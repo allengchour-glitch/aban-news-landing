@@ -91,6 +91,11 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   04.10., dreimal zugeschlagen). Fix `automation/lib/url_status.mjs` + Test: bei 429/5xx/Netzfehler
   nachfassen, bleibt es dabei → **„nicht messbar"** statt Befund; **Gegenprobe: ein echter 404 gilt
   sofort.** Dazu `DRY=1`. Lauf danach: alle 7 Seiten 200, keine Platzhalter, kein Admin-Leak.
+- **⏳ `conversion_radar.mjs` wurde NIE fertig** (`while(true)` über 12 000+ Produkte → nach 15 Min
+  abgebrochen, 0 Zeilen Bericht). Fix: `SCAN`-Deckel (3000) + `FORTSCHRITT=1`, und der Bericht sagt
+  „Teilmessung", wenn der Deckel greift. **Erster Lauf (1500 Produkte): 1489 ohne Sterne (99 %),
+  1373 ohne SEO-Titel (91,5 %), 0 FAILED-Bilder, 0 unter 4★.** Die Sterne sind der grösste Hebel —
+  aber **zuerst messen, für wie viele CJ überhaupt Kommentare hat** (beim Rizinusöl waren es 0).
 - **Sauber:** `conversion_guard` 0 Blocker / 5 ok. **Offen:** `image-audit` braucht Gemini (Credits
   aufgebraucht). Volle Berichte: `dropship/WAECHTER-GEPRUEFT-1710.md`.
 - **🔑 ALLE 60 Shopify-Automatisierungen konnten in dieser Umgebung NICHTS tun — und meldeten das als
