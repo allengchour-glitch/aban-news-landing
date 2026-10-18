@@ -1,11 +1,11 @@
 {
  "wartet_auf_export": true,
  "export": "/tmp/kost28.jsonl",
- "export_alter_h": 89.9,
+ "export_alter_h": 91.0,
  "kaufbar": null,
  "heben": null,
  "raus": null,
  "stand": "2026-10-18",
- "zeit": "2026-10-18T22:09Z",
+ "zeit": "2026-10-18T23:11Z",
  "modus": "scharf"
 }
