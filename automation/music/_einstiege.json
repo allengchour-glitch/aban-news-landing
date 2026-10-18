@@ -89,6 +89,24 @@
    22.0
   ]
  },
+ "luxe-epic-glamour.wav": {
+  "dauer": 66.2,
+  "lufs": -12.8,
+  "einstiege": [
+   44.25,
+   48.0,
+   2.25
+  ]
+ },
+ "luxe-epic-herbst.wav": {
+  "dauer": 62.0,
+  "lufs": -12.4,
+  "einstiege": [
+   38.0,
+   45.5,
+   42.5
+  ]
+ },
  "luxe-epic-hero.wav": {
   "dauer": 61.8,
   "lufs": -12.6,
@@ -107,6 +125,33 @@
    22.5
   ]
  },
+ "luxe-epic-spielerisch.wav": {
+  "dauer": 65.7,
+  "lufs": -12.6,
+  "einstiege": [
+   31.75,
+   23.5,
+   34.75
+  ]
+ },
+ "luxe-epic-sport.wav": {
+  "dauer": 75.4,
+  "lufs": -13.7,
+  "einstiege": [
+   50.0,
+   44.75,
+   20.25
+  ]
+ },
+ "luxe-epic-tech.wav": {
+  "dauer": 62.6,
+  "lufs": -13.8,
+  "einstiege": [
+   42.75,
+   46.5,
+   15.5
+  ]
+ },
  "luxe-epic-trailer.wav": {
   "dauer": 63.1,
   "lufs": -13.4,
@@ -114,6 +159,15 @@
    15.5,
    7.75,
    38.25
+  ]
+ },
+ "luxe-epic-warm.wav": {
+  "dauer": 64.9,
+  "lufs": -13.0,
+  "einstiege": [
+   48.25,
+   43.25,
+   39.75
   ]
  },
  "luxe-epic-winter.wav": {

@@ -558,17 +558,47 @@ def kandidaten(sp, led, heute, protokoll, cache, dauerhaft_merken=False):
 
 
 # ---------------------------------------------------------------- Musik und Stimme
-def musik_fuer(handle):
-    """Epische Stücke wie der Reel-Motor (EPISCH aus cj_video_reel_engine.mjs gelesen), ohne Sperrliste, mit CREDITS-Zeile,
-    nicht unter den letzten 5 im Verlauf."""
+def _winterzeit(stimm):
+    """Winterstück nur 15.11.–10.01. (automation/music/_stimmung.json), wie im Reel-Motor."""
+    import datetime
+    w = (stimm or {}).get("winter")
+    if not w:
+        return True
+    t = datetime.datetime.utcnow(); md = t.month * 100 + t.day
+    am, ad = map(int, w["ab"].split("-")); bm, bd = map(int, w["bis"].split("-"))
+    return md >= am * 100 + ad or md <= bm * 100 + bd
+
+
+def musik_fuer(handle, th=None):
+    """Epische Stücke wie der Reel-Motor (EPISCH aus cj_video_reel_engine.mjs gelesen), ohne Sperrliste, mit CREDITS-Zeile.
+    18.10.2026: Stimmungs-Pool je Warengruppe (automation/music/_stimmung.json) und das am längsten nicht benutzte Stück
+    (letzte 80 Verlaufszeilen) statt «nicht unter den letzten 5»."""
     src = open(os.path.join(HIER, "cj_video_reel_engine.mjs"), encoding="utf-8").read()
     m = re.search(r"const EPISCH = \[([^\]]*)\]", src)
     pool = re.findall(r"'([^']+)'", m.group(1)) if m else ["luxe-epic-elegant.wav", "luxe-epic-hero.wav", "luxe-orchestra.wav"]
     gesperrt = {z.split("\t")[0].strip() for z in _zeilen("automation/music/_gesperrt.txt") if z.strip() and not z.startswith("#")}
     credits = "\n".join(_zeilen("automation/music/CREDITS.txt"))
     pool = [x for x in pool if x not in gesperrt and os.path.exists(os.path.join(HIER, "music", x)) and x in credits]
-    letzte = [z.split("\t")[1] for z in _zeilen("social/_musik_verlauf.txt") if z.count("\t") >= 4][-5:]
-    frei = [x for x in pool if x not in letzte] or pool
+    try:
+        import json as _json
+        stimm = _json.load(open(os.path.join(HIER, "music", "_stimmung.json"), encoding="utf-8"))
+    except Exception:
+        stimm = None
+    if stimm:
+        w = stimm.get("winter") or {}
+        if th and (stimm.get("pools") or {}).get(th):
+            eng = [x for x in stimm["pools"][th] if x in pool]
+            if w and _winterzeit(stimm) and th in (w.get("gilt_fuer") or []) and w.get("datei") in pool and w["datei"] not in eng:
+                eng.append(w["datei"])
+            pool = eng or pool
+        elif w and not _winterzeit(stimm):
+            pool = [x for x in pool if x != w.get("datei")] or pool
+    verlauf = [z.split("\t")[1] for z in _zeilen("social/_musik_verlauf.txt") if z.count("\t") >= 4][-80:]
+    letzte = verlauf[-2:]
+    kand = [x for x in pool if x not in letzte] or pool
+    zuletzt = lambda x: max((i for i, v in enumerate(verlauf) if v == x), default=-1)
+    best = min((zuletzt(x) for x in kand), default=-1)
+    frei = [x for x in kand if zuletzt(x) == best]
     return frei[num(handle) % len(frei)] if frei else ""
 
 
@@ -591,7 +621,7 @@ def plan_fuer(p, q, platz, sauber, gruende):
     mn, mx = bild_reel.preise(p)
     return {"handle": p["handle"], "titel": p["title"], "preis": mn, "preis_max": mx,
             "quelle": q, "platz": platz, "thema": th, "hook": hook, "bilder_sauber": sauber, "bilder_gross": len(bilder_gross(p)),
-            "ausgelassen": gruende, "dauer": bild_reel.dauer_fuer(n), "musik": musik_fuer(p["handle"]), "stimme": st,
+            "ausgelassen": gruende, "dauer": bild_reel.dauer_fuer(n), "musik": musik_fuer(p["handle"], th), "stimme": st,
             "begruendung": (f"{'Saison-Vorrang Platz ' + str(platz) if q == 'vorrang' else 'Kollektion ' + q + ' Platz ' + str(platz)}; "
                             f"{sauber} saubere Bilder ≥ 600 px (Diashow {bild_reel.dauer_fuer(n)} s, Schnitt bei 0,5 s); "
                             f"Hook «{hook}» ({len(hook)} Z.) aus dem Produktwort; {bild_reel.preis_anzeige(mn, mx)}; "

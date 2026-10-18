@@ -84,22 +84,46 @@ const STIMMUNG = {
 // 6 neue epische Stücke (Google Lyria 3.5 über die Gemini-API, blind episch/Klang ≥ 8, kein Gesang) dazu; Sperre der
 // letzten 5 statt 3 Reels. Quelle/Masse: automation/music/CREDITS.txt (LIZENZIERT).
 const EPISCH = ['luxe-adventure-uplift.wav', 'luxe-epic-anime.wav', 'luxe-orchestra.wav', 'luxe-epic-trailer.wav', 'luxe-epic-hybrid.wav',
-  'luxe-epic-hero.wav', 'luxe-epic-fantasy.wav', 'luxe-epic-winter.wav', 'luxe-epic-elegant.wav'];
+  'luxe-epic-hero.wav', 'luxe-epic-fantasy.wav', 'luxe-epic-winter.wav', 'luxe-epic-elegant.wav',
+  'luxe-epic-spielerisch.wav', 'luxe-epic-warm.wav', 'luxe-epic-tech.wav', 'luxe-epic-sport.wav', 'luxe-epic-glamour.wav', 'luxe-epic-herbst.wav'];
 const EPISCH_NUR = true;
-if (EPISCH_NUR) { for (const k of Object.keys(STIMMUNG)) STIMMUNG[k] = [...EPISCH]; MUSIC.splice(0, MUSIC.length, ...EPISCH); }
+// 18.10.2026 (Betreiber «verbessere musik videos»): vorher bekam JEDE Warengruppe alle 9 Stücke (Schlittenglocken auf Hundespielzeug).
+// Jetzt Stimmungs-Pools je Warengruppe aus automation/music/_stimmung.json (6 neue Lyria-Stücke, blind ≥ 9/9/9), Winterstück nur 15.11.–10.01.
+const STIMM_JSON = (() => { try { return JSON.parse(fs.readFileSync('automation/music/_stimmung.json', 'utf8')); } catch { return null; } })();
+const WINTERZEIT = (() => { const w = STIMM_JSON && STIMM_JSON.winter; if (!w) return true; const d = new Date(), md = (d.getUTCMonth() + 1) * 100 + d.getUTCDate();
+  const [am, ad] = w.ab.split('-').map(Number), [bm, bd] = w.bis.split('-').map(Number); return md >= am * 100 + ad || md <= bm * 100 + bd; })();
+if (EPISCH_NUR) {
+  for (const k of Object.keys(STIMMUNG)) {
+    const pool = STIM_POOL(k);
+    STIMMUNG[k] = pool.length ? pool : [...EPISCH];
+  }
+  MUSIC.splice(0, MUSIC.length, ...EPISCH);
+}
+function STIM_POOL(k) {
+  if (!STIMM_JSON || !STIMM_JSON.pools || !STIMM_JSON.pools[k]) return [];
+  const pool = [...STIMM_JSON.pools[k]], w = STIMM_JSON.winter;
+  if (w && WINTERZEIT && (w.gilt_fuer || []).includes(k) && !pool.includes(w.datei)) pool.push(w.datei);
+  return pool;
+}
 // 26.09.2026: Sperrliste automation/music/_gesperrt.txt (Betreiber mag luxe-lounge-sax nicht). Gilt fuer JEDE Wahl unten —
 // Warengruppen-Pool, Gesamt-Pool und den alten MUSIC-Rueckfall.
 const GESPERRT = new Set((() => { try { return fs.readFileSync('automation/music/_gesperrt.txt', 'utf8').split('\n')
   .filter(z => z.trim() && !z.startsWith('#')).map(z => z.split('\t')[0].trim()); } catch { return []; } })());
 for (const k of Object.keys(STIMMUNG)) STIMMUNG[k] = STIMMUNG[k].filter(m => !GESPERRT.has(m));
 for (let i = MUSIC.length - 1; i >= 0; i--) if (GESPERRT.has(MUSIC[i])) MUSIC.splice(i, 1);
-const ALLE_EIGENEN = [...new Set(Object.values(STIMMUNG).flat())];
+const ALLE_EIGENEN = [...new Set(Object.values(STIMMUNG).flat())].filter(m => !(STIMM_JSON && STIMM_JSON.winter && !WINTERZEIT && m === STIMM_JSON.winter.datei));
 const VERLAUF = 'social/_musik_verlauf.txt';
 function musikWahl(th, pid) {
   let ein = {}; try { ein = JSON.parse(fs.readFileSync('automation/music/_einstiege.json', 'utf8')); } catch {}
   const letzte = (fs.existsSync(VERLAUF) ? fs.readFileSync(VERLAUF, 'utf8').trim().split('\n') : []).slice(-5).map(z => z.split('\t')[1]);
   const pool = (STIMMUNG[th] || ALLE_EIGENEN).filter(m => fs.existsSync('automation/music/' + m));
-  const frei = pool.filter(m => !letzte.includes(m));
+  // 18.10.2026: das am längsten nicht benutzte Stück des Pools (statt «nicht unter den letzten 5», das bei kleinen Pools leer lief),
+  // Gleichstand (nie benutzt) per pid. Verlauf = die letzten 80 Zeilen.
+  const lang = (fs.existsSync(VERLAUF) ? fs.readFileSync(VERLAUF, 'utf8').trim().split('\n') : []).slice(-80).map(z => z.split('\t')[1]);
+  const zuletzt = m => lang.lastIndexOf(m);
+  const kand = (pool.length ? pool : MUSIC).filter(m => !letzte.slice(-2).includes(m) || pool.length < 3);
+  const best = Math.min(...(kand.length ? kand : pool).map(zuletzt));
+  const frei = (kand.length ? kand : pool).filter(m => zuletzt(m) === best);
   const wahl = (frei.length ? frei : pool.length ? pool : MUSIC)[num(pid) % (frei.length || pool.length || MUSIC.length)];
   const st = (ein[wahl] && ein[wahl].einstiege) || [0];
   const start = st[Math.floor(num(pid) / 7) % st.length] || 0;

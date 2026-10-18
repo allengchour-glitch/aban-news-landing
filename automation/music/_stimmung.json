@@ -1,0 +1,15 @@
+{
+  "_doku": "Welche epischen Stücke zu welcher Warengruppe passen (18.10.2026, Betreiber «verbessere musik videos»). Gelesen von automation/cj_video_reel_engine.mjs und automation/bild_reel_auswahl.py. Auswahl = das am längsten nicht benutzte Stück des Pools (Verlauf social/_musik_verlauf.txt), Gleichstand per pid. Fehlt die Datei oder ein Stück, gilt EPISCH im Reel-Motor.",
+  "pools": {
+    "haustier": ["luxe-epic-spielerisch.wav", "luxe-epic-anime.wav", "luxe-epic-fantasy.wav", "luxe-adventure-uplift.wav", "luxe-epic-warm.wav"],
+    "kinder":   ["luxe-epic-spielerisch.wav", "luxe-adventure-uplift.wav", "luxe-epic-fantasy.wav", "luxe-epic-anime.wav"],
+    "gadget":   ["luxe-epic-tech.wav", "luxe-epic-hybrid.wav", "luxe-epic-trailer.wav", "luxe-epic-anime.wav", "luxe-epic-sport.wav"],
+    "fitness":  ["luxe-epic-sport.wav", "luxe-epic-hybrid.wav", "luxe-epic-trailer.wav", "luxe-epic-anime.wav", "luxe-epic-hero.wav"],
+    "home":     ["luxe-epic-warm.wav", "luxe-epic-herbst.wav", "luxe-orchestra.wav", "luxe-epic-hero.wav", "luxe-epic-elegant.wav"],
+    "kueche":   ["luxe-epic-warm.wav", "luxe-epic-herbst.wav", "luxe-epic-spielerisch.wav", "luxe-adventure-uplift.wav"],
+    "beauty":   ["luxe-epic-elegant.wav", "luxe-epic-glamour.wav", "luxe-epic-hero.wav", "luxe-orchestra.wav"],
+    "schmuck":  ["luxe-epic-elegant.wav", "luxe-epic-glamour.wav", "luxe-orchestra.wav", "luxe-epic-hero.wav"],
+    "mode":     ["luxe-epic-glamour.wav", "luxe-epic-elegant.wav", "luxe-epic-hero.wav", "luxe-epic-trailer.wav", "luxe-epic-anime.wav"]
+  },
+  "winter": {"datei": "luxe-epic-winter.wav", "ab": "11-15", "bis": "01-10", "gilt_fuer": ["home", "kueche", "mode", "haustier", "kinder", "beauty", "schmuck", "allgemein"]}
+}
