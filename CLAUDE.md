@@ -72,9 +72,13 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
-**📌 2026-10-18 frühmorgens (⭐ 155 echte Bewertungen live — zwei Importer-Fehler derselben Klasse gefunden):**
-Heute gesamt: **155 echte ≥4★-Bewertungen auf 35 Produkten, 0 Fehler.** Vorher meldete derselbe Lauf
-17 Bewertungen und 20 ‚Fehler‘. Beide Ursachen sind Antworten, die als Fehler behandelt wurden.
+**📌 2026-10-18 (⭐ 775 echte Bewertungen live — zwei Importer-Fehler derselben Klasse gefunden):**
+Tagesergebnis: **775 echte ≥4★-Bewertungen auf 152 Produkten, 0 Fehler**, in sechs Chargen
+(155 · 187 · 146 · 161 · 63 · 63). Der erste Lauf des Tages meldete 17 Bewertungen und 20 ‚Fehler‘ —
+beide Ursachen waren Antworten, die als Fehler behandelt wurden.
+- **Trefferquote fällt mit der Katalogtiefe:** in der zuletzt geänderten Schicht 12–14 %, tiefer 6,7–11 %.
+  Das Leer-Ledger dieser Abfrage hält jetzt **2641** Produkte fest, die kein Lauf mehr bezahlt.
+- **CJ-Punkte: 73 240 verbraucht, 13 542 übrig** (der Eimer füllt sich laufend nach, 68 875 ist kein harter Riegel).
 - **🚨 CJ VERGIBT NUR EINE `commentId` JE PRODUKT — darum kam je Produkt nur EINE Bewertung durch.**
   Gemessen an `product/productComments?pid=1616334321445515264`: alle sieben Kommentare tragen
   `commentId` 1616344932124471300. `reviewKey` nahm diese Kennung allein, sobald sie vorhanden war →
@@ -104,7 +108,9 @@ Heute gesamt: **155 echte ≥4★-Bewertungen auf 35 Produkten, 0 Fehler.** Vorh
 - **Lauf-Rezept, bestätigt:** `QUERY='tag:elektronik AND tag:cj-real' SORT=UPDATED_AT REVERSE=1 LIMIT=150`.
   Der neueste Teil (Notenständer/Mikrofone) hat **0 Kommentare**; die Treffer liegen bei Smart-Home,
   Dimmer/Controller, Smartwatch-Armbändern und Radios. **Nächste Sitzung: dieselbe Abfrage weiterlaufen
-  lassen (LIMIT 150–250), danach `tag:gadgets AND tag:cj-real`.**
+  lassen (LIMIT 150–250), danach `tag:gadgets AND tag:cj-real`; Mode/Kostüme/Haushalt zuletzt.**
+  Drei Produkte sind bei CJ **ausgelistet** und haben trotzdem lesbare Bewertungen — ohne den weichen
+  Code wären sie als Fehler durchgefallen.
 - **🟡 BEIM USER (unverändert):** Preis `m8-puls-4k-retro-game-console-956928` (12 Bewertungen, 4,75★,
   VK unter EK) · Preise der drei Dünnmargen-Produkte.
 
