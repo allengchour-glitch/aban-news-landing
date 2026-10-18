@@ -1,5 +1,8 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+**Gratis-Sichtbarkeit, 18.10.:** [Geprüfter Plan für Google-Produkteinträge, Search Console, Bing, Pinterest und Semrush Free](dropship/codex-handoff-20261018/GRATIS-SICHTBARKEIT.md). Windsor meldet TRIAL, keine bestätigte dauerhafte Gratisbrücke; Standard-Semrush-SEO-API ist kostenpflichtig. Vorhandene Verifizierungsmarker und Shopify-Google-Kanalflag beweisen keinen Kontozugriff oder Merchant-Freigabe. Keine Konten, Feeds, Indexmeldungen oder Apps aktiviert.
+
+
 **Nachtrag 18.10., ca. 19:44 Uhr:** [Neue Verbesserungen und native Gegenprobe](dropship/codex-handoff-20261018/VERBESSERUNGEN-1944.md). Im allgemeinen Versandprofil ist aktuell CHF 40.50 aktiv und CHF 45 deaktiviert; die Projektor-Variante ist diesem Profil zugeordnet. CHF 50 öffentlich / CHF 45 intern bleibt die Inhabervorgabe, ist aber kein bestätigter aktueller Tarif. Keine Tarifänderung vorgenommen. Weitere Text- und Ledger-Diffs sind nur Entwürfe.
 
 
