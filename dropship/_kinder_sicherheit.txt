@@ -1711,3 +1711,7 @@ gid://shopify/Product/16617720938887	w	Kleinteile	Mikro-Bausteine – Trendiges 
 gid://shopify/Product/16617723494791	w	Kleinteile	Bausteine Villa und Auto
 gid://shopify/Product/16617711501703	a	toddler
 gid://shopify/Product/16617711731079	a	toddler
+gid://shopify/Product/16617694560647	a	kids
+gid://shopify/Product/16617969615239	a	kids
+gid://shopify/Product/16646213763463	a	toddler
+gid://shopify/Product/16647594312071	a	kids

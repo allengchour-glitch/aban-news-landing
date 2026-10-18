@@ -866,10 +866,18 @@
   "story-20261025T1145": {
    "basis_utc": "2026-10-25T11:45:00Z",
    "format": "story",
+   "grund": "",
+   "handle": "",
+   "handles": [
+    "rettungsschwimmer-set-fga928124"
+   ],
    "letzter_versuch": "2026-10-18T22:23:32Z",
-   "mc_ids": [],
+   "mc_ids": [
+    399472165,
+    399472167
+   ],
    "reserviert_um": "2026-10-18T22:23:32Z",
-   "status": "reserviert",
+   "status": "geplant",
    "termin_utc": "2026-10-25T11:45:00Z",
    "versuche": 1
   },
@@ -1117,10 +1125,13 @@
   "tiktok-20261025T1205": {
    "basis_utc": "2026-10-25T12:05:00Z",
    "format": "tiktok",
+   "grund": "rc=3:  Die Aufschrift «SPORT» auf den Pantoffeln wirkt billig und generisch, was dem Anspruch von LuxeStyle widerspricht und die Produktqualität mindert. Dies ist ein",
+   "letzter_versuch": "2026-10-18T22:25:39Z",
    "mc_ids": [],
-   "status": "offen",
+   "reserviert_um": "2026-10-18T22:25:39Z",
+   "status": "reserviert",
    "termin_utc": "2026-10-25T12:05:00Z",
-   "versuche": 0
+   "versuche": 3
   },
   "tiktok-20261025T1905": {
    "basis_utc": "2026-10-25T19:05:00Z",
@@ -1335,6 +1346,6 @@
    "versuche": 0
   }
  },
- "stand": "2026-10-18T22:23:32Z",
+ "stand": "2026-10-18T22:25:39Z",
  "version": 1
 }
