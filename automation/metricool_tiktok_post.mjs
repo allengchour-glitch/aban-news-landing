@@ -369,6 +369,17 @@ if (DRY) {
 }
 
 const release = postLock(20);
+// Nach dem Lock FRISCH prüfen (Prüfung 18.10.): zwischen «Kandidat gewählt» (Minuten, Jury) und «Lock erhalten» kann ein anderer Poster dasselbe Reel
+// geplant haben — so entstand ein Doppelpost (19.10. 00:19 + 23.10. 08:05). Queue neu lesen, Ledger neu lesen, sonst Exit 3 (nächster Lauf nimmt das nächste Reel).
+{
+  let vergeben = false;
+  try {
+    const frisch = queueLesen(CSV);
+    const z = frisch.slice(1).find(r => r[idx.id] === get(cand, 'id'));
+    vergeben = postSeen(get(cand, 'video_url')) || (z && z[idx.status] !== 'ready');
+  } catch (e) { console.error('   Frisch-Prüfung nicht möglich (' + String(e.message || e).slice(0, 80) + ') → weiter wie bisher'); }
+  if (vergeben) { console.log(`Kandidat ${get(cand, 'id')} ist inzwischen vergeben (anderer Poster) → nichts geplant, Exit 3.`); release(); process.exit(3); }
+}
 cand[idx.status] = 'posting'; cand[idx.posted_at] = new Date().toISOString(); writeLedger();   // Claim VOR dem Post
 try {
   const n = await fetch(`${BASE}/actions/normalize/image/url?url=${encodeURIComponent(url)}&userId=${USER}&blogId=${BLOG}`, { headers: { 'X-Mc-Auth': TOKEN } });

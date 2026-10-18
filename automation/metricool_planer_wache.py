@@ -260,6 +260,16 @@ def musik_pruefen(max_posts=6):
         if urteil:
             schlecht.append(url)
     print(f"{'⚠️ ' if schlecht else ''}TIKTOK-MUSIK: {len(kandidaten[:max_posts])} geprüft, {len(schlecht)} ohne die gewählte Musik")
+    if schlecht and os.environ.get("SCHARF") == "1":
+        # Selbstheilung: kommt die Musik bei TikTok nicht mehr an (Konto-Art, Titel stummgeschaltet), plant der Treiber ab sofort wieder ohne Trendton —
+        # sonst gäbe es lautlose Videos (originalVolume 0). Wieder einschalten: dropship/_tt_trend_modus.txt auf «an» (nach Ursache).
+        try:
+            modus = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "dropship", "_tt_trend_modus.txt")
+            if "aus" not in (open(modus, encoding="utf-8").read().split() or [""])[0]:
+                open(modus, "w", encoding="utf-8").write(f"aus  # automatisch zurückgenommen {datetime.now(TZ):%d.%m. %H:%M}: TikTok übernahm die Musik nicht ({len(schlecht)} Post(s))\n")
+                print("⛔ TIKTOK-MUSIK: Trendton automatisch auf «aus» gestellt (dropship/_tt_trend_modus.txt)")
+        except OSError:
+            pass
     return 0
 
 

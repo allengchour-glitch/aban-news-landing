@@ -312,6 +312,11 @@ while true; do
     if [ ! -f dropship/_SOCIAL_STOPP ]; then
       SCHARF=1 timeout 2700 python3 automation/social_vorlauf.py --plan --max-min 38 9>&- 2>&1 | grep -E '✅|⛔|HALT|Lauf:|Slots:|STOPP|Zeitbudget|ruht|Traceback|Error' | tail -10 || true
     fi
+    # 18.10.2026 TikTok-Trendton: veröffentlichte Posts mit Musik prüfen (Videoseite: music.original muss false sein); bei Fehlschlag stellt die Wache den Modus auf «aus».
+    if faellig /tmp/_autopilot_letzte_tt_musik 21600; then
+      SCHARF=1 timeout 300 python3 automation/metricool_planer_wache.py --musik-pruefen 9>&- 2>&1 | grep -E 'TIKTOK-MUSIK|✗' | tail -4 || true
+      touch /tmp/_autopilot_letzte_tt_musik
+    fi
     if [ -f dropship/_SOCIAL_STOPP ] || faellig /tmp/_autopilot_letzter_vorlauf_pruefer 7200; then
       SCHARF=1 timeout 600 python3 automation/social_vorlauf.py --pruefen 9>&- 2>&1 | tail -8 || true
       touch /tmp/_autopilot_letzter_vorlauf_pruefer
