@@ -282,3 +282,9 @@ slug:ruckenstutzkissen-fur-sofa-und-bett
 slug:bildreel-leichter-daunenmantel-mit-kapuze
 pid:15448671945089
 slug:leichter-daunenmantel-mit-kapuze
+slug:bildreel-sportlicher-herren-hoodie-mit-taschen
+pid:15449067389313
+slug:sportlicher-herren-hoodie-mit-taschen
+slug:schone-schleiereule-fga87623
+slug:xxl-hoodie-decke-mit-taschen-fur-sie-ihn-059264
+name:xxlhoodiedeckemittaschenfürsie

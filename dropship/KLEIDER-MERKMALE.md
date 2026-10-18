@@ -1,4 +1,4 @@
-# Kleider-Merkmale Länge/Ärmel (2026-10-16 02:12 UTC, SCHARF)
+# Kleider-Merkmale Länge/Ärmel (2026-10-18 20:06 UTC, SCHARF)
 
 Werkzeug `automation/kleider_merkmale.py`. Filter einschalten: Search & Discovery → Filter → «Rock-/Kleiderlänge», «Ärmellänge».
 
