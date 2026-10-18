@@ -48,6 +48,7 @@ const REVERSE = process.env.REVERSE === '1';                // mit SORT: andere 
 const CJ_BASE = 'https://developers.cjdropshipping.com/api2.0/v1';
 const SHOP_API = '2025-01';
 const JM_API = 'https://judge.me/api/v1/reviews';
+const JM_WIDGET = 'https://judge.me/reviews/reviews_for_widget';
 const TOKEN_FILE = process.env.CJ_TOKEN_CACHE || '/tmp/cj_token.json';
 const LEDGER = 'dropship/cj_reviews_done.txt';
 const ITEM_LEDGER = 'dropship/cj_review_items.jsonl';
@@ -157,21 +158,46 @@ async function jmPost(pid, r) {
 // (gemessen 2026-10-17: `external_id=99999999` liefert dieselben 5 neuesten Bewertungen wie
 // ohne Filter — dieselbe Falle wie der Metafeld-Filter in der Shopify-Produktsuche). Darum
 // die neuesten Bewertungen OHNE Filter lesen und selbst auf Produkt + Text pruefen.
-async function jmAbgleich(pid, bodies) {
-  const treffer = new Set();
-  const qs = new URLSearchParams({ api_token: JM_TOKEN, shop_domain: JM_DOMAIN, per_page: '100' });
-  let j;
+/**
+ * Bewertungstexte EINES Produkts aus Judge.me lesen.
+ *
+ * Nachgemessen 2026-10-18: die Admin-Liste `/api/v1/reviews` ignoriert jeden Produktfilter
+ * still (external_id, product_external_id, product_id und sogar ein erfundenes handle
+ * liefern dieselben 20 Bewertungen aus 8 Produkten). Die oeffentliche Widget-Antwort
+ * filtert dagegen wirklich: sie nennt Produktname, Anzahl und genau die Bewertungen dieses
+ * Produkts. Darum wird hier sie gelesen — ohne Zugangsdaten, nur lesend, 1 Abfrage je Produkt.
+ */
+const textCache = new Map();
+function nurText(html) {
+  return String(html || '').replace(/<[^>]*>/g, ' ').replace(/&amp;/g, '&').replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/\s+/g, ' ').trim();
+}
+async function jmProduktTexte(pid, frisch = false) {
+  const schluessel = String(pid);
+  if (!frisch && textCache.has(schluessel)) return textCache.get(schluessel);
+  const texte = new Set();
+  const qs = new URLSearchParams({ url: JM_DOMAIN, shop_domain: JM_DOMAIN, platform: 'shopify',
+    product_id: schluessel, per_page: '100' });
   try {
-    const res = await fetch(`${JM_API}?${qs}`);
-    if (!res.ok) { console.error(`  Abgleich nicht moeglich: Judge.me HTTP ${res.status}`); return treffer; }
-    j = await res.json();
-  } catch (e) { console.error(`  Abgleich nicht moeglich: ${e.message}`); return treffer; }
-  const liste = Array.isArray(j?.reviews) ? j.reviews : [];
-  const gesucht = new Set(bodies.map(b => String(b).trim()));
-  for (const r of liste) {
-    if (String(r?.product_external_id) !== String(pid)) continue;
-    const b = String(r?.body || '').trim();
-    if (gesucht.has(b)) treffer.add(b);
+    const res = await fetch(`${JM_WIDGET}?${qs}`);
+    if (!res.ok) { console.error(`  Shop-Abgleich nicht moeglich: Judge.me HTTP ${res.status} (Produkt ${schluessel})`); return texte; }
+    const j = await res.json();
+    for (const r of (Array.isArray(j?.reviews) ? j.reviews : [])) {
+      const t = nurText(r?.body_html ?? r?.body);
+      if (t) texte.add(t);
+    }
+  } catch (e) { console.error(`  Shop-Abgleich nicht moeglich: ${e.message} (Produkt ${schluessel})`); return texte; }
+  textCache.set(schluessel, texte);
+  return texte;
+}
+
+// Nach einem POST mit HTTP 201 OHNE Review-ID: frisch nachlesen und auf den Text pruefen.
+async function jmAbgleich(pid, bodies) {
+  const vorhanden = await jmProduktTexte(pid, true);
+  const treffer = new Set();
+  for (const b of bodies) {
+    const t = nurText(b) || String(b).trim();
+    if (vorhanden.has(t)) treffer.add(String(b).trim());
   }
   return treffer;
 }
@@ -320,7 +346,7 @@ const merkeLeer = (id, grund) => {
       if (!picked.length) { console.log(`· ${p.handle}: 0 echte ≥${MIN_SCORE}★-Kommentare bei CJ → skip`); merkeLeer(pidNum, 'keine-kommentare'); continue; }
 
       const bodiesDE = await translateDE(picked.map(c => c.comment.trim()));
-      let sent = 0, complete = true;
+      let sent = 0, schonDa = 0, complete = true;
       const offen = [];   // gesendet, Antwort ohne ID → wird gleich nachgelesen
       for (let i = 0; i < picked.length; i++) {
         const c = picked[i];
@@ -340,6 +366,14 @@ const merkeLeer = (id, grund) => {
           picture_urls: (Array.isArray(c.commentUrls) ? c.commentUrls : []).filter(u => /^https?:\/\//.test(u)),
         };
         if (DRY) { console.log(`  [DRY] ${p.handle} ★${rev.rating} ${rev.body.slice(0, 50)}`); sent++; continue; }
+        // Liegt genau dieser Text beim Produkt schon im Shop, ist er importiert — egal unter
+        // welchem Schluessel. Dann nur den Zustand nachfuehren, nicht erneut senden.
+        const bekannt = await jmProduktTexte(pidNum);
+        if (bekannt.has(nurText(rev.body) || rev.body.trim())) {
+          recordReviewState(ITEM_LEDGER,reviewStates,key,'sent'); schonDa++;
+          console.log(`  Im Shop schon vorhanden, nicht erneut gesendet (${key.slice(0,12)})`);
+          continue;
+        }
         // Intent vor dem externen POST dauerhaft festhalten. Ein abgebrochener Lauf
         // mit unbekanntem Ergebnis darf denselben Kommentar nicht blind wiederholen.
         recordReviewState(ITEM_LEDGER,reviewStates,key,'sending');
@@ -376,6 +410,7 @@ const merkeLeer = (id, grund) => {
         }
       }
       if (sent) { prodWith++; totalReviews += sent; console.log(`✓ ${p.handle}: ${sent} echte Reviews (CJ-pid ${cjpid})`); }
+      else if (schonDa) console.log(`· ${p.handle}: ${schonDa} Bewertung(en) lagen schon im Shop`);
       // Ledger laut melden, wenn er nicht geschrieben werden kann: ohne Eintrag importiert
       // der naechste Lauf dieselben Reviews ein zweites Mal. Der stumme catch hat das
       // verdeckt (2026-10-04 aufgefallen, nachdem ein versehentliches `git checkout -- .`
