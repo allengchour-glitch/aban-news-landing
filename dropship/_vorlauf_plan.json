@@ -451,10 +451,17 @@
   "pin-20261024T1240": {
    "basis_utc": "2026-10-24T12:40:00Z",
    "format": "pin",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "",
+   "handles": [],
+   "letzter_versuch": "2026-10-18T22:16:04Z",
+   "mc_ids": [
+    399468611
+   ],
+   "reserviert_um": "2026-10-18T22:16:04Z",
+   "status": "geplant",
    "termin_utc": "2026-10-24T12:40:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "pin-20261024T1510": {
    "basis_utc": "2026-10-24T15:10:00Z",
@@ -791,10 +798,18 @@
   "story-20261024T1045": {
    "basis_utc": "2026-10-24T10:45:00Z",
    "format": "story",
+   "grund": "",
+   "handle": "",
+   "handles": [
+    "wachsfackeln-im-5er-beutel-60-cm-fga78249"
+   ],
    "letzter_versuch": "2026-10-18T22:15:18Z",
-   "mc_ids": [],
+   "mc_ids": [
+    399468248,
+    399468252
+   ],
    "reserviert_um": "2026-10-18T22:15:18Z",
-   "status": "reserviert",
+   "status": "geplant",
    "termin_utc": "2026-10-24T10:45:00Z",
    "versuche": 1
   },
@@ -1023,6 +1038,7 @@
   "tiktok-20261024T1105": {
    "basis_utc": "2026-10-24T11:05:00Z",
    "format": "tiktok",
+   "grund": "wartet auf Trendton-Pilot",
    "mc_ids": [],
    "status": "offen",
    "termin_utc": "2026-10-24T11:05:00Z",
@@ -1224,10 +1240,12 @@
   "youtube-20261024T1405": {
    "basis_utc": "2026-10-24T14:05:00Z",
    "format": "youtube",
+   "letzter_versuch": "2026-10-18T22:16:40Z",
    "mc_ids": [],
-   "status": "offen",
+   "reserviert_um": "2026-10-18T22:16:40Z",
+   "status": "reserviert",
    "termin_utc": "2026-10-24T14:05:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "youtube-20261025T0620": {
    "basis_utc": "2026-10-25T06:20:00Z",
@@ -1246,6 +1264,6 @@
    "versuche": 0
   }
  },
- "stand": "2026-10-18T22:15:18Z",
+ "stand": "2026-10-18T22:16:40Z",
  "version": 1
 }

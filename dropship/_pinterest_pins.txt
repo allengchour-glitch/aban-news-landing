@@ -43,3 +43,4 @@
 2026-10-18T22:12:34.849Z	e-gitarre-skelett-55-cm-fgapc24061	Wohnen & Deko	metricool:399466675	halloween	bild=roh
 2026-10-18T22:13:10.446Z	hohe-damenstiefel-628000	Schuhe & Sandalen	metricool:399466942	herbst-favoriten	bild=roh
 2026-10-18T22:13:58.446Z	gehstock-mit-glaskugel-fgack13734	Sommerkleider & Damenmode 2026	metricool:399467237	halloween	bild=roh
+2026-10-18T22:16:35.357Z	ethnischer-vintage-pullover-600700	Herrenmode Schweiz	metricool:399468611	herbst-favoriten	bild=roh
