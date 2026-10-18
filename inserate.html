@@ -100,33 +100,12 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
 .skl .ph{aspect-ratio:16/10;border-radius:14px;margin-bottom:11px}
 .skl .ln{height:13px;border-radius:8px;margin-bottom:9px}
 .krow{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
-.heart{position:relative;background:#fff;border:1.5px solid var(--line);border-radius:50%;width:38px;height:38px;flex:0 0 auto;font-size:18px;line-height:1;cursor:pointer;color:#b45309;display:flex;align-items:center;justify-content:center;transition:background .12s,border-color .12s,color .12s,transform .12s;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
-/* unsichtbare Vergroesserung auf 44px — Finger-Trefferflaeche ohne Layout-Sprung */
-.heart::after{content:"";position:absolute;top:50%;left:50%;width:44px;height:44px;transform:translate(-50%,-50%)}
-.heart:hover{border-color:var(--amber);background:var(--cream)}
-.heart:active{transform:scale(.9)}
-.heart[aria-pressed="true"]{background:var(--amber-dk);border-color:var(--amber-dk);color:#fff}
-.heart[aria-pressed="true"]:hover{background:#a04708;border-color:#a04708}
-.heart.pop{animation:heartpop .32s ease-out}
-@keyframes heartpop{0%{transform:scale(1)}38%{transform:scale(1.28)}100%{transform:scale(1)}}
 .card.sel{border-color:var(--amber)!important;box-shadow:0 0 0 2px rgba(217,119,6,.25)}
-.card.fade{opacity:0;transform:scale(.96);transition:opacity .18s,transform .18s}
-@media(prefers-reduced-motion:reduce){.heart,.heart:active,.heart.pop,.card.fade{animation:none;transition:none;transform:none}}
 .demobadge{background:#6b7280;color:#fff;border-radius:8px;padding:2px 7px;font-size:.66rem;font-weight:800;margin-left:6px}
 #demoBanner{background:#fff;border:1px dashed #d6cbb0;border-radius:14px;padding:11px 14px;margin-bottom:13px;font-size:.86rem;color:var(--ink2)}
 #demoBanner b{color:var(--amber-dk)}
-#selbar{position:fixed;left:50%;transform:translateX(-50%);bottom:16px;z-index:80;background:#1f2937;color:#fff;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;gap:10px;padding:9px 12px 9px 18px;font-size:.9rem;font-weight:700;max-width:calc(100vw - 24px);flex-wrap:wrap}
-#selbar[hidden]{display:none}
-#selbar .sblbl{white-space:nowrap}
-body.has-merk{padding-bottom:84px}
-@media(max-width:420px){#selbar{left:12px;right:12px;transform:none;max-width:none;padding:9px 12px}#selbar button{flex:1 1 auto}}
 #priceInsight{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:5px 12px;font-size:.82rem;color:var(--ink2);font-weight:600}
 #priceInsight[hidden]{display:none}
-#selbar button{font-family:inherit;border:0;border-radius:14px;padding:8px 14px;font-weight:700;font-size:.85rem;cursor:pointer;min-height:40px}
-#selbar .sbshow{background:var(--amber);color:#1f2937}
-#selbar .sbclear{background:transparent;color:#f4e7d3;border:1px solid rgba(255,255,255,.3)}
-#selbar .sbundo{background:#fff;color:#1f2937}
-#selbar .sbundo[hidden]{display:none}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Start","item":"https://abannews.com/"},{"@type":"ListItem","position":2,"name":"Marktplatz","item":"https://abannews.com/marktplatz.html"},{"@type":"ListItem","position":3,"name":"Inserate","item":"https://abannews.com/inserate.html"}]}</script>
 
@@ -216,7 +195,7 @@ body.has-merk{padding-bottom:84px}
   </section>
 </div>
 <div class="sheetbg" id="sheetbg"></div>
-<div id="selbar" hidden role="region" aria-label="Merkliste"><span class="sblbl" id="selLbl" aria-live="polite">♥ <span id="selcnt">0</span> gemerkt</span><button class="sbshow" id="selShow" type="button">Merkliste ansehen</button><button class="sbclear" id="selClear" type="button">Leeren</button><button class="sbundo" id="selUndo" type="button" hidden>↺ Rückgängig</button></div>
+
 
 <nav style="max-width:1180px;margin:18px auto 0;padding:0 16px;font-size:.85rem;text-align:center" aria-label="Marktplatz-Bereiche"><strong>Marktplatz:</strong> <a href="/suche.html">Universal-Suche</a> · <a href="/marktplatz.html">Alle Kategorien</a> · <a href="/stellenangebote.html">Jobs</a> · <a href="/auto-suche.html">Auto</a> · <a href="/immobilien.html">Immobilien</a> · <a href="/angebote-suche.html">Angebote</a> · <a href="/inserate.html">Inserate</a> · <a href="/luxestyle.html">🛍️ Shop</a></nav>
 <section style="max-width:1100px;margin:24px auto 6px;padding:0 16px" aria-label="Häufige Fragen"><h2 style="font-size:1.2rem;margin-bottom:10px">Häufige Fragen</h2><details style="background:#fff;border:1px solid #e6e1d6;border-radius:14px;padding:12px 16px;margin-bottom:8px"><summary style="font-weight:700;cursor:pointer">Sind die Inserate kostenlos?</summary><p style="margin-top:8px;color:#374151;font-size:.95rem">Ja, Suchen und Aufgeben sind kostenlos. Jedes Inserat wird vor der Veröffentlichung kurz geprüft.</p></details><details style="background:#fff;border:1px solid #e6e1d6;border-radius:14px;padding:12px 16px;margin-bottom:8px"><summary style="font-weight:700;cursor:pointer">Woher kommen die Inserate?</summary><p style="margin-top:8px;color:#374151;font-size:.95rem">Von Nutzern (private Kleinanzeigen). Keine illegalen oder gewerblichen Massen-Inhalte — bitte fair bleiben.</p></details><details style="background:#fff;border:1px solid #e6e1d6;border-radius:14px;padding:12px 16px;margin-bottom:8px"><summary style="font-weight:700;cursor:pointer">Wie nehme ich Kontakt auf?</summary><p style="margin-top:8px;color:#374151;font-size:.95rem">Über den Kontakt-Button im jeweiligen Inserat erscheint die hinterlegte E-Mail oder Telefonnummer.</p></details></section>
@@ -231,7 +210,7 @@ body.has-merk{padding-bottom:84px}
   var CATS=["Elektronik","Handy","Computer","Foto & Video","Gaming","TV & Audio","Möbel","Wohnen & Deko","Haushalt","Küche","Garten","Werkzeug","Baumaterial","Auto & Teile","Motorrad","Fahrrad","Mode","Schmuck & Uhren","Spielzeug","Baby & Kind","Haustier","Sport","Musik & Instrumente","Bücher & Medien","Tickets & Gutscheine","Sammeln & Antik","Dienstleistungen","Immobilien","Jobs","Sonstiges"];
   var $=function(s){return document.querySelector(s)};
   var grid=$("#grid"),statusEl=$("#status"),cntEl=$("#cnt"),sidebar=$("#sidebar"),sheetbg=$("#sheetbg");
-  var curKat="",raw=[],isDemo=false,merkOnly=false;
+  var curKat="",raw=[],isDemo=false;
   function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
   // Schweizer Beispiel-Inserate (Demo) — füllen die Seite, solange noch keine echten da sind. Klar als „Beispiel" markiert.
   var DEMO=[
@@ -302,53 +281,13 @@ body.has-merk{padding-bottom:84px}
     {id:"demo-65",kat:"Schmuck & Uhren",titel:"Herrenuhr Chronograph",preis:"CHF 190.–",ort:"Genf",plz:"1201",zustand:"Gebraucht",typ:"Angebot",emoji:"⌚",demo:1,beschreibung:"Edelstahl, Lederband, läuft einwandfrei. Mit Box."},
     {id:"demo-66",kat:"Küche",titel:"Standmixer 1000 W",preis:"CHF 45.–",ort:"Winterthur",plz:"8400",zustand:"Gebraucht",typ:"Angebot",emoji:"🥤",demo:1,beschreibung:"Kräftig, 1,5-l-Glaskrug, leicht zu reinigen."}
   ];
-  // ── Merkliste / Favoriten (js/merkliste.js — gespeichert wird der Eintrag, nicht nur die ID) ──
-  var Merk=window.AbanMerk||{list:function(){return[]},count:function(){return 0},has:function(){return false},
-    toggle:function(){return false},remove:function(){},clear:function(){return[]},restore:function(){},onChange:function(){}};
-  var letzteLeerung=null,undoTimer=null;
-  function isMerk(id){return Merk.has(id)}
-  /** Gemerkte Eintraege: frische Daten aus der Trefferliste, sonst der gespeicherte Abzug. */
-  function merkItems(){
-    var frisch={};(raw||[]).forEach(function(it){frisch[String(it.id)]=it});
-    return Merk.list().map(function(e){return frisch[e.id]||e});
-  }
-  function renderSelbar(){
-    var b=$("#selbar");if(!b)return;var n=Merk.count();
-    b.hidden=!n&&!letzteLeerung;
-    document.body.classList.toggle("has-merk",!b.hidden);
-    $("#selcnt").textContent=n;
-    $("#selLbl").hidden=!n;
-    $("#selShow").hidden=!n;
-    $("#selClear").hidden=!n;
-    $("#selShow").textContent=merkOnly?"Alle Inserate zeigen":"Merkliste ansehen";
-    $("#selShow").setAttribute("aria-pressed",merkOnly?"true":"false");
-    $("#selUndo").hidden=!letzteLeerung;
-  }
-  /** Herz an einer Karte neu beschriften — ohne die ganze Liste neu zu bauen. */
-  function herzAnzeigen(btn,on,pop){
-    btn.setAttribute("aria-pressed",on?"true":"false");
-    btn.textContent=on?"♥":"♡";
-    var t=on?"Aus der Merkliste entfernen":"Zur Merkliste hinzuf\u00fcgen";
-    btn.setAttribute("aria-label",t);btn.title=t;
-    var card=btn.closest(".card");if(card)card.classList.toggle("sel",on);
-    if(pop&&on){btn.classList.remove("pop");void btn.offsetWidth;btn.classList.add("pop")}
-  }
-  function merkKlick(btn){
-    var id=btn.dataset.merk;
-    var card=btn.closest(".card");
-    var daten=(raw||[]).filter(function(it){return String(it.id)===String(id)})[0];
-    if(!daten)daten=Merk.list().filter(function(e){return e.id===String(id)})[0]||{id:id,titel:(card&&card.querySelector("h3")?card.querySelector("h3").textContent:id)};
-    var on=Merk.toggle(daten);
-    renderSelbar();
-    if(merkOnly&&!on&&card){
-      // In der Merklisten-Ansicht verschwindet die Karte — ohne Neuaufbau der ganzen Liste.
-      card.classList.add("fade");
-      setTimeout(function(){if(card.parentNode)card.parentNode.removeChild(card);
-        if(!grid.querySelector(".card"))render(raw);else cntEl.textContent=grid.querySelectorAll(".card").length+" gemerkt"},180);
-      return;
-    }
-    herzAnzeigen(btn,on,true);
-  }
+  // ── Merkliste / Favoriten — Knopf, Leiste und Ansicht kommen aus js/merkliste.js ──
+  var Merk=(window.AbanMerk&&window.AbanMerk.ui)?window.AbanMerk.ui({
+    grid:grid,karte:".card",zaehlwort:"gemerkt",
+    render:function(){render(raw)},
+    daten:function(id){return (raw||[]).filter(function(it){return String(it.id)===String(id)})[0]||null},
+    zaehler:function(n){cntEl.textContent=n+" gemerkt"}
+  }):{nur:false,herz:function(){return""},istMerk:function(){return false},liste:function(){return[]},auffrischen:function(){}};
   function skeleton(){grid.innerHTML=Array(7).join().split(",").map(function(){return '<div class="skl"><div class="ph"></div><div class="ln" style="width:80%"></div><div class="ln" style="width:50%"></div><div class="ln" style="width:92%"></div></div>'}).join("");statusEl.hidden=true;}
   $("#cats").innerHTML='<p style="font-size:.74rem;color:var(--muted);margin:-2px 0 6px">Mehrere ankreuzen möglich</p>'+
     CATS.map(function(c){return '<label class="opt"><input type="checkbox" class="catbox" value="'+esc(c)+'">'+esc(c)+'</label>'}).join("");
@@ -423,9 +362,9 @@ body.has-merk{padding-bottom:84px}
     writeUrl();
     // Merklisten-Ansicht: die gemerkten Eintraege selbst — Suche und Filter greifen hier NICHT,
     // sonst verschwinden gemerkte Inserate, sobald eine andere Kategorie gewaehlt ist.
-    items=merkOnly?merkItems():applyFilters(items||[]);renderChips();
+    items=Merk.nur?Merk.liste():applyFilters(items||[]);renderChips();
     if(!items.length){grid.innerHTML="";statusEl.hidden=false;
-      statusEl.innerHTML=merkOnly?"Noch nichts gemerkt. Tippe auf das ♡ bei einem Inserat — es bleibt hier, auch nach dem Schliessen des Browsers.":"Noch keine Inserate in dieser Auswahl. Sei der/die Erste: <a href=\"/inserat-aufgeben.html\">Inserat aufgeben</a>.";cntEl.textContent=merkOnly?"0 gemerkt":"0 Inserate";return}
+      statusEl.innerHTML=Merk.nur?"Noch nichts gemerkt. Tippe auf das ♡ bei einem Inserat — es bleibt hier, auch nach dem Schliessen des Browsers.":"Noch keine Inserate in dieser Auswahl. Sei der/die Erste: <a href=\"/inserat-aufgeben.html\">Inserat aufgeben</a>.";cntEl.textContent=Merk.nur?"0 gemerkt":"0 Inserate";return}
     statusEl.hidden=true;
     grid.innerHTML=items.map(function(it){
       var img=it.bild?('<div style="aspect-ratio:16/10;background:#f3eee4 center/cover no-repeat;background-image:url(\''+esc(it.bild)+'\');border-radius:14px;margin:-2px 0 9px"></div>')
@@ -434,15 +373,15 @@ body.has-merk{padding-bottom:84px}
       var dbadge=it.demo?'<span class="demobadge">Beispiel</span>':'';
       var ch=[];if(String(it.typ||"")==="Gesuch")ch.push("🔎 Gesuch");if(it.zustand)ch.push(esc(it.zustand));
       var chips=ch.length?('<div style="margin:1px 0 7px">'+ch.map(function(c){return '<span style="display:inline-block;background:#fef3c7;color:#92660a;border-radius:8px;padding:2px 8px;font-size:.7rem;font-weight:700;margin-right:5px">'+c+'</span>'}).join("")+'</div>'):'';
-      var on=isMerk(it.id);
+      var on=Merk.istMerk(it.id);
       var cta=it.url?('<a class="c2" href="'+esc(it.url)+'" target="_blank" rel="noopener nofollow">Beim Anbieter ansehen →</a>'):('<a class="c2" href="/inserat/'+encodeURIComponent(it.id)+'">Details ansehen →</a>');
       return '<div class="card'+(on?' sel':'')+(it.featured?' feat':'')+'" data-id="'+esc(it.id)+'">'+img+
         '<div class="krow"><span class="k">'+esc(it.kat||"Sonstiges")+top+dbadge+'</span>'+
-        '<button class="heart" type="button" data-merk="'+esc(it.id)+'" aria-pressed="'+(on?'true':'false')+'" aria-label="'+(on?'Aus der Merkliste entfernen':'Zur Merkliste hinzuf\u00fcgen')+'" title="'+(on?'Aus der Merkliste entfernen':'Zur Merkliste hinzuf\u00fcgen')+'">'+(on?'♥':'♡')+'</button></div>'+
+        Merk.herz(it.id)+'</div>'+
         '<h3>'+esc(it.titel)+'</h3>'+chips+(it.preis?'<div class="p">'+esc(it.preis)+'</div>':'')+
         '<div class="o">'+esc([it.plz,it.ort].filter(Boolean).join(" "))+'</div><div class="d">'+esc(it.beschreibung)+'</div>'+cta+'</div>';
     }).join("");
-    cntEl.textContent=items.length+(merkOnly?" gemerkt":(isDemo?(items.length===1?" Beispiel":" Beispiele"):(items.length===1?" Inserat":" Inserate")));
+    cntEl.textContent=items.length+(Merk.nur?" gemerkt":(isDemo?(items.length===1?" Beispiel":" Beispiele"):(items.length===1?" Inserat":" Inserate")));
     // Preis-Insight zur aktuellen Auswahl (haben tutti & anibis nicht)
     (function(){var pi=$("#priceInsight");if(!pi)return;
       var ps=items.map(function(it){return chfNum(it.preis)}).filter(function(n){return !isNaN(n)&&n>0}).sort(function(a,b){return a-b});
@@ -596,21 +535,7 @@ body.has-merk{padding-bottom:84px}
   $("#portalPick").addEventListener("change",function(e){if(e.target.classList.contains("pchk")){setOn(e.target.value,e.target.checked);renderPortals()}});
   $("#q").addEventListener("input",renderPortals);
 
-  // Herz auf den Karten → merken/entfernen (Event-Delegation, überlebt Neu-Render)
-  grid.addEventListener("click",function(e){var h=e.target.closest("[data-merk]");if(h){e.preventDefault();merkKlick(h)}});
-  $("#selShow").addEventListener("click",function(){merkOnly=!merkOnly;renderSelbar();render(raw);window.scrollTo({top:0,behavior:"smooth"})});
-  $("#selClear").addEventListener("click",function(){
-    letzteLeerung=Merk.clear();merkOnly=false;renderSelbar();render(raw);
-    clearTimeout(undoTimer);undoTimer=setTimeout(function(){letzteLeerung=null;renderSelbar()},8000);
-  });
-  $("#selUndo").addEventListener("click",function(){
-    if(letzteLeerung){Merk.restore(letzteLeerung);letzteLeerung=null;clearTimeout(undoTimer);renderSelbar();render(raw)}
-  });
-  // Zweiter Tab ändert die Merkliste → Zähler und Herzen nachziehen
-  Merk.onChange(function(){renderSelbar();
-    Array.prototype.forEach.call(document.querySelectorAll(".heart"),function(b){herzAnzeigen(b,isMerk(b.dataset.merk),false)})});
-
-  renderThings();renderPortals();renderSelbar();
+  renderThings();renderPortals();Merk.auffrischen();
 
   // Deep-Link: ?q= / ?kat= / ?loc= aus der URL übernehmen
   (function(){var sp=new URLSearchParams(location.search),uq=sp.get("q"),uk=sp.get("kat"),ul=sp.get("loc");
