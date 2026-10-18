@@ -39,3 +39,4 @@
 2026-10-18T21:53:48.113Z	plusch-fledermaus-mit-sauger-fga17846	Leder & Accessoires	metricool:399456190	halloween	bild=roh
 2026-10-18T21:54:09.779Z	v-hals-pullover-fur-herren-605100	Herrenmode Schweiz	metricool:399456345	herbst-favoriten	bild=roh
 2026-10-18T21:57:26.430Z	animatronic-xxl-skelett-243-cm-fga20884	Wohnen & Deko	metricool:399457560	halloween	bild=roh
+2026-10-18T22:09:04.255Z	winter-heizweste-mit-batterie-fur-herren-605000	Herrenmode Schweiz	metricool:399464432	herbst-favoriten	bild=roh

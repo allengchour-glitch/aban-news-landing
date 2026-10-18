@@ -414,3 +414,9 @@ name:bruderjohndeere7r350
 name:mehrschichtigerhosenbügelausaluminium
 pid:15478274556289
 slug:mehrschichtiger-hosenbugel-aus-aluminium
+slug:bildreel-herren-sneaker-mit-8-cm-plateausohle
+pid:15524878287233
+slug:herren-sneaker-mit-8-cm-plateausohle
+name:elektrischermakeuppinselreiniger
+pid:15450836140417
+slug:elektrischer-make-up-pinselreiniger

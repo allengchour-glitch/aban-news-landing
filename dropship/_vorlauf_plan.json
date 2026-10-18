@@ -104,12 +104,12 @@
    "basis_utc": "2026-10-20T19:15:00Z",
    "format": "karussell",
    "grund": "rc=0: Nichts faellig: kein ready-Karussell.",
-   "letzter_versuch": "2026-10-18T21:43:49Z",
+   "letzter_versuch": "2026-10-18T22:08:16Z",
    "mc_ids": [],
-   "reserviert_um": "2026-10-18T21:43:49Z",
+   "reserviert_um": "2026-10-18T22:08:16Z",
    "status": "offen",
    "termin_utc": "2026-10-20T19:15:00Z",
-   "versuche": 4
+   "versuche": 5
   },
   "karussell-20261021T1915": {
    "basis_utc": "2026-10-21T19:15:00Z",
@@ -384,18 +384,27 @@
   "pin-20261023T1240": {
    "basis_utc": "2026-10-23T12:40:00Z",
    "format": "pin",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "",
+   "handles": [],
+   "letzter_versuch": "2026-10-18T22:08:36Z",
+   "mc_ids": [
+    399464432
+   ],
+   "reserviert_um": "2026-10-18T22:08:36Z",
+   "status": "geplant",
    "termin_utc": "2026-10-23T12:40:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "pin-20261023T1510": {
    "basis_utc": "2026-10-23T15:10:00Z",
    "format": "pin",
+   "letzter_versuch": "2026-10-18T22:11:57Z",
    "mc_ids": [],
-   "status": "offen",
+   "reserviert_um": "2026-10-18T22:11:57Z",
+   "status": "reserviert",
    "termin_utc": "2026-10-23T15:10:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "pin-20261023T1740": {
    "basis_utc": "2026-10-23T17:40:00Z",
@@ -585,13 +594,22 @@
   "reel_igfb-20261022T1815": {
    "basis_utc": "2026-10-22T18:15:00Z",
    "format": "reel_igfb",
-   "grund": "rc=3: Der Post wirkt durch den fremden englischen Text im Video extrem unprofessionell und billig. Die Behauptung der «Korrektur der Fusseversion» ist ein heikles Hei",
-   "letzter_versuch": "2026-10-18T21:56:11Z",
-   "mc_ids": [],
-   "reserviert_um": "2026-10-18T21:56:11Z",
-   "status": "offen",
+   "grund": "",
+   "handle": "herren-sneaker-mit-8-cm-plateausohle-610100",
+   "handles": [
+    "bildreel-herren-sneaker-mit-8-cm-plateausohle",
+    "herren-sneaker-mit-8-cm-plateausohle",
+    "herren-sneaker-mit-8-cm-plateausohle-610100"
+   ],
+   "letzter_versuch": "2026-10-18T22:08:22Z",
+   "mc_ids": [
+    399464101,
+    399464110
+   ],
+   "reserviert_um": "2026-10-18T22:08:22Z",
+   "status": "geplant",
    "termin_utc": "2026-10-22T18:15:00Z",
-   "versuche": 4
+   "versuche": 5
   },
   "reel_igfb-20261023T1015": {
    "basis_utc": "2026-10-23T10:15:00Z",
@@ -1120,10 +1138,20 @@
   "youtube-20261023T1405": {
    "basis_utc": "2026-10-23T14:05:00Z",
    "format": "youtube",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "elektrischer-make-up-pinselreiniger-550912",
+   "handles": [
+    "elektrischer-make-up-pinselreiniger",
+    "elektrischer-make-up-pinselreiniger-550912"
+   ],
+   "letzter_versuch": "2026-10-18T22:11:18Z",
+   "mc_ids": [
+    399466203
+   ],
+   "reserviert_um": "2026-10-18T22:11:18Z",
+   "status": "geplant",
    "termin_utc": "2026-10-23T14:05:00Z",
-   "versuche": 0
+   "versuche": 4
   },
   "youtube-20261024T0520": {
    "basis_utc": "2026-10-24T05:20:00Z",
@@ -1158,6 +1186,6 @@
    "versuche": 0
   }
  },
- "stand": "2026-10-18T22:04:09Z",
+ "stand": "2026-10-18T22:11:57Z",
  "version": 1
 }
