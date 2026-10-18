@@ -1,6 +1,6 @@
-# Füllmenge fehlt — Stand 2026-10-15 01:17 UTC
+# Füllmenge fehlt — Stand 2026-10-18 23:37 UTC
 
-Werkzeug `automation/fuellmenge_nachtragen.py` · Kandidaten: 143 aktive Kosmetik-Flüssigprodukte ohne ml-Angabe · diesmal geschrieben: 0 · Text-Sperre belegt: 0
+Werkzeug `automation/fuellmenge_nachtragen.py` · Kandidaten: 141 aktive Kosmetik-Flüssigprodukte ohne ml-Angabe · diesmal geschrieben: 0 · Text-Sperre belegt: 0
 
 Sicher = ml und fl oz auf demselben Bild passen rechnerisch. «Vorschlag — sichten»: Bild ansehen, dann `{handle: "30 ml"}` in `dropship/_fuellmenge_gesichtet.json` eintragen.
 
@@ -13,7 +13,6 @@ Sicher = ml und fl oz auf demselben Bild passen rechnerisch. «Vorschlag — sic
 | [DR Reis Milch Gesichtswasser](https://luxestyle.ch/products/dr-reis-milch-gesichtswasser-405762) | — | nichts lesbar |  |
 | [Azelaic Acid & Niacinamide Serum](https://luxestyle.ch/products/azelaic-acid-niacinamide-serum-741570) | — | nichts lesbar |  |
 | [HUNMUI Feuchtigkeitsspendendes Fixierspray](https://luxestyle.ch/products/hunmui-feuchtigkeitsspendendes-fixierspray-860866) | — | nichts lesbar |  |
-| [Rizinusöl Wimpernserum](https://luxestyle.ch/products/rizinusol-wimpernserum-313025) | — | nichts lesbar |  |
 | [2-in-1 Lipgloss & Lippenöl](https://luxestyle.ch/products/2-in-1-lipgloss-lippenol-610300) | — | nichts lesbar |  |
 | [Farbwechselnder feuchtigkeitsspendender Lippenbalsam](https://luxestyle.ch/products/farbwechselnder-feuchtigkeitsspendender-lippen-617500) | — | nichts lesbar |  |
 | [Jaysuing Kurkuma Hautcreme](https://luxestyle.ch/products/jaysuing-kurkuma-hautcreme-083010) | — | nichts lesbar |  |
@@ -21,7 +20,7 @@ Sicher = ml und fl oz auf demselben Bild passen rechnerisch. «Vorschlag — sic
 | [SOUTH MOON Perianalpflege-Creme](https://luxestyle.ch/products/south-moon-perianalpflege-creme-056513) | — | nichts lesbar |  |
 | [OUHOE Feuchtigkeitsspendender Lippenbalsam](https://luxestyle.ch/products/ouhoe-feuchtigkeitsspendender-lippenbalsam-218241) | — | nichts lesbar |  |
 | [Florales festes Parfum](https://luxestyle.ch/products/florales-festes-parfum-956865) | — | nichts lesbar |  |
-| [Classic Aromatic Cologne Spray](https://luxestyle.ch/products/classic-aromatic-cologne-spray-843329) | — | nichts lesbar |  |
+| [Classic Aromatic Cologne Spray](https://luxestyle.ch/products/classic-aromatic-cologne-spray-843329) | — | nichts lesbar | 1.7 @ 7b38f857-9c1d-48a3-87f0-b2c914795ab1.jpg |
 | [Kameliensqualan Gesichtsöl](https://luxestyle.ch/products/kameliensqualan-gesichtsol-206978) | — | nichts lesbar |  |
 | [Langanhaltendes Unisex Parfum mit natürlichen Inhaltsstoffen](https://luxestyle.ch/products/langanhaltendes-unisex-parfum-mit-naturlichen-181186) | — | nichts lesbar |  |
 | [Natürliches Agarwood-Ätherisches Öl](https://luxestyle.ch/products/naturliches-agarwood-atherisches-ol-381634) | — | nichts lesbar |  |
@@ -141,7 +140,6 @@ Sicher = ml und fl oz auf demselben Bild passen rechnerisch. «Vorschlag — sic
 | [Rainbow Highlighter Jelly Gel](https://luxestyle.ch/products/rainbow-highlighter-jelly-gel-28c4aa) | — | nichts lesbar |  |
 | [Focallure Abdeckcreme](https://luxestyle.ch/products/focallure-abdeckcreme-5f9003) | — | nichts lesbar |  |
 | [3D-Fibre Mascara mit Kollagen-Gel · 2 Stück](https://luxestyle.ch/products/3d-fibre-mascara-mit-kollagen-gel-2-stuck-7269a0) | — | nichts lesbar |  |
-| [Rizinusöl-Wickel wiederverwendbar · Bauch & Nacken](https://luxestyle.ch/products/rizinusol-wickel-wiederverwendbar-bauch-nacken) | — | nichts lesbar |  |
 | [Aufhellende Korrekturcreme für die Augenpartie](https://luxestyle.ch/products/korrekturcreme-fur-augenhelligkeit-611500) | — | nichts lesbar |  |
 | [Rouge-Creme in sechs Farbnuancen](https://luxestyle.ch/products/vital-smooth-rouge-creme-010560) | — | nichts lesbar |  |
 | [Feuchtigkeitsspendender Lippenbalsam](https://luxestyle.ch/products/feuchtigkeitsspendender-lippenbalsam-987968) | — | nichts lesbar |  |
