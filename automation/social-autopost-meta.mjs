@@ -70,6 +70,7 @@ async function mcPlan(imageUrl, text, netz){
                  providers:[{ network:netz }], media:[norm], autoPublish:true, draft:false, shortener:false };
   if(netz==='instagram') body.instagramData = { autoPublish:true, type:'POST' };
   if(netz==='facebook') body.facebookData = { type:'POST' };
+  if(netz==='threads') body.threadsData = { replyControl:'EVERYONE', type:'POST', shareAsInstagramStory:false };   // 18.10.2026 «3 ja» (Threads wieder an), GEMESSEN am ChatGPT-Eintrag 398485162
   const r = await fetch(`https://app.metricool.com/api/v2/scheduler/posts?${q}`, { method:'POST', headers:{ 'X-Mc-Auth':MC_TOKEN, 'Content-Type':'application/json' }, body:JSON.stringify(body) });
   const rt = await r.text();
   if(!r.ok){ console.error(`Metricool plan (${netz}):`, r.status, rt.slice(0,200)); return false; }
@@ -183,6 +184,7 @@ async function postFB(imageUrl, caption){
   console.log('FB: gepostet', r.j.post_id||r.j.id); return r.j.post_id||r.j.id;
 }
 async function postThreads(imageUrl, caption){
+  if(VIA_MC) return mcPlan(imageUrl, caption, 'threads');   // 18.10.2026: Threads über Metricool (Zwilling des Instagram-Bildposts, Text mit klickbarem Link)
   if(!TH_TOK) return null;
   // Threads-User-ID robust aus dem Token auflösen (/me) — vermeidet die häufige Falle einer
   // falsch eingetragenen THREADS_USER_ID (Graph-Fehler 100/Subcode 33). Fallback: gesetzte ID.
@@ -204,7 +206,7 @@ async function postThreads(imageUrl, caption){
 }
 
 // --- Hauptlauf ---------------------------------------------------------------------
-const configured = VIA_MC ? ['IG (Metricool)','FB (Metricool)'] : [IG_ID&&IG_TOK&&'IG', FB_ID&&FB_TOK&&'FB', TH_TOK&&'Threads'].filter(Boolean);
+const configured = VIA_MC ? ['IG (Metricool)','FB (Metricool)', !SKIP_THREADS && 'Threads (Metricool)'].filter(Boolean) : [IG_ID&&IG_TOK&&'IG', FB_ID&&FB_TOK&&'FB', TH_TOK&&'Threads'].filter(Boolean);
 if(configured.length===0 && !DRY){
   console.log('Kein Meta-Kanal konfiguriert (IG/FB/Threads Secrets fehlen) → No-op. Setze THREADS_ACCESS_TOKEN etc.');
   process.exit(0);
@@ -406,16 +408,28 @@ for(const next of ready.slice(0, MAX + VERSUCHE)){
     console.log(`   ✅ Gemini-Jury: ${j.info}`);
   }
   const fbCaption = mitFolgen(fbTextLib(caption, pa.url, 'bild'));   // 07.10. «fb zu wenig follower»
+  // 18.10.2026 Threads: derselbe klickbare Link wie auf Facebook (utm_source=threads), nur EIN Hashtag (Threads nutzt ein Thema), höchstens 480 Zeichen.
+  const thCaption = (() => {
+    let t = fbCaption.replace(/utm_source=facebook/g, 'utm_source=threads');
+    // vollständige Adresse mit UTM (Zuordnung im Messgerät; ohne https:// verlinkt Threads nicht überall)
+    t = t.replace(/(?<![\w\/.-])(?:https?:\/\/)?(luxestyle\.ch\/products\/[a-z0-9-]+)(\?[^\s]*)?/i, (m, pfad, q) => `https://${pfad}${q || '?utm_source=threads&utm_medium=social&utm_campaign=autopost'}`);
+    let tags = 0;
+    t = t.split('\n').filter(z => { const h = /^\s*(#\S+\s*)+$/.test(z); if (h) { tags++; return tags === 1; } return true; }).join('\n');
+    t = t.replace(/\s+#\S+/g, (m, off, all) => { return (all.slice(0, off).match(/#\S+/g) || []).length >= 1 ? '' : m; });
+    if (t.length > 480) t = t.slice(0, 480).replace(/\n[^\n]*$/, '');
+    return t.trim();
+  })();
   const plat = (next[idx.platforms]||'').toLowerCase();
   const wantIG = !plat.trim() || /instagram|\big\b/.test(plat);
   // 09.10.2026: Fotos auf Facebook = 1 Aufruf je Beitrag (Dashboard), Reels 29 → Bildposts nur noch auf Instagram (data/kanal_formate.json)
   const wantFB = (!plat.trim() || /facebook|\bfb\b/.test(plat)) && FORMATE.facebook?.bild !== false;
-  const wantTH = !SKIP_THREADS && (!plat.trim() || /threads/.test(plat));
+  const wantTH = !SKIP_THREADS && (VIA_MC || !plat.trim() || /threads/.test(plat));   // 18.10.: über Metricool immer Zwilling (SKIP_THREADS=0 setzt der Vorlauf-Treiber)
   console.log(`→ Post ${next[idx.id]} | Kanäle: ${[wantIG&&'IG',wantFB&&'FB',wantTH&&'Threads'].filter(Boolean).join('+')} | ${imageUrl}`);
   if(DRY){
     console.log(`   DRY_RUN: würde senden (nichts gepostet, nichts geschrieben).`);
     if(wantIG) console.log(`   ── Instagram-Caption ──\n${caption}`);
     if(wantFB) console.log(`   ── Facebook-Text ──\n${fbCaption}`);
+    if(wantTH) console.log(`   ── Threads-Text (${thCaption.length} Z.) ──\n${thCaption}`);
     postedCount++; continue;
   }
 
@@ -442,7 +456,7 @@ for(const next of ready.slice(0, MAX + VERSUCHE)){
   const results = await Promise.all([
     Promise.resolve(igRes),
     wantFB?postFB(imageUrl,fbCaption):Promise.resolve(null),     // FB: klickbarer Produktlink statt «Link in Bio»
-    wantTH?postThreads(imageUrl,caption):Promise.resolve(null),
+    wantTH?postThreads(imageUrl, VIA_MC ? thCaption : caption):Promise.resolve(null),
   ]);
   const got = results.filter(x => x && x!==false);
   if(got.length>0){

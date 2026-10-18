@@ -55,7 +55,7 @@ POSTER = {   # Format → (Befehl, Zusatz-Umgebung, Vorlauf-Schritte vor dem Pos
     "tiktok":    ([NODE, "automation/metricool_tiktok_post.mjs"], {"NETZ": "tiktok", "DIREKTLINK_TEXT": "1"}),
     "youtube":   ([NODE, "automation/metricool_tiktok_post.mjs"], {"NETZ": "youtube", "DIREKTLINK_TEXT": "1"}),
     "reel_igfb": ([NODE, "automation/metricool_tiktok_post.mjs"], {"NETZ": "instagram"}),
-    "bild":      ([NODE, "automation/social-autopost-meta.mjs"], {"WEG": "metricool", "MAX_PER_RUN": "1"}),
+    "bild":      ([NODE, "automation/social-autopost-meta.mjs"], {"WEG": "metricool", "MAX_PER_RUN": "1"}),   # Threads: die REST-API verweigert es (403 «Access denied to blog», GEMESSEN 19.10.) — nur der Metricool-Konnektor kann es, siehe threads_zwillinge.py
     "karussell": ([NODE, "automation/ig_karussell_post.mjs"], {"WEG": "metricool"}),
     "story":     ([NODE, "automation/story-autopost-meta.mjs"], {"WEG": "metricool", "MAX_PER_RUN": "1"}),
     "pin":       ([NODE, "automation/metricool_pinterest_pin.mjs"], {}),
@@ -310,7 +310,7 @@ def poster_aufruf(slot_name, slot, regeln):
 def neue_eintraege(vorher_ids, nachher, slot, regeln, seit_utc):
     """Planer-Einträge, die es vorher nicht gab, mit passendem Netz und Termin (±3 Min)."""
     t_soll = von_iso(slot["termin_utc"])
-    erlaubt = set(regeln["formate"][slot["format"]]["netze"]) | ({"facebook"} if slot["format"] in ("bild", "karussell") else set())
+    erlaubt = set(regeln["formate"][slot["format"]]["netze"]) | ({"facebook", "threads"} if slot["format"] == "bild" else {"facebook"} if slot["format"] == "karussell" else set())
     gefunden = []
     for p in nachher:
         if p.get("id") in vorher_ids or p.get("draft") or p.get("autoPublish") is False:
@@ -361,7 +361,7 @@ def abgleichen(plan, planer, jetzt_utc):
                     log(name, "planer-fehler", s["mc_ids"])
         elif s["status"] == "reserviert":
             t_res = von_iso(s["reserviert_um"])
-            fmt_netze = set(REGELN_CACHE()["formate"][s["format"]]["netze"]) | ({"facebook"} if s["format"] in ("bild", "karussell") else set())
+            fmt_netze = set(REGELN_CACHE()["formate"][s["format"]]["netze"]) | ({"facebook", "threads"} if s["format"] == "bild" else {"facebook"} if s["format"] == "karussell" else set())
             bekannt = {i for x in plan["slots"].values() for i in x["mc_ids"]}
             adoptiert = []
             for p in planer:

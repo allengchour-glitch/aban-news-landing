@@ -21,7 +21,8 @@
    "handle": "",
    "letzter_versuch": "2026-10-18T21:38:48Z",
    "mc_ids": [
-    399449577
+    399449577,
+    399476910
    ],
    "reserviert_um": "2026-10-18T21:38:48Z",
    "status": "geplant",
@@ -35,7 +36,8 @@
    "handle": "",
    "letzter_versuch": "2026-10-18T21:45:19Z",
    "mc_ids": [
-    399452648
+    399452648,
+    399477086
    ],
    "reserviert_um": "2026-10-18T21:45:19Z",
    "status": "geplant",
@@ -49,7 +51,8 @@
    "handle": "",
    "letzter_versuch": "2026-10-18T21:50:15Z",
    "mc_ids": [
-    399454786
+    399454786,
+    399477259
    ],
    "reserviert_um": "2026-10-18T21:50:15Z",
    "status": "geplant",
@@ -78,7 +81,8 @@
    "handles": [],
    "letzter_versuch": "2026-10-18T22:14:46Z",
    "mc_ids": [
-    399467689
+    399467689,
+    399477285
    ],
    "reserviert_um": "2026-10-18T22:14:46Z",
    "status": "geplant",
@@ -93,7 +97,8 @@
    "handles": [],
    "letzter_versuch": "2026-10-18T22:21:11Z",
    "mc_ids": [
-    399471013
+    399471013,
+    399485321
    ],
    "reserviert_um": "2026-10-18T22:21:11Z",
    "status": "geplant",
@@ -1407,6 +1412,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-18T22:33:10Z",
+ "stand": "2026-10-18T22:52:08Z",
  "version": 1
 }
