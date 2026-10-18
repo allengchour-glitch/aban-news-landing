@@ -36,3 +36,4 @@
 2026-10-13	gid://shopify/Product/15497420603777	title+description	balancierendes-energie-armband-obsidian-aquama-608200
 2026-10-13	gid://shopify/Product/15452599943553	title+description	leuchtendes-stein-heilungs-kettenanhanger-109230
 2026-10-13	gid://shopify/Product/15465983771009	description	kupfer-armband-mit-negativen-ionen-627400
+2026-10-18	gid://shopify/Product/15460288037249	title+description	waschbare-inkontinenz-pads-fur-senioren-630800

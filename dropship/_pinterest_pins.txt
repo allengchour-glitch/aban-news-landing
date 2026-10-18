@@ -52,3 +52,5 @@
 2026-10-18T22:29:04.529Z	3d-digital-print-crew-neck-langarm-sweatshirt-637100	Sommerkleider & Damenmode 2026	metricool:399474714	herbst-favoriten	bild=roh
 2026-10-18T22:33:04.703Z	herren-hoodie-waffel-sweatshirt-620300	Herrenmode Schweiz	metricool:399477126	herbst-favoriten	bild=roh
 2026-10-18T22:54:48.795Z	sportlicher-herren-hoodie-mit-taschen-615200	Herrenmode Schweiz	metricool:399487582	herbst-favoriten	bild=roh
+2026-10-18T22:55:52.625Z	color-block-strick-cardigan-im-old-money-stil-603400	Sommerkleider & Damenmode 2026	metricool:399487946	herbst-favoriten	bild=roh
+2026-10-18T22:56:44.662Z	retro-jacke-fur-herren-mit-revers-609800	Herrenmode Schweiz	metricool:399488220	herbst-favoriten	bild=roh

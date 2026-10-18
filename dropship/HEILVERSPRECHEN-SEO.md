@@ -1,10 +1,11 @@
-# Heilversprechen in SEO-Feldern und Handles — Stand 2026-10-14 13:13 UTC
+# Heilversprechen in SEO-Feldern und Handles — Stand 2026-10-18 22:55 UTC
 
-Geprüft: 54523 aktive Produkte · SEO bereinigt: 0 · Fehler: 0
+Geprüft: 55551 aktive Produkte · SEO bereinigt: 1 · Fehler: 0
 
 ## Offen (Produkttitel selbst noch mit Muster → Hauptwache/Ersatztabelle)
 
 - `springseil-fur-fitness-und-gewichtsverlust-fd0617` — SEO-Titel: Springseil für Fitness und Gewichtsverlust | LuxeStyle CH
+- `waschbare-inkontinenz-pads-fur-senioren-630800` — SEO-Titel: Waschbare Inkontinenz-Pads für Senioren | LuxeStyle CH
 
 ## Handles mit Krankheitswort (3) — Umbenennen nur mit 301, Betreiber-/Sichtprüfung
 

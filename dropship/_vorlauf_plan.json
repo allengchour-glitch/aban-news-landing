@@ -121,12 +121,12 @@
    "basis_utc": "2026-10-20T19:15:00Z",
    "format": "karussell",
    "grund": "rc=0: Nichts faellig: kein ready-Karussell.",
-   "letzter_versuch": "2026-10-18T22:08:16Z",
+   "letzter_versuch": "2026-10-18T22:56:50Z",
    "mc_ids": [],
-   "reserviert_um": "2026-10-18T22:08:16Z",
-   "status": "offen",
+   "reserviert_um": "2026-10-18T22:56:50Z",
+   "status": "reserviert",
    "termin_utc": "2026-10-20T19:15:00Z",
-   "versuche": 5
+   "versuche": 6
   },
   "karussell-20261021T1915": {
    "basis_utc": "2026-10-21T19:15:00Z",
@@ -220,12 +220,15 @@
   "pin-20261019T1950": {
    "basis_utc": "2026-10-19T19:50:00Z",
    "format": "pin",
-   "grund": "verschwunden [399449097]",
+   "grund": "",
    "handle": "",
+   "handles": [],
    "letzter_versuch": "2026-10-18T22:54:54Z",
-   "mc_ids": [],
+   "mc_ids": [
+    399487946
+   ],
    "reserviert_um": "2026-10-18T22:54:54Z",
-   "status": "reserviert",
+   "status": "geplant",
    "termin_utc": "2026-10-19T19:50:00Z",
    "versuche": 2
   },
@@ -246,14 +249,17 @@
   "pin-20261020T1510": {
    "basis_utc": "2026-10-20T15:10:00Z",
    "format": "pin",
-   "grund": "verschwunden [399451102]",
+   "grund": "",
    "handle": "",
-   "letzter_versuch": "2026-10-18T21:42:05Z",
-   "mc_ids": [],
-   "reserviert_um": "2026-10-18T21:42:05Z",
-   "status": "offen",
+   "handles": [],
+   "letzter_versuch": "2026-10-18T22:55:58Z",
+   "mc_ids": [
+    399488220
+   ],
+   "reserviert_um": "2026-10-18T22:55:58Z",
+   "status": "geplant",
    "termin_utc": "2026-10-20T15:10:00Z",
-   "versuche": 1
+   "versuche": 2
   },
   "pin-20261020T1740": {
    "basis_utc": "2026-10-20T17:40:00Z",
@@ -1387,6 +1393,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-18T22:54:54Z",
+ "stand": "2026-10-18T22:56:50Z",
  "version": 1
 }
