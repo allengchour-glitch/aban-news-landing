@@ -22,6 +22,8 @@ import { hashtagSet } from './lib/hashtags.mjs';
 import { publishAt } from './lib/publish_at.mjs';
 import { fbText, mitFolgen } from './lib/fb_text.mjs';   // 07.10.: FB-eigener Text (klickbarer Link + Folge-Zeile)
 import fs from 'node:fs';
+import { trendTrack, trendMerken, videoDauer } from './lib/tt_trend.mjs';   // 18.10.2026: TikTok-Trendton (Commercial Music Library) ueber Metricool
+import { verlaufLesen, musikSortieren } from './lib/musik_sortiert.mjs';   // 18.10.2026: kein Stueck zweimal hintereinander
 import { socialPause, pauseSchluessel } from './lib/social_pause.mjs';   // 13.10.: Anlass-Social-Sperre (Halloween-CJ 15.10.–01.11.)
 const _socialPause = pauseSchluessel();
 import { schreiben as queueSchreiben, schnappschuss as queueSchnappschuss, lesen as queueLesen } from './lib/queue_csv.mjs';
@@ -169,6 +171,14 @@ const _reihe = montageErst(nachVorrang([..._alle.filter(r => /raw\.githubusercon
     _reihe.splice(0, _reihe.length, ..._vorn, ..._rest);
   }
 }
+// 18.10.2026 Betreiber «immer das gleiche ist nervend»: nicht blind das naechste ready-Reel, sondern eines, dessen Musik nicht gerade lief
+// (Stueck wie das zuletzt gepostete +100, unter den letzten 2 dieses Netzes +50, gleiches Stueck+Fenster in 14 Tagen +20; stabil, nur die ersten 15).
+{
+  const _gp = rows.slice(1).filter(r => /^posted/.test(get(r, 'status')) && get(r, 'posted_at'))
+    .map(r => ({ id: get(r, 'id'), netz: get(r, 'status') === 'posted-ig-fb' ? 'instagram' : (get(r, 'status').split('-')[1] || NETZ), t: Date.parse(get(r, 'posted_at')) })).filter(g => isFinite(g.t));
+  const _ms = musikSortieren(_reihe, { id: r => get(r, 'id'), gepostet: _gp, netz: NETZ, verlauf: verlaufLesen(new URL('../social/_musik_verlauf.txt', import.meta.url).pathname) });
+  if (_ms.bewegt) console.log('   ' + _ms.info);
+}
 // DRY schreibt nichts (23.09.: vorher setzte schon der DRY-Lauf tote Adressen auf archived-deadurl).
 const cand = ersterErreichbare(_reihe, r => get(r, 'video_url'), (r, st) => { if (DRY) return; r[idx.status] = st; writeLedger(); });
 // 05.10.2026: Exit 3 statt 0 — «kein Kandidat» ist KEIN Post. Mit 0 setzte social_autopilot.sh die Kanal-Marke (TikTok 8 h,
@@ -278,6 +288,17 @@ if (/^montage-/.test(get(cand, 'id') || '')) {   // 28.09.2026: Sammelvideo — 
   }
   console.log(`  Gemini-Jury: ${j.info}`); }
 const id = get(cand, 'id'), url = get(cand, 'video_url'), tags = get(cand, 'hashtags');
+// ── 18.10.2026 Betreiber «tiktok trends musik»: TikTok-Beitraege bekommen einen Titel aus TikToks Commercial Music Library
+//  (Metricool tiktokData.music), der eingebrannte eigene Ton wird mit originalVolume 0 stumm gestellt. Standard AUS (TT_TREND=1),
+//  bis ein begleiteter Pilot belegt hat, dass TikTok den Titel uebernimmt (Seite: music.original=false). Jeder Fehler → wie bisher.
+let trend = null;
+if (NETZ === 'tiktok' && process.env.TT_TREND === '1') {
+  try {
+    const sek = videoDauer(url);
+    trend = await trendTrack({ token: TOKEN, user: USER, blog: BLOG, reelId: id, videoSek: sek, ledger: 'social/_tt_trend_verlauf.txt' });
+    if (trend) console.log(`  Trendton: ${trend.info}`);
+  } catch (e) { console.error('  Trendton: Fehler → ohne Musik:', String(e.message || e).slice(0, 160)); trend = null; }
+}
 // ── 23.09.2026 Paket «direktlink» — VORBEREITET, standardmaessig AUS. Ohne die Schalter bleibt der Body byte-gleich.
 //  DIREKTLINK_TEXT=1: die Caption-Zeile «🔗 luxestyle.ch/products/… (Link in Bio)» ist auf TikTok FALSCH (Profil ohne
 //    bioLink, gemessen 23.09.; Kanarienvogel: nike/gymshark tragen bioLink im selben HTML) und auf YouTube ebenso →
@@ -328,6 +349,8 @@ function bauBody(media, nur) {
                  autoPublish: true, draft: false, shortener: false };
   // TikTok verlangt die Kennzeichnung von Werbung fuer die eigene Marke (Content-Disclosure «Your brand»).
   if (NETZ === 'tiktok') body.tiktokData = { autoPublish: true, commercialContentOwnBrand: true, commercialContentThirdParty: false };
+  // Musik nur bei autoPublish (Metricool-Hilfe) und nur fuer Videos; autoAddMusic ist fuer Videos verboten (400, GEMESSEN 18.10.)
+  if (NETZ === 'tiktok' && trend) body.tiktokData.music = trend.music;
   if (NETZ === 'tiktok' && DL_STICKER && linkUtm) body.tiktokData.articleLink = { url: linkUtm, title: 'Zum Produkt' };
   if (NETZ === 'youtube') body.youtubeData = { title: ytTitel, type: 'short', privacy: 'public', category: 'HOWTO_STYLE',
                                                madeForKids: false, notifySubscribers: true, isAiGeneratedContent: false, tags: ytTags };
@@ -366,7 +389,12 @@ try {
     try { const fid = await planen(bauBody(norm, 'facebook')); if (fid) pid += ` fb:${fid}`; console.log(`   facebook: eigener Text (Link klickbar + Folge-Zeile) geplant ${fid || '?'}`); }
     catch (fe) { console.error(`   ⚠️ Facebook-Reel nicht geplant (IG ist raus): ${String(fe.message || fe).slice(0, 200)}`); }
   } else {
-    pid = await planen(bauBody(norm));
+    // Lehnt Metricool die Musik ab (400 «tiktokData.music…»), EIN zweiter Versuch ohne — der Beitrag geht wie bisher raus.
+    pid = await planen(bauBody(norm)).catch(async e => {
+      if (!(trend && /tiktokData\.music/.test(String(e.message || e)))) throw e;
+      console.error('   ⚠️ Metricool lehnt die Musik ab → Versuch ohne:', String(e.message || e).slice(0, 200));
+      trend = null; return planen(bauBody(norm));
+    });
   }
   postMark(url);                                                   // Ledger SOFORT (plattformuebergreifend)
   cand[idx.status] = POSTED; cand[idx.posted_at] = new Date().toISOString(); cand[idx.post_url] = pid ? `metricool:${pid}` : 'metricool'; writeLedger();
@@ -374,6 +402,7 @@ try {
   // Prüfer «Empfohlen» 1): sonst setzte der äussere catch die schon geplante Zeile auf «ready» zurück (Exit 1, Kadenz doppelt).
   try { produktMerkenReel(get(cand, 'caption'), id, pa.gid, pa.handle); }
   catch (e) { console.error('⚠️ produktMerkenReel fehlgeschlagen (Post ist geplant, Ledger steht):', String(e.message || e).slice(0, 200)); }
+  try { trendMerken(trend, pid); } catch (e) { console.error('⚠️ trendMerken fehlgeschlagen (Post ist geplant):', String(e.message || e).slice(0, 160)); }
   console.log(`✅ auf ${NETZ} geplant (${dateTime} ${TZ}), Metricool-Post ${pid || '?'} · Ledger aktualisiert → ${id} ${POSTED}`);
 } catch (e) {
   cand[idx.status] = 'ready'; cand[idx.posted_at] = ''; writeLedger();   // Claim zurueck: nichts ist raus

@@ -29,6 +29,11 @@ import json, os, re, sys, urllib.error, urllib.request, urllib.parse
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
+try:   # 18.10.2026: TikTok-Musik im Planer prüfen (Metricool prüft Lautstärken/IDs/Felder selbst nicht)
+    import tt_musik_wache as _mw
+except ImportError:
+    _mw = None
+
 TZ = ZoneInfo("Europe/Zurich")
 USER = os.environ.get("METRICOOL_USER_ID", "4801419")
 BLOG = os.environ.get("METRICOOL_BLOG_ID", "6227837")
@@ -107,6 +112,8 @@ def bewerten(posts, jetzt):
     for (h, n), liste in je_produkt.items():
         if len({e["id"] for e in liste}) > 1:
             b["DOPPELT"].append({"handle": h, "netz": n, "termine": ", ".join(e["termin"] for e in liste)})
+    if _mw:
+        b.update(_mw.musik_befunde(posts, termin, _mw.bekannte_ids() or None))
     return b
 
 
@@ -163,6 +170,9 @@ def zeile(b, geplant, inaktiv=()):
         teile.append(f"{len(b['HAENGT'])} hängt")
     if b["DOPPELT"]:
         teile.append(f"{len(b['DOPPELT'])} Produkt doppelt")
+    musik = sum(len(b.get(k, [])) for k in ("MUSIK_AUTO", "MUSIK_WERTE", "MUSIK_FELDER", "MUSIK_UNBEKANNT", "MUSIK_DOPPELT"))
+    if musik:
+        teile.append(f"{musik} TikTok-Musik auffällig")
     if inaktiv:
         teile.append(f"{len(inaktiv)} Produkt nicht aktiv")
     if teile:
@@ -208,13 +218,56 @@ def selbsttest():
         fehler.append("Zeile mit Befunden")
     if not zeile({k: [] for k in b}, 5).startswith("METRICOOL-PLANER: ok"):
         fehler.append("Zeile ohne Befunde")
-    print("SELBSTTEST metricool_planer_wache:", "OK (7 Klassen + Zeitzone + Zeilen)" if not fehler else "FEHLER " + "; ".join(fehler))
+    if _mw is None:
+        fehler.append("tt_musik_wache nicht importierbar")
+    elif _mw.selbsttest() != 0:
+        fehler.append("tt_musik_wache Selbsttest")
+    print("SELBSTTEST metricool_planer_wache:", "OK (7 Klassen + Zeitzone + Zeilen + 5 Musikklassen)" if not fehler else "FEHLER " + "; ".join(fehler))
     return 0 if not fehler else 1
+
+
+def musik_pruefen(max_posts=6):
+    """Täglich: veröffentlichte TikTok-Posts MIT Musik → Videoseite lesen. `music.original == true` heisst: TikTok hat die
+    gewählte Musik nicht übernommen (Konto-Art / Titel stummgeschaltet). Ausgabe eine Zeile + Befunde."""
+    if _mw is None or not token():
+        print("TIKTOK-MUSIK: unklar (Modul/Token fehlt)")
+        return 0
+    jetzt = datetime.now(TZ)
+    try:
+        posts = holen(jetzt)
+    except Exception as e:
+        print(f"TIKTOK-MUSIK: unklar (Planer nicht lesbar: {type(e).__name__})")
+        return 0
+    kandidaten = []
+    for p in sorted(posts, key=lambda q: termin(q) or jetzt, reverse=True):
+        m = (p.get("tiktokData") or {}).get("music")
+        if not m or p.get("draft"):
+            continue
+        for x in p.get("providers", []):
+            if x.get("network") == "tiktok" and (x.get("status") or "").upper() == "PUBLISHED" and x.get("publicUrl"):
+                kandidaten.append((p, m, x["publicUrl"]))
+    if not kandidaten:
+        print("TIKTOK-MUSIK: noch kein veröffentlichter TikTok-Post mit Musik")
+        return 0
+    schlecht = []
+    for p, m, url in kandidaten[:max_posts]:
+        ton = _mw.tiktok_ton(url)
+        urteil = _mw.ton_befund(str(m.get("musicId")), ton)
+        if urteil is None and ton and ton.get("id") and str(ton["id"]) != str(m.get("musicId")):
+            urteil = f"andere Musik-ID auf TikTok ({ton['id']})"
+        print(f"  {'✓' if urteil is None else '✗'} {m.get('title', '?')[:28]:28} {url.rsplit('/', 1)[-1]} original={ton and ton.get('original')} "
+              f"Lautheit={ton and ton.get('lautheit')} {urteil or ''}")
+        if urteil:
+            schlecht.append(url)
+    print(f"{'⚠️ ' if schlecht else ''}TIKTOK-MUSIK: {len(kandidaten[:max_posts])} geprüft, {len(schlecht)} ohne die gewählte Musik")
+    return 0
 
 
 def main():
     if "--selbsttest" in sys.argv:
         sys.exit(selbsttest())
+    if "--musik-pruefen" in sys.argv:
+        sys.exit(musik_pruefen())
     if not token():
         print("METRICOOL-PLANER: unklar (kein METRICOOL_USER_TOKEN)")
         return

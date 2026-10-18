@@ -58,6 +58,7 @@ AUSNAHMEN = {
     "automation/betreiber_ampel.py": "liest nur",
     "automation/reel_gesicht.py": "liest nur (eigene TSV)",
     "automation/reel_kadenz_wache.py": "liest nur",
+    "automation/social_vorlauf.py": "liest story_queue.csv nur (Zähler); schreibt Plan/Log/Drossel atomar, die Queues schreiben die Poster über lib/queue_csv",
     "automation/tiktok_reel_post.mjs": "liest nur, nicht gestartet",
     "automation/social_lernen.mjs": "liest nur (schreibt _lernen.json/SOCIAL-LERNEN.md)",
     "automation/autopilot/trends_to_captions.mjs": "liest nur (GitLab-Job)",
