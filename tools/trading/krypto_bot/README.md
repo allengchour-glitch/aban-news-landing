@@ -629,6 +629,10 @@ auf Dauer** (Rendite pro Jahr) — nicht der grösste Erwartungswert: der wird m
   werden auf 1 / 1,5 / 1,75 / 2 gerundet, bei Gleichstand auf die kleinere. Der Standard bleibt 1× — der Pilot wechselt nie von
   selbst. Die Rückfrage im Cockpit nennt die Zahlen dieser Tabelle (ab 2020, ab 2022, Wahrscheinlichkeit eines Jahres unter −60 %).
   Keine Anlageberatung — nur Geld einsetzen, dessen Verlust du verkraftest.
+- **Die Tabelle gilt fürs GANZE Konto.** Der Pilot setzt aber standardmässig nur `KI_BOT_ANTEIL` = 50 % des Kontos ein (und baut höchstens
+  `KI_BOT_MAX_AUFTRAG` = 1000 USDT je Auftrag und Lauf auf). Mit dem Standard wirken Rendite UND Einbruch aufs Gesamtkonto etwa halb so
+  stark (1,75× bei 50 % ≈ 0,875× Gesamtkonto). Mehr Rendite lässt sich also auch über den Anteil holen — dieselbe Risiko-Abwägung wie
+  bei der Stufe, und beides zusammen multipliziert sich. Das Cockpit nennt den eingestellten Anteil in der Rückfrage vor der Stufenwahl.
 
 ## 💰 «Max Profit 2» — Pilot 2.0 mit Hebel (`maxprofit_p2_pruefung.py`)
 
@@ -1046,7 +1050,7 @@ python3 tools/trading/krypto_bot/test_pilot.py    # 91 Tests, inkl. Risiko-Stufe
 python3 tools/trading/krypto_bot/test_sammler.py  # 48 Tests, inkl. nachgebautem Binance-Server mit Staking, verlorenen Antworten, Ablehnungen und Opt-in
 python3 tools/trading/krypto_bot/test_infos.py    # 26 Tests: keine Zukunftsdaten, MVRV-Bremse, Zwischenspeicher
 python3 tools/trading/krypto_bot/test_profit.py   # 45 Tests: getrennte Bücher, offen unbekannt, BNB-Gebühren, Ein-/Auszahlungen, Seitengrenze, Drosselung
-python3 tools/trading/krypto_bot/test_cockpit.py  # 120 Tests: Claude, Schattenkonto, Cockpit, Knöpfe, Host/Einbetten, Ampel, Not-Aus, Telegram, Startdateien
+python3 tools/trading/krypto_bot/test_cockpit.py  # 122 Tests: Claude, Schattenkonto, Cockpit, Knöpfe, Host/Einbetten, Ampel, Not-Aus, Telegram, Startdateien
 python3 tools/trading/krypto_bot/test_calls.py    # 84 Tests: 40 typische Call-Formate, Plausibilität, Antworten/Wiederholungen, Nachspielen, Zufallsprobe, Kopierer gegen nachgebauten Binance-Server
 python3 tools/trading/krypto_bot/test_binance.py  # 21 Tests, inkl. nachgebautem Binance-Server mit Signaturprüfung
 python3 tools/trading/krypto_bot/test_pilot2_plan.py  # 23 Tests: Pilot-2.0-Rechnung (Richtung, Ernte, Pfand, Mindestbeträge)
