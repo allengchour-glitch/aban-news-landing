@@ -159,6 +159,9 @@ class ScreenTour : TourBase() {
         scrollTo("home", "Halsketten")
         settle()
         shot("02-start-reihen")
+        scrollTo("home", "Wie gefällt dir die App?")
+        settle()
+        shot("02b-start-feedback")
 
         go("https://luxestyle.ch/collections/sub-kleider")
         waitFor("Sortieren"); settle()

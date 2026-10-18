@@ -434,6 +434,8 @@ fun Rail(cards: List<ProductCard>, liked: Set<String>, note: (ProductCard) -> St
 private fun Footer() {
     val nav = LocalNav.current
     Column(Modifier.fillMaxWidth().padding(top = 36.dp, start = 20.dp, end = 20.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+        FeedbackCard()
+        Spacer(Modifier.height(28.dp))
         Text("Fragen zur Bestellung?", style = MaterialTheme.typography.titleMedium)
         Spacer(Modifier.height(4.dp))
         Text("info@luxestyle.ch", color = MaterialTheme.colorScheme.secondary, style = MaterialTheme.typography.bodyMedium)
@@ -443,6 +445,31 @@ private fun Footer() {
             FooterLink("Rückgabe") { nav.web("https://luxestyle.ch/policies/refund-policy", "Rückgabe") }
             FooterLink("Datenschutz") { nav.web("https://luxestyle.ch/policies/privacy-policy", "Datenschutz") }
             FooterLink("AGB") { nav.web("https://luxestyle.ch/policies/terms-of-service", "AGB") }
+        }
+    }
+}
+
+/** Rückmeldung, Bewertung, Weitersagen – wir bauen die App nach dem, was hier ankommt. */
+@Composable
+private fun FeedbackCard() {
+    val nav = LocalNav.current
+    Column(
+        Modifier.fillMaxWidth().clip(Radius.Card).background(MaterialTheme.colorScheme.surfaceVariant)
+            .padding(20.dp).testTag("feedback"),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Text("Wie gefällt dir die App?", style = MaterialTheme.typography.titleMedium)
+        Spacer(Modifier.height(4.dp))
+        Text(
+            "Sag uns, was fehlt oder stört – wir lesen jede Nachricht und bauen es ins nächste Update ein.",
+            style = MaterialTheme.typography.bodySmall, color = LocalLuxe.current.muted, textAlign = TextAlign.Center,
+        )
+        Spacer(Modifier.height(14.dp))
+        PillButton("Feedback senden", Modifier.fillMaxWidth()) { nav.feedback() }
+        Spacer(Modifier.height(6.dp))
+        Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+            FooterLink("Im Play Store bewerten") { nav.rate() }
+            FooterLink("App weiterempfehlen") { nav.shareApp() }
         }
     }
 }
