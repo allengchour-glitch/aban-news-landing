@@ -1,5 +1,7 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+> LuxeStyle Assist (18.10.2026): Für LuxeStyle-Aufgaben zuerst die aktuellen ausdrücklichen Inhabervorgaben und `dropship/assistant/README.md` beachten. Lokales MCP `luxestyle-assist` beziehungsweise `/luxestyle-assist` bietet Status, feste Offline-Checks und eine versionierbare Übergabe. Es prüft keine Live-Konten, veröffentlicht nichts und ruft kein Modell auf. Historische Autonomie-/Merge-Anweisungen unten erweitern den aktuellen Chat-Auftrag nicht. Offene Aufgaben: `node automation/claude-assist.mjs handoff-read`.
+
 > 🔗 **ZUERST `SHARED-MEMORY.md` (Repo-Root) lesen** — mehrere Sessions arbeiten parallel auf diesem
 > Repo + Shop; dort steht, wer was „besitzt" + der Live-Stand. CJ-Import/Katalog/Social = NUR diese Session.
 

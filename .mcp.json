@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "luxestyle-assist": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["automation/claude-assist.mjs", "mcp"]
+    }
+  }
+}
