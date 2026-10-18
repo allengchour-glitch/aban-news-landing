@@ -306,10 +306,14 @@ while true; do
   # 18.10.2026 (Betreiber «pushe metricool 7 tage voraus bis sonntag 22.00 uhr»): Slots bis zum Fensterende füllen — Treiber startet die
   # bestehenden Poster je Slot mit PUBLISH_AT (alle Wachen bleiben). Neustartfest (Plan dropship/_vorlauf_plan.json), höchstens 38 min
   # je Runde; der Prüfer zieht Posts zurück, deren Produkt weg/Preis geändert/Pause ist (alle 2 h). Stopp-Datei: nichts planen.
-  if { [ -n "${METRICOOL_USER_TOKEN:-}" ] || [ -s /tmp/metricool.env ]; } && [ ! -f dropship/_SOCIAL_STOPP ]; then
-    SCHARF=1 timeout 2700 python3 automation/social_vorlauf.py --plan --max-min 38 2>&1 | grep -E '✅|⛔|Lauf:|Slots:|STOPP|Zeitbudget|ruht' | tail -10 || true
-    if faellig /tmp/_autopilot_letzter_vorlauf_pruefer 7200; then
-      SCHARF=1 timeout 600 python3 automation/social_vorlauf.py --pruefen 2>&1 | tail -8 || true
+  # 18.10. (Prüfung): `9>&-` an beiden Aufrufen — sonst hält ein toter Autopilot die flock-Sperre bis zu 45 min über das Kind. Unter STOPP wird nichts
+  # NEU geplant, aber der Prüfer läuft weiter und zieht die schon vorausgeplanten Posts zurück (vorher unerreichbar: Metricool hätte sie gesendet).
+  if { [ -n "${METRICOOL_USER_TOKEN:-}" ] || [ -s /tmp/metricool.env ]; }; then
+    if [ ! -f dropship/_SOCIAL_STOPP ]; then
+      SCHARF=1 timeout 2700 python3 automation/social_vorlauf.py --plan --max-min 38 9>&- 2>&1 | grep -E '✅|⛔|HALT|Lauf:|Slots:|STOPP|Zeitbudget|ruht|Traceback|Error' | tail -10 || true
+    fi
+    if [ -f dropship/_SOCIAL_STOPP ] || faellig /tmp/_autopilot_letzter_vorlauf_pruefer 7200; then
+      SCHARF=1 timeout 600 python3 automation/social_vorlauf.py --pruefen 9>&- 2>&1 | tail -8 || true
       touch /tmp/_autopilot_letzter_vorlauf_pruefer
     fi
   fi

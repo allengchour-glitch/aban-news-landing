@@ -661,6 +661,8 @@ python3 "$REPO_AUTO/cj_zahlung_offen.py" 2>/dev/null || echo "CJ-ZAHLUNG: unklar
 [ -f "$REPO_AUTO/metricool_planer_wache.py" ] && { timeout 90 python3 "$REPO_AUTO/metricool_planer_wache.py" --shop 2>/dev/null || echo "METRICOOL-PLANER: unklar (Wache abgebrochen)"; }
 # 18.10.2026: 7-Tage-Vorlauf (automation/social_vorlauf.py) — eine Zeile aus dem Plan; ⚠️ bei Lücken in den nächsten 12 h oder altem Stand.
 [ -f "$REPO_AUTO/social_vorlauf.py" ] && { timeout 30 python3 "$REPO_AUTO/social_vorlauf.py" --zeile 2>/dev/null || echo "VORLAUF: unklar (Zeile nicht lesbar)"; }
+# 18.10. (Prüfung): unter _SOCIAL_STOPP zieht der Prüfer die vorausgeplanten Posts zurück — der Autopilot startet unter Stopp nicht, also auch hier (idempotent, billig).
+[ -f "${REPO_AUTO%/automation}/dropship/_SOCIAL_STOPP" ] && [ -f "$REPO_AUTO/social_vorlauf.py" ] && { SCHARF=1 timeout 150 python3 "$REPO_AUTO/social_vorlauf.py" --pruefen 2>&1 | tail -3 || true; }
 # 18.10.2026: KOMMENTARE-WACHE — der Autopilot räumt alle 3 h auf (social-comment-reply.mjs, Stand /tmp/_kommentare_stand.json). Bericht nur bei
 # ⚠️: echte Frage unbeantwortet / Fehler / Stand älter als 12 h bei laufendem Meta-Zugang.
 python3 - <<'PYK' 2>/dev/null

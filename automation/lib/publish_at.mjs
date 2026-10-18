@@ -8,6 +8,7 @@
 // Stunde keine Slots.
 export function publishAt(vorlaufMs) {
   const roh = (process.env.PUBLISH_AT || '').trim();
+  if ('PUBLISH_AT' in process.env && !roh) { console.error('PUBLISH_AT ist gesetzt, aber leer → kein Post (nie still «jetzt»)'); process.exit(1); }
   if (!roh) return new Date(Date.now() + vorlaufMs);
   const t = Date.parse(/Z$|[+-]\d\d:?\d\d$/.test(roh) ? roh : roh + 'Z');
   if (!Number.isFinite(t)) { console.error(`PUBLISH_AT «${roh}» ist keine Zeit (erwartet ISO-UTC, z. B. 2026-10-22T08:05:00Z)`); process.exit(1); }
