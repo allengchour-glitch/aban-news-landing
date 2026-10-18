@@ -45,7 +45,7 @@
   Tests 49 (Mutation 3/3).
 - **„Hoher Hebel" (2026-10-08) → bleibt 1× Standard, 2× hart:** `hebel_pruefung.py` (Regel vorab): alles × L ab 2019
   1× +36 %/−35 %, 1,5× +50 %/−51 %, 2× +56 %/−67 %, 3× +57 %/−86 %, 5× −99 %, 10× −100 %; nur Deckel höher ≈ nichts.
-  Keine Stufe bestanden. Dafür **Risiko-Stufe 1 / 1,5 / 2** als Nutzer-Wahl: `pilot_kern.risiko()` (KRYPTO_RISIKO >
+  Keine Stufe bestanden. Dafür **Risiko-Stufe 1 / 1,5 / 1,75 / 2** als Nutzer-Wahl (1,75 seit 18.10.2026): `pilot_kern.risiko()` (KRYPTO_RISIKO >
   `data/krypto-einstellungen.json` vom Cockpit > altes KRYPTO_MAX_HEBEL als Deckel), Pilot UND Broker lesen dieselbe Funktion
   (sonst kappt der Broker auf 1×!). Datei nur lesen, wenn env nicht explizit übergeben (Tests bleiben vom PC unabhängig).
 - **Profit-Anzeige + Gesundheit + Aufgabe/Update-Knöpfe (2026-10-09):** `profit.py` liest `/fapi/v1/income` (Wochen-Fenster,
