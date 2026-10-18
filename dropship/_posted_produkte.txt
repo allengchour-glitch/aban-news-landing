@@ -460,3 +460,7 @@ name:interaktiverfutterspenderfürhaustiere
 pid:15450859176321
 slug:interaktiver-futterspender-fur-haustiere
 slug:multifunktionaler-manueller-massageroller
+name:kühlmattefürhunde
+pid:15483934278017
+slug:kuhlmatte-fur-hunde
+name:vintage

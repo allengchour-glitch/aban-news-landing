@@ -1,8 +1,8 @@
 # Judge.me-Wache — unechte Bewertungen (nur lesen)
 
-Stand: 2026-10-14 08:28 UTC · Skript `automation/judgeme_fake_wache.py` (taeglich im Aufseher) · Dauer 299 s
+Stand: 2026-10-18 22:58 UTC · Skript `automation/judgeme_fake_wache.py` (taeglich im Aufseher) · Dauer 137 s
 
-**JUDGEME: unklar (unvollstaendig: rating 5 >100 Seiten (API-Deckel page=100)) · bis dahin 0 verdaechtig · 2 Namen unmaskiert · 14417 von 15700 gelesen**
+**JUDGEME: unklar (unvollstaendig: rating 5 >100 Seiten (API-Deckel page=100)) · bis dahin 0 verdaechtig · 8 Namen unmaskiert · 14539 von 16891 gelesen**
 
 Hausregel: NIE Fake-Reviews (UWG). Die Wache LIEST nur — jeder Befund ist ein Entscheid fuer einen Menschen:
 ausblenden = `PUT https://judge.me/api/v1/reviews/<id>` mit `{"curated":"spam"}` (privater Token + shop_domain),
@@ -37,9 +37,9 @@ Judge.me schreibt sie zeitverzoegert; der Waechter unten liest sie bei jedem Lau
 
 | Feld | Wert | updatedAt |
 |---|---|---|
-| all_reviews_count | 12796 | 2026-10-12T02:21:18Z |
-| all_reviews_rating | 4.83 | 2026-10-10T03:16:23Z |
-| reviews_grid.metafield_updated_at | 2026-10-12T02:24:30Z | 2026-10-12T02:24:31Z |
+| all_reviews_count | 13677 | 2026-10-18T19:00:34Z |
+| all_reviews_rating | 4.84 | 2026-10-18T05:24:12Z |
+| reviews_grid.metafield_updated_at | 2026-10-18T19:02:15Z | 2026-10-18T19:02:17Z |
 | shop_reviews_count | 0 | 2026-09-23T00:11:06Z |
 | shop_reviews_rating | 0.00 | 2026-09-23T00:11:06Z |
 
@@ -47,12 +47,18 @@ Judge.me schreibt sie zeitverzoegert; der Waechter unten liest sie bei jedem Lau
 
 _keine_
 
-## Namen unmaskiert — veroeffentlicht (2)
+## Namen unmaskiert — veroeffentlicht (8)
 
 | ID | erstellt | ★ | Produkt-ID | Name | E-Mail (maskiert) | Text | Zustand | Gruende |
 |---|---|---|---|---|---|---|---|---|
-| 1316672656 | 2026-08-31T16:12 | 5 | 15451638038913 | AliExpress Müşterisi | cj…@luxestyle.ch | «excelente vale la pena por el precio .graba super bien en la» | veröffentlicht | Name unmaskiert «AliExpress Müşterisi» |
-| 1315625975 | 2026-08-30T20:23 | 5 | 15450858062209 | Darksin | cj…@luxestyle.ch | «Phofay is one of those brands where you question how it isn'» | veröffentlicht | Name unmaskiert «Darksin» |
+| 1385410025 | 2026-10-18T06:04 | 4 | 16612790763911 | المتسوق في AliExpress | cj…@luxestyle.ch | «Ich muss zugeben, ich hätte nicht erwartet, dass das Produkt» | veröffentlicht | Name unmaskiert «المتسوق في AliExpress» |
+| 1385398917 | 2026-10-18T05:35 | 5 | 15481799934337 | google9711777042365908 | cj…@luxestyle.ch | «Super und perfekt!» | veröffentlicht | Name unmaskiert «google9711777042365908» |
+| 1385391532 | 2026-10-18T05:14 | 5 | 16612790731143 | Anónimo | cj…@luxestyle.ch | «Alles war perfekt. Ich kann den Verkäufer wirklich empfehlen» | veröffentlicht | Name unmaskiert «Anónimo» |
+| 1385391512 | 2026-10-18T05:14 | 5 | 16612790731143 | Anónimo | cj…@luxestyle.ch | «Artikel wie beschrieben! Ist gut!» | veröffentlicht | Name unmaskiert «Anónimo» |
+| 1385385229 | 2026-10-18T04:50 | 5 | 15479468294529 | Zaracail | cj…@luxestyle.ch | «Der Akku ist okay, hält 3 halbe Tage. Ansonsten ist für den » | veröffentlicht | Name unmaskiert «Zaracail» |
+| 1383701253 | 2026-10-17T02:45 | 5 | 15479625908609 | Anónimo | cj…@luxestyle.ch | «Echt gut!» | veröffentlicht | Name unmaskiert «Anónimo» |
+| 1383697361 | 2026-10-17T02:37 | 5 | 15448847319425 | TechHome26 | cj…@luxestyle.ch | «Super Service! Danke!» | veröffentlicht | Name unmaskiert «TechHome26» |
+| 1383697347 | 2026-10-17T02:37 | 5 | 15448847319425 | TechHome26 | cj…@luxestyle.ch | «Super Service und schneller Versand!» | veröffentlicht | Name unmaskiert «TechHome26» |
 
 ## Bereits ausgeblendet / unveroeffentlicht mit Befund (1)
 

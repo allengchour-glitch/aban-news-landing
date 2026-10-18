@@ -62,14 +62,20 @@
   "bild-20261023T0745": {
    "basis_utc": "2026-10-23T07:45:00Z",
    "format": "bild",
-   "grund": "verschwunden [399458515]",
-   "handle": "",
-   "letzter_versuch": "2026-10-18T21:59:31Z",
-   "mc_ids": [],
-   "reserviert_um": "2026-10-18T21:59:31Z",
-   "status": "offen",
+   "grund": "",
+   "handle": "herren-ring-vintage-edelstahl-retro",
+   "handles": [
+    "herren-ring-vintage-edelstahl-retro"
+   ],
+   "letzter_versuch": "2026-10-18T23:02:59Z",
+   "mc_ids": [
+    399491221,
+    399491227
+   ],
+   "reserviert_um": "2026-10-18T23:02:59Z",
+   "status": "geplant",
    "termin_utc": "2026-10-23T07:45:00Z",
-   "versuche": 1
+   "versuche": 2
   },
   "bild-20261024T0745": {
    "basis_utc": "2026-10-24T07:45:00Z",
@@ -155,12 +161,12 @@
    "basis_utc": "2026-10-22T19:15:00Z",
    "format": "karussell",
    "grund": "rc=0: Nichts faellig: kein ready-Karussell.",
-   "letzter_versuch": "2026-10-18T21:56:56Z",
+   "letzter_versuch": "2026-10-18T23:01:41Z",
    "mc_ids": [],
-   "reserviert_um": "2026-10-18T21:56:56Z",
+   "reserviert_um": "2026-10-18T23:01:41Z",
    "status": "offen",
    "termin_utc": "2026-10-22T19:15:00Z",
-   "versuche": 4
+   "versuche": 5
   },
   "karussell-20261023T1915": {
    "basis_utc": "2026-10-23T19:15:00Z",
@@ -348,12 +354,15 @@
   "pin-20261021T1950": {
    "basis_utc": "2026-10-21T19:50:00Z",
    "format": "pin",
-   "grund": "verschwunden [399454431]",
+   "grund": "",
    "handle": "",
+   "handles": [],
    "letzter_versuch": "2026-10-18T23:00:31Z",
-   "mc_ids": [],
+   "mc_ids": [
+    399489951
+   ],
    "reserviert_um": "2026-10-18T23:00:31Z",
-   "status": "reserviert",
+   "status": "geplant",
    "termin_utc": "2026-10-21T19:50:00Z",
    "versuche": 2
   },
@@ -374,14 +383,17 @@
   "pin-20261022T1510": {
    "basis_utc": "2026-10-22T15:10:00Z",
    "format": "pin",
-   "grund": "verschwunden [399456190]",
+   "grund": "",
    "handle": "",
-   "letzter_versuch": "2026-10-18T21:52:52Z",
-   "mc_ids": [],
-   "reserviert_um": "2026-10-18T21:52:52Z",
-   "status": "offen",
+   "handles": [],
+   "letzter_versuch": "2026-10-18T23:01:08Z",
+   "mc_ids": [
+    399490427
+   ],
+   "reserviert_um": "2026-10-18T23:01:08Z",
+   "status": "geplant",
    "termin_utc": "2026-10-22T15:10:00Z",
-   "versuche": 1
+   "versuche": 2
   },
   "pin-20261022T1740": {
    "basis_utc": "2026-10-22T17:40:00Z",
@@ -400,11 +412,11 @@
   "pin-20261022T1950": {
    "basis_utc": "2026-10-22T19:50:00Z",
    "format": "pin",
-   "grund": "verschwunden [399457560]",
+   "grund": "rc=1: g/automation/metricool_pinterest_pin.mjs:153:9)\n    at async file:///home/user/aban-news-landing/automation/metricool_pinterest_pin.mjs:251:13\n\nNode.js v22.22.2",
    "handle": "",
-   "letzter_versuch": "2026-10-18T21:57:03Z",
+   "letzter_versuch": "2026-10-18T23:01:49Z",
    "mc_ids": [],
-   "reserviert_um": "2026-10-18T21:57:03Z",
+   "reserviert_um": "2026-10-18T23:01:49Z",
    "status": "offen",
    "termin_utc": "2026-10-22T19:50:00Z",
    "versuche": 1
@@ -427,15 +439,17 @@
   "pin-20261023T1510": {
    "basis_utc": "2026-10-23T15:10:00Z",
    "format": "pin",
-   "grund": "verschwunden [399466675]",
+   "grund": "",
    "handle": "",
    "handles": [],
-   "letzter_versuch": "2026-10-18T22:11:57Z",
-   "mc_ids": [],
-   "reserviert_um": "2026-10-18T22:11:57Z",
-   "status": "offen",
+   "letzter_versuch": "2026-10-18T23:03:19Z",
+   "mc_ids": [
+    399491953
+   ],
+   "reserviert_um": "2026-10-18T23:03:19Z",
+   "status": "geplant",
    "termin_utc": "2026-10-23T15:10:00Z",
-   "versuche": 1
+   "versuche": 2
   },
   "pin-20261023T1740": {
    "basis_utc": "2026-10-23T17:40:00Z",
@@ -458,12 +472,12 @@
    "grund": "verschwunden [399467237]",
    "handle": "",
    "handles": [],
-   "letzter_versuch": "2026-10-18T22:13:30Z",
+   "letzter_versuch": "2026-10-18T23:04:54Z",
    "mc_ids": [],
-   "reserviert_um": "2026-10-18T22:13:30Z",
-   "status": "offen",
+   "reserviert_um": "2026-10-18T23:04:54Z",
+   "status": "reserviert",
    "termin_utc": "2026-10-23T19:50:00Z",
-   "versuche": 1
+   "versuche": 2
   },
   "pin-20261024T1240": {
    "basis_utc": "2026-10-24T12:40:00Z",
@@ -1104,14 +1118,20 @@
   "tiktok-20261023T0605": {
    "basis_utc": "2026-10-23T06:05:00Z",
    "format": "tiktok",
-   "grund": "verschwunden [399458330]",
-   "handle": "gemuese-scheibe-6e2cf8",
-   "letzter_versuch": "2026-10-18T21:58:52Z",
-   "mc_ids": [],
-   "reserviert_um": "2026-10-18T21:58:52Z",
-   "status": "offen",
+   "grund": "",
+   "handle": "kuhlmatte-fur-hunde-580608",
+   "handles": [
+    "kuhlmatte-fur-hunde",
+    "kuhlmatte-fur-hunde-580608"
+   ],
+   "letzter_versuch": "2026-10-18T23:02:31Z",
+   "mc_ids": [
+    399491084
+   ],
+   "reserviert_um": "2026-10-18T23:02:31Z",
+   "status": "geplant",
    "termin_utc": "2026-10-23T06:05:00Z",
-   "versuche": 3
+   "versuche": 4
   },
   "tiktok-20261023T1105": {
    "basis_utc": "2026-10-23T11:05:00Z",
@@ -1130,11 +1150,13 @@
   "tiktok-20261023T1805": {
    "basis_utc": "2026-10-23T18:05:00Z",
    "format": "tiktok",
-   "grund": "wartet auf Trendton-Pilot",
+   "grund": "rc=3: Nichts faellig: kein ready-Reel, dessen Video noch nirgends gepostet wurde (tiktok; Marke bleibt alt, Exit 3).",
+   "letzter_versuch": "2026-10-18T23:04:47Z",
    "mc_ids": [],
+   "reserviert_um": "2026-10-18T23:04:47Z",
    "status": "offen",
    "termin_utc": "2026-10-23T18:05:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "tiktok-20261024T0605": {
    "basis_utc": "2026-10-24T06:05:00Z",
@@ -1417,6 +1439,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-18T23:00:31Z",
+ "stand": "2026-10-18T23:04:54Z",
  "version": 1
 }
