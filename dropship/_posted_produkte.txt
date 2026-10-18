@@ -449,3 +449,9 @@ name:rettungsschwimmerset
 name:kompakterusbluftbefeuchter
 pid:15454414602625
 slug:kompakter-usb-luftbefeuchter
+slug:cjreel-cjyd189003201az
+pid:15450855473537
+slug:verstellbare-rutschfeste-hunde-outdoorschuhe
+slug:cjreel-cjxfznkc00131-black
+pid:15450836861313
+slug:3-in-1-wireless-ladestation-fur-apple-android

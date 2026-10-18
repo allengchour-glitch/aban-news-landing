@@ -49,3 +49,4 @@
 2026-10-18T22:19:47.201Z	freizeitjacke-fur-business-und-pendeln-616400	Herrenmode Schweiz	metricool:399470175	herbst-favoriten	bild=roh
 2026-10-18T22:27:25.939Z	legere-baseballjacke-im-flight-stil-606900	Herrenmode Schweiz	metricool:399473790	herbst-favoriten	bild=roh
 2026-10-18T22:28:25.956Z	wind-und-wasserdichte-outdoor-jacke-615400	Herrenmode Schweiz	metricool:399474369	herbst-favoriten	bild=roh
+2026-10-18T22:29:04.529Z	3d-digital-print-crew-neck-langarm-sweatshirt-637100	Sommerkleider & Damenmode 2026	metricool:399474714	herbst-favoriten	bild=roh

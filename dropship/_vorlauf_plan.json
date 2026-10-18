@@ -548,20 +548,27 @@
   "pin-20261025T1840": {
    "basis_utc": "2026-10-25T18:40:00Z",
    "format": "pin",
+   "grund": "",
+   "handle": "",
+   "handles": [],
    "letzter_versuch": "2026-10-18T22:28:31Z",
-   "mc_ids": [],
+   "mc_ids": [
+    399474714
+   ],
    "reserviert_um": "2026-10-18T22:28:31Z",
-   "status": "reserviert",
+   "status": "geplant",
    "termin_utc": "2026-10-25T18:40:00Z",
    "versuche": 1
   },
   "pin-20261025T2050": {
    "basis_utc": "2026-10-25T20:50:00Z",
    "format": "pin",
+   "letzter_versuch": "2026-10-18T22:32:03Z",
    "mc_ids": [],
-   "status": "offen",
+   "reserviert_um": "2026-10-18T22:32:03Z",
+   "status": "reserviert",
    "termin_utc": "2026-10-25T20:50:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "reel_igfb-20261019T1015": {
    "basis_utc": "2026-10-19T10:15:00Z",
@@ -781,10 +788,22 @@
   "reel_igfb-20261025T1915": {
    "basis_utc": "2026-10-25T19:15:00Z",
    "format": "reel_igfb",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "3-in-1-wireless-ladestation-fur-apple-android-710200",
+   "handles": [
+    "3-in-1-wireless-ladestation-fur-apple-android",
+    "3-in-1-wireless-ladestation-fur-apple-android-710200",
+    "cjreel-cjxfznkc00131-black"
+   ],
+   "letzter_versuch": "2026-10-18T22:31:20Z",
+   "mc_ids": [
+    399476575,
+    399476578
+   ],
+   "reserviert_um": "2026-10-18T22:31:20Z",
+   "status": "geplant",
    "termin_utc": "2026-10-25T19:15:00Z",
-   "versuche": 0
+   "versuche": 3
   },
   "story-20261019T1045": {
    "basis_utc": "2026-10-19T10:45:00Z",
@@ -1152,10 +1171,21 @@
   "tiktok-20261025T1905": {
    "basis_utc": "2026-10-25T19:05:00Z",
    "format": "tiktok",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "verstellbare-rutschfeste-hunde-outdoorschuhe-444288",
+   "handles": [
+    "cjreel-cjyd189003201az",
+    "verstellbare-rutschfeste-hunde-outdoorschuhe",
+    "verstellbare-rutschfeste-hunde-outdoorschuhe-444288"
+   ],
+   "letzter_versuch": "2026-10-18T22:29:09Z",
+   "mc_ids": [
+    399475266
+   ],
+   "reserviert_um": "2026-10-18T22:29:09Z",
+   "status": "geplant",
    "termin_utc": "2026-10-25T19:05:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "youtube-20261019T0520": {
    "basis_utc": "2026-10-19T05:20:00Z",
@@ -1372,6 +1402,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-18T22:28:31Z",
+ "stand": "2026-10-18T22:32:03Z",
  "version": 1
 }
