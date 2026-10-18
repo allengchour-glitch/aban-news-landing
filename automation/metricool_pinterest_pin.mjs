@@ -31,6 +31,7 @@
  *    POST /v2/scheduler/boards/pinterest).
  */
 import fs from 'node:fs';
+import { publishAt } from './lib/publish_at.mjs';
 import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';   // ocrJetzt() — ohne diesen Import lief der OCR-Aufruf still in den catch (23.09. gemessen)
 import { lock as postLock, seen as postSeen, mark as postMark, juryPruefen, modelSperre } from './post_guard.mjs';
@@ -306,7 +307,7 @@ console.log(`Pin: ${titel}\n  Quelle: ${kandidat.quelle} · Board: ${board ? boa
 if (DRY) { console.log('[DRY] würde jetzt pinnen.'); process.exit(0); }
 if (!board) { console.error('⛔ Kein Pinterest-Board lesbar'); process.exit(1); }
 
-const wann = new Date(Date.now() + VORLAUF * 60000);
+const wann = publishAt(VORLAUF * 60000);
 const f = Object.fromEntries(new Intl.DateTimeFormat('en-CA', { timeZone: TZ, hour12: false, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' }).formatToParts(wann).filter(p => p.type !== 'literal').map(p => [p.type, p.value]));
 const dateTime = `${f.year}-${f.month}-${f.day}T${f.hour === '24' ? '00' : f.hour}:${f.minute}:${f.second}`;
 const release = postLock(20);

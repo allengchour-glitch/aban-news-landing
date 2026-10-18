@@ -51,7 +51,17 @@ exec 9>/tmp/social_autopilot.lock
 # von `sleep 900` (PID 2193) gehalten, /tmp/website_hygiene.lock von `sleep 7200`.
 flock -n 9 || { echo "$(date -u +%H:%M) Autopilot läuft bereits — dieser Start endet."; exit 0; }
 
+# 18.10.2026 (Betreiber «pushe metricool 7 tage voraus»): Deckt der Planer ein Format schon bis später ab (automation/social_vorlauf.py
+# schreibt «Marke<TAB>bis-ISO» nach dropship/_vorlauf_drossel.tsv), postet der Autopilot es bis dahin NICHT selbst — sonst käme zu den
+# 7 Tagen Vorlauf noch die alte 6-/8-/12-h-Kadenz obendrauf (doppelte Takte, Planlimit 700/Monat). Datei fehlt oder «bis» ist vorbei =
+# altes Verhalten (fail-open: fällt der Treiber aus, übernimmt der Autopilot nach dem letzten gedeckten Slot von selbst).
+DROSSEL=dropship/_vorlauf_drossel.tsv
 faellig() {                              # $1 = Markendatei, $2 = Mindestabstand in Sekunden
+  if [ -s "$DROSSEL" ]; then
+    local bis b
+    bis=$(awk -F'\t' -v m="$1" '$1==m{print $2}' "$DROSSEL" | tail -1)
+    if [ -n "$bis" ]; then b=$(date -u -d "$bis" +%s 2>/dev/null || echo 0); [ "$b" -gt "$(date +%s)" ] && return 1; fi
+  fi
   [ -f "$1" ] || return 0
   [ $(( $(date +%s) - $(stat -c %Y "$1") )) -ge "$2" ]
 }
@@ -288,9 +298,20 @@ while true; do
   fi
   # 18.10.2026 (Betreiber «verbessere kommentare antwort»): alle 3 h Kommentare unter IG/FB aufräumen — Bots verbergen (nie
   # beantworten), echte Fragen kurz und belegt beantworten (automation/social-comment-reply.mjs, DRY_RUN=1 zum Testen).
-  if [ "$META_OK" = 1 ] && faellig /tmp/_autopilot_letzte_kommentare 10800; then
+  # (nicht an META_OK gebunden: seit dem Datenzugang-Ablauf 05.10. steht META_OK=0, Lesen/Verbergen/Antworten unter eigenen Posts geht trotzdem — 18.10. gemessen)
+  if [ -s /tmp/meta_page_token ] && faellig /tmp/_autopilot_letzte_kommentare 10800; then
     $NODE automation/social-comment-reply.mjs 2>&1 | grep -E "KOMMENTARE|^  !" || true
     touch /tmp/_autopilot_letzte_kommentare
+  fi
+  # 18.10.2026 (Betreiber «pushe metricool 7 tage voraus bis sonntag 22.00 uhr»): Slots bis zum Fensterende füllen — Treiber startet die
+  # bestehenden Poster je Slot mit PUBLISH_AT (alle Wachen bleiben). Neustartfest (Plan dropship/_vorlauf_plan.json), höchstens 38 min
+  # je Runde; der Prüfer zieht Posts zurück, deren Produkt weg/Preis geändert/Pause ist (alle 2 h). Stopp-Datei: nichts planen.
+  if { [ -n "${METRICOOL_USER_TOKEN:-}" ] || [ -s /tmp/metricool.env ]; } && [ ! -f dropship/_SOCIAL_STOPP ]; then
+    SCHARF=1 timeout 2700 python3 automation/social_vorlauf.py --plan --max-min 38 2>&1 | grep -E '✅|⛔|Lauf:|Slots:|STOPP|Zeitbudget|ruht' | tail -10 || true
+    if faellig /tmp/_autopilot_letzter_vorlauf_pruefer 7200; then
+      SCHARF=1 timeout 600 python3 automation/social_vorlauf.py --pruefen 2>&1 | tail -8 || true
+      touch /tmp/_autopilot_letzter_vorlauf_pruefer
+    fi
   fi
   sleep 900 9>&-
 done

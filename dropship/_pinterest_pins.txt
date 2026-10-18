@@ -23,3 +23,5 @@
 2026-10-12T18:19:04.578Z	halloween-kostum-mittelalterliches-korsett-dre-620700	Sommerkleider & Damenmode 2026	metricool:394262815	halloween	bild=roh
 2026-10-13T22:26:05.992Z	herren-kunstfellmantel-mit-leopardenmuster-614000	Herrenmode Schweiz	metricool:395384225	herbst-favoriten	bild=roh
 2026-10-18T20:13:05.937Z	einhornskelett-18-cm-fga910992	Wohnen & Deko	metricool:399398602	halloween	bild=2:3
+2026-10-18T21:32:45.281Z	bg-streetwear-retro-strickpullover-605300	Herrenmode Schweiz	metricool:399446002	herbst-favoriten	bild=roh
+2026-10-18T21:33:16.671Z	rabe-mit-federn-fga93063	Wohnen & Deko	metricool:399446893	halloween	bild=2:3

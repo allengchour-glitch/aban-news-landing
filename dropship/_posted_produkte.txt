@@ -315,3 +315,6 @@ name:wannenkippanhängermitautomatikrückwand
 name:sticknadelset
 pid:15509371519361
 slug:sticknadel-set-33f652
+name:handyhaltermitschwanenhals
+pid:15451636334977
+slug:lazy-phone-halter-b20132

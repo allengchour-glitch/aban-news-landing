@@ -1,0 +1,29 @@
+{
+  "_doku": "Regeln für automation/social_vorlauf.py (7-Tage-Vorlauf, Betreiber 18.10.2026: «pushe metricool 7 tage voraus bis sonntag 22.00 uhr … sichtbarkeit erweitern auf maximum»). Herleitung: dropship/METRICOOL-VORLAUF-2026-10-18.md. Zeiten = Zürcher Ortszeit (Europe/Zurich), im Plan als UTC gespeichert. Raster gilt Mo–So gleich (eigene Messung: kein Wochenend-Einbruch, TikTok-Aufrufe zeit-/tagunabhängig).",
+  "fenster_ende_utc": "2026-10-25T21:00:00Z",
+  "max_tage_voraus": 7,
+  "mindest_vorlauf_min": 30,
+  "versuche_je_lauf": 4,
+  "versuche_gesamt": 10,
+  "versatz_min": [0, 20, -20, 40, -40, 60],
+  "abstand_min": {"tiktok": 90, "youtube": 90, "instagram": 60, "facebook": 60, "pinterest": 90, "threads": 120},
+  "raster": {
+    "tiktok":    ["08:05", "13:05", "20:05"],
+    "youtube":   ["07:20", "16:05"],
+    "reel_igfb": ["12:15", "20:15"],
+    "bild":      ["09:45"],
+    "karussell": ["21:15"],
+    "story":     ["12:45"],
+    "pin":       ["14:40", "17:10", "19:40", "21:50"]
+  },
+  "tagesobergrenze_eintraege": 30,
+  "formate": {
+    "tiktok":    {"art": "reel",  "netze": ["tiktok"],                "marke": "/tmp/_autopilot_letztes_tiktok"},
+    "youtube":   {"art": "reel",  "netze": ["youtube"],               "marke": "/tmp/_autopilot_letztes_youtube"},
+    "reel_igfb": {"art": "reel",  "netze": ["instagram", "facebook"], "marke": "/tmp/_autopilot_letztes_reel"},
+    "bild":      {"art": "post",  "netze": ["instagram"],             "marke": "/tmp/_autopilot_letztes_bild"},
+    "karussell": {"art": "post",  "netze": ["instagram"],             "marke": "/tmp/_autopilot_letztes_karussell"},
+    "story":     {"art": "story", "netze": ["instagram", "facebook"], "marke": "/tmp/_autopilot_letzte_story"},
+    "pin":       {"art": "pin",   "netze": ["pinterest"],             "marke": "/tmp/_autopilot_letzter_pin"}
+  }
+}

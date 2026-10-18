@@ -20,6 +20,7 @@
  * Der EINE Schritt für Dauerbetrieb: THREADS_ACCESS_TOKEN (+ IG/FB) als Repo-Secret → Cron postet 2×/Tag.
  */
 import { schreiben as queueSchreiben, schnappschuss as queueSchnappschuss, lesen as queueLesen } from './lib/queue_csv.mjs';
+import { publishAt } from './lib/publish_at.mjs';
 import { mitFolgen, fbText as fbTextLib } from './lib/fb_text.mjs';   // 07.10.: FB ohne https-Link (Reichweite)
 import fs from 'node:fs';
 import { socialPause, pauseSchluessel } from './lib/social_pause.mjs';   // 13.10.: Anlass-Social-Sperre (Halloween-CJ 15.10.–01.11.)
@@ -65,7 +66,7 @@ async function mcPlan(imageUrl, text, netz){
   const nt = await n.text();
   let norm = ''; try { const j = JSON.parse(nt); norm = j.data?.url || j.url || (typeof j.data==='string' ? j.data : '') || (typeof j==='string' ? j : ''); } catch { norm = nt.trim().replace(/^"|"$/g,''); }
   if(!n.ok || !norm){ console.error(`Metricool normalize (${netz}):`, n.status, nt.slice(0,160)); return false; }
-  const body = { publicationDate:{ dateTime:new Date(Date.now()+4*60e3).toISOString().slice(0,19), timezone:'UTC' }, text,
+  const body = { publicationDate:{ dateTime:publishAt(4*60e3).toISOString().slice(0,19), timezone:'UTC' }, text,
                  providers:[{ network:netz }], media:[norm], autoPublish:true, draft:false, shortener:false };
   if(netz==='instagram') body.instagramData = { autoPublish:true, type:'POST' };
   if(netz==='facebook') body.facebookData = { type:'POST' };

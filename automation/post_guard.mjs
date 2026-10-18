@@ -236,19 +236,24 @@ function ladeFamilien() {
   } catch { return []; }
 }
 /** Liefert {familie, vorStunden} wenn dieselbe Warengruppe innerhalb FAMILIEN_STUNDEN gepostet wurde, sonst null. */
+// 18.10.2026 (7-Tage-Vorlauf): Bezugszeit = der geplante Sendetermin (PUBLISH_AT, ISO-UTC), sonst jetzt. Vorher stempelte familieMerken die
+// PLANUNGSZEIT: wer 7 Tage voraus plant, blockierte alle Waren einer Gruppe 72 h lang (nur 1 «Uhr» je 3 Tage), während die wirklichen
+// Sendeabstände ungeprüft blieben. Jetzt zählt der Abstand der SENDETERMINE — in beide Richtungen (ein Post in 5 Tagen sperrt auch den
+// Termin davor). Ohne PUBLISH_AT ist das Verhalten wie bisher.
+function familieBezug() { const t = Date.parse((process.env.PUBLISH_AT || '').trim()); return Number.isFinite(t) ? t : Date.now(); }
 export function familieKuerzlich(text, stunden = FAMILIEN_STUNDEN) {
   const f = warenFamilie(text); if (!f) return null;
-  const grenze = Date.now() - stunden * 3600e3;
+  const bezug = familieBezug();
   for (const [iso, fam] of ladeFamilien().reverse()) {
     if (fam !== f) continue;
     const t = Date.parse(iso);
-    if (t >= grenze) return { familie: f, vorStunden: Math.round((Date.now() - t) / 3600e3) };
+    if (Math.abs(bezug - t) < stunden * 3600e3) return { familie: f, vorStunden: Math.round((bezug - t) / 3600e3) };
   }
   return null;
 }
 export function familieMerken(text, kanal = '') {
   const f = warenFamilie(text); if (!f) return;
-  fs.appendFileSync(F_LEDGER, `${new Date().toISOString()}\t${f}\t${kanal}\n`);
+  fs.appendFileSync(F_LEDGER, `${new Date(familieBezug()).toISOString()}\t${f}\t${kanal}\n`);
 }
 
 // 24.09.2026: Preis in Caption/Bild/Video ist eingebrannt. Nach dem Preisschutz (23'121 Varianten gehoben) warben wartende

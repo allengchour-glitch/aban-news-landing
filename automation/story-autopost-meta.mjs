@@ -16,6 +16,7 @@
  *      META_GRAPH_VERSION(Default v21.0) · MAX_PER_RUN(1) · DRY_RUN=1
  */
 import fs from 'node:fs';
+import { publishAt } from './lib/publish_at.mjs';
 import { socialPause, pauseSchluessel } from './lib/social_pause.mjs';   // 13.10.: Anlass-Social-Sperre (Halloween-CJ 15.10.–01.11.)
 const _socialPause = pauseSchluessel();
 import { lock as postLock, seen as postSeen, mark as postMark, fbSeitenIdentitaet, modelSperre } from './post_guard.mjs';
@@ -56,7 +57,7 @@ async function mcStory(type, url, netz){
     media = norm;
   }
   const entwurf = process.env.MC_ENTWURF === '1';
-  const body = { publicationDate:{ dateTime:new Date(Date.now()+4*60e3).toISOString().slice(0,19), timezone:'UTC' },
+  const body = { publicationDate:{ dateTime:publishAt(4*60e3).toISOString().slice(0,19), timezone:'UTC' },
                  text:'', providers:[{ network:netz }], media:[media], autoPublish:!entwurf, draft:entwurf, shortener:false };
   if(netz==='instagram') body.instagramData = { type:'STORY' };
   if(netz==='facebook') body.facebookData = { type:'STORY' };

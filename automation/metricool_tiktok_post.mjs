@@ -19,6 +19,7 @@
  *      DIREKTLINK=1 (beides) · MC_SMARTLINK_ID=<id>
  */
 import { hashtagSet } from './lib/hashtags.mjs';
+import { publishAt } from './lib/publish_at.mjs';
 import { fbText, mitFolgen } from './lib/fb_text.mjs';   // 07.10.: FB-eigener Text (klickbarer Link + Folge-Zeile)
 import fs from 'node:fs';
 import { socialPause, pauseSchluessel } from './lib/social_pause.mjs';   // 13.10.: Anlass-Social-Sperre (Halloween-CJ 15.10.–01.11.)
@@ -64,6 +65,7 @@ const POSTED = `posted-${NETZ}`, FEHLER = `${NETZ}-fehler`;
 // innerhalb der naechsten FENSTER_H Stunden die Stunde mit dem hoechsten Wert. Scheitert die Abfrage → jetzt + VORLAUF.
 const FENSTER_H = parseInt(process.env.FENSTER_H || '6', 10);
 async function besteZeit() {
+  if ((process.env.PUBLISH_AT || '').trim()) return publishAt(VORLAUF * 60000);   // 18.10.2026: Vorlauf-Slot (automation/social_vorlauf.py) — Bestzeit-Suche entfällt
   const jetzt = Date.now() + VORLAUF * 60000;
   try {
     const tag = d => d.toISOString().slice(0, 19);

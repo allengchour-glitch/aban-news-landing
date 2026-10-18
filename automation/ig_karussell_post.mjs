@@ -20,6 +20,7 @@
  * ENV: IG_USER_ID (/tmp/meta_ig_id) · META_ACCESS_TOKEN (/tmp/meta_page_token) · FB_PAGE_ID · DRY=1 · NUR_SLUG=<slug>
  */
 import { mitFolgen, fbText as fbTextLib } from './lib/fb_text.mjs';   // 07.10.: FB ohne https-Link (Reichweite)
+import { publishAt } from './lib/publish_at.mjs';
 import fs from 'node:fs';
 import { socialPause, pauseSchluessel } from './lib/social_pause.mjs';   // 13.10.: Anlass-Social-Sperre (Halloween-CJ 15.10.–01.11.)
 const _socialPause = pauseSchluessel();
@@ -53,7 +54,7 @@ async function mcNorm(url) {
   return norm;
 }
 async function mcPlan(media, text, netz) {
-  const body = { publicationDate: { dateTime: new Date(Date.now() + 4 * 60e3).toISOString().slice(0, 19), timezone: 'UTC' }, text,
+  const body = { publicationDate: { dateTime: publishAt(4 * 60e3).toISOString().slice(0, 19), timezone: 'UTC' }, text,
                  providers: [{ network: netz }], media, autoPublish: true, draft: false, shortener: false };
   if (netz === 'instagram') body.instagramData = { autoPublish: true, type: 'POST' };
   if (netz === 'facebook') body.facebookData = { type: 'POST' };
