@@ -14,6 +14,13 @@
  * Aufruf:  node automation/shop_brain.mjs
  */
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
+import { shopifyGql } from './lib/shopify_gql.mjs';
+// EINE Quelle fuer SEO-Texte: automation/lib/seo_titel.mjs (28 Tests). Der eigene Textbaukasten
+// hier versprach „schnelle Lieferung (7–14 Tage)" (CJ braucht 10–20 Werktage) und „Gratis-Versand
+// ab CHF 65" — die Schwelle ist CHF 50 (dropship/VERSAND-SCHWELLE.md, bewusst 50 wegen WELCOME10).
+// Live gemessen am 2026-10-18: 0 von 4000 SEO-Beschreibungen tragen das falsche Versprechen, 3682
+// tragen die richtige Zahl — der Fehler war also noch nicht geschrieben, sondern nur geladen.
+import { seoTitel } from './lib/seo_titel.mjs';
 const SHOP = process.env.SHOPIFY_SHOP || "";
 const CID = process.env.SHOPIFY_CLIENT_ID || "";
 const SECRET = shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET) || "";
@@ -57,8 +64,8 @@ const CAT = {
 };
 const EMOJI = /[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\u{1F1E6}-\u{1F1FF}\u{FE0F}\u{2190}-\u{21FF}\u{2300}-\u{23FF}]/gu;
 const clean = (s) => (s || "").replace(EMOJI, "").replace(/\s{2,}/g, " ").trim().replace(/[ ,;:·–-]+$/, "");
-function mkTitle(name){ let n=clean(name); if(n.length>50){let c=n.slice(0,50); if(c.includes(" "))c=c.slice(0,c.lastIndexOf(" ")); n=c.replace(/[ ,;:·–-]+$/,"");} return (n+" | LuxeStyle").slice(0,70); }
-const mkDesc = (name)=>`${clean(name)}: jetzt im Schweizer Online-Shop LuxeStyle. Faire Preise, schnelle Lieferung (7–14 Tage), 30 Tage Rückgabe. −10% mit Code WELCOME10.`.slice(0,320);
+const mkTitle = (name)=>seoTitel(clean(name)).title;
+const mkDesc  = (name)=>seoTitel(clean(name)).description;
 const esc = (s)=>s.replace(/\\/g,"\\\\").replace(/"/g,'\\"');
 
 async function getToken(){
@@ -81,7 +88,7 @@ async function aiSeo(name){
 `Schreibe SEO-Meta für ein Produkt im Schweizer Online-Shop LuxeStyle.
 Produkt: "${clean(name)}"
 - title: verkaufsstark, Schweizer Hochdeutsch (ss statt ß), max 60 Zeichen, endet mit " | LuxeStyle", kein Emoji.
-- description: ein konkreter Nutzen + Vertrauen (Gratis-Versand ab CHF 65, 30 Tage Rückgabe), max 150 Zeichen, kein Emoji.`}]
+- description: ein konkreter Nutzen + Vertrauen (Gratis-Versand ab CHF 50, 30 Tage Rückgabe), max 150 Zeichen, kein Emoji.\n- Nenne KEINE Lieferzeit und KEINE Zahl, die oben nicht steht — die Ware kommt in 10–20 Werktagen.`}]
       })});
     const j=await r.json();
     const t=(j.content||[]).find(b=>b.type==="text"); if(!t) return null;
@@ -90,19 +97,28 @@ Produkt: "${clean(name)}"
   }catch(e){ /* still & sicher → Template-Fallback */ }
   return null;
 }
+// Drosselung aussitzen statt aufgeben (automation/lib/shopify_gql.mjs). Die Aufrufer unten
+// erwarten die Form { data }, darum hier wieder einpacken.
 async function gql(token,query){
-  const r=await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`,{method:"POST",
-    headers:{"Content-Type":"application/json","X-Shopify-Access-Token":token},body:JSON.stringify({query})});
-  return r.json();
+  try { return { data: await shopifyGql(SHOP,API,token,query,{}) }; }
+  catch(e){ return { errors:[{ message:e.message }] }; }
 }
+// Ein Lauf darf scheitern, aber er muss es MERKEN. Vorher zaehlte `done+=chunk.length`, sobald
+// irgendein `data` zurueckkam — Shopify meldet abgelehnte Felder aber in `userErrors` INNERHALB
+// einer erfolgreichen Antwort. 20 abgelehnte Aenderungen sahen damit aus wie 20 erledigte.
 async function runMutations(token,items,build){
-  let done=0;
+  let done=0, fehler=0;
   for(let i=0;i<items.length;i+=20){
     const chunk=items.slice(i,i+20);
     const m="mutation {\n"+chunk.map((f,j)=>build(f,j)).join("\n")+"\n}";
     const res=await gql(token,m);
-    if(res?.data) done+=chunk.length; else console.error("mutation-fehler:",JSON.stringify(res?.errors||res).slice(0,300));
+    if(!res?.data){ fehler+=chunk.length; console.error("mutation-fehler:",JSON.stringify(res?.errors||res).slice(0,300)); continue; }
+    for(const [alias,wert] of Object.entries(res.data)){
+      const ue=wert?.userErrors||[];
+      if(ue.length){ fehler++; console.error(`  ✗ ${alias}: ${ue[0].message}`); } else done++;
+    }
   }
+  if(fehler) console.error(`  ⚠️ ${fehler} Aenderung(en) abgelehnt.`);
   return done;
 }
 
@@ -137,9 +153,18 @@ async function runMutations(token,items,build){
   }
 
   // ---------- 2) Collection-Cover (leere Kategorien bebildern) ----------
-  const cq=`{ collections(first:250){ nodes{ id handle title seo{ title } image{ url } products(first:5){ nodes{ featuredImage{ url } } } } } }`;
-  const cdata=await gql(token,cq);
-  const colls=cdata?.data?.collections?.nodes||[];
+  // Der Shop hat mehr Collections, als eine Seite fasst: am 2026-10-18 gezaehlt **569**. Die alte
+  // Abfrage holte `first:250` ohne Blaettern und meldete darum „0 Befunde" — hinter dem Deckel lagen
+  // 54 ohne Titelbild und 10 ohne SEO-Titel. Ein Deckel ohne Blaettern sieht aus wie ein sauberer Shop.
+  let colls=[], ccur=null;
+  while(true){
+    const cdata=await gql(token,`{ collections(first:250${ccur?`, after:"${ccur}"`:''}){ pageInfo{ hasNextPage endCursor } nodes{ id handle title seo{ title } image{ url } products(first:5){ nodes{ featuredImage{ url } } } } } }`);
+    const cc=cdata?.data?.collections;
+    if(!cc){ console.error('Collection-Abfrage fehlgeschlagen:', JSON.stringify(cdata?.errors||cdata).slice(0,200)); break; }
+    colls.push(...cc.nodes);
+    if(!cc.pageInfo.hasNextPage) break;
+    ccur=cc.pageInfo.endCursor;
+  }
   const colFixes=[]; const colSeoFixes=[];
   for(const c of colls){
     const hasProd=(c.products?.nodes||[]).length>0;
@@ -151,7 +176,7 @@ async function runMutations(token,items,build){
       const ct=clean(c.title)||"Kollektion";
       let title=ct; if(title.length>54){let x=title.slice(0,54); if(x.includes(" "))x=x.slice(0,x.lastIndexOf(" ")); title=x.replace(/[ ,;:·–-]+$/,"");}
       title=(title+" | LuxeStyle").slice(0,70);
-      const desc=`${ct} bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 65, 30 Tage Rückgabe, −10% mit Code WELCOME10.`.slice(0,320);
+      const desc=`${ct} bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe, −10% mit Code WELCOME10.`.slice(0,320);
       colSeoFixes.push({id:c.id, handle:c.handle, title, desc});
     }
   }

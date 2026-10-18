@@ -24,7 +24,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
-import { istSchwach, istBessereAlternative, grund } from './lib/bild_befund.mjs';
+import { istSchwach, istBessereAlternative, groesserUndSauber, grund } from './lib/bild_befund.mjs';
 
 const KEY = process.env.GEMINI_API_KEY || '';
 const SHOP = process.env.SHOPIFY_SHOP || '';
@@ -115,19 +115,29 @@ async function classify(url) {
       const badFeat = istSchwach(c);
       let action = 'ok';
       if (lowres) { action = 'NIEDRIGE-AUFLOESUNG'; flagged++; }
-      if (badFeat) {
-        flagged++;
+      if (badFeat) flagged++;
+      // Gemessen am 2026-10-18 ueber 5000 aktive Produkte: 775 Hauptbilder liegen unter 800 px,
+      // 411 davon haben weiter hinten ein groesseres. Vorher wurde das nur im Bericht vermerkt,
+      // obwohl der Tausch genau dafuer da ist. `groesserUndSauber` verlangt, dass die Alternative
+      // auch wirklich ein sauberes Produktbild ist — sonst wandert ein grosses Verpackungsfoto
+      // nach vorn, und das sieht aus wie eine Verbesserung, ohne eine zu sein.
+      if (badFeat || lowres) {
+        const jetzt = { breite: w, hoehe: h };
         // bessere Alternative suchen: ein Bild, das das Produkt zeigt und selbst keinen Mangel hat
         let altIdx = -1;
         for (let i = 1; i < Math.min(imgs.length, 4); i++) {
+          const mass = { breite: imgs[i].image.width || 0, hoehe: imgs[i].image.height || 0 };
+          // Bei reiner Auflösungsschwäche gar nicht erst fragen, wenn das Bild nicht grösser ist —
+          // das spart Vision-Aufrufe, die ohnehin nichts ändern können.
+          if (!badFeat && (mass.breite <= w && mass.hoehe <= h)) continue;
           const ca = await classify(imgs[i].image.url); await sleep(400);
-          if (istBessereAlternative(ca)) { altIdx = i; break; }
+          if (badFeat ? istBessereAlternative(ca) : groesserUndSauber(jetzt, mass, ca, MIN_PX)) { altIdx = i; break; }
         }
         if (altIdx > 0 && APPLY) {
           const mv = `mutation($id:ID!,$moves:[MoveInput!]!){ productReorderMedia(id:$id, moves:$moves){ mediaUserErrors{ message } } }`;
           const res = await gql(mv, { id: p.id, moves: [{ id: imgs[altIdx].id, newPosition: '0' }] });
           const errs = res?.data?.productReorderMedia?.mediaUserErrors || [];
-          if (!errs.length) { action = `UMSORTIERT (Bild ${altIdx+1}→1)`; reordered++; }
+          if (!errs.length) { action = `UMSORTIERT (Bild ${altIdx+1}→1${lowres && !badFeat ? ', wegen Aufloesung' : ''})`; reordered++; }
           else action = 'FEHLER-UMSORT: ' + errs[0].message;
           await sleep(600);
         } else {
