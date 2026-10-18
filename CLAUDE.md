@@ -82,6 +82,36 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-18 (📋 Aufgabenliste für die nächste Sitzung — alles heute live gemessen):**
+Vollständig mit Befehlen und Zahlen in **`dropship/NAECHSTE-AUFGABEN-1810.md`**. Kurzfassung:
+- **1. SEO-Titel weiterfüllen** (grösste Fläche, kostet keine CJ-Punkte):
+  `LIMIT=5000 SORT=CREATED_AT REVERSE=0 node automation/seo-optimizer.mjs` — `REVERSE=0` ist Pflicht,
+  sonst durchsucht der Lauf zuerst das schon Fertige. ~65 Min pro 5000.
+- **2. ⛔ CJ IST BLOCKIERT: heute nur 39 Punkte übrig** (`usedToday` 116 400 bei `total` 68 875).
+  **Die Annahme „Limit setzt sich täglich zurück" ist NICHT bestätigt** — vom 17.10. abends (248 übrig)
+  bis 18.10. 16:52 UTC kein Rücksprung, `usedToday` stieg weiter. **Erst Punkte prüfen, dann planen.**
+  Danach gezielt `tag:gadgets` (**1483**), dann `tag:elektronik` (**4494**); Mode/Kostüme/Haushalt zuletzt.
+- **3. `image-audit.mjs` ist NICHT mehr blockiert — Gemini antwortet wieder** (heute geprüft). Aber es
+  tauscht per `reorderMedia` das Hauptbild → **erst ohne `APPLY`, Befunde einzeln ansehen.**
+- **4. Masse in die Beschreibungen** (6476 von 9000 ohne cm/ml-Angabe) — braucht CJ-Punkte, also nach (2).
+- **5. Noch nie DRY geprüft:** `cross_sell.mjs` (schreibt in Beschreibungen!), `shop_brain.mjs`,
+  `autopilot/shop_pulse.mjs`, `autopilot/merchant_feed.mjs`.
+- **✅ ERLEDIGT, aus dem Gedächtnis streichen: der Archiv-Backlog.** Statt „~4700 archivierte löschen"
+  sind es heute **161**.
+- **⛔ DER DRAFT-BERG IST KEINE CHANCE — NICHT ABGRABEN.** Über **10 000** DRAFTs, aber die Tag-Zählung
+  über die 3000 zuletzt geänderten zeigt: **90 % tragen einen ausdrücklichen Grund** —
+  `alt-einzelgroesse-ersetzt` 1018 (durch Varianten-Produkt ersetzt) · `rueckhol-0907` 811 ·
+  `cj-nicht-versendbar-ch` 632 · `duplikat-auto-draft` 340 · `marge-verlust`/`verlust-auto` je 179 ·
+  `ausverkauft-lieferant` 115 · `bilder-geloescht-speicher` 113 · dazu `verlust-rabatt25`,
+  `bigbuy-paket-ausgelaufen`, `fehlklasse-*`, `vision-qa-draft-1014`. **Nur 298 von 3000 (10 %) ohne
+  Grund-Tag** — Einzelfälle, keine Goldgrube.
+  **MESS-LEHRE am eigenen Leib:** mein erstes Muster kannte `alt-einzelgroesse-ersetzt` nicht und meldete
+  **45 % „ohne Grund"** statt 10 %. **Eine Liste bekannter Sperrgründe ist nie vollständig — erst die
+  Tags zählen, dann urteilen.**
+- **🟡 Beim User:** Env-Eintrag umdrehen · Google-Kanal-Entscheid (**1892** aktive Produkte nicht auf
+  „Google & YouTube"; 2376 aktive `tag:fortura`) · Widmann-Preise · Holzspiegel-Preis · ob der CJ-Plan
+  grösser werden muss.
+
 **📌 2026-10-18 (⭐ 775 echte Bewertungen live — zwei Importer-Fehler derselben Klasse gefunden):**
 Tagesergebnis: **775 echte ≥4★-Bewertungen auf 152 Produkten, 0 Fehler**, in sechs Chargen
 (155 · 187 · 146 · 161 · 63 · 63). Der erste Lauf des Tages meldete 17 Bewertungen und 20 ‚Fehler‘ —
