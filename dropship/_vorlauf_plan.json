@@ -469,13 +469,15 @@
   "pin-20261023T1950": {
    "basis_utc": "2026-10-23T19:50:00Z",
    "format": "pin",
-   "grund": "verschwunden [399467237]",
+   "grund": "",
    "handle": "",
    "handles": [],
    "letzter_versuch": "2026-10-18T23:04:54Z",
-   "mc_ids": [],
+   "mc_ids": [
+    399492677
+   ],
    "reserviert_um": "2026-10-18T23:04:54Z",
-   "status": "reserviert",
+   "status": "geplant",
    "termin_utc": "2026-10-23T19:50:00Z",
    "versuche": 2
   },
@@ -497,12 +499,12 @@
   "pin-20261024T1510": {
    "basis_utc": "2026-10-24T15:10:00Z",
    "format": "pin",
-   "grund": "verschwunden [399469629]",
+   "grund": "rc=1: g/automation/metricool_pinterest_pin.mjs:153:9)\n    at async file:///home/user/aban-news-landing/automation/metricool_pinterest_pin.mjs:251:13\n\nNode.js v22.22.2",
    "handle": "",
    "handles": [],
-   "letzter_versuch": "2026-10-18T22:17:26Z",
+   "letzter_versuch": "2026-10-18T23:06:10Z",
    "mc_ids": [],
-   "reserviert_um": "2026-10-18T22:17:26Z",
+   "reserviert_um": "2026-10-18T23:06:10Z",
    "status": "offen",
    "termin_utc": "2026-10-24T15:10:00Z",
    "versuche": 1
@@ -1439,6 +1441,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-18T23:04:54Z",
+ "stand": "2026-10-18T23:06:51Z",
  "version": 1
 }

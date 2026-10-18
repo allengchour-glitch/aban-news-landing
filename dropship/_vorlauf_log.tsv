@@ -154,3 +154,5 @@
 2026-10-18T23:03:19Z	bild-20261023T0745	geplant	[399491221, 399491227] ['herren-ring-vintage-edelstahl-retro']
 2026-10-18T23:04:47Z	pin-20261023T1510	geplant	[399491953] []
 2026-10-18T23:04:54Z	tiktok-20261023T1805	rc3	Nichts faellig: kein ready-Reel, dessen Video noch nirgends gepostet wurde (tiktok; Marke bleibt alt, Exit 3).
+2026-10-18T23:06:10Z	pin-20261023T1950	geplant	[399492677] []
+2026-10-18T23:06:51Z	pin-20261024T1510	rc1	 gql (file:///home/user/aban-news-landing/automation/metricool_pinterest_pin.mjs:153:9)     at async file:///home/user/aban-news-landing/automation/metricool_pinterest_pin.mjs:251:13  Node.js v22.22.2
