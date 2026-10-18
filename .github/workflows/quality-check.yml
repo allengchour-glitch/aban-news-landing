@@ -65,6 +65,11 @@ jobs:
           echo "$out"
           echo "$out" | tail -1 | grep -q '^0 Seiten' || { echo "::error::Direkte eBay-Links ohne Tracking gefunden — python3 tools/route_ebay_direct_links.py ausführen"; exit 1; }
 
+      - name: Verkauftes Audit-Workbook bleibt zur Verkaufsseite konsistent
+        # Prueft Preis gegen Katalog, dass das Workbook offline laeuft und dass
+        # der ausgelieferte Stand neu gebaut dem Quelltext entspricht.
+        run: python -B -m unittest tools.ki_audit.test_produkt
+
       - name: Generatoren bauen ohne Fehler (Smoke-Test)
         run: |
           cd ki-tools-radar && python generate.py >/dev/null && echo "KI-Tools Radar OK"

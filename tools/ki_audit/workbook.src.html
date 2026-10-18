@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>KI-Sichtbarkeits-Audit</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--akz:#b45309;--akz-lt:#fde9c8;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#e7dfd2;--bg:#fffbf5;--card:#fff;--field:#fffdf9;--gut:#15803d;--mit:#b45309;--rot:#b91c1c}
+@media(prefers-color-scheme:dark){:root{--akz:#fbbf24;--akz-lt:#5a4422;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b16;--gut:#4ade80;--mit:#fbbf24;--rot:#f87171}}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.55;color:var(--ink);background:var(--bg)}
+.wrap{max-width:900px;margin:0 auto;padding:24px 16px 60px}
+h1{font-size:clamp(24px,4.5vw,32px);letter-spacing:-.02em;line-height:1.15}
+h2{font-size:1.2rem;margin:0 0 10px}
+h3{font-size:1rem;margin:0 0 6px}
+.sub{color:var(--ink2);margin:6px 0 18px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:14px 0}
+.schritt{display:inline-block;background:var(--akz-lt);color:var(--akz);font-weight:800;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px;margin-bottom:8px}
+table{width:100%;border-collapse:collapse;font-size:.93rem}
+th,td{padding:7px 6px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:.74rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+input,select,textarea{font:inherit;padding:8px 9px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink);width:100%}
+textarea{min-height:52px;resize:vertical}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+label{display:block;font-size:.8rem;font-weight:700;color:var(--ink2);margin-bottom:4px}
+.hint{font-size:.8rem;color:var(--muted);margin-top:3px}
+button{font:inherit;cursor:pointer;border-radius:8px;padding:8px 13px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+button.haupt{background:var(--akz);border-color:var(--akz);color:#fff;font-weight:700}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.zahl{font-size:2.2rem;font-weight:800;font-variant-numeric:tabular-nums;line-height:1}
+.kacheln{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.kachel{border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--field)}
+.kachel b{display:block;font-size:.76rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.gut{color:var(--gut)}.mit{color:var(--mit)}.rot{color:var(--rot)}
+.urteil{border-left:4px solid var(--akz);padding:10px 14px;background:var(--field);border-radius:0 10px 10px 0;margin-top:12px}
+ol,ul{margin:8px 0 0 20px}li{margin:4px 0}
+.ja-nein{display:flex;gap:8px;align-items:center}
+.ja-nein select{width:auto;min-width:92px}
+.monat{border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--field);margin:10px 0}
+.monat b{color:var(--akz)}
+.leer{color:var(--muted);font-style:italic}
+footer{border-top:1px solid var(--line);margin-top:34px;padding-top:14px;color:var(--muted);font-size:.85rem}
+@media print{button,.hint,.nodruck{display:none}body{background:#fff}.box{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>KI-Sichtbarkeits-Audit</h1>
+<p class="sub">Prüf in rund zwei Stunden selbst, ob ChatGPT, Perplexity und Google AI dich nennen — und bekomm daraus einen 90-Tage-Plan. Läuft offline im Browser, ohne Login. Deine Eingaben bleiben auf diesem Gerät.</p>
+
+<div class="box">
+  <span class="schritt">Schritt 1</span>
+  <h2>Fragen sammeln</h2>
+  <p class="hint">Trag ein, was du anbietest und wo. Daraus entstehen zwölf Fragen in der Form, in der Kund:innen tatsächlich fragen. Du kannst jede Frage überschreiben.</p>
+  <div class="grid" style="margin-top:12px">
+    <div><label for="leistung">Deine Leistung</label><input id="leistung" placeholder="z. B. Malerarbeiten"><div class="hint">So, wie Kund:innen es sagen würden.</div></div>
+    <div><label for="ort">Ort oder Region</label><input id="ort" placeholder="z. B. Bern"></div>
+    <div><label for="betrieb">Dein Betriebsname</label><input id="betrieb" placeholder="z. B. Maler Muster AG"><div class="hint">Danach suchst du in den Antworten.</div></div>
+  </div>
+  <p style="margin-top:12px"><button class="haupt" id="fragenNeu">Fragen erzeugen</button> <button id="fragenLeeren">Fragen zurücksetzen</button></p>
+</div>
+
+<div class="box">
+  <span class="schritt">Schritt 2 + 3</span>
+  <h2>KI befragen und auswerten</h2>
+  <p class="hint">Stell jede Frage in jedem der drei Dienste und trag ein, was passiert ist. <b>Genannt</b> = dein Betriebsname kommt vor. <b>Mitbewerber</b> = die KI nennt andere, dich nicht. <b>Niemand</b> = die KI nennt gar keinen Anbieter.</p>
+  <div class="scroll"><table id="protokoll">
+    <thead><tr><th style="min-width:220px">Frage</th><th>ChatGPT</th><th>Perplexity</th><th>Google AI</th><th style="min-width:150px">Notiz</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+</div>
+
+<div class="box">
+  <h2>Dein Sichtbarkeits-Stand</h2>
+  <div class="kacheln" style="margin-top:10px">
+    <div class="kachel"><b>Punkte</b><span class="zahl" id="kPunkte">—</span><div class="hint" id="kBasis">noch nichts eingetragen</div></div>
+    <div class="kachel"><b>Genannt</b><span class="zahl gut" id="kGenannt">0</span></div>
+    <div class="kachel"><b>Mitbewerber</b><span class="zahl mit" id="kMit">0</span></div>
+    <div class="kachel"><b>Niemand</b><span class="zahl" id="kNicht">0</span></div>
+  </div>
+  <div id="urteil"></div>
+  <div id="jeDienst" style="margin-top:12px"></div>
+</div>
+
+<div class="box">
+  <span class="schritt">Schritt 4</span>
+  <h2>Ursachen finden</h2>
+  <p class="hint">Fünf Felder entscheiden, ob eine KI dich überhaupt kennt. Antworte ehrlich mit nein, wenn du es nicht sicher weisst — genau dort liegt der Hebel.</p>
+  <div id="ursachen"></div>
+</div>
+
+<div class="box">
+  <span class="schritt">Schritt 5</span>
+  <h2>Dein 90-Tage-Plan</h2>
+  <p class="hint">Entsteht aus deinen Antworten oben: das Wirksamste zuerst.</p>
+  <div id="plan"></div>
+</div>
+
+<div class="box">
+  <span class="schritt">Schritt 6</span>
+  <h2>Nachmessen</h2>
+  <p>Stell nach 90 Tagen <b>dieselben</b> Fragen noch einmal und trag die Punktzahl ein. Nur der Vergleich zeigt, ob sich etwas bewegt hat.</p>
+  <div class="grid" style="margin-top:12px">
+    <div><label for="mess1">Punkte heute</label><input id="mess1" readonly></div>
+    <div><label for="mess1d">Datum</label><input id="mess1d" type="date"></div>
+    <div><label for="mess2">Punkte nach 90 Tagen</label><input id="mess2" type="number" min="0" max="100" placeholder="0–100"></div>
+    <div><label for="mess2d">Datum</label><input id="mess2d" type="date"></div>
+  </div>
+  <div id="vergleich"></div>
+</div>
+
+<p class="nodruck" style="margin-top:18px">
+  <button class="haupt" onclick="window.print()">Als PDF drucken</button>
+  <button id="alleLeeren">Alles löschen</button>
+  <span class="hint" style="display:inline-block;margin-left:8px">Gespeichert wird automatisch, nur in diesem Browser.</span>
+</p>
+
+<div class="box">
+  <h3>Ehrlich dazu</h3>
+  <p class="hint">KI-Antworten schwanken von Tag zu Tag und von Nutzerkonto zu Nutzerkonto. Niemand kann garantieren, dass du genannt wirst. Dieses Audit zeigt deinen Ist-Stand und die wirksamsten Hebel — gehen musst du sie selbst. Frag ohne eingeloggtes Konto oder in einem privaten Fenster, sonst antwortet die KI auf deine eigene Vorgeschichte.</p>
+</div>
+
+<footer>KI-Sichtbarkeits-Audit — aban news · abannews.com · hallo@abannews.com<br>Nutzung privat und geschäftlich erlaubt. Weitergabe und Weiterverkauf nicht gestattet.</footer>
+</div>
+
+<script>/*ENGINE*/</script>
+<script>
+(function () {
+  "use strict";
+  var A = window.AUDIT, S = "aban-ki-audit-v1";
+  var $ = function (id) { return document.getElementById(id); };
+  var daten = { leistung: "", ort: "", betrieb: "", fragen: [], antworten: {}, notizen: {},
+                ursachen: {}, mess1d: "", mess2: "", mess2d: "" };
+
+  try { var roh = localStorage.getItem(S); if (roh) daten = Object.assign(daten, JSON.parse(roh)); } catch (e) {}
+  function sichern() { try { localStorage.setItem(S, JSON.stringify(daten)); } catch (e) {} }
+
+  /* ------------------------------------------------------------- Schritt 1 */
+  ["leistung", "ort", "betrieb"].forEach(function (k) {
+    $(k).value = daten[k] || "";
+    $(k).addEventListener("input", function () { daten[k] = this.value; sichern(); });
+  });
+  $("fragenNeu").addEventListener("click", function () {
+    daten.fragen = A.fragen(daten.leistung, daten.ort);
+    daten.antworten = {}; daten.notizen = {};
+    sichern(); zeichneProtokoll(); rechne();
+  });
+  $("fragenLeeren").addEventListener("click", function () {
+    daten.fragen = []; daten.antworten = {}; daten.notizen = {};
+    sichern(); zeichneProtokoll(); rechne();
+  });
+
+  /* ------------------------------------------------------------- Schritt 2 */
+  function zeichneProtokoll() {
+    var tb = $("protokoll").querySelector("tbody");
+    tb.textContent = "";
+    if (!daten.fragen.length) {
+      var tr = document.createElement("tr"), td = document.createElement("td");
+      td.colSpan = 5; td.className = "leer";
+      td.textContent = "Noch keine Fragen — oben Leistung und Ort eintragen und auf „Fragen erzeugen“ klicken.";
+      tr.appendChild(td); tb.appendChild(tr); return;
+    }
+    daten.fragen.forEach(function (frage, i) {
+      var tr = document.createElement("tr");
+      var tdF = document.createElement("td");
+      var inp = document.createElement("input");
+      inp.value = frage;
+      inp.addEventListener("input", function () { daten.fragen[i] = this.value; sichern(); });
+      tdF.appendChild(inp); tr.appendChild(tdF);
+      A.DIENSTE.forEach(function (d) {
+        var td = document.createElement("td"), sel = document.createElement("select");
+        [["offen", "—"], ["genannt", "genannt"], ["mitbewerber", "Mitbewerber"], ["nicht", "niemand"]]
+          .forEach(function (o) {
+            var op = document.createElement("option"); op.value = o[0]; op.textContent = o[1]; sel.appendChild(op);
+          });
+        var key = i + "|" + d;
+        sel.value = daten.antworten[key] || "offen";
+        sel.addEventListener("change", function () { daten.antworten[key] = this.value; sichern(); rechne(); });
+        td.appendChild(sel); tr.appendChild(td);
+      });
+      var tdN = document.createElement("td"), ta = document.createElement("textarea");
+      ta.value = daten.notizen[i] || ""; ta.placeholder = "wer wurde genannt?";
+      ta.addEventListener("input", function () { daten.notizen[i] = this.value; sichern(); });
+      tdN.appendChild(ta); tr.appendChild(tdN);
+      tb.appendChild(tr);
+    });
+  }
+
+  /* ------------------------------------------------------------- Schritt 4 */
+  function zeichneUrsachen() {
+    var w = $("ursachen"); w.textContent = "";
+    A.URSACHEN.forEach(function (u) {
+      var d = document.createElement("div"); d.className = "monat";
+      var h = document.createElement("h3"); h.textContent = u.titel; d.appendChild(h);
+      var p = document.createElement("p"); p.className = "hint"; p.textContent = u.frage; d.appendChild(p);
+      var z = document.createElement("div"); z.className = "ja-nein"; z.style.marginTop = "8px";
+      var sel = document.createElement("select");
+      [["", "— noch offen"], ["ja", "ja, erledigt"], ["nein", "nein / unklar"]].forEach(function (o) {
+        var op = document.createElement("option"); op.value = o[0]; op.textContent = o[1]; sel.appendChild(op);
+      });
+      sel.value = daten.ursachen[u.id] || "";
+      sel.addEventListener("change", function () { daten.ursachen[u.id] = this.value; sichern(); zeichnePlan(); });
+      z.appendChild(sel); d.appendChild(z); w.appendChild(d);
+    });
+  }
+
+  /* ------------------------------------------------------------- Schritt 5 */
+  function zeichnePlan() {
+    var offen = Object.keys(daten.ursachen).filter(function (k) { return daten.ursachen[k] === "nein"; });
+    var w = $("plan"); w.textContent = "";
+    A.plan(offen).forEach(function (m) {
+      var d = document.createElement("div"); d.className = "monat";
+      var b = document.createElement("b"); b.textContent = m.titel; d.appendChild(b);
+      if (!m.schritte.length) {
+        var leer = document.createElement("p"); leer.className = "leer";
+        leer.textContent = "nichts offen"; d.appendChild(leer);
+      } else {
+        var ul = document.createElement("ul");
+        m.schritte.forEach(function (s) {
+          var li = document.createElement("li");
+          var st = document.createElement("strong"); st.textContent = s.titel + ": ";
+          li.appendChild(st); li.appendChild(document.createTextNode(s.massnahme));
+          ul.appendChild(li);
+        });
+        d.appendChild(ul);
+      }
+      w.appendChild(d);
+    });
+  }
+
+  /* --------------------------------------------------------------- Rechnen */
+  function rechne() {
+    var liste = [];
+    daten.fragen.forEach(function (_, i) {
+      A.DIENSTE.forEach(function (d) {
+        liste.push({ frage: i, dienst: d, ergebnis: daten.antworten[i + "|" + d] || "offen" });
+      });
+    });
+    var z = A.stand(liste);
+    $("kPunkte").textContent = z.gezaehlt ? z.punkte : "—";
+    $("kBasis").textContent = z.gezaehlt
+      ? z.gezaehlt + " von " + liste.length + " Feldern ausgefüllt"
+      : "noch nichts eingetragen";
+    $("kGenannt").textContent = z.genannt;
+    $("kMit").textContent = z.mitbewerber;
+    $("kNicht").textContent = z.nicht;
+    $("mess1").value = z.gezaehlt ? z.punkte : "";
+
+    var u = A.urteil(z), uw = $("urteil"); uw.textContent = "";
+    if (u) {
+      var d = document.createElement("div"); d.className = "urteil";
+      var b = document.createElement("b");
+      b.textContent = { gut: "Gut aufgestellt", mittel: "Teilweise sichtbar", schwach: "Kaum sichtbar" }[u.stufe];
+      d.appendChild(b); d.appendChild(document.createElement("br"));
+      d.appendChild(document.createTextNode(u.text)); uw.appendChild(d);
+    }
+    var jw = $("jeDienst"); jw.textContent = "";
+    var dienste = Object.keys(z.jeDienst);
+    if (dienste.length) {
+      var ul = document.createElement("ul");
+      dienste.forEach(function (d) {
+        var e = z.jeDienst[d], li = document.createElement("li");
+        li.textContent = d + ": " + e.genannt + " von " + e.gezaehlt + " Antworten nennen dich";
+        ul.appendChild(li);
+      });
+      jw.appendChild(ul);
+    }
+    vergleiche();
+  }
+
+  /* ------------------------------------------------------------- Schritt 6 */
+  ["mess1d", "mess2", "mess2d"].forEach(function (k) {
+    $(k).value = daten[k] || "";
+    $(k).addEventListener("input", function () { daten[k] = this.value; sichern(); vergleiche(); });
+  });
+  function vergleiche() {
+    var w = $("vergleich"); w.textContent = "";
+    var a = parseFloat($("mess1").value), b = parseFloat(daten.mess2);
+    if (isNaN(a) || isNaN(b)) return;
+    var d = Math.round(b - a), p = document.createElement("p");
+    p.className = "urteil";
+    p.textContent = d > 0 ? "Plus " + d + " Punkte gegenüber dem ersten Durchgang."
+      : d < 0 ? "Minus " + Math.abs(d) + " Punkte. Prüf, ob du dieselben Fragen gestellt hast."
+      : "Gleichstand — dieselbe Punktzahl wie beim ersten Durchgang.";
+    w.appendChild(p);
+  }
+
+  $("alleLeeren").addEventListener("click", function () {
+    if (!window.confirm("Wirklich alle Eingaben löschen?")) return;
+    try { localStorage.removeItem(S); } catch (e) {}
+    window.location.reload();
+  });
+
+  zeichneProtokoll(); zeichneUrsachen(); zeichnePlan(); rechne();
+})();
+</script>
+</body>
+</html>
