@@ -12,6 +12,7 @@ on:
       - 'automation/*.mjs'
       - 'tools/versandregel*.mjs'
       - 'automation/seo-optimizer.mjs'
+      - '.github/workflows/seo-optimizer.yml'
       - 'automation/metricool-schedule.mjs'
       - 'automation/price_guard.mjs'
       - 'automation/cross_sell.mjs'
@@ -210,6 +211,8 @@ jobs:
           node --check codex-mods/luxe-codex/hooks/leitplanken.mjs
           node --check codex-mods/luxe-codex/hooks/schreibzaehler.mjs
           node --check codex-mods/luxe-codex/hooks/kontext.mjs
+      - name: Targeted SEO optimizer regressions (offline, no credentials or network)
+        run: node --test automation/seo-optimizer_test.mjs
       - name: Existing helper checks
         run: |
           node automation/lib/shopify_gql_test.mjs

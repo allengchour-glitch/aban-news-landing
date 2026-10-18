@@ -1,0 +1,25 @@
+{
+  "mode": "review",
+  "state": "complete",
+  "requested": 1,
+  "scanBudget": 6,
+  "proposalLimit": 6,
+  "scanned": 1,
+  "proposed": 0,
+  "updated": 0,
+  "mutationAttempts": 0,
+  "unknown": [],
+  "products": [
+    {
+      "id": "gid://shopify/Product/15449392251265",
+      "state": "unchanged",
+      "media": {
+        "state": "ready_in_sample",
+        "sampled": 3,
+        "complete": false
+      }
+    }
+  ],
+  "mediaScope": "Stichprobe: höchstens drei Medien je explizit gewähltem Produkt; kein Katalogaudit.",
+  "evidenceMode": "current native read replayed locally; no local runtime credential or write test"
+}

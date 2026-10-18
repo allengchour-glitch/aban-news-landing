@@ -1,0 +1,23 @@
+{
+  "offlineRegressionTests": {
+    "passed": 22,
+    "failed": 0,
+    "network": "injected stubs; real fetch forbidden"
+  },
+  "existingTitleChecks": "passed",
+  "yamlSyntaxAndReviewGuards": "passed",
+  "newReadQueryNativeExecution": "passed",
+  "nativeStandaloneValidator": "skipped by provider",
+  "mutationSchemaIntrospected": true,
+  "realMutationExecuted": false,
+  "nativeSnapshotReplay": {
+    "scanned": 1,
+    "proposed": 0,
+    "confirmedUpdates": 0
+  },
+  "htmlSourceHashes": "native exact descriptionHtml",
+  "protectedShippingFooter": "preserved byte-for-byte",
+  "shopWrites": 0,
+  "workflowDispatches": 0,
+  "deployments": 0
+}

@@ -1,0 +1,8 @@
+--- schuhe.before.html
++++ schuhe.after.html
+@@ -1,2 +1,2 @@
+ <p>Schuhe für jeden Anlass: Sneaker, Sandalen, Pumps, Stiefel, Loafer und Hausschuhe für Damen, Herren und Kinder — täglich neue Modelle zu fairen Preisen. Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe.</p>
+-<!-- ls-verwandt --><p class="ls-verwandt"><strong>Passend dazu:</strong> <a href="/collections/sneaker-sportschuhe">Sneaker &amp; Sportschuhe</a> · <a href="/collections/sub-ballerinas">Ballerinas, Flats &amp; Loafers</a> · <a href="/products/ballettschuhe-aus-leder-622800">Ballettschuhe</a></p><!-- /ls-verwandt -->
+\ No newline at end of file
++<!-- ls-verwandt --><p class="ls-verwandt"><strong>Passend dazu:</strong> <a href="/collections/sneaker-sportschuhe">Sneaker &amp; Sportschuhe</a> · <a href="/collections/sub-hausschuhe">Hausschuhe &amp; Slipper</a> · <a href="/collections/sub-ballerinas">Ballerinas, Flats &amp; Loafers</a> · <a href="/products/ballettschuhe-aus-leder-622800">Ballettschuhe</a></p><!-- /ls-verwandt -->
+\ No newline at end of file
