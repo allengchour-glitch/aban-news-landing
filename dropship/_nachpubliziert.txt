@@ -377,3 +377,4 @@ gid://shopify/Product/16642451865991	grosses-handgepack-mit-trocken-feucht-trenn
 gid://shopify/Product/16642553741703	business-rucksack-mit-hoher-kapazitat-612400	Business Rucksack mit hoher Kapazität
 gid://shopify/Product/16642981855623	magazinbeutel-fur-feldweste-aus-1000d-nylon-613400	Magazinbeutel für Feldweste aus 1000D Nylon
 gid://shopify/Product/16644181066119	schultertasche-business-mit-usb-anschluss-610800	Schultertasche Business mit USB-Anschluss
+gid://shopify/Product/16651339497863	laser-handschutz-fur-1911-pistole-schwarz-7ee884	Laser-Handschutz für 1911-Pistole, schwarz
