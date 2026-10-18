@@ -26,3 +26,4 @@ gid://shopify/Product/16612760682887	Yogarad für Pilates und Yoga
 gid://shopify/Product/16613846974855	Kabellose Fernbedienung für Computer
 gid://shopify/Product/16615393460615	Fensterputzroboter mit geplanter Route
 gid://shopify/Product/16615822098823	Dreidimensionales Holz-Puzzle mit Musik
+gid://shopify/Product/16651340087687	Rollenpapier-Handwerkzeug

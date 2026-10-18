@@ -1881,8 +1881,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Farben: taro purple, haze blue, matcha green, cherry blossom powder, p…»
 - `16614563611015` · Hundebreitschiene für Spaziergänge
   - «…Farben: Schwarz, Grün, Blau, Orange,…»
-- `16614568526215` · Hundeslinge mit Zugseil – 1,5 cm breit
-  - «…Farben: Grau, Rosa, Orange, See-Blau Breite 1,…»
 - `16614719291783` · Anti-Lost-Halsband für Hunde
   - «…Farben: Schwarz, Grau, Grün, Rot, Blau,…»
 - `16614845251975` · Grosses Crossbody für Herren – urbanes Minimaldesign
@@ -1893,8 +1891,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Verfügbare Farben:…»
 - `16615802929543` · Schwarzer Strickschal aus Wolle – 230 × 20 cm
   - «…Farben: Rot, Schwarz, Weinrot, Hellblau, Marineblau, Hellgrau, Hautros…»
-- `16616718467463` · Damentasche mit grosser Kapazität
-  - «…Farben: Schwarz und …»
 - `16617638789511` · Schiessdecke Training 200x75 cm 1000D Nylon
   - «…Farben: Mud /…»
 - `16617712124295` · Hitzebeständige Glas-Schüssel mit Pflanzenmuster

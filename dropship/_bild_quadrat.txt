@@ -309,3 +309,5 @@
 16613723046279	494x522 -> 522x522	Glas-Support-Ball für Video- und Bildanzeige
 16615409418631	425x550 -> 550x550	Pailletten-Abendkleid mit V-Ausschnitt
 16615660781959	640x480 -> 640x640	3D Nerzhaar-Wimpern
+16616557150599	638x487 -> 638x638	Holz-Miniflugzeug
+16617237217671	554x437 -> 554x554	Taschenrucksack mit Computerfach
