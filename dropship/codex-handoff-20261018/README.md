@@ -1,5 +1,8 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+**Semrush-Abgleich nach Inhaberhinweis:** [Vorhandene Claude-Semrush-Arbeit zuerst wiederverwenden](SEMRUSH-BESTAND.md). Direkte MCP-Nutzung und übernommene CH-Berichte sind belegt. Fehlender Windsor-Anschluss ist davon getrennt; keine neue Einrichtung oder kostenpflichtige Abfrage als Voraussetzung darstellen. Alte Rangwerte bleiben datiert.
+
+
 **Gratis-Sichtbarkeit, 18.10.:** [Geprüfter Plan für Google-Produkteinträge, Search Console, Bing, Pinterest und Semrush Free](GRATIS-SICHTBARKEIT.md). Windsor meldet TRIAL, keine bestätigte dauerhafte Gratisbrücke; Standard-Semrush-SEO-API ist kostenpflichtig. Vorhandene Verifizierungsmarker und Shopify-Google-Kanalflag beweisen keinen Kontozugriff oder Merchant-Freigabe. Keine Konten, Feeds, Indexmeldungen oder Apps aktiviert.
 
 
