@@ -82,6 +82,44 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-18 abends (🧹 Aufräum-Runde: 80 Kategorieseiten lieferten 404, drei Werkzeuge waren blind):**
+Alles heute live gemessen und nachgeprüft. PRs #2690–#2693.
+- **🚨 80 Collections mit zusammen 25 320 Produkten gaben HTTP 404** — angelegt, befüllt, beschrieben,
+  aber nie in den Onlineshop publiziert (die Publish-Falle vom 12.06., diesmal im grossen Stil).
+  **64 davon live geschaltet, nachgeprüft 64/64 = 200**; 16 bewusst nicht: 1 ausdrücklich
+  stillgelegt (`-alt-20261010`), 11 Dubletten lebender Seiten (`damenschuhe` 2239 ≈ `damen-schuhe`
+  2287), 4 vollständig in einer grösseren enthalten. **Mess-Lehre:** `resourcePublicationsV2` meldete
+  169 „nicht im Onlineshop“ — 4 von 5 Stichproben waren live 200. **Nur der HTTP-Abruf sagt die
+  Wahrheit**; das Kanalfeld allein führt in die Irre.
+- **🧠 `shop_brain.mjs` sah 250 von 569 Collections** (`first:250` ohne Blättern) und meldete
+  darum „0 Befunde“. Dahinter: **54 ohne Titelbild, 10 ohne SEO-Titel** — gesetzt, 54→0 / 10→0.
+  Dazu versprach sein Textbaukasten „schnelle Lieferung (7–14 Tage)“ und „Gratis-Versand ab CHF 65“
+  (richtig ist **CHF 50**). Live gemessen: 0 von 4000 SEO-Beschreibungen trugen die falsche Zahl,
+  3682 die richtige — **der Fehler war geladen, nicht abgefeuert.** Produkt-SEO kommt jetzt aus
+  `automation/lib/seo_titel.mjs`. Und `runMutations` zählte `done += chunk.length`, sobald `data`
+  zurückkam — Shopify meldet Abgelehntes aber in `userErrors` INNERHALB einer Erfolgsantwort.
+- **🖼️ 775 von 5000 Hauptbildern liegen unter 800 px, 411 haben ein grösseres Zweitbild.** Das
+  Bild-Audit vermerkte das nur. Jetzt tauscht es — aber nur gegen ein Bild, das über der Schwelle
+  liegt, grösser ist UND vom Modell als sauberes Produktbild bestätigt wird. **Die wichtigste
+  Gegenprobe ist die Gegenrichtung:** ein grosses Verpackungs- oder Collagenfoto nach vorn zu holen
+  sähe aus wie eine Verbesserung. (Dasselbe Werkzeug sortierte bis heute nach der **Herkunft**
+  abgebildeter Menschen — #2691, mit `APPLY` als Vorgabe AN; es hatte nie gelaufen.)
+- **🛍️ 2400 Querverweis-Boxen gesetzt** (`<!-- ls-xsell-v1 -->`), 0 Dubletten, alle Ziel-Links 200.
+  Der Fund davor: `cross_sell.mjs` traf mit dem Muster `schweiz` den **Versand-Tag** `schweiz-versand`
+  und hätte 26 % der Produkte nach „Schweizer Editionen“ geschickt.
+- **✅ Sauber gemessen, nichts zu tun:** alle **208 Menü-Links** (Gegenprobe greift; die zwei 406 sind
+  Shopifys Kundenkonto-Portal) · alle **290 Versand-Aussagen** in Beschreibungen nennen CHF 50 ·
+  **164 fehlende Bild-Alt-Texte** gefüllt (`tag:elektronik` 120, `tag:gadgets` 44), danach 0 offen.
+- **💰 Der Shop verkauft wirklich — die alte Notiz „0 Käufe“ ist überholt:**
+  `node automation/autopilot/shop_pulse.mjs` (nur lesen) meldet **0 Bestellungen / 24 h, 2 / 7 Tage
+  (CHF 121.03), 8 / 30 Tage (CHF 411.69)**. Vorher `env -u TELEGRAM_BOT_TOKEN -u TELEGRAM_CHAT_ID`,
+  sonst geht ungefragt eine Nachricht aufs Handy.
+- **⭐ CJ-Punkte füllen sich nach, aber langsam:** morgens 39 übrig, abends ging ein Lauf durch
+  (**37 echte Bewertungen auf 7 Produkten**), dann waren sie wieder weg. Die Fläche bleibt
+  `tag:gadgets` (1483) und `tag:elektronik` (4494), portionsweise.
+- **🟡 NEU beim User:** die 16 nicht publizierten Collections durchsehen (die 11 Dubletten gehören
+  wohl gelöscht, sonst konkurrieren zwei Seiten um dasselbe Google-Ergebnis).
+
 **📌 2026-10-18 (📋 Aufgabenliste für die nächste Sitzung — alles heute live gemessen):**
 Vollständig mit Befehlen und Zahlen in **`dropship/NAECHSTE-AUFGABEN-1810.md`**. Kurzfassung:
 - **1. SEO-Titel weiterfüllen** (grösste Fläche, kostet keine CJ-Punkte):
