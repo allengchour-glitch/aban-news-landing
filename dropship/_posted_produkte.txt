@@ -390,3 +390,6 @@ pid:15450847805825
 slug:winter-warme-haussocken-mit-anti-rutsch-sohle
 slug:bruder-zubehor-heuraufe-fga062612
 name:bruderzubehörheuraufe
+slug:cjreel-cjyd179601501az
+pid:15450829521281
+slug:kabelloser-mini-entsafter-fur-fruchte-gemuse
