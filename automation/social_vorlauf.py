@@ -61,6 +61,7 @@ POSTER = {   # Format → (Befehl, Zusatz-Umgebung, Vorlauf-Schritte vor dem Pos
     "pin":       ([NODE, "automation/metricool_pinterest_pin.mjs"], {}),
 }
 LEER_MUSTER = re.compile(r"nichts faellig|nichts fällig|kein ready|kein pin-kandidat|kein bild mit status=ready|keine .*ready|nichts zu tun|kein postbares|stopp gesetzt", re.I)
+FEED_ARTEN = {"post", "reel"}
 SPERR_MUSTER = re.compile(r"lock aktiv|anderer poster", re.I)   # vorübergehend: kein Versuch verbraucht, nicht wiederholen
 
 
@@ -191,7 +192,15 @@ def konflikt(t_utc, fmt, regeln, planer, eigene=()):
         if p.get("id") in eigene:
             continue
         te = eintrag_utc(p)
-        if te is None or art_des_eintrags(p) != f["art"]:
+        if te is None:
+            continue
+        art = art_des_eintrags(p)
+        if art != f["art"]:
+            # Prüfung 18.10.: Feed-Bild und Reel auf demselben Instagram/Facebook-Profil nie im Abstand < 45 min (ChatGPT-Reel 10:00 stand 15 min nach dem
+            # Bild 09:45). Stories und Pins sind eigene Flächen.
+            if art in FEED_ARTEN and f["art"] in FEED_ARTEN and (netze & set(W.netze(p)) & {"instagram", "facebook"}) \
+                    and abs((te - t_utc).total_seconds()) < regeln.get("feed_uebergreifend_min", 45) * 60:
+                return p
             continue
         gemeinsam = netze & set(W.netze(p))
         if not gemeinsam:
@@ -814,7 +823,10 @@ def selbsttest():
     t_1845 = datetime(2026, 10, 19, 18, 45, tzinfo=TZ).astimezone(UTC)
     ok(konflikt(t_1845, "tiktok", regeln, [gpt]) is not None, "18:45 muss mit ChatGPT 18:30 kollidieren")
     ok(konflikt(datetime(2026, 10, 19, 20, 5, tzinfo=TZ).astimezone(UTC), "tiktok", regeln, [gpt]) is None, "20:05 darf nicht kollidieren")
-    ok(konflikt(t_1845, "bild", regeln, [gpt]) is None, "Reel-Eintrag darf Bild-Slot (art post) nicht sperren")
+    ok(konflikt(t_1845, "bild", regeln, [{**gpt, "providers": [{"network": "tiktok"}]}]) is None, "TikTok-Reel darf Bild-Slot (Instagram) nicht sperren")
+    gpt_ig = {**gpt, "providers": [{"network": "instagram"}]}
+    ok(konflikt(t_1845, "bild", regeln, [gpt_ig]) is not None, "IG-Reel 18:30 sperrt Feed-Bild 18:45 (< 45 min, Feed-übergreifend)")
+    ok(konflikt(datetime(2026, 10, 19, 19, 20, tzinfo=TZ).astimezone(UTC), "bild", regeln, [gpt_ig]) is None, "IG-Reel 18:30 sperrt Feed-Bild 19:20 nicht (50 min)")
     gpt["draft"] = True
     ok(konflikt(t_1845, "tiktok", regeln, [gpt]) is None, "Entwurf zählt nicht als Hindernis")
     # 4. Preisregel (Gegenstück zu post_guard.preisVeraltet)

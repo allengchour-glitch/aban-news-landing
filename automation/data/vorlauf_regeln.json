@@ -4,6 +4,7 @@
   "max_tage_voraus": 7,
   "mindest_vorlauf_min": 30,
   "drossel_nachlauf_min": 180,
+  "feed_uebergreifend_min": 45,
   "versuche_je_lauf": 4,
   "versuche_gesamt": 10,
   "versatz_min": [0, 20, -20, 40, -40, 60],

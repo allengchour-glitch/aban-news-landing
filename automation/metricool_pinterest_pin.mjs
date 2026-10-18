@@ -129,8 +129,8 @@ const BOARDS = [
   [/herren|männer/i, 'Herrenmode Schweiz'],
   [/kette|ohrring|armband|armreif|\bring\b|schmuck|anhänger|uhr\b|uhren/i, 'Schmuck & Accessoires'],
   [/(?<!hand)schuh|sandal|sneaker|stiefel|loafer|pumps|boots?\b/i, 'Schuhe & Sandalen'],
-  [/kleid|bluse|\brock\b|damen|jumpsuit|top\b/i, 'Sommerkleider & Damenmode 2026'],
-  [/leder|geldbörse|portemonnaie|tasche|gürtel|rucksack|wallet/i, 'Leder & Accessoires'],
+  [/(?<!ver)kleid|bluse|\brock\b|damen|jumpsuit|top\b/i, 'Sommerkleider & Damenmode 2026'],   // 18.10.: «Verkleidung» (Kostüme) ist kein Kleid (Prüfung: Animatronic-Figur auf dem Sommerkleider-Board)
+  [/(?<!f)leder|geldbörse|portemonnaie|tasche|gürtel|rucksack|wallet/i, 'Leder & Accessoires'],   // 18.10.: «Fledermaus» enthält «leder»
   [/diffuser|aroma|schlaf|kissen|kerze|duft/i, 'Schlaf & Aromatherapie'],
   [/beauty|pflege|haar|nagel|make-?up|wimper|gua|jade|kosmetik|lippen/i, 'Beauty & Pflege'],
   [/massage|wellness|yoga|entspann|sauna/i, 'Wellness & Self-Care'],
@@ -296,7 +296,8 @@ const boardName = (BOARDS.find(([rx]) => rx.test(suchtext)) || [null, 'Geschenki
 const boards = DRY && !TOKEN ? [] : (await mc('/v2/scheduler/boards/pinterest?brandId=' + BLOG)).data || [];
 const board = boards.find(b => b.name === boardName) || boards.find(b => b.name === 'Geschenkideen Schweiz');
 const preis = `CHF ${parseFloat(kandidat.priceRangeV2.minVariantPrice.amount).toFixed(2)}`;
-const saetze = text(kandidat.descriptionHtml).split(/(?<=[.!?])\s+/).filter(s => s.length > 25 && !HEIL.test(s) && !/vergriffen|Sommer 2026|Premium-Liebling/i.test(s));
+const saetze = text(kandidat.descriptionHtml).split(/(?<=[.!?])\s+/).filter(s => s.length > 25 && !HEIL.test(s) && !/vergriffen|Sommer 2026|Premium-Liebling/i.test(s)
+  && !/Warum bei LuxeStyle|Details\s*Marke|hochwertige Qualit|Schweizer Support|info@luxestyle|\?\s*$/i.test(s));   // 18.10.: Fortura-Vorlagenmüll («…Warum bei LuxeStyle kaufen?») stand in 9 von 19 geplanten Pins
 const beschreibung = `${(saetze.slice(0, 2).join(' ') || kandidat.title).slice(0, 330)}\n\n${preis} · Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · Kleiner Schweizer Shop 🇨🇭`.slice(0, 480);
 // 30.09.2026 Betreiber «immer sie markieren und auch andere orte»: Model-Material nur mit @tatjanalarsinamoira (post_guard.modelSperre) — beim Pin steht sie im Text
 const mitModel = modelSperre([kandidat.bild?.url, fassung.url], '') ? `${beschreibung.slice(0, 430)}\nModel: @tatjanalarsinamoira (Instagram)` : beschreibung;
