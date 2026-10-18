@@ -45,10 +45,16 @@
   "bild-20261022T0745": {
    "basis_utc": "2026-10-22T07:45:00Z",
    "format": "bild",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "",
+   "letzter_versuch": "2026-10-18T21:50:15Z",
+   "mc_ids": [
+    399454786
+   ],
+   "reserviert_um": "2026-10-18T21:50:15Z",
+   "status": "geplant",
    "termin_utc": "2026-10-22T07:45:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "bild-20261023T0745": {
    "basis_utc": "2026-10-23T07:45:00Z",
@@ -102,10 +108,13 @@
   "karussell-20261021T1915": {
    "basis_utc": "2026-10-21T19:15:00Z",
    "format": "karussell",
+   "grund": "rc=0: Nichts faellig: kein ready-Karussell.",
+   "letzter_versuch": "2026-10-18T21:49:16Z",
    "mc_ids": [],
+   "reserviert_um": "2026-10-18T21:49:16Z",
    "status": "offen",
    "termin_utc": "2026-10-21T19:15:00Z",
-   "versuche": 0
+   "versuche": 4
   },
   "karussell-20261022T1915": {
    "basis_utc": "2026-10-22T19:15:00Z",
@@ -254,34 +263,58 @@
   "pin-20261021T1240": {
    "basis_utc": "2026-10-21T12:40:00Z",
    "format": "pin",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "",
+   "letzter_versuch": "2026-10-18T21:46:53Z",
+   "mc_ids": [
+    399453199
+   ],
+   "reserviert_um": "2026-10-18T21:46:53Z",
+   "status": "geplant",
    "termin_utc": "2026-10-21T12:40:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "pin-20261021T1510": {
    "basis_utc": "2026-10-21T15:10:00Z",
    "format": "pin",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "",
+   "letzter_versuch": "2026-10-18T21:47:26Z",
+   "mc_ids": [
+    399453487
+   ],
+   "reserviert_um": "2026-10-18T21:47:26Z",
+   "status": "geplant",
    "termin_utc": "2026-10-21T15:10:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "pin-20261021T1740": {
    "basis_utc": "2026-10-21T17:40:00Z",
    "format": "pin",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "",
+   "letzter_versuch": "2026-10-18T21:47:46Z",
+   "mc_ids": [
+    399453844
+   ],
+   "reserviert_um": "2026-10-18T21:47:46Z",
+   "status": "geplant",
    "termin_utc": "2026-10-21T17:40:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "pin-20261021T1950": {
    "basis_utc": "2026-10-21T19:50:00Z",
    "format": "pin",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "",
+   "letzter_versuch": "2026-10-18T21:49:23Z",
+   "mc_ids": [
+    399454431
+   ],
+   "reserviert_um": "2026-10-18T21:49:23Z",
+   "status": "geplant",
    "termin_utc": "2026-10-21T19:50:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "pin-20261022T1240": {
    "basis_utc": "2026-10-22T12:40:00Z",
@@ -489,18 +522,32 @@
   "reel_igfb-20261021T1815": {
    "basis_utc": "2026-10-21T18:15:00Z",
    "format": "reel_igfb",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "armelloser-flared-jumpsuit-fur-yoga-fitness-735168",
+   "letzter_versuch": "2026-10-18T21:48:43Z",
+   "mc_ids": [
+    399454022,
+    399454026
+   ],
+   "reserviert_um": "2026-10-18T21:48:43Z",
+   "status": "geplant",
    "termin_utc": "2026-10-21T18:15:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "reel_igfb-20261022T1015": {
    "basis_utc": "2026-10-22T10:15:00Z",
    "format": "reel_igfb",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "winter-warme-haussocken-mit-anti-rutsch-sohle-927808",
+   "letzter_versuch": "2026-10-18T21:50:27Z",
+   "mc_ids": [
+    399454878,
+    399454881
+   ],
+   "reserviert_um": "2026-10-18T21:50:27Z",
+   "status": "geplant",
    "termin_utc": "2026-10-22T10:15:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "reel_igfb-20261022T1815": {
    "basis_utc": "2026-10-22T18:15:00Z",
@@ -606,10 +653,12 @@
   "story-20261022T1045": {
    "basis_utc": "2026-10-22T10:45:00Z",
    "format": "story",
+   "letzter_versuch": "2026-10-18T21:50:40Z",
    "mc_ids": [],
-   "status": "offen",
+   "reserviert_um": "2026-10-18T21:50:40Z",
+   "status": "reserviert",
    "termin_utc": "2026-10-22T10:45:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "story-20261023T1045": {
    "basis_utc": "2026-10-23T10:45:00Z",
@@ -736,28 +785,44 @@
   "tiktok-20261021T1105": {
    "basis_utc": "2026-10-21T11:05:00Z",
    "format": "tiktok",
+   "grund": "",
+   "handle": "elektrische-springkrebs-katze-spielzeug-892800",
    "letzter_versuch": "2026-10-18T21:46:39Z",
-   "mc_ids": [],
+   "mc_ids": [
+    399453036
+   ],
    "reserviert_um": "2026-10-18T21:46:39Z",
-   "status": "reserviert",
+   "status": "geplant",
    "termin_utc": "2026-10-21T11:05:00Z",
    "versuche": 1
   },
   "tiktok-20261021T1805": {
    "basis_utc": "2026-10-21T18:05:00Z",
    "format": "tiktok",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "schulter-und-umhangetasche-028226",
+   "letzter_versuch": "2026-10-18T21:48:29Z",
+   "mc_ids": [
+    399453935
+   ],
+   "reserviert_um": "2026-10-18T21:48:29Z",
+   "status": "geplant",
    "termin_utc": "2026-10-21T18:05:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "tiktok-20261022T0605": {
    "basis_utc": "2026-10-22T06:05:00Z",
    "format": "tiktok",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "knoblauch-und-zwiebelhacker-781504",
+   "letzter_versuch": "2026-10-18T21:50:02Z",
+   "mc_ids": [
+    399454646
+   ],
+   "reserviert_um": "2026-10-18T21:50:02Z",
+   "status": "geplant",
    "termin_utc": "2026-10-22T06:05:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "tiktok-20261022T1105": {
    "basis_utc": "2026-10-22T11:05:00Z",
@@ -920,18 +985,30 @@
   "youtube-20261021T1405": {
    "basis_utc": "2026-10-21T14:05:00Z",
    "format": "youtube",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "nahtloser-yoga-bodysuit-mit-cut-outs-926592",
+   "letzter_versuch": "2026-10-18T21:47:12Z",
+   "mc_ids": [
+    399453333
+   ],
+   "reserviert_um": "2026-10-18T21:47:12Z",
+   "status": "geplant",
    "termin_utc": "2026-10-21T14:05:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "youtube-20261022T0520": {
    "basis_utc": "2026-10-22T05:20:00Z",
    "format": "youtube",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "dinosaurier-hundespielzeug-fur-grosse-hunde-5674b4",
+   "letzter_versuch": "2026-10-18T21:49:49Z",
+   "mc_ids": [
+    399454552
+   ],
+   "reserviert_um": "2026-10-18T21:49:49Z",
+   "status": "geplant",
    "termin_utc": "2026-10-22T05:20:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "youtube-20261022T1405": {
    "basis_utc": "2026-10-22T14:05:00Z",
@@ -990,6 +1067,6 @@
    "versuche": 0
   }
  },
- "stand": "2026-10-18T21:46:39Z",
+ "stand": "2026-10-18T21:50:40Z",
  "version": 1
 }
