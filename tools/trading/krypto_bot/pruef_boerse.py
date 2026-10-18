@@ -171,6 +171,8 @@ class Boerse:
             elif o["typ"] == "STOP_LOSS_LIMIT":
                 if not o.get("aktiv") and preis <= o["stop"]:
                     o["aktiv"] = True
+                if o.get("aktiv") and preis < o["preis"] and "haengt_takt" not in o:
+                    o["haengt_takt"] = self.takt  # ab jetzt hängt er (Limit über dem Kurs) — fürs Prüfwerkzeug _limit_luecke
                 if o.get("aktiv") and preis >= o["preis"]:
                     rest = o["qty"] - o["ausgefuehrt"]
                     k.gesperrt[coin] -= rest

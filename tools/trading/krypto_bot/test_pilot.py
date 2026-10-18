@@ -88,9 +88,32 @@ with _tf.TemporaryDirectory() as _td:
     _f.write_text("kaputt")
     pruefe("kaputte Einstellungsdatei → Stufe 1", K.risiko({}, _f)["stufe"] == 1.0)
 pruefe("Broker übernimmt den Deckel der Stufe", BF.einstellungen({"KRYPTO_RISIKO": "1.5"})["max_hebel"] == 1.5)
+# Stufe 1,75 (Empfehlung des Max-Profit-Prüfstands): Schwankungsziel 70 %, Deckel 1,75; gerundet wird auf die NÄCHSTE Stufe, bei Gleichstand
+# auf die kleinere (die Liste ist aufsteigend)
+r175 = K.risiko({"KRYPTO_RISIKO": "1.75"})
+pruefe("Stufe 1,75: Ziel 70 %, Deckel 1,75", r175["stufe"] == 1.75 and abs(r175["ziel_vol"] - 0.70) < 1e-12 and r175["max_hebel"] == 1.75, r175)
+pruefe("Stufen: 1,6 → 1,5 · 1,7 → 1,75 · 1,9 → 2 · Gleichstand 1,625 → 1,5 und 1,875 → 1,75 (die kleinere)",
+       [K.risiko({"KRYPTO_RISIKO": x})["stufe"] for x in ("1.6", "1.7", "1.9", "1.625", "1.875")] == [1.5, 1.75, 2.0, 1.5, 1.75])
+pruefe("Stufe 1,75 wird nie auf mehr als 2 gehoben, Unsinn bleibt 1",
+       K.risiko({"KRYPTO_RISIKO": "3"})["stufe"] == 2.0 and K.risiko({"KRYPTO_RISIKO": "1,75"})["stufe"] == 1.0)
+with _tf.TemporaryDirectory() as _td:
+    _f = Path(_td) / "e.json"
+    _f.write_text('{"risiko": 1.75}')
+    pruefe("Cockpit-Einstellung 1,75 wird gelesen", K.risiko({}, _f)["stufe"] == 1.75 and K.risiko({"KRYPTO_RISIKO": "1"}, _f)["stufe"] == 1.0)
+pruefe("Broker übernimmt den Deckel 1,75", BF.einstellungen({"KRYPTO_RISIKO": "1.75"})["max_hebel"] == 1.75)
+_gerundet = lambda a_: [(x[0], round(x[1], 6), x[2]) for x in a_]  # noqa: E731
+_cfg175 = BF.einstellungen({"KI_BOT_ANTEIL": "0.5", "KI_BOT_MAX_AUFTRAG": "100000", "KRYPTO_RISIKO": "1.75"})
+pruefe("Stufe 1,75 plant 1,75× (0,35 BTC statt 0,2), mehr als 1,75× wird gekappt; Stufe 1 bleibt bei 1×",
+       _gerundet(BF.plane(_cfg175, 20000, 0.0, 50000, R, 1.75)) == [("BUY", 0.35, False)]
+       and _gerundet(BF.plane(_cfg175, 20000, 0.0, 50000, R, 3.0)) == [("BUY", 0.35, False)]
+       and _gerundet(BF.plane(cfg, 20000, 0.0, 50000, R, 1.75)) == [("BUY", 0.2, False)], BF.plane(_cfg175, 20000, 0.0, 50000, R, 1.75))
 mittel = [100 * (1.001 ** i) * (1 + 0.0078 * ((-1) ** i)) for i in range(400)]  # rund 30 % Jahresschwankung
 h1, h_deckel, h2 = K.roh_hebel(mittel)[-1], K.roh_hebel(mittel, max_hebel=2.0)[-1], K.roh_hebel(mittel, max_hebel=2.0, ziel_vol=0.8)[-1]
 pruefe("Stufe 2 = alles doppelt: 1× → 1, nur Deckel 2 → ~1,3, Stufe 2 → 2", h1 == 1.0 and 1.1 < h_deckel < 1.6 and h2 == 2.0, (h1, h_deckel, h2))
+_wild = [100 * (1.001 ** i) * (1 + 0.0157 * ((-1) ** i)) for i in range(400)]  # rund 60 % Jahresschwankung
+_h175 = K.roh_hebel(mittel, max_hebel=1.75, ziel_vol=0.7)[-1]
+_hw = K.roh_hebel(_wild, max_hebel=1.75, ziel_vol=0.7)[-1]
+pruefe("Stufe 1,75 = alles × 1,75: ruhiger Markt → Deckel 1,75, wilder Markt → Schwankungsziel (~1,2)", _h175 == 1.75 and 1.0 < _hw < 1.5, (_h175, _hw))
 
 # ── Backtest-Mischung wie live: jeden Tag neu 50/50 aus dem Gesamtkonto ──
 import pilot_pruefung as PP  # noqa: E402

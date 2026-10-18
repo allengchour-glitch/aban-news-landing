@@ -185,6 +185,7 @@ AKTIONEN = {
     "auto_an": ([], 10, "Auto-Handel an"),
     "risiko_1": ([], 10, "Risiko-Stufe 1× (Standard)"),
     "risiko_1_5": ([], 10, "Risiko-Stufe 1,5×"),
+    "risiko_1_75": ([], 10, "Risiko-Stufe 1,75×"),
     "risiko_2": ([], 10, "Risiko-Stufe 2×"),
     "auto_aus": ([], 10, "Auto-Handel aus"),
 }
@@ -300,7 +301,7 @@ def aktion(name, starter=None, befehl=None):
             ok, text = True, pause_an()
         elif name.startswith("risiko_"):
             import pilot_kern as K
-            stufe = {"risiko_1": 1.0, "risiko_1_5": 1.5, "risiko_2": 2.0}[name]
+            stufe = {"risiko_1": 1.0, "risiko_1_5": 1.5, "risiko_1_75": 1.75, "risiko_2": 2.0}[name]
             gesetzt = umgebung().get("KRYPTO_RISIKO")
             if gesetzt:  # zuerst prüfen: sonst läge eine nie bestätigte Stufe gespeichert und wirkte später still
                 ok, text = False, (f"KRYPTO_RISIKO={gesetzt} ist als Umgebungsvariable gesetzt und hat Vorrang — NICHTS geändert. "
@@ -409,6 +410,27 @@ def backtest_kurven():
     return _BACKTEST["k"]
 
 
+def stufen_test():
+    """Testzahlen je Risiko-Stufe für Anzeige und Rückfrage. Quelle: der Max-Profit-Prüfstand (ab 2020 und ab 2022, dazu die
+    Wahrscheinlichkeit eines Jahres mit Einbruch unter −60 %); fehlt eine Stufe dort, der ältere Hebel-Prüfstand (ab 2019)."""
+    mp = _json("krypto-maxprofit-pruefung.json", {}).get("kandidaten", {})
+    hb = _json("krypto-hebel-pruefung.json", {}).get("varianten", {})
+    out = {}
+    for st, kand, alt in ((1.0, "F-1", "B alles × 1×"), (1.5, "F-1.5", "B alles × 1.5×"), (1.75, "F-1.75", None), (2.0, "F-2", "B alles × 2×")):
+        k = mp.get(kand)
+        if k and all(x in k for x in ("cagr_oos", "einbruch_oos", "cagr_2022", "einbruch_2022")):
+            out[f"{st:g}"] = {"2020–heute": {"cagr": k["cagr_oos"], "einbruch": k["einbruch_oos"]},
+                              "2022–heute": {"cagr": k["cagr_2022"], "einbruch": k["einbruch_2022"]}}
+            if k.get("p_einbruch60") is not None:
+                out[f"{st:g}"]["p60"] = k["p_einbruch60"]
+        elif alt:
+            v = hb.get(alt, {})
+            out[f"{st:g}"] = {f: {"cagr": v[f]["cagr"], "einbruch": v[f]["einbruch"]} for f in ("2019–heute", "2022–heute") if f in v}
+        else:
+            out[f"{st:g}"] = {}
+    return out
+
+
 def stand(env=None):
     env = umgebung() if env is None else env
     import ki_trader as KT
@@ -455,12 +477,7 @@ def stand(env=None):
         except Exception:  # noqa: BLE001
             vgl = {}
     import pilot_kern as K
-    hb = _json("krypto-hebel-pruefung.json", {}).get("varianten", {})
-    stufen = {}
-    for st, name in ((1.0, "B alles × 1×"), (1.5, "B alles × 1.5×"), (2.0, "B alles × 2×")):
-        v = hb.get(name, {})
-        stufen[f"{st:g}"] = {f: {"cagr": v[f]["cagr"], "einbruch": v[f]["einbruch"]} for f in ("2019–heute", "2022–heute") if f in v}
-    risiko = {"stufe": K.risiko()["stufe"], "test": stufen}
+    risiko = {"stufe": K.risiko()["stufe"], "test": stufen_test()}
     sam = _json("eth-sammler.json", {})
     echt_futures = (env.get("BINANCE_FUTURES_TESTNET") or "true").strip().lower() == "false" and env.get("KI_BOT_ECHTGELD", "") == "JA, MIT ECHTEM GELD"
     echt_spot = (env.get("BINANCE_TESTNET") or "true").strip().lower() == "false" and env.get("KI_BOT_ECHTGELD", "") == "JA, MIT ECHTEM GELD"
