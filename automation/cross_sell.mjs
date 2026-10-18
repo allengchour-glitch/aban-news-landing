@@ -12,10 +12,16 @@
  */
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 import { shopifyGql } from './lib/shopify_gql.mjs';
+// Ziel-Collection, Begruendung und Tests: automation/lib/cross_sell_ziel.mjs
+import { zielFinden } from './lib/cross_sell_ziel.mjs';
 const SHOP=process.env.SHOPIFY_SHOP||'', TOK_ST=process.env.SHOPIFY_ADMIN_TOKEN||'',
   CID=process.env.SHOPIFY_CLIENT_ID||'', CS=shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET)||'',
   LIVE=process.env.LIVE==='1', SCAN=Math.min(parseInt(process.env.SCAN||'300',10),3000),
-  MAXFIX=Math.min(parseInt(process.env.MAXFIX||'150',10),1000), API='2025-01';
+  MAXFIX=Math.min(parseInt(process.env.MAXFIX||'150',10),1000), API='2025-01',
+  // Vorgabe: nur Produkte mit ERKANNTEM Thema bekommen eine Box. Gemessen am 2026-10-18 landen
+  // sonst 282 von 600 (47 %) im Rueckfall „Geschenkideen" — eine Box, die nichts Passendes nennt,
+  // ist kein interner Link, sondern Fuellmaterial. NUR_THEMA=0 schaltet den Rueckfall wieder ein.
+  NUR_THEMA=process.env.NUR_THEMA!=='0';
 
 async function getToken(){
   if(!(CID&&CS)&&TOK_ST) return TOK_ST;
@@ -26,23 +32,11 @@ async function getToken(){
 }
 // Drosselung aussitzen statt aufgeben — Begruendung + Tests in automation/lib/shopify_gql.mjs
 const gql=(token,query,variables)=>shopifyGql(SHOP,API,token,query,variables);
-// verifizierte Collection-Handles → Label
-const C={schmuck:['premium-schmuck','Schmuck & Uhren'],herren:['fur-ihn','Für Ihn'],damen:['damen-mode','Damenmode'],
-  premium:['luxestyle-premium','Premium-Marken'],wohnen:['wohnen-dekoration','Wohnen & Deko'],gadget:['trends-gadgets','Trends & Gadgets'],
-  schweiz:['erste-august','Schweiz-Edition'],sommer:['sommer','Sommer'],geschenk:['premium-geschenke','Geschenkideen']};
-function target(tags,type){
-  const t=(tags.join(' ')+' '+(type||'')).toLowerCase();
-  if(/schmuck|ring|kette|armband|ohrring|halskette|uhr/.test(t)) return C.schmuck;
-  if(/herren|männer|manner|mann\b/.test(t)) return C.herren;
-  if(/schweiz|sticker|poster|mauspad|edelweiss|matterhorn/.test(t)) return C.schweiz;
-  if(/diffuser|aroma|wohnen|deko|kissen|lampe|beleuchtung|kerze/.test(t)) return C.wohnen;
-  if(/gadget|tech|auto|elektronik|haushalt|küche|kueche/.test(t)) return C.gadget;
-  if(/sommer|bikini|bademode|strand/.test(t)) return C.sommer;
-  if(/damen|kleid|rock|bluse|mode/.test(t)) return C.damen;
-  if(/highend|premium|luxus|bigbuy/.test(t)) return C.premium;
-  return C.geschenk;
-}
-const box=(h,l)=>`<p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href="/collections/${h}">${l}</a> · <a href="/collections/bestseller-premium-heroes">Bestseller</a></p>`;
+// Marker wie beim Rizinusoel-Block (`ls-riz-link-v1`): nur damit laesst sich der eigene Block
+// spaeter wiedererkennen, nachfuehren oder entfernen. Ohne ihn ist ein Massen-Schreiben in
+// Produktbeschreibungen nicht zurueckholbar.
+export const MARKER='<!-- ls-xsell-v1 -->';
+const box=(h,l)=>`${MARKER}<p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href="/collections/${h}">${l}</a> · <a href="/collections/bestseller-premium-heroes">Bestseller</a></p>`;
 
 async function main(){
   const report={ ts:new Date().toISOString(), live:LIVE };
@@ -51,7 +45,7 @@ async function main(){
 
   let prods=[], cur=null;
   while(prods.length<SCAN){
-    const d=await gql(token,`query($c:String){ products(first:100, after:$c, sortKey:UPDATED_AT, reverse:true, query:"status:active"){ pageInfo{hasNextPage endCursor} nodes{ id tags productType descriptionHtml } } }`,{c:cur});
+    const d=await gql(token,`query($c:String){ products(first:100, after:$c, sortKey:UPDATED_AT, reverse:true, query:"status:active"){ pageInfo{hasNextPage endCursor} nodes{ id title tags productType descriptionHtml } } }`,{c:cur});
     prods.push(...d.products.nodes);
     if(!d.products.pageInfo.hasNextPage) break; cur=d.products.pageInfo.endCursor;
   }
@@ -60,10 +54,23 @@ async function main(){
   const todo=prods.filter(p=>!(p.descriptionHtml||'').includes('/collections/'));
   report.missingCrossSell=todo.length;
 
-  if(LIVE && todo.length){
+  // Der Trockenlauf muss ZEIGEN, was er schreiben wuerde — eine blosse Zahl ist nicht pruefbar.
+  let plan=todo.map(p=>({ p, titel:p.title, ...zielFinden(p.tags||[], p.productType) }));
+  report.jeZiel=plan.reduce((a,z)=>{ a[z.label]=(a[z.label]||0)+1; return a; }, {});
+  if(NUR_THEMA){
+    const vorher=plan.length;
+    plan=plan.filter(z=>z.schluessel!=='geschenk');
+    report.ohneThemaUebersprungen=vorher-plan.length;
+  }
+  report.zuSetzen=plan.length;
+  if(!LIVE){
+    report.beispiele=plan.slice(0,12).map(z=>`${z.titel} → ${z.label} (wegen „${z.grund}")`);
+    report.hinweis='Trockenlauf — nichts geschrieben. Mit LIVE=1 scharf stellen.';
+  }
+
+  if(LIVE && plan.length){
     let fixed=0;
-    for(const p of todo.slice(0,MAXFIX)){
-      const [h,l]=target(p.tags||[], p.productType);
+    for(const { p, handle:h, label:l } of plan.slice(0,MAXFIX)){
       const html=(p.descriptionHtml||'')+box(h,l);
       const d=await gql(token,`mutation($id:ID!,$html:String!){ productUpdate(input:{id:$id, descriptionHtml:$html}){ product{id} userErrors{message} } }`,{id:p.id,html});
       if(!d.productUpdate.userErrors.length) fixed++;
