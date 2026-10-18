@@ -286,5 +286,11 @@ while true; do
     $NODE automation/fb_link_kommentar.mjs 2>&1 | grep -E "FERTIG|✗|⛔" || true
     touch /tmp/_autopilot_letzter_fb_link
   fi
+  # 18.10.2026 (Betreiber «verbessere kommentare antwort»): alle 3 h Kommentare unter IG/FB aufräumen — Bots verbergen (nie
+  # beantworten), echte Fragen kurz und belegt beantworten (automation/social-comment-reply.mjs, DRY_RUN=1 zum Testen).
+  if [ "$META_OK" = 1 ] && faellig /tmp/_autopilot_letzte_kommentare 10800; then
+    $NODE automation/social-comment-reply.mjs 2>&1 | grep -E "KOMMENTARE|^  !" || true
+    touch /tmp/_autopilot_letzte_kommentare
+  fi
   sleep 900 9>&-
 done

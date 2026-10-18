@@ -18,6 +18,8 @@
  * Nötige Scopes: pages_read_engagement + pages_manage_engagement (FB),
  *                instagram_manage_comments (IG). Fehlen sie → Skript meldet es und macht No-op.
  */
+import { istBot } from './lib/kommentar_klasse.mjs';
+
 const V = process.env.META_GRAPH_VERSION || 'v21.0';
 const FB_ID = process.env.FB_PAGE_ID || '';
 const FB_TOK = process.env.FB_PAGE_ACCESS_TOKEN || process.env.META_ACCESS_TOKEN || '';
@@ -58,6 +60,7 @@ const GENUINE = [
 function isSpam(text='') {
   const t = (text || '').trim();
   if (!t) return false;
+  if (istBot(t)) return true;                       // 18.10.2026: «please send this post» = Bot, auch wenn «love|😍» drinsteht
   if (GENUINE.some(r => r.test(t))) return false;   // echte Frage → behalten
   return SPAM.some(r => r.test(t));
 }
