@@ -52,6 +52,18 @@
 
 
 
+## 📅 Metricool-Planer: Entwürfe erscheinen nie · ChatGPT-Videos freigegeben · Wächter liest den Planer (2026-10-18, ~20:00–22:30 UTC)
+
+**GEMESSEN:** Die von ChatGPT am 17./18.10. in Metricool angelegten Produkt-Videos (Business-Tasche ×2, Hasen-Wecker ×2, Sternenprojektor, LED-Hundegeschirr) standen alle als `draft: true, autoPublish: false` im Planer — ein Entwurf wird nie gesendet, `autoPublish: false` schickt nur eine Push-Meldung an die App. Zwei Termine (18.10. 18:30/18:45) verstrichen ohne Post, niemand sah es: die Poster kennen nur ihre eigenen Ledger-Zeilen, kein Wächter las den Planer. Dazu lagen zwei Produkte je zweimal im Planer (Doppelpost-Verbot gilt auch für fremd angelegte Posts).
+**GETAN:** Vier distinkte Videos freigegeben, je eines pro Tag (19.10. 18:30 Business-Tasche v2 · 20.10. 10:00 Sternenprojektor · 21.10. 10:00 Hundegeschirr · 22.10. 18:30 Hasen-Wecker v2; FB-Reel + IG-Reel + TikTok, KI-Kennzeichnung erhalten); die zwei Alt-Fassungen bleiben Entwürfe; Reel-Motor für die vier Produkte gesperrt (`_cj_reel_gebaut.txt`); **`automation/metricool_planer_wache.py`** (nur lesend; UEBERFAELLIG / ENTWURF_BALD / FEHLER / HAENGT / DOPPELT / ERSETZT / INAKTIV, `--selbsttest`, Zeile «METRICOOL-PLANER» in jeder Keepalive-Meldung). Bericht `dropship/METRICOOL-PLANER-2026-10-18.md`.
+**Regel:** Ein Metricool-Eintrag mit Entwurf oder ohne Auto-Versand ist kein Post; fremd angelegte Posts werden freigegeben oder von der Wache gemeldet. **Offen (Betreiber):** KI-Stimme in zwei Videos vs. Hausregel «ohne Voiceover»; Threads (ChatGPT postete dort am 17.10., Stopp seit 07.07.).
+
+## 🔐 Verdorbenes SHOPIFY_CLIENT_SECRET der Umgebung: ein Prüfpunkt schützt nur einen Startweg (2026-10-15, nachgetragen 18.10.)
+
+**GEMESSEN 15.10.:** Umgebungswert 60 statt 38 Zeichen (Einfügefehler), Shopify lehnt jeden Grant ab; `engine_keepalive.sh` prüfte das, der SessionStart-Hook `autostart.sh` nicht — `cj_category_fill` scheiterte 6'832× an «shTok: kein Token».
+**GETAN:** `automation/lib/shopify_secret.sh` (`shopify_secret_heilen`, EINE Funktion, Urteil per md5-Präfix zwischengespeichert, Werte nie ausgegeben) von `autostart.sh` und `engine_keepalive.sh` gerufen; `automation/secret_umgebung_wache.py` liest `/proc/<pid>/environ` der Motoren und startet betroffene neu (`--selbsttest` 16/16). Live belegt 15.10. 04:31 UTC. Bericht `dropship/SECRET-UMGEBUNG-2026-10-15.md`.
+**Regel:** Geheimnisse in EINER gemeinsamen Funktion prüfen, die jeder Startweg ruft; laufende Prozesse nach ihrer echten Umgebung fragen, nicht nach der Shell. **Offen (Betreiber):** Umgebungsvariable in den Claude-Umgebungseinstellungen korrigieren.
+
 ## 🧾 Ledger schrumpfen still: _cj_lager.tsv 58'834 → 198, _cj_nachpruefung.tsv 8'842 → 10 → Tor an jedem Commit + Git-Hooks + Rückschau (2026-10-15, Runde 00:25 bis ~02:15 UTC)
 
 - **Gemessen:** 15.10. 00:18–00:21 UTC wurden zwei Ledger im Arbeitsbaum geleert:
@@ -20676,3 +20688,6 @@ Verschoben am 04.10.2026:
 - 2026-10-13 · 🧾 **CJ teilt einen Auftrag VOR dem Bezahlen (LX1013: SD2608141614440663500 und …-2, beide bezahlt) → Doppel-Erkennung zählt den STAMM der cjOrderId (ohne «-n»), nur eine andere SD-Nummer ist ein Doppel; Hetzner-Server GEMESSEN: Type=oneshot + KillMode=control-group → das Takt-Ende (1,5–2,8 min) beendet ALLE Motoren; der «falsche» Rewind-Alarm war die einzige Selbstheilung des Server-Klons (98 Stashes) → nie abschalten, ohne die Heilung zu ersetzen; cj() wiederholte createOrderV2 bei verlorener Antwort (Gegenprobe: 4 POSTs = 4 Aufträge) → Anlage nur EINMAL senden.** → Journal 13.10. 🧾
 <!-- aus CLAUDE.md verschoben 15.10.2026 02:15 UTC (VERBATIM) -->
 - 2026-10-13 · 🏷️ **Stufen-Umstellung braucht ein Zeichen am Produkt: Theme rechnete «16.–19. Okt.» für ALLE `ch-lager`, die Kasse für 764 noch 28. Okt.–11. Nov. → `profil-ch-lager` setzt/entfernt `ch_lager_profil.py` (Rückweg: Zeichen zuerst weg), Theme kurz nur mit Zeichen, Wache meldet fehlendes Zeichen; WebFetch beide Fälle = Kasse. Massen-Tags mit 20 Aliassen bündeln (einzeln ~55 Min.); `pgrep -f` in Warteschleife fand sich selbst.** → `dropship/CH-LAGER-PROFIL-2026-10-13.md`
+<!-- aus CLAUDE.md verschoben 18.10.2026 22:30 UTC (VERBATIM) -->
+- 2026-10-13 · 🚚 **Gratisversand CH ab CHF 40.50 LIVE (Betreiber «D ja»; Agent-Lauf vom Auto-Modus abgelehnt, Sitzung führte ihn mit der Freigabe aus): 3 Profile 45 → 40.50, Konstante `ch_lager_profil.GRATIS_AB_CH` SOFORT nachziehen (sonst dreht versandschwelle_rabatt General zurück), Theme 4500 → 4050, Testkörbe 11/11 gleich/günstiger. C: reine CH-Lager-Körbe zeigen im Warenkorb/Balken «Gratis-Versand» (Ansicht /cart?view=lux-chlager + Rückfall). Theme-Runde T-A: Editor «Ersatz bei Druckfehlern», Brotkrumen, Herrenschuh ≤ 43.** → `dropship/GRATISVERSAND-CH-LAGER-UND-4050-2026-10-13.md`
+- 2026-10-13 · 🔪 **14 CJ-Klingen ACTIVE ohne «Messer» im Titel (Groq: «Knochenspalter», «Outdoor-Tool», «Küchenhelfer-Set» = 9 Messer) → Regel + Knochen-/Hackbeil-Wörter (77/77 py=js), Importer fragen auch `productNameEn`, 14 gedraftet + Tags (`dropship/_klinge_handliste.tsv`); Werbetest-Ampel zählt ab Aktivierung, prüft alle 13.** → Journal 13.10. 🔪
