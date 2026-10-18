@@ -56,3 +56,4 @@
 2026-10-18T22:56:44.662Z	retro-jacke-fur-herren-mit-revers-609800	Herrenmode Schweiz	metricool:399488220	herbst-favoriten	bild=roh
 2026-10-18T22:58:38.741Z	freizeitjacke-fur-fruhling-und-herbst-628000	Herrenmode Schweiz	metricool:399488982	herbst-favoriten	bild=roh
 2026-10-18T22:59:40.091Z	kurze-daunenjacke-mit-kapuze-634500	Sommerkleider & Damenmode 2026	metricool:399489420	herbst-favoriten	bild=roh
+2026-10-18T23:01:02.809Z	gefutterte-damenjacke-mit-blumenmuster-620200	Sommerkleider & Damenmode 2026	metricool:399489951	herbst-favoriten	bild=roh
