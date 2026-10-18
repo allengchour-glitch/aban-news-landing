@@ -563,10 +563,15 @@
   "pin-20261025T2050": {
    "basis_utc": "2026-10-25T20:50:00Z",
    "format": "pin",
+   "grund": "",
+   "handle": "",
+   "handles": [],
    "letzter_versuch": "2026-10-18T22:32:03Z",
-   "mc_ids": [],
+   "mc_ids": [
+    399477126
+   ],
    "reserviert_um": "2026-10-18T22:32:03Z",
-   "status": "reserviert",
+   "status": "geplant",
    "termin_utc": "2026-10-25T20:50:00Z",
    "versuche": 1
   },
@@ -1402,6 +1407,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-18T22:32:03Z",
+ "stand": "2026-10-18T22:33:10Z",
  "version": 1
 }
