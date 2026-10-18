@@ -1596,3 +1596,12 @@ gid://shopify/Product/16638446207367	ok	Steuerungsrad aus Edelstahl 400 mm
 gid://shopify/Product/16638443422087	nicht-versendbar	Zelt Doppelperson Regenfest 210x110 cm
 gid://shopify/Product/16639094194567	ok	Wandbild mit abstraktem Muster
 gid://shopify/Product/16641879933319	ok	Rindsleder-Leder Crossbody Business Tasche
+gid://shopify/Product/16644305420679	ok	90L wasserabweisender Rucksack für Expeditionen
+gid://shopify/Product/16643491561863	ok	Roll-Top Outdoor Reisetasche für Herren
+gid://shopify/Product/16648900346247	ok	Retro Rucksack aus Wildleder – 20-35 L
+gid://shopify/Product/16644432953735	ok	Rucksack aus Echtleder – 30×20×45 cm
+gid://shopify/Product/16650186162567	ok	Käferleder-Rucksack für Herren
+gid://shopify/Product/16643496051079	ok	Smart-Fingerprint-Rucksack aus Vollnarbenleder
+gid://shopify/Product/16647280886151	ok	Handgemachter Leder-Rucksack Herren Retro
+gid://shopify/Product/16649013657991	ok	Leichte Reise-Tasche aus Leder
+gid://shopify/Product/16649262858631	ok	Rindsleder-Rucksack mit grosser Kapazität

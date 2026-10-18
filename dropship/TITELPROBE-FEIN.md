@@ -1,11 +1,7 @@
-# Titelprobe-Fein — Stand 2026-10-14 11:49 UTC
+# Titelprobe-Fein — Stand 2026-10-18 20:36 UTC
 
-Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 7 · gesetzt 7 · fehler 0.
+Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 0 · gesetzt 0 · fehler 0.
 
-- 3 → Shirts & Tops
-- 2 → Pants
-- 1 → Swimwear
-- 1 → Shorts
 
 ## «Rock» mit Ärmeln/Ausschnitt = Kleid — Titel umbenennen (1)
 
