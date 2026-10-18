@@ -295,3 +295,8 @@ slug:handgemachte-3d-liebesnagel-blue-ice
 name:multifunktionssmartadapterkabelbox
 pid:15523179921793
 slug:multifunktions-smart-adapter-kabelbox
+slug:canvas-schultertasche-fur-herren-wasserdicht
+slug:business-casual-laptop-umhangetasche
+slug:hasen-wecker-mit-nachtlicht-und-smart-charging
+slug:sternenlicht-projektor-fur-schlafzimmer
+slug:led-leucht-brustgeschirr-reissfest
