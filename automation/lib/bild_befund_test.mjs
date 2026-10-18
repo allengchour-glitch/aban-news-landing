@@ -1,5 +1,5 @@
 /** Test für die Bild-Befunde. Lauf: node automation/lib/bild_befund_test.mjs */
-import { istSchwach, istBessereAlternative, grund, MERKMALE } from './bild_befund.mjs';
+import { istSchwach, istBessereAlternative, grund, groesserUndSauber, MERKMALE } from './bild_befund.mjs';
 
 let fehler = 0;
 const pruef = (name, ist, soll) => {
@@ -35,6 +35,51 @@ pruef('zu klein schlägt alles', grund(bild({ unscharf: true }), true), 'zu-klei
 pruef('unscharf vor Collage', grund(bild({ unscharf: true, collage: true }), false), 'unscharf');
 pruef('nicht bewertbar', grund(null, false), 'nicht-bewertbar');
 pruef('Merkmalsliste ohne Herkunft', MERKMALE.some(m => /asia|herkunft|ethn/i.test(m)), false);
+
+// ── 5. Tausch wegen zu kleiner Auflösung ──
+// Die echten Masse aus der Messung vom 18.10.
+const m = (b, h) => ({ breite: b, hoehe: h });
+pruef('539x537 wird durch sauberes 800x800 ersetzt',
+  groesserUndSauber(m(539, 537), m(800, 800), bild(), 800), true);
+pruef('600x800 wird durch sauberes 1080x1080 ersetzt',
+  groesserUndSauber(m(600, 800), m(1080, 1080), bild(), 800), true);
+
+// Gegenprobe 1: ein ausreichend grosses Hauptbild wird NIE getauscht, auch nicht gegen ein
+// noch groesseres. Sonst wandert der Katalog bei jedem Lauf durcheinander.
+pruef('grosses Hauptbild bleibt, auch bei groesserer Alternative',
+  groesserUndSauber(m(1000, 1000), m(2000, 2000), bild(), 800), false);
+pruef('genau an der Schwelle bleibt es',
+  groesserUndSauber(m(800, 800), m(1200, 1200), bild(), 800), false);
+
+// Gegenprobe 2 — die wichtigere Richtung: groesser allein darf nicht reichen. Ein grosses
+// Verpackungs- oder Collagen-Foto nach vorn zu holen waere eine Verschlechterung, die wie
+// eine Verbesserung aussieht.
+pruef('grosse Collage ersetzt nicht',
+  groesserUndSauber(m(539, 537), m(1500, 1500), bild({ collage: true }), 800), false);
+pruef('grosses Bild ohne Produkt ersetzt nicht',
+  groesserUndSauber(m(539, 537), m(1500, 1500), bild({ zeigt_produkt: false }), 800), false);
+pruef('grosses Bild mit Wasserzeichen ersetzt nicht',
+  groesserUndSauber(m(539, 537), m(1500, 1500), bild({ wasserzeichen: true }), 800), false);
+pruef('nicht bewertete Alternative ersetzt nicht',
+  groesserUndSauber(m(539, 537), m(1500, 1500), null, 800), false);
+
+// Gegenprobe 3: eine Alternative, die selbst zu klein ist oder nicht groesser, bringt nichts.
+pruef('Alternative auch unter der Schwelle ersetzt nicht',
+  groesserUndSauber(m(539, 537), m(700, 700), bild(), 800), false);
+pruef('gleich grosse Alternative ersetzt nicht',
+  groesserUndSauber(m(600, 600), m(600, 600), bild(), 800), false);
+pruef('nur eine Seite zu klein zaehlt auch als zu klein',
+  groesserUndSauber(m(800, 600), m(800, 800), bild(), 800), true);
+
+// Gegenprobe 4: fehlende Masse duerfen keinen Tausch ausloesen.
+pruef('fehlende Masse am Hauptbild', groesserUndSauber(m(0, 0), m(1200, 1200), bild(), 800), false);
+pruef('fehlende Masse an der Alternative', groesserUndSauber(m(539, 537), m(0, 0), bild(), 800), false);
+pruef('kein Hauptbild', groesserUndSauber(null, m(1200, 1200), bild(), 800), false);
+pruef('keine Schwelle', groesserUndSauber(m(539, 537), m(1200, 1200), bild(), 0), false);
+
+// Zweimal laufen aendert nichts: nach dem Tausch ist das Hauptbild gross genug.
+pruef('nach dem Tausch kein zweiter Tausch',
+  groesserUndSauber(m(1080, 1080), m(1200, 1200), bild(), 800), false);
 
 console.log(fehler ? `\n${fehler} FEHLER` : '\nalle Prüfungen grün');
 process.exit(fehler ? 1 : 0);
