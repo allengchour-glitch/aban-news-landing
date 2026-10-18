@@ -504,6 +504,28 @@ with tempfile.TemporaryDirectory() as tmp:
             e_r = C.aktion("risiko_1_5")
             pruefe("Risiko-Knopf ohne Variable: gespeichert und richtig gemeldet", e_r["ok"] and "1.5×" in e_r["text"]
                    and json.loads(_K.EINSTELLUNGEN.read_text(encoding="utf-8"))["risiko"] == 1.5, e_r)
+            e_r = C.aktion("risiko_1_75")
+            pruefe("Risiko-Knopf 1,75×: gespeichert, der Pilot liest 1,75, Warnung dabei", e_r["ok"] and "1.75×" in e_r["text"] and "Achtung" in e_r["text"]
+                   and json.loads(_K.EINSTELLUNGEN.read_text(encoding="utf-8"))["risiko"] == 1.75 and _K.risiko({}, _K.EINSTELLUNGEN)["max_hebel"] == 1.75, e_r)
+            # Testzahlen je Stufe: der Max-Profit-Prüfstand (ab 2020/2022 + Wahrscheinlichkeit), sonst der ältere Hebel-Prüfstand (ab 2019)
+            (Path(tmp) / "krypto-maxprofit-pruefung.json").write_text(json.dumps({"kandidaten": {
+                "F-1.75": {"cagr_oos": 0.49, "einbruch_oos": -0.53, "cagr_2022": 0.44, "einbruch_2022": -0.45, "p_einbruch60": 0.036},
+                "F-1": {"cagr_oos": 0.33}}}), encoding="utf-8")  # F-1 unvollständig → zählt nicht
+            (Path(tmp) / "krypto-hebel-pruefung.json").write_text(json.dumps({"varianten": {"B alles × 1.5×": {
+                "2019–heute": {"cagr": 0.5, "einbruch": -0.44}, "2022–heute": {"cagr": 0.35, "einbruch": -0.40}}}}), encoding="utf-8")
+            st_t = C.stufen_test()
+            pruefe("Stufen-Testzahlen: 1,75 aus dem Max-Profit-Prüfstand (2020/2022 + Wahrscheinlichkeit), 1,5 aus dem älteren (2019), "
+                   "unvollständige/fehlende Stufen leer", st_t["1.75"] == {"2020–heute": {"cagr": 0.49, "einbruch": -0.53},
+                   "2022–heute": {"cagr": 0.44, "einbruch": -0.45}, "p60": 0.036}
+                   and st_t["1.5"] == {"2019–heute": {"cagr": 0.5, "einbruch": -0.44}, "2022–heute": {"cagr": 0.35, "einbruch": -0.40}}
+                   and st_t["1"] == {} and st_t["2"] == {}, st_t)
+            pruefe("Cockpit-Stand enthält die Stufe 1,75 samt Testzahlen", C.stand(env={})["risiko"]["test"]["1.75"]["p60"] == 0.036)
+            _html = (Path(C.__file__).parent / "cockpit.html").read_text(encoding="utf-8")
+            pruefe("Oberfläche: Knopf für 1,75× (als Schaltfläche, nicht nur im Stil) und die Zuordnung zur Aktion risiko_1_75",
+                   '<button type="button" data-s="1.75" aria-pressed="false">1,75× viel Risiko<small id="st-1.75"></small></button>' in _html
+                   and '"1.75": "risiko_1_75"' in _html)
+            pruefe("Oberfläche: die Rückfrage vor jeder höheren Stufe warnt vor dem Verlust und nennt die Wahrscheinlichkeit eines Jahres unter −60 %",
+                   "nur Geld einsetzen, dessen Verlust du verkraftest" in _html and "tiefer als −60 %" in _html)
         finally:
             _K.EINSTELLUNGEN, C.umgebung = alt_einst, alt_umg2
         # ── ETH-Sammler-Karte: «unklar» nicht im Ø-Preis ──

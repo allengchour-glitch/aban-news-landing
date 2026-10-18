@@ -579,8 +579,8 @@ L-mal so gross):
   Bei 100× reicht eine Bewegung von gut einem halben Prozent — das schafft Bitcoin fast jeden Tag, in beide Richtungen.
   Ob Long oder Short ist dabei fast egal: Das Rauschen liquidiert die Position, bevor die Richtung zählt. Darum gibt es
   im Pilot kein 100× (und nichts über 2×).
-- Wer bewusst mehr Risiko will: im Cockpit **Risiko-Stufe 1,5× oder 2×** wählen (oder `setx KRYPTO_RISIKO "1.5"`), mit
-  Rückfrage und den Zahlen oben. Der Pilot nutzt dabei weiterhin höchstens `KI_BOT_ANTEIL` (Standard 50 %) des Kontos —
+- Wer bewusst mehr Risiko will: im Cockpit **Risiko-Stufe 1,5×, 1,75× oder 2×** wählen (oder `setx KRYPTO_RISIKO "1.75"`), mit
+  Rückfrage und den Zahlen (seit 18.10.2026 aus dem Max-Profit-Prüfstand, siehe unten). Der Pilot nutzt dabei weiterhin höchstens `KI_BOT_ANTEIL` (Standard 50 %) des Kontos —
   die Prozente oben gelten für diesen Teil.
 
 ## 💰 «Max Profit» — welcher Hebel bringt auf Dauer am meisten? (`maxprofit_pruefung.py`)
@@ -625,8 +625,10 @@ auf Dauer** (Rendite pro Jahr) — nicht der grösste Erwartungswert: der wird m
   - Ein Börsenausfall (FTX 2022) ist nicht abgebildet.
   - Korrektur nach dem ersten Lauf: Die «teure» Zahl für Pilot 2.0 rechnete die Funding-*Einnahme* versehentlich × 1,5
     (44,9 % statt richtig 41,5 %). Die Empfehlung blieb gleich; ein Test fängt das jetzt.
-- Live: Die Risiko-Stufe 1,5× ist heute im Cockpit wählbar (`KRYPTO_RISIKO=1.5`). 1,75× gibt es noch nicht, Werte werden auf
-  1 / 1,5 / 2 gerundet. Keine Anlageberatung — nur Geld einsetzen, dessen Verlust du verkraftest.
+- Live: Die Risiko-Stufen 1,5× und **1,75×** sind im Cockpit wählbar (`KRYPTO_RISIKO=1.5` bzw. `1.75`; 1,75× seit 18.10.2026). Werte
+  werden auf 1 / 1,5 / 1,75 / 2 gerundet, bei Gleichstand auf die kleinere. Der Standard bleibt 1× — der Pilot wechselt nie von
+  selbst. Die Rückfrage im Cockpit nennt die Zahlen dieser Tabelle (ab 2020, ab 2022, Wahrscheinlichkeit eines Jahres unter −60 %).
+  Keine Anlageberatung — nur Geld einsetzen, dessen Verlust du verkraftest.
 
 ## 💰 «Max Profit 2» — Pilot 2.0 mit Hebel (`maxprofit_p2_pruefung.py`)
 
@@ -932,7 +934,7 @@ selbst zwischen Spot- und Futures-Teil des Unterkontos (wenn der Schlüssel das 
   Einschalten noch Positionen in seinem eigenen Konto, startet Pilot 2.0 nicht (erst `stop.bat`, das schliesst beide). Ein
   Testnetz-Stand, dessen Schlüssel das Testnetz nicht mehr annimmt, wird beim Not-Aus verworfen (Spielgeld). Erst Not-Aus, dann
   umstellen. Ein aus `KRYPTO_PILOT_MAERKTE` entfernter Markt wird automatisch abgebaut.
-- Pilot 2.0 nutzt höchstens Hebel 1 (die Risiko-Stufen 1,5/2 gelten nur für den alten Pilot). Steht der Futures-Hebel wegen
+- Pilot 2.0 nutzt höchstens Hebel 1 (die Risiko-Stufen 1,5/1,75/2 gelten nur für den alten Pilot). Steht der Futures-Hebel wegen
   einer Position noch höher, eröffnet er keinen grösseren Short, bis er 1 ist.
 
 **1. Zuerst im Testnetz** (Spielgeld, getrennte Test-Konten, dort kein Verschieben → beide Test-Konten brauchen USDT; alles in
@@ -1040,11 +1042,11 @@ Leerverkauf. **Not-Aus:** `stop.bat` im Ordner `ki_bot`. Protokoll ohne Schlüss
 
 ```
 python3 tools/trading/krypto_bot/test_krypto.py   # 19 Tests, inkl. Futures-Mechanik und nachgebautem Alpaca-Server
-python3 tools/trading/krypto_bot/test_pilot.py    # 84 Tests, inkl. Risiko-Stufen, Sperre, Not-Aus mitten im Lauf, Algo-Stops und nachgebautem Binance-Futures-Server
+python3 tools/trading/krypto_bot/test_pilot.py    # 91 Tests, inkl. Risiko-Stufen (1 / 1,5 / 1,75 / 2), Sperre, Not-Aus mitten im Lauf, Algo-Stops und nachgebautem Binance-Futures-Server
 python3 tools/trading/krypto_bot/test_sammler.py  # 48 Tests, inkl. nachgebautem Binance-Server mit Staking, verlorenen Antworten, Ablehnungen und Opt-in
 python3 tools/trading/krypto_bot/test_infos.py    # 26 Tests: keine Zukunftsdaten, MVRV-Bremse, Zwischenspeicher
 python3 tools/trading/krypto_bot/test_profit.py   # 45 Tests: getrennte Bücher, offen unbekannt, BNB-Gebühren, Ein-/Auszahlungen, Seitengrenze, Drosselung
-python3 tools/trading/krypto_bot/test_cockpit.py  # 115 Tests: Claude, Schattenkonto, Cockpit, Knöpfe, Host/Einbetten, Ampel, Not-Aus, Telegram, Startdateien
+python3 tools/trading/krypto_bot/test_cockpit.py  # 120 Tests: Claude, Schattenkonto, Cockpit, Knöpfe, Host/Einbetten, Ampel, Not-Aus, Telegram, Startdateien
 python3 tools/trading/krypto_bot/test_calls.py    # 84 Tests: 40 typische Call-Formate, Plausibilität, Antworten/Wiederholungen, Nachspielen, Zufallsprobe, Kopierer gegen nachgebauten Binance-Server
 python3 tools/trading/krypto_bot/test_binance.py  # 21 Tests, inkl. nachgebautem Binance-Server mit Signaturprüfung
 python3 tools/trading/krypto_bot/test_pilot2_plan.py  # 23 Tests: Pilot-2.0-Rechnung (Richtung, Ernte, Pfand, Mindestbeträge)
