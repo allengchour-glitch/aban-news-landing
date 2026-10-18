@@ -121,10 +121,12 @@
   "pin-20261019T1240": {
    "basis_utc": "2026-10-19T12:40:00Z",
    "format": "pin",
+   "letzter_versuch": "2026-10-18T21:31:19Z",
    "mc_ids": [],
-   "status": "offen",
+   "reserviert_um": "2026-10-18T21:31:19Z",
+   "status": "reserviert",
    "termin_utc": "2026-10-19T12:40:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "pin-20261019T1510": {
    "basis_utc": "2026-10-19T15:10:00Z",
@@ -464,10 +466,15 @@
   "story-20261019T1045": {
    "basis_utc": "2026-10-19T10:45:00Z",
    "format": "story",
+   "grund": "",
+   "handle": "",
    "letzter_versuch": "2026-10-18T21:30:39Z",
-   "mc_ids": [],
+   "mc_ids": [
+    399445247,
+    399445253
+   ],
    "reserviert_um": "2026-10-18T21:30:39Z",
-   "status": "reserviert",
+   "status": "geplant",
    "termin_utc": "2026-10-19T10:45:00Z",
    "versuche": 1
   },
@@ -536,10 +543,16 @@
   "tiktok-20261019T1105": {
    "basis_utc": "2026-10-19T11:05:00Z",
    "format": "tiktok",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "sticknadel-set-33f652",
+   "letzter_versuch": "2026-10-18T21:31:06Z",
+   "mc_ids": [
+    399445326
+   ],
+   "reserviert_um": "2026-10-18T21:31:06Z",
+   "status": "geplant",
    "termin_utc": "2026-10-19T11:05:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "tiktok-20261019T1805": {
    "basis_utc": "2026-10-19T18:05:00Z",
@@ -812,6 +825,6 @@
    "versuche": 0
   }
  },
- "stand": "2026-10-18T21:30:39Z",
+ "stand": "2026-10-18T21:31:19Z",
  "version": 1
 }

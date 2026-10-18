@@ -312,3 +312,6 @@ pid:15509370306945
 slug:diy-stickset-mit-50-garnfarben-cb3e23
 slug:wannenkippanhanger-mit-automatikruckwand-fga02211
 name:wannenkippanhängermitautomatikrückwand
+name:sticknadelset
+pid:15509371519361
+slug:sticknadel-set-33f652
