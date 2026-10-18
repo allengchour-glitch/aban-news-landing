@@ -35,3 +35,6 @@
 2026-10-18T21:47:41.383Z	horrorpuppe-mit-beweglichen-fga910994	Wohnen & Deko	metricool:399453487	halloween	bild=roh
 2026-10-18T21:48:24.708Z	windschutzjacke-623700	Herrenmode Schweiz	metricool:399453844	herbst-favoriten	bild=roh
 2026-10-18T21:49:44.253Z	hasenskelett-16-cm-fga910991	Wohnen & Deko	metricool:399454431	halloween	bild=roh
+2026-10-18T21:52:31.215Z	herren-jacke-mit-stehkragen-rei-verschluss-601000	Herrenmode Schweiz	metricool:399455678	herbst-favoriten	bild=roh
+2026-10-18T21:53:48.113Z	plusch-fledermaus-mit-sauger-fga17846	Leder & Accessoires	metricool:399456190	halloween	bild=roh
+2026-10-18T21:54:09.779Z	v-hals-pullover-fur-herren-605100	Herrenmode Schweiz	metricool:399456345	herbst-favoriten	bild=roh

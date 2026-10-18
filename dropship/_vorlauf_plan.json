@@ -119,10 +119,13 @@
   "karussell-20261022T1915": {
    "basis_utc": "2026-10-22T19:15:00Z",
    "format": "karussell",
+   "grund": "rc=0: Nichts faellig: kein ready-Karussell.",
+   "letzter_versuch": "2026-10-18T21:56:43Z",
    "mc_ids": [],
-   "status": "offen",
+   "reserviert_um": "2026-10-18T21:56:43Z",
+   "status": "reserviert",
    "termin_utc": "2026-10-22T19:15:00Z",
-   "versuche": 0
+   "versuche": 2
   },
   "karussell-20261023T1915": {
    "basis_utc": "2026-10-23T19:15:00Z",
@@ -319,28 +322,44 @@
   "pin-20261022T1240": {
    "basis_utc": "2026-10-22T12:40:00Z",
    "format": "pin",
+   "grund": "",
+   "handle": "",
    "letzter_versuch": "2026-10-18T21:51:28Z",
-   "mc_ids": [],
+   "mc_ids": [
+    399455678
+   ],
    "reserviert_um": "2026-10-18T21:51:28Z",
-   "status": "reserviert",
+   "status": "geplant",
    "termin_utc": "2026-10-22T12:40:00Z",
    "versuche": 1
   },
   "pin-20261022T1510": {
    "basis_utc": "2026-10-22T15:10:00Z",
    "format": "pin",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "",
+   "letzter_versuch": "2026-10-18T21:52:52Z",
+   "mc_ids": [
+    399456190
+   ],
+   "reserviert_um": "2026-10-18T21:52:52Z",
+   "status": "geplant",
    "termin_utc": "2026-10-22T15:10:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "pin-20261022T1740": {
    "basis_utc": "2026-10-22T17:40:00Z",
    "format": "pin",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "",
+   "letzter_versuch": "2026-10-18T21:53:53Z",
+   "mc_ids": [
+    399456345
+   ],
+   "reserviert_um": "2026-10-18T21:53:53Z",
+   "status": "geplant",
    "termin_utc": "2026-10-22T17:40:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "pin-20261022T1950": {
    "basis_utc": "2026-10-22T19:50:00Z",
@@ -554,10 +573,13 @@
   "reel_igfb-20261022T1815": {
    "basis_utc": "2026-10-22T18:15:00Z",
    "format": "reel_igfb",
+   "grund": "rc=3: Der Post wirkt durch den fremden englischen Text im Video extrem unprofessionell und billig. Die Behauptung der «Korrektur der Fusseversion» ist ein heikles Hei",
+   "letzter_versuch": "2026-10-18T21:56:11Z",
    "mc_ids": [],
+   "reserviert_um": "2026-10-18T21:56:11Z",
    "status": "offen",
    "termin_utc": "2026-10-22T18:15:00Z",
-   "versuche": 0
+   "versuche": 4
   },
   "reel_igfb-20261023T1015": {
    "basis_utc": "2026-10-23T10:15:00Z",
@@ -848,10 +870,16 @@
   "tiktok-20261022T1805": {
    "basis_utc": "2026-10-22T18:05:00Z",
    "format": "tiktok",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "2-in-1-trink-und-futterflasche-fur-haustiere-204160",
+   "letzter_versuch": "2026-10-18T21:54:15Z",
+   "mc_ids": [
+    399456458
+   ],
+   "reserviert_um": "2026-10-18T21:54:15Z",
+   "status": "geplant",
    "termin_utc": "2026-10-22T18:05:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "tiktok-20261023T0605": {
    "basis_utc": "2026-10-23T06:05:00Z",
@@ -1026,10 +1054,16 @@
   "youtube-20261022T1405": {
    "basis_utc": "2026-10-22T14:05:00Z",
    "format": "youtube",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "tierhaarburste-zur-entfernung-von-losem-haar-894720",
+   "letzter_versuch": "2026-10-18T21:52:36Z",
+   "mc_ids": [
+    399455779
+   ],
+   "reserviert_um": "2026-10-18T21:52:36Z",
+   "status": "geplant",
    "termin_utc": "2026-10-22T14:05:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "youtube-20261023T0520": {
    "basis_utc": "2026-10-23T05:20:00Z",
@@ -1080,6 +1114,6 @@
    "versuche": 0
   }
  },
- "stand": "2026-10-18T21:51:28Z",
+ "stand": "2026-10-18T21:56:43Z",
  "version": 1
 }

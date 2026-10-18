@@ -393,3 +393,9 @@ name:bruderzubehörheuraufe
 slug:cjreel-cjyd179601501az
 pid:15450829521281
 slug:kabelloser-mini-entsafter-fur-fruchte-gemuse
+slug:cjreel-cjgy176027001az
+pid:15450833944961
+slug:tierhaarburste-zur-entfernung-von-losem-haar
+slug:cjreel-cjmy178964801az
+pid:15450831978881
+slug:2-in-1-trink-und-futterflasche-fur-haustiere
