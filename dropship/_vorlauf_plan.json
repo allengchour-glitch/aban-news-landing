@@ -120,11 +120,17 @@
   "karussell-20261020T1915": {
    "basis_utc": "2026-10-20T19:15:00Z",
    "format": "karussell",
-   "grund": "rc=0: Nichts faellig: kein ready-Karussell.",
+   "grund": "",
+   "handle": "",
+   "handles": [
+    "reise-organizer-set-mit-netz"
+   ],
    "letzter_versuch": "2026-10-18T22:56:50Z",
-   "mc_ids": [],
+   "mc_ids": [
+    399488494
+   ],
    "reserviert_um": "2026-10-18T22:56:50Z",
-   "status": "reserviert",
+   "status": "geplant",
    "termin_utc": "2026-10-20T19:15:00Z",
    "versuche": 6
   },
@@ -132,12 +138,12 @@
    "basis_utc": "2026-10-21T19:15:00Z",
    "format": "karussell",
    "grund": "rc=0: Nichts faellig: kein ready-Karussell.",
-   "letzter_versuch": "2026-10-18T21:49:16Z",
+   "letzter_versuch": "2026-10-18T22:59:45Z",
    "mc_ids": [],
-   "reserviert_um": "2026-10-18T21:49:16Z",
-   "status": "offen",
+   "reserviert_um": "2026-10-18T22:59:45Z",
+   "status": "reserviert",
    "termin_utc": "2026-10-21T19:15:00Z",
-   "versuche": 4
+   "versuche": 5
   },
   "karussell-20261022T1915": {
    "basis_utc": "2026-10-22T19:15:00Z",
@@ -278,14 +284,17 @@
   "pin-20261020T1950": {
    "basis_utc": "2026-10-20T19:50:00Z",
    "format": "pin",
-   "grund": "verschwunden [399452107]",
+   "grund": "",
    "handle": "",
-   "letzter_versuch": "2026-10-18T21:43:55Z",
-   "mc_ids": [],
-   "reserviert_um": "2026-10-18T21:43:55Z",
-   "status": "offen",
+   "handles": [],
+   "letzter_versuch": "2026-10-18T22:57:35Z",
+   "mc_ids": [
+    399488982
+   ],
+   "reserviert_um": "2026-10-18T22:57:35Z",
+   "status": "geplant",
    "termin_utc": "2026-10-20T19:50:00Z",
-   "versuche": 1
+   "versuche": 2
   },
   "pin-20261021T1240": {
    "basis_utc": "2026-10-21T12:40:00Z",
@@ -304,14 +313,17 @@
   "pin-20261021T1510": {
    "basis_utc": "2026-10-21T15:10:00Z",
    "format": "pin",
-   "grund": "verschwunden [399453487]",
+   "grund": "",
    "handle": "",
-   "letzter_versuch": "2026-10-18T21:47:26Z",
-   "mc_ids": [],
-   "reserviert_um": "2026-10-18T21:47:26Z",
-   "status": "offen",
+   "handles": [],
+   "letzter_versuch": "2026-10-18T22:59:19Z",
+   "mc_ids": [
+    399489420
+   ],
+   "reserviert_um": "2026-10-18T22:59:19Z",
+   "status": "geplant",
    "termin_utc": "2026-10-21T15:10:00Z",
-   "versuche": 1
+   "versuche": 2
   },
   "pin-20261021T1740": {
    "basis_utc": "2026-10-21T17:40:00Z",
@@ -1012,14 +1024,20 @@
   "tiktok-20261021T1105": {
    "basis_utc": "2026-10-21T11:05:00Z",
    "format": "tiktok",
-   "grund": "verschwunden [399453036]",
-   "handle": "elektrische-springkrebs-katze-spielzeug-892800",
-   "letzter_versuch": "2026-10-18T21:46:39Z",
-   "mc_ids": [],
-   "reserviert_um": "2026-10-18T21:46:39Z",
-   "status": "offen",
+   "grund": "",
+   "handle": "interaktiver-futterspender-fur-haustiere-653376",
+   "handles": [
+    "interaktiver-futterspender-fur-haustiere",
+    "interaktiver-futterspender-fur-haustiere-653376"
+   ],
+   "letzter_versuch": "2026-10-18T22:58:44Z",
+   "mc_ids": [
+    399489226
+   ],
+   "reserviert_um": "2026-10-18T22:58:44Z",
+   "status": "geplant",
    "termin_utc": "2026-10-21T11:05:00Z",
-   "versuche": 1
+   "versuche": 2
   },
   "tiktok-20261021T1805": {
    "basis_utc": "2026-10-21T18:05:00Z",
@@ -1393,6 +1411,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-18T22:56:50Z",
+ "stand": "2026-10-18T22:59:45Z",
  "version": 1
 }

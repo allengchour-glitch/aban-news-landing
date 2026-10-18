@@ -456,3 +456,7 @@ slug:cjreel-cjxfznkc00131-black
 pid:15450836861313
 slug:3-in-1-wireless-ladestation-fur-apple-android
 slug:reise-organizer-set-mit-netz
+name:interaktiverfutterspenderfürhaustiere
+pid:15450859176321
+slug:interaktiver-futterspender-fur-haustiere
+slug:multifunktionaler-manueller-massageroller
