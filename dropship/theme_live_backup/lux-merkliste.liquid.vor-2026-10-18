@@ -1,0 +1,41 @@
+<div class="lux-wishlist-wrap" style="max-width:1100px;margin:0 auto;padding:24px 16px;">
+  <div id="lux-wishlist">
+    <p id="lux-wl-empty" style="display:none;">Deine Merkliste ist leer. Tippe auf das ♡ bei einem Produkt, um es hier zu speichern.</p>
+    <div id="lux-wl-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;"></div>
+  </div>
+</div>
+<script>
+(function(){
+  var KEY='lux_wish';
+  var l;try{l=JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){l=[]}
+  var grid=document.getElementById('lux-wl-grid');
+  if(!l.length){document.getElementById('lux-wl-empty').style.display='block';return;}
+  l.forEach(function(h){
+    fetch('/products/'+h+'.js').then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(p){
+      var d=document.createElement('div');
+      d.style.cssText='border:1px solid rgba(0,0,0,.08);border-radius:12px;overflow:hidden;background:#fff;position:relative;';
+      var img=(p.featured_image||'').replace(/^\/\//,'https://');
+      d.innerHTML='<a href="'+p.url+'" style="text-decoration:none;color:inherit;display:block;">'
+        +(img?'<img src="'+img+'&width=400" alt="" style="width:100%;aspect-ratio:1;object-fit:cover;" onerror="this.src=\''+img+'\'">':'')
+        +'<div style="padding:10px 12px;"><div style="font-size:14px;line-height:1.35;">'+p.title+'</div>'
+        +'<div style="font-weight:600;margin-top:6px;">CHF '+(p.price/100).toFixed(2)+'</div></div></a>'
+        +'<button type="button" data-h="'+h+'" class="lux-wl-rm" style="position:absolute;top:8px;right:8px;border:none;background:rgba(255,255,255,.92);border-radius:50%;width:30px;height:30px;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.15);">✕</button>';
+      grid.appendChild(d);
+    }).catch(function(){});
+  });
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('.lux-wl-rm');if(!b)return;
+    var h=b.getAttribute('data-h');
+    try{var cur=JSON.parse(localStorage.getItem(KEY)||'[]');cur=cur.filter(function(x){return x!==h});localStorage.setItem(KEY,JSON.stringify(cur));}catch(e2){}
+    b.parentElement.remove();
+    if(!document.querySelector('#lux-wl-grid > *')){document.getElementById('lux-wl-empty').style.display='block';}
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Merkliste",
+  "settings": []
+}
+{% endschema %}
