@@ -518,10 +518,12 @@
   "pin-20261025T1340": {
    "basis_utc": "2026-10-25T13:40:00Z",
    "format": "pin",
+   "letzter_versuch": "2026-10-18T22:26:53Z",
    "mc_ids": [],
-   "status": "offen",
+   "reserviert_um": "2026-10-18T22:26:53Z",
+   "status": "reserviert",
    "termin_utc": "2026-10-25T13:40:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "pin-20261025T1610": {
    "basis_utc": "2026-10-25T16:10:00Z",
@@ -1125,13 +1127,13 @@
   "tiktok-20261025T1205": {
    "basis_utc": "2026-10-25T12:05:00Z",
    "format": "tiktok",
-   "grund": "rc=3:  Die Aufschrift «SPORT» auf den Pantoffeln wirkt billig und generisch, was dem Anspruch von LuxeStyle widerspricht und die Produktqualität mindert. Dies ist ein",
-   "letzter_versuch": "2026-10-18T22:25:39Z",
+   "grund": "rc=3: Die Präsentation wirkt unprofessionell und wenig ansprechend für einen Shop wie LuxeStyle. Das Fehlen eines echten Babys und der sterile Hintergrund mindern die",
+   "letzter_versuch": "2026-10-18T22:26:19Z",
    "mc_ids": [],
-   "reserviert_um": "2026-10-18T22:25:39Z",
-   "status": "reserviert",
+   "reserviert_um": "2026-10-18T22:26:19Z",
+   "status": "offen",
    "termin_utc": "2026-10-25T12:05:00Z",
-   "versuche": 3
+   "versuche": 4
   },
   "tiktok-20261025T1905": {
    "basis_utc": "2026-10-25T19:05:00Z",
@@ -1346,6 +1348,6 @@
    "versuche": 0
   }
  },
- "stand": "2026-10-18T22:25:39Z",
+ "stand": "2026-10-18T22:26:53Z",
  "version": 1
 }
