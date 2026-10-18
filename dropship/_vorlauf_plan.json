@@ -924,12 +924,16 @@
   "tiktok-20261023T1105": {
    "basis_utc": "2026-10-23T11:05:00Z",
    "format": "tiktok",
-   "letzter_versuch": "2026-10-18T22:01:14Z",
-   "mc_ids": [],
-   "reserviert_um": "2026-10-18T22:01:14Z",
-   "status": "reserviert",
+   "grund": "",
+   "handle": "mehrschichtiger-hosenbugel-aus-aluminium-787904",
+   "letzter_versuch": "2026-10-18T22:03:12Z",
+   "mc_ids": [
+    399461354
+   ],
+   "reserviert_um": "2026-10-18T22:03:12Z",
+   "status": "geplant",
    "termin_utc": "2026-10-23T11:05:00Z",
-   "versuche": 1
+   "versuche": 4
   },
   "tiktok-20261023T1805": {
    "basis_utc": "2026-10-23T18:05:00Z",
@@ -1154,6 +1158,6 @@
    "versuche": 0
   }
  },
- "stand": "2026-10-18T22:01:14Z",
+ "stand": "2026-10-18T22:04:09Z",
  "version": 1
 }

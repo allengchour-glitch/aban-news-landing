@@ -411,3 +411,6 @@ pid:15450834665857
 slug:waben-katzenstreu-matte-ea1e49
 slug:bruder-john-deere-7r-350-fga03151
 name:bruderjohndeere7r350
+name:mehrschichtigerhosenbügelausaluminium
+pid:15478274556289
+slug:mehrschichtiger-hosenbugel-aus-aluminium
