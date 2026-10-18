@@ -537,3 +537,4 @@
 2026-10-15T04:27:15.914Z	luxe-adventure-uplift.wav	41	allgemein	cjreel-CJXFZNKC00131-Black	stimme:nein	anteil
 2026-10-15T04:28:43.545Z	luxe-epic-hero.wav	46	haustier	cjreel-CJGY114829701AZ	stimme:nein	anteil
 2026-10-15T04:30:02.503Z	luxe-epic-trailer.wav	15.5	home	cjreel-CJCD154096301AZ	stimme:nein	anteil
+2026-10-18T20:12:45.000Z	luxe-epic-winter.wav	34.0	mode	bildreel-freizeitjacke-fur-business-und-pendeln-616400	stimme:nein	anteil	quelle:bild

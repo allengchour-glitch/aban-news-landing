@@ -4203,3 +4203,11 @@ gid://shopify/Product/16640739869063	taschen	Lederhandtasche Retro Bangalor mit 
 gid://shopify/Product/16640743833991	taschen	Schultertasche aus Oxford-Stoff
 gid://shopify/Product/16640749404551	taschen	Einheits-Schultertasche für iPhone
 gid://shopify/Product/16641106018695	taschen	Laptop-Tasche Herren Schultertasche
+gid://shopify/Product/16641498317191	taschen	Reisehandtasche 14'' aus Leder
+gid://shopify/Product/16641880621447	taschen	Crazy Horse Leder Umhängetasche
+gid://shopify/Product/16642129330567	taschen	Wasserdichte Business-Laptoptasche für Herren
+gid://shopify/Product/16642134540679	taschen	Crossover Umhängetasche Herren
+gid://shopify/Product/16642138276231	taschen	Reisetasche mit Trocken-Nass-Trennung, 20-35 L
+gid://shopify/Product/16642446000519	taschen	Reisetasche mit Nass-Trocken-Trennung
+gid://shopify/Product/16642534474119	taschen	Reisetasche Sportlich 75 l Schwarz-Camo
+gid://shopify/Product/16642537980295	taschen	Wasserdichte Trolleytasche mit grossem Fassungsvermögen
