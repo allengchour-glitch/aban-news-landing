@@ -1,4 +1,4 @@
-# Nachfrage-Lieblinge (automatisch, 2026-10-15 01:18 UTC)
+# Nachfrage-Lieblinge (automatisch, 2026-10-18 23:25 UTC)
 
 > `automation/nachfrage_liebling.py`: Produktseiten mit ≥2 Warenkorb- oder ≥1 Kassen-Sitzung (90 T, nur Menschen) → Tag `nachfrage-liebling` → Vorrang in allen Social-Queues (nach `kunden-liebling`).
 
@@ -11,9 +11,7 @@
 | reise-hangematte-aus-fallschirm-nylon-86eb20 | 4 | 1 | 1 | ✅ Tag |
 | led-wasserwellen-projektionsleuchte-677504 | 3 | 1 | 1 | ✅ Tag |
 | elektrischer-shaker-fur-protein-shakes-342592 | 3 | 1 | 1 | ✅ Tag |
-| u-formiges-schwangerschaftskissen-aus-eisseide-004544 | 2 | 1 | 1 | — DRAFT |
 | y2k-harajuku-hoodie-mit-nieten-629700 | 1 | 1 | 1 | ✅ Tag |
 | leinenhemd-langarm-lassig-bequem-621700 | 1 | 1 | 1 | ✅ Tag |
 | scheinwerfer-vernebler-becher-a1978c | 1 | 1 | 1 | ✅ Tag |
 | nibosi-quarzuhr-mit-edelstahlband-e89d0a | 1 | 1 | 1 | — DRAFT |
-| rollstuhl-fur-hunde-mit-hinterbein-lahmung-629100 | 1 | 1 | 1 | — DRAFT |

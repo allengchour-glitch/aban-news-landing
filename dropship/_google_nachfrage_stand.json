@@ -1,12 +1,12 @@
 {
- "stand": "2026-10-14T16:52Z",
+ "stand": "2026-10-18T23:27Z",
  "tage": 120,
- "mit_nachfrage": 201,
- "weg": 62,
+ "mit_nachfrage": 207,
+ "weg": 61,
  "ersatz": 8,
- "ohne_ersatz": 54,
+ "ohne_ersatz": 53,
  "ohne_ersatz_korb": 11,
- "behebbar": 16,
+ "behebbar": 14,
  "zeilen": [
   {
    "handle": "rizinusol-wickel-set-mit-bio-ol-323457",
@@ -250,22 +250,6 @@
    "ersatz_art": ""
   },
   {
-   "handle": "22-teiliges-leder-nahset-fur-lederarbeiten-105857",
-   "titel": "22-teiliges Leder Nähset für Lederarbeiten",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 2,
-   "korb": 0,
-   "kauf": 0,
-   "quelle": [
-    "Google-Suche"
-   ],
-   "grund": "Grund unbekannt (kein Grund-Tag)",
-   "behebbar": true,
-   "ersatz": null,
-   "ersatz_art": ""
-  },
-  {
    "handle": "silikon-abtropfmatte-fur-geschirr-637442",
    "titel": "Silikon-Abtropfmatte für Geschirr",
    "status": "DRAFT",
@@ -294,6 +278,22 @@
    ],
    "grund": "bewusst nicht bei Google (Kostüm)",
    "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "22-teiliges-leder-nahset-fur-lederarbeiten-105857",
+   "titel": "22-teiliges Leder Nähset für Lederarbeiten",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 2,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
    "ersatz": null,
    "ersatz_art": ""
   },
@@ -570,22 +570,6 @@
    "ersatz_art": ""
   },
   {
-   "handle": "sandfreie-strandmatte-xl-wasserdicht",
-   "titel": "Sandfreie Strandmatte XL · Wasserdicht",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 0,
-   "kauf": 0,
-   "quelle": [
-    "Gratis-Eintrag"
-   ],
-   "grund": "ohne Lieferant → Lieferant suchen",
-   "behebbar": true,
-   "ersatz": null,
-   "ersatz_art": ""
-  },
-  {
    "handle": "universal-ladegerat-fur-60v-e-scooter-bike-580481",
    "titel": "Universal-Ladegerät für 60V E-Scooter/Bike",
    "status": "DRAFT",
@@ -682,22 +666,6 @@
    "ersatz_art": ""
   },
   {
-   "handle": "floating-cooler-xl-schwimmende-kuhlbox",
-   "titel": "Floating Cooler XL Schwimmende Kühlbox",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 0,
-   "kauf": 0,
-   "quelle": [
-    "Google-Suche"
-   ],
-   "grund": "ohne Lieferant → Lieferant suchen",
-   "behebbar": true,
-   "ersatz": null,
-   "ersatz_art": ""
-  },
-  {
    "handle": "galaxy-aurora-led-projektor-360-sternenhimmel",
    "titel": "Galaxy Aurora LED-Projektor 360° · Sternenhimmel & Nordlicht mit Fernbedienung",
    "status": "DRAFT",
@@ -730,22 +698,6 @@
    "ersatz_art": "Weiterleitung"
   },
   {
-   "handle": "tennis-armband-zirkonia-316l-edelstahl",
-   "titel": "Tennis-Armband Zirkonia · 316L Edelstahl",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 0,
-   "kauf": 0,
-   "quelle": [
-    "Google-Suche"
-   ],
-   "grund": "ohne Lieferant → Lieferant suchen",
-   "behebbar": true,
-   "ersatz": "tennis-armband-aus-edelstahl-mit-zirkonia-637200",
-   "ersatz_art": "Weiterleitung"
-  },
-  {
    "handle": "damenuhr-bellevue-b39-35-mm-295895",
    "titel": "Damenuhr Bellevue B39 (Ø 35 mm)",
    "status": "DRAFT",
@@ -773,6 +725,38 @@
     "Google-Suche"
    ],
    "grund": "Lieferant beendet (BigBuy)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "tennis-armband-zirkonia-316l-edelstahl",
+   "titel": "Tennis-Armband Zirkonia · 316L Edelstahl",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "ohne Lieferant → Lieferant suchen",
+   "behebbar": true,
+   "ersatz": "tennis-armband-aus-edelstahl-mit-zirkonia-637200",
+   "ersatz_art": "Weiterleitung"
+  },
+  {
+   "handle": "kostum-hosenanzug-fgss3865",
+   "titel": "Kostüm Hosenanzug «Good Vibes» · 5 Designs",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "bewusst nicht bei Google (Kostüm)",
    "behebbar": false,
    "ersatz": null,
    "ersatz_art": ""
