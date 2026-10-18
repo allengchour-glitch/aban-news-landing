@@ -711,10 +711,15 @@
   "story-20261023T1045": {
    "basis_utc": "2026-10-23T10:45:00Z",
    "format": "story",
+   "grund": "",
+   "handle": "",
    "letzter_versuch": "2026-10-18T22:00:40Z",
-   "mc_ids": [],
+   "mc_ids": [
+    399459121,
+    399459125
+   ],
    "reserviert_um": "2026-10-18T22:00:40Z",
-   "status": "reserviert",
+   "status": "geplant",
    "termin_utc": "2026-10-23T10:45:00Z",
    "versuche": 1
   },
@@ -919,10 +924,12 @@
   "tiktok-20261023T1105": {
    "basis_utc": "2026-10-23T11:05:00Z",
    "format": "tiktok",
+   "letzter_versuch": "2026-10-18T22:01:14Z",
    "mc_ids": [],
-   "status": "offen",
+   "reserviert_um": "2026-10-18T22:01:14Z",
+   "status": "reserviert",
    "termin_utc": "2026-10-23T11:05:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "tiktok-20261023T1805": {
    "basis_utc": "2026-10-23T18:05:00Z",
@@ -1147,6 +1154,6 @@
    "versuche": 0
   }
  },
- "stand": "2026-10-18T22:00:40Z",
+ "stand": "2026-10-18T22:01:14Z",
  "version": 1
 }
