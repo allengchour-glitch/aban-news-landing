@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-10-18T21:25:28Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-10-18T21:30:54Z
 
 Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: nachfueller, 1291 Produkte. Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **4844** in 1288 Produkten
-- Treffer (≥ 4 Wörter): **190** in 161 Produkten
+- Medien geprüft: **4872** in 1295 Produkten
+- Treffer (≥ 4 Wörter): **191** in 162 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **57**
 
@@ -122,6 +122,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Wasserfeste Maniküre `15452675244417` | [69904212656513](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ef79df43-a5d1-4cce-b6d7-bbf0531b169a.jpg) | 8 | ZESUNMEI Alcohol Pad Ethyl Alcohol For Disinfection Use | offen |
 | Wasserfeste Maniküre `15452675244417` | [69904212689281](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c9f3f711-86fd-42f1-b423-efcb03708798.jpg) | 8 | ZESUNMEI Alcohol Pad Ethyl Alcohol For Disinfection Use | offen |
 | Männer-Tasche mit Schnellverschluss `15453776576897` | [69926707724673](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e3e79614-715f-4720-b663-fcfc56b8c2a1_trans_17b742e3-cac7-4a0f-bfab-00f3228e6688.jpg) | 8 | Magnetic Release Shoulder Bag Factory Wholesale Drop shipping | offen |
+| Nachtlicht fürs Bett `15500373885313` | [70542712308097](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/52338691-b29a-405b-8683-acce7c278bec.jpg) | 8 | USB five holes night light will light will | offen |
 | Walnut-Tamper-Aufbewahrung `15453777428865` | [69926712443265](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bf44810f-69e4-4f5b-89d2-a563f833df37_trans.jpg) | 7 | Coffee solid wood tamping base Suitable for | ENTFERNT |
 | Baby Seitenliege- und Anti-Roll-Kissen `15453778510209` | [69926716539265](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/638aea21-8dbc-4e77-922a-d77677b291d2_trans.jpg) | 7 | Full and helps soothe sleep and prevents | ENTFERNT |
 | Gehhilfe für Senioren `15453730439553` | [69926176588161](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5c6a5c54-439a-4d29-8148-fdf8f6c2aec6_trans.jpg) | 7 | Crotch thickened chafing pad Wearable waist waist | ENTFERNT |

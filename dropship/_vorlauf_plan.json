@@ -1,0 +1,817 @@
+{
+ "slots": {
+  "bild-20261019T0745": {
+   "basis_utc": "2026-10-19T07:45:00Z",
+   "format": "bild",
+   "grund": "",
+   "handle": "",
+   "letzter_versuch": "2026-10-18T21:29:09Z",
+   "mc_ids": [
+    399444501
+   ],
+   "reserviert_um": "2026-10-18T21:29:09Z",
+   "status": "geplant",
+   "termin_utc": "2026-10-19T07:45:00Z",
+   "versuche": 1
+  },
+  "bild-20261020T0745": {
+   "basis_utc": "2026-10-20T07:45:00Z",
+   "format": "bild",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-20T07:45:00Z",
+   "versuche": 0
+  },
+  "bild-20261021T0745": {
+   "basis_utc": "2026-10-21T07:45:00Z",
+   "format": "bild",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-21T07:45:00Z",
+   "versuche": 0
+  },
+  "bild-20261022T0745": {
+   "basis_utc": "2026-10-22T07:45:00Z",
+   "format": "bild",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-22T07:45:00Z",
+   "versuche": 0
+  },
+  "bild-20261023T0745": {
+   "basis_utc": "2026-10-23T07:45:00Z",
+   "format": "bild",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-23T07:45:00Z",
+   "versuche": 0
+  },
+  "bild-20261024T0745": {
+   "basis_utc": "2026-10-24T07:45:00Z",
+   "format": "bild",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-24T07:45:00Z",
+   "versuche": 0
+  },
+  "bild-20261025T0845": {
+   "basis_utc": "2026-10-25T08:45:00Z",
+   "format": "bild",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-25T08:45:00Z",
+   "versuche": 0
+  },
+  "karussell-20261019T1915": {
+   "basis_utc": "2026-10-19T19:15:00Z",
+   "format": "karussell",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-19T19:15:00Z",
+   "versuche": 0
+  },
+  "karussell-20261020T1915": {
+   "basis_utc": "2026-10-20T19:15:00Z",
+   "format": "karussell",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-20T19:15:00Z",
+   "versuche": 0
+  },
+  "karussell-20261021T1915": {
+   "basis_utc": "2026-10-21T19:15:00Z",
+   "format": "karussell",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-21T19:15:00Z",
+   "versuche": 0
+  },
+  "karussell-20261022T1915": {
+   "basis_utc": "2026-10-22T19:15:00Z",
+   "format": "karussell",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-22T19:15:00Z",
+   "versuche": 0
+  },
+  "karussell-20261023T1915": {
+   "basis_utc": "2026-10-23T19:15:00Z",
+   "format": "karussell",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-23T19:15:00Z",
+   "versuche": 0
+  },
+  "karussell-20261024T1915": {
+   "basis_utc": "2026-10-24T19:15:00Z",
+   "format": "karussell",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-24T19:15:00Z",
+   "versuche": 0
+  },
+  "karussell-20261025T2015": {
+   "basis_utc": "2026-10-25T20:15:00Z",
+   "format": "karussell",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-25T20:15:00Z",
+   "versuche": 0
+  },
+  "pin-20261019T1240": {
+   "basis_utc": "2026-10-19T12:40:00Z",
+   "format": "pin",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-19T12:40:00Z",
+   "versuche": 0
+  },
+  "pin-20261019T1510": {
+   "basis_utc": "2026-10-19T15:10:00Z",
+   "format": "pin",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-19T15:10:00Z",
+   "versuche": 0
+  },
+  "pin-20261019T1740": {
+   "basis_utc": "2026-10-19T17:40:00Z",
+   "format": "pin",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-19T17:40:00Z",
+   "versuche": 0
+  },
+  "pin-20261019T1950": {
+   "basis_utc": "2026-10-19T19:50:00Z",
+   "format": "pin",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-19T19:50:00Z",
+   "versuche": 0
+  },
+  "pin-20261020T1240": {
+   "basis_utc": "2026-10-20T12:40:00Z",
+   "format": "pin",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-20T12:40:00Z",
+   "versuche": 0
+  },
+  "pin-20261020T1510": {
+   "basis_utc": "2026-10-20T15:10:00Z",
+   "format": "pin",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-20T15:10:00Z",
+   "versuche": 0
+  },
+  "pin-20261020T1740": {
+   "basis_utc": "2026-10-20T17:40:00Z",
+   "format": "pin",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-20T17:40:00Z",
+   "versuche": 0
+  },
+  "pin-20261020T1950": {
+   "basis_utc": "2026-10-20T19:50:00Z",
+   "format": "pin",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-20T19:50:00Z",
+   "versuche": 0
+  },
+  "pin-20261021T1240": {
+   "basis_utc": "2026-10-21T12:40:00Z",
+   "format": "pin",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-21T12:40:00Z",
+   "versuche": 0
+  },
+  "pin-20261021T1510": {
+   "basis_utc": "2026-10-21T15:10:00Z",
+   "format": "pin",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-21T15:10:00Z",
+   "versuche": 0
+  },
+  "pin-20261021T1740": {
+   "basis_utc": "2026-10-21T17:40:00Z",
+   "format": "pin",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-21T17:40:00Z",
+   "versuche": 0
+  },
+  "pin-20261021T1950": {
+   "basis_utc": "2026-10-21T19:50:00Z",
+   "format": "pin",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-21T19:50:00Z",
+   "versuche": 0
+  },
+  "pin-20261022T1240": {
+   "basis_utc": "2026-10-22T12:40:00Z",
+   "format": "pin",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-22T12:40:00Z",
+   "versuche": 0
+  },
+  "pin-20261022T1510": {
+   "basis_utc": "2026-10-22T15:10:00Z",
+   "format": "pin",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-22T15:10:00Z",
+   "versuche": 0
+  },
+  "pin-20261022T1740": {
+   "basis_utc": "2026-10-22T17:40:00Z",
+   "format": "pin",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-22T17:40:00Z",
+   "versuche": 0
+  },
+  "pin-20261022T1950": {
+   "basis_utc": "2026-10-22T19:50:00Z",
+   "format": "pin",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-22T19:50:00Z",
+   "versuche": 0
+  },
+  "pin-20261023T1240": {
+   "basis_utc": "2026-10-23T12:40:00Z",
+   "format": "pin",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-23T12:40:00Z",
+   "versuche": 0
+  },
+  "pin-20261023T1510": {
+   "basis_utc": "2026-10-23T15:10:00Z",
+   "format": "pin",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-23T15:10:00Z",
+   "versuche": 0
+  },
+  "pin-20261023T1740": {
+   "basis_utc": "2026-10-23T17:40:00Z",
+   "format": "pin",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-23T17:40:00Z",
+   "versuche": 0
+  },
+  "pin-20261023T1950": {
+   "basis_utc": "2026-10-23T19:50:00Z",
+   "format": "pin",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-23T19:50:00Z",
+   "versuche": 0
+  },
+  "pin-20261024T1240": {
+   "basis_utc": "2026-10-24T12:40:00Z",
+   "format": "pin",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-24T12:40:00Z",
+   "versuche": 0
+  },
+  "pin-20261024T1510": {
+   "basis_utc": "2026-10-24T15:10:00Z",
+   "format": "pin",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-24T15:10:00Z",
+   "versuche": 0
+  },
+  "pin-20261024T1740": {
+   "basis_utc": "2026-10-24T17:40:00Z",
+   "format": "pin",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-24T17:40:00Z",
+   "versuche": 0
+  },
+  "pin-20261024T1950": {
+   "basis_utc": "2026-10-24T19:50:00Z",
+   "format": "pin",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-24T19:50:00Z",
+   "versuche": 0
+  },
+  "pin-20261025T1340": {
+   "basis_utc": "2026-10-25T13:40:00Z",
+   "format": "pin",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-25T13:40:00Z",
+   "versuche": 0
+  },
+  "pin-20261025T1610": {
+   "basis_utc": "2026-10-25T16:10:00Z",
+   "format": "pin",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-25T16:10:00Z",
+   "versuche": 0
+  },
+  "pin-20261025T1840": {
+   "basis_utc": "2026-10-25T18:40:00Z",
+   "format": "pin",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-25T18:40:00Z",
+   "versuche": 0
+  },
+  "pin-20261025T2050": {
+   "basis_utc": "2026-10-25T20:50:00Z",
+   "format": "pin",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-25T20:50:00Z",
+   "versuche": 0
+  },
+  "reel_igfb-20261019T1015": {
+   "basis_utc": "2026-10-19T10:15:00Z",
+   "format": "reel_igfb",
+   "grund": "",
+   "handle": "diy-stickset-mit-50-garnfarben-cb3e23",
+   "letzter_versuch": "2026-10-18T21:30:25Z",
+   "mc_ids": [
+    399445068,
+    399445071
+   ],
+   "reserviert_um": "2026-10-18T21:30:25Z",
+   "status": "geplant",
+   "termin_utc": "2026-10-19T10:15:00Z",
+   "versuche": 3
+  },
+  "reel_igfb-20261019T1815": {
+   "basis_utc": "2026-10-19T18:15:00Z",
+   "format": "reel_igfb",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-19T18:15:00Z",
+   "versuche": 0
+  },
+  "reel_igfb-20261020T1015": {
+   "basis_utc": "2026-10-20T10:15:00Z",
+   "format": "reel_igfb",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-20T10:15:00Z",
+   "versuche": 0
+  },
+  "reel_igfb-20261020T1815": {
+   "basis_utc": "2026-10-20T18:15:00Z",
+   "format": "reel_igfb",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-20T18:15:00Z",
+   "versuche": 0
+  },
+  "reel_igfb-20261021T1015": {
+   "basis_utc": "2026-10-21T10:15:00Z",
+   "format": "reel_igfb",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-21T10:15:00Z",
+   "versuche": 0
+  },
+  "reel_igfb-20261021T1815": {
+   "basis_utc": "2026-10-21T18:15:00Z",
+   "format": "reel_igfb",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-21T18:15:00Z",
+   "versuche": 0
+  },
+  "reel_igfb-20261022T1015": {
+   "basis_utc": "2026-10-22T10:15:00Z",
+   "format": "reel_igfb",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-22T10:15:00Z",
+   "versuche": 0
+  },
+  "reel_igfb-20261022T1815": {
+   "basis_utc": "2026-10-22T18:15:00Z",
+   "format": "reel_igfb",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-22T18:15:00Z",
+   "versuche": 0
+  },
+  "reel_igfb-20261023T1015": {
+   "basis_utc": "2026-10-23T10:15:00Z",
+   "format": "reel_igfb",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-23T10:15:00Z",
+   "versuche": 0
+  },
+  "reel_igfb-20261023T1815": {
+   "basis_utc": "2026-10-23T18:15:00Z",
+   "format": "reel_igfb",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-23T18:15:00Z",
+   "versuche": 0
+  },
+  "reel_igfb-20261024T1015": {
+   "basis_utc": "2026-10-24T10:15:00Z",
+   "format": "reel_igfb",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-24T10:15:00Z",
+   "versuche": 0
+  },
+  "reel_igfb-20261024T1815": {
+   "basis_utc": "2026-10-24T18:15:00Z",
+   "format": "reel_igfb",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-24T18:15:00Z",
+   "versuche": 0
+  },
+  "reel_igfb-20261025T1115": {
+   "basis_utc": "2026-10-25T11:15:00Z",
+   "format": "reel_igfb",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-25T11:15:00Z",
+   "versuche": 0
+  },
+  "reel_igfb-20261025T1915": {
+   "basis_utc": "2026-10-25T19:15:00Z",
+   "format": "reel_igfb",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-25T19:15:00Z",
+   "versuche": 0
+  },
+  "story-20261019T1045": {
+   "basis_utc": "2026-10-19T10:45:00Z",
+   "format": "story",
+   "letzter_versuch": "2026-10-18T21:30:39Z",
+   "mc_ids": [],
+   "reserviert_um": "2026-10-18T21:30:39Z",
+   "status": "reserviert",
+   "termin_utc": "2026-10-19T10:45:00Z",
+   "versuche": 1
+  },
+  "story-20261020T1045": {
+   "basis_utc": "2026-10-20T10:45:00Z",
+   "format": "story",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-20T10:45:00Z",
+   "versuche": 0
+  },
+  "story-20261021T1045": {
+   "basis_utc": "2026-10-21T10:45:00Z",
+   "format": "story",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-21T10:45:00Z",
+   "versuche": 0
+  },
+  "story-20261022T1045": {
+   "basis_utc": "2026-10-22T10:45:00Z",
+   "format": "story",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-22T10:45:00Z",
+   "versuche": 0
+  },
+  "story-20261023T1045": {
+   "basis_utc": "2026-10-23T10:45:00Z",
+   "format": "story",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-23T10:45:00Z",
+   "versuche": 0
+  },
+  "story-20261024T1045": {
+   "basis_utc": "2026-10-24T10:45:00Z",
+   "format": "story",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-24T10:45:00Z",
+   "versuche": 0
+  },
+  "story-20261025T1145": {
+   "basis_utc": "2026-10-25T11:45:00Z",
+   "format": "story",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-25T11:45:00Z",
+   "versuche": 0
+  },
+  "tiktok-20261019T0605": {
+   "basis_utc": "2026-10-19T06:05:00Z",
+   "format": "tiktok",
+   "grund": "",
+   "handle": "freizeitjacke-fur-business-und-pendeln-616400",
+   "letzter_versuch": "2026-10-18T21:27:48Z",
+   "mc_ids": [
+    399443764
+   ],
+   "reserviert_um": "2026-10-18T21:27:48Z",
+   "status": "geplant",
+   "termin_utc": "2026-10-19T06:05:00Z",
+   "versuche": 1
+  },
+  "tiktok-20261019T1105": {
+   "basis_utc": "2026-10-19T11:05:00Z",
+   "format": "tiktok",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-19T11:05:00Z",
+   "versuche": 0
+  },
+  "tiktok-20261019T1805": {
+   "basis_utc": "2026-10-19T18:05:00Z",
+   "format": "tiktok",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-19T18:05:00Z",
+   "versuche": 0
+  },
+  "tiktok-20261020T0605": {
+   "basis_utc": "2026-10-20T06:05:00Z",
+   "format": "tiktok",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-20T06:05:00Z",
+   "versuche": 0
+  },
+  "tiktok-20261020T1105": {
+   "basis_utc": "2026-10-20T11:05:00Z",
+   "format": "tiktok",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-20T11:05:00Z",
+   "versuche": 0
+  },
+  "tiktok-20261020T1805": {
+   "basis_utc": "2026-10-20T18:05:00Z",
+   "format": "tiktok",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-20T18:05:00Z",
+   "versuche": 0
+  },
+  "tiktok-20261021T0605": {
+   "basis_utc": "2026-10-21T06:05:00Z",
+   "format": "tiktok",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-21T06:05:00Z",
+   "versuche": 0
+  },
+  "tiktok-20261021T1105": {
+   "basis_utc": "2026-10-21T11:05:00Z",
+   "format": "tiktok",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-21T11:05:00Z",
+   "versuche": 0
+  },
+  "tiktok-20261021T1805": {
+   "basis_utc": "2026-10-21T18:05:00Z",
+   "format": "tiktok",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-21T18:05:00Z",
+   "versuche": 0
+  },
+  "tiktok-20261022T0605": {
+   "basis_utc": "2026-10-22T06:05:00Z",
+   "format": "tiktok",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-22T06:05:00Z",
+   "versuche": 0
+  },
+  "tiktok-20261022T1105": {
+   "basis_utc": "2026-10-22T11:05:00Z",
+   "format": "tiktok",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-22T11:05:00Z",
+   "versuche": 0
+  },
+  "tiktok-20261022T1805": {
+   "basis_utc": "2026-10-22T18:05:00Z",
+   "format": "tiktok",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-22T18:05:00Z",
+   "versuche": 0
+  },
+  "tiktok-20261023T0605": {
+   "basis_utc": "2026-10-23T06:05:00Z",
+   "format": "tiktok",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-23T06:05:00Z",
+   "versuche": 0
+  },
+  "tiktok-20261023T1105": {
+   "basis_utc": "2026-10-23T11:05:00Z",
+   "format": "tiktok",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-23T11:05:00Z",
+   "versuche": 0
+  },
+  "tiktok-20261023T1805": {
+   "basis_utc": "2026-10-23T18:05:00Z",
+   "format": "tiktok",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-23T18:05:00Z",
+   "versuche": 0
+  },
+  "tiktok-20261024T0605": {
+   "basis_utc": "2026-10-24T06:05:00Z",
+   "format": "tiktok",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-24T06:05:00Z",
+   "versuche": 0
+  },
+  "tiktok-20261024T1105": {
+   "basis_utc": "2026-10-24T11:05:00Z",
+   "format": "tiktok",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-24T11:05:00Z",
+   "versuche": 0
+  },
+  "tiktok-20261024T1805": {
+   "basis_utc": "2026-10-24T18:05:00Z",
+   "format": "tiktok",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-24T18:05:00Z",
+   "versuche": 0
+  },
+  "tiktok-20261025T0705": {
+   "basis_utc": "2026-10-25T07:05:00Z",
+   "format": "tiktok",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-25T07:05:00Z",
+   "versuche": 0
+  },
+  "tiktok-20261025T1205": {
+   "basis_utc": "2026-10-25T12:05:00Z",
+   "format": "tiktok",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-25T12:05:00Z",
+   "versuche": 0
+  },
+  "tiktok-20261025T1905": {
+   "basis_utc": "2026-10-25T19:05:00Z",
+   "format": "tiktok",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-25T19:05:00Z",
+   "versuche": 0
+  },
+  "youtube-20261019T0520": {
+   "basis_utc": "2026-10-19T05:20:00Z",
+   "format": "youtube",
+   "grund": "",
+   "handle": "hundeleine-mit-led-beleuchtung-3m-593152",
+   "letzter_versuch": "2026-10-18T21:28:48Z",
+   "mc_ids": [
+    399444294
+   ],
+   "reserviert_um": "2026-10-18T21:28:48Z",
+   "status": "geplant",
+   "termin_utc": "2026-10-19T05:20:00Z",
+   "versuche": 1
+  },
+  "youtube-20261019T1405": {
+   "basis_utc": "2026-10-19T14:05:00Z",
+   "format": "youtube",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-19T14:05:00Z",
+   "versuche": 0
+  },
+  "youtube-20261020T0520": {
+   "basis_utc": "2026-10-20T05:20:00Z",
+   "format": "youtube",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-20T05:20:00Z",
+   "versuche": 0
+  },
+  "youtube-20261020T1405": {
+   "basis_utc": "2026-10-20T14:05:00Z",
+   "format": "youtube",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-20T14:05:00Z",
+   "versuche": 0
+  },
+  "youtube-20261021T0520": {
+   "basis_utc": "2026-10-21T05:20:00Z",
+   "format": "youtube",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-21T05:20:00Z",
+   "versuche": 0
+  },
+  "youtube-20261021T1405": {
+   "basis_utc": "2026-10-21T14:05:00Z",
+   "format": "youtube",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-21T14:05:00Z",
+   "versuche": 0
+  },
+  "youtube-20261022T0520": {
+   "basis_utc": "2026-10-22T05:20:00Z",
+   "format": "youtube",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-22T05:20:00Z",
+   "versuche": 0
+  },
+  "youtube-20261022T1405": {
+   "basis_utc": "2026-10-22T14:05:00Z",
+   "format": "youtube",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-22T14:05:00Z",
+   "versuche": 0
+  },
+  "youtube-20261023T0520": {
+   "basis_utc": "2026-10-23T05:20:00Z",
+   "format": "youtube",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-23T05:20:00Z",
+   "versuche": 0
+  },
+  "youtube-20261023T1405": {
+   "basis_utc": "2026-10-23T14:05:00Z",
+   "format": "youtube",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-23T14:05:00Z",
+   "versuche": 0
+  },
+  "youtube-20261024T0520": {
+   "basis_utc": "2026-10-24T05:20:00Z",
+   "format": "youtube",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-24T05:20:00Z",
+   "versuche": 0
+  },
+  "youtube-20261024T1405": {
+   "basis_utc": "2026-10-24T14:05:00Z",
+   "format": "youtube",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-24T14:05:00Z",
+   "versuche": 0
+  },
+  "youtube-20261025T0620": {
+   "basis_utc": "2026-10-25T06:20:00Z",
+   "format": "youtube",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-25T06:20:00Z",
+   "versuche": 0
+  },
+  "youtube-20261025T1505": {
+   "basis_utc": "2026-10-25T15:05:00Z",
+   "format": "youtube",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-25T15:05:00Z",
+   "versuche": 0
+  }
+ },
+ "stand": "2026-10-18T21:30:39Z",
+ "version": 1
+}
