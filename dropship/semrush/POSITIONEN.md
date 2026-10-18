@@ -1,29 +1,30 @@
-# Positionen der Zielbegriffe (Semrush, Google Schweiz)
+# Positionen der Zielbegriffe (Semrush + Search Console, Google Schweiz)
 
-Schnappschüsse: 2026-10-02, 2026-10-05 · Zielbegriffe 250 · gemessen 196 · Top 10 0 · besser 0 · schlechter 0 · falsche Seite rankt 22
+Schnappschüsse: 2026-10-02, 2026-10-05, 2026-10-18 · Zielbegriffe 290 · gemessen 196 · Top 10 0 · besser 0 · schlechter 0 (Δ nur zwischen gleichen Quellen) · falsche Seite rankt 28
 
-⚠️ Quelle «db» = Semrush-Datenbank (wird für kleine Begriffe nur alle paar Wochen aufgefrischt); «tracking» = tägliche Kampagne.
+⚠️ Quelle «db» = Semrush-Datenbank (wird für kleine Begriffe nur alle paar Wochen aufgefrischt); «tracking» = tägliche Kampagne; «gsc» = Search Console (mittlere Position, nur Begriffe mit Impressionen).
 
 | Begriff | erste | letzte | Δ | rankende Seite | Ziel | Quelle |
 |---|---|---|---|---|---|---|
 | beistelltisch acryl | 16 (2026-10-02) | 16 (2026-10-05, db) | 0 | /products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768 | /products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768 | rankt Platz 16 |
 | holzspiegel | 17 (2026-10-02) | 17 (2026-10-05, db) | 0 | /products/holzspiegel-im-europaischen-stil-621200 | /products/holzspiegel-im-europaischen-stil-621200 | rankt Platz 17 |
-| stimmungslicht | 20 (2026-10-02) | 20 (2026-10-05, db) | 0 | /collections/beleuchtung-lampen ⚠️ | /collections/sub-beleuchtung | rankt Platz 20 |
 | casio illuminator | 21 (2026-10-02) | 21 (2026-10-05, db) | 0 | /products/herrenuhr-casio-world-time-illuminator-rot-43-mm-bb702629 | /products/herrenuhr-casio-world-time-illuminator-rot-43-mm-bb702629 | rankt Platz 21 |
 | fußgelenkstütze | 21 (2026-10-02) | 21 (2026-10-05, db) | 0 | /products/fussgelenkstutze-616900 | /products/fussgelenkstutze-616900 | rankt Platz 21 |
 | roller cellulite | 22 (2026-10-02) | 22 (2026-10-05, db) | 0 | /products/cellulite-massage-roller | /products/cellulite-massage-roller | rankt Platz 22 |
 | kleiner luftbefeuchter | 23 (2026-10-02) | 23 (2026-10-05, db) | 0 | /products/kleiner-luftbefeuchter-fur-zuhause-und-buro-726592 | /products/kleiner-luftbefeuchter-fur-zuhause-und-buro-726592 | rankt Platz 23 |
+| off shoulder kleid | 24 (2026-10-02) | 23 (2026-10-18, gsc) | ≈ (Quelle db→gsc) | /products/elegantes-off-shoulder-kleid-602200 | /products/elegantes-off-shoulder-kleid-602200 | rankt Platz 24 |
+| rucksäcke für studenten | 44 (2026-10-02) | 23 (2026-10-18, gsc) | ≈ (Quelle db→gsc) | /products/grosser-computer-rucksack-fur-studenten-438464 ⚠️ | /products/studenten-rucksack-fur-herren-732288 | Produkt-SEO 02.10. |
 | schreibhilfe für kinder | 24 (2026-10-02) | 24 (2026-10-05, db) | 0 | /products/schreibhilfe-fur-kinder-635600 | /products/schreibhilfe-fur-kinder-635600 | rankt Platz 24 |
-| off shoulder kleid | 24 (2026-10-02) | 24 (2026-10-05, db) | 0 | /products/elegantes-off-shoulder-kleid-602200 | /products/elegantes-off-shoulder-kleid-602200 | rankt Platz 24 |
-| kinderwagen ventilator | 24 (2026-10-02) | 24 (2026-10-05, db) | 0 | /products/automatischer-schwenkventilator-fur-kinderwage-638500 | /products/automatischer-schwenkventilator-fur-kinderwage-638500 | rankt Platz 24 |
+| stimmungslicht | 20 (2026-10-02) | 25 (2026-10-18, gsc) | ≈ (Quelle db→gsc) | /collections/beleuchtung-lampen ⚠️ | /collections/sub-beleuchtung | rankt Platz 20 |
 | tunika bluse | 25 (2026-10-02) | 25 (2026-10-05, db) | 0 | /products/einfarbige-damen-tunika-bluse-638900 | /products/einfarbige-damen-tunika-bluse-638900 | rankt Platz 25 |
 | trinkrucksack | 26 (2026-10-02) | 26 (2026-10-05, db) | 0 | /products/trinkrucksack-hydration-2l-trinkblase | /products/trinkrucksack-hydration-2l-trinkblase | rankt Platz 26 |
 | katzenklo möbel | 26 (2026-10-02) | 26 (2026-10-05, db) | 0 | /products/katzenklo-mobel-aus-holzwerkstoff-42x-030657 | /products/katzenklo-mobel-aus-holzwerkstoff-42x-030657 | rankt Platz 26 |
 | eisseide | 26 (2026-10-02) | 26 (2026-10-05, db) | 0 | /products/langes-kissen-aus-eisseide-kuhlend-629200 | /products/langes-kissen-aus-eisseide-kuhlend-629200 | rankt Platz 26 |
 | armband vibration wecker | 26 (2026-10-02) | 26 (2026-10-05, db) | 0 | /products/intelligentes-wecker-armband-mit-vibrationsala-620000 | /products/intelligentes-wecker-armband-mit-vibrationsala-620000 | rankt Platz 26 |
 | gesichtsmassagegerät | 26 (2026-10-02) | 26 (2026-10-05, db) | 0 | /products/gesichtsmassagegerat-060097 | /products/gesichtsmassagegerat-060097 | rankt Platz 26 |
+| kinderwagen ventilator | 24 (2026-10-02) | 27 (2026-10-18, gsc) | ≈ (Quelle db→gsc) | /products/kinderwagen-ventilator-mit-schwenkkopf-604900 ⚠️ | /products/automatischer-schwenkventilator-fur-kinderwage-638500 | rankt Platz 24 |
 | leoparden kleid | 27 (2026-10-02) | 27 (2026-10-05, db) | 0 | /products/elegantes-leopard-kleid-627600 | /products/elegantes-leopard-kleid-627600 | rankt Platz 27 |
-| spielkonsole für tv | 27 (2026-10-02) | 27 (2026-10-05, db) | 0 | /products/retro-spielkonsole-068866 | /products/retro-spielkonsole-068866 | rankt Platz 27 |
+| große trinkflasche | 55 (2026-10-02) | 27 (2026-10-18, gsc) | ≈ (Quelle db→gsc) | /products/grosse-trinkflasche-mit-strohhalm-fur-sport-fi-635300 | /products/grosse-trinkflasche-mit-strohhalm-fur-sport-fi-635300 | Produkt-SEO 02.10. |
 | kratzsäule | 28 (2026-10-02) | 28 (2026-10-05, db) | 0 | /products/sisal-kratzsaule-fur-katzen-629500 | /products/sisal-kratzsaule-fur-katzen-629500 | rankt Platz 28 |
 | spaghettiträger kleid | 28 (2026-10-02) | 28 (2026-10-05, db) | 0 | /products/elegantes-sommerkleid-mit-spaghetti-tragern-608800 | /products/elegantes-sommerkleid-mit-spaghetti-tragern-608800 | rankt Platz 28 |
 | corduroy rucksack | 28 (2026-10-02) | 28 (2026-10-05, db) | 0 | /products/corduroy-rucksack-im-preppy-stil-633000 | /products/corduroy-rucksack-im-preppy-stil-633000 | rankt Platz 28 |
@@ -36,7 +37,6 @@ Schnappschüsse: 2026-10-02, 2026-10-05 · Zielbegriffe 250 · gemessen 196 · T
 | glitzerrock | 30 (2026-10-02) | 30 (2026-10-05, db) | 0 | /products/rock-mit-pailletten-rosa-fgssck4741 | /products/rock-mit-pailletten-rosa-fgssck4741 | rankt Platz 30 |
 | karierte bluse damen | 30 (2026-10-02) | 30 (2026-10-05, db) | 0 | /products/karierte-bluse-633600 | /products/karierte-bluse-633600 | rankt Platz 30 |
 | leuchtschuhe kinder | 30 (2026-10-02) | 30 (2026-10-05, db) | 0 | /products/kinder-schuhe-mit-led-licht-609000 | /products/kinder-schuhe-mit-led-licht-609000 | rankt Platz 30 |
-| retro sonnenbrille | 30 (2026-10-02) | 30 (2026-10-05, db) | 0 | /products/sonnenbrillen-set-retro-polarized | /products/sonnenbrillen-set-retro-polarized | rankt Platz 30 |
 | kleid zweiteiler | 30 (2026-10-02) | 30 (2026-10-05, db) | 0 | /products/elegantes-zweiteiler-kleid-im-a-linien-schnitt-612400 | /products/elegantes-zweiteiler-kleid-im-a-linien-schnitt-612400 | rankt Platz 30 |
 | reflektierender rucksack | 30 (2026-10-02) | 30 (2026-10-05, db) | 0 | /products/reflektierender-rucksack-mit-grossem-volumen-143168 | /products/reflektierender-rucksack-mit-grossem-volumen-143168 | rankt Platz 30 |
 | bluse kariert damen | 31 (2026-10-02) | 31 (2026-10-05, db) | 0 | /products/karierte-bluse-633600 | /products/karierte-bluse-633600 | rankt Platz 31 |
@@ -53,12 +53,12 @@ Schnappschüsse: 2026-10-02, 2026-10-05 · Zielbegriffe 250 · gemessen 196 · T
 | schwarzes kleid langarm | 33 (2026-10-02) | 33 (2026-10-05, db) | 0 | /products/schwarzes-langarm-kleid-im-retro-stil-629600 | /products/schwarzes-langarm-kleid-im-retro-stil-629600 | rankt Platz 33 |
 | kart helm | 33 (2026-10-02) | 33 (2026-10-05, db) | 0 | /products/kinder-kart-helm-515520 | /products/kinder-kart-helm-515520 | rankt Platz 33 |
 | weihnachten pyjama familie | 33 (2026-10-02) | 33 (2026-10-05, db) | 0 | /products/weihnachts-pyjama-sets-fur-die-ganze-familie-613100 | /products/weihnachts-pyjama-sets-fur-die-ganze-familie-613100 | rankt Platz 33 |
+| fleece strumpfhose | 34 (2026-10-02) | 33 (2026-10-18, gsc) | ≈ (Quelle db→gsc) | /products/thermo-strumpfhose-mit-fleece-futter-065536 | /products/thermo-strumpfhose-mit-fleece-futter-065536 | rankt Platz 34 |
 | magnetisches fliegengitter | 34 (2026-10-02) | 34 (2026-10-05, db) | 0 | /products/magnetisches-fliegengitter-fur-turen-fenster-058241 | /products/magnetisches-fliegengitter-fur-turen-fenster-058241 | rankt Platz 34 |
 | edelweiss shirt | 34 (2026-10-02) | 34 (2026-10-05, db) | 0 | /products/shirt-edelweiss-line | /products/shirt-edelweiss-line | rankt Platz 34 |
 | spitze stiefeletten | 34 (2026-10-05) | 34 (2026-10-05, db) | 0 | /products/spitze-stiefeletten-mit-mittlerem-absatz-630100 | /products/spitze-stiefeletten-mit-mittlerem-absatz-630100 | rankt Platz 34 |
 | zwilchhose kaufen | 34 (2026-10-05) | 34 (2026-10-05, db) | 0 | /products/schwingerhose-fgahb2887ml | /products/schwingerhose-fgahb2887ml | rankt Platz 34 |
 | camping wasserkanister | 34 (2026-10-02) | 34 (2026-10-05, db) | 0 | /products/faltbarer-wasserkanister-camping-mit-hahn | /products/faltbarer-wasserkanister-camping-mit-hahn | rankt Platz 34 |
-| fleece strumpfhose | 34 (2026-10-02) | 34 (2026-10-05, db) | 0 | /products/thermo-strumpfhose-mit-fleece-futter-065536 | /products/thermo-strumpfhose-mit-fleece-futter-065536 | rankt Platz 34 |
 | drohne kinder | 35 (2026-10-02) | 35 (2026-10-05, db) | 0 | /products/kamera-drohne-fur-kinder-641088 | /products/kamera-drohne-fur-kinder-641088 | rankt Platz 35 |
 | kabelschellen | 35 (2026-10-02) | 35 (2026-10-05, db) | 0 | /products/nagel-kabelschellen-obo-bettermann-set | /products/nagel-kabelschellen-obo-bettermann-set | rankt Platz 35 |
 | rucksack für alltag | 35 (2026-10-02) | 35 (2026-10-05, db) | 0 | /products/einfacher-rucksack-fur-den-alltag-638000 | /products/einfacher-rucksack-fur-den-alltag-638000 | rankt Platz 35 |
@@ -76,42 +76,36 @@ Schnappschüsse: 2026-10-02, 2026-10-05 · Zielbegriffe 250 · gemessen 196 · T
 | hosen mit gummizug | 37 (2026-10-02) | 37 (2026-10-02, db) | 0 | /products/bequeme-stretch-hosen-mit-gummizug-602200 | /products/bequeme-stretch-hosen-mit-gummizug-602200 | Produkt-SEO 02.10. |
 | kleid mit puffärmeln | 37 (2026-10-02) | 37 (2026-10-02, db) | 0 | /products/elegantes-sommerkleid-mit-puffarmeln-619600 | /products/elegantes-sommerkleid-mit-puffarmeln-619600 | Produkt-SEO 02.10. |
 | rucksack 50l | 38 (2026-10-02) | 38 (2026-10-02, db) | 0 | /products/outdoor-rucksack-50l-wandern-camping-reisen-375552 | /products/outdoor-rucksack-50l-wandern-camping-reisen-375552 | Produkt-SEO 02.10. |
-| zimmerthermometer | 38 (2026-10-02) | 38 (2026-10-02, db) | 0 | /products/mini-thermometer-fur-innenraume-293632 | /products/mini-thermometer-fur-innenraume-293632 | Produkt-SEO 02.10. |
 | stickset | 39 (2026-10-02) | 39 (2026-10-02, db) | 0 | /products/stickset-mit-garn-799808 | /products/stickset-mit-garn-799808 | Produkt-SEO 02.10. |
 | kleine nähmaschine | 39 (2026-10-02) | 39 (2026-10-02, db) | 0 | /products/kleine-nahmaschine-fur-unterwegs-806849 | /products/kleine-nahmaschine-fur-unterwegs-806849 | Produkt-SEO 02.10. |
+| retro sonnenbrille | 30 (2026-10-02) | 40 (2026-10-18, gsc) | ≈ (Quelle db→gsc) | /products/sonnenbrillen-set-retro-polarized | /products/sonnenbrillen-set-retro-polarized | rankt Platz 30 |
 | charleston kleid | 40 (2026-10-02) | 40 (2026-10-02, db) | 0 | /products/kostum-charleston-20er-fgaor9919 | /products/kostum-charleston-20er-fgaor9919 | Produkt-SEO 02.10. |
 | samt blazer damen | 41 (2026-10-02) | 41 (2026-10-02, db) | 0 | /products/eleganter-samt-blazer-mit-v-ausschnitt-615800 | /products/eleganter-samt-blazer-mit-v-ausschnitt-615800 | Produkt-SEO 02.10. |
 | hundenapf erhöht | 41 (2026-10-02) | 41 (2026-10-02, db) | 0 | /products/erhohte-futternapfe-fur-hunde-008962 ⚠️ | /products/hundenapf-aus-edelstahl-hohenverstellbar-877b3a | platz41-heben 05.10. (Platz 41, Quelle /products/erhohte-futternapfe-fur-hunde-008962) |
-| atmungsaktive schuhe | 42 (2026-10-02) | 42 (2026-10-02, db) | 0 | /products/atmungsaktive-sneaker-mit-erhohter-passform-609900 | /products/atmungsaktive-sneaker-mit-erhohter-passform-609900 | Produkt-SEO 02.10. |
 | tasche mit reißverschluss | 42 (2026-10-02) | 42 (2026-10-02, db) | 0 | /products/mannliche-umhangetasche-mit-reissverschluss-620000 | /products/mannliche-umhangetasche-mit-reissverschluss-620000 | Produkt-SEO 02.10. |
 | leinenkleid | 42 (2026-10-02) | 42 (2026-10-02, db) | 0 | /products/damen-casual-leinenkleid-mit-ausgestellten-arm-629500 | /products/damen-casual-leinenkleid-mit-ausgestellten-arm-629500 | platz41-heben 05.10. (Platz 42, Quelle /products/damen-casual-leinenkleid-mit-ausgestellten-arm-629500) |
-| möbelfolie | 43 (2026-10-02) | 43 (2026-10-02, db) | 0 | /products/selbstklebende-mobelfolie-650114 | /products/selbstklebende-mobelfolie-650114 | Produkt-SEO 02.10. |
 | damen mantel camel | 43 (2026-10-02) | 43 (2026-10-02, db) | 0 | /products/eleganter-wollmantel-fur-damen-601200 | /products/eleganter-wollmantel-fur-damen-601200 | Produkt-SEO 02.10. |
 | lampe mit sternenhimmel | 43 (2026-10-02) | 43 (2026-10-02, db) | 0 | /collections/beleuchtung-lampen ⚠️ | /collections/sub-beleuchtung | Produkt-SEO 02.10. |
-| rucksäcke für studenten | 44 (2026-10-02) | 44 (2026-10-02, db) | 0 | /products/studenten-rucksack-fur-herren-732288 | /products/studenten-rucksack-fur-herren-732288 | Produkt-SEO 02.10. |
 | beige jumpsuit | 44 (2026-10-02) | 44 (2026-10-02, db) | 0 | /products/armelloser-jumpsuit-mit-v-ausschnitt-624900 | /products/armelloser-jumpsuit-mit-v-ausschnitt-624900 | Produkt-SEO 02.10. |
 | oranger overall | 44 (2026-10-02) | 44 (2026-10-02, db) | 0 | /products/overall-mit-langen-armeln-602100 | /products/overall-mit-langen-armeln-602100 | Produkt-SEO 02.10. |
 | kühlende sommerdecke | 44 (2026-10-02) | 44 (2026-10-02, db) | 0 | /products/kuhlende-sommerdecke-cool-feel-atmungsaktiv-waschbar | /products/kuhlende-sommerdecke-cool-feel-atmungsaktiv-waschbar | platz41-heben 05.10. (Platz 44, Quelle /products/kuhlende-sommerdecke-cool-feel-atmungsaktiv-waschbar) |
-| leinen jumpsuit | 45 (2026-10-02) | 45 (2026-10-02, db) | 0 | /products/armelloser-leinen-jumpsuit-mit-v-ausschnitt-633000 | /products/armelloser-leinen-jumpsuit-mit-v-ausschnitt-633000 | Produkt-SEO 02.10. |
 | fotodrucker handy | 45 (2026-10-02) | 45 (2026-10-02, db) | 0 | /products/mini-fotodrucker-c75644 | /products/mini-fotodrucker-c75644 | platz41-heben 05.10. (Platz 45, Quelle /products/mini-fotodrucker-c75644) |
 | kinder regenstiefel | 46 (2026-10-02) | 46 (2026-10-02, db) | 0 | /products/wasserdichte-regenstiefel-fur-kinder-607400 | /products/wasserdichte-regenstiefel-fur-kinder-607400 | Produkt-SEO 02.10. |
 | aufblasbares sofa camping | 46 (2026-10-02) | 46 (2026-10-02, db) | 0 | /products/aufblasbares-sofa-fur-outdoor-und-camping-626700 | /products/aufblasbares-sofa-fur-outdoor-und-camping-626700 | platz41-heben 05.10. (Platz 46, Quelle /products/aufblasbares-sofa-fur-outdoor-und-camping-626700) |
 | mini step | 46 (2026-10-02) | 46 (2026-10-02, db) | 0 | /products/verstellbarer-mini-stepper-fur-hande-und-fusse-626000 ⚠️ | /products/mini-stepper-office-bicycle-fur-reha-und-train-998784 | platz41-heben 05.10. (Platz 46, Quelle /products/verstellbarer-mini-stepper-fur-hande-und-fusse-626000) |
 | camisole | 47 (2026-10-02) | 47 (2026-10-02, db) | 0 | /products/baumwoll-camisole-608000 | /products/baumwoll-camisole-608000 | Produkt-SEO 02.10. |
 | rucksack uni | 47 (2026-10-02) | 47 (2026-10-02, db) | 0 | /products/rucksack-fur-die-uni-623500 | /products/rucksack-fur-die-uni-623500 | Produkt-SEO 02.10. |
+| atmungsaktive schuhe | 42 (2026-10-02) | 47 (2026-10-18, gsc) | ≈ (Quelle db→gsc) | /products/atmungsaktiver-sportschuh-mit-dampfung-629100 ⚠️ | /products/atmungsaktive-sneaker-mit-erhohter-passform-609900 | Produkt-SEO 02.10. |
 | wrist wraps | 47 (2026-10-02) | 47 (2026-10-02, db) | 0 | /products/power-wrist-wraps-handgelenkstutze-cadd52 | /products/power-wrist-wraps-handgelenkstutze-cadd52 | Produkt-SEO 02.10. |
 | lautsprecherbausatz | 47 (2026-10-02) | 47 (2026-10-02, db) | 0 | /products/bluetooth-lautsprecher-bausatz-zum-selberbauen-925376 | /products/bluetooth-lautsprecher-bausatz-zum-selberbauen-925376 | Produkt-SEO 02.10. |
-| schminkpinsel set | 47 (2026-10-02) | 47 (2026-10-02, db) | 0 | /products/make-up-pinsel-set-10-stk-776704 | /products/make-up-pinsel-set-10-stk-776704 | Produkt-SEO 02.10. |
 | rucksack 20 liter | 47 (2026-10-02) | 47 (2026-10-02, db) | 0 | /products/leichter-wasserdichter-20l-sportrucksack-627400 | /products/leichter-wasserdichter-20l-sportrucksack-627400 | Produkt-SEO 02.10. |
 | dad sneakers | 47 (2026-10-02) | 47 (2026-10-02, db) | 0 | /products/chunky-dad-sneakers-mit-mesh-obermaterial-606500 | /products/chunky-dad-sneakers-mit-mesh-obermaterial-606500 | Produkt-SEO 02.10. |
 | mitesser sauger | 47 (2026-10-02) | 47 (2026-10-02, db) | 0 | /products/elektrischer-mitesser-und-akne-sauger-fc5784 | /products/elektrischer-mitesser-und-akne-sauger-fc5784 | Produkt-SEO 02.10. |
 | yoga set | 47 (2026-10-02) | 47 (2026-10-02, db) | 0 | /products/sportliches-yoga-set-aus-nylon-4cfba1 | /products/sportliches-yoga-set-aus-nylon-4cfba1 | Produkt-SEO 02.10. |
+| leinen jumpsuit | 45 (2026-10-02) | 47 (2026-10-18, gsc) | ≈ (Quelle db→gsc) | /products/armelloser-leinen-jumpsuit-mit-v-ausschnitt-633000 | /products/armelloser-leinen-jumpsuit-mit-v-ausschnitt-633000 | Produkt-SEO 02.10. |
 | klimmzugstange zu hause | 47 (2026-10-02) | 47 (2026-10-02, db) | 0 | /products/klimmzugstange-fur-zuhause-616500 ⚠️ | /products/klimmzugstange-fur-turrahmen-469824 | platz41-heben 05.10. (Platz 47, Quelle /products/klimmzugstange-fur-zuhause-616500) |
-| velo rücklicht | 48 (2026-10-02) | 48 (2026-10-02, db) | 0 | /products/usb-rucklicht-fur-velos-a18d73 | /products/usb-rucklicht-fur-velos-a18d73 | Produkt-SEO 02.10. |
 | sommersprossen stift | 48 (2026-10-02) | 48 (2026-10-02, db) | 0 | /products/freckle-pen-repair-blush-two-in-one-617000 | /products/freckle-pen-repair-blush-two-in-one-617000 | Produkt-SEO 02.10. |
 | zahnbürstenhalter wand | 48 (2026-10-02) | 48 (2026-10-02, db) | 0 | /products/zahnburstenhalter-zur-wandmontage-863104 | /products/zahnburstenhalter-zur-wandmontage-863104 | Produkt-SEO 02.10. |
-| mini ventilator | 48 (2026-10-02) | 48 (2026-10-02, db) | 0 | /products/mini-ventilator-akkubetrieben-312513 ⚠️ | /products/handlicher-mini-ventilator-mit-akku-b4c3f9 | platz41-heben 05.10. (Platz 48, Quelle /products/mini-ventilator-akkubetrieben-312513) |
-| sternenhimmel projektor | 48 (2026-10-02) | 48 (2026-10-02, db) | 0 | /products/sternenhimmel-projektor-galaxy-led-nachtlicht-527681 ⚠️ | /collections/licht-nachtlicht-projektor | platz41-heben 05.10. (Platz 48, Quelle /products/sternenhimmel-projektor-galaxy-led-nachtlicht-527681) |
 | knickerbocker hosen | 49 (2026-10-02) | 49 (2026-10-02, db) | 0 | /products/knickerbockerhose-fgssor7024 | /products/knickerbockerhose-fgssor7024 | Produkt-SEO 02.10. |
 | kabellose gaming tastatur | 49 (2026-10-02) | 49 (2026-10-02, db) | 0 | /products/bluetooth-tastatur-047425 | /products/bluetooth-tastatur-047425 | Produkt-SEO 02.10. |
 | kitten heel boots | 49 (2026-10-02) | 49 (2026-10-02, db) | 0 | /products/elegante-ankle-boots-mit-kitten-heel-600000 | /products/elegante-ankle-boots-mit-kitten-heel-600000 | Produkt-SEO 02.10. |
@@ -129,54 +123,54 @@ Schnappschüsse: 2026-10-02, 2026-10-05 · Zielbegriffe 250 · gemessen 196 · T
 | kinder badetuch | 51 (2026-10-02) | 51 (2026-10-02, db) | 0 | /products/kinder-badetuch-aus-baumwolle-632100 | /products/kinder-badetuch-aus-baumwolle-632100 | Produkt-SEO 02.10. |
 | bein make up | 51 (2026-10-02) | 51 (2026-10-02, db) | 0 | /products/bein-concealer-foundation-creme-626500 | /products/bein-concealer-foundation-creme-626500 | Produkt-SEO 02.10. |
 | camping sofa | 51 (2026-10-02) | 51 (2026-10-02, db) | 0 | /products/aufblasbares-sofa-fur-outdoor-und-camping-626700 | /products/aufblasbares-sofa-fur-outdoor-und-camping-626700 | platz41-heben 05.10. (Platz 51, Quelle /products/aufblasbares-sofa-fur-outdoor-und-camping-626700) |
-| sofa aufblasbar | 51 (2026-10-02) | 51 (2026-10-02, db) | 0 | /products/aufblasbares-sofa-fur-outdoor-und-camping-626700 | /products/aufblasbares-sofa-fur-outdoor-und-camping-626700 | platz41-heben 05.10. (Platz 51, Quelle /products/aufblasbares-sofa-fur-outdoor-und-camping-626700) |
 | pantoffel mit dicker sohle | 51 (2026-10-02) | 51 (2026-10-02, db) | 0 | /products/modische-vielseitige-pantoletten-mit-dicker-so-633400 | /products/modische-vielseitige-pantoletten-mit-dicker-so-633400 | platz41-heben 05.10. (Platz 51, Quelle /products/modische-vielseitige-pantoletten-mit-dicker-so-633400) |
 | reed diffuser | 52 (2026-10-02) | 52 (2026-10-02, db) | 0 | /products/reed-diffuser-aroma-duftstabchen-ohne-flamme | /products/reed-diffuser-aroma-duftstabchen-ohne-flamme | Produkt-SEO 02.10. |
+| zimmerthermometer | 38 (2026-10-02) | 52 (2026-10-18, gsc) | ≈ (Quelle db→gsc) | /products/mini-thermometer-fur-innenraume-293632 | /products/mini-thermometer-fur-innenraume-293632 | Produkt-SEO 02.10. |
 | tracker gps | 52 (2026-10-02) | 52 (2026-10-02, db) | 0 | /products/mini-gps-tracker-mit-echtzeit-ortung-254336 ⚠️ | /products/gps-anti-verlust-tracker-fur-auto-handy-644100 | platz41-heben 05.10. (Platz 52, Quelle /products/mini-gps-tracker-mit-echtzeit-ortung-254336) |
 | regenjacke für hunde | 53 (2026-10-02) | 53 (2026-10-02, db) | 0 | /products/wasserdichte-regenjacke-fur-hunde-602000 | /products/wasserdichte-regenjacke-fur-hunde-602000 | Produkt-SEO 02.10. |
 | aufblasbares sofa | 53 (2026-10-02) | 53 (2026-10-02, db) | 0 | /products/aufblasbares-sofa-fur-outdoor-und-camping-626700 | /products/aufblasbares-sofa-fur-outdoor-und-camping-626700 | platz41-heben 05.10. (Platz 53, Quelle /products/aufblasbares-sofa-fur-outdoor-und-camping-626700) |
+| sofa aufblasbar | 51 (2026-10-02) | 53 (2026-10-18, gsc) | ≈ (Quelle db→gsc) | /products/aufblasbares-sofa-fur-outdoor-und-camping-626700 | /products/aufblasbares-sofa-fur-outdoor-und-camping-626700 | platz41-heben 05.10. (Platz 51, Quelle /products/aufblasbares-sofa-fur-outdoor-und-camping-626700) |
 | outdoor kamera | 53 (2026-10-02) | 53 (2026-10-02, db) | 0 | /products/solar-outdoor-uberwachungskamera-mit-wlan-634300 | /products/solar-outdoor-uberwachungskamera-mit-wlan-634300 | platz41-heben 05.10. (Platz 53, Quelle /products/solar-outdoor-uberwachungskamera-mit-wlan-634300) |
 | magnet wimpern | 54 (2026-10-02) | 54 (2026-10-02, db) | 0 | /products/magnetische-falsche-wimpern-set-623700 | /products/magnetische-falsche-wimpern-set-623700 | Produkt-SEO 02.10. |
 | tassli | 54 (2026-10-02) | 54 (2026-10-02, db) | 0 | /products/tasse-buenzli | /products/tasse-buenzli | Produkt-SEO 02.10. |
 | stahlkappen | 54 (2026-10-02) | 54 (2026-10-02, db) | 0 | /products/sicherer-arbeitsschuh-mit-stahlkappe-695168 | /products/sicherer-arbeitsschuh-mit-stahlkappe-695168 | Produkt-SEO 02.10. |
 | waschmaschinenschrank | 54 (2026-10-02) | 54 (2026-10-02, db) | 0 | /products/waschmaschinen-schrank-64x25-173186 ⚠️ | /products/waschmaschinen-regal-87x55x90-5-cm-eisen-800385 | platz41-heben 05.10. (Platz 54, Quelle /products/waschmaschinen-schrank-64x25-173186) |
 | kofferraum organizer | 54 (2026-10-02) | 54 (2026-10-02, db) | 0 | /products/kofferraum-organizer-nie-wieder-chaos-im-auto-1236052 ⚠️ | /products/kofferraum-organizer-faltbar-wasserdicht-620900 | platz41-heben 05.10. (Platz 54, Quelle /products/kofferraum-organizer-nie-wieder-chaos-im-auto-1236052) |
-| fotodrucker | 55 (2026-10-02) | 55 (2026-10-02, db) | 0 | /products/mini-fotodrucker-c75644 | /products/mini-fotodrucker-c75644 | Produkt-SEO 02.10. |
-| große trinkflasche | 55 (2026-10-02) | 55 (2026-10-02, db) | 0 | /products/grosse-trinkflasche-mit-strohhalm-fur-sport-fi-635300 | /products/grosse-trinkflasche-mit-strohhalm-fur-sport-fi-635300 | Produkt-SEO 02.10. |
 | kinder badeschuhe | 55 (2026-10-02) | 55 (2026-10-02, db) | 0 | /products/kinder-badeschuhe-603300 | /products/kinder-badeschuhe-603300 | Produkt-SEO 02.10. |
 | seidenhaube | 55 (2026-10-02) | 55 (2026-10-02, db) | 0 | /products/seiden-satin-haarhaube-fur-die-nacht-205378 | /products/seiden-satin-haarhaube-fur-die-nacht-205378 | platz41-heben 05.10. (Platz 55, Quelle /products/seiden-satin-haarhaube-fur-die-nacht-205378) |
 | leinen hose herren | 55 (2026-10-02) | 55 (2026-10-02, db) | 0 | /products/herren-leinen-hose-lino-straight-leg | /products/herren-leinen-hose-lino-straight-leg | platz41-heben 05.10. (Platz 55, Quelle /products/herren-leinen-hose-lino-straight-leg) |
-| kleiner kühlschrank | 56 (2026-10-02) | 56 (2026-10-02, db) | 0 | /products/mini-kuhlschrank-629100 ⚠️ | /products/6l-mini-kuhlschrank-fur-getranke-629400 | platz41-heben 05.10. (Platz 56; alte Ziel-URL mini-kuhlschrank-629100 = Entwurf, 301 auf 629400) |
 | fitness tracker ring | 56 (2026-10-02) | 56 (2026-10-02, db) | 0 | /products/smart-ring-mit-gesundheits-und-fitness-trackin-606100 | /products/smart-ring-mit-gesundheits-und-fitness-trackin-606100 | Produkt-SEO 02.10. |
 | faltbare yogamatte | 56 (2026-10-02) | 56 (2026-10-02, db) | 0 | /products/tpe-falt-yogamatte-verstarkt-und-rutschfest-624800 | /products/tpe-falt-yogamatte-verstarkt-und-rutschfest-624800 | Produkt-SEO 02.10. |
 | sommerschuhe kinder | 56 (2026-10-02) | 56 (2026-10-02, db) | 0 | /products/leichte-sommerschuhe-fur-kinder-051136 | /products/leichte-sommerschuhe-fur-kinder-051136 | Produkt-SEO 02.10. |
 | mini gps tracker | 56 (2026-10-02) | 56 (2026-10-02, db) | 0 | /products/mini-gps-tracker-mit-echtzeit-ortung-254336 ⚠️ | /products/gps-anti-verlust-tracker-fur-auto-handy-644100 | platz41-heben 05.10. (Platz 56, Quelle /products/mini-gps-tracker-mit-echtzeit-ortung-254336) |
-| wasserfester schmuck | 56 (2026-10-02) | 56 (2026-10-02, db) | 0 | /products/waterproof-stainless-steel-jewelry-set-18k-gold-tarnish-free ⚠️ | /collections/wasserfester-schmuck | platz41-heben 05.10. (Platz 56, Quelle /products/waterproof-stainless-steel-jewelry-set-18k-gold-tarnish-free) |
+| kleiner kühlschrank | 56 (2026-10-02) | 57 (2026-10-18, gsc) | ≈ (Quelle db→gsc) | /products/mini-kuhlschrank-629100 ⚠️ | /products/6l-mini-kuhlschrank-fur-getranke-629400 | platz41-heben 05.10. (Platz 56; alte Ziel-URL mini-kuhlschrank-629100 = Entwurf, 301 auf 629400) |
 | schwingerhosen | 57 (2026-10-02) | 57 (2026-10-02, db) | 0 | /products/schwingerhose-fgahb2887ml | /products/schwingerhose-fgahb2887ml | Produkt-SEO 02.10. |
 | mousepad gestalten | 57 (2026-10-02) | 57 (2026-10-02, db) | 0 | /products/mauspad-selbst-gestalten | /products/mauspad-selbst-gestalten | Produkt-SEO 02.10. |
 | nami cosplay | 57 (2026-10-02) | 57 (2026-10-02, db) | 0 | /products/kostum-one-piece-nami-fgssck4613 | /products/kostum-one-piece-nami-fgssck4613 | Produkt-SEO 02.10. |
 | zauberstab | 58 (2026-10-02) | 58 (2026-10-02, db) | 0 | /products/magischer-zauberstab-fga952815 | /products/magischer-zauberstab-fga952815 | Produkt-SEO 02.10. |
-| ingwer reibe | 58 (2026-10-02) | 58 (2026-10-02, db) | 0 | /products/keramik-reibe-fur-ingwer-knoblauch-mini-morser-schalchen | /products/keramik-reibe-fur-ingwer-knoblauch-mini-morser-schalchen | Produkt-SEO 02.10. |
+| schminkpinsel set | 47 (2026-10-02) | 58 (2026-10-18, gsc) | ≈ (Quelle db→gsc) | /products/make-up-pinsel-set-fur-prazises-auftragen-873408 ⚠️ | /products/make-up-pinsel-set-10-stk-776704 | Produkt-SEO 02.10. |
+| ingwer reibe | 58 (2026-10-02) | 58 (2026-10-18, gsc) | ≈ (Quelle db→gsc) | /products/keramik-reibe-fur-ingwer-knoblauch-mini-morser-schalchen | /products/keramik-reibe-fur-ingwer-knoblauch-mini-morser-schalchen | Produkt-SEO 02.10. |
 | stahlkappenschuhe herren | 58 (2026-10-02) | 58 (2026-10-02, db) | 0 | /products/sicherer-arbeitsschuh-mit-stahlkappe-695168 | /products/sicherer-arbeitsschuh-mit-stahlkappe-695168 | platz41-heben 05.10. (Platz 58, Quelle /products/sicherer-arbeitsschuh-mit-stahlkappe-695168) |
+| mini ventilator | 48 (2026-10-02) | 58 (2026-10-18, gsc) | ≈ (Quelle db→gsc) | /products/handheld-mini-ventilator-600000 ⚠️ | /products/handlicher-mini-ventilator-mit-akku-b4c3f9 | platz41-heben 05.10. (Platz 48, Quelle /products/mini-ventilator-akkubetrieben-312513) |
+| sternenhimmel projektor | 48 (2026-10-02) | 58 (2026-10-18, gsc) | ≈ (Quelle db→gsc) | /products/sternenlicht-projektor-mit-bluetooth-618300 ⚠️ | /collections/licht-nachtlicht-projektor | platz41-heben 05.10. (Platz 48, Quelle /products/sternenhimmel-projektor-galaxy-led-nachtlicht-527681) |
+| fotodrucker | 55 (2026-10-02) | 60 (2026-10-18, gsc) | ≈ (Quelle db→gsc) | /products/mini-fotodrucker-c75644 | /products/mini-fotodrucker-c75644 | Produkt-SEO 02.10. |
+| schlafmaske | 62 (2026-10-02) | 60 (2026-10-18, gsc) | ≈ (Quelle db→gsc) | /products/schlafmaske-625800 | /products/schlafmaske-625800 | platz41-heben 05.10. (Platz 62, Quelle /products/schlafmaske-625800) |
 | slippers | 60 (2026-10-02) | 60 (2026-10-02, db) | 0 | /collections/sub-hausschuhe | /collections/sub-hausschuhe | platz41-heben 05.10. (Platz 60, Quelle /collections/sub-hausschuhe) |
+| fitness band | 64 (2026-10-02) | 60 (2026-10-18, gsc) | ≈ (Quelle db→gsc) | /products/fitness-band-fur-korperstraffung-7e0d5a | /products/fitness-band-fur-korperstraffung-7e0d5a | platz41-heben 05.10. (Platz 64, Quelle /products/fitness-band-fur-korperstraffung-7e0d5a) |
 | lautsprecher bluetooth mini | 61 (2026-10-02) | 61 (2026-10-02, db) | 0 | /products/kleiner-bluetooth-lautsprecher-621100 | /products/kleiner-bluetooth-lautsprecher-621100 | Produkt-SEO 02.10. |
-| holzuhren | 61 (2026-10-02) | 61 (2026-10-02, db) | 0 | /products/holz-armbanduhr-623300 ⚠️ | /products/holz-armbanduhr-fur-herren-602900 | platz41-heben 05.10. (Platz 61, Quelle /products/holz-armbanduhr-623300) |
 | leinenset hund | 62 (2026-10-02) | 62 (2026-10-02, db) | 0 | /products/hundehalsband-leine-set-612100 | /products/hundehalsband-leine-set-612100 | Produkt-SEO 02.10. |
-| zelt leicht | 62 (2026-10-02) | 62 (2026-10-02, db) | 0 | /products/einfaches-zelt-612400 | /products/einfaches-zelt-612400 | Produkt-SEO 02.10. |
-| schlafmaske | 62 (2026-10-02) | 62 (2026-10-02, db) | 0 | /products/schlafmaske-625800 | /products/schlafmaske-625800 | platz41-heben 05.10. (Platz 62, Quelle /products/schlafmaske-625800) |
 | anc kopfhörer | 62 (2026-10-02) | 62 (2026-10-02, db) | 0 | /products/anc-over-ear-kopfhorer-bluetooth-noise-cancelling ⚠️ | /products/kabellose-bluetooth-kopfhorer-mit-noise-cancel-709376 | platz41-heben 05.10. (Platz 62, Quelle /products/anc-over-ear-kopfhorer-bluetooth-noise-cancelling) |
-| gesichtsbürste | 62 (2026-10-02) | 62 (2026-10-02, db) | 0 | /products/gesichtsreinigungsburste-mit-7-geschwindigkeit-604700 | /products/gesichtsreinigungsburste-mit-7-geschwindigkeit-604700 | platz41-heben 05.10. (Platz 62, Quelle /products/gesichtsreinigungsburste-mit-7-geschwindigkeit-604700) |
 | keramik teekanne | 63 (2026-10-02) | 63 (2026-10-02, db) | 0 | /products/handgemachte-keramik-teekanne-im-retro-stil-377024 | /products/handgemachte-keramik-teekanne-im-retro-stil-377024 | Produkt-SEO 02.10. |
-| auto tracker | 63 (2026-10-02) | 63 (2026-10-02, db) | 0 | /products/gps-auto-tracker-a3b10f ⚠️ | /products/fahrzeug-tracker-604900 | Produkt-SEO 02.10. |
 | mini drucker | 63 (2026-10-02) | 63 (2026-10-02, db) | 0 | /products/mini-fotodrucker-c75644 | /products/mini-fotodrucker-c75644 | platz41-heben 05.10. (Platz 63, Quelle /products/mini-fotodrucker-c75644) |
 | arbeitsschuhe stahlkappe | 63 (2026-10-02) | 63 (2026-10-02, db) | 0 | /products/sicherer-arbeitsschuh-mit-stahlkappe-695168 | /products/sicherer-arbeitsschuh-mit-stahlkappe-695168 | platz41-heben 05.10. (Platz 63, Quelle /products/sicherer-arbeitsschuh-mit-stahlkappe-695168) |
 | cluster lashes | 63 (2026-10-02) | 63 (2026-10-02, db) | 0 | /products/cluster-wimpern-glue-free-80-stuck-986626 ⚠️ | /products/3d-cluster-wimpern-schwarz-flauschig-weich-616600 | platz41-heben 05.10. (Platz 63, Quelle /products/cluster-wimpern-glue-free-80-stuck-986626) |
 | akku astschere | 64 (2026-10-02) | 64 (2026-10-02, db) | 0 | /products/akku-astschere-burstenlos-632400 | /products/akku-astschere-burstenlos-632400 | Produkt-SEO 02.10. |
 | stilletos | 64 (2026-10-02) | 64 (2026-10-02, db) | 0 | /products/stiletto-high-heels-633500 | /products/stiletto-high-heels-633500 | platz41-heben 05.10. (Platz 64, Quelle /products/stiletto-high-heels-633500) |
-| fitness band | 64 (2026-10-02) | 64 (2026-10-02, db) | 0 | /products/fitness-band-fur-korperstraffung-7e0d5a | /products/fitness-band-fur-korperstraffung-7e0d5a | platz41-heben 05.10. (Platz 64, Quelle /products/fitness-band-fur-korperstraffung-7e0d5a) |
+| wasserfester schmuck | 56 (2026-10-02) | 64 (2026-10-18, gsc) | ≈ (Quelle db→gsc) | /products/waterproof-stainless-steel-jewelry-set-18k-gold-tarnish-free ⚠️ | /collections/wasserfester-schmuck | platz41-heben 05.10. (Platz 56, Quelle /products/waterproof-stainless-steel-jewelry-set-18k-gold-tarnish-free) |
 | beamer zu hause | 64 (2026-10-02) | 64 (2026-10-02, db) | 0 | /collections/beamer-heimkino | /collections/beamer-heimkino | platz41-heben 05.10. (Platz 64, Quelle /collections/beamer-heimkino) |
 | uhr mit höhenmeter | 65 (2026-10-02) | 65 (2026-10-02, db) | 0 | /products/v76-gps-uhr-mit-kompass-und-hohenmesser-625300 | /products/v76-gps-uhr-mit-kompass-und-hohenmesser-625300 | Produkt-SEO 02.10. |
 | kühlende decke | 65 (2026-10-02) | 65 (2026-10-02, db) | 0 | /products/kuhlende-sommerdecke-cool-feel-atmungsaktiv-waschbar | /products/kuhlende-sommerdecke-cool-feel-atmungsaktiv-waschbar | platz41-heben 05.10. (Platz 65, Quelle /products/kuhlende-sommerdecke-cool-feel-atmungsaktiv-waschbar) |
+| möbelfolie | 43 (2026-10-02) | 66 (2026-10-18, gsc) | ≈ (Quelle db→gsc) | /products/selbstklebende-mobelfolie-650114 | /products/selbstklebende-mobelfolie-650114 | Produkt-SEO 02.10. |
 | badetuch bedrucken lassen | 66 (2026-10-02) | 66 (2026-10-02, db) | 0 | /products/strandtuch-selbst-gestalten | /products/strandtuch-selbst-gestalten | Produkt-SEO 02.10. |
 | penny loafers | 67 (2026-10-02) | 67 (2026-10-02, db) | 0 | /products/herren-penny-loafers-aus-canvas-601800 | /products/herren-penny-loafers-aus-canvas-601800 | platz41-heben 05.10. (Platz 67, Quelle /products/herren-penny-loafers-aus-canvas-601800) |
 | sound system | 67 (2026-10-02) | 67 (2026-10-02, db) | 0 | /products/klangsystem-625400 ⚠️ | /collections/lautsprecher | platz41-heben 05.10. (Platz 67, Quelle /products/klangsystem-625400) |
@@ -186,22 +180,28 @@ Schnappschüsse: 2026-10-02, 2026-10-05 · Zielbegriffe 250 · gemessen 196 · T
 | tf karte | 69 (2026-10-02) | 69 (2026-10-02, db) | 0 | /products/tf-micro-sd-speicherkarte-furs-handy-5d69bc | /products/tf-micro-sd-speicherkarte-furs-handy-5d69bc | Produkt-SEO 02.10. |
 | kühlende bettdecke | 69 (2026-10-02) | 69 (2026-10-02, db) | 0 | /products/kuhlende-sommerdecke-cool-feel-atmungsaktiv-waschbar | /products/kuhlende-sommerdecke-cool-feel-atmungsaktiv-waschbar | platz41-heben 05.10. (Platz 69, Quelle /products/kuhlende-sommerdecke-cool-feel-atmungsaktiv-waschbar) |
 | akku handstaubsauger | 69 (2026-10-02) | 69 (2026-10-02, db) | 0 | /products/handlicher-akku-staubsauger-606000 | /products/handlicher-akku-staubsauger-606000 | platz41-heben 05.10. (Platz 69, Quelle /products/handlicher-akku-staubsauger-606000) |
+| nachtsichtkamera | 74 (2026-10-02) | 70 (2026-10-18, gsc) | ≈ (Quelle db→gsc) | /products/uberwachungskamera-mit-nachtsicht-021568 ⚠️ | /products/hd-nachtsicht-uberwachungskamera-631700 | Produkt-SEO 02.10. |
 | business reiserucksack | 70 (2026-10-02) | 70 (2026-10-02, db) | 0 | /products/erweiterbarer-laptop-rucksack-fur-reise-busine-605900 | /products/erweiterbarer-laptop-rucksack-fur-reise-busine-605900 | platz41-heben 05.10. (Platz 70, Quelle /products/erweiterbarer-laptop-rucksack-fur-reise-busine-605900) |
 | handstaubsauger akku | 71 (2026-10-02) | 71 (2026-10-02, db) | 0 | /products/handlicher-akku-staubsauger-606000 | /products/handlicher-akku-staubsauger-606000 | platz41-heben 05.10. (Platz 71, Quelle /products/handlicher-akku-staubsauger-606000) |
 | suede loafers | 72 (2026-10-02) | 72 (2026-10-02, db) | 0 | /products/herren-suede-loafers-608000 | /products/herren-suede-loafers-608000 | Produkt-SEO 02.10. |
 | bettdecke kühlend | 72 (2026-10-02) | 72 (2026-10-02, db) | 0 | /products/kuhlende-sommerdecke-cool-feel-atmungsaktiv-waschbar | /products/kuhlende-sommerdecke-cool-feel-atmungsaktiv-waschbar | platz41-heben 05.10. (Platz 72, Quelle /products/kuhlende-sommerdecke-cool-feel-atmungsaktiv-waschbar) |
 | stuhlpolster | 73 (2026-10-02) | 73 (2026-10-02, db) | 0 | /products/polster-fur-stuhle-845632 | /products/polster-fur-stuhle-845632 | Produkt-SEO 02.10. |
-| nachtsichtkamera | 74 (2026-10-02) | 74 (2026-10-02, db) | 0 | /products/hd-nachtsicht-uberwachungskamera-631700 | /products/hd-nachtsicht-uberwachungskamera-631700 | Produkt-SEO 02.10. |
-| handsauger | 74 (2026-10-02) | 74 (2026-10-02, db) | 0 | /products/handlicher-akku-staubsauger-606000 | /products/handlicher-akku-staubsauger-606000 | platz41-heben 05.10. (Platz 74, Quelle /products/handlicher-akku-staubsauger-606000) |
+| auto tracker | 63 (2026-10-02) | 73 (2026-10-18, gsc) | ≈ (Quelle db→gsc) | /products/fahrzeug-tracker-604900 | /products/fahrzeug-tracker-604900 | Produkt-SEO 02.10. |
+| spielkonsole für tv | 27 (2026-10-02) | 74 (2026-10-18, gsc) | ≈ (Quelle db→gsc) | /products/handheld-game-tv-spielkonsole-627700 ⚠️ | /products/retro-spielkonsole-068866 | rankt Platz 27 |
+| gps tracker auto | 77 (2026-10-02) | 74 (2026-10-18, gsc) | ≈ (Quelle db→gsc) | /products/gps-auto-tracker-a3b10f ⚠️ | /products/fahrzeug-tracker-604900 | platz41-heben 05.10. (Platz 77, Quelle /products/gps-auto-tracker-a3b10f) |
+| zelt leicht | 62 (2026-10-02) | 75 (2026-10-18, gsc) | ≈ (Quelle db→gsc) | /products/einfaches-zelt-612400 | /products/einfaches-zelt-612400 | Produkt-SEO 02.10. |
+| handsauger | 74 (2026-10-02) | 75 (2026-10-18, gsc) | ≈ (Quelle db→gsc) | /collections/handstaubsauger ⚠️ | /products/handlicher-akku-staubsauger-606000 | platz41-heben 05.10. (Platz 74, Quelle /products/handlicher-akku-staubsauger-606000) |
 | beamer zuhause | 76 (2026-10-02) | 76 (2026-10-02, db) | 0 | /collections/beamer-heimkino | /collections/beamer-heimkino | platz41-heben 05.10. (Platz 76, Quelle /collections/beamer-heimkino) |
-| gps tracker auto | 77 (2026-10-02) | 77 (2026-10-02, db) | 0 | /products/gps-auto-tracker-a3b10f ⚠️ | /products/fahrzeug-tracker-604900 | platz41-heben 05.10. (Platz 77, Quelle /products/gps-auto-tracker-a3b10f) |
+| gesichtsbürste | 62 (2026-10-02) | 76 (2026-10-18, gsc) | ≈ (Quelle db→gsc) | /products/gesichtsreinigungsburste-mit-7-geschwindigkeit-604700 | /products/gesichtsreinigungsburste-mit-7-geschwindigkeit-604700 | platz41-heben 05.10. (Platz 62, Quelle /products/gesichtsreinigungsburste-mit-7-geschwindigkeit-604700) |
+| velo rücklicht | 48 (2026-10-02) | 80 (2026-10-18, gsc) | ≈ (Quelle db→gsc) | /products/usb-rucklicht-fur-velos-a18d73 | /products/usb-rucklicht-fur-velos-a18d73 | Produkt-SEO 02.10. |
 | jutebeutel bedrucken | 80 (2026-10-02) | 80 (2026-10-02, db) | 0 | /products/bio-jutebeutel-selbst-gestalten | /products/bio-jutebeutel-selbst-gestalten | Produkt-SEO 02.10. |
 | ausschnitt | 81 (2026-10-02) | 81 (2026-10-02, db) | 0 | /products/v-ausschnitt-oberteil-611100 | /products/v-ausschnitt-oberteil-611100 | Produkt-SEO 02.10. |
-| stahlkappenschuhe | 83 (2026-10-02) | 83 (2026-10-02, db) | 0 | /products/sicherer-arbeitsschuh-mit-stahlkappe-695168 | /products/sicherer-arbeitsschuh-mit-stahlkappe-695168 | platz41-heben 05.10. (Platz 83, Quelle /products/sicherer-arbeitsschuh-mit-stahlkappe-695168) |
 | kühldecke zum schlafen | 86 (2026-10-02) | 86 (2026-10-02, db) | 0 | /products/kuhlende-sommerdecke-cool-feel-atmungsaktiv-waschbar | /products/kuhlende-sommerdecke-cool-feel-atmungsaktiv-waschbar | platz41-heben 05.10. (Platz 86, Quelle /products/kuhlende-sommerdecke-cool-feel-atmungsaktiv-waschbar) |
+| holzuhren | 61 (2026-10-02) | 86 (2026-10-18, gsc) | ≈ (Quelle db→gsc) | /products/holzquarzuhren-626700 ⚠️ | /products/holz-armbanduhr-fur-herren-602900 | platz41-heben 05.10. (Platz 61, Quelle /products/holz-armbanduhr-623300) |
 | stiletto | 87 (2026-10-02) | 87 (2026-10-02, db) | 0 | /products/stiletto-high-heels-633500 | /products/stiletto-high-heels-633500 | Produkt-SEO 02.10. |
+| stahlkappenschuhe | 83 (2026-10-02) | 87 (2026-10-18, gsc) | ≈ (Quelle db→gsc) | /products/sicherer-arbeitsschuh-mit-stahlkappe-695168 | /products/sicherer-arbeitsschuh-mit-stahlkappe-695168 | platz41-heben 05.10. (Platz 83, Quelle /products/sicherer-arbeitsschuh-mit-stahlkappe-695168) |
 | kühldecke | 92 (2026-10-02) | 92 (2026-10-02, db) | 0 | /products/kuhlende-sommerdecke-cool-feel-atmungsaktiv-waschbar | /products/kuhlende-sommerdecke-cool-feel-atmungsaktiv-waschbar | platz41-heben 05.10. (Platz 92, Quelle /products/kuhlende-sommerdecke-cool-feel-atmungsaktiv-waschbar) |
-| t shirt bedrucken schweiz | 94 (2026-10-02) | 94 (2026-10-02, db) | 0 | /products/shirt-zum-selbstgestalten | /products/shirt-zum-selbstgestalten | Produkt-SEO 02.10. |
+| t shirt bedrucken schweiz | 94 (2026-10-02) | 117 (2026-10-18, gsc) | ≈ (Quelle db→gsc) | /products/shirt-zum-selbstgestalten | /products/shirt-zum-selbstgestalten | Produkt-SEO 02.10. |
 | katzenbaum | — | — | — | nicht in Top 100 | /collections/kratzbaeume | Kollektions-SEO 02.10. |
 | weihnachtsdeko | — | — | — | nicht in Top 100 | /collections/weihnachten-2026 | Kollektions-SEO 02.10. |
 | kissen | — | — | — | nicht in Top 100 | /collections/kissen-wohntextilien | Kollektions-SEO 02.10. |
@@ -256,3 +256,43 @@ Schnappschüsse: 2026-10-02, 2026-10-05 · Zielbegriffe 250 · gemessen 196 · T
 | diamond painting | — | — | — | nicht in Top 100 | /collections/diamond-painting | Kollektion 04.10./Semrush |
 | diamond painting set | — | — | — | nicht in Top 100 | /collections/diamond-painting | Kollektion 04.10./Semrush |
 | kratzbaum | — | — | — | nicht in Top 100 | /collections/kratzbaeume | Kollektion 04.10./Semrush |
+| teppich wohnzimmer | — | — | — | nicht in Top 100 | /collections/teppiche | suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung) |
+| baby bodys | — | — | — | nicht in Top 100 | /collections/babykleidung | suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung) |
+| bikini set damen | — | — | — | nicht in Top 100 | /collections/sub-bademode | suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung) |
+| bettwäsche beige | — | — | — | nicht in Top 100 | /collections/bettwaesche | suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung) |
+| ballerinas schwarz | — | — | — | nicht in Top 100 | /collections/sub-ballerinas | suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung) |
+| bastelset mädchen | — | — | — | nicht in Top 100 | /collections/spielzeug-basteln | suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung) |
+| arbeitsschuhe mit stahlkappe | — | — | — | nicht in Top 100 | /products/sicherer-arbeitsschuh-mit-stahlkappe-695168 | suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung) |
+| aroma diffuser kabellos | — | — | — | nicht in Top 100 | /collections/sub-aroma-diffuser | suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung) |
+| blusenkleid damen | — | — | — | nicht in Top 100 | /products/damen-blusenkleid-mit-taschen-und-kurzen-armel-620500 | produkt-keywords 05.10. Nachbesserung: Kollektions-SEO ohne Modifikator → Produkt ist Ziel (vorher /collections/sub-kleider, suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung)) |
+| babykleidung junge | — | — | — | nicht in Top 100 | /collections/babykleidung | suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung) |
+| boots damen schwarz | — | — | — | nicht in Top 100 | /collections/sub-stiefel-boots | suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung) |
+| akkuschrauber set | — | — | — | nicht in Top 100 | /collections/elektrowerkzeug | suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung) |
+| deckenlampe wohnzimmer | — | — | — | nicht in Top 100 | /collections/licht-decken-steh | suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung) |
+| diamond painting kinder | — | — | — | nicht in Top 100 | /collections/diamond-painting | suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung) |
+| duschvorhang beige | — | — | — | nicht in Top 100 | /collections/duschvorhaenge | suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung) |
+| elektrische zahnbürste kinder | — | — | — | nicht in Top 100 | /products/elektrische-kinder-zahnburste-mit-6-burstenkop-844481 | produkt-keywords 05.10. Nachbesserung: Kollektions-SEO ohne Modifikator → Produkt ist Ziel (vorher /collections/zahnpflege, suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung)) |
+| etagere holz | — | — | — | nicht in Top 100 | /collections/etageren | suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung) |
+| ferngesteuertes auto kinder | — | — | — | nicht in Top 100 | /products/ferngesteuertes-rennauto-fur-kinder-a4852a | produkt-keywords 05.10. Nachbesserung: Kollektions-SEO ohne Modifikator → Produkt ist Ziel (vorher /collections/rc-ferngesteuert, suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung)) |
+| fitness tracker ohne display | — | — | — | nicht in Top 100 | /collections/smartwatches-wearables | suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung) |
+| fitnessgeräte für zuhause | — | — | — | nicht in Top 100 | /collections/fitness-geraete | suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung) |
+| gadgets fürs auto | — | — | — | nicht in Top 100 | /collections/auto-zubehoer | suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung) |
+| gel nägel set | — | — | — | nicht in Top 100 | /collections/naegel | suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung) |
+| geldbörse klein | — | — | — | nicht in Top 100 | /collections/portemonnaie | suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung) |
+| geschenk für frauen | — | — | — | nicht in Top 100 | /collections/geschenke-fuer-sie | suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung) |
+| geschenkset männer | — | — | — | nicht in Top 100 | /collections/geschenke-fuer-ihn | suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung) |
+| gummistiefel gefüttert kinder | — | — | — | nicht in Top 100 | /collections/kinderschuhe | suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung) |
+| gürtel damen leder | — | — | — | nicht in Top 100 | /collections/guertel | suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung) |
+| halskette damen gold | — | — | — | nicht in Top 100 | /collections/sub-halsketten | suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung) |
+| handstaubsauger auto | — | — | — | nicht in Top 100 | /products/kabelloser-handstaubsauger-fur-auto-zuhause-3da44c | produkt-keywords 05.10. Nachbesserung: Kollektions-SEO ohne Modifikator → Produkt ist Ziel (vorher /collections/staubsauger-haushalt, suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung)) |
+| hanteln set | — | — | — | nicht in Top 100 | /collections/fitness-geraete | suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung) |
+| hausschuhe kinder junge | — | — | — | nicht in Top 100 | /collections/sub-hausschuhe | suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung) |
+| hemdbluse damen | — | — | — | nicht in Top 100 | /collections/damen-blusen | suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung) |
+| high heels schwarz | — | — | — | nicht in Top 100 | /collections/schuhe-absatz | kollektionen-keywords 05.10. (SEO-Titel trägt den Begriff; vorher sub-pumps-heels aus suche-synonyme) |
+| hoodie mit reißverschluss | — | — | — | nicht in Top 100 | /collections/hoodies-sweatshirts | suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung) |
+| hundemantel wasserdicht mit bauchschutz | — | — | — | nicht in Top 100 | /collections/tier-leinen-kleidung | suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung) |
+| jacke damen übergang | — | — | — | nicht in Top 100 | /collections/damen-jacken-maentel | suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung) |
+| jeanskleid damen | — | — | — | nicht in Top 100 | /products/lassiges-sommer-jeanskleid-fur-damen-617700 | produkt-keywords 05.10. Nachbesserung: Kollektions-SEO ohne Modifikator → Produkt ist Ziel (vorher /collections/jeans-denim, suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung)) |
+| jumpsuit damen sommer | — | — | — | nicht in Top 100 | /collections/jumpsuits-overalls | suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung) |
+| katzenbett wand | — | — | — | nicht in Top 100 | /collections/haustier-katze | suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung) |
+| kleid damen sommer | — | — | — | nicht in Top 100 | /collections/sub-kleider | suche-synonyme 05.10. (Google-CH-Vorschlag, keywords_erweiterung) |

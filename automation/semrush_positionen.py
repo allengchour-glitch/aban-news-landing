@@ -10,6 +10,9 @@ QUELLEN (Dateiname bestimmt das Format):
                     aktualisiert kleine Begriffe nur alle paar Wochen (Timestamps 31.07.–27.09.2026, Position = Previous Position
                     bei 80/80 Zeilen) — sie zeigt Wirkung von SEO-Änderungen frühestens nach Wochen.
   *_tracking_*.csv  Positions-Kampagne `tracking_position_organic` (täglich live), Spalten Keyword;Position;Url — sobald es sie gibt.
+  *_gsc_*.csv       Search Console (OpenSEO-Konnektor, 0 Credits, Semrush-Einheiten sind seit 18.10.2026 aufgebraucht): mittlere
+                    Position der Seite mit den meisten Impressionen im Fenster; Spalten Keyword;Position;Url;Impressionen;Klicks;
+                    PositionExakt. ⚠️ Erscheint nur, wenn Google den Begriff in der Suche gezeigt hat (kein Eintrag ≠ Platz > 100).
 ZIELE: dropship/semrush/position_tracking_ziele.tsv (keyword, ziel_url, quelle) — dieselbe Liste, die in die Kampagne gehört
        (dropship/semrush/POSITION-TRACKING-KEYWORDS.txt).
 
@@ -36,7 +39,7 @@ def schnappschuesse():
     alle = {}
     for f in sorted(glob.glob(os.path.join(ORDNER, "*.csv"))):
         name = os.path.basename(f)
-        datum, art = name[:10], ("tracking" if "_tracking_" in name else "db")
+        datum, art = name[:10], ("tracking" if "_tracking_" in name else "gsc" if "_gsc_" in name else "db")
         tag = alle.setdefault(datum, {})
         for r in csv.DictReader(open(f, encoding="utf-8"), delimiter=";"):
             k = (r.get("Keyword") or "").strip().lower()
@@ -47,7 +50,7 @@ def schnappschuesse():
             if not k or pos <= 0:
                 continue
             alt = tag.get(k)
-            if not alt or pos < alt[0] or (art == "tracking" and alt[2] == "db"):
+            if not alt or pos < alt[0] or (art != "db" and alt[2] == "db"):
                 tag[k] = (pos, pfad(r.get("Url")), art)
     return alle
 
@@ -74,24 +77,28 @@ def main():
     daten, zeilen = auswertung()
     gemessen = [z for z in zeilen if z["letzte"]]
     top10 = [z for z in gemessen if z["letzte"][1][0] <= 10]
-    besser = [z for z in gemessen if z["erste"] and z["letzte"][1][0] < z["erste"][1][0]]
-    schlechter = [z for z in gemessen if z["erste"] and z["letzte"][1][0] > z["erste"][1][0]]
+    # 18.10.2026: Δ nur zwischen GLEICHEN Quellen. Semrush-Datenbank = Rang zum Zeitpunkt, Search Console = Mittel über alle
+    # Impressionen (Handy/PC gemischt) — «db 20 → gsc 25» ist keine Verschlechterung, sondern zwei Messgrössen.
+    vergleichbar = [z for z in gemessen if z["erste"] and z["erste"][1][2] == z["letzte"][1][2] and z["erste"][0] != z["letzte"][0]]
+    besser = [z for z in vergleichbar if z["letzte"][1][0] < z["erste"][1][0]]
+    schlechter = [z for z in vergleichbar if z["letzte"][1][0] > z["erste"][1][0]]
     falsch = [z for z in gemessen if z["letzte"][1][1] and z["letzte"][1][1] != z["ziel"]]
     if "--zeile" in sys.argv:
         print(f"POSITIONEN: {len(gemessen)}/{len(zeilen)} Zielbegriffe gemessen · Top 10: {len(top10)} · besser {len(besser)} · "
-              f"schlechter {len(schlechter)} · falsche Seite rankt {len(falsch)} · Stand {daten[-1] if daten else '—'}")
+              f"schlechter {len(schlechter)} (nur gleiche Quelle) · falsche Seite rankt {len(falsch)} · Stand {daten[-1] if daten else '—'}")
         return 0
-    out = [f"# Positionen der Zielbegriffe (Semrush, Google Schweiz)\n",
+    out = [f"# Positionen der Zielbegriffe (Semrush + Search Console, Google Schweiz)\n",
            f"Schnappschüsse: {', '.join(daten) or '—'} · Zielbegriffe {len(zeilen)} · gemessen {len(gemessen)} · Top 10 {len(top10)} · "
-           f"besser {len(besser)} · schlechter {len(schlechter)} · falsche Seite rankt {len(falsch)}\n",
-           "⚠️ Quelle «db» = Semrush-Datenbank (wird für kleine Begriffe nur alle paar Wochen aufgefrischt); «tracking» = tägliche Kampagne.\n",
+           f"besser {len(besser)} · schlechter {len(schlechter)} (Δ nur zwischen gleichen Quellen) · falsche Seite rankt {len(falsch)}\n",
+           "⚠️ Quelle «db» = Semrush-Datenbank (wird für kleine Begriffe nur alle paar Wochen aufgefrischt); «tracking» = tägliche Kampagne; «gsc» = Search Console (mittlere Position, nur Begriffe mit Impressionen).\n",
            "| Begriff | erste | letzte | Δ | rankende Seite | Ziel | Quelle |", "|---|---|---|---|---|---|---|"]
     for z in sorted(zeilen, key=lambda z: (z["letzte"][1][0] if z["letzte"] else 999)):
         if z["letzte"]:
             e, l = z["erste"][1][0], z["letzte"][1][0]
             d = e - l
+            gleich = z["erste"][1][2] == z["letzte"][1][2]
             seite = z["letzte"][1][1] + ("" if z["letzte"][1][1] == z["ziel"] else " ⚠️")
-            out.append(f"| {z['k']} | {e} ({z['erste'][0]}) | {l} ({z['letzte'][0]}, {z['letzte'][1][2]}) | {'+' if d > 0 else ''}{d} | {seite} | {z['ziel']} | {z['quelle']} |")
+            out.append(f"| {z['k']} | {e} ({z['erste'][0]}) | {l} ({z['letzte'][0]}, {z['letzte'][1][2]}) | {('+' if d > 0 else '') + str(d) if gleich else '≈ (Quelle ' + z['erste'][1][2] + '→' + z['letzte'][1][2] + ')'} | {seite} | {z['ziel']} | {z['quelle']} |")
         else:
             out.append(f"| {z['k']} | — | — | — | nicht in Top 100 | {z['ziel']} | {z['quelle']} |")
     open(BERICHT, "w", encoding="utf-8").write("\n".join(out) + "\n")

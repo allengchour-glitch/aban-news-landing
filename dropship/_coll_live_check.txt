@@ -566,3 +566,4 @@ handwaermer	ok	17	Handwärmer
 damenmode-favoriten	ok	17	Damenmode – unsere Favoriten
 futterautomaten	ok	29	Futterautomaten für Katzen & Hunde
 trinkbrunnen-katzen	ok	28	Trinkbrunnen für Katzen & Hunde
+rizinusoel	ok	9	Rizinusöl
