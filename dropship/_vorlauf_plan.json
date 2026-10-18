@@ -62,14 +62,12 @@
   "bild-20261023T0745": {
    "basis_utc": "2026-10-23T07:45:00Z",
    "format": "bild",
-   "grund": "",
+   "grund": "verschwunden [399458515]",
    "handle": "",
    "letzter_versuch": "2026-10-18T21:59:31Z",
-   "mc_ids": [
-    399458515
-   ],
+   "mc_ids": [],
    "reserviert_um": "2026-10-18T21:59:31Z",
-   "status": "geplant",
+   "status": "offen",
    "termin_utc": "2026-10-23T07:45:00Z",
    "versuche": 1
   },
@@ -195,14 +193,15 @@
    "format": "pin",
    "grund": "",
    "handle": "",
-   "letzter_versuch": "2026-10-18T21:33:03Z",
+   "handles": [],
+   "letzter_versuch": "2026-10-18T22:53:08Z",
    "mc_ids": [
-    399446893
+    399487582
    ],
-   "reserviert_um": "2026-10-18T21:33:03Z",
+   "reserviert_um": "2026-10-18T22:53:08Z",
    "status": "geplant",
    "termin_utc": "2026-10-19T15:10:00Z",
-   "versuche": 1
+   "versuche": 2
   },
   "pin-20261019T1740": {
    "basis_utc": "2026-10-19T17:40:00Z",
@@ -221,16 +220,14 @@
   "pin-20261019T1950": {
    "basis_utc": "2026-10-19T19:50:00Z",
    "format": "pin",
-   "grund": "",
+   "grund": "verschwunden [399449097]",
    "handle": "",
-   "letzter_versuch": "2026-10-18T21:37:52Z",
-   "mc_ids": [
-    399449097
-   ],
-   "reserviert_um": "2026-10-18T21:37:52Z",
-   "status": "geplant",
+   "letzter_versuch": "2026-10-18T22:54:54Z",
+   "mc_ids": [],
+   "reserviert_um": "2026-10-18T22:54:54Z",
+   "status": "reserviert",
    "termin_utc": "2026-10-19T19:50:00Z",
-   "versuche": 1
+   "versuche": 2
   },
   "pin-20261020T1240": {
    "basis_utc": "2026-10-20T12:40:00Z",
@@ -249,14 +246,12 @@
   "pin-20261020T1510": {
    "basis_utc": "2026-10-20T15:10:00Z",
    "format": "pin",
-   "grund": "",
+   "grund": "verschwunden [399451102]",
    "handle": "",
    "letzter_versuch": "2026-10-18T21:42:05Z",
-   "mc_ids": [
-    399451102
-   ],
+   "mc_ids": [],
    "reserviert_um": "2026-10-18T21:42:05Z",
-   "status": "geplant",
+   "status": "offen",
    "termin_utc": "2026-10-20T15:10:00Z",
    "versuche": 1
   },
@@ -277,14 +272,12 @@
   "pin-20261020T1950": {
    "basis_utc": "2026-10-20T19:50:00Z",
    "format": "pin",
-   "grund": "",
+   "grund": "verschwunden [399452107]",
    "handle": "",
    "letzter_versuch": "2026-10-18T21:43:55Z",
-   "mc_ids": [
-    399452107
-   ],
+   "mc_ids": [],
    "reserviert_um": "2026-10-18T21:43:55Z",
-   "status": "geplant",
+   "status": "offen",
    "termin_utc": "2026-10-20T19:50:00Z",
    "versuche": 1
   },
@@ -305,14 +298,12 @@
   "pin-20261021T1510": {
    "basis_utc": "2026-10-21T15:10:00Z",
    "format": "pin",
-   "grund": "",
+   "grund": "verschwunden [399453487]",
    "handle": "",
    "letzter_versuch": "2026-10-18T21:47:26Z",
-   "mc_ids": [
-    399453487
-   ],
+   "mc_ids": [],
    "reserviert_um": "2026-10-18T21:47:26Z",
-   "status": "geplant",
+   "status": "offen",
    "termin_utc": "2026-10-21T15:10:00Z",
    "versuche": 1
   },
@@ -333,14 +324,12 @@
   "pin-20261021T1950": {
    "basis_utc": "2026-10-21T19:50:00Z",
    "format": "pin",
-   "grund": "",
+   "grund": "verschwunden [399454431]",
    "handle": "",
    "letzter_versuch": "2026-10-18T21:49:23Z",
-   "mc_ids": [
-    399454431
-   ],
+   "mc_ids": [],
    "reserviert_um": "2026-10-18T21:49:23Z",
-   "status": "geplant",
+   "status": "offen",
    "termin_utc": "2026-10-21T19:50:00Z",
    "versuche": 1
   },
@@ -361,14 +350,12 @@
   "pin-20261022T1510": {
    "basis_utc": "2026-10-22T15:10:00Z",
    "format": "pin",
-   "grund": "",
+   "grund": "verschwunden [399456190]",
    "handle": "",
    "letzter_versuch": "2026-10-18T21:52:52Z",
-   "mc_ids": [
-    399456190
-   ],
+   "mc_ids": [],
    "reserviert_um": "2026-10-18T21:52:52Z",
-   "status": "geplant",
+   "status": "offen",
    "termin_utc": "2026-10-22T15:10:00Z",
    "versuche": 1
   },
@@ -389,14 +376,12 @@
   "pin-20261022T1950": {
    "basis_utc": "2026-10-22T19:50:00Z",
    "format": "pin",
-   "grund": "",
+   "grund": "verschwunden [399457560]",
    "handle": "",
    "letzter_versuch": "2026-10-18T21:57:03Z",
-   "mc_ids": [
-    399457560
-   ],
+   "mc_ids": [],
    "reserviert_um": "2026-10-18T21:57:03Z",
-   "status": "geplant",
+   "status": "offen",
    "termin_utc": "2026-10-22T19:50:00Z",
    "versuche": 1
   },
@@ -418,15 +403,13 @@
   "pin-20261023T1510": {
    "basis_utc": "2026-10-23T15:10:00Z",
    "format": "pin",
-   "grund": "",
+   "grund": "verschwunden [399466675]",
    "handle": "",
    "handles": [],
    "letzter_versuch": "2026-10-18T22:11:57Z",
-   "mc_ids": [
-    399466675
-   ],
+   "mc_ids": [],
    "reserviert_um": "2026-10-18T22:11:57Z",
-   "status": "geplant",
+   "status": "offen",
    "termin_utc": "2026-10-23T15:10:00Z",
    "versuche": 1
   },
@@ -448,15 +431,13 @@
   "pin-20261023T1950": {
    "basis_utc": "2026-10-23T19:50:00Z",
    "format": "pin",
-   "grund": "",
+   "grund": "verschwunden [399467237]",
    "handle": "",
    "handles": [],
    "letzter_versuch": "2026-10-18T22:13:30Z",
-   "mc_ids": [
-    399467237
-   ],
+   "mc_ids": [],
    "reserviert_um": "2026-10-18T22:13:30Z",
-   "status": "geplant",
+   "status": "offen",
    "termin_utc": "2026-10-23T19:50:00Z",
    "versuche": 1
   },
@@ -478,15 +459,13 @@
   "pin-20261024T1510": {
    "basis_utc": "2026-10-24T15:10:00Z",
    "format": "pin",
-   "grund": "",
+   "grund": "verschwunden [399469629]",
    "handle": "",
    "handles": [],
    "letzter_versuch": "2026-10-18T22:17:26Z",
-   "mc_ids": [
-    399469629
-   ],
+   "mc_ids": [],
    "reserviert_um": "2026-10-18T22:17:26Z",
-   "status": "geplant",
+   "status": "offen",
    "termin_utc": "2026-10-24T15:10:00Z",
    "versuche": 1
   },
@@ -1027,14 +1006,12 @@
   "tiktok-20261021T1105": {
    "basis_utc": "2026-10-21T11:05:00Z",
    "format": "tiktok",
-   "grund": "",
+   "grund": "verschwunden [399453036]",
    "handle": "elektrische-springkrebs-katze-spielzeug-892800",
    "letzter_versuch": "2026-10-18T21:46:39Z",
-   "mc_ids": [
-    399453036
-   ],
+   "mc_ids": [],
    "reserviert_um": "2026-10-18T21:46:39Z",
-   "status": "geplant",
+   "status": "offen",
    "termin_utc": "2026-10-21T11:05:00Z",
    "versuche": 1
   },
@@ -1097,14 +1074,12 @@
   "tiktok-20261023T0605": {
    "basis_utc": "2026-10-23T06:05:00Z",
    "format": "tiktok",
-   "grund": "",
+   "grund": "verschwunden [399458330]",
    "handle": "gemuese-scheibe-6e2cf8",
    "letzter_versuch": "2026-10-18T21:58:52Z",
-   "mc_ids": [
-    399458330
-   ],
+   "mc_ids": [],
    "reserviert_um": "2026-10-18T21:58:52Z",
-   "status": "geplant",
+   "status": "offen",
    "termin_utc": "2026-10-23T06:05:00Z",
    "versuche": 3
   },
@@ -1412,6 +1387,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-18T22:52:08Z",
+ "stand": "2026-10-18T22:54:54Z",
  "version": 1
 }
