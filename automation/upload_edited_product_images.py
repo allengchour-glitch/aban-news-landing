@@ -20,6 +20,7 @@ ENV: SHOPIFY_SHOP, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET (oder SHOPIFY_ADMIN_
 """
 import io
 import os
+import re
 import sys
 import time
 import json
@@ -34,7 +35,11 @@ import requests
 API = os.environ.get("SHOPIFY_API_VERSION", "2025-01")
 SHOP = os.environ.get("SHOPIFY_SHOP", "").strip()
 CID = os.environ.get("SHOPIFY_CLIENT_ID", "").strip()
-CSECRET = os.environ.get("SHOPIFY_CLIENT_SECRET", "").strip()
+# Der Wert kann als "<secret>=VARNAME" ankommen (vertauschte Env-Felder beim User,
+# s. automation/lib/shopify_secret.mjs) -> nur das echte Geheimnis nehmen.
+_csec_roh = os.environ.get("SHOPIFY_CLIENT_SECRET", "").strip()
+_m = re.match(r"^shpss_[0-9a-f]{32}", _csec_roh)
+CSECRET = _m.group(0) if _m else _csec_roh
 TOK_STATIC = os.environ.get("SHOPIFY_ADMIN_TOKEN", "").strip()
 MAX = int(os.environ.get("MAX_PER_RUN", "0") or "0")
 DRY = os.environ.get("DRY_RUN", "") == "1"

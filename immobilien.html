@@ -61,6 +61,8 @@ a{color:var(--amber-dk);text-decoration:none}button{font-family:inherit}
 .filterbtn{display:none}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:13px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px;transition:box-shadow .15s,transform .15s,border-color .15s}
+.krow{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.card.sel{border-color:var(--amber)!important;box-shadow:0 0 0 2px rgba(217,119,6,.25)}
 .card:hover{box-shadow:0 18px 40px rgba(40,30,15,.16);transform:translateY(-3px);border-color:#e3d4b6}
 .card .k{font-size:.7rem;font-weight:700;color:var(--amber-dk);text-transform:uppercase;letter-spacing:.03em}
 .card h3{font-size:1.05rem;margin:3px 0}
@@ -189,6 +191,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
 <footer>aban news · Immobilien (CH/DACH) · Angaben der Inserenten ohne Gewähr · © 2026 ·
   <a href="/inserat-aufgeben.html">Immobilie inserieren</a> · <a href="/marktplatz.html">Marktplatz</a> · <a href="/suchmaschine.html">Suche</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></footer>
 
+<script src="/js/merkliste.js"></script>
 <script src="/js/saved-search.js"></script>
 <script>
 (function(){
@@ -198,6 +201,14 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   var $=function(s){return document.querySelector(s)};
   var grid=$("#grid"),statusEl=$("#status"),cntEl=$("#cnt"),sidebar=$("#sidebar"),sheetbg=$("#sheetbg");
   var curArt="",curModus="",raw=[];
+  // Merkliste / Favoriten — Knopf, Leiste und Ansicht kommen aus js/merkliste.js.
+  // Die Liste ist dieselbe wie auf /inserate.html: gemerkt ist gemerkt, egal auf welcher Seite.
+  var Merk=(window.AbanMerk&&window.AbanMerk.ui)?window.AbanMerk.ui({
+    grid:grid,karte:".card",zaehlwort:"gemerkt",
+    render:function(){render(raw)},
+    daten:function(id){return (raw||[]).filter(function(it){return String(it.id)===String(id)})[0]||null},
+    zaehler:function(n){cntEl.textContent=n+" gemerkt"}
+  }):{nur:false,herz:function(){return""},istMerk:function(){return false},liste:function(){return[]},auffrischen:function(){}};
   // Schweizer Beispiel-Immobilien (Fallback, solange keine echten Inserate da sind). Klar als Beispiel markiert.
   var DEMO=[
     {kat:"Mietwohnung",titel:"3.5-Zimmer-Wohnung mit Balkon",preis:"CHF 1'890.–/Mt",ort:"Bern",plz:"3000",typ:"Angebot",kontakt:"beispiel@aban.ch",demo:1,beschreibung:"Helle 3.5-Zimmer-Wohnung, 82 m², Südbalkon, ÖV in 3 Min. Bezug per sofort."},
@@ -310,18 +321,20 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     var qs=p.toString();try{history.replaceState(null,"",qs?("?"+qs):location.pathname)}catch(e){}}
   function render(items){
     writeUrl();
-    items=applyFilters(items||[]);renderChips();
+    // Merklisten-Ansicht: die gemerkten Eintraege selbst — Suche und Filter greifen hier NICHT,
+    // sonst verschwinden gemerkte Objekte, sobald eine andere Art gewaehlt ist.
+    items=Merk.nur?Merk.liste():applyFilters(items||[]);renderChips();
     if(!items.length){grid.innerHTML="";statusEl.hidden=false;
-      statusEl.innerHTML="Noch keine Immobilien in dieser Auswahl. Sei der/die Erste: <a href=\"/inserat-aufgeben.html\">Immobilie inserieren</a>.";cntEl.textContent="0 Immobilien";return}
+      statusEl.innerHTML=Merk.nur?"Noch nichts gemerkt. Tippe auf das ♡ bei einem Objekt — es bleibt hier, auch nach dem Schliessen des Browsers.":"Noch keine Immobilien in dieser Auswahl. Sei der/die Erste: <a href=\"/inserat-aufgeben.html\">Immobilie inserieren</a>.";cntEl.textContent=Merk.nur?"0 gemerkt":"0 Immobilien";return}
     statusEl.hidden=true;
     grid.innerHTML=items.map(function(it){
       var img=it.bild?('<div style="aspect-ratio:16/10;background:#f3eee4 center/cover no-repeat;background-image:url(\''+esc(it.bild)+'\');border-radius:14px;margin:-2px 0 9px"></div>'):'';
       var top=it.featured?'<span style="background:#b45309;color:#fff;border-radius:8px;padding:2px 7px;font-size:.66rem;font-weight:800;margin-left:6px">⭐ TOP</span>':'';
       var fcls=it.featured?' style="border:2px solid var(--amber)"':'';
       var cta=it.id?('<a class="c2" href="/inserat/'+encodeURIComponent(it.id)+'">Details ansehen →</a>'):('<button class="c" type="button" data-k="'+esc(it.kontakt||"")+'">Kontakt anzeigen</button>');
-      return '<div class="card"'+fcls+'>'+img+'<div class="k">'+esc(it.kat||"Immobilie")+top+'</div><h3>'+esc(it.titel)+'</h3>'+(it.preis?'<div class="p">'+esc(it.preis)+'</div>':'')+'<div class="o">'+esc([it.plz,it.ort].filter(Boolean).join(" "))+'</div><div class="d">'+esc(it.beschreibung)+'</div>'+cta+'</div>';
+      return '<div class="card'+(Merk.istMerk(it.id)?' sel':'')+'"'+fcls+' data-id="'+esc(it.id)+'">'+img+'<div class="krow"><span class="k">'+esc(it.kat||"Immobilie")+top+'</span>'+Merk.herz(it.id)+'</div><h3>'+esc(it.titel)+'</h3>'+(it.preis?'<div class="p">'+esc(it.preis)+'</div>':'')+'<div class="o">'+esc([it.plz,it.ort].filter(Boolean).join(" "))+'</div><div class="d">'+esc(it.beschreibung)+'</div>'+cta+'</div>';
     }).join("");
-    cntEl.textContent=items.length+" Immobilien";
+    cntEl.textContent=items.length+(Merk.nur?" gemerkt":" Immobilien");
     Array.prototype.forEach.call(document.querySelectorAll(".card button.c"),function(b){b.addEventListener("click",function(){this.outerHTML='<div style="font-size:.85rem">'+contactHtml(this.dataset.k)+'</div>'})});
   }
   function load(){

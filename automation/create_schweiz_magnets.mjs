@@ -6,8 +6,9 @@
  * Idempotent über Handle. Status DRAFT. No-op ohne Creds. DRY_RUN=1.
  * ENV: SHOPIFY_SHOP + SHOPIFY_CLIENT_ID/SECRET (oder _ADMIN_TOKEN) · [SKU_PREFIX=9000001] · [DRY_RUN=1]
  */
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 const SHOPraw=process.env.SHOPIFY_SHOP||''; const ADMIN_TOKEN=(process.env.SHOPIFY_ADMIN_TOKEN||'').trim();
-const CID=(process.env.SHOPIFY_CLIENT_ID||'').trim(); const CSEC=(process.env.SHOPIFY_CLIENT_SECRET||'').trim();
+const CID=(process.env.SHOPIFY_CLIENT_ID||'').trim(); const CSEC=(shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET)||'').trim();
 const DRY=process.env.DRY_RUN==='1'; const API='2025-01';
 const PREFIX=(process.env.SKU_PREFIX||'9000001').trim();
 const BASE='https://abannews.com/social/designs/';

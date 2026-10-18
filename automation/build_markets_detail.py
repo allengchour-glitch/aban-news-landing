@@ -28,8 +28,10 @@ STR = {
         "out": ROOT / "maerkte", "base": "/maerkte/", "site": "/", "markets": "/maerkte.html",
         "loc": "de-DE", "numloc": "de-CH",
         "type": {"crypto": "Krypto", "stock": "Aktie", "etf": "ETF", "index": "Index", "commodity": "Rohstoff"},
-        "title": "{name} ({sym}) — Kurs, 30-Tage-Chart & KI-Sentiment | aban news",
-        "desc": "{name} ({sym}): aktueller Kurs, 30-Tage-Chart, KI-Sentiment und wert-spezifische News. Anti-Hype, keine Anlageberatung.",
+        "titel": [" — Kurs, 30-Tage-Chart & KI-Sentiment | aban news",
+                  " — Kurs, 30-Tage-Chart & KI-Sentiment",
+                  " — Kurs & 30-Tage-Chart", " — Kurs"],
+        "desc": "{kopf}: aktueller Kurs, 30-Tage-Chart, KI-Sentiment und wert-spezifische News. Anti-Hype, keine Anlageberatung.",
         "skip": "Zum Inhalt springen", "nav": "Hauptnavigation", "subscribe": "Gratis abonnieren",
         "back": "← Alle Märkte", "disc": "⚠️ Keine Anlageberatung. {typ} ist hochvolatil — du kannst eingesetztes Geld komplett verlieren. KI-Sentiment ist experimentell.",
         "eb_chart": "30-Tage-Verlauf", "h_chart": "Kursverlauf", "no_chart": "Kein Chart verfügbar.",
@@ -45,8 +47,10 @@ STR = {
         "out": ROOT / "en" / "maerkte", "base": "/en/maerkte/", "site": "/en/", "markets": "/en/maerkte.html",
         "loc": "en", "numloc": "en",
         "type": {"crypto": "Crypto", "stock": "Stock", "etf": "ETF", "index": "Index", "commodity": "Commodity"},
-        "title": "{name} ({sym}) — price, 30-day chart & AI sentiment | aban news",
-        "desc": "{name} ({sym}): current price, 30-day chart, AI sentiment and asset-specific news. Anti-hype, not investment advice.",
+        "titel": [" — price, 30-day chart & AI sentiment | aban news",
+                  " — price, 30-day chart & AI sentiment",
+                  " — price & 30-day chart", " — price"],
+        "desc": "{kopf}: current price, 30-day chart, AI sentiment and asset-specific news. Anti-hype, not investment advice.",
         "skip": "Skip to content", "nav": "Main navigation", "subscribe": "Subscribe free",
         "back": "← All markets", "disc": "⚠️ Not investment advice. {typ} is highly volatile — you can lose all of the money you invest. AI sentiment is experimental.",
         "eb_chart": "30-day history", "h_chart": "Price history", "no_chart": "No chart available.",
@@ -72,6 +76,42 @@ LBL = {
            "c24": "24 h", "c7": "7 days", "c30": "30 days", "hi": "30d high", "lo": "30d low",
            "mcap": "Market cap", "vol": "Volume", "ath": "All-time high", "w52h": "52w high", "w52l": "52w low"},
 }
+
+
+# --- Titel: nie über 65 Zeichen, keine leere Klammer -------------------------
+# Google schneidet Titel ab etwa 65 Zeichen ab. Darum: Name + Kürzel nur, wenn
+# das Kürzel wirklich etwas Neues sagt, und von den Zusätzen der längste, der
+# noch passt (die Marke hinten fällt zuerst weg, sie steht in der Suche sowieso
+# daneben). Siehe tools/seo/titel.py, das dieselbe Grenze für den Rest der
+# Seiten durchsetzt.
+MAX_TITEL = 65
+
+
+def _nur_buchstaben(s):
+    return re.sub(r"[^0-9a-z]", "", str(s or "").lower())
+
+
+def titel_kopf(name, sym):
+    """"Name (Kürzel)" — die Klammer fällt nur weg, wenn sie nichts Neues sagt.
+
+    Also wenn Kürzel und Name dasselbe sind ("Gold (Gold)", "Euro Stoxx 50
+    (Euro Stoxx 50)") oder das Kürzel als ganzes Wort im Namen steht ("Nasdaq
+    Composite (Nasdaq)"). Ein reiner Zeichen-Vergleich wäre zu grob: "ETH"
+    steckt in "Ethereum", ist aber genau das Wort, nach dem Leute suchen.
+    """
+    name, sym = str(name or ""), str(sym or "")
+    if not sym or _nur_buchstaben(sym) == _nur_buchstaben(name):
+        return name
+    if re.search(rf"\b{re.escape(sym)}\b", name, re.I):
+        return name
+    return f"{name} ({sym})"
+
+
+def seiten_titel(kopf, zusaetze):
+    for zusatz in zusaetze:
+        if len(kopf + zusatz) <= MAX_TITEL:
+            return kopf + zusatz
+    return kopf + zusaetze[-1]
 
 
 def esc(s):
@@ -226,8 +266,9 @@ def page(asset, css, updated, lang, all_assets):
     chg_txt = (f"{chg:+.2f} %" if chg is not None else "—")
     sent = asset.get("sentiment", "neutral")
     up = bool(asset.get("spark") and asset["spark"][-1] >= asset["spark"][0])
-    title = t["title"].format(name=name, sym=sym)
-    desc = t["desc"].format(name=name, sym=sym)
+    kopf = titel_kopf(name, sym)
+    title = seiten_titel(kopf, t["titel"])
+    desc = t["desc"].format(kopf=kopf)
     canon = f"https://abannews.com{t['base']}{aid}.html"
     hreflangs = "\n".join(
         f'  <link rel="alternate" hreflang="{l}" href="https://abannews.com{STR[l]["base"]}{aid}.html">'

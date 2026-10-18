@@ -7,10 +7,11 @@
  * No-op-safe: ohne Creds sauberer Exit 0.
  */
 import fs from 'node:fs';
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 
 const SHOP = process.env.SHOPIFY_SHOP || '';
 const CID = process.env.SHOPIFY_CLIENT_ID || '';
-const SECRET = process.env.SHOPIFY_CLIENT_SECRET || '';
+const SECRET = shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET) || '';
 const PAGE_ID = process.env.POD_PAGE_ID || 'gid://shopify/Page/698444710273';
 const BODY_FILE = process.env.POD_BODY_FILE || 'dropship/pod/page_body.html';
 const API = '2024-10';

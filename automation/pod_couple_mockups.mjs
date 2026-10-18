@@ -11,6 +11,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { execSync } from 'node:child_process';
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 
 const ROOT = process.cwd();
 const KEY = process.env.GEMINI_API_KEY || '';
@@ -18,7 +19,7 @@ const GMODEL = process.env.GEMINI_IMAGE_MODEL || 'gemini-2.5-flash-image';
 const GBASE = process.env.GEMINI_BASE_URL || 'https://generativelanguage.googleapis.com/v1beta';
 const SHOP = process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com';
 const CID = process.env.SHOPIFY_CLIENT_ID || '';
-const CSEC = process.env.SHOPIFY_CLIENT_SECRET || '';
+const CSEC = shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET) || '';
 const ADMIN_TOKEN = process.env.SHOPIFY_ADMIN_TOKEN || '';
 const API = '2025-01';
 const DRY = process.env.DRY_RUN === '1';

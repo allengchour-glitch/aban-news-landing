@@ -1,0 +1,13 @@
+KI-Sichtbarkeits-Audit 1.0 — aban news
+
+Inhalt
+  ki-sichtbarkeit-audit.html  das Workbook: im Browser öffnen (Doppelklick), läuft offline
+  ANLEITUNG.md                Start in 5 Minuten, die sechs Schritte, häufige Fehler
+
+Deine Eingaben bleiben in deinem Browser auf diesem Gerät. Es gibt kein Konto,
+keine Übertragung und keinen Server.
+
+Nutzung privat und geschäftlich erlaubt. Weitergabe und Weiterverkauf nicht gestattet.
+KI-Antworten schwanken — das Audit zeigt deinen Ist-Stand, keine Garantie auf Nennung.
+
+© aban news, abannews.com · hallo@abannews.com

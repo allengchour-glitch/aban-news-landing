@@ -16,9 +16,10 @@
  * Lauf:  node automation/add_premium_section.mjs        (live schreiben)
  *        DRY=1 node automation/add_premium_section.mjs   (nur anzeigen, nicht schreiben)
  */
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 const SHOP = process.env.SHOPIFY_SHOP;
 const CID  = process.env.SHOPIFY_CLIENT_ID;
-const SEC  = process.env.SHOPIFY_CLIENT_SECRET;
+const SEC  = shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET);
 const HANDLE = process.env.PREMIUM_COLLECTION_HANDLE || 'luxestyle-premium';
 const DRY = process.env.DRY === '1';
 const API = '2025-01';

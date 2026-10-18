@@ -7,15 +7,27 @@
  *
  * ENV: SHOPIFY_SHOP, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET (oder SHOPIFY_ADMIN_TOKEN),
  *      LIMIT (max Produkte/Lauf, default 120), DRY_RUN=1,
+ *      PQUERY="status:active AND tag:…", SORT=UPDATED_AT|CREATED_AT, REVERSE=0 (älteste zuerst),
  *      TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
  */
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
+import { seoTitel } from './lib/seo_titel.mjs';
+import { shopifyGql } from './lib/shopify_gql.mjs';
 const SHOP = process.env.SHOPIFY_SHOP || '';
 const TOK_STATIC = process.env.SHOPIFY_ADMIN_TOKEN || '';
 const CID = process.env.SHOPIFY_CLIENT_ID || '';
-const CSECRET = process.env.SHOPIFY_CLIENT_SECRET || '';
+const CSECRET = shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET) || '';
 const TG_T = process.env.TELEGRAM_BOT_TOKEN || '';
 const TG_C = process.env.TELEGRAM_CHAT_ID || '';
 const LIMIT = parseInt(process.env.LIMIT || '120', 10);
+// PQUERY/SORT/REVERSE: der Lauf durchsucht sonst IMMER die zuletzt geaenderten Produkte zuerst —
+// und genau die hat der vorige Lauf schon versorgt. Gemessen 2026-10-17: der zweite Lauf brauchte
+// 15 Minuten fuer 74 Treffer, weil er erst 3315 fertige Produkte neu durchblaettern musste
+// (jede Seite eine Abfrage, mit Drosselpausen). Mit SORT=CREATED_AT REVERSE=0 faengt er dort an,
+// wo die Luecke noch ist.
+const PQUERY = process.env.PQUERY || 'status:active';
+const SORT = (process.env.SORT || 'UPDATED_AT').toUpperCase();
+const REVERSE = process.env.REVERSE !== '0';
 const DRY = process.env.DRY_RUN === '1';
 
 if(!(SHOP && (TOK_STATIC || (CID && CSECRET)))){ console.log('Keine Shopify-Credentials → No-op.'); process.exit(0); }
@@ -34,33 +46,34 @@ async function getToken(){
   }
   return TOK_STATIC;
 }
-const API = `https://${SHOP}/admin/api/2025-01/graphql.json`;
 let TOKEN = '';
+// Drosselung aussitzen statt aufgeben (automation/lib/shopify_gql.mjs). Der Lauf geht ueber
+// tausende Produkte — ohne Wiederholung endet er nach wenigen Seiten mit „Throttled".
+// shopifyGql liefert `data` direkt und wirft bei echten Fehlern; die Aufrufer unten erwarten
+// die Form { data }, darum hier wieder einpacken.
 async function gql(query, variables){
-  const r = await fetch(API,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':TOKEN},
-    body:JSON.stringify({query, variables})});
-  return r.json();
+  try { return { data: await shopifyGql(SHOP, '2025-01', TOKEN, query, variables) }; }
+  catch (e) { return { errors: [{ message: e.message }] }; }
 }
-const clip = (s,n) => s.length<=n ? s : s.slice(0,n-1).replace(/\s+\S*$/,'')+'…';
-function mkSeo(title){
-  const base = title.replace(/\s*[·–—-]\s*/g,' – ').replace(/\s+/g,' ').trim();
-  const seoTitle = clip(`${base} | LuxeStyle CH`, 60);
-  const seoDesc = clip(`${base} bei LuxeStyle – Schweizer Online-Shop, schnelle Lieferung. Jetzt –10% mit Code WELCOME10.`, 155);
-  return { title: seoTitle, description: seoDesc };
-}
+// Begruendung, Muster und Tests: automation/lib/seo_titel.mjs
+// Kurz: das alte Muster `\s*[·–—-]\s*` traf den Bindestrich MITTEN im Wort und machte aus
+// „Gaming-Controller" → „Gaming – Controller" (985 von 2415 Titeln = 41 % betroffen); die Marke
+// fiel bei langen Titeln ab und hinterliess „|…" (255 = 11 %); und die Beschreibung versprach
+// „schnelle Lieferung", obwohl CJ 10–20 Werktage braucht.
+const mkSeo = (title) => seoTitel(title);
 
 TOKEN = await getToken();
 if(!TOKEN){ console.error('Kein Token.'); process.exit(0); }
 
 let after = null, scanned = 0, updated = 0, failedImgs = [];
-const Q = `query($after:String){ products(first:50, after:$after, query:"status:active", sortKey:UPDATED_AT, reverse:true){
+const Q = `query($after:String,$q:String){ products(first:50, after:$after, query:$q, sortKey:${SORT}, reverse:${REVERSE}){
   pageInfo{ hasNextPage endCursor }
   nodes{ id title seo{ title description } featuredMedia{ ... on MediaImage{ id alt } } media(first:3){ nodes{ status } } } } }`;
 const M = `mutation($input:ProductInput!){ productUpdate(input:$input){ product{ id } userErrors{ field message } } }`;
 
 outer:
 while(true){
-  const j = await gql(Q, { after });
+  const j = await gql(Q, { after, q: PQUERY });
   const conn = j?.data?.products;
   if(!conn){ console.error('Query-Fehler:', JSON.stringify(j).slice(0,300)); break; }
   for(const p of conn.nodes){
@@ -82,7 +95,7 @@ while(true){
   after = conn.pageInfo.endCursor;
 }
 
-const msg = `🔎 SEO-Optimizer: ${scanned} Produkte gescannt · ${updated} SEO ${DRY?'(DRY)':'gefüllt'}`
+const msg = `🔎 SEO-Optimizer: ${scanned} Produkte gescannt (${PQUERY}, ${SORT}${REVERSE?'':' aufsteigend'}) · ${updated} SEO ${DRY?'(DRY)':'gefüllt'}`
   + (failedImgs.length ? `\n⚠️ ${failedImgs.length} Produkt(e) mit FAILED-Bild: ${failedImgs.slice(0,8).join(', ')}` : `\n✅ keine FAILED-Bilder`);
 console.log(msg);
 if(TG_T && TG_C && (updated>0 || failedImgs.length)){

@@ -8,7 +8,8 @@
  * ENV: SHOPIFY_SHOP + SHOPIFY_CLIENT_ID/SECRET · [SECTION=sections/main-product.liquid] · DRY_RUN=1 · REMOVE=1
  */
 import fs from 'node:fs';
-const SHOP=(process.env.SHOPIFY_SHOP||'').trim(); const CID=(process.env.SHOPIFY_CLIENT_ID||'').trim(); const CSEC=(process.env.SHOPIFY_CLIENT_SECRET||'').trim();
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
+const SHOP=(process.env.SHOPIFY_SHOP||'').trim(); const CID=(process.env.SHOPIFY_CLIENT_ID||'').trim(); const CSEC=(shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET)||'').trim();
 const API='2025-01';
 const SECTION=(process.env.SECTION||'sections/main-product.liquid').trim();
 const SNIPPET='snippets/ls-lieferzeit.liquid';

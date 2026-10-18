@@ -17,12 +17,13 @@
  *   DAYS=7  (Vergleichszeitraum)  ·  BASEURL=https://abannews.com/reels
  */
 import fs from 'node:fs';
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 
 const DAYS = parseInt(process.env.DAYS || '7', 10);
 const SHOP = process.env.SHOPIFY_SHOP || '';
 const TOK_STATIC = process.env.SHOPIFY_ADMIN_TOKEN || '';
 const CID = process.env.SHOPIFY_CLIENT_ID || '';
-const CSECRET = process.env.SHOPIFY_CLIENT_SECRET || '';
+const CSECRET = shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET) || '';
 const TG_T = process.env.TELEGRAM_BOT_TOKEN || '';
 const TG_C = process.env.TELEGRAM_CHAT_ID || '';
 const BASE = (process.env.BASEURL || 'https://abannews.com/reels').replace(/\/$/, '');

@@ -100,20 +100,12 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
 .skl .ph{aspect-ratio:16/10;border-radius:14px;margin-bottom:11px}
 .skl .ln{height:13px;border-radius:8px;margin-bottom:9px}
 .krow{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
-.heart{background:#fff;border:1.5px solid var(--line);border-radius:50%;width:32px;height:32px;flex:0 0 auto;font-size:15px;line-height:1;cursor:pointer;color:#b45309;display:flex;align-items:center;justify-content:center;transition:all .12s}
-.heart:hover{border-color:var(--amber);background:var(--cream)}
 .card.sel{border-color:var(--amber)!important;box-shadow:0 0 0 2px rgba(217,119,6,.25)}
-.card.sel .heart{background:var(--amber-dk);border-color:var(--amber-dk);color:#fff}
 .demobadge{background:#6b7280;color:#fff;border-radius:8px;padding:2px 7px;font-size:.66rem;font-weight:800;margin-left:6px}
 #demoBanner{background:#fff;border:1px dashed #d6cbb0;border-radius:14px;padding:11px 14px;margin-bottom:13px;font-size:.86rem;color:var(--ink2)}
 #demoBanner b{color:var(--amber-dk)}
-#selbar{position:fixed;left:50%;transform:translateX(-50%);bottom:16px;z-index:80;background:#1f2937;color:#fff;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.3);display:flex;align-items:center;gap:10px;padding:9px 12px 9px 18px;font-size:.9rem;font-weight:700}
-#selbar[hidden]{display:none}
 #priceInsight{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:5px 12px;font-size:.82rem;color:var(--ink2);font-weight:600}
 #priceInsight[hidden]{display:none}
-#selbar button{font-family:inherit;border:0;border-radius:14px;padding:8px 14px;font-weight:700;font-size:.85rem;cursor:pointer}
-#selbar .sbshow{background:var(--amber);color:#1f2937}
-#selbar .sbclear{background:transparent;color:#f4e7d3;border:1px solid rgba(255,255,255,.3)}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Start","item":"https://abannews.com/"},{"@type":"ListItem","position":2,"name":"Marktplatz","item":"https://abannews.com/marktplatz.html"},{"@type":"ListItem","position":3,"name":"Inserate","item":"https://abannews.com/inserate.html"}]}</script>
 
@@ -203,7 +195,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   </section>
 </div>
 <div class="sheetbg" id="sheetbg"></div>
-<div id="selbar" hidden><span>♥ <span id="selcnt">0</span> gemerkt</span><button class="sbshow" id="selShow" type="button">Anzeigen</button><button class="sbclear" id="selClear" type="button">Leeren</button></div>
+
 
 <nav style="max-width:1180px;margin:18px auto 0;padding:0 16px;font-size:.85rem;text-align:center" aria-label="Marktplatz-Bereiche"><strong>Marktplatz:</strong> <a href="/suche.html">Universal-Suche</a> · <a href="/marktplatz.html">Alle Kategorien</a> · <a href="/stellenangebote.html">Jobs</a> · <a href="/auto-suche.html">Auto</a> · <a href="/immobilien.html">Immobilien</a> · <a href="/angebote-suche.html">Angebote</a> · <a href="/inserate.html">Inserate</a> · <a href="/luxestyle.html">🛍️ Shop</a></nav>
 <section style="max-width:1100px;margin:24px auto 6px;padding:0 16px" aria-label="Häufige Fragen"><h2 style="font-size:1.2rem;margin-bottom:10px">Häufige Fragen</h2><details style="background:#fff;border:1px solid #e6e1d6;border-radius:14px;padding:12px 16px;margin-bottom:8px"><summary style="font-weight:700;cursor:pointer">Sind die Inserate kostenlos?</summary><p style="margin-top:8px;color:#374151;font-size:.95rem">Ja, Suchen und Aufgeben sind kostenlos. Jedes Inserat wird vor der Veröffentlichung kurz geprüft.</p></details><details style="background:#fff;border:1px solid #e6e1d6;border-radius:14px;padding:12px 16px;margin-bottom:8px"><summary style="font-weight:700;cursor:pointer">Woher kommen die Inserate?</summary><p style="margin-top:8px;color:#374151;font-size:.95rem">Von Nutzern (private Kleinanzeigen). Keine illegalen oder gewerblichen Massen-Inhalte — bitte fair bleiben.</p></details><details style="background:#fff;border:1px solid #e6e1d6;border-radius:14px;padding:12px 16px;margin-bottom:8px"><summary style="font-weight:700;cursor:pointer">Wie nehme ich Kontakt auf?</summary><p style="margin-top:8px;color:#374151;font-size:.95rem">Über den Kontakt-Button im jeweiligen Inserat erscheint die hinterlegte E-Mail oder Telefonnummer.</p></details></section>
@@ -211,13 +203,14 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
 <footer>aban news · Kleinanzeigen · Angaben der Inserenten ohne Gewähr · © 2026 ·
   <a href="/inserat-aufgeben.html">Inserat aufgeben</a> · <a href="/suchmaschine.html">Suche</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></footer>
 
+<script src="/js/merkliste.js"></script>
 <script src="/js/saved-search.js"></script>
 <script>
 (function(){
   var CATS=["Elektronik","Handy","Computer","Foto & Video","Gaming","TV & Audio","Möbel","Wohnen & Deko","Haushalt","Küche","Garten","Werkzeug","Baumaterial","Auto & Teile","Motorrad","Fahrrad","Mode","Schmuck & Uhren","Spielzeug","Baby & Kind","Haustier","Sport","Musik & Instrumente","Bücher & Medien","Tickets & Gutscheine","Sammeln & Antik","Dienstleistungen","Immobilien","Jobs","Sonstiges"];
   var $=function(s){return document.querySelector(s)};
   var grid=$("#grid"),statusEl=$("#status"),cntEl=$("#cnt"),sidebar=$("#sidebar"),sheetbg=$("#sheetbg");
-  var curKat="",raw=[],isDemo=false,merkOnly=false;
+  var curKat="",raw=[],isDemo=false;
   function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
   // Schweizer Beispiel-Inserate (Demo) — füllen die Seite, solange noch keine echten da sind. Klar als „Beispiel" markiert.
   var DEMO=[
@@ -288,12 +281,13 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     {id:"demo-65",kat:"Schmuck & Uhren",titel:"Herrenuhr Chronograph",preis:"CHF 190.–",ort:"Genf",plz:"1201",zustand:"Gebraucht",typ:"Angebot",emoji:"⌚",demo:1,beschreibung:"Edelstahl, Lederband, läuft einwandfrei. Mit Box."},
     {id:"demo-66",kat:"Küche",titel:"Standmixer 1000 W",preis:"CHF 45.–",ort:"Winterthur",plz:"8400",zustand:"Gebraucht",typ:"Angebot",emoji:"🥤",demo:1,beschreibung:"Kräftig, 1,5-l-Glaskrug, leicht zu reinigen."}
   ];
-  // ── Merkliste / Auswahl (im Browser gespeichert) ──
-  var MKEY="abanMerk";
-  function merkSet(){try{return JSON.parse(localStorage.getItem(MKEY)||"[]")}catch(e){return[]}}
-  function isMerk(id){return merkSet().indexOf(String(id))>=0}
-  function toggleMerk(id){id=String(id);var s=merkSet(),i=s.indexOf(id);if(i>=0)s.splice(i,1);else s.push(id);try{localStorage.setItem(MKEY,JSON.stringify(s))}catch(e){}renderSelbar()}
-  function renderSelbar(){var b=$("#selbar");if(!b)return;var n=merkSet().length;b.hidden=!n;if(n){$("#selcnt").textContent=n;$("#selShow").textContent=merkOnly?"Alle zeigen":"Anzeigen"}}
+  // ── Merkliste / Favoriten — Knopf, Leiste und Ansicht kommen aus js/merkliste.js ──
+  var Merk=(window.AbanMerk&&window.AbanMerk.ui)?window.AbanMerk.ui({
+    grid:grid,karte:".card",zaehlwort:"gemerkt",
+    render:function(){render(raw)},
+    daten:function(id){return (raw||[]).filter(function(it){return String(it.id)===String(id)})[0]||null},
+    zaehler:function(n){cntEl.textContent=n+" gemerkt"}
+  }):{nur:false,herz:function(){return""},istMerk:function(){return false},liste:function(){return[]},auffrischen:function(){}};
   function skeleton(){grid.innerHTML=Array(7).join().split(",").map(function(){return '<div class="skl"><div class="ph"></div><div class="ln" style="width:80%"></div><div class="ln" style="width:50%"></div><div class="ln" style="width:92%"></div></div>'}).join("");statusEl.hidden=true;}
   $("#cats").innerHTML='<p style="font-size:.74rem;color:var(--muted);margin:-2px 0 6px">Mehrere ankreuzen möglich</p>'+
     CATS.map(function(c){return '<label class="opt"><input type="checkbox" class="catbox" value="'+esc(c)+'">'+esc(c)+'</label>'}).join("");
@@ -366,9 +360,11 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     var qs=p.toString();try{history.replaceState(null,"",qs?("?"+qs):location.pathname)}catch(e){}}
   function render(items){
     writeUrl();
-    items=applyFilters(items||[]);if(merkOnly)items=items.filter(function(it){return isMerk(it.id)});renderChips();
+    // Merklisten-Ansicht: die gemerkten Eintraege selbst — Suche und Filter greifen hier NICHT,
+    // sonst verschwinden gemerkte Inserate, sobald eine andere Kategorie gewaehlt ist.
+    items=Merk.nur?Merk.liste():applyFilters(items||[]);renderChips();
     if(!items.length){grid.innerHTML="";statusEl.hidden=false;
-      statusEl.innerHTML=merkOnly?"Noch nichts gemerkt. Tippe auf ♡ bei einem Inserat.":"Noch keine Inserate in dieser Auswahl. Sei der/die Erste: <a href=\"/inserat-aufgeben.html\">Inserat aufgeben</a>.";cntEl.textContent="0 Inserate";return}
+      statusEl.innerHTML=Merk.nur?"Noch nichts gemerkt. Tippe auf das ♡ bei einem Inserat — es bleibt hier, auch nach dem Schliessen des Browsers.":"Noch keine Inserate in dieser Auswahl. Sei der/die Erste: <a href=\"/inserat-aufgeben.html\">Inserat aufgeben</a>.";cntEl.textContent=Merk.nur?"0 gemerkt":"0 Inserate";return}
     statusEl.hidden=true;
     grid.innerHTML=items.map(function(it){
       var img=it.bild?('<div style="aspect-ratio:16/10;background:#f3eee4 center/cover no-repeat;background-image:url(\''+esc(it.bild)+'\');border-radius:14px;margin:-2px 0 9px"></div>')
@@ -377,15 +373,15 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
       var dbadge=it.demo?'<span class="demobadge">Beispiel</span>':'';
       var ch=[];if(String(it.typ||"")==="Gesuch")ch.push("🔎 Gesuch");if(it.zustand)ch.push(esc(it.zustand));
       var chips=ch.length?('<div style="margin:1px 0 7px">'+ch.map(function(c){return '<span style="display:inline-block;background:#fef3c7;color:#92660a;border-radius:8px;padding:2px 8px;font-size:.7rem;font-weight:700;margin-right:5px">'+c+'</span>'}).join("")+'</div>'):'';
-      var on=isMerk(it.id);
+      var on=Merk.istMerk(it.id);
       var cta=it.url?('<a class="c2" href="'+esc(it.url)+'" target="_blank" rel="noopener nofollow">Beim Anbieter ansehen →</a>'):('<a class="c2" href="/inserat/'+encodeURIComponent(it.id)+'">Details ansehen →</a>');
       return '<div class="card'+(on?' sel':'')+(it.featured?' feat':'')+'" data-id="'+esc(it.id)+'">'+img+
         '<div class="krow"><span class="k">'+esc(it.kat||"Sonstiges")+top+dbadge+'</span>'+
-        '<button class="heart" type="button" data-merk="'+esc(it.id)+'" aria-label="Merken" title="Merken">'+(on?'♥':'♡')+'</button></div>'+
+        Merk.herz(it.id)+'</div>'+
         '<h3>'+esc(it.titel)+'</h3>'+chips+(it.preis?'<div class="p">'+esc(it.preis)+'</div>':'')+
         '<div class="o">'+esc([it.plz,it.ort].filter(Boolean).join(" "))+'</div><div class="d">'+esc(it.beschreibung)+'</div>'+cta+'</div>';
     }).join("");
-    cntEl.textContent=items.length+(merkOnly?" gemerkt":(isDemo?(items.length===1?" Beispiel":" Beispiele"):(items.length===1?" Inserat":" Inserate")));
+    cntEl.textContent=items.length+(Merk.nur?" gemerkt":(isDemo?(items.length===1?" Beispiel":" Beispiele"):(items.length===1?" Inserat":" Inserate")));
     // Preis-Insight zur aktuellen Auswahl (haben tutti & anibis nicht)
     (function(){var pi=$("#priceInsight");if(!pi)return;
       var ps=items.map(function(it){return chfNum(it.preis)}).filter(function(n){return !isNaN(n)&&n>0}).sort(function(a,b){return a-b});
@@ -539,12 +535,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   $("#portalPick").addEventListener("change",function(e){if(e.target.classList.contains("pchk")){setOn(e.target.value,e.target.checked);renderPortals()}});
   $("#q").addEventListener("input",renderPortals);
 
-  // Herz auf den Karten → merken/auswählen (Event-Delegation, überlebt Neu-Render)
-  grid.addEventListener("click",function(e){var h=e.target.closest("[data-merk]");if(h){e.preventDefault();toggleMerk(h.dataset.merk);render(raw)}});
-  $("#selShow").addEventListener("click",function(){merkOnly=!merkOnly;renderSelbar();render(raw)});
-  $("#selClear").addEventListener("click",function(){try{localStorage.removeItem(MKEY)}catch(e){}merkOnly=false;renderSelbar();render(raw)});
-
-  renderThings();renderPortals();renderSelbar();
+  renderThings();renderPortals();Merk.auffrischen();
 
   // Deep-Link: ?q= / ?kat= / ?loc= aus der URL übernehmen
   (function(){var sp=new URLSearchParams(location.search),uq=sp.get("q"),uk=sp.get("kat"),ul=sp.get("loc");

@@ -13,8 +13,10 @@
  * No-op-sicher · DRY-Default · LIVE=1 · SCAN=Produkt-Beschreibungen scannen (Default 300).
  * ENV: SHOPIFY_SHOP + (SHOPIFY_ADMIN_TOKEN | SHOPIFY_CLIENT_ID+SHOPIFY_CLIENT_SECRET)
  */
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
+import { shopifyGql } from './lib/shopify_gql.mjs';
 const SHOP=process.env.SHOPIFY_SHOP||'', TOK_ST=process.env.SHOPIFY_ADMIN_TOKEN||'',
-  CID=process.env.SHOPIFY_CLIENT_ID||'', CS=process.env.SHOPIFY_CLIENT_SECRET||'',
+  CID=process.env.SHOPIFY_CLIENT_ID||'', CS=shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET)||'',
   LIVE=process.env.LIVE==='1', SCAN=Math.min(parseInt(process.env.SCAN||'300',10),3000),
   MENU=process.env.MENU_HANDLE||'main-menu', API='2025-01';
 
@@ -25,11 +27,8 @@ async function getToken(){
     const j=await r.json().catch(()=>({})); return j.access_token||''; }
   return TOK_ST||'';
 }
-async function gql(token,query,variables){
-  const r=await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`,{method:'POST',
-    headers:{'Content-Type':'application/json','X-Shopify-Access-Token':token},body:JSON.stringify({query,variables})});
-  const j=await r.json(); if(j.errors) throw new Error('GraphQL: '+JSON.stringify(j.errors).slice(0,300)); return j.data;
-}
+// Drosselung aussitzen statt aufgeben — Begruendung + Tests in automation/lib/shopify_gql.mjs
+const gql=(token,query,variables)=>shopifyGql(SHOP,API,token,query,variables);
 const swap=h=>h.startsWith('sub-')?h.slice(4):'sub-'+h;   // sub-X <-> X (und X -> sub-X)
 const swap2=h=>h.endsWith('-sub')?h.slice(0,-4):h+'-sub'; // X-sub <-> X
 
@@ -46,7 +45,12 @@ async function main(){
   // 1) Handles aus dem Menü
   const handles=new Set();
   try{
-    const m=await gql(token,`query($h:String!){ menu(handle:$h){ items{ url items{ url items{ url } } } } }`,{h:MENU});
+    // `menu(handle:)` gibt es in der Admin-API NICHT (sie verlangt menu(id:)). Der Waechter lief
+    // deshalb seit immer in einen GraphQL-Fehler, zaehlte 0 Menue-Einträge und hat das Hauptmenue
+    // NIE geprueft — ein 404-Waechter, der nicht hinsieht. Gemessen 2026-10-17: mit `menus(query:)`
+    // sind es 190 Einträge und 166 Collection-Ziele.
+    const mr=await gql(token,`query($q:String){ menus(first:5, query:$q){ nodes{ handle items{ url items{ url items{ url } } } } } }`,{q:`handle:${MENU}`});
+    const m={ menu: (mr.menus?.nodes||[]).find(x=>x.handle===MENU) || null };
     const walk=items=>{ for(const it of items||[]){ const mm=(it.url||'').match(/\/collections\/([a-z0-9\-]+)/i); if(mm) handles.add(mm[1]); walk(it.items); } };
     if(m.menu) walk(m.menu.items);
   }catch(e){ report.menuError=e.message; }

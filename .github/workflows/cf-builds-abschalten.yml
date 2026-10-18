@@ -1,0 +1,43 @@
+name: "Workers Builds aufräumen (rote Checks abstellen)"
+
+# Die drei Checks `Workers Builds: aban-news-landing` / `aban-a` / `ki-verzeichnis` melden an
+# JEDEM Commit `failure` — der Cloudflare-Bot schreibt dabei selbst „⚠️ Deployment skipped".
+# Im Repo gibt es für keinen der drei Namen eine wrangler.toml; die Hauptseite geht als
+# Cloudflare **Pages** über cf-deploy-mainsite.yml raus. Die Bau-Auslöser hängen also im
+# Cloudflare-Konto und können nie etwas bauen.
+#
+# Dieser Workflow läuft NUR von Hand (Actions → diesen Workflow → Run workflow).
+# Vorgabe ist „pruefen" = nur lesen. Erst „abschalten" löscht die Bau-Auslöser.
+# Das Token braucht dafür das Recht „Workers CI Write".
+
+on:
+  workflow_dispatch:
+    inputs:
+      aktion:
+        description: "pruefen = nur anzeigen · abschalten = Bau-Auslöser wirklich löschen"
+        type: choice
+        options: [pruefen, abschalten]
+        default: pruefen
+      skripte:
+        description: "Worker-Namen, mit Komma getrennt"
+        default: "aban-news-landing,aban-a,ki-verzeichnis"
+
+permissions:
+  contents: read
+
+jobs:
+  aufraeumen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Bau-Auslöser prüfen bzw. abschalten
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          REPO: ${{ github.repository }}
+          SKRIPTE: ${{ inputs.skripte }}
+          SCHARF: ${{ inputs.aktion == 'abschalten' && '1' || '0' }}
+        run: node automation/cf_builds_abschalten.mjs | tee $GITHUB_STEP_SUMMARY

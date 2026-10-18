@@ -26,6 +26,24 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 ## Kernfakten (Details im Runbook)
 - **🔀 MERGE-REGEL (FEST, User 2026-10-01): PRs IMMER ohne Nachfrage nach `main` mergen**, sobald CI grün (bzw. nur
   vorbestehend rot) ist — Draft per `update_pull_request draft:false` freigeben, dann `merge_pull_request`. Nicht fragen.
+- **🟥 „VORBESTEHEND ROT" IST KONKRET: drei Checks melden IMMER `failure`, und das ist kein Fehler.**
+  `Workers Builds: aban-news-landing` · `Workers Builds: aban-a` · `Workers Builds: ki-verzeichnis`.
+  Der Cloudflare-Bot schreibt im PR-Kommentar selbst **„⚠️ Deployment skipped"** — GitHub zeigt das als
+  roten Check. Belegt am 17.10. an **7 Commits in 3 PRs** (#2658–#2660), jedes Mal gleich, jedes Mal in
+  derselben Sekunde, in der der Check startet. Für `aban-a` und `ki-verzeichnis` gibt es im Repo gar kein
+  Worker-Verzeichnis. **Nicht jagen, nicht neu starten, nicht als Blocker behandeln.** Die echten Checks
+  sind `check`, `Brand-Voice check on changed .md files` und `Deploy to Cloudflare Pages`;
+  `Pre-deploy validation` endet regelmässig als `cancelled`.
+  **🔧 SEIT 18.10. GIBT ES DEN SCHALTER DAZU (vorher hiess es nur „nicht jagen"):** Ursache gemessen —
+  im Repo existiert für keinen der drei Namen eine `wrangler.toml` (nur `workers/*`: aban-inserate-brain,
+  aban-site-brain, ki-werkzeug-ai, shop-brain, pinterest-cron), und die Hauptseite geht als Cloudflare
+  **Pages** über `cf-deploy-mainsite.yml` raus. Die drei Bau-Auslöser hängen also im Cloudflare-Konto und
+  können nie etwas bauen. Abstellen: Actions → **„Workers Builds aufräumen"** (`cf-builds-abschalten.yml`)
+  → erst `pruefen`, dann `abschalten`. Löscht den **Bau-Auslöser** (`DELETE /builds/triggers/{uuid}`), nicht
+  die Repo-Verbindung — eine Verbindung kann mehrere Worker tragen. Vorgabe ist Trockenlauf; ein Auslöser auf
+  einem fremden Repo wird nie angefasst (`automation/lib/cf_builds.mjs`, 20 Tests). **Das Token braucht das
+  Recht „Workers CI Write"** — fehlt es, meldet der Lauf das und ändert nichts. Alternativ von Hand:
+  Cloudflare → Workers & Pages → Worker → Settings → Builds → Disconnect.
 - Shop: **LuxeStyle** (luxestyle.ch), Zugriff über `mcp__…__*`-Shopify-Tools.
 - CJ-API: Credentials + Workflow in `dropship/AUTONOMER-MODUS.md`. Import-Skript:
   `dropship/cj_enrich.mjs` (Node: `/opt/node22/bin/node`).
@@ -64,6 +82,377 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-18 abends (🧹 Aufräum-Runde: 80 Kategorieseiten lieferten 404, drei Werkzeuge waren blind):**
+Alles heute live gemessen und nachgeprüft. PRs #2690–#2693.
+- **🚨 80 Collections mit zusammen 25 320 Produkten gaben HTTP 404** — angelegt, befüllt, beschrieben,
+  aber nie in den Onlineshop publiziert (die Publish-Falle vom 12.06., diesmal im grossen Stil).
+  **64 davon live geschaltet, nachgeprüft 64/64 = 200**; 16 bewusst nicht: 1 ausdrücklich
+  stillgelegt (`-alt-20261010`), 11 Dubletten lebender Seiten (`damenschuhe` 2239 ≈ `damen-schuhe`
+  2287), 4 vollständig in einer grösseren enthalten. **Mess-Lehre:** `resourcePublicationsV2` meldete
+  169 „nicht im Onlineshop“ — 4 von 5 Stichproben waren live 200. **Nur der HTTP-Abruf sagt die
+  Wahrheit**; das Kanalfeld allein führt in die Irre.
+- **🧠 `shop_brain.mjs` sah 250 von 569 Collections** (`first:250` ohne Blättern) und meldete
+  darum „0 Befunde“. Dahinter: **54 ohne Titelbild, 10 ohne SEO-Titel** — gesetzt, 54→0 / 10→0.
+  Dazu versprach sein Textbaukasten „schnelle Lieferung (7–14 Tage)“ und „Gratis-Versand ab CHF 65“
+  (richtig ist **CHF 50**). Live gemessen: 0 von 4000 SEO-Beschreibungen trugen die falsche Zahl,
+  3682 die richtige — **der Fehler war geladen, nicht abgefeuert.** Produkt-SEO kommt jetzt aus
+  `automation/lib/seo_titel.mjs`. Und `runMutations` zählte `done += chunk.length`, sobald `data`
+  zurückkam — Shopify meldet Abgelehntes aber in `userErrors` INNERHALB einer Erfolgsantwort.
+- **🖼️ 775 von 5000 Hauptbildern liegen unter 800 px, 411 haben ein grösseres Zweitbild.** Das
+  Bild-Audit vermerkte das nur. Jetzt tauscht es — aber nur gegen ein Bild, das über der Schwelle
+  liegt, grösser ist UND vom Modell als sauberes Produktbild bestätigt wird. **Die wichtigste
+  Gegenprobe ist die Gegenrichtung:** ein grosses Verpackungs- oder Collagenfoto nach vorn zu holen
+  sähe aus wie eine Verbesserung. (Dasselbe Werkzeug sortierte bis heute nach der **Herkunft**
+  abgebildeter Menschen — #2691, mit `APPLY` als Vorgabe AN; es hatte nie gelaufen.)
+- **🛍️ 2400 Querverweis-Boxen gesetzt** (`<!-- ls-xsell-v1 -->`), 0 Dubletten, alle Ziel-Links 200.
+  Der Fund davor: `cross_sell.mjs` traf mit dem Muster `schweiz` den **Versand-Tag** `schweiz-versand`
+  und hätte 26 % der Produkte nach „Schweizer Editionen“ geschickt.
+- **✅ Sauber gemessen, nichts zu tun:** alle **208 Menü-Links** (Gegenprobe greift; die zwei 406 sind
+  Shopifys Kundenkonto-Portal) · alle **290 Versand-Aussagen** in Beschreibungen nennen CHF 50 ·
+  **164 fehlende Bild-Alt-Texte** gefüllt (`tag:elektronik` 120, `tag:gadgets` 44), danach 0 offen.
+- **💰 Der Shop verkauft wirklich — die alte Notiz „0 Käufe“ ist überholt:**
+  `node automation/autopilot/shop_pulse.mjs` (nur lesen) meldet **0 Bestellungen / 24 h, 2 / 7 Tage
+  (CHF 121.03), 8 / 30 Tage (CHF 411.69)**. Vorher `env -u TELEGRAM_BOT_TOKEN -u TELEGRAM_CHAT_ID`,
+  sonst geht ungefragt eine Nachricht aufs Handy.
+- **⭐ CJ-Punkte füllen sich nach, aber langsam:** morgens 39 übrig, abends ging ein Lauf durch
+  (**37 echte Bewertungen auf 7 Produkten**), dann waren sie wieder weg. Die Fläche bleibt
+  `tag:gadgets` (1483) und `tag:elektronik` (4494), portionsweise.
+- **🟡 NEU beim User:** die 16 nicht publizierten Collections durchsehen (die 11 Dubletten gehören
+  wohl gelöscht, sonst konkurrieren zwei Seiten um dasselbe Google-Ergebnis).
+
+**📌 2026-10-18 (📋 Aufgabenliste für die nächste Sitzung — alles heute live gemessen):**
+Vollständig mit Befehlen und Zahlen in **`dropship/NAECHSTE-AUFGABEN-1810.md`**. Kurzfassung:
+- **1. SEO-Titel weiterfüllen** (grösste Fläche, kostet keine CJ-Punkte):
+  `LIMIT=5000 SORT=CREATED_AT REVERSE=0 node automation/seo-optimizer.mjs` — `REVERSE=0` ist Pflicht,
+  sonst durchsucht der Lauf zuerst das schon Fertige. ~65 Min pro 5000.
+- **2. ⛔ CJ IST BLOCKIERT: heute nur 39 Punkte übrig** (`usedToday` 116 400 bei `total` 68 875).
+  **Die Annahme „Limit setzt sich täglich zurück" ist NICHT bestätigt** — vom 17.10. abends (248 übrig)
+  bis 18.10. 16:52 UTC kein Rücksprung, `usedToday` stieg weiter. **Erst Punkte prüfen, dann planen.**
+  Danach gezielt `tag:gadgets` (**1483**), dann `tag:elektronik` (**4494**); Mode/Kostüme/Haushalt zuletzt.
+- **3. `image-audit.mjs` ist NICHT mehr blockiert — Gemini antwortet wieder** (heute geprüft). Aber es
+  tauscht per `reorderMedia` das Hauptbild → **erst ohne `APPLY`, Befunde einzeln ansehen.**
+- **4. Masse in die Beschreibungen** (6476 von 9000 ohne cm/ml-Angabe) — braucht CJ-Punkte, also nach (2).
+- **5. Noch nie DRY geprüft:** `cross_sell.mjs` (schreibt in Beschreibungen!), `shop_brain.mjs`,
+  `autopilot/shop_pulse.mjs`, `autopilot/merchant_feed.mjs`.
+- **✅ ERLEDIGT, aus dem Gedächtnis streichen: der Archiv-Backlog.** Statt „~4700 archivierte löschen"
+  sind es heute **161**.
+- **⛔ DER DRAFT-BERG IST KEINE CHANCE — NICHT ABGRABEN.** Über **10 000** DRAFTs, aber die Tag-Zählung
+  über die 3000 zuletzt geänderten zeigt: **90 % tragen einen ausdrücklichen Grund** —
+  `alt-einzelgroesse-ersetzt` 1018 (durch Varianten-Produkt ersetzt) · `rueckhol-0907` 811 ·
+  `cj-nicht-versendbar-ch` 632 · `duplikat-auto-draft` 340 · `marge-verlust`/`verlust-auto` je 179 ·
+  `ausverkauft-lieferant` 115 · `bilder-geloescht-speicher` 113 · dazu `verlust-rabatt25`,
+  `bigbuy-paket-ausgelaufen`, `fehlklasse-*`, `vision-qa-draft-1014`. **Nur 298 von 3000 (10 %) ohne
+  Grund-Tag** — Einzelfälle, keine Goldgrube.
+  **MESS-LEHRE am eigenen Leib:** mein erstes Muster kannte `alt-einzelgroesse-ersetzt` nicht und meldete
+  **45 % „ohne Grund"** statt 10 %. **Eine Liste bekannter Sperrgründe ist nie vollständig — erst die
+  Tags zählen, dann urteilen.**
+- **🟡 Beim User:** Env-Eintrag umdrehen · Google-Kanal-Entscheid (**1892** aktive Produkte nicht auf
+  „Google & YouTube"; 2376 aktive `tag:fortura`) · Widmann-Preise · Holzspiegel-Preis · ob der CJ-Plan
+  grösser werden muss.
+
+**📌 2026-10-18 (⭐ 775 echte Bewertungen live — zwei Importer-Fehler derselben Klasse gefunden):**
+Tagesergebnis: **775 echte ≥4★-Bewertungen auf 152 Produkten, 0 Fehler**, in sechs Chargen
+(155 · 187 · 146 · 161 · 63 · 63). Der erste Lauf des Tages meldete 17 Bewertungen und 20 ‚Fehler‘ —
+beide Ursachen waren Antworten, die als Fehler behandelt wurden.
+- **Trefferquote fällt mit der Katalogtiefe:** in der zuletzt geänderten Schicht 12–14 %, tiefer 6,7–11 %.
+  Das Leer-Ledger dieser Abfrage hält jetzt **2641** Produkte fest, die kein Lauf mehr bezahlt.
+- **CJ-Punkte: 73 240 verbraucht, 13 542 übrig** (der Eimer füllt sich laufend nach, 68 875 ist kein harter Riegel).
+- **🚨 CJ VERGIBT NUR EINE `commentId` JE PRODUKT — darum kam je Produkt nur EINE Bewertung durch.**
+  Gemessen an `product/productComments?pid=1616334321445515264`: alle sieben Kommentare tragen
+  `commentId` 1616344932124471300. `reviewKey` nahm diese Kennung allein, sobald sie vorhanden war →
+  alle Bewertungen eines Produkts hatten denselben Schlüssel; die erste wurde importiert, jede weitere
+  sah den Zustand `sending` und wurde als `CJ_REVIEW_UNCERTAIN` **gezählt wie ein Fehler**. Fix: der
+  Inhalt geht IMMER in den Schlüssel. **Live gegengeprüft: Wassermelder 1 → 7 Bewertungen, keine Dublette.**
+  Danach derselbe Lauf: **132 Bewertungen auf 27 Produkten, 0 Fehler.**
+- **🔑 KORREKTUR der Notiz vom 17.10. („der Produktfilter wird still ignoriert“): nur halb richtig.**
+  Die Admin-Liste `/api/v1/reviews` ignoriert jeden Filter (`external_id`, `product_external_id`,
+  `product_id` und sogar ein **erfundenes `handle`** liefern dieselben Bewertungen). Die öffentliche
+  Widget-Antwort `judge.me/reviews/reviews_for_widget?product_id=…` **filtert wirklich** (nennt
+  Produktname, Anzahl, Ø) — ohne Zugangsdaten, nur lesend. `jmAbgleich` und der neue Doppel-Schutz
+  lesen jetzt diese: vor dem Senden werden die Texte DIESES Produkts gelesen, ein vorhandener Text wird
+  nicht erneut gesendet. Der Schlüssel darf sich damit ändern, ohne Dubletten zu erzeugen.
+  **Bewusster Preis:** ein von CJ nachträglich geänderter Kommentartext gilt als neue Bewertung.
+- **🐛 „Ausgelistet“ ist keine Fehlermeldung.** `product/query` antwortet mit `1602001` (nicht gefunden),
+  `1602002` (Produkt ausgelistet) oder `1602003` (Variante ausgelistet) — und `productComments` liefert für
+  genau dieselbe pid weiter **code 200**. Der zentrale `cjFetch` warf auf `result!==true` und brach damit die
+  Strategie-Kette in `resolvePid` beim ersten Versuch ab. Neu: Option `weicheCodes`/`WEICHE_CODES`; ohne sie
+  bleibt alles hart (Gegenproben: fremder Code fliegt sofort, erschöpfte Punkte schlagen die weichen Codes).
+  **Dieselbe Fehlerklasse wie „HTTP 429 ist nicht 404“ — jetzt zum vierten Mal.**
+- **🔁 KORREKTUR der Notiz vom 17.10. („die 19 anderen CJ-Skripte haben den alten `cjGet`-Block noch“):
+  nachgezählt stimmt das nicht.** 17 von 20 fangen CJs eigene Drosselung bereits ab (`1600200`/`Too Many`/`QPS`,
+  bis zu 4 Versuche). Ohne Schutz sind nur `automation/cj_perpetual.mjs`, `dropship/cj_full_create.mjs` und
+  `dropship/cj_variants.mjs` — Einzelaufruf-Helfer mit einer Abfrage, wo ein 429 nur „nochmal starten“ heisst.
+  **Keine offene Fläche, kein Massenumbau nötig.**
+- **Lauf-Rezept, bestätigt:** `QUERY='tag:elektronik AND tag:cj-real' SORT=UPDATED_AT REVERSE=1 LIMIT=150`.
+  Der neueste Teil (Notenständer/Mikrofone) hat **0 Kommentare**; die Treffer liegen bei Smart-Home,
+  Dimmer/Controller, Smartwatch-Armbändern und Radios. **Nächste Sitzung: dieselbe Abfrage weiterlaufen
+  lassen (LIMIT 150–250), danach `tag:gadgets AND tag:cj-real`; Mode/Kostüme/Haushalt zuletzt.**
+  Drei Produkte sind bei CJ **ausgelistet** und haben trotzdem lesbare Bewertungen — ohne den weichen
+  Code wären sie als Fehler durchgefallen.
+- **🟡 BEIM USER (unverändert):** Preis `m8-puls-4k-retro-game-console-956928` (12 Bewertungen, 4,75★,
+  VK unter EK) · Preise der drei Dünnmargen-Produkte.
+
+**📌 2026-10-17 spätnachts (👁️ Bewertungen sind da, aber 55 gut bewertete Produkte sind DRAFT):**
+Voller Bericht: `dropship/BEWERTUNGEN-SICHTBARKEIT-1710.md`. Wiederholbar (nur lesen, **0 CJ-Punkte**):
+`PQUERY='tag:elektronik' SCAN=5000 node automation/bewertungen_sichtbar.mjs`.
+- **✅ KORREKTUR der Notiz vom 02.06. („Judge.me-Sterne auf Kacheln" offen): ist ERLEDIGT.** Das Theme malt
+  die Sterne selbst (`lx-card-sterne` in `snippets/product-card.liquid`, seit 01.09., Schwelle **≥ 3 Stimmen
+  UND ≥ 4,0★**); `/collections/gaming` zeigt 2 von 28 Kacheln mit Abzeichen (`5.0 (8)`, `4.8 (8)`). Auch die
+  Produktseite ist sauber: Judge.me rendert server-seitig, der App-Loader deckt das `display:none` am
+  Vorschau-Abzeichen auf. **Meine erste Messung suchte nach Judge.mes Klassen und meldete darum „fehlt".**
+- **Der echte Verlust: 55 stark bewertete Produkte sind DRAFT**, 318 sichtbar. Quote mit Bewertung:
+  `tag:gaming` 10,3 % (728) · `tag:gadgets` 4,2 % (2298) · `tag:elektronik` 6,3 % (5000). Spitzenfall ist der
+  aus dem Importer-Bericht: **`m8-puls-4k-retro-game-console-956928`, 12 Bewertungen, 4,75★, DRAFT, HTTP 404**
+  — Grund `marge-verlust-draft` (VK 15.90 unter EK), also **richtig** gesperrt → Preisentscheid beim User.
+  Dazu **109 Produkte mit 1–2 Stimmen** unter der Kartenschwelle (mehr CJ-Bewertungen helfen dort kaum,
+  CJ liefert pro Produkt alles auf einmal).
+- **🔑 MEIN MESSGERÄT MELDETE 32 GELEGENHEITEN — ES GAB KEINE.** Die erste Fassung kannte nur die Sperrgründe,
+  die hier namentlich stehen. Nachgesehen trug fast jeder „Kandidat" einen anderen, genauso triftigen Grund:
+  **`duplikat-auto-draft` (4000+, davon 3998 OHNE BILD)**, `bilder-geloescht-speicher` (382, 335 ohne Bild),
+  `nicht-fit-elektronik-draft`/`nicht-fit-auto-draft` (170), `dublette-bild`, **`lizenz-nicht-bewerben`**
+  (PS4/PS5/Xbox = Kontosperr-Risiko), `cj-entfernt-…`, `ohne-ek-cj-weg`, `bigbuy-paket-ausgelaufen`.
+  Fix `automation/lib/bewertung_sichtbarkeit.mjs` (Grund-FAMILIEN als Muster) + 29 Tests; danach **0 Kandidaten**.
+  **Wichtigster Test ist die Gegenprobe in die andere Richtung:** harmlose Chargen-Tags dürfen NICHT sperren —
+  `rueckhol-0907` liegt auf über 10 000 aktiven Produkten. **Dieselbe Fehlerklasse wie das Sperrmuster im
+  Merchant-Feed, nur umgekehrt: zu kurz erzeugt Arbeit, die es nicht gibt; zu breit wirft den halben Katalog weg.**
+- **`auto-entwurf-0926` ist die EINZIGE Familie ohne harten Grund:** 3223 Produkte, 3193 DRAFT / **30 längst
+  ACTIVE**, **kein einziges ohne Bild**. Das ist die Fläche des Dauerauftrags „Autopilot-Drafts veredeln".
+- **✅ Eine Freischaltung, vollständig geprüft: `smartwatch-pulsefit-fitness-anrufe-611100` ist LIVE** —
+  VK 53.90 / EK 24.76 = **+29.14 (54 %)**, 4,6★ aus 5 echten Bewertungen, 5 Medien READY, Lieferzeit-Block da,
+  `tracked:false`+`CONTINUE`, 0 Kanal-Sperrtags. Nachgeprüft: HTTP 200, Abzeichen `4.60 / 5`, in 7 Kanälen.
+  **Die drei anderen margen-positiven bleiben bewusst DRAFT** (Rohmarge nur CHF 3–6: `mini-hd-projektor…`
+  +6.15, `usb-mehrfachsteckdose…` +4.47, `…herren-sportuhr-166400` +3.45 — **eine** Rückerstattung frisst
+  den Gewinn mehrerer Verkäufe, und der Shop hatte 4 Rückerstattungen auf 12 Bestellungen).
+  **Preisentscheid beim User, nicht ein Klick auf ACTIVE.**
+- **🟡 BEIM USER:** Preis `m8-puls-4k-retro-game-console-956928` (12 Bewertungen, 4,75★, VK unter EK) ·
+  Preise der drei Dünnmargen-Produkte · **nächster Lauf nach Punkte-Reset:
+  `QUERY='tag:elektronik AND tag:cj-real' SORT=UPDATED_AT REVERSE=1 LIMIT=150–250`** (4684 von 5000 dort
+  noch sternlos).
+
+**📌 2026-10-17 spätabends (⭐ Bewertungs-Import: er HAT Bewertungen live gestellt und „0" gemeldet):**
+Voller Bericht: `dropship/BEWERTUNGEN-STILLER-ERFOLG-1710.md`.
+- **🐛 HTTP 429 verbrannte 36 von 45 Produkten in einem Lauf.** `cjGet()` machte EINEN `fetch` ohne
+  Wiederholung, die 1100-ms-Pause stand NACH dem Aufruf — CJ erlaubt ~1 Abfrage/Sekunde. Jedes so
+  abgehakte Produkt zählte als „Fehler", obwohl CJ nie gesagt hat, ob es Kommentare hat, und landete auch
+  nicht im Leer-Ledger. Fix `automation/lib/cj_fetch.mjs` (wachsende Pausen bei 429/5xx/Netz) + 19 Tests;
+  **Dauerdrosselung wirft `CJ_THROTTLED` → der Lauf endet, statt ungeprüfte Produkte als Fehler zu zählen.**
+  Gegenproben: erschöpfte Punkte fliegen SOFORT (auch als 429 verpackt), echter Code 1602002 fliegt sofort,
+  eine leere Erfolgsantwort bleibt leer. Nachher am echten Lauf (120 Produkte): **0 × 429.**
+  Dieselbe Fehlerklasse wie `shopify_gql.mjs` und `url_status.mjs`. **Die 19 anderen CJ-Skripte haben den
+  alten `cjGet`-Block noch** — offene Fläche.
+- **🚨 Judge.me bestätigt mit HTTP 201 OHNE Review-ID → der Importer verbuchte echte Erfolge als „unklar".**
+  Der Lauf meldete „0 echte Reviews", LIVE nachgelesen lagen **7 Bewertungen auf 2 Produkten** im Shop
+  (`m8-puls-4k-retro-game-console-956928` 4 × 5,00★, `walkie-talkie-mit-frequenz-scanning-639000` 3 × 5,00★).
+  Zustand `uncertain` heisst: nie wieder angefasst, kein Ledger-Eintrag. **Dritter Fall derselben
+  Fehlerklasse** (nach `apiKey`/`password` und pid-SKU-Skip) — hier ein stiller ERFOLG, der wie ein Fehler aussah.
+  Fix `automation/lib/judgeme_antwort.mjs` (drei Ausgänge: `ok` / `abgleichen` / `uncertain`) + `jmAbgleich()`
+  im Importer: nach dem Senden die neuesten Bewertungen lesen und auf Produkt-ID + Text prüfen. 25 Tests.
+  **Zwischen POST und Abgleich bleibt der Zustand `sending` → ein Abbruch führt weiter nicht zum Doppel-Import.**
+- **🔑 GEGENPROBE, die den Abgleich gerettet hat: der Produktfilter der Judge.me-Liste wird STILL IGNORIERT.**
+  `external_id=99999999` liefert dieselben 5 neuesten Bewertungen wie ohne Filter. Darum liest `jmAbgleich`
+  ohne Filter und prüft `product_external_id` selbst. Dieselbe Falle wie der Metafeld-Filter in der
+  Shopify-Produktsuche.
+- **🗺️ KORREKTUR der Notiz von heute Vormittag („nächste Sitzung `tag:gadgets` (1482)"):** die ältesten 150
+  `tag:gadgets` sind **ausnahmslos BigBuy** (`bb-…`, Xiaomi/KSIX/Denver) = keine CJ-Quelle; die Schicht darunter
+  (`AND tag:cj-real`) ist **RC-Spielzeug und Roboterhunde — 0 Kommentare**. **IMMER `AND tag:cj-real` anhängen.**
+  **Nächste Sitzung: `QUERY='tag:elektronik AND tag:cj-real' SORT=UPDATED_AT REVERSE=1 LIMIT=150–250`.**
+- **Punkte:** waren schon fast weg (Vormittag 56 730 von 68 875); „erschöpft" kam zweimal, dazwischen gingen
+  einzelne Abfragen durch — die Grenze ist ein Eimer, der sich langsam füllt, kein harter Riegel.
+
+**📌 2026-10-17 abends (🛒 Google Merchant: Feed war schwach, zwei Fehler im Sperrmuster, Lücke vermessen):**
+Voller Bericht: `dropship/GOOGLE-MERCHANT-STAND-1710.md`. Wiederholbar: `node automation/gmc_audit.mjs` (nur lesen).
+- **Der Feed verschwieg, was der Shop hat.** `merchant_feed.mjs` schrieb bei JEDEM Artikel
+  `identifier_exists: no` — dabei haben **97 % der Fortura-Ware einen Barcode (1569 von 1611)**; und
+  `google_product_category` fehlte ganz, obwohl **100 %** der zuletzt geänderten 600 Produkte das Metafeld
+  `mm-google-shopping.google_product_category` tragen. Jetzt: echte `g:gtin` → sonst `g:mpn` → erst dann `no`,
+  Kategorie aus dem Metafeld, `g:shipping` CH 7.00 (behebt „Missing shipping info"), `sale_price` nur bei echter
+  Senkung. Neu `automation/lib/gmc_feed_item.mjs` + Test (40 Fälle, Gegenproben in beide Richtungen).
+- **🐛 450 von 3932 Artikeln teilten sich eine Feed-ID** — CJ vergibt dieselbe Varianten-SKU mehrfach, der
+  Generator nahm `sku || handle`. Google weist einen Feed mit doppelten IDs ab. Jetzt ID = `handle`, SKU als
+  `g:mpn`, Doppel werden gezählt und genannt. Nachgeprüft: 3932 Artikel, **0 Doppel, 0 fehlende Pflichtfelder**.
+- **🚨 `rueckhol` im Sperrmuster hätte 78 % des Katalogs aus dem Feed geworfen.** `kanal_sperren.mjs` meinte
+  `raucher-rueckhol-0809` (Tabak, 64 aktiv, **0 auf Google** = echte Sperre), traf aber `rueckhol-0907` — eine
+  Chargen-Markierung auf **über 10 000 aktiven Produkten**, die auf Google UND TikTok publiziert sind. Erster
+  Lauf: 3142 von 4000 weggeworfen. **Ein zu breites Sperrmuster sieht aus wie „weniger Artikel", nicht wie ein
+  Fehler** — darum nennt jeder Lauf jetzt die Zahl je Grund. Muster verengt + Test mit Gegenprobe.
+- **🚨 Zwei echte Google-Sperrtags fehlten:** `nicht-google-bewerben` (34) und `google-policy-flag` (38). Das alte
+  `nicht-bewerben` passt auf `nicht-google-bewerben` **nicht** (ein Wort dazwischen) → ein Wächter mit
+  `INCLUDE_GOOGLE=1` hätte sie in den Merchant-Feed zurückgeschoben. Gegenprobe am alten Muster: beide `false`.
+- **Die Kanal-Lücke ehrlich: 1890 nicht auf „Google & YouTube", davon nur 201 (10,6 %) mit Sperrtag.** 1604 der
+  1689 Übrigen sind **ein einziger Import** (Fortura, Schweizer Lager, 23.07.) — und das beste Shopping-Material
+  des Shops: **1569 von 1611 mit GTIN**, 2–3 Tage Lieferzeit. **Aber:** 104 fallen unters Marken-/Safety-Muster,
+  **21 tragen Lizenznamen** (Harry Potter, Batman, Paw Patrol, Pokémon) = klassischer Grund für eine Kontosperre,
+  294 sind Kinderkostüme, und die Preise liegen **1,4–2,3× über Schweizer Händlern** → mit GTIN zeigt Google die
+  Preisvergleichskarte. **Nichts publiziert, Entscheid beim User.** `FEED_QUERY` ist jetzt `status:active` statt
+  „nur was schon auf Google liegt" — der Feed ist genau der Weg für das, was dort fehlt.
+- **Unverändert offen:** `excluded_destination:["Shopping_ads"]` auf **70,3 %** (422/600), Fortura 61 % — deckt
+  sich mit dem 04.10.-Befund, Ursache weiter unbekannt, nicht angefasst.
+- **🔑 ZWEI MESS-LEHREN:** (1) **Der Metafeld-Filter in der Produktsuche wird stillschweigend ignoriert** —
+  `metafields.…:*Shopping_ads*` liefert dieselbe Zahl wie ohne Filter (Gegenprobe `tag:gaming`: 369 = 369).
+  (2) **Eine Stichprobe beantwortet die Kanalfrage nicht:** erste 200 → „67 % mit Sperrtag", Vollzählung über
+  alle 1890 → **10,6 %** (die Standardsortierung schiebt die zuletzt geänderten nach vorn).
+- **🟡 BEIM USER:** Feed-URL als „geplanter Abruf" eintragen · Entscheid Fortura (~1500 saubere CH-Lager-Artikel
+  rein oder bewusst draussen) · Entscheid `excluded_destination` · Merchant-Center-Diagnose durchsehen.
+
+**📌 2026-10-17 (🔑 60 Skripte liefen ins Leere + Rizinusöl-Themenbereich gebaut):**
+- **⚠️ `publish_guard.mjs` WAR GEFÄHRLICH — und ist jetzt der beste Beleg für „Tags lesen, bevor man
+  handelt".** Er meldete 250/250 „Kanal fehlt"; davon war der grösste Teil **Absicht**: die Produkte,
+  die auf TikTok/Facebook/Instagram/Pinterest/Shop fehlen, tragen `adult-nicht-bewerben`, `18plus`,
+  `nicht-bewerben`, `niedrig-bewertet-nicht-bewerben`, `gmc-adult-pull`, `compliance-pruefen`,
+  `social-pause-halloween`, `raucher-rueckhol-0809`. **LIVE hätte er Erwachsenen-, 18-plus-, Tabak-
+  und schwach bewertete Artikel auf alle Social-Kanäle zurückgeschoben.** Fix:
+  `automation/lib/kanal_sperren.mjs` + Test (18 echte Tag-Sätze) → Sperrprodukte bekommen nur den
+  Onlineshop. Gegenprobe beide Richtungen: 18/18 gesperrt blockiert, 30/30 saubere erkannt.
+  Nebenbefund: „alle Kanäle ausser Point of Sale" zählte **Inbox** (Chat-App) und **Headless** mit.
+- **🔍 Zwei 404-Wächter haben NIE hingesehen:** `link_guard` + `hero_image_guard` fragten
+  `menu(handle:)` ab — **das gibt es in der Admin-API nicht** (nur `menu(id:)`), also GraphQL-Fehler,
+  0 Menü-Einträge, keine Prüfung. Mit `menus(query:)`: **190 Einträge, 164 Collection-Ziele.**
+  `link_guard` 0 kaputt (bestätigt die Handmessung vom 04.10.) · `hero_image_guard` fand **42 von 164
+  Menü-Collections ohne Titelbild** → LIVE gesetzt, nachgeprüft **42 → 0**.
+- **🐌 Alle 8 Wächter gaben bei der ersten Drosselung auf** (gleicher `gql()`-Block ohne Wiederholung;
+  ein `SCAN=3000`-Lauf schrieb 0 Alt-Texte). Fix `automation/lib/shopify_gql.mjs` (wachsende Pausen bei
+  Throttled/429/5xx) + Test — **wichtigster Test ist die Gegenprobe: ein echter Fehler fliegt sofort**,
+  sonst verschwindet ein falsches Feld in der Warteschleife. `alt_text_guard`: **526 Bilder ohne Alt-Text gesetzt**
+  (513 davon in den zuletzt geänderten 3000; neu `PQUERY`/`SORT`/`REVERSE=0`, weil der SCAN-Deckel 3000 ist).
+  Nachgeprüft DRY: 0 offen in den letzten 3000 und in den 1200 ältesten.
+- **Sauber:** WELCOME10 aktiv bis 31.12.2027 · 0 schwach bewertete in Werbeflächen · 0 Preis-0 ·
+  0 leere Collections. - **🕓 `site-health.mjs` hielt eine Drosselung für einen kaputten Shop:** jeder Status ≠ 200 war ein
+  Problem, bei 404 publizierte es automatisch + Telegram-Alarm. **HTTP 429 ist nicht 404** (Lehre vom
+  04.10., dreimal zugeschlagen). Fix `automation/lib/url_status.mjs` + Test: bei 429/5xx/Netzfehler
+  nachfassen, bleibt es dabei → **„nicht messbar"** statt Befund; **Gegenprobe: ein echter 404 gilt
+  sofort.** Dazu `DRY=1`. Lauf danach: alle 7 Seiten 200, keine Platzhalter, kein Admin-Leak.
+- **⏳ `conversion_radar.mjs` wurde NIE fertig** (`while(true)` über 12 000+ Produkte → nach 15 Min
+  abgebrochen, 0 Zeilen Bericht). Fix: `SCAN`-Deckel (3000) + `FORTSCHRITT=1`, und der Bericht sagt
+  „Teilmessung", wenn der Deckel greift. **Erster Lauf (1500 Produkte): 1489 ohne Sterne (99 %),
+  1373 ohne SEO-Titel (91,5 %), 0 FAILED-Bilder, 0 unter 4★.** Die Sterne sind der grösste Hebel —
+  aber **zuerst messen, für wie viele CJ überhaupt Kommentare hat** (beim Rizinusöl waren es 0).
+- **⭐ KORREKTUR der Notiz vom 07.09. („realistisch tausende Reviews"):** gemessen heute
+  (`dropship/CJ-REVIEWS-QUOTE-1710.md`) hat CJ nur für einen kleinen Teil der 1489 sternlosen
+  Produkte Kommentare — **1 von 60** im neuesten Katalogteil, **14 von 139** tiefer gestreut
+  (dort Ø 5,9 brauchbare ≥4★). Die alte Zahl stammte aus **Repo-Ledger-pids** (ältere Produkte).
+  Resolver arbeitet (60/60 bzw. 139/150 pids). Rizinusöl bleibt sternlos — dort hat CJ `total: 0`.
+- **⭐ SCHARFER LAUF: 1200 Produkte geprüft → 29 Treffer, 169 echte ≥4★-Bewertungen live, 0 Fehler.**
+  Live gegengeprüft: `kabelloser-elite-gaming-controller` **4,62★ aus 8**, `mechanische-tastatur`
+  **4,93★ aus 14**, `smartwatch-pulsefit` **4,6★ aus 5**.
+  **🎯 DAS ENTSCHEIDENDE MUSTER: nicht die Katalogregion, sondern die WARENGRUPPE.** 15 der 29
+  Treffer sind Gaming-Zubehör, dazu Smartwatch/Lautsprecher/Thermodrucker/Drohne. **Mode, Kostüme
+  und Haushalt haben fast nie Kommentare** — in den ersten 369 Produkten (Mode-Region) waren es 0.
+  CJ-Käufer kommentieren Elektronik, keine Sommerkleider. **→ künftige Läufe gezielt auf
+  `tag:gaming` (369), `tag:gadgets` (1482), `tag:elektronik` (4494) statt blind über den Katalog.**
+  Das Leer-Ledger hält schon **1437** Produkte fest = ~28 700 Punkte, die kein Lauf mehr verbrennt.
+- **✅ GEGENBEWEIS GLEICH NACHGELIEFERT:** Lauf nur über `tag:gaming` → **317 geprüft, 37 Treffer
+  (11,7 %), 196 Bewertungen** — gegen blind **1200 geprüft, 29 Treffer (2,4 %), 169 Bewertungen**.
+  **Mehr Bewertungen aus einem Viertel der CJ-Punkte.** **Heute gesamt: 368 echte ≥4★-Bewertungen
+  auf 67 Produkten, 0 Fehler.** Punkte: 56 730 von 68 875 verbraucht.
+  **→ Nächste Sitzung (nach Punkte-Reset): `tag:gadgets` (1482), dann `tag:elektronik` (4494).
+  Mode/Kostüme/Haushalt zuletzt — dort ist die Quote nahe null.**
+- **🔤 Übersetzung: der 402-Blocker ist weg UND hat jetzt einen Rückfall.** Gemini antwortet wieder
+  (verifiziert). Neu `automation/lib/uebersetzen.mjs` + Test (10 Fälle): **Gemini → Groq → Original**.
+  `GROQ_API_KEY` funktioniert, aber **nicht mit den Llama-Namen** (HTTP 404) — es sind
+  `openai/gpt-oss-120b`, `openai/gpt-oss-20b`, `qwen/qwen3.8-27b`. Gegenproben: fällt beides aus,
+  kommen die Originaltexte zurück; **eine Antwort mit falscher Anzahl wird verworfen** (sonst steht
+  der Text einer Bewertung unter einer anderen).
+- **💰 Der Importer hatte kein Gedächtnis für Leerläufe** → jeder Lauf bezahlte dieselben 90–98 %
+  leeren Produkte neu (20 CJ-Punkte je Stück). Neu `dropship/cj_reviews_leer.txt` (`pid·Datum·Grund`,
+  gültig `LEER_TAGE`=60) + `SORT`/`REVERSE` für eine andere Katalogregion.
+- **🔤 SEO-TITEL: 6644 gesetzt (CJ-Punkte waren weg, also die punktefreie Fläche genommen).** Der
+  `conversion_radar` misst 1373 von 1500 ohne SEO-Titel (91,5 %); der letzte Lauf fand in den ältesten
+  5244 Produkten **5000 ohne** (95 %). Gesetzt: 1500 + 144 + 5000, **0 Fehler**. Die Lücke ist weiter
+  gross (Altaudit: 25 032 von 40 000) → nächste Sitzung einfach weiterlaufen lassen.
+- **⚠️ DABEI HÄTTE DAS ALTE MUSTER 41 % DER TITEL KAPUTT GESCHRIEBEN — in die Google-Überschrift.**
+  `seo-optimizer.mjs` normalisierte mit `\s*[·–—-]\s*` → ` – ` und traf damit den **Bindestrich MITTEN
+  im Wort**: „Gaming-Controller" → „Gaming – Controller", „Joy-Con" → „Joy – Con", „Type-C" → „Type – C".
+  **985 von 2415** betroffen. Dazu: Marke fiel bei langen Titeln ab (hängendes `|…`, 255 = 11 %) und die
+  Beschreibung versprach **„schnelle Lieferung"**, obwohl CJ 10–20 Werktage braucht. Fix
+  `automation/lib/seo_titel.mjs` + Test (28 Fälle); Beschreibung nennt nur geprüfte Fakten
+  (Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · WELCOME10). Gegenprobe am alten Code: 3 von 3 kaputt.
+  **Dieselbe Fehlerklasse wie „3-5 Minuten" → „3." auf 264 Seiten — beide Male ein blanker Bindestrich.**
+- **✅ KEIN ALTSCHADEN — und mein erstes Messgerät log.** Die grobe Prüfung meldete „291 zerlegte Titel";
+  das Muster (`\S-\S` im Produkttitel UND ` – ` im SEO-Titel) flaggt zwei unabhängige Stellen und ist
+  Unsinn. Richtig gemessen (Vergleich gegen **beides**: neues Modul und nachgebauter alter Code):
+  **1620 vom neuen Modul, 0 vom alten Code, 164 von früheren Sitzungen handgeschrieben.** Der Fehler war
+  **verhindert, nicht repariert**. Die 164 handgeschriebenen sind **besser** (echte Keyword-Titel) und
+  bleiben unangetastet — der Optimizer füllt nur fehlende.
+- **Ehrlich zur Wirkung:** ohne SEO-Titel nimmt Shopify den Produkttitel. Der Gewinn ist der Marken-Zusatz
+  und vor allem die **kontrollierte Meta-Beschreibung** — CTR-Hebel, **keine Keyword-Strategie**.
+- **🐌 Zweiter Lauf brauchte 15 Min für 74 Treffer**, weil der Scan immer bei den zuletzt geänderten
+  beginnt — genau denen, die der vorige Lauf versorgt hat (3315 fertige Seiten neu durchblättert).
+  Fix `PQUERY`/`SORT`/`REVERSE` (wie beim `alt_text_guard`): mit `SORT=CREATED_AT REVERSE=0`
+  **5 Treffer nach 38 statt nach 3315**. Berichte: `dropship/SEO-TITEL-BINDESTRICH-1710.md`.
+- **Sauber:** `conversion_guard` 0 Blocker / 5 ok. **Offen:** `image-audit` braucht Gemini (Credits
+  aufgebraucht). Volle Berichte: `dropship/WAECHTER-GEPRUEFT-1710.md`.
+- **🔑 ALLE 60 Shopify-Automatisierungen konnten in dieser Umgebung NICHTS tun — und meldeten das als
+  Normalfall.** `SHOPIFY_CLIENT_SECRET` kommt als `shpss_<32 hex>=SHOPIFY_CLIENT_SECRET` an (60 statt
+  38 Zeichen, Folge der vertauschten Env-Felder vom 04.10.) → Client-Credentials-Grant **HTTP 400** →
+  jedes Skript „keine Shopify-Creds → No-op". **Dritter Fall derselben Fehlerklasse** nach dem
+  CJ-`apiKey`/`password`-Bug und dem pid-SKU-Skip: **ein stummer Skip sieht aus wie „keine Daten".**
+  Fix: `automation/lib/shopify_secret.mjs` (+ Test, 8 Fälle, Gegenprobe in beide Richtungen) in allen
+  60 Stellen; ein sauberes 38-Zeichen-Secret bleibt unverändert, also auch in GitHub Actions richtig.
+  Gegenprobe am echten Skript: `price_guard.mjs` vorher „no-op: kein Token", nachher `scanned: 40`.
+  Voller Bericht: `dropship/SHOPIFY-AUTH-STILLER-NOOP.md`. **🟡 Beim User:** Env-Eintrag umdrehen.
+  **REGEL: ein Guard darf aussteigen, aber er muss den Grund nennen** (Status + Antworttext + Länge).
+- **🌿 Rizinusöl ist das stärkste Suchthema (64 von 214 Suchsitzungen) — jetzt ein Themenbereich:**
+  Collection **`/collections/rizinusoel`** (Smart, TITLE enthält „Rizinus", eigener Text + SEO,
+  **in alle 9 Kanäle publiziert**, HTTP 200) + **Querverweis-Block in allen 4 aktiven Produkten**
+  (Marker `<!-- ls-riz-link-v1 -->`, idempotent, je 3 Geschwister-Links + Collection-Link, live
+  geprüft 4 × 200). Vorher: **null Querverweise, keine Collection** — wer aus Google kam, sah eins
+  statt vier. Suche ist der einzige Kanal, der Käufer bringt (1 Kauf je 110 Sitzungen).
+- **Sackgasse, ehrlich:** für diese vier gibt es bei CJ **0 Kommentare** (alle pids lösen auf,
+  `total: 0` direkt gegengeprüft, nicht dem Importer geglaubt) → keine Sterne, bis echte Käufer:innen
+  welche schreiben. **Die zwei DRAFTs bleiben DRAFT:** `rizinusol-atherisches-ol-622500` EK 46.21 >
+  VK 23.90 (`marge-verlust-draft`), `rizinusol-wickel-set-…-323457` `cj-nicht-versendbar-ch` —
+  letzteres wäre rentabel und wird angeklickt, braucht aber **einen anderen Lieferanten**, nicht
+  einen Klick auf ACTIVE. Details: Nachtrag in `dropship/KANAELE-GEMESSEN-1610.md`.
+
+**📌 2026-10-04 (🔍 Shop-QA-Tag: 4 falsch beschriftete Top-Seiten, 37 % blinder Fleck im Review-Import, ein selbst verursachter Verlustverkauf):**
+Nachtrag am 16.10., weil diese Funde nur in den Einzeldokumenten standen und nicht im Gedächtnis — die nächste
+Sitzung liest CLAUDE.md, nicht `dropship/*.md`. Alles gemessen, alles live geprüft, PRs #2596–#2609 gemergt.
+
+- **🐛 37 % DES KATALOGS WAREN FÜR DEN REVIEW-IMPORT UNSICHTBAR** (`automation/cj_reviews_import.mjs`, gefixt):
+  **4466 von 12 000** aktiven `cj-real`-Produkten tragen als SKU eine **reine Ziffernfolge — das IST die CJ-pid**,
+  keine SKU. Der Resolver probierte nur `variantSku`/`productSku`, traf nie, und verwarf sie still als
+  „keine CJ-pid → skip". **Dieselbe Fehlerklasse wie der `apiKey`/`password`-Auth-Bug: ein stummer Skip sieht aus
+  wie „keine Daten".** Fix: bei `/^\d{15,}$/` zuerst `pid=` abfragen. Belegt am Faltbrett (Platz 32): vorher
+  „keine pid", danach **8 echte ≥4★-Reviews**, live importiert, Judge.me zeigt **4,75★ aus 16**.
+- **🖼️ VOR TEXTARBEIT AN EINEM CJ-PRODUKT IMMER DAS ERSTE BILD ANSEHEN.** 4 von 5 geprüften Top-Seiten waren
+  falsch beschriftet — und die Abweichung stand **nie im Text, immer auf dem Herstellerfoto**:
+  | Keyword (Vol./Mt) | hiess | ist |
+  |---|---|---|
+  | kleiner kühlschrank (4400) | „Mini-Kühlschrank für den Haushalt" | **Insulin-Kühlbox** → DRAFT |
+  | fotodrucker (1900) | „Mini Fotodrucker" | **Paperang-Thermodrucker, s/w, 57 mm** |
+  | finger skateboard (1300) | „Finger-Skateboard-Brücke" | **2 Achsen, kein Board** |
+  | schrank organizer (720, Platz 32) | „Organizer mit Schubladen" | **Wäsche-Faltbrett 23 × 28,5 cm** |
+  Die 5. Prüfung (`baumwoll-camisole-608000`) war **sauber** → Stand 4 von 5, keine Verallgemeinerung auf den Katalog.
+- **⛔ EIN DRAFT HAT MEISTENS EINEN GRUND — TAGS LESEN, BEVOR MAN AKTIVIERT.** Ich hatte `holzspiegel-…-621200`
+  als „gerettete 404-Chance" live geschaltet und die Tags `marge-verlust-draft`/`verlust-auto-draft` übersehen:
+  **VK CHF 15.90 bei EK CHF 33.62 = −17.72 je Stück**, in 9 Kanälen. Zurück auf DRAFT, keine Bestellung betroffen.
+  Rentabel erst ab ~CHF 50 → **Preisentscheid beim User**. Gegenprobe katalogweit: **0 von 23 701** Produkten
+  mit Kostenangabe verkaufen unter Einkauf.
+- **⚖️ Rechtsrisiko:** `ir-nachtsicht-kamera-stift-…-607000` (Tag `verdeckte-ueberwachung`) war aktiv → DRAFT.
+  `mini-gps-tracker-…-254336` bleibt bewusst gesperrt. **Beides StGB Art. 179bis ff. — nicht aktivieren.**
+  Zwei Beckenboden-Trainer klangen durch Übersetzungsartefakte („Reparatursonde", „Beurteilung", „analysieren")
+  nach Diagnosegerät (MepV) → nur Wortlaut entschärft, Produkte bleiben verkäuflich.
+- **📏 GRÖSSTE OFFENE LÜCKE: 72 % ohne Masse.** 6476 von 9000 aktiven `cj-real`-Produkten nennen **keine einzige
+  Zahl mit cm/mm/ml/Liter**. Kein Textproblem — die Masse stehen bei CJ, sind nur nie in die Beschreibung gewandert.
+  Vollautomatisierbar, Bremse ist nur das CJ-Tagespunktelimit. Zweitgrösste Fläche: **62,6 % (25 032 von 40 000)
+  ohne eigenen SEO-Titel** (ohne SEO-Beschreibung dagegen nur 53).
+- **🚚 VERSAND-SCHWELLE: 50 im Text, 45 in der Regel — BEIDES RICHTIG, nicht „korrigieren".** Siehe
+  `dropship/VERSAND-SCHWELLE.md`. Am 04.10. haben **zwei Sitzungen unabhängig** auf 45 „korrigiert" (ich auf
+  365 Objekten + Theme, vollständig zurückgesetzt und nachgeprüft).
+- **✅ Was sauber war (12 000–40 000 aktive Produkte gemessen):** 0 ohne Bild · 0 mit defektem Bild · 0 in 0 Kanälen ·
+  0 mit Preis 0 · 98,7 % der Mehr-Varianten-Produkte voll verfügbar · alle 118 internen Link-Ziele 200 ·
+  **183 Menü-Einträge, 163 Ziele, kein toter Link** · 0 doppelte SEO-Titel (4 aufgelöst).
+- **🔑 MESS-LEHREN (jede hat mich heute einmal erwischt):**
+  1. **HTTP 429 ist nicht 404.** Dreimal hätte ich gesunde Seiten für tot erklärt.
+  2. **Messgerät zuerst gegenprüfen.** „10 Produkte nicht kaufbar" kam davon, dass ich nur die **ersten 4 Varianten**
+     las; „23 611 falsche Versand-Schwellen" davon, dass das Muster „Länge von 50-65 cm" mitzählte.
+  3. **Live-Prüfung mit Cache-Buster**, sonst hält man eine gelungene Änderung für kaputt (Rand-Cache ~20 s).
+  4. Der Scanner las **Theme-Kommentare** als Produkttext — Fundstelle immer im Kontext ansehen.
+- **🟡 BEIM USER:** Widmann-Preise **1,4–2,3× über Schweizer Händlern** (761 Artikel, `dropship/PREIS-STICHPROBE-FORTURA.md`) ·
+  **~60 % des Katalogs per Metafeld aus Google Shopping ausgeschlossen**, Grund unbekannt (`dropship/GOOGLE-SHOPPING-AUSSCHLUSS.md`) ·
+  **Gemini-Credits aufgebraucht (HTTP 402)** → importierte Reviews bleiben in der Originalsprache ·
+  Holzspiegel-Preis. Volle Messberichte: `dropship/QA-BEFUNDE-0410.md`, `CHANCEN-LIVE-ABGLEICH.md`, `KATALOG-AUDIT-9000.md`.
+
 **📌 2026-10-14 nachts (💰 «Max Profit 2»: Pilot 2.0 mit Hebel — Empfehlung 1,75×, schlägt den Live-Pilot mit 1,75×):** Folge des
 Eintrags unten. `maxprofit_p2_pruefung.py` + `maxprofit_kern.lauf_p2`, Protokoll VORAB committet (`f330a1421`).
 - **Modell:** Long bis 1× über Spot, darüber teils Futures-Long. Pfand je Futures-Position = Volumen ÷ L, Spot zählt nicht als Pfand.

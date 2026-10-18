@@ -19,12 +19,14 @@
  *   FB_PAGE_ID + FB_PAGE_ACCESS_TOKEN (oder META_ACCESS_TOKEN)       → Facebook-Seite (Video)
  *   THREADS_USER_ID + THREADS_ACCESS_TOKEN                            → Threads (Video)
  *   MAX_PER_RUN=1 · DRY_RUN=1
+ * Finale Publish-Anfragen werden pro Kanal vorab als inflight gespeichert.
+ * inflight/uncertain erst mit dem Plattformkonto abgleichen, niemals blind wiederholen.
  */
 import fs from 'node:fs';
 
 const CSV = new URL('../social/video_queue.csv', import.meta.url).pathname;
 const V = process.env.META_GRAPH_VERSION || 'v21.0';
-const DRY = process.env.DRY_RUN === '1';
+const DRY = process.env.DRY_RUN !== '0' || process.env.APPROVE_PUBLISH !== '1';
 const MAX = Math.max(1, parseInt(process.env.MAX_PER_RUN || '1', 10) || 1);
 // Cover-Frame (ms) für IG-Reels: das 3.0s-Marken-Intro ist off-white → ohne Offset nimmt IG einen
 // weissen Frame als Grid-Vorschau. ~3800ms landet sauber im ERSTEN Produktbild (nach Intro-Fade,
@@ -55,43 +57,88 @@ function parse(text){
 function esc(v){ v=String(v??''); return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v; }
 function serialize(rows){ return rows.map(r=>r.map(esc).join(',')).join('\n')+'\n'; }
 
+class QueueCheckpointError extends Error {}
+function checkpoint(rows) {
+  const temp = `${CSV}.${process.pid}.${Math.random().toString(16).slice(2)}.tmp`;
+  let fd;
+  try {
+    fd = fs.openSync(temp, 'wx', 0o600);
+    fs.writeFileSync(fd, serialize(rows));
+    fs.fsyncSync(fd);
+    fs.closeSync(fd); fd = undefined;
+    fs.renameSync(temp, CSV);
+  } catch (error) {
+    throw new QueueCheckpointError(`Queue-Checkpoint fehlgeschlagen (${safeError(error)})`);
+  } finally {
+    if (fd !== undefined) fs.closeSync(fd);
+    if (fs.existsSync(temp)) fs.unlinkSync(temp);
+  }
+}
+function safeError(error) {
+  return String(error?.cause?.code || error?.code || error?.name || 'RequestError').replace(/[^a-z0-9_-]/gi, '').slice(0, 60);
+}
+function confirmed(value) {
+  return (typeof value === 'string' && value.trim().length > 0) ||
+    (typeof value === 'number' && Number.isSafeInteger(value) && value > 0);
+}
+function uncertain(value) { return value && typeof value === 'object' && ['inflight', 'uncertain'].includes(value.status); }
+function failed(reason, details = {}) { return { ...details, status: 'failed', reason, retryable: true }; }
+
 async function gpost(url, params){
   const body = new URLSearchParams(params);
-  const r = await fetch(url, {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body});
+  const r = await fetch(url, {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body, signal:AbortSignal.timeout(60000)});
   const j = await r.json().catch(()=>({}));
   return {ok:r.ok, status:r.status, j};
+}
+
+async function publishFinal(name, url, params, beforePublish, details = {}) {
+  // Must be outside the request catch: a failed disk write must prevent the POST.
+  beforePublish({ ...details, status: 'inflight', phase: 'publish', started_at: new Date().toISOString() });
+  let response;
+  try { response = await gpost(url, params); }
+  catch (error) {
+    console.error(`${name}: Publish-Antwort unbestätigt (${safeError(error)}); im Konto abgleichen.`);
+    return { ...details, status: 'uncertain', phase: 'publish', reason: 'request_unconfirmed' };
+  }
+  if (response.ok && confirmed(response.j?.id) && !response.j?.error) return response.j.id;
+  // A Graph API rejection is safe to retry. A server error or unusable success
+  // response can follow a completed write, so it must never be retried blindly.
+  if (response.status >= 400 && response.status < 500 && response.j?.error) {
+    console.error(`${name}: Publish abgelehnt (HTTP ${response.status}); Kanal bleibt wiederholbar.`);
+    return failed('api_rejected', { ...details, phase: 'publish', http_status: response.status });
+  }
+  console.error(`${name}: Publish nicht bestätigt (HTTP ${response.status}); im Konto abgleichen.`);
+  return { ...details, status: 'uncertain', phase: 'publish', reason: 'response_unconfirmed', http_status: response.status };
 }
 // Video braucht länger zum Verarbeiten als ein Bild → großzügiger pollen (bis ~3.5 Min).
 async function waitVideo(statusUrl){
   for(let i=0;i<42;i++){
     await new Promise(r=>setTimeout(r, i===0?4000:5000));
-    const r = await fetch(statusUrl).catch(()=>null);
+    const r = await fetch(statusUrl, { signal:AbortSignal.timeout(60000) }).catch(()=>null);
     const j = r ? await r.json().catch(()=>({})) : {};
     const s = j.status_code || j.status;
-    if(s==='FINISHED') return true;
-    if(s==='ERROR' || s==='EXPIRED'){ console.error('Container-Status:', s, JSON.stringify(j)); return false; }
+    if(r?.ok && s==='FINISHED') return true;
+    if(s==='ERROR' || s==='EXPIRED'){ console.error('Container-Status:', s); return false; }
   }
-  console.error('Video-Verarbeitung Timeout — versuche trotzdem 1× Publish.');
+  console.error('Video-Verarbeitung Timeout — nicht veröffentlichen.');
   return false;
 }
 
 // --- Instagram Reel ---
-async function postIG(videoUrl, caption){
-  if(!IG_ID || !IG_TOK) return null;
+async function postIG(videoUrl, caption, beforePublish){
+  if(!IG_ID || !IG_TOK) return failed('missing_credentials');
   const base = `https://graph.facebook.com/${V}/${IG_ID}`;
   const c = await gpost(`${base}/media`, { media_type:'REELS', video_url:videoUrl, caption, share_to_feed:'true', thumb_offset:THUMB_MS, access_token:IG_TOK });
-  if(!c.ok || !c.j.id){ console.error('IG container:', c.status, JSON.stringify(c.j.error||c.j)); return false; }
-  await waitVideo(`https://graph.facebook.com/${V}/${c.j.id}?fields=status_code,status&access_token=${encodeURIComponent(IG_TOK)}`);
-  const p = await gpost(`${base}/media_publish`, { creation_id:c.j.id, access_token:IG_TOK });
-  if(!p.ok || !p.j.id){ console.error('IG publish:', p.status, JSON.stringify(p.j.error||p.j)); return false; }
-  console.log('IG: Reel gepostet', p.j.id); return p.j.id;
+  if(!c.ok || !confirmed(c.j?.id)){ console.error('IG container: HTTP', c.status); return failed('container_failed'); }
+  if (!await waitVideo(`https://graph.facebook.com/${V}/${c.j.id}?fields=status_code,status&access_token=${encodeURIComponent(IG_TOK)}`)) return failed('processing_failed');
+  return publishFinal('IG', `${base}/media_publish`, { creation_id:c.j.id, access_token:IG_TOK }, beforePublish, {container_id:c.j.id});
 }
 // --- Facebook-Page Video ---
-async function postFB(videoUrl, caption){
-  if(!FB_ID || !FB_TOK) return null;
+async function postFB(videoUrl, caption, beforePublish){
+  if(!FB_ID || !FB_TOK) return failed('missing_credentials');
   let tok = FB_TOK; // Page-Token via /me/accounts holen (User-Token allein triggert deprecated-Recht)
   try{
-    const ar = await fetch(`https://graph.facebook.com/${V}/me/accounts?access_token=${encodeURIComponent(FB_TOK)}`);
+    const ar = await fetch(`https://graph.facebook.com/${V}/me/accounts?access_token=${encodeURIComponent(FB_TOK)}`, { signal:AbortSignal.timeout(60000) });
     const aj = await ar.json().catch(()=>({}));
     if(ar.ok && Array.isArray(aj.data)){
       const pg = aj.data.find(p => p.id === FB_ID);
@@ -99,48 +146,44 @@ async function postFB(videoUrl, caption){
       else console.log('FB: Seite', FB_ID, 'nicht in /me/accounts — nutze Original-Token.');
     }
   }catch(e){ /* Netzfehler → Original-Token */ }
-  const r = await gpost(`https://graph.facebook.com/${V}/${FB_ID}/videos`,
-    { file_url: videoUrl, description: caption, access_token: tok });
-  if(!r.ok || !r.j.id){
-    console.error('FB video:', r.status, JSON.stringify(r.j.error||r.j));
-    if(r.status===403) console.error('FB-Tipp: Token braucht Scope "pages_manage_posts" + Admin-Rolle auf Seite', FB_ID);
-    return false;
-  }
-  console.log('FB: Video gepostet', r.j.id); return r.j.id;
+  return publishFinal('FB', `https://graph.facebook.com/${V}/${FB_ID}/videos`,
+    { file_url: videoUrl, description: caption, access_token: tok }, beforePublish);
 }
 // --- Threads Video ---
-async function postThreads(videoUrl, caption){
-  if(!TH_TOK) return null;
+async function postThreads(videoUrl, caption, beforePublish){
+  if(!TH_TOK) return failed('missing_credentials');
   let uid = TH_ID;
   try{
-    const me = await fetch(`https://graph.threads.net/v1.0/me?fields=id&access_token=${encodeURIComponent(TH_TOK)}`);
+    const me = await fetch(`https://graph.threads.net/v1.0/me?fields=id&access_token=${encodeURIComponent(TH_TOK)}`, { signal:AbortSignal.timeout(60000) });
     const mj = await me.json().catch(()=>({}));
     if(me.ok && mj.id){ uid = mj.id; if(mj.id!==TH_ID) console.log('Threads: User-ID via /me →', mj.id); }
   }catch(e){ /* Netzfehler */ }
-  if(!uid){ console.error('Threads: keine User-ID.'); return false; }
+  if(!uid){ console.error('Threads: keine User-ID.'); return failed('missing_user_id'); }
   const base = `https://graph.threads.net/v1.0/${uid}`;
   const c = await gpost(`${base}/threads`, { media_type:'VIDEO', video_url:videoUrl, text:caption, access_token:TH_TOK });
-  if(!c.ok || !c.j.id){ console.error('Threads container:', c.status, JSON.stringify(c.j.error||c.j)); return false; }
-  await waitVideo(`https://graph.threads.net/v1.0/${c.j.id}?fields=status&access_token=${encodeURIComponent(TH_TOK)}`);
-  const p = await gpost(`${base}/threads_publish`, { creation_id:c.j.id, access_token:TH_TOK });
-  if(!p.ok || !p.j.id){ console.error('Threads publish:', p.status, JSON.stringify(p.j.error||p.j)); return false; }
-  console.log('Threads: Video gepostet', p.j.id); return p.j.id;
+  if(!c.ok || !confirmed(c.j?.id)){ console.error('Threads container: HTTP', c.status); return failed('container_failed'); }
+  if (!await waitVideo(`https://graph.threads.net/v1.0/${c.j.id}?fields=status&access_token=${encodeURIComponent(TH_TOK)}`)) return failed('processing_failed');
+  return publishFinal('Threads', `${base}/threads_publish`, { creation_id:c.j.id, access_token:TH_TOK }, beforePublish, {container_id:c.j.id});
 }
 
 // --- Hauptlauf ---
-const configured = [IG_ID&&IG_TOK&&'IG', FB_ID&&FB_TOK&&'FB', TH_TOK&&'Threads'].filter(Boolean);
-if(configured.length===0 && !DRY){ console.log('Kein Meta-Kanal konfiguriert → No-op.'); process.exit(0); }
-if(!fs.existsSync(CSV)){ console.log('Keine social/video_queue.csv → nichts zu tun.'); process.exit(0); }
-
+async function runQueue(configured) {
 const today = new Date().toISOString().slice(0,10);
 const rows = parse(fs.readFileSync(CSV,'utf8'));
 const header = rows[0];
+if (!header || COLS.some(c => !header.includes(c))) throw new Error('Video-Queue: erforderliche Spalten fehlen');
+if (!header.includes('platform_results')) {
+  const column = header.length;
+  header.push('platform_results');
+  for (const row of rows.slice(1)) row[column] = '';
+}
 const idx = Object.fromEntries(COLS.map(c=>[c, header.indexOf(c)]));
+const resultIndex = header.indexOf('platform_results');
 const data = rows.slice(1);
 
-const due = data.filter(r => (r[idx.status]||'').trim()==='ready' && (r[idx.video_url]||'').trim()
+const due = data.filter(r => ['ready', 'partial', 'uncertain'].includes((r[idx.status]||'').trim()) && (r[idx.video_url]||'').trim()
   && ((r[idx.scheduled_date]||'').trim()==='' || (r[idx.scheduled_date]||'').trim() <= today));
-if(due.length===0){ console.log('Kein Video fällig (status=ready, scheduled_date<=heute).'); process.exit(0); }
+if(due.length===0){ console.log('Kein Video fällig (status=ready, scheduled_date<=heute).'); return 0; }
 
 console.log(`Kanäle: ${configured.join('+')||'(DRY)'} · fällig: ${due.length} · MAX_PER_RUN: ${MAX}`);
 let postedCount = 0, anyFail = false;
@@ -155,24 +198,86 @@ for(const next of due.slice(0, MAX)){
   console.log(`→ ${next[idx.id]} | ${[wantIG&&'IG',wantFB&&'FB',wantTH&&'Threads'].filter(Boolean).join('+')} | ${videoUrl}`);
   if(DRY){ console.log('   DRY_RUN: würde senden.'); postedCount++; continue; }
 
-  // sequenziell (Video-Verarbeitung ist schwer) statt parallel
-  const results = [];
-  results.push(wantIG ? await postIG(videoUrl, caption) : null);
-  results.push(wantFB ? await postFB(videoUrl, caption) : null);
-  results.push(wantTH ? await postThreads(videoUrl, caption) : null);
-  const got = results.filter(x => x && x!==false);
-  if(got.length>0){
+  // Jeden bestätigten Kanal sofort speichern. Ein späterer Fehler darf weder den
+  // fehlenden Kanal verschlucken noch beim nächsten Lauf den erfolgreichen doppeln.
+  let results = {};
+  try { results = JSON.parse(next[resultIndex] || '{}'); }
+  catch { throw new Error('Video-Queue: ungültiges platform_results-Ledger'); }
+  if (!results || Array.isArray(results) || typeof results !== 'object') throw new Error('Video-Queue: ungültiges Kanal-Ledger');
+  for (const value of Object.values(results)) {
+    if (!confirmed(value) && !(value && typeof value === 'object' && !Array.isArray(value) &&
+      ['inflight', 'uncertain', 'failed'].includes(value.status))) throw new Error('Video-Queue: ungültiger Kanal-Status');
+  }
+  const persist = () => {
+    next[resultIndex] = JSON.stringify(results);
+    next[idx.status] = Object.values(results).some(uncertain) ? 'uncertain' : 'partial';
+    next[idx.post_url] = String(Object.values(results).find(confirmed) || '');
+    checkpoint(rows);
+  };
+  const selected = [['IG', wantIG, postIG], ['FB', wantFB, postFB], ['Threads', wantTH, postThreads]]
+    .filter(([, wanted]) => wanted);
+  if (!selected.length) { anyFail = true; console.error('Kein unterstützter Zielkanal gewählt.'); continue; }
+  for (const [name, , publish] of selected) {
+    if (confirmed(results[name])) { console.log(`   ${name}: bereits bestätigt, übersprungen`); continue; }
+    if (uncertain(results[name]) || results[name]?.retryable === false) {
+      anyFail = true;
+      console.error(`   ${name}: ${results[name].status}, gesperrt; vor Wiederholung im Konto abgleichen.`);
+      continue;
+    }
+    let result;
+    try {
+      result = await publish(videoUrl, caption, pending => { results[name] = pending; persist(); });
+    } catch (error) {
+      if (error instanceof QueueCheckpointError) throw error;
+      console.error(`   ${name}: Fehler vor Veröffentlichung (${safeError(error)}), Kanal bleibt wiederholbar.`);
+      result = failed('prepublish_request_failed');
+    }
+    results[name] = result;
+    persist();
+    if (confirmed(result)) console.log(`${name}: Video gepostet`, result);
+    else anyFail = true;
+  }
+  if (selected.every(([name]) => confirmed(results[name])) && !Object.values(results).some(uncertain)) {
     next[idx.status] = 'posted';
     next[idx.posted_at] = new Date().toISOString();
-    next[idx.post_url] = got[0];
     postedCount++;
-    console.log(`   ✅ veröffentlicht auf ${results.map((x,i)=>x&&x!==false?['IG','FB','Threads'][i]:null).filter(Boolean).join('+')}`);
+    checkpoint(rows);
   } else {
     anyFail = true;
-    console.error('   ❌ kein Kanal erfolgreich — bleibt ready (nächster Lauf erneut).');
+    console.error('Noch offene Kanäle; nur eindeutig fehlgeschlagene Versuche werden automatisch erneut bearbeitet.');
   }
 }
 
-if(!DRY && postedCount>0) fs.writeFileSync(CSV, serialize(rows));
 console.log(`Fertig: ${postedCount} Video(s) gepostet${DRY?' (DRY)':''}.`);
-process.exit(anyFail && postedCount===0 ? 1 : 0);
+return anyFail ? 1 : 0;
+}
+
+async function main() {
+  const configured = [IG_ID&&IG_TOK&&'IG', FB_ID&&FB_TOK&&'FB', TH_TOK&&'Threads'].filter(Boolean);
+  if(configured.length===0 && !DRY){ console.log('Kein Meta-Kanal konfiguriert → No-op.'); return 0; }
+  if(!fs.existsSync(CSV)){ console.log('Keine social/video_queue.csv → nichts zu tun.'); return 0; }
+  const lock = `${CSV}.lock`;
+  let lockFd;
+  try {
+    if (!DRY) {
+      try { lockFd = fs.openSync(lock, 'wx', 0o600); }
+      catch (error) {
+        if (error.code === 'EEXIST') {
+          console.error('Video-Queue gesperrt: aktiven/abgebrochenen Lauf und inflight-Kanäle prüfen, bevor die Sperre entfernt wird.');
+          return 1;
+        }
+        throw error;
+      }
+      fs.writeFileSync(lockFd, String(process.pid));
+    }
+    return await runQueue(configured);
+  } finally {
+    if (lockFd !== undefined) { fs.closeSync(lockFd); fs.unlinkSync(lock); }
+  }
+}
+
+try { process.exitCode = await main(); }
+catch (error) {
+  console.error(`Meta-Lauf abgebrochen (${safeError(error)}). Queue und unbestätigte Kanäle vor Wiederholung prüfen.`);
+  process.exitCode = 1;
+}

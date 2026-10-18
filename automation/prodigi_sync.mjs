@@ -14,10 +14,11 @@
  *   PRODIGI_API_KEY (zwingend), [PRODIGI_SANDBOX=1], [PRODIGI_AUTO_CONFIRM=1|0 (Default 1)], [PRODIGI_SHIPPING=Budget|Standard|Express],
  *   SHOPIFY_SHOP, SHOPIFY_CLIENT_ID/SECRET (oder SHOPIFY_ADMIN_TOKEN), [GEMINI_API_KEY], [TELEGRAM_*], [MAX=20], [DRY_RUN=1]
  */
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 const SHOPraw=process.env.SHOPIFY_SHOP||'';
 const ADMIN_TOKEN=(process.env.SHOPIFY_ADMIN_TOKEN||'').trim();
 const CID=(process.env.SHOPIFY_CLIENT_ID||'').trim();
-const CSEC=(process.env.SHOPIFY_CLIENT_SECRET||'').trim();
+const CSEC=(shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET)||'').trim();
 const KEY=(process.env.PRODIGI_API_KEY||'').trim();
 const PBASE=process.env.PRODIGI_SANDBOX==='1' ? 'https://api.sandbox.prodigi.com/v4.0' : 'https://api.prodigi.com/v4.0';
 const AUTO_CONFIRM=(process.env.PRODIGI_AUTO_CONFIRM||'1')!=='0';

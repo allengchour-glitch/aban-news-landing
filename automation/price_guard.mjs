@@ -5,14 +5,16 @@
  * Dropship-Regel (CLAUDE.md): Produkte müssen dauerhaft kaufbar sein. Eine Variante mit
  * inventoryPolicy=DENY + getracktem Bestand kann auf 0 fallen → "ausverkauft" → verlorene Verkäufe.
  * Dieser Wächter:
- *   1) findet aktive Varianten mit inventoryPolicy=DENY  → setzt sie (LIVE) auf CONTINUE (Weiterverkauf erlaubt)
+ *   1) meldet Varianten mit inventoryPolicy=DENY; ändert keine Bestandsregel ohne Lieferantennachweis
  *   2) meldet Preis-Anomalien (Preis 0 / leer; compareAtPrice <= Preis = sinnlose „Rabatt"-Anzeige)
  *
- * No-op-sicher · DRY-Default · LIVE=1 schreibt · SCAN=Anzahl zuletzt geänderter Produkte.
+ * Nur Bericht, auch mit LIVE=1 keine Bestandsänderung · SCAN=Anzahl zuletzt geänderter Produkte.
  * ENV: SHOPIFY_SHOP + (SHOPIFY_ADMIN_TOKEN | SHOPIFY_CLIENT_ID+SHOPIFY_CLIENT_SECRET)
  */
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
+import { shopifyGql } from './lib/shopify_gql.mjs';
 const SHOP=process.env.SHOPIFY_SHOP||'', TOK_ST=process.env.SHOPIFY_ADMIN_TOKEN||'',
-  CID=process.env.SHOPIFY_CLIENT_ID||'', CS=process.env.SHOPIFY_CLIENT_SECRET||'',
+  CID=process.env.SHOPIFY_CLIENT_ID||'', CS=shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET)||'',
   LIVE=process.env.LIVE==='1', SCAN=Math.min(parseInt(process.env.SCAN||'250',10),3000), API='2025-01';
 
 async function getToken(){
@@ -22,11 +24,8 @@ async function getToken(){
     const j=await r.json().catch(()=>({})); return j.access_token||''; }
   return TOK_ST||'';
 }
-async function gql(token,query,variables){
-  const r=await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`,{method:'POST',
-    headers:{'Content-Type':'application/json','X-Shopify-Access-Token':token},body:JSON.stringify({query,variables})});
-  const j=await r.json(); if(j.errors) throw new Error('GraphQL: '+JSON.stringify(j.errors).slice(0,300)); return j.data;
-}
+// Drosselung aussitzen statt aufgeben — Begruendung + Tests in automation/lib/shopify_gql.mjs
+const gql=(token,query,variables)=>shopifyGql(SHOP,API,token,query,variables);
 
 async function main(){
   const report={ ts:new Date().toISOString(), live:LIVE };
@@ -56,15 +55,10 @@ async function main(){
   report.priceZero=[...new Set(priceZero)];
   report.badCompareAt=[...new Set(badCompare)];
 
-  if(LIVE && denyByProduct.length){
-    let fixed=0;
-    for(const pr of denyByProduct){
-      const vars=pr.vids.map(id=>`{id:"${id}", inventoryPolicy:CONTINUE}`).join(',');
-      const d=await gql(token,`mutation{ productVariantsBulkUpdate(productId:"${pr.id}", variants:[${vars}]){ productVariants{id} userErrors{message} } }`);
-      const e=d.productVariantsBulkUpdate.userErrors; if(e.length) console.log('var err',pr.id,e); else fixed+=pr.vids.length;
-    }
-    report.setToContinue=fixed;
-  }
+  // DENY ist kein Preisfehler. Lieferantenbestand und Varianten-Mapping müssen erst
+  // geprüft werden; pauschales CONTINUE kann nicht lieferbare Bestellungen erzeugen.
+  report.inventoryPolicyChanged=0;
+  report.inventoryReviewRequired=denyByProduct;
   console.log(JSON.stringify(report,null,2));
 }
-main().catch(e=>{ console.error('Fehler:',e.message); process.exit(0); });
+main().catch(e=>{ console.error('Fehler:',e.message); process.exit(1); });

@@ -227,5 +227,13 @@
     "price_cents": 1400,
     "currency": "chf",
     "standalone": true
+  },
+  {
+    "slug": "ki-sichtbarkeit-audit",
+    "title": "KI-Sichtbarkeits-Audit: nennen ChatGPT & Co. dich?",
+    "desc": "Workbook in sechs Schritten: zwölf Kundenfragen aus deiner Leistung und deinem Ort, Protokoll für ChatGPT, Perplexity und Google AI, Punktzahl aus deinen eigenen Einträgen, Ursachen-Checkliste (Firmendaten, Verzeichnisse, Schema, Bewertungen, Inhalte), daraus ein 90-Tage-Plan und das Nachmessen. Offline, kein Konto. Keine Garantie auf Nennung.",
+    "price_cents": 2900,
+    "currency": "chf",
+    "standalone": true
   }
 ]

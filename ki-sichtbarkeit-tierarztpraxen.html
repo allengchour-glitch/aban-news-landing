@@ -18,9 +18,7 @@
 <meta name="theme-color" content="#d97706">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Service","name":"KI-Sichtbarkeit für Tierärzt:innen","description":"Wird Tierarztpraxen von ChatGPT, Perplexity &amp; Google AI empfohlen? Gratis prüfen und mit dem Monitor dranbleiben.","provider":{"@type":"Organization","name":"aban news","url":"https://abannews.com"},"areaServed":"DACH"}
-</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "KI-Sichtbarkeit für Tierärzt:innen", "description": "Wird Tierarztpraxen von ChatGPT, Perplexity &amp; Google AI empfohlen? Gratis prüfen und mit dem Monitor dranbleiben.", "provider": {"@type": "Organization", "name": "aban news", "url": "https://abannews.com"}, "areaServed": "DACH", "offers": {"@type": "Offer", "price": "9", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": "https://abannews.com/ki-sichtbarkeit-tierarztpraxen.html", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "9", "priceCurrency": "EUR", "referenceQuantity": {"@type": "QuantitativeValue", "value": "1", "unitCode": "MON"}}}}</script>
 <style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669}
 @media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19}}
@@ -90,7 +88,7 @@ footer a{color:var(--muted)}</style>
     <div class="buybox">
       <div class="price">9 €<small> / Monat · KI-Sichtbarkeits-Monitor</small></div>
       <p>Monatlicher Report, ob KI deine Tierarztpraxis nennt — mit Veränderung zum Vormonat und konkreten Maßnahmen (Schema, Verzeichnisse, Bewertungen, NAP-Konsistenz). Jederzeit kündbar, kein Login.</p>
-      <p><a class="btn" href="/ki-sichtbarkeit-monitor.html">Monitor ansehen →</a>
+      <p><a class="btn" data-aban-monitor href="/ki-sichtbarkeit-monitor.html">Monitor abonnieren →</a>
          <a class="btn ghost" href="/ki-sichtbarkeit-paket.html">Komplett-Paket (29 €) →</a></p>
     </div>
     <p class="note">Den Maßnahmen-Report kann dir die KI <strong>sofort automatisch erstellen</strong> — <a href="/ki-audit.html">KI-Sichtbarkeits-Audit (aban Pro)</a>. Lieber einmal selbst durchziehen? Das <a href="/ki-sichtbarkeit-audit.html">KI-Sichtbarkeits-Audit</a> (29 € einmalig) führt dich Schritt für Schritt + 90-Tage-Plan. Oder das <a href="/ki-sichtbarkeit-buch.html">Buch „Von KI gefunden werden“</a> für den ganzen Hintergrund.</p>
@@ -105,7 +103,10 @@ footer a{color:var(--muted)}</style>
       <li>Keine Rechts-/SEO-Garantie — gesunder Menschenverstand und Dranbleiben zählen mehr als jeder Trick.</li>
     </ul></div>
   </section>
-</div></main>
+</div>
+
+<!-- ls-branche-ratgeber-v1 --><aside data-aban-branchen-ratgeber aria-label="Ratgeber zur Branche" style="max-width:760px;margin:22px auto;padding:16px 18px;background:#fff;border:1px solid #ece3d4;border-left:4px solid #b45309;border-radius:14px;color:#1f2937;font-size:.95rem;line-height:1.55"><strong>Erst lesen, dann entscheiden:</strong> Der ausführliche Ratgeber „KI in der Tierarztpraxis — Termine und Besitzer-Kommunikation“ zeigt gratis, wo KI im Alltag wirklich hilft — und wo nicht. <a href="/ki-fuer-tierarztpraxen.html" style="color:#b45309;font-weight:700;text-decoration:none">Zum Ratgeber →</a></aside>
+</main>
 
 <footer><div class="wrap">
   © 2026 aban news · Allen Chour · Belp (CH) ·
@@ -114,5 +115,7 @@ footer a{color:var(--muted)}</style>
   <a href="/start">Alles auf einen Blick</a> ·
   <a href="/suchmaschine.html">Suche</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
 </div></footer>
+<script src="/js/checkout-config.js"></script>
+<script data-aban-monitor-js>(function(){var u=(window.ABAN_CHECKOUT&&window.ABAN_CHECKOUT.MONITOR_ABO_URL)||"";if(!u)return;var a=document.querySelectorAll("a[data-aban-monitor]");for(var i=0;i<a.length;i++){a[i].href=u;a[i].target="_blank";a[i].rel="noopener";}})();</script>
 </body>
 </html>

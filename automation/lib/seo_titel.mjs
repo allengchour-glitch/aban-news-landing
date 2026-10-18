@@ -1,0 +1,58 @@
+/**
+ * SEO-Titel und -Beschreibung aus einem Produkttitel bauen.
+ *
+ * WARUM ES DIESES MODUL GIBT (gemessen 2026-10-17): `seo-optimizer.mjs` normalisierte Trennzeichen
+ * mit `\s*[·–—-]\s*` → ` – `. Das Muster trifft auch den **Bindestrich MITTEN im Wort**, und so wurde
+ * aus „Gaming-Controller" → „Gaming – Controller", aus „Joy-Con" → „Joy – Con", aus „Type-C" →
+ * „Type – C". Betroffen wären **985 von 2415** Produkten ohne SEO-Titel (41 %) — falsches Deutsch,
+ * und zwar als Überschrift in der Google-Trefferliste.
+ *
+ * Das ist dieselbe Fehlerklasse wie „3-5 Minuten" → „3." auf 264 Seiten (Lehre vom 07.09.):
+ * **BEI MASSENERSETZUNGEN DEN DIFF LESEN, NICHT DIE ZAHL.**
+ *
+ * Zweiter Fund: `clip(titel + ' | LuxeStyle CH', 60)` schnitt bei langen Titeln die Marke ab und
+ * hinterliess ein hängendes „|…" (255 von 2415 = 11 %). Die Marke kommt jetzt nur dran, wenn sie passt.
+ *
+ * Dritter Fund: die Beschreibung versprach „schnelle Lieferung". CJ-Produkte liefern in **10–20
+ * Werktagen** — das wäre eine falsche Zusage auf tausenden Seiten. Stattdessen nur geprüfte Fakten:
+ * Schweizer Shop · Gratis-Versand ab CHF 50 (bewusst 50, s. dropship/VERSAND-SCHWELLE.md) ·
+ * 30 Tage Rückgabe · WELCOME10 (live geprüft: ACTIVE bis 31.12.2027).
+ */
+export const MARKE = ' | LuxeStyle CH';
+export const MAX_TITEL = 60;
+export const MAX_BESCHREIBUNG = 155;
+
+/** Nur ECHTE Trennzeichen vereinheitlichen — niemals den Bindestrich innerhalb eines Wortes. */
+export function titelNormalisieren(roh) {
+  return String(roh || '')
+    .replace(/[·•]/g, ' – ')          // Mittelpunkt ist immer ein Trenner
+    .replace(/\s+[–—]\s+/g, ' – ')    // Halbgeviert/Geviert MIT Leerzeichen = Trenner
+    .replace(/\s+-\s+/g, ' – ')       // Bindestrich MIT Leerzeichen = Trenner
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+/** Auf n Zeichen kürzen, an der Wortgrenze, ohne hängendes Trennzeichen. */
+export function kuerzen(s, n) {
+  s = String(s || '');
+  if (s.length <= n) return s;
+  let t = s.slice(0, n - 1).replace(/\s+\S*$/, '');
+  t = t.replace(/[\s|·–—,:;.-]+$/, '');            // kein hängendes Trennzeichen vor dem Auslassungszeichen
+  return (t || s.slice(0, n - 1)) + '…';
+}
+
+/**
+ * @returns {{title: string, description: string}}
+ */
+export function seoTitel(roh) {
+  const basis = titelNormalisieren(roh);
+  if (!basis) return { title: '', description: '' };
+  // Marke nur, wenn sie ganz hineinpasst — sonst lieber ein sauber gekürzter Titel ohne Marke
+  const title = (basis.length + MARKE.length <= MAX_TITEL)
+    ? basis + MARKE
+    : kuerzen(basis, MAX_TITEL);
+  const description = kuerzen(
+    `${basis} bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. `
+    + `Jetzt –10% mit Code WELCOME10.`, MAX_BESCHREIBUNG);
+  return { title, description };
+}

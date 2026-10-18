@@ -12,11 +12,12 @@
  * ENV: SHOPIFY_SHOP · (SHOPIFY_ADMIN_TOKEN | SHOPIFY_CLIENT_ID+SHOPIFY_CLIENT_SECRET) · MINRATING=4.0
  */
 import fs from 'node:fs';
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 
 const SHOP = process.env.SHOPIFY_SHOP || '';
 const TOK_STATIC = process.env.SHOPIFY_ADMIN_TOKEN || '';
 const CID = process.env.SHOPIFY_CLIENT_ID || '';
-const CSECRET = process.env.SHOPIFY_CLIENT_SECRET || '';
+const CSECRET = shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET) || '';
 const MIN = parseFloat(process.env.MINRATING || '4.0');
 const OUT = new URL('../dropship/rated_products.csv', import.meta.url).pathname;
 

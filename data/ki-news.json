@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-14T09:29:35Z",
+ "stand": "2026-10-18T08:49:48Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,84 +18,84 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "heise+ | AnythingLLM: Eigene Dokumente mit KI lokal auswerten",
-   "u": "https://www.heise.de/ratgeber/AnythingLLM-Eigene-Dokumente-mit-KI-lokal-auswerten-11431828.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
-   "q": "heise",
-   "d": "2026-10-14T09:15:00Z",
-   "s": "AnythingLLM liest Dokumente ein und gibt mit einem KI-Chat Antworten dazu. Dabei bleiben Daten und LLM lokal und so vollständig unter Ihrer Kontrolle.",
-   "sprache": "de"
-  },
-  {
-   "t": "software-architektur.tv: Die KI als Teamkollege",
-   "u": "https://www.heise.de/news/software-architektur-tv-Die-KI-als-Teamkollege-11487493.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-14T08:43:00Z",
-   "s": "In dieser Folge gehen Avraham Poupko und Ralf D. Müller der Frage nach, was es wirklich bedeutet, wenn eine KI Teamkollege ist und nicht Werkzeug.",
-   "sprache": "de"
-  },
-  {
-   "t": "Xbox: Xbox Labs will alte Spiele per KI auf neue Hardware bringen",
-   "u": "https://www.golem.de/news/xbox-xbox-labs-will-alte-spiele-per-ki-auf-neue-hardware-bringen-2610-214081.html",
-   "q": "Golem",
-   "d": "2026-10-14T08:27:01Z",
-   "s": "Halo, GTA und andere Klassiker laufen mit KI bereits im Browser. Microsoft gründet nun eine Abteilung, um solche Technologien weiterzuentwickeln. (Xbox, Microsoft)",
-   "sprache": "de"
-  },
-  {
-   "t": "Keine Lust auf Gemini: Android-User bringen den Google Assistant über Umwege zurück",
-   "u": "https://t3n.de/news/keine-lust-auf-gemini-android-user-bringen-den-google-assistant-ueber-umwege-zurueck-1768131/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Selfie hochladen, Kleidung anprobieren: ChatGPT wird zum virtuellen Modeberater",
+   "u": "https://t3n.de/news/selfie-hochladen-kleidung-anprobieen-chatgpt-1766318/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-10-14T08:00:30Z",
-   "s": "Einige Android-User:innen wollen den Google Assistant zurück haben. Da Google den Helfer aber Gemini ausgetauscht hatten, nehmen sie jetzt große Umwege in Kauf, um die alten Zeiten auf ihrem Smartphon…",
+   "d": "2026-10-18T08:10:00Z",
+   "s": "ChatGPT führt zwei neue Shopping-Funktionen ein. Zum einen eine virtuelle Anprobe von Kleidung und zum anderen eine neue Favoriten-Funktion, mit der Produkte gespeichert werden können. weiterlesen auf…",
    "sprache": "de"
   },
   {
-   "t": "KI-Agenten: Aufseher in USA und Europa prüfen KI-Risiken bei Banken",
-   "u": "https://www.golem.de/news/ki-agenten-aufseher-in-usa-und-europa-pruefen-ki-risiken-bei-banken-2610-214079.html",
+   "t": "(g+) Kolibri von Aleph Alpha: Deutschlands KI kann doch noch überraschen",
+   "u": "https://www.golem.de/news/kolibri-von-aleph-alpha-deutschlands-ki-kann-doch-noch-ueberraschen-2610-213958.html",
    "q": "Golem",
-   "d": "2026-10-14T07:41:02Z",
-   "s": "US-Aufseher fragen Banken, wie sie KI-Agenten kontrollieren und abschalten. Auch in Europa wächst die Sorge. (Wirtschaft, OpenAI)",
+   "d": "2026-10-18T08:00:02Z",
+   "s": "Das deutsche Aleph Alpha hat ein neues Sprachmodell für das Mittelfeld vorgestellt und dabei einige interessante Ideen verbaut. Eine Analyse von Tim Elsner (Souveränität, KI)",
    "sprache": "de"
   },
   {
-   "t": "Typographic Intelligence: Warum Designsysteme nicht mehr ausreichen",
-   "u": "https://t3n.de/news/typographic-intelligence-warum-designsysteme-nicht-mehr-ausreichen-1761122/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Eine Milliarde Nutzer von ChatGPT: Dennoch hassen viele Menschen KI",
+   "u": "https://t3n.de/news/eine-milliarde-nutzer-chatgpt-ki-hass-1766749/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-10-14T07:00:00Z",
-   "s": "KI beschleunigt kreative Prozesse und ermöglicht immer mehr Output in immer kürzerer Zeit. Doch damit entsteht ein neuer Engpass: die fundierte Entscheidung. Moderne Markenführung braucht Systeme, die…",
+   "d": "2026-10-18T06:20:00Z",
+   "s": "Umfragen der Stanford University und Gallup belegen, dass die Menschen kein gutes Bild von KI-Produkten und den Rechenzentren haben. Gleichzeitig steigen die Nuweiterlesen auf t3n.de",
    "sprache": "de"
   },
   {
-   "t": "The EU’s next chapter in AI is agentic",
-   "u": "https://openai.com/index/the-eus-next-chapter-in-ai-is-agentic",
+   "t": "Meta removes language that raised scraping and AI training concerns",
+   "u": "https://techcrunch.com/2026/10/17/meta-removes-language-that-raised-scraping-and-ai-training-concerns/",
+   "q": "TechCrunch AI",
+   "d": "2026-10-17T21:31:32Z",
+   "s": "A Meta spokesperson insisted that the updated terms did not reflect a change in the way Meta crawls the web.",
+   "sprache": "en"
+  },
+  {
+   "t": "Anthropic says its workforce has become less junior and is spending more time in meetings",
+   "u": "https://techcrunch.com/2026/10/17/anthropic-says-its-workforce-has-become-less-junior-and-is-spending-more-time-in-meetings/",
+   "q": "TechCrunch AI",
+   "d": "2026-10-17T20:21:19Z",
+   "s": "The composition of Anthropic’s workforce and the type of work getting done have changed significantly in the past year.",
+   "sprache": "en"
+  },
+  {
+   "t": "Cody Wilson: KI hat gerade eine Schusswaffe entworfen",
+   "u": "https://www.golem.de/news/cody-wilson-ki-hat-gerade-eine-schusswaffe-entworfen-2610-214215.html",
+   "q": "Golem",
+   "d": "2026-10-17T11:45:02Z",
+   "s": "Ein Aktivist hat eine Waffe vorgestellt, die eine speziell trainierte KI entworfen hat. Bereits 2012 hat er die weltweit erste 3D-gedruckte Schusswaffe vorgestellt. (3D-Drucker, KI)",
+   "sprache": "de"
+  },
+  {
+   "t": "heise-Angebot: enterJS: Call for Proposals 2027 und letzter Aufruf für KI-Online-Thementag 2026",
+   "u": "https://www.heise.de/news/enterJS-Call-for-Proposals-2027-und-letzter-Aufruf-fuer-KI-Online-Thementag-2026-11456215.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-10-17T11:00:00Z",
+   "s": "Der Call for Proposals für die enterJS 2027 ist eröffnet und läuft bis zum 3. November. Nächsten Donnerstag findet der Online-Thementag enterJS Agentic statt.",
+   "sprache": "de"
+  },
+  {
+   "t": "How Itaú is building generative AI for its entire customer base",
+   "u": "https://openai.com/index/itau-generative-ai",
    "q": "OpenAI",
-   "d": "2026-10-14T00:00:00Z",
-   "s": "New analysis shows how agentic AI adoption is growing across EU enterprises and small businesses—and where deeper use could unlock more value.",
+   "d": "2026-10-16T19:00:00Z",
+   "s": "With ia.i, a conversational interface, and the IARA governance platform, Itaú is applying its AI First strategy to customers and employees — in one of Brazil’s most regulated sectors.",
    "sprache": "en"
   },
   {
-   "t": "Science Corporation implants its vision-restoring chip in its first Stargardt disease patient",
-   "u": "https://techcrunch.com/2026/10/13/science-corporation-implants-its-vision-restoring-chip-in-its-first-stargardt-disease-patient/",
-   "q": "TechCrunch AI",
-   "d": "2026-10-13T23:13:31Z",
-   "s": "Max Hodak, the former president and co-founder of Neuralink, detailed onstage at TechCrunch Disrupt how his company's work with PRIMA is part of its path toward a novel brain-computer interface (BCI).",
+   "t": "Roundtables: A Conversation With the Creator of AI-Designed Viruses",
+   "u": "https://www.technologyreview.com/2026/10/16/1146224/roundtables-a-conversation-with-the-creator-of-ai-designed-viruses/",
+   "q": "MIT Tech Review",
+   "d": "2026-10-16T18:00:00Z",
+   "s": "Listen to the session or watch below Can AI design new life forms? In 2025, Stanford University PhD student Samuel King came up with a preliminary answer when he used a generative AI model to propose …",
    "sprache": "en"
   },
   {
-   "t": "Cerebras CEO says we’re nearing a future where everyone has a personal AI assistant at home",
-   "u": "https://techcrunch.com/2026/10/13/cerebras-ceo-says-were-nearing-a-future-where-everyone-has-a-personal-ai-assistant-at-home/",
-   "q": "TechCrunch AI",
-   "d": "2026-10-13T23:05:34Z",
-   "s": "Cerebras CEO Andrew Feldman predicts a future where personal AI assistants become as commonplace as household appliances, running partly on local devices and partly in the cloud.",
-   "sprache": "en"
-  },
-  {
-   "t": "Run fast, private agents on-device with LFM2.5-24B-A2B",
-   "u": "https://huggingface.co/blog/LiquidAI/lfm25-24b-a2b",
-   "q": "Hugging Face",
-   "d": "2026-10-13T17:05:48Z",
-   "s": "",
-   "sprache": "en"
+   "t": "RTX Spark im Test: Nvidias erster Notebook-Chip für lokale KI",
+   "u": "https://www.heise.de/news/RTX-Spark-im-Test-Nvidias-erster-Notebook-Chip-fuer-lokale-KI-11490664.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-10-16T15:38:00Z",
+   "s": "Das erste RTX-Spark-Notebook im c’t-3003-Testlabor: Kann das Asus ProArt P14 die KI-Versprechen einlösen? Und: Läuft es wirklich nur mit Windows?",
+   "sprache": "de"
   }
  ]
 }

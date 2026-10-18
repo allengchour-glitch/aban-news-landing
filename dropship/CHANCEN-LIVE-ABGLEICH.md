@@ -170,3 +170,77 @@ der Rest des CJ-Katalogs ist ungeprüft.
 **Regel (gilt ab sofort für jede Sitzung):** Bevor an einer CJ-Produktseite Text geschrieben wird, das
 **erste Produktbild ansehen**. Die Herstellerbilder tragen oft die Masse und den echten Produktnamen —
 beim Faltbrett standen 23 × 28,5 cm darauf, während die Beschreibung gar kein Mass hatte.
+
+---
+
+## Runde 5 (16.10.2026) — Review-Import mit dem pid-Fix, und was dabei auffiel
+
+**Gemini übersetzt wieder.** Am 04.10. meldete die API noch HTTP 402 („prepayment credits are depleted"),
+heute **HTTP 200** — die importierten Bewertungen kommen jetzt **auf Deutsch** statt in der Originalsprache.
+
+**Ausbeute ist ehrlicherweise mager.** Von 12 Seiten mit Google-Position haben **2** echte ≥4★-Kommentare
+bei CJ: Fingerboard-Achsen (3) und Mini-Fotodrucker (1). Die anderen 10 haben **null** — das ist keine
+Störung, der Resolver fand die pids. Importiert: die 3 Fingerboard-Bewertungen → Seite steht jetzt auf
+**4,67 ★ aus 6**.
+
+### ⚠️ Eine ≥4★-Bewertung ist nicht automatisch eine gute Bewertung
+Die einzige Bewertung des Mini-Fotodruckers lautet im Original:
+
+> ★5 · „i thought it was the printer cuz i didn't read it lol"
+
+Das ist **der Kunde, der am 29.09. in die Variantenfalle getreten ist** — die Seite zeigte „ab CHF 15.90"
+und hatte „Nur Thermopapier (ohne Drucker)" vorausgewählt (am 04.10. behoben, PR #2597). Die Bewertung
+belegt also, dass der Defekt real zugeschlagen hat, **bevor** er behoben wurde.
+
+**Bewusst NICHT importiert.** Fünf Sterne über einem Text, der von einem Fehlkauf erzählt, verwirren die
+nächsten Käufer mehr, als sie helfen. Der Importer filtert nach `score`, nicht nach Inhalt — und soll das
+auch nicht automatisch tun (eine Inhaltsprüfung für einen Einzelfall wäre mehr Code, als sie verhindert).
+**Regel: bei Produkten mit sehr wenigen Kommentaren den Text vor dem scharfen Lauf einmal lesen.**
+
+### 💸 Probeläufe kosten echte CJ-Punkte
+Ein `DRY_RUN=1` über 12 Produkte verbrauchte **~2100 von 2661 Punkten**. „Trocken" heisst nur: es wird
+nichts nach Judge.me geschrieben — die CJ-Abfragen laufen trotzdem. **Probelauf immer mit kleinem `ONLY`**,
+nicht über die ganze Charge.
+
+### Massangaben nachgetragen (16.10.2026)
+Mit den letzten CJ-Punkten des Tages die **zwei Angaben geholt, die über den Kauf entscheiden** — beide
+waren auf den Seiten nirgends zu finden:
+
+| Seite | fehlte | jetzt belegt (CJ) |
+|---|---|---|
+| `selbstklebende-mobelfolie-650114` (CHF 32.90) | **Rollenmass** | **500 × 90 cm = 4,5 m²**, PVC, 445 g |
+| `edelstahl-trinkflasche-mit-strohhalm-638900` (CHF 15.90) | **Fassungsvermögen** | **600 ml**, 316er Edelstahl, 380 g |
+
+Beide Titel tragen die Angabe jetzt vorne («Möbelfolie · 500 × 90 cm Rolle», «Trinkflasche 600 ml»), weil
+genau danach gesucht wird. Marker `<!-- ls-specs-v1 -->` für Idempotenz, live geprüft.
+Bei CHF 32.90 für 4,5 m² lässt sich der Preis überhaupt erst beurteilen — vorher stand da eine Zahl ohne Bezug.
+
+### 💸 Das Punktebudget ist der echte Engpass
+Tagesverlauf 16.10.: Start **2661** → Probelauf über 12 Produkte **−2100** → scharfer Import + Prüfungen →
+Ende **39**. Dazu: **jede Punkteabfrage kostet selbst 10 Punkte.** Für die restlichen 7 Seiten mit dem
+Marker `<!-- ls-depth-v1 -->` reichte es nicht mehr. **Nächster Lauf: kein breiter DRY_RUN, direkt mit
+kleinem `ONLY` arbeiten** und die Punkte für die Produkte aufheben, bei denen die fehlende Angabe
+kaufentscheidend ist.
+
+## Zwei offene Fäden geschlossen (16.10.2026)
+
+**1. `aufblasbares sofa` (880/Mt) — kein Canonical-Defekt.** Am 04.10. stand hier «rankt über eine
+`?variant=`-URL → Canonical prüfen». Geprüft: **das Canonical ist korrekt.** Sowohl die saubere URL als
+auch `?variant=56118434038145&country=CH&currency=CHF` tragen
+`<link rel="canonical" href="https://luxestyle.ch/products/aufblasbares-sofa-fur-outdoor-und-camping-626700">`.
+Google kennt die richtige Adresse; die `?variant=`-Form in Semrush ist nur die zufällig erfasste.
+**Nichts zu tun.**
+*Falle dabei:* Mein erster `grep '<link rel="canonical"[^>]*>'` fand nichts, weil das Theme das Tag über
+**mehrere Zeilen** schreibt. Ein einzeiliges Muster hätte hier einen Defekt gemeldet, den es nicht gibt.
+
+**2. `elektrischer-kopfhaut-massagekamm-mit-rotlicht-604800` — der Titel stimmt, die Beschreibung war
+unvollständig.** Am 04.10. notiert: «heisst ‹mit Rotlicht›, die Beschreibung erwähnt Rotlicht nirgends».
+Auf dem Herstellerbild ist der Kammkopf **dicht mit roten LEDs besetzt** — das Rotlicht ist da. Ergänzt
+wurden nur Dinge, die auf dem Foto zu sehen sind: Rotlicht-Kopf, drei Tasten (eine mit **EMS**), **USB**-
+Ladekabel und Anleitung im Lieferumfang, Farbe rot/schwarz. Dazu ausdrücklich: zu Laufzeit, Wellenlänge
+oder medizinischer Wirkung **macht der Hersteller keine Angabe und wir behaupten nichts**.
+Text 1083 → 1714 Zeichen, Marker `<!-- ls-bild-belegt-v1 -->`, live geprüft.
+
+**Damit kippt die Erwartung aus der Bildprüfung einmal in die andere Richtung:** bisher war das Produkt
+immer weniger, als der Titel versprach. Hier war es **mehr** — die Beschreibung verschwieg die
+Hauptfunktion.

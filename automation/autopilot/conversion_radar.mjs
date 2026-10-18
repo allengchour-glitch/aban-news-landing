@@ -13,6 +13,7 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import { shopifyClientSecret } from '../lib/shopify_secret.mjs';
 
 const ROOT = path.resolve(new URL('../..', import.meta.url).pathname);
 const OUT = path.join(ROOT, 'automation', 'autopilot', 'CONVERSION-RADAR.md');
@@ -21,7 +22,7 @@ const API = `https://${SHOP}/admin/api/2025-01/graphql.json`;
 
 async function getToken() {
   if (process.env.SHOPIFY_ADMIN_TOKEN) return process.env.SHOPIFY_ADMIN_TOKEN;
-  const id = process.env.SHOPIFY_CLIENT_ID, sec = process.env.SHOPIFY_CLIENT_SECRET;
+  const id = process.env.SHOPIFY_CLIENT_ID, sec = shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET);
   if (!id || !sec) return null;
   const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
@@ -49,7 +50,13 @@ const Q = after => `{products(first:50, query:"status:active tag:cj-real"${after
   rc:metafield(namespace:"reviews",key:"rating_count"){value}
   ra:metafield(namespace:"reviews",key:"rating"){value}
 }}}}`;
+// SCAN-Deckel: der Katalog hat ueber 12 000 aktive cj-real-Produkte = 240+ Seiten mit
+// verschachtelten Medien. Gemessen 2026-10-17: der Lauf endete NIE (nach 15 Minuten abgebrochen,
+// ohne eine einzige Zeile Bericht). Ein Werkzeug, das nicht fertig wird, liefert nichts —
+// lieber eine Teilmessung, die ankommt, und im Bericht steht, dass sie eine Teilmessung ist.
+const SCAN = Math.max(50, parseInt(process.env.SCAN || '3000', 10) || 3000);
 let c = null, n = 0, noReviews = 0, lowRated = 0, failed = 0, noSeo = 0; const lowList = [];
+let gedeckelt = false;
 while (true) {
   const p = (await gql(Q(c))).data?.products;
   if (!p) break;
@@ -62,6 +69,8 @@ while (true) {
     if (x.media.edges.some(m => m.node?.status && m.node.status !== 'READY')) failed++;
     if (!x.seo?.title?.trim()) noSeo++;
   }
+  if (n >= SCAN) { gedeckelt = p.pageInfo.hasNextPage; break; }
+  if (process.env.FORTSCHRITT === '1') process.stderr.write(`\r  ${n} Produkte geprueft`);
   if (!p.pageInfo.hasNextPage) break; c = p.pageInfo.endCursor; await new Promise(r => setTimeout(r, 300));
 }
 
@@ -69,7 +78,7 @@ const today = new Date().toISOString().slice(0, 10);
 const pct = Math.round((noReviews / Math.max(1, n)) * 100);
 const report = `# 🩹 Conversion-Radar — ${today}
 
-**Gescannt:** ${n} cj-real ACTIVE Produkte (read-only).
+**Gescannt:** ${n} cj-real ACTIVE Produkte (read-only)${gedeckelt ? ` — **Teilmessung**, der SCAN-Deckel (${SCAN}) war erreicht, der Katalog ist groesser.` : '.'}
 
 | Leck | Anzahl | Hebel |
 |---|---|---|

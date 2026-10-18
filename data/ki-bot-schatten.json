@@ -18,213 +18,213 @@
   "aufwaermen": 260
  },
  "signale": {
-  "stand": "2026-10-14",
+  "stand": "2026-10-18",
   "maerkte": {
    "S&P 500": {
-    "datum": "2026-10-13",
-    "kurs": 7805.4501953125,
-    "ki": 0.4923,
+    "datum": "2026-10-16",
+    "kurs": 7659.43994140625,
+    "ki": 0.6163,
     "trend200": 1.0,
     "halten": 1.0,
-    "vol_jahr": 0.0912,
+    "vol_jahr": 0.1025,
     "warum": {
      "top_experten": [
       [
        "Halten",
-       0.116
+       0.105
       ],
       [
        "Momentum",
-       0.102
+       0.093
       ],
       [
        "Trendfolge",
-       0.09
+       0.082
       ]
      ],
-     "p_steigt": 0.492,
+     "p_steigt": 0.553,
      "bremse": false
     }
    },
    "SMI": {
-    "datum": "2026-10-14",
-    "kurs": 14038.080078125,
+    "datum": "2026-10-16",
+    "kurs": 14391.3095703125,
     "ki": 0.5472,
     "trend200": 1.0,
     "halten": 1.0,
-    "vol_jahr": 0.1153,
+    "vol_jahr": 0.1315,
     "warum": {
      "top_experten": [
       [
        "RSI 14 30/70",
-       0.096
+       0.108
       ],
       [
        "Halten",
-       0.088
+       0.099
       ],
       [
        "KI-Logit",
-       0.07
+       0.079
       ]
      ],
-     "p_steigt": 0.585,
+     "p_steigt": 0.584,
      "bremse": false
     }
    },
    "Nestlé": {
-    "datum": "2026-10-14",
-    "kurs": 78.05000305175781,
+    "datum": "2026-10-16",
+    "kurs": 82.43000030517578,
     "ki": 0.0811,
-    "trend200": 0.0,
+    "trend200": 1.0,
     "halten": 1.0,
-    "vol_jahr": 0.1738,
+    "vol_jahr": 0.2149,
     "warum": {
      "top_experten": [
       [
        "RSI 14 30/70",
-       0.109
+       0.098
       ],
       [
        "Buy the Dip",
-       0.104
+       0.094
       ],
       [
        "Stochastik 14",
-       0.104
+       0.093
       ]
      ],
-     "p_steigt": 0.416,
+     "p_steigt": 0.276,
      "bremse": true
     }
    },
    "Bitcoin": {
-    "datum": "2026-10-14",
-    "kurs": 83224.546875,
+    "datum": "2026-10-18",
+    "kurs": 81616.921875,
     "ki": 0.2722,
     "trend200": 1.0,
     "halten": 1.0,
-    "vol_jahr": 0.2797,
+    "vol_jahr": 0.2582,
     "warum": {
      "top_experten": [
       [
        "Ruhige Phasen",
-       0.183
+       0.166
       ],
       [
        "Halten",
-       0.126
+       0.115
       ],
       [
        "EMA 12/26",
-       0.099
+       0.09
       ]
      ],
-     "p_steigt": 0.529,
+     "p_steigt": 0.523,
      "bremse": false
     }
    },
    "EUR/CHF": {
-    "datum": "2026-10-14",
-    "kurs": 0.9327899813652039,
+    "datum": "2026-10-16",
+    "kurs": 0.9254999756813049,
     "ki": 0.2307,
     "trend200": 1.0,
     "halten": 1.0,
-    "vol_jahr": 0.0534,
+    "vol_jahr": 0.0516,
     "warum": {
      "top_experten": [
       [
        "RSI 14 30/70",
-       0.065
-      ],
-      [
-       "Halten",
-       0.062
+       0.067
       ],
       [
        "Buy the Dip",
-       0.061
+       0.062
+      ],
+      [
+       "Cash",
+       0.062
       ]
      ],
-     "p_steigt": 0.51,
+     "p_steigt": 0.506,
      "bremse": true
     }
    },
    "Gold": {
-    "datum": "2026-10-14",
-    "kurs": 4165.5,
+    "datum": "2026-10-16",
+    "kurs": 4181.10009765625,
     "ki": 0.2575,
     "trend200": 0.0,
     "halten": 1.0,
-    "vol_jahr": 0.1776,
+    "vol_jahr": 0.1866,
     "warum": {
      "top_experten": [
       [
        "EMA 12/26",
-       0.137
-      ],
-      [
-       "Saison: Sell in May",
-       0.081
+       0.135
       ],
       [
        "Halten",
+       0.083
+      ],
+      [
+       "Saison: Sell in May",
        0.08
-      ]
-     ],
-     "p_steigt": 0.535,
-     "bremse": false
-    }
-   },
-   "Silber": {
-    "datum": "2026-10-14",
-    "kurs": 58.71500015258789,
-    "ki": 0.2052,
-    "trend200": 0.0,
-    "halten": 1.0,
-    "vol_jahr": 0.3048,
-    "warum": {
-     "top_experten": [
-      [
-       "Ausbruch (Turtle)",
-       0.254
-      ],
-      [
-       "Saison: Sell in May",
-       0.177
-      ],
-      [
-       "Halten",
-       0.108
       ]
      ],
      "p_steigt": 0.557,
      "bremse": false
     }
    },
+   "Silber": {
+    "datum": "2026-10-16",
+    "kurs": 57.30500030517578,
+    "ki": 0.086,
+    "trend200": 0.0,
+    "halten": 1.0,
+    "vol_jahr": 0.3739,
+    "warum": {
+     "top_experten": [
+      [
+       "Ausbruch (Turtle)",
+       0.266
+      ],
+      [
+       "Saison: Sell in May",
+       0.186
+      ],
+      [
+       "Halten",
+       0.092
+      ]
+     ],
+     "p_steigt": 0.598,
+     "bremse": false
+    }
+   },
    "Öl (WTI)": {
-    "datum": "2026-10-14",
-    "kurs": 94.41999816894531,
+    "datum": "2026-10-16",
+    "kurs": 99.0199966430664,
     "ki": 0.0469,
     "trend200": 1.0,
     "halten": 1.0,
-    "vol_jahr": 0.3784,
+    "vol_jahr": 0.3775,
     "warum": {
      "top_experten": [
       [
        "Halten",
-       0.232
-      ],
-      [
-       "Saison: Sell in May",
-       0.166
+       0.273
       ],
       [
        "Momentum",
-       0.144
+       0.171
+      ],
+      [
+       "Ruhige Phasen",
+       0.136
       ]
      ],
-     "p_steigt": 0.515,
+     "p_steigt": 0.568,
      "bremse": true
     }
    }
@@ -232,54 +232,54 @@
  },
  "strategien": {
   "KI-Bot": {
-   "bargeld": 6932.04573861507,
+   "bargeld": 6752.227249846523,
    "positionen": {
     "S&P 500": {
-     "wert": 906.9249413458247,
-     "kurs": 7805.4501953125,
-     "datum": "2026-10-13",
-     "quote": 0.4923
+     "wert": 1126.6068838272613,
+     "kurs": 7659.43994140625,
+     "datum": "2026-10-16",
+     "quote": 0.6163
     },
     "SMI": {
-     "wert": 819.9487526783407,
-     "kurs": 14038.080078125,
-     "datum": "2026-10-14",
+     "wert": 839.2487857744411,
+     "kurs": 14391.3095703125,
+     "datum": "2026-10-16",
      "quote": 0.5472
     },
     "Nestlé": {
-     "wert": 82.80705643010616,
-     "kurs": 78.05000305175781,
-     "datum": "2026-10-14",
+     "wert": 86.85988049063224,
+     "kurs": 82.43000030517578,
+     "datum": "2026-10-16",
      "quote": 0.0811
     },
     "Bitcoin": {
-     "wert": 169.74650638808976,
-     "kurs": 83224.546875,
-     "datum": "2026-10-14",
+     "wert": 166.4675612020977,
+     "kurs": 81616.921875,
+     "datum": "2026-10-18",
      "quote": 0.2722
     },
     "EUR/CHF": {
-     "wert": 727.331275699807,
-     "kurs": 0.9327899813652039,
-     "datum": "2026-10-14",
+     "wert": 722.4033352927593,
+     "kurs": 0.9254999756813049,
+     "datum": "2026-10-16",
      "quote": 0.2307
     },
     "Gold": {
-     "wert": 236.35995255681686,
-     "kurs": 4165.5,
-     "datum": "2026-10-14",
+     "wert": 238.76013976822009,
+     "kurs": 4181.10009765625,
+     "datum": "2026-10-16",
      "quote": 0.2575
     },
     "Silber": {
-     "wert": 110.09454856773272,
-     "kurs": 58.71500015258789,
-     "datum": "2026-10-14",
-     "quote": 0.2052
+     "wert": 48.52341642051288,
+     "kurs": 57.30500030517578,
+     "datum": "2026-10-16",
+     "quote": 0.086
     },
     "Öl (WTI)": {
-     "wert": 20.58351288798194,
-     "kurs": 94.41999816894531,
-     "datum": "2026-10-14",
+     "wert": 20.81459349454205,
+     "kurs": 99.0199966430664,
+     "datum": "2026-10-16",
      "quote": 0.0469
     }
    },
@@ -438,6 +438,198 @@
        "wert": 20.58
       }
      }
+    },
+    {
+     "lauf": "2026-10-15",
+     "stand": "2026-10-15",
+     "depot": 9997.4,
+     "kosten": 0.3,
+     "positionen": {
+      "S&P 500": {
+       "gewicht": 0.1843,
+       "quote": 0.6163,
+       "wert": 1135.36
+      },
+      "SMI": {
+       "gewicht": 0.1481,
+       "quote": 0.5472,
+       "wert": 828.54
+      },
+      "Nestlé": {
+       "gewicht": 0.0999,
+       "quote": 0.0811,
+       "wert": 84.68
+      },
+      "Bitcoin": {
+       "gewicht": 0.0619,
+       "quote": 0.2722,
+       "wert": 165.71
+      },
+      "EUR/CHF": {
+       "gewicht": 0.3148,
+       "quote": 0.2307,
+       "wert": 725.73
+      },
+      "Gold": {
+       "gewicht": 0.0923,
+       "quote": 0.2575,
+       "wert": 236.97
+      },
+      "Silber": {
+       "gewicht": 0.0552,
+       "quote": 0.086,
+       "wert": 47.47
+      },
+      "Öl (WTI)": {
+       "gewicht": 0.0435,
+       "quote": 0.0469,
+       "wert": 20.71
+      }
+     }
+    },
+    {
+     "lauf": "2026-10-16",
+     "stand": "2026-10-16",
+     "depot": 10015.37,
+     "kosten": 0.0,
+     "positionen": {
+      "S&P 500": {
+       "gewicht": 0.1843,
+       "quote": 0.6163,
+       "wert": 1139.05
+      },
+      "SMI": {
+       "gewicht": 0.1481,
+       "quote": 0.5472,
+       "wert": 839.25
+      },
+      "Nestlé": {
+       "gewicht": 0.0999,
+       "quote": 0.0811,
+       "wert": 86.86
+      },
+      "Bitcoin": {
+       "gewicht": 0.0619,
+       "quote": 0.2722,
+       "wert": 167.48
+      },
+      "EUR/CHF": {
+       "gewicht": 0.3148,
+       "quote": 0.2307,
+       "wert": 722.4
+      },
+      "Gold": {
+       "gewicht": 0.0923,
+       "quote": 0.2575,
+       "wert": 238.76
+      },
+      "Silber": {
+       "gewicht": 0.0552,
+       "quote": 0.086,
+       "wert": 48.52
+      },
+      "Öl (WTI)": {
+       "gewicht": 0.0435,
+       "quote": 0.0469,
+       "wert": 20.81
+      }
+     }
+    },
+    {
+     "lauf": "2026-10-17",
+     "stand": "2026-10-17",
+     "depot": 10001.84,
+     "kosten": 0.0,
+     "positionen": {
+      "S&P 500": {
+       "gewicht": 0.1843,
+       "quote": 0.6163,
+       "wert": 1126.61
+      },
+      "SMI": {
+       "gewicht": 0.1481,
+       "quote": 0.5472,
+       "wert": 839.25
+      },
+      "Nestlé": {
+       "gewicht": 0.0999,
+       "quote": 0.0811,
+       "wert": 86.86
+      },
+      "Bitcoin": {
+       "gewicht": 0.0619,
+       "quote": 0.2722,
+       "wert": 166.39
+      },
+      "EUR/CHF": {
+       "gewicht": 0.3148,
+       "quote": 0.2307,
+       "wert": 722.4
+      },
+      "Gold": {
+       "gewicht": 0.0923,
+       "quote": 0.2575,
+       "wert": 238.76
+      },
+      "Silber": {
+       "gewicht": 0.0552,
+       "quote": 0.086,
+       "wert": 48.52
+      },
+      "Öl (WTI)": {
+       "gewicht": 0.0435,
+       "quote": 0.0469,
+       "wert": 20.81
+      }
+     }
+    },
+    {
+     "lauf": "2026-10-18",
+     "stand": "2026-10-18",
+     "depot": 10001.91,
+     "kosten": 0.0,
+     "positionen": {
+      "S&P 500": {
+       "gewicht": 0.1843,
+       "quote": 0.6163,
+       "wert": 1126.61
+      },
+      "SMI": {
+       "gewicht": 0.1481,
+       "quote": 0.5472,
+       "wert": 839.25
+      },
+      "Nestlé": {
+       "gewicht": 0.0999,
+       "quote": 0.0811,
+       "wert": 86.86
+      },
+      "Bitcoin": {
+       "gewicht": 0.0619,
+       "quote": 0.2722,
+       "wert": 166.47
+      },
+      "EUR/CHF": {
+       "gewicht": 0.3148,
+       "quote": 0.2307,
+       "wert": 722.4
+      },
+      "Gold": {
+       "gewicht": 0.0923,
+       "quote": 0.2575,
+       "wert": 238.76
+      },
+      "Silber": {
+       "gewicht": 0.0552,
+       "quote": 0.086,
+       "wert": 48.52
+      },
+      "Öl (WTI)": {
+       "gewicht": 0.0435,
+       "quote": 0.0469,
+       "wert": 20.81
+      }
+     }
     }
    ]
   },
@@ -445,51 +637,51 @@
    "bargeld": -10.0,
    "positionen": {
     "S&P 500": {
-     "wert": 1249.7134007970867,
-     "kurs": 7805.4501953125,
-     "datum": "2026-10-13",
+     "wert": 1226.336021351375,
+     "kurs": 7659.43994140625,
+     "datum": "2026-10-16",
      "quote": 1.0
     },
     "SMI": {
-     "wert": 1264.4331030782832,
-     "kurs": 14038.080078125,
-     "datum": "2026-10-14",
+     "wert": 1294.1954518317903,
+     "kurs": 14391.3095703125,
+     "datum": "2026-10-16",
      "quote": 1.0
     },
     "Nestlé": {
-     "wert": 1277.3305488739252,
-     "kurs": 78.05000305175781,
-     "datum": "2026-10-14",
+     "wert": 1339.8469116683293,
+     "kurs": 82.43000030517578,
+     "datum": "2026-10-16",
      "quote": 1.0
     },
     "Bitcoin": {
-     "wert": 1259.2511632485791,
-     "kurs": 83224.546875,
-     "datum": "2026-10-14",
+     "wert": 1234.9265651902913,
+     "kurs": 81616.921875,
+     "datum": "2026-10-18",
      "quote": 1.0
     },
     "EUR/CHF": {
-     "wert": 1251.932663102398,
-     "kurs": 0.9327899813652039,
-     "datum": "2026-10-14",
+     "wert": 1243.4503528216126,
+     "kurs": 0.9254999756813049,
+     "datum": "2026-10-16",
      "quote": 1.0
     },
     "Gold": {
-     "wert": 1242.7206189549715,
-     "kurs": 4165.5,
-     "datum": "2026-10-14",
+     "wert": 1255.3401939070598,
+     "kurs": 4181.10009765625,
+     "datum": "2026-10-16",
      "quote": 1.0
     },
     "Silber": {
-     "wert": 1214.6255873797377,
-     "kurs": 58.71500015258789,
-     "datum": "2026-10-14",
+     "wert": 1200.2482662461125,
+     "kurs": 57.30500030517578,
+     "datum": "2026-10-16",
      "quote": 1.0
     },
     "Öl (WTI)": {
-     "wert": 1262.5694637657232,
-     "kurs": 94.41999816894531,
-     "datum": "2026-10-14",
+     "wert": 1276.7436875291314,
+     "kurs": 99.0199966430664,
+     "datum": "2026-10-16",
      "quote": 1.0
     }
    },
@@ -648,40 +840,238 @@
        "wert": 1262.57
       }
      }
+    },
+    {
+     "lauf": "2026-10-15",
+     "stand": "2026-10-15",
+     "depot": 9978.72,
+     "kosten": 0.0,
+     "positionen": {
+      "S&P 500": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1235.86
+      },
+      "SMI": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1277.68
+      },
+      "Nestlé": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1306.3
+      },
+      "Bitcoin": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1229.3
+      },
+      "EUR/CHF": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1249.17
+      },
+      "Gold": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1245.94
+      },
+      "Silber": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1174.29
+      },
+      "Öl (WTI)": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1270.19
+      }
+     }
+    },
+    {
+     "lauf": "2026-10-16",
+     "stand": "2026-10-16",
+     "depot": 10082.14,
+     "kosten": 0.0,
+     "positionen": {
+      "S&P 500": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1239.88
+      },
+      "SMI": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1294.2
+      },
+      "Nestlé": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1339.85
+      },
+      "Bitcoin": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1242.43
+      },
+      "EUR/CHF": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1243.45
+      },
+      "Gold": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1255.34
+      },
+      "Silber": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1200.25
+      },
+      "Öl (WTI)": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1276.74
+      }
+     }
+    },
+    {
+     "lauf": "2026-10-17",
+     "stand": "2026-10-17",
+     "depot": 10060.53,
+     "kosten": 0.0,
+     "positionen": {
+      "S&P 500": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1226.34
+      },
+      "SMI": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1294.2
+      },
+      "Nestlé": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1339.85
+      },
+      "Bitcoin": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1234.37
+      },
+      "EUR/CHF": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1243.45
+      },
+      "Gold": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1255.34
+      },
+      "Silber": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1200.25
+      },
+      "Öl (WTI)": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1276.74
+      }
+     }
+    },
+    {
+     "lauf": "2026-10-18",
+     "stand": "2026-10-18",
+     "depot": 10061.09,
+     "kosten": 0.0,
+     "positionen": {
+      "S&P 500": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1226.34
+      },
+      "SMI": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1294.2
+      },
+      "Nestlé": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1339.85
+      },
+      "Bitcoin": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1234.93
+      },
+      "EUR/CHF": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1243.45
+      },
+      "Gold": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1255.34
+      },
+      "Silber": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1200.25
+      },
+      "Öl (WTI)": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1276.74
+      }
+     }
     }
    ]
   },
   "Trendfilter 200": {
-   "bargeld": 2467.104568022287,
+   "bargeld": 1466.9933383719635,
    "positionen": {
     "S&P 500": {
-     "wert": 1842.2200717973283,
-     "kurs": 7805.4501953125,
-     "datum": "2026-10-13",
+     "wert": 1807.7591485060807,
+     "kurs": 7659.43994140625,
+     "datum": "2026-10-16",
      "quote": 1.0
     },
     "SMI": {
-     "wert": 1498.444357964804,
-     "kurs": 14038.080078125,
-     "datum": "2026-10-14",
+     "wert": 1533.714886283701,
+     "kurs": 14391.3095703125,
+     "datum": "2026-10-16",
+     "quote": 1.0
+    },
+    "Nestlé": {
+     "wert": 1024.7721388034147,
+     "kurs": 82.43000030517578,
+     "datum": "2026-10-16",
      "quote": 1.0
     },
     "Bitcoin": {
-     "wert": 623.6095017931292,
-     "kurs": 83224.546875,
-     "datum": "2026-10-14",
+     "wert": 611.5634136741282,
+     "kurs": 81616.921875,
+     "datum": "2026-10-18",
      "quote": 1.0
     },
     "EUR/CHF": {
-     "wert": 3152.7146757685614,
-     "kurs": 0.9327899813652039,
-     "datum": "2026-10-14",
+     "wert": 3131.353859093019,
+     "kurs": 0.9254999756813049,
+     "datum": "2026-10-16",
      "quote": 1.0
     },
     "Öl (WTI)": {
-     "wert": 438.8808718119817,
-     "kurs": 94.41999816894531,
-     "datum": "2026-10-14",
+     "wert": 443.80796363629105,
+     "kurs": 99.0199966430664,
+     "datum": "2026-10-16",
      "quote": 1.0
     }
    },
@@ -838,6 +1228,198 @@
        "gewicht": 0.0435,
        "quote": 1.0,
        "wert": 438.88
+      }
+     }
+    },
+    {
+     "lauf": "2026-10-15",
+     "stand": "2026-10-15",
+     "depot": 9998.1,
+     "kosten": 1.0,
+     "positionen": {
+      "S&P 500": {
+       "gewicht": 0.1843,
+       "quote": 1.0,
+       "wert": 1821.8
+      },
+      "SMI": {
+       "gewicht": 0.1481,
+       "quote": 1.0,
+       "wert": 1514.14
+      },
+      "Nestlé": {
+       "gewicht": 0.0999,
+       "quote": 1.0,
+       "wert": 999.11
+      },
+      "Bitcoin": {
+       "gewicht": 0.0619,
+       "quote": 1.0,
+       "wert": 608.77
+      },
+      "EUR/CHF": {
+       "gewicht": 0.3148,
+       "quote": 1.0,
+       "wert": 3145.75
+      },
+      "Gold": {
+       "gewicht": 0.0923,
+       "quote": 0.0,
+       "wert": 0.0
+      },
+      "Silber": {
+       "gewicht": 0.0552,
+       "quote": 0.0,
+       "wert": 0.0
+      },
+      "Öl (WTI)": {
+       "gewicht": 0.0435,
+       "quote": 1.0,
+       "wert": 441.53
+      }
+     }
+    },
+    {
+     "lauf": "2026-10-16",
+     "stand": "2026-10-16",
+     "depot": 10043.65,
+     "kosten": 0.0,
+     "positionen": {
+      "S&P 500": {
+       "gewicht": 0.1843,
+       "quote": 1.0,
+       "wert": 1827.73
+      },
+      "SMI": {
+       "gewicht": 0.1481,
+       "quote": 1.0,
+       "wert": 1533.71
+      },
+      "Nestlé": {
+       "gewicht": 0.0999,
+       "quote": 1.0,
+       "wert": 1024.77
+      },
+      "Bitcoin": {
+       "gewicht": 0.0619,
+       "quote": 1.0,
+       "wert": 615.28
+      },
+      "EUR/CHF": {
+       "gewicht": 0.3148,
+       "quote": 1.0,
+       "wert": 3131.35
+      },
+      "Gold": {
+       "gewicht": 0.0923,
+       "quote": 0.0,
+       "wert": 0.0
+      },
+      "Silber": {
+       "gewicht": 0.0552,
+       "quote": 0.0,
+       "wert": 0.0
+      },
+      "Öl (WTI)": {
+       "gewicht": 0.0435,
+       "quote": 1.0,
+       "wert": 443.81
+      }
+     }
+    },
+    {
+     "lauf": "2026-10-17",
+     "stand": "2026-10-17",
+     "depot": 10019.69,
+     "kosten": 0.0,
+     "positionen": {
+      "S&P 500": {
+       "gewicht": 0.1843,
+       "quote": 1.0,
+       "wert": 1807.76
+      },
+      "SMI": {
+       "gewicht": 0.1481,
+       "quote": 1.0,
+       "wert": 1533.71
+      },
+      "Nestlé": {
+       "gewicht": 0.0999,
+       "quote": 1.0,
+       "wert": 1024.77
+      },
+      "Bitcoin": {
+       "gewicht": 0.0619,
+       "quote": 1.0,
+       "wert": 611.29
+      },
+      "EUR/CHF": {
+       "gewicht": 0.3148,
+       "quote": 1.0,
+       "wert": 3131.35
+      },
+      "Gold": {
+       "gewicht": 0.0923,
+       "quote": 0.0,
+       "wert": 0.0
+      },
+      "Silber": {
+       "gewicht": 0.0552,
+       "quote": 0.0,
+       "wert": 0.0
+      },
+      "Öl (WTI)": {
+       "gewicht": 0.0435,
+       "quote": 1.0,
+       "wert": 443.81
+      }
+     }
+    },
+    {
+     "lauf": "2026-10-18",
+     "stand": "2026-10-18",
+     "depot": 10019.96,
+     "kosten": 0.0,
+     "positionen": {
+      "S&P 500": {
+       "gewicht": 0.1843,
+       "quote": 1.0,
+       "wert": 1807.76
+      },
+      "SMI": {
+       "gewicht": 0.1481,
+       "quote": 1.0,
+       "wert": 1533.71
+      },
+      "Nestlé": {
+       "gewicht": 0.0999,
+       "quote": 1.0,
+       "wert": 1024.77
+      },
+      "Bitcoin": {
+       "gewicht": 0.0619,
+       "quote": 1.0,
+       "wert": 611.56
+      },
+      "EUR/CHF": {
+       "gewicht": 0.3148,
+       "quote": 1.0,
+       "wert": 3131.35
+      },
+      "Gold": {
+       "gewicht": 0.0923,
+       "quote": 0.0,
+       "wert": 0.0
+      },
+      "Silber": {
+       "gewicht": 0.0552,
+       "quote": 0.0,
+       "wert": 0.0
+      },
+      "Öl (WTI)": {
+       "gewicht": 0.0435,
+       "quote": 1.0,
+       "wert": 443.81
       }
      }
     }

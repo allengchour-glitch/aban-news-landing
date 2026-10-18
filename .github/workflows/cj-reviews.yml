@@ -1,7 +1,6 @@
 name: "POD Reviews-Import (echte CJ-Kommentare zu Judge.me)"
 
-# Importiert ECHTE Kaeufer-Reviews des selben Produkts von CJ nach Judge.me. No-op ohne Creds. Idempotent (Ledger).
-
+# Importiert echte CJ-Kommentare. Ohne Credentials kein Import; Testlauf ist Standard.
 on:
   workflow_dispatch:
     inputs:
@@ -17,6 +16,10 @@ on:
         description: 'Max. Produkte'
         type: string
         default: '25'
+      scan:
+        description: 'Max. gescannte Produkte (max. 5000; leer = limit mal 5)'
+        type: string
+        default: ''
       per:
         description: 'Max. Reviews je Produkt'
         type: string
@@ -43,10 +46,26 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            automation/cj_reviews_import.mjs
+            automation/lib
+            dropship/cj_reviews_done.txt
+            dropship/cj_reviews_leer.txt
+            dropship/cj_review_items.jsonl
+          sparse-checkout-cone-mode: false
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - name: Require a branch for durable import checkpoints
+        run: |
+          if [[ "$GITHUB_REF" != refs/heads/* ]]; then
+            echo "Select a branch; import checkpoints cannot be saved to a tag." >&2
+            exit 1
+          fi
       - name: CJ-Reviews importieren
+        id: import
         env:
           CJ_EMAIL: ${{ secrets.CJ_EMAIL }}
           CJ_API_KEY: ${{ secrets.CJ_API_KEY }}
@@ -57,19 +76,58 @@ jobs:
           SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
           SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          QUERY: ${{ github.event.inputs.query }}
-          ONLY: ${{ github.event.inputs.only }}
-          LIMIT: ${{ github.event.inputs.limit }}
-          PER: ${{ github.event.inputs.per }}
-          DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && '1' || '' }}
-          DEBUG: ${{ github.event.inputs.debug == 'true' && '1' || '' }}
-        run: node automation/cj_reviews_import.mjs
-      - name: Ledger committen
-        if: ${{ github.event.inputs.dry_run != 'true' }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          QUERY: ${{ inputs.query }}
+          ONLY: ${{ inputs.only }}
+          LIMIT: ${{ inputs.limit }}
+          SCAN: ${{ inputs.scan }}
+          PER: ${{ inputs.per }}
+          DRY_RUN: ${{ inputs.dry_run && '1' || '0' }}
+          DEBUG: ${{ inputs.debug && '1' || '0' }}
         run: |
-          if [ -n "$(git status --porcelain dropship/cj_reviews_done.txt)" ]; then
-            git config user.name "luxestyle-autopilot"; git config user.email "bot@users.noreply.github.com"
-            git add dropship/cj_reviews_done.txt
-            git commit -m "POD: CJ-Reviews-Import Ledger [skip ci]"
-            for i in 1 2 3 4 5; do git push origin HEAD:main && break; git pull --rebase --autostash origin main || true; sleep 3; done
-          else echo "kein Ledger-Update"; fi
+          mkdir -p dropship
+          node automation/cj_reviews_import.mjs
+      - name: Save review import recovery checkpoints
+        if: ${{ always() && steps.import.outcome != 'skipped' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: cj-review-checkpoints-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            dropship/cj_reviews_done.txt
+            dropship/cj_reviews_leer.txt
+            dropship/cj_review_items.jsonl
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Ledger committen, auch nach Teilfehlern
+        if: ${{ always() && steps.import.outcome != 'skipped' && !inputs.dry_run }}
+        env:
+          TARGET_BRANCH: ${{ github.ref_name }}
+        run: |
+          ledger_paths=()
+          for path in dropship/cj_reviews_done.txt dropship/cj_reviews_leer.txt dropship/cj_review_items.jsonl; do
+            if [ -f "$path" ]; then ledger_paths+=("$path"); fi
+          done
+          if [ "${#ledger_paths[@]}" -eq 0 ]; then
+            echo "Kein Ledger vorhanden."
+            exit 0
+          fi
+          if [ -n "$(git status --porcelain -- "${ledger_paths[@]}")" ]; then
+            git config user.name "luxestyle-autopilot"
+            git config user.email "bot@users.noreply.github.com"
+            git add -- "${ledger_paths[@]}"
+            git commit -m "POD: CJ-Reviews-Import Checkpoint [skip ci]"
+            for attempt in 1 2 3 4 5; do
+              if git push origin "HEAD:refs/heads/$TARGET_BRANCH"; then
+                exit 0
+              fi
+              if ! git pull --rebase --autostash origin "$TARGET_BRANCH"; then
+                echo "Checkpoint rebase failed; recover the ledgers from the workflow artifact." >&2
+                exit 1
+              fi
+              sleep 3
+            done
+            echo "Checkpoint push failed after 5 attempts; recover the ledgers from the workflow artifact." >&2
+            exit 1
+          else
+            echo "Kein Ledger-Update."
+          fi
