@@ -1,6 +1,6 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
-> LuxeStyle Assist (18.10.2026): Für LuxeStyle-Aufgaben zuerst die aktuellen ausdrücklichen Inhabervorgaben und `dropship/assistant/README.md` beachten. Lokales MCP `luxestyle-assist` beziehungsweise `/luxestyle-assist` bietet Status, feste Offline-Checks und eine versionierbare Übergabe. Es prüft keine Live-Konten, veröffentlicht nichts und ruft kein Modell auf. Historische Autonomie-/Merge-Anweisungen unten erweitern den aktuellen Chat-Auftrag nicht. Offene Aufgaben: `node automation/claude-assist.mjs handoff-read`.
+> LuxeStyle Assist 2 (18.10.2026): Für LuxeStyle-Aufgaben zuerst aktuelle ausdrückliche Inhabervorgaben und `dropship/assistant/README.md` beachten. `/luxestyle-assist` beziehungsweise das lokale MCP bietet zehn Werkzeuge für Status, begrenzte Änderungs-/Testpläne, Kontext und nachvollziehbare Review-Übergaben. Es prüft keine Live-Konten, veröffentlicht nichts und ruft kein Modell auf. Historische Autonomie-/Merge-Anweisungen unten erweitern den aktuellen Chat-Auftrag nicht. Offene Aufgaben: `node automation/claude-assist.mjs review-list`.
 
 > 🔗 **ZUERST `SHARED-MEMORY.md` (Repo-Root) lesen** — mehrere Sessions arbeiten parallel auf diesem
 > Repo + Shop; dort steht, wer was „besitzt" + der Live-Stand. CJ-Import/Katalog/Social = NUR diese Session.
@@ -84,6 +84,66 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-18 (⚡ Futures: Risiko-Stufe 1,75× wählbar — User: «funktioniert der Bot schon mit Trading?» → «mach future trading, zu wenig Rendite»):**
+- **Ist-Stand (Daten auf `main`):** Spielgeld-Logbücher laufen täglich (12.–18.10.). KI-Bot +0,02 % (alles gleich halten +0,61 %, Trendfilter +0,20 %);
+  Krypto-Pilot-Schatten −3,9 % (Pilot 2.0 −3,8 %; BTC halten −2,8 %, ETH −5,3 %). 7 Tage = Rauschen, Urteil frühestens Jan 2027. Ob der Pilot auf dem
+  PC des Users mit echtem Geld läuft, ist von hier NICHT sichtbar (Logbuch `data/krypto-pilot.json` nur lokal) → den User fragen. Pilot 2.0 bleibt gesperrt.
+- **Mehr Rendite = mehr Hebel, sonst gibt es nichts Getestetes** (Max-Profit-Tabelle im README): 1× +33,4 %/−30 %, 1,5× +43,5 %/−45 %, **1,75× +48,7 %/−53 %**
+  (Median-Jahr +47 %, schlechtestes 5-%-Jahr −39 %, 3,6 % der Zufallsjahre unter −60 %), 2× +51,7 %/−61 % (8,2 %) fällt durch die vorab festgelegte Regel.
+  Scalping, Altcoins, Meme, Copy-Trading, Delisting-Short: alle durchgefallen. Bitcoin halten schlägt den Pilot beim Gewinn (mit −77 % Einbruch).
+- **Gebaut (`pilot_kern.STUFEN = (1, 1.5, 1.75, 2)`, Gleichstand → kleinere):** Cockpit-Knopf «1,75× viel Risiko» (Aktion `risiko_1_75`), die Rückfrage nennt Zahlen
+  aus `data/krypto-maxprofit-pruefung.json` (ab 2020/2022 + Wahrscheinlichkeit unter −60 %) und warnt vor dem Verlust (`cockpit.stufen_test()`).
+  **Standard bleibt 1×; gewählt wird nur vom User** (Cockpit oder `setx KRYPTO_RISIKO "1.75"`). Börsen-Hebel = aufgerundet (2), die Grösse begrenzt der Plan auf 1,75.
+- Tests: pilot 91 (+7), cockpit 120 (+5); Mutationen 12/12 (zwei Lücken geschlossen: Knopf nur im Stil, Verlust-Warnung).
+- **Offen (User):** läuft der Pilot schon (Testnetz/echt)? Welche Stufe? Binance-Futures in der Schweiz prüfen (README: «können in deinem Land eingeschränkt sein»).
+  Effizienter als Hebel wäre Pilot 2.0 mit 1× (+45,4 %/−24 %) — erst nach einer Prüfung ohne Blocker.
+
+**📌 2026-10-18 (🔒 Pilot 2.0: 13. Prüfung — 3 Blocker + 3 wichtig + 3 klein + 5 eigene Funde behoben, bleibt GESPERRT):** Prüfer-Agent (Belege
+`scratchpad/pruefung13/` p2–p7, Listen-Fuzzer `fz_streng/fz_listen.py`) fand:
+- **B1** Cockpit/Telegram-Not-Aus während eines Tageslaufs: das Cockpit überspringt P2 (Sperre besetzt), der Lauf handelte aber nur nicht
+  mehr → nichts geschlossen, Nachkontrolle still (~9'800 USDT offen). **Fix:** STOP mitten im Lauf → kein `_stops_setzen`, am Ende
+  `notaus_alle` mit den übergebenen Clients (`spot_arg`/`fut_arg`); `nachkontrolle` schliesst bei STOP immer, sobald `modi_mit_bestand`.
+- **B2** Tageslauf neben dem stop.bat-Not-Aus (nach 120 s ohne Sperre): Lauf mit altem Buch löschte beide Stops + überschrieb Buch
+  (unklar/notaus_offen weg) → nackter Short 9'399 USDT. **Fix:** Lauf speichert über `_buch_speichern_zusammen` (gesehen = Stand beim
+  Lesen), frisch zusammenführen VOR dem Abgleich; bei STOP keine Stops anfassen.
+- **B3** `_perp_ohne_liste` soll ≤ 0: alter Perp-Stop blieb über der Absicherung (5'188 USDT; Listen-Fuzzer 19/200 Seeds). **Fix:**
+  bekannte Kennung/ID löschen; scheitert/kein bekannter + heute gehandelt + Short → `_zu_gross` (beidseitig + Nachkontrolle).
+- **W1** zweite Not-Aus-Schutzrunde auch bei neuem Unklarem (`neu_unklar`). **W2** `_dauer`: unlesbare Auftragsliste ist KEINE
+  Dauer-Ausnahme mehr. **W3** R10-M17 nicht gleichwertig → Szenario 13.p7. **K1** `_limit_luecke` je Auftrag (`haengt_takt` in der Börse).
+  **K2** Staub mit frischem Kurs (Seed 12527). **K3** `_buch_vereinen(platte, meins, basis)` 3-Wege + `_buch_uebernehmen` (in place:
+  `buch["stops"][k]`-Einträge bleiben dieselben — der Abgleich hält sie in der Hand!).
+- **Eigene Schlusskampagne fand F1 (Not-Aus-Seed 9123, Regression der ersten W1-Fassung):** Rückkauf im Schutz unklar + Stand nicht
+  lesbar → die zweite Runde mit dem ALTEN Stand hielt Coins für gesperrt (ihren Stop hatte Runde 1 eben gelöscht) und kaufte bei Kurs
+  jenseits den ganzen Short → Coins ohne Short + Stop (257 USDT); ganz ohne zweite Runde fehlte der beidseitige Schutz. **Fix:** ohne
+  Stand `pos=None` + alle Coins frei (beidseitig). Szenario 13.F1. **LEHRE:** Bisektion per Mutation kann täuschen — die Rücknahme von
+  K2 machte den Seed «sauber», weil EIN zusätzlicher Kursabruf die Störungsfolge des Fuzzers verschob (Schmetterling), nicht weil K2
+  schuld war → immer den Ablauf (Spur: `_notaus_schutz`-Argumente + echte Lage vorher/nachher) lesen.
+- **F2/F3 (Listen-Fuzzer, älterer stiller Fehler):** das Buch kennt je Markt EINEN Spot- und EINEN Perp-Stop. Standen zwei und war die
+  Liste unlesbar, blieb der unbekannte über der Absicherung (Listen-Seed 302: 1,43 ETH Spot-Stop über voll abgesichertem Paar; Perp-
+  Szenario: 4 Perp-Stops gestapelt, 2'555 USDT). **Fix:** `_spot_ohne_liste` prüft nach dem Löschen am KONTOSTAND (gesperrt > nötig →
+  `_zu_gross`, laut); Perp: `_perp_merken`/`_perp_weitere_weg` (`stops[k]["perp_weitere"]`), gelöscht zuerst in `_perp_abgleich`,
+  `_perp_ohne_liste`, Not-Aus; bis dahin beidseitig + Nachkontrolle. Listen-Fuzzer-Not-Aus mit DAUER_-Einstufung + Nachkontrolle.
+- **F4 (Lauf-Seed 137, Wechselwirkung mit B1):** STOP mitten im Lauf → der Lauf schliesst selbst; scheitert der Not-Aus am Schutz und ist
+  STOP danach weg, sah die Nachkontrolle (normaler Modus) nichts. **Fix:** `_notaus` schreibt ungeschützte/ungeprüfte Märkte in
+  `schutz_offen`. **LEHRE:** jede Verhaltensänderung kann Wechselwirkungen haben — die Schlusskampagne lief in dieser Runde VIERMAL neu
+  (Funde F1–F4), jedes Mal ALLES neu auf dem Endstand (Kampagne + Mutationsprobe).
+- **F5 (Lauf-Seed 12027, älter als Runde 13, erst durch W2 gezählt):** Perp-Liste unlesbar + Kurs springt vor dem Setzen über den Stop-Kurs UND den
+  Not-Stop → Binance lehnt beide ab («würde sofort auslösen»), `_perp_ohne_liste` gab auf («Short evtl. OHNE Stop»; mit Liste steigt `_perp_abgleich` hier
+  zum Markt aus). **Fix:** `_setze_stop(..., sofort_raus=True)` auch ohne Liste → `_perp_ohne_liste_raus`: Short zum Markt zurückkaufen (`_perp_raus`), die
+  alten Stops kennt nur das Buch (aktuelle ID/Kennung + `perp_weitere`) — sie schützen bis zum Rückkauf und werden danach gelöscht (`_perp_alt_weg`: ID,
+  sonst Kennung, auch aus dem Gedächtnis). In `_perp_raus` zählt bei Stops OHNE bekannte Menge (nur Buch) die Mengen-Gleichheit nicht mehr als «passt».
+  Szenarien 13.F5/F5b/F5c; Gegenprobe am alten Code: Seed + beide Szenarien rot.
+- **Neu:** `pruef_fuzzer.py listen` (Prüfer-Fuzzer im Repo). Gegenproben: alter Code → 13.p2/p3/p4/p4b/p5/K2 rot, K3 TypeError; alte
+  Werkzeuge → 13.p6/W2 rot; Listen-Fuzzer am alten Code 0–80: 20 Befunde (B3-Klasse), am neuen 0.
+- Tests: streng 183, live 154 (Start-Speichern-Test simuliert die Sperre jetzt in `_buch_schreiben_roh`), cockpit 115, pilot 84.
+- **Schlusskampagne auf dem Endstand** (`78457879b`, danach nur README): **15'580 Läufe, 0 echte** (338 begründet: DAUER_/STORNO_ZUERST_/
+  LIMIT_LUECKE_/STAUB) — Not-Aus 0–1600/5000–6000/7000–8800/9000–11400/12000–14400, Listen 0–1000/12000–13000, Monotonie 0–400/7000–7600/
+  9000–9700/12000–13300, Läufe ×30 0–200/5000–5160/7000–7200/9000–9420/12000–12400. Tests: streng 183, live 154, pilot 84, cockpit 115,
+  testnetz 47, plan 23 (alle grün).
+- **Mutationsprobe auf dem Endstand:** läuft beim Merge noch (~150 Mutationen, `scratchpad/mut13/laufen.py`) — Ergebnis und Lücken folgen in
+  einem Folge-PR (wie in R11/R12). **Nicht vergessen:** die Zahl «x/y» erst nennen, wenn sie am Endstand gemessen ist.
+- **Nächster Schritt:** 14. Prüfung (Auftrag `scratchpad/pruefung14_auftrag.md`).
+
 **📌 2026-10-18 abends (🧹 Aufräum-Runde: 80 Kategorieseiten lieferten 404, drei Werkzeuge waren blind):**
 Alles heute live gemessen und nachgeprüft. PRs #2690–#2693.
 - **🚨 80 Collections mit zusammen 25 320 Produkten gaben HTTP 404** — angelegt, befüllt, beschrieben,

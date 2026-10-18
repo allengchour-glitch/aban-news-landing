@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Pilot 2.0 gegen die STRENGE Prüf-Börse (pruef_boerse.py) — die Belege der 8. (p1–p11), 9. (9.p1–9.p10), 10. (10.*) und
-11. Prüfung (11.*, dazu die Schlussprobe 11.F/11.S: eigene Funde und Lücken der Mutationsprobe), der 12. Prüfung (12.*) und die
-Fuzzer-Funde als feste Szenarien, dazu ein kleiner Fuzzer mit festen Seeds (pruef_fuzzer.py). Ohne Netz, nur 127.0.0.1.
+11. Prüfung (11.*, dazu die Schlussprobe 11.F/11.S: eigene Funde und Lücken der Mutationsprobe), der 12. (12.*) und 13. Prüfung
+(13.*) und die Fuzzer-Funde als feste Szenarien, dazu ein kleiner Fuzzer mit festen Seeds (pruef_fuzzer.py). Ohne Netz, nur 127.0.0.1.
     python3 -B tools/trading/krypto_bot/test_pilot2_streng.py"""
 import json
 import os
@@ -1835,6 +1835,396 @@ L._spot_abgleich(sp, "BTC", dd, {}, {"stop_long": 85000.0}, s_, {"auftraege": []
 B.regeln = []
 pruefe("12.S10 zu grosser Stop, Ersetzen unklar → beidseitig gesichert (er könnte noch stehen und die Absicherung treffen)",
        dd.get("beidseitig") is True, dd)
+
+# ── 13. Prüfung: Belege p2–p7 und die Fixes als feste Szenarien ──
+def buch13(d_, modus="echt"):
+    try:
+        return json.loads(Path(d_).read_text()).get(modus) or {}
+    except (OSError, ValueError):
+        return {}
+
+
+def ung13(k_, sym="BTCUSDT"):
+    return tuple(round(x, 2) for x in P.ungesichert(k_, sym))
+
+
+def flach13(k_):
+    return all(abs(lage(k_, s_)["pos"]) < 1e-9 and abs(lage(k_, s_)["netto"]) * B.kurs[s_] < 10 for s_ in P.SYMS)
+
+
+# 13.p4 (B1): Not-Aus im Cockpit, während der Tageslauf die Lauf-Sperre hält (das Cockpit überspringt Pilot 2.0) — STOP erscheint mitten im
+#     Lauf → der Lauf schliesst Pilot 2.0 am Ende selbst (vorher: er handelte nur nicht mehr, schloss nichts, setzte kein «Not-Aus offen»)
+k = neues_konto(20000)
+d = neu_buch()
+lauf([E("BTC", 0.5), E("ETH", -0.5)], env_echt(), d)
+
+
+def h13p4(m, pfad, p_):
+    P.BF.STOP_DATEI.write_text("Cockpit")
+
+
+B.vor_jeder_anfrage = h13p4
+try:
+    r = lauf([E("BTC", 0.5), E("ETH", -0.5)], env_echt(), d)
+finally:
+    B.vor_jeder_anfrage = None
+    P.BF.STOP_DATEI.unlink(missing_ok=True)
+pruefe("13.p4 STOP erscheint mitten im Tageslauf → der Lauf schliesst Pilot 2.0 selbst (alles zu, Konto flach)",
+       r["alles_zu"] is True and flach13(k), (r["alles_zu"], {s_: lage(k, s_) for s_ in P.SYMS}, r["zeilen"][-3:]))
+# 13.p4b (B1): STOP kam erst NACH den Aufträgen (z. B. während des Lagebilds) — der Lauf sah ihn nicht; die Nachkontrolle im
+#     Not-Aus-Modus schliesst trotzdem, sobald Pilot 2.0 Bestand hat (vorher: ohne «Not-Aus offen» still beendet)
+k = neues_konto(20000)
+d = neu_buch()
+lauf([E("BTC", 0.5), E("ETH", -0.5)], env_echt(), d)
+rn = P.nachkontrolle(dict(env_echt(), KI_BOT_STOP="1"), d)
+pruefe("13.p4b Nachkontrolle bei STOP, ohne «Not-Aus offen» im Buch: schliesst trotzdem (alles zu, Konto flach)",
+       rn.get("alles_zu") is True and flach13(k), (rn.get("alles_zu"), {s_: lage(k, s_) for s_ in P.SYMS}, rn.get("zeilen")))
+
+# 13.p3 (B2): Tageslauf T las das Buch VOR dem Not-Aus A von stop.bat (A schloss nach 120 s ohne Sperre, parallel): A's Coin-Verkauf
+#     unklar → A sichert beidseitig und schreibt «unklar» + «Not-Aus offen». T darf das nicht überschreiben und keine Stops entfernen
+#     (vorher: Stops weg, Buch überschrieben → nach der Ankunft ein Short ohne Coins und ohne Stop, 9'399 USDT)
+k = neues_konto(20000)
+d = neu_buch()
+lauf([E("BTC", 0.0)], env_echt(), d)
+schnapp13 = Path(d).read_text()
+B.regeln = [regel(methode="POST", pfad="/api/v3/order", pred=MARKT_VERKAUF, art="spaet_u", anzahl=1)]
+rA = L.notaus_alle(env_echt(), d)
+B.regeln = []
+echt_lesen13, n13 = L.buch_lesen, [0]
+
+
+def lesen_wie_t13(datei, modus):
+    if n13[0] == 0:
+        n13[0] = 1
+        tmp = Path(str(d) + ".t")
+        tmp.write_text(schnapp13)
+        return echt_lesen13(tmp, modus)
+    return echt_lesen13(datei, modus)
+
+
+def h13p3(m, pfad, p_):
+    P.BF.STOP_DATEI.write_text("stop.bat")
+
+
+L.buch_lesen = lesen_wie_t13
+B.vor_jeder_anfrage = h13p3
+try:
+    rT = lauf([E("BTC", 0.0)], env_echt(), d)
+    bT = buch13(d)
+    rN = P.nachkontrolle(dict(env_echt(), KI_BOT_STOP="1"), d)
+finally:
+    B.vor_jeder_anfrage = None
+    L.buch_lesen = echt_lesen13
+    P.BF.STOP_DATEI.unlink(missing_ok=True)
+    Path(str(d) + ".t").unlink(missing_ok=True)
+P.pending_abarbeiten()
+u13 = ung13(k)
+pruefe("13.p3 Tageslauf neben dem Not-Aus von stop.bat: «unklar»/«Not-Aus offen» bleiben im Buch, nach der Ankunft nichts ohne Stop",
+       rA["alles_zu"] is False and bT.get("unklar") and bT.get("notaus_offen") and max(u13) < 10,
+       (u13, bT.get("unklar"), bT.get("notaus_offen"), lage(k, "BTCUSDT"), rT["zeilen"][-3:]))
+
+# 13.p2 (B3): Tageslauf, die Perp-Stop-Liste ist ab dem Rückkauf dauerhaft gestört (Setzen/Löschen gehen): der alte Perp-Stop wäre über
+#     der Absicherung zu gross → über seine Kennung gelöscht (vorher: nur Warnung; bei 110'500 Coins ohne Short und ohne Stop, 5'188 USDT).
+#     b: Löschen geht auch nicht → beidseitig gesichert + Nachkontrolle
+for name, loeschen_geht in (("Löschen geht", True), ("Löschen abgelehnt", False)):
+    k = neues_konto(20000)
+    d = neu_buch()
+    lauf([E("BTC", -0.5)], env_echt(), d)
+    an13 = [0]
+
+    def h13p2(m, pfad, p_, loeschen_geht=loeschen_geht):
+        if m == "POST" and pfad == "/fapi/v1/order" and not an13[0]:
+            an13[0] = 1
+            B.regeln.append(regel(methode="GET", pfad="/fapi/v1/openAlgoOrders", art="vor503", anzahl=10 ** 6))
+            if not loeschen_geht:
+                B.regeln.append(regel(methode="DELETE", pfad="/fapi/v1/algoOrder", art="vor503", anzahl=10 ** 6))
+    B.vor_jeder_anfrage = h13p2
+    try:
+        r = lauf([E("BTC", 0.5)], env_echt(), d)
+    finally:
+        B.vor_jeder_anfrage = None
+        B.regeln = []
+    b13 = buch13(d)
+    B.bewegen("BTCUSDT", 110500.0)
+    u13 = ung13(k)
+    pruefe(f"13.p2 Perp-Stop-Liste im Tageslauf unlesbar, {name}: kein zu grosser alter Stop über der Absicherung — bei 110'500 nichts "
+           "ohne Stop" + ("" if loeschen_geht else " (beidseitig, Nachkontrolle gemerkt)"),
+           max(u13) < 10 and (loeschen_geht or "BTC" in (b13.get("schutz_offen") or [])),
+           (u13, lage(k, "BTCUSDT"), b13.get("schutz_offen"), [z for z in r["zeilen"] if "⚠️" in z][:3]))
+
+# 13.p5 (W1): Not-Aus, Kurssprung beim ersten Schutz-Stop, der Rückkauf des ungesicherten Shorts ist zweimal UNKLAR → weiter Not-Stop;
+#     die zweite Schutz-Runde läuft jetzt auch, weil ein Auftrag unklar wurde (beidseitig: Spot-Stop über die Coins). Vorher: kommt der
+#     Rückkauf an und löst der (jetzt zu grosse) weite Not-Stop aus, lagen die Coins ohne Short und ohne Stop da (5'543 USDT)
+k = neues_konto(20000)
+d = neu_buch()
+lauf([E("BTC", -0.5)], env_echt(), d)
+k.algos.clear()  # Perp-Stop des Richtungs-Shorts fehlt (z. B. im Lauf abgelehnt)
+g13 = [0]
+
+
+def h13p5(m, pfad, p_):
+    if m == "POST" and pfad == "/fapi/v1/algoOrder" and not g13[0]:
+        g13[0] = 1
+        B.bewegen("BTCUSDT", 112000.0)
+        B.regeln.append(regel(methode="GET", pfad="/api/v3/ticker/price", art="429", anzahl=10 ** 6))
+        B.regeln.append(regel(methode="GET", pfad="/fapi/v1/premiumIndex", art="vor503", anzahl=10 ** 6))
+
+
+B.vor_jeder_anfrage = h13p5
+B.regeln = [regel(methode="POST", pfad="/fapi/v1/order", pred=REDUCE, art="429", anzahl=2),
+            regel(methode="POST", pfad="/fapi/v1/order", pred=REDUCE, art="spaet_u", anzahl=2)]
+try:
+    r = lauf([], env_echt(), d, notaus=True)
+finally:
+    B.vor_jeder_anfrage = None
+    B.regeln = []
+P.pending_abarbeiten()
+B.bewegen("BTCUSDT", 120500.0)  # der weite Not-Stop löst aus
+u13 = ung13(k)
+pruefe("13.p5 Not-Aus: Rückkauf zweimal unklar → zweite Schutz-Runde beidseitig; nach Ankunft und Kurssprung nichts ohne Stop",
+       max(u13) < 10 and any("im Schutz blieb unklar" in z for z in r["zeilen"]), (u13, lage(k, "BTCUSDT"), r["zeilen"][-4:]))
+
+# 13.p7 (W3, R10-M17 war nicht gleichwertig): Not-Aus, die Spot-Auftragsliste ist dauerhaft unlesbar, ALLE Coins liegen unter einem
+#     Spot-Stop, der Perp-Stop des Shorts fehlt, der Rückkauf scheitert (429) → der Short bekommt seinen Stop über die GANZE Menge
+#     (die gestoppten Coins können wegfallen); mit der Mutation nur über den ungesicherten Teil → nach dem Spot-Stop ein nackter Short
+k = neues_konto(20000)
+d = neu_buch()
+lauf([E("BTC", -0.5)], env_echt(), d)
+sp13 = L.Spot(L.einstellungen(env_echt())["spot"])
+k.algos.clear()
+for o in sp13.eigene_stops("BTCUSDT"):
+    sp13.abbrechen("BTCUSDT", o["orderId"])
+rs13 = sp13.regeln2("BTCUSDT")
+sp13.stop_verkauf("BTCUSDT", float(L.PL.runde(k.frei["BTC"], rs13["step"])), 95000.0, rs13, cid=L._kennung(L.CID_STOP_SPOT))
+short13 = -lage(k, "BTCUSDT")["pos"]
+B.regeln = [regel(methode="POST", pfad="/fapi/v1/order", pred=REDUCE, art="429", anzahl=2),
+            regel(methode="GET", pfad="/api/v3/openOrders", art="vor503", anzahl=10 ** 6)]
+try:
+    lauf([], env_echt(), d, notaus=True)
+finally:
+    B.regeln = []
+g13 = lage(k, "BTCUSDT")
+B.bewegen("BTCUSDT", 94000.0)  # der Spot-Stop löst aus
+u13 = ung13(k)
+pruefe("13.p7 Not-Aus, Spot-Liste unlesbar, alle Coins gestoppt: der Short hat seinen Stop über die ganze Menge — nach dem Spot-Stop "
+       "kein nackter Short", short13 > 0.05 and g13["p_qty"] >= short13 - 1e-9 and u13[1] < 10, (short13, g13, u13))
+
+# 13.p6 (K1, Prüf-Werkzeug): ein hängender STOP_LOSS_LIMIT, den Pilot 2.0 in der Liste GESEHEN hat, bleibt ein echter Befund — auch
+#     wenn sich der Kurs danach noch bewegt (vorher: jede Bewegung entschuldigte ihn wieder als LIMIT_LUECKE_)
+k = neues_konto(20000)
+B.stop_typen = [x for x in B.stop_typen if x != "STOP_LOSS"]
+d = neu_buch()
+e = E("BTC", 1.0)
+e["stop_long"] = 90000.0
+lauf([e], env_echt(), d)
+B.bewegen("BTCUSDT", 85000.0)  # Lücke unter das Limit: der ausgelöste Stop-Limit hängt
+vor13 = [b_[0] for b_ in P.schutz_befunde(k)]
+L.Spot(L.einstellungen(env_echt())["spot"]).eigene_stops("BTCUSDT")  # Pilot 2.0 sieht den hängenden Stop
+B.bewegen("BTCUSDT", 85085.0)  # +0,1 %, keine neue Lücke
+nach13 = [b_[0] for b_ in P.schutz_befunde(k)]
+pruefe("13.p6 Prüf-Werkzeug: gesehener hängender Stop-Limit bleibt nach +0,1 % ein echter Befund (LIMIT_LUECKE_ nur vor dem Blick)",
+       vor13 == ["LIMIT_LUECKE_LONG_OHNE_STOP"] and nach13 == ["LONG_OHNE_STOP"], (vor13, nach13))
+neues_konto(20000)  # Stop-Typen zurück (reset)
+
+# 13.W2 (Prüf-Werkzeug): eine dauerhaft unlesbare Auftragsliste macht keine Lücke unvermeidbar — das Lesen der Lage schon
+pruefe("13.W2 _dauer: Auftragsliste unlesbar → nicht unvermeidbar; Konto/Position unlesbar → unvermeidbar",
+       not P._dauer([regel(methode="GET", pfad="/fapi/v1/openAlgoOrders", art="vor503", anzahl=10 ** 6)], "LONG_OHNE_STOP")
+       and not P._dauer([regel(methode="GET", pfad="/api/v3/openOrders", art="vor503", anzahl=10 ** 6)], "SHORT_OHNE_STOP")
+       and P._dauer([regel(methode="GET", pfad="/api/v3/account", art="vor503", anzahl=10 ** 6)], "LONG_OHNE_STOP"))
+
+# 13.K2 (Not-Aus-Seed 12527): ein Rest galt mit dem Kurs VOR einem Sprung als Staub → «alles zu» war falsch; jetzt mit frischem Kurs
+funde = P.notaus_runde(12527)
+pruefe("13.K2 Not-Aus-Seed 12527: keine Befunde (Staub mit frischem Kurs entschieden)", not P.echte(funde),
+       [(f[0], f[1].get("wann")) for f in P.echte(funde)][:5])
+
+# 13.F1 (Schlusskampagne, Not-Aus-Seed 9123): im Schutz wird der Rückkauf des ungesicherten Short-Teils unklar (einmal neu
+#     geschickt), der Stand ist danach nicht lesbar. Vorher: mit dem alten Stand hielt die zweite Runde die Coins für gesperrt
+#     (ihren Stop hatte die erste eben gelöscht) und kaufte bei einem Kurs jenseits den ganzen Short zurück → Coins ohne Short und
+#     ohne Stop; ganz ohne zweite Runde fehlte der beidseitige Schutz (kommt der unklare Rückkauf an: Absicherung weg). Jetzt: Lage
+#     unbekannt → beidseitig, alle Coins als frei
+funde = P.notaus_runde(9123)
+pruefe("13.F1 Not-Aus-Seed 9123: Auftrag im Schutz unklar, Stand nicht lesbar → zweite Runde beidseitig, keine Befunde",
+       not funde, [(f[0], f[1].get("wann")) for f in funde][:5])
+
+# 13.F2 (Schlusskampagne, Listen-Seed 302): zwei Spot-Stops über ETH (ein zu grosser alter + ein Zusatz-Stop, beidseitig), das Buch
+#     kennt nur einen; am nächsten Tag ist die Spot-Liste unlesbar und das Paar voll abgesichert → der bekannte wird gelöscht, der
+#     unbekannte (1,43 ETH) blieb still über der Absicherung (fällt der Kurs: Short ohne Stop). Jetzt: nach dem Löschen am Kontostand
+#     nachsehen — noch zu viel gesperrt → beidseitig, laut, Nachkontrolle
+funde = P.listen_runde(302)
+pruefe("13.F2 Listen-Seed 302: unbekannter zweiter Spot-Stop bei unlesbarer Liste → beidseitig gesichert, keine Befunde", not funde,
+       [(f[0], f[1].get("tag")) for f in funde][:5])
+
+# 13.F3 (Perp-Gegenstück zu 13.F2, eigenes Szenario): Tag 2 ist die Perp-Liste unlesbar UND Löschen geht nicht → jede Abgleich-Runde
+#     setzt einen neuen Stop, die alten bleiben (vier stehen), das Buch kannte nur den letzten; Tag 3 ist die Liste wieder unlesbar und
+#     der Richtungs-Short weg → nur der bekannte wurde gelöscht, die unbekannten (0,387 BTC) blieben über der Absicherung (Kurs hoch:
+#     Coins ohne Short und ohne Stop, 2'555 USDT). Jetzt: nicht löschbare alte Stops merkt das Buch (perp_weitere), jeder Abgleich
+#     löscht sie zuerst (Kennung, ohne Liste), bis dahin beidseitig + Nachkontrolle
+k = neues_konto(20000)
+d = neu_buch()
+lauf([E("BTC", -0.5)], env_echt(), d)
+B.regeln = [regel(methode="GET", pfad="/fapi/v1/openAlgoOrders", art="vor503", anzahl=10 ** 6),
+            regel(methode="DELETE", pfad="/fapi/v1/algoOrder", art="vor503", anzahl=10 ** 6)]
+try:
+    lauf([E("BTC", -0.75)], env_echt(), d)
+finally:
+    B.regeln = []
+b13 = buch13(d)
+weitere13 = (b13.get("stops") or {}).get("BTC", {}).get("perp_weitere") or []
+B.regeln = [regel(methode="GET", pfad="/fapi/v1/openAlgoOrders", art="vor503", anzahl=10 ** 6)]  # Tag 3, ohne Nachkontrolle dazwischen
+try:
+    lauf([E("BTC", 0.5)], env_echt(), d)
+finally:
+    B.regeln = []
+funde = P.echte(P.schutz_befunde(k, P.unklar_je_markt(d)) + P.folgeschaden(k))
+pruefe("13.F3 nicht löschbare alte Perp-Stops gemerkt und am nächsten Tag (Liste wieder unlesbar) über die Kennung gelöscht — keine "
+       "Befunde", len(weitere13) >= 2 and "BTC" in (b13.get("schutz_offen") or []) and not funde,
+       (len(weitere13), b13.get("schutz_offen"), funde, lage(k, "BTCUSDT")))
+
+# 13.F3b: das Gedächtnis löscht nie den AKTUELLEN Stop (er schützt den Short) — nur die alten, und eine lesbare Liste bereinigt
+#     es nur (löschen tut dann der Abgleich, erst nach dem neuen Stop)
+class _FutProbe:
+    def __init__(self):
+        self.weg = []
+
+    def algo_abbrechen_kennung(self, sym, cid):
+        self.weg.append(cid)
+
+    def algo_abbrechen(self, sym, aid):
+        self.weg.append(aid)
+        return True
+
+
+f13 = _FutProbe()
+st13 = {"perp": 7, "perp_cid": "neu", "perp_weitere": [[7, "neu"], [3, "alt3"], [5, None]]}
+alles_weg13 = L._perp_weitere_weg(f13, "BTCUSDT", st13)
+pruefe("13.F3b Gedächtnis: alte Perp-Stops gelöscht (Kennung, sonst ID), der aktuelle nie", f13.weg == ["alt3", 5] and alles_weg13
+       and st13["perp"] == 7, (f13.weg, st13))
+st13b = {"perp": 7, "perp_cid": "neu", "perp_weitere": [[3, "alt3"], [5, "alt5"]]}
+L._perp_weitere_pruefen(st13b, [{"algoId": 5, "clientAlgoId": "alt5"}])
+pruefe("13.F3b lesbare Liste: was nicht mehr steht, ist aus dem Gedächtnis; der Rest bleibt für den Abgleich",
+       st13b["perp_weitere"] == [[5, "alt5"]], st13b)
+
+# 13.F4 (Schlusskampagne, Lauf-Seed 137): STOP erscheint mitten im Tageslauf → der Lauf schliesst selbst (B1), der Not-Aus kann
+#     den ETH-Short unter Störungen weder schliessen noch schützen (laut gemeldet); STOP ist danach wieder weg → die Nachkontrolle
+#     (normaler Modus) sah nichts Offenes → Short ohne Stop bis morgen. Jetzt: was der Not-Aus nicht sichern konnte, steht in
+#     «schutz_offen» → die Nachkontrolle setzt die Stops nach dem Kontostand
+funde = P.echte(P.laeufe_runde(137, 30))
+pruefe("13.F4 Lauf-Seed 137: Not-Aus mitten im Lauf scheitert am Schutz → Nachkontrolle sichert (keine Befunde)", not funde,
+       [(f[0], f[1].get("tag")) for f in funde][:5])
+
+# 13.F5 (Schlusskampagne, Lauf-Seed 12027): Perp-Liste nicht lesbar, und der Kurs springt, bevor der Stop steht, über den Stop-Kurs
+#     UND über den Not-Stop (5 %) → Binance lehnt beide ab («würde sofort auslösen»), Pilot 2.0 gab auf («Short evtl. OHNE Stop»; mit
+#     Liste steigt er in diesem Fall zum Markt aus). Jetzt auch ohne Liste: Short zum Markt zurückkaufen, die alten Stops aus dem
+#     Buch schützen bis dahin und kommen erst danach weg. Gegenprobe am alten Stand: Richtungs-Short bleibt, «gelang in 3 Runden nicht»
+funde = P.echte(P.laeufe_runde(12027, 30))
+pruefe("13.F5 Lauf-Seed 12027: Liste unlesbar, Kurs über dem Stop → zum Markt aus statt aufgeben (keine Befunde)", not funde,
+       [(f[0], f[1].get("tag")) for f in funde][:5])
+NEUER_STOP_BUY = lambda m, p, q: q.get("side") == "BUY"  # noqa: E731
+for name13, alter13 in (("ohne alten Stop im Buch (Tag 1)", False), ("mit altem Stop im Buch (Tag 2, heute enger)", True)):
+    k = neues_konto(20000)
+    d = neu_buch()
+    kurs13 = B.kurs["BTCUSDT"]
+    if alter13:
+        lauf([E("BTC", -0.5)], env_echt(), d)               # Stop 10 % über dem Kurs
+        e13, sprung13 = E("BTC", -0.5, stop_abstand=0.03), kurs13 * 1.06  # heute 3 %: Sprung über den neuen, unter den alten
+    else:
+        e13, sprung13 = E("BTC", -0.5), kurs13 * 1.12       # über den Stop (10 %) UND den Not-Stop (5 % über dem Kurs)
+    eroeffnet13 = [alter13]  # Tag 1: die Liste wird erst unlesbar, wenn der Short eröffnet ist (sonst bräche der Lauf vorher ab)
+
+    def nach13(m, pfad, q, code, eroeffnet13=eroeffnet13):
+        if m == "POST" and pfad == "/fapi/v1/order" and q.get("side") == "SELL" and code == 200:
+            eroeffnet13[0] = True
+    B.nach_jeder_anfrage = nach13
+    B.regeln = [regel(methode="GET", pfad="/fapi/v1/openAlgoOrders", art="vor503", anzahl=10 ** 6,
+                      pred=lambda m, p, q, eroeffnet13=eroeffnet13: eroeffnet13[0]),
+                regel(methode="POST", pfad="/fapi/v1/algoOrder", pred=NEUER_STOP_BUY, art="kurs", sym="BTCUSDT", preis=sprung13)]
+    try:
+        r = lauf([e13], env_echt(), d)
+    finally:
+        B.regeln = []
+        B.nach_jeder_anfrage = None
+    g13 = lage(k, "BTCUSDT")
+    w13 = [z for z in r["zeilen"] if "evtl. OHNE Stop" in z or "gelang in" in z]
+    pruefe(f"13.F5 Liste unlesbar, Kurs springt über Stop und Not-Stop, {name13}: Richtungs-Short zum Markt zurückgekauft, "
+           "nichts ungesichert", not befunde(k, d) and abs(g13["netto"]) < 0.001 and not w13,  # Rest < 1 Futures-Schritt
+           (befunde(k, d), g13, w13))
+
+
+# 13.F5b/c: ohne Liste kennt nur das Buch die alten Stops (ID oder nur die Kennung, dazu die gemerkten) — nach dem Rückkauf kommen alle
+#     weg (ohne ID über die Kennung, gelöschte auch aus dem Gedächtnis); lehnt Binance den Rückkauf ab und ist nichts mehr zu schützen,
+#     bleibt ein alter Stop mit unbekannter Menge nicht als «passend» stehen (er könnte über der Absicherung liegen)
+class _FutRaus:
+    def __init__(self, ablehnen=False):
+        self.weg, self.kauf, self.ablehnen = [], [], ablehnen
+
+    def auftrag(self, sym, seite, menge, reduce):
+        if self.ablehnen:
+            raise L.BB.BinanceFehler("/fapi/v1/order", 400, "abgelehnt", None, None)
+        self.kauf.append((seite, menge, reduce))
+        return {"executedQty": menge}
+
+    def algo_abbrechen(self, sym, aid):
+        self.weg.append(aid)
+        return True
+
+    def algo_abbrechen_kennung(self, sym, cid):
+        self.weg.append(cid)
+
+
+d13r = {"sym": "BTCUSDT", "rs": {"step": 0.00001}, "rf": {"step": 0.001, "tick": 0.1}}
+abgesichert13 = lambda warten=None: (0.05, 0.0, -0.05, 100000.0)  # noqa: E731 — Coins = Short: nichts ungesichert
+f13r = _FutRaus()
+st13r = {"perp": None, "perp_cid": "cA", "perp_weitere": [[3, "c3"], [None, "cA"]]}  # aktueller nur mit Kennung + ein gemerkter
+L._perp_ohne_liste_raus(f13r, "BTC", d13r, st13r, {"frei": 0.05, "gebunden": 0.0, "pos": -0.148, "kurs": 100000.0},
+                        {"auftraege": []}, [].append, [],
+                        lambda warten=None: (0.05, 0.0, -0.05 if f13r.kauf else -0.148, 100000.0), "Test")  # nach dem Rückkauf: Ernte
+pruefe("13.F5b ohne Liste: Richtungs-Short zurückgekauft, danach der aktuelle (nur Kennung) und der gemerkte alte gelöscht, "
+       "Gedächtnis leer", f13r.kauf == [("BUY", 0.098, True)] and f13r.weg == ["cA", 3] and not st13r.get("perp_weitere")
+       and st13r["perp"] is None and st13r["perp_cid"] is None, (f13r.kauf, f13r.weg, st13r))
+f13c = _FutRaus(ablehnen=True)
+st13c = {"perp": 5, "perp_cid": "c5"}
+w13c = []
+L._perp_raus(f13c, "BTC", d13r, st13c, 0.098, 100000.0, {"auftraege": []}, w13c.append, [], "Test", abgesichert13, -0.148,
+             alt=[{"algoId": 5, "clientAlgoId": "c5"}])
+pruefe("13.F5c Rückkauf abgelehnt, nichts mehr zu schützen: alter Stop mit unbekannter Menge (nur Buch) wird gelöscht, nicht "
+       "«passend» stehen gelassen", f13c.weg == [5] and not any("bleibt stehen" in w_ for w_ in w13c), (f13c.weg, w13c))
+
+# 13.K3: Buch 3-Wege zusammenführen — nur was ICH geändert habe, gilt von mir; Geklärtes fällt weg; die Einträge, die der Abgleich in der
+#     Hand hat, bleiben dieselben (in place)
+b0 = L.leer_buch()
+b0.update(start="s", stops={"BTC": {"spot": 1, "perp": 7, "perp_cid": "c7", "kurs": 100.0}}, unklar=[{"markt": "BTC", "cid": "u1"}],
+          schutz_offen=["BTC"])
+platte13, meins13 = json.loads(json.dumps(b0)), json.loads(json.dumps(b0))
+platte13["stops"]["BTC"]["spot"] = 2                        # der andere setzte einen neuen Spot-Stop
+platte13["unklar"].append({"markt": "ETH", "cid": "u2"})     # und trug einen unklaren Auftrag ein
+meins13["stops"]["BTC"].update(perp=None, perp_cid=None)     # ich löschte den Perp-Stop
+meins13["unklar"] = []                                       # und klärte u1
+meins13["schutz_offen"] = []                                 # und sicherte BTC
+v13 = L._buch_vereinen(platte13, meins13, b0)
+pruefe("13.K3 3-Wege: fremder neuer Spot-Stop bleibt, mein gelöschter Perp-Stop ist gelöscht, Geklärtes weg, fremdes Unklares bleibt",
+       v13["stops"]["BTC"]["spot"] == 2 and v13["stops"]["BTC"]["perp"] is None and v13["stops"]["BTC"]["perp_cid"] is None
+       and [u_["cid"] for u_ in v13["unklar"]] == ["u2"] and v13["schutz_offen"] == [], v13)
+platte13b = json.loads(json.dumps(b0))
+platte13b["stops"]["BTC"]["perp"] = 9                       # der andere setzte einen NEUEN Perp-Stop, ich löschte den alten
+v13b = L._buch_vereinen(platte13b, meins13, b0)
+pruefe("13.K3 Konflikt (ich gelöscht, der andere neu gesetzt): seine Kennung bleibt (der Stop steht an der Börse)",
+       v13b["stops"]["BTC"]["perp"] == 9, v13b["stops"])
+d13 = neu_buch()
+L.buch_schreiben(d13, "echt", b0)
+mein13 = L.buch_lesen(d13, "echt")
+ges13 = [json.dumps(mein13, sort_keys=True)]
+st13 = mein13["stops"]["BTC"]                                # der Abgleich hält diesen Eintrag in der Hand
+anders13 = L.buch_lesen(d13, "echt")
+anders13["unklar"].append({"markt": "ETH", "cid": "u3"})
+L.buch_schreiben(d13, "echt", anders13)                      # ein anderer Lauf schreibt dazwischen
+st13["spot"] = 5
+L._buch_speichern_zusammen(d13, "echt", ges13, mein13)
+st13["perp"] = 11                                            # nach dem Zusammenführen weiter in den gehaltenen Eintrag schreiben
+L._buch_speichern_zusammen(d13, "echt", ges13, mein13)
+b13 = L.buch_lesen(d13, "echt")
+pruefe("13.K3 zusammenführen in place: fremdes Unklares bleibt, was der Abgleich danach schreibt, landet im Buch",
+       b13["stops"]["BTC"]["spot"] == 5 and b13["stops"]["BTC"]["perp"] == 11 and any(u_.get("cid") == "u3" for u_ in b13["unklar"]),
+       b13)
 
 # ── kleiner Fuzzer mit festen Seeds (der grosse: python3 -B pruef_fuzzer.py laeufe 0 200 / notaus 0 1600) ──
 funde = []

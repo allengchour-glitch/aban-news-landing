@@ -7,6 +7,7 @@ const own = (value, key) => Object.prototype.hasOwnProperty.call(value, key);
 const object = value => value !== null && typeof value === 'object' && !Array.isArray(value);
 const textField = (maxLength = 4000) => ({ type: 'string', minLength: 1, maxLength });
 const emptySchema = { type: 'object', properties: {}, additionalProperties: false };
+const reviewVerdicts = ['findings', 'no_findings', 'blocked'];
 const annotations = readOnly => ({ readOnlyHint: readOnly, destructiveHint: false,
   idempotentHint: readOnly, openWorldHint: false });
 
@@ -14,7 +15,7 @@ export const MCP_TOOLS = [
   { name: 'luxe_doctor', description: 'Lokalen Projektstatus und datierte Belege prüfen; keine Live-API-Prüfung.',
     inputSchema: emptySchema, annotations: annotations(true) },
   { name: 'luxe_checks', description: 'Ein festes lokales Offline-Testprofil ausführen; keine operativen Skripte.',
-    inputSchema: { type: 'object', properties: { suite: { type: 'string', enum: ['core', 'seo'] } },
+    inputSchema: { type: 'object', properties: { suite: { type: 'string', enum: ['core', 'seo', 'assist', 'changed'] } },
       required: ['suite'], additionalProperties: false }, annotations: annotations(true) },
   { name: 'luxe_handoff_read', description: 'Vorhandene lokale Übergabe lesen; fehlende Daten bleiben unbekannt.',
     inputSchema: emptySchema, annotations: annotations(true) },
@@ -25,7 +26,21 @@ export const MCP_TOOLS = [
   { name: 'luxe_review_request', description: 'Lokale Codex-Prüfaufgabe vorbereiten; ruft kein Modell und keinen Dienst auf.',
     inputSchema: { type: 'object', properties: { question: textField(),
       files: { type: 'array', maxItems: 6, items: textField(512) } },
-      required: ['question'], additionalProperties: false }, annotations: annotations(false) }
+      required: ['question'], additionalProperties: false }, annotations: annotations(false) },
+  { name: 'luxe_change_plan', description: 'Lokalen Änderungsplan und passende Offline-Prüfungen ermitteln; keine Änderung ausführen.',
+    inputSchema: emptySchema, annotations: annotations(true) },
+  { name: 'luxe_review_list', description: 'Lokal gespeicherte Prüfaufgaben und Antworten lesen; keine Modellaufrufe.',
+    inputSchema: { type: 'object', properties: { after: textField(80) }, additionalProperties: false }, annotations: annotations(true) },
+  { name: 'luxe_review_get', description: 'Eine lokale Prüfaufgabe mit vollständiger Frage und Antwort lesen; keine Modellaufrufe.',
+    inputSchema: { type: 'object', properties: { requestId: textField(80) }, required: ['requestId'], additionalProperties: false }, annotations: annotations(true) },
+  { name: 'luxe_review_answer', description: 'Antwort auf eine bestehende lokale Prüfaufgabe speichern; keine externe Aktion.',
+    inputSchema: { type: 'object', properties: { requestId: textField(80),
+      verdict: { type: 'string', enum: reviewVerdicts }, summary: textField(), nextStep: textField(2000),
+      blockers: { type: 'array', maxItems: 12, items: textField(500) } },
+      required: ['requestId', 'verdict', 'summary', 'nextStep'], additionalProperties: false }, annotations: annotations(false) },
+  { name: 'luxe_context', description: 'Begrenzten lokalen Dateikontext für eine Frage lesen; keine Netzwerk- oder Modellaufrufe.',
+    inputSchema: { type: 'object', properties: { files: { type: 'array', maxItems: 6, items: textField(512) },
+      question: textField(2000) }, required: ['files', 'question'], additionalProperties: false }, annotations: annotations(true) }
 ];
 
 function validText(value, maxLength) {
@@ -39,13 +54,22 @@ function validList(value, maxLength, maxItems) {
 function validArguments(name, args) {
   if (!object(args)) return false;
   const keys = Object.keys(args);
-  if (name === 'luxe_doctor' || name === 'luxe_handoff_read') return keys.length === 0;
-  if (name === 'luxe_checks') return keys.length === 1 && own(args, 'suite') && ['core', 'seo'].includes(args.suite);
+  if (['luxe_doctor', 'luxe_handoff_read', 'luxe_change_plan'].includes(name)) return keys.length === 0;
+  if (name === 'luxe_review_list') return keys.every(key => key === 'after')
+    && (!own(args, 'after') || validText(args.after, 80));
+  if (name === 'luxe_review_get') return keys.length === 1 && own(args, 'requestId') && validText(args.requestId, 80);
+  if (name === 'luxe_checks') return keys.length === 1 && own(args, 'suite') && ['core', 'seo', 'assist', 'changed'].includes(args.suite);
   if (name === 'luxe_handoff_save') return keys.every(key => ['summary', 'nextStep', 'blockers'].includes(key))
     && validText(args.summary, 4000) && validText(args.nextStep, 2000)
     && (!own(args, 'blockers') || validList(args.blockers, 500, 12));
   if (name === 'luxe_review_request') return keys.every(key => ['question', 'files'].includes(key))
     && validText(args.question, 4000) && (!own(args, 'files') || validList(args.files, 512, 6));
+  if (name === 'luxe_review_answer') return keys.every(key => ['requestId', 'verdict', 'summary', 'nextStep', 'blockers'].includes(key))
+    && validText(args.requestId, 80) && reviewVerdicts.includes(args.verdict)
+    && validText(args.summary, 4000) && validText(args.nextStep, 2000)
+    && (!own(args, 'blockers') || validList(args.blockers, 500, 12));
+  if (name === 'luxe_context') return keys.every(key => ['files', 'question'].includes(key))
+    && validList(args.files, 512, 6) && validText(args.question, 2000);
   return false;
 }
 
@@ -78,7 +102,7 @@ async function dispatch(request, handlers) {
     }
     return result({ protocolVersion: PROTOCOLS.has(params.protocolVersion) ? params.protocolVersion : '2025-06-18',
       capabilities: { tools: { listChanged: false } },
-      serverInfo: { name: 'luxestyle-claude-assist', version: '1.0.0' },
+      serverInfo: { name: 'luxestyle-claude-assist', version: '2.0.0' },
       instructions: 'Lokaler LuxeStyle-Helfer. Keine Live-APIs, Publikationen oder Modellaufrufe. Übergaben sind datierte Belege.' });
   }
   if (request.method === 'ping' || request.method === 'tools/list') {

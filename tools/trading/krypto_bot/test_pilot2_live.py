@@ -674,13 +674,13 @@ pruefe("echt gestartet, Schalter auf Testnetz → laute Warnung, KEIN zweiter Mo
 r = lauf([E("BTC", 0.5)], {k: v for k, v in ECHT.items() if k != "PILOT2_API_KEY"}, d)
 pruefe("echt gestartet, PILOT2_API_KEY fehlt → laute Warnung «NICHT verwaltet» (nicht nur eine Zeile)", r["warnung"]
        and any("NICHT verwaltet" in z for z in r["zeilen"]), r["zeilen"])
-schreiben_alt = L.buch_schreiben
+schreiben_alt = L._buch_schreiben_roh  # unterste Stelle: Lauf und Not-Aus speichern (zusammenführend) über sie
 def gesperrt_(*a, **k): raise PermissionError("Datei gesperrt")
-L.buch_schreiben = gesperrt_
+L._buch_schreiben_roh = gesperrt_
 try:
     X.reset(); d = neu_buch(); r = lauf([E("BTC", 1.0)], TEST, d)
 finally:
-    L.buch_schreiben = schreiben_alt
+    L._buch_schreiben_roh = schreiben_alt
 pruefe("Start lässt sich nicht speichern → KEIN Auftrag (sonst kennte der Not-Aus die Positionen nicht)", not markt_orders() and r["warnung"]
        and any("Start nicht gespeichert" in z for z in r["zeilen"]), r["zeilen"])
 # ── Ernte zurück, nie die Richtung (W7) ──

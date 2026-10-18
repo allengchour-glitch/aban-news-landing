@@ -22,18 +22,27 @@ try {
   if (command === 'mcp') {
     if (args.length) throw Error('unexpected_arguments');
     const safe = fn => async args => { try { return await fn(args); } catch (e) { throw Error(redact(e.message)); } };
-    await serveMcp({ input: process.stdin, output: process.stdout, handlers: {
+    const handlers = {
       luxe_doctor: () => assistant.doctor(), luxe_checks: a => assistant.checks(a),
-      luxe_handoff_read: () => assistant.read(), luxe_handoff_save: safe(a => assistant.save(a)),
-      luxe_review_request: safe(a => assistant.reviewRequest(a)),
-    } });
+      luxe_handoff_read: () => assistant.read(), luxe_handoff_save: a => assistant.save(a),
+      luxe_review_request: a => assistant.reviewRequest(a), luxe_review_list: a => assistant.reviewList(a),
+      luxe_review_get: a => assistant.reviewGet(a),
+      luxe_review_answer: a => assistant.reviewAnswer(a), luxe_context: a => assistant.context(a),
+      luxe_change_plan: () => assistant.changePlan(),
+    };
+    await serveMcp({ input: process.stdin, output: process.stdout, handlers: Object.fromEntries(Object.entries(handlers).map(([name, fn]) => [name, safe(fn)])) });
   } else {
     if (command === 'doctor' && !args.length) result = await assistant.doctor();
     else if (command === 'check' && args.length <= 1) result = await assistant.checks({ suite: args[0] ?? 'core' });
     else if (command === 'handoff-read' && !args.length) result = assistant.read();
     else if (command === 'handoff-save') result = await assistant.save(input());
     else if (command === 'review-request') result = await assistant.reviewRequest(input());
-    else throw Error('Usage: node automation/claude-assist.mjs doctor|check [core|seo]|handoff-read|handoff-save|review-request|mcp');
+    else if (command === 'review-list' && args.length <= 1) result = assistant.reviewList(args.length ? { after: args[0] } : {});
+    else if (command === 'review-get' && args.length === 1) result = assistant.reviewGet({ requestId: args[0] });
+    else if (command === 'review-answer') result = await assistant.reviewAnswer(input());
+    else if (command === 'context') result = await assistant.context(input());
+    else if (command === 'change-plan' && !args.length) result = await assistant.changePlan();
+    else throw Error('Usage: node automation/claude-assist.mjs doctor|check [core|seo|assist|changed]|change-plan|handoff-read|handoff-save|review-request|review-list [cursor]|review-get id|review-answer|context|mcp');
     console.log(JSON.stringify(result, null, 2));
     if (result.status === 'failed' || result.status === 'unknown' || result.state === 'unknown' || (command === 'doctor' && result.repository.state !== 'matched')) process.exitCode = 1;
   }

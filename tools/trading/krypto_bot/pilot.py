@@ -12,7 +12,7 @@ Trend-Schnitt je Coin: Bitcoin 150 Tage, Ethereum 200 Tage (pilot_pruefung.py, R
 MVRV-Bremse: kein Short, solange der Kurs unter dem Einstandswert aller Coins liegt (MVRV < 1). Die übrigen freien
 Markt-Infos (Angst & Gier, Funding, VIX, Dollar, Zins, Notenbank, Stablecoins) erscheinen nur als Lagebild — sie
 bestanden den Test in info_pruefung.py nicht und beeinflussen keinen Auftrag.
-Einstellungen: Risiko-Stufe 1 / 1,5 / 2 (Cockpit-Knopf oder KRYPTO_RISIKO; hebel_pruefung.py) · KRYPTO_SHORT (1 = auch short, 0 = nur long) · Schlüssel siehe
+Einstellungen: Risiko-Stufe 1 / 1,5 / 1,75 / 2 (Cockpit-Knopf oder KRYPTO_RISIKO; hebel_pruefung.py) · KRYPTO_SHORT (1 = auch short, 0 = nur long) · Schlüssel siehe
 broker_futures.py. Einmal pro Woche kommt der Kontostand als Push (Telegram/ntfy). Keine Anlageberatung.
 """
 from __future__ import annotations

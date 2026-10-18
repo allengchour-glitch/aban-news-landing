@@ -29,10 +29,12 @@ test('initialize negotiates supported versions and advertises only tools', async
 test('tool catalog is bounded, advertises local writes, and ping is empty', async () => {
   const responses = await exchange([request('list', 'tools/list') + '\n' + request('ping', 'ping') + '\n']);
   const tools = responses[0].result.tools;
-  assert.equal(tools.length, 5);
-  assert.deepEqual(tools.map(tool => tool.name), ['luxe_doctor', 'luxe_checks', 'luxe_handoff_read', 'luxe_handoff_save', 'luxe_review_request']);
+  assert.equal(tools.length, 10);
+  assert.deepEqual(tools.map(tool => tool.name), ['luxe_doctor', 'luxe_checks', 'luxe_handoff_read', 'luxe_handoff_save', 'luxe_review_request',
+    'luxe_change_plan', 'luxe_review_list', 'luxe_review_get', 'luxe_review_answer', 'luxe_context']);
   for (const tool of tools) assert.equal(tool.inputSchema.additionalProperties, false);
-  for (const name of ['luxe_handoff_save', 'luxe_review_request']) assert.equal(tools.find(tool => tool.name === name).annotations.readOnlyHint, false);
+  for (const name of ['luxe_handoff_save', 'luxe_review_request', 'luxe_review_answer']) assert.equal(tools.find(tool => tool.name === name).annotations.readOnlyHint, false);
+  for (const name of ['luxe_change_plan', 'luxe_review_list', 'luxe_review_get', 'luxe_context']) assert.equal(tools.find(tool => tool.name === name).annotations.readOnlyHint, true);
   assert.deepEqual(responses[1].result, {});
 });
 
@@ -159,4 +161,140 @@ test('missing, failing and unserializable handlers produce tool errors without s
   const cyclic = {}; cyclic.self = cyclic;
   const [cycle] = await exchange(frames, { luxe_doctor: () => cyclic });
   assert.equal(cycle.result.isError, true);
+});
+
+test('v2 advertises strict bounded schemas and preserves existing check profiles', async () => {
+  const [response] = await exchange([request(1, 'tools/list') + '\n']);
+  const byName = Object.fromEntries(response.result.tools.map(tool => [tool.name, tool]));
+  assert.deepEqual(byName.luxe_checks.inputSchema.properties.suite.enum, ['core', 'seo', 'assist', 'changed']);
+  assert.deepEqual(byName.luxe_review_answer.inputSchema.required, ['requestId', 'verdict', 'summary', 'nextStep']);
+  assert.deepEqual(byName.luxe_review_answer.inputSchema.properties.verdict.enum, ['findings', 'no_findings', 'blocked']);
+  assert.equal(byName.luxe_review_answer.inputSchema.properties.requestId.maxLength, 80);
+  assert.equal(byName.luxe_review_answer.inputSchema.properties.summary.maxLength, 4000);
+  assert.equal(byName.luxe_review_answer.inputSchema.properties.nextStep.maxLength, 2000);
+  assert.equal(byName.luxe_review_answer.inputSchema.properties.blockers.maxItems, 12);
+  assert.equal(byName.luxe_review_answer.inputSchema.properties.blockers.items.maxLength, 500);
+  assert.deepEqual(byName.luxe_context.inputSchema.required, ['files', 'question']);
+  assert.equal(byName.luxe_context.inputSchema.properties.question.maxLength, 2000);
+  assert.equal(byName.luxe_context.inputSchema.properties.files.maxItems, 6);
+  assert.equal(byName.luxe_context.inputSchema.properties.files.items.maxLength, 512);
+  assert.equal(byName.luxe_review_list.inputSchema.properties.after.maxLength, 80);
+  assert.equal(byName.luxe_review_list.inputSchema.required, undefined);
+  assert.deepEqual(byName.luxe_review_get.inputSchema.required, ['requestId']);
+  assert.equal(byName.luxe_review_get.inputSchema.properties.requestId.maxLength, 80);
+});
+
+test('v2 tools dispatch exactly once to their injected handler including changed checks', async () => {
+  const cases = [
+    ['luxe_change_plan', {}], ['luxe_review_list', {}], ['luxe_review_get', { requestId: 'review-1' }],
+    ['luxe_review_answer', { requestId: 'review-1', verdict: 'findings', summary: 'Fehler gefunden', nextStep: 'Korrigieren', blockers: [] }],
+    ['luxe_context', { files: ['automation/lib/example.mjs'], question: 'Welche Prüfungen passen?' }],
+    ['luxe_checks', { suite: 'assist' }],
+    ['luxe_checks', { suite: 'changed' }]
+  ];
+  const seen = [];
+  const handlers = Object.fromEntries(cases.map(([name]) => [name, args => { seen.push({ name, args }); return { name, local: true }; }]));
+  const responses = await exchange(cases.map(([name, args], id) => request(id, 'tools/call', { name, arguments: args }) + '\n'), handlers);
+  assert.deepEqual(seen, cases.map(([name, args]) => ({ name, args })));
+  assert.deepEqual(responses.map(response => JSON.parse(response.result.content[0].text).name), cases.map(([name]) => name));
+  assert.ok(responses.every(response => response.result.isError === false));
+});
+
+test('v2 arguments accept documented limits and all three review verdicts', async () => {
+  const answer = { requestId: 'r'.repeat(80), summary: 's'.repeat(4000), nextStep: 'n'.repeat(2000), blockers: Array(12).fill('b'.repeat(500)) };
+  const context = { files: Array(6).fill('f'.repeat(512)), question: 'q'.repeat(2000) };
+  const cases = ['findings', 'no_findings', 'blocked'].map(verdict => ({ name: 'luxe_review_answer', arguments: { ...answer, verdict } }));
+  cases.push({ name: 'luxe_context', arguments: context }, { name: 'luxe_context', arguments: { files: [], question: 'Kontext ohne Dateien' } });
+  let calls = 0;
+  const responses = await exchange(cases.map((params, id) => request(id, 'tools/call', params) + '\n'), {
+    luxe_review_answer: args => { calls++; return args; }, luxe_context: args => { calls++; return args; }
+  });
+  assert.equal(calls, cases.length);
+  assert.ok(responses.every(response => response.result.isError === false));
+});
+
+test('v2 rejects missing, oversized, blank and additional arguments before dispatch, then recovers', async () => {
+  const answer = { requestId: 'review-1', verdict: 'no_findings', summary: 'Geprüft', nextStep: 'Zur Freigabe' };
+  const invalid = [
+    { name: 'luxe_change_plan', arguments: { files: [] } },
+    { name: 'luxe_review_list', arguments: { status: 'open' } },
+    ...Object.keys(answer).map(key => ({ name: 'luxe_review_answer', arguments: Object.fromEntries(Object.entries(answer).filter(([name]) => name !== key)) })),
+    ...[
+      { requestId: 'r'.repeat(81) }, { requestId: ' ' }, { verdict: 'approved' }, { verdict: 1 },
+      { summary: 's'.repeat(4001) }, { summary: '' }, { nextStep: 'n'.repeat(2001) },
+      { blockers: Array(13).fill('b') }, { blockers: ['b'.repeat(501)] }, { blockers: [' '] }, { blockers: [false] },
+      { extra: true }
+    ].map(patch => ({ name: 'luxe_review_answer', arguments: { ...answer, ...patch } })),
+    ...[
+      { question: 'Frage' }, { files: [] }, { files: 'file', question: 'Frage' },
+      { files: Array(7).fill('f'), question: 'Frage' }, { files: ['f'.repeat(513)], question: 'Frage' },
+      { files: [' '], question: 'Frage' }, { files: [null], question: 'Frage' },
+      { files: [], question: 'q'.repeat(2001) }, { files: [], question: ' ' },
+      { files: [], question: 'Frage', exec: 'anything' }
+    ].map(args => ({ name: 'luxe_context', arguments: args }))
+  ];
+  let calls = 0;
+  const handlers = Object.fromEntries(['luxe_change_plan', 'luxe_review_list', 'luxe_review_answer', 'luxe_context'].map(name => [name, () => { calls++; }]));
+  const responses = await exchange([...invalid.map((params, id) => request(id, 'tools/call', params) + '\n'), request('after', 'ping') + '\n'], handlers);
+  assert.equal(calls, 0);
+  assert.equal(responses.length, invalid.length + 1);
+  assert.ok(responses.slice(0, -1).every(response => response.error?.code === -32602));
+  assert.equal(responses.at(-1).id, 'after');
+  assert.deepEqual(responses.at(-1).result, {});
+});
+
+test('v2 failures remain tool errors and do not interrupt a later context request', async () => {
+  const cases = [
+    { name: 'luxe_change_plan' },
+    { name: 'luxe_review_answer', arguments: { requestId: 'missing', verdict: 'blocked', summary: 'Nicht zuordenbar', nextStep: 'Aufgabe prüfen' } },
+    { name: 'luxe_context', arguments: { files: [], question: 'Nächster Schritt?' } }
+  ];
+  const responses = await exchange(cases.map((params, id) => request(id, 'tools/call', params) + '\n'), {
+    luxe_review_answer: () => { throw new Error('Prüfaufgabe nicht gefunden'); },
+    luxe_context: () => ({ status: 'ready' })
+  });
+  assert.deepEqual(responses.map(response => response.result.isError), [true, true, false]);
+  assert.match(responses[1].result.content[0].text, /Prüfaufgabe nicht gefunden/);
+  assert.deepEqual(JSON.parse(responses[2].result.content[0].text), { status: 'ready' });
+});
+
+test('v2 context output is bounded by serialized UTF-8 bytes and does not poison the next request', async () => {
+  const params = { name: 'luxe_context', arguments: { files: [], question: 'Kontext' } };
+  let calls = 0;
+  const responses = await exchange([request(1, 'tools/call', params) + '\n' + request(2, 'tools/call', params) + '\n'], {
+    luxe_context: () => ++calls === 1 ? 'ä'.repeat(140000) : { ready: true }
+  });
+  assert.equal(responses[0].result.isError, true);
+  assert.match(responses[0].result.content[0].text, /Ausgabelimit/);
+  assert.equal(responses[1].result.isError, false);
+  assert.deepEqual(JSON.parse(responses[1].result.content[0].text), { ready: true });
+});
+
+test('review list passes a bounded optional cursor and rejects malformed cursors before dispatch', async () => {
+  const seen = [];
+  const valid = [{}, { after: 'r'.repeat(80) }];
+  const invalid = [{ after: '' }, { after: ' ' }, { after: 'r'.repeat(81) }, { after: 2 },
+    { after: null }, { after: [], next: true }, { before: 'r' }];
+  const responses = await exchange([...valid, ...invalid].map((args, id) => request(id, 'tools/call', { name: 'luxe_review_list', arguments: args }) + '\n'), {
+    luxe_review_list: args => { seen.push(args); return { requests: [], nextCursor: null }; }
+  });
+  assert.deepEqual(seen, valid);
+  assert.ok(responses.slice(0, valid.length).every(response => response.result.isError === false));
+  assert.ok(responses.slice(valid.length).every(response => response.error?.code === -32602));
+});
+
+test('review detail validates its required bounded identity and returns full injected content', async () => {
+  const requestId = 'r'.repeat(80), summary = 's'.repeat(4000), nextStep = 'n'.repeat(2000);
+  const invalid = [{}, { requestId: '' }, { requestId: ' ' }, { requestId: 'r'.repeat(81) },
+    { requestId: null }, { requestId: 7 }, { requestId, file: 'elsewhere' }];
+  let calls = 0;
+  const responses = await exchange([
+    ...invalid.map((args, id) => request(id, 'tools/call', { name: 'luxe_review_get', arguments: args }) + '\n'),
+    request('valid', 'tools/call', { name: 'luxe_review_get', arguments: { requestId } }) + '\n'
+  ], { luxe_review_get: args => { calls++; return { requestId: args.requestId, question: summary, answer: { summary, nextStep } }; } });
+  assert.equal(calls, 1);
+  assert.ok(responses.slice(0, invalid.length).every(response => response.error?.code === -32602));
+  const last = responses.at(-1);
+  assert.equal(last.result.isError, false);
+  assert.deepEqual(JSON.parse(last.result.content[0].text), { requestId, question: summary, answer: { summary, nextStep } });
 });
