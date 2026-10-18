@@ -280,7 +280,9 @@ def produkt_zeilen():
 
 
 def produkt_neu(vorher):
-    return [z[5:].strip().lower() for z in produkt_zeilen() - vorher if z.startswith("slug:") and len(z) > 5]
+    # nur plausible Shop-Handles: das Ledger führt auch Reel-IDs («cjreel-…», «bildreel-…») und gekürzte Namens-Schlüssel unter «slug:»
+    return [z[5:].strip().lower() for z in produkt_zeilen() - vorher
+            if z.startswith("slug:") and len(z) > 5 and not re.match(r"slug:(?:cjreel|bildreel|reel|x)-", z)]
 
 
 def tt_trend_modus():
@@ -662,6 +664,8 @@ def befunde_fuer(plan, planer, jetzt_utc):
             for h in aus_text | {h.lower() for h in s.get("handles", [])}:
                 if shop and h in shop:
                     ok, mn, mx = shop[h]
+                    if h not in aus_text and mn != mn:
+                        continue   # Handle nur aus dem Poster-Ledger und dem Shop unbekannt (gekürzter Namensschlüssel) → kein Urteil
                     if not ok:
                         gruende.append(f"Produkt {h} nicht kaufbar/nicht veröffentlicht")
                     elif h in aus_text and len(aus_text) == 1:   # Preisvergleich nur, wenn der Text genau EIN Produkt nennt (Karussell: mehrere)
