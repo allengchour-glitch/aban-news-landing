@@ -26,3 +26,4 @@
 2026-10-18T21:32:45.281Z	bg-streetwear-retro-strickpullover-605300	Herrenmode Schweiz	metricool:399446002	herbst-favoriten	bild=roh
 2026-10-18T21:33:16.671Z	rabe-mit-federn-fga93063	Wohnen & Deko	metricool:399446893	halloween	bild=2:3
 2026-10-18T21:36:45.217Z	extra-dickes-lammwoll-fleece-hoodie-629900	Herrenmode Schweiz	metricool:399448410	herbst-favoriten	bild=roh
+2026-10-18T21:38:09.380Z	gruselpuppe-50-cm-weiss-fga910036	Geschenkideen Schweiz	metricool:399449097	halloween	bild=roh

@@ -17,10 +17,16 @@
   "bild-20261020T0745": {
    "basis_utc": "2026-10-20T07:45:00Z",
    "format": "bild",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "",
+   "letzter_versuch": "2026-10-18T21:38:48Z",
+   "mc_ids": [
+    399449577
+   ],
+   "reserviert_um": "2026-10-18T21:38:48Z",
+   "status": "geplant",
    "termin_utc": "2026-10-20T07:45:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "bild-20261021T0745": {
    "basis_utc": "2026-10-21T07:45:00Z",
@@ -65,10 +71,14 @@
   "karussell-20261019T1915": {
    "basis_utc": "2026-10-19T19:15:00Z",
    "format": "karussell",
+   "grund": "",
+   "handle": "",
    "letzter_versuch": "2026-10-18T21:37:17Z",
-   "mc_ids": [],
+   "mc_ids": [
+    399448884
+   ],
    "reserviert_um": "2026-10-18T21:37:17Z",
-   "status": "reserviert",
+   "status": "geplant",
    "termin_utc": "2026-10-19T19:15:00Z",
    "versuche": 1
   },
@@ -165,10 +175,16 @@
   "pin-20261019T1950": {
    "basis_utc": "2026-10-19T19:50:00Z",
    "format": "pin",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "",
+   "letzter_versuch": "2026-10-18T21:37:52Z",
+   "mc_ids": [
+    399449097
+   ],
+   "reserviert_um": "2026-10-18T21:37:52Z",
+   "status": "geplant",
    "termin_utc": "2026-10-19T19:50:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "pin-20261020T1240": {
    "basis_utc": "2026-10-20T12:40:00Z",
@@ -395,10 +411,17 @@
   "reel_igfb-20261020T1015": {
    "basis_utc": "2026-10-20T10:15:00Z",
    "format": "reel_igfb",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "haltungs-korrektor-fur-rucken-und-schlusselbei-5da7b0",
+   "letzter_versuch": "2026-10-18T21:39:16Z",
+   "mc_ids": [
+    399449679,
+    399449682
+   ],
+   "reserviert_um": "2026-10-18T21:39:16Z",
+   "status": "geplant",
    "termin_utc": "2026-10-20T10:15:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "reel_igfb-20261020T1815": {
    "basis_utc": "2026-10-20T18:15:00Z",
@@ -506,10 +529,12 @@
   "story-20261020T1045": {
    "basis_utc": "2026-10-20T10:45:00Z",
    "format": "story",
+   "letzter_versuch": "2026-10-18T21:39:29Z",
    "mc_ids": [],
-   "status": "offen",
+   "reserviert_um": "2026-10-18T21:39:29Z",
+   "status": "reserviert",
    "termin_utc": "2026-10-20T10:45:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "story-20261021T1045": {
    "basis_utc": "2026-10-21T10:45:00Z",
@@ -596,10 +621,16 @@
   "tiktok-20261020T0605": {
    "basis_utc": "2026-10-20T06:05:00Z",
    "format": "tiktok",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "herren-business-quarzuhr-mit-edelstahl-armband-092032",
+   "letzter_versuch": "2026-10-18T21:38:34Z",
+   "mc_ids": [
+    399449402
+   ],
+   "reserviert_um": "2026-10-18T21:38:34Z",
+   "status": "geplant",
    "termin_utc": "2026-10-20T06:05:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "tiktok-20261020T1105": {
    "basis_utc": "2026-10-20T11:05:00Z",
@@ -768,10 +799,16 @@
   "youtube-20261020T0520": {
    "basis_utc": "2026-10-20T05:20:00Z",
    "format": "youtube",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "reisetasche-mit-grossem-volumen-601600",
+   "letzter_versuch": "2026-10-18T21:38:20Z",
+   "mc_ids": [
+    399449299
+   ],
+   "reserviert_um": "2026-10-18T21:38:20Z",
+   "status": "geplant",
    "termin_utc": "2026-10-20T05:20:00Z",
-   "versuche": 0
+   "versuche": 2
   },
   "youtube-20261020T1405": {
    "basis_utc": "2026-10-20T14:05:00Z",
@@ -862,6 +899,6 @@
    "versuche": 0
   }
  },
- "stand": "2026-10-18T21:37:17Z",
+ "stand": "2026-10-18T21:39:29Z",
  "version": 1
 }
