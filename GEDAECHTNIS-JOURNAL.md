@@ -53,6 +53,26 @@
 
 
 
+## 🗓️🎵 Metricool 7 Tage voraus + Musik v3 (2026-10-18, abends)
+
+**Auftrag:** «pushe metricool 7 tage voraus bis sonntag 22.00 uhr verbessere automatisch / sichtbarkeit erweitern auf maximum» · «immer das gleiche ist nervend» · «tiktok trends musik oder so».
+Berichte: `dropship/METRICOOL-VORLAUF-2026-10-18.md`, `dropship/MUSIK-V3-2026-10-18.md`. Hier nur die teuren Lehren.
+
+1. **Ein Hand-Poster neben dem Autopiloten = Doppelpost.** Ich startete den TikTok-Poster für den Trendton-Pilot, während der Treiber einen TikTok-Slot bearbeitete. Beide wählten dasselbe ready-Reel
+   (Kandidat VOR dem Lock gewählt, Queue/Ledger nach dem Lock nicht neu gelesen) → dasselbe Video am 19.10. 00:19 und am 23.10. 08:05. Gefunden hat es erst der dritte Prüfer, nicht ich.
+   Jetzt: Frisch-Prüfung nach `postLock()` (Exit 3 wenn vergeben). **Regel: Poster nie von Hand starten, solange `social_autopilot.sh` läuft — erst `HALT`/Modus setzen oder den Treiber pausieren.**
+2. **Ein Prüfer, der löschen darf, braucht eine Massen-Schwelle.** `medium_ok()` wertete curl «000» (DNS/Proxy/Timeout) als «kaputt» → ein einziger Netzausfall hätte alle ~100 vorausgeplanten Posts gelöscht
+   (und Video + Ware in den Ledgern verbrannt). Nur 404/410 zweimal; mehr als max(3, 10 %) Beanstandungen = nichts löschen, melden.
+3. **Die Notbremse (STOPP) muss auch auf Vorausgeplantes wirken.** Der Autopilot-Block stand unter `[ ! -f _SOCIAL_STOPP ]` — der Prüfer, der unter STOPP alles zurückzieht, war damit unerreichbar.
+   Wer Vorausplanung baut, muss prüfen, was jede bestehende Notbremse bei Posts tut, die schon beim Anbieter liegen.
+4. **Zustandsdatei nie still leer lesen.** `plan_laden()` gab bei defekter JSON einen leeren Plan zurück → Neuanlage aller Slots neben den bestehenden Posts. Defekt = sichern, aus git holen, sonst Abbruch.
+5. **Ledger-Schlüssel sind keine Produkt-Handles.** `slug:` im Produkt-Ledger führt auch Reel-IDs und gekürzte Namen; als Shop-Handle geprüft wären sie «nicht veröffentlicht» = Löschgrund. Unbekannt = kein Urteil.
+6. **Der Pilot beweist, was die Doku nur behauptet:** erst die TikTok-Videoseite (`music.original=false`, `music.id`, Lautheit) hat gezeigt, dass Metricool-`tiktokData.music` ankommt und `originalVolume 0` den
+   eigenen Ton stumm stellt. Vorher war alles BEHAUPTUNG; das Metricool-API prüft kaum etwas (Lautstärke 150 und erfundene IDs werden gespeichert).
+7. **Trendton ist nicht der Hebel, den Anbieter versprechen.** TikTok-Aufrufe liegen zu 89 % bei ≈ 272, mittlere Wiedergabezeit 2,1 s (Korrelation −0,02) — Hook-Problem. Trendton nur als Abwechslung + messbarer Versuch.
+8. **Den Reel-Motor nie mit `--help` aufrufen** — er kennt keine Argumente und läuft los (2 min, abgebrochen, keine Folgen).
+9. Ein Wartebefehl `until [ date ≥ … ]` über 10 min wandert in den Hintergrund; für Wartezeiten > 2 min besser kurze Schleifen mit `timeout`.
+
 ## 🗨️🎼✉️🔎 Kommentare, Musik, Mails, Search Console (2026-10-18, 20:50–21:40 UTC)
 
 Betreiber-Aufträge in einem Zug: «verbessere kommentare antwort», «verbessere musik videos», «bearbeite mails», «search.goole sachen», dazu die Frage nach der
@@ -20744,3 +20764,9 @@ Verschoben am 04.10.2026:
 - 2026-10-14 · 🖼️ **Google «Unable to show image» (126, Sprung 2→109 am 10.10. nach LI-Aufnahme): alle Bilder als `Googlebot-Image` HTTP 200 → Google hat nur nicht abgeholt. Fix = neue ADRESSE (`fileUpdate filename` «-gMMTT»), kein Bildtausch; Wächter `google_bild_abruf.py` täglich (3 T warten, 21 T Ruhe, dann Eskalation).** → `dropship/GOOGLE-BILD-NICHT-ABRUFBAR-2026-10-14.md`
 - 2026-10-14 · 🪦 **Tageswächter mit LEEREM Log seit 13.10. 16:32 (psa_schuhe, ch_lager_profil): touch vor dem Start + Tod beim Container-Neustart + `absturz_nachholen` nur bei Traceback → 15 h kein Lauf. Jetzt: leeres Log älter als der Container-Start = nachholen. CH-Lager Stufe 2 live (31 Google, 0 falsch), Kasse = Seite.** → Journal 14.10. 🪦
 - 2026-10-14 · 🧷 **13 fertige Reels nie gepostet: Poster schrieben `reels_seed.csv` aus der Start-Kopie zurück (Minuten nach dem Lesen) → EIN Weg zum Schreiben `lib/queue_csv.mjs`/`queue_csv.py` (Sperre, frisch, 3-Wege, posted gewinnt, atomar, Stand-Marke), 27 Schreiber umgestellt, Wächter `queue_schreiber_wache.py` holt verschwundene Zeilen täglich zurück. «Vollständig» nie aus dem Inhalt raten (halbe Datei auf Satzgrenze).** → `dropship/QUEUE-SCHREIBER-2026-10-14.md`
+
+## 📚 Index-Archiv: vier Einzeilen vom 14.10.2026 (⭐ 🔪 📦 🔗, aus CLAUDE.md verschoben am 18.10.2026 22:40)
+- 2026-10-14 · ⭐ **310 doppelt importierte Lieferanten-Bewertungen auf 66 Produkten ausgeblendet (Laufshirt 17 → 6, Hunde-Jacke 24 → 8; ratingCount ging an Google). Autor nur im Widget-Metafeld (API: alle «C***t") → Eichung 299/299; difflib immer `autojunk=False`. Importer fragt jetzt Judge.me statt nur sein Ledger + Lauf-Sperre; Wache täglich. Shopify-Metafeld zog nach 2 min nach (64/66 exakt, 631 → 332). Offen: 1'283 alte 5★ unlesbar, 2'904 ausgeblendete 1–3★ (Betreiber).** → `dropship/JUDGEME-DOPPEL-BEWERTUNGEN-2026-10-14.md`
+- 2026-10-14 · 🔪 **Klingen nur am Bild: 193 Verdachtstitel über 49 Kontaktbögen → 11 bestätigt + Rasiermesser + Messerset (kam am 07.10. als «Stahlsatz» aktiv durch den Import, Politur machte «Messerset») = 13 gedraftet; Regel + Schnitzwerkzeug/carving tools (84/84). Wächter-Etikett «reaktiviert von unbekannt» war falsch → erkennt «aktiv angelegt»; Tageslauf starb still beim Neustart → START/FERTIG + `still_gestorben`.** → `dropship/KLINGEN-AM-BILD-2026-10-14.md`
+- 2026-10-14 · 📦 **29'013 CJ-Produkte mit SKU «CJ-<pid>» ohne Bestandsschutz → `cj_lager_abgleich` fragt `product/query?pid=` (nur Zusatzkonten, 300/Lauf, 600/Tag; Regel = Bestellweg: 1 Variante/Zuordnung eindeutig, sonst nur «alle 0»); erster Lauf sperrte 2 bei CJ entfernte. 20 Entwürfe mit eigener Sperre waren festgefahren → mitgeprüft. ⚠️ Ledger nie als offenen Griff halten (git-Merge ersetzt die Datei).** → `dropship/CJ-LAGER-PID-2026-10-14.md`
+- 2026-10-14 · 🔗 **1'331 aktive CJ-Produkte ohne `cj-real` (Gruppe cjwerkzeug) = unsichtbar für ALLE Lieferbarkeits-Wächter → `CJ_REAL_PFLICHT` im Importer + `cj_real_luecke.py` (1'330 nachgetragen, Aufseher täglich); Schusswaffen-Zubehör: «Einzelfall» war falsch, Regel + Bildliste (`data/schusswaffen_zubehoer_regel.json`, py=js) → `waffe-pruefen`; Env-Secret verdorben → Keepalive prüft per Grant. tote_landeseiten fragte je Seite einzeln (13,5 Min., starb still) → Pakete à 40 (1,5 Min.). Offen: 27'819 pid-Formen ohne Bestandsprüfung.** → Journal 14.10. 🔗
