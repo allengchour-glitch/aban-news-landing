@@ -73,10 +73,17 @@
   "bild-20261024T0745": {
    "basis_utc": "2026-10-24T07:45:00Z",
    "format": "bild",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "",
+   "handles": [],
+   "letzter_versuch": "2026-10-18T22:14:46Z",
+   "mc_ids": [
+    399467689
+   ],
+   "reserviert_um": "2026-10-18T22:14:46Z",
+   "status": "geplant",
    "termin_utc": "2026-10-24T07:45:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "bild-20261025T0845": {
    "basis_utc": "2026-10-25T08:45:00Z",
@@ -399,28 +406,47 @@
   "pin-20261023T1510": {
    "basis_utc": "2026-10-23T15:10:00Z",
    "format": "pin",
+   "grund": "",
+   "handle": "",
+   "handles": [],
    "letzter_versuch": "2026-10-18T22:11:57Z",
-   "mc_ids": [],
+   "mc_ids": [
+    399466675
+   ],
    "reserviert_um": "2026-10-18T22:11:57Z",
-   "status": "reserviert",
+   "status": "geplant",
    "termin_utc": "2026-10-23T15:10:00Z",
    "versuche": 1
   },
   "pin-20261023T1740": {
    "basis_utc": "2026-10-23T17:40:00Z",
    "format": "pin",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "",
+   "handles": [],
+   "letzter_versuch": "2026-10-18T22:12:40Z",
+   "mc_ids": [
+    399466942
+   ],
+   "reserviert_um": "2026-10-18T22:12:40Z",
+   "status": "geplant",
    "termin_utc": "2026-10-23T17:40:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "pin-20261023T1950": {
    "basis_utc": "2026-10-23T19:50:00Z",
    "format": "pin",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "",
+   "handles": [],
+   "letzter_versuch": "2026-10-18T22:13:30Z",
+   "mc_ids": [
+    399467237
+   ],
+   "reserviert_um": "2026-10-18T22:13:30Z",
+   "status": "geplant",
    "termin_utc": "2026-10-23T19:50:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "pin-20261024T1240": {
    "basis_utc": "2026-10-24T12:40:00Z",
@@ -629,18 +655,39 @@
   "reel_igfb-20261023T1815": {
    "basis_utc": "2026-10-23T18:15:00Z",
    "format": "reel_igfb",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "maxi-kleid-aria-langarm-tailliert-mit-gurtel",
+   "handles": [
+    "maxi-kleid-aria-langarm-tailliert-mit-gurtel"
+   ],
+   "letzter_versuch": "2026-10-18T22:13:15Z",
+   "mc_ids": [
+    399467035,
+    399467036
+   ],
+   "reserviert_um": "2026-10-18T22:13:15Z",
+   "status": "geplant",
    "termin_utc": "2026-10-23T18:15:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "reel_igfb-20261024T1015": {
    "basis_utc": "2026-10-24T10:15:00Z",
    "format": "reel_igfb",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "xxl-leselupe-mit-led-licht-5-10-vergrosserung-2-helligkeitsstufen",
+   "handles": [
+    "bildreel-xxl-leselupe-mit-led-licht-5-10-vergrosserung-2-helligkeitsstufen",
+    "xxl-leselupe-mit-led-licht-5-10-vergrosserung-2-helligkeitsstufen"
+   ],
+   "letzter_versuch": "2026-10-18T22:15:05Z",
+   "mc_ids": [
+    399467813,
+    399467816
+   ],
+   "reserviert_um": "2026-10-18T22:15:05Z",
+   "status": "geplant",
    "termin_utc": "2026-10-24T10:15:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "reel_igfb-20261024T1815": {
    "basis_utc": "2026-10-24T18:15:00Z",
@@ -744,10 +791,12 @@
   "story-20261024T1045": {
    "basis_utc": "2026-10-24T10:45:00Z",
    "format": "story",
+   "letzter_versuch": "2026-10-18T22:15:18Z",
    "mc_ids": [],
-   "status": "offen",
+   "reserviert_um": "2026-10-18T22:15:18Z",
+   "status": "reserviert",
    "termin_utc": "2026-10-24T10:45:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "story-20261025T1145": {
    "basis_utc": "2026-10-25T11:45:00Z",
@@ -956,6 +1005,7 @@
   "tiktok-20261023T1805": {
    "basis_utc": "2026-10-23T18:05:00Z",
    "format": "tiktok",
+   "grund": "wartet auf Trendton-Pilot",
    "mc_ids": [],
    "status": "offen",
    "termin_utc": "2026-10-23T18:05:00Z",
@@ -964,6 +1014,7 @@
   "tiktok-20261024T0605": {
    "basis_utc": "2026-10-24T06:05:00Z",
    "format": "tiktok",
+   "grund": "wartet auf Trendton-Pilot",
    "mc_ids": [],
    "status": "offen",
    "termin_utc": "2026-10-24T06:05:00Z",
@@ -1156,10 +1207,19 @@
   "youtube-20261024T0520": {
    "basis_utc": "2026-10-24T05:20:00Z",
    "format": "youtube",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "makeup-set-all-in-one-fur-einen-kompletten-loo-c1ad7e",
+   "handles": [
+    "makeup-set-all-in-one-fur-einen-kompletten-loo-c1ad7e"
+   ],
+   "letzter_versuch": "2026-10-18T22:14:03Z",
+   "mc_ids": [
+    399467504
+   ],
+   "reserviert_um": "2026-10-18T22:14:03Z",
+   "status": "geplant",
    "termin_utc": "2026-10-24T05:20:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "youtube-20261024T1405": {
    "basis_utc": "2026-10-24T14:05:00Z",
@@ -1186,6 +1246,6 @@
    "versuche": 0
   }
  },
- "stand": "2026-10-18T22:11:57Z",
+ "stand": "2026-10-18T22:15:18Z",
  "version": 1
 }
