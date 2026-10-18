@@ -156,3 +156,7 @@
 2026-10-18T23:04:54Z	tiktok-20261023T1805	rc3	Nichts faellig: kein ready-Reel, dessen Video noch nirgends gepostet wurde (tiktok; Marke bleibt alt, Exit 3).
 2026-10-18T23:06:10Z	pin-20261023T1950	geplant	[399492677] []
 2026-10-18T23:06:51Z	pin-20261024T1510	rc1	 gql (file:///home/user/aban-news-landing/automation/metricool_pinterest_pin.mjs:153:9)     at async file:///home/user/aban-news-landing/automation/metricool_pinterest_pin.mjs:251:13  Node.js v22.22.2
+2026-10-18T23:22:03Z	karussell-20261022T1915	rc0	Nichts faellig: kein ready-Karussell.
+2026-10-18T23:22:24Z	pin-20261022T1950	geplant	[399499991] []
+2026-10-18T23:22:34Z	tiktok-20261023T1805	rc3	Nichts faellig: kein ready-Reel, dessen Video noch nirgends gepostet wurde (tiktok; Marke bleibt alt, Exit 3).
+2026-10-18T23:24:41Z	pin-20261024T1510	geplant	[399500935] []

@@ -60,3 +60,5 @@
 2026-10-18T23:01:31.375Z	leichter-daunenmantel-mit-kapuze-613300	Sommerkleider & Damenmode 2026	metricool:399490427	herbst-favoriten	bild=roh
 2026-10-18T23:04:41.929Z	damen-strickpullover-mit-herzmuster-reissversc-602300	Sommerkleider & Damenmode 2026	metricool:399491953	herbst-favoriten	bild=roh
 2026-10-18T23:06:04.790Z	hoodie-jogginghose-set-im-partnerlook-637400	Sommerkleider & Damenmode 2026	metricool:399492677	herbst-favoriten	bild=roh
+2026-10-18T23:22:18.926Z	tragbarer-mixer-mit-usb-c-ladefunktion-794304	Tech & Gadgets	metricool:399499991	hype-jetzt	bild=roh
+2026-10-18T23:24:36.063Z	laser-sternenhimmel-projektor-mit-bluetooth-mu-723264	Tech & Gadgets	metricool:399500935	hype-jetzt	bild=roh

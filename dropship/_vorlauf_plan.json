@@ -161,12 +161,12 @@
    "basis_utc": "2026-10-22T19:15:00Z",
    "format": "karussell",
    "grund": "rc=0: Nichts faellig: kein ready-Karussell.",
-   "letzter_versuch": "2026-10-18T23:01:41Z",
+   "letzter_versuch": "2026-10-18T23:21:56Z",
    "mc_ids": [],
-   "reserviert_um": "2026-10-18T23:01:41Z",
+   "reserviert_um": "2026-10-18T23:21:56Z",
    "status": "offen",
    "termin_utc": "2026-10-22T19:15:00Z",
-   "versuche": 5
+   "versuche": 6
   },
   "karussell-20261023T1915": {
    "basis_utc": "2026-10-23T19:15:00Z",
@@ -412,14 +412,17 @@
   "pin-20261022T1950": {
    "basis_utc": "2026-10-22T19:50:00Z",
    "format": "pin",
-   "grund": "rc=1: g/automation/metricool_pinterest_pin.mjs:153:9)\n    at async file:///home/user/aban-news-landing/automation/metricool_pinterest_pin.mjs:251:13\n\nNode.js v22.22.2",
+   "grund": "",
    "handle": "",
-   "letzter_versuch": "2026-10-18T23:01:49Z",
-   "mc_ids": [],
-   "reserviert_um": "2026-10-18T23:01:49Z",
-   "status": "offen",
+   "handles": [],
+   "letzter_versuch": "2026-10-18T23:22:03Z",
+   "mc_ids": [
+    399499991
+   ],
+   "reserviert_um": "2026-10-18T23:22:03Z",
+   "status": "geplant",
    "termin_utc": "2026-10-22T19:50:00Z",
-   "versuche": 1
+   "versuche": 2
   },
   "pin-20261023T1240": {
    "basis_utc": "2026-10-23T12:40:00Z",
@@ -499,15 +502,17 @@
   "pin-20261024T1510": {
    "basis_utc": "2026-10-24T15:10:00Z",
    "format": "pin",
-   "grund": "rc=1: g/automation/metricool_pinterest_pin.mjs:153:9)\n    at async file:///home/user/aban-news-landing/automation/metricool_pinterest_pin.mjs:251:13\n\nNode.js v22.22.2",
+   "grund": "",
    "handle": "",
    "handles": [],
-   "letzter_versuch": "2026-10-18T23:06:10Z",
-   "mc_ids": [],
-   "reserviert_um": "2026-10-18T23:06:10Z",
-   "status": "offen",
+   "letzter_versuch": "2026-10-18T23:22:34Z",
+   "mc_ids": [
+    399500935
+   ],
+   "reserviert_um": "2026-10-18T23:22:34Z",
+   "status": "geplant",
    "termin_utc": "2026-10-24T15:10:00Z",
-   "versuche": 1
+   "versuche": 2
   },
   "pin-20261024T1740": {
    "basis_utc": "2026-10-24T17:40:00Z",
@@ -1153,12 +1158,12 @@
    "basis_utc": "2026-10-23T18:05:00Z",
    "format": "tiktok",
    "grund": "rc=3: Nichts faellig: kein ready-Reel, dessen Video noch nirgends gepostet wurde (tiktok; Marke bleibt alt, Exit 3).",
-   "letzter_versuch": "2026-10-18T23:04:47Z",
+   "letzter_versuch": "2026-10-18T23:22:24Z",
    "mc_ids": [],
-   "reserviert_um": "2026-10-18T23:04:47Z",
+   "reserviert_um": "2026-10-18T23:22:24Z",
    "status": "offen",
    "termin_utc": "2026-10-23T18:05:00Z",
-   "versuche": 1
+   "versuche": 2
   },
   "tiktok-20261024T0605": {
    "basis_utc": "2026-10-24T06:05:00Z",
@@ -1441,6 +1446,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-18T23:06:51Z",
+ "stand": "2026-10-18T23:24:41Z",
  "version": 1
 }

@@ -16,16 +16,17 @@
 Gegenproben: «Sexy» im Titel (45) trägt 0 «Inappropriate title»; RAUCH-Regex über 50'016 Titel = 45 Treffer, alle
 echtes Rauchzubehör; Such-Kanarienvogel `title:*zzzkanari*` = 0.
 
-## Letzter Lauf 2026-10-14T13:24:07Z — SCHARF
+## Letzter Lauf 2026-10-18T23:22:48Z — SCHARF
 
-Gescannt 54523 aktive von 54523 (EXACT); Wächter-Stand 6 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 0x gewartet, 0 s gesamt.
+Gescannt 55551 aktive von 55551 (EXACT); Wächter-Stand 1 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 159x gewartet, 1285 s gesamt.
 
 | Produkt | Regel | Änderung | Status |
 |---|---|---|---|
+| selbstausloser-mit-licht-613000 | POLICY | +google-policy-flag,google-policy-waffen | ok |
 
 ## Ledger gesamt
 
-51 Produkte mit rückgelesenen Änderungen; 0 Beschreibungen noch offen (Text-Sperre belegt — der nächste Lauf holt sie nach).
+52 Produkte mit rückgelesenen Änderungen; 0 Beschreibungen noch offen (Text-Sperre belegt — der nächste Lauf holt sie nach).
 
 Geschriebene Titel (rückgelesen):
 
@@ -81,6 +82,7 @@ Typ-/Tag-Korrekturen (rückgelesen):
 - portabler-luftreiniger-aschenbecher-437952: typ Raucherzubehör; tags_dazu smoke-zubehoer
 - runder-aschenbecher-aus-keramik-2cef8b: typ Raucherzubehör; tags_dazu raucher,smoke-zubehoer
 - schockresistenter-schutz-625600: typ Handy-Zubehör
+- selbstausloser-mit-licht-613000: tags_dazu google-policy-flag,google-policy-waffen
 - smarter-aschenbecher-mit-luftreiniger-fur-auto-042304: typ Raucherzubehör; tags_dazu raucher,smoke-zubehoer
 - spiral-pipe-atomizer-fur-trockene-krauter-467392: typ Raucherzubehör; tags_dazu raucher,smoke-zubehoer
 - strandtuch-kleid-new-style-f6bb03: typ Pool & Strand
