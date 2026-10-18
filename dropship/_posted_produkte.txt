@@ -346,3 +346,6 @@ name:brudermbsprinterautotrans
 name:hitzebeständigereinigungshandschuhe
 pid:15483890663809
 slug:hitzebestandige-reinigungshandschuhe-f6a1e3
+slug:cjreel-cjly299920801az
+pid:15493859705217
+slug:v-ausschnitt-a-linien-kleid-mit-puffarmeln

@@ -189,28 +189,40 @@
   "pin-20261020T1240": {
    "basis_utc": "2026-10-20T12:40:00Z",
    "format": "pin",
+   "grund": "",
+   "handle": "",
    "letzter_versuch": "2026-10-18T21:41:30Z",
-   "mc_ids": [],
+   "mc_ids": [
+    399450774
+   ],
    "reserviert_um": "2026-10-18T21:41:30Z",
-   "status": "reserviert",
+   "status": "geplant",
    "termin_utc": "2026-10-20T12:40:00Z",
    "versuche": 1
   },
   "pin-20261020T1510": {
    "basis_utc": "2026-10-20T15:10:00Z",
    "format": "pin",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "",
+   "letzter_versuch": "2026-10-18T21:42:05Z",
+   "mc_ids": [
+    399451102
+   ],
+   "reserviert_um": "2026-10-18T21:42:05Z",
+   "status": "geplant",
    "termin_utc": "2026-10-20T15:10:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "pin-20261020T1740": {
    "basis_utc": "2026-10-20T17:40:00Z",
    "format": "pin",
+   "letzter_versuch": "2026-10-18T21:42:34Z",
    "mc_ids": [],
-   "status": "offen",
+   "reserviert_um": "2026-10-18T21:42:34Z",
+   "status": "reserviert",
    "termin_utc": "2026-10-20T17:40:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "pin-20261020T1950": {
    "basis_utc": "2026-10-20T19:50:00Z",
@@ -826,10 +838,16 @@
   "youtube-20261020T1405": {
    "basis_utc": "2026-10-20T14:05:00Z",
    "format": "youtube",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "v-ausschnitt-a-linien-kleid-mit-puffarmeln-628400",
+   "letzter_versuch": "2026-10-18T21:41:51Z",
+   "mc_ids": [
+    399450879
+   ],
+   "reserviert_um": "2026-10-18T21:41:51Z",
+   "status": "geplant",
    "termin_utc": "2026-10-20T14:05:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "youtube-20261021T0520": {
    "basis_utc": "2026-10-21T05:20:00Z",
@@ -912,6 +930,6 @@
    "versuche": 0
   }
  },
- "stand": "2026-10-18T21:41:30Z",
+ "stand": "2026-10-18T21:42:34Z",
  "version": 1
 }

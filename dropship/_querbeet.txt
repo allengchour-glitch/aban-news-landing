@@ -157,3 +157,6 @@ gid://shopify/Product/16638898897287	2026-10-15	Wohnen & Dekoration
 gid://shopify/Product/16617712484743	2026-10-15	Küche & Kochen
 gid://shopify/Product/16614810321287	2026-10-15	Haustierwelt
 gid://shopify/Product/16638892474759	2026-10-15	Spielzeug & Plüsch
+gid://shopify/Product/16638857904519	2026-10-18	Elektronik & Technik
+gid://shopify/Product/16612790665607	2026-10-18	Smartwatches & Wearables
+gid://shopify/Product/16613767381383	2026-10-18	Handy-Zubehör
