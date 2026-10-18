@@ -3,22 +3,28 @@
  * --------------------------------------------------------------------------------
  * Prüft die HAUPTBILDER aller aktiven Produkte und macht sie „top":
  *   • Auflösung (Breite/Höhe via Admin-API) → flaggt zu kleine Bilder
- *   • Gemini-Vision auf das 1. Bild: zeigt es eine Person? wirkt sie asiatisch?
- *     ist es ein sauberes Produktfoto? schlechte Qualität (blurry/Collage/Wasserzeichen)?
- *   • Wenn das 1. Bild ungünstig ist (asiatisches Model / schlechte Qualität) UND ein
- *     besseres, sauberes Produktbild existiert → wird dieses per reorderMedia NACH VORNE
- *     sortiert (das Produkt verliert kein Bild, nur die Reihenfolge ändert sich).
+ *   • Gemini-Vision auf das 1. Bild: zeigt es das Produkt? unscharf, Wasserzeichen,
+ *     Text im Bild, Collage?
+ *   • Wenn das 1. Bild einen dieser Mängel hat UND ein besseres Produktbild existiert →
+ *     wird dieses per reorderMedia NACH VORNE sortiert (das Produkt verliert kein Bild,
+ *     nur die Reihenfolge ändert sich).
+ *
+ * GEÄNDERT AM 2026-10-18: vorher fragte der Lauf, ob die Person auf dem Bild
+ * „ost-/südostasiatisch wirkt", und sortierte genau dann um. Begründung und Tests in
+ * automation/lib/bild_befund.mjs. Ausserdem war APPLY standardmässig AN — bei einem
+ * Werkzeug, das Hauptbilder vertauscht, ist das die falsche Vorgabe.
  *
  * Sicher & günstig: BATCH pro Lauf (Default 40), idempotenter Ledger (überspringt schon
  * geprüfte Produkte), max. wenige Vision-Calls pro Produkt, Report als CSV. APPLY=0 = nur
  * Report (kein Umsortieren). No-op ohne GEMINI_API_KEY bzw. Shopify-Creds.
  *
  * ENV (GitHub-Secrets): GEMINI_API_KEY · SHOPIFY_SHOP · SHOPIFY_CLIENT_ID · SHOPIFY_CLIENT_SECRET
- *      GEMINI_MODEL (Default gemini-2.5-flash) · BATCH (40) · MIN_PX (800) · APPLY (1)
+ *      GEMINI_MODEL (Default gemini-2.5-flash) · BATCH (40) · MIN_PX (800) · APPLY=1 (Vorgabe: nur Bericht)
  */
 import fs from 'node:fs';
 import path from 'node:path';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
+import { istSchwach, istBessereAlternative, grund } from './lib/bild_befund.mjs';
 
 const KEY = process.env.GEMINI_API_KEY || '';
 const SHOP = process.env.SHOPIFY_SHOP || '';
@@ -29,7 +35,7 @@ const GBASE = process.env.GEMINI_BASE_URL || 'https://generativelanguage.googlea
 const API_VER = process.env.SHOPIFY_API_VERSION || '2025-01';
 const BATCH = Math.max(1, parseInt(process.env.BATCH || '40', 10) || 40);
 const MIN_PX = Math.max(200, parseInt(process.env.MIN_PX || '800', 10) || 800);
-const APPLY = process.env.APPLY !== '0'; // Default: Umsortieren AN
+const APPLY = process.env.APPLY === '1'; // Vorgabe: nur Bericht. Umsortieren ist ausdruecklich anzufordern.
 
 const ROOT = path.dirname(path.dirname(new URL(import.meta.url).pathname));
 const LEDGER = path.join(ROOT, 'dropship', 'image-audit-done.txt');
@@ -66,11 +72,13 @@ async function classify(url) {
     const img = await fetch(url); if (!img.ok) return null;
     const buf = Buffer.from(await img.arrayBuffer());
     const mime = url.toLowerCase().includes('.png') ? 'image/png' : 'image/jpeg';
-    const prompt = 'Du bewertest ein Produktbild für einen Schweizer Online-Shop. Antworte NUR mit kompaktem JSON ' +
-      '(keine Erklärung): {"person":bool,"asian":bool,"clean_product":bool,"low_quality":bool}. ' +
-      '"person"=ein menschliches Model ist prominent zu sehen. "asian"=die prominenteste Person wirkt ost-/südostasiatisch. ' +
-      '"clean_product"=zeigt v. a. das Produkt (wenig/kein Mensch), gut als Katalog-Vorschau. ' +
-      '"low_quality"=unscharf, Wasserzeichen, Text-Overlay, Collage oder billig.';
+    const prompt = 'Du bewertest die handwerkliche Qualität eines Produktbilds für einen Online-Shop. ' +
+      'Antworte NUR mit kompaktem JSON (keine Erklärung): ' +
+      '{"zeigt_produkt":bool,"unscharf":bool,"wasserzeichen":bool,"text_overlay":bool,"collage":bool}. ' +
+      '"zeigt_produkt"=das verkaufte Produkt ist klar und vollständig zu erkennen. ' +
+      '"unscharf"=verwackelt, verpixelt oder stark komprimiert. "wasserzeichen"=fremdes Logo oder Schriftzug im Bild. ' +
+      '"text_overlay"=Werbetext, Preis oder Pfeile ins Bild montiert. "collage"=mehrere Einzelbilder in einem Raster. ' +
+      'Beurteile NUR das Bild selbst — niemals das Aussehen, Geschlecht, Alter oder die Herkunft abgebildeter Menschen.';
     const body = { contents: [{ parts: [{ text: prompt }, { inline_data: { mime_type: mime, data: buf.toString('base64') } }] }],
       generationConfig: { temperature: 0, maxOutputTokens: 80 } };
     const r = await fetch(`${GBASE}/models/${MODEL}:generateContent?key=${encodeURIComponent(KEY)}`,
@@ -104,16 +112,16 @@ async function classify(url) {
       const w = feat.image.width || 0, h = feat.image.height || 0;
       const lowres = (w && w < MIN_PX) || (h && h < MIN_PX);
       const c = await classify(feat.image.url); await sleep(400);
-      const badFeat = c && ((c.person && c.asian) || c.low_quality);
+      const badFeat = istSchwach(c);
       let action = 'ok';
       if (lowres) { action = 'NIEDRIGE-AUFLOESUNG'; flagged++; }
       if (badFeat) {
         flagged++;
-        // bessere Alternative suchen: sauberes Produktfoto ohne (asiatische) Person
+        // bessere Alternative suchen: ein Bild, das das Produkt zeigt und selbst keinen Mangel hat
         let altIdx = -1;
         for (let i = 1; i < Math.min(imgs.length, 4); i++) {
           const ca = await classify(imgs[i].image.url); await sleep(400);
-          if (ca && ca.clean_product && !ca.low_quality && !(ca.person && ca.asian)) { altIdx = i; break; }
+          if (istBessereAlternative(ca)) { altIdx = i; break; }
         }
         if (altIdx > 0 && APPLY) {
           const mv = `mutation($id:ID!,$moves:[MoveInput!]!){ productReorderMedia(id:$id, moves:$moves){ mediaUserErrors{ message } } }`;
@@ -123,10 +131,10 @@ async function classify(url) {
           else action = 'FEHLER-UMSORT: ' + errs[0].message;
           await sleep(600);
         } else {
-          action = altIdx > 0 ? 'BESSERES-BILD-VORHANDEN (APPLY=0)' : 'FLAG: kein sauberes Alt-Bild (Bild ersetzen)';
+          action = altIdx > 0 ? 'BESSERES-BILD-VORHANDEN (APPLY=1 setzen zum Umsortieren)' : 'FLAG: kein sauberes Alt-Bild (Bild ersetzen)';
         }
       }
-      if (action !== 'ok') report([p.handle, lowres ? 'lowres' : (c && c.person && c.asian ? 'asian-model-first' : 'low-quality'), action, w, h, feat.image.url]);
+      if (action !== 'ok') report([p.handle, grund(c, lowres), action, w, h, feat.image.url]);
       remember(p.id);
     }
     if (!conn.pageInfo.hasNextPage) { log('Katalog-Ende erreicht.'); break; }

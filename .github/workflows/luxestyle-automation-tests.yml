@@ -7,6 +7,7 @@ on:
       - 'automation/metricool-schedule.mjs'
       - 'automation/price_guard.mjs'
       - 'automation/cross_sell.mjs'
+      - 'automation/image-audit.mjs'
       - 'automation/publish_guard.mjs'
       - 'automation/cj_reviews_import.mjs'
       - 'automation/video-autopost-meta.mjs'
@@ -38,6 +39,7 @@ jobs:
             automation/metricool-schedule.mjs
             automation/price_guard.mjs
             automation/cross_sell.mjs
+            automation/image-audit.mjs
             automation/publish_guard.mjs
             automation/cj_reviews_import.mjs
             automation/video-autopost-meta.mjs
@@ -63,6 +65,7 @@ jobs:
           node --check dropship/cj_enrich.mjs
           node --check automation/publish_guard.mjs
           node --check automation/cross_sell.mjs
+          node --check automation/image-audit.mjs
           node --check automation/video-autopost-meta.mjs
       - name: Existing helper checks
         run: |
@@ -70,6 +73,7 @@ jobs:
           node automation/lib/shopify_secret_test.mjs
           node automation/lib/kanal_sperren_test.mjs
           node automation/lib/cross_sell_ziel_test.mjs
+          node automation/lib/bild_befund_test.mjs
       - name: CJ failures and publication regressions (mock APIs only)
         run: |
           node automation/lib/cj_response_test.mjs

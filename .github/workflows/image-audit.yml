@@ -5,9 +5,9 @@ on:
   workflow_dispatch:
     inputs:
       apply:
-        description: 'Umsortieren anwenden (sonst nur Report)'
+        description: 'Umsortieren anwenden (Vorgabe: nur Bericht)'
         type: boolean
-        default: true
+        default: false
       batch:
         description: 'Produkte pro Lauf'
         type: string
@@ -33,7 +33,8 @@ jobs:
           SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
           SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
           SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
-          APPLY: ${{ (github.event_name == 'workflow_dispatch' && inputs.apply == false) && '0' || '1' }}
+          # Der Wochenlauf berichtet nur. Umsortieren passiert ausschliesslich auf ausdruecklichen Zuruf.
+          APPLY: ${{ (github.event_name == 'workflow_dispatch' && inputs.apply) && '1' || '0' }}
           BATCH: ${{ inputs.batch || '60' }}
         run: node automation/image-audit.mjs
       - name: Report/Ledger zurueckschreiben
