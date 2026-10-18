@@ -102,7 +102,7 @@ async function dispatch(request, handlers) {
     }
     return result({ protocolVersion: PROTOCOLS.has(params.protocolVersion) ? params.protocolVersion : '2025-06-18',
       capabilities: { tools: { listChanged: false } },
-      serverInfo: { name: 'luxestyle-claude-assist', version: '2.0.0' },
+      serverInfo: { name: 'luxestyle-claude-assist', version: '2.1.0' },
       instructions: 'Lokaler LuxeStyle-Helfer. Keine Live-APIs, Publikationen oder Modellaufrufe. Übergaben sind datierte Belege.' });
   }
   if (request.method === 'ping' || request.method === 'tools/list') {

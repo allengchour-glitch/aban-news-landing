@@ -125,7 +125,7 @@ function checkout(t) {
   const f = fixture(t);
   const here = path.dirname(fileURLToPath(import.meta.url));
   fs.mkdirSync(path.join(f.root, 'automation/lib'), { recursive: true });
-  for (const file of ['claude_assist.mjs','claude_assist_mcp.mjs','claude_assist_offline.mjs','claude_assist_changes.mjs']) fs.copyFileSync(path.join(here, file), path.join(f.root, 'automation/lib', file));
+  for (const file of ['claude_assist.mjs','claude_assist_mcp.mjs','claude_assist_offline.mjs','claude_assist_changes.mjs','claude_assist_readiness.mjs']) fs.copyFileSync(path.join(here, file), path.join(f.root, 'automation/lib', file));
   fs.copyFileSync(path.join(here, '../claude-assist.mjs'), path.join(f.root, 'automation/claude-assist.mjs'));
   for (const args of [['-c','init.templateDir=','init','--quiet',f.root], ['-C',f.root,'config','--local','remote.origin.url',remote]]) {
     const r = spawnSync('git', args, { env: cleanEnv(), encoding: 'utf8' }); assert.equal(r.status, 0, r.stderr);
@@ -135,7 +135,8 @@ function checkout(t) {
 test('CLI and stdio MCP work against a real checkout and share the same handoff', t => {
   const f = checkout(t), cli = path.join(f.root, 'automation/claude-assist.mjs');
   const run = (args, input) => spawnSync(process.execPath, [cli, ...args], { cwd: f.root, input, encoding: 'utf8', env: cleanEnv(), timeout: 5000 });
-  const d = run(['doctor']); assert.equal(d.status, 0, d.stderr); assert.equal(JSON.parse(d.stdout).repository.state, 'matched');
+  const d = run(['doctor']); assert.equal(d.status, 1, d.stderr); assert.equal(JSON.parse(d.stdout).repository.state, 'matched');
+  assert.equal(JSON.parse(d.stdout).localReadiness.state,'unknown');
   const s = run(['handoff-save'], JSON.stringify(note)); assert.equal(s.status, 0, s.stderr);
   const read = run(['handoff-read']); assert.equal(JSON.parse(read.stdout).records, 1);
   const request = run(['review-request'], JSON.stringify({question:'CLI-Integration prüfen.',files:['automation/claude-assist.mjs']}));
@@ -266,9 +267,9 @@ test('uncovered changes remain unknown while real test failures take precedence'
 });
 test('assist profile runs only its fixed integration files without claiming a network sandbox', async t => {
   const f=fixture(t,(cmd,args)=>({status:'passed',output:cmd==='git'?remote:'ok'}));
-  for(const file of ['claude_assist_test.mjs','claude_assist_mcp_test.mjs','claude_assist_changes_test.mjs'])write(f.root,'automation/lib/'+file,'');
+  for(const file of ['claude_assist_test.mjs','claude_assist_mcp_test.mjs','claude_assist_changes_test.mjs','claude_assist_readiness_test.mjs'])write(f.root,'automation/lib/'+file,'');
   const run=await f.app.checks({suite:'assist'});assert.equal(run.status,'passed');
-  const call=f.calls.find(c=>c.cmd!=='git');assert.equal(call.args[0],'--test');assert.equal(call.args.length,4);assert.match(run.caveat,/no network preload/);
+  const call=f.calls.find(c=>c.cmd!=='git');assert.equal(call.args[0],'--test');assert.equal(call.args.length,5);assert.match(run.caveat,/no network preload/);
 });
 test('native Git change plan sees a staged change even when the worktree returns to HEAD', async t => {
   const f=checkout(t),file='automation/lib/shopify_gql.mjs';write(f.root,file,'original');
@@ -296,4 +297,78 @@ test('legitimate large Unicode handoffs remain readable within the MCP byte budg
   assert.ok(Buffer.byteLength(JSON.stringify({content:[{type:'text',text:JSON.stringify(read)}]}))<256*1024);
   const original=fs.readFileSync(path.join(f.root,'dropship/assistant/handoff.jsonl'),'utf8');
   assert.equal(original.trim().split('\n').length,10);
+});
+
+function localSetup(root) {
+  write(root,'.mcp.json',JSON.stringify({mcpServers:{'luxestyle-assist':{type:'stdio',command:'node',args:['automation/claude-assist.mjs','mcp']},'other-service':{env:{example:'private_value_not_to_report'}}}}));
+  write(root,'.claude/commands/luxestyle-assist.md','Local reviewed command.');
+  if(!fs.existsSync(path.join(root,'automation/claude-assist.mjs')))write(root,'automation/claude-assist.mjs','// fixed helper');
+}
+test('doctor reports local readiness separately from a connected Claude client', async t => {
+  const f=fixture(t);localSetup(f.root);await f.app.save(note);
+  const d=await f.app.doctor();assert.equal(d.localReadiness.state,'ready');assert.match(d.claudeClient,/unknown/);
+  assert.equal(d.nextWork.kind,'resume_handoff');assert.equal(d.nextWork.nextStep,note.nextStep);
+  assert.equal(JSON.stringify(d).includes('private_value_not_to_report'),false);
+  assert.equal(d.liveAccountChecks,'unknown');assert.equal(d.publications,'unknown');
+});
+test('setup, locks and broken history prevent resume without resetting anything', async t => {
+  const f=fixture(t);localSetup(f.root);await f.app.save(note);
+  write(f.root,'dropship/assistant/.handoff.lock','another writer');
+  const locked=await f.app.doctor();assert.equal(locked.localReadiness.state,'blocked');assert.equal(locked.nextWork.kind,'resolve_setup');
+  assert.equal(fs.readFileSync(path.join(f.root,'dropship/assistant/.handoff.lock'),'utf8'),'another writer');
+  fs.unlinkSync(path.join(f.root,'dropship/assistant/.handoff.lock'));write(f.root,'dropship/assistant/handoff.jsonl','broken\n');
+  const bad=await f.app.doctor();assert.equal(bad.localReadiness.state,'unknown');assert.equal(bad.nextWork.kind,'resolve_setup');
+  assert.equal(fs.readFileSync(path.join(f.root,'dropship/assistant/handoff.jsonl'),'utf8'),'broken\n');
+  write(f.root,'.mcp.json','invalid');assert.equal((await f.app.doctor()).localReadiness.state,'unknown');
+});
+test('resume finds the oldest open review behind an answered first page', async t => {
+  const f=fixture(t);localSetup(f.root);const file='automation/seo-optimizer.mjs';write(f.root,file,'original');
+  let last;
+  for(let i=0;i<6;i++){
+    last=await f.app.reviewRequest({question:'Review '+i,files:[file]});
+    if(i<5)await f.app.reviewAnswer({requestId:last.id,verdict:'no_findings',summary:'Manueller Prüfstand.',nextStep:'Nur für diesen Stand.'});
+  }
+  await f.app.save({...note,nextStep:'Ein späterer separater Handoff.'});
+  assert.equal(f.app.reviewList().requests.every(r=>r.status==='answered'),true);
+  let d=await f.app.doctor();assert.equal(d.nextWork.kind,'review_request');assert.equal(d.nextWork.requestId,last.id);
+  write(f.root,file,'changed');d=await f.app.doctor();assert.equal(d.nextWork.kind,'verify_review_sources');assert.equal(d.nextWork.evidence.state,'stale');
+});
+test('fixed stdin runner keeps Unicode chunks and stderr separate without echoing input', async () => {
+  const r=await boundedRun(process.execPath,['-e',`process.stdin.on('data',x=>{process.stdout.write(x.subarray(0,1));setTimeout(()=>{process.stdout.write(x.subarray(1));process.stderr.write('diagnostic')},10)})`],{input:'Grösse: 你好'});
+  assert.equal(r.status,'passed');assert.equal(r.stdout,'Grösse: 你好');assert.equal(r.stderr,'diagnostic');
+  const rejected=await boundedRun('/must/not/be/launched',[],{input:'x'.repeat(65537)});assert.equal(rejected.reason,'invalid_or_oversized_stdin');
+});
+test('self-check launches the real local stdio server without writing history or claiming a client', async t => {
+  const f=checkout(t);localSetup(f.root);const app=createAssistant(f.root);await app.save(note);
+  const before=fs.readFileSync(path.join(f.root,'dropship/assistant/handoff.jsonl'),'utf8');
+  const result=await app.selfCheck();assert.equal(result.status,'passed');assert.equal(result.protocol.state,'passed');assert.equal(result.protocol.tools,10);
+  assert.equal(result.historyWritten,false);assert.equal(result.modelCalled,false);assert.match(result.claudeClient,/unknown/);
+  assert.equal(fs.readFileSync(path.join(f.root,'dropship/assistant/handoff.jsonl'),'utf8'),before);
+  fs.unlinkSync(path.join(f.root,'dropship/assistant/handoff.jsonl'));
+  const firstRun=await app.selfCheck();assert.equal(firstRun.status,'unknown');assert.equal(firstRun.protocol.state,'passed');
+  assert.equal(fs.existsSync(path.join(f.root,'dropship/assistant/handoff.jsonl')),false);
+});
+test('self-check does not run an unexpected config command and detects protocol errors', async t => {
+  const f=fixture(t,(cmd,args)=>cmd==='git'?{status:'passed',output:remote}:{status:'passed',stdout:'not-json\n'});
+  localSetup(f.root);write(f.root,'automation/lib/claude_assist_offline.mjs','// preload');await f.app.save(note);
+  write(f.root,'.mcp.json',JSON.stringify({mcpServers:{'luxestyle-assist':{type:'stdio',command:'unapproved-program',args:['--write']}}}));
+  const result=await f.app.selfCheck();assert.equal(result.status,'failed');assert.equal(result.protocol.reason,'invalid_or_incomplete_protocol');
+  const launch=f.calls.find(c=>c.cmd!=='git');assert.equal(launch.cmd,process.execPath);assert.equal(launch.args.at(-1),'mcp');
+  assert.ok(!launch.args.includes('--write'));assert.match(launch.options.input,/tools\/list/);assert.doesNotMatch(launch.options.input,/tools\/call/);
+});
+test('doctor CLI fails for active locks and self-check CLI validates the real server', t => {
+  const f=checkout(t);localSetup(f.root);const cli=path.join(f.root,'automation/claude-assist.mjs');
+  const run=(args,input)=>spawnSync(process.execPath,[cli,...args],{cwd:f.root,input,encoding:'utf8',env:cleanEnv(),timeout:10000});
+  assert.equal(run(['handoff-save'],JSON.stringify(note)).status,0);
+  const self=run(['self-check']);assert.equal(self.status,0,self.stderr);assert.equal(JSON.parse(self.stdout).protocol.tools,10);
+  write(f.root,'dropship/assistant/.handoff.lock','owned elsewhere');const d=run(['doctor']);assert.equal(d.status,1);assert.equal(JSON.parse(d.stdout).localReadiness.state,'blocked');
+});
+test('integration config can be pinned without exporting raw MCP secrets', async t => {
+  const f=fixture(t);localSetup(f.root);
+  const request=await f.app.reviewRequest({question:'Konfiguration prüfen.',files:['.mcp.json','.claude/commands/luxestyle-assist.md']});
+  assert.equal(f.app.reviewGet({requestId:request.id}).evidence.state,'current');
+  const pack=await f.app.context({question:'Konfiguration prüfen.',files:['.mcp.json','.claude/commands/luxestyle-assist.md']});
+  assert.equal(pack.files[0].reason,'raw_config_not_exported_use_doctor');assert.equal(pack.files[1].state,'included');
+  assert.equal(JSON.stringify(pack).includes('private_value_not_to_report'),false);
+  assert.equal(f.app.reviewList({after:'wrong'}).reason,'unknown_review_cursor');assert.equal(f.app.read().state,'available');
 });

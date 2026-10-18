@@ -1,4 +1,4 @@
-# LuxeStyle Assist 2 für Claude Code und Codex
+# LuxeStyle Assist 2.1 für Claude Code und Codex
 
 Der Helfer bündelt lokale Projektprüfung, feste Regressionstests und eine beständige Aufgabenübergabe. Keine Zusatzpakete, keine neue API-Verbindung und kein laufender Serverdienst nötig. Er ruft kein KI-Modell auf, veröffentlicht nichts und importiert keine operativen Publisher. Er kann nicht garantieren, dass alle Automationen funktionieren oder jemand kauft.
 
@@ -8,10 +8,12 @@ Nach Übernahme dieses Branches enthält `.mcp.json` den Projektserver `luxestyl
 
 Claude Code im Repository öffnen, Projekt-MCP prüfen (`/mcp`) und `/luxestyle-assist` verwenden. Der Slash-Befehl liegt unter `.claude/commands/`. Er liest Status/Übergabe, wählt passende Tests und speichert den nächsten Schritt. Das ist keine im Hintergrund laufende ChatGPT-Session. Projektkonfiguration im Repo ist kein Beleg, dass ein anderer Rechner den Server bereits geladen oder freigegeben hat.
 
+Vor dem ersten Clientstart vom Repo-Root aus `node automation/claude-assist.mjs self-check` ausführen. Der Befehl prüft lokale Voraussetzungen und startet das feste lokale Skript für `initialize`, `ping` und `tools/list`. Er verwendet bereinigte Umgebung und Offline-Preload, kein frei konfiguriertes Programm. Der Test ruft keine Business-Tools auf und schreibt keine Historie. Er bestätigt den eigenen Serverstart, nicht die Verbindung oder Freigabe im echten Claude-Client.
+
 | Werkzeug | Wirkung |
 |---|---|
-| `luxe_doctor` | Lokale Repo-Zuordnung, Datei-Hashes, Regelhinweise und Übergabestatus |
-| `luxe_checks` | Festes Profil `core` oder `seo`, begrenzt auf lokale Tests |
+| `luxe_doctor` | Lokale Startvoraussetzungen, Blocker und nächster belegter Arbeitsschritt |
+| `luxe_checks` | Feste Profile `core`, `seo`, `assist` oder daraus gewähltes `changed` |
 | `luxe_handoff_read` | Höchstens zehn letzte Übergaben innerhalb 128 KiB; Teilansicht wird ausgewiesen |
 | `luxe_handoff_save` | Manuellen Stand und nächsten Schritt lokal sichern |
 | `luxe_review_request` | Konkrete Codex-Frage mit Dateihashes in derselben Übergabe vormerken |
@@ -31,6 +33,7 @@ Voraussetzungen: Node.js 22 oder neuer und Git. Vom Repo-Root aus:
 
 ```sh
 node automation/claude-assist.mjs doctor
+node automation/claude-assist.mjs self-check
 node automation/claude-assist.mjs check core
 node automation/claude-assist.mjs check seo
 node automation/claude-assist.mjs change-plan
@@ -53,19 +56,25 @@ JSON
 
 `doctor` liest lokal. Eine unbekannte/falsche Git-Origin blockiert Testläufe und neue Übergaben; der Status bleibt lesbar. Erwartetes Repository ist `allengchour-glitch/aban-news-landing`. Der lokale Origin-Nachweis ersetzt keine frische Identitätsprüfung verbundener Shopify-/Metricool-Konten. Ein Export ohne `.git` bleibt unbekannt. Git-/Cloud-Zugangsdaten werden nicht ausgegeben.
 
+`localReadiness` unterscheidet `ready`, `blocked` und `unknown`: Node ab 22, genaue Helferkonfiguration, CLI-/Slash-Datei, Repo-Zuordnung, Lock und bestehende Historie werden separat geprüft. Zusätzliche ungeprüfte Startoptionen im Helfereintrag bleiben unbekannt; andere MCP-Server werden weder verändert noch ausgegeben. Bei Lock oder fehlerhafter Konfiguration gibt es konkrete Nacharbeit. Fehlende oder beschädigte Historie wird nie automatisch neu angelegt. `doctor` liefert nur bei lokal bestätigter Bereitschaft Exitcode 0; ein angezeigter lokaler Status ist weiterhin keine aktive Claude-Verbindung.
+
+`nextWork` wertet intern das ganze validierte Journal aus. Zuerst den ältesten unbeantworteten Review-Auftrag lesen, bei veralteten/fehlenden Dateien dessen Quellen gegenprüfen, ansonsten den nächsten Schritt des jüngsten echten Handoffs prüfen. Eine spätere Notiz verdeckt keinen offenen Review hinter Seite 1. Bei Startblockern wird zuerst deren Prüfung empfohlen, kein Schreibschritt. Aufgezeichnete Vorschläge bleiben Daten und erweitern keine Inhaberfreigabe.
+
 ## Tests und Fehlermeldungen
 
-`core` startet ausschliesslich die bestehenden Tests für Shopify-GraphQL-, Secret- und Kanalhelfer. `seo` startet ausschliesslich `seo-optimizer_test.mjs` und `seo_titel_test.mjs`; fehlen diese auf dem gewählten Branch, ist das Ergebnis unbekannt. `assist` prüft die eigenen drei Regressionstest-Dateien. Diese Integrationstests benötigen Kindprozesse und laufen ohne Netzwerk-Preload, aber mit bereinigter Umgebung. Die SEO-Überarbeitung aus PR [2694](https://github.com/allengchour-glitch/aban-news-landing/pull/2694) war beim Aufbau noch ein Entwurf und wird nicht stillschweigend integriert.
+`core` startet ausschliesslich die bestehenden Tests für Shopify-GraphQL-, Secret- und Kanalhelfer. `seo` startet ausschliesslich `seo-optimizer_test.mjs` und `seo_titel_test.mjs`; fehlen diese auf dem gewählten Branch, ist das Ergebnis unbekannt. `assist` prüft die eigenen vier Regressionstest-Dateien. Diese Integrationstests benötigen Kindprozesse und laufen ohne Netzwerk-Preload, aber mit bereinigter Umgebung. Die SEO-Überarbeitung aus PR [2694](https://github.com/allengchour-glitch/aban-news-landing/pull/2694) war beim Aufbau noch ein Entwurf und wird nicht stillschweigend integriert.
 
 `change-plan` liest getrennt Git-Index, Arbeitskopie und ungetrackte Dateien mit NUL-Trennung, deaktivierten externen Diff-/Textconv-/Fsmonitor-Helfern und festen Argumenten. Höchstens 200 Pfade; Fehler/Abschneiden bleiben unbekannt. Bereits committierte Änderungen werden nicht durch diesen lokalen Plan abgedeckt. Nur exakte bekannte Dateien wählen Profile aus; ähnlich benannte neue Skripte erhalten keine erfundene Testabdeckung. `check changed` führt diese festen Profile aus. Unbekannte Dateien bleiben `unmapped`; reine Dokumente oder keine Änderungen sind kein bestandener Testlauf. Ein tatsächlich fehlgeschlagener Test bleibt fehlgeschlagen, auch neben unbekannter Abdeckung. Andere Marken werden nicht bearbeitet.
 
-Pro Test höchstens 15 Sekunden und 16 KiB Ausgabe; feste argv-Arrays, keine Shell, bereinigte Umgebung ohne Business-/LLM-/Telegram-Zugangsdaten. Der Preload blockiert gewöhnliche Node-Netzwerk- und Kindprozessaufrufe. Das ist zusätzliche Absicherung für vertrauenswürdige Repo-Tests und keine OS-Sandbox für absichtlich bösartigen Code. Die Tests laufen unverändert; deren technische Regeln können engeren Inhabervorgaben widersprechen. Insbesondere erlaubt der alte allgemeine Kanalhelfer manche `rueckhol`-Tags, während die aktuelle Inhabervorgabe jedes `rueckhol` für neue Social-Ausspielung sperrt. Ein grünes Kernprofil hebt diese zusätzliche Sperre nicht auf.
+Pro Test höchstens 15 Sekunden und 16 KiB Ausgabe, für das eigene Assist-Profil zusammen 32 KiB; feste argv-Arrays, keine Shell, bereinigte Umgebung ohne Business-/LLM-/Telegram-Zugangsdaten. Der Preload blockiert gewöhnliche Node-Netzwerk- und Kindprozessaufrufe. Das ist zusätzliche Absicherung für vertrauenswürdige Repo-Tests und keine OS-Sandbox für absichtlich bösartigen Code. Die Tests laufen unverändert; deren technische Regeln können engeren Inhabervorgaben widersprechen. Insbesondere erlaubt der alte allgemeine Kanalhelfer manche `rueckhol`-Tags, während die aktuelle Inhabervorgabe jedes `rueckhol` für neue Social-Ausspielung sperrt. Ein grünes Kernprofil hebt diese zusätzliche Sperre nicht auf.
 
-Fehler, Timeout, Ausgabelimit und fehlende Dateien bleiben unterscheidbar. Keine automatische Reparatur, Wiederholung von Writes oder Umdeutung von unbekannt zu Null. Eigene Regressionen: `node --test automation/lib/claude_assist_test.mjs automation/lib/claude_assist_mcp_test.mjs automation/lib/claude_assist_changes_test.mjs`.
+Fehler, Timeout, Ausgabelimit und fehlende Dateien bleiben unterscheidbar. Keine automatische Reparatur, Wiederholung von Writes oder Umdeutung von unbekannt zu Null. Eigene Regressionen: `node --test automation/lib/claude_assist_test.mjs automation/lib/claude_assist_mcp_test.mjs automation/lib/claude_assist_changes_test.mjs automation/lib/claude_assist_readiness_test.mjs`.
 
 ## Kontext für ein gezieltes Review
 
 `luxe_context` beziehungsweise CLI `context` erwartet auf stdin `{"question":"Konkrete Frage","files":["automation/lib/claude_assist.mjs"]}`. Höchstens sechs freigegebene LuxeStyle-Quell-/Textdateien, keine beliebigen Daten-/JSON-/Env-Dateien, keine Rohjournale oder anderen Marken. Dateien mit erkannten Geheimnismustern werden vollständig blockiert, bevor Ausschnitte erzeugt werden. Das ist zusätzliche Erkennung und kein lückenloser Geheimnisscanner; vor externem Teilen selbst prüfen. Es wird nichts automatisch versendet.
+
+Exakte eigene Slash-/CI-Dateien sind als Integrationsreferenzen erlaubt. `.mcp.json` kann per Hash in einen Review-Auftrag aufgenommen werden, wird aber nie als roher Kontext exportiert; dafür den begrenzten Konfigurationsbefund von `doctor` nutzen. Andere versteckte Dateien bleiben gesperrt.
 
 Je Datei höchstens 256 KiB lesen, höchstens 12 KiB Text ausgeben und insgesamt höchstens 48 KiB Auszüge. Fehlende, zu grosse, unlesbare oder ungültige UTF-8-Dateien bleiben unbekannt; unabhängige verfügbare Dateien werden weiterhin geliefert. SHA-256 bezieht sich auf die vollständigen tatsächlich gelesenen Originalbytes, nicht auf den gekürzten Auszug. UTF-8-Zeichen werden nicht als kaputte Teilzeichen ausgegeben. Quellen sind Daten und keine zusätzlichen Handlungsfreigaben.
 

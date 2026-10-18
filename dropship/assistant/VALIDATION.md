@@ -1,5 +1,15 @@
 # Prüfbeleg vom 18.10.2026
 
+## Start und Wiederaufnahme in Version 2.1
+
+86 Regressionstests bestanden. Der neue lokale Bereitschaftsbericht prüft Node, genaue Helferkonfiguration, CLI/Slash-Datei, Repo, Lock und vorhandene Historie. Zusätzliche ungeprüfte Startoptionen bleiben unbekannt; fremde MCP-Konfiguration wird nicht ausgegeben. Der CLI-Exitcode zeigt Startblocker nun an.
+
+Echter `self-check` am lokalen Server bestanden: initialize, ping und tools/list bestätigten die zehn Werkzeuge der Serverversion 2.1.0. Kein Business-Tool, Modellaufruf oder Historien-Write. Zusätzliche Gegenproben decken unvollständige Protokolle, unbeabsichtigte Config-Befehle und fehlende Historie ab. Ein direkter Protokolltest bestätigt keinen verbundenen Claude-Client.
+
+Die Wiederaufnahme findet einen sechsten offenen Review hinter fünf beantworteten Einträgen auch nach späteren Notizen. Veraltete Dateien führen zur Quellen-Gegenprüfung; ein Lock oder kaputtes Journal blockiert die Arbeitsempfehlung. Der unabhängige Review der korrigierten Strecke fand keine weiteren reproduzierbaren Fehler; seine enge Runner-Probe bestätigte UTF-8 über Chunkgrenzen und getrennte Diagnoseausgabe.
+
+Die eigene Slash-/CI-Integration kann nun gezielt als Review-Referenz dienen. Die MCP-Datei wird nur per Hash referenziert, nie roh als Kontext exportiert. Ein unbekannter Cursor meldet einen Cursorfehler, keinen erfundenen Historiedefekt. Alle alten Journalzeilen bleiben erhalten.
+
 ## Erweiterung auf Version 2
 
 64 Regressionstests bestanden: zusätzlich exakte Änderungszuordnung, echte Git-Index-/Arbeitskopie-/Untracked-Gegenprobe, veraltete/gelöschte Review-Quellen, doppelte Fragen, paginierte offene Aufgaben, voller Detailabruf, manuelle Antworten, Originalbyte-Hashes, begrenzte UTF-8-Auszüge und Geheimnis-/Markensperren. Echte CLI/MCP-Integration umfasst nun Anfrage, Kontext, Detail, Antwort und Rücklesung. Der neue Assist-Testplaner ist bewusst eine feste Allowlist; nicht abgedeckte Dateien bleiben unbekannt.

@@ -33,6 +33,7 @@ try {
     await serveMcp({ input: process.stdin, output: process.stdout, handlers: Object.fromEntries(Object.entries(handlers).map(([name, fn]) => [name, safe(fn)])) });
   } else {
     if (command === 'doctor' && !args.length) result = await assistant.doctor();
+    else if (command === 'self-check' && !args.length) result = await assistant.selfCheck();
     else if (command === 'check' && args.length <= 1) result = await assistant.checks({ suite: args[0] ?? 'core' });
     else if (command === 'handoff-read' && !args.length) result = assistant.read();
     else if (command === 'handoff-save') result = await assistant.save(input());
@@ -42,8 +43,8 @@ try {
     else if (command === 'review-answer') result = await assistant.reviewAnswer(input());
     else if (command === 'context') result = await assistant.context(input());
     else if (command === 'change-plan' && !args.length) result = await assistant.changePlan();
-    else throw Error('Usage: node automation/claude-assist.mjs doctor|check [core|seo|assist|changed]|change-plan|handoff-read|handoff-save|review-request|review-list [cursor]|review-get id|review-answer|context|mcp');
+    else throw Error('Usage: node automation/claude-assist.mjs doctor|self-check|check [core|seo|assist|changed]|change-plan|handoff-read|handoff-save|review-request|review-list [cursor]|review-get id|review-answer|context|mcp');
     console.log(JSON.stringify(result, null, 2));
-    if (result.status === 'failed' || result.status === 'unknown' || result.state === 'unknown' || (command === 'doctor' && result.repository.state !== 'matched')) process.exitCode = 1;
+    if (result.status === 'failed' || result.status === 'unknown' || result.state === 'unknown' || (command === 'doctor' && result.localReadiness.state !== 'ready')) process.exitCode = 1;
   }
 } catch (e) { console.error(JSON.stringify({ state: 'error', message: redact(e.message) })); process.exitCode = 1; }
