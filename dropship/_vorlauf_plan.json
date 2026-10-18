@@ -518,28 +518,42 @@
   "pin-20261025T1340": {
    "basis_utc": "2026-10-25T13:40:00Z",
    "format": "pin",
+   "grund": "",
+   "handle": "",
+   "handles": [],
    "letzter_versuch": "2026-10-18T22:26:53Z",
-   "mc_ids": [],
+   "mc_ids": [
+    399473790
+   ],
    "reserviert_um": "2026-10-18T22:26:53Z",
-   "status": "reserviert",
+   "status": "geplant",
    "termin_utc": "2026-10-25T13:40:00Z",
    "versuche": 1
   },
   "pin-20261025T1610": {
    "basis_utc": "2026-10-25T16:10:00Z",
    "format": "pin",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "",
+   "handles": [],
+   "letzter_versuch": "2026-10-18T22:27:55Z",
+   "mc_ids": [
+    399474369
+   ],
+   "reserviert_um": "2026-10-18T22:27:55Z",
+   "status": "geplant",
    "termin_utc": "2026-10-25T16:10:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "pin-20261025T1840": {
    "basis_utc": "2026-10-25T18:40:00Z",
    "format": "pin",
+   "letzter_versuch": "2026-10-18T22:28:31Z",
    "mc_ids": [],
-   "status": "offen",
+   "reserviert_um": "2026-10-18T22:28:31Z",
+   "status": "reserviert",
    "termin_utc": "2026-10-25T18:40:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "pin-20261025T2050": {
    "basis_utc": "2026-10-25T20:50:00Z",
@@ -1342,12 +1356,22 @@
   "youtube-20261025T1505": {
    "basis_utc": "2026-10-25T15:05:00Z",
    "format": "youtube",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "kompakter-usb-luftbefeuchter-171968",
+   "handles": [
+    "kompakter-usb-luftbefeuchter",
+    "kompakter-usb-luftbefeuchter-171968"
+   ],
+   "letzter_versuch": "2026-10-18T22:27:31Z",
+   "mc_ids": [
+    399474015
+   ],
+   "reserviert_um": "2026-10-18T22:27:31Z",
+   "status": "geplant",
    "termin_utc": "2026-10-25T15:05:00Z",
-   "versuche": 0
+   "versuche": 1
   }
  },
- "stand": "2026-10-18T22:26:53Z",
+ "stand": "2026-10-18T22:28:31Z",
  "version": 1
 }

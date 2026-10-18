@@ -446,3 +446,6 @@ pid:15450839548289
 slug:3-in-1-faltbares-wireless-charger-nachtlicht
 slug:rettungsschwimmer-set-fga928124
 name:rettungsschwimmerset
+name:kompakterusbluftbefeuchter
+pid:15454414602625
+slug:kompakter-usb-luftbefeuchter
