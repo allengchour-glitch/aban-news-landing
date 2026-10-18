@@ -1,1 +1,1 @@
-halt  # Pilot-Post 18.10. 22:20Z laeuft; danach an (belegt) oder aus (nicht belegt) — TikTok-Slots des Vorlaufs warten
+an  # Pilot 18.10.2026 belegt: Post 7698136060219395360 zeigt Heartfelt (ID 7329665830038685697), original=false, Lautheit -14. Wache: metricool_planer_wache.py --musik-pruefen nimmt zurück, wenn Musik nicht ankommt.

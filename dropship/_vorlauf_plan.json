@@ -88,10 +88,17 @@
   "bild-20261025T0845": {
    "basis_utc": "2026-10-25T08:45:00Z",
    "format": "bild",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "",
+   "handles": [],
+   "letzter_versuch": "2026-10-18T22:21:11Z",
+   "mc_ids": [
+    399471013
+   ],
+   "reserviert_um": "2026-10-18T22:21:11Z",
+   "status": "geplant",
    "termin_utc": "2026-10-25T08:45:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "karussell-20261019T1915": {
    "basis_utc": "2026-10-19T19:15:00Z",
@@ -466,26 +473,47 @@
   "pin-20261024T1510": {
    "basis_utc": "2026-10-24T15:10:00Z",
    "format": "pin",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "",
+   "handles": [],
+   "letzter_versuch": "2026-10-18T22:17:26Z",
+   "mc_ids": [
+    399469629
+   ],
+   "reserviert_um": "2026-10-18T22:17:26Z",
+   "status": "geplant",
    "termin_utc": "2026-10-24T15:10:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "pin-20261024T1740": {
    "basis_utc": "2026-10-24T17:40:00Z",
    "format": "pin",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "",
+   "handles": [],
+   "letzter_versuch": "2026-10-18T22:18:40Z",
+   "mc_ids": [
+    399469814
+   ],
+   "reserviert_um": "2026-10-18T22:18:40Z",
+   "status": "geplant",
    "termin_utc": "2026-10-24T17:40:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "pin-20261024T1950": {
    "basis_utc": "2026-10-24T19:50:00Z",
    "format": "pin",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "",
+   "handles": [],
+   "letzter_versuch": "2026-10-18T22:19:17Z",
+   "mc_ids": [
+    399470175
+   ],
+   "reserviert_um": "2026-10-18T22:19:17Z",
+   "status": "geplant",
    "termin_utc": "2026-10-24T19:50:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "pin-20261025T1340": {
    "basis_utc": "2026-10-25T13:40:00Z",
@@ -699,18 +727,31 @@
   "reel_igfb-20261024T1815": {
    "basis_utc": "2026-10-24T18:15:00Z",
    "format": "reel_igfb",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "herren-leinenhose-lino-locker-atmungsaktiv",
+   "handles": [
+    "herren-leinenhose-lino-locker-atmungsaktiv"
+   ],
+   "letzter_versuch": "2026-10-18T22:19:04Z",
+   "mc_ids": [
+    399469922,
+    399469928
+   ],
+   "reserviert_um": "2026-10-18T22:19:04Z",
+   "status": "geplant",
    "termin_utc": "2026-10-24T18:15:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "reel_igfb-20261025T1115": {
    "basis_utc": "2026-10-25T11:15:00Z",
    "format": "reel_igfb",
+   "grund": "rc=3: Das erste Bild fängt den Blick nicht sofort ein, da das Produkt noch nicht vollständig erkennbar ist. Die Gesamtästhetik des Reels wirkt eher funktional als lux",
+   "letzter_versuch": "2026-10-18T22:22:06Z",
    "mc_ids": [],
-   "status": "offen",
+   "reserviert_um": "2026-10-18T22:22:06Z",
+   "status": "reserviert",
    "termin_utc": "2026-10-25T11:15:00Z",
-   "versuche": 0
+   "versuche": 2
   },
   "reel_igfb-20261025T1915": {
    "basis_utc": "2026-10-25T19:15:00Z",
@@ -1047,6 +1088,7 @@
   "tiktok-20261024T1805": {
    "basis_utc": "2026-10-24T18:05:00Z",
    "format": "tiktok",
+   "grund": "wartet auf Trendton-Pilot",
    "mc_ids": [],
    "status": "offen",
    "termin_utc": "2026-10-24T18:05:00Z",
@@ -1055,6 +1097,7 @@
   "tiktok-20261025T0705": {
    "basis_utc": "2026-10-25T07:05:00Z",
    "format": "tiktok",
+   "grund": "wartet auf Trendton-Pilot",
    "mc_ids": [],
    "status": "offen",
    "termin_utc": "2026-10-25T07:05:00Z",
@@ -1240,20 +1283,37 @@
   "youtube-20261024T1405": {
    "basis_utc": "2026-10-24T14:05:00Z",
    "format": "youtube",
+   "grund": "",
+   "handle": "tragbarer-2-in-1-trink-und-fressnapf-fur-hunde-0c82aa",
+   "handles": [
+    "cjreel-cjjjcwgy01608-2pc",
+    "tragbarer-2-in-1-trink-und-fressnapf-fur-hunde-0c82aa"
+   ],
    "letzter_versuch": "2026-10-18T22:16:40Z",
-   "mc_ids": [],
+   "mc_ids": [
+    399469005
+   ],
    "reserviert_um": "2026-10-18T22:16:40Z",
-   "status": "reserviert",
+   "status": "geplant",
    "termin_utc": "2026-10-24T14:05:00Z",
    "versuche": 1
   },
   "youtube-20261025T0620": {
    "basis_utc": "2026-10-25T06:20:00Z",
    "format": "youtube",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "leuchtende-halskette-mit-anhanger-ad5636",
+   "handles": [
+    "leuchtende-halskette-mit-anhanger-ad5636"
+   ],
+   "letzter_versuch": "2026-10-18T22:20:41Z",
+   "mc_ids": [
+    399470881
+   ],
+   "reserviert_um": "2026-10-18T22:20:41Z",
+   "status": "geplant",
    "termin_utc": "2026-10-25T06:20:00Z",
-   "versuche": 0
+   "versuche": 3
   },
   "youtube-20261025T1505": {
    "basis_utc": "2026-10-25T15:05:00Z",
@@ -1264,6 +1324,6 @@
    "versuche": 0
   }
  },
- "stand": "2026-10-18T22:16:40Z",
+ "stand": "2026-10-18T22:22:06Z",
  "version": 1
 }
