@@ -1,15 +1,11 @@
-# Heilversprechen in Produkttexten — Stand 2026-10-14T11:24:23Z
+# Heilversprechen in Produkttexten — Stand 2026-10-18T21:38:53Z
 
-Geprüft: 12177 (Filter: `status:active updated_at:>2026-10-13T15:22:17Z`) · entschärft: 1 · offen: 5 · Schreibfehler: 0
+Geprüft: 19666 (Filter: `status:active updated_at:>2026-10-14T11:24:23Z`) · entschärft: 0 · offen: 3 · Schreibfehler: 0
 
 Offen = Muster getroffen, aber keine geprüfte Ersatzphrase. Satz lesen, Ersatz in `ERSATZ` eintragen, nächster Lauf schreibt.
 
-- **Antihaft-Vierloch-Omelettpfanne** (`antihaft-vierloch-omelettpfanne-622500`)
-  - …von 19 cm und ist mit einer Antihaftbeschichtung aus Weizen-Heilsteinen versehen. Sie ist in den Farben Blaugrau, Milchweiss und Sc…
-- **Erhöhte Keramikschüssel mit Katzenohr-Design** (`erhohte-keramikschussel-mit-katzenohr-design-600000`)
-  - …ützung für die Halswirbelsäule und reduziert das Risiko von Akne. Die Schüssel ist aus Keramik gefertigt und hat ein niedlic…
-- **Hundegürtel mit Brusttasche – atmungsaktiv** (`hundegurtel-mit-brusttasche-atmungsaktiv-5a37cc`)
-  - …und so die Körpertemperatur reguliert. Er ist atmungsaktiv, schmerzlindernd und verhindert ein Überhitzen. Das zeichnet es aus Komp…
+- **Jade-Rollerset für Gesicht** (`jade-rollerset-fur-gesicht-15e51f`)
+  - …Jade-Roller mit zwei Köpfen, die zum Aufklimmen, Festigen, Entgiften und Scrapen der Gesichtshaut verwendet werden. Der Roller…
 - **Springseil für Fitness und Gewichtsverlust** (`springseil-fur-fitness-und-gewichtsverlust-fd0617`)
   - …TITEL: Springseil für Fitness und Gewichtsverlust…
 - **Nackenmassagegerät zur Haltungskorrektur** (`nackenmassagegerat-zur-haltungskorrektur-03310e`)

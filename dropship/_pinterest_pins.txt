@@ -29,3 +29,5 @@
 2026-10-18T21:38:09.380Z	gruselpuppe-50-cm-weiss-fga910036	Geschenkideen Schweiz	metricool:399449097	halloween	bild=roh
 2026-10-18T21:41:46.634Z	mehrlagige-musselindecke-aus-baumwolle-608000	Geschenkideen Schweiz	metricool:399450774	herbst-favoriten	bild=roh
 2026-10-18T21:42:29.518Z	grim-raper-mit-sich-drehendem-fga901408	Wohnen & Deko	metricool:399451102	halloween	bild=roh
+2026-10-18T21:42:58.011Z	britische-retro-desert-boots-610700	Herrenmode Schweiz	metricool:399451336	herbst-favoriten	bild=roh
+2026-10-18T21:44:44.549Z	animatronic-xl-sensemann-fga20885	Sommerkleider & Damenmode 2026	metricool:399452107	halloween	bild=roh

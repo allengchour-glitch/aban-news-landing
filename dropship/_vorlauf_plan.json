@@ -31,10 +31,16 @@
   "bild-20261021T0745": {
    "basis_utc": "2026-10-21T07:45:00Z",
    "format": "bild",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "",
+   "letzter_versuch": "2026-10-18T21:45:19Z",
+   "mc_ids": [
+    399452648
+   ],
+   "reserviert_um": "2026-10-18T21:45:19Z",
+   "status": "geplant",
    "termin_utc": "2026-10-21T07:45:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "bild-20261022T0745": {
    "basis_utc": "2026-10-22T07:45:00Z",
@@ -85,10 +91,13 @@
   "karussell-20261020T1915": {
    "basis_utc": "2026-10-20T19:15:00Z",
    "format": "karussell",
+   "grund": "rc=0: Nichts faellig: kein ready-Karussell.",
+   "letzter_versuch": "2026-10-18T21:43:49Z",
    "mc_ids": [],
+   "reserviert_um": "2026-10-18T21:43:49Z",
    "status": "offen",
    "termin_utc": "2026-10-20T19:15:00Z",
-   "versuche": 0
+   "versuche": 4
   },
   "karussell-20261021T1915": {
    "basis_utc": "2026-10-21T19:15:00Z",
@@ -217,20 +226,30 @@
   "pin-20261020T1740": {
    "basis_utc": "2026-10-20T17:40:00Z",
    "format": "pin",
+   "grund": "",
+   "handle": "",
    "letzter_versuch": "2026-10-18T21:42:34Z",
-   "mc_ids": [],
+   "mc_ids": [
+    399451336
+   ],
    "reserviert_um": "2026-10-18T21:42:34Z",
-   "status": "reserviert",
+   "status": "geplant",
    "termin_utc": "2026-10-20T17:40:00Z",
    "versuche": 1
   },
   "pin-20261020T1950": {
    "basis_utc": "2026-10-20T19:50:00Z",
    "format": "pin",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "",
+   "letzter_versuch": "2026-10-18T21:43:55Z",
+   "mc_ids": [
+    399452107
+   ],
+   "reserviert_um": "2026-10-18T21:43:55Z",
+   "status": "geplant",
    "termin_utc": "2026-10-20T19:50:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "pin-20261021T1240": {
    "basis_utc": "2026-10-21T12:40:00Z",
@@ -440,18 +459,32 @@
   "reel_igfb-20261020T1815": {
    "basis_utc": "2026-10-20T18:15:00Z",
    "format": "reel_igfb",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "fitness-leggings-mit-po-push-up-effekt-609216",
+   "letzter_versuch": "2026-10-18T21:43:15Z",
+   "mc_ids": [
+    399451536,
+    399451540
+   ],
+   "reserviert_um": "2026-10-18T21:43:15Z",
+   "status": "geplant",
    "termin_utc": "2026-10-20T18:15:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "reel_igfb-20261021T1015": {
    "basis_utc": "2026-10-21T10:15:00Z",
    "format": "reel_igfb",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "led-velo-blinklicht-mit-smarter-richtungsanzei-585729",
+   "letzter_versuch": "2026-10-18T21:46:02Z",
+   "mc_ids": [
+    399452730,
+    399452732
+   ],
+   "reserviert_um": "2026-10-18T21:46:02Z",
+   "status": "geplant",
    "termin_utc": "2026-10-21T10:15:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "reel_igfb-20261021T1815": {
    "basis_utc": "2026-10-21T18:15:00Z",
@@ -558,10 +591,12 @@
   "story-20261021T1045": {
    "basis_utc": "2026-10-21T10:45:00Z",
    "format": "story",
+   "letzter_versuch": "2026-10-18T21:46:16Z",
    "mc_ids": [],
-   "status": "offen",
+   "reserviert_um": "2026-10-18T21:46:16Z",
+   "status": "reserviert",
    "termin_utc": "2026-10-21T10:45:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "story-20261022T1045": {
    "basis_utc": "2026-10-22T10:45:00Z",
@@ -668,18 +703,30 @@
   "tiktok-20261020T1805": {
    "basis_utc": "2026-10-20T18:05:00Z",
    "format": "tiktok",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "elektrischer-gemuseschneider-multifunktional-schneiden-reiben-hobeln",
+   "letzter_versuch": "2026-10-18T21:43:03Z",
+   "mc_ids": [
+    399451425
+   ],
+   "reserviert_um": "2026-10-18T21:43:03Z",
+   "status": "geplant",
    "termin_utc": "2026-10-20T18:05:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "tiktok-20261021T0605": {
    "basis_utc": "2026-10-21T06:05:00Z",
    "format": "tiktok",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "led-fahrradtasche-mit-fernbedienung-428225",
+   "letzter_versuch": "2026-10-18T21:45:05Z",
+   "mc_ids": [
+    399452311
+   ],
+   "reserviert_um": "2026-10-18T21:45:05Z",
+   "status": "geplant",
    "termin_utc": "2026-10-21T06:05:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "tiktok-20261021T1105": {
    "basis_utc": "2026-10-21T11:05:00Z",
@@ -852,10 +899,16 @@
   "youtube-20261021T0520": {
    "basis_utc": "2026-10-21T05:20:00Z",
    "format": "youtube",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "interaktives-slow-feeder-spielzeug-fur-hunde-k-820672",
+   "letzter_versuch": "2026-10-18T21:44:49Z",
+   "mc_ids": [
+    399452196
+   ],
+   "reserviert_um": "2026-10-18T21:44:49Z",
+   "status": "geplant",
    "termin_utc": "2026-10-21T05:20:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "youtube-20261021T1405": {
    "basis_utc": "2026-10-21T14:05:00Z",
@@ -930,6 +983,6 @@
    "versuche": 0
   }
  },
- "stand": "2026-10-18T21:42:34Z",
+ "stand": "2026-10-18T21:46:16Z",
  "version": 1
 }
