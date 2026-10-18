@@ -65,10 +65,12 @@
   "karussell-20261019T1915": {
    "basis_utc": "2026-10-19T19:15:00Z",
    "format": "karussell",
+   "letzter_versuch": "2026-10-18T21:37:17Z",
    "mc_ids": [],
-   "status": "offen",
+   "reserviert_um": "2026-10-18T21:37:17Z",
+   "status": "reserviert",
    "termin_utc": "2026-10-19T19:15:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "karussell-20261020T1915": {
    "basis_utc": "2026-10-20T19:15:00Z",
@@ -149,10 +151,14 @@
   "pin-20261019T1740": {
    "basis_utc": "2026-10-19T17:40:00Z",
    "format": "pin",
+   "grund": "",
+   "handle": "",
    "letzter_versuch": "2026-10-18T21:36:19Z",
-   "mc_ids": [],
+   "mc_ids": [
+    399448410
+   ],
    "reserviert_um": "2026-10-18T21:36:19Z",
-   "status": "reserviert",
+   "status": "geplant",
    "termin_utc": "2026-10-19T17:40:00Z",
    "versuche": 1
   },
@@ -374,10 +380,17 @@
   "reel_igfb-20261019T1815": {
    "basis_utc": "2026-10-19T18:15:00Z",
    "format": "reel_igfb",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "faltbare-doppel-futternapfe-fur-unterwegs-411328",
+   "letzter_versuch": "2026-10-18T21:37:03Z",
+   "mc_ids": [
+    399448617,
+    399448619
+   ],
+   "reserviert_um": "2026-10-18T21:37:03Z",
+   "status": "geplant",
    "termin_utc": "2026-10-19T18:15:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "reel_igfb-20261020T1015": {
    "basis_utc": "2026-10-20T10:15:00Z",
@@ -569,10 +582,16 @@
   "tiktok-20261019T1805": {
    "basis_utc": "2026-10-19T18:05:00Z",
    "format": "tiktok",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "astronaut-phone-case-298816",
+   "letzter_versuch": "2026-10-18T21:36:50Z",
+   "mc_ids": [
+    399448500
+   ],
+   "reserviert_um": "2026-10-18T21:36:50Z",
+   "status": "geplant",
    "termin_utc": "2026-10-19T18:05:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "tiktok-20261020T0605": {
    "basis_utc": "2026-10-20T06:05:00Z",
@@ -843,6 +862,6 @@
    "versuche": 0
   }
  },
- "stand": "2026-10-18T21:36:19Z",
+ "stand": "2026-10-18T21:37:17Z",
  "version": 1
 }

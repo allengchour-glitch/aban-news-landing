@@ -318,3 +318,10 @@ slug:sticknadel-set-33f652
 name:handyhaltermitschwanenhals
 pid:15451636334977
 slug:lazy-phone-halter-b20132
+name:astronautenhandyhüllemit3dmotiv
+pid:15452518449537
+slug:astronaut-phone-case
+pid:1698602629309411328
+pid:16604909240711
+slug:faltbare-doppel-futternapfe-fur-unterwegs
+slug:photonen-hautverjungungsgerat-mit-mikrostrom
