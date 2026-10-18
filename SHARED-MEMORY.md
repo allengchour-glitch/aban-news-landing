@@ -1,5 +1,15 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## LuxeStyle: aktuelle Codex-Übergabe vom 18.10.2026
+
+Für die Fortsetzung des LuxeStyle-Auftrags zuerst [die datierte Übergabe mit Schnittplan und Plattformtexten](dropship/codex-handoff-20261018/README.md) lesen. Sie dokumentiert die konkreten aktuellen Inhabervorgaben; ältere allgemeine Autonomie-Anweisungen erweitern diesen Auftrag nicht.
+- Metricool-Autopublish nur für freigegebene, professionelle und rechtegeprüfte fertige Master. Ein neuer 18-Sekunden-Projektor-Master ist noch nicht fertig; sechs Altentwürfe bleiben deaktiviert.
+- Bestehende ChatGPT-Aufgabe: flexible Fenster 08–09, 14–15 und 19–20 Uhr Europe/Zurich; kein zusätzlicher Repo-Cron und keine zweite Aufgabe.
+- Genau vier Klaviyo-DNS-Ergänzungen bereits genehmigt, noch nicht umgesetzt; sicherer Schreibzugang fehlt. Dieselbe Freigabe nicht erneut anfordern.
+- Sonstige Shop-/Feed-/Flow-/Budgetänderungen bleiben Vorbereitung. Keine Kundenansprache, keine bezahlten Renders. CHF-50/CHF-45-Versandgrenzen und Kundendomäne erhalten.
+Diese Ablage ist Wissenstransfer auf einem Dokumentationsbranch, kein Deployment und keine Publikation. Messwerte sind datiert; fehlende Daten bleiben unbekannt.
+
+
 > **📌 2026-09-30 · PINTEREST = andere Session (User-Entscheid).** Die abannews-Session hat einen fertigen, getesteten
 > Pinterest-Autopiloten für **abannews.com** gebaut, aber seinen Cron **pausiert**, damit nichts doppelt gepostet wird:
 > `automation/pinterest_aban/` (LIESMICH.md, 30 Tests, Gemini+ChatGPT mit Fakten-Prüfer, 4 Pin-Layouts, Lernschleife,
