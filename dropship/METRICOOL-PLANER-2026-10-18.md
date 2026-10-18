@@ -1,4 +1,4 @@
-# Metricool-Planer: Entwürfe erscheinen nie · Wächter + Freigabe der ChatGPT-Videos (18.10.2026, ~20:00–22:30 UTC)
+# Metricool-Planer: Entwürfe erscheinen nie · Wächter + Freigabe der ChatGPT-Videos (18.10.2026, ~20:05–20:25 UTC)
 
 Marken: **GEMESSEN** = selbst nachgemessen (REST `/v2/scheduler/posts` und MCP `getScheduledPosts`), **BEHAUPTUNG** = ungeprüft.
 

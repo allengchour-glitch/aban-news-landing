@@ -1,4 +1,4 @@
-# Merkliste (♥ auf den Karten + Seite /pages/merkliste): überarbeitet, getestet, bewacht (18.10.2026, ~22:20–22:50 UTC)
+# Merkliste (♥ auf den Karten + Seite /pages/merkliste): überarbeitet, getestet, bewacht (18.10.2026, ~20:25–20:40 UTC)
 
 Marken: **GEMESSEN** = selbst gelesen/getestet, **BEHAUPTUNG** = ungeprüft.
 
