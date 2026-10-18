@@ -745,13 +745,22 @@
   "reel_igfb-20261025T1115": {
    "basis_utc": "2026-10-25T11:15:00Z",
    "format": "reel_igfb",
-   "grund": "rc=3: Das erste Bild fängt den Blick nicht sofort ein, da das Produkt noch nicht vollständig erkennbar ist. Die Gesamtästhetik des Reels wirkt eher funktional als lux",
-   "letzter_versuch": "2026-10-18T22:22:06Z",
-   "mc_ids": [],
-   "reserviert_um": "2026-10-18T22:22:06Z",
-   "status": "reserviert",
+   "grund": "",
+   "handle": "3-in-1-faltbares-wireless-charger-nachtlicht-265408",
+   "handles": [
+    "3-in-1-faltbares-wireless-charger-nachtlicht",
+    "3-in-1-faltbares-wireless-charger-nachtlicht-265408",
+    "cjreel-cjcd154096301az"
+   ],
+   "letzter_versuch": "2026-10-18T22:23:12Z",
+   "mc_ids": [
+    399471886,
+    399471890
+   ],
+   "reserviert_um": "2026-10-18T22:23:12Z",
+   "status": "geplant",
    "termin_utc": "2026-10-25T11:15:00Z",
-   "versuche": 2
+   "versuche": 4
   },
   "reel_igfb-20261025T1915": {
    "basis_utc": "2026-10-25T19:15:00Z",
@@ -857,10 +866,12 @@
   "story-20261025T1145": {
    "basis_utc": "2026-10-25T11:45:00Z",
    "format": "story",
+   "letzter_versuch": "2026-10-18T22:23:32Z",
    "mc_ids": [],
-   "status": "offen",
+   "reserviert_um": "2026-10-18T22:23:32Z",
+   "status": "reserviert",
    "termin_utc": "2026-10-25T11:45:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "tiktok-20261019T0605": {
    "basis_utc": "2026-10-19T06:05:00Z",
@@ -1324,6 +1335,6 @@
    "versuche": 0
   }
  },
- "stand": "2026-10-18T22:22:06Z",
+ "stand": "2026-10-18T22:23:32Z",
  "version": 1
 }

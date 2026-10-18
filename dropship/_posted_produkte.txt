@@ -441,3 +441,8 @@ name:leuchtendehalskettemitanhänger
 pid:15450834960769
 slug:leuchtende-halskette-mit-anhanger-ad5636
 name:carr
+slug:cjreel-cjcd154096301az
+pid:15450839548289
+slug:3-in-1-faltbares-wireless-charger-nachtlicht
+slug:rettungsschwimmer-set-fga928124
+name:rettungsschwimmerset
