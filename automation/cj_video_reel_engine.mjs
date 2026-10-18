@@ -22,6 +22,7 @@
  */
 import { anhaengen as queueAnhaengen } from './lib/queue_csv.mjs';
 import fs from 'node:fs';
+import { musikWahlV3 } from './lib/musik_wahl.mjs';   // 18.10.2026: Stueck- und Fenster-Rotation
 import { execFileSync, execSync, spawnSync } from 'node:child_process';
 import { nachlauf } from './eimer_etikette.mjs';
 import { takt as cjTakt } from './cj_takt.mjs';
@@ -114,20 +115,11 @@ for (let i = MUSIC.length - 1; i >= 0; i--) if (GESPERRT.has(MUSIC[i])) MUSIC.sp
 const ALLE_EIGENEN = [...new Set(Object.values(STIMMUNG).flat())].filter(m => !(STIMM_JSON && STIMM_JSON.winter && !WINTERZEIT && m === STIMM_JSON.winter.datei));
 const VERLAUF = 'social/_musik_verlauf.txt';
 function musikWahl(th, pid) {
-  let ein = {}; try { ein = JSON.parse(fs.readFileSync('automation/music/_einstiege.json', 'utf8')); } catch {}
-  const letzte = (fs.existsSync(VERLAUF) ? fs.readFileSync(VERLAUF, 'utf8').trim().split('\n') : []).slice(-5).map(z => z.split('\t')[1]);
+  // 18.10.2026 (Betreiber «immer das gleiche ist nervend»): Regel v3 in lib/musik_wahl.mjs — kein Stück zweimal hintereinander,
+  // am längsten nicht benutztes Stück des Warengruppen-Pools (zeitbasiert), und das am längsten nicht benutzte FENSTER des Stücks
+  // (automation/music/_fenster.json, ≥ 9 s Abstand; vorher 3 Einstiege, die sich bis 75 % überlappten).
   const pool = (STIMMUNG[th] || ALLE_EIGENEN).filter(m => fs.existsSync('automation/music/' + m));
-  // 18.10.2026: das am längsten nicht benutzte Stück des Pools (statt «nicht unter den letzten 5», das bei kleinen Pools leer lief),
-  // Gleichstand (nie benutzt) per pid. Verlauf = die letzten 80 Zeilen.
-  const lang = (fs.existsSync(VERLAUF) ? fs.readFileSync(VERLAUF, 'utf8').trim().split('\n') : []).slice(-80).map(z => z.split('\t')[1]);
-  const zuletzt = m => lang.lastIndexOf(m);
-  const kand = (pool.length ? pool : MUSIC).filter(m => !letzte.slice(-2).includes(m) || pool.length < 3);
-  const best = Math.min(...(kand.length ? kand : pool).map(zuletzt));
-  const frei = (kand.length ? kand : pool).filter(m => zuletzt(m) === best);
-  const wahl = (frei.length ? frei : pool.length ? pool : MUSIC)[num(pid) % (frei.length || pool.length || MUSIC.length)];
-  const st = (ein[wahl] && ein[wahl].einstiege) || [0];
-  const start = st[Math.floor(num(pid) / 7) % st.length] || 0;
-  return { datei: wahl, start };
+  return musikWahlV3(pool.length ? pool : MUSIC, pid, { verlaufPfad: VERLAUF });
 }
 // Verlauf-Zeile: Zeit · Musik · Einstieg · Thema · Reel-ID · stimme:ja|nein · Stimme (bei ja) bzw. Grund (anteil|fehler)
 function musikMerken(id, m, th, st = { ja: false, grund: 'anteil' }) {

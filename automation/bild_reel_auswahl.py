@@ -569,7 +569,7 @@ def _winterzeit(stimm):
     return md >= am * 100 + ad or md <= bm * 100 + bd
 
 
-def musik_fuer(handle, th=None):
+def _musik_pool(th=None):
     """Epische Stücke wie der Reel-Motor (EPISCH aus cj_video_reel_engine.mjs gelesen), ohne Sperrliste, mit CREDITS-Zeile.
     18.10.2026: Stimmungs-Pool je Warengruppe (automation/music/_stimmung.json) und das am längsten nicht benutzte Stück
     (letzte 80 Verlaufszeilen) statt «nicht unter den letzten 5»."""
@@ -593,13 +593,69 @@ def musik_fuer(handle, th=None):
             pool = eng or pool
         elif w and not _winterzeit(stimm):
             pool = [x for x in pool if x != w.get("datei")] or pool
-    verlauf = [z.split("\t")[1] for z in _zeilen("social/_musik_verlauf.txt") if z.count("\t") >= 4][-80:]
-    letzte = verlauf[-2:]
-    kand = [x for x in pool if x not in letzte] or pool
-    zuletzt = lambda x: max((i for i, v in enumerate(verlauf) if v == x), default=-1)
-    best = min((zuletzt(x) for x in kand), default=-1)
-    frei = [x for x in kand if zuletzt(x) == best]
-    return frei[num(handle) % len(frei)] if frei else ""
+    return pool
+
+
+FENSTER_ABSTAND, RUHE_STUNDEN, NIE = 9.0, 14 * 24, 1e6
+
+
+def waehle(pool, pid, verlauf, fenster, jetzt_ms):
+    """Regel v3 — Gegenstück zu automation/lib/musik_wahl.mjs (gleiche Antworten, Parität im Selbsttest).
+    pool: [datei] · verlauf: [(t_ms, datei, start)] nach Zeit sortiert · fenster: {datei: [start]} → (datei, start)."""
+    if not pool:
+        return "", 0.0
+    letzte2 = [v[1] for v in verlauf[-2:]]
+    kand = [m for m in pool if m not in letzte2] if len(pool) >= 3 else list(pool)
+    kand = kand or list(pool)
+
+    def std(zeiten):
+        return min((jetzt_ms - zeiten[-1]) / 3.6e6, RUHE_STUNDEN) if zeiten else NIE
+
+    n30 = lambda m: sum(1 for v in verlauf if v[1] == m and jetzt_ms - v[0] <= 30 * 86400e3)
+    s = {m: min(std([v[0] for v in verlauf if v[1] == m]), RUHE_STUNDEN) for m in kand}
+    beste = max(s.values())
+    frei = sorted([m for m in kand if s[m] >= beste - 1e-9], key=lambda m: (n30(m), m))
+    wahl = frei[num(pid) % len(frei)]
+    ws = fenster.get(wahl) or [0.0]
+    fz = {w: min(std([v[0] for v in verlauf if v[1] == wahl and abs(v[2] - w) < FENSTER_ABSTAND]), RUHE_STUNDEN) for w in ws}
+    bf = max(fz.values())
+    ff = [w for w in ws if fz[w] >= bf - 1e-9]
+    return wahl, ff[(num(pid) // 7) % len(ff)]
+
+
+def _verlauf_zeit():
+    import calendar
+    out = []
+    for z in _zeilen("social/_musik_verlauf.txt"):
+        f = z.split("\t")
+        if len(f) < 5:
+            continue
+        try:
+            out.append((calendar.timegm(time.strptime(f[0][:19], "%Y-%m-%dT%H:%M:%S")) * 1000.0, f[1].strip(), float(f[2] or 0)))
+        except ValueError:
+            pass
+    return sorted(out)
+
+
+def _fenster_lesen():
+    import json as _json
+    try:
+        return _json.load(open(os.path.join(HIER, "music", "_fenster.json"), encoding="utf-8"))
+    except (OSError, ValueError):
+        try:
+            return {k: (v.get("einstiege") or [0]) for k, v in _json.load(open(os.path.join(HIER, "music", "_einstiege.json"), encoding="utf-8")).items()}
+        except (OSError, ValueError):
+            return {}
+
+
+def musik_waehle(handle, th=None):
+    """18.10.2026 (Betreiber «immer das gleiche ist nervend»): → (datei, start). Stück UND Fenster rotieren (vorher: nur das Stück,
+    der Einstieg war bei Bild-Reels immer einstiege[0])."""
+    return waehle(_musik_pool(th), handle, _verlauf_zeit(), _fenster_lesen(), time.time() * 1000)
+
+
+def musik_fuer(handle, th=None):
+    return musik_waehle(handle, th)[0]
 
 
 def stimme_fuer(handle):
@@ -677,11 +733,11 @@ def bauen(k, bogen_dir, out_dir):
     h = k["handle"]
     # Musik erst JETZT wählen (13.10.: beim Planen gewählt bekamen drei Reels eines Laufs dasselbe Stück wie der parallel
     # laufende Reel-Motor — luxe-epic-winter 3× hintereinander im Verlauf)
-    k["musik"] = musik_fuer(h)
+    k["musik"], k["musik_start"] = musik_waehle(h, k.get("thema"))   # 18.10.: mit Warengruppen-Pool (F1) und rotierendem Fenster (F2)
     cmd = [sys.executable, BILD_REEL, "--handle", h, "--hook", k["hook"], "--out-dir", out_dir, "--dauer", str(k["dauer"]),
            "--text-grenze", str(TEXT_GRENZE)]
     if k["musik"]:
-        cmd += ["--musik", k["musik"]]
+        cmd += ["--musik", k["musik"], "--musik-start", str(k["musik_start"])]
     cmd += ["--stimme", k["stimme"]] if k["stimme"] else ["--ohne-stimme"]
     rc, so, se = lauf(cmd, 1500)
     res = letzte_json(so)

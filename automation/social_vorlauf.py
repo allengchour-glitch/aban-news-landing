@@ -39,6 +39,7 @@ REGELN = os.path.join(HIER, "data", "vorlauf_regeln.json")
 PLAN = os.path.join(REPO, "dropship", "_vorlauf_plan.json")
 LOG = os.path.join(REPO, "dropship", "_vorlauf_log.tsv")
 DROSSEL = os.path.join(REPO, "dropship", "_vorlauf_drossel.tsv")
+TT_MODUS = os.path.join(REPO, "dropship", "_tt_trend_modus.txt")   # TikTok-Trendton: aus | halt (Pilot läuft, TikTok-Slots warten) | an
 STOPP = os.path.join(REPO, "dropship", "_SOCIAL_STOPP")
 PAUSE = os.path.join(REPO, "dropship", "_social_pause.txt")
 SPERRE = "/tmp/social_vorlauf.lock"
@@ -225,10 +226,21 @@ def story_vorbereiten():
         subprocess.run(["python3", "automation/story_bauen.py"], cwd=REPO, env={**os.environ, "SCHARF": "1", "N": "1"}, capture_output=True, text=True, timeout=900)
 
 
+def tt_trend_modus():
+    """aus (Standard) | halt | an — die Datei schreibt der Pilot-Ablauf (siehe dropship/MUSIK-V3-2026-10-18.md); unlesbar = aus."""
+    try:
+        m = open(TT_MODUS, encoding="utf-8").read().strip().split()[0].lower()
+    except (OSError, IndexError):
+        return "aus"
+    return m if m in ("aus", "halt", "an") else "aus"
+
+
 def poster_aufruf(slot_name, slot, regeln):
     fmt = slot["format"]
     cmd, extra = POSTER[fmt]
     env = {**os.environ, **extra, "PUBLISH_AT": slot["termin_utc"], "NODE": NODE}
+    if fmt == "tiktok" and tt_trend_modus() == "an":
+        env["TT_TREND"] = "1"   # Trendton nur NACH belegtem Pilot (Modus «an»); der Poster fällt bei jedem Fehler auf den eigenen Ton zurück
     if fmt == "story":
         story_vorbereiten()
     r = subprocess.run(cmd, cwd=REPO, env=env, capture_output=True, text=True, timeout=1500)
@@ -334,6 +346,9 @@ def plan_lauf(max_min=35, nur=None, max_slots=10**9):
         s = plan["slots"][name]
         fmt = s["format"]
         if fmt in format_leer:
+            continue
+        if fmt == "tiktok" and tt_trend_modus() == "halt":
+            s["grund"] = "wartet auf Trendton-Pilot"
             continue
         if s["status"] == "leer" and (jetzt() - von_iso(s.get("letzter_versuch", "1970-01-01T00:00:00Z"))).total_seconds() < 20 * 3600:
             continue

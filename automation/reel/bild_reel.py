@@ -259,11 +259,13 @@ def cta_anhaengen(datei, preis_text, dauer, td):
     os.replace(tmp, datei)
 
 
-def musik_wahl(wunsch):
+def musik_wahl(wunsch, start=None):
     gesperrt = {z.split("\t")[0] for z in open(os.path.join(REPO, "automation/music/_gesperrt.txt"), encoding="utf-8") if z.strip() and not z.startswith("#")}
     m = wunsch or "luxe-epic-elegant.wav"
     if m in gesperrt:
         sys.exit(f"⛔ Musik {m} gesperrt")
+    if start is not None:   # 18.10.2026: der Aufrufer (bild_reel_auswahl.musik_waehle) hat das Fenster gewählt — nicht immer einstiege[0]
+        return m, start
     ein = json.load(open(os.path.join(REPO, "automation/music/_einstiege.json"))).get(m, {}).get("einstiege", [0])
     return m, ein[0] if ein else 0
 
@@ -295,7 +297,7 @@ def render(a):
                 stimme = {"ok": False, "fehler": r.stderr[-200:]}
             if stimme.get("ok") and os.path.exists(wav):
                 env["STIMME"] = wav
-        m, ein = musik_wahl(a.musik)
+        m, ein = musik_wahl(a.musik, a.musik_start)
         env["MUSIK_START"] = str(ein)
         subprocess.run(["bash", os.path.join(HIER, "make_reel.sh"), src, out, z1, z2, preis_anzeige(preis, preis_max), a.hook,
                         os.path.join(REPO, "automation/music", m)], check=True, env=env, stdin=subprocess.DEVNULL)  # ffmpeg frisst sonst stdin einer Schleife
@@ -355,6 +357,7 @@ def main():
     ap.add_argument("--handle", required=True)
     ap.add_argument("--hook", default="Schon gesehen?")
     ap.add_argument("--musik", default="")
+    ap.add_argument("--musik-start", type=float, default=None, help="18.10.2026: Einstieg in Sekunden (sonst erster Eintrag aus _einstiege.json)")
     ap.add_argument("--stimme", default="de-CH-JanNeural")
     ap.add_argument("--dauer", type=float, default=11.0)
     ap.add_argument("--max-bilder", type=int, default=7)
