@@ -1,0 +1,41 @@
+--- hausschuhe.before.html
++++ hausschuhe.after.html
+@@ -1,27 +1,18 @@
+-<p>Hier stehen zwei Dinge nebeneinander, die im Deutschen oft durcheinandergeraten: <strong>Slipper</strong> — flache Schuhe zum Reinschlüpfen, ohne Schnürung, für draussen — und <strong>Hausschuhe und Pantoffeln</strong> für drinnen. Von den aktuell 179 Artikeln tragen 126 «Slipper» im Namen und 55 «Hausschuh», «Pantoffel» oder «Plüsch» (einzelne beides). Die Preise liegen zwischen CHF 14.90 und CHF 115.90, die Mitte bei rund CHF 24.</p>
+-<h3>Welcher Typ passt zu dir?</h3>
++<p><strong>Slipper</strong> sind Schuhe zum Reinschlüpfen ohne Schnürung. <strong>Hausschuhe und Pantoffeln</strong> sind für den Wohnbereich gedacht. Welche Ausführung zu deinem Alltag passt, hängt vom jeweiligen Modell ab. Vergleiche Form, Grössenangaben und Produktbeschreibung, bevor du eine Variante auswählst.</p>
++<h2>Welcher Typ passt zu dir?</h2>
+ <ul>
+-<li>
+-<strong>Slipper / Loafer</strong> — zum Reinschlüpfen, oft aus Leder (47 Modelle). Für Büro, Stadt und Sommer. Business-Modelle aus Rindsleder bis CHF 115.90.</li>
+-<li>
+-<strong>Hausschuhe und Pantoffeln</strong> — für drinnen, viele gefüttert oder aus Plüsch (16 Modelle ausdrücklich für Winter oder gefüttert).</li>
+-<li>
+-<strong>Für Kinder und Babys</strong> — 31 Modelle, teils mit Klettverschluss.</li>
+-<li>
+-<strong>Nach Grösse sortiert:</strong> 53 Modelle für Herren, 21 ausdrücklich für Damen, der Rest unisex oder nach Zentimeter-Angabe.</li>
++<li><strong>Slipper und Loafer:</strong> Prüfe in der jeweiligen Produktbeschreibung, für welchen Einsatz das Modell vorgesehen ist.</li>
++<li><strong>Hausschuhe und Pantoffeln:</strong> Achte auf die Passform und die Angaben zur Sohle des ausgewählten Artikels.</li>
++<li><strong>Modelle für Damen, Herren und Kinder:</strong> Orientiere dich an der Grössentabelle und den Angaben beim jeweiligen Produkt.</li>
+ </ul>
+-<h3>Worauf du beim Kauf achten solltest</h3>
++<h2>Worauf du beim Kauf achten solltest</h2>
+ <ul>
+-<li>
+-<strong>Sohle:</strong> Auf Parkett und Fliesen lohnt sich eine rutschhemmende Sohle — 8 Modelle nennen das ausdrücklich. Steht es nicht dabei, gehen wir nicht davon aus.</li>
+-<li>
+-<strong>Grösse:</strong> Bei den meisten Modellen steht die Länge in Zentimetern in der Beschreibung. Bei Hausschuhen aus Plüsch lieber eine Nummer grösser, bei Lederslippern passgenau.</li>
+-<li>
+-<strong>Material:</strong> Leder wird mit dem Tragen weicher und passt sich an. Plüsch und Textil sind sofort bequem, nutzen sich aber schneller ab.</li>
+-<li>
+-<strong>Pflege:</strong> Leder trocken ausbürsten und bei Bedarf mit einem leicht feuchten Tuch abwischen — nicht in die Waschmaschine. Bei Textil und Plüsch gilt das Pflegeetikett des Artikels.</li>
++<li><strong>Sohle:</strong> Gehe nur von einer rutschhemmenden Sohle aus, wenn diese Eigenschaft für den ausgewählten Artikel ausdrücklich genannt wird.</li>
++<li><strong>Grösse:</strong> Vergleiche vorhandene Fusslängen- und Grössenangaben des konkreten Modells. Eine pauschale Empfehlung, grösser oder kleiner zu bestellen, ersetzt diese Prüfung nicht.</li>
++<li><strong>Material:</strong> Massgeblich sind die Angaben des gewählten Produkts und der ausgewählten Variante.</li>
++<li><strong>Pflege:</strong> Beachte die Pflegehinweise des Artikels. Waschbarkeit oder eine bestimmte Reinigungsmethode werden nicht für die ganze Kollektion vorausgesetzt.</li>
+ </ul>
+-<h3>Gut zu wissen</h3>
++<h2>Gut zu wissen</h2>
+ <ul>
+ <li>Innerhalb der Schweiz liefern wir ab einem Bestellwert von CHF 50 gratis, darunter kostet der Versand CHF 7.</li>
+ <li>30 Tage Rückgabe, ungetragen und im Originalzustand.</li>

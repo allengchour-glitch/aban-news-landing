@@ -1,0 +1,40 @@
+{
+  "status": "owner_review_required_no_shop_writes",
+  "historicalSemrushDate": "2026-10-04",
+  "titleAndSeoChanges": false,
+  "productHandleChanges": false,
+  "productTagsChanged": false,
+  "camisoleSocialBlockedByRueckhol": true,
+  "changes": [
+    {
+      "resourceId": "gid://shopify/Collection/689776001409",
+      "field": "descriptionHtml",
+      "sourceUpdatedAt": "2026-10-15T04:27:48Z",
+      "beforeSha256": "ce580d6971c54f27147977f4c052be2a861848126ebcd75e84526aa947030d7c",
+      "afterSha256": "205cf75aa2c525ec231c000cbb992fcd02285187caa8c7077415416d6dfa2748",
+      "beforeFile": "hausschuhe.before.html",
+      "afterFile": "hausschuhe.after.html",
+      "status": "prepared_not_applied"
+    },
+    {
+      "resourceId": "gid://shopify/Collection/688018162049",
+      "field": "descriptionHtml",
+      "sourceUpdatedAt": "2026-10-15T19:43:34Z",
+      "beforeSha256": "5474c0bcd729ad4b8aea1d7e38bec2c9a699e4e63421b27c26111015cdaaa737",
+      "afterSha256": "a3ef610816bc3c42331107c6ac2c8b57a55f3e5d8d527bdb879c8ce4b90f3c09",
+      "beforeFile": "schuhe.before.html",
+      "afterFile": "schuhe.after.html",
+      "status": "prepared_not_applied"
+    },
+    {
+      "resourceId": "gid://shopify/Collection/689775182209",
+      "field": "descriptionHtml",
+      "sourceUpdatedAt": "2026-10-15T01:18:41Z",
+      "beforeSha256": "92c8c87f5026973439ac56777432e57b064dbc22d26891349b54e66491e80886",
+      "afterSha256": "48a60904196030864600596b5719d11f78216dd0beac703cb23753ce59475876",
+      "beforeFile": "tshirts-tops.before.html",
+      "afterFile": "tshirts-tops.after.html",
+      "status": "prepared_not_applied"
+    }
+  ]
+}

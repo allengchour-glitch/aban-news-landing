@@ -1,0 +1,36 @@
+{
+  "selection_at": "2026-10-18T18:11:20Z",
+  "historical_source_date": "2026-10-04",
+  "market": "CH",
+  "paid_requests": 0,
+  "public_url_limit": 4,
+  "live_admin_product_check": "Root-agent native read, not repeated here",
+  "targets": [
+    {
+      "url": "https://luxestyle.ch/collections/sub-hausschuhe",
+      "resource": "Collection",
+      "historic_keyword": "slippers",
+      "historic_position": 60,
+      "historic_monthly_volume": 1600,
+      "historic_kd": 15,
+      "current_rank": "unknown",
+      "fresh_public_http": 200,
+      "fresh_canonical": "matches",
+      "title_rewrite_needed": false,
+      "reason": "Existing title already covers Slippers & Hausschuhe. Old quantified text contradicts current storefront result count. Parent Schuhe editorial links omit this target although menu includes it."
+    },
+    {
+      "url": "https://luxestyle.ch/products/baumwoll-camisole-608000",
+      "resource": "Product",
+      "historic_keyword": "camisole",
+      "historic_position": 47,
+      "historic_monthly_volume": 1000,
+      "historic_kd": 24,
+      "current_rank": "unknown",
+      "fresh_public_http": 200,
+      "fresh_canonical": "matches",
+      "title_rewrite_needed": false,
+      "reason": "Current title contains Camisole; body refers to product. Existing parent T-Shirts & Tops description lacks an editorial product link. Handle does not prove Baumwolle. Rueckhol blocks new social; SEO-only scope."
+    }
+  ]
+}
