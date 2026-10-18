@@ -1,0 +1,5 @@
+--- date-country-label.before.html
++++ date-country-label.proposed.html
+@@ -1 +1 @@
+-Bestelle jetzt &ndash; Lieferung voraussichtlich <strong>2. Nov. &ndash; 16. Nov.</strong>
++Lieferung in die Schweiz voraussichtlich <strong>2. Nov. &ndash; 16. Nov.</strong>

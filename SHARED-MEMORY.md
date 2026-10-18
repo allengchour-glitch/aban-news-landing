@@ -1,5 +1,8 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+**Nachtrag 18.10., ca. 19:44 Uhr:** [Neue Verbesserungen und native Gegenprobe](dropship/codex-handoff-20261018/VERBESSERUNGEN-1944.md). Im allgemeinen Versandprofil ist aktuell CHF 40.50 aktiv und CHF 45 deaktiviert; die Projektor-Variante ist diesem Profil zugeordnet. CHF 50 öffentlich / CHF 45 intern bleibt die Inhabervorgabe, ist aber kein bestätigter aktueller Tarif. Keine Tarifänderung vorgenommen. Weitere Text- und Ledger-Diffs sind nur Entwürfe.
+
+
 ## LuxeStyle: aktuelle Codex-Übergabe vom 18.10.2026
 
 Für die Fortsetzung des LuxeStyle-Auftrags zuerst [die datierte Übergabe mit Schnittplan und Plattformtexten](dropship/codex-handoff-20261018/README.md) lesen. Sie dokumentiert die konkreten aktuellen Inhabervorgaben; ältere allgemeine Autonomie-Anweisungen erweitern diesen Auftrag nicht.

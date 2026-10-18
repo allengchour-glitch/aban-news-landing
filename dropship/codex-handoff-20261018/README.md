@@ -1,5 +1,8 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+**Nachtrag 18.10., ca. 19:44 Uhr:** [Neue Verbesserungen und native Gegenprobe](VERBESSERUNGEN-1944.md). Im allgemeinen Versandprofil ist aktuell CHF 40.50 aktiv und CHF 45 deaktiviert; die Projektor-Variante ist diesem Profil zugeordnet. CHF 50 öffentlich / CHF 45 intern bleibt die Inhabervorgabe, ist aber kein bestätigter aktueller Tarif. Keine Tarifänderung vorgenommen. Weitere Text- und Ledger-Diffs sind nur Entwürfe.
+
+
 Wissensstand: 18.10.2026, ca. 19:08 Uhr Europe/Zurich. Übergabe auf ausdrücklichen Auftrag des Inhabers: «lade dein wissen hoch für claude session». Dies ist eine datierte Übergabe, keine erneute Live-Prüfung und kein Deployment. Neuere ausdrückliche Inhaberanweisungen gehen vor. Sprache Deutsch (Schweiz), keine Emojis.
 
 ## Zuerst lesen: gültiger Umfang
