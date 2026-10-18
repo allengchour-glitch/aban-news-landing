@@ -1,0 +1,294 @@
+{
+  "identity": {
+    "checked_at_utc": "2026-10-18T17:41:00Z",
+    "shop": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currency": "CHF"
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "channels": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA",
+        "tiktokAdsData": "7691398659300179974"
+      }
+    },
+    "matches": true
+  },
+  "delivery": {
+    "data": {
+      "deliveryProfiles": {
+        "nodes": [
+          {
+            "id": "gid://shopify/DeliveryProfile/132124180865",
+            "name": "Allgemeines Profil",
+            "default": true,
+            "profileLocationGroups": [
+              {
+                "locationGroupZones": {
+                  "nodes": [
+                    {
+                      "zone": {
+                        "name": "Domestic",
+                        "countries": [
+                          {
+                            "code": {
+                              "countryCode": "CH",
+                              "restOfWorld": false
+                            }
+                          }
+                        ]
+                      },
+                      "methodDefinitions": {
+                        "nodes": [
+                          {
+                            "name": "Standard",
+                            "active": true,
+                            "rateProvider": {
+                              "__typename": "DeliveryRateDefinition",
+                              "price": {
+                                "amount": "7.0",
+                                "currencyCode": "CHF"
+                              }
+                            },
+                            "methodConditions": []
+                          },
+                          {
+                            "name": "Standard",
+                            "active": true,
+                            "rateProvider": {
+                              "__typename": "DeliveryRateDefinition",
+                              "price": {
+                                "amount": "0.0",
+                                "currencyCode": "CHF"
+                              }
+                            },
+                            "methodConditions": [
+                              {
+                                "field": "TOTAL_PRICE",
+                                "operator": "GREATER_THAN_OR_EQUAL_TO",
+                                "conditionCriteria": {
+                                  "__typename": "MoneyV2",
+                                  "amount": "65.0",
+                                  "currencyCode": "CHF"
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Kostenloser Versand",
+                            "active": false,
+                            "rateProvider": {
+                              "__typename": "DeliveryRateDefinition",
+                              "price": {
+                                "amount": "0.0",
+                                "currencyCode": "CHF"
+                              }
+                            },
+                            "methodConditions": [
+                              {
+                                "field": "TOTAL_PRICE",
+                                "operator": "GREATER_THAN_OR_EQUAL_TO",
+                                "conditionCriteria": {
+                                  "__typename": "MoneyV2",
+                                  "amount": "45.0",
+                                  "currencyCode": "CHF"
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Kostenloser Versand",
+                            "active": true,
+                            "rateProvider": {
+                              "__typename": "DeliveryRateDefinition",
+                              "price": {
+                                "amount": "0.0",
+                                "currencyCode": "CHF"
+                              }
+                            },
+                            "methodConditions": [
+                              {
+                                "field": "TOTAL_PRICE",
+                                "operator": "GREATER_THAN_OR_EQUAL_TO",
+                                "conditionCriteria": {
+                                  "__typename": "MoneyV2",
+                                  "amount": "40.5",
+                                  "currencyCode": "CHF"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "pageInfo": {
+                          "hasNextPage": false,
+                          "endCursor": "eyJsYXN0X2lkIjoxNTQwMTkzNDg1MTkxLCJsYXN0X3ZhbHVlIjp7Im1ldGhvZF9kZWZpbml0aW9uX2lkIjoxNTQwMTkzNDg1MTkxLCJ2aXJ0dWFsX3JlY29yZF9zb3VyY2Vfa2V5IjpudWxsLCJwcmV2X2RiX21ldGhvZF9kZWZpbml0aW9uX2lkIjoxNTI3NzM3Mjg3MDQ3LCJuZXh0X2RiX21ldGhvZF9kZWZpbml0aW9uX2lkIjpudWxsfX0="
+                        }
+                      }
+                    },
+                    {
+                      "zone": {
+                        "name": "International",
+                        "countries": [
+                          {
+                            "code": {
+                              "countryCode": null,
+                              "restOfWorld": true
+                            }
+                          }
+                        ]
+                      },
+                      "methodDefinitions": {
+                        "nodes": [
+                          {
+                            "name": "International",
+                            "active": true,
+                            "rateProvider": {
+                              "__typename": "DeliveryRateDefinition",
+                              "price": {
+                                "amount": "15.0",
+                                "currencyCode": "CHF"
+                              }
+                            },
+                            "methodConditions": []
+                          }
+                        ],
+                        "pageInfo": {
+                          "hasNextPage": false,
+                          "endCursor": "eyJsYXN0X2lkIjoxMTA4NzEyODE3MDI1LCJsYXN0X3ZhbHVlIjp7Im1ldGhvZF9kZWZpbml0aW9uX2lkIjoxMTA4NzEyODE3MDI1LCJ2aXJ0dWFsX3JlY29yZF9zb3VyY2Vfa2V5IjpudWxsLCJwcmV2X2RiX21ldGhvZF9kZWZpbml0aW9uX2lkIjpudWxsLCJuZXh0X2RiX21ldGhvZF9kZWZpbml0aW9uX2lkIjpudWxsfX0="
+                        }
+                      }
+                    },
+                    {
+                      "zone": {
+                        "name": "Liechtenstein",
+                        "countries": [
+                          {
+                            "code": {
+                              "countryCode": "LI",
+                              "restOfWorld": false
+                            }
+                          }
+                        ]
+                      },
+                      "methodDefinitions": {
+                        "nodes": [
+                          {
+                            "name": "Standard Liechtenstein",
+                            "active": true,
+                            "rateProvider": {
+                              "__typename": "DeliveryRateDefinition",
+                              "price": {
+                                "amount": "14.9",
+                                "currencyCode": "CHF"
+                              }
+                            },
+                            "methodConditions": []
+                          }
+                        ],
+                        "pageInfo": {
+                          "hasNextPage": false,
+                          "endCursor": "eyJsYXN0X2lkIjoxNTM4MjI1MjQyNTAzLCJsYXN0X3ZhbHVlIjp7Im1ldGhvZF9kZWZpbml0aW9uX2lkIjoxNTM4MjI1MjQyNTAzLCJ2aXJ0dWFsX3JlY29yZF9zb3VyY2Vfa2V5IjpudWxsLCJwcmV2X2RiX21ldGhvZF9kZWZpbml0aW9uX2lkIjpudWxsLCJuZXh0X2RiX21ldGhvZF9kZWZpbml0aW9uX2lkIjpudWxsfX0="
+                        }
+                      }
+                    }
+                  ],
+                  "pageInfo": {
+                    "hasNextPage": false,
+                    "endCursor": "eyJsYXN0X2lkIjo3NDI3MzgyOTcyMjMsImxhc3RfdmFsdWUiOiJMaWVjaHRlbnN0ZWluIn0="
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/DeliveryProfile/132143251841",
+            "name": "Zendrop",
+            "default": false,
+            "profileLocationGroups": [
+              {
+                "locationGroupZones": {
+                  "nodes": [
+                    {
+                      "zone": {
+                        "name": "[Zendrop — Worldwide Zone]",
+                        "countries": [
+                          {
+                            "code": {
+                              "countryCode": "CH",
+                              "restOfWorld": false
+                            }
+                          }
+                        ]
+                      },
+                      "methodDefinitions": {
+                        "nodes": [
+                          {
+                            "name": "[Free Shipping]",
+                            "active": true,
+                            "rateProvider": {
+                              "__typename": "DeliveryRateDefinition",
+                              "price": {
+                                "amount": "0.0",
+                                "currencyCode": "USD"
+                              }
+                            },
+                            "methodConditions": []
+                          }
+                        ],
+                        "pageInfo": {
+                          "hasNextPage": false,
+                          "endCursor": "eyJsYXN0X2lkIjoxMTA4OTAzNDYxMjQ5LCJsYXN0X3ZhbHVlIjp7Im1ldGhvZF9kZWZpbml0aW9uX2lkIjoxMTA4OTAzNDYxMjQ5LCJ2aXJ0dWFsX3JlY29yZF9zb3VyY2Vfa2V5IjpudWxsLCJwcmV2X2RiX21ldGhvZF9kZWZpbml0aW9uX2lkIjpudWxsLCJuZXh0X2RiX21ldGhvZF9kZWZpbml0aW9uX2lkIjpudWxsfX0="
+                        }
+                      }
+                    }
+                  ],
+                  "pageInfo": {
+                    "hasNextPage": false,
+                    "endCursor": "eyJsYXN0X2lkIjo2MDg0NDY1MTM1MzcsImxhc3RfdmFsdWUiOiJbWmVuZHJvcCDigJQgV29ybGR3aWRlIFpvbmVdIn0="
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/DeliveryProfile/132495966593",
+            "name": "Shopify Collective",
+            "default": false,
+            "profileLocationGroups": []
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": true,
+          "endCursor": "eyJsYXN0X2lkIjoxMzI0OTU5NjY1OTMsImxhc3RfdmFsdWUiOiIyMDI2LTA2LTAyIDA0OjA4OjMxLjAwMDAwMCJ9"
+        }
+      }
+    }
+  },
+  "query": "query LuxeStyleShippingReadOnly {\n  deliveryProfiles(first: 3) {\n    nodes {\n      id name default\n      profileLocationGroups {\n        locationGroupZones(first: 3) {\n          nodes {\n            zone { name countries { code { countryCode restOfWorld } } }\n            methodDefinitions(first: 6) {\n              nodes {\n                name active\n                rateProvider {\n                  __typename\n                  ... on DeliveryRateDefinition { price { amount currencyCode } }\n                }\n                methodConditions {\n                  field operator\n                  conditionCriteria {\n                    __typename\n                    ... on MoneyV2 { amount currencyCode }\n                  }\n                }\n              }\n              pageInfo { hasNextPage endCursor }\n            }\n          }\n          pageInfo { hasNextPage endCursor }\n        }\n      }\n    }\n    pageInfo { hasNextPage endCursor }\n  }\n}",
+  "limited_sample": {
+    "first_profiles": 3,
+    "profile_hasNextPage": true,
+    "mass_pagination": false
+  },
+  "checkout_tested": false,
+  "recorded_at_utc": "2026-10-18T17:44:20Z",
+  "variant_profile": {
+    "data": {
+      "productVariant": {
+        "id": "gid://shopify/ProductVariant/56197916361089",
+        "deliveryProfile": {
+          "id": "gid://shopify/DeliveryProfile/132124180865",
+          "name": "Allgemeines Profil",
+          "default": true
+        }
+      }
+    }
+  }
+}

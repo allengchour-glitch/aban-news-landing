@@ -1,0 +1,5 @@
+--- return-disclosure.before.html
++++ return-disclosure.proposed.html
+@@ -1 +1 @@
+-<p>30 Tage Rückgaberecht: Gib Artikel innerhalb von 30 Tagen zurück — unbenutzt, vollständig und in Originalverpackung (Ausnahmen wie personalisierte Ware: siehe <a href="/policies/refund-policy">Rückgaberichtlinie</a>). Defekt oder falsch geliefert? Dann ist die Rücksendung kostenlos und wir ersetzen oder erstatten vollständig.</p>
++<p>30 Tage Rückgaberecht: Gib Artikel innerhalb von 30 Tagen zurück — unbenutzt, vollständig und in Originalverpackung (Ausnahmen wie personalisierte Ware: siehe <a href="/policies/refund-policy">Rückgaberichtlinie</a>). Melde deine Rückgabe zuerst an; die gültige Retourenadresse erhältst du von uns. Bei freiwilliger Rückgabe trägst du die Rücksendekosten. Defekt oder falsch geliefert? Dann ist die Rücksendung kostenlos und wir ersetzen oder erstatten vollständig.</p>

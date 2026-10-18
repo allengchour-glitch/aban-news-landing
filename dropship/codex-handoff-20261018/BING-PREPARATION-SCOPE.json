@@ -1,0 +1,52 @@
+{
+  "brand": "LuxeStyle",
+  "host": "luxestyle.ch",
+  "preparedAt": "2026-10-18T17:50:25Z",
+  "mode": "read_only_preparation",
+  "externalWritesPerformed": false,
+  "submissionEnabled": false,
+  "accountLinkingEnabled": false,
+  "keyFileCreationEnabled": false,
+  "installationEnabled": false,
+  "sitemap": "https://luxestyle.ch/sitemap.xml",
+  "maximumTargetUrls": 2,
+  "targetUrls": [
+    "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+    "https://luxestyle.ch/collections/sub-beleuchtung"
+  ],
+  "status": {
+    "bingProperty": "unknown",
+    "gscAccess": "unknown",
+    "sitemapSubmission": "unknown",
+    "indexNowIntegration": "unknown",
+    "indexNowSameHostKey": "unknown",
+    "indexing": "unknown"
+  },
+  "requiredBeforeAnyFutureSubmission": [
+    "current_owner_authorization_for_account_or_integration_action",
+    "fresh_correct_brand_host_and_authenticated_property",
+    "read_existing_property_sitemap_and_submission_receipts",
+    "fresh_canonical_url_and_robots_noindex_countercheck",
+    "actual_content_change_since_integration_start_for_IndexNow",
+    "same_host_plain_text_key_and_path_scope_verified_for_IndexNow",
+    "durable_nonempty_history_or_explicit_scoped_initialization",
+    "exclusive_lock_and_atomic_checkpoint",
+    "no_inflight_unknown_blind_retry",
+    "per_request_response_and_subsequent_account_status_recorded"
+  ],
+  "prohibitedShortcuts": [
+    "ABAN_properties_or_urls",
+    "shopify_CDN_key_as_proof_for_luxestyle_ch",
+    "guessed_or_unapproved_DNS_meta_tag_proxy_or_shop_changes",
+    "whole_catalog_or_historical_backfill",
+    "UTM_variant_or_collection_product_alias_duplicates",
+    "assuming_200_or_202_means_indexed",
+    "ranking_or_sales_guarantee"
+  ],
+  "documentation": [
+    "https://help.shopify.com/en/manual/promoting-marketing/seo/find-site-map",
+    "https://www.bing.com/webmasters/help/add-and-verify-site-12184f8b",
+    "https://www.bing.com/indexnow/getstarted",
+    "https://www.indexnow.org/documentation"
+  ]
+}

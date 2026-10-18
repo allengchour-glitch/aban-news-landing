@@ -1,0 +1,32 @@
+--- a/master_publication_ledger.mjs
++++ b/master_publication_ledger.mjs
+@@ -133,6 +133,8 @@
+         assert(entry.readback.uuid === readback.uuid, 'Existing remote identity cannot be replaced by a new post');
+       } else if (nonempty(entry.readback.postId) && nonempty(readback.postId)) {
+         assert(entry.readback.postId === readback.postId, 'Existing remote identity cannot be replaced by a new post');
++      } else if (nonempty(readback.uuid) || nonempty(readback.postId)) {
++        assert(false, 'Existing remote identity cannot be correlated: reconcile an overlapping id or uuid first');
+       }
+     }
+     if (state === 'scheduled' || state === 'published') {
+@@ -146,7 +148,19 @@
+     entry.updatedAt = stamp(now);
+     if (readback) {
+       if (state === 'unknown') entry.lastUnknownObservation = structuredClone(readback);
+-      else entry.readback = { ...entry.readback, ...structuredClone(readback) };
++      else {
++        const previousReadback = entry.readback;
++        const nextReadback = { ...previousReadback, ...structuredClone(readback) };
++        // Partial successful observations must not erase confirmed identifiers.
++        for (const field of ['postId', 'uuid']) {
++          if (nonempty(previousReadback?.[field]) && !nonempty(readback[field])) nextReadback[field] = previousReadback[field];
++        }
++        if (nonempty(previousReadback?.postId) && nonempty(nextReadback.postId) && previousReadback.postId !== nextReadback.postId) {
++          entry.postIdHistory ??= [];
++          entry.postIdHistory.push({ previousPostId: previousReadback.postId, postId: nextReadback.postId, uuid: nextReadback.uuid, checkedAt: readback.checkedAt, at: entry.updatedAt });
++        }
++        entry.readback = nextReadback;
++      }
+     }
+     entry.history.push({ from: previous, to: state, runId, at: entry.updatedAt });
+     checkpoint(ledgerPath, ledger);

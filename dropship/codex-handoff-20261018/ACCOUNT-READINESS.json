@@ -1,0 +1,151 @@
+{
+  "recorded_at_utc": "2026-10-18T17:52:32Z",
+  "scope": "LuxeStyle only; no data pulls or account writes",
+  "connector_accounts": [
+    {
+      "id": "ahrefs",
+      "accounts": [],
+      "meaning": "No accounts in this connector does not prove no external owner account"
+    },
+    {
+      "id": "bing_webmaster",
+      "accounts": [],
+      "meaning": "No accounts in this connector does not prove no external owner account"
+    },
+    {
+      "id": "google_merchant",
+      "accounts": [
+        {
+          "id": "5797470070",
+          "name": "LuxeStyle CH"
+        }
+      ],
+      "meaning": "No accounts in this connector does not prove no external owner account"
+    },
+    {
+      "id": "pinterest_organic",
+      "accounts": [],
+      "meaning": "No accounts in this connector does not prove no external owner account"
+    },
+    {
+      "id": "searchconsole",
+      "accounts": [],
+      "meaning": "No accounts in this connector does not prove no external owner account"
+    },
+    {
+      "id": "semrush",
+      "accounts": [],
+      "meaning": "No accounts in this connector does not prove no external owner account"
+    }
+  ],
+  "middleware_plan": {
+    "plan_id": "TRIAL",
+    "plan_name": "Trial",
+    "is_paid": false,
+    "permanent_free_plan_confirmed": false
+  },
+  "product_channel_readback": {
+    "data": {
+      "product": {
+        "id": "gid://shopify/Product/15521256604033",
+        "onlineStoreUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+        "metafields": {
+          "nodes": [
+            {
+              "key": "gender",
+              "value": "unisex"
+            },
+            {
+              "key": "age_group",
+              "value": "adult"
+            },
+            {
+              "key": "condition",
+              "value": "new"
+            },
+            {
+              "key": "custom_product",
+              "value": "true"
+            },
+            {
+              "key": "google_product_category",
+              "value": "Home & Garden > Lighting > Night Lights & Ambient Lighting"
+            },
+            {
+              "key": "material",
+              "value": "Kunststoff"
+            }
+          ],
+          "pageInfo": {
+            "hasNextPage": false,
+            "endCursor": "eyJsYXN0X2lkIjoyMDMxNDM3NzczNTQxMTMsImxhc3RfdmFsdWUiOiIyMDMxNDM3NzczNTQxMTMifQ=="
+          }
+        },
+        "resourcePublications": {
+          "nodes": [
+            {
+              "publication": {
+                "id": "gid://shopify/Publication/301970915713"
+              },
+              "isPublished": true
+            },
+            {
+              "publication": {
+                "id": "gid://shopify/Publication/301971014017"
+              },
+              "isPublished": true
+            },
+            {
+              "publication": {
+                "id": "gid://shopify/Publication/302032716161"
+              },
+              "isPublished": true
+            },
+            {
+              "publication": {
+                "id": "gid://shopify/Publication/302566834561"
+              },
+              "isPublished": true
+            },
+            {
+              "publication": {
+                "id": "gid://shopify/Publication/302872297857"
+              },
+              "isPublished": true
+            },
+            {
+              "publication": {
+                "id": "gid://shopify/Publication/302994456961"
+              },
+              "isPublished": true
+            },
+            {
+              "publication": {
+                "id": "gid://shopify/Publication/391626359175"
+              },
+              "isPublished": true
+            },
+            {
+              "publication": {
+                "id": "gid://shopify/Publication/391625933191"
+              },
+              "isPublished": true
+            }
+          ],
+          "pageInfo": {
+            "hasNextPage": false,
+            "endCursor": "eyJsYXN0X2lkIjoxNzIyODQ2MzcwNTMzMTksImxhc3RfdmFsdWUiOjE3MjI4NDYzNzA1MzMxOX0="
+          }
+        }
+      }
+    }
+  },
+  "verification_metadata_from_cached_html": {
+    "source_time_swiss": "2026-10-18 ca.19:40",
+    "google_site_verification_present": true,
+    "msvalidate_01_present": true,
+    "pinterest_domain_verify_present": true,
+    "ownership_or_access_confirmed": false
+  },
+  "credentials_or_signed_links_included": false
+}

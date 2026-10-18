@@ -1,5 +1,21 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+**Gratis-Sichtbarkeit, 18.10.:** [Geprüfter Plan für Google-Produkteinträge, Search Console, Bing, Pinterest und Semrush Free](dropship/codex-handoff-20261018/GRATIS-SICHTBARKEIT.md). Windsor meldet TRIAL, keine bestätigte dauerhafte Gratisbrücke; Standard-Semrush-SEO-API ist kostenpflichtig. Vorhandene Verifizierungsmarker und Shopify-Google-Kanalflag beweisen keinen Kontozugriff oder Merchant-Freigabe. Keine Konten, Feeds, Indexmeldungen oder Apps aktiviert.
+
+
+**Nachtrag 18.10., ca. 19:44 Uhr:** [Neue Verbesserungen und native Gegenprobe](dropship/codex-handoff-20261018/VERBESSERUNGEN-1944.md). Im allgemeinen Versandprofil ist aktuell CHF 40.50 aktiv und CHF 45 deaktiviert; die Projektor-Variante ist diesem Profil zugeordnet. CHF 50 öffentlich / CHF 45 intern bleibt die Inhabervorgabe, ist aber kein bestätigter aktueller Tarif. Keine Tarifänderung vorgenommen. Weitere Text- und Ledger-Diffs sind nur Entwürfe.
+
+
+## LuxeStyle: aktuelle Codex-Übergabe vom 18.10.2026
+
+Für die Fortsetzung des LuxeStyle-Auftrags zuerst [die datierte Übergabe mit Schnittplan und Plattformtexten](dropship/codex-handoff-20261018/README.md) lesen. Sie dokumentiert die konkreten aktuellen Inhabervorgaben; ältere allgemeine Autonomie-Anweisungen erweitern diesen Auftrag nicht.
+- Metricool-Autopublish nur für freigegebene, professionelle und rechtegeprüfte fertige Master. Ein neuer 18-Sekunden-Projektor-Master ist noch nicht fertig; sechs Altentwürfe bleiben deaktiviert.
+- Bestehende ChatGPT-Aufgabe: flexible Fenster 08–09, 14–15 und 19–20 Uhr Europe/Zurich; kein zusätzlicher Repo-Cron und keine zweite Aufgabe.
+- Genau vier Klaviyo-DNS-Ergänzungen bereits genehmigt, noch nicht umgesetzt; sicherer Schreibzugang fehlt. Dieselbe Freigabe nicht erneut anfordern.
+- Sonstige Shop-/Feed-/Flow-/Budgetänderungen bleiben Vorbereitung. Keine Kundenansprache, keine bezahlten Renders. CHF-50/CHF-45-Versandgrenzen und Kundendomäne erhalten.
+Diese Ablage ist Wissenstransfer auf einem Dokumentationsbranch, kein Deployment und keine Publikation. Messwerte sind datiert; fehlende Daten bleiben unbekannt.
+
+
 > **📌 2026-09-30 · PINTEREST = andere Session (User-Entscheid).** Die abannews-Session hat einen fertigen, getesteten
 > Pinterest-Autopiloten für **abannews.com** gebaut, aber seinen Cron **pausiert**, damit nichts doppelt gepostet wird:
 > `automation/pinterest_aban/` (LIESMICH.md, 30 Tests, Gemini+ChatGPT mit Fakten-Prüfer, 4 Pin-Layouts, Lernschleife,

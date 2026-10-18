@@ -1,0 +1,167 @@
+{
+  "status": "proposed_edl_not_rendered_not_publishable",
+  "master_count": 1,
+  "source": "https://cdn.shopify.com/videos/c/o/v/6490c6357dae4df69bb910178acb2912.mp4",
+  "source_sha256": "2bb28156f28beed60f7db0980e870fff89c5e0648911a06ab91324f27fdf1d57",
+  "source_fps": 25,
+  "target_fps": 30,
+  "duration_seconds": 18,
+  "speed": 1,
+  "optical_flow": false,
+  "audio": {
+    "only_permitted_music": "automation/music/luxe-premium.wav",
+    "voiceover": false,
+    "source_audio": false,
+    "listening_approval": false
+  },
+  "segments": [
+    {
+      "name": "hook_a",
+      "master_in": "0.00",
+      "master_out": "2.00",
+      "source_in": "20.52",
+      "source_out": "22.52",
+      "crop": {
+        "w": 540,
+        "h": 540,
+        "x": 210,
+        "y": 0
+      },
+      "text": [
+        "Dein Raum. Neues Licht."
+      ],
+      "source_first_frame": 513,
+      "source_out_exclusive_frame": 563,
+      "source_frame_count": 50,
+      "target_first_frame": 0,
+      "target_out_exclusive_frame": 60,
+      "target_frame_count": 60
+    },
+    {
+      "name": "bedienung",
+      "master_in": "2.00",
+      "master_out": "7.60",
+      "source_in": "3.00",
+      "source_out": "8.60",
+      "crop": {
+        "w": 540,
+        "h": 540,
+        "x": 300,
+        "y": 0
+      },
+      "text": [
+        "Sternenlicht-Projektor",
+        "Aus der Nähe entdecken."
+      ],
+      "text_change_master": "4.60",
+      "source_first_frame": 75,
+      "source_out_exclusive_frame": 215,
+      "source_frame_count": 140,
+      "target_first_frame": 60,
+      "target_out_exclusive_frame": 228,
+      "target_frame_count": 168
+    },
+    {
+      "name": "projektion",
+      "master_in": "7.60",
+      "master_out": "12.40",
+      "source_in": "12.36",
+      "source_out": "17.16",
+      "crop": {
+        "w": 540,
+        "h": 540,
+        "x": 210,
+        "y": 0
+      },
+      "text": [
+        "Für besondere Lichtmomente."
+      ],
+      "source_first_frame": 309,
+      "source_out_exclusive_frame": 429,
+      "source_frame_count": 120,
+      "target_first_frame": 228,
+      "target_out_exclusive_frame": 372,
+      "target_frame_count": 144
+    },
+    {
+      "name": "detail",
+      "master_in": "12.40",
+      "master_out": "14.00",
+      "source_in": "17.20",
+      "source_out": "18.80",
+      "crop": {
+        "w": 540,
+        "h": 540,
+        "x": 210,
+        "y": 0
+      },
+      "text": [],
+      "source_first_frame": 430,
+      "source_out_exclusive_frame": 470,
+      "source_frame_count": 40,
+      "target_first_frame": 372,
+      "target_out_exclusive_frame": 420,
+      "target_frame_count": 48
+    },
+    {
+      "name": "cta",
+      "master_in": "14.00",
+      "master_out": "18.00",
+      "source_in": "23.52",
+      "source_out": "27.52",
+      "crop": {
+        "w": 540,
+        "h": 540,
+        "x": 210,
+        "y": 0
+      },
+      "text": [
+        "Produkt ansehen",
+        "CHF 34.90 · luxestyle.ch"
+      ],
+      "price_recheck_before_publication": true,
+      "source_first_frame": 588,
+      "source_out_exclusive_frame": 688,
+      "source_frame_count": 100,
+      "target_first_frame": 420,
+      "target_out_exclusive_frame": 540,
+      "target_frame_count": 120
+    }
+  ],
+  "open_gates": [
+    "native_premium_source_quality",
+    "commercial_video_editing_rights",
+    "default_sku_motif_assignment",
+    "final_motion_platform_crop_and_audio_review",
+    "fresh_identity_tags_availability_price_link_preflight"
+  ],
+  "master_id": "luxe_sternenprojektor_master_20261018",
+  "alternate_hook_b": {
+    "master_in": "0.00",
+    "master_out": "2.00",
+    "text": "Licht im Detail.",
+    "shots": [
+      {
+        "source_in": "3.48",
+        "source_out": "4.48",
+        "crop": {
+          "w": 540,
+          "h": 540,
+          "x": 300,
+          "y": 0
+        }
+      },
+      {
+        "source_in": "20.52",
+        "source_out": "21.52",
+        "crop": {
+          "w": 540,
+          "h": 540,
+          "x": 210,
+          "y": 0
+        }
+      }
+    ],
+    "status": "alternative_first_2_seconds_same_master_not_second_export"
+  }
+}
