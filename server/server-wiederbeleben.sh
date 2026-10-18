@@ -9,6 +9,15 @@
 # ANLASS (GEMESSEN 18.10. ~20:10 UTC, Keepalive-Zeile «BOT STILL»): der letzte Puls des Agenten kam 16.10. 06:08 UTC
 # (auftraege/_puls.json), der letzte Wächter-Commit 16.10. 06:11 — beide Einheiten stehen gleichzeitig, seit ~62 h; 3 Pinterest-
 # Quittungen hängen auf «laufend». Von der Cloud-Session ist der Server nicht erreichbar (Port 22 gesperrt, kein Eingang).
+# ZWEI WEITERE URSACHEN, die dieselbe Stille erzeugen (GEMESSEN/QUELLE 18.10.):
+#   · NETZ: status.hetzner.com meldet «Urgent maintenance on all core routers» seit 15.10. 10:00 UTC (laufend) und am 16.10. Wartung an den
+#     Load Balancern in NBG1 (erledigt) — ein Server ohne Route zu GitHub kann weder holen noch pushen (QUELLE status.hetzner.com).
+#   · TOKEN: der Git-Remote der Klone trägt einen ghp_-Token in der URL (PROJEKT.md:61); ein abgelaufener/widerrufener Token lässt schon
+#     `git fetch` am ExecStartPre scheitern (auch bei öffentlichem Repo) — alle drei Timer stehen dann still, ohne dass etwas «kaputt» wirkt.
+#   Das Skript prüft beides (Schritt 1b) und sagt, welche Ursache vorliegt.
+# Token erneuern (nur falls Schritt 1b «ZUGANG ABGELEHNT» meldet): neuen Token (Rechte: repo) unter github.com/settings/tokens anlegen, dann
+#   echo; TOKEN=ghp_… bash <(curl -fsSL …/server-wiederbeleben.sh)    (setzt die Remote-URLs der drei Klone; der Wert wird nie ausgegeben)
+# Notfall-Neustart des ganzen Servers: REBOOT=1 (erst am Ende, nur wenn die Netzprüfung scheitert und der Dienstneustart nichts bringt).
 # VERMUTUNG (nicht gemessen): Platte voll — am 13.10. stand «/» auf 90 % (32 von 38 GB), kein Swap, und dieselbe Klasse hatte den
 # Agenten schon am 22.09. 21:03 UTC stillgelegt (luxe-agent-schlank.sh, platte-schlank.sh). Das Skript prüft das zuerst und
 # behandelt jede Ursache, die es findet.
@@ -50,6 +59,33 @@ if have_sd; then
   echo "--- Kernel: OOM / Platte / E/A-Fehler seit 15.10."
   journalctl -k --since "2026-10-15" --no-pager 2>/dev/null | grep -i -E "out of memory|oom-kill|no space|i/o error|ext4-fs error|read-only" | tail -5 || true
 fi
+
+log "1b) Netz und GitHub-Zugang (nur lesen; mit TOKEN=… werden die Remote-URLs erneuert)"
+KLONE="/opt/luxe-agent/repo /opt/luxe-waechter/repo /opt/abannews"
+echo "--- Adressen/Route"; ip -br addr 2>/dev/null | head -5; ip route 2>/dev/null | head -3
+getent hosts github.com >/dev/null 2>&1 && echo "DNS github.com: ok" || warn "DNS: github.com nicht auflösbar"
+ping -c2 -W3 1.1.1.1 >/dev/null 2>&1 && echo "Ping 1.1.1.1: ok" || warn "Ping 1.1.1.1: keine Antwort (Netz aus?)"
+echo "github.com: HTTP $(curl -sS -m 12 -o /dev/null -w '%{http_code}' https://github.com 2>/dev/null || echo 000)"
+if [ -n "${TOKEN:-}" ]; then
+  for d in $KLONE; do
+    [ -d "$d/.git" ] || continue
+    if [ "$DRY" = 1 ]; then echo "[DRY] Remote-URL in $d auf neuen Token setzen"
+    else git -C "$d" remote set-url origin "https://x-access-token:${TOKEN}@github.com/allengchour-glitch/aban-news-landing.git" && echo "Remote-URL erneuert: $d"; fi
+  done
+fi
+AUTH_FEHLER=0; NETZ_FEHLER=0
+for d in $KLONE; do
+  [ -d "$d/.git" ] || continue
+  out=$(timeout 30 git -C "$d" ls-remote --heads origin 2>&1 </dev/null | head -3)
+  if echo "$out" | grep -q -E "^[0-9a-f]{40}"; then echo "$d: GitHub lesbar ✅"
+  elif echo "$out" | grep -q -i -E "authentication failed|invalid username|invalid token|403|401|bad credentials"; then
+    warn "$d: ZUGANG ABGELEHNT — Token abgelaufen/widerrufen? (${out%%$'\n'*})"; AUTH_FEHLER=1
+  elif echo "$out" | grep -q -i -E "resolve host|timed out|unable to access|network is unreachable|failed to connect"; then
+    warn "$d: GitHub nicht erreichbar — Netz (${out%%$'\n'*})"; NETZ_FEHLER=1
+  else warn "$d: unklar: ${out%%$'\n'*}"; fi
+done
+[ "$AUTH_FEHLER" = 1 ] && warn "→ Neuer Token nötig: github.com/settings/tokens (Recht «repo»), dann den Befehl oben mit TOKEN=ghp_… wiederholen."
+[ "$NETZ_FEHLER" = 1 ] && have_sd && { warn "Netz scheint gestört — Netzdienste neu starten (systemd-networkd, systemd-resolved)"; run systemctl restart systemd-networkd systemd-resolved 2>/dev/null || true; sleep 5; ping -c2 -W3 1.1.1.1 >/dev/null 2>&1 && echo "Netz wieder da ✅" || warn "Netz weiter aus — Hetzner-Konsole: Server → Reset («Power cycle») oder REBOOT=1"; }
 SPACE_ERR=0; have_sd && journalctl -u luxe-agent.service -u luxe-waechter.service --since "2026-10-15" --no-pager 2>/dev/null | grep -q -i -E "no space left|invalid index-pack" && SPACE_ERR=1
 [ "${VOR:-0}" -ge 97 ] 2>/dev/null && warn "Platte praktisch voll (${VOR} %) — sehr wahrscheinlich die Ursache."
 [ "$SPACE_ERR" = 1 ] && warn "Journal enthält «No space left»/«invalid index-pack» — Ursache bestätigt."
@@ -105,6 +141,10 @@ if have_sd; then
   echo "--- letzte Journalzeilen des Agenten"; journalctl -u luxe-agent.service -n 12 --no-pager -o short-iso 2>/dev/null | cut -c1-170
 else warn "kein systemd gefunden — nichts zu starten"; fi
 
+log "4b) Push-Probe (nichts wird gesendet)"
+if [ -d /opt/luxe-agent/repo/.git ]; then
+  timeout 40 git -C /opt/luxe-agent/repo push --dry-run origin HEAD:claude/luxestyle-status-tztnn1 2>&1 </dev/null | tail -2 | cut -c1-200
+fi
 log "Ergebnis"
 echo "Platte «/»: ${VOR:-?} % → $(pcent) %"
 if have_sd; then
@@ -114,4 +154,7 @@ if have_sd; then
   else
     warn "Mindestens ein Timer läuft nicht — die Zeilen unter «Stand» und «Bericht» schicken."
   fi
+fi
+if [ "${REBOOT:-0}" = 1 ]; then
+  warn "REBOOT=1 — Server startet in 15 s neu (Strg+C bricht ab)."; [ "$DRY" = 1 ] && echo "[DRY] reboot" || { sleep 15; systemctl reboot; }
 fi
