@@ -137,11 +137,17 @@
   "karussell-20261021T1915": {
    "basis_utc": "2026-10-21T19:15:00Z",
    "format": "karussell",
-   "grund": "rc=0: Nichts faellig: kein ready-Karussell.",
+   "grund": "",
+   "handle": "",
+   "handles": [
+    "multifunktionaler-manueller-massageroller"
+   ],
    "letzter_versuch": "2026-10-18T22:59:45Z",
-   "mc_ids": [],
+   "mc_ids": [
+    399489678
+   ],
    "reserviert_um": "2026-10-18T22:59:45Z",
-   "status": "reserviert",
+   "status": "geplant",
    "termin_utc": "2026-10-21T19:15:00Z",
    "versuche": 5
   },
@@ -344,12 +350,12 @@
    "format": "pin",
    "grund": "verschwunden [399454431]",
    "handle": "",
-   "letzter_versuch": "2026-10-18T21:49:23Z",
+   "letzter_versuch": "2026-10-18T23:00:31Z",
    "mc_ids": [],
-   "reserviert_um": "2026-10-18T21:49:23Z",
-   "status": "offen",
+   "reserviert_um": "2026-10-18T23:00:31Z",
+   "status": "reserviert",
    "termin_utc": "2026-10-21T19:50:00Z",
-   "versuche": 1
+   "versuche": 2
   },
   "pin-20261022T1240": {
    "basis_utc": "2026-10-22T12:40:00Z",
@@ -1411,6 +1417,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-18T22:59:45Z",
+ "stand": "2026-10-18T23:00:31Z",
  "version": 1
 }
