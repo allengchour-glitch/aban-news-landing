@@ -1,5 +1,7 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+**Umsetzung aus vorhandenen Semrush-Ergebnissen, 18.10., 21:43 Uhr Europe/Zurich:** Separate Entwurfs-PR [2694](https://github.com/allengchour-glitch/aban-news-landing/pull/2694), Commit `51325e7c2fc8cd3596412130367c1fdc117c2b81`: gezielter SEO-Helfer mit Feldschutz, höchstens sechs expliziten Produkten und Review-Workflow; 22 neue Offline-Tests plus bestehende Titelprüfungen bestanden. Drei descriptionHtml-Diffs mit Vorher/Nachher-Vorschau liegen dort unter `dropship/seo-review-20261018/`. Alle 20 hochgeladenen Dateien wurden inhaltlich zurückgelesen. Kein Merge, Deployment, Dispatch oder Shop-Write; Seitenänderungen bleiben zur Inhaberfreigabe. Alte externe Aufrufe ohne PRODUCT_IDS sind vor Merge abzugleichen. Native READ-Abfrage geprüft, echte Mutation nicht ausgeführt. Historische Semrush-Ränge sind keine heutigen Messwerte.
+
 **Semrush-Abgleich nach Inhaberhinweis:** [Vorhandene Claude-Semrush-Arbeit zuerst wiederverwenden](SEMRUSH-BESTAND.md). Direkte MCP-Nutzung und übernommene CH-Berichte sind belegt. Fehlender Windsor-Anschluss ist davon getrennt; keine neue Einrichtung oder kostenpflichtige Abfrage als Voraussetzung darstellen. Alte Rangwerte bleiben datiert.
 
 
