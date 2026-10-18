@@ -54,21 +54,38 @@ function run(f, config = {}) {
       if(url.hostname==='developers.cjdropshipping.com' && url.pathname.endsWith('/product/productComments')) {
         return response(200,config.commentsResponse || {result:true,data:{list:comments}});
       }
+      if(url.hostname==='judge.me' && url.pathname==='/reviews/reviews_for_widget') {
+        // Die oeffentliche Widget-Antwort filtert wirklich nach Produkt (nachgemessen 18.10.).
+        const pid=url.searchParams.get('product_id');
+        const quelle=config.shopReviews!==undefined ? config.shopReviews
+          : (fs.existsSync('judge-posts.jsonl')
+              ? fs.readFileSync('judge-posts.jsonl','utf8').trim().split('\\n').filter(Boolean).map(JSON.parse)
+                  .filter(p=>p.angenommen!==false).map(p=>({product_external_id:'${PRODUCT_ID}',body:p.body}))
+              : []);
+        const eigene=quelle.filter(r=>String(r.product_external_id)===String(pid));
+        return response(200,{number_of_reviews:eigene.length,
+          reviews:eigene.map(r=>({body_html:'<p>'+r.body+'</p>',rating:5}))});
+      }
       if(url.hostname==='judge.me' && url.pathname==='/api/v1/reviews' && opts.method!=='POST') {
         // Abgleich: Judge.me bestaetigt einen POST mit HTTP 201 OHNE Review-ID, der Importer
         // liest darum die neuesten Bewertungen nach. Standardmaessig liegt dort, was gepostet
         // wurde; config.shopReviews deckt den Fall ab, dass sie NICHT angekommen ist.
         if(config.shopReviews!==undefined) return response(200,{reviews:config.shopReviews});
+        // Nur ein ANGENOMMENER POST wird eine Bewertung im Shop. Ein mit 422 abgelehnter
+        // Text liegt dort nicht — sonst wuerde der Doppel-Schutz einen echten Nachholversuch
+        // verhindern (beim Bauen des Schutzes am 18.10. genau so aufgefallen).
         const gepostet=fs.existsSync('judge-posts.jsonl')
           ? fs.readFileSync('judge-posts.jsonl','utf8').trim().split('\\n').filter(Boolean).map(JSON.parse) : [];
-        return response(200,{reviews:gepostet.map(p=>({product_external_id:'${PRODUCT_ID}',body:p.body}))});
+        return response(200,{reviews:gepostet.filter(p=>p.angenommen!==false)
+          .map(p=>({product_external_id:'${PRODUCT_ID}',body:p.body}))});
       }
       if(url.hostname==='judge.me' && url.pathname==='/api/v1/reviews' && opts.method==='POST') {
         const body=JSON.parse(opts.body);
         const ledger=fs.readFileSync('dropship/cj_review_items.jsonl','utf8').trim().split('\\n').map(JSON.parse);
         if(ledger.at(-1)?.status!=='sending')throw new Error('MISSING DURABLE SENDING CHECKPOINT');
-        fs.appendFileSync('judge-posts.jsonl',JSON.stringify({body:body.body,name:body.name})+'\\n');
         const outcome=config.outcomes?.[posts++] || {status:201,body:{review:{id:123}}};
+        const angenommen=!outcome.networkError && outcome.status>=200 && outcome.status<300;
+        fs.appendFileSync('judge-posts.jsonl',JSON.stringify({body:body.body,name:body.name,angenommen})+'\\n');
         if(outcome.networkError)throw new TypeError('fake-private-token connection reset');
         return response(outcome.status,outcome.body);
       }
@@ -203,7 +220,28 @@ test('Abgleich zählt nur Bewertungen desselben Produkts', t => {
   assert.deepEqual(lines(f, 'dropship/cj_reviews_done.txt'), []);
 });
 
-test('Stabile CJ-Kommentar-ID verhindert Doppelimport nach nachträglicher Textänderung', t => {
+test('Text liegt beim Produkt schon im Shop → wird nicht erneut gesendet', t => {
+  // Der Schluessel aendert sich, wenn CJ-Daten sich aendern; der Shop ist die Wahrheit.
+  const f = fixture(t);
+  const r = run(f, { shopReviews: [{ product_external_id: PRODUCT_ID, body: COMMENTS[0].comment }] });
+  assert.equal(r.status, 0, r.stdout + r.stderr);
+  assert.deepEqual(posts(f).map(post => post.body), [COMMENTS[1].comment]);
+  assert.equal(states(f).get(key(COMMENTS[0])), 'sent');
+  assert.equal(states(f).get(key(COMMENTS[1])), 'sent');
+});
+
+test('GEGENPROBE: derselbe Text bei einem ANDEREN Produkt sperrt nicht', t => {
+  const f = fixture(t);
+  const r = run(f, { shopReviews: [{ product_external_id: '999', body: COMMENTS[0].comment }] });
+  assert.equal(r.status, 0, r.stdout + r.stderr);
+  assert.deepEqual(posts(f).map(post => post.body), COMMENTS.map(c => c.comment));
+});
+
+test('Ein nachträglich geänderter Kommentar gilt als neue Bewertung (bewusster Preis)', t => {
+  // Vorher deckte die Produkt-Kommentar-ID diesen Fall ab — zum Preis, dass alle Kommentare
+  // EINES Produkts denselben Schluessel hatten (gemessen 18.10., siehe reviewKey). Der
+  // haeufige Fall ist jetzt durch den Text-Abgleich im Shop gedeckt; ein wirklich geaenderter
+  // Text ist ein anderer Text und darf einmal nachrutschen.
   const f = fixture(t);
   const first = run(f, { outcomes: [success, rejected] });
   assert.equal(first.status, 1, first.stdout + first.stderr);
@@ -211,15 +249,20 @@ test('Stabile CJ-Kommentar-ID verhindert Doppelimport nach nachträglicher Text�
     commentUser: 'Updated buyer name', commentDate: '2026-10-03', score: 4 };
   const second = run(f, { comments: [changed, COMMENTS[1]] });
   assert.equal(second.status, 0, second.stdout + second.stderr);
-  assert.deepEqual(posts(f).map(post => post.body), [COMMENTS[0].comment, COMMENTS[1].comment, COMMENTS[1].comment]);
-  assert.equal(states(f).size, 2);
+  assert.deepEqual(posts(f).map(post => post.body), [COMMENTS[0].comment, COMMENTS[1].comment, changed.comment, COMMENTS[1].comment]);
+  assert.equal(states(f).size, 3);
   assert.deepEqual(lines(f, 'dropship/cj_reviews_done.txt'), [PRODUCT_ID]);
 });
 
-test('commentId ist ebenfalls stabil; Produkt und CJ-Quelle bleiben getrennt', () => {
+test('Gleiche commentId, anderer Text = andere Bewertung (CJ vergibt EINE ID je Produkt)', () => {
+  // Gemessen 2026-10-18 an pid 1616334321445515264: alle sieben Kommentare tragen
+  // commentId 1616344932124471300. Wer die Kennung allein nimmt, importiert je Produkt
+  // genau eine Bewertung und zaehlt die uebrigen als Fehler.
   const review = { ...COMMENTS[0], id: undefined, commentId: 'source-comment-id' };
-  const changed = { ...review, comment: 'The buyer corrected the review wording.', commentUser: 'New display name', score: 4 };
-  assert.equal(key(review), key(changed));
+  const anderer = { ...review, comment: 'Zweiter Kaeufer, derselbe Produkt-Kommentarblock.', commentUser: 'P***s', score: 4 };
+  assert.notEqual(key(review), key(anderer));
+  // Gegenprobe: derselbe Kommentar ergibt denselben Schluessel — Idempotenz bleibt.
+  assert.equal(key(review), key({ ...review }));
   assert.notEqual(key(review), reviewKey('another-product', CJ_PID, review));
   assert.notEqual(key(review), reviewKey(PRODUCT_ID, 'another-cj-source', review));
 });

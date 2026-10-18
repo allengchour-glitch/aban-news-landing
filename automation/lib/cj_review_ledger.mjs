@@ -1,12 +1,28 @@
 import fs from 'node:fs';
 import { createHash } from 'node:crypto';
 
+/**
+ * Schluessel je einzelner Bewertung.
+ *
+ * ⚠️ GEMESSEN 2026-10-18 an CJ `product/productComments?pid=1616334321445515264`: ALLE sieben
+ * Kommentare des Produkts tragen dieselbe `commentId` (1616344932124471300). Die alte Fassung
+ * nahm diese Kennung allein, sobald sie vorhanden war — damit hatten alle Bewertungen EINES
+ * Produkts denselben Schluessel. Folge: die erste wurde importiert, jede weitere sah den
+ * Zustand `sending` und wurde als `CJ_REVIEW_UNCERTAIN` gezaehlt. Der Lauf ueber 150
+ * Elektronik-Produkte meldete darum 17 Bewertungen und 20 „Fehler", obwohl CJ fuer dieselben
+ * sieben Produkte deutlich mehr hatte.
+ *
+ * Darum geht der Inhalt IMMER mit in den Schluessel. Die Kennung bleibt als zusaetzliche
+ * Unterscheidung drin: derselbe Kommentar ergibt denselben Schluessel (Idempotenz bleibt),
+ * zwei verschiedene Kommentare nie.
+ */
 export function reviewKey(productId, cjPid, review) {
   const sourceId=review.id ?? review.commentId;
-  const source=sourceId !== undefined && sourceId !== null && String(sourceId).trim() !== ''
-    ? [String(productId),String(cjPid),'source-id',String(sourceId)]
-    : [String(productId),String(cjPid),'content',String(review.commentUser ?? ''),
-      String(review.commentDate ?? ''),Number(review.score),String(review.comment ?? '')];
+  const kennung=sourceId !== undefined && sourceId !== null && String(sourceId).trim() !== ''
+    ? String(sourceId) : '';
+  const source=[String(productId),String(cjPid),'inhalt',kennung,
+    String(review.commentUser ?? ''),String(review.commentDate ?? ''),
+    Number(review.score),String(review.comment ?? '')];
   return createHash('sha256').update(JSON.stringify(source)).digest('hex');
 }
 

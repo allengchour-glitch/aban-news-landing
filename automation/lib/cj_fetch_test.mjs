@@ -1,6 +1,6 @@
 /** Test fuer cjFetch — gefaelschtes fetch, kein echtes Warten.
  *  Lauf: /opt/node22/bin/node automation/lib/cj_fetch_test.mjs   */
-import { cjFetch } from './cj_fetch.mjs';
+import { cjFetch, WEICHE_CODES } from './cj_fetch.mjs';
 let fehler = 0;
 const pruef = (name, ok, extra = '') => { if (!ok) { fehler++; console.log(`FAIL ${name} ${extra}`); } else console.log(`ok   ${name}`); };
 const antwort = (body, status = 200) => ({ status, json: async () => body });
@@ -84,6 +84,42 @@ for (const status of [200, 429]) {
   const erg = await cjFetch('https://cj/x', { fetch: async (_u, init) => { gesehen = init; return gut(); },
     headers: { 'CJ-Access-Token': 'tok' }, warte: () => {}, context: '/x' });
   pruef('Token-Kopfzeile durchgereicht', gesehen?.headers?.['CJ-Access-Token'] === 'tok' && !!erg);
+}
+
+// 11. Weiche Codes: ausgelistet/nicht gefunden ist eine ANTWORT, kein Fehler (18.10.)
+for (const code of WEICHE_CODES) {
+  const l = lauf([antwort({ result: false, code, message: 'removed from shelves' })], { weicheCodes: WEICHE_CODES });
+  let b = null, geflogen = null;
+  try { b = await l.erg; } catch (e) { geflogen = e.message; }
+  pruef(`code ${code} weich → Body statt Fehler`, !geflogen && Number(b?.code) === code, String(geflogen));
+  pruef(`code ${code} weich → nicht gewartet`, l.gewartet.length === 0 && l.aufrufe() === 1);
+}
+// 12. GEGENPROBE 1: ohne weicheCodes bleibt derselbe Code hart (kein stiller Durchlass)
+{
+  const l = lauf([antwort({ result: false, code: 1602002, message: 'removed from shelves' })]);
+  let geflogen = null;
+  try { await l.erg; } catch (e) { geflogen = e.message; }
+  pruef('ohne weicheCodes bleibt 1602002 hart', /^CJ_API.*1602002/.test(String(geflogen)), String(geflogen));
+}
+// 13. GEGENPROBE 2: ein echter Fehler fliegt SOFORT, auch wenn weiche Codes erlaubt sind
+{
+  const l = lauf([antwort({ result: false, code: 1600000, message: 'Signature error' })], { weicheCodes: WEICHE_CODES });
+  let geflogen = null;
+  try { await l.erg; } catch (e) { geflogen = e.message; }
+  pruef('fremder Code fliegt trotz weicheCodes', /^CJ_API.*1600000/.test(String(geflogen)), String(geflogen));
+}
+// 14. GEGENPROBE 3: erschoepfte Punkte bleiben hart, auch als weicher Code verpackt
+{
+  const l = lauf([antwort({ result: false, code: 1602002, message: 'Insufficient api points. Used today: 951' })], { weicheCodes: WEICHE_CODES });
+  let geflogen = null;
+  try { await l.erg; } catch (e) { geflogen = e.message; }
+  pruef('Punkte erschoepft schlaegt weiche Codes', /^CJ_QUOTA/.test(String(geflogen)), String(geflogen));
+}
+// 15. Ein ERFOLG bleibt ein Erfolg, wenn weiche Codes erlaubt sind
+{
+  const l = lauf([gut({ pid: 'xyz' })], { weicheCodes: WEICHE_CODES });
+  const b = await l.erg;
+  pruef('Erfolg unveraendert mit weicheCodes', b?.data?.pid === 'xyz');
 }
 
 console.log(fehler ? `\n${fehler} FEHLER` : '\nalle Tests gruen');

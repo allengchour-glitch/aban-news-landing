@@ -72,6 +72,42 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-18 frühmorgens (⭐ 155 echte Bewertungen live — zwei Importer-Fehler derselben Klasse gefunden):**
+Heute gesamt: **155 echte ≥4★-Bewertungen auf 35 Produkten, 0 Fehler.** Vorher meldete derselbe Lauf
+17 Bewertungen und 20 ‚Fehler‘. Beide Ursachen sind Antworten, die als Fehler behandelt wurden.
+- **🚨 CJ VERGIBT NUR EINE `commentId` JE PRODUKT — darum kam je Produkt nur EINE Bewertung durch.**
+  Gemessen an `product/productComments?pid=1616334321445515264`: alle sieben Kommentare tragen
+  `commentId` 1616344932124471300. `reviewKey` nahm diese Kennung allein, sobald sie vorhanden war →
+  alle Bewertungen eines Produkts hatten denselben Schlüssel; die erste wurde importiert, jede weitere
+  sah den Zustand `sending` und wurde als `CJ_REVIEW_UNCERTAIN` **gezählt wie ein Fehler**. Fix: der
+  Inhalt geht IMMER in den Schlüssel. **Live gegengeprüft: Wassermelder 1 → 7 Bewertungen, keine Dublette.**
+  Danach derselbe Lauf: **132 Bewertungen auf 27 Produkten, 0 Fehler.**
+- **🔑 KORREKTUR der Notiz vom 17.10. („der Produktfilter wird still ignoriert“): nur halb richtig.**
+  Die Admin-Liste `/api/v1/reviews` ignoriert jeden Filter (`external_id`, `product_external_id`,
+  `product_id` und sogar ein **erfundenes `handle`** liefern dieselben Bewertungen). Die öffentliche
+  Widget-Antwort `judge.me/reviews/reviews_for_widget?product_id=…` **filtert wirklich** (nennt
+  Produktname, Anzahl, Ø) — ohne Zugangsdaten, nur lesend. `jmAbgleich` und der neue Doppel-Schutz
+  lesen jetzt diese: vor dem Senden werden die Texte DIESES Produkts gelesen, ein vorhandener Text wird
+  nicht erneut gesendet. Der Schlüssel darf sich damit ändern, ohne Dubletten zu erzeugen.
+  **Bewusster Preis:** ein von CJ nachträglich geänderter Kommentartext gilt als neue Bewertung.
+- **🐛 „Ausgelistet“ ist keine Fehlermeldung.** `product/query` antwortet mit `1602001` (nicht gefunden),
+  `1602002` (Produkt ausgelistet) oder `1602003` (Variante ausgelistet) — und `productComments` liefert für
+  genau dieselbe pid weiter **code 200**. Der zentrale `cjFetch` warf auf `result!==true` und brach damit die
+  Strategie-Kette in `resolvePid` beim ersten Versuch ab. Neu: Option `weicheCodes`/`WEICHE_CODES`; ohne sie
+  bleibt alles hart (Gegenproben: fremder Code fliegt sofort, erschöpfte Punkte schlagen die weichen Codes).
+  **Dieselbe Fehlerklasse wie „HTTP 429 ist nicht 404“ — jetzt zum vierten Mal.**
+- **🔁 KORREKTUR der Notiz vom 17.10. („die 19 anderen CJ-Skripte haben den alten `cjGet`-Block noch“):
+  nachgezählt stimmt das nicht.** 17 von 20 fangen CJs eigene Drosselung bereits ab (`1600200`/`Too Many`/`QPS`,
+  bis zu 4 Versuche). Ohne Schutz sind nur `automation/cj_perpetual.mjs`, `dropship/cj_full_create.mjs` und
+  `dropship/cj_variants.mjs` — Einzelaufruf-Helfer mit einer Abfrage, wo ein 429 nur „nochmal starten“ heisst.
+  **Keine offene Fläche, kein Massenumbau nötig.**
+- **Lauf-Rezept, bestätigt:** `QUERY='tag:elektronik AND tag:cj-real' SORT=UPDATED_AT REVERSE=1 LIMIT=150`.
+  Der neueste Teil (Notenständer/Mikrofone) hat **0 Kommentare**; die Treffer liegen bei Smart-Home,
+  Dimmer/Controller, Smartwatch-Armbändern und Radios. **Nächste Sitzung: dieselbe Abfrage weiterlaufen
+  lassen (LIMIT 150–250), danach `tag:gadgets AND tag:cj-real`.**
+- **🟡 BEIM USER (unverändert):** Preis `m8-puls-4k-retro-game-console-956928` (12 Bewertungen, 4,75★,
+  VK unter EK) · Preise der drei Dünnmargen-Produkte.
+
 **📌 2026-10-17 spätnachts (👁️ Bewertungen sind da, aber 55 gut bewertete Produkte sind DRAFT):**
 Voller Bericht: `dropship/BEWERTUNGEN-SICHTBARKEIT-1710.md`. Wiederholbar (nur lesen, **0 CJ-Punkte**):
 `PQUERY='tag:elektronik' SCAN=5000 node automation/bewertungen_sichtbar.mjs`.
