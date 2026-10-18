@@ -52,6 +52,43 @@
 
 
 
+
+## 🗨️🎼✉️🔎 Kommentare, Musik, Mails, Search Console (2026-10-18, 20:50–21:40 UTC)
+
+Betreiber-Aufträge in einem Zug: «verbessere kommentare antwort», «verbessere musik videos», «bearbeite mails», «search.goole sachen», dazu die Frage nach der
+ChatGPT-Zusammenarbeit («habe chatgpt pro, er verbindet mit dir … du befehlst ihm»).
+
+**Kommentare (GEMESSEN).** Alle 12 Kommentare unter den IG-Posts waren Bots («Amazing post 🔥 please send this to us», «Sende mir diesen Beitrag.😍», 3 Konten,
+`switzerland_circle` allein 9×). Die Moderation liess sie stehen: ihr GENUINE-Schutz wertet `love|😍` als echtes Lob und schützt vor dem Spam-Test. Drei
+Bot-Kommentare wurden am 10. und 12.10. um 09:00 UTC von `luxestyle.ch` mit Mundart und «WELCOME10» beantwortet — der Absender steht in KEINEM Repo-Text
+(`git log -S`, Grep), in keiner Routine und in keinem Workflow (`social-comment-reply.yml` seit 13.06. pausiert); Verdacht: eine ChatGPT-Aufgabe (UNBELEGT,
+Betreiber fragen). Neu: `automation/lib/kommentar_klasse.mjs` (EINE Einordnung: bot → spam → frage → lob; 18 Selbsttest-Fälle), `social-comment-reply.mjs` v2
+verbirgt Bots/Spam (hide, reversibel, nie löschen; Konto mit ≥ 3 Kommentaren = Engagement-Farm), beantwortet echte Fragen belegt in Hochdeutsch (Versand,
+Grösse, Preis, Verfügbarkeit, Rückgabe, Zahlung, Echtheit, Material) mit Produktlink aus der Bildunterschrift, Rabattcode NUR bei Preisfrage und nur wenn Shopify ihn
+jetzt als ACTIVE meldet (WELCOME10: 10 %, einmal je Kunde, bis 31.12.2027, nicht mit Bestellrabatt kombinierbar). Erster Lauf: 11 Bots verborgen. Autopilot ruft
+den Lauf alle 3 h (`social_autopilot.sh`), Keepalive meldet ⚠️ bei echter offener Frage/Fehler. **Lehre: Ein Schutz «echt, wenn Lob-Wort» muss NACH dem Bot-Test
+stehen, nie davor.**
+
+**Musik (GEMESSEN).** 9 epische Stücke für ALLE Warengruppen (Schlittenglocken auf Hundespielzeug), `luxe-orchestra` (GM-Klang) 112×. vidIQ-Credits 15/150
+(Auffüllen 24.10.) → stattdessen Google Lyria 3.5 über die Gemini-API (~900–1'400 Tokens je Stück): 6 neue Stimmungsstücke (`luxe-epic-spielerisch/-warm/
+-tech/-sport/-glamour/-herbst`), blind mit Gemini bewertet (Orchester/Klang echt/passt ≥ 9); `tech` v1 fiel durch (Orchester 4, «synthetisch») → Prompt auf
+echte Streicher, v2 9/9/9. `automation/music/produce/lyria_erzeugen.py` (erzeugen/bewerten/aufnehmen, Schlüssel nur aus der Umgebung), Pools je Warengruppe in
+`automation/music/_stimmung.json`, Winterstück nur 15.11.–10.01., Auswahl = am längsten nicht benutztes Stück des Pools (letzte 80 Verlaufszeilen), gleich im
+Reel-Motor und in `bild_reel_auswahl.py`. Der Lernmotor sieht je Stück keinen Effekt (0.96–1.09) — das ist Klang-/Passungsarbeit, kein Reichweitenversprechen.
+
+**Mails (GEMESSEN).** Einzige dringende: Beschwerde zu **#1021** (Nibosi-Uhr): CJ hatte die blaue Variante als «Products Discontinued» durch Ersatzware
+(TIBERAO) ersetzt, der Betreiber hatte zugestimmt (05.10.), der Kunde wurde NIE informiert → «Wrong item delivered», Rückerstattung gefordert, Drohung mit
+schlechten Bewertungen. Entwurf in Gmail (nicht gesendet): volle Rückerstattung CHF 45.90 ohne Rücksendung — Auslösen/Senden = Betreiber. **Lehre: Ersatzware
+beim Lieferanten = Kunde VOR dem Versand informieren (oder Bestellung stornieren/erstatten); eine Zustimmung des Betreibers ersetzt die Kundeninfo nicht.**
+Sonst: Google-Ads-Kampagne Enddatum erreicht (Betreiber-Entscheid), BigBuy-Auszahlung bestätigt (HT60802, 08.10., bis 15 Tage), Rest Werbung/Belege.
+
+**Search Console (GEMESSEN, OpenSEO 0 Credits).** 04.–15.10.: ~4'300 Impressionen, 38 Klicks, mittlere Position ~50; Kollektionen 0 Klicks. Indexiert:
+`/collections/halloween` (15.10. abgerufen), `kostueme-ch-lager`, `weihnachtspyjama-familie`, `geschenke-fuer-sie` (Betreiber-Anträge vom 14.10. wirkten).
+Offen: `holzuhren` «URL unknown to Google», `schlafmasken`/`kleiderstaender` «Discovered – not indexed» (Betreiber-Antrag). → `dropship/GSC-STAND-2026-10-18.md`.
+
+**ChatGPT-Brücke.** OpenAI-API: 0 Guthaben (429 insufficient_quota, 18.10.) — ein Pro-Abo ist nicht per API ansprechbar. Belegter Rückkanal: Metricool-Planer
+(ChatGPT legte dort Posts an) und Gmail. → `dropship/CHATGPT-BRUECKE-2026-10-18.md` (folgt).
+
 ## ♥ Merkliste überarbeitet, getestet, bewacht (2026-10-18, ~20:25–20:40 UTC)
 
 **GEMESSEN:** Merkliste = Herz-Skript in `layout/theme.liquid` + Seite `sections/lux-merkliste.liquid`, verbunden nur über den localStorage-Schlüssel `lux_wish`. Die Seite liess tote Produkte stumm für immer im Speicher, kannte kein Ausverkauft, keinen Warenkorb-Weg, keinen Zähler; Titel/Handle gingen als HTML hinein. Die Nutzung ist nicht messbar (keine Ereignis-Senke am Herz).
@@ -20700,3 +20737,10 @@ Verschoben am 04.10.2026:
 <!-- aus CLAUDE.md verschoben 18.10.2026 20:40 UTC (VERBATIM) -->
 - 2026-10-14 · 🗂️ **`klassen_kontrolle.py` löschte JEDE *.txt in `dropship/_klassen/` → 2G/3G-Nachtlauf ohne Liste (FileNotFoundError, nur noch Neuimporte geprüft) → nur eigene Listen löschen, Unbekanntes melden, Selbsttest-Tor; `mobilfunk --liste-bauen` (Bulk, ≥ 97 %), Aufseher baut bei Fehlen/> 7 T. OFFEN HOCH: Poster schreiben `reels_seed.csv` aus alter Kopie zurück (8 Reels verloren).** → `dropship/KLASSEN-ORDNER-2026-10-14.md`
 - 2026-10-14 · 🧬 **Jede Reel-Tor-/Preis-Reparatur brach seit 13.10. ab (`ReferenceError: PRAEP`): `reel_neu_rendern.py` kopierte `zeilen()` per Regex aus dem Motor → Modul `automation/lib/reel_titel.mjs` (beide importieren, Gleichlauf 600/600), `--selbsttest` als Tor im Aufseher. Wer eine Funktion braucht, importiert sie.** → `dropship/REEL-TITEL-QUELLE-2026-10-14.md`
+<!-- aus CLAUDE.md verschoben 18.10.2026 21:30 UTC (VERBATIM) -->
+- 2026-10-14 · 🔎 **`/collections/halloween` nie von Google abgerufen («Discovered – not indexed», 0 Impressionen) — Seiten mit Startseiten-Link wurden am 13.10. abgerufen → Landeseite erst fertig, wenn Google sie abgerufen hat: ins Index-Messgerät, Startseite/Band verlinken, Indexierung beantragen (Betreiber, 4 URLs). Dazu A1 `startseite_schlank_patch.py` (12 Bausteine, Patch(Backup)=Live 6/6) und Zielfernrohr-Montage als «Kartenhalter» gedraftet.** → Journal 14.10. 🔎
+- 2026-10-14 · 🎯 **Google «Inappropriate image» (270, alle Ziel «[]») = Demand-Gen-Bildregel, kein Gratis-Eintrag-Blocker → eigener Topf, Blocker 437 → 167, Bildtausch dafür gestoppt (538 Hauptbilder wurden umsonst getauscht). Google nimmt je Variante das Variantenbild. ⚠️ `productUpdate(tags:…)` ersetzt ALLE Tags → nur tagsAdd/tagsRemove.** → Journal 14.10. 🎯
+- 2026-10-14 · 🎃 **Halloween-Seite: 0 ganze Kostüme in den Top 24 (Hand, Puppe, Theaterblut oben) → 2. Sortierschlüssel aus Typ+Titel (nie Tag `kostuem-accessoire`), gemischt; Startseite Halloween vor Herbst bis 26.10.; Band + Satz selbstrückbauend, Datum erst nach Fortura-Probe; Fanartikel/Wintermützen raus aus Kostüme-CH-Lager. ⚠️ Fortura-Importer-Module starten beim `import`.** → `dropship/HALLOWEEN-KOSTUEME-OBEN-2026-10-14.md`
+- 2026-10-14 · 🖼️ **Google «Unable to show image» (126, Sprung 2→109 am 10.10. nach LI-Aufnahme): alle Bilder als `Googlebot-Image` HTTP 200 → Google hat nur nicht abgeholt. Fix = neue ADRESSE (`fileUpdate filename` «-gMMTT»), kein Bildtausch; Wächter `google_bild_abruf.py` täglich (3 T warten, 21 T Ruhe, dann Eskalation).** → `dropship/GOOGLE-BILD-NICHT-ABRUFBAR-2026-10-14.md`
+- 2026-10-14 · 🪦 **Tageswächter mit LEEREM Log seit 13.10. 16:32 (psa_schuhe, ch_lager_profil): touch vor dem Start + Tod beim Container-Neustart + `absturz_nachholen` nur bei Traceback → 15 h kein Lauf. Jetzt: leeres Log älter als der Container-Start = nachholen. CH-Lager Stufe 2 live (31 Google, 0 falsch), Kasse = Seite.** → Journal 14.10. 🪦
+- 2026-10-14 · 🧷 **13 fertige Reels nie gepostet: Poster schrieben `reels_seed.csv` aus der Start-Kopie zurück (Minuten nach dem Lesen) → EIN Weg zum Schreiben `lib/queue_csv.mjs`/`queue_csv.py` (Sperre, frisch, 3-Wege, posted gewinnt, atomar, Stand-Marke), 27 Schreiber umgestellt, Wächter `queue_schreiber_wache.py` holt verschwundene Zeilen täglich zurück. «Vollständig» nie aus dem Inhalt raten (halbe Datei auf Satzgrenze).** → `dropship/QUEUE-SCHREIBER-2026-10-14.md`
