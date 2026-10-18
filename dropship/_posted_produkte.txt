@@ -343,3 +343,6 @@ slug:led-ringlicht-fur-streaming-fotografie-d8774b
 slug:weihnachtskalender-aus-mdf-24-tages-slot
 slug:bruder-mb-sprinter-autotrans-fga02675
 name:brudermbsprinterautotrans
+name:hitzebeständigereinigungshandschuhe
+pid:15483890663809
+slug:hitzebestandige-reinigungshandschuhe-f6a1e3
