@@ -659,6 +659,9 @@ python3 "$REPO_AUTO/cj_zahlung_offen.py" 2>/dev/null || echo "CJ-ZAHLUNG: unklar
 # NIE (zwei ChatGPT-Videos standen so 18.10. 18:30/18:45 im Leeren); dazu Fehler, haengende und doppelte Produkt-Posts.
 # Eine Zeile, Ursache + Klassen im Kopf von automation/metricool_planer_wache.py. Bericht in den Tick, wenn ⚠️.
 [ -f "$REPO_AUTO/metricool_planer_wache.py" ] && { timeout 90 python3 "$REPO_AUTO/metricool_planer_wache.py" --shop 2>/dev/null || echo "METRICOOL-PLANER: unklar (Wache abgebrochen)"; }
+# MERKLISTE (18.10.2026): Herz-Skript (theme.liquid) und Seite (sections/lux-merkliste.liquid) kennen sich nur über den Schlüssel lux_wish;
+# merkliste_wache.py (Aufseher, täglich) meldet Überschreiben/Umbenennen. Hier nur der letzte Befund, und nur wenn er ⚠️ ist.
+[ -s /tmp/merkliste_wache.log ] && grep -h 'MERKLISTE' /tmp/merkliste_wache.log 2>/dev/null | tail -n 1 | grep '^⚠️'
 # ⛔ MOTOR-AMPEL (09.09.2026): Meldet ABSTUERZE der Dauerlaeufer aus ihren Logs.
 # Anlass: Eine Zuweisung an ein `const` liess die zwei Haupt-Importer 6,5 Stunden lang
 # bei jedem Ein-Varianten-Produkt abstuerzen. Der Traceback stand die ganze Zeit im Log —
