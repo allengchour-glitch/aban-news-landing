@@ -106,8 +106,18 @@ footer a{color:var(--muted)}</style>
 <script src="/js/checkout-config.js"></script>
 <script>
 var URL_=(window.ABAN_CHECKOUT&&window.ABAN_CHECKOUT.AUDIT_BUY_URL)||"";
+/* Reihenfolge: zentraler Eintrag in js/checkout-config.js, sonst der Kauf-Link aus
+   dem Shop-Katalog (den schreibt stripe-shop.yml), sonst Mail-Bestellung. So wird
+   der Knopf live, sobald der Katalog einen Link hat — ohne Codeänderung hier. */
 (function(){var b=document.getElementById("buybtn");
-if(URL_){b.href=URL_;b.target="_blank";b.rel="noopener";}else{b.href="mailto:hallo@abannews.com?subject=KI-Sichtbarkeits-Audit&body=Hallo%20Aban%2C%20ich%20m%C3%B6chte%20das%20KI-Sichtbarkeits-Audit-Workbook.";b.textContent="Per Mail bestellen";}})();
+function scharf(u,preis){b.href=u;b.target="_blank";b.rel="noopener";if(preis)b.textContent="Workbook holen — "+preis;}
+function perMail(){b.href="mailto:hallo@abannews.com?subject=KI-Sichtbarkeits-Audit&body=Hallo%20Aban%2C%20ich%20m%C3%B6chte%20das%20KI-Sichtbarkeits-Audit-Workbook.";b.textContent="Per Mail bestellen";}
+if(URL_){scharf(URL_);return;}
+perMail();
+fetch('/data/shop-products.json',{cache:'no-cache'}).then(function(r){return r.ok?r.json():[]}).then(function(l){
+  var p=(l||[]).filter(function(x){return x.slug==='ki-sichtbarkeit-audit'})[0];
+  if(p&&p.buy)scharf(p.buy,p.price);
+}).catch(function(){});})();
 </script>
 </div></main>
 <footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
