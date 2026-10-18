@@ -19,6 +19,19 @@ import { assertCjSuccess } from './cj_response.mjs';
 
 const QUOTA = /insufficient api points|daily.*(?:quota|limit)|points.*exhaust/i;
 
+/**
+ * WEICHE CODES (gemessen 2026-10-18 direkt an der CJ-API):
+ *   1602001 „Product not found"                        → diese Strategie trifft nicht
+ *   1602002 „Product has been removed from shelves"    → Produkt ausgelistet
+ *   1602003 „Variant has been removed from shelves"    → Variante ausgelistet
+ * Das sind ANTWORTEN, keine Fehler. Wer sie fliegen laesst, bricht die Strategie-Kette im
+ * Resolver beim ersten Versuch ab und haelt ein ausgelistetes Produkt fuer unlesbar — obwohl
+ * `product/productComments` fuer genau diese pid weiter mit code 200 antwortet (nachgeprueft an
+ * pid 2038889763034939394). Dieselbe Fehlerklasse wie „HTTP 429 ist nicht 404": eine nicht
+ * fatale Antwort als fatal behandeln. Alles andere bleibt hart.
+ */
+export const WEICHE_CODES = [1602001, 1602002, 1602003];
+
 export async function cjFetch(url, opt = {}) {
   const context = opt.context || 'CJ';
   const versuche = opt.versuche ?? 5;
@@ -48,6 +61,10 @@ export async function cjFetch(url, opt = {}) {
       throw new Error(`CJ_THROTTLED: ${letzter} bleibt bestehen (${context})`);
     }
     if (body === null) throw new Error(`CJ_JSON: Antwort nicht lesbar, HTTP ${r.status} (${context})`);
+    // Weiche Antwort: der Aufrufer entscheidet (naechste Strategie, pid trotzdem nutzen).
+    // Nur wenn er sie ausdruecklich angefordert hat — sonst bleibt alles hart wie bisher.
+    const weich = opt.weicheCodes || [];
+    if (weich.length && body.result !== true && weich.includes(Number(body.code))) return body;
     return assertCjSuccess(body, r.status, context);   // echte Fehler fliegen hier unveraendert
   }
   throw new Error(`CJ_THROTTLED: ${letzter} (${context})`);

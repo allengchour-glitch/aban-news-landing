@@ -17,7 +17,7 @@
 import fs from 'node:fs';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 import { nachDeutsch } from './lib/uebersetzen.mjs';
-import { cjFetch } from './lib/cj_fetch.mjs';
+import { cjFetch, WEICHE_CODES } from './lib/cj_fetch.mjs';
 import { bewerteAntwort } from './lib/judgeme_antwort.mjs';
 import { shopifyGql } from './lib/shopify_gql.mjs';
 import { reviewKey, loadReviewStates, recordReviewState } from './lib/cj_review_ledger.mjs';
@@ -113,12 +113,12 @@ async function cjToken() {
   try { fs.writeFileSync(TOKEN_FILE, JSON.stringify({ accessToken: j.data.accessToken, exp: Date.now() + 14 * 864e5 })); } catch {}
   return j.data.accessToken;
 }
-async function cjGet(tok, path, params) {
+async function cjGet(tok, path, params, weicheCodes) {
   const qs = new URLSearchParams(params).toString();
   // Mit Geduld: CJ erlaubt ~1 Abfrage/Sekunde und antwortet sonst mit HTTP 429. Ohne
   // Wiederholung verbrennt jeder 429 ein Produkt, das nie geprueft wurde (gemessen
   // 2026-10-17: 36 von 45 Fehlern in einem Lauf). Siehe automation/lib/cj_fetch.mjs.
-  return cjFetch(`${CJ_BASE}${path}?${qs}`, { headers: { 'CJ-Access-Token': tok }, context: path });
+  return cjFetch(`${CJ_BASE}${path}?${qs}`, { headers: { 'CJ-Access-Token': tok }, context: path, weicheCodes });
 }
 
 // ── DE-Übersetzung: Gemini zuerst, Groq als Rückfall ──
@@ -261,12 +261,31 @@ const merkeLeer = (id, grund) => {
       ['query/productSku', '/product/query', { productSku: sku }],
     ];
     for (const [label, path, params] of strategies) {
-      const r = await cjGet(ctok, path, params);
+      // Weiche Codes mitgeben (siehe automation/lib/cj_fetch.mjs): „nicht gefunden" und
+      // „ausgelistet" sind Antworten. Ohne das brach die Strategie-Kette beim ersten
+      // Versuch ab — gemessen 2026-10-18: ein DRY-Lauf ueber tag:elektronik meldete
+      // 10 Fehler mit code 1602002/1602003, obwohl CJ fuer dieselben pids weiter
+      // Kommentare liefert.
+      const r = await cjGet(ctok, path, params, WEICHE_CODES);
       await sleep(1100);
       // CJ-Tagespunkte erschoepft? Dann NICHT als "keine pid" verschleiern — sonst entsteht
       // wieder der Fehlschluss "CJ hat keine Kommentare" (teuer gelernt 2026-09/10).
       if (/insufficient api points/i.test(String(r?.message || ''))) {
         throw new Error('CJ_QUOTA: ' + r.message);
+      }
+      if (r?.result !== true) {
+        const code = Number(r?.code);
+        // Ausgelistet heisst NICHT unlesbar: `product/productComments` antwortet fuer genau
+        // diese pid weiter mit code 200 (nachgeprueft an 2038889763034939394). Die Bewertungen
+        // echter Kaeufer:innen bleiben abrufbar — CJ kann das Produkt nur nicht mehr
+        // nachliefern. Das ist eine Lieferfrage, keine Bewertungsfrage.
+        if (params.pid && (code === 1602002 || code === 1602003)) {
+          ausgelistet++;
+          if (DEBUG) console.log(`    [DEBUG] ${label}(${sku}) → ausgelistet (code ${code}), pid trotzdem nutzbar`);
+          return { pid: params.pid, via: label + '/ausgelistet' };
+        }
+        if (DEBUG) console.log(`    [DEBUG] ${label}(${sku}) → code ${code}: ${r?.message || ''}`);
+        continue;
       }
       const d = r?.data;
       const listed = d?.list || d?.content || (Array.isArray(d) ? d : null);
@@ -277,7 +296,7 @@ const merkeLeer = (id, grund) => {
     return null;
   }
 
-  let totalReviews = 0, prodWith = 0, fails = 0;
+  let totalReviews = 0, prodWith = 0, fails = 0, ausgelistet = 0;
   for (const p of prods) {
     const pidNum = numId(p.id);
     const rawSku = p.variants?.edges?.[0]?.node?.sku || '';
@@ -385,6 +404,6 @@ const merkeLeer = (id, grund) => {
       fails++; console.error(`✗ ${p.handle}: ${e.message}`);
     }
   }
-  console.log(`\nFertig: ${totalReviews} echte Reviews auf ${prodWith} Produkt(e)${DRY ? ' [DRY]' : ''}${fails ? `, ${fails} Fehler` : ''}.`);
+  console.log(`\nFertig: ${totalReviews} echte Reviews auf ${prodWith} Produkt(e)${DRY ? ' [DRY]' : ''}${fails ? `, ${fails} Fehler` : ''}${ausgelistet ? `, ${ausgelistet} bei CJ ausgelistet (Bewertungen trotzdem lesbar)` : ''}.`);
   process.exit(fails ? 1 : 0);
 })();
