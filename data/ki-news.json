@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-17T08:32:03Z",
+ "stand": "2026-10-18T08:49:48Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,28 +18,60 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Wissenschaftlicher Durchbruch oder Marketing? Wie Anthropics KI-Labor forscht",
-   "u": "https://t3n.de/news/anthropic-ki-forschung-durchbruch-skepsis-1765931/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Selfie hochladen, Kleidung anprobieren: ChatGPT wird zum virtuellen Modeberater",
+   "u": "https://t3n.de/news/selfie-hochladen-kleidung-anprobieen-chatgpt-1766318/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-10-17T08:10:00Z",
-   "s": "KI-Firmen bestehen darauf, dass ihre Agenten und Sprachmodelle bahnbrechende Fortschritte erzielen. Jüngstes Beispiel aus der Biologie ist ein Vorstoß von Anthrweiterlesen auf t3n.de",
+   "d": "2026-10-18T08:10:00Z",
+   "s": "ChatGPT führt zwei neue Shopping-Funktionen ein. Zum einen eine virtuelle Anprobe von Kleidung und zum anderen eine neue Favoriten-Funktion, mit der Produkte gespeichert werden können. weiterlesen auf…",
    "sprache": "de"
   },
   {
-   "t": "KI entschlüsselt Monsterwellen: So wird das Meer jetzt berechenbar",
-   "u": "https://t3n.de/news/ki-monsterwellen-vorhersage-ozean-1767973/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-10-17T06:50:00Z",
-   "s": "Über Jahrhunderte galten plötzlich auftretende Wasserwände als unberechenbare Gefahr für die Seefahrt. Eine detaillierte Analyse von Milliarden Sensordaten durch künstliche Intelligenz ändert das nun …",
+   "t": "(g+) Kolibri von Aleph Alpha: Deutschlands KI kann doch noch überraschen",
+   "u": "https://www.golem.de/news/kolibri-von-aleph-alpha-deutschlands-ki-kann-doch-noch-ueberraschen-2610-213958.html",
+   "q": "Golem",
+   "d": "2026-10-18T08:00:02Z",
+   "s": "Das deutsche Aleph Alpha hat ein neues Sprachmodell für das Mittelfeld vorgestellt und dabei einige interessante Ideen verbaut. Eine Analyse von Tim Elsner (Souveränität, KI)",
    "sprache": "de"
   },
   {
-   "t": "Replit is no longer working with Anthropic, CEO says",
-   "u": "https://techcrunch.com/2026/10/16/replit-is-no-longer-working-with-anthropic-ceo-says/",
+   "t": "Eine Milliarde Nutzer von ChatGPT: Dennoch hassen viele Menschen KI",
+   "u": "https://t3n.de/news/eine-milliarde-nutzer-chatgpt-ki-hass-1766749/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-10-18T06:20:00Z",
+   "s": "Umfragen der Stanford University und Gallup belegen, dass die Menschen kein gutes Bild von KI-Produkten und den Rechenzentren haben. Gleichzeitig steigen die Nuweiterlesen auf t3n.de",
+   "sprache": "de"
+  },
+  {
+   "t": "Meta removes language that raised scraping and AI training concerns",
+   "u": "https://techcrunch.com/2026/10/17/meta-removes-language-that-raised-scraping-and-ai-training-concerns/",
    "q": "TechCrunch AI",
-   "d": "2026-10-16T21:22:28Z",
-   "s": "Masad said the decision was made for a number of different reasons, including cost. Replit announced a partnership with OpenAI in August, but there was never any indication that it was no longer with …",
+   "d": "2026-10-17T21:31:32Z",
+   "s": "A Meta spokesperson insisted that the updated terms did not reflect a change in the way Meta crawls the web.",
    "sprache": "en"
+  },
+  {
+   "t": "Anthropic says its workforce has become less junior and is spending more time in meetings",
+   "u": "https://techcrunch.com/2026/10/17/anthropic-says-its-workforce-has-become-less-junior-and-is-spending-more-time-in-meetings/",
+   "q": "TechCrunch AI",
+   "d": "2026-10-17T20:21:19Z",
+   "s": "The composition of Anthropic’s workforce and the type of work getting done have changed significantly in the past year.",
+   "sprache": "en"
+  },
+  {
+   "t": "Cody Wilson: KI hat gerade eine Schusswaffe entworfen",
+   "u": "https://www.golem.de/news/cody-wilson-ki-hat-gerade-eine-schusswaffe-entworfen-2610-214215.html",
+   "q": "Golem",
+   "d": "2026-10-17T11:45:02Z",
+   "s": "Ein Aktivist hat eine Waffe vorgestellt, die eine speziell trainierte KI entworfen hat. Bereits 2012 hat er die weltweit erste 3D-gedruckte Schusswaffe vorgestellt. (3D-Drucker, KI)",
+   "sprache": "de"
+  },
+  {
+   "t": "heise-Angebot: enterJS: Call for Proposals 2027 und letzter Aufruf für KI-Online-Thementag 2026",
+   "u": "https://www.heise.de/news/enterJS-Call-for-Proposals-2027-und-letzter-Aufruf-fuer-KI-Online-Thementag-2026-11456215.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-10-17T11:00:00Z",
+   "s": "Der Call for Proposals für die enterJS 2027 ist eröffnet und läuft bis zum 3. November. Nächsten Donnerstag findet der Online-Thementag enterJS Agentic statt.",
+   "sprache": "de"
   },
   {
    "t": "How Itaú is building generative AI for its entire customer base",
@@ -58,43 +90,11 @@
    "sprache": "en"
   },
   {
-   "t": "India becomes the latest country to report rogue AI agent activity",
-   "u": "https://techcrunch.com/2026/10/16/india-becomes-the-latest-country-to-report-rogue-ai-agent-activity/",
-   "q": "TechCrunch AI",
-   "d": "2026-10-16T17:52:24Z",
-   "s": "The agents got in through credentials and connection settings left exposed in app configurations, public code repositories, and overly permissive cloud roles.",
-   "sprache": "en"
-  },
-  {
-   "t": "Stellar Intelligent Network: Huawei rüstet Netzwerke in Europa für den KI-Boom auf",
-   "u": "https://www.golem.de/news/stellar-intelligent-network-huawei-ruestet-netzwerke-in-europa-fuer-den-ki-boom-auf-2610-214207.html",
-   "q": "Golem",
-   "d": "2026-10-16T17:38:01Z",
-   "s": "Mit einer Aktualisierung seiner Enterprise-Network-Produktlinie reagiert Huawei auf KI-Agenten und Rechencluster. Der Druck auf etablierte US-Ausrüster im europäischen Markt wächst damit spürbar. (Hua…",
-   "sprache": "de"
-  },
-  {
-   "t": "(g+) Gehirn-Computer-Schnittstelle: Was passiert, wenn KI unsere Gedanken lesen kann?",
-   "u": "https://www.golem.de/news/gehirn-computer-schnittstelle-was-passiert-wenn-ki-unsere-gedanken-lesen-kann-2610-214203.html",
-   "q": "Golem",
-   "d": "2026-10-16T16:00:02Z",
-   "s": "Kann KI bald Gedanken lesen? In seinem Kommentar in der Financial Times wirft John Thornhill einen Blick auf Chancen und Risiken. Unsere Leseempfehlung. Von John Thornhill (BCI, Silicon Valley)",
-   "sprache": "de"
-  },
-  {
    "t": "RTX Spark im Test: Nvidias erster Notebook-Chip für lokale KI",
    "u": "https://www.heise.de/news/RTX-Spark-im-Test-Nvidias-erster-Notebook-Chip-fuer-lokale-KI-11490664.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "q": "heise",
    "d": "2026-10-16T15:38:00Z",
    "s": "Das erste RTX-Spark-Notebook im c’t-3003-Testlabor: Kann das Asus ProArt P14 die KI-Versprechen einlösen? Und: Läuft es wirklich nur mit Windows?",
-   "sprache": "de"
-  },
-  {
-   "t": "KI-Update: Schwarzer Donnerstag, Neue Open-Weight-Modelle, Klagen gegen OpenAI",
-   "u": "https://www.heise.de/news/KI-Update-Schwarzer-Donnerstag-Neue-Open-Weight-Modelle-Klagen-gegen-OpenAI-11489303.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-16T13:00:00Z",
-   "s": "Das „KI-Update“ liefert drei mal pro Woche eine Zusammenfassung der wichtigsten KI-Entwicklungen.",
    "sprache": "de"
   }
  ]
