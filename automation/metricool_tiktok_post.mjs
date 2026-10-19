@@ -292,7 +292,10 @@ const id = get(cand, 'id'), url = get(cand, 'video_url'), tags = get(cand, 'hash
 //  (Metricool tiktokData.music), der eingebrannte eigene Ton wird mit originalVolume 0 stumm gestellt. Standard AUS (TT_TREND=1),
 //  bis ein begleiteter Pilot belegt hat, dass TikTok den Titel uebernimmt (Seite: music.original=false). Jeder Fehler → wie bisher.
 let trend = null;
-if (NETZ === 'tiktok' && process.env.TT_TREND === '1') {
+const _stimmeReel = (() => { try { return !!verlaufLesen(new URL('../social/_musik_verlauf.txt', import.meta.url).pathname).get(id)?.stimme; } catch { return false; } })();
+if (NETZ === 'tiktok' && process.env.TT_TREND === '1' && (_stimmeReel || /^montage-/.test(id))) {
+  console.log(`  Trendton uebersprungen: ${_stimmeReel ? 'Reel traegt eine Sprecherstimme' : 'Sammelvideo (Montage)'} — originalVolume 0 wuerde sie stummschalten`);
+} else if (NETZ === 'tiktok' && process.env.TT_TREND === '1') {
   try {
     const sek = videoDauer(url);
     trend = await trendTrack({ token: TOKEN, user: USER, blog: BLOG, reelId: id, videoSek: sek, ledger: 'social/_tt_trend_verlauf.txt' });

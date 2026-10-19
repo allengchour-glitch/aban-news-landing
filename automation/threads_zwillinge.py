@@ -9,7 +9,10 @@ Ablauf je Slot (nur Slot-Format «bild», Status «geplant», Termin > +30 min, 
   Planer-Eintrag → Bildunterschrift == Queue-Zeile social/posts_image.csv (Zeilen-ID endet auf die Produktnummer) → Storefront-API (ohne Token):
   Handle + kaufbar → Text → POST /v2/scheduler/posts (Netz threads) → ID in den Slot (mc_ids), damit Prüfer/Notbremse/STOPP sie erreichen.
 Ohne SCHARF=1 nur Anzeige. Idempotent (zweiter Lauf findet nichts mehr).
-⚠️ Anlegen geht NUR über den Metricool-Konnektor (createScheduledPost): die REST-API verweigert Threads mit 403 (GEMESSEN 19.10.).
+EINMAL-Werkzeug (19.10.): die fünf vor der Poster-Änderung geplanten Bild-Slots (20./21./22./24./25.10.) haben ihren Zwilling über den Metricool-Konnektor
+(createScheduledPost) bekommen. KORREKTUR 19.10. (zweite Prüfung): die REST-API verweigert Threads NICHT grundsätzlich — mein Test mit der rohen CDN-Adresse bekam
+403 «Access denied to blog», der Poster plant mit der von Metricool normalisierten Bildadresse (`/actions/normalize/image/url`) und hat damit Erfolg. Neue Slots
+braucht dieses Skript deshalb nicht mehr: `social-autopost-meta.mjs` plant den Zwilling selbst (Kappe 1 Threads-Eintrag je Zürcher Tag, SKIP_THREADS=1 schaltet ab).
 
   SCHARF=1 python3 automation/threads_zwillinge.py        --selbsttest
 """
@@ -96,9 +99,9 @@ def lauf():
         print(f"{'+' if SCHARF else '[DRY]'} {name} ({ig['publicationDate']['dateTime']}): Threads-Zwilling zu {ig['id']} · {p['handle']} · {len(text)} Z.")
         if not SCHARF:
             print("    " + text.replace("\n", "\n    ")); continue
-        # GEMESSEN 19.10.2026: die Metricool-REST-API antwortet auf JEDEN Threads-Beitrag mit 403 «Access denied to blog: \'\'» (Entwurf und
-        # Termin, mit/ohne media/providers.id). Der Metricool-Konnektor (createScheduledPost, OAuth des Betreibers) geht. Deshalb nur die
-        # Nutzlast ablegen; angelegt wird in einer Sitzung mit Konnektor, danach `--merken SLOT=ID` (damit Prüfer/Notbremse sie erreichen).
+        # 19.10.2026: Die 403 «Access denied to blog: \'\'» kam bei meinem Test mit der ROHEN CDN-Adresse (nicht normalisiert) — der Poster plant mit der
+        # normalisierten Adresse und gelingt. Dieses Einmal-Werkzeug legt nur die Nutzlast ab; angelegt wurde damals über den Metricool-Konnektor,
+        # danach `--merken SLOT=ID` (damit Prüfer/Notbremse sie erreichen).
         nutzlast.append({"slot": name, "ig_id": ig["id"], "date": ig["publicationDate"]["dateTime"], "media": body["media"], "text": text, "handle": p["handle"]})
         neu += 1
     if nutzlast and SCHARF:

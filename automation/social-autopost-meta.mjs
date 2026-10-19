@@ -184,7 +184,10 @@ async function postFB(imageUrl, caption){
   console.log('FB: gepostet', r.j.post_id||r.j.id); return r.j.post_id||r.j.id;
 }
 async function postThreads(imageUrl, caption){
-  if(VIA_MC) return mcPlan(imageUrl, caption, 'threads');   // 18.10.2026: Threads über Metricool (Zwilling des Instagram-Bildposts, Text mit klickbarem Link)
+  if(VIA_MC){   // 18.10.2026: Threads über Metricool (Zwilling des Instagram-Bildposts, Text mit klickbarem Link)
+    const f = markierungFehlt(imageUrl, caption); if(f){ console.error('⛔ Threads:', f); return false; }   // Model-Material nur mit Markierung — auch im gekürzten Threads-Text
+    return mcPlan(imageUrl, caption, 'threads');
+  }
   if(!TH_TOK) return null;
   // Threads-User-ID robust aus dem Token auflösen (/me) — vermeidet die häufige Falle einer
   // falsch eingetragenen THREADS_USER_ID (Graph-Fehler 100/Subcode 33). Fallback: gesetzte ID.
@@ -206,6 +209,32 @@ async function postThreads(imageUrl, caption){
 }
 
 // --- Hauptlauf ---------------------------------------------------------------------
+// 18.10.2026 (Prüfung): ein 0-Follower-Threads-Konto wird bei zu vielen Produktposts als Spam gebremst → HÖCHSTENS EIN Threads-Eintrag je Zürcher
+// Kalendertag (egal von wem: Treiber, Autopilot, ChatGPT). Am Planer gemessen; nicht lesbar = konservativ «schon vorhanden».
+async function threadsTagSchon(termin){
+  try{
+    const tag = new Intl.DateTimeFormat('en-CA', { timeZone:'Europe/Zurich' }).format(termin);
+    const r = await fetch(`https://app.metricool.com/api/v2/scheduler/posts?userId=${MC_USER}&blogId=${MC_BLOG}&start=${tag}T00:00:00&end=${tag}T23:59:59&timezone=Europe%2FZurich`,
+      { headers:{ 'X-Mc-Auth':MC_TOKEN }, signal: AbortSignal.timeout(30000) });
+    if(!r.ok) return true;
+    const j = await r.json(); const arr = Array.isArray(j) ? j : (j.data || []);
+    return arr.some(p => !p.draft && (p.providers||[]).some(x => x.network === 'threads'));
+  }catch{ return true; }
+}
+// Threads-Text kürzen: Link, «Folge»-Zeile und der erste Hashtag bleiben IMMER; zuerst fliegen die hinteren Fliesstext-Zeilen raus.
+function thKuerzen(t, max = 480){
+  if(t.length <= max) return t;
+  const wichtig = z => /luxestyle\.ch\/products\//i.test(z) || /^\s*(#\S+\s*)+$/.test(z) || /folge|follow/i.test(z);
+  const z = t.split('\n');
+  for(let i = z.length - 1; i >= 0 && z.join('\n').length > max; i--) if(!wichtig(z[i])) z.splice(i, 1);
+  let r = z.join('\n').replace(/\n{3,}/g, '\n\n').trim();
+  if(r.length > max){   // immer noch zu lang: nur die Pflichtzeilen, «Folge» zuletzt opfern
+    const pflicht = z.filter(x => /luxestyle\.ch\/products\//i.test(x) || /^\s*(#\S+\s*)+$/.test(x));
+    r = pflicht.join('\n').trim();
+  }
+  return r;
+}
+
 const configured = VIA_MC ? ['IG (Metricool)','FB (Metricool)', !SKIP_THREADS && 'Threads (Metricool)'].filter(Boolean) : [IG_ID&&IG_TOK&&'IG', FB_ID&&FB_TOK&&'FB', TH_TOK&&'Threads'].filter(Boolean);
 if(configured.length===0 && !DRY){
   console.log('Kein Meta-Kanal konfiguriert (IG/FB/Threads Secrets fehlen) → No-op. Setze THREADS_ACCESS_TOKEN etc.');
@@ -416,14 +445,14 @@ for(const next of ready.slice(0, MAX + VERSUCHE)){
     let tags = 0;
     t = t.split('\n').filter(z => { const h = /^\s*(#\S+\s*)+$/.test(z); if (h) { tags++; return tags === 1; } return true; }).join('\n');
     t = t.replace(/\s+#\S+/g, (m, off, all) => { return (all.slice(0, off).match(/#\S+/g) || []).length >= 1 ? '' : m; });
-    if (t.length > 480) t = t.slice(0, 480).replace(/\n[^\n]*$/, '');
-    return t.trim();
+    return thKuerzen(t.trim(), 480);
   })();
   const plat = (next[idx.platforms]||'').toLowerCase();
   const wantIG = !plat.trim() || /instagram|\big\b/.test(plat);
   // 09.10.2026: Fotos auf Facebook = 1 Aufruf je Beitrag (Dashboard), Reels 29 → Bildposts nur noch auf Instagram (data/kanal_formate.json)
   const wantFB = (!plat.trim() || /facebook|\bfb\b/.test(plat)) && FORMATE.facebook?.bild !== false;
-  const wantTH = !SKIP_THREADS && (VIA_MC || !plat.trim() || /threads/.test(plat));   // 18.10.: über Metricool immer Zwilling (SKIP_THREADS=0 setzt der Vorlauf-Treiber)
+  let wantTH = !SKIP_THREADS && (VIA_MC || !plat.trim() || /threads/.test(plat));   // 18.10.: über Metricool immer Zwilling (SKIP_THREADS=1 schaltet ihn ab)
+  if(wantTH && VIA_MC && await threadsTagSchon(publishAt(4*60e3))){ console.log('   Threads: an diesem Zürcher Tag steht schon ein Threads-Eintrag → kein Zwilling (Kappe 1/Tag)'); wantTH = false; }
   console.log(`→ Post ${next[idx.id]} | Kanäle: ${[wantIG&&'IG',wantFB&&'FB',wantTH&&'Threads'].filter(Boolean).join('+')} | ${imageUrl}`);
   if(DRY){
     console.log(`   DRY_RUN: würde senden (nichts gepostet, nichts geschrieben).`);
@@ -455,8 +484,8 @@ for(const next of ready.slice(0, MAX + VERSUCHE)){
   }
   const results = await Promise.all([
     Promise.resolve(igRes),
-    wantFB?postFB(imageUrl,fbCaption):Promise.resolve(null),     // FB: klickbarer Produktlink statt «Link in Bio»
-    wantTH?postThreads(imageUrl, VIA_MC ? thCaption : caption):Promise.resolve(null),
+    wantFB?postFB(imageUrl,fbCaption).catch(e=>{ console.error('   FB-Zwilling Fehler:', String(e.message||e).slice(0,160)); return false; }):Promise.resolve(null),     // FB: klickbarer Produktlink statt «Link in Bio»; ein Ausnahmefehler darf den schon geplanten IG-Post nicht als «nichts passiert» zurücklassen
+    wantTH?postThreads(imageUrl, VIA_MC ? thCaption : caption).catch(e=>{ console.error('   Threads-Zwilling Fehler:', String(e.message||e).slice(0,160)); return false; }):Promise.resolve(null),
   ]);
   const got = results.filter(x => x && x!==false);
   if(got.length>0){

@@ -249,18 +249,30 @@ def musik_pruefen(max_posts=6):
     if not kandidaten:
         print("TIKTOK-MUSIK: noch kein veröffentlichter TikTok-Post mit Musik")
         return 0
-    schlecht = []
+    schlecht, unklar = [], []
     for p, m, url in kandidaten[:max_posts]:
+        if (termin(p) or jetzt) > jetzt - timedelta(minutes=20):
+            unklar.append(url); continue   # eben erst veröffentlicht: TikTok hat die Musik evtl. noch nicht aufgelöst
         ton = _mw.tiktok_ton(url)
+        if ton is None:
+            # Prüfung 18.10.: eine unlesbare Seite (Drosselung, Reduziert-Fassung, Netz) ist KEIN Beweis, dass die Musik fehlt → nur melden
+            unklar.append(url)
+            print(f"  ? {m.get('title', '?')[:28]:28} {url.rsplit('/', 1)[-1]} Videoseite nicht lesbar (kein Urteil)")
+            continue
         urteil = _mw.ton_befund(str(m.get("musicId")), ton)
-        if urteil is None and ton and ton.get("id") and str(ton["id"]) != str(m.get("musicId")):
+        if urteil is None and ton.get("id") and str(ton["id"]) != str(m.get("musicId")):
             urteil = f"andere Musik-ID auf TikTok ({ton['id']})"
-        print(f"  {'✓' if urteil is None else '✗'} {m.get('title', '?')[:28]:28} {url.rsplit('/', 1)[-1]} original={ton and ton.get('original')} "
-              f"Lautheit={ton and ton.get('lautheit')} {urteil or ''}")
+        print(f"  {'✓' if urteil is None else '✗'} {m.get('title', '?')[:28]:28} {url.rsplit('/', 1)[-1]} original={ton.get('original')} "
+              f"Lautheit={ton.get('lautheit')} {urteil or ''}")
         if urteil:
             schlecht.append(url)
-    print(f"{'⚠️ ' if schlecht else ''}TIKTOK-MUSIK: {len(kandidaten[:max_posts])} geprüft, {len(schlecht)} ohne die gewählte Musik")
-    if schlecht and os.environ.get("SCHARF") == "1":
+    geprueft = len(kandidaten[:max_posts]) - len(unklar)
+    print(f"{'⚠️ ' if schlecht else ''}TIKTOK-MUSIK: {geprueft} geprüft, {len(schlecht)} ohne die gewählte Musik" + (f", {len(unklar)} ohne Urteil" if unklar else ""))
+    # Rücknahme nur bei BESTÄTIGTEM Befund: ≥ 2 Posts, oder der einzige lesbare Post
+    zuruecknehmen = len(schlecht) >= 2 or (len(schlecht) == 1 and geprueft == 1)
+    if schlecht and not zuruecknehmen:
+        print("TIKTOK-MUSIK: ein einzelner Ausreisser bei mehreren lesbaren Posts → Modus bleibt, nächste Prüfung entscheidet")
+    if zuruecknehmen and os.environ.get("SCHARF") == "1":
         # Selbstheilung: kommt die Musik bei TikTok nicht mehr an (Konto-Art, Titel stummgeschaltet), plant der Treiber ab sofort wieder ohne Trendton —
         # sonst gäbe es lautlose Videos (originalVolume 0). Wieder einschalten: dropship/_tt_trend_modus.txt auf «an» (nach Ursache).
         try:

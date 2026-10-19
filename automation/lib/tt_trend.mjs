@@ -127,9 +127,12 @@ export async function trendTrack({ token, user, blog, reelId, videoSek, ledger =
   lg('kein Titel bestanden → ohne Musik'); return null;
 }
 
+/** Gemini-Hoerprobe schickt 12-s-Ausschnitte lizenzierter Titel an Gemini (dessen Bedingungen nennen Analyse nicht) → nur auf ausdruecklichen Wunsch: TT_GESANG=1. */
+export function gesangErlaubt(env) { return !!env.GEMINI_API_KEY && env.TT_GESANG === '1'; }
+
 function defaultFenster(url, sek) {
   const script = process.env.TT_FENSTER_PY || 'automation/music/tt_fenster.py';
-  const args = [script, url, String(sek), ...(process.env.GEMINI_API_KEY && process.env.TT_GESANG !== '0' ? ['--gesang'] : [])];
+  const args = [script, url, String(sek), ...(gesangErlaubt(process.env) ? ['--gesang'] : [])];
   const r = spawnSync('python3', ['-I', ...args], { encoding: 'utf8', timeout: 180000, env: process.env });
   try { return JSON.parse((r.stdout || '').trim().split('\n').pop()); } catch { return { ok: false, grund: (r.stderr || 'keine Ausgabe').slice(-100) }; }
 }

@@ -18,6 +18,7 @@ if [ -d .git/rebase-merge ] || [ -d .git/rebase-apply ]; then git rebase --quit 
 if [ -f .git/MERGE_HEAD ] || [ -n "$(git ls-files -u)" ]; then aufloesen || exit 1; fi
 [ $# -gt 0 ] && git add -- "$@"
 git add -A dropship/ 2>/dev/null
+git add -- social/_tt_trend_verlauf.txt social/_musik_verlauf.txt 2>/dev/null   # 19.10.: Anhänge-Ledger der Musik-Rotation
 # 15.10.2026: Ledger-Schrumpf-Tor — _cj_lager.tsv ging hier am 15.10. mit 58'834 → 198 Zeilen durch (Commit ab536a2f1).
 python3 "$REPO/automation/ledger_schrumpf_tor.py" --staged >> /tmp/ledger_schrumpf.log 2>&1 || true
 # Zuschreibung (Vorgabe der Sitzung, 23.09.2026) — als Trailer, damit die erste Zeile die Nachricht bleibt.

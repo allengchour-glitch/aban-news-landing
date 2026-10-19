@@ -34,7 +34,7 @@ import fs from 'node:fs';
 import { publishAt } from './lib/publish_at.mjs';
 import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';   // ocrJetzt() — ohne diesen Import lief der OCR-Aufruf still in den catch (23.09. gemessen)
-import { lock as postLock, seen as postSeen, mark as postMark, juryPruefen, modelSperre } from './post_guard.mjs';
+import { lock as postLock, seen as postSeen, mark as postMark, juryPruefen, modelSperre, produktGepostet, produktMerkenReel } from './post_guard.mjs';
 
 const NUR_LISTE = parseInt(process.env.NUR_LISTE || '0', 10);
 const DRY = process.env.DRY === '1' || NUR_LISTE > 0;
@@ -123,12 +123,14 @@ const HEIL = /schmerz|heil|migräne|krampfader|fettverbrenn|abnehmen|cellulite|a
 const LIZENZ_FIGUR = /\b(?:batman|joker|superman|supergirl|spider-?man|marvel|avengers|deadpool|harley quinn|disney|mickey|minnie|pok[eé]mon|hello kitty|sanrio|kuromi|barbie|star wars|harry potter|hogwarts|gryffindor|slytherin|wednesday|addams|morticia|naruto|super mario|sonic (?:the hedgehog|classic|movie|shadow)|minecraft|paw patrol|labubu)\b/i;
 // Board-Zuordnung: erstes passendes Muster gewinnt (Reihenfolge = Spezifität).
 const BOARDS = [
+  [/kleider(?:b[üu]e?gel|ständer|staender|schrank|stange|haken)|kleiderb(?:ü|ue)gel/i, 'Wohnen & Deko'],   // 19.10. (Prüfung): «Kleiderbügel/-ständer» sind kein Kleid → nicht aufs Sommerkleider-Board
   // Haustier zuerst (sonst «Hundekissen» → Schlaf, «Katzenspielzeug» → Geschenk). Fallen: «Katzenauge»-Brille,
   // «Hundert», Schmuck-«Halsband» (Choker) — deshalb kein nacktes /katz|hund|halsband/.
   [/\bhund(?!ert)|\bkatze(?!n?aug)|haustier|heimtier|welpe|kätzchen|kratzbaum|futterspender|napf\b|hundeleine|katzenklo/i, HAUSTIER_BOARD],
   [/herren|männer/i, 'Herrenmode Schweiz'],
   [/kette|ohrring|armband|armreif|\bring\b|schmuck|anhänger|uhr\b|uhren/i, 'Schmuck & Accessoires'],
   [/(?<!hand)schuh|sandal|sneaker|stiefel|loafer|pumps|boots?\b/i, 'Schuhe & Sandalen'],
+  [/kinder/i, 'Geschenkideen Schweiz'],   // 19.10.: «Kinderkleid» ist keine Damenmode
   [/(?<!ver)kleid|bluse|\brock\b|damen|jumpsuit|top\b/i, 'Sommerkleider & Damenmode 2026'],   // 18.10.: «Verkleidung» (Kostüme) ist kein Kleid (Prüfung: Animatronic-Figur auf dem Sommerkleider-Board)
   [/(?<!f)leder|geldbörse|portemonnaie|tasche|gürtel|rucksack|wallet/i, 'Leder & Accessoires'],   // 18.10.: «Fledermaus» enthält «leder»
   [/diffuser|aroma|schlaf|kissen|kerze|duft/i, 'Schlaf & Aromatherapie'],
@@ -263,6 +265,7 @@ for (const quelle of QUELLEN) {
       : HEIL.test(p.title) ? 'Heilwort im Titel'
       : LIZENZ_FIGUR.test(p.title) ? 'Lizenzfigur im Titel'
       : gepinnt.has(p.handle) ? 'schon gepinnt' : karussellHandles.has(p.handle) ? 'schon als Karussell beworben' : postSeen(bild.url) ? 'Bild schon gepostet'
+      : (produktGepostet('', p.handle) || produktGepostet('', 'x-' + String(p.id).split('/').pop())) ? 'Ware schon in einem anderen Kanal beworben (Produkt-Ledger)'   // Hausregel «gleiches Produkt nie zweimal, auch nicht plattformübergreifend» (Prüfung 19.10.: drei Waren liefen als Reel UND als Pin)
       : (bild.width && Math.min(bild.width, bild.height || bild.width) < 600) ? 'Bild zu klein'
       : bildtextAlle.has(p.handle) ? 'Lieferantentext in allen Bildern (OCR, _uebersprungen.tsv)'
       : kandidaten.some(k => k.handle === p.handle) ? 'doppelt in Quellen' : '';
@@ -322,6 +325,7 @@ try {
   const r = await mc('/v2/scheduler/posts', { method: 'POST', body: JSON.stringify(body) });
   const pid = String(r?.data?.id || r?.id || '');
   postMark(kandidat.bild.url);
+  try { produktMerkenReel('', '', kandidat.id, kandidat.handle); } catch (e) { console.error('⚠️ Produkt-Ledger nicht geschrieben (Pin ist geplant):', String(e.message || e).slice(0, 120)); }
   fs.appendFileSync(LEDGER, `${new Date().toISOString()}\t${kandidat.handle}\t${board.name}\tmetricool:${pid}\t${kandidat.quelle}\t${fassung.art === '2:3-Fassung' ? 'bild=2:3' : 'bild=roh'}\n`);
   console.log(`✅ Pin geplant (${dateTime} ${TZ}) auf «${board.name}», Metricool-Post ${pid || '?'}, ${fassung.art}`);
 } catch (e) { console.error('✗ Pin fehlgeschlagen:', String(e.message || e)); process.exit(1); }

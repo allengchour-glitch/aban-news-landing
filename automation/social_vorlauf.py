@@ -56,13 +56,14 @@ POSTER = {   # Format → (Befehl, Zusatz-Umgebung, Vorlauf-Schritte vor dem Pos
     "tiktok":    ([NODE, "automation/metricool_tiktok_post.mjs"], {"NETZ": "tiktok", "DIREKTLINK_TEXT": "1"}),
     "youtube":   ([NODE, "automation/metricool_tiktok_post.mjs"], {"NETZ": "youtube", "DIREKTLINK_TEXT": "1"}),
     "reel_igfb": ([NODE, "automation/metricool_tiktok_post.mjs"], {"NETZ": "instagram"}),
-    "bild":      ([NODE, "automation/social-autopost-meta.mjs"], {"WEG": "metricool", "MAX_PER_RUN": "1"}),   # Threads: die REST-API verweigert es (403 «Access denied to blog», GEMESSEN 19.10.) — nur der Metricool-Konnektor kann es, siehe threads_zwillinge.py
+    "bild":      ([NODE, "automation/social-autopost-meta.mjs"], {"WEG": "metricool", "MAX_PER_RUN": "1"}),   # Threads-Zwilling plant der Poster selbst (normalisierte Bildadresse, Kappe 1/Tag); threads_zwillinge.py war ein Einmal-Werkzeug
     "karussell": ([NODE, "automation/ig_karussell_post.mjs"], {"WEG": "metricool"}),
     "story":     ([NODE, "automation/story-autopost-meta.mjs"], {"WEG": "metricool", "MAX_PER_RUN": "1"}),
     "pin":       ([NODE, "automation/metricool_pinterest_pin.mjs"], {}),
 }
 LEER_MUSTER = re.compile(r"nichts faellig|nichts fällig|kein ready|kein pin-kandidat|kein bild mit status=ready|keine .*ready|nichts zu tun|kein postbares|stopp gesetzt", re.I)
 FEED_ARTEN = {"post", "reel"}
+UEBERSPRUNGEN = re.compile(r"ware schon beworben|posted-dup|jury-skip|preis-skip|montage-preis-skip|kein post —|kein post -", re.I)   # Poster hat bewusst nichts angelegt (kein unsicherer Ausgang)
 SPERR_MUSTER = re.compile(r"lock aktiv|anderer poster", re.I)   # vorübergehend: kein Versuch verbraucht, nicht wiederholen
 
 
@@ -586,7 +587,8 @@ def plan_lauf(max_min=35, nur=None, max_slots=10**9):
                 log(name, "geplant-rc", f"rc={rc} {s['mc_ids']}")
                 break
             s["status"] = "offen"; s["grund"] = f"rc={rc}: {tail[-160:]}"
-            if not leer and not gesperrt and (rc in (1, 124) or rc == 0):
+            bewusst_nichts = bool(UEBERSPRUNGEN.search(tail)) and not re.search(r"✅|geplant \(|Metricool-Post|ueber Metricool geplant", tail)   # der Poster sagt ausdrücklich: Kandidat abgelehnt, nichts angelegt
+            if not leer and not gesperrt and not bewusst_nichts and (rc in (1, 124) or rc == 0):
                 # Ausgang UNSICHER (Prüfung 18.10.): der Poster kann den Eintrag angelegt haben, der Planer zeigt ihn nur noch nicht (Verzögerung,
                 # Netzfehler nach dem POST, Timeout). Slot reserviert LASSEN — abgleichen() adoptiert ihn beim nächsten Lauf per Anlegezeit, statt ihn
                 # sofort freizugeben und denselben Termin ein zweites Mal zu belegen.
@@ -911,6 +913,12 @@ def zeile(plan=None, regeln=None):
         warn += f"⚠️ PRÜFER-SCHUTZ: {plan['pruefer_sperre'][21:140]} · "
     if plan.get("pruefer_shop_blind"):
         warn += f"⚠️ PRÜFER BLIND: {plan['pruefer_shop_blind'][21:100]} · "
+    try:
+        _m = open(TT_MODUS, encoding="utf-8").read()
+        if _m.split()[:1] == ["aus"] and "automatisch zurückgenommen" in _m:
+            warn += f"⚠️ TRENDTON automatisch zurückgenommen ({_m.split('automatisch zurückgenommen')[1][:28].strip()}) · "
+    except (OSError, IndexError):
+        pass
     if plan.get("abgleich_sperre"):
         warn += f"⚠️ ABGLEICH-SCHUTZ: {plan['abgleich_sperre'][21:110]} · "
     if os.path.exists(HALT):

@@ -41,6 +41,7 @@ if [ "${1:-}" = "--einmal" ]; then
   [ -f .git/index.lock ] && [ -z "$(fuser .git/index.lock 2>/dev/null)" ] && rm -f .git/index.lock
   if [ -f .git/MERGE_HEAD ] || [ -n "$(git ls-files -u)" ]; then aufloesen || exit 0; fi
   git add -A dropship/ 2>/dev/null
+  git add -- social/_tt_trend_verlauf.txt social/_musik_verlauf.txt 2>/dev/null   # 19.10.: Anhänge-Ledger der Musik-Rotation (Prüfung: sonst nur lokal, Rewind/Neustart verliert die Rotation)
   python3 "$(git rev-parse --show-toplevel)/automation/ledger_schrumpf_tor.py" --staged >> /tmp/ledger_schrumpf.log 2>&1 || true   # 15.10.: Ledger-Schrumpf-Tor
   if ! git diff --cached --quiet 2>/dev/null; then
     git commit -q -m "CJ-Ledger auto [skip ci]" 2>/dev/null

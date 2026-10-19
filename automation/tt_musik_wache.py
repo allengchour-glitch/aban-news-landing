@@ -12,7 +12,7 @@ Was Metricool selbst NICHT prüft (alles GEMESSEN mit Entwürfen, 18.10.): Lauts
 fehlende title/author/previewUrl/thumbnailUrl (gespeichert, leer), erfundene musicId «1», Start jenseits der Titeldauer,
 Fenster von 90 s, end == start. Geprüft wird nur: musicId + soundVolume Pflicht, start >= 0, end >= start.
 """
-import glob, json, os, re, urllib.request
+import glob, json, os, re, time, urllib.request
 from datetime import datetime, timedelta
 
 ID_FORM = re.compile(r"^\d{6,}$")
@@ -69,20 +69,23 @@ def musik_befunde(posts, termin, bekannt=None):
     return b
 
 
-def tiktok_ton(url):
+def tiktok_ton(url, versuche=3, pause=4):
     """Nach der Veroeffentlichung: was spielt TikTok wirklich? Liest die Videoseite (GEMESSEN 18.10. an einem unserer Posts:
     music.title «Originalton», music.original true, video.volumeInfo.Loudness -15.6). Gibt dict oder None."""
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36",
                                                 "Accept-Language": "de-CH,de;q=0.9"})
-    try:
-        h = urllib.request.urlopen(req, timeout=45).read().decode("utf-8", "replace")
-        j = re.search(r'<script id="__UNIVERSAL_DATA_FOR_REHYDRATION__"[^>]*>(.*?)</script>', h, re.S)
-        item = json.loads(j.group(1))["__DEFAULT_SCOPE__"]["webapp.video-detail"]["itemInfo"]["itemStruct"]
-        m, v = item.get("music") or {}, item.get("video") or {}
-        return {"id": str(m.get("id")), "titel": m.get("title"), "original": m.get("original"), "kommerziell": m.get("is_commerce_music"),
-                "lautheit": (v.get("volumeInfo") or {}).get("Loudness")}
-    except Exception:
-        return None
+    for versuch in range(versuche):
+        try:
+            h = urllib.request.urlopen(req, timeout=45).read().decode("utf-8", "replace")
+            j = re.search(r'<script id="__UNIVERSAL_DATA_FOR_REHYDRATION__"[^>]*>(.*?)</script>', h, re.S)
+            item = json.loads(j.group(1))["__DEFAULT_SCOPE__"]["webapp.video-detail"]["itemInfo"]["itemStruct"]
+            m, v = item.get("music") or {}, item.get("video") or {}
+            return {"id": str(m.get("id")), "titel": m.get("title"), "original": m.get("original"), "kommerziell": m.get("is_commerce_music"),
+                    "lautheit": (v.get("volumeInfo") or {}).get("Loudness")}
+        except Exception:
+            if versuch + 1 < versuche:
+                time.sleep(pause)   # TikTok liefert die Seite oft erst beim 2. Abruf vollständig (Captcha-/Reduziert-Fassung)
+    return None
 
 
 def ton_befund(post_music_id, ton):

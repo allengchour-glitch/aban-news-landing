@@ -23,7 +23,7 @@ export function verlaufLesen(pfad = 'social/_musik_verlauf.txt') {
     for (const z of fs.readFileSync(pfad, 'utf8').split('\n')) {
       const f = z.split('\t');
       if (f.length < 5 || !f[1] || !f[4]) continue;
-      m.set(f[4].trim(), { datei: f[1].trim(), start: parseFloat(f[2]) || 0 });
+      m.set(f[4].trim(), { datei: f[1].trim(), start: parseFloat(f[2]) || 0, stimme: (f[5] || '').trim() === 'stimme:ja' });   // stimme = das Reel traegt eine Sprecherstimme (Trendton wuerde sie stummschalten)
     }
   } catch { /* ohne Verlauf: neutral */ }
   return m;
@@ -91,7 +91,12 @@ export function selbsttest() {
   // kaputte Eingabe → keine Ausnahme, keine Änderung
   r = ['a'].map(zeile); o = musikSortieren(r, { id, gepostet: null, netz: 'tiktok', verlauf, jetztMs: T });
   t('Fehler', false, o.bewegt);
-  console.log('SELBSTTEST musik_sortiert:', fehler.length ? 'FEHLER ' + fehler.join('; ') : 'OK (6 Fälle)');
+  // verlaufLesen: Stimmen-Kennzeichen aus Spalte 6
+  const tmp = `/tmp/_musik_verlauf_test_${process.pid}.txt`;
+  fs.writeFileSync(tmp, 't\tx.wav\t1\tkueche\tr1\tstimme:ja\tSprecherin\nt\ty.wav\t2\tfitness\tr2\tstimme:nein\tanteil\n');
+  const vl = verlaufLesen(tmp); fs.unlinkSync(tmp);
+  t('Stimme ja', true, vl.get('r1').stimme); t('Stimme nein', false, vl.get('r2').stimme);
+  console.log('SELBSTTEST musik_sortiert:', fehler.length ? 'FEHLER ' + fehler.join('; ') : 'OK (8 Fälle)');
   return fehler.length ? 1 : 0;
 }
 
