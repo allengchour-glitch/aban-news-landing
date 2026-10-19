@@ -40,14 +40,17 @@ if [ -z "${_SLOT:-}" ]; then
   # dahinter sechs Tages-Waechter bis zu 3 h. Und «der stuendliche Neustart ist die Obergrenze» galt an diesem Tag
   # nicht (Container 3 h durchgelaufen). Darum: (1) wer fd 8 haelt, wartet NIE auf einen Platz (naechster Aufseher-
   # Lauf versucht es wieder); (2) alle anderen warten hoechstens 45 Minuten.
+  # ⚠️ 19.10.2026 (GEMESSEN: /tmp/startseite_gewicht.log «START 20:12 / Schranke 45 min voll / FERTIG 20:57», dropship/_startseite_gewicht.tsv
+  # letzte echte Zeile 14.10.): «exit 0» hiess für den Aufseher «sauber beendet» — der NACH-Wrapper (fixer_keepalive.sh, `… schranke.sh python3 X.py && echo FERTIG`)
+  # schrieb FERTIG für einen Lauf, der NIE stattfand (10 von 12 Wächtern der NACH-Liste, 14 falsche FERTIG-Zeilen am 18.10. 20:56–20:59). Nicht gelaufen = Exit 75 (EX_TEMPFAIL).
   if [ -e "/proc/$$/fd/8" ]; then
     echo "$(date -u +%H:%M) Schranke voll, Aufrufer haelt die Text-Sperre — kein Warten (Deadlock-Schutz): $*"
-    exit 0
+    exit 75
   fi
   exec 21>"/tmp/${_NAME}_1.lock"
-  if ! flock -w 2700 21; then
+  if ! flock -w "${SCHRANKE_WARTE:-2700}" 21; then
     echo "$(date -u +%H:%M) Schranke 45 min voll — naechster Lauf: $*"
-    exit 0
+    exit 75
   fi
 fi
 exec "$@"

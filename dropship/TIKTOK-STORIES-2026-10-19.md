@@ -17,8 +17,9 @@ Betreiber 19.10.: «tiktok stories verbessern». Marken: **GEMESSEN** = hier sel
 - **Wirkung unbekannt:** Metricool-Abfrage der Story-Insights (IGST02/07–13, 30 Tage) liefert **0 Zeilen**, obwohl 28 Stories veröffentlicht wurden; Facebook-Stories
   haben im Konnektor nur Datum/Vorschau/Typ. Jede Aussage «die neue Karte wirkt besser» wäre BEHAUPTUNG.
 - **TikTok-Lage zum Vergleich** (Metricool-Konnektor, 30 Tage, 64 Posts): fast jedes Video bleibt bei **250–290 Aufrufen**, Ø Sehdauer 1–3 s bei 11-s-Videos,
-  Durchschau-Rate unter 0,2 %. Drei Abendkleid-Videos vom 30.09. 20:25–21:05 kamen auf 26'600–39'300 Aufrufe (Ø Sehdauer 1 s, 8–18 Likes) — Herkunft der Aufrufe
-  (bezahlt/organisch) ist nicht belegt.
+  Durchschau-Rate unter 0,2 %. Drei Abendkleid-Videos vom 30.09. 20:25–21:05 kamen auf 26'600–39'300 Aufrufe (Ø Sehdauer 1 s, 8–18 Likes) — **sehr wahrscheinlich
+  bezahlt**: der TikTok-Ads-Konnektor zeigt die Kampagne «Lernen Okt26 · Kleider Traffic · Deckel CHF 80» (CHF 80.00, 88'944 Impressionen, 433 Klicks, 0 Käufe, Status BUDGET_EXCEED;
+  Konto 7646326014504976401, 19.10. über den Konnektor gemessen; die Verknüpfung Video ↔ Anzeige ist nicht geprüft). Beide erreichbaren Werbekonten haben **0 Pixel** — «0 Käufe» ist dort kein Messwert.
 
 ## 3. Befunde an der alten Story-Karte (v1) und was v2 ändert (`automation/story_bauen.py`)
 | Befund (GEMESSEN am Probebogen) | v2 |
