@@ -1511,6 +1511,9 @@ def selbsttest():
         pruefer_k["pruefer_stand"] = "2026-10-19T14:00:00Z"
         plan_speichern(pruefer_k, pf2)
         ok(json.load(open(pf2, encoding="utf-8")).get("pruefer_stand") == "2026-10-19T14:00:00Z", "eigene Änderung eines Kopf-Schlüssels muss gelten")
+        lauf_k["slots"]["a"]["grund"] = "z"
+        plan_speichern(lauf_k, pf2)   # der Plan-Lauf hat 14:00 nicht geändert (seine Kopie steht auf 12:00) → der neuere Stand des Prüfers bleibt
+        ok(json.load(open(pf2, encoding="utf-8")).get("pruefer_stand") == "2026-10-19T14:00:00Z", "nach dem eigenen Speichern gilt die Kopie als unverändert: der neuere Prüfer-Stand muss bleiben")
     except Exception as e:
         ok(False, f"Test Kopf-Zusammenführung abgebrochen: {type(e).__name__}: {str(e)[:160]}")
     finally:
