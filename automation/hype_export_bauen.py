@@ -10,6 +10,8 @@ Felder = Vertrag mit hype_kuratieren.py: status, title, tags, productType, media
 priceRangeV2.minVariantPrice.amount, g (Google-Kanal). Wer dort liest, aendert hier mit.
 """
 import json, os, subprocess, sys, time
+import sys as _sys_bl, os as _os_bl; _sys_bl.path.insert(0, _os_bl.path.dirname(_os_bl.path.abspath(__file__)))
+from bulk_laden import bulk_laden  # 19.10.2026 (PL-5): atomar nach .teil, Platz-/Vollständigkeitsprüfung, erst dann ersetzen
 
 SHOP = "au3j0y-hq.myshopify.com"
 ZIEL = os.environ.get("ZIEL", "/tmp/export.jsonl")
@@ -98,7 +100,9 @@ def main():
             if not o.get("url"):
                 print("PAUSE: fertig, aber ohne URL")
                 return
-            subprocess.run(["curl", "-sL", "--max-time", "600", "-o", ZIEL, o["url"]])
+            if not bulk_laden(o["url"], ZIEL, curl_args=["-L"]):
+                print("PAUSE: Bulk-Download unvollständig — Vorrunde bleibt")
+                return
             n = sum(1 for _ in open(ZIEL))
             print(f"FERTIG: {ZIEL} — {os.path.getsize(ZIEL)} Bytes, {n} Zeilen")
             return

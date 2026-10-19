@@ -53,6 +53,17 @@
 
 
 
+## 🧰 «weiter» — Backlog-Runde 2 (2026-10-19, ~09:50–10:30 UTC)
+- **VORLAUF-1:** `social_vorlauf.py` — ein «leerer» Karussell-Slot wartete stur 20 h nach Uhr, obwohl der Vorrat-Block (Runde 08:25) inzwischen 4 ready-Sets gebaut hatte. Neu `vorrat_da(fmt)` (nur Karussell messbar: ≥ 1 `ready` in `social/ig_karussell.csv`):
+  leerer Slot wird nach ≥ 1 h erneut versucht, sobald Vorrat da ist (kein Dauerfeuer). Selbsttest +4.
+- **HYPE-3/5:** `hype_kuratieren.abgelaufene_raeumen()` wendet Sperr-Tags und das Stecker-Tor jetzt auch auf Bestandsmitglieder an (Lehre 13.10. «Reihenregeln gelten für jedes Mitglied»). GEMESSEN im DRY: **14 von 46 Mitgliedern** fallen raus
+  (Projektoren/Beamer, Ladestation, Karaoke, Glättbürsten, Futterspender, Powerbank ohne Stecker-Beleg im Ledger) — die Ware bleibt im Shop, nur die Trend-Reihe wirbt nicht mehr damit; 32 bleiben (Wache warnt unter 24). `SPERR_TAGS_HYPE` um die Tags der anderen Poster ergänzt.
+  Wieder aufgenommen wird ein Gerät, sobald `cj_stecker_pruefen` es belegt (Ledger-Status OK).
+- **PL-3/4:** `platte_wartung.sh` — Messfehler zeigt «⚠️ .git unklar» statt «0 MB»; die Zeile nennt die **Sitzungs-Last** (`/root/.claude` + `/tmp/claude-0`, gemessen 4,9 GB von 7,8 GB frei) — nur melden, nie löschen.
+- **PL-5:** neuer Helfer `automation/bulk_laden.py` (atomar nach `.teil`, Platzprüfung ≥ 1,5 GiB + Vorrunde, letzte Zeile vollständiges JSON, ≥ 80 % der Vorrunde, erst dann `os.replace`; Selbsttest 8/8). Sechs Exportskripte laden jetzt darüber
+  (`versprechen_wache`, `farbe_je_variante`, `hauptbild_grossbild`, `heilversprechen_seo_wache`, `seo_voll_audit`, `hype_export_bauen`). Alle sind Voll-Exporte `status:active`, daher ist die 80-%-Regel stabil.
+  Bei Fehler bleibt die Vorrunde liegen; die Skripte enden mit klarer Meldung statt mit einer halben Datei.
+
 ## 🎠 Autonome Runde 08:25 (2026-10-19): IG-Karussell-Vorrat — leere Slots im 7-Tage-Vorlauf
 - **GEMESSEN:** `social/ig_karussell.csv` 45 Sets, **0 ready**; `social_vorlauf.py --zeile`: 103 Slots, 6 offen (4 leer, 2 offen), Karussell-Slots 22./23.10. je 10× «Nichts fällig: kein ready-Karussell». Ursache (Spähtrupp S1): der Bauer läuft im 24-h-Block des Aufsehers
   (Tor `ALTER > 86400` auf `/tmp/tiktok_karussell.log`) und liefert 2 IG-Sets/Tag bei ~56 % Ausbeute (7 preis-veraltet, 6 jury-skip, 4 fremdtext-skip, 3 posted-dup-produkt von 45) = ~1,1 postbare Sets/Tag gegen 1 Slot/Tag plus Rückstand.

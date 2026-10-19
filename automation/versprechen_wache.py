@@ -45,6 +45,8 @@ NACHTRAG 13.10.2026 (Kauf-Strecke Klasse 12, Abschnitt «kosmetik_beleg» der Re
     stehen ebenfalls im Bericht (Karton im Bild zweimal lesen, erst dann Titel ändern). NUR=kosmetik zählt ohne den Rest.
 """
 import json, os, re, subprocess, sys, time
+import sys as _sys_bl, os as _os_bl; _sys_bl.path.insert(0, _os_bl.path.dirname(_os_bl.path.abspath(__file__)))
+from bulk_laden import bulk_laden  # 19.10.2026 (PL-5): atomar nach .teil, Platz-/Vollständigkeitsprüfung, erst dann ersetzen
 
 HIER = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HIER)
@@ -842,7 +844,8 @@ def export():
         b = gql('query($i:ID!){node(id:$i){... on BulkOperation{status objectCount url errorCode}}}', {"i": bid})["node"]
         print("   bulk:", b["status"], b["objectCount"], flush=True)
         if b["status"] == "COMPLETED":
-            subprocess.run(["curl", "-sS", "-o", CACHE, b["url"]], check=True)
+            if not bulk_laden(b["url"], CACHE):
+                raise SystemExit("Bulk-Download unvollständig — Vorrunde bleibt, Lauf endet")
             return
         if b["status"] in ("FAILED", "CANCELED", "EXPIRED"):
             raise SystemExit(f"Bulk {b['status']} {b.get('errorCode')}")

@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import sys as _sys_bl, os as _os_bl; _sys_bl.path.insert(0, _os_bl.path.dirname(_os_bl.path.abspath(__file__)))
+from bulk_laden import bulk_laden  # 19.10.2026 (PL-5): atomar nach .teil, Platz-/Vollständigkeitsprüfung, erst dann ersetzen
 """Google-Farbe je Variante — statt EINER falschen Farbe für das ganze Produkt.
 
 DER BEFUND (Fehlersuche 14.08.2026, live nachgeprüft am selben Tag)
@@ -170,7 +172,8 @@ def bulk_export():
             raise RuntimeError("Bulk-Export gescheitert: " + str(op.get("errorCode")))
         print("   … Bulk läuft, %s Objekte" % op["objectCount"])
     ziel = "/tmp/farbe_bulk.jsonl"
-    subprocess.run(["curl", "-sS", "-o", ziel, op["url"]], check=True)
+    if not bulk_laden(op["url"], ziel):
+        raise RuntimeError("Bulk-Download unvollständig — Vorrunde bleibt, Lauf endet")
     return ziel
 
 

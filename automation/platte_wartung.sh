@@ -57,7 +57,17 @@ zeile() {
   if [ "${MESSFEHLER:-0}" = 1 ]; then
     echo "⚠️ PLATTE: frei ${frei_gb} GB · .git unklar (git count-objects fehlgeschlagen)${1:+ · $1}"; return
   fi
-  echo "${warn}PLATTE: frei ${frei_gb} GB · .git Pack ${pack_gb} GB + lose ${lose_mb} MB (${LOSE_ANZAHL} Objekte)${1:+ · $1}"
+  echo "${warn}PLATTE: frei ${frei_gb} GB · .git Pack ${pack_gb} GB + lose ${lose_mb} MB (${LOSE_ANZAHL} Objekte)$(sitzung_last)${1:+ · $1}"
+}
+
+# 19.10.2026 (Prüfung PL-4): Die Wartung sah nur .git und /tmp-Leichen, aber die Sitzungsquote teilen sich auch die Sitzungs-/Workflow-Daten
+# (/root/.claude: Transkripte, Subagenten; /tmp/claude-0: Scratchpad, Task-Ausgaben) — gemessen 19.10. 2,0 + 3,1 GB bei 7,8 GB frei. Nur MELDEN (ab 1 GB),
+# nie löschen: das gehört der Sitzung (der Classifier lehnte ein Massenlöschen ab). Pfade per PLATTE_SITZUNG überschreibbar (Selbsttest).
+sitzung_last() {
+  local kib
+  kib=$(timeout 20 du -sk ${PLATTE_SITZUNG:-/root/.claude /tmp/claude-0} 2>/dev/null | awk '{s+=$1} END{print s+0}')
+  [ "${kib:-0}" -ge 1048576 ] && awk -v k="$kib" 'BEGIN{printf " · Sitzungs-Last %.1f GB", k/1048576}'
+  return 0
 }
 
 rest_lesen() { REST_KIB=""; REST_ANZ=""; [ -r "$REST_DATEI" ] && read -r REST_KIB REST_ANZ < "$REST_DATEI"; case "${REST_KIB:-}" in ''|*[!0-9]*) REST_KIB=0;; esac; case "${REST_ANZ:-}" in ''|*[!0-9]*) REST_ANZ=0;; esac; }

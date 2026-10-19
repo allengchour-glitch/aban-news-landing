@@ -17,6 +17,8 @@ import json, os, re, subprocess, sys, time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import heilversprechen_wache as hw  # noqa: E402  (MUSTER, FEHLALARM, ERSATZ, ERSATZ_RE, gql)
+import sys as _sys_bl, os as _os_bl; _sys_bl.path.insert(0, _os_bl.path.dirname(_os_bl.path.abspath(__file__)))
+from bulk_laden import bulk_laden  # 19.10.2026 (PL-5): atomar nach .teil, Platz-/Vollständigkeitsprüfung, erst dann ersetzen
 
 DRY = os.environ.get("DRY") == "1"
 CACHE = "/tmp/heil_seo_export.jsonl"
@@ -53,7 +55,8 @@ def export():
         b = hw.gql('query($i:ID!){node(id:$i){... on BulkOperation{status objectCount url errorCode}}}', {"i": bid})["data"]["node"]
         print("   bulk:", b["status"], b["objectCount"], flush=True)
         if b["status"] == "COMPLETED":
-            subprocess.run(["curl", "-sS", "-o", CACHE, b["url"]], check=True)
+            if not bulk_laden(b["url"], CACHE):
+                raise SystemExit("Bulk-Download unvollständig — Vorrunde bleibt, Lauf endet")
             return
         if b["status"] in ("FAILED", "CANCELED", "EXPIRED"):
             raise SystemExit(f"Bulk {b['status']}")
