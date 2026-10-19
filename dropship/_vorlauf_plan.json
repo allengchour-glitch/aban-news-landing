@@ -1173,10 +1173,18 @@
   "story-20261025T1810": {
    "basis_utc": "2026-10-25T18:10:00Z",
    "format": "story",
+   "grund": "",
+   "handle": "",
+   "handles": [
+    "teddybar-skelett-15-cm-fga910993"
+   ],
    "letzter_versuch": "2026-10-19T00:35:01Z",
-   "mc_ids": [],
+   "mc_ids": [
+    399530900,
+    399530905
+   ],
    "reserviert_um": "2026-10-19T00:35:01Z",
-   "status": "reserviert",
+   "status": "geplant",
    "termin_utc": "2026-10-25T18:10:00Z",
    "versuche": 1
   },
@@ -1676,6 +1684,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-19T00:35:01Z",
+ "stand": "2026-10-19T00:35:33Z",
  "version": 1
 }

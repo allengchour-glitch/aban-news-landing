@@ -7579,3 +7579,9 @@ gid://shopify/Product/15473458676097	zugeordnet	36	Wollstrick-Cardigan mit Rundh
 gid://shopify/Product/15473459331457	zugeordnet	8	Damen Langarmhemd mit Umlegekragen, grosse Grössen
 gid://shopify/Product/15473627693441	zugeordnet	96	Herren Kapuzenjacke aus Waffelstrick
 gid://shopify/Product/15473627726209	bild-urls-tot
+gid://shopify/Product/15473627791745	zugeordnet	35	Herren Strickpullover im High-Street-Stil
+gid://shopify/Product/15473627988353	zugeordnet	11	Retro T-Shirt für Herren mit geraden Schultern
+gid://shopify/Product/15473628021121	zugeordnet	56	Polo-Shirt mit Feuchtigkeitstransport
+gid://shopify/Product/15473628086657	zugeordnet	20	Herren Strickweste mit Rautenmuster
+gid://shopify/Product/15473687396737	zugeordnet	80	Polo-Shirt mit Henley-Kragen für Herren
+gid://shopify/Product/15473687658881	zugeordnet	30	Herren Sport-Casual T-Shirt mit Reverskragen
