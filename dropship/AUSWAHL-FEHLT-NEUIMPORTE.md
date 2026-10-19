@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-19 15:04 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-19 16:01 UTC)
 
-Suche: `status:active AND created_at:>=2026-10-16` · gemessen 280 · **110 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 103, teilweise: 5, keine: 2; Preisspanne > 2×: 19) · 1 CJ-Variante: 170 · ohne Antwort: 0
+Suche: `status:active AND created_at:>=2026-10-16` · gemessen 283 · **112 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 105, teilweise: 5, keine: 2; Preisspanne > 2×: 20) · 1 CJ-Variante: 171 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -40,6 +40,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Buntes, schmaler Retro-Schal in Regenbogenfarben (`buntes-schmaler-retro-schal-in-regenbogenfarbe-621000`) | 9 | 9 | 2.72–2.72 | 16.90 | Red Orange Purple-190X10cm, Gray Orange White-190X10cm, Blue Orange Rice-190X10cm, Gray White And Black-190X10cm |
 | Ovaler Fotorahmen für die Wand (`ovaler-fotorahmen-fur-die-wand-622100`) | 9 | 9 | 4.04–27.6 | 75.90 | 4 Pieces, 5 Pieces, Square, Ellipse |
 | Welpen Pullover Herbst & Winter (`puppy-pullover-herbst-winter-492992`) | 9 | 9 | 3.16–4.16 | 16.90 | Blue Rabbit Sweater-XS-Without bag, Blue Rabbit Sweater-M-Without bag, Blue Rabbit Sweater-L-Without bag, Blue Rabbit Sweater-XL-Without bag |
+| Nichthaftende Bratpfanne mit gebogener Handhabung (`nichthaftende-bratpfanne-mit-gebogener-handhab-626200`) | 9 | 9 | 4.04–6.6 | 32.90 | Bent Handle Gas Model White-22cm, Gas Payment White-22cm, Curved Handle White-22cm, Curved Handle White Gift-22cm |
 | Business Travel Rucksack mit grosser Kapazität (`business-travel-rucksack-mit-grosser-kapazitat-623500`) | 8 | 8 | 7.21–7.21 | 29.90 | Cherry Blossom Powder, Sapphire Blue, Ginger Yellow, Wine Red |
 | Trekking-Rucksack 35 L (`trekking-rucksack-35-l-622500`) | 8 | 8 | 12.11–12.44 | 33.90 | 2403 Black-35L, 2403 Green-35L, 2403 Blue-35L, 2403 Gray-35L |
 | Urbaner Rucksack mit Buchstaben-Print, 20-35 L (`urbaner-rucksack-mit-buchstaben-print-20-35-l-617700`) | 8 | 8 | 4.32–4.63 | 17.90 | Black-With Pendant, Black-Without Pendant, White-With Pendant, White-Without Pendant |
@@ -93,6 +94,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Splice Farbkontrast Rucksack 36-55 L (`splice-farbkontrast-rucksack-36-55-l-047040`) | 4 | 4 | 4.52–5.08 | 17.90 | Black-With pendant, Black-Without pendant, Blue-With pendant, Blue-Without pendant |
 | Iris-Blumenring (`iris-blumenring-631400`) | 4 | 4 | 2.11–2.11 | 16.90 | Iris Flower Ring 6028-No 6, Iris Flower Ring 6028-No 7, Iris Flower Ring 6028-No 8, Iris Flower Ring 6028-No 9 |
 | Männer-Quarz-Uhr mit quadratischem Zifferblatt (`manner-quarz-uhr-mit-quadratischem-zifferblatt-614400`) | 4 | 4 | 14.76–14.76 | 23.90 | Wine Red-Quartz Watch, Green-Quartz Watch, Dark Blue-Quartz Watch, Coffee With A Gray Disc-Quartz Watch |
+| Dumpling-Mold-Set 3D-gedruckt – Quadrat, Kreis, Herz (`dumpling-mold-set-3d-gedruckt-quadrat-kreis-he-620800`) | 4 | 4 | 3.09–9.44 | 27.90 | Square, Round, Heart Shape, Combination |
 | Wasserdichte Angelrucksack aus TPU-Gewebe (`wasserdichte-angelrucksack-aus-tpu-gewebe-621700`) | 3 | 3 | 12.43–22.39 | 45.90 | Small Size, Large Size, Waterproof Rucksack |
 | Rucksack Street Leisure – 20-35 L, wasserdicht (`rucksack-street-leisure-20-35-l-wasserdicht-607700`) | 3 | 3 | 13.1–16.42 | 48.90 | Black-Commuter payment, Black-Expansion payment, Black-Upgraded Version |
 | Anti-Diebstahl-Computerrucksack 20 L (`anti-diebstahl-computerrucksack-20-l-627500`) | 3 | 3 | 37.98–37.98 | 76.90 | Deep Space Black, Silver White, Silver Gray |

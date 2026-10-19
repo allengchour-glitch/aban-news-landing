@@ -10659,3 +10659,6 @@ herren-workpants-mit-mehreren-taschen-601000	2603070947231601400	16	10.15	ok	lan
 spatz-biss-spielzeug-fur-klein-und-mittelvogel-629700	2412020907441620000	16	9.47	ok	landeseite
 grosser-verstellbarer-laptop-rucksack-mit-reis-631000	2607110928071631900	16	18.83	ok	landeseite
 coton-sweatpants-mit-distressed-finish-601000	2602260613291601300	16	20.82	ok	landeseite
+kuschel-chipsspielzeug-613000	2411210139371613200	16	6.65	ok	landeseite
+baby-lauflernschuhe-rutschfest-615300	2603060245091615700	16	7.85	ok	landeseite
+wasserdichter-winddichter-ski-overall-mit-extr-604900	2602230405231605200	16	12.56	ok	landeseite
