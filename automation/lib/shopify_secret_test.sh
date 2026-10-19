@@ -102,13 +102,13 @@ unset LC_ALL
 poster() { printf '%*s' "$1" ''; }
 export SHOPIFY_SHOP="$(poster $((253 - ${#ECHT})))$ECHT"; shopify_shop_pruefen; t "H10 Grenze: 253 Zeichen (Polster + Host) → bereinigt" "$SHOP_URTEIL|$SHOP_BEREINIGT" "bereinigt|1"
 export SHOPIFY_SHOP="$(poster $((254 - ${#ECHT})))$ECHT"; shopify_shop_pruefen; t "H10 Grenze: 254 Zeichen → falsch, ersetzt" "$SHOP_URTEIL|$SHOP_ERSETZT|$SHOPIFY_SHOP" "falsch|1|$ECHT"
-# Der Lauf in eigenem Prozess mit Zeitgrenze: die alte Fassung brauchte bei 130'000 Leerzeichen rund 45 s (Befund «quadratisch»)
+# Der Lauf in eigenem Prozess mit Zeitgrenze: die alte Fassung brauchte bei 130'000 Leerzeichen 45,5 s (gemessen 19.10., Befund «quadratisch»)
 v0=$(date +%s)
 aus=$(timeout 30 bash -c '. "$1"; SHOPIFY_SHOP="x$(printf "%*s" 130000 "")y"; shopify_shop_pruefen melden; echo "[$SHOP_URTEIL|$SHOP_ERSETZT]"' _ "$LIB/shopify_secret.sh" 2>&1); rc=$?
 dauer=$(( $(date +%s) - v0 ))
 t "H10 riesiger Wert (130002 Zeichen): fertig, falsch, ersetzt" "$rc|${aus##*$'\n'}" "0|[falsch|1]"
 case "$aus" in *"Länge 130002, länger als 253"*) t "H10 Meldung nennt nur Länge" ok ok ;; *) t "H10 Meldung nennt nur Länge" "$aus" "… Länge 130002, länger als 253 …" ;; esac
-t "H10 Laufzeit unter 5 s (war ~45 s)" "$([ "$dauer" -lt 5 ] && echo ok || echo "${dauer}s")" "ok"
+t "H10 Laufzeit unter 5 s (war 45,5 s)" "$([ "$dauer" -lt 5 ] && echo ok || echo "${dauer}s")" "ok"
 aus=$(timeout 30 bash -c '. "$1"; SHOPIFY_SHOP="$(printf "%*s" 130000 "")x"; shopify_shop_pruefen; echo "[$SHOP_URTEIL]"' _ "$LIB/shopify_secret.sh" 2>&1); t "H10 Leerraum + x (der Fall des Prüfers)" "$?|$aus" "0|[falsch]"
 
 # ── H11: Datei /tmp/secrets_env.sh — Reihenfolge-Lücke (zwei Prüfer): engine_keepalive.sh schreibt die Datei (env_datei) VOR der Heilung ──

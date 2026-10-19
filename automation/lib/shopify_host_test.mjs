@@ -2,7 +2,7 @@
 //   env -i PATH=/opt/node22/bin:/usr/bin:/bin node automation/lib/shopify_host_test.mjs
 // Teil A: gemeinsame Fallliste (shopify_host_faelle.tsv). Teil B: Einzelfälle (ASCII-genau, Typen, kein Wert im Text).
 // Teil C: Kanarienvogel — die schwache Prüfung von 24 Dateien (`/myshopify\.com$/`) muss an der Fallliste scheitern.
-// (B19/B20: Regel 0 — Längenschranke 253 und Laufzeit bei riesigem Leerraum; die erste Fassung der Regex-Bereinigung brauchte bei 40'000 Zeichen 1,9 s, bei 130'000 hochgerechnet rund 20 s.)
+// (B19/B20: Regel 0 — Längenschranke 253 und Laufzeit bei riesigem Leerraum; die erste Fassung der Regex-Bereinigung brauchte bei 40'000 Zeichen 1,9 s, bei 130'000 20,5 s (gemessen 19.10.).)
 // Teil D: Abgleich der DREI Umsetzungen — derselbe Fallkatalog läuft in shopify_host.py (--selbsttest) und shopify_secret.sh
 // (shopify_secret_test.sh); weicht eine ab, schlägt hier ihr Test an.
 import { spawnSync } from 'node:child_process';

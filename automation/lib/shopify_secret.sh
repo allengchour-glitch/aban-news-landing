@@ -31,16 +31,16 @@
 # 19.10.2026 (zweite Prüfung, zwei unabhängige Prüfer, beide bestätigt) — REIHENFOLGE-LÜCKE: engine_keepalive.sh schreibt /tmp/secrets_env.sh
 # (env_datei) VOR dem Aufruf von shopify_secret_heilen — ein verdorbener Wert landete roh in der Datei, und die 28 Skripte/Runner, die sie
 # per `source` einlesen, überschrieben damit den geheilten Wert wieder (GEMESSEN mit der kopierten Original-Funktion env_datei und erfundenem Wert:
-# Umgebung geheilt, «Runner nach source» = Fremdhost). shopify_secrets_datei_heilen (ruft shopify_secret_heilen gleich nach dem Host) korrigiert
+# Umgebung geheilt, «Runner nach source» = Fremdhost). shopify_secrets_datei_heilen (shopify_secret_heilen ruft sie gleich nach dem Host) korrigiert
 # deshalb auch die Datei: die Zeile SHOPIFY_SHOP (jedes Urteil ausser ok/leer → echter Host) und die Zeile SHOPIFY_CLIENT_SECRET (nur das exakte
 # Muster Schlüssel + «=SHOPIFY_CLIENT_SECRET»). Schreiben nur nach Prüfung: beim `source` in leerer Umgebung muss die Variable danach den Sollwert
 # haben, JEDE andere Variable denselben Wert wie vorher und `bash -n` die Datei annehmen, sonst bleibt die Datei unverändert (SHOP_DATEI_UNGEHEILT=1, Meldung ⚠️). Ersatzdatei
 # per mktemp (600) neben der Datei + mv (atomar); Symlink/nicht beschreibbar → nichts. Werte nie in argv, nie ausgegeben.
-# Setzt: SHOP_DATEI_GEHEILT=1 / SEC_DATEI_BEREINIGT=1 (Zeile korrigiert), SHOP_DATEI_UNGEHEILT=1 (Korrektur misslungen).
+# Setzt: SHOP_DATEI_GEHEILT=1 / SEC_DATEI_BEREINIGT=1 (Zeile korrigiert), SHOP_DATEI_UNGEHEILT=1 (Korrektur einer der beiden Zeilen misslungen).
 # LÄNGE: Ein Hostname hat höchstens 253 Zeichen (DNS). Längere Werte sind «falsch» und werden NIE bereinigt — die Bash-Trimm-Ausdrücke sind
-# auf langem Leerraum quadratisch (GEMESSEN 19.10.: 10'000 Leerzeichen 0,29 s · 20'000 1,06 s · 40'000 4,08 s; QUELLE Prüfer, nicht
-# nachgemessen: rund 45 s bei 130'000 = Grösse einer Linux-Umgebungsvariablen; der Aufseher hat dort keinen Timeout). Gleiche Schranke in
-# shopify_host.mjs / .py; dort war die Node-Fassung bei «Zeichen + Leerraum + Zeichen» ebenfalls quadratisch (40'000: 1,9 s) — jetzt linear.
+# auf langem Leerraum quadratisch (GEMESSEN 19.10.: 10'000 Leerzeichen 0,29 s · 20'000 1,06 s · 40'000 4,08 s ·
+# 130'000 45,5 s = Grösse einer Linux-Umgebungsvariablen; der Aufseher hat dort keinen Timeout). Gleiche Schranke in shopify_host.mjs / .py;
+# dort war die Node-Fassung bei «Zeichen + Leerraum + Zeichen» ebenfalls quadratisch (40'000: 1,9 s · 130'000: 20,5 s) — jetzt linear.
 
 SHOPIFY_SHOP_ECHT=au3j0y-hq.myshopify.com   # EINE Quelle; das Python-Grant unten trägt ihn ebenfalls (Test schlägt bei Drift an)
 SHOP_MAXLAENGE=253                          # Hostname-Maximum (DNS); Bytes unter LC_ALL=C — für ASCII, die einzig möglichen Treffer, = Zeichen

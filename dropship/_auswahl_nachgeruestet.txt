@@ -2991,3 +2991,5 @@
 16653507723655	Farbe:3:3	2026-10-19	grosser-aufbewahrungstote-fur-outdoor-reisen-620100
 16653506937223	Farbe:3:3	2026-10-19	verriegelbare-schmuckschatulle-aus-samt-628200
 16653506544007	Farbe:2+Grösse:2:4	2026-10-19	tassen-stander-mit-2-ebenen-kunststoff-631500
+15522166047105	Stil:4:4+ki	2026-10-19	vintage-vase-aus-emaille-glas-603200
+15522153857409	Ausführung:5:5+ki	2026-10-19	doppelwandige-isolierflasche-mit-teefilter-619700

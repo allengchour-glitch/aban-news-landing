@@ -10,8 +10,8 @@ EINER Regel (shopify_secret.sh · shopify_host.mjs · dieses Modul) und EINER Fa
 
 REGEL (ASCII-genau, in allen drei Umsetzungen gleich):
  0. Länge über 253 (Hostname-Maximum, DNS) ist «falsch» und wird NIE bereinigt. GEMESSEN 19.10.: die Bash-Umsetzung trimmt auf langem Leerraum
-    quadratisch (40'000 Leerzeichen 4,08 s; 130'000 rund 45 s laut Prüfer, nicht nachgemessen), die Node-Umsetzung bei «Zeichen + Leerraum +
-    Zeichen» ebenso (40'000: 1,9 s; bei 1,3 Mio. Zeichen lief ein Prozess über 3 Minuten und wurde abgebrochen). Die Schranke greift VOR jeder Bereinigung; hier (Python, strip ist linear) steht sie wegen der gleichen Regel.
+    quadratisch (40'000 Leerzeichen 4,08 s · 130'000 45,5 s), die Node-Umsetzung bei «Zeichen + Leerraum + Zeichen» ebenso
+    (40'000: 1,9 s · 130'000: 20,5 s; bei 1,3 Mio. Zeichen lief ein Prozess über 3 Minuten und wurde abgebrochen). Die Schranke greift VOR jeder Bereinigung; hier (Python, strip ist linear) steht sie wegen der gleichen Regel.
  1. Leerraum (Leerzeichen, Tab, CR, LF, VT, FF) am Rand weg; ein Paar umschliessender Anführungszeichen weg; nochmals Leerraum weg.
  2. Kleinschreibung (nur A–Z).
  3. «https://» am Anfang weg (nur dieses Schema); Vorsatz «shopify_shop=» ODER Anhang «=shopify_shop» weg (Variablenname aus einem
