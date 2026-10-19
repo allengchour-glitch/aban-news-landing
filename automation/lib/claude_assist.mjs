@@ -7,6 +7,7 @@ import { classifyChanges } from './claude_assist_changes.mjs';
 import { inspectReadiness } from './claude_assist_readiness.mjs';
 import { createBoundedRunner } from './claude_assist_runner.mjs';
 import { validateCommitPins, planCommitRange } from './claude_assist_commits.mjs';
+import { captureCheckEvidence, compareCheckEvidence } from './claude_assist_evidence.mjs';
 
 const REPO = 'allengchour-glitch/aban-news-landing';
 const JOURNAL = 'dropship/assistant/handoff.jsonl';
@@ -16,7 +17,12 @@ const secret = /\b(?:shpat_|shpss_|ghp_|github_pat_|sk-ant-|sk-proj-)[A-Za-z0-9_
 export const SUITES = Object.freeze({
   core: ['automation/lib/shopify_gql_test.mjs', 'automation/lib/shopify_secret_test.mjs', 'automation/lib/kanal_sperren_test.mjs'],
   seo: ['automation/seo-optimizer_test.mjs', 'automation/lib/seo_titel_test.mjs'],
-  assist: ['automation/lib/claude_assist_test.mjs', 'automation/lib/claude_assist_mcp_test.mjs', 'automation/lib/claude_assist_changes_test.mjs', 'automation/lib/claude_assist_readiness_test.mjs', 'automation/lib/claude_assist_launch_test.mjs', 'automation/lib/claude_assist_runner_test.mjs', 'automation/lib/claude_assist_commits_test.mjs'],
+  assist: ['automation/lib/claude_assist_test.mjs', 'automation/lib/claude_assist_mcp_test.mjs', 'automation/lib/claude_assist_changes_test.mjs', 'automation/lib/claude_assist_readiness_test.mjs', 'automation/lib/claude_assist_launch_test.mjs', 'automation/lib/claude_assist_runner_test.mjs', 'automation/lib/claude_assist_commits_test.mjs', 'automation/lib/claude_assist_evidence_test.mjs'],
+});
+export const CHECK_INPUTS = Object.freeze({
+  core: Object.freeze([...SUITES.core, 'automation/lib/shopify_gql.mjs', 'automation/lib/shopify_secret.mjs', 'automation/lib/kanal_sperren.mjs', 'automation/lib/claude_assist_offline.mjs']),
+  seo: Object.freeze([...SUITES.seo, 'automation/seo-optimizer.mjs', 'automation/lib/seo_titel.mjs', 'automation/lib/shopify_gql.mjs', 'automation/lib/shopify_secret.mjs', 'automation/lib/claude_assist_offline.mjs']),
+  assist: Object.freeze([...SUITES.assist, 'automation/claude-assist.mjs', ...['claude_assist', 'claude_assist_mcp', 'claude_assist_offline', 'claude_assist_changes', 'claude_assist_readiness', 'claude_assist_launch', 'claude_assist_runner', 'claude_assist_commits', 'claude_assist_evidence'].map(name => 'automation/lib/' + name + '.mjs')]),
 });
 export const POLICY = Object.freeze({
   scope: 'LuxeStyle / luxestyle.ch only', brandId: 6227837, timezone: 'Europe/Zurich',
@@ -159,17 +165,37 @@ export function createAssistant(root, { runner = boundedRun } = {}) {
       if (plan.state === 'unknown') return { suite, status: 'unknown', plan, results: [] };
       const runs = [];
       for (const selected of plan.suites) runs.push(await checks({ suite: selected }));
-      return { suite, plan, status: runs.some(r => r.status === 'failed') ? 'failed' : plan.state === 'unmapped' || !runs.length ? 'unknown' : runs.every(r => r.status === 'passed') ? 'passed' : 'unknown', results: runs,
+      let planAfter;
+      try { planAfter = await changePlan(); }
+      catch { planAfter = { state: 'unknown', reason: 'post_test_change_read_unavailable', files: null, suites: [], uncovered: null }; }
+      const fingerprint = value => value.state === 'unknown' ? null : SHA(JSON.stringify({ state: value.state, files: value.files, suites: value.suites, uncovered: value.uncovered, ignored: value.ignored }));
+      const beforeFingerprint = fingerprint(plan), afterFingerprint = fingerprint(planAfter);
+      const changeCoverage = { state: afterFingerprint === null ? 'unknown' : beforeFingerprint === afterFingerprint ? 'current' : 'stale',
+        beforeFingerprint, afterFingerprint, note: 'Path coverage before and after only; selected profile bytes are checked separately.' };
+      return { suite, plan, planAfter, changeCoverage, status: runs.some(r => r.status === 'failed') ? 'failed' : changeCoverage.state !== 'current' || plan.state === 'unmapped' || !runs.length ? 'unknown' : runs.every(r => r.status === 'passed') ? 'passed' : 'unknown', results: runs,
         caveat: !runs.length ? 'No mapped tests were selected; this is not a passing test run.' : 'Only the selected fixed profiles were executed; other paths remain unverified.' };
     }
     if (!Object.hasOwn(SUITES, suite)) throw Error('unknown_suite');
     await requireRepo();
+    const startedAt = new Date().toISOString();
+    const capture = () => captureCheckEvidence({ paths: CHECK_INPUTS[suite] }, { readFile: (file, maxBytes) => readRaw(root, file, maxBytes) });
+    const before = capture();
+    const metadata = { suite, nodeVersion: process.versions.node, startedAt,
+      caveat: 'Only fixed known inputs are compared before and after. Transitive inputs, environment changes and transient edits restored between reads are not a frozen snapshot, live verification or approval.' };
+    if (before.state !== 'available') return { ...metadata, status: 'unknown', results: [], reason: 'check_inputs_unavailable',
+      finishedAt: new Date().toISOString(), evidence: { state: 'unknown', before, after: null } };
+    const finish = result => {
+      const after = capture(), comparison = compareCheckEvidence(before, after);
+      return { ...metadata, ...result, status: result.status === 'failed' ? 'failed' : result.status === 'passed' && comparison.state === 'current' ? 'passed' : 'unknown',
+        finishedAt: new Date().toISOString(), evidence: { ...comparison, before, after },
+        caveat: metadata.caveat + ' ' + (result.caveat ?? '') };
+    };
     const results = [];
     if (suite === 'assist') {
       try { for (const file of SUITES.assist) readSmall(root, file); }
-      catch { return { suite, status: 'unknown', results: [], reason: 'missing_unreadable_or_unsafe_test' }; }
+      catch { return finish({ status: 'unknown', results: [], reason: 'missing_unreadable_or_unsafe_test' }); }
       const run = await runner(process.execPath, ['--test', '--test-reporter=spec', ...SUITES.assist.map(file => path.join(root, file))], { cwd: root, env: cleanEnv(), timeoutMs: 30000, maxBytes: 32768 });
-      return { suite, status: run.status, results: [{ files: SUITES.assist, ...run }], caveat: 'Own trusted integration tests require child processes; no network preload in this profile. Sanitized environment is not an OS sandbox.' };
+      return finish({ status: run.status, results: [{ files: SUITES.assist, ...run }], caveat: 'Own trusted integration tests require child processes; no network preload in this profile. Sanitized environment is not an OS sandbox.' });
     }
     for (const file of SUITES[suite]) {
       try { readSmall(root, file); readSmall(root, 'automation/lib/claude_assist_offline.mjs'); }
@@ -177,8 +203,8 @@ export function createAssistant(root, { runner = boundedRun } = {}) {
       const r = await runner(process.execPath, ['--import', path.join(root, 'automation/lib/claude_assist_offline.mjs'), path.join(root, file)], { cwd: root, env: cleanEnv(), timeoutMs: 15000, maxBytes: 16384 });
       results.push({ file, ...r });
     }
-    return { suite, source: 'local_offline_tests', status: results.every(r => r.status === 'passed') ? 'passed' : results.some(r => r.status === 'failed') ? 'failed' : 'unknown', results,
-      caveat: 'Fixed reviewed test paths; credentials removed and ordinary Node networking blocked. This is not a sandbox for hostile repository code, live account verification or publishing approval.' };
+    return finish({ source: 'local_offline_tests', status: results.every(r => r.status === 'passed') ? 'passed' : results.some(r => r.status === 'failed') ? 'failed' : 'unknown', results,
+      caveat: 'Fixed reviewed test paths; credentials removed and ordinary Node networking blocked. This is not a sandbox for hostile repository code, live account verification or publishing approval.' });
   }
   async function changePlan(args = {}) {
     keys(args, ['baseCommit', 'headCommit']);
@@ -211,6 +237,14 @@ export function createAssistant(root, { runner = boundedRun } = {}) {
       } catch { return { file: ref.file, state: 'unknown', expectedSha256: ref.sha256 }; }
     });
     return { state: files.some(f => f.state === 'unknown') ? 'unknown' : files.some(f => f.state === 'changed') ? 'stale' : 'current', files };
+  }
+  function pinReferences(files) {
+    if (!Array.isArray(files) || files.length > 6) throw Error('invalid_files');
+    return [...new Set(files)].sort().map(file => {
+      if (!luxeReference(file)) throw Error('file_outside_luxestyle_scope');
+      const body = readRaw(root, file); decode(body);
+      return { file, sha256: SHA(body) };
+    });
   }
   function reviewList(args = {}) {
     keys(args, ['after']);
@@ -263,9 +297,13 @@ export function createAssistant(root, { runner = boundedRun } = {}) {
           command: ['node', 'automation/claude-assist.mjs', 'review-get', answer.requestId],
           note: 'Manually recorded review answer; verify its sources and current owner instructions. It is not an authenticated model response or permission for live actions.' };
       }
-      return handoff ? { state: 'available', kind: 'resume_handoff', id: handoff.id, nextStep: handoff.nextStep, blockers: handoff.blockers,
-        note: 'Manually recorded next step; verify against current owner instructions before acting.' }
-        : { state: 'unknown', kind: 'no_recorded_next_step', note: 'No work was selected from the available local history; this does not prove all work is complete.' };
+      if (handoff) {
+        const evidence = referencesCurrent(handoff.files);
+        return { state: 'available', kind: handoff.files?.length && evidence.state !== 'current' ? 'verify_handoff_sources' : 'resume_handoff',
+          id: handoff.id, nextStep: handoff.nextStep, blockers: handoff.blockers, evidence,
+          note: 'Manually recorded next step; verify its sources and current owner instructions before acting. It is not permission for live actions.' };
+      }
+      return { state: 'unknown', kind: 'no_recorded_next_step', note: 'No work was selected from the available local history; this does not prove all work is complete.' };
     } catch { return { state: 'unknown', kind: 'inspect_history', note: 'History changed or is unreadable; preserve it and inspect before continuing.' }; }
   }
   async function selfCheck() {
@@ -328,21 +366,17 @@ export function createAssistant(root, { runner = boundedRun } = {}) {
     } finally { if (tmp) fs.rmSync(tmp, { force: true }); fs.closeSync(fd); fs.unlinkSync(lock); }
   }
   async function save(args) {
-    keys(args, ['summary', 'nextStep', 'blockers']);
+    keys(args, ['summary', 'nextStep', 'blockers', 'files']);
     const summary = text(args.summary, 4000, 'summary'), nextStep = text(args.nextStep, 2000, 'nextStep');
     const blockers = args.blockers ?? [];
     if (!Array.isArray(blockers) || blockers.length > 12) throw Error('invalid_blockers');
-    return append({ summary, nextStep, blockers: blockers.map(s => text(s, 500, 'blocker')) }, 'handoff');
+    const pinned = Object.hasOwn(args, 'files') ? { files: pinReferences(args.files) } : {};
+    return append({ summary, nextStep, blockers: blockers.map(s => text(s, 500, 'blocker')), ...pinned }, 'handoff');
   }
   async function reviewRequest(args) {
     keys(args, ['question', 'files']);
     const summary = text(args.question, 4000, 'question'), files = args.files ?? [];
-    if (!Array.isArray(files) || files.length > 6) throw Error('invalid_files');
-    const refs = [...new Set(files)].sort().map(file => {
-      if (!luxeReference(file)) throw Error('file_outside_luxestyle_scope');
-      const body = readRaw(root, file); decode(body);
-      return { file, sha256: SHA(body) };
-    });
+    const refs = pinReferences(files);
     return append({ summary, nextStep: 'Codex: inspect this question and referenced file hashes; prepare a review or patch. No model has answered yet.', blockers: [], files: refs }, 'review_request', all => {
       const fingerprint = JSON.stringify(refs), answered = new Set(all.filter(r => r.kind === 'review_answer').map(r => r.requestId));
       const existing = all.find(r => r.kind === 'review_request' && !answered.has(r.id) && r.summary === summary && JSON.stringify(r.files ?? []) === fingerprint);

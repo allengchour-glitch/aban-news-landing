@@ -1,0 +1,28 @@
+{
+  "url": "https://static.metricool.com/planner/202610/6227837-file-4401635778311019004.mp4",
+  "state": "downloaded_for_inspection",
+  "use": "inspection_only_not_approved",
+  "httpStatus": 200,
+  "path": "/workspace/luxestyle-review/owner-review-20261019/existing-projector-post-399397274.mp4",
+  "bytes": 4821121,
+  "sha256": "0d59f5cafd8b3b7b6f3562c799239c99faf2b42ce45fbd425c63bb7f0c19c27c",
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_type": "video",
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "30/1"
+      },
+      {
+        "codec_type": "audio",
+        "r_frame_rate": "0/0"
+      }
+    ],
+    "format": {
+      "duration": "15.000000"
+    }
+  }
+}
