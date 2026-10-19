@@ -10529,3 +10529,5 @@ kinder-fahrradhelm-111424	1422085975990996992	16	10.02	ok	landeseite
 dichte-lockige-einzel-wimpern-615400	2503170401211615600	3	5.19	ok	landeseite
 schutzset-fur-roller-skating-377152	1421788781404622848	16	9.56	ok	landeseite
 trendige-weiche-magnetische-augenwimpern-622500	2503110300561622700	7	6.18	ok	landeseite
+integrierter-fahrradhelm-992768	1420209556184764416	16	12.34	ok	landeseite
+falsche-wimpern-set-zum-selber-machen-625800	2503040713021626000	16	5.49	ok	landeseite
