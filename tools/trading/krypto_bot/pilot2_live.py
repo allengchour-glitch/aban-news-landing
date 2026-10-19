@@ -1440,8 +1440,12 @@ def _stops_vorab(spot, fut, buch, k, d, plan, nur_jetzt=False):
     short_dazu = sum(m for konto, seite, m, red in plan.get("schritte") or () if konto == "perp" and seite == "SELL" and not red)
     ende = _soll(coins_jetzt, pos - short_dazu, kurs, d)
     # nur_jetzt (nach dem Verkleinern, vor den Käufen): nie unter das, was JETZT ungesichert ist — die Ernte-Coins sind noch nicht
-    # gekauft (bleibt ein Kauf unklar oder abgelehnt, wäre der Short sonst teilweise ohne Stop); erst nach den Käufen bis zum Plan-Ende
-    sicher_p = PL.runde(jetzt["stop_perp"] if nur_jetzt else min(jetzt["stop_perp"], ende["stop_perp"]), rf["step"])
+    # gekauft (bleibt ein Kauf unklar oder abgelehnt, wäre der Short sonst teilweise ohne Stop). Nach den Käufen: nie unter das, was JETZT
+    # oder am Plan-Ende ungesichert ist (das Grössere). Auf den Stand vor dem neuen Short verkleinert, liesse der Stop den neuen Short bis
+    # zum Abgleich am Laufende ohne Stop — und kann der Abgleich nicht lesen (Kontostand dauerhaft unlesbar), bleibt die Lücke bis zur
+    # Nachkontrolle (14. Prüfung E6: Regression von E5, Standard-Fuzzer Lauf-Seeds 17244, 17363, 17706). Ein Stop über dem Plan-Ende
+    # wird weiter verkleinert (er träfe sonst die neue Ernte-Absicherung).
+    sicher_p = PL.runde(jetzt["stop_perp"] if nur_jetzt else max(jetzt["stop_perp"], ende["stop_perp"]), rf["step"])
     alt_p = _nochmal(lambda: fut.eigene_stops(sym))
     if not (alt_p and sicher_p >= rf["step"] and sum(float(a.get("quantity") or 0) for a in alt_p) > sicher_p + rf["step"] / 2):
         return False
