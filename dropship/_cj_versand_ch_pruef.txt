@@ -10270,3 +10270,15 @@ mikrofaser-schwitztuch-fur-banke-607100	2605290215161607800	16	8.66	ok	landeseit
 atmungsaktive-mesh-laufschuhe-fur-jungen-601400	2409191108471601600	16	9.75	ok	landeseite
 beruhigungsspielzeug-fur-haustiere-617100	2503280557141617300	16	10.55	ok	landeseite
 leuchtende-kinderschlappen-604500	2408280511001604700	16	6.65	ok	landeseite
+tragerloses-bade-t-shirt-mit-versteckten-knopf-635000	2605251135311635600	16	9.47	ok	landeseite
+personalisiertes-haustierkissen-608500	2503181351441608700	16	11.00	ok	landeseite
+kinder-lauflernschuhe-aus-rindsleder-614300	2408060931151614500	16	11.84	ok	landeseite
+badehandtuch-fur-zuhause-634000	2605240730541634600	16	9.88	ok	landeseite
+schnell-trocknendes-badetuch-631600	2605230924101632200	16	9.47	ok	landeseite
+jungen-sneaker-rutschfest-612700	2407110647421612900	16	10.55	ok	landeseite
+futterversteck-matte-fur-haustiere-604700	2502190531351604900	16	8.25	ok	landeseite
+baby-badetuch-aus-reiner-baumwolle-634200	2605230904021634700	16	8.05	ok	landeseite
+kinder-laufschuhe-mit-netz-613000	2407080952141613200	16	12.32	ok	landeseite
+katzenspielzeug-mit-elastischer-schnur-608700	2501280207411608900	16	6.01	ok	landeseite
+kinder-schuhe-mit-led-licht-609000	2407060639081609300	7	10.18	ok	landeseite
+gestrickte-babysofadencke-mit-gesticktem-namen-604000	2605210251481604700	16	9.20	ok	landeseite
