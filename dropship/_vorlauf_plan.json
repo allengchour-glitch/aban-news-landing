@@ -296,13 +296,13 @@
   "karussell-20261022T1915": {
    "basis_utc": "2026-10-22T19:15:00Z",
    "format": "karussell",
-   "grund": "10 Versuche ohne Kandidat",
-   "letzter_versuch": "2026-10-19T00:32:00Z",
+   "grund": "rc=0: ⛔ Ware schon beworben (hut-handschuhe-schal-3-in-1-set-609900) → posted-dup-produkt: hut-handschuhe-schal-3-in-1-set-609900\nKein postbares Karussell.",
+   "letzter_versuch": "2026-10-19T10:02:38Z",
    "mc_ids": [],
-   "reserviert_um": "2026-10-19T00:32:00Z",
-   "status": "leer",
+   "reserviert_um": "2026-10-19T10:02:38Z",
+   "status": "offen",
    "termin_utc": "2026-10-22T19:15:00Z",
-   "versuche": 10
+   "versuche": 1
   },
   "karussell-20261023T1915": {
    "basis_utc": "2026-10-23T19:15:00Z",
@@ -1769,6 +1769,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-19T09:47:33Z",
+ "stand": "2026-10-19T10:02:45Z",
  "version": 1
 }

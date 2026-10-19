@@ -1,4 +1,4 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-19T09:09Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-19T10:07Z
 
 Aktive gescannt: 1 · ohne Kategorie: 1 · heute gesetzt: 1 (SCHARF, CAP 1500) · danach offen: 0 · Fehler: 0
 
@@ -7,5 +7,5 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- fleece-gefulltes-langarm-strickshirt-mit-krage-638000 · Herrenmode → Apparel & Accessories > Clothing
+- bambus-cotton-shirt-mit-maritimen-druck-639500 · Herrenmode → Apparel & Accessories > Clothing
 
