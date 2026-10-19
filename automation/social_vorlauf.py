@@ -10,7 +10,7 @@ nach dem Lauf gelesen, der neue Eintrag (Netz + Termin) wandert mit id in `drops
 
 Modi (ohne SCHARF=1 nur Trockenlauf — zeigt Slots und Befehle, plant nichts, schreibt nichts):
   --plan [--max-min 35] [--format tiktok,pin] [--max-slots N]   Slots füllen (chronologisch, neustartfest, höchstens max-min Minuten)
-  --pruefen                                      geplante Posts gegen Shop/Medium/Pause/Stopp prüfen, Befund → DELETE (nur mit SCHARF=1)
+  --pruefen                                      geplante Posts gegen Shop/Medium/Pause/Stopp/Doppelbelegung (gleiche Produkt-ID in zwei Slots) prüfen, Befund → DELETE (nur mit SCHARF=1); vermerkt `pruefer_stand` im Plan
   --notbremse                                    ALLE zukünftigen Vorlauf-Posts löschen (nur mit SCHARF=1)
   --liste                                        Plan je Tag und Format
   --zeile                                        eine Zeile «VORLAUF: …» für die Keepalive-Ampel
@@ -70,6 +70,15 @@ SPERR_MUSTER = re.compile(r"lock aktiv|anderer poster", re.I)   # vorübergehend
 # Versuche: 10 Läufe in 2,5 h → Slot «leer» → 20 h Sperre nach Uhr statt nach Vorrat; das um 04:24 fertige Bild-Reel ging an einen späteren Slot, weil der frühere
 # 15 Minuten vorher «leer» geworden war.
 FORMAT_RANG = {"tiktok": 0, "youtube": 1, "reel_igfb": 2}   # Wert je Format (social/_lernen.json Median-Aufrufe: 275 / 175 / 33); alles andere zuletzt
+# 19.10.2026 (Strang E, GEMESSEN am Planer-Abzug 17:5x UTC): (a) 12 von 110 geplanten Slots konnte der Prüfer nie auf Kaufbarkeit prüfen — alle 7 Karussell-Slots
+# (der Poster-Ledger kennt nur «windschutzjacke», der Shop-Handle heisst «windschutzjacke-623700»: produktKey schneidet die Zahl ab) und 5 Stories (kein Link im Text);
+# die Zeile meldete nur 6. Der Produkt-Handle steht aber im Medienname (Ordner <handle>/01.jpg bzw. story_<handle>.jpg). (b) Zwei Waren standen in zwei Slots
+# (Freizeitjacke: TikTok gesendet 19.10. + Pin 24.10.; Windschutzjacke: Pin 21.10. + Karussell 24.10.), weil Pins vor dem Ledger-Fix vom 19.10. keine Produkt-Zeile
+# schrieben und Zeichenketten-Vergleiche «…-623700» ≠ «…» nie treffen. Der Prüfer vergleicht deshalb die echte Shopify-Produkt-ID.
+WERT_FORMAT = {"tiktok": 6, "youtube": 5, "reel_igfb": 4, "karussell": 3, "bild": 2, "pin": 1}   # bei Doppelbelegung bleibt der Slot mit dem höchsten Wert (Reel-Rang wie FORMAT_RANG; Pin = billigster Verlust); Stories sind eigene Fläche und zählen nicht
+PRUEFER_WARN_H = 5   # ohne vermerkten Prüferlauf (Soll: alle 2 h, in Füllphasen bis ~3 h) meldet die Zeile ⚠️
+LINK_PRODUKT = re.compile(r"luxestyle\.ch/products/([a-z0-9][a-z0-9\-]*)", re.I)
+HANDLE_FORM = re.compile(r"[a-z0-9][a-z0-9\-]*")
 
 
 def offene_sortieren(paare, plan):
@@ -733,12 +742,13 @@ def preis_veraltet(text, mn, mx):
 
 
 def storefront(handles):
-    """{handle: (verfuegbar, min, max)} über die öffentliche Storefront-API (ohne Token); fehlt ein Handle → (False, nan, nan)."""
+    """{handle: (verfuegbar, min, max, produkt_id)} über die öffentliche Storefront-API (ohne Token); fehlt ein Handle → (False, nan, nan, '').
+    Die Produkt-ID (nur Ziffern) ist die einzige Schreibweise, die zwischen Pin-Link, Karussell-Ordner und Ledger-Schlüssel übereinstimmt (19.10. Strang E)."""
     aus = {}
     handles = sorted(set(handles))
     for i in range(0, len(handles), 20):
         teil = handles[i:i + 20]
-        q = "{ " + " ".join(f'a{k}: product(handle:"{h}"){{ availableForSale priceRange{{ minVariantPrice{{ amount }} maxVariantPrice{{ amount }} }} }}' for k, h in enumerate(teil)) + " }"
+        q = "{ " + " ".join(f'a{k}: product(handle:"{h}"){{ id availableForSale priceRange{{ minVariantPrice{{ amount }} maxVariantPrice{{ amount }} }} }}' for k, h in enumerate(teil)) + " }"
         req = urllib.request.Request("https://au3j0y-hq.myshopify.com/api/2025-07/graphql.json", data=json.dumps({"query": q}).encode(),
                                      headers={"Content-Type": "application/json", "User-Agent": "luxe-vorlauf"})
         d = json.load(urllib.request.urlopen(req, timeout=40))
@@ -747,7 +757,8 @@ def storefront(handles):
         for k, h in enumerate(teil):
             p = d["data"].get(f"a{k}")
             aus[h] = (bool(p and p["availableForSale"]), float(p["priceRange"]["minVariantPrice"]["amount"]) if p else float("nan"),
-                      float(p["priceRange"]["maxVariantPrice"]["amount"]) if p else float("nan"))
+                      float(p["priceRange"]["maxVariantPrice"]["amount"]) if p else float("nan"),
+                      re.sub(r"\D", "", str(p.get("id") or "").rsplit("/", 1)[-1]) if p else "")
     return aus
 
 
@@ -831,21 +842,106 @@ def eintrag_text(p):
     return " ".join(filter(None, [p.get("text") or "", (p.get("pinterestData") or {}).get("pinLink") or ""]))
 
 
+def handle_aus_medium(url):
+    """Shop-Handle aus dem Medienname (19.10. Strang E): Karussell-Folien liegen in «…/<handle>/01.jpg», Story-Karten heissen «story_<handle>.jpg».
+    Reels, Bild-Posts und von Metricool umgehängte Kopien (…/planner/…-file-<Zahl>.jpeg) verraten nichts → ''. Kein Beweis, nur ein Kandidat: ob es den
+    Handle im Shop gibt, entscheidet die Storefront-Abfrage; unbekannte Handles bleiben ohne Urteil."""
+    teile = (url or "").split("?")[0].split("/")
+    name = teile[-1].lower() if teile else ""
+    if re.fullmatch(r"\d{1,3}\.(?:jpe?g|png|webp)", name) and len(teile) > 1:
+        h = teile[-2].lower()
+    else:
+        m = re.fullmatch(r"story_([a-z0-9][a-z0-9\-]*)\.(?:jpe?g|png|webp)", name)
+        h = m.group(1) if m else ""
+    return h if HANDLE_FORM.fullmatch(h) else ""
+
+
+def medium_handles(s, ids):
+    """Handles, die das erste Medium jedes Planer-Eintrags des Slots verrät (siehe handle_aus_medium)."""
+    aus = set()
+    for i in s.get("mc_ids", []):
+        h = handle_aus_medium(((ids.get(i) or {}).get("media") or [""])[0])
+        if h:
+            aus.add(h)
+    return aus
+
+
+def slot_formen(s, ids):
+    """Alle Handle-Schreibweisen eines Slots OHNE Netzzugriff: Plan-Schlüssel (slug:/Klartext), Links in Text und Pin-Link, Medienname.
+    Nur Zeichenfolgen, die wie ein Handle aussehen (landen in einer GraphQL-Abfrage). «pid:»/«name:»-Schlüssel gehören nicht hierher."""
+    aus = set(medium_handles(s, ids))
+    for k in list(s.get("handles") or []) + ([s["handle"]] if s.get("handle") else []):
+        k = str(k).strip().lower()
+        if k.startswith("slug:"):
+            k = k[5:].strip()
+        elif k.startswith(("pid:", "name:")):
+            continue
+        aus.add(k)
+    for i in s.get("mc_ids", []):
+        aus |= {h.lower() for h in LINK_PRODUKT.findall(eintrag_text(ids.get(i) or {}))}
+    return {a for a in aus if HANDLE_FORM.fullmatch(a)}
+
+
+def doppel_befunde(plan, ids_je_slot, jetzt_utc, ausser=()):
+    """Dieselbe Shopify-Produkt-ID in zwei verschiedenen Slots → {slot: [Grund]} für alle bis auf EINEN (Hausregel «Ware nie zweimal, auch nicht
+    plattformübergreifend»). Stories zählen nicht (eigene Fläche, wie in metricool_planer_wache), IG+FB-/Threads-Zwillinge gehören zum selben Slot.
+    Bleibt ein Slot, der schon läuft oder in < 10 min läuft (nicht mehr zurückziehbar), gehen ALLE künftigen; sonst bleibt der mit dem höchsten
+    WERT_FORMAT (gleichwertig: der frühere). Slots, die aus anderem Grund ohnehin zurückgezogen werden (`ausser`), taugen nicht als Anker."""
+    je = {}
+    for n, pids in ids_je_slot.items():
+        s = plan["slots"].get(n)
+        if not s or s["status"] != "geplant" or s["format"] not in WERT_FORMAT:
+            continue
+        for pid in pids:
+            je.setdefault(pid, []).append(n)
+    grenze = jetzt_utc + timedelta(minutes=10)
+    b = {}
+    for pid, namen in sorted(je.items()):
+        if len(namen) < 2:
+            continue
+        laeuft = sorted(namen, key=lambda n: (plan["slots"][n]["termin_utc"], n))
+        laeuft = [n for n in laeuft if von_iso(plan["slots"][n]["termin_utc"]) <= grenze]
+        offen = [n for n in namen if n not in laeuft]
+        if not offen:
+            continue
+        if laeuft:
+            behalten, grund = None, f"Ware schon in {laeuft[0]}"
+        else:
+            kandidaten = [n for n in offen if n not in ausser]
+            if not kandidaten:
+                continue   # alle werden ohnehin zurückgezogen
+            behalten = min(kandidaten, key=lambda n: (-WERT_FORMAT[plan["slots"][n]["format"]], plan["slots"][n]["termin_utc"], n))
+            grund = f"Ware schon in {behalten}"
+        for n in offen:
+            if n != behalten:
+                b.setdefault(n, []).append(f"Produkt {pid} doppelt belegt: {grund}")
+    return b
+
+
 def befunde_fuer(plan, planer, jetzt_utc):
     """Reine Prüfung → {slot: [Grund, …]}; nur Slots mit Termin in der Zukunft (> 10 Min)."""
     ids = {p.get("id"): p for p in planer}
     pause_h = pause_handles()
-    zukunft = {n: s for n, s in plan["slots"].items() if s["status"] == "geplant" and von_iso(s["termin_utc"]) > jetzt_utc + timedelta(minutes=10)}
+    geplant = {n: s for n, s in plan["slots"].items() if s["status"] == "geplant"}
+    zukunft = {n: s for n, s in geplant.items() if von_iso(s["termin_utc"]) > jetzt_utc + timedelta(minutes=10)}
     alle_handles = set()
     hs = {n: [h.lower() for h in handles_aufloesen(s.get("handles", []))] for n, s in zukunft.items()}   # nur lokal: der Plan behält die Rohschlüssel
+    links = {}
     for n, s in zukunft.items():
+        hs[n] = sorted(set(hs[n]) | medium_handles(s, ids))   # 19.10.: Karussell-Ordner/Story-Datei tragen den echten Handle (Ledger-Schlüssel ist gekürzt)
         alle_handles |= set(hs[n])
+        links[n] = set()
         for i in s["mc_ids"]:
             p = ids.get(i)
             if p:
-                alle_handles |= {h.lower() for h in re.findall(r"luxestyle\.ch/products/([a-z0-9][a-z0-9\-]*)", eintrag_text(p), re.I)}
+                links[n] |= {h.lower() for h in LINK_PRODUKT.findall(eintrag_text(p))}
+        alle_handles |= links[n]
+    formen = {n: slot_formen(s, ids) for n, s in geplant.items()}   # auch gelaufene Slots: sie sind die Anker der Doppelbelegungs-Prüfung
+    for f in formen.values():
+        alle_handles |= f
     shop = {}
     plan.pop("pruefer_shop_blind", None)
+    plan.pop("pruefer_ohne_urteil", None)
     try:
         shop = storefront(alle_handles) if alle_handles else {}
     except Exception as e:
@@ -869,7 +965,7 @@ def befunde_fuer(plan, planer, jetzt_utc):
             aus_text = {h.lower() for h in re.findall(r"luxestyle\.ch/products/([a-z0-9][a-z0-9\-]*)", text, re.I)}
             for h in aus_text | set(hs[n]):
                 if shop and h in shop:
-                    ok, mn, mx = shop[h]
+                    ok, mn, mx = shop[h][:3]
                     if h not in aus_text and mn != mn:
                         continue   # Handle nur aus dem Poster-Ledger und dem Shop unbekannt (gekürzter Namensschlüssel) → kein Urteil
                     if not ok:
@@ -885,6 +981,25 @@ def befunde_fuer(plan, planer, jetzt_utc):
                     gruende.append("Medium-Adresse antwortet nicht")
         if gruende:
             b[n] = sorted(set(gruende))
+    if shop:
+        # Slots, für die der Prüfer KEIN Produkt im Shop kennt, sind blind (19.10. gemessen: 12 von 110, die Zeile zählte nur 6) — sichtbar machen, nicht löschen
+        def urteil(n):
+            return any(h in shop and (shop[h][1] == shop[h][1] or h in links.get(n, ())) for h in set(hs.get(n, ())) | formen[n] | links.get(n, set()))
+        ohne = sorted(n for n in zukunft if not urteil(n))
+        if ohne:
+            plan["pruefer_ohne_urteil"] = ohne
+        # Doppelbelegung nach echter Produkt-ID (Pin-Link «…-623700» ≠ Ledger «…» ≠ Karussell-Ordner): gelaufene Slots sind Anker, künftige werden beanstandet
+        ids_slot = {}
+        for n, s in geplant.items():
+            pids = {str(k)[4:] for k in (s.get("handles") or []) if str(k).startswith("pid:") and str(k)[4:].isdigit()}
+            for h in set(hs.get(n, ())) | formen[n] | links.get(n, set()):
+                v = shop.get(h)
+                if v and len(v) > 3 and v[3]:
+                    pids.add(v[3])
+            if pids:
+                ids_slot[n] = pids
+        for n, gr in doppel_befunde(plan, ids_slot, jetzt_utc, ausser=set(b)).items():
+            b[n] = sorted(set(b.get(n, [])) | set(gr))
     return b
 
 
@@ -914,8 +1029,10 @@ def pruefen(notbremse=False):
                 if s["status"] == "geplant" and von_iso(s["termin_utc"]) > jetzt() + timedelta(minutes=5)}
     else:
         ziel = befunde_fuer(plan, planer, jetzt())
+    plan["pruefer_stand"] = iso(jetzt())   # 19.10. (Strang E): bisher wusste NIEMAND, wann der Prüfer zuletzt lief (kein Protokoll, `stand` zählt nur den Plan-Lauf); zeile() meldet ab PRUEFER_WARN_H
     if not ziel:
         print(f"PRUEFEN: {sum(1 for s in plan['slots'].values() if s['status'] == 'geplant')} geplante Slots, keine Befunde"
+              f"{' · ohne Produkt-Urteil: ' + str(len(plan['pruefer_ohne_urteil'])) if plan.get('pruefer_ohne_urteil') else ''}"
               f"{' (⚠️ Shop nicht lesbar: ' + plan['pruefer_shop_blind'][21:] + ')' if plan.get('pruefer_shop_blind') else ''}.")
         plan.pop("pruefer_sperre", None)
         plan_speichern(plan) if SCHARF else None
@@ -1002,9 +1119,23 @@ def zeile(plan=None, regeln=None):
         warn += f"⚠️ {len(bald_offen)} Slot(s) in den nächsten 12 h OHNE Planer-Eintrag · "
     elif zukunft and alt_h > 3:
         warn += f"⚠️ Plan-Stand {alt_h:.0f} h alt (Autopilot-Runde läuft nicht?) · "
-    ohne_produkt = [s for s in geplant if s["format"] in ("bild", "karussell", "story") and not s.get("handles") and not s.get("handle")]
+    # 19.10. (Strang E): zählt auch Slots, deren Schlüssel im Shop nichts treffen (Karussell-Ledger «windschutzjacke» ≠ Handle «…-623700»); die Liste schreibt der Prüfer
+    zuk_namen = {n for n, s in plan["slots"].items() if s["status"] == "geplant" and von_iso(s["termin_utc"]) > jetzt_utc}
+    ohne_produkt = {n for n in plan.get("pruefer_ohne_urteil", []) if n in zuk_namen}
+    if not plan.get("pruefer_stand") or plan.get("pruefer_shop_blind"):
+        # kein Urteil des Prüfers vorhanden (noch nie gelaufen / Shop unlesbar) → grobe Schätzung am Schlüssel; sonst gilt nur, was der Prüfer im Shop nicht fand
+        ohne_produkt |= {n for n in zuk_namen if plan["slots"][n]["format"] in ("bild", "karussell", "story") and not plan["slots"][n].get("handles") and not plan["slots"][n].get("handle")}
     if ohne_produkt:
         warn += f"ℹ️ {len(ohne_produkt)} Slot(s) ohne prüfbares Produkt · "
+    if geplant:   # ohne Geplantes gibt es nichts zu prüfen
+        try:
+            pruefer_h = (jetzt_utc - von_iso(plan["pruefer_stand"])).total_seconds() / 3600 if plan.get("pruefer_stand") else None
+        except ValueError:
+            pruefer_h = 99
+        if pruefer_h is None:
+            warn += "ℹ️ PRÜFER: noch kein Lauf vermerkt · "
+        elif pruefer_h > PRUEFER_WARN_H:
+            warn += f"⚠️ PRÜFER seit {pruefer_h:.0f} h ohne Lauf (alle 2 h erwartet) · "
     return (f"{warn}VORLAUF: {len(geplant)} Slots geplant" + (f" bis {bis.astimezone(TZ):%d.%m. %H:%M}" if bis else "") +
             f" · offen {len(offen)}" + (f" ({teil})" if teil else "") +
             f" · Stand {plan.get('stand', '?')[:16]}")
@@ -1175,6 +1306,95 @@ def selbsttest():
         ok(queue_handles("bild", [999]) == [] and queue_handles("tiktok", [111]) == [], "queue_handles: unbekannt/anderes Format muss leer sein")
     finally:
         globals()["REPO"] = alt_repo2
+    # 19. Strang E (19.10.2026) — Produkt aus dem Medienname, Doppelbelegung nach Produkt-ID, Prüfer-Stand. Alles mit Fake-Daten, ohne Netz.
+    ok(handle_aus_medium("https://raw.githubusercontent.com/o/r/b/social/instagram/windschutzjacke-623700/01.jpg?v=1") == "windschutzjacke-623700", "Karussell-Ordner → Handle")
+    ok(handle_aus_medium("https://raw.githubusercontent.com/o/r/b/social/stories/story_plusch-eule-fga85736.jpg") == "plusch-eule-fga85736", "Story-Datei → Handle")
+    ok(handle_aus_medium("https://cdn.shopify.com/s/files/1/x/files/reel_2408090656421601600.mp4?v=1") == "", "Reel-Name verrät keinen Handle")
+    ok(handle_aus_medium("https://static.metricool.com/planner/202610/6227837-file-18018407374559714335.jpeg") == "", "Metricool-Kopie verrät keinen Handle")
+    ok(handle_aus_medium("") == "" and handle_aus_medium("https://x/y/01.jpg") == "y", "leer/Randfälle")
+    _alt = {k: globals()[k] for k in ("storefront", "medium_ok", "planer_lesen", "plan_laden", "pause_handles")}
+    _alt_tok, _alt_pid = W.token, dict(_PID_HANDLE)
+    nan = float("nan")
+    SHOP = {"windschutzjacke-623700": (True, 29.9, 29.9, "111"), "freizeitjacke-616400": (True, 20.0, 20.0, "222"),
+            "anderes-produkt-123456": (True, 9.9, 9.9, "333"), "zweimal-777777": (True, 5.9, 5.9, "444")}
+    globals()["storefront"] = lambda hs: {h: SHOP.get(h, (False, nan, nan, "")) for h in hs}
+    globals()["medium_ok"] = lambda u: True
+    globals()["pause_handles"] = lambda: {}
+    _PID_HANDLE["333"] = "anderes-produkt-123456"
+    def _e(i, netze_, text="", media=(), pin=""):
+        d = {"id": i, "draft": False, "autoPublish": True, "text": text, "media": list(media), "providers": [{"network": n} for n in netze_]}
+        if pin:
+            d["pinterestData"] = {"pinLink": pin}
+        return d
+    RAW = "https://raw.githubusercontent.com/o/r/b/social/"
+    sl = lambda fmt, t, mc, handles=None: {"format": fmt, "termin_utc": t, "status": "geplant", "mc_ids": mc, "handles": handles or []}
+    plan5 = {"slots": {
+        "tiktok-a": sl("tiktok", "2098-12-31T08:00:00Z", [10]),                      # läuft schon (Termin vor «jetzt»): Anker
+        "pin-b": sl("pin", "2099-01-05T14:40:00Z", [11]),                            # dieselbe Ware wie tiktok-a → zurück
+        "pin-c": sl("pin", "2099-01-02T14:40:00Z", [12]),                            # dieselbe Ware wie karussell-d → der billigere Pin geht
+        "karussell-d": sl("karussell", "2099-01-04T20:15:00Z", [13], ["windschutzjacke"]),   # Ledger-Schlüssel gekürzt, Handle nur im Ordner
+        "bild-e": sl("bild", "2099-01-03T08:00:00Z", [14, 15], ["pid:333"]),         # IG + Threads-Zwilling: ein Slot, kein Doppel
+        "story-f": sl("story", "2099-01-03T10:00:00Z", [16]),                        # Story mit Ware von tiktok-a: eigene Fläche, kein Doppel
+        "tiktok-g": sl("tiktok", "2099-01-06T08:00:00Z", [17]),
+        "tiktok-h": sl("tiktok", "2099-01-07T08:00:00Z", [18]),                      # gleichwertig, später → zurück
+        "karussell-i": sl("karussell", "2099-01-08T20:15:00Z", [19], ["unbekanntes-set"]),   # Shop kennt nichts → «ohne Urteil», kein Befund
+    }}
+    planer5 = [
+        _e(10, ["tiktok"], "Jacke 🔗 luxestyle.ch/products/freizeitjacke-616400"),
+        _e(11, ["pinterest"], "Jacke", pin="https://luxestyle.ch/products/freizeitjacke-616400?utm_source=pinterest"),
+        _e(12, ["pinterest"], "Windjacke", pin="https://luxestyle.ch/products/windschutzjacke-623700?utm_source=pinterest"),
+        _e(13, ["instagram"], "Windjacke · CHF 29.90\nJetzt im Shop – Link in Bio", media=[RAW + "instagram/windschutzjacke-623700/01.jpg", RAW + "instagram/windschutzjacke-623700/02.jpg"]),
+        _e(14, ["instagram"], "Mini · CHF 9.90 Link in Bio"),
+        _e(15, ["threads"], "Mini · CHF 9.90 luxestyle.ch/products/anderes-produkt-123456?utm_source=threads"),
+        _e(16, ["instagram", "facebook"], "", media=[RAW + "stories/story_freizeitjacke-616400.jpg"]),
+        _e(17, ["tiktok"], "luxestyle.ch/products/zweimal-777777"),
+        _e(18, ["tiktok"], "luxestyle.ch/products/zweimal-777777"),
+        _e(19, ["instagram"], "Set", media=[RAW + "instagram/unbekanntes-set/01.jpg"]),
+    ]
+    jt5 = datetime(2098, 12, 31, 12, 0, tzinfo=UTC)
+    try:
+        b5 = befunde_fuer(plan5, planer5, jt5)
+        ok(sorted(b5) == ["pin-b", "pin-c", "tiktok-h"], f"Doppelbelegung: erwarte pin-b, pin-c, tiktok-h — habe {sorted(b5)}: {b5}")
+        ok(all("doppelt belegt" in g for n in ("pin-b", "pin-c", "tiktok-h") for g in b5.get(n, [])), f"Grund «doppelt belegt» fehlt: {b5}")
+        ok("karussell-d" not in b5 and "story-f" not in b5 and "bild-e" not in b5 and "tiktok-a" not in b5 and "tiktok-g" not in b5, f"Falschalarm: {b5}")
+        ok(plan5.get("pruefer_ohne_urteil") == ["karussell-i"], f"Slots ohne Urteil: erwarte ['karussell-i'], habe {plan5.get('pruefer_ohne_urteil')}")
+        # Kanarienvogel Blindheit: ist die Ware weg, MUSS auch der Karussell-Slot beanstandet werden (vorher kein Urteil: Ledger «windschutzjacke» ≠ Handle)
+        SHOP["windschutzjacke-623700"] = (False, 29.9, 29.9, "111")
+        b6 = befunde_fuer(plan5, planer5, jt5)
+        ok(any("nicht kaufbar" in g for g in b6.get("karussell-d", [])), f"Karussell-Slot blieb blind: {b6.get('karussell-d')}")
+        ok(any("nicht kaufbar" in g for g in b6.get("pin-c", [])), f"Pin über Link nicht beanstandet: {b6.get('pin-c')}")
+        SHOP["windschutzjacke-623700"] = (True, 29.9, 29.9, "111")
+        # Anker, der ohnehin zurückgezogen wird, taugt nicht als Anker: dann bleibt der andere
+        d_ = doppel_befunde(plan5, {"pin-c": {"111"}, "karussell-d": {"111"}}, jt5, ausser={"karussell-d"})
+        ok("pin-c" not in d_, f"Anker karussell-d fällt aus, pin-c muss bleiben: {d_}")
+        ok(doppel_befunde(plan5, {"pin-c": {"111"}, "karussell-d": {"222"}}, jt5) == {}, "verschiedene Waren dürfen kein Befund sein")
+        ok(doppel_befunde(plan5, {"story-f": {"222"}, "tiktok-a": {"222"}}, jt5) == {}, "Story zählt nicht")
+        # pruefen() vermerkt den Lauf (ohne Netz, ohne Schreiben: SCHARF ist im Selbsttest aus)
+        import contextlib, io
+        P5 = copy.deepcopy(plan5)
+        globals()["planer_lesen"] = lambda: planer5
+        globals()["plan_laden"] = lambda pfad=PLAN: P5
+        W.token = lambda: "test"
+        with contextlib.redirect_stdout(io.StringIO()):
+            rc5 = pruefen()
+        ok(rc5 == 0 and P5.get("pruefer_stand", "")[:4] == "2026", f"pruefen() vermerkt den Lauf nicht: rc={rc5} stand={P5.get('pruefer_stand')}")
+    except Exception as e:
+        ok(False, f"Test Strang E abgebrochen: {type(e).__name__}: {str(e)[:160]}")
+    finally:
+        globals().update(_alt)
+        W.token = _alt_tok
+        _PID_HANDLE.clear(); _PID_HANDLE.update(_alt_pid)
+    # zeile(): Prüfer lange still → ⚠️; frisch → still; nie gelaufen → ℹ️; ohne Geplantes → nichts
+    def _pz(**kw):
+        return {"version": 1, "stand": iso(jetzt()), "slots": {"tiktok-z": {"format": "tiktok", "termin_utc": "2099-01-01T08:00:00Z", "status": "geplant", "mc_ids": [1], "handle": "x"}}, **kw}
+    ok("PRÜFER seit 8 h" in zeile(_pz(pruefer_stand=iso(jetzt() - timedelta(hours=8))), regeln), "8 h ohne Prüferlauf muss auffallen")
+    ok("PRÜFER" not in zeile(_pz(pruefer_stand=iso(jetzt() - timedelta(hours=1))), regeln), "1 h alter Prüferlauf darf nicht warnen")
+    ok("noch kein Lauf vermerkt" in zeile(_pz(), regeln), "fehlender Prüferstand muss als Info erscheinen")
+    ok("PRÜFER" not in zeile({"version": 1, "stand": iso(jetzt()), "slots": {}}, regeln), "ohne Geplantes keine Prüfer-Meldung")
+    _st = {"format": "story", "termin_utc": "2099-01-01T08:00:00Z", "status": "geplant", "mc_ids": [1]}
+    ok("ohne prüfbares Produkt" in zeile({"version": 1, "stand": iso(jetzt()), "slots": {"story-z": _st}}, regeln), "ohne Prüferlauf zählt die grobe Schätzung (Story ohne Schlüssel)")
+    ok("ohne prüfbares Produkt" not in zeile({"version": 1, "stand": iso(jetzt()), "pruefer_stand": iso(jetzt()), "slots": {"story-z": _st}}, regeln), "nach dem Prüferlauf zählt nur sein Urteil (Story-Handle steht im Medienname)")
+    ok("ℹ️ 1 Slot(s) ohne prüfbares Produkt" in zeile(_pz(pruefer_stand=iso(jetzt()), pruefer_ohne_urteil=["tiktok-z", "weg-0"]), regeln), "pruefer_ohne_urteil muss zählen (nur noch geplante Zukunft)")
     print("OK Selbsttest" if not fehler else "FEHLER:\n  " + "\n  ".join(fehler))
     return 1 if fehler else 0
 

@@ -14,7 +14,7 @@
  *   IG_USER_ID           + IG_ACCESS_TOKEN  (oder META_ACCESS_TOKEN)   → Instagram Business
  *   FB_PAGE_ID           + FB_PAGE_ACCESS_TOKEN (oder META_ACCESS_TOKEN) → Facebook-Seite
  *   THREADS_USER_ID      + THREADS_ACCESS_TOKEN                          → Threads (ID wird notfalls via /me aufgelöst)
- *   MAX_PER_RUN=1        (optional Throttle)
+ *   MAX_PER_RUN=1        (optional Throttle; 0 = Pause, ungültig = Fehler Exit 1 — lib/run_limit.mjs)
  *   DRY_RUN=1            (optional: nur loggen, nichts senden/schreiben)
  *
  * Der EINE Schritt für Dauerbetrieb: THREADS_ACCESS_TOKEN (+ IG/FB) als Repo-Secret → Cron postet 2×/Tag.
@@ -24,6 +24,10 @@ import { publishAt } from './lib/publish_at.mjs';
 import { mitFolgen, fbText as fbTextLib } from './lib/fb_text.mjs';   // 07.10.: FB ohne https-Link (Reichweite)
 import fs from 'node:fs';
 import { socialPause, pauseSchluessel } from './lib/social_pause.mjs';   // 13.10.: Anlass-Social-Sperre (Halloween-CJ 15.10.–01.11.)
+import { runLimitOderEnde } from './lib/run_limit.mjs';
+// 19.10.2026: MAX_PER_RUN=0 = PAUSE (Exit 0), ungültiger Wert = Exit 1 — erste Anweisung des Posters, vor Pause-/Format-Dateien,
+// Token, Queue, Lock und Netz (lib/run_limit.mjs). Früher: «0» → 1 Post, «abc» → Standard.
+const MAX = runLimitOderEnde({ standard: 1 });
 const _socialPause = pauseSchluessel();
 const FORMATE = (()=>{ try { return JSON.parse(fs.readFileSync(new URL('./data/kanal_formate.json', import.meta.url),'utf8')); } catch { return {}; } })();
 import { execFileSync as _exf } from 'node:child_process';
@@ -34,7 +38,6 @@ import { markierungFehlt,
 const CSV = new URL('../social/posts_image.csv', import.meta.url).pathname;
 const V = process.env.META_GRAPH_VERSION || 'v21.0';
 const DRY = process.env.DRY_RUN === '1' || process.env.DRY === '1';   // 13.10.: auch DRY=1 (wie alle anderen Poster) — sonst postete ein «DRY=1»-Test echt
-const MAX = Math.max(1, parseInt(process.env.MAX_PER_RUN || '1', 10) || 1);
 
 const IG_ID = process.env.IG_USER_ID || '';
 const IG_TOK = process.env.IG_ACCESS_TOKEN || process.env.META_ACCESS_TOKEN || '';

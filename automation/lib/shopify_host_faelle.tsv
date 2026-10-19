@@ -1,0 +1,55 @@
+# shopify_host_faelle.tsv — EINE Fallliste für die drei Umsetzungen der Shop-Host-Regel (19.10.2026):
+#   automation/lib/shopify_secret.sh (shopify_shop_pruefen) · automation/lib/shopify_host.mjs · automation/lib/shopify_host.py
+# Jede Umsetzung liest diese Datei in ihrem Selbsttest (shopify_host_test.mjs, shopify_host.py --selbsttest, shopify_secret_test.sh).
+# Weichen zwei Umsetzungen voneinander ab, schlägt genau EINER dieser Tests an — so bleibt «gleiche Regeln» kein Versprechen.
+#
+# Spalten (TAB): roh · Urteil · kanonischer Host (oder -)
+#   roh      in «…» (die Guillemets gehören NICHT zum Wert; so sieht man Leerraum am Rand); Escapes: \t \r \n
+#   Urteil   leer      nicht gesetzt (nur der Wert «»); nichts zu prüfen, nichts zu ändern
+#            ok        schon exakt der kanonische Host
+#            bereinigt nach der Bereinigung der kanonische Host (Leerraum, Anführungszeichen, https://, Gross-/Kleinschreibung,
+#                      Schluss-/, Variablenname als Vorsatz «shopify_shop=» oder Anhang «=shopify_shop»)
+#            falsch    auch nach der Bereinigung kein Host unter myshopify.com (auch: gesetzt, aber nur Leerraum)
+#            fremd     gültige Struktur *.myshopify.com, aber nicht der LuxeStyle-Shop (au3j0y-hq)
+# Die Werte sind erfunden oder der öffentliche Shop-Host; KEIN Schlüssel steht hier (Schlüssel-Muster baut der Test zur Laufzeit).
+«au3j0y-hq.myshopify.com»	ok	au3j0y-hq.myshopify.com
+«»	leer	-
+«  au3j0y-hq.myshopify.com  »	bereinigt	au3j0y-hq.myshopify.com
+«\tau3j0y-hq.myshopify.com\r\n»	bereinigt	au3j0y-hq.myshopify.com
+«"au3j0y-hq.myshopify.com"»	bereinigt	au3j0y-hq.myshopify.com
+«'au3j0y-hq.myshopify.com'»	bereinigt	au3j0y-hq.myshopify.com
+«" au3j0y-hq.myshopify.com "»	bereinigt	au3j0y-hq.myshopify.com
+«https://au3j0y-hq.myshopify.com»	bereinigt	au3j0y-hq.myshopify.com
+«https://au3j0y-hq.myshopify.com/»	bereinigt	au3j0y-hq.myshopify.com
+«HTTPS://AU3J0Y-HQ.MYSHOPIFY.COM»	bereinigt	au3j0y-hq.myshopify.com
+«AU3J0Y-HQ.myshopify.com»	bereinigt	au3j0y-hq.myshopify.com
+«au3j0y-hq.myshopify.com/»	bereinigt	au3j0y-hq.myshopify.com
+«au3j0y-hq.myshopify.com=SHOPIFY_SHOP»	bereinigt	au3j0y-hq.myshopify.com
+«au3j0y-hq.myshopify.com=shopify_shop»	bereinigt	au3j0y-hq.myshopify.com
+«au3j0y-hq.myshopify.com/=SHOPIFY_SHOP»	bereinigt	au3j0y-hq.myshopify.com
+«SHOPIFY_SHOP=au3j0y-hq.myshopify.com»	bereinigt	au3j0y-hq.myshopify.com
+«evil.example.com»	falsch	-
+«evil.myshopify.com.attacker.example»	falsch	-
+«attacker.example/au3j0y-hq.myshopify.com»	falsch	-
+«user@au3j0y-hq.myshopify.com»	falsch	-
+«au3j0y-hq.myshopify.com:8443»	falsch	-
+«http://au3j0y-hq.myshopify.com»	falsch	-
+«au3j0y-hq.myshopify.com/admin»	falsch	-
+«au3j0y-hq.myshopify.com.»	falsch	-
+«au3j0y-hq.myshopify.com.evil.example»	falsch	-
+«au3j0y-hq.myshopify.com\n/»	falsch	-
+«au3j0y-hq.myshopify.com=SHOPIFY_CLIENT_SECRET»	falsch	-
+«au3j0y-hq.myshopify.com=SHOPIFY_SHOP=SHOPIFY_SHOP»	falsch	-
+«au3j0y_hq.myshopify.com»	falsch	-
+«-au3j0y-hq.myshopify.com»	falsch	-
+«au3j0y-hq-.myshopify.com»	falsch	-
+«.myshopify.com»	falsch	-
+«myshopify.com»	falsch	-
+«evilmyshopify.com»	falsch	-
+«shop.evil-myshopify.com»	falsch	-
+«au3j0y hq.myshopify.com»	falsch	-
+«   »	falsch	-
+«""»	falsch	-
+«\n»	falsch	-
+«other-store.myshopify.com»	fremd	-
+«OTHER-STORE.MYSHOPIFY.COM/»	fremd	-

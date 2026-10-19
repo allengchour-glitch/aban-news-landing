@@ -19,12 +19,16 @@ REGEL
 - Die Sitzung selbst (claude) und von Hand gestartete Befehle kann kein Skript heilen → nur gemeldet (Betreiber-Klick:
   Umgebungsvariable korrigieren; bis dahin vor Handläufen `. automation/lib/shopify_secret.sh && shopify_secret_heilen`).
 - Werte werden NIE ausgegeben oder gespeichert, nur md5-Präfixe verglichen.
+- 19.10.2026: `lese_proc` kann zusätzlich SHOPIFY_SHOP jedes Prozesses beurteilen lassen (Hook `host_urteil`, Urteil statt Wert) und
+  `einordnen` nach diesem Urteil statt nach dem md5 sortieren (`schluessel="shop"`). Das nutzt automation/shopify_host_wache.py — dieselbe
+  /proc-Wanderung und Motor-Zuordnung, KEIN zweiter Abschnitt hier und kein Beenden (die Host-Wache ist rein lesend).
 
 AUFRUF
   python3 automation/secret_umgebung_wache.py              # melden (Standard, ändert nichts)
   python3 automation/secret_umgebung_wache.py --heilen     # bekannte Motoren mit abgelehntem Wert beenden (Starter startet neu)
   python3 automation/secret_umgebung_wache.py --selbsttest
 Ausgabe: erste Zeile «SECRET-UMGEBUNG: …» für die Ampel. Ledger: dropship/_secret_umgebung.tsv (nur Beendigungen).
+Unbekannter Schalter (auch --hilfe, --help): Exit 2 ohne Lauf (19.10.2026; vorher lief er als Bericht, --heilen beendet Prozesse).
 """
 import hashlib
 import os
@@ -36,6 +40,7 @@ PRUEF = "/tmp/_shop_secret_pruef"
 MARKE_AUTOSTART = "/tmp/_secret_neustart_autostart"
 LEDGER = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "dropship", "_secret_umgebung.tsv")
 VAR = b"SHOPIFY_CLIENT_SECRET="
+VAR_SHOP = b"SHOPIFY_SHOP="
 
 # Motor-Wurzeln: (Erkennung im argv, Name, Starter). Nur diese beendet --heilen.
 MOTOREN = [
@@ -59,8 +64,10 @@ def abgelehnte(pfad=PRUEF):
     return {m for m, u in urteil.items() if u == "DATEI"}
 
 
-def lese_proc(proc="/proc"):
-    """{pid: {ppid, argv, md5|None, alter}} — md5 nur als 12er-Präfix, Wert verlässt die Funktion nie."""
+def lese_proc(proc="/proc", host_urteil=None):
+    """{pid: {ppid, argv, md5|None, alter, shop|None, shop_info}} — md5 nur als 12er-Präfix, Wert verlässt die Funktion nie.
+    host_urteil(wert) → (urteil, info) macht aus SHOPIFY_SHOP ein Urteil (z. B. ok/bereinigt/falsch/fremd/leer); `shop` trägt nur das
+    Urteil, `shop_info` nur Länge/Merkmale. Ohne Hook (Standard) bleibt `shop` None — das Verhalten für das Secret ändert sich nicht."""
     try:
         hz = os.sysconf("SC_CLK_TCK")
         with open(os.path.join(proc, "uptime")) as f:
@@ -83,12 +90,15 @@ def lese_proc(proc="/proc"):
                 env = f.read()
         except (OSError, IndexError, ValueError):
             continue
-        md5 = None
+        md5 = shop = None
+        shop_info = ""
         for eintrag in env.split(b"\0"):
             if eintrag.startswith(VAR):
                 md5 = hashlib.md5(eintrag[len(VAR):]).hexdigest()[:12]
-                break
-        out[int(name)] = {"ppid": ppid, "argv": argv, "md5": md5, "alter": max(0, int(uptime - start / hz)) if uptime else 0}
+            elif host_urteil is not None and eintrag.startswith(VAR_SHOP):
+                shop, shop_info = host_urteil(eintrag[len(VAR_SHOP):].decode("utf-8", "replace"))
+        out[int(name)] = {"ppid": ppid, "argv": argv, "md5": md5, "alter": max(0, int(uptime - start / hz)) if uptime else 0,
+                          "shop": shop, "shop_info": shop_info}
     return out
 
 
@@ -108,11 +118,12 @@ def ist_sitzung(argv):
     return bool(argv) and ("claude-code" in argv[0] or os.path.basename(argv[0]) == "claude")
 
 
-def einordnen(procs, abgel):
-    """Verbraucher mit abgelehntem Wert → (motoren{wurzel_pid: (name, starter, [pids])}, sitzung[], fremd[])."""
+def einordnen(procs, abgel, schluessel="md5"):
+    """Verbraucher mit abgelehntem Wert → (motoren{wurzel_pid: (name, starter, [pids])}, sitzung[], fremd[]).
+    schluessel="md5" (Secret) oder "shop" (Host-Urteil, abgel = Menge der Urteile, die gemeldet werden sollen)."""
     motoren, sitzung, fremd = {}, [], []
     for pid, p in sorted(procs.items()):
-        if p["md5"] not in abgel:
+        if p.get(schluessel) not in abgel:
             continue
         if ist_sitzung(p["argv"]):
             sitzung.append(pid)
@@ -224,8 +235,8 @@ def selbsttest():
             f.write("5000.0 1.0\n")
         hz = os.sysconf("SC_CLK_TCK")
 
-        def mache(pid, ppid, argv, wert, start_s=100):
-            p = os.path.join(proc, str(pid))
+        def mache(pid, ppid, argv, wert, start_s=100, shop=None, wurzel=None):
+            p = os.path.join(wurzel or proc, str(pid))
             os.makedirs(p)
             comm = os.path.basename(argv[0])
             felder = ["S", str(ppid)] + ["0"] * 17 + [str(int(start_s * hz))]
@@ -234,7 +245,7 @@ def selbsttest():
             with open(os.path.join(p, "cmdline"), "wb") as f:
                 f.write(b"\0".join(a.encode() for a in argv) + b"\0")
             with open(os.path.join(p, "environ"), "wb") as f:
-                f.write(b"PATH=/bin\0" + (VAR + wert + b"\0" if wert is not None else b""))
+                f.write(b"PATH=/bin\0" + (VAR + wert + b"\0" if wert is not None else b"") + (VAR_SHOP + shop + b"\0" if shop is not None else b""))
 
         mache(2, 1, ["/opt/claude-code/bin/claude", "--x"], SCHLECHT)
         mache(10, 1, ["bash", "/tmp/cj_queue_runner.sh"], SCHLECHT)                 # Hülle, liest Datei neu
@@ -279,14 +290,43 @@ def selbsttest():
         zeilen, _ = lauf(True, procs=procs, abgel=set(), toeten=getoetet.append)
         pruef("O ohne Urteil ok", zeilen[0].startswith("SECRET-UMGEBUNG: ok") and getoetet == [])
         pruef("P Urteil OK zählt nicht", einordnen(procs, abgelehnte(pr) - {m_schlecht})[0] == {})
+        # 19.10.2026: Host-Urteil über denselben Weg (Hook), eigener kleiner /proc-Baum
+        pruef("Q ohne Hook bleibt shop None (Secret-Verhalten unverändert)", all(p["shop"] is None for p in procs.values()))
+        proc2 = os.path.join(d, "proc2")
+        os.makedirs(proc2)
+        with open(os.path.join(proc2, "uptime"), "w") as f:
+            f.write("5000.0 1.0\n")
+        GEHEIM = b"geheim-marker-4711.example"
+        mache(2, 1, ["/opt/claude-code/bin/claude", "--x"], GUT, shop=GEHEIM, wurzel=proc2)               # Sitzung mit falschem Host
+        mache(20, 1, ["bash", "/tmp/cj_queue_runner.sh"], GUT, shop=b"au3j0y-hq.myshopify.com", wurzel=proc2)
+        mache(21, 20, ["/opt/node22/bin/node", "automation/cj_category_fill.mjs"], GUT, shop=GEHEIM, wurzel=proc2)  # Motor-Kind, falsch
+        mache(30, 1, ["python3", "automation/ok.py"], GUT, shop=b"au3j0y-hq.myshopify.com", wurzel=proc2)
+        mache(31, 1, ["python3", "automation/ohne.py"], GUT, wurzel=proc2)                                 # kein SHOPIFY_SHOP
+        mache(32, 1, ["python3", "automation/kanon.py"], GUT, shop=b"https://AU3J0Y-HQ.myshopify.com/", wurzel=proc2)
+        urteil = lambda v: ("falsch" if "marker" in v else "ok" if v == "au3j0y-hq.myshopify.com" else "bereinigt", f"Länge {len(v)}")
+        procs2 = lese_proc(proc2, host_urteil=urteil)
+        pruef("R Hook: Urteil je Prozess, Wert nirgends", procs2[2]["shop"] == "falsch" and procs2[30]["shop"] == "ok" and procs2[31]["shop"] is None
+              and procs2[32]["shop"] == "bereinigt" and "marker" not in repr(procs2) and "4711" not in repr(procs2))
+        mo2, si2, fr2 = einordnen(procs2, {"falsch", "bereinigt"}, schluessel="shop")
+        pruef("S einordnen nach Host-Urteil: Sitzung, Motor-Kind, fremd", si2 == [2] and 20 in mo2 and mo2[20][2] == [21] and fr2 == [32])
+        pruef("T Standard-Schlüssel md5 unverändert", einordnen(procs2, {m_gut})[1] == [2])
+        import contextlib
+        import io
+        with contextlib.redirect_stderr(io.StringIO()) as fehlerkanal:
+            codes = [main(["--hilfe"]), main(["--selbsttest", "--heilen"]), main(["--heile"])]
+        pruef("U unbekannter Schalter: Exit 2 ohne Lauf, Meldung auf stderr", codes == [2, 2, 2] and fehlerkanal.getvalue().count("unbekannter Schalter") == 3)
     print(f"Selbsttest: {ok}/{ok + fehl}")
     return 0 if fehl == 0 else 1
 
 
-def main():
-    if "--selbsttest" in sys.argv:
+def main(argv=None):
+    a = sys.argv[1:] if argv is None else argv
+    if a == ["--selbsttest"]:
         return selbsttest()
-    zeilen, _ = lauf("--heilen" in sys.argv)
+    if a not in ([], ["--heilen"]):
+        print(f"unbekannter Schalter {a!r} — Abbruch (kein Lauf). Erlaubt: (ohne) · --heilen · --selbsttest", file=sys.stderr)
+        return 2
+    zeilen, _ = lauf(a == ["--heilen"])
     print("\n".join(zeilen))
     return 0
 

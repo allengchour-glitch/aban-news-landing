@@ -12,16 +12,19 @@
  *
  * ENV: METRICOOL_USER_TOKEN (Pflicht) · METRICOOL_USER_ID (Default 4801419) ·
  *      METRICOOL_BLOG_ID (Default 6394001) · MC_TZ (Default Europe/Zurich) ·
- *      MAX_PER_RUN (Default 50) · DRY_RUN=1
+ *      MAX_PER_RUN (Default 50; 0 = Pause, Müll = Fehler — lib/run_limit.mjs) · DRY_RUN=1
  */
 import fs from 'node:fs';
+import { runLimitOderEnde } from './lib/run_limit.mjs';
 
+// 19.10.2026: MAX_PER_RUN=0 = PAUSE (Exit 0), ungültiger Wert = Exit 1 — beides VOR Token, Queue und Netz (lib/run_limit.mjs).
+// Früher fiel «0» (wie «abc» und «0x10») auf den Standard und plante bis zu 50 Posts.
+const MAX   = runLimitOderEnde({ standard: 50 });
 const TOKEN = process.env.METRICOOL_USER_TOKEN || '';
 const USER  = process.env.METRICOOL_USER_ID || '4801419';
 const BLOG  = process.env.METRICOOL_BLOG_ID || '6394001';
 const TZ    = process.env.MC_TZ || 'Europe/Zurich';
 const DRY   = process.env.DRY_RUN === '1';
-const MAX   = Math.max(1, parseInt(process.env.MAX_PER_RUN || '50', 10) || 50);
 const BASE  = 'https://app.metricool.com/api';
 const CSV   = new URL('../social/metricool_queue.csv', import.meta.url).pathname;
 const COLS  = ['id','publish_date','media_url','text','networks','status','scheduled_at','note'];

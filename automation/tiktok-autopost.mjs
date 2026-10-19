@@ -18,7 +18,7 @@
  *   TT_ACCESS_TOKEN      (Pflicht — sonst No-op)
  *   TT_REFRESH_TOKEN, TT_CLIENT_KEY, TT_CLIENT_SECRET (optional → Auto-Refresh)
  *   TT_PRIVACY_LEVEL     (Default SELF_ONLY · nach Audit PUBLIC_TO_EVERYONE)
- *   MAX_PER_RUN=1
+ *   MAX_PER_RUN=1        (0 = Pause, ungültig = Fehler Exit 1 — lib/run_limit.mjs)
  *   DRY_RUN=1
  */
 import { schreiben as queueSchreiben, schnappschuss as queueSchnappschuss, lesen as queueLesen } from './lib/queue_csv.mjs';
@@ -26,10 +26,13 @@ import fs from 'node:fs';
 import { lock as postLock, seen as postSeen, mark as postMark, modelSperre } from './post_guard.mjs';
 import path from 'node:path';
 import { tmpdir } from 'node:os';
+import { runLimitOderEnde } from './lib/run_limit.mjs';
 
+// 19.10.2026: MAX_PER_RUN=0 = PAUSE (Exit 0), ungültiger Wert = Exit 1 — erste Anweisung des Posters, vor Token-Prüfung,
+// Queue, Lock und Netz (lib/run_limit.mjs). Früher: «0» → 1 Post, «abc» → Standard.
+const MAX = runLimitOderEnde({ standard: 1 });
 const CSV = new URL('./reels_seed.csv', import.meta.url).pathname;
 const DRY = process.env.DRY_RUN === '1';
-const MAX = Math.max(1, parseInt(process.env.MAX_PER_RUN || '1', 10) || 1);
 const PRIVACY = process.env.TT_PRIVACY_LEVEL || 'SELF_ONLY';
 const COLS = ['id','scheduled_date','video_url','caption','hashtags','platforms','status','posted_at','post_url'];
 

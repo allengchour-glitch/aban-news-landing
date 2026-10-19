@@ -4,7 +4,22 @@ name: Shop Guards
 #   - price_guard : hält den Katalog verkaufbar (inventoryPolicy DENY -> CONTINUE) + Preis-Anomalie-Report
 #   - link_guard  : 404-Wächter für Menü-/Cross-Sell-Collection-Links (+ sichere Auto-Redirects)
 #   - cross_sell  : hängt Produkten ohne internen Collection-Link eine Cross-Sell-Box an
+#   - publish_guard (v2, 19.10.2026): zieht fehlende Verkaufskanäle nach (Online Store/Shop/TikTok/Facebook & Instagram/Pinterest),
+#     überspringt absichtliche Kanal-Ausschlüsse (Sperr-Tags, Ledger, Werbetest, Klingen) und schreibt NUR mit LIVE=1 UND
+#     APPROVE_PUBLISH=1. Beide Schalter setzt dieser Workflow BEWUSST: der Montagslauf schreibt (Sperrlogik ist fail-closed — ist
+#     eine Sperrquelle unlesbar, schreibt er nichts und der Lauf wird rot); ein manueller Start schreibt nur mit approve_publish=1,
+#     sonst läuft er lesend und meldet eine Warnung statt still zum Trockenlauf zu werden.
+#     ⚠️ CI prüft den Stand von MAIN, nicht den Live-Stand der Sitzung. Der Wächter liest seine Sperren aus Dateien (Python-Sperrlisten
+#     google_sperrliste.py + google_sperrtags_durchsetzen.py samt data/heilschmuck_regel.json und automation/data/schusswaffen_zubehoer_regel.json,
+#     klingenregel.mjs/.json, lib/social_pause.mjs, lib/werbetest_sperre.mjs, fünf Ledger, _social_pause.txt, _werbetest_sperre.txt; gemessen
+#     19.10.: alle 15 fehlen auf origin/main). Landet nur Wächter+Workflow auf main, ist der Montagslauf ROT («unklar», schreibt nichts, nennt
+#     jede fehlende Quelle) — also alles gemeinsam mergen. Die Titelregeln (Feuerzeug/Heil-Schmuck/Schusswaffen-Zubehör) braucht der Wächter
+#     über python3 (auf ubuntu-latest vorhanden; fehlt es, ist der Lauf rot statt still ohne diese Regeln).
 # No-op ohne Shopify-Secrets. Alle idempotent + safe.
+#
+# Jeder Wächter läuft UNABHÄNGIG von den anderen (`if: !cancelled()`): schlägt einer fehl (publish_guard beendet sich bei Fehlern
+# mit Exit 1), bleibt der Lauf rot, aber alt_text_guard, discount_guard, hero_image_guard und rating_guard laufen trotzdem.
+# Fällt dagegen schon Checkout/Node-Setup aus, überspringt `steps.preis.conclusion` den Rest (sonst nur Folgefehler).
 #
 # Secrets: SHOPIFY_SHOP + (SHOPIFY_ADMIN_TOKEN | SHOPIFY_CLIENT_ID+SHOPIFY_CLIENT_SECRET)
 
@@ -17,6 +32,10 @@ on:
         description: 'LIVE=1 schreibt (sonst Dry-Run)'
         required: false
         default: '1'
+      approve_publish:
+        description: 'APPROVE_PUBLISH=1: der Publish-Guard darf schreiben (zusätzlich zu live; 0 = lesend + Warnung)'
+        required: false
+        default: '0'
 
 jobs:
   guards:
@@ -33,18 +52,29 @@ jobs:
         with:
           node-version: '22'
       - name: Price guard (keep sellable)
+        id: preis
         run: node automation/price_guard.mjs
       - name: Link guard (404 watcher)
+        if: ${{ !cancelled() && steps.preis.conclusion != 'skipped' }}
         run: node automation/link_guard.mjs
       - name: Cross-sell generator
+        if: ${{ !cancelled() && steps.preis.conclusion != 'skipped' }}
         run: node automation/cross_sell.mjs
-      - name: Publish guard (all sales channels)
+      - name: Publish guard (missing sales channels, respects exclusions)
+        if: ${{ !cancelled() && steps.preis.conclusion != 'skipped' }}
+        env:
+          # zweiter Schalter: der Zeitplan genehmigt, ein manueller Start nur mit approve_publish=1
+          APPROVE_PUBLISH: ${{ github.event_name == 'schedule' && '1' || github.event.inputs.approve_publish }}
         run: node automation/publish_guard.mjs
       - name: Alt-text guard (image SEO/a11y)
+        if: ${{ !cancelled() && steps.preis.conclusion != 'skipped' }}
         run: node automation/alt_text_guard.mjs
       - name: Discount guard (keep WELCOME10 alive)
+        if: ${{ !cancelled() && steps.preis.conclusion != 'skipped' }}
         run: node automation/discount_guard.mjs
       - name: Hero image guard (collection covers)
+        if: ${{ !cancelled() && steps.preis.conclusion != 'skipped' }}
         run: node automation/hero_image_guard.mjs
       - name: Rating guard (pull weak products from promo)
+        if: ${{ !cancelled() && steps.preis.conclusion != 'skipped' }}
         run: node automation/rating_guard.mjs

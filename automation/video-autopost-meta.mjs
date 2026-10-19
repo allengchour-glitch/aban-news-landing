@@ -18,16 +18,19 @@
  *   IG_USER_ID + IG_ACCESS_TOKEN (oder META_ACCESS_TOKEN)            → Instagram Business (Reels)
  *   FB_PAGE_ID + FB_PAGE_ACCESS_TOKEN (oder META_ACCESS_TOKEN)       → Facebook-Seite (Video)
  *   THREADS_USER_ID + THREADS_ACCESS_TOKEN                            → Threads (Video)
- *   MAX_PER_RUN=1 · DRY_RUN=1
+ *   MAX_PER_RUN=1 (0 = Pause, ungültig = Fehler Exit 1 — lib/run_limit.mjs) · DRY_RUN=1
  */
 import { schreiben as queueSchreiben, schnappschuss as queueSchnappschuss, lesen as queueLesen } from './lib/queue_csv.mjs';
 import fs from 'node:fs';
 import { lock as postLock, seen as postSeen, mark as postMark, fbSeitenIdentitaet, modelSperre } from './post_guard.mjs';
+import { runLimitOderEnde } from './lib/run_limit.mjs';
 
+// 19.10.2026: MAX_PER_RUN=0 = PAUSE (Exit 0), ungültiger Wert = Exit 1 — erste Anweisung des Posters, vor Token, Queue,
+// Lock und Netz (lib/run_limit.mjs). Früher: «0» → 1 Video, «abc» → Standard.
+const MAX = runLimitOderEnde({ standard: 1 });
 const CSV = new URL('../social/video_queue.csv', import.meta.url).pathname;
 const V = process.env.META_GRAPH_VERSION || 'v21.0';
 const DRY = process.env.DRY_RUN === '1';
-const MAX = Math.max(1, parseInt(process.env.MAX_PER_RUN || '1', 10) || 1);
 // Cover-Frame (ms) für IG-Reels: das 3.0s-Marken-Intro ist off-white → ohne Offset nimmt IG einen
 // weissen Frame als Grid-Vorschau. ~3800ms landet sauber im ERSTEN Produktbild (nach Intro-Fade,
 // vor dem nächsten Übergang) = Produkt-Cover statt weisser Kachel. Via THUMB_OFFSET überschreibbar.
