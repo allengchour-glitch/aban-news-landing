@@ -71,6 +71,8 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Erhältlich in verschiedenen Grössen und Farben…»
 - `15451925840257` · RFID-Kartenetui mit Münzfach aus PU-Leder
   - «…Erhältlich in verschiedenen Farben…»
+- `15452676161921` · Tiefes Salatschalen-Set
+  - «…Verfügbar in drei verschiedenen Farben…»
 - `15453623517569` · Herren Titan-Ring Stahl Vintage
   - «…Verfügbare Farben:…»
 - `15453623714177` · Schädel-Piratenring Damen
@@ -621,8 +623,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Erhältlich in vier Grössen…»
 - `15495590773121` · FPV Racing Flower Flying Paddle Blade
   - «…Erhältlich in verschiedenen Farben…»
-- `15495592608129` · Kuscheldecke mit Quasten
-  - «…Erhältlich in verschiedenen Längen…»
 - `15495607517569` · RC Dinosaurier mit Musik, Tanz & Sprayfunktion
   - «…Erhältlich in zwei verschiedenen Farben…»
 - `15495718797697` · Jacquard Kissenbezug – Hotel-Stil
@@ -1775,34 +1775,22 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Erhältlich in verschiedenen Grössen…»
 - `15521232028033` · Keramik-Servierplatte «New Bohemian»
   - «…in verschiedenen Farben…»
-- `15521249395073` · Kawaii Katzen Rucksack für Schule & Freizeit
-  - «…Erhältlich in verschiedenen Farben…»
 - `15521251033473` · Outdoor Wanderrucksack 30L
   - «…Erhältlich in verschiedenen Farben…»
-- `15521253654913` · Antihaft-Wok aus Maifan-Stein
-  - «…Erhältlich in zwei Grössen…»
 - `15521258111361` · Hölzerner Massage-Roller für Gesicht und Körper
   - «…Erhältlich in verschiedenen Ausführungen…»
 - `15521600602497` · Minimalistisches Perlenarmband mit Silberelementen
   - «…Erhältlich in verschiedenen Ausführungen…»
-- `15521662271873` · RC Deformationsauto Roboter
-  - «…Erhältlich in verschiedenen Designs…»
-- `15522039431553` · Herren Quarzuhr, wasserdicht, Multifunktion
-  - «…in verschiedenen Ausführungen…»
 - `15522084782465` · Ersatzarmband für Xiaomi Mi Band
   - «…Erhältlich in drei Grössen…»
 - `15522117419393` · Automatischer Sensor-Abfalleimer
   - «…in verschiedenen Grössen…»
-- `15522128200065` · Wasserdichte Quarzuhr für Sie & Ihn
-  - «…Erhältlich in verschiedenen Farben…»
 - `15522140619137` · Bequemer Riesen-Sitzsack
   - «…Erhältlich in verschiedenen Grössen…»
 - `15522141045121` · Fritteuse mit Sieb aus 304 Edelstahl
   - «…Erhältlich in verschiedenen attraktiven Farben…»
 - `15522141831553` · Satin-Kissenbezug, diverse Farben
   - «…in verschiedenen Farben…»
-- `15522166047105` · Vintage-Vase aus Emaille-Glas
-  - «…in verschiedenen Grössen…»
 - `15522211037569` · Alice Wonderland aufklebbare Nägel
   - «…Erhältlich in drei Designs…»
 - `15522213921153` · Fashion Rucksack für Schüler und Studenten
@@ -1867,18 +1855,8 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…in vier Grössen…»
 - `15523863527809` · Nagelclipper für Senioren – 5,7 cm & 8 cm
   - «…in zwei Grössen…»
-- `15524862919041` · Hundeleine Okinawa, elastisch und ausziehbar
-  - «…Erhältlich in zwei Längen…»
-- `15525266096513` · Transparentes Puder für mattes Finish
-  - «…Erhältlich in vier Farbtönen…»
 - `16612711563655` · Edelstahl Automatische Trinkschüssel für Hunde
   - «…Farben: Blau, Grün,…»
-- `16612711891335` · Katzenkessel mit automatischer Wasserversorgung und Futterbehälter
-  - «…in mehreren Farben…»
-- `16612740694407` · Silikon-Futternapf mit Saugnapf-Matte
-  - «…Erhältlich in kleiner und grosse…»
-- `16613764956551` · Multifunktionale Bluetooth-Uhr mit Schrittzähler
-  - «…Farben: taro purple, haze blue, matcha green, cherry blossom powder, p…»
 - `16614563611015` · Hundebreitschiene für Spaziergänge
   - «…Farben: Schwarz, Grün, Blau, Orange,…»
 - `16614719291783` · Anti-Lost-Halsband für Hunde
@@ -1891,7 +1869,13 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Verfügbare Farben:…»
 - `16615802929543` · Schwarzer Strickschal aus Wolle – 230 × 20 cm
   - «…Farben: Rot, Schwarz, Weinrot, Hellblau, Marineblau, Hellgrau, Hautros…»
-- `16617638789511` · Schiessdecke Training 200x75 cm 1000D Nylon
-  - «…Farben: Mud /…»
-- `16617712124295` · Hitzebeständige Glas-Schüssel mit Pflanzenmuster
-  - «…Farben: Zitrone, Heidelbeere, Kamille, Rose, Mohn,…»
+- `16638004134279` · Outdoor-Reiserucksack
+  - «…Farben: Schwarz, Grau, Armeegrün,…»
+- `16638272045447` · Romantischer Schal in hellen Weisstönen
+  - «…Farben: Khaki, Rot, Schwarz, Beige,…»
+- `16638824644999` · Stahlarmband für Apple Watch, 5,5–8,5 Zoll
+  - «…Farben: Schwarz, Silber, Roségold, Rosarot, Gold, Silber/Gold, Silber/…»
+- `16639199478151` · Reisebeutel mit Smartphone-Fach – schwarz
+  - «…Farben: schwarz, PU‑Leder, khaki, grau Innenfächer: Smartphone‑Fach,…»
+- `16647276396935` · Wasserdichter Canvas-Rucksack mit Batik-Muster
+  - «…Farben: Army Green, Khaki,…»

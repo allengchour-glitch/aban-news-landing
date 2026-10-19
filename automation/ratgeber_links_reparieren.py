@@ -16,6 +16,19 @@ WAS ES TUT — und was nicht
     (ein Ziel darf nicht selbst als «alt» in der Liste stehen).
   · Standard = TROCKENLAUF (Tabelle alt → neu je Artikel, schreibt NICHTS). Unbekannte Schalter brechen mit Exit 2 ab (argparse) — nie ein echter Lauf.
 
+ZWILLINGS-REGEL v2 (19.10.2026 abends, nach Prüfer-Befunden zu den ersten 7 Zwillingen — 3 × mittel):
+  Ein Produkt-Ersatz («Zwilling») ist nur erlaubt, wenn der TEXT UM DEN LINK auf der Zielseite wahr bleibt. v1 prüfte «5-teilig»/«aktiv»,
+  nicht die Aussagen: Schlaufen-Set (keine Enden) für «Bicep Curls: beide Enden in die Hände», «mit 20 W» ohne Wattangabe auf der Zielseite,
+  «30'000 mAh»-Satz auf eine 10'000-mAh-Seite, Fremdmarke («WACACO minipresso») im HAUPTBILD, Prosa-Preis «— CHF 24.90» (der Preisjob
+  `blog_preise_aktualisieren.py` zieht NUR «(CHF x)» direkt hinter dem Link und Kartenpreise nach). Die Prüfung ist jetzt im Werkzeug:
+    ZAHL   jede «Zahl + Einheit» (mAh, W, Wh [aus mAh abgeleitet ok], Teile/Stück/Set of N, cm, mm, ml, kg, g, lbs, Stufen …) in Anker + Umfeld
+           muss in Titel/Beschreibung/Auswahl der Zielseite vorkommen, sonst Befund;
+    PREIS  genannter Preis ≠ Live-Preis UND nicht vom Preisjob erfasst (Prosa) = Befund; erfasst (Klammer/Karte) = nur Hinweis;
+    AUSWAHL/HAUPTBILD werden zur Sichtprüfung ausgegeben (Fremdmarke im Hauptbild bleibt ein MENSCHEN-/Vision-Urteil: Kontaktbogen ansehen).
+  Befund bei ZAHL/PREIS → `--scharf` bricht mit Exit 3 ab (nur `--trotz-befund` schreibt trotzdem). Kollektion statt Produkt hat diese Befunde nicht.
+  Nur prüfen, nichts schreiben:  `--pruefen [--quelle SICHERUNG.json]`  (mit der Sicherung der Vorher-Texte prüft es auch bereits erledigte Listen nach).
+  Kanarienvogel: `--selbsttest` (offline, 6 Fälle) läuft vor jeder Zwillings-Prüfung; fällt er durch → «unklar», nie «0 Befunde».
+
 AUFRUF
   python3 automation/ratgeber_links_reparieren.py                          # trocken, Standardliste
   python3 automation/ratgeber_links_reparieren.py --ersatz DATEI.tsv       # andere Liste
@@ -187,6 +200,161 @@ def plane(artikel, ersatz):
     return plan, ungenutzt
 
 
+# ───────────────────────── Zwillings-Prüfung (Regel v2, 19.10.2026) ─────────────────────────
+CLAIM_RE = re.compile(
+    r"(?<![\d.,’'])(\d{1,3}(?:[’']\d{3})+|\d+(?:[.,]\d+)?)\s*[-–]?\s*"
+    r"(mAh|Wh|Watt|W|Teilig|Teilen|Teile|Teil|Stück|Stk\.?|Pcs|Pieces|Piece|ml|cm|mm|kg|g|Pfund|lbs|Stufen|Fächer|Farben)(?![A-Za-zäöüÄÖÜ])", re.I)
+SET_OF_RE = re.compile(r"\b(?:set|pack)\s+of\s+(\d+)\b", re.I)
+PREIS_ANGABE = re.compile(r"CHF\s*(\d+\.\d\d)")
+BLOCK_GRENZE = ("<li", "<p", "<div", "</p>", "</li>", "</div>", "<h2", "<h3", "<td", "<tr")
+NACH_ENDE = re.compile(r'<a\s[^>]*href\s*=\s*["\']/products/|</li>|<h2|<h3|</ul>|</ol>', re.I)
+EINHEIT = {"watt": "w", "teilig": "teile", "teilen": "teile", "teile": "teile", "teil": "teile", "stück": "teile", "stk": "teile", "stk.": "teile",
+           "pcs": "teile", "pieces": "teile", "piece": "teile"}
+
+
+def _klartext(html_text):
+    import html as _h
+    return re.sub(r"\s+", " ", _h.unescape(re.sub(r"<[^>]+>", " ", html_text or ""))).strip()
+
+
+def behauptungen(text):
+    """Text → {(Zahl, Einheit)} aus «Zahl + Einheit»; «Set of N» zählt als N Teile; Zahlen ohne Einheit (Preise) zählen nicht."""
+    aus = set()
+    for m in CLAIM_RE.finditer(text or ""):
+        roh = m.group(1)
+        zahl = float(re.sub(r"[’']", "", roh)) if re.search(r"[’']", roh) else float(roh.replace(",", "."))
+        e = m.group(2).lower()
+        aus.add((zahl, EINHEIT.get(e, e)))
+    for m in SET_OF_RE.finditer(text or ""):
+        aus.add((float(m.group(1)), "teile"))
+    return aus
+
+
+def unbelegt(behauptet, belegt):
+    """Behauptete (Zahl, Einheit)-Paare, die die Zielseite nicht trägt. Wh gilt als belegt, wenn es sich aus einer mAh-Angabe (3,7 V) ergibt."""
+    fehlt = []
+    for zahl, einheit in sorted(behauptet):
+        if (zahl, einheit) in belegt:
+            continue
+        if einheit == "wh" and any(e == "mah" and abs(z * 3.7 / 1000 - zahl) <= 1.0 for z, e in belegt):
+            continue
+        fehlt.append((zahl, einheit))
+    return fehlt
+
+
+def kontext_um_link(body, m):
+    """href-Treffer m → (anker_text, umfeld_text): Ankertext, dazu Text davor (bis zur Blockgrenze, max 160 Z.) und danach (bis nächster Produktlink/Listenende, max 420 Z.)."""
+    a0 = body.rfind("<a", 0, m.start())
+    t_ende = body.find(">", m.end())
+    a_ende = body.find("</a>", t_ende)
+    if a0 < 0 or t_ende < 0 or a_ende < 0:
+        return "", ""
+    anker = body[t_ende + 1:a_ende]
+    davor = body[max(0, a0 - 160):a0]
+    k = max((davor.rfind(g) for g in BLOCK_GRENZE), default=-1)
+    davor = davor[k:] if k >= 0 else davor
+    danach = body[a_ende + 4:a_ende + 4 + 420]
+    n = NACH_ENDE.search(danach)
+    danach = danach[:n.start()] if n else danach
+    return _klartext(anker), _klartext(davor + " " + danach)
+
+
+def produkt_fakten(handles):
+    f = {}
+    for h in sorted(set(handles)):
+        d = gql("""query($h:String!){productByIdentifier(identifier:{handle:$h}){title descriptionHtml tags
+                   options{name values} priceRangeV2{minVariantPrice{amount}} featuredMedia{preview{image{url}}}}}""", {"h": h})["productByIdentifier"]
+        if d:
+            f[h] = d
+    return f
+
+
+def zwilling_selbsttest():
+    """Offline-Kanarienvogel mit den Fällen vom 19.10. Gibt (ok, [Fehlermeldungen]) zurück."""
+    from blog_preise_aktualisieren import fundstellen
+    fehler = []
+    ziel = lambda t: behauptungen(t)
+    # A «mit 20 W» + «10’000-mAh» gegen Seite ohne Wattangabe → 20 W unbelegt, 10000 mAh belegt
+    beh = behauptungen("magnetische 10’000-mAh-Powerbank mit 20 W (CHF 27.90) lädt kabellos")
+    bel = ziel("Ultradünne MagSafe Powerbank 10'000 mAh Masse: 100 x 66 x 7.1 mm Eingangsspannung: 220V")
+    if unbelegt(beh, bel) != [(20.0, "w")]:
+        fehler.append(f"A: erwartet [(20.0,'w')], bekam {unbelegt(beh, bel)}")
+    # B «5-teilig» gegen «Loop Set Of 5» → belegt (Set-of-Synonym)
+    if unbelegt(behauptungen("Resistance Bands Set 5-teilig"), ziel("Resistance Bands Loop Set Of 5 Exercise")):
+        fehler.append("B: 5-teilig gegen «Set Of 5» müsste belegt sein")
+    # C «30'000 mAh» gegen 10'000-mAh-Seite → unbelegt
+    if unbelegt(behauptungen("Karte behauptet 30'000 mAh = 111 Wh"), ziel("Powerbank 10000 mAh integriertes Kabel")) != [(111.0, "wh"), (30000.0, "mah")]:
+        fehler.append(f"C: {unbelegt(behauptungen('Karte behauptet 30’000 mAh = 111 Wh'), ziel('Powerbank 10000 mAh integriertes Kabel'))}")
+    # D Wh aus mAh abgeleitet → 10'000 mAh ≈ 37 Wh belegt
+    if unbelegt(behauptungen("10'000 mAh (≈ 37 Wh)"), ziel("Powerbank 10000 mAh")):
+        fehler.append("D: 37 Wh aus 10000 mAh abgeleitet müsste belegt sein")
+    # E Preisjob erfasst «(CHF x)» hinter dem Link, NICHT «— CHF x» in Prosa
+    if not [x for x in fundstellen('<p><a href="/products/p1">Name</a> (CHF 31.90) text</p>') if x[0] == "p1"]:
+        fehler.append("E1: Klammerpreis müsste vom Preisjob erfasst sein")
+    if [x for x in fundstellen('<ul><li><a href="/products/p1">Name</a> — CHF 24.90</li></ul>') if x[0] == "p1"]:
+        fehler.append("E2: Prosa-Preis nach «—» darf NICHT erfasst sein (Annahme des Prüfers 19.10.)")
+    # F Kontext: Listenpunkt endet am </li>, nächster Punkt zählt nicht mit
+    body = '<ul><li><a href="/products/p1">Name</a> — CHF 24.90</li><li><a href="/products/p2">Zwei 99 W</a> — CHF 5.00</li></ul>'
+    m = next(HREF.finditer(body))
+    a, u = kontext_um_link(body, m)
+    if "99" in u or "24.90" not in u:
+        fehler.append(f"F: Kontext falsch geschnitten: {u!r}")
+    return (not fehler), fehler
+
+
+def zwilling_pruefung(plan, ersatz):
+    """Prüft jeden Produkt→Produkt-Ersatz des Plans. → (befunde_hart, zeilen). Hart = ZAHL oder PREIS (Prosa). Schreibt nichts."""
+    from blog_preise_aktualisieren import fundstellen
+    je_alt = {}
+    for z in ersatz:
+        if z["neu"].startswith("/products/"):
+            je_alt.setdefault(schluessel(z["alt"]), []).append(z)
+    if not je_alt:
+        return 0, ["ZWILLINGS-PRÜFUNG: kein Produkt-Ersatz in der Liste (nur Kollektionen) — nichts zu prüfen"]
+    ok, fehler = zwilling_selbsttest()
+    if not ok:
+        return 1, [f"ZWILLINGS-PRÜFUNG: unklar (Kanarienvogel fiel durch: {'; '.join(fehler)})"]
+    neu_handles = {urllib.parse.unquote(z["neu"].split("/products/")[1]) for zs in je_alt.values() for z in zs}
+    fakten = produkt_fakten(neu_handles)
+    zeilen, hart = [], 0
+    for a, neu_body, aend in plan:
+        erfasst = {}
+        for h, _s, _e, _ab, preis, _art in fundstellen(neu_body):
+            erfasst.setdefault(h, []).append(preis)
+        for m in HREF.finditer(a.get("body") or ""):
+            t = pfad_teile(m.group(3))
+            if not t:
+                continue
+            for z in je_alt.get(schluessel(t[1]), []):
+                if z["artikel"] not in ("*", a["handle"]):
+                    continue
+                h = urllib.parse.unquote(z["neu"].split("/products/")[1])
+                f = fakten.get(h)
+                kopf = f"ZWILLING {a['handle'][:48]} · {z['alt'].split('/')[-1][:34]} → {h[:40]}"
+                if not f:
+                    zeilen.append(kopf + " · ⚠️ Zielprodukt nicht lesbar"); hart += 1
+                    continue
+                anker, umfeld = kontext_um_link(a["body"], m)
+                ziel_text = _klartext(f["title"] + " " + f["descriptionHtml"] + " " + " ".join(v for o in f["options"] for v in o["values"]))
+                fehlt = unbelegt(behauptungen(anker + " " + umfeld), behauptungen(ziel_text))
+                live = float(f["priceRangeV2"]["minVariantPrice"]["amount"])
+                meldungen = []
+                if fehlt:
+                    meldungen.append("ZAHL nicht auf Zielseite: " + ", ".join(f"{int(x) if x == int(x) else x} {e}" for x, e in fehlt))
+                for p in sorted(set(float(x) for x in PREIS_ANGABE.findall(anker + " " + umfeld))):
+                    if abs(p - live) > 0.05:
+                        if any(abs(p - e) < 0.005 for e in erfasst.get(h, [])):
+                            meldungen.append(f"hinweis: Preis {p:.2f} → live {live:.2f}, Preisjob zieht nach")
+                        else:
+                            meldungen.append(f"PREIS {p:.2f} im Text, live {live:.2f} — Preisjob erfasst NUR «(CHF x)» hinter dem Link/Karten")
+                opt = "; ".join(f"{o['name']}:{len(o['values'])}" for o in f["options"])
+                bild = (((f.get("featuredMedia") or {}).get("preview") or {}).get("image") or {}).get("url", "?")
+                hart_hier = any(x.startswith(("ZAHL", "PREIS")) for x in meldungen)
+                hart += 1 if hart_hier else 0
+                zeilen.append(f"{kopf} · {'⚠️ ' if hart_hier else 'ok '}{' | '.join(meldungen) or 'Aussagen belegt'} · Auswahl {opt} · Hauptbild ansehen: {bild}")
+    return hart, zeilen
+
+
 def sicherung(plan, datei):
     alt = json.load(open(datei, encoding="utf-8")) if os.path.exists(datei) else []
     vorhanden = {e["id"] for e in alt}
@@ -270,12 +438,27 @@ def main():
     ap.add_argument("--vorher", default=VORHER_STD, help="Sicherungsdatei (JSON)")
     ap.add_argument("--zurueck", action="store_true", help="Rückweg aus der Sicherung")
     ap.add_argument("--vorschlag", action="store_true", help="Listenzeilen aus der Wache ausgeben")
+    ap.add_argument("--pruefen", action="store_true", help="nur die Zwillings-Pruefung (Regel v2) ausgeben, nichts schreiben")
+    ap.add_argument("--quelle", default=None, help="mit --pruefen: Sicherungs-JSON (id, handle, body) statt der Live-Artikel lesen")
+    ap.add_argument("--trotz-befund", action="store_true", help="--scharf schreibt auch bei Befunden der Zwillings-Pruefung (bewusste Ausnahme)")
+    ap.add_argument("--selbsttest", action="store_true", help="Kanarienvogel der Zwillings-Pruefung (offline), kein Lauf")
     a = ap.parse_args()
+    if a.selbsttest:
+        ok, fehler = zwilling_selbsttest()
+        print("RATGEBER-ZWILLING-SELBSTTEST:", "ok (6 Faelle)" if ok else "FEHLER " + "; ".join(fehler))
+        sys.exit(0 if ok else 1)
     if a.vorschlag:
         return vorschlag()
     if a.zurueck:
         return zurueck(a.vorher, a.scharf)
     ersatz = lies_ersatz(a.ersatz)
+    if a.pruefen:
+        arts = json.load(open(a.quelle, encoding="utf-8")) if a.quelle else lade_artikel()
+        plan, _ungenutzt = plane(arts, ersatz)
+        hart, zeilen = zwilling_pruefung(plan, ersatz)
+        print("\n".join(zeilen))
+        print(f"ZWILLINGS-PRUEFUNG: {hart} Befund(e) in {len(plan)} Artikeln (nichts geschrieben)")
+        return
     pruef = ziele_pruefen([z["neu"] for z in ersatz])
     schlecht = {p: g for p, (ok, g) in pruef.items() if not ok}
     for p, (ok, g) in sorted(pruef.items()):
@@ -291,6 +474,11 @@ def main():
             print(f"  {art['handle'][:58]:58} {x}  →  {y}  (x{n})")
     for z in ungenutzt:
         print(f"  (ohne Treffer) {z['alt']} → {z['neu']} [{z['artikel']}]")
+    hart, zeilen = zwilling_pruefung(plan, ersatz)
+    print("\n" + "\n".join(zeilen))
+    if hart and a.scharf and not a.trotz_befund:
+        print(f"ABBRUCH (Exit 3): {hart} Befund(e) der Zwillings-Pruefung (Regel v2) — Ersatz aendern (Kollektion statt Produkt) oder bewusst --trotz-befund.")
+        sys.exit(3)
     if not a.scharf:
         print("FERTIG TROCKEN — nichts geschrieben")
         return
