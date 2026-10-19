@@ -491,3 +491,6 @@ slug:eleganter-edelstahl-kerzenstander-im-french-st
 name:knochenschallkopfhörermitohrclip
 pid:15450832044417
 slug:knochenschall-kopfhorer-mit-ohrclip
+name:kabelloseledkopfhörermitkatzenohren
+pid:15450856522113
+slug:kabellose-led-kopfhorer-mit-katzenohren
