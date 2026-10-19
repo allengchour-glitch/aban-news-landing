@@ -21,6 +21,7 @@ test('initialize negotiates supported versions and advertises only tools', async
     const [response] = await exchange([request(1, 'initialize', { protocolVersion, capabilities: {}, clientInfo: { name: 'test', version: '1' } }) + '\n']);
     assert.equal(response.result.protocolVersion, protocolVersion);
     assert.deepEqual(Object.keys(response.result.capabilities), ['tools']);
+    assert.deepEqual(response.result.serverInfo, { name: 'luxestyle-claude-assist', version: '2.3.0' });
   }
   const [response] = await exchange([request(2, 'initialize', { protocolVersion: 'unknown' })]);
   assert.equal(response.result.protocolVersion, '2025-06-18');
@@ -45,6 +46,74 @@ test('validated arguments reach only the selected injected handler', async () =>
   assert.deepEqual(seen, [{ suite: 'seo' }]);
   assert.deepEqual(JSON.parse(response.result.content[0].text), { passed: true });
   assert.equal(response.result.isError, false);
+});
+
+test('commit planning schema requires exactly an empty input or a complete pinned pair', async () => {
+  const [response] = await exchange([request(1, 'tools/list') + '\n']);
+  const tools = response.result.tools;
+  const planner = tools.find(tool => tool.name === 'luxe_change_plan');
+  assert.equal(tools.length, 10);
+  assert.deepEqual(planner.inputSchema, {
+    type: 'object',
+    properties: {
+      baseCommit: { type: 'string', minLength: 40, maxLength: 40, pattern: '^[a-fA-F0-9]{40}$' },
+      headCommit: { type: 'string', minLength: 40, maxLength: 40, pattern: '^[a-fA-F0-9]{40}$' }
+    },
+    additionalProperties: false,
+    oneOf: [{ maxProperties: 0 }, { required: ['baseCommit', 'headCommit'] }]
+  });
+  assert.deepEqual(planner.annotations, { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false });
+  assert.match(planner.description, /keine Tests, kein Checkout und kein Fetch/);
+  const checks = tools.find(tool => tool.name === 'luxe_checks');
+  assert.deepEqual(checks.inputSchema, { type: 'object', properties: { suite: { type: 'string', enum: ['core', 'seo', 'assist', 'changed'] } }, required: ['suite'], additionalProperties: false });
+  assert.deepEqual(checks.annotations, planner.annotations);
+});
+
+test('commit planning forwards empty and full immutable pins exactly once without altering checks', async () => {
+  const pair = { baseCommit: 'a1'.repeat(20), headCommit: 'B2'.repeat(20) };
+  const cases = [
+    { name: 'luxe_change_plan' },
+    { name: 'luxe_change_plan', arguments: {} },
+    { name: 'luxe_change_plan', arguments: pair },
+    { name: 'luxe_checks', arguments: { suite: 'changed' } }
+  ];
+  const seen = [];
+  const handlers = Object.fromEntries(['luxe_change_plan', 'luxe_checks'].map(name => [name, args => {
+    seen.push({ name, args }); return { local: true, args };
+  }]));
+  const responses = await exchange(cases.map((params, id) => request(id, 'tools/call', params) + '\n'), handlers);
+  assert.deepEqual(seen, [
+    { name: 'luxe_change_plan', args: {} },
+    { name: 'luxe_change_plan', args: {} },
+    { name: 'luxe_change_plan', args: pair },
+    { name: 'luxe_checks', args: { suite: 'changed' } }
+  ]);
+  assert.ok(responses.every(response => response.result.isError === false));
+  assert.deepEqual(JSON.parse(responses[2].result.content[0].text).args, pair);
+});
+
+test('partial, mutable, short, malformed and additional commit pins never reach a handler', async () => {
+  const pair = { baseCommit: 'a'.repeat(40), headCommit: 'b'.repeat(40) };
+  const badPins = ['', ' ', 'HEAD', 'main', 'origin/main', 'HEAD~1', 'a'.repeat(39), 'a'.repeat(41),
+    'a'.repeat(64), 'g'.repeat(40), 'a'.repeat(39) + '\n', 'a'.repeat(40) + '\n', '--help', 'a'.repeat(40) + '^{commit}',
+    null, 42, true, [], {}];
+  const invalid = [
+    { baseCommit: pair.baseCommit }, { headCommit: pair.headCommit }, { ...pair, extra: true },
+    { ...pair, suite: 'changed' }, { ...pair, fetch: true }, { files: [] },
+    ...badPins.flatMap(value => [{ ...pair, baseCommit: value }, { ...pair, headCommit: value }]),
+    null, [], true
+  ];
+  let calls = 0;
+  const responses = await exchange([
+    ...invalid.map((args, id) => request(id, 'tools/call', { name: 'luxe_change_plan', arguments: args }) + '\n'),
+    request('checks-reject-pins', 'tools/call', { name: 'luxe_checks', arguments: { suite: 'changed', ...pair } }) + '\n',
+    request('after', 'ping') + '\n'
+  ], { luxe_change_plan: () => { calls++; }, luxe_checks: () => { calls++; } });
+  assert.equal(calls, 0);
+  assert.equal(responses.length, invalid.length + 2);
+  assert.ok(responses.slice(0, -1).every(response => response.error?.code === -32602));
+  assert.equal(responses.at(-1).id, 'after');
+  assert.deepEqual(responses.at(-1).result, {});
 });
 
 test('save and review requests remain injected local operations', async () => {

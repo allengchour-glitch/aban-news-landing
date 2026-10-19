@@ -6,6 +6,7 @@ import { createHash, randomUUID } from 'node:crypto';
 import { classifyChanges } from './claude_assist_changes.mjs';
 import { inspectReadiness } from './claude_assist_readiness.mjs';
 import { createBoundedRunner } from './claude_assist_runner.mjs';
+import { validateCommitPins, planCommitRange } from './claude_assist_commits.mjs';
 
 const REPO = 'allengchour-glitch/aban-news-landing';
 const JOURNAL = 'dropship/assistant/handoff.jsonl';
@@ -15,7 +16,7 @@ const secret = /\b(?:shpat_|shpss_|ghp_|github_pat_|sk-ant-|sk-proj-)[A-Za-z0-9_
 export const SUITES = Object.freeze({
   core: ['automation/lib/shopify_gql_test.mjs', 'automation/lib/shopify_secret_test.mjs', 'automation/lib/kanal_sperren_test.mjs'],
   seo: ['automation/seo-optimizer_test.mjs', 'automation/lib/seo_titel_test.mjs'],
-  assist: ['automation/lib/claude_assist_test.mjs', 'automation/lib/claude_assist_mcp_test.mjs', 'automation/lib/claude_assist_changes_test.mjs', 'automation/lib/claude_assist_readiness_test.mjs', 'automation/lib/claude_assist_launch_test.mjs', 'automation/lib/claude_assist_runner_test.mjs'],
+  assist: ['automation/lib/claude_assist_test.mjs', 'automation/lib/claude_assist_mcp_test.mjs', 'automation/lib/claude_assist_changes_test.mjs', 'automation/lib/claude_assist_readiness_test.mjs', 'automation/lib/claude_assist_launch_test.mjs', 'automation/lib/claude_assist_runner_test.mjs', 'automation/lib/claude_assist_commits_test.mjs'],
 });
 export const POLICY = Object.freeze({
   scope: 'LuxeStyle / luxestyle.ch only', brandId: 6227837, timezone: 'Europe/Zurich',
@@ -179,8 +180,16 @@ export function createAssistant(root, { runner = boundedRun } = {}) {
     return { suite, source: 'local_offline_tests', status: results.every(r => r.status === 'passed') ? 'passed' : results.some(r => r.status === 'failed') ? 'failed' : 'unknown', results,
       caveat: 'Fixed reviewed test paths; credentials removed and ordinary Node networking blocked. This is not a sandbox for hostile repository code, live account verification or publishing approval.' };
   }
-  async function changePlan() {
+  async function changePlan(args = {}) {
+    keys(args, ['baseCommit', 'headCommit']);
+    const pins = Object.keys(args).length ? validateCommitPins(args) : null;
     await requireRepo();
+    if (pins) return planCommitRange(pins, { runGit: (gitArgs, { timeoutMs = 5000, maxBytes = 32768 } = {}) =>
+      runner('git', ['--no-optional-locks', '--no-replace-objects', '--no-lazy-fetch', '-C', root,
+        '-c', 'core.fsmonitor=false', '-c', 'protocol.allow=never', ...gitArgs], {
+        cwd: root, env: { ...cleanEnv(), GIT_NO_LAZY_FETCH: '1', GIT_NO_REPLACE_OBJECTS: '1', GIT_ALLOW_PROTOCOL: '' },
+        timeoutMs, maxBytes,
+      }) });
     const base = ['--no-optional-locks', '-C', root, '-c', 'core.fsmonitor=false'];
     const commands = [
       ['diff', '--cached', '--no-ext-diff', '--no-textconv', '--name-only', '--no-renames', '-z', '--'],
