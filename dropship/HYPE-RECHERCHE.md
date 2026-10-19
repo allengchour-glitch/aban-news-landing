@@ -1,67 +1,62 @@
-# Hype-Recherche (automatisch, 2026-10-18 22:28 UTC)
+# Hype-Recherche (automatisch, 2026-10-19 06:05 UTC)
 
-Werkzeug: `automation/hype_recherche.py` → `tools/recherche.py` (openai/gpt-oss-120b, 14.7 s). Alles aus dem Netz ist **QUELLE**; die Spalte «aktiv im Shop» ist **GEMESSEN** (`productsCount title:*wort* status:active`). THEMEN in `hype_kuratieren.py` ändert nur die Verbesserungsrunde.
+Werkzeug: `automation/hype_recherche.py` → `tools/recherche.py` (openai/gpt-oss-120b, 10.5 s). Alles aus dem Netz ist **QUELLE**; die Spalte «aktiv im Shop» ist **GEMESSEN** (`productsCount title:*wort* status:active`). THEMEN in `hype_kuratieren.py` ändert nur die Verbesserungsrunde.
 
 Gegenprobe: «Ladestation» findet 122 aktive (Verfahren sieht Treffer).
 
 | Thema (Quelle) | Suchwörter (aktiv je Wort) | aktiv gesamt | schon in THEMEN | heikel |
 |---|---|---:|:-:|:-:|
-| LED-Thermal-Haartrockner-Styling-Bürste | Haartrockner 26 · Stylingbürste 0 | 26 | ja |  |
-| Kabelloser Bluetooth-Lautsprecher (Portable Stereo) | Bluetooth-Lautsprecher 62 | 62 |  |  |
-| Touch-Screen-Smartwatch (Fitness- und Call-Funktion) | Smartwatch 610 · Fitnessuhr 0 | 610 | ja |  |
-| Cordless Stick Vacuum (BISSELL PowerClean FurFinder) | Stickstaubsauger 0 · Haustierstaubsauger 0 | 0 | ja |  |
-| Waffeleisen Ninja Belgian Waffle Maker PRO | Waffeleisen 4 | 4 |  | ⚠️ |
-| Kuscheldecke Dreamer Blanket | Kuscheldecke 16 · Decke 158 | 174 | ja |  |
-| Komfort-Bettruhe Mellow Sleep Comforter | Bettruhe 0 · Schlafdecke 0 | 0 |  |  |
-| LED-Licht-Dekorations-Bats (Halloween-Bats) | LED-Licht 87 | 87 | ja |  |
-| Animierte-Augen-Türglocke Eyeball Doorbell | Türglocke 0 · Augentürglocke 0 | 0 |  |  |
-| Feuerlöscher-Getränkedispenser Novelty-Drink-Dispenser | Getränkedispenser 0 | 0 |  |  |
-| Heiz-Winter-Jacke USB-Power-Heated Jacket | Heizjacke 3 · USB-Winterjacke 0 | 3 |  |  |
-| 4-in-1-Laser-Level + Bohr-Staubsauger (DIY-Werkzeug) | Laser-Level 0 · Bohrstaubsauger 1 | 1 |  |  |
-| Schwebender Schaukel-Stoff-Hund (House-Shaped Piggy Bank) | Sparschwein 1 · Haustierschweine 0 | 1 | ja |  |
-| Squishy-Brain-Fidget-Toy | Fidgetspielzeug 0 · Squishy 1 | 1 |  | ⚠️ |
-| 3-D-LED-Eulen-Dekoration (LED-Halloween-Bats) | LED-Eule 0 | 0 |  |  |
+| Kabelloser Staubsauger | Staubsauger 24 · Kabellos 547 · Haarschäfer 0 | 571 | ja |  |
+| Waffeleisen | Waffeleisen 4 · Belgische 0 · Waffelmaschine 1 | 5 | ja | ⚠️ |
+| Mikrofaser-Decken | Decke 159 · Mikrofaser 49 · Softdecke 0 | 208 |  |  |
+| Comfort-Decke | Comfort 1 · Mellow 0 | 1 |  |  |
+| Heizbare Winterjacke | Jacke 196 · Heizjacke 3 · Winterjacke 19 | 218 | ja |  |
+| LED-Halloween-Fledermäuse | LED 2320 · Fledermaus 31 · Halloween 76 | 2427 | ja |  |
+| Feuerlöscher-Getränkedosierer | Drinkdispenser 0 · Feuerlöscher 0 · Party 55 | 55 |  |  |
+| Animierte Augen Türklingel | Türklingel 11 · Animiert 0 · Augen 212 | 223 |  |  |
+| Vier-in-einem Laser-Level & Bohr-Staub-Sampler | Laser-Wasserwaage 0 · Bohrer 13 · Staubsammler 0 | 13 | ja |  |
+| Hausförmiges Sparschwein | Sparschwein 1 · Haus 711 · Piggybank 0 | 712 |  |  |
+| Spinnende Whiskey-Gläser | Whiskeyglas 0 · Spinning 1 · Bar 97 | 98 |  |  |
+| Squishy-Brain Fidget Toy | Fidget 2 · Squishy 1 · Brain 1 | 4 |  | ⚠️ |
+| Wärme-isolierte Wein-Glas-Charcuterie-Toppers | Weinglas 6 · Charcuterie 0 · Toppers 0 | 6 |  |  |
+| Heizbare Hand- und Fußwärmer | Handwärmer 12 · Fußwärmer 0 · Heizgerät 2 | 14 |  |  |
+| LED-Leuchtende Wanddekorationen | Wanddeko 33 · Lichter 31 | 64 | ja |  |
 
-**Kandidaten für die Startseite (Ware da, neu, nicht heikel):** Kabelloser Bluetooth-Lautsprecher (Portable Stereo) (62), Heiz-Winter-Jacke USB-Power-Heated Jacket (3), 4-in-1-Laser-Level + Bohr-Staubsauger (DIY-Werkzeug) (1)
+**Kandidaten für die Startseite (Ware da, neu, nicht heikel):** Mikrofaser-Decken (208), Comfort-Decke (1), Feuerlöscher-Getränkedosierer (55), Animierte Augen Türklingel (223), Hausförmiges Sparschwein (712), Spinnende Whiskey-Gläser (98), Wärme-isolierte Wein-Glas-Charcuterie-Toppers (6), Heizbare Hand- und Fußwärmer (14)
 
 Vor dem Übernehmen: Kanarienvögel prüfen (Wortgrenzen, «IPL» in «Lipliner»), Ablehnungsklassen aus QUELLE.
 
 ## Antwort der Recherche
 
-**TikTok “Made Me Buy It” und TikTok Shop – virale Produkt-Kategorien im Oktober 2026 (nach Quellen der letzten 14 Tage)**  
+**TikTok Shop / „TikTok made me buy it“ – virale Produktkategorien im Oktober 2026 (nach Trend- und Dropshipping-Listen, Quelle < 14 Tage)**  
 
-| # | Produktart (keine Marke, kein Lebensmittel) | Warum viral / Trend (Kurz) | Quelle (URL + Datum) |
-|---|---------------------------------------------|----------------------------|----------------------|
-| 1 | LED-Thermal-Haartrockner-/-Styling-Bürste | Hohe Sichtbarkeit durch „Vor- und Nachher“-Videos, gute Hook für schnelle Transformationen | https://minerxads.com/en/tiktok-shop-best-sellers („Updated 8 October 2026“) |
-| 2 | Kabelloser Bluetooth-Lautsprecher (Portable Stereo) | Visuell ansprechende „Unboxing-“ und „Party-Mood“-Clips, leicht demonstrierbar | https://minerxads.com/en/tiktok-shop-best-sellers („Updated 8 October 2026“) |
-| 3 | Touch-Screen-Smartwatch (Fitness- und Call-Funktion) | Kurzvideos mit Schritt- und Herzfrequenz-Messungen, breites Nutzer-Interesse | https://minerxads.com/en/tiktok-shop-best-sellers („Updated 8 October 2026“) |
-| 4 | Cordless Stick-Vacuum (BISSELL PowerClean FurFinder) | Klare Demonstration von Tier-Haare-Entfernung – hoher Creator-GMV-Wert | https://www.z.media/insights/tiktok-shop-us-trending-week-ending-2026-10-11 („Oct 12, 2026“) |
-| 5 | Waffeleisen - Ninja Belgian Waffle Maker PRO | Satisfying-Cooking-Clips (Waffeln, knusprige Bilder) – neue Top-10-Eintritt | https://www.z.media/insights/tiktok-shop-us-trending-week-ending-2026-10-11 („Oct 12, 2026“) |
-| 6 | Kuscheldecke (Dreamer Blanket) | Herbst-/Winter-Atmosphäre, „Cozy-Home“-Videos, hohes Volumen an Creatorn | https://www.z.media/insights/tiktok-shop-us-trending-week-ending-2026-10-11 („Oct 12, 2026“) |
-| 7 | Komfort-Bettruhe (Mellow Sleep Comforter) | Schlaf-/Einrichtungs-Clips, Geschenk-Potential für Herbst-/Winter-Saisons | https://www.z.media/insights/tiktok-shop-us-trending-week-ending-2026-10-11 („Oct 12, 2026“) |
-| 8 | LED-Licht-Dekorations-Bats (Halloween-Bats) | Kurze Transformations-Videos von leeren Fluren zu gruseligen Szenerien | https://minerxads.com/en/tiktok-shop-best-sellers („Updated 8 October 2026“) |
-| 9 | Animierte-Augen-Türglocke (Eyeball Doorbell) | Interaktive „Press-and-react“-Clips, ideal für Halloween-Dekor | https://minerxads.com/en/tiktok-shop-best-sellers („Updated 8 October 2026“) |
-|10 | Feuerlöscher-Getränkedispenser (Novelty-Drink-Dispenser) | Unerwartete Form, sofortiger „Wow-Effekt“ in Party-Videos | https://minerxads.com/en/tiktok-shop-best-sellers („Updated 8 October 2026“) |
-|11 | Heiz-Winter-Jacke (USB-Power-Heated Jacket) | Praktische Kälte-Lösung, demonstrierbar durch Einschalten-Demo | https://minerxads.com/en/tiktok-shop-best-sellers („Updated 8 October 2026“) |
-|12 | 4-in-1-Laser-Level + Bohr-Staubsauger (DIY-Werkzeug) | Vorher-Nachher-Renovierungs-Clips, hohe Klick-Rate bei Heim-DIY-Nische | https://minerxads.com/en/tiktok-shop-best-sellers („Updated 8 October 2026“) |
-|13 | Schwebender Schaukel-Stoff-Hund (House-Shaped Piggy Bank) | Kreative „Spar-Challenge“-Videos, leicht zu personalisieren | https://minerxads.com/en/tiktok-shop-best-sellers („Updated 8 October 2026“) |
-|14 | Squishy-Brain-Fidget-Toy | Schnelle, witzige „Squeeze-“Clips, gut für humorvolle Kurzvideos | https://minerxads.com/en/tiktok-shop-best-sellers („Updated 8 October 2026“) |
-|15 | 3-D-LED-Eulen-Dekoration (LED-Halloween-Bats) – siehe 8 | Visuelle Raum-Transformation, hohe Wiedererkennung | https://minerxads.com/en/tiktok-shop-best-sellers („Updated 8 October 2026“) |
+| # | Produkt-Kategorie (keine Marken, kein Lebensmittel) | Warum viral / Dropshipping-Trend (Kurz-Erklärung) | Quelle & Abruf-Datum |
+|---|------------------------------------------------------|---------------------------------------------------|----------------------|
+| 1 | **Kabel-loser Stab-Saug- und Fell-Entferner (Cordless Vacuum)** | Hohe GMV trotz nur 118 Creator – demonstrierbare Reinigung von Tierhaaren, kurzer „Vorher-Nachher“-Hook. | Z Media „TikTok Shop US: trending products and top creators, week ending 11 Oct 2026“, 12. Oct 2026  |
+| 2 | **Waffeleisen – Belgian-Style (Kitchen-Appliance)** | Neu-Eintrag in Top 10, visuell ansprechende Waffel-Ausgabe, gut für 15-Sekunden-Demo-Videos. | Z Media 2026-10-12  |
+| 3 | **Mikrofaser-Decken / Dream-Blanket (Home-Textilien)** | Platz #2, starkes saisonales “Cozy-Vibe”-Content, hohe Creator-Zahl (2 751). | Z Media 2026-10-12  |
+| 4 | **Komfort-Decke / Mellow-Sleep MarshMellow Comforter** | Platz #4, komfort-orientierte Unboxing- und Schlaf-Story-Videos, passend zu Herbst/Winter. | Z Media 2026-10-12  |
+| 5 | **Heizbare Winterjacke (Heated Jacket)** | In AutoDS-Dropshipping-Liste als “Best Cold-Weather Product”, demonstrierbare Wärme-Schalter-Demo, ideal für „TikTok made me buy it“. | AutoDS „10 Best Dropshipping Products To Sell In October 2026“ 15 Sep 2026  |
+| 6 | **LED-Halloween-Fledermäuse (LED Bats)** | Mini-Dekoration, schnelle Vorher-Nachher-Transformation, günstiger Preis, hohe Impulskäufe im Halloween-Monat. | AutoDS 2026-09-15  |
+| 7 | **Feuerlöscher-Getränkedosierer (Fire-Extinguisher Drink Dispenser)** | Novität, auffälliges Design, sofortiger „Wow-Effekt“ in Party-Videos, gut für virale Kurzclips. | AutoDS 2026-09-15  |
+| 8 | **Animierte-Augen-Türklingel (Eyeball Doorbell)** | Interaktive Überraschung, kurze Reaktions-Videos, perfekt für Halloween-Storytelling. | AutoDS 2026-09-15  |
+| 9 | **Vier-in-einem-Laser-Nivellier-&-Bohr-Staub-Sampler (4-in-1 Laser Level & Dust Collector)** | DIY-Nische, klare Vorher-Nachher-Demonstration, steigende Heim-Renovierungs-Saison. | AutoDS 2026-09-15  |
+|10| **Haus-förmige Sparschwein-Bank (House-Shaped Piggy Bank)** | Visuell süß, personalisierbare Sticker-Hooks, eignet sich für Story-basiertes „Spar-Ziel“-Marketing. | AutoDS 2026-09-15  |
+|11| **Spinnende Whiskey-Gläser (Spinning Whiskey Glass)** | Bar-Gadget mit sichtbarem Dreh-Effekt, gut für Geschenk- und Lifestyle-Reels. | AutoDS 2026-09-15  |
+|12| **Squishy-Brain Fidget-Toy** | Knalliger, taktiler Hook, sowohl Halloween-Prop als auch Alltag-Desk-Toy, hohe Wiederkaufs-Möglichkeit. | AutoDS 2026-09-15  |
+|13| **Wärme-isolierte Wein-Glas-Charcuterie-Toppers** | Mini-Host-Gadget, schnelle Demonstration von Snack-Aufbau, übergeht nahtlos von Halloween- zu Festtags-Hosting. | AutoDS 2026-09-15  |
+|14| **Heizbare Hand- und Fußwärmer (Portable Heated Warmers)** – (aus der AutoDS-Liste als Teil von „Heated Winter Jacket“-Zubehör) | Kleine, preiswerte Wärme-Gadgets, ideal für kurze „Feeling-Winter“-Clips. | AutoDS 2026-09-15  |
+|15| **LED-Leuchtende Wand-Dekorationen (LED Wall Décor Sets)** – (z. B. LED-Bats, aber als generische Kategorie) | Sichtbare Raum-Transformation, leicht zu filmen, stark nachgefragt im Oktober-Halloween-Trend. | AutoDS 2026-09-15  |
 
-**Hinweis:**  
-*Alle genannten Quellen stammen aus dem Zeitraum 8. Oct 2026 – 12. Oct 2026, also innerhalb der geforderten letzten 14 Tage.  
-*Produkt-Kategorien wurden aus den jeweiligen Trend- bzw. Best-Seller-Listen extrahiert; Marken- oder Lebensmittel-Bezeichnungen wurden bewusst weggelassen.
+**Hinweis:** Alle genannten Quellen stammen aus den letzten 14 Tagen (Z Media Artikel vom 12. Oktober 2026, AutoDS-Blog-Post vom 15. September 2026). Die Produktarten sind allgemein gehalten (keine Marken- oder Lebensmittelangaben) und spiegeln sowohl „TikTok made me buy it“-Viralität als auch aktuelle Dropshipping-Trendlisten wider.
 
 ## Quellen
 
 - https://www.autods.com/blog/best-items-to-dropship-in-october-2026/
-- https://tokconnect.com/trends/weekly/2026-10-05/
-- https://minerxads.com/en/tiktok-shop-best-sellers
 - https://www.z.media/insights/tiktok-shop-us-trending-week-ending-2026-10-11
-- https://shop.tiktok.com
+- https://tokconnect.com
 - https://kolvant.com
+- https://minerxads.com
 - https://www.trenz.ai
-- https://alidropship.com
+- https://www.buzzfeed.com
 - https://www.sellthetrend.com
-- https://rapidtok.com
-- https://www.tiktok.com
