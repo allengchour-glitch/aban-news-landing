@@ -23,7 +23,7 @@ Befunde (jeder ist ein Fehler):
   SCHUTZ_VERLOREN_MITTEN_*  (monotonie, Phase beginnt mitten im Lauf) seit Phasenbeginn hat Pilot 2.0 selbst einen Stop entfernt
                      und die Seite blieb ungesichert
 Bewusst NICHT gezählt (begründet):
-  • Staub unter STAUB_MAX_USDT (10 USDT: darunter nimmt Binance keinen Stop an) — als STAUB_* ausgewiesen. Den Coin-Rest unter
+  • Staub unter STAUB_MAX_USDT (10 USDT: darunter nimmt Binance keinen Stop an; Long UND Short, seit der 14. Prüfung K3) — als STAUB_* ausgewiesen. Den Coin-Rest unter
     einem Futures-Schritt sichert Pilot 2.0 seit der 9. Prüfung mit einem eigenen Spot-Stop.
   • mehrere Spot-Stops, deren Summe die Netto-Position nicht übersteigt (der Not-Aus sichert unter Störungen additiv,
     statt einen funktionierenden Stop wegzunehmen); zu grosse Perp-Stops ohne Coins (reduceOnly: schliessen nur den Short).
@@ -52,11 +52,18 @@ Futures-Markpreis (12. Prüfung W3) — eigener Zufall, die Szenarien alter Seed
 Listen-Fuzzer (13. Prüfung): an zufälligen Tagen ist EINE eigene Auftragsliste (Spot openOrders oder Perp openAlgoOrders) ab einer
 zufälligen Anfrage dauerhaft gestört — Pilot 2.0 hat dafür eigene Wege (Kennung im Buch, zuerst setzen, beidseitig): jede Lücke
 nach Lauf + Nachkontrolle ist ein Befund, KEINE DAUER-Ausnahme.
+Strenger Modus (14. Prüfung W): PRUEF_STRENG=1 python3 -B pruef_fuzzer.py … — die Prüf-Börse lehnt reduceOnly-Stops über mehr als
+die offene Position ab (−2022; was Binance tut, klärt nur das Testnetz, README-Prüfpunkt A — die Standardläufe «nehmen sie an»,
+also braucht es beide), die Störungen liegen häufiger auf den ERSTEN passenden Anfragen (ab_req nur in 25 statt 60 %, höchstens
+80 statt 150) und haben endliche Anzahlen 1–4 (nur die Not-Aus-Teile behalten ihre dauerhaften), «unsichtbar» dauert bis zu 8
+Listenabfragen, und der Listen-Fuzzer lässt zusätzlich den Kurs springen (meist hoch). Die Zufallsfolge ändert sich: eigene Seeds
+(z. B. 20000 ff.); ohne die Variable bleiben alle Standard-Seeds Zug um Zug dieselben. Die Ausgabedatei heisst dann pruef_streng_*.
 """
 from __future__ import annotations
 
 import copy
 import json
+import os
 import random
 import sys
 import tempfile
@@ -91,6 +98,7 @@ STEP_S = {s: float(v) for s, v in FB.SPOT_STEP.items()}
 STEP_P = {s: float(v) for s, v in FB.FUT_STEP.items()}
 TOL_USDT = 6.0
 STAUB_MAX_USDT = 10.0  # darunter kann Binance nichts mehr absichern (Mindestbetrag 5 USDT, Schrittweiten) — echter Staub
+STRENG = os.environ.get("PRUEF_STRENG") == "1"  # 14. Prüfung W: strenge reduceOnly-Regel + härtere Störungs-Zufälle (siehe oben)
 _n = [0]
 
 
@@ -118,6 +126,7 @@ def env_test(skey="s", fkey="f", **extra):
 
 def neues_konto(usdt=20000.0, uid=4711, keys=("k",), kurs=None):
     B.reset(kurs)
+    B.reduce_algo_streng = STRENG  # PRUEF_STRENG=1: reduceOnly-Stop über der offenen Position → −2022 (14. Prüfung W)
     return B.konto_anlegen(keys, GEHEIM, uid, usdt)
 
 
@@ -186,7 +195,8 @@ def schutz_befunde(k, unklar=None, tol_usdt=TOL_USDT):
                 out.append((name, sym, round(luecke_s, 6), round(luecke_s * p, 2), "beidseitig"))
             luecke_p = max(0.0, -g["pos"]) - g["p_qty"]
             if luecke_p * p > max(tol_usdt, 0.5 * STEP_P[sym] * p) + 1e-6:
-                out.append(("SHORT_OHNE_STOP", sym, round(luecke_p, 6), round(luecke_p * p, 2), "beidseitig"))
+                out.append(("SHORT_OHNE_STOP" if luecke_p * p > STAUB_MAX_USDT else "STAUB_SHORT_OHNE_STOP", sym, round(luecke_p, 6),
+                            round(luecke_p * p, 2), "beidseitig"))
             continue
         if g["netto"] > 0:
             luecke = min(g["netto"], g["coins"]) - g["s_qty"]
@@ -198,7 +208,8 @@ def schutz_befunde(k, unklar=None, tol_usdt=TOL_USDT):
         if g["netto"] < 0:
             luecke = -g["netto"] - g["p_qty"]
             if luecke * p > max(tol_usdt, 0.5 * STEP_P[sym] * p) + 1e-6:
-                out.append(("SHORT_OHNE_STOP", sym, round(luecke, 6), round(luecke * p, 2)))
+                out.append(("SHORT_OHNE_STOP" if luecke * p > STAUB_MAX_USDT else "STAUB_SHORT_OHNE_STOP", sym, round(luecke, 6),
+                            round(luecke * p, 2)))
         # Ein zu grosser Stop schadet erst, wenn er auslöst und danach etwas UNGEDECKT ist (11. Prüfung: statt «grösser als
         # netto» genau nachrechnen — deckt der Perp-Stop den Short, der nach dem Auslösen des Spot-Stops übrig ist, ist ein
         # «zu grosser» Spot-Stop harmlos, und umgekehrt). In den üblichen Lagen (nur eine Seite gestoppt) ist das dasselbe.
@@ -436,11 +447,15 @@ def zufall_regeln(rng, n, kurse, ziele=ZIELE_LAUF, haerte=1.0):
             continue
         m, pfad, pred, arten = rng.choice(ziele)
         art = rng.choice(arten)
-        r = dict(methode=m, pfad=pfad, pred=pred, art=art, anzahl=rng.choice([1, 1, 1, 2, 3, 99 if haerte > 1 or rng.random() < 0.3 else 2]))
-        if rng.random() < 0.6:
-            r["ab_req"] = B.n_req + rng.randint(1, 150)
+        if STRENG and haerte <= 1:  # endliche Anzahlen: Schutz ist dann immer möglich, jede Lücke nach der Nachkontrolle ein Befund
+            anzahl = rng.choice([1, 1, 2, 3, 4])
+        else:
+            anzahl = rng.choice([1, 1, 1, 2, 3, 99 if haerte > 1 or rng.random() < 0.3 else 2])
+        r = dict(methode=m, pfad=pfad, pred=pred, art=art, anzahl=anzahl)
+        if rng.random() < (0.25 if STRENG else 0.6):
+            r["ab_req"] = B.n_req + rng.randint(1, 80 if STRENG else 150)
         if art == "unsichtbar":
-            r["listen"] = rng.choice([1, 2, 3])
+            r["listen"] = rng.choice([1, 2, 3, 4, 5, 8] if STRENG else [1, 2, 3])
         if art == "teil":
             r["anteil"] = rng.choice([0.3, 0.5, 0.9])
         if art == "spaet":
@@ -768,12 +783,12 @@ def notaus_runde(seed):
             continue
         m, pfad, pred, arten = rng.choice(ZIELE_NOTAUS)
         r = dict(methode=m, pfad=pfad, pred=pred, art=rng.choice(arten), anzahl=rng.choice([1, 2, 3, 99]))
-        if rng.random() < 0.5:
+        if rng.random() < (0.25 if STRENG else 0.5):
             r["ab_req"] = B.n_req + rng.randint(1, 40)
         if r["art"] == "teil":
             r["anteil"] = rng.choice([0.3, 0.5])
         if r["art"] == "unsichtbar":
-            r["listen"] = rng.choice([1, 2])
+            r["listen"] = rng.choice([1, 2, 3, 4, 5, 8] if STRENG else [1, 2])
         regeln.append(r)
     B.regeln = regeln
     log_na = len(B.log)
@@ -831,6 +846,10 @@ def listen_runde(seed):
         if stoer:
             B.regeln = [dict(methode="GET", pfad=rng.choice(["/fapi/v1/openAlgoOrders", "/api/v3/openOrders"]), pred=None,
                              art=rng.choice(["vor503", "429"]), anzahl=10 ** 6, ab_req=B.n_req + rng.randint(1, 60))]
+            if STRENG and rng.random() < 0.5:  # 14. Prüfung W(b): auch im Listen-Fuzzer springt der Kurs mitten im Tag (meist hoch)
+                s_ = rng.choice(SYMS)
+                B.regeln.append(dict(art="kurs", sym=s_, preis=round(B.kurs[s_] * (1 + rng.choice([1, 1, -1]) * rng.uniform(0.01, 0.12)), 2),
+                                     anzahl=1, ab_req=B.n_req + rng.randint(1, 60)))
         try:
             r = lauf(ents, env, d)
         except Exception:  # noqa: BLE001
@@ -899,7 +918,7 @@ def main():
             alle += notaus_runde(seed) if art == "notaus" else monotonie_runde(seed)
     zaehler = Counter(x[0] for x in alle)
     print(json.dumps(dict(zaehler), ensure_ascii=False, indent=1))
-    out = Path.cwd() / f"pruef_{art}_{von}_{bis}.json"
+    out = Path.cwd() / f"pruef_{'streng_' if STRENG else ''}{art}_{von}_{bis}.json"
     out.write_text(json.dumps(alle, ensure_ascii=False, indent=1, default=str))
     fehler = echte(alle)
     print(f"{len(fehler)} Befunde (ohne Staub und laut gemeldete Dauerstörungen) → {out}")

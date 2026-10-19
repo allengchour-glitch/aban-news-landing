@@ -641,6 +641,10 @@ with tempfile.TemporaryDirectory() as tmp:
 auto = (HIER / "krypto-auto.bat").read_bytes()
 txt = auto.decode("ascii")
 pruefe("krypto-auto.bat: Windows-Zeilenenden (sonst springt «goto» falsch)", auto.count(b"\n") == auto.count(b"\r\n") > 10)
+_notaus_zweig = auto[auto.index(b"if defined NOTAUS ("):auto.index(b"goto bilanz")]
+pruefe("krypto-auto.bat: der Not-Aus-Zweig ruft nach dem Not-Aus-Lauf auch die Pilot-2.0-Nachkontrolle (wie stop.bat)",
+       b"pilot.py --lauf" in _notaus_zweig and b"--nachkontrolle" in _notaus_zweig
+       and _notaus_zweig.index(b"--lauf") < _notaus_zweig.index(b"--nachkontrolle"))
 pruefe("krypto-auto.bat: UTF-8 erzwungen (Emoji-Absturz beim Umleiten)", "set PYTHONUTF8=1" in txt and "set PYTHONIOENCODING=utf-8" in txt)
 pruefe("krypto-auto.bat: Not-Aus wird VOR der Pause geprüft", txt.index('ki_bot\\STOP"') < txt.index('ki_bot\\PAUSE"'))
 pruefe("krypto-auto.bat: Ausgabe nicht mehr nach nul, Fehler gemeldet", ".py >nul" not in txt and "meldung.py --fehler" in txt and "--push" in txt
