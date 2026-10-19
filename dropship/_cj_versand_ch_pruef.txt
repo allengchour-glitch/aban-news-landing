@@ -10419,3 +10419,7 @@ gesichtsmaske-mit-kurkuma-und-kojisaure-617100	2607081119151617700	0	-	KEINE CH-
 augen-patches-mit-mikroneedles-608000	2607080416101609500	3	5.92	ok	landeseite
 jutestil-katzenkratzbrett-mit-integriertem-kor-625600	2504140354081625900	16	19.49	ok	landeseite
 ganzkorper-sonnencreme-spf50-mit-lichtschutz-624700	2507171144041624900	3	5.99	ok	landeseite
+navy-blue-armelloses-rundhals-minikleid-606400	2607070535531607000	16	8.79	ok	landeseite
+feuchtigkeitsspendender-sonnenstift-618600	2506300900571618800	3	5.89	ok	landeseite
+midi-kleid-mit-ruschen-und-leopardenmuster-632700	2607070156241633400	16	8.79	ok	landeseite
+make-up-vorbereitung-mit-uv-schutz-547072	1785191144285016064	3	5.69	ok	landeseite
