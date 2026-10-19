@@ -7560,3 +7560,4 @@ gid://shopify/Product/15473085546881	zugeordnet	4	Flammen-Aroma-Diffusor mit Luf
 gid://shopify/Product/15473354801537	zugeordnet	20	Thermohose mit Knieschutz
 gid://shopify/Product/15473354932609	zugeordnet	15	Casual Blazer · Herren
 gid://shopify/Product/15473354965377	zugeordnet	8	Distressed Leder Off-Shoulder Jacke
+gid://shopify/Product/15473355030913	zugeordnet	98	Ice Silk UV-Schutzjacke mit Kapuze für Herren

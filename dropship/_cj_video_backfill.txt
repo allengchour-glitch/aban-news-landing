@@ -1660,3 +1660,5 @@ gid://shopify/Product/15447941677441	kein-video-beim-lieferanten
 gid://shopify/Product/15447941841281	kein-video-beim-lieferanten
 gid://shopify/Product/15447941972353	kein-video-beim-lieferanten
 gid://shopify/Product/15447942300033	kein-video-beim-lieferanten
+gid://shopify/Product/15447942594945	kein-video-beim-lieferanten
+gid://shopify/Product/15447943020929	kein-video-beim-lieferanten

@@ -248,12 +248,12 @@
    "basis_utc": "2026-10-22T19:15:00Z",
    "format": "karussell",
    "grund": "rc=0: Nichts faellig: kein ready-Karussell.",
-   "letzter_versuch": "2026-10-19T00:10:18Z",
+   "letzter_versuch": "2026-10-19T00:32:00Z",
    "mc_ids": [],
-   "reserviert_um": "2026-10-19T00:10:18Z",
-   "status": "offen",
+   "reserviert_um": "2026-10-19T00:32:00Z",
+   "status": "reserviert",
    "termin_utc": "2026-10-22T19:15:00Z",
-   "versuche": 9
+   "versuche": 10
   },
   "karussell-20261023T1915": {
    "basis_utc": "2026-10-23T19:15:00Z",
@@ -1043,10 +1043,18 @@
   "story-20261022T1710": {
    "basis_utc": "2026-10-22T17:10:00Z",
    "format": "story",
+   "grund": "",
+   "handle": "",
+   "handles": [
+    "rabe-mit-federn-fga93063"
+   ],
    "letzter_versuch": "2026-10-19T00:31:10Z",
-   "mc_ids": [],
+   "mc_ids": [
+    399529599,
+    399529602
+   ],
    "reserviert_um": "2026-10-19T00:31:10Z",
-   "status": "reserviert",
+   "status": "geplant",
    "termin_utc": "2026-10-22T17:10:00Z",
    "versuche": 1
   },
@@ -1621,6 +1629,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-19T00:31:10Z",
+ "stand": "2026-10-19T00:32:00Z",
  "version": 1
 }
