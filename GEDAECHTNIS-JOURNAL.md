@@ -53,6 +53,13 @@
 
 
 
+## 📬 Zoho-Postfach info@luxestyle.ch aus der Cloud NICHT erreichbar — IMAP-Port gesperrt (2026-10-19, ~20:15 UTC)
+Betreiber («zohomail von info@luxestyle.ch»): seine Handy-App zeigt das Zoho-Postfach, das der Gmail-Konnektor NICHT sieht (die «Bill payment has failed»-Mail vom 16.10. und die Mails von «noctis.hive» liegen nur dort; in Gmail GEMESSEN 0 Treffer, auch `in:anywhere`/Papierkorb/Spam).
+- **GEMESSEN:** `ZOHO_APP_PASSWORD` ist in der Umgebung gesetzt und `automation/zoho_mail.py` (IMAP lesen, `BODY.PEEK`) ist da — aber `imap.zoho.eu:993` scheitert: der Proxy antwortet auf `CONNECT` mit 200, danach bricht die Gegenstelle nach dem TLS-Hallo ab (`ConnectionResetError`, Proxy-Status: `ws_closed_mid_exchange … Connection ended` für `imap.zoho.eu:993`, 3 Versuche 19:45 UTC). Dasselbe für 465/443 unklar (nur CONNECT-200 gemessen). Am 07.07. ging es noch («beide Ports freigegeben») → die Netzwerk-Richtlinie der Umgebung hat sich geändert.
+- **Fix liegt beim Betreiber:** Umgebungsmenü (Titelleiste der Sitzung) → Edit → Network access → `imap.zoho.eu` unter «Allowed domains» (oder breitere Stufe). Vorher nichts retryen (Richtlinien-Sperre, kein Netzfehler).
+- **Bis dahin:** Betreiber schickt Screenshot von Absender + «Originalnachricht anzeigen» (SPF/DKIM) — die Phishing-Frage zur Rechnungs-Mail ist ohne Kopfzeilen nicht entscheidbar. Zoho-Mail-App: Mail öffnen → ⋮ → «Original anzeigen»; «Als Spam melden» direkt dort.
+- **LEHRE «Ein Werkzeug, das im Juli lief, ist kein Beleg für heute»:** Zugang + Skript + Passwort waren alle da, nur der Pfad dazwischen war zu. Erst die Verbindung messen (CONNECT-Antwort UND Datenfluss), dann Aussagen über das Postfach machen.
+
 ## ✅ «erledige alles» — Rest der Codex-Runde (2026-10-19, ~16:00–17:00 UTC)
 Betreiber, wörtlich: «erledige alles» (nach «search console link»). Gemeint: die offenen Punkte aus dem Bericht der Codex-Runde.
 - **Theme (`templates/product.json`, Live-Datei vorher geholt, Backup `theme_backup/templates__product.json.vor-rueckgabe-lieferland-1019`, Rücklesen bytegleich, JSON gültig):** ① Rückgabe-Zusatz «Melde deine Rückgabe zuerst an; die gültige Retourenadresse erhältst du von uns. Bei freiwilliger Rückgabe trägst du die Rücksendekosten.» im Standardzweig des Akkordeons (nicht im Selbst-gestalten-Zweig); der Satz deckt sich GEMESSEN mit der Rückgaberichtlinie.
