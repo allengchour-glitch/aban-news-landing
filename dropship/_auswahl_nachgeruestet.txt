@@ -2965,3 +2965,4 @@
 16652101255559	Modell:24:24	2026-10-19	rucksack-mit-zahlenmuster-605100
 16652099551623	Typ:8:8	2026-10-19	retro-nachttischlampe-mit-usb-ladefunktion-603200
 16652099322247	Farbe:3:3	2026-10-19	erweiterbarer-pendler-rucksack-fur-laptops-603000
+16609844068743	Typ:3+Menge:2:3+ki	2026-10-19	konturmesslehre-aus-aluminium-3fb034
