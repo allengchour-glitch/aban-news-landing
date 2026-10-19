@@ -10967,3 +10967,5 @@ taktischer-huftbeutel-fur-outdoor-574272	1793557332471848960	16	17.89	ok	landese
 kontraststreifen-hose-mit-stretch-632900	2512131137471633100	16	7.99	ok	landeseite
 weisse-madchen-schuhe-mit-schleife-621600	2412120901241621900	16	6.90	ok	landeseite
 solar-bewasserung-fur-garten-und-hof-618000	2607120741561618600	7	13.19	ok	landeseite
+leichter-camouflage-brustbeutel-419072	1788855691420110848	16	9.20	ok	landeseite
+velour-strumpfhosen-4-farben-609600	2512130338161609800	16	8.79	ok	landeseite
