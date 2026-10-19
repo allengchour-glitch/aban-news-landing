@@ -774,7 +774,7 @@ Andere Strategie wählen: `setx KRYPTO_STRATEGIE "halten"` (immer 100 %) oder `"
 
 ## 🚀 Pilot 2.0 einschalten (Spot-Long + Short + Funding-Ernte)
 
-> ⛔ **NOCH NICHT FREIGEGEBEN (14.10.2026).** Dreizehn unabhängige Prüfungen fanden Lücken. Die Wurzel der Runden 3–6 war ein
+> ⛔ **NOCH NICHT FREIGEGEBEN (19.10.2026).** Vierzehn unabhängige Prüfungen fanden Lücken. Die Wurzel der Runden 3–6 war ein
 > eigenes Coin- und USDT-Buch, das vom Konto abweichen konnte — darum ist Pilot 2.0 umgebaut auf **«Konto = Wahrheit»**: Er
 > handelt nur in einem Binance-**Unterkonto**, das ihm allein gehört, und liest jeden Lauf den Kontostand. Die 8. Prüfung brachte
 > eine noch strengere nachgebaute Binance und Fuzzer mit (`pruef_boerse.py`, `pruef_fuzzer.py`), die 9. Aufträge, die bis zu
@@ -787,7 +787,7 @@ Andere Strategie wählen: `setx KRYPTO_STRATEGIE "halten"` (immer 100 %) oder `"
 > bei zwei gleichzeitigen Not-Aus das Buch zusammenführt statt überschreibt; die eigene Prüfkampagne danach fand vier weitere
 > Fehler (Szenarien 12.F1–12.F4); ihre Mutationsprobe fand 18 eingebaute Fehler, die kein Test bemerkte — 13 haben jetzt ein
 > eigenes Szenario (12.S1–12.S10, geschärft 12.p1/12.p5b), gleichwertig sind R12-M5 (der Not-Aus sperrt zwischen Lesen und
-> Verkaufen nie Coins), R12-M23 (nach einer Ablehnung überspringt `nur_ergaenzen` wirksame Stops ohnehin), R12-M34 (nur eine
+> Verkaufen nie Coins — gilt nur ohne einen zweiten, gleichzeitigen Not-Aus, Hinweis der 14. Prüfung), R12-M23 (nach einer Ablehnung überspringt `nur_ergaenzen` wirksame Stops ohnehin), R12-M34 (nur eine
 > Abgleich-Runde mehr) und R11-M19 (Staub-Paar) — R10-M17 hielt die 13. Prüfung zu Recht für NICHT gleichwertig (Spot-Liste im
 > Not-Aus unlesbar → der Short braucht den Stop über die ganze Menge), es hat jetzt das Szenario 13.p7. Die 13. Prüfung brachte
 > einen Tageslauf, der einen Not-Aus mitten im Lauf selbst zu Ende führt (er hält die Sperre; vorher handelte er nur nicht mehr
@@ -805,13 +805,36 @@ Andere Strategie wählen: `setx KRYPTO_STRATEGIE "halten"` (immer 100 %) oder `"
 > nicht mehr passende: 5 durch den Umbau verschobene Muster (neu formuliert, erkannt), 1 wirkungsloses (`set() or X` ist `X`; ersetzt,
 > erkannt), 7 echte Lücken (6 neue Szenarien: 13.p4c, 13.G1–13.G5) und R12-M21, das seit Runde 13 doppelt abgesichert ist (beide Stellen
 > zusammen erkennt 12.S4). **148 von 153 erkannt; die 5 offenen sind gleichwertig:** R10-M4b («Not-Aus offen» setzt einen gestarteten
-> Modus voraus, dann gilt «mit Bestand» ohnehin) und R11-M19, R12-M5, R12-M23, R12-M34 (siehe oben). Alle Funde
+> Modus voraus, dann gilt «mit Bestand» ohnehin) und R11-M19, R12-M5, R12-M23, R12-M34 (siehe oben).
+> Die **14. Prüfung** (Technik «echte Verzahnung»: ein Tageslauf hält vor seiner n-ten Anfrage an, ein zweiter Lauf läuft ganz mittendrin —
+> viermal 959 Verzahnungen von Tageslauf und Not-Aus/STOP/Nachkontrolle, dazu 2'877 mit einem unklaren Auftrag des anderen Laufs, dazu
+> 5'200 + 2'200 Zufalls-Seeds: 0 Befunde) fand **einen Blocker unter einer Bedingung**, drei wichtige und sechs kleine Funde. Der Blocker
+> (F1): zeigt Binance einen eben gesetzten Algo-Stop mehrere Listenabfragen lang nicht (Antwort verloren, die Liste hinkt nach — ob das
+> real vorkommt, klärt nur das Testnetz: neue Prüfpunkte A6–A8), wurde er am Laufende vergessen, und neben dem kleinen stand ein zweiter,
+> zu grosser Perp-Stop, der beim Auslösen die Absicherung zurückkaufte (7'880 USDT). Jetzt wird jeder im Buch bekannte Stop, den die
+> lesbare Liste nicht zeigt, nach dem neuen Stop über seine Kennung gelöscht (14.F1; Spot-Gegenstück 14.F1s). F2: kein −2022-Rückfall bei
+> unlesbarer Perp-Liste (9'400 USDT; im strengen Fuzzer bis 30'637): jetzt mit frisch gelesener Position, und würde auch der kleinere
+> Stop sofort auslösen, steigt er zum Markt aus. F3: der Spot-Abgleich ohne lesbare Liste stieg bei fallendem Kurs nicht zum Markt aus
+> (9'092 USDT). W: die Prüf-Werkzeuge waren zu gutmütig — der Fuzzer hat jetzt einen **strengen Modus** (`PRUEF_STRENG=1`: reduceOnly
+> über der Position wird abgelehnt, Störungen auf den ersten Anfragen mit endlichen Anzahlen, «unsichtbar» bis zu 8 Listenabfragen,
+> Kurssprünge im Listen-Fuzzer). **Er fand sofort weitere echte Lücken (E2–E4, nur im Tageslauf-Fuzzer):** E2 ein Spot-Stop, den die
+> Liste verzögert zeigt, sperrt Absicherungs-Coins — die Stops lagen still über der Netto-Richtung (Lauf-Seeds 20568, 20803, 20473, 20736;
+> bis 4'066 USDT): jetzt zählen gesperrte, aber nicht gelistete Coins als gedeckt, und eine Kontoprobe nach jeder Abgleich-Runde sichert
+> den Markt beidseitig, wenn mehr gesperrt ist als nötig. E3 der Not-Aus löschte mit veralteten Zahlen (Kontostand nicht lesbar) den
+> Perp-Stop, während ein Spot-Stop über Paar-Coins blieb (Lauf-Seed 20557): auf veralteten Zahlen verkleinert und löscht er nie einen
+> Stop. E3b ein Not-Stop über offenem plus unklarem Short wurde mit −2022 abgelehnt (Lauf-Seed 20369). E4 Prüf-Werkzeug: gestapelte
+> endliche Störungen auf dem Schutzpfad, die Pilot 2.0 alle Versuche nehmen, zählen wie eine dauerhafte; Coins, die das Buch nicht kennt,
+> sind am Ende kein Befund. Klein: K1 beide Läufe ändern den Perp-Stop (die Kennung des anderen kommt ins Gedächtnis), K2 die unklaren
+> Aufträge werden in jeder Abgleich-Runde frisch gelesen, K3 Short-Staub ≤ 10 USDT, K4 kein Dauer-Alarm der Nachkontrolle nach einer
+> Ablehnung, K5 zwei gestartete Modi (Not-Aus und Nachkontrolle binden je Modus dessen eigene Verbindung; der Tageslauf schliesst bei
+> STOP auch einen fremden Modus), K6 `krypto-auto.bat` ruft im Not-Aus-Zweig die Nachkontrolle. ‹ENDSTAND›
+> Alle Funde
 > sind behoben und
 > als feste Szenarien in `test_pilot2_streng.py`. `FREIGEGEBEN = False` bleibt, bis eine weitere unabhängige Prüfung keine Blocker
 > mehr findet — bis dahin wirkt `KRYPTO_PILOT2=an` nicht (siehe «Starten» unten).
 
 Gleiche Signale wie der Pilot, klügere Ausführung über **beide** Binance-Konten (`pilot2_plan.py` rechnet, `pilot2_live.py`
-handelt; 23 + 154 + 225 Tests gegen zwei streng nachgebaute Binance, Fuzzer, Mutationsproben). Ohne `KRYPTO_PILOT2=an` handelt der
+handelt; 23 + 154 + 248 Tests gegen zwei streng nachgebaute Binance, Fuzzer, Mutationsproben). Ohne `KRYPTO_PILOT2=an` handelt der
 Pilot wie bisher.
 
 **Was er tut:** Richtung long → Coin im Spot-Konto (kein Funding). Richtung short → Short-Perpetual (Hebel 1, bekommt Funding).
@@ -1064,7 +1087,7 @@ python3 tools/trading/krypto_bot/test_calls.py    # 84 Tests: 40 typische Call-F
 python3 tools/trading/krypto_bot/test_binance.py  # 21 Tests, inkl. nachgebautem Binance-Server mit Signaturprüfung
 python3 tools/trading/krypto_bot/test_pilot2_plan.py  # 23 Tests: Pilot-2.0-Rechnung (Richtung, Ernte, Pfand, Mindestbeträge)
 python3 tools/trading/krypto_bot/test_pilot2_live.py  # 154 Tests: Pilot 2.0 («Konto = Wahrheit») gegen eine strenge nachgebaute Binance
-python3 -B tools/trading/krypto_bot/test_pilot2_streng.py  # 225 Tests: Belege der 8.–14. Prüfung, Schlussproben, Fuzzer-Funde gegen die Prüf-Börse, kleine Fuzzer
+python3 -B tools/trading/krypto_bot/test_pilot2_streng.py  # 248 Tests: Belege der 8.–14. Prüfung, Schlussproben, Fuzzer-Funde gegen die Prüf-Börse, kleine Fuzzer
 python3 -B tools/trading/krypto_bot/test_maxprofit.py      # 55 Tests: Max-Profit-Kern (gleiches Modell wie der Pilot, Kelly-Optimum, keine Zukunftsdaten, Kosten; Pilot 2.0 mit Hebel: = lauf2 bei 1×, Pfand-Regel, bei festem Kurs nie liquidiert)
 python3 -B tools/trading/krypto_bot/test_testnetz_pruefung.py  # 61 Tests: das Testnetz-Prüfskript (A1–A8, B1–B6) gegen die Prüf-Börse (nur 127.0.0.1)
 python3 -B tools/trading/krypto_bot/pruef_fuzzer.py notaus 0 1600     # grosser Fuzzer (für Prüfungen): Not-Aus unter harten Störungen

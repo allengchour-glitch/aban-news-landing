@@ -1432,9 +1432,13 @@ def _stops_vorab(spot, fut, buch, k, d, plan, nur_jetzt=False):
     jetzt = _soll(frei + gebunden, pos, kurs, d)
     # gekaufte Coins kommen abzüglich der Gebühr in Coins an: lieber einen Schritt mehr ungesichert annehmen (ein zu grosser
     # Stop wird am Ende ersetzt oder beidseitig abgefangen) als einen Teil des Shorts ohne Stop lassen
-    coins_jetzt, ziel = frei + gebunden, max(0.0, info["spot_ziel"])
-    ziel = coins_jetzt + (ziel - coins_jetzt) * (1 - GEB_SPOT_KAUF) if ziel > coins_jetzt else ziel
-    ende = _soll(ziel, info["perp_ziel"], kurs, d)
+    # Plan-Ende = die tatsächlichen Coins (die Gebühr ist schon abgezogen) plus die NEUEN Shorts, die dieser Lauf noch schickt — nicht das
+    # ungekürzte Endziel: der Auftragsdeckel (KI_BOT_MAX_AUFTRAG), ein Mindestbetrag oder ein zu kleiner Kauf lassen es heute nie eintreten,
+    # und der Stop wäre bis zum Abgleich am Laufende zu klein (bricht der Lauf vorher ab, z. B. durch STOP, bis zur Nachkontrolle; 14. Prüfung,
+    # strenger Fuzzer Lauf-Seed 22466)
+    coins_jetzt = frei + gebunden
+    short_dazu = sum(m for konto, seite, m, red in plan.get("schritte") or () if konto == "perp" and seite == "SELL" and not red)
+    ende = _soll(coins_jetzt, pos - short_dazu, kurs, d)
     # nur_jetzt (nach dem Verkleinern, vor den Käufen): nie unter das, was JETZT ungesichert ist — die Ernte-Coins sind noch nicht
     # gekauft (bleibt ein Kauf unklar oder abgelehnt, wäre der Short sonst teilweise ohne Stop); erst nach den Käufen bis zum Plan-Ende
     sicher_p = PL.runde(jetzt["stop_perp"] if nur_jetzt else min(jetzt["stop_perp"], ende["stop_perp"]), rf["step"])

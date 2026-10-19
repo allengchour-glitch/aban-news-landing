@@ -1353,23 +1353,25 @@ _cr = [x for x in B.log[n0:] if x[2] == "/api/v3/order/cancelReplace"]
 g = lage(k, "BTCUSDT")
 pruefe("11.S11 unklarer Spot-Auftrag im Lauf gilt wie eine Ablehnung: kein cancelReplace, kein Schutzverlust",
        not _cr and ungesichert_usdt(k) <= 10, (len(_cr), P.ungesichert(k, "BTCUSDT"), r["zeilen"][-3:]))
-# 11.S12 (erkennt die Mutation «R11-M12»):
-# Vorab nach dem Ernte-Kauf: gekaufte Coins kommen abzüglich der Gebühr an — der Perp-Stop schrumpft auf das, was bis zum
-# Plan-Ende sicher ungesichert ist, MIT der Gebühr gerechnet (sonst bliebe ein Teil des Shorts ohne Stop)
-k = neues_konto(400000)
-cfg = L.einstellungen(env_echt(kapital=400000))
-spot, fut = L.Spot(cfg["spot"]), L.Fut(cfg["futures"])
-sym = "BTCUSDT"
-k.frei["BTC"] = 0.5
-k.buchen(sym, -1.6, B.kurs[sym])
-d = {"sym": sym, "coin": "BTC", "kurs": B.kurs[sym], "rs": spot.regeln2(sym), "rf": fut.regeln(sym)}
-fut.stop_menge(sym, "BUY", 1.2, 110000.0, d["rf"]["tick"], cid=L._kennung(L.CID_STOP_PERP))
-buch = L.leer_buch()
-geaendert = L._stops_vorab(spot, fut, buch, "BTC", d, {"info": {"spot_ziel": 2.5, "perp_ziel": -3.0}})
-g = lage(k, sym)
-erwartet = 3.0 - L.PL.runde(0.5 + 2.0 * (1 - L.GEB_SPOT_KAUF), d["rf"]["step"])
-pruefe("11.S12 Vorab nach dem Kauf: Perp-Stop auf das Plan-Ende MIT Kauf-Gebühr (nie kleiner als der dann ungesicherte Short)",
-       geaendert and g["n_p"] == 1 and abs(g["p_qty"] - erwartet) < 1e-9, (geaendert, g, erwartet))
+# 11.S12 (14. Prüfung E5 neu gefasst; erkannte die Mutation «R11-M12» — die Gebühr steckt jetzt in den TATSÄCHLICHEN Coins):
+# Vorab nach dem Ernte-Kauf: der Perp-Stop schrumpft auf das, was nach den noch ausstehenden neuen Shorts dieses Laufs mit den
+# TATSÄCHLICHEN Coins (Gebühr schon abgezogen) ungesichert bleibt — NICHT aufs ungekürzte Endziel des Plans: der Auftragsdeckel
+# (KI_BOT_ANTEIL/KI_BOT_MAX_AUFTRAG), ein Mindestbetrag oder ein zu kleiner Kauf lassen es heute nie eintreten (Lauf-Seed 22466)
+for was12, schritte12, erwartet12 in (("ohne weiteren Short", [], 1.1), ("mit einem neuen Short 1,0 (kommt mit schon gekauften Coins)", [("perp", "SELL", 1.0, False)], 1.1)):
+    k = neues_konto(400000)
+    cfg = L.einstellungen(env_echt(kapital=400000))
+    spot, fut = L.Spot(cfg["spot"]), L.Fut(cfg["futures"])
+    sym = "BTCUSDT"
+    k.frei["BTC"] = 0.5
+    k.buchen(sym, -1.6, B.kurs[sym])
+    d = {"sym": sym, "coin": "BTC", "kurs": B.kurs[sym], "rs": spot.regeln2(sym), "rf": fut.regeln(sym)}
+    fut.stop_menge(sym, "BUY", 1.2, 110000.0, d["rf"]["tick"], cid=L._kennung(L.CID_STOP_PERP))
+    buch = L.leer_buch()
+    # das Endziel des Plans (Coins 2,5, Short 3,0) erreicht dieser Lauf NICHT (Deckel): gekauft sind nur die 0,5 Coins, die da sind
+    geaendert = L._stops_vorab(spot, fut, buch, "BTC", d, {"info": {"spot_ziel": 2.5, "perp_ziel": -3.0}, "schritte": schritte12})
+    g = lage(k, sym)
+    pruefe(f"11.S12 Vorab nach dem Kauf, {was12}: Perp-Stop nach den TATSÄCHLICHEN Coins ({erwartet12:g}), nicht aufs ungekürzte Endziel (0,5)",
+           geaendert and g["n_p"] == 1 and abs(g["p_qty"] - erwartet12) < 1e-9, (geaendert, g, erwartet12))
 # 11.S13 (erkennt die Mutation «R11-M22»):
 # der Spot-Stop des ersten Laufs erscheint nie in der Auftragsliste (Listen-Verzug); der zweite Lauf verkleinert die Richtung
 # → der unsichtbare Stop ist jetzt grösser als nötig (er deckt Absicherung) → beidseitig
@@ -2621,7 +2623,7 @@ pruefe("14.W Listen-Fuzzer im strengen Modus (4 Seeds): läuft ohne Befund und s
 
 
 # ── Strenger Fuzzer (PRUEF_STRENG=1) in der Schlussprobe der 14. Runde: weitere Funde E2–E4 (alle am Stand vor der Behebung ein Befund) ──
-# 14.E2–E4: Lauf-Seeds 20568, 20803, 20473, 20736 (E2), 20557 (E3), 20369 (E3b); E4 = Prüf-Werkzeug (20289, 20535, 20549)
+# 14.E2–E5: Lauf-Seeds 20568, 20803, 20473, 20736 (E2), 20557 (E3), 20369 (E3b); E4 = Prüf-Werkzeug (20289, 20535, 20549); E5 = 22466
 # 14.E2 (strenger Fuzzer, Lauf-Seeds 20568/20803/20473/20736): ein Spot-Stop, den die Liste (noch) nicht zeigt, sperrt Absicherungs-Coins.
 # (a) zwei sichtbare Stops + ein versteckter: die sichtbaren werden auf soll − versteckt gebracht (zusammen = soll), nichts über der Netto-Richtung
 k, sp, fu, dd = handlage(coins=0.5, short=0.2, kurs=100000.0)          # netto 0,3 → soll 0,3
@@ -2761,7 +2763,8 @@ try:
                           (20473, "E2: Zusatz-Stop verzögert sichtbar, nur_ergaenzen"), (20736, "E2: Spot-Stop über Netto"),
                           (20557, "E3: Not-Aus mit unlesbarem Konto löschte den Perp-Stop"), (20369, "E3b: Not-Stop über Short + Unklares (−2022)"),
                           (20289, "E4: gestapelte 429 auf dem Perp-Stop"), (20535, "E4: Ende, Coins unbekannt wieder verkäuflich"),
-                          (20549, "E4: Ende, Coins unbekannt wieder verkäuflich")):
+                          (20549, "E4: Ende, Coins unbekannt wieder verkäuflich"),
+                          (22466, "E5: Auftragsdeckel — Vorab-Stop aufs ungekürzte Plan-Ende, STOP mitten im Lauf")):
         funde = P.echte(P.laeufe_runde(seed14, 30))
         pruefe(f"14.E2–E4 strenger Lauf-Seed {seed14} ({was14}): keine Befunde", not funde,
                [(f_[0], f_[1].get("tag"), f_[1].get("wann")) for f_ in funde][:4])

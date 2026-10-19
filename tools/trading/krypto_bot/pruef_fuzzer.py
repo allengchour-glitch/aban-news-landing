@@ -38,6 +38,12 @@ Bewusst NICHT gezählt (begründet):
     Buch, Stop zuerst setzen, beidseitig) —, Pilot 2.0 meldet die Lücke laut UND hat in diesem Schritt keinen eigenen Stop entfernt (sonst
     hätte er ihn stehen lassen können) — dann kann kein Code schützen; geprüft wird der Stand NACH der Nachkontrolle (Störung
     vorbei), der muss sauber sein.
+  • DAUER_* gilt seit der 14. Prüfung (E4) auch für GESTAPELTE endliche Störungen: treffen mehrere Regeln denselben Schutzpfad und ist die
+    Summe ihrer ursprünglichen Anzahlen (anzahl0; die Börse zählt «anzahl» beim Verbrauch herunter) mindestens so gross wie die Zahl der
+    Versuche von Pilot 2.0 (SCHUTZ_WARTEN + 1), scheitert der Schutz in diesem Lauf unvermeidbar — die Nachkontrolle holt ihn nach.
+  • ENDE_NICHT_ZU zählt nicht, wenn nur Coins übrig sind, die das Buch nicht kennt (früher unter dem Binance-Minimum liegen geblieben, durch
+    den Kursanstieg wieder verkäuflich): der Not-Aus verkauft sie nie von selbst, er meldet sie (14. Prüfung E4). «10 Minuten später»
+    (sauber_schliessen) heisst auch: alle Listen zeigen jeden Auftrag.
   • STORNO_ZUERST_* (monotonie, und seit der 11. Prüfung auch in 15 % der Lauf-Tage und Not-Aus): Schutzverlust nur, weil
     cancelReplace in der ungünstigen Lesart erst storniert und dann ablehnt (409) — laut gemeldet, und nur der ERSTE 409 je Markt
     (danach ersetzt Pilot 2.0 nichts mehr per cancelReplace; ein zweiter wäre vermeidbar — 12. Prüfung K2); nicht vermeidbar,
