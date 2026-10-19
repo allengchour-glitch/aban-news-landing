@@ -2775,3 +2775,6 @@
 16638842536327	Ausführung:2:2+ki	2026-10-19	kompakter-usb-lautsprecher-mit-alarmfunktion-603100
 16638839030151	Modell:2:2+ki	2026-10-19	transparenter-bluetooth-lautsprecher-13-6-12-c-628400
 16638827561351	Ausführung:6:6+ki	2026-10-19	sternenhimmel-projektor-fur-auto-interieur-618800
+16638820450695	Farbe:4:4+ki	2026-10-19	smartwatch-gps-herzfrequenz-outdoor-278912
+16615817675143	Farbe:2+Grösse:13:26+ki	2026-10-19	tie-dye-hoodie-fur-hunde-600100
+16615812956551	Ausführung:3:3+ki	2026-10-19	weihnachts-rattan-girlande-mit-zapfen-und-schl-616100
