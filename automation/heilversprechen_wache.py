@@ -376,7 +376,9 @@ FEHLALARM = re.compile(
     r"|Ratgeber:|nicht für medizinische|selbst heilt|Spezialeffekt|Kunstblut|Halloween|Wundschminke|Beschaffenheit des Holzes|Digital Detox|Geräusche wie|schnarchende|durch Schnarchen gestört"
     # Tiere: Wundkragen (Heilung nach OP ist der Zweck), Fellbuersten/Plueschtiere/Pinsel (Haarausfall = Haare im Haus/Borsten),
     # Naepfe (Tiere mit Arthritis), Ergaenzungsfutter (Verdauung/Immunsystem beim Tier)
-    r"|leck|Wunde|Operation|Halskrause|Kragen|Halsring|Genesung|Borsten|Pinsel|Plüsch|haarausfallfrei|Fell|Katze|Hund|Haustier|Tier|Vierbeiner|Zuhause|Wohnung|im Haus"
+    # 19.10.2026 (Prüfung baby B11): Tierwörter mit WORTANFANG — «Tier» steckte in «garantiert», «Wunde» in «Wunder», «operation» in «Kooperation», «leck» in «Zubehörleck»
+    # und unterdrückten die neuen Linderungs-Treffer («garantiert wohltuend zur Linderung von Rückenschmerzen»).
+    r"|\bleck\w*|\bWunde[n]?\b|\bWundkragen|\bOperation\w*|Halskrause|Kragen|Halsring|Genesung|Borsten|Pinsel|Plüsch|haarausfallfrei|\bFell\w*|\bKatze\w*|\bHund\w*|\bHaustier\w*|\bTier(?:e|en|bedarf)?\b|Vierbeiner|Zuhause|Wohnung|im Haus"
     # Smartwatch-Funktion, keine Heilzusage
     r"|Messung|misst|Überwachung|erfassen|Monitoring|Blutsauerstoff"
     r"|Erste-Hilfe|Insekten", re.I)

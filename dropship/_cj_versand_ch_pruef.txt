@@ -10527,3 +10527,5 @@ kinder-helm-fur-balance-bikes-305728	1426471987835965440	16	13.18	ok	landeseite
 doppelte-falsche-wimpern-609400	2503180135041609600	16	5.12	ok	landeseite
 kinder-fahrradhelm-111424	1422085975990996992	16	10.02	ok	landeseite
 dichte-lockige-einzel-wimpern-615400	2503170401211615600	3	5.19	ok	landeseite
+schutzset-fur-roller-skating-377152	1421788781404622848	16	9.56	ok	landeseite
+trendige-weiche-magnetische-augenwimpern-622500	2503110300561622700	7	6.18	ok	landeseite

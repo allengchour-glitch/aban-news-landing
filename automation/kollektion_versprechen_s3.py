@@ -843,6 +843,10 @@ INHALT_PAARE = [
      "Werkzeugkoffer, Werkzeugkästen, Werkzeug-Sets, Bit-Sets & Steckschlüsselsätze von Stanley, Bosch, Dewalt & Facom. Alles griffbereit "
      "an einem Ort.",
      "Werkzeug-Sets, Bit-Sets & Steckschlüsselsätze. Alles griffbereit an einem Ort – Gratis-Versand in der Schweiz ab CHF 50."),
+    ("damen-uhren", "seo_d", "elegante Marken & Designs", "elegante Designs mit Quarzwerk, Strass oder Edelstahl"),       # Prüfung 19.10. (theme B5): 0 Markenware, Vendor 50/50 LuxeStyle
+    ("werkzeugkoffer-sets", "html",
+     "Der ideale Grundstock für Haushalt, Werkstatt und Baustelle. Ob Einsteiger-Set oder Profi-Sortiment: Finde die passende Komplettlösung – sortiert nach günstigstem Preis.",
+     "Vom Handy-Reparatur-Set über Bit-Sets bis zum Steckschlüsselsatz: Finde das passende Set für deine Aufgabe – sortiert nach günstigstem Preis."),     # Prüfung theme B4
     # damen-duefte (1 aktives Produkt «Damenparfüm langanhaltend», 646 Mitglieder in Entwurf — BigBuy-Marken-Parfums): 0 Dolce & Gabbana/
     # Elie Saab/Lancôme/YSL; «Original Marken-Parfums … 100 % echt & versiegelt» ist für ein No-Name-Parfum eine Falschaussage
     ("damen-duefte", "seo_d",

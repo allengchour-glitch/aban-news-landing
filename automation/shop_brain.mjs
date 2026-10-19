@@ -80,7 +80,7 @@ async function aiSeo(name){
 `Schreibe SEO-Meta für ein Produkt im Schweizer Online-Shop LuxeStyle.
 Produkt: "${clean(name)}"
 - title: verkaufsstark, Schweizer Hochdeutsch (ss statt ß), max 60 Zeichen, endet mit " | LuxeStyle", kein Emoji.
-- description: ein konkreter Nutzen + Vertrauen (Gratis-Versand ab CHF 50, 30 Tage Rückgabe), max 150 Zeichen, kein Emoji.`}]
+- description: ein konkreter Nutzen + Vertrauen (Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe), max 150 Zeichen, kein Emoji.`}]
       })});
     const j=await r.json();
     const t=(j.content||[]).find(b=>b.type==="text"); if(!t) return null;

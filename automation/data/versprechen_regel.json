@@ -2309,6 +2309,11 @@
           "damen-duefte",
           "[Dd]amenparf(?:ü|ue)m",
           "Damenparfüm — im Ersatztext genannt (19.10.: 1/1 aktiv)"
+        ],
+        [
+          "werkzeugkoffer-sets",
+          "[Hh]andy-(?:Reparatur|Demontage)",
+          "Handy-Reparatur-Sets — im Ersatztext genannt (19.10.: 2/11 aktiv)"
         ]
       ],
       "genannt_beleg": [
@@ -2936,6 +2941,71 @@
           "kochen-backen",
           "Messerschärfer — im Ersatztext genannt (14.10.: 5/195 aktiv)",
           "Emery Küchenmesser-Schärfer 12 Zoll"
+        ],
+        [
+          "damen-uhren",
+          "Strass-Damenuhren — im Ersatztext genannt (19.10.: 8/50 aktiv)",
+          "Damenuhr mit Strassstein"
+        ],
+        [
+          "damen-uhren",
+          "Edelstahl-Armbänder — im Ersatztext genannt (19.10.: 8/50 aktiv)",
+          "Damenuhr mit Milanaise-Armband aus Edelstahl"
+        ],
+        [
+          "damen-uhren",
+          "Retro-Stil — im Ersatztext genannt (19.10.: 4/50 aktiv)",
+          "Retro-Damenuhr mit Quarzwerk"
+        ],
+        [
+          "damen-uhren",
+          "Holz-Gehäuse — im Ersatztext genannt (19.10.: 4/50 aktiv)",
+          "Holz-Damenuhr mit Quarzwerk"
+        ],
+        [
+          "damen-uhren",
+          "Quarz-Damenuhren — im Ersatztext genannt (19.10.: 10/50 aktiv)",
+          "Quarz-Damenuhr mit kleinem Zifferblatt"
+        ],
+        [
+          "messwerkzeug",
+          "Messschieber — im Ersatztext genannt (19.10.: 4/7 aktiv)",
+          "Digitaler Messschieber"
+        ],
+        [
+          "messwerkzeug",
+          "Wasserwaagen — im Ersatztext genannt (19.10.: 2/7 aktiv)",
+          "Präzisions-Wasserwaage aus Aluminium"
+        ],
+        [
+          "messwerkzeug",
+          "Entfernungsmesser — im Ersatztext genannt (19.10.: 1/7 aktiv)",
+          "Infrarot-Laser-Entfernungsmesser"
+        ],
+        [
+          "werkzeugkoffer-sets",
+          "Werkzeug-Sets — im Ersatztext genannt (19.10.: 5/11 aktiv)",
+          "Nagel-Werkzeugset mit 15 Stiften"
+        ],
+        [
+          "werkzeugkoffer-sets",
+          "Bit-Sets — im Ersatztext genannt (19.10.: 3/11 aktiv)",
+          "33-teiliges Bit-Set aus Karbonstahl"
+        ],
+        [
+          "werkzeugkoffer-sets",
+          "Steckschlüsselsätze — im Ersatztext genannt (19.10.: 2/11 aktiv)",
+          "Steckschlüsselsatz mit Bits"
+        ],
+        [
+          "werkzeugkoffer-sets",
+          "Handy-Reparatur-Sets — im Ersatztext genannt (19.10.: 2/11 aktiv)",
+          "Handy-Reparatur-Werkzeugset 11-teilig"
+        ],
+        [
+          "damen-duefte",
+          "Damenparfüm — im Ersatztext genannt (19.10.: 1/1 aktiv)",
+          "Damenparfüm langanhaltend"
         ]
       ]
     },

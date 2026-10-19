@@ -49,7 +49,7 @@ function mkTitle(name) {
   if (n.length > 50) { let c = n.slice(0, 50); if (c.includes(" ")) c = c.slice(0, c.lastIndexOf(" ")); n = c.replace(/[ ,;:·–-]+$/, ""); }
   return (n + " | LuxeStyle").slice(0, 70);
 }
-const mkDesc = (name) => `${clean(name)}: jetzt im Schweizer Online-Shop LuxeStyle. Faire Preise, schnelle Lieferung (7–14 Tage), 30 Tage Rückgabe. −10% mit Code WELCOME10.`.slice(0, 320);
+const mkDesc = (name) => `${clean(name)}: jetzt im Schweizer Online-Shop LuxeStyle. Faire Preise, Lieferung in die ganze Schweiz, 30 Tage Rückgabe. −10% mit Code WELCOME10.`.slice(0, 320);
 
 export default {
   async scheduled(_e, env, ctx) { ctx.waitUntil(run(env, false)); },
