@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-19 16:01 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-19 16:58 UTC)
 
-Suche: `status:active AND created_at:>=2026-10-16` · gemessen 283 · **112 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 105, teilweise: 5, keine: 2; Preisspanne > 2×: 20) · 1 CJ-Variante: 171 · ohne Antwort: 0
+Suche: `status:active AND created_at:>=2026-10-16` · gemessen 285 · **114 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 107, teilweise: 5, keine: 2; Preisspanne > 2×: 20) · 1 CJ-Variante: 171 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -69,6 +69,8 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Herrenring aus Wolframkarbid mit Zirkonia (`herrenring-aus-wolframkarbid-mit-zirkonia-612000`) | 6 | 6 | 12.94–12.94 | 21.90 | Black-No 7, Black-No 8, Black-No 9, Black-No 10 |
 | Silikon Smartwatch mit Bluetooth & Gesundheitsfunktionen (`silikon-smartwatch-mit-bluetooth-gesundheitsfu-625700`) | 6 | 6 | 22.57–24.31 | 34.90 | Black Glue, Silver Glue, Black Nylon, Silver Nylon |
 | Minimalistische 3D Instagram-Uhr – Gold/Schwarz (`minimalistische-3d-instagram-uhr-gold-schwarz-628900`) | 6 | 6 | 4.53–4.53 | 16.90 | Golden Black Surface, Golden White Surface, Golden Red Noodles, Gold Face |
+| Dampfgarer mit Thermometer aus Edelstahl (`dampfgarer-mit-thermometer-aus-edelstahl-610000`) | 6 | 6 | 7.81–12.15 | 35.90 | Fixed Handle Piece, Linear Handle, Stainless Steel Cover, Glass Lid |
+| Kinderflugzeug-Reise-Tablett Aufbewahrungstasche (`kinderflugzeug-reise-tablett-aufbewahrungstasc-603600`) | 6 | 6 | 4.49–4.49 | 16.90 | Dinosaur-44x30cm, Alpaca-44x30cm, Christmas Rabbit-44x30cm, Rainbow-44x30cm |
 | Camouflage Brusttasche für Herren (`camouflage-brusttasche-fur-herren-602200`) | 5 | 5 | 3.86–4.7 | 18.90 | Black-19 Inches, Army Green-19 Inches, Khaki-19 Inches, Camouflage-19 Inches |
 | Business-Leisure Computer-Rucksack, 36-55 L, wasserabweisend (`business-leisure-computer-rucksack-36-55-l-was-602400`) | 5 | 5 | 4.86–8.13 | 23.90 | J001 Beige, J002 Beige, 2533style, 2571 Black |
 | Retro Postmann Umhängetasche (`retro-postmann-umhangetasche-626400`) | 5 | 5 | 22.39–22.39 | 53.90 | Army Green, Lake Water Green Color, Black, Khaki |
