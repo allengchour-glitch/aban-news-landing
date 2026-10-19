@@ -7812,3 +7812,21 @@ gid://shopify/Product/15476113867137	zugeordnet	10	V-Neck T-Shirt für Herren, K
 gid://shopify/Product/15476113932673	zugeordnet	24	Retro T-Shirt mit Print und Rundhals
 gid://shopify/Product/15476114063745	zugeordnet	20	Atmungsaktives Baumwoll-T-Shirt für Herren
 gid://shopify/Product/15476126384513	zugeordnet	42	Kurzarmkleid mit 3D-Effekt und Print
+gid://shopify/Product/15476126581121	zugeordnet	24	Elegantes Kleid mit Stickerei
+gid://shopify/Product/15476126679425	zugeordnet	12	Casual Damen-Rock-Schulter-Anzug
+gid://shopify/Product/15476127007105	zugeordnet	27	Personalisierbarer Kupferring mit Zirkonia
+gid://shopify/Product/15476127039873	zugeordnet	12	Herren Portemonnaie aus Rindsleder
+gid://shopify/Product/15476127072641	zugeordnet	27	Personalisierter Geburtsstein-Ring mit Gravur
+gid://shopify/Product/15476127105409	zugeordnet	5	Damen Portemonnaie aus Echtleder mit vielen Kartenfächern
+gid://shopify/Product/15476127170945	zugeordnet	27	Klassischer Schulring mit Zirkonia-Einlage
+gid://shopify/Product/15476127236481	zugeordnet	27	Liebesring mit Zirkonia – ideal als Geschenk
+gid://shopify/Product/15476127269249	zugeordnet	60	Herzförmiger Eleganter Edelstahl-Ring
+gid://shopify/Product/15476163051905	zugeordnet	40	Graue Damenjacke
+gid://shopify/Product/15476163182977	zugeordnet	14	Strand-Cover-up im eleganten Pendler-Stil
+gid://shopify/Product/15476163346817	zugeordnet	45	Kapuzen-Cardigan · Damen
+gid://shopify/Product/15476163412353	zugeordnet	9	V-Ausschnitt Halbarm-Top
+gid://shopify/Product/15476163510657	zugeordnet	20	Kariertes Langarmshirt mit ausgestellten Ärmeln
+gid://shopify/Product/15476163576193	zugeordnet	9	Herren-Halskette aus Edelstahl, Cuban-Kette
+gid://shopify/Product/15476163608961	zugeordnet	25	Gestreifte Bluse mit Rüschenkragen
+gid://shopify/Product/15476163674497	zugeordnet	27	Geburtsstein-Ring für den Studienabschluss
+gid://shopify/Product/15476163707265	zugeordnet	20	Hemdbluse mit Metall-Pin und Langarm
