@@ -498,3 +498,4 @@ slug:bildreel-kuscheldecke-hasenfell-imitat-tie-dye
 pid:15495127073153
 slug:kuscheldecke-hasenfell-imitat-tie-dye
 slug:windschutzjacke
+slug:selfie-stick-stativ-mit-led-ringlicht

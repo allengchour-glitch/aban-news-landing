@@ -318,21 +318,29 @@
   "karussell-20261024T1915": {
    "basis_utc": "2026-10-24T19:15:00Z",
    "format": "karussell",
-   "grund": "Vorrat leer (08:32 UTC)",
+   "grund": "",
+   "handle": "",
+   "handles": [
+    "windschutzjacke"
+   ],
    "letzter_versuch": "2026-10-19T08:49:19Z",
-   "mc_ids": [],
+   "mc_ids": [
+    399776546
+   ],
    "reserviert_um": "2026-10-19T08:49:19Z",
-   "status": "reserviert",
+   "status": "geplant",
    "termin_utc": "2026-10-24T19:15:00Z",
    "versuche": 8
   },
   "karussell-20261025T2015": {
    "basis_utc": "2026-10-25T20:15:00Z",
    "format": "karussell",
+   "letzter_versuch": "2026-10-19T08:49:55Z",
    "mc_ids": [],
-   "status": "offen",
+   "reserviert_um": "2026-10-19T08:49:55Z",
+   "status": "reserviert",
    "termin_utc": "2026-10-25T20:15:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "pin-20261019T1240": {
    "basis_utc": "2026-10-19T12:40:00Z",
@@ -1754,6 +1762,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-19T08:49:19Z",
+ "stand": "2026-10-19T08:49:55Z",
  "version": 1
 }
