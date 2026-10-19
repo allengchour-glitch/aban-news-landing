@@ -53,6 +53,14 @@
 
 
 
+## 🔧 CH-Lager-Tageslauf 5 Tage still (2026-10-19)
+Ampel «CH-LAGER-PROFIL: Stand von 14.10. — Tageslauf fehlt». Ursache (GEMESSEN): `fixer_keepalive.sh` setzte `touch "$CLP"` VOR dem Start und startete erst wieder, wenn das Log > 24 h alt war; Python puffert die Ausgabe
+bis zum Ende; stirbt der Lauf (Container-Neustart ~stündlich, `timeout`) hinterlässt er KEINE Zeile, das Log bleibt aber «frisch» → 24 h gesperrt; der Fix vom 14.10. (`absturz_nachholen` für LEERE Logs) griff nicht, weil das Log
+schon Inhalt vom 14.10. hatte. Ein ruhiger Lauf braucht ~95 s (04:08–04:10 gemessen) — er stirbt also nur unter Last/Neustart. Fix: Auslöser = Alter des JSON-Stands (≥ 20 h, höchstens alle 40 min, flock), `python3 -u`, START-Marke im Log.
+**Klasse:** 114 Tageslauf-Blöcke im Aufseher haben dasselbe Tor «Log < 24 h → nichts» mit `touch` vor dem Lauf; jeder, dessen Lauf länger als ein Container-Leben braucht oder ohne Fertig-Zeile endet, ist verwundbar. Wächter dafür = die
+Ampel-Zeile je Job (hier: Stand > 30 h); beim nächsten «Tageslauf fehlt» zuerst `stat` des Logs gegen den Inhalt prüfen. **Stufe 3** (alle CH-Lager-Ware ins Profil, Vorschau: 2372 Produkte, Google 765, fehlt 745 Varianten, falsch 0) wartet auf das Betreiber-Ja:
+Bedingung des Plans erfüllt (Stufe 2 seit 14.10., Google-Scan 18.10. = 0 «shipping»/«Inaccurate» [CH], 0 der 31 Produkte unter den Blockern); der Berechtigungsprüfer hat die Umstellung ohne ausdrückliches Ja blockiert.
+
 ## ✉️ #1021 Entscheid (2026-10-19)
 Meine Empfehlung war: voll erstatten (CHF 45.90), Uhr behalten lassen, Entwurf (englisch, in Gmail korrigiert: kein Widerspruch «behalten/Teilerstattung» mehr). Betreiber: **«1021 nein»** → nichts gesendet, nichts erstattet.
 Stand: Kundenmail vom 16.10. 12:37 UTC («Wrong item delivered», Drohung mit schlechten Bewertungen) unbeantwortet; Bestellung bezahlt/zugestellt; CJ-Einkauf USD 21.55. Entwurf `r2456687114455669002` bleibt UNVERSENDET —

@@ -2129,11 +2129,16 @@ fi
   # Bedingungen wie General) — ein Befund = kein Zuordnen. Bericht dropship/CH-LAGER-PROFIL-2026-10-13.md.
   CLP=/tmp/ch_lager_profil.log
   if [ -f "$REPO/automation/ch_lager_profil.py" ]; then
-    ALTER=$(( $(date +%s) - $(stat -c %Y "$CLP" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$CLP"; then
-      touch "$CLP"
-      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_ch_lager_profil.lock; flock -n 9 || exit 0; exec timeout 1800 python3 automation/ch_lager_profil.py --scharf" >> "$CLP" 2>&1 9>&- & )
-      echo "$(date -u +%H:%M) ch-lager-profil abgeglichen"
+    # 19.10.2026: Auslöser = Alter des STANDS (JSON «stand»), nicht des Logs. Bisher: touch VOR dem Lauf + «Log jünger als 24 h → nichts» —
+    # wurde der Lauf (Python puffert die Ausgabe bis zum Ende) von einem Container-Neustart oder dem timeout getötet, blieb das Log leer UND
+    # frisch: 5 Tage kein Tageslauf (Ampel «Stand von 14.10.»), ein Lauf braucht ruhig nur ~95 s (gemessen 19.10.). Jetzt: Stand älter als
+    # 20 h → starten (höchstens alle 40 min, flock verhindert Doppelläufe); `python3 -u` damit auch ein abgebrochener Lauf Spuren im Log lässt.
+    CLP_STAND_H=$(cd "$REPO" && python3 -c 'import json,datetime;s=json.load(open("dropship/_ch_lager_profil.json"))["stand"];print(int((datetime.datetime.utcnow()-datetime.datetime.strptime(s,"%Y-%m-%dT%H:%MZ")).total_seconds()//3600))' 2>/dev/null || echo 999)
+    CLP_START_S=$(( $(date +%s) - $(stat -c %Y "$CLP.start" 2>/dev/null || echo 0) ))
+    if { [ "${CLP_STAND_H:-999}" -ge 20 ] && [ "$CLP_START_S" -gt 2400 ]; } || absturz_nachholen "$CLP"; then
+      touch "$CLP.start"
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_ch_lager_profil.lock; flock -n 9 || exit 0; echo \"START \$(date -u +%FT%TZ)\"; exec timeout 1800 python3 -u automation/ch_lager_profil.py --scharf" >> "$CLP" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) ch-lager-profil abgeglichen (Stand ${CLP_STAND_H} h alt)"
     fi
   fi
   # 13.10.2026 (Entscheid 2, Betreiber «versandprofil ja mache es sauber»): Druck auf Bestellung (DTG-Shirts/Hoodies von Printful,

@@ -1493,13 +1493,13 @@
   "tiktok-20261025T0705": {
    "basis_utc": "2026-10-25T07:05:00Z",
    "format": "tiktok",
-   "grund": "rc=3: Die Videoqualität ist mangelhaft, unscharf und der Hintergrund mit technischen Dokumenten wirkt extrem unprofessionell und ablenkend. Die Präsentation wirkt bil",
-   "letzter_versuch": "2026-10-19T04:18:01Z",
+   "grund": "rc=3: Das erste Bild zeigt das Produkt aus einer ungünstigen Perspektive, die es nicht sofort als Schuh erkennbar macht und den Daumen nicht effektiv stoppt. Die Präs",
+   "letzter_versuch": "2026-10-19T04:18:39Z",
    "mc_ids": [],
-   "reserviert_um": "2026-10-19T04:18:01Z",
+   "reserviert_um": "2026-10-19T04:18:39Z",
    "status": "reserviert",
    "termin_utc": "2026-10-25T07:05:00Z",
-   "versuche": 8
+   "versuche": 9
   },
   "tiktok-20261025T1205": {
    "basis_utc": "2026-10-25T12:05:00Z",
@@ -1746,6 +1746,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-19T04:18:01Z",
+ "stand": "2026-10-19T04:18:39Z",
  "version": 1
 }
