@@ -4,3 +4,4 @@ anlass_social_sperre	json	dropship/_anlass_social_sperre.json	stand	20
 versprechen_kette	mtime	/tmp/_ok_vk_wache|/tmp/_ok_vk_material|/tmp/_ok_vk_alt_titel|/tmp/_ok_vk_essbar|/tmp/_ok_vk_haendler|/tmp/_ok_vk_dein_bezug	-	20
 kosten_export	mtime	/tmp/kost28.jsonl	-	20
 ch_lager_profil	json	dropship/_ch_lager_profil.json	stand	20
+google_bild_abruf	md	dropship/GOOGLE-BILD-ABRUF.md	-	20

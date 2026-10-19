@@ -124,6 +124,13 @@ TITELREGELN = [   # Reihenfolge = Vorrang; Wortfallen (Lehre 9b): Handschuh ≠ 
     (r"für (deinen |deine |den |die )?(hunde?|katzen?|haustiere?|welpen?)\b|"
      r"\bhunde-?(leine|geschirr|halsband|bett|napf|mantel|pullover|schuhe|jacke|kostüm|spielzeug|bürste|outdoorschuhe|regenmantel|weste)\w*|"
      r"\bkatzen-?(bett|klo|streu|kratz\w*|spielzeug|halsband|tunnel|haus|höhle)\w*|\bhaustier-?(bett|bürste|pullover|kostüm|napf)\w*|kratzbaum|futternapf", "ap-2"),
+    # 19.10.2026 (Spähtrupp wf_62fc1cba G5): «LUZ Geschichtenbuch» und «Navigationslichter für Modellschiffe» (Typ «Büro & Home Office»)
+    # standen ohne Kategorie, die KI war uneinig, weil der richtige Pfad nicht in ihrer Kandidatenliste stand → Shop-Kanal «nicht
+    # auffindbar», Google-Kategorie «Office Supplies». me-1-3 = Media > Books > Print Books, ae-2-6 = Hobbies & Creative Arts > Model
+    # Making (beide per taxonomy-Suche gemessen). Nur zusammengesetzte Buchwörter: «Notizbuch»/«Tagebuch» sind Schreibwaren,
+    # «Buchstütze»/«Buchsbaum»/«Buchenholz» sind keine Bücher (\b am Wortende).
+    (r"\b(?:geschichten|bilder|kinder|mal|märchen|vorlese|rätsel)buch\b", "me-1-3"),
+    (r"modell-?(?:schiff|boot|flug|zug|eisenbahn)\w*", "ae-2-6"),
     (r"\b(rc|ferngesteuert\w*|drohne\w*|quadcopter)\b", "el"),
     (r"baustein|bausatz|baukasten|bauklötz|klemmbaustein|modellbau", "tg-5-7"),
     (r"puzzle", "tg-4"),
@@ -863,6 +870,13 @@ KANARIEN = [
     ("Büro & Home Office", "Bluetooth Tastatur für iPad, Mac, Switch", "el-7-9-12-8"),
     ("Büro & Home Office", "Switches für Tastatur 90 Stück", "el-7-9-11-5"),
     ("Gadget", "Intelligente WLAN-Steckdose", "el-7-15"),
+    # 19.10.2026 (G5): Bücher / Modellbau-Zubehör aus dem Büro-Sammelkorb; Negative bleiben bei ihren Regeln
+    ("Büro & Home Office", "LUZ Geschichtenbuch, 64 Seiten Hardcover", "me-1-3"),
+    ("Büro & Home Office", "Kinder-Malbuch mit 48 Motiven", "me-1-3"),
+    ("Büro & Home Office", "Navigationslicht für Modellschiffe 3 Stück", "ae-2-6"),
+    ("Büro & Home Office", "Buchstütze aus Metall", None),
+    ("Büro & Home Office", "Buchsbaum Kugel künstlich", None),
+    ("Büro & Home Office", "Notizbuch A5 gepunktet", "os-4-9-9"),
     ("Trend-Produkt", "Adventskalender Blind Box Sammlung 2026", "hg-3-58-1"),
     ("Spass-Elektronik", "Smart Sensor Stunt-Hund mit Fernbedienung", "tg-5-18"),
     ("Trend-Gadget", "Ferngesteuerter Roboter-Hund für Kinder", "tg-5-18"),

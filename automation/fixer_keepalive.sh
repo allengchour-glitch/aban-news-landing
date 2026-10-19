@@ -651,7 +651,11 @@ while true; do
     # wie bisher). Anlass: Schranke-Timeout schrieb ein falsches FERTIG (startseite_gewicht: Ergebnis 114 h alt, Tor «erledigt»).
     ERG_ZN=0; ERG_H=$(tageslauf_ergebnis_h "$L")
     if [ "$ZN" = 0 ] && [ -n "$ERG_H" ] && tageslauf_pruefen "$L" "$ERG_H" "$(tageslauf_max_h "$L")" 40 6; then ZN=1; ERG_ZN=1; fi
-    if [ "$ZN" = 0 ] && letzter_lauf "/tmp/$L.log" | tail -n 3 | grep -qE "^([0-9:]{8} |[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]{8,12}Z )?FERTIG"; then
+    # 19.10.2026 (Spähtrupp G3): «Schranke 45 min voll» + FERTIG ist KEIN Vollzug — der alte Wrapper schrieb FERTIG nach dem Exit 0
+    # der vollen Schranke (8 Wächter am 18.10. 20:56–20:59 bis ~17:00 UTC des Folgetags gesperrt; der Schranke-Exit 75 verhindert nur
+    # NEUE falsche FERTIG). Steht die Schranke-Zeile in den letzten 3 Zeilen des Laufs, zählt das FERTIG nicht.
+    if [ "$ZN" = 0 ] && letzter_lauf "/tmp/$L.log" | tail -n 3 | grep -qE "^([0-9:]{8} |[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]{8,12}Z )?FERTIG" \
+       && ! letzter_lauf "/tmp/$L.log" | tail -n 3 | grep -qE "Schranke .*voll"; then
       F_ALTER=$(( $(date +%s) - $(stat -c %Y "/tmp/$L.log" 2>/dev/null || echo 0) ))
       [ "$F_ALTER" -lt 72000 ] && continue
     fi

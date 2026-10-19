@@ -43,7 +43,10 @@ def zeit_von(typ, p, *arg, jetzt=None):
         feld = arg[0] if arg else "stand"
         return parse(json.load(open(p, encoding="utf-8"))[feld])
     if typ == "md":
-        m = re.search(r"^Stand: (\d{4}-\d\d-\d\d \d\d:\d\d) UTC", open(p, encoding="utf-8").read(), re.M)
+        t = open(p, encoding="utf-8").read()
+        m = re.search(r"^Stand: (\d{4}-\d\d-\d\d \d\d:\d\d) UTC", t, re.M)
+        if not m:   # 19.10.: Überschrift «… — Stand 2026-10-19T06:24Z» (GOOGLE-BILD-ABRUF.md)
+            m = re.search(r"^#.*?Stand (\d{4}-\d\d-\d\dT\d\d:\d\dZ)", t, re.M)
         return parse(m.group(1))
     if typ == "tsv":
         sp = int(arg[0]) if arg and arg[0].isdigit() else 1
