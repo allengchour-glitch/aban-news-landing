@@ -10829,3 +10829,11 @@ mini-elektro-kochtopf-605500	2602030202451605900	7	19.57	ok	landeseite
 casual-mesh-schuhe-338432	1785478236596613120	16	17.66	ok	landeseite
 v-ausschnitt-kleid-604900	2607120702411605500	16	8.25	ok	landeseite
 tier-voice-assistent-612900	2601110955341613100	7	8.10	ok	landeseite
+schwarzes-gothic-vestkleid-619200	2607120645301619900	16	7.57	ok	landeseite
+blumenprint-kleid-mit-puffarmeln-607200	2607120558161607700	16	7.57	ok	landeseite
+sommerneuankunft-rundhals-patchworkkleid-mit-l-622900	2607120524141623500	16	7.17	ok	landeseite
+kunstlerischer-brustbeutel-611500	2502151055001611800	16	7.43	ok	landeseite
+notfall-ladegerat-mit-radio-und-usb-601000	2512110739061601200	0	-	KEINE CH-Option → DRAFT	landeseite
+retro-sattel-tasche-623400	2501130341581623800	16	7.57	ok	landeseite
+damen-camisole-aus-ramie-baumwolle-612000	2607120539101612800	16	6.77	ok	landeseite
+handmassagegerat-mit-warme-635000	2512050225301635300	7	21.35	ok	landeseite
