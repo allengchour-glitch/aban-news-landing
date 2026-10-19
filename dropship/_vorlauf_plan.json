@@ -5,6 +5,9 @@
    "format": "bild",
    "grund": "",
    "handle": "",
+   "handles": [
+    "loffelfuchs-fga87710"
+   ],
    "letzter_versuch": "2026-10-18T21:29:09Z",
    "mc_ids": [
     399444501
@@ -37,6 +40,9 @@
    "format": "bild",
    "grund": "",
    "handle": "",
+   "handles": [
+    "pid:15412902855041"
+   ],
    "letzter_versuch": "2026-10-18T21:38:48Z",
    "mc_ids": [
     399449577,
@@ -52,7 +58,9 @@
    "format": "bild",
    "grund": "",
    "handle": "",
-   "handles": [],
+   "handles": [
+    "pid:15412964688257"
+   ],
    "letzter_versuch": "2026-10-19T00:27:33Z",
    "mc_ids": [
     399527943
@@ -67,6 +75,9 @@
    "format": "bild",
    "grund": "",
    "handle": "",
+   "handles": [
+    "pid:15412911178113"
+   ],
    "letzter_versuch": "2026-10-18T21:45:19Z",
    "mc_ids": [
     399452648,
@@ -82,7 +93,9 @@
    "format": "bild",
    "grund": "",
    "handle": "",
-   "handles": [],
+   "handles": [
+    "pid:15412964852097"
+   ],
    "letzter_versuch": "2026-10-19T00:29:36Z",
    "mc_ids": [
     399528714
@@ -97,6 +110,9 @@
    "format": "bild",
    "grund": "",
    "handle": "",
+   "handles": [
+    "pid:15412945191297"
+   ],
    "letzter_versuch": "2026-10-18T21:50:15Z",
    "mc_ids": [
     399454786,
@@ -112,7 +128,9 @@
    "format": "bild",
    "grund": "",
    "handle": "",
-   "handles": [],
+   "handles": [
+    "pid:15412978516353"
+   ],
    "letzter_versuch": "2026-10-19T00:30:43Z",
    "mc_ids": [
     399529298
@@ -145,7 +163,9 @@
    "format": "bild",
    "grund": "",
    "handle": "",
-   "handles": [],
+   "handles": [
+    "pid:15413076853121"
+   ],
    "letzter_versuch": "2026-10-19T00:32:08Z",
    "mc_ids": [
     399529919
@@ -160,7 +180,9 @@
    "format": "bild",
    "grund": "",
    "handle": "",
-   "handles": [],
+   "handles": [
+    "pid:15412960592257"
+   ],
    "letzter_versuch": "2026-10-18T22:14:46Z",
    "mc_ids": [
     399467689,
@@ -193,7 +215,9 @@
    "format": "bild",
    "grund": "",
    "handle": "",
-   "handles": [],
+   "handles": [
+    "pid:15412945224065"
+   ],
    "letzter_versuch": "2026-10-18T22:21:11Z",
    "mc_ids": [
     399471013,
@@ -272,21 +296,24 @@
   "karussell-20261022T1915": {
    "basis_utc": "2026-10-22T19:15:00Z",
    "format": "karussell",
-   "grund": "rc=0: Nichts faellig: kein ready-Karussell.",
+   "grund": "10 Versuche ohne Kandidat",
    "letzter_versuch": "2026-10-19T00:32:00Z",
    "mc_ids": [],
    "reserviert_um": "2026-10-19T00:32:00Z",
-   "status": "offen",
+   "status": "leer",
    "termin_utc": "2026-10-22T19:15:00Z",
    "versuche": 10
   },
   "karussell-20261023T1915": {
    "basis_utc": "2026-10-23T19:15:00Z",
    "format": "karussell",
+   "grund": "rc=0: Nichts faellig: kein ready-Karussell.",
+   "letzter_versuch": "2026-10-19T00:50:54Z",
    "mc_ids": [],
+   "reserviert_um": "2026-10-19T00:50:54Z",
    "status": "offen",
    "termin_utc": "2026-10-23T19:15:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "karussell-20261024T1915": {
    "basis_utc": "2026-10-24T19:15:00Z",
@@ -1396,12 +1423,12 @@
    "basis_utc": "2026-10-23T18:05:00Z",
    "format": "tiktok",
    "grund": "rc=3: Nichts faellig: kein ready-Reel, dessen Video noch nirgends gepostet wurde (tiktok; Marke bleibt alt, Exit 3).",
-   "letzter_versuch": "2026-10-19T00:33:11Z",
+   "letzter_versuch": "2026-10-19T00:50:47Z",
    "mc_ids": [],
-   "reserviert_um": "2026-10-19T00:33:11Z",
+   "reserviert_um": "2026-10-19T00:50:47Z",
    "status": "offen",
    "termin_utc": "2026-10-23T18:05:00Z",
-   "versuche": 6
+   "versuche": 7
   },
   "tiktok-20261024T0605": {
    "basis_utc": "2026-10-24T06:05:00Z",
@@ -1684,6 +1711,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-19T00:35:33Z",
+ "stand": "2026-10-19T00:51:02Z",
  "version": 1
 }
