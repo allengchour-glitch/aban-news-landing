@@ -116,12 +116,12 @@ shopify_shop_pruefen() {
 # «<wert>x» — der Aufrufer fängt sie EINMAL ab und schneidet das «x» selbst ab (`w=$(_datei_wert …); w=${w%x}`); ein zweites `$(…)` dazwischen
 # würde das Zeilenende doch wieder verlieren (GEMESSEN 19.10. beim ersten Test: Datei mit «host\n» blieb unrepariert).
 _datei_wert() {
-  env -i PATH="$PATH" bash --noprofile --norc -c '. "$1" >/dev/null 2>&1; printf %sx "${!2-}"' _ "$1" "$2" 2>/dev/null
+  env -i PATH="${PATH:-/usr/bin:/bin}" bash --noprofile --norc -c '. "$1" >/dev/null 2>&1; printf %sx "${!2-}"' _ "$1" "$2" 2>/dev/null
 }
 
 # _datei_rest DATEI VAR — Fingerabdruck ALLER anderen Variablen nach `source` (allexport: auch Zuweisungen ohne «export»).
 _datei_rest() {
-  env -i PATH="$PATH" bash --noprofile --norc -c 'set -a; . "$1" >/dev/null 2>&1; unset "$2"; env | LC_ALL=C sort | md5sum | cut -c1-16' _ "$1" "$2" 2>/dev/null
+  env -i PATH="${PATH:-/usr/bin:/bin}" bash --noprofile --norc -c 'set -a; . "$1" >/dev/null 2>&1; unset "$2"; env | LC_ALL=C sort | md5sum | cut -c1-16' _ "$1" "$2" 2>/dev/null
 }
 
 # _datei_zeile_heilen DATEI VAR NEUWERT — ersetzt die Zuweisung(en) «[export] VAR=…» durch «export VAR=<NEUWERT>» (am Platz der ersten). 0 nur,
