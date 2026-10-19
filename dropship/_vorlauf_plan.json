@@ -296,11 +296,17 @@
   "karussell-20261022T1915": {
    "basis_utc": "2026-10-22T19:15:00Z",
    "format": "karussell",
-   "grund": "Vorrat leer (14:58 UTC)",
+   "grund": "",
+   "handle": "",
+   "handles": [
+    "beruhrungsloser-seifenspender-fur-die-spule"
+   ],
    "letzter_versuch": "2026-10-19T15:14:01Z",
-   "mc_ids": [],
+   "mc_ids": [
+    400150232
+   ],
    "reserviert_um": "2026-10-19T15:14:01Z",
-   "status": "reserviert",
+   "status": "geplant",
    "termin_utc": "2026-10-22T19:15:00Z",
    "versuche": 2
   },
@@ -308,12 +314,12 @@
    "basis_utc": "2026-10-23T19:15:00Z",
    "format": "karussell",
    "grund": "10 Versuche ohne Kandidat",
-   "letzter_versuch": "2026-10-19T03:13:43Z",
+   "letzter_versuch": "2026-10-19T15:14:32Z",
    "mc_ids": [],
-   "reserviert_um": "2026-10-19T03:13:43Z",
-   "status": "leer",
+   "reserviert_um": "2026-10-19T15:14:32Z",
+   "status": "reserviert",
    "termin_utc": "2026-10-23T19:15:00Z",
-   "versuche": 10
+   "versuche": 1
   },
   "karussell-20261024T1915": {
    "basis_utc": "2026-10-24T19:15:00Z",
@@ -1769,6 +1775,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-19T15:14:01Z",
+ "stand": "2026-10-19T15:14:32Z",
  "version": 1
 }

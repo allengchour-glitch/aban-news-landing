@@ -500,3 +500,4 @@ slug:kuscheldecke-hasenfell-imitat-tie-dye
 slug:windschutzjacke
 slug:selfie-stick-stativ-mit-led-ringlicht
 slug:beruhrungsloser-seifenspender-fur-die-spule
+slug:hd-smart-mini-projektor-fur-home-office
