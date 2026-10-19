@@ -18530,3 +18530,10 @@ gid://shopify/Product/16653196788103	34->1	Kurzärmliges Strickhemd mit Streifen
 gid://shopify/Product/16653198393735	29->1	Lässige warme Baumwolljacke für Herren
 gid://shopify/Product/16653200163207	23->0	Lederjacke im Biker-Style, gefüttert
 gid://shopify/Product/16653207470471	14->0	Corduroy Blazer für Herren – Frühlings-Herbstjacke
+gid://shopify/Product/16653508182407	33->0	Backform aus Edelstahl – quadratisch, tiefer Schnitt
+gid://shopify/Product/16653708067207	26->0	Loose-Fit Pullover ohne Kapuze, einfarbig
+gid://shopify/Product/16653710033287	18->0	Männerhemd Herbst Japanisch Trend
+gid://shopify/Product/16653713342855	30->3	Klassisches Polo-Shirt mit Farbblock-Design
+gid://shopify/Product/16653715800455	44->1	Kurzärmeliges Arbeitshemd mit Print
+gid://shopify/Product/16653788512647	10->0	Offene Zeh Sandale mit Stilettoabsatz
+gid://shopify/Product/16653792543111	13->1	Baotou Riemchensandalen mit spitzer Zehenpartie

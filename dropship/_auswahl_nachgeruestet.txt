@@ -3027,3 +3027,4 @@
 15506708595073	Farbe:2:2	2026-10-19	opal-halskette-aus-925er-silber-oval-blau-weis-622400
 15496019607937	Grösse:2:2	2026-10-19	mauspad-ocean-blue-edition-aus-naturkork-330240
 15495592608129	Farbe:4+Grösse:2:8	2026-10-19	kuscheldecke-mit-quasten-341952
+15512344560001	Variante:14+Grösse:4:56+ki	2026-10-19	silikon-armband-fur-apple-watch-mit-print-234688
