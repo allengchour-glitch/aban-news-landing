@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-19 13:34 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-19 15:04 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1384 · **1317 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1118, teilweise: 168, keine: 31; Preisspanne > 2×: 158) · 1 CJ-Variante: 65 · ohne Antwort: 2
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1381 · **1315 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1117, teilweise: 167, keine: 31; Preisspanne > 2×: 158) · 1 CJ-Variante: 64 · ohne Antwort: 2
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -722,7 +722,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | DIY Roboter Bausatz für Kinder (`diy-roboter-bausatz-fur-kinder-635800`) | 5 | 5 | 2.81–4.16 | 24.90 | Astrological 61001, Astrological 61002, Astrological 61003, Astrological 61004 |
 | Smartwatch S15 (`smartwatch-s15-604400`) | 5 | 5 | 66.0–66.0 | 122.90 | Black Glue, Blue, Red, Black Leather |
 | 45W Power Bank mit Kabel, 20000 mAh (`45w-power-bank-mit-kabel-20000-mah-629900`) | 5 | 5 | 9.76–10.61 | 24.90 | White-45W 20000 MA, Black-45W 20000 MA, Pink-45W 20000 MA, Violet-45W 20000 MA |
-| Baby-Kopfkissen gegen Plattkopf (`baby-kopfkissen-gegen-plattkopf-607000`) | 5 | 5 | 2.92–2.92 | 14.90 | Aike Panda, Windmill Castle, Panda Paradise, Purple Bamboo Grove |
 | Bluetooth-Sonnenbrille mit Stereo-Headset (`bluetooth-sonnenbrille-mit-stereo-headset-898304`) | 5 | 5 | 13.33–13.33 | 29.90 | Black, Blue, Silver, Gold |
 | Multifunktionaler XXL Rucksack für Damen (`multifunktionaler-xxl-rucksack-fur-damen-620200`) | 5 | 5 | 15.42–15.42 | 49.90 | Beige, Pink, Gray, Black |
 | Marokkanischer Kissenbezug mit Geometrie-Muster (`marokkanischer-kissenbezug-mit-geometrie-muste-638700`) | 5 | 1 | 3.28–3.28 | 14.90 | PE21135E1-45X45cm, PE21136E1-45X45cm, PE21137E1-45X45cm, PE21138E1-45X45cm |
@@ -782,7 +781,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Samt-Kissenbezug mit Schlaufenmuster (`samt-kissenbezug-mit-schlaufenmuster-188160`) | 5 | 5 | 2.1–3.7 | 14.90 | Beige-45x45cm Without Core, C Ball Pillow-45x45cm Without Core, C Ball Waist Pillow-30x50cm Without Core, Gray White Pillow-45x45cm Without Core |
 | Automatischer Futterspender (5L) (`automatischer-futterspender-5l-622900`) | 5 | 5 | 16.42–29.19 | 64.90 | 5L Button-Single Bowl, 5L Button-Double Bowl, 5L WIFI-Single Bowl, 5L WIFI-Double Bowl |
 | 38CM Nussknacker Holzfigur (`38cm-nussknacker-holzfigur-624600`) | 5 | 5 | 5.64–5.64 | 18.90 | TN3836 Purple Swordsman-38CM, TN3838 Blue Blade-38CM, TN3839 Red King-38CM, TN3840 Green King-38CM |
-| Magnetische Bausteine für die frühkindliche Entwicklung (`magnetische-bausteine-fur-die-fruhkindliche-en-609000`) | 5 | 4 | 14.1–14.1 | 36.90 | Variety Animal 1, Variety Animal 2, Variety Dinosaur 1, Variety Dinosaur 2 |
 | Milchduft Futterball für Hunde (`milchduft-futterball-fur-hunde-314739`) | 5 | 5 | 3.41–6.0 | 15.90 | blue-Diameter 8 Cm, green-Diameter 14 Cm, Red-Diameter 8 cm, Violet-Diameter 14 cm |
 | Herren Business Casual Quarzuhr mit Kalender (`herren-business-casual-quarzuhr-mit-kalender-663168`) | 5 | 5 | 3.46–3.46 | 16.90 | Rose Gold Scale Black Belt, Silver Scale Black Belt, White Surface Silver Streak, Black Surface Silver Streak |
 | Geflochtenes Armband aus Edelstahl (`geflochtenes-armband-aus-edelstahl-619600`) | 5 | 5 | 2.72–2.72 | 15.90 | Blue, Green, Red, Brown |

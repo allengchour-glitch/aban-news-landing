@@ -10565,3 +10565,10 @@ einfaches-herrenarmbanduhr-603400	2505080132131604000	7	6.26	ok	landeseite
 sportuhr-mit-leuchtfunktion-604200	2505070921201604500	7	6.49	ok	landeseite
 einfaches-zelt-612400	2604160700311613100	11	30.63	ok	landeseite
 casual-plattform-sneaker-970048	1769984280396050432	16	18.36	ok	landeseite
+damen-sneaker-375296	1769966038239678464	16	13.76	ok	landeseite
+bequeme-plattform-sneaker-903360	1769899943101206528	16	11.23	ok	landeseite
+herren-hoodie-609500	2607090729551600300	16	9.47	ok	landeseite
+rollerskates-fur-kinder-924224	1411540829008433152	16	21.98	ok	landeseite
+tanzschuhe-outdoor-625100	2601060520171625300	16	11.40	ok	landeseite
+kauknochen-spielzeug-620500	2607111010191621200	16	5.41	ok	landeseite
+vintage-hoodie-mit-rhinestones-608000	2603170734261608400	16	11.00	ok	landeseite
