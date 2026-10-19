@@ -322,7 +322,7 @@
    "letzter_versuch": "2026-10-19T05:21:29Z",
    "mc_ids": [],
    "reserviert_um": "2026-10-19T05:21:29Z",
-   "status": "reserviert",
+   "status": "offen",
    "termin_utc": "2026-10-24T19:15:00Z",
    "versuche": 6
   },
@@ -1754,6 +1754,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-19T05:21:29Z",
+ "stand": "2026-10-19T05:21:37Z",
  "version": 1
 }

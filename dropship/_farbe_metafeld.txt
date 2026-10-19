@@ -493,3 +493,6 @@ gid://shopify/Product/16644166386055	Schwarz
 gid://shopify/Product/16644173562247	Schwarz
 gid://shopify/Product/16644175954311	Braun
 gid://shopify/Product/16644217569671	Schwarz
+gid://shopify/Product/16651373642119	Schwarz
+gid://shopify/Product/16652018155911	Schwarz
+gid://shopify/Product/16652023529863	Weiss
