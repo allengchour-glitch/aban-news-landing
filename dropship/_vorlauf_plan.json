@@ -296,10 +296,10 @@
   "karussell-20261022T1915": {
    "basis_utc": "2026-10-22T19:15:00Z",
    "format": "karussell",
-   "grund": "Vorrat leer (11:19 UTC)",
-   "letzter_versuch": "2026-10-19T11:19:32Z",
+   "grund": "Vorrat leer (11:36 UTC)",
+   "letzter_versuch": "2026-10-19T11:36:29Z",
    "mc_ids": [],
-   "reserviert_um": "2026-10-19T11:19:32Z",
+   "reserviert_um": "2026-10-19T11:36:29Z",
    "status": "offen",
    "termin_utc": "2026-10-22T19:15:00Z",
    "versuche": 1
@@ -1769,6 +1769,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-19T11:19:39Z",
+ "stand": "2026-10-19T11:36:41Z",
  "version": 1
 }
