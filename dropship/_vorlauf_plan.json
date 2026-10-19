@@ -313,11 +313,17 @@
   "karussell-20261023T1915": {
    "basis_utc": "2026-10-23T19:15:00Z",
    "format": "karussell",
-   "grund": "10 Versuche ohne Kandidat",
+   "grund": "",
+   "handle": "",
+   "handles": [
+    "hd-smart-mini-projektor-fur-home-office"
+   ],
    "letzter_versuch": "2026-10-19T15:14:32Z",
-   "mc_ids": [],
+   "mc_ids": [
+    400150964
+   ],
    "reserviert_um": "2026-10-19T15:14:32Z",
-   "status": "reserviert",
+   "status": "geplant",
    "termin_utc": "2026-10-23T19:15:00Z",
    "versuche": 1
   },
@@ -1775,6 +1781,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-19T15:14:32Z",
+ "stand": "2026-10-19T15:15:02Z",
  "version": 1
 }
