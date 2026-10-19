@@ -10161,3 +10161,10 @@ baby-anti-schreck-kissen-626900	2604060916311627300	7	21.65	ok	landeseite
 taktischer-brustbeutel-612700	2507250225081613600	16	7.43	ok	landeseite
 taktisches-notfall-set-mit-einhand-zugriff-605200	2507231118351605400	16	7.13	ok	landeseite
 nordic-style-kissen-fur-buro-626100	2604010317011626400	16	9.33	ok	landeseite
+leichtes-atmungsaktives-klappbett-605600	2606221217381606200	0	-	KEINE CH-Option → DRAFT	landeseite
+mini-taktik-reit-cross-body-tasche-619800	2507110206371610100	16	6.90	ok	landeseite
+wand-tuchhalter-mit-trageband-611900	2605110319371612600	16	22.34	ok	landeseite
+wasserdichte-sporttasche-mit-diebstahlschutz-628000	2507061214391628200	16	6.25	ok	landeseite
+3-stockiges-schuhregal-mit-sitzflache-616900	2603310733231617600	16	14.13	ok	landeseite
+hufttasche-mit-nischenfach-603200	2507040938321603500	16	8.25	ok	landeseite
+rektangulares-kissen-mit-einlage-627900	2603260300591628300	16	20.82	ok	landeseite
