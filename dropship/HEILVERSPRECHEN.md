@@ -1,13 +1,8 @@
-# Heilversprechen in Produkttexten — Stand 2026-10-18T21:38:53Z
+# Heilversprechen in Produkttexten — Stand 2026-10-19T17:46:17Z
 
-Geprüft: 19666 (Filter: `status:active updated_at:>2026-10-14T11:24:23Z`) · entschärft: 0 · offen: 3 · Schreibfehler: 0
+Geprüft: 17363 (Filter: `status:active updated_at:>2026-10-18T21:38:53Z`) · entschärft: 0 · offen: 1 · Schreibfehler: 0
 
 Offen = Muster getroffen, aber keine geprüfte Ersatzphrase. Satz lesen, Ersatz in `ERSATZ` eintragen, nächster Lauf schreibt.
 
-- **Jade-Rollerset für Gesicht** (`jade-rollerset-fur-gesicht-15e51f`)
-  - …Jade-Roller mit zwei Köpfen, die zum Aufklimmen, Festigen, Entgiften und Scrapen der Gesichtshaut verwendet werden. Der Roller…
-- **Springseil für Fitness und Gewichtsverlust** (`springseil-fur-fitness-und-gewichtsverlust-fd0617`)
-  - …TITEL: Springseil für Fitness und Gewichtsverlust…
-- **Nackenmassagegerät zur Haltungskorrektur** (`nackenmassagegerat-zur-haltungskorrektur-03310e`)
-  - …Für die Entspannung verspannter Muskeln und zur Linderung von Schmerzen, die durch Fehlstellungen der Halswirbel entstehen, legst…
-  - …im Design, sodass es gut ins Gepäck passt. Die Variante mit Magnettherapie ist mit zehn grossen und drei kleinen Magnetpunkten ausgest…
+- **Hundegürtel mit Brusttasche – atmungsaktiv** (`hundegurtel-mit-brusttasche-atmungsaktiv-5a37cc`)
+  - …und so die Körpertemperatur reguliert. Er ist atmungsaktiv, schmerzlindernd und verhindert ein Überhitzen. Das zeichnet es aus Komp…

@@ -10791,3 +10791,10 @@ outdoor-stream-tracking-rucksack-mit-ipx7-wass-613400	2601290247571613800	16	10.
 reisegepack-trolley-bag-621000	2507220744041621200	16	38.22	ok	landeseite
 badetuch-mit-integriertem-rucksack-605200	2605061114111605700	16	9.88	ok	landeseite
 werkzeugtasche-abnehmbar-610200	2601260328001610500	16	28.18	ok	landeseite
+retro-reiseledertasche-614300	2507180844571616500	16	28.75	ok	landeseite
+bartpflege-set-600400	2605060331591601200	0	-	KEINE CH-Option → DRAFT	landeseite
+atmungsaktiver-laptop-rucksack-600500	2601230509171600900	16	14.00	ok	landeseite
+einfarbiger-rucksack-fur-unisex-611100	2601220914341611500	16	15.32	ok	landeseite
+aufblasbare-badewanne-612600	2604280521011613300	0	-	KEINE CH-Option → DRAFT	landeseite
+retro-geschaftstasche-622000	2506301419091622200	16	16.68	ok	landeseite
+rucksack-mit-bluetooth-lautsprecher-621800	2601220724421622300	7	19.72	ok	landeseite
