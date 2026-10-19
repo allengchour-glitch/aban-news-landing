@@ -10184,3 +10184,7 @@ crazy-horse-leder-herren-gurteltasche-mit-hand-628200	2502251033091629500	16	7.4
 kinder-schlittschuh-schuhe-mit-plusch-623900	2507050138141624200	16	23.38	ok	landeseite
 vergrosserndes-reise-spiegelset-631100	2512050544061631300	16	7.43	ok	landeseite
 wasserdichte-kissenfullung-615300	2606010907261616100	0	-	KEINE CH-Option → DRAFT	landeseite
+kinder-inline-skates-887488	1749251134453190656	7	24.17	ok	landeseite
+brusttasche-fur-herren-mit-mehreren-fachern-622600	2502210842491622800	16	10.15	ok	landeseite
+halbrunde-kleiderbugel-mit-haken-614900	2512040815191615100	16	18.32	ok	landeseite
+taktische-hufttasche-mit-erste-hilfe-kit-603800	2502200342571604000	16	6.77	ok	landeseite
