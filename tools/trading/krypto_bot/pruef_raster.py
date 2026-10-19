@@ -33,6 +33,7 @@ Aufruf (PRUEF_STRENG=1 für die strenge Prüf-Börse):
   python3 -B pruef_raster.py VON BIS --kurs             # dazu die Kurssprung-Kopplung (4 Sprünge, je Szenario 4 × 720 Fälle)
   python3 -B pruef_raster.py VON BIS --haengend         # Konto ohne STOP_LOSS, die Spot-Stops hängen zu Beginn von Tag 1 (kombinierbar mit --kurs)
   python3 -B pruef_raster.py VON BIS --notaus           # Tag 1 ist der Not-Aus (kombinierbar mit --haengend und --kurs; Szenarien mit gleichem Tag 0 zählen einmal)
+  python3 -B pruef_raster.py VON BIS --haengend --paare # nur die 10 Paare schreibender Störungen (z. B. mit --kurs: 4× so viele Zellen)
 """
 from __future__ import annotations
 
@@ -242,16 +243,16 @@ def klasse(e):
     return None
 
 
-def zellen(haengend=False, notaus=False):
+def zellen(haengend=False, notaus=False, nur_paare=False):
     """Die schreibenden Störungen des Rasters als [(Bezeichnung, w, w2, Zeitpunkte)]. Einzelne Störungen: 4 Zeitpunkte; mit --haengend dazu die zusätzlichen
     Einzelstörungen und die Paare (Ersetzen scheitert dauerhaft × Löschen/Not-Stop schief) mit je 2 Zeitpunkten; mit --notaus die Störungen des Not-Aus."""
     out = [(str(i), w, None, (0, 1, 2, 3)) for i, w in enumerate(SCHREIBEN + (SCHREIBEN_HAENGEND if haengend else []) + (SCHREIBEN_NOTAUS if notaus else []))]
     if haengend:
         out += [(f"P{i}.{j}", w1, w2, (0, 1)) for i, w1 in enumerate(HAENGEND_ERSETZEN) for j, w2 in enumerate(HAENGEND_ZWEITE)]
-    return out
+    return [c for c in out if c[0].startswith("P")] if nur_paare else out
 
 
-def raster(von, bis, ausgabe=None, melde=print, kurse=(None,), haengend=False, notaus=False):
+def raster(von, bis, ausgabe=None, melde=print, kurse=(None,), haengend=False, notaus=False, nur_paare=False):
     """Szenarien von..bis-1 durchzählen → (Zähler, Funde). kurse: Kurssprünge der dritten Kopplung (None = ohne Sprung). haengend: Spot-Stops hängen zu Beginn von Tag 1.
     notaus: Tag 1 ist der Not-Aus (Szenarien mit gleichem Markt und gleichem Tag 0 zählen einmal)."""
     zaehler, funde = Counter(), []
@@ -262,7 +263,7 @@ def raster(von, bis, ausgabe=None, melde=print, kurse=(None,), haengend=False, n
             if sz[:2] in gesehen:
                 continue
             gesehen.add(sz[:2])
-        for wi, w, w2, skips in zellen(haengend, notaus):
+        for wi, w, w2, skips in zellen(haengend, notaus, nur_paare):
             for skip in skips:
                 for ri, r in enumerate(LESEN):
                     for modus in (("bei_w", "anfang") if r is not None else ("bei_w",)):
@@ -301,11 +302,12 @@ def main(argv=None):
     kurse = tuple(KURSE) if "--kurs" in argv else (None,)
     haengend = "--haengend" in argv
     notaus = "--notaus" in argv
-    argv = [a for a in argv if a not in ("--kurs", "--haengend", "--notaus")]
+    nur_paare = "--paare" in argv
+    argv = [a for a in argv if a not in ("--kurs", "--haengend", "--notaus", "--paare")]
     von, bis = int(argv[0]), int(argv[1])
     ausgabe = argv[2] if len(argv) > 2 else (f"pruef_raster{'_notaus' if notaus else ''}{'_haengend' if haengend else ''}{'_kurs' if kurse != (None,) else ''}"
-                                             f"{'_streng' if P.STRENG else ''}_{von}_{bis}.json")
-    zaehler, funde = raster(von, bis, ausgabe, kurse=kurse, haengend=haengend, notaus=notaus)
+                                             f"{'_paare' if nur_paare else ''}{'_streng' if P.STRENG else ''}_{von}_{bis}.json")
+    zaehler, funde = raster(von, bis, ausgabe, kurse=kurse, haengend=haengend, notaus=notaus, nur_paare=nur_paare)
     echte = [f for f in funde if f["art"] != "UNBEKANNT_NACH_LAUF"]
     print(f"{len(funde)} Befunde ({len(echte)} ohne UNBEKANNT_NACH_LAUF) → {ausgabe}")
     return 1 if funde else 0

@@ -3952,6 +3952,8 @@ pruefe("15.N klasse() im Not-Aus: sauber → None; FALSCH_ALLES_ZU und SAUBER_NI
        R.klasse(sauber_n_) is None and R.klasse(dict(sauber_n_, falsch_alles_zu=True, nach_nk=[1])) == "FALSCH_ALLES_ZU" and R.klasse(dict(sauber_n_, sauber_nicht_zu=True, nach_nk=[1])) == "SAUBER_NICHT_ZU"
        and R.klasse(dict(sauber_n_, nach_lauf=[1])) == "NACH_LAUF_STILL" and R.klasse(dict(sauber_n_, nach_lauf=[1], laut=True)) == "NACH_LAUF_LAUT_OHNE_NK"
        and R.klasse(dict(sauber_n_, nach_lauf=[1], laut=True, nk_tat_etwas=True)) is None and R.klasse(dict(sauber_n_, nach_nk=[1])) == "NACH_NK")
+pruefe("15.H zellen(nur_paare=True) liefert genau die 10 Paare (je 2 Zeitpunkte); ohne haengend gibt es keine",
+       len(R.zellen(True, False, True)) == 10 and all(c_[0].startswith("P") and c_[2] is not None and c_[3] == (0, 1) for c_ in R.zellen(True, False, True)) and R.zellen(False, False, True) == [])
 pruefe("15.N Not-Aus-Störungen sind Teil des Rasters (Rückkauf/Marktverkauf mit verlorener Antwort oder teilweise, Löschen mit verlorener Antwort, Umbuchung); zellen() zählt sie nur mit notaus",
        len(R.SCHREIBEN_NOTAUS) == 7 and len(R.zellen(False, True)) == len(R.zellen(False)) + 7 and len(R.zellen(True, True)) == len(R.zellen(True)) + 7)
 
