@@ -96,6 +96,9 @@ UNKLAR_WARTEN = (2.0, 5.0, 10.0)      # am Laufende: unklare Aufträge so lange 
 BUCH_WARTEN = (0.3, 1.0)        # Buch-Datei kurz gesperrt (Windows: Virenscanner, OneDrive, offener Editor) → nochmal
 VERKAUF_VERSUCHE = 3            # Not-Aus: so oft verkaufen (den Rest jedes Mal neu lesen), danach Schutz-Stop
 ABGLEICH_RUNDEN = 3             # Stop-Abgleich wiederholen, bis der Kontostand während des Abgleichs gleich bleibt
+VORAB_TOLERANZ = 2              # Vorab verkleinert einen Perp-Stop nur, wenn er mehr als so viele Futures-Schritte zu gross ist: die Rundung des Plans
+                                # (Stop aufgerundet, Absicherung abgerundet) erklärt bis zu einen Schritt — ein Ersetzen dafür kostet mehr (Fenster zwischen
+                                # Setzen und Löschen, ein unlesbarer Abgleich danach lässt das Ersetzte stehen) als es bringt (14. Prüfung E7, Lauf-Seed 15519)
 # Kennt Binance einen unklaren Auftrag nach 10 Minuten nicht, wurde er nie ausgeführt. Grundlage (Binance-Doku «Timing security»):
 # Spot prüft recvWindow (hier 10 s) beim Empfang UND unmittelbar vor der Weitergabe an die Matching Engine — ein älterer Auftrag
 # erreicht sie nie. Futures nennt nur die Prüfung beim Empfang (503 «Unknown error» = Status unbekannt) — darum die grosse Reserve.
@@ -1447,7 +1450,7 @@ def _stops_vorab(spot, fut, buch, k, d, plan, nur_jetzt=False):
     # wird weiter verkleinert (er träfe sonst die neue Ernte-Absicherung).
     sicher_p = PL.runde(jetzt["stop_perp"] if nur_jetzt else max(jetzt["stop_perp"], ende["stop_perp"]), rf["step"])
     alt_p = _nochmal(lambda: fut.eigene_stops(sym))
-    if not (alt_p and sicher_p >= rf["step"] and sum(float(a.get("quantity") or 0) for a in alt_p) > sicher_p + rf["step"] / 2):
+    if not (alt_p and sicher_p >= rf["step"] and sum(float(a.get("quantity") or 0) for a in alt_p) > sicher_p + VORAB_TOLERANZ * rf["step"]):
         return False
     p_alt = float(alt_p[0].get("triggerPrice") or 0) or st.get("p_short")
     if not (p_alt and p_alt > kurs):

@@ -833,7 +833,10 @@ Andere Strategie wählen: `setx KRYPTO_STRATEGIE "halten"` (immer 100 %) oder `"
 > unlesbar), blieb der neue Short bis zur Nachkontrolle teilweise ohne Stop — laut gemeldet, aber von Pilot 2.0 selbst verursacht (am Stand
 > vor E5 gab es die Lücke nicht). Jetzt nie unter das Plan-Ende (tatsächliche Coins plus ausstehende neue Shorts); ein darüber liegender Stop
 > wird weiter auf das Plan-Ende verkleinert. **Lehre:** jede Änderung am Schutzpfad, die Stops verkleinert oder vergrössert, braucht die GANZE
-> Kampagne neu (Standard- und strenger Modus), nicht nur den Seed, der sie auslöste. Klein: K1 beide Läufe ändern den Perp-Stop (die Kennung des anderen kommt ins Gedächtnis), K2 die unklaren
+> Kampagne neu (Standard- und strenger Modus), nicht nur den Seed, der sie auslöste — und die Neuauflage fand prompt **E7** (Standard-Lauf-Seed
+> 15519, 33 USDT): Vorab ersetzte einen Perp-Stop schon bei EINEM Schritt Überschuss (den die Rundung des Plans ohnehin erklärt); war die Position danach
+> dauerhaft unlesbar, blieb ein alter Spot-Stop über der Netto-Richtung, den der Abgleich hätte verkleinern sollen, und der verkleinerte Perp-Stop
+> deckte seine Folge nicht mehr. Jetzt ersetzt Vorab nur bei mehr als `VORAB_TOLERANZ` = 2 Schritten Überschuss. Klein: K1 beide Läufe ändern den Perp-Stop (die Kennung des anderen kommt ins Gedächtnis), K2 die unklaren
 > Aufträge werden in jeder Abgleich-Runde frisch gelesen, K3 Short-Staub ≤ 10 USDT, K4 kein Dauer-Alarm der Nachkontrolle nach einer
 > Ablehnung, K5 zwei gestartete Modi (Not-Aus und Nachkontrolle binden je Modus dessen eigene Verbindung; der Tageslauf schliesst bei
 > STOP auch einen fremden Modus), K6 `krypto-auto.bat` ruft im Not-Aus-Zweig die Nachkontrolle. ‹ENDSTAND›
@@ -843,7 +846,7 @@ Andere Strategie wählen: `setx KRYPTO_STRATEGIE "halten"` (immer 100 %) oder `"
 > mehr findet — bis dahin wirkt `KRYPTO_PILOT2=an` nicht (siehe «Starten» unten).
 
 Gleiche Signale wie der Pilot, klügere Ausführung über **beide** Binance-Konten (`pilot2_plan.py` rechnet, `pilot2_live.py`
-handelt; 23 + 154 + 263 Tests gegen zwei streng nachgebaute Binance, Fuzzer, Mutationsproben). Ohne `KRYPTO_PILOT2=an` handelt der
+handelt; 23 + 154 + 273 Tests gegen zwei streng nachgebaute Binance, Fuzzer, Mutationsproben). Ohne `KRYPTO_PILOT2=an` handelt der
 Pilot wie bisher.
 
 **Was er tut:** Richtung long → Coin im Spot-Konto (kein Funding). Richtung short → Short-Perpetual (Hebel 1, bekommt Funding).
@@ -1096,7 +1099,7 @@ python3 tools/trading/krypto_bot/test_calls.py    # 84 Tests: 40 typische Call-F
 python3 tools/trading/krypto_bot/test_binance.py  # 21 Tests, inkl. nachgebautem Binance-Server mit Signaturprüfung
 python3 tools/trading/krypto_bot/test_pilot2_plan.py  # 23 Tests: Pilot-2.0-Rechnung (Richtung, Ernte, Pfand, Mindestbeträge)
 python3 tools/trading/krypto_bot/test_pilot2_live.py  # 154 Tests: Pilot 2.0 («Konto = Wahrheit») gegen eine strenge nachgebaute Binance
-python3 -B tools/trading/krypto_bot/test_pilot2_streng.py  # 263 Tests: Belege der 8.–14. Prüfung, Schlussproben, Fuzzer-Funde gegen die Prüf-Börse, kleine Fuzzer
+python3 -B tools/trading/krypto_bot/test_pilot2_streng.py  # 273 Tests: Belege der 8.–14. Prüfung, Schlussproben, Fuzzer-Funde gegen die Prüf-Börse, kleine Fuzzer
 python3 -B tools/trading/krypto_bot/test_maxprofit.py      # 55 Tests: Max-Profit-Kern (gleiches Modell wie der Pilot, Kelly-Optimum, keine Zukunftsdaten, Kosten; Pilot 2.0 mit Hebel: = lauf2 bei 1×, Pfand-Regel, bei festem Kurs nie liquidiert)
 python3 -B tools/trading/krypto_bot/test_testnetz_pruefung.py  # 61 Tests: das Testnetz-Prüfskript (A1–A8, B1–B6) gegen die Prüf-Börse (nur 127.0.0.1)
 python3 -B tools/trading/krypto_bot/pruef_fuzzer.py notaus 0 1600     # grosser Fuzzer (für Prüfungen): Not-Aus unter harten Störungen
