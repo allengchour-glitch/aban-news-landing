@@ -7935,3 +7935,5 @@ gid://shopify/Product/15493855904129	zugeordnet	14	Herren-Sandalen aus Vollnarbe
 gid://shopify/Product/15493856035201	zugeordnet	8	Damen Hoodie mit Rundhals und Relaxed Fit
 gid://shopify/Product/15493856067969	zugeordnet	36	Chunky Ankle Boots mit Reissverschluss
 gid://shopify/Product/15497430172033	zugeordnet	28	Atmungsaktive Fitness-Sneaker für Damen
+gid://shopify/Product/15497431449985	zugeordnet	20	Satin-Swingkleid mit langen Ärmeln
+gid://shopify/Product/15497431548289	zugeordnet	12	Trägerloses Kleid mit bestickter Spitze
