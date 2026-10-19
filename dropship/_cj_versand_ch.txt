@@ -1606,3 +1606,4 @@ gid://shopify/Product/16647280886151	ok	Handgemachter Leder-Rucksack Herren Retr
 gid://shopify/Product/16649013657991	ok	Leichte Reise-Tasche aus Leder
 gid://shopify/Product/16649262858631	ok	Rindsleder-Rucksack mit grosser Kapazität
 gid://shopify/Product/16650191176071	ok	Genuine Leder Crossbody Messenger
+gid://shopify/Product/16651927028103	nicht-versendbar	Wandbild im Mittelalter-Stil
