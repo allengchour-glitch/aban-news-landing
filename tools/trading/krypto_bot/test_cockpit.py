@@ -524,6 +524,11 @@ with tempfile.TemporaryDirectory() as tmp:
             pruefe("Oberfläche: Knopf für 1,75× (als Schaltfläche, nicht nur im Stil) und die Zuordnung zur Aktion risiko_1_75",
                    '<button type="button" data-s="1.75" aria-pressed="false">1,75× viel Risiko<small id="st-1.75"></small></button>' in _html
                    and '"1.75": "risiko_1_75"' in _html)
+            pruefe("Kontoanteil: Standard 0,5, KI_BOT_ANTEIL=0.3 → 0,3 (die Testzahlen gelten fürs ganze Konto)",
+                   C.konto_anteil({}) == 0.5 and C.konto_anteil({"KI_BOT_ANTEIL": "0.3"}) == 0.3 and C.stand(env={})["risiko"]["anteil"] == 0.5
+                   and C.stand(env={"KI_BOT_ANTEIL": "1"})["risiko"]["anteil"] == 1.0)
+            pruefe("Oberfläche: die Rückfrage nennt den Kontoanteil und dass die Zahlen fürs GANZE Konto gelten",
+                   "% des Kontos ein (KI_BOT_ANTEIL)" in _html and "gelten für das GANZE Konto" in _html)
             pruefe("Oberfläche: die Rückfrage vor jeder höheren Stufe warnt vor dem Verlust und nennt die Wahrscheinlichkeit eines Jahres unter −60 %",
                    "nur Geld einsetzen, dessen Verlust du verkraftest" in _html and "tiefer als −60 %" in _html)
         finally:

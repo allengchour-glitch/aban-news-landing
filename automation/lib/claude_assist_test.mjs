@@ -6,6 +6,7 @@ import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
+import { MCP_LAUNCHER } from './claude_assist_launch.mjs';
 import { createAssistant, boundedRun, cleanEnv, redact } from './claude_assist.mjs';
 
 const remote = 'https://github.com/allengchour-glitch/aban-news-landing.git';
@@ -125,7 +126,7 @@ function checkout(t) {
   const f = fixture(t);
   const here = path.dirname(fileURLToPath(import.meta.url));
   fs.mkdirSync(path.join(f.root, 'automation/lib'), { recursive: true });
-  for (const file of ['claude_assist.mjs','claude_assist_mcp.mjs','claude_assist_offline.mjs','claude_assist_changes.mjs','claude_assist_readiness.mjs']) fs.copyFileSync(path.join(here, file), path.join(f.root, 'automation/lib', file));
+  for (const file of ['claude_assist.mjs','claude_assist_mcp.mjs','claude_assist_offline.mjs','claude_assist_changes.mjs','claude_assist_readiness.mjs','claude_assist_launch.mjs']) fs.copyFileSync(path.join(here, file), path.join(f.root, 'automation/lib', file));
   fs.copyFileSync(path.join(here, '../claude-assist.mjs'), path.join(f.root, 'automation/claude-assist.mjs'));
   for (const args of [['-c','init.templateDir=','init','--quiet',f.root], ['-C',f.root,'config','--local','remote.origin.url',remote]]) {
     const r = spawnSync('git', args, { env: cleanEnv(), encoding: 'utf8' }); assert.equal(r.status, 0, r.stderr);
@@ -267,9 +268,9 @@ test('uncovered changes remain unknown while real test failures take precedence'
 });
 test('assist profile runs only its fixed integration files without claiming a network sandbox', async t => {
   const f=fixture(t,(cmd,args)=>({status:'passed',output:cmd==='git'?remote:'ok'}));
-  for(const file of ['claude_assist_test.mjs','claude_assist_mcp_test.mjs','claude_assist_changes_test.mjs','claude_assist_readiness_test.mjs'])write(f.root,'automation/lib/'+file,'');
+  for(const file of ['claude_assist_test.mjs','claude_assist_mcp_test.mjs','claude_assist_changes_test.mjs','claude_assist_readiness_test.mjs','claude_assist_launch_test.mjs'])write(f.root,'automation/lib/'+file,'');
   const run=await f.app.checks({suite:'assist'});assert.equal(run.status,'passed');
-  const call=f.calls.find(c=>c.cmd!=='git');assert.equal(call.args[0],'--test');assert.equal(call.args.length,5);assert.match(run.caveat,/no network preload/);
+  const call=f.calls.find(c=>c.cmd!=='git');assert.equal(call.args[0],'--test');assert.equal(call.args[1],'--test-reporter=spec');assert.equal(call.args.length,7);assert.match(run.caveat,/no network preload/);
 });
 test('native Git change plan sees a staged change even when the worktree returns to HEAD', async t => {
   const f=checkout(t),file='automation/lib/shopify_gql.mjs';write(f.root,file,'original');
@@ -300,7 +301,7 @@ test('legitimate large Unicode handoffs remain readable within the MCP byte budg
 });
 
 function localSetup(root) {
-  write(root,'.mcp.json',JSON.stringify({mcpServers:{'luxestyle-assist':{type:'stdio',command:'node',args:['automation/claude-assist.mjs','mcp']},'other-service':{env:{example:'private_value_not_to_report'}}}}));
+  write(root,'.mcp.json',JSON.stringify({mcpServers:{'luxestyle-assist':{type:'stdio',command:'node',args:['-e',MCP_LAUNCHER],env:{NODE_OPTIONS:'',NODE_PATH:''}},'other-service':{env:{example:'private_value_not_to_report'}}}}));
   write(root,'.claude/commands/luxestyle-assist.md','Local reviewed command.');
   if(!fs.existsSync(path.join(root,'automation/claude-assist.mjs')))write(root,'automation/claude-assist.mjs','// fixed helper');
 }
@@ -371,4 +372,16 @@ test('integration config can be pinned without exporting raw MCP secrets', async
   assert.equal(pack.files[0].reason,'raw_config_not_exported_use_doctor');assert.equal(pack.files[1].state,'included');
   assert.equal(JSON.stringify(pack).includes('private_value_not_to_report'),false);
   assert.equal(f.app.reviewList({after:'wrong'}).reason,'unknown_review_cursor');assert.equal(f.app.read().state,'available');
+});
+test('the actual configured MCP launch clears inherited Node preloads before JSON-RPC', t => {
+  const f=checkout(t);localSetup(f.root);
+  const server=JSON.parse(fs.readFileSync(path.join(f.root,'.mcp.json'),'utf8')).mcpServers['luxestyle-assist'];
+  const parent={...cleanEnv(),NODE_OPTIONS:'--import=data:text/javascript,console.log(12345)',NODE_PATH:'/unreviewed-parent-path'};
+  const input=JSON.stringify({jsonrpc:'2.0',id:1,method:'initialize',params:{protocolVersion:'2025-06-18',capabilities:{},clientInfo:{name:'probe',version:'1'}}})+'\n';
+  const control=spawnSync(process.execPath,server.args,{cwd:f.root,input,encoding:'utf8',env:parent,timeout:5000});
+  assert.equal(control.status,0,control.stderr);assert.equal(control.stdout.split('\n')[0],'12345');
+  const configured=spawnSync(process.execPath,server.args,{cwd:f.root,input,encoding:'utf8',env:{...parent,...server.env},timeout:5000});
+  assert.equal(configured.status,0,configured.stderr);
+  const responses=configured.stdout.trim().split('\n').map(JSON.parse);assert.equal(responses.length,1);assert.equal(responses[0].id,1);
+  assert.equal(responses[0].result.serverInfo.name,'luxestyle-claude-assist');assert.equal(configured.stderr,'');
 });

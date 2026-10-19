@@ -1,5 +1,5 @@
 /** Pure local readiness assessment. It never reads files or contacts a client. */
-const CLI = 'automation/claude-assist.mjs';
+import { MCP_LAUNCHER } from './claude_assist_launch.mjs';
 const isObject = value => value !== null && typeof value === 'object' && !Array.isArray(value);
 
 function nodeCheck(version) {
@@ -23,11 +23,25 @@ function configCheck(config, state) {
   if (server === undefined) return ['unknown', 'Der lokale MCP-Eintrag luxestyle-assist fehlt.'];
   if (!isObject(server) || server.type !== 'stdio' || server.command !== 'node'
     || !Array.isArray(server.args) || server.args.length !== 2
-    || server.args[0] !== CLI || server.args[1] !== 'mcp') {
+    || server.args[0] !== '-e' || server.args[1] !== MCP_LAUNCHER) {
     return ['failed', 'Der vorhandene MCP-Eintrag startet nicht den vorgesehenen LuxeStyle-Helfer.'];
   }
-  if (Object.keys(server).some(key => !['type', 'command', 'args'].includes(key))) {
+  const env = server.env;
+  if (!isObject(env)) {
+    return ['unknown', 'Die explizit bereinigte Node-Startumgebung ist nicht nachgewiesen.'];
+  }
+  const nodeKeys = ['NODE_OPTIONS', 'NODE_PATH'];
+  if (nodeKeys.some(key => Object.hasOwn(env, key) && env[key] !== '')) {
+    return ['failed', 'Die Node-Startumgebung enthält nicht freigegebene Ladeoptionen.'];
+  }
+  if (Object.keys(server).some(key => !['type', 'command', 'args', 'env'].includes(key))) {
     return ['unknown', 'Zusätzliche Optionen im Helfereintrag sind nicht geprüft; der lokale Standardstart ist damit nicht belegt.'];
+  }
+  if (Object.keys(env).some(key => !nodeKeys.includes(key))) {
+    return ['unknown', 'Zusätzliche Variablen in der Helfer-Startumgebung sind nicht geprüft.'];
+  }
+  if (nodeKeys.some(key => !Object.hasOwn(env, key))) {
+    return ['unknown', 'Die explizit bereinigte Node-Startumgebung ist unvollständig.'];
   }
   return ['passed', 'Der lokale MCP-Eintrag verweist auf den vorgesehenen stdio-Helfer; ein Client-Start ist damit nicht bestätigt.'];
 }

@@ -542,6 +542,7 @@ $("stufen").addEventListener("click", e => {
   if (s > 1 && !confirm(`Risiko-Stufe ${b.dataset.s.replace(".", ",")}× wählen?\n\nIm Test ab ${jahr}: ${t ? fmtPct(t.cagr) + " pro Jahr, schlimmster Einbruch " + fmtZahl(t.einbruch * 100) + " %" : "—"}` +
       `${t22 ? "\nab 2022: " + fmtPct(t22.cagr) + " pro Jahr, Einbruch " + fmtZahl(t22.einbruch * 100) + " %" : ""}` +
       `${T.p60 != null ? "\nIn " + fmtZahl(T.p60 * 100, 1) + " % der simulierten Jahre fiel das Konto tiefer als −60 %." : ""}` +
+      `${ri.anteil != null ? "\n\nDeine Einstellung: Der Pilot setzt " + fmtZahl(ri.anteil * 100) + " % des Kontos ein (KI_BOT_ANTEIL). Die Zahlen oben gelten für das GANZE Konto — auf dein Gesamtkonto wirken Rendite und Einbruch etwa " + fmtZahl(ri.anteil, 2) + "-mal so stark." : ""}` +
       `\n\nMit 1× war das Verhältnis Rendite zu Einbruch besser. Gilt ab dem nächsten Lauf. Das ist eine Rückrechnung, keine Garantie — nur Geld einsetzen, dessen Verlust du verkraftest.`)) return;
   knopf({"1": "risiko_1", "1.5": "risiko_1_5", "1.75": "risiko_1_75", "2": "risiko_2"}[b.dataset.s]);
 });

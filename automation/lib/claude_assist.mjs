@@ -15,7 +15,7 @@ const secret = /\b(?:shpat_|shpss_|ghp_|github_pat_|sk-ant-|sk-proj-)[A-Za-z0-9_
 export const SUITES = Object.freeze({
   core: ['automation/lib/shopify_gql_test.mjs', 'automation/lib/shopify_secret_test.mjs', 'automation/lib/kanal_sperren_test.mjs'],
   seo: ['automation/seo-optimizer_test.mjs', 'automation/lib/seo_titel_test.mjs'],
-  assist: ['automation/lib/claude_assist_test.mjs', 'automation/lib/claude_assist_mcp_test.mjs', 'automation/lib/claude_assist_changes_test.mjs', 'automation/lib/claude_assist_readiness_test.mjs'],
+  assist: ['automation/lib/claude_assist_test.mjs', 'automation/lib/claude_assist_mcp_test.mjs', 'automation/lib/claude_assist_changes_test.mjs', 'automation/lib/claude_assist_readiness_test.mjs', 'automation/lib/claude_assist_launch_test.mjs'],
 });
 export const POLICY = Object.freeze({
   scope: 'LuxeStyle / luxestyle.ch only', brandId: 6227837, timezone: 'Europe/Zurich',
@@ -191,7 +191,7 @@ export function createAssistant(root, { runner = boundedRun } = {}) {
     if (suite === 'assist') {
       try { for (const file of SUITES.assist) readSmall(root, file); }
       catch { return { suite, status: 'unknown', results: [], reason: 'missing_unreadable_or_unsafe_test' }; }
-      const run = await runner(process.execPath, ['--test', ...SUITES.assist.map(file => path.join(root, file))], { cwd: root, env: cleanEnv(), timeoutMs: 15000, maxBytes: 32768 });
+      const run = await runner(process.execPath, ['--test', '--test-reporter=spec', ...SUITES.assist.map(file => path.join(root, file))], { cwd: root, env: cleanEnv(), timeoutMs: 30000, maxBytes: 32768 });
       return { suite, status: run.status, results: [{ files: SUITES.assist, ...run }], caveat: 'Own trusted integration tests require child processes; no network preload in this profile. Sanitized environment is not an OS sandbox.' };
     }
     for (const file of SUITES[suite]) {

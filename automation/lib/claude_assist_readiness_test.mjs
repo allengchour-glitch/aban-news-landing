@@ -1,11 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { inspectReadiness } from './claude_assist_readiness.mjs';
+import { MCP_LAUNCHER } from './claude_assist_launch.mjs';
 
 function readyInput() {
   return {
     nodeVersion: 'v22.16.0', configState: 'available',
-    config: { mcpServers: { 'luxestyle-assist': { type: 'stdio', command: 'node', args: ['automation/claude-assist.mjs', 'mcp'] } } },
+    config: { mcpServers: { 'luxestyle-assist': { type: 'stdio', command: 'node', args: ['-e', MCP_LAUNCHER], env: { NODE_OPTIONS: '', NODE_PATH: '' } } } },
     cliPresent: true, commandPresent: true, lockState: 'absent', repoState: 'matched', historyState: 'available',
   };
 }
@@ -65,7 +66,11 @@ test('missing configuration and missing helper entries remain unknown', () => {
 });
 
 test('present incorrect helper commands and malformed configuration block', () => {
-  const badServers = [null, [], {}, { type: 'http', command: 'node', args: ['automation/claude-assist.mjs', 'mcp'] }, { type: 'stdio', command: 'npx', args: ['automation/claude-assist.mjs', 'mcp'] }, { type: 'stdio', command: 'node', args: ['automation/other.mjs', 'mcp'] }, { type: 'stdio', command: 'node', args: ['automation/claude-assist.mjs', 'doctor'] }, { type: 'stdio', command: 'node', args: ['automation/claude-assist.mjs', 'mcp', '--unsafe'] }, { type: 'stdio', command: 'node', args: 'automation/claude-assist.mjs mcp' }];
+  const expected = readyInput().config.mcpServers['luxestyle-assist'];
+  const badServers = [null, [], {}, { ...expected, type: 'http' }, { ...expected, command: 'npx' },
+    { ...expected, args: ['automation/claude-assist.mjs', 'mcp'] },
+    { ...expected, args: ['-e', MCP_LAUNCHER + '\n'] },
+    { ...expected, args: ['-e', MCP_LAUNCHER, '--unsafe'] }, { ...expected, args: 'node -e unreviewed' }];
   for (const server of badServers) {
     const result = inspectReadiness({ ...readyInput(), config: { mcpServers: { 'luxestyle-assist': server } } });
     assert.equal(result.state, 'blocked');
@@ -86,11 +91,58 @@ test('unrelated MCP servers are preserved without exposing their data', () => {
   assert(!JSON.stringify(result).includes('never-echo-this-value'));
 });
 test('unreviewed helper startup options cannot silently make setup ready', () => {
-  for (const extra of [{ env: { NODE_OPTIONS: '--import unreviewed' } }, { cwd: '/other/project' }, { disabled: true }]) {
+  for (const extra of [{ cwd: '/other/project' }, { disabled: true }]) {
     const input=readyInput();Object.assign(input.config.mcpServers['luxestyle-assist'],extra);
     const result=inspectReadiness(input);assert.equal(result.state,'unknown');assert.equal(check(result,'mcp_config').state,'unknown');
     assert.equal(JSON.stringify(result).includes('unreviewed'),false);
   }
+});
+
+test('missing or partial Node environment overrides remain unknown', () => {
+  for (const env of [undefined, null, [], 'environment', {}, { NODE_OPTIONS: '' }, { NODE_PATH: '' }]) {
+    const input = readyInput();
+    if (env === undefined) delete input.config.mcpServers['luxestyle-assist'].env;
+    else input.config.mcpServers['luxestyle-assist'].env = env;
+    const result = inspectReadiness(input);
+    assert.equal(result.state, 'unknown');
+    assert.equal(check(result, 'mcp_config').state, 'unknown');
+  }
+});
+
+test('nonempty or malformed Node loading overrides block without exposing values', () => {
+  for (const key of ['NODE_OPTIONS', 'NODE_PATH']) {
+    for (const value of ['--import private-unreviewed-loader', '/private/unreviewed-modules', ' ', null, false, 0, {}]) {
+      const input = readyInput();
+      input.config.mcpServers['luxestyle-assist'].env[key] = value;
+      const result = inspectReadiness(input);
+      assert.equal(result.state, 'blocked');
+      assert.equal(check(result, 'mcp_config').state, 'failed');
+      assert(!JSON.stringify(result).includes('private-unreviewed-loader'));
+      assert(!JSON.stringify(result).includes('/private/unreviewed-modules'));
+    }
+  }
+});
+
+test('extra environment variables stay unknown and are never echoed', () => {
+  const input = readyInput();
+  input.config.mcpServers['luxestyle-assist'].env.PRIVATE_TOKEN = 'never-echo-extra-environment';
+  const before = structuredClone(input);
+  const result = inspectReadiness(input);
+  assert.equal(result.state, 'unknown');
+  assert.equal(check(result, 'mcp_config').state, 'unknown');
+  assert.deepEqual(input, before);
+  assert(!JSON.stringify(result).includes('never-echo-extra-environment'));
+  assert(!JSON.stringify(result).includes('PRIVATE_TOKEN'));
+});
+
+test('a known unsafe loading override stays blocked beside unreviewed variables', () => {
+  const input = readyInput();
+  input.config.mcpServers['luxestyle-assist'].env = { NODE_OPTIONS: '--import hidden-loader', PRIVATE_TOKEN: 'hidden-token' };
+  const result = inspectReadiness(input);
+  assert.equal(result.state, 'blocked');
+  assert.equal(check(result, 'mcp_config').state, 'failed');
+  assert(!JSON.stringify(result).includes('hidden-loader'));
+  assert(!JSON.stringify(result).includes('hidden-token'));
 });
 
 test('missing CLI or slash command is unknown, not a claim that a client is installed', () => {

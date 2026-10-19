@@ -410,6 +410,16 @@ def backtest_kurven():
     return _BACKTEST["k"]
 
 
+def konto_anteil(env):
+    """Welcher Teil des Kontos der Pilot einsetzt (KI_BOT_ANTEIL, Standard 0,5). Die Testzahlen je Stufe gelten für das GANZE Konto —
+    bei 50 % wirken Rendite und Einbruch aufs Gesamtkonto etwa halb so stark. None, wenn nicht lesbar."""
+    try:
+        import broker_futures as BF
+        return BF.einstellungen(env)["anteil"]
+    except Exception:  # noqa: BLE001
+        return None
+
+
 def stufen_test():
     """Testzahlen je Risiko-Stufe für Anzeige und Rückfrage. Quelle: der Max-Profit-Prüfstand (ab 2020 und ab 2022, dazu die
     Wahrscheinlichkeit eines Jahres mit Einbruch unter −60 %); fehlt eine Stufe dort, der ältere Hebel-Prüfstand (ab 2019)."""
@@ -477,7 +487,7 @@ def stand(env=None):
         except Exception:  # noqa: BLE001
             vgl = {}
     import pilot_kern as K
-    risiko = {"stufe": K.risiko()["stufe"], "test": stufen_test()}
+    risiko = {"stufe": K.risiko()["stufe"], "test": stufen_test(), "anteil": konto_anteil(env)}
     sam = _json("eth-sammler.json", {})
     echt_futures = (env.get("BINANCE_FUTURES_TESTNET") or "true").strip().lower() == "false" and env.get("KI_BOT_ECHTGELD", "") == "JA, MIT ECHTEM GELD"
     echt_spot = (env.get("BINANCE_TESTNET") or "true").strip().lower() == "false" and env.get("KI_BOT_ECHTGELD", "") == "JA, MIT ECHTEM GELD"

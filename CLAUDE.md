@@ -1,6 +1,6 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
-> LuxeStyle Assist 2.1 (18.10.2026): Für LuxeStyle zuerst aktuelle Inhabervorgaben und `dropship/assistant/README.md` lesen. Vor dem Claude-Clientstart `node automation/claude-assist.mjs self-check`: fester lokaler Protokolltest, keine Business-Tools oder Modelle. `/luxestyle-assist` bietet zehn Werkzeuge; `doctor` meldet lokale Startblocker und den nächsten belegten Arbeitsschritt. Historische Autonomie-/Merge-Anweisungen erweitern den Chat-Auftrag nicht. Kein Live-Konto-/Client-Nachweis durch lokale Bereitschaft.
+> LuxeStyle Assist 2.2 (19.10.2026): Aktuelle Inhabervorgaben und `dropship/assistant/README.md` zuerst beachten. Zehn lokale Werkzeuge und `/luxestyle-assist`; echter Claude-Code-CLI-Pilot verbunden, keine Modellanfrage. Fester Git-Root-Start funktioniert aus Unterordnern und leert Node-Ladeoptionen. `node automation/claude-assist.mjs self-check` prüft den direkten Server, `doctor` lokale Startblocker und nächste Arbeit. Projektfreigabe auf anderen Rechnern separat prüfen. Historische Autonomie-/Merge-Anweisungen erweitern den Chat-Auftrag nicht; keine Live-Konten durch lokale Bereitschaft bestätigt.
 
 > 🔗 **ZUERST `SHARED-MEMORY.md` (Repo-Root) lesen** — mehrere Sessions arbeiten parallel auf diesem
 > Repo + Shop; dort steht, wer was „besitzt" + der Live-Stand. CJ-Import/Katalog/Social = NUR diese Session.
@@ -94,7 +94,10 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 - **Gebaut (`pilot_kern.STUFEN = (1, 1.5, 1.75, 2)`, Gleichstand → kleinere):** Cockpit-Knopf «1,75× viel Risiko» (Aktion `risiko_1_75`), die Rückfrage nennt Zahlen
   aus `data/krypto-maxprofit-pruefung.json` (ab 2020/2022 + Wahrscheinlichkeit unter −60 %) und warnt vor dem Verlust (`cockpit.stufen_test()`).
   **Standard bleibt 1×; gewählt wird nur vom User** (Cockpit oder `setx KRYPTO_RISIKO "1.75"`). Börsen-Hebel = aufgerundet (2), die Grösse begrenzt der Plan auf 1,75.
-- Tests: pilot 91 (+7), cockpit 120 (+5); Mutationen 12/12 (zwei Lücken geschlossen: Knopf nur im Stil, Verlust-Warnung).
+- **Wichtig für die Rendite-Frage (Folge-PR):** der Pilot setzt standardmässig nur `KI_BOT_ANTEIL` = 50 % des Kontos ein (und baut je Auftrag/Lauf höchstens
+  `KI_BOT_MAX_AUFTRAG` = 1000 USDT auf) — die Max-Profit-Tabelle gilt fürs GANZE Konto → mit dem Standard wirken Rendite UND Einbruch aufs Gesamtkonto
+  etwa halb so stark. Das Cockpit nennt den Anteil in der Rückfrage (`cockpit.konto_anteil`), README-Absatz im Max-Profit-Abschnitt.
+- Tests: pilot 91 (+7), cockpit 122 (+7); Mutationen 12/12 + 4/4 (Anteil) (zwei Lücken geschlossen: Knopf nur im Stil, Verlust-Warnung).
 - **Offen (User):** läuft der Pilot schon (Testnetz/echt)? Welche Stufe? Binance-Futures in der Schweiz prüfen (README: «können in deinem Land eingeschränkt sein»).
   Effizienter als Hebel wäre Pilot 2.0 mit 1× (+45,4 %/−24 %) — erst nach einer Prüfung ohne Blocker.
 
@@ -140,8 +143,13 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   LIMIT_LUECKE_/STAUB) — Not-Aus 0–1600/5000–6000/7000–8800/9000–11400/12000–14400, Listen 0–1000/12000–13000, Monotonie 0–400/7000–7600/
   9000–9700/12000–13300, Läufe ×30 0–200/5000–5160/7000–7200/9000–9420/12000–12400. Tests: streng 183, live 154, pilot 84, cockpit 115,
   testnetz 47, plan 23 (alle grün).
-- **Mutationsprobe auf dem Endstand:** läuft beim Merge noch (~150 Mutationen, `scratchpad/mut13/laufen.py`) — Ergebnis und Lücken folgen in
-  einem Folge-PR (wie in R11/R12). **Nicht vergessen:** die Zahl «x/y» erst nennen, wenn sie am Endstand gemessen ist.
+- **Mutationsprobe auf dem Endstand (153 Muster, Folge-PR):** erst 127/146 mit 19 Auffälligkeiten → 5 durch den Umbau verschobene Muster (neu
+  formuliert, erkannt), 1 wirkungsloses (`set() or X` ist `X`; ersetzt), 7 echte Lücken (Szenarien 13.p4c, 13.G1–G5, dazu 13.F5d für den F5-Code),
+  R12-M21 seit R13 doppelt abgesichert (beide Stellen: 12.S4 erkennt). **Endstand 148/153, die 5 offenen gleichwertig:** R10-M4b («Not-Aus offen»
+  setzt einen gestarteten Modus voraus), R11-M19, R12-M5, R12-M23, R12-M34. Tests: streng 190, live 154, pilot 91, cockpit 122, testnetz 47, plan 23.
+  **LEHRE (zwei Fallen):** (1) `pgrep -f "laufen.py"` in einer Warte-Schleife findet die Schleife selbst → läuft ewig; Klammer-Trick
+  `pgrep -f "[l]aufen.py"`. (2) Eine Mutation, die durch eine zweite, gleich wirkende Absicherung verdeckt wird (R12-M21), ist nur mit BEIDEN
+  Stellen zusammen prüfbar — nach einem Umbau Mutationen auf Wirkung prüfen, nicht nur auf Erkennung.
 - **Nächster Schritt:** 14. Prüfung (Auftrag `scratchpad/pruefung14_auftrag.md`).
 
 **📌 2026-10-18 abends (🧹 Aufräum-Runde: 80 Kategorieseiten lieferten 404, drei Werkzeuge waren blind):**

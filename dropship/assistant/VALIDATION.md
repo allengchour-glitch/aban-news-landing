@@ -1,4 +1,12 @@
-# Prüfbeleg vom 18.10.2026
+# Prüfbelege für LuxeStyle Assist
+
+## Tatsächliche Claude-Code-Anbindung in Version 2.2
+
+101 Regressionstests bestanden. Zwei reale Pilotbefunde behoben: Geerbte Node-Ladeoptionen konnten Text vor JSON-RPC ausgeben; relative Startargumente scheiterten bei einem anderen Arbeitsverzeichnis. Der fixe, begrenzte Git-Root-Launcher und explizit leere NODE_OPTIONS/NODE_PATH sind als tatsächlich konfigurierte Startstrecke gegengeprüft, inklusive Git-Worktrees, Pfaden mit Leerzeichen, falscher Origin, Symlinks, Importfehlern und Git-Umgebungsinjektion.
+
+Die offizielle Claude-Code-CLI 2.1.303 wurde isoliert installiert. Ohne Modellanfrage oder Authentifizierung einer Unterhaltung meldeten die drei Health-Checks Connected: Repo-Root, Unterordner, störende Eltern-Node-Optionen. Frische Projektfreigaben wurden nicht umgangen: der zunächst ungenehmigte Projekt-Eintrag blieb Pending approval; nur ein explizit hinzugefügter lokaler Eintrag im separaten Pilotprofil wurde verbunden. Bestehende Claude-Einstellungen und der alte SessionStart-Hook blieben unberührt. Der strukturierte Clientbeleg enthält Paketversion/Integrität und Quellhashes, keine fremden Profile oder Zugangsdaten.
+
+Der inzwischen aktualisierte Shopify-GraphQL-Helfer von main 7ad65edc07c6c2ef26cb445566ee0764b3f1699f wurde separat mit seinem echten aktuellen Test unter dem Offline-Preload geprüft; alle Gegenproben grün. Keine Shopify-Anfrage, kein Import, kein Shop-/Flow-/DNS-/Metricool-Write. Die folgenden Abschnitte dokumentieren frühere Stände und werden durch diesen Nachtrag ergänzt; die frühere Aussage, Claude Code sei nicht installiert/getestet, ist für den isolierten Pilot jetzt überholt.
 
 ## Start und Wiederaufnahme in Version 2.1
 
