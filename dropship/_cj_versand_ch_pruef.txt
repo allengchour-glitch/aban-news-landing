@@ -10265,3 +10265,8 @@ akita-pluschhund-629700	2505111021121629900	16	6.48	ok	landeseite
 reiseplakat-florenz-615000	2604300931131615500	16	4.50	ok	landeseite
 wasserdichte-regenstiefel-fur-kinder-607400	2409270330031607600	16	13.22	ok	landeseite
 spielzeug-mit-ton-und-bissfestigkeit-613200	2503290945061613400	16	6.48	ok	landeseite
+sushi-restaurant-wanddekoration-603900	2604270901181604400	16	10.83	ok	landeseite
+mikrofaser-schwitztuch-fur-banke-607100	2605290215161607800	16	8.66	ok	landeseite
+atmungsaktive-mesh-laufschuhe-fur-jungen-601400	2409191108471601600	16	9.75	ok	landeseite
+beruhigungsspielzeug-fur-haustiere-617100	2503280557141617300	16	10.55	ok	landeseite
+leuchtende-kinderschlappen-604500	2408280511001604700	16	6.65	ok	landeseite
