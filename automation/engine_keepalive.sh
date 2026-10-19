@@ -311,6 +311,9 @@ if [ "${TMPV:-0}" -ge 85 ]; then
   done
   echo "TMP-HYGIENE: /tmp ${TMPV}% → $(df --output=pcent /tmp | tail -1 | tr -d ' ')"
 fi
+# 19.10.2026: PLATTE — Zeile «PLATTE: frei X GB · .git …» in jeder Meldung; packt lose Git-Objekte (> 1 GiB oder > 20'000), sonst wuchs .git
+#    auf 13 GB bei 2,0 GB frei (gc.auto=0, nie ein repack). Entscheidet nach dem ZUSTAND, nicht nach touch (automation/platte_wartung.sh).
+bash "$REPO/automation/platte_wartung.sh" 2>/dev/null || echo "PLATTE: unklar (platte_wartung.sh fehlgeschlagen)"
 #    (Die Server-Geheimnisdatei /etc/luxe/secrets.env wird seit 13.10.2026 ganz oben geladen, vor den /tmp-Zugangsdateien.)
 #    Text-KI vorhanden? (für Grind/Such-Runner, Abschnitte 2/3) — früh berechnet, damit es auch im Vorrang-Fenster gilt.
 KI_DA=0
