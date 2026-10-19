@@ -1244,6 +1244,15 @@ def texte_angehalten(marke=None, jetzt=None):
         grund = open(pfad, encoding="utf-8").read().strip()[:90]
     except OSError:
         return None
+    # Prüfung koll F5: das Setz-Datum steht im Inhalt («2026-10-12T09:30Z — …»); die Dateizeit wird von der täglichen Nachprüfung und von git neu gesetzt
+    m = re.match(r"(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})Z", grund)
+    if m:
+        try:
+            import calendar
+            gesetzt = calendar.timegm(tuple(int(x) for x in m.groups()) + (0, 0, 0))
+            alter_t = max(alter_t, (jetzt - gesetzt) / 86400)
+        except (ValueError, OverflowError):
+            pass
     return (f"⚠️ DÜNNE TEXTE ANGEHALTEN seit {alter_t:.0f} T ({grund}) — Treffer in /tmp/produkttext_duenn_nachpruefen.log, die Nachprüfung löscht die Marke "
             "selbst, sobald es keinen sachlichen Treffer mehr gibt") if alter_t >= 2 else None
 

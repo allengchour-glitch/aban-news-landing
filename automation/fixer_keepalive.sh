@@ -1663,7 +1663,10 @@ if [ -f "$REPO/automation/produkttext_duenn.py" ] && { [ ! -f "$DTN" ] || [ $(( 
         echo "TEXTE-TORE: ✅ keine sachlichen Tor-Treffer mehr — Schreib-Pipeline wieder frei ($Z)"
     elif [ -n "$T" ] && [ "$T" -gt 0 ]; then
         echo "TEXTE-TORE: ⚠️ $Z — Treffer in $DTN (✗-Zeilen); Wache bleibt an, Treffer von Hand neu schreiben"
-        echo "$(date -u +%Y-%m-%dT%H:%MZ) — NACHPRUEFEN $T Tor-Treffer, siehe /tmp/produkttext_duenn_nachpruefen.log" > "$REPO/dropship/_duenne_texte_angehalten"
+        # 19.10.2026 (Prüfung koll F5): das SETZ-DATUM bleibt (erste 17 Zeichen der alten Marke) — sonst setzt jede tägliche Nachprüfung die Marke neu und die Ampel
+        # («⚠️ ab 2 Tagen») feuert nie; die Ampel liest das Datum aus dem Inhalt, nicht aus der Dateizeit (git checkout setzt sie neu).
+        SEIT=$(head -c 17 "$REPO/dropship/_duenne_texte_angehalten" 2>/dev/null | grep -E '^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}Z$' || date -u +%Y-%m-%dT%H:%MZ)
+        echo "$SEIT — NACHPRUEFEN $T Tor-Treffer, siehe /tmp/produkttext_duenn_nachpruefen.log" > "$REPO/dropship/_duenne_texte_angehalten"
     else
         echo "TEXTE-TORE: ${Z:-unklar (kein NACHPRUEFEN-Ergebnis)}"
     fi
