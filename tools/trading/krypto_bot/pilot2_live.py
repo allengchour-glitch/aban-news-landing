@@ -2269,13 +2269,17 @@ def _perp_abgleich(fut, k, d, st, e, s, erg, warn, gesetzt, schutz, lesen, gehan
             raus(f"Stop {p_r:g} würde sofort auslösen (Kurs gestiegen)")
             return
         except Exception as ex2:  # noqa: BLE001
-            # kam der neue Stop trotz Fehlermeldung an (Antwort verloren), stünden zwei — die über die Kennung löschen
-            # (Löschen geht auch, wenn Binance gerade keine neuen Aufträge annimmt; unbekannt = nie angekommen)
-            if not _kennung_weg(fut, sym, cid):
-                _perp_merken(st, None, cid)
-                d["beidseitig"], d["neue_runde"] = True, True
-                warn(f"{k}: neuer Perp-Stop unklar und nicht löschbar — vielleicht stehen zwei; die Coins kommen ganz unter einen "
-                     "Spot-Stop (beidseitig). Bitte prüfen!")
+            # kam der neue Stop trotz Fehlermeldung an (Antwort verloren), stünden zwei — dann über die Kennung löschen (geht auch, wenn
+            # Binance gerade keine neuen Aufträge annimmt; unbekannt = nie angekommen) — ABER nur, wenn die alten Stops den Short schon decken:
+            # sonst ist der Geister-Stop vielleicht der einzige Schutz und bleibt (E26)
+            gedeckt_alt = bool(alt) and sum(float(a.get("quantity") or 0) for a in alt) >= soll - regeln["step"] / 2
+            if not _geisterstop(fut, sym, cid, st, d, deckt=gedeckt_alt):
+                if gedeckt_alt:
+                    warn(f"{k}: neuer Perp-Stop unklar und nicht löschbar — vielleicht stehen zwei; die Coins kommen ganz unter einen "
+                         "Spot-Stop (beidseitig). Bitte prüfen!")
+                else:  # die alten decken den Short nicht ganz: der vielleicht angekommene bleibt (unten: stehen alle zusammen über dem Short → beidseitig)
+                    warn(f"{k}: neuer Perp-Stop unklar — er kann angekommen sein und bleibt dann stehen (vielleicht schützt er den Rest des Shorts); "
+                         "die Nachkontrolle liest die Liste nochmals. Bitte prüfen!")
             if not alt:
                 raise
             schutz.append("alter Stop bleibt")  # lieber ein alter Stop als keiner
@@ -2319,6 +2323,29 @@ def _kennung_weg(fut, sym, cid):
         return True
     except Exception:  # noqa: BLE001
         return False
+
+
+def _geisterstop(fut, sym, cid, st, d=None, deckt=False):
+    """Ein Perp-Stop-Versuch scheiterte — die Antwort kann verloren sein, der Stop («Geister-Stop») trotzdem angekommen.
+    deckt=True: ein anderer, bekannter Stop deckt die Menge schon (z. B. der zu grosse alte, dessen Ersatz scheitert, oder ein bisheriger,
+    den das Buch kennt): der Geister-Stop wird über seine Kennung gelöscht (sonst stünden zwei); geht das nicht, merkt ihn das Buch und der
+    Markt wird beidseitig gesichert.
+    deckt=False: der Geister-Stop kann der EINZIGE Schutz des Shorts sein — NICHT löschen (Folge-PR zur 14. Runde, E26, Not-Aus-Fuzzer
+    Seed 117727: der Stop kam an, jede Wiederholung scheiterte am Rate-Limit, das Löschen über die Kennung klappte → Short 1'669 USDT
+    ohne Stop). Er wird nur im Buch vermerkt; die nächste Lesung (Abgleich, Nachkontrolle) findet ihn in der Liste und übernimmt ihn,
+    oder löscht ihn erst NACH einem neuen. Ist er nie angekommen, ist der Vermerk harmlos (die lesbare Liste zeigt ihn nicht, er fällt weg).
+    → True = sicher nicht (mehr) offen."""
+    if deckt:
+        if _kennung_weg(fut, sym, cid):
+            return True
+        _perp_merken(st, None, cid)
+        if d is not None:
+            d["beidseitig"], d["neue_runde"] = True, True
+        return False
+    _perp_merken(st, None, cid)
+    if d is not None:
+        d["neue_runde"] = True
+    return False
 
 
 def _perp_merken(st, aid, cid):
@@ -2511,11 +2538,12 @@ def _perp_ohne_liste(fut, k, d, st, e, s, warn, gesetzt, gehandelt, ex, erg, les
             except Exception as ex3:  # noqa: BLE001
                 fehler = ex3
     if fehler is not None:
-        if not _kennung_weg(fut, sym, cid):
-            _perp_merken(st, None, cid)
-            d["beidseitig"], d["neue_runde"] = True, True
+        # kam der neue trotz Fehlermeldung an? Kennt das Buch einen bisherigen Stop, schützt der (wie bisher: der Geister-Stop wird über seine Kennung gelöscht, sonst stünden zwei);
+        # sonst ist der Geister-Stop vielleicht der EINZIGE Schutz und bleibt, im Buch vermerkt (E26)
+        bekannt = alt_id is not None or bool(alt_cid)
+        _geisterstop(fut, sym, cid, st, d, deckt=bekannt)
         warn(f"{k}: offene Perp-Stops nicht lesbar und Stop abgelehnt ({type(fehler).__name__}) — "
-             + ("der bisherige bleibt stehen" if alt_id is not None or alt_cid else f"Short {soll:g} evtl. OHNE Stop")
+             + ("der bisherige bleibt stehen" if bekannt else f"Short {soll:g} evtl. OHNE Stop (ein vielleicht angekommener Stop bleibt stehen)")
              + ", bitte sofort prüfen!")
         return
     st["perp"], st["perp_cid"], st["p_short"] = r.get("algoId"), r.get("cid"), p_ok
@@ -2606,7 +2634,7 @@ def _perp_raus(fut, k, d, st, menge, kurs, erg, warn, gesetzt, grund, lesen, pos
             warn(f"{k}: {grund}, Rückkauf abgelehnt ({type(fehler).__name__}) — der bisherige Stop bleibt stehen. Bitte prüfen!")
             return
         if rest >= d["rf"]["step"] / 2 and not _perp_notstop(fut, k, d, st, rest, kurs, warn, gesetzt,
-                                                            f"{grund}, Rückkauf abgelehnt ({type(fehler).__name__})"):
+                                                            f"{grund}, Rückkauf abgelehnt ({type(fehler).__name__})", alt_steht=True):
             _zu_gross(d)  # kein passender Stop möglich: die alten bleiben (lieber zu gross als keiner) → beidseitig
             return
         offen = _alle_weg(alt, lambda a: _perp_alt_weg(fut, d["sym"], st, a), k, "Perp", warn, [])
@@ -2638,8 +2666,9 @@ def _perp_raus(fut, k, d, st, menge, kurs, erg, warn, gesetzt, grund, lesen, pos
     _perp_notstop(fut, k, d, st, rest, kurs, warn, gesetzt, grund2)
 
 
-def _perp_notstop(fut, k, d, st, menge, kurs, warn, gesetzt, grund):
-    """Not-Stop 5 % über dem Kurs über `menge`. → True, wenn er steht."""
+def _perp_notstop(fut, k, d, st, menge, kurs, warn, gesetzt, grund, alt_steht=False):
+    """Not-Stop 5 % über dem Kurs über `menge`. → True, wenn er steht. alt_steht: die alten Stops stehen noch und schützen den Short — nur dann
+    wird ein vielleicht angekommener Not-Stop nach einem Fehlschlag gelöscht (sonst ist er der einzige Schutz, E26)."""
     cid = _kennung(CID_STOP_PERP)
     try:
         r, p = _setze_stop(lambda preis, c: fut.stop_menge(d["sym"], "BUY", menge, preis, d["rf"]["tick"], cid=c),
@@ -2658,10 +2687,9 @@ def _perp_notstop(fut, k, d, st, menge, kurs, warn, gesetzt, grund):
                 kleiner = 0.0
             if d["rf"]["step"] / 2 <= kleiner < menge - d["rf"]["step"] / 2:
                 return _perp_notstop(fut, k, d, st, kleiner, kurs, warn, gesetzt,
-                                     f"{grund}; Binance nimmt keinen reduceOnly-Stop über mehr als den offenen Short, er gilt nur über {kleiner:g}")
-        if not _kennung_weg(fut, d["sym"], cid):  # kam er trotz Fehlermeldung an? Dann nie zwei über denselben Short — und im Buch merken (15. Prüfung K-e)
-            _perp_merken(st, None, cid)
-            d["beidseitig"], d["neue_runde"] = True, True
+                                     f"{grund}; Binance nimmt keinen reduceOnly-Stop über mehr als den offenen Short, er gilt nur über {kleiner:g}", alt_steht)
+        # kam er trotz Fehlermeldung an? Dann nie zwei über denselben Short (15. Prüfung K-e) — aber ein einziger Schutz wird nicht gelöscht (E26)
+        _geisterstop(fut, d["sym"], cid, st, d, deckt=alt_steht)
         warn(f"{k}: {grund}, Not-Stop abgelehnt ({type(ex).__name__}) — Short {menge:g} OHNE Stop, bitte sofort prüfen!")
         return False
 
@@ -3596,11 +3624,12 @@ def _notaus_schutz(spot, fut, st, k, sym, coin, pos, pos_vor, frei, gebunden, ku
              + ". Not-Aus wiederholen!")
         return True
 
-    def perp_cid_pruefen(cid):
-        """Ein Perp-Stop-Versuch scheiterte (die Antwort kann verloren sein, der Stop trotzdem angekommen): über seine Kennung löschen; geht das
-        nicht, merkt ihn das Buch — sonst bliebe er bei unlesbarer Liste unbekannt über dem Short stehen (15. Prüfung K-e)."""
-        if not _kennung_weg(fut, sym, cid):
-            _perp_merken(st, None, cid)
+    def perp_cid_pruefen(cid, deckt=False):
+        """Ein Perp-Stop-Versuch scheiterte (die Antwort kann verloren sein, der Stop trotzdem angekommen). deckt: ein anderer Stop deckt die
+        Menge schon (der zu grosse alte, der ersetzt wird) → der Versuch wird über seine Kennung gelöscht, geht das nicht, merkt ihn das Buch —
+        sonst bliebe er bei unlesbarer Liste unbekannt über dem Short stehen (15. Prüfung K-e). Sonst kann er der EINZIGE Schutz sein: er bleibt
+        stehen und wird nur gemerkt (E26, Not-Aus-Fuzzer Seed 117727: gelöscht → Short 1'669 USDT ohne Stop). → True = sicher nicht (mehr) offen."""
+        return _geisterstop(fut, sym, cid, st, None, deckt=deckt)
 
     def breiter_notstop(konto, m):
         """Zum Markt ging nicht (abgelehnt, unklar, nur teilweise): wenigstens ein WEITER Not-Stop über den Rest — 10/20/35 % vom
@@ -3670,7 +3699,14 @@ def _notaus_schutz(spot, fut, st, k, sym, coin, pos, pos_vor, frei, gebunden, ku
                 frei, gebunden = coins, 0.0
             warn(f"Not-Aus {modus} {k}: ausgelöster Stop hing über dem Kurs (Limit nicht erreicht) — gelöscht, neuer Schutz-Stop folgt.")
     spot_zu_gross = False  # ein zu grosser Spot-Stop bleibt (oder vielleicht): löst er aus, verkauft er auch die Absicherung
-    if eigene and gebunden > soll_s + regeln["step"] / 2 and not stand_frisch:
+    if eigene is None and gebunden > soll_s + regeln["step"] / 2:
+        # Liste nicht lesbar und mehr Coins gesperrt als nötig: ein (unbekannter) Stop steht über der Absicherung — wie bei veralteten Zahlen bekommt der Short seinen Stop
+        # über die ganze Menge, die übrigen Coins einen eigenen (E27, Not-Aus-Fuzzer Seed 117974: ein alter Spot-Stop über 0,02168 von 0,025432 Coins, die Liste unlesbar —
+        # der Perp-Stop deckte nur das Nötigste, nach beiden Auslösungen blieben 0,000248 BTC Short ohne Coins und ohne Stop)
+        spot_zu_gross = True
+        warn(f"Not-Aus {modus} {k}: Spot-Stops nicht lesbar und mehr {coin} gesperrt als nötig — ein zu grosser Stop kann stehen: der Short bekommt seinen Stop über "
+             "die ganze Menge, die übrigen Coins einen eigenen (beidseitig).")
+    elif eigene and gebunden > soll_s + regeln["step"] / 2 and not stand_frisch:
         spot_zu_gross = True  # veraltete Zahlen: den Stop nicht anfassen — der Short bekommt seinen Stop über die ganze Menge
     elif eigene and gebunden > soll_s + regeln["step"] / 2:
         # zu gross (er träfe beim Auslösen die Absicherung): per cancelReplace verkleinern — nie erst löschen, dann setzen
@@ -3747,7 +3783,7 @@ def _notaus_schutz(spot, fut, st, k, sym, coin, pos, pos_vor, frei, gebunden, ku
                         neu_ok = markt("perp", soll_p, rf["step"])  # der ungesicherte Rest ist jetzt zu → die alten weg
                     except Exception as ex:  # noqa: BLE001
                         neu_ok = False
-                        perp_cid_pruefen(cid_n)
+                        perp_cid_pruefen(cid_n, deckt=True)  # der zu grosse alte Stop steht noch und schützt
                         warn(f"Not-Aus {modus} {k}: zu grosser Short-Stop, Ersatz abgelehnt ({type(ex).__name__}) — der alte bleibt "
                              "stehen; die Coins bekommen einen eigenen Stop. Bitte prüfen!")
                 if not neu_ok:
@@ -3773,7 +3809,7 @@ def _notaus_schutz(spot, fut, st, k, sym, coin, pos, pos_vor, frei, gebunden, ku
                     except Exception as ex:  # noqa: BLE001
                         kleiner = PL.runde(max(0.0, short - gedeckt), rf["step"])
                         if not (ganz and _reduce_abgelehnt(ex) and rf["step"] / 2 <= kleiner < fehlt - rf["step"] / 2):
-                            perp_cid_pruefen(cid_f)
+                            perp_cid_pruefen(cid_f, deckt=bool(alt_bekannt))  # Liste nicht lesbar und ein bekannter alter Stop: der schützt (wie bisher löschen)
                             raise
                         # nimmt Binance keinen reduceOnly-Stop über mehr als den offenen Short: wenigstens den sichern
                         cid_k = _kennung(CID_STOP_PERP)
@@ -3783,7 +3819,7 @@ def _notaus_schutz(spot, fut, st, k, sym, coin, pos, pos_vor, frei, gebunden, ku
                         except _Ausgeloest:
                             raise
                         except Exception:  # noqa: BLE001
-                            perp_cid_pruefen(cid_k)
+                            perp_cid_pruefen(cid_k, deckt=bool(alt_bekannt))
                             raise
                         warn(f"Not-Aus {modus} {k}: Binance nimmt keinen reduceOnly-Stop über mehr als den offenen Short — Stop nur "
                              f"über {kleiner:g}. Bitte prüfen!")
