@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-19 21:07 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-19 22:34 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1364 · **1298 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1101, teilweise: 167, keine: 30; Preisspanne > 2×: 157) · 1 CJ-Variante: 64 · ohne Antwort: 2
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1362 · **1296 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1099, teilweise: 167, keine: 30; Preisspanne > 2×: 157) · 1 CJ-Variante: 64 · ohne Antwort: 2
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -33,7 +33,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Sofaüberzug «Pure Color» für alle Jahreszeiten (`sofauberzug-pure-color-fur-alle-jahreszeiten-945472`) | 56 | 56 | 5.49–9.95 | 21.90 | Red-90X140CM, Red-145X185CM, Red-190X230CM, Red-235X300CM |
 | Titanstahl-Adlerring mit Edelstein (`titanstahl-adlerring-mit-edelstein-639800`) | 56 | 56 | 2.11–2.28 | 14.90 | HR363 Steel Red Diamond-7, HR363 Steel Red Diamond-8, HR363 Steel Red Diamond-9, HR363 Steel Red Diamond-10 |
 | Auslaufsicheres Hundehalsband – 8 Grössen (`auslaufsicheres-hundehalsband-8-grossen-112640`) | 56 | 56 | 4.61–11.44 | 24.90 | Red-XXS, Red-XS, Red-S, Red-M |
-| Silikon-Armband für Apple Watch mit Print (`silikon-armband-fur-apple-watch-mit-print-234688`) | 56 | 56 | 2.78–2.78 | 22.90 | A-38MM, A-40MM, A-42MM, A-44MM |
 | Abstrakte Wandteppiche für Ihr Zuhause (`abstrakte-wandteppiche-fur-ihr-zuhause-664512`) | 54 | 27 | 2.55–7.68 | 18.90 | 1 Style-150x130cm, 1 Style-200x150cm, 1 Style-95x73cm, 2 Style-150x130cm |
 | Hollow Aroma Diffuser Ultraschall-Luftbefeuchter (`hollow-aroma-diffuser-ultraschall-luftbefeucht-649024`) | 52 | 52 | 9.73–9.73 | 23.90 | A-AU, A-EU, A-US, A-UK |
 | Halsband mit grosser Schleife für Katzen & Hunde (`halsband-mit-grosser-schleife-fur-katzen-hunde-877120`) | 52 | 52 | 4.21–5.4 | 19.90 | Pearl purple-XS, Pearl purple-S, Pearl purple-M, Pearl purple-L |
@@ -464,7 +463,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Hohl-Spielball für Hunde & Katzen (`hohl-spielball-fur-hunde-katzen-123328`) | 8 | 7 | 3.69–3.69 | 14.90 | Red Body-Rainbow, Green Body-Rainbow, Red And Green Body-Rainbow, Blue-Rainbow |
 | Quarz-Herrenuhr mit Doppeldarstellung und Edelstahlarmband (`quarz-herrenuhr-mit-doppeldarstellung-und-edel-626200`) | 8 | 6 | 9.72–9.72 | 17.90 | Golden White Noodles, Golden Black Noodles, White Steel White Noodles, White Steel Black Noodles |
 | Elastischer Sofabezug mit Blumenmuster (`elastischer-sofabezug-mit-blumenmuster-015552`) | 8 | 8 | 6.07–9.37 | 18.90 | Hawaii trip-90x140cm, Hawaii trip-145x185cm, Hawaii trip-190x230cm, Hawaii trip-235x300cm |
-| Kuscheldecke mit Quasten (`kuscheldecke-mit-quasten-341952`) | 8 | 8 | 5.48–7.06 | 28.90 | Yellow-127x152cm, Yellow-130x220cm, Grey-127x152cm, Grey-130x220cm |
 | Runder Teppich für Stuhl und Boden (`runder-teppich-fur-stuhl-und-boden-382272`) | 8 | 8 | 2.16–7.18 | 18.90 | black white-60cm, black white-80cm, black white-100cm, black white-120cm |
 | Aufblasbarer Schutzkragen für Hunde (`aufblasbarer-schutzkragen-fur-hunde-607400`) | 8 | 4 | 2.72–4.3 | 15.90 | Blue-S, Blue-M, Blue-L, Blue-XL |
 | Keramik-Schmucktablett in Wolkenform (`keramik-schmucktablett-in-wolkenform-615000`) | 8 | 7 | 2.19–2.19 | 14.90 | Light, Kiln Baked Warm White, Light Yellow, Kiln Baked Gray And Blue |
