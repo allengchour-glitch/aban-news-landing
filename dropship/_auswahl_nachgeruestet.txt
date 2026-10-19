@@ -2778,3 +2778,5 @@
 16638820450695	Farbe:4:4+ki	2026-10-19	smartwatch-gps-herzfrequenz-outdoor-278912
 16615817675143	Farbe:2+Grösse:13:26+ki	2026-10-19	tie-dye-hoodie-fur-hunde-600100
 16615812956551	Ausführung:3:3+ki	2026-10-19	weihnachts-rattan-girlande-mit-zapfen-und-schl-616100
+16615812661639	Ausführung:2:2+ki	2026-10-19	retro-feder-schulterharnisch-601200
+16615812563335	Motiv:3:3+ki	2026-10-19	weihnachtsdeko-aus-schmiedeeisen-mit-led-lampe-622300
