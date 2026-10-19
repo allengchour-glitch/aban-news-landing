@@ -12,6 +12,31 @@
  */
 const DROSSEL = /throttled|exceeded.*cost|rate limit/i;
 
+/**
+ * Selbst-Takt: wie lange warten, damit der naechste gleich teure Aufruf wieder hineinpasst?
+ *
+ * WARUM (gemessen 2026-10-18 am echten Shop): Shopify fuehrt einen Punkte-Eimer — 2000 Punkte,
+ * 100 Punkte/s fliessen nach, eine Produktseite mit `first:50` kostet 51. Ein Massenlauf leert
+ * den Eimer in Sekunden und arbeitet danach am Rand. Dort hilft die wachsende Pause oben nicht
+ * mehr zuverlaessig, weil der naechste Aufruf den gerade nachgefuellten Rest sofort wieder
+ * aufbraucht: der fuenfte SEO-Lauf desselben Abends endete so nach 680 von 5000 Titeln mit
+ * „Throttled", obwohl die Wiederholung eingebaut war. Shopify sagt in jeder Antwort selbst,
+ * wie voll der Eimer ist — danach takten ist genauer als raten.
+ *
+ * Unbekannt ist KEIN Befund (Lehre aus url_status.mjs): fehlt `extensions.cost`, nennt Shopify
+ * keine Restorerate oder ist sie 0, wird NICHT gewartet, statt eine Zahl zu erfinden.
+ */
+export function taktPause(j, opt = {}) {
+  const kosten = j?.extensions?.cost?.requestedQueryCost;
+  const t = j?.extensions?.cost?.throttleStatus;
+  if (typeof kosten !== 'number' || kosten <= 0 || !t) return 0;
+  const frei = t.currentlyAvailable, rate = t.restoreRate;
+  if (typeof frei !== 'number' || typeof rate !== 'number' || rate <= 0) return 0;
+  if (frei >= kosten) return 0;                       // passt noch — nicht bremsen
+  const ms = Math.ceil(((kosten - frei) / rate) * 1000);
+  return Math.min(ms, opt.maxPauseMs ?? 10000);       // Deckel: nie unbegrenzt stehen bleiben
+}
+
 export async function shopifyGql(shop, api, token, query, variables, opt = {}) {
   const versuche = opt.versuche ?? 6;
   const basis = opt.basisMs ?? 1500;
@@ -46,6 +71,8 @@ export async function shopifyGql(shop, api, token, query, variables, opt = {}) {
     if (!j || typeof j.data !== 'object' || j.data === null) {
       throw new Error('GraphQL: Antwort enthält keine Daten');
     }
+    const takt = taktPause(j, opt);
+    if (takt > 0) await warte(takt);
     return j.data;
   }
   throw new Error('GraphQL: ' + letzter);
