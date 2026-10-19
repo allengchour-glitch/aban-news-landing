@@ -26,6 +26,8 @@ import json
 import os
 import sys
 import time
+import unicodedata
+from urllib.parse import unquote
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
@@ -45,11 +47,11 @@ ZIEL = {
     "casio": "uhren", "citizen": "uhren", "festina": "uhren", "lorus": "uhren", "lotus-uhren": "uhren", "morellato": "uhren",
     "olivia-burton": "uhren", "paul-hewitt": "uhren", "tom-hope": "uhren", "police": "uhren",
     # Düfte / Kosmetik
-    "herren-duefte": "parfum-duefte", "lancome": "parfum-duefte", "elie-saab": "parfum-duefte", "dolce-gabbana": "parfum-duefte",
+    "herren-duefte": "parfum-duefte", "damen-duefte": "parfum-duefte", "parfuem-damen": "parfum-duefte", "lancome": "parfum-duefte", "elie-saab": "parfum-duefte", "dolce-gabbana": "parfum-duefte",
     "kenzo": "parfum-duefte", "yves-saint-laurent": "parfum-duefte", "marke-chanel": "parfum-duefte",
     "marke-artdeco": "beauty-makeup", "weleda": "beauty-pflege", "self-care-wellness-1": "wellness-selfcare",
     # Mode-/Sportmarken
-    "calvin-klein": "fur-ihn", "hugo-boss": "fur-ihn", "tommy-hilfiger": "fur-ihn", "pierre-cardin": "fur-ihn", "superdry": "fur-ihn",
+    "calvin-klein": "fur-ihn", "hugo-boss": "fur-ihn", "tommy-hilfiger": "fur-ihn", "pierre-cardin": "fur-ihn", "superdry": "fur-ihn", "reebok": "sneaker-sportschuhe", "marke-reebok": "sneaker-sportschuhe",
     "guess": "damen-mode", "mode-marken": "damen-mode", "michael-kors": "handtaschen-umhaengetaschen",
     "marke-nike": "sneaker-sportschuhe", "fila": "sneaker-sportschuhe", "marke-hi-tec": "sneaker-sportschuhe",
     "marke-champion": "sport-outdoor", "marke-new-era": "sport-outdoor", "marken-sport": "sport-outdoor", "e-scooter-trottinett": "sport-outdoor",
@@ -57,7 +59,7 @@ ZIEL = {
     "marke-quid": "sub-kueche", "marke-versa": "wohnen-dekoration", "kueche-organisation": "sub-kueche", "kaffee-maschinen": "haushaltsgeraete",
     "marke-startech": "elektronik-technik", "tech-marken": "elektronik-technik", "refurbished": "elektronik-technik",
     "maker-elektronik": "elektronik-kleinteile", "beamer-projektoren": "beamer-heimkino", "elektriker-werkzeug": "werkzeug-maschinen",
-    "indoor-grow": "outdoor-garten", "haustier-kuehlung": "sub-haustier", "arbeitskleidung": "sub-wander-arbeitsschuhe", "reise-outdoor": "sub-reise",
+    "indoor-grow": "outdoor-garten", "haustier-kuehlung": "sub-haustier", "arbeitskleidung": "fur-ihn", "reise-outdoor": "sub-reise",
     # Fan-Artikel (WM 2026 vorbei bzw. ohne Ware)
     "fan-zone-schweiz": "fussball-fanshop", "vereins-fanartikel": "fussball-fanshop", "wm-fussball-2026": "fussball-fanshop",
 }
@@ -86,9 +88,20 @@ def ledger_zeilen():
         return []
 
 
+def norm_handle(h):
+    """Prüfung 19.10. (koll F1/F7): Emoji-Handles stehen im Menü prozent-kodiert, in der API dekodiert — beide auf dieselbe Form (dekodiert, NFC)."""
+    return unicodedata.normalize("NFC", unquote((h or "").strip()))
+
+
 def behalten_liste():
+    """Ein Handle je Zeile; «#» beginnt einen Kommentar (auch hinter dem Handle: `casio   # Kunde fragt danach`)."""
     try:
-        return {l.strip() for l in open(BEHALTEN, encoding="utf-8") if l.strip() and not l.startswith("#")}
+        out = set()
+        for l in open(BEHALTEN, encoding="utf-8"):
+            h = norm_handle(l.split("#", 1)[0])
+            if h:
+                out.add(h)
+        return out
     except OSError:
         return set()
 
@@ -112,18 +125,24 @@ def ereignisse(kl, stunden=48):
 
 
 def menue_handles(kl):
+    """Alle /collections/-Handles in allen Menüs (dekodiert, NFC). Lesefehler/leere Antwort → Ausnahme (Prüfung 19.10. F2: kl.gql gibt bei manchen
+    GraphQL-Fehlern {} zurück — das darf nie wie «kein Menüeintrag» aussehen; ein Shop ohne Menü gibt es nicht)."""
     d = kl.gql('{menus(first:10){nodes{items{url items{url items{url}}}}}}')
+    if "menus" not in (d or {}):
+        raise RuntimeError("Menüs nicht lesbar")
     out = set()
 
     def walk(it):
         u = (it.get("url") or "")
         if "/collections/" in u:
-            out.add(u.split("/collections/", 1)[1].split("?")[0].strip("/"))
+            out.add(norm_handle(u.split("/collections/", 1)[1].split("?")[0].split("#")[0].strip("/").split("/")[0]))
         for c in it.get("items") or []:
             walk(c)
     for m in ((d.get("menus") or {}).get("nodes")) or []:
         for it in m.get("items") or []:
             walk(it)
+    if not out:
+        raise RuntimeError("Menüs ohne Kollektionslinks — als unlesbar behandelt")
     return out
 
 
@@ -155,42 +174,65 @@ def heilen(kl, leer, duenn, scharf):
     getan, uebersprungen, fehler, wiederholt, ohne_tab = [], [], [], [], []
     for n, _a in leer:
         h = n["handle"]
-        if h in behalten:
-            uebersprungen.append((h, "Betreiber-Ausnahme")); continue
-        if menue is None or h in menue:
-            uebersprungen.append((h, "im Menü oder Menü unlesbar")); continue
-        if len(getan) >= MAX_LAUF:
-            uebersprungen.append((h, "MAX_LAUF")); continue
-        if frueher.get(h):
-            wiederholt.append(h)
-        ziel, aus_tab = ziel_waehlen(h, ok_ziel)
-        if not ziel:
-            fehler.append((h, "kein gefülltes Ziel")); continue
-        if not aus_tab:
-            ohne_tab.append(h)
-        if not scharf:
-            print(f"  [DRY] /collections/{h}  → 301 /collections/{ziel}{'' if aus_tab else ' (FALLBACK)'} → aus {len(PUBS)} Kanälen nehmen", flush=True)
-            continue
-        r = kl.gql('query($q:String!){urlRedirects(first:1, query:$q){nodes{id path target}}}', {"q": "path:/collections/" + h})
-        vorh = (((r.get("urlRedirects") or {}).get("nodes")) or [None])[0]
-        if not vorh:
-            m = kl.gql('mutation($i:UrlRedirectInput!){urlRedirectCreate(urlRedirect:$i){urlRedirect{id} userErrors{field message}}}',
-                       {"i": {"path": "/collections/" + h, "target": "/collections/" + ziel}})
-            ue = ((m.get("urlRedirectCreate") or {}).get("userErrors")) or []
-            if ue or not ((m.get("urlRedirectCreate") or {}).get("urlRedirect")):
-                fehler.append((h, "301: " + str(ue)[:80])); continue
-        for pub in PUBS:
-            kl.gql('mutation($id:ID!,$p:[PublicationInput!]!){publishableUnpublish(id:$id,input:$p){userErrors{message}}}',
-                   {"id": n["id"], "p": [{"publicationId": "gid://shopify/Publication/" + pub}]})
-            time.sleep(0.1)
-        rb = kl.gql('query($id:ID!){collection(id:$id){resourcePublicationsV2(first:15){nodes{publication{name} isPublished}}}}', {"id": n["id"]})
-        noch = kl.im_onlineshop_liste(((rb.get("collection") or {}).get("resourcePublicationsV2") or {}).get("nodes") or [])
-        if noch:
-            fehler.append((h, "nach unpublish noch im Onlineshop")); continue
-        with open(LEDGER, "a", encoding="utf-8") as f:
-            f.write(f"{h}\tunpublished\t{n['title']}\tleer-auto {jetzt_iso()}\t301:{vorh['target'] if vorh else '/collections/' + ziel}\n")
-        getan.append(h)
-        print(f"  ⛔ /collections/{h} → 301 {vorh['target'] if vorh else '/collections/' + ziel}, aus allen Kanälen genommen", flush=True)
+        try:
+            hn = norm_handle(h)
+            if hn in behalten:
+                uebersprungen.append((h, "Betreiber-Ausnahme")); continue
+            if menue is None or hn in menue:
+                uebersprungen.append((h, "im Menü oder Menü unlesbar")); continue
+            if len(getan) >= MAX_LAUF:
+                uebersprungen.append((h, "MAX_LAUF")); continue
+            if frueher.get(h):
+                wiederholt.append(h)
+            ziel, aus_tab = ziel_waehlen(h, ok_ziel)
+            if not ziel:
+                fehler.append((h, "kein gefülltes Ziel")); continue
+            if not aus_tab:
+                ohne_tab.append(h)
+            if not scharf:
+                print(f"  [DRY] /collections/{h}  → 301 /collections/{ziel}{'' if aus_tab else ' (FALLBACK)'} → aus {len(PUBS)} Kanälen nehmen", flush=True)
+                continue
+            # Prüfung F9: Smart-Kollektionen füllen asynchron — zwischen Messung und Abmelden noch einmal EXAKT zählen
+            nochmal = kl.aktive(n["id"])
+            if nochmal != 0:
+                uebersprungen.append((h, f"Nachmessung {nochmal} aktiv"))
+                continue
+            r = kl.gql('query($q:String!){urlRedirects(first:1, query:$q){nodes{id path target}}}', {"q": "path:/collections/" + h})
+            vorh = (((r.get("urlRedirects") or {}).get("nodes")) or [None])[0]
+            ziel_text = "/collections/" + ziel
+            if vorh:
+                # Prüfung F3: eine vorhandene Weiterleitung wird nur übernommen, wenn ihr Ziel taugt (Kollektion im Onlineshop, ≥ MIND_ZIEL, nicht die Kollektion selbst)
+                t = vorh.get("target") or ""
+                th = norm_handle(t.split("/collections/", 1)[1].split("?")[0].strip("/").split("/")[0]) if t.startswith("/collections/") else None
+                if th is not None and (th == hn or not ok_ziel(th)):
+                    m = kl.gql('mutation($id:ID!,$i:UrlRedirectInput!){urlRedirectUpdate(id:$id,urlRedirect:$i){urlRedirect{id target} userErrors{message}}}',
+                               {"id": vorh["id"], "i": {"path": "/collections/" + h, "target": ziel_text}})
+                    ue = ((m.get("urlRedirectUpdate") or {}).get("userErrors")) or []
+                    if ue or not ((m.get("urlRedirectUpdate") or {}).get("urlRedirect")):
+                        fehler.append((h, "301 umbiegen: " + str(ue)[:80])); continue
+                    vorh = {"id": vorh["id"], "target": ziel_text}
+            else:
+                m = kl.gql('mutation($i:UrlRedirectInput!){urlRedirectCreate(urlRedirect:$i){urlRedirect{id} userErrors{field message}}}',
+                           {"i": {"path": "/collections/" + h, "target": ziel_text}})
+                ue = ((m.get("urlRedirectCreate") or {}).get("userErrors")) or []
+                if ue or not ((m.get("urlRedirectCreate") or {}).get("urlRedirect")):
+                    fehler.append((h, "301: " + str(ue)[:80])); continue
+            for pub in PUBS:
+                kl.gql('mutation($id:ID!,$p:[PublicationInput!]!){publishableUnpublish(id:$id,input:$p){userErrors{message}}}',
+                       {"id": n["id"], "p": [{"publicationId": "gid://shopify/Publication/" + pub}]})
+                time.sleep(0.1)
+            rb = kl.gql('query($id:ID!){collection(id:$id){resourcePublicationsV2(first:15){nodes{publication{name} isPublished}}}}', {"id": n["id"]})
+            if not (rb or {}).get("collection"):                  # Prüfung (aufseher F3): leeres Rücklesen ist kein Erfolg
+                fehler.append((h, "Rücklesen leer")); continue
+            noch = kl.im_onlineshop_liste(((rb.get("collection") or {}).get("resourcePublicationsV2") or {}).get("nodes") or [])
+            if noch:
+                fehler.append((h, "nach unpublish noch im Onlineshop")); continue
+            with open(LEDGER, "a", encoding="utf-8") as f:
+                f.write(f"{h}\tunpublished\t{n['title']}\tleer-auto {jetzt_iso()}\t301:{vorh['target'] if vorh else ziel_text}\n")
+            getan.append(h)
+            print(f"  ⛔ /collections/{h} → 301 {vorh['target'] if vorh else ziel_text}, aus allen Kanälen genommen", flush=True)
+        except Exception as e:  # noqa: BLE001  — eine Kollektion darf den Lauf nicht abbrechen (Prüfung F4: Stand + Ledger bleiben deckungsgleich)
+            fehler.append((h, "Ausnahme: " + str(e)[:80]))
     rest = len(leer) - len(getan) if scharf else len(leer)
     ev = ereignisse(kl)
     stand = {
@@ -199,8 +241,9 @@ def heilen(kl, leer, duenn, scharf):
         "uebersprungen": [list(x) for x in uebersprungen], "fehler": [list(x) for x in fehler], "veroeffentlicht_48h": ev,
     }
     try:
-        with open(STAND, "w", encoding="utf-8") as f:
+        with open(STAND + ".teil", "w", encoding="utf-8") as f:
             json.dump(stand, f, ensure_ascii=False, indent=1)
+        os.replace(STAND + ".teil", STAND)
     except OSError as e:
         print("Stand nicht schreibbar:", e, file=sys.stderr)
     print(f"KOLL-LEER: {len(leer)} leer gefunden · {len(getan)} abgemeldet · {rest} leer danach · {len(duenn)} dünn · "
@@ -227,7 +270,27 @@ def selbsttest():
     z, _ = ziel_waehlen("casio", lambda h: False)
     pr("nichts gefüllt → kein Ziel (Kollektion bleibt unberührt)", z is None)
     pr("alle 6 Kanäle", len(PUBS) == 6 and ONLINE_STORE in PUBS)
-    print(f"koll_leer_heilen Selbsttest: {8 - len(fehler)}/8")
+    pr("Emoji-Handle: Menü (kodiert) und API (dekodiert) gleich", norm_handle("%F0%9F%92%8E-premium-ab-chf-80") == norm_handle("💎-premium-ab-chf-80"))
+    import tempfile
+    global BEHALTEN
+    alt, BEHALTEN = BEHALTEN, os.path.join(tempfile.gettempdir(), "_behalten_test.txt")
+    open(BEHALTEN, "w", encoding="utf-8").write("# Kopf\ncasio   # Kunde fragt danach\n   \n💎-premium-ab-chf-80\n")
+    b = behalten_liste()
+    BEHALTEN = alt
+    pr("Behalten-Liste: Inline-Kommentar, Leerzeilen, Emoji", b == {"casio", "💎-premium-ab-chf-80"})
+
+    class Fake:
+        def __init__(self, antwort): self.a = antwort
+        def gql(self, q, v=None): return self.a
+    try:
+        menue_handles(Fake({}))
+        pr("Menü: leere Antwort → Ausnahme (fail-closed)", False)
+    except RuntimeError:
+        pr("Menü: leere Antwort → Ausnahme (fail-closed)", True)
+    m = menue_handles(Fake({"menus": {"nodes": [{"items": [{"url": "/collections/%F0%9F%92%8E-premium-ab-chf-80?x=1", "items": []}]}]}}))
+    pr("Menü: Emoji-Handle dekodiert", m == {"💎-premium-ab-chf-80"})
+    pr("Tabelle: damen-duefte/parfuem-damen → parfum-duefte", ZIEL.get("damen-duefte") == "parfum-duefte" == ZIEL.get("parfuem-damen"))
+    print(f"koll_leer_heilen Selbsttest: {13 - len(fehler)}/13")
     for f in fehler:
         print("  FAIL", f)
     return not fehler
