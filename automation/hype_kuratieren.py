@@ -370,7 +370,11 @@ SPERR_TAGS_HYPE = {"stecker-unklar", "titel-englisch-uebersetzen", "nicht-bewerb
                    "waffengesetz-verboten", "waffe-pruefen", "bild-zu-klein", "duplikat-auto-draft",
                    # 19.10. (HYPE-2): CJ führt ≥ 2 Varianten, der Shop nur «Default Title» — die Bilder zeigen eine Wahl, die die Kundin nicht treffen kann,
                    # der Bestell-Automat stoppt «manuell prüfen» (cj_sku_import.mjs). Fällt von selbst weg, sobald auswahl_nachruesten.py die Wahl nachgerüstet hat.
-                   "auswahl-offen"}
+                   "auswahl-offen",
+                   # 19.10. (Prüfung HYPE-5): die tatsächlich genutzten Werbesperr-Tags der anderen Poster (bild_reel_auswahl.SPERR, tiktok_karussell.SPERR_TAGS)
+                   "nur-onlineshop", "erotik", "kostuem", "kostüm", "refurbished", "marken-pruefen", "lizenz-risiko", "lizenz-nicht-bewerben",
+                   "adult-nicht-bewerben", "gmc-adult-pull", "messer-nicht-bewerben", "smoke-zubehoer", "verdeckte-ueberwachung", "google-policy-flag",
+                   "arzneimittel-ohne-zulassung", "niedrig-bewertet-nicht-bewerben"}
 
 
 def stecker_status():
@@ -486,6 +490,7 @@ def abgelaufene_raeumen():
         cur = pg["pageInfo"]["endCursor"]
 
     raus, regelbruch, ohne_datum = [], [], []
+    stecker = stecker_status()          # 19.10. (Prüfung HYPE-3): die Aufnahmeregeln von heute gelten auch für Bestandsmitglieder
     for p in alle:
         seit = hype_datum(p["tags"])
         # ⚠️ 13.10.2026: DIE REIHENREGELN GELTEN FÜR JEDES MITGLIED, nicht nur bei der Aufnahme. In der Reihe standen
@@ -496,7 +501,9 @@ def abgelaufene_raeumen():
         # Jetzt: (1) Regelbruch (RAUS_TYP, NICHT_STARTSEITE, hype-bild-schwach, nicht aktiv) → sofort raus, egal woher;
         # (2) ohne Datum → bekommt heute ein Datum und läuft nach HYPE_TAGE ab wie alles andere.
         if (AUSGEMUSTERT in p["tags"] or (p.get("productType") or "") in RAUS_TYP or PARTY_TITEL.search(p["title"])
-                or NICHT_STARTSEITE.search(p["title"]) or p.get("status") not in (None, "ACTIVE")):
+                or NICHT_STARTSEITE.search(p["title"]) or p.get("status") not in (None, "ACTIVE")
+                or (SPERR_TAGS_HYPE & {t.lower() for t in p["tags"]})
+                or netzgeraet_ohne_beleg(p["title"], p["id"], stecker)):
             regelbruch.append((p, seit))
         elif not seit:
             ohne_datum.append(p)

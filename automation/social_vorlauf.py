@@ -83,6 +83,22 @@ def leerlauf_zaehlt(tail):
     return bool(UEBERSPRUNGEN.search(tail))
 
 
+KARUSSELL_CSV = os.path.join(REPO, "social", "ig_karussell.csv")
+
+
+def vorrat_da(fmt, csv_pfad=None):
+    """19.10.2026 (Prüfung VORLAUF-1): Ein «leerer» Slot wartete stur 20 h nach Uhr, auch wenn der Vorrat seines Formats inzwischen wieder da war
+    (Karussell-Vorrat-Block im Aufseher baut ready-Sets nach). Messbar ist nur das Karussell: ≥ 1 Zeile mit status «ready» in social/ig_karussell.csv.
+    Andere Formate → False (bleiben bei der 20-h-Regel)."""
+    if fmt != "karussell":
+        return False
+    try:
+        with open(csv_pfad or KARUSSELL_CSV, encoding="utf-8", newline="") as f:
+            return any((r.get("status") or "").strip() == "ready" for r in csv.DictReader(f))
+    except OSError:
+        return False
+
+
 # ───────────────────────── Grundlagen ─────────────────────────
 def jetzt():
     return datetime.now(UTC)
@@ -566,8 +582,11 @@ def plan_lauf(max_min=35, nur=None, max_slots=10**9):
         if fmt == "tiktok" and tt_trend_modus() == "halt":
             s["grund"] = "wartet auf Trendton-Pilot"
             continue
-        if s["status"] == "leer" and (jetzt() - von_iso(s.get("letzter_versuch", "1970-01-01T00:00:00Z"))).total_seconds() < 20 * 3600:
-            continue
+        if s["status"] == "leer":
+            seit_h = (jetzt() - von_iso(s.get("letzter_versuch", "1970-01-01T00:00:00Z"))).total_seconds() / 3600
+            # 19.10. (VORLAUF-1): vor Ablauf der 20 h nur, wenn der Vorrat des Formats da ist UND der letzte Versuch ≥ 1 h her ist (kein Dauerfeuer)
+            if seit_h < 20 and not (seit_h >= 1 and vorrat_da(fmt)):
+                continue
         if s["status"] == "leer":
             s["versuche"] = 0
         if (time.time() - t0) / 60 > max_min - 12:
@@ -1071,6 +1090,20 @@ def selbsttest():
     plan_t = {"slots": {"ig": {"format": "reel_igfb"}, "tt": {"format": "tiktok"}, "yt": {"format": "youtube"}, "bild": {"format": "bild"}, "tt2": {"format": "tiktok"}}}
     reihe = [n for _, n in offene_sortieren([(t0_, "ig"), (t0_, "bild"), (t1_, "tt2"), (t1_, "yt"), (t0_ + timedelta(hours=1), "tt")], plan_t)]
     ok(reihe == ["tt", "tt2", "yt", "ig", "bild"], f"Reihenfolge nach Kanalwert: {reihe}")
+    # 19.10. VORLAUF-1: leerer Karussell-Slot wird erneut versucht, sobald ein ready-Set da ist
+    _t = tempfile.mkdtemp()
+    try:
+        _k = os.path.join(_t, "k.csv")
+        with open(_k, "w", encoding="utf-8") as _f:
+            _f.write("slug,status\nA,posted-ig\nB,jury-skip\n")
+        ok(vorrat_da("karussell", _k) is False, "Vorrat: nur posted/skip → kein Vorrat")
+        with open(_k, "a", encoding="utf-8") as _f:
+            _f.write("C,ready\n")
+        ok(vorrat_da("karussell", _k) is True, "Vorrat: ein ready → Vorrat da")
+        ok(vorrat_da("tiktok", _k) is False, "Vorrat: andere Formate bleiben bei der 20-h-Regel")
+        ok(vorrat_da("karussell", os.path.join(_t, "gibt_es_nicht.csv")) is False, "Vorrat: fehlende Datei → False")
+    finally:
+        shutil.rmtree(_t, ignore_errors=True)
     ok(not leerlauf_zaehlt("Nichts faellig: kein ready-Karussell"), "reines «Nichts fällig» zählt nicht")
     ok(not leerlauf_zaehlt("kein ready"), "«kein ready» zählt nicht")
     ok(leerlauf_zaehlt("Jury-skip: Note 4.33\nNichts faellig"), "Jury-Ablehnung + «Nichts fällig» zählt")
