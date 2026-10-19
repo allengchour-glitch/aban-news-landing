@@ -26,8 +26,6 @@ Suchverkehr ist der einzige Kanal, der in diesem Shop verkauft. Ein Ratgeber, de
 | [3D-Drucker kaufen: der grosse Einsteiger-Ratgeber 2026](/blogs/ratgeber/3d-drucker-kaufen-der-grosse-einsteiger-ratgeber-2026) | 0 |
 | [PLA, PETG oder Resin? Das richtige Filament finden](/blogs/ratgeber/pla-petg-oder-resin-das-richtige-filament-finden) | 0 |
 | [3D-Stifte für Kinder & Kreative: worauf achten?](/blogs/ratgeber/3d-stifte-fur-kinder-kreative-worauf-achten) | 0 |
-| [KNIPEX & Profi-Zangen: welche brauchst du wirklich?](/blogs/ratgeber/knipex-profi-zangen-welche-brauchst-du-wirklich) | 0 |
-| [Akkuschrauber & Bohrmaschine kaufen: der Werkzeug-Guide](/blogs/ratgeber/akkuschrauber-bohrmaschine-kaufen-der-werkzeug-guide) | 0 |
 | [Werkzeug-Grundausstattung: das gehört in jeden Haushalt](/blogs/ratgeber/werkzeug-grundausstattung-das-gehort-in-jeden-haushalt) | 0 |
 | [Smartwatch & Fitness-Tracker: welcher passt zu dir?](/blogs/ratgeber/smartwatch-fitness-tracker-welcher-passt-zu-dir) | 0 |
 | [Powerbank-Guide: die richtige Kapazität für unterwegs](/blogs/ratgeber/powerbank-guide-die-richtige-kapazitat-fur-unterwegs) | 0 |
