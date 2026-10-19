@@ -10860,3 +10860,4 @@ gekrummtes-stahl-bracelet-lang-casual-622300	2606240432251623000	16	4.60	ok	land
 geometrischer-blauer-diamant-halsketten-schmuc-611200	2607111412561611800	16	4.60	ok	landeseite
 keramik-schatzbecken-mit-handmalerei-616800	2603020826421617200	9	65.57	ok	landeseite
 samtene-rock-mit-glitter-und-schlitz-618700	2607060932271619500	16	7.85	ok	landeseite
+mediavalles-kupferarmband-638600	2606240408261639200	7	4.90	ok	landeseite

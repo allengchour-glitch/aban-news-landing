@@ -1,9 +1,10 @@
-# Auswahl nachrüsten — scharf 2026-10-19 17:19 UTC
+# Auswahl nachrüsten — scharf 2026-10-19 18:37 UTC
 
-umgebaut: 0 · MANUELL: 454 · Fehler: 0
+umgebaut: 22 · MANUELL: 489 · Fehler: 0
 
 ## MANUELL (Grund)
 
+- 30-Stückes Makeup-Pinselset mit Silikonborsten · 30 Stück (`30-stuckes-makeup-pinselset-mit-silikonborsten-624500`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Kinderflugzeug-Reise-Tablett Aufbewahrungstasche (`kinderflugzeug-reise-tablett-aufbewahrungstasc-603600`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Dampfgarer mit Thermometer aus Edelstahl (`dampfgarer-mit-thermometer-aus-edelstahl-610000`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Nichthaftende Bratpfanne mit gebogener Handhabung (`nichthaftende-bratpfanne-mit-gebogener-handhab-626200`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
@@ -458,3 +459,37 @@ umgebaut: 0 · MANUELL: 454 · Fehler: 0
 - Suppentopf-Set mit Dämpfeinsatz (`suppentopf-set-mit-dampfeinsatz-610300`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Edelstahl-Topfset mit Goldgriffen (`edelstahl-topfset-mit-goldgriffen-602200`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Faltbarer Gas-Campingkocher mit Windschutz (`faltbarer-gas-campingkocher-mit-windschutz-628300`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Küchenhelfer aus Holz – 7-teiliges Set (`kuchenhelfer-aus-holz-7-teiliges-set-619900`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Diamant-Polierpads für Nassschliff (`diamant-polierpads-fur-nassschliff-622400`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Scharnier-Bohrlehre mit verstellbarem Anschlag (`scharnier-bohrlehre-mit-verstellbarem-anschlag-600500`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Multifunktionaler Staubsauger-Aufsatz, 8-teilig (`multifunktionaler-staubsauger-aufsatz-8-teilig-612100`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Anti-Blaulicht-Teststift (`anti-blaulicht-teststift-e4d7f7`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Hutständer mit quadratischem Rohr (`hutstander-mit-quadratischem-rohr-08334f`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Schraubendreher-Karabiner mit Licht (`schraubendreher-karabiner-mit-licht-7657a2`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Wanddeko aus Stoff – Nordisches Kinderzimmermotiv (`wanddeko-aus-stoff-nordisches-kinderzimmermoti-76ebd8`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Etikettendrucker Mini (`etikettendrucker-mini-3c80f3`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Zementuhr mit Zeigeranzeige (`zementuhr-mit-zeigeranzeige-f2f8b1`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- E-Gitarren-Pickup in Chrom+Schwarz (`e-gitarren-pickup-in-chrom-schwarz-e7ce34`): Typ-Auswahl, aber Variantenbilder nicht unterscheidbar
+- Selbstzentrierendes Vierbacken-Drehfutter (`selbstzentrierendes-vierbacken-drehfutter-609200`): Preisspreizung > 4× (33.17–1888.06)
+- Thermostatventil-Kartusche (`thermostatventil-kartusche-6568c7`): KI-Übersetzung fehlt/abgelehnt: ['Backwater', 'Positive waterway']
+- Lötloser LED-Verbinder (`lotloser-led-verbinder-9706e3`): KI-Übersetzung fehlt/abgelehnt: ['Snap', 'T buckle', 'L buckle', 'X buckle']
+- Transferpapier A4 – dunkel und hell (`transferpapier-a4-dunkel-und-hell-d1ed4d`): Preisspreizung > 4× (0.54–23.86)
+- Manueller 3D-Prägeetikettendrucker (`manueller-3d-prageetikettendrucker-c3c565`): Preissprung 2.7× zwischen zwei Varianten — Datenfehler oder Zubehör? → Mensch
+- Halloween Aufkleber Set – 2 Stück (`halloween-aufkleber-set-2-stuck-00e5fb`): Titel verspricht «2 Stück», CJ führt 2 Einzelvarianten → Titel prüfen (Mensch)
+- Multifunktionaler Torx-Schlüssel – klein und gross (`multifunktionaler-torx-schlussel-klein-und-gro-8f52ad`): KI-Übersetzung fehlt/abgelehnt: ['S W072031N', '2PCS SET', 'L W072032N']
+- Infrarot-Detektor mit Alarmfunktion (`infrarot-detektor-mit-alarmfunktion-bae45c`): Preissprung 2.7× zwischen zwei Varianten — Datenfehler oder Zubehör? → Mensch
+- Mechanischer Schwebeprop für Zauberkunst (`mechanischer-schwebeprop-fur-zauberkunst-46bd7f`): KI-Übersetzung fehlt/abgelehnt: ['Suit', '2 devices']
+- Handbrause mit Druckluft (`handbrause-mit-druckluft-07ffe3`): Preisspreizung > 4× (2.1–8.81)
+- Gummischlauch mit Düse aus Zinklegierung (`gummischlauch-mit-zink-alloy-duse-362e71`): Ausführung-Auswahl, aber Variantenbilder nicht unterscheidbar
+- Manuelle Nagelpistole aus Metall mit Zubehör (`manuelle-nagelpistole-aus-metall-mit-zubehor-d9e161`): KI-Übersetzung fehlt/abgelehnt: ['Set', 'Buffer nail 200pcs', 'Wall fastener', '16mm pipe clamp 100pcs']
+- Edelstahl Automatische Trinkschüssel für Hunde (`stainless-automatic-trinkschussel-fur-hunde-457b0f`): KI-Übersetzung fehlt/abgelehnt: ['pink', 'green', 'Blue', 'Pink']
+- Zierkissenhülle mit Federfüllung (`zierkissenhulle-mit-federfullung-623100`): Ausführung-Auswahl, aber Variantenbilder nicht unterscheidbar
+- Transparente Bauklötze für Kinder (`transparente-bauklotze-fur-kinder-489856`): KI-Übersetzung fehlt/abgelehnt: ['Rounded corners 15pcs', 'Square corner 25pcs', 'Round and square 25pcs', 'Rounded corner light 25pcs']
+- Bambusblätter-Throw-Pillow in Grün (`bambusblatter-throw-pillow-in-grun-612900`): KI-Übersetzung fehlt/abgelehnt: ['Flannel Embroidered Green', 'Ink Painting', 'Monet Forest'] | ['45x 45 Pillowcase', '45x45 PP Cotton Core']
+- Rundzahnzange 7 Zoll (`rundzahnzange-7-zoll-361ffb`): KI-Übersetzung fehlt/abgelehnt: ['External curved mouth', 'Internal straight mouth', 'External straight mouth', 'Inner curved mouth']
+- Gartenverbinder 16 mm T-Stück und Winkel (`gartenverbinder-16-mm-t-stuck-und-winkel-fd3f52`): KI-Übersetzung fehlt/abgelehnt: ['Five trues', 'T shaped cross', 'T shaped tee', 'Right angle cross']
+- Abflussfilter für Waschbecken – 35 mm Kern (`abflussfilter-fur-waschbecken-35-mm-kern-829e7f`): Preisspreizung > 4× (1.22–10.19)
+- Universal-Spüle Drehknopf aus Kupfer/ABS (`universal-spule-drehknopf-aus-kupfer-abs-08e2f2`): Preisspreizung > 4× (0.77–7.32)
+- Schraubenschlüssel-Set 8-teilig, blütenförmig (`schraubenschlussel-set-8-teilig-blutenformig-aafb72`): Titel verspricht «8-teilig», CJ führt 2 Einzelvarianten → Titel prüfen (Mensch)
+- Armband aus Edelstahl – 20 mm-24 mm (`armband-aus-edelstahl-20-mm-24-mm-32094b`): KI-Übersetzung fehlt/abgelehnt: ['Silver no logo', 'Black no logo', 'Silver with logo']
+- Keramik-Vorratsdose für Gewürze (`keramik-vorratsdose-fur-gewurze-736000`): KI-Übersetzung fehlt/abgelehnt: ['Chiba 670ml', 'Chiba 1200ml', 'Little Yellow Flower 670ml', 'Little Yellow Flower 1200ml']

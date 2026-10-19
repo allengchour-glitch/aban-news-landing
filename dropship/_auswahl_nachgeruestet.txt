@@ -2983,3 +2983,7 @@
 16604839051655	Motiv:3:3+ki	2026-10-19	weihnachtsornamente-aus-stroh-elch-eichhornche-613600
 15525501010305	Farbe:6+Grösse:3:18+ki	2026-10-19	boxhandschuhe-fur-training-und-kampfsport-008768
 15525266096513	Farbe:4:4+ki	2026-10-19	transparentes-puder-fur-mattes-finish-2eca22
+16609705558407	Motiv:5:5+ki	2026-10-19	kalimba-daumenklavier-17-tone-d91282
+15524897784193	Farbe:4+Grösse:4:16+ki	2026-10-19	hundegeschirr-mit-leine-und-tasche-107200
+15524862919041	Farbe:4+Länge:2:8+ki	2026-10-19	hundeleine-okinawa-elastisch-und-ausziehbar-660992
+15524700258689	Ausführung:2+Grösse:3:6+ki	2026-10-19	moissanit-armband-verstellbar-613700
