@@ -4899,3 +4899,5 @@ sommerperlen-anklet-637000	gesetzt-2
 metall-sonnenbrille-609000	gesetzt-1
 elegante-handtasche-609900	gesetzt-2
 kristall-stein-set-619400	gesetzt-1
+rucken-tattoo-sticker-609700	gesetzt-1
+handy-powerbank-622700	nicht-aktiv

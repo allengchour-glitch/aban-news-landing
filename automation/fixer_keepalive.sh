@@ -113,6 +113,26 @@ lauf_mit_stempel() {
 }
 export -f lauf_mit_stempel
 
+# 19.10.2026 (Prüfung wf_659d6d94, AF-2): dasselbe für Blöcke, deren Tor das ALTER DES LOGS ist (`touch LOG` vor dem Lauf, Lauf >> LOG).
+# lauf_mit_logstempel LOG T CMD… läuft wie `timeout T CMD`; Exit 75 (Schranke voll) → Zeile ins Log und danach mtime des Logs auf 0 — das Alters-Tor
+# ist wieder offen, der nächste Tick versucht es erneut (höchstens 6× je UTC-Tag, Zähler LOG.versuche «JJJJMMTT n»). Exit 124 (Lauf selbst zu lang) bleibt zu.
+lauf_mit_logstempel() {
+  local log="$1" t="$2" rc n tag; shift 2
+  SCHRANKE_WARTE="${SCHRANKE_WARTE:-90}" timeout "$t" "$@"; rc=$?
+  if [ "$rc" = 75 ]; then
+    tag=$(date -u +%Y%m%d); n=$(awk -v d="$tag" '$1==d{print $2}' "$log.versuche" 2>/dev/null | tail -n 1); case "$n" in ''|*[!0-9]*) n=0 ;; esac
+    if [ "$n" -lt 6 ]; then
+      echo "$tag $(( n + 1 ))" > "$log.versuche"
+      echo "$(date -u +%H:%M) $(basename "$log"): Schranke voll, kein Lauf — Tor wieder offen, Versuch $(( n + 1 ))/6"
+      touch -d @0 "$log"
+    else
+      echo "$(date -u +%H:%M) $(basename "$log"): Schranke 6× voll — Tag verloren, morgen wieder"
+    fi
+  fi
+  return $rc
+}
+export -f lauf_mit_logstempel
+
 still_gestorben() {
   local log="$1" boot z n
   [ -f "$log" ] || return 1
@@ -281,7 +301,7 @@ while true; do
      && ( cd "$REPO" && timeout 300 python3 automation/farbcode_modell.py --selbsttest > /dev/null 2>&1 ); then
     touch "$FC"
     ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_farbcode_modell.lock; flock -n 9 || exit 0; \
-        SCHARF=1 timeout 3000 bash automation/shopify_schranke.sh python3 automation/farbcode_modell.py" >> "$FC" 2>&1 9>&- & )
+        SCHARF=1 lauf_mit_logstempel $FC 3000 bash automation/shopify_schranke.sh python3 automation/farbcode_modell.py" >> "$FC" 2>&1 9>&- & )
   fi
   # FARBCODE-PRAEFIX (10.10.2026, Verbesserungsrunde): Code VOR der Farbe («646 Schwarz», «2350 Black», «2GS8111G Brown») →
   # nur die Farbe; farbcode_modell prüft nur Werte ohne Leerzeichen, der Importer-Helfer ohneCode() nur Codes mit Grossbuchstaben
@@ -292,7 +312,7 @@ while true; do
      && ( cd "$REPO" && timeout 300 python3 automation/farbcode_praefix.py --selbsttest > /dev/null 2>&1 ); then
     touch "$FP"
     ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_farbcode_praefix.lock; flock -n 9 || exit 0; \
-        SCHARF=1 timeout 3000 bash automation/shopify_schranke.sh python3 automation/farbcode_praefix.py" >> "$FP" 2>&1 9>&- & )
+        SCHARF=1 lauf_mit_logstempel $FP 3000 bash automation/shopify_schranke.sh python3 automation/farbcode_praefix.py" >> "$FP" 2>&1 9>&- & )
   fi
   # FAMILIENSET-AUSWAHL (10.10.2026, «weiter»): Familien-/Partnerlook-Sets («Gray-Father S», «Mother's Size L») → «Grau · Papa S»,
   # Option «Ausführung & Grösse»; streng über familienset_werte.mjs (= Importer). Search Console: «familien-weihnachtspyjama»
@@ -303,7 +323,7 @@ while true; do
      && ( cd "$REPO" && timeout 120 python3 automation/familienset_auswahl.py --selbsttest > /dev/null 2>&1 ); then
     touch "$FS"
     ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_familienset_auswahl.lock; flock -n 9 || exit 0; \
-        SCHARF=1 timeout 1800 bash automation/shopify_schranke.sh python3 automation/familienset_auswahl.py" >> "$FS" 2>&1 9>&- & )
+        SCHARF=1 lauf_mit_logstempel $FS 1800 bash automation/shopify_schranke.sh python3 automation/familienset_auswahl.py" >> "$FS" 2>&1 9>&- & )
   fi
   # MARKE-ALS-WARE (10.10.2026, «weiter»): Fremdmarke als Ware im Titel («Harrods Keramik-Tasse» mit Logo, seit 24.09. bekannt,
   # nur aus der Herbst-Reihe genommen; «Xbox 360 Wireless Controller» in Fake-Verpackung; «iPhone 12» = Smartwatch). Neue Treffer
@@ -316,7 +336,7 @@ while true; do
           && timeout 60 /opt/node22/bin/node automation/marke_als_ware.mjs --test > /dev/null 2>&1 ); then
     touch "$MW"
     ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_marke_als_ware.lock; flock -n 9 || exit 0; \
-        SCHARF=1 timeout 1800 bash automation/shopify_schranke.sh python3 automation/marke_als_ware.py" >> "$MW" 2>&1 9>&- & )
+        SCHARF=1 lauf_mit_logstempel $MW 1800 bash automation/shopify_schranke.sh python3 automation/marke_als_ware.py" >> "$MW" 2>&1 9>&- & )
   fi
   # KASSEN-LIEFERDATUM (10.10.2026, Kaufweg-Test): Kasse «Zustellung 20. Okt» vs Produktseite «26. Okt – 9. Nov» — Bearbeitungszeit
   # P1D, CJ versendet nach Median 2 / bis 5 Werktagen. Nur lesen; Stand → dropship/_kassen_lieferdatum.json → Ampel «KASSEN-DATUM».
@@ -345,7 +365,7 @@ while true; do
      && [ $(( $(date +%s) - $(stat -c %Y "$PH" 2>/dev/null || echo 0) )) -gt 72000 ]; then
     touch "$PH"
     ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_platzhalter_option.lock; flock -n 9 || exit 0; \
-        SCHARF=1 timeout 3000 bash automation/shopify_schranke.sh python3 automation/platzhalter_option.py" >> "$PH" 2>&1 9>&- & )
+        SCHARF=1 lauf_mit_logstempel $PH 3000 bash automation/shopify_schranke.sh python3 automation/platzhalter_option.py" >> "$PH" 2>&1 9>&- & )
   elif [ -s "$PH" ]; then
     Z=$(grep '^PLATZHALTER' "$PH" | tail -n 1); [ -n "$Z" ] && echo "$(date -u +%H:%M) $Z"
   fi
@@ -357,7 +377,7 @@ while true; do
      && ( cd "$REPO" && timeout 600 python3 automation/gruppenstempel_typ.py --selbsttest > /dev/null 2>&1 ); then
     touch "$GS"
     ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_gruppenstempel_typ.lock; flock -n 9 || exit 0; \
-        SCHARF=1 timeout 3000 bash automation/shopify_schranke.sh python3 automation/gruppenstempel_typ.py" >> "$GS" 2>&1 9>&- & )
+        SCHARF=1 lauf_mit_logstempel $GS 3000 bash automation/shopify_schranke.sh python3 automation/gruppenstempel_typ.py" >> "$GS" 2>&1 9>&- & )
   fi
   # VARIANTENWERT-KI (09.10.2026, «weiter»): englische Auswahlwerte, die keine Tabelle kennt («Black Without Chest Pad») →
   # auswahl_werte.uebersetze_ki (harte Prüfung + Zweitprüfer, Ledger). Besuchte Seiten zuerst, MAX 60/Tag (Groq-Kontingent
@@ -368,7 +388,7 @@ while true; do
      && ( cd "$REPO" && timeout 300 python3 automation/variantenwert_ki.py --selbsttest > /dev/null 2>&1 ); then
     touch "$VK"
     ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_variantenwert_ki.lock; flock -n 9 || exit 0; \
-        SCHARF=1 MAX=60 timeout 3300 bash automation/shopify_schranke.sh python3 automation/variantenwert_ki.py" >> "$VK" 2>&1 9>&- & )
+        SCHARF=1 MAX=60 lauf_mit_logstempel $VK 3300 bash automation/shopify_schranke.sh python3 automation/variantenwert_ki.py" >> "$VK" 2>&1 9>&- & )
   fi
   # KLEIDER-MERKMALE (06.10.2026, Betreiber «Länge + Ärmel aus Titel»): shopify.skirt-dress-length-type / sleeve-length-type
   # aus eindeutigen Titelwörtern, nur erlaubte Kategorien, nie überschreiben. Täglich (neue Feinkategorien → neue Kandidaten).
@@ -815,7 +835,7 @@ while true; do
     # Für diese Liste setzt der Aufseher die Zeile nach Exit 0 selbst. NICHT für Wächter, die FERTIG bewusst weglassen,
     # solange Arbeit offen ist (verlustbringer, versand_jenachland …) — die bleiben ausserhalb der Liste.
     NACH=""
-    # anlass_social_sperre: Exit 0 = FERTIG; Exit 1 bei offenen Kanal-Einträgen/Tags → nächster Tick versucht erneut.
+    # anlass_social_sperre: Exit 0 = FERTIG; Exit 1 bei offenen Kanal-Einträgen/Tags → `--faellig` meldet nach ≥ 10 min «fällig» (ZN=1 oben), der nächste Tick versucht erneut.
     case " social_queue_saeubern bild_queue_captions_ehrlich ig_gepostet_tags suchwort_mehrzahl herbst_kuratieren koll_seo_laengen anlass_social_sperre queue_schreiber_wache google_bild_abruf startseite_gewicht startseite_schlank_patch cj_real_luecke " in
       *" $L "*) NACH=1 ;;
     esac
@@ -1707,7 +1727,7 @@ fi
       touch "$BLW"
       ( cd "$REPO" && setsid bash -c \
           "exec 9>/tmp/lock_blog_linkziele.lock; flock -n 9 || exit 0; exec >> \"$BLW\" 2>&1; echo \"START \$(date -u +%FT%TZ) (Aufseher)\"; \
-           exec bash automation/shopify_schranke.sh python3 automation/blog_linkziele_wache.py" 9>&- & )
+           lauf_mit_logstempel \"$BLW\" 2400 bash automation/shopify_schranke.sh python3 automation/blog_linkziele_wache.py" 9>&- & )
     fi
     if [ -s "$BLW" ] && tail -n 3 "$BLW" | grep -q "Traceback\\|BLOG-LINKS: unklar"; then
       echo "$(date -u +%H:%M) ⚠️ Blog-Linkziele: letzter Lauf unklar ($BLW)"
@@ -1722,7 +1742,7 @@ fi
       touch "$BPA"
       ( cd "$REPO" && setsid bash -c \
           "exec 9>/tmp/lock_blog_preise.lock; flock -n 9 || exit 0; exec >> \"$BPA\" 2>&1; echo \"START \$(date -u +%FT%TZ) (Aufseher)\"; \
-           SCHARF=1 LIMIT=40 exec bash automation/shopify_schranke.sh python3 automation/blog_preise_aktualisieren.py" 9>&- & )
+           SCHARF=1 LIMIT=40 lauf_mit_logstempel \"$BPA\" 2400 bash automation/shopify_schranke.sh python3 automation/blog_preise_aktualisieren.py" 9>&- & )
     fi
     if [ -s "$BPA" ] && tail -n 3 "$BPA" | grep -q "Traceback\\|BLOG-PREISE: unklar"; then
       echo "$(date -u +%H:%M) ⚠️ Blog-Preise: letzter Lauf unklar ($BPA)"
@@ -1827,7 +1847,7 @@ if [ -f "$REPO/automation/mobilfunk_netz_pruefen.py" ] && [ "$(date -u +%H)" = "
     ALTER_S=$(( $(date +%s) - $(date -d "${GEBAUT:-1970-01-01T00:00Z}" +%s 2>/dev/null || echo 0) )); \
     if [ ! -s "$ML" ] || [ "$ALTER_S" -gt 604800 ]; then \
       timeout 900 python3 automation/mobilfunk_netz_pruefen.py --liste-bauen 2>&1 | tail -1 | tee -a /tmp/mobilfunk_netz.log; fi; \
-    [ -s "$ML" ] && timeout 3000 bash automation/shopify_schranke.sh python3 automation/mobilfunk_netz_pruefen.py --liste "$ML" --scharf 2>&1 | tail -1 | tee -a /tmp/mobilfunk_netz.log' 9>&- & )
+    [ -s "$ML" ] && lauf_mit_stempel /tmp/mobilfunk_nacht_$(date -u +%F).stamp 3000 bash automation/shopify_schranke.sh python3 automation/mobilfunk_netz_pruefen.py --liste "$ML" --scharf 2>&1 | tail -1 | tee -a /tmp/mobilfunk_netz.log' 9>&- & )
 fi
 if [ -f "$REPO/automation/mobilfunk_netz_pruefen.py" ] && [ "$(date -u +%H)" -ge 2 ] && [ ! -f /tmp/mobilfunk_neu_$(date -u +%F).stamp ]; then
   touch /tmp/mobilfunk_neu_$(date -u +%F).stamp
@@ -1868,7 +1888,7 @@ if [ -f "$REPO/automation/warenkorb_einig.py" ] && [ ! -f /tmp/warenkorb_einig_$
   touch /tmp/warenkorb_einig_$(date -u +%F).stamp
   WE=$(cd "$REPO" && timeout 240 python3 automation/warenkorb_einig.py --pruefen --live 2>&1 | tail -1)
   case "$WE" in
-    *"Marke fehlt"*) ( cd "$REPO" && SCHARF=1 timeout 200 bash automation/shopify_schranke.sh python3 automation/warenkorb_einig.py 2>&1 | tail -1 ) | sed "s/^/$(date -u +%H:%M) warenkorb-einig neu: /" ;;
+    *"Marke fehlt"*) ( cd "$REPO" && SCHARF=1 lauf_mit_stempel /tmp/warenkorb_einig_$(date -u +%F).stamp 200 bash automation/shopify_schranke.sh python3 automation/warenkorb_einig.py 2>&1 | tail -1 ) | sed "s/^/$(date -u +%H:%M) warenkorb-einig neu: /" ;;
     *"⚠️"*) echo "$(date -u +%H:%M) $WE" ;;
   esac
   echo "$(date -u +%FT%H:%M) $WE" >> /tmp/warenkorb_einig.log

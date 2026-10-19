@@ -44,16 +44,25 @@ def _letzte_zeile_ok(pfad):
         return False
 
 
-def bulk_laden(url, ziel, curl_args=None, frei_pfad=None, laden=None):
-    """→ True, wenn ZIEL jetzt eine vollständige, plausible Datei ist. `laden(url, teil)` ersetzt curl (Selbsttest)."""
+def bulk_laden(url, ziel, curl_args=None, frei_pfad=None, laden=None, gueltig=None):
+    """→ True, wenn ZIEL jetzt eine vollständige, plausible Datei ist. `laden(url, teil)` ersetzt curl (Selbsttest).
+    `gueltig(pfad) -> bool` (optional): Formatprüfung. Eine UNGÜLTIGE Vorrunde zählt für die 80-%-Regel nicht (Prüfung wf_659d6d94 BULK-1: die Format-Heilung
+    von /tmp/export.jsonl wäre sonst an einer grossen fremden Kopie gescheitert); der neue Export muss die Prüfung selbst bestehen."""
     teil = ziel + ".teil"
     vorrunde = os.path.getsize(ziel) if os.path.exists(ziel) else 0
+    if vorrunde and gueltig is not None:
+        try:
+            if not gueltig(ziel):
+                vorrunde = 0
+        except Exception:
+            vorrunde = 0
     try:
         frei = shutil.disk_usage(frei_pfad or os.path.dirname(os.path.abspath(ziel)) or ".").free
     except OSError:
         frei = None
     if frei is not None and frei < MIN_FREI + vorrunde:
-        print(f"⛔ bulk_laden: zu wenig Platz ({frei // 1048576} MiB frei, nötig {(MIN_FREI + vorrunde) // 1048576} MiB) — {os.path.basename(ziel)} bleibt wie es ist", flush=True)
+        print(f"⛔ bulk_laden: zu wenig Platz ({frei // 1048576} MiB frei, nötig {(MIN_FREI + vorrunde) // 1048576} MiB) — {os.path.basename(ziel)} bleibt wie es ist "
+              f"(Ausweg: Platz schaffen oder BULK_MIN_FREI=<Bytes> senken)", flush=True)
         return False
     try:
         os.remove(teil)
@@ -65,16 +74,27 @@ def bulk_laden(url, ziel, curl_args=None, frei_pfad=None, laden=None):
         else:
             subprocess.run(["curl", "-sS", "--fail", "--max-time", "900", *(curl_args or []), "-o", teil, url], check=True)
     except (subprocess.CalledProcessError, OSError) as e:
-        print(f"⛔ bulk_laden: Download fehlgeschlagen ({str(e)[:100]}) — {os.path.basename(ziel)} bleibt wie es ist", flush=True)
+        rc = getattr(e, "returncode", None)
+        print(f"⛔ bulk_laden: Download fehlgeschlagen (curl Exit {rc if rc is not None else '?'}: {str(e)[:90]}) — {os.path.basename(ziel)} bleibt wie es ist", flush=True)
         _weg(teil)
         return False
     if not os.path.exists(teil) or not _letzte_zeile_ok(teil):
         print(f"⛔ bulk_laden: {os.path.basename(teil)} unvollständig (leer oder letzte Zeile kein JSON) — verworfen", flush=True)
         _weg(teil)
         return False
+    if gueltig is not None:
+        try:
+            ok_fmt = bool(gueltig(teil))
+        except Exception:
+            ok_fmt = False
+        if not ok_fmt:
+            print(f"⛔ bulk_laden: {os.path.basename(teil)} hat nicht das erwartete Format — verworfen", flush=True)
+            _weg(teil)
+            return False
     neu = os.path.getsize(teil)
     if vorrunde and neu < vorrunde * MIN_ANTEIL:
-        print(f"⛔ bulk_laden: neuer Export {neu // 1024} KiB < {int(MIN_ANTEIL * 100)} % der Vorrunde ({vorrunde // 1024} KiB) — verworfen, Vorrunde bleibt", flush=True)
+        print(f"⛔ bulk_laden: neuer Export {neu // 1024} KiB < {int(MIN_ANTEIL * 100)} % der Vorrunde ({vorrunde // 1024} KiB) — verworfen, Vorrunde bleibt "
+              f"(Ausweg bei echtem Schrumpfen: BULK_MIN_ANTEIL=0 setzen oder {os.path.basename(ziel)} löschen)", flush=True)
         _weg(teil)
         return False
     os.replace(teil, ziel)
@@ -120,9 +140,18 @@ def selbsttest():
         import importlib
         sys.modules[__name__].MIN_FREI = 10 ** 15
         pr("zu wenig Platz → nichts geladen", not bulk_laden("u", z, laden=schreib(gut)))
+        sys.modules[__name__].MIN_FREI = 0
+        # BULK-1: ungültige (fremdformatige) grosse Vorrunde darf die Heilung nicht blockieren
+        fremd = "".join(json.dumps({"id": i, "x": "y" * 400}) + "\n" for i in range(400))
+        z2 = os.path.join(d, "f.jsonl")
+        open(z2, "w").write(fremd)
+        schlank = "".join(json.dumps({"id": i, "status": "ACTIVE"}) + "\n" for i in range(100))
+        fmt = lambda pfad: all("status" in json.loads(z_) for z_ in open(pfad).read().splitlines() if z_.strip())
+        pr("grosse Fremdformat-Vorrunde blockiert die Heilung nicht", bulk_laden("u", z2, laden=schreib(schlank), gueltig=fmt) and os.path.getsize(z2) == len(schlank))
+        pr("falsches Format des neuen Exports wird verworfen", not bulk_laden("u", z2, laden=schreib(fremd), gueltig=fmt) and os.path.getsize(z2) == len(schlank))
     finally:
         shutil.rmtree(d, ignore_errors=True)
-    print(f"bulk_laden Selbsttest: {8 - len(fehler)}/8")
+    print(f"bulk_laden Selbsttest: {10 - len(fehler)}/10")
     for f in fehler:
         print("  FAIL", f)
     return not fehler

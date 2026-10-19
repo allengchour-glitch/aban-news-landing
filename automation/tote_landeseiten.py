@@ -581,8 +581,44 @@ def zielwahl_gsc(p, handle):
     return (kat, "Kategorie (streng)") if kat else (None, "kein strenges Ziel")
 
 
-def kanarien():
+# 19.10.2026 (Prüfung wf_659d6d94, PT-1): DIREKTE Tabellen-Kanarien ohne Shopify — die Kanarien oben lösen über den Zwilling auf («Saugnapf-Hakenleiste» → /products/…)
+# und erreichten den Kategorie-Zweig nie; fiel «napf» aus WORT_NICHT_NACH, blieb alles grün. Hier zählt allein, was `titel_ziel` (strenger Modus) liefert:
+# (Titel, erwartetes Ziel oder None = kein Tabellenziel). Läuft in kanarien() UND vor jedem schreibenden Lauf (FIX=1).
+KANARIEN_TITEL = [
+    ("Drehbare Saugnapf-Hakenleiste für Türen", None),             # Saug-napf ≠ Napf
+    ("Robustes Saugnapf-Kauspielzeug für Hunde", "sub-haustier"),  # Tier-Rückfall, nicht haustier-napf-futter
+    ("Edelstahl Napf für Hunde rutschfest", "haustier-napf-futter"),
+    ("Keramik Fress-Napf Katze", "haustier-napf-futter"),
+    ("Bademantel für Damen Frottee", None),                        # Bade-mantel ≠ Mantel für Damen
+    ("Morgenmantel für Damen Satin", None),
+    ("Mantel für Damen Winter Wolle", "damen-jacken-maentel"),
+    ("Duschvorhang 180x200 wasserdicht", "duschvorhaenge"),
+    ("Vorhang Verdunkelung 2er Set", "vorhaenge"),
+    ("Ladegerät USB-C 65W", "ladegeraete"),
+    ("Nähset Reise", "basteln-diy"),
+    ("Ausziehregal für Küche", "kuechen-gadgets"),
+    ("Drohne mit Kamera 4K", "drohnen-kameras"),
+    ("Pool-Volleyball Set", "pool"),
+    ("Schraubendreher Set 24-teilig", "handwerkzeug"),
+    ("Arbeitsschuhe Stahlkappe", "sub-wander-arbeitsschuhe"),
+]
+
+
+def kanarien_titel(leise=False):
+    """→ Zahl der Fehler. Reine Funktion von TITEL_ZIEL/WORT_NICHT_NACH/PRAEFIX_ZIEL, kein Netz."""
     fehler = 0
+    for titel, soll in KANARIEN_TITEL:
+        ist = titel_ziel(titel, ohne=("damen", "herren"))
+        if ist != soll:
+            print(f"  ✗ Titel-Kanarie «{titel}» → {ist or 'kein Ziel'}, soll {soll or 'kein Ziel'}")
+            fehler += 1
+        elif not leise:
+            print(f"  ✓ {titel[:44]:46} → {ist or 'kein Ziel'} (Tabelle)")
+    return fehler
+
+
+def kanarien():
+    fehler = kanarien_titel()
     for titel, verboten, kat_ok in KANARIEN:
         ziel, wie = zielwahl_gsc({"title": titel, "productType": "", "tags": []}, "")
         gut = True
@@ -603,13 +639,15 @@ def kanarien():
     if not _bt_selbsttest(leise=True):
         print("  ✗ bestandteil_regel: Selbsttest rot (Set → Einzelteil)")
         fehler += 1
-    print(f"KANARIEN {'OK' if not fehler else f'{fehler} FEHLER'} ({len(KANARIEN)} Titel + Tabellenziele + Bestandteil-Regel)")
+    print(f"KANARIEN {'OK' if not fehler else f'{fehler} FEHLER'} ({len(KANARIEN)} Titel + {len(KANARIEN_TITEL)} Tabellen-Titel + Tabellenziele + Bestandteil-Regel)")
     return fehler == 0
 
 
 def main():
     if "--kanarien" in sys.argv:
         return 0 if kanarien() else 1
+    if FIX and kanarien_titel(leise=True):
+        print("PAUSE: Tabellen-Kanarien rot — keine Weiterleitung geschrieben (Zeilen davor)"); return 1
     seiten = landeseiten()
     if seiten is None:
         print("PAUSE (Sitzungsdaten nicht lesbar)"); return 1

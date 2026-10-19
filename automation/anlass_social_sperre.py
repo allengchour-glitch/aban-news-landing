@@ -661,6 +661,15 @@ def faellig(jetzt_=None, stand_datei=STAND):
         alt = (st.get("anlaesse") or {}).get(r["anlass"], {}).get("phase")
         if alt != phase_von(r, t):
             return True
+    # 19.10.2026 (Prüfung wf_659d6d94, AF-1): ein Lauf mit offenen Kanal-Einträgen (rc=1) schreibt trotzdem einen frischen `stand`;
+    # der Aufseher wertet für registrierte Wächter nur noch das Ergebnis — ohne diese Zeile wartete das Nachholen bis zu 20 h.
+    # ≥ 10 min Abstand, damit ein Dauerfehler (userErrors) nicht bei jedem Tick neu läuft.
+    try:
+        alter_min = (t - dt.datetime.strptime(st["stand"], "%Y-%m-%dT%H:%MZ").replace(tzinfo=dt.timezone.utc)).total_seconds() / 60
+    except Exception:  # noqa: BLE001
+        return True
+    if alter_min >= 10 and any((a or {}).get("offen") for a in (st.get("anlaesse") or {}).values()):
+        return True
     return False
 
 

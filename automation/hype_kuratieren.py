@@ -390,13 +390,26 @@ def stecker_status():
     return st
 
 
-def netzgeraet_ohne_beleg(titel, pid, ledger):
+# 19.10. (Prüfung wf_659d6d94, HYPE-A): bei BESTANDSmitgliedern entscheidet nicht nur der Titel. «Sonnenuntergang-Projektor» (USB, ≤ 36 V, «Batterie/Akku») und «Karaoke-System»
+# (Lithium-Akku 3,7 V) trugen ein Netzgerät-Wort, waren aber keine Netzgeräte. Ein Akku-/USB-Beleg in der Beschreibung genügt, sie in der Reihe zu lassen — ausser bei den
+# Lade-Wörtern (Ladegerät/Netzteil/Charger …): deren Beschreibung nennt «Akku» als Ladegut, nicht als Stromquelle.
+BESCHR_AKKU = re.compile(r"Akku\b|Akku/|Batterie|mAh\b|wiederaufladbar|Lithium|Li-?Ion|USB[- ]?(?:C\b|Ladung|Aufladung|betrieben|powered)|Stromversorgung\s*:\s*USB|"
+                         r"\b[345](?:[.,]\d)?\s?V\b|DC\s?5\s?V|kabellos", re.I)
+LADE_TITEL = re.compile(r"Ladeger[äa]t|Ladestation|Lade-?st[äa]nder|Ladedock|Charger|Netz-?adapter|Lade-?adapter|Netzteil", re.I)
+
+
+def netzgeraet_ohne_beleg(titel, pid, ledger, beschreibung=""):
     """True = überspringen. (1) Das Ledger kennt das Produkt und der Befund ist nicht positiv (unklar-eu-vorhanden, mehrere-varianten, draft-…) → nie aufnehmen,
-    gleich welcher Titel (die 92 Haarglätter «unklar» heissen nicht «Glätteisen»). (2) Netzgerät-Titel ohne jeden Ledger-Eintrag → nicht belegt."""
+    gleich welcher Titel (die 92 Haarglätter «unklar» heissen nicht «Glätteisen»). (2) Netzgerät-Titel ohne jeden Ledger-Eintrag → nicht belegt, es sei denn, die
+    Beschreibung (nur wenn übergeben, also beim Räumen von Bestandsmitgliedern) belegt Akku/Batterie/USB-Betrieb."""
     status = ledger.get(pid.rsplit("/", 1)[-1], "")
     if status:
         return not status.startswith(STECKER_OK)
-    return bool(NETZGERAET.search(titel)) and not NETZ_NICHT.search(titel)
+    if not (NETZGERAET.search(titel) and not NETZ_NICHT.search(titel)):
+        return False
+    if beschreibung and not LADE_TITEL.search(titel) and BESCHR_AKKU.search(beschreibung):
+        return False
+    return True
 
 
 def gql(q, v=None):
@@ -479,7 +492,7 @@ def abgelaufene_raeumen():
     cur, alle = None, []
     while True:
         d = gql('query($c:String){products(first:250,after:$c,query:"tag:%s")'
-                '{pageInfo{hasNextPage endCursor} nodes{id title tags productType status}}}' % TAG, {"c": cur})
+                '{pageInfo{hasNextPage endCursor} nodes{id title tags productType status description(truncateAt:3000)}}}' % TAG, {"c": cur})
         pg = (d.get("data") or {}).get("products")
         if not pg:
             print("  ⚠️ Bestandsliste unvollständig — nichts geräumt", flush=True)
@@ -503,7 +516,7 @@ def abgelaufene_raeumen():
         if (AUSGEMUSTERT in p["tags"] or (p.get("productType") or "") in RAUS_TYP or PARTY_TITEL.search(p["title"])
                 or NICHT_STARTSEITE.search(p["title"]) or p.get("status") not in (None, "ACTIVE")
                 or (SPERR_TAGS_HYPE & {t.lower() for t in p["tags"]})
-                or netzgeraet_ohne_beleg(p["title"], p["id"], stecker)):
+                or netzgeraet_ohne_beleg(p["title"], p["id"], stecker, p.get("description") or "")):
             regelbruch.append((p, seit))
         elif not seit:
             ohne_datum.append(p)
@@ -740,6 +753,17 @@ def selbsttest_themen():
     for titel, pid, soll in stecker_faelle:
         if netzgeraet_ohne_beleg(titel, pid, led) != soll:
             fehler.append(f"Stecker: «{titel}» {pid} → {not soll}, soll {soll}")
+    # HYPE-A: Beschreibung belegt Akku/USB → bleibt; Lade-Wörter und echte Netzgeräte nicht
+    beschr_faelle = [("Sonnenuntergang-Projektor Sunset", "gid://shopify/Product/99", "Stromversorgung: Batterie/Akku, USB, ≤36V", False),
+                     ("Duales Stereo Karaoke-System", "gid://shopify/Product/99", "Integrierter Lithium-Akku 3.7V", False),
+                     ("Haargl\u00e4tter Keramik", "gid://shopify/Product/99", "Heizt in 15 Sekunden auf 230 °C, Keramikplatten", True),
+                     ("Ladeger\u00e4t f\u00fcr Smartwatch", "gid://shopify/Product/99", "L\u00e4dt den Akku in 2 Stunden, 5V", True),
+                     ("Mini-Projektor Home Office", "gid://shopify/Product/99", "", True),                               # keine Beschreibung = nicht belegt
+                     ("Kerzenw\u00e4rmer-Lampe mit Holzsockel", "gid://shopify/Product/99", "Netzbetrieb 230V, 50 W", True)]
+    for titel, pid, beschr, soll in beschr_faelle:
+        if netzgeraet_ohne_beleg(titel, pid, led, beschr) != soll:
+            fehler.append(f"Stecker/Beschreibung: «{titel}» → {not soll}, soll {soll}")
+    stecker_faelle = stecker_faelle + beschr_faelle
     print(f"hype_kuratieren Selbsttest: {len(faelle) + len(stecker_faelle) - len(fehler)}/{len(faelle) + len(stecker_faelle)}")
     for f in fehler:
         print("  FAIL", f)

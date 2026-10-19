@@ -100,9 +100,9 @@ def main():
             if not o.get("url"):
                 print("PAUSE: fertig, aber ohne URL")
                 return
-            if not bulk_laden(o["url"], ZIEL, curl_args=["-L"]):
-                print("PAUSE: Bulk-Download unvollständig — Vorrunde bleibt")
-                return
+            if not bulk_laden(o["url"], ZIEL, curl_args=["-L"], gueltig=format_ok):
+                print("PAUSE: Bulk-Download abgelehnt (Platz/Format/Vollständigkeit, Grund in der Zeile davor) — Vorrunde bleibt")
+                sys.exit(3)           # Prüfung wf_659d6d94 BULK-4: Fehlschlag ist nicht Exit 0
             n = sum(1 for _ in open(ZIEL))
             print(f"FERTIG: {ZIEL} — {os.path.getsize(ZIEL)} Bytes, {n} Zeilen")
             return

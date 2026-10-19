@@ -173,7 +173,8 @@ def bulk_export():
         print("   … Bulk läuft, %s Objekte" % op["objectCount"])
     ziel = "/tmp/farbe_bulk.jsonl"
     if not bulk_laden(op["url"], ziel):
-        raise RuntimeError("Bulk-Download unvollständig — Vorrunde bleibt, Lauf endet")
+        print("PAUSE: Bulk-Download abgelehnt (Platz/Format/Vollständigkeit, Grund in der Zeile davor) — Vorrunde bleibt, Lauf endet", flush=True)
+        sys.exit(3)
     return ziel
 
 

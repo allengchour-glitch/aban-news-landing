@@ -45,7 +45,7 @@ def export():
         print("   bulk:", b["status"], b["objectCount"], flush=True)
         if b["status"] == "COMPLETED":
             if not bulk_laden(b["url"], CACHE):
-                raise SystemExit("Bulk-Download unvollständig — Vorrunde bleibt, Lauf endet")
+                raise SystemExit("PAUSE: Bulk-Download abgelehnt (Platz/Format/Vollständigkeit, Grund in der Zeile davor) — Vorrunde bleibt, Lauf endet")
             return
         if b["status"] in ("FAILED", "CANCELED", "EXPIRED"):
             raise SystemExit(f"Bulk {b['status']}")
