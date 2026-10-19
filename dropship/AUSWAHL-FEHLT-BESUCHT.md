@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-19 02:26 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-19 04:06 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 152 · **70 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 45, teilweise: 19, keine: 6; Preisspanne > 2×: 15) · 1 CJ-Variante: 82 · ohne Antwort: 0
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 149 · **67 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 43, teilweise: 18, keine: 6; Preisspanne > 2×: 14) · 1 CJ-Variante: 82 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -28,7 +28,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Aroma Diffuser Holzoptik 400ml – Ultraschall Luftbefeuchter mit 7 LED-Farben (`aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben`) | 16 | 0 | 13.38–16.35 | 44.90 | Deep wood grain-EU, Deep wood grain-US WiFi, Deep wood grain-UK, Deep wood grain-EU WiFi |
 | Esszimmerstuhlhusse – Niedriger Rücken, Stretch (`esszimmerstuhlhusse-niedriger-rucken-stretch-823040`) | 14 | 10 | 4.29–4.29 | 16.90 | Fruit green, Orange, Light khaki, Light grey |
 | Klassische Herren-Armbanduhr (`klassische-herren-armbanduhr-780416`) | 14 | 11 | 16.62–16.62 | 32.90 | Silver White, Silver Black, Silver Blue, Room Gold White |
-| ICE-Out Bling Diamond Luxusuhr für Herren (`ice-out-bling-diamond-luxusuhr-fur-herren-791936`) | 14 | 14 | 23.47–25.9 | 44.90 | A, B, C, D |
 | Magnetischer Telefonhalter (`magnetischer-telefonhalter-610000`) | 12 | 12 | 3.44–3.69 | 14.90 | Bean Purple-Ordinary Bag, Bean Purple-Exquisite Boxed, Qingshan Jade-Ordinary Bag, Qingshan Jade-Exquisite Boxed |
 | Edelstahl-Armband «Trésor» · Doppellagig mit Charms, Silber (`edelstahl-armband-tresor-doppellagig-mit-charms-silber`) | 12 | 0 | 2.69–8.73 | 34.90 | Steel color-1 doll 1 birthstone, Steel color-2 dolls 2 birthstones, Steel color-3 dolls 3 birthstones, Steel color-4 dolls 4 birthstones |
 | Kabelloses Ansteckmikrofon mit Ladebox (`kabelloses-ansteckmikrofon-mit-ladebox-016064`) | 12 | 12 | 9.76–14.34 | 21.90 | One To One Black-Type C Interface, One To One Black-Lighting Interface, One To One Black-Universal, One Drag Two Black-Type C Interface |
@@ -37,13 +36,11 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Stickierter Vorhangstoff – Baumwolle, Polyester, Samt (`stickierter-vorhangstoff-baumwolle-polyester-s-ccafca`) | 10 | 4 | 3.01–4.37 | 24.90 | Beige-Yarn-Zero shear, Blue-Cloth-Zero shear, Blue-Yarn-Entire batch, Blue-Yarn-Zero shear |
 | Halskette «Rosée» · Kristall-Tropfen, Silber (`halskette-rosee-kristall-tropfen-silber`) | 10 | 3 | 3.27–3.27 | 29.90 | Rose Gold K5 Blue Opal, Rose Gold K17B White Opal, Platinum OP38 Purple Opal, Platinum K17B White Opal |
 | Verstellbarer Katzenschüssel 15° (`verstellbarer-katzenschussel-15-f0b6ca`) | 10 | 10 | 2.26–17.02 | 34.90 | 2PC A, 3PC A, B, C |
-| Mobiler Gamecontroller für diverse Plattformen (`mobiler-gamecontroller-fur-diverse-plattformen-19bf9c`) | 9 | 7 | 12.89–38.67 | 45.90 | Green 2pcs, Pink 2pcs, Yellow 2pcs, Green 3pcs |
 | USB-Mixer für unterwegs (`usb-mixer-fur-unterwegs-208768`) | 9 | 9 | 4.7–6.3 | 24.90 | White-12 Dual Battery 1500 MA, White-12 Knives 1500 MA, White-8 Knife Single 1300 MA, Green-12 Dual Battery 1500 MA |
 | Mini Bluetooth Speaker Wasserdicht – Dusche, Outdoor & Reise mit Saugnapf (`mini-bluetooth-speaker-wasserdicht-dusche-outdoor-reise-mit-saugnapf`) | 8 | 1 | 10.37–10.74 | 29.90 | With radio-Red, With radio-Golden, With radio-Orange, With radio-Blue |
 | ROCKBROS Velo Frontlicht USB-Ladefunktion (`rockbros-velo-frontlicht-usb-ladefunktion-0d243e`) | 8 | 7 | 5.15–23.68 | 20.90 | LUMEN TD-100, R31000-1000lumens bright headlights, D31000-1000lumens bright headlights, LUMEN BC02-700 |
 | Mini LED Beamer für Handy & Heimkino (`mini-led-beamer-fur-handy-heimkino-150016`) | 8 | 8 | 38.95–47.08 | 64.90 | White-US-Ordinary paragraph, White-US-Projection models, White-EU-Ordinary paragraph, White-EU-Projection models |
 | Pilz Luftbefeuchter mit Ventilator & Nachtlicht (`pilz-luftbefeuchter-mit-ventilator-nachtlicht-2a0a78`) | 8 | 8 | 3.39–3.9 | 22.90 | Pink-Built, Coffee-Built, Coffee-Without batteries, blue-Without batteries |
-| Crossbody Tasche aus Polyester – schwarz, grün, grau, khaki (`crossbody-tasche-aus-polyester-schwarz-grun-gr-626900`) | 8 | 8 | 4.84–4.84 | 16.90 | Black, Green, Gray, Khaki |
 | Gürtel Herrenuhr – Schlicht & Business-tauglich (`gurtel-herrenuhr-schlicht-business-tauglich-772160`) | 8 | 8 | 9.86–10.75 | 23.90 | Rose shell black noodles, All black rose needles, Silver shell black surface, All black and silver |
 | Sport-Smartwatch mit Temperatur- und Pulsmessung (`sport-smartwatch-mit-temperatur-und-pulsmessun-353536`) | 8 | 8 | 58.74–58.74 | 83.90 | Vinyl, Silver Case Vinyl, Retro Brown Black, Retro Brown Silver |
 | Mechanische Herrenuhr – Business & Freizeit (`mechanische-herrenuhr-business-freizeit-625400`) | 7 | 7 | 12.6–12.6 | 27.90 | Rose Gold Shell Black Surface, Rose Shell White Surface Black, Gold Shell Black Brown Belt, Gold Shell White Surface |

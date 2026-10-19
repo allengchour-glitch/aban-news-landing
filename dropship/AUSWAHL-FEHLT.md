@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-19 02:27 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-19 04:07 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1390 · **1323 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1124, teilweise: 168, keine: 31; Preisspanne > 2×: 158) · 1 CJ-Variante: 65 · ohne Antwort: 2
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1384 · **1317 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1118, teilweise: 168, keine: 31; Preisspanne > 2×: 158) · 1 CJ-Variante: 65 · ohne Antwort: 2
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -707,8 +707,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Moissanit Armband verstellbar (`moissanit-armband-verstellbar-613700`) | 6 | 6 | 31.51–48.92 | 53.90 | Tennis Bracelet-3mm, Tennis Bracelet-4mm, Tennis Bracelet-5mm, Tennis Bracelet Set-3mm |
 | Bambusblätter-Throw-Pillow in Grün (`bambusblatter-throw-pillow-in-grun-612900`) | 6 | 6 | 6.3–15.09 | 25.90 | Flannel Embroidered Green-45x 45 Pillowcase, Flannel Embroidered Green-45x45 PP Cotton Core, Ink Painting-45x 45 Pillowcase, Ink Painting-45x45 PP Cotton Core |
 | Katzenkessel mit automatischer Wasserversorgung und Futterbehälter (`katzenkessel-mit-automatischer-wasserversorgun-607700`) | 6 | 6 | 2.3–2.67 | 17.90 | Ceramic Bowl-Gray, Ceramic Bowl-Green, Ceramic Bowl-Yellow, Stainless steel bowl-Gray |
-| Bauchrucksack für Jungen – geometrisches Muster (`bauchrucksack-fur-jungen-geometrisches-muster-617500`) | 6 | 6 | 6.6–6.94 | 24.90 | 5236 Blue And White Large-S, 5236 Blue And White Large-L, 5236 Gray-S, 5236 Gray-L |
-| Nylon-Fischköder-Tasche – 39×23×15 cm (`nylon-fischkoder-tasche-39-23-15-cm-855168`) | 6 | 6 | 10.76–12.44 | 38.90 | Black-Small, Black-large, Camouflage-Small, Camouflage-large |
 | Lederrucksack für Herren (`lederrucksack-fur-herren-621700`) | 5 | 5 | 22.27–29.52 | 53.90 | 8019 Black Lychee Grain, 8019 Coffee Color, 8016 Black Lychee Pattern, 8015 Black |
 | Weinroter Kissenbezug aus Rex Kaninchenfell (`weinroter-kissenbezug-aus-rex-kaninchenfell-600500`) | 5 | 5 | 2.95–11.28 | 15.90 | Red Brown-45x45cm, Blackred Thread Grid-45x45cm, Rex Rabbit Fur Wine Red-45x45cm, Black And Red Grid-30x50cm |
 | Multi-Kartenleser USB 3.0 & Type-C (`multi-kartenleser-usb-3-0-type-c-662848`) | 5 | 4 | 4.24–6.99 | 14.90 | Aluminum Alloy Double Reading, Aluminum Alloy Single Reading, USB20 Single Read, ABS Double Reading |
@@ -1059,9 +1057,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Blush 4 Farben – Retouching Kontur (`blush-4-farben-retouching-kontur-2a8863`) | 4 | 4 | 3.75–3.75 | 23.90 | 01style, 03style, 02style, 04style |
 | Transparentes Puder für mattes Finish (`transparentes-puder-fur-mattes-finish-2eca22`) | 4 | 4 | 4.35–4.35 | 23.90 | Banana, Medium dee, Beige, Translucent |
 | Reisebeutel mit Smartphone-Fach – schwarz (`reisebeutel-mit-smartphone-fach-schwarz-085994`) | 4 | 4 | 5.14–6.29 | 25.90 | Black PU leather, Dark grey, Black gray plus size, Khaki |
-| Reiserucksack für Schüler, 40×30×20 cm (`reiserucksack-fur-schuler-40-30-20-cm-635800`) | 4 | 4 | 6.42–6.42 | 31.90 | 9811 Black-40X30X20, White 9811-40X30X20, Gray 9811-40X30X20, Gray Brown 9811-40X30X20 |
-| Robuster Outdoor-Rucksack 36-55L (`robuster-outdoor-rucksack-36-55l-609200`) | 4 | 4 | 14.1–14.1 | 47.90 | Black, Army Green, Brown, Camouflage Color |
-| Nylon Outdoor Rucksack 36-55L – wasserdicht, atmungsaktiv (`nylon-outdoor-rucksack-36-55l-wasserdicht-atmu-620400`) | 4 | 4 | 9.12–9.12 | 29.90 | Black-36to55L, Rose Red-36to55L, Blue-36to55L, Green With Orange-36to55L |
 | Wasserdichter Canvas-Rucksack mit Batik-Muster (`wasserdichter-canvas-rucksack-mit-batik-muster-474112`) | 4 | 4 | 21.21–21.21 | 48.90 | Army Green, Khaki, Dark Gray, Yellowish Brown |
 | Nackenstützkissen mit Massageperlen (`nackenstutzkissen-mit-massageperlen-609000`) | 3 | 3 | 5.2–5.51 | 22.90 | Low Loft Pillow, Medium Pillow, High Pillow |
 | Velo-Scheinwerfer mit USB-Ladefunktion (`velo-scheinwerfer-mit-usb-ladefunktion-725376`) | 3 | 3 | 6.1–16.78 | 22.90 | Standard Model, Upgrade, Flagship |
@@ -1328,4 +1323,3 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Runde Servierplatte aus Canvas (`runde-servierplatte-aus-canvas-625200`) | 2 | 2 | 2.9–4.49 | 22.90 | 8 inchs Round Shallow Plate, 10  inchs  Round Shallow Plate |
 | Keramik-Teeteller "Japanische Landschaft" (`keramik-teeteller-japanische-landschaft-616200`) | 2 | 2 | 5.32–5.32 | 24.90 | Muchun, Twilight |
 | Abnehmbarer Sandsack mit Gewicht (`abnehmbarer-sandsack-mit-gewicht-890944`) | 2 | 2 | 4.82–6.48 | 55.90 | Black-2.5LB, Black-5LB |
-| Wasserdichter Rucksack 20-35L für Herren (`mannlicher-wasserdichter-rucksack-20-35l-606500`) | 2 | 2 | 8.13–8.13 | 27.90 | 2308 Black, 2308 Gray Style |
