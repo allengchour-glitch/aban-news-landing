@@ -2107,6 +2107,36 @@ fi
       echo "$(date -u +%H:%M) tiktok-karussell gebaut + Cowork-Auftrag fortgeschrieben"
     fi
   fi
+  # --- IG-Karussell-VORRAT (19.10.2026, Spähtrupp S1 — GEMESSEN: social/ig_karussell.csv 0 ready, 4 von 6 offenen Slots des 7-Tage-Vorlaufs leer
+  #     («Nichts faellig: kein ready-Karussell», 10 Versuche je Slot). Der 24-h-Block oben baut 2 IG-Sets/Tag bei ~56 % Ausbeute (Preis-/Jury-/
+  #     Fremdtext-Skip) = ~1,1 postbare Sets/Tag gegen 1 Slot/Tag plus Rückstand. Eigenes Tor, damit der 24-h-Takt (TikTok-Sets, Cowork-Auftrag)
+  #     unberührt bleibt: nur IG, nur wenn < 4 ready UND der letzte Vorrats-Lauf > 6 h her ist UND der 24-h-Block nicht gerade läuft (30 min).
+  #     Menge = ceil((4 - ready) / 0,55), höchstens 4 Sets je Lauf (Preis ist ins Bild gebrannt: nicht auf Vorrat über Tage bauen); Quelle wechselt
+  #     hype-jetzt / herbst-favoriten wie oben; flock gegen einen gleichzeitigen Lauf des Bauers.
+  IGV=/tmp/ig_karussell_vorrat.log
+  if [ -f "$REPO/automation/tiktok_karussell.py" ] && [ "$(date -u +%Y%m%d)" -le 20261130 ]; then
+    IGV_ALTER=$(( $(date +%s) - $(stat -c %Y "$IGV" 2>/dev/null || echo 0) ))
+    TTK_ALTER=$(( $(date +%s) - $(stat -c %Y "$TTK" 2>/dev/null || echo 0) ))
+    if [ "$IGV_ALTER" -gt 21600 ] && [ "$TTK_ALTER" -gt 1800 ]; then
+      IGREADY=$(cd "$REPO" && python3 -c "import csv;print(sum(1 for r in csv.DictReader(open('social/ig_karussell.csv',encoding='utf-8')) if (r.get('status') or '').strip()=='ready'))" 2>/dev/null)
+      case "$IGREADY" in ''|*[!0-9]*) IGREADY=9 ;; esac     # unlesbar = nicht bauen
+      if [ "$IGREADY" -lt 4 ]; then
+        touch "$IGV"
+        ( cd "$REPO" && setsid flock -n /tmp/lock_tiktok_karussell.lock bash -c '
+            n=$(( (4 - $0) * 100 / 55 + 1 )); [ "$n" -gt 4 ] && n=4
+            echo "START $(date -u +%FT%TZ) IG-Vorrat: $0 ready → $n Sets"
+            i=0
+            while [ "$i" -lt "$n" ]; do
+              if [ $(( i % 2 )) = 1 ]; then FORMAT=ig MODUS=produkt ANZAHL=1 QUELLE=herbst-favoriten KICKER="Herbst-Favorit" python3 automation/tiktok_karussell.py
+              else FORMAT=ig MODUS=produkt ANZAHL=1 python3 automation/tiktok_karussell.py; fi
+              i=$(( i + 1 ))
+            done
+            bash automation/git_sichern.sh "IG-Karussell-Vorrat [skip ci]" social/instagram social/ig_karussell.csv >/dev/null || echo "IG-Slides: Push fehlgeschlagen"
+            echo "ENDE $(date -u +%FT%TZ)"' "$IGREADY" >> "$IGV" 2>&1 9>&- & )
+        echo "$(date -u +%H:%M) IG-Karussell-Vorrat: $IGREADY ready (< 4) → Nachschub gestartet"
+      fi
+    fi
+  fi
   # Post-Kontrolle (31.08.): merkt, wenn der PC-Autoposter (schtasks 17:31) steht —
   # 3 Tage unveraenderter videoCount bei freier Queue = Bericht. MELDET NUR.
   TPK=/tmp/tiktok_post_kontrolle.log

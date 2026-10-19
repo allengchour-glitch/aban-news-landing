@@ -53,6 +53,14 @@
 
 
 
+## 🎠 Autonome Runde 08:25 (2026-10-19): IG-Karussell-Vorrat — leere Slots im 7-Tage-Vorlauf
+- **GEMESSEN:** `social/ig_karussell.csv` 45 Sets, **0 ready**; `social_vorlauf.py --zeile`: 103 Slots, 6 offen (4 leer, 2 offen), Karussell-Slots 22./23.10. je 10× «Nichts fällig: kein ready-Karussell». Ursache (Spähtrupp S1): der Bauer läuft im 24-h-Block des Aufsehers
+  (Tor `ALTER > 86400` auf `/tmp/tiktok_karussell.log`) und liefert 2 IG-Sets/Tag bei ~56 % Ausbeute (7 preis-veraltet, 6 jury-skip, 4 fremdtext-skip, 3 posted-dup-produkt von 45) = ~1,1 postbare Sets/Tag gegen 1 Slot/Tag plus Rückstand.
+- **Getan:** `fixer_keepalive.sh` neuer Block «IG-Karussell-Vorrat»: eigenes Tor (< 4 ready UND letzter Vorrats-Lauf > 6 h UND der 24-h-Block lief nicht in den letzten 30 min), baut ceil((4 − ready)/0,55) IG-Sets, höchstens 4 je Lauf, Quelle wechselt hype-jetzt / herbst-favoriten
+  (bis 30.11.), `flock` gegen einen gleichzeitigen Bauer, danach Push. Der 24-h-Block (TikTok-Sets, Cowork-Auftrag) bleibt unberührt. Wächter ist die bestehende Vorlauf-Zeile (`ℹ️ … offen 6 (leer 4 …)`); Log `/tmp/ig_karussell_vorrat.log`.
+- **Nicht getan (niedrig):** S1 Schritte 3–5 (Dubletten-Quellen in `schon_verwendet()`, Pause-/Klingen-Filter in `geeignet()`): `posted-dup-produkt` 3 von 45 fängt der Poster ab; die Dateien führen uneinheitliche Schlüssel (`slug:…`, `name:…`, Handle) — erst Format klären.
+  **Nachmessen:** 20.10. `social_vorlauf.py --zeile` (offen/leer soll auf ≤ 2 fallen), `ready` in `social/ig_karussell.csv` ≥ 2.
+
 ## 🛠️ Verbesserungsrunde «alle Verbesserungen und Automationen mit ChatGPT und sonstige» (2026-10-19, ~06:00–08:30 UTC)
 - **Methode:** 7 Spähtrupps (Workflow `wf_62fc1cba-50a`: Aufseher/Tageswächter, Hype, ChatGPT-Brücke, Social, Konnektoren, Google, Platte) lasen und maßen nur; die Skeptiker-Stufe wurde abgebrochen,
   jeder Befund wurde vor dem Umsetzen am Bestand nachgemessen. Rohdaten nur im Sitzungs-Scratchpad, Ergebnisse im Workflow-Journal.
