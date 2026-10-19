@@ -10458,3 +10458,4 @@ ultrahelle-frontleuchte-fur-nachtfahrten-769664	1422069066742501376	7	8.05	ok	la
 haushalts-reinigungsgerat-fur-beauty-porenrein-669184	1367720537018732544	7	19.72	ok	landeseite
 lange-gerade-jeans-632600	2607082355461633400	16	11.00	ok	landeseite
 sicherheitsweste-mit-warnlicht-875520	1420319376837578752	7	9.23	ok	landeseite
+7-in-1-gesichtsreiniger-lifter-216832	1367305186590199808	7	9.37	ok	landeseite

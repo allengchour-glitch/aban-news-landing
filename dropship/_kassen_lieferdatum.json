@@ -1,8 +1,12 @@
 {
- "stand": "2026-10-15T17:21Z",
+ "stand": "2026-10-19T13:20Z",
  "datum_in_kasse": true,
  "bearbeitungszeit_tage": 1,
  "versand_werktage": [
+  [
+   "#1026",
+   5
+  ],
   [
    "#1025",
    3
@@ -57,13 +61,13 @@
    "profile": [
     "CH-Lager"
    ],
-   "anzahl": 2376
+   "anzahl": 2372
   },
   "cj": {
    "profile": [
     "General profile"
    ],
-   "anzahl": 52038
+   "anzahl": 52937
   }
  },
  "ch_lager_im_asien_profil": false,
@@ -80,17 +84,13 @@
   "je_quelle": {},
   "liste": [],
   "produkte": {
-   "gelesen": 1642,
-   "offen_vorher": 755,
-   "geschrieben": 300,
+   "gelesen": 1638,
+   "offen_vorher": 0,
+   "geschrieben": 0,
    "unloesbar": 0,
    "fehler": 0,
-   "beispiele": [
-    "15469973864833",
-    "15469973897601",
-    "15469973930369"
-   ],
-   "offen_nachher": 455
+   "beispiele": [],
+   "offen_nachher": 0
   }
  }
 }
