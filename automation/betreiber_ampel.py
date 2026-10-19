@@ -1410,9 +1410,9 @@ def codex_github(jetzt=None, stand_pfad="/tmp/_codex_github_stand.json"):
         alter_stand = jetzt - os.path.getmtime(stand_pfad)
     except (OSError, ValueError):
         return None
-    if alter_stand > 8 * 3600:
+    if alter_stand > 8 * 3600 or not isinstance(st, dict) or not isinstance(st.get("ungeprueft"), list):
         return None
-    lange = [u for u in st.get("ungeprueft") or [] if jetzt - float(u.get("seit") or jetzt) > 6 * 3600]
+    lange = [u for u in st["ungeprueft"] if isinstance(u, dict) and jetzt - float(u.get("seit") or jetzt) > 6 * 3600]
     if not lange:
         return None
     namen = ", ".join(f"{u['ref'].split('/', 1)[-1][:34]}@{u['sha'][:7]}" for u in lange[:3])
