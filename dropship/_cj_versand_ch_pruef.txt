@@ -10263,3 +10263,5 @@ warme-kinderschuhe-mit-velours-603900	2409270640361604100	16	10.16	ok	landeseite
 fitness-handtuch-fur-herren-und-damen-623300	2605290507541624000	16	7.25	ok	landeseite
 akita-pluschhund-629700	2505111021121629900	16	6.48	ok	landeseite
 reiseplakat-florenz-615000	2604300931131615500	16	4.50	ok	landeseite
+wasserdichte-regenstiefel-fur-kinder-607400	2409270330031607600	16	13.22	ok	landeseite
+spielzeug-mit-ton-und-bissfestigkeit-613200	2503290945061613400	16	6.48	ok	landeseite
