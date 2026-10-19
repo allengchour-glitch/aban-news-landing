@@ -163,9 +163,9 @@
         "suche": "kerze OR kerzen OR duftkerze"
       },
       "titel_ja": [
-        "kerze\\b|kerzen\\b|duftkerze"
+        "kerze\\b|kerzen\\b|duftkerze|teelicht"
       ],
-      "titel_nein": "form\\b|formen|ständer|halter|wärmer|docht|giess|silikon|leuchter|zubehör|herstellung|wachs\\b|regal|wandregal|ornament|figur"
+      "titel_nein": "form\\b|formen|ständer|halter|wärmer|docht|giess|silikon|leuchter|zubehör|herstellung|wachs\\b|regal|wandregal|ornament|figur|100 st"
     }
   ],
   "veto": {
