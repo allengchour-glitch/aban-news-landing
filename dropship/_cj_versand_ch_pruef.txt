@@ -9867,3 +9867,7 @@ fahrradhelm-mit-integriertem-licht-844416	1444927394501758976	16	8.11	ok	landese
 herren-fashion-shirt-mit-print-634100	2606170400311634700	16	7.43	ok	landeseite
 aromadiffuser-mit-glas-wasserbehalter-507840	1745642338082365440	7	13.34	ok	landeseite
 wanderschuhe-furs-wasser-643264	1393911305580187648	16	11.96	ok	landeseite
+wanderstiefel-fur-herbst-und-winter-744192	1390508773981949952	16	16.49	ok	landeseite
+herren-arbeits-und-freizeit-hose-610300	2607060212271611700	16	8.66	ok	landeseite
+doppel-tier-spray-humidifier-242304	1709874649485545472	7	7.78	ok	landeseite
+herren-sweatpants-mit-anzug-taille-615000	2606231544441615700	16	10.83	ok	landeseite
