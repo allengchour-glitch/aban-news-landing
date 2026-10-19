@@ -43,6 +43,7 @@ ROH_AUF_QUEUE = re.compile(r"(?:writeFileSync|appendFileSync)\(\s*(?:CSV|QUEUE|S
 # Datei → Grund. Nur mit Beleg aus der Erfassung 14.10. (Workflow wf_e32fa801-95a) eintragen.
 AUSNAHMEN = {
     "automation/post_guard.mjs": "liest nur (Ledger _posted_media.txt)",
+    "automation/codex_github_wache.py": "nennt reels_seed.csv nur als Pfadklasse für Codex-PR-Dateien (Klartext-Muster); schreibt eigenen Stand/Ledger/Testdateien, nie eine Queue",
     "automation/ig_aufraeumen.mjs": "liest nur",
     "automation/linkinbio_sync.mjs": "liest nur",
     "automation/fb_link_kommentar.mjs": "liest nur",
