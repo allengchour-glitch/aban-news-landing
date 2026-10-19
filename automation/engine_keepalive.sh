@@ -664,6 +664,8 @@ python3 "$REPO_AUTO/cj_zahlung_offen.py" 2>/dev/null || echo "CJ-ZAHLUNG: unklar
 # NIE (zwei ChatGPT-Videos standen so 18.10. 18:30/18:45 im Leeren); dazu Fehler, haengende und doppelte Produkt-Posts.
 # Eine Zeile, Ursache + Klassen im Kopf von automation/metricool_planer_wache.py. Bericht in den Tick, wenn ⚠️.
 [ -f "$REPO_AUTO/metricool_planer_wache.py" ] && { timeout 90 python3 "$REPO_AUTO/metricool_planer_wache.py" --shop 2>/dev/null || echo "METRICOOL-PLANER: unklar (Wache abgebrochen)"; }
+# 19.10.2026: Briefkasten ChatGPT → Claude (dropship/CHATGPT-AUFTRAEGE.md): fehlen Einträge, kommt der Termin, ist etwas ohne Prüfung live? Rein lesend.
+[ -f "$REPO_AUTO/chatgpt_briefkasten_wache.py" ] && { timeout 90 python3 "$REPO_AUTO/chatgpt_briefkasten_wache.py" 2>/dev/null || echo "CHATGPT-BRIEFKASTEN: unklar (Wache abgebrochen)"; }
 # 18.10.2026: 7-Tage-Vorlauf (automation/social_vorlauf.py) — eine Zeile aus dem Plan; ⚠️ bei Lücken in den nächsten 12 h oder altem Stand.
 [ -f "$REPO_AUTO/social_vorlauf.py" ] && { timeout 30 python3 "$REPO_AUTO/social_vorlauf.py" --zeile 2>/dev/null || echo "VORLAUF: unklar (Zeile nicht lesbar)"; }
 # 18.10. (Prüfung): unter _SOCIAL_STOPP zieht der Prüfer die vorausgeplanten Posts zurück — der Autopilot startet unter Stopp nicht, also auch hier (idempotent, billig).
