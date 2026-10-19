@@ -2937,3 +2937,5 @@
 16651921326471	Farbe:7:7	2026-10-19	baumwoll-leinen-schal-mit-batik-626800
 16651920343431	Farbe:2+Grösse:2:4	2026-10-19	nylon-rucksack-b9e200
 16652817367431	Grösse:3:3	2026-10-19	apfelkissen-pluschkissen-fur-kinder-621800
+16652815303047	Farbe:6+Grösse:16:96	2026-10-19	weisser-einzigartig-geformter-winterplusch-sof-606800
+16652814582151	Farbe:2+Grösse:10:20	2026-10-19	sofabedeckung-pflanzenmuster-180x260cm-637600
