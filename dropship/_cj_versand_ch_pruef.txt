@@ -10261,3 +10261,5 @@ wohnzimmer-wanddekoration-616500	2605170926551617000	11	29.93	ok	landeseite
 dickes-ubergrosses-badetuch-aus-baumwolle-620400	2606181005331621300	16	9.88	ok	landeseite
 warme-kinderschuhe-mit-velours-603900	2409270640361604100	16	10.16	ok	landeseite
 fitness-handtuch-fur-herren-und-damen-623300	2605290507541624000	16	7.25	ok	landeseite
+akita-pluschhund-629700	2505111021121629900	16	6.48	ok	landeseite
+reiseplakat-florenz-615000	2604300931131615500	16	4.50	ok	landeseite
