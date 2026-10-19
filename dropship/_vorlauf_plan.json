@@ -319,12 +319,12 @@
    "basis_utc": "2026-10-24T19:15:00Z",
    "format": "karussell",
    "grund": "rc=0: Nichts faellig: kein ready-Karussell.",
-   "letzter_versuch": "2026-10-19T04:02:01Z",
+   "letzter_versuch": "2026-10-19T04:17:24Z",
    "mc_ids": [],
-   "reserviert_um": "2026-10-19T04:02:01Z",
+   "reserviert_um": "2026-10-19T04:17:24Z",
    "status": "offen",
    "termin_utc": "2026-10-24T19:15:00Z",
-   "versuche": 1
+   "versuche": 2
   },
   "karussell-20261025T2015": {
    "basis_utc": "2026-10-25T20:15:00Z",
@@ -1493,13 +1493,13 @@
   "tiktok-20261025T0705": {
    "basis_utc": "2026-10-25T07:05:00Z",
    "format": "tiktok",
-   "grund": "rc=3: Nichts faellig: kein ready-Reel, dessen Video noch nirgends gepostet wurde (tiktok; Marke bleibt alt, Exit 3).",
-   "letzter_versuch": "2026-10-19T04:02:11Z",
+   "grund": "rc=3: Die Videoqualität ist mangelhaft, unscharf und der Hintergrund mit technischen Dokumenten wirkt extrem unprofessionell und ablenkend. Die Präsentation wirkt bil",
+   "letzter_versuch": "2026-10-19T04:18:01Z",
    "mc_ids": [],
-   "reserviert_um": "2026-10-19T04:02:11Z",
-   "status": "offen",
+   "reserviert_um": "2026-10-19T04:18:01Z",
+   "status": "reserviert",
    "termin_utc": "2026-10-25T07:05:00Z",
-   "versuche": 6
+   "versuche": 8
   },
   "tiktok-20261025T1205": {
    "basis_utc": "2026-10-25T12:05:00Z",
@@ -1746,6 +1746,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-19T04:02:19Z",
+ "stand": "2026-10-19T04:18:01Z",
  "version": 1
 }
