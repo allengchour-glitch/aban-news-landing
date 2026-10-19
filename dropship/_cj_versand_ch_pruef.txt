@@ -10562,3 +10562,6 @@ bequeme-laufschuhe-708864	1776095811248594944	16	19.99	ok	landeseite
 herrenuhr-mit-leuchtfunktion-621200	2505100236261621400	7	7.45	ok	landeseite
 kampfsport-schuhe-333184	1774616833509830656	16	7.57	ok	landeseite
 einfaches-herrenarmbanduhr-603400	2505080132131604000	7	6.26	ok	landeseite
+sportuhr-mit-leuchtfunktion-604200	2505070921201604500	7	6.49	ok	landeseite
+einfaches-zelt-612400	2604160700311613100	11	30.63	ok	landeseite
+casual-plattform-sneaker-970048	1769984280396050432	16	18.36	ok	landeseite
