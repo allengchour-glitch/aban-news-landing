@@ -10287,3 +10287,8 @@ wasserdichte-kinderschuhe-aus-leder-606000	2407040155031606300	16	9.20	ok	landes
 pluschspielzeug-mit-flattergerausch-625600	2501220859561625800	7	6.93	ok	landeseite
 leder-laufschuhe-fur-kinder-627000	2407030551201627300	16	11.37	ok	landeseite
 yoga-stretch-strap-set-638200	2603050224061638600	16	8.64	ok	landeseite
+laufschuhe-mit-rollen-604100	2406270239021604300	7	23.88	ok	landeseite
+cartoon-bademantel-fur-kinder-615900	2604270751321616800	16	11.00	ok	landeseite
+halblederhalsband-mit-edelstahl-kette-619200	2603120645411610400	16	5.93	ok	landeseite
+kinder-badeschuhe-603300	2406170407321603500	16	8.93	ok	landeseite
+dickes-korallen-fleece-badetuch-604100	2604251513001604600	16	11.10	ok	landeseite

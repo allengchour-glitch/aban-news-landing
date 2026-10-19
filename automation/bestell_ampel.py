@@ -202,7 +202,10 @@ def main():
             # 19.10.2026 (Betreiber «1024 check? mail? wo ist es»): von Hand bestellte Ware (Mister DTF, A-Post ohne Sendungsnummer)
             # hat keinen Abgleich — ohne diese Frist stand #1024 acht Tage ohne ⚠️ da. Zusage 3–5 Arbeitstage + A-Post ≈ 8 Tage.
             if not warn and h > 240 and any(str(watch[k].get("status", "")).startswith("MANUELL") for k in lx):
-                warn = f" ⚠️ seit {h / 24:.0f} T ohne Versandnachweis → beim Anbieter nachfragen (Kundin informieren)"
+                if any(str(watch[k].get("status", "")).startswith("MANUELL") and watch[k].get("tracking") for k in lx):
+                    warn = f" ⚠️ seit {h / 24:.0f} T offen, Sendungsnummer vorhanden → in Shopify als versandt buchen"   # 19.10. (AMP-3)
+                else:
+                    warn = f" ⚠️ seit {h / 24:.0f} T ohne Versandnachweis → beim Anbieter nachfragen (Kundin informieren)"
             # 12.10.2026 (#1025): Der Bestell-Automat legt den CJ-Auftrag sofort an und schreibt ihn ins Ledger; der
             # Abgleich (cj_order_watch, Zustand oben) lief nur alle 2 h. Die Ampel zeigte «KEIN CJ-Auftrag», obwohl
             # LX1025 seit Minuten auf ZAHLUNG wartete — genau die Zeile, die der Betreiber zum Bezahlen braucht.

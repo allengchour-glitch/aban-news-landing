@@ -313,7 +313,7 @@ if [ "${TMPV:-0}" -ge 85 ]; then
 fi
 # 19.10.2026: PLATTE — Zeile «PLATTE: frei X GB · .git …» in jeder Meldung; packt lose Git-Objekte (> 1 GiB oder > 20'000), sonst wuchs .git
 #    auf 13 GB bei 2,0 GB frei (gc.auto=0, nie ein repack). Entscheidet nach dem ZUSTAND, nicht nach touch (automation/platte_wartung.sh).
-bash "$REPO/automation/platte_wartung.sh" 2>/dev/null || echo "PLATTE: unklar (platte_wartung.sh fehlgeschlagen)"
+timeout 120 bash "$REPO/automation/platte_wartung.sh" 2>/dev/null || echo "PLATTE: unklar (platte_wartung.sh fehlgeschlagen oder > 120 s)"
 #    (Die Server-Geheimnisdatei /etc/luxe/secrets.env wird seit 13.10.2026 ganz oben geladen, vor den /tmp-Zugangsdateien.)
 #    Text-KI vorhanden? (für Grind/Such-Runner, Abschnitte 2/3) — früh berechnet, damit es auch im Vorrang-Fenster gilt.
 KI_DA=0
@@ -618,7 +618,7 @@ if [ -f /tmp/kost28.jsonl ] && [ -f "$REPO_AUTO/preis_verlustschutz.py" ] \
   ( cd "$K_REPO" && starte preis_verlustschutz bash -c "exec 9>/tmp/lock_preis_verlustschutz.lock; flock -n 9 || exit 0; echo \"START \$(date -u +%FT%TZ) (Keepalive)\"; SCHARF=1 EXPORT=/tmp/kost28.jsonl exec python3 automation/preis_verlustschutz.py" )
 fi
 
-python3 "$REPO_AUTO/bestell_ampel.py" 2>/dev/null || echo "BESTELLUNGEN: unklar (Ampel-Skript fehlt)"
+timeout 180 python3 "$REPO_AUTO/bestell_ampel.py" 2>/dev/null || echo "BESTELLUNGEN: unklar (Ampel-Skript fehlt oder > 180 s)"   # 19.10. (AMP-6): timeout
 # 19.10.2026: Pflichten, die nur eine Claude-Sitzung erledigen kann (Search Console über den OpenSEO-Konnektor): als Zeile, die die 4-h-Routine liest
 python3 "$REPO/tools/gsc_schnappschuss.py" --faellig 2>/dev/null || true
 # 05.10.2026 Betreiber «jeder kauf muss auch automatisch auslösen bei fortuna»: Fortura-Positionen bezahlter Bestellungen
@@ -659,7 +659,7 @@ python3 "$REPO_AUTO/cj_zahlung_offen.py" 2>/dev/null || echo "CJ-ZAHLUNG: unklar
 # BETREIBER-AMPEL (04.09.2026, «mach das alles geht ohne mich»): EINE Zeile mit dem, was
 # gerade wirklich einen Menschen braucht — messbare Blocker werden LIVE nachgemessen und
 # verschwinden von selbst, der unmessbare Rest wird nur gezaehlt. Schweigt, wenn nichts ist.
-[ -f "$REPO_AUTO/betreiber_ampel.py" ] && python3 "$REPO_AUTO/betreiber_ampel.py" 2>/dev/null
+[ -f "$REPO_AUTO/betreiber_ampel.py" ] && timeout 300 python3 "$REPO_AUTO/betreiber_ampel.py" 2>/dev/null   # 19.10. (AMP-6): timeout
 # METRICOOL-PLANER (18.10.2026): liest den Planer (nur lesend) — Entwuerfe/autoPublish=false, deren Termin verstrich, erscheinen
 # NIE (zwei ChatGPT-Videos standen so 18.10. 18:30/18:45 im Leeren); dazu Fehler, haengende und doppelte Produkt-Posts.
 # Eine Zeile, Ursache + Klassen im Kopf von automation/metricool_planer_wache.py. Bericht in den Tick, wenn ⚠️.

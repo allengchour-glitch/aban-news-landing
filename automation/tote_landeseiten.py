@@ -283,6 +283,7 @@ TITEL_ZIEL = [
     ("schaukelstuhl", "garten-balkon"),
     ("enthaarung", "beauty-geraete"),
     ("bonbons", "suesses-esswaren"),
+    ("duschvorhang", "duschvorhaenge"), ("duschvorhäng", "duschvorhaenge"),    # Prüfung G2-4: eigene Kollektion statt allgemeiner Vorhänge
     ("vorhang", "vorhaenge"), ("vorhäng", "vorhaenge"),
     ("stofftasche zum selbstgestalten", "sg-taschen"), ("tote zum selbstgestalten", "sg-taschen"),
     # Mäntel/Jacken NUR mit «für Damen» — «mantel» allein schickte einen Herrenmantel auf die Damen-Kollektion
@@ -372,6 +373,7 @@ PRAEFIX_ZIEL = [(re.compile(r"(?:hunde?|katzen?|haustier|tier)$"), "sub-haustier
                 (re.compile(r"werkzeug$"), "werkzeug-maschinen"),
                 (re.compile(r"(?:auto|kfz)$"), "auto-kfz-zubehoer")]
 ANFANG_WORT = {"hunde", "katzen", "damen", "herren"}
+WORT_NICHT_NACH = {"napf": r"saug", "mantel für damen": r"(?:bade|morgen)", "mantel fur damen": r"(?:bade|morgen)"}   # Warenwort → Regex für das, was DIREKT davor NICHT stehen darf (Wortteil-Falle, Lehre 9b)
 # 13.10.2026: Tier-Ziele — «für Katzen» oder «Katzen-…» wechselt hier die Abteilung NICHT (sonst landete
 # «Automatischer Futterspender für Katzen» auf sub-haustier mit 3'704 Produkten statt auf futterautomaten).
 TIER_ZIELE = ("sub-haustier", "haustier-napf-futter", "futterautomaten", "trinkbrunnen-katzen")
@@ -391,12 +393,18 @@ def _tabelle(haupt, ohne=()):
         if wort in ohne:
             continue
         if not re.fullmatch(r"[a-zäöüß]+", wort):
-            if wort in haupt or wort.replace("-", " ") in haupt:
+            # 19.10. (Prüfung G2-3): auch Wörter mit Leerzeichen/Bindestrich kennen Wortteil-Fallen («Bademantel für Damen» ist kein Mantel für Damen)
+            treffer = [m.start() for w in {wort, wort.replace("-", " ")} for m in re.finditer(re.escape(w), haupt)]
+            if wort in WORT_NICHT_NACH:
+                treffer = [i for i in treffer if not re.search(WORT_NICHT_NACH[wort] + "$", haupt[:i])]
+            if treffer:
                 return ziel
             continue
         for m in re.finditer(re.escape(wort), haupt):
-            vor = re.search(r"([a-zäöüß]+)-?$", haupt[:m.start()])
-            praefix = vor.group(1) if vor and (m.start() == 0 or haupt[m.start() - 1] in "abcdefghijklmnopqrstuvwxyzäöüß-") else ""
+            if wort in WORT_NICHT_NACH and re.search(WORT_NICHT_NACH[wort] + "$", haupt[:m.start()]):
+                continue          # 19.10. (G2-1): «Saugnapf-Hakenleiste» ist kein Napf
+            vor = re.search(r"([a-zäöüß]+)[- ]?$", haupt[:m.start()])   # 19.10. (G2-2): auch «hunde schaukelstuhl» (Handle-Text hat Leerzeichen statt «-»)
+            praefix = vor.group(1) if vor and (m.start() == 0 or haupt[m.start() - 1] in "abcdefghijklmnopqrstuvwxyzäöüß- ") else ""
             if haupt[m.start() - 1:m.start()] == "-" and not vor:
                 praefix = ""
             if wort in ANFANG_WORT:
@@ -541,6 +549,10 @@ KANARIEN = [   # (Titel, verbotenes Wort im Ziel oder None, erlaubte Kategorie o
     ("Herren Wintermantel aus Wolle", None, None),               # «mantel» allein darf nicht auf die Damen-Kollektion
     ("Spool-Halter für Fadenrollen", None, None),                # «pool» als Wortteil
     ("Drohnentasche wasserdicht", None, None),                   # Wortteil «Drohne|ntasche» ist keine Drohne
+    ("Bademantel für Damen aus Baumwolle", None, None),          # Prüfung G2-3: «Bademantel für Damen» ist kein Damenmantel
+    ("Duschvorhang 180x200 wasserdicht", None, "/collections/duschvorhaenge"),   # Prüfung G2-4
+    ("Drehbare Saugnapf-Hakenleiste für Türen", None, None),     # Prüfung 19.10. (G2-1): «Saugnapf» ist kein Napf
+    ("Robustes Saugnapf-Kauspielzeug für Hunde", None, None),    # … und die Hunde-Variante bleibt streng offen (sub-haustier zu gross)
     # 13.10. Prüfung: Wortteile/Komposita (Lehre 9b/16d)
     ("Hundehalskette aus Edelstahl mit Dornen", None, "/collections/sub-haustier"),
     ("Alu-Werkzeugkoffer 176 Teile für jeden Einsatz", "reise", "/collections/werkzeug-maschinen"),

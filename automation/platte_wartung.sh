@@ -36,6 +36,9 @@ messen() {
   LOSE_ANZAHL=${PLATTE_LOSE_ANZAHL:-$(printf '%s\n' "$cnt" | awk -F': ' '$1=="count"{print $2}')}
   LOSE_KIB=${PLATTE_LOSE_KIB:-$(printf '%s\n' "$cnt" | awk -F': ' '$1=="size"{print $2}')}
   PACK_KIB=$(printf '%s\n' "$cnt" | awk -F': ' '$1=="size-pack"{print $2}')
+  # 19.10. (Prüfung PL-3): scheitert `git count-objects` (kein Repo, Besitzerprüfung, Sperre), stand «Pack 0.0 GB + lose 0 MB» ohne Warnzeichen —
+  # eine Messlücke sah aus wie ein sauberes Repo. Jetzt: MESSFEHLER=1, die Zeile sagt «Git-Messung fehlgeschlagen».
+  MESSFEHLER=0; [ -z "$cnt" ] && [ -z "${PLATTE_LOSE_KIB:-}" ] && MESSFEHLER=1
   : "${LOSE_ANZAHL:=0}" "${LOSE_KIB:=0}" "${PACK_KIB:=0}"
   if [ -n "${PLATTE_DF:-}" ]; then
     FREI_KIB=${PLATTE_DF%% *}; GESAMT_KIB=${PLATTE_DF##* }
@@ -51,6 +54,9 @@ zeile() {
   lose_mb=$(awk -v k="$LOSE_KIB" 'BEGIN{printf "%d", k/1024}')
   pack_gb=$(awk -v k="$PACK_KIB" 'BEGIN{printf "%.1f", k/1048576}')
   [ "$FREI_KIB" -lt "$WARN_FREI_KIB" ] && warn="⚠️ "
+  if [ "${MESSFEHLER:-0}" = 1 ]; then
+    echo "⚠️ PLATTE: frei ${frei_gb} GB · .git unklar (git count-objects fehlgeschlagen)${1:+ · $1}"; return
+  fi
   echo "${warn}PLATTE: frei ${frei_gb} GB · .git Pack ${pack_gb} GB + lose ${lose_mb} MB (${LOSE_ANZAHL} Objekte)${1:+ · $1}"
 }
 
@@ -79,7 +85,7 @@ tmp_leichen_raeumen() {
 # tmp_pack-Reste im Pack-Ordner (ein per SIGKILL beendetes pack-objects lässt sie liegen, bis 1,8 GB); nur wenn niemand packt und älter 2 h
 tmp_pack_raeumen() {
   [ -d "$REPO/.git/objects/pack" ] || return 0
-  pgrep -x pack-objects >/dev/null 2>&1 && return 0
+  pgrep -f "[g]it.* pack-objects" >/dev/null 2>&1 && return 0   # 19.10. (PL-2): `pgrep -x pack-objects` traf nie — der Prozessname (comm) ist «git»
   find "$REPO/.git/objects/pack" -maxdepth 1 -name 'tmp_*' -mmin +120 -delete 2>/dev/null
 }
 
@@ -90,8 +96,12 @@ starte_packen() {
       echo "START $(date -u +%FT%TZ)"
       nice -n 10 timeout 3300 git -c pack.windowMemory=512m -c pack.threads=3 -c pack.deltaCacheSize=128m repack -d -q
       rc=$?
-      git -C "$0" count-objects -v 2>/dev/null | awk -F": " '"'"'$1=="size"{k=$2} $1=="count"{n=$2} END{print k, n}'"'"' > "$1"
-      echo "ENDE rc=$rc $(date -u +%FT%TZ)"' "$REPO" "$REST_DATEI" >> /tmp/git_repack.log 2>&1 9>&- </dev/null & )
+      # 19.10. (Prüfung wf_8ad620bc, PL-1): Rest NUR nach erfolgreichem Packen schreiben — nach ENOSPC/Timeout hielte er sonst die
+      # ganze lose Menge für «unerreichbar» und die Wartung packte erst wieder, wenn 300 MiB MEHR dazukämen.
+      [ "$rc" = 0 ] && git -C "$0" count-objects -v 2>/dev/null | awk -F": " '"'"'$1=="size"{k=$2} $1=="count"{n=$2} END{print k, n}'"'"' > "$1"
+      echo "ENDE rc=$rc $(date -u +%FT%TZ)"' "$REPO" "$REST_DATEI" >> /tmp/git_repack.log 2>&1 9>&- </dev/null & ) >/dev/null 2>&1
+  # ↑ 19.10. (AMP-1): die Klammer selbst auf /dev/null — sonst hielt sie das stdout von `$(starte_packen)` offen, und der Keepalive
+  # wartete (ohne timeout) bis zum Ende von `git repack` (bis 55 min), noch vor dem Aufseher-Schritt.
   echo "Packen gestartet"
 }
 

@@ -357,12 +357,20 @@ AUSGEMUSTERT = "hype-bild-schwach"
 NETZGERAET = re.compile(r"Gl[äa]tt(eisen|b[üu]rste)|Lockenstab|Haartrockner|F[öo]hn\b|Wasserkocher|Kaffeemaschine|Toaster|B[üu]geleisen|Dampfglätt|Dampfreiniger|"
                         r"Heizl[üu]fter|Heizdecke|Heizkissen|Fritteuse|Standmixer|Entsafter|Netzteil|Ladeger[äa]t|Waffeleisen|Waffelmaschine|Sandwichmaker|Reiskocher|"
                         r"Airfryer|Kontaktgrill|Eismaschine|Epilierer|Haarschneider|Warmluftb[üu]rste|Schallzahnb[üu]rste|"
-                        r"Beamer|Futterautomat|Futterspender|Wasserspender|Karaoke[- ]?System", re.I)   # 19.10.: Geräte, die cj_stecker_pruefen.MAINS (noch) nicht kennt
+                        r"Beamer|Futterautomat|Futterspender|Wasserspender|Karaoke[- ]?System|"
+                        # 19.10. (Prüfung wf_8ad620bc, HYPE-1): die EIGENEN Hype-Themen fehlten im Tor — «Mini-Projektor», «Glätt- & Lockenbürste», «Ladestation
+                        # 3-in-1», «Kerzenwärmer-Lampe», «Heizbare Decke» kamen ohne Ledger-Eintrag durch. Ladestation/Charger/Adapter wie cj_stecker_pruefen.MAINS (13.10.);
+                        # nicht MAINS komplett (Staubsauger = Akku-Mini-Sauger sind ein Hype-Thema, «IPL» steckt in «Lipliner»).
+                        r"Projektor|Locken-?b[üu]rste|Haargl[äa]tter|Ladestation|Lade-?st[äa]nder|Ladedock|Charger|Netz-?adapter|Lade-?adapter|Kerzenw[äa]rmer|"
+                        r"Heizbar\w*\s+(?:Decke|Weste|Jacke|Kissen)|Hei[zß]+jacke", re.I)   # 19.10.: Geräte, die cj_stecker_pruefen.MAINS (noch) nicht kennt
 NETZ_NICHT = re.compile(r"Auto-?Ladeger|KFZ|Zigarettenanz|Kabel\b|Ladekabel|Solar|f[üu]rs Auto\b|USB", re.I)
 STECKER_LEDGER = "dropship/_cj_stecker_geprueft.txt"
 STECKER_OK = ("kein-stecker-merkmal", "nur-eu-version", "cj-", "eu-sku-gesetzt")
 SPERR_TAGS_HYPE = {"stecker-unklar", "titel-englisch-uebersetzen", "nicht-bewerben", "nicht-live-moebel-sperrig", "medizinprodukt-pruefen", "18plus", "raucher",
-                   "waffengesetz-verboten", "waffe-pruefen", "bild-zu-klein", "duplikat-auto-draft"}
+                   "waffengesetz-verboten", "waffe-pruefen", "bild-zu-klein", "duplikat-auto-draft",
+                   # 19.10. (HYPE-2): CJ führt ≥ 2 Varianten, der Shop nur «Default Title» — die Bilder zeigen eine Wahl, die die Kundin nicht treffen kann,
+                   # der Bestell-Automat stoppt «manuell prüfen» (cj_sku_import.mjs). Fällt von selbst weg, sobald auswahl_nachruesten.py die Wahl nachgerüstet hat.
+                   "auswahl-offen"}
 
 
 def stecker_status():
@@ -713,7 +721,11 @@ def selbsttest_themen():
     stecker_faelle = [("Mini Waffeleisen", "gid://shopify/Product/1", False), ("Mini Waffeleisen", "gid://shopify/Product/2", True),
                       ("Haarglätter Keramik", "gid://shopify/Product/3", True), ("Haarglätter Keramik", "gid://shopify/Product/4", False),
                       ("Haarglätter Keramik", "gid://shopify/Product/5", False), ("Haarglätter Keramik", "gid://shopify/Product/6", True),
-                      ("Haarglätter Keramik", "gid://shopify/Product/99", False),           # Titel ist kein Netzgerät-Wort und das Ledger kennt ihn nicht
+                      ("Haarglätter Keramik", "gid://shopify/Product/99", True),            # 19.10. (HYPE-1): Haarglätter IS ein Netzgerät, Ledger kennt ihn nicht = nicht belegt
+                      ("Mini-Projektor Home Office", "gid://shopify/Product/99", True), ("Glätt- & Lockenbürste 2-in-1", "gid://shopify/Product/99", True),
+                      ("3-in-1 Ladestation für Apple Watch", "gid://shopify/Product/99", True), ("Kerzenwärmer-Lampe mit Timer", "gid://shopify/Product/99", True),
+                      ("Heizbare Decke Winter", "gid://shopify/Product/99", True), ("Heizjacke USB Damen", "gid://shopify/Product/99", False),   # USB-Gerät
+                      ("Akku Mini-Staubsauger kabellos", "gid://shopify/Product/99", False), ("Lipliner Set", "gid://shopify/Product/99", False),
                       ("Glätteisen Keramik", "gid://shopify/Product/99", True),             # Netzgerät-Wort, kein Ledger-Eintrag = nicht belegt
                       ("USB-Lockenstab kabellos", "gid://shopify/Product/98", False),       # USB = kein Netzgerät, nicht im Ledger
                       ("Herzförmiges Kniekissen", "gid://shopify/Product/98", False), ("Autoladegerät Dual USB", "gid://shopify/Product/98", False),
@@ -734,8 +746,11 @@ def main():
         kontaktbogen()
         return
     print(f"Quelle der Themen: {QUELLE}\n", flush=True)
-    abgelaufene_raeumen()
-    reste_raeumen()
+    if os.environ.get("VORSCHLAG") == "1":
+        print("VORSCHLAG=1: kein Aufräumen (tagsRemove/tagsAdd) in diesem Lauf — nur lesen.", flush=True)   # 19.10. (Prüfung HYPE-4)
+    else:
+        abgelaufene_raeumen()
+        reste_raeumen()
     # ⚠️ NUR_RAEUMEN=1 (16.08.2026): Der tägliche Aufseher-Lauf räumt NUR Abgelaufenes ab und
     # nimmt NICHTS Neues auf. Grund, teuer gelernt am 15.08.: Die Zahlenprüfung ersetzt keinen
     # Blick — fünf Produkte mit untauglichen Bildern (Lieferanten-Collage, englische Infografik,

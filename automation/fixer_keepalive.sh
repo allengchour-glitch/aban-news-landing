@@ -92,6 +92,27 @@ letzter_lauf() {
   fi
 }
 
+# 19.10.2026 (Prüfung wf_8ad620bc, Befund A6): Blöcke mit `touch STEMPEL` VOR dem Lauf verloren den Tag, wenn die Schranke voll war
+# (`timeout T` mit T < 2700 s tötete den Wartenden lautlos, der Stempel stand schon). lauf_mit_stempel STEMPEL T CMD… läuft wie
+# `timeout T CMD` mit kurzer Schranken-Wartezeit (SCHRANKE_WARTE 90 s, der Aufseher steht nicht 15–25 min); kam der Lauf wegen
+# voller Schranke nicht zustande (Exit 75), nimmt es den Stempel zurück — der nächste Tick versucht es erneut, höchstens 6× je Stempel.
+# Exit 124 (Lauf selbst zu lang) wird NICHT wiederholt.
+lauf_mit_stempel() {
+  local stamp="$1" t="$2" rc n; shift 2
+  SCHRANKE_WARTE="${SCHRANKE_WARTE:-90}" timeout "$t" "$@"; rc=$?
+  if [ "$rc" = 75 ]; then
+    n=$(cat "$stamp.versuche" 2>/dev/null); case "$n" in ''|*[!0-9]*) n=0 ;; esac
+    if [ "$n" -lt 6 ]; then
+      echo $(( n + 1 )) > "$stamp.versuche"; rm -f "$stamp"
+      echo "$(date -u +%H:%M) $(basename "$stamp"): Schranke voll, kein Lauf — Stempel zurück, Versuch $(( n + 1 ))/6"
+    else
+      echo "$(date -u +%H:%M) $(basename "$stamp"): Schranke 6× voll — Tag verloren, morgen wieder"
+    fi
+  fi
+  return $rc
+}
+export -f lauf_mit_stempel
+
 still_gestorben() {
   local log="$1" boot z n
   [ -f "$log" ] || return 1
@@ -651,6 +672,10 @@ while true; do
     # wie bisher). Anlass: Schranke-Timeout schrieb ein falsches FERTIG (startseite_gewicht: Ergebnis 114 h alt, Tor «erledigt»).
     ERG_ZN=0; ERG_H=$(tageslauf_ergebnis_h "$L")
     if [ "$ZN" = 0 ] && [ -n "$ERG_H" ] && tageslauf_pruefen "$L" "$ERG_H" "$(tageslauf_max_h "$L")" 40 6; then ZN=1; ERG_ZN=1; fi
+    # 19.10.2026 (Prüfung wf_8ad620bc, A4): für einen REGISTRIERTEN Wächter entscheidet allein das Ergebnis. Nicht fällig (Ergebnis frisch, Claim,
+    # Sperre) oder 6 Versuche heute verbraucht → heute nicht starten. Ohne diese Zeile fiel er nach dem 6. Versuch ins alte Log-Tor
+    # («kein FERTIG → starten») und lief bei jedem Tick neu.
+    if [ "$ZN" = 0 ] && [ -n "$ERG_H" ]; then continue; fi
     # 19.10.2026 (Spähtrupp G3): «Schranke 45 min voll» + FERTIG ist KEIN Vollzug — der alte Wrapper schrieb FERTIG nach dem Exit 0
     # der vollen Schranke (8 Wächter am 18.10. 20:56–20:59 bis ~17:00 UTC des Folgetags gesperrt; der Schranke-Exit 75 verhindert nur
     # NEUE falsche FERTIG). Steht die Schranke-Zeile in den letzten 3 Zeilen des Laufs, zählt das FERTIG nicht.
@@ -1767,7 +1792,7 @@ fi
 SA_STAMP=/tmp/sonderanf_$(date -u +%F)_$(( 10#$(date -u +%H) / 6 )).stamp
 if [ -f "$REPO/automation/sonderanfertigung_wache.py" ] && [ ! -f "$SA_STAMP" ]; then
   touch "$SA_STAMP"
-  ( cd "$REPO" && TAGE=2 timeout 900 bash automation/shopify_schranke.sh python3 automation/sonderanfertigung_wache.py --scharf 2>&1 | tail -1 | tee -a /tmp/sonderanfertigung.log )
+  ( cd "$REPO" && TAGE=2 lauf_mit_stempel "$SA_STAMP" 900 bash automation/shopify_schranke.sh python3 automation/sonderanfertigung_wache.py --scharf 2>&1 | tail -1 | tee -a /tmp/sonderanfertigung.log )
 fi
 # --- Lieferzeit-Kasten nennt Liechtenstein (10.10.2026, dropship/OPENSEO-START-2026-10-10.md) — täglich über die in
 #     2 Tagen geänderten Produkte: «Versand nur in die Schweiz» ohne «und nach Liechtenstein» im <p class="ls-liefer">
@@ -1775,7 +1800,7 @@ fi
 #     die Form ohne LI (beide korrigiert); Kanarien (5) im Skript vor jedem Lauf.
 if [ -f "$REPO/automation/lieferblock_li.py" ] && [ ! -f /tmp/lieferblock_li_$(date -u +%F).stamp ] && [ "$(date -u +%H)" -ge 5 ]; then
   touch /tmp/lieferblock_li_$(date -u +%F).stamp
-  ( cd "$REPO" && TAGE=2 timeout 1500 bash automation/shopify_schranke.sh python3 automation/lieferblock_li.py --scharf 2>&1 | tail -1 | tee -a /tmp/lieferblock_li.log )
+  ( cd "$REPO" && TAGE=2 lauf_mit_stempel /tmp/lieferblock_li_$(date -u +%F).stamp 1500 bash automation/shopify_schranke.sh python3 automation/lieferblock_li.py --scharf 2>&1 | tail -1 | tee -a /tmp/lieferblock_li.log )
 fi
 # --- Kollektionen für grosse Suchbegriffe (10.10.2026, OpenSEO: «handstaubsauger» 5'400/Mt auf Pos 72 ohne Kollektion,
 #     dropship/SUCHBEGRIFF-KOLLEKTIONEN-2026-10-10.md) — täglich: Neuimporte der letzten 2 Tage bekommen/verlieren den Tag
@@ -1783,7 +1808,7 @@ fi
 #     (Titel, SEO, Regel, 8 Kanäle). Kanarien (59) im Skript vor jedem Lauf.
 if [ -f "$REPO/automation/suchbegriff_kollektionen.py" ] && [ ! -f /tmp/suchbegriff_koll_$(date -u +%F).stamp ] && [ "$(date -u +%H)" -ge 6 ]; then
   touch /tmp/suchbegriff_koll_$(date -u +%F).stamp
-  ( cd "$REPO" && TAGE=2 timeout 900 bash automation/shopify_schranke.sh python3 automation/suchbegriff_kollektionen.py --scharf 2>&1 | tail -1 | tee -a /tmp/suchbegriff_kollektionen.log
+  ( cd "$REPO" && TAGE=2 lauf_mit_stempel /tmp/suchbegriff_koll_$(date -u +%F).stamp 900 bash automation/shopify_schranke.sh python3 automation/suchbegriff_kollektionen.py --scharf 2>&1 | tail -1 | tee -a /tmp/suchbegriff_kollektionen.log
     timeout 300 python3 automation/suchbegriff_kollektionen.py --kollektionen --scharf 2>&1 | grep -E "NEU|ANGLEICHEN|⚠️" | tee -a /tmp/suchbegriff_kollektionen.log )
 fi
 # --- 📵 Mobilfunkgeräte nur 2G/3G (10.10.2026, dropship/MOBILFUNK-2G-2026-10-10.md) — in der Schweiz ist 2G seit 01/2023 aus,
@@ -1806,21 +1831,21 @@ if [ -f "$REPO/automation/mobilfunk_netz_pruefen.py" ] && [ "$(date -u +%H)" = "
 fi
 if [ -f "$REPO/automation/mobilfunk_netz_pruefen.py" ] && [ "$(date -u +%H)" -ge 2 ] && [ ! -f /tmp/mobilfunk_neu_$(date -u +%F).stamp ]; then
   touch /tmp/mobilfunk_neu_$(date -u +%F).stamp
-  ( cd "$REPO" && TAGE=3 timeout 1200 bash automation/shopify_schranke.sh python3 automation/mobilfunk_netz_pruefen.py --scharf 2>&1 | tail -1 | tee -a /tmp/mobilfunk_netz.log )
+  ( cd "$REPO" && TAGE=3 lauf_mit_stempel /tmp/mobilfunk_neu_$(date -u +%F).stamp 1200 bash automation/shopify_schranke.sh python3 automation/mobilfunk_netz_pruefen.py --scharf 2>&1 | tail -1 | tee -a /tmp/mobilfunk_netz.log )
 fi
 # --- Mengenangaben in Kollektionstexten (08.10.2026, Plan Tag 10, dropship/SEO-TAG10-2026-10-08.md) — täglich:
 #     «über 7'000 Artikel» stand bei 4'913 aktiven, «rund 160» bei 250 — Draften/Neuimporte verschieben die Zahl jeden Tag.
 #     kollektion_mengen_wache.py führt «über/rund N Artikel» auf zwei Stellen nach (Kanarien 12/12, Altwert im Ledger).
 if [ -f "$REPO/automation/kollektion_mengen_wache.py" ] && [ ! -f /tmp/kollektion_mengen_$(date -u +%F).stamp ]; then
   touch /tmp/kollektion_mengen_$(date -u +%F).stamp
-  ( cd "$REPO" && SCHARF=1 setsid timeout 1500 bash automation/shopify_schranke.sh python3 automation/kollektion_mengen_wache.py >> /tmp/kollektion_mengen.log 2>&1 & )   # Hintergrund: Aufseher wartet nicht
+  ( cd "$REPO" && SCHARF=1 setsid bash -c 'lauf_mit_stempel "$0" 1500 bash automation/shopify_schranke.sh python3 automation/kollektion_mengen_wache.py' /tmp/kollektion_mengen_$(date -u +%F).stamp >> /tmp/kollektion_mengen.log 2>&1 9>&- & )   # Hintergrund: Aufseher wartet nicht
 fi
 # --- «Winter & Kälte» per Tag (08.10.2026, dropship/SEO-TAG10-2026-10-08.md) — täglich, auch Neuimporte:
 #     Titel-ODER-Regel zog Boxhandschuhe, Lockenstab «mit Keramikheizung», beheizbare Wimpernzangen … (27/497) → Tag aus
 #     data/winter_kaelte.json (ja minus nein, Kanarien 26/26), Kollektion = Tag-Regel. Hintergrund, Aufseher wartet nicht.
 if [ -f "$REPO/automation/winter_kaelte_tags.py" ] && [ ! -f /tmp/winter_kaelte_$(date -u +%F).stamp ]; then
   touch /tmp/winter_kaelte_$(date -u +%F).stamp
-  ( cd "$REPO" && SCHARF=1 setsid timeout 2400 bash automation/shopify_schranke.sh python3 automation/winter_kaelte_tags.py >> /tmp/winter_kaelte.log 2>&1 & )
+  ( cd "$REPO" && SCHARF=1 setsid bash -c 'lauf_mit_stempel "$0" 2400 bash automation/shopify_schranke.sh python3 automation/winter_kaelte_tags.py' /tmp/winter_kaelte_$(date -u +%F).stamp >> /tmp/winter_kaelte.log 2>&1 9>&- & )
 fi
 # --- Versand-Hinweis im Warenkorb-Drawer (06.10.2026, dropship/WARENKORB-GRATISVERSAND-2026-10-06.md) — täglich prüfen:
 #     Hinweis noch im Live-Snippet (Theme-Updates überschreiben Snippets), Tarif CH 7.00 / gratis ab ≤ 45 passt zum Text.
