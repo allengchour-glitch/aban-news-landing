@@ -334,3 +334,10 @@
 | unklar |  | [Elektronischer Springseil-Tracker](https://luxestyle.ch/products/elektronischer-springseil-tracker-018496) |
 | unklar |  | [GPS Smart-Armband mit Herzfrequenz](https://luxestyle.ch/products/gps-smart-armband-mit-herzfrequenz-322560) |
 | unklar |  | [Smartwatch GPS Herzfrequenz Outdoor](https://luxestyle.ch/products/smartwatch-gps-herzfrequenz-outdoor-278912) |
+
+## Lauf 2026-10-19 00:12 UTC
+
+| Urteil | Beleg | Produkt |
+|---|---|---|
+| unklar | CJ nicht erreicht | [LEMFO Y99 Kinder Smartwatch mit 4G & GPS](https://luxestyle.ch/products/lemfo-y99-kinder-smartwatch-mit-4g-gps-323584) |
+| unklar | CJ nicht erreicht | [Smartwatch für Kinder mit Videoanruffunktion](https://luxestyle.ch/products/smartwatch-fur-kinder-mit-videoanruffunktion-091008) |
