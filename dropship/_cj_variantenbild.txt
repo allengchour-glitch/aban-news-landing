@@ -7924,3 +7924,6 @@ gid://shopify/Product/15477573878145	zugeordnet	6	Vintage Tie-Dye Jeans für Her
 gid://shopify/Product/15484928917889	zugeordnet	10	Elegantes Vintage Color-Block Damenkleid
 gid://shopify/Product/15484929540481	zugeordnet	18	Ruffles Fishtail-Kleid
 gid://shopify/Product/15484930752897	zugeordnet	10	Freizeitkleid mit Reissverschluss-Taschen
+gid://shopify/Product/15493855412609	zugeordnet	18	Sandalen mit Holzmaserung und rutschfester Sohle
+gid://shopify/Product/15493855510913	zugeordnet	49	Florale Plateau-Sandalen mit Strass
+gid://shopify/Product/15493855576449	zugeordnet	21	Bohemian Keilsandalen mit Strass
