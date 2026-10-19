@@ -551,3 +551,4 @@
 2026-10-19T08:42:27.145Z	luxe-epic-hybrid.wav	22.62	allgemein	cjreel-CJJY110156401AZ	stimme:ja	azure:de-CH-JanNeural
 2026-10-19T09:12:06.142Z	luxe-epic-anime.wav	18.73	gadget	cjreel-CJQCQCCZ00034-7903black-Wireless	stimme:ja	azure:de-CH-JanNeural
 2026-10-19T09:14:50.973Z	luxe-epic-herbst.wav	35.36	home	cjreel-CJJT154703001AZ	stimme:ja	azure:de-CH-JanNeural
+2026-10-19T09:50:03.849Z	luxe-epic-warm.wav	7.93	home	cjreel-CJJZLELE00014-Black	stimme:ja	azure:de-CH-JanNeural
