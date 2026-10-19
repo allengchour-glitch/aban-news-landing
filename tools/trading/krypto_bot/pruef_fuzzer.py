@@ -63,7 +63,7 @@ die offene Position ab (−2022; was Binance tut, klärt nur das Testnetz, READM
 also braucht es beide), die Störungen liegen häufiger auf den ERSTEN passenden Anfragen (ab_req nur in 25 statt 60 %, höchstens
 80 statt 150) und haben endliche Anzahlen 1–4 (nur die Not-Aus-Teile behalten ihre dauerhaften), «unsichtbar» dauert bis zu 8
 Listenabfragen, und der Listen-Fuzzer lässt zusätzlich den Kurs springen (meist hoch). Die Zufallsfolge ändert sich: eigene Seeds
-(z. B. 20000 ff.); ohne die Variable bleiben alle Standard-Seeds Zug um Zug dieselben. Die Ausgabedatei heisst dann pruef_streng_*.
+(z. B. 20000 ff.); ohne die Variable bleiben alle Standard-Seeds Zug um Zug dieselben. Die Ausgabedatei heisst dann pruef_streng_*. PRUEF_LUECKEN=1 (laeufe und notaus): Konto immer ohne STOP_LOSS und dreimal so viele Kurssprünge — der Weg «hängender Stop-Limit» gezielt (Ausgabe pruef_luecken_*).
 """
 from __future__ import annotations
 
@@ -105,6 +105,8 @@ STEP_P = {s: float(v) for s, v in FB.FUT_STEP.items()}
 TOL_USDT = 6.0
 STAUB_MAX_USDT = 10.0  # darunter kann Binance nichts mehr absichern (Mindestbetrag 5 USDT, Schrittweiten) — echter Staub
 STRENG = os.environ.get("PRUEF_STRENG") == "1"  # 14. Prüfung W: strenge reduceOnly-Regel + härtere Störungs-Zufälle (siehe oben)
+LUECKEN = os.environ.get("PRUEF_LUECKEN") == "1"  # 15. Folge-PR: Konto IMMER ohne STOP_LOSS (Spot-Stops sind STOP_LOSS_LIMIT und können bei Kurslücken hängen) und
+#                                                  dreimal so viele Kurssprünge — prüft den Weg «hängender Stop-Limit» gezielt (laeufe, notaus; die Standard-Seeds bleiben dieselben)
 _n = [0]
 
 
@@ -232,8 +234,10 @@ def schutz_befunde(k, unklar=None, tol_usdt=TOL_USDT):
         if g["pos"] < 0 and g["coins"] * p >= tol_usdt and g["p_qty"] > 0:
             ohne_spot = max(0.0, g["coins"] - max(0.0, short - g["p_qty"])) - g["s_qty"]
             if ohne_spot > STEP_P[sym] + 1e-9:
-                out.append(("PERP_STOP_UEBER_NETTO" if ohne_spot * p > STAUB_MAX_USDT else "STAUB_PERP_STOP_UEBER_NETTO",
-                            sym, round(ohne_spot, 6)))
+                name = "PERP_STOP_UEBER_NETTO" if ohne_spot * p > STAUB_MAX_USDT else "STAUB_PERP_STOP_UEBER_NETTO"
+                if _limit_luecke(k, sym, ohne_spot):  # derselbe hängende STOP_LOSS_LIMIT (zählt nicht als Spot-Stop) wie bei LONG_OHNE_STOP
+                    name = "LIMIT_LUECKE_" + name
+                out.append((name, sym, round(ohne_spot, 6)))
     return out
 
 
@@ -368,6 +372,8 @@ def _selbst_entfernt(ab, sym=None, befund=None):
     for x in B.log[ab:]:
         if sym and (x[3].get("symbol") or x[3].get("_symbol")) != sym:
             continue
+        if x[3].get("_haengend"):
+            continue  # ein ausgelöster, über dem Kurs hängender STOP_LOSS_LIMIT schützt nichts: ihn zu löschen oder zu ersetzen nimmt keinen Schutz weg (15. Prüfung E10)
         if x[1] == "DELETE" and x[2] == "/api/v3/order" and x[4] == 200 and seite != "perp":
             return True
         if x[1] == "DELETE" and x[2] == "/fapi/v1/algoOrder" and x[4] == 200 and seite != "spot":
@@ -614,7 +620,7 @@ def laeufe_runde(seed, tage=30):
     if rng.random() < 0.15:
         k.bnb_gebuehr = True
         k.frei["BNB"] = 0.5
-    if rng.random() < 0.15:  # Konto/Paar ohne STOP_LOSS (Markt-Stop): Pilot 2.0 nimmt STOP_LOSS_LIMIT (kann bei Lücken hängen)
+    if LUECKEN or rng.random() < 0.15:  # Konto/Paar ohne STOP_LOSS (Markt-Stop): Pilot 2.0 nimmt STOP_LOSS_LIMIT (kann bei Lücken hängen)
         B.stop_typen = [x for x in B.stop_typen if x != "STOP_LOSS"]
     d = neu_buch()
     funde = []
@@ -695,7 +701,7 @@ def laeufe_runde(seed, tage=30):
         # Markt bis morgen (Stops lösen unterwegs aus), Funding
         for sym in SYMS:
             ret = rng.gauss(0, 0.03)
-            if rng.random() < 0.08:
+            if rng.random() < (0.24 if LUECKEN else 0.08):
                 ret = rng.choice([-1, 1]) * rng.uniform(0.10, 0.35)
             ziel = B.kurs[sym] * (1 + ret)
             for i in range(1, 4):
@@ -781,6 +787,8 @@ def notaus_runde(seed):
     echt = rng.random() < 0.85
     usdt = rng.choice([900, 5000, 20000, 60000])
     k = neues_konto(usdt, keys=("k",) if echt else ("s", "f"))
+    if LUECKEN:  # PRUEF_LUECKEN=1: Konto ohne STOP_LOSS, die Kurse springen öfter — ausgelöste STOP_LOSS_LIMIT hängen, der Not-Aus trifft sie an
+        B.stop_typen = [x for x in B.stop_typen if x != "STOP_LOSS"]
     if not echt:
         k.fut = usdt
     d = neu_buch()
@@ -794,7 +802,10 @@ def notaus_runde(seed):
                          "stop_short": p * (1 + a), "stand": "x"})
         lauf(ents, env, d)
         for s in SYMS:
-            B.bewegen(s, round(B.kurs[s] * (1 + rng.gauss(0, 0.02)), 2))
+            ret = rng.gauss(0, 0.02)
+            if LUECKEN and rng.random() < 0.3:
+                ret = rng.choice([-1, 1]) * rng.uniform(0.10, 0.35)
+            B.bewegen(s, round(B.kurs[s] * (1 + ret), 2))
     regeln = []
     for _ in range(rng.choice([1, 2, 3, 4, 6])):
         if rng.random() < 0.25:
@@ -940,7 +951,7 @@ def main():
             alle += notaus_runde(seed) if art == "notaus" else monotonie_runde(seed)
     zaehler = Counter(x[0] for x in alle)
     print(json.dumps(dict(zaehler), ensure_ascii=False, indent=1))
-    out = Path.cwd() / f"pruef_{'streng_' if STRENG else ''}{art}_{von}_{bis}.json"
+    out = Path.cwd() / f"pruef_{'streng_' if STRENG else ''}{'luecken_' if LUECKEN else ''}{art}_{von}_{bis}.json"
     out.write_text(json.dumps(alle, ensure_ascii=False, indent=1, default=str))
     fehler = echte(alle)
     print(f"{len(fehler)} Befunde (ohne Staub und laut gemeldete Dauerstörungen) → {out}")

@@ -532,11 +532,14 @@ class Spot(BB.Binance):
         return [o for o in self.offene(symbol) if str(o.get("clientOrderId") or "").startswith(CID_STOP_SPOT)]
 
     def abbrechen(self, symbol, order_id):
+        """→ True (storniert) | False (war schon weg: ausgelöst, ausgeführt, ersetzt oder storniert — «Unknown order», −2011)."""
         try:
             self._req("DELETE", "/api/v3/order", {"symbol": symbol, "orderId": order_id}, signiert=True)
         except BB.BinanceFehler as ex:
-            if "-2011" not in str(ex.msg):  # «Unknown order» = schon weg (ausgelöst oder storniert)
+            if "-2011" not in str(ex.msg):
                 raise
+            return False
+        return True
 
     @staticmethod
     def stop_params(symbol, menge, stop, regeln, cid=None):
@@ -1187,7 +1190,11 @@ def ausfuehren(ents, trocken=False, env=None, spot=None, fut=None, protokolliere
             _stops_setzen(spot, fut, buch, speichern, ents, daten, basis_g, erg, warn, gehandelt)
     if stop_mitten or notaus_neu():
         # STOP kam während des Laufs (Cockpit, Telegram, stop.bat): dieser Lauf hält die Lauf-Sperre — darum schliesst ER jetzt
-        # (das Cockpit hat Pilot 2.0 deswegen übersprungen); danach schliesst die Nachkontrolle nochmals, was offen blieb
+        # (das Cockpit hat Pilot 2.0 deswegen übersprungen); danach schliesst die Nachkontrolle nochmals, was offen blieb.
+        # Dieser Lauf kam nicht mehr zu seinem Stop-Abgleich: scheitert der Not-Aus (Konto/UID nicht lesbar, Rückkauf abgelehnt) und wird STOP wieder
+        # aufgehoben, braucht jeder Markt, in dem er gehandelt hat, seine Stops — die Nachkontrolle holt sie nach (15. Prüfung, Lücken-Seed 90256)
+        if gehandelt:
+            buch["schutz_offen"] = sorted(set(buch.get("schutz_offen") or []) | set(gehandelt))
         speichern()
         if protokolliere:  # die Aufträge dieses Laufs (vor dem STOP); der Not-Aus protokolliert seine eigenen
             protokolliere({"zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), "modus": erg["modus"],
@@ -1343,14 +1350,16 @@ def _platziere(platzieren, cid, warten=None):
 
 def _setze_stop(platz, preise, cid, sofort_raus=False, warten=None):
     """Stop zum ersten Preis setzen, scheitert das: zum nächsten (alter Kurs, Not-Stop). Alle Versuche mit DERSELBEN Kennung.
-    sofort_raus: würde schon der erste Preis sofort auslösen → _Ausgeloest (der Aufrufer schliesst zum Markt).
+    sofort_raus: würde ein Preis sofort auslösen → _Ausgeloest (der Aufrufer schliesst zum Markt) — auch der spätere Not-Stop-Preis: der Kurs ist dann
+    seit dem Lesen weit über das Soll hinaus gesprungen (15. Prüfung, Lücken-Seed 92330: nach vier Verbindungsabrissen auf den ersten Preis lehnte
+    Binance den Not-Stop ab, «Position läuft OHNE Stop»).
     → (Antwort, Preis); scheitern alle → der letzte Fehler."""
     letzter = None
-    for i, preis in enumerate(p for p in preise if p):
+    for preis in (p for p in preise if p):
         try:
             return _platziere(lambda c, preis=preis: platz(preis, c), cid, warten), preis
         except Exception as ex:  # noqa: BLE001
-            if i == 0 and sofort_raus and _sofort_ausgeloest(ex):
+            if sofort_raus and _sofort_ausgeloest(ex):
                 raise _Ausgeloest() from ex
             letzter = ex
     if letzter is None:
@@ -1433,6 +1442,11 @@ def _stops_vorab(spot, fut, buch, k, d, plan, nur_jetzt=False):
     sym, rf = d["sym"], d["rf"]
     frei, gebunden, pos, kurs = _lage(spot, fut, d)  # frisch: so, wie das Verkleinern es hinterlassen hat
     jetzt = _soll(frei + gebunden, pos, kurs, d)
+    if gebunden > jetzt["stop_spot"] + d["rs"]["step"] / 2:
+        # zu grosse Spot-Stops (z. B. eben noch beidseitig gesichert, jetzt nicht mehr nötig): der Perp-Stop ist ihr Rückhalt — löst einer aus, verkauft
+        # er Absicherung. Erst verkleinern, wenn der Abgleich am Laufende die Spot-Stops korrigiert hat; kann er nicht lesen (Konto dauerhaft unlesbar),
+        # bliebe sonst die Folge der zu grossen Spot-Stops ungedeckt (14. Folge-PR E9, Lauf-Seed 51170, 387 USDT; älter als die 14. Runde)
+        return False
     # gekaufte Coins kommen abzüglich der Gebühr in Coins an: lieber einen Schritt mehr ungesichert annehmen (ein zu grosser
     # Stop wird am Ende ersetzt oder beidseitig abgefangen) als einen Teil des Shorts ohne Stop lassen
     # Plan-Ende = die tatsächlichen Coins (die Gebühr ist schon abgezogen) plus die NEUEN Shorts, die dieser Lauf noch schickt — nicht das
@@ -1541,19 +1555,18 @@ def _stops_setzen(spot, fut, buch, speichern, ents, daten, basis_g, erg, warn, g
             _kontoprobe(lesen, d, k, warn)  # mehr Coins gesperrt als nötig = ein Stop, den die Liste nicht zeigt → beidseitig
             if d.pop("neue_runde", False):  # z. B. ein alter Stop hat inzwischen ausgelöst → nicht als «gleich geblieben» werten
                 vorher = None
-        haengend = d.pop("haengend_abgelehnt", None)
-        if haengend and not gescheitert:
-            # der Verkauf eines hängenden STOP_LOSS_LIMIT wurde bis zuletzt abgelehnt: hängt er noch (frisch gelesen), kommt
-            # wenigstens ein Not-Stop an seine Stelle
+        haengend = d.pop("haengend_abgelehnt", None) or {}  # Auftrags-ID → Menge: hängende Stop-Limits, deren Ausstieg bis zuletzt abgelehnt wurde oder unklar blieb
+        for h_id, h_m in (haengend.items() if not gescheitert else ()):
+            # hängt er noch (frisch gelesen), kommt wenigstens ein Not-Stop an seine Stelle — für JEDEN hängenden (15. Prüfung, Lücken-Seed 92202: zwei hingen)
             try:
                 kurs_jetzt = lesen(SCHUTZ_WARTEN)[3]
                 o_h = next((o for o in _nochmal(lambda d=d: spot.eigene_stops(d["sym"]), SCHUTZ_WARTEN)
-                            if o.get("orderId") == haengend[0] and o.get("isWorking") is True
+                            if o.get("orderId") == h_id and o.get("isWorking") is True
                             and float(o.get("price") or 0) > kurs_jetzt), None)
             except Exception:  # noqa: BLE001 — nicht lesbar: trotzdem versuchen (ist er weg, lehnt Binance ab — nichts verloren)
-                kurs_jetzt, o_h = (s["kurs"] if s else d["kurs"]), {"orderId": haengend[0]}
-            menge_h = PL.runde(min(haengend[1], _rest(o_h) if "origQty" in o_h else haengend[1]), d["rs"]["step"]) if o_h else 0.0
-            if o_h and not _haengenden_ersetzen(spot, k, d, st, o_h, menge_h, kurs_jetzt, warn, gesetzt):
+                kurs_jetzt, o_h = (s["kurs"] if s else d["kurs"]), {"orderId": h_id}
+            menge_h = PL.runde(min(h_m, _rest(o_h) if "origQty" in o_h else h_m), d["rs"]["step"]) if o_h else 0.0
+            if o_h and not _haengenden_ersetzen(spot, k, d, st, o_h, menge_h, kurs_jetzt, warn, gesetzt, lesen):
                 warn(f"{k}: der ausgelöste Stop-Limit hängt über dem Kurs, Verkauf und Not-Stop abgelehnt — {menge_h:g} "
                      f"{d['coin']} OHNE Stop, bitte sofort prüfen!")
         offen = [m for m in buch.get("schutz_offen") or [] if m != k]
@@ -1850,7 +1863,7 @@ def _spot_stops_verkaufen(spot, k, d, st, alt, erg, warn, gesetzt, grund, soll=N
         d["jenseits_gehalten"] = all(o.get("isWorking") is not True for o in alt)
         return
     offen_soll = float("inf") if soll is None else soll
-    for o in alt:
+    for i, o in enumerate(alt):
         if d.get("nur_ergaenzen") and o.get("isWorking") is not True:
             # Binance lehnte in diesem Markt eben ab: einen noch wirksamen Stop nicht per cancelReplace ersetzen (er könnte erst
             # storniert und dann der Verkauf abgelehnt werden) — er bleibt stehen und schützt weiter
@@ -1870,13 +1883,14 @@ def _spot_stops_verkaufen(spot, k, d, st, alt, erg, warn, gesetzt, grund, soll=N
             erg["auftraege"].append((k, "spot", "SELL", ausg))
             gesetzt.append(f"{grund} → {ausg:g} {coin} verkauft")
             st["spot"] = None
-            if (d.get("haengend_abgelehnt") or (None,))[0] == o.get("orderId"):
-                d.pop("haengend_abgelehnt", None)  # doch noch verkauft
+            (d.get("haengend_abgelehnt") or {}).pop(o.get("orderId"), None)  # doch noch verkauft
         elif res == "unklar":
             u = unklar_eintrag(k, sym, "spot", "SELL", m, False)
             u["cid"] = cid
             if d.get("merke_unklar"):
                 d["merke_unklar"](u)
+            if o.get("isWorking") is True:  # ein hängender schützt nicht: hängt er nach allen Runden noch, kommt ein Not-Stop an seine Stelle
+                d.setdefault("haengend_abgelehnt", {})[o.get("orderId")] = m  # (15. Prüfung E10: dreimal «unklar» liess den Long ohne wirksamen Stop)
         elif res == "fehlt":
             try:
                 _nochmal(lambda o=o: spot.abbrechen(sym, o["orderId"]))
@@ -1889,18 +1903,26 @@ def _spot_stops_verkaufen(spot, k, d, st, alt, erg, warn, gesetzt, grund, soll=N
                 bleibt(o)
                 d["jenseits_gehalten"] = True
             else:  # ein hängender schützt nicht: die nächste Runde versucht den Ausstieg nochmals, zum Schluss ein Not-Stop
-                d["haengend_abgelehnt"] = (o.get("orderId"), m)
+                d.setdefault("haengend_abgelehnt", {})[o.get("orderId")] = m
         # «nur_storno»: Stop weg, Verkauf abgelehnt → der Aufrufer verkauft die (jetzt freien) Coins bzw. setzt einen Not-Stop
         if res in ("nichts", "nur_storno", "unklar"):
             d["nur_ergaenzen"] = True  # auch in den weiteren Abgleich-Runden nicht mehr ersetzen
+            for o2 in alt[i + 1:]:  # hängende Stops dahinter schützen nichts: kein Versuch mehr, aber der Rückfall am Ende ersetzt auch sie (Lücken-Seed 92202)
+                m2 = PL.runde(min(_rest(o2), offen_soll), regeln["step"])
+                if o2.get("isWorking") is True and m2 * kurs >= regeln["min_notional"]:
+                    offen_soll -= m2
+                    d.setdefault("haengend_abgelehnt", {})[o2.get("orderId")] = m2
             break  # nach einer Ablehnung kein weiteres cancelReplace (der nächste Stop bliebe sonst womöglich auch weg)
 
 
-def _haengenden_ersetzen(spot, k, d, st, o, m, kurs, warn, gesetzt):
+def _haengenden_ersetzen(spot, k, d, st, o, m, kurs, warn, gesetzt, lesen):
     """Ein ausgelöster STOP_LOSS_LIMIT hängt über dem Kurs (Kurslücke, er schützt nicht mehr) und Binance lehnte seinen Verkauf
     zum Markt eben ab: an seine Stelle einen Not-Stop über `m` Coins unter dem Kurs (5 %, sonst 10/20/35 %) — per cancelReplace,
-    lehnt Binance den neuen ab, bleibt der hängende (nichts verloren). → True, wenn der Not-Stop steht."""
+    lehnt Binance den neuen ab, bleibt der hängende (nichts verloren). Geht cancelReplace gar nicht (Antwort verloren, Binance kennt
+    es nicht), wird der hängende normal gelöscht und ein Not-Stop aus den freien Coins gesetzt (`_haengenden_loeschen`).
+    → True, wenn der Not-Stop steht."""
     sym, regeln = d["sym"], d["rs"]
+    res = None
     for f in (NOT_STOP_ABSTAND,) + BREITE_NOTSTOPS:
         p = kurs * (1 - f)
         if m * p < regeln["min_notional"]:
@@ -1916,7 +1938,42 @@ def _haengenden_ersetzen(spot, k, d, st, o, m, kurs, warn, gesetzt):
             d["neue_runde"] = True  # die nächste Runde liest die Liste und gleicht ab
         if res != "nichts":
             break  # «nur_storno»: die Coins sind frei (der Aufrufer verkauft bzw. stoppt sie), «unklar»: nachlesen
+    if res in ("unklar", "fehlt"):
+        return _haengenden_loeschen(spot, k, d, st, o, m, warn, gesetzt, lesen)
     return False
+
+
+def _haengenden_loeschen(spot, k, d, st, o, m, warn, gesetzt, lesen):
+    """cancelReplace geht nicht (Antwort verloren oder Binance kennt es nicht), der hängende Stop-Limit schützt aber ohnehin nichts: ihn
+    zu löschen nimmt keinen Schutz weg (wie im Not-Aus). Löschen (−2011 = schon weg), frisch lesen und aus den freien Coins (höchstens
+    `m`) einen Not-Stop setzen. War der hängende schon weg (−2011), kam einer der unklaren Versuche an (Verkauf oder Not-Stop): nichts
+    weiter setzen — freie Coins daneben sind die Absicherung des Shorts (15. Prüfung E10).
+    → True, wenn die Coins unter einem Not-Stop stehen oder nichts (mehr) zu schützen ist; False: der Aufrufer warnt, die Nachkontrolle
+    versucht es nochmals."""
+    sym, regeln = d["sym"], d["rs"]
+    try:
+        weg = _nochmal(lambda: spot.abbrechen(sym, o["orderId"]), SCHUTZ_WARTEN)
+        if st.get("spot") == o.get("orderId"):
+            st["spot"] = None
+        if not weg:
+            return True  # schon weg: einer der unklaren Versuche kam an (Verkauf oder Not-Stop) — die Liste zeigt ihn beim nächsten Abgleich
+        frei, _gebunden, _pos, kurs = lesen(SCHUTZ_WARTEN)
+    except Exception:  # noqa: BLE001 — Löschen oder Lesen gescheitert: der hängende bleibt (oder die Coins sind frei), die Nachkontrolle versucht es nochmals
+        return False
+    menge = PL.runde(min(m, frei), regeln["step"])
+    preise = [kurs * (1 - f) for f in (NOT_STOP_ABSTAND,) + BREITE_NOTSTOPS]
+    if menge * preise[-1] < regeln["min_notional"]:
+        return True
+    try:
+        r, p_ok = _setze_stop(lambda preis, c: spot.stop_verkauf(sym, menge, preis, regeln, cid=c), preise, _kennung(CID_STOP_SPOT),
+                              warten=SCHUTZ_WARTEN)
+    except Exception:  # noqa: BLE001
+        return False
+    st["spot"], st["p_long"] = r.get("orderId"), p_ok
+    gesetzt.append(f"Not-Stop {menge:g} @ {PL.runde(p_ok, regeln['tick']):g} statt des gelöschten hängenden Stop-Limits")
+    warn(f"{k}: der ausgelöste Stop-Limit hing über dem Kurs, Ersetzen und Verkaufen gehen gerade nicht — er wurde gelöscht, an seiner "
+         f"Stelle steht ein Not-Stop @ {PL.runde(p_ok, regeln['tick']):g}. Bitte prüfen!")
+    return True
 
 
 def _spot_rest_sichern(spot, k, d, st, s, soll, p, warn, gesetzt):
@@ -2628,7 +2685,7 @@ def nachkontrolle(env=None, datei=None, spot=None, fut=None, schlafen=time.sleep
         # (im Not-Aus ohne eigenen Bestand in diesem Modus — er liegt in einem anderen — bindet notaus_alle je gestartetem Modus dessen
         # eigenes Konto: 14. Prüfung K5, vorher «nichts angefasst»)
         try:
-            uid = _nochmal(spot.konto).get("uid")
+            uid = _nochmal(spot.konto, SCHUTZ_WARTEN).get("uid")
         except Exception:  # noqa: BLE001
             uid = None
         if not uid or str(uid) != str(buch.get("uid")):
@@ -2747,7 +2804,10 @@ def notaus_alle(env=None, datei=None, trocken=False, spot=None, fut=None, protok
                 menge = sum(bestand(konto, coin))
                 if pos:
                     funde.append(f"Futures {sym} {pos:+g}")
-                if menge * _nochmal(lambda sym=sym: s_.kurs(sym)) >= STAUB_USDT:
+                # wie beim Schliessen: zählt, was Binance verkaufen würde (auf die Schrittweite abgerundet, mindestens der Mindestbetrag) — ein
+                # Rest knapp über 5 USDT, der abgerundet darunter liegt, ist Staub (15. Prüfung, Not-Aus-Seed 30189: sonst «nicht alles zu» für immer)
+                rs_ = _nochmal(lambda sym=sym: s_.regeln2(sym))
+                if PL.runde(menge, rs_["step"]) * _nochmal(lambda sym=sym: s_.kurs(sym)) >= rs_["min_notional"]:
                     funde.append(f"{menge:g} {coin}")
             if funde:
                 erg.update(alles_zu=False, warnung=True)
@@ -2834,7 +2894,7 @@ def _notaus(spot, fut, buch, speichern_b, modus, trocken, wiederholung=False):
         return erg
     if modus == "echt":  # NIE in einem anderen Konto handeln als dem, in dem Pilot 2.0 gestartet ist
         try:
-            uid = _nochmal(spot.konto).get("uid")
+            uid = _nochmal(spot.konto, SCHUTZ_WARTEN).get("uid")
         except Exception:  # noqa: BLE001
             uid = None
         if not uid or not buch.get("uid") or str(uid) != str(buch["uid"]):
@@ -2849,11 +2909,13 @@ def _notaus(spot, fut, buch, speichern_b, modus, trocken, wiederholung=False):
     ungeprueft = []  # Märkte, deren Lage (oder Kurs) nicht lesbar war — ihr Schutz ist nicht geprüft
     for k, (sym, coin) in COINS.items():
         st = buch["stops"].setdefault(k, {})
-        try:  # 0) die ganze Lage lesen, BEVOR etwas angefasst wird — nicht lesbar: nichts anfassen (Stops + Absicherung bleiben)
-            pos = _nochmal(lambda: fut.position_info(sym))[0]
-            regeln = _nochmal(lambda: spot.regeln2(sym))
-            frei, gebunden = bestand(_nochmal(spot.konto), coin)
-            fstep = _nochmal(lambda: fut.regeln(sym))["step"] if pos else 0.0
+        try:  # 0) die ganze Lage lesen, BEVOR etwas angefasst wird — nicht lesbar: nichts anfassen (Stops + Absicherung bleiben).
+            #    Mit dem LANGEN Budget (SCHUTZ_WARTEN): ohne Lage greift der Not-Aus nicht, und eine eben gekaufte Position bliebe ohne Stop bis
+            #    zur Nachkontrolle (14. Folge-PR E8, Lauf-Seed 50802: drei Fehlversuche in Folge = genau das kurze Budget)
+            pos = _nochmal(lambda: fut.position_info(sym), SCHUTZ_WARTEN)[0]
+            regeln = _nochmal(lambda: spot.regeln2(sym), SCHUTZ_WARTEN)
+            frei, gebunden = bestand(_nochmal(spot.konto, SCHUTZ_WARTEN), coin)
+            fstep = _nochmal(lambda: fut.regeln(sym), SCHUTZ_WARTEN)["step"] if pos else 0.0
         except Exception as ex:  # noqa: BLE001
             erg["alles_zu"] = False
             ungeprueft.append(k)

@@ -120,6 +120,7 @@ class Boerse:
         self.vor_jeder_anfrage = None   # Haken: f(methode, pfad, params)
         self.reduce_algo_streng = False  # True: reduceOnly-Stop über mehr als die offene Position wird abgelehnt (−2022)
         self.symbol_status = {}  # Symbol → exchangeInfo-Status (Standard TRADING; z. B. BREAK/HALT = keine neuen Aufträge)
+        self.ersetzen_fehlt = False  # True: dieser Binance-Cluster kennt cancelReplace nicht (HTTP 404) — Pilot 2.0 fällt auf den alten Weg zurück
         self.ersetzen_storno_zuerst = False  # True: cancelReplace in einer Phase «nur Stornieren» storniert den alten Auftrag
         #                                     und lehnt erst DANN den neuen ab (409, −2021) — ungünstigste Lesart (10. Prüfung)
         self.nach_jeder_anfrage = None
@@ -378,6 +379,7 @@ class Handler(BaseHTTPRequestHandler):
             o = k.orders.get(int(p["orderId"])) if "orderId" in p else k.cids.get(p.get("origClientOrderId"))
             if not o or o["status"] not in ("NEW", "PARTIALLY_FILLED"):
                 return {"code": -2011, "msg": "Unknown order sent."}, 400
+            p["_haengend"] = bool(o.get("aktiv")) and o.get("preis", 0.0) > kurs[o["symbol"]]  # nur fürs Protokoll (der Fuzzer: ein hängender schützt nicht)
             coin = o["symbol"][:-4]
             rest = o["qty"] - o["ausgefuehrt"]
             if o["side"] == "SELL":
@@ -391,6 +393,8 @@ class Handler(BaseHTTPRequestHandler):
         if pfad == "/api/v3/order" and m == "POST":
             return self._spot_auftrag(p, k, art)
         if pfad == "/api/v3/order/cancelReplace" and m == "POST":
+            if B.ersetzen_fehlt:
+                return {"code": 0, "msg": "Not Found"}, 404
             return self._ersetzen(p, k, art)
         if pfad == "/sapi/v1/asset/transfer":
             typ, b = p.get("type"), float(p["amount"])
@@ -640,6 +644,7 @@ class Handler(BaseHTTPRequestHandler):
             return {"code": -1013, "msg": "Filter failure: PERCENT_PRICE_BY_SIDE"}, 400
         coin = sym[:-4]
         rest = alt["qty"] - alt["ausgefuehrt"]
+        p["_haengend"] = bool(alt.get("aktiv")) and alt.get("preis", 0.0) > B.kurs[sym]  # nur fürs Protokoll (der Fuzzer: ein hängender schützt nicht)
         if alt["side"] == "SELL":
             k.gesperrt[coin] -= rest
             k.frei[coin] += rest
