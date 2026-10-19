@@ -2594,3 +2594,6 @@
 16645205688711	Farbe:2:2	2026-10-19	turnbeutel-mit-schuhfach-608700
 16645204935047	Farbe:5:5	2026-10-19	grosser-sportrucksack-fur-training-und-reise-622600
 16645200839047	Modell:5:5	2026-10-19	umhangetasche-mit-pragung-610200
+16645198872967	Farbe:4:4	2026-10-19	leichter-rucksack-mit-grosser-kapazitat-616000
+16645198217607	Farbe:2:2	2026-10-19	grosses-leichtes-wasserdichtes-reiserucksack-616400
+16645195563399	Farbe:4:4	2026-10-19	wasserdichte-crossbody-umhangetasche-fur-herre-615700
