@@ -32,6 +32,8 @@ if defined NOTAUS (
   if /i "%KRYPTO_PILOT2%"=="an" set PILOTDA=1
   if exist "data\krypto-pilot2-bestand.json" set PILOTDA=1
   if defined PILOTDA call :schritt Pilot-Not-Aus pilot.py --lauf
+  REM Pilot 2.0: was der Not-Aus nicht sofort schliessen oder sichern konnte, holt die Nachkontrolle nach (wie stop.bat)
+  if exist "data\krypto-pilot2-bestand.json" call :schritt Pilot-2.0-Nachkontrolle pilot.py --nachkontrolle
   goto bilanz
 )
 if exist "tools\trading\ki_bot\PAUSE" (

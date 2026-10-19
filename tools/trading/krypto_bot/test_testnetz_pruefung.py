@@ -2,6 +2,8 @@
 """Tests für testnetz_pruefung.py gegen die strenge nachgebaute Börse (pruef_boerse.py, nur 127.0.0.1):
   * normaler Lauf: alle Prüfpunkte wie erwartet, aufgeräumt (keine eigenen Aufträge, Position 0)
   * Börse lehnt reduceOnly-Stops über die Position ab oder kürzt ihre Menge → Abweichung gemeldet
+  * A6/A7/A8 (14. Prüfung): Sichtbarkeit eines frisch gesetzten Stops in der Liste (sofort / verzögert / nie), Storno einer unbekannten
+    Kennung (−2011 = «weg»; jeder andere Code = Abweichung)
   * Börse meldet nach dem Storno einen Fehler OHNE «cancelResult» → Pilot 2.0 läse «alter steht» → Abweichung
   * Börse kennt cancelReplace nicht (404) → nur Hinweis, nichts angefasst
   * Stop aus anderem Grund abgelehnt → «nicht geprüft» statt falscher Abweichung
@@ -67,9 +69,11 @@ print("1) normaler Lauf")
 ks, kf = neu()
 rc, p, out = lauf("--los")
 pruefe(rc == 0, f"Rückgabe 0 (ist {rc})")
-for nr in ("A1", "A2", "A3", "B1", "B2", "B3", "B4", "B5", "B6"):
+for nr in ("A1", "A2", "A3", "A6", "A7", "A8", "B1", "B2", "B3", "B4", "B5", "B6"):
     pruefe(p.get(nr, {}).get("urteil") == "ok", f"{nr} ok ({p.get(nr, {}).get('urteil')}: {p.get(nr, {}).get('ergebnis', '')[:90]})")
 pruefe(p["A4"]["urteil"] == "info" and p["A5"]["urteil"] == "info", "A4/A5 nur zur Kenntnis")
+pruefe(p["A6"]["roh"]["abfrage"] == 1, "A6: ein frisch gesetzter Stop steht schon bei der 1. Abfrage in der Liste")
+pruefe(p["A7"]["roh"]["code"] == -2011 and p["A8"]["roh"]["code"] == -2011, "A7/A8: Storno einer unbekannten bzw. gelöschten Kennung → −2011 («weg»)")
 pruefe("abgelehnt" in p["A5"]["ergebnis"] and p["A5"]["roh"]["nachher"] < 0, "A5: Prüf-Börse lehnt reduceOnly über die Position ab (−2022)")
 pruefe(p["B1"]["roh"]["klasse"] == "nur_storno" and p["B1"]["roh"]["alt"] == "CANCELED", "B1: «würde sofort auslösen» = nur Storno")
 pruefe(p["B2"]["roh"]["klasse"] == "nichts" and p["B2"]["roh"]["alt"] == "NEW", "B2: Filter vor dem Storno → alter steht")
@@ -155,6 +159,79 @@ finally:
     PB.Handler._algo_neu = orig_algo
 pruefe(rc == 2, f"Rückgabe 2 (ist {rc})")
 pruefe(all(p[nr]["urteil"] == "nicht_geprueft" for nr in ("A1", "A2", "A3")), "A1–A3 «nicht geprüft»")
+pruefe(aufgeraeumt(ks, kf), "aufgeräumt")
+
+print("5b) A6: die Liste zeigt den zweiten Stop erst nach 3 Abfragen (Antwort ok, Liste hinkt nach) → Hinweis auf F1, keine Abweichung")
+orig_neu = PB.Handler._algo_neu
+zaehler6 = [0]
+
+
+def verzoegert(self, p_, k, art):
+    antwort, code = orig_neu(self, p_, k, art)
+    zaehler6[0] += 1
+    if code == 200 and zaehler6[0] == 2:   # 1. = A1 (steht nach 5 s), 2. = A6
+        k.algos[antwort["algoId"]]["sichtbar_ab"] = B.n_listen + 3
+    return antwort, code
+
+
+PB.Handler._algo_neu = verzoegert
+try:
+    ks, kf = neu()
+    rc, p, out = lauf("--los", "--nur", "futures")
+finally:
+    PB.Handler._algo_neu = orig_neu
+pruefe(rc == 0 and p["A6"]["urteil"] == "info" and p["A6"]["roh"]["abfrage"] == 3 and "F1" in p["A6"]["hinweis"],
+       f"A6: verzögert sichtbar (Abfrage 3) → info mit F1-Hinweis (Rückgabe {rc})")
+pruefe(p["A1"]["urteil"] == "ok", "A1 bleibt ok")
+pruefe(aufgeraeumt(ks, kf), "aufgeräumt (auch der verzögert sichtbare Stop ist über die Kennung gelöscht)")
+
+print("5c) A6: der Stop wird angenommen, steht aber nie in der Liste → Abweichung")
+zaehler6[0] = 0
+
+
+def nie_sichtbar(self, p_, k, art):
+    antwort, code = orig_neu(self, p_, k, art)
+    zaehler6[0] += 1
+    if code == 200 and zaehler6[0] == 2:
+        k.algos[antwort["algoId"]]["sichtbar_ab"] = 10 ** 9
+    return antwort, code
+
+
+PB.Handler._algo_neu = nie_sichtbar
+try:
+    ks, kf = neu()
+    rc, p, out = lauf("--los", "--nur", "futures")
+finally:
+    PB.Handler._algo_neu = orig_neu
+pruefe(rc == 1 and p["A6"]["urteil"] == "abweichung" and p["A6"]["roh"]["abfrage"] is None, f"A6: nie sichtbar → Abweichung (Rückgabe {rc})")
+pruefe(aufgeraeumt(ks, kf), "aufgeräumt")
+
+print("5d) A7/A8: Binance meldet für eine unbekannte Kennung einen anderen Code als −2011 → Abweichung (Pilot 2.0 hielte das Löschen für gescheitert)")
+orig_ver = PB.Handler._verarbeiten
+
+
+def anderer_code(self, m, pfad, p_, konto, art):
+    if (m == "DELETE" and pfad == "/fapi/v1/algoOrder" and "clientAlgoId" in p_ and konto is not None
+            and not any(a.get("clientAlgoId") == p_["clientAlgoId"] for a in konto.algos.values())):
+        return {"code": -2013, "msg": "Order does not exist."}, 400
+    return orig_ver(self, m, pfad, p_, konto, art)
+
+
+PB.Handler._verarbeiten = anderer_code
+try:
+    ks, kf = neu()
+    rc, p, out = lauf("--los", "--nur", "futures")
+finally:
+    PB.Handler._verarbeiten = orig_ver
+pruefe(rc == 1 and p["A7"]["urteil"] == "abweichung" and p["A7"]["roh"]["code"] == -2013 and p["A8"]["urteil"] == "abweichung",
+       f"A7/A8: Code −2013 statt −2011 → Abweichung (Rückgabe {rc})")
+pruefe(aufgeraeumt(ks, kf), "aufgeräumt")
+
+print("5e) A6/A8 ohne angenommenen Stop (strenge Börse lehnt A1 ab) → nicht geprüft")
+ks, kf = neu(streng=True)
+rc, p, out = lauf("--los", "--nur", "futures")
+pruefe(p["A6"]["urteil"] == "nicht_geprueft" and p["A8"]["urteil"] == "nicht_geprueft" and p["A7"]["urteil"] == "ok",
+       "A6 und A8 «nicht geprüft» (kein Stop gesetzt), A7 (nie gesetzte Kennung) trotzdem geprüft")
 pruefe(aufgeraeumt(ks, kf), "aufgeräumt")
 
 print("6) Sicherheit")
