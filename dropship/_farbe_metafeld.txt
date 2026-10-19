@@ -503,3 +503,5 @@ gid://shopify/Product/16652081463687	Weiss
 gid://shopify/Product/16652425691527	Schwarz
 gid://shopify/Product/16652425888135	Schwarz
 gid://shopify/Product/16652426215815	Blau
+gid://shopify/Product/16653789266311	Rot
+gid://shopify/Product/16654053966215	Gelb
