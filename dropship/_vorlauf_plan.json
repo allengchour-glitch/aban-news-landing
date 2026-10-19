@@ -319,12 +319,12 @@
    "basis_utc": "2026-10-24T19:15:00Z",
    "format": "karussell",
    "grund": "rc=0: Nichts faellig: kein ready-Karussell.",
-   "letzter_versuch": "2026-10-19T04:50:57Z",
+   "letzter_versuch": "2026-10-19T05:06:12Z",
    "mc_ids": [],
-   "reserviert_um": "2026-10-19T04:50:57Z",
+   "reserviert_um": "2026-10-19T05:06:12Z",
    "status": "offen",
    "termin_utc": "2026-10-24T19:15:00Z",
-   "versuche": 4
+   "versuche": 5
   },
   "karussell-20261025T2015": {
    "basis_utc": "2026-10-25T20:15:00Z",
@@ -1754,6 +1754,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-19T04:51:06Z",
+ "stand": "2026-10-19T05:06:20Z",
  "version": 1
 }
