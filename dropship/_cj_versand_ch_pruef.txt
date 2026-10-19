@@ -9903,3 +9903,6 @@ lassige-herren-hosen-mit-knochel-verengung-604500	2605151012441605000	16	11.00	o
 rucksack-fur-die-uni-623500	2603170131331623900	16	13.16	ok	landeseite
 aromatherapie-luftbefeuchter-508736	1635191043123589120	7	12.30	ok	landeseite
 kau-spielball-fur-hunde-624800	2509110858061625100	16	7.97	ok	landeseite
+aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben	-	-	-	unklar keine CJ-SKU	landeseite
+aroma-diffuser-holzoptik-hohl-design-ultraschall-luftbefeuchter-mit-led-licht	-	-	-	unklar keine CJ-SKU	landeseite
+streifen-bluse-marbella-color-block-kurzarm	-	-	-	unklar keine CJ-SKU	landeseite
