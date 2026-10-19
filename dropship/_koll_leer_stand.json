@@ -1,19 +1,11 @@
 {
- "stand": "2026-10-19T12:47:15Z",
+ "stand": "2026-10-19T13:24:46Z",
  "scharf": true,
- "leer_gefunden": 52,
+ "leer_gefunden": 0,
  "duenn": 5,
- "abgemeldet": 52,
+ "abgemeldet": 0,
  "leer_nach_lauf": 0,
- "wiederholt": [
-  "tommy-hilfiger",
-  "guess",
-  "police",
-  "tom-hope",
-  "marken-sport",
-  "tech-marken",
-  "herren-duefte"
- ],
+ "wiederholt": [],
  "ohne_tabelle": [],
  "uebersprungen": [],
  "fehler": [],

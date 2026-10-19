@@ -818,6 +818,40 @@ INHALT_PAARE = [
     ("kochen-backen", "html", ", <strong>Schneidebretter</strong> und scharfe <strong>Küchenmesser</strong>",
      ", <strong>Schneidebretter</strong>, <strong>Messerhalter</strong> und <strong>Messerschärfer</strong>"),
     ("kochen-backen", "seo_d", "Schneidebretter & Küchenmesser", "Schneidebretter & Messerhalter"),   # gleich lang: ≤ 155 ohne Kürzung
+    # ── 19.10.2026 (Spähtrupp koll, Prüfung K7): vier gefüllte Kollektionen mit Marken im Text, die live 0 aktive Produkte haben ─────────
+    # damen-uhren (50 aktive, alle Vendor LuxeStyle): 0 Tissot/Calvin Klein/Casio/Citizen/Guess; Strass ≥ 8, Edelstahl ≥ 8, Retro 4, Holz 4
+    ("damen-uhren", "html",
+     "Ob elegant und zart wie die Tissot Lovely oder die Calvin Klein Dainty Diamonds, oder sportlich und robust wie die Casio Protrek – "
+     "bei uns findest du eine vielfältige Auswahl von Citizen bis Guess.",
+     "Ob elegant mit Strasssteinen, minimalistisch mit Edelstahl-Armband oder im Retro-Stil mit Holz-Gehäuse – bei uns findest du eine "
+     "vielfältige Auswahl an Quarz-Damenuhren."),
+    # messwerkzeug (7 aktive): 0 Stanley/Bosch/Dewalt/Ferrestock, 0 Laser-Wasserwaagen; Messschieber 4, Wasserwaagen 2, Entfernungsmesser 1
+    ("messwerkzeug", "html",
+     "Wasserwaagen, Laser-Wasserwaagen, Laser-Entfernungsmesser und Messschieber von Stanley, Bosch, Dewalt und Ferrestock – für exakte "
+     "Linien und millimetergenaue Ergebnisse.",
+     "Messschieber, Wasserwaagen und Entfernungsmesser – für exakte Linien und millimetergenaue Ergebnisse."),
+    ("messwerkzeug", "seo_d",
+     "Wasserwaagen, Laser-Wasserwaagen, Entfernungsmesser & Messschieber von Stanley, Bosch & Dewalt. Präzises Messwerkzeug für exakte "
+     "Ergebnisse.",
+     "Messschieber, Wasserwaagen & Entfernungsmesser. Präzises Messwerkzeug für exakte Ergebnisse – Gratis-Versand in der Schweiz ab CHF 50."),
+    # werkzeugkoffer-sets (11 aktive): 0 Stanley/Bosch/Dewalt/Facom, 0 Werkzeugkoffer/-kästen; Werkzeug-Sets 5, Bit-Sets 3, Steckschlüsselsätze 2
+    ("werkzeugkoffer-sets", "html",
+     "Werkzeugkoffer, Werkzeugkästen, komplette Werkzeug-Sets, Bit-Sets und Steckschlüsselsätze von Stanley, Bosch, Dewalt und Facom – "
+     "ordentlich verstaut und sofort einsatzbereit.",
+     "Werkzeug-Sets, Bit-Sets und Steckschlüsselsätze – ordentlich verstaut und sofort einsatzbereit."),
+    ("werkzeugkoffer-sets", "seo_d",
+     "Werkzeugkoffer, Werkzeugkästen, Werkzeug-Sets, Bit-Sets & Steckschlüsselsätze von Stanley, Bosch, Dewalt & Facom. Alles griffbereit "
+     "an einem Ort.",
+     "Werkzeug-Sets, Bit-Sets & Steckschlüsselsätze. Alles griffbereit an einem Ort – Gratis-Versand in der Schweiz ab CHF 50."),
+    # damen-duefte (1 aktives Produkt «Damenparfüm langanhaltend», 646 Mitglieder in Entwurf — BigBuy-Marken-Parfums): 0 Dolce & Gabbana/
+    # Elie Saab/Lancôme/YSL; «Original Marken-Parfums … 100 % echt & versiegelt» ist für ein No-Name-Parfum eine Falschaussage
+    ("damen-duefte", "seo_d",
+     "Damen-Düfte bei LuxeStyle: Original Marken-Parfums (Dolce & Gabbana, Elie Saab, Lancôme, YSL) – 100 % echt & versiegelt. "
+     "Gratis-Versand CH ab CHF 50.",
+     "Damen-Düfte bei LuxeStyle: Damenparfüm online bestellen. Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe."),
+    ("damen-duefte", "html",
+     "Original-Markenparfüms — ob jugendlicher Charme, exklusive Ausstrahlung oder zeitlose Klasse: finde dein perfektes Damenparfüm.",
+     "Ob jugendlicher Charme, besondere Ausstrahlung oder zeitlose Klasse: finde dein perfektes Damenparfüm."),
 ]
 # R9 im SEO-Titel nur in Handfällen, in denen S3 den SEO-Titel ohnehin schreibt (R4: eu-lager-schnell, 3d-drucker) — sonst «manuell»
 R9_SEO_T = {"3d-drucker"}

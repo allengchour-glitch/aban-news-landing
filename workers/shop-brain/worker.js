@@ -98,7 +98,7 @@ async function aiSeo(env, name) {
 `Schreibe SEO-Meta für ein Produkt im Schweizer Online-Shop LuxeStyle.
 Produkt: "${clean(name)}"
 - title: verkaufsstark, Schweizer Hochdeutsch (ss statt ß), max 60 Zeichen, endet mit " | LuxeStyle", kein Emoji.
-- description: ein konkreter Nutzen + Vertrauen (Gratis-Versand ab CHF 65, 30 Tage Rückgabe), max 150 Zeichen, kein Emoji.` }],
+- description: ein konkreter Nutzen + Vertrauen (Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe), max 150 Zeichen, kein Emoji.` }],
       }),
     });
     const j = await r.json();
@@ -151,15 +151,16 @@ async function run(env, manual) {
       if (needSeo) {
         let seo = null;
         if (aiKey && aiUsed < aiLimit) { seo = await aiSeo(env, n.title); if (seo) aiUsed++; }
-        const title = seo ? seo.title : mkTitle(n.title);
-        const desc = seo ? seo.description : mkDesc(n.title);
+        // 19.10.2026: vorhandenen Titel/Beschreibung behalten — nur die leere Hälfte füllen
+        const title = (n.seo && n.seo.title) || (seo ? seo.title : mkTitle(n.title));
+        const desc = (n.seo && n.seo.description) || (seo ? seo.description : mkDesc(n.title));
         input += `, seo: { title: "${esc(title)}", description: "${esc(desc)}" }`;
       }
       prodFixes.push(input);
     }
 
     // 2) Collection-Cover (leere Kategorien bebildern) + fehlende Collection-SEO setzen
-    const cq = `{ collections(first: 250) { nodes { id handle title seo { title } image { url } products(first: 5) { nodes { featuredImage { url } } } } } }`;
+    const cq = `{ collections(first: 250) { nodes { id handle title seo { title description } image { url } products(first: 5) { nodes { featuredImage { url } } } } } }`;
     const cdata = await gql(env, token, cq);
     const colls = cdata?.data?.collections?.nodes || [];
     const colFixes = []; const colSeoFixes = [];
@@ -173,7 +174,8 @@ async function run(env, manual) {
         const ct = clean(c.title) || "Kollektion";
         let title = ct; if (title.length > 54) { let x = title.slice(0, 54); if (x.includes(" ")) x = x.slice(0, x.lastIndexOf(" ")); title = x.replace(/[ ,;:·–-]+$/, ""); }
         title = (title + " | LuxeStyle").slice(0, 70);
-        const desc = `${ct} bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 65, 30 Tage Rückgabe, −10% mit Code WELCOME10.`.slice(0, 320);
+        // 19.10.2026: Schwelle war «CHF 65» (falsch) → «ab CHF 50»; vorhandene Beschreibung bleibt (Titel allein nullt sie)
+        const desc = ((c.seo && c.seo.description) || `${ct} bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe, −10% mit Code WELCOME10.`).slice(0, 320);
         colSeoFixes.push({ id: c.id, title, desc });
       }
     }

@@ -128,15 +128,16 @@ async function runMutations(token,items,build){
     if(needSeo){
       let seo=null;
       if(AI_KEY && aiUsed<AI_LIMIT){ seo=await aiSeo(n.title); if(seo) aiUsed++; }
-      const title = seo ? seo.title : mkTitle(n.title);
-      const desc  = seo ? seo.description : mkDesc(n.title);
+      // 19.10.2026: vorhandenen Titel/Beschreibung behalten — nur die leere Hälfte füllen (sonst überschreibt die Vorlage Handarbeit)
+      const title = (n.seo&&n.seo.title) || (seo ? seo.title : mkTitle(n.title));
+      const desc  = (n.seo&&n.seo.description) || (seo ? seo.description : mkDesc(n.title));
       input+=`, seo: { title: "${esc(title)}", description: "${esc(desc)}" }`;
     }
     prodFixes.push({input,title:n.title});
   }
 
   // ---------- 2) Collection-Cover (leere Kategorien bebildern) ----------
-  const cq=`{ collections(first:250){ nodes{ id handle title seo{ title } image{ url } products(first:5){ nodes{ featuredImage{ url } } } } } }`;
+  const cq=`{ collections(first:250){ nodes{ id handle title seo{ title description } image{ url } products(first:5){ nodes{ featuredImage{ url } } } } } }`;
   const cdata=await gql(token,cq);
   const colls=cdata?.data?.collections?.nodes||[];
   const colFixes=[]; const colSeoFixes=[];
@@ -150,7 +151,8 @@ async function runMutations(token,items,build){
       const ct=clean(c.title)||"Kollektion";
       let title=ct; if(title.length>54){let x=title.slice(0,54); if(x.includes(" "))x=x.slice(0,x.lastIndexOf(" ")); title=x.replace(/[ ,;:·–-]+$/,"");}
       title=(title+" | LuxeStyle").slice(0,70);
-      const desc=`${ct} bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe, −10% mit Code WELCOME10.`.slice(0,320);
+      // 19.10.2026: ein seo-Objekt immer vollständig schreiben (Titel allein nullt die Beschreibung); vorhandene Beschreibung bleibt, Vorlage nur bei leerem Feld
+      const desc=((c.seo&&c.seo.description)||`${ct} bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe, −10% mit Code WELCOME10.`).slice(0,320);
       colSeoFixes.push({id:c.id, handle:c.handle, title, desc});
     }
   }
