@@ -110,10 +110,17 @@
   "bild-20261022T1410": {
    "basis_utc": "2026-10-22T14:10:00Z",
    "format": "bild",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "",
+   "handles": [],
+   "letzter_versuch": "2026-10-19T00:30:43Z",
+   "mc_ids": [
+    399529298
+   ],
+   "reserviert_um": "2026-10-19T00:30:43Z",
+   "status": "geplant",
    "termin_utc": "2026-10-22T14:10:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "bild-20261023T0745": {
    "basis_utc": "2026-10-23T07:45:00Z",
@@ -1003,10 +1010,18 @@
   "story-20261021T1710": {
    "basis_utc": "2026-10-21T17:10:00Z",
    "format": "story",
+   "grund": "",
+   "handle": "",
+   "handles": [
+    "jetons-wertmarken-pfand-grun-fga872538"
+   ],
    "letzter_versuch": "2026-10-19T00:29:53Z",
-   "mc_ids": [],
+   "mc_ids": [
+    399529120,
+    399529123
+   ],
    "reserviert_um": "2026-10-19T00:29:53Z",
-   "status": "reserviert",
+   "status": "geplant",
    "termin_utc": "2026-10-21T17:10:00Z",
    "versuche": 1
   },
@@ -1028,10 +1043,12 @@
   "story-20261022T1710": {
    "basis_utc": "2026-10-22T17:10:00Z",
    "format": "story",
+   "letzter_versuch": "2026-10-19T00:31:10Z",
    "mc_ids": [],
-   "status": "offen",
+   "reserviert_um": "2026-10-19T00:31:10Z",
+   "status": "reserviert",
    "termin_utc": "2026-10-22T17:10:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "story-20261023T1045": {
    "basis_utc": "2026-10-23T10:45:00Z",
@@ -1604,6 +1621,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-19T00:29:53Z",
+ "stand": "2026-10-19T00:31:10Z",
  "version": 1
 }
