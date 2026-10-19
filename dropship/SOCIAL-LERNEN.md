@@ -1,4 +1,4 @@
-# Social-Lernen — Stand 2026-10-19 02:08 UTC
+# Social-Lernen — Stand 2026-10-19 08:10 UTC
 
 Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 177 · TikTok 64 · Pinterest 275 · Facebook-Reels 98 · YouTube 39 → **421 Inhalte**; 8 zu junge Posts nicht gezählt.
 
@@ -16,9 +16,9 @@ Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 177 · TikTok 64 · Pin
 | beauty | 30 | 1.35 | 1.15 | ja |
 | haustier | 44 | 1.30 | 1.07 | ja |
 | fitness | 15 | 1.30 | 1.08 | ja |
-| schmuck | 18 | 1.18 | 1.05 | ja |
+| schmuck | 18 | 1.20 | 1.05 | ja |
 | home | 71 | 1.16 | 0.95 | ja |
-| allgemein | 92 | 1.13 | 1.01 | ja |
+| allgemein | 92 | 1.13 | 1.02 | ja |
 | kueche | 34 | 1.06 | 1.00 | ja |
 
 ### Hooks
@@ -65,7 +65,7 @@ Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 177 · TikTok 64 · Pin
 | instagram 21–24 | 28 | 1.11 | 1.28 | ja |
 | facebook 06–09 | 7 | 1.09 | 1.00 | ja |
 | pinterest 06–09 | 183 | 1.08 | 1.00 | ja |
-| instagram 09–12 | 34 | 1.06 | 0.94 | ja |
+| instagram 09–12 | 34 | 1.07 | 0.94 | ja |
 | tiktok 06–09 | 13 | 1.05 | 1.01 | ja |
 | tiktok 09–12 | 17 | 1.04 | 1.02 | ja |
 | facebook 15–18 | 8 | 1.03 | 0.78 | ja |
@@ -99,8 +99,8 @@ Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 177 · TikTok 64 · Pin
 | #totebag | 4 | 1.35 | 1.00 | ja |
 | #fundstück | 57 | 1.31 | 1.00 | ja |
 | #alltag | 62 | 1.30 | 1.00 | ja |
-| #geschenkidee | 18 | 1.29 | 1.00 | ja |
 | #zürich | 89 | 1.29 | 1.00 | ja |
+| #geschenkidee | 18 | 1.29 | 1.00 | ja |
 | #kleid | 3 | 1.28 | 1.20 | ja |
 | #kleiderliebe | 3 | 1.28 | 1.20 | ja |
 | #uhren | 4 | 1.24 | 1.31 | ja |
@@ -108,24 +108,24 @@ Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 177 · TikTok 64 · Pin
 | #armband | 4 | 1.24 | 0.87 | ja |
 | #lederarmband | 4 | 1.22 | 0.94 | ja |
 | #katze | 5 | 1.21 | 1.06 | ja |
+| #swissstyle | 53 | 1.19 | 0.98 | ja |
 | #selfcare | 22 | 1.19 | 1.00 | ja |
-| #swissstyle | 54 | 1.18 | 0.99 | ja |
 | #selbstgestalten | 14 | 1.18 | 1.00 | ja |
 | #haustier | 48 | 1.17 | 1.00 | ja |
-| #swissmade | 36 | 1.15 | 1.00 | ja |
+| #swissmade | 35 | 1.15 | 1.00 | ja |
 | #beauty | 11 | 1.14 | 1.00 | ja |
-| #luxestyle | 504 | 1.14 | 1.00 | ja |
+| #luxestyle | 505 | 1.14 | 1.00 | ja |
 | #viral | 15 | 1.14 | 1.02 | ja |
 | #guasha | 3 | 1.13 | 1.19 | ja |
-| #fyp | 65 | 1.12 | 1.00 | ja |
-| #shoppingschweiz | 92 | 1.12 | 0.98 | ja |
-| #ootdschweiz | 85 | 1.12 | 1.00 | ja |
+| #herrenuhr | 8 | 1.13 | 1.01 | ja |
+| #fyp | 64 | 1.12 | 1.00 | ja |
 | #mamaleben | 4 | 1.12 | 1.01 | ja |
+| #ootdschweiz | 84 | 1.12 | 1.00 | ja |
+| #shoppingschweiz | 92 | 1.12 | 0.98 | ja |
 | #echtleder | 4 | 1.12 | 1.03 | ja |
 | #rfidschutz | 4 | 1.12 | 1.03 | ja |
-| #schweizmode | 91 | 1.11 | 1.00 | ja |
+| #schweizmode | 90 | 1.11 | 1.00 | ja |
 | #skincare | 22 | 1.11 | 1.01 | ja |
-| #herrenuhr | 8 | 1.10 | 1.01 | ja |
 | #streetwear | 3 | 1.09 | 1.20 | ja |
 | #ambiente | 3 | 1.08 | 1.49 | ja |
 | #bärndütsch | 4 | 1.08 | 1.20 | ja |
@@ -163,9 +163,9 @@ Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 177 · TikTok 64 · Pin
 | beauty | 30 | 1.35 | 1.15 | ja |
 | haustier | 44 | 1.30 | 1.07 | ja |
 | fitness | 15 | 1.30 | 1.08 | ja |
-| schmuck | 18 | 1.18 | 1.05 | ja |
+| schmuck | 18 | 1.20 | 1.05 | ja |
 | home | 71 | 1.16 | 0.95 | ja |
-| allgemein | 92 | 1.13 | 1.01 | ja |
+| allgemein | 92 | 1.13 | 1.02 | ja |
 | kueche | 34 | 1.06 | 1.00 | ja |
 
 ### Zeitfenster (Schweizer Zeit, je Kanal)
@@ -193,7 +193,7 @@ Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 177 · TikTok 64 · Pin
 | facebook 06–09 | 7 | 1.09 | 1.00 | ja |
 | youtube 03–06 | 2 | 1.08 | 1.22 | vorläufig |
 | pinterest 06–09 | 183 | 1.08 | 1.00 | ja |
-| instagram 09–12 | 34 | 1.06 | 0.94 | ja |
+| instagram 09–12 | 34 | 1.07 | 0.94 | ja |
 | tiktok 06–09 | 13 | 1.05 | 1.01 | ja |
 | tiktok 09–12 | 17 | 1.04 | 1.02 | ja |
 | facebook 15–18 | 8 | 1.03 | 0.78 | ja |
@@ -230,7 +230,7 @@ Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 177 · TikTok 64 · Pin
 
 ### Musik und Stimme
 
-60 Inhalte mit Musik aus `social/_musik_verlauf.txt` verknüpft (544 Verlaufszeilen).
+60 Inhalte mit Musik aus `social/_musik_verlauf.txt` verknüpft (548 Verlaufszeilen).
 
 | Wert | n | Gewicht | Median rel | belastbar |
 |---|---:|---:|---:|---|
@@ -279,8 +279,8 @@ Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 177 · TikTok 64 · Pin
 | tiktok reel | 64 | 275.5 |
 | facebook reel | 98 | 1 |
 | youtube reel | 39 | 175 |
+| pinterest pin | 218 | 2.5 |
 | pinterest pin-video | 57 | 1 |
-| pinterest pin | 218 | 3 |
 
 ## Stärkste 5 (gegen den eigenen Kanal-Median)
 - ×8.00 (Score 26625, Median 275) · tiktok reel · Leicht wie Sommer, gemacht für den Herbst 🍂 Leinen-Set «Provence» – H · https://www.tiktok.com/@luxestyle.ch/video/7691437492066733344

@@ -10305,3 +10305,9 @@ perlen-schuhe-fur-kleinkinder-606500	2509150628341606800	16	7.17	ok	landeseite
 yoga-roller-mit-camouflage-muster-616400	2602210315381616700	16	8.11	ok	landeseite
 kinder-badetuch-mit-cartoon-druck-633900	2604250836421634800	16	9.75	ok	landeseite
 automatische-vibrations-halsband-fur-tiere-624900	2512220248251625300	7	6.53	ok	landeseite
+kinder-outdoor-laufschuhe-600500	2508270218261600700	16	7.43	ok	landeseite
+gewichtete-handgelenkbander-fur-yoga-und-bodyb-635500	2602181724181635800	16	10.96	ok	landeseite
+madchen-leder-schuhe-britischer-stil-610800	2507220717161611300	16	6.90	ok	landeseite
+fruhlings-lauflernschuhe-fur-babys-612000	2507050209031612700	16	8.11	ok	landeseite
+fitness-seil-mit-stahlkabel-621500	2602100926581621900	7	6.49	ok	landeseite
+edelstahl-lunchbox-mit-thermofunktion-619900	2606160936171610500	-	-	unklar 0  rest=None	landeseite
