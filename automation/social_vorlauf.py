@@ -15,6 +15,8 @@ Modi (ohne SCHARF=1 nur Trockenlauf — zeigt Slots und Befehle, plant nichts, s
   --liste                                        Plan je Tag und Format
   --zeile                                        eine Zeile «VORLAUF: …» für die Keepalive-Ampel
   --selbsttest                                   Slots, Sommerzeit, Konflikte, Preisregel, Adoption — Exit 1 bei Fehler
+Unbekannter Schalter, fehlender/falscher Wert oder Aufruf ohne Modus → Meldung auf stderr und Exit 2, OHNE etwas zu starten (19.10.: ein Tippfehler im
+Autopilot-Aufruf, z. B. `--pruefe`, wäre sonst als Erfolg gewertet worden und der Prüfer nie gelaufen). Ohne Argument oder mit -h/--help: diese Doku, Exit 0.
 
 Dateien: automation/data/vorlauf_regeln.json (Raster, Abstände) · dropship/_vorlauf_plan.json (Plan, wird vom Auto-Committer gesichert) ·
 dropship/_vorlauf_log.tsv (Protokoll) · dropship/_vorlauf_drossel.tsv («Marke<TAB>bis-ISO»: der Autopilot (`faellig()`) postet ein Format
@@ -79,6 +81,10 @@ WERT_FORMAT = {"tiktok": 6, "youtube": 5, "reel_igfb": 4, "karussell": 3, "bild"
 PRUEFER_WARN_H = 5   # ohne vermerkten Prüferlauf (Soll: alle 2 h, in Füllphasen bis ~3 h) meldet die Zeile ⚠️
 LINK_PRODUKT = re.compile(r"luxestyle\.ch/products/([a-z0-9][a-z0-9\-]*)", re.I)
 HANDLE_FORM = re.compile(r"[a-z0-9][a-z0-9\-]*")
+KOPF_EIGEN = ("slots", "_basis", "_basis_kopf", "stand")   # Plan-Schlüssel, die plan_speichern NICHT als «Kopf-Schlüssel» zusammenführt (Slots je Slot, stand setzt es selbst)
+_FEHLT = object()   # «Schlüssel nicht vorhanden» (unterscheidet sich von None/leer)
+MODI = ("--selbsttest", "--liste", "--zeile", "--pruefen", "--notbremse", "--plan")
+OPTIONEN = {"--max-min": "ganze Zahl", "--format": "Formatliste, z. B. tiktok,pin", "--max-slots": "ganze Zahl"}
 
 
 def offene_sortieren(paare, plan):
@@ -147,16 +153,22 @@ def _git_plan(rev):
         return None
 
 
+def _basis_merken(d):
+    """Stand beim Laden festhalten, gegen den plan_speichern entscheidet «hat DIESER Prozess es geändert?»: je Slot (`_basis`) und für die Kopf-Schlüssel
+    des Plans (`_basis_kopf`: pruefer_stand, pruefer_ohne_urteil, pruefer_sperre, pruefer_shop_blind, abgleich_sperre …)."""
+    d["_basis"] = copy.deepcopy(d.get("slots", {}))
+    d["_basis_kopf"] = {k: copy.deepcopy(v) for k, v in d.items() if k not in KOPF_EIGEN}
+    return d
+
+
 def plan_laden(pfad=PLAN):
     """Fehlende Datei = leerer Plan. Defekte Datei (Merge-Marker, halber Schreibvorgang, Snapshot-Rücklauf) NIE still als leer behandeln:
     Prüfung 18.10. — ein leerer Plan erzeugt alle Slots neu und damit Doppelposts neben den vorhandenen. Erst die Datei sichern,
     dann den letzten gültigen Stand aus git holen; gelingt das nicht → Abbruch (PlanDefekt)."""
     if not os.path.exists(pfad):
-        return {"version": 1, "slots": {}, "_basis": {}}
+        return _basis_merken({"version": 1, "slots": {}})
     try:
-        d = json.load(open(pfad, encoding="utf-8"))
-        d["_basis"] = copy.deepcopy(d.get("slots", {}))
-        return d
+        return _basis_merken(json.load(open(pfad, encoding="utf-8")))
     except (OSError, ValueError):
         pass
     try:
@@ -169,23 +181,27 @@ def plan_laden(pfad=PLAN):
             print(f"⚠️ Plan-Datei defekt → Stand aus git {rev} wiederhergestellt ({len(d['slots'])} Slots; Kopie: _vorlauf_plan.json.defekt)")
             if SCHARF:
                 atomar(pfad, json.dumps(d, ensure_ascii=False, indent=1))
-            d["_basis"] = copy.deepcopy(d.get("slots", {}))
-            return d
+            return _basis_merken(d)
     raise PlanDefekt("dropship/_vorlauf_plan.json ist defekt und nicht aus git herstellbar")
 
 
 def plan_speichern(plan, pfad=PLAN):
     """Schreibt den Plan — aber ZUSAMMENGEFÜHRT: Prüfer/Notbremse (eigene Sperre) und der Plan-Lauf halten je eine Kopie im Speicher; wer seine
     Kopie über die Datei schrieb, löschte die Änderungen des anderen (Lost-Update, Prüfung 18.10.). Je Slot gilt: hat DIESER Prozess ihn gegenüber
-    dem Stand beim Laden (`_basis`) geändert → unser Stand, sonst der aktuelle Stand der Datei."""
+    dem Stand beim Laden (`_basis`) geändert → unser Stand, sonst der aktuelle Stand der Datei. Dasselbe gilt für die Kopf-Schlüssel des Plans
+    (`_basis_kopf`; 19.10. Strang E: `pruefer_stand`/`pruefer_ohne_urteil` gingen verloren, wenn ein Plan-Lauf mit älterer Kopie danach speicherte —
+    die Zeile meldete dann fälschlich «PRÜFER: noch kein Lauf vermerkt»). Auch ein vom Prüfer GELÖSCHTER Schlüssel (`pruefer_sperre`) bleibt gelöscht."""
     if not SCHARF and pfad == PLAN:
         return   # Trockenlauf schreibt nichts
     with open(PLAN_SPERRE, "w") as sperre:
         fcntl.flock(sperre, fcntl.LOCK_EX)
         try:
-            platte = json.load(open(pfad, encoding="utf-8")).get("slots", {})
+            platte_roh = json.load(open(pfad, encoding="utf-8"))
         except (OSError, ValueError):
-            platte = {}
+            platte_roh = {}
+        if not isinstance(platte_roh, dict):
+            platte_roh = {}
+        platte = platte_roh.get("slots", {})
         basis = plan.get("_basis", {})
         zusammen = {}
         for name in set(plan["slots"]) | set(platte):
@@ -196,11 +212,22 @@ def plan_speichern(plan, pfad=PLAN):
                 zusammen[name] = unser
             else:
                 zusammen[name] = ihr
+        kopf_basis = plan.get("_basis_kopf", {})
+        for k in set(plan) | set(platte_roh):
+            if k in KOPF_EIGEN:
+                continue
+            unser, ihr, alt = plan.get(k, _FEHLT), platte_roh.get(k, _FEHLT), kopf_basis.get(k, _FEHLT)
+            wert = unser if unser != alt else ihr   # von uns gesetzt/geändert/gelöscht → unser Stand, sonst der aktuelle der Datei (auch ein Schlüssel, den erst ein anderer Prozess anlegte)
+            if wert is _FEHLT:
+                plan.pop(k, None)
+            else:
+                plan[k] = wert
         plan["slots"] = zusammen
         plan["stand"] = iso(jetzt())
-        roh = {k: v for k, v in plan.items() if k != "_basis"}
+        roh = {k: v for k, v in plan.items() if k not in ("_basis", "_basis_kopf")}
         atomar(pfad, json.dumps(roh, ensure_ascii=False, indent=1, sort_keys=True) + "\n")
         plan["_basis"] = copy.deepcopy(zusammen)
+        plan["_basis_kopf"] = {k: copy.deepcopy(v) for k, v in plan.items() if k not in KOPF_EIGEN}
 
 
 def log(slot, aktion, detail=""):
@@ -939,14 +966,14 @@ def befunde_fuer(plan, planer, jetzt_utc):
     formen = {n: slot_formen(s, ids) for n, s in geplant.items()}   # auch gelaufene Slots: sie sind die Anker der Doppelbelegungs-Prüfung
     for f in formen.values():
         alle_handles |= f
-    shop = {}
+    shop, blind = {}, False
     plan.pop("pruefer_shop_blind", None)
     plan.pop("pruefer_ohne_urteil", None)
     try:
         shop = storefront(alle_handles) if alle_handles else {}
     except Exception as e:
         # Shopify nicht lesbar ≠ ok, aber auch kein Löschgrund → nichts löschen, ABER sichtbar machen (Prüfung 18.10.: sonst prüft der Prüfer still nichts)
-        shop = {}
+        shop, blind = {}, True
         plan["pruefer_shop_blind"] = f"{iso(jetzt())} Storefront nicht lesbar ({str(e)[:60]})"
         print(f"⚠️ Shop nicht lesbar ({str(e)[:80]}) → Verfügbarkeit/Preis dieser Runde ungeprüft")
     b = {}
@@ -981,8 +1008,9 @@ def befunde_fuer(plan, planer, jetzt_utc):
                     gruende.append("Medium-Adresse antwortet nicht")
         if gruende:
             b[n] = sorted(set(gruende))
-    if shop:
-        # Slots, für die der Prüfer KEIN Produkt im Shop kennt, sind blind (19.10. gemessen: 12 von 110, die Zeile zählte nur 6) — sichtbar machen, nicht löschen
+    if not blind:
+        # Slots, für die der Prüfer KEIN Produkt im Shop kennt, sind blind (19.10. gemessen: 12 von 110, die Zeile zählte nur 6) — sichtbar machen, nicht löschen.
+        # Auch wenn gar kein Handle ableitbar war (`shop` leer, kein Storefront-Aufruf): dann sind ALLE Zukunfts-Slots ohne Urteil — nicht stumm lassen (Prüfung 19.10.).
         def urteil(n):
             return any(h in shop and (shop[h][1] == shop[h][1] or h in links.get(n, ())) for h in set(hs.get(n, ())) | formen[n] | links.get(n, set()))
         ohne = sorted(n for n in zukunft if not urteil(n))
@@ -1029,7 +1057,7 @@ def pruefen(notbremse=False):
                 if s["status"] == "geplant" and von_iso(s["termin_utc"]) > jetzt() + timedelta(minutes=5)}
     else:
         ziel = befunde_fuer(plan, planer, jetzt())
-    plan["pruefer_stand"] = iso(jetzt())   # 19.10. (Strang E): bisher wusste NIEMAND, wann der Prüfer zuletzt lief (kein Protokoll, `stand` zählt nur den Plan-Lauf); zeile() meldet ab PRUEFER_WARN_H
+    plan["pruefer_stand"] = iso(jetzt())   # 19.10. (Strang E): bisher wusste NIEMAND, wann der Prüfer zuletzt lief (kein Protokoll; `stand` ist die Zeit des LETZTEN Speicherns, gleich von wem — auch der Prüfer setzt ihn); zeile() meldet ab PRUEFER_WARN_H
     if not ziel:
         print(f"PRUEFEN: {sum(1 for s in plan['slots'].values() if s['status'] == 'geplant')} geplante Slots, keine Befunde"
               f"{' · ohne Produkt-Urteil: ' + str(len(plan['pruefer_ohne_urteil'])) if plan.get('pruefer_ohne_urteil') else ''}"
@@ -1369,6 +1397,36 @@ def selbsttest():
         ok("pin-c" not in d_, f"Anker karussell-d fällt aus, pin-c muss bleiben: {d_}")
         ok(doppel_befunde(plan5, {"pin-c": {"111"}, "karussell-d": {"222"}}, jt5) == {}, "verschiedene Waren dürfen kein Befund sein")
         ok(doppel_befunde(plan5, {"story-f": {"222"}, "tiktok-a": {"222"}}, jt5) == {}, "Story zählt nicht")
+        # 19b. Anker-Regel (Prüfung 19.10.): ein schon gelaufener Slot bleibt IMMER, auch wenn er weniger wert ist als der künftige — nur der künftige geht.
+        # Ohne diesen Fall (Anker = zugleich höchster Wert) blieb die Grenze «läuft schon / in < 10 min» ungeprüft.
+        sl_ = lambda fmt, t_: {"format": fmt, "termin_utc": t_, "status": "geplant", "mc_ids": [1], "handles": []}
+        d_ = doppel_befunde({"slots": {"pin-lauf": sl_("pin", "2098-12-31T11:00:00Z"), "tiktok-z": sl_("tiktok", "2099-01-02T08:00:00Z")}}, {"pin-lauf": {"1"}, "tiktok-z": {"1"}}, jt5)
+        ok(sorted(d_) == ["tiktok-z"] and "pin-lauf" in d_["tiktok-z"][0], f"gelaufener Pin ist Anker, der künftige TikTok muss gehen: {d_}")
+        # Grenze: Termin = jetzt+10 min zählt als laufend (Anker, die Prüfung nimmt ihn mit > 10 min auch nicht mehr als «zukünftig»), jetzt+11 min ist noch zurückziehbar
+        d_ = doppel_befunde({"slots": {"pin-x": sl_("pin", "2098-12-31T12:10:00Z"), "tiktok-z": sl_("tiktok", "2099-01-02T08:00:00Z")}}, {"pin-x": {"1"}, "tiktok-z": {"1"}}, jt5)
+        ok(sorted(d_) == ["tiktok-z"], f"Termin genau jetzt+10 min muss Anker sein: {d_}")
+        d_ = doppel_befunde({"slots": {"pin-x": sl_("pin", "2098-12-31T12:11:00Z"), "tiktok-z": sl_("tiktok", "2099-01-02T08:00:00Z")}}, {"pin-x": {"1"}, "tiktok-z": {"1"}}, jt5)
+        ok(sorted(d_) == ["pin-x"], f"Termin jetzt+11 min ist noch zurückziehbar, der Pin (billiger) geht: {d_}")
+        # 19c. Anker NUR über den rohen «pid:»-Schlüssel (gelaufener Bild-Slot ohne ableitbaren Handle) + künftiger Pin mit derselben Ware (Shop-ID 333)
+        plan_h = {"slots": {"bild-lauf": sl("bild", "2098-12-31T09:00:00Z", [20], ["pid:333"]), "pin-neu": sl("pin", "2099-01-05T14:40:00Z", [21])}}
+        planer_h = [_e(21, ["pinterest"], "Mini", pin="https://luxestyle.ch/products/anderes-produkt-123456?utm_source=pinterest")]
+        b_h = befunde_fuer(plan_h, planer_h, jt5)
+        ok(sorted(b_h) == ["pin-neu"] and "doppelt belegt" in b_h["pin-neu"][0], f"Anker über rohen pid:-Schlüssel nicht erkannt: {b_h}")
+        # 19d. Prüfer-Schlüssel gelten je Lauf neu: Urteil da → «ohne Urteil» weg, Shop wieder lesbar → «blind» weg (sonst bliebe die Meldung ewig stehen)
+        plan5["pruefer_shop_blind"] = "2026-10-19T00:00:00Z alt"
+        SHOP["unbekanntes-set"] = (True, 5.0, 5.0, "555")
+        befunde_fuer(plan5, planer5, jt5)
+        ok("pruefer_ohne_urteil" not in plan5 and "pruefer_shop_blind" not in plan5, f"alte Prüfer-Schlüssel blieben stehen: {plan5.get('pruefer_ohne_urteil')} / {plan5.get('pruefer_shop_blind')}")
+        SHOP.pop("unbekanntes-set", None)
+        # 19e. Kein Handle ableitbar (Metricool-Kopie als Medium, kein Link): der Prüfer ist für ALLE Slots blind und SAGT es — kein Storefront-Aufruf, kein stilles «ok»
+        def _kein_aufruf(h): raise AssertionError("storefront ohne Handles gerufen")
+        globals()["storefront"] = _kein_aufruf
+        mk_ = "https://static.metricool.com/planner/202610/1-file-1.jpeg"
+        plan_k = {"slots": {"bild-k": sl("bild", "2099-01-02T08:00:00Z", [30]), "story-k": sl("story", "2099-01-03T08:00:00Z", [31])}}
+        b_k = befunde_fuer(plan_k, [_e(30, ["instagram"], "Nur Text", media=[mk_]), _e(31, ["instagram"], "", media=[mk_])], jt5)
+        ok(b_k == {} and plan_k.get("pruefer_ohne_urteil") == ["bild-k", "story-k"] and "pruefer_shop_blind" not in plan_k, f"Blindheit ohne ableitbare Handles stumm: {b_k} {plan_k.get('pruefer_ohne_urteil')}")
+        plan_k["pruefer_stand"] = iso(jetzt()); plan_k["stand"] = iso(jetzt())
+        ok("ℹ️ 2 Slot(s) ohne prüfbares Produkt" in zeile(plan_k, regeln), f"Zeile meldet die Blindheit nicht: {zeile(plan_k, regeln)}")
         # pruefen() vermerkt den Lauf (ohne Netz, ohne Schreiben: SCHARF ist im Selbsttest aus)
         import contextlib, io
         P5 = copy.deepcopy(plan5)
@@ -1395,12 +1453,128 @@ def selbsttest():
     ok("ohne prüfbares Produkt" in zeile({"version": 1, "stand": iso(jetzt()), "slots": {"story-z": _st}}, regeln), "ohne Prüferlauf zählt die grobe Schätzung (Story ohne Schlüssel)")
     ok("ohne prüfbares Produkt" not in zeile({"version": 1, "stand": iso(jetzt()), "pruefer_stand": iso(jetzt()), "slots": {"story-z": _st}}, regeln), "nach dem Prüferlauf zählt nur sein Urteil (Story-Handle steht im Medienname)")
     ok("ℹ️ 1 Slot(s) ohne prüfbares Produkt" in zeile(_pz(pruefer_stand=iso(jetzt()), pruefer_ohne_urteil=["tiktok-z", "weg-0"]), regeln), "pruefer_ohne_urteil muss zählen (nur noch geplante Zukunft)")
+    # 20. Die ECHTE storefront() (Prüfung 19.10.: Test 19 ersetzt sie durch ein Lambda, die Produkt-ID-Gewinnung lief nie): gefälschtes urlopen, kein Netz.
+    # Der Fake liefert «id» nur, wenn die Abfrage sie verlangt — fällt sie aus der Abfrage, fehlt sie im Ergebnis.
+    import io as io_
+    aufrufe = []
+    def _urlopen_fake(req, timeout=None):
+        q = json.loads(req.data)["query"]
+        aufrufe.append(q)
+        antw = {}
+        for k, h, felder in re.findall(r'(a\d+): product\(handle:"([^"]+)"\)\{ (.*?)priceRange', q):
+            if h.startswith("weg-"):
+                antw[k] = None
+                continue
+            pr = {"availableForSale": not h.startswith("aus-"), "priceRange": {"minVariantPrice": {"amount": "9.90"}, "maxVariantPrice": {"amount": "19.90"}}}
+            if re.search(r"\bid\b", felder):
+                pr["id"] = "gid://shopify/Product/" + re.sub(r"\D", "", h)
+            antw[k] = pr
+        return io_.BytesIO(json.dumps({"data": antw}).encode())
+    alt_urlopen = urllib.request.urlopen
+    urllib.request.urlopen = _urlopen_fake
+    try:
+        r_sf = storefront(["da-12345", "weg-1", "aus-777"])
+        ok(r_sf.get("da-12345") == (True, 9.9, 19.9, "12345"), f"storefront: Produkt-ID/Preis falsch: {r_sf.get('da-12345')}")
+        ok(r_sf.get("aus-777", (None,))[0] is False and r_sf["aus-777"][3] == "777", f"storefront: nicht kaufbar muss die ID trotzdem tragen: {r_sf.get('aus-777')}")
+        ok(r_sf.get("weg-1", (None,))[0] is False and r_sf["weg-1"][1] != r_sf["weg-1"][1] and r_sf["weg-1"][3] == "", f"storefront: fehlendes Handle = (False, nan, nan, ''): {r_sf.get('weg-1')}")
+        aufrufe.clear()
+        viele = {h: v for h, v in storefront([f"da-{i}" for i in range(1, 46)]).items()}
+        ok(len(aufrufe) == 3 and all(viele[f"da-{i}"][3] == str(i) for i in range(1, 46)), f"storefront: 45 Handles → 3 Abfragen mit je eigener ID; habe {len(aufrufe)} Abfragen")
+    except Exception as e:
+        ok(False, f"Test storefront abgebrochen: {type(e).__name__}: {str(e)[:160]}")
+    finally:
+        urllib.request.urlopen = alt_urlopen
+    # 21. plan_speichern führt auch die Kopf-Schlüssel zusammen (Prüfung 19.10.): Prüfer-Stand/-Urteil überleben einen späteren Plan-Lauf mit älterer Kopie,
+    # ein vom Prüfer gelöschter Schlüssel kommt nicht zurück, eigene Kopf-Änderungen und Slot-Änderungen des Plan-Laufs gelten weiter.
+    alt_sperre, dp = PLAN_SPERRE, tempfile.mkdtemp()
+    globals()["PLAN_SPERRE"] = os.path.join(dp, "l.lock")
+    try:
+        pf2 = os.path.join(dp, "plan.json")
+        sl2 = lambda: {"format": "tiktok", "termin_utc": "2099-01-01T08:00:00Z", "status": "geplant", "mc_ids": [1], "handles": []}
+        json.dump({"version": 1, "stand": "2026-10-19T10:00:00Z", "pruefer_sperre": "2026-10-19T09:00:00Z alt", "slots": {"a": sl2(), "b": sl2()}}, open(pf2, "w"))
+        lauf_k, pruefer_k = plan_laden(pf2), plan_laden(pf2)   # beide laden VOR dem Speichern des anderen
+        pruefer_k["pruefer_stand"] = "2026-10-19T12:00:00Z"; pruefer_k["pruefer_ohne_urteil"] = ["a"]; pruefer_k.pop("pruefer_sperre")
+        plan_speichern(pruefer_k, pf2)
+        lauf_k["slots"]["b"]["grund"] = "x"; lauf_k["abgleich_sperre"] = "2026-10-19T12:30:00Z neu"
+        plan_speichern(lauf_k, pf2)
+        res = json.load(open(pf2, encoding="utf-8"))
+        ok(res.get("pruefer_stand") == "2026-10-19T12:00:00Z" and res.get("pruefer_ohne_urteil") == ["a"], f"Prüfer-Schlüssel gingen beim Speichern des Plan-Laufs verloren: { {k: v for k, v in res.items() if k.startswith('pruefer_')} }")
+        ok("pruefer_sperre" not in res, f"vom Prüfer gelöschter Schlüssel kehrte zurück: {res.get('pruefer_sperre')}")
+        ok(res.get("abgleich_sperre") == "2026-10-19T12:30:00Z neu", "eigene Kopf-Änderung des Plan-Laufs ging verloren")
+        ok(res["slots"]["b"].get("grund") == "x" and set(res["slots"]) == {"a", "b"}, "Slot-Änderung des Plan-Laufs ging verloren")
+        ok("_basis" not in res and "_basis_kopf" not in res, "Hilfsschlüssel stehen in der Plan-Datei")
+        ok(lauf_k.get("pruefer_stand") == "2026-10-19T12:00:00Z", "die Kopie des Plan-Laufs kennt den zusammengeführten Prüfer-Stand nicht (nächster Speichervorgang würde ihn wieder löschen)")
+        lauf_k["slots"]["a"]["grund"] = "y"
+        plan_speichern(lauf_k, pf2)   # zweiter Speichervorgang desselben Prozesses
+        ok(json.load(open(pf2, encoding="utf-8")).get("pruefer_stand") == "2026-10-19T12:00:00Z", "zweiter Speichervorgang löschte den Prüfer-Stand")
+        # Kanarienvogel: wird ein Kopf-Schlüssel von BEIDEN geändert, gewinnt der spätere Schreiber (wie bei Slots)
+        pruefer_k["pruefer_stand"] = "2026-10-19T14:00:00Z"
+        plan_speichern(pruefer_k, pf2)
+        ok(json.load(open(pf2, encoding="utf-8")).get("pruefer_stand") == "2026-10-19T14:00:00Z", "eigene Änderung eines Kopf-Schlüssels muss gelten")
+    except Exception as e:
+        ok(False, f"Test Kopf-Zusammenführung abgebrochen: {type(e).__name__}: {str(e)[:160]}")
+    finally:
+        globals()["PLAN_SPERRE"] = alt_sperre
+        shutil.rmtree(dp, ignore_errors=True)
+    # 22. Schalter-Tor (Prüfung 19.10.): unbekannter Schalter / fehlender Wert / kein Modus → Exit 2 OHNE etwas zu starten; die echten Aufrufe bleiben gültig
+    gute = ([], ["--help"], ["-h"], ["--zeile"], ["--liste"], ["--selbsttest"], ["--pruefen"], ["--notbremse"], ["--plan"], ["--plan", "--max-min", "38"],   # Autopilot-Form
+            ["--plan", "--max-min", "35", "--format", "tiktok,pin", "--max-slots", "3"], ["--plan", "--format", ",".join(POSTER)])
+    schlechte = (["--gibtsnicht"], ["--pruefe"], ["--pruefen", "--bogus"], ["--plan", "--max-min"], ["--plan", "--max-min", "abc"], ["--plan", "--max-min", "-5"],
+                 ["--plan", "--format", "tipo"], ["--plan", "--format", "tiktok,"], ["--plan", "--format"], ["--max-min", "5"], ["pruefen"], ["--plan", "--max-min", "38", "extra"])
+    for a_ in gute:
+        ok(argumente_pruefen(a_) == "", f"gültiger Aufruf abgelehnt: {a_}: {argumente_pruefen(a_)}")
+    for a_ in schlechte:
+        ok(argumente_pruefen(a_) != "", f"ungültiger Aufruf akzeptiert: {a_}")
+    try:   # der echte Einstieg: Exit 2, stdout leer, nichts gelaufen (`--zeile --bogus` würde ohne Tor die Zeile drucken)
+        r_ = subprocess.run([sys.executable, os.path.abspath(__file__), "--zeile", "--bogus"], capture_output=True, text=True, timeout=90,
+                            env={"PATH": "/opt/node22/bin:/usr/bin:/bin", "HOME": tempfile.gettempdir()})
+        ok(r_.returncode == 2 and r_.stdout == "" and "unbekannter Schalter" in r_.stderr, f"unbekannter Schalter: erwarte Exit 2 ohne Ausgabe, habe rc={r_.returncode} stdout={r_.stdout[:60]!r} stderr={r_.stderr[:80]!r}")
+    except Exception as e:
+        ok(False, f"Test Einstieg abgebrochen: {type(e).__name__}: {str(e)[:160]}")
     print("OK Selbsttest" if not fehler else "FEHLER:\n  " + "\n  ".join(fehler))
     return 1 if fehler else 0
 
 
 # ───────────────────────── Einstieg ─────────────────────────
+def argumente_pruefen(argv):
+    """→ '' wenn alles bekannt ist, sonst die Meldung (Exit 2, es läuft NICHTS). Bekannt: die Modi in MODI, die Optionen in OPTIONEN mit ihrem Wert
+    (Zahl bzw. Formate aus POSTER) und -h/--help. Ohne Argument ist es ebenfalls in Ordnung (Doku). Ein Aufruf ohne Modus (nur `--max-min 5`) ist ein
+    Tippfehler wie ein unbekannter Schalter: er würde sonst als «gelaufen» gelten."""
+    modus = hilfe = False
+    i = 0
+    while i < len(argv):
+        a = argv[i]
+        if a in MODI:
+            modus = True
+        elif a in ("-h", "--help"):
+            hilfe = True
+        elif a in OPTIONEN:
+            wert = argv[i + 1] if i + 1 < len(argv) else ""
+            if not wert or wert.startswith("-"):
+                return f"{a} braucht einen Wert ({OPTIONEN[a]})"
+            if a == "--format":
+                falsch = [f for f in wert.split(",") if f not in POSTER]
+                if falsch:
+                    return f"--format: unbekanntes Format {', '.join(repr(f) for f in falsch)} (gültig: {','.join(POSTER)})"
+            elif not wert.isdigit():
+                return f"{a}: «{wert}» ist keine ganze Zahl"
+            i += 1
+        else:
+            return f"unbekannter Schalter «{a}»"
+        i += 1
+    if argv and not modus and not hilfe:
+        return "kein Modus angegeben"
+    return ""
+
+
 def main(argv):
+    fehler = argumente_pruefen(argv)
+    if fehler:
+        print(f"social_vorlauf: {fehler} — nichts gestartet (Exit 2). Gültige Modi: {' '.join(MODI)}; Doku: ohne Argument oder mit --help.", file=sys.stderr)
+        return 2
+    if "-h" in argv or "--help" in argv:
+        print(__doc__)
+        return 0
     if "--selbsttest" in argv:
         return selbsttest()
     if "--liste" in argv:
