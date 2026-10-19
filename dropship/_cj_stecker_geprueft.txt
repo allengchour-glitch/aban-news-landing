@@ -961,3 +961,28 @@
 15500953813377	kein-stecker-merkmal	2026-10-14	Magnetischer Ladestation
 15500988580225	kein-stecker-merkmal	2026-10-14	Wireless Ladestation
 15500988809601	kein-stecker-merkmal	2026-10-14	Grossraum-Ladestation
+16651339202951	kein-stecker-merkmal	2026-10-19	65 W Multi-USB-Port-Ladegerät
+16652949815687	kein-stecker-merkmal	2026-10-19	60W Lithium-Batterie-Ladestation mit 6A Ausgang
+15501901234561	kein-stecker-merkmal	2026-10-19	Mini-Ladestation
+15501901300097	kein-stecker-merkmal	2026-10-19	Ladestation für alle Geräte
+15502036369793	kein-stecker-merkmal	2026-10-19	Elektrische Nagelfräse mit Ladestation
+15502132707713	kein-stecker-merkmal	2026-10-19	Duales 10W Wireless Charger 2-in-1
+15502304543105	kein-stecker-merkmal	2026-10-19	Kabelloser Magnet-Ladeständer Mini
+15503124332929	kein-stecker-merkmal	2026-10-19	3-in-1 Wireless Charger für Handy, Kopfhörer & Uhr
+15503132361089	kein-stecker-merkmal	2026-10-19	Riesenrad Aroma Diffuser mit Wireless Charger
+15504083288449	kein-stecker-merkmal	2026-10-19	Kabelloser Audio-Adapter für TV & Kopfhörer
+15504188277121	kein-stecker-merkmal	2026-10-19	Adapter-Set für Sechskant auf Vierkant
+15504793731457	kein-stecker-merkmal	2026-10-19	Magnetische Handyhalterung mit kabellosem Ladegeraet
+15506272223617	unklar-eu-vorhanden:EU/UK/US	2026-10-19	3-in-1 Wireless Ladestation für Uhr & Kopfhörer
+15506893373825	kein-stecker-merkmal	2026-10-19	Magnetische Ladestation für BOBOVR B100 Akkus
+15508419281281	kein-stecker-merkmal	2026-10-19	10-in-1 MacBook Multiadapter
+15508451754369	kein-stecker-merkmal	2026-10-19	2-in-1 Bluetooth 5.0 Audio Adapter
+15508462109057	kein-stecker-merkmal	2026-10-19	Dual-Band WLAN Adapter 1200 Mbit/s
+15523179921793	kein-stecker-merkmal	2026-10-19	Multifunktions Smart Adapter & Kabelbox
+15524699079041	kein-stecker-merkmal	2026-10-19	Tastatur- & Maus-Adapter für Spielkonsolen
+15524700684673	kein-stecker-merkmal	2026-10-19	Soundkarten-Adapter für Mobiltelefone
+15524700848513	kein-stecker-merkmal	2026-10-19	Multifunktionale Ladestation mit Lüfter für PS5
+16603332608391	unklar-eu-vorhanden:EU/UK/US	2026-10-19	65 W GaN Schnellladegerät – USB-C
+16603739390343	unklar-eu-vorhanden:EU/UK/US	2026-10-19	Lockenstab für grosse Wellen
+16603765145991	kein-stecker-merkmal	2026-10-19	Eismaschine
+16604893479303	nur-eu-version	2026-10-19	Retro Wasserkocher mit Temperaturanzeige
