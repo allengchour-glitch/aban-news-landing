@@ -17,6 +17,10 @@ Bausteine (Marke `lx-schlank-2026-10-14` in jeder Datei):
   A2  blocks/_product-card-gallery.liquid   Zoom-out-Titel nur mit product_card_size, als <p> statt <h3>
   A3  snippets/product-card.liquid, snippets/card-gallery.liquid (2×), blocks/product-title.liquid
       Kartenlinks auf der Startseite (template.name == 'index') ohne ?variant=
+      ZWEI GÜLTIGE STÄNDE (seit 19.10.2026): (1) dieser Startseiten-Stand — den setzt NUR dieses Skript; (2) der Stand VARIANT-LINKS
+      (alle Vorlagen über snippets/lx-karten-href.liquid) — den setzt NUR dropship/_theme_backup_variantlinks_2026-10-19/anwenden.py
+      (eigene Freigabe). Beide gelten als «gesetzt»; dieses Skript schreibt den zweiten Stand nie und überschreibt ihn nie.
+      Rückweg aus Stand (2): dort rueckweg.py --scharf, danach hier --zurueck A3. Siehe dropship/VARIANT-LINKS-2026-10-19.md.
   A4  snippets/card-gallery.liquid          Karussell: höchstens 2 Folien, keine Kartenpfeile, srcset bis 1200 w
   A5  sections/header.liquid                versteckte H1 weg (die sichtbare H1 steht im Hero)
       layout/theme.liquid                   Text-Schatten auch für h1 im Hero
@@ -39,6 +43,7 @@ import datetime as dt
 import hashlib
 import json
 import os
+import re
 import sys
 import time
 
@@ -54,6 +59,21 @@ MD5_TSV = os.path.join(BACKUP_DIR, "SCHLANK-MD5.tsv")
 A3_KOPF = ("{%- comment -%} lx-schlank-2026-10-14 A3: Kartenlinks auf der Startseite ohne ?variant= (360× → 0), "
            "sonst unverändert {%- endcomment -%}\n")
 INDEX_HREF = "{% if template.name == 'index' %}{{ product.url }}{% else %}"
+
+# ZWEITER GÜLTIGER A3-STAND (VARIANT-LINKS 19.10.2026, dropship/VARIANT-LINKS-2026-10-19.md): alle Kartenlinks laufen über das Snippet
+# snippets/lx-karten-href.liquid (Standard = product.url, ?variant= nur bei bewusster Auswahl). Der Stand wird NUR von
+# dropship/_theme_backup_variantlinks_2026-10-19/anwenden.py gesetzt — NIE von diesem Skript: es schreibt weiter ausschliesslich den
+# Startseiten-Stand von oben (sonst wäre der stündliche Schreiber ein Hintertürchen für eine Theme-Änderung, die eine eigene Freigabe braucht,
+# und er würde einen render-Aufruf setzen, ohne dass das Snippet existiert). Er ERKENNT den Stand aber als «gesetzt». Ohne diese Erkennung stünden
+# die Anker nach dem Anwenden nicht mehr im Text: A3_KOPF würde ein zweites Mal vorangestellt, vier «ersetzen»-Bausteine meldeten «anker_fehlt»
+# (Exit 1, dauerhaft ⚠️ SCHLANK in Aufseher und Betreiber-Ampel) — gemessen 19.10. offline: 5/12 statt 12/12.
+# Dass das Snippet existiert, prüft variant_links_wache.py (Zeile VARIANT-LINKS), nicht dieses Skript.
+VARLINKS_MARKE = "lx-varlinks-2026-10-19"
+A3_KOPF_VARLINKS = ("{%- comment -%} lx-schlank-2026-10-14 A3 + lx-varlinks-2026-10-19: Kartenlinks ohne ?variant= (Startseite seit 14.10.; "
+                    "alle Vorlagen seit 19.10. ueber snippets/lx-karten-href; Variante nur bei bewusster Auswahl durch Filter) "
+                    "{%- endcomment -%}\n")
+RENDER_KARTE = "{% render 'lx-karten-href', product: product %}"
+RENDER_TITEL = "{% render 'lx-karten-href', product: closest.product %}"
 
 # (Baustein, Datei, Art, alt, neu) — Art «ersetzen» oder «vorn» (Kopfzeile voranstellen, alt = None)
 BAUSTEINE = [
@@ -142,11 +162,30 @@ BAUSTEINE = [
 DATEIEN = sorted({b[1] for b in BAUSTEINE})
 
 
+def _alternativen():
+    """neu-Text eines A3-Bausteins → Texte des zweiten gültigen Stands (VARIANT-LINKS), die ebenfalls «gesetzt» bedeuten.
+    Aus den Ankern (alt) abgeleitet, damit nichts auseinanderläuft: der Ausdruck `{{ …variant….url }}` wird durch den render-Aufruf ersetzt."""
+    z = {}
+    for name, datei, art, alt, neu in BAUSTEINE:
+        if name != "A3":
+            continue
+        if art == "vorn":
+            z[neu] = (A3_KOPF_VARLINKS,)
+        else:
+            render = RENDER_TITEL if datei == "blocks/product-title.liquid" else RENDER_KARTE
+            z[neu] = (re.sub(r"\{\{ [^}]*\.url \}\}", lambda _m: render, alt),)
+    return z
+
+
+ALTERNATIV = _alternativen()
+
+
 def baustein_stand(text, art, alt, neu):
-    """→ 'gesetzt' | 'offen' (Anker genau 1×) | 'anker_fehlt'"""
+    """→ 'gesetzt' | 'offen' (Anker genau 1×) | 'anker_fehlt'. Bei A3 zählt auch der Stand VARIANT-LINKS (ALTERNATIV) als gesetzt."""
+    zusatz = ALTERNATIV.get(neu, ())
     if art == "vorn":
-        return "gesetzt" if neu.strip() in text else "offen"
-    if neu in text:
+        return "gesetzt" if any(x.strip() in text for x in (neu,) + zusatz) else "offen"
+    if neu in text or any(x in text for x in zusatz):
         return "gesetzt"
     return "offen" if text.count(alt) == 1 else "anker_fehlt"
 
@@ -248,6 +287,10 @@ def main(argv):
     if fehlt:
         print(f"SCHLANK: ⚠️ Datei(en) fehlen im Theme: {', '.join(fehlt)}")
         return 1
+    varlinks = [fn for fn in DATEIEN if VARLINKS_MARKE in live[fn]]
+    if zurueck and "A3" in zurueck and varlinks:
+        print(f"  Hinweis: A3 steht im Stand {VARLINKS_MARKE} ({', '.join(varlinks)}) — den nimmt dropship/_theme_backup_variantlinks_2026-10-19/"
+              "rueckweg.py --scharf zurück (Originale + Snippet löschen); danach --zurueck A3 für den Startseiten-Stand.")
     neu, zeilen, anker_fehlt = {}, [], []
     for fn in DATEIEN:
         bs = [b for b in BAUSTEINE if b[1] == fn and (zurueck is None or b[0] in zurueck)]
@@ -274,6 +317,7 @@ def main(argv):
         print(f"  TROCKEN: würde schreiben: {', '.join(neu)} (SCHARF=1)")
     befunde = ([f"Anker fehlt: {', '.join(anker_fehlt)}"] if anker_fehlt else []) + idx + ([] if ok else ["Schreiben/Rücklesen"])
     print(f"SCHLANK: {'⚠️ ' if befunde else ''}{gesetzt}/{len(BAUSTEINE)} Bausteine gesetzt"
+          + (f" (A3 im Stand {VARLINKS_MARKE}, {len(varlinks)} Dateien)" if varlinks else "")
           + (f" · {len(neu)} Datei(en) {'neu gesetzt' if SCHARF else 'offen'}" if neu else "")
           + (" · " + "; ".join(befunde) if befunde else ""))
     return 1 if (anker_fehlt or not ok) else 0
@@ -281,6 +325,7 @@ def main(argv):
 
 def selbsttest():
     """Arbeitet auf den Backups vor A2–A5 (Auslieferungsstand) — ohne Netz."""
+    global ALTERNATIV
     vor = {
         "blocks/_product-card-gallery.liquid": "_product-card-gallery.liquid.vor-a2-2026-10-14",
         "snippets/product-card.liquid": "product-card.liquid.vor-a3-2026-10-14",
@@ -318,6 +363,44 @@ def selbsttest():
             '{"sections":{"hero_jVaWmY":{"blocks":{"t":{"settings":{"text":"<h1>x</h1>"}}}},'
             '"lux_usp":{"settings":{"custom_liquid":"<!-- lx-schlank-2026-10-14 A5: x -->"}}}}') == []),
     ]
+    # --- Stand VARIANT-LINKS (19.10.2026): beide A3-Stände gelten als gesetzt, der stündliche Schreiber kollidiert nicht mit dem Patch.
+    a3_dateien = ["snippets/product-card.liquid", "snippets/card-gallery.liquid", "blocks/product-title.liquid"]
+    for fn in a3_dateien:
+        bs = [x for x in BAUSTEINE if x[1] == fn]
+        orig = open(os.path.join(BACKUP_DIR, vor[fn]), encoding="utf-8").read()
+        p1, _ = anwenden(orig, bs)                        # Startseiten-Stand, so liegt er live
+        v = p1.replace(A3_KOPF, A3_KOPF_VARLINKS, 1)      # daraus synthetisch der Stand VARIANT-LINKS
+        for x in bs:
+            if x[0] == "A3" and x[2] == "ersetzen":
+                v = v.replace(x[4], ALTERNATIV[x[4]][0], 1)
+        pv, berv = anwenden(v, bs)
+        gem, _ = anwenden(A3_KOPF_VARLINKS + orig, bs)    # Mischstand: neuer Kopf, Auslieferungs-Links → heilt, ohne zweiten Kopf
+        faelle += [
+            (f"{fn}: Stand varlinks → alle Bausteine gesetzt", all(s == "gesetzt" for _, s in berv)),
+            (f"{fn}: Stand varlinks → Schreiber ändert nichts", pv == v and v != p1),
+            (f"{fn}: Stand varlinks → genau 1 A3-Kopf", pv.count("lx-schlank-2026-10-14 A3") == 1),
+            (f"{fn}: Mischstand → 1 A3-Kopf, Links im Startseiten-Stand", gem.count("lx-schlank-2026-10-14 A3") == 1
+             and "lx-karten-href" not in gem.replace(A3_KOPF_VARLINKS, "")),
+        ]
+    bs_pc = [x for x in BAUSTEINE if x[1] == "snippets/product-card.liquid"]
+    v_pc, _ = anwenden(open(os.path.join(BACKUP_DIR, vor["snippets/product-card.liquid"]), encoding="utf-8").read(), bs_pc)
+    v_pc = v_pc.replace(A3_KOPF, A3_KOPF_VARLINKS, 1).replace(bs_pc[1][4], ALTERNATIV[bs_pc[1][4]][0], 1)
+    gesichert, ALTERNATIV = ALTERNATIV, {}                # Mutation: ohne die Erkennung MUSS der Stand als Kollision enden
+    try:
+        _, bm = anwenden(v_pc, bs_pc)
+    finally:
+        ALTERNATIV = gesichert
+    faelle.append(("Mutation: ohne ALTERNATIV meldet der Stand varlinks offen/anker_fehlt (Test hat Zähne)",
+                   [s for _, s in bm] == ["offen", "anker_fehlt"]))
+    ziel = os.path.join(REPO, "dropship", "_theme_backup_variantlinks_2026-10-19", "neu")
+    if os.path.isdir(ziel):                               # Kreuzprobe gegen die ECHTE Zielfassung (Konstanten dürfen nicht abweichen)
+        for fn in a3_dateien:
+            t = open(os.path.join(ziel, fn), encoding="utf-8", newline="").read()
+            pz, bz = anwenden(t, [x for x in BAUSTEINE if x[1] == fn])
+            faelle.append((f"{fn}: echte Zielfassung VARIANT-LINKS → alle gesetzt, nichts zu schreiben",
+                           pz == t and all(s == "gesetzt" for _, s in bz)))
+    else:
+        print("  ---- Kreuzprobe übersprungen: Ordner dropship/_theme_backup_variantlinks_2026-10-19/neu fehlt")
     for name, bed in faelle:
         print(f"  {'OK  ' if bed else 'FEHL'} {name}")
         ok_n += bool(bed)

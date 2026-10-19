@@ -4,14 +4,25 @@
 WARUM (05.10.2026, Fix-12h Punkt 18): `blog_tote_links.py` prueft jedes Ziel mit curl gegen luxestyle.ch. Von unserer
 Rechenzentrums-IP liefert Shopify aber eine stundenalte Bot-Cache-Kopie (CLAUDE.md 19.08.) — ein 404 kann veraltet
 sein (Produkt inzwischen aktiv), ein 200 ebenso (Produkt inzwischen Entwurf). Die Wahrheit steht in der Admin-API:
-  Produkt   tot  = fehlt ODER status != ACTIVE ODER nicht im Online Store veroeffentlicht — und KEIN Redirect vom Pfad
-  Kollektion tot = fehlt ODER nicht im Online Store veroeffentlicht — und kein Redirect; /collections/all ist eingebaut
-Ausgabe: Ampel-Zeile «BLOG-LINKS: N tote Ziele in M Artikeln (P Produkte, K Kollektionen) · Z Ziele geprueft»
-und JSON nach $AUSGABE (Standard /tmp/blog_linkziele.json) mit je Ziel: zustand, grund, redirect, artikel, ersatz-Kandidat
-(fuer gedraftete Produkte: ihre veroeffentlichten Kollektionen, groesste zuerst).
-Bei Fehler «BLOG-LINKS: unklar (…)», nie «0». Exit 0.
+  Produkt    tot = fehlt ODER status != ACTIVE ODER nicht im Online Store veroeffentlicht
+  Kollektion tot = fehlt ODER nicht im Online Store veroeffentlicht; /collections/all ist eingebaut
+  Seite      tot = fehlt ODER nicht veroeffentlicht;  Blogartikel tot = fehlt ODER nicht veroeffentlicht (aus den geladenen Artikeln)
+  «tot» MIT Redirect vom Pfad = UMGELEITET (Besucher landen per 301 am Ziel — aber Google/Linkkraft laufen den Umweg).
+
+19.10.2026 (Betreiber «verbessere mehr sichtbarkeit»): BLINDFLECK behoben. Bis dahin zaehlte ein Redirect als «lebendig» («ein 301 ist eine
+funktionierende Verlinkung») und tauchte in der Ampel nie auf — GEMESSEN 19.10. 21:25 UTC: 22 umgeleitete Ziele in 49 Artikeln (18 Kollektionen,
+4 Produkte), die die Ampel nicht zeigte, dazu 16 tote Produkt-Ziele, die sie zwar zaehlte («⚠️ Hand-Zuordnung»), fuer die es aber keinen
+Reparaturweg gab. Jetzt: beides getrennt gezaehlt, /pages/ und /blogs/ mitgeprueft, einfache Anfuehrungszeichen und HREF in Grossbuchstaben
+erkannt, Reparatur = `automation/ratgeber_links_reparieren.py` (Liste alt→neu, trocken/scharf/zurueck).
+
+Ausgabe (immer Zeile 1): «RATGEBER-LINKS: N tot · M umgeleitet (A Artikel, L Links)»; Zeile 2 «RATGEBER-DETAIL: …»; JSON nach $AUSGABE
+(Standard /tmp/blog_linkziele.json) mit je Ziel: zustand, grund, redirect, artikel, ersatz-Kandidat (fuer gedraftete Produkte: ihre
+veroeffentlichten Kollektionen, groesste zuerst) — Schluessel «tote», «mit_redirect» (Altname, unveraendert), «ohne_produktlink».
+Bei Fehler «RATGEBER-LINKS: unklar (…)», nie «0». Exit 0.
+Schalter: nur `--selbsttest` (Mutationspruefung mit Positiv-Kanarienvoegeln, offline + live; Exit 1 bei Fehler). Jeder andere Schalter bricht
+mit Exit 2 ab — ein unbekannter Schalter startet NIE einen Lauf.
 """
-import json, os, re, sys, time, urllib.parse
+import argparse, json, os, re, sys, time, urllib.parse
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from kaufwille_zeile import gql  # Eimer-Etikette inklusive
@@ -20,12 +31,19 @@ ONLINE_STORE = "gid://shopify/Publication/301970915713"
 AUSGABE = os.environ.get("AUSGABE", "/tmp/blog_linkziele.json")
 # 05.10. Nachbesserung (Pruefer): 49 Links in den Artikeln sind ABSOLUT (href="https://luxestyle.ch/…"), einer davon
 # war echt tot und wurde von der relativen Regex uebersehen → optionaler Host-Praefix, Pfad bleibt die Gruppe.
-HREF_RE = re.compile(r'href="(?:https?://(?:www\.)?luxestyle\.ch)?(/(?:products|collections)/[^"#?]+)')
+# 19.10.: auch /pages/ und /blogs/, einfache Anfuehrungszeichen, HREF gross, «www.», protokollrelative «//»-Links.
+LINK_RE = re.compile(r'''href\s*=\s*(["'])(?:(?:https?:)?//(?:www\.)?luxestyle\.ch)?(/(?:products|collections|pages|blogs)/[^"'#?]*)''', re.I)
+
+
+def hrefs(body):
+    """Interne Pfade (ohne Host, ohne ?/#) in der Reihenfolge des Auftretens; leere Handles (`/products/`) zaehlen nicht."""
+    return [m.group(2) for m in LINK_RE.finditer(body or "")
+            if re.match(r"^/(?:products|collections|pages)/[^/]", m.group(2)) or m.group(2).startswith("/blogs/")]
 
 
 def lade_artikel():
     Q = """query($c:String){articles(first:50,after:$c){pageInfo{hasNextPage endCursor}
-           nodes{id handle title body blog{handle}}}}"""
+           nodes{id handle title body isPublished blog{handle}}}}"""
     out, c = [], None
     while True:
         d = gql(Q, {"c": c})["articles"]
@@ -37,12 +55,44 @@ def lade_artikel():
 
 
 def ziele_sammeln(arts):
-    ziele = {}
+    """→ (ziele: Pfad → {Artikel-Handles}, Zahl aller Link-Vorkommen)."""
+    ziele, n = {}, 0
     for a in arts:
-        for href in HREF_RE.findall(a.get("body") or ""):
-            p = href.rstrip("/")
-            ziele.setdefault(p, set()).add(a["handle"])
-    return ziele
+        for href in hrefs(a.get("body")):
+            n += 1
+            ziele.setdefault(href.rstrip("/"), set()).add(a["handle"])
+    return ziele, n
+
+
+def pruefe_seiten(handles):
+    """/pages/<handle>: lebt = existiert UND veroeffentlicht. Schluessel = Handle wie im Link (ggf. prozentkodiert)."""
+    aus = {}
+    roh = list(handles)
+    for i in range(0, len(roh), 10):
+        teil = roh[i:i + 10]
+        d = gql("query($q:String!){pages(first:20,query:$q){nodes{handle isPublished title}}}",
+                {"q": " OR ".join("handle:" + urllib.parse.unquote(h) for h in teil)})["pages"]["nodes"]
+        da = {n["handle"]: n for n in d}
+        for h in teil:
+            n = da.get(urllib.parse.unquote(h))
+            aus[h] = {"zustand": "fehlt"} if not n else {"zustand": "ok" if n["isPublished"] else "tot", "titel": n["title"]}
+    return aus
+
+
+def pruefe_blogs(pfade, arts):
+    """/blogs/<blog>[/<artikel>|/tagged/<tag>]: lebt = Blog hat Artikel, bzw. Artikel existiert und ist veroeffentlicht (aus den geladenen Artikeln)."""
+    blogs = {(a.get("blog") or {}).get("handle") for a in arts}
+    pub = {((a.get("blog") or {}).get("handle"), a["handle"]) for a in arts if a.get("isPublished", True)}
+    aus = {}
+    for p in pfade:
+        seg = [urllib.parse.unquote(x) for x in p.split("/")[2:] if x]
+        if not seg:
+            aus[p] = {"zustand": "fehlt"}
+        elif len(seg) == 1 or seg[1] == "tagged":
+            aus[p] = {"zustand": "ok" if seg[0] in blogs else "fehlt"}
+        else:
+            aus[p] = {"zustand": "ok" if (seg[0], seg[1]) in pub else "fehlt"}
+    return aus
 
 
 def pruefe_produkte(handles):
@@ -134,49 +184,195 @@ def redirects(pfade):
     return aus
 
 
-def main():
-    t0 = time.time()
-    arts = lade_artikel()
-    ziele = ziele_sammeln(arts)
-    prod_h = {p.split("/products/")[1] for p in ziele if p.startswith("/products/")}
-    koll_h = {p.split("/collections/")[1] for p in ziele if p.startswith("/collections/")}
-    prod = pruefe_produkte(prod_h)
-    koll = pruefe_kollektionen(koll_h)
-    tote = {}
+def bewerte(ziele, arts, prod_fn=None, koll_fn=None, seiten_fn=None, red_fn=None):
+    """→ (tot, umgeleitet). Die Nachschlagefunktionen sind einsetzbar, damit der Selbsttest ohne API laeuft."""
+    prod_fn, koll_fn, seiten_fn, red_fn = prod_fn or pruefe_produkte, koll_fn or pruefe_kollektionen, seiten_fn or pruefe_seiten, red_fn or redirects
+    prod = prod_fn({p.split("/products/")[1] for p in ziele if p.startswith("/products/")})
+    koll = koll_fn({p.split("/collections/")[1] for p in ziele if p.startswith("/collections/")})
+    seit = seiten_fn({p.split("/pages/")[1] for p in ziele if p.startswith("/pages/")})
+    blog = pruefe_blogs([p for p in ziele if p.startswith("/blogs/")], arts)
+    nicht_ok = {}
     for p, arts_ in ziele.items():
         if p.startswith("/products/"):
             info = prod[p.split("/products/")[1]]
-        else:
+        elif p.startswith("/collections/"):
             info = koll[p.split("/collections/")[1]]
+        elif p.startswith("/pages/"):
+            info = seit[p.split("/pages/")[1]]
+        else:
+            info = blog[p]
         if info["zustand"] != "ok":
-            tote[p] = dict(info, artikel=sorted(arts_))
-    rd = redirects(sorted(tote)) if tote else {}
-    for p in list(tote):
+            nicht_ok[p] = dict(info, artikel=sorted(arts_))
+    rd = red_fn(sorted(nicht_ok)) if nicht_ok else {}
+    tot, umg = {}, {}
+    for p, v in nicht_ok.items():
         if p in rd:
-            tote[p]["redirect"] = rd[p]
-            tote[p]["zustand"] = "redirect"      # funktioniert fuer Besucher
-    echt_tot = {p: v for p, v in tote.items() if v["zustand"] != "redirect"}
-    art_tot = {h for v in echt_tot.values() for h in v["artikel"]}
-    n_p = sum(1 for p in echt_tot if p.startswith("/products/"))
-    n_k = len(echt_tot) - n_p
+            umg[p] = dict(v, redirect=rd[p], zustand="redirect")      # Besucher kommen an — Google/Linkkraft laufen den Umweg
+        else:
+            tot[p] = v
+    return tot, umg
+
+
+def main():
+    t0 = time.time()
+    # Kanarienvogel VOR der Messung: eine 0 ist nur etwas wert, wenn der Detektor nachweislich findet (Hausregel 19.10.)
+    n_off, f_off = selbsttest_offline()
+    n_live, f_live, unklar = selbsttest_live()
+    if f_off or f_live:
+        print("RATGEBER-LINKS: unklar (Selbsttest fehlgeschlagen: " + "; ".join(f_off + f_live)[:160] + ")")
+        print("FERTIG: abgebrochen")
+        return
+    kanarien = f"Kanarienvogel ok ({n_off} offline + {n_live} live)" if not unklar else "Kanarienvogel live unklar (" + "; ".join(unklar)[:80] + ")"
+    arts = lade_artikel()
+    ziele, n_links = ziele_sammeln(arts)
+    tot, umg = bewerte(ziele, arts)
+    art_tot = {h for v in tot.values() for h in v["artikel"]}
+    art_umg = {h for v in umg.values() for h in v["artikel"]}
+    n_p = sum(1 for p in tot if p.startswith("/products/"))
+    n_k = sum(1 for p in tot if p.startswith("/collections/"))
+    n_s = len(tot) - n_p - n_k
     # Fix-12h Punkt 18, zweites Fertig-Kriterium: Artikel ohne einen einzigen (lebenden) Produktlink
     ohne_produktlink = sorted(a["handle"] for a in arts
-                              if not any(h.startswith("/products/") and h.rstrip("/") not in echt_tot
-                                         for h in HREF_RE.findall(a.get("body") or "")))
-    json.dump({"stand": time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime()), "artikel": len(arts), "ziele": len(ziele),
-               "tote": echt_tot, "mit_redirect": {p: v for p, v in tote.items() if v["zustand"] == "redirect"},
-               "ohne_produktlink": ohne_produktlink},
+                              if not any(h.startswith("/products/") and h.rstrip("/") not in tot and h.rstrip("/") not in umg
+                                         for h in hrefs(a.get("body"))))
+    json.dump({"stand": time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime()), "artikel": len(arts), "ziele": len(ziele), "links": n_links,
+               "tote": tot, "mit_redirect": umg, "ohne_produktlink": ohne_produktlink},
               open(AUSGABE, "w"), ensure_ascii=False, indent=1)
-    print(f"BLOG-LINKS: {len(echt_tot)} tote Ziele in {len(art_tot)} Artikeln ({n_p} Produkte, {n_k} Kollektionen) "
-          f"· {len(ziele)} Ziele in {len(arts)} Artikeln geprueft · {len(rd)} per Redirect lebendig "
-          f"· {len(ohne_produktlink)} Artikel ohne Produktlink · {int(time.time() - t0)} s")
+    print(f"RATGEBER-LINKS: {len(tot)} tot · {len(umg)} umgeleitet ({len(arts)} Artikel, {n_links} Links)")
+    print(f"RATGEBER-DETAIL: tot {n_p} Produkte + {n_k} Kollektionen + {n_s} Seiten/Blog in {len(art_tot)} Artikeln "
+          f"· umgeleitet {len(umg)} in {len(art_umg)} Artikeln · {len(ziele)} Ziele · {len(ohne_produktlink)} Artikel ohne Produktlink "
+          f"· {kanarien} · {int(time.time() - t0)} s")
+    if tot or umg:
+        print("RATGEBER-HINWEIS: Reparatur = python3 automation/ratgeber_links_reparieren.py --vorschlag (Liste alt→neu), dann trocken/--scharf; Rueckweg --zurueck")
     print(f"FERTIG: Details {AUSGABE}")
 
 
+def selbsttest_offline():
+    """Mutationspruefung OHNE API: ein sauberer Artikel wird Schritt fuer Schritt mit einem bekannten toten bzw. umgeleiteten Link «vergiftet» —
+    die Wache MUSS ihn finden, sonst ist eine 0 wertlos. → (Zahl der Pruefungen, [Fehler])."""
+    fehler, n = [], 0
+
+    def pruefe(name, ok):
+        nonlocal n
+        n += 1
+        if not ok:
+            fehler.append(name)
+
+    def fp(hs):
+        return {h: {"zustand": "ok"} if h.startswith("lebt") else {"zustand": "tot"} if h.startswith("draft") or h.startswith("umgeleitet")
+                else {"zustand": "fehlt"} for h in hs}
+
+    def fk(hs):
+        return {h: {"zustand": "ok"} if h.startswith("lebt") else {"zustand": "tot"} if h.startswith("unpub") or h.startswith("umgeleitet")
+                else {"zustand": "fehlt"} for h in hs}
+
+    def fs(hs):
+        return {h: {"zustand": "ok"} if h.startswith("lebt") else {"zustand": "fehlt"} for h in hs}
+
+    def fr(ps):
+        return {p: "/collections/ziel" for p in ps if "umgeleitet" in p}
+
+    def art(h, body, pub=True):
+        return {"handle": h, "body": body, "isPublished": pub, "blog": {"handle": "ratgeber"}}
+
+    basis = ('<a href="/products/lebt-1">a</a> <a href="https://luxestyle.ch/collections/lebt-k">b</a> <a href="/pages/lebt-s">c</a> '
+             '<a href="/blogs/ratgeber/a2">d</a>')
+    a2 = art("a2", "<p>zweiter Artikel</p>")
+
+    def lauf(body):
+        arts = [art("a1", body), a2]
+        z, n_l = ziele_sammeln(arts)
+        t, u = bewerte(z, arts, fp, fk, fs, fr)
+        return len(t), len(u), n_l
+
+    t, u, nl = lauf(basis)
+    pruefe("Basis sauber: 0 tot", t == 0)
+    pruefe("Basis sauber: 0 umgeleitet", u == 0)
+    pruefe("Basis: 4 Links gezaehlt", nl == 4)
+    for name, alt, neu_, erw in [
+        ("Produkt-Entwurf (relativ)", "/products/lebt-1", "/products/draft-1", (1, 0)),
+        ("Produkt fehlt", "/products/lebt-1", "/products/gibts-nicht", (1, 0)),
+        ("Produkt-Entwurf MIT Redirect", "/products/lebt-1", "/products/umgeleitet-p", (0, 1)),
+        ("Kollektion unveroeffentlicht", "/collections/lebt-k", "/collections/unpub-k", (1, 0)),
+        ("Kollektion MIT Redirect", "/collections/lebt-k", "/collections/umgeleitet-k", (0, 1)),
+        ("Seite fehlt", "/pages/lebt-s", "/pages/weg", (1, 0)),
+        ("Blogartikel fehlt", "/blogs/ratgeber/a2", "/blogs/ratgeber/gibts-nicht", (1, 0)),
+    ]:
+        t, u, nl = lauf(basis.replace(alt, neu_))
+        pruefe("Mutation: " + name, (t, u) == erw and nl == 4)
+    for name, link in [("absolut mit www", '<a href="https://www.luxestyle.ch/products/draft-2">x</a>'),
+                       ("einfache Anfuehrungszeichen", "<a href='/products/draft-2'>x</a>"),
+                       ("HREF gross", '<a HREF="/products/draft-2">x</a>'),
+                       ("protokollrelativ", '<a href="//luxestyle.ch/products/draft-2">x</a>'),
+                       ("mit Zeilenumbruch", '<a\n href = "/products/draft-2">x</a>'),
+                       ("mit Fragment", '<a href="/products/draft-2#preis">x</a>')]:
+        t, u, nl = lauf(basis + " " + link)
+        pruefe("Schreibweise: " + name, (t, u, nl) == (1, 0, 5))
+    t, u, nl = lauf(basis + ' <a href="https://example.com/products/draft-3">fremd</a> <a href="/search?q=draft">s</a>')
+    pruefe("Fremdlink und /search zaehlen nicht", (t, u, nl) == (0, 0, 4))
+    arts = [art("a1", basis + ' <a href="/blogs/ratgeber/entwurf">e</a>'), a2, art("entwurf", "x", pub=False)]
+    z, _ = ziele_sammeln(arts)
+    t, u = bewerte(z, arts, fp, fk, fs, fr)
+    pruefe("Link auf unveroeffentlichten Blogartikel = tot", len(t) == 1 and "/blogs/ratgeber/entwurf" in t)
+    return n, fehler
+
+
+def selbsttest_live():
+    """Positiv-Kanarienvoegel gegen die ECHTE Admin-API: ein Entwurfsprodukt MUSS tot sein, ein aktives ok, ein erfundener Handle fehlt, eine echte
+    Weiterleitung MUSS erkannt werden. → (Zahl der Pruefungen, [Fehler], [unklar-Gruende])."""
+    fehler, unklar, n = [], [], 0
+
+    def pruefe(name, ok):
+        nonlocal n
+        n += 1
+        if not ok:
+            fehler.append(name)
+
+    try:
+        e = gql("query{products(first:1,query:\"status:draft\"){nodes{handle}}}")["products"]["nodes"]
+        a = gql("query{products(first:1,query:\"status:active\"){nodes{handle}}}")["products"]["nodes"]
+        if not e or not a:
+            unklar.append("kein Entwurf-/aktives Produkt gefunden")
+        else:
+            r = pruefe_produkte({e[0]["handle"], a[0]["handle"], "zzz-gibt-es-garantiert-nicht-4711"})
+            pruefe("LIVE Entwurfsprodukt = tot", r[e[0]["handle"]]["zustand"] == "tot")
+            pruefe("LIVE aktives Produkt = ok (nicht jedes Produkt ist tot)", r[a[0]["handle"]]["zustand"] == "ok")
+            pruefe("LIVE erfundener Handle = fehlt", r["zzz-gibt-es-garantiert-nicht-4711"]["zustand"] == "fehlt")
+        rd = gql("query{urlRedirects(first:40){nodes{path target}}}")["urlRedirects"]["nodes"]
+        kand = [x for x in rd if x["path"].startswith("/") and len(x["path"]) < 90 and re.fullmatch(r"[\x21-\x7e]+", x["path"])]
+        if not kand:
+            unklar.append("keine echte Weiterleitung als Kanarienvogel gefunden")
+        else:
+            gef = redirects([kand[0]["path"]])
+            pruefe("LIVE echte Weiterleitung wird erkannt", gef.get(kand[0]["path"]) == kand[0]["target"])
+    except Exception as ex:
+        unklar.append(f"{type(ex).__name__}: {str(ex)[:100]}")
+    return n, fehler, unklar
+
+
+def selbsttest():
+    n_off, f_off = selbsttest_offline()
+    n_live, f_live, unklar = selbsttest_live()
+    fehler = f_off + f_live
+    if fehler:
+        print(f"RATGEBER-LINKS-SELBSTTEST: FEHLER ({len(fehler)} von {n_off + n_live}): " + "; ".join(fehler))
+        return 1
+    if unklar:
+        print(f"RATGEBER-LINKS-SELBSTTEST: unklar (offline {n_off} Pruefungen ok, live: {'; '.join(unklar)})")
+        return 1
+    print(f"RATGEBER-LINKS-SELBSTTEST: ok ({n_off + n_live} Pruefungen: {n_off} offline + {n_live} live)")
+    return 0
+
+
 if __name__ == "__main__":
+    ap = argparse.ArgumentParser(description="Interne Linkziele der Ratgeber-Artikel am Ursprung messen (schreibt nichts im Shop).")
+    ap.add_argument("--selbsttest", action="store_true", help="Mutationspruefung mit Positiv-Kanarienvoegeln, kein Messlauf")
+    args = ap.parse_args()           # unbekannter Schalter → argparse beendet mit Exit 2, BEVOR irgendetwas laeuft
+    if args.selbsttest:
+        sys.exit(selbsttest())
     try:
         main()
     except Exception as e:
-        print(f"BLOG-LINKS: unklar ({type(e).__name__}: {str(e)[:140]})")
+        print(f"RATGEBER-LINKS: unklar ({type(e).__name__}: {str(e)[:140]})")
         print("FERTIG: abgebrochen")
     sys.exit(0)

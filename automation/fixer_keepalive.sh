@@ -1742,8 +1742,9 @@ fi
   fi
   # 📰 BLOG-LINKZIELE + BLOG-PREISE (05.10.2026, Fix-12h Punkt 18; Nachbesserung 07:30: beide Wachen lesen jetzt auch ABSOLUTE
   # luxestyle.ch-Links — 49 Stueck in den Artikeln, einer war echt tot und wurde uebersehen). blog_linkziele_wache.py misst AM URSPRUNG
-  # (Admin-API, nicht der Bot-Cache unserer IP; Filterrouten /collections/<k>/<tag> und Redirects gelten als lebendig) und schreibt
-  # NICHTS — Ampel «BLOG-LINKS: N tote Ziele …», Details /tmp/blog_linkziele.json; tote Ziele → Hand-Zuordnung
+  # (Admin-API, nicht der Bot-Cache unserer IP; Filterrouten /collections/<k>/<tag> gelten als lebendig, Redirects als «umgeleitet») und schreibt
+  # NICHTS — Ampel «RATGEBER-LINKS: N tot · M umgeleitet (A Artikel, L Links)» (bis 19.10. «BLOG-LINKS: N tote Ziele»), Details /tmp/blog_linkziele.json;
+  # Reparatur seit 19.10. = automation/ratgeber_links_reparieren.py (Liste alt→neu, trocken/--scharf/--zurueck); davor Hand-Zuordnung
   # (dropship/BLOG-BEWERTUNGEN-2026-10-05.md; seit 09.10. Werkzeug automation/blog_link_ersetzen.py — den Ersatz vorher auf
   # Fakten UND fehlende CJ-Auswahl prüfen, siehe Kopf des Skripts), nie Entwürfe republizieren.
   # blog_preise_aktualisieren.py SCHREIBT (articleUpdate ersetzt den ganzen Body → nie parallel zu anderen Blog-Schreibern,
@@ -1758,11 +1759,20 @@ fi
           "exec 9>/tmp/lock_blog_linkziele.lock; flock -n 9 || exit 0; exec >> \"$BLW\" 2>&1; echo \"START \$(date -u +%FT%TZ) (Aufseher)\"; \
            lauf_mit_logstempel \"$BLW\" 2400 bash automation/shopify_schranke.sh python3 automation/blog_linkziele_wache.py" 9>&- & )
     fi
-    if [ -s "$BLW" ] && tail -n 3 "$BLW" | grep -q "Traceback\\|BLOG-LINKS: unklar"; then
-      echo "$(date -u +%H:%M) ⚠️ Blog-Linkziele: letzter Lauf unklar ($BLW)"
+    if [ -s "$BLW" ] && tail -n 3 "$BLW" | grep -q "Traceback\\|RATGEBER-LINKS: unklar\\|BLOG-LINKS: unklar"; then
+      echo "$(date -u +%H:%M) ⚠️ Ratgeber-Links: letzter Lauf unklar ($BLW)"
     elif [ -s "$BLW" ]; then
-      Z=$(grep '^BLOG-LINKS:' "$BLW" | tail -n 1); echo "$(date -u +%H:%M) $Z"
-      echo "$Z" | grep -q '^BLOG-LINKS: 0 tote' || echo "$(date -u +%H:%M) ⚠️ Blog verlinkt tote Ziele — Hand-Zuordnung nach dropship/BLOG-BEWERTUNGEN-2026-10-05.md"
+      # 19.10.2026: Ampel «RATGEBER-LINKS: N tot · M umgeleitet (A Artikel, L Links)» — tot UND umgeleitet (301) zaehlen; vorher galt ein Redirect
+      # als lebendig und blieb unsichtbar (22 Altlinks, gemessen 19.10.). Ein «0 tot · 0 umgeleitet» gilt nur MIT Kanarienvogel (RATGEBER-DETAIL).
+      Z=$(grep '^RATGEBER-LINKS:' "$BLW" | tail -n 1); D=$(grep '^RATGEBER-DETAIL:' "$BLW" | tail -n 1)
+      if [ -z "$Z" ]; then
+        echo "$(date -u +%H:%M) RATGEBER-LINKS: noch nicht im neuen Format gemessen (Lauf faellig)"
+      else
+        echo "$(date -u +%H:%M) $Z"
+        echo "$Z" | grep -q '^RATGEBER-LINKS: 0 tot · 0 umgeleitet' \
+          || echo "$(date -u +%H:%M) ⚠️ Ratgeber verlinkt tote/umgeleitete Ziele — Liste: python3 automation/ratgeber_links_reparieren.py --vorschlag, dann trocken/--scharf (dropship/RATGEBER-LINKS-2026-10-19.md)"
+        echo "$D" | grep -q 'Kanarienvogel ok' || echo "$(date -u +%H:%M) ⚠️ Ratgeber-Links: Kanarienvogel nicht ok — die Zahl oben ist ungeprueft ($D)"
+      fi
     fi
   fi
   if [ -f "$REPO/automation/blog_preise_aktualisieren.py" ]; then
