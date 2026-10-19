@@ -143,10 +143,17 @@
   "bild-20261023T1410": {
    "basis_utc": "2026-10-23T14:10:00Z",
    "format": "bild",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "",
+   "handles": [],
+   "letzter_versuch": "2026-10-19T00:32:08Z",
+   "mc_ids": [
+    399529919
+   ],
+   "reserviert_um": "2026-10-19T00:32:08Z",
+   "status": "geplant",
    "termin_utc": "2026-10-23T14:10:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "bild-20261024T0745": {
    "basis_utc": "2026-10-24T07:45:00Z",
@@ -251,7 +258,7 @@
    "letzter_versuch": "2026-10-19T00:32:00Z",
    "mc_ids": [],
    "reserviert_um": "2026-10-19T00:32:00Z",
-   "status": "reserviert",
+   "status": "offen",
    "termin_utc": "2026-10-22T19:15:00Z",
    "versuche": 10
   },
@@ -1076,10 +1083,12 @@
   "story-20261023T1710": {
    "basis_utc": "2026-10-23T17:10:00Z",
    "format": "story",
+   "letzter_versuch": "2026-10-19T00:32:47Z",
    "mc_ids": [],
-   "status": "offen",
+   "reserviert_um": "2026-10-19T00:32:47Z",
+   "status": "reserviert",
    "termin_utc": "2026-10-23T17:10:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "story-20261024T1045": {
    "basis_utc": "2026-10-24T10:45:00Z",
@@ -1629,6 +1638,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-19T00:32:00Z",
+ "stand": "2026-10-19T00:32:47Z",
  "version": 1
 }
