@@ -11126,3 +11126,6 @@ oranges-t-shirt-mit-retro-muster-611900	2606200008461612600	16	7.85	ok	landeseit
 mannliches-portemonnaie-mit-kartenfachern-643000	2511030731321643200	16	5.55	ok	landeseite
 digitalolmalerei-rahmenlose-landschaftsdekorat-037376	1599322210517397504	3	12.30	ok	landeseite
 flaggen-muster-t-shirt-632200	2606180850121633000	16	7.99	ok	landeseite
+keramik-vase-602000	2507271111291602200	16	17.77	ok	landeseite
+abstrakte-tier-und-pflanzenmalerei-918464	1599305670791278592	3	8.89	ok	landeseite
+leichtes-kurzarmliges-herrenhemd-mit-3d-druckm-603500	2606180225201604100	16	10.01	ok	landeseite
