@@ -273,6 +273,27 @@ TITEL_ZIEL = [
     ("automatischer futterspender", "futterautomaten"),
     ("futterspender", "haustier-napf-futter"), ("futterautomat", "futterautomaten"),
     ("trinkbrunnen", "trinkbrunnen-katzen"), ("heizdecke", "kuschel-heizdecken"),
+    # 19.10.2026 (Spähtrupp wf_62fc1cba, Befund G2): 25 tote Seiten MIT Google-Treffern standen ohne 301 «offen» — GEMESSEN 7 von 39
+    # Websuch-Klicks (04.–16.10.) kamen NACH dem Draft und landeten auf einer 404. Feinere Warenwörter VOR dem groben «hunde/katzen».
+    # Wortformen mit ASCII-Zwilling («schussel», «nahset»), weil bei GELÖSCHTEN Produkten nur der Handle bleibt (ü→u, ä→a).
+    # Nie auf ein Ziel legen: Damast-/Käsemesser (Klingen-Regel), Anti-Bell-Halsbänder (Tierschutz), Golfschläger, Transportbox.
+    ("fress-schüssel", "haustier-napf-futter"), ("fress-schussel", "haustier-napf-futter"), ("napf", "haustier-napf-futter"),
+    ("ladegerät", "ladegeraete"), ("ladegerat", "ladegeraete"),
+    ("nähset", "basteln-diy"), ("nahset", "basteln-diy"), ("nähmaschine", "basteln-diy"), ("nahmaschine", "basteln-diy"),
+    ("schaukelstuhl", "garten-balkon"),
+    ("enthaarung", "beauty-geraete"),
+    ("bonbons", "suesses-esswaren"),
+    ("vorhang", "vorhaenge"), ("vorhäng", "vorhaenge"),
+    ("stofftasche zum selbstgestalten", "sg-taschen"), ("tote zum selbstgestalten", "sg-taschen"),
+    # Mäntel/Jacken NUR mit «für Damen» — «mantel» allein schickte einen Herrenmantel auf die Damen-Kollektion
+    ("mantel für damen", "damen-jacken-maentel"), ("mantel fur damen", "damen-jacken-maentel"),
+    ("jacke für damen", "damen-jacken-maentel"), ("jacke fur damen", "damen-jacken-maentel"),
+    ("arbeitsschuh", "sub-wander-arbeitsschuhe"), ("wanderschuh", "sub-wander-arbeitsschuhe"),
+    ("küchenutensilien", "kuechen-gadgets"), ("kuchenutensilien", "kuechen-gadgets"),
+    ("ausziehregal für küche", "kuechen-gadgets"), ("ausziehregal fur kuche", "kuechen-gadgets"),
+    ("drohne", "drohnen-kameras"), ("fluggerät", "drohnen-kameras"), ("fluggerat", "drohnen-kameras"),
+    ("pool-volleyball", "pool"),            # nicht «pool» allein: Spool, Whirlpool
+    ("schraubendreher", "handwerkzeug"),
     ("hunde", "sub-haustier"), ("katzen", "sub-haustier"), ("leggings", "damen-mode"),
     ("klemmbaustein", "klemmbausteine-bausaetze"), ("bausteine-set", "klemmbausteine-bausaetze"),
     ("diffuser", "sub-aroma-diffuser"), ("luftbefeuchter", "haushaltsgeraete"),
@@ -494,8 +515,32 @@ KANARIEN = [   # (Titel, verbotenes Wort im Ziel oder None, erlaubte Kategorie o
     ("Smaragd-Anhänger Halskette", "leopard", "/collections/sub-halsketten"),
     ("Titan-Wok", "pfanne", None),
     ("Aromadiffuser mit Bluetooth-Lautsprecher", "uhr", "/collections/sub-aroma-diffuser"),   # Diffusor-Kategorie ist richtig, verboten nur der Uhr-Lautsprecher
-    ("Planeten-Schaukelstuhl", None, None),
+    ("Planeten-Schaukelstuhl", None, "/collections/garten-balkon"),   # 19.10.: vorher «offen»; G2 liefert jetzt ein Warenwort
     ("USB-Heizdecke", None, "/collections/kuschel-heizdecken"),
+    # 19.10.2026 (G2): positive Kanarien je neues Warenwort …
+    ("Universal-Ladegerät für E-Scooter 42V 2A", None, "/collections/ladegeraete"),
+    ("22-teiliges Leder Nähset für Lederarbeiten", None, "/collections/basteln-diy"),
+    ("Automatische Mini-Nähmaschine", None, "/collections/basteln-diy"),
+    ("Hair Identifier Spray Set – Für Gesichtsenthaarung", None, "/collections/beauty-geraete"),
+    ("Fasnachts-Bonbons 10 kg (Preis pro kg) · 10 Stück", None, "/collections/suesses-esswaren"),
+    ("Keramik Langsam-Fress-Schüssel für Hunde", None, "/collections/haustier-napf-futter"),
+    ("Weihnachtsvorhänge mit 3D-Digitaldruck", None, "/collections/vorhaenge"),
+    ("Stofftasche zum Selbstgestalten", None, "/collections/sg-taschen"),
+    ("Kaschmir-Kurzmantel für Damen", None, "/collections/damen-jacken-maentel"),
+    ("Robuste, leichte Herren-Arbeitsschuhe", None, "/collections/sub-wander-arbeitsschuhe"),
+    ("Silikon-Küchenutensilien-Set 12-tlg.", None, "/collections/kuechen-gadgets"),
+    ("Kamera-Drohne mit Hindernis-Vermeidung", None, "/collections/drohnen-kameras"),
+    ("Pool-Volleyball-Set mit Netz und Ball", None, "/collections/pool"),
+    ("Schraubendreher-Set Ferrestock (6-teilig) – Set 2", None, "/collections/handwerkzeug"),
+    # … und negative: diese bleiben «offen» (Klinge / Tierschutz / keine Kollektion / Wortteil-Fallen, Lehre 9b)
+    ("Damast Kochmesser mit Hammerschlag-Finish", "", None),
+    ("Käsemesser-Set 4-tlg · Akazienholz-Griff", "", None),
+    ("Smart Anti-Bell Halsband für Hunde", None, None),
+    ("PGM Golfschläger (Holz) für Damen und Herren", None, None),
+    ("Transportbox «PetGo» · für Hund & Katze, belüftet, flugtauglich 🐾", None, None),
+    ("Herren Wintermantel aus Wolle", None, None),               # «mantel» allein darf nicht auf die Damen-Kollektion
+    ("Spool-Halter für Fadenrollen", None, None),                # «pool» als Wortteil
+    ("Drohnentasche wasserdicht", None, None),                   # Wortteil «Drohne|ntasche» ist keine Drohne
     # 13.10. Prüfung: Wortteile/Komposita (Lehre 9b/16d)
     ("Hundehalskette aus Edelstahl mit Dornen", None, "/collections/sub-haustier"),
     ("Alu-Werkzeugkoffer 176 Teile für jeden Einsatz", "reise", "/collections/werkzeug-maschinen"),
