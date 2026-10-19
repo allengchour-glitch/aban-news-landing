@@ -543,3 +543,4 @@
 2026-10-19T02:03:50.138Z	luxe-epic-spielerisch.wav	22.29	haustier	cjreel-CJEJ130581801AZ	stimme:nein	anteil
 2026-10-19T02:06:09.000Z	luxe-epic-herbst.wav	11.36	home	bildreel-eleganter-edelstahl-kerzenstander-im-french-st-625700	stimme:nein	anteil	quelle:bild
 2026-10-19T04:11:03.033Z	luxe-epic-warm.wav	18.36	home	cjreel-CJXFZNZN00218-White	stimme:nein	mix-fehler
+2026-10-19T04:14:27.811Z	luxe-epic-fantasy.wav	13.79	kinder	cjreel-CJNY175052701AZ	stimme:nein	anteil
