@@ -19,6 +19,7 @@ BEGRIFFE: was die App oder ein Mensch gesetzt hat, bleibt stehen (Stand-Datei dr
   python3 automation/such_boost.py                 Trockenlauf: Soll je Familie
   SCHARF=1 python3 automation/such_boost.py        schreiben + zurücklesen (Aufseher täglich)
   python3 automation/such_boost.py --messen        Enter-Suche je Familie: wie viele der ersten 8 sind Soll-Ware
+  python3 automation/such_boost.py --heilen         Soll-Ware ohne Wirkung im Such-Index finden (trocken); SCHARF=1 → Anstoss nach dem Metafeld
   python3 automation/such_boost.py --selbsttest
   python3 automation/such_boost.py --kontaktbogen   Bilder der Soll-Ware → /tmp/kontaktbogen_such_boost*.png
 """
@@ -33,6 +34,7 @@ ANLASS = os.path.join(REPO, "data", "anlass_kollektionen.json")
 STAND = os.path.join(REPO, "dropship", "_such_boosts_stand.json")
 LEDGER = os.path.join(REPO, "dropship", "_such_boosts.tsv")
 NS, KEY = "shopify--discovery--product_search_boost", "queries"
+from werbetest_sperre import gesperrt          # Werbetest A (bis 24.10.): gesperrte Produkte weder boosten noch entboosten
 JURY_SEKUNDEN = int(os.environ.get("SUCH_BOOST_JURY_SEKUNDEN", "600"))
 
 SPERRE_TITEL = re.compile(r"intim|erotik|vaginal|sex|dessous|reizwäsche|menstruation|hämorrhoid|serum\b|creme\b|lotion\b|"
@@ -189,7 +191,7 @@ def soll_berechnen(gql, regel, log=print):
         roh = kandidaten(gql, fam)
         gut = []
         for p in roh:
-            if p["status"] != "ACTIVE" or not p.get("onlineStoreUrl") or p["handle"] in veto:
+            if p["status"] != "ACTIVE" or not p.get("onlineStoreUrl") or p["handle"] in veto or gesperrt(p["id"]):
                 continue
             vs = p["variants"]["nodes"]
             if not any(v["availableForSale"] for v in vs):
@@ -254,11 +256,15 @@ def anwenden(gql, soll, log=print):
     stand = json.load(open(STAND)) if os.path.exists(STAND) else {}
     neu_stand, gesetzt, geloescht, gleich, fehler, abgeschnitten, angestossen = {}, 0, 0, 0, 0, 0, 0
     for pid in sorted(set(stand) | set(soll)):
+        if gesperrt(pid):             # Werbetest-Sperre: nicht schreiben (Stand-Eintrag bleibt, wirkt nach dem Ende wieder)
+            if pid in stand:
+                neu_stand[pid] = stand[pid]
+            continue
         eigen_alt = {norm_begriff(b) for b in stand.get(pid, {}).get("begriffe", [])}
         handle, ist, tags = lies_metafeld(gql, pid, mit_tags=True)
         if handle is None:            # Produkt gelöscht
             continue
-        angestossen += tag_anstoss(gql, pid, tags, bool(soll.get(pid, {}).get("begriffe")))
+        soll_aktiv = bool(soll.get(pid, {}).get("begriffe"))
         fremde = [b for b in ist if norm_begriff(b) not in eigen_alt]
         eigen_neu = soll.get(pid, {}).get("begriffe", [])
         ziel, weg = begriffe_zusammen(eigen_neu, fremde)
@@ -269,6 +275,7 @@ def anwenden(gql, soll, log=print):
         if behalten:
             neu_stand[pid] = {"handle": handle, "begriffe": behalten}
         if [norm_begriff(b) for b in ist] == ziel:
+            angestossen += tag_anstoss(gql, pid, tags, soll_aktiv)      # Metafeld stimmt schon; nur Tag-Zustand angleichen
             gleich += 1; continue
         if not SCHARF:
             log(f"   (trocken) {handle}: {ist} → {ziel}"); continue
@@ -284,8 +291,14 @@ def anwenden(gql, soll, log=print):
             fehler += 1; log(f"   ✗ {handle}: {r['userErrors']} · zurück {zurueck}"); continue
         if ziel:
             gesetzt += 1
+            # 19.10.: Anstoss ERST jetzt (Metafeld ist zurückgelesen) — vorher stand der Tag-Anstoss 1–3 s VOR dem Metafeld; 5 von 14
+            # neu geboosteten Produkten (alle aus Minute 00:22) kamen nie im Such-Index an. Schon markierte Produkte mit geänderter
+            # Begriffsliste bekamen gar keinen Anstoss (tag_anstoss: soll_aktiv == hat → nichts) → Umschalten (entfernen + setzen).
+            angestossen += tag_anstoss(gql, pid, tags, soll_aktiv) or umschalten(gql, pid, tags)
         else:
             geloescht += 1
+            if MARKE_TAG in tags:              # Markierung erst NACH metafieldsDelete lösen (Anstoss nach dem Metafeld)
+                angestossen += tag_anstoss(gql, pid, tags, False)
             if MARKE_TAG not in tags:          # nie markiert → Anstoss über Setzen + Entfernen (Index vergisst den Boost sonst nicht)
                 for m in ("tagsAdd", "tagsRemove"):
                     gql('mutation($id:ID!,$t:[String!]!){%s(id:$id,tags:$t){userErrors{message}}}' % m, {"id": pid, "t": [MARKE_TAG]})
@@ -366,6 +379,101 @@ def messen(gql, regel):
     return 0
 
 
+def umschalten(gql, pid, tags):
+    """Produkt trägt `such-boost` schon, Begriffsliste hat sich geändert → Tag entfernen + setzen = echte Produktänderung NACH dem
+    Metafeld (Neu-Indexierung). → True, wenn umgeschaltet."""
+    if MARKE_TAG not in (tags or []) or not SCHARF:
+        return False
+    for m in ("tagsRemove", "tagsAdd"):
+        r = gql('mutation($id:ID!,$t:[String!]!){%s(id:$id,tags:$t){userErrors{message}}}' % m, {"id": pid, "t": [MARKE_TAG]})[m]
+        if r["userErrors"]:
+            return False
+        time.sleep(2)
+    return True
+
+
+HEIL_LEDGER = os.path.join(REPO, "dropship", "_such_boosts_heilung.tsv")
+HEIL_GRENZE = 16          # Soll-Ware muss unter den ersten 16 stehen (8 Soll + Luft für natürliche Treffer)
+HEIL_MAX_VERSUCHE = 3     # danach «dauerhaft unwirksam» im Bericht statt weiterer Schreibzüge (jeder Anstoss = neue Google-Übermittlung)
+
+
+def such_rang(begriff, seiten=2):
+    """Handles der ersten `seiten` Ergebnisseiten (24 je Seite); leere Seite = Abruf-Aussetzer → 3 Versuche."""
+    out = []
+    for p in range(1, seiten + 1):
+        s = []
+        for v in range(3):
+            u = ("https://luxestyle.ch/search?type=product&options%5Bprefix%5D=last&q=" + urllib.parse.quote(begriff)
+                 + f"&page={p}&_lx={int(time.time())}")
+            h = subprocess.run(["curl", "-s", "--max-time", "60", u], capture_output=True, text=True).stdout
+            i, j = h.find("<main"), h.find("</main>")
+            for x in re.findall(r'href="/products/([^"?#]+)', h[i:j] if i > 0 else h):
+                if x not in s:
+                    s.append(x)
+            if s:
+                break
+            time.sleep(5 * (v + 1))
+        out += s
+        if not s:
+            break
+        time.sleep(1)
+    return out
+
+
+def unwirksame(regel, stand):
+    """Soll-Produkte (aus der Stand-Datei = tatsächlich gesetzt), die für eines der ersten zwei Begriffe ihrer Familie nicht
+    unter den ersten HEIL_GRENZE stehen. → {handle: {"pid", "familie", "raenge": {begriff: rang|None}}}.
+    Leere Messung (Seite 1 leer) → Familie überspringen, nie als «unwirksam» zählen."""
+    aus = {}
+    for fam in regel["familien"]:
+        pids = {pid: e["handle"] for pid, e in stand.items() if norm_begriff(fam["begriffe"][0]) in e.get("begriffe", [])}
+        if not pids:
+            continue
+        for b in fam["begriffe"][:2]:
+            top = such_rang(b)
+            if not top:
+                continue
+            for pid, h in pids.items():
+                r = top.index(h) + 1 if h in top else None
+                if r is None or r > HEIL_GRENZE:
+                    aus.setdefault(h, {"pid": pid, "familie": fam["name"], "raenge": {}})["raenge"][b] = r
+    return aus
+
+
+def heilen(gql, regel):
+    """Messen → Heilen: Soll-Ware ohne Wirkung im Such-Index bekommt EINEN Anstoss (Tag entfernen + setzen, NACH dem Metafeld).
+    Pro Produkt höchstens 1× je 20 h und HEIL_MAX_VERSUCHE insgesamt; Werbetest-Sperre wird respektiert; ohne SCHARF nur Ausgabe."""
+    from werbetest_sperre import gesperrt
+    stand = json.load(open(STAND)) if os.path.exists(STAND) else {}
+    alt = {}
+    if os.path.exists(HEIL_LEDGER):
+        for l in open(HEIL_LEDGER, encoding="utf-8"):
+            t = l.rstrip("\n").split("\t")
+            if len(t) >= 2:
+                alt.setdefault(t[1], []).append(t[0])
+    jetzt = dt.datetime.utcnow()
+    uw = unwirksame(regel, stand)
+    print(f"HEILEN: {len(uw)} von {len(stand)} Soll-Produkten ohne Wirkung im Such-Index (Rang > {HEIL_GRENZE} oder nicht in den ersten 48)")
+    angestossen = dauerhaft = 0
+    for h, v in uw.items():
+        n = len(alt.get(h, []))
+        letzter = max(alt[h]) if n else None
+        zu_frisch = bool(letzter) and (jetzt - dt.datetime.strptime(letzter, "%Y-%m-%dT%H:%MZ")).total_seconds() < 20 * 3600
+        grund = ("Werbetest-Sperre" if gesperrt(v["pid"]) or gesperrt(h) else
+                 "dauerhaft unwirksam" if n >= HEIL_MAX_VERSUCHE else "zu frisch" if zu_frisch else "")
+        print(f"   {v['familie']:14} {h[:56]:56} Ränge {v['raenge']} · bisher {n} Anstoss(e)" + (f" · übersprungen: {grund}" if grund else ""))
+        dauerhaft += grund == "dauerhaft unwirksam"
+        if grund or not SCHARF:
+            continue
+        _, _, tags = lies_metafeld(gql, v["pid"], mit_tags=True)
+        if umschalten(gql, v["pid"], tags) or tag_anstoss(gql, v["pid"], tags, True):
+            angestossen += 1
+            with open(HEIL_LEDGER, "a", encoding="utf-8") as f:
+                f.write(f"{jetzt:%Y-%m-%dT%H:%MZ}\t{h}\t{json.dumps(v['raenge'], ensure_ascii=False)}\n")
+    print(f"HEILEN: angestossen {angestossen} · dauerhaft unwirksam {dauerhaft}" + ("" if SCHARF else " · (trocken)"))
+    return 0
+
+
 def kontaktbogen(gql, regel):
     soll, _ = soll_berechnen(gql, regel, log=lambda *_: None)
     liste = [{"url": (e["bild"] or "") + ("&width=400" if "?" in (e["bild"] or "") else "?width=400"),
@@ -384,6 +492,8 @@ def main():
         return messen(gql, regel)
     if "--kontaktbogen" in sys.argv:
         return kontaktbogen(gql, regel)
+    if "--heilen" in sys.argv:
+        return heilen(gql, regel)
     soll, info = soll_berechnen(gql, regel)
     z = anwenden(gql, soll)
     print(f"SUCH-BOOSTS: {len(regel['familien'])} Familien · {len(soll)} Produkte im Soll · "

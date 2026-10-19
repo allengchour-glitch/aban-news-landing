@@ -1188,10 +1188,48 @@ def koll_versprechen(stand="/tmp/koll_versprechen_stand.json", log="/tmp/verspre
     if pub:
         teile.append(f"{pub} veröffentlichte Kollektion{'en' if pub != 1 else ''} mit unbelegtem Versprechen"
                      + (f" ({', '.join(handles[:3])}{' …' if len(handles) > 3 else ''})" if handles else "")
-                     + " — dropship/KOLL-VERSPRECHEN.md, beheben mit automation/kollektion_versprechen_s3.py")
+                     + " — dropship/KOLL-VERSPRECHEN.md; Regel R6 (Vorlage) beheben mit automation/kollektion_versprechen_s3.py, "
+                     "R9 (Marke ohne aktive Ware) kann S3 NICHT — leer → kollektion_leer.py meldet/heilt, gemischt → Satzpaar in INHALT_PAARE")
     if alter_h > 48:
         teile.append(f"Stand {alter_h:.0f} h alt (Wächter steht?)")
     return ("⚠️ KOLL-VERSPRECHEN: " + " · ".join(teile)) if teile else None
+
+
+def koll_leer(stand=None, jetzt=None):
+    """LEERE-KOLLEKTIONEN (19.10.2026, Spähtrupp koll K1/K3): kollektion_leer.py (Aufseher, 2×/Tag, SCHARF) heilt leere veröffentlichte Kollektionen
+    (301 auf gefüllte Nachbarn, dann aus allen Kanälen nehmen) und schreibt dropship/_koll_leer_stand.json. ⚠️ bei Rest > 0, Fehlern, Rückfällen
+    (Handle war schon einmal abgemeldet) oder wenn der Stand älter als 30 h ist; ℹ️-Teil «n abgemeldet», solange der Stand jünger als 30 h ist.
+    Am 18.10. 18:57 UTC stellte ein unbekannter Schreiber (App «autopilot2») 52 leere Kollektionen in den Onlineshop; das Log meldete es 17 h lang ungelesen.
+    Liest nur die Datei. Still auf dem Server."""
+    if AUF_SERVER:
+        return None
+    jetzt = time.time() if jetzt is None else jetzt
+    pfad = stand or os.path.join(REPO, "dropship", "_koll_leer_stand.json")
+    try:
+        d = json.load(open(pfad, encoding="utf-8"))
+        zeit = datetime.datetime.strptime(d["stand"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=datetime.timezone.utc).timestamp()
+    except Exception:
+        return "⚠️ LEERE-KOLLEKTIONEN: kein Stand (automation/kollektion_leer.py im Aufseher?)"
+    alter_h = (jetzt - zeit) / 3600
+    teile = []
+    rest = int(d.get("leer_nach_lauf") or 0)
+    if rest:
+        teile.append(f"{rest} leere Kollektion{'en' if rest != 1 else ''} im Onlineshop"
+                     + ("" if d.get("scharf") else " (Stand nur Trockenlauf)") + " — automation/kollektion_leer.py (SCHARF=1) heilt: 301 → abmelden")
+    if d.get("fehler"):
+        teile.append(f"{len(d['fehler'])} nicht abgemeldet ({', '.join(str(x[0]) for x in d['fehler'][:3])}: {d['fehler'][0][1]})")
+    if d.get("wiederholt"):
+        teile.append(f"{len(d['wiederholt'])} {'Rückfälle' if len(d['wiederholt']) != 1 else 'Rückfall'} (nach früherer Abmeldung wieder veröffentlicht: "
+                     f"{', '.join(d['wiederholt'][:3])}{' …' if len(d['wiederholt']) > 3 else ''}) — Schreiber unbekannt")
+    ev = d.get("veroeffentlicht_48h") or {}
+    if (d.get("leer_gefunden") or 0) and (ev.get("gesamt") or 0) > 3:
+        teile.append(f"{ev['gesamt']} Kollektionen in 48 h veröffentlicht von {ev.get('apps')} (erste {ev.get('von')})")
+    if d.get("abgemeldet") and alter_h <= 30:
+        teile.append(f"ℹ️ {d['abgemeldet']} leere automatisch abgemeldet (301 gesetzt, Ledger dropship/_tote_colls_entfernt.txt)")
+    if alter_h > 30:
+        teile.append(f"Stand {alter_h:.0f} h alt (Wächter steht?)")
+    return ("⚠️ LEERE-KOLLEKTIONEN: " + " · ".join(teile)) if any(not t.startswith("ℹ️") for t in teile) else (
+        ("ℹ️ LEERE-KOLLEKTIONEN: " + " · ".join(t.replace("ℹ️ ", "") for t in teile)) if teile else None)
 
 
 def cj_suche_tor():
@@ -1383,7 +1421,7 @@ def main():
     ohne_token = not os.path.exists(TOKPFAD)
     # Pruefungen, die den Shop-Token brauchen, laufen ohne ihn nicht — alle anderen schon (26.09.).
     MIT_TOKEN = (liechtenstein_gesperrt, klingen_pingpong, grow_zaehler, drafts_ohne_quittung, datei_speicher_voll, video_deckel, alter_lieferblock)
-    pruefungen = (bot_puls, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kassen_lieferdatum, werbetest, verkauf_gewinn, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik, startseiten_gewicht, such_boosts, alter_lieferblock, social_sperre, gsc_tot, index_stand, wearable_seo, koll_versprechen, cj_suche_tor, waisen_verzeichnis)
+    pruefungen = (bot_puls, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kassen_lieferdatum, werbetest, verkauf_gewinn, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik, startseiten_gewicht, such_boosts, alter_lieferblock, social_sperre, gsc_tot, index_stand, wearable_seo, koll_versprechen, koll_leer, cj_suche_tor, waisen_verzeichnis)
     teile = [zugang_weg()]
     for f in pruefungen:
         if ohne_token and f in MIT_TOKEN:

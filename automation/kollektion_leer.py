@@ -152,7 +152,17 @@ def main():
     if leer:
         print("\nHinweis: erst 301-Weiterleitung auf eine GEFÜLLTE Nachbar-Kollektion anlegen,")
         print("dann unveröffentlichen — oder die Smart-Regel auf aktive Ware umbiegen.")
-    return 0
+    # 19.10.2026 (Spähtrupp koll K1/K3): der Wächter MELDETE nur — am 18.10. standen 52 leere Seiten 17 h im Onlineshop, niemand las das Log.
+    # Jetzt heilt koll_leer_heilen (301 → Unpublish, Stand-Datei für die Ampel); Exit 1, solange nach dem Lauf leere Seiten veröffentlicht sind.
+    if unklar and not leer and not duenn:
+        return 0                       # nur Lesefehler → kein Urteil
+    try:
+        import koll_leer_heilen
+        rest = koll_leer_heilen.heilen(sys.modules[__name__], leer, duenn, os.environ.get("SCHARF") == "1")
+    except Exception as e:             # noqa: BLE001 — ein Fehler im Heilen darf die Messung nicht verschlucken
+        print("FEHLER koll_leer_heilen: %r" % (e,), file=sys.stderr)
+        return 1
+    return 1 if rest else 0
 
 
 if __name__ == "__main__":

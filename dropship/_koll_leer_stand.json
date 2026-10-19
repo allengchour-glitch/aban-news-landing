@@ -1,10 +1,10 @@
 {
- "stand": "2026-10-19T12:38:51Z",
- "scharf": false,
+ "stand": "2026-10-19T12:47:15Z",
+ "scharf": true,
  "leer_gefunden": 52,
  "duenn": 5,
- "abgemeldet": 0,
- "leer_nach_lauf": 52,
+ "abgemeldet": 52,
+ "leer_nach_lauf": 0,
  "wiederholt": [
   "tommy-hilfiger",
   "guess",

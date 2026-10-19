@@ -10411,3 +10411,7 @@ einweg-bettwasche-fur-hunde-634400	2510050327221634600	11	40.68	ok	landeseite
 katzenklettergerust-mit-saugnapf-627500	2507040850061627700	16	24.30	ok	landeseite
 grosses-atmungsaktives-katzen-und-hundehaus-615700	2509050721101615900	0	-	KEINE CH-Option → DRAFT	landeseite
 zahnreinigungs-spielzeug-fur-hunde-629100	2506241148171629300	16	8.79	ok	landeseite
+wasserdichter-hunde-bett-mit-waschbarem-kissen-615400	2509020344531615600	0	-	KEINE CH-Option → DRAFT	landeseite
+personalisiertes-hundespielzeug-613700	2504241214491614000	16	8.11	ok	landeseite
+doppellagige-falt-hundematte-608300	2509020335431608500	11	46.75	ok	landeseite
+plaid-pet-bed-620100	2508140654391620300	11	46.87	ok	landeseite

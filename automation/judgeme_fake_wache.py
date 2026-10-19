@@ -152,6 +152,11 @@ def pruefe(r, betreiber):
     pid = r.get("product_external_id")
     if pid in (0, "0", None, ""):
         hart.append("ohne Produkt (Shop-Bewertung)")
+    # 19.10.2026 (Spähtrupp kaufweg KW-1): 20 veröffentlichte Bewertungen (4,85 ★) des Boho-Resort-Sets stammten von AliExpress und beschrieben ein ANDERES
+    # Produkt (besticktes Weste-Shorts-Set; 6 mit Kundenfotos, 4 mit Zara-Vergleich) — die Wache kannte nur Testwörter, Shop-Ebene und Betreiber-Mail.
+    # Übernommene Fremd-Bewertungen sind dieselbe Klasse wie erfundene (UWG, Hausregel «NIE Fake-Reviews»): Quelle `aliexpress` ist hart.
+    if str(r.get("source") or "").lower() == "aliexpress":
+        hart.append("Quelle AliExpress (übernommene Fremdbewertung)")
     for feld in ("title", "body"):
         n = norm(r.get(feld))
         if n and (n in TESTWORTE or n.startswith("lorem ipsum")):
@@ -308,7 +313,7 @@ ausblenden = `PUT https://judge.me/api/v1/reviews/<id>` mit `{{"curated":"spam"}
 loeschen = Judge.me-Admin. Geprueft und in Ordnung → ID in `dropship/_judgeme_freigabe.txt` (ID, Leerzeichen, Grund).
 
 ## Regeln
-- **hart** (Ampel-Zahl, nur veroeffentlichte): ohne Produkt (Shop-Bewertung) · Titel/Text/Name = Testwort ({', '.join(sorted(TESTWORTE)[:8])}, …) · Absender = Betreiber-Adresse (ENV `JUDGEME_BETREIBER_MAILS`, {len(betreiber)} hinterlegt) · @luxestyle.ch ohne Importer-Muster (`cj-import@`, `importiert+…@`) · Testdomain (example.*, *.invalid, *.test).
+- **hart** (Ampel-Zahl, nur veroeffentlichte): ohne Produkt (Shop-Bewertung) · Titel/Text/Name = Testwort ({', '.join(sorted(TESTWORTE)[:8])}, …) · Absender = Betreiber-Adresse (ENV `JUDGEME_BETREIBER_MAILS`, {len(betreiber)} hinterlegt) · @luxestyle.ch ohne Importer-Muster (`cj-import@`, `importiert+…@`) · Testdomain (example.*, *.invalid, *.test) · Quelle `aliexpress` (übernommene Fremdbewertung, seit 19.10.).
 - **weich** (eigene Zahl): Reviewer-Name unmaskiert — die Importer maskieren («C***t»), CJ-Nutzernamen ohne Leerzeichen blieben roh. Die API kann Namen/Texte nicht aendern («for authenticity reason»), nur ausblenden.
 - Paginierung: je rating 1..5, per_page {PER_PAGE} (Deckel der API), page klemmt bei 100 (gemessen) → je Teilmenge max. 10'000; Stopp bei kurzer Seite, ohne neue IDs oder Klemme; `/reviews/count` als Gegenzahl. Fehler/Klemme → «unklar»/«unvollstaendig», nie «0».
 

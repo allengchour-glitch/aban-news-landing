@@ -3060,9 +3060,12 @@ KLT=/tmp/test_klingen_tor.log
   KL=/tmp/kollektion_leer.log
   if [ -f "$REPO/automation/kollektion_leer.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$KL" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$KL"; then
+    # 19.10.2026 (Spähtrupp koll K1/K3): der Lauf HEILT jetzt (SCHARF=1 → koll_leer_heilen: 301 auf gefüllte Nachbarn, dann aus allen Kanälen nehmen,
+    # Stand dropship/_koll_leer_stand.json für die Ampel «LEERE-KOLLEKTIONEN») und läuft zweimal täglich (12 h): ein unbekannter Massen-Veröffentlicher stellte am
+    # 18.10. 18:57 UTC 52 leere Seiten in den Onlineshop; das Log meldete es, aber niemand las es — 17 h Kundenseiten «Keine Produkte gefunden». Exit 1 bei Rest > 0.
+    if [ "$ALTER" -gt 43200 ] || absturz_nachholen "$KL"; then
       touch "$KL"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
-      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_kollektion_leer.lock; flock -n 9 || exit 0; exec python3 automation/kollektion_leer.py" >> "$KL" 2>&1 9>&- & )
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_kollektion_leer.lock; flock -n 9 || exit 0; echo \"START \$(date -u +%FT%TZ) (Aufseher)\"; SCHARF=1 lauf_mit_logstempel $KL 2700 bash automation/shopify_schranke.sh python3 automation/kollektion_leer.py" >> "$KL" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) leere-kollektionen geprüft"
     fi
   fi

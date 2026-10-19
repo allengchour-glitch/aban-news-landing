@@ -63,3 +63,4 @@ maker-elektronik	unpublished	Elektronik für Bastler	leer-auto 2026-10-19T12:46:
 indoor-grow	unpublished	Indoor-Gärtnern & Grow	leer-auto 2026-10-19T12:47:00Z	301:/collections/outdoor-garten
 fan-zone-schweiz	unpublished	Fan-Zone Schweiz – WM 2026	leer-auto 2026-10-19T12:47:05Z	301:/collections/fussball-fanshop
 haustier-kuehlung	unpublished	Haustier-Sommer & Kühlung	leer-auto 2026-10-19T12:47:10Z	301:/collections/sub-haustier
+kueche-organisation	unpublished	Küchen-Organisation	leer-auto 2026-10-19T12:47:15Z	301:/collections/sub-kueche
