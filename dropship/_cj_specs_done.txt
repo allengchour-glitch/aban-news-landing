@@ -4920,3 +4920,7 @@ polarisierte-sonnenbrille-625800	gesetzt-2
 doppelsteg-sonnenbrille-601300	gesetzt-2
 gro-e-schultasche-605100	gesetzt-2
 elegante-schultertasche-626900	gesetzt-2
+elegante-leder-tasche-601400	gesetzt-2
+wickel-tasche-633900	gesetzt-2
+leder-handtasche-677505	gesetzt-1
+leder-querformat-tasche-966721	gesetzt-1
