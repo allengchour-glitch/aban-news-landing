@@ -53,6 +53,13 @@
 
 
 
+## 📱 «tiktok stories verbessern» (2026-10-19, ~05:20–05:50 UTC)
+- **GEMESSEN:** Echte TikTok-Stories gehen nicht automatisch: Metricool-`createScheduledPost` kennt `STORY` nur in `facebookData`/`instagramData`, `tiktokData` hat kein Story-Feld (QUELLE: Metricool-Anleitungen
+  beschreiben Stories als In-App-Funktion; die TikTok-Posting-API nennt nur Video/Foto). Stories gibt es heute nur auf IG+FB (28 veröffentlicht je Netz, 2/Tag bis 25.10.); **Story-Insights = 0 Zeilen** (IGST-Abfrage 30 T) → Wirkung nicht messbar.
+- **Getan:** `automation/story_bauen.py` Karte **v2** (abgerundete Produktkarte mit Schatten, ein Hook über dem Titel, Preis als Goldpille, Sicherheitszonen), Layoutfehler der v1 behoben (Titel y 1400 im Bildrahmen bis 1378),
+  Filter `NICHT_STORY` (Pfand-Jetons kamen über Tag `ch-lager` durch), `--selbsttest` (89 Prüfungen, Mutationsprobe schlägt an), `--vorschau <handle>` (Probekarten alt/neu), `STORY_LOOK=v1` als Rückweg. Jury v1 9.33 → v2 9.50 (ein Urteil).
+- **Regel:** Ein neues Kartenformat ohne Messweg ist eine Annahme — im Bericht als BEHAUPTUNG führen und einen Messweg nennen (Stichprobe in der IG-App, 10 alte gegen 10 neue). Bericht: `dropship/TIKTOK-STORIES-2026-10-19.md`.
+
 ## 💾🔐 Platte 95 % und das «60-Zeichen»-Secret (2026-10-19, ~04:40–05:20 UTC)
 - **Platte GEMESSEN:** `/` 95 % voll, 2,0 GB frei (feste Sitzungszuteilung; `df` zeigt 252 G Grösse und täuscht). `.git` = 13 GB, davon **7,0 GiB lose Objekte** (78'715): `gc.auto=0`, in `automation/` nie ein repack —
   jeder Commit legt geänderte Ledger als GANZE Blobs ab. `git repack -d` (nur lose Objekte, nice, 18 Min) → Pack +1,8 GB, lose 202 MB, **frei 2,0 → 7,1 GB (82 %)**; keine Datei gelöscht, keine Historie verändert.
