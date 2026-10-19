@@ -9790,3 +9790,5 @@ outdoor-mountainbike-helm-239104	1510073774975234048	16	9.56	ok	landeseite
 herren-fussball-schuhe-897728	1406183144847183872	16	12.32	ok	landeseite
 skischutzkappe-818816	1464101714905927680	16	11.70	ok	landeseite
 sicherheitsschuhe-mit-stahlkappe-fur-damen-und-813632	1403913176126459904	16	12.09	ok	landeseite
+aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben	-	-	-	unklar keine CJ-SKU	landeseite
+aroma-diffuser-holzoptik-hohl-design-ultraschall-luftbefeuchter-mit-led-licht	-	-	-	unklar keine CJ-SKU	landeseite
