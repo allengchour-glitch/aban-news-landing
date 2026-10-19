@@ -10927,3 +10927,15 @@ lose-sitzendes-streifen-kleid-622000	2607080630361622800	16	8.25	ok	landeseite
 wasserdichter-huftbeutel-grosser-kapazitat-601100	2410220347301601200	16	8.28	ok	landeseite
 barock-perlen-fur-schmuck-602700	2604080332291603100	16	7.43	ok	landeseite
 retro-sportstasche-620400	2410141433521620700	16	8.53	ok	landeseite
+tarot-vision-anhanger-620500	2603080202511621000	16	4.89	ok	landeseite
+leinen-bluse-kleid-mit-schlitz-610000	2607080626231610700	16	8.79	ok	landeseite
+taille-rucksack-set-627500	2410010643261627800	16	8.79	ok	landeseite
+sommerrock-mit-tintenwasch-gradientendruck-628100	2607080611141628900	16	11.60	ok	landeseite
+katzen-anhanger-fur-diy-schmuck-634100	2603010234011634400	16	4.36	ok	landeseite
+chiffon-set-mit-spitze-601100	2607080601061602300	16	9.47	ok	landeseite
+outdoor-multifunktions-uberkreuztasche-615600	2409300558321615800	16	8.11	ok	landeseite
+zweiteiliges-set-im-franzosischen-stil-633400	2607080554031634100	16	11.00	ok	landeseite
+taktische-brusttasche-611200	2408080628421611400	16	9.88	ok	landeseite
+schrank-organizer-mit-schubladen-620900	2502070858141621200	16	11.37	ok	landeseite
+elegantes-armelloses-kleid-622300	2607080551241623100	16	7.03	ok	landeseite
+herren-gurteltasche-aus-erstem-leder-robust-un-614100	2407210358381614200	16	7.85	ok	landeseite

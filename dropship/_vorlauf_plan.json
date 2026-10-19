@@ -512,12 +512,12 @@
    "format": "pin",
    "grund": "zurückgezogen: Produkt 15466876797313 doppelt belegt: Ware schon in karussell-20261024T1915",
    "handle": "",
-   "letzter_versuch": "2026-10-18T21:47:46Z",
+   "letzter_versuch": "2026-10-19T19:21:02Z",
    "mc_ids": [],
-   "reserviert_um": "2026-10-18T21:47:46Z",
-   "status": "offen",
+   "reserviert_um": "2026-10-19T19:21:02Z",
+   "status": "reserviert",
    "termin_utc": "2026-10-21T17:40:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "pin-20261021T1950": {
    "basis_utc": "2026-10-21T19:50:00Z",
@@ -1778,6 +1778,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-19T19:05:56Z",
+ "stand": "2026-10-19T19:21:02Z",
  "version": 1
 }
