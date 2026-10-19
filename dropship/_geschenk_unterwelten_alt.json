@@ -808,5 +808,161 @@
     ]
    }
   }
+ },
+ "2026-10-19": {
+  "sie": {
+   "id": "gid://shopify/Collection/689718428033",
+   "sortOrder": "MANUAL",
+   "ruleSet": {
+    "appliedDisjunctively": false,
+    "rules": [
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "geschenkwelt-sie"
+     }
+    ]
+   }
+  },
+  "ihn": {
+   "id": "gid://shopify/Collection/689718362497",
+   "sortOrder": "MANUAL",
+   "ruleSet": {
+    "appliedDisjunctively": false,
+    "rules": [
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "geschenkwelt-ihn"
+     }
+    ]
+   }
+  },
+  "kinder": {
+   "id": "gid://shopify/Collection/689718460801",
+   "sortOrder": "MANUAL",
+   "ruleSet": {
+    "appliedDisjunctively": false,
+    "rules": [
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "geschenkwelt-kinder"
+     }
+    ]
+   }
+  },
+  "unter30": {
+   "id": "gid://shopify/Collection/754049941895",
+   "sortOrder": "MANUAL",
+   "ruleSet": {
+    "appliedDisjunctively": false,
+    "rules": [
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "geschenkwelt-unter30"
+     }
+    ]
+   }
+  },
+  "wichtel": {
+   "id": "gid://shopify/Collection/687937257857",
+   "sortOrder": "MANUAL",
+   "ruleSet": {
+    "appliedDisjunctively": false,
+    "rules": [
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "geschenkwelt-wichtel"
+     }
+    ]
+   }
+  },
+  "alle": {
+   "id": "gid://shopify/Collection/687793897857",
+   "sortOrder": "MANUAL",
+   "ruleSet": {
+    "appliedDisjunctively": false,
+    "rules": [
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "geschenkwelt-alle"
+     }
+    ]
+   }
+  },
+  "unter50": {
+   "id": "gid://shopify/Collection/687937323393",
+   "sortOrder": "MANUAL",
+   "ruleSet": {
+    "appliedDisjunctively": false,
+    "rules": [
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "geschenkwelt-unter50"
+     }
+    ]
+   }
+  },
+  "unter100": {
+   "id": "gid://shopify/Collection/687937356161",
+   "sortOrder": "MANUAL",
+   "ruleSet": {
+    "appliedDisjunctively": false,
+    "rules": [
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "geschenkwelt-unter100"
+     }
+    ]
+   }
+  },
+  "preishits": {
+   "id": "gid://shopify/Collection/687691170177",
+   "sortOrder": "MANUAL",
+   "ruleSet": {
+    "appliedDisjunctively": false,
+    "rules": [
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "geschenkwelt-preishits"
+     }
+    ]
+   }
+  },
+  "hochzeit": {
+   "id": "gid://shopify/Collection/687534997889",
+   "sortOrder": "MANUAL",
+   "ruleSet": {
+    "appliedDisjunctively": false,
+    "rules": [
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "geschenkwelt-hochzeit"
+     }
+    ]
+   }
+  },
+  "sets": {
+   "id": "gid://shopify/Collection/689719902593",
+   "sortOrder": "MANUAL",
+   "ruleSet": {
+    "appliedDisjunctively": false,
+    "rules": [
+     {
+      "column": "TAG",
+      "relation": "EQUALS",
+      "condition": "geschenkwelt-sets"
+     }
+    ]
+   }
+  }
  }
 }

@@ -11074,3 +11074,15 @@ einheitliche-herren-trousers-650000	2510250638311650200	16	8.25	ok	landeseite
 jungen-sneaker-640832	1740683217520304128	16	10.55	ok	landeseite
 warme-herren-overall-mit-fleece-634400	2510221031321634700	16	14.48	ok	landeseite
 unterwasche-strumpfbox-standard-high-603400	2410030404311603700	16	11.68	ok	landeseite
+velours-laufschuhe-fur-kinder-825536	1738448850991460352	16	10.42	ok	landeseite
+wasserdichte-jungenstiefel-454336	1733313980128563200	16	9.20	ok	landeseite
+herren-cargo-hosen-gerade-geschnitten-629700	2510180756561629900	16	14.87	ok	landeseite
+hempf-waschbehalter-602700	2409270404271603000	16	33.58	ok	landeseite
+wasserdichte-kinderschuhe-943936	1732966398541967360	16	9.88	ok	landeseite
+tomaten-pluschfigur-627000	2409250724211627100	16	6.77	ok	landeseite
+herren-kletter-und-camp-camouflagehose-615400	2510100931101615700	16	15.20	ok	landeseite
+u-formiges-kissen-fur-reisende-618200	2409090919531618600	16	6.46	ok	landeseite
+kuschelweiche-kinderschuhe-313728	1720327344977616896	16	9.20	ok	landeseite
+herren-cargo-hosen-mit-mehreren-taschen-622400	2510070338351622800	16	12.68	ok	landeseite
+vierfach-schuhregal-staubdicht-fur-eingangsber-608000	2408210710221609100	16	15.20	ok	landeseite
+herren-freizeit-hosen-614400	2509220808011614600	16	9.47	ok	landeseite
