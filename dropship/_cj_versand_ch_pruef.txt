@@ -9888,3 +9888,15 @@ kau-spielzeug-fur-hunde-643100	2510060325431643300	16	8.11	ok	landeseite
 einheitlicher-jumpsuit-fur-herren-618600	2605261112251619200	16	9.47	ok	landeseite
 farbenfroher-luftbefeuchter-mit-mikroatomisier-549504	1648242084186435584	3	10.50	ok	landeseite
 kau-spielsachen-fur-hunde-623600	2510031000101624100	16	6.01	ok	landeseite
+blauer-helm-rucksack-630400	2603180014031630800	16	13.76	ok	landeseite
+feuchtigkeitsspender-fur-kreatives-styling-748160	1636950570546245632	16	11.59	ok	landeseite
+katzen-spielzeug-mit-futter-feeder-605200	2509130817521605400	16	15.15	ok	landeseite
+taktischer-rucksack-mit-tarnmuster-630700	2603171049471631100	16	19.65	ok	landeseite
+vintage-patchwork-hosen-628900	2605220839231629500	16	8.53	ok	landeseite
+kleiner-luftbefeuchter-fur-zuhause-und-buro-726592	1636945195533086720	16	11.49	ok	landeseite
+kauspielzeug-fur-hunde-zahnpflege-620300	2509110915481620500	16	7.85	ok	landeseite
+weite-herren-jeans-626900	2605190335571627700	16	10.69	ok	landeseite
+taktischer-rucksack-fur-outdoor-angeln-634000	2603170958061634400	16	15.20	ok	landeseite
+aromatherapie-gerat-mit-kunststoff-bambus-webe-983616	1636937909209149440	16	17.25	ok	landeseite
+katzenspielball-mit-ton-605100	2509110909441605300	16	7.43	ok	landeseite
+lassige-herren-hosen-mit-knochel-verengung-604500	2605151012441605000	16	11.00	ok	landeseite
