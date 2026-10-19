@@ -10787,3 +10787,7 @@ stadtischer-rucksack-613100	2601291053171613400	16	13.16	ok	landeseite
 baumwoll-handtuch-schnell-trocknend-609200	2605070831351600100	16	9.47	ok	landeseite
 20-pp-trolleykoffer-623700	2508050516541623900	11	78.03	ok	landeseite
 bodenablauf-abdeckung-622500	2605070349521623000	16	6.33	ok	landeseite
+outdoor-stream-tracking-rucksack-mit-ipx7-wass-613400	2601290247571613800	16	10.96	ok	landeseite
+reisegepack-trolley-bag-621000	2507220744041621200	16	38.22	ok	landeseite
+badetuch-mit-integriertem-rucksack-605200	2605061114111605700	16	9.88	ok	landeseite
+werkzeugtasche-abnehmbar-610200	2601260328001610500	16	28.18	ok	landeseite

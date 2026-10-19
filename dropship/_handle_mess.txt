@@ -245,3 +245,11 @@ gid://shopify/Product/16615692108167	prinzessin-leder-schuhe-fur-madchen-031040	
 gid://shopify/Product/16615782384007	lederbabyschuhe-fur-neugeborene-db44dd	kunstlederbabyschuhe-fur-neugeborene-db44dd	301
 gid://shopify/Product/16615783235975	kinder-lederstiefel-mit-runder-kappe-544e75	kinder-kunstlederstiefel-mit-runder-kappe-544e75	301
 gid://shopify/Product/16615803322759	ledergurtel-mit-skorpion-motiv-603200	kunstledergurtel-mit-skorpion-motiv-603200	301
+gid://shopify/Product/16639110775175	manner-schuhe-aus-leder-schwarze-casual-schuhe-601300	manner-schuhe-aus-kunstleder-schwarze-casual-schuhe-601300	301
+gid://shopify/Product/16642974876039	leder-reiserucksack-fur-herren-20-35-l-628000	kunstleder-reiserucksack-fur-herren-20-35-l-628000	301
+gid://shopify/Product/16644307517831	motorrad-seitentasche-aus-synthetischem-leder-632700	motorrad-seitentasche-aus-synthetischem-kunstleder-632700	301
+gid://shopify/Product/16644767777159	retro-leder-rucksack-fur-manner-606300	retro-kunstleder-rucksack-fur-manner-606300	301
+gid://shopify/Product/16645061804423	leder-rucksack-grosse-kapazitat-business-623900	kunstleder-rucksack-grosse-kapazitat-business-623900	301
+gid://shopify/Product/16647561183623	satchel-aus-leder-mit-doppelboden-braun-625728	satchel-aus-kunstleder-mit-doppelboden-braun-625728	301
+gid://shopify/Product/16651901272455	low-top-herren-sneaker-aus-synthetischem-leder-619900	low-top-herren-sneaker-aus-synthetischem-kunstleder-619900	301
+gid://shopify/Product/16652426281351	leder-sneaker-mit-atmungsaktivem-obermaterial-629200	kunstleder-sneaker-mit-atmungsaktivem-obermaterial-629200	301
