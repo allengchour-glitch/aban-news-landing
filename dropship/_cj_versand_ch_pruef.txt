@@ -10489,3 +10489,6 @@ langlebiger-rindohrenknochen-fur-hunde-622400	2503240617211622600	1	6.50	ok	land
 herren-pullover-fruhling-herbst-einheitsfarben-609400	2606150117221600100	16	8.79	ok	landeseite
 vintage-holzspiegel-603600	2511160929421603800	16	28.00	ok	landeseite
 kau-spielzeug-fur-hunde-und-katzen-604000	2503240210231604200	16	6.39	ok	landeseite
+herren-langarm-pullover-615000	2606140846471615700	16	9.47	ok	landeseite
+kau-und-knabberspielzeug-607600	2502280854021607800	16	5.54	ok	landeseite
+farbige-led-rahmen-539584	1387255969645465600	7	17.61	ok	landeseite
