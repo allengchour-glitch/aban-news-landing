@@ -9879,3 +9879,12 @@ ole-fur-duftdiffuser-959808	1691417722019651584	3	5.54	ok	landeseite
 doppel-duse-luftbefeuchter-487488	1691269397467373568	7	9.54	ok	landeseite
 kauwiderstandsfahiges-beissspielzeug-614600	2511100217531614800	16	7.85	ok	landeseite
 entspannte-sporthose-fur-herren-613900	2606140155361614600	16	8.79	ok	landeseite
+mini-dampf-humidifier-609536	1687383576158941184	7	9.28	ok	landeseite
+kaufeesistenter-hundespielball-609400	2511020336541609600	16	9.47	ok	landeseite
+retro-overalls-fur-herren-614700	2606030511551615300	16	12.21	ok	landeseite
+outdoor-workpants-fur-herren-622400	2605280633131622900	16	9.61	ok	landeseite
+holziges-raumfeuchtigkeitsgerat-303104	1671121366147411968	16	8.66	ok	landeseite
+kau-spielzeug-fur-hunde-643100	2510060325431643300	16	8.11	ok	landeseite
+einheitlicher-jumpsuit-fur-herren-618600	2605261112251619200	16	9.47	ok	landeseite
+farbenfroher-luftbefeuchter-mit-mikroatomisier-549504	1648242084186435584	3	10.50	ok	landeseite
+kau-spielsachen-fur-hunde-623600	2510031000101624100	16	6.01	ok	landeseite
