@@ -295,6 +295,41 @@ ERSATZ += [
     ("vereint Stil mit potenziellen energetischen Eigenschaften.", "vereint Stil mit schlichter Eleganz."),
     ("Set besteht aus Kristallen und Heilsteinen.", "Set besteht aus Kristallen und Natursteinen."),
 ]
+# 19.10.2026 (Spähtrupp katalog K5): Wärme-/Rücken-/Atem-Ware mit Zweckaussagen als KOMPOSITUM («Linderung von Rückenschmerzen», «Menstruationsbeschwerden», «Lendenmuskelzerrungen»,
+# «Lungenkapazität steigern») — das MUSTER kannte nur Einzelwörter. Jede Phrase von Hand gelesen; Ersatz beschreibt Funktion/Material, keine Wirkung. Dazu zwei
+# unbelegte Zusätze mit raus («von Physiotherapeuten … empfohlen», «aus medizinischem Material»). Die zwei Medizinprodukt-Kerne (Augenpflegegerät, Heilstift) sind DRAFT.
+ERSATZ += [
+    ("zur Linderung von Muskelverspannungen und Beschwerden in Nacken, Schulter und Gelenken", "für Nacken, Schulter und Gelenke"),
+    (", zur Linderung von Rückenschmerzen, beim Stillen", ", beim Stillen"),
+    ("wurde speziell zur Linderung von Menstruationsbeschwerden entwickelt", "wurde für wohltuende Wärme und sanfte Massage entwickelt"),
+    ("und das Wohlbefinden während der Periode zu steigern", "und für Entspannung zu sorgen"),
+    ("Eine korrigierte Haltung kann dazu beitragen, Rückenschmerzen vorzubeugen und das allgemeine Wohlbefinden zu steigern.", "Eine aufrechte Haltung fällt damit leichter."),
+    ("um deine Lungenkapazität und Atemeffizienz zu steigern", "um die Atemmuskulatur zu trainieren"),
+    ("die ihre Vitalfunktionen optimieren möchten", "die ihr Training ergänzen möchten"),
+    ("Durch regelmässiges Training kannst du deine Ausdauer verbessern und die Leistungsfähigkeit deiner Lunge gezielt fördern.", "Du trainierst damit regelmässig deine Atemmuskulatur."),
+    ("Effektives Training der Lungenkapazität und Atemmuskulatur.", "Training der Atemmuskulatur."),
+    (" Hergestellt aus medizinischem Material für sichere Anwendung.", ""),
+    ("Dieser Atmungstrainer hilft, die Lungenkapazität zu verbessern und die Ausdauer zu stärken.", "Dieser Atmungstrainer ist ein Trainingsgerät für die Atemmuskulatur."),
+    ("Verbessert die Lungenkapazität und Ausdauer", "Trainiert die Atemmuskulatur"),
+    ("und kann so zur Linderung von Rückenschmerzen beitragen", "und stützt so den unteren Rücken"),
+    ("dieses Set hilft, Nacken- und Rückenschmerzen vorzubeugen", "dieses Set stützt Nacken und Rücken"),
+    ("und zur Linderung von Schmerzen, die durch Fehlstellungen der Halswirbel entstehen,", ""),
+    ("wurde entwickelt, um Schmerzen im unteren Rückenbereich zu lindern", "wurde entwickelt, um den unteren Rücken zu stützen"),
+    (" Es ist eine bewährte Wahl, die von Physiotherapeuten, Chiropraktikern und Experten für Rückenschmerzen weltweit empfohlen wird.", ""),
+    ("wurde speziell für Personen mit Lendenmuskelzerrungen entwickelt", "wärmt Rücken und Taille"),
+    ("Geeignet bei Lendenmuskelzerrungen", "Wärme für Rücken und Taille"),
+    ("wurde entwickelt, um Beschwerden im unteren Rücken- und Bauchbereich effektiv zu lindern", "wurde entwickelt, um den unteren Rücken und den Bauch mit Wärme und Vibration zu verwöhnen"),
+    ("um Rückenbeschwerden vorzubeugen oder zu lindern", "für eine bequeme Sitzhaltung"),
+    ("oder bei der Linderung von Muskelverspannungen im Alltag", "oder zur Lockerung der Muskulatur im Alltag"),
+    ("die zur Verbesserung der Durchblutung und zur Lockerung der Muskulatur beitragen kann", "die die Muskulatur lockert"),
+    ("und hilft, Nacken- sowie Schulterschmerzen vorzubeugen", "und stützt Nacken und Schultern"),
+    ("Die Variante mit Magnettherapie ist mit zehn grossen und drei kleinen Magnetpunkten ausgestattet.", "Eine Variante hat zehn grosse und drei kleine Magnetpunkte."),
+    ("<li>Von Ärzten und Chiropraktikern empfohlen</li>\n", ""),
+]
+TITEL_ERSATZ += [
+    ("Wiederaufladbarer Wärme-Massagegurt für Menstruationsschmerzen", "Wiederaufladbarer Wärme-Massagegurt"),
+    ("Atemtrainer zur Verbesserung der Lungenkapazität", "Atemtrainer"),
+]
 ERSATZ.sort(key=lambda p: -len(p[0]))
 
 MUSTER = re.compile(
@@ -330,7 +365,12 @@ MUSTER = re.compile(
     r"|Magnet\w*therapie|magnetische\w* Therapie|(?<![\w-])Therapie-Funktion"
     r"|(?:magnetisch|Armband|Armreif|Kette|Ring\b|Schmuck)[^.<]{0,60}negative\w* Ionen|negative\w* Ionen[^.<]{0,40}(?:Wohlbefinden|\bGesundheit)"
     r"|energetisierende\w* Wirkung|energetische\w* Eigenschaft\w*|harmonisierende\w* Energie\w*|Energie\s*(?:&|und)\s*Balance|Energie-Armband"
-    r"|\bHeilungs-|Magnet\w*[^.<]{0,80}Wohlbefinden", re.I)
+    r"|\bHeilungs-|Magnet\w*[^.<]{0,80}Wohlbefinden"
+    # 19.10.2026 (Spähtrupp katalog K5): Zweckaussagen als Kompositum + Krankheitsbilder (Offline-Test gegen 55'801 aktive: 24 Produkte, alle gelesen; «Infrarot-Physiotherapie»
+    # und «Moxibustionstherapie» bleiben als Technikbezeichnung draussen — 8 Wärmegeräte). Tiere (Zahnungsbeschwerden beim Hund) fängt FEHLALARM.
+    r"|Linderung (?:von |der )?\w*(?:schmerz|beschwerd|verspannung|zerrung)\w*|(?:Schmerzen|Beschwerden|Symptome)[^.<]{0,60}zu lindern"
+    r"|(?:Rücken|Nacken|Schulter|Muskel)?(?:schmerzen|beschwerden) vorzubeugen|Menstruations(?:schmerz|beschwerd)\w*|Lendenmuskelzerrung\w*|Lungenkapazit\w*|Vitalfunktion\w*"
+    r"|\bHeilstift\b|Pseudomyopie", re.I)
 FEHLALARM = re.compile(
     r"Bezug abnehmen|l[äa]sst sich \w* ?abnehmen|anbringen und \w* ?abnehmen|Anbringen und Abnehmen"
     r"|Ratgeber:|nicht für medizinische|selbst heilt|Spezialeffekt|Kunstblut|Halloween|Wundschminke|Beschaffenheit des Holzes|Digital Detox|Geräusche wie|schnarchende|durch Schnarchen gestört"

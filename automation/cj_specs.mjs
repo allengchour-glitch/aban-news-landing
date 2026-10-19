@@ -63,7 +63,11 @@ export function extractSpecs(desc){
     if(!m) continue;
     const key=m[1].trim().toLowerCase();
     if(!(key in MAP)||seen.has(MAP[key])) continue;
-    let val=m[2].trim().replace(/\s+/g,' ').replace(/\*/g,' × ').replace(/\s*x\s*/gi,' × ');
+    // 19.10.2026 (Spähtrupp katalog K4): `.replace(/\s*x\s*/gi,' × ')` machte JEDES x zum Malzeichen — «S,M,L,XL,2XL» wurde «S,M,L, × L,2 × L» (220 aktive Produkte, ~5 neue/Tag).
+    // Malzeichen nur ZWISCHEN Ziffern; eine reine Kleidergrössen-Liste ist keine Masszeile (Grössen gehören in die Option «Grösse»).
+    let val=m[2].trim().replace(/\s+/g,' ');
+    if(/[SMLX]/i.test(val) && /^(?:\s*(?:XXS|XS|[SML]|\d{0,2}X{1,4}L)\s*[,\/–-]?)+$/i.test(val)) continue;
+    val=val.replace(/(?<=\d)\s*[*x×]\s*(?=\d)/gi,' × ');
     val=einheiten(val);
     if(!/\d/.test(val)) continue;
     if(!nurMass(val)) continue;      // 14.09.: «Regular style (50cm < length ≤ 65cm)», «US Size 5, US Size 6» — Englisch in der deutschen Tabelle
