@@ -65,6 +65,22 @@ LEER_MUSTER = re.compile(r"nichts faellig|nichts fällig|kein ready|kein pin-kan
 FEED_ARTEN = {"post", "reel"}
 UEBERSPRUNGEN = re.compile(r"ware schon beworben|posted-dup|jury-skip|preis-skip|montage-preis-skip|kein post —|kein post -", re.I)   # Poster hat bewusst nichts angelegt (kein unsicherer Ausgang)
 SPERR_MUSTER = re.compile(r"lock aktiv|anderer poster", re.I)   # vorübergehend: kein Versuch verbraucht, nicht wiederholen
+# 19.10.2026 (Spähtrupp wf_62fc1cba, GEMESSEN): (a) offene Slots wurden nur nach Uhrzeit bedient — bei knappem Reel-Vorrat bekam der früheste Slot das Reel,
+# egal ob TikTok (Median 275 Aufrufe) oder Instagram-Reel (33): die zwei leeren Slots bis 25.10. waren beide TikTok. (b) «Nichts fällig» (Vorrat leer) verbrannte
+# Versuche: 10 Läufe in 2,5 h → Slot «leer» → 20 h Sperre nach Uhr statt nach Vorrat; das um 04:24 fertige Bild-Reel ging an einen späteren Slot, weil der frühere
+# 15 Minuten vorher «leer» geworden war.
+FORMAT_RANG = {"tiktok": 0, "youtube": 1, "reel_igfb": 2}   # Wert je Format (social/_lernen.json Median-Aufrufe: 275 / 175 / 33); alles andere zuletzt
+
+
+def offene_sortieren(paare, plan):
+    """[(termin, name)] → zuerst die wertvollsten Reel-Formate, innerhalb eines Formats nach Termin. Übrige Formate konkurrieren nicht um Reels."""
+    return sorted(paare, key=lambda x: (FORMAT_RANG.get(plan["slots"][x[1]]["format"], 3), x[0]))
+
+
+def leerlauf_zaehlt(tail):
+    """Ein «Nichts fällig» ohne Urteil (Vorrat leer) ist KEIN Fehlversuch. Zählt nur, wenn der Poster Kandidaten geprüft und abgelehnt hat
+    (jury-skip, preis-skip, …): die kosten Jury-Aufrufe und dürfen den Slot nach versuche_gesamt auf «leer» setzen."""
+    return bool(UEBERSPRUNGEN.search(tail))
 
 
 # ───────────────────────── Grundlagen ─────────────────────────
@@ -529,9 +545,9 @@ def plan_lauf(max_min=35, nur=None, max_slots=10**9):
           f"{' · ' + ', '.join(belegt[:6]) if belegt else ''}")
     gefuellt = versucht = verarbeitet = 0
     format_leer = set()
-    offene = sorted([(von_iso(s["termin_utc"]), n) for n, s in plan["slots"].items()
-                     if s["status"] in ("offen", "fehler", "leer") and von_iso(s["termin_utc"]) > jetzt() + timedelta(minutes=regeln["mindest_vorlauf_min"])
-                     and (not nur or s["format"] in nur)])
+    offene = offene_sortieren([(von_iso(s["termin_utc"]), n) for n, s in plan["slots"].items()
+                               if s["status"] in ("offen", "fehler", "leer") and von_iso(s["termin_utc"]) > jetzt() + timedelta(minutes=regeln["mindest_vorlauf_min"])
+                               and (not nur or s["format"] in nur)], plan)
     tag_zaehler = {}
     for p in planer:
         te = eintrag_utc(p)
@@ -626,7 +642,11 @@ def plan_lauf(max_min=35, nur=None, max_slots=10**9):
                 # Netzfehler nach dem POST, Timeout). Slot reserviert LASSEN — abgleichen() adoptiert ihn beim nächsten Lauf per Anlegezeit, statt ihn
                 # sofort freizugeben und denselben Termin ein zweites Mal zu belegen.
                 s["status"] = "reserviert"
-            log(name, f"rc{rc}", tail[-200:])
+            if leer and not leerlauf_zaehlt(tail):
+                s["versuche"] -= 1               # Vorrat leer ohne ein einziges Urteil: kein Fehlversuch, der Slot bleibt «offen»
+                s["grund"] = f"Vorrat leer ({iso(jetzt())[11:16]} UTC)"
+            else:
+                log(name, f"rc{rc}", tail[-200:])
             if gesperrt:
                 s["versuche"] -= 1   # kurzer Lock-Konflikt mit einem anderen Poster: kein Fehlversuch, später wieder
                 print(f"· {name}: Poster-Lock belegt → später")
@@ -1046,6 +1066,15 @@ def selbsttest():
     ok(art_des_eintrags({"instagramData": {"type": "STORY"}, "providers": [{"network": "instagram"}]}) == "story", "Story erkennen")
     ok(art_des_eintrags({"pinterestData": {"boardId": "1"}, "providers": [{"network": "pinterest"}]}) == "pin", "Pin erkennen")
     ok(art_des_eintrags({"providers": [{"network": "tiktok"}]}) == "reel", "TikTok = reel")
+    # 19.10.2026: Reihenfolge nach Kanalwert und Leerlauf ohne Fehlversuch
+    t0_, t1_ = datetime(2026, 10, 20, 6, 0, tzinfo=UTC), datetime(2026, 10, 20, 12, 0, tzinfo=UTC)
+    plan_t = {"slots": {"ig": {"format": "reel_igfb"}, "tt": {"format": "tiktok"}, "yt": {"format": "youtube"}, "bild": {"format": "bild"}, "tt2": {"format": "tiktok"}}}
+    reihe = [n for _, n in offene_sortieren([(t0_, "ig"), (t0_, "bild"), (t1_, "tt2"), (t1_, "yt"), (t0_ + timedelta(hours=1), "tt")], plan_t)]
+    ok(reihe == ["tt", "tt2", "yt", "ig", "bild"], f"Reihenfolge nach Kanalwert: {reihe}")
+    ok(not leerlauf_zaehlt("Nichts faellig: kein ready-Karussell"), "reines «Nichts fällig» zählt nicht")
+    ok(not leerlauf_zaehlt("kein ready"), "«kein ready» zählt nicht")
+    ok(leerlauf_zaehlt("Jury-skip: Note 4.33\nNichts faellig"), "Jury-Ablehnung + «Nichts fällig» zählt")
+    ok(leerlauf_zaehlt("posted-dup-produkt … Nichts fällig"), "posted-dup zählt")
     # 8. Prüfung 18.10.: Netzfehler ist kein Löschgrund (curl «000» bei geschlossenem Port/DNS-Fehler)
     ok(medium_ok("http://127.0.0.1:1/x.mp4") is True, "Netzfehler (000) darf nie als «kaputt» gelten")
     # 9. Pause-Datei im echten Format (Kopfzeile mit Tabs) wird gelesen, Termin gegen [von, bis) geprüft
