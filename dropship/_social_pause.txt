@@ -47,9 +47,6 @@ titel:halloween gartenstecker mit kunstblumen
 pid:15480340251009
 h:sprechende-kurbis-sussigkeitenschale-727424
 titel:sprechende kürbis-süssigkeitenschale
-pid:15485736092033
-h:dinosaurier-skelett-kostum-fur-haustiere-607600
-titel:dinosaurier-skelett kostüm für haustiere
 pid:15492130046337
 h:retro-patchwork-geist-anhanger-mit-halloween-b-617700
 titel:retro patchwork geist anhänger mit halloween-beleuchtung

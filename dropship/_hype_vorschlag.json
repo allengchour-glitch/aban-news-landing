@@ -1,0 +1,212 @@
+{
+ "stand": "2026-10-19T05:53Z",
+ "auswahl": [
+  {
+   "nr": 1,
+   "thema": "Beauty-Gerät",
+   "id": "gid://shopify/Product/15450840400257",
+   "handle": "elektrisches-gesichtsreinigungsbursten-set-e2dc4a",
+   "titel": "Elektrisches Gesichtsreinigungsbürsten-Set",
+   "preis": 22.9,
+   "bilder": 12
+  },
+  {
+   "nr": 2,
+   "thema": "Drehbares Gewürzregal",
+   "id": "gid://shopify/Product/15525492982145",
+   "handle": "drehbares-gewurzregal-mit-6-behaltern-a1b577",
+   "titel": "Drehbares Gewürzregal mit 6 Behältern",
+   "preis": 35.9,
+   "bilder": 4
+  },
+  {
+   "nr": 3,
+   "thema": "Schlaf-Stützkissen",
+   "id": "gid://shopify/Product/15508451950977",
+   "handle": "herzformiges-kniekissen-aus-memory-schaum-477248",
+   "titel": "Herzförmiges Kniekissen aus Memory-Schaum",
+   "preis": 22.9,
+   "bilder": 14
+  },
+  {
+   "nr": 4,
+   "thema": "Mini-Beamer",
+   "id": "gid://shopify/Product/16612785455495",
+   "handle": "mini-projektor-home-office-t300-1080p-976571",
+   "titel": "Mini-Projektor Home Office T300 1080P",
+   "preis": 39.9,
+   "bilder": 8
+  },
+  {
+   "nr": 5,
+   "thema": "Hygiene-Gadget",
+   "id": "gid://shopify/Product/16617625551239",
+   "handle": "uv-desinfektionspaket-mit-usb-ladeanschluss-c6bdef",
+   "titel": "UV-Desinfektionspaket mit USB-Ladeanschluss",
+   "preis": 26.9,
+   "bilder": 7
+  },
+  {
+   "nr": 6,
+   "thema": "Ordnung & Aesthetic",
+   "id": "gid://shopify/Product/15453533864321",
+   "handle": "kottensack-fur-wohnzimmer-623000",
+   "titel": "Aufbewahrungskorb aus Baumwolle",
+   "preis": 41.9,
+   "bilder": 27
+  },
+  {
+   "nr": 7,
+   "thema": "Shapewear",
+   "id": "gid://shopify/Product/15448109220225",
+   "handle": "nahtloser-body-shaper-mit-rundhals-und-bauchko-341953",
+   "titel": "Nahtloser Body Shaper mit Rundhals und Bauchkontrolle",
+   "preis": 28.9,
+   "bilder": 11
+  },
+  {
+   "nr": 8,
+   "thema": "Ladestation 3-in-1",
+   "id": "gid://shopify/Product/15481775849857",
+   "handle": "magnetische-wireless-powerbank-601800",
+   "titel": "Magnetische Wireless Powerbank",
+   "preis": 19.9,
+   "bilder": 7
+  },
+  {
+   "nr": 9,
+   "thema": "Haarglätter & Styler",
+   "id": "gid://shopify/Product/15499446452609",
+   "handle": "kabelloser-usb-lockenstab-mit-temperaturregelu-2225cf",
+   "titel": "Kabelloser USB-Lockenstab mit Temperaturregelung",
+   "preis": 26.9,
+   "bilder": 19
+  },
+  {
+   "nr": 10,
+   "thema": "Kerzenwärmer & Duft",
+   "id": "gid://shopify/Product/16604925821319",
+   "handle": "nachtlicht-aus-holz-fur-warme-atmosphare-602400",
+   "titel": "Kerzenwärmer-Lampe mit Holzsockel",
+   "preis": 39.9,
+   "bilder": 18
+  },
+  {
+   "nr": 11,
+   "thema": "Faszienrolle",
+   "id": "gid://shopify/Product/16617685877127",
+   "handle": "yoga-massagerolle-390720",
+   "titel": "Yoga-Massagerolle",
+   "preis": 44.9,
+   "bilder": 8
+  },
+  {
+   "nr": 12,
+   "thema": "Wärme & Kuschel",
+   "id": "gid://shopify/Product/15453778248065",
+   "handle": "memory-foam-heizkissen-604000",
+   "titel": "Memory Foam Heizkissen",
+   "preis": 32.9,
+   "bilder": 5
+  },
+  {
+   "nr": 13,
+   "thema": "Karaoke-Mikrofon",
+   "id": "gid://shopify/Product/15481379062145",
+   "handle": "kabelloses-lavalier-mikrofon-622600",
+   "titel": "Kabelloses Lavalier-Mikrofon",
+   "preis": 24.9,
+   "bilder": 7
+  },
+  {
+   "nr": 14,
+   "thema": "Ringlicht",
+   "id": "gid://shopify/Product/15496540782977",
+   "handle": "faltbares-fotostudio-mit-led-ringlicht-905152",
+   "titel": "Faltbares Fotostudio mit LED-Ringlicht",
+   "preis": 42.9,
+   "bilder": 6
+  },
+  {
+   "nr": 15,
+   "thema": "Futterautomat",
+   "id": "gid://shopify/Product/15454202069377",
+   "handle": "automatischer-futternapf-fur-katzen-601100",
+   "titel": "Automatischer Futternapf für Katzen",
+   "preis": 124.9,
+   "bilder": 8
+  },
+  {
+   "nr": 16,
+   "thema": "Haustier-Spielzeug smart",
+   "id": "gid://shopify/Product/15500968296833",
+   "handle": "smartes-katzen-spielzeug-mit-sound-600300",
+   "titel": "Smartes Katzen-Spielzeug mit Sound",
+   "preis": 34.9,
+   "bilder": 5
+  },
+  {
+   "nr": 17,
+   "thema": "Sternenhimmel-Projektor",
+   "id": "gid://shopify/Product/15481680527745",
+   "handle": "sternenprojektor-612000",
+   "titel": "Sternenprojektor",
+   "preis": 60.9,
+   "bilder": 8
+  },
+  {
+   "nr": 18,
+   "thema": "Mini-Staubsauger",
+   "id": "gid://shopify/Product/16613782323591",
+   "handle": "kabelloser-mini-staubsauger-furs-auto-f2796b",
+   "titel": "Kabelloser Mini-Staubsauger fürs Auto",
+   "preis": 34.9,
+   "bilder": 6
+  },
+  {
+   "nr": 19,
+   "thema": "Nackenmassagegerät",
+   "id": "gid://shopify/Product/15450832372097",
+   "handle": "intelligentes-nacken-und-schultermassagegerat-c6c310",
+   "titel": "Intelligentes Nacken- und Schultermassagegerät",
+   "preis": 42.9,
+   "bilder": 20
+  },
+  {
+   "nr": 20,
+   "thema": "Kuscheldecke",
+   "id": "gid://shopify/Product/15522297807233",
+   "handle": "doppelseitige-flanelldecke-124992",
+   "titel": "Doppelseitige Flanelldecke",
+   "preis": 23.9,
+   "bilder": 20
+  },
+  {
+   "nr": 21,
+   "thema": "Heizjacke",
+   "id": "gid://shopify/Product/15449424789889",
+   "handle": "heizjacke-mit-usb-anschluss-907264",
+   "titel": "Heizjacke mit USB-Anschluss",
+   "preis": 33.9,
+   "bilder": 21
+  },
+  {
+   "nr": 22,
+   "thema": "Waffeleisen",
+   "id": "gid://shopify/Product/15505602216321",
+   "handle": "mini-waffeleisen-fur-zuhause-445824",
+   "titel": "Mini Waffeleisen für Zuhause",
+   "preis": 20.9,
+   "bilder": 7
+  },
+  {
+   "nr": 23,
+   "thema": "Thermo-Lockenbürste",
+   "id": "gid://shopify/Product/15500911870337",
+   "handle": "glatt-lockenburste-2-in-1-202304",
+   "titel": "Glätt- & Lockenbürste 2-in-1",
+   "preis": 33.9,
+   "bilder": 17
+  }
+ ]
+}
