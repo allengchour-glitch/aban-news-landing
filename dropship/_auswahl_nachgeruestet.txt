@@ -2561,3 +2561,5 @@
 16646599410055	Farbe:4:4+ki	2026-10-19	nylon-outdoor-rucksack-36-55l-wasserdicht-atmu-620400
 16644305453447	Farbe:4:4+ki	2026-10-19	robuster-outdoor-rucksack-36-55l-609200
 16643320447367	Variante:3+Grösse:2:6+ki	2026-10-19	bauchrucksack-fur-jungen-geometrisches-muster-617500
+16643119776135	Farbe:4:4+ki	2026-10-19	reiserucksack-fur-schuler-40-30-20-cm-635800
+16638909284743	Grösse:6:6+ki	2026-10-19	wandteppich-naturbaum-mit-sternenhimmel-456fc5

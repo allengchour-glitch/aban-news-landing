@@ -9979,3 +9979,10 @@ kau-und-zahnputzspielzeug-fur-hunde-621500	2509110755461622800	16	9.40	ok	landes
 taktischer-brustrucksack-636400	2603110224481636800	16	10.01	ok	landeseite
 herren-freizeit-hose-mit-mehreren-taschen-602700	2604290706391604400	16	13.40	ok	landeseite
 manner-rucksack-fur-outdoor-aktivitaten-624900	2603101003391625300	16	19.65	ok	landeseite
+casual-outfit-fur-herren-602400	2604261103381602900	16	16.04	ok	landeseite
+leichte-laufschuhe-fur-damen-605700	2406250542071605800	16	11.60	ok	landeseite
+wasserdichte-motorradtasche-600100	2603100545091600600	16	10.55	ok	landeseite
+wasserdichte-trekkinghose-fur-herren-630700	2604260831591631200	16	10.88	ok	landeseite
+kleiner-schreibtisch-luftbefeuchter-975232	1619555910697889792	6	12.89	ok	landeseite
+trainings-fitness-schuhe-622200	2406241110301622400	16	17.66	ok	landeseite
+schleckmatte-fur-hunde-und-katzen-silikon-602100	2606170908561602800	16	22.64	ok	landeseite

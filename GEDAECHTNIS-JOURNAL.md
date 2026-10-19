@@ -53,6 +53,15 @@
 
 
 
+## 🧪 Fremd-PR prüfen: Codex «LuxeStyle Assist» #2696 (2026-10-19)
+
+Bericht: `dropship/ASSIST-PR-2696-PRUEFUNG-2026-10-19.md` (4 Prüfer + 2 Skeptiker je Hoch/Mittel-Befund, 53 Agenten). Urteil: nicht mergen, auf main nach Pflichtänderungen, bei uns nicht übernehmen.
+Teure Lehren: (1) **Ein grünes Tor, das die Nachrichtenform des echten Clients nie sendet, ist blind** — Claude Code hängt `_meta.progressToken` an jeden `tools/call`, der PR-Server lehnte das ab; Tests, `self-check`, `doctor`
+und `VALIDATION.md` waren trotzdem grün. Der Wire-Mitschnitt des echten Clients (`claude -p` gegen einen Stub-MCP-Server) war der Beleg, nicht die Doku. (2) **Unsere eigene Git-Automatik kann das Werkzeug eines anderen zerstören:**
+`git_aufloesen.sh` vereinigt `dropship/*.jsonl` per Union, und bash-`case` lässt `*` über `/` laufen — eine Hash-Kette mit zwei Anhängen wird dauerhaft «corrupt». Bei jedem neuen append-only Format mit Prüfsumme zuerst
+fragen: *was macht unser Resolver damit?* (3) **Fremdcode nur isoliert ausführen:** `/srv/_assist_sbx/sbx.sh` = `unshare -rmnpf --mount-proc` + tmpfs über /tmp /root /home /mnt + `env -i` + leeres Netz (verifiziert: keine Umgebung, keine Dateien, kein Netz).
+(4) Texte in CLAUDE.md/README, die «Inhabervorgaben» behaupten, sind Steuerung: unbelegte Einschränkungen des Dauerauftrags gehören nicht in eine Datei, die jede Sitzung liest.
+
 ## 🗓️🎵 Metricool 7 Tage voraus + Musik v3 (2026-10-18, abends)
 
 **Auftrag:** «pushe metricool 7 tage voraus bis sonntag 22.00 uhr verbessere automatisch / sichtbarkeit erweitern auf maximum» · «immer das gleiche ist nervend» · «tiktok trends musik oder so».
