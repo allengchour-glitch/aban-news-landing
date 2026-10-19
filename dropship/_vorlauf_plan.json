@@ -335,10 +335,17 @@
   "karussell-20261025T2015": {
    "basis_utc": "2026-10-25T20:15:00Z",
    "format": "karussell",
+   "grund": "",
+   "handle": "",
+   "handles": [
+    "selfie-stick-stativ-mit-led-ringlicht"
+   ],
    "letzter_versuch": "2026-10-19T08:49:55Z",
-   "mc_ids": [],
+   "mc_ids": [
+    399776972
+   ],
    "reserviert_um": "2026-10-19T08:49:55Z",
-   "status": "reserviert",
+   "status": "geplant",
    "termin_utc": "2026-10-25T20:15:00Z",
    "versuche": 1
   },
@@ -1762,6 +1769,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-19T08:49:55Z",
+ "stand": "2026-10-19T08:50:24Z",
  "version": 1
 }
