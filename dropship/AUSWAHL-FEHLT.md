@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-19 01:06 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-19 02:27 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1408 · **1341 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1141, teilweise: 169, keine: 31; Preisspanne > 2×: 158) · 1 CJ-Variante: 65 · ohne Antwort: 2
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1390 · **1323 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1124, teilweise: 168, keine: 31; Preisspanne > 2×: 158) · 1 CJ-Variante: 65 · ohne Antwort: 2
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -537,7 +537,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Nagelclipper für Senioren – 5,7 cm & 8 cm (`nagelclipper-fur-senioren-5-7-cm-8-cm-138112`) | 8 | 8 | 2.18–5.51 | 19.90 | 3028is 5.7cm long, 3029is 5.7cm long, 30018is 8cm long, 30019is 8cm long |
 | Hundeleine Okinawa, elastisch und ausziehbar (`hundeleine-okinawa-elastisch-und-ausziehbar-660992`) | 8 | 8 | 3.59–4.49 | 22.90 | Red-Short pull 80to120cm, Red-Long pull 130to185cm, Light Grey-Short pull 80to120cm, Light Grey-Long pull 130to185cm |
 | Silikon-Futternapf mit Saugnapf-Matte (`silikon-futternapf-mit-saugnapf-matte-609300`) | 8 | 8 | 4.04–5.73 | 26.90 | Small Black Pot Included, Small Gray Pot Included, Small Black Without Basin, Small Gray Without Basin |
-| Outdoor-Mountaineering-Rucksack 20 L, Oxford (`outdoor-mountaineering-rucksack-20-l-oxford-640800`) | 8 | 8 | 4.19–4.19 | 18.90 | Black-Below 20L, Orange-Below 20L, Dark Blue-Below 20L, Sky Blue-Below 20L |
 | Mechanische Armbanduhr mit Mondphase (`mechanische-armbanduhr-mit-mondphase-626400`) | 7 | 4 | 21.72–21.72 | 43.90 | Silver Blue Blue Ribbon, Silver White, Silver Black, Rose Blue |
 | Mechanische Armbanduhr mit Skelett-Design (`mechanische-armbanduhr-mit-skelett-design-600300`) | 7 | 7 | 14.59–14.59 | 32.90 | T900 room gold blue, T900 Gold And Black, T900 Gold And White, T900 All Black |
 | Multifunktionaler Pflegepinsel für Hals & Körper (`multifunktionaler-pflegepinsel-fur-hals-korper-618100`) | 7 | 7 | 2.24–3.52 | 15.90 | Rose Gold Plating Handle, Black Plastic Handle, Light Gold Plating Handle, Rose Gold Dark Brown |
@@ -709,9 +708,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Bambusblätter-Throw-Pillow in Grün (`bambusblatter-throw-pillow-in-grun-612900`) | 6 | 6 | 6.3–15.09 | 25.90 | Flannel Embroidered Green-45x 45 Pillowcase, Flannel Embroidered Green-45x45 PP Cotton Core, Ink Painting-45x 45 Pillowcase, Ink Painting-45x45 PP Cotton Core |
 | Katzenkessel mit automatischer Wasserversorgung und Futterbehälter (`katzenkessel-mit-automatischer-wasserversorgun-607700`) | 6 | 6 | 2.3–2.67 | 17.90 | Ceramic Bowl-Gray, Ceramic Bowl-Green, Ceramic Bowl-Yellow, Stainless steel bowl-Gray |
 | Bauchrucksack für Jungen – geometrisches Muster (`bauchrucksack-fur-jungen-geometrisches-muster-617500`) | 6 | 6 | 6.6–6.94 | 24.90 | 5236 Blue And White Large-S, 5236 Blue And White Large-L, 5236 Gray-S, 5236 Gray-L |
-| Leichter Outdoor-Rucksack mit hoher Kapazität (`leichter-outdoor-rucksack-mit-hoher-kapazitat-620200`) | 6 | 6 | 6.08–6.08 | 22.90 | Light Blue, Purple, Gray, Green |
-| Grosser Rucksack für Basketball mit Wasserdichtem Trennfach (`grosser-rucksack-fur-basketball-mit-wasserdich-623100`) | 6 | 6 | 11.5–11.5 | 30.90 | Black, White, Red, Orange |
-| Kinderwagenrucksack – Tragbarer Baby-Tagesrucksack (`kinderwagenrucksack-tragbarer-baby-tagesrucksa-617000`) | 6 | 6 | 5.14–5.14 | 18.90 | Light Gray-Free Size, Black-Free Size, Pink-Free Size, Green-Free Size |
 | Nylon-Fischköder-Tasche – 39×23×15 cm (`nylon-fischkoder-tasche-39-23-15-cm-855168`) | 6 | 6 | 10.76–12.44 | 38.90 | Black-Small, Black-large, Camouflage-Small, Camouflage-large |
 | Lederrucksack für Herren (`lederrucksack-fur-herren-621700`) | 5 | 5 | 22.27–29.52 | 53.90 | 8019 Black Lychee Grain, 8019 Coffee Color, 8016 Black Lychee Pattern, 8015 Black |
 | Weinroter Kissenbezug aus Rex Kaninchenfell (`weinroter-kissenbezug-aus-rex-kaninchenfell-600500`) | 5 | 5 | 2.95–11.28 | 15.90 | Red Brown-45x45cm, Blackred Thread Grid-45x45cm, Rex Rabbit Fur Wine Red-45x45cm, Black And Red Grid-30x50cm |
@@ -853,8 +849,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Keramik Servierplatte rechteckig (`keramik-servierplatte-rechteckig-609600`) | 5 | 5 | 3.24–5.34 | 22.90 | 7 Inch Dinner Plate, 8.5inch Shallow Plate, 9.5 Inch Deep Plates, 9 Inch Dinner Plate |
 | Uhrenarmband aus Kautschuk mit Dornschliesse (`uhrenarmband-aus-kautschuk-mit-dornschliesse-519744`) | 5 | 5 | 3.56–3.56 | 22.90 | Black line-20mm, White line-20mm, Red thread-20mm, Blue line-20mm |
 | Outdoor-Reiserucksack (`outdoor-reiserucksack-5c9abf`) | 5 | 0 | 13.11–17.0 | 39.90 | Grey, Light grey ozuko, Black ozuko, Black |
-| Grosser Rucksack mit Kontrastfarben für Männer (`grosser-rucksack-mit-kontrastfarben-fur-manner-624100`) | 5 | 5 | 6.47–6.47 | 25.90 | Black-47cm X 32cm X 18cm, Blue-47cm X 32cm X 18cm, Gray-47cm X 32cm X 18cm, Green-47cm X 32cm X 18cm |
-| Nylon Brusttasche mit Reissverschluss, wasserdicht (`nylon-brusttasche-mit-reissverschluss-wasserdi-356608`) | 5 | 5 | 3.93–3.93 | 16.90 | Khaki, Navy Blue, Green, Black |
 | Freizeit-Schultertasche (`freizeit-schultertasche-520770`) | 4 | 4 | 5.8–5.8 | 14.90 | Pink, Black, Gray, Whirt |
 | Ma Pi Brusttasche aus Echtleder (`ma-pi-brusttasche-aus-echtleder-611900`) | 4 | 4 | 28.36–32.67 | 56.90 | Crazy Horse Coffee-17x8x31.5cm, Black-17x8x31.5cm, Rub Color-17x8x31.5cm, Brown-17x8x31.5cm |
 | HD8ultra Smartwatch mit Bluetooth-Telefonie (`hd8ultra-smartwatch-mit-bluetooth-telefonie-608300`) | 4 | 4 | 16.58–16.58 | 36.90 | Black Belt, Blue Ribbon, Orange Belt, Leucorrhea |
@@ -1066,11 +1060,9 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Transparentes Puder für mattes Finish (`transparentes-puder-fur-mattes-finish-2eca22`) | 4 | 4 | 4.35–4.35 | 23.90 | Banana, Medium dee, Beige, Translucent |
 | Reisebeutel mit Smartphone-Fach – schwarz (`reisebeutel-mit-smartphone-fach-schwarz-085994`) | 4 | 4 | 5.14–6.29 | 25.90 | Black PU leather, Dark grey, Black gray plus size, Khaki |
 | Reiserucksack für Schüler, 40×30×20 cm (`reiserucksack-fur-schuler-40-30-20-cm-635800`) | 4 | 4 | 6.42–6.42 | 31.90 | 9811 Black-40X30X20, White 9811-40X30X20, Gray 9811-40X30X20, Gray Brown 9811-40X30X20 |
-| Reise-Tasche aus Originalleder – grosse Kapazität (`reise-tasche-aus-originalleder-grosse-kapazita-610200`) | 4 | 4 | 49.59–49.59 | 99.90 | Black-48.3x25x29cm, Coffee-48.3x25x29cm, Deep Coffee-48.3x25x29cm, Brown-48.3x25x29cm |
 | Robuster Outdoor-Rucksack 36-55L (`robuster-outdoor-rucksack-36-55l-609200`) | 4 | 4 | 14.1–14.1 | 47.90 | Black, Army Green, Brown, Camouflage Color |
 | Nylon Outdoor Rucksack 36-55L – wasserdicht, atmungsaktiv (`nylon-outdoor-rucksack-36-55l-wasserdicht-atmu-620400`) | 4 | 4 | 9.12–9.12 | 29.90 | Black-36to55L, Rose Red-36to55L, Blue-36to55L, Green With Orange-36to55L |
 | Wasserdichter Canvas-Rucksack mit Batik-Muster (`wasserdichter-canvas-rucksack-mit-batik-muster-474112`) | 4 | 4 | 21.21–21.21 | 48.90 | Army Green, Khaki, Dark Gray, Yellowish Brown |
-| Outdoor-Mountaineering-Rucksack 56–75 L (`outdoor-mountaineering-rucksack-56-75-l-402368`) | 4 | 4 | 11.02–11.02 | 40.90 | Black, Red, Dark Blue, Army Green |
 | Nackenstützkissen mit Massageperlen (`nackenstutzkissen-mit-massageperlen-609000`) | 3 | 3 | 5.2–5.51 | 22.90 | Low Loft Pillow, Medium Pillow, High Pillow |
 | Velo-Scheinwerfer mit USB-Ladefunktion (`velo-scheinwerfer-mit-usb-ladefunktion-725376`) | 3 | 3 | 6.1–16.78 | 22.90 | Standard Model, Upgrade, Flagship |
 | Ausziehbares Staufach für Mittelkonsole (`ausziehbares-staufach-fur-mittelkonsole-634700`) | 3 | 3 | 5.47–5.47 | 14.90 | Old Style, New And Refreshed Model, ModelY YL |
@@ -1218,14 +1210,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | ZEESEA Lidschatten-Palette 16 Farben (`zeesea-lidschatten-palette-16-farben-be3110`) | 3 | 1 | 13.07–13.07 | 33.90 | 3style, 2style, 1style |
 | Weihnachtsornamente aus Stroh – Elch, Eichhörnchen, Reh (`weihnachtsornamente-aus-stroh-elch-eichhornche-613600`) | 3 | 3 | 11.44–11.44 | 31.90 | Fox, Squirrel, Deer |
 | Grosses Crossbody für Herren – urbanes Minimaldesign (`grosses-crossbody-fur-herren-urbanes-minimalde-639700`) | 3 | 3 | 20.66–20.66 | 40.90 | Elegant Black, Gray And Blue Contrast Color, Sky Blue |
-| Rolltop-Reiserucksack Business, 20-35 l, wasserabweisend (`rolltop-reiserucksack-business-20-35-l-wassera-637900`) | 3 | 3 | 7.47–7.47 | 29.90 | Black, Green, Gray |
-| Grosses Handgepäck mit Trocken-Feucht-Trennung (`grosses-handgepack-mit-trocken-feucht-trennung-623500`) | 3 | 3 | 8.16–8.16 | 28.90 | Gray-47x26x24cm, Black-47x26x24cm, Green-47x26x24cm |
-| Crossbody Tasche Herren – leicht, gross (`crossbody-tasche-herren-leicht-gross-627000`) | 3 | 3 | 3.27–3.27 | 16.90 | Gray, Black, Blue |
-| Unisex-Rucksack College-Style mit grosser Kapazität (`unisex-rucksack-college-style-mit-grosser-kapa-610400`) | 3 | 3 | 10.45–10.45 | 37.90 | Light Brown, Black, Dark Brown |
-| Trekking-Rucksack für Outdoor-Sport (`trekking-rucksack-fur-outdoor-sport-617900`) | 3 | 3 | 3.86–3.86 | 16.90 | Light Blue-20 35L, Black-20 35L, Green-20 35L |
-| Leichter wasserdichter Rucksack für Herren (`leichter-wasserdichter-rucksack-fur-herren-979712`) | 3 | 3 | 19.57–21.23 | 54.90 | Black-49cmx32cmx18cm, Gray-49cmx32cmx18cm, Dark Blue-49cmx32cmx18cm |
-| Grosse Tragetasche für Reisen – Schultertasche Herren (`grosse-tragetasche-fur-reisen-schultertasche-h-602400`) | 3 | 3 | 6.97–6.97 | 24.90 | Gray, Black, Yellow |
-| Rucksack aus Canvas – schlicht, robust (`rucksack-aus-canvas-schlicht-robust-770560`) | 3 | 3 | 26.42–27.22 | 63.90 | Green, Black grey, Khaki |
 | Magnetisches Schnellverschluss Holster für Herren (`magnetisches-schnellverschluss-holster-fur-her-601900`) | 2 | 2 | 4.19–13.27 | 24.90 | Black A model-27 X 20 X 5.5, Black B model-27 X 20 X 5.5 |
 | 4-in-1 Cartoon Game USB Hub (`4-in-1-cartoon-game-usb-hub-646100`) | 2 | 2 | 3.34–3.34 | 15.90 |  USBA  TO  TYPE C, TYPE C  TO  TYPE C |
 | Rundes Stein- und Metallarmband 2er Set (`rundes-stein-und-metallarmband-2er-set-636200`) | 2 | 2 | 4.33–4.33 | 15.90 | Brown, Blue |
@@ -1344,6 +1328,4 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Runde Servierplatte aus Canvas (`runde-servierplatte-aus-canvas-625200`) | 2 | 2 | 2.9–4.49 | 22.90 | 8 inchs Round Shallow Plate, 10  inchs  Round Shallow Plate |
 | Keramik-Teeteller "Japanische Landschaft" (`keramik-teeteller-japanische-landschaft-616200`) | 2 | 2 | 5.32–5.32 | 24.90 | Muchun, Twilight |
 | Abnehmbarer Sandsack mit Gewicht (`abnehmbarer-sandsack-mit-gewicht-890944`) | 2 | 2 | 4.82–6.48 | 55.90 | Black-2.5LB, Black-5LB |
-| Einzelhals-Einsteigertasche aus Echtleder (`einzelhals-einsteigertasche-aus-echtleder-641100`) | 2 | 2 | 30.68–30.68 | 56.90 | Brown, Dark Brown |
 | Wasserdichter Rucksack 20-35L für Herren (`mannlicher-wasserdichter-rucksack-20-35l-606500`) | 2 | 2 | 8.13–8.13 | 27.90 | 2308 Black, 2308 Gray Style |
-| Mechanischer Schulterrucksack für Männer (`mechanischer-schulterrucksack-fur-manner-526016`) | 2 | 1 | 12.94–12.94 | 31.90 | Black, Gray |

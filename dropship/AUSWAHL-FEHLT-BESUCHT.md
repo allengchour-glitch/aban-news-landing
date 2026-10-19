@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-19 01:03 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-19 02:26 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 167 · **85 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 60, teilweise: 19, keine: 6; Preisspanne > 2×: 15) · 1 CJ-Variante: 82 · ohne Antwort: 0
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 152 · **70 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 45, teilweise: 19, keine: 6; Preisspanne > 2×: 15) · 1 CJ-Variante: 82 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -35,7 +35,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Futterautomat mit Kamera für Hunde und Katzen (`futterautomat-mit-kamera-fur-hunde-und-katzen-294976`) | 11 | 11 | 34.0–43.12 | 129.90 | White 4L-Black Transparent Barrel, White 6L-Black Transparent Barrel, Black 4L-Black Transparent Barrel, Black 6L-Black Transparent Barrel |
 | Männer-Geldbörse mit Tri-Fold-Design (`manner-geldborse-mit-tri-fold-design-607600`) | 11 | 11 | 7.63–7.63 | 18.90 | Dark Brown, Brown, Black, Red |
 | Stickierter Vorhangstoff – Baumwolle, Polyester, Samt (`stickierter-vorhangstoff-baumwolle-polyester-s-ccafca`) | 10 | 4 | 3.01–4.37 | 24.90 | Beige-Yarn-Zero shear, Blue-Cloth-Zero shear, Blue-Yarn-Entire batch, Blue-Yarn-Zero shear |
-| PGM Golfschläger (Holz) für Damen und Herren (`pgm-golfschlager-holz-fur-damen-und-herren-604000`) | 10 | 10 | 26.04–26.04 | 43.90 | Men's Driver RH, Men's 3 Wood RH, Men's 5 Wood RH, Men's Hybrid RH |
 | Halskette «Rosée» · Kristall-Tropfen, Silber (`halskette-rosee-kristall-tropfen-silber`) | 10 | 3 | 3.27–3.27 | 29.90 | Rose Gold K5 Blue Opal, Rose Gold K17B White Opal, Platinum OP38 Purple Opal, Platinum K17B White Opal |
 | Verstellbarer Katzenschüssel 15° (`verstellbarer-katzenschussel-15-f0b6ca`) | 10 | 10 | 2.26–17.02 | 34.90 | 2PC A, 3PC A, B, C |
 | Mobiler Gamecontroller für diverse Plattformen (`mobiler-gamecontroller-fur-diverse-plattformen-19bf9c`) | 9 | 7 | 12.89–38.67 | 45.90 | Green 2pcs, Pink 2pcs, Yellow 2pcs, Green 3pcs |
@@ -46,7 +45,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Pilz Luftbefeuchter mit Ventilator & Nachtlicht (`pilz-luftbefeuchter-mit-ventilator-nachtlicht-2a0a78`) | 8 | 8 | 3.39–3.9 | 22.90 | Pink-Built, Coffee-Built, Coffee-Without batteries, blue-Without batteries |
 | Crossbody Tasche aus Polyester – schwarz, grün, grau, khaki (`crossbody-tasche-aus-polyester-schwarz-grun-gr-626900`) | 8 | 8 | 4.84–4.84 | 16.90 | Black, Green, Gray, Khaki |
 | Gürtel Herrenuhr – Schlicht & Business-tauglich (`gurtel-herrenuhr-schlicht-business-tauglich-772160`) | 8 | 8 | 9.86–10.75 | 23.90 | Rose shell black noodles, All black rose needles, Silver shell black surface, All black and silver |
-| Elegante Geschenkbox aus Lederimitat (`elegante-geschenkbox-aus-lederimitat-625100`) | 8 | 8 | 2.37–3.1 | 17.90 | Dark Red-Small Size, Dark Red-Large Size, Pink-Small Size, Pink-Large Size |
 | Sport-Smartwatch mit Temperatur- und Pulsmessung (`sport-smartwatch-mit-temperatur-und-pulsmessun-353536`) | 8 | 8 | 58.74–58.74 | 83.90 | Vinyl, Silver Case Vinyl, Retro Brown Black, Retro Brown Silver |
 | Mechanische Herrenuhr – Business & Freizeit (`mechanische-herrenuhr-business-freizeit-625400`) | 7 | 7 | 12.6–12.6 | 27.90 | Rose Gold Shell Black Surface, Rose Shell White Surface Black, Gold Shell Black Brown Belt, Gold Shell White Surface |
 | Lenkradbezug Plüsch Pfotenabdruck 38cm (`lenkradbezug-plusch-pfotenabdruck-38cm-ebf475`) | 6 | 6 | 3.04–3.32 | 15.90 | Prestige Grey, Black, Purple, Black orange |
@@ -54,27 +52,20 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Duschkopf mit Wassersparfunktion und Ventilator (`duschkopf-mit-wassersparfunktion-und-ventilato-030400`) | 6 | 6 | 3.22–9.55 | 22.90 | Adjustable gold-A Pack, Adjustable gold-B Pack, Adjustable gold-C Pack, Adjustable gold-Set |
 | Bestickter Vorhang mit Lichtdurchlass (`bestickter-vorhang-mit-lichtdurchlass-67cd53`) | 6 | 0 | 2.46–2.97 | 21.90 | Coffee-Four claws-Q1M, Blue-Four claws-Q1M, White-Four claws-Q1M, White-Punch-Q1M |
 | 5-Panel Cap «Sprint» · Nylon Schwarz (`5-panel-cap-sprint-nylon-schwarz`) | 6 | 4 | 2.13–2.13 | 27.90 | Black, Grey, Khaki, Army green |
-| Kupferarmreif mit bunten Zirkonia-Einlagen (`kupferarmreif-mit-bunten-zirkonia-einlagen-614900`) | 5 | 5 | 2.21–2.21 | 14.90 | PBR348G, PBR351G, PBR352G, PBR353G |
 | Gänsedaunenkissen – Füllung für Kissenhüllen (`gansedaunenkissen-fullung-fur-kissenhullen-520f50`) | 5 | 5 | 2.74–7.41 | 27.90 | White-75x50cm, White-74x48cm, White-45x45cm, White-50x50cm |
 | Aromadiffusor Holzmaserung (`aroma-diffuser-holzoptik-hohl-design-ultraschall-luftbefeuchter-mit-led-licht`) | 4 | 4 | 13.86–14.12 | 44.90 | Light wood grain-AU, Light wood grain-UK, Light wood grain-US, Light wood grain-EU |
-| Canvas Schultertasche für Herren – wasserdicht (`canvas-schultertasche-fur-herren-wasserdicht-604300`) | 4 | 4 | 20.01–20.01 | 49.90 | Khaki, Light Gray, Dark Gray, Army Green |
 | Magisches Katzenkratzbrett mit Orgel-Design (`magisches-katzenkratzbrett-mit-orgel-design-709120`) | 4 | 1 | 3.81–3.81 | 16.90 | Deep Wood Grain, White, Cartoon Print, Wansheng Bat |
 | Handkurbel-Schäler für Äpfel und Birnen (`handkurbel-schaler-fur-apfel-und-birnen-5235a8`) | 4 | 2 | 2.3–4.34 | 23.90 | Black gold, Set, White With Fruit Cutter, 8Generation With Fruit Cutter |
-| PU-Leder Halsband für Hunde (`pu-leder-halsband-fur-hunde-616700`) | 4 | 4 | 2.28–2.46 | 15.90 | Brown-M, Brown-L, Black-M, Black-L |
 | Japanischer Schulrucksack mit hoher Kapazität (`japanischer-schulrucksack-mit-hoher-kapazitat-244608`) | 4 | 2 | 5.47–5.47 | 24.90 | Black Send Acrylic Chain, White With Acrylic Free Chain, Blue With Acrylic Free Chain, Yellow With Acrylic Chain |
 | Kreuz-Halskette Gold · Edelstahl-Anhänger (`kreuz-halskette-gold-edelstahl`) | 4 | 3 | 1.06–1.68 | 15.90 | Gold-Stainless Steel Gold Plated-55cm, Gold-Stainless Steel Gold Plated-60cm, Silver-Stainless Steel Gold Plated-55cm, Silver-Stainless Steel Gold Plated-60cm |
-| Silikon Küchenhelfer-Set mit Utensilienhalter (`silikon-kuchenhelfer-set-mit-utensilienhalter-634000`) | 4 | 4 | 7.38–7.38 | 36.90 | White-7pcs, Blue-7pcs, Khaki-7pcs, Gray-7pcs |
-| Kleine Crossbody Tasche für Herren (`kleine-crossbody-tasche-fur-herren-616500`) | 4 | 4 | 3.81–4.01 | 16.90 | Black, Orange, Beige, Pink |
 | 10-teiliges Badset aus Baumwolle (`10-teiliges-badset-aus-baumwolle-620600`) | 4 | 4 | 20.28–22.22 | 41.90 | Gray Green-120X70CM, WHITE-120X70CM, Blue-120X70CM, Grey-120X70CM |
 | Vorratsbox für Getreide (`vorratsbox-fur-getreide-8f38c8`) | 4 | 0 | 2.3–5.03 | 21.90 | Gray, White Quartile 2.8L, White, Grey Quartile 2.8L |
 | Retro Magnetarmband aus rotem Bronze (`retro-magnetarmband-aus-rotem-bronze-628600`) | 4 | 4 | 2.76–7.72 | 21.90 | Red Bronze, Red Bronze set, Bronze Oval Turquoise, 43SSJCRed |
 | Schräge Keramik Futterschale für Haustiere (`schrage-keramik-futterschale-fur-haustiere-d48574`) | 4 | 4 | 7.38–14.77 | 34.90 | White 2pcs, Blue, White, Pink |
 | Handmixer mit 5 Geschwindigkeiten (`handmixer-mit-5-geschwindigkeiten-694c50`) | 3 | 3 | 5.8–6.62 | 25.90 | B, A, C |
 | Vulkan Aroma Diffuser mit Flammen- & Quallen-Effekt (`vulkan-aroma-diffuser-mit-flammen-quallen-effe-771200`) | 3 | 3 | 16.32–32.64 | 33.90 | Blue flame bead-With Essential Oil-US, Yellow flame bead-With Essential Oil-US, Blue yellow-With Essential Oil-US |
-| Leichte Business-Tote für Reisen 20-35 L (`leichte-business-tote-fur-reisen-20-35-l-621900`) | 3 | 3 | 6.97–6.97 | 26.90 | Black, Gray, Champagne |
 | Glättbürste mit Dampf-Sprühfunktion (`glattburste-mit-dampf-spruhfunktion-e765b5`) | 3 | 3 | 15.49–15.49 | 29.90 | UK plug, US plug, EU plug |
 | Marokkanisches Kissen mit Quasten (`marokkanisches-kissen-mit-quasten-890688`) | 3 | 3 | 7.4–8.91 | 20.90 | Mosaic pillow 4545cm-Without core, Square pillow 4545cm-Without core, Square waist pillow 3050cm-Without core |
-| Herrencrossbody Tasche in einfarbigem PU (`herrencrossbody-tasche-in-einfarbigem-pu-609500`) | 3 | 3 | 6.62–6.62 | 17.90 | Black, White, Brown |
 | Wasserdichte Angelrucksack aus TPU-Gewebe (`wasserdichte-angelrucksack-aus-tpu-gewebe-621700`) | 3 | 3 | 12.43–22.39 | 45.90 | Small Size, Large Size, Waterproof Rucksack |
 | Edelstahl-Armband «Cœur» · Herz, Gold (`edelstahl-armband-coeur-herz-gold`) | 3 | 0 | 3.86–4.81 | 34.90 | Steel, Rose Gold, Gold |
 | Vintage Baseball-Cap «Liberty» · Washed Schwarz (`vintage-baseball-cap-liberty-washed-schwarz`) | 3 | 3 | 2.13–2.13 | 27.90 | Black, Deep Blue, Light blue |
@@ -82,12 +73,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Studenten-Becher mit Sprühfunktion, 580 ml (`studenten-becher-mit-spruhfunktion-580-ml-614200`) | 3 | 3 | 19.57–19.57 | 43.90 | Jelly Galaxy-580ML, Cloud Diary-580ML, Sweet Dream Switch-580ML |
 | Dekorative Bücherregal-Laternenlampe (`dekorative-bucherregal-laternenlampe-607700`) | 3 | 2 | 2.71–5.42 | 19.90 | Lantern bookshelf lamp, Little ghost bookshelf lamp, Lantern bookshelf lamp 2pcs |
 | WLAN Handy Beamer (`wlan-handy-beamer-35edfc`) | 3 | 3 | 41.55–70.56 | 65.90 | Android, Basic, Cell phone |
-| Herrenuhr mit nachtleuchtendem Zifferblatt (`herrenuhr-mit-nachtleuchtendem-zifferblatt-504064`) | 3 | 3 | 16.92–16.92 | 37.90 | Gold, Silver, Room Gold |
-| Keramik-glasiertes, mehrstufiges Haarglättungsgerät (`keramik-glasiertes-mehrstufiges-haarglattungsg-603100`) | 3 | 3 | 6.94–7.47 | 26.90 | Black-UK, Black-EU, Black-US |
 | Aufblasbares Halloween-Kostüm für zwei Personen (`inflierbares-halloween-kostum-fur-zwei-persone-638900`) | 2 | 2 | 20.66–20.66 | 42.90 | Double Spring Dog-Free Size, Double Sausage Dog-Free Size |
 | Elektrischer Gemüseschneider Multifunktional – Schneiden, Reiben & Hobeln (`elektrischer-gemuseschneider-multifunktional-schneiden-reiben-hobeln`) | 2 | 0 | 11.87–12.44 | 74.90 | White with adapter-220V US, Green-USB |
-| Haustier-Reisematte für das Auto (`haustier-reisematte-fur-das-auto-830208`) | 2 | 2 | 7.76–7.76 | 23.90 | Oval beige, Square gray |
-| Gelenkte 3-in-1-Ladestation für Smartphone, Uhren & Airpods (`gelenkte-3-in-1-ladestation-fur-smartphone-uhr-612100`) | 2 | 2 | 4.53–4.53 | 15.90 | White-IPhone, Black-IPhone |
 | Moocare Aromatherapie-Öl (20 Stk.) (`moocare-aromatherapie-ol-20-stk-628100`) | 2 | 2 | 9.12–9.12 | 26.90 | Black Style, Red Style |
-| Ledertasche Mini Crossbody für Herren (`ledertasche-mini-crossbody-fur-herren-612900`) | 2 | 2 | 8.79–8.79 | 21.90 | Black, Brown |
-| Kabelloses Ladegerät – kompakt & schnell (`kabelloses-ladegerat-kompakt-schnell-139560`) | 2 | 2 | 4.58–4.58 | 23.90 | White, Grey |

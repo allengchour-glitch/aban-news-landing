@@ -308,12 +308,12 @@
    "basis_utc": "2026-10-23T19:15:00Z",
    "format": "karussell",
    "grund": "rc=0: Nichts faellig: kein ready-Karussell.",
-   "letzter_versuch": "2026-10-19T02:09:27Z",
+   "letzter_versuch": "2026-10-19T02:27:30Z",
    "mc_ids": [],
-   "reserviert_um": "2026-10-19T02:09:27Z",
+   "reserviert_um": "2026-10-19T02:27:30Z",
    "status": "offen",
    "termin_utc": "2026-10-23T19:15:00Z",
-   "versuche": 6
+   "versuche": 7
   },
   "karussell-20261024T1915": {
    "basis_utc": "2026-10-24T19:15:00Z",
@@ -1491,12 +1491,12 @@
    "basis_utc": "2026-10-25T07:05:00Z",
    "format": "tiktok",
    "grund": "rc=3: Nichts faellig: kein ready-Reel, dessen Video noch nirgends gepostet wurde (tiktok; Marke bleibt alt, Exit 3).",
-   "letzter_versuch": "2026-10-19T02:11:39Z",
+   "letzter_versuch": "2026-10-19T02:27:39Z",
    "mc_ids": [],
-   "reserviert_um": "2026-10-19T02:11:39Z",
+   "reserviert_um": "2026-10-19T02:27:39Z",
    "status": "offen",
    "termin_utc": "2026-10-25T07:05:00Z",
-   "versuche": 1
+   "versuche": 2
   },
   "tiktok-20261025T1205": {
    "basis_utc": "2026-10-25T12:05:00Z",
@@ -1743,6 +1743,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-19T02:12:22Z",
+ "stand": "2026-10-19T02:27:47Z",
  "version": 1
 }
