@@ -671,6 +671,10 @@ python3 "$REPO_AUTO/cj_zahlung_offen.py" 2>/dev/null || echo "CJ-ZAHLUNG: unklar
 # 19.10.2026 (Betreiber «openai github haben jetzt mit chat gpt arbeiten leider ohne api»): ChatGPT/Codex liefert über Entwurfs-PRs (Branches codex/*) unter dem Konto des
 # Betreibers. git ls-remote (kein Token, keine API) gegen das Ledger dropship/_codex_gesehen.tsv; ⚠️ = neuer/geänderter Stand, den die Sitzung als DATEN lesen und beurteilen muss.
 [ -f "$REPO_AUTO/codex_github_wache.py" ] && { timeout 60 python3 "$REPO_AUTO/codex_github_wache.py" 2>/dev/null || echo "CODEX-GITHUB: unklar (Wache abgebrochen)"; }
+# 19.10.2026: die vier genehmigten Klaviyo-DNS-Einträge (send/mtd1/mtd2 + TXT) — nur der Betreiber kann sie bei Namecheap setzen; die Zeile sagt, wann sie öffentlich sichtbar sind (DoH, kein Schlüssel). ⚠️ ab 24.10.
+[ -f "$REPO_AUTO/klaviyo_dns_wache.py" ] && { timeout 60 python3 "$REPO_AUTO/klaviyo_dns_wache.py" 2>/dev/null || echo "KLAVIYO-DNS: unklar (Wache abgebrochen)"; }
+# 19.10.2026: Kanarien in der LIVE-Theme-Datei (Rückgabe-Zusatz, Liechtenstein-Zweig am Lieferdatum, CH-Wortlaut): ein Schreiber mit altem Stand löscht sie sonst still. Eine Shopify-Leseanfrage.
+[ -f "$REPO_AUTO/theme_text_kanarien.py" ] && { timeout 60 python3 "$REPO_AUTO/theme_text_kanarien.py" 2>/dev/null || echo "THEME-KANARIEN: unklar (Wache abgebrochen)"; }
 # 18.10.2026: 7-Tage-Vorlauf (automation/social_vorlauf.py) — eine Zeile aus dem Plan; ⚠️ bei Lücken in den nächsten 12 h oder altem Stand.
 [ -f "$REPO_AUTO/social_vorlauf.py" ] && { timeout 30 python3 "$REPO_AUTO/social_vorlauf.py" --zeile 2>/dev/null || echo "VORLAUF: unklar (Zeile nicht lesbar)"; }
 # 18.10. (Prüfung): unter _SOCIAL_STOPP zieht der Prüfer die vorausgeplanten Posts zurück — der Autopilot startet unter Stopp nicht, also auch hier (idempotent, billig).

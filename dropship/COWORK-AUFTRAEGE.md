@@ -1,3 +1,20 @@
+## 🆕 NEU 19.10. 18:40 — Zwei Klicks nur du (zusammen ca. 25 Minuten, am Handy im Browser möglich)
+
+**1. Search Console: «Indexierung beantragen» für 10 Adressen** — Liste mit Reihenfolge und Grund: `dropship/INDEX-ANTRAEGE-2026-10-19.md`
+(Link: https://search.google.com/search-console?resource_id=https%3A%2F%2Fluxestyle.ch%2F). Kontingent ~10/Tag, die 11. (kleiderstaender) morgen.
+Wirkung: die Geschenk-Seiten stehen mitten im Werbetest A (bis 24.10.) und 7 davon sind für Google «unbekannt» oder «entdeckt, nicht indexiert».
+
+**2. Namecheap → Domain-Liste → luxestyle.ch → Advanced DNS: vier Einträge für Klaviyo** (du hast sie freigegeben; Schreibzugang haben weder Codex noch ich).
+| Typ | Host | Wert |
+|---|---|---|
+| CNAME | send | 3848818023763335087.klaviyodns.com |
+| CNAME | mtd1._domainkey | mtd1._domainkey.3848818023763335087.klaviyodns.com |
+| CNAME | mtd2._domainkey | mtd2._domainkey.3848818023763335087.klaviyodns.com |
+| TXT | @ | klaviyo-site-verification=XWqMAD |
+⚠️ Den vorhandenen SPF-Eintrag (`v=spf1 include:zohomail.eu ~all`) und `_dmarc` NICHT ändern, nichts löschen — sonst stört es info@luxestyle.ch (Zoho). Nur diese vier NEU hinzufügen.
+Wenn dir Klaviyo (Settings → Sending domains) andere Hostnamen zeigt, gilt Klaviyo — Bescheid sagen, dann passe ich die Wache `klaviyo_dns_wache.py` an.
+Danach merke ich es von selbst (Zeile `KLAVIYO-DNS: 4/4 sichtbar` im Stunden-Bericht) und stosse die Verifizierung in Klaviyo an. Warum: bisher laufen die Mails über die gemeinsame Klaviyo-Infrastruktur ohne DKIM/SPF der eigenen Domain.
+
 ## 🚚 NEU 14.09. 17:00 — Versandschwelle: live gilt CHF 45, der Shop verspricht 50 (ein Klick, Cowork-Befehl Punkt 1)
 Gemessen am Versandprofil: «Kostenloser Versand ab CHF 45» AKTIV, «ab CHF 50» INAKTIV, an «Standard CHF 7» hängt noch
 «gratis ab CHF 65». Dein Entscheid vom 06.09. war CHF 50. Die API-Änderung wurde hier blockiert → Klick in

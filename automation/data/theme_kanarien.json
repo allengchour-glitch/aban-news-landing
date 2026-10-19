@@ -1,0 +1,8 @@
+{
+  "_hinweis": "Zeichenketten, die in der LIVE-Datei stehen MÜSSEN (Kanarien). Ein Skript, das templates/product.json aus einem alten Stand zurückschreibt, löscht sie still (Lehre: «Vor Theme-Reparaturen IMMER die Live-Datei holen»). Neue Eintragung = Datum + Grund. Wer eine Zeile entfernt, muss begründen, warum der Text nicht mehr gelten soll.",
+  "eintraege": [
+    {"datei": "templates/product.json", "muss": "Bei freiwilliger Rückgabe trägst du die Rücksendekosten.", "seit": "2026-10-19", "grund": "Rückgabe-Zusatz im Produkt-Akkordeon (Codex-Vorschlag #2689, deckt sich mit der Rückgaberichtlinie)"},
+    {"datei": "templates/product.json", "muss": "localization.country.iso_code == 'LI'", "seit": "2026-10-19", "grund": "Liechtenstein-Besucher sehen nicht das CH-Lieferdatum"},
+    {"datei": "templates/product.json", "muss": "Bestelle jetzt &ndash; Lieferung voraussichtlich", "seit": "2026-10-13", "grund": "CH-Wortlaut, den kassen_lieferdatum_wache.py und warenkorb_einig.py vergleichen"}
+  ]
+}
