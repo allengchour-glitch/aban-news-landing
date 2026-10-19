@@ -3829,6 +3829,135 @@ for skip_ in (0, 1):
             bad_.append((skip_, ri_, None if e_ is None else R.klasse(e_), None if e_ is None else (e_["nach_nk"][:1], e_["unbekannt_lauf"][:1], e_["unbekannt_nk"][:1])))
 pruefe("15.G3 Raster: die vier G1-Zellen (ETH −1,0 → −0,25, Löschen ×3 scheitert, Liste unlesbar) sind sauber", not bad_, bad_)
 
+# 15.H Raster --haengend (Folge-PR, Schlusskampagne): Konto ohne STOP_LOSS, zu Beginn von Tag 1 hängen die Spot-Stops (Kurslücke unter das Limit). Lagen ohne Spot-Stop zählen als «kein_spotstop».
+pruefe("15.H Raster --haengend: eine Lage ohne Spot-Stop (ETH-Short) meldet «kein_spotstop»", R.fall(R.SZENARIEN[0], R.SCHREIBEN[0], 0, None, "bei_w", None, True) == "kein_spotstop")
+i_ersetzen_ = next(i_ for i_, w_ in enumerate(R.SCHREIBEN) if w_[1] == "/api/v3/order/cancelReplace" and w_[3] == "vor503")
+e_ = R.fall(R.SZENARIEN[2], R.SCHREIBEN[i_ersetzen_], 0, None, "bei_w", None, True)
+pruefe("15.H Raster --haengend: BTC +0,5 → −0,5, cancelReplace scheitert ×3 (unklar) — der Stop hängt zu Beginn von Tag 1, und nach Lauf + Nachkontrolle steht alles unter Schutz",
+       isinstance(e_, dict) and e_["haengt"] > 0 and R.klasse(e_) is None, e_ if not isinstance(e_, dict) else (e_["haengt"], R.klasse(e_), e_["nach_nk"][:1]))
+e_ = R.fall(R.SZENARIEN[2], R.SCHREIBEN[i_ersetzen_], 0, None, "bei_w", None, False)
+pruefe("15.H Raster ohne --haengend: dieselbe Zelle hat keinen hängenden Stop (Gegenprobe: das Konto hat STOP_LOSS)", isinstance(e_, dict) and e_["haengt"] == 0.0, e_ if not isinstance(e_, dict) else e_["haengt"])
+
+# 15.E22 (Raster --haengend, Paar «cancelReplace unbekannt (404) × Löschen scheitert»): Binance kennt cancelReplace nicht, der hängende Stop-Limit lässt sich nicht löschen (503 vor der
+# Verarbeitung, dreimal) — der Rückfall «Not-Stop an seine Stelle» kannte diesen Weg nicht: die Coins galten als «durch einen Auftrag gesperrt, der nicht in der Liste steht — gilt als Stop»,
+# der Long stand bis zum nächsten Tageslauf ohne wirksamen Stop (0,1988 BTC ≈ 16'800 USDT im Raster, auch nach der Nachkontrolle: sie wurde nicht angestossen).
+z_paare_ = {c_[0]: c_ for c_ in R.zellen(True)}
+_, w_ersetzen_fehlt_, w_loeschen_, _ = z_paare_["P1.0"]
+bad_ = []
+for si_ in (3, 8, 10):
+    e_ = R.fall(R.SZENARIEN[si_], w_ersetzen_fehlt_, 0, None, "bei_w", None, True, w_loeschen_)
+    if not isinstance(e_, dict) or R.klasse(e_) or not e_["haengt"]:
+        bad_.append((si_, e_ if not isinstance(e_, dict) else (e_["haengt"], R.klasse(e_), e_["nach_nk"][:1], e_["zeilen"][:3])))
+pruefe("15.E22 Raster-Paar P1.0 (cancelReplace 404 × Löschen ×3 scheitert), BTC +1,0 → +0,25 / +0,5 → +1,0 / +0,25 → +0,5: nach Lauf + Nachkontrolle steht ein Stop über den Coins", not bad_, bad_)
+k, sp_, fu_, d_, o_, lesen_ = haengend14(coins=0.3, menge=0.1)
+B.ersetzen_fehlt = True
+B.regeln = [regel(methode="DELETE", pfad="/api/v3/order", art="vor503", anzahl=99)]
+erg_, w_, g_ = {"auftraege": [], "zeilen": []}, [], []
+try:
+    L._spot_stops_verkaufen(sp_, "BTC", d_, {"spot": o_["orderId"]}, [o_], erg_, w_.append, g_, "Kurs unter dem Stop", soll=0.1, schutz=[], kurs=85000.0)
+finally:
+    B.regeln = []
+    B.ersetzen_fehlt = False
+pruefe("15.E22 _spot_stops_verkaufen: cancelReplace unbekannt (404) und das Löschen des HÄNGENDEN Stops scheitert → er ist für den Not-Stop am Laufende vorgemerkt (mit der Menge, die er hält)",
+       set(d_.get("haengend_abgelehnt") or {}) == {o_["orderId"]} and abs(sum(d_["haengend_abgelehnt"].values()) - 0.1) < 1e-9 and P._haengend(k, "BTCUSDT") > 0, (d_.get("haengend_abgelehnt"), w_))
+k, sp_, fu_, d_, o_, lesen_ = haengend14(coins=0.3, menge=0.1)
+B.ersetzen_fehlt = True
+erg_, w_, g_ = {"auftraege": [], "zeilen": []}, [], []
+try:
+    L._spot_stops_verkaufen(sp_, "BTC", d_, {"spot": o_["orderId"]}, [o_], erg_, w_.append, g_, "Kurs unter dem Stop", soll=0.1, schutz=[], kurs=85000.0)
+finally:
+    B.ersetzen_fehlt = False
+pruefe("15.E22 Gegenprobe: gelingt das Löschen, ist der hängende weg und nichts vorgemerkt", not d_.get("haengend_abgelehnt") and not P._haengend(k, "BTCUSDT"), (d_.get("haengend_abgelehnt"), P._haengend(k, "BTCUSDT"), w_))
+
+
+# 15.E23 (Raster --haengend, Paare mit unlesbarer Spot-Liste): ein ausgelöster STOP_LOSS_LIMIT hängt über dem Kurs, das Ersetzen scheitert dauerhaft (503) bzw. Binance kennt cancelReplace nicht, UND die
+# Spot-Auftragsliste ist unlesbar (die Wiederholungen sind verbraucht): die Coins gelten als «gesichert», am Laufende warnt der Lauf «Richtung +1,00 OHNE Stop» — aber der Markt wurde NICHT für die
+# Nachkontrolle vermerkt (die Schlusswarnung kam erst NACH der Vergabe von schutz_offen). Der Long blieb bis zum nächsten Tageslauf ohne wirksamen Stop, obwohl die Liste kurz darauf wieder lesbar war
+# (0,1988 BTC ≈ 16'800 USDT im Raster).
+bad_, offen_ = [], []
+for zid_ in ("P0.0", "P0.2", "P0.3", "P1.1", "P1.3"):
+    _, w_a_, w_b_, _ = z_paare_[zid_]
+    for ri_ in (3, 4):
+        e_ = R.fall(R.SZENARIEN[3], w_a_, 0, R.LESEN[ri_], "bei_w", None, True, w_b_)
+        if not isinstance(e_, dict) or R.klasse(e_) or not e_["haengt"]:
+            bad_.append((zid_, ri_, e_ if not isinstance(e_, dict) else (e_["haengt"], R.klasse(e_), e_["nach_nk"][:1], e_["zeilen"][:3])))
+        else:
+            offen_.append((zid_, ri_, e_["schutz_offen"], e_["laut"]))
+pruefe("15.E23 Raster-Paare (Ersetzen scheitert dauerhaft bzw. unbekannt × Löschen/Not-Stop schief) mit unlesbarer Spot-Liste, BTC +1,0 → +0,25: nach Lauf + Nachkontrolle steht ein Stop über den Coins", not bad_, bad_)
+pruefe("15.E23 der Lauf vermerkt den Markt für die Nachkontrolle (schutz_offen) und warnt laut", offen_ and all("BTC" in o_[2] and o_[3] for o_ in offen_), offen_)
+
+
+def flaggt_(t_):
+    """Dieselbe Regel wie die Warn-Hülle in _stops_setzen: welche Meldungen den Markt für die Nachkontrolle vermerken."""
+    return ("OHNE Stop" in t_ or "ohne Stop" in t_ or "nicht geprüft" in t_ or "Stop abgelehnt" in t_) and "zu klein" not in t_
+
+
+# direkt: die Spot-Liste ist nicht lesbar, alle Coins sind gesperrt («gelten als gesichert») — ob ein hängender Stop darunter liegt, weiss der Lauf nicht: die Nachkontrolle muss lesen
+k, sp_, fu_, d_ = handlage(coins=0.3, kurs=100000.0)
+eigener_spot_stop(sp_, d_, 0.3, 90000.0)
+s_ = L._soll(0.3, 0.0, 100000.0, d_)
+s_.update(frei=0.0, gebunden=0.3)
+w_ = []
+L._spot_ohne_liste(sp_, "BTC", d_, {"spot": 1}, {"stop_long": 90000.0}, s_, w_.append, [], False, RuntimeError("liste weg"), {"auftraege": [], "zeilen": []}, lambda warten=None: None)
+pruefe("15.E23 _spot_ohne_liste: die gesperrten Coins gelten als gesichert, aber nicht geprüft → die Meldung vermerkt den Markt für die Nachkontrolle", w_ and all(flaggt_(t_) for t_ in w_), w_)
+k, sp_, fu_, d_ = handlage(coins=0.5, kurs=100000.0)
+eigener_spot_stop(sp_, d_, 0.3, 90000.0)               # 0,3 gesperrt, 0,2 frei: der Rest bekommt einen eigenen Stop, die gesperrten gelten als gesichert
+s_ = L._soll(0.5, 0.0, 100000.0, d_)
+s_.update(frei=0.2, gebunden=0.3)
+w_, g_ = [], []
+L._spot_ohne_liste(sp_, "BTC", d_, {"spot": 1}, {"stop_long": 90000.0}, s_, w_.append, g_, False, RuntimeError("liste weg"), {"auftraege": [], "zeilen": []}, lambda warten=None: None)
+pruefe("15.E23 _spot_ohne_liste: der freie Rest bekommt seinen Stop, die gesperrten gelten als gesichert (nicht geprüft) → Nachkontrolle vermerkt", g_ and w_ and all(flaggt_(t_) for t_ in w_), (w_, g_))
+
+
+# 15.E24 (Muster «unverifizierter Endstand»): ändert sich der Kontostand in JEDER Abgleich-Runde (hier: ein Zufluss von Coins bei jeder Kontoabfrage), endet der Abgleich nach 3 Runden ohne Stabilität. Der Lauf
+# warnte («Kontostand hat sich während des Stop-Abgleichs mehrmals geändert … bitte prüfen!»), vermerkte den Markt aber nicht für die Nachkontrolle: der letzte Stand blieb ungeprüft.
+k = neues_konto(20000)
+d = neu_buch()
+env = env_echt(kapital=20000)
+lauf([E("BTC", 0.5)], env, d)
+zustand_ = {"an": False}
+
+
+def zufluss_(m_, pfad_, p_, code_):
+    if zustand_["an"] and m_ == "GET" and pfad_ == "/api/v3/account":
+        k.frei["BTC"] += 0.002        # Zufluss: jede Lesung zeigt mehr Coins → nie «gleich»
+
+
+B.nach_jeder_anfrage = zufluss_
+zustand_["an"] = True
+try:
+    r = lauf([E("BTC", 0.5)], env, d)
+finally:
+    B.nach_jeder_anfrage = None
+buch_ = json.loads(Path(d).read_text()).get("echt") or {}
+zeilen_ = [z_[:140] for z_ in r["zeilen"] if "⚠" in z_]
+pruefe("15.E24 Kontostand ändert sich in jeder Runde: der Lauf warnt UND vermerkt den Markt für die Nachkontrolle", any("mehrmals geändert" in z_ for z_ in zeilen_) and "BTC" in (buch_.get("schutz_offen") or []),
+       (zeilen_, buch_.get("schutz_offen")))
+k = neues_konto(20000)
+d = neu_buch()
+lauf([E("BTC", 0.5)], env, d)
+r = lauf([E("BTC", 0.5)], env, d)
+buch_ = json.loads(Path(d).read_text()).get("echt") or {}
+pruefe("15.E24 Gegenprobe: ein ruhiger Lauf vermerkt nichts", not (buch_.get("schutz_offen") or []) and not any("mehrmals" in z_ for z_ in r["zeilen"]), (buch_.get("schutz_offen"), [z_[:120] for z_ in r["zeilen"]]))
+
+
+# 15.N Raster --notaus: Tag 1 ist der Not-Aus; gemessen wie pruef_fuzzer.notaus_runde (Schutz direkt danach, Nachkontrolle im Not-Aus-Modus, «alles zu» nur bei flachem Konto, sauberer zweiter Not-Aus)
+i_rueckkauf_ = next(i_ for i_, w_ in enumerate(R.SCHREIBEN) if w_[1] == "/fapi/v1/order" and w_[3] == "vor503")
+for haengend_, name_ in ((False, "ohne"), (True, "mit hängenden Spot-Stops")):
+    e_ = R.fall(R.SZENARIEN[2], R.SCHREIBEN[i_rueckkauf_], 0, None, "bei_w", None, haengend_, None, True)
+    pruefe(f"15.N Raster --notaus ({name_}): BTC +0,5, der Rückkauf des Shorts scheitert ×3 — der Not-Aus schliesst, sonst nichts übrig", isinstance(e_, dict) and e_.get("notaus") and R.klasse(e_) is None
+           and (not haengend_ or e_["haengt"] > 0), e_ if not isinstance(e_, dict) else (R.klasse(e_), e_["alles_zu_lauf"], e_["alles_zu_nk"], e_["nach_lauf"][:1], e_["nach_nk"][:1], e_["haengt"]))
+sauber_n_ = dict(nach_lauf=[], nach_nk=[], unbekannt_lauf=[], unbekannt_nk=[], laut=False, nk_tat_etwas=False, notaus=True)
+pruefe("15.N klasse() im Not-Aus: sauber → None; FALSCH_ALLES_ZU und SAUBER_NICHT_ZU schlagen alles andere; Schutz direkt nach dem Not-Aus fehlt: still → NACH_LAUF_STILL, laut + Nachkontrolle half → kein Befund",
+       R.klasse(sauber_n_) is None and R.klasse(dict(sauber_n_, falsch_alles_zu=True, nach_nk=[1])) == "FALSCH_ALLES_ZU" and R.klasse(dict(sauber_n_, sauber_nicht_zu=True, nach_nk=[1])) == "SAUBER_NICHT_ZU"
+       and R.klasse(dict(sauber_n_, nach_lauf=[1])) == "NACH_LAUF_STILL" and R.klasse(dict(sauber_n_, nach_lauf=[1], laut=True)) == "NACH_LAUF_LAUT_OHNE_NK"
+       and R.klasse(dict(sauber_n_, nach_lauf=[1], laut=True, nk_tat_etwas=True)) is None and R.klasse(dict(sauber_n_, nach_nk=[1])) == "NACH_NK")
+pruefe("15.N Not-Aus-Störungen sind Teil des Rasters (Rückkauf/Marktverkauf mit verlorener Antwort oder teilweise, Löschen mit verlorener Antwort, Umbuchung); zellen() zählt sie nur mit notaus",
+       len(R.SCHREIBEN_NOTAUS) == 7 and len(R.zellen(False, True)) == len(R.zellen(False)) + 7 and len(R.zellen(True, True)) == len(R.zellen(True)) + 7)
+
+pruefe("15.H Raster --haengend: die zusätzlichen Störungen (Löschen/Ersetzen/Marktverkauf mit verlorener Antwort bzw. abgelehnt) sind Teil des Rasters",
+       len(R.SCHREIBEN_HAENGEND) == 4 and {(w_[1], w_[3]) for w_ in R.SCHREIBEN_HAENGEND} == {("/api/v3/order", "nach503"), ("/api/v3/order/cancelReplace", "nach503"), ("/api/v3/order", "ablehnen")}, R.SCHREIBEN_HAENGEND)
+
 # ── 15. Prüfung, direkte Aufrufe: Vorab Stufe 2 (G1/G1b), Zusammenführen (G2), Perp-Not-Stops merken (K-e) ──
 PLAN_G1 = {"info": {"spot_ziel": 2.5, "perp_ziel": -3.0}, "schritte": []}
 

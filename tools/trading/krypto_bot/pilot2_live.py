@@ -1607,12 +1607,20 @@ def _stops_setzen(spot, fut, buch, speichern, ents, daten, basis_g, erg, warn, g
                      f"{d['coin']} OHNE Stop, bitte sofort prüfen!")
         offen = [m for m in buch.get("schutz_offen") or [] if m != k]
         nochmal = d.pop("nachkontrolle", False)  # ein zu grosser Stop liess sich nicht korrigieren
-        buch["schutz_offen"] = offen + ([k] if fehlt[0] or gescheitert or nochmal else [])  # → die Nachkontrolle versucht es nochmals
+        # auch die Schlusswarnung «OHNE Stop» unten ist ein Fall für die Nachkontrolle (Raster --haengend, Paare mit unlesbarer Spot-Liste: der Lauf warnte «OHNE Stop», die Nachkontrolle
+        # wurde aber nicht angestossen — der Long blieb bis zum nächsten Tageslauf ungeschützt)
+        ohne_stop = bool(s is not None and s["ungesichert"] and not gesetzt and not schutz and not gescheitert
+                         and (s["stop_spot"] or s["stop_perp"] or s["short_teil"] * s["kurs"] >= 100))
+        # ebenso ein Abgleich, bei dem sich der Kontostand in JEDER Runde änderte (nie zwei gleiche Lesungen hintereinander): der letzte Stand blieb ungeprüft → die Nachkontrolle liest nochmals
+        # (Schlusskampagne, Muster «unverifizierter Endstand» wie E21/E23). NICHT bei «Kontostand gleich, aber der Kurs liegt jenseits des Stop-Kurses und der Ausstieg gelang nicht»
+        # (`jenseits_offen`): bei einer Position von praktisch null (Paar, Rundungsrest) ist das ein Dauerzustand, den jede Nachkontrolle wieder fände — der Lauf warnt, mehr nicht
+        unstabil = bool(s is not None and not stabil and not gescheitert and not jenseits_offen)
+        buch["schutz_offen"] = offen + ([k] if fehlt[0] or gescheitert or nochmal or ohne_stop or unstabil else [])  # → die Nachkontrolle versucht es nochmals
         warn = warn_aussen
         if s is None:
             speichern()
             continue
-        if not stabil and not gescheitert:
+        if unstabil:
             warn(f"{k}: Kurs liegt jenseits des Stop-Kurses, der Ausstieg zum Markt gelang in {ABGLEICH_RUNDEN} Runden nicht — "
                  "bitte prüfen!" if jenseits_offen else
                  f"{k}: Kontostand hat sich während des Stop-Abgleichs mehrmals geändert (Stop ausgelöst?) — bitte prüfen!")
@@ -1622,7 +1630,7 @@ def _stops_setzen(spot, fut, buch, speichern, ents, daten, basis_g, erg, warn, g
         erg["zeilen"].append(f"{k}: Spot {s['mein']:g} {d['coin']}, Perp {s['pos']:+g}, Richtung {richtung:+.2f} (Ziel {z:+.2f})"
                              + "".join(", " + g for g in dict.fromkeys(gesetzt + schutz))
                              + (" — beidseitig gesichert (unklarer Auftrag)" if s.get("beidseitig") and not gescheitert else ""))
-        if s["ungesichert"] and not gesetzt and not schutz and not gescheitert and (s["stop_spot"] or s["stop_perp"] or s["short_teil"] * s["kurs"] >= 100):
+        if ohne_stop:
             warn(f"{k}: Richtung {richtung:+.2f} OHNE Stop (zu klein für Binance, abgelehnt oder nicht prüfbar) — bitte prüfen!")
         if basis_g and abs(richtung - z) > 0.25:
             erg["zeilen"].append(f"{k}: Richtung {richtung:+.2f} weicht vom Ziel {z:+.2f} ab — Stop auf die tatsächliche Richtung gesetzt,"
@@ -1935,6 +1943,8 @@ def _spot_stops_verkaufen(spot, k, d, st, alt, erg, warn, gesetzt, grund, soll=N
                 st["spot"] = None
             except Exception as ex:  # noqa: BLE001
                 warn(f"{k}: alter Spot-Stop ließ sich nicht löschen ({type(ex).__name__}) — er bleibt stehen.")
+                if o.get("isWorking") is True:  # ein hängender schützt nichts: hängt er nach allen Runden noch, kommt ein Not-Stop an seine Stelle
+                    d.setdefault("haengend_abgelehnt", {})[o.get("orderId")] = m  # (Folge-PR zur 14. Runde, E22: cancelReplace unbekannt × Löschen scheitert, Raster --haengend)
         elif res == "nichts":
             warn(f"{k}: {grund}, Verkauf abgelehnt ({_text(info)[:80]}) — der Spot-Stop bleibt stehen.")
             if o.get("isWorking") is not True:  # ein wirksamer Stop bleibt
@@ -2071,7 +2081,7 @@ def _spot_ohne_liste(spot, k, d, st, e, s, warn, gesetzt, gehandelt, ex, erg, le
     if menge * kurs < regeln["min_notional"]:
         if s["stop_spot"] > 0 or st.get("spot") is not None or gehandelt:
             warn(f"{k}: offene Spot-Stops nicht lesbar ({type(ex).__name__}) — die gesperrten {s['gebunden']:g} {d['coin']} gelten als "
-                 "gesichert; ob ein alter Stop noch über der Ernte steht, ist offen. Bitte prüfen!")
+                 "gesichert (nicht geprüft: ob ein alter Stop wirkt oder hängt und ob er noch über der Ernte steht, ist offen). Die Nachkontrolle liest die Liste nochmals. Bitte prüfen!")
         return
     p = _stop_preis(e.get("stop_long"), st.get("p_long"), kurs, +1)
     try:
@@ -2080,7 +2090,7 @@ def _spot_ohne_liste(spot, k, d, st, e, s, warn, gesetzt, gehandelt, ex, erg, le
         st["spot"], st["p_long"] = r.get("orderId"), p_ok
         gesetzt.append(f"Stop {menge:g} @ {PL.runde(p_ok, regeln['tick']):g}")
         warn(f"{k}: offene Spot-Stops nicht lesbar ({type(ex).__name__}) — {menge:g} {d['coin']} zusätzlich gesichert (gesperrte "
-             f"{s['gebunden']:g} gelten als gesichert). Bitte prüfen!")
+             f"{s['gebunden']:g} gelten als gesichert, nicht geprüft). Die Nachkontrolle liest die Liste nochmals. Bitte prüfen!")
     except _Ausgeloest:  # der Kurs liegt seit dem Lesen unter dem Stop-Kurs: zum Markt aussteigen (wie _spot_abgleich mit lesbarer Liste)
         _spot_raus(spot, k, d, st, menge, kurs, erg, warn, gesetzt,
                    f"Stop {PL.runde(p, regeln['tick']):g} würde sofort auslösen (Kurs gefallen)", lesen)
