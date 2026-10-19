@@ -18521,3 +18521,9 @@ gid://shopify/Product/16652457410951	35->0	Halloween 3D Digitaldruck Langarmshir
 gid://shopify/Product/16652523733383	19->3	Langarm-Herren-Shirt aus Leinen-Polyester
 gid://shopify/Product/16652524880263	12->0	Männer Shirt mit 3D-Blumenpatch und Metallknöpfen
 gid://shopify/Product/16652814582151	18->0	Sofabedeckung Pflanzenmuster, 180x260cm
+gid://shopify/Product/16652815991175	26->3	Sofakissenbezug aus Milchvelvet – 70×70 cm
+gid://shopify/Product/16652816417159	9->0	Multifunktionales Babykissen zum Sitzenlernen
+gid://shopify/Product/16653083967879	13->0	Dumpling-Mold-Set 3D-gedruckt – Quadrat, Kreis, Herz
+gid://shopify/Product/16653092192647	28->0	Kinderflugzeug-Reise-Tablett Aufbewahrungstasche
+gid://shopify/Product/16653195280775	21->1	Männer-Shirt Loose-Fit Herbst Casual
+gid://shopify/Product/16653196788103	34->1	Kurzärmliges Strickhemd mit Streifen
