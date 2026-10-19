@@ -199,7 +199,11 @@ def schutz_befunde(k, unklar=None, tol_usdt=TOL_USDT):
             # beidseitig: alle Coins unter Spot-Stop, der ganze Short unter Perp-Stop — löst einer aus, schützt der andere den Rest
             luecke_s = g["coins"] - g["s_qty"]
             if luecke_s * p > tol_usdt + STEP_S[sym] * p and g["coins"] * p >= FB.SPOT_MIN_NOTIONAL:
-                name = "LIMIT_LUECKE_LONG_OHNE_STOP" if _limit_luecke(k, sym, luecke_s) else "LONG_OHNE_STOP"
+                # wie im einseitigen Zweig: ein Rest bis STAUB_MAX_USDT ist Staub (am Stop-Kurs liegt er unter dem Mindestbetrag von Binance — Lauf-Seed 102030: 7,3 USDT Rest
+                # nach dem Rückkauf des Shorts, am Stop-Kurs 4,7 USDT; die Nachkontrolle setzt den Stop mit dem Kurs aus dem Buch)
+                name = "LONG_OHNE_STOP" if luecke_s * p > STAUB_MAX_USDT else "STAUB_LONG_OHNE_STOP"
+                if _limit_luecke(k, sym, luecke_s):
+                    name = "LIMIT_LUECKE_" + name
                 out.append((name, sym, round(luecke_s, 6), round(luecke_s * p, 2), "beidseitig"))
             luecke_p = max(0.0, -g["pos"]) - g["p_qty"]
             if luecke_p * p > max(tol_usdt, 0.5 * STEP_P[sym] * p) + 1e-6:
@@ -263,8 +267,10 @@ def folgeschaden(k):
             p2 = sum(float(a["quantity"]) for a in pp2 if a["side"] == "BUY")
             lang = min(netto2, coins2) - s2
             if netto2 > 0 and lang * ziel > TOL_USDT + STEP_S[sym] * ziel:
-                out.append(("NACH_SPRUNG_LONG_OHNE_STOP" if lang * ziel > STAUB_MAX_USDT else "STAUB_NACH_SPRUNG_LONG", sym, richtung,
-                            round(lang, 6), round(lang * ziel, 2)))
+                name = "NACH_SPRUNG_LONG_OHNE_STOP" if lang * ziel > STAUB_MAX_USDT else "STAUB_NACH_SPRUNG_LONG"
+                if _limit_luecke(k, sym, lang):  # derselbe hängende STOP_LOSS_LIMIT (zählt nicht als Spot-Stop) wie bei LONG_OHNE_STOP (Lücken-Lauf-Seed 100890)
+                    name = "LIMIT_LUECKE_" + name
+                out.append((name, sym, richtung, round(lang, 6), round(lang * ziel, 2)))
             if netto2 < 0 and (-netto2 - p2) * ziel > max(TOL_USDT, 0.5 * STEP_P[sym] * ziel) + 1e-6:
                 out.append(("NACH_SPRUNG_SHORT_OHNE_STOP", sym, richtung, round(-netto2 - p2, 6), round((-netto2 - p2) * ziel, 2)))
     return out
@@ -373,7 +379,7 @@ def _selbst_entfernt(ab, sym=None, befund=None):
         if sym and (x[3].get("symbol") or x[3].get("_symbol")) != sym:
             continue
         if x[3].get("_haengend"):
-            continue  # ein ausgelöster, über dem Kurs hängender STOP_LOSS_LIMIT schützt nichts: ihn zu löschen oder zu ersetzen nimmt keinen Schutz weg (15. Prüfung E10)
+            continue  # ein ausgelöster, über dem Kurs hängender STOP_LOSS_LIMIT schützt nichts: ihn zu löschen oder zu ersetzen nimmt keinen Schutz weg (Folge-PR zur 14. Runde, E10)
         if x[1] == "DELETE" and x[2] == "/api/v3/order" and x[4] == 200 and seite != "perp":
             return True
         if x[1] == "DELETE" and x[2] == "/fapi/v1/algoOrder" and x[4] == 200 and seite != "spot":
@@ -667,7 +673,9 @@ def laeufe_runde(seed, tage=30):
             erg = {"warnung": True, "zeilen": [], "alles_zu": None}
         B.regeln = []
         B.nach_jeder_anfrage = None
-        storno_tag = B.ersetzen_storno_zuerst and _storno409(log0)
+        # «Storno zuerst» = Binance storniert den alten Stop und lehnt den neuen danach ab (409): die Börsen-Lesart ersetzen_storno_zuerst ODER die Störung
+        # «nur_storno» (derselbe Ausgang, gezielt erzeugt) — dasselbe Restrisiko, Testnetz-Prüfpunkt B (15. Prüfung K-c: Seed 30583 galt als echter Befund)
+        storno_tag = (B.ersetzen_storno_zuerst or any(r_.get("art") == "nur_storno" for r_ in regeln_tag)) and _storno409(log0)
         B.ersetzen_storno_zuerst = False
         if stop_mitten and BF.STOP_DATEI.exists():
             BF.STOP_DATEI.unlink()
@@ -837,7 +845,7 @@ def notaus_runde(seed):
         return [("AUSNAHME", {"seed": seed}, traceback.format_exc()[-600:])]
     B.regeln = []
     B.vor_jeder_anfrage = None
-    storno = B.ersetzen_storno_zuerst and _storno409(log_na) and r.get("warnung")
+    storno = (B.ersetzen_storno_zuerst or any(r_.get("art") == "nur_storno" for r_ in regeln)) and _storno409(log_na) and r.get("warnung")  # auch «nur_storno» (15. Prüfung K-c)
     B.ersetzen_storno_zuerst = False
     funde = []
     if r["alles_zu"] is not True:  # Stand direkt nach dem Not-Aus (verspätete Aufträge noch unterwegs)
