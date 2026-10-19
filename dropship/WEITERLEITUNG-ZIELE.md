@@ -1,11 +1,19 @@
-# Weiterleitungen ins Leere — Stand 2026-10-14 10:02 UTC (FIX, Lauf 2026-10-14T1002)
+# Weiterleitungen ins Leere — Stand 2026-10-19 22:49 UTC (FIX, Lauf 2026-10-19T2243)
 
 Erzeugt von `automation/weiterleitung_ziel_wache.py` (täglich im Aufseher). Regel und Anlass: Kopf des Skripts.
 
-- Weiterleitungen gesamt: 1716
-- Ziel lebt: 1685 · zwei Sprünge (Kette): 0 · ins Leere: 0 (0 tote Ziele) · Seiten/Blog/Datei (nicht geprüft): 31
-- Dieser Lauf: gedreht 0 · angelegt 0 · offen 0 · Fehler 0
+- Weiterleitungen gesamt: 1798
+- Ziel lebt: 1765 · zwei Sprünge (Kette): 0 · ins Leere: 1 (1 tote Ziele) · Seiten/Blog/Datei (nicht geprüft): 32
+- Dieser Lauf: gedreht 1 · angelegt 1 · offen 0 · Fehler 0
 - Set → Einzelteil (gemeldet, nicht gedreht): 14 bestehende · 0 verworfene Zwillinge
+
+## Neu angelegt (totes Ziel → Ersatz)
+
+- /products/faltbare-drohne-629000 → /collections/drohnen-kameras (Kategorie aus Produkt)
+
+## Gedreht
+
+- /products/e58-faltbare-hd-drohne-c013de : /products/faltbare-drohne-629000 → /collections/drohnen-kameras (Kategorie aus Produkt)
 
 ## Set/Stück/«mit X» fehlt im Ziel — melden, nicht drehen (automation/bestandteil_regel.py)
 
