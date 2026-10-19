@@ -10014,3 +10014,8 @@ hundepfote-knochenteller-holz-bambus-602000	2601140410471602300	16	15.81	ok	land
 herren-jumpsuit-609900	2603171408391600400	16	11.10	ok	landeseite
 elektrische-u-formige-zahnburste-610700	2504010716331611100	3	13.23	ok	landeseite
 stretchbare-ankel-boot-socken-907328	1791654622579404800	16	13.88	ok	landeseite
+anti-rutsch-leckschale-fur-haustiere-623300	2601030644491623500	16	7.99	ok	landeseite
+cargohosen-fur-herren-635600	2603160830371636000	16	8.93	ok	landeseite
+wasser-einzelgerat-fur-gesicht-603776	1394563697892003840	7	5.62	ok	landeseite
+unisex-fitnessschuhe-atmungsaktiv-rutschfest-950848	1790610839955836928	16	9.47	ok	landeseite
+drehbare-edelstahl-schussel-fur-haustiere-601300	2512260842441601500	16	8.31	ok	landeseite
