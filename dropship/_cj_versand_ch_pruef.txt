@@ -10116,3 +10116,5 @@ horizontales-portemonnaie-aus-rindsleder-627500	2601080852461627700	16	6.01	ok	l
 gecheckertes-schneidbrett-613200	2607070506031614000	16	28.41	ok	landeseite
 manner-tasche-mit-schnellverschluss-601900	2601150739001602100	7	8.82	ok	landeseite
 schonheits-nacken-pflege-memory-kopfkissen-631300	2604180730291631800	16	20.82	ok	landeseite
+elastisches-stoff-armband-fur-herrenuhr-629000	2508231025391629200	16	4.71	ok	landeseite
+minimaler-leder-geldbeutel-621600	2601030540001621900	16	5.81	ok	landeseite
