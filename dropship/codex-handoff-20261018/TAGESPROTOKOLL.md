@@ -16,6 +16,7 @@ Fachlicher Prüfstand des letzten Folgelaufs: gegen 14:00 Zürich. Später wurde
 | Verkauf | Klaviyo geprüft und genau einen Welcome-Tracking-Diff für TTuuTS zur Freigabe vorbereitet | Nicht aktiviert; Flow-Report und Kennzahlen im Folgelauf aus derselben Tagesprüfung wiederverwendet |
 | DNS | Öffentlichen Status der vier bereits genehmigten Klaviyo-Ergänzungen geprüft | Nicht umgesetzt; authentifizierter Schreibzugang fehlt |
 | Wissen | Aktuelles Paket und Folgelauf für die nächste Claude-Sitzung gesichert | Assist/Paket in PR 2704 gemergt; neuester Folgelauf auf der Wissens-Entwurfsbranch gesichert |
+| Routine | Bestehende Läufe um 08:00, 14:00 und 19:00 Zürich um regelmässige Weiterarbeit nach den aktuellen Inhabervorgaben und eine tägliche Fortschrittstabelle ergänzt | Aktiv eingerichtet; Zeitplan und operative Freigabegrenzen erhalten |
 
 Die fünf zusätzlichen PUBLISHED-Meldungen stammen aus bereits bestehenden Abläufen und sind keine Veröffentlichungen durch diesen Codex-Lauf. Ein Facebook-URL-Bezug bleibt ungeklärt. Keine Verkäufe aus Views abgeleitet. Keine Kunden angeschrieben und keine Shop-, Flow-, Rabatt-, Budget- oder DNS-Einstellungen geändert; keine kostenpflichtigen Renders ausgelöst.
 
