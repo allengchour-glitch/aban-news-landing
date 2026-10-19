@@ -1,0 +1,71 @@
+{
+  "checkedDate": "2026-10-19",
+  "account": {
+    "id": "XWqMAD",
+    "name": "LuxeStyle CH",
+    "currency": "USD",
+    "timezone": "Europe/Zurich"
+  },
+  "metric": {
+    "id": "W7XTVD",
+    "name": "Placed Order"
+  },
+  "period": {
+    "start": "2026-10-12T00:00:00+02:00",
+    "endExclusive": "2026-10-19T00:00:00+02:00"
+  },
+  "reportRows": [
+    {
+      "flowId": "RnTvsY",
+      "messageId": "Tr6DXE",
+      "statistics": {
+        "recipients": 1,
+        "delivered": 1,
+        "clicks_unique": 0,
+        "conversions": 0
+      }
+    }
+  ],
+  "absentFlowRows": "unknown_not_zero",
+  "flows": [
+    {
+      "id": "Vse76a",
+      "status": "draft",
+      "updated": "2026-10-10T08:13:07+00:00"
+    },
+    {
+      "id": "XEGbTB",
+      "status": "live",
+      "updated": "2026-10-10T08:11:25+00:00"
+    },
+    {
+      "id": "VbLQj6",
+      "status": "live",
+      "updated": "2026-06-01T19:16:30+00:00"
+    },
+    {
+      "id": "RnTvsY",
+      "status": "live",
+      "updated": "2026-05-26T09:58:55+00:00"
+    }
+  ],
+  "capture": {
+    "formApiRows": 0,
+    "formApiPaginationComplete": true,
+    "customPopup": {
+      "publicKey": "XWqMAD",
+      "listId": "T2VHfu",
+      "confirmedInCurrentPublicPage": true
+    },
+    "subscriptionAndDeliveryNotTested": true
+  },
+  "proposal": {
+    "flowId": "VbLQj6",
+    "messageId": "TTuuTS",
+    "templateId": "VZnxDz",
+    "field": "add_tracking_params",
+    "before": false,
+    "after": true,
+    "applied": false
+  }
+}

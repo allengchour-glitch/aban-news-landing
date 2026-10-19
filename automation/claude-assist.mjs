@@ -15,7 +15,7 @@ function input() {
   let chunks = [], bytes = 0;
   const buffer = Buffer.alloc(8192);
   while (true) { const n = fs.readSync(0, buffer); if (!n) break; bytes += n; if (bytes > 65536) throw Error('input_too_large'); chunks.push(Buffer.from(buffer.subarray(0,n))); }
-  return JSON.parse(Buffer.concat(chunks).toString('utf8'));
+  return JSON.parse(new TextDecoder('utf-8', { fatal: true }).decode(Buffer.concat(chunks)));
 }
 try {
   let result;

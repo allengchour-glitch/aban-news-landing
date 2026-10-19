@@ -1,0 +1,66 @@
+{
+  "status": "drafts_not_uploaded",
+  "date": "2026-10-19",
+  "brandId": 6227837,
+  "productId": "gid://shopify/Product/15521256604033",
+  "variantId": "gid://shopify/ProductVariant/56197916361089",
+  "priceCHF": "34.90",
+  "priceRecheckRequired": true,
+  "creative": "Fortführung desselben offenen 18-Sekunden-Masters; keine neue masterId und keine leere Publikationshistorie angenommen",
+  "copies": [
+    {
+      "channel": "Instagram",
+      "source": "instagram",
+      "title": "Dein Raum. Neues Licht.",
+      "caption": "Ein neuer Blick auf deinen Raum. Entdecke den Sternenlicht-Projektor von LuxeStyle für CHF 34.90. Produkt ansehen über den Link in unserer Bio.",
+      "destination": "Vorgeschlagenes Produktziel für den Bio-Link; aktuelles Bio-Ziel nicht verifiziert. Keine klickbare Caption-URL behaupten.",
+      "gate": "Bio-Ziel verifizieren; Film-/Rechteabnahme und Master-Historie fehlen.",
+      "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?utm_source=instagram&utm_medium=organic_social&utm_campaign=projektor_master_18s&utm_content=master_produktfilm"
+    },
+    {
+      "channel": "TikTok",
+      "source": "tiktok",
+      "title": "Licht im Detail.",
+      "caption": "Erst das Detail. Dann der Raum. Der Sternenlicht-Projektor von LuxeStyle, aktuell CHF 34.90. Alle Produktangaben findest du über den Link in unserer Bio.",
+      "destination": "Vorgeschlagenes Produktziel für den Bio-Link; Verfügbarkeit und tatsächliches Ziel des Profil-Links erst prüfen. Keine klickbare Caption-URL behaupten.",
+      "gate": "Bio-Ziel und Link-Funktion verifizieren; Film-/Rechteabnahme und Master-Historie fehlen.",
+      "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?utm_source=tiktok&utm_medium=organic_social&utm_campaign=projektor_master_18s&utm_content=master_produktfilm"
+    },
+    {
+      "channel": "YouTube Shorts",
+      "source": "youtube",
+      "title": "Sternenlicht-Projektor: Licht im Detail | LuxeStyle",
+      "caption": "Ein Blick auf den Sternenlicht-Projektor von LuxeStyle. Aktuell CHF 34.90. Produktdetails über den verifizierten Link im Kanalprofil.",
+      "destination": "Ziel für einen erst zu verifizierenden Kanalprofil-Link. URL kann als Text in der Beschreibung stehen; Klickbarkeit in Shorts-Beschreibungen nicht voraussetzen.",
+      "gate": "Zielgruppe / Made-for-kids und Profilziel klären; Film-/Rechteabnahme und Master-Historie fehlen.",
+      "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?utm_source=youtube&utm_medium=organic_social&utm_campaign=projektor_master_18s&utm_content=master_produktfilm"
+    },
+    {
+      "channel": "Facebook",
+      "source": "facebook",
+      "title": "Dein Raum. Neues Licht.",
+      "caption": "Entdecke den Sternenlicht-Projektor von LuxeStyle aus der Nähe. Aktuell CHF 34.90. Produkt ansehen:",
+      "destination": "Produktlink im Beitrag nach frischer Kanal- und Produktprüfung.",
+      "gate": "Film-/Rechteabnahme und bestätigte Master-Historie fehlen.",
+      "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?utm_source=facebook&utm_medium=organic_social&utm_campaign=projektor_master_18s&utm_content=master_produktfilm"
+    },
+    {
+      "channel": "Threads",
+      "source": "threads",
+      "title": "Licht im Detail.",
+      "caption": "Ein Lichtmoment beginnt im Detail. Entdecke den Sternenlicht-Projektor aus der Nähe. Aktuell CHF 34.90 bei LuxeStyle. Produktdetails:",
+      "destination": "Produktlink im Beitrag. Vor Ausspielung den Text auf den dann tatsächlich fertigen Film abstimmen.",
+      "gate": "Film-/Rechteabnahme und bestätigte Master-Historie fehlen.",
+      "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?utm_source=threads&utm_medium=organic_social&utm_campaign=projektor_master_18s&utm_content=master_produktfilm"
+    },
+    {
+      "channel": "Pinterest",
+      "source": "pinterest",
+      "title": "Sternenlicht-Projektor für dein Schlafzimmer | LuxeStyle",
+      "caption": "Licht als Detail für deinen Raum: Entdecke den Sternenlicht-Projektor von LuxeStyle und die aktuellen Produktangaben. Preis bei der Prüfung: CHF 34.90.",
+      "destination": "Verifiziertes Produktziel als Pin-Ziel-URL; Board erst aus bestätigten Kontodaten passend auswählen.",
+      "gate": "Passendes Kontoboard unbestätigt; Film-/Rechteabnahme und Master-Historie fehlen.",
+      "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?utm_source=pinterest&utm_medium=organic_social&utm_campaign=projektor_master_18s&utm_content=master_produktfilm"
+    }
+  ]
+}
