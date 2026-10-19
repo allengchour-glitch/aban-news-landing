@@ -101,3 +101,7 @@ das am Testkorb, nicht an der Konfiguration: Im LI-Kontext galt jedes Produkt al
   - **Über die Admin-API nicht setzbar.** Per Introspektion gemessen: `DeliveryMethodDefinitionInput` = id, name, description, active, rateDefinition, participant, Bedingungen — kein Transitzeit-Feld.
   - Also ein Betreiber-Klick: General profile → Zone Domestic → jeden Tarif bearbeiten → «Transitzeit» so lang wie ehrlich möglich (CJ 10–20 Werktage), dazu LI + International.
   - Der Betreiber sendet einen Screenshot der Auswahl. App-Einstellung «Versandinformationen automatisch importieren» bleibt (Screenshot 07:50 bestätigt).
+
+## Nachtrag 19.10.2026 abends — Korrektur zum Nachtrag vom 10.10. (Google-Versand für LI)
+
+Die Annahme «Sync zeitversetzt, im Zweifel Versand neu importieren» war falsch. QUELLE Shopify Help (help.shopify.com/en/manual/online-sales-channels/google/requirements): «You can import rates to ship your products only to the target country in your Google & YouTube channel» — die automatische Versandübernahme gilt nur für das eine Zielland (CH). Der LI-Tarif (CHF 14.90) kommt nie von selbst bei Google an (GEMESSEN: 9 Tage; Merchant-Center-Screenshot 19.10.: «Missing shipping info in some countries» bei 99,2 % der Angebote). Die Schweiz ist nicht betroffen. Optionen für den Betreiber: nichts tun, oder im Merchant Center «Versand und Rückgaben» einen Service «Liechtenstein, CHF 14.90» von Hand anlegen (kann vom Shopify-Sync überschrieben werden, UNBELEGT). Details: GEDAECHTNIS-JOURNAL.md «🛒 Merchant-Center-Screenshot 19.10.».

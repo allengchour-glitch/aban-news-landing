@@ -272,10 +272,15 @@ def bericht_schreiben(stand):
                     "Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.\n\n"
                     + "\n".join(f"- {k}: {v}" for k, v in lief.items())
                     + "\n\n«Missing shipping info … [LI]»: In Shopify gibt es den Tarif (General profile, Zone «Liechtenstein» "
-                      "CHF 14.90, seit 09.10.), Google hat ihn nicht übernommen. Abhilfe (Betreiber, UNBELEGT welcher Klick "
-                      "reicht): App «Google & YouTube» → Einstellungen → Versand neu importieren, sonst im Merchant Center "
-                      "einen Versandservice für Liechtenstein (CHF 14.90) anlegen. NICHT das Land entfernen — LI ist Lieferland. "
-                      "Wirkung = diese Zahl beim nächsten Scan.\n")
+                      "CHF 14.90, seit 09.10.), Google hat ihn nicht übernommen — und übernimmt ihn von selbst NIE: QUELLE Shopify Help "
+                      "(help.shopify.com/en/manual/online-sales-channels/google/requirements) «You can import rates to ship your "
+                      "products only to the target country in your Google & YouTube channel» — die automatische Versandübernahme gilt "
+                      "nur für das EINE Zielland (CH). «Versand neu importieren» hilft deshalb nicht (GEMESSEN: 9 Tage seit der "
+                      "Freigabe ohne Wirkung). Optionen (Betreiber): (a) nichts tun — die Schweiz ist nicht betroffen, LI ist ein "
+                      "sehr kleiner Markt; (b) im Merchant Center unter «Versand und Rückgaben» einen Service «Liechtenstein, "
+                      "CHF 14.90» von Hand anlegen — QUELLE Google (support.google.com/merchants/answer/14232591): der Shopify-Sync "
+                      "«may overwrite manual updates from Merchant Center», ob der LI-Service überlebt, ist UNBELEGT. "
+                      "NICHT das Land aus dem Shopify-Markt entfernen — LI ist Lieferland. Wirkung = diese Zahl beim nächsten Scan.\n")
         if rest:
             f.write("\n## Nur andere Länder (kein Lieferland — blockiert keinen Verkauf)\n\n"
                     + "\n".join(f"- {k}: {v}" for k, v in rest.items())
