@@ -496,3 +496,10 @@ gid://shopify/Product/16644217569671	Schwarz
 gid://shopify/Product/16651373642119	Schwarz
 gid://shopify/Product/16652018155911	Schwarz
 gid://shopify/Product/16652023529863	Weiss
+gid://shopify/Product/16652033327495	Türkis
+gid://shopify/Product/16652035359111	Türkis
+gid://shopify/Product/16652052693383	Rot
+gid://shopify/Product/16652081463687	Weiss
+gid://shopify/Product/16652425691527	Schwarz
+gid://shopify/Product/16652425888135	Schwarz
+gid://shopify/Product/16652426215815	Blau
