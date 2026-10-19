@@ -41,7 +41,7 @@ GEMESSEN 19.10. abends: die Links stammen aus der URL-Inspection-API (`inspectio
 9. https://luxestyle.ch/collections/holzuhren — «Discovered», 99 Produkte (zuvor «URL is unknown to Google»)
 10. https://luxestyle.ch/collections/schlafmasken — «Discovered», 22 Produkte
 
-## Morgen (20.10.)
+## Auch schon beantragt (Betreiber 19.10. abends: «11 auch schon indextiert»)
 11. https://luxestyle.ch/collections/kleiderstaender — «Discovered», 10 Produkte (zurückgestellt wegen des Tageskontingents)
 
 ## Schon erledigt (nicht nochmal)
