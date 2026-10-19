@@ -1,4 +1,4 @@
-# Feinkategorie (automatisch, 2026-10-19 22:06 UTC)
+# Feinkategorie (automatisch, 2026-10-19 23:15 UTC)
 
 Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 
@@ -7,35 +7,18 @@ Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 | gleich | 35797 |
 | shopify-feiner | 16058 |
 | kein-google | 1642 |
-| rueckfall-grob | 1337 |
+| rueckfall-grob | 1467 |
 | anderer-zweig | 885 |
-| verfeinern | 131 |
 | kreuz | 14 |
-| schon-im-ledger | 13 |
+| schon-im-ledger | 14 |
 | titelprobe-nein | 10 |
 | ohne-kategorie | 3 |
 | keine-zuordnung | 1 |
-| **geschrieben** | 131 (Fehler 0) |
+| verfeinern | 0 |
+| **geschrieben** | 0 (Fehler 0) |
 
 ## Ziele (dieser Lauf)
 
-- 37 → Clothing > Outerwear > Coats & Jackets
-- 37 → Clothing > Shirts & Tops
-- 23 → Jewelry > Rings
-- 5 → Clothing Accessories > Scarves & Shawls
-- 5 → Lighting > Lamps
-- 5 → Lighting > Night Lights & Ambient Lighting
-- 4 → Decor > Throw Pillows
-- 3 → Toys > Dolls, Playsets & Toy Figures > Stuffed Animals
-- 2 → Pet Supplies > Dog Supplies
-- 2 → Decor > Slipcovers
-- 2 → Clothing > Outerwear > Vests
-- 1 → Lighting > Light Ropes & Strings
-- 1 → Linens & Bedding > Bedding > Blankets
-- 1 → Electronics Accessories > Power > Batteries
-- 1 → Kitchen & Dining > Cookware & Bakeware > Cookware > Skillets & Frying Pans
-- 1 → Kitchen & Dining > Kitchen Appliances
-- 1 → Electronics Accessories > Computer Components > Input Devices > Keyboards
 
 ## Titelprobe hat abgelehnt (bleibt grob)
 

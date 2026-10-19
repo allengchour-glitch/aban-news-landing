@@ -52997,3 +52997,15 @@ keyboard-zubehor-set-fur-mechanische-tastatur-628300	el	Büro & Home Office	2026
 multifunktionale-dockingstation-6-in-1-fur-gam-606800	el-18	Büro & Home Office	2026-10-19T21:57Z
 leder-notizbuch-mit-metallspirale-a5-612800	os-4-9-9	Büro & Home Office	2026-10-19T21:57Z
 notizbuch-mit-pu-ledercover-623800	os-4-9-9	Büro & Home Office	2026-10-19T21:57Z
+genuine-leder-clutch-wallet-retro-gelb-606900	lb	Taschen	2026-10-19T23:18Z
+retro-stil-metall-mehrzweck-zink-alloy-kartenh-612900	lb	Taschen	2026-10-19T23:18Z
+kuhleder-clip-munzborse-621300	lb	Taschen	2026-10-19T23:18Z
+clutch-geldborse-mit-reissverschluss-601200	lb	Taschen	2026-10-19T23:18Z
+leder-geldborse-long-rising-sun-609500	lb	Taschen	2026-10-19T23:18Z
+mini-geldborse-aus-echtem-leder-617100	lb	Taschen	2026-10-19T23:18Z
+clutch-mit-munztasche-und-kartenhalter-619900	lb	Taschen	2026-10-19T23:18Z
+ketten-clutch-aus-rindsleder-619100	lb	Taschen	2026-10-19T23:18Z
+schlusseletui-mit-herz-anhanger-629200	lb	Taschen	2026-10-19T23:18Z
+geldborse-rindsleder-mit-blumenmuster-606700	lb	Taschen	2026-10-19T23:18Z
+kurzes-damen-portemonnaie-600100	lb	Taschen	2026-10-19T23:18Z
+rfid-blockierendes-damenportemonnaie-615000	lb	Taschen	2026-10-19T23:18Z
