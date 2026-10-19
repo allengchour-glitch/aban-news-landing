@@ -7949,3 +7949,4 @@ gid://shopify/Product/16614858555783	zugeordnet	87	Plus-Size Fischmund High-Heel
 gid://shopify/Product/16614875398535	zugeordnet	20	Sandalen mit dickem Absatz und Plateau
 gid://shopify/Product/16615398211975	zugeordnet	32	Blumiges Sweatshirt mit Rundhalsausschnitt
 gid://shopify/Product/16615611859335	zugeordnet	36	Einfarbiges Damenkleid mit Puffärmel und V-Ausschnitt
+gid://shopify/Product/15484932915585	zugeordnet	30	Gestreiftes Hoodie-Kleid mit lockerer Passform
