@@ -7976,3 +7976,8 @@ gid://shopify/Product/15485394715009	zugeordnet	30	Atmungsaktive Herrenschuhe f�
 gid://shopify/Product/15485394747777	zugeordnet	18	Wasserdichte Plateau-Schuhe mit Keilabsatz
 gid://shopify/Product/15493856821633	zugeordnet	90	Kapuzenpullover mit Letter-Print
 gid://shopify/Product/15493856919937	zugeordnet	50	Britische Loafer für Herren
+gid://shopify/Product/15493857018241	zugeordnet	18	Klassische Herren-Freizeitschuhe mit Elastikband
+gid://shopify/Product/15493857083777	zugeordnet	16	Vintage Seidenschal Loose-Fit Hoodie für Damen
+gid://shopify/Product/15493857214849	zugeordnet	45	Christmas Hoodie mit Katzen-Print
+gid://shopify/Product/15493857247617	zugeordnet	18	Herren Casual Slipper mit weicher Sohle
+gid://shopify/Product/15493857313153	zugeordnet	12	Chunky Freizeitschuhe mit Schnürung
