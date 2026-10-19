@@ -2893,3 +2893,6 @@
 16615812366727	Menge:3:3+ki	2026-10-19	bausteine-fur-kleinkinder-057984
 16615812170119	Variante:3:3+ki	2026-10-19	reiserucksack-22b708
 16615812006279	Variante:18:18+ki	2026-10-19	3d-holzpuzzle-spieluhr-879232
+16615811580295	Farbe:2:2+ki	2026-10-19	retro-weihnachtskranz-aus-rattan-630800
+16615811449223	Motiv:2:2+ki	2026-10-19	rucksack-mit-grossem-fassungsvermogen-d228a0
+16615811252615	Variante:7:7+ki	2026-10-19	weihnachtskugeln-antik-look-601300
