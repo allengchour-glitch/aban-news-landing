@@ -3012,3 +3012,6 @@
 15502608368001	Farbe:3:3	2026-10-19	katzenspielzeug-cat-track-f6c586
 15524867211649	Grösse:6:6	2026-10-19	hunde-sicherheitsweste-908544
 16604380201351	Farbe:2:2	2026-10-19	manner-uhr-aus-leder-mit-quarzbewegung-d2451c
+15525266653569	Farbe:2:2	2026-10-19	multifunktions-herrenuhr-mit-quarzwerk-456dfa
+15525502583169	Farbe:2:2	2026-10-19	faltbare-yogamatte-mit-handyhalter-434432
+16603764785543	Farbe:4:4	2026-10-19	tragbarer-kabelloser-bluetooth-lautsprecher-8fec7a
