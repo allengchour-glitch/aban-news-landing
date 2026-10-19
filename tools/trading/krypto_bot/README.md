@@ -629,6 +629,10 @@ auf Dauer** (Rendite pro Jahr) — nicht der grösste Erwartungswert: der wird m
   werden auf 1 / 1,5 / 1,75 / 2 gerundet, bei Gleichstand auf die kleinere. Der Standard bleibt 1× — der Pilot wechselt nie von
   selbst. Die Rückfrage im Cockpit nennt die Zahlen dieser Tabelle (ab 2020, ab 2022, Wahrscheinlichkeit eines Jahres unter −60 %).
   Keine Anlageberatung — nur Geld einsetzen, dessen Verlust du verkraftest.
+- **Die Tabelle gilt fürs GANZE Konto.** Der Pilot setzt aber standardmässig nur `KI_BOT_ANTEIL` = 50 % des Kontos ein (und baut höchstens
+  `KI_BOT_MAX_AUFTRAG` = 1000 USDT je Auftrag und Lauf auf). Mit dem Standard wirken Rendite UND Einbruch aufs Gesamtkonto etwa halb so
+  stark (1,75× bei 50 % ≈ 0,875× Gesamtkonto). Mehr Rendite lässt sich also auch über den Anteil holen — dieselbe Risiko-Abwägung wie
+  bei der Stufe, und beides zusammen multipliziert sich. Das Cockpit nennt den eingestellten Anteil in der Rückfrage vor der Stufenwahl.
 
 ## 💰 «Max Profit 2» — Pilot 2.0 mit Hebel (`maxprofit_p2_pruefung.py`)
 
@@ -797,13 +801,17 @@ Andere Strategie wählen: `setx KRYPTO_STRATEGIE "halten"` (immer 100 %) oder `"
 > nicht löschbare alte Perp-Stops merkt das Buch, bis sie weg sind. Und: was ein Not-Aus nicht sichern konnte, kommt in
 > «schutz_offen» — ist STOP danach wieder weg, setzt die Nachkontrolle wenigstens die Stops (Lauf-Seed 137, 13.F4). Und: ist die Perp-Liste unlesbar und springt der Kurs vor
 > dem Setzen über den Stop-Kurs UND den Not-Stop, steigt Pilot 2.0 jetzt auch ohne Liste zum Markt aus (die alten Stops aus dem
-> Buch schützen bis zum Rückkauf), statt «Short evtl. OHNE Stop» zu melden (Lauf-Seed 12027, 13.F5). Alle Funde
+> Buch schützen bis zum Rückkauf), statt «Short evtl. OHNE Stop» zu melden (Lauf-Seed 12027, 13.F5). Die Mutationsprobe auf dem Endstand der 13. Runde (153 Muster) meldete 19 nicht erkannte oder
+> nicht mehr passende: 5 durch den Umbau verschobene Muster (neu formuliert, erkannt), 1 wirkungsloses (`set() or X` ist `X`; ersetzt,
+> erkannt), 7 echte Lücken (6 neue Szenarien: 13.p4c, 13.G1–13.G5) und R12-M21, das seit Runde 13 doppelt abgesichert ist (beide Stellen
+> zusammen erkennt 12.S4). **148 von 153 erkannt; die 5 offenen sind gleichwertig:** R10-M4b («Not-Aus offen» setzt einen gestarteten
+> Modus voraus, dann gilt «mit Bestand» ohnehin) und R11-M19, R12-M5, R12-M23, R12-M34 (siehe oben). Alle Funde
 > sind behoben und
 > als feste Szenarien in `test_pilot2_streng.py`. `FREIGEGEBEN = False` bleibt, bis eine weitere unabhängige Prüfung keine Blocker
 > mehr findet — bis dahin wirkt `KRYPTO_PILOT2=an` nicht (siehe «Starten» unten).
 
 Gleiche Signale wie der Pilot, klügere Ausführung über **beide** Binance-Konten (`pilot2_plan.py` rechnet, `pilot2_live.py`
-handelt; 23 + 154 + 183 Tests gegen zwei streng nachgebaute Binance, Fuzzer, Mutationsproben). Ohne `KRYPTO_PILOT2=an` handelt der
+handelt; 23 + 154 + 190 Tests gegen zwei streng nachgebaute Binance, Fuzzer, Mutationsproben). Ohne `KRYPTO_PILOT2=an` handelt der
 Pilot wie bisher.
 
 **Was er tut:** Richtung long → Coin im Spot-Konto (kein Funding). Richtung short → Short-Perpetual (Hebel 1, bekommt Funding).
@@ -1046,12 +1054,12 @@ python3 tools/trading/krypto_bot/test_pilot.py    # 91 Tests, inkl. Risiko-Stufe
 python3 tools/trading/krypto_bot/test_sammler.py  # 48 Tests, inkl. nachgebautem Binance-Server mit Staking, verlorenen Antworten, Ablehnungen und Opt-in
 python3 tools/trading/krypto_bot/test_infos.py    # 26 Tests: keine Zukunftsdaten, MVRV-Bremse, Zwischenspeicher
 python3 tools/trading/krypto_bot/test_profit.py   # 45 Tests: getrennte Bücher, offen unbekannt, BNB-Gebühren, Ein-/Auszahlungen, Seitengrenze, Drosselung
-python3 tools/trading/krypto_bot/test_cockpit.py  # 120 Tests: Claude, Schattenkonto, Cockpit, Knöpfe, Host/Einbetten, Ampel, Not-Aus, Telegram, Startdateien
+python3 tools/trading/krypto_bot/test_cockpit.py  # 122 Tests: Claude, Schattenkonto, Cockpit, Knöpfe, Host/Einbetten, Ampel, Not-Aus, Telegram, Startdateien
 python3 tools/trading/krypto_bot/test_calls.py    # 84 Tests: 40 typische Call-Formate, Plausibilität, Antworten/Wiederholungen, Nachspielen, Zufallsprobe, Kopierer gegen nachgebauten Binance-Server
 python3 tools/trading/krypto_bot/test_binance.py  # 21 Tests, inkl. nachgebautem Binance-Server mit Signaturprüfung
 python3 tools/trading/krypto_bot/test_pilot2_plan.py  # 23 Tests: Pilot-2.0-Rechnung (Richtung, Ernte, Pfand, Mindestbeträge)
 python3 tools/trading/krypto_bot/test_pilot2_live.py  # 154 Tests: Pilot 2.0 («Konto = Wahrheit») gegen eine strenge nachgebaute Binance
-python3 -B tools/trading/krypto_bot/test_pilot2_streng.py  # 183 Tests: Belege der 8.–13. Prüfung, Schlussproben, Fuzzer-Funde gegen die Prüf-Börse, kleine Fuzzer
+python3 -B tools/trading/krypto_bot/test_pilot2_streng.py  # 190 Tests: Belege der 8.–13. Prüfung, Schlussproben, Fuzzer-Funde gegen die Prüf-Börse, kleine Fuzzer
 python3 -B tools/trading/krypto_bot/test_maxprofit.py      # 55 Tests: Max-Profit-Kern (gleiches Modell wie der Pilot, Kelly-Optimum, keine Zukunftsdaten, Kosten; Pilot 2.0 mit Hebel: = lauf2 bei 1×, Pfand-Regel, bei festem Kurs nie liquidiert)
 python3 -B tools/trading/krypto_bot/test_testnetz_pruefung.py  # 47 Tests: das Testnetz-Prüfskript gegen die Prüf-Börse (nur 127.0.0.1)
 python3 -B tools/trading/krypto_bot/pruef_fuzzer.py notaus 0 1600     # grosser Fuzzer (für Prüfungen): Not-Aus unter harten Störungen
