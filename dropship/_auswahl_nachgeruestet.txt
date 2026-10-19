@@ -2704,3 +2704,5 @@
 16644666261895	Farbe:5:5+ki	2026-10-19	ultraleichter-outdoor-reiserucksack-20-35-l-627200
 16644665377159	Farbe:2:2	2026-10-19	karo-muster-rucksack-wasserabweisend-20-35-l-610700
 16644664328583	Farbe:6:6	2026-10-19	multifunktionaler-outdoor-rucksack-20-l-619800
+16644663771527	Farbe:4:4	2026-10-19	grosses-wasserdichtes-multifunktions-backpack-626600
+16644662460807	Farbe:3:3	2026-10-19	mannlicher-computer-rucksack-mit-grosser-kapaz-622300

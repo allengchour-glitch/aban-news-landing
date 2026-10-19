@@ -10176,3 +10176,11 @@ reise-kopfkissen-mit-memory-schaum-606200	2603250844391606700	16	14.00	ok	landes
 retro-brusttasche-fur-herren-621700	2503260624481622000	16	10.42	ok	landeseite
 wasserdichte-hufttasche-fur-sport-615900	2503110851011616100	16	10.15	ok	landeseite
 eiskufen-inline-skates-fur-kinder-schuler-602500	2603190955451602900	11	36.36	ok	landeseite
+retro-leder-gurtelbag-615400	2503040501541615600	16	8.79	ok	landeseite
+wasserdichter-schutzbeutel-600700	2512290153341600900	16	9.61	ok	landeseite
+regenbogen-decke-fur-baby-625400	2606050117381627200	16	8.79	ok	landeseite
+inline-skate-set-fur-kids-604500	2602111104381604800	11	29.34	ok	landeseite
+crazy-horse-leder-herren-gurteltasche-mit-hand-628200	2502251033091629500	16	7.43	ok	landeseite
+kinder-schlittschuh-schuhe-mit-plusch-623900	2507050138141624200	16	23.38	ok	landeseite
+vergrosserndes-reise-spiegelset-631100	2512050544061631300	16	7.43	ok	landeseite
+wasserdichte-kissenfullung-615300	2606010907261616100	0	-	KEINE CH-Option → DRAFT	landeseite

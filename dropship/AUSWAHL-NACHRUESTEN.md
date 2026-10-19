@@ -1,14 +1,16 @@
-# Auswahl nachrüsten — scharf 2026-10-19 04:47 UTC
+# Auswahl nachrüsten — scharf 2026-10-19 06:26 UTC
 
-umgebaut: 64 · MANUELL: 8 · Fehler: 0
+umgebaut: 78 · MANUELL: 10 · Fehler: 0
 
 ## MANUELL (Grund)
 
-- Kompressionsrucksack mit Vakuumfunktion, schwarz (`kompressionsrucksack-mit-vakuumfunktion-schwar-600600`): KI-Übersetzung fehlt/abgelehnt: ['Airbags Without Vacuum Pump', 'Black Ribbon Vacuum Pump', 'Ordinary Black Style']
-- Sportrucksack mit 20-35 L Volumen (`sportrucksack-mit-20-35-l-volumen-600600`): KI-Übersetzung fehlt/abgelehnt: ['Black', 'Red', 'Rose Red', 'Gray']
-- Männer Crossbody Schultertasche – Fashion Personality (`manner-crossbody-schultertasche-fashion-person-626600`): KI-Übersetzung fehlt/abgelehnt: ['Oblique Pocket Black', 'Oblique Pocket Brown', 'Straight Zipper Black', 'Straight Zipper Brown']
-- Outdoor-Fishing-Rucksack aus Oxford (`outdoor-fishing-rucksack-aus-oxford-614900`): KI-Übersetzung fehlt/abgelehnt: ['0.85 M Black', '1 M Black', '1.2 M Black', '0.85 Beige Green']
-- Trekking-Rucksack 35 L (`trekking-rucksack-35-l-622500`): Titel nennt nur «35 L» (Volumen: ['35 L', '40 L']) → Titel prüfen (Mensch)
-- Brusttasche für Herren aus Oxford-Stoff (`brusttasche-fur-herren-aus-oxford-stoff-601700`): KI-Übersetzung fehlt/abgelehnt: ['Blue Black', 'Olive Green', 'Fashion Gray']
-- Anti-Diebstahl-Computerrucksack 20 L (`anti-diebstahl-computerrucksack-20-l-627500`): KI-Übersetzung fehlt/abgelehnt: ['Deep Space Black', 'Silver White', 'Silver Gray']
-- Rucksack Street Leisure – 20-35 L, wasserdicht (`rucksack-street-leisure-20-35-l-wasserdicht-607700`): KI-Übersetzung fehlt/abgelehnt: ['Commuter payment', 'Expansion payment', 'Upgraded Version']
+- Retro Postmann Umhängetasche (`retro-postmann-umhangetasche-626400`): KI-Übersetzung fehlt/abgelehnt: ['Army Green', 'Lake Water Green Color', 'Black', 'Khaki']
+- Wasserdichte Herren-Crossbody-Tasche aus Oxford-Stoff (`wasserdichte-herren-crossbody-tasche-aus-oxfor-625500`): Ausführung-Auswahl, aber Variantenbilder nicht unterscheidbar
+- Frosted Fahrrad-Rennrucksack (`frosted-fahrrad-rennrucksack-073600`): KI-Übersetzung fehlt/abgelehnt: ['Frosted Style', 'Carbon pattern']
+- USB-Lade-Rucksack wasserdicht 15" (`usb-lade-rucksack-wasserdicht-15-874496`): KI-Übersetzung fehlt/abgelehnt: ['Black Type A 15inch', 'Black Type A 17 Inch', '15inch USB C port', '17inch USB C port']
+- Genuine Leder Rucksack für Freizeitreisen (`genuine-leder-rucksack-fur-freizeitreisen-297024`): KI-Übersetzung fehlt/abgelehnt: ['Brown Horse Leather', 'Dark Brown', 'Brown']
+- Grosser Outdoor-Rucksack für Studenten (`grosser-outdoor-rucksack-fur-studenten-621200`): Preissprung 2.7× zwischen zwei Varianten — Datenfehler oder Zubehör? → Mensch
+- Urbaner Rucksack mit Buchstaben-Print, 20-35 L (`urbaner-rucksack-mit-buchstaben-print-20-35-l-617700`): Ausführung-Auswahl, aber Variantenbilder nicht unterscheidbar
+- Business-Backpack mit USB-Ladeanschluss (`business-backpack-mit-usb-ladeanschluss-609500`): KI-Übersetzung fehlt/abgelehnt: ['Black Double Pull', 'Gray Double Pull', 'Black Single Pull', 'Gray Single Pull']
+- Rucksack Männer Grosses Fassungsvermögen Reise (`rucksack-manner-grosses-fassungsvermogen-reise-607200`): KI-Übersetzung fehlt/abgelehnt: ['Black', 'Pink', 'Black Large', 'Navy Blue']
+- Business-Rucksack mit Passwort-Gürtelverschluss (`business-rucksack-mit-passwort-gurtelverschlus-616900`): KI-Übersetzung fehlt/abgelehnt: ['Black Airbag', 'Black Airbag Air Pump']
