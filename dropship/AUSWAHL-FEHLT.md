@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-15 01:52 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-19 01:06 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1426 · **1358 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1156, teilweise: 170, keine: 32; Preisspanne > 2×: 160) · 1 CJ-Variante: 66 · ohne Antwort: 2
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1408 · **1341 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1141, teilweise: 169, keine: 31; Preisspanne > 2×: 158) · 1 CJ-Variante: 65 · ohne Antwort: 2
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -117,7 +117,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Halsband mit Glocke und Blumen-Design (`halsband-mit-glocke-und-blumen-design-050368`) | 24 | 24 | 2.71–3.7 | 15.90 | White-S, White-M, White-L, Pink-S |
 | Halsband & Leine Set im Farbmix mit Glöckchen (`halsband-leine-set-im-farbmix-mit-glockchen-239552`) | 24 | 24 | 4.02–6.1 | 15.90 | Blue yellow-L, Blue yellow-M, Blue yellow-S, Blue yellow-XS |
 | Gestreifter Kissenbezug aus Baumwoll-Leinen (`gestreifter-kissenbezug-aus-baumwoll-leinen-676224`) | 24 | 24 | 9.82–15.07 | 24.90 | Box-45x45cm, Box-45x45cmPillow, Box-50x50cm, Box-50x50cmPillow |
-| Freizeit-Halsband mit Bandana für Haustiere (`freizeit-halsband-mit-bandana-fur-haustiere-600700`) | 24 | 24 | 2.07–3.1 | 21.90 | Black-S  , Black-M , Black-L  , Black-XL  |
 | Reflektierendes Hundegeschirr mit Leine (`reflektierendes-hundegeschirr-mit-leine-962048`) | 24 | 8 | 2.13–2.13 | 21.90 | Blue-Xs Within 3kg, Blue-S 35kg, Blue-M 58kg, Blue-L 913 |
 | Stickset «Blumenwiese» für Einsteiger (`stickset-blumenwiese-fur-einsteiger-277568`) | 23 | 20 | 2.68–2.68 | 15.90 | Fresh Flowers1, Fresh Flowers2, Fresh Flowers3, Fresh Flowers4 |
 | Pure Color UV Gel-Nagelsticker (`pure-color-uv-gel-nagelsticker-333824`) | 23 | 19 | 2.69–2.69 | 15.90 | BSS0195-Paper Box Packaging, BSS0196-Paper Box Packaging, BSS0197-Paper Box Packaging, BSS0198-Paper Box Packaging |
@@ -207,6 +206,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Multifunktionale, reflektierende Doppel-Hundeleine (`multifunktionale-reflektierende-doppel-hundele-735872`) | 16 | 16 | 2.93–4.08 | 22.90 | Sapphire Blue4210, Orange4210, Fluorescent Green4210, Aqua Green4210 |
 | Verstellbares geflochtenes Hundehalsband (`verstellbares-geflochtenes-hundehalsband-107392`) | 16 | 16 | 4.06–4.51 | 23.90 | Retro red and green-S, Retro red and green-M, Retro red and green-L, Retro red and green-XL |
 | Hundegeschirr mit Leine und Tasche (`hundegeschirr-mit-leine-und-tasche-107200`) | 16 | 16 | 2.35–2.35 | 21.90 | Blue Camouflage-XS, Blue Camouflage-S, Blue Camouflage-M, Blue Camouflage-L |
+| Stahlarmband für Apple Watch, 5,5–8,5 Zoll (`stahlarmband-fur-apple-watch-5-5-8-5-zoll-742656`) | 16 | 16 | 4.66–4.66 | 16.90 | Black-38 40mm, Black-42 44mm, Rose Gold-38 40mm, Rose Gold-42 44mm |
 | Retro Sonnenbrille für Damen und Herren (`retro-sonnenbrille-fur-damen-und-herren-613700`) | 15 | 8 | 2.63–9.12 | 21.90 | Bright Black Frame Gray Piece, Gray Frame, Sand Black Gradient Leopard, Bright Leopard Print Gradient |
 | Retro Canvas Rucksack für Reise & Freizeit (`retro-canvas-rucksack-fur-reise-freizeit-611100`) | 15 | 15 | 6.62–8.28 | 39.90 | Khaki-Small Size, Khaki-Large Size, Khaki-Oversized, Black-Small Size |
 | Denim Schürze für Küche und Gastronomie (`denim-schurze-fur-kuche-und-gastronomie-615800`) | 15 | 15 | 5.75–5.75 | 17.90 | Black-Adult Version Length 75CM, Black-Children's 47cm, Black-Children's 57cm, Blue-Adult Version Length 75CM |
@@ -216,10 +216,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Profi Haarschneider mit Gravur-Option (`profi-haarschneider-mit-gravur-option-103616`) | 15 | 15 | 8.11–18.54 | 21.90 | 1 Style-USB, 10 Style-USB, 11 Style-USB, 12 Style-USB |
 | S925 Sterling Silber Ring mit runden Strasssteinen (`s925-sterling-silber-ring-mit-runden-strasssteinen-608300`) | 15 | 15 | 7.13–7.96 | 20.90 | Colored Diamond-5, Colored Diamond-6, Colored Diamond-7, Colored Diamond-8 |
 | Mädchenherz-Bett mit Erkerfenster-Kissen (`madchenherz-bett-mit-erkerfenster-kissen-980544`) | 15 | 15 | 4.0–18.41 | 23.90 | Eiffel tower, Big white goose, Sandwich Cloud, Astronaut |
-| Anti-Schling Napf für Haustiere (`anti-schling-napf-fur-haustiere-121664`) | 15 | 15 | 7.66–8.79 | 27.90 | Sky Blue-S, Sky Blue-M, Sky Blue-L, Yellow-S |
-| Hundeleine Polyester mit Zinklegierung (`hundeleine-polyester-mit-zinklegierung-090507`) | 15 | 15 | 2.54–3.62 | 21.90 | 3style-L, 1style-M, 4style-M, 5style-M |
-| Hundegeschirr mit Leine im Gittermuster (`hundegeschirr-mit-leine-im-gittermuster-b8bd12`) | 15 | 0 | 3.32–3.32 | 22.90 | Grey-L, Khaki-XL, Khaki-L, Grey-XL |
-| Edelstahl-Napf für Hunde und Katzen mit Antirutschboden (`edelstahl-napf-fur-hunde-und-katzen-mit-antiru-885888`) | 15 | 15 | 3.48–3.48 | 34.90 | Green-XS, Green-S, Green-M, Green-L |
 | Hundemantel mit Leine im klassischen Stil (`hundemantel-mit-leine-im-klassischen-stil-615600`) | 15 | 15 | 6.14–8.96 | 25.90 | Cloak Hand Holding Rope-XS, Cloak Hand Holding Rope-S, Cloak Hand Holding Rope-M, Cloak Hand Holding Rope-L |
 | Herzring mit Moissanit und Zirkonia (`herzring-mit-moissanit-und-zirkonia-621500`) | 15 | 15 | 13.1–19.07 | 33.90 | 1 Karat White Diamond Zircon-5, 1 Karat White Diamond Zircon-6, 1 Karat White Diamond Zircon-7, 1 Karat White Diamond Zircon-8 |
 | Hundeleine mit Karabinerverschluss (`hundeleine-mit-karabinerverschluss-003456`) | 15 | 15 | 14.98–19.19 | 35.90 | Fragmented Red-S, Fragmented Red-M, Fragmented Red-L, Fragmented Cyan-S |
@@ -243,7 +239,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Samt-Kissenbezug für Sofa oder Bett (`samt-kissenbezug-fur-sofa-oder-bett-183552`) | 13 | 13 | 2.46–8.39 | 14.90 | White-45x45CM-Pillowcase, White-50x50CM-Pillowcase, Green-45x45CM-Pillowcase, Green-50x50CM-Pillowcase |
 | GPS-Halsband für Katzen mit Cartoon-Muster (`gps-halsband-fur-katzen-mit-cartoon-muster-619500`) | 13 | 13 | 4.21–5.47 | 19.90 | Collar Black Black Locator-For Apple, Collar Black White Locator-For Apple, Collar Pink Black Locator-For Apple, Collar Pink White Locator-For Apple |
 | Trendiger Canvas Rucksack für Paare (`trendiger-canvas-rucksack-fur-paare-168632`) | 13 | 0 | 4.83–6.13 | 25.90 | Dark Blue-L, Black-S, Khaki-L, Black-L |
-| Quarz-Sportuhr mit Leuchtfunktion (`quarz-sportuhr-mit-leuchtfunktion-872640`) | 13 | 13 | 12.0–12.0 | 32.90 | A, B, C, D |
 | Geflochtener Korb aus Baumwollschnur (`geflochtener-korb-aus-baumwollschnur-616000`) | 13 | 13 | 3.14–9.42 | 22.90 | Grey Triple Splice-38x25x23cm, Grey Triple Splice-48x28x23cm, Grey Triple Splice-55x43x30cm, Black three pack-38x25x23cm |
 | Edelstahl-Hundehalskette (`edelstahl-hundehalskette-52e229`) | 13 | 12 | 29.04–57.21 | 51.90 | Sliver-55cm, Gold-55cm, Sliver-70cm, Gold-75cm |
 | Bambus-Section Leinen Viskose Cape für Damen (`bambus-section-leinen-viskose-cape-fur-damen-627400`) | 13 | 13 | 4.7–4.7 | 16.90 | Retro Red-168CM, Forest Green-168CM, Cheese Yellow-168CM, Soft Mist Powder-168CM |
@@ -318,7 +313,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Blumen-Geschirrset mit Leine für Haustiere (`blumen-geschirrset-mit-leine-fur-haustiere-626200`) | 12 | 12 | 3.68–4.18 | 23.90 | Orange Suit-XXS, Orange Suit-XS, Orange Suit-S, Orange Suit-M |
 | Nackenstützkissen für besseren Schlaf (`nackenstutzkissen-fur-besseren-schlaf-610000`) | 12 | 12 | 7.2–11.79 | 32.90 | High Pillow-Classic, High Pillow-Upgraded version, High Pillow Gift Box-Classic, High Pillow Gift Box-Upgraded version |
 | Edelstahl Automatische Trinkschüssel für Hunde (`stainless-automatic-trinkschussel-fur-hunde-457b0f`) | 12 | 12 | 2.02–4.76 | 22.90 | pink-big-1, green-big-1, Blue-L-2, pink-small-1 |
-| Hitzebeständige Glas-Schüssel mit Pflanzenmuster (`hitzebestandige-glas-schussel-mit-pflanzenmust-141120`) | 12 | 8 | 3.69–4.9 | 20.90 | Chamomile-M, Chamomile-L, Citrus Tea-M, Citrus Tea-L |
+| Plum Blossom Magnetischer Bohrschrauber (`plum-blossom-magnetischer-bohrschrauber-fe11c7`) | 12 | 0 | 0.46–0.46 | 16.90 | Silver-T5, Silver-T7, Silver-T30, Silver-T15 |
 | Plüschtier mit Quietscher für Hunde (`pluschtier-mit-quietscher-fur-hunde-705474`) | 11 | 7 | 4.99–5.29 | 19.90 | Brown dog, Blue Donkey, Green Dog, Giraffe |
 | Halskette im traditionellen chinesischen Stil (`halskette-im-traditionellen-chinesischen-stil-610100`) | 11 | 11 | 2.68–2.68 | 15.90 | No 1 Incense Burner Necklace, No 2 Maple Leaf Necklace, No 3 Mirror Necklace, No 4 Folding Fan Necklace |
 | Jacquard Kissenbezug mit Stickerei (`jacquard-kissenbezug-mit-stickerei-629200`) | 11 | 11 | 3.04–3.04 | 15.90 | B2409091-45x45cm, B2409101-45x45cm, B2409111-45x45cm, B2409131-45x45cm |
@@ -339,6 +334,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Leuchtende, ausziehbare Hundeleine (`leuchtende-ausziehbare-hundeleine-940544`) | 11 | 11 | 3.37–8.04 | 22.90 | Charming Purple-3M, Vitality Orange-3M, Mango Green-3M, Dream Purple-3M |
 | Hundeleine Teleskop Doppelfarbig (`hundeleine-teleskop-doppelfarbig-337280`) | 11 | 7 | 2.76–5.83 | 21.90 | Wine Red-3M, Wine Red-5M, Blue-3M, Blue-5M |
 | Bestickter Winter-Schal für Damen (`bestickter-winter-schal-fur-damen-607000`) | 11 | 11 | 4.01–4.01 | 17.90 | Dark Gray-200cm, Purplish Red-200cm, Bean Green-200cm, Milky White-200cm |
+| Romantischer Schal in hellen Weisstönen (`romantischer-schal-in-hellen-weisstonen-610200`) | 11 | 11 | 5.0–5.0 | 16.90 | Deep Khaki-165cm, Brick Red-165cm, Mixed Flower Black-165cm, Solid Black-165cm |
 | Minimalistischer Teppich, schmutzabweisend (`minimalistischer-teppich-schmutzabweisend-630800`) | 10 | 8 | 2.39–2.39 | 15.90 | Cloudsway-50x80cm, Deepblue-50x80cm, Dreamglass-50x80cm, Foghide-50x80cm |
 | Herren Leder Hüfttasche für Smartphone – Sport & Freizeit (`herren-leder-hufttasche-fur-smartphone-sport-f-624200`) | 10 | 10 | 10.52–14.76 | 23.90 | Black, Oil Brown, White, Brown |
 | Bikehelm Herren & Damen Mountain/Strasse (`bikehelm-herren-damen-mountain-strasse-485568`) | 10 | 10 | 10.32–10.32 | 22.90 | White-L, Black-L, White color line-L, Black and white color thread-L |
@@ -432,7 +428,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Hundegeschirr mit Leine aus Nylon (`hundegeschirr-mit-leine-aus-nylon-092160`) | 9 | 9 | 2.78–4.27 | 15.90 | Red-2.2x50x62cm, Red-2.5x60x73cm, Red-3.8x70x90cm, Green-2.2x50x62cm |
 | Samt-Kopfteilbezug – Staubdicht & Stilvoll (`samt-kopfteilbezug-staubdicht-stilvoll-600900`) | 9 | 9 | 7.11–9.35 | 26.90 | Gray-1.5M, Gray-1.8m, Gray-2.0m, White-1.5M |
 | Tassen-Organizer aus Massivholz (`tassen-organizer-aus-massivholz-633500`) | 9 | 9 | 2.88–4.49 | 22.90 | Distressed color, Wide three layer blue, Wide three layer wood tone, Three layer distressed |
-| Faltbarer Reise-Wasserkocher mit 0.6 L (`faltbarer-reise-wasserkocher-mit-0-6-l-623600`) | 9 | 9 | 2.99–7.21 | 22.90 | White-EU, White-US, White-UK, Pink-EU |
 | Siegellack-Geschenkset (`siegellack-geschenkset-745856`) | 9 | 9 | 3.81–3.81 | 23.90 | A, B, C, D |
 | Grosse isolierte Umhängetasche (`grosse-isolierte-umhangetasche-616700`) | 9 | 9 | 3.35–4.28 | 22.90 | Black Without Logo, Dark Blue Peony, Gray, Navy Blue |
 | Keramik-Servierplatte «New Bohemian» (`keramik-servierplatte-new-bohemian-604500`) | 9 | 9 | 3.76–6.92 | 23.90 | Orange Persian 10 Inches, Blue Persia 10 Inches, Green Persia 10 Inches, Baroque 10 Inches |
@@ -519,9 +514,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Dunkelgrünes Kissen aus Baumwolle und Leinen (`dunkelgrunes-kissen-aus-baumwolle-und-leinen-989312`) | 8 | 8 | 13.73–25.04 | 34.90 | Green-50x50cmWithout core, Green-50x50cm With core, Green-45x45cmWithout core, Green-45x45cm With core |
 | Matcha-grünes Zierkissen im nordischen Stil (`matcha-grunes-zierkissen-im-nordischen-stil-608000`) | 8 | 8 | 16.25–27.56 | 36.90 | 45X45cm without core-Square pillow, 45X45cm with core-Square pillow, 50X50cm without core-Square pillow, 50X50cm with core-Square pillow |
 | Sandwich-Kissen für die Mittagspause (`sandwich-kissen-fur-die-mittagspause-429248`) | 8 | 8 | 4.0–4.12 | 23.90 | Square-Frown, Square-Smiley, Square-Wronged, Square-Tongue |
-| Armband mit Zirkonia-Steinen, 18K vergoldet (`armband-mit-zirkonia-steinen-18k-vergoldet-639700`) | 8 | 8 | 2.6–2.99 | 21.90 | Gold-Red, Gold-Black, Gold-White, Gold-Green |
 | ISPET Hundegeschirr (`ispet-hundegeschirr-fbe9b5`) | 8 | 0 | 9.89–10.75 | 29.90 | Color-Width 1.0cm, Sapphire-Width 2.0cm, Yellow-Width 1.0cm, Orange-Width 1.0cm |
-| Messing-Schale für stilvolle Aufbewahrung (`messing-schale-fur-stilvolle-aufbewahrung-625600`) | 8 | 8 | 27.36–82.75 | 50.90 | Style1, Style2, Style3, Style4 |
 | Ölfilterkanne aus Edelstahl (`olfilterkanne-aus-edelstahl-e37d32`) | 8 | 1 | 7.34–8.76 | 27.90 | Green4-1.7L, Green3-1.4L, Pink3-1.4L, Green2-1.7L |
 | Sequin Nagellack Gel-Kit mit Lichthärtungsgerät (`sequin-nagellack-gel-kit-mit-lichthartungsgera-658688`) | 8 | 8 | 16.25–16.25 | 35.90 | Style 1-USB, Style 2-USB, Style 3-USB, Style 4-USB |
 | Herren-Quarzuhr mit Stahlband (`herren-quarzuhr-mit-stahlband-678080`) | 8 | 8 | 8.62–11.67 | 28.90 | Silver shell black surface, Silver shell white noodles, Silver shell blue surface, Black shell black face |
@@ -544,7 +537,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Nagelclipper für Senioren – 5,7 cm & 8 cm (`nagelclipper-fur-senioren-5-7-cm-8-cm-138112`) | 8 | 8 | 2.18–5.51 | 19.90 | 3028is 5.7cm long, 3029is 5.7cm long, 30018is 8cm long, 30019is 8cm long |
 | Hundeleine Okinawa, elastisch und ausziehbar (`hundeleine-okinawa-elastisch-und-ausziehbar-660992`) | 8 | 8 | 3.59–4.49 | 22.90 | Red-Short pull 80to120cm, Red-Long pull 130to185cm, Light Grey-Short pull 80to120cm, Light Grey-Long pull 130to185cm |
 | Silikon-Futternapf mit Saugnapf-Matte (`silikon-futternapf-mit-saugnapf-matte-609300`) | 8 | 8 | 4.04–5.73 | 26.90 | Small Black Pot Included, Small Gray Pot Included, Small Black Without Basin, Small Gray Without Basin |
-| Hundeslinge mit Zugseil – 1,5 cm breit (`hundeslinge-mit-zugseil-1-5-cm-breit-f07623`) | 8 | 0 | 5.13–5.58 | 16.90 | Grey-S-1.5cm, Orange-M-2cm, Grey-M-2cm, Pink-S-1.5cm |
+| Outdoor-Mountaineering-Rucksack 20 L, Oxford (`outdoor-mountaineering-rucksack-20-l-oxford-640800`) | 8 | 8 | 4.19–4.19 | 18.90 | Black-Below 20L, Orange-Below 20L, Dark Blue-Below 20L, Sky Blue-Below 20L |
 | Mechanische Armbanduhr mit Mondphase (`mechanische-armbanduhr-mit-mondphase-626400`) | 7 | 4 | 21.72–21.72 | 43.90 | Silver Blue Blue Ribbon, Silver White, Silver Black, Rose Blue |
 | Mechanische Armbanduhr mit Skelett-Design (`mechanische-armbanduhr-mit-skelett-design-600300`) | 7 | 7 | 14.59–14.59 | 32.90 | T900 room gold blue, T900 Gold And Black, T900 Gold And White, T900 All Black |
 | Multifunktionaler Pflegepinsel für Hals & Körper (`multifunktionaler-pflegepinsel-fur-hals-korper-618100`) | 7 | 7 | 2.24–3.52 | 15.90 | Rose Gold Plating Handle, Black Plastic Handle, Light Gold Plating Handle, Rose Gold Dark Brown |
@@ -695,13 +688,8 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Weinöffner mit Luftdruckpumpe (`weinoffner-mit-luftdruckpumpe-198db1`) | 6 | 6 | 3.51–6.62 | 22.90 | Gold-Upgrade, Silver-Set, Black-Set 2, Red-Upgrade |
 | Geflochtener Rattan-Korb für Snacks & Früchte (`geflochtener-rattan-korb-fur-snacks-fruchte-638000`) | 6 | 6 | 3.8–6.67 | 23.90 | Brown-L-Covered, Shallow Steamed Willow-S-No Cover, Shallow Steamed Willow-L-No Cover, Shallow Steamed Willow-L-Covered |
 | Runder Nachttisch-Organizer, 2 Etagen (`runder-nachttisch-organizer-2-etagen-622400`) | 6 | 6 | 17.46–17.46 | 54.90 | Beige-Second Floor, Porcelain White-Second Floor, Dirty Pink-Second Floor, Matcha Green-Second Floor |
-| Mechanisches Türschloss für Container und Fahrzeuge (`mechanisches-turschloss-fur-container-und-fahr-478720`) | 6 | 6 | 4.82–5.1 | 24.90 | A, B, C, D |
 | Niedliche Notizzettel – abreissbar & haftend (`niedliche-notizzettel-abreissbar-haftend-730048`) | 6 | 6 | 0.37–0.63 | 19.90 | Cement gray-Small, Cement gray-Big, Texture red-Small, Texture red-Big |
-| Handgemachte Klebenägel «Trauben-Reis» (`handgemachte-klebenagel-trauben-reis-122048`) | 6 | 6 | 2.26–2.26 | 21.90 | Long T-XS, Long T-S, Long T-M, Medium T-XS |
-| Herren Quarzuhr mit Kalender, 30M wasserdicht (`herren-quarzuhr-mit-kalender-30m-wasserdicht-284416`) | 6 | 6 | 12.6–12.6 | 32.90 | Rose blue, Rose black, Black black, White blue |
 | Quarz-Armbanduhr, Leuchtend, Wasserdicht (`quarz-armbanduhr-leuchtend-wasserdicht-079488`) | 6 | 6 | 5.96–6.48 | 25.90 | Mens gold belt between gold s, Womens gold belt between gold, Mens gold shell silver belt, Womens gold shell silver belt |
-| Reise-Rucksack mit extra grossem Volumen (`reise-rucksack-mit-extra-grossem-volumen-609500`) | 6 | 6 | 23.76–27.18 | 51.90 | Beige Gray-S, Beige Gray-M, Beige Gray-L, Light Black-S |
-| Magnetischer Teleskop-Picker mit oder ohne Licht (`magnetischer-teleskop-picker-mit-oder-ohne-lic-418368`) | 6 | 6 | 1.74–3.32 | 20.90 | as shown-A, as shown-B, as shown-C, as shown-D |
 | Teigmatte aus Edelstahl (`teigmatte-aus-edelstahl-632300`) | 6 | 6 | 4.12–8.68 | 36.90 | 30X40cm -1.5mm, 30X40cm -2.0mm, 40X50cm -1.5mm, 40X50cm -2.0mm |
 | Uhrenarmband-Positionierungsperlen aus Metall (`uhrenarmband-positionierungsperlen-aus-metall-704704`) | 6 | 6 | 3.38–3.81 | 22.90 | Black-38or40or41mm, Black-42or44or45mm, Silver-38or40or41mm, Silver-42or44or45mm |
 | Herren-Tourbillon Automatikuhr mit grossem Zifferblatt (`herren-tourbillon-automatikuhr-mit-grossem-zif-052160`) | 6 | 6 | 19.27–19.27 | 40.90 | Gold with blue surface, Golden strip white noodles, Black belt black face, Silver with black face |
@@ -720,6 +708,11 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Moissanit Armband verstellbar (`moissanit-armband-verstellbar-613700`) | 6 | 6 | 31.51–48.92 | 53.90 | Tennis Bracelet-3mm, Tennis Bracelet-4mm, Tennis Bracelet-5mm, Tennis Bracelet Set-3mm |
 | Bambusblätter-Throw-Pillow in Grün (`bambusblatter-throw-pillow-in-grun-612900`) | 6 | 6 | 6.3–15.09 | 25.90 | Flannel Embroidered Green-45x 45 Pillowcase, Flannel Embroidered Green-45x45 PP Cotton Core, Ink Painting-45x 45 Pillowcase, Ink Painting-45x45 PP Cotton Core |
 | Katzenkessel mit automatischer Wasserversorgung und Futterbehälter (`katzenkessel-mit-automatischer-wasserversorgun-607700`) | 6 | 6 | 2.3–2.67 | 17.90 | Ceramic Bowl-Gray, Ceramic Bowl-Green, Ceramic Bowl-Yellow, Stainless steel bowl-Gray |
+| Bauchrucksack für Jungen – geometrisches Muster (`bauchrucksack-fur-jungen-geometrisches-muster-617500`) | 6 | 6 | 6.6–6.94 | 24.90 | 5236 Blue And White Large-S, 5236 Blue And White Large-L, 5236 Gray-S, 5236 Gray-L |
+| Leichter Outdoor-Rucksack mit hoher Kapazität (`leichter-outdoor-rucksack-mit-hoher-kapazitat-620200`) | 6 | 6 | 6.08–6.08 | 22.90 | Light Blue, Purple, Gray, Green |
+| Grosser Rucksack für Basketball mit Wasserdichtem Trennfach (`grosser-rucksack-fur-basketball-mit-wasserdich-623100`) | 6 | 6 | 11.5–11.5 | 30.90 | Black, White, Red, Orange |
+| Kinderwagenrucksack – Tragbarer Baby-Tagesrucksack (`kinderwagenrucksack-tragbarer-baby-tagesrucksa-617000`) | 6 | 6 | 5.14–5.14 | 18.90 | Light Gray-Free Size, Black-Free Size, Pink-Free Size, Green-Free Size |
+| Nylon-Fischköder-Tasche – 39×23×15 cm (`nylon-fischkoder-tasche-39-23-15-cm-855168`) | 6 | 6 | 10.76–12.44 | 38.90 | Black-Small, Black-large, Camouflage-Small, Camouflage-large |
 | Lederrucksack für Herren (`lederrucksack-fur-herren-621700`) | 5 | 5 | 22.27–29.52 | 53.90 | 8019 Black Lychee Grain, 8019 Coffee Color, 8016 Black Lychee Pattern, 8015 Black |
 | Weinroter Kissenbezug aus Rex Kaninchenfell (`weinroter-kissenbezug-aus-rex-kaninchenfell-600500`) | 5 | 5 | 2.95–11.28 | 15.90 | Red Brown-45x45cm, Blackred Thread Grid-45x45cm, Rex Rabbit Fur Wine Red-45x45cm, Black And Red Grid-30x50cm |
 | Multi-Kartenleser USB 3.0 & Type-C (`multi-kartenleser-usb-3-0-type-c-662848`) | 5 | 4 | 4.24–6.99 | 14.90 | Aluminum Alloy Double Reading, Aluminum Alloy Single Reading, USB20 Single Read, ABS Double Reading |
@@ -830,16 +823,10 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Reiserucksack – Nylon, 33×16×45 cm (`reiserucksack-nylon-33-16-45-cm-c81a4e`) | 5 | 0 | 5.24–7.32 | 24.90 | Black-L, Red-S, Blue-L, Blue-S |
 | Toastbrot Futon Kissen (`toastbrot-futon-kissen-313920`) | 5 | 5 | 2.8–2.8 | 22.90 | 1style-38cm38cm14cm, 2style-38cm38cm14cm, 3style-38cm38cm14cm, 4style-38cm38cm14cm |
 | Back- & Dekorations-Set für Torten (`back-dekorations-set-fur-torten-e5bd60`) | 5 | 3 | 3.63–19.9 | 22.90 | 62piece set, 106 set, 72 piece set, 127 set |
-| Rosen-Seifenblumen-Bouquet Geschenkbox (`rosen-seifenblumen-bouquet-geschenkbox-28c214`) | 5 | 5 | 5.04–5.04 | 24.90 | Red, Pink, Blue, White |
 | Seaside Diving Snorkeling Mineralischer Sonnenschutz (`seaside-diving-snorkeling-mineralischer-sonnen-607400`) | 5 | 5 | 7.96–8.29 | 27.90 | Azure Red, Hazy Fog, Nude, Green Beans White |
 | Feuchtigkeitsspendende Body Lotion (`feuchtigkeitsspendende-body-lotion-622300`) | 5 | 5 | 10.78–10.78 | 30.90 | Spring Wilderness 250ml, Prosperous Garden 250ml, Floating Water 250ml, My Teenager 250ml |
-| Multifunktionaler Laptop-Rucksack mit USB-Anschluss (`multifunktionaler-laptop-rucksack-mit-usb-ansc-4e7f4b`) | 5 | 5 | 6.1–6.1 | 25.90 | Navy Blue, Wine Red, Black, Gray |
-| Thermosbecher-Hülle mit verstellbarem Schultergurt (`thermosbecher-hulle-mit-verstellbarem-schulter-989824`) | 5 | 5 | 5.27–5.27 | 24.90 | Black-One size, Grey-One size, Military green-One size, Royal blue-One size |
 | Holzarmbanduhr mit Quarzuhrwerk (`holzarmbanduhr-mit-quarzuhrwerk-944128`) | 5 | 5 | 9.81–9.81 | 29.90 | Bamboo wood, Mahogany, Cherry wood, Romaji bamboo and wood |
-| Wasserdichte Umhängetasche für Outdoor & Freizeit (`wasserdichte-umhangetasche-fur-outdoor-freizei-466624`) | 5 | 5 | 4.0–4.0 | 23.90 | Green, Blue, Black, Khaki |
-| Mikrowellen-Toaster für Sandwichbrot (`mikrowellen-toaster-fur-sandwichbrot-635400`) | 5 | 5 | 11.61–11.61 | 31.90 | Orange, Yellow, Red, Blue |
 | Sportliche Dual-Display Quarzuhr für Herren (`sportliche-dual-display-quarzuhr-fur-herren-050624`) | 5 | 5 | 7.59–7.59 | 27.90 | Black, Black shell gold circle, Black shell silver circle, Army green |
-| Mechanische Herrenuhr mit Leuchtzeigern (`mechanische-herrenuhr-mit-leuchtzeigern-752256`) | 5 | 5 | 13.49–13.49 | 33.90 | Black, Blue, Blue and black, Red and black |
 | Elektrischer Meridian-Massageball (`elektrischer-meridian-massageball-050496`) | 5 | 5 | 11.7–11.7 | 31.90 | Black-USB, Grey-USB, Light pink-USB, Rose Red-USB |
 | Taktischer Multifunktions-Rucksack 20-35L (`taktischer-multifunktions-rucksack-20-35l-602000`) | 5 | 5 | 11.94–11.94 | 33.90 | Black, Green, Khaki, Green Ruins |
 | Japanisches Schälchen-Set mit Ablage (`japanisches-schalchen-set-mit-ablage-644000`) | 5 | 5 | 7.46–7.46 | 28.90 | Aurora Green-4 plates 1 tray, Coffee Gold-4 plates 1 tray, Emerald Green-4 plates 1 tray, Marbling-4 plates 1 tray |
@@ -865,7 +852,9 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Bedruckte Tragetasche für Schule und Reisen (`bedruckte-tragetasche-fur-schule-und-reisen-995584`) | 5 | 5 | 7.09–11.44 | 26.90 | Cat Gray White Mini Version, Catgray White Standard Edition, Catgray White Large Version, Catgray White Upgraded Version |
 | Keramik Servierplatte rechteckig (`keramik-servierplatte-rechteckig-609600`) | 5 | 5 | 3.24–5.34 | 22.90 | 7 Inch Dinner Plate, 8.5inch Shallow Plate, 9.5 Inch Deep Plates, 9 Inch Dinner Plate |
 | Uhrenarmband aus Kautschuk mit Dornschliesse (`uhrenarmband-aus-kautschuk-mit-dornschliesse-519744`) | 5 | 5 | 3.56–3.56 | 22.90 | Black line-20mm, White line-20mm, Red thread-20mm, Blue line-20mm |
-| Schiessdecke Training 200x75 cm 1000D Nylon (`schiessdecke-training-200x75-cm-1000d-nylon-b8ed7f`) | 5 | 5 | 12.65–12.65 | 27.90 | Black, Khaki, Camouflage A, Ruin camouflage |
+| Outdoor-Reiserucksack (`outdoor-reiserucksack-5c9abf`) | 5 | 0 | 13.11–17.0 | 39.90 | Grey, Light grey ozuko, Black ozuko, Black |
+| Grosser Rucksack mit Kontrastfarben für Männer (`grosser-rucksack-mit-kontrastfarben-fur-manner-624100`) | 5 | 5 | 6.47–6.47 | 25.90 | Black-47cm X 32cm X 18cm, Blue-47cm X 32cm X 18cm, Gray-47cm X 32cm X 18cm, Green-47cm X 32cm X 18cm |
+| Nylon Brusttasche mit Reissverschluss, wasserdicht (`nylon-brusttasche-mit-reissverschluss-wasserdi-356608`) | 5 | 5 | 3.93–3.93 | 16.90 | Khaki, Navy Blue, Green, Black |
 | Freizeit-Schultertasche (`freizeit-schultertasche-520770`) | 4 | 4 | 5.8–5.8 | 14.90 | Pink, Black, Gray, Whirt |
 | Ma Pi Brusttasche aus Echtleder (`ma-pi-brusttasche-aus-echtleder-611900`) | 4 | 4 | 28.36–32.67 | 56.90 | Crazy Horse Coffee-17x8x31.5cm, Black-17x8x31.5cm, Rub Color-17x8x31.5cm, Brown-17x8x31.5cm |
 | HD8ultra Smartwatch mit Bluetooth-Telefonie (`hd8ultra-smartwatch-mit-bluetooth-telefonie-608300`) | 4 | 4 | 16.58–16.58 | 36.90 | Black Belt, Blue Ribbon, Orange Belt, Leucorrhea |
@@ -1041,15 +1030,8 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Handbemalte Blumen-Press-On Nägel (`handbemalte-blumen-press-on-nagel-586688`) | 4 | 4 | 19.53–19.53 | 38.90 | XS-As Shown In The Figure Shape, S-As Shown In The Figure Shape, M-As Shown In The Figure Shape, L-As Shown In The Figure Shape |
 | 16er Silikon-Organizer für Lippenstifte (`16er-silikon-organizer-fur-lippenstifte-f78848`) | 4 | 0 | 3.62–3.62 | 22.90 | Light blue, Blue, Purple, Pink |
 | Luftdruck-Korkenzieher für Weinflaschen (`luftdruck-korkenzieher-fur-weinflaschen-981056`) | 4 | 4 | 3.38–6.73 | 22.90 | Red, Gold, Silver, ABS |
-| Handbemalte Baishan Teeblüten-Nägel (`handbemalte-baishan-teebluten-nagel-106304`) | 4 | 4 | 21.06–21.06 | 42.90 | Camellia-XS, Camellia-S, Camellia-M, Camellia-L |
-| Armband für Apple Watch mit Strass (`armband-fur-apple-watch-mit-strass-513792`) | 4 | 4 | 6.78–6.78 | 26.90 | Silver-38to40mm, Silver-42to44mm, Rose Gold-38to40mm, Rose Gold-42to44mm |
-| Handbemalte Press-on-Nägel mit Lotus (`handbemalte-press-on-nagel-mit-lotus-708032`) | 4 | 4 | 22.58–22.58 | 43.90 | As shown picture-S, As shown picture-XS, As shown picture-M, As shown picture-L |
 | Keramik-Butterdose mit Deckel (`keramik-butterdose-mit-deckel-606600`) | 4 | 4 | 11.86–14.66 | 32.90 | Green Polka, Green Bohemian, Birds And Flowers, Peony Flower |
-| Wasserdichte Angelruten- und Zubehörtasche (`wasserdichte-angelruten-und-zubehortasche-1f779a`) | 4 | 4 | 7.18–8.83 | 37.90 | 80cm, 100cm, 90cm, 120cm |
-| Kompakte Kosmetiktasche mit Blumenmuster (`kompakte-kosmetiktasche-mit-blumenmuster-604800`) | 4 | 4 | 3.48–3.48 | 22.90 | White, Pink, Yellow, Blue |
 | Offensives Carbon-Badmintonschläger (`offensives-carbon-badmintonschlager-370496`) | 4 | 4 | 12.28–12.28 | 32.90 | Moye Black Line, Moye Green Line, Gangster black line, Dry powder line |
-| Edles Holz-Tablett für Nüsse und Süssigkeiten (`edles-holz-tablett-fur-nusse-und-sussigkeiten-605300`) | 4 | 4 | 29.52–51.08 | 82.90 | Style 1, Style 2, Style 3, Style 4 |
-| U-förmiges Nackenkissen für Autositz mit Memory Foam (`u-formiges-nackenkissen-fur-autositz-mit-memor-016128`) | 4 | 4 | 5.43–5.43 | 24.90 | Apricot gray, Apricot black, Dark grey, Pure black |
 | Racing Sportwagen Bausteine · XL-Modell (`racing-sportwagen-bausteine-xl-modell-329472`) | 4 | 4 | 40.88–63.31 | 110.90 | GTR Static Version, GTR Car Lights, GTR APP Dual Remote Control, GTR Lighting APP Double Watch |
 | Handy-Kühler mit leisem Lüfter (`handy-kuhler-mit-leisem-lufter-366272`) | 4 | 4 | 3.05–13.46 | 22.90 | A, B, C, E |
 | Handgemachtes Meerjungfrau-Ozean Nagel-Set (`handgemachtes-meerjungfrau-ozean-nagel-set-544640`) | 4 | 4 | 2.23–2.23 | 19.90 | Extra Small XS-Mermaid Ocean, Small Size S-Mermaid Ocean, Medium M-Mermaid Ocean, Large L-Mermaid Ocean |
@@ -1082,6 +1064,13 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Keramik-Vorratsdose für Gewürze (`keramik-vorratsdose-fur-gewurze-736000`) | 4 | 4 | 4.01–5.8 | 23.90 | Chiba 670ml, Chiba 1200ml, Little Yellow Flower 670ml, Little Yellow Flower 1200ml |
 | Blush 4 Farben – Retouching Kontur (`blush-4-farben-retouching-kontur-2a8863`) | 4 | 4 | 3.75–3.75 | 23.90 | 01style, 03style, 02style, 04style |
 | Transparentes Puder für mattes Finish (`transparentes-puder-fur-mattes-finish-2eca22`) | 4 | 4 | 4.35–4.35 | 23.90 | Banana, Medium dee, Beige, Translucent |
+| Reisebeutel mit Smartphone-Fach – schwarz (`reisebeutel-mit-smartphone-fach-schwarz-085994`) | 4 | 4 | 5.14–6.29 | 25.90 | Black PU leather, Dark grey, Black gray plus size, Khaki |
+| Reiserucksack für Schüler, 40×30×20 cm (`reiserucksack-fur-schuler-40-30-20-cm-635800`) | 4 | 4 | 6.42–6.42 | 31.90 | 9811 Black-40X30X20, White 9811-40X30X20, Gray 9811-40X30X20, Gray Brown 9811-40X30X20 |
+| Reise-Tasche aus Originalleder – grosse Kapazität (`reise-tasche-aus-originalleder-grosse-kapazita-610200`) | 4 | 4 | 49.59–49.59 | 99.90 | Black-48.3x25x29cm, Coffee-48.3x25x29cm, Deep Coffee-48.3x25x29cm, Brown-48.3x25x29cm |
+| Robuster Outdoor-Rucksack 36-55L (`robuster-outdoor-rucksack-36-55l-609200`) | 4 | 4 | 14.1–14.1 | 47.90 | Black, Army Green, Brown, Camouflage Color |
+| Nylon Outdoor Rucksack 36-55L – wasserdicht, atmungsaktiv (`nylon-outdoor-rucksack-36-55l-wasserdicht-atmu-620400`) | 4 | 4 | 9.12–9.12 | 29.90 | Black-36to55L, Rose Red-36to55L, Blue-36to55L, Green With Orange-36to55L |
+| Wasserdichter Canvas-Rucksack mit Batik-Muster (`wasserdichter-canvas-rucksack-mit-batik-muster-474112`) | 4 | 4 | 21.21–21.21 | 48.90 | Army Green, Khaki, Dark Gray, Yellowish Brown |
+| Outdoor-Mountaineering-Rucksack 56–75 L (`outdoor-mountaineering-rucksack-56-75-l-402368`) | 4 | 4 | 11.02–11.02 | 40.90 | Black, Red, Dark Blue, Army Green |
 | Nackenstützkissen mit Massageperlen (`nackenstutzkissen-mit-massageperlen-609000`) | 3 | 3 | 5.2–5.51 | 22.90 | Low Loft Pillow, Medium Pillow, High Pillow |
 | Velo-Scheinwerfer mit USB-Ladefunktion (`velo-scheinwerfer-mit-usb-ladefunktion-725376`) | 3 | 3 | 6.1–16.78 | 22.90 | Standard Model, Upgrade, Flagship |
 | Ausziehbares Staufach für Mittelkonsole (`ausziehbares-staufach-fur-mittelkonsole-634700`) | 3 | 3 | 5.47–5.47 | 14.90 | Old Style, New And Refreshed Model, ModelY YL |
@@ -1211,18 +1200,11 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Rucksack Damen Crazy Horse Leder (`rucksack-damen-crazy-horse-leder-5cc354`) | 3 | 3 | 56.45–56.45 | 93.90 | Retro Brown, Dark brown, Black |
 | GTR Racing Bausteine für Kinder (`gtr-racing-bausteine-fur-kinder-655104`) | 3 | 3 | 21.06–21.06 | 60.90 | 911 Open Sports Car, GTR God Of War, Pagani Son Of Wind |
 | All-in-One Palette für Augen & Teint (`all-in-one-palette-fur-augen-teint-288000`) | 3 | 3 | 16.86–16.86 | 37.90 | 1083almond roasted milk, 1084tobacco powder tea dew, 1085cloudy bean paste |
-| Anti-Umkipp-Futternapf für Haustiere (`anti-umkipp-futternapf-fur-haustiere-506432`) | 3 | 3 | 3.14–3.14 | 22.90 | White, Pink, Blue |
 | Wasserdichte Quarzuhr im Sport-Design (`wasserdichte-quarzuhr-im-sport-design-819904`) | 3 | 3 | 3.02–3.02 | 22.90 | Silver with black face, Black with white noodles, Black belt black face |
 | Personalisierte wasserdichte Herrenuhr (`personalisierte-wasserdichte-herrenuhr-766080`) | 3 | 3 | 5.76–5.76 | 25.90 | White shell white noodles, White shell black surface, White shell blue surface |
 | Flüssiger Body & Face Highlighter (`flussiger-body-face-highlighter-942656`) | 3 | 3 | 2.44–2.44 | 21.90 | Rose Gold, Metallic Gold, Glistening Bronze |
 | Vintage Desktop Aufbewahrungsbox aus Walnussholz (`vintage-desktop-aufbewahrungsbox-aus-walnussho-634700`) | 3 | 3 | 12.66–25.5 | 35.90 | With Lock-S, With Lock-L, Without Lock-S |
-| Elegante Glas-Obstschale (`elegante-glas-obstschale-603200`) | 3 | 3 | 11.44–16.42 | 87.90 | 23 cm-Transparent, 33.5 cm-Transparent, 35cm-Transparent |
 | Holzbox Hochglanz Palisander-Optik (`holzbox-hochglanz-palisander-optik-616600`) | 3 | 1 | 3.07–3.07 | 22.90 | Pineapple Flower Pattern, Black Plaid, New Wood Grain Color |
-| Herren Canvas Umhängetasche (`herren-canvas-umhangetasche-f9ea92`) | 3 | 3 | 24.03–24.03 | 50.90 | Army Green, Khaki, Gray |
-| Minimalistisches Doppelreihen-Mesh Armband (`minimalistisches-doppelreihen-mesh-armband-612800`) | 3 | 2 | 6.27–8.92 | 28.90 | 18cm-18K-SY H242, 20cm-18K-SY H242, 18cm-18K-H244 |
-| Power Hooks für Gewichtheben & Kniebeugen (`power-hooks-fur-gewichtheben-kniebeugen-548416`) | 3 | 3 | 4.49–4.49 | 23.90 | Blue, Red, Black |
-| Känguru Umhängetasche für Herren (`kanguru-umhangetasche-fur-herren-407c3c`) | 3 | 3 | 7.42–7.75 | 27.90 | Black-small, Brown-small, Brown-big |
-| DIY-Baumwollstoff mit Tiermuster (`diy-baumwollstoff-mit-tiermuster-485376`) | 3 | 3 | 6.17–6.17 | 25.90 | Style1, Style2, Style3 |
 | Rechteckiges Teetablett aus Massivholz (`rechteckiges-teetablett-aus-massivholz-0441d4`) | 3 | 3 | 3.37–7.13 | 22.90 | Walnut-30x12cm, Walnut-2pcs set, Walnut-25x12cm |
 | Langanhaltendes, wasserfestes Puder (`langanhaltendes-wasserfestes-puder-692864`) | 3 | 3 | 5.51–5.51 | 25.90 | Ivory, Light skinned, Natural color |
 | Mobiles Mikroskop 150X mit LED und Lederetui (`mobiles-mikroskop-150x-mit-led-und-lederetui-558464`) | 3 | 3 | 2.54–2.54 | 21.90 | 40, 80, 100 |
@@ -1236,6 +1218,14 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | ZEESEA Lidschatten-Palette 16 Farben (`zeesea-lidschatten-palette-16-farben-be3110`) | 3 | 1 | 13.07–13.07 | 33.90 | 3style, 2style, 1style |
 | Weihnachtsornamente aus Stroh – Elch, Eichhörnchen, Reh (`weihnachtsornamente-aus-stroh-elch-eichhornche-613600`) | 3 | 3 | 11.44–11.44 | 31.90 | Fox, Squirrel, Deer |
 | Grosses Crossbody für Herren – urbanes Minimaldesign (`grosses-crossbody-fur-herren-urbanes-minimalde-639700`) | 3 | 3 | 20.66–20.66 | 40.90 | Elegant Black, Gray And Blue Contrast Color, Sky Blue |
+| Rolltop-Reiserucksack Business, 20-35 l, wasserabweisend (`rolltop-reiserucksack-business-20-35-l-wassera-637900`) | 3 | 3 | 7.47–7.47 | 29.90 | Black, Green, Gray |
+| Grosses Handgepäck mit Trocken-Feucht-Trennung (`grosses-handgepack-mit-trocken-feucht-trennung-623500`) | 3 | 3 | 8.16–8.16 | 28.90 | Gray-47x26x24cm, Black-47x26x24cm, Green-47x26x24cm |
+| Crossbody Tasche Herren – leicht, gross (`crossbody-tasche-herren-leicht-gross-627000`) | 3 | 3 | 3.27–3.27 | 16.90 | Gray, Black, Blue |
+| Unisex-Rucksack College-Style mit grosser Kapazität (`unisex-rucksack-college-style-mit-grosser-kapa-610400`) | 3 | 3 | 10.45–10.45 | 37.90 | Light Brown, Black, Dark Brown |
+| Trekking-Rucksack für Outdoor-Sport (`trekking-rucksack-fur-outdoor-sport-617900`) | 3 | 3 | 3.86–3.86 | 16.90 | Light Blue-20 35L, Black-20 35L, Green-20 35L |
+| Leichter wasserdichter Rucksack für Herren (`leichter-wasserdichter-rucksack-fur-herren-979712`) | 3 | 3 | 19.57–21.23 | 54.90 | Black-49cmx32cmx18cm, Gray-49cmx32cmx18cm, Dark Blue-49cmx32cmx18cm |
+| Grosse Tragetasche für Reisen – Schultertasche Herren (`grosse-tragetasche-fur-reisen-schultertasche-h-602400`) | 3 | 3 | 6.97–6.97 | 24.90 | Gray, Black, Yellow |
+| Rucksack aus Canvas – schlicht, robust (`rucksack-aus-canvas-schlicht-robust-770560`) | 3 | 3 | 26.42–27.22 | 63.90 | Green, Black grey, Khaki |
 | Magnetisches Schnellverschluss Holster für Herren (`magnetisches-schnellverschluss-holster-fur-her-601900`) | 2 | 2 | 4.19–13.27 | 24.90 | Black A model-27 X 20 X 5.5, Black B model-27 X 20 X 5.5 |
 | 4-in-1 Cartoon Game USB Hub (`4-in-1-cartoon-game-usb-hub-646100`) | 2 | 2 | 3.34–3.34 | 15.90 |  USBA  TO  TYPE C, TYPE C  TO  TYPE C |
 | Rundes Stein- und Metallarmband 2er Set (`rundes-stein-und-metallarmband-2er-set-636200`) | 2 | 2 | 4.33–4.33 | 15.90 | Brown, Blue |
@@ -1343,17 +1333,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Langanhaltende Lidschatten-Palette mit neun Farben (`langanhaltende-lidschatten-palette-mit-neun-fa-731456`) | 2 | 2 | 25.22–25.22 | 46.90 | 01sweet talk, 02champagne cocoa |
 | Tricolor Kontur Puderpalette (`tricolor-kontur-puderpalette-878784`) | 2 | 2 | 2.25–2.25 | 21.90 | 5401601Nose Shadow Contouring, 5401602Shadow Contouring |
 | Turm von Hanoi Wackelturm (`turm-von-hanoi-wackelturm-953600`) | 2 | 2 | 3.08–3.08 | 22.90 | Smiling Face Rocking Tower, Lion Rainbow Tower Presale |
-| Ton-Schmortopf für Reis und Eintöpfe (`ton-schmortopf-fur-reis-und-eintopfe-09f11d`) | 2 | 0 | 24.74–33.52 | 76.90 | 2500ml, 1500ml |
-| Vielseitiges Moissanit Armband aus 925er Silber (`vielseitiges-moissanit-armband-aus-925er-silbe-626700`) | 2 | 2 | 15.18–24.81 | 35.90 | Platinum-925 Silver, Gold-925 Silver |
-| Knieschoner zur Patella-Fixation (`knieschoner-zur-patella-fixation-676800`) | 2 | 2 | 5.96–5.96 | 39.90 | Black-L, Black-XL |
-| Holz-Etagere für Kuchen und Desserts (`holz-etagere-fur-kuchen-und-desserts-a8fc46`) | 2 | 2 | 7.98–10.32 | 30.90 | Black-M, Black-S |
 | Doppel-Rucksack im koreanischen Business-Stil (`doppel-rucksack-im-koreanischen-business-stil-26d546`) | 2 | 1 | 9.0–11.0 | 32.90 | Black-Litchi grain, Black-Smooth version |
-| Brusttasche aus pflanzlich gegerbtem Leder (`brusttasche-aus-pflanzlich-gegerbtem-leder-529088`) | 2 | 2 | 16.17–17.66 | 36.90 | Black-S, Black-L |
-| Verstellbares dreilagiges Armband, vergoldet (`verstellbares-dreilagiges-armband-vergoldet-620700`) | 2 | 2 | 2.54–2.54 | 21.90 | Gold, Silver |
-| Langanhaltende Lidschatten-Palette (`langanhaltende-lidschatten-palette-731136`) | 2 | 2 | 2.25–2.25 | 21.90 | Pink, Grey |
-| Elektrischer Grill für den Haushalt (`elektrischer-grill-fur-den-haushalt-a375c9`) | 2 | 2 | 5.61–5.61 | 60.90 | Black-EU-41x23cm, Black-US-41x23cm |
-| Wave Shield Sandstrahldüse Keramik (`wave-shield-sandstrahlduse-keramik-694464`) | 2 | 2 | 0.6–0.6 | 19.90 | Pink-A, Pink-B |
-| Herren-Quarzuhr mit Leuchtzeigern (`herren-quarzuhr-mit-leuchtzeigern-042368`) | 2 | 2 | 12.59–12.59 | 32.90 | Black, Brown |
 | Hundeleine mit Brustgeschirr, Nylon, div. Grössen (`hundeleine-mit-brustgeschirr-nylon-div-grossen-7622bc`) | 2 | 2 | 7.16–9.05 | 26.90 | gray-75 105cm, gray-120 150cm |
 | Sägeblätter mit Löchern für Holz, Emery, Jade · 10 Stück (`sageblatter-mit-lochern-fur-holz-emery-jade-859776`) | 2 | 2 | 1.55–1.93 | 20.90 | 22mm, 25mm |
 | Uhrenbox aus Massivholz (2er-Pack) (`uhrenbox-aus-massivholz-2er-pack-034496`) | 2 | 2 | 20.1–20.1 | 46.90 | Yellow, Coffee |
@@ -1364,3 +1344,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Runde Servierplatte aus Canvas (`runde-servierplatte-aus-canvas-625200`) | 2 | 2 | 2.9–4.49 | 22.90 | 8 inchs Round Shallow Plate, 10  inchs  Round Shallow Plate |
 | Keramik-Teeteller "Japanische Landschaft" (`keramik-teeteller-japanische-landschaft-616200`) | 2 | 2 | 5.32–5.32 | 24.90 | Muchun, Twilight |
 | Abnehmbarer Sandsack mit Gewicht (`abnehmbarer-sandsack-mit-gewicht-890944`) | 2 | 2 | 4.82–6.48 | 55.90 | Black-2.5LB, Black-5LB |
+| Einzelhals-Einsteigertasche aus Echtleder (`einzelhals-einsteigertasche-aus-echtleder-641100`) | 2 | 2 | 30.68–30.68 | 56.90 | Brown, Dark Brown |
+| Wasserdichter Rucksack 20-35L für Herren (`mannlicher-wasserdichter-rucksack-20-35l-606500`) | 2 | 2 | 8.13–8.13 | 27.90 | 2308 Black, 2308 Gray Style |
+| Mechanischer Schulterrucksack für Männer (`mechanischer-schulterrucksack-fur-manner-526016`) | 2 | 1 | 12.94–12.94 | 31.90 | Black, Gray |

@@ -22,3 +22,5 @@ Quelle: `automation/besuchte_seiten_lieferbar.py`. DRAFT erst nach zwei unabhän
 | `usb-ladebares-lithium-batterie-set-aa-183360` | ✅ DRAFT gesetzt 2026-10-14 (zweites NEIN) | KEINE Versandoption (Gewicht 120.0 g) · 2. Messung bestaetigt | `CJ-1622471015383183360` |
 | `pgm-golfschlager-holz-fur-damen-und-herren-604000` | ⏳ erstes NEIN (2026-10-15) — Draft beim nächsten NEIN (≥ 12 h später) | KEINE Versandoption (Gewicht 520.0 g) · 2. Messung bestaetigt | `CJ-2608071241571604000` |
 | `faltbarer-spinnenfanger-mit-langem-stiel-618300` | ⏳ erstes NEIN (2026-10-15) — Draft beim nächsten NEIN (≥ 12 h später) | KEINE Versandoption (Gewicht 226.0 g) · 2. Messung bestaetigt | `CJYD263656902BY` |
+| `pgm-golfschlager-holz-fur-damen-und-herren-604000` | ✅ DRAFT gesetzt 2026-10-19 (zweites NEIN) | KEINE Versandoption (Gewicht 520.0 g) · 2. Messung bestaetigt | `CJ-2608071241571604000` |
+| `faltbarer-spinnenfanger-mit-langem-stiel-618300` | ✅ DRAFT gesetzt 2026-10-19 (zweites NEIN) | KEINE Versandoption (Gewicht 226.0 g) · 2. Messung bestaetigt | `CJYD263656902BY` |
