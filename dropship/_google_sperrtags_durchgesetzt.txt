@@ -898,3 +898,5 @@
 2026-10-14T15:57:07Z	gid://shopify/Product/16617703014791	waffe-pruefen	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	ak74-zielfernrohrbrucke-aus-metall-89140c
 2026-10-14T16:30:34Z	gid://shopify/Product/16638242226567	kostuem	Google & YouTube	samtumhang-fur-kostum-halloween-632500
 2026-10-15T23:59:01Z	gid://shopify/Product/16642981855623	waffe-pruefen	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	magazinbeutel-fur-feldweste-aus-1000d-nylon-613400
+2026-10-19T05:40:50Z	gid://shopify/Product/15454235394433	google-policy-flag	Google & YouTube	selbstausloser-mit-licht-613000
+2026-10-19T05:40:51Z	gid://shopify/Product/16651339497863	waffe-pruefen	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	laser-handschutz-fur-1911-pistole-schwarz-7ee884

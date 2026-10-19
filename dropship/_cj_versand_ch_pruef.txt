@@ -10150,3 +10150,8 @@ anti-diebstahl-karten-und-ausweishalter-leder-626300	2512190818071626500	16	5.41
 memory-foam-heizkissen-604000	2604100800281604500	16	15.81	ok	landeseite
 wasserdichter-huftbeutel-625500	2508030741221625700	16	8.79	ok	landeseite
 smart-armbanduhr-mit-herzfrequenz-und-blutsaue-607600	2507220546321607900	6	7.30	ok	landeseite
+manner-geldborse-mit-rfid-schutz-636900	2512170754421637200	16	5.81	ok	landeseite
+baby-seitenliege-und-anti-roll-kissen-604200	2604100714301604600	16	6.01	ok	landeseite
+multifunktionale-huft-brusttasche-628400	2508010833241628700	16	8.79	ok	landeseite
+tragbarer-kleiner-dampfglatter-weiss-625300	2605180158461625800	11	53.25	ok	landeseite
+gesundheits-armband-mit-herzfrequenzmessung-601700	2507190753361601900	7	7.30	ok	landeseite
