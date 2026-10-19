@@ -10461,3 +10461,6 @@ sicherheitsweste-mit-warnlicht-875520	1420319376837578752	7	9.23	ok	landeseite
 7-in-1-gesichtsreiniger-lifter-216832	1367305186590199808	7	9.37	ok	landeseite
 gerade-geschnittene-loose-jeans-629100	2607080741211629700	16	12.21	ok	landeseite
 retro-hip-hop-hosen-mit-buchstaben-druck-618700	2607060916141619400	16	11.37	ok	landeseite
+kleiner-outdoor-lufter-fur-camping-619400	2605210156361610100	7	31.16	ok	landeseite
+stretch-jeans-mit-weiter-passform-633900	2607060856031634600	16	11.00	ok	landeseite
+rf-ionen-gesichtsbehandlungsgerat-mit-lichtthe-152128	1362597208356163584	7	9.69	ok	landeseite
