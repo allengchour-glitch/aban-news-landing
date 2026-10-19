@@ -9857,3 +9857,13 @@ dual-kamera-modell-911106	-	-	-	unklar pid 1602002 Product has been removed from
 edelstahl-3d-katzenpendant-mit-blumenkranz-uni-600700	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 led-gesichtsmaske-fur-schone-haut-620800	2603210225521621200	7	19.12	ok	landeseite
 sicherheitshelm-mit-rucklicht-032064	1463760376293363712	7	18.35	ok	landeseite
+funf-finger-upstream-schwimmschuhe-354496	1400722552199974912	16	12.56	ok	landeseite
+fahrradhelm-mit-licht-fur-sommer-128192	1452121691500187648	7	12.87	ok	landeseite
+druckspruher-fur-unterwegs-305792	1768831088958386176	7	7.70	ok	landeseite
+kinder-kart-helm-515520	1449976593916235776	16	33.95	ok	landeseite
+hochtouren-stiefel-184768	1399560778180333568	16	17.16	ok	landeseite
+infrarot-gesichtsbehandlungsgerat-393664	1746256641126834176	7	17.94	ok	landeseite
+fahrradhelm-mit-integriertem-licht-844416	1444927394501758976	16	8.11	ok	landeseite
+herren-fashion-shirt-mit-print-634100	2606170400311634700	16	7.43	ok	landeseite
+aromadiffuser-mit-glas-wasserbehalter-507840	1745642338082365440	7	13.34	ok	landeseite
+wanderschuhe-furs-wasser-643264	1393911305580187648	16	11.96	ok	landeseite
