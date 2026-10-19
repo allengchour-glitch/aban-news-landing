@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-19 18:17 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-19 19:34 UTC)
 
-Suche: `status:active AND created_at:>=2026-10-16` · gemessen 288 · **115 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 108, teilweise: 5, keine: 2; Preisspanne > 2×: 20) · 1 CJ-Variante: 173 · ohne Antwort: 0
+Suche: `status:active AND created_at:>=2026-10-16` · gemessen 295 · **120 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 113, teilweise: 5, keine: 2; Preisspanne > 2×: 21) · 1 CJ-Variante: 175 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -97,6 +97,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Iris-Blumenring (`iris-blumenring-631400`) | 4 | 4 | 2.11–2.11 | 16.90 | Iris Flower Ring 6028-No 6, Iris Flower Ring 6028-No 7, Iris Flower Ring 6028-No 8, Iris Flower Ring 6028-No 9 |
 | Männer-Quarz-Uhr mit quadratischem Zifferblatt (`manner-quarz-uhr-mit-quadratischem-zifferblatt-614400`) | 4 | 4 | 14.76–14.76 | 23.90 | Wine Red-Quartz Watch, Green-Quartz Watch, Dark Blue-Quartz Watch, Coffee With A Gray Disc-Quartz Watch |
 | Dumpling-Mold-Set 3D-gedruckt – Quadrat, Kreis, Herz (`dumpling-mold-set-3d-gedruckt-quadrat-kreis-he-620800`) | 4 | 4 | 3.09–9.44 | 27.90 | Square, Round, Heart Shape, Combination |
+| Tassen-Ständer mit 2 Ebenen – Kunststoff (`tassen-stander-mit-2-ebenen-kunststoff-631500`) | 4 | 4 | 4.56–6.25 | 53.90 | Beige-Large Size, Beige-Small Size, Black-Large Size, Black-Small Size |
 | Wasserdichte Angelrucksack aus TPU-Gewebe (`wasserdichte-angelrucksack-aus-tpu-gewebe-621700`) | 3 | 3 | 12.43–22.39 | 45.90 | Small Size, Large Size, Waterproof Rucksack |
 | Rucksack Street Leisure – 20-35 L, wasserdicht (`rucksack-street-leisure-20-35-l-wasserdicht-607700`) | 3 | 3 | 13.1–16.42 | 48.90 | Black-Commuter payment, Black-Expansion payment, Black-Upgraded Version |
 | Anti-Diebstahl-Computerrucksack 20 L (`anti-diebstahl-computerrucksack-20-l-627500`) | 3 | 3 | 37.98–37.98 | 76.90 | Deep Space Black, Silver White, Silver Gray |
@@ -108,6 +109,8 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Halskette mit Kor, Türkis und Muschelperlen (`halskette-mit-kor-turkis-und-muschelperlen-635200`) | 3 | 3 | 4.3–5.18 | 16.90 | Necklace, Bracelet, Ear Studs |
 | Uhrenaufbewahrungsbox aus Rindleder – braun (`uhrenaufbewahrungsbox-aus-rindleder-braun-603800`) | 3 | 3 | 19.79–32.12 | 49.90 | Brown-2Person , Brown-3Person , Brown-4Person  |
 | 30-Stückes Makeup-Pinselset mit Silikonborsten · 30 Stück (`30-stuckes-makeup-pinselset-mit-silikonborsten-624500`) | 3 | 3 | 10.54–10.54 | 23.90 | Black Silver Tube, Pink Silver Tube, Silver |
+| Verriegelbare Schmuckschatulle aus Samt (`verriegelbare-schmuckschatulle-aus-samt-628200`) | 3 | 3 | 3.86–3.86 | 16.90 | Gray, Sapphire Blue, Green |
+| Grosser Aufbewahrungstote für Outdoor-Reisen (`grosser-aufbewahrungstote-fur-outdoor-reisen-620100`) | 3 | 3 | 17.75–17.75 | 34.90 | Beige-Customized, Army Green-Customized, Black-Customized |
 | Business-Rucksack mit Passwort-Gürtelverschluss (`business-rucksack-mit-passwort-gurtelverschlus-616900`) | 2 | 2 | 29.52–32.84 | 77.90 | Black Airbag, Black Airbag Air Pump |
 | Frosted Fahrrad-Rennrucksack (`frosted-fahrrad-rennrucksack-073600`) | 2 | 2 | 6.56–6.56 | 17.90 | Frosted Style, Carbon pattern |
 | Grosses Casual-Rucksack mit PU-Leder und Buchstaben-Print (`grosses-casual-rucksack-mit-pu-leder-und-buchs-609664`) | 2 | 2 | 7.63–7.63 | 33.90 | Patterned Black, Large Plaid Flower |
@@ -121,3 +124,5 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | LED-Streifen 12V für Deckenbeleuchtung (`led-streifen-12v-fur-deckenbeleuchtung-609000`) | 2 | 2 | 3.35–3.86 | 23.90 | 2m-US, 5m-US |
 | Zwei-Farb-Chronograph-Uhr mit Lederarmband (`zwei-farb-chronograph-uhr-mit-lederarmband-608800`) | 2 | 2 | 7.64–7.64 | 16.90 | Rose Gold Shell Blue Surface, Silver Case Beige Noodles |
 | Quadratische Durchsicht-Uhr mit Openwork-Design (`quadratische-durchsicht-uhr-mit-openwork-desig-629000`) | 2 | 2 | 10.59–10.59 | 19.90 | Black With Silver Surface, Black With Gold Noodles |
+| Grossäugige Cartoon-Aufbewahrungsbox 24 cm (`grossaugige-cartoon-aufbewahrungsbox-24-cm-600700`) | 2 | 2 | 6.77–8.51 | 25.90 | 24cm Storage Box, 30cm Storage Box |
+| Acryl-Eiscreme-Ständer Transparent (`acryl-eiscreme-kegelstandiger-transparent-632400`) | 2 | 2 | 2.57–5.2 | 18.90 | Transparent-2PCS, Transparent-1PCS |

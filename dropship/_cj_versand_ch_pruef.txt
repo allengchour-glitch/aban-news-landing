@@ -10958,3 +10958,6 @@ einfarbiges-minimalistisch-kleid-635900	2607080224211636500	16	11.00	ok	landesei
 kleiderschrank-aus-metall-618100	2501060641041618300	11	39.51	ok	landeseite
 wasserdichte-sport-taille-bag-618200	2406120801401618400	16	7.43	ok	landeseite
 prinzessin-lauflernschuhe-613800	2501020633321614000	16	5.41	ok	landeseite
+chic-bluse-mit-puffarmeln-612700	2607120159161613300	16	7.43	ok	landeseite
+wasserdichter-huftbeutel-im-camouflage-design-619100	2406100739051619300	16	6.25	ok	landeseite
+holz-garderobe-mit-rattan-629400	2412080258131620200	16	12.21	ok	landeseite
