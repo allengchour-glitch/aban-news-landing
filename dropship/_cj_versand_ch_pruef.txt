@@ -10777,3 +10777,13 @@ goldener-pferdekopf-waschbeckenarmatur-601100	2605120820191601700	16	19.65	ok	la
 herren-rucksack-fur-den-alltag-606100	2602050248141606400	16	26.44	ok	landeseite
 304-edelstahl-lotionspender-637800	2605090839301638300	16	7.99	ok	landeseite
 retro-rucksack-patchwork-619800	2602040424291610200	16	18.59	ok	landeseite
+buchenkleber-fur-kinder-407680	1621048483543265280	16	5.12	ok	landeseite
+stylischer-reisebackpack-628200	2602040309521628500	16	12.21	ok	landeseite
+gaze-badehandtuch-mit-tasseln-603100	2605090803391603700	16	9.47	ok	landeseite
+modernes-schmetterlingsbild-482752	1599582694348959744	3	9.21	ok	landeseite
+crossover-tasche-fur-herren-615500	2601300732521615900	16	8.25	ok	landeseite
+vierlagiges-gaze-tuch-613200	2605090723181613800	16	10.90	ok	landeseite
+stadtischer-rucksack-613100	2601291053171613400	16	13.16	ok	landeseite
+baumwoll-handtuch-schnell-trocknend-609200	2605070831351600100	16	9.47	ok	landeseite
+20-pp-trolleykoffer-623700	2508050516541623900	11	78.03	ok	landeseite
+bodenablauf-abdeckung-622500	2605070349521623000	16	6.33	ok	landeseite
