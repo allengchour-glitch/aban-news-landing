@@ -10837,3 +10837,4 @@ notfall-ladegerat-mit-radio-und-usb-601000	2512110739061601200	0	-	KEINE CH-Opti
 retro-sattel-tasche-623400	2501130341581623800	16	7.57	ok	landeseite
 damen-camisole-aus-ramie-baumwolle-612000	2607120539101612800	16	6.77	ok	landeseite
 handmassagegerat-mit-warme-635000	2512050225301635300	7	21.35	ok	landeseite
+herren-laufgurtel-622600	2412280206391623400	16	7.43	ok	landeseite
