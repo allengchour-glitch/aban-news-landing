@@ -467,3 +467,6 @@ name:vintage
 name:savana
 slug:geschenkset-men-s-collection-fgaac6053442
 name:geschenksetmenscollection
+name:barque
+slug:einhornskelett-18-cm-fga910992
+name:einhornskelett18cm

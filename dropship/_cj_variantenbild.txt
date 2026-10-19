@@ -7542,3 +7542,8 @@ gid://shopify/Product/15473077387649	zugeordnet	2	Faltbarer Camping-Grill für 3
 gid://shopify/Product/15473077551489	zugeordnet	7	Lässiger Strickpullover mit Rundhals
 gid://shopify/Product/15473077617025	zugeordnet	8	Damen Strickshirt mit Halbturtleneck
 gid://shopify/Product/15473077649793	zugeordnet	3	Grauer doppelreihiger Wollpullover mit Stehkragen
+gid://shopify/Product/15473077748097	zugeordnet	96	Lässiger Strickmantel mit 3D-Effekt
+gid://shopify/Product/15473077944705	zugeordnet	55	Gerippter Cardigan mit Schalkragen
+gid://shopify/Product/15473078043009	zugeordnet	6	Blumiger Chiffon-Rock für junge Frauen
+gid://shopify/Product/15473084334465	bild-urls-tot
+gid://shopify/Product/15473084563841	bild-urls-tot
