@@ -2348,6 +2348,18 @@ def _geisterstop(fut, sym, cid, st, d=None, deckt=False):
     return False
 
 
+def _alt_deckt(erg, k, s, step):
+    """Deckt der im Buch bekannte alte Perp-Stop den heutigen Bedarf noch? Die Grösse des alten Stops kennt das Buch nicht; er wurde für den Netto-Short VOR den heutigen Aufträgen gesetzt. Den schätzt
+    diese Rechnung aus dem Stand jetzt (s: Position, Coins) minus den heute ausgeführten Aufträgen dieses Marktes (erg["auftraege"]): Short und Coins gestern → Netto-Short gestern. Ist der heutige Bedarf
+    (s["stop_perp"]) grösser, ist der Short heute gewachsen und der alte Stop deckt ihn nur teilweise — ein vielleicht angekommener neuer Stop (Geister-Stop) darf dann nicht gelöscht werden
+    (Folge-PR zur 14. Runde, Raster --geist: Perp-Liste unlesbar, der Short wuchs von 0 auf −0,5: 4'828 USDT ohne Stop, nachdem Pilot 2.0 den Geister-Stop gelöscht hatte)."""
+    auf = [a for a in (erg.get("auftraege") or []) if len(a) == 4 and a[0] == k]
+    summe = lambda konto, seite: sum(float(a[3] or 0) for a in auf if a[1] == konto and a[2] == seite)  # noqa: E731
+    short_vor = max(0.0, -s["pos"] - (summe("perp", "SELL") - summe("perp", "BUY")))
+    coins_vor = max(0.0, s["frei"] + s["gebunden"] - (summe("spot", "BUY") - summe("spot", "SELL")))
+    return max(0.0, short_vor - coins_vor) >= s["stop_perp"] - step / 2
+
+
 def _perp_merken(st, aid, cid):
     """Ein alter Perp-Stop liess sich nicht löschen (oder ein neuer kam vielleicht trotz Fehlermeldung an): im Buch merken. Das Buch
     kennt sonst nur EINEN Stop — bei unlesbarer Liste bliebe ein zweiter unbekannt (und zu gross) über der Absicherung stehen."""
@@ -2540,10 +2552,11 @@ def _perp_ohne_liste(fut, k, d, st, e, s, warn, gesetzt, gehandelt, ex, erg, les
     if fehler is not None:
         # kam der neue trotz Fehlermeldung an? Kennt das Buch einen bisherigen Stop, schützt der (wie bisher: der Geister-Stop wird über seine Kennung gelöscht, sonst stünden zwei);
         # sonst ist der Geister-Stop vielleicht der EINZIGE Schutz und bleibt, im Buch vermerkt (E26)
-        bekannt = alt_id is not None or bool(alt_cid)
+        bekannt = (alt_id is not None or bool(alt_cid)) and _alt_deckt(erg, k, s, regeln["step"])
         _geisterstop(fut, sym, cid, st, d, deckt=bekannt)
         warn(f"{k}: offene Perp-Stops nicht lesbar und Stop abgelehnt ({type(fehler).__name__}) — "
-             + ("der bisherige bleibt stehen" if bekannt else f"Short {soll:g} evtl. OHNE Stop (ein vielleicht angekommener Stop bleibt stehen)")
+             + ("der bisherige bleibt stehen" if bekannt else f"Short {soll:g} evtl. OHNE Stop" + (" (der bisherige deckt den heute gewachsenen Short nicht ganz)" if alt_id is not None or alt_cid else "")
+                + " — ein vielleicht angekommener Stop bleibt stehen")
              + ", bitte sofort prüfen!")
         return
     st["perp"], st["perp_cid"], st["p_short"] = r.get("algoId"), r.get("cid"), p_ok

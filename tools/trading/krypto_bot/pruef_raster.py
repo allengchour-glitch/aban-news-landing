@@ -18,6 +18,9 @@ Befunde (jeder ist ein Fehler):
   NACH_NK                    nach dem Lauf + der ungestörten Nachkontrolle bleibt etwas ohne Stop (Selbstheilung fehlt)
   NACH_LAUF_STILL            direkt nach dem Lauf ohne Stop und der Lauf warnte nicht
   NACH_LAUF_LAUT_OHNE_NK     direkt nach dem Lauf ohne Stop, der Lauf warnte, die Nachkontrolle tat aber nichts
+  SELBST_ENTFERNT            direkt nach dem Lauf fehlt Schutz, und Pilot 2.0 hat in diesem Markt selbst einen Stop der betroffenen Seite entfernt (gelöscht oder per cancelReplace storniert,
+                             ohne dass der Ersatz kam) — die Lücke war also nicht unvermeidbar (E26: der «Geister-Stop» eines gescheiterten Versuchs wurde gelöscht und war der einzige Schutz),
+                             auch wenn die Nachkontrolle sie später heilt
   UNBEKANNT_NACH_LAUF        an der Börse steht ein eigener Perp-Stop (Kennung p2a…), den das Buch weder als aktuellen Stop noch in seinem
                              Gedächtnis (perp_weitere) kennt, und er ist sichtbar (Erhaltungssatz «kein vergessener Stop»)
   UNBEKANNT_NACH_NK          dasselbe nach der Nachkontrolle — dann kennt ihn niemand mehr
@@ -34,6 +37,7 @@ Aufruf (PRUEF_STRENG=1 für die strenge Prüf-Börse):
   python3 -B pruef_raster.py VON BIS --haengend         # Konto ohne STOP_LOSS, die Spot-Stops hängen zu Beginn von Tag 1 (kombinierbar mit --kurs)
   python3 -B pruef_raster.py VON BIS --notaus           # Tag 1 ist der Not-Aus (kombinierbar mit --haengend und --kurs; Szenarien mit gleichem Tag 0 zählen einmal)
   python3 -B pruef_raster.py VON BIS --haengend --paare # nur die 10 Paare schreibender Störungen (z. B. mit --kurs: 4× so viele Zellen)
+  python3 -B pruef_raster.py VON BIS --geist            # dazu die 6 Paare «Perp-Stop kommt an, Antwort verloren × jede Wiederholung scheitert» (Geister-Stop, E26; mit --paare nur diese; kombinierbar mit --notaus)
 """
 from __future__ import annotations
 
@@ -75,6 +79,10 @@ SCHREIBEN_NOTAUS = [("POST", "/fapi/v1/order", None, "nach503", 3), ("POST", "/f
 HAENGEND_ERSETZEN = [("POST", "/api/v3/order/cancelReplace", None, "vor503", 10 ** 6), ("POST", "/api/v3/order/cancelReplace", None, "fehlt", 1)]
 HAENGEND_ZWEITE = [("DELETE", "/api/v3/order", None, "vor503", 3), ("DELETE", "/api/v3/order", None, "nach503", 1), ("DELETE", "/api/v3/order", None, "nach503", 3),
                    ("POST", "/api/v3/order", STOP_SPOT, "vor503", 3), ("POST", "/api/v3/order", STOP_SPOT, "nach503", 3)]
+#: Paare für --geist (Folge-PR, E26): der Perp-Stop kommt an, nur die Antwort geht verloren («nach503», ein- oder dreimal) — danach scheitert jede Wiederholung (Rate-Limit, 503 vor der Verarbeitung,
+#: Verbindungsabriss). Das ist der «Geister-Stop» des Befunds E26 (Not-Aus-Fuzzer-Seed 117727: Pilot 2.0 löschte ihn über die Kennung und stand ohne Stop da).
+GEIST_ERSTE = [("POST", "/fapi/v1/algoOrder", None, "nach503", 1), ("POST", "/fapi/v1/algoOrder", None, "nach503", 3)]
+GEIST_ZWEITE = [("POST", "/fapi/v1/algoOrder", None, "429", 10 ** 6), ("POST", "/fapi/v1/algoOrder", None, "vor503", 10 ** 6), ("POST", "/fapi/v1/algoOrder", None, "abriss_vor", 10 ** 6)]
 #: lesende Störungen: None oder (Methode, Pfad, Art, Anzahl)
 LESEN = [None, ("GET", "/fapi/v1/openAlgoOrders", "vor503", 8), ("GET", "/fapi/v1/openAlgoOrders", "vor503", 10 ** 6),
          ("GET", "/api/v3/openOrders", "vor503", 8), ("GET", "/api/v3/openOrders", "vor503", 10 ** 6),
@@ -183,6 +191,7 @@ def fall(sz, w, skip, r, modus, kurs=None, haengend=False, w2=None, notaus=False
     if notaus:
         return _messen_notaus(k, d, env, res, regeln_ende, log_na, haengt)
     nach_lauf = _befunde(k, d)
+    selbst = sorted({x[0] for x in nach_lauf if P._selbst_entfernt(log_na, x[1], x[0])})  # fehlender Schutz, obwohl Pilot 2.0 selbst einen Stop dieser Seite entfernt hat
     unbekannt_lauf = [u for u in unbekannte(k, d) if not u[2]]
     laut = bool(res.get("warnung"))
     try:  # welche Märkte hat der Lauf für die Nachkontrolle vermerkt?
@@ -197,7 +206,7 @@ def fall(sz, w, skip, r, modus, kurs=None, haengend=False, w2=None, notaus=False
     return {"nach_lauf": [(x[0], x[-2:] if len(x) > 2 else None) for x in nach_lauf][:3], "nach_nk": [(x[0], x[-2:]) for x in nach_nk][:3],
             "unbekannt_lauf": unbekannt_lauf[:3], "unbekannt_nk": unbekannt_nk[:3],
             "laut": laut, "nk_tat_etwas": bool(rn.get("zeilen")), "zeilen": [z[:150] for z in res["zeilen"] if "⚠" in z][:3], "haengt": haengt,
-            "schutz_offen": offen_lauf}
+            "schutz_offen": offen_lauf, "selbst_entfernt": selbst}
 
 
 def _messen_notaus(k, d, env, res, regeln, log_na, haengt):
@@ -219,7 +228,8 @@ def _messen_notaus(k, d, env, res, regeln, log_na, haengt):
     nach = [(b[0], b) for b in P.schutz_befunde(k, P.unklar_je_markt(d)) + P.folgeschaden(k)] if res2["alles_zu"] is not True else []
     r3 = P.sauber_schliessen(env, d)
     sauber_nicht = r3["alles_zu"] is not True or not P.flach(k)
-    return {"notaus": True, "nach_lauf": [(x[0], x[1][-2:]) for x in P.echte(vor)][:3], "nach_nk": [(x[0], x[1][-2:]) for x in P.echte(nach)][:3],
+    selbst = sorted({x[0] for x in P.echte(vor) if P._selbst_entfernt(log_na, x[1][1], x[1][0])})
+    return {"notaus": True, "selbst_entfernt": selbst, "nach_lauf": [(x[0], x[1][-2:]) for x in P.echte(vor)][:3], "nach_nk": [(x[0], x[1][-2:]) for x in P.echte(nach)][:3],
             "unbekannt_lauf": [], "unbekannt_nk": [], "laut": laut, "nk_tat_etwas": nk_tat, "falsch_alles_zu": falsch, "sauber_nicht_zu": sauber_nicht,
             "alles_zu_lauf": res["alles_zu"], "alles_zu_nk": res2["alles_zu"], "zeilen": [z[:150] for z in res["zeilen"] if "⚠" in z][:3], "haengt": haengt}
 
@@ -230,6 +240,8 @@ def klasse(e):
         return "FALSCH_ALLES_ZU"
     if e.get("sauber_nicht_zu"):
         return "SAUBER_NICHT_ZU"
+    if e.get("selbst_entfernt"):
+        return "SELBST_ENTFERNT"
     if e["nach_nk"]:
         return "NACH_NK"
     if e["unbekannt_nk"]:
@@ -243,16 +255,18 @@ def klasse(e):
     return None
 
 
-def zellen(haengend=False, notaus=False, nur_paare=False):
+def zellen(haengend=False, notaus=False, nur_paare=False, geist=False):
     """Die schreibenden Störungen des Rasters als [(Bezeichnung, w, w2, Zeitpunkte)]. Einzelne Störungen: 4 Zeitpunkte; mit --haengend dazu die zusätzlichen
     Einzelstörungen und die Paare (Ersetzen scheitert dauerhaft × Löschen/Not-Stop schief) mit je 2 Zeitpunkten; mit --notaus die Störungen des Not-Aus."""
     out = [(str(i), w, None, (0, 1, 2, 3)) for i, w in enumerate(SCHREIBEN + (SCHREIBEN_HAENGEND if haengend else []) + (SCHREIBEN_NOTAUS if notaus else []))]
     if haengend:
         out += [(f"P{i}.{j}", w1, w2, (0, 1)) for i, w1 in enumerate(HAENGEND_ERSETZEN) for j, w2 in enumerate(HAENGEND_ZWEITE)]
-    return [c for c in out if c[0].startswith("P")] if nur_paare else out
+    if geist:
+        out += [(f"G{i}.{j}", w1, w2, (0, 1)) for i, w1 in enumerate(GEIST_ERSTE) for j, w2 in enumerate(GEIST_ZWEITE)]
+    return [c for c in out if c[0][0] in "PG"] if nur_paare else out
 
 
-def raster(von, bis, ausgabe=None, melde=print, kurse=(None,), haengend=False, notaus=False, nur_paare=False):
+def raster(von, bis, ausgabe=None, melde=print, kurse=(None,), haengend=False, notaus=False, nur_paare=False, geist=False):
     """Szenarien von..bis-1 durchzählen → (Zähler, Funde). kurse: Kurssprünge der dritten Kopplung (None = ohne Sprung). haengend: Spot-Stops hängen zu Beginn von Tag 1.
     notaus: Tag 1 ist der Not-Aus (Szenarien mit gleichem Markt und gleichem Tag 0 zählen einmal)."""
     zaehler, funde = Counter(), []
@@ -263,7 +277,7 @@ def raster(von, bis, ausgabe=None, melde=print, kurse=(None,), haengend=False, n
             if sz[:2] in gesehen:
                 continue
             gesehen.add(sz[:2])
-        for wi, w, w2, skips in zellen(haengend, notaus, nur_paare):
+        for wi, w, w2, skips in zellen(haengend, notaus, nur_paare, geist):
             for skip in skips:
                 for ri, r in enumerate(LESEN):
                     for modus in (("bei_w", "anfang") if r is not None else ("bei_w",)):
@@ -303,11 +317,12 @@ def main(argv=None):
     haengend = "--haengend" in argv
     notaus = "--notaus" in argv
     nur_paare = "--paare" in argv
-    argv = [a for a in argv if a not in ("--kurs", "--haengend", "--notaus", "--paare")]
+    geist = "--geist" in argv
+    argv = [a for a in argv if a not in ("--kurs", "--haengend", "--notaus", "--paare", "--geist")]
     von, bis = int(argv[0]), int(argv[1])
     ausgabe = argv[2] if len(argv) > 2 else (f"pruef_raster{'_notaus' if notaus else ''}{'_haengend' if haengend else ''}{'_kurs' if kurse != (None,) else ''}"
-                                             f"{'_paare' if nur_paare else ''}{'_streng' if P.STRENG else ''}_{von}_{bis}.json")
-    zaehler, funde = raster(von, bis, ausgabe, kurse=kurse, haengend=haengend, notaus=notaus, nur_paare=nur_paare)
+                                             f"{'_paare' if nur_paare else ''}{'_geist' if geist else ''}{'_streng' if P.STRENG else ''}_{von}_{bis}.json")
+    zaehler, funde = raster(von, bis, ausgabe, kurse=kurse, haengend=haengend, notaus=notaus, nur_paare=nur_paare, geist=geist)
     echte = [f for f in funde if f["art"] != "UNBEKANNT_NACH_LAUF"]
     print(f"{len(funde)} Befunde ({len(echte)} ohne UNBEKANNT_NACH_LAUF) → {ausgabe}")
     return 1 if funde else 0

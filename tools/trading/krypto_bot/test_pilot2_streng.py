@@ -4499,14 +4499,16 @@ g = lage(k, "BTCUSDT")
 pruefe("15.E26f Not-Aus, Perp-Liste unlesbar, das Buch kennt einen alten Stop + Geister-Stop: der Geister-Stop wird gelöscht (wie bisher), der alte steht allein",
        g["n_p"] == 1 and abs(g["p_qty"] - 0.05) < 0.0015 and not (st_.get("perp_weitere") or []) , (g, w_, st_))
 
-# g) _perp_ohne_liste (Perp-Liste unlesbar): kennt das Buch einen bisherigen Stop (steht auch an der Börse), wird der Geister-Stop des gescheiterten Ersatzes gelöscht (wie bisher, der bisherige schützt);
-# kennt das Buch keinen, bleibt der Geister-Stop stehen und wird gemerkt (E26)
-for bekannt_ in (True, False):
+# g) _perp_ohne_liste (Perp-Liste unlesbar): kennt das Buch einen bisherigen Stop (steht auch an der Börse) und deckt er den heutigen Bedarf noch (der Short ist heute nicht gewachsen), wird der Geister-Stop des
+# gescheiterten Ersatzes gelöscht (wie bisher, der bisherige schützt). Ist der Short heute gewachsen (die Aufträge des Laufs: Perp SELL), deckt der bisherige nur einen Teil → der Geister-Stop bleibt; kennt das
+# Buch keinen, bleibt er ebenfalls (E26). Rasterbefund --geist: ETH 0 → −0,5, Liste unlesbar: 4'828 USDT ohne Stop nach dem Löschen.
+for bekannt_, gewachsen_ in ((True, False), (True, True), (False, False)):
     k, sp, fu, dd = handlage(coins=0.0, short=0.3, kurs=100000.0)
     rf_ = fu.regeln("BTCUSDT")
     st_ = {}
     if bekannt_:
-        r_alt = fu.stop_menge("BTCUSDT", "BUY", 0.3, 110000.0, rf_["tick"], cid=L._kennung(L.CID_STOP_PERP))
+        groesse_ = 0.1 if gewachsen_ else 0.3          # gewachsen: der bisherige Stop deckt nur die gestrigen 0,1 des heute auf 0,3 gewachsenen Shorts
+        r_alt = fu.stop_menge("BTCUSDT", "BUY", groesse_, 110000.0, rf_["tick"], cid=L._kennung(L.CID_STOP_PERP))
         st_ = {"perp": r_alt.get("algoId"), "perp_cid": r_alt.get("cid") or r_alt.get("clientAlgoId"), "p_short": 110000.0}
     s_ = L._soll(0.0, -0.3, 100000.0, dd)
     s_.update(frei=0.0, gebunden=0.0)
@@ -4514,16 +4516,39 @@ for bekannt_ in (True, False):
     w_ = []
     B.regeln = [regel(methode="POST", pfad="/fapi/v1/algoOrder", art="nach503", anzahl=1), regel(methode="POST", pfad="/fapi/v1/algoOrder", art="429", anzahl=99)]
     try:
-        L._perp_ohne_liste(fu, "BTC", d_, st_, {"stop_short": 115000.0}, s_, w_.append, [], False, RuntimeError("Liste nicht lesbar"), {"auftraege": []}, lambda w=None: L._lage(sp, fu, dd, w))
+        L._perp_ohne_liste(fu, "BTC", d_, st_, {"stop_short": 115000.0}, s_, w_.append, [], gewachsen_, RuntimeError("Liste nicht lesbar"),
+                           {"auftraege": [("BTC", "perp", "SELL", 0.2)] if gewachsen_ else []}, lambda w=None: L._lage(sp, fu, dd, w))
     finally:
         B.regeln = []
     g = lage(k, "BTCUSDT")
-    if bekannt_:
-        pruefe("15.E26g _perp_ohne_liste, das Buch kennt einen bisherigen Stop: der Geister-Stop des Ersatzes wird gelöscht, der bisherige steht allein (nicht beidseitig)",
+    if bekannt_ and not gewachsen_:
+        pruefe("15.E26g _perp_ohne_liste, das Buch kennt einen bisherigen Stop, der Short ist heute nicht gewachsen: der Geister-Stop des Ersatzes wird gelöscht, der bisherige steht allein (nicht beidseitig)",
                g["n_p"] == 1 and abs(g["p_qty"] - 0.3) < 0.002 and not st_.get("perp_weitere") and not d_.get("beidseitig"), (g, st_, d_, w_))
+    elif bekannt_:
+        pruefe("15.E26g _perp_ohne_liste, das Buch kennt einen bisherigen Stop, der Short ist heute gewachsen (der bisherige deckt nur einen Teil): der Geister-Stop bleibt und steht im Buch",
+               g["n_p"] == 2 and abs(g["p_qty"] - 0.4) < 0.003 and bool(st_.get("perp_weitere")) and not d_.get("beidseitig"), (g, st_, d_, w_))
     else:
         pruefe("15.E26g _perp_ohne_liste, das Buch kennt keinen Stop: der Geister-Stop bleibt (einziger Schutz) und steht im Buch",
                g["n_p"] == 1 and abs(g["p_qty"] - 0.3) < 0.002 and bool(st_.get("perp_weitere")) and d_.get("neue_runde"), (g, st_, d_, w_))
+
+# g2) Paar gewachsen: heute kamen 0,2 Coins und 0,2 Short als Absicherung dazu (Netto-Short unverändert 0,3): der bisherige Stop deckt den Bedarf weiter → der Geister-Stop wird gelöscht
+k, sp, fu, dd = handlage(coins=0.2, short=0.5, kurs=100000.0)
+rf_ = fu.regeln("BTCUSDT")
+r_alt = fu.stop_menge("BTCUSDT", "BUY", 0.3, 110000.0, rf_["tick"], cid=L._kennung(L.CID_STOP_PERP))
+st_ = {"perp": r_alt.get("algoId"), "perp_cid": r_alt.get("cid") or r_alt.get("clientAlgoId"), "p_short": 110000.0}
+s_ = L._soll(0.2, -0.5, 100000.0, dd)
+s_.update(frei=0.2, gebunden=0.0)
+d_ = dict(dd)
+w_ = []
+B.regeln = [regel(methode="POST", pfad="/fapi/v1/algoOrder", art="nach503", anzahl=1), regel(methode="POST", pfad="/fapi/v1/algoOrder", art="429", anzahl=99)]
+try:
+    L._perp_ohne_liste(fu, "BTC", d_, st_, {"stop_short": 115000.0}, s_, w_.append, [], True, RuntimeError("Liste nicht lesbar"),
+                       {"auftraege": [("BTC", "spot", "BUY", 0.2), ("BTC", "perp", "SELL", 0.2)]}, lambda w=None: L._lage(sp, fu, dd, w))
+finally:
+    B.regeln = []
+g = lage(k, "BTCUSDT")
+pruefe("15.E26g2 _perp_ohne_liste, heute kam nur Absicherung dazu (Coins und Short gleich viel): der bisherige Stop deckt den Netto-Short weiter → der Geister-Stop wird gelöscht",
+       g["n_p"] == 1 and abs(g["p_qty"] - 0.3) < 0.002 and not st_.get("perp_weitere"), (g, s_.get("stop_perp"), st_, w_))
 
 # h2) Not-Aus beidseitig mit unklarem Short, Perp-Liste unlesbar, das Buch kennt einen bisherigen Stop: der kleinere Schutz-Stop (cid_k) scheitert nach −2022 → sein Geister-Stop wird gelöscht (wie bisher)
 k, sp, fu, dd = handlage(coins=0.017, short=0.017, kurs=100000.0)
@@ -4579,6 +4604,21 @@ for coins_, short_, stop_, name_ in ((0.025432, 0.025, 0.02168, "frei 0,003752 �
     pruefe(f"15.E27 Not-Aus, Spot-Stop {stop_:g} von {coins_:g} Coins ({name_}): nach beiden Auslösungen bleibt kein Short ohne Coins und ohne Stop", not befunde(k), (g, befunde(k), w_))
     gross_ = coins_ - short_ > 0.0004 and stop_ > coins_ - short_ + 0.001   # der Spot-Stop ist viel grösser als nötig (Fall 1 und Kontrolle)
     pruefe("15.E27 beidseitig: der Perp-Stop deckt den ganzen Short, alle Coins stehen unter einem Spot-Stop", g["p_qty"] >= short_ - 1e-9 and g["s_qty"] >= coins_ - 1e-5, (g, w_))
+
+# Raster --geist: sechs Paare «Perp-Stop kommt an (Antwort verloren) × jede Wiederholung scheitert» (Rate-Limit / 503 vor der Verarbeitung / Verbindungsabriss), je zwei Zeitpunkte, mit allen 15 Lese-Kopplungen;
+# dazu die Befundart SELBST_ENTFERNT (Pilot 2.0 hat in diesem Markt selbst einen Stop der betroffenen Seite entfernt und es fehlt Schutz — auch wenn die Nachkontrolle es später heilt)
+zg_ = R.zellen(False, False, True, True)
+pruefe("15.G Raster --geist: 6 Paare (2 × 3), je 2 Zeitpunkte; mit --paare nur diese; ohne --geist gibt es keine; nicht mit den hängenden Paaren vermischt",
+       len(zg_) == 6 and all(c_[0].startswith("G") and c_[3] == (0, 1) and c_[1][2] is None and c_[2][1] == "/fapi/v1/algoOrder" for c_ in zg_)
+       and not any(c_[0].startswith("G") for c_ in R.zellen(False, False, False, False)) and len(R.zellen(True, False, True, True)) == 16, [c_[0] for c_ in zg_])
+fake_ = {"nach_lauf": [("SHORT_OHNE_STOP", (1.2, 4800.0))], "nach_nk": [], "unbekannt_lauf": [], "unbekannt_nk": [], "laut": True, "nk_tat_etwas": True, "selbst_entfernt": ["SHORT_OHNE_STOP"]}
+pruefe("15.G klasse(): fehlt Schutz, den Pilot 2.0 selbst entfernt hat → SELBST_ENTFERNT (auch wenn laut gewarnt und von der Nachkontrolle geheilt); ohne Selbstentfernung (laut, geheilt) kein Befund",
+       R.klasse(fake_) == "SELBST_ENTFERNT" and R.klasse(dict(fake_, selbst_entfernt=[])) is None, (R.klasse(fake_), R.klasse(dict(fake_, selbst_entfernt=[]))))
+for si_, zid_ in ((6, "G0.0"), (9, "G0.1"), (1, "G1.2")):
+    z_ = {c_[0]: c_ for c_ in zg_}[zid_]
+    e_ = R.fall(R.SZENARIEN[si_], z_[1], 0, R.LESEN[1], "anfang", None, False, z_[2], False)
+    pruefe(f"15.G Raster --geist, Szenario {si_} {R.SZENARIEN[si_]}, Paar {zid_} (Perp-Liste unlesbar ab Tagesbeginn): kein Befund (Rasterbefund vor E26: SELBST_ENTFERNT, 4'828 USDT ohne Stop)",
+           isinstance(e_, dict) and R.klasse(e_) is None, e_ if not isinstance(e_, dict) else (R.klasse(e_), e_["nach_lauf"], e_["selbst_entfernt"]))
 
 for was_s, seed_s in (("Not-Aus-Seed 117727 (E26)", 117727), ("Not-Aus-Seed 117974 (E27)", 117974)):
     P.STRENG, P.LUECKEN = True, True
