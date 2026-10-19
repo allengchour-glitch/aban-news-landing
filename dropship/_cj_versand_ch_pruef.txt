@@ -10572,3 +10572,5 @@ rollerskates-fur-kinder-924224	1411540829008433152	16	21.98	ok	landeseite
 tanzschuhe-outdoor-625100	2601060520171625300	16	11.40	ok	landeseite
 kauknochen-spielzeug-620500	2607111010191621200	16	5.41	ok	landeseite
 vintage-hoodie-mit-rhinestones-608000	2603170734261608400	16	11.00	ok	landeseite
+ballettschuhe-aus-leder-622800	2509210159351623000	16	9.20	ok	landeseite
+weiche-lederschuhe-fur-tanz-621300	2509041040361621600	16	7.43	ok	landeseite
