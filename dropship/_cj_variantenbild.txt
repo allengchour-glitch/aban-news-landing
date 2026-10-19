@@ -7921,3 +7921,6 @@ gid://shopify/Product/15477535211905	zugeordnet	88	Langes Damen Sweatshirt mit 3
 gid://shopify/Product/15477535244673	zugeordnet	14	Bequeme Anti-Rutsch Indoor Kinderschuhe
 gid://shopify/Product/15477535342977	zugeordnet	22	Elegante Prinzessinnen-Schuhe aus Leder
 gid://shopify/Product/15477573878145	zugeordnet	6	Vintage Tie-Dye Jeans für Herren
+gid://shopify/Product/15484928917889	zugeordnet	10	Elegantes Vintage Color-Block Damenkleid
+gid://shopify/Product/15484929540481	zugeordnet	18	Ruffles Fishtail-Kleid
+gid://shopify/Product/15484930752897	zugeordnet	10	Freizeitkleid mit Reissverschluss-Taschen
