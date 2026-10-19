@@ -10173,3 +10173,6 @@ herren-reisegepack-mit-gravur-616300	2505220955121616600	16	7.85	ok	landeseite
 langer-griff-fur-turen-606600	2602080932171606900	16	8.79	ok	landeseite
 reflektierende-brusttasche-600200	2504120709471600500	16	9.20	ok	landeseite
 reise-kopfkissen-mit-memory-schaum-606200	2603250844391606700	16	14.00	ok	landeseite
+retro-brusttasche-fur-herren-621700	2503260624481622000	16	10.42	ok	landeseite
+wasserdichte-hufttasche-fur-sport-615900	2503110851011616100	16	10.15	ok	landeseite
+eiskufen-inline-skates-fur-kinder-schuler-602500	2603190955451602900	11	36.36	ok	landeseite
