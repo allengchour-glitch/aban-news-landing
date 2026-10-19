@@ -37,45 +37,60 @@ VORHER = os.path.join(REPO, "dropship", "_baby_claims_vorher.jsonl")
 STAND = os.path.join(REPO, "dropship", "_baby_claims_stand.json")
 MAX_LAUF = int(os.environ.get("MAX_LAUF", "40"))
 
-LIVE_Q = ("status:active AND (title:*Baby* OR title:*Neugeboren* OR title:*Säugling* OR title:*Kopfkissen* OR title:*Babykissen* "
-          "OR title:*Nestchen* OR title:*Kleinkind* OR title:*Rassel* OR title:*Beissring* OR title:*Spielzeug* OR title:*Bausteine* "
-          "OR title:*Modell* OR title:*Puzzle* OR title:*Roboter* OR title:*Spielhaus*)")
+# Prüfung 19.10. (baby B1): Shopify ignoriert führende Wildcards (`title:*spielzeug*` = `title:spielzeug*`) — «Badespielzeug», «Holzspielhaus» wurden nie gelesen.
+# Spielzeug über Produkttyp/Tag, Kissen/Baby-Ware über Titel-ANFANG.
+LIVE_Q = ("status:active AND (product_type:'Spielzeug & Spiele' OR product_type:'Spass-Elektronik' OR tag:spielzeug OR tag:baby OR tag:baby-kids OR tag:kinder "
+          "OR title:Baby* OR title:Neugeboren* OR title:Säugling* OR title:Kopfkissen* OR title:Babykissen* OR title:Nestchen* OR title:Kleinkind* "
+          "OR title:Rassel* OR title:Beissring* OR title:Bade* OR title:Lernspiel* OR title:Spielhaus* OR title:Holzspiel*)")
 
-BABY = re.compile(r"\b(?:Baby\w*|Neugeboren\w*|S[äa]ugling\w*|Kleinkind\w*)", re.I)
-KISSEN = re.compile(r"Kissen|Nest(?:chen)?\b|Polster|Lagerung|Matratze|Liege\b", re.I)
-KOPF_CLAIM = re.compile(
-    r"Plattkopf|Plagiocephal\w*|Kopf-?form(?:korrektur|verformung)?|Kopfverformung\w*|Kopfabflachung|"
+BABY = re.compile(r"\b(?:Baby(?:s|kissen|-[\w-]+)?|Babies|Neugeboren\w*|S[äa]ugling\w*|Kleinkind\w*)\b", re.I)     # kein «babyweich», «Babyrosa»
+BABY_WIE = re.compile(r"\bwie\s+(?:ein|ein\s+kleines)\s+Baby\b", re.I)                                              # «Schlafe wie ein Baby»
+KISSEN = re.compile(r"Kissen|\bNest(?:chen)?\b|Polster|Lagerung|Matratze|\bLiege\b", re.I)
+KOPF_STARK = re.compile(
+    r"Plattkopf|Plagiocephal\w*|Kopfformkorrektur|Kopfverformung\w*|Kopfabflachung|"
     r"Abflachung\s+(?:des\s+)?(?:Kopf|Sch[äa]del|Hinterkopf)\w*|Verformung\w*\s+(?:des\s+)?(?:Kopf|Sch[äa]del)\w*|Anti-?Erstick\w*|Erstickungs-?schutz", re.I)
-# «Verformungen» allein im Titel eines Baby-Kissens («Babykissen gegen Verformungen») gilt auch — der Text nennt dort Kopf/Schädel
+# «Kopfform» allein ist nur ein Versprechen mit Korrektur-/Vorbeuge-Wort in der Nähe («passt sich der Kopfform an» ist es nicht)
+KOPF_FORM = re.compile(r"(?:korrigier\w*|vorbeug\w*|verhindert\w*|gesunde\w*|korrekte\w*|sch[öo]ne\w*|f[öo]rder\w*|formt\w*)\s+(?:\w+\s+){0,3}Kopfform|Kopfform\s+(?:\w+\s+){0,3}(?:korrigier\w*|vorbeug\w*)", re.I)
+KOPF_CLAIM = KOPF_STARK     # Rückwärtskompatibilität (Selbsttest-Importe)
+# «gegen Verformungen» im Titel eines Baby-Kissens («Babykissen gegen Verformungen»): der Text nennt dort Kopf/Schädel
 TITEL_VERFORM = re.compile(r"gegen\s+Verformung", re.I)
 
 SAEUG = re.compile(r"S[äa]ugling\w*|\b0\s*(?:bis|-|–| – )\s*[23]\s*Jahr\w*|ab\s*0\s*Monat\w*|Neugeboren\w*|Babys\s+und\s+Kleinkind\w*", re.I)
 SPIEL_TYP = {"Spielzeug & Spiele", "Spass-Elektronik"}
-SPIEL_TITEL = re.compile(r"Spielzeug|Bausteine?\b|Puzzle|Rassel|Tumbler|Beissring|Roboter|Modell\b|Spielhaus|Geburtstagszug|Oktopus|Lernspiel|Stapel", re.I)
-SAEUG_ZWECK = re.compile(r"Rassel|Tumbler|Stapel\w*|Bade(?:spielzeug)?\b|Badespielzeug|Weissrausch|Schlafhilfe|Springbrunnen|Spieluhr|Greifling|Sensor", re.I)
+# Prüfung 19.10. (baby B5): Titelwörter nur noch STARK und mit Wortanfang — «Modell», «Sensor», «Stapel», «Roboter» allein trafen Saugroboter, Wäschekörbe, Babyphones.
+SPIEL_STARK = re.compile(r"\b\w*spielzeug\b|\bRassel|\bBeissring|\bTumbler|\bLernspiel|\bSpielhaus|\bGeburtstagszug|\bBausteine?\b|\bPuzzle\b", re.I)
+SAEUG_ZWECK = re.compile(r"\bRassel|\bTumbler|\bStapel(?:spielzeug|türme?|ringe?)|\bBade(?:spielzeug)?\b|\bBadespielzeug|\bWeissrausch|\bSchlafhilfe|\bSpringbrunnen|\bSpieluhr|"
+                         r"\bGreifling|\bBeissring|\bBeißring|\bZahn|\bKrabbel|\bGreif|\bMeilenstein|\bMobile\b|\bSpielbogen", re.I)
+# Baby-Zweckwörter im TEXT: steht noch eines da, bleibt die Ware ein Säuglingsprodukt (nicht auf «ab 3 Jahren» umschreiben, sondern entwerfen)
+TEXT_ZWECK = re.compile(r"\bKrabbel\w*|\bGreif\w*|\bZahn(?:en|ungs)?\w*|\bersten\s+Lebens\w*|\bLebensmonat\w*|\bLebensjahr\w*|\bBeissring|\bBeißring", re.I)
 MARKE = re.compile(r"\b(?:Infantino|Fisher[- ]?Price|Vtech|Chicco|Playmobil|Lego|Bruder)\b", re.I)
 KLEINKIND_GROSS = re.compile(r"Grossteil|Gro(?:ss|ß)e?n? ?Baustein", re.I)
 TIER = re.compile(r"\b(?:Hund(?!ert)\w*|Katze\w*|Haustier\w*|Welpe\w*|K[äa]tzchen\w*)", re.I)   # auch Kompositum «Hundespielzeug»
 # Tragen, Sitze, Kleidung, Schlafsäcke, Flaschen … sind kein Spielzeug, auch wenn Shopify sie unter «Spielzeug & Spiele» führt (Baby-Hüftsitz)
-KEIN_SPIEL = re.compile(r"H[üu]ftsitz|Trage\b|Tragegurt|Tragetuch|Kinderwagen|Autositz|Schlafsack|Strampler|Overall|Body\b|Schuh|Sandale|Stiefel|Hose\b|"
-                        r"Jacke|M[üu]tze|Decke|Latz|L[äa]tzchen|Flasche|Windel|Wippe|Hochstuhl|Stuhl|Kleid\b|Set aus|Pyjama", re.I)
-HINWEIS_DA = re.compile(r"nicht f[üu]r Kinder unter|Erstickungsgefahr|Achtung!|unter 36 Monaten|verschluckbare", re.I)
+KEIN_SPIEL = re.compile(r"\bH[üu]ftsitz|\bTrage\b|\bTragegurt|\bTragetuch|\bKinderwagen|\bAutositz|\bSchlafsack|\bStrampler|\bOverall\b|\bBody\b|\bSchuhe?\b|\bSandalen?\b|"
+                        r"\bStiefel\b|\bHose\b|\bJacke\b|\bM[üu]tze\b|\bDecke\b|\bL[äa]tzchen\b|\bLatz\b|\bFlasche\b|\bWindeln?\b|\bWippe\b|\bHochstuhl\b|"
+                        r"\bStuhl\b|\bKleid\b|\bPyjama\b", re.I)
+HINWEIS_DA = re.compile(r"nicht f[üu]r Kinder unter|Erstickungsgefahr|Achtung|unter 36 Monaten|verschluckbare|nicht geeignet|ungeeignet|Warnung", re.I)
+# Verneinung im Umfeld einer Altersangabe («Nicht für Kleinkinder von 0 bis 3 Jahren geeignet») — die Umschreibung würde den Satz umkehren → offen
+NEG = re.compile(r"nicht\s+(?:f[üu]r|geeignet|empfohlen|verwenden|benutzen)|ungeeignet|Warnung|Achtung|Vorsicht", re.I)
+SEO_CLAIM = re.compile(r"Kleinkind\w*|\bBabys?\b|S[äa]ugling\w*|Neugeboren\w*|\b0\s*(?:bis|-|–)\s*[23]\s*Jahr", re.I)
 
 NB = r"[\s  ]*"
 SUBS = [
     # Alloy-Auto-Fall: der Satz widerspricht sich selbst («ab 14 Jahren und gleichzeitig für Säuglinge»)
     (re.compile(r",?\s*und\s+ist\s+gleichzeitig\s+für\s+S[äa]ugling\w*\s+von\s+0\s+bis\s+3\s+Jahr\w*\s+geeignet"), ""),
-    (re.compile(r"(?:Babys|S[äa]uglinge)\s+und\s+Kleinkind\w*" + NB + r"(?:im\s+Alter\s+)?von\s+0\s+bis\s+[23]\s+Jahr\w*"), "Kinder ab 3 Jahren"),
-    (re.compile(r"Kleinkind\w*" + NB + r"(?:im\s+Alter\s+)?von\s+0\s+bis\s+[23]\s+Jahr\w*"), "Kinder ab 3 Jahren"),
-    (re.compile(r"Babys" + NB + r"von\s+0\s+bis\s+[23]\s+Jahr\w*"), "Kinder ab 3 Jahren"),
+    (re.compile(r"(?:Babys|S[äa]uglinge)\s+und\s+Kleinkind\w*" + NB + r"(?:im\s+Alter\s+)?von\s+0" + NB + r"(?:bis|[-–])" + NB + r"[23]\s+Jahr\w*"), "Kinder ab 3 Jahren"),
+    (re.compile(r"Kleinkind\w*" + NB + r"(?:im\s+Alter\s+)?von\s+0" + NB + r"(?:bis|[-–])" + NB + r"[23]\s+Jahr\w*"), "Kinder ab 3 Jahren"),
+    (re.compile(r"Babys" + NB + r"von\s+0" + NB + r"(?:bis|[-–])" + NB + r"[23]\s+Jahr\w*"), "Kinder ab 3 Jahren"),
     (re.compile(r"im\s+Alter\s+von\s+0\s+bis\s+3\s+Jahr\w*"), "ab 3 Jahren"),
     (re.compile(r"Kleinkind\w*" + NB + r"ab\s+0" + NB + r"[-–]" + NB + r"3\s+Jahr\w*"), "Kinder ab 3 Jahren"),
     (re.compile(r"(?:Babys\s+und\s+)?Kleinkind\w*" + NB + r"\(0" + NB + r"[-–]" + NB + r"3\s+Jahre\)"), "Kinder ab 3 Jahren"),
     (re.compile(r",?\s*und\s+entspricht\s+der\s+3C[\u2011-]Konfiguration\s+für\s+Holzspielzeug"), ""),     # China-Kennzeichen, kein EU-Beleg
-    (re.compile(r"für\s+Kinder\s+von\s+0" + NB + r"[–-]" + NB + r"[23]\s+Jahr\w*"), "für Kinder ab 3 Jahren"),
+    (re.compile(r"für\s+Kinder\s+von\s+0" + NB + r"(?:bis|[–-])" + NB + r"[23]\s+Jahr\w*"), "für Kinder ab 3 Jahren"),
     (re.compile(r"Kinder\s+ab\s+0" + NB + r"[–-]" + NB + r"3" + NB + r"Jahr\w*"), "Kinder ab 3 Jahren"),
     (re.compile(r"Altersgruppe:?\s*0" + NB + r"[–-]" + NB + r"3\s+Jahre"), "Altersgruppe: ab 3 Jahren"),
     (re.compile(r"Verwendbar\s+ab:\s*0" + NB + r"[-–]" + NB + r"3\s+Jahre"), "Verwendbar ab: 3 Jahre"),
+    (re.compile(r"Babys\s+und\s+Kleinkinder\b"), "Kinder"),          # Rückfall nach den genauen Mustern («erstes Lernspielzeug für Babys und Kleinkinder»)
 ]
 TITEL_SUBS = [(re.compile(r"\bfür\s+Babys\s*(?:&|und)\s*Kleinkinder\b"), "für Kinder"), (re.compile(r"\bfür\s+Kleinkinder\b"), "für Kinder")]
 
@@ -88,30 +103,47 @@ def klartext(html):
 
 
 def klasse(p):
-    """→ (K | S1 | S2 | None, Beleg-Schnipsel). Reine Funktion (Selbsttest ohne Netz)."""
+    """→ (K | S1 | S1W | S2 | SEO | None, Beleg-Schnipsel). Reine Funktion (Selbsttest ohne Netz).
+    S1W = wie S1, aber der Text trägt schon einen Hinweis (nur Altersangabe umschreiben, nichts anhängen); SEO = Text ist sauber, nur der SEO-Titel/-Text trägt noch die alte Altersangabe."""
     t = p.get("title") or ""
     html = p.get("descriptionHtml") or ""
-    text = klartext(html)
+    text = BABY_WIE.sub("", klartext(html))
     typ = p.get("productType") or ""
+    tags = {x.lower() for x in (p.get("tags") or [])}
+    seo = p.get("seo") or {}
     if MARKE.search(t) or TIER.search(t):
         return None, ""
     if BABY.search(t + " " + text[:700]) and (KISSEN.search(t) or TITEL_VERFORM.search(t)):
-        m = KOPF_CLAIM.search(t + " " + text) or TITEL_VERFORM.search(t)
+        m = KOPF_STARK.search(t + " " + text) or KOPF_FORM.search(t + " " + text) or TITEL_VERFORM.search(t)
         if m:
             return "K", m.group(0)
-    spiel = typ in SPIEL_TYP or bool(SPIEL_TITEL.search(t))
-    if not spiel or KISSEN.search(t) or KEIN_SPIEL.search(t):
+    spiel = typ in SPIEL_TYP or "spielzeug" in tags or bool(SPIEL_STARK.search(t))
+    if not spiel or KISSEN.search(t) or KEIN_SPIEL.search(t) or KLEINKIND_GROSS.search(t):
         return None, ""
     m = SAEUG.search(text)
-    if not m or HINWEIS_DA.search(html):
-        return None, ""
-    if KLEINKIND_GROSS.search(t):
-        return None, ""
-    return ("S2" if SAEUG_ZWECK.search(t) else "S1"), m.group(0)
+    warn = bool(HINWEIS_DA.search(html))
+    if m:
+        if SAEUG_ZWECK.search(t) or TEXT_ZWECK.search(text):
+            return "S2", m.group(0)
+        return ("S1W" if warn else "S1"), m.group(0)
+    if warn and not re.search(r"\bBabys?\b|S[äa]ugling|Neugeboren", text, re.I):      # echte Baby-Ware (Beissring «Für Babys ab 3 Monaten») behält ihre SEO-Angabe
+        ms = SEO_CLAIM.search((seo.get("title") or "") + " " + (seo.get("description") or ""))
+        if ms:
+            return "SEO", ms.group(0)
+    return None, ""
+
+
+def _negiert(text):
+    for m in SAEUG.finditer(text):
+        if NEG.search(text[max(0, m.start() - 80): m.end() + 40]):
+            return True
+    return False
 
 
 def s1_umschreiben(titel, html):
-    """→ (neuer Titel, neues html, Rest-Treffer im Text). Rest > 0 = nicht schreiben (ein Wortlaut, den keine Ersetzung kennt)."""
+    """→ (neuer Titel, neues html, Rest-Treffer im Text). Rest > 0 = nicht schreiben (Wortlaut, den keine Ersetzung kennt, oder Verneinungssatz)."""
+    if _negiert(klartext(html)):
+        return titel, html, 99
     neu = html
     for rx, ers in SUBS:
         neu = rx.sub(ers, neu)
@@ -119,6 +151,16 @@ def s1_umschreiben(titel, html):
     for rx, ers in TITEL_SUBS:
         nt = rx.sub(ers, nt)
     return nt, neu, len(SAEUG.findall(klartext(neu)))
+
+
+def seo_umschreiben(seo):
+    """→ (neuer SEO-Titel, neue SEO-Beschreibung, Rest). Beide Felder werden IMMER zusammen geschrieben (seo{title} allein nullt die Beschreibung)."""
+    t, d = (seo or {}).get("title") or "", (seo or {}).get("description") or ""
+    for rx, ers in TITEL_SUBS:
+        t = rx.sub(ers, t)
+    for rx, ers in SUBS + TITEL_SUBS:
+        d = rx.sub(ers, d)
+    return t, d, len(SEO_CLAIM.findall(t + " " + d))
 
 
 def gql(q, v=None):
@@ -130,7 +172,7 @@ def kandidaten():
     cur = None
     while True:
         d = gql('query($c:String,$q:String){products(first:100,after:$c,query:$q){pageInfo{hasNextPage endCursor} '
-                'nodes{id title status tags productType descriptionHtml}}}', {"c": cur, "q": LIVE_Q})
+                'nodes{id title status tags productType descriptionHtml seo{title description}}}}', {"c": cur, "q": LIVE_Q})
         pr = d["products"]
         for n in pr["nodes"]:
             yield n
@@ -141,13 +183,14 @@ def kandidaten():
 
 
 def schreibe_entwurf(gid, tags):
+    """→ (Entwurf gesetzt, Tags gesetzt). Prüfung B9: tagsAdd-Fehler werden sichtbar (Ledger «DRAFT-OHNE-TAG»)."""
     r = gql('mutation($i:ProductUpdateInput!){productUpdate(product:$i){product{status} userErrors{message}}}',
             {"i": {"id": gid, "status": "DRAFT"}})
     pu = r.get("productUpdate") or {}
     if pu.get("userErrors") or (pu.get("product") or {}).get("status") != "DRAFT":
-        return False
-    gql('mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}', {"id": gid, "t": tags})
-    return True
+        return False, False
+    t = gql('mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}', {"id": gid, "t": tags})
+    return True, not ((t.get("tagsAdd") or {}).get("userErrors")) and "tagsAdd" in (t or {})
 
 
 def selbsttest():
@@ -203,7 +246,39 @@ def selbsttest():
         nt, nh, rest = s1_umschreiben(titel, html)
         if rest or nt != soll_t or any(e not in nh for e in enthaelt):
             f.append(f"S1-Umschreibung {titel!r}: Titel {nt!r} · Rest {rest} · Text {klartext(nh)!r}")
-    print(f"baby_claims_wache Selbsttest: {len(fall) + len(spiel) + len(gaenge) - len(f)}/{len(fall) + len(spiel) + len(gaenge)}")
+    # Prüfung 19.10. (baby B1–B10): Gegen-Kanarien
+    neu = [
+        ("Saugroboter mit Hindernis-Sensor", "Ideal für Haushalte mit Babys und Kleinkindern.", "Haushaltsgeräte", None),
+        ("Stapelbarer Wäschekorb", "Auch für Babykleidung (Neugeborene).", "Haushalt & Wohnen", None),
+        ("Babyphone mit Kamera Modell 2024", "Für Babys und Kleinkinder von 0 bis 3 Jahren.", "Elektronik", None),
+        ("Memory Foam Nackenkissen", "Passt sich der Kopfform an. Schlafe wie ein Baby.", "Wohnen & Deko", None),
+        ("Kopfkissen Hotelqualität", "Babyweiche Mikrofaser, passt sich der Kopfform an.", "Wohnen & Deko", None),
+        ("Matratzenschoner gegen Verformung", "Schützt die Matratze.", "Wohnen & Deko", None),
+        ("Baby-Kopfkissen für schöne Kopfform", "Für Neugeborene.", "Wohnen & Deko", "K"),
+        ("Spielplatz Rutsche für Kleinkinder", "Für Kinder von 0 bis 3 Jahren.", "Spielzeug & Spiele", "S1"),
+        ("Spielzeugkiste mit Deckel", "Für Kleinkinder von 0 bis 3 Jahren.", "Spielzeug & Spiele", "S1"),
+        ("Magnetspielzeug Set", "Warnung: Nicht für Kleinkinder von 0 bis 3 Jahren geeignet.", "Spielzeug & Spiele", "S1W"),
+        ("Elektrisches Oktopus-Spielzeug", "Unterstützt beim Krabbeln und Greifen, für Babys und Kleinkinder von 0 bis 3 Jahren.", "Spass-Elektronik", "S2"),
+        ("Silikon Beissring Banane", "Für Babys und Kleinkinder von 0 bis 3 Jahren.", "Spielzeug & Spiele", "S2"),
+    ]
+    for t, x, typ, soll in neu:
+        if k(t, x, typ) != soll:
+            f.append(f"{t!r}: {k(t, x, typ)!r}, soll {soll!r}")
+    # Verneinung: nicht umdrehen
+    nt, nh, rest = s1_umschreiben("Magnetspielzeug Set", "<p>Warnung: Nicht für Kleinkinder von 0 bis 3 Jahren geeignet.</p>")
+    if rest != 99 or "ab 3 Jahren" in nh:
+        f.append(f"Verneinungssatz wurde umgeschrieben: {nh!r}")
+    # SEO-Rest
+    kl_, _ = klasse({"title": "Holzbausteine-Puzzle für Kinder", "productType": "Spielzeug & Spiele",
+                     "descriptionHtml": "<p>Ab 3 Jahren.</p><p class='ls-warnhinweis'>Achtung! Nicht für Kinder unter 36 Monaten.</p>",
+                     "seo": {"title": "Holzbausteine-Puzzle für Kleinkinder | LuxeStyle CH", "description": "Bausteine für Kleinkinder."}})
+    if kl_ != "SEO":
+        f.append(f"SEO-Rest nicht erkannt: {kl_!r}")
+    st, sd, srest = seo_umschreiben({"title": "Holzbausteine-Puzzle für Kleinkinder | LuxeStyle CH", "description": "Bausteine für Kleinkinder."})
+    if srest or "Kleinkind" in st or "Kleinkind" in sd:
+        f.append(f"SEO-Umschreibung: {st!r} / {sd!r} Rest {srest}")
+    total = len(fall) + len(spiel) + len(gaenge) + len(neu) + 2
+    print(f"baby_claims_wache Selbsttest: {total - len(f)}/{total}")
     for x in f:
         print("  FAIL", x)
     return not f
@@ -211,8 +286,9 @@ def selbsttest():
 
 def main():
     from werbetest_sperre import gesperrt
-    from kinder_sicherheit import WARNUNG_KLEIN
-    treffer = {"K": [], "S1": [], "S2": []}
+    from kinder_sicherheit import WARNUNG_KLEIN, WARNUNG_MAGNET, MAGNET
+    arten = ("K", "S2", "S1", "S1W", "SEO")
+    treffer = {a: [] for a in arten}
     gesehen = 0
     for p in kandidaten():
         gesehen += 1
@@ -221,11 +297,12 @@ def main():
         kl_, beleg = klasse(p)
         if kl_:
             treffer[kl_].append((p, beleg))
-    print(f"{gesehen} Kandidaten gelesen · K {len(treffer['K'])} · S1 {len(treffer['S1'])} · S2 {len(treffer['S2'])} · {'FIX' if FIX else 'DRY'}", flush=True)
-    for art in ("K", "S1", "S2"):
+    print(f"{gesehen} Kandidaten gelesen · " + " · ".join(f"{a} {len(treffer[a])}" for a in arten) + f" · {'FIX' if FIX else 'DRY'}", flush=True)
+    for art in arten:
         for p, beleg in treffer[art]:
             print(f"  [{art}] {p['id'].split('/')[-1]} {p['title'][:60]} · «{beleg}»", flush=True)
     geschrieben = fehler = offen = 0
+    gesamt = sum(len(v) for v in treffer.values())
     if FIX:
         lock = open("/tmp/lock_produkttext.lock", "w")
         try:
@@ -235,58 +312,70 @@ def main():
             return 0
         stempel = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
         n = 0
-        with open(LEDGER, "a", encoding="utf-8") as led:
-            for art in ("K", "S2"):
-                for p, beleg in treffer[art]:
-                    if n >= MAX_LAUF:
-                        break
-                    n += 1
-                    ok = schreibe_entwurf(p["id"], TAGS_K if art == "K" else TAGS_S2)
-                    if ok:
-                        geschrieben += 1
-                        led.write(f"{stempel}\t{p['id'].split('/')[-1]}\t{art}\tDRAFT\t{p['title']}\t{beleg}\n")
-                    else:
-                        fehler += 1
-                    time.sleep(0.3)
-            for p, beleg in treffer["S1"]:
+        for art in ("K", "S2"):                                   # Entwürfe
+            for p, beleg in treffer[art]:
                 if n >= MAX_LAUF:
                     break
                 n += 1
-                frisch = (gql('query($id:ID!){product(id:$id){title status descriptionHtml}}', {"id": p["id"]}) or {}).get("product") or {}
+                ok, tags_ok = schreibe_entwurf(p["id"], TAGS_K if art == "K" else TAGS_S2)
+                if ok:
+                    geschrieben += 1
+                    with open(LEDGER, "a", encoding="utf-8") as led:       # Prüfung B9: Vor-Tags für einen sauberen Rückweg
+                        led.write(f"{stempel}\t{p['id'].split('/')[-1]}\t{art}\t{'DRAFT' if tags_ok else 'DRAFT-OHNE-TAG'}\t{p['title']}\t{beleg}\t{json.dumps(p.get('tags') or [], ensure_ascii=False)}\n")
+                else:
+                    fehler += 1
+                time.sleep(0.3)
+        for art in ("S1", "S1W", "SEO"):                          # Textkorrekturen
+            for p, beleg in treffer[art]:
+                if n >= MAX_LAUF:
+                    break
+                n += 1
+                frisch = (gql('query($id:ID!){product(id:$id){title status descriptionHtml seo{title description}}}', {"id": p["id"]}) or {}).get("product") or {}
                 html = frisch.get("descriptionHtml") or ""
-                if frisch.get("status") != "ACTIVE" or HINWEIS_DA.search(html):
+                if frisch.get("status") != "ACTIVE":
                     continue
-                nt, nh, rest = s1_umschreiben(frisch.get("title") or p["title"], html)
-                if rest:
+                titel0 = frisch.get("title") or p["title"]
+                if art == "SEO":
+                    nt, nh, rest = titel0, html, 0
+                else:
+                    if art == "S1" and HINWEIS_DA.search(html):
+                        continue                                  # inzwischen anders versorgt
+                    nt, nh, rest = s1_umschreiben(titel0, html)
+                st, sd, srest = seo_umschreiben(frisch.get("seo"))
+                if rest or srest:
                     offen += 1
-                    print(f"  ⚠️ offen (Wortlaut unbekannt): {p['title'][:50]} → {[m.group(0) for m in SAEUG.finditer(klartext(nh))][:3]}", flush=True)
+                    print(f"  ⚠️ offen (Wortlaut unbekannt/Verneinung): {p['title'][:50]} → {[m.group(0) for m in SAEUG.finditer(klartext(nh))][:3]} {SEO_CLAIM.findall(st + ' ' + sd)[:3]}", flush=True)
                     continue
-                with open(VORHER, "a", encoding="utf-8") as vf:     # Rückweg VOR dem Schreiben
-                    vf.write(json.dumps({"id": p["id"], "titel": frisch.get("title"), "html": html}, ensure_ascii=False) + "\n")
-                r = gql('mutation($i:ProductUpdateInput!){productUpdate(product:$i){product{descriptionHtml title} userErrors{message}}}',
-                        {"i": {"id": p["id"], "title": nt, "descriptionHtml": nh + WARNUNG_KLEIN}})
+                if art == "S1":
+                    nh = nh + (WARNUNG_MAGNET if MAGNET.search(titel0 + " " + klartext(html)[:1200]) else WARNUNG_KLEIN)
+                with open(VORHER, "a", encoding="utf-8") as vf:     # Rückweg VOR dem Schreiben (Text, Titel, SEO)
+                    vf.write(json.dumps({"id": p["id"], "titel": frisch.get("title"), "html": html, "seo": frisch.get("seo")}, ensure_ascii=False) + "\n")
+                eingabe = {"id": p["id"], "title": nt, "descriptionHtml": nh}
+                if frisch.get("seo") and (frisch["seo"].get("title") or frisch["seo"].get("description")):
+                    eingabe["seo"] = {"title": st, "description": sd}       # immer beide Felder
+                r = gql('mutation($i:ProductUpdateInput!){productUpdate(product:$i){product{descriptionHtml title seo{title description}} userErrors{message}}}', {"i": eingabe})
                 pu = r.get("productUpdate") or {}
-                zur = (pu.get("product") or {}).get("descriptionHtml") or ""
-                if pu.get("userErrors") or "ls-warnhinweis" not in zur or SAEUG.search(klartext(zur)):
+                zp = pu.get("product") or {}
+                zur = zp.get("descriptionHtml") or ""
+                if (pu.get("userErrors") or "ls-warnhinweis" not in zur or SAEUG.search(klartext(zur))
+                        or SEO_CLAIM.search(((zp.get("seo") or {}).get("title") or "") + " " + ((zp.get("seo") or {}).get("description") or ""))):
                     fehler += 1
                     print(f"  ⛔ Rücklesen: {p['title'][:50]} {pu.get('userErrors')}", flush=True)
                     continue
                 geschrieben += 1
                 with open(LEDGER, "a", encoding="utf-8") as led:
-                    led.write(f"{stempel}\t{p['id'].split('/')[-1]}\tS1\tTEXT+HINWEIS\t{frisch.get('title')}\t{beleg}\n")
+                    led.write(f"{stempel}\t{p['id'].split('/')[-1]}\t{art}\tTEXT{'+HINWEIS' if art == 'S1' else ''}\t{titel0}\t{beleg}\t[]\n")
                 time.sleep(0.3)
         lock.close()
-    with open(STAND, "w", encoding="utf-8") as f:
-        json.dump({"stand": time.strftime("%Y-%m-%dT%H:%MZ", time.gmtime()), "gelesen": gesehen, "K": len(treffer["K"]),
-                   "S1": len(treffer["S1"]), "S2": len(treffer["S2"]), "geschrieben": geschrieben, "offen": offen,
-                   "fehler": fehler, "fix": FIX}, f, ensure_ascii=False, indent=1)
-    gesamt = len(treffer["K"]) + len(treffer["S1"]) + len(treffer["S2"])
-    # Prüfung 19.10. (aufseher F4): FERTIG sperrt den Wächter 20 h — nur drucken, wenn nichts liegen blieb (Fehler, MAX_LAUF, offener Wortlaut)
-    if FIX and (fehler or offen or geschrieben + offen + fehler < gesamt):
+        with open(STAND, "w", encoding="utf-8") as f:                  # Prüfung B12: ein DRY-Lauf überschreibt den Stand des letzten echten Laufs nicht
+            json.dump({"stand": time.strftime("%Y-%m-%dT%H:%MZ", time.gmtime()), "gelesen": gesehen, **{a: len(treffer[a]) for a in arten},
+                       "geschrieben": geschrieben, "offen": offen, "fehler": fehler, "fix": FIX}, f, ensure_ascii=False, indent=1)
+    # FERTIG sperrt den Wächter 20 h — nur drucken, wenn nichts durch Fehler oder MAX_LAUF liegen blieb («offen» = Wortlaut ohne Ersetzung, wird gemeldet, blockiert nicht)
+    if FIX and (fehler or geschrieben + offen + fehler < gesamt):
         print(f"PAUSE: baby_claims_wache unvollständig (geschrieben {geschrieben}, offen {offen}, Fehler {fehler}, Treffer {gesamt}) — nächster Lauf", flush=True)
         return 1 if fehler else 0
-    print(f"FERTIG {time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}: K {len(treffer['K'])} · S1 {len(treffer['S1'])} · S2 {len(treffer['S2'])} "
-          f"· geschrieben {geschrieben} · offen {offen} · Fehler {fehler}" + ("" if FIX else " (DRY)"), flush=True)
+    print(f"FERTIG {time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}: " + " · ".join(f"{a} {len(treffer[a])}" for a in arten)
+          + f" · geschrieben {geschrieben} · offen {offen} · Fehler {fehler}" + ("" if FIX else " (DRY)"), flush=True)
     return 1 if fehler else 0
 
 

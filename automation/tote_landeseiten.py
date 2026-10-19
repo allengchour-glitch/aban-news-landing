@@ -382,7 +382,7 @@ TIER_ZIELE = ("sub-haustier", "haustier-napf-futter", "futterautomaten", "trinkb
 # 19.10.2026 (Spähtrupp gsc-5): Waren, die auf KEINE Kollektion gelegt werden — «PGM Golfschläger (Holz) für Damen und Herren» zog über das grobe
 # Geschlechtswort «damen» eine 301 auf /collections/damen-mode (12'730 Produkte, Köderwechsel). Die Kanarie prüfte nur den strengen Pfad (ohne damen/herren);
 # kategorie_ziel() (ShopifyQL-Landeseiten, FIX-Lauf) rief titel_ziel() ohne `ohne` — dort stand die Golf-Ausnahme nirgends. Gilt in BEIDEN Pfaden.
-NIE_ZIEL = re.compile(r"\bgolf(?:schl[äa]ger|schlager|set|club|bag|ball|handschuh)?\b|golfschl[äa]ger|golfschlager", re.I)
+NIE_ZIEL = re.compile(r"\bgolf\w*|golfschl[äa]ger|golfschlager", re.I)
 
 
 def titel_ziel(text, ohne=()):
@@ -433,6 +433,9 @@ def kategorie_ziel(p, handle=""):
     steht dann nur noch im HANDLE (Lehre 29.08.: wenn der Titel schweigt, reden productType,
     Beschreibung und Handle). Der Handle ist der slugifizierte Titel, die Titelwoerter greifen
     also unveraendert; Bindestriche werden dafuer zu Leerzeichen."""
+    # Prüfung 19.10. (baby B6): NIE_ZIEL gilt auch für die Tag-/Typ-Ziele unten — «PGM Golfschläger» zog sonst über den Tag `haushalt` auf /collections/haushaltsgeraete
+    if NIE_ZIEL.search(((p or {}).get("title") or "") + " " + (handle or "").replace("-", " ")) or "golfschlaeger" in [t.lower() for t in ((p or {}).get("tags") or [])]:
+        return None
     if not p:
         z = titel_ziel(handle.replace("-", " "))
         return ("/collections/" + z) if z and kollektion_taugt(z) else None
@@ -615,6 +618,10 @@ KANARIEN_TITEL = [
 def kanarien_titel(leise=False):
     """→ Zahl der Fehler. Reine Funktion von TITEL_ZIEL/WORT_NICHT_NACH/PRAEFIX_ZIEL, kein Netz."""
     fehler = 0
+    p_golf = {"title": "PGM Golfschläger (Holz) für Damen und Herren", "tags": ["haushalt", "sport"], "productType": ""}     # kategorie_ziel darf nicht über Tag/Typ ausweichen
+    if kategorie_ziel(p_golf, "pgm-golfschlager-holz-fur-damen-und-herren-604000") is not None or kategorie_ziel(None, "pgm-golfschlager-holz-fur-damen-und-herren-604000") is not None:
+        print("  ✗ Golf-Kanarie: kategorie_ziel liefert ein Ziel (Tag/Typ-Ausweichpfad)")
+        fehler += 1
     for roh in ("PGM Golfschläger (Holz) für Damen und Herren", "pgm golfschlager holz fur damen und herren"):    # beide Pfade (streng + grob), gsc-5
         for ohne in ((), ("damen", "herren")):
             if titel_ziel(roh, ohne=ohne) is not None:
