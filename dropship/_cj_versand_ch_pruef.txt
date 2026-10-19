@@ -10961,3 +10961,9 @@ prinzessin-lauflernschuhe-613800	2501020633321614000	16	5.41	ok	landeseite
 chic-bluse-mit-puffarmeln-612700	2607120159161613300	16	7.43	ok	landeseite
 wasserdichter-huftbeutel-im-camouflage-design-619100	2406100739051619300	16	6.25	ok	landeseite
 holz-garderobe-mit-rattan-629400	2412080258131620200	16	12.21	ok	landeseite
+holografischer-huftbeutel-082368	1795738322304774144	16	7.43	ok	landeseite
+warme-cartoon-schneestiefel-620200	2412140321061620700	16	11.60	ok	landeseite
+taktischer-huftbeutel-fur-outdoor-574272	1793557332471848960	16	17.89	ok	landeseite
+kontraststreifen-hose-mit-stretch-632900	2512131137471633100	16	7.99	ok	landeseite
+weisse-madchen-schuhe-mit-schleife-621600	2412120901241621900	16	6.90	ok	landeseite
+solar-bewasserung-fur-garten-und-hof-618000	2607120741561618600	7	13.19	ok	landeseite
