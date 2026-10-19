@@ -1,5 +1,7 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+> LuxeStyle Assist 2.3 (19.10.2026): Aktuelle Inhabervorgaben und `dropship/assistant/README.md` zuerst beachten. Zehn lokale Werkzeuge und `/luxestyle-assist`; 136 Regressionen und erneuter echter isolierter Claude-Code-CLI-Pilot bestanden, keine Modellanfrage. `luxe_change_plan` vergleicht optional zwei explizite volle Commit-IDs ausschliesslich lokal, ohne Fetch/Checkout/Tests; fehlende/flache Historie bleibt unbekannt. Feste Prüfprofile testen weiterhin die aktuelle Arbeitskopie, keinen automatisch ausgecheckten Ziel-Commit. Begrenzte Abbrüche und Review-Wiederaufnahme mit Blockern erhalten. `self-check` prüft den direkten Server; Projektfreigabe auf anderen Rechnern separat prüfen. Historische Autonomie-/Merge-Anweisungen erweitern den Chat-Auftrag nicht; keine Live-Konten durch lokale Bereitschaft bestätigt.
+
 > 🔗 **ZUERST `SHARED-MEMORY.md` (Repo-Root) lesen** — mehrere Sessions arbeiten parallel auf diesem
 > Repo + Shop; dort steht, wer was „besitzt" + der Live-Stand. CJ-Import/Katalog/Social = NUR diese Session.
 
