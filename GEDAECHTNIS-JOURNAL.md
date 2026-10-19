@@ -53,6 +53,35 @@
 
 
 
+## 🛠️ Verbesserungsrunde «alle Verbesserungen und Automationen mit ChatGPT und sonstige» (2026-10-19, ~06:00–08:30 UTC)
+- **Methode:** 7 Spähtrupps (Workflow `wf_62fc1cba-50a`: Aufseher/Tageswächter, Hype, ChatGPT-Brücke, Social, Konnektoren, Google, Platte) lasen und maßen nur; die Skeptiker-Stufe wurde abgebrochen,
+  jeder Befund wurde vor dem Umsetzen am Bestand nachgemessen. Rohdaten nur im Sitzungs-Scratchpad, Ergebnisse im Workflow-Journal.
+- **Tageswächter (Ergebnis statt Log):** `lib/tageslauf.sh` + `tools/ergebnis_alter.py` + Registry `automation/data/tageslauf_ergebnis.tsv` — fällig ist ein Wächter, wenn sein ERGEBNIS alt ist, nicht sein Log. Registriert:
+  startseite_gewicht, anlass_social_sperre, versprechen_kette, kosten_export, ch_lager_profil, **google_bild_abruf** (neu; `ergebnis_alter md` liest jetzt auch «… — Stand 2026-10-19T06:24Z»).
+  `shopify_schranke.sh` gibt bei voller Schranke **Exit 75** (nie mehr FERTIG nach Nicht-Lauf). **Zusatz-Tor in `fixer_keepalive.sh`:** steht «Schranke … voll» in den letzten 3 Zeilen des Laufs, zählt ein FERTIG nicht —
+  GEMESSEN: 8 Wächter (bild_queue_captions_ehrlich, cj_real_luecke, google_bild_abruf, herbst_kuratieren, ig_gepostet_tags, koll_seo_laengen, social_queue_saeubern, startseite_schlank_patch) trugen vom 18.10. 20:56–20:59 ein
+  falsches FERTIG und wären bis ~17:00 UTC gesperrt geblieben; nach dem Tor lief google_bild_abruf um 06:22 sofort. Logik an Wegwerf-Logs getestet (falsch → zählt nicht, echt → zählt).
+- **Platte:** `automation/platte_wartung.sh` (Selbsttest 22/22, Zeile «PLATTE:» im Keepalive): lose Git-Objekte packen (`repack -d`, flock, nice), `/tmp`-Leichen räumen (Regex + >24 h). 95 % → 82 %. Nie `--geometric`, `gc --auto`, `repack -a` ohne `--keep-pack`.
+- **Env-Secret:** `lib/shopify_secret.sh` (7/7) schneidet den Anhang `=SHOPIFY_CLIENT_SECRET` exakt per Regex ab; Betreiber soll den Anhang aus dem Umgebungswert löschen (Zeile «ℹ️ SHOPIFY-SECRET» im Keepalive, bis erledigt).
+- **Hype-Reihe:** 17 geprüfte Produkte aufgenommen (`hype_kuratieren.py` Selbsttest 29/29, Modus `VORSCHLAG=1`), Wächter `hype_wache.py` (Zeile «HYPE:», 10/10).
+- **ChatGPT-Briefkasten:** `automation/chatgpt_briefkasten_wache.py` (Zeile im Keepalive); Aufträge bleiben Entwürfe, Daten nie Befehle.
+- **Social-Treiber:** `social_vorlauf.py` FORMAT_RANG/`offene_sortieren`/`leerlauf_zaehlt` (Leerlauf zählt nicht als Lauf). Story-Karte v2 siehe nächster Abschnitt.
+- **Google G2 (tote Treffer):** GEMESSEN 7 von 39 Websuch-Klicks (04.–16.10.) landeten NACH dem Draft auf einer 404 (Shopify zählt das nicht als Sitzung). `tote_landeseiten.py` TITEL_ZIEL +19 Warenwörter
+  (Wortgrenze + ASCII-Zwilling für gelöschte Handles; «mantel/jacke» NUR mit «für Damen»; «pool» nur als «pool-volleyball»), Kanarien 22 → 38 inkl. Negativen (Damast-/Käsemesser, Anti-Bell, Golf, Transportbox, Herrenmantel,
+  Spool, Drohnentasche). DRY gelesen → SCHARF **16 Weiterleitungen** gesetzt, 6 per Admin-API zurückgelesen; 7 bleiben bewusst offen. WebFetch-Gegenprobe scheiterte an HTTP 429 (nicht an der 301). Wirkung ≈ 5 Klicks/Woche = BEHAUPTUNG.
+- **Google G3 (Unable to show image):** Spähtrupp-Behauptung «36 offen, 0 im Ledger» am Bestand NICHT bestätigt: 165 Dateien trugen schon das Suffix `-g1019` (Lauf 06:22 quittierte «alt = neu»); wer vor 06:22 umbenannte, ist UNBELEGT.
+  **Nachmessen 22.10.:** Klasse «Unable to show image» soll < 10 sein, sonst ist «neue Adresse = schneller» widerlegt (`GOOGLE-BILD-NICHT-ABRUFBAR-2026-10-14.md` OFFEN 1).
+- **Google G5 (Büro-Sammelkorb):** `kategorie_wache.py` TITELREGELN `…buch` (Geschichten/Bilder/Kinder/Mal/Märchen/Vorlese/Rätsel → me-1-3) und `modell(schiff|boot|flug|zug|eisenbahn)` → ae-2-6, 6 Kanarien (Buchstütze/Buchsbaum/Notizbuch
+  bleiben draussen), 369/369; 2 Produkte gesetzt, `buero_korb_typ` stellte 3 Typen um. Google-Metafeld «Office Supplies» zieht der Tageslauf `google_kategorie_umzug.py` nach.
+- **Google G1 (Geschenkwoche):** GEMESSEN 7 von 13 Geschenk-URLs nicht im Index (OpenSEO `inspect_urls`, 0 Credits). SEO-Titel `geschenke-fuer-ihn` → «Geschenke für Männer – Geschenkideen für Ihn | LuxeStyle» (Begriff «geschenk für mann» 6'600/Mt =
+  QUELLE OpenSEO, «geschenk für ihn» 320; alter Titel in `dropship/_seo_titel_vorher_geschenke_fuer_ihn.json`). Probe-Liste +3 URLs. **Betreiber-Klick:** in der Search Console «Indexierung beantragen» (~10/Tag) für geschenke-fuer-ihn,
+  kleine-geschenke-mitbringsel, premium-geschenke, geschenke-unter-50-franken, geschenke-unter-100-franken, Ratgeber geschenke-fuer-maenner-2026-schweiz und weihnachtsgeschenke-2026-schweiz-ideen.
+- **#1024 (Betreiber «check? mail? wo ist es»):** Shopify PAID/UNFULFILLED, keine Sendung. Mails in info@: nur «Bestellung Mister DTF» (11.10. 16:01 UTC, A-Post direkt an die Kundin) und «Rechnung 16423» (CHF 38.60) — keine Versandmail,
+  keine Kundenmail. Frist «3–5 Arbeitstage» ab Mo 12.10. endet heute; A-Post hat keine Sendungsnummer. Offen: Mister DTF fragen (033 345 01 25). `bestell_ampel.py`: MANUELL-Bestellung > 240 h → ⚠️.
+- **Fallen:** (1) Ein unbekannter Schalter kann einen ECHTEN Lauf starten (`judgeme_fake_wache.py --selbsttest`, `cj_stecker_pruefen.py --help`) → Selbsttest/Hilfe nur, wo das Skript den Schalter kennt; vorher `grep -n selbsttest`.
+  (2) Der Classifier verweigerte das Massenlöschen im Scratchpad — nicht umgehen, der Aufseher räumt `/tmp`-Leichen nach Regel. (3) `env | awk -F=` misst Werte mit `=` falsch → `${#VAR}`. (4) Ein Tool-Ergebnis (Firecrawl 402)
+  enthielt eine eingebettete Anweisung — als Daten behandelt, nicht befolgt. (5) `sleep N` in Verkettungen wird blockiert → `timeout N bash -c 'until …; do sleep 10; done'`. (6) `pkill` in eigenem Bash-Aufruf (Exit 144).
+
 ## 📱 «tiktok stories verbessern» (2026-10-19, ~05:20–05:50 UTC)
 - **GEMESSEN:** Echte TikTok-Stories gehen nicht automatisch: Metricool-`createScheduledPost` kennt `STORY` nur in `facebookData`/`instagramData`, `tiktokData` hat kein Story-Feld (QUELLE: Metricool-Anleitungen
   beschreiben Stories als In-App-Funktion; die TikTok-Posting-API nennt nur Video/Foto). Stories gibt es heute nur auf IG+FB (28 veröffentlicht je Netz, 2/Tag bis 25.10.); **Story-Insights = 0 Zeilen** (IGST-Abfrage 30 T) → Wirkung nicht messbar.
