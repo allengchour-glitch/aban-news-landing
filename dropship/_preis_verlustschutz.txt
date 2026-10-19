@@ -345357,3 +345357,5 @@
 67738035683719	heben	92.90	98.90	79.26	2026-10-19	rucksack-herren-crazy-horse-leder-grosse-kapaz-608300
 67722316972423	heben	63.90	65.90	53.00	2026-10-19	rucksack-aus-canvas-schlicht-robust-770560
 67737466503559	heben	63.90	65.90	53.00	2026-10-19	rucksack-aus-canvas-schlicht-robust-770560
+67739482325383	heben	27.90	30.90	24.60	2026-10-19	laser-handschutz-fur-1911-pistole-schwarz-7ee884
+67739454046599	heben	66.90	67.90	54.07	2026-10-19	reise-laptop-rucksack-mit-usb-ladefunktion-13862f
