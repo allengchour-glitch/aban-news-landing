@@ -54,6 +54,67 @@ Q = """query($id:ID!){node(id:$id){... on DeliveryProfile{id name profileLocatio
     minTransitTime maxTransitTime}}}}}}}}}}}}}"""
 M = "mutation($id:ID!,$p:DeliveryProfileInput!){deliveryProfileUpdate(id:$id, profile:$p){profile{id} userErrors{field message}}}"
 
+# 19.10.2026 BLINDER FLECK (Merchant-Center-Screenshot des Betreibers: Regel «price_based» mit 2–5 Tagen): eine PREISSTUFE eines Tarifs
+# («Standard» 7.00, ab CHF 65.00 → 0.00) ist in der Admin-API eine eigene, SYNTHETISCHE Methode (id «…/<Methode>?source=RateRangeCondition&
+# source_id=<Bedingung>», eigene Rate-id «…/0?source=…») — sie erscheint NUR, wenn `methodConditions` gewählt ist und `rateGroups` NICHT
+# (GEMESSEN 19.10.: Q mit rateGroups liefert 3 Methoden, diese Abfrage 4). Die Stufe trägt KEINE Transitzeit, und der Schreibweg
+# (rateGroupsToUpdate/rateDefinitionsToUpdate) braucht eine echte Rate-id → die Wache sah sie nie, `--scharf` kann sie nicht heilen.
+# Google importiert sie als eigenen Versandservice mit Standard-Lieferzeit 2–5 Tage (und bei gleichem Preis gewinnt der schnellste,
+# QUELLE support.google.com/merchants/answer/7050921) → «gratis, 2–5 Tage» auf Ware ab CHF 65, die real 10–20 Tage braucht.
+Q_STUFEN = """query($id:ID!){node(id:$id){... on DeliveryProfile{profileLocationGroups{
+ locationGroupZones(first:10){nodes{zone{name}
+  methodDefinitions(first:20){nodes{id name active
+   methodConditions{field conditionCriteria{__typename ... on MoneyV2{amount}}}
+   rateProvider{__typename ... on DeliveryRateDefinition{minTransitTime maxTransitTime}}}}}}}}}}"""
+
+
+def stufen_befunde(profilname, node):
+    """Aktive Preisstufen (synthetische Methoden «RateRangeCondition») ohne Transitzeit → Befundtexte. Nur lesen, nie schreiben:
+    die API kann die Zeit einer Stufe nicht setzen — Abhilfe ist, die Stufe zu entfernen (Betreiber, Shopify-Admin)."""
+    aus = []
+    for g in (node or {}).get("profileLocationGroups") or []:
+        for zn in g["locationGroupZones"]["nodes"]:
+            for m in zn["methodDefinitions"]["nodes"]:
+                if not m.get("active") or "RateRangeCondition" not in (m.get("id") or ""):
+                    continue
+                rp = m.get("rateProvider") or {}
+                if rp.get("minTransitTime") and rp.get("maxTransitTime"):
+                    continue
+                ab = [str((c.get("conditionCriteria") or {}).get("amount")) for c in m.get("methodConditions") or []
+                      if (c.get("conditionCriteria") or {}).get("amount")]
+                aus.append(f"{profilname}/{zn['zone']['name']}/{m['name']}: Preisstufe{' ab ' + '/'.join(ab) if ab else ''} ohne Transitzeit "
+                           f"(Google zeigt 2–5 Tage; per API nicht setzbar → Stufe in Shopify entfernen)")
+    return aus
+
+
+def selbsttest_stufen():
+    """Offline: erkennt die Stufe ohne Transit, lässt Stufe mit Transit / inaktive Stufe / gewöhnliche Methode in Ruhe."""
+    def knoten(methoden):
+        return {"profileLocationGroups": [{"locationGroupZones": {"nodes": [{"zone": {"name": "Domestic"},
+                                                                              "methodDefinitions": {"nodes": methoden}}]}}]}
+    def meth(mid, aktiv, mn, mx, ab=None):
+        return {"id": f"gid://shopify/DeliveryMethodDefinition/{mid}", "name": "Standard", "active": aktiv,
+                "methodConditions": [{"field": "TOTAL_PRICE", "conditionCriteria": {"__typename": "MoneyV2", "amount": ab}}] if ab else [],
+                "rateProvider": {"__typename": "DeliveryRateDefinition", "minTransitTime": mn, "maxTransitTime": mx}}
+    stufe = "1108712784257?source=RateRangeCondition&source_id=304322609537"
+    faelle = [
+        ("Stufe ohne Transit → 1 Befund", [meth("1108712784257", True, 777600, 1641600), meth(stufe, True, None, None, "65.0")], 1),
+        ("Stufe mit Transit → ok", [meth(stufe, True, 777600, 1641600, "65.0")], 0),
+        ("inaktive Stufe → ok", [meth(stufe, False, None, None, "65.0")], 0),
+        ("gewöhnliche Methode ohne Transit → hier nicht zuständig (Hauptprüfung)", [meth("1108712784257", True, None, None)], 0),
+        ("kaputte Antwort (None) → kein Absturz, 0", None, 0),
+    ]
+    fehler = []
+    for name, ms, soll in faelle:
+        n = len(stufen_befunde("General profile", knoten(ms) if ms is not None else None))
+        if n != soll:
+            fehler.append(f"{name}: {n} statt {soll}")
+    text = (stufen_befunde("General profile", knoten([meth(stufe, True, None, None, "65.0")])) or [""])[0]
+    if "ab 65.0" not in text or "ohne Transitzeit" not in text:
+        fehler.append(f"Befundtext: {text!r}")
+    print("SELBSTTEST Preisstufen-Blindfleck:", "OK (5 Fälle)" if not fehler else "FEHLER " + " | ".join(fehler))
+    return not fehler
+
 
 def gql(q, v=None, ver=None):
     tok = (os.environ.get("SHOPIFY_ADMIN_TOKEN") or open("/tmp/cj_shop_token.txt").read()).strip()
@@ -350,6 +411,10 @@ def main():
             befunde.append(f"Versandrichtlinie ohne «{z['richtlinie_satz']}» ({k}) — Regel prüfen")
     for p in profile:
         lgs = []
+        try:        # 19.10.2026: Preisstufen sieht die rateGroups-Abfrage nicht (Kopf Q_STUFEN) — eigene Abfrage, nur lesend
+            befunde += stufen_befunde(p["name"], gql(Q_STUFEN, {"id": p["id"]})["node"])
+        except Exception as e:  # noqa: BLE001
+            befunde.append(f"{p['name']}: Preisstufen unklar ({type(e).__name__}: {str(e)[:60]})")
         for g in p["profileLocationGroups"]:
             zs = []
             for zn in g["locationGroupZones"]["nodes"]:
@@ -417,6 +482,8 @@ def main():
 
 
 if __name__ == "__main__":
+    if "--selbsttest-stufen" in sys.argv:         # offline, kein Shopify-Zugriff
+        sys.exit(0 if selbsttest_stufen() else 1)
     if "--selbsttest-seite" in sys.argv:          # Pfade: Live-Kopien product.json, cart.json
         i = sys.argv.index("--selbsttest-seite")
         sys.exit(0 if selbsttest_seite_kasse(sys.argv[i + 1], sys.argv[i + 2]) else 1)

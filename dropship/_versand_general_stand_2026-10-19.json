@@ -1,0 +1,204 @@
+{
+ "id": "gid://shopify/DeliveryProfile/132124180865",
+ "name": "General profile",
+ "profileLocationGroups": [
+  {
+   "locationGroup": {
+    "id": "gid://shopify/DeliveryLocationGroup/134126436737"
+   },
+   "locationGroupZones": {
+    "nodes": [
+     {
+      "zone": {
+       "id": "gid://shopify/DeliveryZone/608365379969",
+       "name": "Domestic",
+       "countries": [
+        {
+         "code": {
+          "countryCode": "CH",
+          "restOfWorld": false
+         }
+        }
+       ]
+      },
+      "methodDefinitions": {
+       "nodes": [
+        {
+         "id": "gid://shopify/DeliveryMethodDefinition/1108712784257",
+         "name": "Standard",
+         "active": true,
+         "description": null,
+         "methodConditions": [],
+         "rateProvider": {
+          "__typename": "DeliveryRateDefinition",
+          "id": "gid://shopify/DeliveryRateDefinition/1032124268929",
+          "price": {
+           "amount": "7.0",
+           "currencyCode": "CHF"
+          },
+          "minTransitTime": 777600,
+          "maxTransitTime": 1641600
+         }
+        },
+        {
+         "id": "gid://shopify/DeliveryMethodDefinition/1108712784257?source=RateRangeCondition&source_id=304322609537",
+         "name": "Standard",
+         "active": true,
+         "description": null,
+         "methodConditions": [
+          {
+           "id": "gid://shopify/DeliveryCondition/304322609537?operator=greater_than_or_equal_to",
+           "field": "TOTAL_PRICE",
+           "operator": "GREATER_THAN_OR_EQUAL_TO",
+           "conditionCriteria": {
+            "__typename": "MoneyV2",
+            "amount": "65.0",
+            "currencyCode": "CHF"
+           }
+          }
+         ],
+         "rateProvider": {
+          "__typename": "DeliveryRateDefinition",
+          "id": "gid://shopify/DeliveryRateDefinition/0?source=RateRangeCondition&source_id=304322609537",
+          "price": {
+           "amount": "0.0",
+           "currencyCode": "CHF"
+          },
+          "minTransitTime": null,
+          "maxTransitTime": null
+         }
+        },
+        {
+         "id": "gid://shopify/DeliveryMethodDefinition/1527737287047",
+         "name": "Kostenloser Versand",
+         "active": false,
+         "description": null,
+         "methodConditions": [
+          {
+           "id": "gid://shopify/DeliveryCondition/583571341703?operator=greater_than_or_equal_to",
+           "field": "TOTAL_PRICE",
+           "operator": "GREATER_THAN_OR_EQUAL_TO",
+           "conditionCriteria": {
+            "__typename": "MoneyV2",
+            "amount": "45.0",
+            "currencyCode": "CHF"
+           }
+          }
+         ],
+         "rateProvider": {
+          "__typename": "DeliveryRateDefinition",
+          "id": "gid://shopify/DeliveryRateDefinition/1459186925959",
+          "price": {
+           "amount": "0.0",
+           "currencyCode": "CHF"
+          },
+          "minTransitTime": 777600,
+          "maxTransitTime": 1641600
+         }
+        },
+        {
+         "id": "gid://shopify/DeliveryMethodDefinition/1540193485191",
+         "name": "Kostenloser Versand",
+         "active": true,
+         "description": null,
+         "methodConditions": [
+          {
+           "id": "gid://shopify/DeliveryCondition/583571374471?operator=greater_than_or_equal_to",
+           "field": "TOTAL_PRICE",
+           "operator": "GREATER_THAN_OR_EQUAL_TO",
+           "conditionCriteria": {
+            "__typename": "MoneyV2",
+            "amount": "40.5",
+            "currencyCode": "CHF"
+           }
+          }
+         ],
+         "rateProvider": {
+          "__typename": "DeliveryRateDefinition",
+          "id": "gid://shopify/DeliveryRateDefinition/1471641911687",
+          "price": {
+           "amount": "0.0",
+           "currencyCode": "CHF"
+          },
+          "minTransitTime": 777600,
+          "maxTransitTime": 1641600
+         }
+        }
+       ]
+      }
+     },
+     {
+      "zone": {
+       "id": "gid://shopify/DeliveryZone/608365412737",
+       "name": "International",
+       "countries": [
+        {
+         "code": {
+          "countryCode": null,
+          "restOfWorld": true
+         }
+        }
+       ]
+      },
+      "methodDefinitions": {
+       "nodes": [
+        {
+         "id": "gid://shopify/DeliveryMethodDefinition/1108712817025",
+         "name": "International",
+         "active": true,
+         "description": null,
+         "methodConditions": [],
+         "rateProvider": {
+          "__typename": "DeliveryRateDefinition",
+          "id": "gid://shopify/DeliveryRateDefinition/1032124301697",
+          "price": {
+           "amount": "15.0",
+           "currencyCode": "CHF"
+          },
+          "minTransitTime": 777600,
+          "maxTransitTime": 1641600
+         }
+        }
+       ]
+      }
+     },
+     {
+      "zone": {
+       "id": "gid://shopify/DeliveryZone/742738297223",
+       "name": "Liechtenstein",
+       "countries": [
+        {
+         "code": {
+          "countryCode": "LI",
+          "restOfWorld": false
+         }
+        }
+       ]
+      },
+      "methodDefinitions": {
+       "nodes": [
+        {
+         "id": "gid://shopify/DeliveryMethodDefinition/1538225242503",
+         "name": "Standard Liechtenstein",
+         "active": true,
+         "description": null,
+         "methodConditions": [],
+         "rateProvider": {
+          "__typename": "DeliveryRateDefinition",
+          "id": "gid://shopify/DeliveryRateDefinition/1469669736839",
+          "price": {
+           "amount": "14.9",
+           "currencyCode": "CHF"
+          },
+          "minTransitTime": 1209600,
+          "maxTransitTime": 3801600
+         }
+        }
+       ]
+      }
+     }
+    ]
+   }
+  }
+ ]
+}
