@@ -11009,3 +11009,5 @@ faltbarer-eimer-fur-haushaltsreinigung-16-35-l-606000	2605200543001606900	16	16.
 retro-hosen-mit-haltegurten-629600	2603181320531620100	16	10.69	ok	landeseite
 automatischer-toilettenspuler-638000	2605160809271638500	7	10.50	ok	landeseite
 einstellbare-haustier-halsung-605400	2607090933311606100	16	5.55	ok	landeseite
+sternenhafte-meeres-mehrfach-anhanger-halskett-616500	2607111235521617200	16	4.50	ok	landeseite
+haarol-fur-pflege-und-starkung-621000	2605060312501621600	3	6.29	ok	landeseite
