@@ -10942,3 +10942,13 @@ herren-gurteltasche-aus-erstem-leder-robust-un-614100	2407210358381614200	16	7.8
 halbkorper-modell-aus-leinen-612300	2501231048491612600	0	-	KEINE CH-Option → DRAFT	landeseite
 chiffon-kleid-mit-3d-effekt-627200	2607080530361627800	16	8.11	ok	landeseite
 oktopus-kleiderstander-601000	2501150834141602100	11	58.21	ok	landeseite
+tagliche-freizeittasche-fur-damen-herren-618700	2406260409201618900	16	11.00	ok	landeseite
+elegantes-langkleid-mit-blumenmuster-636500	2607080517141637100	16	12.11	ok	landeseite
+mittelalterliche-gurteltasche-620800	2406250655421621000	16	11.00	ok	landeseite
+eisen-wandhalterung-fur-jacken-627400	2501110935191627700	16	7.05	ok	landeseite
+prinzessinnen-schuhe-mit-schleife-601200	2506120215351601500	16	9.88	ok	landeseite
+strick-openwork-stranduberzug-626600	2607080501391627300	16	8.79	ok	landeseite
+aufbewahrungsbox-fur-wasche-610900	2501070558411611100	16	8.79	ok	landeseite
+leder-taille-bag-601700	2406250638251601900	16	10.15	ok	landeseite
+blumiges-midi-kleid-mit-v-ausschnitt-634500	2607080316421635500	16	8.11	ok	landeseite
+prinzessinnen-sandalen-618100	2503091838061618300	16	8.25	ok	landeseite

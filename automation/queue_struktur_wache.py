@@ -23,8 +23,9 @@ WAS GEPRÜFT WIRD (je Queue; ein strenger Zeichen-für-Zeichen-Leser mit Zeilenn
              ungültiges UTF-8
   Werte      ID leer bei offenem Status (ready/posting/posting-unklar-pruefen/pending) · dieselbe ID zweimal, davon eine offen und
              eine weitere offen oder gepostet (Doppelpost-Risiko; reine History-Dubletten wie jury-skip/jury-skip sind normal und
-             nur Info) · Status ausserhalb des Wortschatzes · Plattform ausserhalb {instagram, facebook, threads, tiktok, youtube,
-             pinterest}
+             nur Info) · Status ausserhalb des Wortschatzes (inkl. Familie «<netz>-fehler», fester Kanarienwortschatz STATUS_KANARIEN im
+             Selbsttest) · Plattform ausserhalb {instagram, facebook, threads, tiktok, youtube, pinterest} — bei metricool_queue.networks gilt
+             der weitere Metricool-Wortschatz (zusätzlich twitter, linkedin, bluesky, gmb)
   ERLAUBT    echte Zeilenumbrüche IN Anführungszeichen (GEMESSEN 19.10.: reels_seed 678 Felder, posts_image 363, video_queue 18, metricool_queue 20 —
              nur ig_karussell/tiktok_karussell kodieren Umbrüche als « ⏎ ») · CRLF als Satzende (video_queue.csv) · leere Plattform
              (= alle Kanäle) · leere ID bei Endzuständen (posted…, …-skip).
@@ -38,7 +39,11 @@ WAS GEPRÜFT WIRD (je Queue; ein strenger Zeichen-für-Zeichen-Leser mit Zeilenn
                                                                  queue_schreiber_wache --still: bei «ok» still)
     python3 automation/queue_struktur_wache.py --parser-abgleich dieselben Dateien mit diesem Leser, Python csv, queue_csv.py und
                                                                  queue_csv.mjs (node) lesen und jeden Unterschied auflisten
-    python3 automation/queue_struktur_wache.py --selbsttest      Kanarienvögel je Befundart + echte Queues (Exit 1 bei Fehler)
+                                                                 (Exit 1 = Leser uneinig · 3 = unklar, z. B. node fehlt · 0 = einig)
+    python3 automation/queue_struktur_wache.py --selbsttest      Kanarienvögel je Befundart + echte Queues (Exit 1 bei Fehler, Exit 3 =
+                                                                 unklar: queue_csv.mjs-Abgleich nicht gelaufen — nie «ok»). Die Zeile nennt
+                                                                 zusätzlich «Bestand: n Befunde» auf den echten Queues (Daten, Exit bleibt 0).
+    Mutationstest des Selbsttests: python3 automation/queue_struktur_wache_test.py (veränderte Kopien der Wache MÜSSEN rot werden)
   Jeder andere Schalter: Meldung auf stderr, Exit 2, KEIN Lauf.
 """
 import csv
@@ -56,8 +61,15 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 NODE = "/opt/node22/bin/node"
 PAUSE_S = 1.2        # Wartezeit vor dem zweiten Lesen einer Datei MIT Befund
 VERSUCHE = 3         # Lesungen, bis ein Befund als beständig gilt
+ID_MAX = 40          # längere IDs werden im Befund gekappt (eine ID ist ein Name, kein Dateirest)
 
 PLATTFORMEN = frozenset({"instagram", "facebook", "threads", "tiktok", "youtube", "pinterest"})
+# metricool_queue.networks geht UNGEPRÜFT als providers an Metricool (metricool-schedule.mjs, `row.networks.split(…)`); gültig sind lt. Schema
+# des Metricool-Werkzeugs createScheduledPost (QUELLE, gelesen 19.10.2026): twitter, facebook, instagram, linkedin, pinterest, youtube, tiktok,
+# bluesky, threads, gmb. Nur dort gilt der weitere Wortschatz; die Poster der übrigen Queues kennen nur die sechs oben (ein «linkedin» in
+# reels_seed.platforms ist dort weiterhin ein Befund). Der Spalten-Shift-Test nimmt beide Mengen (ein ungequotetes «linkedin,twitter» ist ein Shift).
+METRICOOL_NETZE = frozenset({"twitter", "facebook", "instagram", "linkedin", "pinterest", "youtube", "tiktok", "bluesky", "threads", "gmb"})
+ALLE_NETZE = PLATTFORMEN | METRICOOL_NETZE
 
 # Queue → ID-Spalte, Plattform-Spalte, Pflichtspalten. QUELLE der Pflichtspalten: die Leser-Poster (Spalte «leser» = Datei mit
 # `const COLS = […]`, die zusätzlich gelesen und mit der Tabelle abgeglichen wird; ohne COLS-Liste: Zugriffe im Poster gezählt):
@@ -82,13 +94,16 @@ SPEC = {
     "social/tiktok_karussell.csv": {"id": "slug", "plattform": None, "leser": None,
                                     "pflicht": ["slug", "modus", "slides", "ordner", "produkte", "caption", "status"]},
     "social/metricool_queue.csv": {"id": "id", "plattform": "networks", "leser": "automation/metricool-schedule.mjs",
-                                   "pflicht": ["id", "publish_date", "media_url", "text", "networks", "status", "scheduled_at", "note"]},
+                                   "pflicht": ["id", "publish_date", "media_url", "text", "networks", "status", "scheduled_at", "note"],
+                                   "plattformen": METRICOOL_NETZE},
 }
 
 # Status-Wortschatz: Bestand 19.10. (alle Queues) + Git-Verlauf (≈ 25 Stichproben je Queue) + Literale, die Poster/Säuberer in eine
 # Queue schreiben (meta_reel_post: markierung-fehlt, promo-veraltet · social-autopost-meta: skipped-nonjpg · metricool-schedule: scheduled ·
-# social_captions_polieren: text-pruefen · betreiber_ampel liest: tiktok-fehler). Die «…-skip»/«posted-…»-Familien sind offen (die
-# Poster erfinden neue Gründe), alles andere muss hier stehen — ein neuer Wert ist ein Befund, bis er hier eingetragen ist.
+# social_captions_polieren: text-pruefen · betreiber_ampel liest: tiktok-fehler). Die «…-skip»/«posted-…»/«…-fehler»-Familien sind offen
+# (die Poster erfinden neue Gründe bzw. bauen das Wort aus dem Netz: metricool_tiktok_post.mjs `FEHLER = ${NETZ}-fehler` mit NETZ in
+# tiktok|youtube|instagram → «youtube-fehler»/«instagram-fehler», 19.10. nachgetragen), alles andere muss hier stehen — ein neuer Wert ist
+# ein Befund, bis er hier eingetragen ist. Gegen STILLES Herausfallen eines Worts schützt STATUS_KANARIEN (fest, unabhängig von diesen Mengen).
 STATUS_FEST = frozenset({"ready", "posting", "posting-unklar-pruefen", "pending", "hold", "needs-rehost", "tiktok-entwurf",
                          "produkt-nicht-aktiv", "preis-veraltet", "ig-fehler", "posted", "skip", "markierung-fehlt", "promo-veraltet",
                          "skipped-nonjpg", "scheduled", "text-pruefen", "tiktok-fehler"})
@@ -97,8 +112,25 @@ STATUS_FAMILIEN = [re.compile(p) for p in (
     r"([a-z0-9]+-)+skip",                      # jury-skip, dup-produkt-skip, saison-skip …
     r"skip(-[a-z0-9]+)+",                      # skip-produkt-ausverkauft …
     r"([a-z0-9]+-)+hold",                      # werbetext-hold
+    r"[a-z0-9]+-fehler",                       # tiktok-/youtube-/instagram-/ig-fehler (Metricool-Prüfung schreibt je Netz)
     r"(archived|verworfen|aussortiert)(-[a-z0-9]+)+",
 )]
+# Kanarien-Wortschatz: jedes Statuswort, das GEMESSEN 19.10.2026 in den acht echten Queues steht (Auszählung je Datei) oder das ein Poster/
+# Säuberer als Literal in eine Queue schreibt (grep `idx.status] =` in automation/*.mjs, social_captions_polieren.py; metricool_tiktok_post.mjs
+# `FEHLER`/`POSTED` je NETZ). Der Selbsttest hält sie ALLE für bekannt — fällt ein Wort aus STATUS_FEST/STATUS_FAMILIEN, wird er rot, auch wenn
+# die Leser einig sind. Neue Wörter hier ERGÄNZEN, nie streichen, solange ein Poster sie schreiben kann.
+STATUS_KANARIEN = (
+    "ready", "posting", "posting-unklar-pruefen", "pending", "hold", "needs-rehost", "tiktok-entwurf", "produkt-nicht-aktiv", "preis-veraltet",
+    "posted", "skip", "markierung-fehlt", "promo-veraltet", "skipped-nonjpg", "scheduled", "text-pruefen",
+    "ig-fehler", "tiktok-fehler", "youtube-fehler", "instagram-fehler",
+    "posted-ig-fb", "posted-ig", "posted-tiktok", "posted-youtube", "posted-instagram", "posted-dup-skip", "posted-dup-caption",
+    "posted-dup-produkt", "posted-dup-live",
+    "jury-skip", "saison-skip", "dup-produkt-skip", "dup-zeile-skip", "dup-skip", "dup-reel-owner-skip", "dead-url-skip", "bad-caption-skip",
+    "produkt-weg-skip", "produkt-draft-skip", "preis-veraltet-skip", "preis-irrefuehrend-skip", "montage-preis-skip", "meisterwerk-tor-skip",
+    "bildtext-skip", "text-im-bild-skip", "format-skip", "fremdmaterial-skip", "fremdtext-skip",
+    "skip-produkt-ausverkauft", "skip-bild-zeigt-mehr-als-lieferumfang", "werbetext-hold",
+    "archived-deadurl", "verworfen-fremdvideo", "aussortiert-verbrauchsartikel",
+)
 OFFEN = frozenset({"ready", "posting", "posting-unklar-pruefen", "pending"})   # hier ist eine leere ID gefährlich
 SCHARF = frozenset({"ready", "posting", "posting-unklar-pruefen"})             # hier würde ein Poster zugreifen / hat es getan
 
@@ -192,7 +224,9 @@ def strikt_parsen(text):
             feld.append(c)
         i += 1
     if zustand == "quote":
-        info["offen_id"] = satz[0] if satz else "".join(feld)
+        # ID des Satzes, in dem das Anführungszeichen aufging: Feld 0 des Satzes. Öffnet es IN Feld 0 (satz leer), steckt der Rest der Datei
+        # in diesem Feld — dann gibt es keine verlässliche ID (leer = «-»); nie den Dateirest als ID melden (gemessen: 178 KB im Bericht).
+        info["offen_id"] = (satz[0] if satz else "")[:ID_MAX]
         melde("offenes-anfuehrungszeichen", f"Anführungszeichen in Zeile {q_zeile} wird nie geschlossen — der Rest der Datei steckt in diesem Feld", z=q_zeile)
     elif satz or feld or zustand != "anfang":
         feld_ende()
@@ -231,7 +265,7 @@ def _shift_signatur(r, n_kopf):
         return None
     best, lauf, start = None, 0, 0
     for k, f in enumerate(r):
-        if f.strip().lower() in PLATTFORMEN:
+        if f.strip().lower() in ALLE_NETZE:
             if lauf == 0:
                 start = k
             lauf += 1
@@ -308,7 +342,7 @@ def pruefe_text(q, text, pflicht=None):
                 ids.setdefault(sid, []).append((z, st))
         if pi is not None:
             teile = [t for t in re.split(r"[;,\s]+", r[pi].strip().lower()) if t]
-            unbek = [t for t in teile if t not in PLATTFORMEN]
+            unbek = [t for t in teile if t not in sp.get("plattformen", PLATTFORMEN)]
             if unbek:
                 befunde.append((z, sid, "plattform-unbekannt", "unbekannt: " + ", ".join(unbek)))
     hist = 0
@@ -424,7 +458,7 @@ def bericht(erg):
     if bf:
         print("Befunde:")
         for q, (z, i, art, detail) in bf[:40]:
-            print(f"  {q}:{z}  id={i or '-'}  [{art}] {detail}")
+            print(f"  {q}:{z}  id={i[:ID_MAX] or '-'}  [{art}] {detail}")
         if len(bf) > 40:
             print(f"  … und {len(bf) - 40} weitere")
 
@@ -486,7 +520,7 @@ def abgleich_texte(texte, repo=REPO):
             if k == "dieser Leser":
                 continue
             if v is None:
-                unterschiede.append((k, None, fehler.get(k, "nicht gelaufen (unklar)")))
+                unterschiede.append((k, None, fehler.get(k, NICHT_GELAUFEN + " (unklar)")))
                 continue
             for j in range(max(len(strikt), len(v))):
                 x, y = (strikt[j] if j < len(strikt) else None), (v[j] if j < len(v) else None)
@@ -509,22 +543,36 @@ def parser_abgleich(repo=REPO):
     return aus + abgleich_texte(texte, repo)
 
 
+NICHT_GELAUFEN = "nicht gelaufen"
+
+
+def abgleich_exit(unterschiede, unklar):
+    """Exit-Code des Parser-Abgleichs: 1 = Leser lesen verschieden, 3 = unklar (ein Leser lief nicht / Datei nicht lesbar), 0 = einig.
+    «Nicht gelaufen» ist NIE «einig»: ohne node fehlt ein ganzes Prüfbein."""
+    return 1 if unterschiede else (3 if unklar else 0)
+
+
 def parser_abgleich_bericht(repo=REPO):
+    """Druckt den Abgleich. → (unterschiede, unklar): echte Abweichungen zwischen den Lesern getrennt von «nicht gelaufen/nicht lesbar»."""
     erg = parser_abgleich(repo)
-    unterschiede = 0
+    unterschiede = unklar = 0
     print("PARSER-ABGLEICH (Sätze inkl. Kopf; «Abw.» = Sätze mit anderer Feldzahl als der Kopf)")
     for e in erg:
         if "fehler" in e:
             print(f"  {e['q']:<30} UNKLAR: {e['fehler']}")
-            unterschiede += 1
+            unklar += 1
             continue
         zeile = " · ".join(f"{k} {e['n'][k] if e['n'][k] is not None else '?'}/Abw. {e['abweichler'][k] if e['abweichler'][k] is not None else '?'}" for k in e["n"])
         print(f"  {e['q']:<30} {zeile}")
         for k, j, t in e["unterschiede"]:
-            unterschiede += 1
-            print(f"      Unterschied {k}: {t}")
-    print(f"{unterschiede} Unterschied(e) zwischen den Lesern")
-    return unterschiede
+            if t.startswith(NICHT_GELAUFEN):
+                unklar += 1
+                print(f"      UNKLAR {k}: {t}")
+            else:
+                unterschiede += 1
+                print(f"      Unterschied {k}: {t}")
+    print(f"{unterschiede} Unterschied(e) zwischen den Lesern" + (f" · {unklar} unklar (Leser nicht gelaufen / Datei nicht lesbar)" if unklar else ""))
+    return unterschiede, unklar
 
 
 # -------------------------------------------------------------------------------------------------------------- Selbsttest
@@ -554,11 +602,14 @@ def selbsttest(repo=REPO):
         "leere Plattform + Leerzeichen/Semikolon in der Liste": H + row("a", pl="") + row("b", pl='"instagram, facebook"') + row("c", pl="Instagram;Threads"),
         "leere ID bei Endstatus": H + row("", "posted-ig-fb") + row("", "jury-skip"),
         "History-Dubletten": H + row("a", "jury-skip") + row("a", "jury-skip") + row("b", "posted") + row("b", "posted-dup-skip"),
-        "Status-Familien und Literale": H + "".join(row(f"s{k}", st) for k, st in enumerate(
-            ["posted-youtube", "posted-instagram", "dup-zeile-skip", "skip-produkt-ausverkauft", "archived-deadurl", "verworfen-fremdvideo",
-             "werbetext-hold", "tiktok-entwurf", "pending", "posting-unklar-pruefen", "markierung-fehlt", "promo-veraltet", "skipped-nonjpg",
-             "scheduled", "text-pruefen", "tiktok-fehler"])),
+        "History-Dubletten pending/pending (nicht scharf)": H + row("a", "pending") + row("a", "pending"),
+        # fester Wortschatz aus dem Bestand und den Poster-Literalen (STATUS_KANARIEN, unabhängig von STATUS_FEST/-FAMILIEN) + neue Fehler-Familie
+        "Status-Kanarienwortschatz (Bestand 19.10. + Poster-Literale)": H + "".join(row(f"s{k}", st) for k, st in enumerate(STATUS_KANARIEN)),
+        "Status Fehler-Familie (youtube/instagram/pinterest)": H + "".join(row(f"f{k}", st) for k, st in enumerate(
+            ["youtube-fehler", "instagram-fehler", "pinterest-fehler", "tiktok-fehler", "ig-fehler"])),
     }
+    pruef(len(set(STATUS_KANARIEN)) == len(STATUS_KANARIEN) and all(status_bekannt(s) for s in STATUS_KANARIEN),
+          "STATUS_KANARIEN: doppelte Wörter oder ein Wort ist nicht im Wortschatz")
     for name, text in sauber.items():
         r = pruefe_text(Q, text)
         pruef(not r["befunde"], f"Fehlalarm bei «{name}»: {[b[2:3] for b in r['befunde']]}")
@@ -575,6 +626,22 @@ def selbsttest(repo=REPO):
         ("ID leer bei posting", H + row("", "posting"), ["id-leer"]),
         ("ID doppelt, beide ready", H + row("a") + row("b") + row("a"), ["id-doppelt-offen"]),
         ("ID doppelt, ready neben posted", H + row("a", "posted-ig-fb") + row("a", "ready"), ["id-doppelt-offen"]),
+        ("ID leer bei pending", H + row("", "pending"), ["id-leer"]),
+        ("ID leer bei posting-unklar-pruefen", H + row("", "posting-unklar-pruefen"), ["id-leer"]),
+        ("ID doppelt, beide posting", H + row("a", "posting") + row("a", "posting"), ["id-doppelt-offen"]),
+        ("ID doppelt, posting-unklar-pruefen neben ready", H + row("a", "posting-unklar-pruefen") + row("a", "ready"), ["id-doppelt-offen"]),
+        ("ID doppelt, posting neben posted", H + row("a", "posted-tiktok") + row("a", "posting"), ["id-doppelt-offen"]),
+        # Wortschatz-Grenzen: die offenen Familien lassen NUR die Form «…-skip», «posted-…», «…-fehler» durch (kein Anhängsel ohne Bindestrich)
+        ("Status «postedx»", H + row("a", "postedx"), ["status-unbekannt"]),
+        ("Status «posted-» (Bindestrich ohne Grund)", H + row("a", "posted-"), ["status-unbekannt"]),
+        ("Status «Posted-ig-fb» (gross)", H + row("a", "Posted-ig-fb"), ["status-unbekannt"]),
+        ("Status «xskip» (kein Bindestrich)", H + row("a", "xskip"), ["status-unbekannt"]),
+        ("Status «xhold» (kein Bindestrich)", H + row("a", "xhold"), ["status-unbekannt"]),
+        ("Status «archived» (ohne Grund)", H + row("a", "archived"), ["status-unbekannt"]),
+        ("Status «tiktokfehler» (kein Bindestrich)", H + row("a", "tiktokfehler"), ["status-unbekannt"]),
+        ("Status «fehler» (ohne Netz)", H + row("a", "fehler"), ["status-unbekannt"]),
+        ("Status «YouTube-fehler» (gross)", H + row("a", "YouTube-fehler"), ["status-unbekannt"]),
+        ("Plattform linkedin gilt NUR bei metricool_queue", H + row("a", pl="linkedin"), ["plattform-unbekannt"]),
         ("Status «Ready»", H + row("a", "Ready"), ["status-unbekannt"]),
         ("Status « ready» (Leerraum)", H + row("a", " ready"), ["status-unbekannt"]),
         ("Status leer", H + row("a", ""), ["status-unbekannt"]),
@@ -603,9 +670,48 @@ def selbsttest(repo=REPO):
     # Zeilennummer + ID: Kopf = Zeile 1, Satz «a» belegt die Zeilen 2–4 (zwei echte Umbrüche), der Shift-Satz beginnt in Zeile 5
     r = pruefe_text(Q, H + row("a", cap='"1\n2\n3"') + "zz,2026-10-19,u,c,#a,instagram,facebook,ready,,\n")
     pruef([b[:3] for b in r["befunde"]] == [(5, "zz", "spalten-shift")], f"Zeile/ID des Shifts: {r['befunde']}")
-    # ungültiges UTF-8 geht über _pruefe_bytes
+    # Zeilennummer + ID JEDER Befundart: derselbe Vorsatz (Kopf Zeile 1, Satz «a» Zeilen 2–4), der Defekt beginnt in Zeile 5. Ohne diese Fälle liesse
+    # sich die Zeilenzählung ändern (z. B. immer Zeile 1), ohne dass ein Test rot wird (Mutation «satz_zeile → 1» überlebte).
+    pre = H + row("a", cap='"1\n2\n3"')
+    zeilenfaelle = [
+        ("Anführungszeichen im Feld", pre + row("zz", cap='sag "hallo" Welt'), (5, "zz", "anfuehrungszeichen-im-feld")),
+        ("CR im Feld", pre + row("zz", cap='"ca\r\np"'), (5, "zz", "cr-im-feld")),
+        ("Text nach geschlossenem Feld", pre + row("zz", cap='"cap"x'), (5, "zz", "text-nach-geschlossenem-feld")),
+        ("einzelnes CR", pre + row("zz", cap="ca\rp"), (5, "zz", "cr-allein")),
+        ("Leerzeile", pre + "\n" + row("zz"), (5, "", "leerzeile")),
+        ("Ende ohne Umbruch", pre + row("zz").rstrip("\n"), (5, "zz", "ende-ohne-umbruch")),
+        ("offenes Anführungszeichen", pre + 'zz,2026-10-19,u,"Caption ohne Ende,#a,instagram,ready,,\n' + row("c"), (5, "zz", "offenes-anfuehrungszeichen")),
+        ("Feldzahl", pre + "zz,2026-10-19,u,cap,#a,instagram,ready,\n", (5, "zz", "feldzahl")),
+        ("ID leer", pre + row("", "ready"), (5, "", "id-leer")),
+        ("Status unbekannt", pre + row("zz", "rady"), (5, "zz", "status-unbekannt")),
+        ("Plattform unbekannt", pre + row("zz", pl="insta"), (5, "zz", "plattform-unbekannt")),
+        ("ID doppelt (Zeile des letzten Vorkommens)", pre + row("zz") + row("zz"), (6, "zz", "id-doppelt-offen")),
+    ]
+    for name, text, soll in zeilenfaelle:
+        r = pruefe_text(Q, text)
+        pruef([b[:3] for b in r["befunde"]] == [soll], f"Zeile/ID «{name}»: erwartet {soll}, gemeldet {[b[:3] for b in r['befunde']]}")
+    # ungültiges UTF-8 geht über _pruefe_bytes (Zeile 5 hinter dem mehrzeiligen Satz «a»)
     b = H.encode() + row("a", cap="xQx").encode().replace(b"xQx", b"x\xffx")
     pruef([x[2] for x in _pruefe_bytes(repo, Q, b)["befunde"]] == ["kein-utf8"], "ungültiges UTF-8 nicht erkannt")
+    b = pre.encode() + row("zz", cap="xQx").encode().replace(b"xQx", b"x\xffx")
+    pruef([x[:3] for x in _pruefe_bytes(repo, Q, b)["befunde"]] == [(5, "", "kein-utf8")], f"ungültiges UTF-8: Zeile {[x[:3] for x in _pruefe_bytes(repo, Q, b)['befunde']]}")
+    # offenes Anführungszeichen IN Feld 0: der Rest der Datei steckt im Feld — die ID bleibt leer, der Befund klein (vorher: 178 KB «ID»)
+    gross = pre + '"b-offen,2026-10-19,u,c,#a,instagram,ready,,\n' + "".join(row(f"n{k}") for k in range(3000))
+    r = pruefe_text(Q, gross)
+    pruef([b[:3] for b in r["befunde"]] == [(5, "", "offenes-anfuehrungszeichen")], f"Quote in Feld 0: {[b[:3] for b in r['befunde']]}"[:300])
+    pruef(len(repr(r["befunde"])) < 600, f"Quote in Feld 0: Befund wiegt {len(repr(r['befunde']))} Zeichen")
+    r = pruefe_text(Q, pre + "x" * 100 + ',2026-10-19,u,"offen,#a,instagram,ready,,\n')
+    pruef([b[1] for b in r["befunde"]] == ["x" * ID_MAX], f"lange ID im offenen Satz nicht gekappt: {[len(b[1]) for b in r['befunde']]}")
+    # Metricool: weiterer Netz-Wortschatz NUR dort (lt. Schema gültige Providers); ein Tippfehler bleibt ein Befund; ein Shift mit solchen Netzen ebenso
+    QM = "social/metricool_queue.csv"
+    HM = ",".join(SPEC[QM]["pflicht"]) + "\n"
+    rowm = lambda i="a", nw="instagram": f"{i},2026-10-19T18:00:00,https://x/{i}.mp4,Text,{nw},hold,,\n"
+    for nw in ("linkedin", '"instagram,facebook,tiktok"', "twitter", "bluesky", "gmb", "threads"):
+        r = pruefe_text(QM, HM + rowm("a", nw))
+        pruef(not r["befunde"], f"metricool networks={nw}: Fehlalarm {[b[2:3] for b in r['befunde']]}")
+    for nw, soll in (("twiter", ["plattform-unbekannt"]), ("instagram,linkedin", ["spalten-shift"]), ("linkedin,twitter", ["spalten-shift"])):
+        r = pruefe_text(QM, HM + rowm("a", nw))
+        pruef(_arts(r) == soll, f"metricool networks={nw}: erwartet {soll}, gemeldet {_arts(r)}")
     # jede der acht Queues: eine nach Tabelle gebaute saubere Datei meldet nichts, mit einem Feld mehr genau feldzahl, mit leerer ID bei ready id-leer
     for q, sp in SPEC.items():
         k = sp["pflicht"]
@@ -632,6 +738,17 @@ def selbsttest(repo=REPO):
         pruef(False, "flackernde Datei nicht als instabil erkannt")
     except Instabil:
         pruef(True, "")
+    # … und auf der Ebene von pruefen()/--still: Instabil MUSS dort als «unklar» ankommen (nicht verschwinden, nicht «ok» sein) — Mutation
+    #   «Instabil → pass» überlebte, weil nur pruefe_queue() geprüft war
+    zaehler = [0]
+
+    def flackert(repo_, q_):
+        zaehler[0] += 1
+        return kaputt_roh + b"x" * zaehler[0]
+    e_f = pruefen(repo, lese=flackert, pause=0)
+    z_f = still_zeile(e_f) or ""
+    pruef(len(e_f["unklar"]) == len(SPEC) and not e_f["queues"] and all("ändert sich" in g for _, g in e_f["unklar"]) and z_f.startswith("QUEUE-STRUKTUR: unklar ("),
+          f"flackernde Dateien kommen in pruefen() nicht als unklar an: {z_f[:160]}")
     # --- Lesefehler: fehlende / nicht lesbare Datei = unklar, nie ok
     def weg(repo_, q_):
         raise FileNotFoundError(q_)
@@ -670,12 +787,15 @@ def selbsttest(repo=REPO):
     #     uneinige Leser MÜSSEN einen Befund der Wache haben (sonst wäre sie blind). Prüft das Werkzeug, nicht die Daten.
     abgleich = parser_abgleich(repo)
     echt = pruefen(repo, pause=0)
+    # Bestand = Befunde auf den ECHTEN Queues (Daten, kein Werkzeugfehler): getrennt gemeldet, damit ein Wortschatz-/Regelfehler, der den Bestand
+    # plötzlich anmeckert, in der Selbsttest-Zeile sichtbar ist (die harten Wortschatz-Wächter sind STATUS_KANARIEN und die Fälle oben).
+    bestand = None if echt["unklar"] else len(alle_befunde(echt))
     mjs_lief = all(e["n"]["queue_csv.mjs"] is not None for e in abgleich if "n" in e)
     for e in abgleich:
         if "fehler" in e:
             pruef(False, f"{e['q']}: {e['fehler']}")
             continue
-        uneinig = [u for u in e["unterschiede"] if not u[2].startswith("nicht gelaufen")]
+        uneinig = [u for u in e["unterschiede"] if not u[2].startswith(NICHT_GELAUFEN)]
         hat_befund = bool(echt["queues"].get(e["q"], {}).get("befunde"))
         pruef(not uneinig or hat_befund, f"{e['q']}: Leser uneinig ({uneinig[:2]}), aber kein Befund der Wache")
         if not hat_befund:
@@ -684,8 +804,10 @@ def selbsttest(repo=REPO):
             pruef(e["q"] in echt["queues"] and e["n"]["dieser Leser"] - 1 == echt["queues"][e["q"]]["saetze"], f"{e['q']}: Satzzahl der Wache weicht ab")
     # Abgleich-Werkzeug selbst: ein sauberer Text zeigt keinen Unterschied, ein einzelnes CR MUSS einen zeigen (Python csv trennt dort den Satz)
     syn = {e["q"]: e for e in abgleich_texte({"sauber": "id,a\nx,1\n", "cr": "id,a,b\nx,a\rb,2\nz,3,4\n"}, repo)}
-    pruef(not [u for u in syn["sauber"]["unterschiede"] if not u[2].startswith("nicht gelaufen")], f"Abgleich: Fehlalarm bei sauberem Text {syn['sauber']['unterschiede']}")
+    pruef(not [u for u in syn["sauber"]["unterschiede"] if not u[2].startswith(NICHT_GELAUFEN)], f"Abgleich: Fehlalarm bei sauberem Text {syn['sauber']['unterschiede']}")
     pruef(any(u[0] == "Python csv" for u in syn["cr"]["unterschiede"]), "Abgleich: einzelnes CR nicht als Unterschied erkannt")
+    # Exit-Code des Abgleichs: Unterschied → 1, nur «nicht gelaufen/nicht lesbar» → 3 (unklar, NIE 0), einig → 0
+    pruef([abgleich_exit(0, 0), abgleich_exit(2, 0), abgleich_exit(0, 3), abgleich_exit(1, 1)] == [0, 1, 3, 1], "abgleich_exit: Zuordnung Unterschied/unklar/einig")
     # die 0 im echten Lauf braucht einen Fall, der treffen MUSS: dieselbe Prüfung auf Kopien der echten Texte mit je einem eingebauten Defekt
     for q, sp in SPEC.items():
         try:
@@ -716,7 +838,7 @@ def selbsttest(repo=REPO):
         #    Erwartet: genau ein neuer Befund «spalten-shift» in der Zeile, in der DIESER Satz beginnt (Captions haben echte Umbrüche).
         if sp["plattform"]:
             pi = kopf.index(sp["plattform"])
-            ziel = next(((z, r) for z, r in strikt_parsen(text)[0][1:] if len(r) == len(kopf) and "," in r[pi] and all(x in PLATTFORMEN for x in r[pi].split(","))), None)
+            ziel = next(((z, r) for z, r in strikt_parsen(text)[0][1:] if len(r) == len(kopf) and "," in r[pi] and all(x in ALLE_NETZE for x in r[pi].split(","))), None)
             if ziel:
                 z0, r0 = ziel
                 off = sum(len(l) + 1 for l in text.split("\n")[:z0 - 1])
@@ -724,12 +846,20 @@ def selbsttest(repo=REPO):
                 r = _pruefe_bytes(repo, q, (text[:m.start()] + r0[pi] + text[m.end():]).encode("utf-8"))
                 neu = [b for b in r["befunde"] if b not in basis["befunde"]]
                 pruef([b[:3] for b in neu] == [(z0, r0[0], "spalten-shift")], f"{q}: Kanarienvogel Spalten-Shift (erwartet Zeile {z0}, id {r0[0]!r}): {[b[:3] for b in neu]}")
+            # … und IMMER auch auf einer angehängten Zeile (kein Satz mit Plattform-Liste im Bestand darf den Kanarienvogel nicht stumm überspringen)
+            w = ["x"] * len(kopf)
+            w[kopf.index(sp["id"])] = "kv"
+            w[kopf.index("status")] = "ready"
+            w[pi] = "instagram,facebook"
+            r = _pruefe_bytes(repo, q, (text + ",".join(w) + "\n").encode("utf-8"))
+            neu = [b for b in r["befunde"] if b not in basis["befunde"]]
+            pruef([b[:3] for b in neu] == [(text.count("\n") + 1, "kv", "spalten-shift")], f"{q}: Kanarienvogel Spalten-Shift (angehängt): {[b[:3] for b in neu]}")
         pruef(len(basis["befunde"]) == n0, f"{q}: Prüfung nicht wiederholbar")
     # --- Schalter: unbekannt → Exit 2 ohne Lauf; Kombinationen ebenso
     for args in (["--gibtsnicht"], ["--still", "--selbsttest"], ["bericht"], ["--selbsttest", "--parser-abgleich"], ["--help", "--still"]):
         p = subprocess.run([sys.executable, os.path.abspath(__file__)] + args, capture_output=True, text=True, timeout=60)
         pruef(p.returncode == 2 and p.stdout == "", f"Schalter {args}: Exit {p.returncode}, stdout {p.stdout[:60]!r} (erwartet Exit 2, nichts auf stdout)")
-    return fehler, faelle, mjs_lief
+    return fehler, faelle, mjs_lief, bestand
 
 
 # ------------------------------------------------------------------------------------------------------------------- main
@@ -746,15 +876,22 @@ def main(argv=None):
         return 0
     try:
         if modus == "--selbsttest":
-            f, n, mjs_lief = selbsttest()
+            f, n, mjs_lief, bestand = selbsttest()
             if f:
                 print(f"❌ queue_struktur_wache: {len(f)} Fehler in {n} Prüfungen\n - " + "\n - ".join(f))
                 return 1
-            print(f"✅ queue_struktur_wache Selbsttest ok ({n} Prüfungen" + ("" if mjs_lief else "; queue_csv.mjs-Abgleich NICHT gelaufen — unklar") + ")")
+            # Bestand = Befunde auf den echten Queues; Daten, kein Werkzeugfehler (Exit bleibt 0) — aber sichtbar, nie verschwiegen
+            bestand_txt = ("Bestand: unklar (echte Queue nicht lesbar)" if bestand is None else
+                           "Bestand: 0 Befunde" if bestand == 0 else
+                           f"Bestand: {bestand} Befund(e) — Daten, kein Werkzeugfehler → python3 automation/queue_struktur_wache.py")
+            if not mjs_lief:   # ein ganzes Prüfbein (queue_csv.mjs) fehlt: UNKLAR (Exit 3), nie «ok»
+                print(f"⚠️ queue_struktur_wache Selbsttest UNKLAR: {n} Prüfungen ohne Fehler, aber der queue_csv.mjs-Abgleich ist NICHT gelaufen "
+                      f"(node fehlt oder scheiterte) · {bestand_txt}")
+                return 3
+            print(f"✅ queue_struktur_wache Selbsttest ok ({n} Prüfungen) · {bestand_txt}")
             return 0
         if modus == "--parser-abgleich":
-            parser_abgleich_bericht()
-            return 0
+            return abgleich_exit(*parser_abgleich_bericht())
         erg = pruefen()
         if modus == "--still":
             z = still_zeile(erg)
@@ -768,7 +905,7 @@ def main(argv=None):
             print(f"❌ queue_struktur_wache: Ausnahme {type(e).__name__}: {e}")
             return 1
         print(f"QUEUE-STRUKTUR: unklar (Fehler im Wächter: {type(e).__name__}: {e})")
-        return 0
+        return 3 if modus == "--parser-abgleich" else 0   # Bericht/--still: Exit 0, die Zeile trägt das «unklar» in die Stunden-Meldung
 
 
 if __name__ == "__main__":
