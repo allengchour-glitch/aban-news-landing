@@ -63,7 +63,7 @@ die offene Position ab (−2022; was Binance tut, klärt nur das Testnetz, READM
 also braucht es beide), die Störungen liegen häufiger auf den ERSTEN passenden Anfragen (ab_req nur in 25 statt 60 %, höchstens
 80 statt 150) und haben endliche Anzahlen 1–4 (nur die Not-Aus-Teile behalten ihre dauerhaften), «unsichtbar» dauert bis zu 8
 Listenabfragen, und der Listen-Fuzzer lässt zusätzlich den Kurs springen (meist hoch). Die Zufallsfolge ändert sich: eigene Seeds
-(z. B. 20000 ff.); ohne die Variable bleiben alle Standard-Seeds Zug um Zug dieselben. Die Ausgabedatei heisst dann pruef_streng_*.
+(z. B. 20000 ff.); ohne die Variable bleiben alle Standard-Seeds Zug um Zug dieselben. Die Ausgabedatei heisst dann pruef_streng_*. PRUEF_LUECKEN=1 (laeufe und notaus): Konto immer ohne STOP_LOSS und dreimal so viele Kurssprünge — der Weg «hängender Stop-Limit» gezielt (Ausgabe pruef_luecken_*).
 """
 from __future__ import annotations
 
@@ -105,6 +105,8 @@ STEP_P = {s: float(v) for s, v in FB.FUT_STEP.items()}
 TOL_USDT = 6.0
 STAUB_MAX_USDT = 10.0  # darunter kann Binance nichts mehr absichern (Mindestbetrag 5 USDT, Schrittweiten) — echter Staub
 STRENG = os.environ.get("PRUEF_STRENG") == "1"  # 14. Prüfung W: strenge reduceOnly-Regel + härtere Störungs-Zufälle (siehe oben)
+LUECKEN = os.environ.get("PRUEF_LUECKEN") == "1"  # 15. Folge-PR: Konto IMMER ohne STOP_LOSS (Spot-Stops sind STOP_LOSS_LIMIT und können bei Kurslücken hängen) und
+#                                                  dreimal so viele Kurssprünge — prüft den Weg «hängender Stop-Limit» gezielt (laeufe, notaus; die Standard-Seeds bleiben dieselben)
 _n = [0]
 
 
@@ -197,7 +199,11 @@ def schutz_befunde(k, unklar=None, tol_usdt=TOL_USDT):
             # beidseitig: alle Coins unter Spot-Stop, der ganze Short unter Perp-Stop — löst einer aus, schützt der andere den Rest
             luecke_s = g["coins"] - g["s_qty"]
             if luecke_s * p > tol_usdt + STEP_S[sym] * p and g["coins"] * p >= FB.SPOT_MIN_NOTIONAL:
-                name = "LIMIT_LUECKE_LONG_OHNE_STOP" if _limit_luecke(k, sym, luecke_s) else "LONG_OHNE_STOP"
+                # wie im einseitigen Zweig: ein Rest bis STAUB_MAX_USDT ist Staub (am Stop-Kurs liegt er unter dem Mindestbetrag von Binance — Lauf-Seed 102030: 7,3 USDT Rest
+                # nach dem Rückkauf des Shorts, am Stop-Kurs 4,7 USDT; die Nachkontrolle setzt den Stop mit dem Kurs aus dem Buch)
+                name = "LONG_OHNE_STOP" if luecke_s * p > STAUB_MAX_USDT else "STAUB_LONG_OHNE_STOP"
+                if _limit_luecke(k, sym, luecke_s):
+                    name = "LIMIT_LUECKE_" + name
                 out.append((name, sym, round(luecke_s, 6), round(luecke_s * p, 2), "beidseitig"))
             luecke_p = max(0.0, -g["pos"]) - g["p_qty"]
             if luecke_p * p > max(tol_usdt, 0.5 * STEP_P[sym] * p) + 1e-6:
@@ -232,8 +238,10 @@ def schutz_befunde(k, unklar=None, tol_usdt=TOL_USDT):
         if g["pos"] < 0 and g["coins"] * p >= tol_usdt and g["p_qty"] > 0:
             ohne_spot = max(0.0, g["coins"] - max(0.0, short - g["p_qty"])) - g["s_qty"]
             if ohne_spot > STEP_P[sym] + 1e-9:
-                out.append(("PERP_STOP_UEBER_NETTO" if ohne_spot * p > STAUB_MAX_USDT else "STAUB_PERP_STOP_UEBER_NETTO",
-                            sym, round(ohne_spot, 6)))
+                name = "PERP_STOP_UEBER_NETTO" if ohne_spot * p > STAUB_MAX_USDT else "STAUB_PERP_STOP_UEBER_NETTO"
+                if _limit_luecke(k, sym, ohne_spot):  # derselbe hängende STOP_LOSS_LIMIT (zählt nicht als Spot-Stop) wie bei LONG_OHNE_STOP
+                    name = "LIMIT_LUECKE_" + name
+                out.append((name, sym, round(ohne_spot, 6)))
     return out
 
 
@@ -259,8 +267,10 @@ def folgeschaden(k):
             p2 = sum(float(a["quantity"]) for a in pp2 if a["side"] == "BUY")
             lang = min(netto2, coins2) - s2
             if netto2 > 0 and lang * ziel > TOL_USDT + STEP_S[sym] * ziel:
-                out.append(("NACH_SPRUNG_LONG_OHNE_STOP" if lang * ziel > STAUB_MAX_USDT else "STAUB_NACH_SPRUNG_LONG", sym, richtung,
-                            round(lang, 6), round(lang * ziel, 2)))
+                name = "NACH_SPRUNG_LONG_OHNE_STOP" if lang * ziel > STAUB_MAX_USDT else "STAUB_NACH_SPRUNG_LONG"
+                if _limit_luecke(k, sym, lang):  # derselbe hängende STOP_LOSS_LIMIT (zählt nicht als Spot-Stop) wie bei LONG_OHNE_STOP (Lücken-Lauf-Seed 100890)
+                    name = "LIMIT_LUECKE_" + name
+                out.append((name, sym, richtung, round(lang, 6), round(lang * ziel, 2)))
             if netto2 < 0 and (-netto2 - p2) * ziel > max(TOL_USDT, 0.5 * STEP_P[sym] * ziel) + 1e-6:
                 out.append(("NACH_SPRUNG_SHORT_OHNE_STOP", sym, richtung, round(-netto2 - p2, 6), round((-netto2 - p2) * ziel, 2)))
     return out
@@ -299,13 +309,25 @@ def _haengend_seit(k, sym):
                default=-1)
 
 
+def _haengend_unsichtbar(k, sym):
+    """Coins unter einem hängenden STOP_LOSS_LIMIT, den Pilot 2.0 in der LETZTEN Spot-Auftragsliste dieses Symbols nicht sah (Verzögerung der
+    Prüf-Börse, «sichtbar_ab»): er konnte von ihm nichts wissen."""
+    return sum(o["qty"] - o["ausgefuehrt"] for o in k.orders.values() if o["symbol"] == sym and o["typ"] == "STOP_LOSS_LIMIT"
+               and o["status"] in ("NEW", "PARTIALLY_FILLED") and o.get("aktiv") and o.get("preis", 0.0) > B.kurs[sym]
+               and o["id"] in B.liste_verborgen.get(sym, ()))
+
+
 def _limit_luecke(k, sym, luecke):
     """Unvermeidbare Limit-Lücke: Konto ohne STOP_LOSS, die Lücke ist genau ein über dem Kurs hängender STOP_LOSS_LIMIT, UND
-    Pilot 2.0 hat die Spot-Auftragsliste nicht mehr gesehen, seit der Stop zu hängen begann (der Sprung kam nach seinem letzten
-    Blick). Hat er die Liste danach gelesen, hätte er den hängenden Stop erkennen und zum Markt aussteigen müssen → echter Befund
-    — auch wenn sich der Kurs danach noch ein wenig bewegt hat (13. Prüfung K1: die Zeit zählt je Auftrag, nicht je Bewegung)."""
-    return ("STOP_LOSS" not in B.stop_typen and luecke <= _haengend(k, sym) + STEP_S[sym]
-            and B.liste_takt.get(sym, -1) < _haengend_seit(k, sym))
+    Pilot 2.0 konnte ihn nicht sehen: entweder zeigt die Liste ihn (Verzögerung) noch gar nicht, oder er hat die Spot-Auftragsliste nicht mehr
+    gesehen, seit der Stop zu hängen begann (der Sprung kam nach seinem letzten Blick). Hat er die Liste danach gelesen und der Stop stand
+    darin, hätte er den hängenden Stop erkennen und zum Markt aussteigen müssen → echter Befund — auch wenn sich der Kurs danach noch ein
+    wenig bewegt hat (13. Prüfung K1: die Zeit zählt je Auftrag, nicht je Bewegung)."""
+    if "STOP_LOSS" in B.stop_typen:
+        return False
+    if luecke <= _haengend_unsichtbar(k, sym) + STEP_S[sym]:  # Lücken-Lauf-Seed 112196: der hängende Stop stand noch nicht in der Liste
+        return True
+    return luecke <= _haengend(k, sym) + STEP_S[sym] and B.liste_takt.get(sym, -1) < _haengend_seit(k, sym)
 
 
 DAUER_SPOT = ("/api/v3/order", "/api/v3/order/cancelReplace", "/api/v3/openOrders")
@@ -368,6 +390,8 @@ def _selbst_entfernt(ab, sym=None, befund=None):
     for x in B.log[ab:]:
         if sym and (x[3].get("symbol") or x[3].get("_symbol")) != sym:
             continue
+        if x[3].get("_haengend"):
+            continue  # ein ausgelöster, über dem Kurs hängender STOP_LOSS_LIMIT schützt nichts: ihn zu löschen oder zu ersetzen nimmt keinen Schutz weg (Folge-PR zur 14. Runde, E10)
         if x[1] == "DELETE" and x[2] == "/api/v3/order" and x[4] == 200 and seite != "perp":
             return True
         if x[1] == "DELETE" and x[2] == "/fapi/v1/algoOrder" and x[4] == 200 and seite != "spot":
@@ -614,7 +638,7 @@ def laeufe_runde(seed, tage=30):
     if rng.random() < 0.15:
         k.bnb_gebuehr = True
         k.frei["BNB"] = 0.5
-    if rng.random() < 0.15:  # Konto/Paar ohne STOP_LOSS (Markt-Stop): Pilot 2.0 nimmt STOP_LOSS_LIMIT (kann bei Lücken hängen)
+    if LUECKEN or rng.random() < 0.15:  # Konto/Paar ohne STOP_LOSS (Markt-Stop): Pilot 2.0 nimmt STOP_LOSS_LIMIT (kann bei Lücken hängen)
         B.stop_typen = [x for x in B.stop_typen if x != "STOP_LOSS"]
     d = neu_buch()
     funde = []
@@ -661,7 +685,9 @@ def laeufe_runde(seed, tage=30):
             erg = {"warnung": True, "zeilen": [], "alles_zu": None}
         B.regeln = []
         B.nach_jeder_anfrage = None
-        storno_tag = B.ersetzen_storno_zuerst and _storno409(log0)
+        # «Storno zuerst» = Binance storniert den alten Stop und lehnt den neuen danach ab (409): die Börsen-Lesart ersetzen_storno_zuerst ODER die Störung
+        # «nur_storno» (derselbe Ausgang, gezielt erzeugt) — dasselbe Restrisiko, Testnetz-Prüfpunkt B (15. Prüfung K-c: Seed 30583 galt als echter Befund)
+        storno_tag = (B.ersetzen_storno_zuerst or any(r_.get("art") == "nur_storno" for r_ in regeln_tag)) and _storno409(log0)
         B.ersetzen_storno_zuerst = False
         if stop_mitten and BF.STOP_DATEI.exists():
             BF.STOP_DATEI.unlink()
@@ -695,7 +721,7 @@ def laeufe_runde(seed, tage=30):
         # Markt bis morgen (Stops lösen unterwegs aus), Funding
         for sym in SYMS:
             ret = rng.gauss(0, 0.03)
-            if rng.random() < 0.08:
+            if rng.random() < (0.24 if LUECKEN else 0.08):
                 ret = rng.choice([-1, 1]) * rng.uniform(0.10, 0.35)
             ziel = B.kurs[sym] * (1 + ret)
             for i in range(1, 4):
@@ -781,6 +807,8 @@ def notaus_runde(seed):
     echt = rng.random() < 0.85
     usdt = rng.choice([900, 5000, 20000, 60000])
     k = neues_konto(usdt, keys=("k",) if echt else ("s", "f"))
+    if LUECKEN:  # PRUEF_LUECKEN=1: Konto ohne STOP_LOSS, die Kurse springen öfter — ausgelöste STOP_LOSS_LIMIT hängen, der Not-Aus trifft sie an
+        B.stop_typen = [x for x in B.stop_typen if x != "STOP_LOSS"]
     if not echt:
         k.fut = usdt
     d = neu_buch()
@@ -794,7 +822,10 @@ def notaus_runde(seed):
                          "stop_short": p * (1 + a), "stand": "x"})
         lauf(ents, env, d)
         for s in SYMS:
-            B.bewegen(s, round(B.kurs[s] * (1 + rng.gauss(0, 0.02)), 2))
+            ret = rng.gauss(0, 0.02)
+            if LUECKEN and rng.random() < 0.3:
+                ret = rng.choice([-1, 1]) * rng.uniform(0.10, 0.35)
+            B.bewegen(s, round(B.kurs[s] * (1 + ret), 2))
     regeln = []
     for _ in range(rng.choice([1, 2, 3, 4, 6])):
         if rng.random() < 0.25:
@@ -826,7 +857,7 @@ def notaus_runde(seed):
         return [("AUSNAHME", {"seed": seed}, traceback.format_exc()[-600:])]
     B.regeln = []
     B.vor_jeder_anfrage = None
-    storno = B.ersetzen_storno_zuerst and _storno409(log_na) and r.get("warnung")
+    storno = (B.ersetzen_storno_zuerst or any(r_.get("art") == "nur_storno" for r_ in regeln)) and _storno409(log_na) and r.get("warnung")  # auch «nur_storno» (15. Prüfung K-c)
     B.ersetzen_storno_zuerst = False
     funde = []
     if r["alles_zu"] is not True:  # Stand direkt nach dem Not-Aus (verspätete Aufträge noch unterwegs)
@@ -940,7 +971,7 @@ def main():
             alle += notaus_runde(seed) if art == "notaus" else monotonie_runde(seed)
     zaehler = Counter(x[0] for x in alle)
     print(json.dumps(dict(zaehler), ensure_ascii=False, indent=1))
-    out = Path.cwd() / f"pruef_{'streng_' if STRENG else ''}{art}_{von}_{bis}.json"
+    out = Path.cwd() / f"pruef_{'streng_' if STRENG else ''}{'luecken_' if LUECKEN else ''}{art}_{von}_{bis}.json"
     out.write_text(json.dumps(alle, ensure_ascii=False, indent=1, default=str))
     fehler = echte(alle)
     print(f"{len(fehler)} Befunde (ohne Staub und laut gemeldete Dauerstörungen) → {out}")
