@@ -2998,3 +2998,5 @@
 15521662271873	Modell:5:5+ki	2026-10-19	rc-deformationsauto-roboter-891776
 15521253654913	Grösse:4+Ausführung:2:8+ki	2026-10-19	antihaft-wok-aus-maifan-stein-898112
 15521249395073	Farbe:6:6+ki	2026-10-19	kawaii-katzen-rucksack-fur-schule-freizeit-760256
+15523017490817	Farbe:3:3	2026-10-19	business-casual-laptop-umhangetasche-178048
+16604909240711	Farbe:7:7	2026-10-19	faltbare-doppel-futternapfe-fur-unterwegs-411328

@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-19 19:34 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-19 21:07 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1371 · **1305 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1107, teilweise: 167, keine: 31; Preisspanne > 2×: 158) · 1 CJ-Variante: 64 · ohne Antwort: 2
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1364 · **1298 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1101, teilweise: 167, keine: 30; Preisspanne > 2×: 157) · 1 CJ-Variante: 64 · ohne Antwort: 2
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -525,7 +525,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Reise-Rucksack Grosses Volumen (`reise-rucksack-grosses-volumen-815168`) | 8 | 8 | 14.59–24.88 | 52.90 | Black, Gray, Green, Beige |
 | Abfalleimer mit Deckel, Pop-up-Funktion (`abfalleimer-mit-deckel-pop-up-funktion-618500`) | 8 | 8 | 2.45–2.65 | 21.90 | Small Size Cream Color 10L, Small Size Green 10L, Small Size White 10L, Small Size Gray 10L |
 | Outdoor Wanderrucksack 30L (`outdoor-wanderrucksack-30l-732224`) | 8 | 8 | 26.63–26.63 | 52.90 | Red-20to35L, Green-20to35L, Cyan-20to35L, Blue-20to35L |
-| Antihaft-Wok aus Maifan-Stein (`antihaft-wok-aus-maifan-stein-898112`) | 8 | 8 | 5.52–13.03 | 25.90 | 20CM-Without cover, 20CM-With cover, 24CM-Without cover, 24CM-With cover |
 | Fashion Rucksack für Schüler und Studenten (`fashion-rucksack-fur-schuler-und-studenten-224832`) | 8 | 8 | 4.9–5.47 | 24.90 | Purple-30X14X43cm, Blue-30X14X43cm, Black-30X14X43cm, Pink-30X14X43cm |
 | Xiaoman Besteck-Set aus Edelstahl (`xiaoman-besteck-set-aus-edelstahl-232960`) | 8 | 8 | 3.98–27.5 | 23.90 | Black-4PCS, Black-24PCS, Gold-4PCS, Gold-24PCS |
 | Sweat Sculpting Taillen- und Beinschlankheitsgurt (`sweat-sculpting-taillen-und-beinschlankheitsgu-737728`) | 8 | 8 | 3.09–15.22 | 22.90 | Black-M, Black-XL, Rose Red-M, Rose Red-XL |
@@ -694,9 +693,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Big Belly Eisenkochtopf Antihaft (`big-belly-eisenkochtopf-antihaft-601200`) | 6 | 6 | 3.34–5.62 | 30.90 | 24cm Single Pot, 24c Pot Glass Cover, 24cm Pot Wooden Lid, 28cm Single Pot |
 | Wärmehaube für Speisen, 3-5 Etagen (`warmehaube-fur-speisen-3-5-etagen-440448`) | 6 | 6 | 5.17–10.4 | 24.90 | 3layers-Ordinary, 3layers-Heightened, 4layers-Ordinary, 4layers-Heightened |
 | Super Schwieriges Katzen-Alien Holzpuzzle (`super-schwieriges-katzen-alien-holzpuzzle-937408`) | 6 | 6 | 5.33–6.97 | 39.90 | Cute Cat Wood, Rainbow Cute Cat, Meow Meow Puzzle, Cat basket |
-| Kawaii Katzen Rucksack für Schule & Freizeit (`kawaii-katzen-rucksack-fur-schule-freizeit-760256`) | 6 | 6 | 5.96–6.47 | 39.90 | Blue, Pink, White, Blue Pendant |
 | Leichte 316 Edelstahl Isolierflasche 350ml (`leichte-316-edelstahl-isolierflasche-350ml-722368`) | 6 | 6 | 8.1–8.1 | 27.90 | Holiday-350ml, Circle circle-350ml, Travel-350ml, Strawberry-350ml |
-| Herren Quarzuhr, wasserdicht, Multifunktion (`herren-quarzuhr-wasserdicht-multifunktion-153792`) | 6 | 6 | 11.61–13.17 | 31.90 | White, Blue, Black, Belt silver |
 | Gedrehte Baumwollschnur, Beige (`gedrehte-baumwollschnur-beige-761920`) | 6 | 6 | 3.08–3.08 | 28.90 | 5mm Thick-Beige-5, 8mm Thick-Beige-5, 10mm Thick-Beige-5, 12mm Thick-Beige-5 |
 | Nadel-Kaffeeverteiler (`nadel-kaffeeverteiler-604500`) | 6 | 6 | 12.29–12.29 | 32.90 | 51mm Twilight Black, 53mm Twilight Black, 58mm Twilight Black, 51mm Sand Beige |
 | Bambusblätter-Throw-Pillow in Grün (`bambusblatter-throw-pillow-in-grun-612900`) | 6 | 6 | 6.3–15.09 | 25.90 | Flannel Embroidered Green-45x 45 Pillowcase, Flannel Embroidered Green-45x45 PP Cotton Core, Ink Painting-45x 45 Pillowcase, Ink Painting-45x45 PP Cotton Core |
@@ -829,9 +826,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Hölzerner Massage-Roller für Gesicht und Körper (`holzerner-massage-roller-fur-gesicht-und-korpe-612600`) | 5 | 5 | 3.68–3.68 | 23.90 | 9 rounds, T type roller, 12 rounds straight, 13 rounds |
 | Bead Toothbrush – Tragbare Einweg-Zahnbürsten · 20 Stück (`bead-toothbrush-tragbare-einweg-zahnbursten-20-611700`) | 5 | 5 | 3.11–3.74 | 22.90 | Mint Flavor 20PCs, Peach Flavor 20PCs, Plum Green Tea 20PCs, Mixed Flavor 20PCs |
 | Minimalistisches Perlenarmband mit Silberelementen (`minimalistisches-perlenarmband-mit-silbereleme-631900`) | 5 | 5 | 2.42–2.63 | 21.90 | Triangular White, Triangle Gray, Diamond Beige, Chamfered Square Beads |
-| RC Deformationsauto Roboter (`rc-deformationsauto-roboter-891776`) | 5 | 5 | 2.63–2.63 | 21.90 | Police car model, Orange black model, Red model, Blue model |
 | Fritteuse mit Sieb aus 304 Edelstahl (`fritteuse-mit-sieb-aus-304-edelstahl-626100`) | 5 | 5 | 9.6–12.84 | 31.90 | Natural Color-12cm, Gold-12cm, Rose Gold-12cm, Magic Color-12cm |
-| Doppelwandige Isolierflasche mit Teefilter (`doppelwandige-isolierflasche-mit-teefilter-619700`) | 5 | 5 | 5.22–6.38 | 24.90 | White Gift Box-450ml, Black Gift Box-450ml, Stainless Steel Gift Box-450ml, Vacuum Cup Glass Gift Box-450ml |
 | Drehbarer Kosmetikpinsel-Halter (`drehbarer-kosmetikpinsel-halter-623400`) | 5 | 5 | 4.67–5.67 | 24.90 | Beige, Pink, Black, Coffee Color |
 | Bio-Baumwollstoff mit Ozean-Motiven (`bio-baumwollstoff-mit-ozean-motiven-381568`) | 5 | 3 | 3.45–4.09 | 22.90 | HY2 shells, HY3 mermaids, HY5 crabs, HY7 conch |
 | Bedruckte Tragetasche für Schule und Reisen (`bedruckte-tragetasche-fur-schule-und-reisen-995584`) | 5 | 5 | 7.09–11.44 | 26.90 | Cat Gray White Mini Version, Catgray White Standard Edition, Catgray White Large Version, Catgray White Upgraded Version |
@@ -1034,9 +1029,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | High Gloss Rouge Duo für natürliche Konturen (`high-gloss-rouge-duo-fur-naturliche-konturen-666816`) | 4 | 4 | 17.24–17.24 | 38.90 | Peach flour cheese, Sweet apricot cheese, Red currant cheese, Purple Berry Cheese |
 | Casual Messenger Bag für Herren (`casual-messenger-bag-fur-herren-515328`) | 4 | 4 | 10.72–12.36 | 30.90 | Black-Small, Black-large, Leather black-Small, Leather black-large |
 | Sport-Freizeittasche – Robust & Vielseitig (`sport-freizeittasche-robust-vielseitig-840640`) | 4 | 4 | 7.84–7.84 | 27.90 | Camouflage white-40x21x21cm, Ccamouflage red-40x21x21cm, Camouflage blue-40x21x21cm, Camouflage green-40x21x21cm |
-| Wasserdichte Quarzuhr für Sie & Ihn (`wasserdichte-quarzuhr-fur-sie-ihn-9d4871`) | 4 | 0 | 11.16–11.16 | 31.90 | White, Color, Black, Blue |
 | Yoga-Band aus Polyester-Baumwolle (`yoga-band-aus-polyester-baumwolle-347712`) | 4 | 4 | 2.5–7.28 | 21.90 | Pink blue, Orange blue, Purple blue, Gradient threecolor suit |
-| Vintage-Vase aus Emaille-Glas (`vintage-vase-aus-emaille-glas-603200`) | 4 | 4 | 26.2–44.44 | 80.90 | Short style, Tall style, Large size, Small size |
 | Miniatur Diamant-Partikel Häuschen Puzzle (`miniatur-diamant-partikel-hauschen-puzzle-616256`) | 4 | 4 | 4.36–4.36 | 23.90 | Sweetheart handmade, Afternoon time, Annies studio, Sunshine flower house |
 | Edelstahl-Topf mit Dämpfeinsatz (`edelstahl-topf-mit-dampfeinsatz-678592`) | 4 | 4 | 21.33–30.46 | 42.90 | Steel pan-16cm, Steel pan-18cm, Binaural one steamer-16cm, Binaural one steamer-18cm |
 | Smartwatch mit HD-Display & Gesundheitsmonitoring (`smartwatch-mit-hd-display-gesundheitsmonitorin-622100`) | 4 | 4 | 15.71–16.48 | 36.90 | F59plus Vinyl, F59plus Ryuguang Silver Glue, F59plus Rose Gold, F59plus Black Leather |
