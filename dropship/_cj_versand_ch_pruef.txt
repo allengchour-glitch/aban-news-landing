@@ -10775,3 +10775,5 @@ faltbarer-handspiegel-fur-make-up-624400	2605120910021624900	16	5.78	ok	landesei
 minimalistischer-rucksack-fur-herren-633400	2602050707311634000	16	15.38	ok	landeseite
 goldener-pferdekopf-waschbeckenarmatur-601100	2605120820191601700	16	19.65	ok	landeseite
 herren-rucksack-fur-den-alltag-606100	2602050248141606400	16	26.44	ok	landeseite
+304-edelstahl-lotionspender-637800	2605090839301638300	16	7.99	ok	landeseite
+retro-rucksack-patchwork-619800	2602040424291610200	16	18.59	ok	landeseite
