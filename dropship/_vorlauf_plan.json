@@ -207,10 +207,19 @@
   "bild-20261025T1510": {
    "basis_utc": "2026-10-25T15:10:00Z",
    "format": "bild",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "",
+   "handles": [
+    "pid:15413085733249"
+   ],
+   "letzter_versuch": "2026-10-19T00:34:18Z",
+   "mc_ids": [
+    399530737
+   ],
+   "reserviert_um": "2026-10-19T00:34:18Z",
+   "status": "geplant",
    "termin_utc": "2026-10-25T15:10:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "karussell-20261019T1915": {
    "basis_utc": "2026-10-19T19:15:00Z",
@@ -1128,10 +1137,18 @@
   "story-20261024T1710": {
    "basis_utc": "2026-10-24T17:10:00Z",
    "format": "story",
+   "grund": "",
+   "handle": "",
+   "handles": [
+    "wanddeko-kranz-totenkopf-fga910996"
+   ],
    "letzter_versuch": "2026-10-19T00:33:54Z",
-   "mc_ids": [],
+   "mc_ids": [
+    399530525,
+    399530529
+   ],
    "reserviert_um": "2026-10-19T00:33:54Z",
-   "status": "reserviert",
+   "status": "geplant",
    "termin_utc": "2026-10-24T17:10:00Z",
    "versuche": 1
   },
@@ -1156,10 +1173,12 @@
   "story-20261025T1810": {
    "basis_utc": "2026-10-25T18:10:00Z",
    "format": "story",
+   "letzter_versuch": "2026-10-19T00:35:01Z",
    "mc_ids": [],
-   "status": "offen",
+   "reserviert_um": "2026-10-19T00:35:01Z",
+   "status": "reserviert",
    "termin_utc": "2026-10-25T18:10:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "tiktok-20261019T0605": {
    "basis_utc": "2026-10-19T06:05:00Z",
@@ -1657,6 +1676,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-19T00:33:54Z",
+ "stand": "2026-10-19T00:35:01Z",
  "version": 1
 }

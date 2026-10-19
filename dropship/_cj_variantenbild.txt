@@ -7572,3 +7572,10 @@ gid://shopify/Product/15473433379201	zugeordnet	12	Drehbarer Tischspiegel im eur
 gid://shopify/Product/15473433674113	zugeordnet	20	Baumwoll-Kissenbezug mit Spitze
 gid://shopify/Product/15473433870721	zugeordnet	33	Tencel Satin-Bettwäsche-Set, 4-teilig
 gid://shopify/Product/15473433969025	zugeordnet	12	Wasserdichter, atmungsaktiver Schonbezug
+gid://shopify/Product/15473434165633	zugeordnet	52	Kuschelige Coral Fleece Decke
+gid://shopify/Product/15473434198401	zugeordnet	16	Faux-Fur-Decke im Tie-Dye-Look
+gid://shopify/Product/15473458381185	zugeordnet	12	Leichter Sonnenschutz-Cardigan
+gid://shopify/Product/15473458676097	zugeordnet	36	Wollstrick-Cardigan mit Rundhals & Goldknöpfen
+gid://shopify/Product/15473459331457	zugeordnet	8	Damen Langarmhemd mit Umlegekragen, grosse Grössen
+gid://shopify/Product/15473627693441	zugeordnet	96	Herren Kapuzenjacke aus Waffelstrick
+gid://shopify/Product/15473627726209	bild-urls-tot
