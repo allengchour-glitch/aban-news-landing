@@ -10114,3 +10114,5 @@ retro-sling-bag-aus-rindsleder-613800	2601200706491614100	16	11.60	ok	landeseite
 wasserdichte-sportuhr-627700	2508240711581627900	7	6.02	ok	landeseite
 horizontales-portemonnaie-aus-rindsleder-627500	2601080852461627700	16	6.01	ok	landeseite
 gecheckertes-schneidbrett-613200	2607070506031614000	16	28.41	ok	landeseite
+manner-tasche-mit-schnellverschluss-601900	2601150739001602100	7	8.82	ok	landeseite
+schonheits-nacken-pflege-memory-kopfkissen-631300	2604180730291631800	16	20.82	ok	landeseite

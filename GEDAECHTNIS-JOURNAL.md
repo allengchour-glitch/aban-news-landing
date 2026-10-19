@@ -53,6 +53,16 @@
 
 
 
+## 💾🔐 Platte 95 % und das «60-Zeichen»-Secret (2026-10-19, ~04:40–05:20 UTC)
+- **Platte GEMESSEN:** `/` 95 % voll, 2,0 GB frei (feste Sitzungszuteilung; `df` zeigt 252 G Grösse und täuscht). `.git` = 13 GB, davon **7,0 GiB lose Objekte** (78'715): `gc.auto=0`, in `automation/` nie ein repack —
+  jeder Commit legt geänderte Ledger als GANZE Blobs ab. `git repack -d` (nur lose Objekte, nice, 18 Min) → Pack +1,8 GB, lose 202 MB, **frei 2,0 → 7,1 GB (82 %)**; keine Datei gelöscht, keine Historie verändert.
+- **Fix:** `automation/platte_wartung.sh` (Selbsttest 7/7) — entscheidet nach dem ZUSTAND (lose > 1 GiB oder > 20'000, nie nach touch), packt unter flock/nice/Timeout, druckt «PLATTE: frei X GB · .git Pack Y + lose Z» (⚠️ unter 1,5 GB frei);
+  im Aufseher nach der /tmp-Hygiene. Eine Massenlöschung alter Scratchpad-Exporte (640 MB) lehnte der Sicherheitsfilter ab → nicht wiederholt, nicht nötig.
+- **Secret GEMESSEN (Wert nie ausgegeben):** der 60-Zeichen-Wert = gültiger Schlüssel (38) + `=` + `SHOPIFY_CLIENT_SECRET` (21): Der Variablenname wurde HINTER den Wert gepastet. Grant mit den ersten 38 Zeichen 200, mit allen 60 → 400.
+  `shopify_secret_heilen` schneidet genau dieses Muster ab (Selbsttest `automation/lib/shopify_secret_test.sh` 7/7); Betreiber-Klick bleibt: Anhang in den Umgebungseinstellungen löschen.
+- **Messfalle:** `env | awk -F= '{print length($2)}'` zeigte «38» (awk trennt am `=` im Wert). Längen nur mit `${#VAR}`/`len()`.
+- Betreiber-Punkte 2–4 (19.10. «2 3 checken und 4 auch») geprüft: Werbetest 0 Sitzungen seit 14.10.; Hetzner letzter Commit 16.10. 06:07 UTC, `/h`-Umleitung antwortet; Secret wie oben.
+
 ## 🔎 Werbetest-Wache sagt jetzt WAS sich geändert hat (2026-10-19)
 - **GEMESSEN:** 8 der 13 «geschenke-test»-Produkte wurden am 18.10. 18:24–23:09 UTC geschrieben: 7× nur die SEO-Metafelder `global.title_tag`/`description_tag` (Vorlagentext «… bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10.»), Sirène nur `custom.lieferzeit`, Geldbörse zusätzlich ein ZWEITER Schreibvorgang 28 min später (Titel/Tags/Text, Variante/Bild unverändert). Preis/Bestand/Bilder/Varianten: bei keinem geändert.
 - **Schreiber UNBELEGT:** der exakte Wortlaut steht in keiner `.py/.mjs/.js/.sh/.yml` des Repos (nächste Verwandte: `shop_brain.mjs` «Schweizer Online-Shop. Gratis-Versand ab CHF 50, … −10% mit Code», `seo-optimizer.mjs` «Jetzt –10% mit Code») — wahrscheinlich ausserhalb des Repos (ChatGPT-Brücke/Shopify-App). Events-API leer. Folge: harmlos für den (noch nicht aktivierten) Test, aber die Sperre `dropship/_werbetest_sperre.txt` bindet fremde Schreiber nicht.
