@@ -66,7 +66,8 @@ absturz_nachholen() {
   else
     # 19.10.2026 (Spähtrupp aufseher AUF-5): auch eine PAUSE als LETZTE Zeile ist ein Abbruch (ek_luecke_cj «PAUSE: kost28.jsonl fehlt», kollektionstexte_wahrheit
     # «PAUSE (Kollektionen nicht ladbar)»: 13 h «erledigter Tag», obwohl die Eingabe längst da war). Nur die letzte Zeile — ein FERTIG danach hebt sie auf.
-    tail -n 3 "$log" | grep -qE "Traceback|Error|Exception" \
+    # Prüfung 19.10. (aufseher F1): ein FERTIG NACH dem Fehler heisst «nachgeholt und sauber beendet» — sonst blieb der alte Traceback in den letzten 3 Zeilen stehen und löste bis zu 2 überflüssige Läufe/Tag aus
+    tail -n 3 "$log" | awk '/FERTIG/{f=0; next} /Traceback|Error|Exception/{f=1} END{exit f?0:1}' \
       || tail -n 1 "$log" | grep -qE "^([0-9:]{8} |[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]{8,12}Z )?PAUSE" || return 1
   fi
   z="/tmp/_nachgeholt_$(basename "$log" .log)_$(date -u +%Y%m%d)"
