@@ -10746,3 +10746,4 @@ cordschnurhosen-fur-herren-plus-grosse-611000	2601231219421611400	16	11.72	ok	la
 camo-cargo-hosen-607300	2601230959281607700	16	7.71	ok	landeseite
 leichter-business-rucksack-624200	2603060930061624600	16	13.88	ok	landeseite
 wc-burste-wandmontage-624700	2607111313351625600	16	11.10	ok	landeseite
+wc-burste-mit-langem-stiel-627700	2607111228331628400	16	12.18	ok	landeseite
