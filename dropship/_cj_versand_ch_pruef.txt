@@ -10311,3 +10311,4 @@ madchen-leder-schuhe-britischer-stil-610800	2507220717161611300	16	6.90	ok	lande
 fruhlings-lauflernschuhe-fur-babys-612000	2507050209031612700	16	8.11	ok	landeseite
 fitness-seil-mit-stahlkabel-621500	2602100926581621900	7	6.49	ok	landeseite
 edelstahl-lunchbox-mit-thermofunktion-619900	2606160936171610500	-	-	unklar 0  rest=None	landeseite
+aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben	-	-	-	unklar keine CJ-SKU	landeseite
