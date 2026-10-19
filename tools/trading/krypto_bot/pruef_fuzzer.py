@@ -330,18 +330,26 @@ def _dauer(regeln, befund=None):
     Kurs-Abruf (10. Prüfung W4) oder auf den eigenen Auftragslisten (13. Prüfung W2: Pilot 2.0 sichert auch ohne Liste — über die
     Kennung im Buch, «zuerst setzen», beidseitig). Mit Befund: nur die Seite, die den Schutz bräuchte (11. Prüfung K3)."""
     seite = None if befund is None else _schutzseite(befund)
+    summe = {}  # Pfad → Summe der Ablehnungen aller Regeln, die ihn treffen (14. Prüfung, strenger Modus: endliche Anzahlen, die sich stapeln)
     for r in regeln:
-        if r.get("anzahl", 1) < 50 or r.get("art") in ("kurs", "teil", "spaet", "spaet_u", "unsichtbar"):
+        if r.get("art") in ("kurs", "teil", "spaet", "spaet_u", "unsichtbar"):
             continue
+        treffer = False
         if r.get("pfad") in DAUER_LESEN and r.get("methode") in (None, "GET"):
-            return True
-        if r.get("methode") not in (None, "POST"):
+            treffer = True
+        elif r.get("methode") in (None, "POST"):
+            ziele = (_STOP_SPOT if seite in (None, "spot") and r.get("pfad") == "/api/v3/order" else ()) + \
+                (_STOP_PERP if seite in (None, "perp") and r.get("pfad") == "/fapi/v1/algoOrder" else ())
+            treffer = any(r.get("pred") is None or r["pred"]("POST", r["pfad"], z) for z in ziele)
+        if not treffer:
             continue
-        ziele = (_STOP_SPOT if seite in (None, "spot") and r.get("pfad") == "/api/v3/order" else ()) + \
-            (_STOP_PERP if seite in (None, "perp") and r.get("pfad") == "/fapi/v1/algoOrder" else ())
-        if any(r.get("pred") is None or r["pred"]("POST", r["pfad"], z) for z in ziele):
+        n0 = r.get("anzahl0", r.get("anzahl", 1))  # die Börse zählt «anzahl» beim Verbrauch herunter: die ursprüngliche zählt
+        if n0 >= 50:
             return True
-    return False
+        summe[r["pfad"]] = summe.get(r["pfad"], 0) + n0
+    # mehrere endliche Störungen auf demselben Schutzpfad, zusammen mindestens so viele wie Pilot 2.0 Versuche hat (SCHUTZ_WARTEN): der
+    # Schutz scheitert in diesem Lauf unvermeidbar (die Nachkontrolle holt ihn nach) — wie eine dauerhafte Störung
+    return any(n >= len(L.SCHUTZ_WARTEN) + 1 for n in summe.values())
 
 
 def _selbst_entfernt(ab, sym=None, befund=None):
@@ -367,6 +375,7 @@ def sauber_schliessen(env, datei, versuche=2):
     """Not-Aus «10 Minuten später» (unklare Aufträge gelten dann als geklärt): → letztes Ergebnis."""
     alt = L.UNKLAR_MAX_ALTER_MS
     L.UNKLAR_MAX_ALTER_MS = -1
+    B.n_listen += 1000  # 10 Minuten später zeigen die Listen jeden Auftrag (die Verzögerung «unsichtbar» gilt für Sekunden)
     try:
         r = None
         for _ in range(versuche):
@@ -451,7 +460,7 @@ def zufall_regeln(rng, n, kurse, ziele=ZIELE_LAUF, haerte=1.0):
             anzahl = rng.choice([1, 1, 2, 3, 4])
         else:
             anzahl = rng.choice([1, 1, 1, 2, 3, 99 if haerte > 1 or rng.random() < 0.3 else 2])
-        r = dict(methode=m, pfad=pfad, pred=pred, art=art, anzahl=anzahl)
+        r = dict(methode=m, pfad=pfad, pred=pred, art=art, anzahl=anzahl, anzahl0=anzahl)
         if rng.random() < (0.25 if STRENG else 0.6):
             r["ab_req"] = B.n_req + rng.randint(1, 80 if STRENG else 150)
         if art == "unsichtbar":
@@ -719,10 +728,16 @@ def laeufe_runde(seed, tage=30):
                 k.fut = 0.0
     try:  # Ende: sauberer Not-Aus, 10 Minuten später
         r = sauber_schliessen(env_heute(), d)
-        if r.get("alles_zu") is not True:
+        # Coins, die das Buch nicht kennt (früher unter dem Binance-Minimum liegen geblieben, durch den Kursanstieg wieder verkäuflich), verkauft
+        # der Not-Aus nie von selbst — er meldet sie. Kein Befund, solange keine Position und kein eigener Stop mehr da ist (14. Prüfung,
+        # strenger Modus: Lauf-Seeds 20535, 20549)
+        nur_fremde_coins = (all(abs(lage(k, s_)["pos"]) < 1e-12 and not lage(k, s_)["n_s"] and not lage(k, s_)["n_p"] for s_ in SYMS)
+                            and any("das Buch kennt es nicht" in z for z in r.get("zeilen") or []))
+        if r.get("alles_zu") is True:
+            if not flach(k):
+                funde.append(("FALSCH_ALLES_ZU", {"seed": seed, "wann": "Ende", "zeilen": r["zeilen"]}, zeigen(k)))
+        elif not nur_fremde_coins:
             funde.append(("ENDE_NICHT_ZU", {"seed": seed, "wann": "Ende", "zeilen": r.get("zeilen")}, zeigen(k)))
-        elif not flach(k):
-            funde.append(("FALSCH_ALLES_ZU", {"seed": seed, "wann": "Ende", "zeilen": r["zeilen"]}, zeigen(k)))
     except Exception:  # noqa: BLE001
         funde.append(("AUSNAHME", {"seed": seed, "wann": "Ende"}, traceback.format_exc()[-800:]))
     return funde
@@ -783,6 +798,7 @@ def notaus_runde(seed):
             continue
         m, pfad, pred, arten = rng.choice(ZIELE_NOTAUS)
         r = dict(methode=m, pfad=pfad, pred=pred, art=rng.choice(arten), anzahl=rng.choice([1, 2, 3, 99]))
+        r["anzahl0"] = r["anzahl"]
         if rng.random() < (0.25 if STRENG else 0.5):
             r["ab_req"] = B.n_req + rng.randint(1, 40)
         if r["art"] == "teil":
