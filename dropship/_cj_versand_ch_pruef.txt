@@ -10102,3 +10102,15 @@ cartoon-sofakissen-618500	2604220809091619000	16	6.01	ok	landeseite
 zip-lock-aufbewahrungsbeutel-fur-kleidung-dess-608900	2607100842311609500	16	11.12	ok	landeseite
 fitness-tasche-fur-unterwegs-633900	2601310817171634200	16	14.96	ok	landeseite
 lederarmband-26mm-600400	2508250830181600600	16	5.55	ok	landeseite
+grosses-reisegepack-fur-outdoor-aktivitaten-626400	2601310812001626800	16	19.99	ok	landeseite
+ruckenstutzkissen-fur-burostuhle-615400	2604210315551616000	16	16.89	ok	landeseite
+leichte-atmungsaktive-sicherheitsschuhe-fur-he-459264	1778323957955956736	16	14.96	ok	landeseite
+reise-pass-tasche-625400	2606180352401626600	7	6.49	ok	landeseite
+nylon-schnellwechselarmband-geflochten-611600	2508250339131611800	16	4.71	ok	landeseite
+manner-sicherheitsschuhe-535424	1778322081818615808	16	14.96	ok	landeseite
+quadratische-eiswurfelform-fur-stir-fry-ice-cr-638900	2607070830091639500	11	31.45	ok	landeseite
+kinder-schlafkissen-mit-schlaf-puppe-605200	2604191018511605700	11	79.88	ok	landeseite
+retro-sling-bag-aus-rindsleder-613800	2601200706491614100	16	11.60	ok	landeseite
+wasserdichte-sportuhr-627700	2508240711581627900	7	6.02	ok	landeseite
+horizontales-portemonnaie-aus-rindsleder-627500	2601080852461627700	16	6.01	ok	landeseite
+gecheckertes-schneidbrett-613200	2607070506031614000	16	28.41	ok	landeseite
