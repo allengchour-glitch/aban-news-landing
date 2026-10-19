@@ -379,9 +379,17 @@ WORT_NICHT_NACH = {"napf": r"saug", "mantel für damen": r"(?:bade|morgen)", "ma
 TIER_ZIELE = ("sub-haustier", "haustier-napf-futter", "futterautomaten", "trinkbrunnen-katzen")
 
 
+# 19.10.2026 (Spähtrupp gsc-5): Waren, die auf KEINE Kollektion gelegt werden — «PGM Golfschläger (Holz) für Damen und Herren» zog über das grobe
+# Geschlechtswort «damen» eine 301 auf /collections/damen-mode (12'730 Produkte, Köderwechsel). Die Kanarie prüfte nur den strengen Pfad (ohne damen/herren);
+# kategorie_ziel() (ShopifyQL-Landeseiten, FIX-Lauf) rief titel_ziel() ohne `ohne` — dort stand die Golf-Ausnahme nirgends. Gilt in BEIDEN Pfaden.
+NIE_ZIEL = re.compile(r"\bgolf(?:schl[äa]ger|schlager|set|club|bag|ball|handschuh)?\b|golfschl[äa]ger|golfschlager", re.I)
+
+
 def titel_ziel(text, ohne=()):
     """→ Kollektions-Handle aus Titel- oder Handle-Text (ohne Tauglichkeitsprüfung) oder None."""
     t = (text or "").lower()
+    if NIE_ZIEL.search(t):
+        return None
     z = _tabelle(re.split(r"\s(?:mit|inkl\.?|inklusive|plus|\+)\s", t, maxsplit=1)[0], ohne)
     if TIER_FUER.search(t) and z not in TIER_ZIELE:
         return "sub-haustier"             # «Kuscheldecke für Hunde»; ein genaueres Tierziel («Futterspender») bleibt
@@ -607,6 +615,11 @@ KANARIEN_TITEL = [
 def kanarien_titel(leise=False):
     """→ Zahl der Fehler. Reine Funktion von TITEL_ZIEL/WORT_NICHT_NACH/PRAEFIX_ZIEL, kein Netz."""
     fehler = 0
+    for roh in ("PGM Golfschläger (Holz) für Damen und Herren", "pgm golfschlager holz fur damen und herren"):    # beide Pfade (streng + grob), gsc-5
+        for ohne in ((), ("damen", "herren")):
+            if titel_ziel(roh, ohne=ohne) is not None:
+                print(f"  ✗ Golf-Kanarie «{roh}» (ohne={ohne}) → {titel_ziel(roh, ohne=ohne)}, soll kein Ziel")
+                fehler += 1
     for titel, soll in KANARIEN_TITEL:
         ist = titel_ziel(titel, ohne=("damen", "herren"))
         if ist != soll:
