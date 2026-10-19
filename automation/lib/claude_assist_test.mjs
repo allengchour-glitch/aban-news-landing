@@ -126,7 +126,7 @@ function checkout(t) {
   const f = fixture(t);
   const here = path.dirname(fileURLToPath(import.meta.url));
   fs.mkdirSync(path.join(f.root, 'automation/lib'), { recursive: true });
-  for (const file of ['claude_assist.mjs','claude_assist_mcp.mjs','claude_assist_offline.mjs','claude_assist_changes.mjs','claude_assist_readiness.mjs','claude_assist_launch.mjs','claude_assist_runner.mjs']) fs.copyFileSync(path.join(here, file), path.join(f.root, 'automation/lib', file));
+  for (const file of ['claude_assist.mjs','claude_assist_mcp.mjs','claude_assist_offline.mjs','claude_assist_changes.mjs','claude_assist_readiness.mjs','claude_assist_launch.mjs','claude_assist_runner.mjs','claude_assist_commits.mjs']) fs.copyFileSync(path.join(here, file), path.join(f.root, 'automation/lib', file));
   fs.copyFileSync(path.join(here, '../claude-assist.mjs'), path.join(f.root, 'automation/claude-assist.mjs'));
   for (const args of [['-c','init.templateDir=','init','--quiet',f.root], ['-C',f.root,'config','--local','remote.origin.url',remote]]) {
     const r = spawnSync('git', args, { env: cleanEnv(), encoding: 'utf8' }); assert.equal(r.status, 0, r.stderr);
@@ -268,9 +268,9 @@ test('uncovered changes remain unknown while real test failures take precedence'
 });
 test('assist profile runs only its fixed integration files without claiming a network sandbox', async t => {
   const f=fixture(t,(cmd,args)=>({status:'passed',output:cmd==='git'?remote:'ok'}));
-  for(const file of ['claude_assist_test.mjs','claude_assist_mcp_test.mjs','claude_assist_changes_test.mjs','claude_assist_readiness_test.mjs','claude_assist_launch_test.mjs','claude_assist_runner_test.mjs'])write(f.root,'automation/lib/'+file,'');
+  for(const file of ['claude_assist_test.mjs','claude_assist_mcp_test.mjs','claude_assist_changes_test.mjs','claude_assist_readiness_test.mjs','claude_assist_launch_test.mjs','claude_assist_runner_test.mjs','claude_assist_commits_test.mjs'])write(f.root,'automation/lib/'+file,'');
   const run=await f.app.checks({suite:'assist'});assert.equal(run.status,'passed');
-  const call=f.calls.find(c=>c.cmd!=='git');assert.equal(call.args[0],'--test');assert.equal(call.args[1],'--test-reporter=spec');assert.equal(call.args.length,8);assert.match(run.caveat,/no network preload/);
+  const call=f.calls.find(c=>c.cmd!=='git');assert.equal(call.args[0],'--test');assert.equal(call.args[1],'--test-reporter=spec');assert.equal(call.args.length,9);assert.match(run.caveat,/no network preload/);
 });
 test('native Git change plan sees a staged change even when the worktree returns to HEAD', async t => {
   const f=checkout(t),file='automation/lib/shopify_gql.mjs';write(f.root,file,'original');
@@ -444,4 +444,61 @@ test('the actual configured MCP launch clears inherited Node preloads before JSO
   assert.equal(configured.status,0,configured.stderr);
   const responses=configured.stdout.trim().split('\n').map(JSON.parse);assert.equal(responses.length,1);assert.equal(responses[0].id,1);
   assert.equal(responses[0].result.serverInfo.name,'luxestyle-claude-assist');assert.equal(configured.stderr,'');
+});
+
+test('commit planning validates immutable paired pins before any Git call', async t => {
+  const f=fixture(t),pin='a'.repeat(40);
+  for(const args of [{baseCommit:pin},{headCommit:pin},{baseCommit:'HEAD',headCommit:pin},
+    {baseCommit:pin+'\n',headCommit:pin},{baseCommit:pin,headCommit:3},
+    {baseCommit:pin,headCommit:pin,fetch:true}]) await assert.rejects(f.app.changePlan(args));
+  assert.equal(f.calls.length,0);
+  await assert.rejects(f.app.checks({suite:'changed',baseCommit:pin,headCommit:pin}),/invalid_arguments/);
+  assert.equal(f.calls.length,0);
+});
+
+test('commit planning uses isolated local Git reads and never launches a test', async t => {
+  const f=fixture(t,(command,args)=>{
+    assert.equal(command,'git');
+    if(args.includes('config'))return {status:'passed',output:remote};
+    const stdout=args.includes('cat-file')?'commit\n':args.includes('rev-parse')?'false\n':
+      args.includes('diff')?'automation/lib/claude_assist.mjs\0':'';
+    return {status:'passed',exitCode:0,stdout,stderr:'',output:stdout};
+  });
+  const baseCommit='A'.repeat(40),headCommit='B'.repeat(40);
+  const result=await f.app.changePlan({baseCommit,headCommit});
+  assert.equal(result.source,'local_pinned_commits');assert.equal(result.state,'planned');
+  assert.equal(result.baseCommit,baseCommit.toLowerCase());assert.equal(result.headCommit,headCommit.toLowerCase());
+  assert.deepEqual(result.suites,['assist']);assert.equal(result.executedTests,false);
+  assert.equal(result.worktreeChanges,'not_scanned');assert.equal(result.testScope,'current_checkout_only');
+  for(const call of f.calls.slice(1)){
+    assert.ok(call.args.includes('--no-replace-objects'));assert.ok(call.args.includes('--no-lazy-fetch'));
+    assert.ok(call.args.includes('protocol.allow=never'));assert.ok(call.args.includes('core.fsmonitor=false'));
+    assert.equal(call.options.env.GIT_NO_LAZY_FETCH,'1');assert.equal(call.options.env.GIT_NO_REPLACE_OBJECTS,'1');
+    assert.equal(call.options.env.GIT_ALLOW_PROTOCOL,'');assert.equal(call.options.env.OPENAI_API_KEY,undefined);
+    assert.equal(call.options.timeoutMs,5000);assert.ok(call.options.maxBytes<=32768);
+    assert.equal(call.args.some(x=>['fetch','checkout','switch','reset'].includes(x)),false);
+  }
+});
+
+test('a clean checkout exposes committed changes through both CLI and MCP without testing or writing history', async t => {
+  const f=checkout(t),file='automation/lib/shopify_gql.mjs';write(f.root,file,'export const fixture=1;');
+  const git=args=>{const r=spawnSync('git',['-C',f.root,'-c','core.hooksPath='+path.join(f.root,'.git/no-hooks'),...args],{env:cleanEnv(),encoding:'utf8',timeout:5000});assert.equal(r.status,0,r.stderr);return r.stdout.trim();};
+  const commit=()=>{git(['add','--','.']);git(['-c','user.name=Fixture','-c','user.email=fixture@example.invalid','commit','--quiet','-m','fixture']);return git(['rev-parse','HEAD']);};
+  const baseCommit=commit();write(f.root,file,'export const fixture=2;');const headCommit=commit();
+  const app=createAssistant(f.root);assert.equal((await app.changePlan()).state,'no_changes');
+  const expected=await app.changePlan({baseCommit,headCommit});assert.equal(expected.state,'planned');
+  assert.deepEqual(expected.files,[file]);assert.deepEqual(expected.suites,['core']);assert.equal(expected.executedTests,false);
+  const cli=path.join(f.root,'automation/claude-assist.mjs');
+  const run=(args,input)=>spawnSync(process.execPath,[cli,...args],{cwd:f.root,input,encoding:'utf8',env:cleanEnv(),timeout:10000});
+  const c=run(['change-plan',baseCommit,headCommit]);assert.equal(c.status,0,c.stderr);
+  const planned=JSON.parse(c.stdout);assert.deepEqual(planned.files,[file]);assert.equal(planned.baseCommit,baseCommit);assert.equal(planned.headCommit,headCommit);
+  const input=[{jsonrpc:'2.0',id:1,method:'initialize',params:{protocolVersion:'2025-06-18',capabilities:{},clientInfo:{name:'commit-integration',version:'1'}}},
+    {jsonrpc:'2.0',id:2,method:'tools/call',params:{name:'luxe_change_plan',arguments:{baseCommit,headCommit}}}].map(JSON.stringify).join('\n')+'\n';
+  const m=run(['mcp'],input);assert.equal(m.status,0,m.stderr);
+  const response=m.stdout.trim().split('\n').map(JSON.parse)[1];assert.equal(response.result.isError,false);
+  const content=JSON.parse(response.result.content[0].text);assert.deepEqual(content.files,[file]);assert.equal(content.executedTests,false);
+  write(f.root,'automation/local-uncommitted.mjs','// not in the pinned snapshots');
+  assert.deepEqual((await app.changePlan({baseCommit,headCommit})).files,[file]);
+  assert.equal((await app.changePlan()).state,'unmapped');
+  assert.equal(fs.existsSync(path.join(f.root,'dropship/assistant/handoff.jsonl')),false);
 });

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "observedAtUTC": "2026-10-19T04:27:58.707291+00:00",
+  "observedAtUTC": "2026-10-19T04:52:31.563536+00:00",
   "scope": "isolated pilot checkout and isolated Claude config only",
   "client": {
     "package": "@anthropic-ai/claude-code",
@@ -45,15 +45,15 @@
     },
     {
       "path": "automation/claude-assist.mjs",
-      "sha256": "f6174df0d76c23c348c5e01f84c1544221132fbb08944a99b939113350552265"
+      "sha256": "6d50e25b0f281ca54d66fae013577173a866d9693ef13c084f3cd0824f47d558"
     },
     {
       "path": "automation/lib/claude_assist.mjs",
-      "sha256": "2a36173740ebfc62879f20972b90f4e4b11d4c88a6e08e82746437be780cecbb"
+      "sha256": "6090425d2fc5cb9701e7847e3f802702b578e3125d92e0cbb08ab50911251bdd"
     },
     {
       "path": "automation/lib/claude_assist_changes.mjs",
-      "sha256": "8a9aa47ecaf13da6ce27c67d201816753bba37d11373e9de9cee5026ac70933e"
+      "sha256": "61e6264ff6ab0f7ce13a7a5466e93291198a8802343227968c1b23ece0e58921"
     },
     {
       "path": "automation/lib/claude_assist_launch.mjs",
@@ -61,7 +61,7 @@
     },
     {
       "path": "automation/lib/claude_assist_mcp.mjs",
-      "sha256": "4e1e246b07271703612584e18018f7a93f92e4dcbad869611f55352adb7feb1e"
+      "sha256": "da97dc4e2ccea54733efb2eedca00a639826d3d7a2cc313730c0fe3e1980068d"
     },
     {
       "path": "automation/lib/claude_assist_offline.mjs",
@@ -74,6 +74,10 @@
     {
       "path": "automation/lib/claude_assist_runner.mjs",
       "sha256": "e478a3a15c8acc106a15014c9e96dcc9cc229122fc8941902927557c55fcac17"
+    },
+    {
+      "path": "automation/lib/claude_assist_commits.mjs",
+      "sha256": "ae60bbcd0d4b82c028fce1924a0be04690084e9cc6a4e48e885494851559388e"
     }
   ],
   "modelCalls": 0,
@@ -82,5 +86,5 @@
   "businessWrites": 0,
   "existingUserProfilesChanged": false,
   "note": "CLI health-check connectivity is evidence for this pilot, not proof of an owner conversation, model review or production publication approval.",
-  "serverVersion": "2.2.1"
+  "serverVersion": "2.3.0"
 }

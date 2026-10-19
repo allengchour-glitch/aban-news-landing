@@ -7,6 +7,9 @@ const own = (value, key) => Object.prototype.hasOwnProperty.call(value, key);
 const object = value => value !== null && typeof value === 'object' && !Array.isArray(value);
 const textField = (maxLength = 4000) => ({ type: 'string', minLength: 1, maxLength });
 const emptySchema = { type: 'object', properties: {}, additionalProperties: false };
+const commitField = () => ({ type: 'string', minLength: 40, maxLength: 40, pattern: '^[a-fA-F0-9]{40}$' });
+const changePlanSchema = { type: 'object', properties: { baseCommit: commitField(), headCommit: commitField() },
+  additionalProperties: false, oneOf: [{ maxProperties: 0 }, { required: ['baseCommit', 'headCommit'] }] };
 const reviewVerdicts = ['findings', 'no_findings', 'blocked'];
 const annotations = readOnly => ({ readOnlyHint: readOnly, destructiveHint: false,
   idempotentHint: readOnly, openWorldHint: false });
@@ -27,8 +30,8 @@ export const MCP_TOOLS = [
     inputSchema: { type: 'object', properties: { question: textField(),
       files: { type: 'array', maxItems: 6, items: textField(512) } },
       required: ['question'], additionalProperties: false }, annotations: annotations(false) },
-  { name: 'luxe_change_plan', description: 'Lokalen Änderungsplan und passende Offline-Prüfungen ermitteln; keine Änderung ausführen.',
-    inputSchema: emptySchema, annotations: annotations(true) },
+  { name: 'luxe_change_plan', description: 'Lokalen Änderungsplan ermitteln, optional zwischen zwei vollständig gepinnten lokalen Commits. Reine Planung: keine Tests, kein Checkout und kein Fetch.',
+    inputSchema: changePlanSchema, annotations: annotations(true) },
   { name: 'luxe_review_list', description: 'Lokal gespeicherte Prüfaufgaben und Antworten lesen; keine Modellaufrufe.',
     inputSchema: { type: 'object', properties: { after: textField(80) }, additionalProperties: false }, annotations: annotations(true) },
   { name: 'luxe_review_get', description: 'Eine lokale Prüfaufgabe mit vollständiger Frage und Antwort lesen; keine Modellaufrufe.',
@@ -54,7 +57,11 @@ function validList(value, maxLength, maxItems) {
 function validArguments(name, args) {
   if (!object(args)) return false;
   const keys = Object.keys(args);
-  if (['luxe_doctor', 'luxe_handoff_read', 'luxe_change_plan'].includes(name)) return keys.length === 0;
+  if (['luxe_doctor', 'luxe_handoff_read'].includes(name)) return keys.length === 0;
+  if (name === 'luxe_change_plan') return keys.length === 0 || (keys.length === 2
+    && own(args, 'baseCommit') && own(args, 'headCommit')
+    && typeof args.baseCommit === 'string' && args.baseCommit.length === 40 && /^[a-fA-F0-9]{40}$/.test(args.baseCommit)
+    && typeof args.headCommit === 'string' && args.headCommit.length === 40 && /^[a-fA-F0-9]{40}$/.test(args.headCommit));
   if (name === 'luxe_review_list') return keys.every(key => key === 'after')
     && (!own(args, 'after') || validText(args.after, 80));
   if (name === 'luxe_review_get') return keys.length === 1 && own(args, 'requestId') && validText(args.requestId, 80);
@@ -102,7 +109,7 @@ async function dispatch(request, handlers) {
     }
     return result({ protocolVersion: PROTOCOLS.has(params.protocolVersion) ? params.protocolVersion : '2025-06-18',
       capabilities: { tools: { listChanged: false } },
-      serverInfo: { name: 'luxestyle-claude-assist', version: '2.2.1' },
+      serverInfo: { name: 'luxestyle-claude-assist', version: '2.3.0' },
       instructions: 'Lokaler LuxeStyle-Helfer. Keine Live-APIs, Publikationen oder Modellaufrufe. Übergaben sind datierte Belege.' });
   }
   if (request.method === 'ping' || request.method === 'tools/list') {

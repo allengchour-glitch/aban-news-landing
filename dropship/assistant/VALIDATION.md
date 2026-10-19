@@ -1,5 +1,15 @@
 # Prüfbelege für LuxeStyle Assist
 
+## Explizite Commit-Planung in Version 2.3
+
+136 Regressionstests bestanden, einschliesslich 21 neuer Gegenproben. Der vollständige Lauf über das echte begrenzte Assist-Profil endete mit Exit 0, ohne Timeout oder abgeschnittene Ausgabe. Der direkte MCP-Selbsttest bestätigt weiterhin zehn Werkzeuge und Serverversion 2.3.0.
+
+Die praktische Lücke ist mit einem echten sauberen Git-Checkout reproduziert: Nach einem neuen Commit findet der bisherige Arbeitskopie-Plan keine Änderungen. Der zusätzliche explizite Vergleich zweier voller Commit-IDs liefert die betroffenen Pfade und dieselben festen Testvorschläge. Reale CLI- und MCP-Integration sind gegengeprüft; weder Tests noch Journal-Schreibzugriffe werden durch den Plan ausgeführt.
+
+Gegenproben umfassen ungültige/einseitige IDs einschliesslich abschliessender Zeilenumbrüche, Tags/Bäume, fehlende Objekte, flache Historie, umgekehrte/nicht verwandte Commits, identische Snapshots, Renames/Löschungen, unbekannte und Submodul-Pfade sowie unvollständige/zu grosse/fehlgeschlagene Git-Ausgaben. Git erhält No-Lazy-Fetch-/No-Replace-Flags und gesperrte Transportprotokolle. Beide Vergleichsgrenzen und die nicht geprüfte Arbeitskopie sind ausgewiesen; daraus entsteht kein Testnachweis des Ziel-Commits. Ein unabhängiger enger Review fand keine konkreten Fehler.
+
+Die echte Claude-Code-CLI 2.1.303 wurde mit den zehn aktuellen Laufzeit-/Konfigurationsdateien erneut im isolierten Pilot geprüft: Root, Unterordner und störende Node-Elternoptionen jeweils verbunden, Exit 0 und leeres stderr. Der strukturierte Beleg enthält die aktuellen SHA-256-Werte. Das Inhaberprofil und dessen lokale Projektfreigabe bleiben unbekannt; keine Modellanfrage und keine Business-Aktion.
+
 ## Zuverlässige Abbrüche und Review-Wiederaufnahme in Version 2.2.1
 
 115 Regressionstests bestanden, einschliesslich 14 neuer Gegenproben. Der vollständige Lauf erfolgte über das echte begrenzte Assist-Profil: Exit 0, kein Timeout und keine abgeschnittene Ausgabe. Ein ursprünglich noch auf fünf Testdateien abgestimmter Erwartungswert wurde bei der Integration auf sechs Dateien korrigiert.

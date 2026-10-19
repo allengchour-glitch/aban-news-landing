@@ -1,4 +1,4 @@
-# LuxeStyle Assist 2.2.1 für Claude Code und Codex
+# LuxeStyle Assist 2.3 für Claude Code und Codex
 
 Der Helfer bündelt lokale Projektprüfung, feste Regressionstests und eine beständige Aufgabenübergabe. Keine Zusatzpakete, keine neue API-Verbindung und kein laufender Serverdienst nötig. Er ruft kein KI-Modell auf, veröffentlicht nichts und importiert keine operativen Publisher. Er kann nicht garantieren, dass alle Automationen funktionieren oder jemand kauft.
 
@@ -19,7 +19,7 @@ Vor dem ersten Clientstart vom Repo-Root aus `node automation/claude-assist.mjs 
 | `luxe_handoff_read` | Höchstens zehn letzte Übergaben innerhalb 128 KiB; Teilansicht wird ausgewiesen |
 | `luxe_handoff_save` | Manuellen Stand und nächsten Schritt lokal sichern |
 | `luxe_review_request` | Konkrete Codex-Frage mit Dateihashes in derselben Übergabe vormerken |
-| `luxe_change_plan` | Index, Arbeitskopie und neue Dateien lesen; feste Tests vorschlagen |
+| `luxe_change_plan` | Arbeitskopie oder zwei explizite lokale Commits vergleichen; feste Tests vorschlagen |
 | `luxe_review_list` | Alle Review-Aufträge zählen und fünf pro Seite mit Status/Hash-Gegenprobe anzeigen |
 | `luxe_review_get` | Einen Auftrag samt voller Frage, manueller Antwort und aktuellem Dateiabgleich lesen |
 | `luxe_review_answer` | Ein manuelles Review eindeutig einem offenen Auftrag und dessen Dateistand zuordnen |
@@ -64,15 +64,25 @@ JSON
 
 ## Tests und Fehlermeldungen
 
-`core` startet ausschliesslich die bestehenden Tests für Shopify-GraphQL-, Secret- und Kanalhelfer. `seo` startet ausschliesslich `seo-optimizer_test.mjs` und `seo_titel_test.mjs`; fehlen diese auf dem gewählten Branch, ist das Ergebnis unbekannt. `assist` prüft die eigenen sechs Regressionstest-Dateien. Diese Integrationstests benötigen Kindprozesse und laufen ohne Netzwerk-Preload, aber mit bereinigter Umgebung. Die SEO-Überarbeitung aus PR [2694](https://github.com/allengchour-glitch/aban-news-landing/pull/2694) war beim Aufbau noch ein Entwurf und wird nicht stillschweigend integriert.
+`core` startet ausschliesslich die bestehenden Tests für Shopify-GraphQL-, Secret- und Kanalhelfer. `seo` startet ausschliesslich `seo-optimizer_test.mjs` und `seo_titel_test.mjs`; fehlen diese auf dem gewählten Branch, ist das Ergebnis unbekannt. `assist` prüft die eigenen sieben Regressionstest-Dateien. Diese Integrationstests benötigen Kindprozesse und laufen ohne Netzwerk-Preload, aber mit bereinigter Umgebung. Die SEO-Überarbeitung aus PR [2694](https://github.com/allengchour-glitch/aban-news-landing/pull/2694) war beim Aufbau noch ein Entwurf und wird nicht stillschweigend integriert.
 
 `change-plan` liest getrennt Git-Index, Arbeitskopie und ungetrackte Dateien mit NUL-Trennung, deaktivierten externen Diff-/Textconv-/Fsmonitor-Helfern und festen Argumenten. Höchstens 200 Pfade; Fehler/Abschneiden bleiben unbekannt. Bereits committierte Änderungen werden nicht durch diesen lokalen Plan abgedeckt. Nur exakte bekannte Dateien wählen Profile aus; ähnlich benannte neue Skripte erhalten keine erfundene Testabdeckung. `check changed` führt diese festen Profile aus. Unbekannte Dateien bleiben `unmapped`; reine Dokumente oder keine Änderungen sind kein bestandener Testlauf. Ein tatsächlich fehlgeschlagener Test bleibt fehlgeschlagen, auch neben unbekannter Abdeckung. Andere Marken werden nicht bearbeitet.
+
+Für bereits committierte Übergaben akzeptiert dasselbe Werkzeug zusätzlich ein vollständiges Paar `baseCommit` und `headCommit`, jeweils exakt 40 Hexzeichen. Keine Branchnamen, kurzen Hashes oder Git-Ausdrücke. Beide Objekte müssen lokal echte Commits sein; die Basis muss als Vorfahr des Ziels bestätigt sein. Direkter Vergleich der beiden angegebenen Snapshots, keine automatische andere Vergleichsbasis. Beispiel für zwei bekannte Projektstände:
+
+```sh
+node automation/claude-assist.mjs change-plan aab26b594657bcbc86e48aa23eb9580e537d3af0 06be8d276af624cdffd7275842598aa7198a82b5
+```
+
+MCP: `luxe_change_plan` mit `{"baseCommit":"aab26b594657bcbc86e48aa23eb9580e537d3af0","headCommit":"06be8d276af624cdffd7275842598aa7198a82b5"}`. Ohne Argumente bleibt die bisherige Prüfung der Arbeitskopie erhalten. Die Beispiele sind ein datierter Vergleich, keine automatische Auswahl des heutigen Auftrags.
+
+Der Commit-Modus liest nur lokal: keine Fetches, Checkouts oder Tests. Lazy Fetch, Ersatzobjekte, externe Diff-/Textconv-Helfer und Git-Transporte sind für diese Leseaufrufe gesperrt. Fehlende Objekte, nicht unterstützte Git-Optionen, flache oder nicht lineare Historie, unerwartetes stderr sowie Zeit-/Ausgabe-/Pfadgrenzen bleiben `unknown`, niemals eine leere Änderungsliste. Die Ausgabe nennt beide Commit-IDs, `worktreeChanges: not_scanned` und `executedTests: false`. Lokale Änderungen deshalb bei Bedarf zusätzlich ohne Argumente prüfen. Vorgeschlagene feste Profile laufen über `luxe_checks` weiterhin gegen die aktuelle Arbeitskopie; `check changed` übernimmt keine Commit-IDs und ein grünes Profil beweist keine Prüfung des angegebenen Ziel-Commits.
 
 Pro Test höchstens 15 Sekunden und 16 KiB Ausgabe, für das eigene Assist-Profil zusammen 30 Sekunden und 32 KiB; feste argv-Arrays, keine Shell, bereinigte Umgebung ohne Business-/LLM-/Telegram-Zugangsdaten. Der Preload blockiert gewöhnliche Node-Netzwerk- und Kindprozessaufrufe. Das ist zusätzliche Absicherung für vertrauenswürdige Repo-Tests und keine OS-Sandbox für absichtlich bösartigen Code. Die Tests laufen unverändert; deren technische Regeln können engeren Inhabervorgaben widersprechen. Insbesondere erlaubt der alte allgemeine Kanalhelfer manche `rueckhol`-Tags, während die aktuelle Inhabervorgabe jedes `rueckhol` für neue Social-Ausspielung sperrt. Ein grünes Kernprofil hebt diese zusätzliche Sperre nicht auf.
 
 Bei Timeout oder Ausgabelimit wird auf POSIX nur die eigene neu gestartete Prozessgruppe beendet. Offene Ausgabekanäle von Unterprozessen dürfen die Rückgabe nicht unbegrenzt verzögern; ein begrenzter Abbruchpfad schliesst die lokalen Streams. Diese Prozessverwaltung ersetzt keine Betriebssystem-Sandbox und garantiert keine Kontrolle über absichtlich abgekoppelte Prozesse.
 
-Fehler, Timeout, Ausgabelimit und fehlende Dateien bleiben unterscheidbar. Keine automatische Reparatur, Wiederholung von Writes oder Umdeutung von unbekannt zu Null. Eigene Regressionen: `node --test automation/lib/claude_assist_test.mjs automation/lib/claude_assist_mcp_test.mjs automation/lib/claude_assist_changes_test.mjs automation/lib/claude_assist_readiness_test.mjs automation/lib/claude_assist_launch_test.mjs automation/lib/claude_assist_runner_test.mjs`.
+Fehler, Timeout, Ausgabelimit und fehlende Dateien bleiben unterscheidbar. Keine automatische Reparatur, Wiederholung von Writes oder Umdeutung von unbekannt zu Null. Eigene Regressionen: `node --test automation/lib/claude_assist_test.mjs automation/lib/claude_assist_mcp_test.mjs automation/lib/claude_assist_changes_test.mjs automation/lib/claude_assist_readiness_test.mjs automation/lib/claude_assist_launch_test.mjs automation/lib/claude_assist_runner_test.mjs automation/lib/claude_assist_commits_test.mjs`.
 
 ## Kontext für ein gezieltes Review
 
