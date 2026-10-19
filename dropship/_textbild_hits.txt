@@ -18527,3 +18527,6 @@ gid://shopify/Product/16653083967879	13->0	Dumpling-Mold-Set 3D-gedruckt – Qua
 gid://shopify/Product/16653092192647	28->0	Kinderflugzeug-Reise-Tablett Aufbewahrungstasche
 gid://shopify/Product/16653195280775	21->1	Männer-Shirt Loose-Fit Herbst Casual
 gid://shopify/Product/16653196788103	34->1	Kurzärmliges Strickhemd mit Streifen
+gid://shopify/Product/16653198393735	29->1	Lässige warme Baumwolljacke für Herren
+gid://shopify/Product/16653200163207	23->0	Lederjacke im Biker-Style, gefüttert
+gid://shopify/Product/16653207470471	14->0	Corduroy Blazer für Herren – Frühlings-Herbstjacke
