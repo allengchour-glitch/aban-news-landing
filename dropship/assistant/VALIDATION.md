@@ -1,5 +1,15 @@
 # Prüfbelege für LuxeStyle Assist
 
+## Zuverlässige Abbrüche und Review-Wiederaufnahme in Version 2.2.1
+
+115 Regressionstests bestanden, einschliesslich 14 neuer Gegenproben. Der vollständige Lauf erfolgte über das echte begrenzte Assist-Profil: Exit 0, kein Timeout und keine abgeschnittene Ausgabe. Ein ursprünglich noch auf fünf Testdateien abgestimmter Erwartungswert wurde bei der Integration auf sechs Dateien korrigiert.
+
+Reproduzierter Abbruchfehler: Ein 300-ms-Timeout wartete bei von Enkelprozessen offen gehaltenen Pipes mehr als zwei Sekunden; ein dauerhaft laufender Enkel hätte die Rückgabe unbegrenzt verhindern können. Der neue Runner startet auf POSIX eine eigene Prozessgruppe, beendet nur diese bei Timeout/Ausgabelimit und hat einen zusätzlichen begrenzten 100-ms-Abschlussweg. Echte Nachkommen, bereits beendete Eltern, eine bewusst abgekoppelte Testgruppe und ein fremder Geschwisterprozess sind gegengeprüft. Unvollständige Bereinigung bleibt unbekannt; ein bekannter Exitcode 0 macht ein Timeout nicht zu Erfolg. Windows nutzt den begrenzten Stream-Abschluss, wurde hier aber nicht nativ geprüft. Keine Betriebssystem-Sandbox behauptet.
+
+Reproduzierter Wiederaufnahmefehler: Eine neuere manuelle Review-Antwort verlor ihren nächsten Schritt und ihre Blocker gegen einen älteren Handoff. Ohne ältere offene Anfrage gilt jetzt die nach Journal-Sequenz jüngste Antwort oder Übergabe. Verdict, manuelle Herkunft, Blocker und aktuelle Quellenprüfung bleiben erhalten. Veränderte oder fehlende Quellen führen zur Gegenprüfung; ein späterer Handoff übernimmt wieder den Vorrang. Keine Live- oder Modellfreigabe daraus abgeleitet.
+
+Die echte Claude-Code-CLI 2.1.303 wurde nach Integration mit den neun aktuellen Laufzeit-/Konfigurationsdateien erneut geprüft: Root, Unterordner und störende Node-Elternoptionen jeweils verbunden, Exit 0 und leeres stderr. Der strukturierte Beleg enthält deren aktuelle SHA-256-Werte und Serverversion 2.2.1. Weiterhin nur der ausdrücklich konfigurierte isolierte Pilot, kein verifiziertes Inhaberprofil und keine Modellanfrage. Bestehende Journalzeilen und Inhabervorgaben bleiben erhalten.
+
 ## Tatsächliche Claude-Code-Anbindung in Version 2.2
 
 101 Regressionstests bestanden. Zwei reale Pilotbefunde behoben: Geerbte Node-Ladeoptionen konnten Text vor JSON-RPC ausgeben; relative Startargumente scheiterten bei einem anderen Arbeitsverzeichnis. Der fixe, begrenzte Git-Root-Launcher und explizit leere NODE_OPTIONS/NODE_PATH sind als tatsächlich konfigurierte Startstrecke gegengeprüft, inklusive Git-Worktrees, Pfaden mit Leerzeichen, falscher Origin, Symlinks, Importfehlern und Git-Umgebungsinjektion.
