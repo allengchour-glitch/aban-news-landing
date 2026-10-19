@@ -10092,3 +10092,13 @@ herren-wanderschuhe-weiche-sohle-314880	1788825865174921216	16	11.49	ok	landesei
 mesh-tischtennis-laufschuhe-fur-wettkampftrain-704192	1787416370733395968	16	13.76	ok	landeseite
 kissenbezug-aus-baumwolle-und-leinen-602500	2605190256511603200	16	6.01	ok	landeseite
 wasserdichte-reisebox-fur-make-up-bursten-627700	2607110717021621700	16	8.93	ok	landeseite
+elegante-umhangetasche-631500	2602050942401631900	16	15.44	ok	landeseite
+kristall-samt-kissen-fur-seitenschlafer-623100	2604250108201623600	11	40.68	ok	landeseite
+atmungsaktive-sneaker-fur-herren-468224	1778596642191577088	16	17.66	ok	landeseite
+riesen-kissen-fur-beine-616700	2604240629411617200	16	25.49	ok	landeseite
+herren-umhangetasche-vielseitig-in-verschieden-632000	2601310930041632400	16	8.25	ok	landeseite
+atmungsaktive-arbeitsschuhe-mit-stahlkappe-490624	1778326331378376704	16	14.96	ok	landeseite
+cartoon-sofakissen-618500	2604220809091619000	16	6.01	ok	landeseite
+zip-lock-aufbewahrungsbeutel-fur-kleidung-dess-608900	2607100842311609500	16	11.12	ok	landeseite
+fitness-tasche-fur-unterwegs-633900	2601310817171634200	16	14.96	ok	landeseite
+lederarmband-26mm-600400	2508250830181600600	16	5.55	ok	landeseite
