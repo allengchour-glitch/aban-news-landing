@@ -11019,3 +11019,11 @@ wasserdichter-hundeoverall-624200	2605250937041624800	16	5.81	ok	landeseite
 leichte-sommertracht-fur-haustiere-639100	2605191035451639900	16	6.39	ok	landeseite
 bequeme-casual-gerade-leg-cargohose-mit-mehrer-621600	2512200327401621900	16	8.79	ok	landeseite
 grosses-badetuch-aus-baumwolle-639500	2604230544381631000	16	12.81	ok	landeseite
+wind-und-kalte-schutz-weste-604300	2603150709181604700	16	8.25	ok	landeseite
+herren-arbeitshose-gerade-passform-mittelhoch-629000	2512170815571629200	16	10.15	ok	landeseite
+reise-nackenstutze-handtuch-634600	2604230401481635700	16	10.29	ok	landeseite
+herren-jeans-mit-stretch-614900	2512100346351615100	16	13.16	ok	landeseite
+atmungsaktive-mesh-laufschuhe-fur-jungen-gr-m-844736	1789840351553925120	16	11.24	ok	landeseite
+badehandtuch-fur-baby-mit-kapuze-603500	2604230349111604000	16	9.61	ok	landeseite
+dunne-fleece-jacke-fur-haarlose-katzen-624100	2603050854531624600	16	6.77	ok	landeseite
+vintage-arbeits-pants-619300	2512090801571619500	16	9.47	ok	landeseite
