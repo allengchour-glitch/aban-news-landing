@@ -38,8 +38,9 @@
 # per mktemp (600) neben der Datei + mv (atomar); Symlink/nicht beschreibbar → nichts. Werte nie in argv, nie ausgegeben.
 # Setzt: SHOP_DATEI_GEHEILT=1 / SEC_DATEI_BEREINIGT=1 (Zeile korrigiert), SHOP_DATEI_UNGEHEILT=1 (Korrektur misslungen).
 # LÄNGE: Ein Hostname hat höchstens 253 Zeichen (DNS). Längere Werte sind «falsch» und werden NIE bereinigt — die Bash-Trimm-Ausdrücke sind
-# auf langem Leerraum quadratisch (GEMESSEN 19.10.: 10'000 Leerzeichen 0,29 s · 20'000 1,06 s · 40'000 4,08 s, rund 45 s bei 130'000 =
-# Grösse einer Linux-Umgebungsvariablen; der Aufseher hat dort keinen Timeout). Gleiche Schranke in shopify_host.mjs / .py.
+# auf langem Leerraum quadratisch (GEMESSEN 19.10.: 10'000 Leerzeichen 0,29 s · 20'000 1,06 s · 40'000 4,08 s; QUELLE Prüfer, nicht
+# nachgemessen: rund 45 s bei 130'000 = Grösse einer Linux-Umgebungsvariablen; der Aufseher hat dort keinen Timeout). Gleiche Schranke in
+# shopify_host.mjs / .py; dort war die Node-Fassung bei «Zeichen + Leerraum + Zeichen» ebenfalls quadratisch (40'000: 1,9 s) — jetzt linear.
 
 SHOPIFY_SHOP_ECHT=au3j0y-hq.myshopify.com   # EINE Quelle; das Python-Grant unten trägt ihn ebenfalls (Test schlägt bei Drift an)
 SHOP_MAXLAENGE=253                          # Hostname-Maximum (DNS); Bytes unter LC_ALL=C — für ASCII, die einzig möglichen Treffer, = Zeichen

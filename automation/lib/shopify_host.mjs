@@ -9,8 +9,8 @@
 //
 // REGEL (ASCII-genau, in allen drei Umsetzungen gleich):
 //  0. Länge über 253 (Hostname-Maximum, DNS) ist «falsch» und wird NIE bereinigt. GEMESSEN 19.10. an der ersten Fassung dieses Moduls: die
-//     Regex `/^[ws]+|[ws]+$/g` ist bei «Zeichen + Leerraum + Zeichen» quadratisch (40'000 Leerzeichen 1,9 s, 1,3 Mio. Zeichen: Minuten bis
-//     zum Abbruch); die Bash-Umsetzung trimmt auf langem Leerraum ebenso (40'000: 4,08 s). Jetzt trimmt trimmeRand() linear UND die Schranke
+//     Regex `/^[ws]+|[ws]+$/g` ist bei «Zeichen + Leerraum + Zeichen» quadratisch (40'000 Leerzeichen 1,9 s; bei 1,3 Mio. Zeichen lief ein
+//     Prozess über 3 Minuten und wurde abgebrochen); die Bash-Umsetzung trimmt auf langem Leerraum ebenso (40'000: 4,08 s). Jetzt trimmt trimmeRand() linear UND die Schranke
 //     greift vor jeder Bereinigung.
 //  1. Leerraum (Leerzeichen, Tab, CR, LF, VT, FF) am Rand weg; ein Paar umschliessender Anführungszeichen weg; nochmals Leerraum weg.
 //  2. Kleinschreibung (nur A–Z).
