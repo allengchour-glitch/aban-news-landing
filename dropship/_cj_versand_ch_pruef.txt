@@ -10436,3 +10436,9 @@ augenpflege-gerat-mit-radiofrequenz-991168	1384683898029608960	7	6.34	ok	landese
 warnlicht-furs-mountainbike-549952	1474938910080634880	7	7.92	ok	landeseite
 elektroburste-mit-wei-heitsfunktion-mehrere-po-220224	1384683097177591808	7	9.15	ok	landeseite
 usb-taillight-fur-helm-und-sattel-152064	1453633092983066624	7	5.34	ok	landeseite
+elektrische-zahnreinigungsmaschine-381376	1383716423066587136	7	12.29	ok	landeseite
+kinder-fahrrad-hornlicht-049728	1453631471775518720	7	5.86	ok	landeseite
+porenreiniger-fur-zu-hause-407296	1381915899543556096	7	8.25	ok	landeseite
+fahrrad-rucklicht-mit-sitzstange-halter-669952	1438800320422612992	7	5.69	ok	landeseite
+augenmassagegerat-gegen-dunkle-ringe-und-falte-344192	1381541915803127808	7	8.42	ok	landeseite
+kompakter-bluetooth-lautsprecher-fur-outdoor-a-135040	1438405870265438208	7	11.05	ok	landeseite
