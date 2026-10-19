@@ -80,10 +80,17 @@
   "bild-20261021T1410": {
    "basis_utc": "2026-10-21T14:10:00Z",
    "format": "bild",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "",
+   "handles": [],
+   "letzter_versuch": "2026-10-19T00:29:36Z",
+   "mc_ids": [
+    399528714
+   ],
+   "reserviert_um": "2026-10-19T00:29:36Z",
+   "status": "geplant",
    "termin_utc": "2026-10-21T14:10:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "bild-20261022T0745": {
    "basis_utc": "2026-10-22T07:45:00Z",
@@ -963,10 +970,18 @@
   "story-20261020T1710": {
    "basis_utc": "2026-10-20T17:10:00Z",
    "format": "story",
+   "grund": "",
+   "handle": "",
+   "handles": [
+    "einhornskelett-18-cm-fga910992"
+   ],
    "letzter_versuch": "2026-10-19T00:28:05Z",
-   "mc_ids": [],
+   "mc_ids": [
+    399528585,
+    399528588
+   ],
    "reserviert_um": "2026-10-19T00:28:05Z",
-   "status": "reserviert",
+   "status": "geplant",
    "termin_utc": "2026-10-20T17:10:00Z",
    "versuche": 1
   },
@@ -988,10 +1003,12 @@
   "story-20261021T1710": {
    "basis_utc": "2026-10-21T17:10:00Z",
    "format": "story",
+   "letzter_versuch": "2026-10-19T00:29:53Z",
    "mc_ids": [],
-   "status": "offen",
+   "reserviert_um": "2026-10-19T00:29:53Z",
+   "status": "reserviert",
    "termin_utc": "2026-10-21T17:10:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "story-20261022T1045": {
    "basis_utc": "2026-10-22T10:45:00Z",
@@ -1587,6 +1604,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-19T00:28:05Z",
+ "stand": "2026-10-19T00:29:53Z",
  "version": 1
 }
