@@ -11073,3 +11073,4 @@ kinder-sneaker-aus-baumwolle-288256	1745771097368301568	16	9.20	ok	landeseite
 einheitliche-herren-trousers-650000	2510250638311650200	16	8.25	ok	landeseite
 jungen-sneaker-640832	1740683217520304128	16	10.55	ok	landeseite
 warme-herren-overall-mit-fleece-634400	2510221031321634700	16	14.48	ok	landeseite
+unterwasche-strumpfbox-standard-high-603400	2410030404311603700	16	11.68	ok	landeseite

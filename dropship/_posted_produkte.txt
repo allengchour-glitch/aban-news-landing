@@ -505,3 +505,6 @@ pid:16613782323591
 slug:kabelloser-mini-staubsauger-furs-auto-f2796b
 pid:16612785455495
 slug:mini-projektor-home-office-t300-1080p
+slug:bildreel-hemd-western-braun-fgssbo5433
+pid:15469958037889
+slug:hemd-western-braun-fgssbo5433
