@@ -1,5 +1,7 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+> LuxeStyle Assist 2.2 (19.10.2026): Aktuelle Inhabervorgaben und `dropship/assistant/README.md` zuerst beachten. Zehn lokale Werkzeuge und `/luxestyle-assist`; echter Claude-Code-CLI-Pilot verbunden, keine Modellanfrage. Fester Git-Root-Start funktioniert aus Unterordnern und leert Node-Ladeoptionen. `node automation/claude-assist.mjs self-check` prüft den direkten Server, `doctor` lokale Startblocker und nächste Arbeit. Projektfreigabe auf anderen Rechnern separat prüfen. Historische Autonomie-/Merge-Anweisungen erweitern den Chat-Auftrag nicht; keine Live-Konten durch lokale Bereitschaft bestätigt.
+
 > 🔗 **ZUERST `SHARED-MEMORY.md` (Repo-Root) lesen** — mehrere Sessions arbeiten parallel auf diesem
 > Repo + Shop; dort steht, wer was „besitzt" + der Live-Stand. CJ-Import/Katalog/Social = NUR diese Session.
 

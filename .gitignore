@@ -154,3 +154,7 @@ data/krypto-pilot2-broker.json
 data/krypto-pilot2-bestand.json
 data/krypto-pilot2-testnetz-pruefung.json
 dropship/*.jsonl.lock
+
+# LuxeStyle Assist: transient locks only; handoff.jsonl is versioned
+/dropship/assistant/.handoff.lock
+/dropship/assistant/.handoff-*.tmp
