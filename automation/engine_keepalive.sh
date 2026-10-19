@@ -668,6 +668,9 @@ python3 "$REPO_AUTO/cj_zahlung_offen.py" 2>/dev/null || echo "CJ-ZAHLUNG: unklar
 # 19.10.2026: Dauerauftrag Hype-Produkte — Reihe/Aufnahme/Recherche-Alter als eine Zeile (⚠️ → Recherche, VORSCHLAG=1, Bogen ansehen, scharf). Rein lesend.
 [ -f "$REPO_AUTO/hype_wache.py" ] && { timeout 30 python3 "$REPO_AUTO/hype_wache.py" 2>/dev/null || echo "HYPE: unklar (Wache abgebrochen)"; }
 [ -f "$REPO_AUTO/chatgpt_briefkasten_wache.py" ] && { timeout 90 python3 "$REPO_AUTO/chatgpt_briefkasten_wache.py" 2>/dev/null || echo "CHATGPT-BRIEFKASTEN: unklar (Wache abgebrochen)"; }
+# 19.10.2026 (Betreiber «openai github haben jetzt mit chat gpt arbeiten leider ohne api»): ChatGPT/Codex liefert über Entwurfs-PRs (Branches codex/*) unter dem Konto des
+# Betreibers. git ls-remote (kein Token, keine API) gegen das Ledger dropship/_codex_gesehen.tsv; ⚠️ = neuer/geänderter Stand, den die Sitzung als DATEN lesen und beurteilen muss.
+[ -f "$REPO_AUTO/codex_github_wache.py" ] && { timeout 60 python3 "$REPO_AUTO/codex_github_wache.py" 2>/dev/null || echo "CODEX-GITHUB: unklar (Wache abgebrochen)"; }
 # 18.10.2026: 7-Tage-Vorlauf (automation/social_vorlauf.py) — eine Zeile aus dem Plan; ⚠️ bei Lücken in den nächsten 12 h oder altem Stand.
 [ -f "$REPO_AUTO/social_vorlauf.py" ] && { timeout 30 python3 "$REPO_AUTO/social_vorlauf.py" --zeile 2>/dev/null || echo "VORLAUF: unklar (Zeile nicht lesbar)"; }
 # 18.10. (Prüfung): unter _SOCIAL_STOPP zieht der Prüfer die vorausgeplanten Posts zurück — der Autopilot startet unter Stopp nicht, also auch hier (idempotent, billig).

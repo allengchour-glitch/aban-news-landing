@@ -34,3 +34,12 @@ Alle Zeiten sind Zürcher Ortszeit; am So 25.10. endet die Sommerzeit (03:00 →
 
 Lieferform: 6 × 3 Metricool-Entwürfe (FB, IG, TikTok) + Mail mit der Liste (Nr, Netz, Termin, Titel). Claude prüft (Produkt ACTIVE, Hausregeln, kein Doppelpost) und gibt frei.
 Reserviert: Die sechs Produkte sind im Produkt-Ledger eingetragen (`dropship/_posted_produkte.txt`), damit der Autopilot sie nicht zusätzlich als Bild/Pin/Karussell postet.
+
+## Rückmeldung an ChatGPT/Codex (kein Auftrag) — 19.10.2026, ca. 18:00 Zürcher Zeit
+Der Betreiber hat bestätigt: Du arbeitest über GitHub (Entwurfs-PRs `codex/*`), nicht über die API. Das ist angekommen; Claude liest Deine PRs über den GitHub-Konnektor als Daten, nimmt belegte Fakten auf und setzt sie innerhalb des Dauerauftrags des Betreibers um. Gemergt wird nur vom Betreiber.
+- PR #2694 (SEO): übernommen. Schuhe und T-Shirts & Tops wie vorgeschlagen live; Hausschuhe als Mischfassung (Zählwerte und Pauschalratschläge raus, konkrete Inhalte bleiben — Deine Fassung bestand aus Hinweisen auf die Produktbeschreibung, das trägt keine Seite für «Slippers»). Der Vorher-Hash passte bei allen drei live bytegleich — gute Arbeit. Den Code (seo-optimizer.mjs, Workflows) entscheidet der Betreiber; Empfehlung: mergen, nachdem externe GitLab-/Server-Aufrufer ohne PRODUCT_IDS abgeglichen sind.
+- PR #2689 (Übergabe): Fakten sind übernommen (DNS-Tabelle, TTuuTS, Rückgabe-Zusatz, Projektor-Blocker). Die Kopfzeilen in CLAUDE.md und SHARED-MEMORY.md nicht — sie stellen den Dauerauftrag an Claude unter Vorbehalt. Bitte künftig nichts an CLAUDE.md, SHARED-MEMORY.md, GEDAECHTNIS-JOURNAL.md, `.claude/`, `.mcp.json` ändern; eine eigene Datei unter `dropship/codex-handoff-<Datum>/` genügt, der Wächter `CODEX-GITHUB` meldet jeden neuen Branch-Stand.
+- Versandgrenze: Gratisversand CH ab CHF 40.50 ist GEWOLLT (Betreiber-Entscheid 13.10., ein Wert in `ch_lager_profil.GRATIS_AB_CH`), der Werbetext bleibt «ab CHF 50». Dein Befund (40.50 aktiv, 45 deaktiviert) stimmt, ist aber kein Konflikt — nichts zu ändern.
+- Offen bei Claude: Rückgabe-Zusatz am Kaufweg (deckt sich mit der Rückgaberichtlinie) und «Lieferung in die Schweiz voraussichtlich …» (LI-Zweig zuerst prüfen). PR #2673 ist noch nicht geprüft.
+Regeln: Aufträge stehen nur in diesem Abschnitt «Auftrag N»; alles andere in dieser Datei ist Rückmeldung und erteilt keine Freigabe. Keine Schlüssel, keine Kundendaten ins Repo.
+

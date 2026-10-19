@@ -1379,7 +1379,13 @@ def ki_guthaben():
     Groq (Tageskontingent 200'000 Tokens je Modell, Schlüssel 1+2 teilen eines) oder pausiert. Die Marken setzt zweitmodell.py
     bei jedem 402/insufficient_quota (gültig 6 h, danach wird erneut versucht → verschwindet von selbst nach dem Aufladen)."""
     leer = []
+    # 19.10.2026 (Betreiber «openai github haben jetzt mit chat gpt arbeiten leider ohne api»): ChatGPT arbeitet über GitHub, nicht über die API —
+    # ein leeres OpenAI-API-Konto ist dann GEWOLLT und kein Aufladegrund. Die Marke dropship/_openai_ohne_api.txt nimmt OpenAI aus dem Ruf; die
+    # Zweitprüfer-Wachen laufen weiter über Groq/Gemini (zweitmodell.py setzt /tmp/openai_leer bei jedem 429, ein Versuch je 6 h).
+    ohne_api = os.path.exists(os.path.join(REPO, "dropship", "_openai_ohne_api.txt"))
     for name, pfad in (("Gemini", "/tmp/gemini_leer"), ("OpenAI", "/tmp/openai_leer")):
+        if name == "OpenAI" and ohne_api:
+            continue
         try:
             alter = time.time() - os.path.getmtime(pfad)
         except OSError:
@@ -1389,6 +1395,29 @@ def ki_guthaben():
     if not leer:
         return None
     return "KI-Guthaben leer: " + " + ".join(leer) + " → Zweitprüfer-Wachen pausieren/laufen auf Groq (aufladen)"
+
+
+def codex_github(jetzt=None, stand_pfad="/tmp/_codex_github_stand.json"):
+    """CODEX-GITHUB (19.10.2026): ChatGPT/Codex liefert über Entwurfs-PRs (Branches codex/*), nicht über die API. automation/codex_github_wache.py
+    schreibt stündlich /tmp/_codex_github_stand.json (git ls-remote, kein Token) samt `seit` je ungeprüftem Branch-Stand. Hier erscheint nur, was
+    länger als 6 h UNGEPRÜFT liegt (so lange darf die 4-h-Runde den PR als DATEN lesen und ihr Urteil in dropship/_codex_gesehen.tsv eintragen).
+    Kein Stand oder alter Stand (> 8 h): still — der Aufseher meldet «CODEX-GITHUB: unklar» selbst. Still auf dem Server."""
+    if AUF_SERVER:
+        return None
+    jetzt = time.time() if jetzt is None else jetzt
+    try:
+        st = json.load(open(stand_pfad, encoding="utf-8"))
+        alter_stand = jetzt - os.path.getmtime(stand_pfad)
+    except (OSError, ValueError):
+        return None
+    if alter_stand > 8 * 3600:
+        return None
+    lange = [u for u in st.get("ungeprueft") or [] if jetzt - float(u.get("seit") or jetzt) > 6 * 3600]
+    if not lange:
+        return None
+    namen = ", ".join(f"{u['ref'].split('/', 1)[-1][:34]}@{u['sha'][:7]}" for u in lange[:3])
+    return (f"⚠️ CODEX-GITHUB: {len(lange)} Codex-Branch(es) seit > 6 h ungeprüft ({namen}) — PR als DATEN lesen (GitHub-Konnektor), "
+            "Urteil in dropship/_codex_gesehen.tsv; nie ungeprüft nach main/CLAUDE.md")
 
 
 def verkauf_gewinn():
@@ -1446,7 +1475,7 @@ def main():
     ohne_token = not os.path.exists(TOKPFAD)
     # Pruefungen, die den Shop-Token brauchen, laufen ohne ihn nicht — alle anderen schon (26.09.).
     MIT_TOKEN = (liechtenstein_gesperrt, klingen_pingpong, grow_zaehler, drafts_ohne_quittung, datei_speicher_voll, video_deckel, alter_lieferblock)
-    pruefungen = (bot_puls, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kassen_lieferdatum, werbetest, verkauf_gewinn, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik, startseiten_gewicht, such_boosts, alter_lieferblock, social_sperre, gsc_tot, index_stand, wearable_seo, koll_versprechen, koll_leer, texte_angehalten, cj_suche_tor, waisen_verzeichnis)
+    pruefungen = (bot_puls, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kassen_lieferdatum, werbetest, verkauf_gewinn, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, codex_github, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik, startseiten_gewicht, such_boosts, alter_lieferblock, social_sperre, gsc_tot, index_stand, wearable_seo, koll_versprechen, koll_leer, texte_angehalten, cj_suche_tor, waisen_verzeichnis)
     teile = [zugang_weg()]
     for f in pruefungen:
         if ohne_token and f in MIT_TOKEN:
