@@ -1,6 +1,6 @@
 # SEO-Autopilot — Wirkung
 
-Stand 2026-10-18 20:22 UTC · Quelle ShopifyQL (human, 90 T)
+Stand 2026-10-19 07:01 UTC · Quelle ShopifyQL (human, 90 T)
 
 | Datum | Artikel | Phrase | Sitzungen | Warenkörbe | Urteil |
 |---|---|---|---|---|---|
@@ -18,3 +18,4 @@ Stand 2026-10-18 20:22 UTC · Quelle ShopifyQL (human, 90 T)
 | 2026-10-13 | [roecke-fuer-maenner-guide](https://luxestyle.ch/blogs/ratgeber/roecke-fuer-maenner-guide) | röcke für männer | 0 | 0 | zu jung (6 T) |
 | 2026-10-14 | [jumpsuits-damen-kaufen-guide](https://luxestyle.ch/blogs/ratgeber/jumpsuits-damen-kaufen-guide) | jumpsuits damen kaufen | 0 | 0 | zu jung (5 T) |
 | 2026-10-18 | [weihnachtsdeko-ideen-ratgeber-festliche-stimmung](https://luxestyle.ch/blogs/ratgeber/weihnachtsdeko-ideen-ratgeber-festliche-stimmung) | weihnachtsdeko ideen | 0 | 0 | zu jung (1 T) |
+| 2026-10-19 | [parfum-kaufen-herren-guide](https://luxestyle.ch/blogs/ratgeber/parfum-kaufen-herren-guide) | parfum kaufen herren | 0 | 0 | zu jung (0 T) |
