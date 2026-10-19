@@ -10415,3 +10415,7 @@ wasserdichter-hunde-bett-mit-waschbarem-kissen-615400	2509020344531615600	0	-	KE
 personalisiertes-hundespielzeug-613700	2504241214491614000	16	8.11	ok	landeseite
 doppellagige-falt-hundematte-608300	2509020335431608500	11	46.75	ok	landeseite
 plaid-pet-bed-620100	2508140654391620300	11	46.87	ok	landeseite
+gesichtsmaske-mit-kurkuma-und-kojisaure-617100	2607081119151617700	0	-	KEINE CH-Option → DRAFT	landeseite
+augen-patches-mit-mikroneedles-608000	2607080416101609500	3	5.92	ok	landeseite
+jutestil-katzenkratzbrett-mit-integriertem-kor-625600	2504140354081625900	16	19.49	ok	landeseite
+ganzkorper-sonnencreme-spf50-mit-lichtschutz-624700	2507171144041624900	3	5.99	ok	landeseite
