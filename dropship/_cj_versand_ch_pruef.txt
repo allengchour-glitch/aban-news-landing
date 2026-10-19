@@ -10127,3 +10127,5 @@ stickerei-kissenbezug-landhausstil-622500	2604170613061623000	16	7.13	ok	landese
 silikon-magnetarmband-624400	2508230211551624700	16	4.71	ok	landeseite
 haar-schutzuberzug-634900	2607051117121635500	16	9.07	ok	landeseite
 herrenportemonnaie-mit-kombinationsschloss-und-627000	2601020523221627200	16	9.07	ok	landeseite
+schlaf-nackenkissen-mit-moxibustion-626500	2604170502561627100	7	20.17	ok	landeseite
+magnetisches-armband-mesh-626800	2508220707271627000	7	5.52	ok	landeseite
