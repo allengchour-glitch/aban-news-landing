@@ -1609,8 +1609,12 @@ def _stops_setzen(spot, fut, buch, speichern, ents, daten, basis_g, erg, warn, g
         nochmal = d.pop("nachkontrolle", False)  # ein zu grosser Stop liess sich nicht korrigieren
         # auch die Schlusswarnung «OHNE Stop» unten ist ein Fall für die Nachkontrolle (Raster --haengend, Paare mit unlesbarer Spot-Liste: der Lauf warnte «OHNE Stop», die Nachkontrolle
         # wurde aber nicht angestossen — der Long blieb bis zum nächsten Tageslauf ungeschützt)
-        ohne_stop = bool(s is not None and s["ungesichert"] and not gesetzt and not schutz and not gescheitert
-                         and (s["stop_spot"] or s["stop_perp"] or s["short_teil"] * s["kurs"] >= 100))
+        ohne_stop_laut = bool(s is not None and s["ungesichert"] and not gesetzt and not schutz and not gescheitert
+                              and (s["stop_spot"] or s["stop_perp"] or s["short_teil"] * s["kurs"] >= 100))  # die Schlusswarnung unten (wie bisher)
+        # … aber nur ein Rest, den Binance überhaupt absichern kann, ist ein Fall für die Nachkontrolle: bei einem Paar mit einem Netto-Rest knapp über dem Staub ist der Stop am Stop-Kurs unter dem Mindestbetrag —
+        # ein Dauerzustand, den jede Nachkontrolle wieder fände (Schlusskampagne camp15d, E25: 7 Befunde «Nachkontrolle: nicht alles geklärt»). Dieselbe Rechnung wie die Absicherung selbst (_spot_abgleich: soll × min(Kurs, Stop-Kurs) ≥ Mindestbetrag)
+        ohne_stop = bool(ohne_stop_laut and (s["stop_spot"] * min(s["kurs"], _stop_preis(e.get("stop_long"), st.get("p_long"), s["kurs"], +1)) >= d["rs"]["min_notional"]
+                                             or s["stop_perp"] * s["kurs"] >= d["rf"]["min_notional"] or s["short_teil"] * s["kurs"] >= 100))
         # ebenso ein Abgleich, bei dem sich der Kontostand in JEDER Runde änderte (nie zwei gleiche Lesungen hintereinander): der letzte Stand blieb ungeprüft → die Nachkontrolle liest nochmals
         # (Schlusskampagne, Muster «unverifizierter Endstand» wie E21/E23). NICHT bei «Kontostand gleich, aber der Kurs liegt jenseits des Stop-Kurses und der Ausstieg gelang nicht»
         # (`jenseits_offen`): bei einer Position von praktisch null (Paar, Rundungsrest) ist das ein Dauerzustand, den jede Nachkontrolle wieder fände — der Lauf warnt, mehr nicht
@@ -1630,7 +1634,7 @@ def _stops_setzen(spot, fut, buch, speichern, ents, daten, basis_g, erg, warn, g
         erg["zeilen"].append(f"{k}: Spot {s['mein']:g} {d['coin']}, Perp {s['pos']:+g}, Richtung {richtung:+.2f} (Ziel {z:+.2f})"
                              + "".join(", " + g for g in dict.fromkeys(gesetzt + schutz))
                              + (" — beidseitig gesichert (unklarer Auftrag)" if s.get("beidseitig") and not gescheitert else ""))
-        if ohne_stop:
+        if ohne_stop_laut:
             warn(f"{k}: Richtung {richtung:+.2f} OHNE Stop (zu klein für Binance, abgelehnt oder nicht prüfbar) — bitte prüfen!")
         if basis_g and abs(richtung - z) > 0.25:
             erg["zeilen"].append(f"{k}: Richtung {richtung:+.2f} weicht vom Ziel {z:+.2f} ab — Stop auf die tatsächliche Richtung gesetzt,"

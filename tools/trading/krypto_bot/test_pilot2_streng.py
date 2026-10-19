@@ -3957,6 +3957,37 @@ pruefe("15.H zellen(nur_paare=True) liefert genau die 10 Paare (je 2 Zeitpunkte)
 pruefe("15.N Not-Aus-Störungen sind Teil des Rasters (Rückkauf/Marktverkauf mit verlorener Antwort oder teilweise, Löschen mit verlorener Antwort, Umbuchung); zellen() zählt sie nur mit notaus",
        len(R.SCHREIBEN_NOTAUS) == 7 and len(R.zellen(False, True)) == len(R.zellen(False)) + 7 and len(R.zellen(True, True)) == len(R.zellen(True)) + 7)
 
+
+# 15.E25 (Schlusskampagne camp15d, Lücken-Läufe 110000–110150, 7 Befunde «NACHKONTROLLE_OFFEN»): die Schlusswarnung «Richtung … OHNE Stop (zu klein für Binance …)» bei einem PAAR (Coins + fast gleich grosser Short,
+# Netto-Richtung wenige USDT) ist ein Dauerzustand — für so wenig nimmt Binance keinen Stop an. E23 vermerkte jeden solchen Markt für die Nachkontrolle, die ihn nie loswird (Alarm bei jeder Nachkontrolle, jeden Tag).
+# Nur ein Rest, den Binance noch absichern kann (Stop-Notional am Stop-Kurs ≥ Mindestbetrag), ist ein Fall für die Nachkontrolle.
+def paar_mit_rest_(netto_usdt):
+    k_ = neues_konto(20000)
+    d_ = neu_buch()
+    env_ = env_echt(kapital=20000)
+    lauf([E("ETH", 0.0), E("BTC", 0.0)], env_, d_)             # Ernte-Paar: Coins gegen gleich grossen Short
+    g_ = lage(k_, "ETHUSDT")
+    k_.frei["ETH"] += (netto_usdt / B.kurs["ETHUSDT"]) - (g_["coins"] + g_["pos"])   # Netto-Rest genau netto_usdt
+    r_ = lauf([E("ETH", 0.0), E("BTC", 0.0)], env_, d_)
+    return k_, r_, json.loads(Path(d_).read_text()).get("echt") or {}, lage(k_, "ETHUSDT")
+
+
+k, r, buch_, g_ = paar_mit_rest_(5.3)
+zeilen_ = [z_[:130] for z_ in r["zeilen"] if "⚠" in z_]
+pruefe("15.E25 Paar mit einem Netto-Rest von 5,3 USDT (über dem Staub, am Stop-Kurs unter dem Mindestbetrag): der Lauf warnt «OHNE Stop (zu klein …)», vermerkt den Markt aber NICHT für die Nachkontrolle",
+       g_["n_s"] == 0 and any("OHNE Stop" in z_ and "zu klein" in z_ for z_ in zeilen_) and "ETH" not in (buch_.get("schutz_offen") or []),
+       (g_["n_s"], buch_.get("schutz_offen"), zeilen_, round((g_["coins"] + g_["pos"]) * B.kurs["ETHUSDT"], 2)))
+k, r, buch_, g_ = paar_mit_rest_(9.0)
+pruefe("15.E25 Gegenprobe: ein Netto-Rest von 9 USDT lässt sich absichern — er bekommt seinen Stop, nichts offen", g_["s_qty"] > 0 and "ETH" not in (buch_.get("schutz_offen") or []),
+       (g_, buch_.get("schutz_offen"), [z_[:130] for z_ in r["zeilen"] if "⚠" in z_]))
+for seed_ in (110031, 110076, 110100, 110115, 110125, 110126):
+    P.LUECKEN = True
+    try:
+        funde_ = P.echte(P.laeufe_runde(seed_, 30))
+    finally:
+        P.LUECKEN = False
+    pruefe(f"15.E25 Lücken-Lauf-Seed {seed_}: keine Befunde (auch kein NACHKONTROLLE_OFFEN)", not funde_, [(f_[0], f_[1].get("tag")) for f_ in funde_][:4])
+
 pruefe("15.H Raster --haengend: die zusätzlichen Störungen (Löschen/Ersetzen/Marktverkauf mit verlorener Antwort bzw. abgelehnt) sind Teil des Rasters",
        len(R.SCHREIBEN_HAENGEND) == 4 and {(w_[1], w_[3]) for w_ in R.SCHREIBEN_HAENGEND} == {("/api/v3/order", "nach503"), ("/api/v3/order/cancelReplace", "nach503"), ("/api/v3/order", "ablehnen")}, R.SCHREIBEN_HAENGEND)
 
