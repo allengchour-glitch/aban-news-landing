@@ -9988,3 +9988,5 @@ trainings-fitness-schuhe-622200	2406241110301622400	16	17.66	ok	landeseite
 schleckmatte-fur-hunde-und-katzen-silikon-602100	2606170908561602800	16	22.64	ok	landeseite
 yoga-tasche-mit-matte-halter-628400	2603080539041628800	16	7.85	ok	landeseite
 retro-arbeitshosen-mit-mehreren-taschen-617300	2604220247321617800	16	13.65	ok	landeseite
+grosser-ultraschall-luftbefeuchter-628224	1615551277423931393	7	20.17	ok	landeseite
+black-tech-power-mechanik-marathon-laufschuhe-620900	2406240541381621100	16	25.83	ok	landeseite
