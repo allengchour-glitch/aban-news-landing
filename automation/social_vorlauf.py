@@ -24,7 +24,7 @@ Sicherheitsregeln: Stopp-Datei dropship/_SOCIAL_STOPP → nichts planen, zukünf
 (ChatGPT, Autopilot) werden NIE angefasst, nur als Abstands-Hindernis gezählt. Nie ein Post ohne Planer-Quittung als «geplant» führen.
 Zeitumstellung: Zürich 25.10.2026 03:00 → 02:00 — Slots in der doppelten Stunde fallen weg (`mehrdeutig()`).
 """
-import copy, fcntl, json, os, re, shutil, subprocess, sys, tempfile, time, urllib.error, urllib.parse, urllib.request
+import copy, csv, fcntl, json, os, re, shutil, subprocess, sys, tempfile, time, urllib.error, urllib.parse, urllib.request
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
@@ -353,6 +353,38 @@ def neue_eintraege(vorher_ids, nachher, slot, regeln, seit_utc):
     return gefunden
 
 
+def queue_handles(fmt, mc_ids):
+    """Bild-Slots: das Produkt steht weder im Instagram-Text noch (ausser beim Threads-Zwilling) als Link im Eintrag. Die Queue-Zeile, die der Poster
+    abgehakt hat (post_url «metricool:<IG-Id> …»), trägt es in der Zeilen-ID: «…-<Shopify-ID>» → «pid:<n>», «img-<handle>» → Handle, sonst die ID selbst
+    (unbekannte Handles bleiben ohne Urteil). Rohschlüssel — aufgelöst wird beim Prüfen (handles_aufloesen)."""
+    if fmt != "bild" or not mc_ids:
+        return []
+    try:
+        ziel = {f"metricool:{i}" for i in mc_ids}
+        aus = set()
+        with open(os.path.join(REPO, "social", "posts_image.csv"), encoding="utf-8", newline="") as f:
+            for r in csv.DictReader(f):
+                pu = (r.get("post_url") or "").split()
+                if pu and pu[0] in ziel:
+                    zid = (r.get("id") or "").strip().lower()
+                    m = re.search(r"(\d{12,})$", zid)
+                    aus.add("pid:" + m.group(1) if m else re.sub(r"^img-", "", zid))
+        return sorted(a for a in aus if a)
+    except Exception:
+        return []
+
+
+def handles_nachtragen(plan):
+    """Bild-Slots, die ohne Produktschlüssel geplant wurden (vor dieser Funktion), einmalig nachtragen."""
+    n = 0
+    for s in plan["slots"].values():
+        if s["status"] == "geplant" and s["format"] == "bild" and not s.get("handles") and s.get("mc_ids"):
+            h = queue_handles("bild", s["mc_ids"])
+            if h:
+                s["handles"] = h; n += 1
+    return n
+
+
 def kind_planer_stand(p):
     return {"id": p.get("id"), "uuid": p.get("uuid"), "netze": W.netze(p)}
 
@@ -489,6 +521,7 @@ def plan_lauf(max_min=35, nur=None, max_slots=10**9):
         print(f"⛔ {e} → nichts geplant (ein leerer Plan würde Doppelposts erzeugen). Manuell: git checkout <rev> -- dropship/_vorlauf_plan.json")
         return 1
     abgleichen(plan, planer, jetzt())
+    handles_nachtragen(plan)
     neu, belegt = slots_erzeugen(regeln, jetzt(), planer, plan, nur)
     for name, s in neu:
         plan["slots"][name] = s
@@ -573,7 +606,7 @@ def plan_lauf(max_min=35, nur=None, max_slots=10**9):
             if rc == 0 and neue:
                 s["status"] = "geplant"; s["mc_ids"] = [p["id"] for p in neue]; s["grund"] = ""
                 s["handle"] = next((W.handle(p) for p in neue if W.handle(p)), "")
-                s["handles"] = sorted(set(produkt_neu(produkte_vorher)) | ({s["handle"]} if s["handle"] else set()))   # Bild/Karussell/Story: kein Produktlink im Text
+                s["handles"] = sorted(set(produkt_neu(produkte_vorher)) | ({s["handle"]} if s["handle"] else set()) | set(queue_handles(fmt, s["mc_ids"])))   # Bild/Karussell/Story: kein Produktlink im Text
                 gefuellt += 1
                 tag_zaehler[tag] = tag_zaehler.get(tag, 0) + len(neue)
                 planer = nachher
@@ -836,6 +869,7 @@ def pruefen(notbremse=False):
         print(f"⛔ Planer nicht lesbar ({str(e)[:100]}) → nichts geprüft/gelöscht" + (" (HALT steht)" if notbremse and SCHARF else ""))
         return 1
     abgleichen(plan, planer, jetzt())
+    handles_nachtragen(plan)
     if stopp or notbremse:
         ziel = {n: ["Notbremse: _SOCIAL_STOPP" if stopp else "Notbremse (Aufruf)"] for n, s in plan["slots"].items()
                 if s["status"] == "geplant" and von_iso(s["termin_utc"]) > jetzt() + timedelta(minutes=5)}
@@ -1066,6 +1100,19 @@ def selbsttest():
     b4 = befunde_fuer(plan4, [{"id": 1, "text": "luxestyle.ch/products/slug-x", "providers": [{"network": "instagram"}], "autoPublish": True}], datetime(2098, 12, 31, tzinfo=UTC))
     storefront = alt_sf
     ok("pruefer_shop_blind" in plan4 and not b4, f"Shop-Ausfall nicht sichtbar oder Fehlalarm: {plan4.get('pruefer_shop_blind')} {b4}")
+    # 18. Bild-Slot ohne Link im Text: Produktschlüssel aus der abgehakten Queue-Zeile (post_url «metricool:<Id> …»)
+    d2 = tempfile.mkdtemp(); os.makedirs(os.path.join(d2, "social"))
+    with open(os.path.join(d2, "social", "posts_image.csv"), "w", encoding="utf-8") as f:
+        f.write("id,scheduled_date,image_url,caption,platforms,status,posted_at,post_url\n"
+                "kimi-ein-titel-15412945289601,2026-08-01,u,c,instagram,posted,t,metricool:111 instagram:https://x\n"
+                "img-mein-handle-abc,2026-08-01,u,c,instagram,posted,t,metricool:222\n")
+    alt_repo2 = REPO; globals()["REPO"] = d2
+    try:
+        ok(queue_handles("bild", [111]) == ["pid:15412945289601"], f"queue_handles pid: {queue_handles('bild', [111])}")
+        ok(queue_handles("bild", [222]) == ["mein-handle-abc"], f"queue_handles img-: {queue_handles('bild', [222])}")
+        ok(queue_handles("bild", [999]) == [] and queue_handles("tiktok", [111]) == [], "queue_handles: unbekannt/anderes Format muss leer sein")
+    finally:
+        globals()["REPO"] = alt_repo2
     print("OK Selbsttest" if not fehler else "FEHLER:\n  " + "\n  ".join(fehler))
     return 1 if fehler else 0
 
