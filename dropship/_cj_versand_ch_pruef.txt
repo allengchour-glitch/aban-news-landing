@@ -10141,3 +10141,8 @@ premium-leder-portemonnaie-fur-herren-629500	2512250230211629700	16	6.33	ok	land
 warmeweste-mit-leinsamenfullung-620500	2604150641421621000	16	23.15	ok	landeseite
 gemuse-schleuder-schneider-629200	2605280556241620300	16	21.21	ok	landeseite
 smart-sportuhr-mit-multi-funktionen-606200	2507281003191606400	7	6.98	ok	landeseite
+herren-portemonnaie-mit-vielen-kartenfachern-612300	2512221031511612500	16	6.27	ok	landeseite
+memory-foam-kissen-609700	2609290228411608900	16	25.49	ok	landeseite
+fahrradtasche-fur-mountainbikes-626000	2508050729281626200	16	9.33	ok	landeseite
+keramik-olspender-mit-deckel-im-retro-stil-629600	2605210834571620100	16	11.37	ok	landeseite
+elektronische-sportuhr-fur-herren-603800	2507270227301604000	7	6.81	ok	landeseite
