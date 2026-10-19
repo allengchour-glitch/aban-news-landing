@@ -38,7 +38,7 @@ MAX = int(os.environ.get("MAX") or 0)
 
 # Nur eindeutige Grössen-Anhänge. «S», «M», «L», «XL» stehen bewusst NICHT drin: ein
 # Farbwert wie «Navy-M» wäre nicht von einem Farbnamen zu unterscheiden, der auf -M endet.
-ANHANG = re.compile(r'^(.+?)-(\d{1,2}XL|XXS|XXL|XXXL|XS|\d{2}\s?W|US\s?\d{1,2}W?)$', re.I)
+ANHANG = re.compile(r'^(.+?)-(\d{1,2}XL|XXS|XXL|XXXL|XS|\d{2}\s?W|US\s?\d{1,2}(?:\.5)?W?)$', re.I)   # 19.10.2026: + Halbgrössen «US 7.5» (Casual Boots/Sneakers blieben halb umgehängt: «Braun-US 7.5 / US10» = Füllwert)
 # 06.10.2026: + US-Plus-Grössen «-16 W»/«-18W» (CJ-Abendkleider: «Grün-16 W», «154Chiffon-18W» neben Grösse US 2–16).
 # Nur ZWEI Ziffern + W — «-W» allein oder «-2W» bleibt unberührt (könnte Farbcode sein). «-10 W» kann auch WATT sein
 # (Ladegerät «Weiss-10 W», Lockenstab): geschützt, weil plan() eine erkannte Grössen-Option verlangt (Kanarienvögel 06.10.).
@@ -161,6 +161,12 @@ def main():
         erledigt = {z.split("\t")[0] for z in open(LEDGER)
                     if not z.split("\t")[1:2] or not z.split("\t")[1].startswith("uebersprungen")}
     offen = [i for i in liste if i not in erledigt]
+    # 19.10.2026 (Spähtrupp aufseher AUF-1): Werbetest A (bis 24.10.) — gesperrte Produkte weder umhängen noch sonst schreiben
+    try:
+        from werbetest_sperre import gesperrt
+        offen = [i for i in offen if not gesperrt("gid://shopify/Product/" + i)]
+    except Exception:  # noqa: BLE001 — Sperre unlesbar → im Zweifel NICHT schreiben
+        print("PAUSE (Werbetest-Sperre nicht lesbar)"); return
     if MAX:
         offen = offen[:MAX]
     print(f"{len(liste)} Kandidaten · {len(offen)} offen"

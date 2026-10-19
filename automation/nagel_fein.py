@@ -192,7 +192,7 @@ def main():
         erledigt = set()
     ids = list(kand); plan = []; st = collections.Counter(); bsp = collections.defaultdict(list)
     for i in range(0, len(ids), 40):
-        r = gql("query($i:[ID!]!){nodes(ids:$i){... on Product{id title description options{name values} seo{title}}}}", {"i": ids[i:i + 40]})
+        r = gql("query($i:[ID!]!){nodes(ids:$i){... on Product{id title description options{name values} seo{title description}}}}", {"i": ids[i:i + 40]})
         for n in r["nodes"]:
             if not n:
                 continue
@@ -207,7 +207,7 @@ def main():
                     else:
                         seo = (n.get("seo") or {}).get("title") or ""
                         seo_neu = tn + seo[len(n["title"]):] if seo.startswith(n["title"]) else None
-                        titel_plan.append((n["id"], n["title"], tn, seo_neu)); titel_alle[_norm(tn)] += 1
+                        titel_plan.append((n["id"], n["title"], tn, seo_neu, (n.get("seo") or {}).get("description") or "")); titel_alle[_norm(tn)] += 1
                         if len(bsp["titel"]) < int(os.environ.get("ZEIGEN", "8")):
                             bsp["titel"].append(f"{n['title'][:45]} → {tn[:60]}")
             if cid == FALSE_NAILS[1]:
@@ -238,10 +238,12 @@ def main():
     tok = tfe = 0
     if SCHARF and titel_plan:
         with open(TITEL_LEDGER, "a", encoding="utf-8") as f:
-            for pid, alt, tn, seo_neu in titel_plan:
+            for pid, alt, tn, seo_neu, seo_beschr in titel_plan:
                 inp = {"id": pid, "title": tn}
                 if seo_neu:
-                    inp["seo"] = {"title": seo_neu}
+                    # 19.10.2026: ein seo-Objekt ersetzt BEIDE Felder — «seo:{title}» allein löschte die Beschreibung (gemessen: Titel-Schreiben auf einem Testprodukt,
+                    # sofort zurückgesetzt; 79 aktive Produkte hatten Titel ohne Beschreibung, Häufung 08./09./13.10.). Immer title + description zusammen.
+                    inp["seo"] = {"title": seo_neu, "description": seo_beschr}
                 r = gql("mutation($p:ProductUpdateInput!){productUpdate(product:$p){product{title seo{title}} userErrors{message}}}", {"p": inp})
                 pu = r["productUpdate"]; gut = (pu.get("product") or {}).get("title") == tn and not pu["userErrors"]
                 tok += gut; tfe += not gut

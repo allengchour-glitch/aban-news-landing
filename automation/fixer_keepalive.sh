@@ -64,7 +64,10 @@ absturz_nachholen() {
   if [ ! -s "$log" ]; then
     [ "$(stat -c %Y "$log")" -lt "$(( $(date +%s) - $(cut -d. -f1 /proc/uptime) ))" ] || return 1
   else
-    tail -n 3 "$log" | grep -qE "Traceback|Error|Exception" || return 1
+    # 19.10.2026 (Spähtrupp aufseher AUF-5): auch eine PAUSE als LETZTE Zeile ist ein Abbruch (ek_luecke_cj «PAUSE: kost28.jsonl fehlt», kollektionstexte_wahrheit
+    # «PAUSE (Kollektionen nicht ladbar)»: 13 h «erledigter Tag», obwohl die Eingabe längst da war). Nur die letzte Zeile — ein FERTIG danach hebt sie auf.
+    tail -n 3 "$log" | grep -qE "Traceback|Error|Exception" \
+      || tail -n 1 "$log" | grep -qE "^([0-9:]{8} |[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]{8,12}Z )?PAUSE" || return 1
   fi
   z="/tmp/_nachgeholt_$(basename "$log" .log)_$(date -u +%Y%m%d)"
   n=$(cat "$z" 2>/dev/null); case "$n" in (''|*[!0-9]*) n=0 ;; esac
@@ -218,6 +221,12 @@ source "$REPO/automation/lib/tageslauf.sh"
 exec 9>/tmp/fixer_keepalive.lock
 flock -n 9 || { echo "$(date -u +%H:%M) Supervisor läuft bereits — dieser Start endet."; exit 0; }
 while true; do
+  # 19.10.2026 (Spähtrupp aufseher AUF-2): die Frühstarter-Blöcke (Farbcode, Familienset, Marke-als-Ware, Kassen-Datum, Kollektion-Mitgliedschaft …) laufen
+  # VOR der Token-Erneuerung weiter unten und starben nach einem langen Ausfall mit «HTTP 401» (farbcode_modell, kassen_lieferdatum, kollektion_mitgliedschaft
+  # 16 h alt, 18.10. 20:03) — und wegen des reinen Alters-Tors (20 h) ohne Nachholen. Erneuern ist billig und prüft selbst gegen Shopify (`{shop{id}}`):
+  # darum ZUERST, jede Runde; die Gates der neun Blöcke fragen zusätzlich absturz_nachholen (Traceback/Error in den letzten Zeilen, ≥ 1 h, ≤ 3×/Tag).
+  if [ -f "$REPO/automation/shop_token_refresh.sh" ]; then bash "$REPO/automation/shop_token_refresh.sh" > /dev/null 2>&1
+  elif [ -f /tmp/shop_token_refresh.sh ]; then bash /tmp/shop_token_refresh.sh > /dev/null 2>&1; fi
   # 06.10.2026: FORTURA-BESTAND ZUERST. Gemessen: Claim 16:37, PAUSE 16:42 (Shopify antwortete nicht), danach 3,5 h kein
   # zweiter Versuch — der Aufseher loggte je Container-Stunde nur ~5 min (18:09–18:13, 19:08–19:12) und erreichte den Block
   # bei Zeile ~2260 nie vor dem nächsten Neustart. Bestand ist Kundenschutz; der Block selbst ist billig (Start im Hintergrund).
@@ -286,7 +295,7 @@ while true; do
   # («6–9 Monate»); liest den täglichen Optionen-Export von farbmuster_filter.py, nur eindeutige Fälle, Ledger.
   AF=/tmp/alter_im_farbwert.log
   if [ -f "$REPO/automation/alter_im_farbwert.py" ] && [ -s /tmp/farbmuster_export.jsonl ] \
-     && [ $(( $(date +%s) - $(stat -c %Y "$AF" 2>/dev/null || echo 0) )) -gt 72000 ] \
+     && { [ $(( $(date +%s) - $(stat -c %Y "$AF" 2>/dev/null || echo 0) )) -gt 72000 ] || absturz_nachholen "$AF"; } \
      && ( cd "$REPO" && timeout 30 python3 automation/alter_im_farbwert.py --selbsttest > /dev/null 2>&1 ); then
     touch "$AF"
     ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_alter_im_farbwert.lock; flock -n 9 || exit 0; \
@@ -297,7 +306,7 @@ while true; do
   # = Kanarien + py=js über alle Optionswerte (Importer filtern selbst: farbcode_modell.mjs). Regel data/farbcode_modell_regel.json.
   FC=/tmp/farbcode_modell.log
   if [ -f "$REPO/automation/farbcode_modell.py" ] && [ -s /tmp/farbmuster_export.jsonl ] \
-     && [ $(( $(date +%s) - $(stat -c %Y "$FC" 2>/dev/null || echo 0) )) -gt 72000 ] \
+     && { [ $(( $(date +%s) - $(stat -c %Y "$FC" 2>/dev/null || echo 0) )) -gt 72000 ] || absturz_nachholen "$FC"; } \
      && ( cd "$REPO" && timeout 300 python3 automation/farbcode_modell.py --selbsttest > /dev/null 2>&1 ); then
     touch "$FC"
     ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_farbcode_modell.lock; flock -n 9 || exit 0; \
@@ -308,7 +317,7 @@ while true; do
   # vorn. 396 aktive gemessen. Selbsttest = Kanarien + py=js; Importer filtern selbst (farbcode_praefix.mjs).
   FP=/tmp/farbcode_praefix.log
   if [ -f "$REPO/automation/farbcode_praefix.py" ] && [ -s /tmp/farbmuster_export.jsonl ] \
-     && [ $(( $(date +%s) - $(stat -c %Y "$FP" 2>/dev/null || echo 0) )) -gt 72000 ] \
+     && { [ $(( $(date +%s) - $(stat -c %Y "$FP" 2>/dev/null || echo 0) )) -gt 72000 ] || absturz_nachholen "$FP"; } \
      && ( cd "$REPO" && timeout 300 python3 automation/farbcode_praefix.py --selbsttest > /dev/null 2>&1 ); then
     touch "$FP"
     ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_farbcode_praefix.lock; flock -n 9 || exit 0; \
@@ -319,7 +328,7 @@ while true; do
   # Pos. 26, Saison bis Dezember. Selbsttest = Übersetzer (tools/varianten_deutsch.mjs) + Kanarien.
   FS=/tmp/familienset_auswahl.log
   if [ -f "$REPO/automation/familienset_auswahl.py" ] && [ -s /tmp/farbmuster_export.jsonl ] \
-     && [ $(( $(date +%s) - $(stat -c %Y "$FS" 2>/dev/null || echo 0) )) -gt 72000 ] \
+     && { [ $(( $(date +%s) - $(stat -c %Y "$FS" 2>/dev/null || echo 0) )) -gt 72000 ] || absturz_nachholen "$FS"; } \
      && ( cd "$REPO" && timeout 120 python3 automation/familienset_auswahl.py --selbsttest > /dev/null 2>&1 ); then
     touch "$FS"
     ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_familienset_auswahl.lock; flock -n 9 || exit 0; \
@@ -331,7 +340,7 @@ while true; do
   # dropship/MARKE-ALS-WARE.md zum Sichten. Importer sperren selbst (marke_als_ware.mjs). Selbsttest = Kanarien py + js.
   MW=/tmp/marke_als_ware.log
   if [ -f "$REPO/automation/marke_als_ware.py" ] \
-     && [ $(( $(date +%s) - $(stat -c %Y "$MW" 2>/dev/null || echo 0) )) -gt 72000 ] \
+     && { [ $(( $(date +%s) - $(stat -c %Y "$MW" 2>/dev/null || echo 0) )) -gt 72000 ] || absturz_nachholen "$MW"; } \
      && ( cd "$REPO" && timeout 60 python3 automation/marke_als_ware.py --kanarien > /dev/null 2>&1 \
           && timeout 60 /opt/node22/bin/node automation/marke_als_ware.mjs --test > /dev/null 2>&1 ); then
     touch "$MW"
@@ -342,7 +351,7 @@ while true; do
   # P1D, CJ versendet nach Median 2 / bis 5 Werktagen. Nur lesen; Stand → dropship/_kassen_lieferdatum.json → Ampel «KASSEN-DATUM».
   KL=/tmp/kassen_lieferdatum.log
   if [ -f "$REPO/automation/kassen_lieferdatum_wache.py" ] \
-     && [ $(( $(date +%s) - $(stat -c %Y "$KL" 2>/dev/null || echo 0) )) -gt 72000 ]; then
+     && { [ $(( $(date +%s) - $(stat -c %Y "$KL" 2>/dev/null || echo 0) )) -gt 72000 ] || absturz_nachholen "$KL"; }; then
     touch "$KL"
     ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_kassen_lieferdatum.lock; flock -n 9 || exit 0; \
         timeout 300 python3 automation/kassen_lieferdatum_wache.py" >> "$KL" 2>&1 9>&- & )
@@ -352,7 +361,7 @@ while true; do
   # eigene Regel → dropship/KOLLEKTION-MITGLIEDSCHAFT.md; Reparatur von Hand mit kollektion_neu_anlegen.py (neue Kollektions-ID).
   KM=/tmp/kollektion_mitgliedschaft.log
   if [ -f "$REPO/automation/kollektion_mitgliedschaft_wache.py" ] \
-     && [ $(( $(date +%s) - $(stat -c %Y "$KM" 2>/dev/null || echo 0) )) -gt 72000 ]; then
+     && { [ $(( $(date +%s) - $(stat -c %Y "$KM" 2>/dev/null || echo 0) )) -gt 72000 ] || absturz_nachholen "$KM"; }; then
     touch "$KM"
     ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_kollektion_mitgliedschaft.lock; flock -n 9 || exit 0; \
         timeout 1500 python3 automation/kollektion_mitgliedschaft_wache.py" >> "$KM" 2>&1 9>&- & )
@@ -362,7 +371,7 @@ while true; do
   # Importer legen seit 09.10. selbst «Title / Default Title» an; dieser Lauf fängt Nachzügler. Liest denselben Optionen-Export.
   PH=/tmp/platzhalter_option.log
   if [ -f "$REPO/automation/platzhalter_option.py" ] && [ -s /tmp/farbmuster_export.jsonl ] \
-     && [ $(( $(date +%s) - $(stat -c %Y "$PH" 2>/dev/null || echo 0) )) -gt 72000 ]; then
+     && { [ $(( $(date +%s) - $(stat -c %Y "$PH" 2>/dev/null || echo 0) )) -gt 72000 ] || absturz_nachholen "$PH"; }; then
     touch "$PH"
     ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_platzhalter_option.lock; flock -n 9 || exit 0; \
         SCHARF=1 lauf_mit_logstempel $PH 3000 bash automation/shopify_schranke.sh python3 automation/platzhalter_option.py" >> "$PH" 2>&1 9>&- & )
@@ -373,7 +382,7 @@ while true; do
   # → 1'089 fehlten in der Menü-Kollektion «Schmuck & Uhren» (Typ-Regel). Typ aus Shopify-Kategorie aa-6 + Titelwort, Sperre wie
   # produkttyp_vereinheitlichen; Selbsttest = Kanarien + py=js. Importer korrigiert selbst (gruppenstempel_typ.mjs).
   GS=/tmp/gruppenstempel_typ.log
-  if [ -f "$REPO/automation/gruppenstempel_typ.py" ] && [ $(( $(date +%s) - $(stat -c %Y "$GS" 2>/dev/null || echo 0) )) -gt 72000 ] \
+  if [ -f "$REPO/automation/gruppenstempel_typ.py" ] && { [ $(( $(date +%s) - $(stat -c %Y "$GS" 2>/dev/null || echo 0) )) -gt 72000 ] || absturz_nachholen "$GS"; } \
      && ( cd "$REPO" && timeout 600 python3 automation/gruppenstempel_typ.py --selbsttest > /dev/null 2>&1 ); then
     touch "$GS"
     ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_gruppenstempel_typ.lock; flock -n 9 || exit 0; \
@@ -384,7 +393,7 @@ while true; do
   # teilt sich der Bestell-Bildvergleich). Optionen-Export wie alter_im_farbwert; Selbsttest beider Bausteine als Tor.
   VK=/tmp/variantenwert_ki.log
   if [ -f "$REPO/automation/variantenwert_ki.py" ] && [ -s /tmp/farbmuster_export.jsonl ] \
-     && [ $(( $(date +%s) - $(stat -c %Y "$VK" 2>/dev/null || echo 0) )) -gt 72000 ] \
+     && { [ $(( $(date +%s) - $(stat -c %Y "$VK" 2>/dev/null || echo 0) )) -gt 72000 ] || absturz_nachholen "$VK"; } \
      && ( cd "$REPO" && timeout 300 python3 automation/variantenwert_ki.py --selbsttest > /dev/null 2>&1 ); then
     touch "$VK"
     ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_variantenwert_ki.lock; flock -n 9 || exit 0; \
@@ -393,7 +402,7 @@ while true; do
   # KLEIDER-MERKMALE (06.10.2026, Betreiber «Länge + Ärmel aus Titel»): shopify.skirt-dress-length-type / sleeve-length-type
   # aus eindeutigen Titelwörtern, nur erlaubte Kategorien, nie überschreiben. Täglich (neue Feinkategorien → neue Kandidaten).
   KM=/tmp/kleider_merkmale.log
-  if [ -f "$REPO/automation/kleider_merkmale.py" ] && [ $(( $(date +%s) - $(stat -c %Y "$KM" 2>/dev/null || echo 0) )) -gt 72000 ] \
+  if [ -f "$REPO/automation/kleider_merkmale.py" ] && { [ $(( $(date +%s) - $(stat -c %Y "$KM" 2>/dev/null || echo 0) )) -gt 72000 ] || absturz_nachholen "$KM"; } \
      && ( cd "$REPO" && timeout 30 python3 automation/kleider_merkmale.py --selbsttest > /dev/null 2>&1 ); then
     touch "$KM"
     ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_kleider_merkmale.lock; flock -n 9 || exit 0; \
@@ -791,7 +800,9 @@ while true; do
     fi
     # groesse_im_farbwert liest seine Kandidaten aus einem Bulk-Export. Ohne die Datei
     # meldet es PAUSE statt ins Leere zu laufen — hier gar nicht erst starten.
-    [ "$L" = groesse_im_farbwert ] && [ ! -f /tmp/groesse_im_farbwert.json ] && continue
+    # 19.10.2026 (Spähtrupp aufseher AUF-1): das Gate verlangte NUR die von Hand gebaute Kandidatendatei — seit 04.09. liest das Skript ersatzweise den Optionen-Export
+    # (/tmp/opts_frisch.jsonl, vom Aufseher gebaut); der Wächter startete deshalb nie (0× «restart groesse_im_farbwert»), 20 Produkte / 556 Varianten blieben liegen.
+    [ "$L" = groesse_im_farbwert ] && [ ! -f /tmp/groesse_im_farbwert.json ] && [ ! -s /tmp/opts_frisch.jsonl ] && continue
     # farbwert_dubletten braucht einen Options-Export; ohne ihn meldet es PAUSE.
     if [ "$L" = farbwert_dubletten ] || [ "$L" = mass_im_farbwert ]; then
       [ -f /tmp/opts_frisch.jsonl ] || continue
@@ -2629,6 +2640,23 @@ KLT=/tmp/test_klingen_tor.log
           "exec 9>/tmp/lock_such_boost.lock; flock -n 9 || exit 0; exec >> \"$SBW\" 2>&1; \
            echo \"START \$(date -u +%FT%TZ) (Aufseher)\"; python3 -u automation/such_boost.py --selbsttest > /dev/null \
            && SCHARF=1 timeout 1500 python3 -u automation/such_boost.py && sleep 3600 && timeout 900 python3 -u automation/such_boost.py --messen; \
+           echo \"FERTIG \$(date -u +%FT%TZ)\"" 9>&- & )
+    fi
+  fi
+  # 19.10.2026 (Spähtrupp suche SUCHE-1/2): 5 von 14 am 19.10. 00:22 neu gesetzten Boosts kamen nie im Such-Index an (Ampel «SUCHSEITE: 3 Begriffe unter 6/8»),
+  # nichts heilte das — die Tagesmessung (--messen) las nur. `--heilen` findet Soll-Ware ausserhalb der ersten 16 Treffer und stösst sie EINMAL an (Tag
+  # entfernen + setzen NACH dem Metafeld; ≤ 1× je 20 h, ≤ 3 Versuche je Produkt, Werbetest-Sperre, Ledger dropship/_such_boosts_heilung.tsv). Alle 6 h, nie im
+  # Fenster des Tageslaufs (dessen Log < 70 min alt), eigener flock.
+  SBH=/tmp/such_boost_heilen.log
+  if [ -f "$REPO/automation/such_boost.py" ] && grep -q "def heilen" "$REPO/automation/such_boost.py"; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$SBH" 2>/dev/null || echo 0) ))
+    ALTER_TAG=$(( $(date +%s) - $(stat -c %Y "$SBW" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 21600 ] && [ "$ALTER_TAG" -gt 4200 ]; then
+      touch "$SBH"
+      ( cd "$REPO" && setsid bash -c \
+          "exec 9>/tmp/lock_such_boost_heilen.lock; flock -n 9 || exit 0; exec >> \"$SBH\" 2>&1; \
+           echo \"START \$(date -u +%FT%TZ) (Aufseher)\"; python3 -u automation/such_boost.py --selbsttest > /dev/null \
+           && SCHARF=1 timeout 1200 python3 -u automation/such_boost.py --heilen; \
            echo \"FERTIG \$(date -u +%FT%TZ)\"" 9>&- & )
     fi
   fi

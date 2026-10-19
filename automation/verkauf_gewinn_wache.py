@@ -135,6 +135,9 @@ def main():
         json.dump({"stand": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="minutes"),
                    "verkaufte_varianten": len(varianten), "zu_heben": len(plan), "geaendert": geaendert,
                    "ohne_ek": ohne_ek[:20], "ohne_ek_anzahl": len(ohne_ek), "dry": DRY}, f, ensure_ascii=False, indent=1)
+    # 19.10.2026 (Spähtrupp aufseher AUF-4): ohne FERTIG-Zeile hielt der Aufseher den Lauf für nie beendet und startete ihn alle ~2,5 min neu
+    # (214× in 16 h, 209 Starts/24 h); dreht_sich_im_kreis misst die Laufdauer erst eine Runde später und griff nie. FERTIG → Tagestakt.
+    print(f"FERTIG {datetime.datetime.now(datetime.timezone.utc):%Y-%m-%dT%H:%M:%SZ}: {len(varianten)} verkaufte Varianten geprüft, {geaendert} angehoben{' (DRY)' if DRY else ''}", flush=True)
     return 0
 
 

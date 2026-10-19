@@ -10430,3 +10430,8 @@ t6-taschenlampe-set-201024	1519556111098195968	7	6.75	ok	landeseite
 farbblock-rock-mit-elasthaltung-612800	2607020226131613700	16	8.93	ok	landeseite
 multifunktionales-reparaturlicht-393280	1511254872589611008	6	6.58	ok	landeseite
 herren-gurtel-portemonnaie-kombi-603800	2512020645471604000	16	10.15	ok	landeseite
+leuchte-led-tragbar-543488	1500834298977595392	7	8.74	ok	landeseite
+reflektierende-led-weste-mit-usb-ladegerat-004096	1498147375355662336	7	9.21	ok	landeseite
+augenpflege-gerat-mit-radiofrequenz-991168	1384683898029608960	7	6.34	ok	landeseite
+warnlicht-furs-mountainbike-549952	1474938910080634880	7	7.92	ok	landeseite
+elektroburste-mit-wei-heitsfunktion-mehrere-po-220224	1384683097177591808	7	9.15	ok	landeseite
