@@ -2624,3 +2624,7 @@
 16644775936391	Ausführung:2:2+ki	2026-10-19	grosses-herren-rucksack-56-75-l-mit-usb-schnit-629200
 16644775608711	Farbe:2:2+ki	2026-10-19	business-reiserucksack-fur-herren-einfarbig-607100
 16644774363527	Farbe:2:2	2026-10-19	retro-umhangetasche-fur-herren-aus-rindsleder-622400
+16644772954503	Farbe:2:2	2026-10-19	wasser-und-verschleissfester-taktischer-rucksa-628300
+16644772856199	Stil:2:2+ki	2026-10-19	wasserdichte-business-computer-umhangetasche-2-621500
+16644770529671	Farbe:2:2	2026-10-19	grosses-vakuum-rucksack-fur-business-reisen-603200
+16644770201991	Farbe:4:4+ki	2026-10-19	leichte-taktische-brusttasche-camouflage-616400
