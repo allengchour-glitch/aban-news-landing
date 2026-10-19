@@ -10208,3 +10208,5 @@ nach-training-fu-abdeckung-e3226d	0A7E16E5-10BD-4D9C-A030-F71D6492D95B	16	6.01	o
 kratzposten-fur-katzen-619800	2511260535201610200	11	43.37	ok	landeseite
 herren-sportsschuhe-3b333c	69A784DA-1576-4792-856D-0FD695F6ED03	16	12.56	ok	landeseite
 anti-haft-backform-fur-outdoor-616600	2603090214101617000	16	19.99	ok	landeseite
+kinder-schnorchelsocken-wasserschuhe-33ce8d	0403054B-B0D0-42E7-958A-E489D05DC539	16	10.15	ok	landeseite
+hanfseil-saule-abriebfest-und-nicht-ausfransen-621500	2511090819561621700	11	45.88	ok	landeseite
