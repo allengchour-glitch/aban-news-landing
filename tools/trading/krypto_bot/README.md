@@ -854,9 +854,137 @@ Andere Strategie wählen: `setx KRYPTO_STRATEGIE "halten"` (immer 100 %) oder `"
 > sind Rückkäufe). Tests: streng 286, live 154, pilot 91, cockpit 123, testnetz 61, plan 23 (alle grün). Alle Funde sind behoben und
 > als feste Szenarien in `test_pilot2_streng.py`. `FREIGEGEBEN = False` bleibt, bis eine weitere unabhängige Prüfung keine Blocker
 > mehr findet — bis dahin wirkt `KRYPTO_PILOT2=an` nicht (siehe «Starten» unten).
+> **Folge-PR zur 14. Runde (Zusatzkampagnen auf frischen Seeds, die 15. unabhängige Prüfung, die Lücken-Kampagne `luecken2`):** vier Kampagnen ausserhalb der Schlusskampagne —
+> Tageslauf-Fuzzer im Standardmodus (Lauf-Seeds 50000–52000) und im strengen Modus (60000–62000), Not-Aus-/Listen-/Monotonie-Fuzzer (Standard 30000–33000, streng 40000–43000)
+> und ein neuer gezielter Modus `PRUEF_LUECKEN=1` (Konto IMMER ohne STOP_LOSS, dreimal so viele Kurssprünge — der Weg «hängender Stop-Limit»; Lauf-Seeds 90000–90600,
+> streng 92000–92600, dazu Not-Aus 94000–96040 und streng 97000–99000). Sie fanden acht weitere echte Lücken, **alle älter als die 14. Runde** (am Stand davor ebenso
+> ein Befund), keine ist eine Regression. **E8** (Lauf-Seed 50802): der Not-Aus (und die UID-Prüfung der Nachkontrolle) las die Lage VOR dem Handeln mit dem kurzen Budget
+> (3 Versuche); nach drei Fehlversuchen in Folge gab er auf («NICHTS angefasst»), und eine eben gekaufte Position blieb bis zur Nachkontrolle ohne Stop. Jetzt das lange
+> Budget (5 Versuche). **E9** (Lauf-Seed 51170, 387 USDT): Vorab verkleinerte den Perp-Stop auch dann, wenn die Spot-Stops noch zu gross waren (eben noch beidseitig
+> gesichert) — war das Konto danach dauerhaft unlesbar, konnte der Abgleich die Spot-Stops nicht mehr korrigieren, und der kleinere Perp-Stop deckte ihre Folge nicht
+> mehr. Jetzt verkleinert Vorab erst, wenn die Spot-Stops nicht grösser sind als nötig. **E10** (Lauf-Seed 51587, 279 USDT; im Szenario 8'445 und 16'898 USDT): ein
+> ausgelöster STOP_LOSS_LIMIT hängt über dem Kurs (Kurslücke, Konto ohne STOP_LOSS), der Ausstieg per cancelReplace bleibt in allen drei Abgleich-Runden unklar (503) —
+> den Rückfall «Not-Stop an seine Stelle» gab es nur bei «abgelehnt», nicht bei «unklar»; die Coins des hängenden Auftrags galten als «Stop ausserhalb der Liste», der Long
+> stand ohne wirksamen Stop da. Jetzt kommt auch nach «unklar» zum Schluss ein Not-Stop, und geht cancelReplace dauerhaft nicht (oder kennt Binance es nicht), wird der
+> hängende — er schützt ohnehin nichts, wie im Not-Aus — normal gelöscht und aus den freien Coins (höchstens seine Menge) ein Not-Stop gesetzt; war er schon weg (−2011),
+> kam einer der unklaren Versuche an, und es wird nichts weiter gesetzt (`Spot.abbrechen` meldet jetzt, ob es storniert hat). **E11** (Not-Aus-Seed 30189, später
+> auch 42117): ohne Buch sieht der Not-Aus das Pilot-Konto nur an; ein Rest knapp über 5 USDT, den Binance nach dem Abrunden auf die Schrittweite nicht verkauft
+> (4,995e-05 BTC: roh 5,006, abgerundet 4,0 USDT), galt als «das Buch kennt es nicht» — jeder weitere Not-Aus meldete «NICHT alles zu». Jetzt zählt wie beim Schliessen
+> der verkaufbare Teil. **E12** (Lücken-Lauf-Seed 90256, 300 USDT): STOP kommt mitten im Lauf nach einem neuen Short (sein Stop folgt erst im Abgleich am Laufende) und das
+> Konto ist dauerhaft unlesbar — der Not-Aus des Laufs liest die UID nicht («NICHTS angefasst»). Wird STOP wieder aufgehoben, schützte die Nachkontrolle den neuen Short
+> nicht (`schutz_offen` war leer). Jetzt vermerkt der Lauf, sobald STOP mitten im Lauf kommt, die Märkte, in denen er gehandelt hat, in `schutz_offen`, bevor er den Not-Aus
+> versucht. (Ein Vermerk schon VOR dem ersten Auftrag deckte auch den harten Prozess-Abbruch ab, öffnete aber der Nachkontrolle ein Fenster, in dem sie Stops für einen Markt
+> setzte, den der Tageslauf noch bearbeitete — der Verzahnungsscan der 14. Prüfung fand dabei 2'500 USDT; verworfen, siehe «Bekannte Restrisiken».) **E13** (strenger Lücken-Lauf-Seed 92202, 218 USDT): es hängen MEHRERE
+> ausgelöste Stop-Limits (Stop + Zusatz-Stop); der Ausstieg bricht nach der ersten Ablehnung ab, und der Rückfall kannte nur den einen, dessen Verkauf gescheitert war.
+> Jetzt merkt sich der Abbruch alle hängenden dahinter (mit der Soll-Menge verteilt), und der Rückfall am Ende ersetzt jeden. **E14** (strenger Lücken-Lauf-Seed 92330,
+> 296 USDT): «würde sofort auslösen» führte nur beim ERSTEN Stop-Preis zum Ausstieg zum Markt; scheiterte der erste Preis an Verbindungsabrissen und sprang der Kurs dann über den
+> Not-Stop-Preis, blieb der Short «OHNE Stop». Jetzt bei jedem Preis. **E15** (Lücken-Not-Aus-Seed 95297, 59 USDT): ein ausgelöster STOP_LOSS_LIMIT hängt, der Rückkauf des
+> Shorts geht nicht und der Kurs-Abruf ist dauerhaft gesperrt — der Not-Aus-Schutz erkannte den hängenden Stop nur, wenn der (veraltete) Kurs unter seinem Limit lag; der alte
+> Kurs lag darüber, also blieb der Long ohne wirksamen Stop. Jetzt zeigt «isWorking» allein den hängenden Stop (ein ausführbarer Limit-Auftrag wäre sofort weg), im
+> Not-Aus-Schutz, im Spot-Abgleich und im Rückfall am Ende. **Prüf-Werkzeuge:** der Fuzzer stufte ein «Perp-Stop über Netto», das nur vom selben ungesehenen
+> hängenden Stop-Limit herrührt, nicht wie dessen `LONG_OHNE_STOP` als bekannte Limit-Lücke ein (strenger Lauf-Seed 60471, Not-Aus bei dauerhaft unlesbarer Spot-Liste); das
+> Löschen eines hängenden Stop-Limits zählt nicht als «Pilot 2.0 hat einen Stop selbst entfernt» (die Prüf-Börse markiert es); neu der Börsen-Schalter `ersetzen_fehlt`
+> (HTTP 404) und der Fuzzer-Modus `PRUEF_LUECKEN=1` (`laeufe`, `notaus`). **Bekanntes Restrisiko:** ist die Spot-Liste dauerhaft unlesbar, sieht Pilot 2.0 einen hängenden Stop-Limit
+> nicht (aus dem Buch liesse sich ableiten, dass sein Stop-Kurs erreicht ist — nicht gebaut); das bleibt als `LIMIT_LUECKE_` eingestuft und betrifft nur Konten ohne STOP_LOSS-Typ.
+> **15. unabhängige Prüfung** (Belege p1–p22, enger Auftrag; Technik «Ausfall-Raster»: Tag 0 baut eine Lage, Tag 1 läuft mit zwei gekoppelten Störungen — eine schreibende und
+> eine lesende, ab demselben Zeitpunkt —, geprüft wird nach dem Lauf, nach der Nachkontrolle und nach einem Kurssprung; dazu der Erhaltungssatz «kein dem Buch unbekannter eigener
+> Perp-Stop an der Börse»): **1 Blocker + 1 wichtig + 1 Lücke im Testnetz-Prüfplan + 4 klein.** **G1 (Blocker, 7'880 USDT im Test, im Raster bis 9'985)**: Vorab setzt den
+> kleineren Perp-Stop und löscht dann die alten; scheitert das Löschen (503) und ist danach die Perp-Liste unlesbar, standen alt und neu zusammen über dem Short — niemand
+> kannte den alten, und beim Auslösen kaufte er die Absicherung zurück. Der zufällige Fuzzer fand das auf Tausenden Seeds nie, weil es eine genaue Folge braucht (Löschen
+> scheitert NACH dem Setzen UND danach ist die Liste unlesbar). Jetzt merkt das Buch jeden nicht gelöschten alten Stop (`perp_weitere`), der Markt ist beidseitig gesichert
+> (`_zu_gross`) und die Nachkontrolle angestossen. **G1b (5'369 USDT)**: kam der NEUE Stop trotz Fehlermeldung an (Antwort verloren) und lässt sich seine Kennung nicht löschen,
+> war er ebenso unbekannt: jetzt gemerkt, derselbe Schutz. **G2 (5'423 USDT)**: `_buch_vereinen` mischte (algoId, Kennung) des aktuellen Perp-Stops feldweise — änderten beide Läufe
+> den Stop, entstand ein Hybrid aus der ID des einen und der Kennung des anderen; jetzt ist das Paar EINE Identität (nur ich geändert → meines, nur der andere → seines, beide →
+> meines, ausser es ist leer; der Stop des anderen kommt als Paar ins Gedächtnis). **W3**: das Testnetz-Prüfskript prüfte A6/A8 nur, wenn Binance den Stop ohne Position (A1) annahm
+> — der wahrscheinlichste Ausgang ist die Ablehnung, dann blieben sie unbeantwortet. Jetzt holt es A6/A8 mit offenem Short nach, und neu **A9** (Storno unmittelbar nach dem Setzen,
+> ohne vorher die Liste zu lesen — meldet Binance «Erfolg» oder «−2011», der Stop steht aber, ist «weg» falsch: Gespenst-Stop) und **A10** (Storno eines schon AUSGELÖSTEN Stops;
+> der Stop sitzt knapp über dem Markt, das Skript wartet bis 60 s auf die Aufwärtsbewegung, sonst «nicht geprüft»). **K-a** die Startprüfung zählt wie der Not-Aus (abgerundet auf die
+> Schrittweite, Mindestbetrag) statt roh 5 USDT — 4,995e-05 BTC sind Staub, kein Grund, den Start zu verweigern. **K-c** Fuzzer-Einstufung: die Störung `nur_storno` (409: der alte Stop
+> storniert, der neue abgelehnt) ist dasselbe Restrisiko wie die Börsen-Lesart «Storno zuerst» (Testnetz-Prüfpunkt B). **K-d** die Statuszeile behauptete «beidseitig gesichert (unklarer
+> Auftrag)», auch wenn die Stops scheiterten. **K-e** scheiterte ein Perp-Stop-Versuch und liess sich seine Kennung nicht löschen, merkte nur `_stops_vorab` sie — jetzt an allen fünf
+> Stellen (`_perp_notstop`, weiter Not-Stop, Ersatz des zu grossen Stops, fehlender Schutz-Stop, Stop über den offenen Short nach −2022). **Prüf-Werkzeuge:** `pruef_raster.py` (12
+> Szenarien × 12 schreibende Störungen × 4 Zeitpunkte × 15 Lese-Kopplungen = 8'640 Fälle je Modus, Befundarten `NACH_NK`, `UNBEKANNT_NACH_NK`, `NACH_LAUF_STILL`, …) mit dem Erhaltungssatz
+> `unbekannte()`; Fuzzer-Einstufung `nur_storno`. **Lücken-Kampagne `luecken2`** (Lauf-Seeds 100000–101000 Standard, 102000–103000 streng; 40 Aufträge, auf dem Stand nach E15) fand drei weitere
+> Befunde: **E16** (strenger Lauf-Seed 102857, Pilot 2.0): der Not-Stop an der Stelle eines hängenden Stop-Limits wurde nur gesetzt, wenn gar nichts scheiterte — scheiterte die Perp-Seite (hier:
+> reduceOnly-Stop für einen unklaren Short ohne Position abgelehnt, −2022), blieb der hängende Stop bis zur Nachkontrolle ohne Ersatz; jetzt nur noch dann nicht, wenn der Kontostand nicht lesbar war.
+> **E17** (strenger Lauf-Seed 102030, Prüf-Werkzeug): im beidseitigen Zweig galt jeder Long-Rest über der Toleranz als echter Befund — im einseitigen Zweig bis `STAUB_MAX_USDT` (10) als Staub; 7,3 USDT
+> ETH, am Stop-Kurs 4,7 USDT unter dem Mindestbetrag, lassen sich bis zur Nachkontrolle nicht stoppen (sie setzt den Stop mit dem Kurs aus dem Buch). **E18** (Lauf-Seed 100890, Prüf-Werkzeug): der
+> Folgeschaden-Test wertete den hängenden Stop-Limit, den Pilot 2.0 nicht sehen konnte (Liste seit dem Hängen nicht lesbar), als echten Befund, während die Prüfung vor dem Sprung dieselbe Lücke als
+> `LIMIT_LUECKE_` führte. **LEHREN:** (1) **Ein gezielter, deterministischer Raster findet, was ein Zufalls-Fuzzer nie trifft** — die 15. Prüfung rechnete ALLE Kopplungen «schreibende Störung ×
+> lesende Störung × Zeitpunkt» durch; der Fuzzer sah G1 auf Tausenden Seeds nicht. (2) **Ein Erhaltungssatz über WISSEN schlägt eine Lücken-Messung:** «kein eigener Stop an der Börse, den das Buch nicht
+> kennt» fängt die Wurzel (ein vergessener Stop), egal ob die Lücke im Test schon sichtbar wird. (3) Wer ein Löschen mit «Erfolg ODER −2011» als «weg» liest, muss prüfen, ob der Auftrag danach
+> doch auftaucht (A9) — erst das Testnetz klärt es. (4) Ein Vermerk «hier könnte etwas offen sein» VOR der ersten Handlung deckt mehr ab, kann aber ein zweites Programm in einen Markt locken, den das
+> erste noch bearbeitet — Verzahnung messen, bevor man ihn behält.
+> **Schlusskampagne, Lücken-Bereich 112000–112450** (auf dem Stand nach E18; frische Seeds, die ersten Lücken-Läufe überhaupt auf diesem Stand) fand weitere drei Befunde. **E19** (Lücken-Lauf-Seed 112159, Pilot 2.0, 6'238 USDT): geht cancelReplace nicht, löscht `_haengenden_loeschen` den hängenden Stop-Limit normal und setzt aus den freien Coins einen Not-Stop. Kam das Löschen an und ging nur seine Antwort verloren (503), hörte die Wiederholung «unbekannt» (−2011) und las das als «war schon weg — einer der unklaren Versuche kam an» — es wurde nichts gesetzt, und die eben freigegebenen Coins standen ohne Stop. Jetzt vergleicht die Funktion die freien Coins vor und nach dem Löschen: nur was das Löschen freigegeben hat (höchstens die Menge des hängenden), bekommt einen Not-Stop; war der Stop schon vorher weg, hat das Löschen nichts freigegeben, und die freien Coins daneben bleiben die Absicherung des Shorts. **E20** (Lücken-Lauf-Seed 112196, Prüf-Werkzeug): die Einstufung `LIMIT_LUECKE_` kannte nur «Spot-Liste seit dem Hängen nicht mehr gelesen»; stand der hängende Stop wegen der Listenverzögerung der Prüf-Börse (`sichtbar_ab`) in der LETZTEN Liste noch gar nicht, konnte Pilot 2.0 ihn ebenso wenig sehen — die Börse merkt sich jetzt, welche Aufträge die letzte Liste verbarg (`liste_verborgen`), der Fuzzer zählt sie als unvermeidbar. **E21** (strenger Lücken-Lauf-Seed 112383, Pilot 2.0, 1'008 USDT): kommt ein unklarer Auftrag erst in der LETZTEN Abgleich-Runde ins Buch, braucht der Markt noch seinen beidseitigen Schutz (Spot-Stop über alle Coins neben dem Perp-Stop über den ganzen Short), aber es gab keine Runde mehr — der Perp-Stop über den Short stand, die Coins nicht. Jetzt folgen auf eine so späte Meldung bis zu `SCHLUSSRUNDEN` (2) zusätzliche Runden. **LEHREN:** (5) **Die Kampagne auf FRISCHEN Seeds findet weiter echte Fehler, auch nachdem die unabhängige Prüfung durch ist** — E19 und E21 standen schon vor der 14. Runde im Code; jede Änderung am Schutzpfad verlangt die ganze Kampagne neu, nicht nur den Seed des Fundes. (6) **Ein Storno, dessen Antwort verloren ging, ist nicht «schon weg»:** wer −2011 beim WIEDERHOLTEN Löschen als «war vorher weg» liest, übersieht, dass das eigene erste Löschen angekommen sein kann — der Unterschied der freien Coins entscheidet, nicht die Antwort. (7) **Eine Information, die in der letzten Runde eintrifft, braucht Schlussrunden:** sonst gilt sie für die Entscheidung nicht mehr. (8) **Die Sichtbarkeit im Prüf-Werkzeug am letzten LESEN messen**, nicht am letzten Ereignis: was die Liste noch nicht zeigte, kann der Bot nicht wissen.
+> **Raster für den Weg «hängender Stop-Limit»** (Schlusskampagne, nach `luecken3`): sieben der vierzehn eigenen Funde dieses Folge-PR (E10, E13–E16, E19, E21) lagen bei hängenden Stop-Limits
+> (Konto ohne STOP_LOSS, eine Kurslücke lässt den ausgelösten Spot-Stop über dem Kurs liegen) — der Zufalls-Fuzzer fand sie erst im gezielten Modus `PRUEF_LUECKEN=1`, und E19 erst nach Hunderten
+> Seeds. `pruef_raster.py` zählt den Weg deshalb deterministisch durch: **`--haengend`** (Konto ohne STOP_LOSS, zwischen Tag 0 und Tag 1 fällt der Kurs unter das tiefste Limit, jeder Spot-Stop hängt;
+> Lagen ohne Spot-Stop zählen als «kein_spotstop»), dazu vier zusätzliche Einzelstörungen (Löschen / Ersetzen / Marktverkauf mit verlorener Antwort bzw. abgelehnt) und **zehn PAARE schreibender
+> Störungen mit gleichem Beginn** — das Ersetzen des hängenden Stops scheitert dauerhaft (503) oder Binance kennt `cancelReplace` nicht (404, Schalter `ersetzen_fehlt`), UND das Löschen bzw. der
+> Not-Stop-Auftrag geht schief (503 vor oder nach der Verarbeitung, ×1 oder ×3). Jede Zelle läuft mit allen 15 Lese-Kopplungen. Neu ausserdem **`--notaus`**: Tag 1 ist der Not-Aus, gemessen
+> wie `notaus_runde` des Fuzzers (Schutz direkt danach, Nachkontrolle im Not-Aus-Modus, `FALSCH_ALLES_ZU`, `SAUBER_NICHT_ZU`). Die Paare fanden in Minuten zwei Lücken: **E22** (Pilot 2.0, 16'828 /
+> 8'410 / 4'200 USDT in den Lagen BTC +1,0 → +0,25 / +0,5 → +1,0 / +0,25 → +0,5; Paar «`cancelReplace` unbekannt × Löschen scheitert»): `_spot_stops_verkaufen` meldete beim Weg «`cancelReplace`
+> unbekannt, Löschen scheitert» nur «der Spot-Stop bleibt stehen» — anders als bei «unklar» und «abgelehnt» wurde der hängende Stop nicht für den Not-Stop am Laufende vorgemerkt; die Coins galten
+> als «durch einen Auftrag gesperrt, der nicht in der Liste steht — gilt als Stop», der Long stand bis zum nächsten Tageslauf ohne wirksamen Stop. Jetzt merkt auch dieser Weg ihn vor. **E23**
+> (Pilot 2.0, 0,1988 BTC ≈ 16'800 USDT; Paare × unlesbare Spot-Liste, 18 von 44 Zellen vor den Korrekturen): die Schlusswarnung «Richtung … OHNE Stop» kam erst NACH der Vergabe von `schutz_offen` —
+> der Lauf warnte laut, die Nachkontrolle wurde aber nicht angestossen, obwohl die Liste kurz darauf wieder lesbar war. Jetzt wird die Bedingung (`ohne_stop`) vor `schutz_offen` berechnet; ausserdem
+> vermerkt `_spot_ohne_liste` («die gesperrten Coins gelten als gesichert») den Markt jetzt selbst («nicht geprüft»). Das Restrisiko «Spot-Liste dauerhaft unlesbar + hängender Stop» schrumpft damit auf
+> «die Liste bleibt auch während der ganzen Nachkontrolle (11 Minuten) unlesbar». **E24** (Pilot 2.0, Muster «unverifizierter Endstand», gefunden bei der Suche nach weiteren Meldungen, die einen ungeschützten oder ungeprüften Zustand beschreiben, den Markt aber nicht für die
+> Nachkontrolle vermerken): ändert sich der Kontostand in JEDER Abgleich-Runde (hier: ein Coin-Zufluss bei jeder Kontoabfrage), endet der Abgleich nach drei Runden ohne Stabilität — der Lauf warnte «Kontostand hat sich
+> während des Stop-Abgleichs mehrmals geändert … bitte prüfen!», der letzte Stand blieb aber ungeprüft. Jetzt vermerkt er den Markt (`unstabil`) — aber nur, wenn sich der Kontostand in jeder Runde änderte, NICHT bei «Kontostand gleich, der Kurs liegt jenseits des Stop-Kurses, der Ausstieg gelang nicht» (`jenseits_offen`): bei einer Position von praktisch null (Paar, Rundungsrest) ist das ein Dauerzustand, den jede Nachkontrolle wieder fände. Die erste, weitere Fassung liess 16 Fuzzer-Tests mit «Nachkontrolle: nicht alles geklärt» rot werden — eine neue Markierung gehört gegen die ganze Testsuite, bevor man sie behält. Die Warn-Hülle in `_stops_setzen` erkennt nur Meldungen mit «OHNE Stop»,
+> «ohne Stop», «nicht geprüft» oder «Stop abgelehnt» im Text; E23 und E24 waren genau Meldungen ohne diese Wörter bzw. nach der Vergabe von `schutz_offen`.
+> **Schlusskampagnen `camp15d`–`camp15g`** fanden drei weitere Lücken (strenger Lücken-Modus), eine davon in drei Anläufen. **E25** (Lücken-Läufe 110000–110150, 7 × «NACHKONTROLLE_OFFEN»; Folge von E23): die Schlusswarnung «Richtung … OHNE Stop
+> (zu klein für Binance …)» bei einem Paar mit einem Netto-Rest von wenigen USDT (der Stop läge am Stop-Kurs unter dem Mindestbetrag) oder einem Short-Rest unter einem halben Futures-Schritt (bewusst ohne Perp-Stop)
+> beschreibt einen Dauerzustand — E23 vermerkte jeden solchen Markt für die Nachkontrolle, die ihn nie loswird. Jetzt vermerkt die Schlusswarnung den Markt nur, wenn Binance den Rest überhaupt absichern kann
+> (`_schutzbar`: Spot — Stop-Menge × min(Kurs, Stop-Kurs) ≥ Mindestbetrag; Perp — ein Perp-Stop ist geplant). **E26** (Not-Aus-Fuzzer, Seed 117727, 1'669 USDT; im Tageslauf bis 9'736 USDT; Raster `--geist`: 4'828 / 7'167 / 3'920 USDT):
+> ein Perp-Stop kam an, die Antwort ging verloren (`nach503`), jede Wiederholung scheiterte am Rate-Limit (429) — Pilot 2.0 löschte den «Geister-Stop» danach über seine Kennung (15. Prüfung K-e: «nie zwei Stops über denselben Short»)
+> und stand ohne Stop da, obwohl dieser Stop der einzige Schutz des Shorts war. Die Familie «Aufräumen nach einem unklaren Ergebnis» sass an allen Stellen, die einen gescheiterten Perp-Stop-Versuch aufräumen. Gelöst in drei
+> Schritten, jeder von einer anderen Messung gefunden: (1) der Fuzzer-Seed → `_geisterstop()`, ein Geister-Stop wird nur gelöscht, wenn ein anderer Stop die Menge schon deckt; (2) der neue Raster-Modus **`--geist`** (sechs Paare
+> «Perp-Stop kommt an, Antwort verloren × jede Wiederholung scheitert», je zwei Zeitpunkte, 15 Lese-Kopplungen; im Not-Aus dazu ein toter Marktverkauf, sonst setzt er gar keine Perp-Stops) mit der neuen Befundart **`SELBST_ENTFERNT`**
+> (der Fuzzer-Begriff `_selbst_entfernt` im Raster: es fehlt Schutz, und Pilot 2.0 hat in diesem Markt selbst einen Stop der betroffenen Seite entfernt — auch wenn die Nachkontrolle es später heilt; 36 Befunde je Szenario am Altstand)
+> zeigte, dass «ein anderer Stop deckt» eine Momentaufnahme ist: ändert sich der Bedarf danach (zu grosser alter Stop → beidseitig → der ganze Short; Short heute gewachsen oder abgebaut), fehlt der gelöschte; (3) deshalb
+> bleibt der vielleicht angekommene Stop überall, wo die Liste lesbar ist (`_stops_vorab` Stufe 2, `_perp_abgleich`), im Buch vermerkt (`perp_weitere`), und der Abgleich liest die FRISCHE Liste und räumt nach Mengen auf
+> (`_perp_ueberzaehlige_weg` behält so viele, wie in den Short passen — der Geister-Stop wird so der aktuelle Stop und der zu grosse alte fällt weg); im Szenario BTC −0,25 → 0,0 endet der Tag mit genau einem Stop über den Bedarf
+> statt mit 3'920 USDT ohne. Bei unlesbarer Liste (`_perp_ohne_liste`) wird nur gelöscht, wenn das Buch einen bisherigen Stop kennt UND er den heutigen Bedarf deckt (`_alt_deckt`: Netto-Short vor den heutigen Aufträgen aus
+> Stand jetzt minus `erg["auftraege"]`, ein Futures-Schritt Toleranz — zugekaufte Absicherung zählt nicht als Wachstum); im Not-Aus bleiben der weite Not-Stop, der Stop über die fehlende Menge (bei «ganz» auch mit bekanntem altem
+> Stop) und der kleinere Stop nach −2022; gelöscht wird nur dort, wo die alten Stops noch stehen und schützen (`_perp_notstop(alt_steht)`, Ersatz für einen zu grossen alten Stop). **E27** (Not-Aus-Fuzzer, Seed 117974,
+> 0,000248 BTC ≈ 38 USDT): ein alter Spot-Stop über 0,02168 von 0,025432 Coins steht, die Spot-Aufträge sind nicht lesbar — der Not-Aus behandelte die gesperrten Coins als «gesichert», der Perp-Stop deckte nur das Nötigste, nach dem
+> Auslösen beider Stops blieb ein Short ohne Coins und ohne Stop. Mehr Coins gesperrt als nötig bei unlesbarer Liste heisst: ein zu grosser Stop kann stehen — wie bei veralteten Zahlen (und wie `_spot_ohne_liste` im Tageslauf)
+> bekommt der Short seinen Stop über die ganze Menge, die übrigen Coins einen eigenen Spot-Stop. **LEHRE:** (1) **Aufräumen nach einem unklaren Ergebnis ist nur sicher, wenn etwas anderes schützt — und «etwas anderes schützt» ist
+> eine Momentaufnahme:** besser behalten, im Buch vermerken und später nach Mengen aufräumen lassen, als nach Teilinformation löschen. (2) **Das Gegenmittel muss im HÄUFIGEN Fehlerfall harmlos sein:** die erste Fassung sicherte den
+> Markt «beidseitig», sobald ein Geister-Stop neben einem bekannten alten stehen konnte — im häufigsten Fall (Auftrag vor der Verarbeitung abgelehnt, nie angekommen) stand dann ein Spot-Stop über alle Coins neben einem Perp-Stop nur über
+> den Netto-Short, ein älterer Test (10.p1c) fing es. (3) **Ein Rest von «einem Schritt» ist zuerst ein Zustands-, dann ein Rundungsverdacht:** E27 sah nach einem Rundungsfehler aus (nächster statt abgerundeter Futures-Schritt) —
+> abgerundet wanderte der Rest nur auf die Long-Seite (122 USDT statt 38); die Ursache war der unbehandelte Zustand «Liste unlesbar». (4) **Eine Befundart aus dem Fuzzer gehört auch in den Raster:** `SELBST_ENTFERNT` fand in
+> Minuten, wofür der Zufalls-Fuzzer Tausende Seeds braucht — und ein Raster, dessen Störungen am Ende ausgeschaltet sind, entschuldigt jede Lücke, die die Nachkontrolle heilt; nur die Frage «war sie vermeidbar?» trennt. (5) Ein
+> Szenario-Rahmen, der Regeln mit Zählern (`anzahl`) teilt, entwertet das zweite Szenario still (Gegenprobe E26a' prüfte zuerst nichts, M45 blieb unerkannt) — Regeln je Aufruf neu erzeugen. (6) Messen, bevor man einen Befund einer
+> Seite zuschreibt: der erste Befund im Szenario BTC −0,25 → 0,0 sah wie der Geister-Stop aus; er war es auch, aber erst die Spur (welcher Aufrufer löschte, was verlangte der Bedarf danach) zeigte, dass das Löschen in `_stops_vorab`
+> sass und nicht im Abgleich.
+> **Endstand der 15. Folge-Runde (Code `07057e648` eingefroren, danach nur Tests und Doku; alle Zahlen am eingefrorenen Stand gemessen):**
+> - **Schlusskampagne `camp15h`: 292 Aufträge = 31'000 Fuzzer-Läufe, 0 echte Befunde** (1'024 begründete Einträge der bekannten Klassen). Standardmodus: Läufe ×30, Listen, Monotonie und Not-Aus je 15000–18000;
+>   strenger Modus: Läufe ×30 20000–24000, Listen, Monotonie und Not-Aus 20000–23000; gezielter Lücken-Modus (Konto IMMER ohne STOP_LOSS): Läufe ×30 110000–111000 (Standard) und 112000–113000 (streng),
+>   Not-Aus 114000–116000 und 116000–118000; dazu das Basis-Raster (12 Szenarien × Standard/streng: 2'452 gemessene Läufe, 0 Befunde).
+> - **Raster-Kette `r15h` auf demselben Stand: 168 Aufträge = 31'870 gemessene Läufe (Fälle, in denen die Störung wirklich traf), 0 Befunde** — `--geist --paare` 1'392, `--notaus --geist --paare` 1'296, `--notaus` 3'542,
+>   `--haengend` 3'732, `--haengend --kurs --paare` 7'680, `--notaus --haengend` 4'420, `--kurs` 9'808 (je 12 Szenarien × Standard/streng). In 836 davon (2,6 %: `--geist` 102, `--haengend` 150,
+>   `--haengend --kurs --paare` 242, `--notaus --haengend` 342) stand direkt nach dem Lauf bzw. Not-Aus ein Long oder Short bis zur Nachkontrolle (30-Sekunden-Takt) ohne wirksamen Stop — laut gemeldet, die Nachkontrolle heilte es
+>   (Statistik `bis_nk_ungeschuetzt`, kein Befund; zwei gleichzeitige Störungen, z. B. `cancelReplace` tot × Spot-Liste unlesbar bei hängendem Stop, lassen sich bis dahin nicht schützen).
+> - **Verzahnungsscans** (der Tageslauf hält vor seiner n-ten Anfrage an, ein zweiter Lauf läuft mittendrin: Not-Aus / Nachkontrolle / Stop kommt und geht / Stop nur): 4 × 1'050 Verzahnungen, 0 Befunde.
+> - **Tests: 1'497 in 22 Dateien, alle grün** — streng 475, live 154, pilot 91, cockpit 123, testnetz 97, plan 23.
+> - **Mutationsprobe** (288 Muster, davon 54 dieser Folge-Runde, R15-M1–M54; `python3 -B`, fail-fast): am eingefrorenen Stand **270 erkannt, 18 offen**. Neun der offenen haben jetzt ein eigenes Szenario und werden am Endstand
+>   erkannt (**279 von 288**): R12-M33 (15.M33), R13-M12 (15.K3), R13-M22 (15.F3), R13-M26 (15.F4), N-R10-M18 (15.W1), R10-M4b (15.M4b) und R14-M7 (15.F1) — die letzten beiden hielt die 14. Runde noch für gleichwertig, es fehlte nur
+>   das Szenario —, dazu R15-M29 (15.E19b: beide Lesungen der freien Coins vor und nach dem Löschen eines hängenden Stop-Limits nutzen das lange Budget; ein Spion auf `lesen()` zählt sie) und R15-M48 (15.E26i: Not-Aus «ganz»,
+>   Perp-Liste unlesbar, der bisherige Stop deckt nur 0,02 von 0,05 Short — der Geister-Stop über den ganzen Short bleibt; mutiert blieben 2'821 USDT Short ohne Coins und ohne Stop). **Offen bleiben neun**, sieben davon aus früheren
+>   Runden als gleichwertig begründet: M14 (K2 setzt `unklar_sell` in jeder Abgleich-Runde, die Zuweisung davor ist tot), R11-M19 (Staub-Paar), R12-M5 (der Not-Aus sperrt zwischen Lesen und Verkaufen nie Coins — gilt nur ohne einen
+>   zweiten, gleichzeitigen Not-Aus), R12-M23 (nach einer Ablehnung überspringt `nur_ergaenzen` wirksame Stops ohnehin), R12-M34 (nur eine Abgleich-Runde mehr), R14-M49 (die Zuweisung `stand_frisch = True` nach der erneuten Lesung wird nur
+>   erreicht, wenn der Stand schon frisch war), R14-M53 (ein reduceOnly-SELL gibt es auf dem Futures-Konto nicht). Zwei sind neu offen, beide durch eine NEUERE Schicht überdeckt: **R10-M17** (die Rechnung `noetig` im Not-Aus, Szenario 13.p7:
+>   seit E27 läuft jeder Zustand, in dem mehr Coins unter einem Stop liegen als nötig, in den Modus «ganz» — unlesbare Liste: E27, lesbare: `spot_zu_gross`; eine Spur in einer Kopie des Codes zeigt: in den 475 + 154 Tests und 1'100 Not-Aus-Fuzzer-Seeds (Standard 15000–15300, streng 20000–20300, Lücken-Modus 114000–114250 und 116000–116250) ändert die Rechnung `soll_p = max(soll_p, noetig)` nie etwas) und **R15-M31** (die Bedingung `ohne_stop` der Schlusswarnung E23
+>   neben `fehlt[0]`, `gescheitert`, `nochmal` und `unstabil`: der Eigenvermerk von `_spot_ohne_liste` (M32/M33, erkannt) und die Warn-Hülle decken alle bekannten Fälle; eine Spur zeigt: in 625 Tests (streng 471 + live 154 zum Zeitpunkt der Messung), 200 Lücken-Läufen (110000–110100 Standard, 112000–112100 streng, je 30 Tage) und 3'736 gemessenen Raster-Läufen (`--haengend`, `--haengend --paare`, `--notaus --haengend --paare`) steht der Markt nie allein wegen dieser Bedingung in der Nachkontrolle; denkbar ist allenfalls ein winziger gesperrter Rest unter dem Staubwert). Beide sind KEIN Gleichwertigkeitsbeweis, sondern
+>   «kein unterscheidender Zustand gefunden» — die Zeilen bleiben als zweite Schicht stehen.
+> - **Lehre aus der Probe:** (1) Eine Mutation, die nach einer Code-Änderung plötzlich offen ist, verdeckt meist eine NEUERE Schicht (R10-M17 durch E27, R15-M31 durch den Eigenvermerk) — erst mit einer Spur in einer Kopie des Codes messen, ob der
+>   Zustand überhaupt noch vorkommt, dann entscheiden (Test oder Dokumentation). (2) Die Probe läuft gegen die Tests des eingefrorenen Stands: Tests, die nach dem Einfrieren dazukommen, zählen erst, wenn man die offenen Muster am Endstand
+>   nochmals laufen lässt (hier: 9 der 18 offenen erkannt, 9 weiter offen).
 
 Gleiche Signale wie der Pilot, klügere Ausführung über **beide** Binance-Konten (`pilot2_plan.py` rechnet, `pilot2_live.py`
-handelt; 23 + 154 + 286 Tests gegen zwei streng nachgebaute Binance, Fuzzer, Mutationsproben). Ohne `KRYPTO_PILOT2=an` handelt der
+handelt; 23 + 154 + 475 Tests gegen zwei streng nachgebaute Binance, Fuzzer, Mutationsproben). Ohne `KRYPTO_PILOT2=an` handelt der
 Pilot wie bisher.
 
 **Was er tut:** Richtung long → Coin im Spot-Konto (kein Funding). Richtung short → Short-Perpetual (Hebel 1, bekommt Funding).
@@ -1008,7 +1136,7 @@ Aufträge `p2t…`, räumt danach auf). In einem NEUEN Fenster die Testnetz-Schl
 ```
 set BINANCE_API_KEY=…   set BINANCE_API_SECRET=…   set BINANCE_FUTURES_API_KEY=…   set BINANCE_FUTURES_API_SECRET=…
 python tools\trading\krypto_bot\testnetz_pruefung.py          (liest nur: Schlüssel, Regeln, Symbol leer? — sendet nichts)
-python tools\trading\krypto_bot\testnetz_pruefung.py --los    (prüft A1–A8 und B1–B6, rund 1 Minute, räumt auf)
+python tools\trading\krypto_bot\testnetz_pruefung.py --los    (prüft A1–A10 und B1–B6, rund 1–2 Minuten, räumt auf)
 ```
 - **A — reduceOnly-Perp-Stop über mehr als den offenen Short** (so sichert Pilot 2.0 einen Markt beidseitig): angenommen? bleibt
   er stehen? zwei gleichzeitig (Phase «zuerst neu setzen, dann alten löschen»)? Lehnt Binance ab, sichert er wenigstens den
@@ -1017,7 +1145,12 @@ python tools\trading\krypto_bot\testnetz_pruefung.py --los    (prüft A1–A8 un
   eben gesetzten Stop (sofort / erst nach mehreren Abfragen / nie)? Davon hängt ab, wie real der Fall F1 der 14. Prüfung ist (Antwort
   verloren + Liste hinkt nach → zwei Stops; Pilot 2.0 löscht seit der 14. Runde bekannte, nicht gezeigte Stops über die Kennung). Und: Was
   meldet Binance beim Storno einer nie gesetzten bzw. schon gelöschten Kennung — Erfolg oder −2011 (= «weg», so liest es Pilot 2.0), oder
-  einen anderen Code (dann hielte er das Löschen für gescheitert: Dauer-Alarm statt Schutzverlust)?
+  einen anderen Code (dann hielte er das Löschen für gescheitert: Dauer-Alarm statt Schutzverlust)? Lehnt Binance in A1 den Stop ohne Position ab (der
+  wahrscheinlichste Ausgang), holt das Skript A6 und A8 nach dem Eröffnen des Shorts nach.
+- **A9/A10 (seit der 15. Prüfung, W3) — Storno im Grenzfall:** **A9**: Storno UNMITTELBAR nach dem Setzen, ohne die Liste vorher zu lesen — so löscht
+  Pilot 2.0 einen Stop, dessen Antwort verloren ging. Meldet Binance «Erfolg» oder «−2011», der Stop steht aber trotzdem (oder erscheint danach in der Liste),
+  wäre «weg» falsch (Gespenst-Stop: als zu grosser reduceOnly-Stop kaufte er beim Auslösen die Absicherung zurück). **A10**: Storno eines schon AUSGELÖSTEN
+  Stops (knapp über dem Markt; das Skript wartet bis zu 60 s auf die Aufwärtsbewegung, sonst «nicht geprüft» — bei bewegtem Markt nochmals laufen lassen).
 - **B — `POST /api/v3/order/cancelReplace`** (Stop ersetzen, Not-Aus-Verkauf): Bleibt der alte Stop stehen, wenn Binance den
   neuen Auftrag ablehnt (würde sofort auslösen, Filter, zu wenig Coins), und liest Pilot 2.0 jede Antwort richtig? Kennt Binance
   den Weg nicht (404), arbeitet Pilot 2.0 wie früher (stornieren, dann neu).
@@ -1033,7 +1166,15 @@ erste Schreibauftrag eines Laufs ein cancelReplace, bleibt das Risiko). Kommt ei
 Kontostand («Konto = Wahrheit») und setzt die Stops danach. Bietet Binance für ein Paar keinen Markt-Stop (STOP_LOSS) an,
 nimmt Pilot 2.0 STOP_LOSS_LIMIT (Limit 5 % unter dem Stop-Kurs): springt der Kurs in einer Lücke über das Limit, bleibt der
 ausgelöste Stop unausgeführt liegen, bis Pilot 2.0 ihn sieht (nächster Abgleich, Nachkontrolle oder Tageslauf — dann steigt er
-zum Markt aus; lehnt Binance das bis zum Schluss ab, kommt an seine Stelle ein Not-Stop unter dem Kurs).
+zum Markt aus; lehnt Binance das bis zum Schluss ab, kommt an seine Stelle ein Not-Stop unter dem Kurs). Ist die Spot-Liste dauerhaft
+unlesbar, sieht er einen hängenden Stop-Limit nicht (Klasse `LIMIT_LUECKE_`, nur Konten ohne STOP_LOSS-Typ). Ist die **Perp**-Liste unlesbar, kennt das Buch einen bisherigen Perp-Stop und überschätzt `_alt_deckt` dessen Deckung (die Schätzung kennt die Grösse des alten Stops nicht, nur den Netto-Short vor den heutigen Aufträgen), löscht Pilot 2.0 einen vielleicht angekommenen neuen Stop wie bisher: der Rest des Shorts bleibt ohne Stop, bis die Nachkontrolle die Liste lesen kann (Raster `--geist`: im Tageslauf 0 Befunde in 696 Läufen; die Lücke bleibt theoretisch, weil das Buch keine Stop-Mengen führt — ein Gegenmittel «beidseitig sichern» schadet im häufigen Fall «nie angekommen»). **Harter Prozess-Abbruch
+(Stromausfall, Absturz, Prozess beendet, Fenster geschlossen) zwischen dem ersten Auftrag eines Laufs und seinem Stop-Abgleich
+am Laufende:** die neue Position bleibt ohne Stop, bis der nächste Tageslauf sie über den Kontostand findet («Konto = Wahrheit», bis zu 24 Stunden) —
+die Nachkontrolle kennt nur Märkte, die ein Lauf oder ein STOP vermerkt hat (Versuchsmessung: ein neuer ETH-Short von rund 14'600 USDT blieb so ohne Stop). Ein Vermerk
+VOR dem ersten Auftrag deckt das ab, öffnete aber der Nachkontrolle ein Fenster, in dem sie Stops für einen Markt setzte, den ein hängender (z. B. aus dem Schlaf des Rechners
+erwachter) Tageslauf noch bearbeitet — der Verzahnungsscan fand dabei 2'500 USDT; verworfen. Idee für die nächste Runde: Vermerk mit Herzschlag (die Nachkontrolle
+übernimmt den Markt erst, wenn der Herzschlag des Laufs einige Minuten alt ist). Ein Rest, der am Stop-Kurs unter dem Mindestbetrag von Binance liegt (z. B.
+7,3 USDT am Markt, 4,7 USDT am Stop-Kurs), bekommt keinen Stop — bis 10 USDT gilt er als Staub; die Nachkontrolle setzt den Stop mit dem Kurs aus dem Buch, wenn das reicht.
 **2. Echtes Geld — mit eigenem Unterkonto, klein anfangen:**
 1. Binance → Konto → **Unterkonten** → «Unterkonto erstellen» (für verifizierte Konten mit 2FA, laut
    [Binance-FAQ](https://www.binance.com/en/support/faq/binance-sub-account-functions-and-frequently-asked-questions-360020632811)
@@ -1109,15 +1250,18 @@ python3 tools/trading/krypto_bot/test_calls.py    # 84 Tests: 40 typische Call-F
 python3 tools/trading/krypto_bot/test_binance.py  # 21 Tests, inkl. nachgebautem Binance-Server mit Signaturprüfung
 python3 tools/trading/krypto_bot/test_pilot2_plan.py  # 23 Tests: Pilot-2.0-Rechnung (Richtung, Ernte, Pfand, Mindestbeträge)
 python3 tools/trading/krypto_bot/test_pilot2_live.py  # 154 Tests: Pilot 2.0 («Konto = Wahrheit») gegen eine strenge nachgebaute Binance
-python3 -B tools/trading/krypto_bot/test_pilot2_streng.py  # 286 Tests: Belege der 8.–14. Prüfung, Schlussproben, Fuzzer-Funde gegen die Prüf-Börse, kleine Fuzzer
+python3 -B tools/trading/krypto_bot/test_pilot2_streng.py  # 475 Tests: Belege der 8.–15. Prüfung, Schlussproben, Fuzzer-Funde gegen die Prüf-Börse, kleine Fuzzer, Ausfall-Raster (--geist, 15.G)
 python3 -B tools/trading/krypto_bot/test_maxprofit.py      # 55 Tests: Max-Profit-Kern (gleiches Modell wie der Pilot, Kelly-Optimum, keine Zukunftsdaten, Kosten; Pilot 2.0 mit Hebel: = lauf2 bei 1×, Pfand-Regel, bei festem Kurs nie liquidiert)
-python3 -B tools/trading/krypto_bot/test_testnetz_pruefung.py  # 61 Tests: das Testnetz-Prüfskript (A1–A8, B1–B6) gegen die Prüf-Börse (nur 127.0.0.1)
+python3 -B tools/trading/krypto_bot/test_testnetz_pruefung.py  # 97 Tests: das Testnetz-Prüfskript (A1–A10, B1–B6) gegen die Prüf-Börse (nur 127.0.0.1)
 python3 -B tools/trading/krypto_bot/pruef_fuzzer.py notaus 0 1600     # grosser Fuzzer (für Prüfungen): Not-Aus unter harten Störungen
 python3 -B tools/trading/krypto_bot/pruef_fuzzer.py laeufe 0 200 30   # … Läufe über 30 Tage, Störungen in jedem Schritt
 python3 -B tools/trading/krypto_bot/pruef_fuzzer.py monotonie 0 400   # … Phase «nur Stornieren» (ab Laufbeginn oder mittendrin): nie Schutz verlieren
 python3 -B tools/trading/krypto_bot/pruef_fuzzer.py listen 0 400      # … eine eigene Auftragsliste dauerhaft unlesbar (13. Prüfung)
 PRUEF_STRENG=1 python3 -B tools/trading/krypto_bot/pruef_fuzzer.py laeufe 20000 20400 30  # … alle vier Arten im STRENGEN Modus (14. Prüfung): reduceOnly-Stop über der Position wird
                                                                       # abgelehnt (−2022), Störungen auf den ersten Anfragen mit endlichen Anzahlen, «unsichtbar» bis 8 Listenabfragen
+PRUEF_LUECKEN=1 python3 -B tools/trading/krypto_bot/pruef_fuzzer.py laeufe 110000 110100 30  # … gezielter Modus (15. Prüfung): Konto IMMER ohne STOP_LOSS, dreimal so viele Kurssprünge (Weg «hängender Stop-Limit»); auch `notaus`
+python3 -B tools/trading/krypto_bot/pruef_raster.py 0 12 [--kurs] [--haengend] [--notaus] [--geist] [--paare]  # deterministischer Ausfall-Raster (15. Prüfung): schreibende × lesende Störung × Zeitpunkt, Paare gekoppelter
+                                                                      # Störungen, Kurssprünge, Not-Aus; Befundarten und Aufruf im Kopf der Datei (PRUEF_STRENG=1 für die strenge Prüf-Börse)
 python3 tools/trading/krypto_bot/test_scalping.py      # 50 Tests: kein Blick in die Zukunft, strenge Füll-Regeln, Kosten exakt, Entscheidungsregeln
 python3 tools/trading/krypto_bot/test_news_waechter.py # 32 Tests: Alarm-Regeln, keine Fehlalarme, nur einmal melden, kein Fluten, Delistings jede Minute, Telegram-Kanäle
 python3 tools/trading/krypto_bot/test_delisting.py     # 36 Tests: Ankündigungen lesen, Einstieg/Ausstieg, Funding, Zufallsprobe (ohne Netz)
