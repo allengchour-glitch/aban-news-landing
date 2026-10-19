@@ -52973,3 +52973,27 @@ longsleeve-hemd-mit-bronzierung-schwarz-weiss-620100	aa-1	Herrenmode	2026-10-19T
 slim-fit-leinen-polohemd-608300	aa-1	Herrenmode	2026-10-19T20:32Z
 kurzarmeliges-arbeitshemd-mit-print-615900	aa-1	Herrenmode	2026-10-19T20:32Z
 gestreifter-kurzarm-cardigan-600700	aa-1	Herrenmode	2026-10-19T20:32Z
+square-toe-leichte-sandalen-mit-flachem-absatz-616100	aa-8	Damenschuhe	2026-10-19T21:57Z
+schwarze-high-heel-sandalen-mit-stiletto-616100	aa-8	Damenschuhe	2026-10-19T21:57Z
+damensandale-mit-quadratischem-zeh-und-peep-to-617100	aa-8	Damenschuhe	2026-10-19T21:57Z
+offene-zeh-sandale-mit-stilettoabsatz-601100	aa-8	Damenschuhe	2026-10-19T21:57Z
+rote-samt-sandalen-mit-mittelhohem-absatz-635400	aa-8	Damenschuhe	2026-10-19T21:57Z
+fischmund-riemchen-keilsandalen-613000	aa-8	Damenschuhe	2026-10-19T21:57Z
+stiletto-plateausandalen-mit-mittelhohem-absat-639100	aa-8	Damenschuhe	2026-10-19T21:57Z
+sandalen-mit-strass-absatz-617500	aa-8	Damenschuhe	2026-10-19T21:57Z
+baotou-riemchensandalen-mit-spitzer-zehenparti-613100	aa-8	Damenschuhe	2026-10-19T21:57Z
+sandale-mit-thong-und-niedrigem-absatz-605800	aa-8	Damenschuhe	2026-10-19T21:57Z
+riemchensandalen-fur-damen-623400	aa-8	Damenschuhe	2026-10-19T21:57Z
+strandsandalen-mit-blumenmuster-622800	aa-8	Damenschuhe	2026-10-19T21:57Z
+manner-outdoor-wanderschuhe-arbeit-und-kampf-627600	aa-8	Herrenschuhe	2026-10-19T21:57Z
+leichter-sneaker-mit-atmungsaktivem-mesh-oberm-631700	aa-8	Herrenschuhe	2026-10-19T21:57Z
+herren-sneaker-fur-alltag-und-freizeit-607100	aa-8	Herrenschuhe	2026-10-19T21:57Z
+s138-uav-mit-360-hinderniserkennung-dualkamera-618900	el	Büro & Home Office	2026-10-19T21:57Z
+hdmi-distributor-4k-splitter-mit-usb-ladeansch-616200	el	Büro & Home Office	2026-10-19T21:57Z
+usb-c-7-in-1-dock-mit-hdmi-ausgang-und-kabeltr-612700	el	Büro & Home Office	2026-10-19T21:57Z
+silikon-silent-soft-keyboard-85-tasten-603800	el-7-9-12-8	Büro & Home Office	2026-10-19T21:57Z
+kinder-rucksack-prinzessin-style-616000	lb-1	Büro & Home Office	2026-10-19T21:57Z
+keyboard-zubehor-set-fur-mechanische-tastatur-628300	el	Büro & Home Office	2026-10-19T21:57Z
+multifunktionale-dockingstation-6-in-1-fur-gam-606800	el-18	Büro & Home Office	2026-10-19T21:57Z
+leder-notizbuch-mit-metallspirale-a5-612800	os-4-9-9	Büro & Home Office	2026-10-19T21:57Z
+notizbuch-mit-pu-ledercover-623800	os-4-9-9	Büro & Home Office	2026-10-19T21:57Z

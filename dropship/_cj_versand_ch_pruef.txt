@@ -11097,3 +11097,10 @@ golf-eisenabdeckungen-726592	1786607379455418368	16	10.55	ok	landeseite
 herren-basketball-trainingsoberteil-638500	2607120703561639100	16	7.43	ok	landeseite
 drehfadenhalter-mit-magnet-387392	1782680364494884864	7	8.15	ok	landeseite
 schwarzer-traumfanger-wanddekoration-mit-feder-157184	1782323695680237568	16	5.55	ok	landeseite
+casual-kurzarm-shirt-mit-digital-druck-635100	2607081225111635800	16	7.17	ok	landeseite
+american-vintage-henley-shirt-herren-626500	2607081013451627100	16	9.47	ok	landeseite
+holzfenster-dekorationspaneel-609300	2603070419321609700	0	-	KEINE CH-Option → DRAFT	landeseite
+sommer-herren-polo-shirt-613400	2607080958251614100	16	8.79	ok	landeseite
+picknickdecke-outdoor-415424	1775472954952912896	16	20.23	ok	landeseite
+herren-geldborse-aus-echtem-leder-634700	2512061001271635000	16	5.69	ok	landeseite
+leichter-sommer-polo-621500	2607080258181622200	16	8.79	ok	landeseite

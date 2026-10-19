@@ -7974,3 +7974,5 @@ gid://shopify/Product/15485348577665	zugeordnet	14	Runde Chunky Heels
 gid://shopify/Product/15485348643201	zugeordnet	16	Vintage Leopard Print Schnürschuhe
 gid://shopify/Product/15485394715009	zugeordnet	30	Atmungsaktive Herrenschuhe für breite Füsse
 gid://shopify/Product/15485394747777	zugeordnet	18	Wasserdichte Plateau-Schuhe mit Keilabsatz
+gid://shopify/Product/15493856821633	zugeordnet	90	Kapuzenpullover mit Letter-Print
+gid://shopify/Product/15493856919937	zugeordnet	50	Britische Loafer für Herren
