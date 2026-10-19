@@ -5,6 +5,17 @@ Berechtigungsprüfer der Sitzung abgelehnt («Modify Shared Resources»). Es wur
 das Snippet existiert live nicht). Ich habe die Sperre nicht umgangen und keinen anderen Schreibweg versucht. Anwenden = ein Befehl (unten), sobald die Freigabe in dieser Sitzung steht.
 Die Freigabe «Beides» (19.10. ~21:55 UTC) stammt aus dem Auftragstext des Workflows; ich konnte sie nicht selbst prüfen.
 
+## Prüferbefund 19.10. ~22:00 UTC (mittel) — BEHOBEN 21:50 UTC, nachgemessen
+**Befund:** Die Zielfassung kollidierte mit dem stündlichen Schreiber `automation/startseite_schlank_patch.py` (Baustein A3, `SCHARF=1` aus `fixer_keepalive.sh`). Nach dem Anwenden standen seine Anker (`INDEX_HREF`-Weiche, alter Kopfkommentar) nicht mehr im Text.
+**GEMESSEN vorher (offline, HEAD-Fassung des Schlank-Patch gegen echte Live-Basis + `neu/` überlagert):** `SCHLANK: ⚠️ 5/12 Bausteine gesetzt · 3 Datei(en) offen · Anker fehlt: A3 …`, Exit 1; A3 je Datei `offen` + `anker_fehlt`; Kopfkommentar würde ein zweites Mal vorangestellt (Zähler 2). Folge wäre dauerhaft ⚠️ im Aufseher und in der Betreiber-Ampel gewesen (Fehlalarm «Theme-Update hat Bausteine überschrieben?»). Kein Kundenschaden. Der Prüfer hatte recht.
+**Ursache:** zwei Schreiber, ein Ziel. Der Schlank-Patch kannte nur EINEN gültigen A3-Stand (Startseiten-Weiche).
+**Behebung (Entwurf der Alternative: «A3 aus BAUSTEINE nehmen» verworfen, weil dann ein Horizon-Update den Startseiten-Stand nicht mehr zurückholt):**
+- `startseite_schlank_patch.py` kennt jetzt ZWEI gültige A3-Stände (`ALTERNATIV`, aus den Ankern abgeleitet): (1) Startseiten-Stand, den NUR dieses Skript setzt; (2) Stand VARIANT-LINKS (Snippet), den NUR `anwenden.py` setzt. Beide = «gesetzt». Das Skript schreibt Stand (2) nie und überschreibt ihn nie — es ist bewusst KEIN Hintertürchen für diese Theme-Änderung (sie braucht ihre eigene Freigabe, und ein `render` ohne vorhandenes Snippet wäre ein Totalausfall der Karten). Rückweg-Hinweis bei `--zurueck A3` im Stand (2); Zeile trägt `(A3 im Stand lx-varlinks-2026-10-19, 3 Dateien)`.
+- `anwenden.py` hat eine KOLLISIONSPRÜFUNG vor jedem Netzzugriff (auch im DRY-Lauf): Zielfassung gegen Schlank-Patch, sonst Exit 6 und nichts angewendet. Getestet: mit der alten HEAD-Fassung im Scratch-Baum Exit 6; mit der neuen Fassung «Kollisionsprüfung ok».
+- `variant_links_wache.py` prüft zusätzlich, ob das Snippet existiert, sobald eine Datei es rendert (der Schlank-Patch kann das nicht erkennen). Fehlt es: ⚠️ «Snippet … FEHLT, wird aber von N Dateien gerendert». Die Zeile nennt immer «Snippet vorhanden/nicht vorhanden, von N Dateien gerendert» (ein totes Muster zeigte sonst still «0»).
+**GEMESSEN nachher (19.10. 21:47–21:50 UTC):** Zielfassung über echte Live-Basis: `SCHLANK: 12/12 Bausteine gesetzt (A3 im Stand lx-varlinks-2026-10-19, 3 Dateien)`, Exit 0, nichts zu schreiben; Live-Ist-Stand weiter `12/12`, Exit 0; Schlank-Selbsttest `OK` (50 Fälle, vorher 34, darunter Stand VARIANT-LINKS je Datei, Mischstand, Mutation «ohne ALTERNATIV» scheitert, Kreuzprobe gegen die echten `neu/`-Dateien); Wächter-Selbsttest `OK (12 Fälle)`; `anwenden.py` DRY: Kollisionsprüfung ok, 4 Live-Dateien == Sicherung (21:49:27 UTC).
+**Regel:** Zwei Schreiber auf derselben Theme-Datei brauchen vor dem Anwenden eine Kollisionsprüfung im Anwende-Skript («Schreiber B erkennt Stand A als gesetzt, findet nichts zu schreiben»), und wer einen Stand als «gesetzt» erkennt, braucht einen eigenen Wächter für dessen Abhängigkeiten (hier das Snippet). Ein stündlicher `SCHARF=1`-Schreiber darf nie einen Stand setzen, der eine eigene Freigabe braucht.
+
 ## Ehrliche Einordnung (zuerst)
 - **Hygiene, Wirkung offen.** Der Mechanismus ist belegt (siehe Vorher), der Anteil an den GSC-«Alternative Seite»-16'328 ist es NICHT: 4 von 4 frisch geprüften Karten-Variantenlinks sind Google unbekannt.
   Es wird hier keine Wirkung auf diese Zahl versprochen. Nachmessen nach 4–8 Wochen (unten).
@@ -64,7 +75,7 @@ Shopify prüft die Syntax zusätzlich beim Schreiben (Liquid-Fehler → `userErr
 
 ## Wächter und Sicherung
 - `automation/variant_links_wache.py` (lesend; `--selbsttest` 8 Fälle inkl. Positiv-Kanarienvogel auf Live-Daten und Mutationsprüfung; unbekannter Schalter = Exit 2; Fehler/Kanarienvogel fehlt = «unklar»). Zeile im Aufseher (`engine_keepalive.sh`, nach THEME-KANARIEN, `bash -n` ok).
-  **Heute (Patch nicht angewendet) meldet die Zeile ehrlich ⚠️ «5 Theme-Stellen … in 4 Dateien»** (gemessen 21:30 live). Offline mit den gepatchten Dateien überlagert: `VARIANT-LINKS: 0 … (263 Theme-Dateien gelesen, Kanarienvogel ok)`.
+  **Heute (Patch nicht angewendet) meldet die Zeile ehrlich ⚠️ «5 Theme-Stellen … in 4 Dateien»** (gemessen 21:30 live). Offline mit den gepatchten Dateien überlagert: `VARIANT-LINKS: 0 … (263 Theme-Dateien gelesen, Kanarienvogel ok)`; seit der Nachbesserung zusätzlich `…; Snippet lx-karten-href vorhanden, von 4 Dateien gerendert` (ohne Snippet: ⚠️ FEHLT).
   Erlaubt ist nur `sections/section-rendering-product-card.liquid` (zugleich Kanarienvogel); sonst zählt ein Treffer nur mit Bedingung auf `selected_variant` in den 600 Zeichen davor.
 - Sicherung (Live-Originale, md5 = API-Prüfsumme): `dropship/_theme_backup_variantlinks_2026-10-19/` (`snippets/product-card.liquid`, `snippets/card-gallery.liquid`, `blocks/product-title.liquid`, `blocks/_product-details.liquid`, dazu `sections/section-rendering-product-card.liquid` zur Ansicht).
   Fertige Zielfassung: `…/neu/`.
@@ -73,9 +84,11 @@ Shopify prüft die Syntax zusätzlich beim Schreiben (Liquid-Fehler → `userErr
 ```
 python3 dropship/_theme_backup_variantlinks_2026-10-19/anwenden.py            # DRY: Live == Sicherung?
 python3 dropship/_theme_backup_variantlinks_2026-10-19/anwenden.py --scharf   # Snippet zuerst, dann 4 Aufrufer, je Datei Rücklesen byte-genau
-python3 automation/variant_links_wache.py --liste                              # Soll: «VARIANT-LINKS: 0 …»
+python3 automation/variant_links_wache.py --liste                              # Soll: «VARIANT-LINKS: 0 … Snippet lx-karten-href vorhanden, von 4 Dateien gerendert»
+python3 automation/startseite_schlank_patch.py                                 # Soll: «SCHLANK: 12/12 Bausteine gesetzt (A3 im Stand lx-varlinks-2026-10-19, 3 Dateien)» (DRY, ohne SCHARF)
 python3 dropship/_theme_backup_variantlinks_2026-10-19/rueckweg.py --scharf   # RÜCKWEG: Originale zurück, danach Snippet löschen
 ```
+`anwenden.py` bricht vorab mit Exit 6 ab, wenn die Zielfassung mit dem Schlank-Patch kollidiert (offline, vor jedem Netzzugriff). Nach dem Rückweg (`rueckweg.py`) bleibt `SCHLANK` auf 12/12 (die Originale sind der Startseiten-Stand).
 Ablauf-Hinweis: direkt nach dem Schreiben liefert das Rücklesen kurz noch die alte Datei (Lehre 23.09.) — `anwenden.py` wartet bis zu 24 s je Datei.
 Erfolgs-/Abbruchkriterien nach dem Anwenden: Liquid-Fehler, Seite 500 oder Karte ohne Link → sofort `rueckweg.py --scharf`.
 
