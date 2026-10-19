@@ -1,0 +1,21 @@
+{%- comment -%} lx-varlinks-2026-10-19: EINE Quelle fuer den Link einer Produktkarte (Karten, Kartenbild, Titel, Produktseiten-Selbstlink).
+  Standard = saubere Produkt-URL (product.url). ?variant= nur dort, wo Shopify bewusst eine Variante vorwaehlt:
+  Kollektion/Produktseite mit gesetzter Auswahl (product.selected_variant) und Suche NUR bei aktivem Filter.
+  Startseite, Standard-Kollektion, ungefilterte Suche = immer product.url.
+  Rueckweg: Originale aus dropship/_theme_backup_variantlinks_2026-10-19/ zurueckspielen, danach diese Datei loeschen. {%- endcomment -%}
+{%- liquid
+  assign lx_href = product.url
+  if product.selected_variant and template.name != 'index'
+    if template.name == 'search'
+      for lx_f in search.filters
+        if lx_f.active_values.size > 0 or lx_f.min_value.value or lx_f.max_value.value
+          assign lx_href = product.selected_variant.url
+          break
+        endif
+      endfor
+    else
+      assign lx_href = product.selected_variant.url
+    endif
+  endif
+-%}
+{{- lx_href -}}

@@ -18537,3 +18537,5 @@ gid://shopify/Product/16653713342855	30->3	Klassisches Polo-Shirt mit Farbblock-
 gid://shopify/Product/16653715800455	44->1	Kurzärmeliges Arbeitshemd mit Print
 gid://shopify/Product/16653788512647	10->0	Offene Zeh Sandale mit Stilettoabsatz
 gid://shopify/Product/16653792543111	13->1	Baotou Riemchensandalen mit spitzer Zehenpartie
+gid://shopify/Product/16653798867335	34->0	Männer Outdoor Wanderschuhe Arbeit und Kampf
+gid://shopify/Product/16653800702343	12->0	Herren-Sneaker für Alltag und Freizeit
