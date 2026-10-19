@@ -70,3 +70,4 @@ CJWJWJYZ00887-337A252pc	2026-10-15	schnitt 4: PRUEFUNG: Loop-Naht 16.37 > 1,3 x 
 CJEJ174300801AZ	2026-10-19	HOOK 2.24 < 3.0
 CJXFBXYS00035-5w-Black	2026-10-19	schnitt 4: PRUEFUNG: Loop-Naht 19.27 > 1,3 x Referenz 14.44
 CJXFBXVR00005-B	2026-10-19	schnitt 3: UNGEEIGNET: kein sauberes Material (Fremdtext: Fremdpreis ($78))
+CJCF110963101AZ	2026-10-19	schnitt 4: PRUEFUNG: Loop-Naht 36.88 > 1,3 x Referenz 25.08
