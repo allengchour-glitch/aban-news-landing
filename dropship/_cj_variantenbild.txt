@@ -7950,3 +7950,27 @@ gid://shopify/Product/16614875398535	zugeordnet	20	Sandalen mit dickem Absatz un
 gid://shopify/Product/16615398211975	zugeordnet	32	Blumiges Sweatshirt mit Rundhalsausschnitt
 gid://shopify/Product/16615611859335	zugeordnet	36	Einfarbiges Damenkleid mit Puffärmel und V-Ausschnitt
 gid://shopify/Product/15484932915585	zugeordnet	30	Gestreiftes Hoodie-Kleid mit lockerer Passform
+gid://shopify/Product/15485310763393	zugeordnet	9	Elegantes A-Linie-Kleid
+gid://shopify/Product/15485310960001	zugeordnet	8	Fischtail-Kleid im Hourglass-Stil
+gid://shopify/Product/15485310992769	zugeordnet	12	Elegantes Satin-Kleid schulterfrei
+gid://shopify/Product/15485311091073	zugeordnet	9	Spitzenbesetztes Trägerkleid
+gid://shopify/Product/15485311156609	zugeordnet	20	Midikleid mit Wellenmuster
+gid://shopify/Product/15485311320449	zugeordnet	35	Elegantes Maxikleid mit ausgestellten Ärmeln
+gid://shopify/Product/15485311385985	zugeordnet	25	Elegantes Maxikleid mit Glockenärmeln
+gid://shopify/Product/15485311418753	zugeordnet	35	Elegantes Sommerkleid mit Prinzessinnenärmeln
+gid://shopify/Product/15485321183617	zugeordnet	30	Diamantmuster-Cardigan
+gid://shopify/Product/15485321249153	zugeordnet	20	Leinen-Weste für Herren
+gid://shopify/Product/15485321314689	zugeordnet	36	Karoplatz-Polo · Herren
+gid://shopify/Product/15485321347457	zugeordnet	30	Smart-Casual Herren Base-Layer Shirt
+gid://shopify/Product/15485347987841	zugeordnet	24	Damen Flyknit Peep-Toe Sandalen mit dicker Sohle
+gid://shopify/Product/15485348086145	zugeordnet	50	Bequeme Leder-Schuhe mit eckiger Spitze
+gid://shopify/Product/15485348151681	zugeordnet	24	Vielseitige Pumps mit runder Zehenpartie
+gid://shopify/Product/15485348184449	zugeordnet	12	Slip-On Pumps mit flachem Absatz
+gid://shopify/Product/15485348217217	zugeordnet	40	Bequeme Leder-Slipper mit niedrigem Absatz
+gid://shopify/Product/15485348315521	zugeordnet	36	Vielseitige Casual-Sneakers mit Cut-Outs
+gid://shopify/Product/15485348446593	zugeordnet	12	Mary Jane mit Schleife und Höhen-Innensohle
+gid://shopify/Product/15485348512129	zugeordnet	30	Kreative bedruckte Flach-Sneaker
+gid://shopify/Product/15485348577665	zugeordnet	14	Runde Chunky Heels
+gid://shopify/Product/15485348643201	zugeordnet	16	Vintage Leopard Print Schnürschuhe
+gid://shopify/Product/15485394715009	zugeordnet	30	Atmungsaktive Herrenschuhe für breite Füsse
+gid://shopify/Product/15485394747777	zugeordnet	18	Wasserdichte Plateau-Schuhe mit Keilabsatz
