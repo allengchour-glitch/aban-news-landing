@@ -557,3 +557,4 @@
 2026-10-19T11:39:21.145Z	luxe-epic-hero.wav	33.41	home	cjreel-CJQC127503201AZ	stimme:nein	mix-fehler
 2026-10-19T11:44:58.352Z	luxe-adventure-uplift.wav	22.18	allgemein	cjreel-CJQC141029801AZ	stimme:ja	azure:de-CH-JanNeural
 2026-10-19T11:47:10.213Z	luxe-epic-trailer.wav	40.73	allgemein	cjreel-CJQCNBFX00015-black	stimme:ja	azure:de-CH-JanNeural
+2026-10-19T15:32:22.690Z	luxe-epic-sport.wav	44.9	gadget	cjreel-CJJT160595101AZ	stimme:nein	anteil

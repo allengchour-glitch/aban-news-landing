@@ -1,24 +1,24 @@
-# Feinkategorie (automatisch, 2026-10-19 14:26 UTC)
+# Feinkategorie (automatisch, 2026-10-19 15:30 UTC)
 
 Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 
 | Zustand | Produkte |
 |---|---:|
-| gleich | 36136 |
+| gleich | 36141 |
 | shopify-feiner | 15760 |
 | kein-google | 1641 |
-| rueckfall-grob | 1348 |
-| anderer-zweig | 899 |
-| kreuz | 14 |
-| schon-im-ledger | 14 |
+| rueckfall-grob | 1337 |
+| anderer-zweig | 900 |
+| kreuz | 13 |
+| schon-im-ledger | 13 |
 | titelprobe-nein | 10 |
 | keine-zuordnung | 1 |
-| ohne-kategorie | 1 |
-| verfeinern | 0 |
-| **geschrieben** | 0 (Fehler 0) |
+| verfeinern | 1 |
+| **geschrieben** | 1 (Fehler 0) |
 
 ## Ziele (dieser Lauf)
 
+- 1 → Clothing > Dresses
 
 ## Titelprobe hat abgelehnt (bleibt grob)
 
@@ -29,7 +29,6 @@ Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 - 1 × Necklaces
   - «Damen- und Kind-Freizeitanzug mit Print» → Activewear
   - «Blaues Denim für Herren» → Pants
-  - «Akryl-Blechlinge» → Bracelets
   - «Farbenfrohes Körperkreuz» → Dresses
   - «Mesh Maxi Cape mit Fledermausärmeln» → Dresses
   - «Acryl-Hängeornament» → Necklaces
@@ -37,3 +36,4 @@ Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
   - «Herren-Baselayer mit Reissverschluss, Langarm» → Activewear
   - «Grasformband» → Bracelets
   - «Kristall-Handschmeichler» → Bracelets
+  - «Akryl-Blechlinge» → Bracelets
