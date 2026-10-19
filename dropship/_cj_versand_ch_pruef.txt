@@ -9876,3 +9876,6 @@ business-hose-fur-herren-632200	2606231044261632800	16	9.47	ok	landeseite
 gesichtsstraffer-fur-die-augenpartie-610432	1699313204523970560	7	5.62	ok	landeseite
 wasserdichte-schuhauskleidung-382629	28C76CE5-9BD5-49E6-A4EB-4887B6B5BBB1	16	8.93	ok	landeseite
 ole-fur-duftdiffuser-959808	1691417722019651584	3	5.54	ok	landeseite
+doppel-duse-luftbefeuchter-487488	1691269397467373568	7	9.54	ok	landeseite
+kauwiderstandsfahiges-beissspielzeug-614600	2511100217531614800	16	7.85	ok	landeseite
+entspannte-sporthose-fur-herren-613900	2606140155361614600	16	8.79	ok	landeseite
