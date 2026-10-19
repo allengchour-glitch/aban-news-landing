@@ -7934,3 +7934,4 @@ gid://shopify/Product/15493855838593	zugeordnet	16	Vintage-Sandalen mit Peeptoe 
 gid://shopify/Product/15493855904129	zugeordnet	14	Herren-Sandalen aus Vollnarbenleder
 gid://shopify/Product/15493856035201	zugeordnet	8	Damen Hoodie mit Rundhals und Relaxed Fit
 gid://shopify/Product/15493856067969	zugeordnet	36	Chunky Ankle Boots mit Reissverschluss
+gid://shopify/Product/15497430172033	zugeordnet	28	Atmungsaktive Fitness-Sneaker für Damen
