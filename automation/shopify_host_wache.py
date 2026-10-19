@@ -9,9 +9,14 @@ zählt im Quelltext, wie viele Dateien den Host noch roh aus der Umgebung nehmen
 WIE (kein Doppelbau): Die /proc-Wanderung und die Motor-/Sitzungs-Zuordnung kommen aus secret_umgebung_wache.py (lese_proc mit Hook, einordnen mit
 schluessel="shop"); das Urteil über den Wert aus lib/shopify_host.py. Gelesen wird nur das Urteil und Länge/Merkmale — NIE ein Wert. Gezählt werden wie dort nur
 Verbraucher (node/python), Motoren und die Sitzung; Shell-Hüllen lesen /tmp/secrets_env.sh danach neu ein. Drei Teile:
-  1. Umgebung: /proc/<pid>/environ aller lesbaren Prozesse, SHOPIFY_SHOP → ok | bereinigt (nur anders geschrieben) | falsch | fremd (anderer Shop).
+  1. Umgebung: /proc/<pid>/environ aller lesbaren Prozesse, SHOPIFY_SHOP → ok | bereinigt (nur anders geschrieben) | falsch | fremd (anderer Shop) |
+     leer (gesetzt, aber ohne Inhalt: Skripte, die den Host aus der Umgebung nehmen, brechen damit ab — kein Leck, aber nicht «brauchbar»). «leer» wird
+     bei Verbrauchern, Motoren, Sitzung und in der Datei wie ein unbrauchbarer Wert gemeldet (zweite Prüfung 19.10.: ein leerer Wert zählte als «brauchbar»);
+     bei Shell-Hüllen steht er nur als Zahl in der ok-Zeile.
      Kanarienvogel gegen eine stille 0: trägt die EIGENE Umgebung SHOPIFY_SHOP, muss der eigene /proc-Eintrag es auch zeigen, sonst «unklar».
-  2. Datei /tmp/secrets_env.sh (die Runner lesen sie nach dem Start ein und überschreiben die Umgebung): Zeile SHOPIFY_SHOP geparst, nicht ausgeführt.
+  2. Datei /tmp/secrets_env.sh (die Runner lesen sie nach dem Start ein und überschreiben die Umgebung): Zeile SHOPIFY_SHOP geparst, nicht ausgeführt —
+     auch die ANSI-C-Form $'…', in der `printf %q` (env_datei im Keepalive) Werte mit Zeilenende/Tab/CR schreibt (vorher als «falsch, Länge 26» gelesen).
+     Heilen tut das lib/shopify_secret.sh (shopify_secrets_datei_heilen, im selben Keepalive-Lauf); diese Wache meldet nur, was danach noch steht.
   3. Quelltext (ganzes Repo, .py .mjs .sh .js .cjs; Test-/Hilfsdateien dieser Regel und Kommentarzeilen ausgenommen): Dateien mit «admin/oauth/access_token» im Code
      nach der Herkunft ihres Hosts: roh (Host aus SHOPIFY_SHOP, keine Prüfung) · suffix (nur `myshopify\\.com$`, lässt «evilmyshopify.com» durch) ·
      geprüft (lib/shopify_host.*, shopify_shop_pruefen oder eigene strenge Regex) · fest (Host im Code). KEINE Alarmschwelle: die Zahl steht in der Zeile,
@@ -35,7 +40,7 @@ HIER = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HIER, ".."))
 SECRETS_DATEI = "/tmp/secrets_env.sh"
 TREND_DATEI = "/tmp/_shopify_host_trend.tsv"
-MELDEN = {"bereinigt", "falsch", "fremd"}           # Urteile, die gemeldet werden (ok und leer nicht)
+MELDEN = {"bereinigt", "falsch", "fremd", "leer"}   # Urteile, die gemeldet werden (nur ok nicht)
 ENDPUNKT = "admin/oauth/access_token"
 DATEI_ENDUNGEN = (".py", ".mjs", ".sh", ".js", ".cjs")
 DATEI_MAX = 2_000_000
@@ -60,6 +65,60 @@ def _lade(name, pfad):
 
 SW = _lade("secret_umgebung_wache", os.path.join(HIER, "secret_umgebung_wache.py"))
 SH = _lade("shopify_host", os.path.join(HIER, "lib", "shopify_host.py"))
+
+
+ANSI_C = re.compile(r"\$'((?:[^'\\]|\\.)*)'", re.S)
+_ANSI_EINFACH = {"a": 7, "b": 8, "e": 27, "E": 27, "f": 12, "n": 10, "r": 13, "t": 9, "v": 11, "\\": 92, "'": 39, '"': 34, "?": 63}
+
+
+def _ansi_c(inhalt):
+    """Inhalt von $'…' (ohne die Hochkommas) → Text, wie bash ihn liest. None bei einer nicht unterstützten Folge (\\u, \\U, \\c, \\x ohne Ziffern)."""
+    out, i = bytearray(), 0
+    while i < len(inhalt):
+        c = inhalt[i]
+        if c != "\\":
+            out += c.encode("utf-8")
+            i += 1
+            continue
+        i += 1
+        if i >= len(inhalt):
+            return None
+        c = inhalt[i]
+        if c in _ANSI_EINFACH:
+            out.append(_ANSI_EINFACH[c])
+            i += 1
+        elif c in "01234567":
+            j = i
+            while j < len(inhalt) and j < i + 3 and inhalt[j] in "01234567":
+                j += 1
+            out.append(int(inhalt[i:j], 8) & 255)
+            i = j
+        elif c == "x":
+            j = i + 1
+            while j < len(inhalt) and j < i + 3 and inhalt[j] in "0123456789abcdefABCDEF":
+                j += 1
+            if j == i + 1:
+                return None
+            out.append(int(inhalt[i + 1:j], 16))
+            i = j
+        else:
+            return None
+    return out.decode("utf-8", "replace")
+
+
+def loese_ansi_c(text):
+    """Jede $'…'-Zeichenfolge → ein einfach gequotetes Wort mit dem entschlüsselten Inhalt (danach liest shlex die Zeile wie bash). None, wenn eine nicht lesbar ist."""
+    fehler = []
+
+    def ersatz(m):
+        v = _ansi_c(m.group(1))
+        if v is None:
+            fehler.append(1)
+            return m.group(0)
+        return shlex.quote(v)
+
+    neu = ANSI_C.sub(ersatz, text)
+    return None if fehler else neu
 
 
 def host_hook(wert):
@@ -150,8 +209,11 @@ def datei_urteil(pfad=SECRETS_DATEI):
     for z in text.splitlines():
         m = re.match(r"\s*(?:export\s+)?SHOPIFY_SHOP=(.*)$", z)
         if m:
+            rest = loese_ansi_c(m.group(1))
+            if rest is None:
+                return "unklar", "ANSI-C-Zeichenfolge nicht lesbar"
             try:
-                tok = shlex.split(m.group(1), comments=False)
+                tok = shlex.split(rest, comments=False)
             except ValueError:
                 return "unklar", "Zeile nicht lesbar"
             if len(tok) > 1:
@@ -164,7 +226,7 @@ def datei_urteil(pfad=SECRETS_DATEI):
 
 # ── 1. Umgebung ───────────────────────────────────────────────────────────────────────────────────────
 def umgebung(proc="/proc", eigene_pid=None, eigene_env=None):
-    """→ dict(prozesse, mit, schlecht, sitzung, motoren, fremd, infos, unklar|None)."""
+    """→ dict(prozesse, mit (SHOPIFY_SHOP mit Inhalt), leer (gesetzt, aber leer), schlecht, sitzung, motoren, fremd, infos, unklar|None)."""
     try:
         procs = SW.lese_proc(proc, host_urteil=host_hook)
     except OSError as e:
@@ -172,8 +234,8 @@ def umgebung(proc="/proc", eigene_pid=None, eigene_env=None):
         nicht_lesbar = f"{proc} nicht lesbar ({type(e).__name__})"
     else:
         nicht_lesbar = None
-    erg = {"prozesse": len(procs), "mit": sum(1 for p in procs.values() if p["shop"] is not None),
-           "schlecht": 0, "sitzung": [], "motoren": {}, "fremd": [], "infos": [], "unklar": None}
+    erg = {"prozesse": len(procs), "mit": sum(1 for p in procs.values() if p["shop"] not in (None, "leer")),
+           "leer": sum(1 for p in procs.values() if p["shop"] == "leer"), "schlecht": 0, "sitzung": [], "motoren": {}, "fremd": [], "infos": [], "unklar": None}
     pid = os.getpid() if eigene_pid is None else eigene_pid
     env = os.environ if eigene_env is None else eigene_env
     if nicht_lesbar:
@@ -222,8 +284,9 @@ def lauf(wurzel=REPO, proc="/proc", datei=SECRETS_DATEI, trend_datei=TREND_DATEI
     elif unklar:
         zeilen = [f"SHOPIFY-HOST: unklar ({unklar}) · {quell} · {tr}"]
     else:
-        datei_text = {"ok": "Datei geprüft", "fehlt": "keine Datei", "keine_zeile": "Datei ohne SHOPIFY_SHOP", "leer": "Datei: SHOPIFY_SHOP leer"}.get(d_art, d_art)
-        zeilen = [f"SHOPIFY-HOST: ok (Umgebung geprüft: {u['mit']} von {u['prozesse']} Prozessen tragen SHOPIFY_SHOP, alle brauchbar · {datei_text} · {quell} · {tr})"]
+        datei_text = {"ok": "Datei geprüft", "fehlt": "keine Datei", "keine_zeile": "Datei ohne SHOPIFY_SHOP"}.get(d_art, d_art)
+        leer_text = f", {u['leer']} weitere mit leerem Wert (keine Verbraucher)" if u["leer"] else ""
+        zeilen = [f"SHOPIFY-HOST: ok (Umgebung geprüft: {u['mit']} von {u['prozesse']} Prozessen tragen SHOPIFY_SHOP, alle Verbraucher davon brauchbar{leer_text} · {datei_text} · {quell} · {tr})"]
     if liste:
         for k in KLASSEN:
             zeilen += [f"  {k}\t{p}" for p in dateien[k]]
@@ -234,6 +297,7 @@ def lauf(wurzel=REPO, proc="/proc", datei=SECRETS_DATEI, trend_datei=TREND_DATEI
 def selbsttest():
     import contextlib
     import io
+    import subprocess
     import tempfile
     ok = fehl = 0
 
@@ -270,11 +334,16 @@ def selbsttest():
         schreibe("automation/lib/shopify_host.py", "# Hilfsmodul nennt den Endpunkt: admin/oauth/access_token\nx = 'admin/oauth/access_token'\n")
         schreibe("automation/j_text.txt", f"const SHOP = process.env.SHOPIFY_SHOP; {EP}\n")
         schreibe("node_modules/k_roh.mjs", f"const SHOP = process.env.SHOPIFY_SHOP;\nfetch({EP});\n")
+        # .git und __pycache__ dürfen nie mitzählen (zweite Prüfung: ohne diese Dateien blieb die Ausschlussliste ungeprüft, ein Entfernen von ".git" blieb grün)
+        os.makedirs(os.path.join(repo, ".git", "hooks"))
+        os.makedirs(os.path.join(repo, "automation", "__pycache__"))
+        schreibe(".git/hooks/m_roh.mjs", f"const SHOP = process.env.SHOPIFY_SHOP;\nfetch({EP});\n")
+        schreibe("automation/__pycache__/n_roh.py", "import os\nSHOP = os.environ.get('SHOPIFY_SHOP', '')\nx = f'https://{SHOP}/admin/oauth/access_token'\n")
         dateien, qf = zaehle_quelltext(repo)
         namen = {k: sorted(os.path.basename(p) for p in v) for k, v in dateien.items()}
         pruef("A roh = a_roh + g_env + h_default (Kanarienvogel > 0, Python-environ.get und Shell-Default erkannt)", namen["roh"] == ["a_roh.mjs", "g_env.py", "h_default.sh"])
         pruef("B suffix / geprüft / fest", namen["suffix"] == ["b_suffix.mjs"] and namen["geprueft"] == ["c_helfer.mjs", "i_streng.mjs"] and namen["fest"] == ["d_fest.py"])
-        pruef("C Kommentar, Testdatei, Hilfsmodul, .txt, node_modules zählen nicht", sum(len(v) for v in dateien.values()) == 7 and qf is None)
+        pruef("C Kommentar, Testdatei, Hilfsmodul, .txt, node_modules, .git, __pycache__ zählen nicht", sum(len(v) for v in dateien.values()) == 7 and qf is None)
         pruef("D klassifiziere ohne Endpunkt → None", klassifiziere("const SHOP = process.env.SHOPIFY_SHOP;") is None)
 
         # ── Umgebung: Fake-/proc ──
@@ -284,8 +353,8 @@ def selbsttest():
             f.write("5000.0 1.0\n")
         hz = os.sysconf("SC_CLK_TCK")
 
-        def mache(pid, ppid, argv, shop, start_s=100):
-            p = os.path.join(proc, str(pid))
+        def mache(pid, ppid, argv, shop, start_s=100, wurzel=None):
+            p = os.path.join(wurzel or proc, str(pid))
             os.makedirs(p)
             felder = ["S", str(ppid)] + ["0"] * 17 + [str(int(start_s * hz))]
             with open(os.path.join(p, "stat"), "w") as f:
@@ -366,6 +435,58 @@ def selbsttest():
         pruef("P2 gesunder Lauf mit gesundem /proc und Datei → ok (Gegenprobe zu P, N, O)", z[0].startswith("SHOPIFY-HOST: ok (") and len(z) == 1)
         z = lauf(repo, proc, sd, tr, "2026-10-22", False, 10, eigene, liste=True)
         pruef("Q --liste: Dateien je Klasse", any(x.startswith("  roh\tautomation/a_roh.mjs") for x in z))
+        # ── leer (zweite Prüfung, Befund 2/10): ein leerer SHOPIFY_SHOP ist nicht «brauchbar» ──
+        proc_l = os.path.join(d, "proc_l")
+        os.makedirs(proc_l)
+        with open(os.path.join(proc_l, "uptime"), "w") as f:
+            f.write("5000.0 1.0\n")
+        mache(2, 1, ["/opt/claude-code/bin/claude", "--x"], b"", wurzel=proc_l)
+        mache(10, 1, ["python3", "automation/a.py"], b"", wurzel=proc_l)
+        mache(11, 1, ["/opt/node22/bin/node", "automation/b.mjs"], b"", wurzel=proc_l)
+        u = umgebung(proc_l, eigene_pid=10, eigene_env={"SHOPIFY_SHOP": ""})
+        pruef("S1 drei leere Prozesse: nicht «mit», drei gezählt als leer, Sitzung + 2 Verbraucher schlecht, nicht unklar", u["mit"] == 0 and u["leer"] == 3 and u["schlecht"] == 3 and u["sitzung"] == [2] and u["unklar"] is None)
+        z = lauf(repo, proc_l, sd, tr, "2026-10-22", False, 10, {"SHOPIFY_SHOP": ""})
+        pruef("S2 Zeile ⚠️ statt «alle brauchbar» (so lautete die Zeile vor der Korrektur: «ok … alle brauchbar»)", z[0].startswith("⚠️ SHOPIFY-HOST:") and "alle Verbraucher davon brauchbar" not in z[0] and "leer: Länge 0" in z[0])
+        proc_s = os.path.join(d, "proc_s")
+        os.makedirs(proc_s)
+        with open(os.path.join(proc_s, "uptime"), "w") as f:
+            f.write("5000.0 1.0\n")
+        mache(2, 1, ["/opt/claude-code/bin/claude", "--x"], ECHT, wurzel=proc_s)
+        mache(10, 1, ["python3", "automation/a.py"], ECHT, wurzel=proc_s)
+        mache(11, 1, ["/opt/node22/bin/node", "automation/b.mjs"], ECHT, wurzel=proc_s)
+        mache(12, 1, ["bash", "/tmp/cj_queue_runner.sh"], b"", wurzel=proc_s)                 # Shell-Hülle mit leerem Wert: kein Verbraucher
+        z = lauf(repo, proc_s, sd, tr, "2026-10-22", False, 10, eigene)
+        pruef("S3 leere Shell-Hülle: ok-Zeile nennt sie ehrlich (3 tragen, 1 weitere leer), kein ⚠️", z[0].startswith("SHOPIFY-HOST: ok (") and "3 von 4 Prozessen" in z[0] and "1 weitere mit leerem Wert (keine Verbraucher)" in z[0])
+        pl = os.path.join(d, "s_leer.sh")
+        with open(pl, "w") as f:
+            f.write("SHOPIFY_SHOP=\n")
+        z = lauf(repo, proc_s, pl, tr, "2026-10-22", False, 10, eigene)
+        pruef("S4 Datei mit leerem SHOPIFY_SHOP: ⚠️ (die Runner würden den gültigen Wert mit «» überschreiben)", z[0].startswith("⚠️ SHOPIFY-HOST:") and "secrets_env.sh" in z[0] and "(leer)" in z[0])
+        # ── Datei: ANSI-C-Form $'…' (so schreibt `printf %q` Werte mit Zeilenende/Tab/CR; zweite Prüfung, Befund 5) ──
+        pf_q = os.path.join(d, "q.sh")
+        with open(pf_q, "w") as f:
+            f.write("export SHOPIFY_SHOP=$'au3j0y-hq.myshopify.com\\n'\n")
+        pruef("T1 $'…\\n' wird als bereinigt gelesen (nicht «falsch, Länge 26»)", datei_urteil(pf_q) == ("bereinigt", "Länge 24, Leerraum"))
+        with open(pf_q, "w") as f:
+            f.write("export SHOPIFY_SHOP=$'\\303\\251x'\n")
+        pruef("T2 Oktal-Escape (UTF-8) wird entschlüsselt: falsch, Länge 2", datei_urteil(pf_q)[0] == "falsch" and datei_urteil(pf_q)[1].startswith("Länge 2,"))
+        with open(pf_q, "w") as f:
+            f.write("export SHOPIFY_SHOP=$'\\u00e9'\n")
+        pruef("T3 nicht unterstützte Escape-Folge (\\u): unklar statt geraten", datei_urteil(pf_q)[0] == "unklar")
+        rund, abweichend = 0, []
+        werte = [(roh, art) for roh, art, _ in SH.faelle()] + [("\u00a0" + SH.SHOP_ECHT, "falsch"), ("\ufeff" + SH.SHOP_ECHT, "falsch"), (SH.SHOP_ECHT + "\x01", "falsch")]
+        for loc in ("C", "C.UTF-8"):
+            for roh, art in werte:
+                q = subprocess.run(["bash", "--noprofile", "--norc", "-c", 'printf "export SHOPIFY_SHOP=%q\\n" "$1"', "_", roh],
+                                   env={"PATH": "/usr/bin:/bin", "LC_ALL": loc}, capture_output=True, text=True, timeout=30)
+                with open(pf_q, "w", encoding="utf-8") as f:
+                    f.write(q.stdout)
+                rund += 1
+                if q.returncode != 0 or datei_urteil(pf_q)[0] != art:
+                    abweichend.append((loc, len(roh), art, datei_urteil(pf_q)[0]))
+        pruef(f"T4 Rundlauf: {len(werte)} Werte (Fallliste + NBSP/BOM/Steuerzeichen) durch das echte printf %q in C und UTF-8 → datei_urteil = Urteil des Werts ({rund} Läufe)", rund == 2 * len(werte) and not abweichend)
+        if abweichend:
+            print("  Abweichungen:", abweichend[:5])
         # ── Schalter ──
         with contextlib.redirect_stderr(io.StringIO()) as err, contextlib.redirect_stdout(io.StringIO()) as aus:
             codes = [main(["--hilfe"]), main(["--liste", "--selbsttest"]), main(["x"])]

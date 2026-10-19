@@ -9,13 +9,16 @@ IDEE aus Codex #2673 (lib/shopify_host.mjs, QUELLE): Host-Regex vor dem Anfügen
 EINER Regel (shopify_secret.sh · shopify_host.mjs · dieses Modul) und EINER Fallliste (shopify_host_faelle.tsv).
 
 REGEL (ASCII-genau, in allen drei Umsetzungen gleich):
+ 0. Länge über 253 (Hostname-Maximum, DNS) ist «falsch» und wird NIE bereinigt. GEMESSEN 19.10.: die Bash-Umsetzung trimmt auf langem Leerraum
+    quadratisch (40'000 Leerzeichen 4,08 s, 130'000 rund 45 s), die Node-Umsetzung bei «Zeichen + Leerraum + Zeichen» ebenso (40'000: 1,9 s;
+    1,3 Mio.: Minuten). Die Schranke greift VOR jeder Bereinigung; hier (Python, strip ist linear) steht sie wegen der gleichen Regel.
  1. Leerraum (Leerzeichen, Tab, CR, LF, VT, FF) am Rand weg; ein Paar umschliessender Anführungszeichen weg; nochmals Leerraum weg.
  2. Kleinschreibung (nur A–Z).
  3. «https://» am Anfang weg (nur dieses Schema); Vorsatz «shopify_shop=» ODER Anhang «=shopify_shop» weg (Variablenname aus einem
     Einfügefehler); EIN «/» am Ende weg. Jeder Schritt höchstens einmal.
  4. Der Rest muss ganz auf ^[a-z0-9]([a-z0-9-]*[a-z0-9])?\\.myshopify\\.com$ passen. Hosts unter myshopify.com gehören Shopify: Zugangsdaten
     gehen so nie an einen fremden Betreiber. Zusätzlich muss er (Standard) der LuxeStyle-Host sein (SHOP_ECHT).
- Nicht gesetzt (None oder «») ist «leer» — nichts zu prüfen. Gesetzt, aber nur Leerraum, ist «falsch».
+ Nicht gesetzt (None oder «») ist «leer» — nichts zu prüfen. Gesetzt, aber nur Leerraum, ist «falsch». Ein Paar Anführungszeichen muss GLEICH sein.
  Fehlertexte nennen nie den Wert, nur Länge und Merkmale (host_struktur) — der Wert könnte ein vertauschter Schlüssel sein.
 
 AUFRUF
@@ -28,8 +31,10 @@ AUFRUF
 import os
 import re
 import sys
+import time
 
 SHOP_ECHT = "au3j0y-hq.myshopify.com"
+MAX_LAENGE = 253                                                              # Hostname-Maximum (DNS), Regel 0
 HOST_RE = re.compile(r"[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.myshopify\.com")      # mit fullmatch (kein «$», das vor einem Zeilenende passt)
 LEERRAUM = " \t\r\n\v\f"
 NAME = "shopify_shop"
@@ -51,6 +56,8 @@ def host_struktur(roh):
     if not isinstance(roh, str):
         return f"Typ {type(roh).__name__}"
     m = [f"Länge {len(roh)}"]
+    if len(roh) > MAX_LAENGE:                       # Regel 0: nicht weiter scannen (gleich in bash und node)
+        return f"{m[0]}, länger als {MAX_LAENGE}"
     if any(c in LEERRAUM for c in roh):
         m.append("Leerraum")
     if '"' in roh or "'" in roh:
@@ -98,7 +105,7 @@ def host_urteil(roh, erwartet=SHOP_ECHT):
     host ist nur bei ok/bereinigt gefüllt. erwartet=None prüft nur die Struktur (dann gibt es kein «fremd»)."""
     if roh is None or roh == "":
         return "leer", ""
-    if not isinstance(roh, str):
+    if not isinstance(roh, str) or len(roh) > MAX_LAENGE:
         return "falsch", ""
     k = bereinige_shopify_host(roh)
     if not HOST_RE.fullmatch(k):
@@ -186,6 +193,16 @@ def selbsttest():
     pruefe("H NBSP ist kein Leerraum → falsch", host_urteil(" au3j0y-hq.myshopify.com")[0] == "falsch")
     pruefe("I Kelvin-Zeichen wird nicht zu «k» → falsch", host_urteil("Kelvin.myshopify.com", None)[0] == "falsch")
     pruefe("J kein Text → falsch", host_urteil(12345)[0] == "falsch" and host_urteil(["a"])[0] == "falsch")
+    # Regel 0: Längenschranke (Grenze 253 exakt, Polster zählt mit) und ein riesiger Wert bleibt schnell
+    pruefe("F2 Grenze: 253 Zeichen (Polster + Host) bereinigt, 254 falsch",
+           host_urteil(" " * (MAX_LAENGE - len(SHOP_ECHT)) + SHOP_ECHT) == ("bereinigt", SHOP_ECHT)
+           and host_urteil(" " * (MAX_LAENGE + 1 - len(SHOP_ECHT)) + SHOP_ECHT)[0] == "falsch")
+    gross = "x" + " " * 130000 + "y"
+    t0 = time.monotonic()
+    urteil_gross, struktur_gross = host_urteil(gross), host_struktur(gross)
+    dauer = time.monotonic() - t0
+    pruefe("F3 riesiger Wert: falsch, Struktur nennt nur Länge, unter 1 s",
+           urteil_gross == ("falsch", "") and struktur_gross == f"Länge 130002, länger als {MAX_LAENGE}" and dauer < 1.0)
     # assert / heile
     pruefe("K assert liefert den Host", assert_shopify_host("  au3j0y-hq.myshopify.com ") == SHOP_ECHT)
     for roh, art in ((None, "leer"), ("", "leer"), ("evil.example.com", "falsch"), ("other-store.myshopify.com", "fremd"), ("   ", "falsch")):

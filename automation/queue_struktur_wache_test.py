@@ -54,8 +54,8 @@ MUTATIONEN = [
     ("SCHARF ohne «posting»", 'SCHARF = frozenset({"ready", "posting", "posting-unklar-pruefen"})', 'SCHARF = frozenset({"ready", "posting-unklar-pruefen"})', "selbsttest"),
     ("SCHARF ohne «posting-unklar-pruefen»", 'SCHARF = frozenset({"ready", "posting", "posting-unklar-pruefen"})', 'SCHARF = frozenset({"ready", "posting"})', "selbsttest"),
     ("Familie posted offen: «posted.*» (postedx gilt)", 'r"posted(-[a-z0-9]+)+",', 'r"posted.*",', "selbsttest"),
-    ("Familie skip ohne Bindestrich (xskip gilt)", 'r"([a-z0-9]+-)+skip",', 'r"([a-z0-9]+-?)+skip",', "selbsttest"),
-    ("Familie hold ohne Bindestrich (xhold gilt)", 'r"([a-z0-9]+-)+hold",', 'r"([a-z0-9]+-?)+hold",', "selbsttest"),
+    ("Familie skip ohne Bindestrich (xskip gilt)", 'r"([a-z0-9]+-)+skip",', 'r"[a-z0-9-]+skip",', "selbsttest"),
+    ("Familie hold ohne Bindestrich (xhold gilt)", 'r"([a-z0-9]+-)+hold",', 'r"[a-z0-9-]+hold",', "selbsttest"),
     ("Familie archived ohne Grund (archived gilt)", r'(archived|verworfen|aussortiert)(-[a-z0-9]+)+"', r'(archived|verworfen|aussortiert)(-[a-z0-9]+)*"', "selbsttest"),
     # --- Fehler-Familie (Befund 1: youtube-fehler / instagram-fehler)
     ("Fehler-Familie ohne Bindestrich (tiktokfehler gilt)", 'r"[a-z0-9]+-fehler",', 'r"[a-z0-9]+-?fehler",', "selbsttest"),
@@ -66,7 +66,7 @@ MUTATIONEN = [
     ("«pending» fällt aus STATUS_FEST (7 echte Zeilen)", 'STATUS_FEST = frozenset({"ready", "posting", "posting-unklar-pruefen", "pending",',
      'STATUS_FEST = frozenset({"ready", "posting", "posting-unklar-pruefen",', "selbsttest"),
     ("«scheduled» fällt aus STATUS_FEST", '"skipped-nonjpg", "scheduled", "text-pruefen", "tiktok-fehler"})', '"skipped-nonjpg", "text-pruefen", "tiktok-fehler"})', "selbsttest"),
-    ("«ig-fehler» fällt aus STATUS_FEST", '"produkt-nicht-aktiv", "preis-veraltet", "ig-fehler", "posted", "skip",', '"produkt-nicht-aktiv", "preis-veraltet", "posted", "skip",', "selbsttest"),
+    # (kein Mutant für «ig-fehler»/«tiktok-fehler» in STATUS_FEST: beide deckt die Familie «<netz>-fehler» zusätzlich ab — äquivalent, würde überleben)
     ("status_bekannt kennt nur STATUS_FEST (Familien tot)", "return st in STATUS_FEST or any(p.fullmatch(st) for p in STATUS_FAMILIEN)", "return st in STATUS_FEST", "selbsttest"),
     # --- ID im offenen Satz (Befund 5)
     ("offene ID wieder der Dateirest (Quote in Feld 0)", 'info["offen_id"] = (satz[0] if satz else "")[:ID_MAX]', 'info["offen_id"] = satz[0] if satz else "".join(feld)', "selbsttest"),
@@ -273,15 +273,26 @@ def main(argv=None):
     namen = {a[0]: a[1] for a in arbeiten}
     ergebnis = {}
     ctx = multiprocessing.get_context("fork")
+    haengt = False
     with ctx.Pool(processes=min(4, os.cpu_count() or 1)) as pool:
-        for nr, gefangen, grund in pool.imap_unordered(kind, arbeiten):
+        it = pool.imap_unordered(kind, arbeiten)
+        for _ in arbeiten:
+            try:
+                nr, gefangen, grund = it.next(timeout=ZEIT_S * 2)   # ein Regex-Hänger im Kind wird vom Signal nicht unterbrochen — diese Grenze schon
+            except multiprocessing.TimeoutError:
+                haengt = True
+                break
             ergebnis[nr] = (gefangen, grund)
     fehler = list(unanwendbar)
+    if haengt:
+        fehler.append(f"Zeitüberschreitung: keine Antwort binnen {ZEIT_S * 2} s — fehlende Ergebnisse: " + ", ".join(namen[a[0]] for a in arbeiten if a[0] not in ergebnis))
     for nr in (0, -1):
+        if nr not in ergebnis:
+            continue
         g, grund = ergebnis[nr]
         if g:
             fehler.append(f"K1 {namen[nr]}: der UNVERÄNDERTE Quelltext fällt durch ({grund})")
-    for nr in sorted(k for k in ergebnis if k > 0):
+    for nr in sorted(k for k in ergebnis if k > 0):   # (fehlende Ergebnisse stehen schon als Zeitüberschreitung da)
         g, grund = ergebnis[nr]
         if nr == len(MUTATIONEN) + 1:
             if g:

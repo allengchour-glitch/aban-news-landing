@@ -12,6 +12,8 @@
 #            falsch    auch nach der Bereinigung kein Host unter myshopify.com (auch: gesetzt, aber nur Leerraum)
 #            fremd     gültige Struktur *.myshopify.com, aber nicht der LuxeStyle-Shop (au3j0y-hq)
 # Die Werte sind erfunden oder der öffentliche Shop-Host; KEIN Schlüssel steht hier (Schlüssel-Muster baut der Test zur Laufzeit).
+# Längen-Fälle (Regel 0: über 253 = falsch, Grenze 253 exakt, 130'000 Zeichen Leerraum) stehen NICHT hier, sondern mit denselben Zahlen in
+# den drei Tests — in dieser Tabelle wären sie unlesbar.
 «au3j0y-hq.myshopify.com»	ok	au3j0y-hq.myshopify.com
 «»	leer	-
 «  au3j0y-hq.myshopify.com  »	bereinigt	au3j0y-hq.myshopify.com
@@ -50,6 +52,10 @@
 «au3j0y hq.myshopify.com»	falsch	-
 «   »	falsch	-
 «""»	falsch	-
+«"au3j0y-hq.myshopify.com'»	falsch	-
+«'au3j0y-hq.myshopify.com"»	falsch	-
+«"au3j0y-hq.myshopify.com»	falsch	-
+«au3j0y-hq.myshopify.com"»	falsch	-
 «\n»	falsch	-
 «other-store.myshopify.com»	fremd	-
 «OTHER-STORE.MYSHOPIFY.COM/»	fremd	-
