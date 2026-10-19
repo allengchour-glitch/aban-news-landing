@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-19 16:58 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-19 18:17 UTC)
 
-Suche: `status:active AND created_at:>=2026-10-16` · gemessen 285 · **114 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 107, teilweise: 5, keine: 2; Preisspanne > 2×: 20) · 1 CJ-Variante: 171 · ohne Antwort: 0
+Suche: `status:active AND created_at:>=2026-10-16` · gemessen 288 · **115 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 108, teilweise: 5, keine: 2; Preisspanne > 2×: 20) · 1 CJ-Variante: 173 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -107,6 +107,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Zylindrischer Angelrucksack (`zylindrischer-angelrucksack-228160`) | 3 | 3 | 7.87–8.08 | 17.90 | Black, Urban camouflage, Desert camouflage |
 | Halskette mit Kor, Türkis und Muschelperlen (`halskette-mit-kor-turkis-und-muschelperlen-635200`) | 3 | 3 | 4.3–5.18 | 16.90 | Necklace, Bracelet, Ear Studs |
 | Uhrenaufbewahrungsbox aus Rindleder – braun (`uhrenaufbewahrungsbox-aus-rindleder-braun-603800`) | 3 | 3 | 19.79–32.12 | 49.90 | Brown-2Person , Brown-3Person , Brown-4Person  |
+| 30-Stückes Makeup-Pinselset mit Silikonborsten · 30 Stück (`30-stuckes-makeup-pinselset-mit-silikonborsten-624500`) | 3 | 3 | 10.54–10.54 | 23.90 | Black Silver Tube, Pink Silver Tube, Silver |
 | Business-Rucksack mit Passwort-Gürtelverschluss (`business-rucksack-mit-passwort-gurtelverschlus-616900`) | 2 | 2 | 29.52–32.84 | 77.90 | Black Airbag, Black Airbag Air Pump |
 | Frosted Fahrrad-Rennrucksack (`frosted-fahrrad-rennrucksack-073600`) | 2 | 2 | 6.56–6.56 | 17.90 | Frosted Style, Carbon pattern |
 | Grosses Casual-Rucksack mit PU-Leder und Buchstaben-Print (`grosses-casual-rucksack-mit-pu-leder-und-buchs-609664`) | 2 | 2 | 7.63–7.63 | 33.90 | Patterned Black, Large Plaid Flower |
