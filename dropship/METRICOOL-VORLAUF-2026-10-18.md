@@ -17,11 +17,14 @@ Marken: **GEMESSEN** = hier nachgerechnet, **QUELLE** = fremde Angabe, **BEHAUPT
 | Zustand | `dropship/_vorlauf_plan.json`, `_vorlauf_log.tsv` | neustartfest; defekte Datei wird aus git hergestellt, nie als leerer Plan behandelt |
 
 Raster (Zürcher Zeit, Mo–So gleich — GEMESSEN: kein Wochenend-Einbruch): TikTok 08:05/13:05/20:05 · YouTube 07:20/16:05 · IG+FB-Reel 12:15/20:15 ·
-IG-Bild 09:45 · IG-Karussell 21:15 · Story 12:45 · Pin 14:40/17:10/19:40/21:50 → 17 Planer-Einträge je Tag, 119 bis zum Ende.
+IG-Bild 09:45/16:10 · IG-Karussell 21:15 · Story 12:45/19:10 · Pin 14:40/17:10/19:40/21:50 → ≈ 21 Planer-Einträge je Tag (Obergrenze 30), 112 Slots bis zum Ende.
+(19.10.: Bild und Story von 1 auf 2 je Tag angehoben — der Autopilot postete vorher 4 Bilder/Tag; die Drossel hatte die Kadenz gesenkt. Threads-Zwilling nur zum ersten Bild des Tages.)
 Zeitumstellung 25.10. 03:00 → 02:00: keine Slots in der Doppelstunde, Ende bleibt 22:00 Ortszeit (geprüft).
-Planer-Limit 700 Einträge/Monat (ADVANCED_15, GEMESSEN am Konto): Prognose Ende Oktober ≈ 540.
+Planer-Limit 700 Einträge/Monat (ADVANCED_15, GEMESSEN am Konto): Prognose Ende Oktober ≈ 560 (389 bis 19.10. 00:00 + Rest des Plans).
+**Volumen (zweite Prüfung, GEMESSEN am Planer 01.–31.10.):** 7.–14.10. im Mittel 23,8 Einträge/Tag (inkl. ChatGPT-Läufe), im Plan 20.–24.10. 18,4 — der Rückgang liegt zum Teil an
+Slots, für die es keinen postbaren Kandidaten gibt (Reel-Vorrat, Jury), nicht am Raster. Sichtbarkeit steigt nur mit Material, das die Jury besteht; mehr Slots füllen leere Plätze nicht.
 
-Stand 18.10. 22:25 UTC: **79 von 98 Slots geplant** (bis 25.10. 12:45), Rest füllt der Autopilot (≤ 38 min je 15-min-Runde).
+Stand 19.10. 00:10 UTC: **88 von 112 Slots geplant** (bis 25.10. 21:50), Rest füllt der Autopilot (≤ 38 min je 15-min-Runde).
 Offen mit Grund: Karussell 6 (kein ready-Set; Nachschub läuft, Aufseher baut 2/Tag), TikTok 6 (laufen mit Trendton), Pin 4.
 
 ## Prüfung (3 unabhängige Prüfer, nur lesend; 43 Roh-Befunde)
@@ -53,8 +56,27 @@ Offen (bewusst nicht heute):
 - Produkttexte mit ASCII-Umlauten («Gemuese») im Shop; Hashtag-Fehlzuordnung bei 4 Beiträgen; 13 Einträge hängen an `raw.githubusercontent.com/…/<Branch>/…`
   (Metricool holt die Datei erst zur Sendezeit); Pin-Bildformate (nur 1 von 19 im Format 2:3).
 - Shop-Datenblatt «999er Sterling-Silber» / «Material: Metall» (Betreiber: Lieferantenangabe prüfen oder Aussage streichen).
-- **Threads ist NICHT umgesetzt** (kein Format, kein Poster; die Zeile «Vorlauf nimmt es mit auf» war zu früh). Threads-Posts kommen nur von ChatGPT.
+- **Threads (Betreiber «3 ja», 18.10.) IST umgesetzt — Korrektur der früheren Zeile «NICHT umgesetzt»:** `social-autopost-meta.mjs` plant über Metricool zum IG-Bild einen
+  Threads-Zwilling (Text mit klickbarem Link `?utm_source=threads`, Pflichtzeilen Link/«Folge»/erster Hashtag bleiben beim Kürzen auf 480 Zeichen). Kappe: höchstens EIN Threads-Eintrag je Zürcher Tag
+  (am Planer gemessen, unlesbar = kein Zwilling); `SKIP_THREADS=1` schaltet ab. Fünf Tage (20./21./22./24./25.10.) bekamen den Zwilling über den Konnektor; **meine Aussage «REST verweigert Threads
+  (403)» war falsch** — der Test lief mit der rohen CDN-Adresse, der Poster nimmt die von Metricool normalisierte und gelingt.
 - Wächter/Ampel rechnen mit der Planungszeit (`posted_at`), nicht mit dem Sendetermin; Prüfer-Reaktionszeit bis 2 h 15 min.
+
+## Zweite Prüfung (19.10., 4 Prüfer + Skeptiker je Hoch/Mittel; bestätigt 18, widerlegt 2, niedrig 19) — behoben
+
+- **Poster-Ausgang unsicher** (rc=0 ohne sichtbaren Eintrag, rc 1/124): der Slot bleibt «reserviert» (`reserviert_um`), `abgleichen()` adoptiert den Eintrag später per Anlegezeit;
+  vor jedem erneuten Versuch wird zuerst adoptiert, nie blind ein zweites Mal gepostet. Bewusste Ablehnungen («Ware schon beworben», Jury-/Preis-Skip) bleiben «offen».
+- **Massen-Schutz auch im Abgleich:** fehlen > max(3, 10 %) der zukünftigen Slots auf einmal im Planer-Abruf, passiert nichts (Zeile «⚠️ ABGLEICH-SCHUTZ»). Geschwister-Löschung wird wiederholt, wenn sie scheitert.
+- **Lost Update:** Prüfer/Notbremse und Plan-Lauf speichern den Plan per Drei-Wege-Zusammenführung unter kurzer Sperre. **Notbremse schreibt HALT zuerst**, dann erst Planer lesen.
+- **Prüfer-Blindheit sichtbar:** Storefront nicht lesbar → «⚠️ PRÜFER BLIND» (kein Löschen); `pid:`-Schlüssel der Bild-/Karussell-Poster werden zu Handles aufgelöst; Zeile nennt Slots ohne prüfbares Produkt.
+- **Trendton:** Gemini-Hörprobe NUR mit `TT_GESANG=1` (Standard war an — Ausschnitte lizenzierter Titel gingen an Google); Reels mit Sprecherstimme (`stimme:ja`, 222 von 540) und Sammelvideos bekommen keinen Trendton
+  (`originalVolume 0` hätte die Stimme stummgeschaltet); Selbstheilung nimmt den Modus nur zurück, wenn TikTok **bestätigt** «Originalton»/andere ID zeigt (≥ 2 Posts oder der einzige lesbare), unlesbare Seite = kein Urteil, 3 Abrufe, Posts < 20 min alt zählen nicht; Rücknahme erscheint in der Ampel.
+- **Pins:** Produkt-Ledger geprüft und beschrieben (Hausregel «Ware nie zweimal, auch nicht plattformübergreifend» — drei Waren liefen als Reel UND Pin); Board-Regex: Kleiderbügel/-ständer/-schrank → «Wohnen & Deko», «Kinder…» → «Geschenkideen Schweiz».
+- **Ledger:** `social/_tt_trend_verlauf.txt` und `social/_musik_verlauf.txt` wurden von keinem Committer erfasst (Autocommit nimmt nur `dropship/`) — jetzt in `autocommit.sh` und `git_sichern.sh`.
+- Selbsttest des Treibers schreibt nie mehr in die echte Drossel/das Log (setzt `SCHARF=False`), `queue_schreiber_wache` kennt `threads_zwillinge.py` (Dauer-Fehlalarm weg).
+
+Offen nach der zweiten Prüfung (bewusst): Abstandsregel (45 min) wird für später freigegebene ChatGPT-Reels nicht neu gerechnet (zwei Bild-Slots 20./21.10. knapp daran); Drossel-Nachlauf fix 180 min statt Kadenz des Autopiloten;
+`threads_zwillinge.py` ohne Planer-Gegenprüfung (Einmal-Werkzeug, fertig); Wegwerf-Ordner des Hörprobe-Titels bleibt bei SIGKILL liegen (/tmp, harmlos).
 
 ## Betrieb
 

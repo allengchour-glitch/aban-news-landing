@@ -72,6 +72,13 @@ Berichte: `dropship/METRICOOL-VORLAUF-2026-10-18.md`, `dropship/MUSIK-V3-2026-10
 7. **Trendton ist nicht der Hebel, den Anbieter versprechen.** TikTok-Aufrufe liegen zu 89 % bei ≈ 272, mittlere Wiedergabezeit 2,1 s (Korrelation −0,02) — Hook-Problem. Trendton nur als Abwechslung + messbarer Versuch.
 8. **Den Reel-Motor nie mit `--help` aufrufen** — er kennt keine Argumente und läuft los (2 min, abgebrochen, keine Folgen).
 9. Ein Wartebefehl `until [ date ≥ … ]` über 10 min wandert in den Hintergrund; für Wartezeiten > 2 min besser kurze Schleifen mit `timeout`.
+10. **Zweite, unabhängige Prüfung (19.10., 4 Prüfer + Skeptiker): 18 bestätigte Befunde in Code, den ich für fertig hielt.** Die teuren: (a) *Ausgang unsicher ≠ Ausgang leer* — ein Poster, der nach dem
+    POST abstürzt oder dessen Eintrag der Planer erst spät zeigt, darf den Slot nicht «offen» zurücklassen (zweiter Post zur selben Minute); der Slot bleibt «reserviert» und wird per Anlegezeit adoptiert;
+    (b) *Ein Selbstheiler braucht dieselbe Beweislast wie ein Löscher* — eine unlesbare TikTok-Seite schaltete den Trendton dauerhaft ab; jetzt nur bei bestätigtem «Originalton»;
+    (c) *Standardwerte sind Entscheidungen* — die Gemini-Hörprobe lief mit gesetztem Schlüssel von selbst, obwohl die Doku «AUS» sagte (Ausschnitte lizenzierter Titel gingen an Google): Opt-in `=== '1'`;
+    (d) *Ein Trendton mit `originalVolume 0` schaltet auch die Sprecherstimme stumm* (222 von 540 Reels haben eine) → Stimm-Reels ohne Trendton;
+    (e) *Meine eigene Prämisse war falsch:* «REST verweigert Threads (403)» — der Test lief mit der rohen CDN-Adresse; mit der von Metricool normalisierten Adresse plant der Poster Threads problemlos.
+    Vor einer Behauptung über eine API den Pfad des *produktiven* Aufrufers nachstellen, nicht einen eigenen Kurztest. (f) Ledger in `social/` wurden von keinem Committer erfasst (Autocommit = nur `dropship/`).
 
 ## 🗨️🎼✉️🔎 Kommentare, Musik, Mails, Search Console (2026-10-18, 20:50–21:40 UTC)
 
