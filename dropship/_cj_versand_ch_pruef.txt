@@ -10560,3 +10560,5 @@ sicherheitsschuhe-926976	1778320805852618752	16	14.96	ok	landeseite
 lederarmbanduhr-622000	2505260946431622600	7	7.96	ok	landeseite
 bequeme-laufschuhe-708864	1776095811248594944	16	19.99	ok	landeseite
 herrenuhr-mit-leuchtfunktion-621200	2505100236261621400	7	7.45	ok	landeseite
+kampfsport-schuhe-333184	1774616833509830656	16	7.57	ok	landeseite
+einfaches-herrenarmbanduhr-603400	2505080132131604000	7	6.26	ok	landeseite
