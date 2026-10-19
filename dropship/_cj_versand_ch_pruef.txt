@@ -9992,3 +9992,5 @@ grosser-ultraschall-luftbefeuchter-628224	1615551277423931393	7	20.17	ok	landese
 black-tech-power-mechanik-marathon-laufschuhe-620900	2406240541381621100	16	25.83	ok	landeseite
 manner-business-rucksack-619900	2603070424511610300	16	20.82	ok	landeseite
 langsam-futter-schussel-fur-hunde-638300	2604160748151638700	16	11.07	ok	landeseite
+kurze-dunne-sommerhose-im-american-style-605800	2604170954191606300	16	7.25	ok	landeseite
+wasserzirkulations-ornament-076160	1614908300259241984	16	14.48	ok	landeseite
