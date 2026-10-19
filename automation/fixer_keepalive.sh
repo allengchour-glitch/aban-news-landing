@@ -1643,11 +1643,21 @@ fi
 # ===== Folgerunde 05.10.2026 (wf_f1d1b5b0-276): Wächter aus 11 Bereichen =====
 # --- Dünne Texte: Nachprüfung der Tore (05.10.2026, Nachbesserung: Stückzahl-/Set-Tor, Varianten-Tor auch < 40 Wörter) — liest alle Ledger-Handles live, schreibt nichts, CJ nur aus Cache
 DTN=/tmp/produkttext_duenn_nachpruefen.log
-if [ -f "$REPO/automation/produkttext_duenn.py" ] && [ ! -f "$REPO/dropship/_duenne_texte_angehalten" ] && { [ ! -f "$DTN" ] || [ $(( $(date +%s) - $(stat -c %Y "$DTN") )) -gt 82800 ]; }; then
+# 19.10.2026 (Spähtrupp aufseher AUF-6): die Nachprüfung war durch dieselbe Marke gesperrt, die sie setzt — zwei Tor-Treffer standen 7 Tage live, die Schreib-Pipeline
+# (40 Texte/Tag) stand still, und niemand konnte die Marke je auflösen. Jetzt läuft sie auch bei gesetzter Marke (täglich) und löscht die Marke, sobald es keinen
+# SACHLICHEN Treffer mehr gibt. Eine reine Längenmeldung («nur 74 Wörter — schreibe mindestens 90») ist ein Stilmass des Schreibers, kein erfundener Fakt: zählt nicht.
+if [ -f "$REPO/automation/produkttext_duenn.py" ] && { [ ! -f "$DTN" ] || [ $(( $(date +%s) - $(stat -c %Y "$DTN") )) -gt 82800 ]; }; then
     ( cd "$REPO" && NACHPRUEFEN=1 BILD_AUS=1 timeout 1500 python3 automation/produkttext_duenn.py > "$DTN" 2>&1 )
     Z=$(grep "^NACHPRUEFEN:" "$DTN" | tail -1)
     T=$(echo "$Z" | grep -o "[0-9]* mit Tor-Treffern" | grep -o "^[0-9]*")
-    if [ -n "$T" ] && [ "$T" -gt 0 ]; then
+    if [ -n "$T" ]; then
+      L=$(grep -cE '^✗ [^ ]+ \[[A-Z]+\]: nur [0-9]+ Wörter[^|]*$' "$DTN"); T=$(( T - L ))
+      [ "$T" -lt 0 ] && T=0
+    fi
+    if [ -n "$T" ] && [ "$T" -eq 0 ] && [ -f "$REPO/dropship/_duenne_texte_angehalten" ]; then
+        rm -f "$REPO/dropship/_duenne_texte_angehalten"
+        echo "TEXTE-TORE: ✅ keine sachlichen Tor-Treffer mehr — Schreib-Pipeline wieder frei ($Z)"
+    elif [ -n "$T" ] && [ "$T" -gt 0 ]; then
         echo "TEXTE-TORE: ⚠️ $Z — Treffer in $DTN (✗-Zeilen); Wache bleibt an, Treffer von Hand neu schreiben"
         echo "$(date -u +%Y-%m-%dT%H:%MZ) — NACHPRUEFEN $T Tor-Treffer, siehe /tmp/produkttext_duenn_nachpruefen.log" > "$REPO/dropship/_duenne_texte_angehalten"
     else

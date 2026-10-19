@@ -49,6 +49,7 @@ const FARBE = new Set(['farbe', 'color', 'couleur', 'ausführung', 'ausfuehrung'
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 async function sgql(q, v) {
+  let drossel = 0;
   for (let i = 0; i < 4; i++) {
     try {
       const r = await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`, {
@@ -58,6 +59,15 @@ async function sgql(q, v) {
         body: JSON.stringify({ query: q, variables: v || {} }) });
       const j = await r.json();
       if (j.data) return j;
+      // 19.10.2026 (Spähtrupp aufseher AUF-3): «Throttled» ist eine Bitte um Geduld, kein Fehlversuch — Shopify nennt die Wartezeit (throttleStatus). Der feste
+      // 3–12-s-Schlaf liess den 500-Seiten-Scan (156 Punkte je Seite) ab Seite ~326 am geteilten Eimer scheitern: 14 Läufe in Folge «PAUSE».
+      const ts = j.extensions?.cost?.throttleStatus;
+      if (ts && (j.errors || []).some(e => /throttled/i.test(e.message || '')) && drossel < 40) {
+        drossel++;
+        const fehlt = Math.max(1, (j.extensions.cost.requestedQueryCost || 200) - (ts.currentlyAvailable || 0));
+        await sleep(Math.min(30000, Math.ceil(fehlt / Math.max(1, ts.restoreRate || 100) * 1000) + 500));
+        i--; continue;
+      }
     } catch { /* Netz-Zucker */ }
     await sleep(3000 * (i + 1));
   }
@@ -164,7 +174,14 @@ async function main() {
     ? fs.readFileSync(LEDGER, 'utf8').split('\n').map(l => l.split('\t')[0]).filter(Boolean) : []);
 
   const kand = [];
+  // 19.10.2026 (AUF-3): Scan-Cursor über Läufe hinweg — jeder Lauf begann bei Seite 1 und verwarf bei einem Fehler ALLES; der Fortschritt zählte 0 (11.10./13.10./19.10.).
+  const CURSOR_DATEI = '/tmp/cj_variantenbild_cursor.json';
   let cursor = null;
+  try {
+    const c = JSON.parse(fs.readFileSync(CURSOR_DATEI, 'utf8'));
+    if (c.cursor && Date.now() - c.zeit < 20 * 3600 * 1000) { cursor = c.cursor; console.log(`Scan setzt fort (Cursor von ${new Date(c.zeit).toISOString().slice(11, 16)} UTC)`); }
+  } catch { /* kein Cursor = ab Seite 1 */ }
+  let scanAbgebrochen = false;
   // ⭐ PRIORITÄTEN ZUERST (15.08.2026): Das «Midikleid mit Zopfmuster» — der Befund, mit dem
   // die Betreiberin diese ganze Arbeit angestossen hat — wäre in Katalogreihenfolge erst nach
   // Tausenden anderen drangekommen. Produkte in dropship/_cj_variantenbild_prio.txt werden
@@ -197,7 +214,11 @@ async function main() {
     // ablief, lieferte die erste Seite null → 0 Kandidaten → «FERTIG» im Log → der Aufseher
     // hätte den Lauf NIE wieder gestartet, mit ~2'700 offenen Produkten. Ein Fehlschlag
     // beim Sammeln ist eine Pause, kein Abschluss.
-    if (!p) { console.log('PAUSE (Shopify antwortet nicht — Kandidatensuche abgebrochen)'); return; }
+    // 19.10.2026 (AUF-3): bereits gesammelte Kandidaten werden NICHT verworfen — Scan bricht ab, Rest wird abgearbeitet, Cursor bleibt für den nächsten Lauf.
+    if (!p) {
+      if (!kand.length) { console.log('PAUSE (Shopify antwortet nicht — Kandidatensuche abgebrochen)'); return; }
+      scanAbgebrochen = true; console.log(`⚠️ Scan bei Seite ${seite} abgebrochen — ${kand.length} bisher gesammelte Kandidaten werden bearbeitet, Cursor bleibt`); break;
+    }
     for (const n of p.nodes) {
       if (erledigt.has(n.id)) continue;
       const fo = n.options.find(o => FARBE.has(o.name.toLowerCase()));
@@ -207,8 +228,10 @@ async function main() {
       const s = cjSchluessel(vs[0]?.sku || '');
       if (s.length) kand.push({ id: n.id, titel: n.title, s, vs });
     }
-    if (!p.pageInfo.hasNextPage || kand.length >= CAP) break;
+    if (!p.pageInfo.hasNextPage) { try { fs.unlinkSync(CURSOR_DATEI); } catch { /* war keiner da */ } break; }   // Vollscan fertig → nächstes Mal wieder von vorn
     cursor = p.pageInfo.endCursor;
+    try { fs.writeFileSync(CURSOR_DATEI, JSON.stringify({ cursor, zeit: Date.now() })); } catch { /* nur Komfort */ }
+    if (kand.length >= CAP) break;
   }
   console.log(`Produkte mit Farbwahl, aber ohne Variantenbilder: ${kand.length}`);
   if (DRY) { for (const k of kand.slice(0, 8)) console.log('   ', k.titel.slice(0, 46), k.vs.length, 'Varianten'); return; }

@@ -1232,6 +1232,22 @@ def koll_leer(stand=None, jetzt=None):
         ("ℹ️ LEERE-KOLLEKTIONEN: " + " · ".join(t.replace("ℹ️ ", "") for t in teile)) if teile else None)
 
 
+def texte_angehalten(marke=None, jetzt=None):
+    """DÜNNE TEXTE ANGEHALTEN (19.10.2026, Spähtrupp aufseher AUF-6): dropship/_duenne_texte_angehalten stoppt die Schreib-Pipeline (40 Texte/Tag) UND bis heute auch die
+    Nachprüfung; die Marke stand seit 12.10. (7 Tage), ohne dass eine Ampelzeile davon sprach. ⚠️ ab 2 Tagen Alter. Liest nur die Datei. Still auf dem Server."""
+    if AUF_SERVER:
+        return None
+    jetzt = time.time() if jetzt is None else jetzt
+    pfad = marke or os.path.join(REPO, "dropship", "_duenne_texte_angehalten")
+    try:
+        alter_t = (jetzt - os.path.getmtime(pfad)) / 86400
+        grund = open(pfad, encoding="utf-8").read().strip()[:90]
+    except OSError:
+        return None
+    return (f"⚠️ DÜNNE TEXTE ANGEHALTEN seit {alter_t:.0f} T ({grund}) — Treffer in /tmp/produkttext_duenn_nachpruefen.log, die Nachprüfung löscht die Marke "
+            "selbst, sobald es keinen sachlichen Treffer mehr gibt") if alter_t >= 2 else None
+
+
 def cj_suche_tor():
     """K8 (13.10.2026): Relevanz-Tor der CJ-Suchaufträge (cj_sku_import.mjs --stand: 20 Kanarien, liest nur Dateien, kein
     CJ-/Shopify-Aufruf). Meldet nur rote Kanarien — dann bleibt die Suchqueue zu. Braucht keinen Token (nicht in MIT_TOKEN).
@@ -1421,7 +1437,7 @@ def main():
     ohne_token = not os.path.exists(TOKPFAD)
     # Pruefungen, die den Shop-Token brauchen, laufen ohne ihn nicht — alle anderen schon (26.09.).
     MIT_TOKEN = (liechtenstein_gesperrt, klingen_pingpong, grow_zaehler, drafts_ohne_quittung, datei_speicher_voll, video_deckel, alter_lieferblock)
-    pruefungen = (bot_puls, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kassen_lieferdatum, werbetest, verkauf_gewinn, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik, startseiten_gewicht, such_boosts, alter_lieferblock, social_sperre, gsc_tot, index_stand, wearable_seo, koll_versprechen, koll_leer, cj_suche_tor, waisen_verzeichnis)
+    pruefungen = (bot_puls, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kassen_lieferdatum, werbetest, verkauf_gewinn, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik, startseiten_gewicht, such_boosts, alter_lieferblock, social_sperre, gsc_tot, index_stand, wearable_seo, koll_versprechen, koll_leer, texte_angehalten, cj_suche_tor, waisen_verzeichnis)
     teile = [zugang_weg()]
     for f in pruefungen:
         if ohne_token and f in MIT_TOKEN:
