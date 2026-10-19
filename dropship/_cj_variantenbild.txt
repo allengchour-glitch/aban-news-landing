@@ -7982,3 +7982,4 @@ gid://shopify/Product/15493857214849	zugeordnet	45	Christmas Hoodie mit Katzen-P
 gid://shopify/Product/15493857247617	zugeordnet	18	Herren Casual Slipper mit weicher Sohle
 gid://shopify/Product/15493857313153	zugeordnet	12	Chunky Freizeitschuhe mit Schnürung
 gid://shopify/Product/15497431679361	zugeordnet	40	Gepunktetes V-Ausschnitt Freizeitkleid mit 3/4-Ärmeln
+gid://shopify/Product/15497431744897	zugeordnet	24	Halterneck V-Ausschnitt Kleid mit Rüschensaum
