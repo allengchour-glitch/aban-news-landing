@@ -1609,3 +1609,5 @@ gid://shopify/Product/16650191176071	ok	Genuine Leder Crossbody Messenger
 gid://shopify/Product/16651927028103	nicht-versendbar	Wandbild im Mittelalter-Stil
 gid://shopify/Product/16648802861447	ok	Schulranzen mit Computerfach
 gid://shopify/Product/16650184982919	ok	Grosser Rucksack mit 56-75L Kapazität
+gid://shopify/Product/16644310827399	ok	Retro Doppel-Schicht Rindsleder Rucksack
+gid://shopify/Product/16651936792967	nicht-versendbar	Handgemaltes Wabi-Sabi-Ölgemälde mit Textur
