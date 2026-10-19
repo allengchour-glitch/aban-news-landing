@@ -1,6 +1,6 @@
-# Google-Diagnosen (product.feedback der App «Google & YouTube») — Stand 2026-10-19T18:30Z
+# Google-Diagnosen (product.feedback der App «Google & YouTube») — Stand 2026-10-19T20:42Z
 
-Gescannt: 55837 aktive Produkte in 224 Seiten (vollständig), 311 s. Meldungen nur für Shopping Ads (ignoriert): 49365.
+Gescannt: 55866 aktive Produkte in 224 Seiten (vollständig), 305 s. Meldungen nur für Shopping Ads (ignoriert): 49286.
 
 ## Free-Listings-Blocker: 51
 
@@ -15,9 +15,9 @@ Gescannt: 55837 aktive Produkte in 224 Seiten (vollständig), 311 s. Meldungen n
 | Tobacco products & related equipment | 1 | 0 | – |
 | Image not processed | 1 | 0 | – |
 
-## Wartet bei Google (Prüfung, kein Fehler bei uns): 700
+## Wartet bei Google (Prüfung, kein Fehler bei uns): 690
 
-- Image under review: 693
+- Image under review: 683
 - Title under review: 7
 
 Verweildauer (dropship/_google_pruefung_seit.json): 19 länger als 14 Tage, ältestes seit 2026-10-02.
@@ -29,14 +29,14 @@ Ziel «[]» = die App nennt kein betroffenes Ziel («… in [] [CH]» statt «in
 
 Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.
 
-- Missing shipping info in some countries [LI]: 31055
+- Missing shipping info in some countries [LI]: 30996
 - Alcoholic beverages [LI]: 3
 
-«Missing shipping info … [LI]»: In Shopify gibt es den Tarif (General profile, Zone «Liechtenstein» CHF 14.90, seit 09.10.), Google hat ihn nicht übernommen. Abhilfe (Betreiber, UNBELEGT welcher Klick reicht): App «Google & YouTube» → Einstellungen → Versand neu importieren, sonst im Merchant Center einen Versandservice für Liechtenstein (CHF 14.90) anlegen. NICHT das Land entfernen — LI ist Lieferland. Wirkung = diese Zahl beim nächsten Scan.
+«Missing shipping info … [LI]»: In Shopify gibt es den Tarif (General profile, Zone «Liechtenstein» CHF 14.90, seit 09.10.), Google hat ihn nicht übernommen — und übernimmt ihn von selbst NIE: QUELLE Shopify Help (help.shopify.com/en/manual/online-sales-channels/google/requirements) «You can import rates to ship your products only to the target country in your Google & YouTube channel» — die automatische Versandübernahme gilt nur für das EINE Zielland (CH). «Versand neu importieren» hilft deshalb nicht (GEMESSEN: 9 Tage seit der Freigabe ohne Wirkung). Optionen (Betreiber): (a) nichts tun — die Schweiz ist nicht betroffen, LI ist ein sehr kleiner Markt; (b) im Merchant Center unter «Versand und Rückgaben» einen Service «Liechtenstein, CHF 14.90» von Hand anlegen — QUELLE Google (support.google.com/merchants/answer/14232591): der Shopify-Sync «may overwrite manual updates from Merchant Center», ob der LI-Service überlebt, ist UNBELEGT. NICHT das Land aus dem Shopify-Markt entfernen — LI ist Lieferland. Wirkung = diese Zahl beim nächsten Scan.
 
 ## Nur Demand-Gen-Werbung (blockiert Gratis-Einträge vermutlich NICHT — wir schalten keine Demand-Gen-Werbung)
 
-- Inappropriate image: 299
+- Inappropriate image: 297
 
 Quelle: Google Merchant Help «Demand Gen product ads format requirements» (answer/13389785): Waffen, Totenköpfe, Körperfokus, Rauch/Flammen u. a. sind nur für Demand-Gen-Bilder verboten; «disapproved Demand Gen assets may continue to run on Google's other properties». Bestätigung = Status je Ziel im Merchant Center (Betreiber). Kein Bildtausch dafür (Aufseher seit 14.10.).
 
@@ -127,7 +127,7 @@ Quelle: Google Merchant Help «Demand Gen product ads format requirements» (ans
 
 - bestickter-seiden-optik-schal-635700
 
-### wartet: Image under review (693) — die ältesten zuerst
+### wartet: Image under review (683) — die ältesten zuerst
 
 - blumenkleid-mit-schnurung-613000 (seit 2026-10-02)
 - schonheitspflaster-628100 (seit 2026-10-02)

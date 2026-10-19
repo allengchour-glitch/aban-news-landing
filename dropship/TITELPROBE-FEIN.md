@@ -1,4 +1,4 @@
-# Titelprobe-Fein — Stand 2026-10-18 20:36 UTC
+# Titelprobe-Fein — Stand 2026-10-19 20:41 UTC
 
 Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 0 · gesetzt 0 · fehler 0.
 
@@ -25,7 +25,6 @@ Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 0 · gese
 - Premium-Herz-U-Form Hörlinge  [G: Earrings]
 - Blumenprint-Midi mit Volantsärmeln und A-Silhouette  [G: Dresses]
 - Blaues Denim für Herren  [G: Pants]
-- Akryl-Blechlinge  [G: Bracelets]
 - Farbenfrohes Körperkreuz  [G: Dresses]
 - Türkisfarbener Boho-Handgelenk-Band  [G: Bracelets]
 - Langtrench mit Slim-Fit  [G: Coats & Jackets]
@@ -54,3 +53,4 @@ Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 0 · gese
 - Kristall-Handschmeichler  [G: Bracelets]
 - Langärmelige Bead- und Diamanten-Verzierter Rock  [G: Dresses]
 - Blauer Striped-Langarm-Shirtrock  [G: Dresses]
+- Akryl-Blechlinge  [G: Bracelets]

@@ -11029,3 +11029,7 @@ dunne-fleece-jacke-fur-haarlose-katzen-624100	2603050854531624600	16	6.77	ok	lan
 vintage-arbeits-pants-619300	2512090801571619500	16	9.47	ok	landeseite
 fuchs-pelz-katzenanzug-621600	2603020718421622000	16	6.17	ok	landeseite
 doppel-haken-stander-grau-schwarz-625000	2604210520301625500	16	8.53	ok	landeseite
+warme-trekkinghose-mit-fleece-610100	2512080441201610300	16	11.90	ok	landeseite
+kinder-sportsschuhe-mit-drehverschluss-056960	1788487888481554432	16	11.10	ok	landeseite
+perlen-ohrhanger-damen-1e5228	8A33E6B0-DF39-42A0-A86D-C7A6ABFE2276	16	4.92	ok	landeseite
+einheitliche-sporthosen-fur-herren-636200	2512071052401636400	16	6.90	ok	landeseite

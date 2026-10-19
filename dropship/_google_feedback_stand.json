@@ -1,6 +1,6 @@
 {
- "stand": "2026-10-19T18:30Z",
- "gescannt": 55837,
+ "stand": "2026-10-19T20:42Z",
+ "gescannt": 55866,
  "seiten": 224,
  "vollstaendig": true,
  "blocker": 51,
@@ -15,7 +15,7 @@
   "Image not processed": 1
  },
  "ohne_onlineStoreUrl": {},
- "anzeigen_meldungen": 49365,
+ "anzeigen_meldungen": 49286,
  "handles": {
   "Image processing or experiencing delays": [
    "schweiz-magnet-fondue",
@@ -89,7 +89,7 @@
   "[Shop] Dieses Produkt ist in Shop nicht auffindbar. Prüfe den Angebotsstatus im Shop-Kanal": 3
  },
  "nur_ausland": {
-  "Missing shipping info in some countries [LI]": 31055,
+  "Missing shipping info in some countries [LI]": 30996,
   "Alcoholic beverages [LI]": 3
  },
  "nur_personalisiert": {
@@ -207,7 +207,7 @@
   ]
  },
  "wartet": {
-  "Image under review": 693,
+  "Image under review": 683,
   "Title under review": 7
  },
  "handles_wartet": {
@@ -390,7 +390,6 @@
    "gusseiserner-trockeneinsatz-634300",
    "katzen-futternapf-mit-erhohtem-rahmen-603700",
    "herren-oberteil-kurzarm-stehkragen-622100",
-   "einheitsfarbenes-t-shirt-fur-herren-634300",
    "damen-shorts-mit-spitzenbesatz-639300",
    "rote-madchenstiefel-901056",
    "kinder-sandalen-sommer-212736",
@@ -447,7 +446,6 @@
    "vintage-wide-leg-jeans-fur-grosse-grossen-611400",
    "ultraweiches-sitzkissen-fur-burostuhle-619200",
    "wasserdichter-atmungsaktiver-schonbezug-613600",
-   "herren-t-shirt-rundhals-kurzarm-616100",
    "polo-shirt-kurzarm-sommer-revers-baumwolle-622700",
    "herren-baseball-sportjacke-mit-reissverschluss-606600",
    "elegantes-neckholder-chiffon-kleid-605200",
@@ -483,10 +481,10 @@
    "kurzes-v-neck-kleid-mit-lochstickerei-625400",
    "hundegeschirr-und-leine-aus-baumwolle-3b0689",
    "blumen-damenuhr-aus-edelstahl-mit-quarzwerk-2b18e0",
+   "wasserdichte-quarzuhr-fur-sie-ihn-9d4871",
    "leuchtende-dreidimensionale-quarzuhr-72681a",
    "herren-freizeit-board-schuhe-628700",
    "memory-foam-kissen-fur-sitzkomfort-618200",
-   "hundegeschirr-mit-leine-und-tasche-107200",
    "damen-flanell-kapuzenpullover-fur-herbst-und-w-611600",
    "futterautomat-fur-haustiere-71c2cf",
    "acryl-adventskalender-blind-box-626300",
@@ -517,7 +515,6 @@
    "herren-hoodie-mit-reissverschluss-609500",
    "malbuch-taschenkatze-625100",
    "langarmpullover-mit-kragen-und-halbzip-636800",
-   "kugelformige-aromakerze-fur-festliche-dekorati-610300",
    "wasserdichte-quarz-uhr-50-m-728a5c",
    "bunte-buckel-sandalen-mit-dicker-sohle-595584",
    "linen-sandalen-fur-zuhause-offene-zehen-bander-673216",
@@ -574,6 +571,7 @@
    "keramische-butterbox-im-retro-design-623400",
    "v-formiges-stickdresch-mit-puffarmel-611800",
    "acryl-displaystander-fur-figuren-615500",
+   "sporthulle-ohne-armel-farbig-636300",
    "klettband-back-to-back-1-5-cm-3-m-dbd0ba",
    "weites-leinenhemd-fur-herren-langarm-624400",
    "sofakissen-in-chenille-mit-chinesischem-muster-628900",
@@ -612,7 +610,6 @@
    "plateau-wedge-sandalen-mit-fischmund-print-177280",
    "gartenverbinder-16-mm-t-stuck-und-winkel-fd3f52",
    "35-teiliger-torque-schleifscheiben-satz-2-inch-410ac6",
-   "ratschenschlussel-verstellbar-061d2f",
    "bequeme-zehensteg-sandalen-mit-dicker-sohle-839808",
    "damen-stiletto-plateau-sandalen-375488",
    "grosse-zehensteg-sandalen-mit-strass-177024",
@@ -635,7 +632,6 @@
    "ausziehbarer-wasserhahn-aus-edelstahl-612100",
    "arbeitsschuhe-mit-zehenschutz-624100",
    "herren-freizeitschuh-aus-echtem-leder-621600",
-   "winter-freizeitschuhe-aus-baumwolle-619600",
    "herren-sandalen-fur-sommer-und-strand-607600",
    "elektrischer-fleischwolf-aus-edelstahl-610600",
    "fleischwolf-aus-edelstahl-607500",
@@ -654,7 +650,6 @@
    "espresso-kaffeepulver-verteilring-622400",
    "spatel-und-loffel-aus-teakholz-639000",
    "lange-a-linien-top-jacke-mit-kordelzug-626000",
-   "langarmliges-bodycon-kleid-mit-halte-raum-und-619400",
    "poloshirt-kurzarmlig-manschettenknopf-polyeste-619300",
    "a-linie-kleid-mit-ruschenbundchen-610000",
    "poloshirt-mit-kragen-kurzarm-einfarbig-611000",
@@ -707,7 +702,6 @@
    "keramik-kaffeetasse-mit-buchmotiv-616700",
    "samt-sneakers-fur-kinder-80d5d8",
    "kinder-sneakers-fur-fruhling-und-herbst-c361d3",
-   "resin-tastenkappe-fur-mechanische-tastatur-41d847",
    "bluetooth-tastaturhulle-4b80f0",
    "wlan-router-91ee9e",
    "cartoon-kissen-reisrolle-617100",
@@ -765,7 +759,6 @@
    "kurzarm-oberteil-mit-denim-details-605900",
    "wasserdichte-schnur-boots-623100",
    "herren-stiefel-mit-schnurung-und-dicker-sohle-602300",
-   "blumiges-sweatshirt-mit-rundhalsausschnitt-600300",
    "pailletten-abendkleid-mit-v-ausschnitt-632500",
    "kleid-mit-v-ausschnitt-und-puffarmeln-636100",
    "fransenkleid-mit-v-ausschnitt-langen-armeln-608900",
@@ -897,11 +890,8 @@
    "bausteine-villa-und-auto-923008",
    "tagesplaner-notizbuch-cherry-red-627700",
    "mini-projektor-fur-heimkino-624300",
-   "kuschelkissen-h-619200",
    "pluschtier-kissen-kreative-nische-627100",
-   "atmungsaktives-nackenstutzkissen-fur-sommer-613700",
    "herren-slipper-mit-runder-schuhspitze-605600",
-   "business-schuhe-aus-leder-604900",
    "manner-rucksack-advanced-sense-business-large-624200",
    "rucksack-mit-rolltop-und-schulterklammer-625000",
    "vintage-rucksack-aus-rindleder-20-l-606000"
@@ -917,7 +907,7 @@
   ]
  },
  "nur_demand_gen": {
-  "Inappropriate image": 299
+  "Inappropriate image": 297
  },
  "handles_demand_gen": {
   "Inappropriate image": [
@@ -1004,13 +994,11 @@
    "wasserdichte-outdoor-hose-fur-herren-631500",
    "taktische-arbeitshosen-fur-herren-600400",
    "overall-mit-langen-armeln-602100",
-   "rauchfreie-sojawachskerze-geschenk-fur-aromath-627500",
    "taille-rucksack-set-627500",
    "vintage-arbeits-pants-619300",
    "warme-trekkinghose-mit-fleece-610100",
    "outdoor-hosen-fur-herren-weich-und-atmungsakti-655100",
    "herren-kletter-und-camp-camouflagehose-615400",
-   "sommer-t-shirt-fur-herren-612800",
    "tarnmuster-stiefel-0ada0b",
    "digitales-olbild-rahmenlos-im-blumenstil-844160",
    "norwegische-warmepants-mit-fleece-futter-605800",
@@ -1222,8 +1210,8 @@
    "herren-parka-aus-polyesterfaser-gefuttert-614800"
   ]
  },
- "dauer_s": 311,
- "wartet_summe": 700,
+ "dauer_s": 305,
+ "wartet_summe": 690,
  "wartet_ueber_tage": 14,
  "wartet_ueber": 19,
  "wartet_aeltestes": "2026-10-02"
