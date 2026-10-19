@@ -16,7 +16,8 @@
  *     Fenster/Klingenregel erklärt; von den übrigen 1'083 trifft bei 1'057 eine TITELregel der Python-Publizierer
  *     (google_sperrliste.ist_heikel über Titel+Typ+Tags: Kostüm, Maske, Feuerzeug, Waffe, CBD …; 108 davon auch ist_kostuem),
  *     26 trifft keine Regel (z. B. Länder-Caps «Flag-Cap Frankreich», «Hochfrequenz-Elektrotherapie-Stab») → Google ist KEIN Ziel
- *     (siehe unten). Ein Tag-Wächter dürfte Google nie anfassen.
+ *     (siehe unten). Ein Tag-Wächter dürfte Google nie anfassen. (Zweitmessung eines Prüfers mit ist_heikel(Titel, Typ) ohne Tags: 1'036 Treffer,
+ *     47 ohne Regel; nur Titel: 345 — die Zahlen hängen an den Eingaben, die Folgerung nicht.)
  *
  * WAS v2 TUT
  *   Ziele = Online Store · Shop · TikTok · Facebook & Instagram · Pinterest (Positivliste nach Kanalname; ein NEUER oder
@@ -66,7 +67,8 @@
  *   LIVE=1 APPROVE_PUBLISH=1 node automation/publish_guard.mjs      schreibt (nur nicht gesperrte Produkte)
  *   node automation/publish_guard.mjs --zeile         EINE Zeile «PUBLISH-GUARD: …» für die Keepalive-Meldung (immer lesend)
  *   node automation/publish_guard.mjs --selbsttest    offline: Parser, Kanarien (Tag/Ledger/Titel), Host-Regex, Quellen
- * ENV: SHOPIFY_SHOP + (SHOPIFY_ADMIN_TOKEN | SHOPIFY_CLIENT_ID+SHOPIFY_CLIENT_SECRET)
+ * BRAUCHT: node 22 und python3 (Titelregeln, `python3 -I`; fehlt es, ist das Ergebnis «unklar», nie «keine Treffer»).
+ * ENV: SHOPIFY_SHOP + (SHOPIFY_ADMIN_TOKEN | SHOPIFY_CLIENT_ID+SHOPIFY_CLIENT_SECRET; die Client-Credentials gehen vor)
  *      [SCAN=250, max 3000: zuletzt geänderte] [PQUERY="status:active AND tag:…"] [INCLUDE_HEADLESS=1]
  * Tests: automation/publish_guard_test.mjs (Fake-fetch, offline) · Muster: automation/lib/fake_fetch_preload.mjs
  */
@@ -116,8 +118,8 @@ const PRAEFIXE_FEST = ['google-kanal-', 'social-pause'];   // google-gesperrt ko
 const MUSTER = [/^(?:[a-z0-9]+-)*nicht-(?:[a-z0-9]+-)*bewerben$/, /-raus-\d{4}/, /^compliance-pruefen$/];
 // Untergrenze Produkt-IDs je Ledger (≈ 50 % des Stands vom 19.10.2026: 17 / 16 / 156 / 12 / 206). Ein abgeschnittenes oder geleertes Ledger ist «unklar»,
 // nicht «ok» — der Tag-Schutz allein deckt nicht alles (4 der 205 Lücken erklärt nur das Ledger). Wer ein Ledger bewusst verdichtet, senkt die Zahl mit Begründung.
-export const LEDGER_MIN = { '_merchant_issue_done.txt': 8, '_merchant_sperre_durchgesetzt.txt': 8, '_google_kanal_gesaeubert.txt': 78,
-  '_google_kanal_gesaeubert2.txt': 6, '_google_sperrtags_durchgesetzt.txt': 100 };
+export const LEDGER_MIN = Object.freeze({ '_merchant_issue_done.txt': 8, '_merchant_sperre_durchgesetzt.txt': 8, '_google_kanal_gesaeubert.txt': 78,
+  '_google_kanal_gesaeubert2.txt': 6, '_google_sperrtags_durchgesetzt.txt': 100 });
 const LEDGER = Object.keys(LEDGER_MIN);
 // Kanarien: diese Tags MÜSSEN in den gelesenen Python-Mengen stehen (sonst Parserfehler/gekürzte Liste → unklar)
 const KANARIEN_AUSSCHLUSS = ['nicht-bewerben', '18plus', 'google-policy-flag', 'nicht-google-bewerben', 'waffe-pruefen'];

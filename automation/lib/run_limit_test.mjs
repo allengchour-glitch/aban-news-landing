@@ -1,8 +1,9 @@
 // run_limit_test.mjs — prüft lib/run_limit.mjs und das Tor «MAX_PER_RUN» in den fünf Postern (19.10.2026). Offline, ohne Schlüssel.
 //   node --test automation/lib/run_limit_test.mjs        (aus dem Repo-Wurzelordner; ~15 s, der Hauptteil sind die 5 × 23 Poster-Prozesse)
 //
-// A  parseRunLimit als Funktion: Tabelle gültig/ungültig (Grenzfälle), Meldung (Name, Wert auf 20 Zeichen, kein Zeilenumbruch),
-//    Programmierfehler (TypeError), BITGLEICH zur alten Auswertung für jeden Wert 1…2000 und die Standards.
+// A  parseRunLimit als Funktion: Tabelle gültig/ungültig (Grenzfälle, auch Unicode-Leerraum), Meldung (Name, Wert auf 20 Zeichen,
+//    kein Zeilenumbruch, Unsichtbares als \uXXXX), Programmierfehler (TypeError), BITGLEICH zur alten Auswertung für jeden Wert
+//    1…2000 und die Standards.
 // B  runLimitOderEnde: Pause, Fehler, Zahl, Obergrenze — mit eingespeister Ausgabe/Beendigung.
 // C  Quelltext: in jedem Poster ist das Tor die ERSTE Anweisung nach den Importen; die alte Auswertung ist weg.
 // D  Prozess je Poster (/usr/bin/env -i, PATH, NUR gefälschte Schlüssel «dummy»): Pause → Exit 0 + genau die PAUSE-Zeile + KEINE Wirkung;
@@ -13,6 +14,8 @@
 //    könnte in diesem Test nie echt posten. POSITIV-KANARIENVÖGEL: dieselben Läufe mit MAX_PER_RUN=1 MÜSSEN die Queue anfassen, und die
 //    Spur muss einen Lock-Versuch, ein Schreiben, ein fetch und einen Prozessstart ERKENNEN — sonst wäre jede «0 Zugriffe» wertlos.
 // E  Aufrufer: kein Skript exportiert MAX_PER_RUN (Falle: upload_edited_product_images.py liest dieselbe Variable mit 0 = ALLE).
+//    Die Suche (exportFunde) ist selbst geprüft: «E Kanarienvogel» legt einen Prüfbaum mit 25 Verstössen (Shell, Python, JS, Workflow;
+//    ein- und mehrzeilig) und 14 harmlosen Formen an — jeder Verstoss MUSS gefunden, keine harmlose Form darf gemeldet werden.
 import test, { after } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -23,6 +26,7 @@ import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { parseRunLimit, runLimitOderEnde, RunLimitError } from './run_limit.mjs';
 import { stoppAktiv } from '../post_guard.mjs';
+import { baumSchreiben } from './run_limit_baum.mjs';
 
 const HIER = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(HIER, '..', '..');
@@ -52,6 +56,12 @@ test('A1 gültige Werte', () => {
     ['0', { standard: 1, max: 5 }, { n: 0, pause: true }],     // Pause schlägt die Obergrenze nicht, sie bleibt Pause
     [3, { standard: 1 }, { n: 3, pause: false }],              // Zahl statt Text (Aufruf aus Code)
     [0, { standard: 1 }, { n: 0, pause: true }],
+    // Unicode-Leerraum (alles, was trim() entfernt) ist erlaubt, wie beim alten parseInt — bewusst, siehe Kopf von run_limit.mjs
+    ['\u00a00\u00a0', { standard: 50 }, { n: 0, pause: true }],   // NBSP+0+NBSP = Pause (die sichere Richtung)
+    ['\u00a07\u00a0', { standard: 1 }, { n: 7, pause: false }],
+    ['\ufeff3', { standard: 1 }, { n: 3, pause: false }],          // BOM davor
+    ['\u30002\u3000', { standard: 1 }, { n: 2, pause: false }],   // ideografisches Leerzeichen
+    ['\u20284\u2029', { standard: 1 }, { n: 4, pause: false }],   // Zeilen-/Absatztrenner rundherum
   ];
   for (const [roh, opt, soll] of tabelle) assert.deepEqual(parseRunLimit(roh, opt), soll, `Eingabe ${JSON.stringify(roh)} ${JSON.stringify(opt)}`);
 });
@@ -59,6 +69,8 @@ test('A1 gültige Werte', () => {
 test('A2 ungültige Werte werfen RunLimitError (nie still umgedeutet)', () => {
   const schlecht = ['-1', '-0', '-3', '+5', '2.5', '0.0', '.5', '5.', '1e3', '1E3', '0x10', '0b1', 'abc', '5x', 'x5', 'NaN', 'Infinity',
     '-Infinity', ' ', '  \t', '5 5', '1,5', '1_000', '- 3', 'null', 'undefined', 'true', '١٢', '１２',   // Arabisch-indisch / Vollbreite
+    '\u00a0', '\u2028', '\u3000', '\ufeff',   // nur Unicode-Leerraum = «nur Leerzeichen»
+    '\u200b5', '5\u200b', '\u202e5', '5\u202e', '\u{e0001}5', '5\u0085x', '\u007f5',   // unsichtbare Nicht-Leerraum-Zeichen sind Müll
     '9007199254740992', '9007199254740993', '99999999999999999999', '1'.repeat(400),
     NaN, Infinity, -Infinity, 2.5, -3, 1e21, {}, [], true];
   for (const roh of schlecht) {
@@ -85,6 +97,28 @@ test('A3 Meldung: Name der Variable, Wert auf 20 Zeichen gekürzt, ohne Zeilenum
   assert.ok(/zu gross/.test(gross) && gross.includes('"99999999999999999999"'), gross);
 });
 
+const UNSICHTBAR = /[\p{Cc}\p{Cf}\p{Zl}\p{Zp}]/u;   // dieselbe Klasse wie im Code, hier unabhängig davon notiert
+test('A3b Meldung: Unsichtbares steht als \\uXXXX — eine Zeile, keine Steuer-, Format- oder Umlenkzeichen (Befund 19.10.: U+2028 kam roh durch)', () => {
+  const m = f => { try { f(); } catch (e) { return e.message; } return ''; };
+  const faelle = [   // [Eingabe, erwartete Schreibweise in der Meldung]
+    ['\u2028', '\\u2028'], ['\u2029x', '\\u2029x'], ['a\u0085b', 'a\\u0085b'],            // Zeilentrenner, NEL
+    ['a\u007fb', 'a\\u007fb'], ['\u009b[31m', '\\u009b[31m'],                             // DEL, C1-CSI
+    ['\u202e5', '\\u202e5'], ['5\u2066', '5\\u2066'], ['\u200b', '\\u200b'], ['\ufeffx', '\\ufeffx'],   // Umlenkung, ZWSP, BOM
+    ['\u00a0', '\\u00a0'], ['\u3000x', '\\u3000x'],                                        // Sonderleerzeichen werden sichtbar
+    ['\u{e0001}x', '\\u{e0001}x'],                                                          // ausserhalb der BMP (Tag-Zeichen)
+    ['\u001b[2J', '\\u001b[2J'], ['a\nb', 'a\\nb'], ['\x00', '\\u0000'],                   // wie bisher (JSON.stringify)
+  ];
+  for (const [roh, soll] of faelle) {
+    const meldung = m(() => parseRunLimit(roh, { standard: 1 }));
+    assert.ok(meldung.includes(`MAX_PER_RUN="${soll}"`), `Eingabe ${JSON.stringify(roh)}: erwartet ${soll} in: ${meldung}`);
+    assert.ok(!UNSICHTBAR.test(meldung) && !/[\u00a0\u3000]/.test(meldung) && !/[\r\n]/.test(meldung), `Meldung zu ${JSON.stringify(roh)} trägt rohe Steuer-/Formatzeichen`);
+  }
+  // Positiv-Kanarienvogel: die Prüfklasse trifft die rohen Zeichen wirklich (sonst bewiese «sauber» oben nichts)
+  for (const c of ['\u2028', '\u2029', '\u0085', '\u007f', '\u202e', '\u200b', '\ufeff', '\u{e0001}', '\x00', '\n']) assert.ok(UNSICHTBAR.test(c), `Prüfklasse erkennt ${JSON.stringify(c)} nicht`);
+  // Gewöhnliches bleibt lesbar: Umlaut, Emoji, Gedankenstrich, normales Leerzeichen
+  assert.ok(m(() => parseRunLimit('ü 😀', { standard: 1 })).includes('MAX_PER_RUN="ü 😀"'));
+});
+
 test('A4 Programmierfehler sind TypeError (nicht RunLimitError)', () => {
   for (const opt of [{}, { standard: -1 }, { standard: 1.5 }, { standard: NaN }, { standard: '1' }, { standard: 1, max: 0 },
     { standard: 1, max: -2 }, { standard: 1, max: 2.5 }, { standard: 9, max: 5 }]) {
@@ -98,6 +132,8 @@ test('A5 BITGLEICH zur alten Auswertung für «1»…«2000», Leerzeichen, füh
   for (const N of [1, 50]) {
     for (let i = 1; i <= 2000; i++) assert.equal(parseRunLimit(String(i), { standard: N }).n, alt(String(i), N), `Wert ${i}, Standard ${N}`);
     for (const roh of [undefined, '', ' 3 ', '03', '007', '\t9']) assert.equal(parseRunLimit(roh, { standard: N }).n, alt(roh, N), `Wert ${JSON.stringify(roh)}, Standard ${N}`);
+    // Unicode-Leerraum um eine positive Zahl: der alte Ausdruck las sie ebenfalls (parseInt überspringt ihn) — also nichts Neues, nichts verloren
+    for (const roh of ['\u00a03', '3\u00a0', '\u00a012\u00a0', '\ufeff9', '\u30005', '\u20287']) assert.equal(parseRunLimit(roh, { standard: N }).n, alt(roh, N), `Wert ${JSON.stringify(roh)}, Standard ${N}`);
   }
 });
 
@@ -281,6 +317,14 @@ for (const p of POSTER) {
         KEINE_WIRKUNG(r, `Wert ${JSON.stringify(roh)}`);
       }
     });
+    await t.test('ungültiger Wert mit Zeilentrenner/Umlenkzeichen: die FEHLER-Zeile bleibt EINE Zeile, die Zeichen stehen als \\uXXXX (Befund 19.10.)', () => {
+      const r = gesichert(p.datei, { MAX_PER_RUN: '\u2028x\u202e\u0085' });
+      assert.equal(r.status, 1, `Exit ${r.status}, stderr ${r.stderr}`); assert.equal(r.stdout, '');
+      assert.equal(r.stderr, 'FEHLER: MAX_PER_RUN="\\u2028x\\u202e\\u0085" ist keine gültige Anzahl — erlaubt: ganze Zahl ab 0 in Ziffern (0 = Pause), sonst nichts — nichts gepostet\n');
+      assert.ok(!/[\u2028\u2029\u0085\u202e]/.test(r.stderr), 'rohes Zeichen in stderr');
+      assert.equal(r.stderr.trimEnd().split(/\r\n|[\n\r\u2028\u2029\u0085]/).length, 1, 'FEHLER-Zeile über mehrere Zeilen verteilt');
+      KEINE_WIRKUNG(r, 'unsichtbare Zeichen');
+    });
     await t.test('ohne Schlüssel und MAX_PER_RUN=1 (oder unbelegt, leer, 5, « 3 », 03): die bisherige Meldung, kein Schreiben, kein Netz', t2 => {
       if (p.mcDatei && mcTokenDa) return t2.skip('/tmp/metricool.env trägt einen Schlüssel — der Poster ginge ohne Variable weiter (Golden gilt nur ohne)');
       for (const umgebung of [{}, { MAX_PER_RUN: '' }, { MAX_PER_RUN: '1' }, { MAX_PER_RUN: '5' }, { MAX_PER_RUN: ' 3 ' }, { MAX_PER_RUN: '03' }]) {
@@ -316,31 +360,89 @@ function dateien(ordner, endung, tiefe = 4) {
   return aus;
 }
 
-test('E Aufrufer: niemand exportiert MAX_PER_RUN, Workflows setzen sie nur im Schritt, der Autopilot nur als Vorsatz', () => {
-  const funde = [];
-  for (const d of [...dateien(path.join(REPO, 'automation'), /\.(sh|bash)$/), ...dateien(path.join(REPO, 'tools'), /\.(sh|bash)$/)]) {
-    fs.readFileSync(d, 'utf8').split('\n').forEach((z, i) => {
-      if (/^\s*(export|declare\s+-\w*x|typeset\s+-\w*x)\b.*\bMAX_PER_RUN\b/.test(z) || /^\s*set\s+-a\b.*MAX_PER_RUN/.test(z)) funde.push(`${path.relative(REPO, d)}:${i + 1}: ${z.trim()}`);
-    });
+// Text der Anweisung, die bei «ab» beginnt: bis zum Ende der Klammergruppe bzw. bis Semikolon/Zeilenende AUF Klammertiefe 0 (höchstens
+// 4000 Zeichen). «tiefe0» = 1, wenn der Treffer selbst mit einer öffnenden Klammer endet («environ.update(»). Strings zählen nicht
+// gesondert — grob genug für die Frage «nennt diese Anweisung die Variable?», und mehrzeilige Wörterbücher sind damit erfasst.
+function anweisungstext(text, ab, tiefe0 = 0) {
+  let i = ab; while (i < text.length && /\s/.test(text[i])) i++;
+  const start = i; let tiefe = tiefe0;
+  for (; i < text.length && i - start < 4000; i++) {
+    const c = text[i];
+    if ('([{'.includes(c)) tiefe++;
+    else if (')]}'.includes(c)) { tiefe--; if (tiefe < 0) break; }
+    else if (tiefe === 0 && (c === ';' || c === '\n')) break;
   }
-  for (const d of [...dateien(path.join(REPO, 'automation'), /\.py$/), ...dateien(path.join(REPO, 'tools'), /\.py$/)]) {
-    fs.readFileSync(d, 'utf8').split('\n').forEach((z, i) => {
-      if (/environ\[['"]MAX_PER_RUN['"]\]\s*=[^=]|putenv\(\s*['"]MAX_PER_RUN['"]/.test(z)) funde.push(`${path.relative(REPO, d)}:${i + 1}: ${z.trim()}`);
-    });
-  }
-  assert.deepEqual(funde, [], 'MAX_PER_RUN wird exportiert/gesetzt — Poster (0 = Pause) und upload_edited_product_images.py (0 = ALLE) lesen dieselbe Variable');
+  return text.slice(start, i);
+}
 
-  // Workflows: MAX_PER_RUN nur im env: eines Schritts (Einrückung ≥ 10), nie auf Job- oder Workflow-Ebene
-  const wf = path.join(REPO, '.github', 'workflows');
-  const ebenen = [];
-  for (const d of dateien(wf, /\.ya?ml$/, 0)) {
-    fs.readFileSync(d, 'utf8').split('\n').forEach((z, i) => {
-      if (/^\s*#/.test(z) || !/\bMAX_PER_RUN\s*:/.test(z)) return;
-      const einzug = z.length - z.trimStart().length;
-      if (einzug < 10) ebenen.push(`${path.basename(d)}:${i + 1}: Einzug ${einzug}`);
-    });
+// Fundstellen «Datei:Zeile: Text», an denen MAX_PER_RUN für ANDERE Programme sichtbar gesetzt wird statt nur für einen Befehl/Schritt.
+// Als Funktion mit Wurzel, damit «E Kanarienvogel» sie an einem Prüfbaum prüfen kann. Gemeint ist «setzen», nie «lesen» oder «einem
+// Unterprozess mitgeben» (env={…, 'MAX_PER_RUN': '1'} wie in social_vorlauf.py ist der erlaubte Weg).
+function exportFunde(root, { ausser = [] } = {}) {
+  const V = 'MAX_PER_RUN';
+  const funde = [];
+  const nimm = d => !ausser.includes(path.resolve(d));
+  const lies = d => fs.readFileSync(d, 'utf8');
+  const melde = (d, text, idx) => {
+    const zeile = text.slice(0, idx).split('\n').length;
+    const a = text.lastIndexOf('\n', idx - 1) + 1; let e = text.indexOf('\n', idx); if (e < 0) e = text.length;
+    funde.push(`${path.relative(root, d)}:${zeile}: ${text.slice(a, e).trim().slice(0, 120)}`);
+  };
+  const zeilenAnfang = (text, idx) => text.slice(text.lastIndexOf('\n', idx - 1) + 1, idx);
+  // gemeinsame Muster; «alle» = Treffer über den ganzen Text, die Zeile des Treffers darf kein Kommentar sein
+  const suche = (d, text, muster, kommentar, pruefen = () => true) => {
+    for (const m of text.matchAll(muster)) {
+      if (kommentar.test(zeilenAnfang(text, m.index) + m[0].slice(0, 1))) continue;
+      if (pruefen(m)) melde(d, text, m.index);
+    }
+  };
+  const SH = new RegExp(String.raw`(?:^|[;&|(]|\brun:)[ \t]*(?:export|declare\s+-\w*x|typeset\s+-\w*x)\b[^\n#]*\b${V}\b|^[ \t]*set\s+-a\b[^\n]*${V}`, 'gm');
+  const SH_KOMMENTAR = /^\s*#/;
+
+  // Shell: export / declare -x / typeset -x / set -a  (auch mehrzeilig: «MAX_PER_RUN=0» + «export MAX_PER_RUN» → die export-Zeile nennt sie)
+  for (const d of [...dateien(path.join(root, 'automation'), /\.(sh|bash)$/), ...dateien(path.join(root, 'tools'), /\.(sh|bash)$/)].filter(nimm)) {
+    suche(d, lies(d), SH, SH_KOMMENTAR);
   }
-  assert.deepEqual(ebenen, [], 'MAX_PER_RUN auf Job-/Workflow-Ebene würde mehrere Schritte (auch den Python-Lauf) erreichen');
+
+  // Python: environ[…] = …, putenv, environ.update(…) / .setdefault(…) / |= mit der Variable im Argument (auch mehrzeilig)
+  const PY_KOMMENTAR = /^\s*#/;
+  const PY_DIREKT = new RegExp(String.raw`\benviron\s*\[\s*['"]${V}['"]\s*\]\s*=(?!=)|\bputenv\(\s*['"]${V}['"]`, 'g');
+  const PY_GRUPPE = /\benviron\s*(?:\.\s*(?:update|setdefault)\s*\(|\|=)/g;
+  for (const d of [...dateien(path.join(root, 'automation'), /\.py$/), ...dateien(path.join(root, 'tools'), /\.py$/)].filter(nimm)) {
+    const text = lies(d);
+    suche(d, text, PY_DIREKT, PY_KOMMENTAR);
+    suche(d, text, PY_GRUPPE, PY_KOMMENTAR, m => anweisungstext(text, m.index + m[0].length, m[0].endsWith('(') ? 1 : 0).includes(V));
+  }
+
+  // JavaScript: process.env.X = …, process.env['X'] = …, ||= / ??= / &&=, Object.assign(process.env, {…}), process.env = {…}
+  const JS_KOMMENTAR = /^\s*(?:\/\/|\/\*|\*)/;
+  const JS_DIREKT = new RegExp(String.raw`\bprocess\.env\s*(?:\.\s*${V}|\[\s*['"\x60]${V}['"\x60]\s*\])\s*(?:\|\||\?\?|&&)?=(?!=)`, 'g');
+  const JS_GRUPPE = /\bObject\.assign\(\s*process\.env\b|\bprocess\.env\s*=(?!=)/g;
+  for (const d of [...dateien(path.join(root, 'automation'), /\.(mjs|js|cjs)$/), ...dateien(path.join(root, 'tools'), /\.(mjs|js|cjs)$/)].filter(nimm)) {
+    const text = lies(d);
+    suche(d, text, JS_DIREKT, JS_KOMMENTAR);
+    suche(d, text, JS_GRUPPE, JS_KOMMENTAR, m => anweisungstext(text, m.index + m[0].length, m[0].startsWith('Object') ? 1 : 0).includes(V));
+  }
+
+  // Workflows: nur im env: eines SCHRITTS (Einzug ≥ 10) — nie auf Job-/Workflow-Ebene, nie über GITHUB_ENV, nie als export im run-Block
+  const wf = path.join(root, '.github', 'workflows');
+  for (const d of dateien(wf, /\.ya?ml$/, 0).filter(nimm)) {
+    const text = lies(d);
+    let pos = 0;
+    for (const z of text.split('\n')) {
+      const idx = pos; pos += z.length + 1;
+      if (/^\s*#/.test(z) || !z.includes(V)) continue;
+      const einzug = z.length - z.trimStart().length;
+      const schluessel = new RegExp(String.raw`\b${V}['"]?\s*:`).test(z);
+      if ((schluessel && einzug < 10) || /GITHUB_ENV|GITHUB_OUTPUT/.test(z) || new RegExp(SH.source, 'm').test(z)) melde(d, text, idx);
+    }
+  }
+  return funde;
+}
+
+test('E Aufrufer: niemand exportiert MAX_PER_RUN, Workflows setzen sie nur im Schritt, der Autopilot nur als Vorsatz', () => {
+  const funde = exportFunde(REPO);   // schliesst diese Datei ein: ihre Fixtures nennen die Variable nie wörtlich (siehe «E Kanarienvogel»)
+  assert.deepEqual(funde, [], 'MAX_PER_RUN wird exportiert/gesetzt — Poster (0 = Pause) und upload_edited_product_images.py (0 = ALLE) lesen dieselbe Variable');
 
   // Autopilot: jede Nennung ist ein Vorsatz «MAX_PER_RUN=1 …» vor genau einem Befehl
   const ap = fs.readFileSync(path.join(REPO, 'automation', 'social_autopilot.sh'), 'utf8').split('\n')
@@ -351,4 +453,67 @@ test('E Aufrufer: niemand exportiert MAX_PER_RUN, Workflows setzen sie nur im Sc
   // Die Falle selbst bleibt dokumentiert: das Python-Programm liest «0 = alle»
   const py = fs.readFileSync(path.join(REPO, 'automation', 'upload_edited_product_images.py'), 'utf8');
   assert.ok(/os\.environ\.get\("MAX_PER_RUN", "0"\)/.test(py), 'upload_edited_product_images.py liest MAX_PER_RUN anders als bei der Messung (19.10.) — Kopf von lib/run_limit.mjs anpassen');
+});
+
+// Prüfbaum: «pos_*» MÜSSEN gemeldet werden (jede Form, in der MAX_PER_RUN für andere Programme gesetzt wird), «neg_*» NICHT (Lesen,
+// Unterprozess-env, Vorsatz, Kommentar, Vergleich, Schritt-env). Der Name der Variable ist zusammengesetzt: so steht in DIESER Datei
+// nirgends ein wörtliches Setzen, und die Suche über das echte Repo (Test E) bleibt auch ohne Ausnahme sauber lesbar.
+test('E Kanarienvogel: die Aufrufer-Suche findet jede Form des Setzens (Python, JS, Shell, Workflow, ein- und mehrzeilig) und meldet nichts Harmloses', () => {
+  const V = 'MAX_' + 'PER_RUN';
+  const baum = fs.mkdtempSync(path.join(TMP, 'e-baum-'));
+  const POS = {
+    'automation/pos_sh_export.sh': `export ${V}=0\n`,
+    'automation/pos_sh_declare.sh': `declare -gx ${V}=0\n`,
+    'automation/pos_sh_zweizeilig.sh': `${V}=0\nexport ${V}\n`,
+    'automation/pos_sh_set_a.sh': `set -a; ${V}=0; set +a\n`,
+    'automation/pos_sh_eingerueckt.sh': `if true; then\n    export FOO=1 ${V}=0\nfi\n`,
+    'automation/pos_py_klammer.py': `import os\nos.environ["${V}"] = "0"\n`,
+    'automation/pos_py_ohne_leerzeichen.py': `import os\nos.environ['${V}']='0'\n`,
+    'automation/pos_py_putenv.py': `import os\nos.putenv("${V}", "0")\n`,
+    'automation/pos_py_update.py': `import os\nos.environ.update({"${V}": "0"})\n`,
+    'automation/pos_py_update_mehrzeilig.py': `import os\nos.environ.update({\n    "TZ": "UTC",\n    "${V}": str(0),\n})\n`,
+    'automation/pos_py_setdefault.py': `import os\nos.environ.setdefault("${V}", "0")\n`,
+    'automation/pos_py_oder_gleich.py': `import os\nos.environ |= {"${V}": "0"}\n`,
+    'automation/pos_js_zuweisung.mjs': `process.env.${V} = '0';\n`,
+    'automation/pos_js_klammer.mjs': `process.env['${V}'] = "0";\n`,
+    'automation/pos_js_vorlage.mjs': 'process.env[`' + V + '`] = "0";\n',
+    'automation/pos_js_oder_gleich.mjs': `process.env.${V} ||= '5';\n`,
+    'automation/pos_js_assign.mjs': `Object.assign(process.env, { ${V}: '0' });\n`,
+    'automation/pos_js_assign_mehrzeilig.cjs': `Object.assign(process.env, {\n  TZ: 'UTC',\n  ${V}: '0',\n});\n`,
+    'automation/pos_js_ersetzen.js': `process.env = { ...process.env, ${V}: '0' };\n`,
+    'tools/pos_tools_py.py': `import os\nos.environ.update(dict(${V}="0"))\n`,
+    'tools/pos_tools_sh.sh': `export ${V}=0\n`,
+    '.github/workflows/pos_job.yml': `jobs:\n  post:\n    env:\n      ${V}: '0'\n    steps:\n      - run: echo hi\n`,
+    '.github/workflows/pos_workflow.yml': `env:\n  ${V}: '0'\njobs:\n  a:\n    runs-on: x\n`,
+    '.github/workflows/pos_github_env.yml': `jobs:\n  a:\n    steps:\n      - run: echo "${V}=0" >> "$GITHUB_ENV"\n`,
+    '.github/workflows/pos_run_export.yml': `jobs:\n  a:\n    steps:\n      - run: export ${V}=0 && node x.mjs\n`,
+  };
+  const NEG = {
+    'automation/neg_sh_vorsatz.sh': `${V}=1 node x.mjs\nWEG=metricool ${V}=1 $NODE y.mjs\n`,
+    'automation/neg_sh_kommentar.sh': `# export ${V}=0 — nur ein Kommentar\n`,
+    'automation/neg_sh_lesen.sh': `echo "$${V}"\nif [ "\${${V}:-1}" = 0 ]; then exit 0; fi\n`,
+    'automation/neg_py_lesen.py': `import os\nn = int(os.environ.get("${V}", "0"))\nm = os.environ.get('${V}') or 1\nif os.environ["${V}"] == "0":\n    pass\n`,
+    'automation/neg_py_unterprozess.py': `import os, subprocess\nsubprocess.run(cmd, env={**os.environ, "${V}": "1"})\n`,
+    'automation/neg_py_kommentar.py': `import os\n# os.environ["${V}"] = "0"\n`,
+    'automation/neg_py_fremde_gruppe.py': `import os\nos.environ.update({"TZ": "UTC"})\nandere = {"${V}": "1"}\n`,
+    'automation/neg_js_lesen.mjs': `const n = process.env.${V};\nif (process.env.${V} === '0') {}\nconst m = process.env['${V}'] ?? '1';\n`,
+    'automation/neg_js_unterprozess.mjs': `spawnSync('x', [], { env: { ...process.env, ${V}: '1' } });\n`,
+    'automation/neg_js_kommentar.mjs': `// process.env.${V} = '0'\n/* Object.assign(process.env, { ${V}: 1 }) */\n * process.env.${V} = '0'\n`,
+    'automation/neg_js_fremde_gruppe.mjs': `Object.assign(process.env, { TZ: 'UTC' });\nconst e = { ${V}: '1' };\n`,
+    'automation/neg_js_tests.mjs': `assert.equal(process.env.${V} == null, true);\n`,
+    '.github/workflows/neg_schritt.yml': `jobs:\n  a:\n    steps:\n      - name: x\n        env:\n          ${V}: '1'\n        run: node x.mjs\n`,
+    '.github/workflows/neg_kommentar.yml': `jobs:\n  a:\n    # ${V}: '0'  (auskommentiert)\n    steps: []\n`,
+  };
+  baumSchreiben(baum, { ...POS, ...NEG });   // Schreiben steckt in einer Hilfsdatei: queue_schreiber_wache.py meldet sonst diese Datei
+  assert.throws(() => baumSchreiben(baum, { '../draussen.txt': 'x' }), /liegt nicht unter/);
+  assert.throws(() => baumSchreiben(baum, { '/tmp/draussen.txt': 'x' }), /liegt nicht unter/);
+  const gemeldet = new Set(exportFunde(baum).map(f => f.split(':')[0]));
+  const nichtGefunden = Object.keys(POS).filter(rel => !gemeldet.has(rel));
+  const zuViel = Object.keys(NEG).filter(rel => gemeldet.has(rel));
+  assert.deepEqual(nichtGefunden, [], 'Aufrufer-Suche ÜBERSIEHT diese Formen des Setzens');
+  assert.deepEqual(zuViel, [], 'Aufrufer-Suche meldet harmlose Formen');
+  assert.equal(Object.keys(POS).length, 25); assert.equal(Object.keys(NEG).length, 14);
+  // «ausser» nimmt eine Datei wirklich aus
+  const ohne = exportFunde(baum, { ausser: [path.join(baum, 'automation/pos_sh_export.sh')] }).map(f => f.split(':')[0]);
+  assert.ok(!ohne.includes('automation/pos_sh_export.sh') && ohne.includes('automation/pos_sh_declare.sh'));
 });

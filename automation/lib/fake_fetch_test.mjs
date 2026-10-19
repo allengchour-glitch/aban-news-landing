@@ -180,3 +180,54 @@ console.log(JSON.stringify('fertig'));`, { fastTimers: true, routes: [] });
   assert.deepEqual(r.zeilen, [['object', 'function', true, true], 't2 gefeuert', 'fertig']);
   assert.deepEqual(r.aufrufe.filter(a => a.timer).map(a => a.timer), [5000, 7000, 100, 100000]);
 });
+
+test('AbortSignal: ein schon abgebrochenes Signal bricht fetch ab (kein Treffer der Route), das Protokoll nennt «abgebrochen»; hasSignal steht im Protokoll', t => {
+  const r = eigenes(t, `
+const ok = await fetch('https://h.test/a', { signal: AbortSignal.timeout(30000) }).then(x => x.status);
+const weg = await fetch('https://h.test/a', { signal: AbortSignal.abort(new Error('zu langsam')) }).then(() => 'durchgekommen', e => e.message);
+console.log(JSON.stringify([ok, weg]));`, { routes: [{ respond: { status: 200, text: 'ok' } }] });
+  assert.deepEqual(r.zeilen, [[200, 'zu langsam']]);
+  assert.deepEqual(r.aufrufe.map(a => [a.hasSignal, a.fehler ?? a.status]), [[true, 200], [true, 'abgebrochen']]);
+});
+
+test('ein abgebrochener Aufruf verbraucht keine Route: «times:1» und die Folge-Antworten bleiben für den nächsten echten Aufruf', t => {
+  const r = eigenes(t, `
+await fetch('https://h.test/a', { signal: AbortSignal.abort() }).catch(() => {});
+console.log(JSON.stringify([await (await fetch('https://h.test/a')).text(), await (await fetch('https://h.test/f')).text(), await (await fetch('https://h.test/f')).text()]));
+await fetch('https://h.test/f', { signal: AbortSignal.abort() }).catch(() => {});`,
+  { routes: [{ match: { path: '/a' }, times: 1, respond: { text: 'einmal' } }, { match: { path: '/f' }, respond: { sequence: [{ text: 'eins' }, { text: 'zwei' }] } }, { respond: { status: 404, text: 'nix' } }] });
+  assert.deepEqual(r.zeilen, [['einmal', 'eins', 'zwei']]);
+  assert.deepEqual(r.aufrufe.filter(a => a.fehler === 'abgebrochen').map(a => a.route), [null, null]);
+});
+
+test('redirect:"error" wirft genau bei 301/302/303/307/308 (auch ohne oder mit leerem Location, wie Node 22 — gemessen); 300 und 304 kommen normal zurück', t => {
+  const loc = { location: 'https://evil.test/' };
+  const r = eigenes(t, `
+const U = 'https://h.test/', fall = async p => { try { return (await fetch(U + p, { redirect: 'error' })).status; } catch (e) { return 'wirft:' + e.message; } };
+console.log(JSON.stringify([await fall('r301'), await fall('r302'), await fall('r303'), await fall('r307'), await fall('r308'), await fall('r304'), await fall('r300'), await fall('r307-ohne'), await fall('r302-leer'), await fall('ok')]));
+console.log(JSON.stringify((await fetch(U + 'r302', { redirect: 'manual' })).status));`,
+  { routes: [301, 302, 303, 307, 308].map(c => ({ match: { path: '/r' + c }, respond: { status: c, headers: loc } })).concat([
+    { match: { path: '/r304' }, respond: { status: 304, headers: loc } }, { match: { path: '/r300' }, respond: { status: 300, headers: loc } },
+    { match: { path: '/r307-ohne' }, respond: { status: 307 } }, { match: { path: '/r302-leer' }, respond: { status: 302, headers: { location: ' ' } } }, { respond: { status: 200, text: 'ok' } }]) });
+  const w = 'wirft:fetch failed';
+  assert.deepEqual(r.zeilen[0], [w, w, w, w, w, 304, 300, w, w, 200]);
+  assert.equal(r.zeilen[1], 302, 'redirect:"manual" liefert die 3xx-Antwort');
+});
+
+test('bodyBytes zählt BYTES (nicht Zeichen); Nicht-JSON-Body steht nicht im Klartext im Protokoll', t => {
+  const r = eigenes(t, `await fetch('https://h.test/a', { method: 'POST', body: 'äöü-GEHEIMTEXT' }); console.log('1');`, { routes: [{ respond: { text: 'ok' } }] });
+  assert.equal(r.aufrufe[0].bodyBytes, Buffer.byteLength('äöü-GEHEIMTEXT')); assert.ok(!r.roh.includes('GEHEIMTEXT'));
+});
+
+test('Schwärzung nach Schlüsselname: secret, token, passw, authoriz, api-key/api_key/apiKey, credential — je ein Fall, Verschachtelung und Listen eingeschlossen', t => {
+  const namen = ['client_secret', 'access_token', 'refreshToken', 'password', 'Passwort', 'authorization', 'x-api-key', 'api_key', 'apiKey', 'credentials'];
+  const body = Object.fromEntries(namen.map((n, i) => [n, 'GEHEIM-' + i]));
+  const r = eigenes(t, `
+const b = ${JSON.stringify({ ...body, harmlos: 'sichtbar', tief: { liste: [{ access_token: 'GEHEIM-TIEF' }] } })};
+await fetch('https://h.test/a', { method: 'POST', body: JSON.stringify(b) });
+console.log('1');`, { routes: [{ respond: { text: 'ok' } }] });
+  const j = r.aufrufe[0].bodyJson;
+  for (const n of namen) assert.equal(j[n], '«redacted»', `Schlüssel «${n}» nicht geschwärzt`);
+  assert.equal(j.harmlos, 'sichtbar'); assert.equal(j.tief.liste[0].access_token, '«redacted»');
+  assert.ok(!r.roh.includes('GEHEIM-'), 'Geheimnis im Protokoll');
+});

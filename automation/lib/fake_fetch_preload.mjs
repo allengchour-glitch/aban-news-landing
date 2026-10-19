@@ -95,7 +95,10 @@ function antwort(r, aufruf, opts) {
   else if ('json' in wahl) body = JSON.stringify(wahl.json);
   else body = wahl.text ?? '';
   if ('json' in wahl || wahl.graphqlErrors) headers['content-type'] ??= 'application/json';
-  if (status >= 300 && status < 400 && opts.redirect === 'error') throw new TypeError('fetch failed');   // wie das echte fetch
+  // wie das echte Node-fetch (GEMESSEN 19.10. gegen einen lokalen http-Server, Node 22): 301/302/303/307/308 werfen bei redirect:'error' — auch ohne oder mit leerem
+  // Location-Header; 300 und 304 kommen normal zurück. redirect:'follow' (Standard) folgt hier NICHT: die 3xx-Antwort wird zurückgegeben (ein Test, der Folgen
+  // braucht, bildet die Zielroute selbst ab).
+  if (opts.redirect === 'error' && [301, 302, 303, 307, 308].includes(status)) throw new TypeError('fetch failed');
   return { status, res: new Response(status === 204 || status === 304 ? null : body, { status, headers }) };
 }
 
@@ -118,13 +121,13 @@ globalThis.fetch = async (input, opts = {}) => {
   if (json && typeof json === 'object') {
     if (typeof json.query === 'string') { e.query = json.query; if (json.variables) e.variables = schwaerzen(json.variables); }
     else e.bodyJson = schwaerzen(json);
-  } else if (text) e.bodyBytes = text.length;
+  } else if (text) e.bodyBytes = Buffer.byteLength(text);
 
+  if (opts.signal?.aborted) { schreibe({ ...e, route: null, fehler: 'abgebrochen' }); throw opts.signal.reason; }   // wie das echte fetch: nichts wird gesendet, keine Route verbraucht
   if (Array.isArray(S.hosts) && !S.hosts.includes(a.host)) { schreibe({ ...e, route: null, fehler: 'host-nicht-erlaubt' }); throw new TypeError(`FAKE_FETCH: Host nicht erlaubt: ${a.host}`); }
   const i = S.routes.findIndex((rt, k) => (rt.times === undefined || genutzt[k] < rt.times) && passt(rt.match, a));
   if (i < 0) { schreibe({ ...e, route: null, fehler: 'keine-route' }); throw new Error(`FAKE_FETCH: keine Route für ${a.method} ${a.host}${a.path}`); }
   const aufruf = genutzt[i]++, rt = S.routes[i], name = rt.name ?? i;
-  if (opts.signal?.aborted) { schreibe({ ...e, route: name, fehler: 'abgebrochen' }); throw opts.signal.reason; }
   try {
     const { status, res } = antwort(rt.respond, aufruf, opts);
     schreibe({ ...e, route: name, status });

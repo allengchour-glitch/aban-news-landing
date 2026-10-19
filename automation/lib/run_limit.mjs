@@ -11,10 +11,15 @@
 // REGELN  parseRunLimit(roh, { standard, max, name }) → { n, pause }
 //   · undefined / null / leerer String  → standard (die Variable ist «nicht gesetzt»)
 //   · «0»                               → { n: 0, pause: true }   (auch «00», « 0 »)
-//   · positive ganze Zahl in Dezimalziffern, optional von Leerzeichen umgeben → min(n, max)   («007» = 7)
-//   · ALLES andere wirft RunLimitError: negativ, Dezimal, «1e3», «0x10», «+5», «5x», «abc», «NaN», «Infinity», nur Leerzeichen,
+//   · positive ganze Zahl in Dezimalziffern, optional von Leerraum umgeben → min(n, max)   («007» = 7). Leerraum heisst alles, was
+//     String.trim() entfernt (Leerzeichen, Tab, Zeilenumbruch, NBSP, U+FEFF, U+3000, U+2028) — bewusst wie beim alten parseInt
+//     (GEMESSEN 19.10.: parseInt('\u00a03') = 3), und in Richtung «sicher»: NBSP+0+NBSP ist Pause. Zeichen WEDER Leerraum NOCH Ziffer
+//     (Nullbreitenleerzeichen U+200B, Umlenkzeichen U+202E …) gelten als Müll.
+//   · ALLES andere wirft RunLimitError: negativ, Dezimal, «1e3», «0x10», «+5», «5x», «abc», «NaN», «Infinity», nur Leerraum,
 //     Ziffern ausserhalb 0–9 (Vollbreite, Arabisch), Zahlen über Number.MAX_SAFE_INTEGER. Die Meldung nennt die Variable und den
-//     Wert, auf 20 Zeichen gekürzt und in Anführungszeichen (kein Zeilenumbruch, keine Steuerzeichen im Log).
+//     Wert, auf 20 Zeichen gekürzt und in Anführungszeichen. Alles Unsichtbare darin (Steuer- und Formatzeichen, Zeilentrenner
+//     U+2028/2029, Umlenkzeichen, NBSP & Co.) steht als \uXXXX — JSON.stringify lässt U+007F–U+009F, U+2028/2029 und U+200B/U+202E/U+FEFF roh
+//     stehen (GEMESSEN 19.10.); so bleibt die FEHLER-Zeile EINE Zeile und kann nichts im Log verdrehen.
 //   · standard und max sind Programmierangaben: falsch → TypeError (nicht RunLimitError), damit kein Wert-Fehler sie verdeckt.
 //
 // TOR FÜR POSTER  const MAX = runLimitOderEnde({ standard: 1 });
@@ -32,9 +37,14 @@
 // exportiert die Variable, die Workflows nennen sie nur im Schritt-env (Einzug ≥ 10), social_autopilot.sh nur als Vorsatz «MAX_PER_RUN=1 $NODE»,
 // social_vorlauf.py nur im env-Wörterbuch des einen Unterprozesses.
 //
-// ⚠️ EXIT 0 BEI PAUSE: social_autopilot.sh wertet Exit 0 des Bild-/Story-Posters als «gepostet» (touch Marke → Abstand läuft).
-// Der Autopilot und social_vorlauf.py setzen MAX_PER_RUN aber selbst auf 1 (Vorsatz), eine Pause über die Umgebung erreicht
-// sie nie. Wer die Variable dort durchreichen will, muss Exit 3 («übersprungen», Marke bleibt alt) als Pause-Code wählen.
+// ⚠️ DIE PAUSE WIRKT HEUTE NUR IM HANDLAUF (GEMESSEN 19.10., grep MAX_PER_RUN): jeder Aufrufer setzt fest 1 — social_autopilot.sh
+// Zeile 148/164/203/214 (Vorsatz), social_vorlauf.py Zeile 59/61 (env-Wörterbuch, überschreibt Geerbtes), die Workflows
+// social-meta-autopost.yml:64, story-meta-autopost.yml:57, tiktok-autopost.yml:54, video-meta-autopost.yml:70 (Schritt-env '1'). Der
+// Metricool-Lauf in metricool-schedule.yml ist ganz auskommentiert (PAUSIERT 13.06.). Ein 0 aus der Umgebung erreicht also keinen
+// laufenden Poster; es hilft beim Handlauf («MAX_PER_RUN=0 node …») und vor allem gegen die stille Umdeutung von Müll. Die Pause für
+// den laufenden Betrieb ist dropship/_SOCIAL_STOPP (post_guard.lock(), Exit 0 vor jedem Post), die Anlass-Sperre lib/social_pause.mjs.
+// Wer MAX_PER_RUN beim Autopilot durchreichen will: social_autopilot.sh wertet Exit 0 des Bild-/Story-Posters als «gepostet» (touch
+// Marke → Abstand läuft). Dann MUSS die Pause Exit 3 («übersprungen», Marke bleibt alt) sein — heute ist sie Exit 0.
 //
 //   import { runLimitOderEnde } from './lib/run_limit.mjs';
 //   const MAX = runLimitOderEnde({ standard: 1 });
@@ -45,9 +55,13 @@ export class RunLimitError extends Error {
 }
 
 const MAX_ZEICHEN_WERT = 20;   // so viel vom falschen Wert steht in der Meldung
+// Unsichtbares als \uXXXX (Cc Steuerzeichen, Cf Format-/Umlenkzeichen, Zl/Zp Zeilen- und Absatztrenner, Zs Sonderleerzeichen wie NBSP —
+// nur das gewöhnliche Leerzeichen bleibt); JSON.stringify macht das nur für U+0000–U+001F.
+const UNSICHTBAR = /(?! )[\p{Cc}\p{Cf}\p{Zl}\p{Zp}\p{Zs}]/gu;
+const maskiert = c => { const cp = c.codePointAt(0); return cp > 0xffff ? `\\u{${cp.toString(16)}}` : `\\u${cp.toString(16).padStart(4, '0')}`; };
 const kurz = roh => {
   const z = Array.from(String(roh));   // Codepunkte, nicht UTF-16-Hälften
-  return JSON.stringify(z.slice(0, MAX_ZEICHEN_WERT).join('')) + (z.length > MAX_ZEICHEN_WERT ? '…' : '');
+  return JSON.stringify(z.slice(0, MAX_ZEICHEN_WERT).join('')).replace(UNSICHTBAR, maskiert) + (z.length > MAX_ZEICHEN_WERT ? '…' : '');
 };
 
 export function parseRunLimit(roh, { standard, max = Number.MAX_SAFE_INTEGER, name = 'MAX_PER_RUN' } = {}) {

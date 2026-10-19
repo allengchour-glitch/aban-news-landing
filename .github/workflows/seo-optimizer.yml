@@ -1,7 +1,10 @@
 name: SEO-Optimizer (wöchentlich, fehlende Produkt-SEO füllen)
 
-# Füllt automatisch fehlende SEO-Titel/-Metas aktiver Produkte (deutsch, CH) + meldet FAILED-Bilder.
-# Braucht Produkt-Scopes am Shopify-Token (read_products, write_products). Ohne = sauberer No-Op/Log.
+# Füllt NUR die fehlenden SEO-Felder aktiver Produkte (deutsch, CH; es gehen immer beide Felder raus, Vorhandenes bleibt bytegleich) + meldet FAILED-Bilder.
+# Braucht Produkt-Scopes am Shopify-Token (read_products, write_products). Seit 19.10.2026 (v2) stoppt Unklares (fehlender Scope, Netz, falsche Antwort,
+# Rücklese-Abweichung) den Lauf mit Exit 1 = ROTER Lauf — früher zählte es als «gefüllt» mit Exit 0; Exit 2 = Konfiguration (SHOPIFY_SHOP, LIMIT, DRY_RUN)
+# ohne Netzanfrage. Die Werbetest-Sperre (dropship/_werbetest_sperre.txt, bis 24.10.) wird beachtet. Je Produkt 3 Anfragen (Gegenprobe, Schreiben, Rücklesen):
+# gemessen 19.10. Scan bis 150 Lücken 3 min 19 s + Schreiben ~3 min → timeout-minutes 10 → 20.
 
 on:
   # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
@@ -14,7 +17,7 @@ permissions:
 jobs:
   seo:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

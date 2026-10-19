@@ -62,3 +62,5 @@
 2026-10-18T23:06:04.790Z	hoodie-jogginghose-set-im-partnerlook-637400	Sommerkleider & Damenmode 2026	metricool:399492677	herbst-favoriten	bild=roh
 2026-10-18T23:22:18.926Z	tragbarer-mixer-mit-usb-c-ladefunktion-794304	Tech & Gadgets	metricool:399499991	hype-jetzt	bild=roh
 2026-10-18T23:24:36.063Z	laser-sternenhimmel-projektor-mit-bluetooth-mu-723264	Tech & Gadgets	metricool:399500935	hype-jetzt	bild=roh
+2026-10-19T19:21:53.211Z	kabelloser-mini-staubsauger-furs-auto-f2796b	Tech & Gadgets	metricool:400395776	hype-jetzt	bild=roh
+2026-10-19T19:22:30.001Z	mini-projektor-home-office-t300-1080p-976571	Tech & Gadgets	metricool:400396217	hype-jetzt	bild=roh

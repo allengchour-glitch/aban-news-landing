@@ -510,12 +510,18 @@
   "pin-20261021T1740": {
    "basis_utc": "2026-10-21T17:40:00Z",
    "format": "pin",
-   "grund": "zurückgezogen: Produkt 15466876797313 doppelt belegt: Ware schon in karussell-20261024T1915",
+   "grund": "",
    "handle": "",
+   "handles": [
+    "kabelloser-mini-staubsauger-furs-auto-f2796b",
+    "pid:16613782323591"
+   ],
    "letzter_versuch": "2026-10-19T19:21:02Z",
-   "mc_ids": [],
+   "mc_ids": [
+    400395776
+   ],
    "reserviert_um": "2026-10-19T19:21:02Z",
-   "status": "reserviert",
+   "status": "geplant",
    "termin_utc": "2026-10-21T17:40:00Z",
    "versuche": 1
   },
@@ -700,15 +706,20 @@
   "pin-20261024T1950": {
    "basis_utc": "2026-10-24T19:50:00Z",
    "format": "pin",
-   "grund": "zurückgezogen: Produkt 15449152553345 doppelt belegt: Ware schon in tiktok-20261019T0605",
+   "grund": "",
    "handle": "",
-   "handles": [],
-   "letzter_versuch": "2026-10-18T22:19:17Z",
-   "mc_ids": [],
-   "reserviert_um": "2026-10-18T22:19:17Z",
-   "status": "offen",
+   "handles": [
+    "mini-projektor-home-office-t300-1080p",
+    "pid:16612785455495"
+   ],
+   "letzter_versuch": "2026-10-19T19:22:01Z",
+   "mc_ids": [
+    400396217
+   ],
+   "reserviert_um": "2026-10-19T19:22:01Z",
+   "status": "geplant",
    "termin_utc": "2026-10-24T19:50:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "pin-20261025T1340": {
    "basis_utc": "2026-10-25T13:40:00Z",
@@ -1778,6 +1789,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-19T19:21:02Z",
+ "stand": "2026-10-19T19:22:35Z",
  "version": 1
 }

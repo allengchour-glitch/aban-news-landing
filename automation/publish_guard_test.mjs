@@ -542,6 +542,34 @@ test('Titelregeln ohne python3: Exit 1 vor der ersten Netzanfrage, die Meldung n
   assert.equal(x.ok, false); assert.match(x.grund, /nicht ausführbar/);
 });
 
+test('Python läuft isoliert (-I): ein json.py im Arbeitsverzeichnis oder PYTHONPATH wird NICHT geladen', t => {
+  const w = wurzel(t, { 'json.py': 'raise RuntimeError("gepflanztes Modul geladen")\n' });   // Arbeitsverzeichnis des Laufs ist die Wurzel
+  const r = start(w, szenario({ produkte: [produkt(1, { title: 'Windsicheres Feuerzeug für Outdoor' }), produkt(2)] }), { ...SCHREIBEND, PYTHONPATH: w.root });
+  assert.equal(r.status, 0, r.stdout + r.stderr); assert.deepEqual(mutationen(r).map(m => m.variables.id), [gid(2)]);
+  assert.equal(bericht(r).produkte.find(p => p.handle === 'produkt-1').state, 'skipped_sperre');
+});
+
+test('titelRegelnPython: ein Interpreter mit unerwarteter Antwort (kein JSON, falsche Länge, falsche Form, Status ≠ 0, Zeitüberschreitung) liefert {ok:false} — nie «keine Treffer»', t => {
+  const dir = wegwerfOrdner(t), ok = '{"feuerzeug":[2,0],"heilschmuck":[2,0],"schusswaffen":[2,0]}';
+  const falsch = (name, ausgabe, extra = '') => { const f = path.join(dir, name); fs.writeFileSync(f, `#!/bin/sh\n${extra}cat >/dev/null\n${ausgabe}\n`, { mode: 0o755 }); return f; };
+  const e = [{ title: 'a', type: '', tags: [] }, { title: 'b', type: '', tags: [] }];
+  const faelle = [
+    ['kein JSON', falsch('a', "echo 'Hallo'"), /Antwort ist kein JSON/],
+    ['zu wenige Urteile', falsch('b', `echo '{"kanarien":${ok},"urteile":[[]]}'`), /nicht die erwartete Form/],
+    ['Urteil ist kein String', falsch('c', `echo '{"kanarien":${ok},"urteile":[[],[5]]}'`), /nicht die erwartete Form/],
+    ['Kanarien fehlen', falsch('d', `echo '{"urteile":[[],[]]}'`), /nicht die erwartete Form/],
+    ['Kanarien fehlgeschlagen', falsch('e', `echo '{"kanarien":{"feuerzeug":[2,1],"heilschmuck":[2,0],"schusswaffen":[2,0]},"urteile":[[],[]]}'`), /Kanarien fehlgeschlagen oder leer: feuerzeug \[2,1\]/],
+    ['Status 3', falsch('f', 'exit 3'), /Python endete mit Status 3/],
+    ['Zeitüberschreitung', falsch('g', 'sleep 5'), /nicht ausführbar \(ETIMEDOUT\)/],
+  ];
+  for (const [name, python, muster] of faelle) {
+    const r = titelRegelnPython(e, { python, timeout: name === 'Zeitüberschreitung' ? 300 : 20000 });
+    assert.equal(r.ok, false, name); assert.match(r.grund, muster, name);
+  }
+  const gut = titelRegelnPython(e, { python: falsch('h', `echo '{"kanarien":${ok},"urteile":[["titel:feuerzeug"],[]]}'`) });
+  assert.equal(gut.ok, true); assert.deepEqual(gut.urteile, [['titel:feuerzeug'], []]);
+});
+
 test('mehrere fehlende JS-Module werden ALLE benannt (eine Meldung statt Stack-Trace nacheinander)', t => {
   const w = wurzel(t, { 'automation/klingenregel.mjs': null, 'automation/lib/social_pause.mjs': null, 'automation/lib/werbetest_sperre.mjs': null });
   const r = start(w, szenario({ produkte: [produkt(1)] }), SCHREIBEND), p = bericht(r).sperrquellen.probleme.join(' | ');
