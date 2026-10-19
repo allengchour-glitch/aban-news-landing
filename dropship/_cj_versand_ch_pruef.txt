@@ -10159,3 +10159,5 @@ mini-wasserkocher-edelstahl-622500	2605160830031623400	16	8.86	ok	landeseite
 taktischer-huftrucksack-616600	2507250905191616800	16	8.39	ok	landeseite
 baby-anti-schreck-kissen-626900	2604060916311627300	7	21.65	ok	landeseite
 taktischer-brustbeutel-612700	2507250225081613600	16	7.43	ok	landeseite
+taktisches-notfall-set-mit-einhand-zugriff-605200	2507231118351605400	16	7.13	ok	landeseite
+nordic-style-kissen-fur-buro-626100	2604010317011626400	16	9.33	ok	landeseite
