@@ -1506,6 +1506,13 @@ def _stops_vorab(spot, fut, buch, k, d, plan, nur_jetzt=False):
     return True
 
 
+def _schutzbar(s, d, e, st):
+    """Gibt es an diesem Markt etwas, das Binance noch absichern kann? Dieselbe Rechnung wie die Absicherung selbst: Spot — Stop-Menge × min(Kurs, Stop-Kurs) ≥ Mindestbetrag (_spot_abgleich); Perp — jede Stop-Menge
+    über Null (_perp_abgleich; ein Short-Rest unter einem halben Futures-Schritt bekommt bewusst keinen Stop, ``_soll``). Ein Rest darunter ist ein Dauerzustand, kein Fall für die Nachkontrolle."""
+    p = _stop_preis(e.get("stop_long"), st.get("p_long"), s["kurs"], +1)
+    return s["stop_spot"] * min(s["kurs"], p) >= d["rs"]["min_notional"] or s["stop_perp"] > 0
+
+
 def _stops_setzen(spot, fut, buch, speichern, ents, daten, basis_g, erg, warn, gehandelt=frozenset()):
     """Am Ende jedes Laufs: Stops nach dem Kontostand und der tatsächlichen Netto-Richtung. Wiederholt, bis der Kontostand
     während des Abgleichs gleich bleibt (ein Börsen-Stop kann dazwischen auslösen). Nicht prüfbar → laute Warnung."""
@@ -1611,10 +1618,9 @@ def _stops_setzen(spot, fut, buch, speichern, ents, daten, basis_g, erg, warn, g
         # wurde aber nicht angestossen — der Long blieb bis zum nächsten Tageslauf ungeschützt)
         ohne_stop_laut = bool(s is not None and s["ungesichert"] and not gesetzt and not schutz and not gescheitert
                               and (s["stop_spot"] or s["stop_perp"] or s["short_teil"] * s["kurs"] >= 100))  # die Schlusswarnung unten (wie bisher)
-        # … aber nur ein Rest, den Binance überhaupt absichern kann, ist ein Fall für die Nachkontrolle: bei einem Paar mit einem Netto-Rest knapp über dem Staub ist der Stop am Stop-Kurs unter dem Mindestbetrag —
-        # ein Dauerzustand, den jede Nachkontrolle wieder fände (Schlusskampagne camp15d, E25: 7 Befunde «Nachkontrolle: nicht alles geklärt»). Dieselbe Rechnung wie die Absicherung selbst (_spot_abgleich: soll × min(Kurs, Stop-Kurs) ≥ Mindestbetrag)
-        ohne_stop = bool(ohne_stop_laut and (s["stop_spot"] * min(s["kurs"], _stop_preis(e.get("stop_long"), st.get("p_long"), s["kurs"], +1)) >= d["rs"]["min_notional"]
-                                             or s["stop_perp"] * s["kurs"] >= d["rf"]["min_notional"] or s["short_teil"] * s["kurs"] >= 100))
+        # … aber nur ein Rest, den Binance überhaupt absichern kann, ist ein Fall für die Nachkontrolle (_schutzbar): bei einem Paar mit einem Netto-Rest knapp über dem Staub ist der Stop am Stop-Kurs unter dem Mindestbetrag,
+        # bei einem Short-Rest unter einem halben Futures-Schritt gibt es bewusst keinen Perp-Stop — Dauerzustände, die jede Nachkontrolle wieder fände (Schlusskampagne camp15e, E25: «Nachkontrolle: nicht alles geklärt»)
+        ohne_stop = bool(ohne_stop_laut and _schutzbar(s, d, e, st))
         # ebenso ein Abgleich, bei dem sich der Kontostand in JEDER Runde änderte (nie zwei gleiche Lesungen hintereinander): der letzte Stand blieb ungeprüft → die Nachkontrolle liest nochmals
         # (Schlusskampagne, Muster «unverifizierter Endstand» wie E21/E23). NICHT bei «Kontostand gleich, aber der Kurs liegt jenseits des Stop-Kurses und der Ausstieg gelang nicht»
         # (`jenseits_offen`): bei einer Position von praktisch null (Paar, Rundungsrest) ist das ein Dauerzustand, den jede Nachkontrolle wieder fände — der Lauf warnt, mehr nicht

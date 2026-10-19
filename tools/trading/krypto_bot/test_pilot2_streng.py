@@ -3980,7 +3980,13 @@ pruefe("15.E25 Paar mit einem Netto-Rest von 5,3 USDT (über dem Staub, am Stop-
 k, r, buch_, g_ = paar_mit_rest_(9.0)
 pruefe("15.E25 Gegenprobe: ein Netto-Rest von 9 USDT lässt sich absichern — er bekommt seinen Stop, nichts offen", g_["s_qty"] > 0 and "ETH" not in (buch_.get("schutz_offen") or []),
        (g_, buch_.get("schutz_offen"), [z_[:130] for z_ in r["zeilen"] if "⚠" in z_]))
-for seed_ in (110031, 110076, 110100, 110115, 110125, 110126):
+# _schutzbar(): was Binance noch absichern kann (dieselbe Rechnung wie die Absicherung selbst)
+d_sb_ = {"rs": {"min_notional": 5.0}, "rf": {"min_notional": 100.0}}
+sb_ = lambda **kw: dict(dict(stop_spot=0.0, stop_perp=0.0, short_teil=0.0, kurs=4000.0), **kw)  # noqa: E731
+pruefe("15.E25 _schutzbar(): ein Netto-Long von 100 USDT ja, 5,1 USDT (Stop 5 % unter dem Kurs, also unter dem Mindestbetrag) nein; ein Perp-Stop über Null ja; ein Short-Rest unter einem halben Futures-Schritt (auch bei 121 USDT) nein",
+       L._schutzbar(sb_(stop_spot=0.025), d_sb_, {}, {}) and not L._schutzbar(sb_(stop_spot=5.1 / 4000), d_sb_, {}, {}) and L._schutzbar(sb_(stop_perp=0.001), d_sb_, {}, {})
+       and not L._schutzbar(sb_(short_teil=0.000494, kurs=245245.92), d_sb_, {}, {}))
+for seed_ in (110031, 110076, 110100, 110115, 110125, 110126, 112046):
     P.LUECKEN = True
     try:
         funde_ = P.echte(P.laeufe_runde(seed_, 30))
