@@ -4615,6 +4615,31 @@ g = lage(k, "BTCUSDT")
 pruefe("15.E26h Not-Aus, Stop über offenen + unklaren Short mit −2022 abgelehnt, der kleinere (offene Short) kommt an (Antwort verloren): er bleibt stehen",
        g["p_qty"] >= 0.016 and bool(st_.get("perp_weitere")), (ok_, g, st_, w_))
 
+# i) Not-Aus beidseitig (ganz), Perp-Liste unlesbar, das Buch kennt einen bisherigen Stop, der nur einen TEIL des Shorts deckt (0,02 von 0,05): der Stop über den GANZEN Short kommt an (Antwort verloren), jede
+# Wiederholung scheitert am Rate-Limit — er bleibt stehen und steht im Buch (Rasterbefund --geist --notaus, Marktverkauf tot: 2'222 USDT ohne Stop). Nicht «ganz» (Netto-Short, der bisherige deckt ihn schon voll):
+# der Geister-Stop wird wie bisher gelöscht — der bisherige schützt
+for ganz_i, coins_i, alt_i, erw_i in ((True, 0.05, 0.02, "bleibt (der bisherige deckt nur einen Teil des ganzen Shorts)"), (False, 0.0, 0.05, "wird gelöscht (der bisherige deckt den Netto-Short ganz)")):
+    k, sp, fu, dd = handlage(coins=coins_i, short=0.05, kurs=100000.0)
+    rf_ = fu.regeln("BTCUSDT")
+    r_alt = fu.stop_menge("BTCUSDT", "BUY", alt_i, 130000.0, rf_["tick"], cid=L._kennung(L.CID_STOP_PERP))
+    st_ = {"perp": r_alt.get("algoId"), "perp_cid": r_alt.get("cid") or r_alt.get("clientAlgoId"), "p_short": 130000.0}
+    B.regeln = [regel(methode="GET", pfad="/fapi/v1/openAlgoOrders", art="429", anzahl=999),
+                regel(methode="POST", pfad="/fapi/v1/algoOrder", art="nach503", anzahl=1), regel(methode="POST", pfad="/fapi/v1/algoOrder", art="429", anzahl=99)]
+    w_ = []
+    try:
+        L._notaus_schutz(sp, fu, st_, "BTC", "BTCUSDT", "BTC", -0.05, -0.05, coins_i, 0.0, 100000.0, dd["rs"], w_.append, "echt", 0.0 if ganz_i else None,
+                         buch={}, erg={"zeilen": [], "auftraege": []})
+    finally:
+        B.regeln = []
+    g = lage(k, "BTCUSDT")
+    if ganz_i:
+        pruefe(f"15.E26i Not-Aus beidseitig, Perp-Liste unlesbar, bisheriger Stop 0,02 von 0,05: der Geister-Stop über den ganzen Short {erw_i}, im Buch",
+               g["n_p"] == 2 and g["p_qty"] >= 0.05 - 1e-9 and bool(st_.get("perp_weitere")), (g, st_, w_))
+        pruefe("15.E26i … und nach beiden Auslösungen bleibt kein Short ohne Coins und ohne Stop", not befunde(k), (g, befunde(k), w_))
+    else:
+        pruefe(f"15.E26i Not-Aus nicht beidseitig, Perp-Liste unlesbar, bisheriger Stop 0,05 = Netto-Short: der Geister-Stop {erw_i}",
+               g["n_p"] == 1 and abs(g["p_qty"] - 0.05) < 0.002 and not st_.get("perp_weitere"), (g, st_, w_))
+
 # 15.E27 (Not-Aus-Fuzzer Lücken+streng, Seed 117974): ein alter Spot-Stop über 0,02168 von 0,025432 Coins steht (gesperrt), die Spot-Aufträge sind NICHT LESBAR (Rate-Limit). Der Not-Aus behandelte die
 # gesperrten Coins als «gesichert» und deckte den Short nur über die freien Coins hinaus (auf den nächsten Futures-Schritt gerundet: 0,021): nach dem Auslösen beider Stops blieben 0,000248 BTC Short (≈ 38 USDT)
 # ohne Coins und ohne Stop. Mehr Coins gesperrt als nötig + Liste unlesbar = ein zu grosser Stop kann stehen (wie bei veralteten Zahlen, und wie _spot_ohne_liste im Tageslauf): der Short bekommt seinen Stop
@@ -4649,6 +4674,22 @@ for si_, zid_ in ((6, "G0.0"), (9, "G0.1"), (1, "G1.2")):
     e_ = R.fall(R.SZENARIEN[si_], z_[1], 0, R.LESEN[1], "anfang", None, False, z_[2], False)
     pruefe(f"15.G Raster --geist, Szenario {si_} {R.SZENARIEN[si_]}, Paar {zid_} (Perp-Liste unlesbar ab Tagesbeginn): kein Befund (Rasterbefund vor E26: SELBST_ENTFERNT, 4'828 USDT ohne Stop)",
            isinstance(e_, dict) and R.klasse(e_) is None, e_ if not isinstance(e_, dict) else (R.klasse(e_), e_["nach_lauf"], e_["selbst_entfernt"]))
+
+# R15-M29 (E19): das Lesen der freien Coins VOR dem Löschen des hängenden Stop-Limits nutzt das lange Budget (SCHUTZ_WARTEN, 5 Versuche) — wie das Lesen danach; mit dem kurzen (3 Versuche) gäbe der
+# Rückfall bei vier Fehlversuchen in Folge auf, der hängende Stop bliebe bis zur Nachkontrolle ohne Ersatz
+k, sp, fu, dd = handlage(coins=0.1, short=0.0, kurs=100000.0)
+st_o = eigener_spot_stop(sp, dd, 0.1, 90000.0)
+o_ = {"orderId": st_o.get("orderId")}
+budgets_ = []
+
+
+def lesen_spion_(warten=None):
+    budgets_.append(warten)
+    return (k.frei["BTC"], k.gesperrt["BTC"], 0.0, 100000.0)
+
+
+L._haengenden_loeschen(sp, "BTC", dict(dd), {"spot": o_["orderId"]}, o_, 0.1, [].append, [], lesen_spion_)
+pruefe("15.E19b _haengenden_loeschen: beide Lesungen der freien Coins (vor und nach dem Löschen) mit dem langen Budget SCHUTZ_WARTEN", len(budgets_) == 2 and all(b_ == L.SCHUTZ_WARTEN for b_ in budgets_), budgets_)
 
 # Testlücken der Mutationsprobe auf 07057e648: R12-M33 (nicht im Handel → keine Wiederholungsrunden; seit E24 ändern zusätzliche Runden weder Börse noch Meldungen, nur die Zahl der Anfragen: 57 statt 66)
 # und R10-M4b (Nachkontrolle im Not-Aus-Modus mit notaus_offen auf flachem Konto prüft nochmals und meldet «nichts offen», statt still zu enden)
