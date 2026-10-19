@@ -10492,3 +10492,4 @@ kau-spielzeug-fur-hunde-und-katzen-604000	2503240210231604200	16	6.39	ok	landese
 herren-langarm-pullover-615000	2606140846471615700	16	9.47	ok	landeseite
 kau-und-knabberspielzeug-607600	2502280854021607800	16	5.54	ok	landeseite
 farbige-led-rahmen-539584	1387255969645465600	7	17.61	ok	landeseite
+lip-gloss-mit-langanhaltendem-glanz-603000	2511290427451603600	3	5.46	ok	landeseite

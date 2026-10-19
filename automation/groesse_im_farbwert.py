@@ -80,7 +80,7 @@ def plan(p):
         return None, "nur eine Option"
     vs = p["variants"]["nodes"]
     # Grössen-Option: die, deren Werte ueberwiegend wie Groessen aussehen.
-    gr = re.compile(r'^(?:\d{1,2}XL|XXS|XS|S|M|L|XL|XXL|XXXL|US\s?\d{1,2}W?|\d{2}W)$', re.I)
+    gr = re.compile(r'^(?:\d{1,2}XL|XXS|XS|S|M|L|XL|XXL|XXXL|US\s?\d{1,2}(?:\.5)?W?|\d{2}W)$', re.I)   # 19.10. Prüfung F5: Halbgrössen auch in der Option selbst (US6.5 …)
     kandidat = [o for o in opts
                 if sum(bool(gr.match(v["name"].strip())) for v in o["optionValues"])
                 > len(o["optionValues"]) * 0.6]

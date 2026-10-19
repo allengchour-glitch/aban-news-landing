@@ -67,7 +67,9 @@ export function extractSpecs(desc){
     // Malzeichen nur ZWISCHEN Ziffern; eine reine Kleidergrössen-Liste ist keine Masszeile (Grössen gehören in die Option «Grösse»).
     let val=m[2].trim().replace(/\s+/g,' ');
     if(/[SMLX]/i.test(val) && /^(?:\s*(?:XXS|XS|[SML]|\d{0,2}X{1,4}L)\s*[,\/–-]?)+$/i.test(val)) continue;
-    val=val.replace(/(?<=\d)\s*[*x×]\s*(?=\d)/gi,' × ');
+    // Prüfung 19.10. (cj_specs F1): «*» war immer ein Malzeichen (wie vor dem Umbau); das «x» nur nach Ziffer/Einheit/Klammer und vor einer Ziffer — «40cmx30cm» und
+    // «30cm x 20cm» bleiben Masse, «2XL»/«XL» (x vor Buchstaben) bleiben unberührt.
+    val=val.replace(/\s*\*\s*/g,' × ').replace(/(?<=\d|cm|mm|m|"|\))\s*[x×]\s*(?=\d)/gi,' × ');
     val=einheiten(val);
     if(!/\d/.test(val)) continue;
     if(!nurMass(val)) continue;      // 14.09.: «Regular style (50cm < length ≤ 65cm)», «US Size 5, US Size 6» — Englisch in der deutschen Tabelle
