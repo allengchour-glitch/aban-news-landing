@@ -7585,3 +7585,4 @@ gid://shopify/Product/15473628021121	zugeordnet	56	Polo-Shirt mit Feuchtigkeitst
 gid://shopify/Product/15473628086657	zugeordnet	20	Herren Strickweste mit Rautenmuster
 gid://shopify/Product/15473687396737	zugeordnet	80	Polo-Shirt mit Henley-Kragen für Herren
 gid://shopify/Product/15473687658881	zugeordnet	30	Herren Sport-Casual T-Shirt mit Reverskragen
+gid://shopify/Product/15473687822721	zugeordnet	30	Jacquard T-Shirt Kurzarm Slim Fit
