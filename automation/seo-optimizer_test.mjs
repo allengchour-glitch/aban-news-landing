@@ -11,8 +11,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import { wegwerfOrdner, lauf as prozess } from './lib/fake_fetch_lauf.mjs';
-import { main, konfig, mkSeo, seoBasis, bewerte, ergaenze, sperreLaden, clientSecret, hostOk, meldung, zeilenText,
-  EXPECTED_SHOP, Q_SCAN, Q_SCAN_ZEILE, Q_EIN, M_UPDATE, LIMIT_STANDARD } from './seo-optimizer.mjs';
+import { main, konfig, mkSeo, seoBasis, bewerte, ergaenze, sperreLaden, clientSecret, hostOk, meldung, zeilenText, einzeilig,
+  EXPECTED_SHOP, Q_SCAN, Q_SCAN_ZEILE, Q_EIN, M_UPDATE, LIMIT_STANDARD, RETRY_MAX } from './seo-optimizer.mjs';
 
 const HIER = path.dirname(fileURLToPath(import.meta.url)), SKRIPT = path.join(HIER, 'seo-optimizer.mjs');
 const GEHEIM = 'shpss_ERFUNDEN_0123456789abcdef', TOKEN = 'tok_ERFUNDEN_zzz', TG = 'tg_ERFUNDEN_bot123', CID = 'cid-ERFUNDEN';
@@ -63,9 +63,9 @@ function shopFake(produkte, { shop = SHOP, haken } = {}) {
 }
 const ENV = { SHOPIFY_SHOP: EXPECTED_SHOP, SHOPIFY_CLIENT_ID: CID, SHOPIFY_CLIENT_SECRET: GEHEIM };
 /** Führt main() im Prozess aus; prüft in JEDEM Lauf, dass kein Schlüssel in Ausgabe oder Fehlerausgabe steht. */
-async function fahre(env, fake, { argv = [], sperre = frei } = {}) {
+async function fahre(env, fake, { argv = [], sperre = frei, warte = async () => {} } = {}) {
   const out = [], err = [];
-  const code = await main(argv, { ...ENV, ...env }, { fetchFn: fake.fetchFn, warte: async () => {}, log: s => out.push(String(s)), err: s => err.push(String(s)), sperre });
+  const code = await main(argv, { ...ENV, ...env }, { fetchFn: fake.fetchFn, warte, log: s => out.push(String(s)), err: s => err.push(String(s)), sperre });
   const alles = out.join('\n') + '\n' + err.join('\n');
   for (const g of [GEHEIM, TOKEN, TG]) assert.ok(!alles.includes(g), 'Schlüssel in der Ausgabe: ' + g.slice(0, 6));
   return { code, out: out.join('\n'), err: err.join('\n'), alles };
@@ -209,6 +209,10 @@ test('Werbetest-Sperre: gesperrte Produkte (ID und Handle) werden nicht geschrie
   assert.equal(r.code, 0); assert.deepEqual(fake.mutationen().map(m => m.vars.product.id), [nr(3)]);
   assert.match(r.out, /2 Werbetest-gesperrt/);
   assert.equal(seoVon(fake, 1).title, null); assert.equal(seoVon(fake, 2).title, null);      // unberührt
+  assert.equal(fake.art('ein').length, 2, 'gesperrte Produkte werden nicht einmal gegengeprüft (nur Gegenprobe + Rücklesen des dritten)');
+  const dry = shopFake([pr(1, null, BESCHR), pr(2, null, BESCHR), pr(3, null, BESCHR)]);     // Trockenlauf: «würde setzen» zählt Gesperrte NICHT mit
+  const rd = await fahre({ DRY_RUN: '1' }, dry, { sperre: gesperrtMit([15000000000001], ['produkt-2']) });
+  assert.match(rd.out, /1 SEO \(DRY\)/); assert.match(rd.out, /2 Werbetest-gesperrt/); assert.doesNotMatch(rd.out, /würde SEO setzen: .*Modell [12]»/);
 });
 test('Werbetest-Sperre wird auch bei der Gegenprobe geprüft (Handle ändert sich zwischen Lesen und Schreiben)', async () => {
   const fake = shopFake(viele(2), { haken: ({ art, nr: n, store }) => { if (art === 'ein' && n === 1) store.get(nr(1)).handle = 'sperr-handle'; } });
@@ -226,6 +230,7 @@ test('Werbetest-Sperre fail-closed: Datei fehlt / Kopf kaputt / Sperre aktiv ohn
       let fake = shopFake(viele(3)), r = await fahre({}, fake, { sperre: sp });
       assert.equal(r.code, 1, datei); assert.equal(fake.mutationen().length, 0); assert.equal(fake.art('scan').length, 0, 'nicht einmal gescannt');
       assert.match(r.out, /nichts wird geschrieben/);
+      assert.doesNotMatch(r.out, /✅/, 'kein ✅ ohne Messung'); assert.match(r.out, /Bild-QA: kein Produkt geprüft/);
       fake = shopFake(viele(3)); r = await fahre({ DRY_RUN: '1' }, fake, { sperre: sp });
       assert.equal(r.code, 1); assert.equal(fake.mutationen().length, 0); assert.ok(fake.art('scan').length >= 1);
     }
@@ -266,9 +271,11 @@ test('Unklare Mutationsantwort → Stopp nach GENAU einem Schreibversuch, Exit 1
     assert.equal(seoVon(fake, 2).title, null, 'zweites Produkt wurde angefasst'); assert.equal(seoVon(fake, 3).title, null);
   }
 });
-test('Rücklesen bestätigt nicht (Beschreibung weicht ab / Titel / Produkt weg / Lesefehler) → Stopp, Exit 1', async () => {
+test('Rücklesen bestätigt nicht (SEO-Titel / Beschreibung / Produkttitel / Status weichen ab oder sind genullt, Produkt weg, Lesefehler) → Stopp, Exit 1', async () => {
+  // «genullt» ist der Fehler, vor dem die ganze Konstruktion schützt: Shopify setzt ein ausgelassenes seo-Feld auf null. Die SEO-Titel-Fälle fehlten in der ersten Fassung (Prüfung 19.10.: Sabotage überlebte 41/41).
   const abw = {
     Beschreibung: p => { p.seo.description = 'Jemand anders'; }, Titel: p => { p.title = 'Umbenannt'; }, Status: p => { p.status = 'DRAFT'; },
+    'SEO-Titel abweichend': p => { p.seo.title = 'Jemand anders'; }, 'SEO-Titel genullt': p => { p.seo.title = null; }, 'Beschreibung genullt': p => { p.seo.description = null; },
   };
   for (const [name, f] of Object.entries(abw)) {
     const fake = shopFake(viele(3), { haken: ({ art, nr: n, store }) => { if (art === 'ein' && n === 2) f(store.get(nr(1))); } });
@@ -296,6 +303,130 @@ test('GraphQL-THROTTLED bei der Mutation wird (nur dann) wiederholt — Shopify 
   const r = await fahre({}, fake);
   assert.equal(r.code, 0, r.alles); assert.equal(fake.mutationen().length, 2); assert.match(r.out, /1 SEO gefüllt/);
   assert.ok(seoVon(fake, 1).title);
+});
+
+// ── 7b Schutzzweige, die in der ersten Fassung ohne Test waren (Prüfung 19.10.: jede dieser Sabotagen überlebte 41/41 grüne Tests) ─────────────────
+const userFehler = (msg = 'nein') => res({ data: { productUpdate: { product: null, userErrors: [{ message: msg }] } } });
+test('Gegenprobe mit falscher Form (fremde Produkt-ID, 0 oder 2 Einträge) → Stopp «Gegenprobe», Exit 1, 0 Mutationen', async () => {
+  const faelle = {
+    'fremde Produkt-ID': [store => [{ ...structuredClone(store.get(nr(1))), id: nr(99) }], /abweichende Produkt-ID/],
+    '0 Einträge': [() => [], /nicht genau einen Eintrag/],
+    '2 Einträge': [store => [structuredClone(store.get(nr(1))), structuredClone(store.get(nr(1)))], /nicht genau einen Eintrag/],
+  };
+  for (const [name, [nodes, muster]] of Object.entries(faelle)) {
+    const fake = shopFake(viele(3), { haken: ({ art, nr: n, store }) => art === 'ein' && n === 1 ? res({ data: { shop: SHOP, nodes: nodes(store) } }) : undefined });
+    const r = await fahre({}, fake);
+    assert.equal(r.code, 1, name); assert.equal(fake.mutationen().length, 0, name + ': trotz falscher Gegenprobe geschrieben');
+    assert.match(r.out, /Lauf gestoppt \(gegenprobe /, name); assert.match(r.out, muster, name);
+  }
+});
+test('Rücklesen mit fremder Produkt-ID (alle Felder sonst gleich) → Stopp, Exit 1, nur ein Schreibversuch', async () => {
+  const fake = shopFake(viele(3), { haken: ({ art, nr: n, store }) => art === 'ein' && n === 2 ? res({ data: { shop: SHOP, nodes: [{ ...structuredClone(store.get(nr(1))), id: nr(99) }] } }) : undefined });
+  const r = await fahre({}, fake);
+  assert.equal(r.code, 1); assert.equal(fake.mutationen().length, 1); assert.match(r.out, /Rücklesen bestätigt die Änderung nicht/);
+});
+test('Scan-Antwort ohne boolesches hasNextPage (fehlt, pageInfo fehlt, String "false") → Stopp «unvollständig», nichts geschrieben', async () => {
+  // Der String "false" ist wahr: ohne die Typprüfung würde der Lauf nie enden. Der Haken greift nur beim ersten Scan, damit eine sabotierte Fassung endlich bleibt.
+  for (const [name, pageInfo] of Object.entries({ 'hasNextPage fehlt': { endCursor: null }, 'pageInfo fehlt': undefined, 'String false': { hasNextPage: 'false', endCursor: null } })) {
+    const fake = shopFake(viele(3), { haken: ({ art, nr: n, store }) => art === 'scan' && n === 1
+      ? res({ data: { shop: SHOP, products: { ...(pageInfo ? { pageInfo } : {}), nodes: [...store.values()].map(p => structuredClone(p)) } } }) : undefined });
+    const r = await fahre({}, fake);
+    assert.equal(r.code, 1, name); assert.equal(fake.mutationen().length, 0, name); assert.match(r.out, /products-Antwort unvollständig/, name);
+  }
+});
+test('LIMIT zählt auch abgelehnte Schreibversuche (LIMIT=2 bei lauter Ablehnungen → genau 2 Mutationen, kein Serien-Stopp)', async () => {
+  const fake = shopFake(viele(6), { haken: ({ art }) => art === 'mutation' ? userFehler() : undefined });
+  const r = await fahre({ LIMIT: '2' }, fake);
+  assert.equal(fake.mutationen().length, 2); assert.equal(r.code, 1); assert.match(r.out, /2 abgelehnt/); assert.doesNotMatch(r.out, /in Folge/);
+});
+test('Ablehnungen, die nicht aufeinanderfolgen, stoppen den Lauf nicht (Serien-Zähler wird nach jedem Erfolg zurückgesetzt)', async () => {
+  const fake = shopFake(viele(10), { haken: ({ art, nr: n }) => art === 'mutation' && n % 2 === 1 ? userFehler() : undefined });
+  const r = await fahre({}, fake);
+  assert.equal(fake.mutationen().length, 10, 'der Lauf wurde vorzeitig gestoppt'); assert.equal(r.code, 1);
+  assert.match(r.out, /5 SEO gefüllt/); assert.match(r.out, /5 abgelehnt/); assert.doesNotMatch(r.out, /in Folge/);
+});
+test('Sperr-Prüfer-Kanarienvogel: trifft der Prüfer die erste Sperr-ID nicht, ist die Sperre «nicht zu beurteilen» (ok:false), nicht «frei» — nach dem Ende ist er nicht nötig', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'seo-sperre-')), datei = path.join(dir, 's.txt');
+  try {
+    fs.writeFileSync(datei, '# ende: 2026-10-24\n15453601890689  silberarmband-614500\n');
+    const gut = sperreLaden({ datei, heute: '2026-10-20' }), kaputt = sperreLaden({ datei, heute: '2026-10-20', gesperrt: () => false });
+    assert.equal(gut.ok, true); assert.equal(kaputt.ok, false); assert.match(kaputt.grund, /Kanarienvogel/); assert.equal(kaputt.ids.size, 0);
+    assert.equal(sperreLaden({ datei, heute: '2026-10-25', gesperrt: () => false }).ok, true, 'abgelaufene Sperre braucht keinen Kanarienvogel');
+    const ohneIds = sperreLaden({ datei, heute: '2026-10-20', lesen: () => ({ ende: '2026-10-24', ids: new Set(), handles: new Set() }) });
+    assert.equal(ohneIds.ok, false); assert.match(ohneIds.grund, /keine Produkt-ID lesbar/);
+  } finally { fs.rmSync(dir, { recursive: true, force: true }); }
+});
+test('Lesen: ein GEWORFENER Netzfehler wird wiederholt (RETRY_MAX), danach «unklar» ohne weiteren Scan; kein Bild-Scan nach einem Stopp', async () => {
+  let fake = shopFake(viele(2), { haken: ({ art, nr: n }) => { if (art === 'scan' && n === 1) throw new TypeError('fetch failed'); } });
+  let r = await fahre({}, fake);
+  assert.equal(r.code, 0, r.alles); assert.equal(fake.mutationen().length, 2);
+  fake = shopFake(viele(2), { haken: ({ art }) => { if (art === 'scan') throw new TypeError('fetch failed'); } });
+  r = await fahre({}, fake);
+  assert.equal(r.code, 1); assert.equal(fake.mutationen().length, 0);
+  assert.equal(fake.art('scan').length, RETRY_MAX + 1, 'ein Versuch plus RETRY_MAX Wiederholungen — und keinen Scan mehr nach dem Stopp');
+});
+test('Eimer fast leer (currentlyAvailable < 250) → Wartezeit nach der Restore-Rate, damit die Nachbar-Engines nicht gedrosselt werden; voller Eimer → keine Wartezeit', async () => {
+  const mitKosten = (fake, verfuegbar) => {
+    const f0 = fake.fetchFn;
+    fake.fetchFn = async (u, o) => {
+      const r0 = await f0(u, o);
+      if (!o?.body || !JSON.parse(o.body).query) return r0;
+      const j = await r0.json(); j.extensions = { cost: { throttleStatus: { currentlyAvailable: verfuegbar, restoreRate: 50 } } };
+      return res(j);
+    };
+    return fake;
+  };
+  let waits = [];
+  await fahre({ DRY_RUN: '1' }, mitKosten(shopFake(viele(1)), 100), { warte: async ms => { waits.push(ms); } });
+  assert.ok(waits.includes(3000), 'erwartet (250 − 100) / 50 s = 3000 ms, war ' + JSON.stringify(waits));
+  waits = [];
+  await fahre({ DRY_RUN: '1' }, mitKosten(shopFake(viele(1)), 1900), { warte: async ms => { waits.push(ms); } });
+  assert.deepEqual(waits, []);
+});
+test('Jeder Aufruf mit Schlüssel (OAuth, GraphQL, Telegram) trägt redirect:"error" — eine Weiterleitung nimmt den Schlüssel nicht mit', async () => {
+  const fake = shopFake(viele(1)), f0 = fake.fetchFn, arten = [];
+  fake.fetchFn = async (u, o = {}) => { arten.push([new URL(u).pathname.split('/').pop(), o.redirect]); return f0(u, o); };
+  await fahre({ TELEGRAM_BOT_TOKEN: TG, TELEGRAM_CHAT_ID: 'chat-1' }, fake);
+  for (const a of ['access_token', 'graphql.json', 'sendMessage']) assert.ok(arten.some(([x]) => x === a), 'nicht aufgerufen: ' + a);
+  assert.ok(arten.every(([, rd]) => rd === 'error'), JSON.stringify(arten));
+});
+test('Unerwarteter Fehler im Lauf (hier: der Sperr-Prüfer wirft) → Exit 1 mit ::error, nie Exit 0; mit --zeile genau eine Zeile mit ⚠️ und kein ::error', async () => {
+  const wirft = () => { throw new Error('kaputt'); };
+  let fake = shopFake(viele(1)), r = await fahre({}, fake, { sperre: wirft });
+  assert.equal(r.code, 1); assert.match(r.out, /Unerwarteter Fehler: kaputt/); assert.match(r.out, /::error title=seo-optimizer::Unerwarteter Fehler: kaputt/); assert.equal(fake.mutationen().length, 0);
+  fake = shopFake(viele(1)); r = await fahre({}, fake, { sperre: wirft, argv: ['--zeile'] });
+  assert.equal(r.code, 1); assert.equal(r.out, '⚠️ SEO-LÜCKEN: unklar (Unerwarteter Fehler: kaputt)');
+});
+
+// ── 7c Bild-QA (Befund 19.10.: der Hauptscan läuft von den ältesten her, FAILED-Bilder sitzen in neuen Importen) ─────────────────────────────────────
+const bildScan = (nodes) => ({ art, vars }) => art === 'scan' && vars.r === true && vars.s === 'CREATED_AT'
+  ? res({ data: { shop: SHOP, products: { pageInfo: { hasNextPage: false, endCursor: null }, nodes: structuredClone(nodes) } } }) : undefined;
+test('Bild-QA: FAILED-Bilder NEUER Produkte werden gemeldet, obwohl der Hauptscan von den ältesten her läuft; PROCESSING/UPLOADED sind keine Bildfehler; ein Produkt zählt einmal', async () => {
+  const neu50 = pr(50, 'A', 'B', { media: { nodes: [{ status: 'FAILED' }] } }), neu51 = pr(51, 'A', 'B', { media: { nodes: [{ status: 'PROCESSING' }, { status: 'UPLOADED' }] } });
+  const entwurf52 = pr(52, 'A', 'B', { status: 'DRAFT', media: { nodes: [{ status: 'FAILED' }] } });         // nicht ACTIVE → kein Befund (Filter-Kanarienvogel wie im Hauptscan)
+  const alt1 = pr(1, 'A', 'B', { media: { nodes: [{ status: 'FAILED' }] } });
+  const fake = shopFake([alt1], { haken: bildScan([neu50, neu51, entwurf52, alt1]) });             // alt1 steht in BEIDEN Scans
+  const r = await fahre({}, fake);
+  assert.equal(r.code, 0, r.alles);
+  assert.match(r.out, /⚠️ 2 Produkt\(e\) mit FAILED-Bild: .*Modell 1»/); assert.match(r.out, /Modell 50»/); assert.doesNotMatch(r.out, /Modell 51/); assert.doesNotMatch(r.out, /Modell 52/, 'Entwurf gemeldet');
+  const s = fake.art('scan'); assert.equal(s.length, 2);
+  assert.deepEqual([s[1].vars.s, s[1].vars.r, s[1].vars.n, s[1].vars.after], ['CREATED_AT', true, 100, null]);
+  assert.equal(fake.mutationen().length, 0, 'die Bild-QA schreibt nie');
+});
+test('Bild-QA ohne Fund: «✅ keine FAILED-Bilder» nennt die Zahl der wirklich geprüften Produkte (Haupt- und Bild-Scan ohne Doppelzählung)', async () => {
+  const fake = shopFake([pr(1, 'A', 'B')], { haken: bildScan([pr(1, 'A', 'B'), pr(50, 'A', 'B'), pr(51, 'A', 'B')]) });
+  const r = await fahre({}, fake);
+  assert.equal(r.code, 0); assert.match(r.out, /✅ keine FAILED-Bilder \(in den 3 geprüften\)/);
+});
+test('Bild-QA unklar (HTTP 500 / Identität falsch / products null) → Exit 1 mit «Bild-QA»-Grund und KEIN «✅ keine FAILED-Bilder»; die bis dahin geschriebenen Produkte bleiben gezählt', async () => {
+  for (const [name, antwort] of Object.entries({ 'HTTP 500': () => res({}, 500), 'Identität': () => res({ data: { shop: { ...SHOP, currencyCode: 'USD' }, products: { pageInfo: { hasNextPage: false, endCursor: null }, nodes: [] } } }),
+    'products null': () => res({ data: { shop: SHOP, products: null } }) })) {
+    const fake = shopFake(viele(2), { haken: ({ art, vars }) => art === 'scan' && vars.r === true ? antwort() : undefined });
+    const r = await fahre({}, fake);
+    assert.equal(r.code, 1, name); assert.equal(fake.mutationen().length, 2, name); assert.match(r.out, /2 SEO gefüllt/, name);
+    assert.match(r.out, /⚠️ UNKLAR: Bild-QA: /, name); assert.doesNotMatch(r.out, /✅ keine FAILED-Bilder/, name); assert.match(r.out, /::error title=seo-optimizer::Bild-QA: /, name);
+    assert.doesNotMatch(r.out, /Bild-QA: Bild-QA/, 'Präfix doppelt');
+  }
 });
 
 // ── 8 Lesefehler sind «unklar», nie «nichts zu tun» ──────────────────────────────────────────────────────────────────────────
@@ -373,6 +504,45 @@ test('--zeile: EINE Zeile, schreibt nie (auch mit DRY_RUN=0), liest ohne Medien,
   assert.equal(k.code, 0); assert.match(k.out, /^⚠️ SEO-LÜCKEN: unklar \(/);
 });
 
+test('--zeile: LIMIT-/DRY_RUN-Müll verhindert die Zeile nicht, ein einziger Lese-Scan (kein Bild-Scan); Konfigurationsfehler beim Lesen, fehlender Zugang, Auth- und Lauffehler → EINE Zeile mit ⚠️', async () => {
+  let fake = shopFake([pr(1, null, BESCHR)]);
+  let r = await fahre({ LIMIT: 'abc', DRY_RUN: 'vielleicht' }, fake, { argv: ['--zeile'] });
+  assert.equal(r.code, 0); assert.match(r.out, /^SEO-LÜCKEN: 1 aktive gelesen · Titel leer 1/); assert.equal(fake.mutationen().length, 0); assert.equal(fake.art('scan').length, 1, 'kein Bild-Scan bei --zeile');
+  r = await fahre({ SORT: 'PRICE' }, shopFake(viele(1)), { argv: ['--zeile'] });                   // SORT betrifft das Lesen → bleibt streng, aber mit Zeile statt nur Exit 2
+  assert.equal(r.code, 2); assert.equal(r.out, '⚠️ SEO-LÜCKEN: unklar (Konfiguration: SORT muss CREATED_AT, UPDATED_AT, ID sein)');
+  fake = shopFake(viele(1)); r = await fahre({ SHOPIFY_SHOP: 'evil.example.com' }, fake, { argv: ['--zeile'] });
+  assert.equal(r.code, 2); assert.match(r.out, /^⚠️ SEO-LÜCKEN: unklar \(Konfiguration: SHOPIFY_SHOP ist kein gültiger/); assert.equal(r.out.split('\n').length, 1); assert.equal(fake.calls.length, 0);
+  for (const env of [{ SHOPIFY_SHOP: '' }, { SHOPIFY_CLIENT_ID: '', SHOPIFY_CLIENT_SECRET: '' }]) {
+    fake = shopFake(viele(1)); r = await fahre(env, fake, { argv: ['--zeile'] });
+    assert.equal(r.code, 0, JSON.stringify(env)); assert.match(r.out, /^⚠️ SEO-LÜCKEN: unklar \(/); assert.equal(r.out.split('\n').length, 1); assert.equal(fake.calls.length, 0);
+  }
+  fake = shopFake(viele(1), { haken: ({ art }) => art === 'oauth' ? res({}, 401) : undefined }); r = await fahre({}, fake, { argv: ['--zeile'] });
+  assert.equal(r.out, '⚠️ SEO-LÜCKEN: unklar (OAuth: HTTP 401)');
+});
+
+// ── 10b Fremdtext in der Ausgabe ──────────────────────────────────────────────────────────────────────────────────────────────
+test('Titel und Shopify-Fehlertexte mit Zeilenumbruch erzeugen nie eine Zeile, die mit «::» beginnt (GitHub liest sie als Workflow-Befehl)', async () => {
+  const boese = 'Hoodie\n::error title=x::injiziert\r\n::warning::y';
+  const nurEigene = (text, erlaubt = 0) => {                      // erlaubt = Zahl der gewollten «::error title=seo-optimizer::»-Zeilen
+    const z = text.split('\n').filter(x => x.startsWith('::'));
+    return z.length === erlaubt && z.every(x => x.startsWith('::error title=seo-optimizer::'));
+  };
+  for (const dry of ['1', '0']) {                                   // trocken und scharf: «würde setzen»/«✓ SEO»/FAILED-Bild-Liste/Telegram
+    const fake = shopFake([pr(1, null, BESCHR, { title: boese, media: { nodes: [{ status: 'FAILED' }] } })]);
+    const r = await fahre({ DRY_RUN: dry, TELEGRAM_BOT_TOKEN: TG, TELEGRAM_CHAT_ID: 'chat-1' }, fake);
+    assert.equal(r.code, 0, r.alles); assert.ok(nurEigene(r.out), `DRY_RUN=${dry}: ${JSON.stringify(r.out.split('\n').filter(x => x.startsWith('::')))}`);
+    assert.match(r.out, /Hoodie ::error title=x::injiziert ::warning::y/);    // lesbar bleibt er, nur in EINER Zeile
+    assert.ok(nurEigene(fake.art('telegram')[0].body.text), 'Telegram-Text');
+  }
+  let fake = shopFake(viele(1), { haken: ({ art }) => art === 'mutation' ? userFehler('nein\n::error::raus') : undefined });         // userErrors-Text von Shopify
+  let r = await fahre({}, fake);
+  assert.equal(r.code, 1); assert.ok(nurEigene(r.out, 1), r.out); assert.match(r.out, /nein ::error::raus/);
+  fake = shopFake(viele(1), { haken: ({ art }) => art === 'scan' ? res({ errors: [{ message: 'Zugriff\n::warning::verweigert' }] }) : undefined });   // GraphQL-Fehlertext
+  r = await fahre({}, fake);
+  assert.equal(r.code, 1); assert.ok(nurEigene(r.out, 1), r.out); assert.match(r.out, /Zugriff ::warning::verweigert/);
+  assert.equal(einzeilig('a\n\n b\t\u0085c\u2028d'), 'a b c d'); assert.equal(einzeilig(null), ''); assert.equal(einzeilig(undefined), '');
+});
+
 // ── 11 Telegram ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test('Telegram: Meldung bei Änderungen/Befund wie früher (Schlüssel nur in der URL, nie im Text); ein Zustellfehler ändert das Ergebnis nicht; --zeile sendet nie', async () => {
   let fake = shopFake(viele(2));
@@ -406,6 +576,27 @@ test('Text: Bindestrich im Wort bleibt, Trennzeichen werden « – », Marke ble
   const mittel = mkSeo('Mechanische Skelett-Herrenuhr mit Silikonband und Leuchtzeigern für Männer im Retro-Stil');
   assert.ok(mittel.description.endsWith('Lieferung in die ganze Schweiz.') || mittel.description.endsWith('Online-Shop.'), mittel.description);   // Rabattsatz fällt zuerst weg
   assert.equal(mkSeo('').title.length > 0, true);
+});
+const halbesZeichen = s => /[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?<![\uD800-\uDBFF])[\uDC00-\uDFFF]/.test(s);
+test('mkSeo: ein harter Schnitt halbiert nie ein Emoji (kein einzelnes Surrogat in Titel oder Beschreibung); Grenzen 60/155 gelten auch dann', () => {
+  assert.ok(halbesZeichen('ab\uD83D') && halbesZeichen('\uDE00ab') && !halbesZeichen('ab😀cd'), 'der Prüfer selbst erkennt ein halbes Zeichen (Positiv-Kanarienvogel)');
+  for (const vor of ['x', '-']) {                                   // '-': nach dem Entfernen des halben Emojis bleiben nur Trennzeichen übrig → der Rückfall von zuWortende greift
+    for (let pos = 20; pos <= 70; pos++) {                          // ein einziges langes Wort ohne Leerzeichen: dort schneidet zuWortende hart
+      const s = mkSeo(vor.repeat(pos) + '😀' + 'y'.repeat(40));
+      assert.ok(!halbesZeichen(s.title) && s.title.length <= 60 && s.title.length > 0, `Titel, «${vor}»-Wort, Emoji an Stelle ${pos}: ${JSON.stringify(s.title)}`);
+    }
+    for (let pos = 120; pos <= 180; pos++) {
+      const s = mkSeo(vor.repeat(pos) + '😀' + 'y'.repeat(40));
+      assert.ok(!halbesZeichen(s.description) && s.description.length <= 155 && s.description.length > 0, `Beschreibung, «${vor}»-Wort, Emoji an Stelle ${pos}`);
+    }
+  }
+  let z = 12345; const zufall = n => (z = (z * 1103515245 + 12345) % 2147483648) % n;       // fester Zufall: der Test ist wiederholbar
+  const bausteine = ['Hoodie', 'mit', 'Fell-Panel', 'für', 'Damen', '😀', 'Herz❤️', '👗Kleid', 'und', 'T-Shirt', 'a'.repeat(30), '𝒳𝒴𝒵', 'Größe', '·', '-'];
+  for (let i = 0; i < 4000; i++) {
+    const t = Array.from({ length: 1 + zufall(30) }, () => bausteine[zufall(bausteine.length)]).join(zufall(4) ? ' ' : ''), s = mkSeo(t);
+    assert.ok(s.title.length <= 60 && s.description.length <= 155 && s.title && s.description, JSON.stringify(t));
+    assert.ok(!halbesZeichen(s.title) && !halbesZeichen(s.description), 'halbes Zeichen: ' + JSON.stringify(t)); assert.doesNotMatch(s.title + s.description, /undefined|null|NaN/);
+  }
 });
 test('bewerte/ergaenze: leer = null oder nur Leerraum; unklar bei falschem Typ; nie ein Teil-Objekt', () => {
   const p = (st, sd) => ({ id: nr(1), title: 'Hoodie', seo: { title: st, description: sd } });
@@ -446,13 +637,13 @@ test('Prozess: scharfer Lauf über Fake-fetch — die Mutation auf dem Draht tr�
   const m = r.aufrufe.filter(a => a.route === 'mutation'); assert.equal(m.length, 1);
   assert.deepEqual(Object.keys(m[0].variables.product.seo).sort(), ['description', 'title']); assert.equal(m[0].variables.product.seo.description, BESCHR);
   assert.equal(m[0].variables.product.id, nr(1)); assert.match(r.stdout, /✓ SEO Relaxed-Fit Hoodie/); assert.match(r.stdout, /1 SEO gefüllt/);
-  assert.deepEqual(r.aufrufe.map(a => a.route), ['oauth', 'scan', 'ein', 'mutation', 'ein']);
+  assert.deepEqual(r.aufrufe.map(a => a.route), ['oauth', 'scan', 'ein', 'mutation', 'ein', 'scan']);       // der letzte «scan» ist die Bild-QA der neuesten Produkte (rein lesend)
   for (const g of [GEHEIM, TOKEN]) assert.ok(!r.roh.includes(g), 'Schlüssel im Protokoll');
   assert.ok(r.aufrufe.every(a => a.host === EXPECTED_SHOP), 'Anfrage an fremden Host');
 });
 test('Prozess: DRY_RUN=1 → keine Gegenprobe, keine Mutation, Exit 0', t => {
   const r = aufruf(t, szenario({ scan: [pr(1, null, BESCHR)], ein: [[]] }), { DRY_RUN: '1' });
-  assert.equal(r.status, 0, r.roh); assert.deepEqual(r.aufrufe.map(a => a.route), ['oauth', 'scan']); assert.match(r.stdout, /1 SEO \(DRY\)/);
+  assert.equal(r.status, 0, r.roh); assert.deepEqual(r.aufrufe.map(a => a.route), ['oauth', 'scan', 'scan']); assert.match(r.stdout, /1 SEO \(DRY\)/);       // zweiter «scan» = Bild-QA (lesend)
 });
 test('Prozess: unklare Mutationsantwort (Top-Level-Fehler, wie früher als ✓ gezählt) → Exit 1, ein Schreibversuch, kein ✓', t => {
   const v = pr(1, null, BESCHR);

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* LuxeStyle — seo-optimizer.mjs  (v2, 19.10.2026; wöchentlich/von Hand via .github/workflows/seo-optimizer.yml)
+/* LuxeStyle — seo-optimizer.mjs  (v2, 19.10.2026, nach zwei unabhängigen Prüfungen nachgebessert; wöchentlich/von Hand via .github/workflows/seo-optimizer.yml)
  * Findet aktive Produkte mit FEHLENDEM SEO-Titel und/oder -Meta und füllt NUR die fehlenden Felder (deutsch, Schweiz, Preis-Anker-Stil)
  * — für besseren Google-Traffic. Meldet ausserdem Produkte mit FAILED-Bildern (Bild-QA) per Telegram.
  *
@@ -30,18 +30,36 @@
  *      falsche Produkt-ID, Rücklese-Abweichung) = «unklar»: KEIN weiterer Schreibvorgang in diesem Lauf, Exit 1, ::error-Zeile. Mutationen werden nie wiederholt
  *      (nur bei GraphQL-THROTTLED, das Shopify vor der Ausführung ablehnt). userErrors = bekannte Ablehnung: zählen, weiter (5 in Folge → Stopp).
  *   7. Lesefehler sind «unklar», nie «nichts zu tun». Kein Zugang gar nicht gesetzt = No-op für Forks (Exit 0, aber als «unklar, keine Prüfung» gemeldet).
- *   8. LIMIT ist der Massen-Schalter (Standard 120, kein Deckel; LIMIT=5000 geht). Ungültig (abc, 0, 3oops) → Exit 2 statt unbegrenzt.
+ *   8. LIMIT ist der Massen-Schalter (Standard 120, kein Deckel; LIMIT=5000 geht). Ungültig (abc, 0, 3oops) → Exit 2 statt unbegrenzt (bei --zeile ohne Bedeutung, dort wird weder LIMIT noch DRY_RUN geprüft).
+ *   9. Bild-QA (nur lesend; nicht bei --zeile, nicht nach einem Stopp): FAILED-Bilder im Hauptscan UND in den 100 NEUESTEN aktiven Produkten (eigene Lesung, CREATED_AT absteigend, dieselbe schon
+ *      bewährte Abfrage). Grund: der Hauptscan läuft standardmässig von den ältesten her — dort fehlen Bildfehler fast nie, neue Importe kämen nie dran. GEÄNDERT gegenüber der Altfassung:
+ *      (a) sie scannte UPDATED_AT absteigend und meldete JEDES Medium mit Status ≠ READY als «FAILED-Bild»; hier zählt nur FAILED — UPLOADED/PROCESSING sind Übergangszustände (ein frisch
+ *      importiertes Produkt wäre sonst jedes Mal ein Fehlalarm); (b) schlägt die Lesung fehl, ist das «unklar» (Exit 1, UNKLAR-Zeile mit «Bild-QA:»), nie «keine FAILED-Bilder»; ohne ein einziges
+ *      geprüftes Produkt steht kein ✅. GEMESSEN 19.10. (live, DRY_RUN=1 LIMIT=5, nur lesend): 84 Produkte im Hauptscan + 100 neueste = 184 geprüft, 0 FAILED, Exit 0, 2,1 s.
+ *  10. Ausgabe: Titel und Shopify-Fehlertexte sind Fremdtext und kommen als EINE Zeile heraus (`einzeilig`) — sonst erzeugte ein Titel «x\n::error …» eine Zeile, die GitHub Actions als
+ *      Workflow-Befehl liest. Ein harter Schnitt in Titel/Beschreibung lässt kein halbes Emoji (einzelnes Surrogat) stehen.
  *   Text: Bindestriche im Wort bleiben («Press-on», «T-Shirt»); Gedankenstrich nur bei « - », «·», «–», «—»; Titel ≤ 60 Zeichen: « | LuxeStyle CH», sonst « | LuxeStyle»,
  *   sonst der ganze Titel allein, sonst am Wortende ohne hängendes Bindewort gekürzt («… Stiefeletten mit» → «… Stiefeletten»); Beschreibung ≤ 155 Zeichen mit der
  *   Vorlage von früher, wenn sie passt — sonst fällt zuerst der Rabattsatz weg, dann der Lieferhinweis.
  *   WELCOME10 GEMESSEN 19.10. aktiv (DiscountCodeBasic, bis 31.12.2027) → der Satz steht; läuft der Code aus, PROMO unten leeren.
  *
+ * NACH DER PRÜFUNG (19.10., zwei unabhängige Prüfer, 9 Befunde): 12 absichtliche Sabotagen überlebten die ersten 41 Tests (Rücklesen des seo.title, Rücklese-ID, Form und ID der Gegenprobe,
+ *   Sperr-Prüfer, Typ von hasNextPage, LIMIT mit Ablehnungen, Serien-Zähler, Netz-Retry, Eimer-Wartezeit, redirect:'error', «Unerwarteter Fehler» → Exit 1) — jede hat jetzt einen Test. Der
+ *   Rücklese-Vergleich des seo.title ist genau der Schutz gegen den Null-Fehler und war der gefährlichste Fall. Zudem behoben: Zeilenumbruch im Titel, halbes Emoji, --zeile bei LIMIT=abc,
+ *   ⚠️ in allen --zeile-Unklar-Zeilen, Bild-QA (Punkt 9). Die Aussage «22 von 22 Sabotagen entdeckt» galt nur für die damals gewählten 22.
+ *
+ * ÜBERNAHME  Nur ZUSAMMEN auf main bringen. GEMESSEN 19.10. (`git ls-tree origin/main …`): auf origin/main liegt nur die Altfassung automation/seo-optimizer.mjs; alles Folgende ist im Zweig getrackt.
+ *   Laufzeit: automation/seo-optimizer.mjs + automation/lib/werbetest_sperre.mjs + dropship/_werbetest_sperre.txt · Test: automation/seo-optimizer_test.mjs + automation/lib/fake_fetch_lauf.mjs +
+ *   automation/lib/fake_fetch_preload.mjs. Fehlt die Bibliothek, stirbt das Skript beim Laden (ERR_MODULE_NOT_FOUND, Exit 1 — laut, nie still); fehlt nur die Sperrdatei, schreibt es nicht
+ *   (fail-closed: scharf Exit 1, «nichts wird geschrieben»). Beides GEMESSEN 19.10. in einem leeren Ordner.
+ *
  * AUFRUF   node automation/seo-optimizer.mjs                 füllt Lücken (LIMIT=120)
  *          DRY_RUN=1 LIMIT=5000 node automation/seo-optimizer.mjs     nur lesen, zeigt «würde setzen»
- *          node automation/seo-optimizer.mjs --zeile          EINE Zeile «SEO-LÜCKEN: …» für die Keepalive-Meldung (liest den ganzen Katalog, gemessen 84–213 s, schreibt NIE; als Tageswächter, nicht stündlich)
+ *          node automation/seo-optimizer.mjs --zeile          EINE Zeile «SEO-LÜCKEN: …» für die Keepalive-Meldung (liest den ganzen Katalog, gemessen 84–213 s, schreibt NIE; als Tageswächter, nicht stündlich); jede unklare Lage
+ *                                                            ergibt dieselbe EINE Zeile, mit «⚠️ » davor (kein ::error, keine zweite Zeile)
  *          node automation/seo-optimizer.mjs --selbsttest     offline: Kanarien (Teilschreiben, Sperre, Host, Text), kein Netz, keine Schlüssel
  * EXIT     0 = ok (auch DRY, auch «nichts zu tun» bei GELESENEM Katalog; auch kein Zugang = No-op) · 1 = unklar/Stopp/Ablehnung · 2 = Aufruf/Konfiguration
- *          (unbekannter Schalter, Host, LIMIT, DRY_RUN, SORT, REVERSE, PQUERY) ohne eine Netzanfrage. Früher war der Exit immer 0.
+ *          (unbekannter Schalter, Host, LIMIT, DRY_RUN, SORT, REVERSE, PQUERY) ohne eine Netzanfrage; mit --zeile (dort nur Host, SORT, REVERSE, PQUERY) zusätzlich die Zeile «⚠️ SEO-LÜCKEN: unklar (Konfiguration: …)». Früher war der Exit immer 0.
  *          main hat eine eigene 105-Zeilen-Fassung (QUELLE: git show codexcheck/main:automation/seo-optimizer.mjs) mit denselben Namen SORT/REVERSE/PQUERY; sie ÜBERSCHREIBT weiter
  *          vorhandene Beschreibungen und zählt Top-Level-Fehler als Erfolg — beim Zusammenführen diese Fassung nehmen, nicht umgekehrt.
  * ENV      SHOPIFY_SHOP + (SHOPIFY_CLIENT_ID+SHOPIFY_CLIENT_SECRET | SHOPIFY_ADMIN_TOKEN) · LIMIT · DRY_RUN=1|0 · TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
@@ -300,7 +318,7 @@ export async function lauf(c, d) {
       const neu = nurLesen(await d.gql(Q_SCAN, { after: null, n: SEITE, q: c.pquery, s: 'CREATED_AT', r: true }), 'Bild-QA').products;
       if (!neu || !Array.isArray(neu.nodes)) throw new Unklar('Bild-QA: products-Antwort unvollständig');
       for (const p of neu.nodes) if (p?.status === 'ACTIVE') bildPruefen(p);
-    } catch (e) { rb.unklar.push({ phase: 'bilder', grund: einzeilig(e?.message || 'Fehler').slice(0, 300) }); }
+    } catch (e) { const m = einzeilig(e?.message || 'Fehler').slice(0, 300); rb.unklar.push({ phase: 'bilder', grund: m.startsWith('Bild-QA') ? m : `Bild-QA: ${m}` }); }
   }
   rb.bilderGeprueft = bilder.size;
   const stehen = rb.gestoppt || rb.unklar.length || rb.unklarProdukte || rb.abgelehnt;   // rb.unklar enthält Sperre, Stopp und Bild-QA
@@ -315,7 +333,10 @@ export function meldung(rb) {
   else if (rb.unklar.length) l.push(`⚠️ UNKLAR: ${rb.unklar.map(u => u.grund).join('; ')}`);
   if (rb.unklarProdukte) l.push(`⚠️ ${rb.unklarProdukte} Produkt(e) mit nicht lesbaren seo-Feldern übersprungen`);
   if (rb.failedBilder.length) l.push(`⚠️ ${rb.failedBilder.length} Produkt(e) mit FAILED-Bild: ${rb.failedBilder.slice(0, 8).join(', ')}`);
-  else if (!rb.unklar.some(u => u.phase === 'bilder')) l.push(`✅ keine FAILED-Bilder (in den ${rb.bilderGeprueft ?? rb.gescannt} geprüften)`);   // war die Bild-QA unklar, steht oben die UNKLAR-Zeile — nie ein ✅ daneben
+  else if (!rb.unklar.some(u => u.phase === 'bilder')) {        // war die Bild-QA unklar, steht oben die UNKLAR-Zeile — nie ein ✅ daneben; ohne ein einziges geprüftes Produkt auch nicht (z. B. Sperre fail-closed)
+    const n = rb.bilderGeprueft ?? rb.gescannt;
+    l.push(n > 0 ? `✅ keine FAILED-Bilder (in den ${n} geprüften)` : 'ℹ️ Bild-QA: kein Produkt geprüft');
+  }
   return l.join('\n');
 }
 /** Eine Zeile für die Keepalive-Meldung (nur Modus 'zeile'). */
@@ -401,17 +422,17 @@ export async function main(argv = process.argv.slice(2), env = process.env, deps
   if (!c.SHOP) { log(zeile ? '⚠️ SEO-LÜCKEN: unklar (kein SHOPIFY_SHOP — keine Prüfung erfolgt)' : 'Kein SHOPIFY_SHOP → No-op (UNKLAR: keine Prüfung erfolgt).'); return 0; }
   if (!hostOk(c.SHOP) || c.SHOP !== EXPECTED_SHOP) {
     const m = `SHOPIFY_SHOP ist ${hostOk(c.SHOP) ? 'ein anderer Shop-Host' : 'kein gültiger *.myshopify.com-Host'} (Länge ${c.SHOP.length}) — keine Netzanfrage gesendet, kein Schlüssel verschickt`;
-    log(`::error title=seo-optimizer::${m}`); err(m); return 2;
+    log(zeile ? `⚠️ SEO-LÜCKEN: unklar (Konfiguration: ${m})`.slice(0, 240) : `::error title=seo-optimizer::${m}`); err(m); return 2;
   }
-  if (!(c.CID && c.CS) && !c.TOK_ST) { log(zeile ? '⚠️ SEO-LÜCKEN: unklar (keine Shopify-Zugangsdaten)' :'Keine Shopify-Credentials → No-op (UNKLAR: keine Prüfung erfolgt).'); return 0; }
+  if (!(c.CID && c.CS) && !c.TOK_ST) { log(zeile ? '⚠️ SEO-LÜCKEN: unklar (keine Shopify-Zugangsdaten)' : 'Keine Shopify-Credentials → No-op (UNKLAR: keine Prüfung erfolgt).'); return 0; }
   const fetchFn = deps.fetchFn ?? ((...a) => globalThis.fetch(...a)), warte = deps.warte ?? warteStd;
   const t = await holeToken(c, { fetchFn });
-  if (t.fehler) { const m = `Auth: ${t.fehler} — nichts gelesen, nichts geschrieben`; log(`::error title=seo-optimizer::${m}`); log(zeile ? `⚠️ SEO-LÜCKEN: unklar (${t.fehler})` : `⚠️ UNKLAR: ${m}`); return 1; }
+  if (t.fehler) { const m = `Auth: ${t.fehler} — nichts gelesen, nichts geschrieben`; if (!zeile) log(`::error title=seo-optimizer::${m}`); log(zeile ? `⚠️ SEO-LÜCKEN: unklar (${t.fehler})` : `⚠️ UNKLAR: ${m}`); return 1; }
   if (t.hinweis) log(`ℹ️ ${t.hinweis}`);
   const gql = mkGql({ shop: c.SHOP, token: t.token, fetchFn, warte });
   let r;
   try { r = await lauf(c, { gql, sperre: deps.sperre ?? (() => sperreLaden()), log: zeile ? () => {} : log }); }
-  catch (e) { const m = `Unerwarteter Fehler: ${e?.message || 'unbekannt'}`; log(`::error title=seo-optimizer::${m}`); log(zeile ? `⚠️ SEO-LÜCKEN: unklar (${m})` : `⚠️ UNKLAR: ${m}`); return 1; }
+  catch (e) { const m = `Unerwarteter Fehler: ${einzeilig(e?.message || 'unbekannt').slice(0, 300)}`; if (!zeile) log(`::error title=seo-optimizer::${m}`); log(zeile ? `⚠️ SEO-LÜCKEN: unklar (${m})` : `⚠️ UNKLAR: ${m}`); return 1; }
   const rb = r.bericht;
   if (zeile) { log(zeilenText(rb, r.exit)); return 0; }                         // Aufseher-Zeile: nie rot, die Zeile trägt das ⚠️
   const text = meldung(rb);

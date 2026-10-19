@@ -4,7 +4,9 @@ name: SEO-Optimizer (wöchentlich, fehlende Produkt-SEO füllen)
 # Braucht Produkt-Scopes am Shopify-Token (read_products, write_products). Seit 19.10.2026 (v2) stoppt Unklares (fehlender Scope, Netz, falsche Antwort,
 # Rücklese-Abweichung) den Lauf mit Exit 1 = ROTER Lauf — früher zählte es als «gefüllt» mit Exit 0; Exit 2 = Konfiguration (SHOPIFY_SHOP, LIMIT, DRY_RUN)
 # ohne Netzanfrage. Die Werbetest-Sperre (dropship/_werbetest_sperre.txt, bis 24.10.) wird beachtet. Je Produkt 3 Anfragen (Gegenprobe, Schreiben, Rücklesen):
-# gemessen 19.10. Scan bis 150 Lücken 3 min 19 s + Schreiben ~3 min → timeout-minutes 10 → 20.
+# gemessen 19.10. Scan bis 150 Lücken 3 min 19 s + Schreiben ~3 min → timeout-minutes 10 → 20. Dazu eine Lese-Anfrage für die Bild-QA der 100 neuesten Produkte
+# (FAILED-Bilder; schlägt sie fehl, ist der Lauf rot — «unklar», nie «keine FAILED-Bilder»). Nur ZUSAMMEN mit automation/lib/werbetest_sperre.mjs und
+# dropship/_werbetest_sperre.txt nach main bringen (Kopfkommentar «ÜBERNAHME» in automation/seo-optimizer.mjs); ohne sie bricht der Lauf laut ab.
 
 on:
   # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
