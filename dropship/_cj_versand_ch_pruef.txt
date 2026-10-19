@@ -10838,3 +10838,10 @@ retro-sattel-tasche-623400	2501130341581623800	16	7.57	ok	landeseite
 damen-camisole-aus-ramie-baumwolle-612000	2607120539101612800	16	6.77	ok	landeseite
 handmassagegerat-mit-warme-635000	2512050225301635300	7	21.35	ok	landeseite
 herren-laufgurtel-622600	2412280206391623400	16	7.43	ok	landeseite
+gestreiftes-damenhemd-mit-v-ausschnitt-616500	2607120019531617500	16	7.99	ok	landeseite
+leuchtkraft-led-wanduhr-fur-wohn-schlafzimmer-605500	2511131155581605700	7	8.89	ok	landeseite
+taktische-sporttasche-620000	2412220813191620300	16	7.43	ok	landeseite
+damen-button-up-shirt-v-ausschnitt-3-4-arm-plu-605900	2607110945361606400	16	8.11	ok	landeseite
+wasserdichter-brustbeutel-fur-herren-620000	2412130249011620300	16	9.07	ok	landeseite
+leichte-bluse-fur-damen-638700	2607110933061639300	16	7.43	ok	landeseite
+vintage-armband-grun-613600	2606280757441614200	16	4.47	ok	landeseite
