@@ -7981,3 +7981,4 @@ gid://shopify/Product/15493857083777	zugeordnet	16	Vintage Seidenschal Loose-Fit
 gid://shopify/Product/15493857214849	zugeordnet	45	Christmas Hoodie mit Katzen-Print
 gid://shopify/Product/15493857247617	zugeordnet	18	Herren Casual Slipper mit weicher Sohle
 gid://shopify/Product/15493857313153	zugeordnet	12	Chunky Freizeitschuhe mit Schnürung
+gid://shopify/Product/15497431679361	zugeordnet	40	Gepunktetes V-Ausschnitt Freizeitkleid mit 3/4-Ärmeln
