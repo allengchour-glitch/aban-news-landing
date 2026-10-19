@@ -10954,3 +10954,7 @@ blumiges-midi-kleid-mit-v-ausschnitt-634500	2607080316421635500	16	8.11	ok	lande
 prinzessinnen-sandalen-618100	2503091838061618300	16	8.25	ok	landeseite
 retro-reise-geldbeutel-614000	2406250636311614600	16	10.83	ok	landeseite
 kinder-lauflernschuhe-mit-kristall-detail-606700	2501220516131607000	16	10.55	ok	landeseite
+einfarbiges-minimalistisch-kleid-635900	2607080224211636500	16	11.00	ok	landeseite
+kleiderschrank-aus-metall-618100	2501060641041618300	11	39.51	ok	landeseite
+wasserdichte-sport-taille-bag-618200	2406120801401618400	16	7.43	ok	landeseite
+prinzessin-lauflernschuhe-613800	2501020633321614000	16	5.41	ok	landeseite
