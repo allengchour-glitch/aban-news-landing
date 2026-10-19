@@ -10897,3 +10897,17 @@ herren-bluse-mit-floralem-druck-613200	2606110200041614000	16	7.43	ok	landeseite
 seestern-halskette-mit-fisch-anhanger-639100	2607111257261639700	16	4.92	ok	landeseite
 kleine-blumen-stickerei-schuhe-622000	2501020130161623900	16	5.41	ok	landeseite
 blau-weiss-plaid-krakel-oberteil-herren-kurzar-631200	2606101241381631800	16	8.11	ok	landeseite
+schlangenketten-anhanger-mit-edelstein-601600	2607111253251602100	16	4.50	ok	landeseite
+plusch-decke-fur-babys-607800	2502270354081608000	16	14.00	ok	landeseite
+niedliche-prinzessinnenschuhe-616900	2501010815301617100	16	5.81	ok	landeseite
+weiche-atmungsaktive-kinderschuhe-619400	2501010719131619600	16	5.81	ok	landeseite
+minimalistischer-edelstahl-halsketten-anhanger-605700	2607111241561606300	16	4.71	ok	landeseite
+rauchfreie-sojawachskerze-geschenk-fur-aromath-627500	2502260841121627700	0	-	KEINE CH-Option → DRAFT	landeseite
+weiche-saulenschuhe-fur-madchen-mit-leopardmus-625200	2501010343211625500	16	5.62	ok	landeseite
+kreuz-anhanger-mit-kunststein-606400	2607111239191607000	16	4.63	ok	landeseite
+plusch-tierfigur-611700	2502240922591611900	16	4.81	ok	landeseite
+baby-pantinen-mit-rutschfestem-boden-603600	2501010307561603900	16	4.92	ok	landeseite
+retro-choker-mit-edelsteinen-aus-titanstahl-626800	2607111221501627500	16	4.42	ok	landeseite
+retro-lauflernschuhe-mit-schleife-606400	2501010252321606700	16	5.80	ok	landeseite
+schlanke-langarm-herrenbluse-mit-streifen-617300	2606090320311618000	16	8.79	ok	landeseite
+herbst-fruhjahrs-kinderschuh-mit-gro-em-herz-608300	2501010249391608600	16	5.80	ok	landeseite

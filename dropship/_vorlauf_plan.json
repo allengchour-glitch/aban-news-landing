@@ -1,4 +1,5 @@
 {
+ "pruefer_stand": "2026-10-19T19:05:55Z",
  "slots": {
   "bild-20261019T0745": {
    "basis_utc": "2026-10-19T07:45:00Z",
@@ -509,16 +510,14 @@
   "pin-20261021T1740": {
    "basis_utc": "2026-10-21T17:40:00Z",
    "format": "pin",
-   "grund": "",
+   "grund": "zurückgezogen: Produkt 15466876797313 doppelt belegt: Ware schon in karussell-20261024T1915",
    "handle": "",
    "letzter_versuch": "2026-10-18T21:47:46Z",
-   "mc_ids": [
-    399453844
-   ],
+   "mc_ids": [],
    "reserviert_um": "2026-10-18T21:47:46Z",
-   "status": "geplant",
+   "status": "offen",
    "termin_utc": "2026-10-21T17:40:00Z",
-   "versuche": 1
+   "versuche": 0
   },
   "pin-20261021T1950": {
    "basis_utc": "2026-10-21T19:50:00Z",
@@ -701,17 +700,15 @@
   "pin-20261024T1950": {
    "basis_utc": "2026-10-24T19:50:00Z",
    "format": "pin",
-   "grund": "",
+   "grund": "zurückgezogen: Produkt 15449152553345 doppelt belegt: Ware schon in tiktok-20261019T0605",
    "handle": "",
    "handles": [],
    "letzter_versuch": "2026-10-18T22:19:17Z",
-   "mc_ids": [
-    399470175
-   ],
+   "mc_ids": [],
    "reserviert_um": "2026-10-18T22:19:17Z",
-   "status": "geplant",
+   "status": "offen",
    "termin_utc": "2026-10-24T19:50:00Z",
-   "versuche": 1
+   "versuche": 0
   },
   "pin-20261025T1340": {
    "basis_utc": "2026-10-25T13:40:00Z",
@@ -1781,6 +1778,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-19T18:50:21Z",
+ "stand": "2026-10-19T19:05:56Z",
  "version": 1
 }
