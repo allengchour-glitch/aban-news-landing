@@ -9900,3 +9900,6 @@ taktischer-rucksack-fur-outdoor-angeln-634000	2603170958061634400	16	15.20	ok	la
 aromatherapie-gerat-mit-kunststoff-bambus-webe-983616	1636937909209149440	16	17.25	ok	landeseite
 katzenspielball-mit-ton-605100	2509110909441605300	16	7.43	ok	landeseite
 lassige-herren-hosen-mit-knochel-verengung-604500	2605151012441605000	16	11.00	ok	landeseite
+rucksack-fur-die-uni-623500	2603170131331623900	16	13.16	ok	landeseite
+aromatherapie-luftbefeuchter-508736	1635191043123589120	7	12.30	ok	landeseite
+kau-spielball-fur-hunde-624800	2509110858061625100	16	7.97	ok	landeseite
