@@ -10546,3 +10546,10 @@ retro-herren-shirt-mit-3d-druck-605500	2606110625041606500	16	6.63	ok	landeseite
 fahrradhelm-stadt-184512	1406164154083053568	16	10.77	ok	landeseite
 kapuzenpullover-mit-kaffeemotiv-628300	2607100710551629000	16	9.07	ok	landeseite
 diamant-stern-schlagarmband-639400	2607111223401630000	16	4.50	ok	landeseite
+outdoor-sportuhr-626000	2508030959091626200	7	7.06	ok	landeseite
+lederarmband-22mm-619700	2507100622381610000	16	4.87	ok	landeseite
+sportuhr-612000	2507030703091612800	7	5.76	ok	landeseite
+laufschuhe-614400	2408150745391614600	16	13.16	ok	landeseite
+rotes-midi-kleid-602000	2607120650501602600	16	8.93	ok	landeseite
+laufschuhe-fur-kinder-038656	1797179726423924736	16	8.11	ok	landeseite
+smartwatch-mit-gesundheitsueberwachung-624500	2506080759391624700	7	6.98	ok	landeseite
