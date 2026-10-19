@@ -4915,3 +4915,8 @@ anstecknadel-halter-639100	gesetzt-1
 punk-style-schlangenknochen-kette-625300	gesetzt-2
 schlanke-damenkleid-620900	hat-liste
 einfaches-baumwoll-pyjama-set-608000	hat-liste
+diamant-ohrhanger-621600	gesetzt-2
+polarisierte-sonnenbrille-625800	gesetzt-2
+doppelsteg-sonnenbrille-601300	gesetzt-2
+gro-e-schultasche-605100	gesetzt-2
+elegante-schultertasche-626900	gesetzt-2
