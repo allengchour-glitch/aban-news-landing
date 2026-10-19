@@ -18520,3 +18520,4 @@ gid://shopify/Product/16652457214343	31->1	Oberkörper-Kleid mit Stern- und Mond
 gid://shopify/Product/16652457410951	35->0	Halloween 3D Digitaldruck Langarmshirt
 gid://shopify/Product/16652523733383	19->3	Langarm-Herren-Shirt aus Leinen-Polyester
 gid://shopify/Product/16652524880263	12->0	Männer Shirt mit 3D-Blumenpatch und Metallknöpfen
+gid://shopify/Product/16652814582151	18->0	Sofabedeckung Pflanzenmuster, 180x260cm
