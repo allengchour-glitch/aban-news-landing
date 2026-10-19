@@ -811,7 +811,7 @@ Andere Strategie wählen: `setx KRYPTO_STRATEGIE "halten"` (immer 100 %) oder `"
 > mehr findet — bis dahin wirkt `KRYPTO_PILOT2=an` nicht (siehe «Starten» unten).
 
 Gleiche Signale wie der Pilot, klügere Ausführung über **beide** Binance-Konten (`pilot2_plan.py` rechnet, `pilot2_live.py`
-handelt; 23 + 154 + 190 Tests gegen zwei streng nachgebaute Binance, Fuzzer, Mutationsproben). Ohne `KRYPTO_PILOT2=an` handelt der
+handelt; 23 + 154 + 225 Tests gegen zwei streng nachgebaute Binance, Fuzzer, Mutationsproben). Ohne `KRYPTO_PILOT2=an` handelt der
 Pilot wie bisher.
 
 **Was er tut:** Richtung long → Coin im Spot-Konto (kein Funding). Richtung short → Short-Perpetual (Hebel 1, bekommt Funding).
@@ -963,11 +963,16 @@ Aufträge `p2t…`, räumt danach auf). In einem NEUEN Fenster die Testnetz-Schl
 ```
 set BINANCE_API_KEY=…   set BINANCE_API_SECRET=…   set BINANCE_FUTURES_API_KEY=…   set BINANCE_FUTURES_API_SECRET=…
 python tools\trading\krypto_bot\testnetz_pruefung.py          (liest nur: Schlüssel, Regeln, Symbol leer? — sendet nichts)
-python tools\trading\krypto_bot\testnetz_pruefung.py --los    (prüft A1–A5 und B1–B6, rund 1 Minute, räumt auf)
+python tools\trading\krypto_bot\testnetz_pruefung.py --los    (prüft A1–A8 und B1–B6, rund 1 Minute, räumt auf)
 ```
 - **A — reduceOnly-Perp-Stop über mehr als den offenen Short** (so sichert Pilot 2.0 einen Markt beidseitig): angenommen? bleibt
   er stehen? zwei gleichzeitig (Phase «zuerst neu setzen, dann alten löschen»)? Lehnt Binance ab, sichert er wenigstens den
   offenen Short und meldet es.
+- **A6–A8 (seit der 14. Prüfung) — Sichtbarkeit und Storno über die Kennung:** Wie schnell zeigt die Liste der offenen Algo-Aufträge einen
+  eben gesetzten Stop (sofort / erst nach mehreren Abfragen / nie)? Davon hängt ab, wie real der Fall F1 der 14. Prüfung ist (Antwort
+  verloren + Liste hinkt nach → zwei Stops; Pilot 2.0 löscht seit der 14. Runde bekannte, nicht gezeigte Stops über die Kennung). Und: Was
+  meldet Binance beim Storno einer nie gesetzten bzw. schon gelöschten Kennung — Erfolg oder −2011 (= «weg», so liest es Pilot 2.0), oder
+  einen anderen Code (dann hielte er das Löschen für gescheitert: Dauer-Alarm statt Schutzverlust)?
 - **B — `POST /api/v3/order/cancelReplace`** (Stop ersetzen, Not-Aus-Verkauf): Bleibt der alte Stop stehen, wenn Binance den
   neuen Auftrag ablehnt (würde sofort auslösen, Filter, zu wenig Coins), und liest Pilot 2.0 jede Antwort richtig? Kennt Binance
   den Weg nicht (404), arbeitet Pilot 2.0 wie früher (stornieren, dann neu).
@@ -1054,18 +1059,20 @@ python3 tools/trading/krypto_bot/test_pilot.py    # 91 Tests, inkl. Risiko-Stufe
 python3 tools/trading/krypto_bot/test_sammler.py  # 48 Tests, inkl. nachgebautem Binance-Server mit Staking, verlorenen Antworten, Ablehnungen und Opt-in
 python3 tools/trading/krypto_bot/test_infos.py    # 26 Tests: keine Zukunftsdaten, MVRV-Bremse, Zwischenspeicher
 python3 tools/trading/krypto_bot/test_profit.py   # 45 Tests: getrennte Bücher, offen unbekannt, BNB-Gebühren, Ein-/Auszahlungen, Seitengrenze, Drosselung
-python3 tools/trading/krypto_bot/test_cockpit.py  # 122 Tests: Claude, Schattenkonto, Cockpit, Knöpfe, Host/Einbetten, Ampel, Not-Aus, Telegram, Startdateien
+python3 tools/trading/krypto_bot/test_cockpit.py  # 123 Tests: Claude, Schattenkonto, Cockpit, Knöpfe, Host/Einbetten, Ampel, Not-Aus, Telegram, Startdateien
 python3 tools/trading/krypto_bot/test_calls.py    # 84 Tests: 40 typische Call-Formate, Plausibilität, Antworten/Wiederholungen, Nachspielen, Zufallsprobe, Kopierer gegen nachgebauten Binance-Server
 python3 tools/trading/krypto_bot/test_binance.py  # 21 Tests, inkl. nachgebautem Binance-Server mit Signaturprüfung
 python3 tools/trading/krypto_bot/test_pilot2_plan.py  # 23 Tests: Pilot-2.0-Rechnung (Richtung, Ernte, Pfand, Mindestbeträge)
 python3 tools/trading/krypto_bot/test_pilot2_live.py  # 154 Tests: Pilot 2.0 («Konto = Wahrheit») gegen eine strenge nachgebaute Binance
-python3 -B tools/trading/krypto_bot/test_pilot2_streng.py  # 190 Tests: Belege der 8.–13. Prüfung, Schlussproben, Fuzzer-Funde gegen die Prüf-Börse, kleine Fuzzer
+python3 -B tools/trading/krypto_bot/test_pilot2_streng.py  # 225 Tests: Belege der 8.–14. Prüfung, Schlussproben, Fuzzer-Funde gegen die Prüf-Börse, kleine Fuzzer
 python3 -B tools/trading/krypto_bot/test_maxprofit.py      # 55 Tests: Max-Profit-Kern (gleiches Modell wie der Pilot, Kelly-Optimum, keine Zukunftsdaten, Kosten; Pilot 2.0 mit Hebel: = lauf2 bei 1×, Pfand-Regel, bei festem Kurs nie liquidiert)
-python3 -B tools/trading/krypto_bot/test_testnetz_pruefung.py  # 47 Tests: das Testnetz-Prüfskript gegen die Prüf-Börse (nur 127.0.0.1)
+python3 -B tools/trading/krypto_bot/test_testnetz_pruefung.py  # 61 Tests: das Testnetz-Prüfskript (A1–A8, B1–B6) gegen die Prüf-Börse (nur 127.0.0.1)
 python3 -B tools/trading/krypto_bot/pruef_fuzzer.py notaus 0 1600     # grosser Fuzzer (für Prüfungen): Not-Aus unter harten Störungen
 python3 -B tools/trading/krypto_bot/pruef_fuzzer.py laeufe 0 200 30   # … Läufe über 30 Tage, Störungen in jedem Schritt
 python3 -B tools/trading/krypto_bot/pruef_fuzzer.py monotonie 0 400   # … Phase «nur Stornieren» (ab Laufbeginn oder mittendrin): nie Schutz verlieren
 python3 -B tools/trading/krypto_bot/pruef_fuzzer.py listen 0 400      # … eine eigene Auftragsliste dauerhaft unlesbar (13. Prüfung)
+PRUEF_STRENG=1 python3 -B tools/trading/krypto_bot/pruef_fuzzer.py laeufe 20000 20400 30  # … alle vier Arten im STRENGEN Modus (14. Prüfung): reduceOnly-Stop über der Position wird
+                                                                      # abgelehnt (−2022), Störungen auf den ersten Anfragen mit endlichen Anzahlen, «unsichtbar» bis 8 Listenabfragen
 python3 tools/trading/krypto_bot/test_scalping.py      # 50 Tests: kein Blick in die Zukunft, strenge Füll-Regeln, Kosten exakt, Entscheidungsregeln
 python3 tools/trading/krypto_bot/test_news_waechter.py # 32 Tests: Alarm-Regeln, keine Fehlalarme, nur einmal melden, kein Fluten, Delistings jede Minute, Telegram-Kanäle
 python3 tools/trading/krypto_bot/test_delisting.py     # 36 Tests: Ankündigungen lesen, Einstieg/Ausstieg, Funding, Zufallsprobe (ohne Netz)

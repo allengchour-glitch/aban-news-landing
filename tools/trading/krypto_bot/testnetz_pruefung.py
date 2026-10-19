@@ -6,6 +6,10 @@ Binance-TESTNETZ (Spielgeld) nachprüfen — bevor echtes Geld fliesst. Benutzt 
   A  Futures: reduceOnly-Stop (bedingter Algo-Auftrag, STOP_MARKET) über MEHR als den offenen Short — nimmt Binance ihn an,
      bleibt er stehen? Ohne Position (verspätet ankommender Short), zwei Stops gleichzeitig (Phase «zuerst neu setzen, dann
      alten löschen»), nach dem Schliessen der Position, reduceOnly-Marktauftrag über mehr als die Position (nie long drehen).
+  A6 Futures: wie schnell steht ein eben gesetzter bedingter Auftrag in der Liste der offenen Algo-Aufträge (sofort oder erst nach
+     mehreren Abfragen)? Davon hängt ab, wie oft der Fall der 14. Prüfung (F1) real vorkommt: Antwort verloren + Liste hinkt nach.
+  A7/A8 Futures: Storno über die Kennung (clientAlgoId) einer nie gesetzten (A7) bzw. schon gelöschten (A8) Kennung — Pilot 2.0 liest
+     «Erfolg» und «−2011» als «weg»; jeder andere Code gälte ihm als «Löschen gescheitert» (Dauer-Alarm statt Schutzverlust).
   B  Spot: Stop ersetzen per cancelReplace (STOP_ON_FAILURE). Lehnt Binance den neuen Auftrag ab — steht der alte noch, und
      liest Pilot 2.0 die Antwort richtig (ok / nichts = alter steht / nur_storno = alter weg)? Fälle: würde sofort auslösen,
      Filter, zu wenig Coins, alter Auftrag schon weg, Erfolg, Not-Aus-Verkauf.
@@ -50,6 +54,8 @@ FUT_HOSTS = {"testnet.binancefuture.com", "demo-fapi.binance.com"}
 LOKAL = {"127.0.0.1", "localhost"}   # nur für die Tests gegen die nachgebaute Börse (pruef_boerse.py)
 KENNUNG = "p2t"        # eigene Aufträge dieses Skripts (Pilot 2.0 selbst: p2s…, p2a…, p2<Ziffern>)
 STEHEN_S = 5.0         # so lange warten, ob ein angenommener Stop stehen bleibt
+SICHT_ABFRAGEN = 12    # A6: so oft in der Liste nachsehen, ob ein eben gesetzter bedingter Auftrag erscheint
+SICHT_PAUSE_S = 0.5    # … mit dieser Pause dazwischen
 BERICHT = HIER.parents[2] / "data" / "krypto-pilot2-testnetz-pruefung.json"
 OFFEN = ("NEW", "PARTIALLY_FILLED")
 
@@ -152,8 +158,10 @@ def pruefe_futures(fut, sym, b, warte=time.sleep):
 
     try:
         # A1: ohne Position — so sichert Pilot 2.0 einen Short, der noch unklar ist (verspätet ankommen kann)
+        ohne_pos_ok, a1_cid = False, None
         try:
             cid, _ = stop(q, hoch)
+            ohne_pos_ok = True
             warte(STEHEN_S)
             s = steht(cid)
             b.punkt("A1", "reduceOnly-Stop ohne offene Position", f"angenommen, steht nach {STEHEN_S:.0f} s: {'ja' if s else 'NEIN'}",
@@ -161,10 +169,64 @@ def pruefe_futures(fut, sym, b, warte=time.sleep):
                     "" if s else "Binance räumt ihn weg: ein verspätet ankommender Short bekäme erst in der nächsten Runde der "
                                  "Nachkontrolle (alle 30 s) einen Stop.")
             fut.algo_abbrechen_kennung(sym, cid)
+            a1_cid = cid
         except BF.BinanceFehler as ex:
             b.punkt("A1", "reduceOnly-Stop ohne offene Position", f"abgelehnt ({kurz(ex)})", *_ablehnung(ex,
                     "Ein verspätet ankommender Short bekäme erst in der nächsten Runde der Nachkontrolle (alle 30 s) einen Stop — "
                     "die README-Aussage «ein verspäteter Short ist nie nackt» stimmt dann nicht."), {"code": code_von(ex)})
+
+        # A6 (14. Prüfung F1): wie schnell zeigt die Liste einen eben gesetzten bedingten Auftrag? Pilot 2.0 rechnet damit, dass er nach einer
+        #     verlorenen Antwort VERZÖGERT sichtbar sein kann (dann löscht er im Buch bekannte, nicht gezeigte Stops über die Kennung); sofort
+        #     sichtbar ist der Normalfall. Nie sichtbar, obwohl angenommen, wäre schlimmer: die Liste wäre als Quelle unbrauchbar.
+        if not ohne_pos_ok:
+            b.punkt("A6", "Sichtbarkeit eines eben gesetzten bedingten Auftrags", "nicht prüfbar: ein Stop ohne Position wird abgelehnt (A1)",
+                    "nicht_geprueft", "Die Frage bleibt offen; A6 braucht einen angenommenen Stop.")
+        else:
+            try:
+                cid6, _ = stop(q, hoch)
+                bei = None
+                for n_ in range(1, SICHT_ABFRAGEN + 1):
+                    if steht(cid6):
+                        bei = n_
+                        break
+                    warte(SICHT_PAUSE_S)
+                if bei == 1:
+                    b.punkt("A6", "Sichtbarkeit eines eben gesetzten bedingten Auftrags", "schon bei der 1. Abfrage in der Liste", "ok",
+                            "", {"abfrage": 1})
+                elif bei:
+                    b.punkt("A6", "Sichtbarkeit eines eben gesetzten bedingten Auftrags",
+                            f"erst bei Abfrage {bei} in der Liste (Pause {SICHT_PAUSE_S:g} s)", "info",
+                            "Die Liste hinkt nach: der Fall der 14. Prüfung (F1) ist REAL — Pilot 2.0 löscht dann im Buch bekannte, nicht "
+                            "gezeigte Stops nach dem neuen über die Kennung (14.F1). Bitte den Wert weitergeben.", {"abfrage": bei})
+                else:
+                    b.punkt("A6", "Sichtbarkeit eines eben gesetzten bedingten Auftrags",
+                            f"nach {SICHT_ABFRAGEN} Abfragen ({SICHT_ABFRAGEN * SICHT_PAUSE_S:g} s) NICHT in der Liste", "abweichung",
+                            "Angenommen, aber nicht sichtbar: Pilot 2.0 liest die Liste jede Runde — er setzte immer wieder neue Stops. "
+                            "Vor dem Echtgeld-Start klären.", {"abfrage": None})
+                fut.algo_abbrechen_kennung(sym, cid6)
+            except BF.BinanceFehler as ex:
+                b.punkt("A6", "Sichtbarkeit eines eben gesetzten bedingten Auftrags", f"abgelehnt ({kurz(ex)})",
+                        "nicht_geprueft", "Anderer Fehler — die Frage bleibt offen; Meldung bitte weitergeben.", {"code": code_von(ex)})
+
+        # A7 (14. Prüfung F1): Storno über die Kennung. Pilot 2.0 liest Erfolg und «−2011 (unbekannt)» als «weg» (schon ausgelöst, gelöscht
+        #     oder nie angekommen); jeden anderen Code hielte er für «Löschen gescheitert» (→ beidseitig gesichert, Nachkontrolle, Alarm).
+        for nr7, was, c in (("A7", "nie gesetzte Kennung", P2._kennung(KENNUNG)), ("A8", "schon gelöschte Kennung", a1_cid)):
+            if c is None:
+                b.punkt(nr7, f"Storno einer {was}", "nicht prüfbar: A1 hat keinen Stop gesetzt", "nicht_geprueft")
+                continue
+            try:
+                fut._req("DELETE", "/fapi/v1/algoOrder", {"clientAlgoId": c}, signiert=True)
+                antwort, code = "Erfolg gemeldet", None
+            except BF.BinanceFehler as ex:
+                antwort, code = kurz(ex), code_von(ex)
+            except BF.NETZFEHLER as ex:
+                b.punkt(nr7, f"Storno einer {was}", f"nicht prüfbar ({type(ex).__name__})", "nicht_geprueft")
+                continue
+            weg = code is None or code == -2011
+            b.punkt(nr7, f"Storno einer {was}", antwort, "ok" if weg else "abweichung",
+                    "" if weg else "Pilot 2.0 hielte das Löschen für gescheitert (er erwartet −2011 für «unbekannt»): bei einem schon "
+                                   "ausgelösten Stop meldete er «ließ sich nicht löschen» und sicherte beidseitig — Dauer-Alarm statt "
+                                   "Schutz. Dann algo_abbrechen_kennung auf diesen Code erweitern.", {"code": code})
 
         # Short öffnen (Spielgeld)
         try:
