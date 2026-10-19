@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "observedAtUTC": "2026-10-19T04:13:18.937973+00:00",
+  "observedAtUTC": "2026-10-19T04:27:58.707291+00:00",
   "scope": "isolated pilot checkout and isolated Claude config only",
   "client": {
     "package": "@anthropic-ai/claude-code",
@@ -49,11 +49,11 @@
     },
     {
       "path": "automation/lib/claude_assist.mjs",
-      "sha256": "a7953a9c9303e42a253bddab505663d899e34fde8c9b5e13bf3edc6d0dac08fb"
+      "sha256": "2a36173740ebfc62879f20972b90f4e4b11d4c88a6e08e82746437be780cecbb"
     },
     {
       "path": "automation/lib/claude_assist_changes.mjs",
-      "sha256": "e01e214b6fbcc1ad8b90315067169b75f90b2732f73178e0130771fe76d4ca4f"
+      "sha256": "8a9aa47ecaf13da6ce27c67d201816753bba37d11373e9de9cee5026ac70933e"
     },
     {
       "path": "automation/lib/claude_assist_launch.mjs",
@@ -61,7 +61,7 @@
     },
     {
       "path": "automation/lib/claude_assist_mcp.mjs",
-      "sha256": "c2ee6fb6ff9f96cfd267d44be290610ed397e206257a6cbd6152bd21d0b9825d"
+      "sha256": "4e1e246b07271703612584e18018f7a93f92e4dcbad869611f55352adb7feb1e"
     },
     {
       "path": "automation/lib/claude_assist_offline.mjs",
@@ -70,6 +70,10 @@
     {
       "path": "automation/lib/claude_assist_readiness.mjs",
       "sha256": "2977dee1b6d61c585f6e12b9a368bd7e56c915557bee8c93abd8f3c49dd6b237"
+    },
+    {
+      "path": "automation/lib/claude_assist_runner.mjs",
+      "sha256": "e478a3a15c8acc106a15014c9e96dcc9cc229122fc8941902927557c55fcac17"
     }
   ],
   "modelCalls": 0,
@@ -77,5 +81,6 @@
   "ownerClientInstallationAndApproval": "unknown",
   "businessWrites": 0,
   "existingUserProfilesChanged": false,
-  "note": "CLI health-check connectivity is evidence for this pilot, not proof of an owner conversation, model review or production publication approval."
+  "note": "CLI health-check connectivity is evidence for this pilot, not proof of an owner conversation, model review or production publication approval.",
+  "serverVersion": "2.2.1"
 }

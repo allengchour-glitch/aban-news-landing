@@ -126,7 +126,7 @@ function checkout(t) {
   const f = fixture(t);
   const here = path.dirname(fileURLToPath(import.meta.url));
   fs.mkdirSync(path.join(f.root, 'automation/lib'), { recursive: true });
-  for (const file of ['claude_assist.mjs','claude_assist_mcp.mjs','claude_assist_offline.mjs','claude_assist_changes.mjs','claude_assist_readiness.mjs','claude_assist_launch.mjs']) fs.copyFileSync(path.join(here, file), path.join(f.root, 'automation/lib', file));
+  for (const file of ['claude_assist.mjs','claude_assist_mcp.mjs','claude_assist_offline.mjs','claude_assist_changes.mjs','claude_assist_readiness.mjs','claude_assist_launch.mjs','claude_assist_runner.mjs']) fs.copyFileSync(path.join(here, file), path.join(f.root, 'automation/lib', file));
   fs.copyFileSync(path.join(here, '../claude-assist.mjs'), path.join(f.root, 'automation/claude-assist.mjs'));
   for (const args of [['-c','init.templateDir=','init','--quiet',f.root], ['-C',f.root,'config','--local','remote.origin.url',remote]]) {
     const r = spawnSync('git', args, { env: cleanEnv(), encoding: 'utf8' }); assert.equal(r.status, 0, r.stderr);
@@ -268,9 +268,9 @@ test('uncovered changes remain unknown while real test failures take precedence'
 });
 test('assist profile runs only its fixed integration files without claiming a network sandbox', async t => {
   const f=fixture(t,(cmd,args)=>({status:'passed',output:cmd==='git'?remote:'ok'}));
-  for(const file of ['claude_assist_test.mjs','claude_assist_mcp_test.mjs','claude_assist_changes_test.mjs','claude_assist_readiness_test.mjs','claude_assist_launch_test.mjs'])write(f.root,'automation/lib/'+file,'');
+  for(const file of ['claude_assist_test.mjs','claude_assist_mcp_test.mjs','claude_assist_changes_test.mjs','claude_assist_readiness_test.mjs','claude_assist_launch_test.mjs','claude_assist_runner_test.mjs'])write(f.root,'automation/lib/'+file,'');
   const run=await f.app.checks({suite:'assist'});assert.equal(run.status,'passed');
-  const call=f.calls.find(c=>c.cmd!=='git');assert.equal(call.args[0],'--test');assert.equal(call.args[1],'--test-reporter=spec');assert.equal(call.args.length,7);assert.match(run.caveat,/no network preload/);
+  const call=f.calls.find(c=>c.cmd!=='git');assert.equal(call.args[0],'--test');assert.equal(call.args[1],'--test-reporter=spec');assert.equal(call.args.length,8);assert.match(run.caveat,/no network preload/);
 });
 test('native Git change plan sees a staged change even when the worktree returns to HEAD', async t => {
   const f=checkout(t),file='automation/lib/shopify_gql.mjs';write(f.root,file,'original');
@@ -333,6 +333,66 @@ test('resume finds the oldest open review behind an answered first page', async 
   assert.equal(f.app.reviewList().requests.every(r=>r.status==='answered'),true);
   let d=await f.app.doctor();assert.equal(d.nextWork.kind,'review_request');assert.equal(d.nextWork.requestId,last.id);
   write(f.root,file,'changed');d=await f.app.doctor();assert.equal(d.nextWork.kind,'verify_review_sources');assert.equal(d.nextWork.evidence.state,'stale');
+});
+test('a newer findings or blocked answer preserves its next step and blockers on resume', async t => {
+  for(const verdict of ['findings','blocked']){
+    const f=fixture(t);localSetup(f.root);const file='automation/seo-optimizer.mjs';write(f.root,file,'reviewed source');
+    await f.app.save({...note,nextStep:'An älterem Entwurf weiterarbeiten.',blockers:[]});
+    const request=await f.app.reviewRequest({question:'Diesen Stand prüfen.',files:[file]});
+    const answer=await f.app.reviewAnswer({requestId:request.id,verdict,summary:'Manuell erfasster neuer Prüfstand.',nextStep:'Zuerst den bestätigten Befund klären.',blockers:['Die Klärung ist offen.']});
+    const before=fs.readFileSync(path.join(f.root,'dropship/assistant/handoff.jsonl'),'utf8');
+    const d=await f.app.doctor(),next=d.nextWork;
+    assert.equal(d.localReadiness.state,'ready');assert.equal(next.kind,'resume_review_answer');
+    assert.equal(next.id,answer.id);assert.equal(next.requestId,request.id);assert.equal(next.verdict,verdict);
+    assert.equal(next.source,'manual');assert.equal(next.modelCalled,false);assert.equal(next.evidence.state,'current');
+    assert.equal(next.nextStep,'Zuerst den bestätigten Befund klären.');assert.deepEqual(next.blockers,['Die Klärung ist offen.']);
+    assert.deepEqual(next.command,['node','automation/claude-assist.mjs','review-get',request.id]);
+    assert.match(next.note,/not an authenticated model response or permission for live actions/);
+    assert.equal(fs.readFileSync(path.join(f.root,'dropship/assistant/handoff.jsonl'),'utf8'),before);
+  }
+});
+test('a later handoff supersedes an answered review by journal sequence', async t => {
+  const f=fixture(t);localSetup(f.root);const file='automation/seo-optimizer.mjs';write(f.root,file,'reviewed source');
+  const request=await f.app.reviewRequest({question:'Diesen Stand prüfen.',files:[file]});
+  await f.app.reviewAnswer({requestId:request.id,verdict:'findings',summary:'Befund erfasst.',nextStep:'Befund beheben.',blockers:['Behebung offen.']});
+  const latest=await f.app.save({...note,nextStep:'Der spätere Übergabestand gilt.',blockers:['Neuer Blocker.']});
+  write(f.root,file,'later source');
+  const next=(await f.app.doctor()).nextWork;
+  assert.equal(next.kind,'resume_handoff');assert.equal(next.id,latest.id);
+  assert.equal(next.nextStep,'Der spätere Übergabestand gilt.');assert.deepEqual(next.blockers,['Neuer Blocker.']);
+});
+test('resuming an answer rechecks changed and missing review sources', async t => {
+  for(const expected of ['stale','unknown']){
+    const f=fixture(t);localSetup(f.root);const file='automation/seo-optimizer.mjs';write(f.root,file,'reviewed source');
+    await f.app.save(note);
+    const request=await f.app.reviewRequest({question:'Diesen Stand prüfen.',files:[file]});
+    const answer=await f.app.reviewAnswer({requestId:request.id,verdict:'no_findings',summary:'Nur die ursprünglichen Bytes geprüft.',nextStep:'Quellen vor Fortsetzung gegenprüfen.',blockers:['Neue Änderungen ungeprüft.']});
+    if(expected==='stale')write(f.root,file,'changed source');else fs.unlinkSync(path.join(f.root,file));
+    const next=(await f.app.doctor()).nextWork;
+    assert.equal(next.kind,'verify_review_sources');assert.equal(next.evidence.state,expected);
+    assert.equal(next.id,answer.id);assert.equal(next.requestId,request.id);assert.equal(next.verdict,'no_findings');
+    assert.equal(next.source,'manual');assert.equal(next.modelCalled,false);
+    assert.equal(next.nextStep,'Quellen vor Fortsetzung gegenprüfen.');assert.deepEqual(next.blockers,['Neue Änderungen ungeprüft.']);
+  }
+});
+test('the latest review answer supplies a resume step even without a handoff', async t => {
+  const f=fixture(t);localSetup(f.root);const file='automation/seo-optimizer.mjs';write(f.root,file,'reviewed source');
+  let latestRequest,latestAnswer;
+  for(let i=0;i<2;i++){
+    latestRequest=await f.app.reviewRequest({question:'Diesen Stand prüfen '+i,files:[file]});
+    latestAnswer=await f.app.reviewAnswer({requestId:latestRequest.id,verdict:'no_findings',summary:'Manuell geprüfter Stand '+i,nextStep:'Nächster Schritt '+i});
+  }
+  const next=(await f.app.doctor()).nextWork;
+  assert.equal(next.kind,'resume_review_answer');assert.equal(next.id,latestAnswer.id);assert.equal(next.requestId,latestRequest.id);
+  assert.equal(next.nextStep,'Nächster Schritt 1');assert.equal(next.evidence.state,'current');
+});
+test('the oldest open request still takes priority over a newer review answer', async t => {
+  const f=fixture(t);localSetup(f.root);const file='automation/seo-optimizer.mjs';write(f.root,file,'reviewed source');
+  const oldest=await f.app.reviewRequest({question:'Älteste offene Prüfung.',files:[file]});
+  const newer=await f.app.reviewRequest({question:'Neuere Prüfung.',files:[file]});
+  await f.app.reviewAnswer({requestId:newer.id,verdict:'findings',summary:'Neuerer Befund.',nextStep:'Neueren Befund klären.'});
+  const next=(await f.app.doctor()).nextWork;
+  assert.equal(next.kind,'review_request');assert.equal(next.requestId,oldest.id);
 });
 test('fixed stdin runner keeps Unicode chunks and stderr separate without echoing input', async () => {
   const r=await boundedRun(process.execPath,['-e',`process.stdin.on('data',x=>{process.stdout.write(x.subarray(0,1));setTimeout(()=>{process.stdout.write(x.subarray(1));process.stderr.write('diagnostic')},10)})`],{input:'Grösse: 你好'});

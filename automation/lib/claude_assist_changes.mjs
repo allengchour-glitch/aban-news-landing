@@ -23,6 +23,7 @@ const ASSIST_FILES = new Set([
   'automation/lib/claude_assist_changes.mjs', 'automation/lib/claude_assist_changes_test.mjs',
   'automation/lib/claude_assist_readiness.mjs', 'automation/lib/claude_assist_readiness_test.mjs',
   'automation/lib/claude_assist_launch.mjs', 'automation/lib/claude_assist_launch_test.mjs',
+  'automation/lib/claude_assist_runner.mjs', 'automation/lib/claude_assist_runner_test.mjs',
 ]);
 
 function validPath(file) {

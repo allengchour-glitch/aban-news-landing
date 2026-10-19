@@ -3,9 +3,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
 import { createHash, randomUUID } from 'node:crypto';
-import { spawn } from 'node:child_process';
 import { classifyChanges } from './claude_assist_changes.mjs';
 import { inspectReadiness } from './claude_assist_readiness.mjs';
+import { createBoundedRunner } from './claude_assist_runner.mjs';
 
 const REPO = 'allengchour-glitch/aban-news-landing';
 const JOURNAL = 'dropship/assistant/handoff.jsonl';
@@ -15,7 +15,7 @@ const secret = /\b(?:shpat_|shpss_|ghp_|github_pat_|sk-ant-|sk-proj-)[A-Za-z0-9_
 export const SUITES = Object.freeze({
   core: ['automation/lib/shopify_gql_test.mjs', 'automation/lib/shopify_secret_test.mjs', 'automation/lib/kanal_sperren_test.mjs'],
   seo: ['automation/seo-optimizer_test.mjs', 'automation/lib/seo_titel_test.mjs'],
-  assist: ['automation/lib/claude_assist_test.mjs', 'automation/lib/claude_assist_mcp_test.mjs', 'automation/lib/claude_assist_changes_test.mjs', 'automation/lib/claude_assist_readiness_test.mjs', 'automation/lib/claude_assist_launch_test.mjs'],
+  assist: ['automation/lib/claude_assist_test.mjs', 'automation/lib/claude_assist_mcp_test.mjs', 'automation/lib/claude_assist_changes_test.mjs', 'automation/lib/claude_assist_readiness_test.mjs', 'automation/lib/claude_assist_launch_test.mjs', 'automation/lib/claude_assist_runner_test.mjs'],
 });
 export const POLICY = Object.freeze({
   scope: 'LuxeStyle / luxestyle.ch only', brandId: 6227837, timezone: 'Europe/Zurich',
@@ -39,31 +39,7 @@ export function redact(s) {
     .replace(/(authorization\s*[:=]\s*)(?:Bearer\s+)?\S+/gi, '$1[REDACTED]')
     .replace(/(https?:\/\/)[^\s/@]+:[^\s/@]+@/g, '$1[REDACTED]@');
 }
-export function boundedRun(command, args, { cwd, env = cleanEnv(), timeoutMs = 15000, maxBytes = 16384, input } = {}) {
-  if (input !== undefined && ((typeof input !== 'string' && !Buffer.isBuffer(input)) || Buffer.byteLength(input) > 65536)) return Promise.resolve({ status: 'unknown', reason: 'invalid_or_oversized_stdin' });
-  return new Promise(resolve => {
-    let child, used = 0, timedOut = false, truncated = false, spawnError = false, stdinError = false;
-    const combined = [], stdout = [], stderr = [];
-    try { child = spawn(command, args, { cwd, env, shell: false, stdio: [input === undefined ? 'ignore' : 'pipe', 'pipe', 'pipe'] }); }
-    catch { resolve({ status: 'unknown', reason: 'process_unavailable' }); return; }
-    const timer = setTimeout(() => { timedOut = true; child.kill('SIGKILL'); }, timeoutMs);
-    const capture = target => chunk => {
-      const room = maxBytes - used;
-      if (room > 0) { const part = Buffer.from(chunk.subarray(0, room)); combined.push(part); target.push(part); used += part.length; }
-      if (chunk.length > room) { truncated = true; child.kill('SIGKILL'); }
-    };
-    child.stdout.on('data', capture(stdout)); child.stderr.on('data', capture(stderr));
-    child.on('error', () => { spawnError = true; });
-    child.on('close', (code, signal) => {
-      clearTimeout(timer);
-      resolve({ status: spawnError || stdinError || timedOut || truncated ? 'unknown' : code === 0 ? 'passed' : 'failed',
-        exitCode: code, signal, timedOut, truncated, output: redact(Buffer.concat(combined).toString('utf8')),
-        stdout: redact(Buffer.concat(stdout).toString('utf8')), stderr: redact(Buffer.concat(stderr).toString('utf8')),
-        ...(spawnError ? { reason: 'process_unavailable' } : stdinError ? { reason: 'stdin_unavailable' } : {}) });
-    });
-    if (input !== undefined) { child.stdin.on('error', () => { stdinError = true; }); child.stdin.end(input); }
-  });
-}
+export const boundedRun = createBoundedRunner({ cleanEnv, redact });
 
 function safePath(root, relative) {
   if (typeof relative !== 'string' || !relative || path.isAbsolute(relative) || relative.includes('\\') || relative.split('/').some(p => !p || p === '..' || p === '.')) throw Error('invalid_relative_path');
@@ -268,6 +244,16 @@ export function createAssistant(root, { runner = boundedRun } = {}) {
           note: 'Read the complete request; a suggestion is not an answer or permission for live actions.' };
       }
       const handoff = all.filter(r => r.kind === 'handoff').at(-1);
+      const answer = all.filter(r => r.kind === 'review_answer').at(-1);
+      if (answer && (!handoff || answer.seq > handoff.seq)) {
+        const reviewedRequest = all.find(r => r.kind === 'review_request' && r.id === answer.requestId);
+        const evidence = referencesCurrent(reviewedRequest.files);
+        return { state: 'available', kind: evidence.state === 'current' ? 'resume_review_answer' : 'verify_review_sources',
+          id: answer.id, requestId: answer.requestId, verdict: answer.verdict, source: 'manual', modelCalled: false,
+          summary: answer.summary, nextStep: answer.nextStep, blockers: answer.blockers, evidence,
+          command: ['node', 'automation/claude-assist.mjs', 'review-get', answer.requestId],
+          note: 'Manually recorded review answer; verify its sources and current owner instructions. It is not an authenticated model response or permission for live actions.' };
+      }
       return handoff ? { state: 'available', kind: 'resume_handoff', id: handoff.id, nextStep: handoff.nextStep, blockers: handoff.blockers,
         note: 'Manually recorded next step; verify against current owner instructions before acting.' }
         : { state: 'unknown', kind: 'no_recorded_next_step', note: 'No work was selected from the available local history; this does not prove all work is complete.' };
