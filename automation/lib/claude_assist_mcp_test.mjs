@@ -21,7 +21,7 @@ test('initialize negotiates supported versions and advertises only tools', async
     const [response] = await exchange([request(1, 'initialize', { protocolVersion, capabilities: {}, clientInfo: { name: 'test', version: '1' } }) + '\n']);
     assert.equal(response.result.protocolVersion, protocolVersion);
     assert.deepEqual(Object.keys(response.result.capabilities), ['tools']);
-    assert.deepEqual(response.result.serverInfo, { name: 'luxestyle-claude-assist', version: '2.3.0' });
+    assert.deepEqual(response.result.serverInfo, { name: 'luxestyle-claude-assist', version: '2.4.0' });
   }
   const [response] = await exchange([request(2, 'initialize', { protocolVersion: 'unknown' })]);
   assert.equal(response.result.protocolVersion, '2025-06-18');
@@ -46,6 +46,22 @@ test('validated arguments reach only the selected injected handler', async () =>
   assert.deepEqual(seen, [{ suite: 'seo' }]);
   assert.deepEqual(JSON.parse(response.result.content[0].text), { passed: true });
   assert.equal(response.result.isError, false);
+});
+
+test('handoff source pins are optional, bounded and forwarded without widening arguments', async () => {
+  const [catalog]=await exchange([request(1,'tools/list')+'\n']);
+  const schema=catalog.result.tools.find(t=>t.name==='luxe_handoff_save').inputSchema;
+  assert.equal(schema.properties.files.maxItems,6);assert.equal(schema.properties.files.items.maxLength,512);
+  assert.deepEqual(schema.required,['summary','nextStep']);
+  const note={summary:'Geprüfter Stand.',nextStep:'Weiter prüfen.'},seen=[];
+  const valid=[note,{...note,files:[]},{...note,files:['automation/lib/claude_assist.mjs']}];
+  const invalid=[{files:null},{files:'file'},{files:Array(7).fill('file')},{files:[' ']},{files:[3]},
+    {files:['x'.repeat(513)]},{files:[],publish:true}].map(p=>({...note,...p}));
+  const responses=await exchange([...valid,...invalid].map((arguments_,id)=>request(id,'tools/call',{name:'luxe_handoff_save',arguments:arguments_})+'\n'),{
+    luxe_handoff_save:args=>{seen.push(args);return {saved:true};}
+  });
+  assert.deepEqual(seen,valid);assert.ok(responses.slice(0,valid.length).every(r=>r.result.isError===false));
+  assert.ok(responses.slice(valid.length).every(r=>r.error?.code===-32602));
 });
 
 test('commit planning schema requires exactly an empty input or a complete pinned pair', async () => {
@@ -215,6 +231,72 @@ test('output backpressure is awaited without dropping responses', async () => {
   input.end(request(1, 'ping') + '\n' + request(2, 'ping') + '\n');
   await done;
   assert.deepEqual(data.trim().split('\n').map(line => JSON.parse(line).id), [1, 2]);
+  for (const event of ['drain', 'close', 'error']) assert.equal(output.listenerCount(event), 0);
+});
+
+test('output closing before drain rejects promptly and removes transport listeners', { timeout: 1000 }, async () => {
+  const input = new PassThrough();
+  const output = new Writable({ highWaterMark: 1, write() { this.destroy(); } });
+  const done = serveMcp({ input, output });
+  const rejected = assert.rejects(done, { message: 'MCP-Ausgabe geschlossen oder fehlgeschlagen.' });
+  input.end(request(1, 'ping') + '\n');
+  await rejected;
+  for (const event of ['drain', 'close', 'error']) assert.equal(output.listenerCount(event), 0);
+});
+
+test('already destroyed or ended output is rejected before handlers or writes', { timeout: 1000 }, async () => {
+  for (const close of [output => output.destroy(), output => output.end()]) {
+    const input = new PassThrough();
+    let calls = 0, writes = 0;
+    const output = new Writable({ write(chunk, encoding, callback) { writes++; callback(); } });
+    close(output);
+    input.end(request(1, 'tools/call', { name: 'luxe_doctor' }) + '\n');
+    await assert.rejects(serveMcp({ input, output, handlers: { luxe_doctor: () => { calls++; } } }),
+      { message: 'MCP-Ausgabe geschlossen oder fehlgeschlagen.' });
+    assert.equal(calls, 0); assert.equal(writes, 0);
+    for (const event of ['drain', 'close', 'error']) assert.equal(output.listenerCount(event), 0);
+  }
+});
+
+test('asynchronous write errors reject with a static error and no retained listeners', { timeout: 1000 }, async () => {
+  for (const highWaterMark of [1, 65536]) {
+    const input = new PassThrough();
+    const output = new Writable({ highWaterMark, write(chunk, encoding, callback) {
+      setImmediate(() => callback(Error('sensitive transport diagnostic')));
+    } });
+    const done = serveMcp({ input, output });
+    const rejected = assert.rejects(done, { message: 'MCP-Ausgabe geschlossen oder fehlgeschlagen.' });
+    input.end(request(1, 'ping') + '\n');
+    await rejected;
+    for (const event of ['drain', 'close', 'error']) assert.equal(output.listenerCount(event), 0);
+  }
+});
+
+test('destroy with an error during write is handled without a late uncaught error', { timeout: 1000 }, async () => {
+  const input = new PassThrough();
+  const output = new Writable({ highWaterMark: 1, write() { this.destroy(Error('private disconnect')); } });
+  const done = serveMcp({ input, output });
+  const rejected = assert.rejects(done, { message: 'MCP-Ausgabe geschlossen oder fehlgeschlagen.' });
+  input.end(request(1, 'ping') + '\n');
+  await rejected;
+  await new Promise(resolve => setImmediate(resolve));
+  for (const event of ['drain', 'close', 'error']) assert.equal(output.listenerCount(event), 0);
+});
+
+test('a disconnect while a handler yields prevents writing a response', { timeout: 1000 }, async () => {
+  const input = new PassThrough();
+  let writes = 0;
+  const output = new Writable({ write(chunk, encoding, callback) { writes++; callback(); } });
+  const done = serveMcp({ input, output, handlers: { luxe_doctor: async () => {
+    output.destroy(Error('private disconnect'));
+    await new Promise(resolve => setImmediate(resolve));
+    return { done: true };
+  } } });
+  const rejected = assert.rejects(done, { message: 'MCP-Ausgabe geschlossen oder fehlgeschlagen.' });
+  input.end(request(1, 'tools/call', { name: 'luxe_doctor' }) + '\n');
+  await rejected;
+  assert.equal(writes, 0);
+  for (const event of ['drain', 'close', 'error']) assert.equal(output.listenerCount(event), 0);
 });
 
 test('missing, failing and unserializable handlers produce tool errors without stack traces', async () => {

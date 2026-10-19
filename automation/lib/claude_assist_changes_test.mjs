@@ -36,6 +36,7 @@ test('Assist implementation, transport, preload, configuration and tests select 
     'automation/lib/claude_assist_launch.mjs', 'automation/lib/claude_assist_launch_test.mjs',
     'automation/lib/claude_assist_runner.mjs', 'automation/lib/claude_assist_runner_test.mjs',
     'automation/lib/claude_assist_commits.mjs', 'automation/lib/claude_assist_commits_test.mjs',
+    'automation/lib/claude_assist_evidence.mjs', 'automation/lib/claude_assist_evidence_test.mjs',
     '.mcp.json', '.claude/commands/luxestyle-assist.md', '.github/workflows/luxestyle-assist-tests.yml',
   ]) {
     assert.deepEqual(classifyChanges([file]).suites, ['assist'], file);

@@ -1,6 +1,4 @@
 // Transport only: no filesystem, network, subprocesses, or model calls.
-import { once } from 'node:events';
-
 export const MAX_MCP_LINE_BYTES = 64 * 1024;
 const PROTOCOLS = new Set(['2024-11-05', '2025-03-26', '2025-06-18']);
 const own = (value, key) => Object.prototype.hasOwnProperty.call(value, key);
@@ -24,7 +22,8 @@ export const MCP_TOOLS = [
     inputSchema: emptySchema, annotations: annotations(true) },
   { name: 'luxe_handoff_save', description: 'Eine manuelle lokale Übergabe sichern; keine externe Aktion.',
     inputSchema: { type: 'object', properties: { summary: textField(), nextStep: textField(2000),
-      blockers: { type: 'array', maxItems: 12, items: textField(500) } },
+      blockers: { type: 'array', maxItems: 12, items: textField(500) },
+      files: { type: 'array', maxItems: 6, items: textField(512) } },
       required: ['summary', 'nextStep'], additionalProperties: false }, annotations: annotations(false) },
   { name: 'luxe_review_request', description: 'Lokale Codex-Prüfaufgabe vorbereiten; ruft kein Modell und keinen Dienst auf.',
     inputSchema: { type: 'object', properties: { question: textField(),
@@ -66,9 +65,10 @@ function validArguments(name, args) {
     && (!own(args, 'after') || validText(args.after, 80));
   if (name === 'luxe_review_get') return keys.length === 1 && own(args, 'requestId') && validText(args.requestId, 80);
   if (name === 'luxe_checks') return keys.length === 1 && own(args, 'suite') && ['core', 'seo', 'assist', 'changed'].includes(args.suite);
-  if (name === 'luxe_handoff_save') return keys.every(key => ['summary', 'nextStep', 'blockers'].includes(key))
+  if (name === 'luxe_handoff_save') return keys.every(key => ['summary', 'nextStep', 'blockers', 'files'].includes(key))
     && validText(args.summary, 4000) && validText(args.nextStep, 2000)
-    && (!own(args, 'blockers') || validList(args.blockers, 500, 12));
+    && (!own(args, 'blockers') || validList(args.blockers, 500, 12))
+    && (!own(args, 'files') || validList(args.files, 512, 6));
   if (name === 'luxe_review_request') return keys.every(key => ['question', 'files'].includes(key))
     && validText(args.question, 4000) && (!own(args, 'files') || validList(args.files, 512, 6));
   if (name === 'luxe_review_answer') return keys.every(key => ['requestId', 'verdict', 'summary', 'nextStep', 'blockers'].includes(key))
@@ -109,7 +109,7 @@ async function dispatch(request, handlers) {
     }
     return result({ protocolVersion: PROTOCOLS.has(params.protocolVersion) ? params.protocolVersion : '2025-06-18',
       capabilities: { tools: { listChanged: false } },
-      serverInfo: { name: 'luxestyle-claude-assist', version: '2.3.0' },
+      serverInfo: { name: 'luxestyle-claude-assist', version: '2.4.0' },
       instructions: 'Lokaler LuxeStyle-Helfer. Keine Live-APIs, Publikationen oder Modellaufrufe. Übergaben sind datierte Belege.' });
   }
   if (request.method === 'ping' || request.method === 'tools/list') {
@@ -144,16 +144,54 @@ async function dispatch(request, handlers) {
 
 /** Serve newline-delimited JSON-RPC, processing one request at a time. */
 export async function serveMcp({ input, output, handlers = {} }) {
-  if (!input?.[Symbol.asyncIterator] || typeof output?.write !== 'function' || !object(handlers)) {
+  if (!input?.[Symbol.asyncIterator] || typeof output?.write !== 'function'
+    || typeof output.on !== 'function' || typeof output.removeListener !== 'function' || !object(handlers)) {
     throw new TypeError('input, output und ein Handler-Objekt sind erforderlich.');
   }
   const buffer = Buffer.alloc(MAX_MCP_LINE_BYTES);
   const decoder = new TextDecoder('utf-8', { fatal: true });
   let length = 0;
   let oversized = false;
+  let outputFailed = false, abortWrite;
+  const outputError = () => Error('MCP-Ausgabe geschlossen oder fehlgeschlagen.');
+  const outputUnavailable = () => outputFailed || output.destroyed || output.closed
+    || output.writableEnded || output.writableFinished || output.writable === false;
+  // Keep an error listener throughout dispatch as a client may disconnect while
+  // a handler yields, before the next response starts writing.
+  const onOutputFailure = () => { outputFailed = true; abortWrite?.(); };
+  output.on('error', onOutputFailure);
+  output.on('close', onOutputFailure);
   async function send(response) {
     if (response === null) return;
-    if (!output.write(JSON.stringify(response) + '\n')) await once(output, 'drain');
+    if (outputUnavailable()) throw outputError();
+    await new Promise((resolve, reject) => {
+      let settled = false, returned = false, written = false, needsDrain = false, drained = false;
+      const finish = failed => {
+        if (settled) return;
+        settled = true;
+        output.removeListener('drain', onDrain);
+        abortWrite = undefined;
+        if (failed) reject(outputError()); else resolve();
+      };
+      const complete = () => {
+        if (returned && written && (!needsDrain || drained)) finish(outputUnavailable());
+      };
+      const onDrain = () => { drained = true; complete(); };
+      abortWrite = () => finish(true);
+      output.on('drain', onDrain);
+      try {
+        // Await the write callback even without backpressure. Otherwise a late
+        // EPIPE could arrive after this server has removed its error listener.
+        needsDrain = !output.write(JSON.stringify(response) + '\n', error => {
+          // A standard Writable emits error before close after a failed write;
+          // the lifetime listener handles that event without leaking its text.
+          if (error) return;
+          written = true; complete();
+        });
+        returned = true;
+        if (outputUnavailable()) finish(true); else complete();
+      } catch { finish(true); }
+    });
   }
   async function finishLine() {
     if (oversized) {
@@ -167,21 +205,35 @@ export async function serveMcp({ input, output, handlers = {} }) {
     length = 0;
     oversized = false;
   }
-  for await (const chunk of input) {
-    const bytes = Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk);
-    let start = 0;
-    while (start < bytes.length) {
-      const newline = bytes.indexOf(10, start);
-      const end = newline === -1 ? bytes.length : newline;
-      const count = end - start;
-      if (!oversized) {
-        if (length + count > MAX_MCP_LINE_BYTES) { oversized = true; length = 0; }
-        else { bytes.copy(buffer, length, start, end); length += count; }
+  try {
+    if (outputUnavailable()) throw outputError();
+    for await (const chunk of input) {
+      if (outputUnavailable()) throw outputError();
+      const bytes = Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk);
+      let start = 0;
+      while (start < bytes.length) {
+        const newline = bytes.indexOf(10, start);
+        const end = newline === -1 ? bytes.length : newline;
+        const count = end - start;
+        if (!oversized) {
+          if (length + count > MAX_MCP_LINE_BYTES) { oversized = true; length = 0; }
+          else { bytes.copy(buffer, length, start, end); length += count; }
+        }
+        if (newline === -1) break;
+        await finishLine();
+        start = end + 1;
       }
-      if (newline === -1) break;
-      await finishLine();
-      start = end + 1;
     }
+    if (length > 0 || oversized) await finishLine();
+    if (outputUnavailable()) throw outputError();
+  } finally {
+    // destroy(error) inside _write marks destroyed immediately but emits its
+    // error on the next tick. Keep the guard through that queued event before
+    // removing listeners, including streams configured with emitClose:false.
+    if (output.destroyed && !outputFailed) {
+      await new Promise(resolve => setImmediate(resolve));
+    }
+    output.removeListener('error', onOutputFailure);
+    output.removeListener('close', onOutputFailure);
   }
-  if (length > 0 || oversized) await finishLine();
 }

@@ -1,0 +1,20 @@
+[
+  {
+    "requested": "https://luxestyle.ch/collections/neu-eingetroffen",
+    "checkedAt": "2026-10-19T09:59:32.030236+00:00",
+    "status": 200,
+    "url": "https://luxestyle.ch/collections/neu-eingetroffen",
+    "bytes": 1109322,
+    "title": "Neuheiten 2026 kaufen | LuxeStyle Schweiz",
+    "canonical": "https://luxestyle.ch/collections/neu-eingetroffen"
+  },
+  {
+    "requested": "https://luxestyle.ch/collections/blitzversand-schweiz",
+    "checkedAt": "2026-10-19T09:59:32.032036+00:00",
+    "status": 200,
+    "url": "https://luxestyle.ch/collections/blitzversand-schweiz",
+    "bytes": 1350185,
+    "title": "Alles ab Schweizer Lager | LuxeStyle",
+    "canonical": "https://luxestyle.ch/collections/blitzversand-schweiz"
+  }
+]

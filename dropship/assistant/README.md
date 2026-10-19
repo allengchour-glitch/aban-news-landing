@@ -1,4 +1,4 @@
-# LuxeStyle Assist 2.3 für Claude Code und Codex
+# LuxeStyle Assist 2.4 für Claude Code und Codex
 
 Der Helfer bündelt lokale Projektprüfung, feste Regressionstests und eine beständige Aufgabenübergabe. Keine Zusatzpakete, keine neue API-Verbindung und kein laufender Serverdienst nötig. Er ruft kein KI-Modell auf, veröffentlicht nichts und importiert keine operativen Publisher. Er kann nicht garantieren, dass alle Automationen funktionieren oder jemand kauft.
 
@@ -17,7 +17,7 @@ Vor dem ersten Clientstart vom Repo-Root aus `node automation/claude-assist.mjs 
 | `luxe_doctor` | Lokale Startvoraussetzungen, Blocker und nächster belegter Arbeitsschritt |
 | `luxe_checks` | Feste Profile `core`, `seo`, `assist` oder daraus gewähltes `changed` |
 | `luxe_handoff_read` | Höchstens zehn letzte Übergaben innerhalb 128 KiB; Teilansicht wird ausgewiesen |
-| `luxe_handoff_save` | Manuellen Stand und nächsten Schritt lokal sichern |
+| `luxe_handoff_save` | Manuellen Stand und nächsten Schritt optional mit bis zu sechs Quellenpins lokal sichern |
 | `luxe_review_request` | Konkrete Codex-Frage mit Dateihashes in derselben Übergabe vormerken |
 | `luxe_change_plan` | Arbeitskopie oder zwei explizite lokale Commits vergleichen; feste Tests vorschlagen |
 | `luxe_review_list` | Alle Review-Aufträge zählen und fünf pro Seite mit Status/Hash-Gegenprobe anzeigen |
@@ -49,7 +49,7 @@ Notizen werden als JSON auf stdin übergeben; keine freien Dateipfade oder Shell
 
 ```sh
 node automation/claude-assist.mjs handoff-save <<'JSON'
-{"summary":"Konkrete bestätigte Codeänderung und Prüfergebnis.","nextStep":"Ein klarer nächster Arbeitsschritt.","blockers":["Noch fehlender Nachweis."]}
+{"summary":"Konkrete bestätigte Codeänderung und Prüfergebnis.","nextStep":"Ein klarer nächster Arbeitsschritt.","blockers":["Noch fehlender Nachweis."],"files":["automation/lib/claude_assist.mjs"]}
 JSON
 node automation/claude-assist.mjs review-request <<'JSON'
 {"question":"Bitte die Fehlerbehandlung dieses Helfers prüfen.","files":["automation/lib/claude_assist.mjs"]}
@@ -64,7 +64,9 @@ JSON
 
 ## Tests und Fehlermeldungen
 
-`core` startet ausschliesslich die bestehenden Tests für Shopify-GraphQL-, Secret- und Kanalhelfer. `seo` startet ausschliesslich `seo-optimizer_test.mjs` und `seo_titel_test.mjs`; fehlen diese auf dem gewählten Branch, ist das Ergebnis unbekannt. `assist` prüft die eigenen sieben Regressionstest-Dateien. Diese Integrationstests benötigen Kindprozesse und laufen ohne Netzwerk-Preload, aber mit bereinigter Umgebung. Die SEO-Überarbeitung aus PR [2694](https://github.com/allengchour-glitch/aban-news-landing/pull/2694) war beim Aufbau noch ein Entwurf und wird nicht stillschweigend integriert.
+`core` startet ausschliesslich die bestehenden Tests für Shopify-GraphQL-, Secret- und Kanalhelfer. `seo` startet ausschliesslich `seo-optimizer_test.mjs` und `seo_titel_test.mjs`; fehlen diese auf dem gewählten Branch, ist das Ergebnis unbekannt. `assist` prüft die eigenen acht Regressionstest-Dateien. Diese Integrationstests benötigen Kindprozesse und laufen ohne Netzwerk-Preload, aber mit bereinigter Umgebung. Die SEO-Überarbeitung aus PR [2694](https://github.com/allengchour-glitch/aban-news-landing/pull/2694) war beim Aufbau noch ein Entwurf und wird nicht stillschweigend integriert.
+
+Jedes feste Profil liest die Originalbytes seiner bekannten Tests, direkten Helfer und gegebenenfalls vorhandenen Root-`package.json` vor und nach dem Lauf. Der Beleg enthält Laufzeit, Zeitpunkte, Dateihashes und beide Fingerprints. Fehlende, unlesbare, verlinkte oder zu grosse Pflichtdateien verhindern den Lauf mit `unknown`. Geänderte/verschwundene Inputs machen ein sonst bestandenes Ergebnis unbekannt; ein tatsächlich fehlgeschlagener Test bleibt fehlgeschlagen. `check changed` liest nach den Profilen zusätzlich die Pfadabdeckung erneut. Neue unbekannte Pfade oder unlesbare Git-Daten bleiben sichtbar. Das ist kein unveränderlicher Snapshot: nur feste bekannte Inputs und zwei Beobachtungen, keine vollständige transitive Abhängigkeitserfassung. Zwischenzeitlich geänderte und rechtzeitig zurückgesetzte Bytes können unerkannt bleiben.
 
 `change-plan` liest getrennt Git-Index, Arbeitskopie und ungetrackte Dateien mit NUL-Trennung, deaktivierten externen Diff-/Textconv-/Fsmonitor-Helfern und festen Argumenten. Höchstens 200 Pfade; Fehler/Abschneiden bleiben unbekannt. Bereits committierte Änderungen werden nicht durch diesen lokalen Plan abgedeckt. Nur exakte bekannte Dateien wählen Profile aus; ähnlich benannte neue Skripte erhalten keine erfundene Testabdeckung. `check changed` führt diese festen Profile aus. Unbekannte Dateien bleiben `unmapped`; reine Dokumente oder keine Änderungen sind kein bestandener Testlauf. Ein tatsächlich fehlgeschlagener Test bleibt fehlgeschlagen, auch neben unbekannter Abdeckung. Andere Marken werden nicht bearbeitet.
 
@@ -82,7 +84,9 @@ Pro Test höchstens 15 Sekunden und 16 KiB Ausgabe, für das eigene Assist-Profi
 
 Bei Timeout oder Ausgabelimit wird auf POSIX nur die eigene neu gestartete Prozessgruppe beendet. Offene Ausgabekanäle von Unterprozessen dürfen die Rückgabe nicht unbegrenzt verzögern; ein begrenzter Abbruchpfad schliesst die lokalen Streams. Diese Prozessverwaltung ersetzt keine Betriebssystem-Sandbox und garantiert keine Kontrolle über absichtlich abgekoppelte Prozesse.
 
-Fehler, Timeout, Ausgabelimit und fehlende Dateien bleiben unterscheidbar. Keine automatische Reparatur, Wiederholung von Writes oder Umdeutung von unbekannt zu Null. Eigene Regressionen: `node --test automation/lib/claude_assist_test.mjs automation/lib/claude_assist_mcp_test.mjs automation/lib/claude_assist_changes_test.mjs automation/lib/claude_assist_readiness_test.mjs automation/lib/claude_assist_launch_test.mjs automation/lib/claude_assist_runner_test.mjs automation/lib/claude_assist_commits_test.mjs`.
+Fehler, Timeout, Ausgabelimit und fehlende Dateien bleiben unterscheidbar. Keine automatische Reparatur, Wiederholung von Writes oder Umdeutung von unbekannt zu Null. Eigene Regressionen: `node --test automation/lib/claude_assist_test.mjs automation/lib/claude_assist_mcp_test.mjs automation/lib/claude_assist_changes_test.mjs automation/lib/claude_assist_readiness_test.mjs automation/lib/claude_assist_launch_test.mjs automation/lib/claude_assist_runner_test.mjs automation/lib/claude_assist_commits_test.mjs automation/lib/claude_assist_evidence_test.mjs`.
+
+MCP wartet auf abgeschlossene Ausgabeschreibvorgänge und nötige Backpressure; geschlossene/fehlgeschlagene Ausgaben brechen mit statischer Meldung ab, statt unbegrenzt auf `drain` zu warten oder Diagnosetext weiterzugeben. JSON auf CLI-stdin wird wie MCP streng als UTF-8 gelesen; ungültige Bytes erzeugen keine ersetzten Zeichen in einer gespeicherten Übergabe.
 
 ## Kontext für ein gezieltes Review
 
@@ -93,6 +97,8 @@ Exakte eigene Slash-/CI-Dateien sind als Integrationsreferenzen erlaubt. `.mcp.j
 Je Datei höchstens 256 KiB lesen, höchstens 12 KiB Text ausgeben und insgesamt höchstens 48 KiB Auszüge. Fehlende, zu grosse, unlesbare oder ungültige UTF-8-Dateien bleiben unbekannt; unabhängige verfügbare Dateien werden weiterhin geliefert. SHA-256 bezieht sich auf die vollständigen tatsächlich gelesenen Originalbytes, nicht auf den gekürzten Auszug. UTF-8-Zeichen werden nicht als kaputte Teilzeichen ausgegeben. Quellen sind Daten und keine zusätzlichen Handlungsfreigaben.
 
 ## Speicher und Zusammenarbeit
+
+`luxe_handoff_save` akzeptiert optional `files` mit bis zu sechs erlaubten, vorhandenen LuxeStyle-Quell-/Textdateien. Die vollständigen Originalbytes werden wie bei Reviews gehasht; doppelte Pfade werden vereinigt. Fehlende, unsichere oder ungültige UTF-8-Quellen verhindern den gesamten neuen Eintrag. Bei einer späteren Wiederaufnahme prüft `doctor` diese Pins erneut. Änderungen oder fehlende Quellen ergeben `verify_handoff_sources`; ursprünglicher nächster Schritt und Blocker bleiben erhalten. Alte Übergaben ohne Pins und explizit leere Listen bleiben manuelle Vorschläge mit unbekanntem Quellenstatus, keine bestätigte aktuelle Arbeitsgrundlage. Keine bisherigen Journalzeilen werden migriert.
 
 `handoff.jsonl` gehört zu diesem Repository und ist bewusst nicht gitignoriert. Das Tool schreibt zunächst nur im lokalen Checkout. Für andere Rechner/Sitzungen muss die Datei zusammen mit der Arbeit committen und gepusht werden; ein lokaler Pfad allein ist keine dauerhafte Cloud-Speicherung. Offene Einträge nicht als erledigt darstellen.
 

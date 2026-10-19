@@ -1,5 +1,17 @@
 # Prüfbelege für LuxeStyle Assist
 
+## Quellenkontinuität und Testbelege in Version 2.4
+
+170 Regressionen bestanden im vollständigen echten begrenzten Assist-Profil: Exit 0, kein Timeout, keine abgeschnittene Ausgabe, bekannte Profilinputs vor/nach dem Lauf unverändert. Neuer direkter Selbsttest bestätigt zehn Werkzeuge und Serverversion 2.4.0. Lokaler Lauf auf Node 24; der separate CI-Lauf auf Node 22 ist nur über den konkreten PR-/Commitbeleg zu beurteilen.
+
+Übergaben können jetzt bis zu sechs vorhandene LuxeStyle-Dateien mit Originalbyte-SHA-256 pinnen. Gegenproben decken eine spätere Sitzung, geänderte/gelöschte Quellen, ungültige UTF-8-Dateien, Symlinks, unzulässige Pfade, leere Altbelege und unveränderte bisherige Journalbytes ab. Der echte MCP-Schreibweg und anschliessende CLI-Wiederaufnahme sind zusammen geprüft. Manuelle Herkunft und unbekannte Quellen bleiben ausdrücklich sichtbar; keine Modellantwort erfunden.
+
+Feste Prüfprofile vergleichen bekannte Tests, direkte Helfer und optional package.json vor und nach dem Lauf. Gegenproben verändern Quelle, Test oder Preload, löschen Inputs, ergänzen Paketmetadaten und verändern nach Tests die Git-Pfadabdeckung. Veränderte oder unlesbare Belege bleiben unbekannt; bekannte echte Testfehler behalten Vorrang. Fehlende, verlinkte, zu grosse oder nicht reguläre Pflichtdateien verhindern den Teststart. Die begrenzten Beobachtungen sind ausdrücklich kein eingefrorener Snapshot und keine vollständige transitive Abhängigkeitsprüfung.
+
+Transport-Gegenproben decken Client-Abbruch während Backpressure, bereits geschlossene Ausgaben, asynchrone Schreibfehler mit und ohne Backpressure sowie Abbruch während eines laufenden Handlers ab. CLI-stdin verwirft ungültiges UTF-8 ohne Journaländerung; gültiges Deutsch und Unicode bleiben erhalten.
+
+Die echte Claude-Code-CLI 2.1.303 verbindet erneut im isolierten Pilot in allen drei bisherigen Startfällen. Der aktuelle strukturierte Beleg enthält elf Laufzeit-/Konfigurationshashes einschliesslich neuem Belegmodul. Kein Modellaufruf, keine Kundennachricht und keine Business-Änderung. Das Inhaberprofil und dessen Freigabe auf anderen Rechnern bleiben unbekannt. Zwei parallele Fachreviews endeten wegen ausgeschöpftem Agent-Kontingent; deren Teilmeldungen sind keine abgeschlossene unabhängige Gesamtprüfung. Integration und vollständige Regressionen wurden anschliessend selbst abgeschlossen.
+
 ## Explizite Commit-Planung in Version 2.3
 
 136 Regressionstests bestanden, einschliesslich 21 neuer Gegenproben. Der vollständige Lauf über das echte begrenzte Assist-Profil endete mit Exit 0, ohne Timeout oder abgeschnittene Ausgabe. Der direkte MCP-Selbsttest bestätigt weiterhin zehn Werkzeuge und Serverversion 2.3.0.

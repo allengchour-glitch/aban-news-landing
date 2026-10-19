@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-18T08:49:48Z",
+ "stand": "2026-10-19T09:50:52Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,60 +18,76 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Selfie hochladen, Kleidung anprobieren: ChatGPT wird zum virtuellen Modeberater",
-   "u": "https://t3n.de/news/selfie-hochladen-kleidung-anprobieen-chatgpt-1766318/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-10-18T08:10:00Z",
-   "s": "ChatGPT führt zwei neue Shopping-Funktionen ein. Zum einen eine virtuelle Anprobe von Kleidung und zum anderen eine neue Favoriten-Funktion, mit der Produkte gespeichert werden können. weiterlesen auf…",
-   "sprache": "de"
-  },
-  {
-   "t": "(g+) Kolibri von Aleph Alpha: Deutschlands KI kann doch noch überraschen",
-   "u": "https://www.golem.de/news/kolibri-von-aleph-alpha-deutschlands-ki-kann-doch-noch-ueberraschen-2610-213958.html",
+   "t": "KI: Anthropic will 5 Prozent seiner Aktien dem Gemeinwohl widmen",
+   "u": "https://www.golem.de/news/ki-anthropic-will-5-prozent-seiner-aktien-dem-gemeinwohl-widmen-2610-214243.html",
    "q": "Golem",
-   "d": "2026-10-18T08:00:02Z",
-   "s": "Das deutsche Aleph Alpha hat ein neues Sprachmodell für das Mittelfeld vorgestellt und dabei einige interessante Ideen verbaut. Eine Analyse von Tim Elsner (Souveränität, KI)",
+   "d": "2026-10-19T09:10:02Z",
+   "s": "Anthropic will 5 Prozent seiner Aktien einem Gemeinwohlfonds geben. Der Anteil kann mit dem Unternehmenswert wachsen. (Anthropic, Wirtschaft)",
    "sprache": "de"
   },
   {
-   "t": "Eine Milliarde Nutzer von ChatGPT: Dennoch hassen viele Menschen KI",
-   "u": "https://t3n.de/news/eine-milliarde-nutzer-chatgpt-ki-hass-1766749/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-10-18T06:20:00Z",
-   "s": "Umfragen der Stanford University und Gallup belegen, dass die Menschen kein gutes Bild von KI-Produkten und den Rechenzentren haben. Gleichzeitig steigen die Nuweiterlesen auf t3n.de",
-   "sprache": "de"
-  },
-  {
-   "t": "Meta removes language that raised scraping and AI training concerns",
-   "u": "https://techcrunch.com/2026/10/17/meta-removes-language-that-raised-scraping-and-ai-training-concerns/",
-   "q": "TechCrunch AI",
-   "d": "2026-10-17T21:31:32Z",
-   "s": "A Meta spokesperson insisted that the updated terms did not reflect a change in the way Meta crawls the web.",
+   "t": "AI researchers stranded Claude on a virtual desert island. It started to “play.”",
+   "u": "https://www.technologyreview.com/2026/10/19/1147095/ai-stranded-claude-virtual-desert-island-play/",
+   "q": "MIT Tech Review",
+   "d": "2026-10-19T09:08:05Z",
+   "s": "What do AI agents do if you don’t tell them to do anything? The answer looks a lot like play. Researchers repeatedly stranded them alone on a virtual desert island for 30 hours in an experiment remini…",
    "sprache": "en"
   },
   {
-   "t": "Anthropic says its workforce has become less junior and is spending more time in meetings",
-   "u": "https://techcrunch.com/2026/10/17/anthropic-says-its-workforce-has-become-less-junior-and-is-spending-more-time-in-meetings/",
-   "q": "TechCrunch AI",
-   "d": "2026-10-17T20:21:19Z",
-   "s": "The composition of Anthropic’s workforce and the type of work getting done have changed significantly in the past year.",
-   "sprache": "en"
-  },
-  {
-   "t": "Cody Wilson: KI hat gerade eine Schusswaffe entworfen",
-   "u": "https://www.golem.de/news/cody-wilson-ki-hat-gerade-eine-schusswaffe-entworfen-2610-214215.html",
-   "q": "Golem",
-   "d": "2026-10-17T11:45:02Z",
-   "s": "Ein Aktivist hat eine Waffe vorgestellt, die eine speziell trainierte KI entworfen hat. Bereits 2012 hat er die weltweit erste 3D-gedruckte Schusswaffe vorgestellt. (3D-Drucker, KI)",
+   "t": "Chatten mit abtrünnigen KI-Agenten aus China: Was die Modelle über sich verraten",
+   "u": "https://t3n.de/news/chatten-abtruennige-ki-agenten-china-1768796/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-10-19T09:00:51Z",
+   "s": "Was passiert, wenn abtrünnige KI-Agenten im Netz entdeckt und zum Gespräch eingeladen werden? Das haben Wissenschaftler:innen jetzt bei chinesischen Modellen herausgefunden. Was ihnen die KI-Gesprächs…",
    "sprache": "de"
   },
   {
-   "t": "heise-Angebot: enterJS: Call for Proposals 2027 und letzter Aufruf für KI-Online-Thementag 2026",
-   "u": "https://www.heise.de/news/enterJS-Call-for-Proposals-2027-und-letzter-Aufruf-fuer-KI-Online-Thementag-2026-11456215.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "t": "Tim Sweeney: Epic Games stellt Spieleentwicklung radikal auf KI um",
+   "u": "https://www.golem.de/news/tim-sweeney-epic-games-stellt-spieleentwicklung-radikal-auf-ki-um-2610-214239.html",
+   "q": "Golem",
+   "d": "2026-10-19T08:33:02Z",
+   "s": "Ein goldenes Zeitalter für Computerspiele: Das erwartet Tim Sweeney durch KI. Dafür baut er Epic Games massiv um. (Epic Games, KI)",
+   "sprache": "de"
+  },
+  {
+   "t": "heise-Angebot: Vom Skill zum Plugin: KI mit Werkzeugen und Daten verbinden",
+   "u": "https://www.heise.de/news/Vom-Skill-zum-Plugin-KI-mit-Werkzeugen-und-Daten-verbinden-11487585.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "q": "heise",
-   "d": "2026-10-17T11:00:00Z",
-   "s": "Der Call for Proposals für die enterJS 2027 ist eröffnet und läuft bis zum 3. November. Nächsten Donnerstag findet der Online-Thementag enterJS Agentic statt.",
+   "d": "2026-10-19T08:00:00Z",
+   "s": "Das heise KI PRO Webinar zeigt, wie Skills, Konnektoren und Werkzeuge zusammenspielen und daraus nutzbare Plugins für wiederkehrende Aufgaben entstehen.",
    "sprache": "de"
+  },
+  {
+   "t": "heise+ | Schluss mit Vibe-Coding: Sandbox für professionelle KI-Entwicklung gebaut",
+   "u": "https://www.heise.de/ratgeber/Schluss-mit-Vibe-Coding-Sandbox-fuer-professionelle-KI-Entwicklung-gebaut-11427067.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
+   "q": "heise",
+   "d": "2026-10-19T07:00:00Z",
+   "s": "Ein Prompt macht noch keine gute Software. In unserer Sandbox hilft ein LLM bei der alltäglichen Softwareentwicklung, bearbeitet Tickets und agiert planvoll.",
+   "sprache": "de"
+  },
+  {
+   "t": "5 Dinge, die du diese Woche wissen musst: Steigert KI wirklich unsere Produktivität?",
+   "u": "https://t3n.de/news/5-dinge-die-du-diese-woche-wissen-musst-steigert-ki-wirklich-unsere-produktivitaet-1768546/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-10-19T06:00:58Z",
+   "s": "Jeden Montagmorgen berichten wir über fünf Dinge, die zum Wochenstart wichtig sind. Diesmal geht es um eine Studie zur Produktivitätssteigerung durch KI, kleine Atomreaktoren, einen Raketenstart mit u…",
+   "sprache": "de"
+  },
+  {
+   "t": "Anthropic says it’s committing 5% of its shares to a ‘public benefit fund’",
+   "u": "https://techcrunch.com/2026/10/18/anthropic-says-its-committing-5-of-its-shares-to-a-public-benefit-fund/",
+   "q": "TechCrunch AI",
+   "d": "2026-10-18T20:37:40Z",
+   "s": "Anthropic said that it will commit 5% of its shares to the fund.",
+   "sprache": "en"
+  },
+  {
+   "t": "Disney agrees to hire the majority of Character.AI’s workforce",
+   "u": "https://techcrunch.com/2026/10/18/disney-agrees-to-hire-the-majority-of-character-ais-workforce/",
+   "q": "TechCrunch AI",
+   "d": "2026-10-18T16:30:00Z",
+   "s": "The filing also says that the “vast majority” of Character.AI employees who were offered jobs at Disney accepted them. However, this is a stalking horse bid, so another company could come forward with…",
+   "sprache": "en"
   },
   {
    "t": "How Itaú is building generative AI for its entire customer base",
@@ -80,22 +96,6 @@
    "d": "2026-10-16T19:00:00Z",
    "s": "With ia.i, a conversational interface, and the IARA governance platform, Itaú is applying its AI First strategy to customers and employees — in one of Brazil’s most regulated sectors.",
    "sprache": "en"
-  },
-  {
-   "t": "Roundtables: A Conversation With the Creator of AI-Designed Viruses",
-   "u": "https://www.technologyreview.com/2026/10/16/1146224/roundtables-a-conversation-with-the-creator-of-ai-designed-viruses/",
-   "q": "MIT Tech Review",
-   "d": "2026-10-16T18:00:00Z",
-   "s": "Listen to the session or watch below Can AI design new life forms? In 2025, Stanford University PhD student Samuel King came up with a preliminary answer when he used a generative AI model to propose …",
-   "sprache": "en"
-  },
-  {
-   "t": "RTX Spark im Test: Nvidias erster Notebook-Chip für lokale KI",
-   "u": "https://www.heise.de/news/RTX-Spark-im-Test-Nvidias-erster-Notebook-Chip-fuer-lokale-KI-11490664.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-16T15:38:00Z",
-   "s": "Das erste RTX-Spark-Notebook im c’t-3003-Testlabor: Kann das Asus ProArt P14 die KI-Versprechen einlösen? Und: Läuft es wirklich nur mit Windows?",
-   "sprache": "de"
   }
  ]
 }

@@ -7,7 +7,7 @@ import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 import { MCP_LAUNCHER } from './claude_assist_launch.mjs';
-import { createAssistant, boundedRun, cleanEnv, redact } from './claude_assist.mjs';
+import { createAssistant, boundedRun, cleanEnv, redact, CHECK_INPUTS } from './claude_assist.mjs';
 
 const remote = 'https://github.com/allengchour-glitch/aban-news-landing.git';
 function fixture(t, runner) {
@@ -21,6 +21,7 @@ function fixture(t, runner) {
   return { root, calls, app: createAssistant(root, { runner: run }) };
 }
 function write(root, file, content) { const p = path.join(root, file); fs.mkdirSync(path.dirname(p), { recursive: true }); fs.writeFileSync(p, content); }
+function checkInputs(root, suite) { for (const file of CHECK_INPUTS[suite]) write(root, file, '// fixed fixture input\n'); }
 const note = { summary: 'SEO geprüft; keine Shopänderung.', nextStep: 'Diff prüfen.', blockers: ['Freigabe des Texts fehlt.'] };
 
 test('doctor uses only local metadata and reports missing evidence as unknown', async t => {
@@ -98,7 +99,7 @@ test('fixed checks report missing suite files as unknown, not passed', async t =
 });
 test('runner receives only fixed arguments and no inherited credentials', async t => {
   const f = fixture(t, (cmd) => ({ status: 'passed', output: cmd === 'git' ? remote : 'ok' }));
-  for (const file of ['automation/lib/shopify_gql_test.mjs', 'automation/lib/shopify_secret_test.mjs', 'automation/lib/kanal_sperren_test.mjs', 'automation/lib/claude_assist_offline.mjs']) write(f.root, file, '');
+  checkInputs(f.root, 'core');
   const result = await f.app.checks({ suite: 'core' }); assert.equal(result.status, 'passed');
   const runs = f.calls.filter(c => c.cmd !== 'git'); assert.equal(runs.length, 3);
   assert.equal(runs.every(c => c.args[0] === '--import' && c.options.timeoutMs === 15000), true);
@@ -126,7 +127,7 @@ function checkout(t) {
   const f = fixture(t);
   const here = path.dirname(fileURLToPath(import.meta.url));
   fs.mkdirSync(path.join(f.root, 'automation/lib'), { recursive: true });
-  for (const file of ['claude_assist.mjs','claude_assist_mcp.mjs','claude_assist_offline.mjs','claude_assist_changes.mjs','claude_assist_readiness.mjs','claude_assist_launch.mjs','claude_assist_runner.mjs','claude_assist_commits.mjs']) fs.copyFileSync(path.join(here, file), path.join(f.root, 'automation/lib', file));
+  for (const file of ['claude_assist.mjs','claude_assist_mcp.mjs','claude_assist_offline.mjs','claude_assist_changes.mjs','claude_assist_readiness.mjs','claude_assist_launch.mjs','claude_assist_runner.mjs','claude_assist_commits.mjs','claude_assist_evidence.mjs']) fs.copyFileSync(path.join(here, file), path.join(f.root, 'automation/lib', file));
   fs.copyFileSync(path.join(here, '../claude-assist.mjs'), path.join(f.root, 'automation/claude-assist.mjs'));
   for (const args of [['-c','init.templateDir=','init','--quiet',f.root], ['-C',f.root,'config','--local','remote.origin.url',remote]]) {
     const r = spawnSync('git', args, { env: cleanEnv(), encoding: 'utf8' }); assert.equal(r.status, 0, r.stderr);
@@ -261,16 +262,16 @@ test('partial Git data stays unknown and never becomes a clean plan', async t =>
 test('uncovered changes remain unknown while real test failures take precedence', async t => {
   for(const testStatus of ['passed','failed']) {
     const f=fixture(t,(cmd,args)=>cmd!=='git'?{status:testStatus,output:'offline'}:{status:'passed',output:args.includes('config')?remote:args.includes('--cached')?'automation/lib/shopify_gql.mjs\0automation/new-live.mjs\0':''});
-    for(const file of ['automation/lib/shopify_gql_test.mjs','automation/lib/shopify_secret_test.mjs','automation/lib/kanal_sperren_test.mjs','automation/lib/claude_assist_offline.mjs'])write(f.root,file,'');
+    checkInputs(f.root, 'core');
     const run=await f.app.checks({suite:'changed'});assert.equal(run.status,testStatus==='failed'?'failed':'unknown');
     assert.deepEqual(run.plan.uncovered,['automation/new-live.mjs']);
   }
 });
 test('assist profile runs only its fixed integration files without claiming a network sandbox', async t => {
   const f=fixture(t,(cmd,args)=>({status:'passed',output:cmd==='git'?remote:'ok'}));
-  for(const file of ['claude_assist_test.mjs','claude_assist_mcp_test.mjs','claude_assist_changes_test.mjs','claude_assist_readiness_test.mjs','claude_assist_launch_test.mjs','claude_assist_runner_test.mjs','claude_assist_commits_test.mjs'])write(f.root,'automation/lib/'+file,'');
+  checkInputs(f.root, 'assist');
   const run=await f.app.checks({suite:'assist'});assert.equal(run.status,'passed');
-  const call=f.calls.find(c=>c.cmd!=='git');assert.equal(call.args[0],'--test');assert.equal(call.args[1],'--test-reporter=spec');assert.equal(call.args.length,9);assert.match(run.caveat,/no network preload/);
+  const call=f.calls.find(c=>c.cmd!=='git');assert.equal(call.args[0],'--test');assert.equal(call.args[1],'--test-reporter=spec');assert.equal(call.args.length,10);assert.match(run.caveat,/no network preload/);
 });
 test('native Git change plan sees a staged change even when the worktree returns to HEAD', async t => {
   const f=checkout(t),file='automation/lib/shopify_gql.mjs';write(f.root,file,'original');
@@ -311,6 +312,75 @@ test('doctor reports local readiness separately from a connected Claude client',
   assert.equal(d.nextWork.kind,'resume_handoff');assert.equal(d.nextWork.nextStep,note.nextStep);
   assert.equal(JSON.stringify(d).includes('private_value_not_to_report'),false);
   assert.equal(d.liveAccountChecks,'unknown');assert.equal(d.publications,'unknown');
+});
+test('handoffs pin sorted unique original-byte sources and resume in a later session', async t => {
+  const f=fixture(t);localSetup(f.root);await f.app.save(note);
+  const journal=path.join(f.root,'dropship/assistant/handoff.jsonl'),previous=fs.readFileSync(journal);
+  const file='automation/seo-optimizer.mjs',other='dropship/luxe-source.md';
+  const body=Buffer.from('\ufeff// Grösse: 你好\r\n');write(f.root,file,body);write(f.root,other,'Second original source.');
+  const saved=await f.app.save({...note,files:[other,file,file]});
+  const rows=f.app.read();assert.equal(rows.state,'available');assert.equal(rows.records,2);
+  assert.deepEqual(rows.latest[1].files.map(r=>r.file),[file,other]);
+  assert.equal(rows.latest[1].files[0].sha256,createHash('sha256').update(body).digest('hex'));
+  const after=fs.readFileSync(journal);assert.deepEqual(after.subarray(0,previous.length),previous);
+  assert.equal(rows.latest[1].prevHash,rows.latest[0].hash);
+  const later=createAssistant(f.root,{runner:async()=>({status:'passed',output:remote})});
+  const next=(await later.doctor()).nextWork;
+  assert.equal(next.kind,'resume_handoff');assert.equal(next.id,saved.id);assert.equal(next.evidence.state,'current');
+  assert.deepEqual(next.evidence.files.map(r=>r.state),['unchanged','unchanged']);
+  assert.equal(next.nextStep,note.nextStep);assert.deepEqual(next.blockers,note.blockers);
+  assert.match(next.note,/not permission for live actions/);assert.deepEqual(fs.readFileSync(journal),after);
+});
+test('handoff resume rechecks changed or missing sources without changing recorded work', async t => {
+  for(const expected of ['stale','unknown']){
+    const f=fixture(t);localSetup(f.root);const file='automation/seo-optimizer.mjs';write(f.root,file,'Original source.');
+    const saved=await f.app.save({...note,files:[file]});
+    const journal=path.join(f.root,'dropship/assistant/handoff.jsonl'),before=fs.readFileSync(journal);
+    const pin=f.app.read().latest[0].files[0].sha256;
+    if(expected==='stale')write(f.root,file,'Changed source.');else fs.unlinkSync(path.join(f.root,file));
+    const next=(await f.app.doctor()).nextWork;
+    assert.equal(next.kind,'verify_handoff_sources');assert.equal(next.evidence.state,expected);
+    assert.equal(next.id,saved.id);assert.equal(next.nextStep,note.nextStep);assert.deepEqual(next.blockers,note.blockers);
+    assert.equal(next.evidence.files[0].expectedSha256,pin);
+    assert.deepEqual(fs.readFileSync(journal),before);assert.equal(f.app.read().state,'available');
+  }
+});
+test('legacy and explicitly empty handoff sources remain unknown manual suggestions', async t => {
+  const f=fixture(t);localSetup(f.root);
+  for(const explicit of [false,true]){
+    const saved=await f.app.save({...note,...(explicit?{files:[]}:{} )});
+    const row=f.app.read().latest.at(-1);assert.equal(Object.hasOwn(row,'files'),explicit);
+    if(explicit)assert.deepEqual(row.files,[]);
+    const journal=path.join(f.root,'dropship/assistant/handoff.jsonl'),before=fs.readFileSync(journal);
+    const next=(await f.app.doctor()).nextWork;
+    assert.equal(next.kind,'resume_handoff');assert.equal(next.id,saved.id);
+    assert.deepEqual(next.evidence,{state:'unknown',reason:'no_pinned_files',files:[]});
+    assert.equal(next.nextStep,note.nextStep);assert.deepEqual(next.blockers,note.blockers);
+    assert.deepEqual(fs.readFileSync(journal),before);
+  }
+});
+test('invalid handoff source lists or out-of-scope paths never change existing history', async t => {
+  const f=fixture(t);localSetup(f.root);await f.app.save(note);
+  const journal=path.join(f.root,'dropship/assistant/handoff.jsonl'),before=fs.readFileSync(journal);
+  for(const files of [null,undefined,'automation/seo-optimizer.mjs',{},Array(7).fill('automation/seo-optimizer.mjs'),[42],['../secret'],['/tmp/secret'],['automation/../secret'],['dropship/ABAN-PLAN.md'],['.claude/settings.json']]){
+    await assert.rejects(f.app.save({...note,files}));
+    assert.deepEqual(fs.readFileSync(journal),before);
+  }
+  assert.equal(fs.existsSync(path.join(f.root,'dropship/assistant/.handoff.lock')),false);
+});
+test('missing, symlinked and invalid-UTF8 handoff sources never append a partial record', async t => {
+  const f=fixture(t);localSetup(f.root);await f.app.save(note);
+  const journal=path.join(f.root,'dropship/assistant/handoff.jsonl'),before=fs.readFileSync(journal);
+  const file='dropship/luxe-source.md';write(f.root,file,'Original source.');
+  fs.symlinkSync(path.join(f.root,file),path.join(f.root,'dropship/luxe-symlink.md'));
+  fs.symlinkSync(path.join(f.root,'dropship'),path.join(f.root,'dropship/luxe-parent'));
+  write(f.root,'dropship/luxe-invalid.md',Buffer.from([0xff,0xfe]));
+  for(const ref of ['dropship/luxe-missing.md','dropship/luxe-symlink.md','dropship/luxe-parent/luxe-source.md','dropship/luxe-invalid.md']){
+    await assert.rejects(f.app.save({...note,files:[file,ref]}));
+    assert.deepEqual(fs.readFileSync(journal),before);
+  }
+  assert.equal(f.app.read().state,'available');assert.equal(f.app.read().records,1);
+  assert.equal(fs.existsSync(path.join(f.root,'dropship/assistant/.handoff.lock')),false);
 });
 test('setup, locks and broken history prevent resume without resetting anything', async t => {
   const f=fixture(t);localSetup(f.root);await f.app.save(note);
@@ -501,4 +571,114 @@ test('a clean checkout exposes committed changes through both CLI and MCP withou
   assert.deepEqual((await app.changePlan({baseCommit,headCommit})).files,[file]);
   assert.equal((await app.changePlan()).state,'unmapped');
   assert.equal(fs.existsSync(path.join(f.root,'dropship/assistant/handoff.jsonl')),false);
+});
+
+test('fixed checks bind passing observations to unchanged known source bytes', async t => {
+  const f=fixture(t,cmd=>({status:'passed',output:cmd==='git'?remote:'ok'}));checkInputs(f.root,'core');
+  const run=await f.app.checks({suite:'core'});
+  assert.equal(run.status,'passed');assert.equal(run.evidence.state,'current');
+  assert.equal(run.evidence.before.fingerprint,run.evidence.after.fingerprint);
+  assert.match(run.evidence.before.fingerprint,/^[a-f0-9]{64}$/);
+  assert.equal(run.nodeVersion,process.versions.node);assert.ok(Date.parse(run.finishedAt)>=Date.parse(run.startedAt));
+  assert.equal(run.evidence.before.files.find(r=>r.file==='package.json').state,'absent');
+  assert.ok(run.evidence.before.files.some(r=>r.file==='automation/lib/shopify_gql.mjs'&&r.state==='present'));
+  assert.match(run.caveat,/not a frozen snapshot/);
+});
+
+test('source, test and preload changes during a run invalidate a passing result', async t => {
+  for(const file of ['automation/lib/shopify_gql.mjs','automation/lib/shopify_gql_test.mjs','automation/lib/claude_assist_offline.mjs']){
+    let changed=false;
+    const f=fixture(t,cmd=>{
+      if(cmd==='git')return {status:'passed',output:remote};
+      if(!changed){write(f.root,file,'// changed while tests were running\n');changed=true;}
+      return {status:'passed',output:'ok'};
+    });checkInputs(f.root,'core');
+    const run=await f.app.checks({suite:'core'});
+    assert.equal(run.status,'unknown');assert.equal(run.evidence.state,'stale');
+    assert.ok(run.evidence.changedFiles.includes(file));assert.notEqual(run.evidence.before.fingerprint,run.evidence.after.fingerprint);
+  }
+});
+
+test('unavailable source inputs skip tests without claiming a passing profile', async t => {
+  for(const variant of ['missing','symlink','directory','oversized']){
+    const f=fixture(t);checkInputs(f.root,'core');const file=path.join(f.root,'automation/lib/shopify_gql.mjs');fs.unlinkSync(file);
+    if(variant==='symlink')fs.symlinkSync(path.join(f.root,'automation/lib/shopify_secret.mjs'),file);
+    if(variant==='directory')fs.mkdirSync(file);
+    if(variant==='oversized')fs.writeFileSync(file,Buffer.alloc(1024*1024+1));
+    const run=await f.app.checks({suite:'core'});
+    assert.equal(run.status,'unknown');assert.equal(run.reason,'check_inputs_unavailable');assert.equal(run.evidence.state,'unknown');
+    assert.deepEqual(run.results,[]);assert.equal(f.calls.some(c=>c.cmd!=='git'),false);
+  }
+});
+
+test('a source deleted during checks stays unknown and a real failure still takes precedence', async t => {
+  for(const status of ['passed','failed']){
+    let changed=false;
+    const f=fixture(t,cmd=>{
+      if(cmd==='git')return {status:'passed',output:remote};
+      if(!changed){fs.unlinkSync(path.join(f.root,'automation/lib/shopify_gql.mjs'));changed=true;}
+      return {status,output:'fixture result'};
+    });checkInputs(f.root,'core');const run=await f.app.checks({suite:'core'});
+    assert.equal(run.status,status==='failed'?'failed':'unknown');assert.equal(run.evidence.state,'unknown');
+    assert.equal(run.evidence.after.fingerprint,null);
+  }
+});
+
+test('package metadata appearing during checks is a detected input change', async t => {
+  const f=fixture(t,cmd=>{
+    if(cmd==='git')return {status:'passed',output:remote};
+    write(f.root,'package.json','{"type":"module"}\n');return {status:'passed',output:'ok'};
+  });checkInputs(f.root,'core');const run=await f.app.checks({suite:'core'});
+  assert.equal(run.status,'unknown');assert.equal(run.evidence.state,'stale');assert.deepEqual(run.evidence.changedFiles,['package.json']);
+});
+
+test('changed checks reread coverage and never hide a new uncovered path or a failed test', async t => {
+  for(const testStatus of ['passed','failed']){
+    let phase=0;
+    const f=fixture(t,(cmd,args)=>{
+      if(cmd!=='git')return {status:testStatus,output:'result'};
+      if(args.includes('config'))return {status:'passed',output:remote};
+      if(args.includes('--cached')){phase++;return {status:'passed',output:'automation/lib/shopify_gql.mjs\0'};}
+      return {status:'passed',output:phase>1&&args.includes('ls-files')?'automation/new-live.mjs\0':''};
+    });checkInputs(f.root,'core');const run=await f.app.checks({suite:'changed'});
+    assert.equal(run.status,testStatus==='failed'?'failed':'unknown');assert.equal(run.changeCoverage.state,'stale');
+    assert.deepEqual(run.plan.uncovered,[]);assert.deepEqual(run.planAfter.uncovered,['automation/new-live.mjs']);
+  }
+});
+
+test('an unreadable post-test change list remains unknown rather than an empty plan', async t => {
+  let phase=0;
+  const f=fixture(t,(cmd,args)=>{
+    if(cmd!=='git')return {status:'passed',output:'ok'};
+    if(args.includes('config'))return {status:'passed',output:remote};
+    if(args.includes('--cached'))phase++;
+    if(phase>1)return {status:'unknown',reason:'read unavailable'};
+    return {status:'passed',output:args.includes('--cached')?'automation/lib/shopify_gql.mjs\0':''};
+  });checkInputs(f.root,'core');const run=await f.app.checks({suite:'changed'});
+  assert.equal(run.status,'unknown');assert.equal(run.changeCoverage.state,'unknown');assert.equal(run.planAfter.files,null);
+});
+
+test('CLI rejects malformed UTF-8 without changing history and preserves valid Unicode', t => {
+  const f=checkout(t),cli=path.join(f.root,'automation/claude-assist.mjs');
+  const run=(args,input)=>spawnSync(process.execPath,[cli,...args],{cwd:f.root,input,encoding:'utf8',env:cleanEnv(),timeout:5000});
+  const valid={...note,summary:'Grösse: 你好. Geprüfter Stand.'};
+  assert.equal(run(['handoff-save'],JSON.stringify(valid)).status,0);
+  const journal=path.join(f.root,'dropship/assistant/handoff.jsonl'),before=fs.readFileSync(journal);
+  const bad=Buffer.concat([Buffer.from('{"summary":"'),Buffer.from([0xff]),Buffer.from('","nextStep":"Prüfen."}')]);
+  assert.equal(run(['handoff-save'],bad).status,1);assert.deepEqual(fs.readFileSync(journal),before);
+  const context=Buffer.concat([Buffer.from('{"question":"'),Buffer.from([0xff]),Buffer.from('","files":[]}')]);
+  assert.equal(run(['context'],context).status,1);assert.deepEqual(fs.readFileSync(journal),before);
+  assert.equal(JSON.parse(run(['handoff-read']).stdout).latest[0].summary,valid.summary);
+});
+
+test('real MCP handoff pins reach the shared journal and are rechecked by a later CLI process', t => {
+  const f=checkout(t);localSetup(f.root);const file='automation/seo-optimizer.mjs';write(f.root,file,'// original source\n');
+  const cli=path.join(f.root,'automation/claude-assist.mjs');
+  const run=(args,input)=>spawnSync(process.execPath,[cli,...args],{cwd:f.root,input,encoding:'utf8',env:cleanEnv(),timeout:5000});
+  const input=JSON.stringify({jsonrpc:'2.0',id:1,method:'tools/call',params:{name:'luxe_handoff_save',arguments:{...note,files:[file]}}})+'\n';
+  const saved=run(['mcp'],input);assert.equal(saved.status,0,saved.stderr);assert.equal(JSON.parse(saved.stdout).result.isError,false);
+  const current=JSON.parse(run(['doctor']).stdout);assert.equal(current.nextWork.evidence.state,'current');
+  write(f.root,file,'// changed source\n');const stale=JSON.parse(run(['doctor']).stdout);
+  assert.equal(stale.nextWork.kind,'verify_handoff_sources');assert.equal(stale.nextWork.evidence.state,'stale');
+  assert.equal(JSON.parse(run(['handoff-read']).stdout).records,1);
 });
