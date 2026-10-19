@@ -10282,3 +10282,8 @@ kinder-laufschuhe-mit-netz-613000	2407080952141613200	16	12.32	ok	landeseite
 katzenspielzeug-mit-elastischer-schnur-608700	2501280207411608900	16	6.01	ok	landeseite
 kinder-schuhe-mit-led-licht-609000	2407060639081609300	7	10.18	ok	landeseite
 gestrickte-babysofadencke-mit-gesticktem-namen-604000	2605210251481604700	16	9.20	ok	landeseite
+katzenspielzeug-mit-katzenminze-628300	2501280200051628500	16	6.01	ok	landeseite
+wasserdichte-kinderschuhe-aus-leder-606000	2407040155031606300	16	9.20	ok	landeseite
+pluschspielzeug-mit-flattergerausch-625600	2501220859561625800	7	6.93	ok	landeseite
+leder-laufschuhe-fur-kinder-627000	2407030551201627300	16	11.37	ok	landeseite
+yoga-stretch-strap-set-638200	2603050224061638600	16	8.64	ok	landeseite
