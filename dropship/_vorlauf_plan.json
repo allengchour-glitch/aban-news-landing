@@ -14,6 +14,24 @@
    "termin_utc": "2026-10-19T07:45:00Z",
    "versuche": 1
   },
+  "bild-20261019T1410": {
+   "basis_utc": "2026-10-19T14:10:00Z",
+   "format": "bild",
+   "grund": "",
+   "handle": "tigerauge-armband-savana-naturstein-doppelreihig",
+   "handles": [
+    "tigerauge-armband-savana-naturstein-doppelreihig"
+   ],
+   "letzter_versuch": "2026-10-19T00:26:01Z",
+   "mc_ids": [
+    399527387,
+    399527400
+   ],
+   "reserviert_um": "2026-10-19T00:26:01Z",
+   "status": "geplant",
+   "termin_utc": "2026-10-19T14:10:00Z",
+   "versuche": 1
+  },
   "bild-20261020T0745": {
    "basis_utc": "2026-10-20T07:45:00Z",
    "format": "bild",
@@ -28,6 +46,14 @@
    "status": "geplant",
    "termin_utc": "2026-10-20T07:45:00Z",
    "versuche": 1
+  },
+  "bild-20261020T1410": {
+   "basis_utc": "2026-10-20T14:10:00Z",
+   "format": "bild",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-20T14:10:00Z",
+   "versuche": 0
   },
   "bild-20261021T0745": {
    "basis_utc": "2026-10-21T07:45:00Z",
@@ -44,6 +70,14 @@
    "termin_utc": "2026-10-21T07:45:00Z",
    "versuche": 1
   },
+  "bild-20261021T1410": {
+   "basis_utc": "2026-10-21T14:10:00Z",
+   "format": "bild",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-21T14:10:00Z",
+   "versuche": 0
+  },
   "bild-20261022T0745": {
    "basis_utc": "2026-10-22T07:45:00Z",
    "format": "bild",
@@ -58,6 +92,14 @@
    "status": "geplant",
    "termin_utc": "2026-10-22T07:45:00Z",
    "versuche": 1
+  },
+  "bild-20261022T1410": {
+   "basis_utc": "2026-10-22T14:10:00Z",
+   "format": "bild",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-22T14:10:00Z",
+   "versuche": 0
   },
   "bild-20261023T0745": {
    "basis_utc": "2026-10-23T07:45:00Z",
@@ -77,6 +119,14 @@
    "termin_utc": "2026-10-23T07:45:00Z",
    "versuche": 2
   },
+  "bild-20261023T1410": {
+   "basis_utc": "2026-10-23T14:10:00Z",
+   "format": "bild",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-23T14:10:00Z",
+   "versuche": 0
+  },
   "bild-20261024T0745": {
    "basis_utc": "2026-10-24T07:45:00Z",
    "format": "bild",
@@ -93,6 +143,14 @@
    "termin_utc": "2026-10-24T07:45:00Z",
    "versuche": 1
   },
+  "bild-20261024T1410": {
+   "basis_utc": "2026-10-24T14:10:00Z",
+   "format": "bild",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-24T14:10:00Z",
+   "versuche": 0
+  },
   "bild-20261025T0845": {
    "basis_utc": "2026-10-25T08:45:00Z",
    "format": "bild",
@@ -108,6 +166,14 @@
    "status": "geplant",
    "termin_utc": "2026-10-25T08:45:00Z",
    "versuche": 1
+  },
+  "bild-20261025T1510": {
+   "basis_utc": "2026-10-25T15:10:00Z",
+   "format": "bild",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-25T15:10:00Z",
+   "versuche": 0
   },
   "karussell-20261019T1915": {
    "basis_utc": "2026-10-19T19:15:00Z",
@@ -854,6 +920,16 @@
    "termin_utc": "2026-10-19T10:45:00Z",
    "versuche": 1
   },
+  "story-20261019T1710": {
+   "basis_utc": "2026-10-19T17:10:00Z",
+   "format": "story",
+   "letzter_versuch": "2026-10-19T00:26:20Z",
+   "mc_ids": [],
+   "reserviert_um": "2026-10-19T00:26:20Z",
+   "status": "reserviert",
+   "termin_utc": "2026-10-19T17:10:00Z",
+   "versuche": 1
+  },
   "story-20261020T1045": {
    "basis_utc": "2026-10-20T10:45:00Z",
    "format": "story",
@@ -868,6 +944,14 @@
    "status": "geplant",
    "termin_utc": "2026-10-20T10:45:00Z",
    "versuche": 1
+  },
+  "story-20261020T1710": {
+   "basis_utc": "2026-10-20T17:10:00Z",
+   "format": "story",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-20T17:10:00Z",
+   "versuche": 0
   },
   "story-20261021T1045": {
    "basis_utc": "2026-10-21T10:45:00Z",
@@ -884,6 +968,14 @@
    "termin_utc": "2026-10-21T10:45:00Z",
    "versuche": 1
   },
+  "story-20261021T1710": {
+   "basis_utc": "2026-10-21T17:10:00Z",
+   "format": "story",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-21T17:10:00Z",
+   "versuche": 0
+  },
   "story-20261022T1045": {
    "basis_utc": "2026-10-22T10:45:00Z",
    "format": "story",
@@ -899,6 +991,14 @@
    "termin_utc": "2026-10-22T10:45:00Z",
    "versuche": 1
   },
+  "story-20261022T1710": {
+   "basis_utc": "2026-10-22T17:10:00Z",
+   "format": "story",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-22T17:10:00Z",
+   "versuche": 0
+  },
   "story-20261023T1045": {
    "basis_utc": "2026-10-23T10:45:00Z",
    "format": "story",
@@ -913,6 +1013,14 @@
    "status": "geplant",
    "termin_utc": "2026-10-23T10:45:00Z",
    "versuche": 1
+  },
+  "story-20261023T1710": {
+   "basis_utc": "2026-10-23T17:10:00Z",
+   "format": "story",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-23T17:10:00Z",
+   "versuche": 0
   },
   "story-20261024T1045": {
    "basis_utc": "2026-10-24T10:45:00Z",
@@ -932,6 +1040,14 @@
    "termin_utc": "2026-10-24T10:45:00Z",
    "versuche": 1
   },
+  "story-20261024T1710": {
+   "basis_utc": "2026-10-24T17:10:00Z",
+   "format": "story",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-24T17:10:00Z",
+   "versuche": 0
+  },
   "story-20261025T1145": {
    "basis_utc": "2026-10-25T11:45:00Z",
    "format": "story",
@@ -949,6 +1065,14 @@
    "status": "geplant",
    "termin_utc": "2026-10-25T11:45:00Z",
    "versuche": 1
+  },
+  "story-20261025T1810": {
+   "basis_utc": "2026-10-25T18:10:00Z",
+   "format": "story",
+   "mc_ids": [],
+   "status": "offen",
+   "termin_utc": "2026-10-25T18:10:00Z",
+   "versuche": 0
   },
   "tiktok-20261019T0605": {
    "basis_utc": "2026-10-19T06:05:00Z",
@@ -1446,6 +1570,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-19T00:10:58Z",
+ "stand": "2026-10-19T00:26:20Z",
  "version": 1
 }

@@ -1,21 +1,20 @@
-# Masstabellen bei CJ — Stichprobe 2026-10-15 00:33 UTC
+# Masstabellen bei CJ — Stichprobe 2026-10-19 00:23 UTC
 
-Werkzeug `automation/masstabelle_probe.py` (nur lesen). CJ-Mode mit Grössen-Option geprüft: **40** · mit Masstabelle (Bild in der CJ-Beschreibung, OCR): **13** · davon schon in unseren Produktbildern: **0**.
+Werkzeug `automation/masstabelle_probe.py` (nur lesen). CJ-Mode mit Grössen-Option geprüft: **40** · mit Masstabelle (Bild in der CJ-Beschreibung, OCR): **12** · davon schon in unseren Produktbildern: **0**.
 
 Entscheid danach: liegt der Anteil «Tabelle bei CJ, nicht bei uns» hoch, das Tabellenbild als letztes Produktbild nachrüsten (Alt «Masstabelle (cm)») + Importer übernimmt es künftig.
 
 ## Mit Tabelle
 
-- `blumen-maxikleid-fleurette-neckholder-mit-fishtail` — Blumen-Maxikleid «Fleurette» – Neckholder mit Fishtail · **fehlt bei uns** · https://oss-cf.cjdropshipping.com/product/2026/05/30/09/0b3958ee-f3d8-4c34-8c91-72a6e4fb4824_trans.jpeg
-- `leinen-langarmshirt-fur-herren-621200` — Leinen-Langarmshirt für Herren · **fehlt bei uns** · https://oss-cf.cjdropshipping.com/product/2026/03/21/07/47e56dfd-d538-42c6-97bd-1aa7485e7eb0_trans.jpeg
-- `langarm-top-dentelle-spitzen-panel-color-block` — Langarm-Top «Dentelle» – Spitzen-Panel, Colorblock · **fehlt bei uns** · https://oss-cf.cjdropshipping.com/product/2026/05/31/07/2e2f9dea-26be-441a-ad52-530c2aee9b51_trans.jpeg
-- `long-blazer-milano-uni-ohne-knopfe-damen` — Long-Blazer «Milano» · uni, ohne Knöpfe (Damen) · **fehlt bei uns** · https://oss-cf.cjdropshipping.com/product/2026/06/05/07/54ed122d-3c1b-4ee5-9a76-9e9ba6545183_trans.jpeg
-- `elegantes-sommerkleid-a-linie-hemdkragen-fliessend-damen-3-farben` — Elegantes Sommerkleid A-Linie – Hemdkragen, fliessend (Damen, 3 Farben) · **fehlt bei uns** · https://oss-cf.cjdropshipping.com/product/2026/05/30/08/54587889-9d50-4a72-8aba-26d59c56c060.jpg
-- `baumwoll-leinen-langarmshirt-615300` — Baumwoll-Leinen Langarmshirt · **fehlt bei uns** · https://oss-cf.cjdropshipping.com/product/2026/03/01/04/1faf899b-b7ed-4428-8c4a-4df578204677_trans.jpeg
-- `herren-strickhemd-amalfi-ajour-knit-camp-kragen` — Herren-Strickhemd «Amalfi» · Ajour-Knit, Camp-Kragen · **fehlt bei uns** · https://oss-cf.cjdropshipping.com/product/2026/06/05/08/f1ab83bb-411d-42d5-8860-5b444329b556.jpg
-- `leinen-langarmshirt-mit-stehkragen-und-knopfen-610200` — Leinen-Langarmshirt mit Stehkragen und Knöpfen · **fehlt bei uns** · https://oss-cf.cjdropshipping.com/product/2026/03/21/06/883a0faa-f104-4919-8b8f-d05c0d2127c2_trans.jpeg
-- `langarmshirt-polyester-617600` — Langarmshirt Polyester · **fehlt bei uns** · https://oss-cf.cjdropshipping.com/product/2026/03/19/05/bf7e6f0b-1e6f-4ff7-8126-fd0a5ec1c4fc_trans.jpeg
-- `freizeitshirt-mit-patchwork-streifen-kurzarmli-629600` — Freizeitshirt mit Patchwork-Streifen, kurzärmlig · **fehlt bei uns** · https://oss-cf.cjdropshipping.com/product/2025/03/30/02/5a337a85-8ad4-4974-9273-87d0c0a0382f.jpeg?x-oss-process=image/quality,q_100
-- `damen-langarmshirt-mit-digitaldruck-630800` — Damen Langarmshirt mit Digitaldruck · **fehlt bei uns** · https://oss-cf.cjdropshipping.com/product/2026/03/09/02/86c01af7-e00a-461b-988c-53aa850d5337_trans.jpeg
-- `damen-bluse-weiss-mit-lochstickerei-635100` — Damen Bluse Weiss mit Lochstickerei · **fehlt bei uns** · https://oss-cf.cjdropshipping.com/product/2026/03/08/09/525d5177-5b61-4833-9ee8-6c693e859f48_trans.jpeg
+- `mini-kleid-mit-ruschen-spaghetti-trager-elastisch-sommer-2026` — Mini-Kleid mit Rüschen · Spaghetti-Träger, elastisch · **fehlt bei uns** · https://oss-cf.cjdropshipping.com/product/2026/06/01/09/fd9a1806-8a41-48c2-8090-78bc3bc3672a_trans.jpeg
+- `damen-bikini-maui-neckholder-floral` — Damen Bikini «Maui» · Neckholder, Floral · **fehlt bei uns** · https://oss-cf.cjdropshipping.com/product/2026/06/13/05/3d359c8e-be85-4844-8542-ded96b3244d3.jpg
+- `boho-jacke-fiore-bluten-stickerei-bindeband` — Boho-Jacke «Fiore» · Blüten-Stickerei, Bindeband · **fehlt bei uns** · https://oss-cf.cjdropshipping.com/product/2026/06/07/09/8a8751fd-1373-48b7-ad02-cb37f263d037_trans.jpeg
+- `langes-kleid-mit-v-ausschnitt-und-bindegurtel-622300` — Langes Kleid mit V-Ausschnitt und Bindegürtel · **fehlt bei uns** · https://oss-cf.cjdropshipping.com/product/2026/09/19/02/4dabbfe7-1479-47b3-aad6-702357b2173a.jpg
+- `kurzarmhemd-mit-digitaldruck-608400` — Kurzarmhemd mit Digitaldruck · **fehlt bei uns** · https://oss-cf.cjdropshipping.com/product/2025/03/17/06/79eff2a5-a781-4a90-b3c5-be83057ce574.jpeg?x-oss-process=image/quality,q_100
 - `herren-kapuzenpullover-halbtransparent-618200` — Herren-Kapuzenpullover, halbtransparent · **fehlt bei uns** · https://oss-cf.cjdropshipping.com/product/2026/01/07/02/33e23d44-205d-4c76-92eb-6e08717d028e_trans.jpeg
+- `tunika-mini-kleid-riva-v-ausschnitt-strand-stil-damen` — Tunika-Mini-Kleid «Riva» · V-Ausschnitt, Strand-Stil (Damen) · **fehlt bei uns** · https://oss-cf.cjdropshipping.com/product/2026/06/03/06/b450ba49-d7ca-48a6-a34d-c62f4dc57196_trans.jpeg
+- `herren-strick-polo-lido-ajour-optik` — Herren Strick-Polo «Lido» · Ajour-Optik · **fehlt bei uns** · https://oss-cf.cjdropshipping.com/product/2026/06/13/01/bd76abd5-ed5b-4d43-a75c-95613f27d095.jpeg?x-oss-process=image/quality,q_100
+- `langarmshirt-mit-augen-und-buchstaben-print-626400` — Langarmshirt mit Augen- und Buchstaben-Print · **fehlt bei uns** · https://oss-cf.cjdropshipping.com/product/2026/02/02/12/f12478de-2a73-4543-958b-ceb9d6de5ff9_trans.jpeg
+- `damen-baumwollmantel-im-casual-stil-621600` — Damen Baumwollmantel im Casual-Stil · **fehlt bei uns** · https://oss-cf.cjdropshipping.com/product/2025/12/25/09/6afacc5c-9880-4e84-9cf4-18e9824c975e.jpg
+- `abendkleid-aurora-satin-spaghettitrager-schlitz` — Abendkleid «Aurora» · Satin, Spaghettiträger & Schlitz · **fehlt bei uns** · https://oss-cf.cjdropshipping.com/product/2026/06/08/09/e27c352c-b26f-44fa-b5bf-936a2546f183.jpg
+- `klassisches-strickhemd-mit-karomuster-624200` — Klassisches Strickhemd mit Karomuster · **fehlt bei uns** · https://oss-cf.cjdropshipping.com/product/2025/03/31/11/1c5181bc-67e9-450e-9f50-6ec08af839d8.jpg
