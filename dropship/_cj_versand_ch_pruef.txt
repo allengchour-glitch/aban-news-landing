@@ -10435,3 +10435,4 @@ reflektierende-led-weste-mit-usb-ladegerat-004096	1498147375355662336	7	9.21	ok	
 augenpflege-gerat-mit-radiofrequenz-991168	1384683898029608960	7	6.34	ok	landeseite
 warnlicht-furs-mountainbike-549952	1474938910080634880	7	7.92	ok	landeseite
 elektroburste-mit-wei-heitsfunktion-mehrere-po-220224	1384683097177591808	7	9.15	ok	landeseite
+usb-taillight-fur-helm-und-sattel-152064	1453633092983066624	7	5.34	ok	landeseite
