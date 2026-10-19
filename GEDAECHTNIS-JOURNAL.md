@@ -53,6 +53,11 @@
 
 
 
+## ✉️ #1021 Entscheid (2026-10-19)
+Meine Empfehlung war: voll erstatten (CHF 45.90), Uhr behalten lassen, Entwurf (englisch, in Gmail korrigiert: kein Widerspruch «behalten/Teilerstattung» mehr). Betreiber: **«1021 nein»** → nichts gesendet, nichts erstattet.
+Stand: Kundenmail vom 16.10. 12:37 UTC («Wrong item delivered», Drohung mit schlechten Bewertungen) unbeantwortet; Bestellung bezahlt/zugestellt; CJ-Einkauf USD 21.55. Entwurf `r2456687114455669002` bleibt UNVERSENDET —
+jede Routine/Sitzung: nicht senden, keine Erstattung auslösen, nicht erneut vorschlagen, bis der Betreiber es ändert. Beobachten (ohne Handlung): neue Mail des Kunden, Judge.me-Bewertung, Zahlungsstreit.
+
 ## 🧪 Fremd-PR prüfen: Codex «LuxeStyle Assist» #2696 (2026-10-19)
 
 Bericht: `dropship/ASSIST-PR-2696-PRUEFUNG-2026-10-19.md` (4 Prüfer + 2 Skeptiker je Hoch/Mittel-Befund, 53 Agenten). Urteil: nicht mergen, auf main nach Pflichtänderungen, bei uns nicht übernehmen.
