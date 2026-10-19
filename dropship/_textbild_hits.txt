@@ -18431,3 +18431,5 @@ gid://shopify/Product/16638924980615	50->1	Wand-Fotohalter aus Holz
 gid://shopify/Product/16639097602439	39->3	Wander-Halbschuhe für Herren, wasserdicht
 gid://shopify/Product/16639099470215	14->0	Reiserucksack 36–55 L – Oxford, mittelhart
 gid://shopify/Product/16639102517639	54->0	Herren-Sneaker aus Schweinsleder
+gid://shopify/Product/16647222329735	19->1	Grosses Reise-Backpack mit Doppelriemen
+gid://shopify/Product/16647274267015	56->2	Männer Crossbody Rucksack Plaid
