@@ -538,3 +538,4 @@
 2026-10-15T04:28:43.545Z	luxe-epic-hero.wav	46	haustier	cjreel-CJGY114829701AZ	stimme:nein	anteil
 2026-10-15T04:30:02.503Z	luxe-epic-trailer.wav	15.5	home	cjreel-CJCD154096301AZ	stimme:nein	anteil
 2026-10-18T20:12:45.000Z	luxe-epic-winter.wav	34.0	mode	bildreel-freizeitjacke-fur-business-und-pendeln-616400	stimme:nein	anteil	quelle:bild
+2026-10-19T01:59:01.762Z	luxe-epic-sport.wav	6.5	gadget	cjreel-CJEJ164037101AZ	stimme:nein	anteil
