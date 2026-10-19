@@ -1,27 +1,26 @@
-# Google-Diagnosen (product.feedback der App «Google & YouTube») — Stand 2026-10-18T22:24Z
+# Google-Diagnosen (product.feedback der App «Google & YouTube») — Stand 2026-10-19T18:30Z
 
-Gescannt: 55553 aktive Produkte in 223 Seiten (vollständig), 887 s. Meldungen nur für Shopping Ads (ignoriert): 45990.
+Gescannt: 55837 aktive Produkte in 224 Seiten (vollständig), 311 s. Meldungen nur für Shopping Ads (ignoriert): 49365.
 
-## Free-Listings-Blocker: 83
+## Free-Listings-Blocker: 51
 
 | Klasse | Produkte | davon ohne onlineStoreUrl | davon Ziel «[]» |
 |---|---:|---:|---:|
-| Unable to show image | 36 | 0 | – |
-| Promotional overlay on image | 34 | 0 | – |
-| Product page unavailable | 5 | 0 | – |
-| Image processing or experiencing delays | 3 | 0 | – |
+| Promotional overlay on image | 36 | 0 | – |
+| Image processing or experiencing delays | 4 | 0 | – |
+| Restricted adult content | 4 | 0 | 4 |
+| Product page unavailable | 2 | 0 | – |
+| Unable to show image | 2 | 0 | – |
 | Sale of live animals | 1 | 0 | – |
-| Restricted adult content | 1 | 0 | 1 |
-| Guns and Parts | 1 | 0 | – |
 | Tobacco products & related equipment | 1 | 0 | – |
 | Image not processed | 1 | 0 | – |
 
-## Wartet bei Google (Prüfung, kein Fehler bei uns): 721
+## Wartet bei Google (Prüfung, kein Fehler bei uns): 700
 
-- Image under review: 715
-- Title under review: 6
+- Image under review: 693
+- Title under review: 7
 
-Verweildauer (dropship/_google_pruefung_seit.json): 6 länger als 14 Tage, ältestes seit 2026-10-02.
+Verweildauer (dropship/_google_pruefung_seit.json): 19 länger als 14 Tage, ältestes seit 2026-10-02.
 Nicht reagieren, solange die Verweildauer kurz ist: Google prüft. Wer hier ein Bild tauscht, setzt die Prüfung neu.
 
 Ziel «[]» = die App nennt kein betroffenes Ziel («… in [] [CH]» statt «in [Free_listings,Shopping_ads]»). Seit 14.10.: bei «Inappropriate image» vermutlich der Meldekontext Demand-Gen-Werbung (eigener Topf unten); für andere Klassen weiter UNBELEGT — Wahrheit = Status je Ziel im Merchant Center.
@@ -30,75 +29,37 @@ Ziel «[]» = die App nennt kein betroffenes Ziel («… in [] [CH]» statt «in
 
 Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.
 
-- Missing shipping info in some countries [LI]: 29797
+- Missing shipping info in some countries [LI]: 31055
 - Alcoholic beverages [LI]: 3
 
 «Missing shipping info … [LI]»: In Shopify gibt es den Tarif (General profile, Zone «Liechtenstein» CHF 14.90, seit 09.10.), Google hat ihn nicht übernommen. Abhilfe (Betreiber, UNBELEGT welcher Klick reicht): App «Google & YouTube» → Einstellungen → Versand neu importieren, sonst im Merchant Center einen Versandservice für Liechtenstein (CHF 14.90) anlegen. NICHT das Land entfernen — LI ist Lieferland. Wirkung = diese Zahl beim nächsten Scan.
 
 ## Nur Demand-Gen-Werbung (blockiert Gratis-Einträge vermutlich NICHT — wir schalten keine Demand-Gen-Werbung)
 
-- Inappropriate image: 271
+- Inappropriate image: 299
 
 Quelle: Google Merchant Help «Demand Gen product ads format requirements» (answer/13389785): Waffen, Totenköpfe, Körperfokus, Rauch/Flammen u. a. sind nur für Demand-Gen-Bilder verboten; «disapproved Demand Gen assets may continue to run on Google's other properties». Bestätigung = Status je Ziel im Merchant Center (Betreiber). Kein Bildtausch dafür (Aufseher seit 14.10.).
 
 ## Nur personalisierte Werbung (blockiert Gratis-Einträge NICHT — Targeting-Regel, siehe Kopf)
 
-- Personalized advertising: personal hardships: 84
+- Personalized advertising: personal hardships: 83
 - Personalized advertising: legal restrictions: 7
-- Personalized advertising: Sexual interests: 1
+- Personalized advertising: Sexual interests: 4
 
 ## Meldungen anderer Kanal-Apps (kein Google-Blocker)
 
-- [Shop] Dieses Produkt ist in Shop nicht auffindbar. Prüfe den Angebotsstatus im Shop-Kanal: 16
+- [Shop] Dieses Produkt ist in Shop nicht auffindbar. Prüfe den Angebotsstatus im Shop-Kanal: 3
 
 «ohne onlineStoreUrl» = nicht im Onlineshop publiziert, aber im Google-Kanal — Google sieht eine 404. Reparatur: Onlineshop-Publikation nachziehen oder aus dem Google-Kanal nehmen (Fixer folgt).
 
-### Unable to show image (36)
+### Image processing or experiencing delays (4)
 
-- tech-hero-geschenkbox-smartwatch-anc-ladestation
-- schwarze-damen-sandalen-aus-pu-612800
-- bequeme-zehensteg-sandalen-mit-dicker-sohle-839808
-- damen-stiletto-plateau-sandalen-375488
-- high-top-sportschuhe-fur-herbst-und-winter-610400
-- flyknit-trainingsschuhe-fur-herren-611800
-- britische-business-schuhe-aus-rindsleder-602900
-- automatischer-2-in-1-hund-und-katzenfutterer-603600
-- hundegurtel-mit-brusttasche-atmungsaktiv-5a37cc
-- atmungsaktiver-reflektierender-brusthalsband-m-fe7be0
-- doppeltes-brustband-mit-vertikalem-griff-d9212c
-- hundelaufhalfter-mit-leine-9a2a41
-- hundehalsband-mit-brustgurt-und-leine-e044a1
-- sommer-plateau-sandalen-mit-querband-496768
-- stiefeletten-mit-hohem-absatz-859264
-- stiletto-streifen-sandalen-in-lila-plus-size-306176
-- flache-schuhe-mit-polka-dot-schleife-535232
-- flache-sportliche-plattform-sandalen-582208
-- flache-strick-fischmund-sandalen-704832
-- sandalen-mit-strasssteinen-und-niedrigem-absat-160768
-- 16-cm-plateau-sandaletten-aus-pu-507072
-- plus-size-fischmund-high-heel-sandalen-529600
-- cross-band-high-top-sandalen-729984
-- sandalen-mit-dickem-absatz-und-plateau-286784
-- sandalen-mit-leopardenmuster-874432
-- damen-stiefel-aus-wildleder-mit-hohem-schaft-618000
-- gommino-herren-slipper-aus-rindsleder-626000
-- lippenstift-mit-karotin-und-bienenwachs-666048
-- kunstlederbabyschuhe-fur-neugeborene-db44dd
-- baby-strampler-set-mit-polo-kragen-626600
-- gurteltasche-fur-outdoor-und-wandern-615300
-- leoparddruck-stiletto-sandalen-fur-damen-860416
-- outdoor-sportschuhe-zum-schnuren-629600
-- atmungsaktive-rutschfeste-kletterschuhe-614900
-- klassische-sneaker-mit-flyknit-beschichtung-621800
-- plissierter-satin-schal-fur-damen-mittellang-616800
-
-### Image processing or experiencing delays (3)
-
-- tasse-fondue-caquelon
+- schweiz-magnet-fondue
 - tote-basel
+- mousepad-fasnacht-mask
 - kletterbaum-fur-katzen-624900
 
-### Promotional overlay on image (34)
+### Promotional overlay on image (36)
 
 - painless-fast-nail-art-extension-set-621900
 - li-ion-akku-ladegerat-set-3000mah-626433
@@ -114,6 +75,8 @@ Quelle: Google Merchant Help «Demand Gen product ads format requirements» (ans
 - tragbare-2-in-1-trinkflasche-fur-hunde-269760
 - gesichtshochheber-nackenmassagegerat-2a3655
 - mini-drohne-mit-dual-kamera-und-fernsteuerung-649344
+- mini-quadcopter-mit-dual-kamera-221888
+- s68-mini-drohne-mit-4k-dual-kamera-220928
 - man-tgs-abschlepp-lkw-mit-bruder-roadster-fga03750
 - handy-mikrofon-167488
 - digitaler-thermostat-fur-fussbodenheizung-992000
@@ -139,37 +102,37 @@ Quelle: Google Merchant Help «Demand Gen product ads format requirements» (ans
 
 - ersatzfedern-fur-katzenangel-629300
 
-### Product page unavailable (5)
-
-- loose-fit-high-waist-denim-capris-610600
-- outdoor-velo-schuhe-fur-sie-ihn-868480
-- weiche-rutschfeste-babyschuhe-607300
-- herren-strickjacke-mit-revers-612400
-- kinder-sandalen-mit-schnalle-97e0f9
-
-### Restricted adult content (1)
+### Restricted adult content (4)
 
 - sommer-einfarbiges-hohlkleid-613600
+- kardigan-kleid-605700
+- high-elastic-fitness-yoga-hose-643300
+- figurbetonter-body-im-boxer-stil-fur-herren-609900
 
-### Guns and Parts (1)
+### Product page unavailable (2)
 
-- selbstausloser-mit-licht-613000
+- weiche-rutschfeste-babyschuhe-607300
+- herren-strickjacke-mit-revers-612400
 
 ### Tobacco products & related equipment (1)
 
 - retro-kupfer-weihrauchhalter-ornament-621632
 
+### Unable to show image (2)
+
+- gurteltasche-fur-outdoor-und-wandern-615300
+- plissierter-satin-schal-fur-damen-mittellang-616800
+
 ### Image not processed (1)
 
 - bestickter-seiden-optik-schal-635700
 
-### wartet: Image under review (715) — die ältesten zuerst
+### wartet: Image under review (693) — die ältesten zuerst
 
 - blumenkleid-mit-schnurung-613000 (seit 2026-10-02)
 - schonheitspflaster-628100 (seit 2026-10-02)
 - wasserdichte-sportuhr-627700 (seit 2026-10-02)
 - atmungsaktive-casual-schuhe-198016 (seit 2026-10-03)
-- hawaiihemd-fur-herren-atmungsaktiv-stylisch-618400 (seit 2026-10-03)
 - leuchtende-dreidimensionale-quarzuhr-72681a (seit 2026-10-03)
 - anti-diebstahlschnalle-mit-magnetverschluss-38cea4 (seit 2026-10-04)
 - bt40-klingenhandgriff-werkzeug-195776 (seit 2026-10-04)
@@ -186,7 +149,6 @@ Quelle: Google Merchant Help «Demand Gen product ads format requirements» (ans
 - wasserdichter-rucksack-outdoor-32-l-609900 (seit 2026-10-04)
 - weiche-ledersandalen-mit-quadratischem-bogen-664768 (seit 2026-10-04)
 - acryl-adventskalender-blind-box-626300 (seit 2026-10-05)
-- anstecknadel-halter-639100 (seit 2026-10-05)
 - baby-set-aus-baumwolle-pullover-shorts-626600 (seit 2026-10-05)
 - bewegungssensor-schreibtischlampe-fur-schlafzi-610200 (seit 2026-10-05)
 - cartoons-regenstiefel-614200 (seit 2026-10-05)
@@ -205,9 +167,11 @@ Quelle: Google Merchant Help «Demand Gen product ads format requirements» (ans
 - personalisierte-retro-uhr-609300 (seit 2026-10-05)
 - professionelle-leichtathletik-schuhe-fur-schul-451328 (seit 2026-10-05)
 - schonheits-nacken-pflege-memory-kopfkissen-631300 (seit 2026-10-05)
+- wasserschuhe-fur-kinder-schnell-trocknend-616000 (seit 2026-10-05)
+- weit-geschnitten-v-ausschnitt-hoodie-mit-knopf-623200 (seit 2026-10-05)
 - …
 
-### wartet: Title under review (6) — die ältesten zuerst
+### wartet: Title under review (7) — die ältesten zuerst
 
 - distressed-jeans-fur-herren-632300 (seit 2026-10-10)
 - jacquard-kleid-set-mit-schleife-609700 (seit 2026-10-12)
@@ -215,4 +179,5 @@ Quelle: Google Merchant Help «Demand Gen product ads format requirements» (ans
 - strickkleid-mit-langen-armeln-616500 (seit 2026-10-12)
 - plissierter-satin-schal-fur-damen-mittellang-616800 (seit 2026-10-15)
 - rfid-portemonnaie-mit-zwei-reissverschlussen-611600 (seit 2026-10-15)
+- holzspielhaus-mit-telefon-21x18x14-cm-667968 (seit 2026-10-19)
 
