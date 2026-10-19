@@ -2936,3 +2936,4 @@
 16651922440583	Farbe:2:2	2026-10-19	quadratischer-herren-umhangetasche-aus-pu-lede-166582
 16651921326471	Farbe:7:7	2026-10-19	baumwoll-leinen-schal-mit-batik-626800
 16651920343431	Farbe:2+Grösse:2:4	2026-10-19	nylon-rucksack-b9e200
+16652817367431	Grösse:3:3	2026-10-19	apfelkissen-pluschkissen-fur-kinder-621800
