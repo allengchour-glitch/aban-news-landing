@@ -10952,3 +10952,5 @@ aufbewahrungsbox-fur-wasche-610900	2501070558411611100	16	8.79	ok	landeseite
 leder-taille-bag-601700	2406250638251601900	16	10.15	ok	landeseite
 blumiges-midi-kleid-mit-v-ausschnitt-634500	2607080316421635500	16	8.11	ok	landeseite
 prinzessinnen-sandalen-618100	2503091838061618300	16	8.25	ok	landeseite
+retro-reise-geldbeutel-614000	2406250636311614600	16	10.83	ok	landeseite
+kinder-lauflernschuhe-mit-kristall-detail-606700	2501220516131607000	16	10.55	ok	landeseite
