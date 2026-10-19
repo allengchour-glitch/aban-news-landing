@@ -1605,3 +1605,4 @@ gid://shopify/Product/16643496051079	ok	Smart-Fingerprint-Rucksack aus Vollnarbe
 gid://shopify/Product/16647280886151	ok	Handgemachter Leder-Rucksack Herren Retro
 gid://shopify/Product/16649013657991	ok	Leichte Reise-Tasche aus Leder
 gid://shopify/Product/16649262858631	ok	Rindsleder-Rucksack mit grosser Kapazität
+gid://shopify/Product/16650191176071	ok	Genuine Leder Crossbody Messenger
