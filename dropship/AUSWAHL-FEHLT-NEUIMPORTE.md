@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-19 21:07 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-19 22:38 UTC)
 
-Suche: `status:active AND created_at:>=2026-10-16` · gemessen 291 · **116 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 109, teilweise: 5, keine: 2; Preisspanne > 2×: 20) · 1 CJ-Variante: 175 · ohne Antwort: 0
+Suche: `status:active AND created_at:>=2026-10-16` · gemessen 315 · **138 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 124, teilweise: 10, keine: 4; Preisspanne > 2×: 23) · 1 CJ-Variante: 177 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -18,19 +18,25 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Sofaabdeckung mit geometrischem Muster – 180×130 cm (`sofaabdeckung-mit-geometrischem-muster-180-130-605500`) | 44 | 44 | 5.27–15.8 | 57.90 | Diamond Coffee Color-180x130cm, Diamond Coffee Color-180x180cm, Diamond Coffee Color-180x230cm, Diamond Coffee Color-180x260cm |
 | Rucksack Männer Grosses Fassungsvermögen Reise (`rucksack-manner-grosses-fassungsvermogen-reise-607200`) | 38 | 17 | 15.26–21.23 | 52.90 | Black-16 inches, Pink-16 inches, Black Large-16 inches, Navy Blue-16 inches |
 | Kaschmir-Schal für kalte Wintertage (`kaschmir-schal-fur-kalte-wintertage-620300`) | 29 | 20 | 4.44–4.85 | 16.90 | Beige, Black, White, Oatmeal Color |
+| Notizbuch mit PU-Ledercover (`notizbuch-mit-pu-ledercover-623800`) | 27 | 20 | 2.77–10.41 | 38.90 | Charming Black, Business Brown, Tiffany Blue, Vitality Red |
+| Clutch mit Münztasche und Kartenhalter (`clutch-mit-munztasche-und-kartenhalter-619900`) | 26 | 17 | 5.27–6.63 | 16.90 | Wine Red, Midnight Black, Palaeo Yellow, Custom Orange |
 | Titanstahl-Halskette mit rundem Anhänger (`titanstahl-halskette-mit-rundem-anhanger-636400`) | 24 | 24 | 3.98–13.71 | 22.90 | Steel-1 round block, Steel-2 round block, Steel-3 round block, Steel-4 round block |
 | Sofakissenbezug aus Milchvelvet – 70×70 cm (`sofakissenbezug-aus-milchvelvet-70-70-cm-621100`) | 20 | 20 | 3.16–7.99 | 36.90 | Dark Gray-70×70cm, Dark Gray-70×150cm, Dark Gray-70×180cm, Dark Gray-70×210cm |
 | Sofa-Bezug mit Textur-Muster (`sofa-bezug-mit-textur-muster-600500`) | 16 | 16 | 2.39–21.01 | 84.90 | Coffee Color-Single Seat, Coffee Color-Two Seat, Coffee Color-Three Seat, Coffee Color-Four Seat |
+| Leder-Notizbuch mit Metallspirale A5 (`leder-notizbuch-mit-metallspirale-a5-612800`) | 16 | 15 | 2.55–2.55 | 16.90 | Pink 25 Years, Black 25 Years, Gray 25 Years, Blue 25 Years |
 | Outdoor-Fishing-Rucksack aus Oxford (`outdoor-fishing-rucksack-aus-oxford-614900`) | 15 | 15 | 6.88–8.46 | 37.90 | 0.85 M Black-Below 20L, 1 M Black-Below 20L, 1.2 M Black-Below 20L, 0.85 Beige Green-Below 20L |
 | Tote für Haustiere – transparenter Rucksack mit Platz (`tote-fur-haustiere-transparenter-rucksack-mit-747264`) | 15 | 15 | 4.66–4.7 | 33.90 | Green, Blue, Black, Yellow |
 | Geometrischer Ring mit Zirkonia (`geometrischer-ring-mit-zirkonia-621600`) | 15 | 15 | 6.63–6.63 | 16.90 | Gold-No 7, Gold-No 8, Gold-No 9, Gold-No 10 |
 | Silberring mit Wassertropfen-Design (`silberring-mit-wassertropfen-design-622900`) | 15 | 15 | 50.58–50.58 | 63.90 | R494 White Diamond-No 5, R494 White Diamond-No 6, R494 White Diamond-No 7, R494 White Diamond-No 8 |
+| S138 UAV mit 360° Hinderniserkennung, Dualkamera (`s138-uav-mit-360-hinderniserkennung-dualkamera-618900`) | 15 | 15 | 7.46–15.75 | 32.90 | No Camera-Single Electric Package, No Camera-2 Electric Package, No Camera-3 Electric Package, Single E88 Black-Single Electric Package |
 | Ring mit Elefanten-Design (`ring-mit-elefanten-design-605900`) | 14 | 14 | 2.02–2.19 | 16.90 | Steel Color-No 7, Steel Color-No 8, Steel Color-No 9, Steel Color-No 10 |
 | Smartwatch mit Bluetooth-Telefonie und Taschenlampe (`smartwatch-mit-bluetooth-telefonie-und-taschen-606100`) | 14 | 14 | 25.17–27.78 | 39.90 | TK18 Black, TK18 Blue, TK18 Red, TK18 Beige |
 | Seiden-Stickerei-Schal – 70×180 cm (`seiden-stickerei-schal-70-180-cm-622400`) | 13 | 13 | 2.55–2.55 | 16.90 | Pink, Sky Blue, Beige, Turmeric |
 | Smartwatch mit Bluetooth-Anruf (`smartwatch-mit-bluetooth-anruf-602700`) | 13 | 13 | 16.81–51.84 | 67.90 | Flagship Black Silicone, Flagship Red Silicone, Flagship Blue Silicone, Top Black Steel |
 | Multifunktionales Babykissen zum Sitzenlernen (`multifunktionales-babykissen-zum-sitzenlernen-625200`) | 13 | 13 | 3.97–6.6 | 31.90 | Rhine Fish Set, Brunswick Cat Suit, Dolphin Sea Suit, Tongyan Xiyu Suit |
 | Hundemantel Winterwolle, monochrom (`hundemantel-winterwolle-monochrom-602700`) | 12 | 12 | 5.8–5.8 | 16.90 | Monochrome-XS, Monochrome-S, Monochrome-M, Monochrome-L |
+| HDMI-Distributor 4K Splitter mit USB-Ladeanschluss (`hdmi-distributor-4k-splitter-mit-usb-ladeansch-616200`) | 12 | 12 | 2.46–3.69 | 16.90 | 4K(HW HD102M)-American Standard, 4K(HW HD102M)-European Standard, 4K(HW HD102M)-USB Charger Lead, 1080P(HW HD102)-American Standard |
+| USB-C 7-in-1 Dock mit HDMI-Ausgang und Kabeltrennung (`usb-c-7-in-1-dock-mit-hdmi-ausgang-und-kabeltr-612700`) | 11 | 8 | 2.19–24.71 | 38.90 | 7 In 1, 4 In 1, 5 In 1, 6 In 1 |
 | Grosses Dry-Wet Trennungs-Rucksack-Tagesrucksack (`grosses-dry-wet-trennungs-rucksack-tagesrucksa-603500`) | 10 | 10 | 5.14–5.14 | 22.90 | Pink, Light Purple, Black, Fog And Haze Blue |
 | Wollschal mit Wursthunde-Print (`wollschal-mit-wursthunde-print-614400`) | 10 | 10 | 3.35–3.35 | 16.90 | Pearl White-170cm, Beige-170cm, Light Gray-170cm, Khaki-170cm |
 | Kubanischer Ring mit Zirkonia (`kubanischer-ring-mit-zirkonia-606900`) | 10 | 10 | 6.14–6.14 | 16.90 | Gold-No 7, Gold-No 8, Gold-No 9, Gold-No 10 |
@@ -46,6 +52,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Urbaner Rucksack mit Buchstaben-Print, 20-35 L (`urbaner-rucksack-mit-buchstaben-print-20-35-l-617700`) | 8 | 8 | 4.32–4.63 | 17.90 | Black-With Pendant, Black-Without Pendant, White-With Pendant, White-Without Pendant |
 | Oxford-Leinen Camouflage Schultertasche (`oxford-leinen-camouflage-schultertasche-602000`) | 8 | 8 | 3.1–3.1 | 16.90 | Khaki, Black, Army Green, CP Color |
 | Klassischer Rucksack für Schule und Alltag (`klassischer-rucksack-fur-schule-und-alltag-217728`) | 8 | 8 | 5.0–5.27 | 16.90 | Green-Single Bag, Green-Bag And Pendant, Khaki-Single Bag, Khaki-Bag And Pendant |
+| Kinder Rucksack Prinzessin-Style (`kinder-rucksack-prinzessin-style-616000`) | 8 | 8 | 8.62–8.79 | 29.90 | Cherry Blossom Powder-Large Size, Cherry Blossom Powder-Small Size, Purple-Large Size, Purple-Small Size |
 | Wanderrucksack 45 L, wasserfest (`wanderrucksack-45-l-wasserfest-615300`) | 7 | 7 | 12.02–12.02 | 43.90 | Black-35L, Khaki-35L, Light Purple-35L, Mint Green-35L |
 | Sportrucksack mit 20-35 L Volumen (`sportrucksack-mit-20-35-l-volumen-600600`) | 7 | 7 | 13.1–13.1 | 34.90 | Black-20to35L, Red-20to35L, Rose Red-20to35L, Gray-20to35L |
 | Taktische Umhängetasche für Outdoor-Sport (`taktische-umhangetasche-fur-outdoor-sport-624800`) | 7 | 7 | 5.03–5.03 | 18.90 | Black-Below 20L, Brown-Below 20L, Italian Camouflage-Below 20L, Dark Night-Below 20L |
@@ -57,6 +64,8 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Multifunktionale Elektronische Armbanduhr (`multifunktionale-elektronische-armbanduhr-625900`) | 7 | 7 | 5.27–5.27 | 16.90 | Army Green, Black Black Machine, Black White Machine, Blue |
 | Herbst- und Winterpullover für Hunde (`herbst-und-winterpullover-fur-hunde-604000`) | 7 | 7 | 2.55–8.29 | 18.90 | Twisted Vintage Diamond-XS, Twisted Vintage Diamond-S, Twisted Vintage Diamond-M, Twisted Vintage Diamond-L |
 | Männer-Uhr mit quadratischem Zifferblatt, 28×35 mm (`manner-uhr-mit-quadratischem-zifferblatt-28-35-632800`) | 7 | 7 | 13.02–13.02 | 21.90 | Green-28x35mm, Green Belt Gray Plate-28x35mm, Little Girl With Green Belt-28x35mm, Gradient Green Belt-28x35mm |
+| Mini-Geldbörse aus echtem Leder (`mini-geldborse-aus-echtem-leder-617100`) | 7 | 7 | 3.52–3.52 | 16.90 | Black, Pink, Blue, Orange |
+| Schlüsseletui mit Herz-Anhänger (`schlusseletui-mit-herz-anhanger-629200`) | 7 | 7 | 4.7–4.7 | 16.90 | Black, tan, Pink, Silver |
 | Leichtgewichtiger Outdoor-Reiserucksack 25 L (`leichtgewichtiger-outdoor-reiserucksack-25-l-620200`) | 6 | 6 | 18.08–52.9 | 75.90 | Deerskin Brown 25L-20L To 35L, Lavender Purple 25L-20L To 35L, Midnight Black 25L-20L To 35L, Mint Green 25L-20L To 35L |
 | Taktische Weste aus Cordura, atmungsaktiv (`taktische-weste-aus-cordura-atmungsaktiv-633900`) | 6 | 6 | 37.81–37.81 | 60.90 | Camouflage color, Black camouflage, Black BLK, Wolf Brown |
 | Grosser Outdoor-Rucksack für Studenten (`grosser-outdoor-rucksack-fur-studenten-621200`) | 6 | 6 | 3.69–13.64 | 40.90 | Black, Gray, Green, Pink |
@@ -71,6 +80,8 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Minimalistische 3D Instagram-Uhr – Gold/Schwarz (`minimalistische-3d-instagram-uhr-gold-schwarz-628900`) | 6 | 6 | 4.53–4.53 | 16.90 | Golden Black Surface, Golden White Surface, Golden Red Noodles, Gold Face |
 | Dampfgarer mit Thermometer aus Edelstahl (`dampfgarer-mit-thermometer-aus-edelstahl-610000`) | 6 | 6 | 7.81–12.15 | 35.90 | Fixed Handle Piece, Linear Handle, Stainless Steel Cover, Glass Lid |
 | Kinderflugzeug-Reise-Tablett Aufbewahrungstasche (`kinderflugzeug-reise-tablett-aufbewahrungstasc-603600`) | 6 | 6 | 4.49–4.49 | 16.90 | Dinosaur-44x30cm, Alpaca-44x30cm, Christmas Rabbit-44x30cm, Rainbow-44x30cm |
+| Gummibänder Gelb 500 g (`gummibander-gelb-500-g-608700`) | 6 | 0 | 2.18–2.18 | 17.90 | 500g-38mm-100 Rubber, 500g-25mm-100 Rubber, 500g-50mm-100 Rubber, 500g-60mm-100 Rubber |
+| Ketten-Clutch aus Rindsleder (`ketten-clutch-aus-rindsleder-619100`) | 6 | 6 | 3.34–3.34 | 16.90 | Coffee Silver Frame, Leopard Print, Red Litchi Pattern, Shiny Red |
 | Camouflage Brusttasche für Herren (`camouflage-brusttasche-fur-herren-602200`) | 5 | 5 | 3.86–4.7 | 18.90 | Black-19 Inches, Army Green-19 Inches, Khaki-19 Inches, Camouflage-19 Inches |
 | Business-Leisure Computer-Rucksack, 36-55 L, wasserabweisend (`business-leisure-computer-rucksack-36-55-l-was-602400`) | 5 | 5 | 4.86–8.13 | 23.90 | J001 Beige, J002 Beige, 2533style, 2571 Black |
 | Retro Postmann Umhängetasche (`retro-postmann-umhangetasche-626400`) | 5 | 5 | 22.39–22.39 | 53.90 | Army Green, Lake Water Green Color, Black, Khaki |
@@ -86,6 +97,8 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Silberring mit Hochkarbon-Strasssteinen (`silberring-mit-hochkarbon-strasssteinen-610700`) | 5 | 5 | 36.65–36.65 | 47.90 | R493 Diamond Dust-No 5, R493 Diamond Dust-No 6, R493 Diamond Dust-No 7, R493 Diamond Dust-No 8 |
 | Smart-Armbanduhr mit Herzfrequenz-Messung (`smart-armbanduhr-mit-herzfrequenz-messung-608800`) | 5 | 5 | 24.31–26.04 | 36.90 | Black Milan, Black Glue, Golden Milan, Pink Capsule |
 | Kühltragetasche für Picknick und Reisen (`kuhltragetasche-fur-picknick-und-reisen-628200`) | 5 | 5 | 4.39–5.35 | 18.90 | Green, Grey, Black, Red |
+| Kuhleder-Clip-Münzbörse (`kuhleder-clip-munzborse-621300`) | 5 | 5 | 3.02–3.02 | 16.90 | Black, Sapphire Blue, Khaki, Gray |
+| Clutch-Geldbörse mit Reissverschluss (`clutch-geldborse-mit-reissverschluss-601200`) | 5 | 5 | 3.18–3.18 | 16.90 | Beige, Black, Green, Wine Red |
 | Taktische Weste – Oxford-Stoff, 28 × 35 × 12 cm (`taktische-weste-oxford-stoff-28-35-12-cm-654500`) | 4 | 4 | 34.49–34.49 | 88.90 | Army Green-Free Size, Mud Color-Free Size, CP-Free Size, Black-Free Size |
 | Herren-Retro-Leder-Crossbody (`mannlicher-retro-leder-crossbody-627700`) | 4 | 4 | 11.94–11.94 | 24.90 | Crazy Horse Vintage Brown, Deep Coffee Grain, Crazy Horse Brown, Retro Coffee Color |
 | Männer Crossbody Schultertasche – Fashion Personality (`manner-crossbody-schultertasche-fashion-person-626600`) | 4 | 4 | 6.97–6.97 | 22.90 | Oblique Pocket Black, Oblique Pocket Brown, Straight Zipper Black, Straight Zipper Brown |
@@ -97,6 +110,11 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Iris-Blumenring (`iris-blumenring-631400`) | 4 | 4 | 2.11–2.11 | 16.90 | Iris Flower Ring 6028-No 6, Iris Flower Ring 6028-No 7, Iris Flower Ring 6028-No 8, Iris Flower Ring 6028-No 9 |
 | Männer-Quarz-Uhr mit quadratischem Zifferblatt (`manner-quarz-uhr-mit-quadratischem-zifferblatt-614400`) | 4 | 4 | 14.76–14.76 | 23.90 | Wine Red-Quartz Watch, Green-Quartz Watch, Dark Blue-Quartz Watch, Coffee With A Gray Disc-Quartz Watch |
 | Dumpling-Mold-Set 3D-gedruckt – Quadrat, Kreis, Herz (`dumpling-mold-set-3d-gedruckt-quadrat-kreis-he-620800`) | 4 | 4 | 3.09–9.44 | 27.90 | Square, Round, Heart Shape, Combination |
+| Multifunktionale Ladebasis für PS5 (`multifunktionale-ladebasis-fur-ps5-618200`) | 4 | 4 | 9.62–10.78 | 29.90 | PS5 Base White, PS5 Base Black, PS5slim Base White, PS5slim Base Black |
+| Silikon-Silent Soft Keyboard 85 Tasten (`silikon-silent-soft-keyboard-85-tasten-603800`) | 4 | 3 | 5.32–5.32 | 16.90 | Pink, Purple, Blue, Black |
+| Keyboard-Zubehör-Set für mechanische Tastatur (`keyboard-zubehor-set-fur-mechanische-tastatur-628300`) | 4 | 4 | 3.84–4.0 | 16.90 | Black 6.25U, Milky White 6.25U, Black 7U, Milky White 7U |
+| Geldbörse Rindsleder mit Blumenmuster (`geldborse-rindsleder-mit-blumenmuster-606700`) | 4 | 4 | 13.27–13.27 | 22.90 | Retro Yellow, Retro Red, Retro Brown, Retro Blue |
+| Kurzes Damen Portemonnaie (`kurzes-damen-portemonnaie-600100`) | 4 | 4 | 6.22–6.22 | 16.90 | White, Black, Light Blue, Mint Green |
 | Wasserdichte Angelrucksack aus TPU-Gewebe (`wasserdichte-angelrucksack-aus-tpu-gewebe-621700`) | 3 | 3 | 12.43–22.39 | 45.90 | Small Size, Large Size, Waterproof Rucksack |
 | Rucksack Street Leisure – 20-35 L, wasserdicht (`rucksack-street-leisure-20-35-l-wasserdicht-607700`) | 3 | 3 | 13.1–16.42 | 48.90 | Black-Commuter payment, Black-Expansion payment, Black-Upgraded Version |
 | Anti-Diebstahl-Computerrucksack 20 L (`anti-diebstahl-computerrucksack-20-l-627500`) | 3 | 3 | 37.98–37.98 | 76.90 | Deep Space Black, Silver White, Silver Gray |
@@ -108,6 +126,9 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Halskette mit Kor, Türkis und Muschelperlen (`halskette-mit-kor-turkis-und-muschelperlen-635200`) | 3 | 3 | 4.3–5.18 | 16.90 | Necklace, Bracelet, Ear Studs |
 | Uhrenaufbewahrungsbox aus Rindleder – braun (`uhrenaufbewahrungsbox-aus-rindleder-braun-603800`) | 3 | 3 | 19.79–32.12 | 49.90 | Brown-2Person , Brown-3Person , Brown-4Person  |
 | 30-Stückes Makeup-Pinselset mit Silikonborsten · 30 Stück (`30-stuckes-makeup-pinselset-mit-silikonborsten-624500`) | 3 | 3 | 10.54–10.54 | 23.90 | Black Silver Tube, Pink Silver Tube, Silver |
+| Elektronische Hängewaage – 500 kg, 200 g Genauigkeit (`elektronische-hangewaage-500-kg-200-g-genauigk-612200`) | 3 | 0 | 19.57–19.57 | 44.90 | Orange, Blue, White |
+| Genuine Leder Clutch Wallet Retro Gelb (`genuine-leder-clutch-wallet-retro-gelb-606900`) | 3 | 3 | 11.22–11.28 | 21.90 | Retro Yellow, Retro Brown, Coffee oil skin |
+| Leder Geldbörse Long Rising Sun (`leder-geldborse-long-rising-sun-609500`) | 3 | 3 | 12.43–12.43 | 22.90 | Retro Coffee Color, Retro Black, Retro Brown |
 | Business-Rucksack mit Passwort-Gürtelverschluss (`business-rucksack-mit-passwort-gurtelverschlus-616900`) | 2 | 2 | 29.52–32.84 | 77.90 | Black Airbag, Black Airbag Air Pump |
 | Frosted Fahrrad-Rennrucksack (`frosted-fahrrad-rennrucksack-073600`) | 2 | 2 | 6.56–6.56 | 17.90 | Frosted Style, Carbon pattern |
 | Grosses Casual-Rucksack mit PU-Leder und Buchstaben-Print (`grosses-casual-rucksack-mit-pu-leder-und-buchs-609664`) | 2 | 2 | 7.63–7.63 | 33.90 | Patterned Black, Large Plaid Flower |
@@ -122,3 +143,4 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Zwei-Farb-Chronograph-Uhr mit Lederarmband (`zwei-farb-chronograph-uhr-mit-lederarmband-608800`) | 2 | 2 | 7.64–7.64 | 16.90 | Rose Gold Shell Blue Surface, Silver Case Beige Noodles |
 | Quadratische Durchsicht-Uhr mit Openwork-Design (`quadratische-durchsicht-uhr-mit-openwork-desig-629000`) | 2 | 2 | 10.59–10.59 | 19.90 | Black With Silver Surface, Black With Gold Noodles |
 | Grossäugige Cartoon-Aufbewahrungsbox 24 cm (`grossaugige-cartoon-aufbewahrungsbox-24-cm-600700`) | 2 | 2 | 6.77–8.51 | 25.90 | 24cm Storage Box, 30cm Storage Box |
+| Retro-Stil Metall-Mehrzweck-Zink-Alloy-Kartenhalter (`retro-stil-metall-mehrzweck-zink-alloy-kartenh-612900`) | 2 | 2 | 3.15–3.15 | 16.90 | Black-10x7x2, Dark Brown-10x7x2 |
