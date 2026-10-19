@@ -546,3 +546,4 @@
 2026-10-19T04:14:27.811Z	luxe-epic-fantasy.wav	13.79	kinder	cjreel-CJNY175052701AZ	stimme:nein	anteil
 2026-10-19T04:18:24.691Z	luxe-epic-glamour.wav	37.54	allgemein	cjreel-CJNS158192301AZ	stimme:nein	anteil
 2026-10-19T04:24:47.000Z	luxe-epic-elegant.wav	26.0	home	bildreel-kuscheldecke-hasenfell-imitat-tie-dye-697984	stimme:ja	azure:de-CH-LeniNeural	quelle:bild
+2026-10-19T08:37:41.458Z	luxe-orchestra.wav	32.79	home	cjreel-CJJT163563001AZ	stimme:ja	azure:de-CH-JanNeural
