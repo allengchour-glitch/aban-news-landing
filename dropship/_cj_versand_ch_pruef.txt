@@ -10204,3 +10204,4 @@ dunne-skischuhe-fur-outdoor-sport-6d770e	C3BEBBDA-4B5C-4258-81A4-1564EB034626	16
 leichte-schuhe-mit-einzel-und-doppellaufradern-a3ccf4	04472DD0-DEF5-4386-92C7-CEBD4FD2DD4A	7	14.83	ok	landeseite
 dickes-antihaftendes-backblech-636400	2603100552191636800	16	9.47	ok	landeseite
 kletterbaum-fur-katzen-624900	2511260631191625100	11	46.87	ok	landeseite
+nach-training-fu-abdeckung-e3226d	0A7E16E5-10BD-4D9C-A030-F71D6492D95B	16	6.01	ok	landeseite
