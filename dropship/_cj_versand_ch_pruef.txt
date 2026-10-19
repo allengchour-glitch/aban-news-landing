@@ -10920,3 +10920,10 @@ hochwertiger-leder-reisekoffer-abriebfest-624400	2412090908211624600	11	32.38	ok
 fishtail-hemdrock-629400	2607080711391620000	16	8.79	ok	landeseite
 herren-leder-hufttasche-fur-smartphone-sport-f-624200	2412090633321624400	16	7.85	ok	landeseite
 gestreifter-off-shoulder-dress-628400	2607080705211629000	16	8.25	ok	landeseite
+leder-taille-set-600900	2412080923311601100	16	11.92	ok	landeseite
+pu-leder-hufttasche-mit-verstellbarem-schulter-613200	2411220250361613800	16	7.17	ok	landeseite
+streifen-kleid-mit-spitze-630400	2607080644281631200	16	7.85	ok	landeseite
+lose-sitzendes-streifen-kleid-622000	2607080630361622800	16	8.25	ok	landeseite
+wasserdichter-huftbeutel-grosser-kapazitat-601100	2410220347301601200	16	8.28	ok	landeseite
+barock-perlen-fur-schmuck-602700	2604080332291603100	16	7.43	ok	landeseite
+retro-sportstasche-620400	2410141433521620700	16	8.53	ok	landeseite
