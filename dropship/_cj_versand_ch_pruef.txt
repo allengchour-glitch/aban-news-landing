@@ -10155,3 +10155,6 @@ baby-seitenliege-und-anti-roll-kissen-604200	2604100714301604600	16	6.01	ok	land
 multifunktionale-huft-brusttasche-628400	2508010833241628700	16	8.79	ok	landeseite
 tragbarer-kleiner-dampfglatter-weiss-625300	2605180158461625800	11	53.25	ok	landeseite
 gesundheits-armband-mit-herzfrequenzmessung-601700	2507190753361601900	7	7.30	ok	landeseite
+mini-wasserkocher-edelstahl-622500	2605160830031623400	16	8.86	ok	landeseite
+taktischer-huftrucksack-616600	2507250905191616800	16	8.39	ok	landeseite
+baby-anti-schreck-kissen-626900	2604060916311627300	7	21.65	ok	landeseite

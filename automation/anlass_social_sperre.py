@@ -216,18 +216,22 @@ def selbsttest(leise=False):
     r0 = regel()[0]
     ab, bis = zeit(r0["ab"]), zeit(r0["bis"])
     sek = dt.timedelta(seconds=1)
-    for st_phase, st_scharf, t, soll in [("vor", True, ab - sek, False), ("vor", True, ab, True), ("vor", False, ab - sek, True),
-                                         ("im", True, ab + sek, False), ("im", True, bis - sek, False), ("im", True, bis, True),
-                                         ("nach", True, bis + sek, False), (None, True, ab, True)]:
+    # 19.10.2026: «stand» (Zeitpunkt des letzten scharfen Laufs) gehört jetzt zur Fälligkeit: ≥ 20 h alt = fällig, auch ohne Phasenwechsel.
+    # Die acht Takt-Fälle laufen mit frischem Stand (1 h vor t); zwei weitere prüfen die 20-h-Regel (5 h → nicht fällig, 21 h → fällig).
+    for st_phase, st_scharf, t, soll, alter_h in [("vor", True, ab - sek, False, 1), ("vor", True, ab, True, 1), ("vor", False, ab - sek, True, 1),
+                                                  ("im", True, ab + sek, False, 1), ("im", True, bis - sek, False, 1), ("im", True, bis, True, 1),
+                                                  ("nach", True, bis + sek, False, 1), (None, True, ab, True, 1),
+                                                  ("im", True, ab + dt.timedelta(hours=6), False, 5), ("im", True, ab + dt.timedelta(hours=22), True, 21)]:
         with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False, encoding="utf-8") as tf:
-            json.dump({"scharf": st_scharf, "anlaesse": {r0["anlass"]: {"phase": st_phase}} if st_phase else {}}, tf)
+            json.dump({"scharf": st_scharf, "stand": (t - dt.timedelta(hours=alter_h)).strftime("%Y-%m-%dT%H:%MZ"),
+                       "anlaesse": {r0["anlass"]: {"phase": st_phase}} if st_phase else {}}, tf)
         ist = faellig(t, tf.name)
         os.unlink(tf.name)
         if ist != soll:
             print(f"✗ faellig(Stand {st_phase}/{st_scharf}, {t:%Y-%m-%dT%H:%M:%SZ}) → {ist}, soll {soll}")
             gut = False
     if not leise:
-        print(f"SELBSTTEST {'OK' if gut else 'ROT'} (Zeilen-Zuordnung {len(faelle)} Fälle, Aufseher-Takt 8 Fälle)")
+        print(f"SELBSTTEST {'OK' if gut else 'ROT'} (Zeilen-Zuordnung {len(faelle)} Fälle, Aufseher-Takt 10 Fälle)")
     return gut
 
 
