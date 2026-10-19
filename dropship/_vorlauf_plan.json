@@ -174,10 +174,19 @@
   "bild-20261024T1410": {
    "basis_utc": "2026-10-24T14:10:00Z",
    "format": "bild",
-   "mc_ids": [],
-   "status": "offen",
+   "grund": "",
+   "handle": "",
+   "handles": [
+    "pid:15413083898241"
+   ],
+   "letzter_versuch": "2026-10-19T00:33:19Z",
+   "mc_ids": [
+    399530391
+   ],
+   "reserviert_um": "2026-10-19T00:33:19Z",
+   "status": "geplant",
    "termin_utc": "2026-10-24T14:10:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "bild-20261025T0845": {
    "basis_utc": "2026-10-25T08:45:00Z",
@@ -1083,10 +1092,18 @@
   "story-20261023T1710": {
    "basis_utc": "2026-10-23T17:10:00Z",
    "format": "story",
+   "grund": "",
+   "handle": "",
+   "handles": [
+    "plusch-eule-fga85736"
+   ],
    "letzter_versuch": "2026-10-19T00:32:47Z",
-   "mc_ids": [],
+   "mc_ids": [
+    399530076,
+    399530080
+   ],
    "reserviert_um": "2026-10-19T00:32:47Z",
-   "status": "reserviert",
+   "status": "geplant",
    "termin_utc": "2026-10-23T17:10:00Z",
    "versuche": 1
   },
@@ -1111,10 +1128,12 @@
   "story-20261024T1710": {
    "basis_utc": "2026-10-24T17:10:00Z",
    "format": "story",
+   "letzter_versuch": "2026-10-19T00:33:54Z",
    "mc_ids": [],
-   "status": "offen",
+   "reserviert_um": "2026-10-19T00:33:54Z",
+   "status": "reserviert",
    "termin_utc": "2026-10-24T17:10:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "story-20261025T1145": {
    "basis_utc": "2026-10-25T11:45:00Z",
@@ -1350,12 +1369,12 @@
    "basis_utc": "2026-10-23T18:05:00Z",
    "format": "tiktok",
    "grund": "rc=3: Nichts faellig: kein ready-Reel, dessen Video noch nirgends gepostet wurde (tiktok; Marke bleibt alt, Exit 3).",
-   "letzter_versuch": "2026-10-19T00:10:27Z",
+   "letzter_versuch": "2026-10-19T00:33:11Z",
    "mc_ids": [],
-   "reserviert_um": "2026-10-19T00:10:27Z",
+   "reserviert_um": "2026-10-19T00:33:11Z",
    "status": "offen",
    "termin_utc": "2026-10-23T18:05:00Z",
-   "versuche": 5
+   "versuche": 6
   },
   "tiktok-20261024T0605": {
    "basis_utc": "2026-10-24T06:05:00Z",
@@ -1638,6 +1657,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-19T00:32:47Z",
+ "stand": "2026-10-19T00:33:54Z",
  "version": 1
 }

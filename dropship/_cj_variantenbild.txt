@@ -7568,3 +7568,7 @@ gid://shopify/Product/15473388159361	zugeordnet	12	Vintage Blue Cropped Jeans mi
 gid://shopify/Product/15473389076865	zugeordnet	1	Etagere Metall Rund, 4 Fächer
 gid://shopify/Product/15473422369153	zugeordnet	3	Fuchsohr-Haarschmuck
 gid://shopify/Product/15473422532993	zugeordnet	10	Sterling Silber Ring
+gid://shopify/Product/15473433379201	zugeordnet	12	Drehbarer Tischspiegel im europäischen Stil
+gid://shopify/Product/15473433674113	zugeordnet	20	Baumwoll-Kissenbezug mit Spitze
+gid://shopify/Product/15473433870721	zugeordnet	33	Tencel Satin-Bettwäsche-Set, 4-teilig
+gid://shopify/Product/15473433969025	zugeordnet	12	Wasserdichter, atmungsaktiver Schonbezug
