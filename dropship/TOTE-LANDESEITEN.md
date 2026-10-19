@@ -8,6 +8,8 @@ nicht — hier entscheidet ein Mensch, ob eine Kategorie das richtige Ziel ist.
 
 | Sitzungen | Titel | Handle |
 |---:|---|---|
+| 2 | U-förmiges Schwangerschaftskissen aus Eisseide | `u-formiges-schwangerschaftskissen-aus-eisseide-004544` |
+| 1 | Faltbarer Spinnenfänger mit langem Stiel | `faltbarer-spinnenfanger-mit-langem-stiel-618300` |
 | 0 | Automatisches Anti-Bell Halsband für Hunde [GSC 0 Kl./4 Impr | `automatisches-anti-bell-halsband-fur-hunde-612500` |
 | 0 | Damast Kochmesser mit Hammerschlag-Finish [GSC 0 Kl./4 Impr. | `damast-kochmesser-mit-hammerschlag-finish-632600` |
 | 0 | Damast Kochmesser-Set [GSC 0 Kl./3 Impr./W. — Klinge — nie u | `damast-kochmesser-set-602200` |

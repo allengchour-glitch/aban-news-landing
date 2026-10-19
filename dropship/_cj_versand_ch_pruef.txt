@@ -10464,3 +10464,13 @@ retro-hip-hop-hosen-mit-buchstaben-druck-618700	2607060916141619400	16	11.37	ok	
 kleiner-outdoor-lufter-fur-camping-619400	2605210156361610100	7	31.16	ok	landeseite
 stretch-jeans-mit-weiter-passform-633900	2607060856031634600	16	11.00	ok	landeseite
 rf-ionen-gesichtsbehandlungsgerat-mit-lichtthe-152128	1362597208356163584	7	9.69	ok	landeseite
+elektrischer-porenreiniger-fettstiftentferner-650176	1361119999648993280	7	19.72	ok	landeseite
+grosses-tragbares-moskitonetz-609400	2605180339351600300	16	8.39	ok	landeseite
+porenreiniger-681728	1358352004786819072	7	7.43	ok	landeseite
+elektrisches-gesichtswaschgerat-mit-ultraschal-945280	1356896062383722496	7	11.98	ok	landeseite
+wasserdichtes-zelt-fur-2-personen-617600	2605060812381619100	0	-	KEINE CH-Option → DRAFT	landeseite
+kapsel-reiniger-fur-die-haut-5a9ade	8F08FB49-42A6-4011-AFBA-7E901A98DD7B	7	9.06	ok	landeseite
+nahtloser-bewegungs-yoga-jumpsuit-fur-damen-621300	2504080156081621500	16	8.01	ok	landeseite
+retro-jumpsuit-in-malachit-blau-619700	2504040309401610000	16	14.96	ok	landeseite
+leopard-print-jumpsuit-611500	2504010202401611700	16	7.43	ok	landeseite
+outdoor-faltstuhl-aus-aluminium-611600	2604250315141612100	16	9.07	ok	landeseite
