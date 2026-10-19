@@ -2774,3 +2774,4 @@
 16638857642375	Modell:4:4+ki	2026-10-19	elektrischer-farbroller-burste-fur-101-150-m-619000
 16638842536327	Ausführung:2:2+ki	2026-10-19	kompakter-usb-lautsprecher-mit-alarmfunktion-603100
 16638839030151	Modell:2:2+ki	2026-10-19	transparenter-bluetooth-lautsprecher-13-6-12-c-628400
+16638827561351	Ausführung:6:6+ki	2026-10-19	sternenhimmel-projektor-fur-auto-interieur-618800
