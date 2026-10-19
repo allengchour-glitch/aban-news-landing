@@ -46,14 +46,28 @@ MINDEST = int(os.environ.get("MINDEST", "3"))   # ab wie vielen aktiven Produkte
 
 
 def gql(q, v=None):
-    with open("/tmp/_kl.json", "w") as f:
+    # 19.10.2026 (Prüfung aufseher F2): EINE feste Temp-Datei für alle Aufrufer (kollektion_leer SCHARF, baby_claims_wache, umschrift_heilen, masse_groessenliste …)
+    # — zwei gleichzeitige Läufe (die Schranke «shopify_slot» hat 2 Plätze) schickten sich gegenseitig die Abfrage. Jetzt je Prozess und Aufruf eine eigene Datei.
+    import tempfile
+    fd, tmp = tempfile.mkstemp(prefix="_kl_", suffix=".json", dir="/tmp")
+    with os.fdopen(fd, "w") as f:
         f.write(json.dumps({"query": q, "variables": v or {}}))
+    try:
+        return _gql_senden(tmp)
+    finally:
+        try:
+            os.unlink(tmp)
+        except OSError:
+            pass
+
+
+def _gql_senden(tmp):
     for _ in range(16):             # 21.09.: 8 → 16 — nach jedem Stunden-Neustart teilen sich ~25 Waechter den Eimer
         r = subprocess.run(["curl", "-s", "--max-time", "60",
                             f"https://{SHOP}/admin/api/2026-01/graphql.json",
                             "-H", "X-Shopify-Access-Token: " + TOK,
                             "-H", "Content-Type: application/json",
-                            "--data-binary", "@/tmp/_kl.json"], capture_output=True, text=True)
+                            "--data-binary", "@" + tmp], capture_output=True, text=True)
         try:
             d = json.loads(r.stdout)
             if d.get("data"):

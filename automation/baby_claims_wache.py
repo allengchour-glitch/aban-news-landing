@@ -280,6 +280,11 @@ def main():
         json.dump({"stand": time.strftime("%Y-%m-%dT%H:%MZ", time.gmtime()), "gelesen": gesehen, "K": len(treffer["K"]),
                    "S1": len(treffer["S1"]), "S2": len(treffer["S2"]), "geschrieben": geschrieben, "offen": offen,
                    "fehler": fehler, "fix": FIX}, f, ensure_ascii=False, indent=1)
+    gesamt = len(treffer["K"]) + len(treffer["S1"]) + len(treffer["S2"])
+    # Prüfung 19.10. (aufseher F4): FERTIG sperrt den Wächter 20 h — nur drucken, wenn nichts liegen blieb (Fehler, MAX_LAUF, offener Wortlaut)
+    if FIX and (fehler or offen or geschrieben + offen + fehler < gesamt):
+        print(f"PAUSE: baby_claims_wache unvollständig (geschrieben {geschrieben}, offen {offen}, Fehler {fehler}, Treffer {gesamt}) — nächster Lauf", flush=True)
+        return 1 if fehler else 0
     print(f"FERTIG {time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}: K {len(treffer['K'])} · S1 {len(treffer['S1'])} · S2 {len(treffer['S2'])} "
           f"· geschrieben {geschrieben} · offen {offen} · Fehler {fehler}" + ("" if FIX else " (DRY)"), flush=True)
     return 1 if fehler else 0
