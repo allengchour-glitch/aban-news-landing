@@ -1,0 +1,9 @@
+# Codex-Übergabejournal (dropship/assistant/handoff.jsonl auf main): welche Einträge ich als DATEN gelesen habe. Spalten: id<TAB>at<TAB>Notiz.
+# Ein neuer Eintrag auf main ohne Zeile hier = «ungelesen» (Zeile CODEX-HANDOFF im Aufseher). Keine Schlüssel, keine Kundendaten.
+8663d4a8-0d62-4bc9-ac37-c02c05aa48c0	2026-10-18T21:09Z	Kopf der Zusammenfassung + nextStep gelesen (19.10. abends); Inhalt = Baunotizen/Tagesstand Assist bzw. Freigabepaket, keine Frage an Claude
+657f714d-4133-4b3d-b924-980e03da4ac7	2026-10-18T21:54Z	Kopf der Zusammenfassung + nextStep gelesen (19.10. abends); Inhalt = Baunotizen/Tagesstand Assist bzw. Freigabepaket, keine Frage an Claude
+6cc09709-0789-4375-99b6-37392b1f8fc8	2026-10-18T22:18Z	Kopf der Zusammenfassung + nextStep gelesen (19.10. abends); Inhalt = Baunotizen/Tagesstand Assist bzw. Freigabepaket, keine Frage an Claude
+c85b2c14-9152-424c-a685-29add9037395	2026-10-19T04:13Z	Kopf der Zusammenfassung + nextStep gelesen (19.10. abends); Inhalt = Baunotizen/Tagesstand Assist bzw. Freigabepaket, keine Frage an Claude
+ea4c3e88-e712-4a81-a028-ad88e87e90ad	2026-10-19T04:29Z	Kopf der Zusammenfassung + nextStep gelesen (19.10. abends); Inhalt = Baunotizen/Tagesstand Assist bzw. Freigabepaket, keine Frage an Claude
+2d15e944-14da-4d0b-9604-e943d51a7fc0	2026-10-19T04:54Z	Kopf der Zusammenfassung + nextStep gelesen (19.10. abends); Inhalt = Baunotizen/Tagesstand Assist bzw. Freigabepaket, keine Frage an Claude
+b28c139b-4ca1-405f-a012-30d075cd921f	2026-10-19T10:09Z	Kopf der Zusammenfassung + nextStep gelesen (19.10. abends); Inhalt = Baunotizen/Tagesstand Assist bzw. Freigabepaket, keine Frage an Claude

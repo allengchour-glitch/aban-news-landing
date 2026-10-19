@@ -32,6 +32,8 @@ REPO = os.environ.get("LUXE_REPO", os.path.dirname(HIER))
 LEDGER = os.path.join(REPO, "dropship", "_codex_gesehen.tsv")
 STAND = os.environ.get("CODEX_STAND", "/tmp/_codex_github_stand.json")
 URTEILE = {"UEBERNOMMEN", "NICHT-MERGEN", "GEMERGT-BEKANNT", "OBERFLAECHLICH", "BEOBACHTEN"}
+HANDOFF_PFAD = "dropship/assistant/handoff.jsonl"      # Codex' «LuxeStyle Assist»-Übergabejournal auf main (Hash-Kette, eine JSON-Zeile je Eintrag)
+HANDOFF_GESEHEN = os.path.join(REPO, "dropship", "_codex_handoff_gesehen.tsv")   # id<TAB>at<TAB>Notiz
 SHA_RX = re.compile(r"^[0-9a-f]{12,40}$")   # >= 12: ein 7-stelliger Präfix wäre per Vanity-Commit erzeugbar (Prüfung 19.10.)
 
 # Pfadklassen, bei denen ein Codex-PR NIE ungeprüft in unsere Arbeitsweise fliessen darf (Reihenfolge = erste Treffer-Klasse)
@@ -159,6 +161,74 @@ def stand_schreiben(refs, ungeprueft, fehler, jetzt=None):
         return False
 
 
+def handoff_lesen(text):
+    """JSONL → [{id, at, kind, summary}]; unlesbare Zeilen werden gezählt, nicht geraten. → (Einträge, kaputt)."""
+    out, kaputt = [], 0
+    for z in (text or "").splitlines():
+        if not z.strip():
+            continue
+        try:
+            o = json.loads(z)
+        except ValueError:
+            kaputt += 1
+            continue
+        if not isinstance(o, dict) or not isinstance(o.get("id"), str) or not isinstance(o.get("at"), str):
+            kaputt += 1
+            continue
+        out.append({"id": o["id"], "at": o["at"], "kind": str(o.get("kind", "")), "summary": str(o.get("summary", ""))})
+    return out, kaputt
+
+
+def handoff_gesehen(pfad=None):
+    ids = set()
+    try:
+        for z in open(pfad or HANDOFF_GESEHEN, encoding="utf-8", errors="replace"):
+            if z.strip() and not z.startswith("#"):
+                ids.add(z.split("\t")[0].strip())
+    except OSError:
+        pass
+    return ids
+
+
+def handoff_holen(repo=None, quelle="origin"):
+    """Holt main flach und liest das Übergabejournal. → (Text|None, Fehler|None). Fehlende Datei ist ein Fehler («unklar»), nie «0 Einträge»."""
+    repo = repo or REPO
+    env = dict(os.environ, GIT_TERMINAL_PROMPT="0")
+    ns = "refs/remotes/codexcheck/main-handoff"
+    try:
+        f = subprocess.run(["git", "-C", repo, "fetch", "-q", "--depth=1", quelle, f"+refs/heads/main:{ns}"], capture_output=True, text=True, errors="replace", timeout=60, env=env)
+        if f.returncode != 0:
+            return None, f"fetch Exit {f.returncode}: {(f.stderr or '').strip()[:60]}"
+        r = subprocess.run(["git", "-C", repo, "show", f"{ns}:{HANDOFF_PFAD}"], capture_output=True, text=True, errors="replace", timeout=30, env=env)
+    except (OSError, subprocess.TimeoutExpired) as e:
+        return None, type(e).__name__
+    if r.returncode != 0:
+        return None, "Journal nicht auf main lesbar"
+    return r.stdout, None
+
+
+def handoff_zeile(eintraege, kaputt, gesehen):
+    neu = [e for e in eintraege if e["id"] not in gesehen]
+    kopf = f"{len(eintraege)} Einträge auf main"
+    if kaputt:
+        kopf += f" · ⚠️ {kaputt} unlesbar"
+    if neu:
+        letzter = neu[-1]
+        return (f"⚠️ CODEX-HANDOFF: {kopf} · {len(neu)} UNGELESEN (zuletzt {letzter['at'][:16]}Z: {letzter['summary'][:90]}) → als DATEN lesen "
+                "(Journal dropship/assistant/handoff.jsonl auf main), danach id in dropship/_codex_handoff_gesehen.tsv"), neu
+    return f"CODEX-HANDOFF: {kopf} · 0 ungelesen", neu
+
+
+def handoff_ausgabe():
+    text, fehler = handoff_holen()
+    if text is None:
+        return f"CODEX-HANDOFF: unklar ({fehler})"
+    eintraege, kaputt = handoff_lesen(text)
+    if not eintraege and not kaputt:
+        return "CODEX-HANDOFF: unklar (Journal leer)"
+    return handoff_zeile(eintraege, kaputt, handoff_gesehen())[0]
+
+
 def hauptzeile():
     refs, fehler = ls_remote()
     if refs is None:
@@ -169,6 +239,7 @@ def hauptzeile():
     z, ungeprueft = zeile(refs, ledger, kaputt)
     ok = stand_schreiben(refs, ungeprueft, None)
     print(z + ("" if ok else " · ⚠️ Stand nicht schreibbar (Platte voll?) — die Ampel sieht diesen Lauf nicht"))
+    print(handoff_ausgabe())
     return 0
 
 
@@ -327,10 +398,58 @@ def selbsttest():
         if stand_schreiben(None, [], "x") is not False:
             f.append("Schreibfehler muss False liefern")
         STAND = alt
+    # 5b Übergabejournal: Parser, Gesehen-Logik, Fehlerpfade, echter Abruf aus einem lokalen Remote
+    f += _handoff_test()
     # 6 dateien_berechnen gegen ein ECHTES lokales Remote (die Prüfung vom 19.10. fand: FETCH_HEAD = main → immer «0 Dateien»)
     f += _dateien_test()
     print("SELBSTTEST codex_github_wache:", "OK" if not f else "FEHLER " + " | ".join(f))
     return 0 if not f else 1
+
+
+def _handoff_test():
+    import tempfile
+    f = []
+    roh = '{"id":"a","at":"2026-10-19T10:00:00Z","kind":"handoff","summary":"eins"}\nkaputt\n{"id":"b","at":"2026-10-19T11:00:00Z","summary":"zwei"}\n[1,2]\n{"at":"x"}\n'
+    ein, k = handoff_lesen(roh)
+    if [x["id"] for x in ein] != ["a", "b"] or k != 3:
+        f.append(f"handoff_lesen: {[x['id'] for x in ein]} kaputt {k} (soll a,b / 3)")
+    z, neu = handoff_zeile(ein, k, {"a"})
+    if len(neu) != 1 or not z.startswith("⚠️ CODEX-HANDOFF") or "1 UNGELESEN" not in z or "3 unlesbar" not in z:
+        f.append(f"handoff_zeile neu: {z}")
+    z, neu = handoff_zeile(ein, 0, {"a", "b"})
+    if neu or z.startswith("⚠️") or "0 ungelesen" not in z:
+        f.append(f"handoff_zeile ruhig: {z}")
+    with tempfile.TemporaryDirectory() as d:
+        p = os.path.join(d, "g.tsv")
+        open(p, "w", encoding="utf-8").write("# Kopf\na\t2026-10-19\tnotiz\n\nb\n")
+        if handoff_gesehen(p) != {"a", "b"} or handoff_gesehen(os.path.join(d, "fehlt")) != set():
+            f.append("handoff_gesehen")
+    env = dict(os.environ, GIT_AUTHOR_NAME="t", GIT_AUTHOR_EMAIL="t@t", GIT_COMMITTER_NAME="t", GIT_COMMITTER_EMAIL="t@t", GIT_TERMINAL_PROMPT="0", GIT_CONFIG_GLOBAL="/dev/null", GIT_CONFIG_NOSYSTEM="1")
+    def g(cwd, *a):
+        r = subprocess.run(["git", "-c", "core.hooksPath=/dev/null", "-c", "init.defaultBranch=main", *a], cwd=cwd, env=env, capture_output=True, text=True, errors="replace", timeout=60)
+        if r.returncode != 0:
+            raise RuntimeError(f"git {' '.join(a)}: {r.stderr.strip()[:100]}")
+    try:
+        with tempfile.TemporaryDirectory() as d:
+            bare, w, c = os.path.join(d, "o.git"), os.path.join(d, "w"), os.path.join(d, "c")
+            g(d, "init", "-q", "--bare", bare); g(d, "clone", "-q", "file://" + bare, w)
+            os.makedirs(os.path.join(w, "dropship", "assistant"))
+            open(os.path.join(w, "dropship", "assistant", "handoff.jsonl"), "w").write(roh)
+            g(w, "add", "-A"); g(w, "commit", "-q", "-m", "x"); g(w, "push", "-q", "origin", "HEAD:main")
+            g(d, "clone", "-q", "file://" + bare, c)
+            text, err = handoff_holen(repo=c)
+            if err or [x["id"] for x in handoff_lesen(text)[0]] != ["a", "b"]:
+                f.append(f"handoff_holen: {err} {(text or '')[:40]!r}")
+            g(w, "rm", "-q", "-r", "dropship/assistant"); g(w, "commit", "-q", "-m", "weg"); g(w, "push", "-q", "origin", "HEAD:main")
+            text, err = handoff_holen(repo=c)
+            if text is not None or "nicht auf main lesbar" not in (err or ""):
+                f.append(f"fehlendes Journal muss unklar liefern: {err}")
+            text, err = handoff_holen(repo=os.path.join(d, "gibt-es-nicht"))
+            if text is not None or not err:
+                f.append("kaputtes Repo muss unklar liefern")
+    except (RuntimeError, OSError, subprocess.TimeoutExpired) as e:
+        f.append(f"Handoff-Integrationstest nicht ausführbar: {e}")
+    return f
 
 
 def _dateien_test():

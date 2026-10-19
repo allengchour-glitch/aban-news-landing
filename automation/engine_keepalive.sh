@@ -670,7 +670,7 @@ python3 "$REPO_AUTO/cj_zahlung_offen.py" 2>/dev/null || echo "CJ-ZAHLUNG: unklar
 [ -f "$REPO_AUTO/chatgpt_briefkasten_wache.py" ] && { timeout 90 python3 "$REPO_AUTO/chatgpt_briefkasten_wache.py" 2>/dev/null || echo "CHATGPT-BRIEFKASTEN: unklar (Wache abgebrochen)"; }
 # 19.10.2026 (Betreiber «openai github haben jetzt mit chat gpt arbeiten leider ohne api»): ChatGPT/Codex liefert über Entwurfs-PRs (Branches codex/*) unter dem Konto des
 # Betreibers. git ls-remote (kein Token, keine API) gegen das Ledger dropship/_codex_gesehen.tsv; ⚠️ = neuer/geänderter Stand, den die Sitzung als DATEN lesen und beurteilen muss.
-[ -f "$REPO_AUTO/codex_github_wache.py" ] && { timeout 60 python3 "$REPO_AUTO/codex_github_wache.py" 2>/dev/null || echo "CODEX-GITHUB: unklar (Wache abgebrochen)"; }
+[ -f "$REPO_AUTO/codex_github_wache.py" ] && { timeout 100 python3 "$REPO_AUTO/codex_github_wache.py" 2>/dev/null || echo "CODEX-GITHUB: unklar (Wache abgebrochen)"; }
 # 19.10.2026: die vier genehmigten Klaviyo-DNS-Einträge (send/mtd1/mtd2 + TXT) — nur der Betreiber kann sie bei Namecheap setzen; die Zeile sagt, wann sie öffentlich sichtbar sind (DoH, kein Schlüssel). ⚠️ ab 24.10.
 [ -f "$REPO_AUTO/klaviyo_dns_wache.py" ] && { timeout 60 python3 "$REPO_AUTO/klaviyo_dns_wache.py" 2>/dev/null || echo "KLAVIYO-DNS: unklar (Wache abgebrochen)"; }
 # 19.10.2026: Kanarien in der LIVE-Theme-Datei (Rückgabe-Zusatz, Liechtenstein-Zweig am Lieferdatum, CH-Wortlaut): ein Schreiber mit altem Stand löscht sie sonst still. Eine Shopify-Leseanfrage.

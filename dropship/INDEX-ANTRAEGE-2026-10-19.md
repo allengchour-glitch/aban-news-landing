@@ -9,6 +9,11 @@ Link: https://search.google.com/search-console?resource_id=https%3A%2F%2Fluxesty
 Messung: GEMESSEN 19.10. mit OpenSEO `inspect_urls` (0 Credits). Reihenfolge = Wirkung auf die Geschenkwoche und den Werbetest A «geschenke-test» (bis 24.10.).
 Stand je Adresse steht in `dropship/_index_beantragt.tsv`; die Sitzung misst am Montag/Donnerstag nach (`tools/index_probe.py`).
 
+## Was ich schon erledigt habe (19.10. abends) — und was nur du kannst
+- **Der Knopf «Indexierung beantragen» geht nur im eingeloggten Google-Konto.** Dafür gibt es keine Schnittstelle: Googles Indexing-API gilt offiziell nur für Stellenanzeigen und Livestreams, und ich habe hier kein Google-Login und keinen Browser mit deinem Konto (keine Chrome-Anbindung, keine erreichbare PC-Sitzung).
+- **IndexNow an Bing gemeldet** (HTTP 200): alle 11 Adressen unten plus die drei geänderten Kollektionen (Hausschuhe & Slipper, Schuhe, T-Shirts & Tops). Bing speist ChatGPT-Suche, Copilot und DuckDuckGo; Google nimmt IndexNow nicht an.
+- **Interne Links gemessen:** alle 402 Kollektionen mit ≥ 3 aktiven Produkten haben einen eingehenden Link (`interne_links.py --waisen`); die 5 Geschenk-Kollektionen sind sogar von Startseite, Hubs und indexierten Seiten verlinkt. Der Engpass ist also nicht das Auffinden, sondern Googles Entscheidung — genau dafür ist dein Klick der einzige Hebel.
+
 ## Heute (10 Anträge)
 1. https://luxestyle.ch/collections/geschenke-fuer-ihn — «Discovered – currently not indexed», 401 Produkte, SEO-Titel seit 19.10. «Geschenke für Männer»
 2. https://luxestyle.ch/collections/premium-geschenke — «URL is unknown to Google» (Hauptmenü-Eintrag!), 400 Produkte
