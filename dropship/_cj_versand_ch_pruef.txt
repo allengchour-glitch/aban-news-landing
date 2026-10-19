@@ -10941,3 +10941,4 @@ elegantes-armelloses-kleid-622300	2607080551241623100	16	7.03	ok	landeseite
 herren-gurteltasche-aus-erstem-leder-robust-un-614100	2407210358381614200	16	7.85	ok	landeseite
 halbkorper-modell-aus-leinen-612300	2501231048491612600	0	-	KEINE CH-Option → DRAFT	landeseite
 chiffon-kleid-mit-3d-effekt-627200	2607080530361627800	16	8.11	ok	landeseite
+oktopus-kleiderstander-601000	2501150834141602100	11	58.21	ok	landeseite
