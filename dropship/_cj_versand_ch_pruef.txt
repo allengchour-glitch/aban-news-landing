@@ -9967,3 +9967,15 @@ x01-mit-4-5-zoll-bildschirm-und-doppelter-stro-888577	-	-	-	unklar pid 1602002 P
 s6-doppelt-kamera-rc-spielzeug-blau-orange-350210	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 dual-kamera-modell-911106	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 edelstahl-3d-katzenpendant-mit-blumenkranz-uni-600700	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+zweiteiler-optik-gerade-arbeitshose-639700	2605140404381630300	16	8.93	ok	landeseite
+doppelstrahl-luftbefeuchter-127936	1633699880684236800	7	17.63	ok	landeseite
+langlebiges-beissspielzeug-fur-hunde-600300	2509110820081600600	16	7.99	ok	landeseite
+grosses-faltbares-reisetasche-623600	2603160112571624000	16	17.28	ok	landeseite
+kau-und-zahnbursten-snack-fur-hunde-624000	2509110812351624700	16	7.35	ok	landeseite
+leichte-reisetasche-fur-herren-608800	2603130638231609500	16	14.60	ok	landeseite
+retro-denim-overall-fur-herren-601200	2605050849301601800	16	18.47	ok	landeseite
+aromatherapie-diffuser-mit-grosser-kapazitat-175232	1623510562665672704	16	18.47	ok	landeseite
+kau-und-zahnputzspielzeug-fur-hunde-621500	2509110755461622800	16	9.40	ok	landeseite
+taktischer-brustrucksack-636400	2603110224481636800	16	10.01	ok	landeseite
+herren-freizeit-hose-mit-mehreren-taschen-602700	2604290706391604400	16	13.40	ok	landeseite
+manner-rucksack-fur-outdoor-aktivitaten-624900	2603101003391625300	16	19.65	ok	landeseite
