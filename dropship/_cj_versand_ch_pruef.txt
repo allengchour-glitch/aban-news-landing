@@ -10378,3 +10378,15 @@ edelstahl-3d-katzenpendant-mit-blumenkranz-uni-600700	-	-	-	unklar pid 1602002 P
 reflektierende-hundeleine-630000	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 edelstahl-lunchbox-mit-thermofunktion-619900	2606160936171610500	16	14.48	ok	landeseite
 madchen-prinzessinnen-schuhe-603900	2506150221231604900	16	9.47	ok	landeseite
+madchen-lauflernschuhe-mit-blumenmotiv-613200	2506120929131613700	16	9.75	ok	landeseite
+diamant-lauflernschuhe-fur-madchen-603400	2506120922311605200	16	9.07	ok	landeseite
+fruchte-ruhrgabel-615100	2605190245441615600	16	5.12	ok	landeseite
+exzentrische-hantelstange-fur-fingerkrafttrain-626100	2602050607021626500	11	41.03	ok	landeseite
+lebensmittelgeeigneter-messbecher-fur-die-kuch-608700	2605180623361609300	16	8.79	ok	landeseite
+madchen-lauflernschuhe-mit-pu-leder-schleife-601000	2506120153181601700	16	9.88	ok	landeseite
+sternen-sonnenblumen-kissen-618300	2511150336251618500	16	10.15	ok	landeseite
+prinzessin-lauflernschuhe-mit-strass-609300	2506120145181600400	16	9.75	ok	landeseite
+geschirr-set-fur-den-alltag-629000	2605100744041629600	16	21.75	ok	landeseite
+hochzeits-schuhe-fur-blumenmadchen-621900	2506120139501622100	16	9.88	ok	landeseite
+weizenstroh-geschirr-set-outdoor-627000	2605090727061627500	16	19.99	ok	landeseite
+doppelseitiges-kissenbezug-modern-weich-608100	2511100309221608500	16	11.00	ok	landeseite
