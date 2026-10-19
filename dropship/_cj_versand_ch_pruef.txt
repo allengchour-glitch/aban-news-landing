@@ -10205,3 +10205,6 @@ leichte-schuhe-mit-einzel-und-doppellaufradern-a3ccf4	04472DD0-DEF5-4386-92C7-CE
 dickes-antihaftendes-backblech-636400	2603100552191636800	16	9.47	ok	landeseite
 kletterbaum-fur-katzen-624900	2511260631191625100	11	46.87	ok	landeseite
 nach-training-fu-abdeckung-e3226d	0A7E16E5-10BD-4D9C-A030-F71D6492D95B	16	6.01	ok	landeseite
+kratzposten-fur-katzen-619800	2511260535201610200	11	43.37	ok	landeseite
+herren-sportsschuhe-3b333c	69A784DA-1576-4792-856D-0FD695F6ED03	16	12.56	ok	landeseite
+anti-haft-backform-fur-outdoor-616600	2603090214101617000	16	19.99	ok	landeseite
