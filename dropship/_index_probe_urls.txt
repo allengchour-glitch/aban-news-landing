@@ -63,3 +63,7 @@ suchbegriff https://luxestyle.ch/collections/camisole-traegertops
 suchbegriff https://luxestyle.ch/collections/smart-ring
 suchbegriff https://luxestyle.ch/collections/schrank-organizer
 suchbegriff https://luxestyle.ch/collections/weihnachtspyjama-familie
+# 19.10.2026 (Spähtrupp G1): drei Geschenk-Seiten ohne Messung nachgetragen — sie zählen erst ab dem nächsten Doppel-Lauf im Vergleich
+saison https://luxestyle.ch/collections/geschenke-unter-50-franken
+saison https://luxestyle.ch/collections/geschenke-unter-100-franken
+ratgeber https://luxestyle.ch/blogs/ratgeber/geschenke-fuer-maenner-2026-schweiz

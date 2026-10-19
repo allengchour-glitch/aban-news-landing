@@ -10188,3 +10188,5 @@ kinder-inline-skates-887488	1749251134453190656	7	24.17	ok	landeseite
 brusttasche-fur-herren-mit-mehreren-fachern-622600	2502210842491622800	16	10.15	ok	landeseite
 halbrunde-kleiderbugel-mit-haken-614900	2512040815191615100	16	18.32	ok	landeseite
 taktische-hufttasche-mit-erste-hilfe-kit-603800	2502200342571604000	16	6.77	ok	landeseite
+einzelrad-kinderrollschuhe-mit-verstellbarem-a-123712	1748618466074038272	11	38.69	ok	landeseite
+taktische-hufttasche-fur-outdoor-aktivitaten-623100	2502181113451623300	16	8.11	ok	landeseite
