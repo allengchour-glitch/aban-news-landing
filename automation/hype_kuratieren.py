@@ -49,7 +49,8 @@ TAG = "hype-jetzt"
 HANDLE = "hype-jetzt"
 LEDGER = "dropship/_hype_verlauf.txt"
 
-QUELLE = "Web-Recherche 13.10.2026 (Betreiber «mach bitte du alles weiter»; eprolo/sellthetrend/wholesale2b/cjdropshipping Oktober 2026, TikTok-Newsroom Holiday 2025 — Umsatz-/Wachstumszahlen = Anbieter-Werbung, BEHAUPTUNG): NEU «Drehbares Gewürzregal» (rotating spice rack; Bestand GEMESSEN title:*drehbar*+*Gewürz* 4, davon 3 ab CHF 19 mit ≥ 4 Bildern). GEMESSEN und NICHT übernommen: schwebende/unsichtbare Regale 0, LED-Streifen 6 (generisch), Familien-/Weihnachts-Pyjamas 12/9 (alle ab CHF 14.90 = unter dem Reihen-Boden 19; gehören in die Weihnachts-Reihe), Fellpflege-Handschuh steckt schon in «Haustier-Fellpflege»; Pimple Patches weiter abgelehnt (Wundauflage). Kanarie: title:*Haarbürste* 3 = Methode sieht Treffer. — davor Web-Recherche 10.10.2026 (Betreiber «weiter»; sellthetrend «Winning Products» Oktober 2026: Beauty & Personal Care + Home & Seasonal Décor vorn, genannt GreenGlide Trimmer, DreamDuo Support Pillow, GraveGlow Harvester — Umsatzzahlen = Anbieter-Werbung, BEHAUPTUNG): NEU «Schlaf-Stützkissen» (Bestand GEMESSEN 20: Stütz 5, Knie 4, Seitenschläfer 2, Schwangerschaft 9). NICHT übernommen: Trimmer (34 Haarschneider im Bestand = Rasur/Pflege, kein Hype-Thema), leuchtende Halloween-Deko (Saison-Reihe, Partydeko-Regel); dodropshipping August-Liste (Promise-Ringe, Foto-Medaillon, Skelett-Uhren, Haar-Supplements) — Supplements abgelehnt (Lebensmittel). — davor Web-Recherche 07.10.2026 (Betreiber «lerne im internet»; sellthetrend «Winning Products, Updated for October 2026» (Stand 22.09.), eprolo/shiptothemoon 2026): NEU «Schleckmatte Haustier» (Bestand GEMESSEN 11, 5 ab CHF 19). GEMESSEN und NICHT uebernommen: Claw-Clips (9 Treffer, alle CHF 15.90 = unter dem Reihen-Boden 19), Haar-Lametta 0, Haarkreide 0, Schuhwaschbeutel 0, Y2K-Schild-Sonnenbrille 1, Grillschuerze 1; Silikon-Gesichtsbuerste (23) steckt schon in «Beauty-Geraet»; Halloween-Deko (60) gehoert in die Saison-Reihe, nicht hierher (Partydeko-Regel). Kanarie: title:*Haarbuerste* findet 3 = Methode sieht Treffer. — davor Web-Recherche 27.09.2026 (Websuche «TikTok viral products late September 2026», wholesale2b/sellthetrend): BESTAETIGT Hunde-Trinkflasche, Sternenhimmel-Projektor, UV-Zahnbuerstenreiniger, 3-in-1-Ladestation (Qi2), Home-Decor. EINE neue Nennung am Bestand GEMESSEN (productsCount status:active): «2-in-1-Haarbuerste mit Wasserspruehnebel (AquaBrush)» 0 (Haarbuerste*Spray/Spruehbuerste 0; Kanarienvogel title:*Haarbuerste* findet 3 = Methode sieht Treffer). NICHT uebernommen: Peeling-Seren (topische Kosmetik, Betreiber-Entscheid 30.08.). THEMEN unveraendert. — davor Web-Recherche 24.09.2026 (sellthetrend «Winning Products, Updated for September 2026»): BESTAETIGT die Liste vom 23.09. (3-in-1-Ladestation, beruehrungslose Spender, UV-Zahnbuerstenreiniger, Lifting-Tape, Retro-OTG-Goggles, doppelseitige Paar-Hoodies). DREI neue Nennungen am Bestand GEMESSEN (productsCount status:active): «Mini-Beutelversiegler» 0, «Antibeschlag-Spiegelfolie» 0 (die 22 Antibeschlag-Treffer sind Schwimm-/Skibrillen und Sprays), «Silikon-Saugnapf-Handyhalter» 0 (2 Treffer sind Armaturenbrett-/Spiegelhalter, nicht das virale Saugpad). NICHT uebernommen: Plasma-Lichtbogen-Feuerzeug (Raucherbedarf gehoert nicht auf die Startseite). THEMEN unveraendert. — davor Web-Recherche 23.09.2026 (sellthetrend/eprolo/cjdropshipping September): DREI Themen NEU, alle am Bestand GEMESSEN (productsCount, title:*x*): «Sternenhimmel-Projektor» (Trendlisten: tiny projector with night sky effect; Bestand 41 + 13 Galaxy), «Hunde-Trinkflasche tragbar» (portable dog water bottle; Bestand 5), «Mini-Staubsauger» (mini desktop vacuum; Bestand 4). Bestaetigt: Hygiene-Gadgets (UV-Zahnbuerstenreiniger, beruehrungslose Spender), Ordnung/aesthetic living, Retro-OTG-Goggles, Dock-Stand (= Ladestation 3-in-1), Katzen-Laserspielzeug (Haustier-Spielzeug smart). NICHT uebernommen: Travel-Hoodie mit Rucksack (0 im Bestand), Selfie-Monitor (0), Gummy Blocks (Spielzeug — Reihe nimmt kein Spielzeug), Pimple Patches (Wundauflage). — davor Web-Recherche 21.09.2026 — BESTAETIGT die Liste vom 18.09., KEINE Aenderung an THEMEN noetig: Hygiene-Gadgets (beruehrungslose Spender, UV-Zahnbuerstenreiniger), Ordnung/aesthetic living, Creator-Zubehoer und Retro-OTG-Goggles stehen alle schon drin. DREI neue Vorschlaege am eigenen Bestand gegengeprueft (Voll-Export 51'331 aktive, 21.09. 01:11) statt uebernommen: (a) «Pimple Patches», in den Listen als profitabelster Artikel fuer Ende 2026 gefuehrt — im Bestand GEMESSEN 2 Produkte, und eines davon ist ein «Hydrokolloid-Verband», also eine Wundauflage; gehoert NICHT auf die Startseite. (b) «Travel-Hoodie mit Rucksack»: 0 im Bestand. (c) «Selfie-Monitor»: 0 im Bestand. Gegenprobe, dass die Messung ueberhaupt finden KANN: dasselbe Verfahren fand 23 aktive Hygiene-Gadgets. Fazit: zwei von drei neuen Trends waeren folgenlos geblieben, der dritte ist rechtlich heikel — die Themenliste bleibt unveraendert. ABGELEHNT wie bisher: Wellness-/Magnet-Armband (Heilversprechen), Supplements/Olivenoel (Lebensmittel), Snail-Essence/Seren (topische Kosmetik, Betreiber-Entscheid 30.08.) — davor Web-Recherche 18.09.2026 (eprolo/sellthetrend/cjdropshipping September: Hygiene-Gadgets NEU (UV-Sterilisation, beruehrungslose Spender); Blush-Balms, Lifting-Tape, Doppelseitige Paar-Hoodies und Ordnung/aesthetic living erneut bestaetigt. ABGELEHNT trotz Trendlisten: Wellness-/Magnet-Armband (15 im Bestand) = Heilversprechen, gehoert in dieselbe Klasse wie die aus den Werbekanaelen ausgeschlossenen 1667; Supplements/Olivenoel = Lebensmittel; Snail-Essence/Seren = topische Kosmetik, Betreiber-Entscheid 30.08.) — davor 13.09.2026 (Retro-OTG-Goggles/Motorradbrillen NEU; Creator-Handyhalter/Ringlicht; Halloween-Kostueme bewusst NICHT hier) — davor 03.09.2026 (smarte Haustier-Spielzeuge, Handy-Umhaengetaschen, Kerzenwaermer)"
+QUELLE = "Web-Recherche 19.10.2026 (Betreiber «mache weiter alle verbesserungen…»; hypersku.com 14.10.2026, z.media 12.10.2026, minerxads.com 18.10.2026, autods.com 15.09.2026 — US-Listen, Umsatzzahlen = Anbieter-Schätzung, BEHAUPTUNG, CH-Übertragbarkeit ebenfalls): NEU Nackenmassagegerät (Bestand GEMESSEN 15 aktiv, 14 frei), Kuscheldecke (20/14), Heizjacke (4/4), Waffeleisen (5/4, nur mit Stecker-Beleg), Thermo-Lockenbürste (6/5). NICHT übernommen: Pflegesets/Kollagen/Spot-Patches/Vernebler (Betreiber 30.08.: topische Kosmetik/Supplements/Medizin), Parfüm-Mini-Sets (kein Entscheid), Bluetooth-Lautsprecher/Smartwatch (zu breit), Haustierbett (Reihe schon 16 % Haustier), Hausschuhe (38 von 58 < CHF 19), Tumbler (Katzenspielzeug). Davor: siehe QUELLE_ALT"
+QUELLE_ALT = "Web-Recherche 13.10.2026 (Betreiber «mach bitte du alles weiter»; eprolo/sellthetrend/wholesale2b/cjdropshipping Oktober 2026, TikTok-Newsroom Holiday 2025 — Umsatz-/Wachstumszahlen = Anbieter-Werbung, BEHAUPTUNG): NEU «Drehbares Gewürzregal» (rotating spice rack; Bestand GEMESSEN title:*drehbar*+*Gewürz* 4, davon 3 ab CHF 19 mit ≥ 4 Bildern). GEMESSEN und NICHT übernommen: schwebende/unsichtbare Regale 0, LED-Streifen 6 (generisch), Familien-/Weihnachts-Pyjamas 12/9 (alle ab CHF 14.90 = unter dem Reihen-Boden 19; gehören in die Weihnachts-Reihe), Fellpflege-Handschuh steckt schon in «Haustier-Fellpflege»; Pimple Patches weiter abgelehnt (Wundauflage). Kanarie: title:*Haarbürste* 3 = Methode sieht Treffer. — davor Web-Recherche 10.10.2026 (Betreiber «weiter»; sellthetrend «Winning Products» Oktober 2026: Beauty & Personal Care + Home & Seasonal Décor vorn, genannt GreenGlide Trimmer, DreamDuo Support Pillow, GraveGlow Harvester — Umsatzzahlen = Anbieter-Werbung, BEHAUPTUNG): NEU «Schlaf-Stützkissen» (Bestand GEMESSEN 20: Stütz 5, Knie 4, Seitenschläfer 2, Schwangerschaft 9). NICHT übernommen: Trimmer (34 Haarschneider im Bestand = Rasur/Pflege, kein Hype-Thema), leuchtende Halloween-Deko (Saison-Reihe, Partydeko-Regel); dodropshipping August-Liste (Promise-Ringe, Foto-Medaillon, Skelett-Uhren, Haar-Supplements) — Supplements abgelehnt (Lebensmittel). — davor Web-Recherche 07.10.2026 (Betreiber «lerne im internet»; sellthetrend «Winning Products, Updated for October 2026» (Stand 22.09.), eprolo/shiptothemoon 2026): NEU «Schleckmatte Haustier» (Bestand GEMESSEN 11, 5 ab CHF 19). GEMESSEN und NICHT uebernommen: Claw-Clips (9 Treffer, alle CHF 15.90 = unter dem Reihen-Boden 19), Haar-Lametta 0, Haarkreide 0, Schuhwaschbeutel 0, Y2K-Schild-Sonnenbrille 1, Grillschuerze 1; Silikon-Gesichtsbuerste (23) steckt schon in «Beauty-Geraet»; Halloween-Deko (60) gehoert in die Saison-Reihe, nicht hierher (Partydeko-Regel). Kanarie: title:*Haarbuerste* findet 3 = Methode sieht Treffer. — davor Web-Recherche 27.09.2026 (Websuche «TikTok viral products late September 2026», wholesale2b/sellthetrend): BESTAETIGT Hunde-Trinkflasche, Sternenhimmel-Projektor, UV-Zahnbuerstenreiniger, 3-in-1-Ladestation (Qi2), Home-Decor. EINE neue Nennung am Bestand GEMESSEN (productsCount status:active): «2-in-1-Haarbuerste mit Wasserspruehnebel (AquaBrush)» 0 (Haarbuerste*Spray/Spruehbuerste 0; Kanarienvogel title:*Haarbuerste* findet 3 = Methode sieht Treffer). NICHT uebernommen: Peeling-Seren (topische Kosmetik, Betreiber-Entscheid 30.08.). THEMEN unveraendert. — davor Web-Recherche 24.09.2026 (sellthetrend «Winning Products, Updated for September 2026»): BESTAETIGT die Liste vom 23.09. (3-in-1-Ladestation, beruehrungslose Spender, UV-Zahnbuerstenreiniger, Lifting-Tape, Retro-OTG-Goggles, doppelseitige Paar-Hoodies). DREI neue Nennungen am Bestand GEMESSEN (productsCount status:active): «Mini-Beutelversiegler» 0, «Antibeschlag-Spiegelfolie» 0 (die 22 Antibeschlag-Treffer sind Schwimm-/Skibrillen und Sprays), «Silikon-Saugnapf-Handyhalter» 0 (2 Treffer sind Armaturenbrett-/Spiegelhalter, nicht das virale Saugpad). NICHT uebernommen: Plasma-Lichtbogen-Feuerzeug (Raucherbedarf gehoert nicht auf die Startseite). THEMEN unveraendert. — davor Web-Recherche 23.09.2026 (sellthetrend/eprolo/cjdropshipping September): DREI Themen NEU, alle am Bestand GEMESSEN (productsCount, title:*x*): «Sternenhimmel-Projektor» (Trendlisten: tiny projector with night sky effect; Bestand 41 + 13 Galaxy), «Hunde-Trinkflasche tragbar» (portable dog water bottle; Bestand 5), «Mini-Staubsauger» (mini desktop vacuum; Bestand 4). Bestaetigt: Hygiene-Gadgets (UV-Zahnbuerstenreiniger, beruehrungslose Spender), Ordnung/aesthetic living, Retro-OTG-Goggles, Dock-Stand (= Ladestation 3-in-1), Katzen-Laserspielzeug (Haustier-Spielzeug smart). NICHT uebernommen: Travel-Hoodie mit Rucksack (0 im Bestand), Selfie-Monitor (0), Gummy Blocks (Spielzeug — Reihe nimmt kein Spielzeug), Pimple Patches (Wundauflage). — davor Web-Recherche 21.09.2026 — BESTAETIGT die Liste vom 18.09., KEINE Aenderung an THEMEN noetig: Hygiene-Gadgets (beruehrungslose Spender, UV-Zahnbuerstenreiniger), Ordnung/aesthetic living, Creator-Zubehoer und Retro-OTG-Goggles stehen alle schon drin. DREI neue Vorschlaege am eigenen Bestand gegengeprueft (Voll-Export 51'331 aktive, 21.09. 01:11) statt uebernommen: (a) «Pimple Patches», in den Listen als profitabelster Artikel fuer Ende 2026 gefuehrt — im Bestand GEMESSEN 2 Produkte, und eines davon ist ein «Hydrokolloid-Verband», also eine Wundauflage; gehoert NICHT auf die Startseite. (b) «Travel-Hoodie mit Rucksack»: 0 im Bestand. (c) «Selfie-Monitor»: 0 im Bestand. Gegenprobe, dass die Messung ueberhaupt finden KANN: dasselbe Verfahren fand 23 aktive Hygiene-Gadgets. Fazit: zwei von drei neuen Trends waeren folgenlos geblieben, der dritte ist rechtlich heikel — die Themenliste bleibt unveraendert. ABGELEHNT wie bisher: Wellness-/Magnet-Armband (Heilversprechen), Supplements/Olivenoel (Lebensmittel), Snail-Essence/Seren (topische Kosmetik, Betreiber-Entscheid 30.08.) — davor Web-Recherche 18.09.2026 (eprolo/sellthetrend/cjdropshipping September: Hygiene-Gadgets NEU (UV-Sterilisation, beruehrungslose Spender); Blush-Balms, Lifting-Tape, Doppelseitige Paar-Hoodies und Ordnung/aesthetic living erneut bestaetigt. ABGELEHNT trotz Trendlisten: Wellness-/Magnet-Armband (15 im Bestand) = Heilversprechen, gehoert in dieselbe Klasse wie die aus den Werbekanaelen ausgeschlossenen 1667; Supplements/Olivenoel = Lebensmittel; Snail-Essence/Seren = topische Kosmetik, Betreiber-Entscheid 30.08.) — davor 13.09.2026 (Retro-OTG-Goggles/Motorradbrillen NEU; Creator-Handyhalter/Ringlicht; Halloween-Kostueme bewusst NICHT hier) — davor 03.09.2026 (smarte Haustier-Spielzeuge, Handy-Umhaengetaschen, Kerzenwaermer)"
 THEMEN = {
     # ⚠️ «IPL» ohne Wortgrenze steckt in «L-IPL-iner»: der erste Lauf setzte einen
     # «Peel-Off Lipliner» als Beauty-GERÄT auf die Startseite. Dieselbe Falle wie «rock» in
@@ -84,9 +85,9 @@ THEMEN = {
     # Beim Seifenspender zählt nur die BERÜHRUNGSLOSE Bauart — «Retro Keramik
     # Seifenspender» und «Küchenbürste mit Seifenspender» sind der Trend NICHT.
     "Hygiene-Gadget": re.compile(
-        r'UV[- ]?(?:Sterilisator|Sterilisier|Desinfekt|Reiniger)|UVC\b|'
+        r'^(?!.*(?:Baby|Flasche))(?:.*(?:UV[- ]?(?:Sterilisator|Sterilisier|Desinfekt|Reiniger)|UVC\b|'
         r'Sterilisator|Desinfektionsbox|Desinfektionstasche|'
-        r'(?:Ber[üu]hrungslos|Sensor|Automatisch)\w*[- ]?(?:Seifenspender|Spender)', re.I),
+        r'(?:Ber[üu]hrungslos|Sensor|Automatisch)\w*[- ]?(?:Seifenspender|Spender)))', re.I),
     "Ordnung & Aesthetic": re.compile(
         r'Organizer|Aufbewahrungskorb|Aufbewahrungsbox|Ordnungssystem', re.I),
     "Shapewear": re.compile(r'Shapewear|Body Shaper|Figurformend|Taillenformer', re.I),
@@ -143,7 +144,7 @@ THEMEN = {
     # ⚠️ «Mixer» allein ist eine Falle: Tattoo-Mixer (aus dem Shaker-Fehlgriff vom 21.08.),
     # Handmixer, DJ-Mixer → Smoothie/tragbar/Becher ist Pflicht-Anker.
     "Smoothie-Mixer": re.compile(
-        r'Smoothie[- ]?(?:Mixer|Maker|Becher|Blender)|Mixbecher|'
+        r'Smoothie[- ]?(?:Mixer|Maker|Becher|Blender)|'
         r'Tragbarer?[- ]?(?:Mini-?)?(?:Mixer|Blender)|Standmixer[- ]?to[- ]?go', re.I),
     # Neu 30.08.: Herbstlisten nennen Faszienrollen (Fitness-Reset im September), LED-Strips
     # (aesthetic room makeover) und die 2-in-1-Spruehbuerste; fuer die Schweiz dazu der
@@ -159,8 +160,8 @@ THEMEN = {
     "Spray-Haarbürste": re.compile(
         r'(?:Spray|Spr[üu]h|Wasserspr[üu]h)[- ]?(?:Haar)?b[üu]rste|Spray[- ]?Brush', re.I),
     "Wärme & Kuschel": re.compile(
-        r'Heizdecke|W[äa]rmedecke|Heizkissen|Fu[sß]w[äa]rmer|Fussw[äa]rmer|'
-        r'beheizbare?[- ]?(?:Decke|Weste|Socken|Hausschuhe)', re.I),
+        r'^(?!.*(?:Auto(?!matisch)|12 ?V\b))(?:.*(?:Heizdecke|W[äa]rmedecke|Heizkissen|Fu[sß]w[äa]rmer|Fussw[äa]rmer|'
+        r'beheizbare?[- ]?(?:Decke|Weste|Socken|Hausschuhe)))', re.I),
     # ⚠️ «Mikrofon» allein traefe Studio-, PC- und Konferenzmikrofone → Karaoke/Anstecker
     # als Anker. «Mini» allein sowieso nicht.
     "Karaoke-Mikrofon": re.compile(
@@ -215,6 +216,17 @@ THEMEN = {
     "Retro-Goggles": re.compile(
         r'(?:Retro|Vintage|Steampunk|Motorrad|Aviator)[- ]?(?:Goggle|Schutzbrille|Motorradbrille)|'
         r'Motorradbrille|OTG[- ]?(?:Goggle|Brille)', re.I),
+    # 19.10.2026 (Spähtrupp wf_62fc1cba, Muster gegen den Export 18.10. getestet; Kanarien in selbsttest_themen()):
+    "Nackenmassagegerät": re.compile(
+        r'Nacken[- ]?(?:und[- ]?Schulter[- ]?|Schulter[- ]?)?Massage(?:ger[äa]t|r\b)|Nackenmassager|Schulter[- ]?Massage(?:ger[äa]t|r\b)|Shiatsu[- ]?(?:Nacken|Schulter)', re.I),
+    "Kuscheldecke": re.compile(
+        r'^(?!.*(?:Hund|Katze|Haustier|Baby|Kinder|Oster)).*(?:Kuscheldecke(?!n?[- ]?(?:bezug|halter))|(?:Fleece|Flausch|Sherpa|Flanell)[- ]?decke(?!n))', re.I),
+    "Heizjacke": re.compile(
+        r'^(?!.*Powerbank).*(?:Heiz(?:jacke|weste)|beheizbare?[rs]?\s+(?:Jacke|Winterjacke|Weste))', re.I),
+    "Waffeleisen": re.compile(
+        r'^(?!.*\b1[012]0\s?V\b).*(?:Waffeleisen|Waffelmaschine|Waffelautomat|Waffelmacher)', re.I),
+    "Thermo-Lockenbürste": re.compile(
+        r'Lockenb[üu]rste|Ionen[- ]?(?:Haar)?b[üu]rste', re.I),
 }
 # Warengruppen, die schon einmal aus der Startreihe genommen wurden.
 RAUS_TYP = {"Spielzeug & Spiele", "Partydeko & Ballone", "Kostüme & Verkleidung"}
@@ -270,7 +282,7 @@ WARENART = {
     'reinigungsbuerste': r'reinigungsb[üu]rste|gesichtsb[üu]rste',
     'haarstyler':      r'lockenstab|gl[äa]tteisen|haargl[äa]tter|styling[- ]?b[üu]rste|warmluftb[üu]rste',
     'ladestation':     r'ladestation|ladeger[äa]t|wireless charger|induktionslader',
-    'massagegeraet':   r'massageger[äa]t|massagepistole|massager',
+    'massagegeraet':   r'massageger[äa]t|massagepistole|massager(?!oll)',   # 19.10.: «Massageroller» ist keine Massage-GERÄT-Kollision
     # ⚠️ «Aufbewahrungsbox» NICHT aufnehmen — sie ist bei vielen Produkten Zubehör,
     # nicht die Ware: «8-teiliges Make-up Pinselset mit Aufbewahrungsbox» ist ein
     # Pinselset. Getroffen wird nur, was SELBST ein Organizer ist.
@@ -336,6 +348,43 @@ def gleiche_warenart(titel, schon_gewaehlt):
 # PFLICHT für jeden Lauf: `KONTAKT=1 python3 automation/hype_kuratieren.py` baut den
 # Kontaktbogen der aktuellen Reihe — vor dem Veröffentlichen ansehen (Projektregel 5, Vision-QA).
 AUSGEMUSTERT = "hype-bild-schwach"
+
+
+# 19.10.2026 (Spähtrupp wf_62fc1cba, HYPE-3/4): Netzgeräte kamen ohne Stecker-Beleg in die Reihe (derselbe Fehlertyp wie die Dampfglättbürste am
+# 14.09. und Bestellung #1018), und Werbesperr-Tags kannte diese Aufnahme nicht. GEMESSEN: von 910 freien Kandidaten 112 mit unklarem Stecker-Befund, 39 mit
+# Sperr-Tag. Neu: NETZGERÄT-Titel (gleiche Wörter wie cj_stecker_pruefen.MAINS) nur mit Status kein-stecker-merkmal / nur-eu-version / cj-… / eu-sku-gesetzt im
+# Ledger dropship/_cj_stecker_geprueft.txt; ohne Eintrag oder mit unklar-/mehrere-/draft-Status überspringen (Zähler im Log, nie stumm).
+NETZGERAET = re.compile(r"Gl[äa]tt(eisen|b[üu]rste)|Lockenstab|Haartrockner|F[öo]hn\b|Wasserkocher|Kaffeemaschine|Toaster|B[üu]geleisen|Dampfglätt|Dampfreiniger|"
+                        r"Heizl[üu]fter|Heizdecke|Heizkissen|Fritteuse|Standmixer|Entsafter|Netzteil|Ladeger[äa]t|Waffeleisen|Waffelmaschine|Sandwichmaker|Reiskocher|"
+                        r"Airfryer|Kontaktgrill|Eismaschine|Epilierer|Haarschneider|Warmluftb[üu]rste|Schallzahnb[üu]rste|"
+                        r"Beamer|Futterautomat|Futterspender|Wasserspender|Karaoke[- ]?System", re.I)   # 19.10.: Geräte, die cj_stecker_pruefen.MAINS (noch) nicht kennt
+NETZ_NICHT = re.compile(r"Auto-?Ladeger|KFZ|Zigarettenanz|Kabel\b|Ladekabel|Solar|f[üu]rs Auto\b|USB", re.I)
+STECKER_LEDGER = "dropship/_cj_stecker_geprueft.txt"
+STECKER_OK = ("kein-stecker-merkmal", "nur-eu-version", "cj-", "eu-sku-gesetzt")
+SPERR_TAGS_HYPE = {"stecker-unklar", "titel-englisch-uebersetzen", "nicht-bewerben", "nicht-live-moebel-sperrig", "medizinprodukt-pruefen", "18plus", "raucher",
+                   "waffengesetz-verboten", "waffe-pruefen", "bild-zu-klein", "duplikat-auto-draft"}
+
+
+def stecker_status():
+    """{produkt_id: status} aus dem Stecker-Ledger (Spalten: id, status, datum, titel; mehrere Zeilen je id → die letzte gilt)."""
+    st = {}
+    try:
+        for z in open(STECKER_LEDGER, encoding="utf-8"):
+            c = z.rstrip("\n").split("\t")
+            if len(c) >= 2:
+                st[c[0].strip()] = c[1].strip()
+    except OSError:
+        pass
+    return st
+
+
+def netzgeraet_ohne_beleg(titel, pid, ledger):
+    """True = überspringen. (1) Das Ledger kennt das Produkt und der Befund ist nicht positiv (unklar-eu-vorhanden, mehrere-varianten, draft-…) → nie aufnehmen,
+    gleich welcher Titel (die 92 Haarglätter «unklar» heissen nicht «Glätteisen»). (2) Netzgerät-Titel ohne jeden Ledger-Eintrag → nicht belegt."""
+    status = ledger.get(pid.rsplit("/", 1)[-1], "")
+    if status:
+        return not status.startswith(STECKER_OK)
+    return bool(NETZGERAET.search(titel)) and not NETZ_NICHT.search(titel)
 
 
 def gql(q, v=None):
@@ -607,7 +656,80 @@ def reihe_ordnen():
     print(f"  Reihe geordnet: {len(alle)} Produkte, juengste Aufnahme zuerst" if not e else f"  ⚠️ Reihenfolge: {e[0]['message']}", flush=True)
 
 
+def vorschlag_bogen(gewaehlt):
+    """19.10.2026 (VORSCHLAG=1): Kontaktbogen genau der Auswahl, die ein scharfer Lauf aufnehmen würde — NUR LESEN (kein tagsAdd, kein collectionCreate,
+    kein reihe_ordnen). Schreibt /tmp/hype_vorschlag.png und dropship/_hype_vorschlag.json. Die Sichtprüfung kommt VOR dem Schreiben (Lehre 15.08.)."""
+    from PIL import Image, ImageDraw
+    os.makedirs("/tmp/hype", exist_ok=True)
+    ids = [g[1] for g in gewaehlt]
+    d = gql('query($ids:[ID!]!){nodes(ids:$ids){... on Product{id title handle featuredMedia{... on MediaImage{image{url}}}}}}', {"ids": ids})
+    nodes = {n["id"]: n for n in ((d.get("data") or {}).get("nodes") or []) if n}
+    bilder, daten = [], []
+    for i, (thema, gid, t, preis, mc) in enumerate(gewaehlt):
+        n = nodes.get(gid) or {}
+        u = ((n.get("featuredMedia") or {}).get("image") or {}).get("url")
+        daten.append({"nr": i + 1, "thema": thema, "id": gid, "handle": n.get("handle"), "titel": t, "preis": preis, "bilder": mc})
+        if not u:
+            continue
+        f = f"/tmp/hype/v{i:02d}.jpg"
+        subprocess.run(["curl", "-s", "--max-time", "40", "-o", f, u.split("?")[0] + "?width=500"])
+        bilder.append((i + 1, f, t))
+    S, SPALTEN = 340, 5
+    zeilen = (len(bilder) + SPALTEN - 1) // SPALTEN
+    bl = Image.new("RGB", (SPALTEN * S, max(1, zeilen) * (S + 30)), "white")
+    zeichner = ImageDraw.Draw(bl)
+    for k, (nr, f, t) in enumerate(bilder):
+        try:
+            im = Image.open(f).convert("RGB").resize((S, S))
+        except Exception:
+            continue
+        x, y = (k % SPALTEN) * S, (k // SPALTEN) * (S + 30)
+        bl.paste(im, (x, y))
+        zeichner.text((x + 4, y + S + 8), f"{nr}. {t[:42]}", fill="black")
+    bl.save("/tmp/hype_vorschlag.png")
+    with open("dropship/_hype_vorschlag.json", "w", encoding="utf-8") as fh:
+        json.dump({"stand": time.strftime("%Y-%m-%dT%H:%MZ", time.gmtime()), "auswahl": daten}, fh, ensure_ascii=False, indent=1)
+    print(f"VORSCHLAG: {len(daten)} Produkte → /tmp/hype_vorschlag.png + dropship/_hype_vorschlag.json (nichts geschrieben). "
+          f"Untaugliche mit «{AUSGEMUSTERT}» markieren, dann scharf laufen lassen.", flush=True)
+
+
+def selbsttest_themen():
+    """19.10.2026: Kanarien für die neuen/verengten Muster (deutsche Komposita: «Hundekuscheldecke», «Powerbank für Heizwesten», «Auto-Heizkissen»…) und
+    für den Stecker-Beleg. Ohne Netz."""
+    fehler = []
+    faelle = [("Hygiene-Gadget", "Babyflaschen Sterilisator – kompakt & USB-betrieben", False), ("Hygiene-Gadget", "UV Sterilisator Box für Handy", True),
+              ("Wärme & Kuschel", "Auto-Heizkissen mit 12V Stromversorgung", False), ("Wärme & Kuschel", "Heizkissen für den Nacken", True),
+              ("Wärme & Kuschel", "Automatische Heizdecke", True), ("Smoothie-Mixer", "Elektrischer Stabmixer mit Mixbecher", False),
+              ("Smoothie-Mixer", "Smoothie Maker tragbar", True), ("Nackenmassagegerät", "Intelligentes Nacken- und Schultermassagegerät", True),
+              ("Nackenmassagegerät", "Nackenstützkissen aus Memory-Schaum", False), ("Kuscheldecke", "Doppelseitige Flanelldecke", True),
+              ("Kuscheldecke", "Hundekuscheldecke gross", False), ("Kuscheldecke", "Kuscheldecke Häschenohren für Babys", False),
+              ("Heizjacke", "Heizjacke mit USB-Anschluss", True), ("Heizjacke", "Powerbank für Heizwesten", False),
+              ("Waffeleisen", "Mini Waffeleisen für Zuhause", True), ("Waffeleisen", "Waffelmaschine Herzform 110 V", False),
+              ("Thermo-Lockenbürste", "Glätt- & Lockenbürste 2-in-1", True)]
+    for thema, titel, soll in faelle:
+        if bool(THEMEN[thema].search(titel)) != soll:
+            fehler.append(f"{thema}: «{titel}» → {not soll}, soll {soll}")
+    led = {"1": "kein-stecker-merkmal", "2": "unklar-eu-vorhanden", "3": "mehrere-varianten", "4": "nur-eu-version", "5": "cj-1602001", "6": "draft-kein-eu-stecker"}
+    stecker_faelle = [("Mini Waffeleisen", "gid://shopify/Product/1", False), ("Mini Waffeleisen", "gid://shopify/Product/2", True),
+                      ("Haarglätter Keramik", "gid://shopify/Product/3", True), ("Haarglätter Keramik", "gid://shopify/Product/4", False),
+                      ("Haarglätter Keramik", "gid://shopify/Product/5", False), ("Haarglätter Keramik", "gid://shopify/Product/6", True),
+                      ("Haarglätter Keramik", "gid://shopify/Product/99", False),           # Titel ist kein Netzgerät-Wort und das Ledger kennt ihn nicht
+                      ("Glätteisen Keramik", "gid://shopify/Product/99", True),             # Netzgerät-Wort, kein Ledger-Eintrag = nicht belegt
+                      ("USB-Lockenstab kabellos", "gid://shopify/Product/98", False),       # USB = kein Netzgerät, nicht im Ledger
+                      ("Herzförmiges Kniekissen", "gid://shopify/Product/98", False), ("Autoladegerät Dual USB", "gid://shopify/Product/98", False),
+                      ("Herzförmiges Kniekissen", "gid://shopify/Product/2", True)]     # Ledger sagt «unklar» → nie aufnehmen, gleich welcher Titel
+    for titel, pid, soll in stecker_faelle:
+        if netzgeraet_ohne_beleg(titel, pid, led) != soll:
+            fehler.append(f"Stecker: «{titel}» {pid} → {not soll}, soll {soll}")
+    print(f"hype_kuratieren Selbsttest: {len(faelle) + len(stecker_faelle) - len(fehler)}/{len(faelle) + len(stecker_faelle)}")
+    for f in fehler:
+        print("  FAIL", f)
+    return not fehler
+
+
 def main():
+    if "--selbsttest" in sys.argv:
+        sys.exit(0 if selbsttest_themen() else 1)
     if os.environ.get("KONTAKT") == "1":
         kontaktbogen()
         return
@@ -627,6 +749,8 @@ def main():
         return
 
     kandidaten = {k: [] for k in THEMEN}
+    stecker = stecker_status()
+    uebersprungen = {"stecker": 0, "sperr-tag": 0}
     for zeile in open(EXPORT):
         p = json.loads(zeile)
         if p["status"] != "ACTIVE" or not p.get("g"):
@@ -647,6 +771,12 @@ def main():
             continue                       # Bild schon einmal als untauglich befunden
         if any(t.startswith("preis-pruefen") for t in tags):
             continue                       # ungeklaerter Einkaufspreis gehoert nicht nach vorn
+        if SPERR_TAGS_HYPE & {t.lower() for t in tags}:
+            uebersprungen["sperr-tag"] += 1
+            continue                       # 19.10.: Werbesperr-Tags gelten auch für die Startseite
+        if netzgeraet_ohne_beleg(p["title"], str(p["id"]), stecker):
+            uebersprungen["stecker"] += 1
+            continue                       # 19.10.: Netzgerät ohne positiven Stecker-Befund
         for thema, muster in THEMEN.items():
             if muster.search(p["title"]):
                 if werbetest_gesperrt(p["id"]):
@@ -674,9 +804,13 @@ def main():
             titel_bisher.append(k[1])
             genommen += 1
 
+    print(f"\nübersprungen (19.10.-Regeln): Netzgerät ohne Stecker-Beleg {uebersprungen['stecker']} · Werbesperr-Tag {uebersprungen['sperr-tag']}", flush=True)
     print(f"\nNeu in die Reihe: {len(gewaehlt)}", flush=True)
     for thema, _, t, preis, mc in gewaehlt:
         print(f"   [{thema:<20}] CHF {preis:>6.2f}  {mc:>2} Bilder  {t[:46]}", flush=True)
+    if os.environ.get("VORSCHLAG") == "1":
+        vorschlag_bogen(gewaehlt)
+        return
     if DRY:
         kollektion_sichern()
         return

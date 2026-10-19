@@ -251,3 +251,20 @@
 2026-10-13	Ringlicht	gid://shopify/Product/15480830755201	Selfie Stick Stativ mit LED-Ringlicht
 2026-10-13	Futterautomat	gid://shopify/Product/15525499470209	Futterspender für Hunde
 2026-10-13	Haustier-Spielzeug smart	gid://shopify/Product/15449431277953	Interaktives Katzenspielzeug mit Fernbedienung
+2026-10-19	Beauty-Gerät	gid://shopify/Product/15450840400257	Elektrisches Gesichtsreinigungsbürsten-Set
+2026-10-19	Schlaf-Stützkissen	gid://shopify/Product/15508451950977	Herzförmiges Kniekissen aus Memory-Schaum
+2026-10-19	Mini-Beamer	gid://shopify/Product/16612785455495	Mini-Projektor Home Office T300 1080P
+2026-10-19	Ordnung & Aesthetic	gid://shopify/Product/15453533864321	Aufbewahrungskorb aus Baumwolle
+2026-10-19	Shapewear	gid://shopify/Product/15448109220225	Nahtloser Body Shaper mit Rundhals und Bauchkontrolle
+2026-10-19	Ladestation 3-in-1	gid://shopify/Product/15481775849857	Magnetische Wireless Powerbank
+2026-10-19	Haarglätter & Styler	gid://shopify/Product/15499446452609	Kabelloser USB-Lockenstab mit Temperaturregelung
+2026-10-19	Kerzenwärmer & Duft	gid://shopify/Product/16604925821319	Kerzenwärmer-Lampe mit Holzsockel
+2026-10-19	Faszienrolle	gid://shopify/Product/16617685877127	Yoga-Massagerolle
+2026-10-19	Karaoke-Mikrofon	gid://shopify/Product/15481379062145	Kabelloses Lavalier-Mikrofon
+2026-10-19	Ringlicht	gid://shopify/Product/15496540782977	Faltbares Fotostudio mit LED-Ringlicht
+2026-10-19	Haustier-Spielzeug smart	gid://shopify/Product/15500968296833	Smartes Katzen-Spielzeug mit Sound
+2026-10-19	Mini-Staubsauger	gid://shopify/Product/16613782323591	Kabelloser Mini-Staubsauger fürs Auto
+2026-10-19	Nackenmassagegerät	gid://shopify/Product/15450832372097	Intelligentes Nacken- und Schultermassagegerät
+2026-10-19	Heizjacke	gid://shopify/Product/15449424789889	Heizjacke mit USB-Anschluss
+2026-10-19	Waffeleisen	gid://shopify/Product/15505602216321	Mini Waffeleisen für Zuhause
+2026-10-19	Thermo-Lockenbürste	gid://shopify/Product/15500911870337	Glätt- & Lockenbürste 2-in-1
