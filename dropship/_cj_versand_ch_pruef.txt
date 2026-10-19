@@ -10911,3 +10911,8 @@ retro-choker-mit-edelsteinen-aus-titanstahl-626800	2607111221501627500	16	4.42	o
 retro-lauflernschuhe-mit-schleife-606400	2501010252321606700	16	5.80	ok	landeseite
 schlanke-langarm-herrenbluse-mit-streifen-617300	2606090320311618000	16	8.79	ok	landeseite
 herbst-fruhjahrs-kinderschuh-mit-gro-em-herz-608300	2501010249391608600	16	5.80	ok	landeseite
+plaid-kleid-mit-streifenmuster-armellos-626100	2607120722081626600	16	8.53	ok	landeseite
+herren-winterstiefel-mit-reissverschluss-309632	1394957009052372992	16	17.66	ok	landeseite
+printkragen-langarm-weit-schnitt-damenkleid-626100	2607120512241626800	16	9.20	ok	landeseite
+retro-hufttasche-620800	2501130346561621000	16	6.77	ok	landeseite
+boho-off-shoulder-kleid-629000	2607080716411629600	16	8.79	ok	landeseite
