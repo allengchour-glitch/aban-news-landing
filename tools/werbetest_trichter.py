@@ -65,6 +65,36 @@ def kampagne(name, tage=14):
               + (f" · Gewinnschwelle CHF {marge:.0f} je Kauf → {'LOHNT' if kaeufe and budget / kaeufe <= marge else 'lohnt NICHT'}" if marge else ""))
 
 
+def art_der_aenderung(p, start):
+    import datetime as dt
+    """19.10.2026: Die Zeile «8 seit Teststart geändert» sagte nicht WAS (Bestand? Preis? SEO?). Aus den Zeitstempeln der Teile:
+    nur Metafeld(er) (updatedAt des Produkts == jüngstes Metafeld, Varianten/Bilder älter) → «nur global.title_tag+…»; sonst
+    «Variante/Preis/Bestand», «Bild» oder «anderes (Titel/Tags/Text?)». Das trennt harmlose SEO-/Lieferzeit-Felder von
+    Schreibern, die die Werbetest-Sperre wirklich brechen."""
+    seit = lambda t: (t or "")[:10] >= start
+    mf = [n for n in ((p.get("metafields") or {}).get("nodes") or []) if seit(n.get("updatedAt"))]
+    var_neu = any(seit(v.get("updatedAt")) for v in ((p.get("variants") or {}).get("nodes") or []))
+    med_neu = any(seit(m.get("updatedAt")) for m in ((p.get("media") or {}).get("nodes") or []) if m)
+    teile = []
+    if var_neu:
+        teile.append("Variante/Preis/Bestand")
+    if med_neu:
+        teile.append("Bild")
+    if mf:
+        jung = max(n["updatedAt"] for n in mf)
+        # Das Produkt-updatedAt folgt dem Metafeld um 0–2 s (gemessen 19.10.: Holzuhr +1 s, Sirène +2 s) → 10 s Toleranz;
+        # Geldbörse +28 min = ein ZWEITER, fremder Schreibvorgang (Titel/Tags/Text).
+        def _s(t): return dt.datetime.fromisoformat(t.replace("Z", "+00:00")).timestamp()
+        sonst = (_s(p.get("updatedAt") or jung) - _s(jung)) > 10 and not var_neu and not med_neu
+        schl = sorted({n["namespace"] + "." + n["key"] for n in mf})
+        teile.append(("nur " if not (var_neu or med_neu) and not sonst else "") + "Metafeld " + "+".join(k.split(".", 1)[1] if k.startswith("global.") else k for k in schl[:3]))
+        if sonst:
+            teile.append("anderes (Titel/Tags/Text?)")
+    if not teile:
+        teile.append("anderes (Titel/Tags/Text?)")
+    return ", ".join(teile)
+
+
 def wache(w=None):
     """13.10.2026 (Werbetest A «geschenke-test», 13 Produkte): Was die Ampel bisher nur für EIN `handle` prüfte, für alle
     `handles` der Steuerdatei: (1) Sitzungen der Kampagne auf FREMDEN Produkten (Produktgruppe offen, Fehler vom 10.10.),
@@ -85,7 +115,8 @@ def wache(w=None):
             fremd += int(z.get("sessions") or 0)
     sperre, geschrieben, fehlt = [], [], []
     for h in handles:
-        p = gql('query($h:String!){productByHandle(handle:$h){title status updatedAt feedback{details{messages{message}}}}}',
+        p = gql('query($h:String!){productByHandle(handle:$h){title status updatedAt feedback{details{messages{message}}} '
+                'metafields(first:60){nodes{namespace key updatedAt}} variants(first:30){nodes{updatedAt}} media(first:12){nodes{... on MediaImage{updatedAt}}}}}',
                 {"h": h}).get("productByHandle")
         if not p:
             fehlt.append(h); continue
@@ -97,7 +128,7 @@ def wache(w=None):
                 if "Shopping ads" in m["message"].replace("_", " ") and "[CH]" in m["message"]:
                     sperre.append(kurz); break
         if (p.get("updatedAt") or "")[:10] >= w["start"]:
-            geschrieben.append(f"{kurz} {p['updatedAt'][5:16]}")
+            geschrieben.append(f"{kurz} {p['updatedAt'][5:16]} [{art_der_aenderung(p, w['start'])}]")
     return {"kampagne": w["kampagne"], "produkte": len(handles), "fremd": fremd, "sperre": sorted(set(sperre)),
             "geschrieben": geschrieben, "fehlt": fehlt}
 
@@ -116,7 +147,30 @@ def zeile(d):
     return f"WERBETEST {d['kampagne']} Produkte: " + " · ".join(teile)
 
 
+def selbsttest():
+    """Vier Fälle aus den echten Messwerten vom 19.10.2026 (Werbetest geschenke-test, Start 2026-10-14)."""
+    st = "2026-10-14"
+    mf = lambda *k: {"nodes": [{"namespace": "global", "key": x, "updatedAt": "2026-10-18T18:51:20Z"} for x in k]}
+    alt = {"nodes": [{"updatedAt": "2026-09-03T02:16:44Z"}]}
+    f = []
+    a = art_der_aenderung({"updatedAt": "2026-10-18T18:51:20Z", "metafields": mf("title_tag", "description_tag"), "variants": alt, "media": alt}, st)
+    if a != "nur Metafeld description_tag+title_tag": f.append(("nur SEO-Felder", a))
+    a = art_der_aenderung({"updatedAt": "2026-10-18T18:51:22Z", "metafields": mf("title_tag"), "variants": alt, "media": alt}, st)
+    if not a.startswith("nur Metafeld"): f.append(("2 s Nachlauf ist kein zweiter Schreiber", a))
+    a = art_der_aenderung({"updatedAt": "2026-10-18T19:20:00Z", "metafields": mf("title_tag"), "variants": alt, "media": alt}, st)
+    if "anderes" not in a: f.append(("28 min später = zweiter Schreiber", a))
+    a = art_der_aenderung({"updatedAt": "2026-10-18T18:51:20Z", "metafields": {"nodes": []},
+                           "variants": {"nodes": [{"updatedAt": "2026-10-18T18:51:20Z"}]}, "media": alt}, st)
+    if a != "Variante/Preis/Bestand": f.append(("Variante", a))
+    for n, a in f:
+        print("FAIL", n, "->", a)
+    print("selbsttest", "ok (4/4)" if not f else f"{len(f)} FEHLER")
+    return not f
+
+
 if __name__ == "__main__":
+    if "--selbsttest" in sys.argv:
+        sys.exit(0 if selbsttest() else 1)
     if "--wache" in sys.argv:
         print(zeile(wache()))
         sys.exit(0)

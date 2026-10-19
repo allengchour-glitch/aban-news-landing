@@ -53,6 +53,11 @@
 
 
 
+## 🔎 Werbetest-Wache sagt jetzt WAS sich geändert hat (2026-10-19)
+- **GEMESSEN:** 8 der 13 «geschenke-test»-Produkte wurden am 18.10. 18:24–23:09 UTC geschrieben: 7× nur die SEO-Metafelder `global.title_tag`/`description_tag` (Vorlagentext «… bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10.»), Sirène nur `custom.lieferzeit`, Geldbörse zusätzlich ein ZWEITER Schreibvorgang 28 min später (Titel/Tags/Text, Variante/Bild unverändert). Preis/Bestand/Bilder/Varianten: bei keinem geändert.
+- **Schreiber UNBELEGT:** der exakte Wortlaut steht in keiner `.py/.mjs/.js/.sh/.yml` des Repos (nächste Verwandte: `shop_brain.mjs` «Schweizer Online-Shop. Gratis-Versand ab CHF 50, … −10% mit Code», `seo-optimizer.mjs` «Jetzt –10% mit Code») — wahrscheinlich ausserhalb des Repos (ChatGPT-Brücke/Shopify-App). Events-API leer. Folge: harmlos für den (noch nicht aktivierten) Test, aber die Sperre `dropship/_werbetest_sperre.txt` bindet fremde Schreiber nicht.
+- `tools/werbetest_trichter.py`: `art_der_aenderung()` liest `updatedAt` von Metafeldern/Varianten/Bildern (Produkt-`updatedAt` folgt dem Metafeld um 1–2 s → 10 s Toleranz) und die Ampel-Zeile nennt «[nur Metafeld …]» / «[… anderes (Titel/Tags/Text?)]»; `--selbsttest` (4 Fälle aus den Messwerten).
+
 ## 🔧 CH-Lager-Tageslauf 5 Tage still (2026-10-19)
 Ampel «CH-LAGER-PROFIL: Stand von 14.10. — Tageslauf fehlt». Ursache (GEMESSEN): `fixer_keepalive.sh` setzte `touch "$CLP"` VOR dem Start und startete erst wieder, wenn das Log > 24 h alt war; Python puffert die Ausgabe
 bis zum Ende; stirbt der Lauf (Container-Neustart ~stündlich, `timeout`) hinterlässt er KEINE Zeile, das Log bleibt aber «frisch» → 24 h gesperrt; der Fix vom 14.10. (`absturz_nachholen` für LEERE Logs) griff nicht, weil das Log
