@@ -11044,3 +11044,4 @@ engel-ohrhanger-f0abcb	545B7618-A01F-46F3-A8E8-C7E8E927A617	16	4.60	ok	landeseit
 reflektierende-taktikjacke-fur-hunde-604500	2601110729201604800	16	9.47	ok	landeseite
 kinder-lauflernschuhe-mit-drehverschluss-917440	1778394768905609216	16	11.37	ok	landeseite
 perlen-halskette-mit-18k-gold-5bf6ea	280D6C5B-2DA3-4995-BDBA-06A1E5FA569A	16	4.92	ok	landeseite
+wasser-und-windfester-klettmantel-fur-hunde-614900	2601030935181615200	16	6.40	ok	landeseite
