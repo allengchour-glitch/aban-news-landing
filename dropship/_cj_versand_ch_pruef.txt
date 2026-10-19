@@ -10816,3 +10816,16 @@ leder-rucksack-fur-business-alltag-623000	2601160933331623200	16	19.18	ok	landes
 leder-rucksack-mit-mehreren-taschen-621100	2601160340411621400	16	23.06	ok	landeseite
 portabler-isolierbecher-623700	2605120816311624200	16	9.47	ok	landeseite
 leichtes-reisegepack-605900	2502110243491606100	11	68.40	ok	landeseite
+winkel-spachtel-618400	2605120616191618900	16	5.85	ok	landeseite
+faltbare-kleiderschranke-627000	2507210539391627500	0	-	KEINE CH-Option → DRAFT	landeseite
+akazienholz-schneidbrett-604500	2605120352331605500	11	44.53	ok	landeseite
+wasserdichte-laptop-tasche-fur-business-reisen-632900	2601151210241633200	16	26.42	ok	landeseite
+hubsche-beeren-spiral-schussel-17x17x10cm-612300	2605110536291612800	16	9.35	ok	landeseite
+kaffeetamper-edelstahl-633000	2605080532131633500	16	6.12	ok	landeseite
+stahl-kochutensilien-7er-set-625300	2605070811521625900	16	21.46	ok	landeseite
+sprachubersetzer-606600	2602140751011607000	7	8.70	ok	landeseite
+intelligente-pinzette-616300	2602080253031616700	7	6.49	ok	landeseite
+mini-elektro-kochtopf-605500	2602030202451605900	7	19.57	ok	landeseite
+casual-mesh-schuhe-338432	1785478236596613120	16	17.66	ok	landeseite
+v-ausschnitt-kleid-604900	2607120702411605500	16	8.25	ok	landeseite
+tier-voice-assistent-612900	2601110955341613100	7	8.10	ok	landeseite
