@@ -7,6 +7,7 @@ Perp-Stops scheitert nach dem Setzen des neuen UND danach ist die Perp-Liste unl
   Tag 0 baut eine Lage (Markt, Richtung z0), Tag 1 läuft mit ZWEI gekoppelten Störungen:
     W = eine SCHREIBENDE Störung (Löschen/Setzen/Ersetzen/Markt), die ab dem (skip+1)-ten passenden Request wirkt,
     R = eine LESE-Störung (Liste/Konto/Position/Kurs), die ab demselben Zeitpunkt («bei_w») oder ab Tagesbeginn («anfang») wirkt.
+    K = optional (--kurs) ein Kurssprung im selben Augenblick: der Markt springt um +4 %, −4 %, +15 % oder −15 % bei der nächsten Anfrage nach Störungsbeginn.
   Gemessen wird nach dem Lauf, nach verspätet ankommenden Aufträgen + Nachkontrolle (Störungen AUS) und nach einem Kurssprung.
 
 Befunde (jeder ist ein Fehler):
@@ -20,6 +21,7 @@ Befunde (jeder ist ein Fehler):
 
 Aufruf (PRUEF_STRENG=1 für die strenge Prüf-Börse):
   python3 -B pruef_raster.py VON BIS [AUSGABE.json]     # Szenario-Index VON..BIS-1 (12 Szenarien; je Szenario 12 × 4 × 15 Fälle)
+  python3 -B pruef_raster.py VON BIS --kurs             # dazu die Kurssprung-Kopplung (4 Sprünge, je Szenario 4 × 720 Fälle)
 """
 from __future__ import annotations
 
@@ -75,6 +77,10 @@ def unbekannte(k, datei):
     return out
 
 
+#: Kurssprünge der optionalen dritten Kopplung (relativ zum Kurs im Augenblick des Störungsbeginns)
+KURSE = [0.04, -0.04, 0.15, -0.15]
+
+
 def _regel_schreiben(t):
     m, pfad, pred, art, n = t
     r = dict(methode=m, pfad=pfad, pred=pred, art=art, anzahl=n, anzahl0=n)
@@ -92,8 +98,8 @@ def _befunde(k, d):
     return P.echte(P.schutz_befunde(k, P.unklar_je_markt(d)) + P.folgeschaden(k))
 
 
-def fall(sz, w, skip, r, modus):
-    """Ein Fall → None (die Störung kam nie zum Zug) oder die Messung."""
+def fall(sz, w, skip, r, modus, kurs=None):
+    """Ein Fall → None (die Störung kam nie zum Zug) oder die Messung. kurs: relativer Kurssprung im Augenblick des Störungsbeginns (None = keiner)."""
     markt, z0, z1 = sz
     k = P.neues_konto(20000)
     d = P.neu_buch()
@@ -113,6 +119,8 @@ def fall(sz, w, skip, r, modus):
                 B.regeln.append(_regel_schreiben(w))
                 if r is not None and modus == "bei_w":
                     B.regeln.append(_regel_lesen(r))
+                if kurs is not None:
+                    B.regeln.append(dict(art="kurs", sym=markt + "USDT", preis=round(B.kurs[markt + "USDT"] * (1 + kurs), 2), anzahl=1, anzahl0=1))
     B.vor_jeder_anfrage = haken
     try:
         res = P.lauf([P.E(markt, z1)], env, d)
@@ -149,8 +157,8 @@ def klasse(e):
     return None
 
 
-def raster(von, bis, ausgabe=None, melde=print):
-    """Szenarien von..bis-1 durchzählen → (Zähler, Funde)."""
+def raster(von, bis, ausgabe=None, melde=print, kurse=(None,)):
+    """Szenarien von..bis-1 durchzählen → (Zähler, Funde). kurse: Kurssprünge der dritten Kopplung (None = ohne Sprung)."""
     zaehler, funde = Counter(), []
     for si in range(von, min(bis, len(SZENARIEN))):
         sz = SZENARIEN[si]
@@ -158,22 +166,23 @@ def raster(von, bis, ausgabe=None, melde=print):
             for skip in (0, 1, 2, 3):
                 for ri, r in enumerate(LESEN):
                     for modus in (("bei_w", "anfang") if r is not None else ("bei_w",)):
-                        try:
-                            e = fall(sz, w, skip, r, modus)
-                        except Exception:  # noqa: BLE001
-                            B.vor_jeder_anfrage = None
-                            B.regeln = []
-                            zaehler["AUSNAHME"] += 1
-                            funde.append(dict(sz=sz, w=wi, skip=skip, r=ri, modus=modus, art="AUSNAHME", fehler=traceback.format_exc()[-600:]))
-                            continue
-                        if e is None:
-                            zaehler["nicht_ausgeloest"] += 1
-                            continue
-                        zaehler["lauf"] += 1
-                        art = klasse(e)
-                        if art:
-                            zaehler[art] += 1
-                            funde.append(dict(sz=sz, w=wi, skip=skip, r=ri, modus=modus, art=art, **e))
+                        for kurs in kurse:
+                            try:
+                                e = fall(sz, w, skip, r, modus, kurs)
+                            except Exception:  # noqa: BLE001
+                                B.vor_jeder_anfrage = None
+                                B.regeln = []
+                                zaehler["AUSNAHME"] += 1
+                                funde.append(dict(sz=sz, w=wi, skip=skip, r=ri, modus=modus, kurs=kurs, art="AUSNAHME", fehler=traceback.format_exc()[-600:]))
+                                continue
+                            if e is None:
+                                zaehler["nicht_ausgeloest"] += 1
+                                continue
+                            zaehler["lauf"] += 1
+                            art = klasse(e)
+                            if art:
+                                zaehler[art] += 1
+                                funde.append(dict(sz=sz, w=wi, skip=skip, r=ri, modus=modus, kurs=kurs, art=art, **e))
     melde(dict(zaehler))
     if ausgabe:
         with open(ausgabe, "w", encoding="utf-8") as f:
@@ -183,9 +192,11 @@ def raster(von, bis, ausgabe=None, melde=print):
 
 def main(argv=None):
     argv = sys.argv[1:] if argv is None else argv
+    kurse = tuple(KURSE) if "--kurs" in argv else (None,)
+    argv = [a for a in argv if a != "--kurs"]
     von, bis = int(argv[0]), int(argv[1])
-    ausgabe = argv[2] if len(argv) > 2 else f"pruef_raster{'_streng' if P.STRENG else ''}_{von}_{bis}.json"
-    zaehler, funde = raster(von, bis, ausgabe)
+    ausgabe = argv[2] if len(argv) > 2 else f"pruef_raster{'_kurs' if kurse != (None,) else ''}{'_streng' if P.STRENG else ''}_{von}_{bis}.json"
+    zaehler, funde = raster(von, bis, ausgabe, kurse=kurse)
     echte = [f for f in funde if f["art"] != "UNBEKANNT_NACH_LAUF"]
     print(f"{len(funde)} Befunde ({len(echte)} ohne UNBEKANNT_NACH_LAUF) → {ausgabe}")
     return 1 if funde else 0
