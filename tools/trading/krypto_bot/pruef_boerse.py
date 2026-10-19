@@ -129,6 +129,7 @@ class Boerse:
         self.takt = 0
         self.bewegt_takt = {}
         self.liste_takt = {}
+        self.liste_verborgen = {}  # Symbol → IDs der Spot-Aufträge, die die LETZTE gelesene Auftragsliste wegen der Verzögerung («sichtbar_ab») nicht zeigte
 
     def konto_anlegen(self, keys, secret, uid, usdt=20000.0):
         k = Konto(uid, usdt)
@@ -367,6 +368,8 @@ class Handler(BaseHTTPRequestHandler):
                                              {"filterType": "NOTIONAL", "minNotional": "5.00000000", "applyMinToMarket": True}]}]}, 200
         if pfad == "/api/v3/openOrders":
             B.n_listen += 1
+            B.liste_verborgen[p["symbol"]] = {o["id"] for o in k.orders.values() if o["symbol"] == p["symbol"]
+                                              and o["status"] in ("NEW", "PARTIALLY_FILLED") and o.get("sichtbar_ab", 0) > B.n_listen}
             return [self._spot_order_json(o) for o in k.orders.values()
                     if o["symbol"] == p["symbol"] and o["status"] in ("NEW", "PARTIALLY_FILLED")
                     and o.get("sichtbar_ab", 0) <= B.n_listen], 200

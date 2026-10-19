@@ -623,7 +623,7 @@ def main(argv=None, env=None, warte=time.sleep):
         except BF.NETZFEHLER as ex:
             raise Abbruch(f"Testnetz nicht erreichbar ({type(ex).__name__}: {str(ex)[:100]}).") from None
         if not a.los:
-            print("Bereit. Ohne --los wurde nichts gesendet. Mit --los prüft das Skript (rund 1 Minute) und räumt danach auf.")
+            print("Bereit. Ohne --los wurde nichts gesendet. Mit --los prüft das Skript (rund 1–2 Minuten) und räumt danach auf.")
             return 0
         if fut_noetig:
             pruefe_futures(fut, a.futures_symbol, b, warte=warte)

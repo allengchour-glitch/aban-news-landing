@@ -4112,15 +4112,88 @@ pruefe("15.E18 Folgeschaden, Liste nach dem Hängen gesehen: bleibt ein echter B
        f_ and any(x[0] == "NACH_SPRUNG_LONG_OHNE_STOP" for x in f_) and P.echte(f_), f_)
 B.stop_typen = ["LIMIT", "MARKET", "STOP_LOSS", "STOP_LOSS_LIMIT", "TAKE_PROFIT", "TAKE_PROFIT_LIMIT", "LIMIT_MAKER"]
 
+# ── Folge-PR zur 14. Runde, Schlusskampagne `camp15a` (Lücken-Läufe 112000–113000 streng): E19 und E21 (Pilot 2.0), E20 (Prüf-Werkzeug) ──
+# 15.E19 (strenger Lücken-Lauf-Seed 112159, 6'238 USDT): ein ausgelöster STOP_LOSS_LIMIT hängt (Kurslücke, Konto ohne STOP_LOSS), cancelReplace ist gestört (503: unklar). Der Rückfall am Ende löscht den hängenden
+# Stop normal — das Löschen kommt an, aber die Antwort geht verloren (Verbindungsabriss), die Wiederholung meldet «−2011 unbekannt». Pilot 2.0 las das als «war schon weg: einer der unklaren Versuche kam an» und setzte
+# keinen Not-Stop: die freigegebenen Coins standen ohne Stop da. Jetzt zählt, was das Löschen tatsächlich freigegeben hat (freie Coins vor und nach dem Löschen).
+k = neues_konto(20000)                                   # setzt die Börse zurück: erst danach die Schalter
+B.stop_typen = [x for x in B.stop_typen if x != "STOP_LOSS"]
+d = neu_buch()
+env = env_echt(kapital=20000)
+lauf([E("BTC", 0.25)], env, d)                           # ein Long mit seinem Stop-Limit
+B.bewegen("BTCUSDT", round(B.kurs["BTCUSDT"] * 0.6, 2))  # Lücke unter das Limit: der Stop löst aus und hängt
+g0 = lage(k, "BTCUSDT")
+hing0_ = P._haengend(k, "BTCUSDT")
+B.regeln = [regel(methode="POST", pfad="/api/v3/order/cancelReplace", art="vor503", anzahl=99),
+            regel(methode="DELETE", pfad="/api/v3/order", art="abriss", anzahl=1)]
+try:
+    r = lauf([E("BTC", 0.25)], env, d)
+finally:
+    B.regeln = []
+    B.stop_typen = ["LIMIT", "MARKET", "STOP_LOSS", "STOP_LOSS_LIMIT", "TAKE_PROFIT", "TAKE_PROFIT_LIMIT", "LIMIT_MAKER"]
+g1 = lage(k, "BTCUSDT")
+pruefe("15.E19 hängender Stop-Limit: Löschen kommt an, Antwort verloren (−2011 beim Wiederholen) — die freigegebenen Coins bekommen trotzdem ihren Not-Stop",
+       hing0_ > 0 and P._haengend(k, "BTCUSDT") == 0 and not befunde(k, d),
+       (g0, g1, hing0_, round(k.frei["BTC"], 6), [(x[0], x[-2:]) for x in befunde(k, d)], [z[:170] for z in r["zeilen"]]))
+
+# 15.E20 (strenger Lücken-Lauf-Seed 112196, 197 USDT): ein ausgelöster STOP_LOSS_LIMIT hängt über dem Kurs UND die Auftragsliste zeigt ihn wegen der Verzögerung noch gar nicht — Pilot 2.0 hält die gesperrten Coins für
+# einen gesunden, nur noch unsichtbaren Stop (E2) und konnte vom Hängen nichts wissen. Das ist dieselbe bekannte Limit-Lücke wie bei einer seit dem Hängen nicht gelesenen Liste (LIMIT_LUECKE_), kein echter Befund.
+k = neues_konto(20000)
+B.stop_typen = [x for x in B.stop_typen if x != "STOP_LOSS"]
+B.bewegen("BTCUSDT", 100000.0)
+cfg_ = L.einstellungen(env_echt())
+sp_ = L.Spot(cfg_["spot"])
+rs_ = sp_.regeln2("BTCUSDT")
+k.frei["BTC"] = 0.05
+B.regeln = [regel(methode="POST", pfad="/api/v3/order", pred=STOP_AUFTRAG, art="unsichtbar", listen=50)]
+try:
+    sp_.stop_verkauf("BTCUSDT", 0.05, 90000.0, rs_, cid=L._kennung(L.CID_STOP_SPOT))   # für 50 Listenabfragen unsichtbar (die Antwort geht dabei verloren: 503)
+except Exception:  # noqa: BLE001
+    pass
+B.regeln = []
+B.bewegen("BTCUSDT", 70000.0)                                       # der Stop löst aus und hängt (Limit 85'500 über dem Kurs)
+sp_.offene("BTCUSDT")                                               # Pilot 2.0 liest die Liste: der hängende Stop steht (noch) nicht darin
+b_ = P.schutz_befunde(k, {})
+pruefe("15.E20 hängender Stop-Limit, in der letzten Liste wegen der Verzögerung nicht zu sehen: LIMIT_LUECKE_ (bekanntes Restrisiko), kein echter Befund",
+       b_ and all("LIMIT_LUECKE_" in x[0] for x in b_) and not P.echte(b_) and P._haengend_unsichtbar(k, "BTCUSDT") > 0.04, (b_, P._haengend_unsichtbar(k, "BTCUSDT")))
+B.n_listen += 100                                                   # die Verzögerung ist vorbei, Pilot 2.0 liest die Liste erneut: jetzt steht der hängende Stop darin
+sp_.offene("BTCUSDT")
+b_ = P.schutz_befunde(k, {})
+pruefe("15.E20 dieselbe Lage, Liste NACH der Verzögerung gelesen: bleibt ein echter Befund (LONG_OHNE_STOP)",
+       any(x[0] == "LONG_OHNE_STOP" for x in b_) and P.echte(b_) and P._haengend_unsichtbar(k, "BTCUSDT") == 0, (b_, P._haengend_unsichtbar(k, "BTCUSDT")))
+B.stop_typen = ["LIMIT", "MARKET", "STOP_LOSS", "STOP_LOSS_LIMIT", "TAKE_PROFIT", "TAKE_PROFIT_LIMIT", "LIMIT_MAKER"]
+
+# 15.E21 (strenger Lücken-Lauf-Seed 112383, 1'008 USDT): der Kurs liegt schon über dem Stop-Kurs des Richtungs-Shorts, der Rückkauf wird in den ersten drei Abgleich-Runden mit 429 abgelehnt und kommt erst in der DRITTEN (letzten)
+# Runde unklar (spaet_u) ins Buch — der Markt braucht damit beidseitigen Schutz (Spot-Stop über alle Coins, der Not-Stop über den ganzen Short deckt sonst die Absicherung), aber es gab keine Runde mehr dafür:
+# der Perp-Not-Stop über den ganzen Short stand, die Coins nicht. Jetzt gibt es dafür Schlussrunden (höchstens zwei).
+k = neues_konto(2500)
+d = neu_buch()
+env = env_echt(kapital=2500)
+lauf([E("BTC", -0.5)], env, d)
+g0 = lage(k, "BTCUSDT")
+B.bewegen("BTCUSDT", round(B.kurs["BTCUSDT"] * 0.93, 2))            # der Kurs fällt, die Ernte läuft weiter
+e2 = {"markt": "BTC", "hebel": 0.706, "stop_long": B.kurs["BTCUSDT"] * 0.9, "stop_short": B.kurs["BTCUSDT"] * 0.97, "stand": "x"}   # Richtungs-Short: sein Stop-Kurs liegt UNTER dem Kurs
+B.regeln = [regel(methode="POST", pfad="/fapi/v1/order", pred=REDUCE, art="429", anzahl=3), regel(methode="POST", pfad="/fapi/v1/order", pred=REDUCE, art="spaet_u", anzahl=1)]
+try:
+    r = lauf([e2], env, d)
+finally:
+    B.regeln = []
+g1 = lage(k, "BTCUSDT")
+b_ = befunde(k, d)
+pruefe("15.E21 unklarer Rückkauf kommt erst in der letzten Abgleich-Runde ins Buch: der Markt wird noch beidseitig gesichert (Spot-Stop über alle Coins), nichts ungesichert",
+       not b_ and any("Rückkauf unklar" in z for z in r["zeilen"]), (g0, g1, [(x[0], x[-2:]) for x in b_], [z[:140] for z in r["zeilen"]]))
+
 # Die drei echten Befunde der Lücken-Kampagne (nach E8–E15): Seed 100890 (E18: Prüf-Werkzeug), 102030 (E17: Prüf-Werkzeug), 102857 (E16: Pilot 2.0)
-for was_s, streng_s, seed_s in (("Lauf-Seed 100890 (Lücken, Standard)", False, 100890), ("strenger Lauf-Seed 102030 (Lücken)", True, 102030), ("strenger Lauf-Seed 102857 (Lücken)", True, 102857)):
+for was_s, streng_s, seed_s in (("Lauf-Seed 100890 (Lücken, Standard)", False, 100890), ("strenger Lauf-Seed 102030 (Lücken)", True, 102030), ("strenger Lauf-Seed 102857 (Lücken)", True, 102857),
+                                ("strenger Lauf-Seed 112159 (Lücken, E19)", True, 112159), ("strenger Lauf-Seed 112196 (Lücken, E20)", True, 112196),
+                                ("strenger Lauf-Seed 112383 (Lücken, E21)", True, 112383)):
     P.STRENG, P.LUECKEN = streng_s, True
     try:
         funde = P.echte(P.laeufe_runde(seed_s, 30))
     finally:
         P.STRENG = P.LUECKEN = False
         B.reduce_algo_streng = False
-    pruefe(f"15.E16–E18 {was_s}: keine Befunde", not funde, [(f_[0], f_[1].get("tag"), f_[1].get("wann")) for f_ in funde][:4])
+    pruefe(f"15.E16–E21 {was_s}: keine Befunde", not funde, [(f_[0], f_[1].get("tag"), f_[1].get("wann")) for f_ in funde][:4])
 
 # ── kleiner Fuzzer mit festen Seeds (der grosse: python3 -B pruef_fuzzer.py laeufe 0 200 / notaus 0 1600) ──
 funde = []

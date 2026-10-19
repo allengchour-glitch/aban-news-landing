@@ -309,13 +309,25 @@ def _haengend_seit(k, sym):
                default=-1)
 
 
+def _haengend_unsichtbar(k, sym):
+    """Coins unter einem hängenden STOP_LOSS_LIMIT, den Pilot 2.0 in der LETZTEN Spot-Auftragsliste dieses Symbols nicht sah (Verzögerung der
+    Prüf-Börse, «sichtbar_ab»): er konnte von ihm nichts wissen."""
+    return sum(o["qty"] - o["ausgefuehrt"] for o in k.orders.values() if o["symbol"] == sym and o["typ"] == "STOP_LOSS_LIMIT"
+               and o["status"] in ("NEW", "PARTIALLY_FILLED") and o.get("aktiv") and o.get("preis", 0.0) > B.kurs[sym]
+               and o["id"] in B.liste_verborgen.get(sym, ()))
+
+
 def _limit_luecke(k, sym, luecke):
     """Unvermeidbare Limit-Lücke: Konto ohne STOP_LOSS, die Lücke ist genau ein über dem Kurs hängender STOP_LOSS_LIMIT, UND
-    Pilot 2.0 hat die Spot-Auftragsliste nicht mehr gesehen, seit der Stop zu hängen begann (der Sprung kam nach seinem letzten
-    Blick). Hat er die Liste danach gelesen, hätte er den hängenden Stop erkennen und zum Markt aussteigen müssen → echter Befund
-    — auch wenn sich der Kurs danach noch ein wenig bewegt hat (13. Prüfung K1: die Zeit zählt je Auftrag, nicht je Bewegung)."""
-    return ("STOP_LOSS" not in B.stop_typen and luecke <= _haengend(k, sym) + STEP_S[sym]
-            and B.liste_takt.get(sym, -1) < _haengend_seit(k, sym))
+    Pilot 2.0 konnte ihn nicht sehen: entweder zeigt die Liste ihn (Verzögerung) noch gar nicht, oder er hat die Spot-Auftragsliste nicht mehr
+    gesehen, seit der Stop zu hängen begann (der Sprung kam nach seinem letzten Blick). Hat er die Liste danach gelesen und der Stop stand
+    darin, hätte er den hängenden Stop erkennen und zum Markt aussteigen müssen → echter Befund — auch wenn sich der Kurs danach noch ein
+    wenig bewegt hat (13. Prüfung K1: die Zeit zählt je Auftrag, nicht je Bewegung)."""
+    if "STOP_LOSS" in B.stop_typen:
+        return False
+    if luecke <= _haengend_unsichtbar(k, sym) + STEP_S[sym]:  # Lücken-Lauf-Seed 112196: der hängende Stop stand noch nicht in der Liste
+        return True
+    return luecke <= _haengend(k, sym) + STEP_S[sym] and B.liste_takt.get(sym, -1) < _haengend_seit(k, sym)
 
 
 DAUER_SPOT = ("/api/v3/order", "/api/v3/order/cancelReplace", "/api/v3/openOrders")

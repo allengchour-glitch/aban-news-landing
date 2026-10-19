@@ -96,6 +96,7 @@ UNKLAR_WARTEN = (2.0, 5.0, 10.0)      # am Laufende: unklare Aufträge so lange 
 BUCH_WARTEN = (0.3, 1.0)        # Buch-Datei kurz gesperrt (Windows: Virenscanner, OneDrive, offener Editor) → nochmal
 VERKAUF_VERSUCHE = 3            # Not-Aus: so oft verkaufen (den Rest jedes Mal neu lesen), danach Schutz-Stop
 ABGLEICH_RUNDEN = 3             # Stop-Abgleich wiederholen, bis der Kontostand während des Abgleichs gleich bleibt
+SCHLUSSRUNDEN = 2               # kommt in der LETZTEN Abgleich-Runde ein unklarer Auftrag ins Buch (der Markt braucht beidseitigen Schutz), folgen höchstens so viele Schlussrunden
 VORAB_TOLERANZ = 2              # Vorab verkleinert einen Perp-Stop nur, wenn er mehr als so viele Futures-Schritte zu gross ist: die Rundung des Plans
                                 # (Stop aufgerundet, Absicherung abgerundet) erklärt bis zu einen Schritt — ein Ersetzen dafür kostet mehr (Fenster zwischen
                                 # Setzen und Löschen, ein unlesbarer Abgleich danach lässt das Ersetzte stehen) als es bringt (14. Prüfung E7, Lauf-Seed 15519)
@@ -1539,9 +1540,13 @@ def _stops_setzen(spot, fut, buch, speichern, ents, daten, basis_g, erg, warn, g
             buch.setdefault("unklar", []).append(u)
             d["unklar_sell"] = unklar_sell(buch, k)
             d["neue_runde"] = True
+            d["unklar_neu"] = True
             speichern()
         d["merke_unklar"] = merke
-        for _ in range(ABGLEICH_RUNDEN):
+        d.pop("unklar_neu", None)
+        runde, grenze, extra = 0, ABGLEICH_RUNDEN, SCHLUSSRUNDEN
+        while runde < grenze:
+            runde += 1
             try:
                 frei, gebunden, pos, kurs = lesen(SCHUTZ_WARTEN)  # länger warten: ohne Kontostand kein neuer Stop
             except Exception as ex:  # noqa: BLE001
@@ -1579,6 +1584,11 @@ def _stops_setzen(spot, fut, buch, speichern, ents, daten, basis_g, erg, warn, g
             _kontoprobe(lesen, d, k, warn)  # mehr Coins gesperrt als nötig = ein Stop, den die Liste nicht zeigt → beidseitig
             if d.pop("neue_runde", False):  # z. B. ein alter Stop hat inzwischen ausgelöst → nicht als «gleich geblieben» werten
                 vorher = None
+            if d.pop("unklar_neu", False) and runde >= grenze and extra > 0:
+                # ein unklarer Auftrag kam erst in der letzten Runde ins Buch: der Markt braucht noch seinen beidseitigen Schutz (Spot-Stop über alle Coins neben dem
+                # Perp-Stop über den ganzen Short) — Folge-PR zur 14. Runde, E21, strenger Lücken-Lauf-Seed 112383: der Not-Stop über den ganzen Short stand, die Coins nicht
+                grenze += 1
+                extra -= 1
         haengend = d.pop("haengend_abgelehnt", None) or {}  # Auftrags-ID → Menge: hängende Stop-Limits, deren Ausstieg bis zuletzt abgelehnt wurde oder unklar blieb
         for h_id, h_m in (haengend.items() if "Kontostand" not in gescheitert else ()):
             # hängt er noch (frisch gelesen), kommt wenigstens ein Not-Stop an seine Stelle — für JEDEN hängenden (Folge-PR zur 14. Runde, Lücken-Seed 92202: zwei hingen).
@@ -1973,25 +1983,26 @@ def _haengenden_ersetzen(spot, k, d, st, o, m, kurs, warn, gesetzt, lesen):
 
 def _haengenden_loeschen(spot, k, d, st, o, m, warn, gesetzt, lesen):
     """cancelReplace geht nicht (Antwort verloren oder Binance kennt es nicht), der hängende Stop-Limit schützt aber ohnehin nichts: ihn
-    zu löschen nimmt keinen Schutz weg (wie im Not-Aus). Löschen (−2011 = schon weg), frisch lesen und aus den freien Coins (höchstens
-    `m`) einen Not-Stop setzen. War der hängende schon weg (−2011), kam einer der unklaren Versuche an (Verkauf oder Not-Stop): nichts
-    weiter setzen — freie Coins daneben sind die Absicherung des Shorts (Folge-PR zur 14. Runde, E10).
+    zu löschen nimmt keinen Schutz weg (wie im Not-Aus). Freie Coins lesen, löschen (−2011 = schon weg), frisch lesen: nur was das Löschen
+    FREIGEGEBEN hat (höchstens `m`), bekommt einen Not-Stop. Ob der Stop schon vorher weg war (ein unklarer Ersatzversuch kam an: Verkauf oder
+    Not-Stop) oder das eigene Löschen ankam und nur seine Antwort verloren ging — die Wiederholung hört dann «unbekannt» (−2011) —, zeigt der Unterschied
+    der freien Coins: war er vorher weg, hat das Löschen nichts freigegeben und nichts wird gesetzt (freie Coins daneben sind die Absicherung des Shorts,
+    Folge-PR zur 14. Runde, E10); kam das eigene Löschen an, sind die Coins frei und ungestoppt (E19, Lücken-Lauf-Seed 112159: 6'238 USDT).
     → True, wenn die Coins unter einem Not-Stop stehen oder nichts (mehr) zu schützen ist; False: der Aufrufer warnt, die Nachkontrolle
     versucht es nochmals."""
     sym, regeln = d["sym"], d["rs"]
     try:
-        weg = _nochmal(lambda: spot.abbrechen(sym, o["orderId"]), SCHUTZ_WARTEN)
+        frei_vor = lesen(SCHUTZ_WARTEN)[0]
+        _nochmal(lambda: spot.abbrechen(sym, o["orderId"]), SCHUTZ_WARTEN)
         if st.get("spot") == o.get("orderId"):
             st["spot"] = None
-        if not weg:
-            return True  # schon weg: einer der unklaren Versuche kam an (Verkauf oder Not-Stop) — die Liste zeigt ihn beim nächsten Abgleich
         frei, _gebunden, _pos, kurs = lesen(SCHUTZ_WARTEN)
-    except Exception:  # noqa: BLE001 — Löschen oder Lesen gescheitert: der hängende bleibt (oder die Coins sind frei), die Nachkontrolle versucht es nochmals
+    except Exception:  # noqa: BLE001 — Lesen oder Löschen gescheitert: der hängende bleibt (oder die Coins sind frei), die Nachkontrolle versucht es nochmals
         return False
-    menge = PL.runde(min(m, frei), regeln["step"])
+    menge = PL.runde(min(m, max(0.0, frei - frei_vor)), regeln["step"])
     preise = [kurs * (1 - f) for f in (NOT_STOP_ABSTAND,) + BREITE_NOTSTOPS]
     if menge * preise[-1] < regeln["min_notional"]:
-        return True
+        return True  # nichts freigegeben (der Stop war schon weg: Verkauf oder Not-Stop eines unklaren Versuchs) oder zu wenig für Binance
     try:
         r, p_ok = _setze_stop(lambda preis, c: spot.stop_verkauf(sym, menge, preis, regeln, cid=c), preise, _kennung(CID_STOP_SPOT),
                               warten=SCHUTZ_WARTEN)
