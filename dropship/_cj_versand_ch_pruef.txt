@@ -10999,3 +10999,6 @@ multifunktionale-digitaluhr-310016	1763822390271807488	7	6.18	ok	landeseite
 sterlingsilber-katzenpfoten-ohrhanger-634500	2607070644051635100	16	4.47	ok	landeseite
 herren-armbanduhr-mechanisch-627900	2604090606521628300	7	6.02	ok	landeseite
 multifunktionale-sport-armbanduhr-mit-doppeldi-072384	1760896280458432512	7	5.69	ok	landeseite
+schlangenformige-ohrstecker-mit-moosachat-635800	2607070225071636400	16	4.36	ok	landeseite
+multifunktionsarmbanduhr-herren-outdoor-sport-876672	1731672137548705792	7	6.12	ok	landeseite
+herrenuhr-multifunktional-wasserdicht-leuchten-174272	1718533115200671744	7	6.45	ok	landeseite
