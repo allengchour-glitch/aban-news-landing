@@ -3015,3 +3015,5 @@
 15525266653569	Farbe:2:2	2026-10-19	multifunktions-herrenuhr-mit-quarzwerk-456dfa
 15525502583169	Farbe:2:2	2026-10-19	faltbare-yogamatte-mit-handyhalter-434432
 16603764785543	Farbe:4:4	2026-10-19	tragbarer-kabelloser-bluetooth-lautsprecher-8fec7a
+15523864412545	Farbe:3:3	2026-10-19	kuchenreibe-und-gemuseschneider-611200
+16604913533319	Typ:2:2	2026-10-19	sussigkeitenschale-geist-halloween-tischdeko-604000
