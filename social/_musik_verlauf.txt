@@ -560,3 +560,4 @@
 2026-10-19T15:32:22.690Z	luxe-epic-sport.wav	44.9	gadget	cjreel-CJJT160595101AZ	stimme:nein	anteil
 2026-10-19T15:34:16.666Z	luxe-epic-tech.wav	7.86	allgemein	cjreel-CJSJ179397501AZ	stimme:ja	azure:de-CH-JanNeural
 2026-10-19T15:36:37.998Z	luxe-epic-spielerisch.wav	31.66	allgemein	cjreel-CJSJSJSJ00239-4pcs	stimme:ja	azure:de-CH-JanNeural
+2026-10-19T15:41:09.000Z	luxe-epic-glamour.wav	13.09	mode	bildreel-hemd-western-braun-fgssbo5433	stimme:ja	azure:de-CH-JanNeural	quelle:bild

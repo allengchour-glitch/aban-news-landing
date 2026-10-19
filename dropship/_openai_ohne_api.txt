@@ -1,0 +1,1 @@
+2026-10-19 Betreiber: «openai github haben jetzt mit chat gpt arbeiten leider ohne api» — ChatGPT/Codex arbeitet über GitHub (Entwurfs-PRs codex/*), nicht über die OpenAI-API. Ein leeres API-Konto ist gewollt; die Ampel ruft nicht mehr zum Aufladen (betreiber_ampel.ki_guthaben). Zweitprüfer laufen über Groq/Gemini. Datei löschen = Ruf kehrt zurück.
