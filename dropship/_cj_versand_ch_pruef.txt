@@ -10390,3 +10390,15 @@ geschirr-set-fur-den-alltag-629000	2605100744041629600	16	21.75	ok	landeseite
 hochzeits-schuhe-fur-blumenmadchen-621900	2506120139501622100	16	9.88	ok	landeseite
 weizenstroh-geschirr-set-outdoor-627000	2605090727061627500	16	19.99	ok	landeseite
 doppelseitiges-kissenbezug-modern-weich-608100	2511100309221608500	16	11.00	ok	landeseite
+madchen-doppelriemen-glitzersteinchen-stiefelc-622400	2505200630141622600	16	11.37	ok	landeseite
+4-personen-geschirr-set-aus-weizenstroh-614000	2605090722231614700	16	19.99	ok	landeseite
+elektrisch-leitende-yogamatte-aus-leder-654700	2511020855071655000	16	16.76	ok	landeseite
+prinzessinnen-leder-schuhe-622800	2503220515361623000	16	9.47	ok	landeseite
+ochsenhorn-kauholz-fur-hunde-614500	2508150645091615500	16	6.48	ok	landeseite
+edelstahl-lunchbox-mit-fachern-630800	2604180320301631400	16	20.58	ok	landeseite
+kauenset-fur-hunde-619000	2508150606131619200	16	7.59	ok	landeseite
+robuster-kauartikel-fur-mittelgro-e-und-gro-e-617500	2508110512411617700	16	6.64	ok	landeseite
+grosse-ramen-schussel-600700	2604120940001601200	16	22.19	ok	landeseite
+reise-yoga-matte-611400	2510220339411611600	16	16.04	ok	landeseite
+automatische-bewegung-und-rotation-604200	2508060711031604500	7	7.85	ok	landeseite
+weiche-kuschelwurst-fur-hunde-618400	2507270558231618600	16	7.85	ok	landeseite
