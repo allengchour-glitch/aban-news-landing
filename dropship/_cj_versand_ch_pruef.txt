@@ -10493,3 +10493,4 @@ herren-langarm-pullover-615000	2606140846471615700	16	9.47	ok	landeseite
 kau-und-knabberspielzeug-607600	2502280854021607800	16	5.54	ok	landeseite
 farbige-led-rahmen-539584	1387255969645465600	7	17.61	ok	landeseite
 lip-gloss-mit-langanhaltendem-glanz-603000	2511290427451603600	3	5.46	ok	landeseite
+kabelgebundene-gaming-maus-mit-8000-dpi-und-6-224576	1387037423875264512	16	6.77	ok	landeseite
