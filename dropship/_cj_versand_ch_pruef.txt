@@ -10168,3 +10168,8 @@ wasserdichte-sporttasche-mit-diebstahlschutz-628000	2507061214391628200	16	6.25	
 3-stockiges-schuhregal-mit-sitzflache-616900	2603310733231617600	16	14.13	ok	landeseite
 hufttasche-mit-nischenfach-603200	2507040938321603500	16	8.25	ok	landeseite
 rektangulares-kissen-mit-einlage-627900	2603260300591628300	16	20.82	ok	landeseite
+faltbarer-kleiderbugel-aus-aluminiumlegierung-610100	2602220623271610400	16	10.83	ok	landeseite
+herren-reisegepack-mit-gravur-616300	2505220955121616600	16	7.85	ok	landeseite
+langer-griff-fur-turen-606600	2602080932171606900	16	8.79	ok	landeseite
+reflektierende-brusttasche-600200	2504120709471600500	16	9.20	ok	landeseite
+reise-kopfkissen-mit-memory-schaum-606200	2603250844391606700	16	14.00	ok	landeseite
