@@ -10986,3 +10986,5 @@ mannliche-edelstahl-armbanduhr-618200	2411070901191618400	7	6.97	ok	landeseite
 katzenohrringe-aus-925er-silber-mit-perlmutt-u-609100	2607080925391609800	16	4.50	ok	landeseite
 smart-sportuhr-mit-kamera-628800	2410310143511629100	6	8.23	ok	landeseite
 mannerarmbanduhr-wasserdicht-636400	2605060143211636900	7	6.34	ok	landeseite
+multifunktionaler-quartz-wasserdichter-busines-624000	2410200952481624200	7	6.91	ok	landeseite
+business-armbanduhr-mit-doppeldisplay-604900	2605040638581605400	7	6.12	ok	landeseite
