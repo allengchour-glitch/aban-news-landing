@@ -29,6 +29,17 @@ nicht von innen ändern); alle Motoren tragen den gültigen Wert. 61'466 CJ-Eint
 Eine Prüfung, die nur an EINEM Startweg hängt, schützt nur diesen. Wer ein Geheimnis prüft, tut es in einer gemeinsamen Funktion, die JEDER
 Startweg ruft — und eine Wache liest, was laufende Prozesse wirklich tragen (`/proc/<pid>/environ`), nie, was die Shell glaubt.
 
+## Ursache belegt 19.10.2026 (GEMESSEN, Wert nie ausgegeben)
+- Der 60-Zeichen-Wert ist **der gültige Schlüssel (`shpss_` + 32 Hex = 38) + `=` + `SHOPIFY_CLIENT_SECRET`** (38 + 1 + 21 = 60): beim Eintragen in die
+  Claude-Umgebungseinstellungen wurde der Variablenname HINTER den Wert gepastet. Belege: `/proc/<claude-pid>/environ` (Länge 60, `=` an Position 38,
+  Rest = 21 Grossbuchstaben/Unterstriche), die ersten 38 Zeichen sind gleich dem Dateiwert, Shopify-Grant mit dem ganzen Wert 400, mit den ersten 38 Zeichen **200**.
+- Fix im Code (`automation/lib/shopify_secret.sh`, Selbsttest `automation/lib/shopify_secret_test.sh` 7/7): `shopify_secret_heilen` schneidet genau dieses Muster
+  (`^shpss_[0-9a-f]{32}=SHOPIFY_CLIENT_SECRET$`) ab — reine Zeichenkettenregel, ohne Netz und ohne `/tmp/secrets_env.sh`, andere Werte mit `=` bleiben unberührt.
+  Gemessen an der echten Sitzung: vorher 60, nachher 38, Grant 200. Die Meldung nennt den Anhang, nie den Wert.
+- Falle beim Nachmessen: `env | awk -F= '{print length($2)}'` zeigte «38», weil awk am `=` im Wert trennt — **Länge immer mit `${#VAR}` oder `len()` messen, nie mit `-F=`**.
+- Der Shell-Schnappschuss von Claude Code (`/root/.claude/shell-snapshots/snapshot-bash-*.sh`) und der `claude`-Prozess tragen den alten Wert weiter; neue Prozesse erben ihn
+  erst nach dem Korrigieren der Umgebungsvariable und einem Container-Neustart.
+
 ## OFFEN (Betreiber)
-Umgebungsvariable `SHOPIFY_CLIENT_SECRET` in den Claude-Umgebungseinstellungen korrigieren (60 → 38 Zeichen, Wert wie in `/tmp/secrets_env.sh`
-bzw. im Shopify-Dev-Dashboard). Bis dahin heilt der Code bei jedem Start selbst.
+In den Claude-Umgebungseinstellungen bei `SHOPIFY_CLIENT_SECRET` hinter dem Schlüssel den Anhang **`=SHOPIFY_CLIENT_SECRET`** löschen (der Wert soll nur `shpss_…` mit 38 Zeichen sein).
+Bis dahin heilt der Code bei jedem Start selbst.

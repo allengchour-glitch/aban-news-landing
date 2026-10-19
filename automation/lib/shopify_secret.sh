@@ -19,7 +19,15 @@
 #        Aufseher); SEC_GEHEILT=1, wenn der Dateiwert exportiert wurde. Rückgabe immer 0.
 
 shopify_secret_heilen() {
-  SEC_KORRIGIERT=0; SEC_GEHEILT=0
+  SEC_KORRIGIERT=0; SEC_GEHEILT=0; SEC_BEREINIGT=0
+  # 19.10.2026 (GEMESSEN: Struktur des 60-Zeichen-Werts ohne ihn auszugeben): gültiger Schlüssel (shpss_ + 32 Hex = 38) + «=» +
+  # «SHOPIFY_CLIENT_SECRET» (21) = 60 — der Variablenname wurde HINTER den Wert gepastet. Reine Zeichenkettenregel, ohne Netz und ohne
+  # Dateiwert: so bleibt der Start auch gesund, wenn /tmp/secrets_env.sh fehlt. Nur dieses exakte Muster wird angefasst.
+  if [[ "${SHOPIFY_CLIENT_SECRET:-}" =~ ^(shpss_[0-9a-f]{32})=SHOPIFY_CLIENT_SECRET$ ]]; then
+    export SHOPIFY_CLIENT_SECRET="${BASH_REMATCH[1]}"
+    SEC_BEREINIGT=1
+    [ "${1:-}" = melden ] && echo "ℹ️ SHOPIFY-SECRET: Umgebungswert trug «=SHOPIFY_CLIENT_SECRET» hinter dem Schlüssel (60 statt 38 Zeichen) — Anhang abgeschnitten · Betreiber: in den Claude-Umgebungseinstellungen den Anhang «=SHOPIFY_CLIENT_SECRET» aus dem Wert löschen"
+  fi
   [ -s /tmp/secrets_env.sh ] && [ -n "${SHOPIFY_CLIENT_SECRET:-}" ] && [ -n "${SHOPIFY_CLIENT_ID:-}" ] || return 0
   local _sec_datei _sec_md5 _sec_urteil _sec_len_env
   _sec_datei=$(bash -c '. /tmp/secrets_env.sh >/dev/null 2>&1; printf %s "${SHOPIFY_CLIENT_SECRET:-}"')
