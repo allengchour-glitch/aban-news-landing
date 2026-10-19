@@ -10190,3 +10190,6 @@ halbrunde-kleiderbugel-mit-haken-614900	2512040815191615100	16	18.32	ok	landesei
 taktische-hufttasche-mit-erste-hilfe-kit-603800	2502200342571604000	16	6.77	ok	landeseite
 einzelrad-kinderrollschuhe-mit-verstellbarem-a-123712	1748618466074038272	11	38.69	ok	landeseite
 taktische-hufttasche-fur-outdoor-aktivitaten-623100	2502181113451623300	16	8.11	ok	landeseite
+herren-kanvas-sneaker-atmungsaktiv-vielseitig-116032	1524649067169722368	16	14.96	ok	landeseite
+kinder-roller-skates-111424	1436627756501831680	3	38.24	ok	landeseite
+kinder-inline-skates-mit-flash-funktion-267904	1423476810242461696	4	47.70	ok	landeseite
