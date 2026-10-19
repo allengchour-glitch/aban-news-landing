@@ -1,15 +1,15 @@
 # Judge.me-Wache — unechte Bewertungen (nur lesen)
 
-Stand: 2026-10-19 05:42 UTC · Skript `automation/judgeme_fake_wache.py` (taeglich im Aufseher) · Dauer 173 s
+Stand: 2026-10-19 23:23 UTC · Skript `automation/judgeme_fake_wache.py` (taeglich im Aufseher) · Dauer 219 s
 
-**JUDGEME: 0 verdaechtig · 5 Namen unmaskiert · 4 ausgeblendet · 14539 von 16891 gelesen · API-Deckel: Rest älter als ID 1199671739, zuletzt vollständig gelesen (ID ≤ 1368220721)**
+**JUDGEME: 0 verdaechtig · 5 Namen unmaskiert · 46 ausgeblendet · 14539 von 16891 gelesen · API-Deckel: Rest älter als ID 1199671739, zuletzt vollständig gelesen (ID ≤ 1368220721)**
 
 Hausregel: NIE Fake-Reviews (UWG). Die Wache LIEST nur — jeder Befund ist ein Entscheid fuer einen Menschen:
 ausblenden = `PUT https://judge.me/api/v1/reviews/<id>` mit `{"curated":"spam"}` (privater Token + shop_domain),
 loeschen = Judge.me-Admin. Geprueft und in Ordnung → ID in `dropship/_judgeme_freigabe.txt` (ID, Leerzeichen, Grund).
 
 ## Regeln
-- **hart** (Ampel-Zahl, nur veroeffentlichte): ohne Produkt (Shop-Bewertung) · Titel/Text/Name = Testwort (1234, 12345, abc, asdf, asdfasdf, hallo test, lorem, lorem ipsum, …) · Absender = Betreiber-Adresse (ENV `JUDGEME_BETREIBER_MAILS`, 0 hinterlegt) · @luxestyle.ch ohne Importer-Muster (`cj-import@`, `importiert+…@`) · Testdomain (example.*, *.invalid, *.test).
+- **hart** (Ampel-Zahl, nur veroeffentlichte): ohne Produkt (Shop-Bewertung) · Titel/Text/Name = Testwort (1234, 12345, abc, asdf, asdfasdf, hallo test, lorem, lorem ipsum, …) · Absender = Betreiber-Adresse (ENV `JUDGEME_BETREIBER_MAILS`, 0 hinterlegt) · @luxestyle.ch ohne Importer-Muster (`cj-import@`, `importiert+…@`) · Testdomain (example.*, *.invalid, *.test) · Quelle `aliexpress` (übernommene Fremdbewertung, seit 19.10.).
 - **weich** (eigene Zahl): Reviewer-Name unmaskiert — die Importer maskieren («C***t»), CJ-Nutzernamen ohne Leerzeichen blieben roh. Die API kann Namen/Texte nicht aendern («for authenticity reason»), nur ausblenden.
 - Paginierung: je rating 1..5, per_page 100 (Deckel der API), page klemmt bei 100 (gemessen) → je Teilmenge max. 10'000; Stopp bei kurzer Seite, ohne neue IDs oder Klemme; `/reviews/count` als Gegenzahl. Fehler/Klemme → «unklar»/«unvollstaendig», nie «0».
 
@@ -39,7 +39,7 @@ Judge.me schreibt sie zeitverzoegert; der Waechter unten liest sie bei jedem Lau
 |---|---|---|
 | all_reviews_count | 13387 | 2026-10-18T23:14:26Z |
 | all_reviews_rating | 4.84 | 2026-10-18T05:24:12Z |
-| reviews_grid.metafield_updated_at | 2026-10-18T23:13:07Z | 2026-10-18T23:13:10Z |
+| reviews_grid.metafield_updated_at | 2026-10-19T12:51:46Z | 2026-10-19T12:51:48Z |
 | shop_reviews_count | 0 | 2026-09-23T00:11:06Z |
 | shop_reviews_rating | 0.00 | 2026-09-23T00:11:06Z |
 
@@ -57,10 +57,52 @@ _keine_
 | 1383697361 | 2026-10-17T02:37 | 5 | 15448847319425 | TechHome26 | cj…@luxestyle.ch | «Super Service! Danke!» | veröffentlicht | Name unmaskiert «TechHome26» |
 | 1383697347 | 2026-10-17T02:37 | 5 | 15448847319425 | TechHome26 | cj…@luxestyle.ch | «Super Service und schneller Versand!» | veröffentlicht | Name unmaskiert «TechHome26» |
 
-## Bereits ausgeblendet / unveroeffentlicht mit Befund (4)
+## Bereits ausgeblendet / unveroeffentlicht mit Befund (46)
 
 | ID | erstellt | ★ | Produkt-ID | Name | E-Mail (maskiert) | Text | Zustand | Gruende |
 |---|---|---|---|---|---|---|---|---|
+| 1203420600 | 2026-06-01T00:00 | 1 | 15413739684225 | Anonymous | su…@judge.me | «I didn't like it, I ordered an XS and the dress arrived too » | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203437999 | 2026-05-20T00:00 | 1 | 15413651046785 | Anonymous | su…@judge.me | «The item doesn’t look as on the photo at all. it is quite cl» | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203730112 | 2026-04-27T00:00 | 1 | 15413025145217 | Anonymous | su…@judge.me | «After 4 weeks, finally a clarification. No goods, but money » | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203440042 | 2026-04-03T00:00 | 1 | 15413083832705 | Anonymous | su…@judge.me | «Never received item says they’re reshipping but tracking say» | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203420598 | 2026-04-03T00:00 | 1 | 15413739684225 | Anonymous | su…@judge.me | «Not xs way to big» | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203420591 | 2026-04-03T00:00 | 1 | 15413739684225 | Anonymous | su…@judge.me | «Wrong color and wrong size» | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203730105 | 2026-03-30T00:00 | 1 | 15413025145217 | Anonymous | su…@judge.me | «My order does not match the description, very disappointed w» | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203420588 | 2026-03-22T00:00 | 1 | 15413739684225 | Anonymous | su…@judge.me | «Horrible and came with stains on it» | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203420540 | 2026-01-11T00:00 | 1 | 15413739684225 | Anonymous | su…@judge.me | «This dress is huge, i got an xs and it fit my mom who’s an x» | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203420605 | 2026-01-11T00:00 | 1 | 15413739684225 | Anonymous | su…@judge.me | «Sommerkleid ärmellos · Damen, tailliert & elegant (Schwarz)» | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203438001 | 2026-01-05T00:00 | 1 | 15413651046785 | Anonymous | su…@judge.me | «The colour faded when i put it in the water for the first ti» | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203438002 | 2025-12-07T00:00 | 1 | 15413651046785 | Anonymous | su…@judge.me | «I never received the item because of the delivery company.» | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203469315 | 2025-11-26T00:00 | 1 | 15413651046785 | Anonymous | su…@judge.me | «First, they never sent the item i ordered i ordered a brown » | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203469316 | 2025-11-26T00:00 | 1 | 15413651046785 | Anonymous | su…@judge.me | «First, they never sent the item i ordered i ordered a brown » | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203469311 | 2025-11-26T00:00 | 1 | 15413651046785 | Anonymous | su…@judge.me | «First, they never sent the item i ordered i ordered a brown » | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203469317 | 2025-11-26T00:00 | 1 | 15413651046785 | Anonymous | su…@judge.me | «First, they never sent the item i ordered i ordered a brown » | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203420699 | 2025-11-11T00:00 | 1 | 15413739684225 | Anonymous | su…@judge.me | «I bought size S. I am 1.67cm tall, weigh 61kg, bust 94cm, wa» | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203420718 | 2025-08-28T00:00 | 1 | 15413739684225 | Anonymous | su…@judge.me | «Nothing, this dress is for sleeping, not for going out.» | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203420594 | 2025-08-03T00:00 | 1 | 15413739684225 | Anonymous | su…@judge.me | «I am sending dress back not size xs very disapointed i recei» | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203420596 | 2025-07-09T00:00 | 1 | 15413739684225 | Anonymous | su…@judge.me | «Thin see-through material, just a long tank top not a dress,» | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203437029 | 2026-05-20T00:00 | 2 | 15413724676481 | Anonymous | su…@judge.me | «Nylon dress» | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203420572 | 2026-04-24T00:00 | 2 | 15413739684225 | Anonymous | su…@judge.me | «I really liked the M and XS, they run large.» | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203420697 | 2026-04-20T00:00 | 2 | 15413739684225 | Anonymous | su…@judge.me | «SORRY, BUT THIS ISN'T A DRESS 👗? IT'S A HOT AND HUGE NIGHTGO» | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203469694 | 2025-08-26T00:00 | 2 | 15413083242881 | Anonymous | su…@judge.me | «The embroidery is not bad, it has been bad for me with embro» | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203437031 | 2026-05-27T00:00 | 3 | 15413724676481 | Anonymous | su…@judge.me | «For that quality the price is too high. its is 100% plastic» | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203478587 | 2026-05-22T00:00 | 3 | 15413724676481 | Anonymous | su…@judge.me | «Everything is fine, but the dress is not as beautiful in per» | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203469691 | 2026-05-14T00:00 | 3 | 15413083242881 | Anonymous | su…@judge.me | «There are some loose threads, but that doesn't matter much c» | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1237361369 | 2026-03-29T00:00 | 3 | 15422970134913 | Anonymous | su…@judge.me | «I was expecting more purple-violet color; I use these stones» | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203420528 | 2026-01-09T00:00 | 3 | 15413739684225 | Anonymous | su…@judge.me | «3 xl is closer to size 8 us» | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203438000 | 2025-09-26T00:00 | 3 | 15413651046785 | Anonymous | su…@judge.me | «Average product quality» | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203478585 | 2026-05-17T00:00 | 4 | 15413724676481 | Anonymous | su…@judge.me | «For price this is good quality, nice colour and lovely summe» | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203462974 | 2026-05-02T00:00 | 4 | 15413724676481 | Anonymous | su…@judge.me | «M - for size 42-44. For height 150-152, you need XL.» | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203420623 | 2026-02-21T00:00 | 4 | 15413739684225 | Anonymous | su…@judge.me | «Bright, transparent, 100% synthetic, but pleasant to the tou» | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1199672149 | 2026-02-19T00:00 | 4 | 15403009704321 | Anonymous | su…@judge.me | «The package arrived within 2 weeks and matches the descripti» | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1199671739 | 2026-02-02T00:00 | 4 | 15408457843073 | Anonymous | su…@judge.me | «Good device, unfortunately one arrived broken.» | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203469681 | 2026-01-22T00:00 | 4 | 15413083242881 | Anonymous | su…@judge.me | «The set is very cute. It looks of excellent quality. The onl» | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203420625 | 2026-01-19T00:00 | 4 | 15413739684225 | Anonymous | su…@judge.me | «I saw this in the reviews. I took size S for my M-L (height » | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203469688 | 2025-11-17T00:00 | 4 | 15413083242881 | Anonymous | su…@judge.me | «I wear M and bought G, the best thing I did. It fit more snu» | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203469689 | 2025-10-27T00:00 | 4 | 15413083242881 | Anonymous | su…@judge.me | «Better than I expected, the size fits me perfectly.» | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203440055 | 2025-10-12T00:00 | 4 | 15413083832705 | Anonymous | su…@judge.me | «In general, everything is fine. Practically as in the photo.» | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203815777 | 2025-09-22T00:00 | 4 | 15412915339649 | Anonymous | su…@judge.me | «The dress is as described, I usually wear size S/M. I took t» | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
+| 1203440054 | 2025-08-30T00:00 | 4 | 15413083832705 | Anonymous | su…@judge.me | «Cool» | ausgeblendet (curated spam) | Quelle AliExpress (übernommene Fremdbewertung) |
 | 1385398917 | 2026-10-18T05:35 | 5 | 15481799934337 | google9711777042365908 | cj…@luxestyle.ch | «Super und perfekt!» | ausgeblendet (curated spam) | Name unmaskiert «google9711777042365908» |
 | 1385385229 | 2026-10-18T04:50 | 5 | 15479468294529 | Zaracail | cj…@luxestyle.ch | «Der Akku ist okay, hält 3 halbe Tage. Ansonsten ist für den » | ausgeblendet (curated spam) | Name unmaskiert «Zaracail» |
 | 1383701253 | 2026-10-17T02:45 | 5 | 15479625908609 | Anónimo | cj…@luxestyle.ch | «Echt gut!» | ausgeblendet (curated spam) | Name unmaskiert «Anónimo» |
