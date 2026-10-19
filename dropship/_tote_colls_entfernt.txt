@@ -12,3 +12,54 @@ damen-duefte	unpublished	Damen-Düfte
 herren-duefte	unpublished	Herren-Düfte
 verpackung-versand	unpublished	Verpackung & Versandmaterial
 parfuem-damen	unpublished	Damenparfüm
+reise-outdoor	unpublished	Reise & Outdoor	leer-auto 2026-10-19T12:42:59Z	301:/collections/sub-reise
+self-care-wellness-1	unpublished	Self-Care & Wellness	leer-auto 2026-10-19T12:43:05Z	301:/collections/wellness-selfcare
+michael-kors	unpublished	Michael Kors	leer-auto 2026-10-19T12:43:10Z	301:/collections/handtaschen-umhaengetaschen
+calvin-klein	unpublished	Calvin Klein	leer-auto 2026-10-19T12:43:15Z	301:/collections/fur-ihn
+hugo-boss	unpublished	Hugo Boss	leer-auto 2026-10-19T12:43:20Z	301:/collections/fur-ihn
+tommy-hilfiger	unpublished	Tommy Hilfiger	leer-auto 2026-10-19T12:43:24Z	301:/collections/fur-ihn
+guess	unpublished	Guess	leer-auto 2026-10-19T12:43:29Z	301:/collections/damen-mode
+dolce-gabbana	unpublished	Dolce & Gabbana	leer-auto 2026-10-19T12:43:35Z	301:/collections/parfum-duefte
+yves-saint-laurent	unpublished	Yves Saint Laurent	leer-auto 2026-10-19T12:43:39Z	301:/collections/parfum-duefte
+casio	unpublished	Casio	leer-auto 2026-10-19T12:43:44Z	301:/collections/uhren
+olivia-burton	unpublished	Olivia Burton	leer-auto 2026-10-19T12:43:48Z	301:/collections/uhren
+police	unpublished	Police	leer-auto 2026-10-19T12:43:52Z	301:/collections/uhren
+citizen	unpublished	Citizen	leer-auto 2026-10-19T12:43:57Z	301:/collections/uhren
+festina	unpublished	Festina	leer-auto 2026-10-19T12:44:01Z	301:/collections/uhren
+kenzo	unpublished	Kenzo	leer-auto 2026-10-19T12:44:05Z	301:/collections/parfum-duefte
+elie-saab	unpublished	Elie Saab	leer-auto 2026-10-19T12:44:10Z	301:/collections/parfum-duefte
+pierre-cardin	unpublished	Pierre Cardin	leer-auto 2026-10-19T12:44:14Z	301:/collections/fur-ihn
+morellato	unpublished	Morellato	leer-auto 2026-10-19T12:44:19Z	301:/collections/uhren
+lotus-uhren	unpublished	Lotus	leer-auto 2026-10-19T12:44:23Z	301:/collections/uhren
+lancome	unpublished	Lancôme	leer-auto 2026-10-19T12:44:28Z	301:/collections/parfum-duefte
+weleda	unpublished	Weleda	leer-auto 2026-10-19T12:44:33Z	301:/collections/beauty-pflege
+lorus	unpublished	Lorus	leer-auto 2026-10-19T12:44:37Z	301:/collections/uhren
+paul-hewitt	unpublished	Paul Hewitt	leer-auto 2026-10-19T12:44:42Z	301:/collections/uhren
+tom-hope	unpublished	Tom Hope	leer-auto 2026-10-19T12:44:46Z	301:/collections/uhren
+fila	unpublished	Fila	leer-auto 2026-10-19T12:44:51Z	301:/collections/sneaker-sportschuhe
+superdry	unpublished	Superdry	leer-auto 2026-10-19T12:44:55Z	301:/collections/fur-ihn
+elektriker-werkzeug	unpublished	Elektriker & Installation	leer-auto 2026-10-19T12:45:01Z	301:/collections/werkzeug-maschinen
+wm-fussball-2026	unpublished	Fussball & Fan 2026	leer-auto 2026-10-19T12:45:06Z	301:/collections/fussball-fanshop
+marke-nike	unpublished	Nike	leer-auto 2026-10-19T12:45:10Z	301:/collections/sneaker-sportschuhe
+marke-new-era	unpublished	New Era	leer-auto 2026-10-19T12:45:17Z	301:/collections/sport-outdoor
+marke-champion	unpublished	Champion	leer-auto 2026-10-19T12:45:22Z	301:/collections/sport-outdoor
+marke-chanel	unpublished	Chanel	leer-auto 2026-10-19T12:45:26Z	301:/collections/parfum-duefte
+marke-artdeco	unpublished	Artdeco	leer-auto 2026-10-19T12:45:36Z	301:/collections/beauty-makeup
+marke-versa	unpublished	Versa	leer-auto 2026-10-19T12:45:46Z	301:/collections/wohnen-dekoration
+marke-quid	unpublished	Quid	leer-auto 2026-10-19T12:45:51Z	301:/collections/sub-kueche
+marke-hi-tec	unpublished	Hi-Tec	leer-auto 2026-10-19T12:45:56Z	301:/collections/sneaker-sportschuhe
+marke-startech	unpublished	Startech	leer-auto 2026-10-19T12:46:01Z	301:/collections/elektronik-technik
+marken-sport	unpublished	Marken-Sportswear	leer-auto 2026-10-19T12:46:06Z	301:/collections/sport-outdoor
+tech-marken	unpublished	Tech & Audio-Marken	leer-auto 2026-10-19T12:46:11Z	301:/collections/elektronik-technik
+mode-marken	unpublished	Mode-Marken	leer-auto 2026-10-19T12:46:15Z	301:/collections/damen-mode
+e-scooter-trottinett	unpublished	E-Scooter & Trottinett	leer-auto 2026-10-19T12:46:20Z	301:/collections/sport-outdoor
+beamer-projektoren	unpublished	Beamer & Projektoren	leer-auto 2026-10-19T12:46:26Z	301:/collections/beamer-heimkino
+kaffee-maschinen	unpublished	Kaffee & Espresso	leer-auto 2026-10-19T12:46:31Z	301:/collections/haushaltsgeraete
+vereins-fanartikel	unpublished	Vereins-Fanartikel	leer-auto 2026-10-19T12:46:36Z	301:/collections/fussball-fanshop
+herren-duefte	unpublished	Herren-Düfte	leer-auto 2026-10-19T12:46:40Z	301:/collections/parfum-duefte
+refurbished	unpublished	Refurbished – Generalüberholt & günstiger	leer-auto 2026-10-19T12:46:44Z	301:/collections/elektronik-technik
+arbeitskleidung	unpublished	Arbeitskleidung & Berufsbekleidung	leer-auto 2026-10-19T12:46:50Z	301:/collections/sub-wander-arbeitsschuhe
+maker-elektronik	unpublished	Elektronik für Bastler	leer-auto 2026-10-19T12:46:55Z	301:/collections/elektronik-kleinteile
+indoor-grow	unpublished	Indoor-Gärtnern & Grow	leer-auto 2026-10-19T12:47:00Z	301:/collections/outdoor-garten
+fan-zone-schweiz	unpublished	Fan-Zone Schweiz – WM 2026	leer-auto 2026-10-19T12:47:05Z	301:/collections/fussball-fanshop
+haustier-kuehlung	unpublished	Haustier-Sommer & Kühlung	leer-auto 2026-10-19T12:47:10Z	301:/collections/sub-haustier

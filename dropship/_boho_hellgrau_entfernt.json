@@ -1,0 +1,71 @@
+{
+ "stand": "2026-10-19T13:05Z",
+ "produkt": "gid://shopify/Product/15413083242881",
+ "grund": "Farbe Hellgrau ohne Foto (kein Bild beim Lieferanten/Shop) — vor dem Kauf nicht sichtbar; 0 Bestellungen seit 01.09.",
+ "varianten": [
+  {
+   "id": "gid://shopify/ProductVariant/55748871422337",
+   "sku": "CJLS291594917QJ",
+   "farbe": "Hellgrau",
+   "groesse": "S",
+   "price": "44.90",
+   "unitCost": "19.58"
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55748871455105",
+   "sku": "CJLS291594918RI",
+   "farbe": "Hellgrau",
+   "groesse": "M",
+   "price": "44.90",
+   "unitCost": "19.91"
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55748871487873",
+   "sku": "CJLS291594919SH",
+   "farbe": "Hellgrau",
+   "groesse": "L",
+   "price": "44.90",
+   "unitCost": "20.24"
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55748871520641",
+   "sku": "CJLS291594920TG",
+   "farbe": "Hellgrau",
+   "groesse": "XL",
+   "price": "44.90",
+   "unitCost": "20.56"
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55748871553409",
+   "sku": "CJLS291594921UF",
+   "farbe": "Hellgrau",
+   "groesse": "XXL",
+   "price": "44.90",
+   "unitCost": "20.89"
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55748871586177",
+   "sku": "CJLS291594922VE",
+   "farbe": "Hellgrau",
+   "groesse": "3XL",
+   "price": "44.90",
+   "unitCost": "21.21"
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55748871618945",
+   "sku": "CJLS291594923WD",
+   "farbe": "Hellgrau",
+   "groesse": "4XL",
+   "price": "44.90",
+   "unitCost": "21.54"
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55748871651713",
+   "sku": "CJLS291594924XC",
+   "farbe": "Hellgrau",
+   "groesse": "5XL",
+   "price": "44.90",
+   "unitCost": "21.87"
+  }
+ ]
+}

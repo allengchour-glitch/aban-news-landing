@@ -10402,3 +10402,12 @@ grosse-ramen-schussel-600700	2604120940001601200	16	22.19	ok	landeseite
 reise-yoga-matte-611400	2510220339411611600	16	16.04	ok	landeseite
 automatische-bewegung-und-rotation-604200	2508060711031604500	7	7.85	ok	landeseite
 weiche-kuschelwurst-fur-hunde-618400	2507270558231618600	16	7.85	ok	landeseite
+zahnpulver-zur-zahnpflege-fur-haustiere-611700	2507170644041612700	1	8.05	ok	landeseite
+interaktive-kauknochen-fur-grosse-hunde-616600	2507160531201616800	16	6.48	ok	landeseite
+magnetische-falsche-wimpern-set-623700	2512200919121623900	7	5.13	ok	landeseite
+naturliche-portablen-magnetischen-wimpern-ohne-618600	2508230645161618800	7	5.65	ok	landeseite
+bissfester-spielkamerad-612200	2507100533291612500	16	7.43	ok	landeseite
+einweg-bettwasche-fur-hunde-634400	2510050327221634600	11	40.68	ok	landeseite
+katzenklettergerust-mit-saugnapf-627500	2507040850061627700	16	24.30	ok	landeseite
+grosses-atmungsaktives-katzen-und-hundehaus-615700	2509050721101615900	0	-	KEINE CH-Option → DRAFT	landeseite
+zahnreinigungs-spielzeug-fur-hunde-629100	2506241148171629300	16	8.79	ok	landeseite
