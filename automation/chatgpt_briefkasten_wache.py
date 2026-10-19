@@ -278,6 +278,7 @@ def selbsttest():
     with tempfile.NamedTemporaryFile("w", suffix=".md", delete=False, encoding="utf-8") as f:
         f.write("Stand 18.10.2026 23:45 Zuercher Zeit\n## Auftrag 1 · Status OFFEN · x\n| Nr | P |\n| 1.1 | katze-1 | Katze | Mi 21.10. 18:30 | Facebook-Reel, Instagram-Reel, TikTok |\n")
     st, zz = auftrag_lesen(f.name)
+    os.unlink(f.name)   # 19.10.: Tempdatei nicht liegen lassen (/tmp-Leichen-Klasse)
     if not (st and len(zz) == 1 and zz[0]["netze"] == {"facebook", "instagram", "tiktok"} and zz[0]["termin"].hour == 18):
         fehler.append(f"Auftragstabelle nicht gelesen: {zz}")
     print("SELBSTTEST chatgpt_briefkasten_wache:", "OK" if not fehler else "FEHLER " + " | ".join(fehler))

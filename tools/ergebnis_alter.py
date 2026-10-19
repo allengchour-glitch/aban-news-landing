@@ -103,6 +103,8 @@ def selbsttest():
     b = os.path.join(d, "b.md"); open(b, "w").write("# x\n\nStand: " + time.strftime("%Y-%m-%d %H:%M", time.gmtime(j - 49 * 3600)) + " UTC · …\n")
     pr("md Stand 49 h", alter_h("md", b), 49)
     print("SELBSTTEST", "OK" if ok else "ROT")
+    import shutil
+    shutil.rmtree(d, ignore_errors=True)   # 19.10.: Tempordner nicht liegen lassen (/tmp-Leichen-Klasse)
     return 0 if ok else 1
 
 

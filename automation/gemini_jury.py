@@ -19,7 +19,23 @@ Urteil: ok = Schnitt ≥ MIN (7.0) UND jedes Kriterium ≥ 5 UND kein K.-o.
 Cache: dropship/_gemini_jury.tsv (sha1 der Datei + Caption → Urteil) — dieselbe Datei kostet nur einmal.
 Kosten: gemini-2.5-flash, ~4 Bilder à ~260 Tokens + Prompt ≈ 0,1 Rappen je Post (Budget-Regel 11: kein Veo, keine Schleife).
 """
-import argparse, base64, calendar, hashlib, json, os, re, subprocess, sys, tempfile, time, urllib.request
+import argparse, atexit, base64, calendar, hashlib, json, os, re, shutil, subprocess, sys, tempfile, time, urllib.request
+
+# 19.10.2026 (Spähtrupp wf_62fc1cba, PL-1, GEMESSEN): /tmp trug 6'755 tmp*.jpg/png/mp4-Dateien = 1,6 GiB (+450 MiB/Tag) und 1'974 tmpXXXXXXXX-Ordner; dieses Skript
+# lud jedes Urteilsobjekt per NamedTemporaryFile(delete=False) und legte je Aufruf einen mkdtemp-Ordner mit Standbildern an, ohne je aufzuräumen (1'920 Urteile).
+# Jetzt räumt ein atexit-Handler beides weg (greift auch bei sys.exit an jeder Stelle).
+_AUFRAEUMEN = []
+
+
+def _aufraeumen():
+    for pf in _AUFRAEUMEN:
+        try:
+            shutil.rmtree(pf) if os.path.isdir(pf) else os.unlink(pf)
+        except OSError:
+            pass
+
+
+atexit.register(_aufraeumen)
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CACHE = os.path.join(REPO, "dropship", "_gemini_jury.tsv")
@@ -110,6 +126,7 @@ def lokal(q):
     if re.match(r"^https?://", q):
         suf = os.path.splitext(q.split("?")[0])[1] or ".bin"
         f = tempfile.NamedTemporaryFile(suffix=suf, delete=False).name
+        _AUFRAEUMEN.append(f)
         subprocess.run(["curl", "-sL", "--max-time", "120", "-o", f, q], check=False)
         if not os.path.exists(f) or os.path.getsize(f) < 2000:
             raise RuntimeError("Download fehlgeschlagen")
@@ -121,6 +138,7 @@ def bilder(pfad):
     """JPEG-Bytes: Video → 4 Standbilder, Bild → 1 (max 1024 px)."""
     ist_video = pfad.lower().endswith((".mp4", ".mov", ".webm")) or open(pfad, "rb").read(12)[4:8] == b"ftyp"
     tmp = tempfile.mkdtemp()
+    _AUFRAEUMEN.append(tmp)
     out = []
     if ist_video:
         try:

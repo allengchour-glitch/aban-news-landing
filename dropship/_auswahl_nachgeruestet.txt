@@ -2650,3 +2650,5 @@
 16647281279367	Farbe:2:2	2026-10-19	multifunktionaler-reiserucksack-business-casua-746368
 16647280296327	Farbe:5:5	2026-10-19	sport-und-reisetasche-grosse-kapazitat-wasserd-279936
 16647278559623	Farbe:2:2	2026-10-19	grosses-lederreise-backpack-fur-freizeit-776064
+16647274267015	Muster:2:2+ki	2026-10-19	manner-crossbody-rucksack-plaid-734016
+16647222296967	Farbe:8:8	2026-10-19	einseitige-crossbody-reisetasche-20-35-l-215488
