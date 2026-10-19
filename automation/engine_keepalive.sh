@@ -181,6 +181,7 @@ env_datei /tmp/judgeme.env JUDGEME_PRIVATE_TOKEN JUDGEME_PUBLIC_TOKEN JUDGEME_SH
 # startet, und der Aufseher einmal ersetzt (er erbt die Umgebung). Schon laufende Prozesse mit dem abgelehnten Wert beendet
 # automation/secret_umgebung_wache.py (unten, vor dem Neustart-Block). Dauerlösung: Betreiber korrigiert die Variable.
 . "$REPO/automation/lib/shopify_secret.sh" && shopify_secret_heilen melden
+[ -f "$REPO_AUTO/shopify_host_wache.py" ] && { timeout 60 python3 "$REPO_AUTO/shopify_host_wache.py" 2>/dev/null || echo "SHOPIFY-HOST: unklar (Wache abgebrochen)"; }   # 19.10.: SHOPIFY_SHOP an allen Startwegen/Prozessen sauber? (nur lesend; Zeile «SHOPIFY-HOST: …» in der Stundenmeldung)
 # Was VORHER schon lief (autostart-Hook beim Container-Start, alter Lauf), trägt den abgelehnten Wert weiter — der Export oben
 # erreicht nur Neues. Bekannte Motoren mit abgelehntem Wert beenden: cj_queue_runner startet Abschnitt 3 unten neu, cj_perpetual
 # autostart.sh am Ende dieses Laufs (Marke /tmp/_secret_neustart_autostart). Gezählt werden nur node/python-Verbraucher.
@@ -675,6 +676,7 @@ python3 "$REPO_AUTO/cj_zahlung_offen.py" 2>/dev/null || echo "CJ-ZAHLUNG: unklar
 [ -f "$REPO_AUTO/klaviyo_dns_wache.py" ] && { timeout 60 python3 "$REPO_AUTO/klaviyo_dns_wache.py" 2>/dev/null || echo "KLAVIYO-DNS: unklar (Wache abgebrochen)"; }
 # 19.10.2026: Kanarien in der LIVE-Theme-Datei (Rückgabe-Zusatz, Liechtenstein-Zweig am Lieferdatum, CH-Wortlaut): ein Schreiber mit altem Stand löscht sie sonst still. Eine Shopify-Leseanfrage.
 [ -f "$REPO_AUTO/theme_text_kanarien.py" ] && { timeout 60 python3 "$REPO_AUTO/theme_text_kanarien.py" 2>/dev/null || echo "THEME-KANARIEN: unklar (Wache abgebrochen)"; }
+[ -f "$REPO_AUTO/publish_guard.mjs" ] && { env -u SHOPIFY_CLIENT_ID -u SHOPIFY_CLIENT_SECRET SHOPIFY_SHOP=au3j0y-hq.myshopify.com SHOPIFY_ADMIN_TOKEN="$(cat /tmp/cj_shop_token.txt 2>/dev/null)" timeout 120 /opt/node22/bin/node "$REPO_AUTO/publish_guard.mjs" --zeile 2>/dev/null || echo "PUBLISH-GUARD: unklar (Wächter abgebrochen)"; }   # 19.10.: EINE Zeile, nur lesend (--zeile schreibt nie): fehlen Verkaufskanäle bei aktiven Produkten, die NICHT absichtlich gesperrt sind?
 # 18.10.2026: 7-Tage-Vorlauf (automation/social_vorlauf.py) — eine Zeile aus dem Plan; ⚠️ bei Lücken in den nächsten 12 h oder altem Stand.
 [ -f "$REPO_AUTO/social_vorlauf.py" ] && { timeout 30 python3 "$REPO_AUTO/social_vorlauf.py" --zeile 2>/dev/null || echo "VORLAUF: unklar (Zeile nicht lesbar)"; }
 # 18.10. (Prüfung): unter _SOCIAL_STOPP zieht der Prüfer die vorausgeplanten Posts zurück — der Autopilot startet unter Stopp nicht, also auch hier (idempotent, billig).
@@ -748,6 +750,7 @@ python3 "$REPO_AUTO/nullrunden_wache.py" 2>/dev/null || true
 python3 "$REPO_AUTO/zustand_verklebt.py" 2>/dev/null || true
 python3 "$REPO_AUTO/reel_kadenz_wache.py" 2>/dev/null || true   # 28.09.: Reel-Kanal ausser Takt (still wenn ok)   # 28.09.: verklebte Einzelwert-Dateien (still bei 0)
 python3 "$REPO_AUTO/queue_schreiber_wache.py" --still 2>/dev/null || true   # 14.10.: Social-Queues — Roh-Schreiber, Reel-Waisen, verschwundene Zeilen (still wenn ok)
+python3 "$REPO_AUTO/queue_struktur_wache.py" --still 2>/dev/null || true   # 19.10.: Social-Queues innerlich heil? Kopf/Pflichtspalten, Feldzahl, Spalten-Shift, offene Anführungszeichen, ID, Status-/Plattform-Wortschatz (still wenn ok; Zeile «QUEUE-STRUKTUR: …» bei Befund/unklar)
 # 15.10.2026: cj_perpetual startet NUR autostart.sh (SessionStart-Hook). Hat die Secret-Wache oben ihn wegen des abgelehnten
 # Schlüssels beendet, startet ihn hier derselbe Starter mit dem gültigen Wert neu — nicht im Vorrang-Fenster/Grind-Pause
 # (dann bleibt die Marke für den nächsten Lauf liegen).
