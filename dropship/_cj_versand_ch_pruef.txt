@@ -10988,3 +10988,5 @@ smart-sportuhr-mit-kamera-628800	2410310143511629100	6	8.23	ok	landeseite
 mannerarmbanduhr-wasserdicht-636400	2605060143211636900	7	6.34	ok	landeseite
 multifunktionaler-quartz-wasserdichter-busines-624000	2410200952481624200	7	6.91	ok	landeseite
 business-armbanduhr-mit-doppeldisplay-604900	2605040638581605400	7	6.12	ok	landeseite
+fanformige-metall-ohrhanger-602000	2607080212031602600	16	4.48	ok	landeseite
+goldarmband-uhren-set-mit-sonnenbrille-621900	2408280621441622100	7	9.06	ok	landeseite
