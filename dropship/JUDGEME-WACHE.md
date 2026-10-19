@@ -1,8 +1,8 @@
 # Judge.me-Wache — unechte Bewertungen (nur lesen)
 
-Stand: 2026-10-18 22:58 UTC · Skript `automation/judgeme_fake_wache.py` (taeglich im Aufseher) · Dauer 137 s
+Stand: 2026-10-19 05:32 UTC · Skript `automation/judgeme_fake_wache.py` (taeglich im Aufseher) · Dauer 190 s
 
-**JUDGEME: unklar (unvollstaendig: rating 5 >100 Seiten (API-Deckel page=100)) · bis dahin 0 verdaechtig · 8 Namen unmaskiert · 14539 von 16891 gelesen**
+**JUDGEME: 0 verdaechtig · 5 Namen unmaskiert · 4 ausgeblendet · 14539 von 16891 gelesen · API-Deckel: Rest älter als ID 1199671739, zuletzt vollständig gelesen (ID ≤ 1368220721)**
 
 Hausregel: NIE Fake-Reviews (UWG). Die Wache LIEST nur — jeder Befund ist ein Entscheid fuer einen Menschen:
 ausblenden = `PUT https://judge.me/api/v1/reviews/<id>` mit `{"curated":"spam"}` (privater Token + shop_domain),
@@ -37,9 +37,9 @@ Judge.me schreibt sie zeitverzoegert; der Waechter unten liest sie bei jedem Lau
 
 | Feld | Wert | updatedAt |
 |---|---|---|
-| all_reviews_count | 13677 | 2026-10-18T19:00:34Z |
+| all_reviews_count | 13387 | 2026-10-18T23:14:26Z |
 | all_reviews_rating | 4.84 | 2026-10-18T05:24:12Z |
-| reviews_grid.metafield_updated_at | 2026-10-18T19:02:15Z | 2026-10-18T19:02:17Z |
+| reviews_grid.metafield_updated_at | 2026-10-18T23:13:07Z | 2026-10-18T23:13:10Z |
 | shop_reviews_count | 0 | 2026-09-23T00:11:06Z |
 | shop_reviews_rating | 0.00 | 2026-09-23T00:11:06Z |
 
@@ -47,23 +47,23 @@ Judge.me schreibt sie zeitverzoegert; der Waechter unten liest sie bei jedem Lau
 
 _keine_
 
-## Namen unmaskiert — veroeffentlicht (8)
+## Namen unmaskiert — veroeffentlicht (5)
 
 | ID | erstellt | ★ | Produkt-ID | Name | E-Mail (maskiert) | Text | Zustand | Gruende |
 |---|---|---|---|---|---|---|---|---|
 | 1385410025 | 2026-10-18T06:04 | 4 | 16612790763911 | المتسوق في AliExpress | cj…@luxestyle.ch | «Ich muss zugeben, ich hätte nicht erwartet, dass das Produkt» | veröffentlicht | Name unmaskiert «المتسوق في AliExpress» |
-| 1385398917 | 2026-10-18T05:35 | 5 | 15481799934337 | google9711777042365908 | cj…@luxestyle.ch | «Super und perfekt!» | veröffentlicht | Name unmaskiert «google9711777042365908» |
 | 1385391532 | 2026-10-18T05:14 | 5 | 16612790731143 | Anónimo | cj…@luxestyle.ch | «Alles war perfekt. Ich kann den Verkäufer wirklich empfehlen» | veröffentlicht | Name unmaskiert «Anónimo» |
 | 1385391512 | 2026-10-18T05:14 | 5 | 16612790731143 | Anónimo | cj…@luxestyle.ch | «Artikel wie beschrieben! Ist gut!» | veröffentlicht | Name unmaskiert «Anónimo» |
-| 1385385229 | 2026-10-18T04:50 | 5 | 15479468294529 | Zaracail | cj…@luxestyle.ch | «Der Akku ist okay, hält 3 halbe Tage. Ansonsten ist für den » | veröffentlicht | Name unmaskiert «Zaracail» |
-| 1383701253 | 2026-10-17T02:45 | 5 | 15479625908609 | Anónimo | cj…@luxestyle.ch | «Echt gut!» | veröffentlicht | Name unmaskiert «Anónimo» |
 | 1383697361 | 2026-10-17T02:37 | 5 | 15448847319425 | TechHome26 | cj…@luxestyle.ch | «Super Service! Danke!» | veröffentlicht | Name unmaskiert «TechHome26» |
 | 1383697347 | 2026-10-17T02:37 | 5 | 15448847319425 | TechHome26 | cj…@luxestyle.ch | «Super Service und schneller Versand!» | veröffentlicht | Name unmaskiert «TechHome26» |
 
-## Bereits ausgeblendet / unveroeffentlicht mit Befund (1)
+## Bereits ausgeblendet / unveroeffentlicht mit Befund (4)
 
 | ID | erstellt | ★ | Produkt-ID | Name | E-Mail (maskiert) | Text | Zustand | Gruende |
 |---|---|---|---|---|---|---|---|---|
+| 1385398917 | 2026-10-18T05:35 | 5 | 15481799934337 | google9711777042365908 | cj…@luxestyle.ch | «Super und perfekt!» | ausgeblendet (curated spam) | Name unmaskiert «google9711777042365908» |
+| 1385385229 | 2026-10-18T04:50 | 5 | 15479468294529 | Zaracail | cj…@luxestyle.ch | «Der Akku ist okay, hält 3 halbe Tage. Ansonsten ist für den » | ausgeblendet (curated spam) | Name unmaskiert «Zaracail» |
+| 1383701253 | 2026-10-17T02:45 | 5 | 15479625908609 | Anónimo | cj…@luxestyle.ch | «Echt gut!» | ausgeblendet (curated spam) | Name unmaskiert «Anónimo» |
 | 1335720164 | 2026-09-14T20:06 | 5 | 0 | Test | te…@example.invalid | «Probelauf» | ausgeblendet (curated spam) | ohne Produkt (Shop-Bewertung); body = Testwort «Probelauf»; Name = Testwort «Test»; Testdomain example.invalid |
 
 ## Freigegeben durch Menschen (0)

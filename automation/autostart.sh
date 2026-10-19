@@ -120,4 +120,11 @@ if ! running 'automation/autocommit.sh'; then
   log "Auto-Committer (Repo-Fassung, merge vor Push) gestartet (PID $!)"
 fi
 
+# ── 5. Aufseher (19.10.2026): GEMESSEN fixer_keepalive.log — kein Aufseher von 15.10. 04:37 bis 18.10. 20:03 (87 h), obwohl dieser Hook in der Zeit
+# Container-Autocommits startete (137 Commits). Der Aufseher hing allein an der Stunden-Routine. engine_keepalive.sh ist idempotent (Sperre, Herzschlag).
+if ! ps -eo args --no-headers | awk '$1=="bash" && $2 ~ /engine_keepalive\.sh$/ {f=1} END{exit(f?0:1)}'; then
+  nohup setsid bash automation/engine_keepalive.sh >> /tmp/engine_keepalive_vom_hook.log 2>&1 &
+  log "Keepalive/Aufseher über den Hook angestossen (PID $!)"
+fi
+
 log "fertig. Laufend: $(pgrep -fc 'cj_perpetual|bigbuy_import|gmc_desc' 2>/dev/null || echo 0) Engine(s)."

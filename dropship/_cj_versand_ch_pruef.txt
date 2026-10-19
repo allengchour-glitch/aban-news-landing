@@ -10146,3 +10146,6 @@ memory-foam-kissen-609700	2609290228411608900	16	25.49	ok	landeseite
 fahrradtasche-fur-mountainbikes-626000	2508050729281626200	16	9.33	ok	landeseite
 keramik-olspender-mit-deckel-im-retro-stil-629600	2605210834571620100	16	11.37	ok	landeseite
 elektronische-sportuhr-fur-herren-603800	2507270227301604000	7	6.81	ok	landeseite
+anti-diebstahl-karten-und-ausweishalter-leder-626300	2512190818071626500	16	5.41	ok	landeseite
+memory-foam-heizkissen-604000	2604100800281604500	16	15.81	ok	landeseite
+wasserdichter-huftbeutel-625500	2508030741221625700	16	8.79	ok	landeseite

@@ -224,6 +224,12 @@ def main():
         print("FERTIG: 0 geprüft (count fehlgeschlagen)")
         return
 
+    VOLL = os.path.join(REPO, "dropship", "_judgeme_vollstaendig.json")   # {"stand":…, "max_id": N} des letzten VOLLSTÄNDIGEN Laufs
+    try:
+        voll_max = int(json.load(open(VOLL, encoding="utf-8"))["max_id"])
+    except Exception:  # noqa: BLE001
+        voll_max = 0
+    aeltest = {}                                                         # rating → kleinste gelesene ID (Liste ist ID-absteigend, gemessen 19.10.)
     gelesen, seiten, ids = 0, 0, set()
     harte, weiche, ausgeblendet, freigegeben = [], [], [], []
     fehler, klemmen = None, []
@@ -242,6 +248,7 @@ def main():
                 if str(r.get("id")) in ids:      # Liste ist «neueste zuerst»; der Importer schiebt waehrend des Laufs
                     continue
                 ids.add(str(r.get("id")))
+                aeltest[rating] = min(aeltest.get(rating, 10 ** 12), int(r.get("id") or 0))
                 gelesen += 1
                 neu += 1
                 hart, weich = pruefe(r, betreiber)
@@ -269,14 +276,19 @@ def main():
 
     mf = shopify_judgeme_metafelder()
     vollst = gelesen >= gesamt - 5 and not klemmen   # count kann waehrend des Laufs wachsen (Importer)
-    if klemmen and not fehler:
+    # 19.10.2026: Deckel ≠ Lücke. Hinter dem Deckel liegen nur ÄLTERE Bewertungen (ID-absteigend). Waren alle IDs bis voll_max beim letzten
+    # vollständigen Lauf gelesen und ist die älteste lesbare ID jetzt ≤ voll_max, ist der Rest schon geprüft → Hinweis statt «unklar».
+    gedeckt = bool(klemmen) and not fehler and voll_max > 0 and all(aeltest.get(r, 10 ** 12) <= voll_max for r in range(1, 6) if any(f"rating {r} " in k for k in klemmen))
+    if vollst and ids:
+        json.dump({"stand": time.strftime("%Y-%m-%dT%H:%MZ", time.gmtime()), "max_id": max(int(i) for i in ids)}, open(VOLL, "w"))
+    if klemmen and not fehler and not gedeckt:
         fehler = "unvollstaendig: " + "; ".join(klemmen)
     if fehler:
         ampel = (f"JUDGEME: unklar ({fehler}) · bis dahin {len(harte)} verdaechtig · {len(weiche)} Namen unmaskiert "
                  f"· {gelesen} von {gesamt} gelesen")
     else:
         ampel = (f"JUDGEME: {len(harte)} verdaechtig · {len(weiche)} Namen unmaskiert · {len(ausgeblendet)} ausgeblendet "
-                 f"· {gelesen} von {gesamt} gelesen" + ("" if vollst else " ⚠️ unvollstaendig"))
+                 f"· {gelesen} von {gesamt} gelesen" + ("" if vollst else (" · API-Deckel: Rest älter als ID " + str(min(aeltest.values())) + ", zuletzt vollständig gelesen (ID ≤ " + str(voll_max) + ")" if gedeckt else " ⚠️ unvollstaendig")))
     kopf = "| ID | erstellt | ★ | Produkt-ID | Name | E-Mail (maskiert) | Text | Zustand | Gruende |\n|---|---|---|---|---|---|---|---|---|"
     def tabelle(liste, deckel=300):
         if not liste:

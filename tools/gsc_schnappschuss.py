@@ -91,9 +91,27 @@ def selbsttest():
     return fehler == 0
 
 
+def faellig_zeile(max_h=20):
+    """19.10.2026: --faellig — Zeile für den Keepalive (die 4-h-Routine liest sie). Search Console ist nur über den OpenSEO-Konnektor einer
+    Sitzung lesbar; ohne diese Zeile stand die Pflicht nirgends (Schnappschuss 13.10., Ampel «GSC-TOT 5 T alt»). Exit 0 = fällig."""
+    try:
+        h = (dt.datetime.utcnow() - dt.datetime.strptime(json.load(open(ZIEL, encoding="utf-8"))["stand"], "%Y-%m-%dT%H:%MZ")).total_seconds() / 3600
+    except Exception:  # noqa: BLE001
+        h = 999
+    if h < max_h:
+        return 1
+    print(f"⚠️ SESSION-AUFGABE GSC-Schnappschuss ({int(h)} h alt): OpenSEO get_search_console_performance projectId "
+          "443c940c-93c9-4feb-9d0c-1e4d1d88c6cf, dimensions [page], dateRange last_28_days, rowLimit 1000, "
+          "Filter page contains /products/, startRow 0/1000/… solange hasMore → python3 tools/gsc_schnappschuss.py <Antworten>")
+    return 0
+
+
 def main():
     if "--selbsttest" in sys.argv:
         return 0 if selbsttest() else 1
+    if "--faellig" in sys.argv:
+        faellig_zeile()
+        return 0
     dateien = [a for a in sys.argv[1:] if not a.startswith("--")]
     if not dateien:
         print(__doc__); return 2

@@ -1,0 +1,6 @@
+# name	typ	pfad	arg	max_h   (ältestes der mit | getrennten Ergebnisse zählt; Repo-Pfade ohne führenden /; max_h = ab wann der Wächter wieder fällig ist)
+startseite_gewicht	tsv	dropship/_startseite_gewicht.tsv	1 13=0	20
+anlass_social_sperre	json	dropship/_anlass_social_sperre.json	stand	20
+versprechen_kette	mtime	/tmp/_ok_vk_wache|/tmp/_ok_vk_material|/tmp/_ok_vk_alt_titel|/tmp/_ok_vk_essbar|/tmp/_ok_vk_haendler|/tmp/_ok_vk_dein_bezug	-	20
+kosten_export	mtime	/tmp/kost28.jsonl	-	20
+ch_lager_profil	json	dropship/_ch_lager_profil.json	stand	20

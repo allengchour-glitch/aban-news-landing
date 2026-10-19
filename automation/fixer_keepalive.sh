@@ -172,6 +172,8 @@ fehlt() {
 # Der Zeitstempel taugt nicht als Erkennung: `git reset --hard` beim Snapshot-Vorspulen
 # setzt die mtime neu, ohne dass sich der Inhalt geaendert haben muss. Also die PRÜFSUMME.
 md5sum "$0" 2>/dev/null | cut -d' ' -f1 > /tmp/_fixer_version
+# 19.10.2026: gemeinsamer Baustein «Ergebnis statt Log» (Tageswächter sind fällig, wenn ihr ERGEBNIS alt ist, nicht ihr Log)
+source "$REPO/automation/lib/tageslauf.sh"
 exec 9>/tmp/fixer_keepalive.lock
 flock -n 9 || { echo "$(date -u +%H:%M) Supervisor läuft bereits — dieser Start endet."; exit 0; }
 while true; do
@@ -645,6 +647,10 @@ while true; do
     # starb (preis_verlustschutz 29.09. 04:09: «Kandidaten: 2788 …», keine Schlusszeile → 16 h «erledigt», 63 Verlustartikel
     # blieben kaufbar). Jeder Start schreibt jetzt «START … (Aufseher)» ins Log; gewertet wird nur, was DANACH kam.
     # Logs ohne Marke (vor dem ersten neuen Start) behalten das alte Verhalten.
+    # 19.10.2026: FERTIG zählt nur, solange auch das ERGEBNIS jung ist (Registry automation/data/tageslauf_ergebnis.tsv; ohne Eintrag
+    # wie bisher). Anlass: Schranke-Timeout schrieb ein falsches FERTIG (startseite_gewicht: Ergebnis 114 h alt, Tor «erledigt»).
+    ERG_ZN=0; ERG_H=$(tageslauf_ergebnis_h "$L")
+    if [ "$ZN" = 0 ] && [ -n "$ERG_H" ] && tageslauf_pruefen "$L" "$ERG_H" "$(tageslauf_max_h "$L")" 40 6; then ZN=1; ERG_ZN=1; fi
     if [ "$ZN" = 0 ] && letzter_lauf "/tmp/$L.log" | tail -n 3 | grep -qE "^([0-9:]{8} |[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]{8,12}Z )?FERTIG"; then
       F_ALTER=$(( $(date +%s) - $(stat -c %Y "/tmp/$L.log" 2>/dev/null || echo 0) ))
       [ "$F_ALTER" -lt 72000 ] && continue
@@ -784,6 +790,7 @@ while true; do
     case " social_queue_saeubern bild_queue_captions_ehrlich ig_gepostet_tags suchwort_mehrzahl herbst_kuratieren koll_seo_laengen anlass_social_sperre queue_schreiber_wache google_bild_abruf startseite_gewicht startseite_schlank_patch cj_real_luecke " in
       *" $L "*) NACH=1 ;;
     esac
+    [ "$ERG_ZN" = 1 ] && tageslauf_claim "$L"      # Versuch zählen + Claim (40 min) — erst jetzt, nachdem alle continue-Tore passiert sind
     date +%s > "/tmp/_start_$L"
     if [ -n "$NACH" ]; then
       ( cd "$REPO" && setsid bash -c \
@@ -1496,25 +1503,12 @@ while true; do
   # Täglich (eigener Bulk-Export mit Texten und SEO-Feldern); Regel automation/data/versprechen_regel.json, auch im Importer.
   VSW=/tmp/versprechen_wache.log
   if [ -f "$REPO/automation/versprechen_wache.py" ]; then
-    ALTER=$(( $(date +%s) - $(stat -c %Y "$VSW" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
-      touch "$VSW"
-      ( cd "$REPO" && timeout 2400 python3 automation/versprechen_wache.py >> "$VSW" 2>&1 )
-      echo "$(date -u +%H:%M) VERSPRECHEN: $(grep -E '^FERTIG|Kanarien rot|Bulk' "$VSW" | tail -1)"
-      # 08.10.2026: Titel verspricht Leder, Materialangabe sagt PU (38 gemessen) — liest denselben Export, Leder automatisch, Rest gemeldet
-      [ -f "$REPO/automation/material_widerspruch.py" ] && ( cd "$REPO" && SCHARF=1 timeout 900 python3 automation/material_widerspruch.py 2>&1 | grep -E '^FERTIG|Kanarien rot' | tail -1 >> "$VSW" )
-      # 08.10.2026 abends: Bild-Alts trugen alte Titel (11'730 an 1'604 Produkten, darunter «& Blutdruckmessung», «Diamanten»)
-      # — egal welches Werkzeug den Titel änderte. Kandidaten aus demselben Export, live entschieden, Rücklesen.
-      [ -f "$REPO/automation/alt_titel_abgleich.py" ] && ( cd "$REPO" && SCHARF=1 timeout 2400 python3 automation/alt_titel_abgleich.py 2>&1 | grep -E '^FERTIG|Kanarien rot' | tail -1 >> "$VSW" )
-      # 09.10.2026: Essbares aus China (Ergänzungsfutter, Tier-Snacks, Supplements) → DRAFT (12 gefunden, Klasse Klinge #1017).
-      # Importer sperren selbst (essbar.mjs); dieser Lauf fängt Altbestand und Kategorie-Treffer. Regel data/essbar_regel.json.
-      [ -f "$REPO/automation/essbar_wache.py" ] && ( cd "$REPO" && SCHARF=1 timeout 900 python3 automation/essbar_wache.py 2>&1 | grep -E '^FERTIG|Kanarien rot' | tail -1 >> "$VSW" )
-      # 09.10.2026: wörtlich übersetzte Händlerwörter (防爆 «explosionsgeschützt» bei Leinen/Werkzeug/Akkus, 爆款 «Explosive …», ins风, 百搭)
-      # + Rolex-/Patek-Modellnamen im Uhrentitel — 200/0 am 09.10.; Importer filtern selbst (haendlerwort.mjs in fallenSicher).
-      [ -f "$REPO/automation/haendlerwort.py" ] && ( cd "$REPO" && SCHARF=1 timeout 1500 python3 automation/haendlerwort.py 2>&1 | grep -E '^FERTIG|Kanarien rot' | tail -1 >> "$VSW" )
-      # 09.10.2026: «dein … Design» am Satzanfang (596 Texte) — um() machte jedes «Ihr» zu «dein», auch «ihr Design» (= der Ware).
-      # Quelle repariert (dein_bezug.ihr_satzanfang in um()); dieser Lauf fängt Altbestand und Texte aus anderen Wegen.
-      [ -f "$REPO/automation/dein_bezug.py" ] && ( cd "$REPO" && SCHARF=1 timeout 1500 python3 automation/dein_bezug.py 2>&1 | grep -E '^FERTIG|Kanarien rot' | tail -1 >> "$VSW" )
+    # 19.10.2026: Tor am ERGEBNIS (Marken der Kette, versprechen_wache schreibt zusätzlich /tmp/koll_versprechen_stand.json), nicht am Log-mtime.
+    # Bisher: ALTER>86400 → touch VOR dem Lauf, 6 Vordergrund-Aufrufe (bis 40 min je). 18.10. starb der Lauf am Container-Neustart (Log-Ende
+    # 21:35:26 nach «EDITOR-RÜCKGABE», kein KOLL-Stand) — das Log war «frisch», KOLL-VERSPRECHEN 103 h alt. Jetzt Hintergrund, Sperre, Wiederholung.
+    if tageslauf_faellig versprechen_wache "$(tageslauf_ergebnis_h versprechen_kette)" 20 60 4; then
+      tageslauf_start versprechen_wache "$VSW" 9600 -- bash automation/versprechen_kette.sh
+      echo "$(date -u +%H:%M) VERSPRECHEN: Kette gestartet (Ergebnis $(tageslauf_ergebnis_h versprechen_kette) h alt) — Zeile folgt im Log $VSW"
     fi
   fi
   # FILTERGRENZE (04.10.2026): Shopify zeigt KEINE Filter, wenn eine Kollektion > 5'000 aktive Produkte hat (gemessen:
@@ -2036,6 +2030,13 @@ fi
   # ⚠️ Zuerst der Export, sonst läuft die Korrektur ins Leere. Beide sind selbst-drosselnd:
   # der Export baut nur, wenn seiner älter als ein Tag ist.
   KOS=/tmp/kosten_boden15.log
+  # 19.10.2026: ERZEUGER getrennt vom Verbraucher. /tmp/kost28.jsonl (liest verlustbringer, preis_verlustschutz, fortura_ek_nachtragen, ek_luecke_cj …)
+  # hing am 24-h-Tor des Verbrauchers kosten_boden15 (touch VOR dem Lauf): 18.10. 22:37 gestartet, 22:52 vom Neustart getötet, kein Output →
+  # Log frisch, Export 96 h alt, Ampel «VERLUST: wartet auf Export». Jetzt nach dem Alter des Exports selbst; Bulk-Abfrage = nur lesen.
+  if [ -f "$REPO/automation/kosten_export_bauen.py" ] && tageslauf_faellig kosten_export "$(tageslauf_ergebnis_h kosten_export)" 20 40 6 lock_kosten_export.lock; then
+    tageslauf_start kosten_export /tmp/kosten_export_bauen.log 2700 lock_kosten_export.lock -- env MAXALTER=72000 python3 automation/kosten_export_bauen.py
+    echo "$(date -u +%H:%M) kosten-export: Neubau gestartet (Alter $(tageslauf_ergebnis_h kosten_export) h)"
+  fi
   if [ -f "$REPO/automation/kosten_boden15_korrigieren.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$KOS" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$KOS"; then

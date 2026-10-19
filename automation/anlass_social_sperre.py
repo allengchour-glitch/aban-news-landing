@@ -647,6 +647,12 @@ def faellig(jetzt_=None, stand_datei=STAND):
         return True
     if not st.get("scharf"):
         return True
+    # 19.10.2026: auch fällig, wenn der letzte scharfe Lauf ≥ 20 h her ist (Schranke-Timeout/Neustart ließ den Stand 100 h alt: «Tageslauf fehlt»)
+    try:
+        if (t - dt.datetime.strptime(st["stand"], "%Y-%m-%dT%H:%MZ").replace(tzinfo=dt.timezone.utc)).total_seconds() >= 20 * 3600:
+            return True
+    except Exception:  # noqa: BLE001
+        return True
     for r in regel():
         alt = (st.get("anlaesse") or {}).get(r["anlass"], {}).get("phase")
         if alt != phase_von(r, t):

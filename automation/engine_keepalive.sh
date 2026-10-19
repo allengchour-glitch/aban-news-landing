@@ -619,6 +619,8 @@ if [ -f /tmp/kost28.jsonl ] && [ -f "$REPO_AUTO/preis_verlustschutz.py" ] \
 fi
 
 python3 "$REPO_AUTO/bestell_ampel.py" 2>/dev/null || echo "BESTELLUNGEN: unklar (Ampel-Skript fehlt)"
+# 19.10.2026: Pflichten, die nur eine Claude-Sitzung erledigen kann (Search Console über den OpenSEO-Konnektor): als Zeile, die die 4-h-Routine liest
+python3 "$REPO/tools/gsc_schnappschuss.py" --faellig 2>/dev/null || true
 # 05.10.2026 Betreiber «jeder kauf muss auch automatisch auslösen bei fortuna»: Fortura-Positionen bezahlter Bestellungen
 # erkennen + Bestellpaket vorbereiten (Stufe 1; XML nach /home/ORDERS erst mit Fortura-Muster). Zeile nur bei Arbeit.
 # 13.10.2026 (Trockenlauf Fortura-Kette): ein Absturz/Timeout der Engine gab KEINE Zeile — dieselbe Stille wie «0 offen».
