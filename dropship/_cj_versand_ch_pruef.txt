@@ -10798,3 +10798,8 @@ einfarbiger-rucksack-fur-unisex-611100	2601220914341611500	16	15.32	ok	landeseit
 aufblasbare-badewanne-612600	2604280521011613300	0	-	KEINE CH-Option → DRAFT	landeseite
 retro-geschaftstasche-622000	2506301419091622200	16	16.68	ok	landeseite
 rucksack-mit-bluetooth-lautsprecher-621800	2601220724421622300	7	19.72	ok	landeseite
+pu-trolley-koffer-klein-gross-607900	2506270527231608200	16	27.59	ok	landeseite
+herren-rucksack-oxford-stoff-611100	2601200159241611400	16	14.60	ok	landeseite
+vielzweck-schneidbrett-mit-griff-624100	2605150539181624700	16	28.18	ok	landeseite
+leichter-trekking-rucksack-634900	2601190009021635300	16	7.57	ok	landeseite
+dreistufiger-aufbewahrungswagen-639800	2605140731331630400	0	-	KEINE CH-Option → DRAFT	landeseite
