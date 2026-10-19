@@ -7427,3 +7427,18 @@ gid://shopify/Product/15472274669953	zugeordnet	10	Kapuzenkleid mit langen Ärme
 gid://shopify/Product/15472274768257	zugeordnet	50	Samt-Top mit Peter-Pan-Kragen
 gid://shopify/Product/15472274801025	zugeordnet	50	Einfarbiges Langarm-Shirt mit V-Ausschnitt für Damen
 gid://shopify/Product/15472274833793	zugeordnet	50	Samt-Langarmshirt für Damen
+gid://shopify/Product/15472274997633	zugeordnet	4	Faltbarer Angel-Schaukelstuhl aus Aluminium
+gid://shopify/Product/15472275030401	zugeordnet	6	Bikini-Set mit doppelten Trägern
+gid://shopify/Product/15472275554689	bild-urls-tot
+gid://shopify/Product/15472275587457	zugeordnet	3	Retro Handtasche aus glänzendem Lackleder
+gid://shopify/Product/15472275620225	zugeordnet	10	Tulpen Diffusor Stein – Feuerfreie Aromatherapie
+gid://shopify/Product/15472275652993	zugeordnet	2	Kurzes Portemonnaie aus Vollnarbenleder
+gid://shopify/Product/15472275947905	zugeordnet	1	Faltbarer Automatik-Sonnenschirm
+gid://shopify/Product/15472335225217	zugeordnet	1	Kollagen Feuchtigkeitsmaske
+gid://shopify/Product/15472335290753	zugeordnet	12	Meerjungfrauen-Abendkleid
+gid://shopify/Product/15472335552897	zugeordnet	14	Doppelhängematte mit Holzstange
+gid://shopify/Product/15472335683969	zugeordnet	8	Lila geblümtes Trägerkleid
+gid://shopify/Product/15472335749505	zugeordnet	3	Hängesessel Nylon-Netz
+gid://shopify/Product/15472335782273	zugeordnet	25	Midi-Hemdblusenkleid mit Blumenprint und Taschen
+gid://shopify/Product/15472335946113	zugeordnet	8	Kurzes Strickkleid mit V-Ausschnitt
+gid://shopify/Product/15472336109953	zugeordnet	28	Elegantes Slip Dress im New Chinese-Stil

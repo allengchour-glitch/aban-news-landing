@@ -9792,3 +9792,6 @@ skischutzkappe-818816	1464101714905927680	16	11.70	ok	landeseite
 sicherheitsschuhe-mit-stahlkappe-fur-damen-und-813632	1403913176126459904	16	12.09	ok	landeseite
 aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben	-	-	-	unklar keine CJ-SKU	landeseite
 aroma-diffuser-holzoptik-hohl-design-ultraschall-luftbefeuchter-mit-led-licht	-	-	-	unklar keine CJ-SKU	landeseite
+streifen-bluse-marbella-color-block-kurzarm	-	-	-	unklar keine CJ-SKU	landeseite
+spitzen-bluse-dentelle-v-ausschnitt-loose-fit	-	-	-	unklar keine CJ-SKU	landeseite
+strick-bluse-maglia-hollow-out-loose-langarm	-	-	-	unklar keine CJ-SKU	landeseite
