@@ -24,7 +24,7 @@ Sicherheitsregeln: Stopp-Datei dropship/_SOCIAL_STOPP → nichts planen, zukünf
 (ChatGPT, Autopilot) werden NIE angefasst, nur als Abstands-Hindernis gezählt. Nie ein Post ohne Planer-Quittung als «geplant» führen.
 Zeitumstellung: Zürich 25.10.2026 03:00 → 02:00 — Slots in der doppelten Stunde fallen weg (`mehrdeutig()`).
 """
-import fcntl, json, os, re, shutil, subprocess, sys, tempfile, time, urllib.error, urllib.parse, urllib.request
+import copy, fcntl, json, os, re, shutil, subprocess, sys, tempfile, time, urllib.error, urllib.parse, urllib.request
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
@@ -42,6 +42,7 @@ DROSSEL = os.path.join(REPO, "dropship", "_vorlauf_drossel.tsv")
 HALT = os.path.join(REPO, "dropship", "_vorlauf_halt.txt")   # Notbremse des Treibers: solange die Datei steht, plant er nichts (löschen = weiter)
 PRODUKTE = os.path.join(REPO, "dropship", "_posted_produkte.txt")
 SPERRE_PRUEFER = "/tmp/social_vorlauf_pruefer.lock"
+PLAN_SPERRE = "/tmp/social_vorlauf_plan.lock"   # kurz, nur um «lesen → zusammenführen → schreiben» der Plan-Datei
 TT_MODUS = os.path.join(REPO, "dropship", "_tt_trend_modus.txt")   # TikTok-Trendton: aus | halt (Pilot läuft, TikTok-Slots warten) | an
 STOPP = os.path.join(REPO, "dropship", "_SOCIAL_STOPP")
 PAUSE = os.path.join(REPO, "dropship", "_social_pause.txt")
@@ -109,9 +110,11 @@ def plan_laden(pfad=PLAN):
     Prüfung 18.10. — ein leerer Plan erzeugt alle Slots neu und damit Doppelposts neben den vorhandenen. Erst die Datei sichern,
     dann den letzten gültigen Stand aus git holen; gelingt das nicht → Abbruch (PlanDefekt)."""
     if not os.path.exists(pfad):
-        return {"version": 1, "slots": {}}
+        return {"version": 1, "slots": {}, "_basis": {}}
     try:
-        return json.load(open(pfad, encoding="utf-8"))
+        d = json.load(open(pfad, encoding="utf-8"))
+        d["_basis"] = copy.deepcopy(d.get("slots", {}))
+        return d
     except (OSError, ValueError):
         pass
     try:
@@ -124,15 +127,38 @@ def plan_laden(pfad=PLAN):
             print(f"⚠️ Plan-Datei defekt → Stand aus git {rev} wiederhergestellt ({len(d['slots'])} Slots; Kopie: _vorlauf_plan.json.defekt)")
             if SCHARF:
                 atomar(pfad, json.dumps(d, ensure_ascii=False, indent=1))
+            d["_basis"] = copy.deepcopy(d.get("slots", {}))
             return d
     raise PlanDefekt("dropship/_vorlauf_plan.json ist defekt und nicht aus git herstellbar")
 
 
 def plan_speichern(plan, pfad=PLAN):
+    """Schreibt den Plan — aber ZUSAMMENGEFÜHRT: Prüfer/Notbremse (eigene Sperre) und der Plan-Lauf halten je eine Kopie im Speicher; wer seine
+    Kopie über die Datei schrieb, löschte die Änderungen des anderen (Lost-Update, Prüfung 18.10.). Je Slot gilt: hat DIESER Prozess ihn gegenüber
+    dem Stand beim Laden (`_basis`) geändert → unser Stand, sonst der aktuelle Stand der Datei."""
     if not SCHARF and pfad == PLAN:
         return   # Trockenlauf schreibt nichts
-    plan["stand"] = iso(jetzt())
-    atomar(pfad, json.dumps(plan, ensure_ascii=False, indent=1, sort_keys=True) + "\n")
+    with open(PLAN_SPERRE, "w") as sperre:
+        fcntl.flock(sperre, fcntl.LOCK_EX)
+        try:
+            platte = json.load(open(pfad, encoding="utf-8")).get("slots", {})
+        except (OSError, ValueError):
+            platte = {}
+        basis = plan.get("_basis", {})
+        zusammen = {}
+        for name in set(plan["slots"]) | set(platte):
+            unser, ihr, alt = plan["slots"].get(name), platte.get(name), basis.get(name)
+            if unser is None:
+                zusammen[name] = ihr
+            elif ihr is None or unser != alt:
+                zusammen[name] = unser
+            else:
+                zusammen[name] = ihr
+        plan["slots"] = zusammen
+        plan["stand"] = iso(jetzt())
+        roh = {k: v for k, v in plan.items() if k != "_basis"}
+        atomar(pfad, json.dumps(roh, ensure_ascii=False, indent=1, sort_keys=True) + "\n")
+        plan["_basis"] = copy.deepcopy(zusammen)
 
 
 def log(slot, aktion, detail=""):
@@ -281,8 +307,10 @@ def produkt_zeilen():
 
 def produkt_neu(vorher):
     # nur plausible Shop-Handles: das Ledger führt auch Reel-IDs («cjreel-…», «bildreel-…») und gekürzte Namens-Schlüssel unter «slug:»
-    return [z[5:].strip().lower() for z in produkt_zeilen() - vorher
-            if z.startswith("slug:") and len(z) > 5 and not re.match(r"slug:(?:cjreel|bildreel|reel|x)-", z)]
+    neu = [z[5:].strip().lower() for z in produkt_zeilen() - vorher
+           if z.startswith("slug:") and len(z) > 5 and not re.match(r"slug:(?:cjreel|bildreel|reel|x)-", z)]
+    # Bild/Karussell schreiben «pid:<Zahl>» (und «name:…») statt «slug:» — pid wird erst beim Prüfen zum Handle aufgelöst (handles_aufloesen)
+    return neu + [z.strip().lower() for z in produkt_zeilen() - vorher if re.fullmatch(r"pid:\d+", z.strip().lower())]
 
 
 def tt_trend_modus():
@@ -310,7 +338,7 @@ def poster_aufruf(slot_name, slot, regeln):
 def neue_eintraege(vorher_ids, nachher, slot, regeln, seit_utc):
     """Planer-Einträge, die es vorher nicht gab, mit passendem Netz und Termin (±3 Min)."""
     t_soll = von_iso(slot["termin_utc"])
-    erlaubt = set(regeln["formate"][slot["format"]]["netze"]) | ({"facebook", "threads"} if slot["format"] == "bild" else {"facebook"} if slot["format"] == "karussell" else set())
+    erlaubt = set(regeln["formate"][slot["format"]]["netze"]) | zwilling_netze(slot["format"])
     gefunden = []
     for p in nachher:
         if p.get("id") in vorher_ids or p.get("draft") or p.get("autoPublish") is False:
@@ -329,11 +357,49 @@ def kind_planer_stand(p):
 
 
 # ───────────────────────── Plan füllen ─────────────────────────
+def zwilling_netze(fmt):
+    return {"facebook", "threads"} if fmt == "bild" else {"facebook"} if fmt == "karussell" else set()
+
+
+def adoptierbare(plan, s, planer, seit_utc):
+    """Planer-Einträge, die zu diesem Slot gehören müssen, aber nicht im Plan stehen: ±3 min um den Termin, nur Netze des Formats (+ Zwilling),
+    kein Entwurf, nicht in einem anderen Slot, erst NACH `seit_utc` angelegt (Fremdeinträge — ChatGPT, Betreiber — liegen davor)."""
+    fmt_netze = set(REGELN_CACHE()["formate"][s["format"]]["netze"]) | zwilling_netze(s["format"])
+    bekannt = {i for x in plan["slots"].values() for i in x["mc_ids"]}
+    gefunden = []
+    for p in planer:
+        te, n = eintrag_utc(p), set(W.netze(p))
+        if p.get("id") in bekannt or te is None or not n or not n <= fmt_netze or p.get("draft") or p.get("autoPublish") is False:
+            continue
+        if abs((te - von_iso(s["termin_utc"])).total_seconds()) > 180:
+            continue
+        try:
+            erstellt = datetime.fromisoformat((p.get("creationDate") or {}).get("dateTime", "1970-01-01T00:00:00")).replace(tzinfo=TZ).astimezone(UTC)
+        except ValueError:
+            continue
+        if erstellt >= seit_utc:
+            gefunden.append(p)
+    return gefunden
+
+
 def abgleichen(plan, planer, jetzt_utc):
-    """Plan gegen den Planer: verschwundene Einträge → Slot wieder offen; halb abgestürzte «reserviert» adoptieren oder freigeben."""
+    """Plan gegen den Planer: verschwundene Einträge → Slot wieder offen; halb abgestürzte «reserviert» adoptieren oder freigeben.
+    Massen-Schutz (Prüfung 18.10.): ein leerer oder halber Planer-Abruf (HTTP 200) würde sonst alle Slots auf «verschwunden» setzen, die Zwillinge
+    löschen und alles ein zweites Mal planen. Fehlen mehr als max(3, 10 %) der zukünftigen Slots auf einmal, passiert NICHTS (Meldung im Plan)."""
     ids = {p.get("id"): p for p in planer}
+    zukunft = [n for n, x in plan["slots"].items() if x["status"] == "geplant" and von_iso(x["termin_utc"]) > jetzt_utc]
+    fehlend = [n for n in zukunft if any(i not in ids for i in plan["slots"][n]["mc_ids"])]
+    sperre = len(fehlend) > max(3, int(0.10 * len(zukunft))) and os.environ.get("VORLAUF_MASSE_OK") != "1"
+    if sperre:
+        meldung = f"{len(fehlend)} von {len(zukunft)} geplanten Slots fehlen im Planer → Abgleich übersprungen (Planer-Abruf unvollständig? Betreiber räumte auf? dann VORLAUF_MASSE_OK=1)"
+        print(f"⚠️ {meldung}")
+        plan["abgleich_sperre"] = f"{iso(jetzt())} {meldung}"
+    else:
+        plan.pop("abgleich_sperre", None)
     for name, s in plan["slots"].items():
         if s["status"] == "geplant":
+            if sperre:
+                continue
             fehlt = [i for i in s["mc_ids"] if i not in ids]
             if fehlt and von_iso(s["termin_utc"]) > jetzt_utc:
                 # Teilverlust (IG+FB-Zwilling): der übrige Eintrag würde sonst ungetrackt mit dem beanstandeten Inhalt live gehen → mit löschen
@@ -350,32 +416,40 @@ def abgleichen(plan, planer, jetzt_utc):
                     except Exception:
                         bleibt.append(i)
                 if bleibt:
+                    # nur die noch vorhandenen Ids behalten: die fehlende gilt als weg, der Rest wird beim nächsten Abgleich (jetzt «vollständig») nicht
+                    # erneut als Teilverlust erkannt — deshalb Löschung hier sofort wiederholbar halten
                     s["mc_ids"] = bleibt; s["grund"] = f"Zwilling {fehlt} fehlt, Löschung von {bleibt} offen"
+                    s["loeschen_offen"] = bleibt
                     log(name, "zwilling-offen", bleibt)
                     continue
                 s["status"] = "offen"; s["mc_ids"] = []; s["grund"] = f"verschwunden {fehlt}" + (f" (Zwilling {rest} mitgelöscht)" if rest else "")
+                s.pop("loeschen_offen", None)
                 log(name, "verschwunden", fehlt)
+            elif not fehlt and s.get("loeschen_offen"):
+                # Wiederholung einer früher gescheiterten Zwilling-Löschung (das Kommentar-Versprechen von vorhin, jetzt wirklich da)
+                rest = [i for i in s["loeschen_offen"] if i in ids]
+                bleibt = []
+                for i in rest:
+                    if not SCHARF:
+                        bleibt.append(i); continue
+                    try:
+                        mc(f"/v2/scheduler/posts/{i}", "DELETE")
+                    except urllib.error.HTTPError as e:
+                        if e.code != 404:
+                            bleibt.append(i)
+                    except Exception:
+                        bleibt.append(i)
+                if not bleibt:
+                    s["status"] = "offen"; s["mc_ids"] = []; s["grund"] = "Zwilling-Rest nachträglich gelöscht"; s.pop("loeschen_offen", None)
+                    log(name, "zwilling-nachgeholt", rest)
+                else:
+                    s["loeschen_offen"] = bleibt; s["mc_ids"] = bleibt
             elif not fehlt and von_iso(s["termin_utc"]) <= jetzt_utc:
                 if any(x in (pr.get("status") or "").upper() for i in s["mc_ids"] for pr in ids[i].get("providers", []) for x in ("ERROR", "FAIL")):
                     s["status"] = "fehler"; s["grund"] = "Planer-Status Fehler nach dem Termin"
                     log(name, "planer-fehler", s["mc_ids"])
         elif s["status"] == "reserviert":
-            t_res = von_iso(s["reserviert_um"])
-            fmt_netze = set(REGELN_CACHE()["formate"][s["format"]]["netze"]) | ({"facebook", "threads"} if s["format"] == "bild" else {"facebook"} if s["format"] == "karussell" else set())
-            bekannt = {i for x in plan["slots"].values() for i in x["mc_ids"]}
-            adoptiert = []
-            for p in planer:
-                te, n = eintrag_utc(p), set(W.netze(p))
-                if p.get("id") in bekannt or te is None or not n or not n <= fmt_netze or p.get("draft") or p.get("autoPublish") is False:
-                    continue
-                if abs((te - von_iso(s["termin_utc"])).total_seconds()) > 180:
-                    continue
-                try:
-                    erstellt = datetime.fromisoformat((p.get("creationDate") or {}).get("dateTime", "1970-01-01T00:00:00")).replace(tzinfo=TZ).astimezone(UTC)
-                except ValueError:
-                    continue
-                if erstellt >= t_res - timedelta(minutes=2):
-                    adoptiert.append(p)
+            adoptiert = adoptierbare(plan, s, planer, von_iso(s["reserviert_um"]) - timedelta(minutes=2))
             if adoptiert:
                 s["status"] = "geplant"; s["mc_ids"] = [p["id"] for p in adoptiert]; s["grund"] = "adoptiert nach Abbruch"
                 log(name, "adoptiert", s["mc_ids"])
@@ -463,6 +537,18 @@ def plan_lauf(max_min=35, nur=None, max_slots=10**9):
             if s["versuche"] >= regeln["versuche_gesamt"]:
                 s["status"] = "leer"; s["grund"] = f"{s['versuche']} Versuche ohne Kandidat"
                 break
+            if s.get("letzter_versuch"):
+                # ein früherer Versuch kann doch einen Eintrag hinterlassen haben (Planer-Verzögerung) → erst adoptieren, nie blind ein zweites Mal posten
+                try:
+                    frueh = adoptierbare(plan, s, planer_lesen(), von_iso(s["letzter_versuch"]) - timedelta(minutes=2))
+                except Exception:
+                    frueh = []
+                if frueh:
+                    s["status"] = "geplant"; s["mc_ids"] = [p["id"] for p in frueh]; s["grund"] = "adoptiert vor erneutem Versuch"
+                    log(name, "adoptiert-vorab", s["mc_ids"])
+                    print(f"✅ {name}: vorhandenen Planer-Eintrag adoptiert {s['mc_ids']}")
+                    gefuellt += 1
+                    break
             s["status"] = "reserviert"; s["reserviert_um"] = iso(jetzt()); s["versuche"] += 1; s["letzter_versuch"] = iso(jetzt())
             plan_speichern(plan)
             vorher = {p.get("id") for p in planer_lesen()}
@@ -500,6 +586,11 @@ def plan_lauf(max_min=35, nur=None, max_slots=10**9):
                 log(name, "geplant-rc", f"rc={rc} {s['mc_ids']}")
                 break
             s["status"] = "offen"; s["grund"] = f"rc={rc}: {tail[-160:]}"
+            if not leer and not gesperrt and (rc in (1, 124) or rc == 0):
+                # Ausgang UNSICHER (Prüfung 18.10.): der Poster kann den Eintrag angelegt haben, der Planer zeigt ihn nur noch nicht (Verzögerung,
+                # Netzfehler nach dem POST, Timeout). Slot reserviert LASSEN — abgleichen() adoptiert ihn beim nächsten Lauf per Anlegezeit, statt ihn
+                # sofort freizugeben und denselben Termin ein zweites Mal zu belegen.
+                s["status"] = "reserviert"
             log(name, f"rc{rc}", tail[-200:])
             if gesperrt:
                 s["versuche"] -= 1   # kurzer Lock-Konflikt mit einem anderen Poster: kein Fehlversuch, später wieder
@@ -586,6 +677,42 @@ def storefront(handles):
     return aus
 
 
+_PID_HANDLE = {}
+def handles_aufloesen(schluessel):
+    """Ledger-Schlüssel der Produktliste («pid:<Zahl>», «name:…», «slug:…») → echte Handles. `pid:` per Storefront (product(id:)), `slug:` ist der Handle;
+    `name:` ist ein gekürzter Titelschlüssel und bleibt ohne Urteil (kein Handle). Bild/Karussell tragen keinen Produktlink im Text — ohne diese
+    Auflösung blieb der Prüfer für sie blind (Prüfung 18.10.)."""
+    aus = []
+    for k in schluessel or []:
+        k = str(k).strip()
+        if k.startswith("pid:"):
+            n = k[4:].strip()
+            if not n.isdigit():
+                continue
+            if n not in _PID_HANDLE:
+                try:
+                    q = f'{{ product(id:"gid://shopify/Product/{n}"){{ handle }} }}'
+                    req = urllib.request.Request("https://au3j0y-hq.myshopify.com/api/2025-07/graphql.json", data=json.dumps({"query": q}).encode(),
+                                                 headers={"Content-Type": "application/json", "User-Agent": "luxe-vorlauf"})
+                    d = json.load(urllib.request.urlopen(req, timeout=30))
+                    pr = ((d.get("data") or {}).get("product") or {})
+                    _PID_HANDLE[n] = (pr.get("handle") or "") if d.get("data") is not None else None
+                except Exception:
+                    _PID_HANDLE[n] = None   # nicht lesbar: nicht merken (nächster Versuch), kein Urteil
+            h = _PID_HANDLE.get(n)
+            if h:
+                aus.append(h)
+            elif n in _PID_HANDLE and _PID_HANDLE[n] is None:
+                _PID_HANDLE.pop(n, None)
+        elif k.startswith("slug:"):
+            aus.append(k[5:].strip())
+        elif k.startswith("name:"):
+            continue
+        else:
+            aus.append(k)
+    return sorted(set(a for a in aus if a))
+
+
 def pause_handles():
     """{handle: [(von, bis), …]} aus dropship/_social_pause.txt: Kopfzeile «# name<TAB>von<TAB>bis<TAB>tag», danach Schlüssel «h:<handle>»
     (wie lib/social_pause.mjs; mehrere Blöcke erlaubt). Andere Schlüsselarten (pid:/tit:/zeile:) kennt der Prüfer nicht — der Poster prüft sie."""
@@ -636,17 +763,22 @@ def befunde_fuer(plan, planer, jetzt_utc):
     pause_h = pause_handles()
     zukunft = {n: s for n, s in plan["slots"].items() if s["status"] == "geplant" and von_iso(s["termin_utc"]) > jetzt_utc + timedelta(minutes=10)}
     alle_handles = set()
-    for s in zukunft.values():
-        alle_handles |= {h.lower() for h in s.get("handles", [])}
+    hs = {n: [h.lower() for h in handles_aufloesen(s.get("handles", []))] for n, s in zukunft.items()}   # nur lokal: der Plan behält die Rohschlüssel
+    for n, s in zukunft.items():
+        alle_handles |= set(hs[n])
         for i in s["mc_ids"]:
             p = ids.get(i)
             if p:
                 alle_handles |= {h.lower() for h in re.findall(r"luxestyle\.ch/products/([a-z0-9][a-z0-9\-]*)", eintrag_text(p), re.I)}
     shop = {}
+    plan.pop("pruefer_shop_blind", None)
     try:
         shop = storefront(alle_handles) if alle_handles else {}
-    except Exception:
-        shop = {}   # Shopify nicht lesbar ≠ ok, aber auch kein Löschgrund → nur melden, nichts tun
+    except Exception as e:
+        # Shopify nicht lesbar ≠ ok, aber auch kein Löschgrund → nichts löschen, ABER sichtbar machen (Prüfung 18.10.: sonst prüft der Prüfer still nichts)
+        shop = {}
+        plan["pruefer_shop_blind"] = f"{iso(jetzt())} Storefront nicht lesbar ({str(e)[:60]})"
+        print(f"⚠️ Shop nicht lesbar ({str(e)[:80]}) → Verfügbarkeit/Preis dieser Runde ungeprüft")
     b = {}
     for n, s in zukunft.items():
         gruende = []
@@ -661,7 +793,7 @@ def befunde_fuer(plan, planer, jetzt_utc):
                 gruende.append("Planer-Status Fehler")
             text = eintrag_text(p)
             aus_text = {h.lower() for h in re.findall(r"luxestyle\.ch/products/([a-z0-9][a-z0-9\-]*)", text, re.I)}
-            for h in aus_text | {h.lower() for h in s.get("handles", [])}:
+            for h in aus_text | set(hs[n]):
                 if shop and h in shop:
                     ok, mn, mx = shop[h]
                     if h not in aus_text and mn != mn:
@@ -692,22 +824,28 @@ def pruefen(notbremse=False):
     if not W.token():
         print("Kein Token → No-op.")
         return 0
-    planer = planer_lesen()
-    abgleichen(plan, planer, jetzt())
     stopp = os.path.exists(STOPP)
     if notbremse and SCHARF:
+        # HALT ZUERST (Prüfung 18.10.): fällt der Planer-Abruf aus, muss die Notbremse trotzdem stehen — sonst plant der Treiber weiter
         atomar(HALT, f"Notbremse {iso(jetzt())}: der Treiber plant nichts, bis diese Datei gelöscht wird.\n")
+    try:
+        planer = planer_lesen()
+    except Exception as e:
+        print(f"⛔ Planer nicht lesbar ({str(e)[:100]}) → nichts geprüft/gelöscht" + (" (HALT steht)" if notbremse and SCHARF else ""))
+        return 1
+    abgleichen(plan, planer, jetzt())
     if stopp or notbremse:
         ziel = {n: ["Notbremse: _SOCIAL_STOPP" if stopp else "Notbremse (Aufruf)"] for n, s in plan["slots"].items()
                 if s["status"] == "geplant" and von_iso(s["termin_utc"]) > jetzt() + timedelta(minutes=5)}
     else:
         ziel = befunde_fuer(plan, planer, jetzt())
     if not ziel:
-        print(f"PRUEFEN: {sum(1 for s in plan['slots'].values() if s['status'] == 'geplant')} geplante Slots, keine Befunde.")
+        print(f"PRUEFEN: {sum(1 for s in plan['slots'].values() if s['status'] == 'geplant')} geplante Slots, keine Befunde"
+              f"{' (⚠️ Shop nicht lesbar: ' + plan['pruefer_shop_blind'][21:] + ')' if plan.get('pruefer_shop_blind') else ''}.")
         plan.pop("pruefer_sperre", None)
         plan_speichern(plan) if SCHARF else None
         return 0
-    geplant_n = sum(1 for s in plan["slots"].values() if s["status"] == "geplant")
+    geplant_n = sum(1 for s in plan["slots"].values() if s["status"] == "geplant" and von_iso(s["termin_utc"]) > jetzt() + timedelta(minutes=10))   # Nenner = was geprüft wird (nur Zukunft)
     if not (stopp or notbremse) and len(ziel) > max(3, int(0.10 * geplant_n)) and os.environ.get("VORLAUF_MASSE_OK") != "1":
         # Massen-Schutz: ein einzelner Fehlalarm-Typ (Netz, Storefront-Aussetzer, neue Pause) darf nicht den halben Plan löschen. Jede Löschung
         # verbrennt Video und Ware in den Ledgern dauerhaft.
@@ -771,6 +909,10 @@ def zeile(plan=None, regeln=None):
     warn = ""
     if plan.get("pruefer_sperre"):
         warn += f"⚠️ PRÜFER-SCHUTZ: {plan['pruefer_sperre'][21:140]} · "
+    if plan.get("pruefer_shop_blind"):
+        warn += f"⚠️ PRÜFER BLIND: {plan['pruefer_shop_blind'][21:100]} · "
+    if plan.get("abgleich_sperre"):
+        warn += f"⚠️ ABGLEICH-SCHUTZ: {plan['abgleich_sperre'][21:110]} · "
     if os.path.exists(HALT):
         warn += "⛔ HALT (Notbremse des Treibers): nichts wird geplant · "
     if os.path.exists(STOPP):
@@ -779,6 +921,9 @@ def zeile(plan=None, regeln=None):
         warn += f"⚠️ {len(bald_offen)} Slot(s) in den nächsten 12 h OHNE Planer-Eintrag · "
     elif zukunft and alt_h > 3:
         warn += f"⚠️ Plan-Stand {alt_h:.0f} h alt (Autopilot-Runde läuft nicht?) · "
+    ohne_produkt = [s for s in geplant if s["format"] in ("bild", "karussell", "story") and not s.get("handles") and not s.get("handle")]
+    if ohne_produkt:
+        warn += f"ℹ️ {len(ohne_produkt)} Slot(s) ohne prüfbares Produkt · "
     return (f"{warn}VORLAUF: {len(geplant)} Slots geplant" + (f" bis {bis.astimezone(TZ):%d.%m. %H:%M}" if bis else "") +
             f" · offen {len(offen)}" + (f" ({teil})" if teil else "") +
             f" · Stand {plan.get('stand', '?')[:16]}")
@@ -801,6 +946,8 @@ def liste():
 
 # ───────────────────────── Selbsttest ─────────────────────────
 def selbsttest():
+    global SCHARF
+    SCHARF = False   # der Test schreibt nie in die echte Drossel/das Log/den Plan (Prüfung 18.10.: mit SCHARF=1 in der Umgebung tat er es)
     fehler = []
     ok = lambda b, m: None if b else fehler.append(m)
     regeln = regeln_laden()
@@ -887,6 +1034,30 @@ def selbsttest():
     ok(len({str(i): 1 for i in range(5)}) > max(3, int(0.10 * 20)), "Massenschwelle rechnet falsch")
     # 13. Handle-Ableitung aus dem Produkt-Ledger
     ok(produkt_neu({"a"}) is not None, "produkt_neu läuft")
+    # 14. Prüfung 18.10. (Runde 2): Schlüssel der Produktliste → Handles (pid per Cache, kein Netz), name: ohne Urteil
+    _PID_HANDLE["999"] = "testprodukt-a"
+    ok(handles_aufloesen(["pid:999", "slug:foo-b", "name:kurzer-titel", "pid:abc"]) == ["foo-b", "testprodukt-a"], f"handles_aufloesen: {handles_aufloesen(['pid:999', 'slug:foo-b', 'name:kurzer-titel', 'pid:abc'])}")
+    _PID_HANDLE.pop("999", None)
+    # 15. produkt_neu nimmt pid:-Zeilen (Bild/Karussell) und slug:-Zeilen, keine Reel-IDs
+    global produkt_zeilen
+    alt_pz, produkt_zeilen = produkt_zeilen, lambda: {"pid:123", "slug:cjreel-9", "slug:echtes-produkt", "name:xx", "x"}
+    pn = produkt_neu(set()); produkt_zeilen = alt_pz
+    ok(sorted(pn) == ["pid:123", "echtes-produkt"] or sorted(pn) == sorted(["echtes-produkt", "pid:123"]), f"produkt_neu: {pn}")
+    # 16. abgleichen: «reserviert» MIT später sichtbarem Planer-Eintrag (Anlegezeit nach reserviert_um) wird adoptiert, nicht freigegeben
+    ein = {"id": 4711, "draft": False, "autoPublish": True, "providers": [{"network": "tiktok"}],
+           "publicationDate": {"dateTime": "2099-01-01T09:00:00", "timezone": "Europe/Zurich"}, "creationDate": {"dateTime": "2098-12-31T12:00:00", "timezone": "Europe/Zurich"}}
+    plan3 = {"slots": {"tiktok-y": {"format": "tiktok", "termin_utc": "2099-01-01T08:00:00Z", "status": "reserviert", "reserviert_um": "2098-12-31T10:50:00Z", "mc_ids": []}}}
+    abgleichen(plan3, [ein], datetime(2098, 12, 31, 12, 30, tzinfo=UTC))
+    ok(plan3["slots"]["tiktok-y"]["status"] == "geplant" and plan3["slots"]["tiktok-y"]["mc_ids"] == [4711], f"reservierter Slot nicht adoptiert: {plan3['slots']['tiktok-y']}")
+    # 17. Shop nicht lesbar → Prüfer meldet «blind» (kein Löschen, aber sichtbar)
+    global storefront
+    alt_sf = storefront
+    def _sf_aus(h): raise RuntimeError("test-ausfall")
+    storefront = _sf_aus
+    plan4 = {"slots": {"bild-z": {"format": "bild", "termin_utc": "2099-01-01T08:00:00Z", "status": "geplant", "mc_ids": [1], "handles": ["slug-x"]}}}
+    b4 = befunde_fuer(plan4, [{"id": 1, "text": "luxestyle.ch/products/slug-x", "providers": [{"network": "instagram"}], "autoPublish": True}], datetime(2098, 12, 31, tzinfo=UTC))
+    storefront = alt_sf
+    ok("pruefer_shop_blind" in plan4 and not b4, f"Shop-Ausfall nicht sichtbar oder Fehlalarm: {plan4.get('pruefer_shop_blind')} {b4}")
     print("OK Selbsttest" if not fehler else "FEHLER:\n  " + "\n  ".join(fehler))
     return 1 if fehler else 0
 
