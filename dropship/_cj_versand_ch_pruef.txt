@@ -10916,3 +10916,7 @@ herren-winterstiefel-mit-reissverschluss-309632	1394957009052372992	16	17.66	ok	
 printkragen-langarm-weit-schnitt-damenkleid-626100	2607120512241626800	16	9.20	ok	landeseite
 retro-hufttasche-620800	2501130346561621000	16	6.77	ok	landeseite
 boho-off-shoulder-kleid-629000	2607080716411629600	16	8.79	ok	landeseite
+hochwertiger-leder-reisekoffer-abriebfest-624400	2412090908211624600	11	32.38	ok	landeseite
+fishtail-hemdrock-629400	2607080711391620000	16	8.79	ok	landeseite
+herren-leder-hufttasche-fur-smartphone-sport-f-624200	2412090633321624400	16	7.85	ok	landeseite
+gestreifter-off-shoulder-dress-628400	2607080705211629000	16	8.25	ok	landeseite
