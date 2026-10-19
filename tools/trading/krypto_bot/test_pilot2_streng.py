@@ -3463,6 +3463,40 @@ pruefe("14.E12 STOP mitten im Lauf nach dem neuen Short, Konto unlesbar (Not-Aus
        gemacht_[0] == 1 and g1_["pos"] < g0_["pos"] - 1e-9 and any("NICHTS angefasst" in z for z in r_["zeilen"]) and not nachher_
        and lage(k, "ETHUSDT")["p_qty"] >= -lage(k, "ETHUSDT")["pos"] - 1e-9,
        (gemacht_, g0_, g1_, r_["zeilen"][-3:], vorher_, nachher_, rn_["zeilen"][-3:], lage(k, "ETHUSDT")))
+# 14.E12b derselbe Vermerk, wenn der Lauf einfach stirbt (Prozess beendet, Absturz): er kam nicht mehr zu seinem Stop-Abgleich — hier ersetzt durch einen Abbruch genau dort
+k = neues_konto(20000)
+d = neu_buch()
+lauf([E("ETH", -0.25)], env_echt(), d)
+g0_ = lage(k, "ETHUSDT")
+orig_sz_ = L._stops_setzen
+
+
+def stirbt_(*a_, **kw_):
+    raise KeyboardInterrupt("Prozess beendet")                     # der Stop-Abgleich am Laufende kommt nie
+
+
+L._stops_setzen = stirbt_
+try:
+    try:
+        lauf([E("ETH", -1.0)], env_echt(), d)
+        gestorben_ = False
+    except KeyboardInterrupt:
+        gestorben_ = True
+finally:
+    L._stops_setzen = orig_sz_
+g1_ = lage(k, "ETHUSDT")
+vermerk_ = (L.buch_lesen(d, "echt") or {}).get("schutz_offen")
+rn_ = P.nachkontrolle(env_echt(), d)
+nachher_ = befunde(k, d)
+pruefe("14.E12b Tageslauf stirbt nach dem neuen Short (vor dem Stop-Abgleich): der Markt ist vermerkt, die Nachkontrolle setzt den fehlenden Perp-Stop",
+       gestorben_ and g1_["pos"] < g0_["pos"] - 1e-9 and vermerk_ == ["ETH"] and not nachher_
+       and lage(k, "ETHUSDT")["p_qty"] >= -lage(k, "ETHUSDT")["pos"] - 1e-9,
+       (gestorben_, g0_, g1_, vermerk_, nachher_, rn_["zeilen"][-3:], lage(k, "ETHUSDT")))
+k = neues_konto(20000)
+d = neu_buch()
+lauf([E("ETH", -0.25)], env_echt(), d)
+pruefe("14.E12b Gegenprobe: nach einem normalen Lauf steht kein Vermerk mehr (der Abgleich am Laufende streicht ihn)", not (L.buch_lesen(d, "echt") or {}).get("schutz_offen"),
+       (L.buch_lesen(d, "echt") or {}).get("schutz_offen"))
 P.LUECKEN = True
 try:
     funde = P.echte(P.laeufe_runde(90256, 30))

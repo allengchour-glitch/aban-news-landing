@@ -1014,6 +1014,13 @@ def ausfuehren(ents, trocken=False, env=None, spot=None, fut=None, protokolliere
         return None
 
     try:
+        # 0) VOR dem ersten Auftrag vermerken, welche Märkte handeln werden: kommt der Lauf nicht mehr zu seinem Stop-Abgleich (STOP mitten im Lauf und
+        #    der Not-Aus kann nicht, Absturz, Prozess beendet), braucht jeder dieser Märkte seine Stops — die Nachkontrolle holt sie nach. Der Abgleich am
+        #    Laufende streicht den Vermerk wieder (15. Prüfung, Lücken-Seed 90256: ein neuer Short blieb ohne Stop, weil nichts ihn vermerkt hatte)
+        vorgemerkt = [k for k, p in plaene.items() if p["schritte"] and k not in gesperrt]
+        if vorgemerkt:
+            buch["schutz_offen"] = sorted(set(buch.get("schutz_offen") or []) | set(vorgemerkt))
+            speichern()
         # 1) verkleinern. Spot-Verkauf: zuerst die FREIEN Coins (geht das nicht, bleibt der Stop unberührt), erst danach gibt EIN
         #    cancelReplace gesperrte Coins frei (bzw. verkauft sie gleich mit ihrem Stop)
         for k, p in plaene.items():
@@ -1190,11 +1197,7 @@ def ausfuehren(ents, trocken=False, env=None, spot=None, fut=None, protokolliere
             _stops_setzen(spot, fut, buch, speichern, ents, daten, basis_g, erg, warn, gehandelt)
     if stop_mitten or notaus_neu():
         # STOP kam während des Laufs (Cockpit, Telegram, stop.bat): dieser Lauf hält die Lauf-Sperre — darum schliesst ER jetzt
-        # (das Cockpit hat Pilot 2.0 deswegen übersprungen); danach schliesst die Nachkontrolle nochmals, was offen blieb.
-        # Dieser Lauf kam nicht mehr zu seinem Stop-Abgleich: scheitert der Not-Aus (Konto/UID nicht lesbar, Rückkauf abgelehnt) und wird STOP wieder
-        # aufgehoben, braucht jeder Markt, in dem er gehandelt hat, seine Stops — die Nachkontrolle holt sie nach (15. Prüfung, Lücken-Seed 90256)
-        if gehandelt:
-            buch["schutz_offen"] = sorted(set(buch.get("schutz_offen") or []) | set(gehandelt))
+        # (das Cockpit hat Pilot 2.0 deswegen übersprungen); danach schliesst die Nachkontrolle nochmals, was offen blieb
         speichern()
         if protokolliere:  # die Aufträge dieses Laufs (vor dem STOP); der Not-Aus protokolliert seine eigenen
             protokolliere({"zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), "modus": erg["modus"],
