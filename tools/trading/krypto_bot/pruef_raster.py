@@ -37,6 +37,7 @@ Aufruf (PRUEF_STRENG=1 für die strenge Prüf-Börse):
   python3 -B pruef_raster.py VON BIS --haengend         # Konto ohne STOP_LOSS, die Spot-Stops hängen zu Beginn von Tag 1 (kombinierbar mit --kurs)
   python3 -B pruef_raster.py VON BIS --notaus           # Tag 1 ist der Not-Aus (kombinierbar mit --haengend und --kurs; Szenarien mit gleichem Tag 0 zählen einmal)
   python3 -B pruef_raster.py VON BIS --haengend --paare # nur die 10 Paare schreibender Störungen (z. B. mit --kurs: 4× so viele Zellen)
+  python3 -B pruef_raster.py VON BIS --notaus --geist   # (Not-Aus + --geist: zusätzlich geht der Marktverkauf der Coins nicht — der Not-Aus muss schützen, dann setzt er Perp-Stops)
   python3 -B pruef_raster.py VON BIS --geist            # dazu die 6 Paare «Perp-Stop kommt an, Antwort verloren × jede Wiederholung scheitert» (Geister-Stop, E26; mit --paare nur diese; kombinierbar mit --notaus)
 """
 from __future__ import annotations
@@ -136,7 +137,7 @@ def _befunde(k, d):
     return P.echte(P.schutz_befunde(k, P.unklar_je_markt(d)) + P.folgeschaden(k))
 
 
-def fall(sz, w, skip, r, modus, kurs=None, haengend=False, w2=None, notaus=False):
+def fall(sz, w, skip, r, modus, kurs=None, haengend=False, w2=None, notaus=False, geist=False):
     """Ein Fall → None (die Störung kam nie zum Zug), ein Wort («kein_spotstop», «kein_haengender»: die Lage lässt keinen hängenden Stop zu) oder die Messung.
     kurs: relativer Kurssprung im Augenblick des Störungsbeginns (None = keiner). haengend: Konto ohne STOP_LOSS, die Spot-Stops hängen zu Beginn von Tag 1.
     w2: eine zweite schreibende Störung mit demselben Beginn (nur sinnvoll mit haengend). notaus: Tag 1 ist der Not-Aus statt des Tageslaufs (z1 zählt dann nicht)."""
@@ -162,6 +163,8 @@ def fall(sz, w, skip, r, modus, kurs=None, haengend=False, w2=None, notaus=False
     st = {"n": 0, "an": False}
     wm, wp, wpred = w[0], w[1], w[2]
     B.regeln = [_regel_lesen(r)] if (r is not None and modus == "anfang") else []
+    if geist and notaus:  # der Verkauf der Coins geht nicht (Rate-Limit / 503 vor der Verarbeitung): der Not-Aus muss schützen statt schliessen — erst dann setzt er Perp-Stops, die der Geist-Stop treffen kann
+        B.regeln.append(dict(methode="POST", pfad="/api/v3/order", pred=MARKT_SPOT, art="vor503", anzahl=10 ** 6, anzahl0=10 ** 6))
 
     def haken(m, pfad, p):
         if m == wm and pfad == wp and (wpred is None or wpred(m, pfad, p)):
@@ -283,7 +286,7 @@ def raster(von, bis, ausgabe=None, melde=print, kurse=(None,), haengend=False, n
                     for modus in (("bei_w", "anfang") if r is not None else ("bei_w",)):
                         for kurs in kurse:
                             try:
-                                e = fall(sz, w, skip, r, modus, kurs, haengend, w2, notaus)
+                                e = fall(sz, w, skip, r, modus, kurs, haengend, w2, notaus, geist)
                             except Exception:  # noqa: BLE001
                                 B.vor_jeder_anfrage = None
                                 B.regeln = []

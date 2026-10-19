@@ -688,19 +688,23 @@ g = lage(k, "BTCUSDT")
 pruefe("10.p2b zwei Spot-Stops ohne Störung → jeder einzeln (cancelReplace) auf den neuen Kurs, alle Coins gedeckt",
        g["s_preise"] and all(abs(x - 92000.0) < 0.02 for x in g["s_preise"]) and g["s_qty"] >= g["coins"] - 1e-4 and not befunde(k, d),
        (g, r["zeilen"][-3:]))
-# W1: neuer Perp-Stop kam an, Antwort verloren, Wiederholungen scheitern → per Kennung gelöscht (nie zwei über den Short)
+# W1: neuer Perp-Stop kam an, Antwort verloren, Wiederholungen scheitern → der vielleicht angekommene bleibt (Folge-PR E26: nie ein Geister-Stop löschen, der der einzige Schutz sein kann); stehen dann zwei, ist der Markt
+# beidseitig gesichert (Spot-Stop über alle Coins) und die Nachkontrolle räumt nach Mengen auf — am Ende genau ein Stop über den Short
 k = neues_konto(20000)
 d = neu_buch()
 lauf([E("BTC", -0.5)], env_echt(), d)
 B.regeln = [regel(methode="POST", pfad="/fapi/v1/algoOrder", art="nach503", anzahl=1),
             regel(methode="POST", pfad="/fapi/v1/algoOrder", art="vor503", anzahl=10 ** 6)]
 r = lauf([E("BTC", -0.5, stop_abstand=0.08)], env_echt(), d)
-n_p = lage(k, "BTCUSDT")["n_p"]
+g_lauf = lage(k, "BTCUSDT")
+n_p = g_lauf["n_p"]
+beidseitig_lauf = n_p < 2 or g_lauf["s_qty"] >= g_lauf["coins"] - 1e-4  # zwei Stops stehen nur bei einem Markt, dessen Coins ganz unter dem Spot-Stop liegen
 P.nachkontrolle(env_echt(), d)
+n_p_nk = lage(k, "BTCUSDT")["n_p"]
 B.regeln = []
 B.bewegen("BTCUSDT", 111000.0)
-pruefe("10.p5 Perp-Stop mit verlorener Antwort → über die Kennung gelöscht, nie zwei Stops; ein Kurssprung trifft die Ernte nicht",
-       n_p == 1 and not befunde(k, d), (n_p, P.zeigen(k)["BTCUSDT"], r["zeilen"][-3:]))
+pruefe("10.p5 Perp-Stop mit verlorener Antwort → bleibt stehen (höchstens zwei Stops, dann beidseitig gesichert), die Nachkontrolle räumt auf: nie zwei Stops am Ende; ein Kurssprung trifft die Ernte nicht",
+       n_p in (1, 2) and beidseitig_lauf and n_p_nk == 1 and not befunde(k, d), (n_p, g_lauf, n_p_nk, P.zeigen(k)["BTCUSDT"], r["zeilen"][-3:]))
 # B1: Not-Aus, während Spot keine neuen Aufträge annimmt — nie die Absicherung zuerst schliessen
 for z in (0.0, -0.5, 0.5):
     k = neues_konto(20000)
@@ -4096,8 +4100,9 @@ st_ = buch_["stops"]["BTC"]
 stehen_ = [a_["clientAlgoId"] for a_ in fu_.eigene_stops("BTCUSDT")]
 pruefe("15.G1b Vorab: der kleinere Stop kam an (Antwort verloren, Wiederholungen abgewiesen) und lässt sich nicht löschen → seine Kennung ist im Gedächtnis des Buchs",
        raised_ and len(stehen_) == 2 and any(w_[0] is None and w_[1] == stehen_[1] for w_ in st_.get("perp_weitere") or []), (raised_, stehen_, st_))
-pruefe("15.G1b Vorab: dazu ist der Markt beidseitig gesichert und die Nachkontrolle angestossen", d_.get("beidseitig") and d_.get("nachkontrolle"), d_)
-# Gegenprobe: lässt sich der gerade gesetzte Stop über die Kennung löschen, bleibt nichts gemerkt, der Markt nicht beidseitig und nur der alte Stop steht
+pruefe("15.G1b Vorab: dazu eine neue Abgleich-Runde angestossen (die Liste entscheidet nach Mengen); der Markt ist nicht blind beidseitig (E26: im häufigen Fall «nie angekommen» schadet das)",
+       d_.get("neue_runde") and not d_.get("beidseitig"), d_)
+# Gegenprobe (Folge-PR E26): auch wenn sich die Kennung löschen liesse, wird der vielleicht angekommene kleinere Stop NICHT gelöscht — er ist genau der Stop, den der Plan will; er steht im Buch, beide stehen
 k, sp_, fu_, d_ = vorab_lage([1.2])
 buch_ = L.leer_buch()
 B.regeln = [regel(methode="POST", pfad="/fapi/v1/algoOrder", art="nach503", anzahl=1), regel(methode="POST", pfad="/fapi/v1/algoOrder", art="vor503", anzahl=99)]
@@ -4108,8 +4113,8 @@ except Exception:  # noqa: BLE001
     raised_ = True
 finally:
     B.regeln = []
-pruefe("15.G1b Vorab Gegenprobe: lässt sich der neue Stop über die Kennung löschen, bleibt nichts gemerkt, der Markt ist nicht beidseitig",
-       raised_ and not buch_["stops"]["BTC"].get("perp_weitere") and not d_.get("beidseitig") and len(fu_.eigene_stops("BTCUSDT")) == 1,
+pruefe("15.G1b Vorab Gegenprobe: auch wenn sich die Kennung löschen liesse, bleibt der vielleicht angekommene kleinere Stop stehen und steht im Buch (E26)",
+       raised_ and bool(buch_["stops"]["BTC"].get("perp_weitere")) and not d_.get("beidseitig") and len(fu_.eigene_stops("BTCUSDT")) == 2,
        (raised_, buch_["stops"]["BTC"], d_.get("beidseitig"), len(fu_.eigene_stops("BTCUSDT"))))
 
 # 15.G2 weitere Fälle: nur ICH habe den Stop geändert (die Platte entspricht der Basis) → mein Paar; ich habe meines geleert (None, None), der andere ein neues gesetzt → das des anderen
@@ -4480,7 +4485,26 @@ finally:
     B.regeln = []
 g2 = lage(k, "ETHUSDT")
 b_ = befunde(k, d)
-pruefe("15.E26e alter Stop deckt den gewachsenen Short nur teilweise, der neue kommt (Geister-Stop) an: nichts ungesichert (beidseitig), der Stop wird nicht gelöscht", g2["n_p"] >= 2 and not b_, (g1, g2, b_))
+pruefe("15.E26e alter Stop deckt den gewachsenen Short nur teilweise, der neue kommt (Geister-Stop) an: der Geister-Stop wird übernommen (er deckt den ganzen Bedarf), der zu kleine alte gelöscht — nichts ungesichert",
+       g2["n_p"] == 1 and abs(g2["p_qty"] - max(0.0, -g2["netto"])) < 0.003 and not b_, (g1, g2, b_))
+
+# e2) Raster --geist, Szenario BTC −0,25 → 0,0 (der Richtungs-Short wird heute abgebaut): Vorab setzt den kleineren Perp-Stop, er kommt an (Antwort verloren), jede Wiederholung scheitert (429). Der Geister-Stop bleibt, die
+# nächste Runde sieht ihn in der Liste und löscht den ZU GROSSEN alten (er ist genau der Stop, den der Plan wollte) — vorher wurde er gelöscht, «beidseitig» verlangte danach den ganzen Short: 3'920 USDT ohne Stop
+k = neues_konto(20000)
+d = neu_buch()
+env_ = env_echt(kapital=20000)
+lauf([E("BTC", -0.25)], env_, d)
+for s_ in P.SYMS:
+    B.bewegen(s_, round(B.kurs[s_] * 1.01, 2))
+B.regeln = [regel(methode="POST", pfad="/fapi/v1/algoOrder", art="nach503", anzahl=1), regel(methode="POST", pfad="/fapi/v1/algoOrder", art="429", anzahl=99)]
+try:
+    r = lauf([E("BTC", 0.0)], env_, d)
+finally:
+    B.regeln = []
+g = lage(k, "BTCUSDT")
+b_ = befunde(k, d)
+pruefe("15.E26e2 Richtungs-Short wird abgebaut, kleinerer Perp-Stop kommt an (Antwort verloren), Wiederholungen am Rate-Limit: der Geister-Stop wird übernommen, der zu grosse alte gelöscht — genau ein Perp-Stop, nichts ungesichert",
+       g["n_p"] == 1 and not b_ and abs(g["p_qty"] - max(0.0, -g["netto"])) < 0.0015, (g, [(x[0], x[-2:]) for x in b_], [z[:120] for z in r["zeilen"]]))
 
 # f) Not-Aus, Perp-Liste unlesbar, das Buch kennt einen alten Stop (0,10, deckt den Short ganz): der Ersatz scheitert (Geister-Stop kam an, Wiederholungen am Rate-Limit) — wie bisher wird der Geister-Stop
 # über seine Kennung gelöscht, der bekannte alte schützt (nur ohne ihn bliebe der Geister-Stop stehen, E26)
@@ -4550,7 +4574,13 @@ g = lage(k, "BTCUSDT")
 pruefe("15.E26g2 _perp_ohne_liste, heute kam nur Absicherung dazu (Coins und Short gleich viel): der bisherige Stop deckt den Netto-Short weiter → der Geister-Stop wird gelöscht",
        g["n_p"] == 1 and abs(g["p_qty"] - 0.3) < 0.002 and not st_.get("perp_weitere"), (g, s_.get("stop_perp"), st_, w_))
 
-# h2) Not-Aus beidseitig mit unklarem Short, Perp-Liste unlesbar, das Buch kennt einen bisherigen Stop: der kleinere Schutz-Stop (cid_k) scheitert nach −2022 → sein Geister-Stop wird gelöscht (wie bisher)
+# g3) _alt_deckt(): der Bedarf ist auf Futures-Schritte AUFgerundet — kein Wachstum, aber der Bedarf liegt bis zu einen Schritt über dem Netto-Short: gedeckt; echtes Wachstum (0,2): nicht gedeckt
+s_r_ = {"pos": -0.5, "frei": 0.2999, "gebunden": 0.0, "stop_perp": 0.201}
+pruefe("15.E26g3 _alt_deckt(): Aufrunden des Bedarfs auf den Futures-Schritt (kein Wachstum) gilt als gedeckt, echtes Wachstum um 0,2 nicht",
+       L._alt_deckt({"auftraege": []}, "BTC", s_r_, 0.001) and not L._alt_deckt({"auftraege": [("BTC", "perp", "SELL", 0.2)]}, "BTC", {"pos": -0.5, "frei": 0.0, "gebunden": 0.0, "stop_perp": 0.5}, 0.001),
+       (L._alt_deckt({"auftraege": []}, "BTC", s_r_, 0.001), L._alt_deckt({"auftraege": [("BTC", "perp", "SELL", 0.2)]}, "BTC", {"pos": -0.5, "frei": 0.0, "gebunden": 0.0, "stop_perp": 0.5}, 0.001)))
+
+# h2) Not-Aus beidseitig mit unklarem Short, Perp-Liste unlesbar, das Buch kennt einen bisherigen Stop: der kleinere Schutz-Stop (cid_k) scheitert nach −2022 → sein Geister-Stop bleibt (beidseitig verlangt den ganzen Short)
 k, sp, fu, dd = handlage(coins=0.017, short=0.017, kurs=100000.0)
 rf_ = fu.regeln("BTCUSDT")
 r_alt = fu.stop_menge("BTCUSDT", "BUY", 0.017, 130000.0, rf_["tick"], cid=L._kennung(L.CID_STOP_PERP))
@@ -4566,8 +4596,8 @@ finally:
     B.regeln = []
     B.reduce_algo_streng = False
 g = lage(k, "BTCUSDT")
-pruefe("15.E26h2 Not-Aus, Perp-Liste unlesbar, das Buch kennt einen bisherigen Stop: der Geister-Stop des kleineren Schutz-Stops wird gelöscht, der bisherige steht allein",
-       g["n_p"] == 1 and not (st_.get("perp_weitere") or []), (g, st_, w_))
+pruefe("15.E26h2 Not-Aus beidseitig (unklarer Short), Perp-Liste unlesbar, das Buch kennt einen bisherigen Stop: der Geister-Stop des kleineren Schutz-Stops bleibt — beide zusammen decken den ganzen Short (der bisherige nur einen Teil)",
+       g["n_p"] == 2 and bool(st_.get("perp_weitere")), (g, st_, w_))
 
 # h) Not-Aus beidseitig mit einem unklaren Short-Auftrag (0,017 mehr): Binance lehnt den Stop über 0,034 (mehr als der offene Short) mit −2022 ab → wenigstens den offenen Short (0,017) sichern; dieser
 # kleinere Stop kommt an (Antwort verloren), jede Wiederholung am Rate-Limit: er bleibt (einziger Schutz)
