@@ -1,11 +1,13 @@
 {
- "stand": "2026-10-19T13:36Z",
- "gelesen": 1515,
- "K": 19,
- "S1": 7,
- "S2": 3,
- "geschrieben": 29,
- "offen": 0,
+ "stand": "2026-10-19T14:33Z",
+ "gelesen": 4489,
+ "K": 0,
+ "S2": 0,
+ "S1": 0,
+ "S1W": 4,
+ "SEO": 0,
+ "geschrieben": 3,
+ "offen": 1,
  "fehler": 0,
  "fix": true
 }
