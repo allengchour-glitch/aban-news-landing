@@ -10019,3 +10019,13 @@ cargohosen-fur-herren-635600	2603160830371636000	16	8.93	ok	landeseite
 wasser-einzelgerat-fur-gesicht-603776	1394563697892003840	7	5.62	ok	landeseite
 unisex-fitnessschuhe-atmungsaktiv-rutschfest-950848	1790610839955836928	16	9.47	ok	landeseite
 drehbare-edelstahl-schussel-fur-haustiere-601300	2512260842441601500	16	8.31	ok	landeseite
+aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben	-	-	-	unklar keine CJ-SKU	landeseite
+aroma-diffuser-holzoptik-hohl-design-ultraschall-luftbefeuchter-mit-led-licht	-	-	-	unklar keine CJ-SKU	landeseite
+streifen-bluse-marbella-color-block-kurzarm	-	-	-	unklar keine CJ-SKU	landeseite
+spitzen-bluse-dentelle-v-ausschnitt-loose-fit	-	-	-	unklar keine CJ-SKU	landeseite
+strick-bluse-maglia-hollow-out-loose-langarm	-	-	-	unklar keine CJ-SKU	landeseite
+chiffon-set-solare-bluse-weite-hose	-	-	-	unklar keine CJ-SKU	landeseite
+flat-cap-brigade-camouflage-baumwolle	-	-	-	unklar keine CJ-SKU	landeseite
+vintage-baseball-cap-liberty-washed-schwarz	-	-	-	unklar keine CJ-SKU	landeseite
+baseball-cap-mama-mintgrun	-	-	-	unklar keine CJ-SKU	landeseite
+vintage-cap-tuesday-washed-grau	-	-	-	unklar keine CJ-SKU	landeseite

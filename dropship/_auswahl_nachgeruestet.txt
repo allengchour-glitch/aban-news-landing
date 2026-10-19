@@ -2590,3 +2590,7 @@
 16645279809927	Farbe:3:3	2026-10-19	grosser-rucksack-mit-wasserdichtem-innenfutter-625300
 16645273616775	Farbe:2:2+ki	2026-10-19	rindsleder-ledertasche-fur-schulter-crossbody-606800
 16645268078983	Modell:2:2	2026-10-19	fashion-halloween-skull-head-rucksack-624400
+16645206311303	Farbe:10:10+ki	2026-10-19	grosser-rucksack-fur-outdoor-pendeln-603400
+16645205688711	Farbe:2:2	2026-10-19	turnbeutel-mit-schuhfach-608700
+16645204935047	Farbe:5:5	2026-10-19	grosser-sportrucksack-fur-training-und-reise-622600
+16645200839047	Modell:5:5	2026-10-19	umhangetasche-mit-pragung-610200
