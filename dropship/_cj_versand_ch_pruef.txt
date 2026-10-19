@@ -10158,3 +10158,4 @@ gesundheits-armband-mit-herzfrequenzmessung-601700	2507190753361601900	7	7.30	ok
 mini-wasserkocher-edelstahl-622500	2605160830031623400	16	8.86	ok	landeseite
 taktischer-huftrucksack-616600	2507250905191616800	16	8.39	ok	landeseite
 baby-anti-schreck-kissen-626900	2604060916311627300	7	21.65	ok	landeseite
+taktischer-brustbeutel-612700	2507250225081613600	16	7.43	ok	landeseite
