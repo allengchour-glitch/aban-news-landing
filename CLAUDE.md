@@ -82,6 +82,70 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-19 (🔒 Pilot 2.0: 14. Prüfung — 1 Blocker unter einer Bedingung + 3 wichtig + 6 klein + 7 eigene Funde (E1–E7) behoben, bleibt GESPERRT):**
+Prüfer-Agent (Belege `scratchpad/pruefung14/` p1–p10; Technik «echte Verzahnung» `par.py`: ein Tageslauf hält vor seiner n-ten Anfrage an, ein zweiter Lauf läuft
+ganz mittendrin — 4 × 959 Verzahnungen + 2'877 mit unklarem Auftrag des anderen: 0 Befunde; dazu 5'200 + 2'200 Zufalls-Seeds: 0) fand:
+- **F1 (Blocker, nur wenn Binance einen frisch gesetzten Stop mehrere Listenabfragen lang nicht zeigt):** der Stop wurde am Laufende vergessen, neben dem
+  kleinen stand ein zweiter, zu grosser Perp-Stop, der beim Auslösen die Absicherung zurückkaufte (7'880 USDT). **Fix:** jeder im Buch bekannte Stop, den die
+  lesbare Liste nicht zeigt, wird nach dem neuen Stop über seine Kennung (Perp, `_perp_versteckte`/`_perp_versteckte_weg`) bzw. ID (Spot) gelöscht. Ob die
+  Annahme real stimmt, klärt nur das Testnetz: `testnetz_pruefung.py` A6 (Sichtbarkeit nach dem Setzen), A7/A8 (Storno unbekannter / gelöschter Kennung).
+- **F2** kein −2022-Rückfall bei unlesbarer Perp-Liste (9'400 USDT; im strengen Fuzzer bis 30'637): jetzt mit frisch gelesener Position; würde auch der kleinere
+  Stop sofort auslösen → Ausstieg zum Markt (`_perp_ohne_liste_raus`). **F3** `_spot_ohne_liste` stieg bei fallendem Kurs nicht zum Markt aus (9'092 USDT).
+- **W (Prüf-Werkzeuge zu gutmütig):** neuer **strenger Fuzzer-Modus** `PRUEF_STRENG=1` (reduceOnly über der Position → −2022, Störungen schon auf den ersten
+  Anfragen, endliche Anzahlen 1–4, `unsichtbar` bis 8 Listenabfragen, Kurssprünge im Listen-Fuzzer).
+- **K1** beide Läufe ändern den Perp-Stop (`perp_weitere` als Menge vereinigt, Kennung des anderen ins Gedächtnis) · **K2** `unklar_sell` je Abgleich-Runde frisch
+  (2'324 USDT) · **K3** Short-Staub ≤ 10 USDT · **K4** `_zu_gross(merken=…)` kein Dauer-Alarm nach Ablehnung · **K5/E1** zwei gestartete Modi (Not-Aus und
+  Nachkontrolle binden je Modus dessen eigene Verbindung; STOP im Tageslauf schliesst auch einen fremden Modus) · **K6** `krypto-auto.bat` ruft die
+  Nachkontrolle im Not-Aus-Zweig.
+- **Der strenge Fuzzer fand sofort weitere echte Lücken (E2–E5, nur im Tageslauf-Fuzzer — der Standard-Fuzzer sah sie auf 1'750 Seeds nicht):**
+  **E2** ein Spot-Stop, den die Liste verzögert zeigt, sperrt Absicherungs-Coins → die Stops lagen still über der Netto-Richtung (Seeds 20568/20803/20473/20736,
+  bis 4'066 USDT): gesperrte, aber nicht gelistete Coins zählen als gedeckt (`versteckt` in `_spot_abgleich`), und `_kontoprobe` nach jeder Abgleich-Runde sichert
+  den Markt beidseitig, wenn mehr gesperrt ist als nötig. **E3** der Not-Aus löschte mit veralteten Zahlen (Kontostand nicht lesbar) den Perp-Stop, während ein
+  Spot-Stop über Paar-Coins blieb (Seed 20557): `_notaus_schutz(stand_frisch=…)` verkleinert/löscht auf veralteten Zahlen nie. **E3b** Not-Stop über offenem plus
+  unklarem Short mit −2022 abgelehnt (Seed 20369, 338 USDT): Rückfall auf die frisch gelesene Position. **E4** Prüf-Werkzeug: gestapelte endliche Störungen auf
+  dem Schutzpfad, die Pilot 2.0 alle Versuche nehmen, zählen wie eine dauerhafte (`anzahl0`); Coins, die das Buch nicht kennt, sind am Ende kein Befund.
+  **E5** der Vorab-Stop nach dem Ernte-Kauf richtete sich nach dem ungekürzten Endziel des Plans: beim Auftragsdeckel (`KI_BOT_MAX_AUFTRAG`) blieb ein Teil des
+  Shorts bis zum Abgleich ohne Stop (Seed 22466, 268 USDT): jetzt zählen die tatsächlichen Coins und die noch ausstehenden neuen Shorts dieses Laufs.
+- **E6 (Schlusskampagne, STANDARD-Modus, Regression von E5 — Lauf-Seeds 17244, 17363, 17706; 221–943 USDT, laut gemeldet):** nach E5 verkleinerte die
+  Vorab-Stufe 2 den Perp-Stop auf den Stand VOR dem neuen Short; konnte der Abgleich danach nicht lesen (Spot-Konto dauerhaft unlesbar), blieb der neue
+  Short bis zur Nachkontrolle teilweise ohne Stop — von Pilot 2.0 selbst verursacht. Am Stand vor E5 gab es die Lücke nicht (Gegenprobe: derselbe
+  Fuzzer gegen die alten `pilot2_live.py`). Der alte Code verkleinerte kaum (das ungekürzte Plan-Ende war meist klein → «kein Stop nötig»), E5 machte das
+  Plan-Ende realistisch und damit die Verkleinerung wirksam. **Fix:** Stufe 2 `sicher_p = max(jetzt, Plan-Ende)` — nie unter das Plan-Ende (tatsächliche
+  Coins + ausstehende neue Shorts), ein Stop darüber wird weiter aufs Plan-Ende verkleinert; Stufe 1 (`nur_jetzt`) unverändert.
+  Tests: 11.S12 neu gefasst (3 Varianten), 14.E6c, 14.E6 (3 Seeds) — rot am Stand vor der Korrektur.
+- **E7 (Neuauflage der Schlusskampagne nach E6, Standard-Lauf-Seed 15519, 33 USDT):** Vorab ersetzte einen Perp-Stop schon bei EINEM Schritt Überschuss (den die
+  Rundung des Plans — Stop aufgerundet, Absicherung abgerundet — ohnehin erklärt); war die Position danach dauerhaft unlesbar, blieb ein alter Spot-Stop über der
+  Netto-Richtung, und der verkleinerte Perp-Stop deckte seine Folge nicht mehr. Der Seed war am Stand vor E6 und am E5-Stand sauber (anderer Ablauf der Störungen
+  durch ein Ersetzen mehr oder weniger). **Fix:** `VORAB_TOLERANZ = 2` — Vorab ersetzt nur bei mehr als zwei Futures-Schritten Überschuss (beide Stufen). Tests:
+  14.E7 (1/2/3 Schritte), Seed 15519 — rot am Stand vor der Korrektur.
+- **Mutationsprobe am Endstand (208 Muster, 57 davon der 14. Runde, fail-fast-Harness `MUT_FAILFAST=1`): erst 187 erkannt, 21 offen — zwei Arten:**
+  (a) **Stellen, die seit E2/E3/K2 eine ZWEITE Schicht verdeckt** (M8, R11-M20, R11-M22, R13-M20 durch die Kontoprobe; R13-M18/M19 durch «nie löschen auf veralteten
+  Zahlen»; R14-M27/M28 = K2 selbst durch die Kontoprobe): beide Schichten führen zum selben sicheren Endzustand («beidseitig»), ein Test über den Endzustand
+  erkennt keine Mutation einer der beiden → Tests 14.D1–D7 rufen die ÄLTERE Schicht direkt auf (`_spot_abgleich`/`_spot_ohne_liste` ohne Kontoprobe) bzw. schalten
+  die zweite ab (`L._kontoprobe`, `stand_frisch=True`). (b) **Zweige meiner eigenen Korrekturen, die kein Test einzeln pinnte:** F1 hat sieben Löschstellen (14.F1a–f
+  + D5), F2 (`-2022`-Rückfall mit frischer Position, Ausstieg bei sofortigem Auslösen), F3 (Spot ohne Liste: Ausstieg), K1 (aktueller Stop nicht im Gedächtnis),
+  K5 (Buch weg: je Modus die eigene Verbindung, Futures UND Spot), E2 («passt»-/«bleiben»-Kurzschluss mit versteckten Coins), E3 (Spot- bzw. Perp-Stop auf veralteten
+  Zahlen). **199 von 208 erkannt; die 9 offenen sind gleichwertig:** R10-M4b, R11-M19, R12-M5, R12-M23, R12-M34 (README), M14 (K2 setzt `unklar_sell` je Runde, die
+  Zuweisung davor ist tot), R14-M7 (der Schutzgurt `aktuell_cid` greift nur, wenn die Kennung des NEUEN bzw. sichtbar passenden Stops schon als «versteckt» im Buch
+  stünde — sie ist frisch bzw. in der Liste sichtbar), R14-M49 (`stand_frisch = True` nach der erneuten Lesung wird nur erreicht, wenn der Stand schon frisch war),
+  R14-M53 (ein reduceOnly-SELL gibt es auf dem Futures-Konto nicht). R11-M21 entfällt (Zeile umgebaut; Stufe 1 lebt als R14-M55).
+- **LEHREN:** (1) **Strengere Werkzeuge finden, was die gutmütigen verstecken** — der Standard-Fuzzer war auf denselben Seed-Bereichen sauber. (2) **Namens-
+  Überdeckung:** eine verschachtelte `def frisch()` überdeckte den Parameter `frisch` (immer wahr) → der Schalter wirkte nie; zu jedem neuen Parameter gehört ein
+  Test, in dem der Wert den Ablauf ÄNDERT (gefunden über Seed 20557, Spur). (3) Die Prüf-Börse VERBRAUCHT `anzahl` (zählt herunter) → für Regeln über «wie viele
+  Störungen insgesamt» die Ursprungszahl `anzahl0` merken. (4) Das Plan-Ende eines Laufs ist nicht das Ziel des Plans, sondern der tatsächliche Stand plus das, was
+  noch kommt. (5) Kampagnen laufen auf EINGEFRORENEN Kopien (`snap/`) — Jobs, die nach einer Code-Änderung starten, laufen sonst mit dem neuen Code. (6) `pkill -f`
+  mit einem Muster, das den eigenen Befehl trifft, beendet die eigene Shell (Exit 144) → PID-Listen oder Klammer-Trick `[x]`. Auch der Klammer-Trick schützt nicht, wenn derselbe Befehl das Muster an anderer Stelle unverklammert enthält (z. B. `rm -rf /tmp/xyz_*`).
+  (7) **Jede Änderung am Schutzpfad, die Stops verkleinert oder vergrössert, braucht die GANZE Kampagne neu** (Standard UND streng) — E5 war am strengen
+  Seed 22466 grün und riss im Standard-Modus eine neue Lücke auf (E6); E6 riss die nächste auf (E7). (8) Doppelt abgesicherte Stellen: die Mutationsprobe zeigt sie als «nicht erkannt» — nicht
+  als gleichwertig abtun, sondern die ältere Schicht einzeln prüfen (direkter Aufruf oder die zweite Schicht abschalten).
+- Tests: streng 286 (14.F1/F1s/F2/F3/K1/K2/K3/K5/W, 14.E2a–d/E3/E3b/E4/E5/E6/E7, 14.D1–D7, 14.F1a–f, 14.F2a/b, F3b, K1b, K5b, E2c/d, E3-Spot/-Perp, strenge Seeds),
+  live 154, pilot 91, cockpit 123, testnetz 61, plan 23 (alle grün).
+- **Endstand (Code `13ea88432` eingefroren, danach nur Tests und Doku):** Schlusskampagne `camp14e` **212 Aufträge = 25'000 Fuzzer-Läufe, 0 echte Befunde** (735
+  begründete Einträge) — Standard Not-Aus/Listen/Monotonie/Läufe ×30 je 15000–18000, streng Not-Aus/Listen/Monotonie 20000–23000 und Läufe ×30 20000–24000. Die
+  Kampagne wurde dreimal gestartet; die ersten beiden Läufe brach ich nach einem Befund ab (E6, E7). Mutationsprobe 199/208 (9 gleichwertig).
+- **Nächster Schritt:** 15. Prüfung (Auftrag `scratchpad/pruefung15_auftrag.md`); erst bei 0 Blockern `FREIGEGEBEN = True` (eigener PR) → Testnetz
+  (`testnetz_pruefung.py` A1–A8) → Probelauf → kleiner Betrag. Keine Anlageberatung; gehebelte Futures können zum Totalverlust führen.
+
 **📌 2026-10-18 (⚡ Futures: Risiko-Stufe 1,75× wählbar — User: «funktioniert der Bot schon mit Trading?» → «mach future trading, zu wenig Rendite»):**
 - **Ist-Stand (Daten auf `main`):** Spielgeld-Logbücher laufen täglich (12.–18.10.). KI-Bot +0,02 % (alles gleich halten +0,61 %, Trendfilter +0,20 %);
   Krypto-Pilot-Schatten −3,9 % (Pilot 2.0 −3,8 %; BTC halten −2,8 %, ETH −5,3 %). 7 Tage = Rauschen, Urteil frühestens Jan 2027. Ob der Pilot auf dem

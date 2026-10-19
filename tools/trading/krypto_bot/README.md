@@ -839,14 +839,24 @@ Andere Strategie wählen: `setx KRYPTO_STRATEGIE "halten"` (immer 100 %) oder `"
 > deckte seine Folge nicht mehr. Jetzt ersetzt Vorab nur bei mehr als `VORAB_TOLERANZ` = 2 Schritten Überschuss. Klein: K1 beide Läufe ändern den Perp-Stop (die Kennung des anderen kommt ins Gedächtnis), K2 die unklaren
 > Aufträge werden in jeder Abgleich-Runde frisch gelesen, K3 Short-Staub ≤ 10 USDT, K4 kein Dauer-Alarm der Nachkontrolle nach einer
 > Ablehnung, K5 zwei gestartete Modi (Not-Aus und Nachkontrolle binden je Modus dessen eigene Verbindung; der Tageslauf schliesst bei
-> STOP auch einen fremden Modus), K6 `krypto-auto.bat` ruft im Not-Aus-Zweig die Nachkontrolle. ‹ENDSTAND›
-> Alle Funde
-> sind behoben und
+> STOP auch einen fremden Modus), K6 `krypto-auto.bat` ruft im Not-Aus-Zweig die Nachkontrolle.
+> **Endstand der 14. Runde (Stand `13ea88432` eingefroren, danach nur Tests und Doku):** Schlusskampagne **212 Aufträge = 25'000 Fuzzer-Läufe, 0 echte
+> Befunde** (735 begründete Einträge der bekannten Klassen) — Standardmodus Not-Aus/Listen/Monotonie/Läufe ×30 je 15000–18000, strenger Modus
+> Not-Aus/Listen/Monotonie 20000–23000 und Läufe ×30 20000–24000; die Kampagne wurde dreimal gestartet — die ersten beiden Läufe brach ich nach einem
+> Befund ab (E6, E7, siehe oben), der dritte lief vollständig durch. Mutationsprobe am Endstand
+> (208 Muster, davon 57 der 14. Runde): erst 187 erkannt, 21 offen. 12 davon waren Lücken meiner eigenen Korrekturen, die kein Test einzeln pinnte oder die
+> seit E2/E3/K2 eine zweite Schicht verdeckt (Kontoprobe, «nie löschen auf veralteten Zahlen»): neue Tests 14.F1a–f (Zweige der F1-Korrektur),
+> 14.D1–D7 (die ÄLTERE Schicht allein: direkter Aufruf bzw. zweite Schicht abgeschaltet), 14.F2a/b, 14.F3b, 14.K1b, 14.K5b, 14.E2c/d, 14.E3-Spot/-Perp.
+> **199 von 208 erkannt; die 9 offenen sind gleichwertig:** R10-M4b, R11-M19, R12-M5, R12-M23, R12-M34 (siehe oben) und neu M14 (K2 setzt `unklar_sell` in
+> jeder Abgleich-Runde, die Zuweisung davor ist tot), R14-M7 (der Schutzgurt `aktuell_cid` greift nur, wenn die Kennung des NEUEN bzw. des sichtbar
+> passenden Stops schon als «versteckt» im Buch stünde — sie ist frisch bzw. in der Liste sichtbar), R14-M49 (die Zuweisung `stand_frisch = True` nach der
+> erneuten Lesung wird nur erreicht, wenn der Stand schon frisch war) und R14-M53 (ein reduceOnly-SELL gibt es auf dem Futures-Konto nicht; reduceOnly-Schritte
+> sind Rückkäufe). Tests: streng 286, live 154, pilot 91, cockpit 123, testnetz 61, plan 23 (alle grün). Alle Funde sind behoben und
 > als feste Szenarien in `test_pilot2_streng.py`. `FREIGEGEBEN = False` bleibt, bis eine weitere unabhängige Prüfung keine Blocker
 > mehr findet — bis dahin wirkt `KRYPTO_PILOT2=an` nicht (siehe «Starten» unten).
 
 Gleiche Signale wie der Pilot, klügere Ausführung über **beide** Binance-Konten (`pilot2_plan.py` rechnet, `pilot2_live.py`
-handelt; 23 + 154 + 273 Tests gegen zwei streng nachgebaute Binance, Fuzzer, Mutationsproben). Ohne `KRYPTO_PILOT2=an` handelt der
+handelt; 23 + 154 + 286 Tests gegen zwei streng nachgebaute Binance, Fuzzer, Mutationsproben). Ohne `KRYPTO_PILOT2=an` handelt der
 Pilot wie bisher.
 
 **Was er tut:** Richtung long → Coin im Spot-Konto (kein Funding). Richtung short → Short-Perpetual (Hebel 1, bekommt Funding).
@@ -1099,7 +1109,7 @@ python3 tools/trading/krypto_bot/test_calls.py    # 84 Tests: 40 typische Call-F
 python3 tools/trading/krypto_bot/test_binance.py  # 21 Tests, inkl. nachgebautem Binance-Server mit Signaturprüfung
 python3 tools/trading/krypto_bot/test_pilot2_plan.py  # 23 Tests: Pilot-2.0-Rechnung (Richtung, Ernte, Pfand, Mindestbeträge)
 python3 tools/trading/krypto_bot/test_pilot2_live.py  # 154 Tests: Pilot 2.0 («Konto = Wahrheit») gegen eine strenge nachgebaute Binance
-python3 -B tools/trading/krypto_bot/test_pilot2_streng.py  # 273 Tests: Belege der 8.–14. Prüfung, Schlussproben, Fuzzer-Funde gegen die Prüf-Börse, kleine Fuzzer
+python3 -B tools/trading/krypto_bot/test_pilot2_streng.py  # 286 Tests: Belege der 8.–14. Prüfung, Schlussproben, Fuzzer-Funde gegen die Prüf-Börse, kleine Fuzzer
 python3 -B tools/trading/krypto_bot/test_maxprofit.py      # 55 Tests: Max-Profit-Kern (gleiches Modell wie der Pilot, Kelly-Optimum, keine Zukunftsdaten, Kosten; Pilot 2.0 mit Hebel: = lauf2 bei 1×, Pfand-Regel, bei festem Kurs nie liquidiert)
 python3 -B tools/trading/krypto_bot/test_testnetz_pruefung.py  # 61 Tests: das Testnetz-Prüfskript (A1–A8, B1–B6) gegen die Prüf-Börse (nur 127.0.0.1)
 python3 -B tools/trading/krypto_bot/pruef_fuzzer.py notaus 0 1600     # grosser Fuzzer (für Prüfungen): Not-Aus unter harten Störungen
