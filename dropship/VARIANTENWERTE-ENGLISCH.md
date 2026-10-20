@@ -6,14 +6,14 @@
 
 ## Zahlen
 
-- Produkte gesehen: **14'450**
-- Optionen mit englischen Werten (Kandidaten): 1'598
+- Produkte gesehen: **15'646**
+- Optionen mit englischen Werten (Kandidaten): 1'702
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 8'163
+- Werte mit unbekanntem Wort (unverändert): 9'013
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 37
-- übersprungen «kollision-nach-uebersetzung»: 29
+- übersprungen «kleidungsstueck-im-wert»: 41
+- übersprungen «kollision-nach-uebersetzung»: 31
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -36,6 +36,7 @@
 - `15449165824385` [Ausführung] **Streetwear Hoodie mit Herz-Augenmaske** — hose, pullover: Pale yellow-L-Sweatshirt | Pale yellow-L-Pants | Pale yellow-M-Sweatshirt | Pale yellow-M-Pants | Pale yellow-S-Sweatshirt | Pale yellow-S-Pants | Pale yellow-XL-Sweatshirt | Pale yellow-XL-Pants
 - `15449439994241` [Farbe] **Retro Sport-Casual Gestreifte Jacke und Weitbein-Hose** — hose, jacke: Coat Red | Coat Black | Pants Red | Pants Black
 - `15453570728321` [Farbe] **Japanischer Segler-Anzug** — kleid, rock · Titel nennt Set: Short Sleeves Bow Tie | Long Sleeves Bow Tie | Short Sleeves Skirt Bow Tie | Long Sleeve With Dress Bow Tie | Skirt
+- `15459786752385` [Farbe] **Haltbare Einheitsjacke mit mehreren Taschen** — hose, oberteil: Black Suspender Pants | Dark Gray Suspender Pants | Dark Gray Split Suit | Dark Gray Trousers | Dark Gray Single Blouse
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -70,6 +71,8 @@
 - `15454235689345` [Farbe] high-waist-yoga-pants-mit-beutlifting-effekt-632800: Kaffeebraun-Braun → Kaffeebraun
 - `15455729582465` [Farbe] sonnenschutzpullover-mit-kragen-und-kurzarmel-629700: Mustard Yellow → Senfgelb
 - `15456157794689` [Farbe] weite-cropped-hosen-620200: Marineblaublau → Marineblau
+- `15458844049793` [Farbe] herren-langarm-button-down-hemd-615300: Pink Color → Pink
+- `15466024305025` [Farbe] elegantes-a-linien-kleid-mit-ruschenarmeln-620600: Polka Dot → Gepunktet; Marineblaublau → Marineblau
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -100,5 +103,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 333, `light` 246, `color` 198, `degrees` 159, `shell` 96, `core` 92, `skin` 83, `three` 81, `⟨satzbau:material-vor-farbe⟩` 80, `powder` 79, `high` 73, `surface` 72, `rope` 66, `case` 63, `bag` 62, `feet` 62, `dark` 58, `belt` 55, `of` 54, `code` 52, `size` 50, `lens` 50, `to` 49, `line` 48, `four` 48, `hat` 47, `bear` 46, `clock` 45, `buckle` 44, `no` 43, `electric` 43, `dual` 43, `acupuncture` 43, `perforated` 42, `button` 41, `face` 40, `cat` 39, `opp` 39, `carbon` 38, `little` 37, `ice` 37, `handle` 37, `cup` 37, `adjustable` 37, `⟨satzbau:adjektivfolge⟩` 37, `magnetic` 36, `tea` 36, `suit` 36, `generation` 36, `person` 36, `⟨satzbau:nomen-vor-farbe⟩` 35, `fiber` 35, `⟨satzbau:menge-vor-nomen⟩` 35, `star` 33, `full` 33, `⟨satzbau:nomen-nomen⟩` 33, `plush` 32, `sky` 31, `noodles` 31, `camera` 31
+`⟨satzbau:adjektiv-vor-nomen⟩` 413, `light` 329, `color` 211, `degrees` 159, `surface` 108, `⟨satzbau:material-vor-farbe⟩` 104, `shell` 100, `skin` 98, `core` 92, `powder` 90, `⟨satzbau:mass-ohne-einheit⟩` 90, `three` 83, `high` 73, `rope` 69, `case` 64, `bag` 62, `feet` 62, `dark` 59, `dual` 57, `net` 57, `of` 56, `belt` 56, `size` 54, `code` 52, `lens` 50, `chain` 49, `line` 49, `bear` 49, `to` 49, `four` 48, `hat` 47, `about` 46, `clock` 45, `buckle` 44, `no` 43, `electric` 43, `acupuncture` 43, `little` 42, `perforated` 42, `face` 41, `button` 41, `cat` 39, `opp` 39, `ice` 38, `carbon` 38, `cherry` 37, `handle` 37, `cup` 37, `adjustable` 37, `⟨satzbau:adjektivfolge⟩` 37, `autumn` 37, `magnetic` 36, `tea` 36, `star` 36, `suit` 36, `generation` 36, `⟨satzbau:nomen-vor-farbe⟩` 36, `person` 36, `spring` 35, `fiber` 35
 
