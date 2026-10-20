@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 12:15 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 13:13 UTC)
 
-Suche: `status:active AND created_at:>=2026-10-17` · gemessen 345 · **193 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 173, teilweise: 14, keine: 6; Preisspanne > 2×: 31) · 1 CJ-Variante: 152 · ohne Antwort: 0
+Suche: `status:active AND created_at:>=2026-10-17` · gemessen 349 · **197 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 177, teilweise: 14, keine: 6; Preisspanne > 2×: 32) · 1 CJ-Variante: 152 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -9,6 +9,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Stahlarmband (`stahlarmband-627300`) | 99 | 99 | 2.24–3.46 | 16.90 | Style 244, Style 245, Style 246, Style 247 |
 | Chenille Sofakissen – Rundum Komfort (`chenille-sofakissen-rundum-komfort-611800`) | 99 | 99 | 3.51–19.1 | 79.90 | White-70x70cm, White-70x90cm, White-70x120cm, White-70x150cm |
 | Chenille Sofa-Kissen 70×70 cm (`chenille-sofa-kissen-70-70-cm-611300`) | 96 | 96 | 2.76–14.06 | 52.90 | Black Brown-70×70cm, Black Brown-70×90cm, Black Brown-70×120cm, Black Brown-70×150cm |
+| Sofakissen 70×70 cm Chenille rutschfest (`sofakissen-70-70-cm-chenille-rutschfest-628700`) | 95 | 95 | 3.51–12.85 | 48.90 | Gray-70x70cm, Gray-70x90cm, Gray-70x120cm, Gray-70x150cm |
 | Chenille Sofakissenbezug – Streifen, 70–240 cm (`chenille-sofakissenbezug-streifen-70-240-cm-638300`) | 90 | 90 | 2.21–10.76 | 55.90 | Coffee Color-70x70cm, Coffee Color-70x90cm, Coffee Color-70x120cm, Coffee Color-70x150cm |
 | Kissenbezug mit abstraktem Kunstmuster (`kissenbezug-mit-abstraktem-kunstmuster-620200`) | 88 | 88 | 2.21–10.07 | 48.90 | Dust Trail Brown-70×70cm, Dust Trail Brown-70×90cm, Dust Trail Brown-70×120cm, Dust Trail Brown-70×150cm |
 | Sofa-Kissenbezug Retro Baumwoll-Leinen (`sofa-kissenbezug-retro-baumwoll-leinen-638300`) | 81 | 81 | 3.34–15.45 | 60.90 | Dark Gray-70X70cm, Dark Gray-70X90cm, Dark Gray-70X120cm, Dark Gray-70X150cm |
@@ -30,6 +31,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Notizbuch mit PU-Ledercover (`notizbuch-mit-pu-ledercover-623800`) | 27 | 20 | 2.77–10.41 | 38.90 | Charming Black, Business Brown, Tiffany Blue, Vitality Red |
 | Clutch mit Münztasche und Kartenhalter (`clutch-mit-munztasche-und-kartenhalter-619900`) | 26 | 17 | 5.27–6.63 | 16.90 | Wine Red, Midnight Black, Palaeo Yellow, Custom Orange |
 | Titanstahl-Halskette mit rundem Anhänger (`titanstahl-halskette-mit-rundem-anhanger-636400`) | 24 | 24 | 3.98–13.71 | 22.90 | Steel-1 round block, Steel-2 round block, Steel-3 round block, Steel-4 round block |
+| Sofa-Bezug, modernes Design, schwarz-Marmor (`sofa-bezug-modernes-design-schwarz-marmor-626300`) | 24 | 24 | 6.42–11.98 | 40.90 | Black Marble-Single, Black Marble-Double, Black Marble-Three People, Black Leaf-Single |
 | Schwere Seidenkissenhülle 50×75 cm (`schwere-seidenkissenhulle-50-75-cm-631100`) | 22 | 16 | 32.64–32.64 | 43.90 | Champagne-50x75cm, Cameo Brown-50x75cm, Smoke Pink-50x75cm, Wine Red-50x75cm |
 | Smart Ring mit Herzfrequenz- und Schlafüberwachung (`smart-ring-mit-herzfrequenz-und-schlafuberwach-631300`) | 21 | 21 | 7.95–7.95 | 16.90 | Gold-No.7, Gold-No.8, Gold-No.9, Gold-No.10 |
 | Sofakissenbezug aus Milchvelvet – 70×70 cm (`sofakissenbezug-aus-milchvelvet-70-70-cm-621100`) | 20 | 20 | 3.16–7.99 | 36.90 | Dark Gray-70×70cm, Dark Gray-70×150cm, Dark Gray-70×180cm, Dark Gray-70×210cm |
@@ -177,6 +179,8 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Quarz-Uhr mit Stahlarmband für Herren (`quarz-uhr-mit-stahlarmband-fur-herren-637800`) | 3 | 3 | 4.2–5.25 | 16.90 | Silver Strap, Belt Brown, Belt Black |
 | Bluetooth Gamepad für Switch, Android, Apple und PC (`bluetooth-gamepad-fur-switch-android-apple-und-618600`) | 3 | 3 | 7.64–7.64 | 18.90 | G6S Black And White, G6S Black, G6S Gray |
 | Korrektur-Stick mit Farbwechsel (`korrektur-stick-mit-farbwechsel-602800`) | 3 | 3 | 2.81–2.81 | 16.90 | Ivory white, Natural color, Dark complexion |
+| Foundation mit Farbwechsel (`foundation-mit-farbwechsel-606500`) | 3 | 3 | 2.28–2.28 | 16.90 | Ivory white, Natural color, Dark complexion |
+| Multifunktioneller Makeup-Stick (`multifunktioneller-makeup-stick-621000`) | 3 | 3 | 2.99–2.99 | 16.90 | Dark complexion, Natural color, Light complexion |
 | Frosted Fahrrad-Rennrucksack (`frosted-fahrrad-rennrucksack-073600`) | 2 | 2 | 6.56–6.56 | 17.90 | Frosted Style, Carbon pattern |
 | Grosses Casual-Rucksack mit PU-Leder und Buchstaben-Print (`grosses-casual-rucksack-mit-pu-leder-und-buchs-609664`) | 2 | 2 | 7.63–7.63 | 33.90 | Patterned Black, Large Plaid Flower |
 | Männer-Wasserdichte Multifunktionstasche (`manner-wasserdichte-multifunktionstasche-540224`) | 2 | 2 | 9.12–10.78 | 29.90 | Cool black-10inches, Volcanic black-10inches |
