@@ -360,6 +360,8 @@ with tempfile.TemporaryDirectory() as tmp:
                    and c[c.index("/tr") + 1].startswith("wscript.exe //B //Nologo ") and "krypto-nachkontrolle-still.vbs" in c[c.index("/tr") + 1] for c in befehle)
                and e["ok"], (befehle, e["text"]))
 
+        pruefe("(18. Prüfung K5) die einfache Variante der Nachkontroll-Aufgabe sagt, was ihr fehlt: «auch auf Akku» und «verpassten Lauf nachholen»", "Akku" in e["text"] and "nachholen" in e["text"], e["text"])
+
         def nk_scheitert(cmd, zeit):
             befehle.append(cmd)
             return ("Nachkontrolle" not in " ".join(cmd)), "FEHLER: nicht erlaubt" if "Nachkontrolle" in " ".join(cmd) else "ERFOLG"
@@ -397,6 +399,9 @@ with tempfile.TemporaryDirectory() as tmp:
                and "neu starten" not in e["text"], befehle[n_b:])
         e = C.aktion("update", befehl=lambda c, z: (True, "Updating abc..def\nFast-forward"))
         pruefe("Update mit neuer Version: Hinweis Cockpit neu starten", "neu starten" in e["text"])
+        pruefe("krypto-auto.bat «nachkontrolle» (18. Prüfung W3′/K5): EIN Durchgang (--einmal, kein 11-Minuten-Warten mit gehaltener Sperre), der Rückgabewert steht in data\\krypto-nachkontrolle-rc.txt, die Umleitung steht VOR dem Befehl (eine Ziffer davor gälte als Handle)",
+               "pilot.py --nachkontrolle --einmal" in abschnitt and C.NK_RC == "krypto-nachkontrolle-rc.txt" and f'>"data\\{C.NK_RC}" echo' in abschnitt and "rc=%NKRC%" in abschnitt and "exit /b %NKRC%" in abschnitt
+               and abschnitt.index("--einmal") < abschnitt.index(C.NK_RC) and f'>"data\\{C.NK_LEBT}" echo' in abschnitt, abschnitt)
         e = C.aktion("update", befehl=lambda c, z: (False, "error: Your local changes would be overwritten"))
         pruefe("Update gescheitert: verständlicher Hinweis", not e["ok"] and "eigene Änderungen" in e["text"])
         pruefe("Aufgabe vorhanden? (schtasks /query)", C.aufgabe_da(lambda c, z: (c[:2] == ["schtasks", "/query"], "")) is True)
@@ -430,6 +435,23 @@ with tempfile.TemporaryDirectory() as tmp:
                     zeile17 = gnk17.get("Nachkontrolle (Aufgabenplanung)")
                     pruefe(f"Ampel «Nachkontrolle (Aufgabenplanung)», {fall17}: {erwartet17} — und die tägliche Aufgabe bleibt grün",
                            zeile17 is not None and zeile17["ok"] is erwartet17 and wort17 in zeile17["text"] and gnk17["Täglicher Start (Aufgabenplanung)"]["ok"] is True, (zeile17, gnk17.get("Täglicher Start (Aufgabenplanung)")))
+                # (18. Prüfung K5) das Lebenszeichen schreibt die Bat VOR Python: ein abstürzendes `pilot.py --nachkontrolle` liess die Ampel grün. Jetzt wertet sie zusätzlich den Rückgabewert (NK_RC):
+                # 0 und 3 (Warnung, schon gemeldet) sind in Ordnung, alles andere ist ein Absturz → rot; ein veralteter Rückgabewert (älter als NK_LEBT_MAX_MIN) zählt nicht
+                rc_datei18 = Path(td17) / C.NK_RC
+                for fall18, rc_text18, rc_alter18, erwartet18, wort18 in (("rc=0 frisch", "Tue 20.10.2026 18:30:01,12 rc=0", 60, True, "zuletzt vor"), ("rc=3 frisch (Warnung, schon gemeldet)", "x rc=3", 60, True, "zuletzt vor"),
+                                                                          ("rc=1 frisch (Absturz)", "x rc=1", 60, False, "Rückgabewert 1"), ("rc=9009 frisch", "x rc=9009", 60, False, "Rückgabewert 9009"),
+                                                                          ("rc=1, aber 45 Minuten alt (veraltet)", "x rc=1", 45 * 60, True, "zuletzt vor"), ("rc-Datei ohne rc=", "kaputt", 60, True, "zuletzt vor")):
+                    lebt17.write_text("x")
+                    _os17.utime(lebt17, (time.time() - 3 * 60, time.time() - 3 * 60))
+                    rc_datei18.write_text(rc_text18)
+                    _os17.utime(rc_datei18, (time.time() - rc_alter18, time.time() - rc_alter18))
+                    C.os = _NT17()
+                    C._AUFGABE_CACHE.update({"zeit": 0.0, "wert": None, "wert_nk": None})
+                    C._befehl = lambda cmd, zeit: (True, "")
+                    gnk18 = {x["name"]: x for x in C.gesundheit({}, {"entscheide": []}, {}, datetime.now(timezone.utc).date())}
+                    zeile18 = gnk18.get("Nachkontrolle (Aufgabenplanung)")
+                    pruefe(f"Ampel «Nachkontrolle (Aufgabenplanung)», Rückgabewert der Bat: {fall18} → {'grün' if erwartet18 else 'rot'}", zeile18 is not None and zeile18["ok"] is erwartet18 and wort18 in zeile18["text"], zeile18)
+                rc_datei18.unlink(missing_ok=True)
             finally:
                 C.os, C._befehl, C.DATA = alt_os17, alt_bef17, alt_data17
                 C._AUFGABE_CACHE.clear()

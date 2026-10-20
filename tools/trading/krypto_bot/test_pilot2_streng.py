@@ -6054,9 +6054,14 @@ stand_ = {"n": 0, "log": None}
 
 def haken_w3b_(m_, pfad_, p_):
     stand_["n"] += 1
-    if stand_["n"] == 14 and stand_["log"] is None:
-        stand_["log"] = len(B.log)
-        lk_.write_text("99999 0 fremd\n")
+    if m_ == "GET" and stand_["log"] is None:                  # (18. Prüfung K1) NACH dem Vermerk, vor dem ersten Auftrag — bei Anfrage 14 stand der Vermerk noch nicht im Buch und die Prüfung unten war tot
+        try:
+            vermerk_ = (json.loads(Path(d_).read_text()).get("echt") or {}).get("schutz_offen")
+        except (OSError, ValueError):
+            vermerk_ = None
+        if vermerk_ == ["BTC"]:
+            stand_["log"] = len(B.log)
+            lk_.write_text("99999 0 fremd\n")
 
 
 B.vor_jeder_anfrage = haken_w3b_
@@ -6069,8 +6074,8 @@ finally:
 nach_ = [x_ for x_ in B.log[stand_["log"]:] if x_[1] in ("POST", "DELETE")] if stand_["log"] is not None else None
 buch_ = json.loads(open(d_).read())
 pruefe("17.W3b Tageslauf: nach der Übernahme der Sperre schreibt der Lauf nichts mehr (kein Auftrag, kein Stop), der Markt steht für die Nachkontrolle im Buch",
-       nach_ is not None and not nach_ and "BTC" in ((buch_.get("echt") or {}).get("schutz_offen") or buch_.get("schutz_offen") or []) or (nach_ is not None and not nach_),
-       (nach_, list(buch_.keys())[:6]))
+       nach_ is not None and not nach_ and "BTC" in ((buch_.get("echt") or {}).get("schutz_offen") or []),
+       (nach_, list(buch_.keys())[:6], (buch_.get("echt") or {}).get("schutz_offen")))
 
 # K1 (17. Prüfung): Perp-Liste unlesbar UND ein bekannter alter Stop lässt sich nicht löschen — in jedem Takt der Nachkontrolle kam ein weiterer Stop dazu (bis 10). Jetzt: kennt das Buch schon PERP_BLIND_MAX (3) Stops, kommt keiner mehr dazu.
 def k1_lauf_(bekannt_):
@@ -6212,6 +6217,258 @@ import pruef_lot as LOT  # noqa: E402
 n_lot_, z_lot_, bsp_lot_ = LOT.scan((0.2,), LOT.RESTE[::2])
 pruefe(f"17.Lot Lot-Scan (reduziert, {n_lot_} Lagen: Coins mit Bruchteilen eines Lots × Short × alter Spot-Stop × alte Perp-Stops × nicht löschbar): keine Befunde, keine Ausnahme, der 3. Durchgang schreibt nichts",
        n_lot_ >= 800 and not (set(z_lot_) - {"Lagen"}), (dict(z_lot_), bsp_lot_))
+
+import threading as _th18  # noqa: E402
+import time as _time18  # noqa: E402
+import pruef_kill as K18  # noqa: E402
+# ───────── 18. Folge-Runde (R18): Funde der 18. unabhängigen Prüfung (kein Blocker; 3 wichtig, 6 klein) ─────────
+# W1′ (16'055 USDT): ein als tot übernommener Lauf (Zombie, aus dem Ruhezustand erwacht) schickt zwar keine Aufträge mehr (`sperre.pruefen()` in den Brokern), schrieb aber weiter das BUCH — die Nachkontrolle, die für ihn
+# arbeitet, sah ein «von einem anderen Lauf geändertes» Buch und beendete sich, bevor sie geheilt hatte (90 von 623 Lagen). Jetzt prüft jedes Buch-Schreiben die Lauf-Sperre.
+sd18_ = _tf17.mkdtemp(prefix="w1z_")
+bf18_ = Path(sd18_) / "bestand.json"
+b18_ = L.leer_buch()
+b18_["start"], b18_["uid"] = "2026-10-20", 1
+L.buch_schreiben(bf18_, "echt", b18_)                        # kein Lauf-Sperre im Prozess: nichts zu prüfen
+ges18_ = [json.dumps(L.buch_lesen(bf18_, "echt"), sort_keys=True)]
+lk18_ = Path(sd18_) / "krypto-lauf.lock"
+fehler18a_ = fehler18b_ = None
+try:
+    with SPR17.lauf_sperre(ordner=sd18_, warten=0):
+        b18_ = L.buch_lesen(bf18_, "echt")
+        b18_["schutz_offen"] = ["BTC"]
+        L._buch_speichern_zusammen(bf18_, "echt", ges18_, b18_)           # die Sperre gehört dem Prozess: geschrieben
+        geschrieben18_ = L.buch_lesen(bf18_, "echt")["schutz_offen"] == ["BTC"]
+        inhalt18_ = bf18_.read_text()
+        lk18_.write_text("99999 0 fremd\n")                               # ein anderer Lauf übernimmt die Sperre als tot
+        b18_["schutz_offen"] = []
+        try:
+            L._buch_speichern_zusammen(bf18_, "echt", ges18_, b18_)
+        except OSError as ex_:
+            fehler18a_ = str(ex_)
+        try:
+            L.buch_schreiben(bf18_, "echt", b18_)
+        except OSError as ex_:
+            fehler18b_ = str(ex_)
+        unveraendert18_ = bf18_.read_text() == inhalt18_
+finally:
+    lk18_.unlink(missing_ok=True)
+pruefe("18.W1′ Gegenprobe: gehört die Lauf-Sperre dem Prozess, wird das Buch geschrieben", geschrieben18_)
+pruefe("18.W1′ Sperre als tot übernommen: `_buch_speichern_zusammen` schreibt NICHTS (OSError «Lauf-Sperre verloren»), die Datei bleibt, wie sie war", fehler18a_ and "Lauf-Sperre verloren" in fehler18a_ and unveraendert18_, (fehler18a_, unveraendert18_))
+pruefe("18.W1′ … ebenso `buch_schreiben` (Zurücksetzen des Buchs nach «alles zu»)", fehler18b_ and "Lauf-Sperre verloren" in fehler18b_ and unveraendert18_, (fehler18b_, unveraendert18_))
+
+# … der Tageslauf: nach der Übernahme der Sperre ändert sich die Buch-Datei nicht mehr (der Vermerk vor dem ersten Auftrag steht)
+k_ = neues_konto(60000)
+d_ = neu_buch()
+sd_ = _tf17.mkdtemp(prefix="w1t_")
+lk_ = Path(sd_) / "krypto-lauf.lock"
+stand_ = {"n": 0, "buch": None}
+
+
+def haken_w1t_(m_, pfad_, p_):
+    stand_["n"] += 1
+    if m_ == "GET" and stand_["buch"] is None:                 # nach dem Vermerk, vor dem ersten schreibenden Auftrag: ein anderer Lauf übernimmt die Sperre
+        try:
+            vermerk_ = (json.loads(Path(d_).read_text()).get("echt") or {}).get("schutz_offen")
+        except (OSError, ValueError):
+            vermerk_ = None
+        if vermerk_ == ["BTC"]:
+            stand_["buch"] = Path(d_).read_text()
+            lk_.write_text("99999 0 fremd\n")
+
+
+B.vor_jeder_anfrage = haken_w1t_
+try:
+    with SPR17.lauf_sperre(ordner=sd_, warten=0):
+        r_ = lauf([E("BTC", 0.5)], env_echt(kapital=60000), d_)
+finally:
+    B.vor_jeder_anfrage = None
+    lk_.unlink(missing_ok=True)
+pruefe("18.W1′ Tageslauf: nach der Übernahme der Sperre bleibt die Buch-Datei unverändert (kein Schreiben des Zombies), der Vermerk steht, kein Auftrag ging raus",
+       stand_["buch"] is not None and Path(d_).read_text() == stand_["buch"] and "BTC" in (L.buch_lesen(d_, "echt")["schutz_offen"] or []) and not r_["auftraege"],
+       (stand_["n"], L.buch_lesen(d_, "echt")["schutz_offen"], r_["auftraege"]))
+
+# … die Nachkontrolle, die selbst eingefroren war: auch sie schreibt nach der Übernahme nichts mehr
+kk_, dn_, envn_ = K18.tag0(("BTC", 0.5, 1.0))
+bj_ = json.loads(Path(dn_).read_text())
+bj_["echt"]["schutz_offen"] = ["BTC"]
+Path(dn_).write_text(json.dumps(bj_))
+sdn_ = _tf17.mkdtemp(prefix="w1nk_")
+lkn_ = Path(sdn_) / "krypto-lauf.lock"
+standn_ = {"n": 0, "buch": None}
+
+
+def haken_nk18_(m_, pfad_, p_):
+    standn_["n"] += 1
+    if standn_["n"] == 1 and standn_["buch"] is None:
+        standn_["buch"] = Path(dn_).read_text()
+        lkn_.write_text("99999 0 fremd\n")
+
+
+B.vor_jeder_anfrage = haken_nk18_
+try:
+    with SPR17.lauf_sperre(ordner=sdn_, warten=0):
+        rn18_ = L.nachkontrolle(envn_, dn_)
+finally:
+    B.vor_jeder_anfrage = None
+    lkn_.unlink(missing_ok=True)
+pruefe("18.W1′ Nachkontrolle nach der Übernahme ihrer Sperre: das Buch bleibt unverändert («Buch nicht gespeichert»)",
+       standn_["buch"] is not None and Path(dn_).read_text() == standn_["buch"] and any("Buch nicht gespeichert" in z_ for z_ in rn18_["zeilen"]), (rn18_["zeilen"][-3:], standn_["n"]))
+
+# W2′ (9'405 USDT): `perp_ganz_ergaenzen` verweigerte den ergänzenden Perp-Stop, sobald das Buch ≥ 2 Stops kennt — und `_notaus_schutz` meldete trotzdem «ok». Das Buch führt nur Kennungen, keine Mengen:
+# zwei Stops à 0,05 decken 0,1 von 0,2 BTC. Jetzt LAUT (nicht ok, «Sofort prüfen»).
+def w2_lauf_(bekannte_):
+    k0_, sp0_, fu0_, dd0_ = handlage(coins=0.2, short=0.2, kurs=100000.0)
+    st0_ = {}
+    for i_ in range(bekannte_):
+        c0_ = L._kennung(L.CID_STOP_PERP)
+        r0_ = fu0_.stop_menge("BTCUSDT", "BUY", 0.05, 110000.0 + 100 * i_, dd0_["rf"]["tick"], cid=c0_)
+        if i_ == 0:
+            st0_.update(perp=r0_.get("algoId"), perp_cid=c0_, p_short=110000.0)
+        else:
+            st0_["perp_weitere"] = (st0_.get("perp_weitere") or []) + [[r0_.get("algoId"), c0_]]
+    B.regeln = [regel(methode="DELETE", pfad="/fapi/v1/algoOrder", art="vor503", anzahl=10 ** 6), regel(methode="GET", pfad="/fapi/v1/openAlgoOrders", art="vor503", anzahl=10 ** 6)]
+    w0_ = []
+    try:
+        ok0_ = L._notaus_schutz(sp0_, fu0_, st0_, "BTC", "BTCUSDT", "BTC", -0.2, -0.2, k0_.frei["BTC"], k0_.gesperrt["BTC"], 100000.0, dd0_["rs"], w0_.append, "echt")
+    finally:
+        B.regeln = []
+    return ok0_, lage(k0_, "BTCUSDT"), w0_
+
+
+ok_, gl_, w_ = w2_lauf_(2)
+pruefe("18.W2′ Perp-Liste unlesbar, Löschen scheitert, das Buch kennt schon 2 Stops (je 0,05 von 0,2): der Not-Aus meldet NICHT «ok» und warnt laut (Menge der bekannten Stops unbekannt)",
+       ok_ is False and any("ob sie zusammen den" in x_ and "Sofort prüfen" in x_ for x_ in w_) and gl_["n_p"] == 2, (ok_, gl_, w_[-2:]))
+ok_, gl_, w_ = w2_lauf_(1)
+pruefe("18.W2′ Gegenprobe: kennt das Buch erst EINEN Stop, kommt der ergänzende Perp-Stop über den ganzen Short dazu und der Not-Aus ist ok", ok_ is True and gl_["n_p"] == 2 and gl_["p_qty"] >= 0.2 - 1e-9, (ok_, gl_, w_[-2:]))
+
+# W3′: die lange Nachkontrolle hielt die Lauf-Sperre bis 690 s (mit IgnoreNew der Aufgabenplanung ~57 % der Zeit) und liess den Tageslauf (wartet 190 s) still ausfallen → der 10-Minuten-Takt macht EINEN Durchgang
+def nk_lauf_(einmal_):
+    k0_ = neues_konto(20000)
+    d0_ = neu_buch()
+    B.regeln = [regel(methode="POST", pfad="/fapi/v1/algoOrder", art="vor503", anzahl=10 ** 6)]       # der Stop lässt sich nie setzen → der Markt bleibt vermerkt
+    try:
+        lauf([E("BTC", -0.5)], env_echt(), d0_)
+        z0_, s0_ = [0.0], []
+
+        def schlafen0_(s_):
+            z0_[0] += s_
+            s0_.append(s_)
+        r0_ = L.nachkontrolle(env=env_echt(), datei=d0_, schlafen=schlafen0_, uhr=lambda: z0_[0], einmal=einmal_)
+    finally:
+        B.regeln = []
+    return r0_, s0_, z0_[0], L.buch_lesen(d0_, "echt")
+
+
+r_, schlaf_, dauer_, b_ = nk_lauf_(False)
+pruefe("18.W3′ lange Nachkontrolle bei dauerhaft offenem Markt: wartet bis NACHKONTROLLE_MAX_S (Takte von 30 s) — die Sperre bliebe so lange gehalten", len(schlaf_) > 100 and dauer_ >= L.NACHKONTROLLE_MAX_S - 1, (len(schlaf_), dauer_))
+r_, schlaf_, dauer_, b_ = nk_lauf_(True)
+pruefe("18.W3′ Nachkontrolle einmal=True (10-Minuten-Takt): EIN Durchgang, KEIN Warten — der Markt bleibt vermerkt und wird laut gemeldet", not schlaf_ and dauer_ == 0 and b_["schutz_offen"] == ["BTC"] and any("weiterhin nicht vollständig gesichert" in z_ for z_ in r_["zeilen"]), (schlaf_[:3], dauer_, b_["schutz_offen"], r_["zeilen"][-2:]))
+# einmal: ein JUNGER unklarer Auftrag erzeugt keine Dauer-Warnung («noch immer unklar») — der nächste Takt fragt wieder nach; ein alter schon
+for alter_ms_, erwartet_ in ((60 * 1000, False), (L.UNKLAR_MAX_ALTER_MS + 60 * 1000, True)):
+    k0_ = neues_konto(20000)
+    d0_ = neu_buch()
+    lauf([E("BTC", 0.0)], env_echt(), d0_)
+    bj_ = json.loads(Path(d0_).read_text())
+    bj_["echt"]["unklar"] = [dict(L.unklar_eintrag("BTC", "BTCUSDT", "perp", "SELL", 0.1, False, None), cid="p2xUNKLAR", zeit=int(_time18.time() * 1000) - alter_ms_)]
+    Path(d0_).write_text(json.dumps(bj_))
+    B.regeln = [regel(methode="GET", pfad="/fapi/v1/order", art="vor503", anzahl=10 ** 6)]               # Binance antwortet auf die Nachfrage nicht → «offen»
+    try:
+        r_ = L.nachkontrolle(env=env_echt(), datei=d0_, schlafen=lambda s_: None, uhr=lambda: 0.0, einmal=True)
+    finally:
+        B.regeln = []
+    warnt_ = any("noch immer unklar" in z_ for z_ in r_["zeilen"])
+    pruefe(f"18.W3′ einmal: unklarer Auftrag {'älter' if erwartet_ else 'jünger'} als UNKLAR_MAX_ALTER_MS → {'Warnung «noch immer unklar»' if erwartet_ else 'keine Dauer-Warnung (der nächste Takt fragt wieder nach)'}", warnt_ == erwartet_, (warnt_, r_["zeilen"][-3:]))
+
+# K2: der «gespeicherte» Vermerk kann beim Zusammenführen verloren gehen (stand der Markt schon im Buch und löscht ein Schreiber ohne Sperre ihn nach meinem Lesen: Basis 1 / Platte 0 / ich 1 → 0)
+k_, d_, env_ = K18.tag0(("BTC", 0.5, 1.0))
+bj_ = json.loads(Path(d_).read_text())
+bj_["echt"]["schutz_offen"] = ["BTC"]                       # Rest von früher: der Markt steht noch im Buch
+Path(d_).write_text(json.dumps(bj_))
+zust_ = {"n": 0, "geloescht": False, "erster": None}
+
+
+def haken_k2_(m_, pfad_, p_):
+    zust_["n"] += 1
+    if zust_["n"] == 5 and not zust_["geloescht"]:            # ein anderer Schreiber (ohne Sperre) löscht den Vermerk, nachdem der Lauf das Buch gelesen hat
+        zust_["geloescht"] = True
+        bb_ = json.loads(Path(d_).read_text())
+        bb_["echt"]["schutz_offen"] = []
+        Path(d_).write_text(json.dumps(bb_))
+    if m_ in ("POST", "DELETE") and zust_["erster"] is None:
+        zust_["erster"] = (json.loads(Path(d_).read_text()).get("echt") or {}).get("schutz_offen")
+
+
+B.vor_jeder_anfrage = haken_k2_
+try:
+    r_ = lauf([E("BTC", 1.0)], env_, d_)
+finally:
+    B.vor_jeder_anfrage = None
+pruefe("18.K2 der Vermerk steht im Buch, wenn der erste Auftrag rausgeht — auch wenn ein anderer Schreiber ihn beim Zusammenführen gelöscht hatte (erneut eintragen)", zust_["geloescht"] and zust_["erster"] == ["BTC"], zust_)
+
+# K3: `pruefen()` ist eine Momentaufnahme — gibt ein ANDERER Thread (Cockpit) eine andere Sperre genau zwischen Kopie und Lesen ordnungsgemäss frei, ist das kein Verlust von `krypto-lauf`
+sd_ = _tf17.mkdtemp(prefix="k3_")
+lauf_ = SPR17.lauf_sperre(name="krypto-lauf", ordner=sd_, warten=0)
+lauf_.__enter__()
+kurz_ = SPR17.lauf_sperre(name="x-schreiben", ordner=sd_, warten=0)
+kurz_.__enter__()
+fertig_k3_ = [False]
+orig_rt_ = Path.read_text
+
+
+def rt_k3_(self, *a, **k):
+    if self.name.endswith("-schreiben.lock") and not fertig_k3_[0]:
+        fertig_k3_[0] = True
+        t_ = _th18.Thread(target=lambda: kurz_.__exit__(None, None, None))
+        t_.start()
+        t_.join()                                                # der andere Thread gibt genau jetzt frei
+    return orig_rt_(self, *a, **k)
+
+
+Path.read_text = rt_k3_
+fehler_k3_ = None
+try:
+    try:
+        SPR17.pruefen()
+    except SPR17.SperreVerloren as ex_:
+        fehler_k3_ = str(ex_)
+finally:
+    Path.read_text = orig_rt_
+    lauf_.__exit__(None, None, None)
+pruefe("18.K3 ein anderer Thread gibt seine Sperre genau während `pruefen()` frei: KEIN falsches Veto (krypto-lauf gehört dem Prozess noch)", fertig_k3_[0] and fehler_k3_ is None, fehler_k3_)
+# … und das echte Veto bleibt: die eigene Sperre wurde übernommen (Marke weicht ab) bzw. ist weg, OHNE dass der Prozess sie freigegeben hätte
+sd_ = _tf17.mkdtemp(prefix="k3b_")
+lk_ = Path(sd_) / "krypto-lauf.lock"
+with SPR17.lauf_sperre(name="krypto-lauf", ordner=sd_, warten=0):
+    lk_.write_text("99999 0 fremd\n")
+    try:
+        SPR17.pruefen()
+        veto_a_ = False
+    except SPR17.SperreVerloren:
+        veto_a_ = True
+    lk_.unlink()
+    try:
+        SPR17.pruefen()
+        veto_b_ = False
+    except SPR17.SperreVerloren:
+        veto_b_ = True
+pruefe("18.K3 Gegenprobe: übernommene bzw. verschwundene eigene Sperre bleibt ein Veto", veto_a_ and veto_b_, (veto_a_, veto_b_))
+
+# K4: ein als tot übernommener Lauf (Zombie) im Not-Aus: sauber melden, NICHT «alles zu»
+k_, d_, env_ = K18.tag0(("BTC", 0.5, 1.0))
+alt_notaus_ = L._notaus
+
+
+def zombie_notaus_(*a, **k):
+    raise SPR17.SperreVerloren("Die Sperre krypto-lauf.lock gehört inzwischen einem anderen Lauf (als tot übernommen) — kein Auftrag mehr.")
+
+
+L._notaus = zombie_notaus_
+try:
+    rz_ = L.notaus_alle(env_, d_)
+finally:
+    L._notaus = alt_notaus_
+pruefe("18.K4 Not-Aus eines Zombies (Sperre übernommen): kein Absturz, NICHT «alles zu», laute Meldung mit dem Hinweis auf den Lauf, der schliesst",
+       rz_["alles_zu"] is False and rz_["warnung"] and any("übernommen hat, schliesst" in z_ for z_ in rz_["zeilen"]), rz_["zeilen"][-2:])
 
 # ── kleiner Fuzzer mit festen Seeds (der grosse: python3 -B pruef_fuzzer.py laeufe 0 200 / notaus 0 1600) ──
 funde = []

@@ -58,11 +58,18 @@ def pruefen():
         try:
             inhalt = datei.read_text()
         except FileNotFoundError:
-            raise SperreVerloren(f"Die Sperre {datei.name} ist weg (übernommen und wieder freigegeben?) — kein Auftrag mehr.") from None
+            inhalt = None
         except OSError:
             continue
-        if inhalt != marke:
-            raise SperreVerloren(f"Die Sperre {datei.name} gehört inzwischen einem anderen Lauf (als tot übernommen) — kein Auftrag mehr.")
+        if inhalt == marke:
+            continue
+        # (18. Prüfung K3) Die Liste oben ist eine Momentaufnahme: gibt ein anderer Thread (Cockpit) diese Sperre genau zwischen Kopie und Lesen ORDNUNGSGEMÄSS frei, ist sie nicht verloren
+        with _gehalten_sperre:
+            if _gehalten.get(pfad) != marke:
+                continue
+        if inhalt is None:
+            raise SperreVerloren(f"Die Sperre {datei.name} ist weg (übernommen und wieder freigegeben?) — kein Auftrag mehr.")
+        raise SperreVerloren(f"Die Sperre {datei.name} gehört inzwischen einem anderen Lauf (als tot übernommen) — kein Auftrag mehr.")
 
 
 def _inhalt(datei):

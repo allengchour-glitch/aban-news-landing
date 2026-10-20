@@ -21,6 +21,7 @@ import argparse
 import json
 import queue
 import os
+import re
 import subprocess
 import sys
 import threading
@@ -263,6 +264,7 @@ def aufgabe_xml():
 
 
 NK_LEBT = "krypto-nachkontrolle-lebt.txt"      # Lebenszeichen: krypto-auto.bat «nachkontrolle» schreibt es bei JEDEM Start (data/) — fehlt es zu lange, läuft der unsichtbare Starter nicht (Windows Script Host gesperrt, Virenscanner, Pfad)
+NK_RC = "krypto-nachkontrolle-rc.txt"          # (18. Prüfung K5) die Bat schreibt hier NACH der Nachkontrolle «<Zeit> rc=N»: 0 = in Ordnung, 3 = Warnung (schon gemeldet), alles andere = Absturz von pilot.py
 NK_LEBT_MAX_MIN = 30                           # drei verpasste Takte der Aufgabe (alle 10 Minuten) — dann steht die Ampel auf Rot
 NK_STARTER = "krypto-nachkontrolle-still.vbs"  # startet krypto-auto.bat «nachkontrolle» ohne sichtbares Fenster (alle 10 Minuten ein Konsolenfenster würde stören — und dazu verleiten, die Aufgabe abzuschalten)
 
@@ -324,7 +326,8 @@ def _aufgabe_nk_einrichten(befehl, td):
         return True, "Nachkontrolle: alle 10 Minuten und bei der Anmeldung (Aufgabe «" + AUFGABE_NK + "»)."
     ok2, text2 = befehl(aufgabe_befehl_nk(), 60)
     if ok2:
-        return True, "Nachkontrolle: alle 10 Minuten (einfache Variante, Aufgabe «" + AUFGABE_NK + "»)."
+        return True, ("Nachkontrolle: alle 10 Minuten (einfache Variante, Aufgabe «" + AUFGABE_NK + "») — OHNE die Einstellungen «auch auf Akku» und «verpassten Lauf nachholen»: "
+                      "auf einem Laptop im Akkubetrieb läuft sie dann nicht, und nach dem Einschalten wartet sie auf den nächsten Takt.")
     return False, "⚠️ Die Nachkontroll-Aufgabe ließ sich nicht einrichten (" + (text2 or text or "?").strip()[:120] + ") — ohne sie läuft die Nachkontrolle nur hinter dem Tageslauf."
 
 
@@ -681,7 +684,18 @@ def gesundheit(env, lb, ki, heute=None):
             p("Nachkontrolle (Aufgabenplanung)", False, f"eingerichtet, aber seit {minuten_nk:.0f} Min. kein Lauf — läuft der unsichtbare Starter ({NK_STARTER}) nicht? "
               "Aufgabenplanung → «Krypto-Pilot-Nachkontrolle» → Verlauf ansehen, Windows Script Host und Virenscanner prüfen")
         else:
-            p("Nachkontrolle (Aufgabenplanung)", True, f"eingerichtet (alle 10 Minuten), zuletzt vor {minuten_nk:.0f} Min.")
+            rc_nk = None  # (18. Prüfung K5) das Lebenszeichen schreibt die Bat VOR Python — ein abstürzendes `pilot.py --nachkontrolle` liess die Ampel grün; der Rückgabewert steht NACH dem Lauf in NK_RC
+            try:
+                rc_datei = DATA / NK_RC
+                if (time.time() - rc_datei.stat().st_mtime) / 60 <= NK_LEBT_MAX_MIN:
+                    m_rc = re.search(r"rc=(\d+)\s*$", rc_datei.read_text(errors="replace").strip())
+                    rc_nk = int(m_rc.group(1)) if m_rc else None
+            except OSError:
+                rc_nk = None
+            if rc_nk not in (None, 0, 3):
+                p("Nachkontrolle (Aufgabenplanung)", False, f"läuft (zuletzt vor {minuten_nk:.0f} Min.), aber `pilot.py --nachkontrolle` endete mit Rückgabewert {rc_nk} — Absturz? data\\krypto-nachkontrolle.log ansehen")
+            else:
+                p("Nachkontrolle (Aufgabenplanung)", True, f"eingerichtet (alle 10 Minuten), zuletzt vor {minuten_nk:.0f} Min.")
     mvrv = HIER.parent / "daten" / "info_mvrv_btc.json"
     if mvrv.exists():
         stunden = (time.time() - mvrv.stat().st_mtime) / 3600

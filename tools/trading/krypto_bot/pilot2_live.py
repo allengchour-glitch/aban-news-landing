@@ -310,10 +310,22 @@ def _buch_sperre(datei):
     return sperre.lauf_sperre(name=Path(datei).name + "-schreiben", warten=BUCH_SPERRE_WARTEN, ordner=Path(datei).parent, alt_nach=60)
 
 
+def _sperre_pruefen():
+    """(18. Prüfung W1′) Gehört die Lauf-Sperre dieses Prozesses noch ihm? Sonst OSError. Ein als tot übernommener Lauf (Zombie: aus dem Ruhezustand erwacht) darf nicht nur keine Aufträge mehr senden
+    (`sperre.pruefen()` in den Brokern), sondern auch das Buch nicht mehr schreiben: sonst bräche die Nachkontrolle, die inzwischen für ihn arbeitet, bei «Buch von einem anderen Lauf geändert» ab, bevor
+    sie geheilt hat (gemessen: 90 von 623 Lagen, bis 16'055 USDT bis zur nächsten Nachkontrolle)."""
+    import sperre
+    try:
+        sperre.pruefen()
+    except sperre.SperreVerloren as ex:
+        raise OSError(f"Lauf-Sperre verloren ({ex})") from None
+
+
 def buch_schreiben(datei, modus, buch):
     import sperre
     try:
         with _buch_sperre(datei):
+            _sperre_pruefen()
             _buch_schreiben_roh(datei, modus, buch)
     except sperre.Besetzt as ex:
         raise OSError(f"Buch gesperrt ({ex})") from None
@@ -458,6 +470,7 @@ def _buch_speichern_zusammen(datei, modus, gesehen, buch):
                 except ValueError:
                     basis = None
                 _buch_uebernehmen(buch, _buch_vereinen(jetzt, buch, basis if isinstance(basis, dict) else None))
+            _sperre_pruefen()  # (18. Prüfung W1′) ein Zombie schreibt das Buch nicht mehr — unmittelbar vor dem Schreiben, unter der Buch-Sperre
             _buch_schreiben_roh(datei, modus, buch)
             gesehen[0] = json.dumps(buch_lesen(datei, modus), sort_keys=True)
             return zusammen
@@ -1004,8 +1017,10 @@ def ausfuehren(ents, trocken=False, env=None, spot=None, fut=None, protokolliere
         # (17. Prüfung W1) Der Vermerk MUSS gespeichert sein, bevor ein Auftrag rausgeht — wie der Start: ist das Buch nicht beschreibbar (Virenscanner, OneDrive, Platte voll) UND stirbt der Lauf hart, wüsste die
         # Nachkontrolle von den Märkten nichts (gemessen: 48 von 170 Abbruchstellen ohne Stop, bis 14'596 USDT). Darum kurz nochmals versuchen, sonst heute kein Auftrag.
         for versuch_ in range(VERMERK_VERSUCHE):
-            if speichern(leise=versuch_ < VERMERK_VERSUCHE - 1):
+            if speichern(leise=versuch_ < VERMERK_VERSUCHE - 1) and set(vorab_) <= set(buch.get("schutz_offen") or []):
                 break
+            # (18. Prüfung K2) «gespeichert», aber im vereinten Stand fehlt der Vermerk (ein Schreiber ohne Sperre hat ihn nach meinem Lesen gelöscht, das Zusammenführen folgte ihm): nochmals eintragen
+            buch["schutz_offen"] = sorted(set(buch.get("schutz_offen") or []) | set(vorab_))
             if versuch_ < VERMERK_VERSUCHE - 1:
                 time.sleep(VERMERK_WARTEN[min(versuch_, len(VERMERK_WARTEN) - 1)])
         else:
@@ -2973,7 +2988,7 @@ def _not_preise(kurs, seite=-1):
 
 
 # ───────────────────────── Nachkontrolle ─────────────────────────
-def nachkontrolle(env=None, datei=None, spot=None, fut=None, schlafen=time.sleep, uhr=time.time):
+def nachkontrolle(env=None, datei=None, spot=None, fut=None, schlafen=time.sleep, uhr=time.time, einmal=False):
     """Nach einem Lauf oder Not-Aus, wenn etwas offen blieb: unklare Aufträge (Antwort verloren, Binance kennt den Auftrag noch
     nicht), Märkte ohne vollständigen Stop (schutz_offen) oder ein unvollständiger Not-Aus (notaus_offen). Alle
     NACHKONTROLLE_TAKT_S nachsehen, höchstens NACHKONTROLLE_MAX_S (10 Minuten + Reserve):
@@ -2983,7 +2998,9 @@ def nachkontrolle(env=None, datei=None, spot=None, fut=None, schlafen=time.sleep
         alle unklaren Aufträge warten; auch ohne «Not-Aus offen», sobald Pilot 2.0 Bestand hat (STOP kam während eines Laufs).
       • Erscheint STOP während der Nachkontrolle: sofort einmal schliessen und enden (der Not-Aus von stop.bat bekommt die Sperre).
     Speichert nur, wenn das Buch auf der Platte noch so ist, wie sie es zuletzt gesehen hat (sonst hat ein anderer Lauf — z. B.
-    ein Not-Aus ohne Sperre — es geändert: dann nichts überschreiben und enden). Ohne Offenes: sofort fertig."""
+    ein Not-Aus ohne Sperre — es geändert: dann nichts überschreiben und enden). Ohne Offenes: sofort fertig.
+    einmal=True (der 10-Minuten-Takt der Aufgabenplanung, 18. Prüfung W3′): EIN Durchgang, kein Warten — der nächste Takt kommt in 10 Minuten. Die lange Fassung hielt bei einem dauerhaft offenen Markt
+    die Lauf-Sperre bis 690 s (mit IgnoreNew rund 57 % der Zeit) und liess den Tageslauf, der nur 190 s wartet, still ausfallen. Jüngere unklare Aufträge bleiben im Buch und werden im nächsten Takt wieder geprüft."""
     env_ = os.environ if env is None else env
     datei = datei or BESTAND
     cfg = einstellungen(env_)
@@ -3034,6 +3051,7 @@ def nachkontrolle(env=None, datei=None, spot=None, fut=None, schlafen=time.sleep
             with _buch_sperre(datei):
                 if fremd_geaendert():
                     return
+                _sperre_pruefen()  # (18. Prüfung W1′) auch eine selbst eingefrorene Nachkontrolle schreibt nach der Übernahme nichts mehr
                 _buch_schreiben_roh(datei, cfg["modus"], buch)
                 gesehen[0] = json.dumps(buch_lesen(datei, cfg["modus"]), sort_keys=True)
         except (OSError, BuchKaputt, sperre.Besetzt) as ex:
@@ -3104,7 +3122,7 @@ def nachkontrolle(env=None, datei=None, spot=None, fut=None, schlafen=time.sleep
                 stops_setzen()  # im Lauf fehlte ein Stop (Binance lehnte ab, Konto nicht lesbar) → nochmals versuchen
             if not buch["unklar"] and not buch.get("schutz_offen"):
                 break
-        if uhr() - start >= NACHKONTROLLE_MAX_S:
+        if einmal or uhr() - start >= NACHKONTROLLE_MAX_S:
             break
         warte(NACHKONTROLLE_TAKT_S)
     if letzte is not None:  # Not-Aus-Modus: das Ergebnis des letzten Schliessens melden
@@ -3114,6 +3132,8 @@ def nachkontrolle(env=None, datei=None, spot=None, fut=None, schlafen=time.sleep
     if fremd[0]:
         return erg
     for u in buch["unklar"]:
+        if einmal and int(time.time() * 1000) - int(u.get("zeit") or 0) <= UNKLAR_MAX_ALTER_MS:
+            continue  # ein Durchgang: der Auftrag ist jünger als die Frist, nach der «unbekannt» als nie ausgeführt gilt — der nächste Takt fragt wieder nach (der Markt ist beidseitig gesichert)
         warn(f"{u.get('markt')} {'Spot' if u.get('konto') == 'spot' else 'Perp'} {u.get('seite')} {u.get('menge')}: nach der "
              "Nachkontrolle noch immer unklar — Markt bleibt beidseitig gesichert. Bitte im Binance-Konto prüfen!")
     stops_setzen()
@@ -3135,6 +3155,7 @@ def notaus_alle(env=None, datei=None, trocken=False, spot=None, fut=None, protok
     """Jeden GESTARTETEN Modus schliessen, mit den Schlüsseln DIESES Modus — egal wie die Freigabe-Schalter gerade stehen.
     «alles_zu» nur, wenn jeder Modus nachgeprüft zu ist. wiederholung: automatischer Versuch der Nachkontrolle — ein Paar, dessen
     Short-Rückkauf eben abgelehnt wurde, bleibt dann stehen (PAAR_PAUSE_MS); ein von Hand ausgelöster Not-Aus versucht es immer."""
+    import sperre as sperre_modul
     env = os.environ if env is None else env
     datei = datei or BESTAND
     # übergebene Verbindungen (Tests, Nachkontrolle, Lauf) gehören dem Modus, auf den die Schalter jetzt zeigen — jeder ANDERE gestartete Modus
@@ -3200,8 +3221,13 @@ def notaus_alle(env=None, datei=None, trocken=False, spot=None, fut=None, protok
             continue
         b0 = buch_lesen(datei, m)
         gesehen = [json.dumps(b0, sort_keys=True)]  # Stand beim Lesen: hat ihn ein anderer Lauf geändert → zusammenführen
-        r = _notaus(s, f, b0, lambda b, m=m, gesehen=gesehen: _buch_speichern_zusammen(datei, m, gesehen, b), m, trocken,
-                    wiederholung)
+        try:
+            r = _notaus(s, f, b0, lambda b, m=m, gesehen=gesehen: _buch_speichern_zusammen(datei, m, gesehen, b), m, trocken,
+                        wiederholung)
+        except sperre_modul.SperreVerloren as ex:  # (18. Prüfung K4) ein als tot übernommener Lauf (Zombie) schliesst nichts mehr: der Lauf, der die Sperre übernommen hat, schliesst — sauber melden statt Absturz
+            erg.update(alles_zu=False, warnung=True)
+            erg["zeilen"].append(f"⚠️ Not-Aus Pilot 2.0 ({m}): {ex} Der Lauf, der die Sperre übernommen hat, schliesst — NICHT «alles zu» gemeldet; Not-Aus bzw. Nachkontrolle wiederholen und das Binance-Konto prüfen!")
+            continue
         erg["zeilen"] += r["zeilen"]
         erg["auftraege"] += r["auftraege"]
         erg["warnung"] = erg["warnung"] or r["warnung"]
@@ -3948,6 +3974,10 @@ def _notaus_schutz(spot, fut, st, k, sym, coin, pos, pos_vor, frei, gebunden, ku
             except Exception:  # noqa: BLE001
                 bekannt = {tuple(w[:2]) for w in st.get("perp_weitere") or []} | {(st.get("perp"), st.get("perp_cid"))}
                 if sum(1 for b in bekannt if b[0] is not None or b[1]) >= 2:
+                    # (18. Prüfung W2′) NICHT still: das Buch führt nur Kennungen, keine Mengen — ob die bekannten Stops den ganzen Short decken, ist hier unbekannt (Beleg: zwei Stops à 0,05 von 0,2 BTC,
+                    # 9'405 USDT ohne Stop, der Not-Aus meldete ok). Lieber laut als eine Teil-Absicherung für «gesichert» halten.
+                    fehlt_schutz(f"Not-Aus {modus} {k}: zu grosser Perp-Stop bleibt, die Perp-Stop-Liste ist nicht lesbar und das Buch kennt schon {sum(1 for b in bekannt if b[0] is not None or b[1])} Stops — ob sie zusammen den "
+                                 f"ganzen Short ({short:g}) decken, ist unbekannt (das Buch führt keine Mengen): ein Teil kann ohne Stop sein. Sofort prüfen!")
                     return
                 steht = 0.0  # lieber ein Stop zu viel (reduceOnly) als ein Short zum Teil ohne Stop
             fehlt_g = PL.runde(short - steht, rfg["step"])

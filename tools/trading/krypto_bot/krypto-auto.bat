@@ -88,12 +88,16 @@ goto :eof
 
 :nachkontrolle_allein
 REM Lebenszeichen fuer die Ampel im Cockpit - die Aufgabe laeuft unsichtbar. Bei JEDEM Start, auch wenn gleich danach nichts zu tun ist.
-echo %date% %time%> "data\krypto-nachkontrolle-lebt.txt"
+>"data\krypto-nachkontrolle-lebt.txt" echo %date% %time%
 if not exist "data\krypto-pilot2-bestand.json" exit /b 0
 set PY=py
 where py >nul 2>nul || set PY=python
-%PY% tools\trading\krypto_bot\pilot.py --nachkontrolle >> "data\krypto-nachkontrolle.log" 2>&1
-exit /b %errorlevel%
+REM 18. Pruefung W3: EIN Durchgang mit --einmal, der naechste Takt kommt in 10 Minuten - die lange Fassung hielt die Lauf-Sperre bis 11 Minuten und liess den Tageslauf ausfallen.
+REM 18. Pruefung K5: Das Ergebnis steht in data\krypto-nachkontrolle-rc.txt, die Cockpit-Ampel wird bei einem Absturz rot. Die Umleitung steht VOR dem Befehl, damit eine Ziffer davor nie als Handle gilt.
+%PY% tools\trading\krypto_bot\pilot.py --nachkontrolle --einmal >> "data\krypto-nachkontrolle.log" 2>&1
+set "NKRC=%errorlevel%"
+>"data\krypto-nachkontrolle-rc.txt" echo %date% %time% rc=%NKRC%
+exit /b %NKRC%
 
 :schritt
 REM %1 Name, %2 Skript, %3 Argument. Rueckgabe: 0 ok, 3 Warnung (hat sich schon selbst gemeldet), sonst Absturz.

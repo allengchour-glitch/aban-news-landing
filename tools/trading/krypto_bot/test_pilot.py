@@ -410,6 +410,60 @@ with _tf.TemporaryDirectory() as _sd:
     pruefe("pilot.py: Tageslauf und Not-Aus-Lauf übernehmen eine Sperre ohne Herzschlag (alt_nach=ALT_NACH_TOT), beide warten lange genug dafür",
            _quelle_main.count("alt_nach=sperre.ALT_NACH_TOT") == 2 and _quelle_main.count("sperre.ALT_NACH_TOT + 40") == 2, _quelle_main.count("alt_nach=sperre.ALT_NACH_TOT"))
 
+    # ── 18. Prüfung W3′: der 10-Minuten-Takt der Aufgabenplanung macht EINEN Durchgang (`--nachkontrolle --einmal`); der Tageslauf, der die Sperre nicht bekommt, ist LAUT ──
+    _kw18 = []
+    SP.ORDNER = Path(_sd)
+    _P2L.nachkontrolle = lambda *a, **k: (_kw18.append(k), {"zeilen": [], "warnung": False, "auftraege": []})[1]
+    try:
+        _PI.nachkontrolle(einmal=True)
+        _PI.nachkontrolle()
+    finally:
+        SP.ORDNER, _P2L.nachkontrolle = _alt_ord, _alt_nk
+    pruefe("pilot.nachkontrolle(einmal=True) reicht einmal=True an Pilot 2.0 weiter; ohne Argument bleibt es die lange Fassung (einmal=False)", _kw18 == [{"einmal": True}, {"einmal": False}], _kw18)
+    _rec18, _alt_pn18, _alt_argv18 = [], _PI.nachkontrolle, sys.argv
+    _PI.nachkontrolle = lambda einmal=False: (_rec18.append(einmal), 0)[1]
+    try:
+        sys.argv = ["pilot.py", "--nachkontrolle", "--einmal"]
+        _rc18a = _PI.main()
+        sys.argv = ["pilot.py", "--nachkontrolle"]
+        _rc18b = _PI.main()
+    finally:
+        sys.argv, _PI.nachkontrolle = _alt_argv18, _alt_pn18
+    pruefe("pilot.py --nachkontrolle --einmal → nachkontrolle(einmal=True); ohne --einmal → False", _rec18 == [True, False] and _rc18a == 0 and _rc18b == 0, (_rec18, _rc18a, _rc18b))
+    import signale as _SG18  # noqa: E402
+    _gepusht18, _alt_push18 = [], _SG18.push
+    _SG18.push = lambda t, *a, **k: _gepusht18.append(t)
+    try:
+        _rcb18 = _PI.lauf_besetzt(SP.Besetzt("Ein anderer Lauf handelt gerade (seit 12 s)."), False)
+        _rct18 = _PI.lauf_besetzt(SP.Besetzt("Ein anderer Lauf handelt gerade (seit 12 s)."), True)
+    finally:
+        _SG18.push = _alt_push18
+    pruefe("Tageslauf, Sperre belegt: ein ECHTER Lauf ist eine Warnung (rc 3) mit Push — nicht mehr still rc 0; ein Probelauf wird einfach abgewiesen (rc 0, kein Push)",
+           _rcb18 == 3 and len(_gepusht18) == 1 and "NICHT gehandelt" in _gepusht18[0] and _rct18 == 0, (_rcb18, _rct18, _gepusht18))
+    _quelle_main18 = _insp.getsource(_PI.main)
+    pruefe("pilot.py main(): der Tageslauf ruft bei belegter Sperre `lauf_besetzt` (rc 3 + Push) — nicht mehr `return 0`", "return lauf_besetzt(ex, a.trocken)" in _quelle_main18, _quelle_main18[-400:])
+    # der Push der Nachkontrolle im 10-Minuten-Takt: dieselbe Meldung höchstens einmal je Stunde (sonst ~144 Pushes am Tag bei einem dauerhaft offenen Markt), eine andere sofort, die lange Fassung immer
+    _gepusht18.clear()
+    _SG18.push = lambda t, *a, **k: _gepusht18.append(t)
+    _pd18 = Path(_sd) / "push18.json"
+    try:
+        _r18 = [_PI._push_nachkontrolle("Meldung A", True, datei=_pd18, jetzt=1000.0),
+                _PI._push_nachkontrolle("Meldung A", True, datei=_pd18, jetzt=1600.0),
+                _PI._push_nachkontrolle("Meldung B", True, datei=_pd18, jetzt=1700.0),
+                _PI._push_nachkontrolle("Meldung B", True, datei=_pd18, jetzt=1700.0 + _PI.PUSH_ABSTAND_S + 1),
+                _PI._push_nachkontrolle("Meldung B", False, datei=_pd18, jetzt=1701.0 + _PI.PUSH_ABSTAND_S + 1)]
+    finally:
+        _SG18.push = _alt_push18
+    pruefe("Push der Nachkontrolle im 10-Minuten-Takt: gleiche Meldung nach 10 Min. still, andere Meldung sofort, nach einer Stunde wieder, die lange Fassung (einmal=False) immer",
+           _r18 == [True, False, True, True, True] and len(_gepusht18) == 4 and all("Keine Anlageberatung" in t for t in _gepusht18), (_r18, _gepusht18))
+    _pd18.write_text("{kaputt")
+    _SG18.push = lambda t, *a, **k: _gepusht18.append(t)
+    try:
+        _r_kaputt18 = _PI._push_nachkontrolle("Meldung C", True, datei=_pd18, jetzt=5000.0)
+    finally:
+        _SG18.push = _alt_push18
+    pruefe("Push-Drosselung: eine kaputte Drosselungs-Datei verhindert den Push nie", _r_kaputt18 is True and _gepusht18[-1].startswith("Meldung C"), _gepusht18)
+
 # ── Pilot: Märkte, Trendlänge je Coin, Logbuch, Wochenbericht ──
 import pilot as PI  # noqa: E402
 
