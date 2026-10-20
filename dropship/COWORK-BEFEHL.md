@@ -1,5 +1,16 @@
 # COWORK-BEFEHL — Fassung 21.09.2026, 09:40 UTC (für heute Abend)
 
+## 🆕 20.10. 19:00 UTC — «luxe-agent.timer WIE FIX» (Betreiber 20.10.): Hetzner-Agent steht seit 16.10. 06:08 UTC — EIN Befehl in der Hetzner-Konsole (2 Min)
+**Was gemessen ist:** letzter Puls 16.10. 06:08 UTC, Agent UND Wächter stehen gleichzeitig (108 h); die Cloud-Sitzung kommt nicht auf den Server (Port 22 gesperrt) — von hier ist nur das Prüfen/Vorbereiten möglich, das Starten geht nur bei dir.
+**Wahrscheinliche Ursachen (das Skript prüft alle drei und behandelt, was es findet):** (1) **Hetzner-Netz** — status.hetzner.com (QUELLE, abgerufen 20.10. 18:30 UTC): «Urgent maintenance on all core routers» seit 15.10. 10:00 UTC *läuft noch*, dazu «vSwitch MAC learning» seit 19.10. 21:00 UTC (untersucht); ein Server ohne Route zu GitHub kann weder holen noch pushen; (2) abgelaufener GitHub-Token im Git-Remote der Klone (`ghp_…`), dann scheitert schon `git fetch`; (3) Platte voll («/» stand 13.10. auf 90 %).
+**Schritte (Hetzner-Konsole, nicht SSH-Terminal am PC nötig):** console.hetzner.cloud → Projekt → Server 46.225.75.125 → Symbol «>_» (Konsole), als root diesen EINEN Befehl einfügen (das «echo;» fängt ab, dass die Konsole die ersten Zeichen verschluckt):
+```
+echo; curl -fsSL https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/claude/luxestyle-status-tztnn1/server/server-wiederbeleben.sh | bash
+```
+Probelauf ohne Änderung: `… | DRY=1 bash` · Das Skript ist geprüft (`bash -n`, die GitHub-Fassung ist byte-gleich mit dem Repo, 20.10.).
+**Was du am Ende liest:** «✅ Timer des Agenten und des Wächters laufen» → in ~10 Min erscheint im Repo ein Commit «Bot-Puls» und die Zeile «BOT STILL» verschwindet von selbst. Steht in Schritt 1b «**ZUGANG ABGELEHNT**» → Token erneuern (github.com/settings/tokens, Recht «repo») und `echo; TOKEN=ghp_… bash <(curl -fsSL …/server-wiederbeleben.sh)` (der Wert wird nie ausgegeben; **nie ins Repo/Chat schreiben**). Steht dort «**GitHub nicht erreichbar**» → es ist das Hetzner-Netz: das Skript startet systemd-networkd/-resolved neu; hilft das nicht, `REBOOT=1` an den Befehl hängen (Server startet nach 15 s neu) — und danach den Befehl noch einmal. Bleibt es auch nach dem Neustart bei «nicht erreichbar», ist es Hetzners Wartung (siehe oben): dann abwarten bzw. Ticket bei Hetzner; ich kann daran von hier nichts ändern.
+**Wichtig:** Die Cloud-Seite läuft ohne den Bot weiter (Shop, Bestellungen, Posts, Wächter). Verloren ist nur: Browser-Aufträge (Pinterest-Politur, Storefront-Wahrheit, Konsolen-Anmeldungen). Nichts Dringendes hängt dran — aber die 3 Pinterest-Quittungen stehen seit 16.10. auf «laufend».
+
 ## 🆕 20.10. 16:00 UTC — Fortura-Storno #1027 + «Sichtbarkeit auf Maximum»: was nur DU kannst (5 Klicks, alle klein)
 1. **Mail an Fortura senden (Entwurf liegt in Gmail, Antwort an Frau Gertsch, Betreff «Re: Bestellung LX1027»).** Die Frage: aus welchem Bestand werden Bestellungen über Kundennr. 544341 beliefert —
    nur «Lagerbestand Fortura» oder auch Bazar? Bis zur Antwort rechnet der Shop NUR mit «Lagerbestand Fortura» (minus 1 Puffer). **Wichtig:** Die Lagerstand-Hygiene draftet Fortura-Produkte bei Bestand 0 NICHT,
