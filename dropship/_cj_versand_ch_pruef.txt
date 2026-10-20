@@ -11542,3 +11542,6 @@ fahrradhelm-355712	1374246031344144384	16	10.77	ok	landeseite
 retro-arbeitsstil-weitbeinige-jogginghose-624000	2512191041081624300	16	9.47	ok	landeseite
 faltbarer-sommerhelm-298816	1374238142177087488	16	13.46	ok	landeseite
 tauchschwimmer-signalboje-610400	2607120113001611000	16	10.15	ok	landeseite
+sommerhalskette-620800	2607111208141621400	16	4.69	ok	landeseite
+herren-armbanduhr-mit-6-zeigern-630300	2604090547251630700	7	7.19	ok	landeseite
+mehrfarbiges-titanstahl-herzanhanger-armband-a-623200	2607111204281623800	16	4.58	ok	landeseite

@@ -142,7 +142,9 @@ if (feedPos < MIN_FEED_POS) {
   console.error(`ABBRUCH (Feed-Bremse): nur ${(feedPos * 100).toFixed(1)} % der Artikel mit Fortura-Bestand (Grenze ${(MIN_FEED_POS * 100).toFixed(0)} %, heute ~35 %) — Spalte kaputt? Nichts geschrieben.`);
   process.exit(2);
 }
-const feedHash = crypto.createHash('sha1').update(raw).digest('hex').slice(0, 12);
+// Die Regel (Spalte/Puffer/VE) gehört in den Fingerabdruck: das Journal überspringt Zeilen derselben Feed-Generation — 102 Bündel-Varianten
+// blieben nach der VE-Umstellung auf dem alten Wert, weil der Feed derselbe war (20.10.2026).
+const feedHash = crypto.createHash('sha1').update(raw + `|${BESTAND_SPALTE}|ve1|p${PUFFER}`).digest('hex').slice(0, 12);
 console.log(`Feed ${CSVPATH}: ${rows.length - 1} Zeilen → ${feed.size} Artikelnummern (Fingerabdruck ${feedHash})`);
 
 /* ---------- Shopify ---------- */
