@@ -84,6 +84,10 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-20 (🔒 Pilot 2.0: Folge-PR R17 zur 17. Prüfung (kein Blocker, 4 wichtig + 5 klein) — IN ARBEIT, bleibt GESPERRT):** Code eingefroren auf `e87230c5e`: W1 Vermerk dreimal speichern (sonst kein Auftrag), W2 blinde Perp-Zweige vermerken,
+W3b `sperre.pruefen()` vor jedem schreibenden Auftrag (eingefrorener Lauf), W4 zweite Aufgabe «Krypto-Pilot-Nachkontrolle» (alle 10 Min., unsichtbar über `krypto-nachkontrolle-still.vbs`, Lebenszeichen + Cockpit-Ampel), K1–K5, (e) Schlussnachlesen, dazu der
+eigene Fund **E45 Lot-Rundung** (gestoppt werden nur GANZE Lots; Not-Aus-Seed 526741, ~28'700 USDT Short ohne ausreichenden Perp-Stop) mit dem neuen Werkzeug `pruef_lot.py` (3'240 Lagen: vor dem Fix 84 Befunde, danach 0). **Offen** (läuft im Scratchpad der Session):
+Schlusskampagne `camp17b` (991 Aufträge), Mutationsprobe, 18. unabhängige Prüfung; danach README-Endstand und dieser Eintrag mit den gemessenen Zahlen. Geht der Container vorher verloren: die Kampagnen auf dem PR-Stand neu starten (Befehle: README «Prüfen»).
 **📌 2026-10-20 (🔒 Pilot 2.0: Folge-PR zur 15. Runde — 16. Prüfung (1 Blocker + 6 wichtig + 8 klein) und 17 eigene Funde (E28–E44; E43/E44 sind Fuzzer-Artefakte) behoben, bleibt GESPERRT):**
 Zwei Quellen, ein PR (dieser PR): (a) die 16. unabhängige Prüfung (Belege `scratchpad/pruefung16/` b1–b18; neue Raster-Achsen: Ereignisse mit EIGENEM Beginn, Kurssprung zu jeder Anfrage, Abbruch-Scan), (b) die Scans der Folge-Runde
 (Raster II, Abbruch-Scan `pruef_kill.py`, Eigenschaftstest `pruef_vereinen.py`) und die eingefrorene Schlusskampagne. Die Kernlogik der 15. Runde hielt; die Funde sassen dort, wo zwei Störungen mit VERSCHOBENEM Beginn zusammentreffen.

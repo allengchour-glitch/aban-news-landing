@@ -339,6 +339,40 @@ with _tf.TemporaryDirectory() as _sd:
             SP._haken = _haken0
     pruefe("Sperre übernehmen: B sah die tote Sperre, A übernahm sie unterdessen und hält die neue — B löscht sie nicht (er prüft unter der Wache nochmals) und wird abgewiesen", _b_erg2 == ["besetzt"] and _a_erg2 == ["hat"], (_a_erg2, _b_erg2))
     _lk.unlink(missing_ok=True)
+    # (17. Prüfung W3) pruefen(): vor jedem schreibenden Auftrag — gehört die Sperre dieses Prozesses noch ihm? Ein eingefrorener Lauf (Ruhezustand) merkte sonst nicht, dass seine Sperre als tot übernommen wurde.
+    pruefe("Sperre pruefen(): ohne gehaltene Sperre nichts zu prüfen", getattr(SP, "pruefen", lambda: None)() is None)
+    with SP.lauf_sperre(ordner=_sd, warten=0):
+        _ok_eigene = getattr(SP, "pruefen", lambda: "fehlt")() is None
+        _lk.write_text("99999 0 fremd\n")  # ein anderer Lauf hat sie als tot übernommen
+        try:
+            SP.pruefen()
+            _verloren = False
+        except getattr(SP, "SperreVerloren", ()):
+            _verloren = True
+        _lk.unlink()
+        try:
+            SP.pruefen()
+            _weg = False
+        except getattr(SP, "SperreVerloren", ()):
+            _weg = True
+        _lk.write_text("1 0 x\n")  # damit das Freigeben nichts Fremdes löscht
+    _lk.unlink(missing_ok=True)
+    pruefe("Sperre pruefen(): eigene Sperre → still; fremde Marke → SperreVerloren; Datei weg → SperreVerloren", _ok_eigene and _verloren and _weg, (_ok_eigene, _verloren, _weg))
+    _read0 = Path.read_text
+
+    def _read_zickt(self, *a, **k):
+        if self.name.endswith(".lock"):
+            raise PermissionError("kurz gehalten")
+        return _read0(self, *a, **k)
+
+    with SP.lauf_sperre(ordner=_sd, warten=0):
+        Path.read_text = _read_zickt
+        try:
+            _unbekannt = getattr(SP, "pruefen", lambda: "fehlt")() is None
+        finally:
+            Path.read_text = _read0
+    pruefe("Sperre pruefen(): eine kurz nicht lesbare Datei (Virenscanner) zählt als «unbekannt» und lässt den Auftrag zu", _unbekannt)
+    pruefe("Sperre pruefen(): nach dem Freigeben ist die Sperre nicht mehr registriert (nichts mehr zu prüfen)", not getattr(SP, "_gehalten", {"x": 1}) and getattr(SP, "pruefen", lambda: None)() is None, getattr(SP, "_gehalten", None))
     # eine liegen gebliebene Wache (der Prozess starb mitten in der Übernahme) blockiert nicht für immer: nach WACHE_ALT Sekunden wird sie gelöscht, die Übernahme gelingt
     _wk = Path(_sd) / "krypto-lauf.lock.uebernahme"
     for _alter_w, _warten_w, _erw_w in ((getattr(SP, "WACHE_ALT", 30) + 60, 5, "uebernommen"), (5, 0, "besetzt")):

@@ -119,7 +119,10 @@ def notaus_an(schliessen=True, ausfuehren=None):
     except sperre.Besetzt:
         gesperrt = None
         alles_zu = False  # ein anderer Lauf könnte gleichzeitig noch etwas aufgebaut haben → nicht «alles zu» melden
-        vorab.append("⚠️ Ein anderer Lauf war noch aktiv — Not-Aus trotzdem ausgeführt. In 5 Minuten nochmals «Not-Aus» drücken.")
+        # (17. Prüfung K4) die Sperre kann auch ein ABGESTÜRZTER Lauf hinterlassen haben: sie gilt erst nach ALT_NACH_TOT (150 s) ohne Herzschlag als tot — länger als die 60 s Wartezeit hier. Die Nachkontrolle unten
+        # (Not-Aus-Modus) wartet darauf und schliesst Pilot 2.0 dann selbst; die Meldung sagt es.
+        vorab.append("⚠️ Ein anderer Lauf hält die Sperre (oder ist abgestürzt: eine tote Sperre gilt erst nach 150 s als tot) — Not-Aus trotzdem ausgeführt; die Nachkontrolle schliesst Pilot 2.0, sobald die Sperre frei "
+                     "oder tot ist. In 5 Minuten nochmals «Not-Aus» drücken.")
     try:
         env = umgebung()  # aktuelle Schalter + Schlüssel (auch PILOT2_*) aus der Einstellungsdatei, nicht die beim Start
         if ausfuehren is None:
@@ -207,6 +210,7 @@ def _skript(args, zeit):
 
 
 AUFGABE = "Krypto-Pilot"
+AUFGABE_NK = "Krypto-Pilot-Nachkontrolle"  # (17. Prüfung W4) zweite Aufgabe: alle 10 Minuten und bei der Anmeldung die Nachkontrolle von Pilot 2.0
 
 
 def _befehl(cmd, zeit):
@@ -258,29 +262,96 @@ def aufgabe_xml():
 """
 
 
+NK_LEBT = "krypto-nachkontrolle-lebt.txt"      # Lebenszeichen: krypto-auto.bat «nachkontrolle» schreibt es bei JEDEM Start (data/) — fehlt es zu lange, läuft der unsichtbare Starter nicht (Windows Script Host gesperrt, Virenscanner, Pfad)
+NK_LEBT_MAX_MIN = 30                           # drei verpasste Takte der Aufgabe (alle 10 Minuten) — dann steht die Ampel auf Rot
+NK_STARTER = "krypto-nachkontrolle-still.vbs"  # startet krypto-auto.bat «nachkontrolle» ohne sichtbares Fenster (alle 10 Minuten ein Konsolenfenster würde stören — und dazu verleiten, die Aufgabe abzuschalten)
+
+
+def aufgabe_befehl_nk():
+    """Einfacher Rückfall der Nachkontroll-Aufgabe: alle 10 Minuten der unsichtbare Starter (wscript → krypto-auto.bat «nachkontrolle»)."""
+    return ["schtasks", "/create", "/sc", "minute", "/mo", "10", "/tn", AUFGABE_NK, "/tr", f'wscript.exe //B //Nologo "{HIER / NK_STARTER}"', "/f"]
+
+
+def _anmelde_benutzer():
+    """«RECHNER\\Benutzer» der laufenden Anmeldung (Windows: USERDOMAIN\\USERNAME), sonst None. Ein Anmelde-Auslöser OHNE Benutzer gilt für JEDEN Benutzer und lässt sich nur mit Administratorrechten anlegen
+    (schtasks: «Zugriff verweigert») — mit dem eigenen Benutzer geht er ohne."""
+    d_, u_ = os.environ.get("USERDOMAIN"), os.environ.get("USERNAME")
+    return f"{d_}\\{u_}" if d_ and u_ else None
+
+
+def aufgabe_xml_nk(benutzer=None):
+    """(17. Prüfung W4) Die Nachkontrolle von Pilot 2.0 hatte keinen eigenen Takt: sie lief nur hinter dem Tageslauf (krypto-auto.bat) und nach «Jetzt handeln». Starb die Bat mit dem Prozess (Fenster zu, Neustart),
+    blieb ein unvermerkter oder unfertiger Markt bis zum nächsten Tageslauf (02:30) ohne Stop. Diese Aufgabe startet krypto-auto.bat «nachkontrolle» (über den unsichtbaren Starter krypto-nachkontrolle-still.vbs) alle 10 Minuten UND bei jeder
+    Anmeldung — ohne Vermerk im Buch ist sie nach einer Sekunde fertig. Auch auf Akku, nie zwei Instanzen zugleich."""
+    from xml.sax.saxutils import escape
+    vbs = escape(str(HIER / NK_STARTER))
+    benutzer = _anmelde_benutzer() if benutzer is None else benutzer
+    # Anmelde-Auslöser nur MIT Benutzer (sonst Administratorrechte nötig → die ganze XML-Variante scheiterte und es bliebe die einfache ohne Anmeldung); ohne Benutzer fehlt er — StartWhenAvailable holt den Takt nach dem Einschalten nach
+    logon = f"\n    <LogonTrigger><Enabled>true</Enabled><UserId>{escape(benutzer)}</UserId></LogonTrigger>" if benutzer else ""
+    return f"""<?xml version="1.0" encoding="UTF-16"?>
+<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
+  <RegistrationInfo><Description>Krypto-Pilot: Nachkontrolle von Pilot 2.0 (alle 10 Minuten und, wenn der Benutzer bekannt ist, bei der Anmeldung; ohne sichtbares Fenster; ohne Vermerk sofort fertig)</Description></RegistrationInfo>
+  <Triggers>
+    <TimeTrigger>
+      <Repetition><Interval>PT10M</Interval></Repetition>
+      <StartBoundary>2026-01-01T00:03:00</StartBoundary>
+      <Enabled>true</Enabled>
+    </TimeTrigger>{logon}
+  </Triggers>
+  <Principals><Principal id="Author"><LogonType>InteractiveToken</LogonType><RunLevel>LeastPrivilege</RunLevel></Principal></Principals>
+  <Settings>
+    <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>
+    <DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries>
+    <StopIfGoingOnBatteries>false</StopIfGoingOnBatteries>
+    <StartWhenAvailable>true</StartWhenAvailable>
+    <RunOnlyIfNetworkAvailable>false</RunOnlyIfNetworkAvailable>
+    <ExecutionTimeLimit>PT30M</ExecutionTimeLimit>
+    <Enabled>true</Enabled>
+  </Settings>
+  <Actions Context="Author">
+    <Exec><Command>wscript.exe</Command><Arguments>//B //Nologo "{vbs}"</Arguments></Exec>
+  </Actions>
+</Task>
+"""
+
+
+def _aufgabe_nk_einrichten(befehl, td):
+    """Die Nachkontroll-Aufgabe: erst XML, sonst die einfache Variante. → (ok, Text). Scheitert sie, geht die tägliche trotzdem."""
+    datei = Path(td) / "krypto-pilot-nachkontrolle.xml"
+    datei.write_text(aufgabe_xml_nk(), encoding="utf-16")
+    ok, text = befehl(["schtasks", "/create", "/tn", AUFGABE_NK, "/xml", str(datei), "/f"], 60)
+    if ok:
+        return True, "Nachkontrolle: alle 10 Minuten und bei der Anmeldung (Aufgabe «" + AUFGABE_NK + "»)."
+    ok2, text2 = befehl(aufgabe_befehl_nk(), 60)
+    if ok2:
+        return True, "Nachkontrolle: alle 10 Minuten (einfache Variante, Aufgabe «" + AUFGABE_NK + "»)."
+    return False, "⚠️ Die Nachkontroll-Aufgabe ließ sich nicht einrichten (" + (text2 or text or "?").strip()[:120] + ") — ohne sie läuft die Nachkontrolle nur hinter dem Tageslauf."
+
+
 def aufgabe_einrichten(befehl=None, ordner=None):
-    """Erst die XML-Variante (Akku + nachholen); geht die nicht, die einfache. → (ok, Text)."""
+    """Erst die XML-Variante (Akku + nachholen); geht die nicht, die einfache. Dazu (zuerst, best effort) die Nachkontroll-Aufgabe. → (ok, Text)."""
     befehl = befehl or _befehl
     import tempfile
     with tempfile.TemporaryDirectory(dir=ordner) as td:
+        nk_ok, nk_text = _aufgabe_nk_einrichten(befehl, td)  # zuerst: der letzte Befehl bleibt der der täglichen Aufgabe
         datei = Path(td) / "krypto-pilot-aufgabe.xml"
         datei.write_text(aufgabe_xml(), encoding="utf-16")
         ok, text = befehl(["schtasks", "/create", "/tn", AUFGABE, "/xml", str(datei), "/f"], 60)
     if ok:
         return True, ("✅ Eingerichtet: täglich 02:30 startet krypto-auto.bat (Aufgabe «" + AUFGABE + "»), auch auf Akku. "
-                      "War der PC aus oder im Ruhezustand, läuft er beim nächsten Start nach.\n" + text)
+                      "War der PC aus oder im Ruhezustand, läuft er beim nächsten Start nach.\n" + nk_text + "\n" + text)
     ok2, text2 = befehl(aufgabe_befehl(), 60)
     if ok2:
         return True, ("✅ Eingerichtet (einfache Variante): täglich 02:30 startet krypto-auto.bat. Achtung: Windows startet sie dann "
-                      "nicht auf Akku und holt verpasste Läufe nicht nach.\n" + text2)
-    return False, "❌ Einrichten fehlgeschlagen:\n" + text + "\n" + text2
+                      "nicht auf Akku und holt verpasste Läufe nicht nach.\n" + nk_text + "\n" + text2)
+    return False, "❌ Einrichten fehlgeschlagen:\n" + text + "\n" + text2 + "\n" + nk_text
 
 
-def aufgabe_da(befehl=None):
-    """True/False auf Windows, None anderswo."""
+def aufgabe_da(befehl=None, name=None):
+    """True/False auf Windows, None anderswo. name: die Aufgabe (Standard: die tägliche; AUFGABE_NK = die Nachkontrolle)."""
     if os.name != "nt" and befehl is None:
         return None
-    ok, _ = (befehl or _befehl)(["schtasks", "/query", "/tn", AUFGABE], 20)
+    ok, _ = (befehl or _befehl)(["schtasks", "/query", "/tn", name or AUFGABE], 20)
     return ok
 
 
@@ -593,9 +664,24 @@ def gesundheit(env, lb, ki, heute=None):
     p("Auto-Handel", not PAUSE.exists(), "an" if not PAUSE.exists() else "aus (Pause) — es wird nicht gehandelt, Positionen bleiben")
     if os.name == "nt":
         if time.time() - _AUFGABE_CACHE["zeit"] > 300:
-            _AUFGABE_CACHE.update({"zeit": time.time(), "wert": aufgabe_da()})
+            _AUFGABE_CACHE.update({"zeit": time.time(), "wert": aufgabe_da(), "wert_nk": aufgabe_da(name=AUFGABE_NK)})
         da = _AUFGABE_CACHE["wert"]
         p("Täglicher Start (Aufgabenplanung)", da, "eingerichtet (02:30)" if da else "fehlt — Knopf «Täglich automatisch einrichten»")
+        da_nk = _AUFGABE_CACHE.get("wert_nk")  # (17. Prüfung W4) ohne sie läuft die Nachkontrolle nur hinter dem Tageslauf — stirbt der mit dem Prozess, bleibt ein Markt bis morgen ohne Stop
+        # Der Starter läuft UNSICHTBAR (kein Konsolenfenster alle 10 Minuten) — ein stiller Ausfall (Windows Script Host gesperrt, Virenscanner, falscher Pfad) wäre sonst nicht zu sehen: das Lebenszeichen zeigt es
+        try:
+            minuten_nk = (time.time() - (DATA / NK_LEBT).stat().st_mtime) / 60
+        except OSError:
+            minuten_nk = None
+        if not da_nk:
+            p("Nachkontrolle (Aufgabenplanung)", da_nk, "fehlt — Knopf «Täglich automatisch einrichten» legt sie mit an")
+        elif minuten_nk is None:
+            p("Nachkontrolle (Aufgabenplanung)", None, "eingerichtet (alle 10 Minuten), noch kein Lauf gesehen — bis zu 10 Minuten warten, dann sollte hier ein Lebenszeichen stehen")
+        elif minuten_nk > NK_LEBT_MAX_MIN:
+            p("Nachkontrolle (Aufgabenplanung)", False, f"eingerichtet, aber seit {minuten_nk:.0f} Min. kein Lauf — läuft der unsichtbare Starter ({NK_STARTER}) nicht? "
+              "Aufgabenplanung → «Krypto-Pilot-Nachkontrolle» → Verlauf ansehen, Windows Script Host und Virenscanner prüfen")
+        else:
+            p("Nachkontrolle (Aufgabenplanung)", True, f"eingerichtet (alle 10 Minuten), zuletzt vor {minuten_nk:.0f} Min.")
     mvrv = HIER.parent / "daten" / "info_mvrv_btc.json"
     if mvrv.exists():
         stunden = (time.time() - mvrv.stat().st_mtime) / 3600

@@ -324,6 +324,72 @@ with tempfile.TemporaryDirectory() as tmp:
                and "nicht auf Akku" in e["text"], (cmd, e["text"]))
         e = C.aktion("aufgabe", befehl=lambda c, z: (False, "Zugriff verweigert"))
         pruefe("beides scheitert: Fehler mit Grund", not e["ok"] and "Zugriff verweigert" in e["text"])
+        # ── (17. Prüfung W4) zweite Aufgabe: die Nachkontrolle von Pilot 2.0 hat einen eigenen Takt (alle 10 Minuten + Anmeldung) ──
+        xml_nk = C.aufgabe_xml_nk(benutzer="MEINPC\\Hans & Co")
+        xml_nk_ohne = C.aufgabe_xml_nk(benutzer="")
+        pruefe("Nachkontroll-Aufgabe: gültiges XML, alle 10 Minuten (PT10M) UND bei der Anmeldung, über den UNSICHTBAREN Starter (wscript //B), nie zwei Instanzen, auch auf Akku",
+               __import__("xml.dom.minidom").dom.minidom.parseString(xml_nk.split("?>", 1)[1].strip()) is not None
+               and "<Interval>PT10M</Interval>" in xml_nk and "<LogonTrigger><Enabled>true</Enabled><UserId>MEINPC\\Hans &amp; Co</UserId></LogonTrigger>" in xml_nk
+               and "<Command>wscript.exe</Command>" in xml_nk and "//B //Nologo" in xml_nk and "krypto-nachkontrolle-still.vbs" in xml_nk
+               and "<MultipleInstancesPolicy>IgnoreNew" in xml_nk and "<DisallowStartIfOnBatteries>false" in xml_nk, xml_nk[:300])
+        pruefe("Nachkontroll-Aufgabe: der Anmelde-Auslöser trägt den Benutzer (sonst Administratorrechte nötig: die XML-Variante scheiterte); ohne bekannten Benutzer fehlt er, das XML bleibt gültig und die 10-Minuten-Wiederholung steht",
+               "<LogonTrigger>" not in xml_nk_ohne and "<Interval>PT10M</Interval>" in xml_nk_ohne
+               and __import__("xml.dom.minidom").dom.minidom.parseString(xml_nk_ohne.split("?>", 1)[1].strip()) is not None, xml_nk_ohne[:400])
+        os_umgebung17 = {k_: __import__("os").environ.get(k_) for k_ in ("USERDOMAIN", "USERNAME")}
+        try:
+            __import__("os").environ["USERDOMAIN"], __import__("os").environ["USERNAME"] = "TESTPC", "Anna"
+            benutzer_env17 = C._anmelde_benutzer()
+            __import__("os").environ.pop("USERDOMAIN")
+            benutzer_ohne17 = C._anmelde_benutzer()
+        finally:
+            for k_, v_ in os_umgebung17.items():
+                if v_ is None:
+                    __import__("os").environ.pop(k_, None)
+                else:
+                    __import__("os").environ[k_] = v_
+        pruefe("_anmelde_benutzer: USERDOMAIN\\USERNAME, ohne eines von beiden None", benutzer_env17 == "TESTPC\\Anna" and benutzer_ohne17 is None, (benutzer_env17, benutzer_ohne17))
+        befehle.clear()
+        e = C.aktion("aufgabe", befehl=fake_befehl)
+        namen = [c[c.index("/tn") + 1] for c in befehle if "/tn" in c]
+        pruefe("Aufgabe einrichten legt beide an: zuerst die Nachkontrolle, zuletzt die tägliche (deren Befehl bleibt der letzte)",
+               namen == ["Krypto-Pilot-Nachkontrolle", "Krypto-Pilot"] and e["ok"] and "alle 10 Minuten" in e["text"], (namen, e["text"]))
+        befehle.clear()
+        e = C.aktion("aufgabe", befehl=nur_einfach)
+        pruefe("XML scheitert: auch die Nachkontrolle bekommt die einfache Variante (alle 10 Minuten, /sc minute)",
+               any(c[:2] == ["schtasks", "/create"] and "minute" in c and c[c.index("/mo") + 1] == "10" and c[c.index("/tn") + 1] == "Krypto-Pilot-Nachkontrolle"
+                   and c[c.index("/tr") + 1].startswith("wscript.exe //B //Nologo ") and "krypto-nachkontrolle-still.vbs" in c[c.index("/tr") + 1] for c in befehle)
+               and e["ok"], (befehle, e["text"]))
+
+        def nk_scheitert(cmd, zeit):
+            befehle.append(cmd)
+            return ("Nachkontrolle" not in " ".join(cmd)), "FEHLER: nicht erlaubt" if "Nachkontrolle" in " ".join(cmd) else "ERFOLG"
+        e = C.aktion("aufgabe", befehl=nk_scheitert)
+        pruefe("Scheitert nur die Nachkontroll-Aufgabe, geht die tägliche trotzdem — mit lauter Warnung", e["ok"] and "Nachkontroll-Aufgabe ließ sich nicht einrichten" in e["text"] and "täglich 02:30" in e["text"], e["text"])
+        bat_text = (C.HIER / "krypto-auto.bat").read_text(encoding="utf-8")
+        i_nk = bat_text.index("\n:nachkontrolle_allein\n") + 1  # die Marke selbst (nicht der goto davor)
+        abschnitt = bat_text[i_nk:bat_text.index("\n:schritt", i_nk)]
+        pruefe("krypto-auto.bat: Modus «nachkontrolle» springt zum Abschnitt (ohne Klammerblock: dort würde %PY% beim Einlesen leer ersetzt) und startet pilot.py --nachkontrolle nur mit Buch",
+               'if /i "%~1"=="nachkontrolle" goto :nachkontrolle_allein' in bat_text and "(" not in abschnitt and "krypto-pilot2-bestand.json" in abschnitt
+               and "pilot.py --nachkontrolle" in abschnitt and "exit /b" in abschnitt, abschnitt)
+        pruefe("krypto-auto.bat «nachkontrolle»: das Lebenszeichen (data\\krypto-nachkontrolle-lebt.txt) steht VOR der Prüfung auf das Buch — es kommt bei jedem Start, auch ohne Pilot 2.0",
+               abschnitt.index("krypto-nachkontrolle-lebt.txt") < abschnitt.index("krypto-pilot2-bestand.json") and C.NK_LEBT == "krypto-nachkontrolle-lebt.txt", abschnitt)
+        vbs_b = (C.HIER / C.NK_STARTER).read_bytes()
+        vbs_t = vbs_b.decode("ascii")
+        pruefe("Starter krypto-nachkontrolle-still.vbs: nur ASCII, Windows-Zeilenenden, startet krypto-auto.bat «nachkontrolle» im Ordner des Skripts mit Fensterstil 0 (unsichtbar) und wartet",
+               all(c_ < 128 for c_ in vbs_b) and vbs_b.count(b"\n") == vbs_b.count(b"\r\n") > 5 and "Option Explicit" in vbs_t and "WScript.ScriptFullName" in vbs_t
+               and '"\\krypto-auto.bat"" nachkontrolle"""' in vbs_t and ", 0, True)" in vbs_t and "WScript.Quit rc" in vbs_t, vbs_t)
+        # Die Anführungszeichen des Starters (kein Windows hier zum Ausprobieren): die VBScript-Zeichenketten werden wie VBScript gelesen («""» = ein Anführungszeichen) und zusammengesetzt — mit einem Ordner MIT Leerzeichen
+        zeile_run = next(z_ for z_ in vbs_t.splitlines() if "sh.Run(" in z_)
+        ausdruck17 = zeile_run[zeile_run.index("sh.Run(") + 7: zeile_run.rindex(", 0, True)")]
+
+        def vb17(teil_):
+            if teil_ == "ordner":
+                return "C:\\Pfad mit Leerzeichen\\krypto_bot"
+            assert teil_.startswith('"') and teil_.endswith('"'), teil_
+            return teil_[1:-1].replace('""', '"')
+        befehl17 = "".join(vb17(x_.strip()) for x_ in ausdruck17.split(" & "))
+        pruefe("Starter: die Befehlszeile lautet cmd /c \"<Ordner>\\krypto-auto.bat\" nachkontrolle mit äusseren Anführungszeichen (sonst scheitern Pfade mit Leerzeichen)",
+               befehl17 == 'cmd /c ""C:\\Pfad mit Leerzeichen\\krypto_bot\\krypto-auto.bat" nachkontrolle"', befehl17)
         n_b = len(befehle)
         e = C.aktion("update", befehl=fake_befehl)
         pruefe("Update: erst Kurs-Zwischenspeicher zurücksetzen (sonst blockiert git pull), dann git pull --ff-only",
@@ -334,6 +400,40 @@ with tempfile.TemporaryDirectory() as tmp:
         e = C.aktion("update", befehl=lambda c, z: (False, "error: Your local changes would be overwritten"))
         pruefe("Update gescheitert: verständlicher Hinweis", not e["ok"] and "eigene Änderungen" in e["text"])
         pruefe("Aufgabe vorhanden? (schtasks /query)", C.aufgabe_da(lambda c, z: (c[:2] == ["schtasks", "/query"], "")) is True)
+        abgefragt = []
+        pruefe("Nachkontroll-Aufgabe vorhanden? (schtasks /query /tn Krypto-Pilot-Nachkontrolle)",
+               C.aufgabe_da(lambda c, z: (abgefragt.append(c) or True, ""), name=C.AUFGABE_NK) is True and abgefragt[-1][abgefragt[-1].index("/tn") + 1] == "Krypto-Pilot-Nachkontrolle", abgefragt)
+        # Ampel «Nachkontrolle (Aufgabenplanung)» (Windows-Zweig von gesundheit(), hier mit vorgetäuschtem os.name == "nt", einer Aufgabenplanung, die nur die gewünschten Aufgaben kennt, und einem eigenen data/-Ordner):
+        # die Aufgabe läuft UNSICHTBAR — ihr Lebenszeichen (data/krypto-nachkontrolle-lebt.txt) macht einen stillen Ausfall sichtbar
+        import os as _os17
+
+        class _NT17:
+            name = "nt"
+
+            def __getattr__(self, a_):
+                return getattr(_os17, a_)
+        alt_os17, alt_bef17, alt_cache17, alt_data17 = C.os, C._befehl, dict(C._AUFGABE_CACHE), C.DATA
+        with tempfile.TemporaryDirectory() as td17:
+            C.DATA = Path(td17)
+            lebt17 = Path(td17) / C.NK_LEBT
+            try:
+                for fall17, da17, alter17, erwartet17, wort17 in (("frisches Lebenszeichen", True, 3 * 60, True, "zuletzt vor"), ("noch kein Lebenszeichen", True, None, None, "noch kein Lauf"),
+                                                                  ("Lebenszeichen seit 45 Minuten alt", True, 45 * 60, False, "kein Lauf"), ("Aufgabe fehlt", False, 3 * 60, False, "fehlt")):
+                    lebt17.unlink(missing_ok=True)
+                    if alter17 is not None:
+                        lebt17.write_text("x")
+                        _os17.utime(lebt17, (time.time() - alter17, time.time() - alter17))
+                    C.os = _NT17()
+                    C._AUFGABE_CACHE.update({"zeit": 0.0, "wert": None, "wert_nk": None})
+                    C._befehl = lambda cmd, zeit, da=da17: ((da if "Krypto-Pilot-Nachkontrolle" in cmd else True), "")
+                    gnk17 = {x["name"]: x for x in C.gesundheit({}, {"entscheide": []}, {}, datetime.now(timezone.utc).date())}
+                    zeile17 = gnk17.get("Nachkontrolle (Aufgabenplanung)")
+                    pruefe(f"Ampel «Nachkontrolle (Aufgabenplanung)», {fall17}: {erwartet17} — und die tägliche Aufgabe bleibt grün",
+                           zeile17 is not None and zeile17["ok"] is erwartet17 and wort17 in zeile17["text"] and gnk17["Täglicher Start (Aufgabenplanung)"]["ok"] is True, (zeile17, gnk17.get("Täglicher Start (Aufgabenplanung)")))
+            finally:
+                C.os, C._befehl, C.DATA = alt_os17, alt_bef17, alt_data17
+                C._AUFGABE_CACHE.clear()
+                C._AUFGABE_CACHE.update(alt_cache17)
         ok_b, out_b = C._befehl(["programm-das-es-nicht-gibt-xyz"], 5)
         pruefe("unbekanntes Programm: Meldung statt Absturz", not ok_b and "nicht gefunden" in out_b)
         heute = datetime(2026, 1, 20, tzinfo=timezone.utc).date()
@@ -445,6 +545,8 @@ with tempfile.TemporaryDirectory() as tmp:
                 Sp.lauf_sperre = alt_warten
         pruefe("Not-Aus bei besetzter Sperre: schliesst trotzdem, meldet aber NICHT «alles zu»", "NICHT ALLES GESCHLOSSEN" in meldung
                and "anderer Lauf" in meldung and meldung.count("✅") == 2, meldung)
+        pruefe("Not-Aus bei besetzter Sperre (17. Prüfung K4): die Meldung nennt auch den Absturz (eine tote Sperre gilt erst nach 150 s als tot) und dass die Nachkontrolle dann schliesst",
+               "abgestürzt" in meldung and "150 s" in meldung and "Nachkontrolle schliesst Pilot 2.0" in meldung, meldung)
         C.STOP.unlink()
         # (16. Prüfung) eine Sperre ohne Herzschlag (hart beendeter Lauf) hält den Not-Aus nicht auf: nach 150 s gilt der Lauf als tot, der Not-Aus übernimmt und schliesst Pilot 2.0 selbst
         _lock_t = Path(tmp) / "krypto-lauf.lock"

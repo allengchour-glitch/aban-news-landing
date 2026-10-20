@@ -127,9 +127,16 @@ besseres Rendite ÷ Einbruch bringt **und** mindestens 90 % von 200 zeitversetzt
 4. Im Futures-Konto muss der **Einweg-Modus** eingestellt sein (kein Hedge-Modus), sonst verweigert der Pilot.
 5. **Täglich automatisch:** `krypto-auto.bat` (braucht kein Alpaca) startet Pilot, ETH-Sammler und KI-Trader. Am einfachsten
    im Cockpit mit **🗓️ Täglich automatisch**: Die Aufgabe läuft dann um 02:30 **auch auf Akku**, und war der PC aus oder im
-   Ruhezustand, holt Windows den Lauf beim nächsten Start nach. Von Hand (ohne diese beiden Einstellungen) — die inneren
+   Ruhezustand, holt Windows den Lauf beim nächsten Start nach. Der Knopf legt dazu eine **zweite Aufgabe «Krypto-Pilot-Nachkontrolle»**
+   an: alle 10 Minuten (und, sobald Windows den Benutzer meldet, zusätzlich bei der Anmeldung) startet sie **unsichtbar** (`krypto-nachkontrolle-still.vbs` → `krypto-auto.bat nachkontrolle`)
+   die Nachkontrolle von Pilot 2.0 — ohne Vermerk im Buch ist sie nach einer Sekunde fertig, mit Vermerk setzt sie fehlende Stops nach,
+   auch wenn der Tageslauf mit dem Prozess gestorben ist (Fenster zu, Neustart). Sie schreibt bei jedem Start ein Lebenszeichen
+   (`data\krypto-nachkontrolle-lebt.txt`); die Cockpit-Ampel «Nachkontrolle (Aufgabenplanung)» wird rot, wenn sie 30 Minuten still ist. Beide Aufgaben laufen nur, solange du am PC angemeldet bist
+   (wie die tägliche: `InteractiveToken`).
+   Von Hand (ohne diese beiden Einstellungen) — die inneren
    Anführungszeichen sind nötig, sobald der Pfad ein Leerzeichen enthält (`C:\Users\Max Muster\…`, OneDrive):
-   `schtasks /create /sc daily /st 02:30 /tn "Krypto-Pilot" /tr "\"C:\…\tools\trading\krypto_bot\krypto-auto.bat\" auto" /f`.
+   `schtasks /create /sc daily /st 02:30 /tn "Krypto-Pilot" /tr "\"C:\…\tools\trading\krypto_bot\krypto-auto.bat\" auto" /f`
+   und `schtasks /create /sc minute /mo 10 /tn "Krypto-Pilot-Nachkontrolle" /tr "wscript.exe //B //Nologo \"C:\…\tools\trading\krypto_bot\krypto-nachkontrolle-still.vbs\"" /f`.
    Die Tageskerze schliesst um 00:00 UTC (02:00 Sommerzeit), darum kurz danach. Mit «auto» schreibt die Datei alles in
    `data\krypto-auto.log`; scheitert ein Selbsttest oder stürzt ein Bot ab, kommt eine Nachricht aufs Handy und die
    Cockpit-Ampel «Täglicher Lauf» wird rot.
@@ -305,10 +312,10 @@ Der ETH-Sammler zeigt zusätzlich seinen Wert und Gewinn zum aktuellen Kurs.
 **Auto-Handel AN/AUS** (aus = die Bots handeln nicht, offene Positionen bleiben mit ihrem Börsen-Stop stehen) ·
 **▶ Probelauf** (zeigt, was der Pilot tun würde) · **⚡ Jetzt handeln** · **🤖 Claude fragen** · **🪙 Sparplan** ·
 **📨 Bericht aufs Handy** · **🔄 Markt-Infos** · **📊 Backtest** · **🧪 Selbsttest** · **🗓️ Täglich automatisch** (legt die
-Windows-Aufgabe «Krypto-Pilot» für 02:30 an — kein schtasks-Befehl mehr von Hand) · **⬇️ Update holen** (`git pull --ff-only`,
+Windows-Aufgaben «Krypto-Pilot» für 02:30 und «Krypto-Pilot-Nachkontrolle» alle 10 Minuten an — kein schtasks-Befehl mehr von Hand) · **⬇️ Update holen** (`git pull --ff-only`,
 danach Cockpit neu starten) · und rot **🛑 Not-Aus** (schliesst
 sofort alle Pilot-Positionen und stoppt alles). Darunter die **🩺 Gesundheit**: Schlüssel gesetzt? letzter Lauf frisch? tägliche Aufgabe eingerichtet? Not-Aus? Markt-Infos
-aktuell? letzter Lauf mit Aufträgen ohne Warnung? tägliche Datei `krypto-auto.bat` gelaufen? — rot heisst handeln, grau ist optional. Jeder Knopf startet genau das Skript, das man sonst von Hand startet —
+aktuell? letzter Lauf mit Aufträgen ohne Warnung? tägliche Datei `krypto-auto.bat` gelaufen? Nachkontroll-Aufgabe läuft (Lebenszeichen frisch)? — rot heisst handeln, grau ist optional. Jeder Knopf startet genau das Skript, das man sonst von Hand startet —
 im Hintergrund, mit Rückfrage vor Handel und Kosten. «Jetzt handeln» geht nicht, solange Auto-Handel aus ist (der Lauf
 würde sonst die Positionen schliessen). Echtes Geld bleibt doppelt gesperrt wie überall. Nur feste Aktionen, kein
 beliebiger Befehl, nur von diesem PC aus (127.0.0.1) und nicht von fremden Webseiten: Das Cockpit prüft Herkunft und
@@ -1346,6 +1353,8 @@ python3 -B tools/trading/krypto_bot/pruef_kill.py 0 12 [--stoerungen] [--paare] 
                                                                       # --paare nach zwei Störungen: schreibend × schreibend/lesend/Kurssprung; --nk die Nachkontrolle; --notaus der Not-Aus), danach die Nachkontrolle —
                                                                       # was bleibt ohne Stop? (Befundart NACH_ABBRUCH_NK)
 python3 -B tools/trading/krypto_bot/pruef_vereinen.py 0 50000          # Eigenschaftstest für das Zusammenführen des Buchs mit drei Schreibern (Tageslauf, Not-Aus, Nachkontrolle): kein lebender Stop geht verloren
+python3 -B tools/trading/krypto_bot/pruef_lot.py [--schnell]       # Lot-Scan (17. Folge-Runde): Coins mit Bruchteilen eines Lots × Short × alter Spot-Stop × alte Perp-Stops × «nicht löschbar», `_notaus_schutz` je dreimal —
+                                                                      # gestoppt werden nur GANZE Lots (3'240 Lagen; PRUEF_STRENG=1 gegen die strenge Prüf-Börse)
 python3 tools/trading/krypto_bot/test_scalping.py      # 50 Tests: kein Blick in die Zukunft, strenge Füll-Regeln, Kosten exakt, Entscheidungsregeln
 python3 tools/trading/krypto_bot/test_news_waechter.py # 32 Tests: Alarm-Regeln, keine Fehlalarme, nur einmal melden, kein Fluten, Delistings jede Minute, Telegram-Kanäle
 python3 tools/trading/krypto_bot/test_delisting.py     # 36 Tests: Ankündigungen lesen, Einstieg/Ausstieg, Funding, Zufallsprobe (ohne Netz)

@@ -763,7 +763,9 @@ def laeufe_runde(seed, tage=30):
         B.verletzungen = [v for v in B.verletzungen if v[0] != "TRANSFER-TYP"]
         if not fremd and not trocken:
             kontext["lage"] = zeigen(k)
-            funde += _klassieren(schutz_befunde(k, unklar_je_markt(d)), erg, dict(kontext, wann="nach Lauf", **tag_info))
+            # (17. Prüfung K5) NACH der Nachkontrolle zählt der Vermerk von JETZT (sie löscht ihn, wenn sie fertig wird), nicht der vom Laufende: sonst entschuldigte VORSORGE_ eine Lücke, die sie hätte räumen müssen
+            tag_info_nach = {"vermerkt": vermerkt_je_markt(d), "gelesen": sorted(s_[:-4] for s_ in SYMS)}
+            funde += _klassieren(schutz_befunde(k, unklar_je_markt(d)), erg, dict(kontext, wann="nach Lauf", **tag_info_nach))
             funde += _klassieren(folgeschaden(k), erg, dict(kontext, wann="Folgeschaden nach Lauf"))
         # Markt bis morgen (Stops lösen unterwegs aus), Funding
         for sym in SYMS:

@@ -39,6 +39,32 @@ class Besetzt(RuntimeError):
     """Ein anderer Lauf hält die Sperre."""
 
 
+class SperreVerloren(RuntimeError):
+    """Eine Sperre, die dieser Prozess hält, gehört inzwischen einem anderen Lauf (sie wurde als tot übernommen — z. B. nach dem Ruhezustand des Rechners, einem Uhrensprung oder einem langen Stillstand)."""
+
+
+# (17. Prüfung W3) Die Sperren, die DIESER Prozess gerade hält (Pfad → Marke). Ein eingefrorener Lauf (Ruhezustand: Herzschlag und Lauf stehen) merkte nach dem Aufwachen nicht, dass Nachkontrolle oder Not-Aus seine
+# Sperre als tot übernommen hatten, und führte seinen veralteten Plan aus (Abweichung bis 12'318 USDT Netto, das Vorzeichen kippte in 15 Fällen). pruefen() liest vor jedem schreibenden Auftrag die Marke.
+_gehalten = {}
+_gehalten_sperre = threading.Lock()
+
+
+def pruefen():
+    """Gehören alle Sperren, die dieser Prozess hält, noch ihm? Sonst SperreVerloren. Eine kurz nicht lesbare Datei (Virenscanner, OneDrive) zählt als «unbekannt» und lässt den Auftrag zu."""
+    with _gehalten_sperre:
+        gehalten = list(_gehalten.items())
+    for pfad, marke in gehalten:
+        datei = Path(pfad)
+        try:
+            inhalt = datei.read_text()
+        except FileNotFoundError:
+            raise SperreVerloren(f"Die Sperre {datei.name} ist weg (übernommen und wieder freigegeben?) — kein Auftrag mehr.") from None
+        except OSError:
+            continue
+        if inhalt != marke:
+            raise SperreVerloren(f"Die Sperre {datei.name} gehört inzwischen einem anderen Lauf (als tot übernommen) — kein Auftrag mehr.")
+
+
 def _inhalt(datei):
     """Inhalt der Sperrdatei, None wenn sie fehlt oder gerade nicht lesbar ist (Windows: kurz von einem Virenscanner gehalten)."""
     try:
@@ -113,6 +139,8 @@ def lauf_sperre(name="krypto-lauf", warten=0.0, ordner=None, alt_nach=ALT_NACH):
             if time.time() - start >= warten:
                 raise Besetzt(f"Ein anderer Lauf handelt gerade (seit {alter:.0f} s).") from None
             time.sleep(0.25)
+    with _gehalten_sperre:
+        _gehalten[str(datei)] = marke
     # Lebenszeichen: solange der Lauf dauert, wird die Sperre alle HERZSCHLAG Sekunden «angefasst» — ein langer Lauf (z. B. langsame
     # Kursquellen) gilt so nie als verwaist, und ein zweiter Lauf startet nicht mittendrin.
     fertig = threading.Event()
@@ -132,6 +160,9 @@ def lauf_sperre(name="krypto-lauf", warten=0.0, ordner=None, alt_nach=ALT_NACH):
     try:
         yield
     finally:
+        with _gehalten_sperre:
+            if _gehalten.get(str(datei)) == marke:
+                del _gehalten[str(datei)]
         fertig.set()
         for _versuch in range(10):  # Windows: die Datei kann kurz gehalten sein — ein erfolgreicher Lauf soll daran nicht scheitern
             try:

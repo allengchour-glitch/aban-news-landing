@@ -120,6 +120,9 @@ class Futures:
 
     def _req(self, methode, pfad, params=None, signiert=False, basis=None):
         params = dict(params or {})
+        if signiert and methode in ("POST", "DELETE", "PUT"):
+            import sperre  # (17. Prüfung W3) hat ein anderer Lauf die Sperre dieses Prozesses übernommen (Ruhezustand, Stillstand), geht kein Auftrag mehr raus
+            sperre.pruefen()
         if signiert:
             params["timestamp"] = self._zeit()
             params["recvWindow"] = 10000

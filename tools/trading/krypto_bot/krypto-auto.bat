@@ -10,6 +10,9 @@ set PYTHONUTF8=1
 set PYTHONIOENCODING=utf-8
 cd /d "%~dp0\..\..\.."
 if not exist data mkdir data
+REM (17. Pruefung W4) Modus "nachkontrolle": nur die Nachkontrolle von Pilot 2.0 - die zweite Aufgabe der Aufgabenplanung startet sie alle 10 Minuten und bei der Anmeldung.
+REM Ohne Vermerk im Buch ist sie nach einer Sekunde fertig. (Kein Klammerblock: darin wuerde %PY% schon beim Einlesen ersetzt, also leer.)
+if /i "%~1"=="nachkontrolle" goto :nachkontrolle_allein
 if /i "%~1"=="auto" if not "%~2"=="geloggt" (
   echo ===== %date% %time% =====>> "data\krypto-auto.log"
   call "%~f0" auto geloggt >> "data\krypto-auto.log" 2>&1
@@ -82,6 +85,15 @@ if defined FEHLER (
 :ende
 if /i not "%~1"=="auto" pause
 goto :eof
+
+:nachkontrolle_allein
+REM Lebenszeichen fuer die Ampel im Cockpit - die Aufgabe laeuft unsichtbar. Bei JEDEM Start, auch wenn gleich danach nichts zu tun ist.
+echo %date% %time%> "data\krypto-nachkontrolle-lebt.txt"
+if not exist "data\krypto-pilot2-bestand.json" exit /b 0
+set PY=py
+where py >nul 2>nul || set PY=python
+%PY% tools\trading\krypto_bot\pilot.py --nachkontrolle >> "data\krypto-nachkontrolle.log" 2>&1
+exit /b %errorlevel%
 
 :schritt
 REM %1 Name, %2 Skript, %3 Argument. Rueckgabe: 0 ok, 3 Warnung (hat sich schon selbst gemeldet), sonst Absturz.
