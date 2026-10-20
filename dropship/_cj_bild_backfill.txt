@@ -3116,3 +3116,5 @@ gid://shopify/Product/16644529160583	keine-cj-ref/w2	CJYD256498902BY	2026-10-19T
 gid://shopify/Product/16650186162567	schon-mehr-bilder/w2	CJBHNSNS20525-Blue	2026-10-19T17:25:00.980Z
 gid://shopify/Product/16650188816775	schon-mehr-bilder/w2	CJBHNSNS20306-Gray green	2026-10-19T17:25:01.490Z
 gid://shopify/Product/16650219225479	schon-mehr-bilder/w2	CJBHNSNS17834-Brown	2026-10-19T17:25:01.800Z
+gid://shopify/Product/16652078973319	keine-weiteren/w2	CJ-2610160341321627300	2026-10-20T13:26:45.310Z
+gid://shopify/Product/16652427559303	keine-weiteren/w2	CJ-2610190520121601900	2026-10-20T13:26:46.891Z
