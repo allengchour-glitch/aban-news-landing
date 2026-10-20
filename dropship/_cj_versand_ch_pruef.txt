@@ -11426,3 +11426,5 @@ gewebte-holzperlen-tapete-881152	1747548613892378624	16	9.47	ok	landeseite
 elegante-weite-jeans-628300	2604151059531628900	16	14.96	ok	landeseite
 handgefertigter-stoff-tiger-714688	1736967460286377984	16	7.25	ok	landeseite
 camouflage-taktikbrusttasche-outdoor-fahrrad-635500	2512191234361635700	16	11.60	ok	landeseite
+ripped-jeans-gerade-geschnitten-628600	2604150949381629100	16	12.81	ok	landeseite
+cycling-legbag-637300	2512190706261637800	16	8.39	ok	landeseite
