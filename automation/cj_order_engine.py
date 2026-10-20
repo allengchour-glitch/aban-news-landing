@@ -240,6 +240,12 @@ def zuordnung_vid(sku):
     return None
 
 
+# CJ-eigene variantSku (Form b). 20.10.2026: Obergrenze 40 → 80 Zeichen — die längste von 3'466 Optionsanhang-SKUs misst 39 (Messung 20.10.),
+# ein Zeichen Luft ist keine Reserve; ein längerer Anhang hätte sonst «passt zu keinem CJ-Schema» gemeldet (laut, aber der Kunde wartet).
+# Die URL wird mit quote() gebaut, Leerzeichen sind erlaubt.
+SKU_FORM_B = re.compile(r'[A-Za-z0-9._ -]{6,80}')
+
+
 def ist_cj_sku(sku):
     """Gehört diese Shop-SKU zu CJ? «CJ-…»-Präfix, eine CJ-Form hinter dem Präfix ODER eine belegte Zuordnung.
 
@@ -284,7 +290,7 @@ def vid_fuer(sku, variant_title):
         vsku = re.sub(r'^CJ-', '', s, flags=re.I)
         # CJ-Varianten-SKUs koennen ein Leerzeichen tragen («CJBJMRJF00040-EU plug», Stecker-
         # Varianten, 14.09.) — ohne quote() waere die URL kaputt und die Bestellung stuende still.
-        if not re.fullmatch(r'[A-Za-z0-9._ -]{6,40}', vsku):
+        if not SKU_FORM_B.fullmatch(vsku):
             return None, f"SKU «{s}» passt zu keinem CJ-Schema"
         d = cj(f"/api2.0/v1/product/query?variantSku={urllib.parse.quote(vsku)}")
         if str(d.get("code")) == "1602002":
@@ -747,6 +753,12 @@ def selbsttest():
          "fortura-1234"),
     ]
     fehler = selbsttest_cj_einmal()
+    # 20.10.2026: Zeichensatz/Länge der variantSku (Form b)
+    for sku, soll in (("CJYDQXHB00011-BROWN-39", True), ("CJBJPFMZ00313-S0482A813 STYLE-Q10PCS", True), ("CJJZGJSD00802-7.5X7.5CM-Q4PCS", True),
+                      ("CJ" + "X" * 70, True), ("CJ" + "X" * 90, False), ("CJ;DROP", False), ("CJ/../x", False), ("ab", False)):
+        ok = bool(SKU_FORM_B.fullmatch(sku)) is soll
+        fehler += not ok
+        print(f"  {'OK  ' if ok else 'FEHL'} variantSku-Zeichensatz {sku[:40]!r} → {soll}")
     try:
         for fall in faelle:
             name, host, alter, liste1, liste2, liste3, antwort, soll_an, soll_ledger, soll_text, soll_push = fall[:11]

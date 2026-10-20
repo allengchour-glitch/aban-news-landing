@@ -77,7 +77,7 @@ MENGE = re.compile(r"\b(\d{1,3})\s*(?:-\s*)?(?:Farben|Designs?|Motive|Stück|Stk
                    r"|\bSet\s+(?:mit|aus|à)\s+(\d{1,3})\b", re.I)
 # 08.10.2026: auch die Produkt-SKU-Form «CJ-CJYD2852650» (ohne Varianten-Endung) — sie ist so unbestimmt wie die pid
 SKU_ALT = re.compile(r"^CJ-(?:\d{10,}|[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}|CJ[A-Z]{2}\d{7,10})$")
-SKU_BESTELLBAR = re.compile(r"[A-Za-z0-9._ -]{6,40}")        # = cj_order_engine.vid_fuer, Form (b)
+SKU_BESTELLBAR = re.compile(r"[A-Za-z0-9._ -]{6,80}")        # = cj_order_engine.SKU_FORM_B (20.10.: 40 → 80)
 STECKER = {"EU", "US", "UK", "AU", "JP", "KR", "CN", "BR", "IN"}
 # 08.10.2026: Optionen mit Bildpflicht — wer «Modell 3» oder «Hase · Blau» wählt, muss es SEHEN.
 BILD_PFLICHT = {"Farbe", "Modell", "Motiv", "Typ", "Muster", "Ausführung", "Variante", "Stil", "Set"}

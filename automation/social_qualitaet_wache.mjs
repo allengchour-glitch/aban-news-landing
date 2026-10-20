@@ -379,7 +379,8 @@ function produktHinweise(p) {
 }
 const PFELDER = 'id title handle status vendor onlineStoreUrl variants(first:1){nodes{sku}} priceRangeV2{minVariantPrice{amount} maxVariantPrice{amount}} compareAtPriceRange{maxVariantCompareAtPrice{amount}}';
 // CJ-Ware kommt aus China/Übersee (10–20 Werktage) — eine «Blitzversand aus der Schweiz»-Zusage ist dort sicher falsch.
-const istCJ = pr => /^CJ-/i.test(pr?.variants?.nodes?.[0]?.sku || '');
+// 20.10.2026: auch NACKTE CJ-SKUs (23'286 Varianten, «CJYD…», «CJYDQXHB00011-BROWN-39») — bisher galten sie als Nicht-CJ und die zwei Fehler unten wurden zu schwachen Hinweisen. Form wie automation/cj_sku.py (CJ + 2–8 Buchstaben + ≥ 5 Ziffern).
+const istCJ = pr => { const s = pr?.variants?.nodes?.[0]?.sku || ''; return /^CJ-/i.test(s) || /^CJ[A-Z]{2,8}\d{5}/i.test(s); };
 const pCache = new Map();
 async function produkteAufloesen(anfragen) {
   const offen = [...new Map(anfragen.filter(a => !pCache.has(a.art + ':' + a.wert)).map(a => [a.art + ':' + a.wert, a])).values()];

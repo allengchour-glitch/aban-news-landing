@@ -111,6 +111,7 @@ def gql(q, v=None):
 import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from cj_takt import takt, frei   # EIN Takt fuer alle CJ-Verbraucher (21.09.)
+import cj_sku                    # 20.10.2026: EINE Quelle fuer CJ-SKU-Formen
 
 
 def cj(pfad, body=None, params=None):
@@ -249,7 +250,7 @@ def main():
         for p in pg["nodes"]:
             preis = float(p["priceRangeV2"]["minVariantPrice"]["amount"])
             sku = (p["variants"]["nodes"][0]["sku"] if p["variants"]["nodes"] else "") or ""
-            if preis >= MINPREIS and re.match(r'^CJ-', sku or '', re.I):
+            if preis >= MINPREIS and ist_kandidat(sku):
                 kandidaten.append((p["id"], p["title"], preis, sku))
         if not pg["pageInfo"]["hasNextPage"]:
             break
@@ -310,5 +311,25 @@ def main():
           f"{unklar} unklar (unangetastet)")
 
 
+def ist_kandidat(sku):
+    """Gehört die Erst-SKU zu CJ und damit in diese Prüfung? 20.10.2026: bisher nur «CJ-…» — ALLE nackten CJ-SKUs (23'286 Varianten,
+    «CJYD…», «CJLS…», «CJYDQXHB00011-BROWN-39») wurden nie auf Auslistung/CH-Versandlinie geprüft; ein teurer Artikel ohne Linie CN→CH
+    (Klasse #1017) blieb im Verkauf. versandfaehig() kennt alle Formen längst; Slugs wie «CJ-ANTIGRAV-HUMID» lässt es als «unklar» liegen."""
+    return bool(re.match(r'^CJ-', sku or '', re.I)) or cj_sku.ist_cj_form(sku)
+
+
+def selbsttest():
+    f = [("CJ-CJYD225829901AZ", True), ("CJYD225829901AZ", True), ("CJYDQXHB00011-BROWN-39", True), ("CJJJJTJT22925", True), ("CJ-2608071241571604000", True),
+         ("cj-bag-capri", True), ("fortura-1", False), ("bb-123456", False), ("", False), (None, False), ("5599797_4012", False)]
+    fehl = 0
+    for sku, soll in f:
+        ok = ist_kandidat(sku) is soll
+        fehl += not ok
+        print(("  OK   " if ok else "  FEHL ") + f"{sku!r} → {ist_kandidat(sku)}")
+    return 1 if fehl else 0
+
+
 if __name__ == "__main__":
+    if "--selbsttest" in sys.argv:
+        sys.exit(selbsttest())
     main()
