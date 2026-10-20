@@ -3259,3 +3259,4 @@
 15504090890625	Menge:2:2	2026-10-20	tischset-aus-kunstleder-wasser-und-olfest-263168
 15504090759553	Grösse:5:5	2026-10-20	halsband-leine-mit-schleife-fur-haustiere-065408
 15504089383297	Farbe:3+Grösse:2:6	2026-10-20	retro-business-rucksack-fur-herren-456448
+15504089284993	Grösse:2:2	2026-10-20	vielseitiger-korb-mit-herzmotiv-611000
