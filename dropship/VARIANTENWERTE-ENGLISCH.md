@@ -6,14 +6,14 @@
 
 ## Zahlen
 
-- Produkte gesehen: **15'646**
-- Optionen mit englischen Werten (Kandidaten): 1'702
+- Produkte gesehen: **16'245**
+- Optionen mit englischen Werten (Kandidaten): 1'740
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 9'013
+- Werte mit unbekanntem Wort (unverändert): 9'143
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
 - übersprungen «kleidungsstueck-im-wert»: 41
-- übersprungen «kollision-nach-uebersetzung»: 31
+- übersprungen «kollision-nach-uebersetzung»: 32
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -73,6 +73,7 @@
 - `15456157794689` [Farbe] weite-cropped-hosen-620200: Marineblaublau → Marineblau
 - `15458844049793` [Farbe] herren-langarm-button-down-hemd-615300: Pink Color → Pink
 - `15466024305025` [Farbe] elegantes-a-linien-kleid-mit-ruschenarmeln-620600: Polka Dot → Gepunktet; Marineblaublau → Marineblau
+- `15468651315585` [Farbe] retro-bluse-622200: Pink Color → Pink
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -103,5 +104,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 413, `light` 329, `color` 211, `degrees` 159, `surface` 108, `⟨satzbau:material-vor-farbe⟩` 104, `shell` 100, `skin` 98, `core` 92, `powder` 90, `⟨satzbau:mass-ohne-einheit⟩` 90, `three` 83, `high` 73, `rope` 69, `case` 64, `bag` 62, `feet` 62, `dark` 59, `dual` 57, `net` 57, `of` 56, `belt` 56, `size` 54, `code` 52, `lens` 50, `chain` 49, `line` 49, `bear` 49, `to` 49, `four` 48, `hat` 47, `about` 46, `clock` 45, `buckle` 44, `no` 43, `electric` 43, `acupuncture` 43, `little` 42, `perforated` 42, `face` 41, `button` 41, `cat` 39, `opp` 39, `ice` 38, `carbon` 38, `cherry` 37, `handle` 37, `cup` 37, `adjustable` 37, `⟨satzbau:adjektivfolge⟩` 37, `autumn` 37, `magnetic` 36, `tea` 36, `star` 36, `suit` 36, `generation` 36, `⟨satzbau:nomen-vor-farbe⟩` 36, `person` 36, `spring` 35, `fiber` 35
+`⟨satzbau:adjektiv-vor-nomen⟩` 415, `light` 345, `color` 223, `degrees` 159, `surface` 108, `⟨satzbau:material-vor-farbe⟩` 104, `shell` 100, `skin` 98, `core` 92, `powder` 91, `⟨satzbau:mass-ohne-einheit⟩` 90, `three` 83, `high` 73, `rope` 69, `case` 68, `bag` 62, `feet` 62, `dark` 59, `dual` 57, `net` 57, `of` 56, `belt` 56, `size` 54, `code` 52, `lens` 50, `chain` 49, `line` 49, `bear` 49, `to` 49, `four` 48, `no` 47, `hat` 47, `about` 46, `clock` 45, `buckle` 44, `electric` 43, `acupuncture` 43, `little` 42, `perforated` 42, `face` 41, `button` 41, `⟨satzbau:menge-vor-nomen⟩` 40, `cat` 39, `opp` 39, `ice` 38, `carbon` 38, `⟨satzbau:adjektivfolge⟩` 38, `cherry` 37, `handle` 37, `cup` 37, `adjustable` 37, `⟨satzbau:nomen-nomen⟩` 37, `autumn` 37, `magnetic` 36, `tea` 36, `star` 36, `suit` 36, `generation` 36, `⟨satzbau:nomen-vor-farbe⟩` 36, `person` 36
 
