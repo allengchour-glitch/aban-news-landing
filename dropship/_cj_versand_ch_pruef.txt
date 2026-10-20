@@ -11962,3 +11962,5 @@ yoga-lauf-beinlinge-huftbetonend-schwei-ableit-629300	2512040302331629500	16	6.9
 pneumatik-helm-416640	1372095497204011008	7	13.62	ok	landeseite
 boho-stil-vorhang-610600	2507240644461611300	16	11.66	ok	landeseite
 fleece-linierte-sporthose-fur-damen-629000	2512031204151629300	16	8.25	ok	landeseite
+katzenspielzeug-mit-drehkopf-618400	2507100944341618900	16	15.04	ok	landeseite
+sicherheitshelm-mit-licht-5230ab	07F4D2C5-2232-4C30-B95D-6F1D091B6BF6	7	13.18	ok	landeseite
