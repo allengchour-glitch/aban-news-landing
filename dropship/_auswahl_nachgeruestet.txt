@@ -3234,3 +3234,4 @@
 15505709957505	Modell:5:5	2026-10-20	tv-box-router-wandhalterung-ohne-bohren-900608
 15505679581569	Grösse:2:2	2026-10-20	edelstahl-wok-antihaft-pfanne-736128
 15505601823105	Farbe:3+Grösse:2:6	2026-10-20	pfeffer-und-salzmuhle-gadgets-608320
+15504290480513	Farbe:5:5	2026-10-20	u-formiges-nackenkissen-aus-memory-foam-623616
