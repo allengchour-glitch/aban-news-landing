@@ -3233,3 +3233,4 @@
 16655374680455	Farbe:3:3	2026-10-20	natural-coloring-set-fur-augenbrauen-wimpern-600900
 15505709957505	Modell:5:5	2026-10-20	tv-box-router-wandhalterung-ohne-bohren-900608
 15505679581569	Grösse:2:2	2026-10-20	edelstahl-wok-antihaft-pfanne-736128
+15505601823105	Farbe:3+Grösse:2:6	2026-10-20	pfeffer-und-salzmuhle-gadgets-608320
