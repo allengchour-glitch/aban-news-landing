@@ -1,6 +1,6 @@
 # COWORK-BEFEHL — Fassung 21.09.2026, 09:40 UTC (für heute Abend)
 
-## 🆕 20.10. 05:10 UTC — Bewertungen auf den Top-Seiten: ein Entscheid (1 Min.), sonst bleibt das Ziel vom 22.10. unerreichbar
+## 🆕 20.10. 05:00 UTC — Bewertungen auf den Top-Seiten: ein Entscheid (1 Min.), sonst bleibt das Ziel vom 22.10. unerreichbar
 **Gemessen (`python3 tools/webseite_bilanz.py`, 20.10.):** Von den 29 meistbesuchten Produktseiten haben **3** eine Bewertung (Ausgang 01.10.: 2).
 Der Plan «Kauf-Strecke» verlangt für den **22.10. ≥ 10 von 29**. Das geht nur über den CJ-Bewertungs-Import — und der steht seit **12.10.** still:
 `dropship/_bewertungen_stopp.txt` (Gegenprobe wf_52c03c1d: die Importe erschienen mit dem Namen «Käufer:in beim Lieferanten» und der
