@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 20:53 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 22:29 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1302 · **1236 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1046, teilweise: 164, keine: 26; Preisspanne > 2×: 154) · 1 CJ-Variante: 64 · ohne Antwort: 2
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1288 · **1222 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1032, teilweise: 164, keine: 26; Preisspanne > 2×: 154) · 1 CJ-Variante: 64 · ohne Antwort: 2
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -641,13 +641,10 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Cat Eye Oval-Kunstnägel – Transparent Fluorescent (`cat-eye-oval-kunstnagel-transparent-fluorescen-609700`) | 6 | 6 | 6.54–6.54 | 19.90 | M-Medium Ellipse, M-Short ellipse, S-Medium Ellipse, S-Short ellipse |
 | Retro Business Rucksack für Herren (`retro-business-rucksack-fur-herren-456448`) | 6 | 6 | 3.77–3.93 | 18.90 | Small khaki-10inch, Small black-10inch, Small brown-10inch, Large Khaki-10inch |
 | Trinkrucksack für Outdoor-Aktivitäten (`trinkrucksack-fur-outdoor-aktivitaten-476416`) | 6 | 6 | 8.81–8.81 | 20.90 | Black, Blue, Camel, Camouflage |
-| Halsband Samt mit Strass-Schnalle für Katzen (`halsband-samt-mit-strass-schnalle-fur-katzen-619200`) | 6 | 6 | 2.14–2.14 | 14.90 | Pink-1.0x28CM, Black-1.0x28CM, Red-1.0x28CM, Blue-1.0x28CM |
 | Lustige Katzen-Muskelhand zum Aufhängen (`lustige-katzen-muskelhand-zum-aufhangen-614900`) | 6 | 6 | 2.28–2.28 | 15.90 | Black, Green, Blue, Flesh Color |
-| Haustier-Rucksack mit Netzbelüftung (`haustier-rucksack-mit-netzbeluftung-362880`) | 6 | 6 | 5.8–7.46 | 28.90 | Grey-L, Grey-S, Light Blue-L, Light Blue-S |
 | Business Travel Rucksack (`business-travel-rucksack-983872`) | 6 | 6 | 10.06–13.83 | 30.90 | Enhanced upgrade version, Enhanced upgrade versionextra, Standard version, Standard versionextra size |
 | Leder Aufbewahrungsbox für Uhren (`leder-aufbewahrungsbox-fur-uhren-602000`) | 6 | 6 | 5.47–5.8 | 18.90 | Black Tabby, Gray, Brown Dark Brown, Light Brown |
 | Boho Kissenbezug Baumwolle Leinen (`boho-kissenbezug-baumwolle-leinen-602400`) | 6 | 6 | 2.11–2.11 | 14.90 | Tufted Vertical Bar-45 X45cm Pillow Cover, Tufted Thread Ball-45 X45cm Pillow Cover, Loop Melody-45 X45cm Pillow Cover, Loop Arc-45 X45cm Pillow Cover |
-| Pfeffer- und Salzmühle Gadgets (`pfeffer-und-salzmuhle-gadgets-608320`) | 6 | 6 | 6.33–8.02 | 18.90 | White-Small, White-large, Gold-Small, Gold-large |
 | Glücksarmband mit Evil Eye Stickerei und Quaste (`glucksarmband-mit-evil-eye-stickerei-und-quast-616800`) | 6 | 6 | 2.44–2.44 | 15.90 | 10 Embroidered, 591 Tassel, 90 Tassel, 170 Tassel |
 | D5 Column Rucksack 15L Kinder Camouflage (`d5-column-rucksack-15l-kinder-camouflage-961280`) | 6 | 6 | 8.33–8.58 | 25.90 | Khaki, Black, ACU, Desert |
 | Boho Kissenbezug mit Fransen (`boho-kissenbezug-mit-fransen-571968`) | 6 | 6 | 3.0–3.75 | 15.90 | Grid-45x45-Pillowcase, Highspeed drop-45x45-Pillowcase, Highspeed separation-45x45-Pillowcase, Size than the symbol-45x45-Pillowcase |
@@ -770,8 +767,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Halsband-Set "Deep Denim" mit Leine & Fliege (`halsband-set-deep-denim-mit-leine-fliege-254720`) | 5 | 5 | 6.36–6.36 | 19.90 | Bow-XS, Bow-S, Bow-M, Bow-L |
 | Eleganter Zirkonia Ring im koreanischen Stil (`eleganter-zirkonia-ring-im-koreanischen-stil-633200`) | 5 | 5 | 8.44–8.44 | 21.90 | Silver-No 5, Silver-No 6, Silver-No 7, Silver-No 8 |
 | Ohrringe Stern & Halbmond S925 Silber (`ohrringe-stern-halbmond-s925-silber-615700`) | 5 | 5 | 6.14–8.12 | 18.90 | Gold 1style-1pair, Gold 2style-1pair, Gold 3style-1pair, Gold 4style-1pair |
-| U-förmiges Nackenkissen aus Memory Foam (`u-formiges-nackenkissen-aus-memory-foam-623616`) | 5 | 5 | 2.79–2.79 | 14.90 | Pink-30x30x10cm, Purple-30x30x10cm, Blue-30x30x10cm, Gray-30x30x10cm |
-| TV-Box & Router Wandhalterung ohne Bohren (`tv-box-router-wandhalterung-ohne-bohren-900608`) | 5 | 5 | 1.57–2.8 | 14.90 | 1A, 2A, 3A, 4A |
 | IQO Ilum One Schutzhülle (`iqo-ilum-one-schutzhulle-606700`) | 5 | 5 | 3.02–3.02 | 15.90 | Woven Pattern Black, Woven Red, Woven Light Brown, Woven Pattern Dark Brown |
 | Kupfer Magnetarmband – schlicht & poliert (`kupfer-magnetarmband-schlicht-poliert-629600`) | 5 | 5 | 2.63–2.99 | 15.90 | 8 Magnetic, 9 Magnetic, 11 Magnetic, 12 Magnetic |
 | Herren Business-Freizeit Multifunktionsuhr (`herren-business-freizeit-multifunktionsuhr-528000`) | 5 | 5 | 13.46–13.46 | 28.90 | Orange, Black red, Black grey, Black brown |
@@ -941,9 +936,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Elastisches Armband aus Titanstahl (`elastisches-armband-aus-titanstahl-636700`) | 4 | 4 | 2.63–3.35 | 15.90 | Steel-SZ0037-Wide Stripe, Steel-SZ0038-Narrow Stripe, Gold-SZ0037-Wide Stripe, Gold-SZ0038-Narrow Stripe |
 | Edelstahl Napf mit erhöhtem Ständer für Hunde (`edelstahl-napf-mit-erhohtem-stander-fur-hunde-320960`) | 4 | 4 | 5.33–5.75 | 47.90 | 17cm, 19cm, 21cm, 23cm |
 | Yoga Pull Back Trainer (`yoga-pull-back-trainer-316416`) | 4 | 4 | 6.86–8.09 | 40.90 | Thread Suit Latex, Black Suit Latex, Purple Suit Latex, Pink Suit Latex |
-| Dopamine Cat's Eye Press-on Nägel (`dopamine-cat-s-eye-press-on-nagel-617800`) | 4 | 4 | 6.09–6.09 | 18.90 | XS-Short Square Circle, S-Short Square Circle, M-Short Square Circle, L-Short Square Circle |
-| Blush Pleated French – handgemachte Fake Nails (`blush-pleated-french-handgemachte-fake-nails-601200`) | 4 | 4 | 2.99–2.99 | 15.90 | Extra Small XS-Long Trapezoid, Small Size S-Long Trapezoid, Medium M-Long Trapezoid, Large L-Long Trapezoid |
-| Blumen Twill Baumwollstoff für Kinder (`blumen-twill-baumwollstoff-fur-kinder-583552`) | 4 | 4 | 15.58–15.58 | 47.90 | 1style, 2style, 3style, 4style |
 | Lidschatten-Palette "Blue Petals" (`lidschatten-palette-blue-petals-483264`) | 4 | 4 | 3.16–3.16 | 15.90 | FE 101 Spring Color, FE 102 Sweet Tea Slow Notes, FE103 Iris Tectorum, FE 104 Ice Crushing Blue |
 | Handgemachte Luxus-Press-on-Nägel «Drachen & Phönix» (`handgemachte-luxus-press-on-nagel-drachen-phon-619900`) | 4 | 4 | 43.94–43.94 | 66.90 | XS-Dragon, S-Dragon, M-Dragon, L-Dragon |
 | Abnehmbare Kunstnägel «North Sea King» (`abnehmbare-kunstnagel-north-sea-king-624900`) | 4 | 4 | 10.66–10.66 | 24.90 | Sunset-XS, Sunset-S, Sunset-M, Sunset-L |
@@ -1100,11 +1092,9 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Beruhigende Antioxidans Emulsion (`beruhigende-antioxidans-emulsion-629000`) | 3 | 3 | 3.19–3.19 | 14.90 | 198ml-Pink, 198ml-Gold Glaze, 198ml-White |
 | Wellenförmiges Armband mit Strasssteinen (`wellenformiges-armband-mit-strasssteinen-622700`) | 3 | 3 | 2.11–2.11 | 14.90 | Golden 2861, Golden 2862, Golden 2863 |
 | Reifen-Profiltiefenmesser 0-25mm (`reifen-profiltiefenmesser-0-25mm-930176`) | 3 | 2 | 0.47–1.26 | 14.90 | Monochrome-5PCS, Twocolor-5PCS, White-1PCS |
-| Reise-Organizer für Kosmetik & mehr (`reise-organizer-fur-kosmetik-mehr-600400`) | 3 | 3 | 4.18–4.18 | 15.90 | Pink, Beige, Blue |
 | Concealer Repair Puder – Nass & Trocken (`concealer-repair-puder-nass-trocken-268544`) | 3 | 3 | 4.89–4.89 | 17.90 | 01 English Version, 02 English Version, 03 English Version |
 | Rennauto-Modellbausatz Grand-Tourer Coupé (`rennauto-modellbausatz-gran-turismo-coupe-006208`) | 3 | 3 | 10.28–10.28 | 24.90 | BMW 850CSi Red, Dark Gray, White |
 | Grosser Reise- und Business-Rucksack für Herren (`grosser-reise-und-business-rucksack-fur-herren-552512`) | 3 | 3 | 9.62–9.62 | 23.90 | Black, ArmyGreen, Navy Blue |
-| Nordische Glas-Aufbewahrungsbox für Kosmetik (`nordische-glas-aufbewahrungsbox-fur-kosmetik-606200`) | 3 | 3 | 5.64–8.96 | 47.90 | A12 Small Size, A12 Large, A12 Plus Sized |
 | Kristall-Box für Kosmetiktücher (`kristall-box-fur-kosmetiktucher-622800`) | 3 | 3 | 10.41–10.78 | 37.90 | Picture Color-Rectangular Wash Mirror, Picture Color-Rectangular Double Stitching, Picture Color-Square Stitching |
 | Schwimmendes Beissring-Spielzeug für Hunde (`schwimmendes-beissring-spielzeug-fur-hunde-760192`) | 3 | 3 | 3.15–3.15 | 15.90 | Blue with red edge-9inches23cm, Green with yellow edge-9inches23cm, Purple with a green edge-9inches23cm |
 | Spanngurt mit Ratsche und Doppelhaken (`spanngurt-mit-ratsche-und-doppelhaken-810304`) | 3 | 3 | 0.99–1.14 | 14.90 | Photo Color-No hook 1inch 2meters, Photo Color-Double hook 1inch 3meters, Photo Color-Double hook 1inch 5meters |
@@ -1217,10 +1207,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Vielseitiger Korb mit Herzmotiv (`vielseitiger-korb-mit-herzmotiv-611000`) | 2 | 2 | 2.82–3.18 | 15.90 | Black Heart Storage Basket-25X20cm, Black Heart Storage Basket-29X25cm |
 | Duschtemperaturanzeige für Regendusche (`duschtemperaturanzeige-fur-regendusche-309312`) | 2 | 2 | 8.47–10.56 | 18.90 | A, B |
 | Sushi-Boot aus Bambus im japanischen Stil (`sushi-boot-aus-bambus-im-japanischen-stil-439808`) | 2 | 2 | 12.26–15.8 | 38.90 | 40cmNo flag, 50cm |
-| Alu-Isolationsmatte für Outdoor und Camping (`alu-isolationsmatte-fur-outdoor-und-camping-612000`) | 2 | 2 | 2.28–2.46 | 15.90 | Sky Blue-180X50X0.6CM, Sky Blue-180X60X0.6CM |
-| Mikro-Druck Anti-Überlauf Topf (`mikro-druck-anti-uberlauf-topf-767104`) | 2 | 2 | 17.73–20.3 | 33.90 | A, B |
-| Hitzebeständige Milchpfanne aus Borosilikatglas (`hitzebestandige-milchpfanne-aus-borosilikatgla-696448`) | 2 | 2 | 3.02–3.79 | 18.90 | Transparent-400ML, Transparent-600ML |
-| Edelstahl Wok Antihaft-Pfanne (`edelstahl-wok-antihaft-pfanne-736128`) | 2 | 2 | 7.14–7.88 | 41.90 | 34CM without cover, 32CM without cover |
 | Abnehmbarer Obstpflücker aus Edelstahl (`abnehmbarer-obstpflucker-aus-edelstahl-358016`) | 2 | 2 | 5.46–6.45 | 41.90 | 4 sections 1.6m, 6 sections 2.4m |
 | Business Laptop-Tasche (14/15.6 Zoll) (`business-laptop-tasche-14-15-6-zoll-519680`) | 2 | 2 | 12.34–12.34 | 31.90 | 15.6inch, 14inch |
 | Kissenbezug Samtoptik – Hase & Avocado (`kissenbezug-samtoptik-hase-avocado-220928`) | 2 | 2 | 2.24–2.6 | 15.90 | Rabbit fur big green love-45x45cm, Teddy Avocado-45x45cm |

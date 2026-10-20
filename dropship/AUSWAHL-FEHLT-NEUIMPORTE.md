@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 20:58 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 22:30 UTC)
 
-Suche: `status:active AND created_at:>=2026-10-17` · gemessen 371 · **201 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 180, teilweise: 15, keine: 6; Preisspanne > 2×: 29) · 1 CJ-Variante: 170 · ohne Antwort: 0
+Suche: `status:active AND created_at:>=2026-10-17` · gemessen 370 · **200 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 180, teilweise: 14, keine: 6; Preisspanne > 2×: 29) · 1 CJ-Variante: 170 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -36,7 +36,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Ovaler Zirconring-Set – 2- oder 3-teilige Varianten (`ovaler-zirconring-set-2-oder-3-teilige-variant-633700`) | 20 | 20 | 2.02–3.16 | 16.90 | White Gold 2 Piece Set-No 5, White Gold 2 Piece Set-No 6, White Gold 2 Piece Set-No 7, White Gold 2 Piece Set-No 8 |
 | Geschenkverpackung aus Hartpapier (`geschenkverpackung-aus-hartpapier-606400`) | 18 | 18 | 2.92–2.92 | 16.90 | 1 Brushed Silver-12x12x12cm, 2 Pure White-12x12x12cm, 3 Luxury Gold-12x12x12cm, 4 Pure Gold-12x12x12cm |
 | Silberner Kissenbezug aus Mulberry-Seide (`silberner-kissenbezug-aus-mulberry-seide-610700`) | 17 | 16 | 25.17–25.17 | 34.90 | Wine Red, Smoke Pink, Lake Blue, Gray And Blue |
-| Makeup-Set für Augen und Gesicht (`makeup-set-fur-augen-und-gesicht-610900`) | 17 | 15 | 3.1–5.31 | 16.90 | SET001A, SET001B, SET002A, SET002B |
 | Sofa-Bezug mit Textur-Muster (`sofa-bezug-mit-textur-muster-600500`) | 16 | 16 | 2.39–21.01 | 84.90 | Coffee Color-Single Seat, Coffee Color-Two Seat, Coffee Color-Three Seat, Coffee Color-Four Seat |
 | Leder-Notizbuch mit Metallspirale A5 (`leder-notizbuch-mit-metallspirale-a5-612800`) | 16 | 15 | 2.55–2.55 | 16.90 | Pink 25 Years, Black 25 Years, Gray 25 Years, Blue 25 Years |
 | Keramik-Blumentopf für Pflanzen (`keramik-blumentopf-fur-pflanzen-606500`) | 16 | 16 | 4.33–5.94 | 36.90 | Light Blue-Ceramic- KY148, Light Blue-Ceramic- KY149, Light Blue-Ceramic- KY150, Light Blue-Ceramic- KY151 |
@@ -177,10 +176,10 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Falsche Wimpern mit Strass-Design (`falsche-wimpern-mit-strass-design-639900`) | 3 | 3 | 2.21–2.21 | 16.90 | Diamond 301, Diamond 302, Diamond 303 |
 | Ultraflache Quarzuhr für Damen mit Milanaise-Armband (`ultraflache-quarzuhr-fur-damen-mit-milanaise-a-620000`) | 3 | 3 | 32.08–32.08 | 42.90 | White, Blue Face, Rose Shell |
 | Quarz-Uhr mit Stahlarmband für Herren (`quarz-uhr-mit-stahlarmband-fur-herren-637800`) | 3 | 3 | 4.2–5.25 | 16.90 | Silver Strap, Belt Brown, Belt Black |
-| Natural Coloring Set für Augenbrauen & Wimpern (`natural-coloring-set-fur-augenbrauen-wimpern-600900`) | 3 | 3 | 2.63–2.63 | 16.90 | As Shown In Figure Suit-Black, As Shown In Figure Suit-Coffee, As Shown In Figure Suit-Brown |
 | Feuchtigkeits-Make-up-Stick mit weichem Fokus (`feuchtigkeits-make-up-stick-mit-weichem-fokus-612700`) | 3 | 3 | 2.81–2.81 | 16.90 | 5G-Deep Flesh Color, 5G-Natural Color, 5G-Light Flesh Color |
 | Augenbrauen-Färbeset mit Primer und Pinsel (`augenbrauen-farbeset-mit-primer-und-pinsel-624400`) | 3 | 3 | 2.81–2.81 | 16.90 | Black, Light Brown, Brunet brown |
 | Augenlidschatten-Palette Fruit Series, 12 Farben (`augenlidschatten-palette-fruit-series-12-farbe-224000`) | 3 | 3 | 3.45–3.45 | 16.90 | Orange, Pink, Purple |
+| Faltbarer Aufbewahrungsbecken für Gemüsewaschen (`faltbarer-aufbewahrungsbecken-fur-gemusewasche-618700`) | 3 | 3 | 2.44–2.44 | 18.90 | Light Gray, Gray Blue, White Green |
 | Frosted Fahrrad-Rennrucksack (`frosted-fahrrad-rennrucksack-073600`) | 2 | 2 | 6.56–6.56 | 17.90 | Frosted Style, Carbon pattern |
 | Grosses Casual-Rucksack mit PU-Leder und Buchstaben-Print (`grosses-casual-rucksack-mit-pu-leder-und-buchs-609664`) | 2 | 2 | 7.63–7.63 | 33.90 | Patterned Black, Large Plaid Flower |
 | Männer-Wasserdichte Multifunktionstasche (`manner-wasserdichte-multifunktionstasche-540224`) | 2 | 2 | 9.12–10.78 | 29.90 | Cool black-10inches, Volcanic black-10inches |
