@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-20 16:14 UTC, Stand 2026-10-20 16:19 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-20 16:14 UTC, Stand 2026-10-20 16:20 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **10'214**
-- Optionen mit englischen Werten (Kandidaten): 1'221
+- Produkte gesehen: **13'256**
+- Optionen mit englischen Werten (Kandidaten): 1'439
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 6'152
+- Werte mit unbekanntem Wort (unverändert): 7'232
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 32
-- übersprungen «kollision-nach-uebersetzung»: 22
+- übersprungen «kleidungsstueck-im-wert»: 37
+- übersprungen «kollision-nach-uebersetzung»: 27
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -35,6 +35,7 @@
 - `15449114837377` [Ausführung] **Herren Hoodie und Trainerhosen Set** — hose, pullover · Titel nennt Set: Dark gray-L-Hoodie | Dark gray-M-Hoodie | Dark gray-S-Hoodie | Dark gray-S-Pants | Dark gray-XL-Hoodie | Royal blue-L-Hoodie | Royal blue-L-Pants | Royal blue-M-Hoodie
 - `15449165824385` [Ausführung] **Streetwear Hoodie mit Herz-Augenmaske** — hose, pullover: Pale yellow-L-Sweatshirt | Pale yellow-L-Pants | Pale yellow-M-Sweatshirt | Pale yellow-M-Pants | Pale yellow-S-Sweatshirt | Pale yellow-S-Pants | Pale yellow-XL-Sweatshirt | Pale yellow-XL-Pants
 - `15449439994241` [Farbe] **Retro Sport-Casual Gestreifte Jacke und Weitbein-Hose** — hose, jacke: Coat Red | Coat Black | Pants Red | Pants Black
+- `15453570728321` [Farbe] **Japanischer Segler-Anzug** — kleid, rock · Titel nennt Set: Short Sleeves Bow Tie | Long Sleeves Bow Tie | Short Sleeves Skirt Bow Tie | Long Sleeve With Dress Bow Tie | Skirt
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -62,6 +63,11 @@
 - `15450830176641` [Farbe] kuschel-hoodie-mit-grosser-tasche-052928: Dark gray → Dunkelgrau; Army Green Blue → Armeegrün-Blau; Army Green 2pcs → Armeegrün · 2 Stück; Coffee 2pcs → Kaffeebraun · 2 Stück; Grey 2pcs → Grau · 2 Stück
 - `15450837975425` [Farbe] hangematte-mit-moskitonetz-pop-up-241216: Blue blue → Blau; Green green → Grün
 - `15450840596865` [Farbe] kompression-shorts-mit-taschen-ebe7fd: Camouflage grey → Camouflage Grau; Army green camouflage → Armeegrün Camouflage; Weissweiss → Weiss; Schwarzschwarz → Schwarz; White camouflage → Weiss Camouflage
+- `15453570597249` [Farbe] hochtaillierte-caprihosen-638600: Marineblaublau → Marineblau
+- `15453761798529` [Farbe] lassiger-waffelstrick-stehkragen-pullover-mit-610300: Marineblaublau → Marineblau
+- `15453761929601` [Farbe] farbige-hoodie-mit-kordelzug-636100: Marineblaublau → Marineblau
+- `15454132371841` [Farbe] mid-rise-flared-jeans-629100: Medium Blue → Mittelblau
+- `15454235689345` [Farbe] high-waist-yoga-pants-mit-beutlifting-effekt-632800: Kaffeebraun-Braun → Kaffeebraun
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -92,5 +98,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 238, `light` 232, `color` 168, `degrees` 159, `shell` 78, `skin` 77, `high` 68, `rope` 66, `feet` 62, `three` 54, `core` 53, `surface` 49, `size` 48, `hat` 47, `dark` 47, `line` 46, `powder` 46, `of` 43, `no` 42, `buckle` 42, `bag` 42, `perforated` 42, `case` 40, `⟨satzbau:material-vor-farbe⟩` 40, `acupuncture` 40, `opp` 39, `lens` 38, `adjustable` 37, `electric` 37, `magnetic` 36, `generation` 36, `to` 36, `person` 35, `suit` 34, `⟨satzbau:menge-vor-nomen⟩` 34, `carbon` 33, `belt` 32, `tea` 32, `⟨satzbau:adjektivfolge⟩` 32, `fiber` 32, `four` 30, `bear` 30, `mother` 30, `eyelets` 30, `button` 30, `plush` 30, `ice` 28, `⟨satzbau:nomen-vor-farbe⟩` 28, `lamp` 28, `mushroom` 27, `simple` 26, `insert` 26, `crotch` 26, `cocoa` 26, `face` 25, `code` 25, `⟨satzbau:nomen-nomen⟩` 25, `flame` 25, `iphone13` 24, `full` 24
+`⟨satzbau:adjektiv-vor-nomen⟩` 271, `light` 240, `color` 188, `degrees` 159, `shell` 92, `skin` 80, `core` 75, `⟨satzbau:material-vor-farbe⟩` 74, `high` 70, `rope` 66, `feet` 62, `surface` 61, `three` 60, `case` 56, `code` 52, `powder` 51, `dark` 50, `size` 50, `of` 48, `belt` 48, `line` 48, `to` 48, `hat` 47, `bag` 45, `clock` 45, `buckle` 44, `acupuncture` 43, `no` 42, `perforated` 42, `button` 41, `opp` 39, `lens` 38, `bear` 38, `handle` 37, `cup` 37, `adjustable` 37, `electric` 37, `magnetic` 36, `carbon` 36, `generation` 36, `tea` 35, `⟨satzbau:adjektivfolge⟩` 35, `⟨satzbau:nomen-vor-farbe⟩` 35, `person` 35, `suit` 34, `fiber` 34, `⟨satzbau:menge-vor-nomen⟩` 34, `face` 33, `full` 31, `four` 31, `sky` 30, `mother` 30, `eyelets` 30, `plush` 30, `winding` 30, `base` 29, `little` 29, `iphone13` 29, `⟨satzbau:nomen-nomen⟩` 29, `ice` 28
 
