@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-20T22:11Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-20T23:07Z
 
-Aktive gescannt: 2 · ohne Kategorie: 2 · heute gesetzt: 0 (SCHARF, CAP 1500) · danach offen: 2 · Fehler: 0
+Aktive gescannt: 3 · ohne Kategorie: 3 · heute gesetzt: 1 (SCHARF, CAP 1500) · danach offen: 2 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -8,4 +8,8 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 ## Unbekannte Typen (nicht geraten — Tabelle ergänzen)
 
 - Büro & Home Office: 2
+
+## Beispiele (heute gesetzt)
+
+- faltbarer-aufbewahrungsbecken-fur-gemusewasche-618700 · Aufbewahrung & Organizer → Home & Garden > Household Supplies > Storage & Organization
 

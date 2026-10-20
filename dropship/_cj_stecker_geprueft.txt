@@ -1036,3 +1036,28 @@
 15479399154049	kein-stecker-merkmal	2026-10-20	3-in-1 Laptop Sleeve mit Wireless Charger
 15479416357249	kein-stecker-merkmal	2026-10-20	Coole Hasen-Ladestation für Smartwatch
 15479417799041	unklar-eu-vorhanden:EU/US	2026-10-20	PD Fast Charger mit 5 oder 6 USB-Anschlüssen
+15479419142529	unklar-eu-vorhanden:CN/EU	2026-10-20	65W Fast Charge Telescopic Type-C Line Charger
+15479419535745	kein-stecker-merkmal	2026-10-20	Kabellose Ladestation für Watch 6/5Pro
+15479434871169	kein-stecker-merkmal	2026-10-20	Brook Wingman XB PS3/PS4 Controller Adapter
+15479514661249	kein-stecker-merkmal	2026-10-20	Magnetische Handyhalterung mit Wireless Charger
+15480339595649	kein-stecker-merkmal	2026-10-20	Magnetische kabellose Auto-Ladestation
+15480339759489	kein-stecker-merkmal	2026-10-20	Faltbarer kabelloser Ladeständer für Smartphones
+15480433246593	kein-stecker-merkmal	2026-10-20	Ladestation für Xbox Controller-Akkus
+15481788006785	kein-stecker-merkmal	2026-10-20	mSATA zu SATA Adapter Gehäuse
+15481839321473	kein-stecker-merkmal	2026-10-20	Bluetooth Audio Outdoor Ladestation
+15482000540033	kein-stecker-merkmal	2026-10-20	65W USB-C PD Laptop Ladeadapter
+15482000638337	kein-stecker-merkmal	2026-10-20	PS5 Portal Ladestation mit RGB-Beleuchtung
+15482001654145	kein-stecker-merkmal	2026-10-20	Gamepad Ladestation mit Lichteffekt für PS5
+15482001949057	kein-stecker-merkmal	2026-10-20	Ladestation für PS5 Portal & Controller mit RGB
+15482002276737	kein-stecker-merkmal	2026-10-20	Switch2 Controller-Ladestation
+15482002538881	kein-stecker-merkmal	2026-10-20	Switch2 Handle Ladestation
+15482002735489	kein-stecker-merkmal	2026-10-20	Ladestation für Gamepad
+15483933622657	kein-stecker-merkmal	2026-10-20	Schnellladestation
+15483935162753	mehrere-varianten	2026-10-20	4-in-1 Ladestation
+15484909093249	kein-stecker-merkmal	2026-10-20	CarPlay-Adapter für Android Infotainment
+15485347004801	kein-stecker-merkmal	2026-10-20	PS5 Controller Ladestation für zwei Gamepads
+15490726855041	kein-stecker-merkmal	2026-10-20	3-in-1 Blu-ray Ladestation für Wii U Controller
+15491402170753	kein-stecker-merkmal	2026-10-20	Bluetooth Audio 2-in-1 Adapter
+15493076058497	kein-stecker-merkmal	2026-10-20	F-Stecker TV-Kabeladapter
+15493152571777	kein-stecker-merkmal	2026-10-20	PS5 Multifunktions-Ladestation mit Lüfter
+15493259952513	kein-stecker-merkmal	2026-10-20	Elektrische Salz- und Pfeffermühle mit Ladestation
