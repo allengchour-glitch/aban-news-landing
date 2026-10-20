@@ -11853,3 +11853,6 @@ halsstutze-mit-memory-schaum-621100	2603120648451621500	16	12.21	ok	landeseite
 wasserdichte-atmungsaktive-freizeitsneaker-728384	1762002809685282816	16	21.16	ok	landeseite
 seiten-tasten-fur-google-pixel-4-5-6-7-653400	2510150623111653600	16	4.50	ok	landeseite
 atmungsaktive-anti-rutsch-mama-schuhe-383360	1754026008883240960	16	14.12	ok	landeseite
+atmungsaktive-casual-schuhe-198016	1750710944872804352	16	20.69	ok	landeseite
+led-high-top-sneaker-mit-licht-841024	1749733632094253056	7	10.98	ok	landeseite
+gradient-fahrradhelm-177536	1404313056611274752	16	7.97	ok	landeseite
