@@ -1611,3 +1611,5 @@ gid://shopify/Product/16648802861447	ok	Schulranzen mit Computerfach
 gid://shopify/Product/16650184982919	ok	Grosser Rucksack mit 56-75L Kapazität
 gid://shopify/Product/16644310827399	ok	Retro Doppel-Schicht Rindsleder Rucksack
 gid://shopify/Product/16651936792967	nicht-versendbar	Handgemaltes Wabi-Sabi-Ölgemälde mit Textur
+gid://shopify/Product/16654281048455	ok	Violetter Tontopf im Antikstil für den Schreibtisch
+gid://shopify/Product/16654281408903	ok	Zepterförmige Vase aus Yixing-Ton
