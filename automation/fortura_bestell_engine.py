@@ -206,6 +206,19 @@ def stufe2(led, zeilen):
     return alt + list(neu.values())
 
 
+def _ist_beendet(nr):
+    """20.10.2026 (#1027): ist die Shopify-Bestellung storniert/voll erstattet/entwertet? Nur dann endet die Verfolgung. Unbekannt/Fehler → False
+    (konservativ: eine teilerstattete Bestellung mit laufender Lieferung darf nicht aus der Ampel fallen). Fragt EINE Bestellung per Name."""
+    try:
+        r = gql('query($q:String){orders(first:1,query:$q){nodes{name cancelledAt displayFinancialStatus}}}', {'q': f'name:#{nr}'})
+        n = (((r or {}).get('orders') or {}).get('nodes') or [])
+        if not n or n[0].get('name') != f'#{nr}':
+            return False
+        return bool(n[0].get('cancelledAt')) or n[0].get('displayFinancialStatus') in ('REFUNDED', 'VOIDED')
+    except Exception:
+        return False
+
+
 def _nicht_lagernd_zeile(nr, t):
     return (f'⚠️ FORTURA: #{nr} NICHT bestellt — {t[4]} (Feed «Lagerbestand Fortura»; Bazar-Bestand zählt nicht) · Kundin erstatten '
             f'(Betreiber) oder Ersatz · die Zeile endet, sobald die Bestellung geschlossen ist; sonst `--geklaert {nr}`')
@@ -269,6 +282,12 @@ def main():
     # 13.10.2026 Nachtrag (N2): «abweichend» meldet sich in JEDEM Lauf — auch wenn Shopify die Bestellung inzwischen nicht mehr
     # als offen führt (von Hand erfüllt/geschlossen): erst `--geklaert <nr>` beendet die Zeile.
     zeilen += [_abweichend_zeile(nr, t) for nr, t in sorted(led.items()) if t[3] == 'abweichend' and nr not in gesehen]
+    # 20.10.2026 (#1027): eine storniert/erstattete Bestellung steht nicht mehr in der offenen Liste — ihr Ledger-Status «xml-hochgeladen»/
+    # «bereit»/«nicht-lagernd» machte sonst für immer «XML seit n h, noch kein Lieferschein» (ab 24 h mit ⚠️). Beendet wird nur bei
+    # belegtem Storno/voller Erstattung (_ist_beendet), nie, weil die Bestellung bloss nicht in der Liste auftaucht.
+    for nr, t in sorted(led.items()):
+        if t[3] in ('bereit', 'xml-hochgeladen', 'nicht-lagernd') and nr not in gesehen and _ist_beendet(nr):
+            t[3] = 'storniert'; t[4] = f"{t[4]} · Shopify-Bestellung storniert/erstattet (Ledger {dt.datetime.now(dt.timezone.utc):%Y-%m-%d})"
     if os.path.exists(SCHALTER) and any(t[3] in ('bereit', 'xml-hochgeladen', 'versandt') for t in led.values()):
         zeilen = stufe2(led, zeilen)
     schreibe(led)
@@ -404,6 +423,25 @@ def selbsttest():
         with contextlib.redirect_stdout(buf):
             rc = main()
         pruef('O5 --geklaert beendet «nicht-lagernd»', rc == 0 and ledger()['1035'][3] == 'geklaert', (rc, buf.getvalue()))
+        # O6 (#1027): storno/erstattete Bestellung beendet die Verfolgung — nur bei BELEGTEM Storno
+        led['1040'] = ['1040', '2026-10-19T10:00Z', '93583×1', 'xml-hochgeladen', 'ORDERS_LX1040.xml']
+        led['1041'] = ['1041', '2026-10-19T10:00Z', '93583×1', 'xml-hochgeladen', 'ORDERS_LX1041.xml']
+        schreibe(led)
+        gql_alt = gql
+        def _gql_storno(q, v=None):
+            if v and str(v.get('q', '')) == 'name:#1040':
+                return {'orders': {'nodes': [{'name': '#1040', 'cancelledAt': '2026-10-20T14:09:51Z', 'displayFinancialStatus': 'PAID'}]}}
+            if v and str(v.get('q', '')) == 'name:#1041':
+                return {'orders': {'nodes': [{'name': '#1041', 'cancelledAt': None, 'displayFinancialStatus': 'PARTIALLY_REFUNDED'}]}}
+            return gql_alt(q, v)
+        gql = _gql_storno
+        sys.argv = ['x']; buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            main()
+        gql = gql_alt
+        pruef('O6 storniert (cancelledAt) → Ledger «storniert», keine Dauerzeile', ledger()['1040'][3] == 'storniert' and '#1040' not in buf.getvalue(), (ledger()['1040'], buf.getvalue()))
+        pruef('O6 nur teilerstattet (nicht storniert) → bleibt «xml-hochgeladen»', ledger()['1041'][3] == 'xml-hochgeladen', ledger()['1041'])
+        pruef('O6 Shopify-Antwort fehlt/unbekannt → nicht beenden', _ist_beendet('9999') is False)
         # main(): «abweichend» meldet sich in jedem Lauf (Shopify führt #1031 nicht mehr als offen), bis --geklaert
         schreibe(led)
         import io, contextlib

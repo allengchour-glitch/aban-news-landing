@@ -11481,3 +11481,5 @@ tarnmuster-stiefel-0ada0b	01DC615E-0A11-4413-A4FB-F1AE8AB6E4F7	16	20.58	ok	lande
 intelligenter-wi-fi-fernbediener-rm-mini3-b80c1d	4B343A5E-A9E0-4569-B82F-CD63227D95BB	16	5.75	ok	landeseite
 gelbe-one-shoulder-kleider-mit-ruschen-601500	2607071121501602200	16	10.79	ok	landeseite
 multi-protokoll-tuner-6d064c	1F9F4F1A-D7F8-4EBD-9A9F-E980BEF9A37E	16	5.17	ok	landeseite
+kopfkissen-fur-kinder-mit-memory-foam-626200	2607120130061626900	16	20.58	ok	landeseite
+langarm-kleid-mit-taillengurtel-elegant-lang-f-635100	2607070958141639200	16	10.15	ok	landeseite
