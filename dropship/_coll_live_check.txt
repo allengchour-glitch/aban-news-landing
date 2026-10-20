@@ -567,3 +567,12 @@ damenmode-favoriten	ok	17	Damenmode – unsere Favoriten
 futterautomaten	ok	29	Futterautomaten für Katzen & Hunde
 trinkbrunnen-katzen	ok	28	Trinkbrunnen für Katzen & Hunde
 rizinusoel	ok	9	Rizinusöl
+aufbewahrungsboxen	ok	29	Aufbewahrungsboxen & Körbe
+handschuhe	ok	29	Handschuhe
+strickjacken-cardigans	ok	29	Strickjacken & Cardigans
+strickkleider	ok	29	Strickkleider
+luftbefeuchter	ok	29	Luftbefeuchter
+lockenstaebe	ok	29	Lockenstäbe & Lockenwickler
+glaetteisen	ok	29	Glätteisen & Haarglätter
+uhrenarmbaender	ok	29	Uhrenarmbänder & Smartwatch-Armbänder
+handtuchhalter	ok	21	Handtuchhalter & Handtuchstangen
