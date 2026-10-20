@@ -3212,3 +3212,4 @@
 15506039177601	Typ:6+Grösse:2:12	2026-10-20	sniffball-bissspielzeug-fur-hund-katze-564544
 16603302625671	Farbe:5+Menge:2:10+ki	2026-10-20	kompakte-powerbank-10-000-mah-mit-dual-display-608600
 16604956950919	Modell:2:2+ki	2026-10-20	rennwagen-modellbausteine-fur-kinder-989824
+15502661157249	Farbe:3:3+ki	2026-10-20	interaktives-katzenspielzeug-mit-krallenscharf-04277a
