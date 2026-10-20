@@ -2590,6 +2590,19 @@ KLT=/tmp/test_klingen_tor.log
     fi
   fi
 
+  # 20.10.2026 (Runde 16:25): REEL-KADENZ-KANARIENVOGEL — die Wache las die PLANUNGSZEIT der Ledger-Zeilen (IG/FB 42 h, YouTube 42 h bei
+  # laufendem Posten) und loeste «metricool:ID fb:ID» nie auf; jetzt liefert der Vorlauf-Plan die Sendezeit. Taeglich rein lesend (~1 s).
+  RKT=/tmp/test_reel_kadenz.log
+  if [ -f "$REPO/automation/reel_kadenz_wache.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$RKT" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$RKT"; then
+      ( cd "$REPO" && python3 automation/reel_kadenz_wache.py --test >> "$RKT" 2>&1 || echo "$(date -u +%F' '%H:%M) REEL-KADENZ FEHLER (Exit $?)" >> "$RKT" )
+    fi
+    if [ -s "$RKT" ] && tail -n 30 "$RKT" | grep -q "FEHLER\|GESCHEITERT"; then
+      echo "⚠️ REEL-KADENZ: Kanarienvogel gefallen — tail -30 $RKT"
+    fi
+  fi
+
   # 20.10.2026: GOOGLE-ENTFERNT-LEDGER-KANARIENVOGEL — bewusst aus dem Google-Kanal entfernte Handles (Ledger _*unpub*.tsv, ohne Sperr-Tag)
   # holte der taegliche Kanal-Schliesser zurueck (112 in 109 s am 13.10.). Der Helfer lebt in google_sperrliste.entfernte_handles().
   GEL=/tmp/test_google_entfernt_ledger.log

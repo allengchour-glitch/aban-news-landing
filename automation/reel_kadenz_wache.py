@@ -9,6 +9,17 @@ Kadenz, im Keepalive. Still, wenn alle Kanäle im Takt sind.
   python3 automation/reel_kadenz_wache.py          → «REEL-KADENZ: IG/FB 13.2 h (Takt 8 h) …» oder nichts
   python3 automation/reel_kadenz_wache.py --alle   → jede Zeile, auch die im Takt
   python3 automation/reel_kadenz_wache.py --test   → Kanarienvögel
+
+20.10.2026 (Runde 16:25): DIE WACHE MASS PLAN STATT WIRKLICHKEIT — zweiter Leser derselben Daten wie die Betreiber-Ampel (Fix 12:25).
+Seit dem 7-Tage-Vorlauf (18.10.) schreibt der Planer-Lauf jede Metricool-Zeile mit posted_at = PLANUNGSZEIT (18.10. ~22:00) in
+reels_seed.csv; veröffentlicht wird zum Slot-Termin (dropship/_vorlauf_plan.json). Folge: «IG/FB 42 h, YouTube 42 h (Takt 8/12 h)» im
+Keepalive, obwohl IG/FB um 10:15 UTC und YouTube um 05:20 UTC gepostet hatten. Zwei Ursachen, beide behoben:
+  (a) die Planer-Auflösung verlangte `^metricool:(\d+)$` — die IG/FB-Zeilen tragen «metricool:ID fb:ID» (nie aufgelöst, Planungszeit
+      galt als Sendezeit, ohne Zusatz); ausserdem deckt das Planer-Fenster nur -4/+2 Tage, die Zeilen planen bis +7 Tage voraus;
+  (b) Zeilen, deren Metricool-ID im Vorlauf-Plan steht, zählen NICHT mehr als Post: die Sendezeit liefert der Slot (status=geplant UND
+      mc_ids; vergangen = zuletzt veröffentlicht, künftig = «nächster geplant»). Ein zurückgezogener/fehlerhafter Slot liefert nichts —
+      die Stille bleibt sichtbar. Läuft der Planer-Plan aus (nach dem letzten Slot), zählt wieder nur, was der Autopilot selbst schreibt.
+Gegenprobe in beide Richtungen: `--test` (Fall 6–9, Mutationsbeweis: die Fassung vom 28.09. fällt bei 6).
 """
 import csv, datetime, json, os, re, sys, urllib.parse, urllib.request
 
@@ -66,19 +77,56 @@ KANAELE = {
     "YouTube": (re.compile(r"^posted-youtube$"), 12),
 }
 FAKTOR = 1.5
+# Vorlauf-Format → Kanal dieser Wache (social_vorlauf.py, automation/data/vorlauf_regeln.json)
+PLAN_FORMAT = {"reel_igfb": "IG/FB", "tiktok": "TikTok", "youtube": "YouTube"}
+PLAN_DATEI = os.path.join(REPO, "dropship", "_vorlauf_plan.json")
+ID_RE = re.compile(r"(?:^|\s)(?:metricool|fb):(\d+)")
+# Zeile OHNE öffentliche Adresse (noch nicht veröffentlicht): «metricool:ID» oder «metricool:ID fb:ID» (IG/FB-Reel); mit «tiktok:https://…» ist es veröffentlicht
+OHNE_URL_RE = re.compile(r"^metricool:(\d+)(?:\s+fb:\d+)?$")
 
 
-def letzte(rows, termine=None, jetzt=None):
+def plan_lesen(pfad=None):
+    """(slots, ids): slots = {kanal: [(termin_iso, status, hat_mc_ids), …]}, ids = alle Metricool-IDs des Plans (Strings). ({}, set()) bei Fehler."""
+    try:
+        plan = json.load(open(pfad or PLAN_DATEI, encoding="utf-8"))
+        slots, ids = {}, set()
+        for s in (plan.get("slots") or {}).values():
+            for i in s.get("mc_ids") or []:
+                ids.add(str(i))
+            k = PLAN_FORMAT.get(s.get("format"))
+            if k and s.get("termin_utc"):
+                slots.setdefault(k, []).append((s["termin_utc"], s.get("status"), bool(s.get("mc_ids"))))
+        return slots, ids
+    except (OSError, ValueError, AttributeError):
+        return {}, set()
+
+
+def zeilen_ids(row):
+    return set(ID_RE.findall((row.get("post_url") or "")))
+
+
+def letzte(rows, termine=None, jetzt=None, plan=None):
     """Kanal → (ISO-Zeit des letzten VERÖFFENTLICHTEN Posts, Zusatz, ISO-Zeit des nächsten GEPLANTEN Posts oder "").
     Metricool-Zeilen ohne öffentliche Adresse: Planer-Termin statt Planungszeit; Termin in der Zukunft = geplant, nicht veröffentlicht."""
     out = {}
     jetzt_iso = (jetzt or datetime.datetime.now(datetime.timezone.utc)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    plan_slots, plan_ids = plan if plan else ({}, set())
     for k, (rx, _) in KANAELE.items():
-        kand = [r for r in rows if rx.match((r.get("status") or "").strip()) and r.get("posted_at")]
+        # Zeilen des Vorlauf-Plans zählen nicht (posted_at = Planungszeit): ihre Sendezeit steht im Slot
+        kand = [r for r in rows if rx.match((r.get("status") or "").strip()) and r.get("posted_at")
+                and not (zeilen_ids(r) & plan_ids)]
         beste, zusatz, geplant = "", "", ""
+        for termin, status, mit_ids in plan_slots.get(k, []):
+            if status != "geplant" or not mit_ids:
+                continue            # zurückgezogen/fehlerhaft/ohne Planer-Eintrag = kein Post
+            if termin <= jetzt_iso:
+                if termin > beste:
+                    beste, zusatz = termin, "Vorlauf-Slot"
+            elif not geplant or termin < geplant:
+                geplant = termin
         for r in kand:
             iso, z = r["posted_at"], ""
-            m = re.match(r"^metricool:(\d+)$", (r.get("post_url") or "").strip())   # geplant, noch ohne öffentliche Adresse
+            m = OHNE_URL_RE.match((r.get("post_url") or "").strip())   # geplant, noch ohne öffentliche Adresse
             if m:
                 t = (termine or {}).get(m.group(1))
                 if t is not None:
@@ -101,9 +149,9 @@ def alter_h(iso, jetzt):
     return (jetzt - t).total_seconds() / 3600
 
 
-def befunde(rows, jetzt, alle=False, termine=None):
+def befunde(rows, jetzt, alle=False, termine=None, plan=None):
     zeilen = []
-    for k, (iso, zusatz, geplant) in letzte(rows, termine, jetzt).items():
+    for k, (iso, zusatz, geplant) in letzte(rows, termine, jetzt, plan).items():
         takt = KANAELE[k][1]
         h = alter_h(iso, jetzt) if iso else None
         g = alter_h(geplant, jetzt) if geplant else None
@@ -138,7 +186,46 @@ def test():
     ok &= any(x.startswith("TikTok 2.8 h") and x.endswith("Planungszeit") for x in b4)
     b5 = befunde(rows3, j3 + datetime.timedelta(hours=4), True, termin)      # 09:00: Termin 08:05 vorbei → veröffentlicht vor 0.9 h
     ok &= any(x.startswith("TikTok 0.9 h") and "Planer-Termin" in x for x in b5)
-    print("TEST", "BESTANDEN" if ok else "GESCHEITERT", b2, b3, b4, b5)
+    # --- 20.10.2026: Vorlauf-Plan als Quelle der Sendezeit (Fall 6–9) ---------------------------------------------------------
+    UTC = datetime.timezone.utc
+
+    def slot(t, status="geplant", ids=True):
+        return (t, status, ids)
+    zeilen6 = [{"status": "posted-instagram", "posted_at": "2026-10-18T22:00:00Z", "post_url": "metricool:111 fb:112"},      # IG/FB: zwei IDs
+               {"status": "posted-tiktok", "posted_at": "2026-10-20T11:00:00Z", "post_url": "metricool:221"},                    # Planungszeit NEUER als der letzte Slot
+               {"status": "posted-youtube", "posted_at": "2026-10-18T22:10:00Z", "post_url": "metricool:331"}]
+    ids6 = {"111", "112", "221", "331"}
+    plan6 = ({"IG/FB": [slot("2026-10-20T10:15:00Z"), slot("2026-10-20T18:15:00Z")],
+              "TikTok": [slot("2026-10-20T05:00:00Z"), slot("2026-10-21T06:05:00Z")],
+              "YouTube": [slot("2026-10-20T05:20:00Z"), slot("2026-10-21T05:20:00Z")]}, ids6)
+    j6 = datetime.datetime(2026, 10, 20, 12, 0, tzinfo=UTC)
+    # Fall 6: Plan trägt die Sendezeit → mitten im Plan KEIN Befund (die Fassung vom 28.09. meldete IG/FB 37 h und YouTube 37 h)
+    b6 = befunde(zeilen6, j6, False, {}, plan6)
+    ok &= b6 == []
+    # Fall 6b: TikTok-Planungszeit 11:00 (Zeile für einen späteren Slot) darf die echte Lücke (letzter Slot 05:00) NICHT verdecken
+    j6b = datetime.datetime(2026, 10, 20, 20, 0, tzinfo=UTC)
+    b6b = befunde(zeilen6, j6b, False, {}, plan6)
+    ok &= any(x.startswith("TikTok 15.0 h") for x in b6b) and not any(x.startswith("IG/FB") for x in b6b)
+    # Fall 7: Slot zurückgezogen (status offen, keine mc_ids) → zählt nicht → «still»-Befund bleibt sichtbar
+    plan7 = ({"IG/FB": [slot("2026-10-20T10:15:00Z", "offen", False)]}, set())
+    b7 = befunde([zeilen6[0]], j6, False, {}, plan7)
+    ok &= any(x.startswith("IG/FB") for x in b7)
+    # Fall 8: Plan ist ausgelaufen (14 h nach dem letzten Slot), der Autopilot schreibt nichts → Befund
+    j8 = datetime.datetime(2026, 10, 21, 8, 30, tzinfo=UTC)
+    b8 = befunde(zeilen6, j8, False, {}, ({"IG/FB": [slot("2026-10-20T18:15:00Z")]}, ids6))
+    ok &= any(x.startswith("IG/FB 14.2 h") for x in b8)
+    # Fall 8b: ... und schreibt der Autopilot danach selbst eine veröffentlichte Zeile (öffentliche Adresse), ist wieder Ruhe
+    zeile8b = {"status": "posted-instagram", "posted_at": "2026-10-21T07:00:00Z", "post_url": "metricool:999 instagram:https://www.instagram.com/reel/x"}
+    ok &= not any(x.startswith("IG/FB") for x in befunde(zeilen6 + [zeile8b], j8, False, {}, ({"IG/FB": [slot("2026-10-20T18:15:00Z")]}, ids6)))
+    # Fall 9: Slot im Planer fehlgeschlagen (status fehler) → kein Post (Zeile gehört zum Plan und zählt auch nicht)
+    plan9 = ({"IG/FB": [slot("2026-10-20T10:15:00Z", "fehler", True)]}, {"111", "112"})
+    b9 = befunde([zeilen6[0]], j6, False, {}, plan9)
+    ok &= any(x.startswith("IG/FB") for x in b9)
+    # Fall 10: «metricool:ID fb:ID» (zwei IDs, ohne Adresse) löst über den Planer auf; mit «tiktok:https://…» bleibt die Zeile veröffentlicht
+    ok &= bool(OHNE_URL_RE.match("metricool:111 fb:112") and OHNE_URL_RE.match("metricool:5") and not OHNE_URL_RE.match("metricool:5 tiktok:https://t.co/x"))
+    # Fall 11: Planer-Datei fehlt/kaputt → plan_lesen() liefert leer, Wache fällt auf das Ledger zurück (kein Absturz)
+    ok &= plan_lesen("/nicht/da.json") == ({}, set())
+    print("TEST", "BESTANDEN" if ok else "GESCHEITERT", b2, b3, b4, b5, "| plan:", b6, b6b, b7, b8, b9)
     return 0 if ok else 1
 
 
@@ -146,7 +233,7 @@ if __name__ == "__main__":
     if "--test" in sys.argv:
         sys.exit(test())
     rows = list(csv.DictReader(open(os.path.join(REPO, "automation/reels_seed.csv"))))
-    ids = {m.group(1) for r in rows for m in [re.match(r"^metricool:(\d+)$", (r.get("post_url") or "").strip())] if m}
-    b = befunde(rows, datetime.datetime.now(datetime.timezone.utc), "--alle" in sys.argv, metricool_termine(ids))
+    ids = {m.group(1) for r in rows for m in [OHNE_URL_RE.match((r.get("post_url") or "").strip())] if m}
+    b = befunde(rows, datetime.datetime.now(datetime.timezone.utc), "--alle" in sys.argv, metricool_termine(ids), plan_lesen())
     if b:
         print("REEL-KADENZ: " + " · ".join(b) + ("" if "--alle" in sys.argv else " → Poster-Log /tmp/social_autopilot.log prüfen"))
