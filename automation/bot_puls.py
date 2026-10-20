@@ -23,6 +23,27 @@ from datetime import datetime, timedelta, timezone
 
 PULS = pathlib.Path(__file__).resolve().parent.parent / "auftraege" / "_puls.json"
 STILL_AB_STUNDEN = 2.0   # der Timer laeuft alle 5 Min; 2 h sind 24 verpasste Laeufe
+TOKEN_WARN_TAGE = 14.0   # GitHub-Token des Servers: so frueh vor dem Ablauf warnen (20.10.2026, siehe _token_ablauf)
+
+
+def _token_ablauf(d):
+    """Ablaufzeit des GitHub-Tokens auf dem Server (Feld `token_ablauf` im Puls) oder None.
+
+    ANLASS 20.10.2026: der Agent lief weiter, aber JEDER Push scheiterte («could not read Username») — der Zugang
+    war abgelaufen, und davor hat nichts gewarnt. Ein fein abgestufter GitHub-Token lebt 30 Tage bis 1 Jahr; das
+    Ablaufdatum steht in der GitHub-Antwort (`github-authentication-token-expiration`), `server/token-setzen.sh`
+    legt es in /etc/luxe/token_ablauf, der Runner schreibt es in den Puls. «keiner»/fehlend = kein Ablauf bekannt
+    (kein Alarm — auch kein Entwarnen: die Zeile sagt nur etwas, wenn ein Datum da ist).
+    """
+    roh = str((d or {}).get("token_ablauf") or "").strip()
+    if not roh or roh.lower() in ("keiner", "none", "null"):
+        return None
+    for fmt, laenge in (("%Y-%m-%d %H:%M:%S", 19), ("%Y-%m-%dT%H:%M:%S", 19), ("%Y-%m-%d", 10)):
+        try:
+            return datetime.strptime(roh[:laenge], fmt).replace(tzinfo=timezone.utc)
+        except ValueError:
+            continue
+    return None
 
 
 def puls_zeile(pfad=PULS, jetzt=None):
@@ -46,7 +67,18 @@ def puls_zeile(pfad=PULS, jetzt=None):
         tage = f", {alter_h/24:.1f} Tage" if alter_h > 24 else ""
         return (f"⚠️ BOT STILL seit {alter_h:.1f} h{tage} (letzter Lauf {wann:%d.%m. %H:%M} UTC) — "
                 f"kein Browser-Auftrag wird mehr erledigt. Auf dem Server: "
-                f"systemctl status luxe-agent.timer")
+                f"systemctl status luxe-agent.timer · Häufigste Ursache (20.10.): GitHub-Zugang abgelaufen/fehlt — "
+                f"`journalctl -u luxe-agent.service -n 60 --no-pager` zeigt «could not read Username»; "
+                f"Abhilfe: server/token-setzen.sh (Anleitung dropship/COWORK-BEFEHL.md)")
+    ablauf = _token_ablauf(d)
+    if ablauf is not None:
+        tage = (ablauf - jetzt).total_seconds() / 86400.0
+        if tage < 0:
+            return (f"⚠️ BOT-TOKEN ABGELAUFEN seit {ablauf:%d.%m. %H:%M} UTC — der Agent kann nicht mehr pushen "
+                    f"(server/token-setzen.sh)")
+        if tage < TOKEN_WARN_TAGE:
+            return (f"⚠️ BOT-TOKEN läuft in {tage:.0f} Tagen ab ({ablauf:%d.%m.%Y}) — neuen Token anlegen und mit "
+                    f"server/token-setzen.sh eintragen, sonst steht der Agent")
     return None
 
 
@@ -148,6 +180,22 @@ def _selbsttest():
         z = puls_zeile(pathlib.Path(d) / "gibt-es-nicht.json", jetzt)
         faelle.append(("fehlende Datei: kein Fehlalarm",
                        z is not None and "noch kein Puls" in z and "STILL" not in z))
+
+        # (g–k) Token-Ablauf (20.10.): frischer Puls + Datum im Feld
+        def mit_token(wert):
+            p.write_text(json.dumps({"letzter_lauf": "2026-09-18T11:50:00Z", "token_ablauf": wert}))
+            return puls_zeile(p, jetzt)
+        z = mit_token("2026-09-23 02:04:25 UTC")      # 5,6 Tage → warnt
+        faelle.append(("Token läuft in 5 Tagen ab: warnt", z is not None and "BOT-TOKEN läuft in" in z))
+        faelle.append(("Token in 30 Tagen: schweigt", mit_token("2026-10-18 00:00:00 UTC") is None))
+        z = mit_token("2026-09-17 10:00:00 UTC")      # gestern → abgelaufen
+        faelle.append(("Token abgelaufen: meldet ABGELAUFEN", z is not None and "ABGELAUFEN" in z))
+        faelle.append(("Token «keiner»: schweigt", mit_token("keiner") is None))
+        faelle.append(("Token-Feld unlesbar («bald»): schweigt, kein Absturz", mit_token("bald") is None))
+        p.write_text(json.dumps({"letzter_lauf": "2026-09-18T05:00:00Z", "token_ablauf": "2026-09-23"}))
+        z = puls_zeile(p, jetzt)
+        faelle.append(("STILL nennt die häufigste Ursache und den Weg (token-setzen)",
+                       z is not None and "STILL" in z and "token-setzen.sh" in z and "could not read Username" in z))
 
     for name, ok in faelle:
         print(("  ok   " if ok else "  FEHL ") + name)

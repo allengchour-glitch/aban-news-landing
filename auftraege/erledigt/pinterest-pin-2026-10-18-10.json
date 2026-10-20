@@ -1,0 +1,9 @@
+{
+  "typ": "skript",
+  "skript": "pinterest_pin_erstellen.mjs",
+  "id": "pinterest-pin-2026-10-18-10",
+  "warum": "Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus auftraege/pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). 10 von 10 heute.",
+  "stand": "verworfen",
+  "verworfen": "2026-10-20T20:07:03Z",
+  "grund": "Veralteter Tagesauftrag («N von 10 heute»): der Hetzner-Agent konnte 16.–20.10. nicht pushen (GitHub-Zugang weg) und hat nichts geclaimt. Bei Wiederanlauf wären sonst 20 Pins als Stoss gelaufen; die Queue-Einträge bleiben unberührt, der nächste Tagesplan legt frische Aufträge an."
+}

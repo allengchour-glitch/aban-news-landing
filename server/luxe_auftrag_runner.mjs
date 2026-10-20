@@ -586,8 +586,13 @@ function schreibe_puls(zustand) {
   let lokal = {};                        // Stand zwischen zwei Pushes
   try { lokal = JSON.parse(fs.readFileSync(PULS_LOKAL, 'utf8')); } catch {}
   const jetzt = new Date().toISOString();
+  // Ablauf des GitHub-Tokens (von server/token-setzen.sh in /etc/luxe/token_ablauf notiert): bot_puls.py warnt 14 Tage vorher.
+  // Anlass 20.10.2026: der Token war abgelaufen, der Agent lief weiter und konnte nichts mehr pushen — davor warnte nichts.
+  let tokenAblauf = null;
+  try { tokenAblauf = fs.readFileSync(process.env.LUXE_TOKEN_ABLAUF || '/etc/luxe/token_ablauf', 'utf8').trim().slice(0, 40) || null; } catch {}
   const puls = {
     letzter_lauf: jetzt,
+    token_ablauf: tokenAblauf,
     zustand,                                  // 'leer' | 'arbeitet' | 'fertig'
     offene_auftraege: offen.length,
     laeufe_seit_push: (lokal.laeufe_seit_push || 0) + 1,

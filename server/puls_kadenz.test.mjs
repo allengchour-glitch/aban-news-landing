@@ -148,5 +148,22 @@ function werkstatt({ pushSchlaegtFehl = false } = {}) {
   pruefe('6) Nicht-Error-Wert (String) bleibt lesbar', fehlertext('kaputt'), 'kaputt');
 }
 
+// 7) Token-Ablauf im Puls (20.10.): steht das Datum in der Datei, landet es im gepushten Puls; fehlt die Datei, bleibt das Feld null.
+{
+  const ablaufDatei = path.join(os.tmpdir(), `token_ablauf_${process.pid}`);
+  fs.writeFileSync(ablaufDatei, '2026-10-21 02:04:25 UTC\n');
+  const REPO = fs.mkdtempSync(path.join(os.tmpdir(), 'pulstest-'));
+  fs.mkdirSync(path.join(REPO, 'auftraege'), { recursive: true });
+  const bauen = (envPfad) => new Function('fs', 'path', 'execFileSync', 'REPO', 'offen', 'process',
+    `${block}\n return schreibe_puls;`)(fs, path, () => '', REPO, [],
+    { env: { LUXE_PULS_LOKAL: path.join(REPO, 'lokal.json'), LUXE_BRANCH: 'testzweig', LUXE_TOKEN_ABLAUF: envPfad } });
+  bauen(ablaufDatei)('leer');
+  pruefe('7) Token-Ablauf steht im Puls', JSON.parse(fs.readFileSync(path.join(REPO, 'auftraege/_puls.json'), 'utf8')).token_ablauf, '2026-10-21 02:04:25 UTC');
+  fs.unlinkSync(path.join(REPO, 'auftraege/_puls.json'));
+  bauen(path.join(os.tmpdir(), 'gibt-es-nicht-' + process.pid))('leer');
+  pruefe('7) ohne Datei: Feld null (kein Absturz, kein erfundenes Datum)', JSON.parse(fs.readFileSync(path.join(REPO, 'auftraege/_puls.json'), 'utf8')).token_ablauf, null);
+  fs.unlinkSync(ablaufDatei);
+}
+
 console.log(fehler ? `\n${fehler} Probe(n) ROT` : '\nalle Proben gruen');
 process.exit(fehler ? 1 : 0);

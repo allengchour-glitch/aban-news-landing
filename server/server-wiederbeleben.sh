@@ -83,7 +83,7 @@ AUTH_FEHLER=0; NETZ_FEHLER=0
 for d in $KLONE; do
   [ -d "$d/.git" ] || continue
   out=$(timeout 30 git -C "$d" ls-remote --heads origin 2>&1 </dev/null | head -3)
-  if echo "$out" | grep -q -E "^[0-9a-f]{40}"; then echo "$d: GitHub lesbar ✅"
+  if echo "$out" | grep -q -E "^[0-9a-f]{40}"; then echo "$d: GitHub lesbar (öffentliches Repo — beweist KEIN Schreibrecht, siehe 1c)"
   elif echo "$out" | grep -q -i -E "authentication failed|invalid username|invalid token|403|401|bad credentials"; then
     warn "$d: ZUGANG ABGELEHNT — Token abgelaufen/widerrufen? (${out%%$'\n'*})"; AUTH_FEHLER=1
   elif echo "$out" | grep -q -i -E "resolve host|timed out|unable to access|network is unreachable|failed to connect"; then
@@ -92,6 +92,23 @@ for d in $KLONE; do
 done
 [ "$AUTH_FEHLER" = 1 ] && warn "→ Neuer Token nötig: github.com/settings/tokens (Recht «repo»), dann den Befehl oben mit TOKEN=ghp_… wiederholen."
 [ "$NETZ_FEHLER" = 1 ] && have_sd && { warn "Netz scheint gestört — Netzdienste neu starten (systemd-networkd, systemd-resolved)"; run systemctl restart systemd-networkd systemd-resolved 2>/dev/null || true; sleep 5; ping -c2 -W3 1.1.1.1 >/dev/null 2>&1 && echo "Netz wieder da ✅" || warn "Netz weiter aus — Hetzner-Konsole: Server → Reset («Power cycle») oder REBOOT=1"; }
+# 1c) SCHREIBZUGANG — die Lücke aller früheren Prüfungen (gemessen 20.10.: der Lauf vom 19.10. meldete «lesbar ✅» und die Push-Probe lief durch,
+# trotzdem scheiterte JEDER echte Push mit «could not read Username»). Lesen geht bei einem öffentlichen Repo ohne Anmeldung; geprüft wird hier,
+# ob die Remote-URL überhaupt einen Token trägt und ob GitHub ihm Schreibrecht gibt (folgenloser Zweig-Update auf den aktuellen Stand).
+WRITE_BRANCH=claude/luxestyle-status-tztnn1; WRITE_REPO=allengchour-glitch/aban-news-landing; KEIN_SCHREIB=0
+for d in $KLONE; do
+  [ -d "$d/.git" ] || continue
+  u=$(git -C "$d" remote get-url origin 2>/dev/null || true)
+  cred=$(printf '%s' "$u" | sed -nE 's#^https://[^/@]+:([^@/]+)@.*#\1#p')
+  if [ -z "$cred" ]; then warn "$d: Remote-URL OHNE Token — Push unmöglich («could not read Username»)"; KEIN_SCHREIB=1; continue; fi
+  sha=$(curl -sS -m 25 -H "Authorization: Bearer $cred" -H "Accept: application/vnd.github+json" -H "User-Agent: luxe-wiederbeleben" "https://api.github.com/repos/$WRITE_REPO/git/ref/heads/$WRITE_BRANCH" 2>/dev/null | python3 -c 'import json,sys
+try: print(json.load(sys.stdin)["object"]["sha"])
+except Exception: print("")')
+  if [ -z "$sha" ]; then warn "$d: Token wird von GitHub abgelehnt oder GitHub nicht erreichbar (kein Ref lesbar)"; KEIN_SCHREIB=1; continue; fi
+  c=$(curl -sS -m 25 -o /dev/null -w '%{http_code}' -X PATCH -H "Authorization: Bearer $cred" -H "Accept: application/vnd.github+json" -H "User-Agent: luxe-wiederbeleben" -H "Content-Type: application/json" -d "{\"sha\":\"$sha\",\"force\":false}" "https://api.github.com/repos/$WRITE_REPO/git/refs/heads/$WRITE_BRANCH" 2>/dev/null || echo 000)
+  case "$c" in 200|422) echo "$d: Schreibzugang ✅ (HTTP $c)";; *) warn "$d: Token darf NICHT schreiben (HTTP $c) — abgelaufen oder ohne «Contents: Read and write»"; KEIN_SCHREIB=1;; esac
+done
+[ "$KEIN_SCHREIB" = 1 ] && warn "→ KEIN SCHREIBZUGANG: neuen Token anlegen (Anleitung im Kopf von server/token-setzen.sh) und dann dort einfügen:  curl -fsSL -o t.sh raw.githubusercontent.com/$WRITE_REPO/$WRITE_BRANCH/server/token-setzen.sh  und  bash t.sh"
 SPACE_ERR=0; have_sd && journalctl -u luxe-agent.service -u luxe-waechter.service --since "2026-10-15" --no-pager 2>/dev/null | grep -q -i -E "no space left|invalid index-pack" && SPACE_ERR=1
 [ "${VOR:-0}" -ge 97 ] 2>/dev/null && warn "Platte praktisch voll (${VOR} %) — sehr wahrscheinlich die Ursache."
 [ "$SPACE_ERR" = 1 ] && warn "Journal enthält «No space left»/«invalid index-pack» — Ursache bestätigt."
