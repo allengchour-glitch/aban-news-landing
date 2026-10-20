@@ -11958,3 +11958,5 @@ koreanische-joggerhose-mit-elastikbund-und-kor-609800	2512090727101600100	16	9.0
 fitness-hosen-mit-po-lift-effekt-603000	2512090653261603200	16	8.20	ok	landeseite
 norwegische-warmepants-mit-fleece-futter-605800	2512050231181606000	16	13.65	ok	landeseite
 kinder-balance-bike-helm-955072	1373887706748293120	7	17.85	ok	landeseite
+yoga-lauf-beinlinge-huftbetonend-schwei-ableit-629300	2512040302331629500	16	6.90	ok	landeseite
+pneumatik-helm-416640	1372095497204011008	7	13.62	ok	landeseite
