@@ -7984,3 +7984,7 @@ gid://shopify/Product/15493857313153	zugeordnet	12	Chunky Freizeitschuhe mit Sch
 gid://shopify/Product/15497431679361	zugeordnet	40	Gepunktetes V-Ausschnitt Freizeitkleid mit 3/4-Ärmeln
 gid://shopify/Product/15497431744897	zugeordnet	24	Halterneck V-Ausschnitt Kleid mit Rüschensaum
 gid://shopify/Product/15497431810433	zugeordnet	20	Etuikleid mit 3/4-Ärmeln im Commuter-Stil
+gid://shopify/Product/16615770161543	zugeordnet	10	Lauflernschuh mit Schnalle und Stickerei
+gid://shopify/Product/16615802044807	zugeordnet	9	Baby Lauflernschuhe warm und rutschfest
+gid://shopify/Product/16639256527239	zugeordnet	20	Herren-Sneaker mit Farbblock und Netzstoff
+gid://shopify/Product/16652038734215	zugeordnet	36	Kinder-Schneestiefel mit Fleecefutter

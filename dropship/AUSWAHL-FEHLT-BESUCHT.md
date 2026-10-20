@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 01:15 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 02:12 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 228 · **110 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 80, teilweise: 22, keine: 8; Preisspanne > 2×: 19) · 1 CJ-Variante: 118 · ohne Antwort: 0
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 224 · **106 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 76, teilweise: 22, keine: 8; Preisspanne > 2×: 19) · 1 CJ-Variante: 118 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -59,8 +59,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | DIY Stickset mit 50 Garnfarben (`diy-stickset-mit-50-garnfarben-cb3e23`) | 7 | 0 | 2.57–7.17 | 21.90 | 136pcs, 10pcs, 12pcs, Set AC177 |
 | Mechanische Herrenuhr – Business & Freizeit (`mechanische-herrenuhr-business-freizeit-625400`) | 7 | 7 | 12.6–12.6 | 27.90 | Rose Gold Shell Black Surface, Rose Shell White Surface Black, Gold Shell Black Brown Belt, Gold Shell White Surface |
 | Quarz-Uhr mit Lederarmband, 30 m wasserdicht (`quarz-uhr-mit-lederarmband-30-m-wasserdicht-867c50`) | 7 | 7 | 6.44–6.93 | 26.90 | Brown white face, Black silver face, Black black face, Black |
-| Wandbehang Sternenuniversum Mond (`wandbehang-sternenuniversum-mond-8aba97`) | 6 | 6 | 2.57–5.06 | 21.90 | 150x100cm-Picture  color, 150x230cm-Thick, 150x130cm-Thick, 150x230cm-Picture  color |
-| Faltbares Katzenbett mit Plüsch (`faltbares-katzenbett-mit-plusch-600400`) | 6 | 6 | 6.6–6.6 | 74.90 | Blue Clouds, Green Sunflower, Red Diamond, Light Gray Diamond |
 | Wandlampe im nordischen Minimal-Stil für Innen und Aussen (`nordische-minimallampen-design-fur-innen-und-a-636800`) | 6 | 6 | 14.62–20.79 | 35.90 | Warm White-61cm-Black, Warm White-81cm-Black, Neutral light-61cm-Black, Neutral light-81cm-Black |
 | Lenkradbezug Plüsch Pfotenabdruck 38cm (`lenkradbezug-plusch-pfotenabdruck-38cm-ebf475`) | 6 | 6 | 3.04–3.32 | 15.90 | Prestige Grey, Black, Purple, Black orange |
 | Halskette mit runden Strasssteinen und Perlen (`halskette-mit-runden-strasssteinen-und-perlen-626200`) | 6 | 6 | 7.63–8.46 | 20.90 | N011 Silver, N011 Gold, N012 Silver, N012 Gold |
@@ -73,7 +71,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Bestickter Vorhang mit Lichtdurchlass (`bestickter-vorhang-mit-lichtdurchlass-67cd53`) | 6 | 0 | 2.46–2.97 | 21.90 | Coffee-Four claws-Q1M, Blue-Four claws-Q1M, White-Four claws-Q1M, White-Punch-Q1M |
 | 5-Panel Cap «Sprint» · Nylon Schwarz (`5-panel-cap-sprint-nylon-schwarz`) | 6 | 4 | 2.13–2.13 | 27.90 | Black, Grey, Khaki, Army green |
 | Leichter Schulrucksack mit Print (`leichter-schulrucksack-mit-print-612500`) | 5 | 5 | 7.13–7.13 | 26.90 | Black Smiley Face-48x33x20cm, Gray Smiley-48x33x20cm, Pink Smiley Face-48x33x20cm, White-48x33x20cm |
-| Schürze für Küche, Haushalt und Blumenladen (`schurze-fur-kuche-haushalt-und-blumenladen-627520`) | 5 | 5 | 4.32–4.32 | 23.90 | Black, Yellow, Black Breathable, Blue Breathable |
 | Photonen-Hautverjüngungsgerät mit Mikrostrom (`photonen-hautverjungungsgerat-mit-mikrostrom-604400`) | 5 | 5 | 12.44–18.08 | 32.90 | MRY22020 Electrodeless-Natural Jade Beauty Device, MRY22020SEMS Silver Electrode-Natural Jade Beauty Device, MRY22020SEMS Gold Electrode-Natural Jade Beauty Device, MRY22021SEMS Silver Electrode-Natural Jade Beauty Device |
 | Ballet Samt-Rouge (`ballet-samt-rouge-384704`) | 5 | 5 | 15.11–15.11 | 35.90 | 01Swan Snow, 02Romanticism, 03Soft Silk Ribbon, 04Golden peach velvet |
 | Gänsedaunenkissen – Füllung für Kissenhüllen (`gansedaunenkissen-fullung-fur-kissenhullen-520f50`) | 5 | 5 | 2.74–7.41 | 27.90 | White-75x50cm, White-74x48cm, White-45x45cm, White-50x50cm |
@@ -109,7 +106,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Automatischer Lockenstab mit Drehfunktion (`automatischer-lockenstab-mit-drehfunktion-5eb36d`) | 3 | 3 | 32.03–32.03 | 50.90 | White, Pink, Black |
 | Aufblasbares Halloween-Kostüm für zwei Personen (`inflierbares-halloween-kostum-fur-zwei-persone-638900`) | 2 | 2 | 20.66–20.66 | 42.90 | Double Spring Dog-Free Size, Double Sausage Dog-Free Size |
 | Elektrischer Gemüseschneider Multifunktional – Schneiden, Reiben & Hobeln (`elektrischer-gemuseschneider-multifunktional-schneiden-reiben-hobeln`) | 2 | 0 | 11.87–12.44 | 74.90 | White with adapter-220V US, Green-USB |
-| Schulrucksack für Laptop – Morning Mist Gray (`schulrucksack-fur-laptop-morning-mist-gray-625300`) | 2 | 2 | 28.03–28.03 | 49.90 | Morning Mist Gray, Obsidian Black |
 | 360° Handyhalterung fürs Auto (`360-handyhalterung-furs-auto-615000`) | 2 | 2 | 2.28–2.28 | 15.90 | Mirror Style, Texturing Style |
 | Moocare Aromatherapie-Öl (20 Stk.) (`moocare-aromatherapie-ol-20-stk-628100`) | 2 | 2 | 9.12–9.12 | 26.90 | Black Style, Red Style |
 | Kreativer Weindekanter – Pinguin oder Bohnensprosse (`kreativer-weindekanter-pinguin-oder-bohnenspro-613700`) | 2 | 2 | 14.93–18.24 | 41.90 | Penguin Wine Decanter, Bean Sprouts Wine Decanter |
