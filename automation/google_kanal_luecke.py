@@ -140,7 +140,7 @@ def gql(q, v=None, tok=None):
 LISTE = '''query($c:String){ products(first:100, after:$c,
   query:"status:active AND -publication_ids:302872297857"){
   pageInfo{hasNextPage endCursor}
-  nodes{ id title tags
+  nodes{ id title handle tags
     media(first:1){nodes{... on MediaImage{id}}}
     variants(first:1){nodes{sku price}} } } }'''
 
@@ -159,9 +159,15 @@ def main():
             break
         cur = d["pageInfo"]["endCursor"]; time.sleep(0.35)
 
+    try:  # 20.10.2026: bewusst entfernte Handles (Ledger dropship/_*unpub*.tsv) nie zurückholen — auch ohne Sperr-Tag
+        from google_sperrliste import entfernte_handles
+        entfernt = entfernte_handles()
+    except Exception:
+        entfernt = set()
     gruende, kandidaten = {}, []
     for p in alle:
-        g = grund(p["title"], p["tags"])
+        g = "bewusst aus dem Google-Kanal entfernt (Ledger _*unpub*.tsv)" if (p.get("handle") or "").lower() in entfernt \
+            else grund(p["title"], p["tags"])
         if not g:
             if not p["media"]["nodes"]:
                 g = "0 Bilder (Merchant lehnt sicher ab)"

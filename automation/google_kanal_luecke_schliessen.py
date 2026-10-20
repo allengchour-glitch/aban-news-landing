@@ -118,6 +118,11 @@ def lieferantenref(sku):
 # Einmal geladen, nicht je Produkt: das Merchant-Ledger ist die zweite Quelle neben dem
 # Tag am Produkt (ein Tag kann versehentlich entfernt werden, die Ledger-Zeile bleibt).
 GESPERRT = gesperrte_ids()
+try:  # 20.10.2026: Entfernungen ohne Sperr-Tag (Ledger dropship/_*unpub*.tsv) gelten auch hier
+    from google_sperrliste import entfernte_handles
+    ENTFERNT = entfernte_handles()
+except Exception:
+    ENTFERNT = set()
 
 
 def urteil(p):
@@ -133,6 +138,8 @@ def urteil(p):
         preis = 0.0
     if id_zahl(p.get("id")) in GESPERRT:
         return "von Google gemeldeter Verstoss (Merchant-Sperrliste)"
+    if (p.get("handle") or "").lower() in ENTFERNT:
+        return "bewusst aus dem Google-Kanal entfernt (Ledger _*unpub*.tsv)"
     grund = ausschluss_tag(p.get("tags"))
     if grund:
         return "Sperr-Tag: " + grund
@@ -176,7 +183,7 @@ def main():
     frei, blockiert, schon = [], [], 0
     for i in range(0, len(offen), 20):
         teil = offen[i:i + 20]
-        q = ('query($ids:[ID!]!){nodes(ids:$ids){... on Product{id title status productType tags '
+        q = ('query($ids:[ID!]!){nodes(ids:$ids){... on Product{id title handle status productType tags '
              'mediaCount{count} priceRangeV2{minVariantPrice{amount}} '
              'variants(first:1){nodes{sku}} '
              'resourcePublications(first:10){nodes{isPublished publication{id name}}}}}}')

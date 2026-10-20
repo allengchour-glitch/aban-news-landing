@@ -153,6 +153,27 @@ def ledger_vorhanden(pfad=None):
     return os.path.exists(pfad or LEDGER)
 
 
+def entfernte_handles(verzeichnis=None):
+    """Handles, die jemand (Wächter oder Betreiber) bewusst aus dem Google-Kanal genommen hat — Ledger
+    `dropship/_*unpub*.tsv`, Spalten: Zeit, Handle, Art, Grund; zählt nur Art «google-kanal-entfernt».
+
+    20.10.2026: Die 112 Produkte vom 12.10. (Restricted adult content) wurden nur per Ledger entfernt, OHNE Sperr-Tag; der tägliche
+    Kanal-Schliesser (google_kanal_luecke.py, liest nur Tags und Titelmuster) hat sie am 13.10. in 109 s wieder publiziert.
+    Ein Rückholer muss jede Entfernung kennen — auch die ohne Tag. Fehlt das Verzeichnis/die Datei: leere Menge (Tag-Schutz bleibt)."""
+    import glob
+    d = verzeichnis or os.path.join(_repo(), "dropship")
+    hs = set()
+    for pfad in glob.glob(os.path.join(d, "_*unpub*.tsv")):
+        try:
+            for zeile in open(pfad, encoding="utf-8"):
+                sp = zeile.rstrip("\n").split("\t")
+                if len(sp) >= 3 and sp[2].strip() == "google-kanal-entfernt" and sp[1].strip():
+                    hs.add(sp[1].strip().lower())
+        except OSError:
+            continue
+    return hs
+
+
 def tag_gesperrt(tags):
     """Trägt das Produkt einen Google-Sperr-Tag?
 

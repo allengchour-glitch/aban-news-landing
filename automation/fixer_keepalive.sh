@@ -2590,6 +2590,19 @@ KLT=/tmp/test_klingen_tor.log
     fi
   fi
 
+  # 20.10.2026: GOOGLE-ENTFERNT-LEDGER-KANARIENVOGEL — bewusst aus dem Google-Kanal entfernte Handles (Ledger _*unpub*.tsv, ohne Sperr-Tag)
+  # holte der taegliche Kanal-Schliesser zurueck (112 in 109 s am 13.10.). Der Helfer lebt in google_sperrliste.entfernte_handles().
+  GEL=/tmp/test_google_entfernt_ledger.log
+  if [ -f "$REPO/automation/test_google_entfernt_ledger.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$GEL" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$GEL"; then
+      ( cd "$REPO" && python3 automation/test_google_entfernt_ledger.py >> "$GEL" 2>&1 || echo "$(date -u +%F' '%H:%M) GOOGLE-ENTFERNT-LEDGER FEHLER (Exit $?)" >> "$GEL" )
+    fi
+    if [ -s "$GEL" ] && tail -n 30 "$GEL" | grep -q "FEHLER\|FEHLSCHLAG"; then
+      echo "⚠️ GOOGLE-ENTFERNT-LEDGER: Kanarienvogel gefallen — tail -30 $GEL"
+    fi
+  fi
+
   # 12.10.2026: Liechtenstein-Satz «Gratis-Versand ab CHF N» → «in der Schweiz». Idempotent (Lookbehind), liest jedes
   # Produkt live und schreibt nur den Satz. Taeglich, damit neue aktive Importe den Satz nicht dauerhaft behalten.
   LIW=/tmp/li_gratis_text.log
