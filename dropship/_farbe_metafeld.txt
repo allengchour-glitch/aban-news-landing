@@ -505,3 +505,5 @@ gid://shopify/Product/16652425888135	Schwarz
 gid://shopify/Product/16652426215815	Blau
 gid://shopify/Product/16653789266311	Rot
 gid://shopify/Product/16654053966215	Gelb
+gid://shopify/Product/16654370931079	Gold
+gid://shopify/Product/16654412841351	Silber
