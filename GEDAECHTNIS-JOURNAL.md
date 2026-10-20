@@ -53,6 +53,14 @@
 
 
 
+## 🧱 QUEUE-STRUKTUR ⚠️ «7 statt 9 Felder» — Klasse an der gemeinsamen Bibliothek behoben (2026-10-20, ~07:35–07:50 UTC)
+- **GEMESSEN:** `social/ig_karussell.csv` — 7 Zeilen (55–61, u. a. `top-5-unter-50-1019`) trugen 7 statt 9 Felder. **Ursache:** `ig_karussell_post.mjs` Zeile 112 hängt dem Kopf nachträglich
+  `posted_at,post_url` an; `tiktok_karussell.py` hängt neue Sets mit den alten 7 Feldern an (`queue_anhaengen`). Neue Zeilen waren damit kürzer als der Kopf.
+- **Behoben an der Bibliothek, nicht am einen Schreiber:** `automation/queue_csv.anhaengen` füllt eine kürzere Zeile auf Kopfbreite auf (längere bleibt unangetastet → die Wache meldet sie weiter).
+  Selbsttest-Fall ergänzt (eigene Datei, damit der Folgetest unverändert bleibt) + **Mutationsprobe:** ohne die Auffüll-Zeilen schlägt der Test an («Kopfbreite 6, ist 4»).
+  Die 7 vorhandenen Zeilen unter der gemeinsamen Sperre aufgefüllt (`queue_csv.umbauen`, 7 Zeilen); `queue_struktur_wache.py`: **8 von 8 Queues, 0 Befunde**.
+- **Lehre:** Wenn ein Leser/Poster den Kopf nachträglich erweitert, muss JEDER Anhänger die Kopfbreite kennen — die Bibliothek ist der einzige Ort, der das für alle 8 Queues zugleich löst.
+
 ## 🛑 Bewertungs-Stopp wurde umgangen — 1'191 Importer-Bewertungen NACH dem Stopp, geschrieben von einer zweiten Sitzung auf `main` (2026-10-20, ~06:30–07:15 UTC)
 - **Anlass:** Betreiber «A und sonst weiter» (Stopp bleibt, Plan-Ziel «≥ 10 von 29 bis 22.10.» entfällt). Beim Gegenlesen der Judge.me-API fiel auf: die **neuesten** Bewertungen
   (18.10.) tragen `cj-import+<zufall>@luxestyle.ch` — die Form, die der Importer in unserem Branch seit 04.09. nicht mehr schreibt — und stammen von anderen IPs

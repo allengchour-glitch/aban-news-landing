@@ -369,6 +369,10 @@ def anhaengen(datei, zeilen):
             z = ["" if v is None else str(v) for v in z]
             if z[id_i] in da:
                 continue
+            # 20.10.2026: kürzere Zeile auf Kopfbreite auffüllen. Der Poster (ig_karussell_post.mjs) hängt dem Kopf nachträglich `posted_at,post_url`
+            # an; ein Schreiber, der nur die alten 7 Felder kennt, hinterliess 7 Zeilen mit 7 statt 9 Feldern (QUEUE-STRUKTUR ⚠️ 7 Befunde).
+            if len(z) < len(rows[0]):
+                z = z + [""] * (len(rows[0]) - len(z))
             rows.append(z)
             da.add(z[id_i])
             neu += 1
@@ -463,6 +467,13 @@ def _selbsttest_innen():
     with open(q, "w") as f:
         f.write(serialisieren(basis))
     pruef(anhaengen(q, [["d", "2", "u4", "x", "ready", ""]]) == 1 and anhaengen(q, [["d", "2", "u4", "x", "ready", ""]]) == 0, "anhaengen ohne Doppel")
+    # 20.10.2026: kürzere Zeile wird auf Kopfbreite aufgefüllt (7-Feld-Schreiber gegen 9-Feld-Kopf); längere bleibt unangetastet
+    q_kurz = os.path.join(d, "q_kurz.csv")                   # eigene Datei: der Folgetest erwartet den Bestand von q unverändert
+    with open(q_kurz, "w") as f:
+        f.write(serialisieren(basis))
+    pruef(anhaengen(q_kurz, [["kurz", "2", "u5", "x"]]) == 1, "anhaengen kurze Zeile")
+    breit = frisch_lesen(q_kurz)
+    pruef(len(breit[-1]) == len(breit[0]) and breit[-1][0] == "kurz", f"kurze Zeile auf Kopfbreite {len(breit[0])}, ist {len(breit[-1])}")
     st = schreiben(q, basis, meine)
     pruef("".join(r[0] for r in lesen(q)[1:]) == "abd" and st["fremd_behalten"] == 1, f"schreiben auf Datei {st}")
     pruef(not any(".tmp-" in x for x in os.listdir(d)), "keine Nachbardatei liegengeblieben")
