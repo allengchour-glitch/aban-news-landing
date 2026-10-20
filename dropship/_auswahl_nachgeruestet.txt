@@ -3112,3 +3112,4 @@
 15522058797441	Farbe:4:4+ki	2026-10-20	gesichtsreinigungsburste-mit-wireless-charging-1c8c0e
 15523176841601	Farbe:16:16+ki	2026-10-20	primer-sealer-set-fur-gelnagel-711296
 16604915171719	Farbe:2+Länge:3:6+ki	2026-10-20	jeans-schurze-fur-erwachsene-400448
+16604930998663	Modell:4:4+ki	2026-10-20	nageldesign-faden-gel-371136
