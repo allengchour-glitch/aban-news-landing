@@ -11378,3 +11378,15 @@ aromadiffuser-mit-usb-anschluss-613500	2508210523391613700	16	14.79	ok	landeseit
 business-armbanduhr-fur-herren-623400	2604090558221623800	7	7.58	ok	landeseite
 4er-set-aus-su-wasserperlen-halskette-ohrsteck-18c26d	04CFEC06-7ABE-4F8D-94E0-ECCD9375EED4	16	6.01	ok	landeseite
 fingerprint-turschloss-mit-usb-610300	2508180632201610400	7	8.25	ok	landeseite
+offenwerk-uhren-mit-handaufzug-fur-herren-627400	2604090552501627800	16	6.09	ok	landeseite
+perlenkette-weiss-9d547a	C1F4D5D6-D254-4E38-9B36-97E66B04E2DC	16	11.16	ok	landeseite
+ptc-heizlufter-mit-fernbedienung-2000-w-bis-20-628200	2508101235271628400	7	26.85	ok	landeseite
+perlen-schmuck-set-e19a37	36775691-A993-4895-AA5B-596650076C1C	16	5.41	ok	landeseite
+schwarze-perlenohrringe-cb5bf0	4C4C248E-6AC0-4074-8E74-9BA7D4B0DF05	16	4.50	ok	landeseite
+kleiner-heizlufter-fur-den-schreibtisch-625400	2508101227511625600	16	20.58	ok	landeseite
+suchtracker-fur-apple-gerate-in-6-farben-604500	2508090959361604700	7	5.10	ok	landeseite
+armband-aus-su-wasserperlen-f24084	308C2E87-F406-4256-98BC-208E9433B8FB	16	5.41	ok	landeseite
+ultrasonische-portabler-zahnersatzreiniger-624400	2507291000051624700	7	13.79	ok	landeseite
+ruckenketten-anhanger-4ff5b6	4CFE4CB1-DEE9-4206-9A47-9341610091E1	16	5.41	ok	landeseite
+edle-perlenohrringe-a29c9d	1B685267-7191-4B41-BF85-70B29C6B7F58	16	4.71	ok	landeseite
+leichte-atmungsaktive-schuhe-mit-stahlkappe-633984	1778325453682520064	16	14.96	ok	landeseite
