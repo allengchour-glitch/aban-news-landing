@@ -11917,3 +11917,4 @@ herren-mechanische-uhr-hohl-601700	2511070547131601900	16	5.97	ok	landeseite
 weisses-leder-business-armband-612800	2511060537461613100	16	5.81	ok	landeseite
 herren-automatikuhr-mit-hohlraum-656400	2510310124411656700	16	6.48	ok	landeseite
 automatikuhr-fur-herren-wasserdicht-612000	2510271255121612200	16	6.77	ok	landeseite
+tourbillon-armbanduhr-leuchtend-hohl-herren-606700	2510271022051606900	16	6.77	ok	landeseite

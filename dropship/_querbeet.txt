@@ -166,3 +166,9 @@ gid://shopify/Product/15525501534593	2026-10-19	Uhren
 gid://shopify/Product/16638895554951	2026-10-19	Wohnen & Dekoration
 gid://shopify/Product/16647594312071	2026-10-19	Kinder & Baby
 gid://shopify/Product/16651428430215	2026-10-19	Taschen & Rucksäcke
+gid://shopify/Product/16654363918727	2026-10-20	Damen-Mode
+gid://shopify/Product/16615672512903	2026-10-20	Beauty & Pflege
+gid://shopify/Product/16654886896007	2026-10-20	Wohnen & Dekoration
+gid://shopify/Product/16652095390087	2026-10-20	Elektronik & Technik
+gid://shopify/Product/16652101255559	2026-10-20	Taschen & Rucksäcke
+gid://shopify/Product/15503164047745	2026-10-20	Handy-Zubehör
