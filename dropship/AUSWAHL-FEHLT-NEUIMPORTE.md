@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 16:46 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 17:58 UTC)
 
-Suche: `status:active AND created_at:>=2026-10-17` · gemessen 341 · **187 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 167, teilweise: 14, keine: 6; Preisspanne > 2×: 29) · 1 CJ-Variante: 154 · ohne Antwort: 0
+Suche: `status:active AND created_at:>=2026-10-17` · gemessen 351 · **193 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 173, teilweise: 14, keine: 6; Preisspanne > 2×: 29) · 1 CJ-Variante: 158 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -52,6 +52,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Magnetische Wimpern ohne Kleber (`magnetische-wimpern-ohne-kleber-631500`) | 13 | 13 | 6.56–6.91 | 16.90 | Fog Black-Round Box, Fog Black-Square Box, Fairy Lashes-Round Box, Fairy Lashes-Square Box |
 | Hundemantel Winterwolle, monochrom (`hundemantel-winterwolle-monochrom-602700`) | 12 | 12 | 5.8–5.8 | 16.90 | Monochrome-XS, Monochrome-S, Monochrome-M, Monochrome-L |
 | HDMI-Distributor 4K Splitter mit USB-Ladeanschluss (`hdmi-distributor-4k-splitter-mit-usb-ladeansch-616200`) | 12 | 12 | 2.46–3.69 | 16.90 | 4K(HW HD102M)-American Standard, 4K(HW HD102M)-European Standard, 4K(HW HD102M)-USB Charger Lead, 1080P(HW HD102)-American Standard |
+| LED Mini Ambient Tischlampe Touch-Aktiviert (`led-mini-ambient-tischlampe-touch-aktiviert-611700`) | 12 | 12 | 8.96–8.96 | 23.90 | Mint Green-Style A, Mint Green-Style B, Mint Green-Style C, Orange-Style A |
 | USB-C 7-in-1 Dock mit HDMI-Ausgang und Kabeltrennung (`usb-c-7-in-1-dock-mit-hdmi-ausgang-und-kabeltr-612700`) | 11 | 8 | 2.19–24.71 | 38.90 | 7 In 1, 4 In 1, 5 In 1, 6 In 1 |
 | Grosses Dry-Wet Trennungs-Rucksack-Tagesrucksack (`grosses-dry-wet-trennungs-rucksack-tagesrucksa-603500`) | 10 | 10 | 5.14–5.14 | 22.90 | Pink, Light Purple, Black, Fog And Haze Blue |
 | Wollschal mit Wursthunde-Print (`wollschal-mit-wursthunde-print-614400`) | 10 | 10 | 3.35–3.35 | 16.90 | Pearl White-170cm, Beige-170cm, Light Gray-170cm, Khaki-170cm |
@@ -63,6 +64,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Diamant-gestellter Blumenring Grösse 5–9 (`diamant-gestellter-blumenring-grosse-5-9-618500`) | 10 | 10 | 25.35–25.35 | 34.90 | Gold-No 5, Gold-No 6, Gold-No 7, Gold-No 8 |
 | Herren-Armbanduhr mit Stahlband und Quarzwerk (`herren-armbanduhr-mit-stahlband-und-quarzwerk-619800`) | 10 | 10 | 6.94–7.81 | 16.90 | Gun Black, Silver Case Black Noodles, Silver Case White Noodles, Silver Case Blue Face |
 | Stahlarmband-Uhr mit Quarzwerk – Silberschale (`stahlarmband-uhr-mit-quarzwerk-silberschale-602000`) | 10 | 10 | 8.68–10.07 | 19.90 | Silver Case Silver Surface, Silver Case Blue Face, Silver Case Black Noodles, Black Shell Black Surface |
+| Ladebare Nachtlicht-Tablette in Pilzform (`ladebare-nachtlicht-tablette-in-pilzform-600900`) | 10 | 10 | 4.7–6.63 | 23.90 | 1800mAh-White, 1800mAh-Yellow, 1800mAh-Rust Color, 1800mAh-Pink |
 | Leichter Outdoor-Rucksack 10L – Nylon, 38×42×15 cm (`leichter-outdoor-rucksack-10l-nylon-38-42-15-c-780032`) | 9 | 9 | 44.24–55.3 | 69.90 | Coral pink upgrade-S/M, Coral pink upgrade-M L, Blue upgrade-S/M, Blue upgrade-M L |
 | Buntes, schmaler Retro-Schal in Regenbogenfarben (`buntes-schmaler-retro-schal-in-regenbogenfarbe-621000`) | 9 | 9 | 2.72–2.72 | 16.90 | Red Orange Purple-190X10cm, Gray Orange White-190X10cm, Blue Orange Rice-190X10cm, Gray White And Black-190X10cm |
 | Ovaler Fotorahmen für die Wand (`ovaler-fotorahmen-fur-die-wand-622100`) | 9 | 9 | 4.04–27.6 | 75.90 | 4 Pieces, 5 Pieces, Square, Ellipse |
@@ -77,6 +79,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Gold-Foil-Chocolate Lidschatten (`gold-foil-chocolate-lidschatten-099712`) | 8 | 8 | 3.52–3.52 | 16.90 | 601 Pine Cone Wood Rose, 602 Elk Maple Grove, 603 Gold Foil Chocolate, Apricot Peach Plate |
 | Star Kiss Diamant Lippenstift (`star-kiss-diamant-lippenstift-625800`) | 8 | 8 | 2.57–2.57 | 16.90 | Deep purple brown-3.5g, Peach powder-3.5g, Rosy-3.5g, Naked rice tea-3.5g |
 | Schmaler Wollschal mit Hohlmuster (`schmaler-wollschal-mit-hohlmuster-617300`) | 8 | 8 | 2.34–2.34 | 16.90 | 01 Khaki-35cmX64cm, 02 Bright Red-35cmX64cm, 03 Army Green-35cmX64cm, 04 Gray-35cmX64cm |
+| 28-teilige Weihnachtsbaumschmuck-Kugel-Set (`28-teilige-weihnachtsbaumschmuck-kugel-set-602500`) | 8 | 8 | 3.19–3.19 | 16.90 | Red Style, Gold Style, Dark Green, Light Blue |
 | Taktische Umhängetasche für Outdoor-Sport (`taktische-umhangetasche-fur-outdoor-sport-624800`) | 7 | 7 | 5.03–5.03 | 18.90 | Black-Below 20L, Brown-Below 20L, Italian Camouflage-Below 20L, Dark Night-Below 20L |
 | Umhängetasche mit Rautenmuster (`umhangetasche-mit-rautenmuster-623000`) | 7 | 7 | 7.99–7.99 | 21.90 | Color, Silver, Black Gold Diamand, Green |
 | Kristall-Hanf Kopftuch – Monochromes Design (`kristall-hanf-kopftuch-monochromes-design-606000`) | 7 | 7 | 3.1–3.1 | 16.90 | 2 White-Average Size, 3 Navy Blue-Average Size, 4 Pink Color-Average Size, 5 Light Khaki-Average Size |
@@ -152,6 +155,8 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Armband mit Bodhi-Samen und Dzi-Perlen (`armband-mit-bodhi-samen-und-dzi-perlen-630500`) | 4 | 4 | 20.66–20.66 | 29.90 | 14mm-Size 15, 14mm-Size 16, 14mm-Size 17, 14mm-Size 18 |
 | Multifunktionale Quarzuhr mit Lederarmband (`multifunktionale-quarzuhr-mit-lederarmband-638200`) | 4 | 4 | 30.9–30.9 | 42.90 | White Shell And Blue Surface, White Shell And Black Surface, Black Shell Black Surface, Black Shell Green Surface |
 | Vintage Quarz-Armbanduhr für Damen (`vintage-quarz-armbanduhr-fur-damen-609400`) | 4 | 4 | 12.85–12.85 | 21.90 | Gold Strap Gold Noodles, Gold Strap Red Noodles, Gold Strap White Noodles, Silver Streak White Noodles |
+| Ladeleuchte für Schreibtisch mit Touch-Stimmungslicht (`ladeleuchte-fur-schreibtisch-mit-touch-stimmun-625000`) | 4 | 4 | 3.27–3.27 | 16.90 | Type A, Type B, Type C, Type D |
+| Kleines Nachtlicht mit Touch-Steuerung, USB (`kleines-nachtlicht-mit-touch-steuerung-usb-609700`) | 4 | 4 | 4.36–4.36 | 16.90 | Black-Handle Style, Black-Pull Cord Style, White-Handle Style, White-Pull Cord Style |
 | Oversized Wollschal Dreieck 200 cm (`oversized-wollschal-dreieck-200-cm-605900`) | 3 | 3 | 12.44–12.44 | 21.90 | Raw Velvet Rice-200X90cm, Raw Velvet Camel-200X90cm, Gray-200X90cm |
 | Zylindrischer Angelrucksack (`zylindrischer-angelrucksack-228160`) | 3 | 3 | 7.87–8.08 | 17.90 | Black, Urban camouflage, Desert camouflage |
 | Halskette mit Kor, Türkis und Muschelperlen (`halskette-mit-kor-turkis-und-muschelperlen-635200`) | 3 | 3 | 4.3–5.18 | 16.90 | Necklace, Bracelet, Ear Studs |
@@ -193,3 +198,4 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Cuban-Link Armband aus Edelstahl in Roségold (`cuban-link-armband-aus-edelstahl-in-rosegold-609700`) | 2 | 2 | 10.59–12.85 | 21.90 | Rose Gold-24Inch, Rose Gold-12mm 24Inch |
 | Grosses vertikales Kosmetik-Organizer mit Tragegriff (`grosses-vertikales-kosmetik-organizer-mit-trag-630600`) | 2 | 2 | 2.92–4.37 | 16.90 | Large Size Sholder Bag, Small Size Sholder Bag |
 | Nachtlicht für Schlafzimmer mit eingebaute Batterie (`nachtlicht-fur-schlafzimmer-mit-eingebaute-bat-620800`) | 2 | 2 | 5.03–5.03 | 18.90 | Pointed Toe, Crown |
+| Smart Lamp mit RGB- und Warmlicht (`smart-lamp-mit-rgb-und-warmlicht-614600`) | 2 | 2 | 9.95–11.61 | 28.90 | Matter Version, Tuya Version |

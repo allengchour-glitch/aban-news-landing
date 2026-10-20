@@ -11732,3 +11732,4 @@ elegantes-patchwork-kleid-631900	2607070559181632500	16	10.15	ok	landeseite
 business-armbanduhr-aus-legierung-608300	2604050933471608700	7	6.68	ok	landeseite
 sport-visier-fur-kinder-444352	1406853701863346176	16	6.77	ok	landeseite
 kinder-remote-control-auto-uhr-e92a8d	3EE223C2-9330-4E22-95E1-1383671785B1	7	11.93	ok	landeseite
+wanderschuhe-fur-herren-atmungsaktiv-rutschfes-738ba0	0630312C-602C-47F1-A987-EF7F42DF5045	16	13.40	ok	landeseite
