@@ -11215,3 +11215,11 @@ retro-geldborse-aus-crazy-horse-leder-653500	2510220547421653700	16	7.17	ok	land
 minimalistische-nudelschussel-608800	2506260728191609300	16	19.06	ok	landeseite
 sommerwald-landschaftsbild-handgemaltes-leinwa-162560	1424205643446882304	16	8.11	ok	landeseite
 manner-schultertasche-aus-echtleder-656900	2510220103051657100	16	10.83	ok	landeseite
+retro-hoodie-mit-stickerei-605600	2607100845281606100	16	7.99	ok	landeseite
+moderne-verdrehte-knotenornamente-329216	1423488421686546432	16	15.97	ok	landeseite
+pluschtier-mit-gerausch-fur-hunde-603800	2505260607361604300	16	6.63	ok	landeseite
+rfid-geldborse-mit-kartenfachern-658500	2510210530561658700	16	5.41	ok	landeseite
+leichter-sommer-herrenpullover-635600	2607100155111636600	16	7.85	ok	landeseite
+klassisches-stahlarmband-uhrenset-fur-geschaft-616800	2605240240551617300	7	7.62	ok	landeseite
+armelloses-t-shirt-fur-outdoor-training-fitnes-610600	2607070831211611600	16	7.17	ok	landeseite
+geschaftsreise-rucksack-618500	2504221346051618800	11	89.74	ok	landeseite
