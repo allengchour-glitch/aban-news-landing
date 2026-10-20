@@ -511,3 +511,5 @@ slug:hemd-western-braun-fgssbo5433
 name:halterungfürrückspiegelhandy
 pid:15450831716737
 slug:halterung-fur-ruckspiegel-handy
+slug:plusch-berner-sennenhund-fga85740
+name:plüschbernersennenhund25cm

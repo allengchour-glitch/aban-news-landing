@@ -1,21 +1,19 @@
 {
- "stand": "2026-10-19T20:42Z",
- "gescannt": 55866,
- "seiten": 224,
+ "stand": "2026-10-20T14:37Z",
+ "gescannt": 56111,
+ "seiten": 225,
  "vollstaendig": true,
- "blocker": 51,
+ "blocker": 45,
  "klassen": {
   "Promotional overlay on image": 36,
   "Image processing or experiencing delays": 4,
-  "Restricted adult content": 4,
   "Product page unavailable": 2,
-  "Unable to show image": 2,
   "Sale of live animals": 1,
   "Tobacco products & related equipment": 1,
-  "Image not processed": 1
+  "Unable to show image": 1
  },
  "ohne_onlineStoreUrl": {},
- "anzeigen_meldungen": 49286,
+ "anzeigen_meldungen": 48753,
  "handles": {
   "Image processing or experiencing delays": [
    "schweiz-magnet-fondue",
@@ -64,12 +62,6 @@
   "Sale of live animals": [
    "ersatzfedern-fur-katzenangel-629300"
   ],
-  "Restricted adult content": [
-   "sommer-einfarbiges-hohlkleid-613600",
-   "kardigan-kleid-605700",
-   "high-elastic-fitness-yoga-hose-643300",
-   "figurbetonter-body-im-boxer-stil-fur-herren-609900"
-  ],
   "Product page unavailable": [
    "weiche-rutschfeste-babyschuhe-607300",
    "herren-strickjacke-mit-revers-612400"
@@ -78,28 +70,21 @@
    "retro-kupfer-weihrauchhalter-ornament-621632"
   ],
   "Unable to show image": [
-   "gurteltasche-fur-outdoor-und-wandern-615300",
-   "plissierter-satin-schal-fur-damen-mittellang-616800"
-  ],
-  "Image not processed": [
-   "bestickter-seiden-optik-schal-635700"
+   "gurteltasche-fur-outdoor-und-wandern-615300"
   ]
  },
  "andere_apps": {
-  "[Shop] Dieses Produkt ist in Shop nicht auffindbar. Prüfe den Angebotsstatus im Shop-Kanal": 3
+  "[Shop] Dieses Produkt ist in Shop nicht auffindbar. Prüfe den Angebotsstatus im Shop-Kanal": 4
  },
  "nur_ausland": {
-  "Missing shipping info in some countries [LI]": 30996,
+  "Missing shipping info in some countries [LI]": 30480,
   "Alcoholic beverages [LI]": 3
  },
  "nur_personalisiert": {
   "Personalized advertising: personal hardships": 83,
-  "Personalized advertising: legal restrictions": 7,
-  "Personalized advertising: Sexual interests": 4
+  "Personalized advertising: legal restrictions": 7
  },
- "ziel_leer": {
-  "Restricted adult content": 4
- },
+ "ziel_leer": {},
  "lieferlaender": [
   "CH",
   "LI"
@@ -190,12 +175,6 @@
    "umstands-kleid-mit-ruschensaum-634400",
    "handgefertigter-doppler-zur-fetalbeat-messung-20fd87"
   ],
-  "Personalized advertising: Sexual interests": [
-   "sommer-einfarbiges-hohlkleid-613600",
-   "kardigan-kleid-605700",
-   "high-elastic-fitness-yoga-hose-643300",
-   "figurbetonter-body-im-boxer-stil-fur-herren-609900"
-  ],
   "Personalized advertising: legal restrictions": [
    "haarentferner-106496",
    "weinflasche-aus-glas-600800",
@@ -207,8 +186,8 @@
   ]
  },
  "wartet": {
-  "Image under review": 683,
-  "Title under review": 7
+  "Image under review": 623,
+  "Title under review": 5
  },
  "handles_wartet": {
   "Image under review": [
@@ -400,10 +379,8 @@
    "weiche-leder-laufschuhe-mit-gro-er-schleife-un-618200",
    "wei-er-tierspitzen-mini-rock-638800",
    "diy-kreuzstich-landschaft-cartoon-40x40-cm-625800",
-   "bambus-facher-606600",
    "rote-samt-juwelierbox-mit-doppeloffnung-636700",
    "faltbare-businessreise-tasche-mit-kontrastfarb-625800",
-   "disc-soccer-trainer-603000",
    "oxford-waschbeutel-wasserdicht-abnehmbar-613900",
    "taktische-feldtasche-fur-outdoor-enthusiasten-628700",
    "rundhals-t-shirt-herren-kurzarm-632900",
@@ -416,7 +393,6 @@
    "wasserdichter-einheitsfarben-sofabezug-set-606000",
    "5-in-1-lunchbox-mit-schnellheizung-fur-zuhause-617800",
    "schnurschuhe-mit-haarband-und-strass-611456",
-   "mini-chiffon-rockedress-605900",
    "meerjungfrauen-sandale-mit-schleife-233408",
    "leopard-print-sandalen-mit-grippsohle-696704",
    "lockere-dehnbare-sommer-maxi-rock-mit-falten-626600",
@@ -455,6 +431,7 @@
    "handlicher-gasbrenner-fur-kuche-und-grill-618700",
    "strandkleid-armellos-mit-print-600300",
    "herren-portemonnaie-aus-rindsleder-604100",
+   "geburtsstein-ring-mit-zirkonia-einlage-633800",
    "langarm-v-neck-shirt-fur-damen-618500",
    "sexy-tank-top-mit-schnurung-625500",
    "v-ausschnitt-t-shirt-mit-ruschenarmeln-636000",
@@ -465,12 +442,15 @@
    "corduroy-jacke-fur-herren-600600",
    "corduroy-hoodie-mit-stehkragen-und-aufgesetzte-606100",
    "plusch-kapuzenpullover-mit-reissverschluss-616400",
+   "elegantes-satin-kleid-schulterfrei-606000",
    "prinzessinnen-schuhe-fur-madchen-176256",
    "rc-special-effects-twist-car-cb6611",
    "oxford-rucksack-fur-sport-und-freizeit-229248",
    "ngc-wireless-controller-fur-wii-162304",
    "mountainbike-sattel-mit-rucklicht-f7bee5",
    "ausziehbarer-veloschutz-mit-rucklicht-4eb858",
+   "gepunktetes-v-ausschnitt-freizeitkleid-mit-3-4-628200",
+   "halterneck-v-ausschnitt-kleid-mit-ruschensaum-605700",
    "loser-strickpullover-611500",
    "sandalen-mit-holzperlen-und-gewebtem-design-615100",
    "herren-kurzarmhemd-aus-baumwoll-leinen-mix-627400",
@@ -485,6 +465,7 @@
    "leuchtende-dreidimensionale-quarzuhr-72681a",
    "herren-freizeit-board-schuhe-628700",
    "memory-foam-kissen-fur-sitzkomfort-618200",
+   "hundegeschirr-mit-leine-und-tasche-107200",
    "damen-flanell-kapuzenpullover-fur-herbst-und-w-611600",
    "futterautomat-fur-haustiere-71c2cf",
    "acryl-adventskalender-blind-box-626300",
@@ -610,7 +591,6 @@
    "plateau-wedge-sandalen-mit-fischmund-print-177280",
    "gartenverbinder-16-mm-t-stuck-und-winkel-fd3f52",
    "35-teiliger-torque-schleifscheiben-satz-2-inch-410ac6",
-   "bequeme-zehensteg-sandalen-mit-dicker-sohle-839808",
    "damen-stiletto-plateau-sandalen-375488",
    "grosse-zehensteg-sandalen-mit-strass-177024",
    "miniatur-elektrobohrer-mit-spannfutter-610400",
@@ -622,7 +602,6 @@
    "bleistiftverlangerer-fur-doppelten-gebrauch-f41a45",
    "multifunktionsschere-455788",
    "spinnen-und-insektenfanger-81-cm-611800",
-   "bratpfanne-aus-316-edelstahl-unbeschichtet-611900",
    "celadon-ge-kiln-teekanne-mit-eisriss-glasur-604100",
    "eierbehalter-drehbar-aus-kunststoff-624500",
    "grau-gestreiftes-balkon-sonnenschutznetz-064064",
@@ -644,7 +623,6 @@
    "weiche-sohlen-sandalen-fur-kinder-671680",
    "elektrischer-wimpernformer-823d23",
    "reisetasche-mit-rollen-erweiterbar-610900",
-   "bein-und-huftkissen-624300",
    "elektrisches-vakuumiergerat-603900",
    "kleid-mit-v-ausschnitt-und-ruschenschlitz-604900",
    "espresso-kaffeepulver-verteilring-622400",
@@ -674,7 +652,6 @@
    "gepersonalisiertes-lederportemonnaie-mittellan-620100",
    "bar-design-geldklappe-clutch-aus-pvc-642100",
    "schmuckbeutel-mit-regenbogenmuster-627200",
-   "winterstiefel-mit-fleece-einlage-retro-platfor-607300",
    "intelligenter-touchscreen-fruhstucktoaster-629100",
    "formelles-sequined-kleid-mit-doppel-v-halsauss-629000",
    "baby-set-fur-neugeborene-kleidung-accessoires-624500",
@@ -834,80 +811,20 @@
    "brosche-aus-echtem-leder-mit-kristall-615000",
    "diy-beissspielzeug-koala-020032",
    "retro-umhangetasche-aus-vollnarben-rindsleder-637800",
-   "dreifach-crimpzange-fur-netzwerk-und-telefonka-1efa21",
-   "heissklebepistole-60-100-w-361b43",
-   "ratschen-crimpzange-6d1907",
-   "zylindrische-reisetasche-0f9860",
-   "kleider-und-sporttasche-mit-schultergurt-c6ce83",
-   "lauflernschuhe-fur-kinder-b48766",
    "abisolierzange-mit-ratschen-selbsthemmung-626700",
-   "damen-nachthemd-aus-plusch-mit-gurtel-600900",
-   "faltbare-haustiertasche-aus-oxford-stoff-635100",
-   "loschbares-notizbuch-aus-steinpapier-614900",
-   "notizbuch-mit-pu-leder-einband-616600",
-   "lesezeichen-aus-pu-leder-mit-kristallen-6-stuc-610300",
-   "bucherregal-aus-metall-610600",
-   "regenkette-mit-vogeln-638700",
-   "regenkette-aus-metall-608000",
-   "umhangetasche-im-knodel-stil-604000",
-   "faltbare-reisetasche-d797a1",
-   "faltbarer-fahrradrucksack-zum-umhangen-b4536a",
-   "multifunktions-kombinationsrucksack-8fe31b",
-   "doppellagige-aufbewahrungstasche-601000",
-   "picknick-kuhltasche-fur-unterwegs-603000",
-   "umhangetasche-aus-pu-leder-mit-textur-624200",
-   "tarnmuster-umhangetasche-606100",
-   "tischlampe-mit-blattform-632300",
-   "plattform-sandale-mit-tassel-und-perlen-231744",
-   "schwarze-sandalen-mit-hummelfasern-851520",
-   "roman-flat-retro-sandalen-mit-dicker-sohle-074816",
-   "puff-high-heel-sandalen-484864",
-   "taschenrucksack-mit-computerfach-36099e",
-   "rhinestone-stiletto-einzelschuhe-849664",
-   "sicherheitsstiefel-mit-stahlkappe-low-top-605700",
    "sicherer-arbeitsschuh-mit-stahlkappe-und-atmun-629700",
-   "keramischer-teekopf-mit-untertasse-617100",
-   "keramiktasse-mit-untertasse-tiermotiv-600800",
-   "keramiktasse-mit-schmalem-henkel-624500",
-   "keramiktasse-dunhuang-fliegende-apsaras-629500",
-   "teetasse-aus-keramik-mit-dunhuang-motiv-600300",
-   "keramiktasse-mit-ru-kiln-muster-und-tragetasch-634400",
-   "keramik-kaffeetasse-mit-farbblock-streifen-610000",
-   "gefutterte-jacke-mit-stehkragen-603500",
-   "tischlampe-mit-akku-und-nachtlicht-600700",
-   "nachtlicht-figur-604400",
-   "sternen-nachtlicht-mit-vase-und-schleierkraut-638900",
-   "herren-langarmshirt-im-lagenlook-623100",
-   "umhangetasche-fur-herren-12-zoll-608100",
-   "keramik-kerzenhalter-fur-paare-613600",
-   "armelloses-hochtailliertes-schlitzkleid-625800",
-   "emaille-wasserkessel-teekanne-639100",
-   "weihnachtskugel-set-mit-handgezeichneten-motiv-627300",
-   "schleifen-anhanger-617100",
-   "bohemian-bluse-mit-v-ausschnitt-631000",
-   "metall-spielzeugauto-mit-ruckziehfunktion-821440",
-   "mikro-bausteine-trendiges-puzzle-spielzeug-832832",
-   "bausteine-villa-und-auto-923008",
-   "tagesplaner-notizbuch-cherry-red-627700",
-   "mini-projektor-fur-heimkino-624300",
-   "pluschtier-kissen-kreative-nische-627100",
-   "herren-slipper-mit-runder-schuhspitze-605600",
-   "manner-rucksack-advanced-sense-business-large-624200",
-   "rucksack-mit-rolltop-und-schulterklammer-625000",
-   "vintage-rucksack-aus-rindleder-20-l-606000"
+   "emaille-wasserkessel-teekanne-639100"
   ],
   "Title under review": [
    "distressed-jeans-fur-herren-632300",
    "schnelltrocknende-wasserschuhe-613600",
    "strickkleid-mit-langen-armeln-616500",
    "jacquard-kleid-set-mit-schleife-609700",
-   "holzspielhaus-mit-telefon-21x18x14-cm-667968",
-   "rfid-portemonnaie-mit-zwei-reissverschlussen-611600",
-   "plissierter-satin-schal-fur-damen-mittellang-616800"
+   "holzspielhaus-mit-telefon-21x18x14-cm-667968"
   ]
  },
  "nur_demand_gen": {
-  "Inappropriate image": 297
+  "Inappropriate image": 291
  },
  "handles_demand_gen": {
   "Inappropriate image": [
@@ -1030,7 +947,6 @@
    "glasdome-mit-3-goldrosen-617800",
    "herren-tarnmuster-cargo-pants-606800",
    "yoga-hosen-623400",
-   "halsstutzung-fur-neigung-620600",
    "winterjacke-im-chinesischen-retro-stil-637300",
    "unisex-skull-hoodie-628600",
    "kinder-kuschelschuhe-mit-anti-kick-technik-612400",
@@ -1045,7 +961,6 @@
    "multifunktionaler-3-in-1-outdoor-regenmantel-629200",
    "moderner-ethanol-tischkamin-aus-metall-631100",
    "sleeveless-vest-mit-polster-630900",
-   "high-elastic-fitness-yoga-hose-643300",
    "gotischer-kopfschmuck-schwarz-fgack13679",
    "totenkopf-eimer-17x15-cm-fgabo74555",
    "halskette-mit-totenkopfen-fga98597",
@@ -1089,11 +1004,6 @@
    "mahjong-spielset-aus-acryl-611400",
    "solar-laterne-aus-schmiedeeisen-637600",
    "leuchtende-kurbis-laterne-631500",
-   "eleganter-halterneck-jumpsuit-mit-kapuze-622500",
-   "5d-diamond-painting-halloween-totenkopf-555072",
-   "drahtlose-spielgun-638000",
-   "wiederaufladbarer-smart-simulator-633400",
-   "kabellose-hochdruckreiniger-pistole-633600",
    "hochdruck-autowaschpistole-mit-schaumlanze-619800",
    "hochdruckreiniger-spruhpistole-2200psi-573504",
    "m22-hochdruckreiniger-pistole-mit-verlangerung-48ba76",
@@ -1207,12 +1117,13 @@
    "sitzbezug-classic-skull-universal-860672",
    "kerzenhalter-aus-schmiedeeisen-mit-glas-230723",
    "softshell-jacke-fur-herren-623100",
-   "herren-parka-aus-polyesterfaser-gefuttert-614800"
+   "herren-parka-aus-polyesterfaser-gefuttert-614800",
+   "heissklebepistole-60-100-w-361b43"
   ]
  },
- "dauer_s": 305,
- "wartet_summe": 690,
+ "dauer_s": 381,
+ "wartet_summe": 628,
  "wartet_ueber_tage": 14,
- "wartet_ueber": 19,
+ "wartet_ueber": 40,
  "wartet_aeltestes": "2026-10-02"
 }

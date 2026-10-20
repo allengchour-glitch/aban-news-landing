@@ -11488,3 +11488,5 @@ gro-es-west-teller-fur-steak-gemuse-619400	2604120912211619800	16	11.32	ok	lande
 chic-vintage-damen-slim-fit-farbkombi-dress-625200	2607070931201626100	16	9.47	ok	landeseite
 ovale-keramik-schussel-610900	2603290955331611300	16	14.67	ok	landeseite
 damen-maxikleid-mit-3d-druckarmeln-632800	2607070856321633400	16	8.79	ok	landeseite
+blauer-a-linien-rock-613700	2607070811341614400	16	11.00	ok	landeseite
+keramik-set-5-gabelpaare-5-loffel-635000	2603100810181635500	16	8.53	ok	landeseite

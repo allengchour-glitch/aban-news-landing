@@ -1,26 +1,24 @@
-# Google-Diagnosen (product.feedback der App «Google & YouTube») — Stand 2026-10-19T20:42Z
+# Google-Diagnosen (product.feedback der App «Google & YouTube») — Stand 2026-10-20T14:37Z
 
-Gescannt: 55866 aktive Produkte in 224 Seiten (vollständig), 305 s. Meldungen nur für Shopping Ads (ignoriert): 49286.
+Gescannt: 56111 aktive Produkte in 225 Seiten (vollständig), 381 s. Meldungen nur für Shopping Ads (ignoriert): 48753.
 
-## Free-Listings-Blocker: 51
+## Free-Listings-Blocker: 45
 
 | Klasse | Produkte | davon ohne onlineStoreUrl | davon Ziel «[]» |
 |---|---:|---:|---:|
 | Promotional overlay on image | 36 | 0 | – |
 | Image processing or experiencing delays | 4 | 0 | – |
-| Restricted adult content | 4 | 0 | 4 |
 | Product page unavailable | 2 | 0 | – |
-| Unable to show image | 2 | 0 | – |
 | Sale of live animals | 1 | 0 | – |
 | Tobacco products & related equipment | 1 | 0 | – |
-| Image not processed | 1 | 0 | – |
+| Unable to show image | 1 | 0 | – |
 
-## Wartet bei Google (Prüfung, kein Fehler bei uns): 690
+## Wartet bei Google (Prüfung, kein Fehler bei uns): 628
 
-- Image under review: 683
-- Title under review: 7
+- Image under review: 623
+- Title under review: 5
 
-Verweildauer (dropship/_google_pruefung_seit.json): 19 länger als 14 Tage, ältestes seit 2026-10-02.
+Verweildauer (dropship/_google_pruefung_seit.json): 40 länger als 14 Tage, ältestes seit 2026-10-02.
 Nicht reagieren, solange die Verweildauer kurz ist: Google prüft. Wer hier ein Bild tauscht, setzt die Prüfung neu.
 
 Ziel «[]» = die App nennt kein betroffenes Ziel («… in [] [CH]» statt «in [Free_listings,Shopping_ads]»). Seit 14.10.: bei «Inappropriate image» vermutlich der Meldekontext Demand-Gen-Werbung (eigener Topf unten); für andere Klassen weiter UNBELEGT — Wahrheit = Status je Ziel im Merchant Center.
@@ -29,14 +27,14 @@ Ziel «[]» = die App nennt kein betroffenes Ziel («… in [] [CH]» statt «in
 
 Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.
 
-- Missing shipping info in some countries [LI]: 30996
+- Missing shipping info in some countries [LI]: 30480
 - Alcoholic beverages [LI]: 3
 
 «Missing shipping info … [LI]»: In Shopify gibt es den Tarif (General profile, Zone «Liechtenstein» CHF 14.90, seit 09.10.), Google hat ihn nicht übernommen — und übernimmt ihn von selbst NIE: QUELLE Shopify Help (help.shopify.com/en/manual/online-sales-channels/google/requirements) «You can import rates to ship your products only to the target country in your Google & YouTube channel» — die automatische Versandübernahme gilt nur für das EINE Zielland (CH). «Versand neu importieren» hilft deshalb nicht (GEMESSEN: 9 Tage seit der Freigabe ohne Wirkung). Optionen (Betreiber): (a) nichts tun — die Schweiz ist nicht betroffen, LI ist ein sehr kleiner Markt; (b) im Merchant Center unter «Versand und Rückgaben» einen Service «Liechtenstein, CHF 14.90» von Hand anlegen — QUELLE Google (support.google.com/merchants/answer/14232591): der Shopify-Sync «may overwrite manual updates from Merchant Center», ob der LI-Service überlebt, ist UNBELEGT. NICHT das Land aus dem Shopify-Markt entfernen — LI ist Lieferland. Wirkung = diese Zahl beim nächsten Scan.
 
 ## Nur Demand-Gen-Werbung (blockiert Gratis-Einträge vermutlich NICHT — wir schalten keine Demand-Gen-Werbung)
 
-- Inappropriate image: 297
+- Inappropriate image: 291
 
 Quelle: Google Merchant Help «Demand Gen product ads format requirements» (answer/13389785): Waffen, Totenköpfe, Körperfokus, Rauch/Flammen u. a. sind nur für Demand-Gen-Bilder verboten; «disapproved Demand Gen assets may continue to run on Google's other properties». Bestätigung = Status je Ziel im Merchant Center (Betreiber). Kein Bildtausch dafür (Aufseher seit 14.10.).
 
@@ -44,11 +42,10 @@ Quelle: Google Merchant Help «Demand Gen product ads format requirements» (ans
 
 - Personalized advertising: personal hardships: 83
 - Personalized advertising: legal restrictions: 7
-- Personalized advertising: Sexual interests: 4
 
 ## Meldungen anderer Kanal-Apps (kein Google-Blocker)
 
-- [Shop] Dieses Produkt ist in Shop nicht auffindbar. Prüfe den Angebotsstatus im Shop-Kanal: 3
+- [Shop] Dieses Produkt ist in Shop nicht auffindbar. Prüfe den Angebotsstatus im Shop-Kanal: 4
 
 «ohne onlineStoreUrl» = nicht im Onlineshop publiziert, aber im Google-Kanal — Google sieht eine 404. Reparatur: Onlineshop-Publikation nachziehen oder aus dem Google-Kanal nehmen (Fixer folgt).
 
@@ -102,13 +99,6 @@ Quelle: Google Merchant Help «Demand Gen product ads format requirements» (ans
 
 - ersatzfedern-fur-katzenangel-629300
 
-### Restricted adult content (4)
-
-- sommer-einfarbiges-hohlkleid-613600
-- kardigan-kleid-605700
-- high-elastic-fitness-yoga-hose-643300
-- figurbetonter-body-im-boxer-stil-fur-herren-609900
-
 ### Product page unavailable (2)
 
 - weiche-rutschfeste-babyschuhe-607300
@@ -118,16 +108,11 @@ Quelle: Google Merchant Help «Demand Gen product ads format requirements» (ans
 
 - retro-kupfer-weihrauchhalter-ornament-621632
 
-### Unable to show image (2)
+### Unable to show image (1)
 
 - gurteltasche-fur-outdoor-und-wandern-615300
-- plissierter-satin-schal-fur-damen-mittellang-616800
 
-### Image not processed (1)
-
-- bestickter-seiden-optik-schal-635700
-
-### wartet: Image under review (683) — die ältesten zuerst
+### wartet: Image under review (623) — die ältesten zuerst
 
 - blumenkleid-mit-schnurung-613000 (seit 2026-10-02)
 - schonheitspflaster-628100 (seit 2026-10-02)
@@ -171,13 +156,11 @@ Quelle: Google Merchant Help «Demand Gen product ads format requirements» (ans
 - weit-geschnitten-v-ausschnitt-hoodie-mit-knopf-623200 (seit 2026-10-05)
 - …
 
-### wartet: Title under review (7) — die ältesten zuerst
+### wartet: Title under review (5) — die ältesten zuerst
 
 - distressed-jeans-fur-herren-632300 (seit 2026-10-10)
 - jacquard-kleid-set-mit-schleife-609700 (seit 2026-10-12)
 - schnelltrocknende-wasserschuhe-613600 (seit 2026-10-12)
 - strickkleid-mit-langen-armeln-616500 (seit 2026-10-12)
-- plissierter-satin-schal-fur-damen-mittellang-616800 (seit 2026-10-15)
-- rfid-portemonnaie-mit-zwei-reissverschlussen-611600 (seit 2026-10-15)
 - holzspielhaus-mit-telefon-21x18x14-cm-667968 (seit 2026-10-19)
 

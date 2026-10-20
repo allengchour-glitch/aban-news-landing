@@ -1717,3 +1717,6 @@ gid://shopify/Product/16646213763463	a	toddler
 gid://shopify/Product/16647594312071	a	kids
 gid://shopify/Product/16652080087431	a	toddler
 gid://shopify/Product/16652817367431	a	kids
+gid://shopify/Product/16652062785927	w	Kleinteile	DIY-Armband-Set für Kinder – 155 Teile
+gid://shopify/Product/16652062785927	a	kids
+gid://shopify/Product/16653945799047	a	kids
