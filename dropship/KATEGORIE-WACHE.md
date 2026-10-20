@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-20T05:15Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-20T07:11Z
 
-Aktive gescannt: 62 · ohne Kategorie: 62 · heute gesetzt: 60 (SCHARF, CAP 1500) · danach offen: 2 · Fehler: 0
+Aktive gescannt: 60 · ohne Kategorie: 60 · heute gesetzt: 58 (SCHARF, CAP 1500) · danach offen: 2 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -11,9 +11,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- einfarbiges-midikleid-mit-schlitz-schmaler-sch-624500 · Damenmode → Apparel & Accessories > Clothing
-- tischtop-pflanzgefass-mit-lila-sand-618300 · Haushalt & Wohnen → Apparel & Accessories > Clothing
-- retro-plaid-doppelrevers-langer-mantel-635400 · Damenmode → Apparel & Accessories > Clothing
-- geflochtene-vase-aus-pflanzenfasern-624400 · Haushalt & Wohnen → Home & Garden > Decor > Vases
-- lidschattenpalette-mit-12-farben-670720 · Make-up → Health & Beauty > Personal Care > Cosmetics > Makeup
+- silikonform-fur-planeten-epoxidharz-6a7941 · Basteln & DIY → Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts
+- falsche-wimpern-mit-strass-design-639900 · Make-up → Health & Beauty > Personal Care > Cosmetics > Makeup
+- heissluftfritteuse-mit-zwei-sichtfenster-fache-613400 · Aufbewahrung & Organizer → Home & Garden > Household Appliances
+- 3d-bedrucktes-sweatshirt-mit-rundhalsausschnit-604500 · Damenmode → Apparel & Accessories > Clothing
+- rubbelbuch-mit-stift-c89809 · Werkzeug & Heimwerken → Hardware > Tools
 

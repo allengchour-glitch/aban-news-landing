@@ -11143,3 +11143,4 @@ retro-schadel-clutch-601000	2510300553181601200	16	7.85	ok	landeseite
 matcha-schalen-set-612400	2507270743361612600	16	12.93	ok	landeseite
 holz-anhanger-diy-pfotenmotiv-285952	1453655343023394816	16	5.27	ok	landeseite
 casual-kurzarm-shirt-616500	2606160816511617100	16	8.25	ok	landeseite
+aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben	-	-	-	unklar keine CJ-SKU	landeseite
