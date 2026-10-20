@@ -183,13 +183,16 @@ with _tf.TemporaryDirectory() as _sd:
     for _vor, _alt_n, _tot_erwartet in ((2000, None, True), (200, SP.ALT_NACH_TOT, True), (20, SP.ALT_NACH_TOT, False), (200, None, False), (-200, SP.ALT_NACH_TOT, True)):
         _lk.write_text("1 0")
         _os.utime(_lk, (_time.time() + _vor, _time.time() + _vor))  # (-200: eine ganz gewöhnliche tote Sperre, 200 s alt — die bisherige Regel bleibt)
+        _t0 = _time.time()
         try:
             with SP.lauf_sperre(ordner=_sd, warten=0, **({} if _alt_n is None else {"alt_nach": _alt_n})):
                 _uebernommen = True
         except SP.Besetzt:
             _uebernommen = False
+        _dauer_z = _time.time() - _t0
         _lk.unlink(missing_ok=True)
-        pruefe(f"Sperre aus der Zukunft (Änderungszeit {_vor:+d} s, alt_nach={'900 (Standard)' if _alt_n is None else _alt_n}): {'als tot übernommen' if _tot_erwartet else 'lebt (nicht übernommen)'}", _uebernommen is _tot_erwartet, _uebernommen)
+        # die Dauer gehört zum Urteil: eine zu früh «tote» Sperre aus der Zukunft liesse die Schleife bis zum Einholen der Änderungszeit drehen (Δ Sekunden Dauerlauf, dann Besetzt) — gleiches Ergebnis, aber 20 s Last
+        pruefe(f"Sperre aus der Zukunft (Änderungszeit {_vor:+d} s, alt_nach={'900 (Standard)' if _alt_n is None else _alt_n}): {'als tot übernommen' if _tot_erwartet else 'lebt (nicht übernommen)'}, sofort (keine Warteschleife)", _uebernommen is _tot_erwartet and _dauer_z < 5, (_uebernommen, _dauer_z))
     _alt_hz = SP.HERZSCHLAG
     SP.HERZSCHLAG = 0.05
     try:
