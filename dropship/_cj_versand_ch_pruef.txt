@@ -11533,3 +11533,12 @@ fahrradhelm-mit-sonnenschutz-und-rucklicht-375232	1378297215851827200	16	7.99	ok
 holz-tray-oval-japanischer-stil-610100	2407310304151610300	16	9.61	ok	landeseite
 bike-ruckenfach-doppelgurteltasche-938880	1376869862193893376	16	14.96	ok	landeseite
 kinderstrand-schuhe-727872	1647172553603031040	16	9.20	ok	landeseite
+kleidungsaufbewahrungsregal-609400	2407230326321609500	16	7.05	ok	landeseite
+motorradhelm-wandhalter-608500	2407160522211608700	16	9.88	ok	landeseite
+wollfutter-kinderschuhe-215680	1643489826307575808	0	-	KEINE CH-Option → DRAFT	landeseite
+kinderschutzhelm-fur-schule-freizeit-168320	1374930684891762688	16	20.04	ok	landeseite
+atmungsaktive-basketball-schuhe-fur-jungen-484160	1643068485028810752	16	12.21	ok	landeseite
+fahrradhelm-355712	1374246031344144384	16	10.77	ok	landeseite
+retro-arbeitsstil-weitbeinige-jogginghose-624000	2512191041081624300	16	9.47	ok	landeseite
+faltbarer-sommerhelm-298816	1374238142177087488	16	13.46	ok	landeseite
+tauchschwimmer-signalboje-610400	2607120113001611000	16	10.15	ok	landeseite

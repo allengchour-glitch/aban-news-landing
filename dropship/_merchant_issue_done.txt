@@ -15,3 +15,5 @@
 15485060841857	google-gesperrt-cbd	Pack Feuchtigkeitspflege Gesicht CBD InnovaGoods | LuxeStyle
 15485060940161	google-gesperrt-cbd	Doppel-Pack Regenerierende Pflege CBD InnovaGoods | LuxeStyl
 15485061104001	google-gesperrt-cbd	Packung Mitesser-Reinigungsbehandlung CBD InnovaGoods | Luxe
+gid://shopify/Product/15508397228417	2026-10-20T15:22Z	google-gesperrt-fehlalarm (Tabak/lebende Tiere laut Google-Diagnose 20.10., Onlineshop bleibt)
+gid://shopify/Product/15446271721857	2026-10-20T15:22Z	google-gesperrt-fehlalarm (Tabak/lebende Tiere laut Google-Diagnose 20.10., Onlineshop bleibt)
