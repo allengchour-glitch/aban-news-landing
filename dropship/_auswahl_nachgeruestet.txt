@@ -3146,3 +3146,7 @@
 15508414628225	Grösse:8:8	2026-10-20	schwarzer-sofabezug-mit-pflanzenmuster-620200
 15508409778561	Typ:4:4	2026-10-20	westernteller-set-im-nordischen-stil-749248
 15508409745793	Farbe:3+Grösse:2:6	2026-10-20	strandtuch-wandteppich-9cdfa7
+15508409254273	Farbe:2+Grösse:2:4	2026-10-20	dekorative-retro-bilder-b6a3fe
+15508409024897	Typ:2:2	2026-10-20	salatschussel-aus-hitzebestandigem-borosilikat-004096
+15508406698369	Grösse:2:2	2026-10-20	leder-stempelset-englische-buchstaben-caf569
+15508406272385	Grösse:3:3	2026-10-20	rattan-aufbewahrungskorb-mit-deckel-612700

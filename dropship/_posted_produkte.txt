@@ -518,3 +518,5 @@ pid:15450828603777
 slug:vulkan-flammen-aroma-diffusor-luftbefeuchter
 slug:plusch-specht-am-stamm-27-cm-fga17841
 name:plüschspechtamstamm27cm
+slug:bruder-zubehor-rundumleuchte-fga02807
+name:bruderzubehörrundumleuchte

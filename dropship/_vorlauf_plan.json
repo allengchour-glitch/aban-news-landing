@@ -1067,15 +1067,18 @@
   "story-20261020T1710": {
    "basis_utc": "2026-10-20T17:10:00Z",
    "format": "story",
-   "grund": "zurückgezogen: Produkt einhornskelett-18-cm-fga910992 nicht kaufbar/nicht veröffentlicht",
+   "grund": "",
    "handle": "",
    "handles": [
-    "einhornskelett-18-cm-fga910992"
+    "plusch-specht-am-stamm-27-cm-fga17841"
    ],
    "letzter_versuch": "2026-10-20T14:42:48Z",
-   "mc_ids": [],
+   "mc_ids": [
+    401178177,
+    401178194
+   ],
    "reserviert_um": "2026-10-20T14:42:48Z",
-   "status": "reserviert",
+   "status": "geplant",
    "termin_utc": "2026-10-20T17:10:00Z",
    "versuche": 1
   },
@@ -1222,12 +1225,12 @@
    "handles": [
     "rettungsschwimmer-set-fga928124"
    ],
-   "letzter_versuch": "2026-10-18T22:23:32Z",
+   "letzter_versuch": "2026-10-20T14:43:37Z",
    "mc_ids": [],
-   "reserviert_um": "2026-10-18T22:23:32Z",
-   "status": "offen",
+   "reserviert_um": "2026-10-20T14:43:37Z",
+   "status": "reserviert",
    "termin_utc": "2026-10-25T11:45:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "story-20261025T1810": {
    "basis_utc": "2026-10-25T18:10:00Z",
@@ -1796,6 +1799,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-20T14:42:48Z",
+ "stand": "2026-10-20T14:43:37Z",
  "version": 1
 }
