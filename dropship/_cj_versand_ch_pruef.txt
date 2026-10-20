@@ -11429,3 +11429,5 @@ camouflage-taktikbrusttasche-outdoor-fahrrad-635500	2512191234361635700	16	11.60
 ripped-jeans-gerade-geschnitten-628600	2604150949381629100	16	12.81	ok	landeseite
 cycling-legbag-637300	2512190706261637800	16	8.39	ok	landeseite
 nymphen-gewebe-kreativ-fur-buhnenverzierung-918976	1728970459342970880	16	5.55	ok	landeseite
+weite-damenhosen-mit-stretch-623000	2604140838551623500	16	11.00	ok	landeseite
+herren-leder-schultertasche-casual-stilvoll-621600	2512180056481621800	16	9.61	ok	landeseite
