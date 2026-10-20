@@ -406,6 +406,24 @@ def waffen_netz():
     return zeile() or ""
 
 
+def cj_sku_netz():
+    """CJ-SKU-Erkennung (automation/cj_sku_wache.py, 20.10.2026): liest den Tagesstand dropship/_cj_sku_stand.json — kein Shopify-Aufruf.
+    Anlass: 3'466 nackte CJ-SKUs («CJYDQXHB00011-BROWN-39») fielen durch die Erkennung des Bestellmotors (Kunde zahlt, bei CJ wird nichts
+    bestellt). Meldet unbekannte SKU-Formen in den Neuimporten, einen roten Code-Kanarienvogel oder einen Stand älter als 2 Tage."""
+    try:
+        from cj_sku_wache import zeile
+    except Exception:
+        import importlib.util
+        spur = os.path.join(os.path.dirname(os.path.abspath(__file__)), "cj_sku_wache.py")
+        spec = importlib.util.spec_from_file_location("cj_sku_wache", spur)
+        if not spec or not spec.loader:
+            return ""
+        modul = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(modul)
+        zeile = modul.zeile
+    return zeile() or ""
+
+
 def liechtenstein_gesperrt():
     """Liechtenstein: Zustand in BEIDE Richtungen — Markt UND sichtbare Zusagen.
 
@@ -1544,7 +1562,7 @@ def main():
     ohne_token = not os.path.exists(TOKPFAD)
     # Pruefungen, die den Shop-Token brauchen, laufen ohne ihn nicht — alle anderen schon (26.09.).
     MIT_TOKEN = (liechtenstein_gesperrt, klingen_pingpong, grow_zaehler, drafts_ohne_quittung, datei_speicher_voll, video_deckel, alter_lieferblock)
-    pruefungen = (bot_puls, waffen_netz, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kassen_lieferdatum, werbetest, verkauf_gewinn, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, codex_github, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik, startseiten_gewicht, such_boosts, alter_lieferblock, social_sperre, gsc_tot, index_stand, wearable_seo, koll_versprechen, koll_leer, texte_angehalten, cj_suche_tor, waisen_verzeichnis)
+    pruefungen = (bot_puls, waffen_netz, cj_sku_netz, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kassen_lieferdatum, werbetest, verkauf_gewinn, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, codex_github, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik, startseiten_gewicht, such_boosts, alter_lieferblock, social_sperre, gsc_tot, index_stand, wearable_seo, koll_versprechen, koll_leer, texte_angehalten, cj_suche_tor, waisen_verzeichnis)
     teile = [zugang_weg()]
     for f in pruefungen:
         if ohne_token and f in MIT_TOKEN:

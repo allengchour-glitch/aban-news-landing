@@ -3631,6 +3631,20 @@ JSON
       echo "$(date -u +%H:%M) ueberwachung_waffen_guard gestartet ($UW_MODUS)"
     fi
   fi
+  # 🔤 CJ-SKU-FORMEN, einmal täglich (20.10.2026): Vollmessung fand 3'466 nackte CJ-SKUs («CJYDQXHB00011-BROWN-39»), die der Bestellmotor und
+  # mehrere Wächter nicht erkannten. Die Erkennung steht jetzt in automation/cj_sku.py; diese Wache prüft die Neuimporte der letzten 3 Tage auf
+  # unbekannte Formen und den Code-Kanarienvogel (Selbsttest + Einbindung in alle Verbraucher) und schreibt dropship/_cj_sku_stand.json,
+  # die Betreiber-Ampel meldet «CJ-SKU: …». Exit 1 = Befund (kein Absturz: FERTIG-Zeile, kein Nachholen), Exit ≥ 2 = Fehler.
+  CSW=/tmp/cj_sku_wache.log
+  if [ -f "$REPO/automation/cj_sku_wache.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$CSW" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$CSW" || still_gestorben "$CSW"; then
+      touch "$CSW"
+      ( cd "$REPO" && setsid bash -c "echo \"START \$(date -u +%FT%TZ) cj-sku-wache\"; python3 -u automation/cj_sku_wache.py; rc=\$?; if [ \$rc -le 1 ]; then echo \"FERTIG cj-sku-wache (Exit \$rc)\"; else echo \"Error: cj_sku_wache Exit \$rc\"; fi" \
+          >> "$CSW" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) cj_sku_wache gestartet"
+    fi
+  fi
   # 🏷️ BILD-ALT-TEXTE der Neuimporte, einmal täglich über die letzten Tage (20.08.2026).
   # Warum zusätzlich zu `alt_text_backfill.mjs` weiter unten: der sortiert CREATED_AT
   # ABSTEIGEND und merkt sich einen Cursor. Neue Produkte entstehen aber genau VORNE in
