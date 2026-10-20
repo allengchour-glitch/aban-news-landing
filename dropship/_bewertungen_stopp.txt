@@ -8,3 +8,7 @@ entscheidet der Betreiber (oder eine Fachperson), nicht der Agent.
 
 Wirkung dieser Datei: Das Skript schreibt nichts mehr nach Judge.me. Bestehende Bewertungen bleiben unverändert.
 Aufheben: diese Datei löschen (nach der Betreiber-Entscheidung zu Quelle und Kennzeichnung).
+
+SEIT: 2026-10-12T04:56:54Z
+AB-ID: 1374773944
+(Grenze für automation/judgeme_fake_wache.py: letzte Judge.me-Bewertung VOR dem Stopp, gemessen 20.10.2026 — jede Importer-Bewertung mit grösserer ID ist NACH dem Stopp entstanden. Der Importer prüft nur, ob die Datei existiert.)

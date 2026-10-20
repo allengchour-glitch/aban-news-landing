@@ -1,20 +1,28 @@
 # COWORK-BEFEHL — Fassung 21.09.2026, 09:40 UTC (für heute Abend)
 
-## 🆕 20.10. 05:00 UTC — Bewertungen auf den Top-Seiten: ein Entscheid (1 Min.), sonst bleibt das Ziel vom 22.10. unerreichbar
-**Gemessen (`python3 tools/webseite_bilanz.py`, 20.10.):** Von den 29 meistbesuchten Produktseiten haben **3** eine Bewertung (Ausgang 01.10.: 2).
-Der Plan «Kauf-Strecke» verlangt für den **22.10. ≥ 10 von 29**. Das geht nur über den CJ-Bewertungs-Import — und der steht seit **12.10.** still:
-`dropship/_bewertungen_stopp.txt` (Gegenprobe wf_52c03c1d: die Importe erschienen mit dem Namen «Käufer:in beim Lieferanten» und der
-Platzhalter-Mail `cj-import@luxestyle.ch`; 351 Produkte, 1'848 Posts; Notiz 12.10., Quelle `/tmp/cj_reviews_import.log`).
-Ob das als Irreführung über die Herkunft gilt (UWG Art. 3), entscheide nicht ich. **Ich habe die Datei nicht angerührt.**
+## 🆕 20.10. 07:00 UTC — Bewertungen: A ist entschieden — aber eine ZWEITE Sitzung importiert trotz Stopp weiter (1 Min., sonst läuft es weiter)
+**Entschieden 20.10. (Betreiber «A und sonst weiter»):** Der Import-Stopp (`dropship/_bewertungen_stopp.txt`) bleibt, das Plan-Ziel «≥ 10 von 29 Top-Seiten bis 22.10.» entfällt.
+Bewertungen kommen künftig nur von echten Käufern des Shops. Hinzu kommt: für die meisten der meistbesuchten Seiten gibt es bei CJ ohnehin keine Kommentare
+(Messung 01.10., `dropship/BEWERTUNGEN-2026-10-01.md`) — auch eine Freigabe (B) hätte das Ziel nicht erreicht.
 
-**Antwort genügt mit einem Wort:**
-- **«A»** (meine Empfehlung): Stopp bleibt. Das Ziel «≥ 10 von 29» wird gestrichen. Bewertungen kommen nur von echten Käufern des Shops
-  (Bewertungsanfrage nach dem Kauf; bisher 5 Käufe seit 01.10.). Ich ziehe die Zeile im Plan und die Wächter-Schwelle nach.
-- **«B»**: Import wieder freigeben, aber nur mit ehrlicher Kennzeichnung der Herkunft («Bewertung aus der Lieferantenquelle»), ohne Platzhalter-Mail.
-  Dafür bräuchte ich vorher eine Fachperson für die UWG-Frage — ohne die würde ich B nicht umsetzen.
-- Offen bleibt in beiden Fällen: Sollen die **bereits veröffentlichten** Importbewertungen sichtbar bleiben oder per API ausgeblendet werden
-  (`curated=spam`, umkehrbar)? Heute sichtbar: Judge.me meldet 13'387 Bewertungen insgesamt (Metafeld, 18.10.), die Wache findet 0 verdächtige
-  (`dropship/JUDGEME-WACHE.md`).
+**Gemessen beim Gegenlesen (Judge.me-API, nur lesend, 20.10.): Der Stopp wird umgangen.**
+- **1'191 Bewertungen** entstanden NACH dem Stopp (16.10. 19:10 bis 18.10. 18:55 UTC), **901 sichtbar**, 290 ausgeblendet (die Doppel-Wache). 223 Produkte, 351 mit Kundenfoto.
+- **Ursache:** Die Sitzung auf dem Branch `claude/project-thread-shf90k` (Commits «Bewertungen: Tagesabschluss — 775 echte Reviews auf 152 Produkten», PRs #2674–#2680, 17.–18.10.)
+  läuft auf `main`. Dort kennt der Importer die Stopp-Datei nicht und schreibt noch die alte Absenderform `cj-import+<Zufall>@luxestyle.ch`.
+- **Zwei Probleme, beide vom Betreiber schon einmal entschieden:** (1) **Nur 4–5 Sterne** — 1'069 × 5★, 122 × 4★, kein einziger darunter. Das ist die Rosinenauswahl, die seit 23.08.
+  als irreführend gilt (UWG Art. 3; seit dann holt der Import ALLE Sterne). (2) **1'190 erfundene Absenderadressen** — dieselbe Klasse, die am 04.09. 1'482 Karteileichen
+  in Klaviyo erzeugte (Judge.me spiegelt Rezensenten dorthin; Mails an `@luxestyle.ch` prallen am eigenen Server ab, Absenderruf).
+- Die Wache sah es nicht (`JUDGEME: 0 verdaechtig`), weil die Plus-Adresse ein erlaubtes Importer-Muster war. **Neu seit heute:** Zeile `NACH-STOPP: n veroeffentlicht …` in der
+  Judge.me-Wache und in der Ampel (⭐), Selbsttest mit Mutationsprobe (`python3 automation/judgeme_fake_wache.py --selbsttest`).
+
+**Zwei Dinge, die nur du kannst (Antwort mit Nummern genügt):**
+1. **Die andere Sitzung stoppen.** Ich darf auf `main` nichts schreiben und nicht in fremde Sitzungen eingreifen. Text zum Einfügen dort:
+   «Der Bewertungs-Import ist vom Betreiber am 20.10. gestoppt (Entscheid A). Nicht mehr `cj_reviews_import.mjs` laufen lassen, keine Judge.me-Schreibzugriffe.
+   Grund: nur 4–5★ (Rosinenauswahl, seit 23.08. verboten) und erfundene Absender `cj-import+…@luxestyle.ch`. Die Datei `dropship/_bewertungen_stopp.txt` gehört auch auf `main`,
+   der Importer muss sie prüfen.»
+2. **Die 901 sichtbaren Nach-Stopp-Bewertungen ausblenden?** (`curated=spam`, umkehrbar, ich liefere die ID-Liste; Löschen geht nur in deinem Judge.me-Admin.)
+   Meine Empfehlung: **ja** — sie widersprechen deiner eigenen Regel «alle Sterne, keine erfundenen Adressen», und ich habe sie bewusst NICHT angefasst.
+   Die älteren Importbewertungen (bis 12.10., 351 Produkte) bleiben in beiden Fällen sichtbar, solange du nichts anderes sagst.
 
 ## 🆕 14.10. 13:30 UTC — Umgebungsvariable SHOPIFY_CLIENT_SECRET korrigieren (1 Min., Einfügefehler)
 **Gemessen:** In den Claude-Umgebungseinstellungen hat `SHOPIFY_CLIENT_SECRET` **60 Zeichen**, gültig sind **38** (Format `shpss_` + 32).
