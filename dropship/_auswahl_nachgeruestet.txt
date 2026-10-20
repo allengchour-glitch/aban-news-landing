@@ -3173,3 +3173,5 @@
 16655083864455	Farbe:3:3	2026-10-20	schwarzer-strick-cardigan-mit-gurtelschnalle-602100
 16655083405703	Grösse:3:3	2026-10-20	wicker-stil-handkorb-fur-obst-und-gemuse-mitte-603100
 16655083372935	Farbe:7:7	2026-10-20	alpaka-fleece-set-hut-schal-handschuhe-651600
+15506570641793	Grösse:2:2	2026-10-20	doppelwandige-abtropfschale-fur-fruchte-860480
+15506410668417	Farbe:4:4	2026-10-20	hangender-organizer-mit-wochenetiketten-607700
