@@ -3122,3 +3122,4 @@
 15510785360257	Stil:3:3+ki	2026-10-20	verstellbares-katzenbett-603000
 16654905770375	Farbe:3:3+ki	2026-10-20	multifunktioneller-makeup-stick-621000
 16654905672071	Farbe:3:3+ki	2026-10-20	foundation-mit-farbwechsel-606500
+16654884864391	Farbe:4+Grösse:19:76	2026-10-20	sitzkissenbezug-aus-weichem-samt-613300
