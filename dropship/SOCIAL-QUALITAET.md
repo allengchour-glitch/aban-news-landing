@@ -1,42 +1,42 @@
-# Social-Qualität — Stand 2026-10-19 00:01 UTC
+# Social-Qualität — Stand 2026-10-20 00:10 UTC
 
 Erzeugt von `automation/social_qualitaet_wache.mjs` — **nur lesend**: kein Post, keine Caption, kein Profil und keine Planung wurde geändert. Jede Aktion unten ist ein **Vorschlag**.
 
 ## Gelesen
 
 - Instagram: 100 Beiträge (letzte 100, mit Aufrufen/Reichweite aus Insights)
-- Facebook: 122 Seitenbeiträge + 0 Reels ohne Seitenbeitrag (letzte 60 Tage; Profil-/Titelbildwechsel ausgenommen)
-- Metricool-Planer: 442 Einträge (−30/+7 Tage) · Pinterest-Analyse: 215 Pins
-- Geprüft: 879 Beiträge, 967 Medien (ffprobe/ebur128/Tesseract)
+- Facebook: 125 Seitenbeiträge + 0 Reels ohne Seitenbeitrag (letzte 60 Tage; Profil-/Titelbildwechsel ausgenommen)
+- Metricool-Planer: 472 Einträge (−30/+7 Tage) · Pinterest-Analyse: 218 Pins
+- Geprüft: 915 Beiträge, 1024 Medien (ffprobe/ebur128/Tesseract)
 - Shopify live: Gratisversand CH ab CHF 40.5 Warenkorb nach Rabatt (öffentliche Aussage «ab CHF 50» ist damit gedeckt) · Standard CHF 7 · Kanarienvogel Suche: ok (sku: und title: liefern 0 für Unsinn)
 
 ## Zusammenfassung
 
-**87 Fehler · 354 Warnungen · 290 Hinweise** — Fehler/Warnungen in 387 von 879 Beiträgen.
+**87 Fehler · 369 Warnungen · 300 Hinweise** — Fehler/Warnungen in 404 von 915 Beiträgen.
 
 Vorgeschlagene Aktionen (nichts davon ausgeführt):
 
-- Facebook: 74 × Caption korrigieren · 52 × löschen/neu posten — beides per API möglich, sobald freigegeben [Q1]
-- Instagram: 54 × Caption in der App korrigieren (API kann es nicht [Q2]) · 69 × löschen/neu posten (nur App/PC oder Facebook-User-Token [Q2])
+- Facebook: 81 × Caption korrigieren · 55 × löschen/neu posten — beides per API möglich, sobald freigegeben [Q1]
+- Instagram: 56 × Caption in der App korrigieren (API kann es nicht [Q2]) · 74 × löschen/neu posten (nur App/PC oder Facebook-User-Token [Q2])
 - TikTok/YouTube/Pinterest: 138 × in der jeweiligen App (Metricool löscht nur Geplantes [Q3])
 - Schutzregel: 0 Beiträge über 500 Aufrufe → nie löschen, nur Caption
 
 | Klasse | Instagram | Facebook | TikTok | YouTube | Pinterest | Summe |
 |---|---:|---:|---:|---:|---:|---:|
-| DIREKTLINK | · | · | · | · | 141 | 141 |
-| DOPPEL | 64 | 45 | 2 | · | 10 | 121 |
+| DIREKTLINK | · | · | · | · | 144 | 144 |
+| DOPPEL | 69 | 48 | 2 | · | 10 | 129 |
 | ENGLISCH | 2 | · | · | · | · | 2 |
 | FLOSKEL | · | 1 | · | · | 1 | 2 |
-| FORMAT | 66 | 52 | 1 | · | 34 | 153 |
-| PREIS | 15 | 35 | 17 | 8 | 94 | 169 |
+| FORMAT | 73 | 52 | 1 | · | 34 | 160 |
+| PREIS | 10 | 35 | 17 | 8 | 94 | 164 |
 | PRODUKT | 1 | 2 | · | 3 | 7 | 13 |
-| TEXT | 36 | 36 | · | · | · | 72 |
+| TEXT | 43 | 43 | · | · | · | 86 |
 | TON | 2 | 2 | · | · | · | 4 |
-| VERSAND | 16 | 22 | · | · | 16 | 54 |
+| VERSAND | 14 | 22 | · | · | 16 | 52 |
 
-Produkt zugeordnet: 713 von 879 Beiträgen (Link 522, Titel 171, Ledger 19, CJ-SKU 1).
+Produkt zugeordnet: 734 von 915 Beiträgen (Titel 175, Link 531, Ledger 27, CJ-SKU 1).
 
-Dazu: 45 Facebook-Beiträge ohne Direktlink (Liste unten) · 13 Beiträge mit Preis, aber ohne sichere Produktzuordnung · 3 Beiträge mit nicht messbaren Medien.
+Dazu: 52 Facebook-Beiträge ohne Direktlink (Liste unten) · 14 Beiträge mit Preis, aber ohne sichere Produktzuordnung · 3 Beiträge mit nicht messbaren Medien.
 
 ## Befunde (Fehler zuerst, dann nach Aufrufen; Hinweise stehen gesammelt weiter unten)
 
@@ -406,7 +406,7 @@ Dazu: 45 Facebook-Beiträge ohne Direktlink (Liste unten) · 13 Beiträge mit Pr
 - Post: https://www.facebook.com/reel/1074059645370975/
 - Text: «Dein neues Lieblingsteil? 👀 «Schwimmboje mit Doppelairbag & Rucksack» CHF 24.90 · Gratis Versand ab CHF 50 · Klarna & TWINT 🇨🇭 🔗 https:…»
 - Produkt: Schwimmboje mit Doppelairbag & Rucksack (ACTIVE, https://luxestyle.ch/products/schwimmboje-mit-doppelairbag-rucksack-782336, SKU CJJM119129001AZ) — Zuordnung: Link im Text
-- **FEHLER PREIS:** Lockpreis: Caption CHF 24.90, Shop CHF 26.90 («Schwimmboje mit Doppelairbag & Rucksack», Zuordnung: Link im Text)  
+- **FEHLER PREIS:** Lockpreis: Caption CHF 24.90, Shop CHF 26.90–28.90 («Schwimmboje mit Doppelairbag & Rucksack», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: FB-API POST /{post-id} message=… [Q1]
 
 ### FEHLER · Pinterest pin · 2026-10-13 01:28 UTC · 3 Aufrufe
@@ -641,7 +641,7 @@ Dazu: 45 Facebook-Beiträge ohne Direktlink (Liste unten) · 13 Beiträge mit Pr
 - Text: «Dein neues Lieblingsteil? 👀 «Schwimmboje mit Doppelairbag & Rucksack» CHF 24.90 · Gratis Versand ab CHF 50 · Klarna & TWINT 🇨🇭 🔗 luxest…»
 - Produkt: Schwimmboje mit Doppelairbag & Rucksack (ACTIVE, https://luxestyle.ch/products/schwimmboje-mit-doppelairbag-rucksack-782336, SKU CJJM119129001AZ) — Zuordnung: Link im Text
 - (+ 1 Hinweis, siehe Hinweis-Liste)
-- **FEHLER PREIS:** Lockpreis: Caption CHF 24.90, Shop CHF 26.90 («Schwimmboje mit Doppelairbag & Rucksack», Zuordnung: Link im Text)  
+- **FEHLER PREIS:** Lockpreis: Caption CHF 24.90, Shop CHF 26.90–28.90 («Schwimmboje mit Doppelairbag & Rucksack», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
 ### FEHLER · YouTube video · 2026-09-24 16:30 UTC · n/a Aufrufe
@@ -672,7 +672,7 @@ Dazu: 45 Facebook-Beiträge ohne Direktlink (Liste unten) · 13 Beiträge mit Pr
 - **FEHLER PREIS:** Lockpreis: Caption CHF 27.90, Shop CHF 35.90 («Matcha-Set mit Schale und Zubehör», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: YouTube Studio (kein YouTube-Token hier) [Q3]
 
-<details><summary>301 Beiträge nur mit Warnungen (aufklappen)</summary>
+<details><summary>318 Beiträge nur mit Warnungen (aufklappen)</summary>
 
 ### WARNUNG · TikTok video · 2026-09-23 06:37 UTC · 556 Aufrufe
 - Post: https://www.tiktok.com/@luxestyle.ch/video/7688585316826877216
@@ -811,13 +811,6 @@ Dazu: 45 Facebook-Beiträge ohne Direktlink (Liste unten) · 13 Beiträge mit Pr
 - **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-09-29 04:47 UTC gepostet: https://www.pinterest.com/pin/1111333645581667020/  
   → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
-### WARNUNG · Instagram reel · 2026-09-29 17:09 UTC · 32 Aufrufe
-- Post: https://www.instagram.com/reel/Dd4QyVLD_y2/ · Zwilling: https://www.facebook.com/reel/1516076157227660/
-- Text: «Küche, aber einfacher 👀 «Schnellauftauplatte für die Küche» — Die Schnellauftauplatte aus Aluminium ist ein praktischer Helfer in jeder Kü…»
-- Produkt: Schnellauftauplatte für die Küche (ACTIVE, https://luxestyle.ch/products/schnellauftauplatte-fur-die-kuche-750720, SKU CJ-1422455623806750720) — Zuordnung: Link im Text
-- **WARNUNG PREIS:** veraltet: Caption CHF 37.90, Shop CHF 33.90 («Schnellauftauplatte für die Küche», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
-
 ### WARNUNG · Pinterest pin · 2026-10-03 20:30 UTC · 30 Aufrufe
 - Post: https://www.pinterest.com/pin/1111333645582067570/
 - Text: «Kinder-Halbstiefel aus Kunstleder Diese modischen Halbstiefel sind für Kinder konzipiert, die bequeme und robuste Schuhe für den Alltag ben…»
@@ -830,13 +823,6 @@ Dazu: 45 Facebook-Beiträge ohne Direktlink (Liste unten) · 13 Beiträge mit Pr
 - Text: «Eleganter Wollmantel mit Revers und Bindegürtel · CHF 48.90 Kleiner Schweizer Shop aus Belp, kein Konzern. Lieferung 10–20 Werktage, dafür …»
 - Produkt: Eleganter Wollmantel mit Revers und Bindegürtel (ACTIVE, https://luxestyle.ch/products/eleganter-wollmantel-mit-revers-und-bindegurte-615500, SKU CJ-CJYD290679701AZ) — Zuordnung: erste Zeile
 - **WARNUNG PREIS:** veraltet: Caption CHF 48.90, Shop CHF 42.90–44.90 («Eleganter Wollmantel mit Revers und Bindegürtel», Zuordnung: erste Zeile)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
-
-### WARNUNG · Instagram karussell · 2026-09-29 20:24 UTC · 30 Aufrufe
-- Post: https://www.instagram.com/p/Dd4nKUeD_qe/ · Zwilling: https://www.facebook.com/122102579637350792/posts/122141900139350792
-- Text: «Strickpullover Rundhals Loose-Fit · CHF 27.90 Kleiner Schweizer Shop aus Belp, kein Konzern. Lieferung 10–20 Werktage, dafür ehrlich angesc…»
-- Produkt: Strickpullover Rundhals Loose-Fit (ACTIVE, https://luxestyle.ch/products/strickpullover-rundhals-loose-fit-634500, SKU CJ-CJMY293330002BY) — Zuordnung: erste Zeile
-- **WARNUNG PREIS:** veraltet: Caption CHF 27.90, Shop CHF 23.90 («Strickpullover Rundhals Loose-Fit», Zuordnung: erste Zeile)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
 
 ### WARNUNG · Pinterest pin · 2026-10-02 20:17 UTC · 26 Aufrufe
@@ -854,6 +840,13 @@ Dazu: 45 Facebook-Beiträge ohne Direktlink (Liste unten) · 13 Beiträge mit Pr
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 - **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-01 04:46 UTC gepostet: https://www.pinterest.com/pin/1111333645581833288/  
   → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
+
+### WARNUNG · Instagram reel · 2026-10-19 16:32 UTC · 23 Aufrufe
+- Post: https://www.instagram.com/reel/Dersa8yM0WI/
+- Text: «Alles dabei. Schnell zur Hand. Fächer für deine wichtigsten Dinge – tragbar am Rücken oder in der Hand. Entdecke die Business-Tasche bei Lu…»
+- Produkt: Business Casual Laptop-Umhängetasche (ACTIVE, https://luxestyle.ch/products/business-casual-laptop-umhangetasche-178048, SKU CJNS173116901AZ) — Zuordnung: Link im Text
+- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-18 18:30 UTC gepostet: (geplant, Metricool 398726093)  
+  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: IG-App/PC (API-Löschen nur mit Facebook-User-Token) [Q2]
 
 ### WARNUNG · Instagram bild · 2026-09-30 19:09 UTC · 23 Aufrufe
 - Post: https://www.instagram.com/p/Dd7DUIujzrT/ · Zwilling: https://www.facebook.com/122102579637350792/posts/122142170619350792
@@ -918,7 +911,7 @@ Dazu: 45 Facebook-Beiträge ohne Direktlink (Liste unten) · 13 Beiträge mit Pr
 ### WARNUNG · Pinterest pin · 2026-10-03 20:26 UTC · 17 Aufrufe
 - Post: https://www.pinterest.com/pin/1111333645582067229/
 - Text: «Silikon-Gesichtsreinigungsbürste Diese Silikon-Gesichtsreinigungsbürste nutzt Ultraschall-Vibrationen, um deine Haut sanft und effektiv zu …»
-- Produkt: Silikon-Gesichtsreinigungsbürste (ACTIVE, https://luxestyle.ch/products/silikon-gesichtsreinigungsburste-0787a2, SKU CJ-9AFB5911-3201-45F6-905D-1) — Zuordnung: Link im Text
+- Produkt: Silikon-Gesichtsreinigungsbürste (ACTIVE, https://luxestyle.ch/products/silikon-gesichtsreinigungsburste-0787a2, SKU CJBJMRDD00070-Grey) — Zuordnung: Link im Text
 - **WARNUNG PREIS:** veraltet: Caption CHF 36.90, Shop CHF 32.90 («Silikon-Gesichtsreinigungsbürste», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
@@ -937,17 +930,6 @@ Dazu: 45 Facebook-Beiträge ohne Direktlink (Liste unten) · 13 Beiträge mit Pr
 - **WARNUNG PREIS:** veraltet: Caption CHF 24.90, Shop CHF 21.90 («Hunde-Geschirr mit Leine, tragbar», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
 
-### WARNUNG · Instagram bild · 2026-09-29 16:27 UTC · 16 Aufrufe
-- Post: https://www.instagram.com/p/Dd4L-PdjV4S/ · Zwilling: https://www.facebook.com/122102579637350792/posts/122141854365350792
-- Text: «🇨🇭 Ab Schweizer Lager – in 1–2 Werktagen bei dir Plüsch Alligator · CHF 29.90 Kleiner Schweizer Shop aus Belp, kein Konzern. Versand ab S…»
-- Produkt: Plüsch Alligator (ACTIVE, https://luxestyle.ch/products/plusch-alligator-fga88595, SKU fortura-88595) — Zuordnung: erste Zeile
-- **WARNUNG VERSAND:** Lieferzeit-Zusage kürzer als die ehrliche Angabe 10–20 Werktage: «b Schweizer Lager – in 1–2 Werktagen bei dir Plüsch Alli»  
-  → Vorschlag: nur stehen lassen, wenn das Produkt ab CH-Lager kommt; sonst Caption korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
-- **WARNUNG VERSAND:** Lieferzeit-Zusage kürzer als die ehrliche Angabe 10–20 Werktage: «ab Schweizer Lager in 1–2 Werktagen · 30 Tage Rückgabe»  
-  → Vorschlag: nur stehen lassen, wenn das Produkt ab CH-Lager kommt; sonst Caption korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
-- **WARNUNG PREIS:** veraltet: Caption CHF 29.90, Shop CHF 26.90 («Plüsch Alligator», Zuordnung: erste Zeile)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
-
 ### WARNUNG · Instagram reel · 2026-10-02 07:13 UTC · 15 Aufrufe
 - Post: https://www.instagram.com/reel/Dd-695XlAkF/ · Zwilling: https://www.facebook.com/reel/2590638451401655/
 - Text: «Küche, aber einfacher 👀 «Handmixer mit 5 Geschwindigkeiten» — Dieser Handmixer ist ein unverzichtbarer Helfer in jeder Küche. CHF 28.90 · …»
@@ -964,19 +946,11 @@ Dazu: 45 Facebook-Beiträge ohne Direktlink (Liste unten) · 13 Beiträge mit Pr
 - **WARNUNG ENGLISCH:** Englischer Lieferantentext im Bild (Medium 3/8): new, your, into  
   → Vorschlag: englischer Bildtext: löschen und sauber neu posten. Weg: IG-App/PC (API-Löschen nur mit Facebook-User-Token) [Q2]
 
-### WARNUNG · Instagram reel · 2026-09-29 08:11 UTC · 15 Aufrufe
-- Post: https://www.instagram.com/reel/Dd3TIwtiGNg/
-- Text: «Wusstest du das schon? 👀 «Vegetarische Schredder-Box» CHF 33.90 · Gratis Versand ab CHF 50 · Klarna & TWINT 🇨🇭 🔗 luxestyle.ch/products/…»
-- Produkt: Gemüseschneider mit Auffangbox · 8 Einsätze (ACTIVE, https://luxestyle.ch/products/vegetarische-schredder-box-342016, SKU CJCF182948501AZ) — Zuordnung: Link im Text
-- **WARNUNG PREIS:** veraltet: Caption CHF 33.90, Shop CHF 29.90 («Gemüseschneider mit Auffangbox · 8 Einsätze», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
-
-### WARNUNG · Instagram bild · 2026-09-29 03:09 UTC · 14 Aufrufe
-- Post: https://www.instagram.com/p/Dd2wskBlPZN/ · Zwilling: https://www.facebook.com/122102579637350792/posts/122141690895350792
-- Text: «🍂 Herbst-Favorit Warme Winter-Hausschuhe · CHF 33.90 Kleiner Schweizer Shop aus Belp, kein Konzern. Lieferung 10–20 Werktage, dafür ehrlic…»
-- Produkt: Warme Winter-Hausschuhe (ACTIVE, https://luxestyle.ch/products/warme-winter-hausschuhe-063744, SKU CJ-CJNY131339201AZ) — Zuordnung: erste Zeile
-- (+ 1 Hinweis, siehe Hinweis-Liste)
-- **WARNUNG PREIS:** veraltet: Caption CHF 33.90, Shop CHF 29.90 («Warme Winter-Hausschuhe», Zuordnung: erste Zeile)  
+### WARNUNG · Instagram reel · 2026-10-01 23:12 UTC · 14 Aufrufe
+- Post: https://www.instagram.com/reel/Dd-D2V1nTgU/ · Zwilling: https://www.facebook.com/reel/1111970258030994/
+- Text: «Genau das hat gefehlt 👀 «Gemüseschneider mit Reiben und Hobeln» — Dieser praktische Küchenhelfer vereinfacht das Schneiden und Zerkleinern…»
+- Produkt: Gemüseschneider mit Reiben und Hobeln (ACTIVE, https://luxestyle.ch/products/gemuseschneider-mit-reiben-und-hobeln-964352, SKU CJCJ110520601AZ) — Zuordnung: Link im Text
+- **WARNUNG PREIS:** veraltet: Caption CHF 35.90, Shop CHF 31.90–32.90 («Gemüseschneider mit Reiben und Hobeln», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
 
 ### WARNUNG · Pinterest pin · 2026-10-04 21:30 UTC · 13 Aufrufe
@@ -992,13 +966,6 @@ Dazu: 45 Facebook-Beiträge ohne Direktlink (Liste unten) · 13 Beiträge mit Pr
 - Produkt: USB-Heizkissen mit Graphen-Technologie (ACTIVE, https://luxestyle.ch/products/usb-heizkissen-mit-graphen-technologie-acad9f, SKU CJ-FFDB5A27-5965-46FE-A884-3) — Zuordnung: Link im Text
 - **WARNUNG PREIS:** veraltet: Caption CHF 25.90, Shop CHF 22.90 («USB-Heizkissen mit Graphen-Technologie», Zuordnung: Link im Text)  
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
-
-### WARNUNG · Instagram reel · 2026-10-01 23:12 UTC · 13 Aufrufe
-- Post: https://www.instagram.com/reel/Dd-D2V1nTgU/ · Zwilling: https://www.facebook.com/reel/1111970258030994/
-- Text: «Genau das hat gefehlt 👀 «Gemüseschneider mit Reiben und Hobeln» — Dieser praktische Küchenhelfer vereinfacht das Schneiden und Zerkleinern…»
-- Produkt: Gemüseschneider mit Reiben und Hobeln (ACTIVE, https://luxestyle.ch/products/gemuseschneider-mit-reiben-und-hobeln-964352, SKU CJCJ110520601AZ) — Zuordnung: Link im Text
-- **WARNUNG PREIS:** veraltet: Caption CHF 35.90, Shop CHF 31.90–32.90 («Gemüseschneider mit Reiben und Hobeln», Zuordnung: Link im Text)  
-  → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: IG-App (API ändert keine Caption) [Q2]
 
 ### WARNUNG · Pinterest pin · 2026-10-10 04:26 UTC · 12 Aufrufe
 - Post: https://www.pinterest.com/pin/1111333645582612105/
@@ -1073,6 +1040,13 @@ Dazu: 45 Facebook-Beiträge ohne Direktlink (Liste unten) · 13 Beiträge mit Pr
 - (+ 1 Hinweis, siehe Hinweis-Liste)
 - **WARNUNG FLOSKEL:** Scam-Marker: «omente jeden Tag. ✨ Bezahl bequem auf Rechnung mit Kl»  
   → Vorschlag: Caption korrigieren. Weg: FB-API POST /{post-id} message=… [Q1]
+
+### WARNUNG · Facebook reel · 2026-10-19 16:32 UTC · 5 Aufrufe
+- Post: https://www.facebook.com/reel/994657316240493/ · Zwilling: https://www.instagram.com/reel/Dersa8yM0WI/
+- Text: «Alles dabei. Schnell zur Hand. Fächer für deine wichtigsten Dinge – tragbar am Rücken oder in der Hand. Entdecke die Business-Tasche bei Lu…»
+- Produkt: Business Casual Laptop-Umhängetasche (ACTIVE, https://luxestyle.ch/products/business-casual-laptop-umhangetasche-178048, SKU CJNS173116901AZ) — Zuordnung: Link im Text
+- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-18 18:30 UTC gepostet: (geplant, Metricool 398726093)  
+  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
 
 ### WARNUNG · Pinterest pin · 2026-10-13 01:22 UTC · 5 Aufrufe
 - Post: https://www.pinterest.com/pin/1111333645582876691/
@@ -1161,7 +1135,7 @@ Dazu: 45 Facebook-Beiträge ohne Direktlink (Liste unten) · 13 Beiträge mit Pr
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
 ### WARNUNG · Facebook reel · 2026-09-29 17:10 UTC · 3 Aufrufe
-- Post: https://www.facebook.com/reel/1516076157227660/ · Zwilling: https://www.instagram.com/reel/Dd4QyVLD_y2/
+- Post: https://www.facebook.com/reel/1516076157227660/
 - Text: «Küche, aber einfacher 👀 «Schnellauftauplatte für die Küche» — Die Schnellauftauplatte aus Aluminium ist ein praktischer Helfer in jeder Kü…»
 - Produkt: Schnellauftauplatte für die Küche (ACTIVE, https://luxestyle.ch/products/schnellauftauplatte-fur-die-kuche-750720, SKU CJ-1422455623806750720) — Zuordnung: Link im Text
 - **WARNUNG PREIS:** veraltet: Caption CHF 37.90, Shop CHF 33.90 («Schnellauftauplatte für die Küche», Zuordnung: Link im Text)  
@@ -1202,7 +1176,7 @@ Dazu: 45 Facebook-Beiträge ohne Direktlink (Liste unten) · 13 Beiträge mit Pr
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: FB-API POST /{post-id} message=… [Q1]
 
 ### WARNUNG · Facebook bild · 2026-09-29 03:09 UTC · 2 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122141690895350792 · Zwilling: https://www.instagram.com/p/Dd2wskBlPZN/
+- Post: https://www.facebook.com/122102579637350792/posts/122141690895350792
 - Text: «🍂 Herbst-Favorit Warme Winter-Hausschuhe · CHF 33.90 Kleiner Schweizer Shop aus Belp, kein Konzern. Lieferung 10–20 Werktage, dafür ehrlic…»
 - Produkt: Warme Winter-Hausschuhe (ACTIVE, https://luxestyle.ch/products/warme-winter-hausschuhe-063744, SKU CJ-CJNY131339201AZ) — Zuordnung: Link im Text
 - (+ 1 Hinweis, siehe Hinweis-Liste)
@@ -1316,7 +1290,7 @@ Dazu: 45 Facebook-Beiträge ohne Direktlink (Liste unten) · 13 Beiträge mit Pr
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
 ### WARNUNG · Facebook album · 2026-09-29 20:25 UTC · 1 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122141900139350792 · Zwilling: https://www.instagram.com/p/Dd4nKUeD_qe/
+- Post: https://www.facebook.com/122102579637350792/posts/122141900139350792
 - Text: «Strickpullover Rundhals Loose-Fit · CHF 27.90 Kleiner Schweizer Shop aus Belp, kein Konzern. Lieferung 10–20 Werktage, dafür ehrlich angesc…»
 - Produkt: Strickpullover Rundhals Loose-Fit (ACTIVE, https://luxestyle.ch/products/strickpullover-rundhals-loose-fit-634500, SKU CJ-CJMY293330002BY) — Zuordnung: Link im Text
 - **WARNUNG PREIS:** veraltet: Caption CHF 27.90, Shop CHF 23.90 («Strickpullover Rundhals Loose-Fit», Zuordnung: Link im Text)  
@@ -1359,14 +1333,38 @@ Dazu: 45 Facebook-Beiträge ohne Direktlink (Liste unten) · 13 Beiträge mit Pr
 - **WARNUNG FLOSKEL:** Scam-Marker: «omente jeden Tag. ✨ Bezahl bequem auf Rechnung mit Kl»  
   → Vorschlag: Caption korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
+### WARNUNG · Instagram bild · 2026-10-25 19:10 UTC · n/a Aufrufe · GEPLANT (PENDING (Pending))
+- Post: (geplant, Metricool 399530900) · Zwilling: (geplant, Metricool 399530905)
+- Text: «»
+- **WARNUNG TEXT:** Beitrag ohne Text  
+  → Vorschlag: Caption ergänzen. Weg: IG-App (API ändert keine Caption) [Q2]
+
+### WARNUNG · Facebook bild · 2026-10-25 19:10 UTC · n/a Aufrufe · GEPLANT (PENDING (Pending))
+- Post: (geplant, Metricool 399530905) · Zwilling: (geplant, Metricool 399530900)
+- Text: «»
+- **WARNUNG TEXT:** Beitrag ohne Text  
+  → Vorschlag: Caption ergänzen. Weg: FB-API POST /{post-id} message=… [Q1]
+
 ### WARNUNG · Instagram bild · 2026-10-25 12:45 UTC · n/a Aufrufe · GEPLANT (PENDING (Pending))
-- Post: (geplant, Metricool 399472165) · Zwilling: (geplant, Metricool 399472167)
+- Post: (geplant, Metricool 399472165)
 - Text: «»
 - **WARNUNG TEXT:** Beitrag ohne Text  
   → Vorschlag: Caption ergänzen. Weg: IG-App (API ändert keine Caption) [Q2]
 
 ### WARNUNG · Facebook bild · 2026-10-25 12:45 UTC · n/a Aufrufe · GEPLANT (PENDING (Pending))
-- Post: (geplant, Metricool 399472167) · Zwilling: (geplant, Metricool 399472165)
+- Post: (geplant, Metricool 399472167)
+- Text: «»
+- **WARNUNG TEXT:** Beitrag ohne Text  
+  → Vorschlag: Caption ergänzen. Weg: FB-API POST /{post-id} message=… [Q1]
+
+### WARNUNG · Instagram bild · 2026-10-24 19:10 UTC · n/a Aufrufe · GEPLANT (PENDING (Pending))
+- Post: (geplant, Metricool 399530525)
+- Text: «»
+- **WARNUNG TEXT:** Beitrag ohne Text  
+  → Vorschlag: Caption ergänzen. Weg: IG-App (API ändert keine Caption) [Q2]
+
+### WARNUNG · Facebook bild · 2026-10-24 19:10 UTC · n/a Aufrufe · GEPLANT (PENDING (Pending))
+- Post: (geplant, Metricool 399530529)
 - Text: «»
 - **WARNUNG TEXT:** Beitrag ohne Text  
   → Vorschlag: Caption ergänzen. Weg: FB-API POST /{post-id} message=… [Q1]
@@ -1397,6 +1395,18 @@ Dazu: 45 Facebook-Beiträge ohne Direktlink (Liste unten) · 13 Beiträge mit Pr
 - **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-07 17:42 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122144260167350792  
   → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
 
+### WARNUNG · Instagram bild · 2026-10-23 19:10 UTC · n/a Aufrufe · GEPLANT (PENDING (Pending))
+- Post: (geplant, Metricool 399530076)
+- Text: «»
+- **WARNUNG TEXT:** Beitrag ohne Text  
+  → Vorschlag: Caption ergänzen. Weg: IG-App (API ändert keine Caption) [Q2]
+
+### WARNUNG · Facebook bild · 2026-10-23 19:10 UTC · n/a Aufrufe · GEPLANT (PENDING (Pending))
+- Post: (geplant, Metricool 399530080)
+- Text: «»
+- **WARNUNG TEXT:** Beitrag ohne Text  
+  → Vorschlag: Caption ergänzen. Weg: FB-API POST /{post-id} message=… [Q1]
+
 ### WARNUNG · Instagram bild · 2026-10-23 12:45 UTC · n/a Aufrufe · GEPLANT (PENDING (Pending))
 - Post: (geplant, Metricool 399459121)
 - Text: «»
@@ -1405,6 +1415,18 @@ Dazu: 45 Facebook-Beiträge ohne Direktlink (Liste unten) · 13 Beiträge mit Pr
 
 ### WARNUNG · Facebook bild · 2026-10-23 12:45 UTC · n/a Aufrufe · GEPLANT (PENDING (Pending))
 - Post: (geplant, Metricool 399459125)
+- Text: «»
+- **WARNUNG TEXT:** Beitrag ohne Text  
+  → Vorschlag: Caption ergänzen. Weg: FB-API POST /{post-id} message=… [Q1]
+
+### WARNUNG · Instagram bild · 2026-10-22 19:10 UTC · n/a Aufrufe · GEPLANT (PENDING (Pending))
+- Post: (geplant, Metricool 399529599)
+- Text: «»
+- **WARNUNG TEXT:** Beitrag ohne Text  
+  → Vorschlag: Caption ergänzen. Weg: IG-App (API ändert keine Caption) [Q2]
+
+### WARNUNG · Facebook bild · 2026-10-22 19:10 UTC · n/a Aufrufe · GEPLANT (PENDING (Pending))
+- Post: (geplant, Metricool 399529602)
 - Text: «»
 - **WARNUNG TEXT:** Beitrag ohne Text  
   → Vorschlag: Caption ergänzen. Weg: FB-API POST /{post-id} message=… [Q1]
@@ -1449,6 +1471,18 @@ Dazu: 45 Facebook-Beiträge ohne Direktlink (Liste unten) · 13 Beiträge mit Pr
 - **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-01 06:15 UTC gepostet: https://www.instagram.com/reel/Dd8Phq_GZlZ/  
   → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: IG-App/PC (API-Löschen nur mit Facebook-User-Token) [Q2]
 
+### WARNUNG · Instagram bild · 2026-10-21 19:10 UTC · n/a Aufrufe · GEPLANT (PENDING (Pending))
+- Post: (geplant, Metricool 399529120)
+- Text: «»
+- **WARNUNG TEXT:** Beitrag ohne Text  
+  → Vorschlag: Caption ergänzen. Weg: IG-App (API ändert keine Caption) [Q2]
+
+### WARNUNG · Facebook bild · 2026-10-21 19:10 UTC · n/a Aufrufe · GEPLANT (PENDING (Pending))
+- Post: (geplant, Metricool 399529123)
+- Text: «»
+- **WARNUNG TEXT:** Beitrag ohne Text  
+  → Vorschlag: Caption ergänzen. Weg: FB-API POST /{post-id} message=… [Q1]
+
 ### WARNUNG · Instagram bild · 2026-10-21 12:45 UTC · n/a Aufrufe · GEPLANT (PENDING (Pending))
 - Post: (geplant, Metricool 399452933)
 - Text: «»
@@ -1457,6 +1491,18 @@ Dazu: 45 Facebook-Beiträge ohne Direktlink (Liste unten) · 13 Beiträge mit Pr
 
 ### WARNUNG · Facebook bild · 2026-10-21 12:45 UTC · n/a Aufrufe · GEPLANT (PENDING (Pending))
 - Post: (geplant, Metricool 399452934)
+- Text: «»
+- **WARNUNG TEXT:** Beitrag ohne Text  
+  → Vorschlag: Caption ergänzen. Weg: FB-API POST /{post-id} message=… [Q1]
+
+### WARNUNG · Instagram bild · 2026-10-20 19:10 UTC · n/a Aufrufe · GEPLANT (PENDING (Pending))
+- Post: (geplant, Metricool 399528585)
+- Text: «»
+- **WARNUNG TEXT:** Beitrag ohne Text  
+  → Vorschlag: Caption ergänzen. Weg: IG-App (API ändert keine Caption) [Q2]
+
+### WARNUNG · Facebook bild · 2026-10-20 19:10 UTC · n/a Aufrufe · GEPLANT (PENDING (Pending))
+- Post: (geplant, Metricool 399528588)
 - Text: «»
 - **WARNUNG TEXT:** Beitrag ohne Text  
   → Vorschlag: Caption ergänzen. Weg: FB-API POST /{post-id} message=… [Q1]
@@ -1473,38 +1519,93 @@ Dazu: 45 Facebook-Beiträge ohne Direktlink (Liste unten) · 13 Beiträge mit Pr
 - **WARNUNG TEXT:** Beitrag ohne Text  
   → Vorschlag: Caption ergänzen. Weg: FB-API POST /{post-id} message=… [Q1]
 
-### WARNUNG · Facebook video · 2026-10-19 18:30 UTC · n/a Aufrufe · GEPLANT (PENDING (Pending))
-- Post: (geplant, Metricool 399397572) · Zwilling: (geplant, Metricool 399397572)
-- Text: «Alles dabei. Schnell zur Hand. Fächer für deine wichtigsten Dinge – tragbar am Rücken oder in der Hand. Entdecke die Business-Tasche bei Lu…»
-- Produkt: Business Casual Laptop-Umhängetasche (ACTIVE, https://luxestyle.ch/products/business-casual-laptop-umhangetasche-178048, SKU CJ-1645635953874178048) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-18 18:30 UTC gepostet: (geplant, Metricool 398726093)  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
-
-### WARNUNG · Instagram video · 2026-10-19 18:30 UTC · n/a Aufrufe · GEPLANT (PENDING (Pending))
-- Post: (geplant, Metricool 399397572) · Zwilling: (geplant, Metricool 399397572)
-- Text: «Alles dabei. Schnell zur Hand. Fächer für deine wichtigsten Dinge – tragbar am Rücken oder in der Hand. Entdecke die Business-Tasche bei Lu…»
-- Produkt: Business Casual Laptop-Umhängetasche (ACTIVE, https://luxestyle.ch/products/business-casual-laptop-umhangetasche-178048, SKU CJ-1645635953874178048) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-18 18:30 UTC gepostet: (geplant, Metricool 398726093)  
+### WARNUNG · Instagram video · 2026-10-19 20:15 UTC · n/a Aufrufe
+- Post: https://www.instagram.com/reel/Der4Vfpuxrl/ · Zwilling: https://facebook.com/reel/3428163517384067
+- Text: «Wusstest du das schon? 👀 «Faltbare Doppel-Futternäpfe für unterwegs» — Für die Fütterung deiner Haustiere unterwegs oder auf Reisen sind d…»
+- Produkt: Faltbare Doppel-Futternäpfe für unterwegs (ACTIVE, https://luxestyle.ch/products/faltbare-doppel-futternapfe-fur-unterwegs-411328, SKU CJMY183864101AZ) — Zuordnung: Link im Text
+- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-19 18:16 UTC gepostet: https://www.instagram.com/reel/Der4Vfpuxrl/  
   → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: IG-App/PC (API-Löschen nur mit Facebook-User-Token) [Q2]
 
-### WARNUNG · TikTok video · 2026-10-19 18:30 UTC · n/a Aufrufe · GEPLANT (PENDING (Pending))
-- Post: (geplant, Metricool 399397572)
-- Text: «Alles dabei. Schnell zur Hand. Fächer für deine wichtigsten Dinge – tragbar am Rücken oder in der Hand. Entdecke die Business-Tasche bei Lu…»
-- Produkt: Business Casual Laptop-Umhängetasche (ACTIVE, https://luxestyle.ch/products/business-casual-laptop-umhangetasche-178048, SKU CJ-1645635953874178048) — Zuordnung: Link im Text
-- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-18 18:30 UTC gepostet: (geplant, Metricool 398726093)  
-  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: Metricool-API DELETE /v2/scheduler/posts/{id} [Q3]
+### WARNUNG · Facebook video · 2026-10-19 20:15 UTC · n/a Aufrufe
+- Post: https://facebook.com/reel/3428163517384067 · Zwilling: https://www.instagram.com/reel/Der4Vfpuxrl/
+- Text: «Wusstest du das schon? 👀 «Faltbare Doppel-Futternäpfe für unterwegs» — Für die Fütterung deiner Haustiere unterwegs oder auf Reisen sind d…»
+- Produkt: Faltbare Doppel-Futternäpfe für unterwegs (ACTIVE, https://luxestyle.ch/products/faltbare-doppel-futternapfe-fur-unterwegs-411328, SKU CJMY183864101AZ) — Zuordnung: Link im Text
+- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-19 18:16 UTC gepostet: https://www.facebook.com/reel/3428163517384067/  
+  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
 
-### WARNUNG · Instagram bild · 2026-10-19 12:45 UTC · n/a Aufrufe · GEPLANT (PENDING (Pending))
-- Post: (geplant, Metricool 399445247)
+### WARNUNG · Instagram bild · 2026-10-19 19:10 UTC · n/a Aufrufe
+- Post: https://www.instagram.com/stories/luxestyle.ch/4011514786030135064
 - Text: «»
 - **WARNUNG TEXT:** Beitrag ohne Text  
   → Vorschlag: Caption ergänzen. Weg: IG-App (API ändert keine Caption) [Q2]
 
-### WARNUNG · Facebook bild · 2026-10-19 12:45 UTC · n/a Aufrufe · GEPLANT (PENDING (Pending))
-- Post: (geplant, Metricool 399445253)
+### WARNUNG · Facebook bild · 2026-10-19 19:10 UTC · n/a Aufrufe
+- Post: https://facebook.com/122108214291350792/posts/1897350638311044
 - Text: «»
 - **WARNUNG TEXT:** Beitrag ohne Text  
   → Vorschlag: Caption ergänzen. Weg: FB-API POST /{post-id} message=… [Q1]
+
+### WARNUNG · Facebook video · 2026-10-19 18:30 UTC · n/a Aufrufe
+- Post: https://facebook.com/reel/994657316240493 · Zwilling: https://www.instagram.com/reel/Dersa8yM0WI/
+- Text: «Alles dabei. Schnell zur Hand. Fächer für deine wichtigsten Dinge – tragbar am Rücken oder in der Hand. Entdecke die Business-Tasche bei Lu…»
+- Produkt: Business Casual Laptop-Umhängetasche (ACTIVE, https://luxestyle.ch/products/business-casual-laptop-umhangetasche-178048, SKU CJNS173116901AZ) — Zuordnung: Link im Text
+- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-18 18:30 UTC gepostet: (geplant, Metricool 398726093)  
+  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
+
+### WARNUNG · Instagram video · 2026-10-19 18:30 UTC · n/a Aufrufe
+- Post: https://www.instagram.com/reel/Dersa8yM0WI/ · Zwilling: https://facebook.com/reel/994657316240493
+- Text: «Alles dabei. Schnell zur Hand. Fächer für deine wichtigsten Dinge – tragbar am Rücken oder in der Hand. Entdecke die Business-Tasche bei Lu…»
+- Produkt: Business Casual Laptop-Umhängetasche (ACTIVE, https://luxestyle.ch/products/business-casual-laptop-umhangetasche-178048, SKU CJNS173116901AZ) — Zuordnung: Link im Text
+- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-18 18:30 UTC gepostet: (geplant, Metricool 398726093)  
+  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: IG-App/PC (API-Löschen nur mit Facebook-User-Token) [Q2]
+
+### WARNUNG · TikTok video · 2026-10-19 18:30 UTC · n/a Aufrufe
+- Post: https://www.tiktok.com/@luxestyle.ch/video/7698417655853698336
+- Text: «Alles dabei. Schnell zur Hand. Fächer für deine wichtigsten Dinge – tragbar am Rücken oder in der Hand. Entdecke die Business-Tasche bei Lu…»
+- Produkt: Business Casual Laptop-Umhängetasche (ACTIVE, https://luxestyle.ch/products/business-casual-laptop-umhangetasche-178048, SKU CJNS173116901AZ) — Zuordnung: Link im Text
+- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-18 18:30 UTC gepostet: (geplant, Metricool 398726093)  
+  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: TikTok-App / Hetzner-Agent (veröffentlicht, nicht per API) [Q3]
+
+### WARNUNG · Instagram bild · 2026-10-19 16:10 UTC · n/a Aufrufe
+- Post: https://www.instagram.com/p/DercO_2jRNr/
+- Text: «Naturstein doppelreihig Tigerauge-Armband «Savana» · CHF 16.90 Kleiner Schweizer Shop aus Belp, kein Konzern. Lieferung 10–20 Werktage, daf…»
+- Produkt: Tigerauge-Armband «Savana» – Naturstein doppelreihig (ACTIVE, https://luxestyle.ch/products/tigerauge-armband-savana-naturstein-doppelreihig, SKU CJSL291618301AZ) — Zuordnung: Ledger kimi-das-doppelreihige-tigerauge-armb-15
+- (+ 1 Hinweis, siehe Hinweis-Liste)
+- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-19 14:11 UTC gepostet: https://www.instagram.com/p/DercO_2jRNr/  
+  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: IG-App/PC (API-Löschen nur mit Facebook-User-Token) [Q2]
+
+### WARNUNG · Instagram bild · 2026-10-19 12:45 UTC · n/a Aufrufe
+- Post: https://www.instagram.com/stories/luxestyle.ch/4011320841077648510
+- Text: «»
+- **WARNUNG TEXT:** Beitrag ohne Text  
+  → Vorschlag: Caption ergänzen. Weg: IG-App (API ändert keine Caption) [Q2]
+
+### WARNUNG · Facebook bild · 2026-10-19 12:45 UTC · n/a Aufrufe
+- Post: https://facebook.com/122108214291350792/posts/1699622128254986
+- Text: «»
+- **WARNUNG TEXT:** Beitrag ohne Text  
+  → Vorschlag: Caption ergänzen. Weg: FB-API POST /{post-id} message=… [Q1]
+
+### WARNUNG · Instagram video · 2026-10-19 12:15 UTC · n/a Aufrufe
+- Post: https://www.instagram.com/reel/DerBVsVuaYj/ · Zwilling: https://facebook.com/reel/1035163192918612
+- Text: «Neu bei LuxeStyle 👀 «DIY Stickset mit 50 Garnfarben» — Entdecke die Welt des Stickens mit diesem umfassenden DIY Stickset. CHF 21.90 · Gra…»
+- Produkt: DIY Stickset mit 50 Garnfarben (ACTIVE, https://luxestyle.ch/products/diy-stickset-mit-50-garnfarben-cb3e23, SKU CJ-27E52A8C-844D-46BD-8A9F-9) — Zuordnung: Link im Text
+- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-19 10:16 UTC gepostet: https://www.instagram.com/reel/DerBVsVuaYj/  
+  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: IG-App/PC (API-Löschen nur mit Facebook-User-Token) [Q2]
+
+### WARNUNG · Facebook video · 2026-10-19 12:15 UTC · n/a Aufrufe
+- Post: https://facebook.com/reel/1035163192918612 · Zwilling: https://www.instagram.com/reel/DerBVsVuaYj/
+- Text: «Neu bei LuxeStyle 👀 «DIY Stickset mit 50 Garnfarben» — Entdecke die Welt des Stickens mit diesem umfassenden DIY Stickset. CHF 21.90 · Gra…»
+- Produkt: DIY Stickset mit 50 Garnfarben (ACTIVE, https://luxestyle.ch/products/diy-stickset-mit-50-garnfarben-cb3e23, SKU CJ-27E52A8C-844D-46BD-8A9F-9) — Zuordnung: Link im Text
+- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-19 10:16 UTC gepostet: https://www.facebook.com/reel/1035163192918612/  
+  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
+
+### WARNUNG · Instagram bild · 2026-10-19 09:45 UTC · n/a Aufrufe
+- Post: https://www.instagram.com/p/DeqwJ2KCIzS/
+- Text: «Löffelfuchs · CHF 27.90 Kleiner Schweizer Shop aus Belp, kein Konzern. Ab Schweizer Lager, Lieferdatum steht beim Artikel und in der Kasse …»
+- Produkt: Löffelfuchs (ACTIVE, https://luxestyle.ch/products/loffelfuchs-fga87710, SKU fortura-87710) — Zuordnung: erste Zeile
+- **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-19 07:46 UTC gepostet: https://www.instagram.com/p/DeqwJ2KCIzS/  
+  → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: IG-App/PC (API-Löschen nur mit Facebook-User-Token) [Q2]
 
 ### WARNUNG · Instagram video · 2026-10-18 22:16 UTC · n/a Aufrufe
 - Post: https://www.instagram.com/reel/Depha0pBkEf/ · Zwilling: https://facebook.com/reel/1403814541924377
@@ -1550,7 +1651,7 @@ Dazu: 45 Facebook-Beiträge ohne Direktlink (Liste unten) · 13 Beiträge mit Pr
 ### WARNUNG · Facebook bild · 2026-10-17 14:47 UTC · n/a Aufrufe
 - Post: https://facebook.com/122108214291350792/posts/122147008677350792
 - Text: «Deine Essentials. Dein Stil. Entdecke die Canvas-Schultertasche bei LuxeStyle und sieh dir die Produktdetails an: https://luxestyle.ch/prod…»
-- Produkt: Canvas Schultertasche für Herren – wasserdicht (ACTIVE, https://luxestyle.ch/products/canvas-schultertasche-fur-herren-wasserdicht-604300, SKU CJ-2503122327131604300) — Zuordnung: Link im Text
+- Produkt: Canvas Schultertasche für Herren – wasserdicht (ACTIVE, https://luxestyle.ch/products/canvas-schultertasche-fur-herren-wasserdicht-604300, SKU CJNS232569701AZ) — Zuordnung: Link im Text
 - (+ 1 Hinweis, siehe Hinweis-Liste)
 - **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-17 12:47 UTC gepostet: https://www.facebook.com/122102579637350792/posts/122147008701350792  
   → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
@@ -1558,14 +1659,14 @@ Dazu: 45 Facebook-Beiträge ohne Direktlink (Liste unten) · 13 Beiträge mit Pr
 ### WARNUNG · Instagram video · 2026-10-15 10:05 UTC · n/a Aufrufe
 - Post: https://www.instagram.com/reel/DegfXRTjeww/ · Zwilling: https://facebook.com/reel/2190678898507248
 - Text: «Endlich Ruhe beim Gassi? 👀 «Haustier-Reisematte für das Auto» — Diese vielseitige Haustier-Reisematte ist die ideale Lösung für den Transp…»
-- Produkt: Haustier-Reisematte für das Auto (ACTIVE, https://luxestyle.ch/products/haustier-reisematte-fur-das-auto-830208, SKU CJ-1389512335860830208) — Zuordnung: Link im Text
+- Produkt: Haustier-Reisematte für das Auto (ACTIVE, https://luxestyle.ch/products/haustier-reisematte-fur-das-auto-830208, SKU CJQC111254201AZ) — Zuordnung: Link im Text
 - **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-15 08:08 UTC gepostet: https://www.instagram.com/reel/DegfXRTjeww/  
   → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: IG-App/PC (API-Löschen nur mit Facebook-User-Token) [Q2]
 
 ### WARNUNG · Facebook video · 2026-10-15 10:05 UTC · n/a Aufrufe
 - Post: https://facebook.com/reel/2190678898507248 · Zwilling: https://www.instagram.com/reel/DegfXRTjeww/
 - Text: «Endlich Ruhe beim Gassi? 👀 «Haustier-Reisematte für das Auto» — Diese vielseitige Haustier-Reisematte ist die ideale Lösung für den Transp…»
-- Produkt: Haustier-Reisematte für das Auto (ACTIVE, https://luxestyle.ch/products/haustier-reisematte-fur-das-auto-830208, SKU CJ-1389512335860830208) — Zuordnung: Link im Text
+- Produkt: Haustier-Reisematte für das Auto (ACTIVE, https://luxestyle.ch/products/haustier-reisematte-fur-das-auto-830208, SKU CJQC111254201AZ) — Zuordnung: Link im Text
 - **WARNUNG DOPPEL:** dasselbe Produkt schon am 2026-10-15 08:06 UTC gepostet: https://www.facebook.com/reel/2190678898507248/  
   → Vorschlag: Doppelpost: löschen und sauber neu posten. Weg: FB-API DELETE /{post-id} [Q1]
 
@@ -2784,7 +2885,7 @@ Dazu: 45 Facebook-Beiträge ohne Direktlink (Liste unten) · 13 Beiträge mit Pr
   → Vorschlag: Caption auf den Shop-Preis korrigieren. Weg: Pinterest-App / Hetzner-Agent (kein Pinterest-Token hier)
 
 ### WARNUNG · Facebook bild · 2026-09-29 16:27 UTC · 0 Aufrufe
-- Post: https://www.facebook.com/122102579637350792/posts/122141854365350792 · Zwilling: https://www.instagram.com/p/Dd4L-PdjV4S/
+- Post: https://www.facebook.com/122102579637350792/posts/122141854365350792
 - Text: «🇨🇭 Ab Schweizer Lager – in 1–2 Werktagen bei dir Plüsch Alligator · CHF 29.90 Kleiner Schweizer Shop aus Belp, kein Konzern. Versand ab S…»
 - Produkt: Plüsch Alligator (ACTIVE, https://luxestyle.ch/products/plusch-alligator-fga88595, SKU fortura-88595) — Zuordnung: Link im Text
 - **WARNUNG VERSAND:** Lieferzeit-Zusage kürzer als die ehrliche Angabe 10–20 Werktage: «b Schweizer Lager – in 1–2 Werktagen bei dir Plüsch Alli»  
@@ -2872,7 +2973,7 @@ Dazu: 45 Facebook-Beiträge ohne Direktlink (Liste unten) · 13 Beiträge mit Pr
 
 ## Hinweise (gesammelt)
 
-290 Hinweise in 284 Beiträgen — kein Handlungsdruck, aber Muster für die Motoren. Dazu 48 Beiträge mit generischen Reichweiten-Hashtags (#foryou #trending #fyp #viral) — die Bild-Queue ersetzt sie seit 23.09. durch Sach-Tags; bestehende Posts deswegen nicht anfassen.
+300 Hinweise in 294 Beiträgen — kein Handlungsdruck, aber Muster für die Motoren. Dazu 48 Beiträge mit generischen Reichweiten-Hashtags (#foryou #trending #fyp #viral) — die Bild-Queue ersetzt sie seit 23.09. durch Sach-Tags; bestehende Posts deswegen nicht anfassen.
 
 <details><summary>Liste</summary>
 
@@ -2880,35 +2981,35 @@ Dazu: 45 Facebook-Beiträge ohne Direktlink (Liste unten) · 13 Beiträge mit Pr
 |---|---|---:|---|---|---|
 | TikTok | 2026-10-17 | 238 | FORMAT | Bild 800×800 — Breite unter 1080 | https://www.tiktok.com/@luxestyle.ch/video/7697628740955720993 |
 | Pinterest | 2026-09-29 | 55 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/Dd0ucPOjRpC/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645581667020/ |
-| Facebook | 2026-10-05 | 46 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122143702881350792 |
+| Facebook | 2026-10-05 | 51 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122143702881350792 |
+| Instagram | 2026-10-17 | 30 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DemJH5DiLM6/ |
 | Pinterest | 2026-09-29 | 29 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/Dd2CntDjDZs/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645581667027/ |
-| Instagram | 2026-10-17 | 27 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DemJH5DiLM6/ |
 | Instagram | 2026-10-09 | 26 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DeQTc5Vipym/ |
 | Instagram | 2026-10-14 | 24 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DefHK6SCiaY/ |
 | Instagram | 2026-10-13 | 24 | FORMAT | Bild 1000×1000 — Breite unter 1080 | https://www.instagram.com/p/DebzXSjCNR9/ |
 | Instagram | 2026-10-10 | 21 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DeS_HKKiGnr/ |
 | Instagram | 2026-09-30 | 21 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/Dd5qYj2AKyw/ |
 | Instagram | 2026-10-15 | 20 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/Defwy5Nih1P/ |
+| Instagram | 2026-10-13 | 20 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DebJMZ_iNbe/ |
 | Instagram | 2026-10-09 | 20 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DeRnDOrCJjU/ |
-| Instagram | 2026-10-13 | 19 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DebJMZ_iNbe/ |
 | Instagram | 2026-10-07 | 19 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DeM6_g-CGPE/ |
 | Instagram | 2026-10-07 | 19 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DeMPyrgDSTK/ |
 | Pinterest | 2026-10-03 | 19 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/DeAcgz8DcUF/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582005057/ |
+| Instagram | 2026-10-18 | 18 | FORMAT | Bild 720×690 — Breite unter 1080 | https://www.instagram.com/p/DepguxkCA2G/ |
 | Instagram | 2026-10-09 | 18 | DOPPEL | gleiche Warengruppe «diffuser» 6 h nach https://www.instagram.com/reel/DeRyvAYjoHV/ (Raster wirkt doppelt) | https://www.instagram.com/reel/DeSbdrIDCs2/ |
 | Instagram | 2026-10-14 | 17 | FORMAT | Bild 1079×984 — Breite unter 1080 | https://www.instagram.com/p/Deeai7xiIFW/ |
 | Instagram | 2026-10-06 | 17 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DeJQ7fniEOK/ |
 | Instagram | 2026-10-03 | 17 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DeBKvd7jhgS/ |
 | Instagram | 2026-10-01 | 17 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/Dd8c9kQkWlV/ |
+| Instagram | 2026-10-06 | 16 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DeKOacViqwo/ |
 | Instagram | 2026-10-06 | 16 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DeJyx5GCAz9/ |
 | Pinterest | 2026-10-02 | 16 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/Dd8c9kQkWlV/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645581916551/ |
 | Instagram | 2026-10-03 | 15 | FORMAT | Bild 1000×1000 — Breite unter 1080 | https://www.instagram.com/p/DeB0D9QldRF/ |
 | Instagram | 2026-09-30 | 15 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/Dd6UQDolC60/ |
 | Pinterest | 2026-09-25 | 15 | DIREKTLINK | Pin verlinkt https://www.instagram.com/reel/Ddsmdr2CdwM/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645581314558/ |
 | Instagram | 2026-10-14 | 14 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DedwjaJjVgG/ |
-| Instagram | 2026-09-29 | 14 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/Dd2wskBlPZN/ |
 | Instagram | 2026-10-10 | 13 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DeTrzCDiAqr/ |
 | Instagram | 2026-10-08 | 13 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DeORyZ1CMY-/ |
-| Instagram | 2026-10-06 | 13 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DeKOacViqwo/ |
 | Instagram | 2026-10-08 | 10 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DePmCTTFQxD/ |
 | Instagram | 2026-10-03 | 10 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DeCfMMDjHDg/ |
 | Pinterest | 2026-10-03 | 10 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/DeBKvd7jhgS/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582005058/ |
@@ -2916,7 +3017,6 @@ Dazu: 45 Facebook-Beiträge ohne Direktlink (Liste unten) · 13 Beiträge mit Pr
 | Pinterest | 2026-10-01 | 9 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/Dd7DUIujzrT/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645581833288/ |
 | Instagram | 2026-10-13 | 8 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/Decc3rbiHnM/ |
 | Instagram | 2026-10-02 | 8 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/Dd_IenVDLiC/ |
-| Instagram | 2026-10-18 | 6 | FORMAT | Bild 720×690 — Breite unter 1080 | https://www.instagram.com/p/DepguxkCA2G/ |
 | Facebook | 2026-09-23 | 6 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122140069977350792 |
 | Facebook | 2026-09-23 | 5 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122140221003350792 |
 | Facebook | 2026-09-03 | 5 | FORMAT | Bild 1000×1000 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) (Medium 1/8) | https://www.facebook.com/122102579637350792/posts/122135105943350792 |
@@ -2928,6 +3028,7 @@ Dazu: 45 Facebook-Beiträge ohne Direktlink (Liste unten) · 13 Beiträge mit Pr
 | Pinterest | 2026-10-03 | 5 | DIREKTLINK | Pin verlinkt https://www.instagram.com/reel/Dd-695XlAkF/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582006191/ |
 | Pinterest | 2026-09-30 | 5 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/Dd3g5S9FA18/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645581751252/ |
 | Pinterest | 2026-09-23 | 5 | DIREKTLINK | Pin verlinkt https://www.instagram.com/reel/DdmhRxtjUIZ/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645581153922/ |
+| Instagram | 2026-10-19 | 4 | FORMAT | Bild 720×720 — Breite unter 1080 | https://www.instagram.com/p/DercO_2jRNr/ |
 | Pinterest | 2026-09-26 | 4 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/Ddumv_9lNi3/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645581395389/ |
 | Facebook | 2026-10-06 | 3 | FORMAT | Bild 800×800 — Breite unter 1080 (grösste Fassung, die Facebook gespeichert hat) | https://www.facebook.com/122102579637350792/posts/122143921845350792 |
 | Pinterest | 2026-10-12 | 3 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/DeYB53qCntC/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645582803226/ |
@@ -3075,26 +3176,36 @@ Dazu: 45 Facebook-Beiträge ohne Direktlink (Liste unten) · 13 Beiträge mit Pr
 | Instagram | 2026-10-18 | n/a | FORMAT | Bild 749×718 — Breite unter 1080 | https://www.instagram.com/p/DepguxkCA2G/ |
 | Pinterest | 2026-10-18 | n/a | VERSAND | Versand «aus der Schweiz» zugesagt, Lieferant nicht zuordenbar: «wertige Qualität ab Schweizer Lager. Details Marke: Wid» | https://www.pinterest.es/pin/1111333645583383530 |
 | Pinterest | 2026-10-18 | n/a | FORMAT | Bild 1000×1500 — Breite unter 1080 | https://www.pinterest.es/pin/1111333645583383530 |
-| Pinterest | 2026-10-19 | n/a | FORMAT | Bild 800×800 — Breite unter 1080 | (geplant, Metricool 399448410) |
+| Pinterest | 2026-10-19 | n/a | FORMAT | Bild 800×800 — Breite unter 1080 | https://www.pinterest.es/pin/1111333645583459099 |
 | Instagram | 2026-10-20 | n/a | FORMAT | Bild 800×800 — Breite unter 1080 | (geplant, Metricool 399449577) |
 | Pinterest | 2026-10-20 | n/a | FORMAT | Bild 800×800 — Breite unter 1080 | (geplant, Metricool 399451336) |
 | Instagram | 2026-10-21 | n/a | FORMAT | Bild 800×800 — Breite unter 1080 | (geplant, Metricool 399452648) |
 | Pinterest | 2026-10-21 | n/a | FORMAT | Bild 800×800 — Breite unter 1080 | (geplant, Metricool 399453199) |
-| Pinterest | 2026-10-21 | n/a | FORMAT | Bild 800×800 — Breite unter 1080 | (geplant, Metricool 399453844) |
 | Instagram | 2026-10-22 | n/a | FORMAT | Bild 800×800 — Breite unter 1080 | (geplant, Metricool 399454786) |
 | Pinterest | 2026-10-22 | n/a | FORMAT | Bild 800×800 — Breite unter 1080 | (geplant, Metricool 399455678) |
 | Pinterest | 2026-10-22 | n/a | FORMAT | Bild 790×1929 — Breite unter 1080 | (geplant, Metricool 399456345) |
 | Pinterest | 2026-10-23 | n/a | FORMAT | Bild 800×800 — Breite unter 1080 | (geplant, Metricool 399464432) |
-| Pinterest | 2026-10-24 | n/a | FORMAT | Bild 800×800 — Breite unter 1080 | (geplant, Metricool 399470175) |
 | Instagram | 2026-10-25 | n/a | FORMAT | Bild 800×800 — Breite unter 1080 | (geplant, Metricool 399471013) |
 | Instagram | 2026-10-25 | n/a | DOPPEL | gleiche Warengruppe «uhr» 11 h nach (geplant, Metricool 399471013) (Raster wirkt doppelt) | (geplant, Metricool 399476575) |
-| Pinterest | 2026-10-19 | n/a | FORMAT | Bild 800×800 — Breite unter 1080 | (geplant, Metricool 399487582) |
+| Pinterest | 2026-10-19 | n/a | FORMAT | Bild 800×800 — Breite unter 1080 | https://www.pinterest.es/pin/1111333645583448857 |
 | Pinterest | 2026-10-20 | n/a | FORMAT | Bild 800×800 — Breite unter 1080 | (geplant, Metricool 399488982) |
 | Pinterest | 2026-10-21 | n/a | FORMAT | Bild 800×800 — Breite unter 1080 | (geplant, Metricool 399489420) |
 | Pinterest | 2026-10-22 | n/a | FORMAT | Bild 800×800 — Breite unter 1080 | (geplant, Metricool 399490427) |
 | Instagram | 2026-10-23 | n/a | FORMAT | Bild 1024×1024 — Breite unter 1080 | (geplant, Metricool 399491221) |
 | Pinterest | 2026-10-23 | n/a | FORMAT | Bild 800×800 — Breite unter 1080 | (geplant, Metricool 399491953) |
 | Pinterest | 2026-10-24 | n/a | FORMAT | Bild 900×900 — Breite unter 1080 | (geplant, Metricool 399500935) |
+| Instagram | 2026-10-19 | n/a | FORMAT | Bild 794×794 — Breite unter 1080 | https://www.instagram.com/p/DercO_2jRNr/ |
+| Instagram | 2026-10-20 | n/a | FORMAT | Bild 800×800 — Breite unter 1080 | (geplant, Metricool 399527943) |
+| Instagram | 2026-10-21 | n/a | FORMAT | Bild 800×800 — Breite unter 1080 | (geplant, Metricool 399528714) |
+| Instagram | 2026-10-22 | n/a | FORMAT | Bild 800×800 — Breite unter 1080 | (geplant, Metricool 399529298) |
+| Instagram | 2026-10-23 | n/a | FORMAT | Bild 900×900 — Breite unter 1080 | (geplant, Metricool 399529919) |
+| Instagram | 2026-10-24 | n/a | FORMAT | Bild 800×800 — Breite unter 1080 | (geplant, Metricool 399530391) |
+| Instagram | 2026-10-25 | n/a | FORMAT | Bild 800×800 — Breite unter 1080 | (geplant, Metricool 399530737) |
+| Pinterest | 2026-10-21 | n/a | FORMAT | Bild 800×800 — Breite unter 1080 | (geplant, Metricool 400395776) |
+| Pinterest | 2026-10-24 | n/a | FORMAT | Bild 800×800 — Breite unter 1080 | (geplant, Metricool 400396217) |
+| Pinterest | 2026-10-19 | 0 | DIREKTLINK | Pin verlinkt https://www.instagram.com/reel/Depha0pBkEf/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645583411954/ |
+| Pinterest | 2026-10-19 | 0 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/DephJDdFb0Y/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645583411653/ |
+| Pinterest | 2026-10-19 | 0 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/DepguxkCA2G/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645583411649/ |
 | Pinterest | 2026-10-18 | 0 | DIREKTLINK | Pin verlinkt https://www.instagram.com/p/DemJH5DiLM6/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645583325277/ |
 | Pinterest | 2026-10-16 | 0 | DIREKTLINK | Pin verlinkt https://www.instagram.com/reel/DegfXRTjeww/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645583141853/ |
 | Pinterest | 2026-10-15 | 0 | DIREKTLINK | Pin verlinkt https://www.instagram.com/reel/Dedzmhbilva/ statt einer Produktseite | https://www.pinterest.com/pin/1111333645583055861/ |
@@ -3173,7 +3284,7 @@ Dazu: 45 Facebook-Beiträge ohne Direktlink (Liste unten) · 13 Beiträge mit Pr
 
 ## Facebook ohne Direktlink
 
-Auf Facebook ist ein Link in der Beschreibung klickbar; «Link in Bio» verschenkt dort den Klick. 45 Beiträge ohne `luxestyle.ch/products/…`. Vorschlag: künftige FB-Beiträge mit Produktlink (Poster), bestehende nur bei Beiträgen mit Reichweite nachtragen — Weg: FB-API POST /{post-id} message=… [Q1]
+Auf Facebook ist ein Link in der Beschreibung klickbar; «Link in Bio» verschenkt dort den Klick. 52 Beiträge ohne `luxestyle.ch/products/…`. Vorschlag: künftige FB-Beiträge mit Produktlink (Poster), bestehende nur bei Beiträgen mit Reichweite nachtragen — Weg: FB-API POST /{post-id} message=… [Q1]
 
 <details><summary>Liste</summary>
 
@@ -3215,19 +3326,26 @@ Auf Facebook ist ein Link in der Beschreibung klickbar; «Link in Bio» verschen
 - 2026-10-14 14:45 UTC · n/a Aufrufe · https://facebook.com/122108214291350792/posts/1105629988875784 · «»
 - 2026-10-14 22:59 UTC · n/a Aufrufe · https://facebook.com/122108214291350792/posts/1033832376365374 · «»
 - 2026-10-18 22:13 UTC · n/a Aufrufe · https://facebook.com/122108214291350792/posts/1130377682854663 · «»
-- 2026-10-19 12:45 UTC · n/a Aufrufe · (geplant, Metricool 399445253) · «»
+- 2026-10-19 12:45 UTC · n/a Aufrufe · https://facebook.com/122108214291350792/posts/1699622128254986 · «»
 - 2026-10-20 12:45 UTC · n/a Aufrufe · (geplant, Metricool 399450504) · «»
 - 2026-10-21 12:45 UTC · n/a Aufrufe · (geplant, Metricool 399452934) · «»
 - 2026-10-22 12:45 UTC · n/a Aufrufe · (geplant, Metricool 399455141) · «»
 - 2026-10-23 12:45 UTC · n/a Aufrufe · (geplant, Metricool 399459125) · «»
 - 2026-10-24 12:45 UTC · n/a Aufrufe · (geplant, Metricool 399468252) · «»
 - 2026-10-25 12:45 UTC · n/a Aufrufe · (geplant, Metricool 399472167) · «»
+- 2026-10-19 19:10 UTC · n/a Aufrufe · https://facebook.com/122108214291350792/posts/1897350638311044 · «»
+- 2026-10-20 19:10 UTC · n/a Aufrufe · (geplant, Metricool 399528588) · «»
+- 2026-10-21 19:10 UTC · n/a Aufrufe · (geplant, Metricool 399529123) · «»
+- 2026-10-22 19:10 UTC · n/a Aufrufe · (geplant, Metricool 399529602) · «»
+- 2026-10-23 19:10 UTC · n/a Aufrufe · (geplant, Metricool 399530080) · «»
+- 2026-10-24 19:10 UTC · n/a Aufrufe · (geplant, Metricool 399530529) · «»
+- 2026-10-25 19:10 UTC · n/a Aufrufe · (geplant, Metricool 399530905) · «»
 
 </details>
 
 ## Nicht prüfbar
 
-- Preis ohne sichere Produktzuordnung (13): https://www.instagram.com/p/DebzXSjCNR9/ · https://www.instagram.com/p/DeRnDOrCJjU/ · https://www.instagram.com/p/Dd5qYj2AKyw/ · https://www.facebook.com/122102579637350792/posts/122140221003350792 · https://www.facebook.com/122102579637350792/posts/122135105943350792 · https://www.tiktok.com/@luxestyle.ch/video/7691427221021527329 · https://www.tiktok.com/@luxestyle.ch/video/7691432399791476000 · https://www.tiktok.com/@luxestyle.ch/video/7691437492066733344 · https://www.instagram.com/p/DeRnDOrCJjU/ · (geplant, Metricool 393520121) · (geplant, Metricool 393520246) · (geplant, Metricool 393520277) · https://www.instagram.com/p/DebzXSjCNR9/
+- Preis ohne sichere Produktzuordnung (14): https://www.instagram.com/p/DebzXSjCNR9/ · https://www.instagram.com/p/DeRnDOrCJjU/ · https://www.instagram.com/p/Dd5qYj2AKyw/ · https://www.facebook.com/122102579637350792/posts/122140221003350792 · https://www.facebook.com/122102579637350792/posts/122135105943350792 · https://www.tiktok.com/@luxestyle.ch/video/7691427221021527329 · https://www.tiktok.com/@luxestyle.ch/video/7691432399791476000 · https://www.tiktok.com/@luxestyle.ch/video/7691437492066733344 · https://www.instagram.com/p/DeRnDOrCJjU/ · (geplant, Metricool 393520121) · (geplant, Metricool 393520246) · (geplant, Metricool 393520277) · https://www.instagram.com/p/DebzXSjCNR9/ · (geplant, Metricool 399776546)
 - Medien nicht messbar (3): https://www.pinterest.es/pin/1111333645581220663 (Download gescheitert) · (geplant, Metricool 393176017) (Download gescheitert) · (geplant, Metricool 393176023) (Download gescheitert)
 - TikTok/YouTube: Format und Ton werden an der hochgeladenen Datei gemessen (Repo `social/reels/` bzw. Metricool-Medium), nicht an der Plattform-Fassung.
 
