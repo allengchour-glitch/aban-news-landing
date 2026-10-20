@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 19:50 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 20:53 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 284 · **135 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 99, teilweise: 26, keine: 10; Preisspanne > 2×: 22) · 1 CJ-Variante: 149 · ohne Antwort: 0
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 273 · **124 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 89, teilweise: 25, keine: 10; Preisspanne > 2×: 22) · 1 CJ-Variante: 149 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -9,7 +9,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Astronauten-Handyhülle mit 3D-Motiv (`astronaut-phone-case-298816`) | 96 | 96 | 1.2–1.2 | 15.90 | Light cyan-Iphone13, Light cyan-Iphone13pro, Light cyan-Iphone13promax, Light cyan-Iphone13mini |
 | Flanell-Sofabezug (`flanell-sofabezug-604200`) | 85 | 85 | 6.77–23.26 | 28.90 | Red-180x130cm , Red-180x150cm , Red-180x180cm , Red-180x200cm  |
 | Edelstahl-Armreif «Couleur» · verstellbar, Gold (`edelstahl-armreif-couleur-verstellbar-gold`) | 78 | 52 | 2.07–2.55 | 29.90 | Silver-A style, Silver-B style, Silver-C style, Silver-D style |
-| Modell Soft Velvet Wimpern (`modell-soft-velvet-wimpern-629800`) | 60 | 60 | 2.21–2.54 | 15.90 | 0.05CC-7mm, 0.05CC-8mm, 0.05CC-9mm, 0.05CC-10mm |
 | Reflektierendes Hunde-Brustgeschirr mit Leine (`reflektierendes-hunde-brustgeschirr-mit-leine-050816`) | 40 | 40 | 2.55–4.08 | 21.90 | Yellow-XS, Yellow-S, Yellow-M, Yellow-L |
 | 3D Glas Aroma Diffusor mit Farblicht (`3d-glas-aroma-diffusor-mit-farblicht-677613`) | 38 | 38 | 8.41–36.8 | 28.90 | A US, Special US, AU3pcs, Special AU |
 | Adventskalender 2026 mit Blind-Box-Überraschungen (`adventskalender-blind-box-sammlung-2026-636300`) | 37 | 20 | 2.76–5.52 | 16.90 | Christmas Girl-26x18x3CM, Snow Girl Oil Lamp-26x18x3CM, Characters Birth Night-26x18x3CM, Character Little Sheep-26x18x3CM |
@@ -21,7 +20,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Doppelwandiger Isolierbehälter aus Edelstahl (`doppelwandiger-isolierbehalter-aus-edelstahl-997248`) | 28 | 28 | 5.42–9.46 | 35.90 | 6L-Steel Color, 6L-Pure White, 6L-Ivory White, 6L-Candy Pink |
 | Edelstahl-Armband «Amore» · Herz & Geburtsstein, Gold (`edelstahl-armband-amore-herz-geburtsstein-gold`) | 24 | 8 | 5.1–13.67 | 39.90 | Steel-Bracelet-1 heart, Steel-Bracelet-2 hearts, Steel-Bracelet-3 hearts, Steel-Bracelet-4 hearts |
 | Grosses Rückenkissen für Erker und Bett (`grosses-ruckenkissen-fur-erker-und-bett-625000`) | 24 | 24 | 7.46–10.78 | 46.90 | Smoky Gray-60x45x20cm, Smoky Gray-70x45x20cm, Smoky Gray-80x45x20cm, Lake Blue-60x45x20cm |
-| Kissenbezug mit Kürbis-Stickerei (`kissenbezug-mit-kurbis-stickerei-634500`) | 24 | 24 | 3.09–4.79 | 22.90 | White-45x45cm pillowcase, White-45x45cm pillow, White-30x50cm pillowcase, White-30x50cm pillow |
 | Edelstahl-Halskette «Goutte» · Tropfen-Anhänger, Silber (`edelstahl-halskette-goutte-tropfen-anhanger-silber`) | 24 | 24 | 3.25–11.48 | 36.90 | Steel color-1 birthstone 1 letter, Steel color-2 birthstone 2 letter, Steel color-3 birthstone 3 letter, Steel color-4 birthstone 4 letter |
 | Kabelloser Dual-Vibrations-Bluetooth-Controller (`kabelloser-dual-vibrations-bluetooth-controlle-7a05d6`) | 22 | 19 | 9.5–10.58 | 23.90 | Clear Blue, Titanium blue, Power Purple, Red |
 | USB-Stick Lippenstift-Design (`usb-stick-lippenstift-design-9a6739`) | 21 | 7 | 2.89–11.58 | 22.90 | Pink-4GB, Silver-16GB, Blue-4GB, Blue-2GB |
@@ -30,7 +28,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Wandlampe aus Kupfer mit weissem Lampenschirm (`wandlampe-aus-kupfer-mit-weisser-lampenschirm-600000`) | 20 | 10 | 26.91–47.74 | 58.90 | Without Light Source-Black-Single head, Without Light Source-Bronze-Single head, Warm Light-Black-Single head, Warm Light-Bronze-Single head |
 | Makeup-Set für Einsteiger mit Concealer & Eyeliner (`makeup-set-fur-einsteiger-mit-concealer-eyelin-298240`) | 20 | 17 | 2.7–17.07 | 23.90 | KIT011, KIT01, KIT02, KIT03 |
 | USB Mini-Ventilator mit Clip – bürstenlos & leise (`usb-mini-ventilator-mit-clip-burstenlos-leise-576960`) | 20 | 20 | 2.13–2.53 | 14.90 | Black-Brushed with 1200mA battery-USB, Black-Brushed with 800mA battery-USB, Black-Brushless with 1200mA battery-USB, Black-Brushless without battery-USB |
-| Reisebeutel mit Spiegel und Licht (`reisebeutel-mit-spiegel-und-licht-610900`) | 19 | 16 | 5.26–7.88 | 34.90 | BlackLED-26x23x11cm, BeigeLED-26x23x11cm, Pink LED-26x23x11cm, BrownLED-26x23x11cm |
 | Rugged Smartwatch X5 – 5 ATM Wasserdicht, GPS, Bluetooth-Calling (`rugged-smartwatch-x5-5-atm-wasserdicht-gps-bluetooth-calling`) | 18 | 2 | 29.19–55.56 | 79.90 | Black-Single watch, Gray-Single watch, Black-Set1, Black-Set2 |
 | Kissenhülle Ahornblatt & Kürbis Stickerei (`kissenhulle-ahornblatt-kurbis-stickerei-608100`) | 18 | 18 | 2.26–2.59 | 15.90 | Beige Maple Leaf-45x45cm, Beige Maple Leaf-40x40cm, Beige Maple Leaf-30x50cm, Beige Pumpkin-45x45cm |
 | LED Schmuck-Geschenkbox (`led-schmuck-geschenkbox-608700`) | 18 | 13 | 2.63–3.68 | 15.90 | White-Single seam ring box, White-Double stitched ring box, White-Earring Box, White-Necklace Box |
@@ -49,7 +46,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Männer-Geldbörse mit Tri-Fold-Design (`manner-geldborse-mit-tri-fold-design-607600`) | 11 | 11 | 7.63–7.63 | 18.90 | Dark Brown, Brown, Black, Red |
 | Nordic Viking Runen Kompass Totem Armband aus Titanstahl (`nordic-viking-runen-kompass-totem-armband-aus-609200`) | 10 | 10 | 13.86–13.86 | 34.90 | Aoding Knot-20cm, Aoding Knot-22cm, Helmet Of Awe-20cm, Helmet Of Awe-22cm |
 | Stickierter Vorhangstoff – Baumwolle, Polyester, Samt (`stickierter-vorhangstoff-baumwolle-polyester-s-ccafca`) | 10 | 4 | 3.01–4.37 | 24.90 | Beige-Yarn-Zero shear, Blue-Cloth-Zero shear, Blue-Yarn-Entire batch, Blue-Yarn-Zero shear |
-| Kompakte Powerbank 10 000 mAh mit Dual-Display (`kompakte-powerbank-10-000-mah-mit-dual-display-608600`) | 10 | 10 | 6.01–6.69 | 16.90 | Black-10000 MA, Black-20000 MA, White-10000 MA, White-20000 MA |
 | LED Ausziehbare Schmink-Wandleuchte (`led-ausziehbare-schmink-wandleuchte-610600`) | 10 | 10 | 6.42–7.79 | 26.90 | Black-Neutral Light-50cm 12W, Black-Warm Light-50cm 12W, Black-White Light-50cm 12W, Black-three color dimming-50cm 12W |
 | Armband für Apple Watch mit Dornschliesse (`armband-fur-apple-watch-mit-dornschliesse-204416`) | 10 | 10 | 5.59–5.59 | 25.90 | Black-42.44.45mm, Black-38.40.41mm, Brown-42.44.45mm, Brown-38.40.41mm |
 | Halskette «Rosée» · Kristall-Tropfen, Silber (`halskette-rosee-kristall-tropfen-silber`) | 10 | 3 | 3.27–3.27 | 29.90 | Rose Gold K5 Blue Opal, Rose Gold K17B White Opal, Platinum OP38 Purple Opal, Platinum K17B White Opal |
@@ -78,10 +74,8 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Wandlampe im nordischen Minimal-Stil für Innen und Aussen (`nordische-minimallampen-design-fur-innen-und-a-636800`) | 6 | 6 | 14.62–20.79 | 35.90 | Warm White-61cm-Black, Warm White-81cm-Black, Neutral light-61cm-Black, Neutral light-81cm-Black |
 | Lenkradbezug Plüsch Pfotenabdruck 38cm (`lenkradbezug-plusch-pfotenabdruck-38cm-ebf475`) | 6 | 6 | 3.04–3.32 | 15.90 | Prestige Grey, Black, Purple, Black orange |
 | Webteppich mit Leoparden-Motiv (`sofabett-mit-modernem-muster-617500`) | 6 | 6 | 5.51–9.12 | 28.90 | Earrings Girl-130x160cm, Female Newspaper Reader-130x160cm, Pink Panther-130x160cm, Shell-130x160cm |
-| Nageldesign-Stift (`nageldesign-stift-629000`) | 6 | 6 | 2.39–2.39 | 21.90 | Wine Red, Tangerine, Marroon, Bright pink |
 | Solar-Gartenlampe Ente (`solar-gartenlampe-ente-616300`) | 6 | 6 | 6.4–6.4 | 26.90 | LD055Style, BY25111Style, LD071Style, LD072Style |
 | Dekorative Leinwandbilder Set – 3-teilige Wandkunst (`dekorative-leinwandbilder-set-3-teilige-wandku-604600`) | 6 | 6 | 12.74–14.53 | 33.90 | Type A-30X40cm, Type A-40X60cm, Type B-30X40cm, Type B-40X60cm |
-| U-Form Kissen für Nacken-Unterstützung (`u-form-kissen-fur-nacken-unterstutzung-622600`) | 6 | 6 | 3.99–4.01 | 16.90 | White, White Khaki Ears, Khaki White Ears, Khaki |
 | Reise-Rucksack 20–35 L mit Schuhfach (`reise-rucksack-20-35-l-mit-schuhfach-615800`) | 6 | 6 | 17.61–17.61 | 44.90 | Cheese White, Classic Black, Mint Green, Galactic Gray |
 | Wandlampe im amerikanischen Vintage-Stil (`amerikanischer-vintage-wandlampenstil-602800`) | 6 | 6 | 4.15–5.47 | 25.90 | Without Light Source-All Black, Without Light Source-Black Outside White Inside, Without Light Source-Rust Color, With Light Source-All Black |
 | Duschkopf mit Wassersparfunktion und Ventilator (`duschkopf-mit-wassersparfunktion-und-ventilato-030400`) | 6 | 6 | 3.22–9.55 | 22.90 | Adjustable gold-A Pack, Adjustable gold-B Pack, Adjustable gold-C Pack, Adjustable gold-Set |
@@ -113,7 +107,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Dekorative Bücherregal-Laternenlampe (`dekorative-bucherregal-laternenlampe-607700`) | 3 | 2 | 2.71–5.42 | 19.90 | Lantern bookshelf lamp, Little ghost bookshelf lamp, Lantern bookshelf lamp 2pcs |
 | Glättbürste mit Dampf-Sprühfunktion (`glattburste-mit-dampf-spruhfunktion-e765b5`) | 3 | 3 | 15.49–15.49 | 29.90 | UK plug, US plug, EU plug |
 | Marokkanisches Kissen mit Quasten (`marokkanisches-kissen-mit-quasten-890688`) | 3 | 3 | 7.4–8.91 | 20.90 | Mosaic pillow 4545cm-Without core, Square pillow 4545cm-Without core, Square waist pillow 3050cm-Without core |
-| Interaktives Katzenspielzeug mit Krallenschärfer (`interaktives-katzenspielzeug-mit-krallenscharf-04277a`) | 3 | 3 | 4.75–6.15 | 24.90 | Blue USB, Green, Green USB |
 | Maniküre AB Diamond 3-teiliges Set (`manikure-ab-diamond-3-teiliges-set-517952`) | 3 | 3 | 2.01–2.01 | 19.90 | Pink Diamond, White Diamond, Red Diamond |
 | Multifunktionales Silikon-Wärmepad (`multifunktionales-silikon-warmepad-625400`) | 3 | 3 | 14.93–14.93 | 50.90 | EU230V Dark Blue 60 X38cm, US110V Beige 60x38cm, US110V Dark Blue 60 X38cm |
 | Studentenrucksack Blumenmuster (`studentenrucksack-blumenmuster-617800`) | 3 | 3 | 3.86–3.86 | 23.90 | Small Flower Style, Floral Style, Tulip |
@@ -130,13 +123,9 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Automatischer Lockenstab mit Drehfunktion (`automatischer-lockenstab-mit-drehfunktion-5eb36d`) | 3 | 3 | 32.03–32.03 | 50.90 | White, Pink, Black |
 | Aufblasbares Halloween-Kostüm für zwei Personen (`inflierbares-halloween-kostum-fur-zwei-persone-638900`) | 2 | 2 | 20.66–20.66 | 42.90 | Double Spring Dog-Free Size, Double Sausage Dog-Free Size |
 | Elektrischer Gemüseschneider Multifunktional – Schneiden, Reiben & Hobeln (`elektrischer-gemuseschneider-multifunktional-schneiden-reiben-hobeln`) | 2 | 0 | 11.87–12.44 | 74.90 | White with adapter-220V US, Green-USB |
-| Rennwagen-Modellbausteine für Kinder (`rennwagen-modellbausteine-fur-kinder-989824`) | 2 | 2 | 4.2–4.77 | 23.90 | As shown, 350z |
 | Wandteppich mit Berglandschaft (`traumhafte-berglandschaft-wandteppich-5ea056`) | 2 | 2 | 2.9–4.14 | 16.90 | 200×150cm, 130×150cm |
 | Moocare Aromatherapie-Öl (20 Stk.) (`moocare-aromatherapie-ol-20-stk-628100`) | 2 | 2 | 9.12–9.12 | 26.90 | Black Style, Red Style |
 | Kreativer Weindekanter – Pinguin oder Bohnensprosse (`kreativer-weindekanter-pinguin-oder-bohnenspro-613700`) | 2 | 2 | 14.93–18.24 | 41.90 | Penguin Wine Decanter, Bean Sprouts Wine Decanter |
-| Keramik-Futternapf aus Bambus und Holz (`keramik-futternapf-aus-bambus-und-holz-0bc20b`) | 2 | 2 | 2.25–3.59 | 21.90 | Double, Single |
-| Faltbares Strassen-Baustein-Set (`faltbares-strassen-baustein-set-808064`) | 2 | 2 | 15.9–15.9 | 36.90 | Bee Workshop, Butcher |
-| Glasbecher für Büro und Zuhause (`glasbecher-fur-buro-und-zuhause-639800`) | 2 | 2 | 2.88–2.88 | 16.90 | Walnut colored Handle-260mL, Transparent colored Handle-260mL |
 | RGB Computer-Mikrofon für Live-Calls und Gaming (`rgb-computer-mikrofon-fur-live-calls-und-gamin-322368`) | 2 | 2 | 5.79–7.58 | 14.90 | Black-Blu ray, Black-Colorful |
 | Schwingendes Geisterlicht für Halloween (`schwingender-geisterlicht-fur-halloween-629800`) | 2 | 2 | 3.32–4.21 | 22.90 | Swing Ghost Night Light-US , Swing Ghost Night Light-USB |
 | Laptop-Rucksack aus PU-Leder (`grosse-pu-computer-tasche-fur-unterwegs-119488`) | 2 | 2 | 9.92–9.92 | 40.90 | Black-20inches, Brown-20inches |
