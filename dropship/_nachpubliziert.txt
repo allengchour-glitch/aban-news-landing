@@ -385,3 +385,6 @@ gid://shopify/Product/16654283047303	armelloses-faltenkleid-603100	Ärmelloses F
 gid://shopify/Product/16654283112839	keramik-kaffeetasse-mit-untertasse-635000	Keramik-Kaffeetasse mit Untertasse
 gid://shopify/Product/16654283243911	78-farben-lidschatten-palette-matt-schimmernd-416768	78-Farben-Lidschatten-Palette Matt Schimmernd
 gid://shopify/Product/16654364672391	gestreiftes-langarmshirt-mit-puffarmeln-605500	Gestreiftes Langarmshirt mit Puffärmeln
+gid://shopify/Product/16654367359367	sweatshirt-mit-digitaldruck-und-fellkragen-632900	Sweatshirt mit Digitaldruck und Fellkragen
+gid://shopify/Product/16654367392135	easy-fan-wimpernverlangerung-631700	Easy Fan Wimpernverlängerung
+gid://shopify/Product/16654381908359	smarter-ring-fur-prasentationen-604800	Smarter Ring für Präsentationen
