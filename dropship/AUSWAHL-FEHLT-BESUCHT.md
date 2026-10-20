@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-19 22:33 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 00:18 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 246 · **128 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 95, teilweise: 25, keine: 8; Preisspanne > 2×: 20) · 1 CJ-Variante: 118 · ohne Antwort: 0
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 228 · **110 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 80, teilweise: 22, keine: 8; Preisspanne > 2×: 19) · 1 CJ-Variante: 118 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -38,7 +38,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Trolley-Schulrucksack mit Rollen (`trolley-schulrucksack-mit-rollen-613100`) | 12 | 5 | 8.85–10.38 | 58.90 | Black And Yellow Six Rounds, Black And Yellow Two Wheels, Black And Yellow Bull Wheel, Black Two Wheels |
 | Kabelloses Ansteckmikrofon mit Ladebox (`kabelloses-ansteckmikrofon-mit-ladebox-016064`) | 12 | 12 | 9.76–14.34 | 21.90 | One To One Black-Type C Interface, One To One Black-Lighting Interface, One To One Black-Universal, One Drag Two Black-Type C Interface |
 | Futterautomat mit Kamera für Hunde und Katzen (`futterautomat-mit-kamera-fur-hunde-und-katzen-294976`) | 11 | 11 | 34.0–43.12 | 129.90 | White 4L-Black Transparent Barrel, White 6L-Black Transparent Barrel, Black 4L-Black Transparent Barrel, Black 6L-Black Transparent Barrel |
-| Kleine Bausteine für Trägerfiguren (`kleine-bausteine-fur-tragerfiguren-822400`) | 11 | 11 | 3.57–11.06 | 22.90 | Style1, Style2, Style3, Style4 |
 | Zehnfarben-Lidschattenpalette Matt und Glitzer (`zehnfarben-lidschattenpalette-matt-und-glitzer-669696`) | 11 | 11 | 3.8–3.8 | 23.90 | BD 111 Iron Sheet Reservation, BD 110 Is A Little Blue, BD 601 Reverse Emotion, BD 501 A Set Of Colors |
 | Männer-Geldbörse mit Tri-Fold-Design (`manner-geldborse-mit-tri-fold-design-607600`) | 11 | 11 | 7.63–7.63 | 18.90 | Dark Brown, Brown, Black, Red |
 | Nordic Viking Runen Kompass Totem Armband aus Titanstahl (`nordic-viking-runen-kompass-totem-armband-aus-609200`) | 10 | 10 | 13.86–13.86 | 34.90 | Aoding Knot-20cm, Aoding Knot-22cm, Helmet Of Awe-20cm, Helmet Of Awe-22cm |
@@ -77,7 +76,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Schürze für Küche, Haushalt und Blumenladen (`schurze-fur-kuche-haushalt-und-blumenladen-627520`) | 5 | 5 | 4.32–4.32 | 23.90 | Black, Yellow, Black Breathable, Blue Breathable |
 | Photonen-Hautverjüngungsgerät mit Mikrostrom (`photonen-hautverjungungsgerat-mit-mikrostrom-604400`) | 5 | 5 | 12.44–18.08 | 32.90 | MRY22020 Electrodeless-Natural Jade Beauty Device, MRY22020SEMS Silver Electrode-Natural Jade Beauty Device, MRY22020SEMS Gold Electrode-Natural Jade Beauty Device, MRY22021SEMS Silver Electrode-Natural Jade Beauty Device |
 | Ballet Samt-Rouge (`ballet-samt-rouge-384704`) | 5 | 5 | 15.11–15.11 | 35.90 | 01Swan Snow, 02Romanticism, 03Soft Silk Ribbon, 04Golden peach velvet |
-| Ovaler Kistchen mit Ährenmuster – Leder-Geschenkbox (`ovaler-kistchen-mit-ahrenmuster-leder-geschenk-606100`) | 5 | 5 | 4.02–4.19 | 25.90 | Pink-31x18x18cm-Oval, Red-31x18x18cm-Oval, Green-31x18x18cm-Oval, Light Brown-31x18x18cm-Oval |
 | Gänsedaunenkissen – Füllung für Kissenhüllen (`gansedaunenkissen-fullung-fur-kissenhullen-520f50`) | 5 | 5 | 2.74–7.41 | 27.90 | White-75x50cm, White-74x48cm, White-45x45cm, White-50x50cm |
 | Aromadiffusor Holzmaserung (`aroma-diffuser-holzoptik-hohl-design-ultraschall-luftbefeuchter-mit-led-licht`) | 4 | 4 | 13.86–14.12 | 44.90 | Light wood grain-AU, Light wood grain-UK, Light wood grain-US, Light wood grain-EU |
 | Magisches Katzenkratzbrett mit Orgel-Design (`magisches-katzenkratzbrett-mit-orgel-design-709120`) | 4 | 1 | 3.81–3.81 | 16.90 | Deep Wood Grain, White, Cartoon Print, Wansheng Bat |
@@ -89,10 +87,8 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | 10-teiliges Badset aus Baumwolle (`10-teiliges-badset-aus-baumwolle-620600`) | 4 | 4 | 20.28–22.22 | 41.90 | Gray Green-120X70CM, WHITE-120X70CM, Blue-120X70CM, Grey-120X70CM |
 | Faden-Gel für Nageldesign (Spider-Gel) (`nageldesign-faden-gel-371136`) | 4 | 4 | 4.78–9.71 | 24.90 | TZLXJCS, TZLXJBJ, TZLXJYG, TZLXJCSBJ |
 | Vorratsbox für Getreide (`vorratsbox-fur-getreide-8f38c8`) | 4 | 0 | 2.3–5.03 | 21.90 | Gray, White Quartile 2.8L, White, Grey Quartile 2.8L |
-| Quadratische Herrenuhr mit Diamant-Trend (`quadratische-herrenuhr-mit-diamant-trend-140672`) | 4 | 4 | 3.35–3.35 | 22.90 | White, Yellow, Rose Gold, Black |
 | Silikon-Eiswürfelform für 36 Würfel (`silikon-eiswurfelform-fur-36-wurfel-bf7780`) | 4 | 4 | 4.03–24.78 | 23.90 | Blue-2pc, Blue-6pc, Blue-1pc, Blue-4pc |
 | Retro Magnetarmband aus rotem Bronze (`retro-magnetarmband-aus-rotem-bronze-628600`) | 4 | 4 | 2.76–7.72 | 21.90 | Red Bronze, Red Bronze set, Bronze Oval Turquoise, 43SSJCRed |
-| Multifunktions-Quarzuhr mit Lederarmband (`multifunktions-quarzuhr-mit-lederarmband-6fb26c`) | 4 | 1 | 10.41–10.41 | 30.90 | Silver white, Rose gold black, Gold black, Rose gold blue |
 | Schräge Keramik Futterschale für Haustiere (`schrage-keramik-futterschale-fur-haustiere-d48574`) | 4 | 4 | 7.38–14.77 | 34.90 | White 2pcs, Blue, White, Pink |
 | Handmixer mit 5 Geschwindigkeiten (`handmixer-mit-5-geschwindigkeiten-694c50`) | 3 | 3 | 5.8–6.62 | 25.90 | B, A, C |
 | Vulkan Aroma Diffuser mit Flammen- & Quallen-Effekt (`vulkan-aroma-diffuser-mit-flammen-quallen-effe-771200`) | 3 | 3 | 16.32–32.64 | 33.90 | Blue flame bead-With Essential Oil-US, Yellow flame bead-With Essential Oil-US, Blue yellow-With Essential Oil-US |
@@ -105,13 +101,8 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Edelstahl-Armband «Cœur» · Herz, Gold (`edelstahl-armband-coeur-herz-gold`) | 3 | 0 | 3.86–4.81 | 34.90 | Steel, Rose Gold, Gold |
 | Vintage Baseball-Cap «Liberty» · Washed Schwarz (`vintage-baseball-cap-liberty-washed-schwarz`) | 3 | 3 | 2.13–2.13 | 27.90 | Black, Deep Blue, Light blue |
 | Baseball-Cap «L.A.» · Hellblau (`baseball-cap-l-a-hellblau`) | 3 | 3 | 2.04–2.04 | 24.90 | Black, Light blue, Deep Blue |
-| Lenkradbezug Plüsch Leopard (`lenkradbezug-plusch-leopard-913ee5`) | 3 | 3 | 3.1–3.1 | 18.90 | Pink, Beige, White |
-| Mehrzweck-Kissen für Seiten- und Bauchschläfer (`mehrzweck-kissen-fur-seiten-und-bauchschlafer-639100`) | 3 | 3 | 5.54–5.64 | 34.90 | Black-38X58X23cm, Gray Pink-38X58X23cm, Blue Gray-38X58X23cm |
-| T-Sport Uhrenarmband-Verbindungssteg (`t-sport-uhrenarmband-verbindungssteg-582400`) | 3 | 3 | 9.63–15.14 | 29.90 | Rose Gold-A, Black-A, Silver-A |
 | Cushion-Concealer (`concealer-kissen-607000`) | 3 | 3 | 3.08–3.08 | 22.90 | Ivory white, Natural color, Dark complexion |
-| Velo-Trinkflaschentasche aus Polyester (`velo-trinkflaschentasche-aus-polyester-1c5c33`) | 3 | 1 | 8.99–8.99 | 28.90 | Blue, Green, Red |
 | WLAN Handy Beamer (`wlan-handy-beamer-35edfc`) | 3 | 3 | 41.55–70.56 | 65.90 | Android, Basic, Cell phone |
-| Gemüseschneider Hand-Schäler aus Edelstahl (`gemuseschneider-hand-schaler-aus-edelstahl-782848`) | 3 | 3 | 4.1–4.1 | 23.90 | Green, Black, Grey |
 | DIY Fotorahmen Bausteine (`diy-fotorahmen-bausteine-383936`) | 3 | 3 | 5.0–9.54 | 24.90 | White-32x32cm, Love peach-32x32cm, Black-32x32cm |
 | Studenten-Becher mit Sprühfunktion, 580 ml (`studenten-becher-mit-spruhfunktion-580-ml-614200`) | 3 | 3 | 19.57–19.57 | 43.90 | Jelly Galaxy-580ML, Cloud Diary-580ML, Sweet Dream Switch-580ML |
 | Verstellbares Katzenbett (`verstellbares-katzenbett-603000`) | 3 | 3 | 7.29–9.03 | 59.90 | Light Gray-Winter Style, Light Gray-Summer Style, Light Gray-Newly Upgraded Rotating Model |
@@ -124,13 +115,4 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Kreativer Weindekanter – Pinguin oder Bohnensprosse (`kreativer-weindekanter-pinguin-oder-bohnenspro-613700`) | 2 | 2 | 14.93–18.24 | 41.90 | Penguin Wine Decanter, Bean Sprouts Wine Decanter |
 | Klassischer Game-Controller (`klassischer-game-controller-42f504`) | 2 | 1 | 13.22–14.34 | 27.90 | Black, Y2HD plus 1462 |
 | RGB Computer-Mikrofon für Live-Calls und Gaming (`rgb-computer-mikrofon-fur-live-calls-und-gamin-322368`) | 2 | 2 | 5.79–7.58 | 14.90 | Black-Blu ray, Black-Colorful |
-| Gartenstecker Welpe (Metall) (`gartenstecker-welpe-metall-649088`) | 2 | 2 | 2.41–3.87 | 21.90 | A, C |
-| Elektronische Körperfettwaage mit Bluetooth (`elektronische-korperfettwaage-mit-bluetooth-b68bba`) | 2 | 2 | 15.87–16.35 | 43.90 | White, Black |
-| Tennistasche mit grosser Kapazität, weiss (`tennis-pack-mit-grosser-kapazitat-612600`) | 2 | 2 | 22.39–22.39 | 43.90 | Blue-Large, Pink-Large |
 | Weihnachtskranz mit Weihnachtsmann- oder Schneemann-Gesicht (`alte-schneemann-wandhanger-aus-plusch-627600`) | 2 | 2 | 6.14–6.14 | 25.90 | Elderly, Snowman Style |
-| Herren-Handtasche aus Rindsleder (`herren-handtasche-aus-rindsleder-c38b99`) | 2 | 1 | 36.5–37.6 | 64.90 | Brown, Black |
-| Gesichtsreinigungsbürste wasserfest (`gesichtsreinigungsburste-wasserfest-6a6592`) | 2 | 2 | 4.33–4.33 | 23.90 | Pink, Blue |
-| Kondensatormikrofon V8S mit Stimmwandler (`kondensatormikrofon-v8s-mit-stimmwandler-602800`) | 2 | 2 | 12.93–12.93 | 44.90 | Black Suit, Golden Suit |
-| Retro Nieten-Umhängetasche aus Leder (`retro-nieten-umhangetasche-aus-leder-558528`) | 2 | 2 | 22.15–22.15 | 43.90 | Black, Brown |
-| Uni-Rucksack für Laptop und Bücher (`uni-rucksack-fur-laptop-und-bucher-276544`) | 2 | 2 | 16.63–16.63 | 39.90 | Black, Blue |
-| Sitzkissen für Auto und Büro (`sitzkissen-fur-auto-und-buro-608000`) | 2 | 2 | 3.83–3.83 | 23.90 | Apricot-46x43x11.5cm, Dark Gray-46x43x11.5cm |
