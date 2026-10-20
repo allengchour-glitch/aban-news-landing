@@ -417,6 +417,13 @@ with tempfile.TemporaryDirectory() as tmp:
         pruefe("krypto-auto.bat «nachkontrolle» (18. Prüfung W3′/K5): EIN Durchgang (--einmal, kein 11-Minuten-Warten mit gehaltener Sperre), der Rückgabewert steht in data\\krypto-nachkontrolle-rc.txt, die Umleitung steht VOR dem Befehl (eine Ziffer davor gälte als Handle)",
                "pilot.py --nachkontrolle --einmal" in abschnitt and C.NK_RC == "krypto-nachkontrolle-rc.txt" and f'>"data\\{C.NK_RC}" echo' in abschnitt and "rc=%NKRC%" in abschnitt and "exit /b %NKRC%" in abschnitt
                and abschnitt.index("--einmal") < abschnitt.index(C.NK_RC) and f'>"data\\{C.NK_LEBT}" echo' in abschnitt, abschnitt)
+        # (19. Prüfung K5) ohne Buch endet die Bat früh — der alte Absturz-Wert (rc=1) in der rc-Datei hielt die Ampel bis zu 30 Minuten zu Unrecht rot: jetzt schreibt auch dieser Zweig «rc=0»
+        i_ohne = abschnitt.index("\n:nk_ohne_buch\n") + 1
+        zweig19 = abschnitt[i_ohne:]
+        pruefe("krypto-auto.bat «nachkontrolle» ohne Buch (19. Prüfung K5): der Zweig :nk_ohne_buch liegt NACH dem normalen exit /b, schreibt rc=0 in die rc-Datei (Umleitung zuerst) und endet mit exit /b 0; der Sprung steht nach dem Lebenszeichen",
+               "if not exist \"data\\krypto-pilot2-bestand.json\" goto :nk_ohne_buch" in abschnitt and abschnitt.index("exit /b %NKRC%") < i_ohne
+               and f'>"data\\{C.NK_RC}" echo' in zweig19 and "rc=0" in zweig19 and "exit /b 0" in zweig19 and "(" not in zweig19
+               and abschnitt.index(C.NK_LEBT) < abschnitt.index("goto :nk_ohne_buch"), zweig19)
         gi_pfad = C.HIER.parents[2] / ".gitignore"
         gi_text = gi_pfad.read_text(encoding="utf-8") if gi_pfad.exists() else None  # in einem Sandkasten nur mit tools/trading (Mutationsprobe) fehlt sie: dann nicht prüfbar
         pruefe("(18. Prüfung) die Laufzeit-Dateien der Nachkontroll-Aufgabe (Lebenszeichen, Rückgabewert, Push-Drosselung, Log) stehen in .gitignore — sonst wären sie auf dem PC des Users «ungetrackt» und störten das Aktualisieren",
@@ -455,11 +462,15 @@ with tempfile.TemporaryDirectory() as tmp:
                     pruefe(f"Ampel «Nachkontrolle (Aufgabenplanung)», {fall17}: {erwartet17} — und die tägliche Aufgabe bleibt grün",
                            zeile17 is not None and zeile17["ok"] is erwartet17 and wort17 in zeile17["text"] and gnk17["Täglicher Start (Aufgabenplanung)"]["ok"] is True, (zeile17, gnk17.get("Täglicher Start (Aufgabenplanung)")))
                 # (18. Prüfung K5) das Lebenszeichen schreibt die Bat VOR Python: ein abstürzendes `pilot.py --nachkontrolle` liess die Ampel grün. Jetzt wertet sie zusätzlich den Rückgabewert (NK_RC):
-                # 0 und 3 (Warnung, schon gemeldet) sind in Ordnung, alles andere ist ein Absturz → rot; ein veralteter Rückgabewert (älter als NK_LEBT_MAX_MIN) zählt nicht
+                # 0 = in Ordnung (grün), 3 = Warnung (19. Prüfung K5: GRAU mit Text — «grün» täuschte bei einer Dauerwarnung), alles andere — auch NEGATIVE Werte (NTSTATUS bei Kill/Absturz) — ist ein Absturz → rot;
+                # ein veralteter Rückgabewert (älter als NK_LEBT_MAX_MIN) zählt nicht
                 rc_datei18 = Path(td17) / C.NK_RC
-                for fall18, rc_text18, rc_alter18, erwartet18, wort18 in (("rc=0 frisch", "Tue 20.10.2026 18:30:01,12 rc=0", 60, True, "zuletzt vor"), ("rc=3 frisch (Warnung, schon gemeldet)", "x rc=3", 60, True, "zuletzt vor"),
+                for fall18, rc_text18, rc_alter18, erwartet18, wort18 in (("rc=0 frisch", "Tue 20.10.2026 18:30:01,12 rc=0", 60, True, "zuletzt vor"), ("rc=3 frisch (Warnung)", "x rc=3", 60, None, "WARNUNG"),
                                                                           ("rc=1 frisch (Absturz)", "x rc=1", 60, False, "Rückgabewert 1"), ("rc=9009 frisch", "x rc=9009", 60, False, "Rückgabewert 9009"),
-                                                                          ("rc=1, aber 45 Minuten alt (veraltet)", "x rc=1", 45 * 60, True, "zuletzt vor"), ("rc-Datei ohne rc=", "kaputt", 60, True, "zuletzt vor")):
+                                                                          ("rc=-1073741510 frisch (Windows: Prozess beendet)", "x rc=-1073741510", 60, False, "Rückgabewert -1073741510"),
+                                                                          ("rc=-1 frisch", "x rc=-1", 60, False, "Rückgabewert -1"),
+                                                                          ("rc=1, aber 45 Minuten alt (veraltet)", "x rc=1", 45 * 60, True, "zuletzt vor"), ("rc=3, aber 45 Minuten alt (veraltet)", "x rc=3", 45 * 60, True, "zuletzt vor"),
+                                                                          ("rc-Datei ohne rc=", "kaputt", 60, True, "zuletzt vor")):
                     lebt17.write_text("x")
                     _os17.utime(lebt17, (time.time() - 3 * 60, time.time() - 3 * 60))
                     rc_datei18.write_text(rc_text18)
@@ -469,7 +480,27 @@ with tempfile.TemporaryDirectory() as tmp:
                     C._befehl = lambda cmd, zeit: (True, "")
                     gnk18 = {x["name"]: x for x in C.gesundheit({}, {"entscheide": []}, {}, datetime.now(timezone.utc).date())}
                     zeile18 = gnk18.get("Nachkontrolle (Aufgabenplanung)")
-                    pruefe(f"Ampel «Nachkontrolle (Aufgabenplanung)», Rückgabewert der Bat: {fall18} → {'grün' if erwartet18 else 'rot'}", zeile18 is not None and zeile18["ok"] is erwartet18 and wort18 in zeile18["text"], zeile18)
+                    pruefe(f"Ampel «Nachkontrolle (Aufgabenplanung)», Rückgabewert der Bat: {fall18} → {'grün' if erwartet18 else 'grau' if erwartet18 is None else 'rot'}", zeile18 is not None and zeile18["ok"] is erwartet18 and wort18 in zeile18["text"], zeile18)
+                # (19. Prüfung K5) jeder Start schreibt NACH seinem Ende einen neuen Rückgabewert: ist der letzte Start älter als NK_ENDE_MAX_MIN und der Rückgabewert älter als er, ging der Durchgang nie zu Ende
+                # (hängt / das Zeitlimit der Aufgabe beendet ihn) → rot, auch wenn das Lebenszeichen frisch ist; ein laufender (junger) Durchgang und ein beendeter verspäteter Start bleiben grün
+                for fall19, lebt_min19, rc_min19, rc_text19, erwartet19, wort19 in (("Start vor 20 Min., Rückgabewert (rc=0) von VOR dem Start", 20, 25, "x rc=0", False, "nie zu Ende"),
+                                                                                    ("Start vor 20 Min., kein Rückgabewert-Datei", 20, None, "", False, "nie zu Ende"),
+                                                                                    ("Start vor 20 Min., Rückgabewert (rc=0) von NACH dem Start (beendet)", 20, 18, "x rc=0", True, "zuletzt vor"),
+                                                                                    ("Start vor 3 Min. läuft noch, Rückgabewert von vorher", 3, 13, "x rc=0", True, "zuletzt vor"),
+                                                                                    ("Start vor 14 Min., Rückgabewert von vorher (unter der Grenze)", 14, 24, "x rc=0", True, "zuletzt vor"),
+                                                                                    ("Start vor 16 Min., Rückgabewert von vorher (über der Grenze)", 16, 26, "x rc=0", False, "nie zu Ende")):
+                    lebt17.write_text("x")
+                    _os17.utime(lebt17, (time.time() - lebt_min19 * 60, time.time() - lebt_min19 * 60))
+                    rc_datei18.unlink(missing_ok=True)
+                    if rc_min19 is not None:
+                        rc_datei18.write_text(rc_text19)
+                        _os17.utime(rc_datei18, (time.time() - rc_min19 * 60, time.time() - rc_min19 * 60))
+                    C.os = _NT17()
+                    C._AUFGABE_CACHE.update({"zeit": 0.0, "wert": None, "wert_nk": None})
+                    C._befehl = lambda cmd, zeit: (True, "")
+                    gnk19 = {x["name"]: x for x in C.gesundheit({}, {"entscheide": []}, {}, datetime.now(timezone.utc).date())}
+                    zeile19 = gnk19.get("Nachkontrolle (Aufgabenplanung)")
+                    pruefe(f"Ampel «Nachkontrolle (Aufgabenplanung)», Durchgang nie zu Ende: {fall19} → {'grün' if erwartet19 else 'rot'}", zeile19 is not None and zeile19["ok"] is erwartet19 and wort19 in zeile19["text"], zeile19)
                 rc_datei18.unlink(missing_ok=True)
             finally:
                 C.os, C._befehl, C.DATA = alt_os17, alt_bef17, alt_data17

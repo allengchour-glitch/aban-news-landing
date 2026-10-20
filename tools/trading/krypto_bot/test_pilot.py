@@ -178,6 +178,18 @@ with _tf.TemporaryDirectory() as _sd:
         _lebt = True
     _lk.unlink(missing_ok=True)
     pruefe("Sperre mit Herzschlag vor 100 s: der Lauf lebt noch, auch mit ALT_NACH_TOT keine Übernahme", _lebt)
+    # (19. Prüfung, klein 3) Uhr zurück: starb der Halter und sprang die Uhr danach zurück, trägt die Sperre eine Änderungszeit «aus der Zukunft» — sie galt erst nach Δ + alt_nach als tot (der Tageslauf wurde abgewiesen,
+    # die Nachkontrolle übersprang still). Jetzt gilt sie als tot, sobald sie MEHR als alt_nach vorausliegt; eine kleine Abweichung (Uhren-Ungenauigkeit) bleibt eine lebende Sperre.
+    for _vor, _alt_n, _tot_erwartet in ((2000, None, True), (200, SP.ALT_NACH_TOT, True), (20, SP.ALT_NACH_TOT, False), (200, None, False), (-200, SP.ALT_NACH_TOT, True)):
+        _lk.write_text("1 0")
+        _os.utime(_lk, (_time.time() + _vor, _time.time() + _vor))  # (-200: eine ganz gewöhnliche tote Sperre, 200 s alt — die bisherige Regel bleibt)
+        try:
+            with SP.lauf_sperre(ordner=_sd, warten=0, **({} if _alt_n is None else {"alt_nach": _alt_n})):
+                _uebernommen = True
+        except SP.Besetzt:
+            _uebernommen = False
+        _lk.unlink(missing_ok=True)
+        pruefe(f"Sperre aus der Zukunft (Änderungszeit {_vor:+d} s, alt_nach={'900 (Standard)' if _alt_n is None else _alt_n}): {'als tot übernommen' if _tot_erwartet else 'lebt (nicht übernommen)'}", _uebernommen is _tot_erwartet, _uebernommen)
     _alt_hz = SP.HERZSCHLAG
     SP.HERZSCHLAG = 0.05
     try:
@@ -444,7 +456,7 @@ with _tf.TemporaryDirectory() as _sd:
     pruefe("pilot.py main(): der Tageslauf ruft bei belegter Sperre `lauf_besetzt` (rc 3 + Push) — nicht mehr `return 0`", "return lauf_besetzt(ex, a.trocken)" in _quelle_main18, _quelle_main18[-400:])
     # der Push der Nachkontrolle im 10-Minuten-Takt: dieselbe Meldung höchstens einmal je Stunde (sonst ~144 Pushes am Tag bei einem dauerhaft offenen Markt), eine andere sofort, die lange Fassung immer
     _gepusht18.clear()
-    _SG18.push = lambda t, *a, **k: _gepusht18.append(t)
+    _SG18.push = lambda t, *a, **k: (_gepusht18.append(t), True)[1]  # (19. Prüfung W1) `push` gibt True nur bei zugestellter Meldung zurück
     _pd18 = Path(_sd) / "push18.json"
     try:
         _r18 = [_PI._push_nachkontrolle("Meldung A", True, datei=_pd18, jetzt=1000.0),
@@ -457,12 +469,46 @@ with _tf.TemporaryDirectory() as _sd:
     pruefe("Push der Nachkontrolle im 10-Minuten-Takt: gleiche Meldung nach 10 Min. still, andere Meldung sofort, nach einer Stunde wieder, die lange Fassung (einmal=False) immer",
            _r18 == [True, False, True, True, True] and len(_gepusht18) == 4 and all("Keine Anlageberatung" in t for t in _gepusht18), (_r18, _gepusht18))
     _pd18.write_text("{kaputt")
-    _SG18.push = lambda t, *a, **k: _gepusht18.append(t)
+    _SG18.push = lambda t, *a, **k: (_gepusht18.append(t), True)[1]
     try:
         _r_kaputt18 = _PI._push_nachkontrolle("Meldung C", True, datei=_pd18, jetzt=5000.0)
     finally:
         _SG18.push = _alt_push18
     pruefe("Push-Drosselung: eine kaputte Drosselungs-Datei verhindert den Push nie", _r_kaputt18 is True and _gepusht18[-1].startswith("Meldung C"), _gepusht18)
+    # ── 19. Prüfung W1/K3: nur eine ZUGESTELLTE Meldung drosselt; Uhr zurück und geänderte Meldung pushen wieder ──
+    _pd19 = Path(_sd) / "push19.json"
+    _gepusht19, _antworten19 = [], [False, False, True, True]
+    _SG18.push = lambda t, *a, **k: (_gepusht19.append(t), _antworten19.pop(0))[1]
+    try:
+        _w1 = [_PI._push_nachkontrolle("Meldung D", True, datei=_pd19, jetzt=1000.0),   # Zustellung scheitert (Netz/Telegram weg) → False
+               _PI._push_nachkontrolle("Meldung D", True, datei=_pd19, jetzt=1600.0),   # NICHT gedrosselt: der erste Versuch kam nie an → False (immer noch Fehler)
+               _PI._push_nachkontrolle("Meldung D", True, datei=_pd19, jetzt=2200.0),   # kommt an → True
+               _PI._push_nachkontrolle("Meldung D", True, datei=_pd19, jetzt=2800.0)]   # jetzt gedrosselt → False, KEIN weiterer push-Aufruf
+    finally:
+        _SG18.push = _alt_push18
+    pruefe("Push-Drosselung (19. W1): eine NICHT zugestellte Meldung (push → False) drosselt nicht; erst die zugestellte Meldung drosselt die nächste",
+           len(_gepusht19) == 3 and _w1 == [False, False, True, False] and _antworten19 == [True], (_w1, _gepusht19, _antworten19))
+    _gepusht19.clear()
+    _SG18.push = lambda t, *a, **k: (_gepusht19.append(t), True)[1]
+    try:
+        _pd19b = Path(_sd) / "push19b.json"
+        _PI._push_nachkontrolle("Meldung E", True, datei=_pd19b, jetzt=10000.0)
+        _uhr_zurueck = _PI._push_nachkontrolle("Meldung E", True, datei=_pd19b, jetzt=10000.0 - 3000.0)  # Uhr springt 50 Min. zurück
+        _zeile2 = _PI._push_nachkontrolle("Meldung E\n⚠️ Markt ETH nicht gesichert", True, datei=_pd19b, jetzt=10000.0 - 2990.0)  # gleiche erste Zeile, andere zweite → ANDERE Meldung
+        _gleich = _PI._push_nachkontrolle("Meldung E\n⚠️ Markt ETH nicht gesichert", True, datei=_pd19b, jetzt=10000.0 - 2980.0)  # dieselbe nochmals → gedrosselt
+    finally:
+        _SG18.push = _alt_push18
+    pruefe("Push-Drosselung (19. K3): Uhr springt zurück → die Meldung geht wieder raus; eine Meldung mit geänderter ZWEITER Zeile ist eine andere Meldung (Kennung = ganzer Text); dieselbe nochmals wird gedrosselt",
+           _uhr_zurueck is True and _zeile2 is True and _gleich is False and len(_gepusht19) == 3, (_uhr_zurueck, _zeile2, _gleich, _gepusht19))
+    _pd19c = Path(_sd) / "push19c.json"
+    _SG18.push = lambda t, *a, **k: (_gepusht19.append(t), True)[1]
+    _gepusht19.clear()
+    try:
+        _abstand19 = [_PI._push_nachkontrolle("Meldung F", True, datei=_pd19c, jetzt=100000.0), _PI._push_nachkontrolle("Meldung F", True, datei=_pd19c, jetzt=100000.0 + 3500),
+                      _PI._push_nachkontrolle("Meldung F", True, datei=_pd19c, jetzt=100000.0 + 3700)]
+    finally:
+        _SG18.push = _alt_push18
+    pruefe("Push-Drosselung: dieselbe Meldung wird nach 58 Min. noch gedrosselt und nach 62 Min. wieder gesendet (die Stunde steht fest, nicht nur als Konstante)", _abstand19 == [True, False, True] and _PI.PUSH_ABSTAND_S == 3600 and len(_gepusht19) == 2, (_abstand19, _PI.PUSH_ABSTAND_S))
 
 # ── Pilot: Märkte, Trendlänge je Coin, Logbuch, Wochenbericht ──
 import pilot as PI  # noqa: E402

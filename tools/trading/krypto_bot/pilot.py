@@ -428,7 +428,7 @@ PUSH_ABSTAND_S = 3600
 
 def _push_nachkontrolle(text, einmal, datei=None, jetzt=None):
     """Push der Nachkontrolle. Im 10-Minuten-Takt (einmal) schickt dieselbe Meldung höchstens einmal je Stunde (18. Prüfung W3′: ein dauerhaft offener Markt hätte ~144 Pushes am Tag ausgelöst);
-    eine ANDERE Meldung geht sofort. Ein Fehler hier darf nie das Pushen verhindern. → True, wenn gepusht wurde."""
+    eine ANDERE Meldung geht sofort. Ein Fehler hier darf nie das Pushen verhindern. → True, wenn die Meldung zugestellt wurde."""
     import hashlib
     import time
     import signale as SG
@@ -443,14 +443,14 @@ def _push_nachkontrolle(text, einmal, datei=None, jetzt=None):
                 return False
         except Exception:  # noqa: BLE001 — keine/kaputte Datei: pushen
             pass
-    SG.push(text + "\nKeine Anlageberatung.")
-    if einmal:
+    gesendet = bool(SG.push(text + "\nKeine Anlageberatung."))
+    if einmal and gesendet:  # (19. Prüfung W1) nur eine ZUGESTELLTE Meldung drosselt die nächste: `push` gibt False bei Telegram-/ntfy-Fehler oder ohne Kanal zurück — sonst schwiege derselbe Alarm nach einem Netzausfall eine Stunde lang
         try:
             datei.parent.mkdir(parents=True, exist_ok=True)
             datei.write_text(json.dumps({"kennung": kennung, "zeit": jetzt}))
         except Exception:  # noqa: BLE001
             pass
-    return True
+    return gesendet
 
 
 def nachkontrolle(einmal=False):

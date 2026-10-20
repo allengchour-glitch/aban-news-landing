@@ -114,7 +114,7 @@ def lauf_sperre(name="krypto-lauf", warten=0.0, ordner=None, alt_nach=ALT_NACH):
                 alter = time.time() - datei.stat().st_mtime
             except FileNotFoundError:
                 continue  # gerade freigegeben: nochmals versuchen
-            if alter > alt_nach:
+            if alter > alt_nach or alter < -alt_nach:  # (19. Prüfung, klein 3) auch eine Sperre «aus der Zukunft»: der Halter starb, danach sprang die Uhr zurück — sonst gälte sie erst nach Δ + alt_nach als tot
                 _haken("vor_wache")
                 wache = _wache(datei)
                 if wache is None:  # ein anderer Prozess übernimmt gerade
@@ -127,7 +127,7 @@ def lauf_sperre(name="krypto-lauf", warten=0.0, ordner=None, alt_nach=ALT_NACH):
                         alter = time.time() - datei.stat().st_mtime
                     except FileNotFoundError:
                         continue
-                    if alter > alt_nach:
+                    if alter > alt_nach or alter < -alt_nach:
                         _haken("vor_loeschen")
                         try:
                             datei.unlink()

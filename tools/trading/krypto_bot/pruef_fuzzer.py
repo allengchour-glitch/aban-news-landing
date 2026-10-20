@@ -452,8 +452,13 @@ def sauber_schliessen(env, datei, versuche=2):
         L.UNKLAR_MAX_ALTER_MS = alt
 
 
+NK_EINMAL = int(os.environ.get("PRUEF_NK_EINMAL") or 0)  # 18. Folge-Runde: N >= 1 → statt EINER langen Nachkontrolle N Durchgänge im 10-Minuten-Takt (`einmal=True`, wie die Aufgabenplanung sie ruft)
+EINMAL_BUDGET = os.environ.get("PRUEF_EINMAL_BUDGET")  # 19. Folge-Runde: mit PRUEF_NK_EINMAL — Wiederholungs-Budget des Durchgangs in Sekunden; "0" = aufgebraucht (jeder vorübergehende Fehler zählt sofort, keine Wiederholung innerhalb des Durchgangs: der schlimmste Fall des 10-Minuten-Takts)
+
+
 def nachkontrolle(env, datei):
-    """Die Nachkontrolle nach einem Lauf/Not-Aus, «10 Minuten später» (unbekannte Aufträge gelten dann als nie ausgeführt)."""
+    """Die Nachkontrolle nach einem Lauf/Not-Aus, «10 Minuten später» (unbekannte Aufträge gelten dann als nie ausgeführt).
+    PRUEF_NK_EINMAL=N: N Durchgänge `einmal=True`, dazwischen vergehen je 10 Minuten (verspätete Aufträge kommen an, verzögert sichtbare Stops werden sichtbar) — der Takt der Aufgabenplanung statt der langen Fassung."""
     alt = L.UNKLAR_MAX_ALTER_MS
     L.UNKLAR_MAX_ALTER_MS = -1
     zeit = [0.0]  # simulierte Uhr: jeder Takt «dauert» NACHKONTROLLE_TAKT_S, nach NACHKONTROLLE_MAX_S ist Schluss
@@ -461,6 +466,22 @@ def nachkontrolle(env, datei):
     def schlafen(s):
         zeit[0] += s
     try:
+        if NK_EINMAL > 0:
+            rn, zeilen, auftraege, warnung = None, [], [], False
+            alt_w = (L.LESE_WARTEN, L.SCHUTZ_WARTEN, L.EINMAL_RETRY_S)
+            if EINMAL_BUDGET not in (None, ""):  # Budget «aufgebraucht» nachstellen: winzige, von null verschiedene Pausen + ein Budget darunter → `_pause` gibt beim ersten vorübergehenden Fehler auf
+                L.LESE_WARTEN, L.SCHUTZ_WARTEN, L.EINMAL_RETRY_S = (1e-6,) * len(alt_w[0]), (1e-6,) * len(alt_w[1]), float(EINMAL_BUDGET)
+            try:
+                for _i in range(NK_EINMAL):
+                    rn = L.nachkontrolle(env=env, datei=datei, schlafen=schlafen, uhr=lambda: zeit[0], einmal=True)
+                    zeilen += rn.get("zeilen") or []                  # was irgendein Durchgang meldete oder tat, zählt (die letzten Durchgänge haben meist nichts mehr zu tun)
+                    auftraege += rn.get("auftraege") or []
+                    warnung = warnung or bool(rn.get("warnung"))
+                    pending_abarbeiten()
+                    B.n_listen += 1000
+            finally:
+                L.LESE_WARTEN, L.SCHUTZ_WARTEN, L.EINMAL_RETRY_S = alt_w
+            return dict(rn, zeilen=zeilen, auftraege=auftraege, warnung=warnung)
         return L.nachkontrolle(env=env, datei=datei, schlafen=schlafen, uhr=lambda: zeit[0])
     finally:
         L.UNKLAR_MAX_ALTER_MS = alt

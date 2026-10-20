@@ -266,6 +266,7 @@ def aufgabe_xml():
 NK_LEBT = "krypto-nachkontrolle-lebt.txt"      # Lebenszeichen: krypto-auto.bat «nachkontrolle» schreibt es bei JEDEM Start (data/) — fehlt es zu lange, läuft der unsichtbare Starter nicht (Windows Script Host gesperrt, Virenscanner, Pfad)
 NK_RC = "krypto-nachkontrolle-rc.txt"          # (18. Prüfung K5) die Bat schreibt hier NACH der Nachkontrolle «<Zeit> rc=N»: 0 = in Ordnung, 3 = Warnung (schon gemeldet), alles andere = Absturz von pilot.py
 NK_LEBT_MAX_MIN = 30                           # drei verpasste Takte der Aufgabe (alle 10 Minuten) — dann steht die Ampel auf Rot
+NK_ENDE_MAX_MIN = 15                           # (19. Prüfung K5) so lange darf ein Durchgang höchstens laufen, bevor «nie zu Ende gegangen» gilt (normal: Sekunden bis wenige Minuten; die Aufgabe startet alle 10 Minuten)
 NK_STARTER = "krypto-nachkontrolle-still.vbs"  # startet krypto-auto.bat «nachkontrolle» ohne sichtbares Fenster (alle 10 Minuten ein Konsolenfenster würde stören — und dazu verleiten, die Aufgabe abzuschalten)
 
 
@@ -684,16 +685,24 @@ def gesundheit(env, lb, ki, heute=None):
             p("Nachkontrolle (Aufgabenplanung)", False, f"eingerichtet, aber seit {minuten_nk:.0f} Min. kein Lauf — läuft der unsichtbare Starter ({NK_STARTER}) nicht? "
               "Aufgabenplanung → «Krypto-Pilot-Nachkontrolle» → Verlauf ansehen, Windows Script Host und Virenscanner prüfen")
         else:
-            rc_nk = None  # (18. Prüfung K5) das Lebenszeichen schreibt die Bat VOR Python — ein abstürzendes `pilot.py --nachkontrolle` liess die Ampel grün; der Rückgabewert steht NACH dem Lauf in NK_RC
+            rc_nk, rc_alter = None, None  # (18. Prüfung K5) das Lebenszeichen schreibt die Bat VOR Python — ein abstürzendes `pilot.py --nachkontrolle` liess die Ampel grün; der Rückgabewert steht NACH dem Lauf in NK_RC
             try:
                 rc_datei = DATA / NK_RC
-                if (time.time() - rc_datei.stat().st_mtime) / 60 <= NK_LEBT_MAX_MIN:
-                    m_rc = re.search(r"rc=(\d+)\s*$", rc_datei.read_text(errors="replace").strip())
+                rc_alter = (time.time() - rc_datei.stat().st_mtime) / 60
+                if rc_alter <= NK_LEBT_MAX_MIN:
+                    m_rc = re.search(r"rc=(-?\d+)\s*$", rc_datei.read_text(errors="replace").strip())  # (19. Prüfung) auch negative Rückgabewerte (NTSTATUS bei Kill/Absturz) sind ein Absturz
                     rc_nk = int(m_rc.group(1)) if m_rc else None
             except OSError:
                 rc_nk = None
-            if rc_nk not in (None, 0, 3):
+            if minuten_nk > NK_ENDE_MAX_MIN and (rc_alter is None or rc_alter > minuten_nk):
+                # (19. Prüfung K5) jeder Start schreibt NACH seinem Ende einen neuen Rückgabewert (auch «ohne Buch»): ist der letzte Start älter als NK_ENDE_MAX_MIN und der Rückgabewert älter als er, ging der Durchgang nie zu Ende
+                # (hängt, oder das Zeitlimit der Aufgabe beendet ihn jedes Mal) — das Lebenszeichen allein zeigte «läuft»
+                p("Nachkontrolle (Aufgabenplanung)", False, f"gestartet vor {minuten_nk:.0f} Min., aber der Durchgang ist nie zu Ende gegangen (kein neuer Rückgabewert) — hängt er oder beendet ihn das Zeitlimit der Aufgabe? "
+                  "Aufgabenplanung → «Krypto-Pilot-Nachkontrolle» → Verlauf und data\\krypto-nachkontrolle.log ansehen")
+            elif rc_nk not in (None, 0, 3):
                 p("Nachkontrolle (Aufgabenplanung)", False, f"läuft (zuletzt vor {minuten_nk:.0f} Min.), aber `pilot.py --nachkontrolle` endete mit Rückgabewert {rc_nk} — Absturz? data\\krypto-nachkontrolle.log ansehen")
+            elif rc_nk == 3:  # (19. Prüfung) eine Dauerwarnung («Markt weiterhin nicht vollständig gesichert») ist nicht «grün» — grau mit Text, der Push kommt höchstens einmal je Stunde
+                p("Nachkontrolle (Aufgabenplanung)", None, f"läuft (zuletzt vor {minuten_nk:.0f} Min.), der letzte Durchgang meldete eine WARNUNG (Rückgabewert 3: ein Markt nicht vollständig gesichert oder ein Auftrag noch unklar) — Handy-Nachricht und data\\krypto-nachkontrolle.log ansehen")
             else:
                 p("Nachkontrolle (Aufgabenplanung)", True, f"eingerichtet (alle 10 Minuten), zuletzt vor {minuten_nk:.0f} Min.")
     mvrv = HIER.parent / "daten" / "info_mvrv_btc.json"

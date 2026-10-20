@@ -1830,7 +1830,8 @@ if g["p_preise"]:
     B.bewegen("BTCUSDT", max(g["p_preise"]) * 1.01)
 h = lage(k, "BTCUSDT")
 _lang = max(0.0, min(h["netto"], h["coins"]) - h["s_qty"]) * h["kurs"]
-pruefe("12.S4 zwei Perp-Stops (alter nicht löschbar): lösen beide aus, liegt kein Long ohne Stop da", g["n_p"] == 2 and _lang < 10, (g, _lang))
+pruefe("12.S4 Perp-Stops (alter nicht löschbar, Liste unlesbar): der Not-Aus-Stop plus (19. Prüfung K6, Schwelle PERP_BLIND_MAX) ein ganzer reduceOnly-Stop über den Short; lösen sie aus, liegt kein Long ohne Stop da",
+       g["n_p"] == 3 and g["p_qty"] >= -g["pos"] - 1e-9 and _lang < 10, (g, _lang))
 # 12.S5 (R11-M6): Not-Aus, Spot-Ticker gesperrt, Futures-Markpreis lesbar → frischer Markpreis, nicht der zuletzt bekannte Kurs
 k = neues_konto(20000)
 d = neu_buch()
@@ -5513,8 +5514,11 @@ gl_ = lage(k_, "BTCUSDT")
 pruefe("16.E40 der ergänzende Perp-Stop würde sofort auslösen, kein frischer Kurs lesbar → zum Markt: 0,1 des Shorts zurückgekauft (Rest 0,1 unter dem alten Stop)",
        abs(gl_["pos"] + 0.1) < 1e-6 and abs(gl_["p_qty"] - 0.1) < 1e-6 and abs(gl_["s_qty"] - 0.2) < 1e-6, (gl_, w_))
 LISTE_KAPUTT_ = regel(methode="GET", pfad="/fapi/v1/openAlgoOrders", art="vor503", anzahl=10 ** 6)
+ok_, gl_, w_, st_, neu_ = e40_notaus_([LOESCHEN_KAPUTT_, LISTE_KAPUTT_], st_={"perp": 901, "perp_cid": "p2aAAAA", "perp_weitere": [[902, "p2aBBBB"], [903, "p2aCCCC"]]}, alte_=((0.1, 110000.0), (0.1, 111000.0), (0.1, 112000.0)))
+pruefe("16.E40 Perp-Liste nicht lesbar, das Buch kennt schon PERP_BLIND_MAX (3) Stops: keiner kommt dazu (19. Prüfung K6: die Schwelle ist dieselbe wie im Tageslauf)", neu_ == 0 and gl_["n_p"] == 3 and ok_ is False, (ok_, gl_, w_, neu_))
 ok_, gl_, w_, st_, neu_ = e40_notaus_([LOESCHEN_KAPUTT_, LISTE_KAPUTT_], st_={"perp": 901, "perp_cid": "p2aAAAA", "perp_weitere": [[902, "p2aBBBB"]]}, alte_=((0.1, 110000.0), (0.1, 111000.0)))
-pruefe("16.E40 Perp-Liste nicht lesbar, das Buch kennt schon zwei Stops: keiner kommt dazu", neu_ == 0 and gl_["n_p"] == 2, (ok_, gl_, w_, neu_))
+pruefe("19.K6 Perp-Liste nicht lesbar, das Buch kennt zwei Stops (0,1 + 0,1 von 0,2): ein DRITTER ganzer reduceOnly-Stop kommt dazu — vorher blieb ein Teil des Shorts ohne Stop, nur laut gemeldet",
+       neu_ == 1 and gl_["n_p"] == 3 and gl_["p_qty"] >= 0.2 - 1e-9 and ok_ is True, (ok_, gl_, w_, neu_))
 ok_, gl_, w_, st_, neu_ = e40_notaus_([LOESCHEN_KAPUTT_, LISTE_KAPUTT_], st_={"perp": 901, "perp_cid": "p2aAAAA"})
 pruefe("16.E40 Perp-Liste nicht lesbar, das Buch kennt nur einen Stop: einer über den ganzen Short kommt dazu, der alte bleibt gemerkt", neu_ == 1 and abs(gl_["p_qty"] - 0.3) < 1e-6 and [901, "p2aAAAA"] in (st_.get("perp_weitere") or []), (ok_, gl_, w_, neu_, st_))
 
@@ -6335,9 +6339,11 @@ def w2_lauf_(bekannte_):
     return ok0_, lage(k0_, "BTCUSDT"), w0_
 
 
+ok_, gl_, w_ = w2_lauf_(3)
+pruefe("18.W2′ Perp-Liste unlesbar, Löschen scheitert, das Buch kennt schon 3 Stops (PERP_BLIND_MAX; je 0,05 von 0,2): der Not-Aus meldet NICHT «ok» und warnt laut (Menge der bekannten Stops unbekannt)",
+       ok_ is False and any("ob sie zusammen den" in x_ and "Sofort prüfen" in x_ for x_ in w_) and gl_["n_p"] == 3, (ok_, gl_, w_[-2:]))
 ok_, gl_, w_ = w2_lauf_(2)
-pruefe("18.W2′ Perp-Liste unlesbar, Löschen scheitert, das Buch kennt schon 2 Stops (je 0,05 von 0,2): der Not-Aus meldet NICHT «ok» und warnt laut (Menge der bekannten Stops unbekannt)",
-       ok_ is False and any("ob sie zusammen den" in x_ and "Sofort prüfen" in x_ for x_ in w_) and gl_["n_p"] == 2, (ok_, gl_, w_[-2:]))
+pruefe("19.K6 … kennt das Buch erst 2 Stops (je 0,05 von 0,2), kommt ein dritter ganzer reduceOnly-Stop über den Short dazu: das 9'405-USDT-Loch ist zu, der Not-Aus ist ok", ok_ is True and gl_["n_p"] == 3 and gl_["p_qty"] >= 0.2 - 1e-9, (ok_, gl_, w_[-2:]))
 ok_, gl_, w_ = w2_lauf_(1)
 pruefe("18.W2′ Gegenprobe: kennt das Buch erst EINEN Stop, kommt der ergänzende Perp-Stop über den ganzen Short dazu und der Not-Aus ist ok", ok_ is True and gl_["n_p"] == 2 and gl_["p_qty"] >= 0.2 - 1e-9, (ok_, gl_, w_[-2:]))
 
@@ -6477,6 +6483,184 @@ for modus18_, j18_ in (("tag", 8), ("notaus", 6)):
     z18_, f18_ = ZB18.scan(modus18_, 0, 1, j_max=j18_, ruhig=True)
     pruefe(f"18.Zombie Zombie-Scan (reduziert, {modus18_}, Szenario 0, Prüfstellen 1–{j18_ - 1}): läuft durch, 0 Befunde (nichts bleibt ohne Stop), kein Absturz", z18_["faelle"] >= 4 and not f18_ and not z18_["AUSNAHME"], (dict(z18_), f18_[:1]))
 pruefe("18.Zombie der Scan stellt das echte `sperre.pruefen()` wieder her", SPR17.pruefen is _echt_pruefen18 and ZB18._echte_pruefung is _echt_pruefen18)
+
+# ───────── 19. Folge-Runde (R19): Funde der 19. unabhängigen Prüfung (kein Blocker; 2 wichtig, 6 klein) ─────────
+# W2 (244 s bei schnellen Fehlern, 49 Minuten bei hängendem Netz): ein Durchgang `einmal` der Nachkontrolle hielt die Lauf-Sperre so lange; der Tageslauf wartet nur 190 s und fiel (laut, aber) aus.
+# Jetzt: die Wiederholungen von `_nochmal` dürfen im ganzen Durchgang nur EINMAL_RETRY_S Sekunden schlafen, und `stops_setzen()` läuft nicht ein zweites Mal hinter der Schleife.
+schl19_, zaehl19_ = [], [0]
+alt_sl19_ = L.time.sleep
+L.time.sleep = schl19_.append
+
+
+def kaputt19_():
+    zaehl19_[0] += 1
+    raise OSError("Netz weg")
+
+
+try:
+    L._RETRY_BUDGET[0] = 5.0
+    for _i19 in range(3):
+        try:
+            L._nochmal(kaputt19_, (1.0, 3.0, 10.0))
+        except OSError:
+            pass
+    rest19_ = L._RETRY_BUDGET[0]
+finally:
+    L._RETRY_BUDGET[0] = None
+    L.time.sleep = alt_sl19_
+pruefe("19.W2 `_nochmal` mit Budget 5 s: die Wiederholungen schlafen insgesamt höchstens das Budget (1 + 3, dann 1; für die 10-s-Pause reicht der Rest nie) — danach gilt der erste Fehler sofort",
+       schl19_ == [1.0, 3.0, 1.0] and zaehl19_[0] == 6 and rest19_ == 0.0, (schl19_, zaehl19_, rest19_))
+schl19_, zaehl19_[0] = [], 0
+L.time.sleep = schl19_.append
+try:
+    for _i19 in range(2):
+        try:
+            L._nochmal(kaputt19_, (1.0, 3.0, 10.0))
+        except OSError:
+            pass
+finally:
+    L.time.sleep = alt_sl19_
+pruefe("19.W2 Gegenprobe: ohne Budget (Tageslauf, Not-Aus, lange Nachkontrolle) schlafen alle Wiederholungen wie bisher (je Aufruf 1 + 3 + 10)", schl19_ == [1.0, 3.0, 10.0] * 2 and zaehl19_[0] == 8 and L._RETRY_BUDGET[0] is None, (schl19_, zaehl19_))
+
+vor19_, nach19_ = [], []
+alt_nk19_ = L._nachkontrolle
+
+
+def nk19_(*a, **k):
+    vor19_.append((a[-1], L._RETRY_BUDGET[0]))
+    if len(vor19_) == 2:
+        raise RuntimeError("Absturz")
+    return {"zeilen": [], "warnung": False, "auftraege": []}
+
+
+L._nachkontrolle = nk19_
+try:
+    L.nachkontrolle(einmal=True)
+    nach19_.append(L._RETRY_BUDGET[0])
+    try:
+        L.nachkontrolle(einmal=True)
+    except RuntimeError:
+        nach19_.append(L._RETRY_BUDGET[0])
+    L.nachkontrolle(einmal=False)
+    nach19_.append(L._RETRY_BUDGET[0])
+finally:
+    L._nachkontrolle = alt_nk19_
+pruefe("19.W2 `nachkontrolle(einmal=True)` setzt das Budget EINMAL_RETRY_S nur für ihren Durchgang und löscht es danach — auch nach einem Absturz; die lange Fassung läuft ohne Budget; die Grenze liegt weit unter den 190 s des Tageslaufs",
+       vor19_ == [(True, L.EINMAL_RETRY_S), (True, L.EINMAL_RETRY_S), (False, None)] and nach19_ == [None, None, None] and 0 < L.EINMAL_RETRY_S <= 120, (vor19_, nach19_, L.EINMAL_RETRY_S))
+
+
+def nk19_durchgang(budget_, ents_):
+    """Ein Durchgang `einmal`, die Stops lassen sich nie setzen (503) — mit den ECHTEN Wartezeiten (der Prüf-Fuzzer nullt sie) und virtuellem Schlafen. → (Ergebnis, Summe der Pausen, Aufrufe von _stops_setzen, Buch)"""
+    neues_konto(20000)
+    d0_ = neu_buch()
+    B.regeln = [regel(methode="POST", pfad="/fapi/v1/algoOrder", art="vor503", anzahl=10 ** 6),
+                regel(methode="POST", pfad="/api/v3/order", pred=STOP_AUFTRAG, art="vor503", anzahl=10 ** 6)]
+    alt_w_, alt_b_, alt_sl_, alt_ss_ = (L.LESE_WARTEN, L.SCHUTZ_WARTEN), L.EINMAL_RETRY_S, L.time.sleep, L._stops_setzen
+    schl_, zaehl_ = [], []
+    try:
+        lauf(ents_, env_echt(), d0_)
+        L.LESE_WARTEN, L.SCHUTZ_WARTEN, L.EINMAL_RETRY_S = (0.5, 1.5), (0.5, 1.5, 3.0, 6.0), budget_
+        L.time.sleep = schl_.append
+        L._stops_setzen = lambda *a, **k: (zaehl_.append(1), alt_ss_(*a, **k))[1]
+        r_ = L.nachkontrolle(env=env_echt(), datei=d0_, schlafen=lambda s_: None, uhr=lambda: 0.0, einmal=True)
+    finally:
+        L.time.sleep, L._stops_setzen, L.EINMAL_RETRY_S = alt_sl_, alt_ss_, alt_b_
+        L.LESE_WARTEN, L.SCHUTZ_WARTEN = alt_w_
+        B.regeln = []
+    return r_, sum(schl_), len(zaehl_), L.buch_lesen(d0_, "echt")
+
+
+r19a_, s19a_, n19a_, b19a_ = nk19_durchgang(None, [E("BTC", -0.5)])
+r19b_, s19b_, n19b_, b19b_ = nk19_durchgang(3.0, [E("BTC", -0.5)])
+pruefe("19.W2 Durchgang einmal, die Stops lassen sich nie setzen: ohne Budget schlafen die Wiederholungen ≥ 6 s, mit einem Budget von 3 s höchstens 3 s — der Markt bleibt vermerkt und wird laut gemeldet (nichts geht verloren)",
+       s19a_ >= 6.0 and 0 < s19b_ <= 3.0 and b19b_["schutz_offen"] == ["BTC"] and any("weiterhin nicht vollständig gesichert" in z_ for z_ in r19b_["zeilen"]), (s19a_, s19b_, b19b_["schutz_offen"], r19b_["zeilen"][-2:]))
+pruefe("19.W2 Durchgang einmal setzt die Stops EINMAL (die Schleife hat es schon getan) — nicht ein zweites Mal hinter der Schleife (das verdoppelte die Haltedauer der Sperre)", n19a_ == 1 and n19b_ == 1, (n19a_, n19b_))
+r19c_, s19c_, n19c_, b19c_ = nk19_durchgang(None, [E("BTC", -0.5), E("ETH", -0.5)])
+pruefe("19.W2 … auch mit zwei offenen Märkten: ein Aufruf von _stops_setzen für beide, beide bleiben vermerkt", n19c_ == 1 and sorted(b19c_["schutz_offen"]) == ["BTC", "ETH"], (n19c_, b19c_["schutz_offen"]))
+
+# K1: das Buch kennt keinen recvWindow-Schutz wie die Aufträge — zwischen der ersten Prüfung und dem Umbenennen der Temp-Datei liegt das Schreiben. Jetzt prüft `_buch_schreiben_roh` UNMITTELBAR vor `replace` nochmals.
+for weg19_ in ("buch_schreiben", "zusammen"):
+    sd19_ = _tf17.mkdtemp(prefix="k1_")
+    bf19_ = Path(sd19_) / "bestand.json"
+    b19_ = L.leer_buch()
+    b19_["start"], b19_["uid"] = "2026-10-20", 1
+    L.buch_schreiben(bf19_, "echt", b19_)
+    inhalt19_ = bf19_.read_text()
+    ges19_ = [json.dumps(L.buch_lesen(bf19_, "echt"), sort_keys=True)]
+    lk19_ = Path(sd19_) / "krypto-lauf.lock"
+    orig_wt19_ = Path.write_text
+
+    def wt19_(self, *a, **k):
+        r_ = orig_wt19_(self, *a, **k)
+        if self.name.endswith(".json.neu"):
+            lk19_.write_text("99999 0 fremd\n")                       # ein anderer Lauf übernimmt die Sperre als tot — genau zwischen dem Schreiben der Temp-Datei und dem Umbenennen
+        return r_
+    fehler19_ = None
+    try:
+        with SPR17.lauf_sperre(ordner=sd19_, warten=0):
+            b19_ = L.buch_lesen(bf19_, "echt")
+            b19_["schutz_offen"] = ["BTC"]
+            Path.write_text = wt19_
+            try:
+                if weg19_ == "buch_schreiben":
+                    L.buch_schreiben(bf19_, "echt", b19_)
+                else:
+                    L._buch_speichern_zusammen(bf19_, "echt", ges19_, b19_)
+            except OSError as ex_:
+                fehler19_ = str(ex_)
+            finally:
+                Path.write_text = orig_wt19_
+            unveraendert19_ = bf19_.read_text() == inhalt19_
+            temp_weg19_ = not Path(str(bf19_) + ".neu").exists()
+    finally:
+        lk19_.unlink(missing_ok=True)
+    pruefe(f"19.K1 Sperre geht ZWISCHEN dem Schreiben der Temp-Datei und dem Umbenennen verloren ({weg19_}): das Buch bleibt unverändert, die Temp-Datei ist weg, OSError «Lauf-Sperre verloren»",
+           fehler19_ and "Lauf-Sperre verloren" in fehler19_ and unveraendert19_ and temp_weg19_, (fehler19_, unveraendert19_, temp_weg19_))
+# … Gegenprobe: gehört die Sperre dem Prozess, wird geschrieben und keine Temp-Datei bleibt liegen
+sd19_ = _tf17.mkdtemp(prefix="k1b_")
+bf19_ = Path(sd19_) / "bestand.json"
+b19_ = L.leer_buch()
+b19_["start"], b19_["uid"] = "2026-10-20", 1
+with SPR17.lauf_sperre(ordner=sd19_, warten=0):
+    b19_["schutz_offen"] = ["BTC"]
+    L.buch_schreiben(bf19_, "echt", b19_)
+pruefe("19.K1 Gegenprobe: gehört die Lauf-Sperre dem Prozess, wird das Buch geschrieben und keine Temp-Datei bleibt liegen", L.buch_lesen(bf19_, "echt")["schutz_offen"] == ["BTC"] and not Path(str(bf19_) + ".neu").exists())
+
+# … Not-Aus innerhalb eines Durchgangs `einmal`: das Schliessen läuft OHNE Budget (es ist nicht zeitbegrenzt), der Durchgang selbst bleibt budgetiert
+neues_konto(20000)
+d19_ = neu_buch()
+lauf([E("BTC", 0.5)], env_echt(), d19_)
+bud19_ = []
+alt_na19_ = L.notaus_alle
+
+
+def na19_(*a, **k):
+    bud19_.append(L._RETRY_BUDGET[0])
+    return alt_na19_(*a, **k)
+
+
+L.notaus_alle = na19_
+try:
+    L.nachkontrolle(env=dict(env_echt(), KI_BOT_STOP="1"), datei=d19_, schlafen=lambda s_: None, uhr=lambda: 0.0, einmal=True)
+finally:
+    L.notaus_alle = alt_na19_
+pruefe("19.W2 Not-Aus innerhalb eines Durchgangs `einmal`: das Schliessen (notaus_alle) läuft ohne Wiederholungs-Budget — es soll so lange wiederholen, wie es seine Wiederholungen vorsehen", bud19_ and all(b_ is None for b_ in bud19_) and L._RETRY_BUDGET[0] is None, (bud19_, L._RETRY_BUDGET[0]))
+
+# `einmal`×3 ≙ lang (die Folge von Durchgängen im 10-Minuten-Takt erreicht denselben Schutz wie die lange Nachkontrolle) — auch mit AUFGEBRAUCHTEM Budget (keine Wiederholung innerhalb des Durchgangs: der schlimmste Fall);
+# der grosse Lauf: PRUEF_NK_EINMAL=3 [PRUEF_EINMAL_BUDGET=0] python3 -B pruef_fuzzer.py laeufe|notaus|listen|monotonie <von> <bis>
+alt_e19_ = (P.NK_EINMAL, P.EINMAL_BUDGET)
+for budget19_ in (None, "0"):
+    P.NK_EINMAL, P.EINMAL_BUDGET = 3, budget19_
+    funde19_ = []
+    try:
+        for seed_ in range(970000, 970040):
+            funde19_ += P.notaus_runde(seed_)
+        for seed_ in range(970100, 970106):
+            funde19_ += P.laeufe_runde(seed_, 8)
+    finally:
+        P.NK_EINMAL, P.EINMAL_BUDGET = alt_e19_
+    pruefe(f"19.einmal Fuzzer (reduziert, drei Durchgänge im 10-Minuten-Takt, Budget {'des Durchgangs' if budget19_ is None else 'AUFGEBRAUCHT'}; Not-Aus 40 Seeds, Läufe 6 Seeds × 8 Tage): keine Befunde",
+           not P.echte(funde19_), [(f_[0], f_[1].get("seed")) for f_ in P.echte(funde19_)][:5])
 
 # ── kleiner Fuzzer mit festen Seeds (der grosse: python3 -B pruef_fuzzer.py laeufe 0 200 / notaus 0 1600) ──
 funde = []
