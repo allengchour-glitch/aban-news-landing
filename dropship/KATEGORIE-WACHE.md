@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-20T17:11Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-20T18:08Z
 
-Aktive gescannt: 12 · ohne Kategorie: 12 · heute gesetzt: 10 (SCHARF, CAP 1500) · danach offen: 2 · Fehler: 0
+Aktive gescannt: 29 · ohne Kategorie: 29 · heute gesetzt: 27 (SCHARF, CAP 1500) · danach offen: 2 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -11,9 +11,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- nachtlicht-fur-schlafzimmer-mit-eingebaute-bat-620800 · Beleuchtung → Home & Garden > Lighting
-- moderne-tischlampe-creative-atmosphere-614800 · Beleuchtung → Home & Garden > Lighting
-- nachtlicht-mit-led-lampe-usb-ladefunktion-634700 · Beleuchtung → Home & Garden > Lighting
-- led-mini-ambient-tischlampe-touch-aktiviert-611700 · Beleuchtung → Home & Garden > Lighting
-- smart-lamp-mit-rgb-und-warmlicht-614600 · Beleuchtung → Home & Garden > Lighting
+- long-sleeve-sweatshirt-mit-herz-print-sweatpan-616900 · Baby & Kinder → Apparel & Accessories > Clothing > Baby & Children's Clothing > Baby & Children's Outfits
+- baby-ostern-buchstaben-sweatshirt-set-604300 · Baby & Kinder → Apparel & Accessories > Clothing > Baby & Children's Clothing > Baby & Children's Outfits
+- bauchgesichtsmutze-mit-buchstaben-614800 · Baby & Kinder → Apparel & Accessories > Clothing Accessories > Baby & Children's Clothing Accessories > Baby & Children's Hats
+- baby-set-aus-baumwolle-lange-armel-bulockchen-613400 · Baby & Kinder → Apparel & Accessories > Clothing > Baby & Children's Clothing > Baby & Children's Outfits
+- corduroy-baby-set-striped-2-teilig-605600 · Baby & Kinder → Apparel & Accessories > Clothing > Baby & Children's Clothing > Baby & Children's Outfits
 
