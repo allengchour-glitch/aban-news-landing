@@ -44,6 +44,7 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BERICHT = os.path.join(REPO, "dropship", "JUDGEME-WACHE.md")
 FREIGABE = os.path.join(REPO, "dropship", "_judgeme_freigabe.txt")
 STOPP_DATEI = os.path.join(REPO, "dropship", "_bewertungen_stopp.txt")
+NACH_STAND = os.path.join(REPO, "dropship", "_judgeme_nach_stopp_stand.json")   # {"max_id": höchste Nach-Stopp-ID beim letzten Lauf, "stand": …}
 ENV_DATEI = os.environ.get("JUDGEME_ENV", "/tmp/judgeme.env")
 API = "https://judge.me/api/v1"
 PER_PAGE = int(os.environ.get("PER_PAGE", "100"))
@@ -148,11 +149,27 @@ def lade_stopp():
     """→ (vorhanden, ab_id). `dropship/_bewertungen_stopp.txt` (Betreiber-Entscheid A, 20.10.2026: der Import bleibt aus) trägt
     die Zeile `AB-ID: <n>` = letzte Judge.me-ID VOR dem Stopp. ab_id None bei fehlender/unlesbarer Zeile (→ «unklar», nie «0»)."""
     try:
-        text = open(STOPP_DATEI, encoding="utf-8").read()
+        text = open(STOPP_DATEI, encoding="utf-8", errors="replace").read()
     except OSError:
         return False, None
-    m = re.search(r"^AB-ID:\s*(\d{6,})\s*$", text, re.M)
-    return True, (int(m.group(1)) if m else None)
+    werte = {int(x) for x in re.findall(r"^AB-ID:\s*(\d{6,})\s*$", text, re.M)}
+    # Zwei verschiedene AB-ID-Zeilen sind mehrdeutig → None («unklar»), nie «die erste gewinnt» (Prüfung 20.10.)
+    return True, (werte.pop() if len(werte) == 1 else None)
+
+
+def lade_nach_stand():
+    """→ höchste Nach-Stopp-ID der letzten Messung oder None (erster Lauf / unlesbar → Zufluss «unklar»)."""
+    try:
+        return int(json.load(open(NACH_STAND, encoding="utf-8"))["max_id"])
+    except Exception:  # noqa: BLE001
+        return None
+
+
+def zufluss(nach_ids, letzte_max):
+    """Anzahl Nach-Stopp-Bewertungen, die seit der letzten Messung dazugekommen sind; None = nicht messbar (kein Vorstand)."""
+    if letzte_max is None:
+        return None
+    return sum(1 for i in nach_ids if i > letzte_max)
 
 
 def nach_stopp(r, ab_id, frei):
@@ -206,8 +223,40 @@ def selbsttest():
     for name, m in (("«>=» an der Grenze", mutant_gleich), ("ohne Absender-Muster", mutant_ohne_muster)):
         if not lauf(m):
             schlecht.append(f"Mutation «{name}» wurde NICHT gefangen")
+    # Zufluss + Stopp-Datei (mehrdeutig / kaputt kodiert / CRLF) gegen eine Temp-Datei
+    global STOPP_DATEI
+    import tempfile
+    orig = STOPP_DATEI
+    try:
+        if zufluss([5, 6, 7], None) is not None or zufluss([5, 6, 7], 6) != 1 or zufluss([], 6) != 0:
+            schlecht.append("zufluss")
+        proben = [("AB-ID: 1374773944\n", (True, 1374773944)),
+                  ("AB-ID: 1374773944\r\nAB-ID: 1374773944\r\n", (True, 1374773944)),
+                  ("AB-ID: 1374773944\nAB-ID: 1383999999\n", (True, None)),
+                  ("kein Treffer\n", (True, None)),
+                  ("AB-ID: 12345\n", (True, None))]
+        for inhalt, soll in proben:
+            with tempfile.NamedTemporaryFile("wb", suffix=".txt", delete=False) as f:
+                f.write(inhalt.encode("utf-8"))
+            STOPP_DATEI = f.name
+            if lade_stopp() != soll:
+                schlecht.append(f"lade_stopp({inhalt!r}) = {lade_stopp()} statt {soll}")
+            os.unlink(f.name)
+        with tempfile.NamedTemporaryFile("wb", suffix=".txt", delete=False) as f:
+            f.write("AB-ID: 1374773944\n".encode("utf-16"))      # kaputte Kodierung darf nicht werfen
+        STOPP_DATEI = f.name
+        try:
+            lade_stopp()
+        except Exception as e:  # noqa: BLE001
+            schlecht.append(f"lade_stopp wirft bei UTF-16: {type(e).__name__}")
+        os.unlink(f.name)
+        STOPP_DATEI = os.path.join(tempfile.gettempdir(), "gibt_es_nicht_stopp.txt")
+        if lade_stopp() != (False, None):
+            schlecht.append("lade_stopp ohne Datei")
+    finally:
+        STOPP_DATEI = orig
     lade = lade_stopp()
-    print("SELBSTTEST: " + (f"{len(fall)} Fälle ok, 2 Mutationen gefangen" if not schlecht else "FEHLER: " + "; ".join(schlecht))
+    print("SELBSTTEST: " + (f"{len(fall)} Fälle + Zufluss + 7 Stopp-Datei-Proben ok, 2 Mutationen gefangen" if not schlecht else "FEHLER: " + "; ".join(schlecht))
           + f" · Stopp-Datei vorhanden={lade[0]} AB-ID={lade[1]}")
     return not schlecht
 
@@ -292,6 +341,7 @@ def main():
     frei = lade_freigabe()
     stopp_da, ab_id = lade_stopp()
     nach_pub, nach_hid = [], []                      # Importer-Bewertungen NACH dem Stopp (veröffentlicht / ausgeblendet)
+    nach_vorher = lade_nach_stand()
     basis = {"api_token": tok, "shop_domain": dom}
     try:
         gesamt = int(hole(f"{API}/reviews/count?" + urllib.parse.urlencode(basis)).get("count") or 0)
@@ -367,13 +417,18 @@ def main():
     else:
         ampel = (f"JUDGEME: {len(harte)} verdaechtig · {len(weiche)} Namen unmaskiert · {len(ausgeblendet)} ausgeblendet "
                  f"· {gelesen} von {gesamt} gelesen" + ("" if vollst else (" · API-Deckel: Rest älter als ID " + str(min(aeltest.values())) + ", zuletzt vollständig gelesen (ID ≤ " + str(voll_max) + ")" if gedeckt else " ⚠️ unvollstaendig")))
+    neu_ids = [int(r["id"]) for r in nach_pub + nach_hid]
+    neu_n = zufluss(neu_ids, nach_vorher)
     if not stopp_da:
         stopp_txt = ""
     elif not ab_id:
-        stopp_txt = " · NACH-STOPP: unklar (Zeile AB-ID fehlt in dropship/_bewertungen_stopp.txt)"
+        stopp_txt = " · NACH-STOPP: unklar (Zeile AB-ID in dropship/_bewertungen_stopp.txt fehlt oder ist mehrdeutig)"
     else:
-        stopp_txt = (f" · NACH-STOPP: {len(nach_pub)} veroeffentlicht, {len(nach_hid)} ausgeblendet (Importer-Muster, ID > {ab_id})"
-                     + (" ⚠️ der Stopp wird umgangen" if nach_pub else ""))
+        zu = ("Zufluss erst ab der nächsten Messung" if neu_n is None else f"{neu_n} neu seit der letzten Messung")
+        stopp_txt = (f" · NACH-STOPP: {len(nach_pub)} veroeffentlicht, {len(nach_hid)} ausgeblendet (Importer-Muster, ID > {ab_id}), {zu}"
+                     + (" ⚠️ SCHREIBT WEITER" if neu_n else (" ⚠️ Altbestand sichtbar" if nach_pub else "")))
+    if stopp_da and ab_id and not fehler and neu_ids:     # Vorstand nur nach fehlerfreiem Lauf fortschreiben
+        json.dump({"stand": time.strftime("%Y-%m-%dT%H:%MZ", time.gmtime()), "max_id": max(neu_ids)}, open(NACH_STAND, "w"))
     ampel += stopp_txt
     kopf = "| ID | erstellt | ★ | Produkt-ID | Name | E-Mail (maskiert) | Text | Zustand | Gruende |\n|---|---|---|---|---|---|---|---|---|"
     def tabelle(liste, deckel=300):
@@ -409,7 +464,7 @@ loeschen = Judge.me-Admin. Geprueft und in Ordnung → ID in `dropship/_judgeme_
 
 {tabelle(harte)}
 
-## Nach dem Stopp entstanden (Importer-Muster, ID > {ab_id}) — veroeffentlicht ({len(nach_pub)}) / ausgeblendet ({len(nach_hid)})
+## Nach dem Stopp entstanden (Importer-Muster, {('ID > ' + str(ab_id)) if ab_id else 'NICHT GEMESSEN: Stopp-Datei oder AB-ID fehlt/mehrdeutig'}) — veroeffentlicht ({len(nach_pub)}) / ausgeblendet ({len(nach_hid)})
 
 Grundlage: `dropship/_bewertungen_stopp.txt` (Betreiber-Entscheid A, 20.10.2026: der Import bleibt aus). Eine Bewertung mit `cj-import…@luxestyle.ch`
 und einer ID ÜBER der Grenze kann nur ein Schreiber erzeugt haben, der die Stopp-Datei nicht kennt (Beleg 20.10.: eine zweite Sitzung auf `main`).

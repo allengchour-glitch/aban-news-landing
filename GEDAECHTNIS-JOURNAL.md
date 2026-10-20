@@ -69,6 +69,13 @@
   (der Importer prüft nur die Existenz). (3) `betreiber_ampel.judgeme_verdacht()` ruft bei n > 0 (⭐). (4) `automation/judgeme_nach_stopp_ausblenden.py`: **Trockenlauf als Standard**,
   `--scharf` (PUT curated=spam mit Rücklesen), `--zurueck`; Liste `dropship/_judgeme_nach_stopp_ids.tsv`. **Nicht ausgeführt** — Ausblenden entscheidet der Betreiber.
   (5) Betreiber-Block in `dropship/COWORK-BEFEHL.md`: A bestätigt; 1. die andere Sitzung stoppen (Einfügetext), 2. die 901 ausblenden? (Empfehlung ja, umkehrbar).
+- **Unabhängige Prüfung (Agent, nur lesend, 27 Tool-Aufrufe) fand 8 Punkte, alle bearbeitet:** (1) HOCH — `--zurueck` fand NIE eine ID (Ledger-Zeilenende `\n` am Ergebnisfeld → stiller No-Op) → `rstrip`, Parser mit Selbsttest;
+  (2) Rücklese-Fehler nach erfolgreichem PUT liessen die ID ohne Ledger-Zeile (dann nie wiederherstellbar) → Zeile `put-ok` SOFORT nach dem PUT, Rücklesen in try/except; (3) der «Trockenlauf» schrieb ins Ledger und
+  machte 1'191 GETs ohne Pause → Ledger nur bei `--scharf/--zurueck`, 0,2 s Pause; (4) die Ampel prüfte «unvollstaendig/unklar» VOR NACH-STOPP (falscher Rat «Zugang prüfen», Meldung überdeckt) → Reihenfolge gedreht,
+  eigener Rat für «NACH-STOPP: unklar», 7 synthetische Ampel-Fälle getestet; (5) nicht-UTF-8-Stopp-Datei warf → `errors="replace"`; (6) zwei verschiedene AB-ID-Zeilen → «die erste gewinnt» → jetzt mehrdeutig = None = «unklar»;
+  (7) Design: die Zeile maß den BESTAND, nicht den ZUFLUSS (hätte «schreibt trotz Stopp» auch bei längst beendetem Schreiben gerufen) → `dropship/_judgeme_nach_stopp_stand.json` (höchste Nach-Stopp-ID der letzten Messung),
+  Zeile «n neu seit der letzten Messung», `⚠️ SCHREIBT WEITER` nur bei n > 0, sonst `Altbestand sichtbar`; `--liste-neu` baut die ID-Liste frisch (nur lesend); (8) Kosmetik «ID > None» → «NICHT GEMESSEN».
+  Nachmessung 07:12: `0 neu seit der letzten Messung ⚠️ Altbestand sichtbar` (Gesamtzahl 16'891 unverändert seit 18.10. — das Schreiben ist von selbst zu Ende, kann aber jederzeit neu beginnen).
 - **Nicht getan, bewusst:** nichts auf `main` geschrieben (Regel: kein Push auf fremde Branches/`main`); die andere Sitzung nicht angeschrieben; keine Bewertung angefasst.
 - **Lehre:** Ein Stopp, der nur auf EINEM Branch liegt, ist keiner — parallele Sitzungen laufen auf `main` und kennen ihn nicht. Jeder Stopp braucht (a) eine Wache, die sein Gegenteil MISST
   (hier die ID-Grenze am Judge.me-Bestand, nicht die Prüfung der Datei), und (b) einen Eintrag dort, wo die andere Sitzung liest (Betreiber-Liste, `main`). Die Wache hatte das Plus-Muster als

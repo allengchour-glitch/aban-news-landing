@@ -1042,12 +1042,18 @@ def judgeme_verdacht():
         tage = 99
     if tage >= 2:
         return f"⭐ Judge.me-Wache seit {tage} T ohne Lauf (zuletzt {stand.group(1)}Z) — Aufseher-Block pruefen"
+    # NACH-STOPP zuerst (Prüfung 20.10.): sonst überdeckt ein «unvollstaendig» die Nach-Stopp-Meldung und «NACH-STOPP: unklar» bekäme den falschen Rat.
+    if "SCHREIBT WEITER" in zeile:
+        return (f"⭐ {zeile} — jemand schreibt NEU trotz Stopp (dropship/_bewertungen_stopp.txt) Bewertungen nach Judge.me: "
+                f"Sitzung auf main stoppen (COWORK-BEFEHL 20.10.); ausblenden entscheidet der Betreiber")
+    if "NACH-STOPP: unklar" in zeile:
+        return f"⭐ {zeile} — Zeile `AB-ID: <n>` in dropship/_bewertungen_stopp.txt prüfen (fehlt oder zweimal mit verschiedenem Wert)"
     if "unklar" in zeile or "unvollstaendig" in zeile:
         return f"⭐ {zeile} — Judge.me-Zugang (/tmp/judgeme.env) oder API-Deckel pruefen"
-    st = re.search(r"NACH-STOPP: (\d+) veroeffentlicht", zeile)      # 20.10.2026: Importer-Bewertungen NACH dem Betreiber-Stopp (andere Sitzung auf main)
+    st = re.search(r"NACH-STOPP: (\d+) veroeffentlicht", zeile)
     if st and int(st.group(1)) > 0:
-        return (f"⭐ {zeile} — jemand schreibt trotz Stopp (dropship/_bewertungen_stopp.txt) Bewertungen nach Judge.me: "
-                f"Sitzung auf main stoppen; ausblenden (curated=spam, umkehrbar) entscheidet der Betreiber (dropship/JUDGEME-WACHE.md)")
+        return (f"⭐ {zeile} — Altbestand aus der Zeit nach dem Stopp noch sichtbar; Betreiber-Entscheid ausstehend "
+                f"(ausblenden: automation/judgeme_nach_stopp_ausblenden.py, Trockenlauf zuerst)")
     n = re.match(r"JUDGEME: (\d+) verdaechtig", zeile)
     if n and int(n.group(1)) > 0:
         return f"⭐ {zeile} — dropship/JUDGEME-WACHE.md lesen: ausblenden (PUT curated=spam) oder in _judgeme_freigabe.txt freigeben"

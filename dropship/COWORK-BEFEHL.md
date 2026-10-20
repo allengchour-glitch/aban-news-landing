@@ -1,11 +1,11 @@
 # COWORK-BEFEHL — Fassung 21.09.2026, 09:40 UTC (für heute Abend)
 
-## 🆕 20.10. 07:00 UTC — Bewertungen: A ist entschieden — aber eine ZWEITE Sitzung importiert trotz Stopp weiter (1 Min., sonst läuft es weiter)
+## 🆕 20.10. 07:00 UTC — Bewertungen: A ist entschieden — aber eine ZWEITE Sitzung hat trotz Stopp importiert (zuletzt 18.10.; kann jederzeit wieder, 1 Min.)
 **Entschieden 20.10. (Betreiber «A und sonst weiter»):** Der Import-Stopp (`dropship/_bewertungen_stopp.txt`) bleibt, das Plan-Ziel «≥ 10 von 29 Top-Seiten bis 22.10.» entfällt.
 Bewertungen kommen künftig nur von echten Käufern des Shops. Hinzu kommt: für die meisten der meistbesuchten Seiten gibt es bei CJ ohnehin keine Kommentare
 (Messung 01.10., `dropship/BEWERTUNGEN-2026-10-01.md`) — auch eine Freigabe (B) hätte das Ziel nicht erreicht.
 
-**Gemessen beim Gegenlesen (Judge.me-API, nur lesend, 20.10.): Der Stopp wird umgangen.**
+**Gemessen beim Gegenlesen (Judge.me-API, nur lesend, 20.10.): Der Stopp wurde umgangen.** Seit 18.10. 18:55 UTC ist nichts Neues dazugekommen (Gesamtzahl 16'891 unverändert, Zufluss 0 gemessen 07:12) — die Wache zeigt es sofort, falls es wieder losgeht (`SCHREIBT WEITER`).
 - **1'191 Bewertungen** entstanden NACH dem Stopp (16.10. 19:10 bis 18.10. 18:55 UTC), **901 sichtbar**, 290 ausgeblendet (die Doppel-Wache). 223 Produkte, 351 mit Kundenfoto.
 - **Ursache:** Die Sitzung auf dem Branch `claude/project-thread-shf90k` (Commits «Bewertungen: Tagesabschluss — 775 echte Reviews auf 152 Produkten», PRs #2674–#2680, 17.–18.10.)
   läuft auf `main`. Dort kennt der Importer die Stopp-Datei nicht und schreibt noch die alte Absenderform `cj-import+<Zufall>@luxestyle.ch`.
