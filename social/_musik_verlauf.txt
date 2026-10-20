@@ -576,3 +576,4 @@
 2026-10-20T00:27:46.634Z	luxe-epic-tech.wav	17.54	allgemein	cjreel-CJJT130154801AZ	stimme:nein	anteil
 2026-10-20T00:29:29.420Z	luxe-epic-glamour.wav	48.65	allgemein	cjreel-CJBJMRDD00190-Brown-40x60cm	stimme:nein	anteil
 2026-10-20T00:32:24.232Z	luxe-epic-fantasy.wav	24.83	allgemein	cjreel-CJDZ171382002BY	stimme:ja	azure:de-CH-JanNeural
+2026-10-20T01:10:43.224Z	luxe-epic-hybrid.wav	41.37	allgemein	cjreel-CJYD202599101AZ	stimme:ja	azure:de-CH-JanNeural
