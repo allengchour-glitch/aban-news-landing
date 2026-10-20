@@ -158,6 +158,223 @@ with _tf.TemporaryDirectory() as _sd:
         erg_w.append(_time.time() - _t0)
     _t.join()
     pruefe("Sperre mit Warten: läuft nach dem ersten (nicht gleichzeitig)", 0.3 < erg_w[0] < 3, erg_w)
+    # (16. Prüfung) ohne Herzschlag ist der Lauf tot: die Nachkontrolle/der Not-Aus (alt_nach=ALT_NACH_TOT) übernehmen nach 150 s, der Standard erst nach 900 s
+    _lk.write_text("1 0")
+    _os.utime(_lk, (_time.time() - 200, _time.time() - 200))
+    try:
+        with SP.lauf_sperre(ordner=_sd, warten=0):
+            _std = True
+    except SP.Besetzt:
+        _std = False
+    with SP.lauf_sperre(ordner=_sd, warten=0, alt_nach=SP.ALT_NACH_TOT):
+        _tot = True
+    pruefe("Sperre ohne Herzschlag seit 200 s: mit alt_nach=ALT_NACH_TOT (Nachkontrolle, Not-Aus) übernommen, der Standard (900 s) wartet noch", _tot and not _std and SP.ALT_NACH_TOT == 150, (_std, _tot))
+    _lk.write_text("1 0")
+    _os.utime(_lk, (_time.time() - 100, _time.time() - 100))
+    try:
+        with SP.lauf_sperre(ordner=_sd, warten=0, alt_nach=SP.ALT_NACH_TOT):
+            _lebt = False
+    except SP.Besetzt:
+        _lebt = True
+    _lk.unlink(missing_ok=True)
+    pruefe("Sperre mit Herzschlag vor 100 s: der Lauf lebt noch, auch mit ALT_NACH_TOT keine Übernahme", _lebt)
+    _alt_hz = SP.HERZSCHLAG
+    SP.HERZSCHLAG = 0.05
+    try:
+        with SP.lauf_sperre(ordner=_sd, warten=0):
+            _time.sleep(0.6)  # länger als alt_nach unten: nur der Herzschlag hält die Sperre frisch
+            try:
+                with SP.lauf_sperre(ordner=_sd, warten=0, alt_nach=0.3):
+                    _frisch = False
+            except SP.Besetzt:
+                _frisch = True
+    finally:
+        SP.HERZSCHLAG = _alt_hz
+    pruefe("Herzschlag: ein lange gehaltener Lauf gilt nie als tot (die Sperre bleibt frisch)", _frisch and SP.HERZSCHLAG * 5 <= SP.ALT_NACH_TOT, (_frisch, SP.HERZSCHLAG))
+    # (16. Folge-Runde) Härtung der Sperre: der Herzschlag überlebt einen vorübergehend gesperrten Zugriff (Windows: Virenscanner/OneDrive halten die Datei kurz) — vorher endete der Thread beim ersten
+    # Fehler, und der lebende Lauf galt nach ALT_NACH_TOT als tot (Übernahme mitten im Lauf)
+    _alt_hz, _os_utime = SP.HERZSCHLAG, _os.utime
+    _fehl_utime = [4]
+
+    def _utime_zickt(pfad, *a, **k):
+        if _fehl_utime[0] > 0:
+            _fehl_utime[0] -= 1
+            raise PermissionError("kurz gesperrt")
+        return _os_utime(pfad, *a, **k)
+
+    SP.HERZSCHLAG, _os.utime = 0.05, _utime_zickt
+    try:
+        with SP.lauf_sperre(ordner=_sd, warten=0):
+            _time.sleep(0.7)  # die ersten vier Schläge scheitern (0,2 s), danach läuft der Herzschlag weiter — länger als alt_nach unten
+            try:
+                with SP.lauf_sperre(ordner=_sd, warten=0, alt_nach=0.3):
+                    _hz_zickt = False
+            except SP.Besetzt:
+                _hz_zickt = True
+    finally:
+        SP.HERZSCHLAG, _os.utime = _alt_hz, _os_utime
+    pruefe("Herzschlag: vier gescheiterte Schläge (Datei kurz gesperrt) beenden ihn nicht — die Sperre bleibt frisch", _hz_zickt and _fehl_utime[0] == 0, (_hz_zickt, _fehl_utime))
+    # hat ein anderer Lauf die Sperre übernommen (z. B. nach dem Ruhezustand des Rechners), löscht der alte Halter die fremde nicht und hält sie nicht am Leben
+    _lk.unlink(missing_ok=True)
+    SP.HERZSCHLAG = 0.05
+    try:
+        with SP.lauf_sperre(ordner=_sd, warten=0):
+            _lk.unlink()
+            _lk.write_text("99999 0 fremd\n")  # der andere Lauf hat die Sperre neu angelegt
+            _os_utime(_lk, (_time.time() - 100, _time.time() - 100))
+            _time.sleep(0.3)  # mehrere Herzschläge des alten Halters
+            _alt_mtime = _time.time() - _lk.stat().st_mtime
+    finally:
+        SP.HERZSCHLAG = _alt_hz
+    pruefe("Sperre übernommen: der alte Halter löscht die fremde Sperre nicht (und hält sie mit seinem Herzschlag nicht am Leben)",
+           _lk.exists() and _lk.read_text() == "99999 0 fremd\n" and _alt_mtime > 90, (_lk.exists(), _alt_mtime))
+    _lk.unlink(missing_ok=True)
+    # Windows: das Löschen der eigenen Sperre scheitert kurz (Virenscanner) — ein erfolgreicher Lauf stürzt daran nicht ab, die Sperre ist danach weg
+    _unlink0, _fehl_unlink = Path.unlink, [2]
+
+    def _unlink_zickt(self, *a, **k):
+        if self.name.endswith(".lock") and _fehl_unlink[0] > 0:
+            _fehl_unlink[0] -= 1
+            raise PermissionError("kurz gehalten")
+        return _unlink0(self, *a, **k)
+
+    Path.unlink = _unlink_zickt
+    try:
+        with SP.lauf_sperre(ordner=_sd, warten=0):
+            pass
+        _unl_ok = True
+    except OSError:
+        _unl_ok = False
+    finally:
+        Path.unlink = _unlink0
+    pruefe("Sperre freigeben: ein kurz gehaltenes Löschen (PermissionError ×2) wird wiederholt, der Lauf stürzt nicht ab", _unl_ok and not _lk.exists() and _fehl_unlink[0] == 0, (_unl_ok, _lk.exists(), _fehl_unlink))
+    # … und die Übernahme einer toten Sperre: lässt sie sich kurz nicht löschen, wird sie innerhalb der Wartezeit nochmals versucht; ohne Wartezeit meldet der Lauf «besetzt» statt abzustürzen
+    for _warten_u, _erw_u in ((5, "uebernommen"), (0, "besetzt")):
+        _lk.write_text("1 0\n")
+        _os_utime(_lk, (_time.time() - 2000, _time.time() - 2000))
+        _fehl_unlink[0] = 2
+        Path.unlink = _unlink_zickt
+        try:
+            with SP.lauf_sperre(ordner=_sd, warten=_warten_u):
+                _u_erg = "uebernommen"
+        except SP.Besetzt:
+            _u_erg = "besetzt"
+        except OSError:
+            _u_erg = "abgestuerzt"
+        finally:
+            Path.unlink = _unlink0
+        pruefe(f"Sperre übernehmen: die tote Sperre lässt sich kurz nicht löschen, Wartezeit {_warten_u} s → {_erw_u}", _u_erg == _erw_u, _u_erg)
+        _lk.unlink(missing_ok=True)
+    # (Nachprüfung der 16. Folge-Runde) Übernahme einer toten Sperre durch ZWEI Prozesse zugleich: der zweite löschte die FRISCH angelegte Sperre des ersten (er hatte die tote Sperre schon gesehen),
+    # und beide hielten sie. Jetzt prüft, löscht und legt nur der Inhaber der Wache (<sperre>.uebernahme) neu an: Prozess A wird zwischen Prüfen und Löschen angehalten, Prozess B kommt dazu.
+    import threading as _th  # noqa: E402
+    _lk.write_text("1 0\n")
+    _os_utime(_lk, (_time.time() - 2000, _time.time() - 2000))
+    _a_im_loeschen, _b_fertig, _a_erg, _b_erg = _th.Event(), _th.Event(), [], []
+    _haken0 = getattr(SP, "_haken", None)
+
+    def _haken_a(was):
+        if was == "vor_loeschen" and _th.current_thread().name == "A":
+            _a_im_loeschen.set()
+            _b_fertig.wait(5)
+
+    def _lauf_a():
+        try:
+            with SP.lauf_sperre(ordner=_sd, warten=5):
+                _a_erg.append("hat")
+                _time.sleep(0.2)
+        except SP.Besetzt:
+            _a_erg.append("besetzt")
+
+    SP._haken = _haken_a
+    try:
+        _ta = _th.Thread(target=_lauf_a, name="A")
+        _ta.start()
+        _a_im_loeschen.wait(5)
+        try:
+            with SP.lauf_sperre(ordner=_sd, warten=0.3):
+                _b_erg.append("hat")
+        except SP.Besetzt:
+            _b_erg.append("besetzt")
+        _b_fertig.set()
+        _ta.join(10)
+    finally:
+        if _haken0 is None:
+            del SP._haken
+        else:
+            SP._haken = _haken0
+    pruefe("Sperre übernehmen: übernimmt ein Prozess eine tote Sperre (zwischen Prüfen und Löschen angehalten), kann ein zweiter sie nicht zugleich löschen und neu anlegen — er wird abgewiesen, der erste hält sie",
+           _b_erg == ["besetzt"] and _a_erg == ["hat"], (_a_erg, _b_erg))
+    _lk.unlink(missing_ok=True)
+    # … und die andere Reihenfolge: B hat die tote Sperre gesehen und wird VOR der Wache angehalten; A übernimmt sie unterdessen ganz und hält die neue. B darf sie danach nicht löschen (unter der Wache prüft er nochmals).
+    _lk.write_text("1 0\n")
+    _os_utime(_lk, (_time.time() - 2000, _time.time() - 2000))
+    _b_vor_wache, _a_hat, _b_erg2, _a_erg2 = _th.Event(), _th.Event(), [], []
+
+    def _haken_b(was):
+        if was == "vor_wache" and _th.current_thread().name == "B":
+            _b_vor_wache.set()
+            _a_hat.wait(5)
+
+    def _lauf_b():
+        try:
+            with SP.lauf_sperre(ordner=_sd, warten=0.3):
+                _b_erg2.append("hat")
+        except SP.Besetzt:
+            _b_erg2.append("besetzt")
+
+    SP._haken = _haken_b
+    try:
+        _tb = _th.Thread(target=_lauf_b, name="B")
+        _tb.start()
+        _b_vor_wache.wait(5)
+        with SP.lauf_sperre(ordner=_sd, warten=2):
+            _a_erg2.append("hat")
+            _a_hat.set()
+            _tb.join(10)
+    finally:
+        if _haken0 is None:
+            del SP._haken
+        else:
+            SP._haken = _haken0
+    pruefe("Sperre übernehmen: B sah die tote Sperre, A übernahm sie unterdessen und hält die neue — B löscht sie nicht (er prüft unter der Wache nochmals) und wird abgewiesen", _b_erg2 == ["besetzt"] and _a_erg2 == ["hat"], (_a_erg2, _b_erg2))
+    _lk.unlink(missing_ok=True)
+    # eine liegen gebliebene Wache (der Prozess starb mitten in der Übernahme) blockiert nicht für immer: nach WACHE_ALT Sekunden wird sie gelöscht, die Übernahme gelingt
+    _wk = Path(_sd) / "krypto-lauf.lock.uebernahme"
+    for _alter_w, _warten_w, _erw_w in ((getattr(SP, "WACHE_ALT", 30) + 60, 5, "uebernommen"), (5, 0, "besetzt")):
+        _lk.write_text("1 0\n")
+        _os_utime(_lk, (_time.time() - 2000, _time.time() - 2000))
+        _wk.write_text("")
+        _os_utime(_wk, (_time.time() - _alter_w, _time.time() - _alter_w))
+        try:
+            with SP.lauf_sperre(ordner=_sd, warten=_warten_w):
+                _w_erg = "uebernommen"
+        except SP.Besetzt:
+            _w_erg = "besetzt"
+        pruefe(f"Sperre übernehmen: Wache {_alter_w:.0f} s alt, Wartezeit {_warten_w} s → {_erw_w} ({'vergessene Wache wird gelöscht' if _erw_w == 'uebernommen' else 'ein anderer übernimmt gerade'})", _w_erg == _erw_w and (_erw_w == "besetzt" or not _wk.exists()), (_w_erg, _wk.exists()))
+        _lk.unlink(missing_ok=True)
+        _wk.unlink(missing_ok=True)
+    # die Nachkontrolle (pilot.py --nachkontrolle) wartet auf die Übernahme einer toten Sperre, statt nach 120 s still zu überspringen
+    import pilot as _PI  # noqa: E402
+    import pilot2_live as _P2L  # noqa: E402
+    _alt_ord, _alt_nk = SP.ORDNER, _P2L.nachkontrolle
+    SP.ORDNER = Path(_sd)
+    _lief = []
+    _P2L.nachkontrolle = lambda *a, **k: (_lief.append(1), {"zeilen": [], "warnung": False, "auftraege": []})[1]
+    try:
+        _lk.write_text("1 0")
+        _os.utime(_lk, (_time.time() - 147, _time.time() - 147))  # noch 3 s bis «tot»
+        _t0 = _time.time()
+        _rc = _PI.nachkontrolle()
+        _dauer = _time.time() - _t0
+    finally:
+        SP.ORDNER, _P2L.nachkontrolle = _alt_ord, _alt_nk
+    pruefe("Nachkontrolle nach hartem Abbruch: wartet auf die tote Sperre (147 s alt), übernimmt sie nach 150 s und läuft", _lief == [1] and _rc == 0 and 1 < _dauer < 20 and not _lk.exists(), (_lief, _rc, _dauer))
+    # Tageslauf und Not-Aus-Lauf von pilot.py nehmen dieselbe Übernahme-Regel (ein hart beendeter Lauf hinterlässt die Sperre) — Bauform-Wächter, der Lauf selbst braucht Kursquellen und Börse
+    import inspect as _insp
+    _quelle_main = _insp.getsource(_PI.main)
+    pruefe("pilot.py: Tageslauf und Not-Aus-Lauf übernehmen eine Sperre ohne Herzschlag (alt_nach=ALT_NACH_TOT), beide warten lange genug dafür",
+           _quelle_main.count("alt_nach=sperre.ALT_NACH_TOT") == 2 and _quelle_main.count("sperre.ALT_NACH_TOT + 40") == 2, _quelle_main.count("alt_nach=sperre.ALT_NACH_TOT"))
 
 # ── Pilot: Märkte, Trendlänge je Coin, Logbuch, Wochenbericht ──
 import pilot as PI  # noqa: E402

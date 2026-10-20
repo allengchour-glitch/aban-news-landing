@@ -48,8 +48,13 @@ Bewusst NICHT gezählt (begründet):
     cancelReplace in der ungünstigen Lesart erst storniert und dann ablehnt (409) — laut gemeldet, und nur der ERSTE 409 je Markt
     (danach ersetzt Pilot 2.0 nichts mehr per cancelReplace; ein zweiter wäre vermeidbar — 12. Prüfung K2); nicht vermeidbar,
     solange ein Stop überhaupt ersetzt werden muss; Testnetz-Prüfpunkt (README). Stille Lücken zählen weiter als Befund.
+  • VORSORGE_* (16. Prüfung): SPOT_STOP_UEBER_NETTO, nachdem der Lauf laut einen Vorsorge-Stop gemeldet hat («ein alter Short-Stop hat ausgelöst, Kontostand danach nicht lesbar —
+    vorsorglich unter Spot-Stop») UND den Markt für die Nachkontrolle vermerkt hat: nach einer verlorenen Löschantwort sieht das eigene Löschen wie ein Auslösen aus; die Nachkontrolle räumt
+    den Vorsorge-Stop ab (dokumentiertes Restrisiko, README). Ohne Meldung oder ohne Vermerk bleibt es ein Befund.
   • LIMIT_LUECKE_* (Konto ohne STOP_LOSS): die Lücke ist genau ein ausgelöster STOP_LOSS_LIMIT, dessen Limit eine Kurslücke
-    übersprungen hat — er hängt bis zum nächsten Lauf (der steigt dann zum Markt aus); bekanntes Restrisiko (README). Gilt nur,
+    übersprungen hat — er hängt bis zum nächsten Lauf (der steigt dann zum Markt aus); bekanntes Restrisiko (README). Im Tageslauf (16. Prüfung F-a) gilt die
+    Entschuldigung nur, wenn der Lauf den Markt angesehen (die Spot-Liste gelesen) oder für die Nachkontrolle vermerkt hat — sah er ihn nie an und vermerkte nichts (der Lauf endete früh,
+    «Konto nicht lesbar»), bleibt die Lücke bis zum nächsten Tageslauf: echter Befund. Gilt nur,
     wenn der Stop NACH dem letzten Blick von Pilot 2.0 auf die Spot-Auftragsliste zu hängen begann (Ereignis-Takt der Prüf-Börse,
     je Auftrag — 13. Prüfung K1: eine spätere kleine Kursbewegung entschuldigt ihn nicht wieder) — sah er den hängenden Stop und
     blieb trotzdem drin, ist es ein echter Befund (12. Prüfung, auch im Zweig «beidseitig»).
@@ -134,6 +139,7 @@ def env_test(skey="s", fkey="f", **extra):
 
 def neues_konto(usdt=20000.0, uid=4711, keys=("k",), kurs=None):
     B.reset(kurs)
+    MINIMUM_GESEHEN[0] = False
     B.reduce_algo_streng = STRENG  # PRUEF_STRENG=1: reduceOnly-Stop über der offenen Position → −2022 (14. Prüfung W)
     return B.konto_anlegen(keys, GEHEIM, uid, usdt)
 
@@ -143,8 +149,14 @@ def E(m, h, stop_abstand=0.10, kurs=None):
     return {"markt": m, "hebel": h, "stop_long": p * (1 - stop_abstand), "stop_short": p * (1 + stop_abstand), "stand": "2026-10-13"}
 
 
+MINIMUM_GESEHEN = [False]  # irgendein Lauf/Not-Aus dieser Runde hat einen Coin-Rest «unter dem Binance-Minimum» liegen lassen (neues_konto setzt es zurück)
+
+
 def lauf(ents, env, datei, trocken=False, notaus=False, protokolliere=None):
-    return L.ausfuehren(ents, trocken=trocken, env=env, bestand_datei=datei, notaus=notaus, protokolliere=protokolliere)
+    r = L.ausfuehren(ents, trocken=trocken, env=env, bestand_datei=datei, notaus=notaus, protokolliere=protokolliere)
+    if any("unter dem Binance-Minimum" in z for z in (r or {}).get("zeilen") or []):
+        MINIMUM_GESEHEN[0] = True
+    return r
 
 
 def pending_abarbeiten():
@@ -185,6 +197,19 @@ def unklar_je_markt(datei):
             q = float(u.get("menge") or 0) if u.get("seite") == "SELL" and not u.get("reduce") else 0.0
             out[u.get("sym")] = out.get(u.get("sym"), 0.0) + q
     return out
+
+
+def vermerkt_je_markt(datei):
+    """Märkte, die das Buch für die Nachkontrolle vermerkt hat («schutz_offen», alle Modi): dort holt sie fehlende Stops nach."""
+    try:
+        roh = json.loads(Path(datei).read_text())
+    except (OSError, ValueError):
+        return []
+    out = set()
+    for b in (roh.values() if isinstance(roh, dict) else []):
+        if isinstance(b, dict):
+            out |= set(b.get("schutz_offen") or [])
+    return sorted(out)
 
 
 def schutz_befunde(k, unklar=None, tol_usdt=TOL_USDT):
@@ -293,7 +318,7 @@ def echte(befunde):
     «LIMIT_LUECKE_» (Konto ohne STOP_LOSS: eine Kurslücke über das Limit eines eben ausgelösten STOP_LOSS_LIMIT — er hängt bis
     zum nächsten Lauf, der dann zum Markt aussteigt; bekanntes Restrisiko, README)."""
     return [b for b in befunde if "STAUB" not in b[0] and "LIMIT_LUECKE_" not in b[0]
-            and not b[0].startswith(("DAUER_", "STORNO_ZUERST_"))]
+            and not b[0].startswith(("DAUER_", "STORNO_ZUERST_", "VORSORGE_"))]
 
 
 def _haengend(k, sym):
@@ -350,13 +375,16 @@ _STOP_SPOT = ({"type": "STOP_LOSS", "side": "SELL", "symbol": "BTCUSDT"}, {"type
 _STOP_PERP = ({"algoType": "CONDITIONAL", "type": "STOP_MARKET", "side": "BUY", "reduceOnly": "true", "symbol": "BTCUSDT"},)
 
 
-def _dauer(regeln, befund=None):
+def _dauer(regeln, befund=None, k=None, sym=None):
     """Lehnt Binance in diesem Schritt dauerhaft genau die SCHUTZ-HANDLUNG ab — einen neuen Stop der betroffenen Seite setzen
     (POST /api/v3/order mit Stop-Typ bzw. POST /fapi/v1/algoOrder, die Störungsregel muss einen solchen Auftrag treffen) — oder
     das Lesen der Lage (Konto, Position)? Nur das macht eine Lücke unvermeidbar. Dauerhaft abgelehnte Marktaufträge, Löschungen
     oder cancelReplace NICHT (12. Prüfung K1: so blieben vermeidbare Lücken versteckt), ebensowenig eine Störung auf dem
     Kurs-Abruf (10. Prüfung W4) oder auf den eigenen Auftragslisten (13. Prüfung W2: Pilot 2.0 sichert auch ohne Liste — über die
-    Kennung im Buch, «zuerst setzen», beidseitig). Mit Befund: nur die Seite, die den Schutz bräuchte (11. Prüfung K3)."""
+    Kennung im Buch, «zuerst setzen», beidseitig). Mit Befund: nur die Seite, die den Schutz bräuchte (11. Prüfung K3).
+    Ausnahme (Lauf-Seed 324065 der Folge-Runde): sperrt ein HÄNGENDER Stop-Limit die Coins (k, sym), sind Löschen UND cancelReplace dauerhaft
+    abgelehnt — dann lassen sich die Coins weder freigeben noch stoppen (jeder Weg ist zu), und die Lücke ist unvermeidbar (E42 meldet sie laut). Jede der beiden Störungen allein
+    reicht nicht (K1)."""
     seite = None if befund is None else _schutzseite(befund)
     summe = {}  # Pfad → Summe der Ablehnungen aller Regeln, die ihn treffen (14. Prüfung, strenger Modus: endliche Anzahlen, die sich stapeln)
     for r in regeln:
@@ -375,6 +403,12 @@ def _dauer(regeln, befund=None):
         if n0 >= 50:
             return True
         summe[r["pfad"]] = summe.get(r["pfad"], 0) + n0
+    if k is not None and sym and seite in (None, "spot") and _haengend(k, sym) > 0:
+        def tot(methode, pfad):
+            return any(r.get("methode") in (None, methode) and r.get("pfad") == pfad and r.get("art") in ("429", "418", "vor503", "abriss_vor")
+                       and r.get("anzahl0", r.get("anzahl", 1)) >= 50 for r in regeln)
+        if tot("DELETE", "/api/v3/order") and tot("POST", "/api/v3/order/cancelReplace"):
+            return True
     # mehrere endliche Störungen auf demselben Schutzpfad, zusammen mindestens so viele wie Pilot 2.0 Versuche hat (SCHUTZ_WARTEN): der
     # Schutz scheitert in diesem Lauf unvermeidbar (die Nachkontrolle holt ihn nach) — wie eine dauerhafte Störung
     return any(n >= len(L.SCHUTZ_WARTEN) + 1 for n in summe.values())
@@ -521,11 +555,21 @@ def _klassieren(befunde, erg, kontext, dauer=False, storno=False):
     storno: die Börse spielte die ungünstige cancelReplace-Lesart «erst stornieren, dann ablehnen» und tat es in diesem Schritt
     (409) — eine LAUT gemeldete Lücke heisst dann STORNO_ZUERST_* (Restrisiko, Testnetz-Prüfpunkt B). Stille bleiben echt."""
     laut = bool(erg.get("warnung"))
+    vermerkt, gelesen = kontext.get("vermerkt"), kontext.get("gelesen") or []  # für die Nachkontrolle vermerkte Märkte / Märkte, deren Spot-Liste der Lauf angesehen hat (nur im Tageslauf)
     out = []
     for b in befunde:
         d_ = dauer(b) if callable(dauer) else dauer
         vor = (("DAUER_" if d_ else "") + "LAUT_") if laut else "STILL_"
-        out.append((("STORNO_ZUERST_" if storno and laut else "") + vor + b[0], kontext, b))
+        name, coin = b[0], b[1][:-4] if isinstance(b[1], str) else None
+        if vermerkt is not None and "LIMIT_LUECKE_" in name and coin not in vermerkt and coin not in gelesen:
+            # (16. Prüfung) «Lücke durch einen hängenden Stop-Limit» ist nur entschuldigt, wenn der Lauf den Markt angesehen hat (der Sprung kam NACH seinem letzten Blick: unvermeidbar) oder für die
+            # Nachkontrolle vermerkt hat. Sah er den Markt nie an und vermerkte nichts (F-a: «Konto nicht lesbar» beendete den Lauf), bleibt die Lücke bis zum nächsten Tageslauf — das Etikett entschuldigte es
+            name = name.replace("LIMIT_LUECKE_", "", 1)
+        vorsorge = (laut and b[0] == "SPOT_STOP_UEBER_NETTO" and vermerkt is not None and coin in vermerkt
+                    and any(f"{coin}: ein alter Short-Stop hat ausgelöst, Kontostand danach nicht lesbar" in z for z in erg.get("zeilen", [])))
+        # VORSORGE_: der Lauf setzte bewusst einen Vorsorge-Stop (ein alter Short-Stop schien ausgelöst, der Kontostand war nicht lesbar) und hat den Markt für die Nachkontrolle vermerkt — die
+        # Nachkontrolle räumt ihn ab (dokumentiertes Restrisiko, README: nach einer verlorenen Löschantwort sieht ein eigenes Löschen wie ein Auslösen aus)
+        out.append((("VORSORGE_" if vorsorge else "") + ("STORNO_ZUERST_" if storno and laut else "") + vor + name, kontext, b))
     return out
 
 
@@ -674,6 +718,7 @@ def laeufe_runde(seed, tage=30):
             _b = None
         fremd = echt and (_b or {}).get("start") and (_b or {}).get("uid") == 4711 and rng.random() < 0.03
         log0 = len(B.log)
+        takt0 = dict(B.liste_takt)  # Stand der Spot-Listen-Abfragen vor dem Lauf: was hat der Lauf angesehen?
         kontext = {"seed": seed, "tag": tag, "echt": echt, "regeln": aktiv_regeln, "ents": [(e["markt"], e["hebel"]) for e in ents],
                    "fremd": bool(fremd), "stop_mitten": stop_mitten}
         trocken = rng.random() < 0.05
@@ -693,9 +738,11 @@ def laeufe_runde(seed, tage=30):
             BF.STOP_DATEI.unlink()
             stop_aktiv = True
         kontext["zeilen"] = erg.get("zeilen", [])[-12:]
+        # (16. Prüfung) was der Lauf für die Nachkontrolle vermerkt und was er angesehen hat — nur für die Tageslauf-Einstufung (der Not-Aus schliesst in der Nachkontrolle ohnehin in jedem Takt nochmals)
+        tag_info = {"vermerkt": vermerkt_je_markt(d), "gelesen": sorted(s_[:-4] for s_ in SYMS if B.liste_takt.get(s_, -1) > takt0.get(s_, -1))}
         if not fremd and not trocken:  # Stand, wie der Lauf ihn verlässt — verspätete Aufträge noch unterwegs
-            funde += _klassieren(schutz_befunde(k, unklar_je_markt(d)), erg, dict(kontext, wann="nach Lauf (vor Ankunft)", lage=zeigen(k)),
-                                 lambda b, log0=log0: _dauer(regeln_tag, b[0]) and not _selbst_entfernt(log0, b[1], b[0]),
+            funde += _klassieren(schutz_befunde(k, unklar_je_markt(d)), erg, dict(kontext, wann="nach Lauf (vor Ankunft)", lage=zeigen(k), **tag_info),
+                                 lambda b, log0=log0: _dauer(regeln_tag, b[0], k, b[1]) and not _selbst_entfernt(log0, b[1], b[0]),
                                  storno=storno_tag)
         pending_abarbeiten()  # verspätete Aufträge kommen an …
         if not fremd and not trocken:
@@ -716,7 +763,7 @@ def laeufe_runde(seed, tage=30):
         B.verletzungen = [v for v in B.verletzungen if v[0] != "TRANSFER-TYP"]
         if not fremd and not trocken:
             kontext["lage"] = zeigen(k)
-            funde += _klassieren(schutz_befunde(k, unklar_je_markt(d)), erg, dict(kontext, wann="nach Lauf"))
+            funde += _klassieren(schutz_befunde(k, unklar_je_markt(d)), erg, dict(kontext, wann="nach Lauf", **tag_info))
             funde += _klassieren(folgeschaden(k), erg, dict(kontext, wann="Folgeschaden nach Lauf"))
         # Markt bis morgen (Stops lösen unterwegs aus), Funding
         for sym in SYMS:
@@ -740,7 +787,7 @@ def laeufe_runde(seed, tage=30):
             B.regeln = []
             if r.get("alles_zu") is not True:  # Stand direkt nach dem Not-Aus (verspätete Aufträge noch unterwegs)
                 funde += _klassieren(schutz_befunde(k, unklar_je_markt(d)), r, dict(kx, wann="Not-Aus (vor Ankunft)", lage=zeigen(k)),
-                                     lambda b, log_na=log_na, regeln_na=regeln_na: _dauer(regeln_na, b[0])
+                                     lambda b, log_na=log_na, regeln_na=regeln_na: _dauer(regeln_na, b[0], k, b[1])
                                      and not _selbst_entfernt(log_na, b[1], b[0]))
             pending_abarbeiten()
             if r.get("alles_zu") is not True:  # stop.bat/Tagesaufgabe: Nachkontrolle im Not-Aus-Modus schliesst Verspätetes
@@ -750,7 +797,9 @@ def laeufe_runde(seed, tage=30):
                 except Exception:  # noqa: BLE001
                     funde.append(("AUSNAHME", dict(kx, wann="Nachkontrolle Not-Aus"), traceback.format_exc()[-800:]))
             kx["zeilen"], kx["lage"] = r.get("zeilen", [])[-14:], zeigen(k)
-            if r.get("alles_zu") is True and not flach(k):
+            # Fuzzer-Artefakt (Lauf-Seed 312454 der Folge-Runde, wie E38): der Tageslauf mit dem STOP mitten im Lauf liess einen Coin-Rest UNTER dem Binance-Minimum liegen («unter dem Binance-Minimum» in seinen Zeilen),
+            # ein Kurssprung danach machte ihn verkäuflich — den verkauft der Not-Aus nie von selbst (das Buch kennt ihn nicht)
+            if r.get("alles_zu") is True and not flach(k) and not _nur_coins_uebrig(k, r, "unter dem Binance-Minimum", marke=not echt):
                 funde.append(("FALSCH_ALLES_ZU", kx, zeigen(k)))
             if r.get("alles_zu") is not True:
                 funde += _klassieren(schutz_befunde(k, unklar_je_markt(d)), r, kx)
@@ -764,9 +813,9 @@ def laeufe_runde(seed, tage=30):
         # der Not-Aus nie von selbst — er meldet sie. Kein Befund, solange keine Position und kein eigener Stop mehr da ist (14. Prüfung,
         # strenger Modus: Lauf-Seeds 20535, 20549)
         nur_fremde_coins = (all(abs(lage(k, s_)["pos"]) < 1e-12 and not lage(k, s_)["n_s"] and not lage(k, s_)["n_p"] for s_ in SYMS)
-                            and any("das Buch kennt es nicht" in z for z in r.get("zeilen") or []))
+                            and (any("das Buch kennt es nicht" in z for z in r.get("zeilen") or []) or (MINIMUM_GESEHEN[0] and not echt)))
         if r.get("alles_zu") is True:
-            if not flach(k):
+            if not flach(k) and not nur_fremde_coins:
                 funde.append(("FALSCH_ALLES_ZU", {"seed": seed, "wann": "Ende", "zeilen": r["zeilen"]}, zeigen(k)))
         elif not nur_fremde_coins:
             funde.append(("ENDE_NICHT_ZU", {"seed": seed, "wann": "Ende", "zeilen": r.get("zeilen")}, zeigen(k)))
@@ -800,6 +849,14 @@ def _kurssprung(rng, anteil=0.25):
             B.regeln.append(dict(methode="GET", pfad="/api/v3/ticker/price", art="429", anzahl=dauer))
             B.regeln.append(dict(methode="GET", pfad="/fapi/v1/premiumIndex", art="vor503", anzahl=dauer))
     B.vor_jeder_anfrage = haken
+
+
+def _nur_coins_uebrig(k, r, text, marke=False):
+    """Fuzzer-Artefakt (Lücken-Not-Aus-Seed 214517): keine Position, kein eigener Stop — nur ein Coin-Rest, den der Not-Aus WEGEN seines Zustands nicht verkaufte (`text` in seinen Zeilen: «unter dem
+    Binance-Minimum» im ersten, «das Buch kennt es nicht» im sauberen Not-Aus danach). Ein Kurssprung NACH dem Entscheid macht den Rest erst später verkäuflich (flach() rechnet mit dem Schlusskurs): kein Befund.
+    marke (nur Konten ohne echtes Geld, deren Not-Aus den Rest gar nicht erst meldet — Lauf-Seed 312454): reicht es, dass IRGENDEIN Lauf dieser Runde den Rest «unter dem Binance-Minimum» liegen liess (MINIMUM_GESEHEN)."""
+    return (all(abs(lage(k, s_)["pos"]) < 1e-12 and not lage(k, s_)["n_s"] and not lage(k, s_)["n_p"] for s_ in SYMS)
+            and (any(text in z for z in (r.get("zeilen") or [])) or (marke and MINIMUM_GESEHEN[0])))
 
 
 def notaus_runde(seed):
@@ -862,7 +919,7 @@ def notaus_runde(seed):
     funde = []
     if r["alles_zu"] is not True:  # Stand direkt nach dem Not-Aus (verspätete Aufträge noch unterwegs)
         funde += [(("STORNO_ZUERST_" if storno else "")
-                   + ("DAUER_" if _dauer(regeln, b[0]) and r.get("warnung") and not _selbst_entfernt(log_na, b[1], b[0]) else "") + b[0],
+                   + ("DAUER_" if _dauer(regeln, b[0], k, b[1]) and r.get("warnung") and not _selbst_entfernt(log_na, b[1], b[0]) else "") + b[0],
                    {"seed": seed, "wann": "vor Ankunft", "lage": zeigen(k), "zeilen": r["zeilen"][-10:]}, b)
                   for b in schutz_befunde(k, unklar_je_markt(d))]
     pending_abarbeiten()
@@ -871,12 +928,12 @@ def notaus_runde(seed):
         r = rn if rn.get("alles_zu") is not None else r
     kx = {"seed": seed, "echt": echt, "regeln": [x["art"] for x in regeln], "vorher": vorher, "nachher": zeigen(k),
           "zeilen": r["zeilen"][-10:]}
-    if r["alles_zu"] is True and not flach(k):
+    if r["alles_zu"] is True and not flach(k) and not _nur_coins_uebrig(k, r, "unter dem Binance-Minimum", marke=not echt):
         funde.append(("FALSCH_ALLES_ZU", kx, None))
     if r["alles_zu"] is not True:
         funde += [(b[0], kx, b) for b in schutz_befunde(k, unklar_je_markt(d)) + folgeschaden(k)]
     r2 = sauber_schliessen(env, d)
-    if r2["alles_zu"] is not True or not flach(k):
+    if (r2["alles_zu"] is not True or not flach(k)) and not _nur_coins_uebrig(k, r2, "das Buch kennt es nicht"):
         funde.append(("SAUBER_NICHT_ZU", dict(kx, zeilen2=r2["zeilen"]), zeigen(k)))
     return funde
 
@@ -938,7 +995,7 @@ def listen_runde(seed):
             # noch Stop möglich), ist eine laut gemeldete Lücke unvermeidbar (DAUER_); danach Ankunft + Nachkontrolle im
             # Not-Aus-Modus (Störung vorbei) — was dann noch offen ist, zählt immer
             for b in schutz_befunde(k, unklar_je_markt(d)) + folgeschaden(k):
-                dauer = _dauer(regeln_na, b[0]) and r.get("warnung") and not _selbst_entfernt(log_na, b[1], b[0])
+                dauer = _dauer(regeln_na, b[0], k, b[1]) and r.get("warnung") and not _selbst_entfernt(log_na, b[1], b[0])
                 funde.append((("DAUER_" if dauer else "") + "NOTAUS_" + ("LAUT_" if r.get("warnung") else "STILL_") + b[0],
                               {"seed": seed, "wann": "vor Ankunft", "regeln": [(x["methode"], x["pfad"], x["art"], x["anzahl"])
                                                                                for x in regeln_na],

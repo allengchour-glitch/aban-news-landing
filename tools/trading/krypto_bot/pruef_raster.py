@@ -219,7 +219,7 @@ def _messen_notaus(k, d, env, res, regeln, log_na, haengt):
     vor = []
     if res["alles_zu"] is not True:  # Stand direkt nach dem Not-Aus (verspätete Aufträge noch unterwegs)
         vor = [(("STORNO_ZUERST_" if storno else "")
-                + ("DAUER_" if P._dauer(regeln, b[0]) and laut and not P._selbst_entfernt(log_na, b[1], b[0]) else "") + b[0], b)
+                + ("DAUER_" if P._dauer(regeln, b[0], k, b[1]) and laut and not P._selbst_entfernt(log_na, b[1], b[0]) else "") + b[0], b)
                for b in P.schutz_befunde(k, P.unklar_je_markt(d))]
     P.pending_abarbeiten()
     res2, nk_tat = res, False
