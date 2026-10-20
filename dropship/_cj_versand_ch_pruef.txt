@@ -11661,3 +11661,4 @@ tur-und-fenstersensor-wlan-f4dc6f	2807BFCC-F8C0-43E8-88C8-B5F00D1B93D4	16	5.20	o
 mini-wireless-keyboard-mit-touchpad-91f82b	A3737709-A7EE-4719-BA21-AE6A85647CC5	7	9.54	ok	landeseite
 wasserdichte-business-armbanduhr-mit-kalender-621400	2604050943001621800	7	6.81	ok	landeseite
 smart-warme-timer-mit-touch-bedienung-app-steu-51034c	0118AEEE-673B-49ED-9235-C57BA77E708F	16	7.34	ok	landeseite
+einfache-damen-armbanduhr-wasserdicht-637200	2604050936281637500	7	5.52	ok	landeseite
