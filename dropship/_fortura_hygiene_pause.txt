@@ -1,0 +1,2 @@
+BIS: 2026-10-27
+# Fortura-Pause (Betreiber-Entscheid offen): Fall A der Lagerstand-Hygiene draftet Fortura-Produkte bei Bestand 0 NICHT, bis Fortura bestaetigt, ob Bazar-Bestand lieferbar ist (Fall #1027, 20.10.2026). Datei loeschen = altes Verhalten.

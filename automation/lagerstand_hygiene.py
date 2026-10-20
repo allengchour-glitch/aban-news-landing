@@ -18,7 +18,7 @@ gestalten») aus dem Shop nehmen — laut Projektregel ein heiliger Bereich.
 
 DRY=1 meldet nur.
 """
-import json, os, subprocess, sys, time
+import datetime, json, os, re, subprocess, sys, time
 
 # Der Aufseher startet die /tmp-Kopie; dort fehlt klingenregel.json → immer die Repo-Fassung laden.
 sys.path.insert(0, "/home/user/aban-news-landing/automation")
@@ -29,6 +29,24 @@ from preis_verlustschutz import boden, netto_schlimmst, MAX_FAKTOR, M as PV_M  #
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
 DRY = os.environ.get("DRY") == "1"
 LEDGER = "dropship/_lagerstand_hygiene.txt"
+FORTURA_PAUSE = "dropship/_fortura_hygiene_pause.txt"
+
+
+def fortura_pause():
+    """20.10.2026: Fall A (DRAFT bei Bestand 0) ruht für Fortura-Produkte, solange `dropship/_fortura_hygiene_pause.txt` eine Zeile
+    «BIS: JJJJ-MM-TT» mit heutigem oder späterem Datum trägt. Anlass: Der Bestandsabgleich liest seit 20.10. «Lagerbestand Fortura»
+    statt «Total» (Bestellung #1027, Bazar-Bestand ist nicht lieferbar) — ~684 aktive Fortura-Produkte stehen damit auf Bestand 0 und
+    wären beim nächsten Lauf gedraftet worden, 11 Tage vor Halloween. Ob Fortura Bazar-Ware ausliefert, ist nur durch EINEN Fall belegt;
+    ein Draft ist nicht voll umkehrbar (Rückholung hat Sperrbedingungen). Die Seiten bleiben «Ausverkauft» (nicht kaufbar), bis die
+    Antwort von Fortura da ist. Ohne Datei / abgelaufen: das alte Verhalten."""
+    try:
+        for z in open(FORTURA_PAUSE, encoding="utf-8"):
+            m = re.match(r"^BIS:\s*(\d{4}-\d{2}-\d{2})", z)
+            if m:
+                return datetime.date.today() <= datetime.date.fromisoformat(m.group(1))
+    except (OSError, ValueError):
+        pass
+    return False
 
 
 def gql(q, v=None):
@@ -101,7 +119,7 @@ def main():
     for _seite in range(200):
         d = gql('query($c:String){products(first:100,after:$c,query:"status:ACTIVE AND inventory_total:0"){'
                 'pageInfo{hasNextPage endCursor} nodes{'
-                'id title variants(first:100){nodes{id inventoryPolicy '
+                'id title tags variants(first:100){nodes{id inventoryPolicy '
                 'inventoryItem{id tracked}}}}}}', {"c": cur})
         P = ((d.get("data") or {}).get("products") or {})
         nodes += P.get("nodes") or []
@@ -110,13 +128,19 @@ def main():
         cur = P["pageInfo"]["endCursor"]
     print(f"aktive Produkte mit Bestand 0: {len(nodes)}", flush=True)
     f = open(LEDGER, "a")
-    gedraftet = entkoppelt = 0
+    gedraftet = entkoppelt = gehalten = 0
+    pause = fortura_pause()
+    if pause:
+        print(f"⏸ Fortura-Pause aktiv ({FORTURA_PAUSE}): Fortura-Produkte werden bei Bestand 0 NICHT gedraftet", flush=True)
     for p in nodes:
         vs = p["variants"]["nodes"]
         blockiert = [v for v in vs if v["inventoryPolicy"] == "DENY"
                      and v["inventoryItem"]["tracked"]]
         if blockiert and len(blockiert) == len(vs):
             # Fall A: kein einziger Variantenkauf möglich -> aus dem Schaufenster nehmen.
+            if pause and "fortura" in {str(t).lower() for t in (p.get("tags") or [])}:
+                gehalten += 1                      # 20.10.2026: Fortura-Pause (siehe fortura_pause) — nur zählen, nichts schreiben
+                continue
             gedraftet += 1
             print(f"  ⛔ DRAFT (nicht kaufbar): {p['title'][:52]}", flush=True)
             if not DRY:
@@ -147,7 +171,8 @@ def main():
     f.close()
     zurueck = rueckholen()
     print(f"{'(DRY) ' if DRY else ''}FERTIG: {gedraftet} gedraftet, "
-          f"{entkoppelt} Varianten entkoppelt, {zurueck} wieder aktiv")
+          f"{entkoppelt} Varianten entkoppelt, {zurueck} wieder aktiv"
+          + (f", {gehalten} Fortura-Produkte gehalten (Pause)" if gehalten else ""))
 
 
 # Tags, die ein ANDERER Waechter gesetzt hat: dann ist «ausverkauft» nicht mehr der einzige

@@ -11507,3 +11507,8 @@ sommerkleid-mit-hohem-bund-601900	2607070703151602600	16	11.00	ok	landeseite
 fahrradhelm-fur-herren-und-damen-226944	1402864549119528960	16	8.54	ok	landeseite
 winter-lauflernschuhe-velours-schneestiefel-522432	1734034910890962944	16	10.55	ok	landeseite
 lange-blumen-kleid-mit-v-hals-608300	2607070701471601200	16	8.79	ok	landeseite
+sicherheitshelm-furs-radfahren-bei-nacht-327232	1400057516070670336	7	16.40	ok	landeseite
+warme-kinderschneestiefel-927232	1733018336444813312	16	9.88	ok	landeseite
+sommer-v-ausschnitt-damenkleid-614400	2607070654501615100	16	8.53	ok	landeseite
+leichter-mountainbike-helm-145280	1399194911802265600	16	9.84	ok	landeseite
+elegantes-chiffon-kleid-631600	2607070620251632200	16	8.79	ok	landeseite
