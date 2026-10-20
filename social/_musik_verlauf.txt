@@ -578,3 +578,4 @@
 2026-10-20T00:32:24.232Z	luxe-epic-fantasy.wav	24.83	allgemein	cjreel-CJDZ171382002BY	stimme:ja	azure:de-CH-JanNeural
 2026-10-20T01:10:43.224Z	luxe-epic-hybrid.wav	41.37	allgemein	cjreel-CJYD202599101AZ	stimme:ja	azure:de-CH-JanNeural
 2026-10-20T07:57:31.771Z	luxe-epic-elegant.wav	48.19	beauty	cjreel-1590160388304416768	stimme:nein	anteil
+2026-10-20T08:04:37.374Z	luxe-orchestra.wav	32.79	beauty	cjreel-1641353777246638080	stimme:ja	azure:de-CH-LeniNeural
