@@ -15,14 +15,13 @@ Bewertungen kommen künftig nur von echten Käufern des Shops. Hinzu kommt: für
 - Die Wache sah es nicht (`JUDGEME: 0 verdaechtig`), weil die Plus-Adresse ein erlaubtes Importer-Muster war. **Neu seit heute:** Zeile `NACH-STOPP: n veroeffentlicht …` in der
   Judge.me-Wache und in der Ampel (⭐), Selbsttest mit Mutationsprobe (`python3 automation/judgeme_fake_wache.py --selbsttest`).
 
-**Zwei Dinge, die nur du kannst (Antwort mit Nummern genügt):**
-1. **Die andere Sitzung stoppen.** Ich darf auf `main` nichts schreiben und nicht in fremde Sitzungen eingreifen. Text zum Einfügen dort:
-   «Der Bewertungs-Import ist vom Betreiber am 20.10. gestoppt (Entscheid A). Nicht mehr `cj_reviews_import.mjs` laufen lassen, keine Judge.me-Schreibzugriffe.
-   Grund: nur 4–5★ (Rosinenauswahl, seit 23.08. verboten) und erfundene Absender `cj-import+…@luxestyle.ch`. Die Datei `dropship/_bewertungen_stopp.txt` gehört auch auf `main`,
-   der Importer muss sie prüfen.»
-2. **Die 901 sichtbaren Nach-Stopp-Bewertungen ausblenden?** (`curated=spam`, umkehrbar, ich liefere die ID-Liste; Löschen geht nur in deinem Judge.me-Admin.)
-   Meine Empfehlung: **ja** — sie widersprechen deiner eigenen Regel «alle Sterne, keine erfundenen Adressen», und ich habe sie bewusst NICHT angefasst.
-   Die älteren Importbewertungen (bis 12.10., 351 Produkte) bleiben in beiden Fällen sichtbar, solange du nichts anderes sagst.
+**ENTSCHIEDEN 20.10. ~07:50 UTC (Betreiber «1 ja 2 ja und weiter») — beides erledigt bzw. vorbereitet:**
+1. ✅ **Die andere Sitzung stoppen — «ja».** GEMESSEN: sie läuft nicht (`ListAgents`: keine weitere Sitzung; seit 18.10. 18:55 UTC kein neuer Import, Gesamtzahl 16'891 stabil), ihre Sitzungs-ID ist im Konto nicht abrufbar. Es gibt also nichts zu unterbrechen; die Wache meldet `SCHREIBT WEITER`,
+   sobald sie wieder schreibt. **Wenn du den Branch `claude/project-thread-shf90k` wieder öffnest, gib ihr diesen Text:** «Der Bewertungs-Import ist vom Betreiber gestoppt (20.10., Entscheid A). Nicht mehr `cj_reviews_import.mjs` laufen lassen, keine Judge.me-Schreibzugriffe.
+   Grund: nur 4–5★ (Rosinenauswahl, seit 23.08. verboten) und erfundene Absender `cj-import+…@luxestyle.ch`. `dropship/_bewertungen_stopp.txt` und die Prüfung gehören auch auf `main`.» (Auf `main` schreibe ich nicht.)
+2. ✅ **Die 901 sichtbaren Nach-Stopp-Bewertungen ausgeblendet — «ja».** `automation/judgeme_nach_stopp_ausblenden.py`: Liste frisch gelesen (1'191 IDs), Trockenlauf (901 passend, 0 übersprungen), dann scharf: **901 ausgeblendet, 0 Fehler, 0 übersprungen**, je ID mit Rücklesen (`curated=spam`, `published=false`);
+   Ledger `dropship/_judgeme_nach_stopp_ausgeblendet.tsv`. **Umkehrbar:** `python3 automation/judgeme_nach_stopp_ausblenden.py --zurueck`. Endgültig löschen geht nur in deinem Judge.me-Admin (Papierkorb) — optional, nicht nötig.
+   Die älteren Importbewertungen (bis 12.10., 351 Produkte) bleiben sichtbar. Judge.me aktualisiert die Zahlen im Shop zeitverzögert.
 
 ## 🆕 14.10. 13:30 UTC — Umgebungsvariable SHOPIFY_CLIENT_SECRET korrigieren (1 Min., Einfügefehler)
 **Gemessen:** In den Claude-Umgebungseinstellungen hat `SHOPIFY_CLIENT_SECRET` **60 Zeichen**, gültig sind **38** (Format `shpss_` + 32).

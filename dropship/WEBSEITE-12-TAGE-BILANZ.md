@@ -105,7 +105,7 @@ Jeder Tag: messen → ändern → nachmessen → hier abhaken. Was liegen bleibt
   (Notiz 11.10.). Die Marge ist knapp (Notiz 11.10.: ca. CHF 2). A5 steht seit 11.10. auf 35.90.
 - **Bügeltransfer A5** streichen oder dauerhaft bepreisen (Entscheid offen seit 11.10.).
 - **Versandbanner «ab CHF 50»** gegen die Kasse-Schwelle 45: Entscheid des Betreibers (Notiz 11.10.).
-- **Bewertungs-Import:** A entschieden (20.10.) — Stopp bleibt. **Offen:** eine zweite Sitzung auf `main` hat 16.–18.10. trotzdem 1'191 Bewertungen importiert (901 sichtbar, nur 4–5★, erfundene Absender) — andere Sitzung stoppen und über das Ausblenden entscheiden: `COWORK-BEFEHL.md` (20.10. 07:00).
+- **Bewertungs-Import:** A entschieden (20.10.) — Stopp bleibt. Eine zweite Sitzung auf `main` hatte 16.–18.10. trotzdem 1'191 Bewertungen importiert (nur 4–5★, erfundene Absender); **erledigt 20.10. (Betreiber «1 ja 2 ja»): die 901 sichtbaren sind ausgeblendet** (umkehrbar), die Sitzung läuft nicht — `COWORK-BEFEHL.md` (20.10. 07:00).
 - **Google Ads**, Produktgruppe «Alles andere»: 24 Sitzungen auf fremden Produkten, 0 Warenkorb (seit 11.10. offen).
 
 ## 8. Befehle
