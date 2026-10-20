@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-20T11:11Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-20T12:12Z
 
-Aktive gescannt: 8 · ohne Kategorie: 8 · heute gesetzt: 6 (SCHARF, CAP 1500) · danach offen: 2 · Fehler: 0
+Aktive gescannt: 14 · ohne Kategorie: 14 · heute gesetzt: 12 (SCHARF, CAP 1500) · danach offen: 2 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -11,9 +11,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- sofa-kissenbezug-70x70-cm-grau-631500 · Wohnen & Deko → Home & Garden > Decor
-- sitzauflage-mit-rutschschutz-aus-polyester-624000 · Wohnen & Deko → Home & Garden > Decor
-- kissenbezug-baumwolle-100-muster-601500 · Wohnen & Deko → Home & Garden > Decor
-- sofaabdeckung-aus-baumwolle-rutschfest-alljahr-638900 · Wohnen & Deko → Home & Garden > Decor
-- sofaabdeckung-mit-kariertem-muster-623900 · Wohnen & Deko → Home & Garden > Decor
+- kurzarmliges-polo-shirt-mit-blumenmuster-602900 · Herrenmode → Apparel & Accessories > Clothing
+- kissenbezug-aus-baumwolle-mit-rutschfester-ruc-635800 · Wohnen & Deko → Home & Garden > Decor
+- wasserfeste-schweissresistente-foundation-600700 · Make-up → Health & Beauty > Personal Care > Cosmetics > Makeup
+- cordyloy-sofa-kissenbezug-70x70-cm-622800 · Wohnen & Deko → Home & Garden > Decor
+- loose-fit-baumwoll-leinen-basis-top-632600 · Herrenmode → Apparel & Accessories > Clothing
 
