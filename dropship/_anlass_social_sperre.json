@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-19T05:44Z",
+ "stand": "2026-10-20T02:09Z",
  "scharf": true,
  "anlaesse": {
   "halloween": {
@@ -11,21 +11,21 @@
     "Facebook & Instagram": "gid://shopify/Publication/302566834561",
     "Pinterest": "gid://shopify/Publication/302994456961"
    },
-   "auswahl": 55,
+   "auswahl": 56,
    "nach_grund": {
-    "Kostüm": 25,
+    "Kostüm": 26,
     "Verkleidungsteil": 2,
     "Partydeko": 28
    },
-   "grenzfaelle": 78,
-   "abmelden_paare": 0,
+   "grenzfaelle": 79,
+   "abmelden_paare": 3,
    "pro_kanal": {
-    "TikTok": 0,
-    "Facebook & Instagram": 0,
-    "Pinterest": 0
+    "TikTok": 1,
+    "Facebook & Instagram": 1,
+    "Pinterest": 1
    },
-   "tag_fehlt": 0,
-   "tag_zuviel": 1,
+   "tag_fehlt": 1,
+   "tag_zuviel": 0,
    "queue_zeilen": 6,
    "queue_ready": 0,
    "liste": [
@@ -188,6 +188,18 @@
      "typ": "Partydeko & Ballone",
      "grund": "Partydeko",
      "kanaele": []
+    },
+    {
+     "id": "gid://shopify/Product/16652456165767",
+     "handle": "halloween-kostum-t-rex-623200",
+     "titel": "Halloween-Kostüm T-Rex",
+     "typ": "Damenmode",
+     "grund": "Kostüm",
+     "kanaele": [
+      "TikTok",
+      "Facebook & Instagram",
+      "Pinterest"
+     ]
     },
     {
      "id": "gid://shopify/Product/15452605448577",
@@ -640,6 +652,12 @@
      "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
     },
     {
+     "handle": "halloween-3d-digitaldruck-langarmshirt-608000",
+     "titel": "Halloween 3D Digitaldruck Langarmshirt",
+     "typ": "Herrenmode",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
      "handle": "halloween-5d-diamond-painting-klein-031808",
      "titel": "Halloween 5D Diamond Painting (klein)",
      "typ": "Basteln & DIY",
@@ -978,13 +996,13 @@
      "schluessel": "h:halloween-gartenstecker-mit-kunstblumen-626100"
     }
    ],
-   "zurueck_angemeldet": 3,
-   "tag_entfernt": 1,
-   "tag_gesetzt": 0,
-   "abgemeldet": 0,
+   "zurueck_angemeldet": 0,
+   "tag_entfernt": 0,
+   "tag_gesetzt": 1,
+   "abgemeldet": 3,
    "queue_gesperrt": 0,
    "offen": 0,
-   "gesperrt": 55
+   "gesperrt": 56
   }
  }
 }

@@ -1,5 +1,5 @@
 {
- "stufe": 1,
+ "stufe": 2,
  "seit": "2026-10-13",
  "stufe1_anzahl": 10,
  "stufe2_ab": "2026-10-17",
@@ -8,5 +8,6 @@
  "google_basis": [
   "Missing shipping info in some countries in [Free_listings,Shopping_ads] [LI]."
  ],
- "google_basis_grund": "13.10.2026 21:45 UTC gemessen an 5 der 10 Stufe-1-Shirts UND an 37 von 60 Printful-Produkten im General profile (shopweit 28'541, GOOGLE-FEEDBACK.md) — bestand vor dem Profil, hält Stufe 2 nicht auf."
+ "google_basis_grund": "13.10.2026 21:45 UTC gemessen an 5 der 10 Stufe-1-Shirts UND an 37 von 60 Printful-Produkten im General profile (shopweit 28'541, GOOGLE-FEEDBACK.md) — bestand vor dem Profil, hält Stufe 2 nicht auf.",
+ "stufe2_gesetzt": "2026-10-20T02:14Z"
 }

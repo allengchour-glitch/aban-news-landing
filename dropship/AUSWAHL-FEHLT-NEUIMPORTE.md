@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 01:16 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 02:16 UTC)
 
-Suche: `status:active AND created_at:>=2026-10-17` · gemessen 221 · **107 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 94, teilweise: 9, keine: 4; Preisspanne > 2×: 19) · 1 CJ-Variante: 114 · ohne Antwort: 0
+Suche: `status:active AND created_at:>=2026-10-17` · gemessen 227 · **112 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 99, teilweise: 9, keine: 4; Preisspanne > 2×: 19) · 1 CJ-Variante: 115 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -83,6 +83,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Silberring mit Hochkarbon-Strasssteinen (`silberring-mit-hochkarbon-strasssteinen-610700`) | 5 | 5 | 36.65–36.65 | 47.90 | R493 Diamond Dust-No 5, R493 Diamond Dust-No 6, R493 Diamond Dust-No 7, R493 Diamond Dust-No 8 |
 | Smart-Armbanduhr mit Herzfrequenz-Messung (`smart-armbanduhr-mit-herzfrequenz-messung-608800`) | 5 | 5 | 24.31–26.04 | 36.90 | Black Milan, Black Glue, Golden Milan, Pink Capsule |
 | Kühltragetasche für Picknick und Reisen (`kuhltragetasche-fur-picknick-und-reisen-628200`) | 5 | 5 | 4.39–5.35 | 18.90 | Green, Grey, Black, Red |
+| Plaid Streifen Gürtelaufkleber (`plaid-streifen-gurtelaufkleber-964992`) | 5 | 5 | 2.79–2.79 | 16.90 | White, Blue, Yellow, Black |
 | USB-Lade-Rucksack wasserdicht 15" (`usb-lade-rucksack-wasserdicht-15-874496`) | 4 | 3 | 14.93–33.0 | 59.90 | Black Type A 15inch, Black Type A 17 Inch, 15inch USB C port, 17inch USB C port |
 | Umhängetasche aus Nylon, blau (`crossbody-messenger-bag-aus-nylon-blau-610400`) | 4 | 4 | 7.63–7.63 | 20.90 | Blue With Gray With Pendant-31x20x12cm, Blue With Red Belt Pendant-31x20x12cm, Pure Black Belt Pendant-31x20x12cm, Pure Blue Ribbon Pendant-31x20x12cm |
 | Splice Farbkontrast Rucksack 36-55 L (`splice-farbkontrast-rucksack-36-55-l-047040`) | 4 | 4 | 4.52–5.08 | 17.90 | Black-With pendant, Black-Without pendant, Blue-With pendant, Blue-Without pendant |
@@ -100,6 +101,8 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | 30-Stückes Makeup-Pinselset mit Silikonborsten · 30 Stück (`30-stuckes-makeup-pinselset-mit-silikonborsten-624500`) | 3 | 3 | 10.54–10.54 | 23.90 | Black Silver Tube, Pink Silver Tube, Silver |
 | Elektronische Hängewaage – 500 kg, 200 g Genauigkeit (`elektronische-hangewaage-500-kg-200-g-genauigk-612200`) | 3 | 0 | 19.57–19.57 | 44.90 | Orange, Blue, White |
 | Genuine Leder Clutch Wallet Retro Gelb (`genuine-leder-clutch-wallet-retro-gelb-606900`) | 3 | 3 | 11.22–11.28 | 21.90 | Retro Yellow, Retro Brown, Coffee oil skin |
+| Feuchtigkeitsspendender Air Cushion Blush (`feuchtigkeitsspendender-air-cushion-blush-620100`) | 3 | 3 | 2.39–2.39 | 16.90 | Orange, Orange pink, Pink |
+| Doppelspitze Eyeliner-Korrekturstift (`doppelspitze-eyeliner-korrekturstift-608800`) | 3 | 3 | 2.39–2.39 | 16.90 | Dark Brown, Brown, Black |
 | Frosted Fahrrad-Rennrucksack (`frosted-fahrrad-rennrucksack-073600`) | 2 | 2 | 6.56–6.56 | 17.90 | Frosted Style, Carbon pattern |
 | Grosses Casual-Rucksack mit PU-Leder und Buchstaben-Print (`grosses-casual-rucksack-mit-pu-leder-und-buchs-609664`) | 2 | 2 | 7.63–7.63 | 33.90 | Patterned Black, Large Plaid Flower |
 | Männer-Wasserdichte Multifunktionstasche (`manner-wasserdichte-multifunktionstasche-540224`) | 2 | 2 | 9.12–10.78 | 29.90 | Cool black-10inches, Volcanic black-10inches |
@@ -113,3 +116,5 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Zwei-Farb-Chronograph-Uhr mit Lederarmband (`zwei-farb-chronograph-uhr-mit-lederarmband-608800`) | 2 | 2 | 7.64–7.64 | 16.90 | Rose Gold Shell Blue Surface, Silver Case Beige Noodles |
 | Quadratische Durchsicht-Uhr mit Openwork-Design (`quadratische-durchsicht-uhr-mit-openwork-desig-629000`) | 2 | 2 | 10.59–10.59 | 19.90 | Black With Silver Surface, Black With Gold Noodles |
 | Grossäugige Cartoon-Aufbewahrungsbox 24 cm (`grossaugige-cartoon-aufbewahrungsbox-24-cm-600700`) | 2 | 2 | 6.77–8.51 | 25.90 | 24cm Storage Box, 30cm Storage Box |
+| Durchsichtiger Lippen- und Wangen-Tint (`durchsichtiger-lippen-und-wangen-tint-601500`) | 2 | 2 | 2.02–2.02 | 16.90 | 6.8ml-Cherry Cola Color, 6.8ml-Pink |
+| Auto-Garnitur-Mittelstreifen-Aufkleber 100×38 cm (`auto-garnitur-mittelstreifen-aufkleber-100-38-262208`) | 2 | 2 | 4.4–4.4 | 16.90 | Black red, White yellow |
