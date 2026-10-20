@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 20:53 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 22:28 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 273 · **124 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 89, teilweise: 25, keine: 10; Preisspanne > 2×: 22) · 1 CJ-Variante: 149 · ohne Antwort: 0
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 265 · **116 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 82, teilweise: 25, keine: 9; Preisspanne > 2×: 22) · 1 CJ-Variante: 149 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -50,7 +50,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Armband für Apple Watch mit Dornschliesse (`armband-fur-apple-watch-mit-dornschliesse-204416`) | 10 | 10 | 5.59–5.59 | 25.90 | Black-42.44.45mm, Black-38.40.41mm, Brown-42.44.45mm, Brown-38.40.41mm |
 | Halskette «Rosée» · Kristall-Tropfen, Silber (`halskette-rosee-kristall-tropfen-silber`) | 10 | 3 | 3.27–3.27 | 29.90 | Rose Gold K5 Blue Opal, Rose Gold K17B White Opal, Platinum OP38 Purple Opal, Platinum K17B White Opal |
 | Verstellbarer Katzenschüssel 15° (`verstellbarer-katzenschussel-15-f0b6ca`) | 10 | 10 | 2.26–17.02 | 34.90 | 2PC A, 3PC A, B, C |
-| Saber Business-Rucksack für Laptop (`saber-business-rucksack-fur-laptop-610000`) | 10 | 10 | 16.25–22.22 | 44.90 | Black-15 inches, Black-17 inches, Black-20 inches, Camouflage Gray-15 inches |
 | 65 W GaN Schnellladegerät – USB-C (`65-w-gan-schnellladegerat-usb-c-618500`) | 9 | 9 | 3.42–3.77 | 22.90 | Black-Bare head-US, Black-Bare head-EU, Black-Bare head-UK, Black-Bagged-US |
 | Milchweisses Nagelverlängerungsgel zum Modellieren (`milchweisses-nagelverlangerungsgel-zum-modelli-085888`) | 9 | 9 | 3.65–3.65 | 21.90 | Milky white, Rose pink, Pink 016Thick, Salmon pink |
 | USB-Mixer für unterwegs (`usb-mixer-fur-unterwegs-208768`) | 9 | 9 | 4.7–6.3 | 24.90 | White-12 Dual Battery 1500 MA, White-12 Knives 1500 MA, White-8 Knife Single 1300 MA, Green-12 Dual Battery 1500 MA |
@@ -64,13 +63,11 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Kabelloses Lavalier Mikrofon mit Ladecase (`kabelloses-lavalier-mikrofon-mit-ladecase-579648`) | 8 | 8 | 8.18–16.86 | 17.90 | J10-Type c, J10-Iphone, J11-Type c, J11-Iphone |
 | Gürtel Herrenuhr – Schlicht & Business-tauglich (`gurtel-herrenuhr-schlicht-business-tauglich-772160`) | 8 | 8 | 9.86–10.75 | 23.90 | Rose shell black noodles, All black rose needles, Silver shell black surface, All black and silver |
 | Sport-Smartwatch mit Temperatur- und Pulsmessung (`sport-smartwatch-mit-temperatur-und-pulsmessun-353536`) | 8 | 8 | 58.74–58.74 | 83.90 | Vinyl, Silver Case Vinyl, Retro Brown Black, Retro Brown Silver |
-| Geometrische Strickdecke für Sofa oder Bett (`geometrische-strickdecke-fur-sofa-oder-bett-636400`) | 8 | 8 | 4.83–6.6 | 24.90 | Beige-130x180 cm, Beige-130x240 cm, Pink-130x180 cm, Pink-130x240 cm |
 | Sternenlicht-Projektor für Schlafzimmer (`sternenlicht-projektor-fur-schlafzimmer-732544`) | 7 | 7 | 14.23–30.65 | 34.90 | A-USB, B-USB, C-USB, D-USB |
 | DIY Stickset mit 50 Garnfarben (`diy-stickset-mit-50-garnfarben-cb3e23`) | 7 | 0 | 2.57–7.17 | 21.90 | 136pcs, 10pcs, 12pcs, Set AC177 |
 | Titanstahlring mit Roboter-Alien-Design (`titanstahlring-mit-roboter-alien-design-633100`) | 7 | 7 | 2.25–2.25 | 21.90 | Steel Color-No 7, Steel Color-No 8, Steel Color-No 9, Steel Color-No 10 |
 | Mechanische Herrenuhr – Business & Freizeit (`mechanische-herrenuhr-business-freizeit-625400`) | 7 | 7 | 12.6–12.6 | 27.90 | Rose Gold Shell Black Surface, Rose Shell White Surface Black, Gold Shell Black Brown Belt, Gold Shell White Surface |
 | Sitzpouf-Hülle in Lederoptik zum Selbstbefüllen, ca. 53 × 35 cm (`leinwand-gestelltes-leder-sessel-mit-stauraum-621400`) | 7 | 7 | 4.78–6.08 | 24.90 | Bohemian Style-53X35CM, Flower Style Deep Coffee-53X35CM, Flower Style Black-53X35CM, Embroidery Style Deep Coffee-53X35CM |
-| Weihnachts- und Halloween-Glasbecher (`weihnachts-und-halloween-glasbecher-621600`) | 7 | 7 | 2.39–2.39 | 21.90 | 1 Style, 2 Style, 3 Style, 4 Style |
 | Wandlampe im nordischen Minimal-Stil für Innen und Aussen (`nordische-minimallampen-design-fur-innen-und-a-636800`) | 6 | 6 | 14.62–20.79 | 35.90 | Warm White-61cm-Black, Warm White-81cm-Black, Neutral light-61cm-Black, Neutral light-81cm-Black |
 | Lenkradbezug Plüsch Pfotenabdruck 38cm (`lenkradbezug-plusch-pfotenabdruck-38cm-ebf475`) | 6 | 6 | 3.04–3.32 | 15.90 | Prestige Grey, Black, Purple, Black orange |
 | Webteppich mit Leoparden-Motiv (`sofabett-mit-modernem-muster-617500`) | 6 | 6 | 5.51–9.12 | 28.90 | Earrings Girl-130x160cm, Female Newspaper Reader-130x160cm, Pink Panther-130x160cm, Shell-130x160cm |
@@ -98,9 +95,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Silikon-Eiswürfelform für 36 Würfel (`silikon-eiswurfelform-fur-36-wurfel-bf7780`) | 4 | 4 | 4.03–24.78 | 23.90 | Blue-2pc, Blue-6pc, Blue-1pc, Blue-4pc |
 | Retro Magnetarmband aus rotem Bronze (`retro-magnetarmband-aus-rotem-bronze-628600`) | 4 | 4 | 2.76–7.72 | 21.90 | Red Bronze, Red Bronze set, Bronze Oval Turquoise, 43SSJCRed |
 | Weihnachtsfigur aus Kunstharz (`weihnachtsfigur-resin-deko-606100`) | 4 | 4 | 2.74–2.74 | 21.90 | Old Man-Single Paper Box, Snowman-Single Paper Box, Bear-Single Paper Box, Faceless Old Man-Single Paper Box |
-| Umhänge-Rucksack aus Oxford-Stoff für den Alltag (`oxford-kleidungs-tasche-fur-alltag-624400`) | 4 | 4 | 12.43–12.43 | 32.90 | Gray, Black, Beige, Peacock Blue |
 | Multifunktionaler Steckdosen-Tester mit Display (`multifunktionaler-steckdosen-tester-mit-displa-436416`) | 4 | 4 | 5.51–5.94 | 25.90 | EU-HT107, EU-HT107B, EU-HT107E, EU-HT107D |
-| Maniküre-Set Schwarz-Weiss (`manikure-set-schwarz-weiss-604500`) | 4 | 4 | 12.19–12.19 | 32.90 | XS-Black And White, S-Black And White, M-Black And White, L-Black And White |
 | Schräge Keramik Futterschale für Haustiere (`schrage-keramik-futterschale-fur-haustiere-d48574`) | 4 | 4 | 7.38–14.77 | 34.90 | White 2pcs, Blue, White, Pink |
 | Handmixer mit 5 Geschwindigkeiten (`handmixer-mit-5-geschwindigkeiten-694c50`) | 3 | 3 | 5.8–6.62 | 25.90 | B, A, C |
 | Vulkan Aroma Diffuser mit Flammen- & Quallen-Effekt (`vulkan-aroma-diffuser-mit-flammen-quallen-effe-771200`) | 3 | 3 | 16.32–32.64 | 33.90 | Blue flame bead-With Essential Oil-US, Yellow flame bead-With Essential Oil-US, Blue yellow-With Essential Oil-US |
@@ -119,7 +114,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | WLAN Handy Beamer (`wlan-handy-beamer-35edfc`) | 3 | 3 | 41.55–70.56 | 65.90 | Android, Basic, Cell phone |
 | DIY Fotorahmen Bausteine (`diy-fotorahmen-bausteine-383936`) | 3 | 3 | 5.0–9.54 | 24.90 | White-32x32cm, Love peach-32x32cm, Black-32x32cm |
 | Studenten-Becher mit Sprühfunktion, 580 ml (`studenten-becher-mit-spruhfunktion-580-ml-614200`) | 3 | 3 | 19.57–19.57 | 43.90 | Jelly Galaxy-580ML, Cloud Diary-580ML, Sweet Dream Switch-580ML |
-| Silikon-Bürste für Shampoo und Massage (`silikon-burste-fur-shampoo-und-massage-094912`) | 3 | 3 | 1.14–1.14 | 14.90 | Light pink, Light green, Light blue |
 | Automatischer Lockenstab mit Drehfunktion (`automatischer-lockenstab-mit-drehfunktion-5eb36d`) | 3 | 3 | 32.03–32.03 | 50.90 | White, Pink, Black |
 | Aufblasbares Halloween-Kostüm für zwei Personen (`inflierbares-halloween-kostum-fur-zwei-persone-638900`) | 2 | 2 | 20.66–20.66 | 42.90 | Double Spring Dog-Free Size, Double Sausage Dog-Free Size |
 | Elektrischer Gemüseschneider Multifunktional – Schneiden, Reiben & Hobeln (`elektrischer-gemuseschneider-multifunktional-schneiden-reiben-hobeln`) | 2 | 0 | 11.87–12.44 | 74.90 | White with adapter-220V US, Green-USB |
@@ -128,5 +122,3 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Kreativer Weindekanter – Pinguin oder Bohnensprosse (`kreativer-weindekanter-pinguin-oder-bohnenspro-613700`) | 2 | 2 | 14.93–18.24 | 41.90 | Penguin Wine Decanter, Bean Sprouts Wine Decanter |
 | RGB Computer-Mikrofon für Live-Calls und Gaming (`rgb-computer-mikrofon-fur-live-calls-und-gamin-322368`) | 2 | 2 | 5.79–7.58 | 14.90 | Black-Blu ray, Black-Colorful |
 | Schwingendes Geisterlicht für Halloween (`schwingender-geisterlicht-fur-halloween-629800`) | 2 | 2 | 3.32–4.21 | 22.90 | Swing Ghost Night Light-US , Swing Ghost Night Light-USB |
-| Laptop-Rucksack aus PU-Leder (`grosse-pu-computer-tasche-fur-unterwegs-119488`) | 2 | 2 | 9.92–9.92 | 40.90 | Black-20inches, Brown-20inches |
-| Herrenuhr mit Zeiger- und Zahlenanzeige (`herrenuhr-mit-zeiger-und-zahlenanzeige-424635`) | 2 | 0 | 14.81–14.81 | 23.90 | Black, White |

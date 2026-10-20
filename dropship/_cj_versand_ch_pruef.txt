@@ -11939,3 +11939,10 @@ wurfkissenhulle-chenille-634400	2603090658561634800	16	7.03	ok	landeseite
 universell-winter-heizhelm-546560	1356523818218295296	16	17.82	ok	landeseite
 mountainbike-helm-fur-outdoor-fahrten-e0d1d3	1BA313FE-92B3-4669-B202-AD38096726D5	6	18.25	ok	landeseite
 sternenlicht-projektor-mit-bluetooth-618300	2507270703071618700	7	9.86	ok	landeseite
+integrierter-fahrradhelm-fur-mountain-road-bik-1ac787	2DC1CA26-0A7A-4F8D-A669-8F91CFFBCF9E	7	11.77	ok	landeseite
+bergsteigerschutzhelm-0ed60b	0AB2E4D8-2B1A-499D-B587-281B8E1DCAB0	16	10.90	ok	landeseite
+mountainbike-und-skateboardhelm-344e7d	6E2E866A-F973-4785-897C-8F1F0CA16D8D	16	12.34	ok	landeseite
+grosses-kissen-mit-blumenstickerei-616300	2603030707241616900	16	7.25	ok	landeseite
+warme-damenhose-mit-stretch-620000	2512111323111620200	16	8.79	ok	landeseite
+leichter-bergfahrradhelm-fur-erwachsene-a7039a	05141BAC-75CA-4710-928D-1F19D8FC7979	16	10.22	ok	landeseite
+dick-gefutterte-yoga-leggings-608400	2512111127131608600	7	9.69	ok	landeseite
