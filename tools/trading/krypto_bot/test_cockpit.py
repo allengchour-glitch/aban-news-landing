@@ -348,6 +348,21 @@ with tempfile.TemporaryDirectory() as tmp:
                 else:
                     __import__("os").environ[k_] = v_
         pruefe("_anmelde_benutzer: USERDOMAIN\\USERNAME, ohne eines von beiden None", benutzer_env17 == "TESTPC\\Anna" and benutzer_ohne17 is None, (benutzer_env17, benutzer_ohne17))
+        # (18. Prüfung, Mutationsprobe R17-M39) der Knopf ruft `aufgabe_xml_nk()` OHNE Argument: der Benutzer kommt aus der Umgebung
+        try:
+            __import__("os").environ["USERDOMAIN"], __import__("os").environ["USERNAME"] = "TESTPC", "Anna"
+            xml_env18 = C.aufgabe_xml_nk()
+            __import__("os").environ.pop("USERDOMAIN")
+            xml_ohne_env18 = C.aufgabe_xml_nk()
+        finally:
+            for k_, v_ in os_umgebung17.items():
+                if v_ is None:
+                    __import__("os").environ.pop(k_, None)
+                else:
+                    __import__("os").environ[k_] = v_
+        pruefe("aufgabe_xml_nk() ohne Argument (so legt der Knopf die Aufgabe an) liest den Benutzer aus der Umgebung: Anmelde-Auslöser mit TESTPC\\Anna; fehlt einer von beiden, gibt es keinen Anmelde-Auslöser und das XML bleibt gültig",
+               "<LogonTrigger><Enabled>true</Enabled><UserId>TESTPC\\Anna</UserId></LogonTrigger>" in xml_env18 and "<LogonTrigger>" not in xml_ohne_env18
+               and __import__("xml.dom.minidom").dom.minidom.parseString(xml_ohne_env18.split("?>", 1)[1].strip()) is not None, (xml_env18[:300], xml_ohne_env18[:300]))
         befehle.clear()
         e = C.aktion("aufgabe", befehl=fake_befehl)
         namen = [c[c.index("/tn") + 1] for c in befehle if "/tn" in c]

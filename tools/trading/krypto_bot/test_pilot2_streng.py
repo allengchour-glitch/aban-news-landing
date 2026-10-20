@@ -6470,6 +6470,14 @@ finally:
 pruefe("18.K4 Not-Aus eines Zombies (Sperre übernommen): kein Absturz, NICHT «alles zu», laute Meldung mit dem Hinweis auf den Lauf, der schliesst",
        rz_["alles_zu"] is False and rz_["warnung"] and any("übernommen hat, schliesst" in z_ for z_ in rz_["zeilen"]), rz_["zeilen"][-2:])
 
+# Zombie-Scan (reduziert): ein eingefrorener Lauf wacht nach der Übernahme seiner Sperre auf — Aufträge UND Buch sind vetoed, die Nachkontrolle heilt; der volle Scan: `python3 -B pruef_zombie.py tag|notaus|nk|aufwachen 0 12`
+import pruef_zombie as ZB18  # noqa: E402
+_echt_pruefen18 = SPR17.pruefen
+for modus18_, j18_ in (("tag", 8), ("notaus", 6)):
+    z18_, f18_ = ZB18.scan(modus18_, 0, 1, j_max=j18_, ruhig=True)
+    pruefe(f"18.Zombie Zombie-Scan (reduziert, {modus18_}, Szenario 0, Prüfstellen 1–{j18_ - 1}): läuft durch, 0 Befunde (nichts bleibt ohne Stop), kein Absturz", z18_["faelle"] >= 4 and not f18_ and not z18_["AUSNAHME"], (dict(z18_), f18_[:1]))
+pruefe("18.Zombie der Scan stellt das echte `sperre.pruefen()` wieder her", SPR17.pruefen is _echt_pruefen18 and ZB18._echte_pruefung is _echt_pruefen18)
+
 # ── kleiner Fuzzer mit festen Seeds (der grosse: python3 -B pruef_fuzzer.py laeufe 0 200 / notaus 0 1600) ──
 funde = []
 for seed in list(range(60)) + [465, 5673, 5085, 5087]:  # 465: Stop löst im Schutz aus (9.); 5673/5085/5087: Rest-/alter Stop (10.)
