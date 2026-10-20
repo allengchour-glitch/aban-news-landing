@@ -1072,12 +1072,12 @@
    "handles": [
     "einhornskelett-18-cm-fga910992"
    ],
-   "letzter_versuch": "2026-10-19T00:28:05Z",
+   "letzter_versuch": "2026-10-20T14:42:48Z",
    "mc_ids": [],
-   "reserviert_um": "2026-10-19T00:28:05Z",
-   "status": "offen",
+   "reserviert_um": "2026-10-20T14:42:48Z",
+   "status": "reserviert",
    "termin_utc": "2026-10-20T17:10:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "story-20261021T1045": {
    "basis_utc": "2026-10-21T10:45:00Z",
@@ -1451,18 +1451,21 @@
   "tiktok-20261023T1805": {
    "basis_utc": "2026-10-23T18:05:00Z",
    "format": "tiktok",
-   "grund": "zurückgezogen: Produkt hemd-western-braun-fgssbo5433 nicht kaufbar/nicht veröffentlicht",
-   "handle": "hemd-western-braun-fgssbo5433",
+   "grund": "",
+   "handle": "vulkan-flammen-aroma-diffusor-luftbefeuchter-860288",
    "handles": [
-    "hemd-western-braun-fgssbo5433",
-    "pid:15469958037889"
+    "pid:15450828603777",
+    "vulkan-flammen-aroma-diffusor-luftbefeuchter",
+    "vulkan-flammen-aroma-diffusor-luftbefeuchter-860288"
    ],
-   "letzter_versuch": "2026-10-19T21:40:49Z",
-   "mc_ids": [],
-   "reserviert_um": "2026-10-19T21:40:49Z",
-   "status": "offen",
+   "letzter_versuch": "2026-10-20T14:42:16Z",
+   "mc_ids": [
+    401177179
+   ],
+   "reserviert_um": "2026-10-20T14:42:16Z",
+   "status": "geplant",
    "termin_utc": "2026-10-23T18:05:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "tiktok-20261024T0605": {
    "basis_utc": "2026-10-24T06:05:00Z",
@@ -1793,6 +1796,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-20T14:26:31Z",
+ "stand": "2026-10-20T14:42:48Z",
  "version": 1
 }

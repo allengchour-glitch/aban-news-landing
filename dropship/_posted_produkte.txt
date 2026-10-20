@@ -513,3 +513,8 @@ pid:15450831716737
 slug:halterung-fur-ruckspiegel-handy
 slug:plusch-berner-sennenhund-fga85740
 name:plüschbernersennenhund25cm
+slug:cjreel-cjjt163563001az
+pid:15450828603777
+slug:vulkan-flammen-aroma-diffusor-luftbefeuchter
+slug:plusch-specht-am-stamm-27-cm-fga17841
+name:plüschspechtamstamm27cm
