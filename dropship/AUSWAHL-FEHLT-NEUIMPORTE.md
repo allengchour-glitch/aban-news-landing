@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 02:16 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 03:23 UTC)
 
-Suche: `status:active AND created_at:>=2026-10-17` · gemessen 227 · **112 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 99, teilweise: 9, keine: 4; Preisspanne > 2×: 19) · 1 CJ-Variante: 115 · ohne Antwort: 0
+Suche: `status:active AND created_at:>=2026-10-17` · gemessen 241 · **123 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 109, teilweise: 10, keine: 4; Preisspanne > 2×: 19) · 1 CJ-Variante: 118 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -47,6 +47,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Oxford-Leinen Camouflage Schultertasche (`oxford-leinen-camouflage-schultertasche-602000`) | 8 | 8 | 3.1–3.1 | 16.90 | Khaki, Black, Army Green, CP Color |
 | Klassischer Rucksack für Schule und Alltag (`klassischer-rucksack-fur-schule-und-alltag-217728`) | 8 | 8 | 5.0–5.27 | 16.90 | Green-Single Bag, Green-Bag And Pendant, Khaki-Single Bag, Khaki-Bag And Pendant |
 | Kinder Rucksack Prinzessin-Style (`kinder-rucksack-prinzessin-style-616000`) | 8 | 8 | 8.62–8.79 | 29.90 | Cherry Blossom Powder-Large Size, Cherry Blossom Powder-Small Size, Purple-Large Size, Purple-Small Size |
+| Feuchtigkeitslipgloss, langanhaltend, verwischfrei (`feuchtigkeitslipgloss-langanhaltend-verwischfr-635800`) | 8 | 7 | 2.17–2.17 | 16.90 | Starry Peach, Jue Brewing Plum Powder, Laid back Misty Pink, Electric Berry |
 | Taktische Umhängetasche für Outdoor-Sport (`taktische-umhangetasche-fur-outdoor-sport-624800`) | 7 | 7 | 5.03–5.03 | 18.90 | Black-Below 20L, Brown-Below 20L, Italian Camouflage-Below 20L, Dark Night-Below 20L |
 | Umhängetasche mit Rautenmuster (`umhangetasche-mit-rautenmuster-623000`) | 7 | 7 | 7.99–7.99 | 21.90 | Color, Silver, Black Gold Diamand, Green |
 | Kristall-Hanf Kopftuch – Monochromes Design (`kristall-hanf-kopftuch-monochromes-design-606000`) | 7 | 7 | 3.1–3.1 | 16.90 | 2 White-Average Size, 3 Navy Blue-Average Size, 4 Pink Color-Average Size, 5 Light Khaki-Average Size |
@@ -57,6 +58,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Herbst- und Winterpullover für Hunde (`herbst-und-winterpullover-fur-hunde-604000`) | 7 | 7 | 2.55–8.29 | 18.90 | Twisted Vintage Diamond-XS, Twisted Vintage Diamond-S, Twisted Vintage Diamond-M, Twisted Vintage Diamond-L |
 | Männer-Uhr mit quadratischem Zifferblatt, 28×35 mm (`manner-uhr-mit-quadratischem-zifferblatt-28-35-632800`) | 7 | 7 | 13.02–13.02 | 21.90 | Green-28x35mm, Green Belt Gray Plate-28x35mm, Little Girl With Green Belt-28x35mm, Gradient Green Belt-28x35mm |
 | Schlüsseletui mit Herz-Anhänger (`schlusseletui-mit-herz-anhanger-629200`) | 7 | 7 | 4.7–4.7 | 16.90 | Black, tan, Pink, Silver |
+| Lippenstift mit Farbwechsel – Aloe-Gel (`lippenstift-mit-farbwechsel-aloe-gel-628400`) | 7 | 7 | 2.67–2.67 | 16.90 | 01 Dancing Purplish Red, 02 Natural Bare Red, 03 First Kiss Orange Red, 04 Date Pink |
 | Wasserdichte Herren-Crossbody-Tasche aus Oxford-Stoff (`wasserdichte-herren-crossbody-tasche-aus-oxfor-625500`) | 6 | 6 | 3.86–4.86 | 17.90 | Black-Plastic buckle, Black-Magnetic buckle, Blue-Plastic buckle, Blue-Magnetic buckle |
 | Beetle Travel Outdoor Rucksack 36-55 L (`beetle-travel-outdoor-rucksack-36-55-l-384448`) | 6 | 6 | 9.0–12.05 | 40.90 | Red-Backpack, Red-Backpack 3piece, Blue-Backpack, Blue-Backpack 3piece |
 | Rucksack 20 L – Gelb, Orange, Schwarz (`rucksack-20-l-gelb-orange-schwarz-830976`) | 6 | 6 | 24.93–27.9 | 39.90 | Yellow-20L, Yellow-30L, Orange-20L, Orange-30L |
@@ -84,6 +86,8 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Smart-Armbanduhr mit Herzfrequenz-Messung (`smart-armbanduhr-mit-herzfrequenz-messung-608800`) | 5 | 5 | 24.31–26.04 | 36.90 | Black Milan, Black Glue, Golden Milan, Pink Capsule |
 | Kühltragetasche für Picknick und Reisen (`kuhltragetasche-fur-picknick-und-reisen-628200`) | 5 | 5 | 4.39–5.35 | 18.90 | Green, Grey, Black, Red |
 | Plaid Streifen Gürtelaufkleber (`plaid-streifen-gurtelaufkleber-964992`) | 5 | 5 | 2.79–2.79 | 16.90 | White, Blue, Yellow, Black |
+| 42-Farben-Set für Gesichtsmalerei (`42-farben-set-fur-gesichtsmalerei-613500`) | 5 | 5 | 3.21–5.35 | 16.90 | Individual Pigment Product, Package A, Package B, Package C |
+| Star Birthday Magic Flüssiger Lidschatten (`star-birthday-magic-flussiger-lidschatten-600500`) | 5 | 5 | 2.39–2.39 | 16.90 | Gold, Wine Red, Dark pink, Peach pink |
 | USB-Lade-Rucksack wasserdicht 15" (`usb-lade-rucksack-wasserdicht-15-874496`) | 4 | 3 | 14.93–33.0 | 59.90 | Black Type A 15inch, Black Type A 17 Inch, 15inch USB C port, 17inch USB C port |
 | Umhängetasche aus Nylon, blau (`crossbody-messenger-bag-aus-nylon-blau-610400`) | 4 | 4 | 7.63–7.63 | 20.90 | Blue With Gray With Pendant-31x20x12cm, Blue With Red Belt Pendant-31x20x12cm, Pure Black Belt Pendant-31x20x12cm, Pure Blue Ribbon Pendant-31x20x12cm |
 | Splice Farbkontrast Rucksack 36-55 L (`splice-farbkontrast-rucksack-36-55-l-047040`) | 4 | 4 | 4.52–5.08 | 17.90 | Black-With pendant, Black-Without pendant, Blue-With pendant, Blue-Without pendant |
@@ -94,6 +98,9 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Silikon-Silent Soft Keyboard 85 Tasten (`silikon-silent-soft-keyboard-85-tasten-603800`) | 4 | 3 | 5.32–5.32 | 16.90 | Pink, Purple, Blue, Black |
 | Keyboard-Zubehör-Set für mechanische Tastatur (`keyboard-zubehor-set-fur-mechanische-tastatur-628300`) | 4 | 4 | 3.84–4.0 | 16.90 | Black 6.25U, Milky White 6.25U, Black 7U, Milky White 7U |
 | Lipgloss für glänzende Lippen (`lipgloss-fur-glanzende-lippen-638100`) | 4 | 4 | 2.76–2.76 | 16.90 | Rose purple, Pink, Naked pink, Silver |
+| Holiday Limited Christmas Lipgloss-Set (`holiday-limited-christmas-lipgloss-set-608400`) | 4 | 4 | 3.13–3.13 | 16.90 | Coral powder, Taotu orange, Purple red, Cherry red |
+| Holiday Limited Lippen-Glanz-Set (`holiday-limited-lippen-glanz-set-610000`) | 4 | 4 | 3.13–3.13 | 16.90 | Taotu orange, Coral powder, Cherry red, Purple red |
+| Keramik-Becher mit Frucht-Design (`keramik-becher-mit-frucht-design-631500`) | 4 | 4 | 3.04–3.04 | 16.90 | Lemon-200ml, Watermelon-200ml, Pink Strawberry-200ml, Red Strawberry-200ml |
 | Oversized Wollschal Dreieck 200 cm (`oversized-wollschal-dreieck-200-cm-605900`) | 3 | 3 | 12.44–12.44 | 21.90 | Raw Velvet Rice-200X90cm, Raw Velvet Camel-200X90cm, Gray-200X90cm |
 | Zylindrischer Angelrucksack (`zylindrischer-angelrucksack-228160`) | 3 | 3 | 7.87–8.08 | 17.90 | Black, Urban camouflage, Desert camouflage |
 | Halskette mit Kor, Türkis und Muschelperlen (`halskette-mit-kor-turkis-und-muschelperlen-635200`) | 3 | 3 | 4.3–5.18 | 16.90 | Necklace, Bracelet, Ear Studs |
@@ -103,6 +110,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Genuine Leder Clutch Wallet Retro Gelb (`genuine-leder-clutch-wallet-retro-gelb-606900`) | 3 | 3 | 11.22–11.28 | 21.90 | Retro Yellow, Retro Brown, Coffee oil skin |
 | Feuchtigkeitsspendender Air Cushion Blush (`feuchtigkeitsspendender-air-cushion-blush-620100`) | 3 | 3 | 2.39–2.39 | 16.90 | Orange, Orange pink, Pink |
 | Doppelspitze Eyeliner-Korrekturstift (`doppelspitze-eyeliner-korrekturstift-608800`) | 3 | 3 | 2.39–2.39 | 16.90 | Dark Brown, Brown, Black |
+| Foundation-Stick Matte 2-in-1 12 g (`foundation-stick-matte-2-in-1-12-g-604600`) | 3 | 3 | 2.76–2.76 | 16.90 | 12g-Ivory White, 12g-Natural Color, 12g-Deep Flesh Color |
 | Frosted Fahrrad-Rennrucksack (`frosted-fahrrad-rennrucksack-073600`) | 2 | 2 | 6.56–6.56 | 17.90 | Frosted Style, Carbon pattern |
 | Grosses Casual-Rucksack mit PU-Leder und Buchstaben-Print (`grosses-casual-rucksack-mit-pu-leder-und-buchs-609664`) | 2 | 2 | 7.63–7.63 | 33.90 | Patterned Black, Large Plaid Flower |
 | Männer-Wasserdichte Multifunktionstasche (`manner-wasserdichte-multifunktionstasche-540224`) | 2 | 2 | 9.12–10.78 | 29.90 | Cool black-10inches, Volcanic black-10inches |
@@ -118,3 +126,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Grossäugige Cartoon-Aufbewahrungsbox 24 cm (`grossaugige-cartoon-aufbewahrungsbox-24-cm-600700`) | 2 | 2 | 6.77–8.51 | 25.90 | 24cm Storage Box, 30cm Storage Box |
 | Durchsichtiger Lippen- und Wangen-Tint (`durchsichtiger-lippen-und-wangen-tint-601500`) | 2 | 2 | 2.02–2.02 | 16.90 | 6.8ml-Cherry Cola Color, 6.8ml-Pink |
 | Auto-Garnitur-Mittelstreifen-Aufkleber 100×38 cm (`auto-garnitur-mittelstreifen-aufkleber-100-38-262208`) | 2 | 2 | 4.4–4.4 | 16.90 | Black red, White yellow |
+| Makeup-Set für Kinder: Unicorn & Meerjungfrau (`makeup-set-fur-kinder-unicorn-meerjungfrau-636300`) | 2 | 2 | 5.27–7.32 | 27.90 | Mermaid Cosmetic Case, Unicorn |
+| Farbwechselndes Lippenpflege-Lipstick (`farbwechselndes-lippenpflege-lipstick-638100`) | 2 | 2 | 2.07–2.07 | 16.90 | 01 Blue Enchantress, 02 Rose Red |
+| Keramik-Reise-Teeset aus Yixing-Ton (`keramik-reise-teeset-aus-yixing-ton-611100`) | 2 | 2 | 5.2–5.2 | 24.90 | Zhu Ni Clay, Purple Clay |
