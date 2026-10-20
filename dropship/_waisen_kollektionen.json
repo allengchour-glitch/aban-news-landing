@@ -1,10 +1,51 @@
 {
- "stand": "2026-10-20T05:13Z",
- "ziele": 402,
- "waisen": 0,
- "liste": [],
+ "stand": "2026-10-20T15:48Z",
+ "ziele": 411,
+ "waisen": 6,
+ "liste": [
+  {
+   "handle": "uhrenarmbaender",
+   "titel": "Uhrenarmbänder & Smartwatch-Armbänder",
+   "aktiv": 158
+  },
+  {
+   "handle": "luftbefeuchter",
+   "titel": "Luftbefeuchter",
+   "aktiv": 149
+  },
+  {
+   "handle": "strickkleider",
+   "titel": "Strickkleider",
+   "aktiv": 131
+  },
+  {
+   "handle": "aufbewahrungsboxen",
+   "titel": "Aufbewahrungsboxen & Körbe",
+   "aktiv": 71
+  },
+  {
+   "handle": "handschuhe",
+   "titel": "Handschuhe",
+   "aktiv": 39
+  },
+  {
+   "handle": "handtuchhalter",
+   "titel": "Handtuchhalter & Handtuchstangen",
+   "aktiv": 16
+  }
+ ],
  "verzeichnis_veroeffentlicht": true,
- "nicht_im_verzeichnis": [],
+ "nicht_im_verzeichnis": [
+  "aufbewahrungsboxen",
+  "glaetteisen",
+  "handschuhe",
+  "handtuchhalter",
+  "lockenstaebe",
+  "luftbefeuchter",
+  "strickjacken-cardigans",
+  "strickkleider",
+  "uhrenarmbaender"
+ ],
  "ausgelassen_intern": [
   "frauen-favoriten"
  ],
