@@ -53,6 +53,28 @@
 
 
 
+## 🛑 Bewertungs-Stopp wurde umgangen — 1'191 Importer-Bewertungen NACH dem Stopp, geschrieben von einer zweiten Sitzung auf `main` (2026-10-20, ~06:30–07:15 UTC)
+- **Anlass:** Betreiber «A und sonst weiter» (Stopp bleibt, Plan-Ziel «≥ 10 von 29 bis 22.10.» entfällt). Beim Gegenlesen der Judge.me-API fiel auf: die **neuesten** Bewertungen
+  (18.10.) tragen `cj-import+<zufall>@luxestyle.ch` — die Form, die der Importer in unserem Branch seit 04.09. nicht mehr schreibt — und stammen von anderen IPs
+  (34.75.x/35.243.x, us-east1) als die Importe vor dem Stopp (136.114.x/34.42.x).
+- **GEMESSEN (nur lesend):** Letzte ID vor dem Stopp **1374773944** (12.10. 02:16:26 UTC), erste danach **1383480640** (16.10. 19:10:45). Dazwischen: **1'191 Bewertungen**
+  (16.10. 19:10 bis 18.10. 18:55), **901 sichtbar / 290 ausgeblendet** (Doppel-Wache), 223 Produkte, 351 mit Kundenfoto, **1'190 verschiedene Absenderadressen**, Sterne:
+  **1'069 × 5★ + 122 × 4★, kein einziger darunter** — die Rosinenauswahl, die seit 23.08. verboten ist (UWG Art. 3; MIN_SCORE=1). Die volle Wache bestätigte dieselben Zahlen unabhängig
+  (14'539 gelesen: «NACH-STOPP: 901 veröffentlicht, 290 ausgeblendet»).
+- **Ursache (belegt):** Branch `claude/project-thread-shf90k`, Commits «Bewertungen: Tagesabschluss — 775 echte Reviews auf 152 Produkten», PRs #2674–#2680 (17.–18.10.), Sitzung
+  `session_01M8jwho…`. Sie arbeitet auf `main`; dort steht `cj_reviews_import.mjs` mit der alten Plus-Adresse und OHNE Stopp-Prüfung (`git show origin/main:automation/cj_reviews_import.mjs`
+  Zeile 145). Keine Actions/GitLab-Läufe (cj-reviews.yml: letzter Lauf 12.06.). Unser Branch und `main` sind zwei Linien — die Stopp-Datei existiert nur bei uns.
+- **Getan:** (1) `judgeme_fake_wache.py`: `lade_stopp()`, `nach_stopp()`, Ampel-Segment `NACH-STOPP: n veroeffentlicht, m ausgeblendet (Importer-Muster, ID > AB-ID)`, Berichtsabschnitt,
+  `--selbsttest` (10 Fälle + 2 Mutationen) und Schutz: **ein unbekannter Schalter startet keinen Lauf** (Exit 2). (2) `dropship/_bewertungen_stopp.txt` trägt `AB-ID`/`SEIT`
+  (der Importer prüft nur die Existenz). (3) `betreiber_ampel.judgeme_verdacht()` ruft bei n > 0 (⭐). (4) `automation/judgeme_nach_stopp_ausblenden.py`: **Trockenlauf als Standard**,
+  `--scharf` (PUT curated=spam mit Rücklesen), `--zurueck`; Liste `dropship/_judgeme_nach_stopp_ids.tsv`. **Nicht ausgeführt** — Ausblenden entscheidet der Betreiber.
+  (5) Betreiber-Block in `dropship/COWORK-BEFEHL.md`: A bestätigt; 1. die andere Sitzung stoppen (Einfügetext), 2. die 901 ausblenden? (Empfehlung ja, umkehrbar).
+- **Nicht getan, bewusst:** nichts auf `main` geschrieben (Regel: kein Push auf fremde Branches/`main`); die andere Sitzung nicht angeschrieben; keine Bewertung angefasst.
+- **Lehre:** Ein Stopp, der nur auf EINEM Branch liegt, ist keiner — parallele Sitzungen laufen auf `main` und kennen ihn nicht. Jeder Stopp braucht (a) eine Wache, die sein Gegenteil MISST
+  (hier die ID-Grenze am Judge.me-Bestand, nicht die Prüfung der Datei), und (b) einen Eintrag dort, wo die andere Sitzung liest (Betreiber-Liste, `main`). Die Wache hatte das Plus-Muster als
+  «erlaubt» geführt — ein erlaubtes Muster darf nach einem Stopp nicht mehr erlaubt sein. **Und:** das Betreiber-Ziel einer Sitzung («sammle mehr Bewertungen», 01.10.) kann dem Entscheid einer anderen
+  («Stopp», 12.10.) widersprechen — die Betreiber-Liste ist der einzige Ort, an dem beide zusammenkommen.
+
 ## 📊 «weiter» 20.10. 05:00 UTC — GSC-Schnappschuss, Bewertungs-Ziel steht gegen die Stopp-Datei, kein billiger Hebel in den GSC-Daten
 - **GEMESSEN (Schnappschuss `dropship/_gsc_seiten.json`, 1'456 Produktseiten, Fenster 04.–17.10., 2 Antworten über `tools/gsc_schnappschuss.py`):**
   **36 Klicks / 5'157 Impressionen = 0,70 %.** Impressionen nach Position: 1–3 → 58, 3–10 → 469, 10–20 → 410, 20–50 → 1'438, **50–101 → 2'698 (52 %)**.
@@ -21049,3 +21071,8 @@ Verschoben am 04.10.2026:
 
 - 2026-10-19 · 🛠️ **Runde «alle Verbesserungen»: Tageswächter zählen das ERGEBNIS statt des Logs (Registry `automation/data/tageslauf_ergebnis.tsv`, `shopify_schranke.sh` Exit 75; Tor in `fixer_keepalive.sh`: «Schranke … voll» entwertet ein FERTIG — 8 Wächter hingen so ~20 h); Platte 95 → 82 % (`platte_wartung.sh`, Zeile PLATTE); Env-Secret-Anhang `=SHOPIFY_CLIENT_SECRET` wird abgeschnitten (Betreiber soll den Wert korrigieren); Hype-Wache + ChatGPT-Briefkasten-Wache im Keepalive. ⚠️ Ein unbekannter Schalter (`--selbsttest`, `--help`) kann einen ECHTEN Lauf starten.** → Journal 19.10. 🛠️
 - 2026-10-19 · 🔎 **Google: 7 von 39 Websuch-Klicks landeten nach dem Draft auf einer 404 → 19 Warenwörter in `tote_landeseiten.TITEL_ZIEL` (Wortgrenzen, Klingen/Anti-Bell nie) + 16 Weiterleitungen; Bücher/Modellbau in `kategorie_wache`; SEO-Titel «Geschenke für Männer»; 7 Geschenk-URLs nicht im Index = Betreiber-Klick «Indexierung beantragen»; #1024 wartet auf Mister DTF (A-Post, keine Sendungsnummer), Bestell-Ampel ⚠️ ab 10 T Handbestellung; Nachmessen «Unable to show image» am 22.10.** → Journal 19.10. 🛠️
+
+## 📚 Index-Archiv: zwei Einzeilen vom 19.10.2026 (🧰 🧰, aus CLAUDE.md verschoben am 20.10.2026 07:10)
+
+- 2026-10-19 · 🧰 **Zweite Prüfung (wf_659d6d94): 7 Befunde behoben — `bulk_laden(gueltig=)` (fremde Vorrunde blockiert Heilung nicht, Meldungen `PAUSE:`), `lauf_mit_logstempel` (Log-Alters-Tore verlieren den Tag nicht bei voller Schranke, 6×/Tag), `faellig()` holt offene Sperr-Einträge nach, Hype-Räumen prüft Akku/USB in der Beschreibung, 16 direkte Tabellen-Kanarien vor jedem `FIX=1`.** → Journal 19.10. 🧰
+- 2026-10-19 · 🧰 **Codex-Ideen übernommen und verbessert (wf_b3b5eff5, 24 Agenten; 14 Testläufe grün):** `publish_guard` v2 (LIVE+`APPROVE_PUBLISH`, Sperren fail-closed — v1 hätte **205 absichtliche Kanal-Ausschlüsse wieder geöffnet**, Google nie Ziel), `parseRunLimit` (Bibliothek; Pause im Livebetrieb NICHT erreichbar, Poster setzen fest 1), `queue_struktur_wache.py` (8 Queues, 0 Befunde), Shop-Host-Heilung + Wache (38 von 123 Dateien lesen `SHOPIFY_SHOP` ungeprüft), `social_vorlauf.py`-Lücken behoben, `seo-optimizer.mjs` v2: **7'841 aktive Produkte ohne SEO-Titel** (≠ Hebel: Shopify nimmt dann Produkttitel + « – LuxeStyle», gemessen 19.10. abends), Schreibpfad live NIE gelaufen → erster Lauf `LIMIT=3`. Aufseher-Zeilen PUBLISH-GUARD/QUEUE-STRUKTUR/SHOPIFY-HOST. Auf main fehlen alle 15 Sperr-Quellen → nichts einzeln nach main. **Zoho-Postfach (info@luxestyle.ch) aus der Cloud NICHT lesbar** (`imap.zoho.eu:993` von der Netzwerk-Richtlinie gesperrt; Betreiber: Domain unter «Allowed domains»). **GSC-Direktlinks nie selbst bauen** (`id` = Kennung aus `inspect_urls`, mein Format gab 404).** → Journal 19.10. 🧰

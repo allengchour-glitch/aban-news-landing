@@ -1044,6 +1044,10 @@ def judgeme_verdacht():
         return f"⭐ Judge.me-Wache seit {tage} T ohne Lauf (zuletzt {stand.group(1)}Z) — Aufseher-Block pruefen"
     if "unklar" in zeile or "unvollstaendig" in zeile:
         return f"⭐ {zeile} — Judge.me-Zugang (/tmp/judgeme.env) oder API-Deckel pruefen"
+    st = re.search(r"NACH-STOPP: (\d+) veroeffentlicht", zeile)      # 20.10.2026: Importer-Bewertungen NACH dem Betreiber-Stopp (andere Sitzung auf main)
+    if st and int(st.group(1)) > 0:
+        return (f"⭐ {zeile} — jemand schreibt trotz Stopp (dropship/_bewertungen_stopp.txt) Bewertungen nach Judge.me: "
+                f"Sitzung auf main stoppen; ausblenden (curated=spam, umkehrbar) entscheidet der Betreiber (dropship/JUDGEME-WACHE.md)")
     n = re.match(r"JUDGEME: (\d+) verdaechtig", zeile)
     if n and int(n.group(1)) > 0:
         return f"⭐ {zeile} — dropship/JUDGEME-WACHE.md lesen: ausblenden (PUT curated=spam) oder in _judgeme_freigabe.txt freigeben"

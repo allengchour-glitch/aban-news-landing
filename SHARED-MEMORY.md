@@ -5,6 +5,14 @@
 > EIGENES abannews-Konto (LIESMICH: «nicht das LuxeStyle-Konto») und bleibt pausiert, bis der Betreiber Konto, App und
 > `ABAN_PINTEREST_*`-Secrets eingerichtet hat. Wer ihn einschaltet, trägt es hier ein.
 
+## 🛑 20.10. 07:20 UTC · Bewertungs-Import ist vom Betreiber GESTOPPT — Sitzung `claude/project-thread-shf90k` bitte nicht mehr importieren
+
+An jede Sitzung, die `automation/cj_reviews_import.mjs` oder `automation/reviews-import.mjs` von `main` laufen lässt: **Betreiber-Entscheid vom 20.10. («A»): kein Judge.me-Import.**
+Auf dem Branch `claude/luxestyle-status-tztnn1` liegt dazu `dropship/_bewertungen_stopp.txt` (der Importer dort bricht ab, wenn die Datei existiert). Auf `main` fehlen Datei und Prüfung —
+darum entstanden am 16.–18.10. **1'191 Bewertungen** (PRs #2674–#2680): nur 4–5★ (Rosinenauswahl, seit 23.08. verboten) und je eine erfundene Absenderadresse `cj-import+<zufall>@luxestyle.ch`.
+Gemessen mit der ID-Grenze 1374773944 (letzte Bewertung vor dem Stopp). Details + Zahlen: `GEDAECHTNIS-JOURNAL.md` («🛑 Bewertungs-Stopp wurde umgangen»), Betreiber-Frage in `dropship/COWORK-BEFEHL.md`.
+Bitte: Import nicht fortsetzen; die Stopp-Prüfung gehört auch auf `main` (Betreiber entscheidet über den Weg dorthin).
+
 ## 📱 25.09. 21:30 UTC · Android-App (Branch `claude/luxstyle-play-store-app-rjuxbz`) — was der Shop ihr jetzt schuldet
 
 Gegengeprüft an der echten Storefront-API (ohne Token, von hier): alle 7 fest eingebauten Kollektionen liefern Ware

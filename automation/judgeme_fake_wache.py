@@ -43,6 +43,7 @@ import datetime, json, os, re, sys, time, urllib.error, urllib.parse, urllib.req
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BERICHT = os.path.join(REPO, "dropship", "JUDGEME-WACHE.md")
 FREIGABE = os.path.join(REPO, "dropship", "_judgeme_freigabe.txt")
+STOPP_DATEI = os.path.join(REPO, "dropship", "_bewertungen_stopp.txt")
 ENV_DATEI = os.environ.get("JUDGEME_ENV", "/tmp/judgeme.env")
 API = "https://judge.me/api/v1"
 PER_PAGE = int(os.environ.get("PER_PAGE", "100"))
@@ -143,6 +144,74 @@ def lade_freigabe():
     return frei
 
 
+def lade_stopp():
+    """→ (vorhanden, ab_id). `dropship/_bewertungen_stopp.txt` (Betreiber-Entscheid A, 20.10.2026: der Import bleibt aus) trägt
+    die Zeile `AB-ID: <n>` = letzte Judge.me-ID VOR dem Stopp. ab_id None bei fehlender/unlesbarer Zeile (→ «unklar», nie «0»)."""
+    try:
+        text = open(STOPP_DATEI, encoding="utf-8").read()
+    except OSError:
+        return False, None
+    m = re.search(r"^AB-ID:\s*(\d{6,})\s*$", text, re.M)
+    return True, (int(m.group(1)) if m else None)
+
+
+def nach_stopp(r, ab_id, frei):
+    """True, wenn r eine IMPORTER-Bewertung ist, die NACH dem Stopp entstand. Beleg 20.10.2026: 1'191 Bewertungen vom 16.–18.10. mit
+    `cj-import+<zufall>@luxestyle.ch` (1'190 verschiedene Adressen), geschrieben von einer anderen Sitzung auf `main`, deren
+    Importer die Stopp-Datei nicht kennt. Zählt nur das Importer-Muster — echte Käufer (andere Adresse) nie; vom Menschen freigegebene IDs nicht."""
+    try:
+        rid = int(r.get("id") or 0)
+    except (TypeError, ValueError):
+        return False
+    if not ab_id or rid <= ab_id or str(r.get("id")) in frei:
+        return False
+    return bool(IMPORT_ADRESSE.match(((r.get("reviewer") or {}).get("email") or "").strip().lower()))
+
+
+def selbsttest():
+    """Offline: Grenze, Muster, Freigabe, Plus-Form — und zwei kaputte Fassungen, die der Test fangen muss (Mutationsprobe)."""
+    imp = {"email": "cj-import+ab12cd@luxestyle.ch"}
+    grenze = 1374773944
+    frei = {"1383480643": "geprüft"}
+    fall = [
+        ("auf der Grenze", {"id": grenze, "reviewer": imp}, grenze, False),
+        ("eins darüber", {"id": grenze + 1, "reviewer": imp}, grenze, True),
+        ("nackte Importer-Adresse", {"id": 1383480640, "reviewer": {"email": "cj-import@luxestyle.ch"}}, grenze, True),
+        ("echter Käufer", {"id": 1383480641, "reviewer": {"email": "kundin@gmail.com"}}, grenze, False),
+        ("Hausadresse ohne Muster", {"id": 1383480642, "reviewer": {"email": "info@luxestyle.ch"}}, grenze, False),
+        ("freigegeben", {"id": 1383480643, "reviewer": imp}, grenze, False),
+        ("ohne Reviewer", {"id": 1383480644}, grenze, False),
+        ("ID kaputt", {"id": "abc", "reviewer": imp}, grenze, False),
+        ("gross geschrieben", {"id": 1383480645, "reviewer": {"email": "CJ-Import+ZZ@LuxeStyle.ch"}}, grenze, True),
+        ("ohne AB-ID nie zählen", {"id": 9 * 10 ** 9, "reviewer": imp}, None, False),
+    ]
+
+    def lauf(fn):
+        return [n for n, r, ab, soll in fall if fn(r, ab, frei) is not soll]
+
+    def zahl(r):
+        try:
+            return int(r.get("id") or 0)
+        except (TypeError, ValueError):
+            return 0
+
+    def mutant_gleich(r, ab_id, fr):                  # «>=» statt «>» an der Grenze
+        return bool(ab_id) and zahl(r) >= ab_id and str(r.get("id")) not in fr \
+            and bool(IMPORT_ADRESSE.match(((r.get("reviewer") or {}).get("email") or "").lower()))
+
+    def mutant_ohne_muster(r, ab_id, fr):             # zählt jeden Absender, auch echte Käufer
+        return bool(ab_id) and zahl(r) > ab_id and str(r.get("id")) not in fr
+
+    schlecht = [f"echte Fassung: {n}" for n in lauf(nach_stopp)]
+    for name, m in (("«>=» an der Grenze", mutant_gleich), ("ohne Absender-Muster", mutant_ohne_muster)):
+        if not lauf(m):
+            schlecht.append(f"Mutation «{name}» wurde NICHT gefangen")
+    lade = lade_stopp()
+    print("SELBSTTEST: " + (f"{len(fall)} Fälle ok, 2 Mutationen gefangen" if not schlecht else "FEHLER: " + "; ".join(schlecht))
+          + f" · Stopp-Datei vorhanden={lade[0]} AB-ID={lade[1]}")
+    return not schlecht
+
+
 def pruefe(r, betreiber):
     """Gibt (harte_gruende, weiche_gruende) fuer eine Bewertung zurueck."""
     hart, weich = [], []
@@ -221,6 +290,8 @@ def main():
         return
     betreiber = {m.strip().lower() for m in env.get("JUDGEME_BETREIBER_MAILS", "").split(",") if m.strip()}
     frei = lade_freigabe()
+    stopp_da, ab_id = lade_stopp()
+    nach_pub, nach_hid = [], []                      # Importer-Bewertungen NACH dem Stopp (veröffentlicht / ausgeblendet)
     basis = {"api_token": tok, "shop_domain": dom}
     try:
         gesamt = int(hole(f"{API}/reviews/count?" + urllib.parse.urlencode(basis)).get("count") or 0)
@@ -256,6 +327,8 @@ def main():
                 aeltest[rating] = min(aeltest.get(rating, 10 ** 12), int(r.get("id") or 0))
                 gelesen += 1
                 neu += 1
+                if stopp_da and nach_stopp(r, ab_id, frei):
+                    (nach_pub if r.get("published") else nach_hid).append(r)
                 hart, weich = pruefe(r, betreiber)
                 if not hart and not weich:
                     continue
@@ -294,6 +367,14 @@ def main():
     else:
         ampel = (f"JUDGEME: {len(harte)} verdaechtig · {len(weiche)} Namen unmaskiert · {len(ausgeblendet)} ausgeblendet "
                  f"· {gelesen} von {gesamt} gelesen" + ("" if vollst else (" · API-Deckel: Rest älter als ID " + str(min(aeltest.values())) + ", zuletzt vollständig gelesen (ID ≤ " + str(voll_max) + ")" if gedeckt else " ⚠️ unvollstaendig")))
+    if not stopp_da:
+        stopp_txt = ""
+    elif not ab_id:
+        stopp_txt = " · NACH-STOPP: unklar (Zeile AB-ID fehlt in dropship/_bewertungen_stopp.txt)"
+    else:
+        stopp_txt = (f" · NACH-STOPP: {len(nach_pub)} veroeffentlicht, {len(nach_hid)} ausgeblendet (Importer-Muster, ID > {ab_id})"
+                     + (" ⚠️ der Stopp wird umgangen" if nach_pub else ""))
+    ampel += stopp_txt
     kopf = "| ID | erstellt | ★ | Produkt-ID | Name | E-Mail (maskiert) | Text | Zustand | Gruende |\n|---|---|---|---|---|---|---|---|---|"
     def tabelle(liste, deckel=300):
         if not liste:
@@ -328,6 +409,14 @@ loeschen = Judge.me-Admin. Geprueft und in Ordnung → ID in `dropship/_judgeme_
 
 {tabelle(harte)}
 
+## Nach dem Stopp entstanden (Importer-Muster, ID > {ab_id}) — veroeffentlicht ({len(nach_pub)}) / ausgeblendet ({len(nach_hid)})
+
+Grundlage: `dropship/_bewertungen_stopp.txt` (Betreiber-Entscheid A, 20.10.2026: der Import bleibt aus). Eine Bewertung mit `cj-import…@luxestyle.ch`
+und einer ID ÜBER der Grenze kann nur ein Schreiber erzeugt haben, der die Stopp-Datei nicht kennt (Beleg 20.10.: eine zweite Sitzung auf `main`).
+Echte Käufer (andere Adresse) zählen nie. Ausblenden = `PUT …/reviews/<id>` `{{"curated":"spam"}}` — umkehrbar, entscheidet der Betreiber.
+
+{tabelle([(r, ["Importer-Muster nach Stopp"]) for r in nach_pub], 40)}
+
 ## Namen unmaskiert — veroeffentlicht ({len(weiche)})
 
 {tabelle(weiche, 200)}
@@ -351,6 +440,11 @@ loeschen = Judge.me-Admin. Geprueft und in Ordnung → ID in `dropship/_judgeme_
 
 
 if __name__ == "__main__":
+    if len(sys.argv) > 1:                       # ein unbekannter Schalter darf NIE einen echten Lauf starten (Lehre google_feedback_wache 20.10.)
+        if sys.argv[1] == "--selbsttest":
+            sys.exit(0 if selbsttest() else 1)
+        print(f"Unbekannter Schalter {sys.argv[1]!r} — erlaubt ist nur --selbsttest (ohne Schalter: voller Lauf)")
+        sys.exit(2)
     try:
         main()
     except Exception as e:                      # nie mit Traceback sterben: «unklar» ist der Befund
