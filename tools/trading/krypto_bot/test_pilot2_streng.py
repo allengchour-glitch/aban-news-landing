@@ -6662,6 +6662,30 @@ for budget19_ in (None, "0"):
     pruefe(f"19.einmal Fuzzer (reduziert, drei Durchgänge im 10-Minuten-Takt, Budget {'des Durchgangs' if budget19_ is None else 'AUFGEBRAUCHT'}; Not-Aus 40 Seeds, Läufe 6 Seeds × 8 Tage): keine Befunde",
            not P.echte(funde19_), [(f_[0], f_[1].get("seed")) for f_ in P.echte(funde19_)][:5])
 
+# Prüfwerkzeug (camp19-Fund, Seed 1210012): im Takt der Aufgabenplanung darf ein FRÜHER Durchgang offen enden («nicht alles geklärt/gesichert» — ein verspäteter Auftrag ist erst im nächsten Takt sichtbar), massgebend ist der LETZTE;
+# sonst meldete der Fuzzer ein Artefakt als NACHKONTROLLE_OFFEN
+OFFEN19_ = "Nachkontrolle Pilot 2.0: ⚠️ nicht alles geklärt/gesichert."
+GUT19_ = "Nachkontrolle Pilot 2.0: geklärt, Stops nach dem Kontostand gesetzt."
+
+
+def agg19_(durchgaenge_):
+    n_ = len(durchgaenge_)
+    alt_ = (P.NK_EINMAL, L.nachkontrolle)
+    P.NK_EINMAL = n_
+    L.nachkontrolle = lambda *a, **k: {"zeilen": list(durchgaenge_.pop(0)), "auftraege": [], "warnung": False}
+    try:
+        return P.nachkontrolle(env_echt(), neu_buch())["zeilen"]
+    finally:
+        P.NK_EINMAL, L.nachkontrolle = alt_
+
+
+for fall19_, dg19_, offen19_ in (("früher Durchgang offen, der zweite klärt", [[OFFEN19_, "a"], [GUT19_, "b"], []], False), ("alle offen", [[OFFEN19_], [OFFEN19_], [OFFEN19_]], True),
+                                 ("gleich geklärt", [[GUT19_], [], []], False), ("zuerst geklärt, am Ende wieder offen", [[OFFEN19_], [GUT19_], [OFFEN19_]], True)):
+    z19_ = agg19_([list(x_) for x_ in dg19_])
+    pruefe(f"19.Werkzeug einmal-Aggregation im Fuzzer ({fall19_}): «nicht alles geklärt» zählt nur, wenn der LETZTE Durchgang offen endet", any("nicht alles geklärt" in x_ for x_ in z19_) is offen19_, z19_)
+z19_ = agg19_([[OFFEN19_, "a"], [GUT19_, "b"], []])
+pruefe("19.Werkzeug … die übrigen Zeilen aller Durchgänge bleiben erhalten (was ein Durchgang meldete oder tat, zählt)", "a" in z19_ and "b" in z19_ and GUT19_ in z19_, z19_)
+
 # ── kleiner Fuzzer mit festen Seeds (der grosse: python3 -B pruef_fuzzer.py laeufe 0 200 / notaus 0 1600) ──
 funde = []
 for seed in list(range(60)) + [465, 5673, 5085, 5087]:  # 465: Stop löst im Schutz aus (9.); 5673/5085/5087: Rest-/alter Stop (10.)

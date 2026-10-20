@@ -474,7 +474,9 @@ def nachkontrolle(env, datei):
             try:
                 for _i in range(NK_EINMAL):
                     rn = L.nachkontrolle(env=env, datei=datei, schlafen=schlafen, uhr=lambda: zeit[0], einmal=True)
-                    zeilen += rn.get("zeilen") or []                  # was irgendein Durchgang meldete oder tat, zählt (die letzten Durchgänge haben meist nichts mehr zu tun)
+                    # was irgendein Durchgang meldete oder tat, zählt (die letzten Durchgänge haben meist nichts mehr zu tun) — AUSSER «nicht alles geklärt/gesichert»: ein früher Durchgang darf offen enden
+                    # (ein verspäteter Auftrag ist erst im nächsten Takt sichtbar, ein Stop wird erst im zweiten Durchgang angenommen); massgebend ist der LETZTE Durchgang (19. Folge-Runde, camp19 Seed 1210012)
+                    zeilen = [z_ for z_ in zeilen if "nicht alles geklärt" not in z_] + (rn.get("zeilen") or [])
                     auftraege += rn.get("auftraege") or []
                     warnung = warnung or bool(rn.get("warnung"))
                     pending_abarbeiten()
