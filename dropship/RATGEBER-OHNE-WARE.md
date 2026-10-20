@@ -2,6 +2,17 @@
 
 Suchverkehr ist der einzige Kanal, der in diesem Shop verkauft. Ein Ratgeber, der rankt und die Leserin ins Leere schickt, verschenkt genau die Kaufabsicht, die am teuersten zu bekommen ist.
 
+## ⚠️ Benannte Ware zu benanntem Preis — die es nicht gibt
+
+Das ist nicht nur eine Lücke, sondern eine Falschaussage: ein Artikel mit Namen und Preis, den niemand kaufen kann.
+
+| Ratgeber | verspricht | Preis | kein Produkt zu |
+|---|---|---|---|
+| [Geschenke für Kaffeeliebhaber: Die schönsten ](/blogs/ratgeber/geschenke-fuer-kaffeeliebhaber) | rauchfreie Sojawachskerze | CHF 16.90 | `Sojawachskerze` |
+| [Minimalistisch einrichten: Ruhige Wohnaccesso](/blogs/ratgeber/minimalistisch-einrichten-wohnaccessoires) | rauchfreie Sojawachskerze | CHF 16.90 | `Sojawachskerze` |
+| [Pool & Schwimmen 2026: Sommer-Spass im & am W](/blogs/ratgeber/pool-schwimmen-2026-ratgeber) | Pool-Bodensauger 1.2 m | CHF 37.90 | `Bodensauger` |
+| [Geschenke unter CHF 30, die nicht nach Verleg](/blogs/ratgeber/geschenke-unter-30-franken-2026) | Slim Wallet mit RFID-Schutz und Kartenautomat | CHF 25.90 | `Kartenautomatik` |
+
 ## Ratgeber ohne einen einzigen kaufbaren Produktlink
 
 | Ratgeber | Produktlinks (alle tot/keine) |
@@ -26,23 +37,7 @@ Suchverkehr ist der einzige Kanal, der in diesem Shop verkauft. Ein Ratgeber, de
 | [3D-Drucker kaufen: der grosse Einsteiger-Ratgeber 2026](/blogs/ratgeber/3d-drucker-kaufen-der-grosse-einsteiger-ratgeber-2026) | 0 |
 | [PLA, PETG oder Resin? Das richtige Filament finden](/blogs/ratgeber/pla-petg-oder-resin-das-richtige-filament-finden) | 0 |
 | [3D-Stifte für Kinder & Kreative: worauf achten?](/blogs/ratgeber/3d-stifte-fur-kinder-kreative-worauf-achten) | 0 |
-| [Werkzeug-Grundausstattung: das gehört in jeden Haushalt](/blogs/ratgeber/werkzeug-grundausstattung-das-gehort-in-jeden-haushalt) | 0 |
-| [Smartwatch & Fitness-Tracker: welcher passt zu dir?](/blogs/ratgeber/smartwatch-fitness-tracker-welcher-passt-zu-dir) | 0 |
-| [Powerbank-Guide: die richtige Kapazität für unterwegs](/blogs/ratgeber/powerbank-guide-die-richtige-kapazitat-fur-unterwegs) | 0 |
 | [Action-Cam & Kamera-Drohne für Einsteiger](/blogs/ratgeber/action-cam-kamera-drohne-fur-einsteiger) | 0 |
-| [Damenmode-Grössen richtig messen: der Grössen-Guide](/blogs/ratgeber/damenmode-grossen-richtig-messen-der-grossen-guide) | 0 |
-| [Herren-Basics: die wichtigsten Kleidungsstücke im Schrank](/blogs/ratgeber/herren-basics-die-wichtigsten-kleidungsstucke-im-schrank) | 0 |
-| [Haustier-Erstausstattung: Checkliste für Hund & Katze](/blogs/ratgeber/haustier-erstausstattung-checkliste-fur-hund-katze) | 0 |
-| [Edelstahl-Schmuck: langlebig, hautfreundlich & günstig](/blogs/ratgeber/edelstahl-schmuck-langlebig-hautfreundlich-gunstig) | 0 |
-| [Gaming-Zubehör-Guide: Controller, Headset & mehr](/blogs/ratgeber/gaming-zubehor-guide-controller-headset-mehr) | 0 |
-| [Beauty-Tools zuhause: Glätteisen, Lockenstab & Gesichtspfleg](/blogs/ratgeber/beauty-tools-zuhause-glatteisen-lockenstab-gesichtspflege) | 0 |
-| [Die richtige Armbanduhr: Quarz, Automatik oder Digital?](/blogs/ratgeber/die-richtige-armbanduhr-quarz-automatik-oder-digital) | 0 |
-| [Kaffeevollautomat, Siebträger oder Kapsel? Der Kaffee-Guide](/blogs/ratgeber/kaffeevollautomat-siebtrager-oder-kapsel-der-kaffee-guide) | 0 |
-| [Sommerkleider 2026: welche Schnitte stehen dir?](/blogs/ratgeber/sommerkleider-2026-welche-schnitte-stehen-dir) | 0 |
-| [Die perfekte Jeans finden: Schnitte & Passformen erklärt](/blogs/ratgeber/die-perfekte-jeans-finden-schnitte-passformen-erklart) | 0 |
-| [Herren-Hemden richtig kombinieren: Business bis Casual](/blogs/ratgeber/herren-hemden-richtig-kombinieren-business-bis-casual) | 0 |
-| [Bettwäsche-Ratgeber: Material, Grösse & Pflege](/blogs/ratgeber/bettwasche-ratgeber-material-grosse-pflege) | 0 |
-| [Wohnen gemütlich einrichten: Deko-Tipps für jeden Raum](/blogs/ratgeber/wohnen-gemutlich-einrichten-deko-tipps-fur-jeden-raum) | 0 |
 | [Küchenhelfer, die jeder braucht: die smarte Grundausstattung](/blogs/ratgeber/kuchenhelfer-die-jeder-braucht-die-smarte-grundausstattung) | 0 |
 | [Make-up-Basics für Einsteiger: das Schmink-1x1](/blogs/ratgeber/make-up-basics-fur-einsteiger-das-schmink-1x1) | 0 |
 | [Nageldesign zuhause: Gel, Lack & Zubehör für schöne Nägel](/blogs/ratgeber/nageldesign-zuhause-gel-lack-zubehor-fur-schone-nagel) | 0 |
@@ -193,3 +188,11 @@ Suchverkehr ist der einzige Kanal, der in diesem Shop verkauft. Ein Ratgeber, de
 | [Edelstahl-Schmuck für Herren 2026: Der Guide für hypoallerge](/blogs/ratgeber/edelstahl-schmuck-fur-herren-2026-der-guide-fur-hypoallergene-ketten-armbander) | 0 |
 | [Beauty-Routine 2026: Die 5 Essentials für strahlende Haut](/blogs/ratgeber/beauty-routine-2026-die-5-essentials-fur-strahlende-haut) | 0 |
 
+## Verlinktes Produkt ist ausverkauft (aktiv, aber Bestand 0 bei DENY)
+
+Die Produktseite sagt «Ausverkauft», der Ratgeber wirbt weiter. Ware nachlegen, Karte tauschen oder den Link auf die Kollektion umbiegen.
+
+| Ratgeber | Produkt |
+|---|---|
+| [Trainingsanzug & Jogging-Set 2026: Bequem & s](/blogs/ratgeber/trainingsanzug-jogging-set-2026-ratgeber) | [Kostüm Trainingsanzug](/products/kostum-trainingsanzug-fgss00180) |
+| [Halloween-Deko selber machen: 10 Ideen für dr](/blogs/ratgeber/halloween-deko-selber-machen-10-ideen-ratgeber) | [Skelett beweglich](/products/skelett-beweglich-fga904874) |
