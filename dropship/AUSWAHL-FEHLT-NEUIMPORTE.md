@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 19:51 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 20:58 UTC)
 
-Suche: `status:active AND created_at:>=2026-10-17` · gemessen 350 · **191 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 171, teilweise: 14, keine: 6; Preisspanne > 2×: 29) · 1 CJ-Variante: 159 · ohne Antwort: 0
+Suche: `status:active AND created_at:>=2026-10-17` · gemessen 371 · **201 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 180, teilweise: 15, keine: 6; Preisspanne > 2×: 29) · 1 CJ-Variante: 170 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -36,6 +36,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Ovaler Zirconring-Set – 2- oder 3-teilige Varianten (`ovaler-zirconring-set-2-oder-3-teilige-variant-633700`) | 20 | 20 | 2.02–3.16 | 16.90 | White Gold 2 Piece Set-No 5, White Gold 2 Piece Set-No 6, White Gold 2 Piece Set-No 7, White Gold 2 Piece Set-No 8 |
 | Geschenkverpackung aus Hartpapier (`geschenkverpackung-aus-hartpapier-606400`) | 18 | 18 | 2.92–2.92 | 16.90 | 1 Brushed Silver-12x12x12cm, 2 Pure White-12x12x12cm, 3 Luxury Gold-12x12x12cm, 4 Pure Gold-12x12x12cm |
 | Silberner Kissenbezug aus Mulberry-Seide (`silberner-kissenbezug-aus-mulberry-seide-610700`) | 17 | 16 | 25.17–25.17 | 34.90 | Wine Red, Smoke Pink, Lake Blue, Gray And Blue |
+| Makeup-Set für Augen und Gesicht (`makeup-set-fur-augen-und-gesicht-610900`) | 17 | 15 | 3.1–5.31 | 16.90 | SET001A, SET001B, SET002A, SET002B |
 | Sofa-Bezug mit Textur-Muster (`sofa-bezug-mit-textur-muster-600500`) | 16 | 16 | 2.39–21.01 | 84.90 | Coffee Color-Single Seat, Coffee Color-Two Seat, Coffee Color-Three Seat, Coffee Color-Four Seat |
 | Leder-Notizbuch mit Metallspirale A5 (`leder-notizbuch-mit-metallspirale-a5-612800`) | 16 | 15 | 2.55–2.55 | 16.90 | Pink 25 Years, Black 25 Years, Gray 25 Years, Blue 25 Years |
 | Keramik-Blumentopf für Pflanzen (`keramik-blumentopf-fur-pflanzen-606500`) | 16 | 16 | 4.33–5.94 | 36.90 | Light Blue-Ceramic- KY148, Light Blue-Ceramic- KY149, Light Blue-Ceramic- KY150, Light Blue-Ceramic- KY151 |
@@ -79,6 +80,8 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Star Kiss Diamant Lippenstift (`star-kiss-diamant-lippenstift-625800`) | 8 | 8 | 2.57–2.57 | 16.90 | Deep purple brown-3.5g, Peach powder-3.5g, Rosy-3.5g, Naked rice tea-3.5g |
 | Schmaler Wollschal mit Hohlmuster (`schmaler-wollschal-mit-hohlmuster-617300`) | 8 | 8 | 2.34–2.34 | 16.90 | 01 Khaki-35cmX64cm, 02 Bright Red-35cmX64cm, 03 Army Green-35cmX64cm, 04 Gray-35cmX64cm |
 | 28-teilige Weihnachtsbaumschmuck-Kugel-Set (`28-teilige-weihnachtsbaumschmuck-kugel-set-602500`) | 8 | 8 | 3.19–3.19 | 16.90 | Red Style, Gold Style, Dark Green, Light Blue |
+| Makeup-Set mit Lippenstift, Rouge und Augenstift (`makeup-set-mit-lippenstift-rouge-und-augenstif-620000`) | 8 | 8 | 38.97–43.95 | 69.90 | Swan Lake Gift Box, Ballet Dream Gift Box, Dawn Endless Summer Gift Box, Shell Wind Chime Gift Box |
+| Makeup-Set mit Eyeshadow, Rouge und Foundation (`makeup-set-mit-eyeshadow-rouge-und-foundation-617300`) | 8 | 8 | 2.99–5.8 | 17.90 | ZP A05 003301, ZP A05 003302, ZP A05 003303, ZP A05 003304 |
 | Taktische Umhängetasche für Outdoor-Sport (`taktische-umhangetasche-fur-outdoor-sport-624800`) | 7 | 7 | 5.03–5.03 | 18.90 | Black-Below 20L, Brown-Below 20L, Italian Camouflage-Below 20L, Dark Night-Below 20L |
 | Umhängetasche mit Rautenmuster (`umhangetasche-mit-rautenmuster-623000`) | 7 | 7 | 7.99–7.99 | 21.90 | Color, Silver, Black Gold Diamand, Green |
 | Kristall-Hanf Kopftuch – Monochromes Design (`kristall-hanf-kopftuch-monochromes-design-606000`) | 7 | 7 | 3.1–3.1 | 16.90 | 2 White-Average Size, 3 Navy Blue-Average Size, 4 Pink Color-Average Size, 5 Light Khaki-Average Size |
@@ -112,6 +115,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Feuchtigkeitsspendendes Lipgloss- und Lipliner-Set (`feuchtigkeitsspendendes-lipgloss-und-lipliner-601000`) | 6 | 6 | 2.21–2.21 | 16.90 | 15ml-Caramel Cotton, 15ml-Strawberry Cake, 15ml-Classic Red, 15ml-Chocolate |
 | Wasserglanz-Lippenstift (`wasserglanz-lippenstift-624500`) | 6 | 6 | 6.97–6.97 | 16.90 | 01 Peony Ballet-4G, 02 Milk Flavor Peanut-4G, 03 Warm Rose-4G, 04 Grape Path-4G |
 | Grosser, dicker, warmer Split-Schal (`grosser-dicker-warmer-split-schal-658200`) | 6 | 6 | 5.97–5.97 | 20.90 | Gray-155cm, Amber-155cm, Camel-155cm, Dark Khaki Cloth Color-155cm |
+| Foundation Stick für feines Contouring (`foundation-stick-fur-feines-contouring-632800`) | 6 | 6 | 2.77–2.77 | 16.90 | 01 IVORY, 02 NATURAL BEIGE, 03 LIGHT SAND, 04 WARM ALMOND |
 | Retro Postmann Umhängetasche (`retro-postmann-umhangetasche-626400`) | 5 | 5 | 22.39–22.39 | 53.90 | Army Green, Lake Water Green Color, Black, Khaki |
 | Outdoor-Rucksack 1000D/PU (`outdoor-rucksack-1000d-pu-205376`) | 5 | 5 | 10.09–10.09 | 32.90 | Black, Wolf Brown, Grey, CP Camo |
 | Canvas Rucksack mit Tragegriff – 25x45x23 cm (`canvas-rucksack-mit-tragegriff-25x45x23-cm-214400`) | 5 | 5 | 5.77–5.77 | 25.90 | Black, Khaki, Brown, Coffee color |
@@ -130,6 +134,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Violetter Tontopf im Antikstil für den Schreibtisch (`violetter-tontopf-im-antikstil-fur-den-schreib-613000`) | 5 | 5 | 37.26–78.29 | 112.90 | Twilight Gray-Purple Sand, Moon White-Purple Sand, Lavender-Purple Sand, Anonymous Glaze-Purple Sand |
 | Geflochtene Vase aus Pflanzenfasern (`geflochtene-vase-aus-pflanzenfasern-624400`) | 5 | 5 | 12.94–14.59 | 46.90 | Pupian-S, Pupian-L, Stripes-S, Stripes-L |
 | Wasserfeste, schweissresistente Foundation (`wasserfeste-schweissresistente-foundation-600700`) | 5 | 5 | 2.11–2.11 | 16.90 | SNOW, NATURAL PORCELAIN,  NATURAL BEIGE, COOKIE |
+| Korrektur- und Farbwechsel Foundation-Stick (`korrektur-und-farbwechsel-foundation-stick-623500`) | 5 | 5 | 2.81–2.81 | 16.90 | Complexion, Natural color, Ivory white, Dark complexion |
 | USB-Lade-Rucksack wasserdicht 15" (`usb-lade-rucksack-wasserdicht-15-874496`) | 4 | 3 | 14.93–33.0 | 59.90 | Black Type A 15inch, Black Type A 17 Inch, 15inch USB C port, 17inch USB C port |
 | Umhängetasche aus Nylon, blau (`crossbody-messenger-bag-aus-nylon-blau-610400`) | 4 | 4 | 7.63–7.63 | 20.90 | Blue With Gray With Pendant-31x20x12cm, Blue With Red Belt Pendant-31x20x12cm, Pure Black Belt Pendant-31x20x12cm, Pure Blue Ribbon Pendant-31x20x12cm |
 | Splice Farbkontrast Rucksack 36-55 L (`splice-farbkontrast-rucksack-36-55-l-047040`) | 4 | 4 | 4.52–5.08 | 17.90 | Black-With pendant, Black-Without pendant, Blue-With pendant, Blue-Without pendant |
@@ -172,6 +177,10 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Falsche Wimpern mit Strass-Design (`falsche-wimpern-mit-strass-design-639900`) | 3 | 3 | 2.21–2.21 | 16.90 | Diamond 301, Diamond 302, Diamond 303 |
 | Ultraflache Quarzuhr für Damen mit Milanaise-Armband (`ultraflache-quarzuhr-fur-damen-mit-milanaise-a-620000`) | 3 | 3 | 32.08–32.08 | 42.90 | White, Blue Face, Rose Shell |
 | Quarz-Uhr mit Stahlarmband für Herren (`quarz-uhr-mit-stahlarmband-fur-herren-637800`) | 3 | 3 | 4.2–5.25 | 16.90 | Silver Strap, Belt Brown, Belt Black |
+| Natural Coloring Set für Augenbrauen & Wimpern (`natural-coloring-set-fur-augenbrauen-wimpern-600900`) | 3 | 3 | 2.63–2.63 | 16.90 | As Shown In Figure Suit-Black, As Shown In Figure Suit-Coffee, As Shown In Figure Suit-Brown |
+| Feuchtigkeits-Make-up-Stick mit weichem Fokus (`feuchtigkeits-make-up-stick-mit-weichem-fokus-612700`) | 3 | 3 | 2.81–2.81 | 16.90 | 5G-Deep Flesh Color, 5G-Natural Color, 5G-Light Flesh Color |
+| Augenbrauen-Färbeset mit Primer und Pinsel (`augenbrauen-farbeset-mit-primer-und-pinsel-624400`) | 3 | 3 | 2.81–2.81 | 16.90 | Black, Light Brown, Brunet brown |
+| Augenlidschatten-Palette Fruit Series, 12 Farben (`augenlidschatten-palette-fruit-series-12-farbe-224000`) | 3 | 3 | 3.45–3.45 | 16.90 | Orange, Pink, Purple |
 | Frosted Fahrrad-Rennrucksack (`frosted-fahrrad-rennrucksack-073600`) | 2 | 2 | 6.56–6.56 | 17.90 | Frosted Style, Carbon pattern |
 | Grosses Casual-Rucksack mit PU-Leder und Buchstaben-Print (`grosses-casual-rucksack-mit-pu-leder-und-buchs-609664`) | 2 | 2 | 7.63–7.63 | 33.90 | Patterned Black, Large Plaid Flower |
 | Männer-Wasserdichte Multifunktionstasche (`manner-wasserdichte-multifunktionstasche-540224`) | 2 | 2 | 9.12–10.78 | 29.90 | Cool black-10inches, Volcanic black-10inches |
@@ -197,3 +206,4 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Grosses vertikales Kosmetik-Organizer mit Tragegriff (`grosses-vertikales-kosmetik-organizer-mit-trag-630600`) | 2 | 2 | 2.92–4.37 | 16.90 | Large Size Sholder Bag, Small Size Sholder Bag |
 | Nachtlicht für Schlafzimmer mit eingebaute Batterie (`nachtlicht-fur-schlafzimmer-mit-eingebaute-bat-620800`) | 2 | 2 | 5.03–5.03 | 18.90 | Pointed Toe, Crown |
 | Smart Lamp mit RGB- und Warmlicht (`smart-lamp-mit-rgb-und-warmlicht-614600`) | 2 | 2 | 9.95–11.61 | 28.90 | Matter Version, Tuya Version |
+| Matte Metall-Glitzer Lidschatten-Palette, 30 Farben (`matte-metall-glitzer-lidschatten-palette-30-fa-891840`) | 2 | 2 | 2.1–2.1 | 16.90 | 1 Style, 2 Style |
