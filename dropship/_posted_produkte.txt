@@ -508,3 +508,6 @@ slug:mini-projektor-home-office-t300-1080p
 slug:bildreel-hemd-western-braun-fgssbo5433
 pid:15469958037889
 slug:hemd-western-braun-fgssbo5433
+name:halterungfürrückspiegelhandy
+pid:15450831716737
+slug:halterung-fur-ruckspiegel-handy
