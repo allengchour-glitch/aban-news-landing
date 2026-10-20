@@ -11930,3 +11930,5 @@ herren-armbanduhr-edelstahl-653800	2510180818551654000	7	7.78	ok	landeseite
 plaid-plissee-rock-mit-hoher-taille-und-a-lini-629100	2606111121121620000	16	7.43	ok	landeseite
 mountainbike-helm-011328	1369874818031292416	7	17.47	ok	landeseite
 franzosischer-stil-rock-mit-ruschen-600100	2606110936171600800	16	6.33	ok	landeseite
+hotel-kissenfullung-aus-100-baumwolle-weich-wi-637100	2603100556291637400	16	24.30	ok	landeseite
+einheitliches-fahrradhelm-304704	1367073160796704768	16	9.80	ok	landeseite

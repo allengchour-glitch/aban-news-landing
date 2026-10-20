@@ -1,17 +1,17 @@
-# SEO-Voll-Audit · 19.10.2026 21:50 UTC
+# SEO-Voll-Audit · 20.10.2026 22:18 UTC
 
-Aktive Produkte im Onlineshop: **55878** · Prüfungen wie Semrush Site Audit, lokal gerechnet.
+Aktive Produkte im Onlineshop: **56172** · Prüfungen wie Semrush Site Audit, lokal gerechnet.
 
 | Klasse | Produkte | Beispiele |
 |---|---:|---|
 | titel_doppelt | 32 | 24-teiliges-make-up-pinselset-600200, smartwatch-mit-herzfrequenzmessung-unisex-1-32-touchscreen-605700, smart-armband-mit-herzfrequenzmessung-798144, powerbank-10000-mah-mit-digitalanzeige-af8566 |
-| meta_doppelt | 10 | verstellbarer-ring-mit-unregelmassiger-textur-637600, herren-slipper-mit-runder-schuhspitze-605600, geometrischer-ring-mit-zirkonia-621600, herren-slipper-608400 |
+| meta_doppelt | 0 |  |
 | h1_im_text | 0 |  |
 | meta_leer | 0 |  |
 | titel_lang | 0 |  |
-| meta_lang | 1 | kunstleder-sneaker-mit-atmungsaktivem-obermaterial-629200 |
-| text_duenn | 29 | stilvoller-tragbarer-zigarrenaschenbecher-au-618100, vintage-blumen-aschenbecher-kristallglas-622800, metall-aschenbecher-individuell-kreativ-603500, kreatives-feuchtigkeitsdichtes-zigarettenetu-627200 |
-| alt_leer | 5 | holz-miniflugzeug-285440, taschenrucksack-mit-computerfach-36099e, reiseaufbewahrungsbeutel-24-13-14-cm-812649, blumentopf-aus-lila-ton-602900 |
+| meta_lang | 0 |  |
+| text_duenn | 28 | stilvoller-tragbarer-zigarrenaschenbecher-au-618100, kreatives-feuchtigkeitsdichtes-zigarettenetu-627200, keramik-aschenbecher-schmuckschale-deko-610900, quadratischer-aschenbecher-mit-deckel-625100 |
+| alt_leer | 0 |  |
 
 ## Grösste Titel-Gruppen
 - 3× «smartwatch mit herzfrequenzmessung | luxestyle ch»
@@ -31,8 +31,3 @@ Aktive Produkte im Onlineshop: **55878** · Prüfungen wie Semrush Site Audit, l
 - 2× «plüsch robbe | luxestyle ch»
 
 ## Grösste Meta-Gruppen
-- 2× «für einen hauch von eleganz im alltag oder zu besonderen anlässen trägst du diesen ring. material: metall.»
-- 2× «für den alltag oder entspannte anlässe sind diese slipper eine bequeme wahl. material: pu-leder.»
-- 2× «dieser ring ergänzt dein outfit mit einem hauch von eleganz. material: metall.»
-- 2× «perücke wednesday zöpfe bei luxestyle – schweizer online-shop. gratis-versand ab chf 50, 30 tage rückgabe. jet»
-- 2× «plüsch robbe bei luxestyle – schweizer online-shop. gratis-versand ab chf 50, 30 tage rückgabe. jetzt –10% mit»
