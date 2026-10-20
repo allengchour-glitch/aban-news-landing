@@ -33,6 +33,26 @@ Nachweise:
 - [Abendlauf gegen 19:05 Zürich mit kanalbezogenen Statusbelegen und begrenzter SEO-/Merchant-Prüfung](https://github.com/allengchour-glitch/aban-news-landing/blob/1c5a094d4e79583f7522c0692cb29ffa4e5dc43d/dropship/codex-handoff-20261018/ABENDLAUF-20261019.md)
 - [Neuer Aufnahme- und Rechteauftrag für denselben Projektor-Master](https://github.com/allengchour-glitch/aban-news-landing/blob/2f813cfffa19a6f00694134e91e293e9e1cf8853/dropship/codex-handoff-20261018/PRODUKTIONSAUFTRAG-PROJEKTOR-20261019.md)
 
+## 20.10.2026
+
+Morgenlauf: Konten/Planung gegen 08:01, drei Landeseiten gegen 08:03 und Bild/Varianten-JSON/DNS gegen 08:05 Europe/Zurich. Tageszwischenstand; frühere Tage bleiben erhalten.
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Konten und Produkt | Shopify, Metricool samt sechs Kanalidentitäten, Projektorpreis, Tags, Tracking, inventoryPolicy, echtes Bild und öffentliche Kaufbarkeit frisch geprüft | Identitäten passend; ACTIVE, CHF 34.90, untracked/CONTINUE und kaufbar. Keine Bestands-/Lieferzusage |
+| Planung | Sieben lokale Tage 20.–26.10. einschliesslich Zeitumstellung gelesen und mit dem überlappenden Vorabendfenster verglichen | 129 Objekte: 128 PENDING, ein PUBLISHED, keine Entwürfe. Am 26.10. Planungslücke auf sechs Kanälen. Keine identischen Medien-URLs/Kanal-Zeit-Slots; vollständige kreative Historie unbekannt |
+| Publikationsbelege | Einen neuen gelieferten YouTube-PUBLISHED-Zustand, vier zusätzliche UUIDs und zwei nicht mehr gelieferte Pinterest-UUIDs protokolliert | Bestehende Fremdabläufe; kein eigener Social-Write, keine behauptete Löschung, kein Ersatzpost. Alter Projektor-Termin 20.10.10:00 erhalten |
+| Master-Entwurf | Mindestlängen des bestehenden Aufnahmeauftrags gegengeprüft und korrigiert; TikTok-Einstieg von der offenen Hook-Auswahl unabhängig gemacht | Bedienung 8 s und Projektion 7 s nutzbar, je 1 s Vor-/Nachlauf zusätzlich. Derselbe Master; keine Beauftragung oder fertige MP4 |
+| Suche / Verkaufsseiten | Projektor und zwei tatsächlich verlinkte Collections gezielt auf HTTP, Canonical, Titel/H1 und Produkt-JSON-LD geprüft | Drei erreichbare passende Ziele; kein aktueller 404-/Canonical-Fix begründet. Review-Herkunft und Merchant-Zulassung weiter unbekannt |
+| Tageskennzahlen | Sechs gültige Metricool-Feldlisten entdeckt und sechs kleine Kanalabfragen für 13.–19.10. gelesen | IG 1'301 Views und FB 835 Content Views vollständig; übrige Reihen/Interaktionen mit Lücken, Wochenwerte unbekannt. Keine Verkäufe aus Views abgeleitet |
+| Klaviyo | Konto, Placed-Order-Metrik, einen aktuellen Flow-Report sowie Welcome/Recovery/Post-Purchase und öffentliche Capture-Zuordnung geprüft | XEGbTB live, Vse76a draft; Capture-Code XWqMAD/T2VHfu. Nur TTuuTS-Linktracking-Diff zur Freigabe erhalten, nichts aktiviert/versendet |
+| Musik / DNS / Zugriff | Pflichtmusik gegen aktuellen Repo-Blob/Credits und öffentliche genehmigte DNS-Namen geprüft; aktuelle Runtime-Zugriffe gelesen | Musik hashgleich, finale Rechte-/Hörabnahme offen. Vier DNS-Ergänzungen genehmigt, öffentlich nicht nachweisbar und ohne authentifizierten Schreibzugang. CJ-Laufzeit-Credentials nicht als bereit nachgewiesen |
+| Übergabe | Aktuellen Morgenbericht mit präzisiertem Briefing und sechs Kanaltext-/UTM-Entwürfen auf der bestehenden Wissensbranch gespeichert | Dokumentation auf bestehender Entwurfsbranch; keine produktive Aktivierung |
+
+Nächster Arbeitsschritt: geeignete Originalaufnahmen nach korrigierten Mindestzeiten samt Modell-/Motivzuordnung und kommerziellen Dateirechten prüfen; danach denselben einen Master zur Abnahme entwickeln. Die Planungslücke erzwingt keinen ungeprüften Post. Genau ein Klaviyo-Vorschlag bleibt offen: TTuuTS add_tracking_params false → true, vor Umsetzung Konto-UTMs und Linkvorschauen prüfen. Kein Shop-/Feed-/Flow-/Rabatt-/Budget-/DNS-Write, Kundenkontakt oder kostenpflichtiger Render.
+
+Nachweis: [Morgenlauf mit sechs Kanaltexten und Statusbelegen](https://github.com/allengchour-glitch/aban-news-landing/blob/7847708362f4216113af36886b1416a171c356a4/dropship/codex-handoff-20261018/MORGENLAUF-20261020.md).
+
 ## Fortführung
 
 Jeder Zürcher Kalendertag erhält einen eigenen Datumsblock mit den belegten Tätigkeiten dieses Tages. Mehrere Läufe ergänzen denselben Tag. Bereits erfasste Tätigkeiten nicht erneut als neu ausgeben; Korrekturen nachvollziehbar benennen. Bei fehlenden oder unlesbaren Quellen keine leere Vergangenheit behaupten und das Protokoll nicht zurücksetzen.
