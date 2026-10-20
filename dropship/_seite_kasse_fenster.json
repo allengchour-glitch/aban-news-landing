@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-19T21:06Z",
+ "stand": "2026-10-20T00:12Z",
  "zeilen": [
   {
    "datei": "templates/cart.json",
@@ -65,7 +65,7 @@
    "datei": "templates/cart.json",
    "tier": "EU-Lager",
    "zeichen": "mit",
-   "seite": "22.10.–29.10.",
+   "seite": "23.10.–30.10.",
    "rechnung": "Kalendertage 3–10",
    "kasse": "03.11.–17.11.",
    "profil": "General profile",
@@ -75,7 +75,7 @@
    "datei": "templates/cart.json",
    "tier": "EU-Lager",
    "zeichen": "ohne",
-   "seite": "22.10.–29.10.",
+   "seite": "23.10.–30.10.",
    "rechnung": "Kalendertage 3–10",
    "kasse": "03.11.–17.11.",
    "profil": "General profile",
@@ -145,7 +145,7 @@
    "datei": "templates/product.json",
    "tier": "EU-Lager",
    "zeichen": "mit",
-   "seite": "22.10.–29.10.",
+   "seite": "23.10.–30.10.",
    "rechnung": "Kalendertage 3–10",
    "kasse": "03.11.–17.11.",
    "profil": "General profile",
@@ -155,7 +155,7 @@
    "datei": "templates/product.json",
    "tier": "EU-Lager",
    "zeichen": "ohne",
-   "seite": "22.10.–29.10.",
+   "seite": "23.10.–30.10.",
    "rechnung": "Kalendertage 3–10",
    "kasse": "03.11.–17.11.",
    "profil": "General profile",
@@ -163,9 +163,9 @@
   }
  ],
  "befunde": [
-  "EU-Lager mit Zeichen: Korb 22.10.–29.10. · Kasse 03.11.–17.11.",
-  "EU-Lager ohne Zeichen: Korb 22.10.–29.10. · Kasse 03.11.–17.11.",
-  "EU-Lager mit Zeichen: Seite 22.10.–29.10. · Kasse 03.11.–17.11.",
-  "EU-Lager ohne Zeichen: Seite 22.10.–29.10. · Kasse 03.11.–17.11."
+  "EU-Lager mit Zeichen: Korb 23.10.–30.10. · Kasse 03.11.–17.11.",
+  "EU-Lager ohne Zeichen: Korb 23.10.–30.10. · Kasse 03.11.–17.11.",
+  "EU-Lager mit Zeichen: Seite 23.10.–30.10. · Kasse 03.11.–17.11.",
+  "EU-Lager ohne Zeichen: Seite 23.10.–30.10. · Kasse 03.11.–17.11."
  ]
 }
