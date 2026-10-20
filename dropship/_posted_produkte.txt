@@ -520,3 +520,5 @@ slug:plusch-specht-am-stamm-27-cm-fga17841
 name:plüschspechtamstamm27cm
 slug:bruder-zubehor-rundumleuchte-fga02807
 name:bruderzubehörrundumleuchte
+slug:cat-kompaktlader-fga02481
+name:catkompaktlader
