@@ -1,5 +1,21 @@
 # COWORK-BEFEHL — Fassung 21.09.2026, 09:40 UTC (für heute Abend)
 
+## 🆕 20.10. 19:45 UTC — Nachtrag zu «luxe-agent.timer WIE FIX» (dein Screenshot): der Lauf vom 19.10. hat geklappt, aber kein Puls kam — und der neue Befehl wurde in der Konsole zerhackt
+**Was dein Screenshot zeigt (gemessen):** Oben steht der ALTE Lauf vom **19.10. ~04:40 UTC** (Beleg: `60d72254` ist unser Commit «Ledger-Drift auto» von 19.10. 04:38) — Timer an, Platte 88 → 83 %, Push-Probe ohne Fehler. **Trotzdem kam seither kein Bot-Puls** (letzter `luxe-agent`-Commit im Repo: 16.10. 06:08). Das Wiederbeleben allein hat es also nicht gelöst; es gibt einen zweiten Grund, und der steht im Journal des Agenten (bisher wurde die Fehlermeldung nach 100 Zeichen abgeschnitten — nur der Befehl, nie GitHubs Antwort; seit heute behoben, siehe unten).
+**Unten ist der neue Versuch gescheitert:** `curl: (6) Could not resolve host: https` und `-bash: //raw.githubusercontent.com/…: No such file or directory`. Das Fehlerbild passt dazu, dass die Konsole beim Einfügen aus **`:` ein `;`** und aus **`|` ein `\`** gemacht hat (Umschalttaste geht für diese Zeichen verloren — Ableitung aus der Fehlermeldung, nicht gemessen). Darum jetzt Befehle **ohne `:` `|` `_` `&` `>`** — jede Zeile einzeln, danach Enter.
+**Schritt 1 (30 Sekunden, nur lesen) — das ist die Antwort auf «warum kein Puls»:** in der Hetzner-Konsole eingeben (Buchstaben, Bindestriche, Punkte — nichts Heikles):
+```
+journalctl -u luxe-agent.service -n 60 --no-pager
+```
+und **ein Foto/Screenshot der letzten ~25 Zeilen schicken.** Dort steht nach «Puls nicht gepusht» der Grund (Berechtigung 403? Netz? Platte?).
+**Schritt 2 (nur falls du ihn noch einmal laufen lassen willst; zwei Zeilen, jede mit Enter):**
+```
+curl -fsSL -o wb.sh raw.githubusercontent.com/allengchour-glitch/aban-news-landing/claude/luxestyle-status-tztnn1/server/server-wiederbeleben.sh
+bash wb.sh
+```
+(Ohne «https://» nimmt curl zuerst http und folgt der Weiterleitung auf https — gemessen 20.10.: HTTP 200, Datei byte-gleich mit dem Repo, `bash -n` ok.) Das Skript hat ab heute einen neuen Abschnitt **«4c) Warum kein Puls?»**: er zeigt am Ende die Fehlerzeilen des Agenten und ob im Klon ungepushte Commits liegen — das Foto davon genügt.
+**Zeigt das Journal «Permission … denied / 403»** → Token-Recht fehlt. Dann schick mir nur das Foto; für den neuen Token nenne ich dir einen Weg, der ohne `_` und `|` auskommt (ein Token enthält `_` und würde in dieser Konsole vermutlich zerhackt). **Zeigt es «Could not resolve host»** → Hetzner-Netz (Wartung läuft seit 15.10.).
+
 ## 🆕 20.10. 19:00 UTC — «luxe-agent.timer WIE FIX» (Betreiber 20.10.): Hetzner-Agent steht seit 16.10. 06:08 UTC — EIN Befehl in der Hetzner-Konsole (2 Min)
 **Was gemessen ist:** letzter Puls 16.10. 06:08 UTC, Agent UND Wächter stehen gleichzeitig (108 h); die Cloud-Sitzung kommt nicht auf den Server (Port 22 gesperrt) — von hier ist nur das Prüfen/Vorbereiten möglich, das Starten geht nur bei dir.
 **Wahrscheinliche Ursachen (das Skript prüft alle drei und behandelt, was es findet):** (1) **Hetzner-Netz** — status.hetzner.com (QUELLE, abgerufen 20.10. 18:30 UTC): «Urgent maintenance on all core routers» seit 15.10. 10:00 UTC *läuft noch*, dazu «vSwitch MAC learning» seit 19.10. 21:00 UTC (untersucht); ein Server ohne Route zu GitHub kann weder holen noch pushen; (2) abgelaufener GitHub-Token im Git-Remote der Klone (`ghp_…`), dann scheitert schon `git fetch`; (3) Platte voll («/» stand 13.10. auf 90 %).

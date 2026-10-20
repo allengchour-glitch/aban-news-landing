@@ -4,6 +4,12 @@
 # EIN Befehl in der Hetzner-WEB-KONSOLE (console.hetzner.cloud → Server → Symbol «>_»), als root:
 #   echo; curl -fsSL https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/claude/luxestyle-status-tztnn1/server/server-wiederbeleben.sh | bash
 # (das «echo;» fängt ab, dass die Konsole die ersten Zeichen verschluckt — dropship/COWORK-BEFEHL.md)
+# TIPPSICHERE FASSUNG (20.10.: im Screenshot des Betreibers kam «https:» als «https;» und «|» als «\» an — «curl: Could not resolve host:
+# https», «-bash: //raw.githubusercontent.com/…: No such file»; die Hetzner-Konsole verliert bei «:» und «|» offenbar die Umschalttaste):
+# ZWEI Zeilen, einzeln mit Enter, nur Buchstaben, Ziffern, «-», «.», «/» — kein «:», «|», «_», «&», «>»:
+#   curl -fsSL -o wb.sh raw.githubusercontent.com/allengchour-glitch/aban-news-landing/claude/luxestyle-status-tztnn1/server/server-wiederbeleben.sh
+#   bash wb.sh
+# (ohne «https://» nimmt curl http und folgt der Weiterleitung auf https; gemessen 20.10.: 200, byte-gleich mit dem Repo)
 # Probelauf ohne Änderung:  … | DRY=1 bash
 #
 # ANLASS (GEMESSEN 18.10. ~20:10 UTC, Keepalive-Zeile «BOT STILL»): der letzte Puls des Agenten kam 16.10. 06:08 UTC
@@ -144,6 +150,17 @@ else warn "kein systemd gefunden — nichts zu starten"; fi
 log "4b) Push-Probe (nichts wird gesendet)"
 if [ -d /opt/luxe-agent/repo/.git ]; then
   timeout 40 git -C /opt/luxe-agent/repo push --dry-run origin HEAD:claude/luxestyle-status-tztnn1 2>&1 </dev/null | tail -2 | cut -c1-200
+fi
+log "4c) Warum kein Puls? (nur lesen)"
+if have_sd; then
+  echo "--- Journal des Agenten: Fehlerzeilen der letzten 300 Zeilen"
+  journalctl -u luxe-agent.service -n 300 --no-pager -o short-iso 2>/dev/null | grep -i -E "nicht gepusht|Claim konnte|fatal|rejected|denied|403|401|Could not resolve|Authentication|No space" | tail -6 | cut -c1-330 || true
+  [ -n "$(journalctl -u luxe-agent.service -n 300 --no-pager 2>/dev/null | grep -i -E 'nicht gepusht|Claim konnte|fatal|rejected|denied|403|401|Could not resolve|Authentication|No space')" ] || echo "(keine Fehlerzeile — der Agent meldet sich ohne Fehler; dann steht der Puls vermutlich nur noch aus)"
+fi
+if [ -d /opt/luxe-agent/repo/.git ]; then
+  echo "--- Agent-Klon: letzte Commits / ungepushte Commits"
+  git -C /opt/luxe-agent/repo log --format='%h %ci %an %s' -3 2>/dev/null | cut -c1-120
+  git -C /opt/luxe-agent/repo rev-list --count '@{u}..HEAD' 2>/dev/null | sed 's/^/ungepusht: /' || true
 fi
 log "Ergebnis"
 echo "Platte «/»: ${VOR:-?} % → $(pcent) %"

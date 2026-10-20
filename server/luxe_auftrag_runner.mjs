@@ -562,6 +562,24 @@ const PULS = path.join(REPO, 'auftraege/_puls.json');
 const PULS_LOKAL = process.env.LUXE_PULS_LOKAL || '/tmp/luxe_puls_lokal.json';
 const PUSH_ABSTAND_MS = 55 * 60 * 1000;
 
+/**
+ * Fehlertext eines gescheiterten git-Aufrufs — mit dem GRUND. `e.message` von
+ * execFileSync beginnt mit «Command failed: git -C … push -q origin HEAD:…» (rund 95
+ * Zeichen); schnitt man bei 100 oder 120 ab, stand nur der Befehl im Journal, nie
+ * die Antwort von GitHub (gemessen 20.10.: nach dem Wiederbeleben vom 19.10. kam
+ * 40 h lang kein Puls, und die Ursache stand nicht im Journal). Zugangsdaten in
+ * URLs («https://ghp_…@github.com») werden geschwaerzt.
+ */
+function fehlertext(e, n = 300) {
+  const err = e && e.stderr ? String(e.stderr).trim() : '';
+  const kopf = String((e && e.message) || e).split('\n')[0].replace(/^Command failed: git .*? (push|fetch|commit|checkout)\b.*$/, 'git $1 fehlgeschlagen');
+  return `${kopf}${err ? ' — ' + err : ''}`
+    .replace(/\s+/g, ' ')
+    .replace(/gh[pousr]_[A-Za-z0-9]{10,}/g, 'ghp_***')
+    .replace(/\/\/[^/@\s]+@/g, '//***@')
+    .slice(0, n);
+}
+
 function schreibe_puls(zustand) {
   let gepusht = {};                      // Stand, den die Ampel im Repo sieht
   try { gepusht = JSON.parse(fs.readFileSync(PULS, 'utf8')); } catch {}
@@ -603,7 +621,7 @@ function schreibe_puls(zustand) {
     // Wichtig: die Repo-Datei zuruecksetzen, sonst findet der Starter sie schmutzig
     // und pusht sie doch — genau die Luecke, die dieser Umbau schliesst.
     try { git('checkout', '--', 'auftraege/_puls.json'); } catch {}
-    console.log(`· Puls nicht gepusht (${String(e.message||e).slice(0,100)})`);
+    console.log(`· Puls nicht gepusht (${fehlertext(e)})`);
   }
 }
 
@@ -658,7 +676,7 @@ function claim_und_push(auftrag, offenPfad) {
     git('push', '-q', 'origin', `HEAD:${process.env.LUXE_BRANCH || 'claude/luxestyle-status-tztnn1'}`);
     return true;
   } catch (e) {
-    console.log(`· ${auftrag.id}: Claim konnte nicht gesichert werden (${String(e.message||e).slice(0,120)}) — NICHT ausgefuehrt, naechster Lauf versucht es erneut`);
+    console.log(`· ${auftrag.id}: Claim konnte nicht gesichert werden (${fehlertext(e)}) — NICHT ausgefuehrt, naechster Lauf versucht es erneut`);
     return false;
   }
 }

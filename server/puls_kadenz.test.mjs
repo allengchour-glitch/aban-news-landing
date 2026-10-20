@@ -126,5 +126,27 @@ function werkstatt({ pushSchlaegtFehl = false } = {}) {
   pruefe('5) Sabotage: veraenderte Repo-Datei gilt als schmutzig', w.schmutzig(), true);
 }
 
+// 6) Fehlertext (20.10.): das Journal muss den GRUND zeigen, nicht nur den Befehl — und
+//    darf keinen Token verraten. Vorher stand bei 100 Zeichen Schnitt nur «Command failed:
+//    git -C … push -q origin HEAD:…»; die Antwort von GitHub kam nie an.
+{
+  const fehlertext = new Function('fs', 'path', 'execFileSync', 'REPO', 'offen', 'process',
+    `${block}\n return fehlertext;`)(fs, path, () => '', os.tmpdir(), [], { env: {} });
+  const gitFehler = Object.assign(
+    new Error('Command failed: git -C /opt/luxe-agent/repo push -q origin HEAD:claude/x\nremote: Permission to a/b.git denied to c.'),
+    { stderr: Buffer.from("remote: Permission to a/b.git denied to c.\nfatal: unable to access 'https://ghp_ABCDEFGHIJKLMNOP1234@github.com/a/b.git/': The requested URL returned error: 403\n") });
+  const t = fehlertext(gitFehler);
+  pruefe('6) Fehlertext nennt den Grund (403 / Permission)', /403/.test(t) && /Permission/.test(t), true);
+  pruefe('6) Fehlertext kuerzt den Befehl auf «git push fehlgeschlagen»', t.startsWith('git push fehlgeschlagen'), true);
+  pruefe('6) Fehlertext schwaerzt den Token', /ghp_ABCDEFGH/.test(t) || /1234@/.test(t), false);
+  pruefe('6) Fehlertext schwaerzt Zugangsdaten in URLs allgemein', /\/\/\*\*\*@github\.com/.test(t) || !/\/\/[^/@\s]+@/.test(t), true);
+  pruefe('6) Token ohne URL (nackt im Text) wird ebenfalls geschwaerzt',
+    /ghp_ZZZZ/.test(fehlertext(Object.assign(new Error('Command failed: git -C x push -q o h'),
+      { stderr: 'remote: Invalid username or token ghp_ZZZZZZZZZZZZZZZZ1234 rejected' }))), false);
+  pruefe('6) Fehlertext hoechstens 300 Zeichen', fehlertext(new Error('x'.repeat(900))).length, 300);
+  pruefe('6) schlichter Fehler bleibt lesbar', fehlertext(new Error('kein Netz')), 'kein Netz');
+  pruefe('6) Nicht-Error-Wert (String) bleibt lesbar', fehlertext('kaputt'), 'kaputt');
+}
+
 console.log(fehler ? `\n${fehler} Probe(n) ROT` : '\nalle Proben gruen');
 process.exit(fehler ? 1 : 0);
