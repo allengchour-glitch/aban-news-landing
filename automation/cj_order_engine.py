@@ -37,6 +37,7 @@ import urllib.parse
 import os as _os_takt, sys as _sys_takt
 _sys_takt.path.insert(0, _os_takt.path.join(_os_takt.environ.get('REPO', '/home/user/aban-news-landing'), 'automation'))
 from cj_takt import takt  # 21.09.: reservierte Startzeiten gegen CJs 1/s-Drossel
+import cj_sku  # 20.10.2026: EINE Quelle für «ist das eine CJ-SKU?» (siehe dort)
 # 07.10.2026 (Betreiber «bei bestellung sofort alles erledigen und mir den paylink schicken»): jede Bestellung, die
 # den Betreiber braucht (bezahlen ODER Fehler), geht sofort als Handy-Nachricht raus (ntfy, einmal je Schlüssel).
 try:
@@ -237,6 +238,16 @@ def zuordnung_vid(sku):
         if len(f) >= 2 and not z.startswith("#") and f[0].strip().upper() == (sku or "").strip().upper():
             return f[1].strip()
     return None
+
+
+def ist_cj_sku(sku):
+    """Gehört diese Shop-SKU zu CJ? «CJ-…»-Präfix, eine CJ-Form hinter dem Präfix ODER eine belegte Zuordnung.
+
+    20.10.2026 (Vollmessung über 552'927 Varianten): die frühere Regel ^CJ[A-Z]{2}\\d{6,} verfehlte 3'466 nackte CJ-SKUs
+    («CJYDQXHB00011-BROWN-39», «CJJJJTJT22925»). Eine Bestellung mit so einer Zeile galt als «anderer Lieferant» und wurde
+    übersprungen — der Kunde hätte bezahlt, bei CJ wäre nichts bestellt worden. Die Form prüft jetzt cj_sku.ist_cj_form()."""
+    u = (sku or "").strip().upper()
+    return u.startswith("CJ-") or cj_sku.ist_cj_form(sku) or bool(zuordnung_vid(sku))
 
 
 def vid_fuer(sku, variant_title):
@@ -555,9 +566,7 @@ def main(host=None):
         # ⚠️ Es gibt CJ-SKUs OHNE das «CJ-»-Präfix im Katalog («CJLS291603531EV», Bestellung
         # #1014) — die nackte CJ-Varianten-SKU. Der Präfix-Test allein liess den Lauf sie als
         # «anderer Lieferant» überspringen, obwohl vid_fuer() genau diese Form (b) längst kann.
-        def ist_cj(sku):
-            u = (sku or "").upper()
-            return u.startswith("CJ-") or bool(re.match(r'^CJ[A-Z]{2}\d{6,}', u)) or bool(zuordnung_vid(sku))
+        ist_cj = ist_cj_sku   # 20.10.2026: modulweit, damit der Selbsttest dieselbe Prüfung ausführt wie die Bestellschleife
         items = [li for li in alle if ist_cj(li.get("sku"))]
         if not items:
             print(f"  {o['name']}: keine CJ-Artikel (anderer Lieferant)", flush=True)
@@ -728,10 +737,20 @@ def selbsttest():
         ("verworfener Zweitauftrag zählt nicht", SV, 1, [],      ["LX1000"],          [EIGEN, VERW],     OK200, True,  "SD",  "angelegt LX9001", ZAHL),
         ("Liste hinkt nach (eigener fehlt)", SV, 1, [],          ["LX1000"],          ["LX1000"],        OK200, True,  "SD",  "angelegt LX9001", ZAHL),
         ("Liste nach Anlage unlesbar → Zahl-Push mit SD", SV, 1, [], ["LX1000"],      "FEHLER",          OK200, True,  "SD",  "angelegt LX9001", ZAHL),
+        # 20.10.2026: nackte CJ-SKUs mit Optionsanhang / langem Buchstabenstamm (3'466 Varianten) wurden als «anderer Lieferant» übersprungen
+        ("nackte SKU mit Anhang «CJYDQXHB00011-BROWN-39»", SV, 1, [], ["LX1000"], ["LX1000", EIGEN], OK200, True, "SD", "angelegt LX9001", ZAHL,
+         "CJYDQXHB00011-BROWN-39"),
+        ("nackter Stamm «CJJJJTJT22925»", SV, 1, [], ["LX1000"], ["LX1000", EIGEN], OK200, True, "SD", "angelegt LX9001", ZAHL, "CJJJJTJT22925"),
+        ("Leerzeichen im Anhang «CJBJPFMZ00313-S0482A813 STYLE-Q10PCS»", SV, 1, [], ["LX1000"], ["LX1000", EIGEN], OK200, True, "SD", "angelegt LX9001",
+         ZAHL, "CJBJPFMZ00313-S0482A813 STYLE-Q10PCS"),
+        ("Fremd-SKU «fortura-1234» bleibt «anderer Lieferant»", SV, 1, [], None, None, OK200, False, None, "keine CJ-Artikel (anderer Lieferant)", None,
+         "fortura-1234"),
     ]
     fehler = selbsttest_cj_einmal()
     try:
-        for name, host, alter, liste1, liste2, liste3, antwort, soll_an, soll_ledger, soll_text, soll_push in faelle:
+        for fall in faelle:
+            name, host, alter, liste1, liste2, liste3, antwort, soll_an, soll_ledger, soll_text, soll_push = fall[:11]
+            fall_sku = fall[11] if len(fall) > 11 else "CJ-1234567890123"
             lesungen, angelegt, pushes = [liste1, liste2, liste3], [], []
 
             def fake_cj(path, body=None, einmal=False):
@@ -756,7 +775,7 @@ def selbsttest():
             bestellung = {"name": "#9001", "createdAt": created, "totalPriceSet": {"shopMoney": {"amount": "40.00"}},
                           "shippingAddress": {"name": "Test", "address1": "Weg 1", "city": "Bern", "zip": "3000",
                                               "countryCodeV2": "CH", "phone": "+41 79 000 00 00"},
-                          "customer": {}, "lineItems": {"nodes": [{"title": "T", "quantity": 1, "sku": "CJ-1234567890123",
+                          "customer": {}, "lineItems": {"nodes": [{"title": "T", "quantity": 1, "sku": fall_sku,
                                                                     "variantTitle": None}]}}
             ledger = tempfile.NamedTemporaryFile("w", delete=False, suffix=".txt"); ledger.close()
             g.update(cj=fake_cj, offene_bestellungen=lambda: [bestellung], token_pruefen=lambda: True,
