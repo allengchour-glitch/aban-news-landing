@@ -3,6 +3,6 @@
   "typ": "skript",
   "skript": "storefront_wahrheit.mjs",
   "warum": "Taegliche Pruefung der oeffentlichen Seite von einer ECHTEN Besucher-IP. Von unserer eigenen IP ist sie nicht pruefbar (Bot-Cache, 19.08. gemessen). Handy-Breite, weil 77 % des Verkehrs Handy ist.",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "abgebrochen",
+  "hinweis": "20.10.2026 22:25 von Hand geprüft: der Lauf starb mittendrin, als der Agent um 21:35–21:37 UTC mit neuem GitHub-Zugang neu gestartet wurde (kein Ergebnisbild für den 19.10.). Der Auftrag storefront-2026-10-20 lief danach sauber durch (21:47, drei Bilder). Tägliche Sichtprüfung — nicht wiederholt, der 19.10. entfällt."
 }
