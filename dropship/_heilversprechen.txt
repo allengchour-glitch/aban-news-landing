@@ -108952,3 +108952,5 @@ gid://shopify/Product/16653208682887	70b11e3a315f	2026-10-19	sauber
 gid://shopify/Product/16653209764231	aa0c9f36b847	2026-10-19	sauber
 gid://shopify/Product/16653210812807	051e2fec4d6d	2026-10-19	sauber
 gid://shopify/Product/16653211894151	07ed9355cc1a	2026-10-19	sauber
+gid://shopify/Product/15449098617217	25c9c2358eb5	2026-10-20	sauber
+gid://shopify/Product/15449098682753	8e43a31d80ca	2026-10-20	sauber
