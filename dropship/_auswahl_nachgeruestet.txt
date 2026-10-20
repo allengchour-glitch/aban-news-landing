@@ -3092,3 +3092,6 @@
 16654273249671	Farbe:5:5	2026-10-20	plaid-streifen-gurtelaufkleber-964992
 16654273216903	Farbe:3:3	2026-10-20	feuchtigkeitsspendender-air-cushion-blush-620100
 15493056528769	Gewicht:2:2	2026-10-20	m-2-ngff-ssd-d24381
+16654435615111	Farbe:3:3	2026-10-20	quarzuhr-mit-kalender-und-strassbesatz-638700
+16654433452423	Farbe:2+Grösse:6:12	2026-10-20	smart-ring-mit-herzfrequenz-blutsauerstoff-624100
+16654432960903	Farbe:2:2	2026-10-20	zirkon-doppelring-621700

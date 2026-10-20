@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 06:54 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 07:59 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1367 · **1301 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1103, teilweise: 168, keine: 30; Preisspanne > 2×: 159) · 1 CJ-Variante: 64 · ohne Antwort: 2
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1366 · **1300 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1102, teilweise: 168, keine: 30; Preisspanne > 2×: 159) · 1 CJ-Variante: 64 · ohne Antwort: 2
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -1208,7 +1208,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Handgemachte schwarze Press-on-Nägel mit Schleifenmuster (`handgemachte-schwarze-nagelsticker-mit-schleif-610500`) | 2 | 2 | 2.07–2.6 | 15.90 | Cardboard Packaging, Plastic Box Packaging |
 | Multifunktionales Aufbau-Gel für Nägel (`multifunktionales-aufbau-gel-fur-nagel-259136`) | 2 | 2 | 2.48–5.4 | 15.90 | Construct Four In One Gel 15g, Construct Four In One Gel 58g |
 | Elegante S925 Silber Ohrclips für Damen (`elegante-s925-silber-ohrclips-fur-damen-630000`) | 2 | 2 | 5.58–5.58 | 18.90 | Gold-925 Silver, White Gold Color-925 Silver |
-| M.2 NGFF SSD (`m-2-ngff-ssd-d24381`) | 2 | 2 | 23.52–33.22 | 49.90 | 120G, 60G |
 | Barockperlen-Armband mit Paperclip-Kette (`barockperlen-armband-mit-paperclip-kette-636800`) | 2 | 2 | 16.09–18.76 | 31.90 | 14K Gold-925 Silver, Platinum-925 Silver |
 | Modische Armbanduhr für Sie und Ihn (`modische-armbanduhr-fur-sie-und-ihn-607500`) | 2 | 2 | 11.61–11.61 | 25.90 | Silver Case White Noodles, Silver Case Black Noodles |
 | Moppstiel-Adapter für US-Grobgewinde (`moppstiel-adapter-fur-us-grobgewinde-622300`) | 2 | 2 | 2.81–2.81 | 16.90 | New American Style, New German Style |
