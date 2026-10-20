@@ -3198,3 +3198,7 @@
 15506294735233	Grösse:3:3	2026-10-20	handgelenk-trainingsgurt-fur-mehr-kraft-143616
 15506292310401	Grösse:5:5	2026-10-20	halsband-und-leinen-set-aus-samt-055616
 15506287460737	Farbe:2:2	2026-10-20	keramik-futternapf-fur-katzen-halswirbelsaule-031936
+15506284020097	Typ:2:2	2026-10-20	blumen-baumwollstoff-235-cm-breit-356672
+15506280415617	Grösse:3:3	2026-10-20	extrahoher-304-edelstahl-suppentopf-20-28cm-693888
+15506275238273	Farbe:4:4	2026-10-20	keramik-topf-im-nordischen-stil-450304
+15506262753665	Modell:6+Grösse:2:6	2026-10-20	bestickter-kissenbezug-mit-quasten-307200
