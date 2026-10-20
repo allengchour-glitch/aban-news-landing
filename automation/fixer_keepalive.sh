@@ -2590,6 +2590,19 @@ KLT=/tmp/test_klingen_tor.log
     fi
   fi
 
+  # 20.10.2026: FORTURA-ENGINE-KANARIENVOGEL — der Selbsttest (88 Faelle, ohne Netz, ~40 s) sichert Upload-Tor, at-most-once, Storno nach dem Upload,
+  # Feed-Plausibilitaet und Werktage-Warnung; faellt er, kann die Engine eine erstattete Bestellung an Fortura schicken oder doppelt bestellen.
+  FBT=/tmp/test_fortura_engine.log
+  if [ -f "$REPO/automation/fortura_bestell_engine.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$FBT" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$FBT"; then
+      ( cd "$REPO" && timeout 280 python3 automation/fortura_bestell_engine.py --selbsttest >> "$FBT" 2>&1 || echo "$(date -u +%F' '%H:%M) FORTURA-ENGINE FEHLER (Exit $?)" >> "$FBT" )
+    fi
+    if [ -s "$FBT" ] && tail -n 40 "$FBT" | grep -q "FEHLER\|FEHL "; then
+      echo "⚠️ FORTURA-ENGINE: Kanarienvogel gefallen — tail -40 $FBT"
+    fi
+  fi
+
   # 20.10.2026 (Runde 16:25): REEL-KADENZ-KANARIENVOGEL — die Wache las die PLANUNGSZEIT der Ledger-Zeilen (IG/FB 42 h, YouTube 42 h bei
   # laufendem Posten) und loeste «metricool:ID fb:ID» nie auf; jetzt liefert der Vorlauf-Plan die Sendezeit. Taeglich rein lesend (~1 s).
   RKT=/tmp/test_reel_kadenz.log
