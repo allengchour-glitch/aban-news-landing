@@ -3606,7 +3606,7 @@ JSON
   UW=/tmp/ueberwachung_waffen_guard.log
   if [ -f "$REPO/automation/ueberwachung_waffen_guard.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$UW" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$UW"; then
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$UW" || still_gestorben "$UW"; then
       touch "$UW"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       # 25.09.2026: Nur-Neuimporte (3 Tage) prüften seit der Grind-Pause 1 Seite je Lauf — Altware mit neuer Regel
       # (Feuerzeug in Pistolenform, Titel ohne Waffenwort) lief nie durch; der geteilte /tmp/export.jsonl trägt KEINEN
@@ -3620,9 +3620,15 @@ JSON
       fi
       # 14.10.2026: SCHARF=1 gilt nur für den Schusswaffen-Zubehör-Teil (Zielfernrohr-Montage, Holster, Zweibein): tagsAdd
       # «waffe-pruefen» → google_sperrtags_durchsetzen nimmt die Ware aus allen Kanälen; Laden bleibt. Ohne SCHARF nur Meldung.
-      ( cd "$REPO" && setsid bash -c "SEIT=$UW_SEIT EXPORT=/nonexistent SCHARF=1 python3 automation/ueberwachung_waffen_guard.py && date -u +%F > '$UW_STEMPEL'" \
+      # 20.10.2026 (Runde 20:25, Ampel «WAFFEN-VOLLLAUF überfällig: 10.10.»): der Wächter schrieb weder eine START- noch eine
+      # Schlusszeile — still_gestorben (Log vor dem Container-Start, letzte Zeile nicht FERTIG) und absturz_nachholen sahen
+      # ihn deshalb nie; ein im Neustart gestorbener Voll-Lauf blieb bis zum nächsten Tag zu. Jetzt: START-Marke als ERSTE Zeile,
+      # FERTIG als LETZTE (nur bei Exit 0, dort auch der Stempel), bei Fehler «Error: … Exit n» (absturz_nachholen) — und das Tor
+      # fragt beide Nachholer (je ≤ 3×/Tag).
+      UW_MODUS=tag3; [ "$UW_STEMPEL" != /dev/null ] && UW_MODUS=voll
+      ( cd "$REPO" && setsid bash -c "echo \"START \$(date -u +%FT%TZ) waffen-guard $UW_MODUS\"; SEIT=$UW_SEIT EXPORT=/nonexistent SCHARF=1 python3 automation/ueberwachung_waffen_guard.py; rc=\$?; if [ \$rc = 0 ]; then date -u +%F > '$UW_STEMPEL'; echo \"FERTIG waffen-guard $UW_MODUS\"; else echo \"Error: ueberwachung_waffen_guard Exit \$rc ($UW_MODUS)\"; fi" \
           >> "$UW" 2>&1 9>&- & )
-      echo "$(date -u +%H:%M) ueberwachung_waffen_guard gestartet"
+      echo "$(date -u +%H:%M) ueberwachung_waffen_guard gestartet ($UW_MODUS)"
     fi
   fi
   # 🏷️ BILD-ALT-TEXTE der Neuimporte, einmal täglich über die letzten Tage (20.08.2026).
