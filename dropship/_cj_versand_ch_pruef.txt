@@ -11733,3 +11733,6 @@ business-armbanduhr-aus-legierung-608300	2604050933471608700	7	6.68	ok	landeseit
 sport-visier-fur-kinder-444352	1406853701863346176	16	6.77	ok	landeseite
 kinder-remote-control-auto-uhr-e92a8d	3EE223C2-9330-4E22-95E1-1383671785B1	7	11.93	ok	landeseite
 wanderschuhe-fur-herren-atmungsaktiv-rutschfes-738ba0	0630312C-602C-47F1-A987-EF7F42DF5045	16	13.40	ok	landeseite
+blauer-casual-denim-kleid-637500	2607070548161638100	16	10.15	ok	landeseite
+wasserdichtes-armband-637800	2604050924251638200	7	6.34	ok	landeseite
+universal-fernbedienung-fur-smart-home-98943d	62A7487F-3C04-4421-B51A-3FB9FC930852	16	6.71	ok	landeseite
