@@ -11658,3 +11658,6 @@ edelstahl-3d-katzenpendant-mit-blumenkranz-uni-600700	-	-	-	unklar pid 1602002 P
 reflektierende-hundeleine-630000	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 manner-armbanduhr-mit-6-zeigern-632300	2604051001441632600	7	7.30	ok	landeseite
 tur-und-fenstersensor-wlan-f4dc6f	2807BFCC-F8C0-43E8-88C8-B5F00D1B93D4	16	5.20	ok	landeseite
+mini-wireless-keyboard-mit-touchpad-91f82b	A3737709-A7EE-4719-BA21-AE6A85647CC5	7	9.54	ok	landeseite
+wasserdichte-business-armbanduhr-mit-kalender-621400	2604050943001621800	7	6.81	ok	landeseite
+smart-warme-timer-mit-touch-bedienung-app-steu-51034c	0118AEEE-673B-49ED-9235-C57BA77E708F	16	7.34	ok	landeseite

@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 15:47 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 16:45 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1320 · **1254 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1063, teilweise: 165, keine: 26; Preisspanne > 2×: 155) · 1 CJ-Variante: 64 · ohne Antwort: 2
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1318 · **1252 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1061, teilweise: 165, keine: 26; Preisspanne > 2×: 155) · 1 CJ-Variante: 64 · ohne Antwort: 2
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -963,7 +963,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Bohemian Kissenhülle (`bohemian-kissenhulle-416640`) | 4 | 4 | 4.08–4.33 | 16.90 | Ringed sun-45x45cm-Pillowcase, Round velvet moon-45x45cm-Pillowcase, Loop velvet rainbow-45x45cm-Pillowcase, Ring rain-45x45cm-Pillowcase |
 | Keramik-Topf im nordischen Stil (`keramik-topf-im-nordischen-stil-450304`) | 4 | 4 | 19.03–19.03 | 55.90 | Green-S, Pink-S, Red-S, Yellow-S |
 | Grosser Bausteine-Spass für Kleinkinder (`grosser-bausteine-spass-fur-kleinkinder-010240`) | 4 | 4 | 15.24–24.4 | 53.90 | City Commander-36P, City Commander-56P, Animal Summer Camp-36P, Animal Summer Camp-56P |
-| Hängender Organizer mit Wochenetiketten (`hangender-organizer-mit-wochenetiketten-607700`) | 4 | 4 | 3.68–3.68 | 18.90 | Gray, Black, White, Pink |
 | Tencel Memory Foam Kissen (`tencel-memory-foam-kissen-793536`) | 4 | 4 | 7.22–10.74 | 20.90 | White-50x30x10cm, White-58x35x10cm, White box pack-50x30x10cm, White box pack-58x35x10cm |
 | Kompressions-Reisebeutel 3er-Set (`kompressions-reisebeutel-3er-set-624700`) | 4 | 4 | 3.1–3.1 | 14.90 | Beige, Gray, Black, Blue |
 | Kissenhülle Nordic Polka Dot (`kissenhulle-nordic-polka-dot-734912`) | 4 | 4 | 5.16–6.89 | 24.90 | Caramel Shef Newta-15x160cm with core, White ball-30cm, White knitted buttons-45x45cm with core, White knitted buttons-45x45cm without core |
@@ -1241,7 +1240,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Keramik Futternapf für Katzen – Halswirbelsäule Schutz (`keramik-futternapf-fur-katzen-halswirbelsaule-031936`) | 2 | 2 | 4.14–6.23 | 24.90 | Red, Yellow |
 | Multifunktionale Herren Quarzuhr im Trend-Design (`multifunktionale-herren-quarzuhr-im-trend-desi-798656`) | 2 | 2 | 8.52–8.52 | 21.90 | Black, Gold |
 | Kissenbezug Samtoptik – Hase & Avocado (`kissenbezug-samtoptik-hase-avocado-220928`) | 2 | 2 | 2.24–2.6 | 15.90 | Rabbit fur big green love-45x45cm, Teddy Avocado-45x45cm |
-| Doppelwandige Abtropfschale für Früchte (`doppelwandige-abtropfschale-fur-fruchte-860480`) | 2 | 2 | 4.45–5.59 | 24.90 | Small, Large |
 | Weisses Gänse-Daunenkissen (`weisses-ganse-daunenkissen-578368`) | 2 | 2 | 35.26–50.18 | 53.90 | White goose down pillow-45x75cm 1200g, White goose down pillow-50x80cm 1400g |
 | Langanhaltender Lidschatten Pen – 12er Set (`langanhaltender-lidschatten-pen-12er-set-836480`) | 2 | 2 | 7.41–7.41 | 27.90 | DNM12 color 1bright color gro, DNM12 color 2soft color gro |
 | Wasserdichtes Air Cushion Freckles Make-up (`wasserdichtes-air-cushion-freckles-make-up-254016`) | 2 | 2 | 2.06–2.06 | 21.90 | Saddle Brown, Cocoa Brown |
