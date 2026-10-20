@@ -1,4 +1,4 @@
-# Titelprobe-Fein — Stand 2026-10-19 20:41 UTC
+# Titelprobe-Fein — Stand 2026-10-20 20:45 UTC
 
 Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 0 · gesetzt 0 · fehler 0.
 
@@ -7,7 +7,7 @@ Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 0 · gese
 
 - Velours-Kolbenrock mit V-Ausschnitt
 
-## Ohne Treffer — bleibt grob (45)
+## Ohne Treffer — bleibt grob (46)
 
 - Ear-Cuffs «Papillon» – blauer Schmetterling  [G: Earrings]
 - Damen- und Kind-Freizeitanzug mit Print  [G: Activewear]
@@ -39,6 +39,7 @@ Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 0 · gese
 - Pflanzen-Wachstumslampe für Setzlinge  [G: Necklaces]
 - Rattan Vintage Wandlampe  [G: Necklaces]
 - Herren-Baselayer mit Reissverschluss, Langarm  [G: Activewear]
+- Abstrakter A-Linien-Maxi mit Batwing-Ärmeln  [G: Dresses]
 - Einseitige Schulter, Meerjungfrau-Schnitt  [G: Dresses]
 - Einseitiger Rüschensprunganzug  [G: Jumpsuits & Rompers]
 - Einteiliger Rückenfreier Sommeranzug  [G: Jumpsuits & Rompers]
