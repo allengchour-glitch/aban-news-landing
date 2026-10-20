@@ -45,6 +45,7 @@ AUSNAHMEN = {
     "automation/post_guard.mjs": "liest nur (Ledger _posted_media.txt)",
     "automation/codex_github_wache.py": "nennt reels_seed.csv nur als Pfadklasse für Codex-PR-Dateien (Klartext-Muster); schreibt eigenen Stand/Ledger/Testdateien, nie eine Queue",
     "automation/ig_aufraeumen.mjs": "liest nur",
+    "automation/test_metricool_kanaele.py": "Test: schreibt nur in eine KOPIE der reels_seed.csv in einem tempfile-Verzeichnis (fake_repo), nie in die echte Queue",
     "automation/linkinbio_sync.mjs": "liest nur",
     "automation/fb_link_kommentar.mjs": "liest nur",
     "automation/ig_gepostet_tags.py": "liest nur",
