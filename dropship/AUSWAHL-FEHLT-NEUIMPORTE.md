@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 13:13 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 14:29 UTC)
 
-Suche: `status:active AND created_at:>=2026-10-17` · gemessen 349 · **197 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 177, teilweise: 14, keine: 6; Preisspanne > 2×: 32) · 1 CJ-Variante: 152 · ohne Antwort: 0
+Suche: `status:active AND created_at:>=2026-10-17` · gemessen 335 · **183 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 163, teilweise: 14, keine: 6; Preisspanne > 2×: 29) · 1 CJ-Variante: 152 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -15,7 +15,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Sofa-Kissenbezug Retro Baumwoll-Leinen (`sofa-kissenbezug-retro-baumwoll-leinen-638300`) | 81 | 81 | 3.34–15.45 | 60.90 | Dark Gray-70X70cm, Dark Gray-70X90cm, Dark Gray-70X120cm, Dark Gray-70X150cm |
 | Sofa Kissenbezug aus Milchvelvet 70x70 cm (`sofa-kissenbezug-aus-milchvelvet-70x70-cm-607200`) | 80 | 80 | 2.57–11.98 | 50.90 | Dark Gray-110×110cm, Dark Gray-110×160cm, Dark Gray-110×180cm, Dark Gray-110×210cm |
 | Kissenbezug aus Baumwolle mit rutschfester Rückseite (`kissenbezug-aus-baumwolle-mit-rutschfester-ruc-635800`) | 80 | 80 | 3.03–14.38 | 60.90 | Coffee Color-70x70cm, Coffee Color-70x90cm, Coffee Color-70x120cm, Coffee Color-70x150cm |
-| Sitzkissenbezug aus weichem Samt (`sitzkissenbezug-aus-weichem-samt-613300`) | 76 | 76 | 2.02–7.12 | 43.90 | Coffee Color-70X70cm, Coffee Color-70X150cm, Coffee Color-70X180cm, Coffee Color-70X210cm |
 | Sofaabdeckung mit kariertem Muster (`sofaabdeckung-mit-kariertem-muster-623900`) | 66 | 66 | 3.34–14.58 | 64.90 | Gray-70x70cm , Gray-70x90cm , Gray-70x120cm , Gray-70x150cm  |
 | Kühle Sommerdecke mit Eiskrem-Muster (`kuhle-sommerdecke-mit-eiskrem-muster-615000`) | 65 | 47 | 3.69–12.94 | 52.90 | Pink And Gray Colorblock-105x150cm, Pink And Gray Colorblock-150x200cm, Pink And Gray Colorblock-180x200cm, Pink And Gray Colorblock-200x230cm |
 | Sommer-Bettlaken-Set Viskose (`sommer-bettlaken-set-viskose-866432`) | 64 | 64 | 7.16–15.25 | 61.90 | Summer Mat Army Green-120x200cm+1pc Pillowcase, Summer Mat Army Green-150x200cm+2pc Pillowcase, Summer Mat Army Green-180x200cm+2pc Pillowcase, Summer Mat Army Green-200x220cm+2pc Pillowcase |
@@ -23,9 +22,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Edelstahlarmband (`edelstahlarmband-618300`) | 59 | 59 | 2.15–3.46 | 16.90 | Style 442, Style 443, Style 444, Style 445 |
 | Sofaabdeckung aus Baumwolle, rutschfest, alljährlich (`sofaabdeckung-aus-baumwolle-rutschfest-alljahr-638900`) | 51 | 51 | 4.04–15.37 | 48.90 | Peach Joy-70x70cm, Peach Joy-70x90cm, Peach Joy-70x120cm, Peach Joy-70x150cm |
 | Sofaabdeckung mit geometrischem Muster – 180×130 cm (`sofaabdeckung-mit-geometrischem-muster-180-130-605500`) | 44 | 44 | 5.27–15.8 | 57.90 | Diamond Coffee Color-180x130cm, Diamond Coffee Color-180x180cm, Diamond Coffee Color-180x230cm, Diamond Coffee Color-180x260cm |
-| Sofa-Kissenbezug 70x70 cm, grau (`sofa-kissenbezug-70x70-cm-grau-631500`) | 40 | 40 | 6.08–14.76 | 58.90 | Light Gray-50x50, Light Gray-70x70, Light Gray-70x150, Light Gray-70x180 |
 | Easy Fan Wimpernverlängerung (`easy-fan-wimpernverlangerung-631700`) | 36 | 36 | 3.49–3.49 | 16.90 | 0.05C-Mix14to22mm, 0.05C-Mix18to25mm, 0.05C-16mm, 0.05C-17mm |
-| Cordyloy Sofa-Kissenbezug 70x70 cm (`cordyloy-sofa-kissenbezug-70x70-cm-622800`) | 36 | 36 | 4.04–10.98 | 42.90 | Dark Gray-70x70cm, Dark Gray-70x90cm, Dark Gray-70x120cm, Dark Gray-70x150cm |
 | Wasserdichtes Sofabedeckung mit geometrischem Design (`wasserdichtes-sofabedeckung-mit-geometrischem-626600`) | 30 | 30 | 5.27–10.42 | 45.90 | Taupe-Single Seat, Taupe-Double Seat, Taupe-Three Seat, Dark Gray-Single Seat |
 | Kaschmir-Schal für kalte Wintertage (`kaschmir-schal-fur-kalte-wintertage-620300`) | 29 | 20 | 4.44–4.85 | 16.90 | Beige, Black, White, Oatmeal Color |
 | Notizbuch mit PU-Ledercover (`notizbuch-mit-pu-ledercover-623800`) | 27 | 20 | 2.77–10.41 | 38.90 | Charming Black, Business Brown, Tiffany Blue, Vitality Red |
@@ -37,7 +34,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Sofakissenbezug aus Milchvelvet – 70×70 cm (`sofakissenbezug-aus-milchvelvet-70-70-cm-621100`) | 20 | 20 | 3.16–7.99 | 36.90 | Dark Gray-70×70cm, Dark Gray-70×150cm, Dark Gray-70×180cm, Dark Gray-70×210cm |
 | Keramiktasse 400 ml 3D Zebra (`keramiktasse-400-ml-3d-zebra-624400`) | 20 | 16 | 3.02–3.02 | 16.90 | 3D Zebra-400ml, 3D Sika Deer-400ml, 3D Elephant-400ml, 3D Orangutan-400ml |
 | Ovaler Zirconring-Set – 2- oder 3-teilige Varianten (`ovaler-zirconring-set-2-oder-3-teilige-variant-633700`) | 20 | 20 | 2.02–3.16 | 16.90 | White Gold 2 Piece Set-No 5, White Gold 2 Piece Set-No 6, White Gold 2 Piece Set-No 7, White Gold 2 Piece Set-No 8 |
-| Mink-Jacquard-Vintage-Blumen-Kissenbezug ohne Kern (`mink-jacquard-vintage-blumen-kissenbezug-ohne-633200`) | 20 | 20 | 2.37–4.02 | 16.90 | 30×50CM-Brown, 30×50CM-Dark Green, 30×50CM-Gray, 30×50CM-Black |
 | Geschenkverpackung aus Hartpapier (`geschenkverpackung-aus-hartpapier-606400`) | 18 | 18 | 2.92–2.92 | 16.90 | 1 Brushed Silver-12x12x12cm, 2 Pure White-12x12x12cm, 3 Luxury Gold-12x12x12cm, 4 Pure Gold-12x12x12cm |
 | Silberner Kissenbezug aus Mulberry-Seide (`silberner-kissenbezug-aus-mulberry-seide-610700`) | 17 | 16 | 25.17–25.17 | 34.90 | Wine Red, Smoke Pink, Lake Blue, Gray And Blue |
 | Sofa-Bezug mit Textur-Muster (`sofa-bezug-mit-textur-muster-600500`) | 16 | 16 | 2.39–21.01 | 84.90 | Coffee Color-Single Seat, Coffee Color-Two Seat, Coffee Color-Three Seat, Coffee Color-Four Seat |
@@ -80,7 +76,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Feuchtigkeitslipgloss, langanhaltend, verwischfrei (`feuchtigkeitslipgloss-langanhaltend-verwischfr-635800`) | 8 | 7 | 2.17–2.17 | 16.90 | Starry Peach, Jue Brewing Plum Powder, Laid back Misty Pink, Electric Berry |
 | Gold-Foil-Chocolate Lidschatten (`gold-foil-chocolate-lidschatten-099712`) | 8 | 8 | 3.52–3.52 | 16.90 | 601 Pine Cone Wood Rose, 602 Elk Maple Grove, 603 Gold Foil Chocolate, Apricot Peach Plate |
 | Star Kiss Diamant Lippenstift (`star-kiss-diamant-lippenstift-625800`) | 8 | 8 | 2.57–2.57 | 16.90 | Deep purple brown-3.5g, Peach powder-3.5g, Rosy-3.5g, Naked rice tea-3.5g |
-| Sitzauflage mit Rutschschutz aus Polyester (`sitzauflage-mit-rutschschutz-aus-polyester-624000`) | 8 | 8 | 4.04–4.04 | 16.90 | Dark Gray-90x180cm, Black-90x180cm, Navy Blue-90x180cm, Camel-90x180cm |
 | Taktische Umhängetasche für Outdoor-Sport (`taktische-umhangetasche-fur-outdoor-sport-624800`) | 7 | 7 | 5.03–5.03 | 18.90 | Black-Below 20L, Brown-Below 20L, Italian Camouflage-Below 20L, Dark Night-Below 20L |
 | Umhängetasche mit Rautenmuster (`umhangetasche-mit-rautenmuster-623000`) | 7 | 7 | 7.99–7.99 | 21.90 | Color, Silver, Black Gold Diamand, Green |
 | Kristall-Hanf Kopftuch – Monochromes Design (`kristall-hanf-kopftuch-monochromes-design-606000`) | 7 | 7 | 3.1–3.1 | 16.90 | 2 White-Average Size, 3 Navy Blue-Average Size, 4 Pink Color-Average Size, 5 Light Khaki-Average Size |
@@ -95,7 +90,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Digitales Wasserwaage-Messgerät 0-200 mm rot (`digitales-wasserwaage-messgerat-0-200-mm-rot-79aea4`) | 7 | 0 | 13.04–21.73 | 34.90 | Silver-600cm, Red-300cm, Red-200cm, Red-400cm |
 | Universal-Steckschlüssel (`universal-steckschlussel-44f388`) | 7 | 7 | 1.79–1.79 | 16.90 | Blue, Green, Red, Yellow |
 | Titanstahlring mit Totenkopf (`titanstahlring-mit-totenkopf-624100`) | 7 | 7 | 2.67–2.67 | 16.90 | Silver-No 6, Silver-No 7, Silver-No 8, Silver-No 9 |
-| Flanell-Lazydecke 130×180 cm (`flanell-lazydecke-130-180-cm-601800`) | 7 | 7 | 7.81–7.81 | 19.90 | Gray-130X180cm, Pink-130X180cm, Sapphire Blue-130X180cm, Navy Blue-130X180cm |
 | Silk Kissenbezug Leopard Muster (`silk-kissenbezug-leopard-muster-608900`) | 7 | 7 | 20.83–20.83 | 30.90 | White-48x74cm, Navy Blue-48x74cm, Light Pink-48x74cm, Dark Gray-48x74cm |
 | Wasserdichte Herren-Crossbody-Tasche aus Oxford-Stoff (`wasserdichte-herren-crossbody-tasche-aus-oxfor-625500`) | 6 | 6 | 3.86–4.86 | 17.90 | Black-Plastic buckle, Black-Magnetic buckle, Blue-Plastic buckle, Blue-Magnetic buckle |
 | Beetle Travel Outdoor Rucksack 36-55 L (`beetle-travel-outdoor-rucksack-36-55-l-384448`) | 6 | 6 | 9.0–12.05 | 40.90 | Red-Backpack, Red-Backpack 3piece, Blue-Backpack, Blue-Backpack 3piece |
@@ -114,7 +108,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Titan-Milchtopf mit Hammerschlag-Textur (`titan-milchtopf-mit-hammerschlag-textur-610800`) | 6 | 6 | 14.31–18.17 | 60.90 | 18cm-with lid, 18cm-without lid, 20cm-with lid, 20cm-without lid |
 | Feuchtigkeitsspendendes Lipgloss- und Lipliner-Set (`feuchtigkeitsspendendes-lipgloss-und-lipliner-601000`) | 6 | 6 | 2.21–2.21 | 16.90 | 15ml-Caramel Cotton, 15ml-Strawberry Cake, 15ml-Classic Red, 15ml-Chocolate |
 | Wasserglanz-Lippenstift (`wasserglanz-lippenstift-624500`) | 6 | 6 | 6.97–6.97 | 16.90 | 01 Peony Ballet-4G, 02 Milk Flavor Peanut-4G, 03 Warm Rose-4G, 04 Grape Path-4G |
-| Leichter Sheer Concealing Foundation Stick (`leichter-sheer-concealing-foundation-stick-624200`) | 6 | 6 | 2.63–2.63 | 16.90 | Stick Foundation-Ivory, Stick Foundation-Natural Color, Stick Foundation-Light Flesh Color, Stick Foundation-Skin Color |
 | Retro Postmann Umhängetasche (`retro-postmann-umhangetasche-626400`) | 5 | 5 | 22.39–22.39 | 53.90 | Army Green, Lake Water Green Color, Black, Khaki |
 | Outdoor-Rucksack 1000D/PU (`outdoor-rucksack-1000d-pu-205376`) | 5 | 5 | 10.09–10.09 | 32.90 | Black, Wolf Brown, Grey, CP Camo |
 | Canvas Rucksack mit Tragegriff – 25x45x23 cm (`canvas-rucksack-mit-tragegriff-25x45x23-cm-214400`) | 5 | 5 | 5.77–5.77 | 25.90 | Black, Khaki, Brown, Coffee color |
@@ -155,7 +148,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Neunfaches Vajra-Knoten Armband (`neunfaches-vajra-knoten-armband-607400`) | 4 | 4 | 3.11–17.0 | 26.90 | Brown-Career Becomes , Brown-Six character Mantra, Red-Lucky , Red-Six character Mantra |
 | Tibetisches Mantra-Armband aus 925-Silber (`tibetisches-mantra-armband-aus-925-silber-639700`) | 4 | 4 | 12.08–12.08 | 20.90 | Red-Adjustable end buckle, Red-Approximately 15cm for hand, Black-Adjustable end buckle, Black-Approximately 15cm for hand |
 | Armband mit Bodhi-Samen und Dzi-Perlen (`armband-mit-bodhi-samen-und-dzi-perlen-630500`) | 4 | 4 | 20.66–20.66 | 29.90 | 14mm-Size 15, 14mm-Size 16, 14mm-Size 17, 14mm-Size 18 |
-| Smartwatch mit Bluetooth-Anrufen und Herzfrequenz (`smartwatch-mit-bluetooth-anrufen-und-herzfrequ-627200`) | 4 | 4 | 33.33–35.07 | 47.90 | Black-Single watch, Black-Silicone Steel Strip, Silver Orange-Single watch, Silver Orange-Silicone Steel Strip |
 | Multifunktionale Quarzuhr mit Lederarmband (`multifunktionale-quarzuhr-mit-lederarmband-638200`) | 4 | 4 | 30.9–30.9 | 42.90 | White Shell And Blue Surface, White Shell And Black Surface, Black Shell Black Surface, Black Shell Green Surface |
 | Vintage Quarz-Armbanduhr für Damen (`vintage-quarz-armbanduhr-fur-damen-609400`) | 4 | 4 | 12.85–12.85 | 21.90 | Gold Strap Gold Noodles, Gold Strap Red Noodles, Gold Strap White Noodles, Silver Streak White Noodles |
 | Oversized Wollschal Dreieck 200 cm (`oversized-wollschal-dreieck-200-cm-605900`) | 3 | 3 | 12.44–12.44 | 21.90 | Raw Velvet Rice-200X90cm, Raw Velvet Camel-200X90cm, Gray-200X90cm |
@@ -173,14 +165,8 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | 78-Farben-Lidschatten-Palette Matt Schimmernd (`78-farben-lidschatten-palette-matt-schimmernd-416768`) | 3 | 3 | 3.0–3.0 | 16.90 | Color1, Color2, Color3 |
 | Kaminbürste für Trocknerrohre und Abzugshauben (`kaminburste-fur-trocknerrohre-und-abzugshauben-445dd5`) | 3 | 1 | 1.11–1.96 | 16.90 | 1 set of cleaning brush, Brush head, Pole |
 | Falsche Wimpern mit Strass-Design (`falsche-wimpern-mit-strass-design-639900`) | 3 | 3 | 2.21–2.21 | 16.90 | Diamond 301, Diamond 302, Diamond 303 |
-| Silberring mit natürlichem Granat (`silberring-mit-naturlichem-granat-628500`) | 3 | 3 | 41.15–43.92 | 55.90 | Natural Topaz Ring-Adjustable Opening, Natural Garnet Ring-Adjustable Opening, Natural Citrine Ring-Adjustable Opening |
-| Herren-Quarzuhr mit quadratischem Gehäuse (`herren-quarzuhr-mit-quadratischem-gehause-615600`) | 3 | 3 | 11.98–11.98 | 20.90 | Lively Blue, Elegant Green, Flame Red |
 | Ultraflache Quarzuhr für Damen mit Milanaise-Armband (`ultraflache-quarzuhr-fur-damen-mit-milanaise-a-620000`) | 3 | 3 | 32.08–32.08 | 42.90 | White, Blue Face, Rose Shell |
 | Quarz-Uhr mit Stahlarmband für Herren (`quarz-uhr-mit-stahlarmband-fur-herren-637800`) | 3 | 3 | 4.2–5.25 | 16.90 | Silver Strap, Belt Brown, Belt Black |
-| Bluetooth Gamepad für Switch, Android, Apple und PC (`bluetooth-gamepad-fur-switch-android-apple-und-618600`) | 3 | 3 | 7.64–7.64 | 18.90 | G6S Black And White, G6S Black, G6S Gray |
-| Korrektur-Stick mit Farbwechsel (`korrektur-stick-mit-farbwechsel-602800`) | 3 | 3 | 2.81–2.81 | 16.90 | Ivory white, Natural color, Dark complexion |
-| Foundation mit Farbwechsel (`foundation-mit-farbwechsel-606500`) | 3 | 3 | 2.28–2.28 | 16.90 | Ivory white, Natural color, Dark complexion |
-| Multifunktioneller Makeup-Stick (`multifunktioneller-makeup-stick-621000`) | 3 | 3 | 2.99–2.99 | 16.90 | Dark complexion, Natural color, Light complexion |
 | Frosted Fahrrad-Rennrucksack (`frosted-fahrrad-rennrucksack-073600`) | 2 | 2 | 6.56–6.56 | 17.90 | Frosted Style, Carbon pattern |
 | Grosses Casual-Rucksack mit PU-Leder und Buchstaben-Print (`grosses-casual-rucksack-mit-pu-leder-und-buchs-609664`) | 2 | 2 | 7.63–7.63 | 33.90 | Patterned Black, Large Plaid Flower |
 | Männer-Wasserdichte Multifunktionstasche (`manner-wasserdichte-multifunktionstasche-540224`) | 2 | 2 | 9.12–10.78 | 29.90 | Cool black-10inches, Volcanic black-10inches |
