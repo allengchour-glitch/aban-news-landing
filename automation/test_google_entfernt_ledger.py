@@ -35,6 +35,14 @@ try:
     echt = g.entfernte_handles()
     pruefe("echtes Ledger: die 4 Handles vom 20.10./12.10. sind drin",
            {"sommer-einfarbiges-hohlkleid-613600", "seidenmaske-mit-halsbedeckung-fur-damen-628900"} <= echt, f"{len(echt)} Handles")
+    # Zweite Lücke (20.10.): die Durchsetzungs-Suche fand `google-gesperrt-*`-Tags nicht (nur exakte AUSSCHLUSS_TAGS)
+    if os.path.exists("/tmp/cj_shop_token.txt"):
+        import google_sperrtags_durchsetzen as sd
+        st = sd.suchtags()
+        pruefe("Suche fragt google-gesperrt-adult mit", "google-gesperrt-adult" in st, str(st[:5]))
+        pruefe("Suche fragt weiter die alten Ausschluss-Tags", "adult-nicht-bewerben" in st and "18plus" in st, str(st[:5]))
+    else:
+        print("  --   Durchsetzungs-Suche übersprungen (kein /tmp/cj_shop_token.txt)")
 finally:
     shutil.rmtree(d, ignore_errors=True)
 print("ALLE GRUEN" if ok else "FEHLSCHLAG")

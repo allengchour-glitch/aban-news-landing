@@ -61,8 +61,19 @@ def gql(q, v=None):
     raise SystemExit("ABBRUCH: Shopify antwortet nicht")
 
 
+# 20.10.2026: gs.ausschluss_tag() kennt auch den Präfix `google-gesperrt-*` (von Google gemeldete Verstösse; merchant_issue_fix.py
+# legt ihn an UND nimmt aus dem Kanal), aber die Suche unten fragte nur die exakten Tags aus AUSSCHLUSS_TAGS — wer einen
+# `google-gesperrt-adult` per Hand setzte, blieb im Google-Kanal (gemessen 20.10.: 3 Produkte, Trockenlauf fand 0).
+PRAEFIX_SUCHTAGS = ("google-gesperrt-adult", "google-gesperrt-cbd", "google-gesperrt-notlage")
+
+
+def suchtags():
+    """Alle exakten Tags, nach denen die Vorfilter-Suche fragt (Ausschluss-Tags + bekannte Google-Sperr-Tags)."""
+    return sorted(set(gs.AUSSCHLUSS_TAGS) | set(PRAEFIX_SUCHTAGS))
+
+
 def kandidaten():
-    tags = " OR ".join(f"tag:'{t}'" for t in sorted(gs.AUSSCHLUSS_TAGS))
+    tags = " OR ".join(f"tag:'{t}'" for t in suchtags())
     q = f"status:active AND publication_ids:{GOOGLE.rsplit('/', 1)[1]} AND ({tags})"
     # Kanarienvogel: ein Tag, den es nicht gibt, muss 0 ergeben — sonst ignoriert Shopify den Filter.
     kan = gql("query($q:String){productsCount(query:$q,limit:null){count}}",
