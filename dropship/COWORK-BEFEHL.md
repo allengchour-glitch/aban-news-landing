@@ -1,5 +1,18 @@
 # COWORK-BEFEHL — Fassung 21.09.2026, 09:40 UTC (für heute Abend)
 
+## 🆕 20.10. 16:00 UTC — Fortura-Storno #1027 + «Sichtbarkeit auf Maximum»: was nur DU kannst (5 Klicks, alle klein)
+1. **Mail an Fortura senden (Entwurf liegt in Gmail, Antwort an Frau Gertsch, Betreff «Re: Bestellung LX1027»).** Die Frage: aus welchem Bestand werden Bestellungen über Kundennr. 544341 beliefert —
+   nur «Lagerbestand Fortura» oder auch Bazar? Bis zur Antwort rechnet der Shop NUR mit «Lagerbestand Fortura» (minus 1 Puffer). **Wichtig:** Die Lagerstand-Hygiene draftet Fortura-Produkte bei Bestand 0 NICHT,
+   solange `dropship/_fortura_hygiene_pause.txt` «BIS: 2026-10-27» trägt (683 Produkte, 11 Tage vor Halloween). Antwortet Fortura «Bazar wird nicht geliefert» → Datei löschen (die Hygiene darf dann draften);
+   «Bazar wird geliefert» → in `fortura_bestand_sync.mjs` die Spalte auf Total zurückstellen (Rückfrage an mich genügt). **Der Entwurf sagt «Kundin erstattet» — die Erstattung (CHF 46.90, Mastercard) steht in Shopify noch auf «pending».**
+2. **Social-Vorlauf endet So 25.10. 21:00 UTC** (`automation/data/vorlauf_regeln.json`, dein Auftrag «bis Sonntag 22:00»). Container-Ausfälle (15.–18.10.: 88 h ohne einen Post) schützt nur der Metricool-Vorlauf. **Entscheid:** rollierend weiterlaufen
+   lassen (7 Tage voraus, gleiche Kadenz, ~520 von 700 Metricool-Einträgen/Monat)? Ja = ich stelle `fenster_ende_utc` auf «rollierend» um.
+3. **Indexierung beantragen (Search Console, ~10/Tag):** nur das beschleunigt Google nachweislich (11/11 Anträge vom 19.10. binnen Minuten indexiert). Reihenfolge und Direktlinks: die tägliche Index-Routine; heute zusätzlich die neuen
+   Such-Kollektionen (Lockenstäbe, Glätteisen, Luftbefeuchter, Aufbewahrungsboxen, Handschuhe, Strickjacken, Strickkleider, Uhrenarmbänder, Handtuchhalter), sobald sie live sind (Handles = Kollektionsname).
+4. **Halsband-P-Ketten (Rechtsurteil, 4 Produkte aktiv):** «Hundehalsband P-Kette», «Semi-kontrolliertes P-Kettenhalsband aus Rindsleder», «Reflektierendes P-Kettenhalsband», «P-Kette für Hunde aus Edelstahl» —
+   Zugkette/Würger? TSchV Art. 76 verbietet Stachel- und Würgehalsbänder. Das **Stachelhalsband** («Stimulationskette», Bild: Metallzacken) habe ich 20.10. gedraftet; die P-Ketten lasse ich bis zu deinem Urteil aktiv (Retrieverleine ≠ Würger?).
+5. **CH-Lager-Profil Stufe 2 → 3** (747 Produkte, 499 Spielzeug; Vorbedingung erfüllt: 0 Meldungen «shipping»/«Inaccurate» für CH, nur `[LI]`): der Probelauf wurde vom Berechtigungsprüfer abgelehnt — Wirkung gering, Freigabe oder du setzt «stufe» 3 in `dropship/_ch_lager_profil_stufe.json`.
+
 ## 🆕 20.10. 07:00 UTC — Bewertungen: A ist entschieden — aber eine ZWEITE Sitzung hat trotz Stopp importiert (zuletzt 18.10.; kann jederzeit wieder, 1 Min.)
 **Entschieden 20.10. (Betreiber «A und sonst weiter»):** Der Import-Stopp (`dropship/_bewertungen_stopp.txt`) bleibt, das Plan-Ziel «≥ 10 von 29 Top-Seiten bis 22.10.» entfällt.
 Bewertungen kommen künftig nur von echten Käufern des Shops. Hinzu kommt: für die meisten der meistbesuchten Seiten gibt es bei CJ ohnehin keine Kommentare

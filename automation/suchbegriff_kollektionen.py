@@ -27,6 +27,18 @@ KOLL = REGEL["kollektionen"]
 for k in KOLL:
     k["_ja"] = re.compile(k["ja"], re.I)
     k["_nein"] = re.compile(k["nein"], re.I)
+    # 20.10.2026 (Spähtrupp/Prüfer): optionale Felder — nein_tags (Regex auf einzelne Produkt-Tags, z. B. Herren-Cardigans aus «Strickjacken
+    # für Damen») und nein_typ (Regex auf productType, z. B. Beauty-Tools/Haustierbedarf/Auto-Zubehör), weil der Titel allein Fremdware durchlässt.
+    k["_nein_tags"] = re.compile(k["nein_tags"], re.I) if k.get("nein_tags") else None
+    k["_nein_typ"] = re.compile(k["nein_typ"], re.I) if k.get("nein_typ") else None
+# Produkte mit einem dieser Tags kommen in KEINE Suchseite (Hausregeln: Kostüm, 18+, Rauch, Google-/Werbe-Sperre, Waffe, Heilversprechen,
+# Medizinprodukt, Messer). Ohne diese Sperre trafen die neuen Titel-Muster 11 Kostüm-/Policy-Produkte (Prüfer 20.10.).
+RISIKO_TAGS = re.compile(r"kostuem|18plus|raucher|google-policy|nicht-google|nicht-bewerben|adult|waffe|heilversprechen|medizinprodukt|messer", re.I)
+try:  # Werbetest-Sperre (13 Produkte bis 24.10.): keine Tag-Schreibung an diesen IDs
+    from werbetest_sperre import gesperrt as _werbetest_gesperrt
+except Exception:  # pragma: no cover
+    def _werbetest_gesperrt(_pid):
+        return False
 LEDGER = os.path.join(REPO, "dropship", "_suchbegriff_kollektionen.tsv")
 # dieselben Kanäle wie «hype-jetzt» (Online Store, Shop, TikTok, Facebook & Instagram, Google & YouTube, Pinterest, Headless ×2)
 KANAELE = ["gid://shopify/Publication/301970915713", "gid://shopify/Publication/301971014017",
@@ -35,8 +47,14 @@ KANAELE = ["gid://shopify/Publication/301970915713", "gid://shopify/Publication/
            "gid://shopify/Publication/391625933191", "gid://shopify/Publication/391626359175"]
 
 
-def soll_tags(titel):
-    return {k["tag"] for k in KOLL if k["_ja"].search(titel or "") and not k["_nein"].search(titel or "")}
+def soll_tags(titel, tags=(), typ=""):
+    tags = [str(t) for t in (tags or [])]
+    if any(RISIKO_TAGS.search(t) for t in tags):
+        return set()
+    return {k["tag"] for k in KOLL
+            if k["_ja"].search(titel or "") and not k["_nein"].search(titel or "")
+            and not (k["_nein_tags"] and any(k["_nein_tags"].search(t) for t in tags))
+            and not (k["_nein_typ"] and k["_nein_typ"].search(typ or ""))}
 
 
 def kanarien():
@@ -54,6 +72,30 @@ def kanarien():
             n += 1
             if len(k[feld]) > grenze or "ß" in k[feld] + k["html"]:
                 f += 1; print(f"  ✗ {k['handle']} {feld} {len(k[feld])} Zeichen (max {grenze}) oder ß")
+    # 20.10.2026: Kanarien für die drei neuen Sperren (Risiko-Tag, nein_tags, nein_typ) — in BEIDE Richtungen
+    k0 = KOLL[0]
+    for was, ergebnis, soll in (
+        ("Risiko-Tag sperrt alles", soll_tags(k0["kanarien"]["ja"][0], ["kostuem-ch-front"]), set()),
+        ("ohne Risiko-Tag trifft wie bisher", soll_tags(k0["kanarien"]["ja"][0], ["hund"]) & {k0["tag"]}, {k0["tag"]}),
+    ):
+        n += 1
+        if ergebnis != soll:
+            f += 1; print(f"  ✗ {was}: {ergebnis} statt {soll}")
+    for k in KOLL:
+        if k["_nein_tags"] or k["_nein_typ"]:
+            ja0 = k["kanarien"]["ja"][0]
+            if k["_nein_tags"]:
+                tg = next((t for t in ("herren", "kinder", "baby", "haustier", "hund") if k["_nein_tags"].search(t)), None)
+                if tg:
+                    n += 2
+                    if k["tag"] in soll_tags(ja0, [tg]): f += 1; print(f"  ✗ {k['tag']} nein_tags greift nicht ({tg})")
+                    if k["tag"] not in soll_tags(ja0, ["damen"]): f += 1; print(f"  ✗ {k['tag']} nein_tags sperrt zu viel")
+            if k["_nein_typ"]:
+                ty = next((t for t in ("Beauty-Tools", "Haustierbedarf", "Auto-Zubehör", "Haustier", "Beauty") if k["_nein_typ"].search(t)), None)
+                if ty:
+                    n += 2
+                    if k["tag"] in soll_tags(ja0, [], ty): f += 1; print(f"  ✗ {k['tag']} nein_typ greift nicht ({ty})")
+                    if k["tag"] not in soll_tags(ja0, [], "Wohnen"): f += 1; print(f"  ✗ {k['tag']} nein_typ sperrt zu viel")
     print(f"SUCHBEGRIFF-KANARIEN {n - f}/{n}")
     return f == 0
 
@@ -68,9 +110,13 @@ def tags_angleichen(gql, produkte, scharf):
     alle_such = {k["tag"] for k in KOLL}
     plus = minus = 0
     for p in produkte:
+        if _werbetest_gesperrt(p["id"]):
+            continue
         ist = {t for t in p.get("tags") or [] if t in alle_such}
-        soll = soll_tags(p["title"])
+        soll = soll_tags(p["title"], p.get("tags"), p.get("productType"))
         add, weg = sorted(soll - ist), sorted(ist - soll)
+        if os.environ.get("NUR_PLUS") == "1":   # 20.10.2026: nur Tags ergänzen, nichts entfernen (Altbestand mit abweichendem Regelstand bleibt)
+            weg = []
         if not add and not weg:
             continue
         plus += len(add); minus += len(weg)
@@ -167,7 +213,7 @@ def main():
         produkte, after = [], None
         while True:
             d = gql('query($q:String!,$a:String){products(first:250,after:$a,query:$q){pageInfo{hasNextPage endCursor} '
-                    'nodes{id title tags}}}', {"q": f"status:active AND created_at:>{seit}", "a": after})["products"]
+                    'nodes{id title tags productType}}}', {"q": f"status:active AND created_at:>{seit}", "a": after})["products"]
             produkte += d["nodes"]
             if not d["pageInfo"]["hasNextPage"]:
                 break

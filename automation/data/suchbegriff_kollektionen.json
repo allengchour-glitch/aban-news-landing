@@ -429,6 +429,248 @@
      "Mundnasser-Schutz Trinkbrunnen für Katzen"
     ]
    }
+  },
+  {
+   "handle": "aufbewahrungsboxen",
+   "titel": "Aufbewahrungsboxen & Körbe",
+   "tag": "such-aufbewahrungsbox",
+   "ja": "aufbewahrungs-?(box|boxen|kiste|kisten|korb|k(ö|oe)rbe|beh(ä|ae)lter)|storage.?box|organizer-?box|ordnungs-?box|stapelbox|faltbox",
+   "nein": "k(ü|ue)hlschrank|schmuck|werkzeug|make-?up|kosmetik|geschenk|handy|brot|lunch|bento|fahrrad|\\bauto\\b|auto-|\\buhr|kaffee|snack|haustier|hund|katze|konsole|haarstyl|schreibtisch|desktop|gew(ü|ue)rz|tablet|m(ü|ue)nz|zahn|pille|medik|spielzeug|brille|akku|batterie|weihnacht|halloween|ostern|kabel|schuh|socken|unterw|stift|f(ö|oe)hn|kinder|baby|beauty|flip|karten|streichholz|fruchtgabel|n(ä|ae)h|kofferraum|eisw(ü|ue)rfel|\\btee|obst|set mit|game|controller|rubik|man(i|ik)(ü|ue)re|schl(ü|ue)ssel|baustein|zutaten|acryl",
+   "seo_title": "Aufbewahrungsboxen mit Deckel & Körbe kaufen | LuxeStyle",
+   "seo_desc": "Aufbewahrungsboxen und Körbe für Schrank, Küche und Bad: mit Deckel, stapelbar oder faltbar, aus Kunststoff, Stoff und Holz. Versand in die Schweiz.",
+   "html": "<p>Eine Aufbewahrungsbox schafft Platz im Schrank, im Regal oder unter dem Bett. Hier findest du Boxen mit und ohne Deckel, Körbe aus Stoff, Rattan oder Seegras sowie stapelbare und faltbare Modelle.</p><h2>Worauf achten?</h2><ul><li><strong>Innenmass:</strong> Miss den Platz aus und vergleiche mit den Massen auf der Produktseite.</li><li><strong>Deckel:</strong> Mit Deckel bleibt der Inhalt abgedeckt und die Boxen lassen sich stapeln.</li><li><strong>Material:</strong> Stoff und Korb sind leicht, Kunststoff lässt sich abwischen, Holz ist stabiler.</li><li><strong>Faltbar:</strong> Faltboxen brauchen leer kaum Platz.</li></ul><p>Mehr Ordnung: <a href=\"/collections/ordnung-aufbewahrung\">Ordnung &amp; Aufbewahrung</a>. Lieferzeit und Versandweg stehen auf jeder Produktseite. Bezahlen kannst du mit TWINT oder Klarna.</p>",
+   "kanarien": {
+    "ja": [
+     "Transparente Aufbewahrungsbox mit Deckel",
+     "Grosser Aufbewahrungskorb für Haushalt & Freizeit",
+     "Faltbare Aufbewahrungsbox für Kleidung",
+     "6er Set transparente Aufbewahrungsboxen mit Doppelreissverschluss",
+     "Stapelbox aus Kunststoff"
+    ],
+    "nein": [
+     "Schmuck-Aufbewahrungsbox aus Samt",
+     "Transparente Kühlschrank-Aufbewahrungsbox",
+     "Auto Aufbewahrungsbox",
+     "Kosmetik-Aufbewahrungsbox für den Schreibtisch",
+     "Snack-Aufbewahrungsbox aus Holz für Haustiere"
+    ]
+   }
+  },
+  {
+   "handle": "handschuhe",
+   "titel": "Handschuhe",
+   "tag": "such-handschuhe",
+   "ja": "handschuh",
+   "nein": "torwart|box|arbeits|schwei(ß|ss)|garten|einweg|latex|ofen|back|grill|gaming|motorrad|baseball|fahrrad|rad-?handschuh|angel|golf|schnitt|sp(ü|ue)l|reinigung|silikon|haarf|massage|peeling|kost(ü|ue)m|cosplay|zombie|skelett|vampir|hexe|pinguin|katze|hund|haustier|gewicht|fitness|kraft|trainings|sport|kinder|baby|gummi|wrestling|puppe|wasch|trockner|ski|snow|\\buv|sonnenschutz|eisseide|bademantel|waffe|schie(ß|ss)|girlande|schwimm|mesh|ell?enbogen|tauch|kletter|fingerlinge|fisch|jagd|pfoten|set:|3-in-1|3-teilig|dreiteilig|hut,|kompression|therap|infrarot|rotlicht|heizhandschuh|handschuhfach|handschuhhalter|handschuh-?st(ä|ae)nder|aufbewahr",
+   "seo_title": "Handschuhe kaufen: Winter, Touchscreen & Leder | LuxeStyle",
+   "seo_desc": "Handschuhe für kalte Tage: gefütterte Winterhandschuhe, Strickhandschuhe mit Touchscreen, Lederhandschuhe und fingerlose Modelle. Versand in die Schweiz.",
+   "html": "<p>Handschuhe für den Arbeitsweg, den Spaziergang und die ersten Frosttage. Hier findest du Strickhandschuhe, gefütterte Winterhandschuhe, Modelle aus Leder und Handschuhe, mit denen sich das Handy bedienen lässt.</p><h2>Worauf achten?</h2><ul><li><strong>Futter:</strong> Fleece und Plüsch wärmen mehr als ungefütterter Strick.</li><li><strong>Touchscreen:</strong> Ob die Fingerspitzen das Handy bedienen, steht beim Produkt.</li><li><strong>Grösse:</strong> Miss den Handumfang über den Knöcheln und vergleiche mit der Tabelle.</li><li><strong>Fingerlos:</strong> Halbfinger-Modelle lassen die Fingerspitzen frei, zum Beispiel zum Tippen.</li></ul><p>Mehr gegen Kälte: <a href=\"/collections/muetzen-schals\">Mützen, Schals &amp; Stirnbänder</a> und <a href=\"/collections/winter-kaelte\">Winter &amp; Kälte</a>. Lieferzeit und Versandweg stehen auf jeder Produktseite. Bezahlen kannst du mit TWINT oder Klarna.</p>",
+   "kanarien": {
+    "ja": [
+     "Warme Touchscreen-Handschuhe mit Fleecefutter",
+     "Damen-Handschuhe aus Schafsleder, Touchscreen",
+     "Wollmischung Fingerlose Strickhandschuhe",
+     "Warme Winterhandschuhe mit Fuchsfell-Manschette",
+     "Warme Lederhandschuhe mit Fleecefutter"
+    ],
+    "nein": [
+     "Boxhandschuhe aus Leder",
+     "Einweghandschuhe einzeln verpackt",
+     "Glänzende, ellenbogenlange Kostümhandschuhe",
+     "Silikon-Spülhandschuhe mit Bürstenfunktion",
+     "Ofenhandschuh & Topfuntersetzer-Set",
+     "Kabellose Rotlichttherapie-Heizhandschuhe"
+    ]
+   }
+  },
+  {
+   "handle": "strickjacken-cardigans",
+   "titel": "Strickjacken & Cardigans",
+   "tag": "such-strickjacke",
+   "ja": "strickjacke|cardigan|strickmantel|strickweste|stricklongjacke",
+   "nein": "herren|m(ä|ae)nner|m(ä|ae)nnlich|\\bmens\\b|kinder|baby|hund|katze|haustier|jungen|m(ä|ae)dchen|boys|kost(ü|ue)m|haustierpullover",
+   "nein_tags": "^(herren|kinder|baby)$",
+   "seo_title": "Strickjacken & Cardigans für Damen kaufen | LuxeStyle",
+   "seo_desc": "Strickjacken und Cardigans für Damen: lang oder kurz, mit Knöpfen, Reissverschluss oder offen, aus Strick, Samt oder Chiffon. Versand in die Schweiz.",
+   "html": "<p>Strickjacken und Cardigans sind die Schicht zwischen Shirt und Mantel. Hier findest du lange und kurze Modelle, mit Knöpfen, Reissverschluss oder offen getragen, aus Strick, Samt oder Chiffon.</p><h2>Worauf achten?</h2><ul><li><strong>Länge:</strong> Kurz passt zu Kleidern und hohen Hosen, lang zu Jeans und Leggings.</li><li><strong>Passform:</strong> Oversize fällt weit, Slim liegt eng an. Die Grössentabelle steht auf jeder Produktseite.</li><li><strong>Material:</strong> Die Zusammensetzung und den Pflegehinweis findest du beim Produkt.</li><li><strong>Kombinieren:</strong> Eine offene Strickjacke über Shirt oder Kleid wärmt, ohne einen Mantel zu brauchen.</li></ul><p>Mehr Jacken: <a href=\"/collections/damen-jacken-maentel\">Damen-Jacken &amp; Mäntel</a> und <a href=\"/collections/damen-strick-pullover\">Strick &amp; Pullover</a>. Lieferzeit und Versandweg stehen auf jeder Produktseite. Bezahlen kannst du mit TWINT oder Klarna.</p>",
+   "kanarien": {
+    "ja": [
+     "Strick-Cardigan für Damen",
+     "Rundhals Strickweste für Damen",
+     "Chiffon Cardigan mit Bindegürtel",
+     "Midi Strickmantel mit Doppelreiher",
+     "Grüne Strickjacke"
+    ],
+    "nein": [
+     "Herren Strickjacke mit Stehkragen und Reissverschluss",
+     "Winter-Cardigan für Herren",
+     "Haustierpullover in Lila im Cardigan-Stil",
+     "Plaid Polo-Hals Cardigan für kleine und mittlere Haustiere",
+     "Kinder Cardigan aus Baumwolle"
+    ]
+   },
+   "nein_typ": "Haustier"
+  },
+  {
+   "handle": "strickkleider",
+   "titel": "Strickkleider",
+   "tag": "such-strickkleid",
+   "ja": "strick-?kleid|pulloverkleid|sweaterkleid|strick.{0,12}kleid\\b",
+   "nein": "baby|kinder|m(ä|ae)dchen|puppe|hund|katze|haustier|kost(ü|ue)m|herren",
+   "seo_title": "Strickkleider für Herbst & Winter kaufen | LuxeStyle",
+   "seo_desc": "Strickkleider für Damen: Mini, Midi und Maxi mit Rollkragen, V-Ausschnitt oder Kapuze, einfarbig oder gemustert. Versand in die Schweiz.",
+   "html": "<p>Ein Strickkleid ersetzt Pullover und Rock in einem Teil. Hier findest du Mini-, Midi- und Maxi-Strickkleider mit Rollkragen, V-Ausschnitt oder Kapuze, einfarbig oder mit Muster.</p><h2>Worauf achten?</h2><ul><li><strong>Länge:</strong> Mini zeigt Bein, Midi und Maxi gehen gut mit Stiefeln.</li><li><strong>Dehnbarkeit:</strong> Strick gibt nach, die Grössentabelle auf der Produktseite hilft bei der Wahl.</li><li><strong>Ausschnitt:</strong> Rollkragen wärmt am Hals, V-Ausschnitt lässt sich mit Kette tragen.</li><li><strong>Kombinieren:</strong> Strumpfhose und Stiefel passen zu fast jedem Modell.</li></ul><p>Mehr Kleider: <a href=\"/collections/sub-kleider\">Kleider</a> und <a href=\"/collections/strickjacken-cardigans\">Strickjacken &amp; Cardigans</a>. Lieferzeit und Versandweg stehen auf jeder Produktseite. Bezahlen kannst du mit TWINT oder Klarna.</p>",
+   "kanarien": {
+    "ja": [
+     "Midi-Strickkleid mit V-Ausschnitt",
+     "Rollkragen Strickkleid mit Schlitz",
+     "Elegantes schwarzes Strick-Maxikleid mit Fischschwanz",
+     "Pulloverkleid mit Kapuze",
+     "Damen Strickkleid Slim-Fit Weinrot"
+    ],
+    "nein": [
+     "Baby Strickkleid mit Mütze",
+     "Strickkleid für Hunde",
+     "Kinder Strickkleid Mädchen",
+     "Puppenkleid gestrickt",
+     "Herren Strickpullover"
+    ]
+   }
+  },
+  {
+   "handle": "luftbefeuchter",
+   "titel": "Luftbefeuchter",
+   "tag": "such-luftbefeuchter",
+   "ja": "luftbefeuchter|humidifier|raumbefeuchter|nebelbefeuchter",
+   "nein": "ersatz|filter f(ü|ue)r|filter-|reiniger|tablette|hygrometer|cpap|baby|kinder|entfeucht|\\bhaut\\b|gesicht|dampfer|inhalier|zigarre|humidor|dusch|duft(ö|oe)l|(ö|oe)l f(ü|ue)r|terrari|badminton|spray-humidifier|dampf-humidifier",
+   "seo_title": "Luftbefeuchter kaufen: Ultraschall, Mini & USB | LuxeStyle",
+   "seo_desc": "Luftbefeuchter für trockene Heizungsluft: Ultraschall-Modelle mit Nachtlicht, Mini-Geräte per USB und Auto-Befeuchter. Versand in die Schweiz.",
+   "html": "<p>Wenn die Heizung läuft, wird die Raumluft trocken. Ein Luftbefeuchter gibt Wasser als feinen Nebel ab. Hier findest du Ultraschall-Modelle mit Nachtlicht, kleine USB-Geräte für den Schreibtisch und Befeuchter fürs Auto.</p><h2>Worauf achten?</h2><ul><li><strong>Raumgrösse:</strong> Mini-Geräte befeuchten einen Schreibtisch oder ein kleines Zimmer, grosse Tanks brauchen Platz auf dem Boden oder Sideboard.</li><li><strong>Tank:</strong> Fassungsvermögen und Laufzeit stehen beim Produkt, wenn der Hersteller sie angibt.</li><li><strong>Pflege:</strong> Wechsle das Wasser täglich und reinige das Gerät regelmässig, sonst bilden sich Ablagerungen.</li><li><strong>Nachtlicht und Lautstärke:</strong> Für das Schlafzimmer lohnt ein Modell mit abschaltbarem Licht.</li></ul><p>Mehr fürs Raumklima: <a href=\"/collections/sub-aroma-diffuser\">Aroma &amp; Diffuser</a> und <a href=\"/collections/luftreiniger-klimageraete\">Luftreiniger &amp; Klimageräte</a>. Lieferzeit und Versandweg stehen auf jeder Produktseite. Bezahlen kannst du mit TWINT oder Klarna.</p>",
+   "kanarien": {
+    "ja": [
+     "Mini-Luftbefeuchter",
+     "Luftbefeuchter mit Kristall-Nachtlicht",
+     "Aroma Diffuser mit Ultraschall und Luftbefeuchter",
+     "Tragbarer Auto-Luftbefeuchter X3",
+     "Luftbefeuchter für Grossraum"
+    ],
+    "nein": [
+     "Luftbefeuchter-Filter für Philips HU4801/02/03",
+     "Hygrometer Thermometer digital",
+     "Gesichts-Dampfer Nano Mist",
+     "Zigarren-Humidor mit Befeuchter",
+     "Baby Luftbefeuchter mit Projektor",
+     "Aromatherapie-Duftöl für Luftbefeuchter"
+    ]
+   }
+  },
+  {
+   "handle": "lockenstaebe",
+   "titel": "Lockenstäbe & Lockenwickler",
+   "tag": "such-lockenstab",
+   "ja": "locken-?stab|lockenst(ä|ae)be|locken-?wickler|lockenformer|locken-?eisen|curling iron|\\bcurler|wellenstab|lockenb(ü|ue)rste|haar-?locker",
+   "nein": "wimper|mascara|per(ü|ue)cke|clip|kinder|puppe|spielzeug|hund|katze|haustier|nagel|augen|lash|bart|knete|zubeh(ö|oe)r|ersatz|h(ü|ue)lle|tasche|halter|st(ä|ae)nder|ablage|aufbewahrung",
+   "seo_title": "Lockenstab kaufen: kabellos & automatisch | LuxeStyle",
+   "seo_desc": "Lockenstäbe und Lockenwickler für Wellen und Locken: kabellos per USB, automatisch drehend oder mit Keramikbeschichtung. Versand in die Schweiz.",
+   "html": "<p>Mit einem Lockenstab formst du Wellen, Spiralen oder weiche Locken in wenigen Minuten. Hier findest du klassische Stäbe in verschiedenen Durchmessern, automatische Modelle, kabellose Geräte und 2-in-1-Stylingeisen.</p><h2>Worauf achten?</h2><ul><li><strong>Durchmesser:</strong> Ein kleiner Durchmesser macht enge Locken, ein grosser weiche Wellen.</li><li><strong>Beschichtung:</strong> Keramik und Turmalin sind verbreitet, die Angabe steht beim Produkt.</li><li><strong>Temperatur:</strong> Stufen und Aufheizzeit nennt die Produktseite, wenn der Hersteller sie angibt.</li><li><strong>Kabellos:</strong> Akkulaufzeit und Ladeart stehen beim Produkt. Lass das Gerät nach dem Gebrauch abkühlen.</li></ul><p>Mehr fürs Haar: <a href=\"/collections/haarstyling-geraete\">Haarstyling-Geräte</a> und <a href=\"/collections/glaetteisen\">Glätteisen</a>. Lieferzeit und Versandweg stehen auf jeder Produktseite. Bezahlen kannst du mit TWINT oder Klarna.</p>",
+   "kanarien": {
+    "ja": [
+     "Automatischer Lockenstab mit Goldkeramik",
+     "Kabelloser Keramik-Lockenstab für unterwegs",
+     "Keramik-Wellenstab",
+     "Automatischer Lockenwickler",
+     "Lockenstab 38mm mit Ionen-Technologie"
+    ],
+    "nein": [
+     "Wimpernzange Curler aus Edelstahl",
+     "Silikon-Hängetasche für Lockenstab",
+     "Wandhalterung für Lockenstab & Föhn",
+     "Ersatz-Aufsatz für Lockenstab",
+     "Curling Mascara für Wimpern"
+    ]
+   }
+  },
+  {
+   "handle": "glaetteisen",
+   "titel": "Glätteisen & Haarglätter",
+   "tag": "such-glaetteisen",
+   "ja": "gl(ä|ae)tt?eisen|haargl(ä|ae)tter|plattengl(ä|ae)tter|gl(ä|ae)ttb(ü|ue)rste|hair straightener|stylingeisen",
+   "nein": "bart|wimper|per(ü|ue)cke|kinder|puppe|hund|katze|haustier|tasche|st(ä|ae)nder|halter|h(ü|ue)lle|ersatz|zubeh|hitzeschutz|serum|creme|shampoo|maske|keratin",
+   "seo_title": "Glätteisen & Haarglätter: kabellos & Keramik | LuxeStyle",
+   "seo_desc": "Glätteisen und Haarglätter: mit Keramikplatten, kabellose Mini-Glätter, Glättbürsten und 2-in-1-Geräte für Glätten und Wellen. Versand in die Schweiz.",
+   "html": "<p>Ein Glätteisen glättet das Haar oder formt Wellen über die abgerundete Kante. Hier findest du Modelle mit Keramikplatten, kabellose Mini-Glätter für die Handtasche, Glättbürsten und 2-in-1-Geräte.</p><h2>Worauf achten?</h2><ul><li><strong>Platten:</strong> Keramik ist verbreitet. Breite Platten glätten lange Haare schneller, schmale eignen sich für Pony und kurze Haare.</li><li><strong>Temperatur:</strong> Stufen und Aufheizzeit nennt die Produktseite, wenn der Hersteller sie angibt.</li><li><strong>Kabellos:</strong> Akkulaufzeit und Ladeart stehen beim Produkt.</li><li><strong>Hitzeschutz:</strong> Ein Hitzeschutzspray vor dem Stylen ist üblich. Lass das Gerät danach abkühlen.</li></ul><p>Mehr fürs Haar: <a href=\"/collections/haarstyling-geraete\">Haarstyling-Geräte</a> und <a href=\"/collections/lockenstaebe\">Lockenstäbe</a>. Lieferzeit und Versandweg stehen auf jeder Produktseite. Bezahlen kannst du mit TWINT oder Klarna.</p>",
+   "kanarien": {
+    "ja": [
+     "Glätteisen Wet & Dry Keramik",
+     "Kabelloser Mini-Haarglätter mit USB-Ladefunktion",
+     "Ionen-Glättbürste für geschmeidiges Haar",
+     "Infrarot Dampf-Glätteisen",
+     "Profi-Haarglätter für schonendes Styling"
+    ],
+    "nein": [
+     "Bartglätter mit Turmalin-Keramik",
+     "Hitzeschutzspray für Glätteisen",
+     "Aufbewahrungstasche für Glätteisen",
+     "Haarglätter Ersatzplatten",
+     "Keratin Haarglättung Creme"
+    ]
+   }
+  },
+  {
+   "handle": "uhrenarmbaender",
+   "titel": "Uhrenarmbänder & Smartwatch-Armbänder",
+   "tag": "such-uhrenarmband",
+   "ja": "uhren-?armband|uhrenband|watch ?band|watch strap|ersatzarmband|wechselarmband|armband f(ü|ue)r (die |eine |\\d+ ?mm )?(apple |smart|samsung |garmin |huawei |xiaomi |galaxy |fitbit |amazfit )?(watch|uhr)|(leder|silikon|nylon|milanaise|metall|edelstahl|magnet)\\w*-?armband f(ü|ue)r (apple|smart|samsung|garmin|huawei|xiaomi|galaxy|fitbit|amazfit|watch|uhr)|armband.{0,25}(apple watch|smartwatch|galaxy watch)",
+   "nein": "hund|katze|schmuck|armreif|ketten|perlen|kinder|ersatz.*akku|schutzh(ü|ue)lle|bumper|glas|folie|ladeka|ladest|werkzeug|federsteg|reparatur|uhrmacher|geh(ä|ae)use|halter|st(ä|ae)nder|\\bstand\\b|box|etui|aufbewahrung|organizer|rolle|aromatherapie|schraubenzieher|zubeh|aquarell|armband-design|kasten|headset|tws",
+   "seo_title": "Uhrenarmbänder & Smartwatch-Armbänder kaufen | LuxeStyle",
+   "seo_desc": "Uhrenarmbänder und Armbänder für Smartwatches: Leder, Silikon, Nylon und Edelstahl mit Dornschliesse, Magnet oder Schnellverschluss. Versand in die Schweiz.",
+   "html": "<p>Ein neues Armband verändert die Uhr: Leder für den Alltag, Silikon für den Sport, Edelstahl für den Abend. Hier findest du Uhrenarmbänder und Armbänder für Smartwatches, darunter Modelle für Apple Watch, Samsung Galaxy Watch und Xiaomi.</p><h2>Worauf achten?</h2><ul><li><strong>Passform:</strong> Das Armband passt nur, wenn Uhrenmodell, Gehäusegrösse und Anstoss stimmen. Die Angabe steht bei jedem Produkt.</li><li><strong>Verschluss:</strong> Dornschliesse, Magnet oder Schnellverschluss, je nach Modell.</li><li><strong>Material:</strong> Leder wird mit der Zeit weich, Silikon lässt sich abwischen, Edelstahl wirkt formell.</li><li><strong>Handgelenk:</strong> Miss den Umfang und vergleiche ihn mit der Länge auf der Produktseite.</li></ul><p>Mehr Uhren: <a href=\"/collections/smartwatches-wearables\">Smartwatches &amp; Wearables</a> und <a href=\"/collections/uhren\">Uhren</a>. Lieferzeit und Versandweg stehen auf jeder Produktseite. Bezahlen kannst du mit TWINT oder Klarna.</p>",
+   "kanarien": {
+    "ja": [
+     "Leder-Uhrenarmband mit Dornschliesse",
+     "Armband für Apple Watch mit Dornschliesse",
+     "Magnetisches Silikon-Armband für Smartwatches",
+     "Edelstahl-Armband für Smartwatches",
+     "Nylon-Canvas-Uhrenarmband",
+     "Leder-Armband für 22mm Uhren"
+    ],
+    "nein": [
+     "Uhrenarmband-Werkzeug zum Wechseln",
+     "Gebogene Uhrenarmband-Federstege aus Edelstahl",
+     "Armband für Smartwatch mit Schutzfolie",
+     "Zinn-Glasperlen Armband für Apple Watch",
+     "Uhrenaufbewahrungsbox aus Rindleder",
+     "Aromatherapie-Uhrenarmband aus Metall",
+     "Edelstahl-Armband für Damen",
+     "Lederarmband für Herren mit Kreuz"
+    ]
+   }
+  },
+  {
+   "handle": "handtuchhalter",
+   "titel": "Handtuchhalter & Handtuchstangen",
+   "tag": "such-handtuchhalter",
+   "ja": "handtuchhalter|handtuchstange|handtuchring|handtuchhaken|handtuch-?regal|handtuchleiter",
+   "nein": "elektr|heiz|beheizt",
+   "seo_title": "Handtuchhalter ohne Bohren & zur Wandmontage | LuxeStyle",
+   "seo_desc": "Handtuchhalter für Bad und Küche: bohrfrei, zur Wandmontage oder für die Tür, aus Edelstahl, Aluminium und Holz. Versand in die Schweiz.",
+   "html": "<p>Ein Handtuchhalter bringt Ordnung ins Bad und in die Küche. Hier findest du Halter aus Edelstahl und Aluminium zur Wandmontage, bohrfreie Modelle und Halter für die Tür.</p><h2>Worauf achten?</h2><ul><li><strong>Montage:</strong> Bohrfreie Halter sind für Mietwohnungen praktisch. Ob sie auf deiner Wand halten, hängt vom Untergrund ab.</li><li><strong>Tragkraft:</strong> Sie steht beim Produkt, wenn der Hersteller sie angibt.</li><li><strong>Länge und Stangen:</strong> Mehrere Stangen bieten Platz für Handtücher der ganzen Familie.</li><li><strong>Material:</strong> Edelstahl und Aluminium rosten im Bad kaum, Holz braucht trockene Luft.</li></ul><p>Mehr fürs Bad: <a href=\"/collections/wohnen-bad\">Badezimmer</a>. Lieferzeit und Versandweg stehen auf jeder Produktseite. Bezahlen kannst du mit TWINT oder Klarna.</p>",
+   "kanarien": {
+    "ja": [
+     "Handtuchhalter Edelstahl klappbar ohne Bohren",
+     "Doppellagiges Handtuchregal zur Wandmontage",
+     "Edler Handtuchring",
+     "Tür-Handtuchhalter, 3-stufig, bohrfrei",
+     "Aluminium-Handtuchhalter matt"
+    ],
+    "nein": [
+     "Elektrischer Handtuchhalter mit Temperaturkontrolle",
+     "Beheizter Handtuchhalter fürs Bad",
+     "Handtuch Set aus Baumwolle",
+     "Seifenspender wandmontiert",
+     "Duschvorhang mit Haken"
+    ]
+   }
   }
  ]
 }
