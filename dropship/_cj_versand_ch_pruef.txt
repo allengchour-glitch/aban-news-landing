@@ -11585,3 +11585,5 @@ holz-nistkasten-fur-fledermause-627200	2502280912151627500	16	10.93	ok	landeseit
 abstrakte-linie-kissen-296448	1397472886020771840	16	11.37	ok	landeseite
 katzenrucksack-mit-32l-kapazitat-604500	2502200554141604700	11	42.20	ok	landeseite
 traumfanger-wanddekoration-547200	1397029799414861824	16	8.87	ok	landeseite
+retro-glasvase-mit-blumen-097984	1393094339458109440	16	8.11	ok	landeseite
+katzen-wasserbrunnen-608900	2502140604521609100	16	15.18	ok	landeseite
