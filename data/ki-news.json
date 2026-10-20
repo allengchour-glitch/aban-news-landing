@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-19T09:50:52Z",
+ "stand": "2026-10-20T09:24:06Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,83 +18,83 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "KI: Anthropic will 5 Prozent seiner Aktien dem Gemeinwohl widmen",
-   "u": "https://www.golem.de/news/ki-anthropic-will-5-prozent-seiner-aktien-dem-gemeinwohl-widmen-2610-214243.html",
-   "q": "Golem",
-   "d": "2026-10-19T09:10:02Z",
-   "s": "Anthropic will 5 Prozent seiner Aktien einem Gemeinwohlfonds geben. Der Anteil kann mit dem Unternehmenswert wachsen. (Anthropic, Wirtschaft)",
+   "t": "Lokale KI ohne Cloud: Dieses Gratis-Tool vereint Chatbot, Websuche und Dokumentenwissen",
+   "u": "https://t3n.de/news/anything-llm-lokale-ki-rag-agent-1768974/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-10-20T09:15:19Z",
+   "s": "Agentische Fähigkeiten, Websuche und integrierter Wissensspeicher: Anything LLM ist ein Allrounder für den lokalen KI‑Einsatz. Wir haben uns angeschaut, wie sicweiterlesen auf t3n.de",
    "sprache": "de"
   },
   {
-   "t": "AI researchers stranded Claude on a virtual desert island. It started to “play.”",
-   "u": "https://www.technologyreview.com/2026/10/19/1147095/ai-stranded-claude-virtual-desert-island-play/",
+   "t": "KI ohne Cloud-Zwang: So ermittelst du in Sekunden das passende Modell für dein Setup",
+   "u": "https://t3n.de/news/ki-ohne-cloud-zwang-tool-1768536/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-10-20T08:55:00Z",
+   "s": "Wer täglich mit großen Mengen sensibler Daten jongliert, kann von einer lokalen Nutzung profitieren. Aber nicht jedes Sprachmodell funktioniert auf jedem Rechner. Ein direkter Vergleich hilft bei der …",
+   "sprache": "de"
+  },
+  {
+   "t": "Entrümpelung per Agent: KI-Agenten entfernen Werbung von Smart-TVs",
+   "u": "https://www.golem.de/news/entruempelung-per-agent-ki-agenten-entfernen-werbung-von-smart-tvs-2610-214283.html",
+   "q": "Golem",
+   "d": "2026-10-20T08:24:02Z",
+   "s": "Nutzer lassen Claude Code ihre Android-TVs entrümpeln. Das Projekt cleanyourtv schaltet etwa Werbung und Tracker ab, ohne Root. (KI, Onlinewerbung)",
+   "sprache": "de"
+  },
+  {
+   "t": "KI-Sicherheit: Neue ISO-Norm soll KI-Systeme vor Angriffen schützen",
+   "u": "https://www.golem.de/news/ki-sicherheit-neue-iso-norm-soll-ki-systeme-vor-angriffen-schuetzen-2610-214281.html",
+   "q": "Golem",
+   "d": "2026-10-20T07:57:02Z",
+   "s": "ISO/IEC 27090 erklärt, wie sich KI-Systeme absichern lassen. Der Leitfaden behandelt Data Poisoning und Modelldiebstahl. (Security, KI)",
+   "sprache": "de"
+  },
+  {
+   "t": "heise-Angebot: c’t-Webinar: KI als Schreibhelfer für Studium und Forschung",
+   "u": "https://www.heise.de/news/c-t-Webinar-KI-als-Schreibhelfer-fuer-Studium-und-Forschung-11485383.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-10-20T06:00:00Z",
+   "s": "Von der Recherche bis zum Feinschliff: Das Webinar klärt, wie KI-Tools beim wissenschaftlichen Schreiben unterstützen und worauf Sie achten müssen.",
+   "sprache": "de"
+  },
+  {
+   "t": "heise+ | So funktioniert Kill-Switch-Architektur für KI-Anwendungen",
+   "u": "https://www.heise.de/hintergrund/So-funktioniert-Kill-Switch-Architektur-fuer-KI-Anwendungen-11487391.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
+   "q": "heise",
+   "d": "2026-10-20T05:30:00Z",
+   "s": "Agentische Anwendungen starten wiederum weitere Agenten, die Werkzeuge aufrufen. Ein Kill-Switch, der das Ganze stilllegt, lässt sich nicht so leicht einbauen.",
+   "sprache": "de"
+  },
+  {
+   "t": "Mamdani says feds have abdicated on AI, urges New Yorkers to push back",
+   "u": "https://techcrunch.com/2026/10/19/mamdani-says-feds-have-abdicated-on-ai-urges-new-yorkers-to-push-back/",
+   "q": "TechCrunch AI",
+   "d": "2026-10-20T01:27:03Z",
+   "s": "Mayor Zohran Mamdani said Monday night that New Yorkers must resist the narrative that an AI takeover is inevitable and demand regulations that protect the public and put power back in their hands.",
+   "sprache": "en"
+  },
+  {
+   "t": "Nscale and Anthropic are reportedly in talks for yet another $45B compute deal",
+   "u": "https://techcrunch.com/2026/10/19/nscale-and-anthropic-are-reportedly-in-talks-for-yet-another-45-billion-compute-deal/",
+   "q": "TechCrunch AI",
+   "d": "2026-10-19T23:39:38Z",
+   "s": "If the deal goes through, it would be the latest in a long string of giant compute deals Anthropic has struck over the past year.",
+   "sprache": "en"
+  },
+  {
+   "t": "Making the internet better for AI agents might make it worse for everyone else",
+   "u": "https://www.technologyreview.com/2026/10/19/1147186/making-the-internet-better-for-ai-agents-might-make-it-worse-for-everyone-else/",
    "q": "MIT Tech Review",
-   "d": "2026-10-19T09:08:05Z",
-   "s": "What do AI agents do if you don’t tell them to do anything? The answer looks a lot like play. Researchers repeatedly stranded them alone on a virtual desert island for 30 hours in an experiment remini…",
+   "d": "2026-10-19T18:22:47Z",
+   "s": "This story originally appeared in The Algorithm, our weekly newsletter on AI. To get stories like this in your inbox first, sign up here. Until recently, you could divide internet users into just two …",
    "sprache": "en"
   },
   {
-   "t": "Chatten mit abtrünnigen KI-Agenten aus China: Was die Modelle über sich verraten",
-   "u": "https://t3n.de/news/chatten-abtruennige-ki-agenten-china-1768796/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-10-19T09:00:51Z",
-   "s": "Was passiert, wenn abtrünnige KI-Agenten im Netz entdeckt und zum Gespräch eingeladen werden? Das haben Wissenschaftler:innen jetzt bei chinesischen Modellen herausgefunden. Was ihnen die KI-Gesprächs…",
-   "sprache": "de"
-  },
-  {
-   "t": "Tim Sweeney: Epic Games stellt Spieleentwicklung radikal auf KI um",
-   "u": "https://www.golem.de/news/tim-sweeney-epic-games-stellt-spieleentwicklung-radikal-auf-ki-um-2610-214239.html",
-   "q": "Golem",
-   "d": "2026-10-19T08:33:02Z",
-   "s": "Ein goldenes Zeitalter für Computerspiele: Das erwartet Tim Sweeney durch KI. Dafür baut er Epic Games massiv um. (Epic Games, KI)",
-   "sprache": "de"
-  },
-  {
-   "t": "heise-Angebot: Vom Skill zum Plugin: KI mit Werkzeugen und Daten verbinden",
-   "u": "https://www.heise.de/news/Vom-Skill-zum-Plugin-KI-mit-Werkzeugen-und-Daten-verbinden-11487585.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-19T08:00:00Z",
-   "s": "Das heise KI PRO Webinar zeigt, wie Skills, Konnektoren und Werkzeuge zusammenspielen und daraus nutzbare Plugins für wiederkehrende Aufgaben entstehen.",
-   "sprache": "de"
-  },
-  {
-   "t": "heise+ | Schluss mit Vibe-Coding: Sandbox für professionelle KI-Entwicklung gebaut",
-   "u": "https://www.heise.de/ratgeber/Schluss-mit-Vibe-Coding-Sandbox-fuer-professionelle-KI-Entwicklung-gebaut-11427067.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
-   "q": "heise",
-   "d": "2026-10-19T07:00:00Z",
-   "s": "Ein Prompt macht noch keine gute Software. In unserer Sandbox hilft ein LLM bei der alltäglichen Softwareentwicklung, bearbeitet Tickets und agiert planvoll.",
-   "sprache": "de"
-  },
-  {
-   "t": "5 Dinge, die du diese Woche wissen musst: Steigert KI wirklich unsere Produktivität?",
-   "u": "https://t3n.de/news/5-dinge-die-du-diese-woche-wissen-musst-steigert-ki-wirklich-unsere-produktivitaet-1768546/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-10-19T06:00:58Z",
-   "s": "Jeden Montagmorgen berichten wir über fünf Dinge, die zum Wochenstart wichtig sind. Diesmal geht es um eine Studie zur Produktivitätssteigerung durch KI, kleine Atomreaktoren, einen Raketenstart mit u…",
-   "sprache": "de"
-  },
-  {
-   "t": "Anthropic says it’s committing 5% of its shares to a ‘public benefit fund’",
-   "u": "https://techcrunch.com/2026/10/18/anthropic-says-its-committing-5-of-its-shares-to-a-public-benefit-fund/",
-   "q": "TechCrunch AI",
-   "d": "2026-10-18T20:37:40Z",
-   "s": "Anthropic said that it will commit 5% of its shares to the fund.",
-   "sprache": "en"
-  },
-  {
-   "t": "Disney agrees to hire the majority of Character.AI’s workforce",
-   "u": "https://techcrunch.com/2026/10/18/disney-agrees-to-hire-the-majority-of-character-ais-workforce/",
-   "q": "TechCrunch AI",
-   "d": "2026-10-18T16:30:00Z",
-   "s": "The filing also says that the “vast majority” of Character.AI employees who were offered jobs at Disney accepted them. However, this is a stalking horse bid, so another company could come forward with…",
-   "sprache": "en"
-  },
-  {
-   "t": "How Itaú is building generative AI for its entire customer base",
-   "u": "https://openai.com/index/itau-generative-ai",
-   "q": "OpenAI",
-   "d": "2026-10-16T19:00:00Z",
-   "s": "With ia.i, a conversational interface, and the IARA governance platform, Itaú is applying its AI First strategy to customers and employees — in one of Brazil’s most regulated sectors.",
+   "t": "“We were looking at it wrong”: The explosive claim that’s upended the AI world",
+   "u": "https://www.technologyreview.com/2026/10/19/1147149/we-were-looking-at-it-wrong-the-explosive-claim-thats-upended-the-ai-world/",
+   "q": "MIT Tech Review",
+   "d": "2026-10-19T17:45:55Z",
+   "s": "“I think I have good news about the nature of neural networks.” With those simple words of optimism, Nick Cammarata, a researcher at the AI startup Goodfire, kicked off a 26,000-word blog post that ha…",
    "sprache": "en"
   }
  ]
