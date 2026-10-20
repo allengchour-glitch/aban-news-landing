@@ -11471,3 +11471,6 @@ infrarot-fernbedienung-fur-smart-home-gerate-0db2f4	027FDDB8-2CFC-48FD-9EE8-4010
 bootsauschnitt-figurbetonendes-midi-kleid-mit-620800	2607071608481621500	16	8.46	ok	landeseite
 einfaches-v-ausschnitt-kleid-612600	2607071545121613200	16	8.77	ok	landeseite
 kopfhorer-mit-larm-und-schallschutz-d35a03	4183A1B4-550C-4A7F-A316-EC37B9643A0A	16	9.88	ok	landeseite
+elegante-strandkleidung-mit-blumenmuster-602000	2607071407581602700	16	7.43	ok	landeseite
+outdoor-badeschuhe-damen-herren-rutschfest-d2c4fd	001463A2-8E53-4020-AE85-E2F20C3DB2D8	16	9.46	ok	landeseite
+kompakte-wireless-tastatur-mit-maus-und-fernbe-fa8840	2509100726111605500	7	7.06	ok	landeseite

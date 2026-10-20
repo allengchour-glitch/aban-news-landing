@@ -34,7 +34,17 @@
  * - Journal dropship/_fortura_bestand_log.tsv wird nach JEDER Zeile geflusht (appendFileSync) und
  *   enthält den Feed-Fingerabdruck; ein abgebrochener Lauf setzt damit fort, statt neu zu beginnen.
  *
- * ENV: FORTURA_CSV (Vorgabe /tmp/fortura_feed.csv), DRY=1, LIMIT, MAX_ZERO_SHARE, MIN_FEED_ROWS,
+ * ⚠️ 20.10.2026 — «LAGERBESTAND TOTAL» WAR FALSCH (Bestellung #1027): Der Feed trägt DREI Bestandsspalten: `Lagerbestand Bazar`
+ * (Fortura-eigener Laden), `Lagerbestand Fortura` (das Lager, aus dem Fortura B2B-/Dropship-Bestellungen ausliefert) und
+ * `Lagerbestand Total` (= Summe). Diese Datei las bis heute Total. Die Schwingerhose HB2887ML stand mit Bazar 2 / Fortura 0 /
+ * Total 2 im Shop als «2 an Lager», wurde verkauft, Fortura stornierte am 20.10. 16:05 («nicht mehr an Lager»). Gemessen im
+ * Feed vom 20.10.: 2'999 Artikel haben Bestand NUR im Bazar (Fortura = 0), 636 weitere nur 1–2 Stück im Fortura-Lager.
+ * Jetzt: Soll = max(0, Lagerbestand Fortura − PUFFER − committed). PUFFER (Vorgabe 1, env FORTURA_PUFFER) fängt Randbestände ab,
+ * die ein Party-Grosshändler binnen Stunden leerräumt; `committed` zieht schon verkaufte, noch nicht ausgelieferte Stücke ab
+ * (sonst setzt der nächste Lauf die Menge wieder auf die Feed-Zahl hoch — Fortura bucht erst nach ihrer Verarbeitung ab).
+ * Fehlt die Spalte `Lagerbestand Fortura` im Feed: ABBRUCH (Exit 2), NIE Rückfall auf Total.
+ *
+ * ENV: FORTURA_CSV (Vorgabe /tmp/fortura_feed.csv), DRY=1, LIMIT, MAX_ZERO_SHARE, MIN_FEED_ROWS, FORTURA_PUFFER,
  *      SHOPIFY_TOKEN_FILE (Vorgabe /tmp/cj_shop_token.txt) oder SHOPIFY_CLIENT_ID/SECRET.
  * Exit: 0 = gelaufen, 2 = OFFEN (Feed fehlt/unplausibel — nichts geschrieben).
  */
@@ -52,6 +62,9 @@ const DRY = process.env.DRY === '1';
 const LIMIT = parseInt(process.env.LIMIT || '0', 10);
 const MAX_ZERO_SHARE = parseFloat(process.env.MAX_ZERO_SHARE || '0.35');
 const MIN_FEED_ROWS = parseInt(process.env.MIN_FEED_ROWS || '5000', 10);
+const PUFFER = Math.max(0, parseInt(process.env.FORTURA_PUFFER ?? '1', 10) || 0);
+const BESTAND_SPALTE = 'Lagerbestand Fortura';   // NIE 'Lagerbestand Total' (Bazar-Bestand ist für Dropship nicht lieferbar)
+const STAND = 'dropship/_fortura_bestand_stand.json';
 const LOCK = '/tmp/fortura_bestand_sync.lock';
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
@@ -94,15 +107,15 @@ if (rows.length < MIN_FEED_ROWS) {
   process.exit(2);
 }
 const header = rows[0].map(h => h.trim());
-const iArt = header.indexOf('ArtNr'), iStock = header.indexOf('Lagerbestand Total');
+const iArt = header.indexOf('ArtNr'), iStock = header.indexOf(BESTAND_SPALTE);
 if (iArt < 0 || iStock < 0) {
-  console.error(`OFFEN: Feed-Kopfzeile ohne 'ArtNr'/'Lagerbestand Total' (gefunden: ${header.slice(0, 12).join(', ')}…). Nichts geschrieben.`);
+  console.error(`OFFEN: Feed-Kopfzeile ohne 'ArtNr'/'${BESTAND_SPALTE}' (gefunden: ${header.slice(0, 12).join(', ')}…). Nichts geschrieben — kein Rückfall auf 'Lagerbestand Total'.`);
   process.exit(2);
 }
 const feed = new Map();
 for (const r of rows.slice(1)) {
   const k = artKey(r[iArt]); if (!k) continue;
-  const q = Math.max(0, Math.round(num(r[iStock])));
+  const q = Math.max(0, Math.round(num(r[iStock])) - PUFFER);
   // Doppelte ArtNr im Feed: konservativ die KLEINERE Menge nehmen (Übersell-Schutz).
   feed.set(k, feed.has(k) ? Math.min(feed.get(k), q) : q);
 }
@@ -163,7 +176,7 @@ if (!DRY) {
 
 /* ---------- Ist-Stand im Shop lesen ---------- */
 const Q = `query($c:String){productVariants(first:60,after:$c,query:"sku:fortura-*"){pageInfo{hasNextPage endCursor}
- nodes{sku product{id title status} inventoryItem{id tracked inventoryLevels(first:5){nodes{location{id} updatedAt quantities(names:["available"]){quantity}}}}}}}`;
+ nodes{sku product{id title status} inventoryItem{id tracked inventoryLevels(first:5){nodes{location{id} updatedAt quantities(names:["available","committed"]){name quantity}}}}}}}`;
 const live = [];
 let cursor = null, seiten = 0, leseFehler = 0;
 while (true) {
@@ -176,7 +189,8 @@ while (true) {
       sku: v.sku, art: artKey(String(v.sku).replace(/^fortura-/i, '')),
       pid: v.product.id, titel: v.product.title, status: v.product.status,
       ii: v.inventoryItem?.id, tracked: !!v.inventoryItem?.tracked,
-      ist: lvl ? (lvl.quantities[0]?.quantity ?? null) : null, seit: lvl?.updatedAt || ''
+      ist: lvl ? (lvl.quantities.find(x => x.name === 'available')?.quantity ?? null) : null,
+      committed: lvl ? (lvl.quantities.find(x => x.name === 'committed')?.quantity ?? 0) : 0, seit: lvl?.updatedAt || ''
     });
   }
   seiten++;
@@ -201,7 +215,9 @@ for (const v of live) {
   if (v.ist === null || !v.ii) { ohneLevel.push(v); continue; }
   if (SPERRE.has(v.ii)) { if (v.ist !== 0) plan.push({ ...v, soll: 0, grund: 'sperrliste' }); else unveraendert++; continue; }
   const imFeed = feed.has(v.art);
-  const soll = imFeed ? feed.get(v.art) : 0;
+  // 20.10.2026: verkaufte, noch nicht ausgelieferte Stücke (committed) gehen vom Fortura-Bestand ab — Fortura bucht sie erst nach
+  // ihrer Verarbeitung ab; ohne diesen Abzug hob der nächste Lauf die Menge wieder auf die Feed-Zahl (Doppelverkauf des letzten Stücks).
+  const soll = imFeed ? Math.max(0, feed.get(v.art) - (v.committed || 0)) : 0;
   if (!imFeed) fehltImFeed++;
   if (soll === v.ist) { unveraendert++; continue; }
   plan.push({ ...v, soll, grund: imFeed ? 'feed' : 'nicht-mehr-im-feed' });
@@ -211,6 +227,13 @@ const zeroShare = live.length ? fehltImFeed / live.length : 0;
 console.log(`\nAbgleich: ${unveraendert} unverändert · ${plan.length} zu ändern (davon ${nullPlan} auf 0) · ` +
   `${fehltImFeed} SKU nicht mehr im Feed (${(zeroShare * 100).toFixed(1)} %) · ` +
   `${ohneBestandsfuehrung.length} ohne Bestandsführung (unangetastet) · ${ohneLevel.length} ohne CH-Lagerzeile`);
+{ // 20.10.2026: Wirkung auf das, was Kundinnen sehen — nur ACTIVE-Produkte, verkaufbar (>0) vorher/nachher
+  const akt = live.filter(v => v.status === 'ACTIVE' && v.tracked && v.ist !== null && v.ii);
+  const nachher = v => (plan.find(p => p.ii === v.ii)?.soll) ?? v.ist;
+  const vor = akt.filter(v => v.ist > 0).length, nach = akt.filter(v => nachher(v) > 0).length;
+  const nurBazar = akt.filter(v => v.ist > 0 && nachher(v) === 0).length;
+  console.log(`ACTIVE: ${akt.length} Varianten · verkaufbar vorher ${vor} → nachher ${nach} (${nurBazar} wegen Bazar-/Puffer-/Committed-Abzug nicht mehr bestellbar)`);
+}
 for (const p of plan.slice(0, 25)) console.log(`  ${p.sku.padEnd(22)} ${String(p.ist).padStart(5)} → ${String(p.soll).padStart(5)}  ${p.grund}  ${p.titel.slice(0, 44)}`);
 if (plan.length > 25) console.log(`  … und ${plan.length - 25} weitere`);
 
@@ -290,6 +313,12 @@ Shop: ${live.length} Varianten mit SKU \`fortura-*\`
 Journal (jede Zeile sofort geflusht): \`${JOURNAL}\`
 `;
 fs.writeFileSync(REPORT, bericht);
+// 20.10.2026: Stand für Ampel/Wächter — welche Spalte und welcher Puffer gelten, und was nach dem Lauf noch abweicht.
+fs.writeFileSync(STAND, JSON.stringify({
+  stand: new Date().toISOString().slice(0, 16) + 'Z', feed_hash: feedHash, spalte: BESTAND_SPALTE, puffer: PUFFER,
+  varianten: live.length, geaendert: ok, offen: fehler, unveraendert,
+  verkaufbar_nach_lauf: live.filter(v => v.tracked && ((plan.find(p => p.ii === v.ii)?.soll) ?? v.ist) > 0).length,
+}, null, 1));
 console.log(`\nFERTIG. geändert=${ok} offen=${fehler} unverändert=${unveraendert} → ${REPORT}`);
 // 05.10.2026: Exit-Code = Wahrheit über den Lauf. «offen» geblieben (Shopify sagte nein / keine Antwort) → 1, dann setzt
 // fortura_bestand_taeglich.sh KEINEN Erfolgsstempel und der Aufseher holt in 2 h nach; vorher endete auch ein Lauf mit offenen Zeilen mit 0.

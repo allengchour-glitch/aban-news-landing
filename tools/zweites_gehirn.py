@@ -292,6 +292,22 @@ def r_seo_teil(dateien):
     return treffer
 
 
+def r_fortura_total(dateien):
+    """20.10.2026 — Bestellung #1027: `Lagerbestand Total` = Bazar (Fortura-eigener Laden) + Fortura (Lager, aus dem B2B-/Dropship-
+    Bestellungen ausliefern). Die Schwingerhose stand mit Bazar 2 / Fortura 0 / Total 2 als «2 an Lager» im Shop, wurde verkauft und
+    von Fortura storniert («nicht mehr an Lager»). Gemessen im Feed 20.10.: 2'999 Artikel mit Bestand NUR im Bazar. Verboten ist
+    jeder ZUGRIFF auf die Spalte (`['Lagerbestand Total']`, `indexOf('Lagerbestand Total')`, `row["Lagerbestand Total"]`); die Spalte
+    im Text einer Meldung oder eines Kommentars (kein `[`/`(` direkt vor dem Anführungszeichen) ist erlaubt."""
+    treffer = []
+    for p, t in dateien.items():
+        if p.suffix not in (".py", ".mjs", ".js", ".sh") or AUTO not in p.parents:
+            continue
+        for m in re.finditer(r"""[\[(]\s*["']Lagerbestand Total["']""", t):
+            treffer.append((p, t.count("\n", 0, m.start()) + 1,
+                            "Zugriff auf «Lagerbestand Total» — Bazar-Bestand ist für Dropship nicht lieferbar, «Lagerbestand Fortura» nehmen"))
+    return treffer
+
+
 def r_eimer_fehlt(dateien):
     """02.10.2026 — Produkt-ANLEGER ohne Eimer-Boden. Fünf parallele `cj_category_fill`-Läufe + `cj_sku_import` (Grind seit
     01.10.) hielten den Shopify-Eimer auf ~50/2'000; cj_versand_ch_guard, sku_dup_scan und farbe_metafeld starben mit «12x gedrosselt
@@ -383,6 +399,7 @@ REGELN = [
     ("drossel-ungeduldig", r_drossel_ungeduldig, "03.10.2026"),
     ("kontingent-wortlaut", r_kontingent_wortlaut, "06.10.2026"),
     ("fremder-bulk", r_fremder_bulk, "07.10.2026"),
+    ("fortura-total", r_fortura_total, "20.10.2026"),
 ]
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -414,6 +431,8 @@ KOEDER = {
     # Der ECHTE Fall aus klinge_ch_wache.py (bis 07.10.):
     "fremder-bulk": ("automation/koeder_bulk.py",
                      'gql("mutation{bulkOperationRunQuery(query:Q){bulkOperation{id}}}")\nc = gql("{currentBulkOperation{status url}}")\n'),
+    # Der ECHTE Fall aus fortura_bestand_sync.mjs / fortura_import*.mjs (bis 20.10.):
+    "fortura-total": ("automation/koeder_ft.mjs", "const COL = { stock: ['Lagerbestand Total'] };\nconst i = header.indexOf('Lagerbestand Total');\n"),
 }
 # Echte Faelle, die NICHT gemeldet werden duerfen — sonst meldet die Regel Gesundes krank.
 ECHT = {
@@ -440,6 +459,9 @@ ECHT = {
                             'if os.environ.get("EIN_MODELL") == "1" and zweitmodell.ist_kontingent_leer(e):\n'),
     "fremder-bulk": ("automation/koeder_bulk.py",
                      'gql("mutation{bulkOperationRunQuery(query:Q){bulkOperation{id}}}")\nc = gql("query($i:ID!){node(id:$i){... on BulkOperation{status url}}}")\n'),
+    # Echt: die richtige Spalte, daneben die falsche nur im Kommentar und im Text einer Fehlermeldung.
+    "fortura-total": ("automation/koeder_ft.mjs", "const COL = { stock: ['Lagerbestand Fortura'] };   // NIE 'Lagerbestand Total' (Bazar)\n"
+                      "console.error(`kein Rückfall auf 'Lagerbestand Total'.`);\n"),
 }
 
 

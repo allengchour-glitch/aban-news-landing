@@ -1,7 +1,7 @@
 /* fortura_import.mjs — importiert lagernde CH-Ware vom Schweizer Dropship-Lieferanten FORTURA AG
  * (Vertrag 2026-07-22, Kundennr 544341). Quelle: täglicher CSV-Feed via FTP (Anlage 1 des Vertrags).
  *
- * Der Feed liefert täglich echten CH-Lagerbestand (Lagerbestand Total) → beim ANLEGEN setzen wir
+ * Der Feed liefert täglich echten CH-Lagerbestand (Spalte «Lagerbestand Fortura» — nicht Total, seit 20.10.2026) → beim ANLEGEN setzen wir
  * tracked:true + DENY + echte Menge. CH-Versand DPD CHF 9.50, 1–2 Tage Transit.
  * 13.10.2026 (VERB-M1): Kunden-Zusage «meist 2–3 Werktage» — die Kasse rechnet Bearbeitung P1D + Transit 1–2
  * (Versandprofil «CH-Lager», data/versand_transit_regel.json). Satz im Text = fortura_neu() in kassen_lieferdatum_wache.py;
@@ -94,7 +94,7 @@ const COLMAP = {
   ve:    ['Internet_VE'],                         // artikelbezogene Mindestbestellmenge (>1 = Multiplikator)
   status:['Status'],
   liquidation: ['Liquidation'],
-  stock: ['Lagerbestand Total'],                  // täglicher CH-Lagerbestand → ghost-sale-sicher
+  stock: ['Lagerbestand Fortura'],                // 20.10.2026: NIE 'Lagerbestand Total' (= Bazar + Fortura; Bazar-Bestand liefert Fortura nicht aus, Fall #1027)
   ekNetto: ['VP1'],                               // Netto-Einkaufspreis (verifiziert)
   vkEmpf: ['VP2', 'Nettopreis inkl'],             // UVP inkl. MWST (verifiziert)
   imgs:  ['Bild_1','Bild_2','Bild_3','Bild_4','Bild_5'],
@@ -186,7 +186,7 @@ for (const rec of recs.slice(0, LIMIT)) {
   title = title.slice(0,70).trim();
   if (!title || title.length < 4) { skip++; fs.appendFileSync(LEDGER,'ft:'+art+'\n'); continue; }
   const status = pick(rec, COLMAP.status).toLowerCase();
-  const stock = Math.max(0, Math.round(num(pick(rec, COLMAP.stock))));
+  const stock = Math.max(0, Math.round(num(pick(rec, COLMAP.stock))) - Math.max(0, parseInt(process.env.FORTURA_PUFFER ?? '1', 10) || 0));   // 20.10.2026: Puffer wie fortura_bestand_sync.mjs
   const ve = Math.max(1, Math.round(num(pick(rec, COLMAP.ve)) || 1));
   const ekNetto = num(pick(rec, COLMAP.ekNetto));
   const vkEmpf = num(pick(rec, COLMAP.vkEmpf));
