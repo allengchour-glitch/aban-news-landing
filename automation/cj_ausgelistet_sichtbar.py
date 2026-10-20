@@ -15,6 +15,8 @@ import datetime, json, os, re, subprocess, sys, time, urllib.request
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(REPO, "automation"))
 from cj_takt import takt  # noqa: E402  (1/s-Drossel, gemeinsam mit allen CJ-Skripten)
+import urllib.parse  # noqa: E402
+import cj_sku  # noqa: E402  (20.10.2026: EINE Quelle für CJ-SKU-Formen)
 
 SHOP = "au3j0y-hq.myshopify.com"
 DRY = os.environ.get("DRY") == "1"
@@ -50,11 +52,11 @@ def cj_status(pid, tok):
     """'weg' (1602002), 'ok' (Produkt geliefert) oder None (kein Urteil).
     27.09.: Zwei SKU-Formen — «CJ-<Zahl/UUID>» = Produkt-ID (?pid=), «CJ-CJYD…AZ» = Varianten-SKU (?variantSku=). Der erste
     Lauf fragte beide als pid: 205 von 645 «ohne Urteil» (CJ: 1602001 «Product not found: pid:CJYD…»)."""
-    feld = "pid" if re.fullmatch(r"[0-9]{10,}|[0-9A-Fa-f-]{30,}", pid) else "variantSku"
+    feld = "pid" if re.fullmatch(r"[0-9]{10,}|[0-9A-Fa-f-]{30,}", pid) else (cj_sku.abfrage(pid) or ("variantSku", pid))[0]
     for a in range(3):
         takt()
         out = subprocess.run(["curl", "-s", "--max-time", "40", "-H", f"CJ-Access-Token: {tok}",
-                              f"https://developers.cjdropshipping.com/api2.0/v1/product/query?{feld}={pid}"], capture_output=True, text=True).stdout
+                              f"https://developers.cjdropshipping.com/api2.0/v1/product/query?{feld}={urllib.parse.quote(pid, safe='')}"], capture_output=True, text=True).stdout
         try:
             j = json.loads(out)
         except Exception:
@@ -78,10 +80,11 @@ SKU_VAR = re.compile(r"^(?:CJ-)?(CJ[A-Z]{2,4}[0-9]{6,}[A-Z0-9]*)$")   # CJYD3043
 
 def cj_ref(sku):
     """CJ-Referenz aus der Shop-SKU. 28.09.: die alte Regel «^CJ-…» übersah Varianten-SKUs OHNE Präfix (CJLY…AZ) —
-    dieselbe Falle wie besuchte_seiten_lieferbar.py am 18.09. (33 von 35 «keine CJ-SKU»)."""
-    sku = (sku or "").strip()
-    m = SKU_PID.match(sku) or SKU_VAR.match(sku)
-    return m.group(1) if m else None
+    dieselbe Falle wie besuchte_seiten_lieferbar.py am 18.09. (33 von 35 «keine CJ-SKU»).
+    20.10.2026: SKU_VAR kannte nur 2–4 Buchstaben + Ziffern ohne Bindestrich — 3'466 Varianten («CJYDQXHB00011-BROWN-39») waren für diesen
+    Wächter unsichtbar: ein bei CJ ausgelistetes Produkt blieb im Verkauf. Jetzt entscheidet cj_sku.abfrage() (Feld UND Wert)."""
+    a = cj_sku.abfrage(sku)
+    return a[1] if a else None
 
 
 def ledger():

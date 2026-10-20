@@ -92,6 +92,32 @@ def variant_sku(sku):
     return None
 
 
+# Alte Regel der Auslistungs-Wächter (cj_ausgelistet_sichtbar/ek_luecke_cj): bleibt für alles, was sie traf, unverändert variantSku
+_ALT_VAR = re.compile(r"^(?:CJ-)?(CJ[A-Z]{2,4}[0-9]{6,}[A-Z0-9]*)$")
+
+
+def abfrage(sku):
+    """→ (feld, wert) für CJ `product/query?<feld>=<wert>` oder None, wenn die SKU keine CJ-Referenz ist.
+       pid-Zahl/UUID hinter «CJ-»        → ('pid', pid)
+       alles, was die alte Wächter-Regel traf → ('variantSku', …) — unverändert, damit bestehende Urteile gleich bleiben
+       Optionsanhang («CJYDQXHB00011-BROWN-39») → ('variantSku', ganze SKU ohne «CJ-»); Wert VOR dem Einsetzen in eine URL quoten
+       Stamm ohne Anhang («CJJJJTJT22925») → ('productSku', Stamm)  — als variantSku gäbe CJ «nicht gefunden»
+    Der Wert wird NICHT ge-quotet (Leerzeichen kommen vor): urllib.parse.quote(wert, safe='') beim Bauen der URL."""
+    s = (sku or "").strip()
+    f = form(s)
+    if f is None:
+        return None
+    k = kern(s)
+    if f in ("pid-zahl", "pid-uuid"):
+        return ("pid", k) if _PRAEFIX.match(s) else None
+    m = _ALT_VAR.match(s.upper())
+    if m:
+        return ("variantSku", m.group(1))
+    if f == "stamm":
+        return ("productSku", stamm(s))
+    return ("variantSku", k)
+
+
 def _selbsttest():
     faelle = []
 
@@ -117,6 +143,14 @@ def _selbsttest():
     ok("variant_sku behält Option und Leerzeichen", variant_sku("CJ-CJBJMRJF00040-EU plug") == "CJBJMRJF00040-EU plug")
     ok("variant_sku für pid-Form = None", variant_sku("CJ-2608071241571604000") is None)
     ok("nackt: ohne Präfix wahr, mit Präfix falsch", nackt("CJYD225829901AZ") and not nackt("CJ-CJYD225829901AZ") and not nackt("fortura-1"))
+    # abfrage(): welches CJ-Feld
+    ok("abfrage pid", abfrage("CJ-2608071241571604000") == ("pid", "2608071241571604000"))
+    ok("abfrage pid ohne Präfix = keine CJ-Referenz", abfrage("2608071241571604000") is None)
+    ok("abfrage alte Form bleibt variantSku", abfrage("CJ-CJLY291609201AZ") == ("variantSku", "CJLY291609201AZ") and abfrage("CJYD304327501AZ") == ("variantSku", "CJYD304327501AZ"))
+    ok("abfrage Optionsanhang = variantSku mit Anhang", abfrage("CJYDQXHB00011-BROWN-39") == ("variantSku", "CJYDQXHB00011-BROWN-39"))
+    ok("abfrage Leerzeichen bleibt erhalten", abfrage("CJBJMRJF00040-EU plug") == ("variantSku", "CJBJMRJF00040-EU plug"))
+    ok("abfrage Stamm ohne Anhang = productSku", abfrage("CJJJJTJT22925") == ("productSku", "CJJJJTJT22925"))
+    ok("abfrage Fremd-SKU = None", abfrage("fortura-123") is None and abfrage("") is None and abfrage(None) is None)
     ok("Form-Namen", (form("CJYDQXHB00011-BROWN-39"), form("CJJJJTJT22925"), form("CJLS291603531EV"), form("CJ-2608071241571604000"))
        == ("variante-b", "stamm", "variante-a", "pid-zahl"))
     # Gegenprobe Altregel: sie hätte genau die Hyphen-Formen verfehlt

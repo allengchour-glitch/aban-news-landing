@@ -23,6 +23,7 @@ Env: LIMIT (Produkte je Lauf, Std. 300), DRY=1 (nur messen), RECHECK_TAGE (Std. 
 import os, sys, re, json, time, fcntl, subprocess
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from cj_takt import takt, frei   # EIN Takt fuer alle CJ-Verbraucher (21.09.)
+import cj_sku                    # 20.10.2026: EINE Quelle fuer CJ-SKU-Formen
 
 # ⚠️ Der Aufseher startet die /tmp-KOPIE (`python3 /tmp/cj_varianten_wache.py`); ein aus
 # __file__ abgeleitetes REPO waere dann «/» — gemessen beim ersten Lauf: FileNotFoundError auf
@@ -181,6 +182,55 @@ def kandidaten(done):
     return out
 
 
+def _roh(sku): return re.sub(r'^CJ-', '', sku or '', flags=re.I)
+
+
+def _kern(sku):
+    k = _roh(sku); m = re.match(r'([A-Za-z]{2,8}\d{5,}[A-Za-z]{0,3})', k)
+    return m.group(1) if m else k
+
+
+def vorhanden(sku, live, live_kern):
+    """Steht diese Shop-SKU unter den lebenden CJ-Varianten? Roh trifft, sonst der Kern (Altform «…01AZ»).
+    20.10.2026: Bei der Form MIT Optionsanhang («CJYDQXHB00011-BROWN-39», cj_sku-Form variante-b) IST der Anhang die Variante — der Kern
+    ist dort der gemeinsame Stamm und trifft, sobald IRGENDEINE Variante lebt: eine bei CJ entfernte Variante galt als vorhanden und
+    blieb kaufbar (Ghost-Sale). Hier zaehlt nur die ganze SKU, ohne Gross-/Kleinschreibung und Randleerzeichen."""
+    r = _roh(sku)
+    if r in live:
+        return True
+    if cj_sku.form(sku) == "variante-b":
+        return r.strip().upper() in {(x or "").strip().upper() for x in live}
+    return _kern(sku) in live_kern
+
+
+def kern_zaehler(vs):
+    """Wie oft kommt jeder Kern vor? Optionsanhang-SKUs teilen den Stamm BEABSICHTIGT und zaehlen nicht als «doppelter Kern»."""
+    from collections import Counter
+    return Counter(_kern(v["sku"]) for v in vs if cj_sku.form(v["sku"]) != "variante-b")
+
+
+def selbsttest():
+    f = []
+    def ok(n, b): f.append((n, bool(b)))
+    ls = lambda *a: {x for x in a}
+    sk = lambda t: {"sku": t}
+    live = ls("CJYDQXHB00011-BROWN-39", "CJYDQXHB00011-RED-39")
+    lk = {_kern(x) for x in live}
+    ok("Optionsanhang: entfernte Variante BROWN-40 fehlt", not vorhanden("CJYDQXHB00011-BROWN-40", live, lk))
+    ok("Optionsanhang: lebende Variante bleibt vorhanden", vorhanden("CJYDQXHB00011-BROWN-39", live, lk) and vorhanden("CJ-CJYDQXHB00011-RED-39", live, lk))
+    ok("Optionsanhang: Gross-/Kleinschreibung egal", vorhanden("CJYDQXHB00011-BROWN-39", ls("CJYDQXHB00011-Brown-39"), {"CJYDQXHB00011"}))
+    ok("Optionsanhang mit Leerzeichen", vorhanden("CJXFJTDS00043-FILTER ELEMENT", ls("CJXFJTDS00043-Filter element"), {"CJXFJTDS00043"}))
+    live2 = ls("CJYD292660001AZ", "CJYD292660002BY")
+    lk2 = {_kern(x) for x in live2}
+    ok("Altform: Kern trifft weiter (Name hinter der SKU)", vorhanden("CJ-CJYD292660001AZ-English PackagingGray", live2, lk2))
+    ok("Altform: fehlende Variante fehlt weiter", not vorhanden("CJ-CJYD292660003CX", live2, lk2))
+    ok("kern_zaehler: Optionsanhang-Stamm zaehlt nicht", not kern_zaehler([sk("CJYDQXHB00011-BROWN-39"), sk("CJYDQXHB00011-RED-39")]))
+    ok("kern_zaehler: Altform-Doppel zaehlt weiter", kern_zaehler([sk("CJ-CJYD292660001AZ"), sk("CJ-CJYD292660001AZ-Rot")])["CJYD292660001AZ"] == 2)
+    for n, b in f:
+        print(("  OK   " if b else "  FEHL ") + n)
+    return 0 if all(b for _, b in f) else 1
+
+
 def main():
     _nur_einmal()
     k = cj(f"/api2.0/v1/product/query?productSku={KANARIE[0]}") or {}
@@ -261,19 +311,14 @@ def main():
         # Shop-SKUs tragen teils den Variantennamen angehaengt («CJ-CJYD292660001AZ-English
         # PackagingGray», gemessen 21.09. am Akku-Handsauger) — verglichen wird der fuehrende
         # SKU-Block, sonst «fehlen» alle und der Verdachts-Zweig unten greift zu Unrecht.
-        def _roh(sku): return re.sub(r'^CJ-', '', sku or '', flags=re.I)
-        def _kern(sku):
-            k = _roh(sku); m = re.match(r'([A-Za-z]{2,8}\d{5,}[A-Za-z]{0,3})', k)
-            return m.group(1) if m else k
         # 2. Lauf: CJs eigene variantSku traegt teils den Namen («CJXFJTDS00043-Filter element») —
         # dann stimmt die ROHE Shop-SKU, nicht der Kern. Vorhanden = roh ODER Kern trifft.
         live_kern = {_kern(x) for x in live}
-        fehlend = [v for v in vs if _roh(v["sku"]) not in live and _kern(v["sku"]) not in live_kern]
+        fehlend = [v for v in vs if not vorhanden(v["sku"], live, live_kern)]
         # DOPPELTER KERN (Handsauger, 21.09.): zwei Shop-Varianten tragen dieselbe CJ-SKU «…01AZ»,
         # CJ fuehrt 01AZ und 02BY. Die zweite bestellt beim Lieferanten die FALSCHE Farbe — ein
         # Ghost-Sale mit Lieferung. Reparatur nur bei eindeutigem Namens-Treffer bei CJ, sonst unklar.
-        from collections import Counter
-        kerne = Counter(_kern(v["sku"]) for v in vs)
+        kerne = kern_zaehler(vs)
         # nur echte Doppel: gleicher Kern UND die rohe Shop-SKU ist selbst keine lebende CJ-SKU
         # (Wasserhahnfilter: «…00043-Filter element» / «…00043-Sliver» teilen den Kern und sind beide echt)
         doppelt = [v for v in vs if kerne[_kern(v["sku"])] > 1 and _roh(v["sku"]) not in live]
@@ -327,4 +372,6 @@ def main():
 
 
 if __name__ == "__main__":
+    if "--selbsttest" in sys.argv:
+        sys.exit(selbsttest())
     main()

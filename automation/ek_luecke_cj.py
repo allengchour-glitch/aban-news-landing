@@ -29,6 +29,8 @@ sys.path.insert(0, os.path.join(REPO, "automation"))
 os.chdir(REPO)
 from kaufwille_zeile import gql          # noqa: E402
 from cj_versand_ch_guard import cj       # noqa: E402  (1 Anfrage/s, prozessübergreifend)
+import urllib.parse
+import cj_sku                          # noqa: E402  (20.10.2026: EINE Quelle für CJ-SKU-Formen)
 
 SCHARF = os.environ.get("SCHARF") == "1"
 EXPORT = os.environ.get("EXPORT", "/tmp/kost28.jsonl")
@@ -44,8 +46,10 @@ SKU_VAR = re.compile(r"^(?:CJ-)?(CJ[A-Z]{2,4}[0-9]{6,}[A-Z0-9]*)$")
 
 
 def cj_ref(sku):
-    m = SKU_PID.match((sku or "").strip()) or SKU_VAR.match((sku or "").strip())
-    return m.group(1) if m else None
+    """20.10.2026: gleiche Entscheidung wie cj_ausgelistet_sichtbar.cj_ref — cj_sku.abfrage() (kennt auch «CJYDQXHB00011-BROWN-39»
+    und Stämme mit 6 Buchstaben; die alte Kopie dieser Regel hat beides nie erkannt → solche Produkte ohne EK nie auf Auslistung geprüft)."""
+    a = cj_sku.abfrage(sku)
+    return a[1] if a else None
 
 
 def kandidaten():
@@ -124,8 +128,8 @@ def main():
         ref = cj_ref(d["variants"]["nodes"][0]["sku"] if d["variants"]["nodes"] else "")
         if not ref:
             kein_urteil.append((d["handle"], "keine CJ-Referenz")); continue
-        feld = "pid" if re.fullmatch(r"[0-9]{10,}|[0-9A-Fa-f-]{30,}", ref) else "variantSku"
-        code, data, msg = cj(f"/product/query?{feld}={ref}")
+        feld = "pid" if re.fullmatch(r"[0-9]{10,}|[0-9A-Fa-f-]{30,}", ref) else (cj_sku.abfrage(ref) or ("variantSku", ref))[0]
+        code, data, msg = cj(f"/product/query?{feld}={urllib.parse.quote(ref, safe='')}")
         if code != 1602002:
             kein_urteil.append((d["handle"], f"CJ {code} {msg[:50]}")); continue
         n += 1
