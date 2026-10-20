@@ -11657,3 +11657,4 @@ dual-kamera-modell-911106	-	-	-	unklar pid 1602002 Product has been removed from
 edelstahl-3d-katzenpendant-mit-blumenkranz-uni-600700	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 reflektierende-hundeleine-630000	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 manner-armbanduhr-mit-6-zeigern-632300	2604051001441632600	7	7.30	ok	landeseite
+tur-und-fenstersensor-wlan-f4dc6f	2807BFCC-F8C0-43E8-88C8-B5F00D1B93D4	16	5.20	ok	landeseite
