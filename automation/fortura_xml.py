@@ -180,6 +180,27 @@ def ve_aus_feed(artnrs, pfad=None):
     return out
 
 
+def bestand_aus_feed(artnrs, pfad=None):
+    """{artnr: Lagerbestand Fortura} aus dem Feed (cp1252, «|»); Artikel, die im Feed fehlen, fehlen auch im Ergebnis.
+    20.10.2026 (Bestellung #1027): NUR die Spalte «Lagerbestand Fortura» — «Lagerbestand Total» enthält den Bazar-Bestand (Fortura-
+    eigener Laden), den Fortura nicht ausliefert (Schwingerhose: Bazar 2 / Fortura 0 / Total 2 → Storno «nicht mehr an Lager»).
+    Feed fehlt/unlesbar oder Spalte fehlt → None (fail-closed, nie Rückfall auf Total)."""
+    import csv
+    pfad = pfad or FEED
+    out, gesucht = {}, {norm_artnr(a): a for a in artnrs}
+    try:
+        with open(pfad, encoding='cp1252', newline='') as f:
+            r = csv.reader(f, delimiter='|'); kopf = next(r)
+            a, b = kopf.index('ArtNr'), kopf.index('Lagerbestand Fortura')
+            for z in r:
+                if len(z) > b and norm_artnr(z[a]) in gesucht:
+                    zahl = menge_zahl(z[b])
+                    out[gesucht[norm_artnr(z[a])]] = zahl if zahl is not None else 0   # unlesbar = 0 (sichere Richtung)
+    except (OSError, ValueError, StopIteration, UnicodeDecodeError):
+        return None
+    return out
+
+
 def menge_zahl(s):
     """13.10.2026 Nachtrag (N3/O2): Mengenfeld aus dem Lieferschein → int, sonst None (nie Absturz).
     «2», «2.0», «2.000», «2,000» → 2 (ein einzelnes Trennzeichen = Dezimalzeichen: Opacc schreibt Mengen mit Nachkommastellen,

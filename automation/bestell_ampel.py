@@ -55,7 +55,7 @@ FORTURA_LEDGER = os.path.join(REPO, "dropship/_fortura_bestellungen.tsv")
 def fortura_stand(nr, h, pfad=FORTURA_LEDGER):
     """Reine Fortura-Bestellung → (Stand, Warnzusatz). 13.10.2026 (Trockenlauf Fortura-Kette): nur «bestellt» (Stufe 1, Quittung)
     galt als in Ordnung — der Normalzustand von Stufe 2, «xml-hochgeladen», stand damit IMMER mit ⚠️ da. Jetzt: hochgeladen ist in
-    Ordnung bis 48 h (dieselbe Frist wie fortura_bestell_engine: «bei Fortura nachfragen»), «bereit»/«versandt»/unbekannt bleiben ⚠️."""
+    Ordnung bis 24 h (seit 20.10.; dieselbe Frist wie fortura_bestell_engine: «bei Fortura nachfragen»), «bereit»/«versandt»/unbekannt bleiben ⚠️."""
     fst, info = "unbekannt", ""
     try:
         for z in open(pfad, encoding="utf-8"):
@@ -63,12 +63,16 @@ def fortura_stand(nr, h, pfad=FORTURA_LEDGER):
             if len(t) > 3 and t[0] == nr: fst, info = t[3], (t[4] if len(t) > 4 else "")
     except Exception:
         pass
-    ok = fst == "bestellt" or (fst == "xml-hochgeladen" and h <= 48)
+    ok = fst == "bestellt" or (fst == "xml-hochgeladen" and h <= 24)   # 20.10.2026: 48 → 24 h (#1027: Fortura stornierte nach 20,7 h per Mail)
     # 13.10.2026 Nachtrag (Prüfer N2): «abweichend» (Lieferschein mit Ersatzartikel/fremder Nummer) und «teilgeliefert» zeigen,
     # WAS fehlt bzw. fremd ist — sonst steht nur ein Wort da und die Kundin wartet auf das bestellte Teil.
     if fst in ("abweichend", "teilgeliefert"):
         d = info[info.find(" · fehlt"):] if " · fehlt" in info else info[info.find(" · fremd"):] if " · fremd" in info else ""
         return f"Fortura: {fst.upper()}{d[:140]}", " ⚠️"
+    # 20.10.2026 (#1027): «nicht-lagernd» = Fortura-Lager (nicht Bazar) hat die Ware JETZT nicht; es wurde kein XML gesendet. Die Kundin
+    # wartet — ⚠️ mit Grund (Artikel/Lager/Menge) statt nur dem Wort, bis die Bestellung erstattet/geschlossen ist.
+    if fst == "nicht-lagernd":
+        return f"Fortura: NICHT-LAGERND · {info[:140]}", " ⚠️"
     return f"Fortura: {fst}", "" if ok else " ⚠️"
 
 
@@ -99,11 +103,13 @@ def selbsttest():
                 "1040\tx\t93583×1, 90654-2×1\tabweichend\tORDERS_LX1040.xml · Lieferschein LS1 · DPD 1 · fehlt 90654-2 0/1"
                 " · fremd 99999×1 nicht bestellt\n"
                 "1041\tx\t93583×2\tteilgeliefert\tORDERS_LX1041.xml · fehlt 93583 1/2\n"
-                "1042\tx\t93583×1\terfuellt\tORDERS_LX1042.xml\n")
+                "1042\tx\t93583×1\terfuellt\tORDERS_LX1042.xml\n"
+                "1043\tx\t77777×1\tnicht-lagernd\t77777 Fortura-Lager 0 < 1\n")
     faelle += [(fortura_stand("1040", 30, f.name),
                 ("Fortura: ABWEICHEND · fehlt 90654-2 0/1 · fremd 99999×1 nicht bestellt", " ⚠️")),
                (fortura_stand("1041", 30, f.name), ("Fortura: TEILGELIEFERT · fehlt 93583 1/2", " ⚠️")),
-               (fortura_stand("1042", 30, f.name), ("Fortura: erfuellt", " ⚠️"))]   # erfüllt + trotzdem offen = Shopify hinkt → ⚠️
+               (fortura_stand("1042", 30, f.name), ("Fortura: erfuellt", " ⚠️")),   # erfüllt + trotzdem offen = Shopify hinkt → ⚠️
+               (fortura_stand("1043", 2, f.name), ("Fortura: NICHT-LAGERND · 77777 Fortura-Lager 0 < 1", " ⚠️"))]   # 20.10.: #1027-Klasse
     os.unlink(f.name)
     ok = all(a == b for a, b in faelle)
     for i, (a, b) in enumerate(faelle):

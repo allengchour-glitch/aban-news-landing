@@ -95,6 +95,18 @@ def _fx():
     return fortura_xml
 
 
+def frischer_feed():
+    """20.10.2026: frischer Feed für die Bestandsprüfung VOR dem XML-Upload (der Tages-Feed ist bis 24 h alt). Pfad oder None.
+    Ein gescheiterter Abruf ist kein Fehler: dann prüft stufe2 gegen den vorhandenen Feed."""
+    import subprocess
+    ziel = '/tmp/fortura_feed_bestellung.csv'
+    try:
+        r = subprocess.run(['bash', os.path.join(HIER, 'fortura_fetch_feed.sh'), ziel], capture_output=True, timeout=240)
+        return ziel if r.returncode == 0 and os.path.getsize(ziel) > 1_000_000 else None
+    except Exception:
+        return None
+
+
 def stufe2(led, zeilen):
     """XML-Upload für «bereit», DESADV-Rücklauf für «xml-hochgeladen». Ersetzt die Stufe-1-Zeilen der betroffenen Bestellungen."""
     import fortura_xml as fx
@@ -103,6 +115,7 @@ def stufe2(led, zeilen):
     except Exception as e:
         return zeilen + [f'⚠️ FORTURA-XML: Server nicht erreichbar ({str(e)[:90]}) — Stufe-1-Zeilen gelten']
     neu = {}
+    frisch = []                                   # 20.10.2026: frischer Feed höchstens EINMAL je Lauf holen (erst bei der ersten «bereit»-Bestellung)
     try:
         vorhanden = set(fx.liste(sid, '/home/ORDERS'))
         for nr, t in sorted(led.items()):
@@ -113,6 +126,25 @@ def stufe2(led, zeilen):
                 neu[nr] = f'⚠️ FORTURA: #{nr} Paket fehlt in {PAKETE} (Neustart?) — im Portal bestellen: {t[2]}'; continue
             pk = json.load(open(p, encoding='utf-8'))
             name = f'ORDERS_LX{nr}.xml'
+            # 20.10.2026 (#1027): hat Fortura die Ware JETZT im eigenen Lager («Lagerbestand Fortura», nicht Bazar/Total)? Nein → kein XML,
+            # Status «nicht-lagernd», Dauerzeile bis die Bestellung erstattet/geschlossen ist (der Betreiber entscheidet; die Engine erstattet nie).
+            artnrs = [q['artnr'] for q in pk['positionen']]
+            bs = None
+            if not frisch:
+                frisch.append(frischer_feed())
+            for quelle in (frisch[0], fx.FEED):
+                if quelle:
+                    bs = fx.bestand_aus_feed(artnrs, quelle)
+                    if bs is not None:
+                        break
+            if bs is None and os.path.exists(fx.FEED):
+                neu[nr] = f'⚠️ FORTURA: #{nr} XML NICHT gesendet (Bestand unbekannt: Feed ohne Spalte «Lagerbestand Fortura») — im Portal prüfen: {t[2]}'; continue
+            if bs is not None:
+                knapp = [f"{q['artnr']} Fortura-Lager {bs.get(q['artnr'], 0)} < {int(q['menge'])}" for q in pk['positionen']
+                         if bs.get(q['artnr'], 0) < int(q['menge'])]
+                if knapp:
+                    t[3] = 'nicht-lagernd'; t[4] = '; '.join(knapp)
+                    neu[nr] = _nicht_lagernd_zeile(nr, t); continue
             ve = fx.ve_aus_feed([q['artnr'] for q in pk['positionen']])     # 13.10.: Bündel (VE>1) nie raten
             # 13.10.2026 Nachtrag (N4): Feed fehlt (None) oder Artikel nicht im Feed → 've': None → bau_orders_xml lehnt ab (fail-closed)
             x, fehler = fx.bau_orders_xml(f'LX{nr}', pk.get('lieferadresse'), pk.get('email'),
@@ -162,14 +194,21 @@ def stufe2(led, zeilen):
         for nr, t in led.items():
             if t[3] == 'xml-hochgeladen' and nr not in neu:
                 alter = (dt.datetime.now(dt.timezone.utc) - dt.datetime.fromisoformat(t[1].replace('Z', '+00:00'))).total_seconds() / 3600
-                neu[nr] = (f"{'⚠️ ' if alter > 48 else ''}FORTURA: #{nr} XML seit {alter:.0f} h bei Fortura, noch kein Lieferschein"
-                           + (' — bei Fortura nachfragen' if alter > 48 else ''))
+                # 20.10.2026 (#1027): Fortura stornierte nach 20,7 h per MAIL (kein Rückkanal im Ordner: /home/ORDERS und /home/DESADV leer,
+                # kein ORDRSP) — die Warnschwelle sinkt von 48 auf 24 h, damit ein Storno am nächsten Tag auffällt, nicht erst am übernächsten.
+                neu[nr] = (f"{'⚠️ ' if alter > 24 else ''}FORTURA: #{nr} XML seit {alter:.0f} h bei Fortura, noch kein Lieferschein"
+                           + (' — Posteingang info@luxestyle.ch auf Storno-Mail von fortura.ch prüfen, sonst nachfragen' if alter > 24 else ''))
     except Exception as e:
         neu['_'] = f'⚠️ FORTURA-XML: {str(e)[:140]}'
     finally:
         fx.abmelden(sid)
     alt = [z for z in zeilen if not any(f'#{nr} ' in z for nr in neu)]
     return alt + list(neu.values())
+
+
+def _nicht_lagernd_zeile(nr, t):
+    return (f'⚠️ FORTURA: #{nr} NICHT bestellt — {t[4]} (Feed «Lagerbestand Fortura»; Bazar-Bestand zählt nicht) · Kundin erstatten '
+            f'(Betreiber) oder Ersatz · die Zeile endet, sobald die Bestellung geschlossen ist; sonst `--geklaert {nr}`')
 
 
 def _abweichend_zeile(nr, t):
@@ -188,8 +227,8 @@ def main():
         schreibe(led); print(f'#{nr} als bei Fortura bestellt quittiert {auftrag}'); return 0
     if '--geklaert' in sys.argv:
         nr = sys.argv[sys.argv.index('--geklaert') + 1].lstrip('#')
-        if nr not in led or led[nr][3] != 'abweichend':
-            print(f'#{nr} steht nicht auf «abweichend»'); return 1
+        if nr not in led or led[nr][3] not in ('abweichend', 'nicht-lagernd'):
+            print(f'#{nr} steht nicht auf «abweichend»/«nicht-lagernd»'); return 1
         led[nr][3] = 'geklaert'; schreibe(led); print(f'#{nr} Abweichung als geklärt quittiert'); return 0
     nodes = gql(Q)['orders']['nodes']
     os.makedirs(PAKETE, mode=0o700, exist_ok=True)
@@ -221,6 +260,8 @@ def main():
             zeilen.append(f'⚠️ FORTURA: #{nr} Teillieferung — {led[nr][4]} · Rest bei Fortura klären oder erstatten'); continue
         if st == 'abweichend':
             zeilen.append(_abweichend_zeile(nr, led[nr])); continue
+        if st == 'nicht-lagernd':
+            zeilen.append(_nicht_lagernd_zeile(nr, led[nr])); continue
         if st == 'bereit':
             alter = (dt.datetime.now(dt.timezone.utc) - dt.datetime.fromisoformat(o['createdAt'].replace('Z', '+00:00'))).total_seconds() / 3600
             zeilen.append(f"⚠️ FORTURA: #{nr} ({alter:.0f} h) bereit — im Fortura-Portal bestellen: {txt} · danach "
@@ -240,14 +281,14 @@ def selbsttest():
     werden gespielt, Ledger/Pakete/Feed liegen in einem Temp-Ordner, `curl` wird nie aufgerufen."""
     import tempfile, shutil
     import fortura_xml as fx
-    global LEDGER, PAKETE, SCHALTER, gql
-    alt = (LEDGER, PAKETE, SCHALTER, gql, fx.FEED, fx.anmelden, fx.abmelden, fx.liste, fx.herunterladen, fx.hochladen, fx._curl, sys.argv)
+    global LEDGER, PAKETE, SCHALTER, gql, frischer_feed
+    alt = (LEDGER, PAKETE, SCHALTER, gql, frischer_feed, fx.FEED, fx.anmelden, fx.abmelden, fx.liste, fx.herunterladen, fx.hochladen, fx._curl, sys.argv)
     td = tempfile.mkdtemp(prefix='fbe_test_')
     LEDGER, PAKETE, SCHALTER = os.path.join(td, 'led.tsv'), os.path.join(td, 'pakete'), os.path.join(td, 'schalter')
     os.makedirs(PAKETE); open(SCHALTER, 'w').close()
     fx.FEED = os.path.join(td, 'feed.csv')
     with open(fx.FEED, 'w', encoding='cp1252') as f:
-        f.write('ArtNr|Internet_VE|\n93583|1|\n90654-2|1|\n042156|1|\n59774|10|\n')
+        f.write('ArtNr|Internet_VE|Lagerbestand Fortura|\n93583|1|5|\n90654-2|1|5|\n042156|1|5|\n59774|10|5|\n77777|1|0|\n88888|1|2|\n')
     desadv, hoch, gesendet, shop = {}, [], [], {}
 
     def _kein_curl(*a, **k):
@@ -270,6 +311,7 @@ def selbsttest():
                                             for s, m in shop.get(nr, [])]}}]}}]}}
         return {'orders': {'nodes': []}}
     gql = _gql
+    frischer_feed = lambda: None          # 20.10.2026: kein Netz im Selbsttest — geprüft wird gegen den Test-Feed
 
     def lief(nr, pos, kod='utf-8', kopf='<?xml version="1.0"?>'):
         x = (f'{kopf}<Opacc.DELVRY><DOC><HEADER><DOC_NO>LS{nr}</DOC_NO><ORDER_NO>LX{nr}</ORDER_NO><DELIVERYDATE>15.10.2026'
@@ -316,6 +358,52 @@ def selbsttest():
         os.rename(fx.FEED + '.weg', fx.FEED)
         z = stufe2(led, [])
         pruef('N4 Feed wieder da → XML hochgeladen', led['1034'][3] == 'xml-hochgeladen' and hoch and hoch[0][0] == 'ORDERS_LX1034.xml', (led['1034'], hoch))
+        # 20.10.2026 (#1027): Bestandsprüfung VOR dem Upload — «Lagerbestand Fortura», nicht Bazar/Total
+        def paket(nr, art, m):
+            json.dump({'positionen': [{'artnr': art, 'ean': '', 'menge': m}], 'lieferadresse': {'firstName': 'A', 'lastName': 'B',
+                       'address1': 'Weg 1', 'zip': '3000', 'city': 'Bern', 'countryCodeV2': 'CH'}, 'email': 'test@example.ch'},
+                      open(os.path.join(PAKETE, f'{nr}.json'), 'w'))
+        led['1035'] = ['1035', '2026-10-20T10:00Z', '77777×1', 'bereit', '']; paket('1035', '77777', 1)
+        led['1036'] = ['1036', '2026-10-20T10:00Z', '88888×2', 'bereit', '']; paket('1036', '88888', 2)
+        hoch.clear()
+        z = stufe2(led, [])
+        alles = '\n'.join(z)
+        pruef('O1 Fortura-Lager 0 → «nicht-lagernd», KEIN Upload', led['1035'][3] == 'nicht-lagernd' and not any(n == 'ORDERS_LX1035.xml' for n, _ in hoch), (led['1035'], hoch))
+        pruef('O1 Warnzeile nennt Artikel, Lager und Menge', any('#1035' in x and '77777 Fortura-Lager 0 < 1' in x and 'NICHT bestellt' in x for x in z), alles)
+        pruef('O1 genau ausreichend (2 von 2) → XML hochgeladen', led['1036'][3] == 'xml-hochgeladen' and any(n == 'ORDERS_LX1036.xml' for n, _ in hoch), (led['1036'], hoch))
+        # O2 Bestand reicht NUR im Bazar: der Feed hat die Spalte «Lagerbestand Bazar» 5, «Lagerbestand Fortura» 0 — es zählt Fortura
+        with open(fx.FEED, 'w', encoding='cp1252') as f:
+            f.write('ArtNr|Internet_VE|Lagerbestand Bazar|Lagerbestand Fortura|Lagerbestand Total|\n99001|1|5|0|5|\n')
+        led['1037'] = ['1037', '2026-10-20T10:00Z', '99001×1', 'bereit', '']; paket('1037', '99001', 1)
+        stufe2(led, [])
+        pruef('O2 nur im Bazar (Bazar 5, Fortura 0, Total 5) → «nicht-lagernd» (der Fall #1027)', led['1037'][3] == 'nicht-lagernd', led['1037'])
+        # O3 Feed ohne Spalte «Lagerbestand Fortura» → kein Upload, KEIN Rückfall auf Total
+        with open(fx.FEED, 'w', encoding='cp1252') as f:
+            f.write('ArtNr|Internet_VE|Lagerbestand Total|\n99002|1|9|\n')
+        led['1038'] = ['1038', '2026-10-20T10:00Z', '99002×1', 'bereit', '']; paket('1038', '99002', 1)
+        z = stufe2(led, [])
+        pruef('O3 Spalte fehlt → kein Upload, Status bleibt «bereit»', led['1038'][3] == 'bereit' and not any(n == 'ORDERS_LX1038.xml' for n, _ in hoch), led['1038'])
+        pruef('O3 Warnzeile «Bestand unbekannt»', any('#1038' in x and 'Bestand unbekannt' in x for x in z), '\n'.join(z))
+        # O4 frischer Feed hat Vorrang vor dem Tages-Feed
+        with open(fx.FEED, 'w', encoding='cp1252') as f:
+            f.write('ArtNr|Internet_VE|Lagerbestand Fortura|\n99003|1|5|\n')
+        frisch_pfad = os.path.join(td, 'frisch.csv')
+        with open(frisch_pfad, 'w', encoding='cp1252') as f:
+            f.write('ArtNr|Internet_VE|Lagerbestand Fortura|\n99003|1|0|\n')
+        frischer_feed = lambda: frisch_pfad
+        led['1039'] = ['1039', '2026-10-20T10:00Z', '99003×1', 'bereit', '']; paket('1039', '99003', 1)
+        stufe2(led, [])
+        pruef('O4 frischer Feed (0) schlägt Tages-Feed (5) → «nicht-lagernd»', led['1039'][3] == 'nicht-lagernd', led['1039'])
+        frischer_feed = lambda: None
+        with open(fx.FEED, 'w', encoding='cp1252') as f:      # Test-Feed für die folgenden Fälle wiederherstellen
+            f.write('ArtNr|Internet_VE|Lagerbestand Fortura|\n93583|1|5|\n90654-2|1|5|\n042156|1|5|\n59774|10|5|\n')
+        # nicht-lagernd: Dauerzeile solange die Bestellung offen ist; --geklaert beendet sie; geschlossene Bestellung (nicht in Shopify-Liste) schweigt
+        schreibe(led)
+        import io, contextlib
+        sys.argv = ['x', '--geklaert', '1035']; buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            rc = main()
+        pruef('O5 --geklaert beendet «nicht-lagernd»', rc == 0 and ledger()['1035'][3] == 'geklaert', (rc, buf.getvalue()))
         # main(): «abweichend» meldet sich in jedem Lauf (Shopify führt #1031 nicht mehr als offen), bis --geklaert
         schreibe(led)
         import io, contextlib
@@ -332,7 +420,7 @@ def selbsttest():
             main()
         pruef('--geklaert beendet die Zeile', '#1031' not in buf.getvalue() and ledger()['1031'][3] == 'geklaert', buf.getvalue())
     finally:
-        (LEDGER, PAKETE, SCHALTER, gql, fx.FEED, fx.anmelden, fx.abmelden, fx.liste, fx.herunterladen, fx.hochladen, fx._curl, sys.argv) = alt
+        (LEDGER, PAKETE, SCHALTER, gql, frischer_feed, fx.FEED, fx.anmelden, fx.abmelden, fx.liste, fx.herunterladen, fx.hochladen, fx._curl, sys.argv) = alt
         shutil.rmtree(td, ignore_errors=True)
     print(f"SELBSTTEST {'OK' if ok else 'FEHLER'} ({n} Fälle)")
     return 0 if ok else 1
