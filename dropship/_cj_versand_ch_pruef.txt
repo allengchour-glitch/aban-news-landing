@@ -11825,3 +11825,13 @@ kabellose-bluetooth-fernbedienung-bd6fb6	1CA847D4-4566-4B4A-B438-7799DA6956EB	7	
 druckmaske-mit-ohrhaken-a5ae89	036FEEC8-7D82-4C7C-A1D7-5F6753AEBB2D	1	7.64	ok	landeseite
 figurbetonendes-a-linien-kleid-mit-tiefem-deko-603500	2607070344051604100	16	10.15	ok	landeseite
 holz-armbanduhr-fur-herren-602900	2603220623541603200	7	6.18	ok	landeseite
+elegantes-zweiteiliges-kleid-mit-strass-627800	2607070323331628700	16	19.65	ok	landeseite
+infrarot-fernbedienung-24-tasten-d8a098	9C538994-95F6-45F9-87E2-E971E964606A	16	10.29	ok	landeseite
+gesichtsmaske-mit-schutzfilter-b4f8e0	34303401-DCFD-4F18-82A5-12657CBB29A3	1	7.64	ok	landeseite
+kabellose-tastatur-fernbedienung-b0680b	2C51435E-8424-4531-A59C-DB9C6B4253EA	16	7.43	ok	landeseite
+locker-leinen-baumwollkleid-mit-knopf-hals-und-601300	2607070213061602000	16	8.79	ok	landeseite
+fernbedienung-fur-iphone-df3b52	D26F0A68-EC71-4B46-A2A3-BF12AF7F9A2A	16	5.81	ok	landeseite
+baumwoll-linon-kleid-mit-langen-armeln-603500	2607070203431604200	16	8.79	ok	landeseite
+sommerkleid-mit-perlenbesatz-608500	2607061514181609100	16	8.79	ok	landeseite
+wii-gamepad-mit-motion-plus-b64281	700CD50E-9CB4-4AE4-9643-B38D341C2B70	16	9.20	ok	landeseite
+elegant-kurzarm-dress-im-a-linien-stil-634800	2607061333591635400	16	8.93	ok	landeseite
