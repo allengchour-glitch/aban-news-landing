@@ -1,62 +1,59 @@
-# Hype-Recherche (automatisch, 2026-10-19 06:05 UTC)
+# Hype-Recherche (automatisch, 2026-10-20 06:09 UTC)
 
-Werkzeug: `automation/hype_recherche.py` → `tools/recherche.py` (openai/gpt-oss-120b, 10.5 s). Alles aus dem Netz ist **QUELLE**; die Spalte «aktiv im Shop» ist **GEMESSEN** (`productsCount title:*wort* status:active`). THEMEN in `hype_kuratieren.py` ändert nur die Verbesserungsrunde.
+Werkzeug: `automation/hype_recherche.py` → `tools/recherche.py` (openai/gpt-oss-120b, 5.0 s). Alles aus dem Netz ist **QUELLE**; die Spalte «aktiv im Shop» ist **GEMESSEN** (`productsCount title:*wort* status:active`). THEMEN in `hype_kuratieren.py` ändert nur die Verbesserungsrunde.
 
-Gegenprobe: «Ladestation» findet 122 aktive (Verfahren sieht Treffer).
+Gegenprobe: «Ladestation» findet 123 aktive (Verfahren sieht Treffer).
 
 | Thema (Quelle) | Suchwörter (aktiv je Wort) | aktiv gesamt | schon in THEMEN | heikel |
 |---|---|---:|:-:|:-:|
-| Kabelloser Staubsauger | Staubsauger 24 · Kabellos 547 · Haarschäfer 0 | 571 | ja |  |
-| Waffeleisen | Waffeleisen 4 · Belgische 0 · Waffelmaschine 1 | 5 | ja | ⚠️ |
-| Mikrofaser-Decken | Decke 159 · Mikrofaser 49 · Softdecke 0 | 208 |  |  |
-| Comfort-Decke | Comfort 1 · Mellow 0 | 1 |  |  |
-| Heizbare Winterjacke | Jacke 196 · Heizjacke 3 · Winterjacke 19 | 218 | ja |  |
-| LED-Halloween-Fledermäuse | LED 2320 · Fledermaus 31 · Halloween 76 | 2427 | ja |  |
-| Feuerlöscher-Getränkedosierer | Drinkdispenser 0 · Feuerlöscher 0 · Party 55 | 55 |  |  |
-| Animierte Augen Türklingel | Türklingel 11 · Animiert 0 · Augen 212 | 223 |  |  |
-| Vier-in-einem Laser-Level & Bohr-Staub-Sampler | Laser-Wasserwaage 0 · Bohrer 13 · Staubsammler 0 | 13 | ja |  |
-| Hausförmiges Sparschwein | Sparschwein 1 · Haus 711 · Piggybank 0 | 712 |  |  |
-| Spinnende Whiskey-Gläser | Whiskeyglas 0 · Spinning 1 · Bar 97 | 98 |  |  |
-| Squishy-Brain Fidget Toy | Fidget 2 · Squishy 1 · Brain 1 | 4 |  | ⚠️ |
-| Wärme-isolierte Wein-Glas-Charcuterie-Toppers | Weinglas 6 · Charcuterie 0 · Toppers 0 | 6 |  |  |
-| Heizbare Hand- und Fußwärmer | Handwärmer 12 · Fußwärmer 0 · Heizgerät 2 | 14 |  |  |
-| LED-Leuchtende Wanddekorationen | Wanddeko 33 · Lichter 31 | 64 | ja |  |
+| Halloween-Dekoration | Kürbis 40 · Dekoration 65 | 105 |  |  |
+| Target-Herbst-Hauls | Kleidung 23 · Accessoires 16 | 39 | ja |  |
+| Winter-Must-Haves | Handwärmer 12 · Heizgerät 2 | 14 |  |  |
+| Laundry-Must-Haves | Trocknerbälle 0 · Wasch-Organizer 0 | 0 |  |  |
+| Desk-Must-Haves | Organizer 194 · LED-Lampe 24 | 218 | ja |  |
+| Costco-Finds-Food-Alternativen | Snacks 19 · Pflanzlich 6 | 25 |  |  |
+| Gym-Must-Haves | Widerstandsband 17 · Mini-Trainer 0 | 17 |  |  |
+| Dupes für Designer-Taschen | Taschen-Dupe 0 · Nachbildung 0 | 0 | ja |  |
+| Aritzia-Fall-Must-Haves | Kapsel-Outfit 0 · Herbstmode 0 | 0 |  | ⚠️ |
+| Vacation-Must-Haves | Reise-Organizer 21 · Koffer 27 | 48 |  |  |
+| Kitchen-Appliances-Must-Haves | Air-Fryer 2 · Mini-Mixer 2 | 4 |  |  |
+| Target-Finds-Men | Männermode 0 · Grooming 0 | 0 |  |  |
+| Skin-Must-Haves | Gesichtstool 0 · LED-Maske 10 | 10 | ja |  |
+| Pants-Must-Haves | Wechselhose 0 · Leggings 115 | 115 |  |  |
+| Travel-Must-Haves | Pack-Cube 0 · Reiseflasche 0 | 0 |  |  |
 
-**Kandidaten für die Startseite (Ware da, neu, nicht heikel):** Mikrofaser-Decken (208), Comfort-Decke (1), Feuerlöscher-Getränkedosierer (55), Animierte Augen Türklingel (223), Hausförmiges Sparschwein (712), Spinnende Whiskey-Gläser (98), Wärme-isolierte Wein-Glas-Charcuterie-Toppers (6), Heizbare Hand- und Fußwärmer (14)
+**Kandidaten für die Startseite (Ware da, neu, nicht heikel):** Halloween-Dekoration (105), Winter-Must-Haves (14), Costco-Finds-Food-Alternativen (25), Gym-Must-Haves (17), Vacation-Must-Haves (48), Kitchen-Appliances-Must-Haves (4), Pants-Must-Haves (115)
 
 Vor dem Übernehmen: Kanarienvögel prüfen (Wortgrenzen, «IPL» in «Lipliner»), Ablehnungsklassen aus QUELLE.
 
 ## Antwort der Recherche
 
-**TikTok Shop / „TikTok made me buy it“ – virale Produktkategorien im Oktober 2026 (nach Trend- und Dropshipping-Listen, Quelle < 14 Tage)**  
+**TikTok-Made-Me-Buy-It / TikTok Shop – Produkte, die im Oktober 2026 viral gehen (nach Trend- und Suchdaten, 14-tägiger Zeitraum)**  
 
-| # | Produkt-Kategorie (keine Marken, kein Lebensmittel) | Warum viral / Dropshipping-Trend (Kurz-Erklärung) | Quelle & Abruf-Datum |
-|---|------------------------------------------------------|---------------------------------------------------|----------------------|
-| 1 | **Kabel-loser Stab-Saug- und Fell-Entferner (Cordless Vacuum)** | Hohe GMV trotz nur 118 Creator – demonstrierbare Reinigung von Tierhaaren, kurzer „Vorher-Nachher“-Hook. | Z Media „TikTok Shop US: trending products and top creators, week ending 11 Oct 2026“, 12. Oct 2026  |
-| 2 | **Waffeleisen – Belgian-Style (Kitchen-Appliance)** | Neu-Eintrag in Top 10, visuell ansprechende Waffel-Ausgabe, gut für 15-Sekunden-Demo-Videos. | Z Media 2026-10-12  |
-| 3 | **Mikrofaser-Decken / Dream-Blanket (Home-Textilien)** | Platz #2, starkes saisonales “Cozy-Vibe”-Content, hohe Creator-Zahl (2 751). | Z Media 2026-10-12  |
-| 4 | **Komfort-Decke / Mellow-Sleep MarshMellow Comforter** | Platz #4, komfort-orientierte Unboxing- und Schlaf-Story-Videos, passend zu Herbst/Winter. | Z Media 2026-10-12  |
-| 5 | **Heizbare Winterjacke (Heated Jacket)** | In AutoDS-Dropshipping-Liste als “Best Cold-Weather Product”, demonstrierbare Wärme-Schalter-Demo, ideal für „TikTok made me buy it“. | AutoDS „10 Best Dropshipping Products To Sell In October 2026“ 15 Sep 2026  |
-| 6 | **LED-Halloween-Fledermäuse (LED Bats)** | Mini-Dekoration, schnelle Vorher-Nachher-Transformation, günstiger Preis, hohe Impulskäufe im Halloween-Monat. | AutoDS 2026-09-15  |
-| 7 | **Feuerlöscher-Getränkedosierer (Fire-Extinguisher Drink Dispenser)** | Novität, auffälliges Design, sofortiger „Wow-Effekt“ in Party-Videos, gut für virale Kurzclips. | AutoDS 2026-09-15  |
-| 8 | **Animierte-Augen-Türklingel (Eyeball Doorbell)** | Interaktive Überraschung, kurze Reaktions-Videos, perfekt für Halloween-Storytelling. | AutoDS 2026-09-15  |
-| 9 | **Vier-in-einem-Laser-Nivellier-&-Bohr-Staub-Sampler (4-in-1 Laser Level & Dust Collector)** | DIY-Nische, klare Vorher-Nachher-Demonstration, steigende Heim-Renovierungs-Saison. | AutoDS 2026-09-15  |
-|10| **Haus-förmige Sparschwein-Bank (House-Shaped Piggy Bank)** | Visuell süß, personalisierbare Sticker-Hooks, eignet sich für Story-basiertes „Spar-Ziel“-Marketing. | AutoDS 2026-09-15  |
-|11| **Spinnende Whiskey-Gläser (Spinning Whiskey Glass)** | Bar-Gadget mit sichtbarem Dreh-Effekt, gut für Geschenk- und Lifestyle-Reels. | AutoDS 2026-09-15  |
-|12| **Squishy-Brain Fidget-Toy** | Knalliger, taktiler Hook, sowohl Halloween-Prop als auch Alltag-Desk-Toy, hohe Wiederkaufs-Möglichkeit. | AutoDS 2026-09-15  |
-|13| **Wärme-isolierte Wein-Glas-Charcuterie-Toppers** | Mini-Host-Gadget, schnelle Demonstration von Snack-Aufbau, übergeht nahtlos von Halloween- zu Festtags-Hosting. | AutoDS 2026-09-15  |
-|14| **Heizbare Hand- und Fußwärmer (Portable Heated Warmers)** – (aus der AutoDS-Liste als Teil von „Heated Winter Jacket“-Zubehör) | Kleine, preiswerte Wärme-Gadgets, ideal für kurze „Feeling-Winter“-Clips. | AutoDS 2026-09-15  |
-|15| **LED-Leuchtende Wand-Dekorationen (LED Wall Décor Sets)** – (z. B. LED-Bats, aber als generische Kategorie) | Sichtbare Raum-Transformation, leicht zu filmen, stark nachgefragt im Oktober-Halloween-Trend. | AutoDS 2026-09-15  |
+| # | Produktart (keine Marke, kein Lebensmittel) | Warum viral / Trend-Hinweis | Quelle (URL + Datum) |
+|---|-----------------------------------------------|----------------------------|----------------------|
+| 1 | Halloween-Dekoration (z. B. aufblasbare Kürbisse) | Größter Produkt-Search-Term im Oktober 2026 (931 k Suche) | https://tokconnect.com/trends/products/october-2026/ (8 Oct 2026) |
+| 2 | Ziel-Fall-Funde (Target-Herbst-Hauls: Kleidung, Accessoires) | 2. größter Search-Term (691 k Suche) | https://tokconnect.com/trends/products/october-2026/ (8 Oct 2026) |
+| 3 | Amazon-Winter-Must-Haves (Hand-Wärmer, beheizte Gadgets) | +1 061 % Wachstum in einer Woche, kaum Videos vorhanden | https://tokconnect.com/trends/products/october-2026/ (8 Oct 2026) |
+| 4 | Amazon-Laundry-Must-Haves (Wäschetrockner-Bälle, Wasch-Organizer) | Hohe Suchzahlen (288 k) und niedrige Konkurrenz | https://tokconnect.com/trends/products/october-2026/ (8 Oct 2026) |
+| 5 | Amazon-Desk-Must-Haves (Schreibtisch-Organizer, LED-Lampen) | 238 k Suche, wenig Videos → Content-Lücke | https://tokconnect.com/trends/products/october-2026/ (8 Oct 2026) |
+| 6 | Costco-Finds-Food-Alternativen (z. B. pflanzliche Snacks) | 250 k Suche, starkes Interesse an “Finds”-Listen | https://tokconnect.com/trends/products/october-2026/ (8 Oct 2026) |
+| 7 | Amazon-Gym-Must-Haves (Mini-Trainer, Widerstandsbänder) | 43 k Suche, schnell wachsend, wenig Video-Content | https://tokconnect.com/trends/products/october-2026/ (8 Oct 2026) |
+| 8 | Dupes für Designer-Taschen (z. B. Row-Dupe) | Explosives Wachstum (+16 642 %); große Nachfrage, kaum Videos | https://tokconnect.com/trends/products/october-2026/ (8 Oct 2026) |
+| 9 | Aritzia-Fall-Must-Haves (Kapsel-Outfits) | +5 144 % Wachstum, neue Suchphrase, kaum Content | https://tokconnect.com/trends/products/october-2026/ (8 Oct 2026) |
+| 10 | Amazon-Vacation-Must-Haves (Reise-Organizer, kompakte Koffer) | 247 k Suche, saisonaler Trend für Herbst-Reisen | https://tokconnect.com/trends/products/october-2026/ (8 Oct 2026) |
+| 11 | Amazon-Kitchen-Appliances-Must-Haves (Air-Fryer, Mini-Mixer) | 242 k Suche, steigende Nachfrage für Home-Cooking | https://tokconnect.com/trends/products/october-2026/ (8 Oct 2026) |
+| 12 | Target-Finds-Men (Männer-Mode- und Grooming-Artikel) | 259 k Suche, starkes Wachstum (+403 %) | https://tokconnect.com/trends/products/october-2026/ (8 Oct 2026) |
+| 13 | Amazon-Skin-Must-Haves (Gesichts-Tools, LED-Masken) | 68 k Suche, neue Kategorie, wenig Video-Wettbewerb | https://tokconnect.com/trends/products/october-2026/ (8 Oct 2026) |
+| 14 | Amazon-Pants-Must-Haves (Schnell-wechsel-Hosen, Leggings) | 34 k Suche, aufkommender Trend im Herbst-Fashion-Segment | https://tokconnect.com/trends/products/october-2026/ (8 Oct 2026) |
+| 15 | Amazon-Travel-Must-Haves (Pack-Cubes, Reiseflaschen) | 247 k Suche, saisonaler Anstieg für Herbst-Urlaub | https://tokconnect.com/trends/products/october-2026/ (8 Oct 2026) |
 
-**Hinweis:** Alle genannten Quellen stammen aus den letzten 14 Tagen (Z Media Artikel vom 12. Oktober 2026, AutoDS-Blog-Post vom 15. September 2026). Die Produktarten sind allgemein gehalten (keine Marken- oder Lebensmittelangaben) und spiegeln sowohl „TikTok made me buy it“-Viralität als auch aktuelle Dropshipping-Trendlisten wider.
+**Hinweis:** Alle Angaben stammen aus dem monatlichen TikTok-Trend-Report von TokConnect, veröffentlicht am 8. Oktober 2026 und basieren auf TikTok-Creator-Search-Insights (7-Tage-Suche bis 30. September 2026). Die Quelle liefert sowohl Suchvolumen als auch Hinweis auf geringe Video-Konkurrenz – beides entscheidend für virale “TikTok made me buy it”- und Dropshipping-Trends.
 
 ## Quellen
 
-- https://www.autods.com/blog/best-items-to-dropship-in-october-2026/
-- https://www.z.media/insights/tiktok-shop-us-trending-week-ending-2026-10-11
-- https://tokconnect.com
+- https://tokconnect.com/trends/products/october-2026/
+- https://www.z.media
 - https://kolvant.com
-- https://minerxads.com
-- https://www.trenz.ai
 - https://www.buzzfeed.com
-- https://www.sellthetrend.com
+- https://news.astools.app
