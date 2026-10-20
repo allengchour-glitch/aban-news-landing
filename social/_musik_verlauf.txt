@@ -570,3 +570,4 @@
 2026-10-19T23:19:13.655Z	luxe-epic-elegant.wav	38.1	allgemein	cjreel-CJSJSJSJ00933-Black	stimme:ja	azure:de-CH-JanNeural
 2026-10-19T23:21:29.931Z	luxe-orchestra.wav	21.88	allgemein	cjreel-CJMR207359201AZ	stimme:ja	azure:de-CH-JanNeural
 2026-10-19T23:23:35.245Z	luxe-epic-hero.wav	5.72	allgemein	cjreel-CJYD195670501AZ	stimme:nein	anteil
+2026-10-20T00:11:11.748Z	luxe-adventure-uplift.wav	45.12	allgemein	cjreel-CJYD227014202BY	stimme:nein	anteil
