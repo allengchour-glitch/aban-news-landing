@@ -1,0 +1,83 @@
+{
+  "typ": "wartung",
+  "aktion": "waechter_zustand",
+  "id": "server-zustand-2026-10-20",
+  "warum": "13.10.2026, Plan «Hetzner auf Maximum» Schritt 1 (rein lesend). Vermutung des Plans: systemd beendet am Ende jedes 10-Minuten-Takts alle Motoren des Wächters (Type=oneshot, kein KillMode) — darum kommt kein langer Lauf (Kundenschutz ~45 min, Google-Feedback 466 s, Reel-Bau) auf dem Server zu Ende. Die einzige Messung vom 06.10. fiel mitten in einen Takt und bewies nichts. Die Aktion waechter_zustand liest deshalb die Takt-Dauer aus dem Journal (systemd «Consumed … wall clock») und die Einheit jedes laufenden Skripts — das gilt unabhängig davon, wann sie läuft. Dazu täglich: scipy/av/ffmpeg (ohne sie baut der Server kein Reel), Stash-Zahl im Wächter-Klon (wächst sie, löst der Rewind-Fehlalarm noch aus), Platte, /tmp, RAM, Swap, Herzschlag, Export-/Zugangsdateien (nur Name, Grösse, Zeit), Abschlusszeilen der zwei langen CJ-Wachen und luxe-m-*-Einheiten. Jeder spätere Plan-Schritt (4 Fehlalarm, 5 Geheimnisse, 6 Platz/Swap, 8 Dauerläufer, 9 Reels) prüft seine Wirkung an dieser Quittung. Rückweg: diese Datei löschen. [wiederkehrend, alle 1 Tag(e)]",
+  "stand": "ok",
+  "begonnen": "2026-10-20T21:35:59.305Z",
+  "dauer_s": 0.3,
+  "ergebnis": {
+    "aktion": "waechter_zustand",
+    "was": "Waechter-Takt messen: systemd-Zustand/KillMode, Takt-Dauer (Journal 3 h), laufende Skripte mit Einheit, scipy/av/ffmpeg, Stash-Zahl, Platte und /tmp, RAM, Swap, /tmp-Dateien, Fehlerzeilen zweier CJ-Wachen, luxe-m-*",
+    "aendert": false,
+    "ausgaben": [
+      {
+        "befehl": "date +%F %T %Z",
+        "ausgabe": "2026-10-20 21:35:59 UTC\n"
+      },
+      {
+        "befehl": "systemctl show luxe-waechter.service -p Type,KillMode,ExitType,RemainAfterExit,ActiveState,SubState,Result,ExecMainStartTimestamp,ExecMainExitTimestamp,ActiveEnterTimestamp,InactiveEnterTimestamp,TimeoutStartUSec,TasksCurrent,MemoryCurrent,MemoryPeak",
+        "ausgabe": "ActiveState=failed\nSubState=failed\nActiveEnterTimestamp=\nInactiveEnterTimestamp=Tue 2026-10-20 21:35:53 UTC\nType=oneshot\nExitType=main\nTimeoutStartUSec=15min\nRemainAfterExit=no\nResult=exit-code\nExecMainStartTimestamp=\nExecMainExitTimestamp=\nMemoryCurrent=[not set]\nMemoryPeak=435765248\nTasksCurrent=[not set]\nKillMode=control-group\n"
+      },
+      {
+        "befehl": "systemctl show luxe-waechter.timer -p ActiveState,LastTriggerUSec,NextElapseUSecRealtime",
+        "ausgabe": "ActiveState=active\nNextElapseUSecRealtime=\nLastTriggerUSec=Tue 2026-10-20 21:32:03 UTC\n"
+      },
+      {
+        "befehl": "journalctl -u luxe-waechter.service --since=-3h --no-pager -o short-iso",
+        "ausgabe": "2026-10-20T18:39:43 Starting\n2026-10-20T18:39:44 Control process exited, code=exited, status=1/FAILURE\n2026-10-20T18:39:44 Failed with result 'exit-code'.\n2026-10-20T18:39:44 Failed to start luxe-waechter.service - LuxeStyle Aufseher-Keepalive (Tages-Waechter).\n2026-10-20T18:39:44 Consumed 211ms CPU time over 795ms wall clock time, 74.9M memory peak.\n2026-10-20T18:49:55 Starting\n2026-10-20T18:50:04 Control process exited, code=exited, status=1/FAILURE\n2026-10-20T18:50:04 Failed with result 'exit-code'.\n2026-10-20T18:50:04 Failed to start luxe-waechter.service - LuxeStyle Aufseher-Keepalive (Tages-Waechter).\n2026-10-20T18:50:04 Consumed 9.536s CPU time over 8.497s wall clock time, 435M memory peak.\n2026-10-20T19:00:03 Starting\n2026-10-20T19:00:11 Control process exited, code=exited, status=1/FAILURE\n2026-10-20T19:00:11 Failed with result 'exit-code'.\n2026-10-20T19:00:11 Failed to start luxe-waechter.service - LuxeStyle Aufseher-Keepalive (Tages-Waechter).\n2026-10-20T19:00:11 Consumed 9.736s CPU time over 8.879s wall clock time, 424.8M memory peak.\n2026-10-20T19:10:03 Starting\n2026-10-20T19:10:03 Control process exited, code=exited, status=1/FAILURE\n2026-10-20T19:10:03 Failed with result 'exit-code'.\n2026-10-20T19:10:03 Failed to start luxe-waechter.service - LuxeStyle Aufseher-Keepalive (Tages-Waechter).\n2026-10-20T19:10:03 Consumed 253ms CPU time over 842ms wall clock time, 75.7M memory peak.\n2026-10-20T19:20:03 Starting\n2026-10-20T19:20:11 Control process exited, code=exited, status=1/FAILURE\n2026-10-20T19:20:11 Failed with result 'exit-code'.\n2026-10-20T19:20:11 Failed to start luxe-waechter.service - LuxeStyle Aufseher-Keepalive (Tages-Waechter).\n2026-10-20T19:20:11 Consumed 8.940s CPU time over 8.408s wall clock time, 452.2M memory peak.\n2026-10-20T19:30:03 Starting\n2026-10-20T19:30:12 Control process exited, code=exited, status=1/FAILURE\n2026-10-20T19:30:12 Failed with result 'exit-code'.\n2026-10-20T19:30:12 Failed to start luxe-waechter.service - LuxeStyle Aufseher-Keepalive (Tages-Waechter).\n2026-10-20T19:30:12 Consumed 9.161s CPU time over 9.225s wall clock time, 440.3M memory peak.\n2026-10-20T19:40:03 Starting\n2026-10-20T19:40:12 Control process exited, code=exited, status=1/FAILURE\n2026-10-20T19:40:12 Failed with result 'exit-code'.\n2026-10-20T19:40:12 Failed to start luxe-waechter.service - LuxeStyle Aufseher-Keepalive (Tages-Waechter).\n2026-10-20T19:40:12 Consumed 9.354s CPU time over 9.160s wall clock time, 439.7M memory peak.\n2026-10-20T19:50:43 Starting\n2026-10-20T19:50:51 Control process exited, code=exited, status=1/FAILURE\n2026-10-20T19:50:51 Failed with result 'exit-code'.\n2026-10-20T19:50:51 Failed to start luxe-waechter.service - LuxeStyle Aufseher-Keepalive (Tages-Waechter).\n2026-10-20T19:50:51 Consumed 9.052s CPU time over 8.013s wall clock time, 429.6M memory peak.\n2026-10-20T20:01:03 Starting\n2026-10-20T20:01:11 Control process exited, code=exited, status=1/FAILURE\n2026-10-20T20:01:11 Failed with result 'exit-code'.\n2026-10-20T20:01:11 Failed to start luxe-waechter.service - LuxeStyle Aufseher-Keepalive (Tages-Waechter).\n2026-10-20T20:01:11 Consumed 9.413s CPU time over 8.684s wall clock time, 452.2M memory peak.\n2026-10-20T20:11:03 Starting\n2026-10-20T20:11:12 Control process exited, code=exited, status=1/FAILURE\n2026-10-20T20:11:12 Failed with result 'exit-code'.\n2026-10-20T20:11:12 Failed to start luxe-waechter.service - LuxeStyle Aufseher-Keepalive (Tages-Waechter).\n2026-10-20T20:11:12 Consumed 9.315s CPU time over 9.563s wall clock time, 405.9M memory peak.\n2026-10-20T20:21:03 Starting\n2026-10-20T20:21:10 Control process exited, code=exited, status=1/FAILURE\n2026-10-20T20:21:10 Failed with result 'exit-code'.\n2026-10-20T20:21:10 Failed to start luxe-waechter.service - LuxeStyle Aufseher-Keepalive (Tages-Waechter).\n2026-10-20T20:21:10 Consumed 9.146s CPU time over 7.146s wall clock time, 446.2M memory peak.\n2026-10-20T20:31:03 Starting\n2026-10-20T20:31:10 Control process exited, code=exited, status=1/FAILURE\n2026-10-20T20:31:10 Failed with result 'exit-code'.\n2026-10-20T20:31:10 Failed to start luxe-waechter.service - LuxeStyle Aufseher-Keepalive (Tages-Waechter).\n2026-10-20T20:31:10 Consumed 9.192s CPU time over 7.612s wall clock time, 434.6M memory peak.\n2026-10-20T20:41:45 Starting\n2026-10-20T20:41:53 Control process exited, code=exited, status=1/FAILURE\n2026-10-20T20:41:53 Failed with result 'exit-code'.\n2026-10-20T20:41:53 Failed to start luxe-waechter.service - LuxeStyle Aufseher-Keepalive (Tages-Waechter).\n2026-10-20T20:41:53 Consumed 8.918s CPU time over 7.550s wall clock time, 414M memory peak.\n2026-10-20T20:51:46 Starting\n2026-10-20T20:51:54 Control process exited, code=exited, status=1/FAILURE\n2026-10-20T20:51:54 Failed with result 'exit-code'.\n2026-10-20T20:51:54 Failed to start luxe-waechter.service - LuxeStyle Aufseher-Keepalive (Tages-Waechter).\n2026-10-20T20:51:54 Consumed 9.162s CPU time over 7.598s wall clock time, 432M memory peak.\n2026-10-20T21:01:49 Starting\n2026-10-20T21:01:57 Control process exited, code=exited, status=1/FAILURE\n2026-10-20T21:01:57 Failed with result 'exit-code'.\n2026-10-20T21:01:57 Failed to start luxe-waechter.service - LuxeStyle Aufseher-Keepalive (Tages-Waechter).\n2026-10-20T21:01:57 Consumed 9.409s CPU time over 7.971s wall clock time, 433.1M memory peak.\n2026-10-20T21:11:50 Starting\n2026-10-20T21:11:58 Control process exited, code=exited, status=1/FAILURE\n2026-10-20T21:11:58 Failed with result 'exit-code'.\n2026-10-20T21:11:58 Failed to start luxe-waechter.service - LuxeStyle Aufseher-Keepalive (Tages-Waechter).\n2026-10-20T21:11:58 Consumed 9.422s CPU time over 8.067s wall clock time, 436.7M memory peak.\n2026-10-20T21:21:55 Starting\n2026-10-20T21:22:04 Control process exited, code=exited, status=1/FAILURE\n2026-10-20T21:22:04 Failed with result 'exit-code'.\n2026-10-20T21:22:04 Failed to start luxe-waechter.service - LuxeStyle Aufseher-Keepalive (Tages-Waechter).\n2026-10-20T21:22:04 Consumed 9.366s CPU time over 8.442s wall clock time, 427.3M memory peak.\n2026-10-20T21:32:03 Starting\n2026-10-20T21:32:12 Control process exited, code=exited, status=1/FAILURE\n2026-10-20T21:32:12 Failed with result 'exit-code'.\n2026-10-20T21:32:12 Failed to start luxe-waechter.service - LuxeStyle Aufseher-Keepalive (Tages-Waechter).\n2026-10-20T21:32:12 Consumed 9.354s CPU time over 9.087s wall clock time, 439.2M memory peak.\n2026-10-20T21:35:44 Starting\n2026-10-20T21:35:53 Control process exited, code=exited, status=1/FAILURE\n2026-10-20T21:35:53 Failed with result 'exit-code'.\n2026-10-20T21:35:53 Failed to start luxe-waechter.service - LuxeStyle Aufseher-Keepalive (Tages-Waechter).\n2026-10-20T21:35:53 Consumed 9.365s CPU time over 9.235s wall clock time, 415.5M memory peak."
+      },
+      {
+        "befehl": "ps -ww -eo etimes=,unit=,args= --sort=etimes",
+        "ausgabe": "0s luxe-agent.service (anderes)\n12s luxe-agent.service (anderes)\n12s luxe-agent.service (anderes)\n12s luxe-agent.service (anderes)\n12s luxe-agent.service (anderes)\n12s luxe-agent.service (anderes)\n12s luxe-agent.service (anderes)\n14s luxe-agent.service luxe_auftrag_runner.mjs\n14s luxe-agent.service bash\n35s session-1.scope t.sh\n2d chrony.service chronyd-starter.sh"
+      },
+      {
+        "befehl": "python3 -I -c import importlib, importlib.util as u\nfor m in (\"scipy\", \"av\", \"numpy\", \"PIL\"):\n    try: v = getattr(importlib.import_module(m), \"__version__\", \"da\") if u.find_spec(m) else \"FEHLT\"\n    except Exception as e: v = \"KAPUTT \" + type(e).__name__\n    print(m, v)",
+        "ausgabe": "scipy FEHLT\nav FEHLT\nnumpy 2.3.5\nPIL 12.1.1\n"
+      },
+      {
+        "befehl": "ffmpeg -hide_banner -version",
+        "fehler": "spawnSync ffmpeg ENOENT",
+        "ausgabe": ""
+      },
+      {
+        "befehl": "git -C /opt/luxe-waechter/repo stash list",
+        "ausgabe": "102"
+      },
+      {
+        "befehl": "git -C /opt/luxe-waechter/repo stash list -1 --format=%ci",
+        "ausgabe": "2026-10-19 03:13:52 +0000\n"
+      },
+      {
+        "befehl": "df -h / /tmp",
+        "ausgabe": "Filesystem      Size  Used Avail Use% Mounted on\n/dev/sda1        38G   35G  718M  99% /\ntmpfs           1.9G  480M  1.4G  26% /tmp\n"
+      },
+      {
+        "befehl": "free -m",
+        "ausgabe": "               total        used        free      shared  buff/cache   available\nMem:            3814        1255         419         483        2912        2558\nSwap:              0           0           0\n"
+      },
+      {
+        "befehl": "swapon --show",
+        "ausgabe": ""
+      },
+      {
+        "befehl": "find /tmp -maxdepth 1 ( -name _fixer_herzschlag -o -name export.jsonl -o -name kost28.jsonl -o -name fortura_env.sh -o -name cj_konten.env -o -name cj_ausgelistet_sichtbar.log -o -name besuchte_seiten_lieferbar.log ) -printf %TF %TH:%TM %TZ %s %p\n",
+        "ausgabe": "2026-10-18 20:54 UTC 19589111 /tmp/export.jsonl\n2026-10-19 12:10 UTC 11 /tmp/_fixer_herzschlag\n"
+      },
+      {
+        "befehl": "tail -n 3000 /tmp/cj_ausgelistet_sichtbar.log",
+        "fehler": "Command failed: tail -n 3000 /tmp/cj_ausgelistet_sichtbar.log\ntail: cannot open '/tmp/cj_ausgelistet_sichtbar.log' for reading: No such file or directory\n",
+        "ausgabe": ""
+      },
+      {
+        "befehl": "tail -n 3000 /tmp/besuchte_seiten_lieferbar.log",
+        "fehler": "Command failed: tail -n 3000 /tmp/besuchte_seiten_lieferbar.log\ntail: cannot open '/tmp/besuchte_seiten_lieferbar.log' for reading: No such file or directory\n",
+        "ausgabe": ""
+      },
+      {
+        "befehl": "systemctl list-units --all --plain --no-pager --no-legend luxe-m-*",
+        "ausgabe": ""
+      }
+    ]
+  }
+}
