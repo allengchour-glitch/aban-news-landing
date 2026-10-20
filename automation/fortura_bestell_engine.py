@@ -22,6 +22,7 @@ Endstatus nach Lieferschein (13.10.2026): erfuellt · teilgeliefert (fehlt …) 
 Menge/Mehrlieferung — Shopify-Position bleibt offen, ⚠️-Zeile in JEDEM Lauf bis `--geklaert <nr>`).
   python3 automation/fortura_bestell_engine.py            → Ampel-Zeile(n), schreibt Ledger/Pakete
   python3 automation/fortura_bestell_engine.py --geklaert <nr>   → «abweichend» von Hand geklärt (Zeile verschwindet)
+  python3 automation/fortura_bestell_engine.py --geklaert <nr>   → auch für «teilgeliefert»/«versandt»/«storniert-xml» (Storno-Mail an Fortura geschickt)
   python3 automation/fortura_bestell_engine.py --erneut <nr>     → «xml-unterwegs» (Absturz zwischen Senden und Quittung) von Hand freigeben: neu senden
   python3 automation/fortura_bestell_engine.py --selbsttest      → Stufe 2 ohne Netz (Fortura + Shopify gespielt)
 
@@ -41,9 +42,14 @@ LEDGER = os.path.join(REPO, 'dropship', '_fortura_bestellungen.tsv')
 PAKETE = '/tmp/fortura_bestellungen'
 FEED_MIN_ZEILEN = 15000        # echter Feed: 20'228 Zeilen (20.10.2026); ein abgeschnittener/leerer Feed ist kein Bestandsbeweis
 FEED_MAX_ALTER_H = 30          # der Tages-Feed kommt täglich; älter als 30 h = Abruf ist ausgefallen → Bestand unbekannt
+FEED_FRISCH = '/tmp/fortura_feed_bestellung.csv'
 FEED_ABRUF_TIMEOUT = 80        # Sekunden; MUSS unter dem Aufrufer-Timeout liegen (engine_keepalive.sh: timeout 120)
+HALT_STATI = ('ON_HOLD', 'REQUEST_DECLINED', 'RESTOCKED', 'FULFILLED')   # Fulfillment-Status, bei dem NICHT bestellt wird (Betreiber hält die Ware zurück / schon erledigt)
+# Reihenfolge der Zustände: bei doppelten Ledger-Zeilen (git-merge --union zweier Rechner) gewinnt der WEITERE Zustand, nie «bereit» über «xml-hochgeladen»
+RANG = {'bereit': 0, 'nicht-lagernd': 1, 'xml-unterwegs': 2, 'xml-hochgeladen': 3, 'bestellt': 3, 'versandt': 4, 'teilgeliefert': 5, 'abweichend': 5,
+        'erfuellt': 6, 'geklaert': 6, 'storniert-xml': 6, 'storniert': 7}
 Q = ('{orders(first:30,query:"financial_status:paid AND status:open AND created_at:>=2026-10-01",sortKey:CREATED_AT,reverse:true){nodes{'
-     'name createdAt displayFulfillmentStatus email shippingAddress{name firstName lastName company address1 address2 zip city countryCodeV2 phone} '
+     'name createdAt cancelledAt closedAt displayFulfillmentStatus email shippingAddress{name firstName lastName company address1 address2 zip city countryCodeV2 phone} '
      'lineItems(first:30){nodes{sku title quantity unfulfilledQuantity variant{barcode}}}}}}')
 
 
@@ -53,15 +59,32 @@ def ledger():
         for z in open(LEDGER, encoding='utf-8'):
             t = z.rstrip('\n').split('\t')
             if len(t) >= 4 and t[0] != 'nr':
-                d[t[0]] = t
+                # 20.10.2026 (Prüfer): zwei Zeilen derselben Bestellung (git-merge --union) → der weitere Zustand gewinnt, bei Gleichstand die spätere
+                if t[0] not in d or RANG.get(t[3], 0) >= RANG.get(d[t[0]][3], 0):
+                    d[t[0]] = t
     return d
 
 
 def schreibe(d):
-    with open(LEDGER, 'w', encoding='utf-8') as f:
+    """Atomar (Temp-Datei im selben Ordner + fsync + os.replace): ein Kill/ENOSPC mitten im Schreiben darf das Ledger nie leeren — es ist der
+    einzige Schutz gegen eine zweite Bestellung bei Fortura (20.10.2026, Prüfer)."""
+    tmp = LEDGER + '.tmp'
+    with open(tmp, 'w', encoding='utf-8') as f:
         f.write('nr\tzeit\tpositionen\tstatus\tfortura_auftrag\n')
         for t in sorted(d.values()):
             f.write('\t'.join((t + [''] * 5)[:5]) + '\n')
+        f.flush(); os.fsync(f.fileno())
+    os.replace(tmp, LEDGER)
+
+
+def paket_schreiben(p, paket):
+    """Paket (Adresse!) atomar ablegen, 600."""
+    tmp = p + '.tmp'
+    with open(tmp, 'w', encoding='utf-8') as f:
+        json.dump(paket, f, ensure_ascii=False, indent=1)
+        f.flush(); os.fsync(f.fileno())
+    os.chmod(tmp, 0o600)
+    os.replace(tmp, p)
 
 
 SCHALTER = os.path.join(REPO, 'dropship', '_fortura_xml_aktiv')
@@ -127,7 +150,7 @@ def frischer_feed():
     Härtung: Timeout unter dem Aufrufer-Timeout, Prozessgruppe wird bei Zeitüberschreitung beendet (kein verwaister curl), Ziel vorher gelöscht
     (nie ein alter Feed unter frischem Namen), Zeilenzahl/Alter geprüft."""
     import subprocess, signal
-    ziel = '/tmp/fortura_feed_bestellung.csv'
+    ziel = FEED_FRISCH
     try:
         if os.path.exists(ziel):
             os.remove(ziel)
@@ -147,17 +170,115 @@ def frischer_feed():
         return None
 
 
-def stufe2(led, zeilen, offen):
+def stufe2(led, zeilen, offen, gehalten=None):
     """XML-Upload für «bereit», DESADV-Rücklauf für «xml-hochgeladen». Ersetzt die Stufe-1-Zeilen der betroffenen Bestellungen.
     offen = {nr: {norm_artnr: menge}} der Bestellungen, die JETZT in Shopify bezahlt+offen sind und Fortura-Positionen offen haben (aus main()).
-    Pflicht-Parameter (kein Default): wer das Tor vergisst, bekommt einen TypeError statt eines stillen Uploads."""
-    import fortura_xml as fx
+    gehalten = {nr: Grund} für Bestellungen, die zwar in der Liste stehen, aber nicht bestellt werden dürfen (storniert/geschlossen/ON_HOLD …).
+    `offen` ist ein Pflicht-Parameter (kein Default): wer das Tor vergisst, bekommt einen TypeError statt eines stillen Uploads."""
+    import fortura_xml as fx, re
+    gehalten = gehalten or {}
     try:
         sid = fx.anmelden()
     except Exception as e:
         return zeilen + [f'⚠️ FORTURA-XML: Server nicht erreichbar ({str(e)[:90]}) — Stufe-1-Zeilen gelten']
     neu = {}
     frisch = []                                   # 20.10.2026: frischer Feed höchstens EINMAL je Lauf holen (erst bei der ersten «bereit»-Bestellung)
+    verbraucht = {}                               # norm_artnr → in DIESEM Lauf schon zugesagte Menge (Feed-Bestand sinkt mit jedem Upload)
+
+    def jetzt_iso():
+        return dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%MZ')
+
+    def unklar_zeile(nr, t, grund):
+        return (f'⚠️ FORTURA: #{nr} Upload unklar ({grund}) — Status «xml-unterwegs»: NICHT im Portal bestellen, bei Fortura/Webtransfer nachsehen; '
+                f'`--erneut {nr}` sendet neu, `--bestellt {nr}` quittiert eine Handbestellung')
+
+    def eine(nr, t, vorhanden):
+        """Eine «bereit»-Bestellung → Warn-/Statuszeile oder None. Wirft nie über die Bestellung hinaus (der Aufrufer fängt und meldet mit Nummer)."""
+        p = os.path.join(PAKETE, f'{nr}.json')
+        if not os.path.exists(p):
+            return f'⚠️ FORTURA: #{nr} Paket fehlt in {PAKETE} (Neustart?) — im Portal bestellen: {t[2]}'
+        try:
+            pk = json.load(open(p, encoding='utf-8'))
+            pk['positionen'][0]['artnr']
+        except (ValueError, OSError, KeyError, IndexError, TypeError) as e:
+            try:
+                os.remove(p)                      # abgeschnitten/leer (Kill im Schreiben): löschen — main() baut es aus Shopify neu
+            except OSError:
+                pass
+            return f'⚠️ FORTURA: #{nr} Paket unlesbar ({e.__class__.__name__}) und gelöscht — der nächste Lauf baut es aus Shopify neu; {t[2]}'
+        # 20.10.2026 (Härtung 1) UPLOAD-TOR: nur für Bestellungen, die JETZT bezahlt+offen sind und deren Fortura-Positionen dem Paket gleichen.
+        # Storniert/erstattet/zurückgehalten (ON_HOLD)/von Hand erfüllt/teilerstattet/Menge geändert → NICHT senden (Fortura würde Ware ausliefern,
+        # die wir erstattet haben bzw. die der Betreiber zurückhält).
+        if nr in gehalten:
+            return (f'⚠️ FORTURA: #{nr} XML NICHT gesendet — Shopify-Status {gehalten[nr]} (storniert/geschlossen/zurückgehalten/erledigt) — freigeben '
+                    f'oder von Hand bestellen (`--bestellt {nr}`). {t[2]}')
+        jetzt_pos = offen.get(nr)
+        if jetzt_pos is None:
+            return (f'⚠️ FORTURA: #{nr} XML NICHT gesendet — in Shopify nicht (mehr) bezahlt/offen mit Fortura-Position (storniert, erstattet, '
+                    f'erfüllt?) — prüfen; von Hand bestellt: `--bestellt {nr}`. {t[2]}')
+        paket_pos, roh = {}, {}
+        for q in pk['positionen']:
+            k = fx.norm_artnr(q['artnr']); paket_pos[k] = paket_pos.get(k, 0) + int(q['menge']); roh.setdefault(k, q['artnr'])
+        if paket_pos != jetzt_pos:
+            return (f'⚠️ FORTURA: #{nr} XML NICHT gesendet — Bestellung seit dem Paket geändert (Paket {paket_pos} ≠ Shopify {jetzt_pos}); '
+                    f'Paket {PAKETE}/{nr}.json löschen baut es aus Shopify neu, danach läuft es von selbst')
+        name = f'ORDERS_LX{nr}.xml'
+        # 20.10.2026 (#1027): hat Fortura die Ware JETZT im eigenen Lager («Lagerbestand Fortura», nicht Bazar/Total)? Nein → kein XML,
+        # Status «nicht-lagernd», Dauerzeile bis die Bestellung erstattet/geschlossen ist (der Betreiber entscheidet; die Engine erstattet nie).
+        artnrs = [q['artnr'] for q in pk['positionen']]
+        bs, feed_grund, quelle = None, '', fx.FEED
+        if not frisch:
+            frisch.append(frischer_feed())
+        # 20.10.2026 (Härtung 3): EINE Quelle, kein Mischbetrieb — für Bestand UND Verpackungseinheit (VE). Frischer Feed lesbar → nur er (fehlt die Spalte,
+        # ist das ein Formatwechsel von heute, kein Grund, einen älteren Feed zu glauben). Sonst der Tages-Feed, aber nur plausibel (Zeilenzahl, Alter).
+        if frisch[0]:
+            quelle = frisch[0]; bs = fx.bestand_aus_feed(artnrs, quelle); feed_grund = 'frischer Feed ohne Spalte «Lagerbestand Fortura»'
+        elif os.path.exists(fx.FEED):
+            fok, fgrund = feed_pruefen(fx.FEED)
+            if fok:
+                bs = fx.bestand_aus_feed(artnrs, fx.FEED); feed_grund = 'Feed ohne Spalte «Lagerbestand Fortura»'
+            else:
+                feed_grund = f'Tages-Feed unbrauchbar: {fgrund}'
+        if bs is None and (frisch[0] or os.path.exists(fx.FEED)):
+            return f'⚠️ FORTURA: #{nr} XML NICHT gesendet (Bestand unbekannt: {feed_grund}) — im Portal prüfen: {t[2]}'
+        if bs is not None:
+            # Härtung (Prüfer): Bedarf je ArtNr SUMMIERT (zwei Positionen derselben Nummer) und abzüglich dessen, was dieser Lauf schon zugesagt hat
+            knapp = []
+            for k, m in paket_pos.items():
+                lager = bs.get(roh[k], 0) - verbraucht.get(k, 0)
+                if lager < m:
+                    knapp.append(f'{roh[k]} Fortura-Lager {lager} < {m}')
+            if knapp:
+                t[3] = 'nicht-lagernd'; t[4] = '; '.join(knapp)
+                return _nicht_lagernd_zeile(nr, t)
+        ve = fx.ve_aus_feed(artnrs, quelle)                  # 13.10.: Bündel (VE>1) nie raten — aus derselben Quelle wie der Bestand
+        # 13.10.2026 Nachtrag (N4): Feed fehlt (None) oder Artikel nicht im Feed → 've': None → bau_orders_xml lehnt ab (fail-closed)
+        x, fehler = fx.bau_orders_xml(f'LX{nr}', pk.get('lieferadresse'), pk.get('email'),
+                                      [{'artnr': q['artnr'], 'ean': q.get('ean'), 'menge': int(q['menge']),
+                                        've': (ve or {}).get(q['artnr'])}
+                                       for q in pk['positionen']],
+                                      f'LuxeStyle Dropship #{nr} - neutraler Versand an Endkundin')
+        if fehler:
+            return f'⚠️ FORTURA: #{nr} XML NICHT gesendet ({"; ".join(fehler)[:120]}) — im Portal bestellen: {t[2]}'
+        if name not in vorhanden:
+            # 20.10.2026 (Härtung 2) AT-MOST-ONCE: erst als «xml-unterwegs» auf die Platte, DANN senden. Stirbt der Lauf dazwischen (Aufrufer-Timeout
+            # 120 s), bleibt «xml-unterwegs» stehen und wird nie automatisch wiederholt — Fortura kann die Datei schon abgeholt haben.
+            # Die Uhr der 24-h-Warnung startet mit dem Senden (nicht mit der Erstsichtung, die ein Halt tagelang vorher liegen kann).
+            t[3] = 'xml-unterwegs'; t[4] = name; t[1] = jetzt_iso(); schreibe(led)
+            try:
+                fx.hochladen(sid, '/home/ORDERS', name, x)
+            except Exception as e:
+                if re.match(r'curl (6|7):', str(e)):          # DNS/Verbindung gescheitert: nachweislich NICHTS gesendet → nächster Lauf darf es erneut versuchen
+                    t[3] = 'bereit'; t[4] = ''; schreibe(led)
+                    return f'⚠️ FORTURA: #{nr} Upload nicht gesendet ({str(e)[:70]}) — nächster Lauf versucht es erneut; {t[2]}'
+                return unklar_zeile(nr, t, str(e)[:70])
+            if name not in set(fx.liste(sid, '/home/ORDERS')):
+                return f'⚠️ FORTURA: #{nr} Upload nicht zurücklesbar ({name}) — Status «xml-unterwegs», nächster Lauf prüft den Ordner; {t[2]}'
+        t[3] = 'xml-hochgeladen'; t[4] = name; schreibe(led)
+        for k, m in paket_pos.items():
+            verbraucht[k] = verbraucht.get(k, 0) + m
+        return f'FORTURA: #{nr} als {name} an Fortura übermittelt ({t[2]}) — wartet auf Lieferschein'
+
     try:
         vorhanden = set(fx.liste(sid, '/home/ORDERS'))
         # 20.10.2026 (Härtung 2): «xml-unterwegs» = Absturz/Timeout zwischen Senden und Quittung. Liegt die Datei im Ordner → bestätigt;
@@ -169,70 +290,17 @@ def stufe2(led, zeilen, offen):
                 t[3] = 'xml-hochgeladen'; schreibe(led)
                 neu[nr] = f'FORTURA: #{nr} als {t[4]} bei Fortura (Upload nachträglich bestätigt) — wartet auf Lieferschein'
             else:
-                neu[nr] = (f'⚠️ FORTURA: #{nr} Upload unklar ({t[4]} nicht im Ordner, kein Lieferschein) — bei Fortura/Webtransfer prüfen; '
-                           f'`--erneut {nr}` sendet neu, `--bestellt {nr}` quittiert eine Handbestellung')
+                neu[nr] = unklar_zeile(nr, t, f'{t[4]} nicht im Ordner, kein Lieferschein')
         for nr, t in sorted(led.items()):
             if t[3] != 'bereit':
                 continue
-            p = os.path.join(PAKETE, f'{nr}.json')
-            if not os.path.exists(p):
-                neu[nr] = f'⚠️ FORTURA: #{nr} Paket fehlt in {PAKETE} (Neustart?) — im Portal bestellen: {t[2]}'; continue
-            pk = json.load(open(p, encoding='utf-8'))
-            # 20.10.2026 (Härtung 1) UPLOAD-TOR: nur für Bestellungen, die JETZT bezahlt+offen sind und deren Fortura-Positionen dem Paket gleichen.
-            # Storniert/erstattet/von Hand erfüllt/teilerstattet/Menge geändert → NICHT senden (Fortura würde Ware ausliefern, die wir erstattet haben).
-            jetzt_pos = offen.get(nr)
-            if jetzt_pos is None:
-                neu[nr] = (f'⚠️ FORTURA: #{nr} XML NICHT gesendet — in Shopify nicht (mehr) bezahlt/offen mit Fortura-Position (storniert, erstattet, '
-                           f'erfüllt?) — prüfen; von Hand bestellt: `--bestellt {nr}`. {t[2]}'); continue
-            paket_pos = {}
-            for q in pk['positionen']:
-                k = fx.norm_artnr(q['artnr']); paket_pos[k] = paket_pos.get(k, 0) + int(q['menge'])
-            if paket_pos != jetzt_pos:
-                neu[nr] = (f'⚠️ FORTURA: #{nr} XML NICHT gesendet — Bestellung seit dem Paket geändert (Paket {paket_pos} ≠ Shopify {jetzt_pos}); '
-                           f'Paket {PAKETE}/{nr}.json löschen baut es aus Shopify neu, danach läuft es von selbst'); continue
-            name = f'ORDERS_LX{nr}.xml'
-            # 20.10.2026 (#1027): hat Fortura die Ware JETZT im eigenen Lager («Lagerbestand Fortura», nicht Bazar/Total)? Nein → kein XML,
-            # Status «nicht-lagernd», Dauerzeile bis die Bestellung erstattet/geschlossen ist (der Betreiber entscheidet; die Engine erstattet nie).
-            artnrs = [q['artnr'] for q in pk['positionen']]
-            bs, feed_grund = None, ''
-            if not frisch:
-                frisch.append(frischer_feed())
-            # 20.10.2026 (Härtung 3): EINE Quelle, kein Mischbetrieb. Frischer Feed lesbar → nur er (fehlt die Spalte, ist das ein Formatwechsel von heute,
-            # kein Grund, einen älteren Feed zu glauben). Sonst der Tages-Feed, aber nur plausibel (Zeilenzahl, Alter ≤ FEED_MAX_ALTER_H).
-            if frisch[0]:
-                bs = fx.bestand_aus_feed(artnrs, frisch[0]); feed_grund = 'frischer Feed ohne Spalte «Lagerbestand Fortura»'
-            elif os.path.exists(fx.FEED):
-                fok, fgrund = feed_pruefen(fx.FEED)
-                if fok:
-                    bs = fx.bestand_aus_feed(artnrs, fx.FEED); feed_grund = 'Feed ohne Spalte «Lagerbestand Fortura»'
-                else:
-                    feed_grund = f'Tages-Feed unbrauchbar: {fgrund}'
-            if bs is None and (frisch[0] or os.path.exists(fx.FEED)):
-                neu[nr] = f'⚠️ FORTURA: #{nr} XML NICHT gesendet (Bestand unbekannt: {feed_grund}) — im Portal prüfen: {t[2]}'; continue
-            if bs is not None:
-                knapp = [f"{q['artnr']} Fortura-Lager {bs.get(q['artnr'], 0)} < {int(q['menge'])}" for q in pk['positionen']
-                         if bs.get(q['artnr'], 0) < int(q['menge'])]
-                if knapp:
-                    t[3] = 'nicht-lagernd'; t[4] = '; '.join(knapp)
-                    neu[nr] = _nicht_lagernd_zeile(nr, t); continue
-            ve = fx.ve_aus_feed([q['artnr'] for q in pk['positionen']])     # 13.10.: Bündel (VE>1) nie raten
-            # 13.10.2026 Nachtrag (N4): Feed fehlt (None) oder Artikel nicht im Feed → 've': None → bau_orders_xml lehnt ab (fail-closed)
-            x, fehler = fx.bau_orders_xml(f'LX{nr}', pk.get('lieferadresse'), pk.get('email'),
-                                          [{'artnr': q['artnr'], 'ean': q.get('ean'), 'menge': int(q['menge']),
-                                            've': (ve or {}).get(q['artnr'])}
-                                           for q in pk['positionen']],
-                                          f'LuxeStyle Dropship #{nr} - neutraler Versand an Endkundin')
-            if fehler:
-                neu[nr] = f'⚠️ FORTURA: #{nr} XML NICHT gesendet ({"; ".join(fehler)[:120]}) — im Portal bestellen: {t[2]}'; continue
-            if name not in vorhanden:
-                # 20.10.2026 (Härtung 2) AT-MOST-ONCE: erst als «xml-unterwegs» auf die Platte, DANN senden. Stirbt der Lauf dazwischen (Aufrufer-Timeout
-                # 120 s), bleibt «xml-unterwegs» stehen und wird nie automatisch wiederholt — Fortura kann die Datei schon abgeholt haben.
-                t[3] = 'xml-unterwegs'; t[4] = name; schreibe(led)
-                fx.hochladen(sid, '/home/ORDERS', name, x)
-                if name not in set(fx.liste(sid, '/home/ORDERS')):
-                    neu[nr] = f'⚠️ FORTURA: #{nr} Upload nicht zurücklesbar ({name}) — Status «xml-unterwegs», nächster Lauf prüft den Ordner; {t[2]}'; continue
-            t[3] = 'xml-hochgeladen'; t[4] = name; schreibe(led)
-            neu[nr] = f'FORTURA: #{nr} als {name} an Fortura übermittelt ({t[2]}) — wartet auf Lieferschein'
+            try:
+                z = eine(nr, t, vorhanden)
+            except Exception as e:                # eine kaputte Bestellung darf weder die übrigen noch die Lieferscheine blockieren
+                z = (unklar_zeile(nr, t, f'{e.__class__.__name__}: {str(e)[:60]}') if t[3] == 'xml-unterwegs'
+                     else f'⚠️ FORTURA: #{nr} Fehler in der Verarbeitung ({e.__class__.__name__}: {str(e)[:80]}) — die übrigen Bestellungen laufen weiter; {t[2]}')
+            if z:
+                neu[nr] = z
         # DESADV: Lieferscheine von Fortura
         for datei in fx.liste(sid, '/home/DESADV'):
             docs = fx.lies_delvry(fx.herunterladen(sid, '/home/DESADV/' + datei))
@@ -242,6 +310,11 @@ def stufe2(led, zeilen, offen):
                 continue
             for d in docs:
                 nr = d['order_no'].upper().lstrip('LX')
+                if nr in led and led[nr][3] == 'storniert-xml':
+                    # Härtung (Prüfer): Storno/Erstattung kam NACH dem Upload — Fortura hat trotzdem versandt. Shopify bleibt unberührt.
+                    neu[nr] = (f"⚠️ FORTURA: #{nr} Fortura hat trotz Storno/Erstattung VERSANDT {d['datum']} · DPD {','.join(d['tracking'])} "
+                               f"(Lieferschein {d['doc_no']}) — Sendung abfangen/Rücknahme klären; danach `--geklaert {nr}`")
+                    continue
                 if nr in led and led[nr][3] in ('xml-hochgeladen', 'xml-unterwegs', 'versandt'):
                     if led[nr][3] in ('xml-hochgeladen', 'xml-unterwegs'):
                         led[nr][4] = f"{led[nr][4]} · Lieferschein {d['doc_no']} {d['datum']} · DPD {','.join(d['tracking'])}"
@@ -249,7 +322,7 @@ def stufe2(led, zeilen, offen):
                     # numerisch. Früher: Text «2» ≠ «2.000» → falscher Teillieferungs-Alarm, «2,000» → Absturz, Ersatzartikel mit
                     # anderer ARTICLE_NO → still «erfuellt», das bestellte Teil blieb in Shopify offen.
                     geliefert, teil, fremd = fx.abgleich(fx.positionen_aus_text(led[nr][2]), d['positionen'])
-                    led[nr][3] = 'versandt'
+                    led[nr][3] = 'versandt'; schreibe(led)       # Härtung: Zustand VOR der Shopify-Sendung sichern (Kill danach darf nicht zur Dauer-Falschmeldung werden)
                     ok, info = sendung_eintragen(nr, d['tracking'], geliefert) if d['tracking'] else (False, 'Lieferschein ohne Tracking')
                     if fremd and (ok or info == 'keine offene Fortura-Position'):
                         led[nr][3] = 'abweichend'
@@ -260,6 +333,7 @@ def stufe2(led, zeilen, offen):
                     if led[nr][3] in ('abweichend', 'teilgeliefert'):
                         led[nr][4] = (f"{led[nr][4]}" + (f" · fehlt {', '.join(teil)}" if teil else '')
                                       + (f" · fremd {'; '.join(fremd)}" if fremd else ''))
+                    schreibe(led)
                     neu[nr] = (f"{'' if ok and not fremd else '⚠️ '}FORTURA: #{nr} versandt {d['datum']} · DPD {','.join(d['tracking'])} · "
                                f"{'Shopify: ' + info if ok else 'Shopify-Sendung NICHT eingetragen: ' + info}"
                                + (f" · ⚠️ Teillieferung {', '.join(teil)}" if teil else '')
@@ -330,12 +404,12 @@ def main():
         print(f'#{nr} freigegeben: der nächste Lauf sendet das XML neu (nur nach Rückfrage bei Fortura, dass KEINE Bestellung LX{nr} vorliegt)'); return 0
     if '--geklaert' in sys.argv:
         nr = sys.argv[sys.argv.index('--geklaert') + 1].lstrip('#')
-        if nr not in led or led[nr][3] not in ('abweichend', 'nicht-lagernd'):
-            print(f'#{nr} steht nicht auf «abweichend»/«nicht-lagernd»'); return 1
+        if nr not in led or led[nr][3] not in ('abweichend', 'nicht-lagernd', 'teilgeliefert', 'versandt', 'storniert-xml'):
+            print(f'#{nr} steht nicht auf «abweichend»/«nicht-lagernd»/«teilgeliefert»/«versandt»/«storniert-xml»'); return 1
         led[nr][3] = 'geklaert'; schreibe(led); print(f'#{nr} Abweichung als geklärt quittiert'); return 0
     nodes = gql(Q)['orders']['nodes']
     os.makedirs(PAKETE, mode=0o700, exist_ok=True)
-    zeilen, gesehen, offen = [], set(), {}
+    zeilen, gesehen, offen, gehalten = [], set(), {}, {}
     for o in nodes:
         nr = o['name'].lstrip('#')
         pos = [(li['sku'][8:], (li.get('variant') or {}).get('barcode') or '', li['unfulfilledQuantity'], li['title'])
@@ -343,6 +417,12 @@ def main():
         if not pos:
             continue
         gesehen.add(nr)
+        # Härtung (Prüfer): das Tor verlässt sich nicht nur auf den Such-Filter (financial_status:paid AND status:open) — storniert/geschlossen/
+        # ON_HOLD wird hier selbst erkannt (#1027: cancelledAt gesetzt, Finanzstatus weiter PAID)
+        if o.get('cancelledAt') or o.get('closedAt'):
+            gehalten[nr] = 'storniert/geschlossen'
+        elif o.get('displayFulfillmentStatus') in HALT_STATI:
+            gehalten[nr] = o['displayFulfillmentStatus']
         offen[nr] = {}
         for a, _, m, _ in pos:                 # Upload-Tor (stufe2): die Fortura-Positionen, die Shopify JETZT offen führt
             k = _fx().norm_artnr(a); offen[nr][k] = offen[nr].get(k, 0) + int(m)
@@ -352,9 +432,18 @@ def main():
             paket = {'bestellref': f'LX{nr}', 'kundennr': '544341', 'erstellt': o['createdAt'], 'positionen':
                      [{'artnr': a, 'ean': e, 'menge': m, 'titel': t} for a, e, m, t in pos],
                      'lieferadresse': o.get('shippingAddress'), 'email': o.get('email'), 'versand': 'neutral (Dropship), Absender LuxeStyle'}
-            with open(p, 'w', encoding='utf-8') as f:
-                json.dump(paket, f, ensure_ascii=False, indent=1)
-            os.chmod(p, 0o600)
+            paket_schreiben(p, paket)
+            if nr in led and led[nr][3] == 'bereit':
+                led[nr][2] = txt               # Ledger-Positionen = die jetzt gesendeten (sonst falscher Teillieferungs-Alarm nach «Paket löschen», Prüfer)
+        elif nr in led and led[nr][3] == 'bereit':
+            # Härtung (Prüfer): Adresse/E-Mail ändern sich bis zum Senden — das Paket zieht sie bei JEDEM Lauf aus Shopify nach (das Tor prüft nur Positionen)
+            try:
+                paket = json.load(open(p, encoding='utf-8'))
+                if paket.get('lieferadresse') != o.get('shippingAddress') or paket.get('email') != o.get('email'):
+                    paket['lieferadresse'], paket['email'] = o.get('shippingAddress'), o.get('email')
+                    paket_schreiben(p, paket)
+            except (ValueError, OSError):
+                pass                           # unlesbares Paket: stufe2 löscht es und meldet es mit Bestellnummer
         if nr not in led:
             led[nr] = [nr, dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%MZ'), txt, 'bereit', '']
         st = led[nr][3]
@@ -380,9 +469,18 @@ def main():
     # belegtem Storno/voller Erstattung (_ist_beendet), nie, weil die Bestellung bloss nicht in der Liste auftaucht.
     for nr, t in sorted(led.items()):
         if t[3] in ('bereit', 'xml-hochgeladen', 'xml-unterwegs', 'nicht-lagernd') and nr not in gesehen and _ist_beendet(nr):
-            t[3] = 'storniert'; t[4] = f"{t[4]} · Shopify-Bestellung storniert/erstattet (Ledger {dt.datetime.now(dt.timezone.utc):%Y-%m-%d})"
-    if os.path.exists(SCHALTER) and any(t[3] in ('bereit', 'xml-hochgeladen', 'xml-unterwegs', 'versandt') for t in led.values()):
-        zeilen = stufe2(led, zeilen, offen)
+            if t[3] in ('xml-hochgeladen', 'xml-unterwegs'):
+                # Härtung (Prüfer): das XML liegt bei Fortura — «storniert» wäre still, Fortura liefert trotz Erstattung. Dauerzeile bis `--geklaert`.
+                t[3] = 'storniert-xml'; t[4] = f"{t[4]} · Shopify storniert/erstattet {dt.datetime.now(dt.timezone.utc):%Y-%m-%d}, XML lag bei Fortura"
+            else:
+                t[3] = 'storniert'; t[4] = f"{t[4]} · Shopify-Bestellung storniert/erstattet (Ledger {dt.datetime.now(dt.timezone.utc):%Y-%m-%d})"
+    # Dauerzeile für «storniert-xml» (Storno/Erstattung NACH dem Upload): die Datei liegt bei Fortura, es gibt keinen Storno-Kanal ausser Mail —
+    # unabhängig vom Schalter, bis `--geklaert <nr>`; ein eintreffender Lieferschein ersetzt sie in stufe2 durch «trotz Storno VERSANDT».
+    zeilen += [(f'⚠️ FORTURA: #{nr} storniert/erstattet, aber das XML (LX{nr}) liegt bei Fortura — dort per Mail stornieren, sonst wird trotz Erstattung '
+                f'geliefert; ein Lieferschein meldet sich hier; danach `python3 automation/fortura_bestell_engine.py --geklaert {nr}`')
+               for nr, t in sorted(led.items()) if t[3] == 'storniert-xml']
+    if os.path.exists(SCHALTER) and any(t[3] in ('bereit', 'xml-hochgeladen', 'xml-unterwegs', 'versandt', 'storniert-xml') for t in led.values()):
+        zeilen = stufe2(led, zeilen, offen, gehalten)
     schreibe(led)
     print('\n'.join(zeilen) if zeilen else 'FORTURA: 0 offen')
     return 0
@@ -393,11 +491,13 @@ def selbsttest():
     werden gespielt, Ledger/Pakete/Feed liegen in einem Temp-Ordner, `curl` wird nie aufgerufen."""
     import tempfile, shutil
     import fortura_xml as fx
-    global LEDGER, PAKETE, SCHALTER, gql, frischer_feed, FEED_MIN_ZEILEN, FEED_MAX_ALTER_H
+    global LEDGER, PAKETE, SCHALTER, gql, frischer_feed, FEED_MIN_ZEILEN, FEED_MAX_ALTER_H, HIER, FEED_FRISCH, FEED_ABRUF_TIMEOUT
     feed_alt = (FEED_MIN_ZEILEN, FEED_MAX_ALTER_H)
+    frischer_echt, hier_alt, frisch_alt, timeout_alt = frischer_feed, HIER, FEED_FRISCH, FEED_ABRUF_TIMEOUT
     FEED_MIN_ZEILEN = 1               # Test-Feeds sind winzig; die Plausibilitätsfälle (P6) setzen die Schwelle selbst
     alt = (LEDGER, PAKETE, SCHALTER, gql, frischer_feed, fx.FEED, fx.anmelden, fx.abmelden, fx.liste, fx.herunterladen, fx.hochladen, fx._curl, sys.argv)
     td = tempfile.mkdtemp(prefix='fbe_test_')
+    datetime_echt = dt.datetime
     LEDGER, PAKETE, SCHALTER = os.path.join(td, 'led.tsv'), os.path.join(td, 'pakete'), os.path.join(td, 'schalter')
     os.makedirs(PAKETE); open(SCHALTER, 'w').close()
     fx.FEED = os.path.join(td, 'feed.csv')
@@ -544,7 +644,8 @@ def selbsttest():
         with contextlib.redirect_stdout(buf):
             main()
         gql = gql_alt
-        pruef('O6 storniert (cancelledAt) → Ledger «storniert», keine Dauerzeile', ledger()['1040'][3] == 'storniert' and '#1040' not in buf.getvalue(), (ledger()['1040'], buf.getvalue()))
+        pruef('O6 storniert NACH dem Upload (XML liegt bei Fortura) → «storniert-xml» + Dauerzeile «bei Fortura stornieren» (kein stilles «storniert»)',
+              ledger()['1040'][3] == 'storniert-xml' and '#1040' in buf.getvalue() and 'liegt bei Fortura' in buf.getvalue(), (ledger()['1040'], buf.getvalue()))
         pruef('O6 nur teilerstattet (nicht storniert) → bleibt «xml-hochgeladen»', ledger()['1041'][3] == 'xml-hochgeladen', ledger()['1041'])
         pruef('O6 Shopify-Antwort fehlt/unbekannt → nicht beenden', _ist_beendet('9999') is False)
         # ================= 20.10.2026 HÄRTUNG (P1–P12) =================
@@ -679,6 +780,277 @@ def selbsttest():
         pruef('P12 Lieferschein für «xml-unterwegs» → «erfuellt» (Tracking trotz verlorener Quittung)', led['1080'][3] == 'erfuellt' and 'DPD 01501080' in led['1080'][4], led['1080'])
         desadv.pop('D1080.xml', None)
         pruef('P12 Abruf-Timeout liegt unter dem Aufrufer-Timeout (engine_keepalive.sh: timeout 120)', FEED_ABRUF_TIMEOUT < 120, FEED_ABRUF_TIMEOUT)
+        # ================= 20.10.2026 HÄRTUNG, Prüfer-Runde (Q1–Q14) =================
+        def _liste_gql(knoten):
+            basis = gql
+            def _g(q, v=None):
+                if 'financial_status:paid' in q:
+                    return {'orders': {'nodes': knoten}}
+                return basis(q, v)
+            return _g
+
+        def _lauf(*argv):
+            sys.argv = ['x', *argv]; b = io.StringIO()
+            with contextlib.redirect_stdout(b):
+                rc_ = main()
+            return rc_, b.getvalue()
+
+        def _knoten2(nr_, menge=1, **extra):
+            k = {'name': '#' + nr_, 'createdAt': '2026-10-20T10:00:00Z', 'cancelledAt': None, 'closedAt': None, 'displayFulfillmentStatus': 'UNFULFILLED',
+                 'email': 't@e.ch', 'shippingAddress': {'firstName': 'A', 'lastName': 'B', 'address1': 'Weg 1', 'zip': '3000', 'city': 'Bern', 'countryCodeV2': 'CH'},
+                 'lineItems': {'nodes': [{'sku': 'fortura-93583', 'title': 'T', 'quantity': menge, 'unfulfilledQuantity': menge, 'variant': {'barcode': '123'}}]}}
+            k.update(extra)
+            return k
+        gql_basis = gql
+        led = ledger()
+
+        # Q1 Storno NACH dem Upload: XML liegt bei Fortura → «storniert-xml» + Dauerzeile (nie stilles «storniert»), Lieferschein → «trotz Storno VERSANDT»
+        led['1100'] = ['1100', '2026-10-20T10:00Z', '93583×1', 'xml-hochgeladen', 'ORDERS_LX1100.xml']; schreibe(led)
+        def _gql_q1(q, v=None):
+            if v and str(v.get('q', '')) == 'name:#1100':
+                return {'orders': {'nodes': [{'name': '#1100', 'cancelledAt': '2026-10-20T14:00:00Z', 'displayFinancialStatus': 'REFUNDED',
+                                              'transactions': [{'kind': 'REFUND', 'status': 'SUCCESS'}]}]}}
+            return gql_basis(q, v)
+        gql = _gql_q1
+        _, out = _lauf()
+        pruef('Q1 Storno nach Upload → «storniert-xml» + Dauerzeile «bei Fortura stornieren»', ledger()['1100'][3] == 'storniert-xml' and '#1100' in out and 'per Mail stornieren' in out, (ledger()['1100'], out))
+        _, out = _lauf()
+        pruef('Q1 Dauerzeile steht in JEDEM Lauf', '#1100' in out and 'per Mail stornieren' in out, out)
+        n_sendungen = len(gesendet)
+        desadv['D1100.xml'] = lief('1100', [('93583', '1', '1', '')])
+        shop['1100'] = [('fortura-93583', 1)]
+        led_voll = {k_: list(v_) for k_, v_ in ledger().items()}
+        schreibe({'1100': led_voll['1100']})                  # NUR diese Zeile: stufe2 muss allein wegen «storniert-xml» laufen
+        _, out = _lauf()
+        schreibe(led_voll)
+        pruef('Q1 Lieferschein trotz Storno → ⚠️ «VERSANDT», Shopify unberührt, Status bleibt', 'trotz Storno/Erstattung VERSANDT' in out and ledger()['1100'][3] == 'storniert-xml' and len(gesendet) == n_sendungen, (out, ledger()['1100']))
+        desadv.pop('D1100.xml', None)
+        rc_, out = _lauf('--geklaert', '1100')
+        pruef('Q1 --geklaert beendet «storniert-xml»', rc_ == 0 and ledger()['1100'][3] == 'geklaert', (rc_, out))
+        gql = gql_basis
+
+        # Q2 Adresse/E-Mail ändern sich bis zum Senden: das Paket zieht sie nach, das XML trägt die NEUE Adresse
+        led = ledger()
+        led['1101'] = ['1101', '2026-10-20T10:00Z', '93583×1', 'bereit', '']; paket('1101', '93583', 1); schreibe(led)
+        k = _knoten2('1101'); k['shippingAddress'] = dict(k['shippingAddress'], address1='Neuweg 9')
+        gql = _liste_gql([k]); hoch.clear()
+        _lauf()
+        xml_1101 = next((x for nm, x in hoch if nm == 'ORDERS_LX1101.xml'), '')
+        pruef('Q2 geänderte Lieferadresse → XML trägt «Neuweg 9», nicht «Weg 1»', 'Neuweg 9' in xml_1101 and '>Weg 1<' not in xml_1101, xml_1101[:200])
+        gql = gql_basis
+
+        # Q3 TOR gegen zurückgehaltene/stornierte Bestellungen in der Liste (der Such-Filter allein genügt nicht)
+        led = ledger()
+        for nr_ in ('1102', '1103'):
+            led[nr_] = [nr_, '2026-10-20T10:00Z', '93583×1', 'bereit', '']; paket(nr_, '93583', 1)
+        schreibe(led)
+        gql = _liste_gql([_knoten2('1102', displayFulfillmentStatus='ON_HOLD'), _knoten2('1103', cancelledAt='2026-10-20T14:00:00Z')]); hoch.clear()
+        _, out = _lauf()
+        pruef('Q3 ON_HOLD → KEIN XML, Zeile nennt den Status', ledger()['1102'][3] == 'bereit' and not any(nm == 'ORDERS_LX1102.xml' for nm, _ in hoch) and 'ON_HOLD' in out, out)
+        pruef('Q3 cancelledAt gesetzt (Finanzstatus PAID!) → KEIN XML', ledger()['1103'][3] == 'bereit' and not any(nm == 'ORDERS_LX1103.xml' for nm, _ in hoch) and 'storniert/geschlossen' in out, out)
+        gql = _liste_gql([_knoten2('1102')]); _lauf()
+        pruef('Q3 Gegenprobe: ON_HOLD aufgehoben (UNFULFILLED) → XML hochgeladen', ledger()['1102'][3] == 'xml-hochgeladen', ledger()['1102'])
+        gql = gql_basis
+
+        # Q4 EINE kaputte Bestellung blockiert weder die übrigen noch die Lieferscheine (Paket abgeschnitten → gelöscht, Zeile mit Nummer)
+        led = ledger()
+        led['1104'] = ['1104', '2026-10-20T10:00Z', '93583×1', 'bereit', '']
+        open(os.path.join(PAKETE, '1104.json'), 'w').write('{"positionen": [{"artnr": "9358')
+        led['1105'] = ['1105', '2026-10-20T10:00Z', '93583×1', 'bereit', '']; paket('1105', '93583', 1)
+        led['1106'] = ['1106', '2026-10-20T10:00Z', '93583×1', 'xml-hochgeladen', 'ORDERS_LX1106.xml']
+        desadv['D1106.xml'] = lief('1106', [('93583', '1', '1', '')]); shop['1106'] = [('fortura-93583', 1)]
+        hoch.clear()
+        z = stufe2(led, [], {'1104': {'93583': 1}, '1105': {'93583': 1}})
+        pruef('Q4 kaputtes Paket → Zeile mit «#1104», Datei gelöscht (Neubau im nächsten Lauf)', any('#1104' in x and 'Paket unlesbar' in x for x in z) and not os.path.exists(os.path.join(PAKETE, '1104.json')), z)
+        pruef('Q4 die gesunde Bestellung #1105 läuft trotzdem durch', led['1105'][3] == 'xml-hochgeladen', led['1105'])
+        pruef('Q4 und der Lieferschein #1106 wird trotzdem verarbeitet', led['1106'][3] == 'erfuellt', led['1106'])
+        desadv.pop('D1106.xml', None)
+        led['1103b'] = ['1103b', '2026-10-20T10:00Z', '93583×1', 'bereit', '']
+        json.dump({'positionen': [{'artnr': '93583', 'ean': ''}], 'lieferadresse': {}, 'email': ''}, open(os.path.join(PAKETE, '1103b.json'), 'w'))   # «menge» fehlt → KeyError tief in der Verarbeitung
+        led['1103c'] = ['1103c', '2026-10-20T10:00Z', '93583×1', 'bereit', '']; paket('1103c', '93583', 1)
+        z = stufe2(led, [], {'1103b': {'93583': 1}, '1103c': {'93583': 1}})
+        pruef('Q4 unerwartete Ausnahme in #1103b → Zeile mit Nummer, #1103c läuft trotzdem durch', any('#1103b' in x and 'Fehler in der Verarbeitung' in x for x in z) and led['1103c'][3] == 'xml-hochgeladen', (z, led['1103c']))
+        led.pop('1103b'); led.pop('1103c'); schreibe(led)
+
+        # Q5 Upload-Fehler nach Klasse: DNS/Verbindung (curl 6/7) = nichts gesendet → zurück auf «bereit»; Timeout (curl 28) = unklar → «xml-unterwegs»
+        led = ledger()
+        led['1107'] = ['1107', '2026-10-20T10:00Z', '93583×1', 'bereit', '']; paket('1107', '93583', 1)
+        led['1108'] = ['1108', '2026-10-20T10:00Z', '93583×1', 'bereit', '']; paket('1108', '93583', 1)
+        orig_hoch = fx.hochladen
+        def _fehler(msg, nur):
+            def f_(sid, o, nm, x):
+                if nm == f'ORDERS_LX{nur}.xml':
+                    raise RuntimeError(msg)
+                return orig_hoch(sid, o, nm, x)
+            return f_
+        fx.hochladen = _fehler('curl 7: Failed to connect', '1107')
+        z = stufe2(led, [], {'1107': {'93583': 1}})
+        pruef('Q5 curl 7 (nicht verbunden) → zurück auf «bereit», Zeile «nicht gesendet»', led['1107'][3] == 'bereit' and any('#1107' in x and 'nicht gesendet' in x for x in z), (led['1107'], z))
+        fx.hochladen = _fehler('curl 28: Operation timed out', '1108')
+        z = stufe2(led, [], {'1108': {'93583': 1}})
+        pruef('Q5 curl 28 (Timeout) → «xml-unterwegs», Zeile «NICHT im Portal bestellen»', led['1108'][3] == 'xml-unterwegs' and any('#1108' in x and 'NICHT im Portal bestellen' in x for x in z), (led['1108'], z))
+        fx.hochladen = orig_hoch
+
+        # Q6 Bestandsprüfung: Bedarf je ArtNr SUMMIERT, und was dieser Lauf schon zugesagt hat, zählt (zwei Bestellungen um den letzten Artikel)
+        with open(fx.FEED, 'w', encoding='cp1252') as f:
+            f.write('ArtNr|Internet_VE|Lagerbestand Fortura|\n93583|1|3|\n')
+        led = ledger()
+        led['1109'] = ['1109', '2026-10-20T10:00Z', '93583×2, 93583×2', 'bereit', '']
+        json.dump({'positionen': [{'artnr': '93583', 'ean': '', 'menge': 2}, {'artnr': '93583', 'ean': '', 'menge': 2}],
+                   'lieferadresse': {'firstName': 'A', 'lastName': 'B', 'address1': 'Weg 1', 'zip': '3000', 'city': 'Bern', 'countryCodeV2': 'CH'}, 'email': 't@e.ch'},
+                  open(os.path.join(PAKETE, '1109.json'), 'w'))
+        z = stufe2(led, [], {'1109': {'93583': 4}})
+        pruef('Q6 zwei Positionen derselben ArtNr (2+2) bei Lager 3 → «nicht-lagernd»', led['1109'][3] == 'nicht-lagernd' and 'Fortura-Lager 3 < 4' in led['1109'][4], (led['1109'], z))
+        with open(fx.FEED, 'w', encoding='cp1252') as f:
+            f.write('ArtNr|Internet_VE|Lagerbestand Fortura|\n93583|1|1|\n')
+        for nr_ in ('1110', '1111'):
+            led[nr_] = [nr_, '2026-10-20T10:00Z', '93583×1', 'bereit', '']; paket(nr_, '93583', 1)
+        z = stufe2(led, [], {'1110': {'93583': 1}, '1111': {'93583': 1}})
+        pruef('Q6 zwei Bestellungen um den LETZTEN Artikel: die erste geht raus, die zweite ist «nicht-lagernd»', led['1110'][3] == 'xml-hochgeladen' and led['1111'][3] == 'nicht-lagernd', (led['1110'], led['1111']))
+        with open(fx.FEED, 'w', encoding='cp1252') as f:      # Test-Feed für die folgenden Fälle wiederherstellen
+            f.write('ArtNr|Internet_VE|Lagerbestand Fortura|\n93583|1|5|\n90654-2|1|5|\n042156|1|5|\n59774|10|5|\n')
+
+        # Q7 VE aus DERSELBEN Quelle wie der Bestand: frischer Feed VE 10 (Bündel) schlägt den Tages-Feed VE 1 — keine Einzelstück-Bestellung eines Bündels
+        frisch_ve = os.path.join(td, 'frisch_ve.csv')
+        with open(frisch_ve, 'w', encoding='cp1252') as f:
+            f.write('ArtNr|Internet_VE|Lagerbestand Fortura|\n93583|10|50|\n')
+        frischer_feed = lambda: frisch_ve
+        led = ledger()
+        led['1112'] = ['1112', '2026-10-20T10:00Z', '93583×1', 'bereit', '']; paket('1112', '93583', 1)
+        hoch.clear()
+        z = stufe2(led, [], {'1112': {'93583': 1}})
+        pruef('Q7 frischer Feed meldet VE 10 → KEIN XML mit Menge 1 (Bündel), Zeile «NICHT gesendet»', led['1112'][3] == 'bereit' and not any(nm == 'ORDERS_LX1112.xml' for nm, _ in hoch) and any('#1112' in x and 'NICHT gesendet' in x for x in z), (led['1112'], z, hoch))
+        frischer_feed = lambda: None
+
+        # Q8 doppelte Ledger-Zeilen (git merge --union zweier Rechner): der WEITERE Zustand gewinnt, nie «bereit» über «xml-hochgeladen»
+        led_vor_q8 = {k_: list(v_) for k_, v_ in ledger().items()}
+        with open(LEDGER, 'w', encoding='utf-8') as f:
+            f.write('nr\tzeit\tpositionen\tstatus\tfortura_auftrag\n1120\tx\t93583×1\txml-hochgeladen\tORDERS_LX1120.xml\n1120\tx\t93583×1\tbereit\t\n'
+                    '1121\tx\t93583×1\tbereit\t\n1121\tx\t93583×1\tversandt\tx\n')
+        pruef('Q8 «xml-hochgeladen» dann «bereit» (Union) → xml-hochgeladen', ledger()['1120'][3] == 'xml-hochgeladen', ledger()['1120'])
+        pruef('Q8 «bereit» dann «versandt» → versandt', ledger()['1121'][3] == 'versandt', ledger()['1121'])
+        led = {k_: list(v_) for k_, v_ in led_vor_q8.items()}
+        schreibe(led)
+
+        # Q9 ATOMARES Schreiben: stirbt der Lauf mitten im Schreiben (fsync wirft), bleibt das alte Ledger vollständig
+        vorher = open(LEDGER, encoding='utf-8').read()
+        fsync_alt = os.fsync
+        def _kaputt(fd):
+            raise OSError('Platte voll')
+        os.fsync = _kaputt
+        try:
+            schreibe({'9999': ['9999', 'x', 'y', 'bereit', '']})
+            geworfen = False
+        except OSError:
+            geworfen = True
+        finally:
+            os.fsync = fsync_alt
+        pruef('Q9 Schreibfehler → altes Ledger unverändert (kein Abschneiden)', geworfen and open(LEDGER, encoding='utf-8').read() == vorher, open(LEDGER, encoding='utf-8').read()[:120])
+        pruef('Q9 erfolgreiches Schreiben hinterlässt keine .tmp-Datei', (schreibe(led), not os.path.exists(LEDGER + '.tmp'))[1])
+
+        # Q10 «Paket löschen» (Abhilfe des Tors): die Ledger-Positionen ziehen mit — sonst falscher Teillieferungs-Alarm
+        led = ledger()
+        led['1130'] = ['1130', '2026-10-01T10:00Z', '93583×2, 90654-2×1', 'bereit', '']; schreibe(led)
+        gql = _liste_gql([_knoten2('1130', 2)]); hoch.clear()
+        _lauf()
+        pruef('Q10 Paket neu gebaut → Ledger-Positionen = «93583×2» (nicht mehr «…, 90654-2×1»)', '90654-2' not in ledger()['1130'][2] and ledger()['1130'][2] == '93583×2', ledger()['1130'])
+        gql = gql_basis
+
+        # Q11 die Uhr der 24-h-Warnung startet mit dem SENDEN (t[1]), nicht mit der Erstsichtung
+        heute_ = dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%d')
+        pruef('Q11 Zeitstempel nach Upload = heute (Erstsichtung war 01.10. 10:00)', ledger()['1130'][1].startswith(heute_) and ledger()['1130'][3] == 'xml-hochgeladen', ledger()['1130'])
+
+        # Q12 Warnschwelle IN DER ENGINE (Werktage): Freitag-Abend-Upload warnt am Wochenende nicht, am Montagabend schon
+        class _FixDT(datetime_echt):
+            fix = None
+            @classmethod
+            def now(cls, tz=None):
+                return cls.fix
+        dt.datetime = _FixDT
+        try:
+            led = {'1140': ['1140', '2026-10-23T16:00Z', '93583×1', 'xml-hochgeladen', 'ORDERS_LX1140.xml']}
+            def _zeile(jetzt_):
+                _FixDT.fix = jetzt_
+                zz = stufe2(led, [], {})
+                return next((x for x in zz if '#1140 ' in x), '')
+            U = dt.timezone.utc
+            sa = _zeile(datetime_echt(2026, 10, 24, 20, 0, tzinfo=U))
+            mo = _zeile(datetime_echt(2026, 10, 26, 20, 0, tzinfo=U))
+            led['1140'][1] = '2026-10-20T10:00Z'
+            mi_fruh = _zeile(datetime_echt(2026, 10, 21, 9, 0, tzinfo=U))
+            mi_spaet = _zeile(datetime_echt(2026, 10, 21, 12, 0, tzinfo=U))
+        finally:
+            dt.datetime = datetime_echt
+        pruef('Q12 Fr 16:00 Upload → Sa 20:00 (8 Werktage-h): KEINE Warnung', sa.startswith('FORTURA') and 'Storno-Mail' not in sa, sa)
+        pruef('Q12 Fr 16:00 Upload → Mo 20:00 (28 Werktage-h): Warnung + Hinweis Storno-Mail', mo.startswith('⚠️') and 'Storno-Mail' in mo, mo)
+        pruef('Q12 Di 10:00 → Mi 09:00 (23 h): keine Warnung · Mi 12:00 (26 h): Warnung', mi_fruh.startswith('FORTURA') and mi_spaet.startswith('⚠️'), (mi_fruh, mi_spaet))
+
+        # Q13 frischer_feed() mit Attrappenskript: Erfolg · Hänger (Prozessgruppe wird beendet) · rc≠0 · keine Datei (alter Feed wird NICHT wiederverwendet) · zu wenig Zeilen
+        import stat as _stat, time as _t
+        skriptdir = os.path.join(td, 'skript'); os.makedirs(skriptdir)
+        sk = os.path.join(skriptdir, 'fortura_fetch_feed.sh')
+        with open(sk, 'w') as f:
+            f.write('#!/bin/bash\ncase "$FAKE_MODE" in\n'
+                    ' ok) yes "93583|1|5|aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" | head -n 20000 > "$1" ;;\n'
+                    ' wenig) yes "$(head -c 700 /dev/zero | tr "\\0" a)" | head -n 2000 > "$1" ;;\n'
+                    ' haenger) sleep 60 & echo $! > "$FAKE_PIDFILE"; wait ;;\n'
+                    ' fehler) yes "x" | head -n 900000 > "$1"; exit 3 ;;\n'
+                    ' keine) exit 0 ;;\nesac\n')
+        os.chmod(sk, os.stat(sk).st_mode | _stat.S_IXUSR)
+        HIER, FEED_FRISCH, FEED_ABRUF_TIMEOUT = skriptdir, os.path.join(td, 'frisch_echt.csv'), 2
+        FEED_MIN_ZEILEN = 10000
+        pid_datei = os.path.join(td, 'kind.pid'); os.environ['FAKE_PIDFILE'] = pid_datei
+        try:
+            os.environ['FAKE_MODE'] = 'ok'
+            pruef('Q13 Abruf ok (20000 Zeilen, > 1 MB) → Pfad', frischer_echt() == FEED_FRISCH and os.path.getsize(FEED_FRISCH) > 1_000_000)
+            os.environ['FAKE_MODE'] = 'keine'
+            pruef('Q13 Skript ohne Datei → None, der ALTE Feed wird nicht wiederverwendet (vorher gelöscht)', frischer_echt() is None and not os.path.exists(FEED_FRISCH))
+            os.environ['FAKE_MODE'] = 'fehler'
+            pruef('Q13 Skript rc=3 (obwohl Datei da) → None', frischer_echt() is None)
+            os.environ['FAKE_MODE'] = 'wenig'
+            pruef('Q13 > 1 MB aber nur 2000 Zeilen (< 10000) → None', frischer_echt() is None)
+            os.environ['FAKE_MODE'] = 'haenger'
+            t0_ = _t.time(); ergebnis = frischer_echt(); dauer = _t.time() - t0_
+            _t.sleep(0.5)
+            kind_tot = True
+            try:
+                kind = int(open(pid_datei).read().strip())
+                zustand_ = open(f'/proc/{kind}/stat').read().rsplit(')', 1)[1].split()[0]     # 'Z' = beendet, nur nicht abgeholt (Container ohne init-Reaper)
+                kind_tot = zustand_ == 'Z'
+            except (ProcessLookupError, FileNotFoundError, ValueError, OSError):
+                pass
+            pruef('Q13 Hänger → None nach Timeout (2 s) UND das Kind-Prozess (sleep 60) ist beendet', ergebnis is None and dauer < 10 and kind_tot, (ergebnis, dauer, kind_tot))
+        finally:
+            HIER, FEED_FRISCH, FEED_ABRUF_TIMEOUT = hier_alt, frisch_alt, timeout_alt
+            FEED_MIN_ZEILEN = 1
+            os.environ.pop('FAKE_MODE', None)
+
+        # Q14 Tor-Normalisierung: Paket «042156», Shopify-Position «42156» → gleiche Ware, Upload
+        led = ledger()
+        led['1150'] = ['1150', '2026-10-20T10:00Z', '042156×1', 'bereit', '']; paket('1150', '042156', 1)
+        z = stufe2(led, [], {'1150': {fx.norm_artnr('42156'): 1}})
+        pruef('Q14 «042156» im Paket = «42156» in Shopify → XML hochgeladen', led['1150'][3] == 'xml-hochgeladen', (led['1150'], z))
+        led = ledger()
+        schreibe(led)
+        gql = gql_basis
+
+        # Q15 Kill NACH der Shopify-Sendung: der Zustand «versandt» steht schon auf der Platte (sonst Dauer-Falschmeldung «Sendung NICHT eingetragen»)
+        led = ledger()
+        led['1160'] = ['1160', '2026-10-20T10:00Z', '93583×1', 'xml-hochgeladen', 'ORDERS_LX1160.xml']; schreibe(led)
+        desadv['D1160.xml'] = lief('1160', [('93583', '1', '1', '')])
+        global sendung_eintragen
+        sendung_alt = sendung_eintragen
+        def _stirbt(nr_, tracking, geliefert):
+            raise RuntimeError('Container-Neustart mitten in der Sendung')
+        sendung_eintragen = _stirbt
+        try:
+            stufe2(led, [], {})
+        finally:
+            sendung_eintragen = sendung_alt
+            desadv.pop('D1160.xml', None)
+        pruef('Q15 Absturz in der Shopify-Sendung → Platte zeigt schon «versandt» (Zustand VOR der Sendung gesichert)', ledger()['1160'][3] == 'versandt', ledger().get('1160'))
+        led = ledger(); led.pop('1160', None); schreibe(led)
+
         # main(): «abweichend» meldet sich in jedem Lauf (Shopify führt #1031 nicht mehr als offen), bis --geklaert
         schreibe(led)
         import io, contextlib
@@ -698,6 +1070,8 @@ def selbsttest():
         (LEDGER, PAKETE, SCHALTER, gql, frischer_feed, fx.FEED, fx.anmelden, fx.abmelden, fx.liste, fx.herunterladen, fx.hochladen, fx._curl, sys.argv) = alt
         shutil.rmtree(td, ignore_errors=True)
         FEED_MIN_ZEILEN, FEED_MAX_ALTER_H = feed_alt
+        HIER, FEED_FRISCH, FEED_ABRUF_TIMEOUT = hier_alt, frisch_alt, timeout_alt
+        dt.datetime = datetime_echt
     print(f"SELBSTTEST {'OK' if ok else 'FEHLER'} ({n} Fälle)")
     return 0 if ok else 1
 
