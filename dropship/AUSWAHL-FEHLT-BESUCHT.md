@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 12:13 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 13:11 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 212 · **94 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 66, teilweise: 20, keine: 8; Preisspanne > 2×: 18) · 1 CJ-Variante: 118 · ohne Antwort: 0
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 206 · **88 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 61, teilweise: 20, keine: 7; Preisspanne > 2×: 17) · 1 CJ-Variante: 118 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -51,12 +51,9 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Mini LED Beamer für Handy & Heimkino (`mini-led-beamer-fur-handy-heimkino-150016`) | 8 | 8 | 38.95–47.08 | 64.90 | White-US-Ordinary paragraph, White-US-Projection models, White-EU-Ordinary paragraph, White-EU-Projection models |
 | Pilz Luftbefeuchter mit Ventilator & Nachtlicht (`pilz-luftbefeuchter-mit-ventilator-nachtlicht-2a0a78`) | 8 | 8 | 3.39–3.9 | 22.90 | Pink-Built, Coffee-Built, Coffee-Without batteries, blue-Without batteries |
 | Gürtel Herrenuhr – Schlicht & Business-tauglich (`gurtel-herrenuhr-schlicht-business-tauglich-772160`) | 8 | 8 | 9.86–10.75 | 23.90 | Rose shell black noodles, All black rose needles, Silver shell black surface, All black and silver |
-| Hundeleine aus Rindsleder für mittlere bis grosse Hunde (`hundeleine-aus-rindsleder-fur-mittlere-bis-gro-634112`) | 8 | 8 | 3.97–6.32 | 23.90 | Brown-M1 110cm, Brown-M2 160cm, Brown-L1 110cm, Brown-L2 160cm |
 | Sport-Smartwatch mit Temperatur- und Pulsmessung (`sport-smartwatch-mit-temperatur-und-pulsmessun-353536`) | 8 | 8 | 58.74–58.74 | 83.90 | Vinyl, Silver Case Vinyl, Retro Brown Black, Retro Brown Silver |
-| USB-Stick mit Sprachfunktion (`usb-stick-mit-sprachfunktion-fad2c6`) | 8 | 0 | 2.76–6.26 | 21.90 | white-8GB, black-32GB, white-16GB, black-8GB |
 | DIY Stickset mit 50 Garnfarben (`diy-stickset-mit-50-garnfarben-cb3e23`) | 7 | 0 | 2.57–7.17 | 21.90 | 136pcs, 10pcs, 12pcs, Set AC177 |
 | Mechanische Herrenuhr – Business & Freizeit (`mechanische-herrenuhr-business-freizeit-625400`) | 7 | 7 | 12.6–12.6 | 27.90 | Rose Gold Shell Black Surface, Rose Shell White Surface Black, Gold Shell Black Brown Belt, Gold Shell White Surface |
-| Quarz-Uhr mit Lederarmband, 30 m wasserdicht (`quarz-uhr-mit-lederarmband-30-m-wasserdicht-867c50`) | 7 | 7 | 6.44–6.93 | 26.90 | Brown white face, Black silver face, Black black face, Black |
 | Wandlampe im nordischen Minimal-Stil für Innen und Aussen (`nordische-minimallampen-design-fur-innen-und-a-636800`) | 6 | 6 | 14.62–20.79 | 35.90 | Warm White-61cm-Black, Warm White-81cm-Black, Neutral light-61cm-Black, Neutral light-81cm-Black |
 | Lenkradbezug Plüsch Pfotenabdruck 38cm (`lenkradbezug-plusch-pfotenabdruck-38cm-ebf475`) | 6 | 6 | 3.04–3.32 | 15.90 | Prestige Grey, Black, Purple, Black orange |
 | Webteppich mit Leoparden-Motiv (`sofabett-mit-modernem-muster-617500`) | 6 | 6 | 5.51–9.12 | 28.90 | Earrings Girl-130x160cm, Female Newspaper Reader-130x160cm, Pink Panther-130x160cm, Shell-130x160cm |
@@ -67,7 +64,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Bestickter Vorhang mit Lichtdurchlass (`bestickter-vorhang-mit-lichtdurchlass-67cd53`) | 6 | 0 | 2.46–2.97 | 21.90 | Coffee-Four claws-Q1M, Blue-Four claws-Q1M, White-Four claws-Q1M, White-Punch-Q1M |
 | 5-Panel Cap «Sprint» · Nylon Schwarz (`5-panel-cap-sprint-nylon-schwarz`) | 6 | 4 | 2.13–2.13 | 27.90 | Black, Grey, Khaki, Army green |
 | Leichter Schulrucksack mit Print (`leichter-schulrucksack-mit-print-612500`) | 5 | 5 | 7.13–7.13 | 26.90 | Black Smiley Face-48x33x20cm, Gray Smiley-48x33x20cm, Pink Smiley Face-48x33x20cm, White-48x33x20cm |
-| Ballet Samt-Rouge (`ballet-samt-rouge-384704`) | 5 | 5 | 15.11–15.11 | 35.90 | 01Swan Snow, 02Romanticism, 03Soft Silk Ribbon, 04Golden peach velvet |
 | Gänsedaunenkissen – Füllung für Kissenhüllen (`gansedaunenkissen-fullung-fur-kissenhullen-520f50`) | 5 | 5 | 2.74–7.41 | 27.90 | White-75x50cm, White-74x48cm, White-45x45cm, White-50x50cm |
 | Aromadiffusor Holzmaserung (`aroma-diffuser-holzoptik-hohl-design-ultraschall-luftbefeuchter-mit-led-licht`) | 4 | 4 | 13.86–14.12 | 44.90 | Light wood grain-AU, Light wood grain-UK, Light wood grain-US, Light wood grain-EU |
 | Magisches Katzenkratzbrett mit Orgel-Design (`magisches-katzenkratzbrett-mit-orgel-design-709120`) | 4 | 1 | 3.81–3.81 | 16.90 | Deep Wood Grain, White, Cartoon Print, Wansheng Bat |
@@ -88,7 +84,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Edelstahl-Armband «Cœur» · Herz, Gold (`edelstahl-armband-coeur-herz-gold`) | 3 | 0 | 3.86–4.81 | 34.90 | Steel, Rose Gold, Gold |
 | Vintage Baseball-Cap «Liberty» · Washed Schwarz (`vintage-baseball-cap-liberty-washed-schwarz`) | 3 | 3 | 2.13–2.13 | 27.90 | Black, Deep Blue, Light blue |
 | Baseball-Cap «L.A.» · Hellblau (`baseball-cap-l-a-hellblau`) | 3 | 3 | 2.04–2.04 | 24.90 | Black, Light blue, Deep Blue |
-| Cushion-Concealer (`concealer-kissen-607000`) | 3 | 3 | 3.08–3.08 | 22.90 | Ivory white, Natural color, Dark complexion |
 | WLAN Handy Beamer (`wlan-handy-beamer-35edfc`) | 3 | 3 | 41.55–70.56 | 65.90 | Android, Basic, Cell phone |
 | DIY Fotorahmen Bausteine (`diy-fotorahmen-bausteine-383936`) | 3 | 3 | 5.0–9.54 | 24.90 | White-32x32cm, Love peach-32x32cm, Black-32x32cm |
 | Studenten-Becher mit Sprühfunktion, 580 ml (`studenten-becher-mit-spruhfunktion-580-ml-614200`) | 3 | 3 | 19.57–19.57 | 43.90 | Jelly Galaxy-580ML, Cloud Diary-580ML, Sweet Dream Switch-580ML |
@@ -99,4 +94,3 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Moocare Aromatherapie-Öl (20 Stk.) (`moocare-aromatherapie-ol-20-stk-628100`) | 2 | 2 | 9.12–9.12 | 26.90 | Black Style, Red Style |
 | Kreativer Weindekanter – Pinguin oder Bohnensprosse (`kreativer-weindekanter-pinguin-oder-bohnenspro-613700`) | 2 | 2 | 14.93–18.24 | 41.90 | Penguin Wine Decanter, Bean Sprouts Wine Decanter |
 | RGB Computer-Mikrofon für Live-Calls und Gaming (`rgb-computer-mikrofon-fur-live-calls-und-gamin-322368`) | 2 | 2 | 5.79–7.58 | 14.90 | Black-Blu ray, Black-Colorful |
-| Weihnachtskranz mit Weihnachtsmann- oder Schneemann-Gesicht (`alte-schneemann-wandhanger-aus-plusch-627600`) | 2 | 2 | 6.14–6.14 | 25.90 | Elderly, Snowman Style |

@@ -11326,3 +11326,8 @@ leinen-hemd-lassiger-stil-614000	2607090918521614600	16	7.17	ok	landeseite
 tierhalsband-mit-digitaldruck-639000	2512181002531639300	16	5.15	ok	landeseite
 schwarze-klettverschlusse-614300	2607120225581614900	16	9.20	ok	landeseite
 invisibles-haarspray-fur-perucken-634100	2607120224261634800	0	-	KEINE CH-Option → DRAFT	landeseite
+coton-t-shirt-mit-wachsdruck-muster-630000	2607081000281630700	16	7.85	ok	landeseite
+kindergarten-indoor-schuhe-fur-kinder-636400	2603100242161636800	16	9.07	ok	landeseite
+hunde-geschirr-fur-kleine-und-mittelgrosse-hun-627500	2512041354511627700	16	5.85	ok	landeseite
+leichtes-sommerhemd-611200	2607080601201611800	16	8.93	ok	landeseite
+prinzessinnen-schuhe-mit-gummisohle-rutschsich-631700	2601110636311631900	16	10.01	ok	landeseite
