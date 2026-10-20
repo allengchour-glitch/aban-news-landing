@@ -90,6 +90,7 @@ test('KANARIE Teilschreiben: Titel leer + Beschreibung vorhanden → Mutation tr
 test('Gegenprobe des Kanarienvogels: der Fake-Shop nullt wie Shopify — ein Teil-seo-Objekt würde den Test brechen', async () => {
   const fake = shopFake([pr(1, null, BESCHR)]);
   await fake.fetchFn(`https://${EXPECTED_SHOP}/admin/api/2026-01/graphql.json`, { method: 'POST', headers: { 'X-Shopify-Access-Token': TOKEN },
+    // zgh:seo-teil-absichtlich — Gegenprobe gegen den FAKE-Shop (nie live): zeigt, dass der Fake wie Shopify das andere Feld nullt
     body: JSON.stringify({ query: M_UPDATE, variables: { product: { id: nr(1), seo: { title: 'Nur Titel' } } } }) });
   assert.equal(seoVon(fake, 1).description, null);
 });
@@ -452,6 +453,7 @@ test('Positiv-Kanarienvogel für «0 Lücken»: ein sauberer Katalog ist Exit 0 
   assert.equal(r2.code, 0); assert.match(r2.out, /1 SEO \(DRY\)/);
 });
 test('Produkte mit nicht lesbaren seo-Feldern werden übersprungen und gemeldet (Exit 1), nie als «leer» überschrieben', async () => {
+  // zgh:seo-teil-absichtlich — Fixture: schiefe SEO-Formen, wie sie der Shop LIEFERT (Lesen/Robustheit), kein Schreiben
   const komisch = [{ ...pr(1), seo: { title: 5, description: null } }, { ...pr(2), seo: undefined }, { ...pr(3), seo: { title: null } }, pr(4, null, BESCHR)];
   const fake = shopFake(komisch);
   const r = await fahre({}, fake);

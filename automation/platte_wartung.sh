@@ -92,16 +92,28 @@ tmp_leichen_raeumen() {
   echo "TMP-LEICHEN: ${n} Einträge × $(( ${vor:-0} / 1024 )) MB geräumt"
 }
 
+# argv-basierte Prozessprüfung (Hausregel 11./20.08.: «pgrep -f» findet jede Kommandozeile, die den Text nur ENTHÄLT — auch ein bash -c, ein python3 -c oder ein tail
+# mit «git repack» im Argument). Zählt nur einen echten git-Prozess, dessen Unterbefehl (nach -c k=v / -C pfad / --optionen) in $@ steht. 20.10.2026 (ZWEITES GEHIRN: pgrep-falle ×2).
+git_laeuft() {
+  ps -eo args= 2>/dev/null | awk -v erlaubt=" $* " '
+    $1=="git" || $1 ~ /\/git$/ {
+      i = 2
+      while (i <= NF) { if ($i == "-c" || $i == "-C") { i += 2; continue } if ($i ~ /^-/) { i++; continue } break }
+      if (i <= NF && index(erlaubt, " " $i " ")) { gefunden = 1; exit }
+    }
+    END { exit gefunden ? 0 : 1 }'
+}
+
 # tmp_pack-Reste im Pack-Ordner (ein per SIGKILL beendetes pack-objects lässt sie liegen, bis 1,8 GB); nur wenn niemand packt und älter 2 h
 tmp_pack_raeumen() {
   [ -d "$REPO/.git/objects/pack" ] || return 0
-  pgrep -f "[g]it.* pack-objects" >/dev/null 2>&1 && return 0   # 19.10. (PL-2): `pgrep -x pack-objects` traf nie — der Prozessname (comm) ist «git»
+  git_laeuft pack-objects && return 0   # 19.10. (PL-2): `pgrep -x pack-objects` traf nie — der Prozessname (comm) ist «git»; 20.10.: argv-Prüfung statt Textsuche über alle Kommandozeilen
   find "$REPO/.git/objects/pack" -maxdepth 1 -name 'tmp_*' -mmin +120 -delete 2>/dev/null
 }
 
 starte_packen() {
   # Läuft schon einer (eigene Sperre oder irgendein repack/gc auf diesem Repo)? Dann nichts tun.
-  if pgrep -f "git.* (repack|gc)( |$)" >/dev/null 2>&1; then echo "packt bereits"; return 0; fi
+  if git_laeuft repack gc; then echo "packt bereits"; return 0; fi
   ( cd "$REPO" && setsid bash -c 'exec 9>/tmp/lock_git_repack.lock; flock -n 9 || exit 0
       echo "START $(date -u +%FT%TZ)"
       nice -n 10 timeout 3300 git -c pack.windowMemory=512m -c pack.threads=3 -c pack.deltaCacheSize=128m repack -d -q
@@ -166,6 +178,18 @@ selbsttest() {
   TMP_DIR=${PLATTE_TMP:-/tmp}; REST_DATEI=${PLATTE_REST:-/tmp/platte_rest.txt}
   PLATTE_DF="" ; unset PLATTE_DF PLATTE_LOSE_KIB PLATTE_LOSE_ANZAHL; messen
   chk "echtes Repo messbar" "$([ "$PACK_KIB" -gt 0 ] && echo ja || echo nein)" ja
+  # 20.10.2026: git_laeuft gegen Attrappen — ein echter «git»-Prozess (Kopie von python3 unter dem Namen git) und ein Prozess, der den Text nur ENTHÄLT
+  ATT=$(mktemp -d); cp "$(command -v python3)" "$ATT/git"
+  "$ATT/git" -c '__import__("time").sleep(25)' repack -d -q >/dev/null 2>&1 &   a1=$!
+  "$ATT/git" -c '__import__("time").sleep(25)' -C /tmp --no-pager pack-objects --stdout >/dev/null 2>&1 &   a2=$!
+  python3 -c '__import__("time").sleep(25)' "git -c x=y repack gc pack-objects" >/dev/null 2>&1 &   a3=$!
+  sleep 1
+  chk "git_laeuft: echter «git repack» (mit -c k=v) gefunden" "$(git_laeuft repack gc && echo ja || echo nein)" ja
+  chk "git_laeuft: echtes «git -C … --no-pager pack-objects» gefunden" "$(git_laeuft pack-objects && echo ja || echo nein)" ja
+  kill "$a1" "$a2" 2>/dev/null; wait "$a1" "$a2" 2>/dev/null; sleep 0.3
+  chk "git_laeuft: nur Text im Argument eines Fremdprozesses (python3 -c … \"git repack gc\") ist KEIN Treffer" "$(git_laeuft repack gc pack-objects && echo ja || echo nein)" nein
+  chk "Mutation: eine reine Textsuche über alle Kommandozeilen HÄTTE den Text-Treffer fälschlich gemeldet" "$(ps -eo args= | grep -Ec 'git.* (repack|gc)( |$)' | awk '{print ($1>=1) ? "ja" : "nein"}')" ja
+  kill "$a3" 2>/dev/null; wait "$a3" 2>/dev/null; rm -rf "$ATT"
   echo "platte_wartung Selbsttest: $((t-f))/$t"
   [ "$f" -eq 0 ]
 }

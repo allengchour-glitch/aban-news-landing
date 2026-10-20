@@ -265,6 +265,9 @@ def _objekt_nach(t, start):
     return t[start:start + 400]
 
 
+SEO_TEIL_MARKE = "zgh:seo-teil-absichtlich"
+
+
 def r_seo_teil(dateien):
     """30.09.2026 — `seo: {description: …}` OHNE title LOESCHT bei Shopify den SEO-Titel (productUpdate/
     collectionUpdate ersetzen das ganze SEO-Objekt). Gemessen: Kristall-Set-Titel weg; 25'133 von 25'183 aktiven
@@ -279,6 +282,11 @@ def r_seo_teil(dateien):
             hat_d = re.search(r"""["']?\bdescription["']?\s*:""", obj)
             if bool(hat_t) != bool(hat_d):
                 zeile = t.count("\n", 0, m.start()) + 1
+                zl = t.split("\n")
+                # 20.10.2026: begründete Ausnahme — eine Gegenprobe gegen den FAKE-Shop (seo-optimizer_test.mjs) schickt absichtlich ein Teil-seo-Objekt, um zu zeigen,
+                # dass der Fake wie Shopify nullt. Die Marke gilt nur für diese Zeile oder die Zeile davor, nie für die Datei.
+                if SEO_TEIL_MARKE in zl[zeile - 1] or (zeile >= 2 and SEO_TEIL_MARKE in zl[zeile - 2]):
+                    continue
                 treffer.append((p, zeile, "seo-Objekt nur mit " + ("title" if hat_t else "description")
                                 + " — Shopify LOESCHT das andere Feld"))
     return treffer
@@ -391,7 +399,7 @@ KOEDER = {
                              '  QUELL="/tmp/$S.sh"\ndone\n'),
     "stiller-uebersprung": ("automation/koeder.sh", 'QUELL=/tmp/x.sh\n[ -f "$QUELL" ] || continue\n'),
     # Der ECHTE Fall aus seo_versandschwelle_fix.py (bis 30.09.):
-    "seo-teil": ("automation/koeder.py", 'gql(M,\n    {"i": {"id": p["id"], "seo": {"description": neu}}})\n'),
+    "seo-teil": ("automation/koeder.py", '# zgh:seo-teil-absichtlich\nok = {"seo": {"title": "t"}}\n\ngql(M,\n    {"i": {"id": p["id"], "seo": {"description": neu}}})\n'),
     # Der ECHTE Fall aus cj_sku_import.mjs (bis 02.10.): Anleger ohne Eimer-Boden.
     "eimer-fehlt": ("automation/koeder.mjs", "const r = await sgql(t, `mutation($p:ProductCreateInput!){productCreate(product:$p){product{id}}}`, {p});\n"),
     # Der ECHTE Fall aus heilversprechen_wache.py (bis 03.10.): Helfer, den andere importieren, nur THROTTLED-Wiederholung.
@@ -419,7 +427,8 @@ ECHT = {
                              'setsid bash /tmp/secrets_env.sh &\n'),
     "stiller-uebersprung": ("automation/koeder.sh", 'QUELL=/tmp/x.sh\necho "fehlt: $QUELL"\n[ -f "$QUELL" ] || continue\n'),
     # Echt: beide Felder, Titel als f-String mit {…} (die Klammer im String darf das Objekt nicht beenden).
-    "seo-teil": ("automation/koeder.py", 'x = {"i": {"id": c["id"], "seo": {"title": f"{titel} | LuxeStyle",\n    "description": besch}}}\n'),
+    "seo-teil": ("automation/koeder.py", 'x = {"i": {"id": c["id"], "seo": {"title": f"{titel} | LuxeStyle",\n    "description": besch}}}\n'
+                 '# zgh:seo-teil-absichtlich\ny = {"seo": {"title": "nur titel"}}\nz = {"seo": {"description": "d"}}  // zgh:seo-teil-absichtlich\n'),
     "eimer-fehlt": ("automation/koeder.mjs", "import { nachlauf } from './eimer_etikette.mjs';\nconst r = await sgql(t, `mutation{productCreate(product:$p){product{id}}}`);\n"),
     # Echt: derselbe Helfer MIT nachlauf (heutige Fassung) — und ein Delegierer ohne eigenes HTTP (kollektion_doppel.py).
     "helfer-ohne-eimer": ("automation/koeder_helfer.py",

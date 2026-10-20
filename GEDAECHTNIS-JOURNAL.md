@@ -53,6 +53,17 @@
 
 
 
+## 🧭 Runde 08:25 (20.10.): ZWEITES GEHIRN «3 NEU» → `pgrep -f` in `platte_wartung.sh` durch argv-Prüfung ersetzt, Ausnahme-Marke für absichtliche Teil-seo-Fixtures
+- **GEMESSEN:** `tools/zweites_gehirn.py --wacht`: 162 Befunde, **3 NEU** — 2× `pgrep-falle` in `automation/platte_wartung.sh` (von der Platte-95-%-Wartung, 19.10.) und 1× `seo-teil` in `automation/seo-optimizer_test.mjs`.
+- **pgrep-Falle (echt):** `pgrep -f "git.* (repack|gc)( |$)"` trifft jede Kommandozeile, die den Text nur ENTHÄLT (bash -c, python3 -c, ein tail mit «git repack» im Argument) → «packt bereits» ohne dass ein Packen läuft, oder umgekehrt tmp-Packs ungeräumt. Neu `git_laeuft <Unterbefehl…>`: `ps -eo args=` + awk, zählt nur einen echten
+  `git`-Prozess, dessen Unterbefehl (nach `-c k=v`, `-C pfad`, `--optionen`) in der Liste steht. **Selbsttest 26/26** mit zwei Attrappen: echter «git» (Kopie von python3 unter dem Namen git, mit `-c … repack` bzw. `-C … --no-pager pack-objects`) = Treffer; ein Fremdprozess, der «git -c x=y repack gc pack-objects» nur als Argument trägt = KEIN Treffer;
+  Mutationsbeleg: die reine Textsuche hätte diesen Fremdprozess gemeldet.
+- **seo-teil (kein Fehler im Shop):** beide Treffer standen in `seo-optimizer_test.mjs` — eine Gegenprobe gegen den FAKE-Shop (zeigt, dass der Fake wie Shopify das andere Feld nullt) und ein Fixture mit schiefen SEO-Formen, die der Shop LIEFERT. Weder live noch Schreiben. Statt die Regel zu lockern oder die Datei in die Grundlinie zu kippen: **begründete, zeilengenaue Marke** `zgh:seo-teil-absichtlich`
+  (gilt nur für die Zeile oder die davor, nie für die Datei). Köder-/Echt-Test erweitert: ein markierter Teilfall neben einem UNMARKIERTEN wird weiter gefunden; ein markierter allein nicht. `zweites_gehirn.py --selbsttest`: «Jede Regel fängt ihren Köder und lässt den echten Fall durch». `seo-optimizer_test.mjs`: 57/57.
+- **Ergebnis:** `ZWEITES GEHIRN: 159 Befunde · 0 NEU`.
+- **Nebenbefund (kein Defekt):** CJ-Ledger wächst seit 07:52 nicht mehr — das CJ-Tagesbudget ist aufgebraucht («Insufficient API points. Used today: 92700, Remaining: 0»), Reset 00:00 UTC; Runner pausieren selbst 30 Min. Ampel-Zeile CJ-RESET «Topf zuletzt leer ab 04:26» zeigt es.
+- **Lehre:** Eine Regel, die Text-Treffer zählt, trifft auch das eigene Beleg-Wort im Kommentar/Test (mein erster Mutationsbeleg schrieb selbst «pgrep -f» hinein und löste dieselbe Regel aus). Belege ohne das Reizwort führen (`ps | grep -c`), und absichtliche Ausnahmen brauchen eine Marke MIT Begründung, nicht die Grundlinie.
+
 ## 🧱 QUEUE-STRUKTUR ⚠️ «7 statt 9 Felder» — Klasse an der gemeinsamen Bibliothek behoben (2026-10-20, ~07:35–07:50 UTC)
 - **GEMESSEN:** `social/ig_karussell.csv` — 7 Zeilen (55–61, u. a. `top-5-unter-50-1019`) trugen 7 statt 9 Felder. **Ursache:** `ig_karussell_post.mjs` Zeile 112 hängt dem Kopf nachträglich
   `posted_at,post_url` an; `tiktok_karussell.py` hängt neue Sets mit den alten 7 Feldern an (`queue_anhaengen`). Neue Zeilen waren damit kürzer als der Kopf.
