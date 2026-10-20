@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 07:59 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 10:12 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1366 · **1300 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1102, teilweise: 168, keine: 30; Preisspanne > 2×: 159) · 1 CJ-Variante: 64 · ohne Antwort: 2
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1353 · **1287 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1092, teilweise: 168, keine: 27; Preisspanne > 2×: 158) · 1 CJ-Variante: 64 · ohne Antwort: 2
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -299,7 +299,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Leopard-Kissenbezug für Sofa oder Bett (`leopard-kissenbezug-fur-sofa-oder-bett-967232`) | 12 | 12 | 9.22–9.22 | 22.90 | YellowA-45X45cm-Pillowcase, YellowB-45X45cm-Pillowcase, YellowC-45X45cm-Pillowcase, YellowD-50x30cm-Pillowcase |
 | Halskrause aus Baumwolle für Hunde (`halskrause-aus-baumwolle-fur-hunde-979968`) | 12 | 12 | 2.53–3.32 | 21.90 | Pink rice cake rabbit-S, Pink rice cake rabbit-M, Pink rice cake rabbit-L, Light pink love heart-S |
 | Multifunktionaler Rucksack für Herren (`multifunktionaler-rucksack-fur-herren-c01dfb`) | 12 | 2 | 9.47–9.91 | 37.90 | Black-17inch, Red-17inch, A Blue-17inch, ABlack-17inch |
-| Glacé Plüschkissen (`glace-pluschkissen-858048`) | 12 | 12 | 2.84–6.44 | 22.90 | Brown-42x35cm, Brown-60x45cm, Brown-80x60cm, Green-42x35cm |
 | Mini Powerbank mit LED-Taschenlampe (`mini-powerbank-mit-led-taschenlampe-204f73`) | 12 | 4 | 2.99–3.83 | 22.90 | Black-3600mA, Blue-2400mA, Black-4500mA, Red-6000mA |
 | Nackenkissen und Lordosenstütze für Ihr Auto (`nackenkissen-und-lordosenstutze-fur-ihr-auto-374400`) | 12 | 12 | 4.31–4.44 | 23.90 | Creamywhite-Headrest, Creamywhite-Lumbar pillow, Black-Headrest, Black-Lumbar pillow |
 | Damen Armreif mit Strass-Besatz (`damen-armreif-mit-strass-besatz-633800`) | 12 | 12 | 14.59–15.16 | 35.90 | Blue-5.7cm diameter, Blue-6.2cm diameter, Color-5.7cm diameter, Color-6.2cm diameter |
@@ -424,7 +423,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Anti-Schling Napf für Hunde (`anti-schling-napf-fur-hunde-633088`) | 9 | 1 | 2.36–2.36 | 14.90 | Pink-Circular Section, Green-Circular Section, Blue-Circular Section, Pink-Hexagonal |
 | Kinder Reisekissen mit Decke (`kinder-reisekissen-mit-decke-672192`) | 9 | 9 | 7.9–8.11 | 23.90 | Gray Clouds-Conventional, Little Lion-Conventional, Tropical Orange-Conventional, Animal Deep Forest-Conventional |
 | Hundegeschirr mit Leine aus Nylon (`hundegeschirr-mit-leine-aus-nylon-092160`) | 9 | 9 | 2.78–4.27 | 15.90 | Red-2.2x50x62cm, Red-2.5x60x73cm, Red-3.8x70x90cm, Green-2.2x50x62cm |
-| Samt-Kopfteilbezug – Staubdicht & Stilvoll (`samt-kopfteilbezug-staubdicht-stilvoll-600900`) | 9 | 9 | 7.11–9.35 | 26.90 | Gray-1.5M, Gray-1.8m, Gray-2.0m, White-1.5M |
 | Tassen-Organizer aus Massivholz (`tassen-organizer-aus-massivholz-633500`) | 9 | 9 | 2.88–4.49 | 22.90 | Distressed color, Wide three layer blue, Wide three layer wood tone, Three layer distressed |
 | Siegellack-Geschenkset (`siegellack-geschenkset-745856`) | 9 | 9 | 3.81–3.81 | 23.90 | A, B, C, D |
 | Grosse isolierte Umhängetasche (`grosse-isolierte-umhangetasche-616700`) | 9 | 9 | 3.35–4.28 | 22.90 | Black Without Logo, Dark Blue Peony, Gray, Navy Blue |
@@ -677,7 +675,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Geprägtes Puder-Blush «Chocolate Store» (`gepragtes-puder-blush-chocolate-store-266368`) | 6 | 6 | 5.2–9.05 | 24.90 | Bedtime fairy tale, Knitting bear, Plaid tweed, Bisque doll |
 | Baumwollkissen mit Daunen-Samtfüllung (`baumwollkissen-mit-daunen-samtfullung-108480`) | 6 | 6 | 6.29–7.53 | 35.90 | Low pillow pearl white-48x74cm, Middle pillow pearl white-48x74cm, High pillow pearl white-48x74cm, Low pillow classic black-48x74cm |
 | Süsses Kissen mit Decke, Dual-Use (`susses-kissen-mit-decke-dual-use-116864`) | 6 | 6 | 8.57–12.34 | 32.90 | Pink-95x155cm, Pink-80x115cm, Blue-95x155cm, Blue-80x115cm |
-| Fressnapf mit Nieten-Design (`fressnapf-mit-nieten-design-667072`) | 6 | 6 | 3.69–3.69 | 23.90 | Black, Black White, Rose Red Pink, Rose Red Black |
 | Weinöffner mit Luftdruckpumpe (`weinoffner-mit-luftdruckpumpe-198db1`) | 6 | 6 | 3.51–6.62 | 22.90 | Gold-Upgrade, Silver-Set, Black-Set 2, Red-Upgrade |
 | Geflochtener Rattan-Korb für Snacks & Früchte (`geflochtener-rattan-korb-fur-snacks-fruchte-638000`) | 6 | 6 | 3.8–6.67 | 23.90 | Brown-L-Covered, Shallow Steamed Willow-S-No Cover, Shallow Steamed Willow-L-No Cover, Shallow Steamed Willow-L-Covered |
 | Runder Nachttisch-Organizer, 2 Etagen (`runder-nachttisch-organizer-2-etagen-622400`) | 6 | 6 | 17.46–17.46 | 54.90 | Beige-Second Floor, Porcelain White-Second Floor, Dirty Pink-Second Floor, Matcha Green-Second Floor |
@@ -799,12 +796,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Marmoriertes Haustierhalsband (`marmoriertes-haustierhalsband-275520`) | 5 | 5 | 2.68–2.68 | 21.90 | Rose Gold-XS, Rose Gold-S, Rose Gold-M, Rose Gold-L |
 | Pinzette für Wimpernverlängerung (`pinzette-fur-wimpernverlangerung-30205d`) | 5 | 5 | 4.05–9.46 | 23.90 | 5SAJP, Set, 7SAJP, SSJP |
 | Multifunktionale Sportuhr für Studenten (`multifunktionale-sportuhr-fur-studenten-725824`) | 5 | 5 | 5.8–5.8 | 25.90 | Yellow, Red, Green, Blue |
-| Halsband mit Rosegold-Schnalle (`halsband-mit-rosegold-schnalle-105536`) | 5 | 5 | 3.59–3.59 | 22.90 | Beautiful dream pet collar-XS, Beautiful dream pet collar-S, Beautiful dream pet collar-M, Beautiful dream pet collar-L |
 | Japanisches Kinderkissen aus Baumwolle (`japanisches-kinderkissen-aus-baumwolle-411904`) | 5 | 5 | 3.17–3.17 | 22.90 | Older children-Children pillows, Middle child-Children pillows, Kid-Children pillows, Toddler-Children pillows |
-| Multifunktionale Sportuhr mit Kompass (`multifunktionale-sportuhr-mit-kompass-644352`) | 5 | 5 | 6.96–6.96 | 26.90 | Red, Black, Khaki, Grey |
-| Dickes Haustierhalsband mit Leine (`dickes-haustierhalsband-mit-leine-4cfb9b`) | 5 | 5 | 6.88–6.88 | 26.90 | Blue-XS, Blue-L, Blue-M, Blue-XL |
-| Reiserucksack – Nylon, 33×16×45 cm (`reiserucksack-nylon-33-16-45-cm-c81a4e`) | 5 | 0 | 5.24–7.32 | 24.90 | Black-L, Red-S, Blue-L, Blue-S |
-| Toastbrot Futon Kissen (`toastbrot-futon-kissen-313920`) | 5 | 5 | 2.8–2.8 | 22.90 | 1style-38cm38cm14cm, 2style-38cm38cm14cm, 3style-38cm38cm14cm, 4style-38cm38cm14cm |
 | Back- & Dekorations-Set für Torten (`back-dekorations-set-fur-torten-e5bd60`) | 5 | 3 | 3.63–19.9 | 22.90 | 62piece set, 106 set, 72 piece set, 127 set |
 | Seaside Diving Snorkeling Mineralischer Sonnenschutz (`seaside-diving-snorkeling-mineralischer-sonnen-607400`) | 5 | 5 | 7.96–8.29 | 27.90 | Azure Red, Hazy Fog, Nude, Green Beans White |
 | Feuchtigkeitsspendende Body Lotion (`feuchtigkeitsspendende-body-lotion-622300`) | 5 | 5 | 10.78–10.78 | 30.90 | Spring Wilderness 250ml, Prosperous Garden 250ml, Floating Water 250ml, My Teenager 250ml |
@@ -1001,12 +993,9 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Lidschatten-Palette «Daily Earth Color» (`lidschatten-palette-daily-earth-color-450816`) | 4 | 4 | 5.64–5.64 | 25.90 | 2Prague, 4Trkiye, 8Florence, 9XiAn |
 | Schmuck-Organizer mit Schubladen (`schmuck-organizer-mit-schubladen-425024`) | 4 | 4 | 8.39–13.54 | 44.90 | 12 grid lipstick rack top, 3 grid top, 8 grid top, 26 grid top |
 | Futter- und Wasserspender, rutschfest (`futter-und-wasserspender-rutschfest-123200`) | 4 | 4 | 3.3–4.56 | 25.90 | Feeder blue, Feeder pink, Water feeder blue, Water feeder pink |
-| Wasserdichter Retro-Rucksack (`wasserdichter-retro-rucksack-120bac`) | 4 | 0 | 18.99–18.99 | 52.90 | Grey, Khaki, Black, Army Green |
 | Outdoor-Tasche 90L (`outdoor-tasche-90l-8672d9`) | 4 | 1 | 12.29–12.67 | 53.90 | Leaf green Camouflage, Army Green, Black, Army Green Camouflage |
-| Multifunktionale Herren-Sportuhr (`multifunktionale-herren-sportuhr-264960`) | 4 | 4 | 10.74–10.74 | 30.90 | Red, Green, Blue, Black |
 | AK38 Smartwatch für Damen (`ak38-smartwatch-fur-damen-452032`) | 4 | 4 | 23.68–27.08 | 45.90 | Solid gold steel-USB, Solid silver steel-USB, Milanese Gold Steel-USB, Milanese silver steel-USB |
 | Handbemalte Blumen-Press-On Nägel (`handbemalte-blumen-press-on-nagel-586688`) | 4 | 4 | 19.53–19.53 | 38.90 | XS-As Shown In The Figure Shape, S-As Shown In The Figure Shape, M-As Shown In The Figure Shape, L-As Shown In The Figure Shape |
-| 16er Silikon-Organizer für Lippenstifte (`16er-silikon-organizer-fur-lippenstifte-f78848`) | 4 | 0 | 3.62–3.62 | 22.90 | Light blue, Blue, Purple, Pink |
 | Luftdruck-Korkenzieher für Weinflaschen (`luftdruck-korkenzieher-fur-weinflaschen-981056`) | 4 | 4 | 3.38–6.73 | 22.90 | Red, Gold, Silver, ABS |
 | Keramik-Butterdose mit Deckel (`keramik-butterdose-mit-deckel-606600`) | 4 | 4 | 11.86–14.66 | 32.90 | Green Polka, Green Bohemian, Birds And Flowers, Peony Flower |
 | Offensives Carbon-Badmintonschläger (`offensives-carbon-badmintonschlager-370496`) | 4 | 4 | 12.28–12.28 | 32.90 | Moye Black Line, Moye Green Line, Gangster black line, Dry powder line |
@@ -1167,7 +1156,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Quarz-Armbanduhr mit Leuchtzeigern (`quarz-armbanduhr-mit-leuchtzeigern-506816`) | 3 | 3 | 9.62–9.62 | 29.90 | Black, Silver, Rose |
 | Brillen-Organizer aus PU-Leder, 12 Fächer (`brillen-organizer-aus-pu-leder-12-facher-345728`) | 3 | 3 | 5.48–5.48 | 29.90 | Beige-48cmX24cmX6cm, Black-48cmX24cmX6cm, Red-48cmX24cmX6cm |
 | Lederrucksack für Herren (Gross oder Klein) (`lederrucksack-fur-herren-gross-oder-klein-d7cae1`) | 3 | 3 | 50.82–58.97 | 75.90 | Brown-18inches, Black-S, Dark brown-S |
-| Rucksack Damen Crazy Horse Leder (`rucksack-damen-crazy-horse-leder-5cc354`) | 3 | 3 | 56.45–56.45 | 93.90 | Retro Brown, Dark brown, Black |
 | GTR Racing Bausteine für Kinder (`gtr-racing-bausteine-fur-kinder-655104`) | 3 | 3 | 21.06–21.06 | 60.90 | 911 Open Sports Car, GTR God Of War, Pagani Son Of Wind |
 | All-in-One Palette für Augen & Teint (`all-in-one-palette-fur-augen-teint-288000`) | 3 | 3 | 16.86–16.86 | 37.90 | 1083almond roasted milk, 1084tobacco powder tea dew, 1085cloudy bean paste |
 | Wasserdichte Quarzuhr im Sport-Design (`wasserdichte-quarzuhr-im-sport-design-819904`) | 3 | 3 | 3.02–3.02 | 22.90 | Silver with black face, Black with white noodles, Black belt black face |
@@ -1291,7 +1279,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Leder-Stempelset: Englische Buchstaben (`leder-stempelset-englische-buchstaben-caf569`) | 2 | 2 | 3.72–3.72 | 23.90 | 6mm, 4mm |
 | Salatschüssel aus hitzebeständigem Borosilikatglas (`salatschussel-aus-hitzebestandigem-borosilikat-004096`) | 2 | 2 | 3.04–3.04 | 22.90 | A, B |
 | Militär Bausteine-Set für Kinder (`militar-bausteine-set-fur-kinder-899264`) | 2 | 2 | 5.19–5.19 | 26.90 | Special Police Base Building, Blue Special Police Base |
-| Armband mit Vierblättrigem Kleeblatt (`armband-mit-vierblattrigem-kleeblatt-617000`) | 2 | 2 | 5.46–5.46 | 24.90 | Emerald, Pink Sapphire |
 | Langanhaltende Lidschatten-Palette mit neun Farben (`langanhaltende-lidschatten-palette-mit-neun-fa-731456`) | 2 | 2 | 25.22–25.22 | 46.90 | 01sweet talk, 02champagne cocoa |
 | Tricolor Kontur Puderpalette (`tricolor-kontur-puderpalette-878784`) | 2 | 2 | 2.25–2.25 | 21.90 | 5401601Nose Shadow Contouring, 5401602Shadow Contouring |
 | Turm von Hanoi Wackelturm (`turm-von-hanoi-wackelturm-953600`) | 2 | 2 | 3.08–3.08 | 22.90 | Smiling Face Rocking Tower, Lion Rainbow Tower Presale |
