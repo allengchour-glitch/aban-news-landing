@@ -10903,3 +10903,14 @@ gid://shopify/Product/15449078464897	1792466218	ok	3 Shop / 3 CJ / 0 fehlend / 0
 gid://shopify/Product/15449078858113	1792466218	ok	6 Shop / 6 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15449079021953	1792466218	ok	4 Shop / 4 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15449079251329	1792466218	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449079349633	1792466218	ok	7 Shop / 7 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449079415169	1792466218	ok	12 Shop / 12 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449124012417	1792466218	ok	4 Shop / 4 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449428525441	1792466218	unklar	SKU-DOPPELT: 1 Shop-Varianten teilen einen CJ-Kern, 1 ohne Namens-Treffer bei CJ
+gid://shopify/Product/15449442713985	1792466218	ok	2 Shop / 2 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449452183937	1792466218	ok	4 Shop / 4 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449465684353	1792466218	ok	2 Shop / 2 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449467650433	1792466218	ok	5 Shop / 5 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449469190529	1792466218	ok	2 Shop / 2 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449469780353	1792466218	ok	7 Shop / 7 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15449481544065	1792466218	ok	2 Shop / 2 CJ / 0 fehlend / 0 DENY

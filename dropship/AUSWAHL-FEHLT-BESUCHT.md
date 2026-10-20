@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 02:12 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 03:21 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 224 · **106 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 76, teilweise: 22, keine: 8; Preisspanne > 2×: 19) · 1 CJ-Variante: 118 · ohne Antwort: 0
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 217 · **99 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 71, teilweise: 20, keine: 8; Preisspanne > 2×: 19) · 1 CJ-Variante: 118 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -29,7 +29,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Korrektur-Gurt für Kinder (`korrektur-gurt-fur-kinder-555136`) | 18 | 18 | 5.24–5.24 | 24.90 | Blue-Adult models-L, Blue-Adult models-M, Blue-Adult models-S, Blue-Childrens-L |
 | Aroma Diffuser Holzoptik 400ml – Ultraschall Luftbefeuchter mit 7 LED-Farben (`aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben`) | 16 | 0 | 13.38–16.35 | 44.90 | Deep wood grain-EU, Deep wood grain-US WiFi, Deep wood grain-UK, Deep wood grain-EU WiFi |
 | Primer & Sealer Set für Gelnägel (`primer-sealer-set-fur-gelnagel-711296`) | 16 | 16 | 30.21–34.79 | 56.90 | White-10PCS, Black-10PCS, Red-10PCS, Pink-10PCS |
-| Halsband für Hunde mit Halloween-Motiven (`halsband-fur-hunde-mit-halloween-motiven-624100`) | 15 | 15 | 2.21–2.57 | 21.90 | Style 1-S, Style 1-M, Style 1-L, Style 2-S |
 | Esszimmerstuhlhusse – Niedriger Rücken, Stretch (`esszimmerstuhlhusse-niedriger-rucken-stretch-823040`) | 14 | 10 | 4.29–4.29 | 16.90 | Fruit green, Orange, Light khaki, Light grey |
 | Klassische Herren-Armbanduhr (`klassische-herren-armbanduhr-780416`) | 14 | 11 | 16.62–16.62 | 32.90 | Silver White, Silver Black, Silver Blue, Room Gold White |
 | Edelstein-Bauklötze aus Holz und Acryl (`edelstein-bauklotze-aus-holz-und-acryl-812480`) | 13 | 13 | 7.12–37.84 | 26.90 | 15Grain octagon, 25Grain octagon, Sixty grains of acrylic, 20grains of acrylic10trans |
@@ -61,7 +60,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Quarz-Uhr mit Lederarmband, 30 m wasserdicht (`quarz-uhr-mit-lederarmband-30-m-wasserdicht-867c50`) | 7 | 7 | 6.44–6.93 | 26.90 | Brown white face, Black silver face, Black black face, Black |
 | Wandlampe im nordischen Minimal-Stil für Innen und Aussen (`nordische-minimallampen-design-fur-innen-und-a-636800`) | 6 | 6 | 14.62–20.79 | 35.90 | Warm White-61cm-Black, Warm White-81cm-Black, Neutral light-61cm-Black, Neutral light-81cm-Black |
 | Lenkradbezug Plüsch Pfotenabdruck 38cm (`lenkradbezug-plusch-pfotenabdruck-38cm-ebf475`) | 6 | 6 | 3.04–3.32 | 15.90 | Prestige Grey, Black, Purple, Black orange |
-| Halskette mit runden Strasssteinen und Perlen (`halskette-mit-runden-strasssteinen-und-perlen-626200`) | 6 | 6 | 7.63–8.46 | 20.90 | N011 Silver, N011 Gold, N012 Silver, N012 Gold |
 | Webteppich mit Leoparden-Motiv (`sofabett-mit-modernem-muster-617500`) | 6 | 6 | 5.51–9.12 | 28.90 | Earrings Girl-130x160cm, Female Newspaper Reader-130x160cm, Pink Panther-130x160cm, Shell-130x160cm |
 | Solar-Gartenlampe Ente (`solar-gartenlampe-ente-616300`) | 6 | 6 | 6.4–6.4 | 26.90 | LD055Style, BY25111Style, LD071Style, LD072Style |
 | Dekorative Leinwandbilder Set – 3-teilige Wandkunst (`dekorative-leinwandbilder-set-3-teilige-wandku-604600`) | 6 | 6 | 12.74–14.53 | 33.90 | Type A-30X40cm, Type A-40X60cm, Type B-30X40cm, Type B-40X60cm |
@@ -79,7 +77,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Handkurbel-Schäler für Äpfel und Birnen (`handkurbel-schaler-fur-apfel-und-birnen-5235a8`) | 4 | 2 | 2.3–4.34 | 23.90 | Black gold, Set, White With Fruit Cutter, 8Generation With Fruit Cutter |
 | Japanischer Schulrucksack mit hoher Kapazität (`japanischer-schulrucksack-mit-hoher-kapazitat-244608`) | 4 | 2 | 5.47–5.47 | 24.90 | Black Send Acrylic Chain, White With Acrylic Free Chain, Blue With Acrylic Free Chain, Yellow With Acrylic Chain |
 | Kreuz-Halskette Gold · Edelstahl-Anhänger (`kreuz-halskette-gold-edelstahl`) | 4 | 3 | 1.06–1.68 | 15.90 | Gold-Stainless Steel Gold Plated-55cm, Gold-Stainless Steel Gold Plated-60cm, Silver-Stainless Steel Gold Plated-55cm, Silver-Stainless Steel Gold Plated-60cm |
-| Tierrucksack aus Netzstoff für Ausflüge (`tierrucksack-aus-netzstoff-fur-ausfluge-265152`) | 4 | 4 | 11.44–11.44 | 36.90 | Gray with red edges-L, All gray-L, Gray with black edges-L, Gray with blue edges-L |
 | Gesichtsreinigungsbürste mit Wireless Charging (`gesichtsreinigungsburste-mit-wireless-charging-1c8c0e`) | 4 | 4 | 28.62–28.62 | 50.90 | Purple, Blue, Pink, Cyan |
 | 10-teiliges Badset aus Baumwolle (`10-teiliges-badset-aus-baumwolle-620600`) | 4 | 4 | 20.28–22.22 | 41.90 | Gray Green-120X70CM, WHITE-120X70CM, Blue-120X70CM, Grey-120X70CM |
 | Faden-Gel für Nageldesign (Spider-Gel) (`nageldesign-faden-gel-371136`) | 4 | 4 | 4.78–9.71 | 24.90 | TZLXJCS, TZLXJBJ, TZLXJYG, TZLXJCSBJ |
@@ -92,9 +89,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Dekorative Bücherregal-Laternenlampe (`dekorative-bucherregal-laternenlampe-607700`) | 3 | 2 | 2.71–5.42 | 19.90 | Lantern bookshelf lamp, Little ghost bookshelf lamp, Lantern bookshelf lamp 2pcs |
 | Glättbürste mit Dampf-Sprühfunktion (`glattburste-mit-dampf-spruhfunktion-e765b5`) | 3 | 3 | 15.49–15.49 | 29.90 | UK plug, US plug, EU plug |
 | Marokkanisches Kissen mit Quasten (`marokkanisches-kissen-mit-quasten-890688`) | 3 | 3 | 7.4–8.91 | 20.90 | Mosaic pillow 4545cm-Without core, Square pillow 4545cm-Without core, Square waist pillow 3050cm-Without core |
-| Weihnachtsdeko: Solar-Weihnachtsmann-Lampe (`weihnachtsdeko-solar-santa-lampe-602500`) | 3 | 3 | 4.7–4.7 | 24.90 | Warm White, Colorful, Santa Lantern Warm White |
 | Wasserdichte Angelrucksack aus TPU-Gewebe (`wasserdichte-angelrucksack-aus-tpu-gewebe-621700`) | 3 | 3 | 12.43–22.39 | 45.90 | Small Size, Large Size, Waterproof Rucksack |
-| UV-Detektor-Taschenlampe (`uv-detektor-taschenlampe-efdfd4`) | 3 | 1 | 4.72–7.7 | 19.90 | Black, Flashlight goggles, Silver |
 | Edelstahl-Armband «Cœur» · Herz, Gold (`edelstahl-armband-coeur-herz-gold`) | 3 | 0 | 3.86–4.81 | 34.90 | Steel, Rose Gold, Gold |
 | Vintage Baseball-Cap «Liberty» · Washed Schwarz (`vintage-baseball-cap-liberty-washed-schwarz`) | 3 | 3 | 2.13–2.13 | 27.90 | Black, Deep Blue, Light blue |
 | Baseball-Cap «L.A.» · Hellblau (`baseball-cap-l-a-hellblau`) | 3 | 3 | 2.04–2.04 | 24.90 | Black, Light blue, Deep Blue |
@@ -106,9 +101,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Automatischer Lockenstab mit Drehfunktion (`automatischer-lockenstab-mit-drehfunktion-5eb36d`) | 3 | 3 | 32.03–32.03 | 50.90 | White, Pink, Black |
 | Aufblasbares Halloween-Kostüm für zwei Personen (`inflierbares-halloween-kostum-fur-zwei-persone-638900`) | 2 | 2 | 20.66–20.66 | 42.90 | Double Spring Dog-Free Size, Double Sausage Dog-Free Size |
 | Elektrischer Gemüseschneider Multifunktional – Schneiden, Reiben & Hobeln (`elektrischer-gemuseschneider-multifunktional-schneiden-reiben-hobeln`) | 2 | 0 | 11.87–12.44 | 74.90 | White with adapter-220V US, Green-USB |
-| 360° Handyhalterung fürs Auto (`360-handyhalterung-furs-auto-615000`) | 2 | 2 | 2.28–2.28 | 15.90 | Mirror Style, Texturing Style |
 | Moocare Aromatherapie-Öl (20 Stk.) (`moocare-aromatherapie-ol-20-stk-628100`) | 2 | 2 | 9.12–9.12 | 26.90 | Black Style, Red Style |
 | Kreativer Weindekanter – Pinguin oder Bohnensprosse (`kreativer-weindekanter-pinguin-oder-bohnenspro-613700`) | 2 | 2 | 14.93–18.24 | 41.90 | Penguin Wine Decanter, Bean Sprouts Wine Decanter |
-| Klassischer Game-Controller (`klassischer-game-controller-42f504`) | 2 | 1 | 13.22–14.34 | 27.90 | Black, Y2HD plus 1462 |
 | RGB Computer-Mikrofon für Live-Calls und Gaming (`rgb-computer-mikrofon-fur-live-calls-und-gamin-322368`) | 2 | 2 | 5.79–7.58 | 14.90 | Black-Blu ray, Black-Colorful |
 | Weihnachtskranz mit Weihnachtsmann- oder Schneemann-Gesicht (`alte-schneemann-wandhanger-aus-plusch-627600`) | 2 | 2 | 6.14–6.14 | 25.90 | Elderly, Snowman Style |
