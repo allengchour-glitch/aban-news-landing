@@ -1,5 +1,5 @@
 {
- "pruefer_stand": "2026-10-20T12:12:38Z",
+ "pruefer_stand": "2026-10-20T14:26:26Z",
  "slots": {
   "bild-20261019T0745": {
    "basis_utc": "2026-10-19T07:45:00Z",
@@ -1067,20 +1067,17 @@
   "story-20261020T1710": {
    "basis_utc": "2026-10-20T17:10:00Z",
    "format": "story",
-   "grund": "",
+   "grund": "zurückgezogen: Produkt einhornskelett-18-cm-fga910992 nicht kaufbar/nicht veröffentlicht",
    "handle": "",
    "handles": [
     "einhornskelett-18-cm-fga910992"
    ],
    "letzter_versuch": "2026-10-19T00:28:05Z",
-   "mc_ids": [
-    399528585,
-    399528588
-   ],
+   "mc_ids": [],
    "reserviert_um": "2026-10-19T00:28:05Z",
-   "status": "geplant",
+   "status": "offen",
    "termin_utc": "2026-10-20T17:10:00Z",
-   "versuche": 1
+   "versuche": 0
   },
   "story-20261021T1045": {
    "basis_utc": "2026-10-21T10:45:00Z",
@@ -1220,38 +1217,32 @@
   "story-20261025T1145": {
    "basis_utc": "2026-10-25T11:45:00Z",
    "format": "story",
-   "grund": "",
+   "grund": "zurückgezogen: Produkt rettungsschwimmer-set-fga928124 nicht kaufbar/nicht veröffentlicht",
    "handle": "",
    "handles": [
     "rettungsschwimmer-set-fga928124"
    ],
    "letzter_versuch": "2026-10-18T22:23:32Z",
-   "mc_ids": [
-    399472165,
-    399472167
-   ],
+   "mc_ids": [],
    "reserviert_um": "2026-10-18T22:23:32Z",
-   "status": "geplant",
+   "status": "offen",
    "termin_utc": "2026-10-25T11:45:00Z",
-   "versuche": 1
+   "versuche": 0
   },
   "story-20261025T1810": {
    "basis_utc": "2026-10-25T18:10:00Z",
    "format": "story",
-   "grund": "",
+   "grund": "zurückgezogen: Produkt teddybar-skelett-15-cm-fga910993 nicht kaufbar/nicht veröffentlicht",
    "handle": "",
    "handles": [
     "teddybar-skelett-15-cm-fga910993"
    ],
    "letzter_versuch": "2026-10-19T00:35:01Z",
-   "mc_ids": [
-    399530900,
-    399530905
-   ],
+   "mc_ids": [],
    "reserviert_um": "2026-10-19T00:35:01Z",
-   "status": "geplant",
+   "status": "offen",
    "termin_utc": "2026-10-25T18:10:00Z",
-   "versuche": 1
+   "versuche": 0
   },
   "tiktok-20261019T0605": {
    "basis_utc": "2026-10-19T06:05:00Z",
@@ -1460,20 +1451,18 @@
   "tiktok-20261023T1805": {
    "basis_utc": "2026-10-23T18:05:00Z",
    "format": "tiktok",
-   "grund": "",
+   "grund": "zurückgezogen: Produkt hemd-western-braun-fgssbo5433 nicht kaufbar/nicht veröffentlicht",
    "handle": "hemd-western-braun-fgssbo5433",
    "handles": [
     "hemd-western-braun-fgssbo5433",
     "pid:15469958037889"
    ],
    "letzter_versuch": "2026-10-19T21:40:49Z",
-   "mc_ids": [
-    400509277
-   ],
+   "mc_ids": [],
    "reserviert_um": "2026-10-19T21:40:49Z",
-   "status": "geplant",
+   "status": "offen",
    "termin_utc": "2026-10-23T18:05:00Z",
-   "versuche": 1
+   "versuche": 0
   },
   "tiktok-20261024T0605": {
    "basis_utc": "2026-10-24T06:05:00Z",
@@ -1804,6 +1793,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-20T14:10:46Z",
+ "stand": "2026-10-20T14:26:31Z",
  "version": 1
 }

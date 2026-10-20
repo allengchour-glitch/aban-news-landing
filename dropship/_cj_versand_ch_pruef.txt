@@ -11461,3 +11461,13 @@ kamuflierte-schneeschutzhulle-16c629	9865B9EA-CB21-4AE6-9114-76A1532E5400	16	7.8
 vorgesichtscreme-b4f03d	5825C919-5AB7-42E0-B0DE-5A2226000C95	3	7.30	ok	landeseite
 elegantes-kurzarm-kleid-607300	2607080155561608300	16	10.83	ok	landeseite
 outdoor-wanderschuhe-mit-funf-finger-design-7c4bfd	000FCA4A-97B6-4CF6-9A4D-E217DC28073C	16	9.40	ok	landeseite
+camo-mini-kleid-603600	2607080124321604200	16	7.99	ok	landeseite
+wasserdichte-fahrradschuh-abdeckungen-474c88	254F0E4D-4DB6-46B8-AE34-0159459D1AE2	16	6.77	ok	landeseite
+tv-fernbedienungsschutz-12ceb3	56CA8817-2283-416C-A963-34550A5A5530	16	6.01	ok	landeseite
+v-ausschnitt-rock-mit-geometrischen-mustern-619600	2607080115531610200	16	8.79	ok	landeseite
+motorradstiefel-fur-herren-486331	10129227-D074-4666-8844-6CA04BB37223	16	22.45	ok	landeseite
+smart-remote-key-card-ef0a62	CFB33B36-7590-4C61-AEEB-BE1ED857017E	7	5.28	ok	landeseite
+infrarot-fernbedienung-fur-smart-home-gerate-0db2f4	027FDDB8-2CFC-48FD-9EE8-4010517C3B71	16	5.69	ok	landeseite
+bootsauschnitt-figurbetonendes-midi-kleid-mit-620800	2607071608481621500	16	8.46	ok	landeseite
+einfaches-v-ausschnitt-kleid-612600	2607071545121613200	16	8.77	ok	landeseite
+kopfhorer-mit-larm-und-schallschutz-d35a03	4183A1B4-550C-4A7F-A316-EC37B9643A0A	16	9.88	ok	landeseite
