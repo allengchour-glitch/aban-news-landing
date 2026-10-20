@@ -11483,3 +11483,8 @@ gelbe-one-shoulder-kleider-mit-ruschen-601500	2607071121501602200	16	10.79	ok	la
 multi-protokoll-tuner-6d064c	1F9F4F1A-D7F8-4EBD-9A9F-E980BEF9A37E	16	5.17	ok	landeseite
 kopfkissen-fur-kinder-mit-memory-foam-626200	2607120130061626900	16	20.58	ok	landeseite
 langarm-kleid-mit-taillengurtel-elegant-lang-f-635100	2607070958141639200	16	10.15	ok	landeseite
+elegantes-blumenkleid-639000	2607070939501639800	16	8.79	ok	landeseite
+gro-es-west-teller-fur-steak-gemuse-619400	2604120912211619800	16	11.32	ok	landeseite
+chic-vintage-damen-slim-fit-farbkombi-dress-625200	2607070931201626100	16	9.47	ok	landeseite
+ovale-keramik-schussel-610900	2603290955331611300	16	14.67	ok	landeseite
+damen-maxikleid-mit-3d-druckarmeln-632800	2607070856321633400	16	8.79	ok	landeseite
