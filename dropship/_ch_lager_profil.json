@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-20T01:10Z",
+ "stand": "2026-10-20T21:10Z",
  "profil": "gid://shopify/DeliveryProfile/152621121927",
  "stufe": 2,
  "stufe_seit": "2026-10-14",
@@ -41,17 +41,17 @@
   "aufblasbarer-leuchtender-fga975036",
   "tasche-klein-aus-kunstfell-ftck14064"
  ],
- "soll_produkte": 1625,
+ "soll_produkte": 1624,
  "im_profil_varianten": 3245,
  "fehlt_varianten": 0,
  "falsch_varianten": 0,
  "google_produkte_im_soll": 31,
- "ch_lager_aktiv": 2372,
+ "ch_lager_aktiv": 2371,
  "zugeordnet": 0,
- "geloest": 15,
+ "geloest": 0,
  "marke": {
   "gesetzt": 0,
-  "entfernt": 13,
+  "entfernt": 0,
   "offen": 0
  }
 }
