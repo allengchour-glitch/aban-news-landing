@@ -1011,3 +1011,28 @@
 16610154578311	mehrere-varianten	2026-10-20	Tragbarer Entsafter mit 12 Klingen
 16611916054919	kein-stecker-merkmal	2026-10-20	Stromadapter mit Ladefunktion
 16612766089607	nur-eu-version	2026-10-20	Intelligenter Touchscreen-Frühstücktoaster
+16612770218375	nur-eu-version	2026-10-20	Elektrischer Ofen mit Heissluftfrittierfunktion
+16612770251143	kein-stecker-merkmal	2026-10-20	Lockenstab-Aufbewahrungsgestell
+16612771234183	mehrere-varianten	2026-10-20	Tragbarer elektrischer Entsafter
+16613794709895	kein-stecker-merkmal	2026-10-20	USB-Ethernet-Adapter mit 3-Port-USB-Hub
+16613799068039	kein-stecker-merkmal	2026-10-20	Handstaubsauger mit Saug- und Stossfunktion
+16613799887239	kein-stecker-merkmal	2026-10-20	Heizkissen für Autositz 55×46×48 cm
+16613825151367	kein-stecker-merkmal	2026-10-20	Aufladbarer USB-Haarschneider
+16613835669895	kein-stecker-merkmal	2026-10-20	Bluetooth 5.0 Audio Adapter Sender und Empfänger
+16613842583943	mehrere-varianten	2026-10-20	6-Port USB-Ladeständer für Mobiltelefone
+16613849170311	kein-stecker-merkmal	2026-10-20	USB 3.1 Adapterkarte für Festplattengehäuse
+16638921834887	kein-stecker-merkmal	2026-10-20	Heissluftballon-Dekoration aus Weide
+15454109827457	kein-stecker-merkmal	2026-10-20	WLAN-Adapter mit WiFi 6
+15468317311361	unklar-eu-vorhanden:EU/US	2026-10-20	All-in-one Ladestation für Smartwatches
+15468388057473	draft-kein-eu-stecker:AU	2026-10-20	Universal Fast Wall Charger
+15479338205569	kein-stecker-merkmal	2026-10-20	Drehbarer Wireless-Ladeständer
+15479338664321	unklar-eu-vorhanden:EU/US	2026-10-20	Touchscreen Smart Electric Toy Balance Charger
+15479338926465	kein-stecker-merkmal	2026-10-20	PD45 GaN-Schnellladeadapter
+15479339057537	draft-kein-eu-stecker:US	2026-10-20	65W GaN Type-C Schnellladeadapter
+15479397613953	kein-stecker-merkmal	2026-10-20	Kabelloser Ladeständer mit Schnellladefunktion
+15479398302081	kein-stecker-merkmal	2026-10-20	Panda Ladestation und Schreibtisch-Organizer
+15479398629761	kein-stecker-merkmal	2026-10-20	Ladeadapter für Inst360 X4
+15479398728065	kein-stecker-merkmal	2026-10-20	3-in-1 Faltbare 15W Kabellose Ladestation
+15479399154049	kein-stecker-merkmal	2026-10-20	3-in-1 Laptop Sleeve mit Wireless Charger
+15479416357249	kein-stecker-merkmal	2026-10-20	Coole Hasen-Ladestation für Smartwatch
+15479417799041	unklar-eu-vorhanden:EU/US	2026-10-20	PD Fast Charger mit 5 oder 6 USB-Anschlüssen
