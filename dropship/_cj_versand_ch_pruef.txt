@@ -11296,3 +11296,10 @@ wasserdichter-reise-trolley-outdoor-613000	2412100206021613300	11	32.73	ok	lande
 2-stufiger-blumenstander-636900	2607120707401637800	0	-	KEINE CH-Option → DRAFT	landeseite
 gekreuztes-hemd-fur-herren-617900	2607061127511618600	16	8.53	ok	landeseite
 hunde-und-katzen-geschirr-und-leinen-627600	2602050123491628000	16	5.77	ok	landeseite
+turschloss-mit-griff-und-riegel-625800	2607120519571626700	16	6.40	ok	landeseite
+retro-polo-fur-herren-637300	2607060931101638100	16	8.11	ok	landeseite
+mini-reise-tasche-fur-kosmetik-606300	2410291409151606500	16	17.45	ok	landeseite
+reflektierende-plaid-weste-fur-hunde-632700	2601310323591633000	16	6.01	ok	landeseite
+grosses-stifteetui-626000	2607120515231626700	16	8.79	ok	landeseite
+leichter-langarm-top-mit-stehbund-630900	2607060301061631800	16	8.79	ok	landeseite
+hundeleine-und-geschirr-fur-mittelgrosse-und-g-613400	2601290318571613700	16	9.61	ok	landeseite
