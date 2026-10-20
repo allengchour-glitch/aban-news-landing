@@ -380,3 +380,7 @@ gid://shopify/Product/16644181066119	schultertasche-business-mit-usb-anschluss-6
 gid://shopify/Product/16651339497863	laser-handschutz-fur-1911-pistole-schwarz-7ee884	Laser-Handschutz für 1911-Pistole, schwarz
 gid://shopify/Product/16652038570375	damen-jacke-mit-blumenmuster-und-diagonalem-ve-614700	Damen-Jacke mit Blumenmuster und diagonalem Verschluss
 gid://shopify/Product/16652038734215	kinder-schneestiefel-mit-fleecefutter-603900	Kinder-Schneestiefel mit Fleecefutter
+gid://shopify/Product/16654281769351	lidschatten-set-mit-drei-schimmernden-farben-832704	Lidschatten-Set mit drei schimmernden Farben
+gid://shopify/Product/16654283047303	armelloses-faltenkleid-603100	Ärmelloses Faltenkleid
+gid://shopify/Product/16654283112839	keramik-kaffeetasse-mit-untertasse-635000	Keramik-Kaffeetasse mit Untertasse
+gid://shopify/Product/16654283243911	78-farben-lidschatten-palette-matt-schimmernd-416768	78-Farben-Lidschatten-Palette Matt Schimmernd
