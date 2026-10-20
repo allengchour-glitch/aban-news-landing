@@ -3131,3 +3131,5 @@
 16654696874375	Farbe:5+Grösse:8:40	2026-10-20	sofa-kissenbezug-70x70-cm-grau-631500
 16654607974791	Grösse:5+Farbe:4:20	2026-10-20	mink-jacquard-vintage-blumen-kissenbezug-ohne-633200
 16654604829063	Farbe:3:3	2026-10-20	bluetooth-gamepad-fur-switch-android-apple-und-618600
+16654435975559	Farbe:3:3+ki	2026-10-20	herren-quarzuhr-mit-quadratischem-gehause-615600
+16654421361031	Farbe:2+Variante:2:4+ki	2026-10-20	smartwatch-mit-bluetooth-anrufen-und-herzfrequ-627200
