@@ -11315,3 +11315,14 @@ schwarze-auslichtschutz-vorhangstoffe-portabel-616600	2607120339421617200	16	8.1
 leichter-sommer-henley-609600	2607030248101600300	16	8.79	ok	landeseite
 tierbrustgeschirr-602300	2512250922261602500	16	5.77	ok	landeseite
 farbveredeltes-edelstahl-halsband-618200	2607111219451619000	16	4.71	ok	landeseite
+leichte-kinderschuhe-mit-mesh-608900	2603181022221609400	16	10.01	ok	landeseite
+21700-lithium-akku-ladegerat-621800	2607120335331622700	0	-	KEINE CH-Option → DRAFT	landeseite
+wasserdichter-hundegurt-601000	2512200944361601200	16	5.80	ok	landeseite
+taktisches-hundehalsband-608700	2512200153431608900	16	9.47	ok	landeseite
+durchsichtige-schubladenbox-613200	2607120330481613900	16	22.91	ok	landeseite
+polo-shirt-kurzarmlig-625500	2607091101251626101	16	7.64	ok	landeseite
+atmungsaktiver-komfort-harnisch-fur-hunde-600600	2512190810171600800	16	5.98	ok	landeseite
+leinen-hemd-lassiger-stil-614000	2607090918521614600	16	7.17	ok	landeseite
+tierhalsband-mit-digitaldruck-639000	2512181002531639300	16	5.15	ok	landeseite
+schwarze-klettverschlusse-614300	2607120225581614900	16	9.20	ok	landeseite
+invisibles-haarspray-fur-perucken-634100	2607120224261634800	0	-	KEINE CH-Option → DRAFT	landeseite

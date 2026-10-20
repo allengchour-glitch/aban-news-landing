@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-20T12:12Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-20T13:08Z
 
-Aktive gescannt: 14 · ohne Kategorie: 14 · heute gesetzt: 12 (SCHARF, CAP 1500) · danach offen: 2 · Fehler: 0
+Aktive gescannt: 12 · ohne Kategorie: 12 · heute gesetzt: 10 (SCHARF, CAP 1500) · danach offen: 2 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -11,9 +11,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- kurzarmliges-polo-shirt-mit-blumenmuster-602900 · Herrenmode → Apparel & Accessories > Clothing
-- kissenbezug-aus-baumwolle-mit-rutschfester-ruc-635800 · Wohnen & Deko → Home & Garden > Decor
-- wasserfeste-schweissresistente-foundation-600700 · Make-up → Health & Beauty > Personal Care > Cosmetics > Makeup
-- cordyloy-sofa-kissenbezug-70x70-cm-622800 · Wohnen & Deko → Home & Garden > Decor
-- loose-fit-baumwoll-leinen-basis-top-632600 · Herrenmode → Apparel & Accessories > Clothing
+- silk-kissenbezug-leopard-muster-608900 · Wohnen & Deko → Home & Garden > Decor
+- langarmliges-herren-mandarin-kragen-shirt-611000 · Herrenmode → Apparel & Accessories > Clothing
+- silberner-kissenbezug-aus-mulberry-seide-610700 · Wohnen & Deko → Home & Garden > Decor
+- herrenlangarmshirt-mit-farbblock-design-626600 · Herrenmode → Apparel & Accessories > Clothing
+- schwere-seidenkissenhulle-50-75-cm-631100 · Wohnen & Deko → Home & Garden > Decor
 
