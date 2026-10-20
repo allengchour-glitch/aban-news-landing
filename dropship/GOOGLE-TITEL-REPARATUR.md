@@ -16,9 +16,9 @@
 Gegenproben: «Sexy» im Titel (45) trägt 0 «Inappropriate title»; RAUCH-Regex über 50'016 Titel = 45 Treffer, alle
 echtes Rauchzubehör; Such-Kanarienvogel `title:*zzzkanari*` = 0.
 
-## Letzter Lauf 2026-10-19T19:32:39Z — SCHARF
+## Letzter Lauf 2026-10-20T15:37:35Z — SCHARF
 
-Gescannt 55840 aktive von 55840 (EXACT); Wächter-Stand 1 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 36x gewartet, 327 s gesamt.
+Gescannt 56118 aktive von 56118 (EXACT); Wächter-Stand 1 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 0x gewartet, 0 s gesamt.
 
 | Produkt | Regel | Änderung | Status |
 |---|---|---|---|
@@ -89,7 +89,3 @@ Typ-/Tag-Korrekturen (rückgelesen):
 - zigarrenschneider-011392: typ Raucherzubehör; tags_dazu raucher,smoke-zubehoer
 - zigarrenschneider-gezackt-und-doppelklingig-769728: typ Raucherzubehör; tags_dazu raucher,smoke-zubehoer
 - zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100: typ Küche & Bar
-
-## Nachmessung (≥ 20 h nach dem Schreiben, Google live)
-
-- selbstausloser-mit-licht-613000: keine Google-Meldung
