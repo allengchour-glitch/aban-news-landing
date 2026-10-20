@@ -580,3 +580,4 @@
 2026-10-20T07:57:31.771Z	luxe-epic-elegant.wav	48.19	beauty	cjreel-1590160388304416768	stimme:nein	anteil
 2026-10-20T08:04:37.374Z	luxe-orchestra.wav	32.79	beauty	cjreel-1641353777246638080	stimme:ja	azure:de-CH-LeniNeural
 2026-10-20T13:28:14.000Z	luxe-epic-anime.wav	18.73	mode	bildreel-top-gun-bomberjacke-fgss5810	stimme:nein	anteil	quelle:bild
+2026-10-20T17:14:53.000Z	luxe-adventure-uplift.wav	34.53	kinder	bildreel-kinderkostum-eiskonigin-fgssck41201	stimme:nein	anteil	quelle:bild
