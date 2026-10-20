@@ -48,10 +48,16 @@ Morgenlauf: Konten/Planung gegen 08:01, drei Landeseiten gegen 08:03 und Bild/Va
 | Klaviyo | Konto, Placed-Order-Metrik, einen aktuellen Flow-Report sowie Welcome/Recovery/Post-Purchase und öffentliche Capture-Zuordnung geprüft | XEGbTB live, Vse76a draft; Capture-Code XWqMAD/T2VHfu. Nur TTuuTS-Linktracking-Diff zur Freigabe erhalten, nichts aktiviert/versendet |
 | Musik / DNS / Zugriff | Pflichtmusik gegen aktuellen Repo-Blob/Credits und öffentliche genehmigte DNS-Namen geprüft; aktuelle Runtime-Zugriffe gelesen | Musik hashgleich, finale Rechte-/Hörabnahme offen. Vier DNS-Ergänzungen genehmigt, öffentlich nicht nachweisbar und ohne authentifizierten Schreibzugang. CJ-Laufzeit-Credentials nicht als bereit nachgewiesen |
 | Übergabe | Aktuellen Morgenbericht mit präzisiertem Briefing und sechs Kanaltext-/UTM-Entwürfen auf der bestehenden Wissensbranch gespeichert | Dokumentation auf bestehender Entwurfsbranch; keine produktive Aktivierung |
+| Folgelauf, 14:05 | Shop/Metricool, Produkt, Tags, öffentliche Kaufbarkeit und gefilterte Shopify-Videoliste erneut geprüft | Identitäten passend; CHF 34.90, ACTIVE, untracked/CONTINUE. Weiter nur bekannte 960×540-Quelle, keine neue freigabefähige MP4 |
+| Planung / Belege, Nachmittag | Dieselben 129 UUIDs gegen Morgenstand abgeglichen und elf zusätzliche PUBLISHED-Kanalzustände an neun bestehenden Postobjekten protokolliert | 119 PENDING / zehn PUBLISHED-Objekte; keine eigenen Social-Writes. Alter 15-s-Projektor auf FB/IG/TikTok veröffentlicht gemeldet; neue Facebook-URL-Zuordnung offen. Lücke 26.10. erhalten |
+| Produktnachweise, Nachmittag | 15 Claimgruppen des unveränderten aktuellen Produkttexts gegen vorhandene Belege und alten Beschreibungsvorschlag abgegrenzt; minimalen Prüftext und lesbaren Diff vorbereitet | Neue Dokumentations-/Textvorbereitung, keine Shopumsetzung. Physische Angaben und Bannerclaims ohne unabhängigen Nachweis im begrenzten Prüfumfang; ungeklärt bedeutet nicht falsch |
+| Tagesdaten / Zugriff, Nachmittag | Morgen-Kennzahlen und Flow-Report hashgeprüft wiederverwendet; Klaviyo-Konto und TTuuTS sowie Musik/Runtime frisch gegengeprüft | Keine zusätzlichen breiten Reportabfragen. Tracking weiter false und nur zur Freigabe; Musik hashgleich. Netzwerk jetzt enforced, daraus kein CJ-/DNS-Zugriff abgeleitet |
 
 Nächster Arbeitsschritt: geeignete Originalaufnahmen nach korrigierten Mindestzeiten samt Modell-/Motivzuordnung und kommerziellen Dateirechten prüfen; danach denselben einen Master zur Abnahme entwickeln. Die Planungslücke erzwingt keinen ungeprüften Post. Genau ein Klaviyo-Vorschlag bleibt offen: TTuuTS add_tracking_params false → true, vor Umsetzung Konto-UTMs und Linkvorschauen prüfen. Kein Shop-/Feed-/Flow-/Rabatt-/Budget-/DNS-Write, Kundenkontakt oder kostenpflichtiger Render.
 
 Nachweis: [Morgenlauf mit sechs Kanaltexten und Statusbelegen](https://github.com/allengchour-glitch/aban-news-landing/blob/7847708362f4216113af36886b1416a171c356a4/dropship/codex-handoff-20261018/MORGENLAUF-20261020.md).
+
+Nachtrag zum Morgenbeleg: [Folgelauf gegen 14:05–14:08 Zürich mit kanalbezogenen Statusbelegen und neuer Nachweismatrix](https://github.com/allengchour-glitch/aban-news-landing/blob/b27c0b654f52e7d0af6bbebdf35b3e0516467651/dropship/codex-handoff-20261018/FOLGELAUF-20261020-1400.md).
 
 ## Fortführung
 
