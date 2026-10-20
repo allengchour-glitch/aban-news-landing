@@ -11912,3 +11912,5 @@ zahnreinigungsspielzeug-fur-hunde-608700	2507290240071608900	3	8.80	ok	landeseit
 sommer-trainings-shirt-617100	2606030132061617700	16	7.03	ok	landeseite
 motorrad-seitentasche-retro-042432	1647513740222402560	16	17.28	ok	landeseite
 casual-hohl-mehrfunktionsuhr-mit-gro-em-ziffer-620600	2511250641331620800	15	7.17	ok	landeseite
+automatische-mechanische-herrenuhr-doppelseiti-633700	2511230319181634000	16	5.93	ok	landeseite
+herren-mechanische-uhr-hohl-601700	2511070547131601900	16	5.97	ok	landeseite
