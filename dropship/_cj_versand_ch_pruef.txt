@@ -11403,3 +11403,13 @@ smart-wlan-steuerung-632300	2511120918421635200	16	7.00	ok	landeseite
 atmungsaktive-anfanger-steigshuhe-damen-herren-986944	1769281848456261632	16	8.48	ok	landeseite
 2k-fensterkamera-mit-wlan-628500	2511080229351628800	7	8.57	ok	landeseite
 lassige-cowhide-schuhe-390976	1769275285842694144	16	13.76	ok	landeseite
+fashion-laufschuhe-mit-plattform-982848	1768819996270006272	3	23.13	ok	landeseite
+stummhammer-fur-schlagzeug-603500	2511050608411603700	16	6.63	ok	landeseite
+atmungsaktive-sneaker-199680	1768539064287891456	16	8.25	ok	landeseite
+trendy-knob-sneaker-046912	1767156027335643136	16	14.37	ok	landeseite
+kabelloser-handstaubsauger-mit-gro-er-saugkraf-600300	2511030328101600700	7	10.18	ok	landeseite
+kinder-wasserschuhe-409280	1766851088877101056	16	8.11	ok	landeseite
+hochtaillierte-weitbeine-damen-jeans-mit-spitz-603700	2604180823531604500	16	10.15	ok	landeseite
+hochwertige-atmungsaktive-herren-high-tops-366528	1386513179147898880	16	11.12	ok	landeseite
+studentensneaker-im-trend-design-fur-sport-fre-404288	1385139408944107520	16	14.96	ok	landeseite
+trendige-casual-rippenjeans-hochtaillierte-628500	2604180810181629200	16	11.24	ok	landeseite

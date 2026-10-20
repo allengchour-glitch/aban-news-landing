@@ -789,9 +789,32 @@ def kanal_still(alter_s, takt_s):
     return alter_s is None or alter_s > takt_s + max(7200, takt_s // 4)
 
 
+def _vorlauf_slots():
+    """20.10.2026: {format: (vergangene, künftige, alle)} Termine aus dropship/_vorlauf_plan.json. «vergangen/künftig»
+    zählt nur status=geplant MIT Metricool-ID — Metricool veröffentlicht zum Termin (autoPublish), `posted_at` im Ledger ist
+    seit dem 7-Tage-Vorlauf (18.10.) nur die PLANUNGSZEIT. {} = Plan nicht lesbar → altes Verhalten (Ledger)."""
+    try:
+        import datetime as dt
+        p = json.load(open(os.path.join(REPO, "dropship/_vorlauf_plan.json"), encoding="utf-8"))
+        jetzt = dt.datetime.utcnow(); out = {}
+        for s in (p.get("slots") or {}).values():
+            t = dt.datetime.fromisoformat(s["termin_utc"].replace("Z", "")[:19])
+            v, k, alle = out.setdefault(s["format"], ([], [], []))
+            alle.append(t)
+            if s.get("status") != "geplant" or not s.get("mc_ids"):
+                continue
+            (v if t <= jetzt else k).append(t)
+        return out
+    except Exception:
+        return {}
+
+
 def metricool_kanaele():
     """23.09.2026 «metricool maximal nutzen»: je Metricool-Kanal, wie viel in 24 h geplant wurde, und Fehler.
-    Ein Kanal ist «still», wenn sein letzter Post älter ist als sein Takt aus social_autopilot.sh + Spielraum (09.10.)."""
+    Ein Kanal ist «still», wenn sein letzter Post älter ist als sein Takt aus social_autopilot.sh + Spielraum (09.10.).
+    20.10.2026: Sendezeit = Termin des jüngsten vergangenen Vorlauf-Slots (Ledger-`posted_at` ist nur die Planungszeit →
+    Fehlalarm «still: TikTok/YouTube» bei laufendem Posten). «Still» bleibt echter Lückenmelder: der Plan trägt nur, solange
+    ein künftiger Slot steht UND der jüngste vergangene nicht länger her ist als der grösste Slot-Abstand des Formats + 2 h."""
     try:
         import csv, datetime as dt
         jetzt = dt.datetime.utcnow()
@@ -819,11 +842,22 @@ def metricool_kanaele():
                     pins += t >= grenze
                     letzt["pinterest"] = max(letzt["pinterest"] or t, t)
         takt = metricool_takt()
+        plan = _vorlauf_slots(); gedeckt = {k: False for k in letzt}
+        for k, f in (("tiktok", "tiktok"), ("youtube", "youtube"), ("pinterest", "pin")):
+            v, kuenftig, alle = plan.get(f, ([], [], []))
+            if v:
+                if k in n: n[k] = max(n[k], sum(t >= grenze for t in v))
+                else: pins = max(pins, sum(t >= grenze for t in v))
+                letzt[k] = max(letzt[k] or max(v), max(v))   # nie hinter das Ledger zurück (Autopilot postet nach Planende selbst)
+                if kuenftig:
+                    alle = sorted(alle)
+                    luecke = max((b_ - a_).total_seconds() for a_, b_ in zip(alle, alle[1:])) if len(alle) > 1 else 0
+                    gedeckt[k] = (jetzt - max(v)).total_seconds() <= luecke + 7200
         teile = [f"TikTok {n['tiktok']}", f"YouTube {n['youtube']}", f"Pinterest {pins}"]
         warn = []
         for name, k in (("TikTok", "tiktok"), ("YouTube", "youtube"), ("Pinterest", "pinterest")):
             alter = (jetzt - letzt[k]).total_seconds() if letzt[k] else None
-            if kanal_still(alter, takt[k]):
+            if kanal_still(alter, takt[k]) and not gedeckt[k]:
                 warn.append(f"{name} (letzter vor {int(alter // 3600)} h, Takt {takt[k] // 3600} h)" if alter else f"{name} (nie)")
         txt = "METRICOOL 24 h: " + " · ".join(teile)
         if fehler: txt += f" · ⚠️ {len(fehler)} Fehler ({', '.join(sorted(set(fehler)))})"

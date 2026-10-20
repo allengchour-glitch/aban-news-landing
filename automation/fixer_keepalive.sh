@@ -2564,6 +2564,20 @@ KLT=/tmp/test_klingen_tor.log
     fi
   fi
 
+  # 20.10.2026: METRICOOL-AMPEL-KANARIENVOGEL — «still: TikTok/YouTube» las die PLANUNGSZEIT (Ledger posted_at) statt der
+  # Sendezeit der Vorlauf-Slots (Fehlalarm bei laufendem Posten). Taeglich rein lesend (~10 s); faellt er, kippt die Ampel
+  # wieder in Dauer- oder Nie-Alarm. Der Test ueberspringt sich selbst, wenn der Plan keine Slots mehr traegt.
+  MKT=/tmp/test_metricool_kanaele.log
+  if [ -f "$REPO/automation/test_metricool_kanaele.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$MKT" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$MKT"; then
+      ( cd "$REPO" && python3 automation/test_metricool_kanaele.py >> "$MKT" 2>&1 || echo "$(date -u +%F' '%H:%M) METRICOOL-AMPEL FEHLER (Exit $?)" >> "$MKT" )
+    fi
+    if [ -s "$MKT" ] && tail -n 30 "$MKT" | grep -q "FEHLER\|FEHLSCHLAG"; then
+      echo "⚠️ METRICOOL-AMPEL: Kanarienvogel gefallen — tail -30 $MKT"
+    fi
+  fi
+
   # 12.10.2026: Liechtenstein-Satz «Gratis-Versand ab CHF N» → «in der Schweiz». Idempotent (Lookbehind), liest jedes
   # Produkt live und schreibt nur den Satz. Taeglich, damit neue aktive Importe den Satz nicht dauerhaft behalten.
   LIW=/tmp/li_gratis_text.log
