@@ -986,3 +986,28 @@
 16603739390343	unklar-eu-vorhanden:EU/UK/US	2026-10-19	Lockenstab für grosse Wellen
 16603765145991	kein-stecker-merkmal	2026-10-19	Eismaschine
 16604893479303	nur-eu-version	2026-10-19	Retro Wasserkocher mit Temperaturanzeige
+16654364475783	kein-stecker-merkmal	2026-10-20	Feuchtigkeitsspendendes Lipgloss- und Lipliner-Set
+16654367097223	nur-eu-version	2026-10-20	Heissluftfritteuse mit zwei Sichtfenster-Fächern
+16604925264263	kein-stecker-merkmal	2026-10-20	Nachtlicht mit kabellosem Ladegerät
+16604928082311	kein-stecker-merkmal	2026-10-20	Auto-Heizlüfter mit Warm- und Kaltluft
+16605203333511	kein-stecker-merkmal	2026-10-20	Kleiner Sandwich-Toaster 600 W
+16606108057991	kein-stecker-merkmal	2026-10-20	CO2-Kartuschen-Adapter für Fahrrad, CNC-Aluminium
+16606123393415	kein-stecker-merkmal	2026-10-20	Multifunktions-Adapter mit Metallgriff für Fotografie
+16606123491719	kein-stecker-merkmal	2026-10-20	Kupferstift für intern beheizte Lötkolben
+16606125162887	kein-stecker-merkmal	2026-10-20	IBC-Tank-Adapter für 1000-Liter-Container
+16606172414343	kein-stecker-merkmal	2026-10-20	Roboter-Staubsauger mit Mikrofasertuch
+16606271668615	kein-stecker-merkmal	2026-10-20	Düsen-Set für Heissluftpistole 35 mm · 4 Stück
+16608566739335	kein-stecker-merkmal	2026-10-20	Stromadapter 18 V für Lithiumbatterien
+16608600490375	kein-stecker-merkmal	2026-10-20	Elektrischer Lötkolben
+16608629031303	kein-stecker-merkmal	2026-10-20	Elektrische Heizkissen mit Rückenlehne für das Auto
+16608629457287	kein-stecker-merkmal	2026-10-20	Elektrischer Haarschneider mit Akku
+16609737933191	eu-variante-belegt	2026-10-20	Multifunktionales Smart-Ladegerät
+16609740226951	mehrere-varianten	2026-10-20	Tragbare elektrische Mini-Nähmaschine
+16609926513031	kein-stecker-merkmal	2026-10-20	Multifunktionaler Staubsauger-Aufsatz, 8-teilig
+16609947091335	kein-stecker-merkmal	2026-10-20	Heissluftfritteusen-Zubehör-Set aus Silikon
+16610069250439	nur-eu-version	2026-10-20	Halbautomatischer Milchschäumer für Kaffeemaschine
+16610094481799	mehrere-varianten	2026-10-20	Reise-Reiskocher 12V/24V
+16610122039687	eu-variante-belegt	2026-10-20	Multifunktions-Entsafter
+16610154578311	mehrere-varianten	2026-10-20	Tragbarer Entsafter mit 12 Klingen
+16611916054919	kein-stecker-merkmal	2026-10-20	Stromadapter mit Ladefunktion
+16612766089607	nur-eu-version	2026-10-20	Intelligenter Touchscreen-Frühstücktoaster
