@@ -11835,3 +11835,14 @@ baumwoll-linon-kleid-mit-langen-armeln-603500	2607070203431604200	16	8.79	ok	lan
 sommerkleid-mit-perlenbesatz-608500	2607061514181609100	16	8.79	ok	landeseite
 wii-gamepad-mit-motion-plus-b64281	700CD50E-9CB4-4AE4-9643-B38D341C2B70	16	9.20	ok	landeseite
 elegant-kurzarm-dress-im-a-linien-stil-634800	2607061333591635400	16	8.93	ok	landeseite
+fernsteuerung-fur-rc-autos-3f923d	40A80783-90A9-41C1-8A3F-22D937D152E3	16	6.17	ok	landeseite
+kinder-flash-knob-rollschuhe-243072	1766026906341740544	7	15.57	ok	landeseite
+glanzendes-abendkleid-mit-taillebetonung-610100	2607061136211610800	16	7.85	ok	landeseite
+drahtlose-luftmaus-mx3-a4ea03	6B1E514E-6D28-41F7-94F0-CCECC1C153F5	16	8.79	ok	landeseite
+leichte-arbeitsschuhe-mit-schutz-091200	1765667278474977280	16	17.66	ok	landeseite
+elegante-atmungsaktive-mini-kleid-606600	2607061130271607200	16	8.79	ok	landeseite
+intelligenter-lichtschalter-d47368	1418534426727550976	7	8.25	ok	landeseite
+spicy-girl-mini-kleid-mit-schnurung-630300	2607060954481631000	16	7.71	ok	landeseite
+mini-musikverstarker-be8306	2BBC74D0-2FD4-4553-A2C3-053CCFABE945	7	8.57	ok	landeseite
+luftmaus-mit-2-4g-wireless-steuerung-8ccaae	67E46AA5-8638-4E3C-AECC-8893CA3C245D	16	5.55	ok	landeseite
+vintage-sneaker-mit-rundkappe-562112	1763041441913253888	16	11.37	ok	landeseite
