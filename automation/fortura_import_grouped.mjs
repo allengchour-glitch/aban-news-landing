@@ -61,8 +61,8 @@ const grVon=(r)=>{const m=String(r['Bez2DE']||'').match(/Gr(?:ö|oe)sse\s+([0-9A
 const pick=(o,ks)=>{for(const k of ks)if(o[k]!=null&&String(o[k]).trim()!=='')return String(o[k]).trim();return '';};
 const num=s=>{const n=parseFloat(String(s).replace(/[^0-9.,-]/g,'').replace(',','.'));return isFinite(n)?n:0;};
 // 20.10.2026: Bestand = Lagerbestand Fortura − Puffer (NIE 'Lagerbestand Total': Bazar-Bestand liefert Fortura nicht aus, Fall #1027)
-const PUFFER=Math.max(0,parseInt(process.env.FORTURA_PUFFER??'1',10)||0);
-const bestand=r=>Math.max(0,Math.round(num(pick(r,COL.stock)))-PUFFER);
+const PUFFER=/^\d+$/.test(process.env.FORTURA_PUFFER??'')?parseInt(process.env.FORTURA_PUFFER,10):1;   // nur explizite Ziffer, sonst 1
+const bestand=r=>Math.max(0,Math.floor(Math.max(0,Math.round(num(pick(r,COL.stock))))/Math.max(1,Math.round(num(pick(r,COL.ve))||1)))-PUFFER);   // Bündel statt Stück (VE)
 const normT=x=>x.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/ß/g,'ss').replace(/[^a-z0-9]+/g,' ').trim();
 const SIZEORD=['xs','s','s/m','m','m/l','l','l/xl','xl','xxl','xxxl','3xl','4xl'];
 const sizeRank=g=>{const i=SIZEORD.indexOf(String(g).toLowerCase());return i<0?99:i;};
@@ -104,7 +104,7 @@ for(const [key,grp] of groups){
   if(EXCLUDE.test(catBlob)){skip++;fs.appendFileSync(LEDGER,'ftg:'+key+'\n');continue;}
   // Nur lagernde Zeilen behalten
   const inStock=grp.filter(r=>bestand(r)>0);
-  if(!inStock.length){fs.appendFileSync(LEDGER,'ftg:'+key+'\n');continue;}
+  if(!inStock.length){continue;}   // 20.10.2026: KEIN Ledger-Eintrag — nach dem Auffüllen soll die Gruppe noch importierbar sein
   const title=cleanTitle(pick(base,COL.titleDE));
   if(!title||title.length<4){skip++;fs.appendFileSync(LEDGER,'ftg:'+key+'\n');continue;}
   // Kleinticket-Filter (nur wenn ALLE Varianten drunter + kein Bündel)

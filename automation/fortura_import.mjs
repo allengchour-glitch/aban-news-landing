@@ -186,8 +186,9 @@ for (const rec of recs.slice(0, LIMIT)) {
   title = title.slice(0,70).trim();
   if (!title || title.length < 4) { skip++; fs.appendFileSync(LEDGER,'ft:'+art+'\n'); continue; }
   const status = pick(rec, COLMAP.status).toLowerCase();
-  const stock = Math.max(0, Math.round(num(pick(rec, COLMAP.stock))) - Math.max(0, parseInt(process.env.FORTURA_PUFFER ?? '1', 10) || 0));   // 20.10.2026: Puffer wie fortura_bestand_sync.mjs
   const ve = Math.max(1, Math.round(num(pick(rec, COLMAP.ve)) || 1));
+  // 20.10.2026: Bestand in Bündeln (Feed zählt Stück) minus Puffer — wie fortura_bestand_sync.mjs; Puffer nur als explizite Ziffer, sonst 1
+  const stock = Math.max(0, Math.floor(Math.max(0, Math.round(num(pick(rec, COLMAP.stock)))) / ve) - (/^\d+$/.test(process.env.FORTURA_PUFFER ?? '') ? parseInt(process.env.FORTURA_PUFFER, 10) : 1));
   const ekNetto = num(pick(rec, COLMAP.ekNetto));
   const vkEmpf = num(pick(rec, COLMAP.vkEmpf));
   // Kleinticket-Skip: UVP unter MIN_VK trägt den DPD-Versand nicht (Einzelartikel) → nicht anlegen
@@ -208,7 +209,8 @@ for (const rec of recs.slice(0, LIMIT)) {
   if (existTitles.has(normT(title))) { console.log('= existiert', title.slice(0,40)); fs.appendFileSync(LEDGER,'ft:'+art+'\n'); continue; }
 
   // ausverkauft/inaktiv → NICHT anlegen (ghost-sale-Schutz von Anfang an)
-  if (stock <= 0 || /inaktiv|gesperrt|deaktiv/.test(status)) { oos++; fs.appendFileSync(LEDGER,'ft:'+art+'\n'); continue; }
+  if (/inaktiv|gesperrt|deaktiv/.test(status)) { oos++; fs.appendFileSync(LEDGER,'ft:'+art+'\n'); continue; }
+  if (stock <= 0) { oos++; continue; }          // 20.10.2026: KEIN Ledger-Eintrag — nach dem Auffüllen soll der Artikel noch importierbar sein
   if (DRY) { console.log(`[DRY] ${title.slice(0,44)} · EK ${ekNetto} → VK ${price} · Stock ${stock} · VE ${ve}`); created++; continue; }
   if (img && !(await img200(img))) { console.log('✗ bild', title.slice(0,40)); fs.appendFileSync(LEDGER,'ft:'+art+'\n'); continue; }
 

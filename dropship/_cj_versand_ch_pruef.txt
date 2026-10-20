@@ -11512,3 +11512,10 @@ warme-kinderschneestiefel-927232	1733018336444813312	16	9.88	ok	landeseite
 sommer-v-ausschnitt-damenkleid-614400	2607070654501615100	16	8.53	ok	landeseite
 leichter-mountainbike-helm-145280	1399194911802265600	16	9.84	ok	landeseite
 elegantes-chiffon-kleid-631600	2607070620251632200	16	8.79	ok	landeseite
+warme-kinderschuhe-mit-fleece-futter-689280	1718540995798769664	16	7.85	ok	landeseite
+kinder-helm-mit-schutz-212416	1391620235680944128	16	7.43	ok	landeseite
+kinder-winterstiefel-mit-fell-405504	1717869070403514368	16	17.66	ok	landeseite
+weiches-seidengewebtes-nachthemd-602900	2607070619171603500	16	8.79	ok	landeseite
+mountainbike-helm-fur-herren-damen-cross-count-692096	1387287230086778880	16	10.12	ok	landeseite
+sommerliches-a-linien-kleid-608500	2607070606481609100	16	9.47	ok	landeseite
+fahrradhelm-fur-stra-e-und-berg-936960	1384829041361686528	16	10.68	ok	landeseite

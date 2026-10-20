@@ -62,7 +62,8 @@ const DRY = process.env.DRY === '1';
 const LIMIT = parseInt(process.env.LIMIT || '0', 10);
 const MAX_ZERO_SHARE = parseFloat(process.env.MAX_ZERO_SHARE || '0.35');
 const MIN_FEED_ROWS = parseInt(process.env.MIN_FEED_ROWS || '5000', 10);
-const PUFFER = Math.max(0, parseInt(process.env.FORTURA_PUFFER ?? '1', 10) || 0);
+// Nur eine explizit gesetzte Ziffer gilt; leer/«abc»/«-2» (verdorbenes Env-Secret) ergibt die Vorgabe 1, NICHT still 0 (Prüfer 20.10.).
+const PUFFER = /^\d+$/.test(process.env.FORTURA_PUFFER ?? '') ? parseInt(process.env.FORTURA_PUFFER, 10) : 1;
 const BESTAND_SPALTE = 'Lagerbestand Fortura';   // NIE 'Lagerbestand Total' (Bazar-Bestand ist für Dropship nicht lieferbar)
 const STAND = 'dropship/_fortura_bestand_stand.json';
 const LOCK = '/tmp/fortura_bestand_sync.lock';
@@ -112,12 +113,34 @@ if (iArt < 0 || iStock < 0) {
   console.error(`OFFEN: Feed-Kopfzeile ohne 'ArtNr'/'${BESTAND_SPALTE}' (gefunden: ${header.slice(0, 12).join(', ')}…). Nichts geschrieben — kein Rückfall auf 'Lagerbestand Total'.`);
   process.exit(2);
 }
+const iVe = header.indexOf('Internet_VE');
 const feed = new Map();
+let unlesbar = 0;
 for (const r of rows.slice(1)) {
   const k = artKey(r[iArt]); if (!k) continue;
-  const q = Math.max(0, Math.round(num(r[iStock])) - PUFFER);
+  // 20.10.2026 (Prüfer): nur reine Ganzzahlen zählen — num() las «ab 15.11.» als 15 und «10 / 20» als 1020. Alles andere = 0 (sichere
+  // Richtung) und wird gezählt; bei > 0,5 % unlesbaren Werten bricht der Lauf ab (Feed-Format geändert?).
+  const roh = String(r[iStock] ?? '').trim();
+  const n0 = /^-?\d+$/.test(roh) ? parseInt(roh, 10) : 0;
+  if (roh !== '' && !/^-?\d+$/.test(roh)) unlesbar++;
+  // Bündelartikel (Internet_VE > 1): der Feed zählt STÜCK, der Shop verkauft Bündel → Bestand in Bündeln (Prüfer 20.10.: 17 verkaufbare
+  // ACTIVE-Varianten standen über floor(Stück/VE)).
+  const ve = iVe >= 0 ? Math.max(1, Math.round(num(r[iVe])) || 1) : 1;
+  const q = Math.max(0, Math.floor(Math.max(0, n0) / ve) - PUFFER);
   // Doppelte ArtNr im Feed: konservativ die KLEINERE Menge nehmen (Übersell-Schutz).
   feed.set(k, feed.has(k) ? Math.min(feed.get(k), q) : q);
+}
+// FEED-BREMSEN (Prüfer 20.10.): die Plausibilitätsbremse unten misst nur «SKU fehlt im Feed». Bleibt der Spaltenname, aber der Inhalt
+// ist kaputt (leer/0/Text), setzte der Sync das ganze Lager auf 0 (gemessen: 4'731 Varianten, ACTIVE 2'315 → 0, Exit 0).
+if (unlesbar > Math.max(5, 0.005 * rows.length)) {
+  console.error(`ABBRUCH (Feed-Bremse): ${unlesbar} unlesbare Werte in '${BESTAND_SPALTE}' (> 0,5 % der Zeilen) — Feed-Format geändert? Nichts geschrieben.`);
+  process.exit(2);
+}
+const MIN_FEED_POS = parseFloat(process.env.MIN_FEED_POS || '0.15');
+const feedPos = [...feed.values()].filter(q => q > 0).length / Math.max(1, feed.size);
+if (feedPos < MIN_FEED_POS) {
+  console.error(`ABBRUCH (Feed-Bremse): nur ${(feedPos * 100).toFixed(1)} % der Artikel mit Fortura-Bestand (Grenze ${(MIN_FEED_POS * 100).toFixed(0)} %, heute ~35 %) — Spalte kaputt? Nichts geschrieben.`);
+  process.exit(2);
 }
 const feedHash = crypto.createHash('sha1').update(raw).digest('hex').slice(0, 12);
 console.log(`Feed ${CSVPATH}: ${rows.length - 1} Zeilen → ${feed.size} Artikelnummern (Fingerabdruck ${feedHash})`);
@@ -237,6 +260,16 @@ console.log(`\nAbgleich: ${unveraendert} unverändert · ${plan.length} zu ände
 for (const p of plan.slice(0, 25)) console.log(`  ${p.sku.padEnd(22)} ${String(p.ist).padStart(5)} → ${String(p.soll).padStart(5)}  ${p.grund}  ${p.titel.slice(0, 44)}`);
 if (plan.length > 25) console.log(`  … und ${plan.length - 25} weitere`);
 
+{ // NULLUNGS-BREMSE (Prüfer 20.10.): mehr als max(150, 15 %) der heute verkaufbaren Varianten auf einmal auf 0 → Abbruch (FORCE_ZERO=1 hebt auf).
+  // Normale Tagesläufe nullen 5–57 verkaufbare Varianten (Journal 10.–18.10.); nur der Umstellungslauf vom 20.10. nullte 3'188.
+  const verk = live.filter(v => v.tracked && (v.ist || 0) > 0).length;
+  const kill = plan.filter(p => p.soll === 0 && (p.ist || 0) > 0).length;
+  if (kill > Math.max(150, Math.floor(0.15 * verk)) && process.env.FORCE_ZERO !== '1') {
+    console.error(`\nABBRUCH (Nullungs-Bremse): ${kill} von ${verk} verkaufbaren Varianten würden auf 0 fallen (Grenze ${Math.max(150, Math.floor(0.15 * verk))}). ` +
+      `Nichts geschrieben. Gewollt (z. B. neue Bestandsregel)? → FORCE_ZERO=1.`);
+    process.exit(2);
+  }
+}
 if (zeroShare > MAX_ZERO_SHARE) {
   console.error(`\nABBRUCH (Plausibilitätsbremse): ${(zeroShare * 100).toFixed(1)} % der Shop-SKU fehlen im Feed, ` +
     `Grenze ${(MAX_ZERO_SHARE * 100).toFixed(0)} %. Das sieht nach halbem Feed aus, nicht nach ausgelisteter Ware. Nichts geschrieben.`);
