@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-20T02:09Z",
+ "stand": "2026-10-20T22:11Z",
  "scharf": true,
  "anlaesse": {
   "halloween": {
@@ -17,14 +17,14 @@
     "Verkleidungsteil": 2,
     "Partydeko": 28
    },
-   "grenzfaelle": 79,
-   "abmelden_paare": 3,
+   "grenzfaelle": 80,
+   "abmelden_paare": 0,
    "pro_kanal": {
-    "TikTok": 1,
-    "Facebook & Instagram": 1,
-    "Pinterest": 1
+    "TikTok": 0,
+    "Facebook & Instagram": 0,
+    "Pinterest": 0
    },
-   "tag_fehlt": 1,
+   "tag_fehlt": 0,
    "tag_zuviel": 0,
    "queue_zeilen": 6,
    "queue_ready": 0,
@@ -195,11 +195,7 @@
      "titel": "Halloween-Kostüm T-Rex",
      "typ": "Damenmode",
      "grund": "Kostüm",
-     "kanaele": [
-      "TikTok",
-      "Facebook & Instagram",
-      "Pinterest"
-     ]
+     "kanaele": []
     },
     {
      "id": "gid://shopify/Product/15452605448577",
@@ -706,6 +702,12 @@
      "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
     },
     {
+     "handle": "halloween-lippenglanz-set-6-stuck-615300",
+     "titel": "Halloween Lippenglanz Set – 6 Stück",
+     "typ": "Make-up",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
      "handle": "halloween-low-top-sneaker-mit-3d-druck-918208",
      "titel": "Halloween Low-Top Sneaker mit 3D-Druck",
      "typ": "Sportschuhe",
@@ -998,8 +1000,8 @@
    ],
    "zurueck_angemeldet": 0,
    "tag_entfernt": 0,
-   "tag_gesetzt": 1,
-   "abgemeldet": 3,
+   "tag_gesetzt": 0,
+   "abgemeldet": 0,
    "queue_gesperrt": 0,
    "offen": 0,
    "gesperrt": 56
