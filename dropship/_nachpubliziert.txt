@@ -388,3 +388,4 @@ gid://shopify/Product/16654364672391	gestreiftes-langarmshirt-mit-puffarmeln-605
 gid://shopify/Product/16654367359367	sweatshirt-mit-digitaldruck-und-fellkragen-632900	Sweatshirt mit Digitaldruck und Fellkragen
 gid://shopify/Product/16654367392135	easy-fan-wimpernverlangerung-631700	Easy Fan Wimpernverlängerung
 gid://shopify/Product/16654381908359	smarter-ring-fur-prasentationen-604800	Smarter Ring für Präsentationen
+gid://shopify/Product/16655153136007	kleines-nachtlicht-mit-touch-steuerung-usb-609700	Kleines Nachtlicht mit Touch-Steuerung, USB
