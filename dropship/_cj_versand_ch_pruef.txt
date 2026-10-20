@@ -11736,3 +11736,5 @@ wanderschuhe-fur-herren-atmungsaktiv-rutschfes-738ba0	0630312C-602C-47F1-A987-EF
 blauer-casual-denim-kleid-637500	2607070548161638100	16	10.15	ok	landeseite
 wasserdichtes-armband-637800	2604050924251638200	7	6.34	ok	landeseite
 universal-fernbedienung-fur-smart-home-98943d	62A7487F-3C04-4421-B51A-3FB9FC930852	16	6.71	ok	landeseite
+wasserdichte-atmungsaktive-taktikstiefel-herre-0f1b92	286FFF40-2428-43B8-8063-6743652466E2	16	23.50	ok	landeseite
+einseitige-schulter-meerjungfrau-schnitt-636000	2607070542101636600	16	11.23	ok	landeseite
