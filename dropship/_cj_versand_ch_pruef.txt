@@ -11549,3 +11549,4 @@ retro-minimalistische-herrenuhr-mit-gro-em-zif-616300	2604090544241616700	7	6.68
 retro-sport-armbanduhr-herren-kreativ-626900	2604090540561627300	7	6.34	ok	landeseite
 edelstahl-halskette-mit-evil-eye-anhanger-und-639900	2607111144191630500	16	4.71	ok	landeseite
 einfache-herren-armbanduhr-aus-edelstahl-607900	2604060121061608400	7	7.07	ok	landeseite
+vintage-stil-halskette-fur-damen-607000	2607111137221607600	16	4.60	ok	landeseite
