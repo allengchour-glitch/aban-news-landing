@@ -11877,3 +11877,13 @@ sport-taille-rucksack-826624	1770324745024712704	16	8.11	ok	landeseite
 verstellbare-atmungsaktive-brusttasche-furs-la-449664	1768638717989752832	16	8.79	ok	landeseite
 plusch-tier-mit-gerausch-607500	2502190302051607700	16	5.55	ok	landeseite
 multifunktionaler-pflegepinsel-fur-hals-korper-618100	2504030307231619000	16	5.43	ok	landeseite
+multifunktionale-hufttasche-387456	1761927840884330496	16	6.01	ok	landeseite
+reflektierende-laufhufttasche-992960	1751431414660210688	7	7.13	ok	landeseite
+bunte-katze-und-alpaka-spielzeuge-615900	2502130247431616100	16	7.57	ok	landeseite
+herren-zip-verschluss-kurzarm-strickjacke-623500	2606081403541624100	16	9.07	ok	landeseite
+herzformige-gurtel-tasche-retro-656384	1750046720341319680	16	9.47	ok	landeseite
+langlebiges-plusch-spielzeug-600200	2502060058271601000	16	6.01	ok	landeseite
+patriotisches-flaggen-sommerhemd-613300	2606080438181613900	16	8.79	ok	landeseite
+taktischer-huftbeutel-423552	1744270922523086848	16	13.28	ok	landeseite
+automatischer-katzen-kugelspielball-602000	2501300719371602200	7	5.35	ok	landeseite
+herren-taille-bag-multifunktional-800512	1743502455175909376	16	12.21	ok	landeseite
