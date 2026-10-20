@@ -1,7 +1,7 @@
 {
   "_": "Schusswaffen-Zubehör (14.10.2026) — EINE Regel für den Bestand-Wächter (google_sperrliste.ist_schusswaffen_zubehoer, ueberwachung_waffen_guard.py) und die Importer (schusswaffen_zubehoer.mjs → cj_category_fill/cj_sku_import). Treffer = Tag «waffe-pruefen» → raus aus Google und allen Werbe-/Social-Kanälen, der Laden bleibt. Gleichlauf py=js: automation/schusswaffen_zubehoer_gleichlauf_test.mjs. Alle Ausdrücke laufen auf KLEINGESCHRIEBENEM Text; Wortgrenzen sind ausgeschrieben ((?<![a-z0-9äöüß]) … (?![a-z0-9äöüß])), weil \\b in JS ASCII-blind ist (Python: Unicode) — sonst entscheiden Importer und Wächter verschieden. Ablauf: (1) nicht_hart am Titel/Typ → nie. (2) stark in Titel/Typ/Tags → ja; stark nur im CJ-Namen (englisch) → ja, ausser nicht_weich am Titel («Phone Scope Mount» = Handy-Adapter fürs Spektiv). (3) schwach im Titel/CJ-Name UND nicht nicht_weich am Titel UND Waffen-Kontext (kontext in Titel/Typ/Tags/CJ-Name/Text oder text_tragen im Text) → ja. Der Beschreibungstext entscheidet NIE allein — er liefert nur den Kontext für ein mehrdeutiges Titelwort (GEMESSEN 14.10.: «Schiesssport» steht in 15 Rucksack-/Shirt-/Westen-Texten, «Kaliber» in Tassen- und Uhrentexten, «Gun Gray» in Farbangaben). Kein \\\\w/\\\\W/\\\\d/\\\\b in den Ausdrücken (JS ASCII, Python Unicode) — Zeichenklassen ausgeschrieben. NACHBESSERUNG 14.10. (Richter-Befund): (a) stark_en = im CJ-Namen EINDEUTIG (AR-15/AK/Glock, gun|rifle|pistol + case/bag/light/mount/cleaning, Boresight, Magazine Pouch, Muzzle Brake) → ja, AUCH wenn der deutsche Titel nicht_weich trägt («Multifunktions-Schraubenschlüssel» + «AR15 Wrench»); (b) nicht_en = CJ-Name zählt gar nicht (Massage-/Klebe-/Wasser-/Spielzeug-«Gun», Autositz-Organizer); (c) bild_geprueft = am BILD bestimmte Waffenware, deren Titel UND CJ-Name harmlos sind (GEMESSEN 14.10. an 29 CJ-Namen: «Infrared calibrator», «Multifunctional tactical wrench», «Outdoor tactical fishing gear backpack» …) — der Wächter behandelt sie wie Treffer (Tag), draftet nie; bild_ok = am Bild geprüft, keine Waffe; bild_pruefen = Vorauswahl neuer Ware zur Bildprüfung. Ablauf jetzt: nicht_hart → nicht_en (CJ-Name leeren) → stark (Titel/Typ/Tags) → stark_en (CJ-Name) → stark im CJ-Namen ohne nicht_weich → schwach + Kontext.",
-  "stark": "zielfernrohr|picatinny|weaver-?(?:schiene|rail|montage|basis|adapter|mount)|(?<![a-z0-9äöüß])(?:ak-?\\s?(?:47|74)|ar-?\\s?15|m4a1|glock|m-?lok|keymod|kalaschnikow)(?![a-z0-9äöüß])|riflescope|rifle[- ]?scope|(?<![a-z0-9äöüß])scope[- ]?(?:mount|ring|montage|halterung|bracket|base)s?|(?:rifle|gun|weapon|pistol|picatinny|weaver)[- ]?(?:mount|rail|sling|holster|light|laser)|laser-?visier|laser-?zielger[äa]t|laser[- ]?sight|rotpunkt-?visier|reflex-?visier|leuchtpunkt-?visier|red[- ]?dot[- ]?(?:sight|visier)|kimme und korn|bore-?\\s?sight|boresight|einschie(?:ss|ß)-?laser|m[üu]ndungs(?:bremse|feuerd[äa]mpfer|kompensator)|muzzle[- ]?brake|(?<![a-z0-9äöüß])gewehr(?:riemen|tasche|futteral|koffer|rucksack|halterung|lampe|licht|montage|zweibein|schaft|lauf|reinig)|(?<![a-z0-9äöüß])flinten|schusswaffe|feuerwaffe|faustfeuerwaffe|jagdwaffe|waffen(?:holster|riemen|licht|lampe|montage|reinigung|futteral|koffer|tasche|rucksack)|pistolen(?:holster|tasche|halfter|magazin)|magazin(?:tasche|lader|pouch)|(?:pistolen|gewehr|munitions?)magazin|munition|ammunition|(?<![a-z0-9äöüß])ammo(?![a-z0-9äöüß])|patronen(?:gurt|g[üu]rtel|tasche|h[üu]lse|lager)|h[üu]lsenf[äa]nger|(?<![a-z0-9äöüß])(?:bipod|zweibein)(?![a-z0-9äöüß])|(?<![a-z0-9äöüß])(?:rifle|shotgun|handgun|firearm)s?(?![a-z0-9äöüß])|softair-?(?:kugeln|munition|bbs?)|airsoft-?(?:kugeln|munition|bbs?)|taktisch[a-zäöüß]*\\s+(?:outdoor-?)?(?:stativ|zweibein)|taktisch[a-zäöüß]*\\s+(?:modular[a-zäöüß]*\\s+)?schnellverschluss-?adapter|paintball-?(?:kugeln|balls|markierer|marker)|(?:20|21|22)\\s?mm[- ]?(?:schiene|rail|schienenmontage|picatinny)|magazine?[- ]?pouch|(?<![a-z0-9äöüß])mag[- ]?pouch|(?<![a-z0-9äöüß])(?:gun|pistol|shotgun)s?[- ]?(?:case|bag|backpack)",
-  "stark_en": "(?<![a-z0-9äöüß])(?:ak-?\\s?(?:47|74)|ar-?\\s?15|m4a1|glock|kalashnikov)(?![a-z0-9äöüß])|(?<![a-z0-9äöüß])(?:gun|rifle|pistol|shotgun|weapon|firearm)s?[- ]?(?:case|bag|backpack|sling|holster|light|flashlight|torch|mount|rail|laser|cleaning)|bore[- ]?sight|boresight|magazine?[- ]?pouch|(?<![a-z0-9äöüß])mag[- ]?pouch|muzzle[- ]?brake",
+  "stark": "zielfernrohr|picatinny|weaver-?(?:schiene|rail|montage|basis|adapter|mount)|(?<![a-z0-9äöüß])(?:ak-?\\s?(?:47|74)|ar-?\\s?15|m4a1|glock|m-?lok|keymod|kalaschnikow)(?![a-z0-9äöüß])|riflescope|rifle[- ]?scope|(?<![a-z0-9äöüß])scope[- ]?(?:mount|ring|montage|halterung|bracket|base)s?|(?:rifle|gun|weapon|pistol|picatinny|weaver)[- ]?(?:mount|rail|sling|holster|light|laser)|laser-?visier|laser-?zielger[äa]t|laser[- ]?sight|rotpunkt-?visier|reflex-?visier|leuchtpunkt-?visier|red[- ]?dot[- ]?(?:sight|visier)|kimme und korn|bore-?\\s?sight|boresight|einschie(?:ss|ß)-?laser|m[üu]ndungs(?:bremse|feuerd[äa]mpfer|kompensator)|muzzle[- ]?brake|(?<![a-z0-9äöüß])gewehr(?:riemen|tasche|futteral|koffer|rucksack|halterung|lampe|licht|montage|zweibein|schaft|lauf|reinig)|(?<![a-z0-9äöüß])flinten|schusswaffe|feuerwaffe|faustfeuerwaffe|jagdwaffe|waffen(?:holster|riemen|licht|lampe|montage|reinigung|futteral|koffer|tasche|rucksack)|pistolen(?:holster|tasche|halfter|magazin)|magazin(?:tasche|lader|pouch)|(?:pistolen|gewehr|munitions?)magazin|munition|ammunition|(?<![a-z0-9äöüß])ammo(?![a-z0-9äöüß])|patronen(?:gurt|g[üu]rtel|tasche|h[üu]lse|lager)|h[üu]lsenf[äa]nger|(?<![a-z0-9äöüß])(?:bipod|zweibein)(?![a-z0-9äöüß])|(?<![a-z0-9äöüß])(?:rifle|shotgun|handgun|firearm)s?(?![a-z0-9äöüß])|softair-?(?:kugeln|munition|bbs?)|airsoft-?(?:kugeln|munition|bbs?)|taktisch[a-zäöüß]*\\s+(?:outdoor-?)?(?:stativ|zweibein)|taktisch[a-zäöüß]*\\s+(?:modular[a-zäöüß]*\\s+)?schnellverschluss-?adapter|paintball-?(?:kugeln|balls|markierer|marker)|(?:20|21|22)\\s?mm[- ]?(?:schiene|rail|schienenmontage|picatinny)|magazine?[- ]?pouch|(?<![a-z0-9äöüß])mag[- ]?pouch|(?<![a-z0-9äöüß])(?:gun|pistol|shotgun)s?[- ]?(?:case|bag|backpack)|zielklammer|optisch(?:es|en)\\s+visier|zielvorrichtung|(?<![a-z0-9äöüß])(?:machine|iron)[- ]?sights?(?![a-z0-9äöüß])|(?<![a-z0-9äöüß])sight[- ]?rings?(?![a-z0-9äöüß])|chest[- ]?rig[^.!?]{0,80}(?:magazin|mag[- ]?pouch)",
+  "stark_en": "(?<![a-z0-9äöüß])(?:ak-?\\s?(?:47|74)|ar-?\\s?15|m4a1|glock|kalashnikov)(?![a-z0-9äöüß])|(?<![a-z0-9äöüß])(?:gun|rifle|pistol|shotgun|weapon|firearm)s?[- ]?(?:case|bag|backpack|sling|holster|light|flashlight|torch|mount|rail|laser|cleaning)|bore[- ]?sight|boresight|magazine?[- ]?pouch|(?<![a-z0-9äöüß])mag[- ]?pouch|muzzle[- ]?brake|(?<![a-z0-9äöüß])(?:machine|iron)[- ]?sights?(?![a-z0-9äöüß])|(?<![a-z0-9äöüß])sight[- ]?rings?(?![a-z0-9äöüß])",
   "schwach": "holster|halfter|magazin|taktisch|tactical|airsoft|softair|paintball|laser|(?<![a-z0-9äöüß])scope(?![a-z0-9äöüß])|(?<![a-z0-9äöüß])mount(?![a-z0-9äöüß])|montage|halterung|schiene|(?<![a-z0-9äöüß])rail(?![a-z0-9äöüß])|schalld[äa]mpfer|silencer|suppressor|(?<![a-z0-9äöüß])sling(?![a-z0-9äöüß])|riemen|(?<![a-z0-9äöüß])gun(?![a-z0-9äöüß])",
   "kontext": "(?<![a-z0-9äöüß-])pistolen?(?![a-z0-9äöüß-])|(?<![a-z0-9äöüß])revolver(?!-?(?:loch|zange|kopf|bohr|held))|(?<![a-z0-9äöüß])gewehr|flinte|schusswaffe|feuerwaffe|jagdwaffe|(?<![a-z0-9äöüß])(?:ak-?\\s?(?:47|74)|ar-?\\s?15|glock|m4a1)(?![a-z0-9äöüß])|munition|kaliber\\s?\\.?[0-9]{2,3}(?![0-9,]*\\s?(?:cm|mm))|(?<![a-z0-9äöüß])9\\s?mm\\s?(?:para|luger)|picatinny|weaver|zielfernrohr|schnittstelle[^a-z0-9äöüß]{0,3}(?:20|21|22)\\s?mm|(?:20|21|22)\\s?mm[- ](?:schiene|rail)|(?<![a-z0-9äöüß])(?:rifle|pistol|handgun|firearm|shotgun)s?(?![a-z0-9äöüß])|verstecktes?\\s+holster|verdecktes?\\s+(?:tragen|holster)|concealed[- ]carry|waffenholster|schulterholster|achselholster|(?<![a-z0-9äöüß])(?:iwb|owb)(?![a-z0-9äöüß])|zielger[äa]t|zielvorrichtung|zielhilfe|infrarot-?ziel|laser-?ziel",
   "kontext_kopf": "airsoft|softair|paintball-?(?:markierer|marker|gun)",
@@ -23,11 +23,39 @@
     "16608485638535": "Laser-Einschiessgerät (Box «Laser bore sighter», Kaliber-Adapter, Zielscheiben) — Titel «Infrarot-Kalibrator», CJ «Infrared calibrator»; Klasse 06.10. (ohhunt) → Draft-Kandidat",
     "16606107337095": "1-Zoll-Ring auf Schienenklemme (Lampen-/Zielfernrohr-Montage) — Titel «Aluminium-Schienenhalter 25,4 mm», CJ «… Rail … Scope Bracket 20mm»",
     "16609856192903": "Laufklemme (Offset) für Lampe/Laser + Bild 2 Zielfernrohrringe mit Schienenfuss — Titel «8-förmige Rohrschelle aus Aluminium», CJ «8-shaped clamp pipe clamp»",
-    "15462220595585": "KEINE Schusswaffe: Kettenwaffe mit zwei 29-cm-Speerspitzen, CJ «Stainless Steel Nunchaku Chain Gun» — Tag nur bis zum Draft-Entscheid (heikel_zweck-Klasse)"
+    "15462220595585": "KEINE Schusswaffe: Kettenwaffe mit zwei 29-cm-Speerspitzen, CJ «Stainless Steel Nunchaku Chain Gun» — Tag nur bis zum Draft-Entscheid (heikel_zweck-Klasse)",
+    "16638858985863": "Zielfernrohr-Ringe (30 mm) mit Gewehr, Zielfernrohr und Patronen im Hauptbild — Titel «Zielklammer für optisches Visier» (Runde 20.10.)",
+    "16638857838983": "Klappbare Gewehr-Visiere (FAB RBS Nylon Folding Machine Sight, Bildbeschriftung) — Titel «dekorative schräge Zielvorrichtung» (Runde 20.10.)",
+    "16644770201991": "Chest-Rig mit AK/AR- und 9-mm-Magazintaschen (Bildtext Bild 5), Holster — Titel «Leichte taktische Brusttasche» (Runde 20.10.)",
+    "16644640342407": "Chest-Rig (D3CRM VE-87, Magazin im Frontfach, Multicam) — Titel «Taktische Weste aus Cordura» (Runde 20.10.)",
+    "16644312498567": "Plattenträger-Weste mit drei Gewehrmagazin-Taschen vorn (MOLLE) — Titel «Taktische Weste – Oxford-Stoff» (Runde 20.10.)"
   },
   "bild_ok": {
     "16616502755719": "Funkgeräte-Brustgeschirr (Bild 2: Walkie-Talkie im Fach), kein Holster — CJ «Outdoor chest bag»",
-    "15449070731649": "Umhängetasche mit Klett-Innenwand, kein Waffenbezug im Bild (Bild 2: Zipper-Griff) — CJ «… Crossbody Shoulder Bag»"
+    "15449070731649": "Umhängetasche mit Klett-Innenwand, kein Waffenbezug im Bild (Bild 2: Zipper-Griff) — CJ «… Crossbody Shoulder Bag»",
+    "16639490916743": "Rucksack/Tasche ohne Waffenbezug im Bild (Kontaktbogen 20.10.): Taktischer Camouflage-Reiserucksack 36-55 L",
+    "16639733105031": "Rucksack/Tasche ohne Waffenbezug im Bild (Kontaktbogen 20.10.): 50 L Militärtaktischer Rucksack",
+    "16640382665095": "Rucksack/Tasche ohne Waffenbezug im Bild (Kontaktbogen 20.10.): Militärrucksack",
+    "16640389513607": "Rucksack/Tasche ohne Waffenbezug im Bild (Kontaktbogen 20.10.): Tactical Dragon Egg Rucksack",
+    "16642123891079": "Rucksack/Tasche ohne Waffenbezug im Bild (Kontaktbogen 20.10.): Taktischer Outdoor-Rucksack 20–35 L",
+    "16643485139335": "Rucksack/Tasche ohne Waffenbezug im Bild (Kontaktbogen 20.10.): Taktische Outdoor-Rucksack für Männer",
+    "16643486515591": "Rucksack/Tasche ohne Waffenbezug im Bild (Kontaktbogen 20.10.): Taktischer Outdoor-Rucksack für Männer",
+    "16644166386055": "Rucksack/Tasche ohne Waffenbezug im Bild (Kontaktbogen 20.10.): Taktischer Outdoor-Rucksack in Schwarz",
+    "16644212162951": "Rucksack/Tasche ohne Waffenbezug im Bild (Kontaktbogen 20.10.): Wasserdichter taktischer Outdoor-Rucksack",
+    "16644220518791": "Rucksack/Tasche ohne Waffenbezug im Bild (Kontaktbogen 20.10.): Canvas Crossbody Bag in Militärgrün",
+    "16644308271495": "Rucksack/Tasche ohne Waffenbezug im Bild (Kontaktbogen 20.10.): Multifunktionaler Militär-Rucksack 45 L",
+    "16644768366983": "Rucksack/Tasche ohne Waffenbezug im Bild (Kontaktbogen 20.10.): Taktischer Rucksack für Outdoor-Sport",
+    "16644772954503": "Rucksack/Tasche ohne Waffenbezug im Bild (Kontaktbogen 20.10.): Wasser- und verschleissfester taktischer Rucksack 20-35 L",
+    "16645895913863": "Rucksack/Tasche ohne Waffenbezug im Bild (Kontaktbogen 20.10.): Taschenrucksack 10L, 20L, 30L – Army Green",
+    "16646487769479": "Rucksack/Tasche ohne Waffenbezug im Bild (Kontaktbogen 20.10.): Taktischer Messenger Rucksack für Outdoor",
+    "16646488719751": "Rucksack/Tasche ohne Waffenbezug im Bild (Kontaktbogen 20.10.): Molle3 Days Militär-Rucksack 36-55 L",
+    "16647594967431": "Rucksack/Tasche ohne Waffenbezug im Bild (Kontaktbogen 20.10.): Taktischer Rucksack Camouflage mit Oxford-Material",
+    "16649049833863": "Streetwear-Brusttasche für Handy/Karte, keine Magazintaschen (Bilder 1–5, 20.10.)",
+    "16649267347847": "Rucksack/Tasche ohne Waffenbezug im Bild (Kontaktbogen 20.10.): Taktischer Rucksack mit grosser Kapazität",
+    "16651945148807": "Rucksack/Tasche ohne Waffenbezug im Bild (Kontaktbogen 20.10.): Taktische Umhängetasche für Outdoor-Sport",
+    "16638072816007": "Rucksack/Tasche ohne Waffenbezug im Bild (Kontaktbogen 20.10.): Taktischer Rucksack für Outdoor",
+    "16638859084167": "VR-Controller-Griffhalter in Pistolenform (bunt, Plastik, Spielzubehör), keine Waffe (20.10.)",
+    "16644312400263": "Lauf-/Reise-Brusttasche (Cordura, Karabiner), keine Magazintaschen (20.10.)"
   },
   "bild_pruefen": {
     "_": "Text sieht diese Ware nicht (gemessen 14.10.: auch der CJ-Name ist harmlos). Neue aktive Produkte NACH «ab» mit Wort UND Ding in Titel/CJ-Name (und ohne nicht_hart) kommen in dropship/_waffen_bild_pruefen.json zur Bildprüfung (python3 automation/bild_kontaktbogen_liste.py dropship/_waffen_bild_pruefen.json waffen). Entscheid danach: bild_geprueft (Waffe → Tag) oder bild_ok (keine Waffe). Der Bestand bis «ab» wurde am 14.10. am Bild geprüft (1'735 Bilder Richter + 428 Bauer + 47 Nachbesserung).",
@@ -1034,6 +1062,86 @@
       [],
       "",
       "Magnetic Quick Release Holster For Men Fast Release Crossbody Shoulder Bag In Oxford Cloth",
+      false
+    ],
+    [
+      "30 mm Ultra-Low Zielklammer für optisches Visier",
+      "Elektronik",
+      [],
+      "",
+      "",
+      true
+    ],
+    [
+      "FAB RBS dekorative schräge Zielvorrichtung",
+      "Elektronik",
+      [],
+      "",
+      "",
+      true
+    ],
+    [
+      "Halterungsset für Modellbau",
+      "Elektronik",
+      [],
+      "",
+      "FAB RBS Nylon Folding Machine Sight",
+      true
+    ],
+    [
+      "Skihelm mit Visier für Erwachsene",
+      "Sport & Outdoor",
+      [],
+      "",
+      "",
+      false
+    ],
+    [
+      "Helm SWAT mit Visier für Kinder",
+      "Spielzeug",
+      [],
+      "",
+      "",
+      false
+    ],
+    [
+      "Crossbody Chest Bag für Herren",
+      "Taschen",
+      [],
+      "",
+      "Men's crossbody chest bag",
+      false
+    ],
+    [
+      "Motorradhelm Visier klar",
+      "Sport & Outdoor",
+      [],
+      "",
+      "Helmet visor shield",
+      false
+    ],
+    [
+      "Zielklammer Set 25,4 mm",
+      "Werkzeug & Heimwerken",
+      [],
+      "",
+      "",
+      true
+    ],
+    [
+      "Chest Rig mit Platz für Magazine",
+      "Taschen",
+      [],
+      "",
+      "",
+      true
+    ],
+    [
+      "Chest Rig Brustgeschirr für Hunde",
+      "Haustier",
+      [],
+      "",
+      "",
       false
     ]
   ]

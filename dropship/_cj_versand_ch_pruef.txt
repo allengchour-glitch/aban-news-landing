@@ -11899,3 +11899,4 @@ outdoor-aufbewahrungstasche-145472	1716733247918448640	16	7.13	ok	landeseite
 elektrisches-schwein-katzen-spielzeug-mit-soun-603500	2508130713521603700	7	6.31	ok	landeseite
 schwarzes-hemd-616700	2606030848001617400	16	8.11	ok	landeseite
 outdoor-trainingsmaske-staub-neblig-226048	1385848618338095104	16	5.12	ok	landeseite
+taktischer-huftgurt-997440	1714195459503300608	16	8.79	ok	landeseite
