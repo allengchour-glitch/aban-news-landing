@@ -11431,3 +11431,14 @@ cycling-legbag-637300	2512190706261637800	16	8.39	ok	landeseite
 nymphen-gewebe-kreativ-fur-buhnenverzierung-918976	1728970459342970880	16	5.55	ok	landeseite
 weite-damenhosen-mit-stretch-623000	2604140838551623500	16	11.00	ok	landeseite
 herren-leder-schultertasche-casual-stilvoll-621600	2512180056481621800	16	9.61	ok	landeseite
+sommer-jeans-damen-622100	2604140835381622600	16	9.31	ok	landeseite
+mannliche-manschettenknopfe-mit-schale-123904	1718865526266535936	16	5.12	ok	landeseite
+retro-hose-straight-leg-611300	2604120833261611700	16	13.40	ok	landeseite
+manner-echtleder-umhangetasche-grosser-fassung-633400	2512120932501633800	11	32.26	ok	landeseite
+wasserdichter-pu-bag-herren-grosser-inhalt-617700	2512100149221617900	16	9.33	ok	landeseite
+premium-leder-crossbody-tasche-632300	2512090152411632500	16	18.01	ok	landeseite
+herren-casual-einzeltrage-tasche-wasserabweise-616700	2512081040111616900	16	10.29	ok	landeseite
+verlustsicherer-hundehalsband-638700	2512200801311639200	16	11.37	ok	landeseite
+leichte-reise-umhangetasche-fur-bequemes-verst-610100	2512080950231610500	16	7.43	ok	landeseite
+retro-pu-schultertasche-herren-gro-volumen-619100	2512050545301619300	16	9.88	ok	landeseite
+herren-gurtel-mit-tasche-622700	2512050525181623000	16	6.43	ok	landeseite
