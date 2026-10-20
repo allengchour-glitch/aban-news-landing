@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 10:11 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 11:14 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 217 · **99 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 71, teilweise: 20, keine: 8; Preisspanne > 2×: 19) · 1 CJ-Variante: 118 · ohne Antwort: 0
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 212 · **94 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 66, teilweise: 20, keine: 8; Preisspanne > 2×: 18) · 1 CJ-Variante: 118 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -28,7 +28,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | LED Schmuck-Geschenkbox (`led-schmuck-geschenkbox-608700`) | 18 | 13 | 2.63–3.68 | 15.90 | White-Single seam ring box, White-Double stitched ring box, White-Earring Box, White-Necklace Box |
 | Korrektur-Gurt für Kinder (`korrektur-gurt-fur-kinder-555136`) | 18 | 18 | 5.24–5.24 | 24.90 | Blue-Adult models-L, Blue-Adult models-M, Blue-Adult models-S, Blue-Childrens-L |
 | Aroma Diffuser Holzoptik 400ml – Ultraschall Luftbefeuchter mit 7 LED-Farben (`aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben`) | 16 | 0 | 13.38–16.35 | 44.90 | Deep wood grain-EU, Deep wood grain-US WiFi, Deep wood grain-UK, Deep wood grain-EU WiFi |
-| Primer & Sealer Set für Gelnägel (`primer-sealer-set-fur-gelnagel-711296`) | 16 | 16 | 30.21–34.79 | 56.90 | White-10PCS, Black-10PCS, Red-10PCS, Pink-10PCS |
 | Esszimmerstuhlhusse – Niedriger Rücken, Stretch (`esszimmerstuhlhusse-niedriger-rucken-stretch-823040`) | 14 | 10 | 4.29–4.29 | 16.90 | Fruit green, Orange, Light khaki, Light grey |
 | Klassische Herren-Armbanduhr (`klassische-herren-armbanduhr-780416`) | 14 | 11 | 16.62–16.62 | 32.90 | Silver White, Silver Black, Silver Blue, Room Gold White |
 | Edelstein-Bauklötze aus Holz und Acryl (`edelstein-bauklotze-aus-holz-und-acryl-812480`) | 13 | 13 | 7.12–37.84 | 26.90 | 15Grain octagon, 25Grain octagon, Sixty grains of acrylic, 20grains of acrylic10trans |
@@ -63,13 +62,11 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Webteppich mit Leoparden-Motiv (`sofabett-mit-modernem-muster-617500`) | 6 | 6 | 5.51–9.12 | 28.90 | Earrings Girl-130x160cm, Female Newspaper Reader-130x160cm, Pink Panther-130x160cm, Shell-130x160cm |
 | Solar-Gartenlampe Ente (`solar-gartenlampe-ente-616300`) | 6 | 6 | 6.4–6.4 | 26.90 | LD055Style, BY25111Style, LD071Style, LD072Style |
 | Dekorative Leinwandbilder Set – 3-teilige Wandkunst (`dekorative-leinwandbilder-set-3-teilige-wandku-604600`) | 6 | 6 | 12.74–14.53 | 33.90 | Type A-30X40cm, Type A-40X60cm, Type B-30X40cm, Type B-40X60cm |
-| Jeans-Schürze für Erwachsene (`jeans-schurze-fur-erwachsene-400448`) | 6 | 6 | 5.47–5.47 | 24.90 | Black With Yellow-Adult Style Length 75CM, Black With Yellow-Children's 47cm Long, Black With Yellow-Children's 57cm Long, Black With Blue-Adult Style Length 75CM |
 | Reise-Rucksack 20–35 L mit Schuhfach (`reise-rucksack-20-35-l-mit-schuhfach-615800`) | 6 | 6 | 17.61–17.61 | 44.90 | Cheese White, Classic Black, Mint Green, Galactic Gray |
 | Duschkopf mit Wassersparfunktion und Ventilator (`duschkopf-mit-wassersparfunktion-und-ventilato-030400`) | 6 | 6 | 3.22–9.55 | 22.90 | Adjustable gold-A Pack, Adjustable gold-B Pack, Adjustable gold-C Pack, Adjustable gold-Set |
 | Bestickter Vorhang mit Lichtdurchlass (`bestickter-vorhang-mit-lichtdurchlass-67cd53`) | 6 | 0 | 2.46–2.97 | 21.90 | Coffee-Four claws-Q1M, Blue-Four claws-Q1M, White-Four claws-Q1M, White-Punch-Q1M |
 | 5-Panel Cap «Sprint» · Nylon Schwarz (`5-panel-cap-sprint-nylon-schwarz`) | 6 | 4 | 2.13–2.13 | 27.90 | Black, Grey, Khaki, Army green |
 | Leichter Schulrucksack mit Print (`leichter-schulrucksack-mit-print-612500`) | 5 | 5 | 7.13–7.13 | 26.90 | Black Smiley Face-48x33x20cm, Gray Smiley-48x33x20cm, Pink Smiley Face-48x33x20cm, White-48x33x20cm |
-| Photonen-Hautverjüngungsgerät mit Mikrostrom (`photonen-hautverjungungsgerat-mit-mikrostrom-604400`) | 5 | 5 | 12.44–18.08 | 32.90 | MRY22020 Electrodeless-Natural Jade Beauty Device, MRY22020SEMS Silver Electrode-Natural Jade Beauty Device, MRY22020SEMS Gold Electrode-Natural Jade Beauty Device, MRY22021SEMS Silver Electrode-Natural Jade Beauty Device |
 | Ballet Samt-Rouge (`ballet-samt-rouge-384704`) | 5 | 5 | 15.11–15.11 | 35.90 | 01Swan Snow, 02Romanticism, 03Soft Silk Ribbon, 04Golden peach velvet |
 | Gänsedaunenkissen – Füllung für Kissenhüllen (`gansedaunenkissen-fullung-fur-kissenhullen-520f50`) | 5 | 5 | 2.74–7.41 | 27.90 | White-75x50cm, White-74x48cm, White-45x45cm, White-50x50cm |
 | Aromadiffusor Holzmaserung (`aroma-diffuser-holzoptik-hohl-design-ultraschall-luftbefeuchter-mit-led-licht`) | 4 | 4 | 13.86–14.12 | 44.90 | Light wood grain-AU, Light wood grain-UK, Light wood grain-US, Light wood grain-EU |
@@ -77,9 +74,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Handkurbel-Schäler für Äpfel und Birnen (`handkurbel-schaler-fur-apfel-und-birnen-5235a8`) | 4 | 2 | 2.3–4.34 | 23.90 | Black gold, Set, White With Fruit Cutter, 8Generation With Fruit Cutter |
 | Japanischer Schulrucksack mit hoher Kapazität (`japanischer-schulrucksack-mit-hoher-kapazitat-244608`) | 4 | 2 | 5.47–5.47 | 24.90 | Black Send Acrylic Chain, White With Acrylic Free Chain, Blue With Acrylic Free Chain, Yellow With Acrylic Chain |
 | Kreuz-Halskette Gold · Edelstahl-Anhänger (`kreuz-halskette-gold-edelstahl`) | 4 | 3 | 1.06–1.68 | 15.90 | Gold-Stainless Steel Gold Plated-55cm, Gold-Stainless Steel Gold Plated-60cm, Silver-Stainless Steel Gold Plated-55cm, Silver-Stainless Steel Gold Plated-60cm |
-| Gesichtsreinigungsbürste mit Wireless Charging (`gesichtsreinigungsburste-mit-wireless-charging-1c8c0e`) | 4 | 4 | 28.62–28.62 | 50.90 | Purple, Blue, Pink, Cyan |
 | 10-teiliges Badset aus Baumwolle (`10-teiliges-badset-aus-baumwolle-620600`) | 4 | 4 | 20.28–22.22 | 41.90 | Gray Green-120X70CM, WHITE-120X70CM, Blue-120X70CM, Grey-120X70CM |
-| Faden-Gel für Nageldesign (Spider-Gel) (`nageldesign-faden-gel-371136`) | 4 | 4 | 4.78–9.71 | 24.90 | TZLXJCS, TZLXJBJ, TZLXJYG, TZLXJCSBJ |
 | Vorratsbox für Getreide (`vorratsbox-fur-getreide-8f38c8`) | 4 | 0 | 2.3–5.03 | 21.90 | Gray, White Quartile 2.8L, White, Grey Quartile 2.8L |
 | Silikon-Eiswürfelform für 36 Würfel (`silikon-eiswurfelform-fur-36-wurfel-bf7780`) | 4 | 4 | 4.03–24.78 | 23.90 | Blue-2pc, Blue-6pc, Blue-1pc, Blue-4pc |
 | Retro Magnetarmband aus rotem Bronze (`retro-magnetarmband-aus-rotem-bronze-628600`) | 4 | 4 | 2.76–7.72 | 21.90 | Red Bronze, Red Bronze set, Bronze Oval Turquoise, 43SSJCRed |
