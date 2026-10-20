@@ -371,3 +371,4 @@ gid://shopify/Product/15485736092033	draft-ausverkauft	Dinosaurier-Skelett Kost√
 gid://shopify/Product/15495593689473	draft-ausverkauft	Seidenkissenbezug, doppelseitig
 gid://shopify/Product/15496392540545	draft-ausverkauft	Herren-Sneaker mit Elastikband
 gid://shopify/Product/15448033001857	reaktiviert	Samt-Shirt mit Wasserfallausschnitt
+gid://shopify/Product/15469969146241	draft-ausverkauft	Schwingerhose
