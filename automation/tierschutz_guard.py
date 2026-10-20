@@ -142,6 +142,29 @@ def main():
             time.sleep(0.5)
         time.sleep(0.5)
 
+    # 20.10.2026: ZWEITER, unabhängiger Weg. Die Stichwort-Suche oben fand «Sichere Hundehalsband mit Stimulationskette» (Stachelhalsband,
+    # aktiv seit der Rückholung vom 07.09., in 7 Kanälen) nicht — Ursache der Lücke nicht geklärt (Volltext-Index/Relevanz). Das Muster
+    # `stachel-wuerge-halsband` trifft den Titel; also zusätzlich ALLE aktiven Titel des Voll-Exports durch dieselbe Funktion schicken
+    # (Export < 36 h alt; fehlt er, bleibt es beim alten Weg — kein Fehler).
+    for pfad in (os.environ.get('EXPORT') or '/tmp/export.jsonl',):
+        try:
+            if os.path.exists(pfad) and time.time() - os.path.getmtime(pfad) < 36 * 3600:
+                n_exp = 0
+                for z in open(pfad, encoding='utf-8'):
+                    try:
+                        q = json.loads(z)
+                    except ValueError:
+                        continue
+                    n_exp += 1
+                    if q.get('status') != 'ACTIVE' or q['id'] in gesehen or any(t in (q.get('tags') or []) for t in TAGS):
+                        continue
+                    hit = tierschutz_geraet(q.get('title'), '')
+                    if hit:
+                        gesehen[q['id']] = 1
+                        funde.append(({'id': q['id'], 'title': q.get('title') or ''}, hit, []))
+                print(f'Voll-Export {pfad}: {n_exp} Zeilen nach Titel geprüft')
+        except OSError:
+            pass
     print(f'{len(gesehen)} aktive Produkte seit {seit} geprüft, {len(funde)} Befunde')
     for p, hit, kan in funde:
         pid = p['id'].split('/')[-1]

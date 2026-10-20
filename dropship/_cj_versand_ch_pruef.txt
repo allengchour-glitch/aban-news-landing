@@ -11531,3 +11531,5 @@ ultra-leicht-mountainbike-helm-terrain-457728	1380371657700544512	16	11.70	ok	la
 woll-laufschuhe-fur-kinder-684032	1667491717886513152	16	9.75	ok	landeseite
 fahrradhelm-mit-sonnenschutz-und-rucklicht-375232	1378297215851827200	16	7.99	ok	landeseite
 holz-tray-oval-japanischer-stil-610100	2407310304151610300	16	9.61	ok	landeseite
+bike-ruckenfach-doppelgurteltasche-938880	1376869862193893376	16	14.96	ok	landeseite
+kinderstrand-schuhe-727872	1647172553603031040	16	9.20	ok	landeseite
