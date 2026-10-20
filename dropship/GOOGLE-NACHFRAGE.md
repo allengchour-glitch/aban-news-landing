@@ -1,6 +1,6 @@
-# Google-Nachfrage: verschwundene Produkte — Stand 2026-10-18T23:27Z (120 Tage)
+# Google-Nachfrage: verschwundene Produkte — Stand 2026-10-20T00:35Z (120 Tage)
 
-Produkte mit Google-Besuch: 207 · heute nicht mehr bei Google: 61 · mit aktivem Ersatz: 8 · **ohne Ersatz: 53** (davon mit Warenkorb 11, behebbar 14)
+Produkte mit Google-Besuch: 207 · heute nicht mehr bei Google: 62 · mit aktivem Ersatz: 8 · **ohne Ersatz: 54** (davon mit Warenkorb 10, behebbar 14)
 
 Quelle: ShopifyQL (utm_campaign = sag_organic + Google-Suche ohne utm, nur Menschen). Regel: `automation/google_nachfrage_wache.py`. Nichts wird geändert — die Liste ist die Arbeitsliste.
 
@@ -14,7 +14,6 @@ Quelle: ShopifyQL (utm_campaign = sag_organic + Google-Suche ohne utm, nur Mensc
 | 1 | 1 | 1 | Schlauchboot «Intex Excursion 5» · 5 Personen, 366 cm (`schlauchboot-intex-excursion-5-5-personen-366-cm`) | DRAFT, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |
 | 1 | 1 | 0 | Rollstuhl für Hunde mit Hinterbein-Lähmung (`rollstuhl-fur-hunde-mit-hinterbein-lahmung-629100`) | DRAFT, nicht im Google-Kanal | nicht in die Schweiz lieferbar | — |
 | 1 | 1 | 0 | Elektrischer Fleischwolf 5L – Küchenmaschine (`elektrischer-fleischwolf-5l-kuchenmaschine-656962`) | DRAFT, nicht im Google-Kanal | nicht in die Schweiz lieferbar | — |
-| 1 | 1 | 0 | Chiffon-Stola «Soirée» · Eleganter Abend-Schal (`chiffon-stola-soiree-eleganter-abend-schal`) | DRAFT, nicht im Google-Kanal | ohne Lieferant → Lieferant suchen | — |
 | 1 | 1 | 0 | Smartes Raumklima: Kraftvolle Kühlung, einfach per App! (`smartes-raumklima-kraftvolle-kuhlung-einfach-per-a-1194795`) | DRAFT, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |
 | 1 | 1 | 0 | U-förmiges Schwangerschaftskissen aus Eisseide (`u-formiges-schwangerschaftskissen-aus-eisseide-004544`) | DRAFT, nicht im Google-Kanal | Verlust → Preis/EK prüfen | `u-formiges-schwangerschaftskissen-679488` Zwilling (Ähnlichkeit 0.67) |
 | 1 | 1 | 0 | Warmer Campingschlafsack – Für kühle Nächte bis -8°C! (`warmer-campingschlafsack-fur-kuhle-nachte-bis-8-c-815094`) | DRAFT, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |
@@ -45,10 +44,12 @@ Quelle: ShopifyQL (utm_campaign = sag_organic + Google-Suche ohne utm, nur Mensc
 | 1 | 0 | 0 | Effiziente Mobil-Klima: Frische für Ihr Zuhause! (`effiziente-mobil-klima-frische-fur-ihr-zuhause-565413`) | DRAFT, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |
 | 1 | 0 | 0 | Schlauchboot «Intex Challenger 3» · 3 Personen, 295 cm (`schlauchboot-intex-challenger-3-3-personen-295-cm`) | DRAFT, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |
 | 1 | 0 | 0 | Trinkbrunnen für Haustiere InnovaGoods · Generalüberholt (No (`trinkbrunnen-fur-haustiere-innovagoods-gener-v0800005`) | DRAFT, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |
-| 1 | 0 | 0 | Strand-Sandalen «Dorée» · Metallic-Riemchen, Flach (`strand-sandalen-doree-metallic-riemchen-flach`) | DRAFT, nicht im Google-Kanal | Saison (Sommerware) | — |
 | 1 | 0 | 0 | Lidschatten Deborah Nº 05 (`lidschatten-deborah-n-05-bb265249`) | DRAFT, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |
+| 1 | 0 | 0 | Strand-Sandalen «Dorée» · Metallic-Riemchen, Flach (`strand-sandalen-doree-metallic-riemchen-flach`) | DRAFT, nicht im Google-Kanal | Saison (Sommerware) | — |
 | 1 | 0 | 0 | Galaxy Aurora LED-Projektor 360° · Sternenhimmel & Nordlicht (`galaxy-aurora-led-projektor-360-sternenhimmel`) | DRAFT, nicht im Google-Kanal | ohne Lieferant → Lieferant suchen | — |
 | 1 | 0 | 0 | Signet-Ring · Edelstahl matt gebürstet Unisex (`signet-ring-edelstahl-matt-geburstet-unisex`) | DRAFT, nicht im Google-Kanal | ohne Lieferant → Lieferant suchen | `siegelring-marmor-gold` Weiterleitung |
+| 1 | 0 | 0 | Schwingerhose (`schwingerhose-fgahb2887ml`) | ACTIVE, nicht im Google-Kanal | bewusst nicht bei Google (Kostüm) | — |
+| 1 | 0 | 0 | PGM Golfschläger (Holz) für Damen und Herren (`pgm-golfschlager-holz-fur-damen-und-herren-604000`) | DRAFT, nicht im Google-Kanal | Grund unbekannt (kein Grund-Tag) | — |
 | 1 | 0 | 0 | Damenuhr Bellevue B39 (Ø 35 mm) (`damenuhr-bellevue-b39-35-mm-295895`) | DRAFT, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |
 | 1 | 0 | 0 | Herrensonnenbrille Timberland · Modell 317884 (`herren-sonnenbrille-robuster-schutz-fur-starke-man-80688`) | DRAFT, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |
 | 1 | 0 | 0 | Tennis-Armband Zirkonia · 316L Edelstahl (`tennis-armband-zirkonia-316l-edelstahl`) | DRAFT, nicht im Google-Kanal | ohne Lieferant → Lieferant suchen | `tennis-armband-aus-edelstahl-mit-zirkonia-637` Weiterleitung |

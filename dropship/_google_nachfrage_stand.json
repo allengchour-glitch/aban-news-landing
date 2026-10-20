@@ -1,11 +1,11 @@
 {
- "stand": "2026-10-18T23:27Z",
+ "stand": "2026-10-20T00:35Z",
  "tage": 120,
  "mit_nachfrage": 207,
- "weg": 61,
+ "weg": 62,
  "ersatz": 8,
- "ohne_ersatz": 53,
- "ohne_ersatz_korb": 11,
+ "ohne_ersatz": 54,
+ "ohne_ersatz_korb": 10,
  "behebbar": 14,
  "zeilen": [
   {
@@ -134,22 +134,6 @@
    ],
    "grund": "nicht in die Schweiz lieferbar",
    "behebbar": false,
-   "ersatz": null,
-   "ersatz_art": ""
-  },
-  {
-   "handle": "chiffon-stola-soiree-eleganter-abend-schal",
-   "titel": "Chiffon-Stola «Soirée» · Eleganter Abend-Schal",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 1,
-   "kauf": 0,
-   "quelle": [
-    "Gratis-Eintrag"
-   ],
-   "grund": "ohne Lieferant → Lieferant suchen",
-   "behebbar": true,
    "ersatz": null,
    "ersatz_art": ""
   },
@@ -634,22 +618,6 @@
    "ersatz_art": ""
   },
   {
-   "handle": "strand-sandalen-doree-metallic-riemchen-flach",
-   "titel": "Strand-Sandalen «Dorée» · Metallic-Riemchen, Flach",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 0,
-   "kauf": 0,
-   "quelle": [
-    "Google-Suche"
-   ],
-   "grund": "Saison (Sommerware)",
-   "behebbar": false,
-   "ersatz": null,
-   "ersatz_art": ""
-  },
-  {
    "handle": "lidschatten-deborah-n-05-bb265249",
    "titel": "Lidschatten Deborah Nº 05",
    "status": "DRAFT",
@@ -661,6 +629,22 @@
     "Google-Suche"
    ],
    "grund": "Lieferant beendet (BigBuy)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "strand-sandalen-doree-metallic-riemchen-flach",
+   "titel": "Strand-Sandalen «Dorée» · Metallic-Riemchen, Flach",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Saison (Sommerware)",
    "behebbar": false,
    "ersatz": null,
    "ersatz_art": ""
@@ -696,6 +680,38 @@
    "behebbar": true,
    "ersatz": "siegelring-marmor-gold",
    "ersatz_art": "Weiterleitung"
+  },
+  {
+   "handle": "schwingerhose-fgahb2887ml",
+   "titel": "Schwingerhose",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "bewusst nicht bei Google (Kostüm)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "pgm-golfschlager-holz-fur-damen-und-herren-604000",
+   "titel": "PGM Golfschläger (Holz) für Damen und Herren",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
   },
   {
    "handle": "damenuhr-bellevue-b39-35-mm-295895",
