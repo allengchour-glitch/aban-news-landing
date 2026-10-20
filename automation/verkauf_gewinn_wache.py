@@ -131,10 +131,15 @@ def main():
             with open(LEDGER, "a", encoding="utf-8") as f:
                 for z in zs:
                     f.write(f"{heute}\t{z['sku']}\t{z['alt']:.2f}\t{z['neu']:.2f}\t{z['ek']:.2f}\t{z['ziel']:.2f}\t{z['versand']:.2f}\n")
-    with open(STAND, "w", encoding="utf-8") as f:
-        json.dump({"stand": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="minutes"),
-                   "verkaufte_varianten": len(varianten), "zu_heben": len(plan), "geaendert": geaendert,
-                   "ohne_ek": ohne_ek[:20], "ohne_ek_anzahl": len(ohne_ek), "dry": DRY}, f, ensure_ascii=False, indent=1)
+    # 20.10.2026: «offen» = was NACH dem Lauf noch unter Ziel liegt (nicht geschrieben/Schreibfehler), NIE die Planlänge — die
+    # Ampel druckte `zu_heben` als «offen», obwohl die eine Variante längst auf Ziel stand («1 angehoben, 1 offen»).
+    # DRY=1 überschreibt den echten Stand nicht mehr (sonst verdeckt eine Trockenmessung den letzten scharfen Lauf).
+    if not DRY:
+        with open(STAND, "w", encoding="utf-8") as f:
+            json.dump({"stand": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="minutes"),
+                       "verkaufte_varianten": len(varianten), "zu_heben": len(plan), "geaendert": geaendert,
+                       "offen": max(0, len(plan) - geaendert),
+                       "ohne_ek": ohne_ek[:20], "ohne_ek_anzahl": len(ohne_ek), "dry": DRY}, f, ensure_ascii=False, indent=1)
     # 19.10.2026 (Spähtrupp aufseher AUF-4): ohne FERTIG-Zeile hielt der Aufseher den Lauf für nie beendet und startete ihn alle ~2,5 min neu
     # (214× in 16 h, 209 Starts/24 h); dreht_sich_im_kreis misst die Laufdauer erst eine Runde später und griff nie. FERTIG → Tagestakt.
     print(f"FERTIG {datetime.datetime.now(datetime.timezone.utc):%Y-%m-%dT%H:%M:%SZ}: {len(varianten)} verkaufte Varianten geprüft, {geaendert} angehoben{' (DRY)' if DRY else ''}", flush=True)

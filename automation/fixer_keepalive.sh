@@ -2578,6 +2578,18 @@ KLT=/tmp/test_klingen_tor.log
     fi
   fi
 
+  # 20.10.2026: VERKAUF-GEWINN-AMPEL-KANARIENVOGEL — «offen» war die Planlaenge statt des Rests (Fehlalarm «1 angehoben, 1 offen»).
+  VGT=/tmp/test_verkauf_gewinn_ampel.log
+  if [ -f "$REPO/automation/test_verkauf_gewinn_ampel.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$VGT" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$VGT"; then
+      ( cd "$REPO" && python3 automation/test_verkauf_gewinn_ampel.py >> "$VGT" 2>&1 || echo "$(date -u +%F' '%H:%M) VERKAUF-GEWINN-AMPEL FEHLER (Exit $?)" >> "$VGT" )
+    fi
+    if [ -s "$VGT" ] && tail -n 30 "$VGT" | grep -q "FEHLER\|FEHLSCHLAG"; then
+      echo "⚠️ VERKAUF-GEWINN-AMPEL: Kanarienvogel gefallen — tail -30 $VGT"
+    fi
+  fi
+
   # 12.10.2026: Liechtenstein-Satz «Gratis-Versand ab CHF N» → «in der Schweiz». Idempotent (Lookbehind), liest jedes
   # Produkt live und schreibt nur den Satz. Taeglich, damit neue aktive Importe den Satz nicht dauerhaft behalten.
   LIW=/tmp/li_gratis_text.log

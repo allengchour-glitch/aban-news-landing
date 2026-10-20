@@ -1477,8 +1477,12 @@ def verkauf_gewinn():
     ohne = int(s.get("ohne_ek_anzahl") or 0)
     if tage >= 2:
         return f"VERKAUF-GEWINN: Stand {tage} T alt — Wache läuft nicht"
-    if s.get("zu_heben") or ohne:
-        return (f"VERKAUF-GEWINN: {s.get('geaendert', 0)} angehoben, {s.get('zu_heben', 0)} offen, "
+    # 20.10.2026: «offen» war die Planlänge des Laufs (`zu_heben`), nicht der Rest — «1 angehoben, 1 offen» für EINE Variante,
+    # die längst auf Ziel stand. Offen = Plan minus geschrieben (Wache schreibt `offen` selbst; ältere Stände werden gerechnet).
+    zh = int(s.get("zu_heben") or 0); ge = int(s.get("geaendert") or 0)
+    offen = int(s["offen"]) if s.get("offen") is not None else (zh if s.get("dry") else max(0, zh - ge))
+    if offen or ohne:
+        return (f"VERKAUF-GEWINN: {ge} angehoben, {offen} offen, "
                 f"{ohne} verkaufte Variante(n) ohne Einkaufspreis (Gewinn unbekannt)")
     return None
 
