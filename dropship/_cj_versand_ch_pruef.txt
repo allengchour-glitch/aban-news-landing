@@ -11814,3 +11814,12 @@ intelligente-fernbedienung-mit-air-mouse-643f1b	44E339D5-2DE2-4687-9D02-C7054C4A
 formumspielender-eleganter-damen-midi-kleid-600700	2607070536381601300	16	9.47	ok	landeseite
 einfache-herren-armbanduhr-621500	2604050655491621900	7	6.58	ok	landeseite
 leuchtmaske-mit-app-steuerung-56175c	0D3E806E-4DC6-43A4-953B-B5F7B3D818B5	7	6.18	ok	landeseite
+sommerliches-kleid-mit-3d-effekt-611700	2607070507171612500	16	8.96	ok	landeseite
+manner-eckuhr-mit-quarzwerk-und-stahlband-628500	2604050646491628900	7	6.54	ok	landeseite
+led-maske-fur-hautverjungung-8290f9	1510126628607897600	16	16.16	ok	landeseite
+farbenfrohe-lampe-mit-fernbedienung-5d41ef	BD9C9B03-37B2-4FE0-AFCC-AFBB395A7042	7	6.49	ok	landeseite
+elektrische-gesichtsmaske-fur-saubere-luft-3140c7	80B6E303-FA59-4270-9935-0B40E45B8AF0	0	-	KEINE CH-Option → DRAFT	landeseite
+wasserdichtes-lederarmband-611800	2604050609231612200	7	5.86	ok	landeseite
+damen-rundhals-weit-rock-638700	2607070405491639300	16	10.15	ok	landeseite
+kabellose-bluetooth-fernbedienung-bd6fb6	1CA847D4-4566-4B4A-B438-7799DA6956EB	7	5.35	ok	landeseite
+druckmaske-mit-ohrhaken-a5ae89	036FEEC8-7D82-4C7C-A1D7-5F6753AEBB2D	1	7.64	ok	landeseite

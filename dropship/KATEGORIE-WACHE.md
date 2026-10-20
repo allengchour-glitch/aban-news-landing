@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-20T20:07Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-20T21:05Z
 
-Aktive gescannt: 3 · ohne Kategorie: 3 · heute gesetzt: 1 (SCHARF, CAP 1500) · danach offen: 2 · Fehler: 0
+Aktive gescannt: 23 · ohne Kategorie: 23 · heute gesetzt: 21 (SCHARF, CAP 1500) · danach offen: 2 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -11,5 +11,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- weihnachtsgluhender-musik-ornament-mit-bewegun-627100 · Partydeko & Ballone → Arts & Entertainment > Party & Celebration > Party Supplies
+- 4-in-1-farbwechselnde-deckkraft-foundation-634300 · Make-up → Health & Beauty > Personal Care > Cosmetics > Makeup
+- natural-coloring-set-fur-augenbrauen-wimpern-600900 · Make-up → Health & Beauty > Personal Care > Cosmetics > Makeup
+- feuchtigkeits-make-up-stick-mit-weichem-fokus-612700 · Make-up → Health & Beauty > Personal Care > Cosmetics > Makeup
+- korrektur-und-farbwechsel-foundation-stick-623500 · Make-up → Health & Beauty > Personal Care > Cosmetics > Makeup
+- kuhlende-peel-off-lippenmaske-619000 · Make-up → Health & Beauty > Personal Care > Cosmetics > Makeup
 
