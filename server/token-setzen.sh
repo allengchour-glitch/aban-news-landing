@@ -96,9 +96,26 @@ if [ -z "${TOKEN:-}" ]; then
   IFS= read -rs TOKEN; echo
 fi
 TOKEN=$(printf '%s' "$TOKEN" | tr -d '[:space:]')      # Zeilenumbruch/Leerzeichen vom Einfügen
+# DIAGNOSE OHNE WERT (20.10., Screenshot: «Das sieht nicht wie ein GitHub-Token aus»): Web-Konsolen verschlucken beim Einfügen die
+# ersten Zeichen und tauschen «_» gegen «-» (die Umschalttaste geht für Sonderzeichen verloren). Gezeigt werden nur Länge, die ersten
+# 4 Zeichen (bei jedem Token gleich: «gith»/«ghp_») und welche Sonderzeichen vorkommen — nie der Rest.
+sonder=$(printf '%s' "$TOKEN" | tr -d 'A-Za-z0-9' | fold -w1 | sort | uniq -c | tr '\n' ' ' | sed 's/  */ /g')
+echo "Eingang: ${#TOKEN} Zeichen, beginnt mit «${TOKEN:0:4}», Sonderzeichen: ${sonder:-keine}"
+# GitHub-Tokens bestehen nur aus Buchstaben, Ziffern und «_» — jedes «-» ist ein vertauschter Unterstrich.
+if [ "${TOKEN//[^-]/}" != "" ]; then n="${TOKEN//[^-]/}"; TOKEN="${TOKEN//-/_}"; echo "«-» wieder in «_» getauscht (${#n}×) — die Konsole hatte die Unterstriche verändert."; fi
 case "$TOKEN" in
   github_pat_*|ghp_*|gho_*|ghu_*|ghs_*) : ;;
-  *) echo "⛔ Das sieht nicht wie ein GitHub-Token aus (beginnt mit github_pat_ oder ghp_). Abbruch — nichts geändert."; exit 1 ;;
+  *)
+    case "${TOKEN:0:14}" in
+      *pat_*) TOKEN="github_pat_${TOKEN#*pat_}"; echo "Anfang «github_pat_» ergänzt (die Konsole hatte die ersten Zeichen verschluckt)." ;;
+      hp_*)   TOKEN="g$TOKEN"; echo "Anfang ergänzt (g)." ;;
+      p_*)    TOKEN="gh$TOKEN"; echo "Anfang ergänzt (gh)." ;;
+    esac ;;
+esac
+case "$TOKEN" in
+  github_pat_*|ghp_*|gho_*|ghu_*|ghs_*) : ;;
+  *) echo "⛔ Das sieht nicht wie ein GitHub-Token aus (beginnt mit github_pat_ oder ghp_). Abbruch — nichts geändert."
+     echo "   Tipp: die Web-Konsole zerhackt Sonderzeichen beim Einfügen. Besser im SSH-Terminal am PC arbeiten (ssh root@46.225.75.125) — dort geht das Einfügen."; exit 1 ;;
 esac
 [ "${#TOKEN}" -ge 40 ] || { echo "⛔ Token zu kurz (${#TOKEN} Zeichen) — beim Einfügen abgeschnitten? Abbruch."; exit 1; }
 echo "Token gelesen (${#TOKEN} Zeichen, wird nicht angezeigt)."
