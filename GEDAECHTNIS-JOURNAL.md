@@ -53,6 +53,21 @@
 
 
 
+## 📊 «weiter» 20.10. 05:00 UTC — GSC-Schnappschuss, Bewertungs-Ziel steht gegen die Stopp-Datei, kein billiger Hebel in den GSC-Daten
+- **GEMESSEN (Schnappschuss `dropship/_gsc_seiten.json`, 1'456 Produktseiten, Fenster 04.–17.10., 2 Antworten über `tools/gsc_schnappschuss.py`):**
+  **36 Klicks / 5'157 Impressionen = 0,70 %.** Impressionen nach Position: 1–3 → 58, 3–10 → 469, 10–20 → 410, 20–50 → 1'438, **50–101 → 2'698 (52 %)**.
+  «Striking distance» (Pos 8–20, ≥ 15 Impr.): **nur 2 Seiten** — es gibt keine Handvoll Titel, die man nachschärfen könnte. Die Editor-Seiten
+  («shirt-/tasse-/kissen-zum-selbstgestalten», 506/152/63 Impr.) ranken für Dutzende Langschwanz-Anfragen («fotokissen», «eigene tasse bedrucken lassen»,
+  «beutel bedrucken») auf Platz 60–98, je 1–14 Impressionen. Deutung (BEHAUPTUNG, nicht belegt): junge Domain gegen grosse Druckdienste — Platz 60–98 bewegt
+  kein Seitentext. Kein neuer Hebel, deshalb nichts geändert.
+- **Widerspruch im Plan gefunden:** Zeile 22.10. der «Kauf-Strecke» verlangt **Bewertungen ≥ 10 von 29 Top-Seiten** (gemessen heute: **3**), der einzige Weg dahin
+  (`cj_reviews_import.mjs`) ist seit 12.10. per `dropship/_bewertungen_stopp.txt` angehalten, Entscheid beim Betreiber (Platzhalter-Name «Käufer:in beim Lieferanten»,
+  Mail `cj-import@luxestyle.ch`, 351 Produkte / 1'848 Posts). Der Entscheid stand nur im Journal, **nicht** in der Betreiber-Liste — der Plan versprach etwas, das die Sperre verbietet.
+  Jetzt: Plan-Zeile 22.10. mit ⛔ markiert, §7 der Bilanz ergänzt, Entscheid A (Stopp bleibt, Ziel entfällt — Empfehlung) / B (Freigabe nur mit ehrlicher Herkunftskennzeichnung
+  und vorheriger Fachprüfung) als oberster Block in `dropship/COWORK-BEFEHL.md`. **Die Stopp-Datei wurde nicht angerührt.**
+- **Lehre:** Ein Plan darf kein Ziel tragen, dessen einziger Weg gesperrt ist — beim Sperren (Stopp-Datei, Verbot, Betreiber-Entscheid) gehört in derselben Minute die Zeile in die
+  Betreiber-Liste UND jede Planzeile, die davon abhängt, auf ⛔. Sonst misst jede Tagesrunde ein Ziel, das nicht erreichbar sein kann.
+
 ## 🔭 GSC-Indexierung gemessen — «72'299 nicht indexiert» (Workflow wf_2594e530, 3 Spähtrupps + 3 Nachprüfer, 19.10. 20:17–21:20 UTC, nur lesend)
 
 Anlass: Betreiber-Screenshots «Seitenindexierung» (Nicht indexiert 72'299, Indexiert 24'817; Gründe: Alternative Seite mit Canonical 16'328 · 404 12'679 · robots 997 · noindex 248 · Weiterleitung 67 · 5xx 6 · Gefunden – nicht indexiert 36'881 · Gecrawlt – nicht indexiert 5'093). Danach «verbessere mehr sichtbarkeit irgendwie».

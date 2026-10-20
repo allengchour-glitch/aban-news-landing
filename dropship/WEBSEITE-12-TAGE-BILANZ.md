@@ -96,7 +96,7 @@ Jeder Tag: messen → ändern → nachmessen → hier abhaken. Was liegen bleibt
 | 15.10. | Änderung an den zwei Seiten (Grössenhilfe, Lieferzeit, echte Bewertungen, Bilder) — live bei 390 px geprüft | Warenkorb-Quote der Seiten ≥ 3 % |
 | 16.–20.10. | Täglich nachmessen: `python3 tools/webseite_bilanz.py` + Zeile KAUFWILLE in der Keepalive-Meldung | Warenkörbe je Tag gegen den Vortag |
 | 21.10. | Warenkorb-Mail (Flow `XEGbTB`, live seit 10.10.): wie viele Empfänger nach Mail 1 bezahlt haben | Zahl, auch wenn klein |
-| 22.10. | Bewertungen auf den 29 Top-Seiten: ≥ 10 — nur echte CJ-Kommentare, nie erfundene | ≥ 10 von 29 |
+| 22.10. ⛔ (20.10.: 3 von 29, Ziel unerreichbar solange `dropship/_bewertungen_stopp.txt` steht — Betreiber-Entscheid A/B in `COWORK-BEFEHL.md`) | Bewertungen auf den 29 Top-Seiten: ≥ 10 — nur echte CJ-Kommentare, nie erfundene | ≥ 10 von 29 (nur nach Betreiber-Antwort) |
 | 24.10. | **Bilanz 2**, gleiches Schema, Fenster 12.–24.10. gegen 01.–11.10. | `dropship/WEBSEITE-KAUFSTRECKE-BILANZ.md` |
 
 ## 7. Offen — Betreiber-Klicks
@@ -105,6 +105,7 @@ Jeder Tag: messen → ändern → nachmessen → hier abhaken. Was liegen bleibt
   (Notiz 11.10.). Die Marge ist knapp (Notiz 11.10.: ca. CHF 2). A5 steht seit 11.10. auf 35.90.
 - **Bügeltransfer A5** streichen oder dauerhaft bepreisen (Entscheid offen seit 11.10.).
 - **Versandbanner «ab CHF 50»** gegen die Kasse-Schwelle 45: Entscheid des Betreibers (Notiz 11.10.).
+- **Bewertungs-Import** (Stopp seit 12.10.): A = Stopp bleibt und Ziel 22.10. entfällt, B = freigeben mit ehrlicher Herkunftskennzeichnung (vorher Fachperson, UWG Art. 3) — Text in `COWORK-BEFEHL.md` (20.10.). Gemessen 20.10.: 3 von 29 Top-Seiten mit Bewertung.
 - **Google Ads**, Produktgruppe «Alles andere»: 24 Sitzungen auf fremden Produkten, 0 Warenkorb (seit 11.10. offen).
 
 ## 8. Befehle

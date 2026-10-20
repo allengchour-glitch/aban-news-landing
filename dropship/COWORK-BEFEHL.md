@@ -1,5 +1,21 @@
 # COWORK-BEFEHL — Fassung 21.09.2026, 09:40 UTC (für heute Abend)
 
+## 🆕 20.10. 05:10 UTC — Bewertungen auf den Top-Seiten: ein Entscheid (1 Min.), sonst bleibt das Ziel vom 22.10. unerreichbar
+**Gemessen (`python3 tools/webseite_bilanz.py`, 20.10.):** Von den 29 meistbesuchten Produktseiten haben **3** eine Bewertung (Ausgang 01.10.: 2).
+Der Plan «Kauf-Strecke» verlangt für den **22.10. ≥ 10 von 29**. Das geht nur über den CJ-Bewertungs-Import — und der steht seit **12.10.** still:
+`dropship/_bewertungen_stopp.txt` (Gegenprobe wf_52c03c1d: die Importe erschienen mit dem Namen «Käufer:in beim Lieferanten» und der
+Platzhalter-Mail `cj-import@luxestyle.ch`; 351 Produkte, 1'848 Posts; Notiz 12.10., Quelle `/tmp/cj_reviews_import.log`).
+Ob das als Irreführung über die Herkunft gilt (UWG Art. 3), entscheide nicht ich. **Ich habe die Datei nicht angerührt.**
+
+**Antwort genügt mit einem Wort:**
+- **«A»** (meine Empfehlung): Stopp bleibt. Das Ziel «≥ 10 von 29» wird gestrichen. Bewertungen kommen nur von echten Käufern des Shops
+  (Bewertungsanfrage nach dem Kauf; bisher 5 Käufe seit 01.10.). Ich ziehe die Zeile im Plan und die Wächter-Schwelle nach.
+- **«B»**: Import wieder freigeben, aber nur mit ehrlicher Kennzeichnung der Herkunft («Bewertung aus der Lieferantenquelle»), ohne Platzhalter-Mail.
+  Dafür bräuchte ich vorher eine Fachperson für die UWG-Frage — ohne die würde ich B nicht umsetzen.
+- Offen bleibt in beiden Fällen: Sollen die **bereits veröffentlichten** Importbewertungen sichtbar bleiben oder per API ausgeblendet werden
+  (`curated=spam`, umkehrbar)? Heute sichtbar: Judge.me meldet 13'387 Bewertungen insgesamt (Metafeld, 18.10.), die Wache findet 0 verdächtige
+  (`dropship/JUDGEME-WACHE.md`).
+
 ## 🆕 14.10. 13:30 UTC — Umgebungsvariable SHOPIFY_CLIENT_SECRET korrigieren (1 Min., Einfügefehler)
 **Gemessen:** In den Claude-Umgebungseinstellungen hat `SHOPIFY_CLIENT_SECRET` **60 Zeichen**, gültig sind **38** (Format `shpss_` + 32).
 Die ersten 38 Zeichen stimmen, dahinter hängen 22 Zeichen zu viel. Shopify lehnt den Wert ab (HTTP 400), der Wert in
