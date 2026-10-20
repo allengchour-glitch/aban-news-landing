@@ -22,7 +22,7 @@ Bei Fehler «RATGEBER-LINKS: unklar (…)», nie «0». Exit 0.
 Schalter: nur `--selbsttest` (Mutationspruefung mit Positiv-Kanarienvoegeln, offline + live; Exit 1 bei Fehler). Jeder andere Schalter bricht
 mit Exit 2 ab — ein unbekannter Schalter startet NIE einen Lauf.
 """
-import argparse, json, os, re, sys, time, urllib.parse
+import argparse, html, json, os, re, sys, time, urllib.parse
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from kaufwille_zeile import gql  # Eimer-Etikette inklusive
@@ -32,13 +32,21 @@ AUSGABE = os.environ.get("AUSGABE", "/tmp/blog_linkziele.json")
 # 05.10. Nachbesserung (Pruefer): 49 Links in den Artikeln sind ABSOLUT (href="https://luxestyle.ch/…"), einer davon
 # war echt tot und wurde von der relativen Regex uebersehen → optionaler Host-Praefix, Pfad bleibt die Gruppe.
 # 19.10.: auch /pages/ und /blogs/, einfache Anfuehrungszeichen, HREF gross, «www.», protokollrelative «//»-Links.
-LINK_RE = re.compile(r'''href\s*=\s*(["'])(?:(?:https?:)?//(?:www\.)?luxestyle\.ch)?(/(?:products|collections|pages|blogs)/[^"'#?]*)''', re.I)
+# 20.10. (Pruefer-Befund 19.10.: 4 von 12 Mutationen unentdeckt → «0 tot» waere gruen geblieben): auch href OHNE Anfuehrungszeichen,
+# HTML-Entities im href (&#x2F;, &#47;, &sol;), Gross-/Kleinschreibung des ersten Pfadsegments (/Products/) und Sprachpraefix
+# (/en/products/…, /fr/collections/…, /de-ch/…; genau 2 Buchstaben, optional «-xx»).
+LINK_RE = re.compile(r'''href\s*=\s*(?:(["'])|(?=[^\s"'>]))(?:(?:https?:)?//(?:www\.)?luxestyle\.ch)?(?:/[a-z]{2}(?:-[a-z]{2})?)?(/(?:products|collections|pages|blogs)/[^"'#?\s>]*)''', re.I)
 
 
 def hrefs(body):
-    """Interne Pfade (ohne Host, ohne ?/#) in der Reihenfolge des Auftretens; leere Handles (`/products/`) zaehlen nicht."""
-    return [m.group(2) for m in LINK_RE.finditer(body or "")
-            if re.match(r"^/(?:products|collections|pages)/[^/]", m.group(2)) or m.group(2).startswith("/blogs/")]
+    """Interne Pfade (ohne Host, ohne ?/#, ohne Sprachpraefix, erstes Segment klein) in der Reihenfolge des Auftretens; leere Handles
+    (`/products/`) zaehlen nicht. Entities werden vor dem Suchen aufgeloest."""
+    aus = []
+    for m in LINK_RE.finditer(html.unescape(body or "")):
+        p = re.sub(r"^/[A-Za-z]+/", lambda x: x.group(0).lower(), m.group(2))
+        if re.match(r"^/(?:products|collections|pages)/[^/]", p) or p.startswith("/blogs/"):
+            aus.append(p)
+    return aus
 
 
 def lade_artikel():
@@ -305,9 +313,21 @@ def selbsttest_offline():
                        ("HREF gross", '<a HREF="/products/draft-2">x</a>'),
                        ("protokollrelativ", '<a href="//luxestyle.ch/products/draft-2">x</a>'),
                        ("mit Zeilenumbruch", '<a\n href = "/products/draft-2">x</a>'),
-                       ("mit Fragment", '<a href="/products/draft-2#preis">x</a>')]:
+                       ("mit Fragment", '<a href="/products/draft-2#preis">x</a>'),
+                       # 20.10.: die vier Formen, die der Pruefer am 19.10. als unentdeckt belegt hat
+                       ("ohne Anfuehrungszeichen", "<a href=/products/draft-2>x</a>"),
+                       ("ohne Anfuehrungszeichen mit weiterem Attribut", "<a href=/products/draft-2 class=a>x</a>"),
+                       ("Entity &#x2F;", '<a href="&#x2F;products&#x2F;draft-2">x</a>'),
+                       ("Entity &#47; und &sol;", '<a href="&#47;products&sol;draft-2">x</a>'),
+                       ("Grossschreibung /Products/", '<a href="/Products/draft-2">x</a>'),
+                       ("Sprachpraefix /en/", '<a href="/en/products/draft-2">x</a>'),
+                       ("Sprachpraefix /de-ch/ absolut", '<a href="https://luxestyle.ch/de-ch/products/draft-2">x</a>')]:
         t, u, nl = lauf(basis + " " + link)
         pruefe("Schreibweise: " + name, (t, u, nl) == (1, 0, 5))
+    for name, link in [("dreibuchstabiger Pfadanfang /xyz/ ist kein Sprachpraefix", '<a href="/xyz/products/draft-9">x</a>'),
+                       ("Wort mit products im Pfadanfang", '<a href="/shop-products/draft-9">x</a>')]:
+        t, u, nl = lauf(basis + " " + link)
+        pruefe("kein Treffer: " + name, (t, u, nl) == (0, 0, 4))
     t, u, nl = lauf(basis + ' <a href="https://example.com/products/draft-3">fremd</a> <a href="/search?q=draft">s</a>')
     pruefe("Fremdlink und /search zaehlen nicht", (t, u, nl) == (0, 0, 4))
     arts = [art("a1", basis + ' <a href="/blogs/ratgeber/entwurf">e</a>'), a2, art("entwurf", "x", pub=False)]
