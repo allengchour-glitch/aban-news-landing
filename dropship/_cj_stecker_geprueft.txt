@@ -1061,3 +1061,28 @@
 15493076058497	kein-stecker-merkmal	2026-10-20	F-Stecker TV-Kabeladapter
 15493152571777	kein-stecker-merkmal	2026-10-20	PS5 Multifunktions-Ladestation mit Lüfter
 15493259952513	kein-stecker-merkmal	2026-10-20	Elektrische Salz- und Pfeffermühle mit Ladestation
+15493366940033	kein-stecker-merkmal	2026-10-20	2-in-1 MagSafe Magnet-Ladeständer
+15493442994561	kein-stecker-merkmal	2026-10-20	Zimi Wireless Charger für iPhone
+15493443223937	kein-stecker-merkmal	2026-10-20	2-in-1 Wireless Charger für Handy, Uhr & Kopfhörer
+15493444600193	kein-stecker-merkmal	2026-10-20	U-förmiger Ladeständer für Apple Watch
+15493478744449	kein-stecker-merkmal	2026-10-20	PS5 Multifunktions-Lüfter-Ladestation
+15493778735489	kein-stecker-merkmal	2026-10-20	Taktischer Modularer Schnellverschluss-Adapter
+15493796921729	kein-stecker-merkmal	2026-10-20	Moppstiel-Adapter für US-Grobgewinde
+15493807440257	unklar-eu-vorhanden:EU/US	2026-10-20	WII Ladestation
+15493807571329	kein-stecker-merkmal	2026-10-20	WII Vierfach-Ladestation mit Akkus
+15493808095617	unklar-eu-vorhanden:AU/EU/UK/US	2026-10-20	Multifunktionaler Ladeständer aus Bambus
+15493808226689	kein-stecker-merkmal	2026-10-20	3-in-1 Wireless Ladestation
+15493835391361	kein-stecker-merkmal	2026-10-20	Magnetische Mini Wireless Ladestation
+15493836145025	kein-stecker-merkmal	2026-10-20	4-in-1 Wireless Ladestation für iPhone, Watch, AirPods
+15493836308865	kein-stecker-merkmal	2026-10-20	ORICO 5-Port USB-Ladestation 40W
+15493847777665	kein-stecker-merkmal	2026-10-20	Nillkin Magic Disc 4. Generation Wireless Charger
+15493848203649	unklar-eu-vorhanden:EU/UK/US	2026-10-20	4-in-1 Wireless Ladestation mit Schnellladefunktion
+15493855150465	kein-stecker-merkmal	2026-10-20	Ladestation mit 3-in-1-Anschluss und Wireless Charging
+15493863178625	kein-stecker-merkmal	2026-10-20	Iron Man QI Wireless Charger Stand
+15493863473537	unklar-eu-vorhanden:CN/EU/US	2026-10-20	Phantom Tischlampe mit Wireless Charger
+15493870551425	kein-stecker-merkmal	2026-10-20	Ladestation für Haarschneidemaschinen
+15493873762689	kein-stecker-merkmal	2026-10-20	Sportkamera Metall-Adapter
+15495026147713	nur-eu-version	2026-10-20	GRS 20W USB-C Schnellladeadapter
+15495048495489	kein-stecker-merkmal	2026-10-20	Kabellose 5-in-1 Ladestation mit Wecker
+15495048921473	kein-stecker-merkmal	2026-10-20	Ladeadapter für PS5 Controller-Halterung
+15495067337089	kein-stecker-merkmal	2026-10-20	PS5 Wireless Controller Ladestation mit RGB-Licht
