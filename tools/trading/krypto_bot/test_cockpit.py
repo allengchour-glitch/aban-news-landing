@@ -270,8 +270,12 @@ with tempfile.TemporaryDirectory() as tmp:
             pruefe("zurück auf 1×, Stufen-Knöpfe starten kein Skript", Km.risiko()["stufe"] == 1.0 and len(gestartet) == 1)
         finally:
             Km.EINSTELLUNGEN = alt_einst
+        NACHKONTROLLE.clear()
         C.aktion("handeln", starter)
         pruefe("Jetzt handeln startet pilot.py --lauf", gestartet[-1] == ["pilot.py", "--lauf"])
+        # (16. Prüfung) wie krypto-auto.bat: nach dem Lauf folgt die Nachkontrolle von Pilot 2.0 (sonst bleibt ein beim Lauf unklar gebliebener oder ausgefallener Stop bis morgen offen)
+        pruefe("Jetzt handeln startet danach die Nachkontrolle von Pilot 2.0", NACHKONTROLLE == [1], NACHKONTROLLE)
+        NACHKONTROLLE.clear()
         e = C.aktion("selbsttest", starter)
         n_t = len(C.SELBSTTESTS)
         pruefe("Selbsttest: alle Testdateien, letzte Zeile je Datei", [g[0] for g in gestartet[-n_t:]] == C.SELBSTTESTS
@@ -442,6 +446,25 @@ with tempfile.TemporaryDirectory() as tmp:
         pruefe("Not-Aus bei besetzter Sperre: schliesst trotzdem, meldet aber NICHT «alles zu»", "NICHT ALLES GESCHLOSSEN" in meldung
                and "anderer Lauf" in meldung and meldung.count("✅") == 2, meldung)
         C.STOP.unlink()
+        # (16. Prüfung) eine Sperre ohne Herzschlag (hart beendeter Lauf) hält den Not-Aus nicht auf: nach 150 s gilt der Lauf als tot, der Not-Aus übernimmt und schliesst Pilot 2.0 selbst
+        _lock_t = Path(tmp) / "krypto-lauf.lock"
+        for _alter, _tot in ((200, True), (100, False)):
+            _lock_t.write_text("4242 0\n")
+            __import__("os").utime(_lock_t, (time.time() - _alter, time.time() - _alter))
+            alt_warten = Sp.lauf_sperre
+            Sp.lauf_sperre = lambda name="krypto-lauf", warten=0, **k: alt_warten(name, 0, **k)
+            try:
+                meldung = C.notaus_an(ausfuehren=schliesst)
+            finally:
+                Sp.lauf_sperre = alt_warten
+            if _tot:
+                pruefe("Not-Aus bei toter Sperre (kein Herzschlag seit 200 s): übernimmt, schliesst, kein «anderer Lauf aktiv»",
+                       "anderer Lauf" not in meldung and meldung.count("✅") == 2 and not _lock_t.exists(), (meldung, _lock_t.exists()))
+            else:
+                pruefe("Not-Aus bei noch lebender Sperre (Herzschlag vor 100 s): wartet nicht darauf, meldet «anderer Lauf», nicht «alles zu»",
+                       "anderer Lauf" in meldung and "NICHT ALLES GESCHLOSSEN" in meldung, meldung)
+            _lock_t.unlink(missing_ok=True)
+            C.STOP.unlink(missing_ok=True)
 
         # ── Gesundheit: letzter echter Lauf und täglicher Start (krypto-auto.bat) ──
         heute2 = datetime(2026, 1, 20, tzinfo=timezone.utc).date()

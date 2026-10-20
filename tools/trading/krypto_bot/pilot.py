@@ -247,7 +247,7 @@ def main():
     if a.lauf and not a.trocken and BF.einstellungen()["stop"]:  # Datei STOP oder KI_BOT_STOP=1
         # Not-Aus hat Vorrang (auch vor der Pause) und braucht keine Kurse von Yahoo: nur schliessen, alle Märkte
         try:
-            with sperre.lauf_sperre(warten=120):
+            with sperre.lauf_sperre(warten=sperre.ALT_NACH_TOT + 40, alt_nach=sperre.ALT_NACH_TOT):  # (16. Prüfung) eine tote Sperre (kein Herzschlag seit 150 s) hält den Not-Aus nicht auf
                 alles_zu, zeilen = schliessen_alle()
         except sperre.Besetzt as ex:
             print(f"{ex} Not-Aus trotzdem: schliesse ohne Sperre.")
@@ -283,7 +283,7 @@ def main():
         print("Auto-Handel ist aus (Pause) — nichts gehandelt. Einschalten im Cockpit oder mit weiter.bat.")
         return 0
     try:
-        with sperre.lauf_sperre(warten=0 if a.trocken else 120):
+        with sperre.lauf_sperre(warten=0 if a.trocken else sperre.ALT_NACH_TOT + 40, alt_nach=sperre.ALT_NACH_TOT):
             return handeln(ents, lage, a.trocken)
     except sperre.Besetzt as ex:
         print(f"{ex} Dieser Lauf handelt nicht — einfach später nochmals starten.")
@@ -420,7 +420,8 @@ def nachkontrolle():
     try:
         # Not-Aus: nie still überspringen — eine laufende Nachkontrolle gibt bei STOP nach einem Takt ab, ein Not-Aus-Lauf ist
         # in Sekunden fertig; darum länger warten
-        with sperre.lauf_sperre(warten=P2L.NACHKONTROLLE_MAX_S + 120 if not_aus else 120):
+        # (16. Prüfung) Tote Sperre (harter Abbruch des Laufs: kein Herzschlag seit ALT_NACH_TOT s) übernehmen — sonst lief die Nachkontrolle nach einem Abbruch gar nicht
+        with sperre.lauf_sperre(warten=P2L.NACHKONTROLLE_MAX_S + 120 if not_aus else sperre.ALT_NACH_TOT + 40, alt_nach=sperre.ALT_NACH_TOT):
             r = P2L.nachkontrolle()
     except sperre.Besetzt as ex:
         if not not_aus:

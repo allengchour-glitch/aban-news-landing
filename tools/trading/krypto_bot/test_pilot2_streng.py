@@ -3264,7 +3264,7 @@ for name10, anzahl10, text10 in (("dreimal", 3, "statt des hängenden Stop-Limit
         finally:
             B.regeln = []
         g10 = lage(k, "BTCUSDT")
-        flach10 = g10["coins"] * g10["kurs"] < 50      # beim Hebel 1,0 gelingt der Verkauf in der 4. Runde (nur «dreimal»)
+        flach10 = abs(g10["netto"]) * g10["kurs"] < 50  # netto flach: beim Hebel 1,0 gelingt der Verkauf in der 4. Runde (nur «dreimal»), beim Hebel 0,5 verkauft er nur die Netto-Richtung (16. Prüfung H5: die Absicherung bleibt)
         pruefe(f"14.E10 hängender Stop-Limit, cancelReplace {name10} unklar (Hebel {hebel10}): ein Not-Stop unter dem Kurs schützt den Long",
                not befunde(k, d) and not P._haengend(k, "BTCUSDT") and (g10["s_qty"] > 0 or (flach10 and name10 == "dreimal"))
                and (flach10 or any(text10 in z for z in r["zeilen"])),
@@ -4795,6 +4795,1122 @@ for was_s, seed_s in (("Not-Aus-Seed 117727 (E26)", 117727), ("Not-Aus-Seed 1179
         P.STRENG = P.LUECKEN = False
         B.reduce_algo_streng = False
     pruefe(f"15.E26/E27 strenger Lücken-{was_s}: keine Befunde", not funde, [(f_[0], f_[2]) for f_ in funde][:3])
+
+# ───────── 16. Prüfung (Folge-PR): H6, H1, F-a, H7, H5/H5b und die kleinen Funde — Szenarien rot am Stand der 15. Runde, grün am neuen ─────────
+# 16.H6 (16. Prüfung, Blocker; Beleg b13): Kurs +6 % (der alte Perp-Stop bei etwa +10 % steht noch), das Signal von heute hat seinen Stop-Kurs UNTER dem Kurs → «jenseits» → Ausstieg zum Markt (_perp_raus).
+# Der Rückkauf (reduceOnly BUY) ist UNKLAR (503 vor der Verarbeitung = nie ausgeführt / nach der Verarbeitung = ausgeführt, Antwort verloren) oder nur TEILWEISE ausgeführt; neue Stop-Aufträge werden dauerhaft
+# abgelehnt (429). Vorher löschte _perp_raus die alten Stops nach einem unklaren oder teilweisen Rückkauf, BEVOR ein Ersatz stand — der Short stand (wenn der Rückkauf nie ankam) ganz ohne Stop (10'145–20'885 USDT).
+def tag0_(sz_):
+    markt_, z0_, z1_ = sz_
+    k_ = P.neues_konto(20000)
+    d_ = P.neu_buch()
+    env_ = P.env_echt(kapital=20000)
+    P.lauf([P.E(markt_, z0_)], env_, d_)
+    return k_, d_, env_
+RUECK_ = lambda m, p, q: q.get("reduceOnly") == "true"  # noqa: E731
+for art_ in ("vor503", "nach503", "teil"):
+    for sz_ in (("ETH", -1.0, -0.25), ("BTC", -1.0, -0.5), ("BTC", -0.25, 0.0), ("ETH", 0.0, -0.5)):
+        markt_, z0_, z1_ = sz_
+        sym_ = markt_ + "USDT"
+        k, d, env = tag0_(sz_)
+        if k.pos[sym_] >= 0 or not [a for a in k.algos.values() if a["symbol"] == sym_]:
+            continue
+        kurz_ = round(-k.pos[sym_], 3)
+        vorher_ = lage(k, sym_)
+        absicherung_ = vorher_["coins"] > 0.5 * kurz_                                   # ein Paar: die Coins sichern den grössten Teil des Shorts ab
+        B.bewegen(sym_, round(B.kurs[sym_] * 1.06, 2))                               # der alte Perp-Stop bei etwa +10 % löst NICHT aus
+        e_ = {"markt": markt_, "hebel": z1_, "stop_long": B.kurs[sym_] * 0.9, "stop_short": B.kurs[sym_] * 0.97, "stand": "2026-10-13"}   # Stop-Kurs unter dem Kurs → «jenseits»
+        B.regeln = [dict(methode="POST", pfad="/fapi/v1/order", pred=RUECK_, art=art_, anzahl=1 if art_ == "teil" else 10 ** 6), dict(methode="POST", pfad="/fapi/v1/algoOrder", art="429", anzahl=10 ** 6)]
+        try:
+            res_ = P.lauf([e_], env, d)
+        finally:
+            B.regeln = []
+        g_ = lage(k, sym_)
+        if art_ == "vor503":
+            # der Rückkauf kam nie an: der alte Perp-Stop (Richtungs-Short) muss stehen bleiben — gelöscht war er vorher, bevor ein Ersatz stand
+            pruefe(f"16.H6 Rückkauf {art_} nie ausgeführt, neue Perp-Stops dauerhaft abgelehnt ({sz_}, Short {kurz_}): der alte Perp-Stop steht weiter ({vorher_['p_qty']:g} → {g_['p_qty']:g})",
+                   g_["n_p"] >= 1 and g_["p_qty"] >= vorher_["p_qty"] - 1e-9, (vorher_, g_))
+        if not (art_ == "vor503" and absicherung_):
+            # (ein Paar mit dauerhaft abgelehnten Perp-Stops und unklarem Rückkauf behält einen Rest: der Spot-Stop über die Absicherungs-Coins schützt den Fall «Rückkauf kam an», ohne Perp-Stop
+            # über den ganzen Short fehlt dem Rest der Schutz im Fall «Rückkauf kam nie an» — Restrisiko, README «Bekannte Restrisiken»)
+            pruefe(f"16.H6 Rückkauf {art_}, neue Perp-Stops dauerhaft abgelehnt ({sz_}, Short {kurz_}): kein Short ohne Stop ({[b_[:2] for b_ in befunde(k, d)][:2]})",
+                   not befunde(k, d), (g_, befunde(k, d)[:2], res_["zeilen"][:4]))
+
+# 16.H1 (16. Prüfung, Beleg b2): Binance kennt cancelReplace nicht (404) UND das Löschen des alten Spot-Stops scheitert dreimal (503): _spot_abgleich meldete nur «alter Spot-Stop ist noch offen — kein zweiter
+# gesetzt». Wuchs der Long heute (0,5 → 1,0), deckte der alte Stop nur den alten Teil (9'859 USDT ohne Stop), und der Lauf vermerkte nichts für die Nachkontrolle. Jetzt bekommt der Rest einen Zusatz-Stop
+# (nur aus freien Coins, nie doppelt), ein zu grosser alter macht den Markt beidseitig, und die Nachkontrolle versucht das Ersetzen nochmals.
+import json
+def tag0_(sz_, haengend_=False):
+    markt_, z0_, z1_ = sz_
+    k_ = P.neues_konto(20000)
+    if haengend_:
+        B.stop_typen = [x for x in B.stop_typen if x != "STOP_LOSS"]
+    d_ = P.neu_buch()
+    env_ = P.env_echt(kapital=20000)
+    P.lauf([P.E(markt_, z0_)], env_, d_)
+    for s_ in P.SYMS:
+        B.bewegen(s_, round(B.kurs[s_] * 1.01, 2))
+    return k_, d_, env_
+def offen_(d_):
+    try:
+        return list((json.loads(open(d_).read()).get("echt") or {}).get("schutz_offen") or [])
+    except (OSError, ValueError):
+        return []
+for sz_ in (("BTC", 0.5, 1.0), ("BTC", 0.25, 0.5), ("ETH", 0.25, 0.0)):
+    markt_ = sz_[0]
+    sym_ = markt_ + "USDT"
+    k, d, env = tag0_(sz_)
+    vor_ = lage(k, sym_)
+    B.ersetzen_fehlt = True                                                                 # cancelReplace unbekannt (404)
+    B.regeln = [dict(methode="DELETE", pfad="/api/v3/order", art="vor503", anzahl=3)]       # das Löschen des alten Stops scheitert dreimal
+    try:
+        res_ = P.lauf([P.E(markt_, sz_[2])], env, d)
+    finally:
+        B.regeln = []
+        B.ersetzen_fehlt = False
+    g_ = lage(k, sym_)
+    wachst_ = sz_[2] > sz_[1]
+    pruefe(f"16.H1 {sz_}: cancelReplace unbekannt + Löschen scheitert ({'Long wuchs' if wachst_ else 'Long schrumpfte'}, alter Stop {vor_['s_qty']:g}): kein Long ohne Stop ({[b_[:2] for b_ in befunde(k, d)][:2]})",
+           not befunde(k, d), (vor_, g_, befunde(k, d)[:2], res_["zeilen"][-3:]))
+    pruefe(f"16.H1 {sz_}: der Markt ist für die Nachkontrolle vermerkt (schutz_offen {offen_(d)})", markt_ in offen_(d), (offen_(d), res_["zeilen"][-3:]))
+    P.pending_abarbeiten()
+    B.n_listen += 1000
+    P.nachkontrolle(env, d)
+    pruefe(f"16.H1 {sz_}: nach der Nachkontrolle bleibt kein Befund ({[b_[:2] for b_ in befunde(k, d)][:2]})", not befunde(k, d), (lage(k, sym_), befunde(k, d)[:2]))
+
+# 16.F-a (16. Prüfung, Beleg b4): der Frühausstieg «Konto nicht lesbar — kein Auftrag» (Zeile ~921) liess alle Stops von gestern ungeprüft und vermerkte keinen Markt für die Nachkontrolle. Hing ein ausgelöster
+# STOP_LOSS_LIMIT (Konto ohne STOP_LOSS-Typ, Kurslücke zwischen den Läufen), stand der Long bis zum nächsten Tageslauf ohne wirksamen Stop (8'410 bzw. 16'828 USDT). Jetzt vermerkt der Lauf jeden Markt mit
+# Stops, die Nachkontrolle liest alle nochmals (Binance antwortet 10 Minuten später wieder).
+import json
+def tag0h_(sz_):
+    markt_, z0_, z1_ = sz_
+    k_ = P.neues_konto(20000)
+    B.stop_typen = [x for x in B.stop_typen if x != "STOP_LOSS"]
+    d_ = P.neu_buch()
+    env_ = P.env_echt(kapital=20000)
+    P.lauf([P.E(markt_, z0_)], env_, d_)
+    for s_ in P.SYMS:
+        B.bewegen(s_, round(B.kurs[s_] * 1.01, 2))
+    sym_ = markt_ + "USDT"
+    limits_ = [o["preis"] for o in k_.orders.values() if o["symbol"] == sym_ and o["typ"] == "STOP_LOSS_LIMIT" and o["status"] in ("NEW", "PARTIALLY_FILLED")]
+    if not limits_:
+        return None
+    B.bewegen(sym_, round(min(limits_) * 0.99, 2))                                         # Kurslücke unter das tiefste Limit: der Spot-Stop ist ausgelöst und hängt über dem Kurs
+    return (k_, d_, env_) if P._haengend(k_, sym_) else None
+def offen_(d_):
+    try:
+        return list((json.loads(open(d_).read()).get("echt") or {}).get("schutz_offen") or [])
+    except (OSError, ValueError):
+        return []
+for sz_ in (("BTC", 1.0, 0.25), ("BTC", 0.5, 1.0), ("BTC", 0.5, -0.5)):
+    markt_ = sz_[0]
+    sym_ = markt_ + "USDT"
+    t_ = tag0h_(sz_)
+    if t_ is None:
+        continue
+    k, d, env = t_
+    B.regeln = [R._regel_lesen(("GET", "/api/v3/account", "vor503", 4))]                    # die Konto-Lesung schlägt bei Laufbeginn fehl (viermal)
+    try:
+        res_ = P.lauf([P.E(markt_, sz_[2])], env, d)
+    finally:
+        B.regeln = []
+    pruefe(f"16.F-a {sz_}: «Konto nicht lesbar» ({res_['zeilen'][-1][:40]}…) vermerkt den Markt mit Stops für die Nachkontrolle (schutz_offen {offen_(d)})", markt_ in offen_(d), (offen_(d), res_["zeilen"][-2:]))
+    P.pending_abarbeiten()
+    B.n_listen += 1000
+    P.nachkontrolle(env, d)
+    pruefe(f"16.F-a {sz_}: nach der Nachkontrolle steht der Long (hängender Stop-Limit) wieder unter einem wirksamen Stop ({[b_[:2] for b_ in befunde(k, d)][:2]})", not befunde(k, d), (lage(k, sym_), befunde(k, d)[:2]))
+
+# 16.H7 (16. Prüfung, Beleg b18): hängender Stop-Limit (Konto ohne STOP_LOSS, Kurslücke). Der Ausstieg per cancelReplace gelingt nur als Storno: Binance storniert den Stop, lehnt den neuen Marktverkauf ab, die ANTWORT GEHT
+# VERLOREN (503, «nur_storno_verloren»); danach lehnt Binance auch die einzelnen Marktverkäufe ab. _haengenden_loeschen hörte «unbekannt» (−2011) und sah keinen Unterschied der freien Coins (der Storno kam VOR
+# seiner ersten Lesung) → «nichts freigegeben, der Stop war schon weg» → Long ohne Stop (8'410 USDT), kein Vermerk, die Nachkontrolle sicherte nicht. Jetzt vermerkt dieser Zweig den Markt: die Nachkontrolle liest nach.
+import json
+def tag0h_(sz_):
+    markt_, z0_, z1_ = sz_
+    k_ = P.neues_konto(20000)
+    B.stop_typen = [x for x in B.stop_typen if x != "STOP_LOSS"]
+    d_ = P.neu_buch()
+    env_ = P.env_echt(kapital=20000)
+    P.lauf([P.E(markt_, z0_)], env_, d_)
+    for s_ in P.SYMS:
+        B.bewegen(s_, round(B.kurs[s_] * 1.01, 2))
+    sym_ = markt_ + "USDT"
+    limits_ = [o["preis"] for o in k_.orders.values() if o["symbol"] == sym_ and o["typ"] == "STOP_LOSS_LIMIT" and o["status"] in ("NEW", "PARTIALLY_FILLED")]
+    if not limits_:
+        return None
+    B.bewegen(sym_, round(min(limits_) * 0.99, 2))
+    return (k_, d_, env_) if P._haengend(k_, sym_) else None
+def offen_(d_):
+    try:
+        return list((json.loads(open(d_).read()).get("echt") or {}).get("schutz_offen") or [])
+    except (OSError, ValueError):
+        return []
+sz_ = ("BTC", 0.5, -0.5)
+markt_, sym_ = sz_[0], sz_[0] + "USDT"
+t_ = tag0h_(sz_)
+k, d, env = t_
+zaehler_ = {"cr": 0, "an_cr": False, "mk": 0, "an_mk": False}
+def haken_(m_, pfad_, p_):
+    if m_ == "POST" and pfad_ == "/api/v3/order/cancelReplace":
+        zaehler_["cr"] += 1
+        if zaehler_["cr"] == 2 and not zaehler_["an_cr"]:            # der zweite cancelReplace: nur der Storno kommt durch, die Antwort geht verloren
+            zaehler_["an_cr"] = True
+            B.regeln.append(R._regel_schreiben(("POST", "/api/v3/order/cancelReplace", None, "nur_storno_verloren", 1)))
+    if m_ == "POST" and pfad_ == "/api/v3/order" and R.MARKT_SPOT(m_, pfad_, p_):
+        if not zaehler_["an_mk"]:                                     # ab dem ersten Marktverkauf lehnt Binance die einzelnen Marktverkäufe ab (PERCENT_PRICE)
+            zaehler_["an_mk"] = True
+            B.regeln.append(R._regel_schreiben(("POST", "/api/v3/order", R.MARKT_SPOT, "ablehnen", 3)))
+B.vor_jeder_anfrage = haken_
+try:
+    res_ = P.lauf([P.E(markt_, sz_[2])], env, d)
+finally:
+    B.vor_jeder_anfrage = None
+    B.regeln = []
+pruefe("16.H7 Störung kam zum Zug (nur_storno_verloren und abgelehnte Marktverkäufe)", zaehler_["an_cr"] and zaehler_["an_mk"], zaehler_)
+pruefe(f"16.H7 {sz_}: hängender Stop weg, Ersatz nur als Storno, Marktverkäufe abgelehnt: der Markt ist für die Nachkontrolle vermerkt (schutz_offen {offen_(d)})", markt_ in offen_(d),
+       (offen_(d), res_["zeilen"][-3:], lage(k, sym_)))
+P.pending_abarbeiten()
+B.n_listen += 1000
+P.nachkontrolle(env, d)
+pruefe(f"16.H7 {sz_}: nach der Nachkontrolle steht der Long wieder unter einem wirksamen Stop ({[b_[:2] for b_ in befunde(k, d)][:2]})", not befunde(k, d), (lage(k, sym_), befunde(k, d)[:2]))
+
+# 16.H5/H5b (16. Prüfung, Belege b9/b14): im BEIDSEITIGEN Modus (ein unklarer Perp-Auftrag, ein zu grosser Stop) ist die Stop-Grösse ALLE Coins; der Ausstieg zum Markt («Kurs schon unter dem Stop-Kurs») verkaufte
+# aber dieselbe Menge — also auch die Absicherung des Shorts: der Short stand nackt da (H5: 0,046 BTC ≈ 4'650 USDT Absicherung verkauft; H5b: Test 14.E10 mit Hebel 0,5 endete mit Coins 0 und Short 0,047, weil er nur Coins zählte).
+# Jetzt wird nur die Netto-Richtung verkauft (_soll_netto); die übrigen Coins bekommen im beidseitigen Modus einen Not-Stop.
+def tag0_(sz_):
+    markt_, z0_, z1_ = sz_
+    k_ = P.neues_konto(20000)
+    d_ = P.neu_buch()
+    env_ = P.env_echt(kapital=20000)
+    P.lauf([P.E(markt_, z0_)], env_, d_)
+    for s_ in P.SYMS:
+        B.bewegen(s_, round(B.kurs[s_] * 1.01, 2))
+    return k_, d_, env_
+# H5: Hebel 0 → −0,5 mit unklarem Perp-Verkauf; das Long-Stop-Niveau des Signals liegt über dem Kurs (jenseits) — netto ist nichts long, die Coins sind nur die Absicherung des Shorts
+ende_ = {}
+for unklar_ in (False, True):
+    k, d, env = tag0_(("BTC", 0.0, -0.5))
+    p_ = B.kurs["BTCUSDT"]
+    e_ = {"markt": "BTC", "hebel": -0.5, "stop_long": p_ * 1.02, "stop_short": p_ * 1.10, "stand": "2026-10-13"}
+    B.regeln = [R._regel_schreiben(("POST", "/fapi/v1/order", None, "spaet_u", 1))] if unklar_ else []
+    try:
+        res_ = P.lauf([e_], env, d)
+    finally:
+        B.regeln = []
+    P.pending_abarbeiten()                                                                   # der unklare Verkauf kommt verspätet doch an
+    ende_[unklar_] = lage(k, "BTCUSDT")
+    pruefe(f"16.H5 BTC 0 → −0,5 ({'unklarer Perp-Verkauf, beidseitig' if unklar_ else 'ohne Störung'}): kein Befund ({[b_[:2] for b_ in befunde(k, d)][:2]})", not befunde(k, d), (ende_[unklar_], befunde(k, d)[:2]))
+pruefe(f"16.H5 BTC 0 → −0,5: im beidseitigen Modus bleibt die Absicherung des Shorts liegen (Coins {ende_[True]['coins']:g} gegenüber {ende_[False]['coins']:g} ohne Störung)",
+       ende_[True]["coins"] >= ende_[False]["coins"] - 0.002, (ende_[True], ende_[False]))
+# H5b: hängender Stop-Limit (Konto ohne STOP_LOSS-Typ), Ausstieg per cancelReplace scheitert (503 vor der Verarbeitung) dreimal bzw. dauerhaft; Hebel 0,5 (Absicherung 0,047) und 1,0 (keine)
+for name_, anzahl_ in (("dreimal", 3), ("dauerhaft", 10 ** 6)):
+    for hebel_ in (0.5, 1.0):
+        k = P.neues_konto(20000)
+        B.stop_typen = [x for x in B.stop_typen if x != "STOP_LOSS"]
+        d = P.neu_buch()
+        e_ = P.E("BTC", hebel_)
+        e_["stop_long"] = 90000.0
+        P.lauf([e_], P.env_echt(), d)
+        B.bewegen("BTCUSDT", 85000.0)
+        B.regeln = [dict(methode="POST", pfad="/api/v3/order/cancelReplace", art="vor503", anzahl=anzahl_)]
+        try:
+            res_ = P.lauf([e_], P.env_echt(), d)
+        finally:
+            B.regeln = []
+        g_ = lage(k, "BTCUSDT")
+        pruefe(f"16.H5b hängender Stop-Limit, cancelReplace {name_} unklar (Hebel {hebel_}): der Short bleibt abgesichert (Coins {g_['coins']:.4f}, Short {-g_['pos']:.4f}) und kein Befund",
+               g_["coins"] >= -g_["pos"] - 0.002 and not befunde(k, d), (g_, befunde(k, d)[:2], res_["zeilen"][-3:]))
+
+# ───────── 16. Prüfung: kleine Funde und Folgen (H3, H4, G2', gemachte Menge, Rückfall nach «nichts», Abbruch-Scan, Einstufung) ─────────
+import pruef_kill as K
+
+
+def tag0_16(sz):
+    """Tag 0 baut die Lage (Markt, Richtung gestern), danach ein Prozent Kursbewegung."""
+    markt_, z0_, _z1 = sz
+    k_ = neues_konto(20000)
+    d_ = neu_buch()
+    env_ = env_echt(kapital=20000)
+    lauf([E(markt_, z0_)], env_, d_)
+    for s_ in P.SYMS:
+        B.bewegen(s_, round(B.kurs[s_] * 1.01, 2))
+    return k_, d_, env_
+
+
+def ereignisse16(liste):
+    """liste: (Methode, Pfad, Bedingung, [Störungen]) — beim ERSTEN passenden Request schaltet das Ereignis seine Störungen ein (jedes einmal)."""
+    fertig = [False] * len(liste)
+
+    def haken_(m, pfad, p):
+        for i_, (em, ep, epred, ws) in enumerate(liste):
+            if not fertig[i_] and m == em and pfad == ep and (epred is None or epred(m, pfad, p)):
+                fertig[i_] = True
+                for w_ in ws:
+                    r_ = R._regel_schreiben(w_)
+                    if r_ is not None:
+                        B.regeln.append(r_)
+    B.vor_jeder_anfrage = haken_
+    return fertig
+
+
+# 16.H3: ein Perp-Stop kommt an, die Antwort geht verloren, die Liste zeigt ihn erst nach 12 Abfragen — jede weitere Anlage scheitert. Der nur verzögert sichtbare Stop darf nicht aus dem Gedächtnis
+# des Buchs fallen (Erhaltungssatz «kein dem Buch unbekannter eigener Stop», 1'870 USDT unbekannt)
+for sz_h3 in (("BTC", -0.25, 0.0), ("BTC", -0.5, -0.25)):
+    for art_h3 in ("vor503", "429", "abriss_vor"):
+        k, d, env = tag0_16(sz_h3)
+        B.regeln = [R._regel_schreiben(("POST", "/fapi/v1/algoOrder", None, "unsichtbar", 1)), regel(methode="POST", pfad="/fapi/v1/algoOrder", art=art_h3, anzahl=10 ** 6)]
+        try:
+            lauf([E(sz_h3[0], sz_h3[2])], env, d)
+        finally:
+            B.regeln = []
+        unb_lauf = [u for u in R.unbekannte(k, d) if not u[2]]
+        P.pending_abarbeiten()
+        B.n_listen += 1000
+        P.nachkontrolle(env, d)
+        unb_nk = R.unbekannte(k, d)
+        pruefe(f"16.H3 {sz_h3[0]} {sz_h3[1]:+g}→{sz_h3[2]:+g}, erster Perp-Stop nur verzögert sichtbar, weitere Anlagen {art_h3}: kein dem Buch unbekannter Stop (nach Lauf, nach Nachkontrolle)",
+               not unb_lauf and not unb_nk, (unb_lauf, unb_nk, json.loads(Path(d).read_text()).get("echt", {}).get("stops")))
+
+# 16.H4: Not-Aus, der Perp-Stop-Versuch kommt an (Antwort verloren), alle weiteren scheitern, der Rückkauf wird nur teilweise ausgeführt. Der angekommene Stop wird nicht gelöscht, solange der alte den
+# GANZEN Short nicht deckt (vorher 0,049 statt 0,074 von 0,095 BTC)
+k, d, env = tag0_16(("BTC", -0.25, 0.0))
+fertig_ = ereignisse16([("POST", "/fapi/v1/algoOrder", None, [R.GEIST_ERSTE[0], R.GEIST_ZWEITE[0]]), ("POST", "/fapi/v1/order", None, [("POST", "/fapi/v1/order", None, "teil", 1)])])
+try:
+    r = lauf([], env, d, notaus=True)
+finally:
+    B.vor_jeder_anfrage = None
+    B.regeln = []
+g_h4 = lage(k, "BTCUSDT")
+pruefe("16.H4 Not-Aus, Geister-Stop + teilweiser Rückkauf: der angekommene Stop bleibt, die Perp-Stops decken mehr als der alte allein (0,049)",
+       all(fertig_) and g_h4["p_qty"] > 0.06 and not R.unbekannte(k, d), (fertig_, g_h4, r["zeilen"][-4:]))
+
+# 16.G2': _buch_vereinen — ein Schreiber trägt nur die algoId desselben Stops nach (gleiche Kennung wie die Basis), der andere hat ihn inzwischen ersetzt: der lebende Stop des anderen bleibt bekannt
+def buch_h(perp, cid, weitere=None):
+    b_ = L.leer_buch()
+    b_["start"], b_["uid"], b_["stops"] = "x", 1, {"BTC": {"perp": perp, "perp_cid": cid, "perp_weitere": weitere}}
+    return b_
+
+
+neu_g2 = L._buch_vereinen(buch_h(104, "c2"), buch_h(106, "c1"), buch_h(None, "c1"))
+s_g2 = neu_g2["stops"]["BTC"]
+bekannt_g2 = {s_g2["perp_cid"]} | {(list(w) + [None, None])[1] for w in s_g2["perp_weitere"] or []}
+pruefe("16.G2' _buch_vereinen: ich trage nur die algoId nach, der andere ersetzte den Stop — dessen lebender Stop (c2) ist im Gedächtnis", "c2" in bekannt_g2 and (s_g2["perp"], s_g2["perp_cid"]) == (106, "c1"), s_g2)
+import pruef_vereinen as V  # noqa: E402
+verstoesse_g2 = [r_ for r_ in (V.lauf(sd_) for sd_ in range(0, 400)) if r_]
+pruefe("16.G2' Eigenschaftstest: drei Schreiber (Tageslauf, Not-Aus, Nachkontrolle), 400 zufällige Folgen — jeder gespeicherte lebende Stop steht danach im Buch", not verstoesse_g2, verstoesse_g2[:3])
+
+# 16.alt_deckt: eine nur TEILWEISE ausgeführte Spot-Order wird mit der ausgeführten Menge verbucht (erg["auftraege"] speist _alt_deckt: es rechnet daraus auf die Lage vor den heutigen Aufträgen zurück)
+for sz_ad in (("BTC", 0.25, 0.5), ("BTC", 0.0, 1.0), ("ETH", -0.5, 0.5)):
+    k, d, env = tag0_16(sz_ad)
+    coins_vor = k.frei[sz_ad[0]] + k.gesperrt[sz_ad[0]]
+    B.regeln = [regel(methode="POST", pfad="/api/v3/order", pred=lambda m, p, q: q.get("type") == "MARKET" and q.get("side") == "BUY", art="teil", anzahl=1)]
+    try:
+        r = lauf([E(sz_ad[0], sz_ad[2])], env, d)
+    finally:
+        B.regeln = []
+    coins_nach = k.frei[sz_ad[0]] + k.gesperrt[sz_ad[0]]
+    netto_auf = sum(a_[3] if a_[2] == "BUY" else -a_[3] for a_ in r["auftraege"] if len(a_) == 4 and a_[0] == sz_ad[0] and a_[1] == "spot")
+    pruefe(f"16.alt_deckt {sz_ad}: der nur teilweise ausgeführte Spot-Kauf wird mit der ausgeführten Menge verbucht (Coins +{coins_nach - coins_vor:.6f})",
+           abs(netto_auf - (coins_nach - coins_vor)) < 1e-6, (netto_auf, coins_nach - coins_vor, r["auftraege"]))
+
+# 16.Rückfall: ein ausgelöster STOP_LOSS_LIMIT hängt über dem Kurs (Konto ohne STOP_LOSS), cancelReplace lehnt JEDEN Not-Stop ab (Rate-Limit-Welle): der hängende schützt nichts — der Weg
+# «löschen + neuer Auftrag» hängt an anderen Anfragen (Lücken-Lauf-Seed 102857: 26 USDT bis zur Nachkontrolle ohne wirksamen Stop)
+for hebel_rf in (0.5, 1.0):
+    k = neues_konto(20000)
+    B.stop_typen = [x for x in B.stop_typen if x != "STOP_LOSS"]
+    d = neu_buch()
+    e = E("BTC", hebel_rf)
+    e["stop_long"] = 90000.0
+    lauf([e], env_echt(), d)
+    B.bewegen("BTCUSDT", 85000.0)
+    B.regeln = [regel(methode="POST", pfad="/api/v3/order/cancelReplace", art="429", anzahl=10 ** 6)]
+    try:
+        r = lauf([e], env_echt(), d)
+    finally:
+        B.regeln = []
+    g_rf = lage(k, "BTCUSDT")
+    pruefe(f"16.Rückfall hängender Stop-Limit, cancelReplace lehnt alles ab (Hebel {hebel_rf}): gelöscht, ein Not-Stop schützt den Long, kein Befund",
+           not befunde(k, d) and not P._haengend(k, "BTCUSDT") and g_rf["s_qty"] > 0, (befunde(k, d), g_rf, r["zeilen"][-3:]))
+
+# 16.Abbruch: der Tageslauf stirbt hart (Prozess beendet) nach dem n-ten Auftrag — der Markt steht VOR dem ersten Auftrag für die Nachkontrolle im Buch, sie holt die Stops nach.
+# Gemessen am Stand der 15. Runde: bei 47 von 97 Abbruchstellen lag danach eine Position ohne Stop, und die Nachkontrolle tat nichts
+for si_k in (2, 3, 8):
+    sz_k = R.SZENARIEN[si_k]
+    ges_k = K.schreibende(sz_k)
+    ergebnisse_k = [K.abbruch(sz_k, n_) for n_ in range(0, ges_k + 1)]
+    pruefe(f"16.Abbruch {sz_k}: bei jedem der {ges_k + 1} Abbrüche (nach jedem Auftrag) ist nach der Nachkontrolle nichts ungeschützt",
+           all(not m_.get("fehler") and not m_["arten"] for m_ in ergebnisse_k), [(m_["n"], m_.get("arten"), m_.get("fehler")) for m_ in ergebnisse_k if m_.get("fehler") or m_["arten"]][:3])
+    pruefe(f"16.Abbruch {sz_k}: lag direkt nach dem Abbruch etwas ohne Stop, stand der Markt für die Nachkontrolle im Buch",
+           all(sz_k[0] in m_["schutz_offen"] for m_ in ergebnisse_k if m_.get("gestorben") and (m_["sofort"][0] > 0 or m_["sofort"][1] > 0)),
+           [(m_["n"], m_["schutz_offen"], m_["sofort"]) for m_ in ergebnisse_k if m_.get("gestorben") and (m_["sofort"][0] > 0 or m_["sofort"][1] > 0) and sz_k[0] not in m_["schutz_offen"]][:3])
+
+# 16.Abbruch der Nachkontrolle (Fund des Abbruch-Scans `pruef_kill.py --nk`): im zweiten Durchgang rechnete der Perp-Teil des Abgleichs mit der Stop-Grösse vom Rundenanfang («Perp-Stop nicht nötig»), obwohl der
+# Spot-Teil den Markt eben beidseitig gemacht hatte — er löschte den frisch gesetzten Perp-Stop als «verwaist» und setzte ihn erst in der nächsten Runde neu; starb die Nachkontrolle dazwischen, stand der Short ohne Stop (4'747 USDT)
+# und ohne Vermerk. Jetzt wird die Stop-Grösse für den Perp-Teil neu berechnet, und der Markt steht im Buch, solange sein Abgleich läuft
+for si_nk in (2, 7):
+    z_nk, f_nk = K.scan_nk(si_nk, si_nk + 1, laut=False)
+    pruefe(f"16.Abbruch der Nachkontrolle {R.SZENARIEN[si_nk]}: {z_nk['abbruch']} Fälle (Tageslauf an 3 Stellen × Nachkontrolle nach 0, 1, 2 … Aufträgen), nach der zweiten Nachkontrolle nichts ungeschützt, keine Ausnahme",
+           z_nk["abbruch"] >= 6 and not f_nk, (dict(z_nk), [(m_["n"], m_["n2"], m_.get("arten"), m_.get("fehler")) for m_ in f_nk[:3]]))
+
+# 16.Abbruch × Störung: der Tageslauf stirbt hart, nachdem eine schreibende Störung (Antwort verloren, abgelehnt, …) schon gewirkt hat — der Vermerk und die Nachkontrolle tragen auch dann
+z_ks, f_ks = K.scan(2, 3, stoerungen=True, jeder=23, laut=False)
+pruefe(f"16.Abbruch × Störung (BTC 0,5 → −0,5, jeder 23. Fall): {z_ks['abbruch']} Abbrüche mit gewirkter Störung, keine Ausnahme, nach der Nachkontrolle nichts ungeschützt", z_ks["abbruch"] >= 3 and not f_ks, (dict(z_ks), f_ks[:2]))
+
+# 16.Raster II: die neuen Achsen der 16. Prüfung (pruef_raster2.py) laufen — Rauchprobe je Modus (mindestens 2 Fälle, in denen die Störung wirklich traf): keine Ausnahme, kein Befund
+import itertools
+from collections import Counter
+import pruef_raster2 as X
+
+
+def probe16(gen, gewollt=2, deckel=60):
+    z_, f_ = Counter(), []
+    for bez_, fkt_ in itertools.islice(gen, deckel):
+        zz_, ff_ = X.lauf_raster([(bez_, fkt_)], melde=lambda c: None)
+        z_.update(zz_)
+        f_ += ff_
+        if z_["lauf"] >= gewollt:
+            break
+    return z_, f_
+
+
+for was_x, gen_x in (("Einzelstörungen × cancelReplace unbekannt", X.zellen_basis(0, 3, "fehlt")), ("Paare mit eigenem Beginn", X.zellen_paare(0, 3)), ("Tripel", X.zellen_tripel(0, 3)),
+                     ("Kurssprung mitten im Lauf", X.zellen_kurs(0, 3, schritt=7)), ("Versatz schreibend × lesend", X.zellen_versatz(0, 3)), ("Geister-Stop × Kurssprung", X.zellen_geist(0, 3, "tag_kurs")),
+                     ("Geister-Stop × Rückkauf", X.zellen_geist(0, 12, "tag_rueck")), ("Not-Aus-Paare", X.zellen_paare(0, 12, notaus=True)), ("Geister-Stop im Not-Aus", X.zellen_geist(0, 12, "notaus")),
+                     ("Tripel auf einem Tag mit hängenden Stop-Limits", X.zellen_tripel_h([3]))):
+    z_x, f_x = probe16(gen_x)
+    pruefe(f"16.Raster II {was_x}: läuft ({z_x['lauf']} Fälle getroffen), keine Befunde, keine Ausnahme", z_x["lauf"] >= 2 and not f_x and not z_x["AUSNAHME"], (dict(z_x), [(f_["art"], f_.get("fehler")) for f_ in f_x[:2]]))
+
+# 16.Raster-II-Fund (Suchlauf der Schlusskampagne, Modus kurs --haengend): Konto ohne STOP_LOSS, der Long wächst 0,5 → 1,0, cancelReplace «nur_storno_verloren» (unklar), der Kurs springt unmittelbar vor einem der letzten
+# Blicke um −15 %/−4 % durch den frisch gesetzten Stop-Limit — der hing, stand sogar in der letzten Liste, und der Lauf endete stumm mit 15'604 USDT ohne wirksamen Stop. Jetzt bekommt jeder in der letzten Liste hängende Stop-Limit einen Not-Stop
+sz_rk, w_rk = ("BTC", 0.5, 1.0), X.NEU[0]
+n_rk = X.anzahl_anfragen(sz_rk, haengend=True)
+bad_rk, trafen_rk = [], 0
+for j_rk in range(max(1, n_rk - 10), n_rk + 1):
+    for fr_rk in (-0.15, -0.04):
+        e_rk = X.zelle(sz_rk, [X.ev(None, j_rk - 1, X.a_kurs(fr_rk)), X.ev(X.trig(w_rk), 0, X.a_regel(w_rk))], haengend=True)
+        if isinstance(e_rk, dict):
+            trafen_rk += 1
+            if R.klasse(e_rk):
+                bad_rk.append((j_rk, fr_rk, R.klasse(e_rk), e_rk["nach_lauf"][:1]))
+pruefe(f"16.Raster-II-Fund BTC +0,5 → +1,0, hängende Stop-Limits, cancelReplace nur_storno_verloren × Kurssprung vor einem der letzten {n_rk - max(1, n_rk - 10) + 1} Blicke: {trafen_rk} Fälle, kein Befund", trafen_rk >= 10 and not bad_rk, bad_rk[:3])
+
+# 16.Einstufung: eine Lücke durch einen hängenden Stop-Limit (LIMIT_LUECKE_) ist nur entschuldigt, wenn der Lauf den Markt angesehen (der Sprung kam danach) oder für die Nachkontrolle vermerkt hat
+bf_ll = [("LIMIT_LUECKE_LONG_OHNE_STOP", "BTCUSDT", 0.02, 2000.0)]
+for vm_, gl_, erw_ in (([], [], False), (["BTC"], [], True), (["ETH"], [], False), ([], ["BTC"], True), ([], ["ETH"], False)):
+    out_ = P._klassieren(bf_ll, {"warnung": True, "zeilen": []}, {"vermerkt": vm_, "gelesen": gl_})
+    pruefe(f"16.Einstufung LIMIT_LUECKE_, vermerkt {vm_}, angesehen {gl_}: {'entschuldigt' if erw_ else 'echter Befund (der Lauf sah den Markt nie an und vermerkte nichts)'}", bool(P.echte(out_)) != erw_, out_)
+out_ = P._klassieren(bf_ll, {"warnung": True, "zeilen": []}, {})
+pruefe("16.Einstufung LIMIT_LUECKE_ ohne Buchangabe im Kontext (z. B. Not-Aus): wie bisher entschuldigt", not P.echte(out_), out_)
+bf_vs = [("SPOT_STOP_UEBER_NETTO", "ETHUSDT", 0.3)]
+zeile_vs = "⚠️ ETH: ein alter Short-Stop hat ausgelöst, Kontostand danach nicht lesbar — 0.324 ETH vorsorglich unter Spot-Stop. Bitte prüfen!"
+for was_vs, erg_vs, vm_vs, erw_vs in (("Vorsorge-Stop gemeldet + vermerkt", {"warnung": True, "zeilen": [zeile_vs]}, ["ETH"], True), ("Vorsorge-Stop gemeldet, NICHT vermerkt", {"warnung": True, "zeilen": [zeile_vs]}, [], False),
+                                      ("vermerkt, aber kein Vorsorge-Stop gemeldet", {"warnung": True, "zeilen": []}, ["ETH"], False), ("Vorsorge-Stop, aber der Lauf warnte nicht", {"warnung": False, "zeilen": [zeile_vs]}, ["ETH"], False)):
+    out_ = P._klassieren(bf_vs, erg_vs, {"vermerkt": vm_vs})
+    pruefe(f"16.Einstufung SPOT_STOP_UEBER_NETTO, {was_vs}: {'dokumentiertes Restrisiko (VORSORGE_)' if erw_vs else 'echter Befund'}", bool(P.echte(out_)) != erw_vs, out_)
+
+# ── 16. Folge-Runde: Funde der Schlusskampagne camp16i (frische Seed-Bereiche 190000 ff.; alle am Stand a1cc2bc19 ein Befund) ──
+# E31 (Lauf-Seed 192881, Standardmodus, Konto ohne STOP_LOSS): nach H5 verkauft der Ausstieg nur noch die Netto-Richtung; die übrigen Coins (im beidseitigen Markt die Absicherung des Shorts) schützt ein Not-Stop.
+# Der kam mit EINEM Preis (5 %) — sprang der Kurs genau davor um −10,6 %, lehnte Binance ihn ab («würde sofort auslösen»), und 1,6 ETH blieben ohne Stop (6'907 USDT im beidseitigen Markt).
+# Jetzt probiert jeder Not-Stop ohne anderen Schutz auch 10/20/35 % (`_not_preise`).
+pruefe("16.E31 Lauf-Seed 192881 (Kurssprung −10,6 % genau vor dem einzigen Not-Stop, beidseitiger Markt): keine Befunde",
+       not P.echte(P.laeufe_runde(192881, 30)), [(f_[0], f_[1].get("tag")) for f_ in P.echte(P.laeufe_runde(192881, 30))][:3])
+pruefe("16.E31 _not_preise: 5 % zuerst, dann 10/20/35 % — unter dem Kurs (Spot-Long) und darüber (Short)",
+       [round(x, 4) for x in L._not_preise(100.0)] == [95.0, 90.0, 80.0, 65.0] and [round(x, 4) for x in L._not_preise(100.0, +1)] == [105.0, 110.0, 120.0, 135.0],
+       (L._not_preise(100.0), L._not_preise(100.0, +1)))
+SPRUNG_SPOT = lambda: [regel(methode="POST", pfad="/api/v3/order", pred=STOP_AUFTRAG, art="kurs", sym="BTCUSDT", preis=88000.0)]   # −12 % unmittelbar vor dem ersten Stop-Auftrag
+SPRUNG_PERP = lambda: [regel(methode="POST", pfad="/fapi/v1/algoOrder", art="kurs", sym="BTCUSDT", preis=112000.0)]                    # +12 % unmittelbar vor dem ersten Stop-Auftrag
+for was_, aufruf_ in (("_spot_raus", lambda sp_, fu_, dd_, w_, g_: L._spot_raus(sp_, "BTC", dd_, {}, 0.0, 100000.0, {"auftraege": []}, w_.append, g_, "Test",
+                                                                                lambda w=None: L._lage(sp_, fu_, dd_, w))),
+                      ("_spot_rest_sichern", lambda sp_, fu_, dd_, w_, g_: L._spot_rest_sichern(sp_, "BTC", dd_, {}, {"kurs": 100000.0, "frei": 0.5, "gebunden": 0.0}, 0.5, 95000.0, w_.append, g_)),
+                      ("_spot_vorsorge", lambda sp_, fu_, dd_, w_, g_: L._spot_vorsorge(sp_, "BTC", dict(dd_, perp_ausgeloest=0.3, perp_neu=0.3), {}, {"stop_long": 95000.0},
+                                                                                         {"kurs": 100000.0, "frei": 0.5}, w_.append, g_))):
+    k_, sp_, fu_, dd_ = handlage(coins=0.5, kurs=100000.0)
+    B.regeln = SPRUNG_SPOT()
+    w_, g_ = [], []
+    try:
+        aufruf_(sp_, fu_, dd_, w_, g_)
+    finally:
+        B.regeln = []
+    gl_ = lage(k_, "BTCUSDT")
+    pruefe(f"16.E31 {was_}: der Kurs springt um −12 % vor den Not-Stop → ein weiterer (20 %) steht, nicht «OHNE Stop»",
+           gl_["n_s"] == 1 and gl_["s_preise"][0] < 88000.0 and not any("OHNE Stop" in x_ for x_ in w_), (gl_, w_))
+for alt_steht_, erw_ in ((False, True), (True, False)):
+    k_, sp_, fu_, dd_ = handlage(short=0.1, kurs=100000.0)
+    B.regeln = SPRUNG_PERP()
+    w_, g_ = [], []
+    try:
+        ok_ = L._perp_notstop(fu_, "BTC", dd_, {}, 0.1, 100000.0, w_.append, g_, "Test", alt_steht=alt_steht_)
+    finally:
+        B.regeln = []
+    gl_ = lage(k_, "BTCUSDT")
+    pruefe(f"16.E31 _perp_notstop (alte Stops {'stehen noch' if alt_steht_ else 'weg'}): der Kurs springt um +12 % vor den Not-Stop → "
+           + ("ein weiterer (20 %) steht" if erw_ else "enger Preis abgelehnt, die alten schützen weiter (keine weiten Preise)"),
+           bool(ok_) is erw_ and (gl_["n_p"] == 1 and gl_["p_preise"][0] > 112000.0 if erw_ else gl_["n_p"] == 0), (ok_, gl_, w_))
+
+# E32/E33 (strenge Lauf-Seeds 200479/200540; Not-Aus gleich nach dem Tageslauf): der Perp-Stop des Tageslaufs steht, die Stop-Liste zeigt ihn aber erst nach ein paar Abfragen (Verzögerung).
+# Der Not-Aus hielt die Liste für leer: (a) E32 er setzte einen ZWEITEN Stop über denselben Short (2 × 2,212 ETH über einen Netto-Short von 2,211 — beim Auslösen kaufte er die Absicherung zurück),
+# (b) E33 er löschte den überflüssigen nicht, als der Netto-Short zurückgekauft war und das Paar blieb (0,001 BTC über einem Paar). Jetzt kennt er die im Buch bekannten, nur nicht sichtbaren Stops
+# (`_perp_versteckte`) und löscht sie über die Kennung — nach dem neuen Stop bzw. wenn keiner nötig ist.
+MARKT_VERKAUF_E32 = lambda m, p, q: q.get("type") == "MARKET" and q.get("side") == "SELL"
+P.STRENG = True
+try:
+    for seed_e32, was_e32 in ((200479, "E32: zweiter Perp-Stop über denselben Short"), (200540, "E33: überflüssiger Perp-Stop über dem verbliebenen Paar")):
+        funde = P.echte(P.laeufe_runde(seed_e32, 30))
+        pruefe(f"16.{was_e32} — strenger Lauf-Seed {seed_e32}: keine Befunde", not funde, [(f_[0], f_[1].get("tag"), f_[1].get("wann")) for f_ in funde][:3])
+finally:
+    P.STRENG = False
+    B.reduce_algo_streng = False
+for mkt_e32, sig_e32, art_e32 in (("ETH", -0.25, "429"), ("ETH", -0.5, "429"), ("BTC", -0.25, "ablehnen"), ("BTC", -0.5, "ablehnen")):
+    k = neues_konto(60000)
+    d = neu_buch()
+    lauf([E(mkt_e32, sig_e32)], env_echt(kapital=60000), d)
+    for a_e32 in k.algos.values():
+        a_e32["sichtbar_ab"] = B.n_listen + 8          # die Stops des Tages erscheinen in den Listen erst nach 8 Abfragen
+    sym_e32 = mkt_e32 + "USDT"
+    if art_e32 == "429":   # Rückkauf des Netto-Shorts scheitert dauerhaft → Schutz-Stop; der des Tages steht schon (unsichtbar) — keiner darf dazukommen
+        B.regeln = [regel(methode="POST", pfad="/fapi/v1/order", art="429", anzahl=10 ** 6)]
+    else:                  # Rückkauf klappt, die Coins lassen sich nicht verkaufen → das Paar bleibt; der Stop des Tages (unsichtbar) ist überflüssig und darf nicht stehen bleiben
+        B.regeln = [regel(methode="POST", pfad="/api/v3/order", pred=MARKT_VERKAUF_E32, art="ablehnen", anzahl=10 ** 6)]
+    try:
+        lauf([], env_echt(kapital=60000), d, notaus=True)
+    finally:
+        B.regeln = []
+    g_e32 = lage(k, sym_e32)
+    pruefe(f"16.E32/E33 Not-Aus {mkt_e32} {sig_e32:+.2f} ({art_e32}), Perp-Stop des Tages noch unsichtbar: "
+           + ("kein zweiter Stop" if art_e32 == "429" else "der überflüssige Stop über dem Paar ist weg") + ", keine Befunde",
+           not befunde(k, d) and g_e32["n_p"] == (1 if art_e32 == "429" else 0), (befunde(k, d), {x_: g_e32[x_] for x_ in ("coins", "pos", "p_qty", "n_p")}))
+
+# E34 (strenger Lauf-Seed 203507): der Kurs springt mitten im Abgleich über den alten Perp-Stop (+8,9 %) — er löst aus und schliesst den Short. Der Perp-Teil rechnete mit der Position vom Rundenanfang, wollte einen
+# Stop über den schon geschlossenen Short setzen (reduceOnly ohne Position: −2022) und warf damit den ganzen Abgleich ab (`if gescheitert: break`): die 0,19 ETH, die der Spot-Teil in der nächsten Runde
+# gesichert hätte, blieben ohne Stop (811 USDT). Jetzt ist «−2022, frisch gelesen: keine Position» kein Fehler, sondern eine weitere Runde. (Der alte Code hatte ihn nicht — die Neuberechnung für den Perp-Teil
+# aus dem Abbruch-Scan der Nachkontrolle machte ihn erreichbar.)
+P.STRENG = True
+try:
+    funde = P.echte(P.laeufe_runde(203507, 30))
+    pruefe("16.E34 strenger Lauf-Seed 203507 (alter Perp-Stop löst im Abgleich aus, der Short ist weg): keine Befunde", not funde, [(f_[0], f_[1].get("tag"), f_[1].get("wann")) for f_ in funde][:3])
+finally:
+    P.STRENG = False
+    B.reduce_algo_streng = False
+k_, sp_, fu_, dd_ = handlage(coins=0.5, short=0.0, kurs=100000.0)       # die Position ist schon zu (ein alter Stop hat ausgelöst) — der Abgleich rechnet noch mit einem Short von 0,3
+dd_["beidseitig"] = True
+s_ = L._soll(0.5, -0.3, 100000.0, dd_)
+s_.update(frei=0.5, gebunden=0.0)
+B.reduce_algo_streng = True
+w_, ausn_ = [], None
+try:
+    L._perp_abgleich(fu_, "BTC", dd_, {}, {"stop_short": 120000.0}, s_, {"auftraege": []}, w_.append, [], [], lambda w=None: L._lage(sp_, fu_, dd_, w), False)
+except Exception as ex_:  # noqa: BLE001
+    ausn_ = ex_
+finally:
+    B.reduce_algo_streng = False
+pruefe("16.E34 _perp_abgleich: Stop über einen Short, den es nicht mehr gibt (−2022, frisch gelesen: Position 0) → kein Fehler, eine weitere Runde",
+       ausn_ is None and dd_.get("neue_runde") is True and lage(k_, "BTCUSDT")["n_p"] == 0, (ausn_, dd_.get("neue_runde"), lage(k_, "BTCUSDT"), w_))
+w_, ausn_ = [], None
+dd_ = {k_x: v_x for k_x, v_x in dd_.items() if k_x != "neue_runde"}
+s_ = L._soll(0.5, -0.3, 100000.0, dd_)
+s_.update(frei=0.5, gebunden=0.0)
+B.reduce_algo_streng = True
+try:   # Gegenprobe: die Position gibt es (Short 0,3, Kurs weiter weg) → der Stop wird ganz normal gesetzt
+    k2_, sp2_, fu2_, dd2_ = handlage(coins=0.5, short=0.3, kurs=100000.0)
+    dd2_["beidseitig"] = True
+    s2_ = L._soll(0.5, -0.3, 100000.0, dd2_)
+    s2_.update(frei=0.5, gebunden=0.0)
+    L._perp_abgleich(fu2_, "BTC", dd2_, {}, {"stop_short": 120000.0}, s2_, {"auftraege": []}, w_.append, [], [], lambda w=None: L._lage(sp2_, fu2_, dd2_, w), False)
+except Exception as ex_:  # noqa: BLE001
+    ausn_ = ex_
+finally:
+    B.reduce_algo_streng = False
+pruefe("16.E34 _perp_abgleich Gegenprobe: der Short existiert → der Stop steht (keine zweite Runde nötig)", ausn_ is None and lage(k2_, "BTCUSDT")["n_p"] == 1 and not dd2_.get("neue_runde"), (ausn_, lage(k2_, "BTCUSDT")))
+
+# E35 (Lücken-Lauf-Seed 210028): die Antwort des Spot-Stops ging verloren, die Wiederholung hörte «Duplicate order» — der Stop steht, aber das Buch kennt nur seinen Kurs (`p_long`), nicht die ID (`spot: null`).
+# Der Frühausstieg «Konto nicht lesbar» (F-a) vermerkte nur Märkte mit ID: der nach einer Kurslücke hängende Stop-Limit (33 USDT) blieb bis zum nächsten Tageslauf unbemerkt. Jetzt zählt jeder Stop-Eintrag im Buch.
+_alt_l35 = P.LUECKEN
+P.LUECKEN = True
+try:
+    funde = P.echte(P.laeufe_runde(210028, 30))
+    pruefe("16.E35 Lücken-Lauf-Seed 210028 (Stop-ID unbekannt, Konto beim nächsten Lauf nicht lesbar): keine Befunde", not funde, [(f_[0], f_[1].get("tag"), f_[1].get("wann")) for f_ in funde][:3])
+finally:
+    P.LUECKEN = _alt_l35
+    B.stop_typen = ["LIMIT", "MARKET", "STOP_LOSS", "STOP_LOSS_LIMIT", "TAKE_PROFIT", "TAKE_PROFIT_LIMIT", "LIMIT_MAKER"]
+sz_ = ("BTC", 0.5, 1.0)
+t_ = tag0h_(sz_)
+if t_ is not None:
+    k, d, env = t_
+    b_ = json.loads(open(d).read())
+    b_["echt"]["stops"][sz_[0]]["spot"] = None                           # das Buch kennt die ID des Stops nicht (nur p_long)
+    open(d, "w").write(json.dumps(b_))
+    B.regeln = [R._regel_lesen(("GET", "/api/v3/account", "vor503", 4))]
+    try:
+        P.lauf([P.E(sz_[0], sz_[2])], env, d)
+    finally:
+        B.regeln = []
+    pruefe(f"16.E35 F-a {sz_}: «Konto nicht lesbar», das Buch kennt die Stop-ID nicht (spot: null, p_long gesetzt) → der Markt ist für die Nachkontrolle vermerkt (schutz_offen {offen_(d)})", sz_[0] in offen_(d), offen_(d))
+    P.pending_abarbeiten()
+    B.n_listen += 1000
+    P.nachkontrolle(env, d)
+    pruefe(f"16.E35 F-a {sz_}: nach der Nachkontrolle steht der Long (hängender Stop-Limit) wieder unter einem wirksamen Stop ({[b_x[:2] for b_x in befunde(k, d)][:2]})", not befunde(k, d), (lage(k, "BTCUSDT"), befunde(k, d)[:2]))
+B.stop_typen = ["LIMIT", "MARKET", "STOP_LOSS", "STOP_LOSS_LIMIT", "TAKE_PROFIT", "TAKE_PROFIT_LIMIT", "LIMIT_MAKER"]
+
+# E36 (Lauf-Seed 212699, streng + Lücken): zwei ausgelöste, über dem Kurs hängende Stop-Limits sperren die Coins; cancelReplace storniert beide, ohne den Ersatz zu setzen («nur_storno», 409). Zwei Lücken:
+# (a) `_haengenden_ersetzen` kannte den Ausgang «nur_storno» nicht — die freien Coins blieben bis zur Nachkontrolle ohne Stop (der Aufrufer warnte nur); jetzt setzt `_nach_storno_stoppen` sofort einen Not-Stop aus ihnen;
+# (b) die Menge für den zweiten hängenden Stop stammte vom Rundenanfang (0,1992) und kannte den Wegfall des ersten nicht (0,2545 wären nötig): jetzt rechnet der Schluss den Bedarf frisch (Soll − wirksame Stops − schon Zugeteiltes).
+P.STRENG = True
+_alt_l36 = P.LUECKEN
+P.LUECKEN = True
+try:
+    funde = P.echte(P.laeufe_runde(212699, 30))
+    pruefe("16.E36 streng + Lücken, Lauf-Seed 212699 (zwei hängende Stop-Limits, zweimal «nur_storno»): keine Befunde", not funde, [(f_[0], f_[1].get("tag"), f_[1].get("wann")) for f_ in funde][:3])
+finally:
+    P.STRENG = False
+    P.LUECKEN = _alt_l36
+    B.reduce_algo_streng = False
+    B.stop_typen = ["LIMIT", "MARKET", "STOP_LOSS", "STOP_LOSS_LIMIT", "TAKE_PROFIT", "TAKE_PROFIT_LIMIT", "LIMIT_MAKER"]
+k_, sp_, fu_, dd_ = handlage(coins=0.5, kurs=100000.0)
+B.stop_typen = [x for x in B.stop_typen if x != "STOP_LOSS"]                       # Konto ohne Markt-Stop (handlage setzt die Typen zurück): Börse UND Markt-Daten
+dd_["rs"] = dict(dd_["rs"], typen=[x for x in dd_["rs"].get("typen", []) if x != "STOP_LOSS"])
+eigener_spot_stop(sp_, dd_, 0.5, 95000.0)
+B.bewegen("BTCUSDT", 85000.0)                                                       # Kurslücke unter das Limit (90250): der Stop ist ausgelöst und hängt
+o_h_ = sp_.eigene_stops("BTCUSDT")[0]
+B.regeln = [regel(methode="POST", pfad="/api/v3/order/cancelReplace", art="nur_storno", anzahl=1)]
+w_, g_ = [], []
+try:
+    ok_ = L._haengenden_ersetzen(sp_, "BTC", dict(dd_, kurs=85000.0), {}, o_h_, 0.5, 85000.0, w_.append, g_, lambda w=None: L._lage(sp_, fu_, dd_, w))
+finally:
+    B.regeln = []
+    B.stop_typen = ["LIMIT", "MARKET", "STOP_LOSS", "STOP_LOSS_LIMIT", "TAKE_PROFIT", "TAKE_PROFIT_LIMIT", "LIMIT_MAKER"]
+gl_ = lage(k_, "BTCUSDT")
+pruefe("16.E36 _haengenden_ersetzen: cancelReplace storniert den hängenden Stop und lehnt den Not-Stop ab (409) → die freien Coins bekommen sofort einen Not-Stop (nicht «OHNE Stop»)",
+       ok_ is True and gl_["n_s"] == 1 and abs(gl_["s_qty"] - 0.5) < 1e-6 and not any("OHNE Stop" in x_ for x_ in w_), (ok_, gl_, w_))
+
+# E37 (Lücken-Not-Aus-Seed 214139): ein ausgelöster Stop-Limit hängt (Kurslücke); der Not-Aus will ihn per cancelReplace gegen einen Marktverkauf tauschen (503, unklar) und ihn dann löschen — drei Ablehnungen
+# in Folge (503) verbrauchten die drei Versuche des Standards, die Coins blieben unter einem Stop, der nichts schützt (3'288 USDT). Jetzt löscht der Not-Aus mit dem langen Budget (SCHUTZ_WARTEN, fünf Versuche).
+P.LUECKEN = True
+try:
+    funde = P.notaus_runde(214139)
+    pruefe("16.E37 Lücken-Not-Aus-Seed 214139 (hängender Stop-Limit, drei Ablehnungen beim Löschen): keine echten Befunde", not P.echte(funde), [(f_[0], f_[2][:3] if isinstance(f_[2], (list, tuple)) else None) for f_ in P.echte(funde)][:3])
+finally:
+    P.LUECKEN = _alt_l36
+    B.stop_typen = ["LIMIT", "MARKET", "STOP_LOSS", "STOP_LOSS_LIMIT", "TAKE_PROFIT", "TAKE_PROFIT_LIMIT", "LIMIT_MAKER"]
+k = neues_konto(60000)
+B.stop_typen = [x for x in B.stop_typen if x != "STOP_LOSS"]
+d = neu_buch()
+lauf([E("BTC", 0.5)], env_echt(kapital=60000), d)
+_limits37 = [o_["preis"] for o_ in k.orders.values() if o_["symbol"] == "BTCUSDT" and o_["typ"] == "STOP_LOSS_LIMIT" and o_["status"] in ("NEW", "PARTIALLY_FILLED")]
+if _limits37:
+    B.bewegen("BTCUSDT", round(min(_limits37) * 0.99, 2))                           # Kurslücke: der Stop hängt über dem Kurs
+    B.regeln = [regel(methode="POST", pfad="/api/v3/order/cancelReplace", art="vor503", anzahl=1), regel(methode="DELETE", pfad="/api/v3/order", art="vor503", anzahl=3)]
+    try:
+        lauf([], env_echt(kapital=60000), d, notaus=True)
+    finally:
+        B.regeln = []
+    pruefe("16.E37 Not-Aus, hängender Stop-Limit, cancelReplace 503 und das Löschen dreimal 503: die Coins sind verkauft oder stehen unter einem wirksamen Stop",
+           not befunde(k, d), (befunde(k, d)[:2], lage(k, "BTCUSDT")))
+B.stop_typen = ["LIMIT", "MARKET", "STOP_LOSS", "STOP_LOSS_LIMIT", "TAKE_PROFIT", "TAKE_PROFIT_LIMIT", "LIMIT_MAKER"]
+
+# E38 (Lücken-Not-Aus-Seed 214517, Prüf-Werkzeug): ein Coin-Rest von 5,994e-05 BTC lag beim Not-Aus UNTER dem Binance-Minimum (4,95 USDT); ein Kurssprung (+1,9 %) NACH dem Entscheid machte ihn verkäuflich — flach() rechnet
+# mit dem Schlusskurs, der saubere Not-Aus verkauft Coins, die das Buch nicht kennt, nie von selbst. Kein Befund des Piloten: der Fuzzer unterscheidet jetzt (`_nur_coins_uebrig`).
+P.LUECKEN = True
+try:
+    funde = P.notaus_runde(214517)
+    pruefe("16.E38 Lücken-Not-Aus-Seed 214517 (Rest unter dem Minimum, Kurssprung nach dem Entscheid): keine Befunde", not P.echte(funde), [f_[0] for f_ in P.echte(funde)][:3])
+finally:
+    P.LUECKEN = _alt_l36
+    B.stop_typen = ["LIMIT", "MARKET", "STOP_LOSS", "STOP_LOSS_LIMIT", "TAKE_PROFIT", "TAKE_PROFIT_LIMIT", "LIMIT_MAKER"]
+
+# E39 (strenger Lauf-Seed 240021, auch am Stand der 15. Runde): nach Ablehnungen setzt Pilot 2.0 für gewachsene Positionen Zusatz-Stops statt eines grösseren (cancelReplace ist dann gesperrt) — über Tage standen
+# fünf Spot-Stops am selben Preis, das Maximum (Filter MAX_NUM_ALGO_ORDERS). Ein weiterer Zusatz-Stop (0,00299 BTC, 241 USDT) war nicht mehr möglich, und jede Nachkontrolle scheiterte ebenso («weiterhin nicht gesichert»).
+# Jetzt legt `_stops_zusammenlegen` den Zusatz-Stop mit dem grössten bestehenden zusammen (cancelReplace: die Zahl der Aufträge bleibt gleich).
+P.STRENG = True
+try:
+    for seed_e39 in (240021, 240838):
+        funde = P.echte(P.laeufe_runde(seed_e39, 30))
+        pruefe(f"16.E39 strenger Lauf-Seed {seed_e39} (fünf Spot-Stops = Limit, ein weiterer Zusatz-Stop nötig): keine Befunde", not funde, [(f_[0], f_[1].get("tag"), f_[1].get("wann")) for f_ in funde][:3])
+finally:
+    P.STRENG = False
+    B.reduce_algo_streng = False
+k_, sp_, fu_, dd_ = handlage(coins=0.1, kurs=100000.0)
+for _i39 in range(5):
+    eigener_spot_stop(sp_, dd_, 0.01, 90000.0)                                                 # fünf Stops à 0,01 = das Limit des Paares
+w_, g_ = [], []
+L._spot_rest_sichern(sp_, "BTC", dd_, {}, {"kurs": 100000.0, "frei": 0.05, "gebunden": 0.05}, 0.08, 95000.0, w_.append, g_)
+gl_ = lage(k_, "BTCUSDT")
+pruefe("16.E39 _spot_rest_sichern am Limit der Stop-Aufträge: der Zusatz-Stop (0,03) wird mit dem grössten bestehenden zusammengelegt (5 Aufträge, zusammen 0,08), nicht «ohne Stop»",
+       gl_["n_s"] == 5 and abs(gl_["s_qty"] - 0.08) < 1e-6 and not any("ohne Stop" in x_ for x_ in w_), (gl_, w_, g_))
+k_, sp_, fu_, dd_ = handlage(coins=0.1, kurs=100000.0)
+for _i39 in range(4):
+    eigener_spot_stop(sp_, dd_, 0.01, 90000.0)
+w_, g_ = [], []
+L._spot_rest_sichern(sp_, "BTC", dd_, {}, {"kurs": 100000.0, "frei": 0.06, "gebunden": 0.04}, 0.07, 95000.0, w_.append, g_)
+gl_ = lage(k_, "BTCUSDT")
+pruefe("16.E39 Gegenprobe: unter dem Limit (4 Stops) kommt ein ganz normaler Zusatz-Stop dazu (5 Aufträge, 0,07)", gl_["n_s"] == 5 and abs(gl_["s_qty"] - 0.07) < 1e-6, (gl_, w_))
+k_, sp_, fu_, dd_ = handlage(coins=0.1, kurs=100000.0)
+for _i39 in range(5):
+    eigener_spot_stop(sp_, dd_, 0.01, 90000.0)
+B.regeln = [regel(methode="POST", pfad="/api/v3/order/cancelReplace", art="nur_storno", anzahl=1)]
+w_, g_ = [], []
+try:
+    L._spot_rest_sichern(sp_, "BTC", dd_, {}, {"kurs": 100000.0, "frei": 0.05, "gebunden": 0.05}, 0.08, 95000.0, w_.append, g_)
+finally:
+    B.regeln = []
+pruefe("16.E39 Zusammenlegen: kommt nur der Storno an (409), ist die Nachkontrolle vorgemerkt (die frei gewordenen Coins bekommen dort ihren Stop)", dd_.get("nachkontrolle") is True, (dd_.get("nachkontrolle"), w_, g_))
+
+# E40 (strenger Lauf-Seed 242916, auch am Stand der 15. Runde): der Not-Aus kauft den Netto-Short zurück, die Coins lassen sich nicht verkaufen (PERCENT_PRICE_BY_SIDE), der alte Perp-Stop (über den Netto-Short,
+# jetzt zu gross) lässt sich nicht löschen (503, fünf Versuche): die Coins bekamen einen Spot-Stop über ALLES — löst DER aus, stand der Short (0,2059) nur zu 0,094 unter dem alten Stop (0,112 ETH ohne Stop).
+# Jetzt steht der Markt dann beidseitig: die Perp-Stops zusammen über den ganzen Short — aber nur, wenn die Coins ihren Spot-Stop wirklich haben.
+P.STRENG = True
+try:
+    funde = P.echte(P.laeufe_runde(242916, 30))
+    pruefe("16.E40 strenger Lauf-Seed 242916 (Not-Aus, Netto-Short zurückgekauft, Coins unverkäuflich, alter Perp-Stop nicht löschbar): keine Befunde", not funde,
+           [(f_[0], f_[1].get("tag"), f_[1].get("wann")) for f_ in funde][:3])
+finally:
+    P.STRENG = False
+    B.reduce_algo_streng = False
+
+
+def e40_notaus_(regeln_, st_=None, alte_=((0.1, 110000.0),), kurs_=100000.0, frei_=0.2):
+    """Paar (Coins = Short = 0,2) mit alten Perp-Stops über den Netto-Short; `_notaus_schutz` direkt. → (ok, Lage, Warnungen, Buch, Zahl der Perp-Stop-Aufträge)"""
+    k0_, sp0_, fu0_, dd0_ = handlage(coins=frei_, short=0.2, kurs=kurs_)
+    for m_, p_ in alte_:
+        fu0_.stop_menge("BTCUSDT", "BUY", m_, p_, dd0_["rf"]["tick"], cid=L._kennung(L.CID_STOP_PERP))
+    n0_ = len(B.log)
+    B.regeln = regeln_
+    w0_, s0_ = [], {} if st_ is None else st_
+    try:
+        ok0_ = L._notaus_schutz(sp0_, fu0_, s0_, "BTC", "BTCUSDT", "BTC", -0.2, -0.2, frei_, 0.0, kurs_, dd0_["rs"], w0_.append, "echt")
+    finally:
+        B.regeln = []
+    neu_ = sum(1 for x_ in B.log[n0_:] if x_[1] == "POST" and x_[2] == "/fapi/v1/algoOrder" and x_[4] == 200)
+    return ok0_, lage(k0_, "BTCUSDT"), w0_, s0_, neu_
+
+
+LOESCHEN_KAPUTT_ = regel(methode="DELETE", pfad="/fapi/v1/algoOrder", art="vor503", anzahl=10 ** 6)
+ok_, gl_, w_, st_, neu_ = e40_notaus_([LOESCHEN_KAPUTT_])
+pruefe("16.E40 Not-Aus-Schutz, Paar, alter Perp-Stop (0,1) nicht löschbar: Spot-Stop über ALLE Coins UND die Perp-Stops zusammen über den ganzen Short (alter 0,1 + neuer 0,1)",
+       ok_ and abs(gl_["s_qty"] - 0.2) < 1e-6 and abs(gl_["p_qty"] - 0.2) < 1e-6 and gl_["n_p"] == 2 and neu_ == 1, (ok_, gl_, w_, neu_))
+pruefe("16.E40 … das Buch kennt den neuen Perp-Stop (der alte steht nur in der Liste)", st_.get("perp") is not None and st_.get("perp_cid") and not st_.get("perp_weitere"), st_)
+ok_, gl_, w_, st_, neu_ = e40_notaus_([LOESCHEN_KAPUTT_], st_={"perp": 901, "perp_cid": "p2aAAAA"})
+pruefe("16.E40 … kannte das Buch den alten Stop schon, merkt es ihn als «weiteren» (beide bekannt)", st_.get("perp") != 901 and [901, "p2aAAAA"] in (st_.get("perp_weitere") or []), st_)
+ok_, gl_, w_, st_, neu_ = e40_notaus_([])
+pruefe("16.E40 Gegenprobe: geht das Löschen, ist das Paar neutral — weder Spot- noch Perp-Stop bleibt", ok_ and gl_["n_s"] == 0 and gl_["n_p"] == 0 and neu_ == 0, (ok_, gl_, w_, neu_))
+ok_, gl_, w_, st_, neu_ = e40_notaus_([LOESCHEN_KAPUTT_, regel(methode="POST", pfad="/api/v3/order", pred=STOP_AUFTRAG, art="vor503", anzahl=10 ** 6)])
+pruefe("16.E40 der Spot-Stop über die Coins wird abgelehnt: KEIN zusätzlicher Perp-Stop (löste er mit dem alten aus, lägen die Coins ohne Absicherung UND ohne Stop) — laut gewarnt",
+       ok_ is False and gl_["n_s"] == 0 and abs(gl_["p_qty"] - 0.1) < 1e-6 and neu_ == 0 and any("Schutz-Stop abgelehnt" in x_ for x_ in w_), (ok_, gl_, w_, neu_))
+ok_, gl_, w_, st_, neu_ = e40_notaus_([LOESCHEN_KAPUTT_, regel(methode="POST", pfad="/fapi/v1/algoOrder", art="vor503", anzahl=10 ** 6)])
+pruefe("16.E40 der ergänzende Perp-Stop wird abgelehnt: laut gemeldet («Sofort prüfen»), der Spot-Stop bleibt, Not-Aus nicht «ok»",
+       ok_ is False and abs(gl_["s_qty"] - 0.2) < 1e-6 and abs(gl_["p_qty"] - 0.1) < 1e-6 and any("nicht gestoppt" in x_ for x_ in w_), (ok_, gl_, w_, neu_))
+# Liste der Perp-Stops nicht lesbar: kennt das Buch schon zwei Stops, kommt keiner dazu (sonst käme in jedem Takt der Nachkontrolle einer dazu); kennt es nur einen, kommt einer über den ganzen Short dazu
+# der ergänzende Perp-Stop würde sofort auslösen (der Kurs ist seit dem Lesen auf 115'000 gesprungen) und kein frischer Kurs ist lesbar → zum Markt: dieser Teil des Shorts (0,1) wird zurückgekauft, der alte Stop deckt den Rest
+k_, sp_, fu_, dd_ = handlage(coins=0.2, short=0.2, kurs=100000.0)
+k_.fut = 20000.0                                                                           # sonst würde der Short beim Kurssprung zwangsgeschlossen
+fu_.stop_menge("BTCUSDT", "BUY", 0.1, 140000.0, dd_["rf"]["tick"], cid=L._kennung(L.CID_STOP_PERP))
+B.bewegen("BTCUSDT", 115000.0)
+B.regeln = list(KURS_WEG) + [LOESCHEN_KAPUTT_]
+w_ = []
+try:
+    L._notaus_schutz(sp_, fu_, {}, "BTC", "BTCUSDT", "BTC", -0.2, -0.2, 0.2, 0.0, 100000.0, dd_["rs"], w_.append, "echt")
+finally:
+    B.regeln = []
+gl_ = lage(k_, "BTCUSDT")
+pruefe("16.E40 der ergänzende Perp-Stop würde sofort auslösen, kein frischer Kurs lesbar → zum Markt: 0,1 des Shorts zurückgekauft (Rest 0,1 unter dem alten Stop)",
+       abs(gl_["pos"] + 0.1) < 1e-6 and abs(gl_["p_qty"] - 0.1) < 1e-6 and abs(gl_["s_qty"] - 0.2) < 1e-6, (gl_, w_))
+LISTE_KAPUTT_ = regel(methode="GET", pfad="/fapi/v1/openAlgoOrders", art="vor503", anzahl=10 ** 6)
+ok_, gl_, w_, st_, neu_ = e40_notaus_([LOESCHEN_KAPUTT_, LISTE_KAPUTT_], st_={"perp": 901, "perp_cid": "p2aAAAA", "perp_weitere": [[902, "p2aBBBB"]]}, alte_=((0.1, 110000.0), (0.1, 111000.0)))
+pruefe("16.E40 Perp-Liste nicht lesbar, das Buch kennt schon zwei Stops: keiner kommt dazu", neu_ == 0 and gl_["n_p"] == 2, (ok_, gl_, w_, neu_))
+ok_, gl_, w_, st_, neu_ = e40_notaus_([LOESCHEN_KAPUTT_, LISTE_KAPUTT_], st_={"perp": 901, "perp_cid": "p2aAAAA"})
+pruefe("16.E40 Perp-Liste nicht lesbar, das Buch kennt nur einen Stop: einer über den ganzen Short kommt dazu, der alte bleibt gemerkt", neu_ == 1 and abs(gl_["p_qty"] - 0.3) < 1e-6 and [901, "p2aAAAA"] in (st_.get("perp_weitere") or []), (ok_, gl_, w_, neu_, st_))
+
+# E41 (Nachprüfung zu E40, Kette von Nachkontroll-Durchgängen): steht der Markt schon beidseitig vollständig (alle Coins unter einem Spot-Stop UND der ganze Short unter Perp-Stops), räumt der Not-Aus nicht auf:
+# das Aufräumen (der Spot-Stop über die Absicherung ist «zu gross») löschte den Spot-Stop in JEDEM Takt der Nachkontrolle und setzte ihn gleich neu — solange ein Perp-Stop nicht löschbar war, ein Fenster ohne Schutz.
+def e41_schreibend_(n0_):
+    return [(x_[1], x_[2], x_[3].get("type")) for x_ in B.log[n0_:] if x_[1] in ("POST", "DELETE")]
+
+
+k_, sp_, fu_, dd_ = handlage(coins=0.2, short=0.2, kurs=100000.0)
+fu_.stop_menge("BTCUSDT", "BUY", 0.1, 110000.0, dd_["rf"]["tick"], cid=L._kennung(L.CID_STOP_PERP))
+st_ = {}
+B.regeln = [LOESCHEN_KAPUTT_]
+schreib_ = []
+try:
+    for _d41 in range(4):
+        n0_ = len(B.log)
+        L._notaus_schutz(sp_, fu_, st_, "BTC", "BTCUSDT", "BTC", -0.2, -0.2, k_.frei["BTC"], k_.gesperrt["BTC"], 100000.0, dd_["rs"], [].append, "echt")
+        schreib_.append(e41_schreibend_(n0_))
+finally:
+    B.regeln = []
+gl_ = lage(k_, "BTCUSDT")
+pruefe("16.E41 Not-Aus-Schutz, Paar, alter Perp-Stop nicht löschbar: nach dem ersten Durchgang stehen beide Seiten ganz — die drei folgenden schreiben NICHTS (kein Löschen und Neusetzen des Spot-Stops)",
+       len(schreib_[0]) == 2 and schreib_[1:] == [[], [], []] and abs(gl_["s_qty"] - 0.2) < 1e-6 and abs(gl_["p_qty"] - 0.2) < 1e-6, (schreib_, gl_))
+# Gegenprobe a: Spot-Stop über alle Coins, aber KEIN Perp-Stop → nicht vollständig: der Spot-Stop über die Absicherung wird aufgeräumt (das Paar ist neutral)
+k_, sp_, fu_, dd_ = handlage(coins=0.2, short=0.2, kurs=100000.0)
+eigener_spot_stop(sp_, dd_, 0.2, 95000.0)
+n0_ = len(B.log)
+L._notaus_schutz(sp_, fu_, {}, "BTC", "BTCUSDT", "BTC", -0.2, -0.2, 0.0, 0.2, 100000.0, dd_["rs"], [].append, "echt")
+gl_ = lage(k_, "BTCUSDT")
+pruefe("16.E41 Gegenprobe: Spot-Stop über alle Coins, aber kein Perp-Stop (nicht beidseitig vollständig) → normaler Weg: der Spot-Stop über die Absicherung wird gelöscht", gl_["n_s"] == 0 and gl_["n_p"] == 0, (gl_, e41_schreibend_(n0_)))
+# Gegenprobe b: Perp-Stops über den ganzen Short, aber der Spot-Stop deckt nur einen Teil der Coins → normaler Weg: beide Seiten werden aufgeräumt
+k_, sp_, fu_, dd_ = handlage(coins=0.2, short=0.2, kurs=100000.0)
+eigener_spot_stop(sp_, dd_, 0.1, 95000.0)
+fu_.stop_menge("BTCUSDT", "BUY", 0.2, 110000.0, dd_["rf"]["tick"], cid=L._kennung(L.CID_STOP_PERP))
+n0_ = len(B.log)
+L._notaus_schutz(sp_, fu_, {}, "BTC", "BTCUSDT", "BTC", -0.2, -0.2, 0.1, 0.1, 100000.0, dd_["rs"], [].append, "echt")
+gl_ = lage(k_, "BTCUSDT")
+pruefe("16.E41 Gegenprobe: Perp-Stops über den ganzen Short, aber der Spot-Stop deckt nur die Hälfte der Coins (nicht vollständig) → normaler Weg: beide Seiten aufgeräumt", gl_["n_s"] == 0 and gl_["n_p"] == 0, (gl_, e41_schreibend_(n0_)))
+# Gegenprobe c: der Spot-Stop über alle Coins ist ein HÄNGENDER Stop-Limit (Konto ohne STOP_LOSS, Kurslücke) — er schützt nichts und zählt nicht → normaler Weg: er wird gelöscht
+k_, sp_, fu_, dd_ = handlage(coins=0.2, short=0.2, kurs=100000.0)
+B.stop_typen = [x_ for x_ in B.stop_typen if x_ != "STOP_LOSS"]
+dd_["rs"] = dict(dd_["rs"], typen=[x_ for x_ in dd_["rs"].get("typen", []) if x_ != "STOP_LOSS"])
+try:
+    eigener_spot_stop(sp_, dd_, 0.2, 95000.0)
+    fu_.stop_menge("BTCUSDT", "BUY", 0.2, 130000.0, dd_["rf"]["tick"], cid=L._kennung(L.CID_STOP_PERP))
+    B.bewegen("BTCUSDT", 85000.0)                                                      # Kurslücke unter das Limit: der Stop ist ausgelöst und hängt
+    n0_ = len(B.log)
+    B.regeln = [regel(methode="DELETE", pfad="/api/v3/order", art="vor503", anzahl=10 ** 6),   # er lässt sich weder löschen noch ersetzen (E42): er bleibt in der Liste, schützt aber nichts
+                regel(methode="POST", pfad="/api/v3/order/cancelReplace", art="vor503", anzahl=10 ** 6)]
+    w_ = []
+    try:
+        L._notaus_schutz(sp_, fu_, {}, "BTC", "BTCUSDT", "BTC", -0.2, -0.2, 0.0, 0.2, 85000.0, dd_["rs"], w_.append, "echt")
+    finally:
+        B.regeln = []
+finally:
+    B.stop_typen = ["LIMIT", "MARKET", "STOP_LOSS", "STOP_LOSS_LIMIT", "TAKE_PROFIT", "TAKE_PROFIT_LIMIT", "LIMIT_MAKER"]
+pruefe("16.E41 Gegenprobe: der Spot-Stop über alle Coins hängt (ausgelöster Stop-Limit, weder löschbar noch ersetzbar) und zählt nicht als Schutz → normaler Weg (die Meldung zum zu grossen Spot-Stop kommt)",
+       any("zu grosser Spot-Stop" in x_ for x_ in w_), (w_, e41_schreibend_(n0_)[:6]))
+
+# Gegenprobe d: ein unklarer Short-Auftrag (0,05) macht den Markt beidseitig MIT dieser Menge — die Perp-Stops müssen den Short UND den unklaren Auftrag decken; «vollständig» nach dem Stand ohne ihn gilt dort nicht
+k_, sp_, fu_, dd_ = handlage(coins=0.2, short=0.2, kurs=100000.0)
+eigener_spot_stop(sp_, dd_, 0.2, 95000.0)
+fu_.stop_menge("BTCUSDT", "BUY", 0.2, 110000.0, dd_["rf"]["tick"], cid=L._kennung(L.CID_STOP_PERP))
+L._notaus_schutz(sp_, fu_, {}, "BTC", "BTCUSDT", "BTC", -0.2, -0.2, 0.0, 0.2, 100000.0, dd_["rs"], [].append, "echt", unklar=0.05)
+gl_ = lage(k_, "BTCUSDT")
+pruefe("16.E41 Gegenprobe: unklarer Short-Auftrag (beidseitig) → die Perp-Stops decken Short + unklaren Auftrag (0,25), auch wenn der Stand ohne ihn vollständig aussähe", abs(gl_["p_qty"] - 0.25) < 1e-6 or gl_["p_qty"] >= 0.25 - 1e-6, gl_)
+
+# E42 (streng + Lücken, Not-Aus-Seed 257630, 10'711 USDT): ein ausgelöster Stop-Limit hängt über dem Kurs (Kurslücke, Konto ohne STOP_LOSS), das Verkaufen wird abgelehnt (PERCENT_PRICE_BY_SIDE) UND das Löschen
+# scheitert dauerhaft (429) — die Coins (netto +0,149 BTC) blieben ohne wirksamen Stop. Der Tageslauf ersetzt einen hängenden Stop per cancelReplace durch einen Not-Stop (`_haengenden_ersetzen`); der Not-Aus kannte nur
+# das Löschen. Jetzt versucht er nach einem gescheiterten Löschen dasselbe Ersetzen (5/10/20/35 %).
+P.STRENG = True
+P.LUECKEN = True
+try:
+    funde = P.notaus_runde(257630)
+    pruefe("16.E42 streng + Lücken, Not-Aus-Seed 257630 (hängender Stop-Limit nicht löschbar, Verkauf abgelehnt): keine echten Befunde", not P.echte(funde),
+           [(f_[0], f_[2][:3] if isinstance(f_[2], (list, tuple)) else None) for f_ in P.echte(funde)][:3])
+finally:
+    P.STRENG = False
+    P.LUECKEN = _alt_l36
+    B.reduce_algo_streng = False
+    B.stop_typen = ["LIMIT", "MARKET", "STOP_LOSS", "STOP_LOSS_LIMIT", "TAKE_PROFIT", "TAKE_PROFIT_LIMIT", "LIMIT_MAKER"]
+
+
+def e42_notaus_(regeln_):
+    """Long 0,5 BTC unter einem ausgelösten, hängenden Stop-Limit (Konto ohne STOP_LOSS, Kurslücke auf 85'000); `_notaus_schutz` direkt. → (ok, Lage, Warnungen, Buch)"""
+    k0_, sp0_, fu0_, dd0_ = handlage(coins=0.5, kurs=100000.0)
+    B.stop_typen = [x_ for x_ in B.stop_typen if x_ != "STOP_LOSS"]
+    dd0_["rs"] = dict(dd0_["rs"], typen=[x_ for x_ in dd0_["rs"].get("typen", []) if x_ != "STOP_LOSS"])
+    try:
+        eigener_spot_stop(sp0_, dd0_, 0.5, 95000.0)
+        B.bewegen("BTCUSDT", 85000.0)                                                      # Kurslücke unter das Limit: der Stop ist ausgelöst und hängt
+        B.regeln = regeln_
+        w0_, s0_ = [], {}
+        try:
+            ok0_ = L._notaus_schutz(sp0_, fu0_, s0_, "BTC", "BTCUSDT", "BTC", 0.0, 0.0, 0.0, 0.5, 85000.0, dd0_["rs"], w0_.append, "echt")
+        finally:
+            B.regeln = []
+    finally:
+        B.stop_typen = ["LIMIT", "MARKET", "STOP_LOSS", "STOP_LOSS_LIMIT", "TAKE_PROFIT", "TAKE_PROFIT_LIMIT", "LIMIT_MAKER"]
+    return ok0_, lage(k0_, "BTCUSDT"), w0_, s0_
+
+
+LOESCHEN_SPOT_KAPUTT_ = regel(methode="DELETE", pfad="/api/v3/order", art="429", anzahl=10 ** 6)
+ok_, gl_, w_, st_ = e42_notaus_([LOESCHEN_SPOT_KAPUTT_])
+pruefe("16.E42 hängender Stop-Limit nicht löschbar → per cancelReplace steht ein Not-Stop über die 0,5 BTC (nicht «OHNE Stop»), das Buch kennt ihn",
+       ok_ and abs(gl_["s_qty"] - 0.5) < 1e-6 and gl_["n_s"] == 1 and st_.get("spot") is not None and max(gl_["s_preise"]) < 85000.0, (ok_, gl_, w_, st_))
+ok_, gl_, w_, st_ = e42_notaus_([LOESCHEN_SPOT_KAPUTT_, regel(methode="POST", pfad="/api/v3/order/cancelReplace", art="vor503", anzahl=10 ** 6)])
+pruefe("16.E42 auch cancelReplace geht nicht: der hängende bleibt, die Lücke wird LAUT gemeldet («weder löschen noch ersetzen») und der Not-Aus gilt nicht als ok",
+       ok_ is False and gl_["n_s"] == 0 and any("weder löschen noch ersetzen" in x_ for x_ in w_), (ok_, gl_, w_))
+ok_, gl_, w_, st_ = e42_notaus_([LOESCHEN_SPOT_KAPUTT_, regel(methode="POST", pfad="/api/v3/order/cancelReplace", art="kurs", sym="BTCUSDT", preis=80000.0, anzahl=1)])  # der Kurs fällt beim ersten Versuch unter den 5-%-Preis
+pruefe("16.E42 der Kurs fällt beim cancelReplace unter den 5-%-Not-Stop (80'750 > 80'000, «würde sofort auslösen»): am Ende steht trotzdem ein Not-Stop unter dem Kurs",
+       ok_ and abs(gl_["s_qty"] - 0.5) < 1e-6 and gl_["s_preise"] and max(gl_["s_preise"]) < 80000.0, (ok_, gl_, w_))
+# nach dem Ersetzen ist die Stop-Liste nicht lesbar (erste Lesung ging): unbekannt, ob der Not-Stop angekommen ist → laut gemeldet
+k0_, sp0_, fu0_, dd0_ = handlage(coins=0.5, kurs=100000.0)
+B.stop_typen = [x_ for x_ in B.stop_typen if x_ != "STOP_LOSS"]
+dd0_["rs"] = dict(dd0_["rs"], typen=[x_ for x_ in dd0_["rs"].get("typen", []) if x_ != "STOP_LOSS"])
+try:
+    eigener_spot_stop(sp0_, dd0_, 0.5, 95000.0)
+    B.bewegen("BTCUSDT", 85000.0)
+    orig_es_, n_es_ = sp0_.eigene_stops, [0]
+
+    def es_(sym_):
+        n_es_[0] += 1
+        if n_es_[0] >= 2:
+            raise RuntimeError("Liste nicht lesbar")
+        return orig_es_(sym_)
+    sp0_.eigene_stops = es_
+    B.regeln = [LOESCHEN_SPOT_KAPUTT_]
+    w_ = []
+    try:
+        ok_ = L._notaus_schutz(sp0_, fu0_, {}, "BTC", "BTCUSDT", "BTC", 0.0, 0.0, 0.0, 0.5, 85000.0, dd0_["rs"], w_.append, "echt")
+    finally:
+        B.regeln = []
+finally:
+    B.stop_typen = ["LIMIT", "MARKET", "STOP_LOSS", "STOP_LOSS_LIMIT", "TAKE_PROFIT", "TAKE_PROFIT_LIMIT", "LIMIT_MAKER"]
+pruefe("16.E42 nach dem Ersetzen ist die Stop-Liste nicht lesbar: unbekannt, ob der Not-Stop steht → laut gemeldet, nicht «ok»", ok_ is False and any("weder löschen noch ersetzen" in x_ for x_ in w_), (ok_, w_))
+# Coins unter einem hängenden, weder löschbaren noch ersetzbaren Stop-Limit sind NICHT gestoppt: der ergänzende Perp-Stop (E40) käme nicht dazu — löste er aus, kaufte er die Absicherung zurück und die ungeschützten Coins
+# wären netto länger. Netto long 0,2 BTC (Coins 0,3, Short 0,1), 0,2 Coins unter dem hängenden Stop, ein zu grosser, nicht löschbarer Perp-Stop (0,05).
+k0_, sp0_, fu0_, dd0_ = handlage(coins=0.3, short=0.1, kurs=100000.0)
+B.stop_typen = [x_ for x_ in B.stop_typen if x_ != "STOP_LOSS"]
+dd0_["rs"] = dict(dd0_["rs"], typen=[x_ for x_ in dd0_["rs"].get("typen", []) if x_ != "STOP_LOSS"])
+try:
+    eigener_spot_stop(sp0_, dd0_, 0.2, 95000.0)
+    fu0_.stop_menge("BTCUSDT", "BUY", 0.05, 130000.0, dd0_["rf"]["tick"], cid=L._kennung(L.CID_STOP_PERP))
+    B.bewegen("BTCUSDT", 85000.0)                                                      # Kurslücke: der Spot-Stop-Limit hängt
+    n0_ = len(B.log)
+    B.regeln = [LOESCHEN_SPOT_KAPUTT_, regel(methode="POST", pfad="/api/v3/order/cancelReplace", art="vor503", anzahl=10 ** 6), LOESCHEN_KAPUTT_]
+    w_ = []
+    try:
+        ok_ = L._notaus_schutz(sp0_, fu0_, {}, "BTC", "BTCUSDT", "BTC", -0.1, -0.1, 0.1, 0.2, 85000.0, dd0_["rs"], w_.append, "echt")
+    finally:
+        B.regeln = []
+finally:
+    B.stop_typen = ["LIMIT", "MARKET", "STOP_LOSS", "STOP_LOSS_LIMIT", "TAKE_PROFIT", "TAKE_PROFIT_LIMIT", "LIMIT_MAKER"]
+neu_ = sum(1 for x_ in B.log[n0_:] if x_[1] == "POST" and x_[2] == "/fapi/v1/algoOrder" and x_[4] == 200)
+gl_ = lage(k0_, "BTCUSDT")
+pruefe("16.E42 Coins unter einem hängenden, nicht ersetzbaren Stop-Limit gelten nicht als gestoppt: KEIN ergänzender Perp-Stop (der Perp-Stop bleibt bei 0,05), die Lücke wird laut gemeldet",
+       neu_ == 0 and abs(gl_["p_qty"] - 0.05) < 1e-6 and ok_ is False and any("weder löschen noch ersetzen" in x_ for x_ in w_), (ok_, gl_, w_, neu_))
+ok_, gl_, w_, st_ = e42_notaus_([])
+pruefe("16.E42 Gegenprobe: geht das Löschen, wird der hängende Stop gelöscht und ein Not-Stop aus den freien Coins gesetzt (kein cancelReplace nötig)",
+       ok_ and abs(gl_["s_qty"] - 0.5) < 1e-6 and gl_["n_s"] == 1 and not any("durch einen Not-Stop ersetzt" in x_ for x_ in w_), (ok_, gl_, w_))
+
+# E43 (Lücken-Not-Aus-Seed 324065, Prüf-Werkzeug): ein hängender Stop-Limit sperrt 0,00238 BTC, das Löschen UND cancelReplace werden dauerhaft abgelehnt (503) und der Perp-Stop dauerhaft (429): die Coins lassen sich
+# weder freigeben noch stoppen — jeder Weg ist zu, die Lücke ist unvermeidbar (E42 meldet sie laut). Der Fuzzer stufte sie als echten Befund ein (jede der beiden Störungen allein reicht dafür nicht, 12. Prüfung K1);
+# jetzt gilt beides zusammen bei einem hängenden Stop als DAUER_.
+LOESCHEN_TOT_ = regel(methode="DELETE", pfad="/api/v3/order", art="vor503", anzahl=99, anzahl0=99)
+ERSETZEN_TOT_ = regel(methode="POST", pfad="/api/v3/order/cancelReplace", art="vor503", anzahl=99, anzahl0=99)
+k_, sp_, fu_, dd_ = handlage(coins=0.5, kurs=100000.0)
+B.stop_typen = [x_ for x_ in B.stop_typen if x_ != "STOP_LOSS"]
+dd_["rs"] = dict(dd_["rs"], typen=[x_ for x_ in dd_["rs"].get("typen", []) if x_ != "STOP_LOSS"])
+try:
+    eigener_spot_stop(sp_, dd_, 0.5, 95000.0)
+    B.bewegen("BTCUSDT", 85000.0)                                                      # der Stop hängt
+    pruefe("16.E43 Einstufung: hängender Stop-Limit sperrt die Coins, Löschen UND cancelReplace dauerhaft abgelehnt → DAUER_ (unvermeidbar)",
+           P._dauer([LOESCHEN_TOT_, ERSETZEN_TOT_], "LONG_OHNE_STOP", k_, "BTCUSDT") is True)
+    pruefe("16.E43 … jede der beiden Störungen allein reicht nicht (K1)",
+           not P._dauer([LOESCHEN_TOT_], "LONG_OHNE_STOP", k_, "BTCUSDT") and not P._dauer([ERSETZEN_TOT_], "LONG_OHNE_STOP", k_, "BTCUSDT"))
+    pruefe("16.E43 … und nur, wenn die Coins wirklich von einem hängenden Stop gesperrt sind (kein hängender in einem anderen Markt: nicht entschuldigt)",
+           not P._dauer([LOESCHEN_TOT_, ERSETZEN_TOT_], "LONG_OHNE_STOP", k_, "ETHUSDT"))
+    pruefe("16.E43 … und nicht für die Short-Seite", not P._dauer([LOESCHEN_TOT_, ERSETZEN_TOT_], "SHORT_OHNE_STOP", k_, "BTCUSDT"))
+finally:
+    B.stop_typen = ["LIMIT", "MARKET", "STOP_LOSS", "STOP_LOSS_LIMIT", "TAKE_PROFIT", "TAKE_PROFIT_LIMIT", "LIMIT_MAKER"]
+k_, sp_, fu_, dd_ = handlage(coins=0.5, kurs=100000.0)
+eigener_spot_stop(sp_, dd_, 0.5, 95000.0)                                               # ein funktionierender Stop (kein hängender): dieselben Störungen entschuldigen nichts
+pruefe("16.E43 … ohne hängenden Stop (die Coins sind frei oder gestoppt) entschuldigen dieselben Störungen nichts", not P._dauer([LOESCHEN_TOT_, ERSETZEN_TOT_], "LONG_OHNE_STOP", k_, "BTCUSDT"))
+P.LUECKEN = True
+try:
+    funde = P.notaus_runde(324065)
+    pruefe("16.E43 Lücken-Not-Aus-Seed 324065: keine echten Befunde (die unvermeidbare Lücke ist als DAUER_ eingestuft)", not P.echte(funde), [f_[0] for f_ in P.echte(funde)][:3])
+finally:
+    P.LUECKEN = _alt_l36
+    B.stop_typen = ["LIMIT", "MARKET", "STOP_LOSS", "STOP_LOSS_LIMIT", "TAKE_PROFIT", "TAKE_PROFIT_LIMIT", "LIMIT_MAKER"]
+
+# E44 (strenger Lauf-Seed 312454, Prüf-Werkzeug, wie E38): ein Konto ohne echtes Geld, der STOP kam mitten im Tageslauf, ein Coin-Rest (6e-05 BTC) lag UNTER dem Binance-Minimum (3,86 USDT) — ein Kurssprung (+31 %) machte ihn
+# später verkäuflich (5,08 USDT). Den verkauft der Not-Aus nie von selbst (das Buch kennt ihn nicht) und meldet ihn in einem Testnetz-Konto nicht einmal: kein Befund. Die Marke gilt nur für Konten ohne echtes Geld —
+# bei echtem Geld meldet der Not-Aus solche Coins («das Buch kennt es nicht»), und ein «alles zu» mit verkäuflichem Rest bleibt ein Befund.
+P.STRENG = True
+try:
+    for tage_e44 in (6, 30):
+        funde = P.echte(P.laeufe_runde(312454, tage_e44))
+        pruefe(f"16.E44 strenger Lauf-Seed 312454 ({tage_e44} Tage, Coin-Rest unter dem Minimum wird durch einen Kurssprung verkäuflich): keine Befunde", not funde, [(f_[0], f_[1].get("tag"), f_[1].get("wann")) for f_ in funde][:3])
+finally:
+    P.STRENG = False
+    B.reduce_algo_streng = False
+k_, sp_, fu_, dd_ = handlage(coins=0.0001, kurs=100000.0)
+P.MINIMUM_GESEHEN[0] = True
+pruefe("16.E44 _nur_coins_uebrig: nur ein Coin-Rest, die Marke gilt (Konto ohne echtes Geld) → kein Befund", P._nur_coins_uebrig(k_, {"zeilen": []}, "unter dem Binance-Minimum", marke=True))
+pruefe("16.E44 … ohne die Marke (echtes Geld) oder ohne den Hinweis in den Zeilen gilt er nicht", not P._nur_coins_uebrig(k_, {"zeilen": []}, "unter dem Binance-Minimum") and P._nur_coins_uebrig(k_, {"zeilen": ["Rest unter dem Binance-Minimum"]}, "unter dem Binance-Minimum"))
+P.MINIMUM_GESEHEN[0] = False
+pruefe("16.E44 … und nicht, wenn nie ein Rest unter dem Minimum lag", not P._nur_coins_uebrig(k_, {"zeilen": []}, "unter dem Binance-Minimum", marke=True))
+k_, sp_, fu_, dd_ = handlage(coins=0.0001, short=0.0001, kurs=100000.0)
+P.MINIMUM_GESEHEN[0] = True
+pruefe("16.E44 … und nicht bei einer offenen Position (dann bleibt es ein Befund)", not P._nur_coins_uebrig(k_, {"zeilen": []}, "unter dem Binance-Minimum", marke=True))
+P.MINIMUM_GESEHEN[0] = False
+
+# ───────── 16. Prüfung: Lücken der Mutationsprobe am Endstand (Seed-Tests drifteten; jedes Muster hat jetzt ein direktes Szenario) ─────────
+# R16-M2/M3/M4 (H6, zweite Schicht): die Tests 16.H6 prüften nur das Endergebnis «kein Short ohne Stop» — das erreicht auch der Code, der die alten Stops zu früh löscht, weil ein späterer
+# Versuch den Rückkauf nachholt. Hier: (a) JEDER Rückkauf nur zur Hälfte ausgeführt (der Rest bleibt über alle Runden), neue Stops dauerhaft abgelehnt → der Rest braucht die alten Stops;
+# (b) die alten Perp-Stops sind verzögert sichtbar (nicht in der Liste, aber im Buch), der Rückkauf kommt nie an, neue Stops dauerhaft abgelehnt → sie dürfen nicht gelöscht werden und bleiben im Buch.
+import json as _json
+def tag0_(sz_, unsichtbar=False):
+    markt_, z0_, z1_ = sz_
+    k_ = P.neues_konto(20000)
+    d_ = P.neu_buch()
+    env_ = P.env_echt(kapital=20000)
+    if unsichtbar:
+        B.regeln = [dict(methode="POST", pfad="/fapi/v1/algoOrder", art="unsichtbar", anzahl=1, listen=10 ** 6)]
+    try:
+        P.lauf([P.E(markt_, z0_)], env_, d_)
+    finally:
+        B.regeln = []
+    return k_, d_, env_
+RUECK_ = lambda m, p, q: q.get("reduceOnly") == "true"  # noqa: E731
+def stops_im_buch_(d_, markt_):
+    try:
+        return _json.loads(Path(d_).read_text()).get("echt", {}).get("stops", {}).get(markt_) or {}
+    except (OSError, ValueError):
+        return {}
+for sz_ in (("ETH", -1.0, -0.25), ("BTC", -1.0, -0.5)):
+    markt_, z0_, z1_ = sz_
+    sym_ = markt_ + "USDT"
+    # (a) jeder Rückkauf zur Hälfte
+    k, d, env = tag0_(sz_)
+    if k.pos[sym_] < 0 and [a for a in k.algos.values() if a["symbol"] == sym_]:
+        kurz_ = round(-k.pos[sym_], 3)
+        B.bewegen(sym_, round(B.kurs[sym_] * 1.06, 2))
+        e_ = {"markt": markt_, "hebel": z1_, "stop_long": B.kurs[sym_] * 0.9, "stop_short": B.kurs[sym_] * 0.97, "stand": "2026-10-13"}
+        B.regeln = [dict(methode="POST", pfad="/fapi/v1/order", pred=RUECK_, art="teil", anteil=0.5, anzahl=10 ** 6), dict(methode="POST", pfad="/fapi/v1/algoOrder", art="429", anzahl=10 ** 6)]
+        try:
+            res_ = P.lauf([e_], env, d)
+        finally:
+            B.regeln = []
+        g_ = lage(k, sym_)
+        pruefe(f"16.H6b jeder Rückkauf nur zur Hälfte ({sz_}, Short {kurz_} → {-k.pos[sym_]:.3f}), neue Perp-Stops dauerhaft abgelehnt: der Rest bleibt unter einem Stop",
+               not befunde(k, d), (g_, befunde(k, d)[:2], res_["zeilen"][:3]))
+    # (b) verzögert sichtbare alte Perp-Stops, Rückkauf nie angekommen
+    k, d, env = tag0_(sz_, unsichtbar=True)
+    if k.pos[sym_] < 0 and [a for a in k.algos.values() if a["symbol"] == sym_]:
+        kurz_ = round(-k.pos[sym_], 3)
+        vorher_ = lage(k, sym_)
+        B.bewegen(sym_, round(B.kurs[sym_] * 1.06, 2))
+        e_ = {"markt": markt_, "hebel": z1_, "stop_long": B.kurs[sym_] * 0.9, "stop_short": B.kurs[sym_] * 0.97, "stand": "2026-10-13"}
+        B.regeln = [dict(methode="POST", pfad="/fapi/v1/order", pred=RUECK_, art="vor503", anzahl=10 ** 6), dict(methode="POST", pfad="/fapi/v1/algoOrder", art="429", anzahl=10 ** 6)]
+        try:
+            res_ = P.lauf([e_], env, d)
+        finally:
+            B.regeln = []
+        g_ = lage(k, sym_)
+        st_ = stops_im_buch_(d, markt_)
+        bekannt_ = ([st_.get("perp")] if st_.get("perp") is not None else []) + [w[0] for w in (st_.get("perp_weitere") or [])]
+        pruefe(f"16.H6b verzögert sichtbarer alter Perp-Stop ({sz_}, Short {kurz_}), Rückkauf nie angekommen, neue Stops abgelehnt: der alte Stop steht weiter ({vorher_['p_qty']:g} → {g_['p_qty']:g})",
+               g_["n_p"] >= 1 and g_["p_qty"] >= vorher_["p_qty"] - 1e-9, (vorher_, g_))
+        pruefe(f"16.H6b … und das Buch kennt ihn weiter ({sz_})", len(bekannt_) >= 1 or st_.get("perp_cid"), (st_,))
+    # (b2) wie (b), aber der erste neue Stop wird abgelehnt und der nächste gelingt: perp_cid zeigt dann auf den NEUEN; die Kennung des verzögert sichtbaren alten muss im Gedächtnis bleiben
+    k, d, env = tag0_(sz_, unsichtbar=True)
+    if k.pos[sym_] < 0 and [a for a in k.algos.values() if a["symbol"] == sym_]:
+        c_alt_ = stops_im_buch_(d, markt_).get("perp_cid")
+        B.bewegen(sym_, round(B.kurs[sym_] * 1.06, 2))
+        e_ = {"markt": markt_, "hebel": z1_, "stop_long": B.kurs[sym_] * 0.9, "stop_short": B.kurs[sym_] * 0.97, "stand": "2026-10-13"}
+        B.regeln = [dict(methode="POST", pfad="/fapi/v1/order", pred=RUECK_, art="vor503", anzahl=10 ** 6), dict(methode="POST", pfad="/fapi/v1/algoOrder", art="429", anzahl=1)]
+        try:
+            res_ = P.lauf([e_], env, d)
+        finally:
+            B.regeln = []
+        st_ = stops_im_buch_(d, markt_)
+        kennungen_ = {st_.get("perp_cid")} | {w[1] for w in (st_.get("perp_weitere") or [])}
+        pruefe(f"16.H6b verzögert sichtbarer alter Perp-Stop ({sz_}), neuer Not-Stop gelingt erst beim 2. Versuch: die Kennung des alten bleibt im Gedächtnis (kein Geister-Stop)", c_alt_ in kennungen_, (c_alt_, st_))
+
+# R13-M10 (K2): der Not-Aus entscheidet «Rest unter dem Binance-Minimum» mit dem FRISCHEN Kurs. Der Seed-Test 13.K2 (Not-Aus-Seed 12527) traf die Lage seit den Änderungen der
+# 16. Runde nicht mehr (andere Anfragefolge) — hier ein direktes Szenario: ein Teil-Verkauf lässt einen Rest zurück, der beim alten Kurs unter dem Minimum liegt; der Kurs springt, bevor
+# die Nachprüfung ihn neu liest (der Sprung kommt mit der ersten Positionsabfrage NACH dem Rückkauf des Shorts, unabhängig davon, ob Pilot 2.0 den Kurs nochmals liest). Mit dem alten Kurs gälte der Rest als Staub («alles zu», obwohl er jetzt 12 USDT wert und verkäuflich ist).
+k = neues_konto(20000)
+B.bewegen("BTCUSDT", 40000.0)
+dd = neu_buch()
+e = E("BTC", 0.5)
+lauf([e], env_echt(), dd)
+H = lage(k, "BTCUSDT")["coins"]
+rest_soll = 1.0e-4
+gekauft_ = {"ja": False}
+alt_hook_ = B.nach_jeder_anfrage
+B.nach_jeder_anfrage = lambda m, pfad, p, code: gekauft_.update(ja=True) if (m == "POST" and pfad == "/fapi/v1/order" and p.get("side") == "BUY") else None
+regel_teil_ = regel(methode="POST", pfad="/api/v3/order", art="teil", anteil=0.5, anzahl=1)
+verkaeufe_ = {"n": 0}
+def letzter_verkauf_(m, p, q):  # der ZWEITE Marktverkauf des Not-Aus (der erste ist der Ersatz des Spot-Stops per cancelReplace; der zweite verkauft alle freien Coins des Paares) wird bis auf `rest_soll` Coins ausgeführt
+    if MARKT_VERKAUF(m, p, q):
+        verkaeufe_["n"] += 1
+        if verkaeufe_["n"] == 2:
+            regel_teil_["anteil"] = 1.0 - rest_soll / float(q["quantity"])
+            return True
+    return False
+regel_teil_["pred"] = letzter_verkauf_
+B.regeln = [regel_teil_,
+            regel(methode="GET", pfad="/fapi/v2/positionRisk", pred=lambda m, p, q: gekauft_["ja"] and q.get("symbol") == "BTCUSDT", art="kurs", sym="BTCUSDT", preis=120000.0)]
+r = lauf([], env_echt(), dd, notaus=True)
+B.regeln = []
+B.nach_jeder_anfrage = alt_hook_
+rest_ = lage(k, "BTCUSDT")["coins"]
+pruefe("16.Probe R13-M10 Not-Aus, Teil-Verkauf lässt einen Rest unter dem Minimum, der Kurs springt vor der Nachprüfung: kein «alles zu» mit verkäuflichem Rest",
+       rest_ * B.kurs["BTCUSDT"] < 10 or r["alles_zu"] is not True, (r["alles_zu"], rest_, r["zeilen"][-4:]))
+
+# R14-M69 (E10 → E36): `_nach_storno_stoppen` — ist nach dem Storno des hängenden Stop-Limits nichts (mehr) zu schützen (die Menge liegt unter dem Binance-Minimum), ist das KEIN Fehlschlag:
+# True, kein neuer Stop, keine Warnung «OHNE Stop» (der Aufrufer meldete sonst einen Alarm für Staub). Das Muster hing früher an `_haengenden_loeschen`; seit E36 gibt es dieselbe Zeile in
+# `_nach_storno_stoppen`, und kein Test sah ihren Zweig «nichts zu schützen».
+def haengend_m69(coins=0.3, menge=0.1):
+    k_, sp_, fu_, d_ = handlage(coins=coins, kurs=100000.0)
+    B.stop_typen = [x for x in B.stop_typen if x != "STOP_LOSS"]
+    d_["rs"] = sp_.regeln2("BTCUSDT")
+    eigener_spot_stop(sp_, d_, menge, 90000.0)
+    B.bewegen("BTCUSDT", 85000.0)
+    d_["kurs"] = 85000.0
+    o_ = next(o for o in sp_.eigene_stops("BTCUSDT") if o.get("isWorking") is True)
+    return k_, sp_, fu_, d_, o_, (lambda warten=None: L._lage(sp_, fu_, d_, warten))
+k, sp_, fu_, d_, o_, lesen_ = haengend_m69()
+sp_.abbrechen("BTCUSDT", o_["orderId"])                                              # Binance hat den hängenden Stop storniert (cancelReplace «nur_storno»)
+w_, g_ = [], []
+ok_ = L._nach_storno_stoppen(sp_, "BTC", d_, {"spot": o_["orderId"]}, o_, 0.00001, w_.append, g_, lesen_)
+gl_ = lage(k, "BTCUSDT")
+pruefe("16.Probe R14-M69 _nach_storno_stoppen: Staub-Menge (unter dem Binance-Minimum) — True, kein neuer Stop, keine Warnung", ok_ is True and gl_["n_s"] == 0 and not g_ and not w_, (ok_, gl_, w_, g_))
+# Gegenprobe: eine echte Menge bekommt ihren Not-Stop
+k, sp_, fu_, d_, o_, lesen_ = haengend_m69()
+sp_.abbrechen("BTCUSDT", o_["orderId"])
+w_, g_ = [], []
+ok_ = L._nach_storno_stoppen(sp_, "BTC", d_, {"spot": o_["orderId"]}, o_, 0.1, w_.append, g_, lesen_)
+gl_ = lage(k, "BTCUSDT")
+pruefe("16.Probe R14-M69 Gegenprobe: eine echte Menge (0,1 BTC) bekommt ihren Not-Stop", ok_ is True and gl_["n_s"] == 1 and abs(gl_["s_qty"] - 0.1) < 1e-9, (ok_, gl_, w_, g_))
+
+# R14-M79 (E13): der Rückfall am Ende des Tageslaufs ersetzt JEDEN hängenden Stop-Limit durch einen Not-Stop, nicht nur den ersten. Das Szenario der 14. Runde (Lauf-Seed 92202) traf die Lage seit den
+# Änderungen der 16. Runde nicht mehr (andere Anfragefolge) — hier ein direktes: Konto ohne STOP_LOSS, zwei eigene Stop-Limits (Stop + Zusatz-Stop), beide lösen aus und hängen über dem Kurs,
+# cancelReplace scheitert dauerhaft (503) → der Ausstieg bleibt abgelehnt, am Ende müssen BEIDE ersetzt sein (löschen + Not-Stop).
+k = neues_konto(60000)
+B.stop_typen = [x for x in B.stop_typen if x != "STOP_LOSS"]
+B.bewegen("BTCUSDT", 100000.0)
+dd = neu_buch()
+lauf([E("BTC", 0.25, kurs=100000.0)], env_echt(kapital=60000), dd)                    # Tag 1: Coins + Stop A (STOP_LOSS_LIMIT)
+cfg_ = L.einstellungen(env_echt(kapital=60000))
+sp_ = L.Spot(cfg_["spot"])
+rs_ = sp_.regeln2("BTCUSDT")
+k.frei["BTC"] = k.frei.get("BTC", 0.0) + 0.08                                          # der Zusatz-Stop: mehr Coins, eigener Stop B (die Kennung macht ihn zu einem Stop von Pilot 2.0)
+sp_.stop_verkauf("BTCUSDT", 0.08, 88000.0, rs_, cid=L._kennung(L.CID_STOP_SPOT))
+limits_ = sorted(o_["preis"] for o_ in k.orders.values() if o_["symbol"] == "BTCUSDT" and o_["typ"] == "STOP_LOSS_LIMIT" and o_["status"] in ("NEW", "PARTIALLY_FILLED"))
+B.bewegen("BTCUSDT", round(min(limits_) * 0.97, 2))                                   # Kurslücke unter beide Limits: beide lösen aus und hängen
+vorher_ = P._haengend(k, "BTCUSDT")
+B.regeln = [regel(methode="POST", pfad="/api/v3/order/cancelReplace", art="vor503", anzahl=10 ** 6)]
+try:
+    lauf([E("BTC", 0.25, kurs=B.kurs["BTCUSDT"])], env_echt(kapital=60000), dd)       # Tag 2: Ausstieg per cancelReplace scheitert in jeder Runde → Rückfall am Ende (löschen + Not-Stop)
+finally:
+    B.regeln = []
+nachher_ = P._haengend(k, "BTCUSDT")
+pruefe("16.Probe R14-M79 zwei hängende Stop-Limits (Stop + Zusatz-Stop), cancelReplace scheitert dauerhaft: am Ende hängt keiner mehr (der Rückfall ersetzt JEDEN)", len(limits_) >= 2 and vorher_ > 0 and nachher_ == 0, (len(limits_), vorher_, nachher_, P.zeigen(k)["BTCUSDT"]))
+
+# R16-M10/M12 (H5, zweite Schicht): die Tests 16.H5 laufen den Tageslauf durch und trafen `_soll_netto` mit unklarem Perp-Verkauf und `_spot_ohne_liste` (Ausstieg bei unlesbarer Spot-Liste) nicht.
+# Direkte Prüfung: (a) `_soll_netto` zählt einen unklaren Perp-Verkauf als ausgeführt; (b) `_spot_ohne_liste` verkauft beim Ausstieg («Stop würde sofort auslösen») nur die Netto-Richtung, nicht die
+# Absicherung des Shorts.
+k_, sp_, fu_, d_ = handlage(coins=0.3, short=0.1, kurs=100000.0)
+pruefe("16.H5 _soll_netto: ein unklarer Perp-Verkauf (0,1) zählt als ausgeführt — netto long 0,1 statt 0,2",
+       abs(L._soll_netto(0.3, -0.1, 100000.0, dict(d_, unklar_sell=0.1)) - 0.1) < 1e-9 and abs(L._soll_netto(0.3, -0.1, 100000.0, dict(d_, unklar_sell=None)) - 0.2) < 1e-9,
+       (L._soll_netto(0.3, -0.1, 100000.0, dict(d_, unklar_sell=0.1)), L._soll_netto(0.3, -0.1, 100000.0, dict(d_, unklar_sell=None))))
+# (b) beidseitig (ein unklarer Perp-Auftrag): Stop-Grösse = alle Coins; der Kurs fällt beim Setzen unter den Stop-Kurs (Regel «kurs») → Binance lehnt «würde sofort auslösen» ab → Ausstieg zum Markt
+k_, sp_, fu_, d_ = handlage(coins=0.3, short=0.1, kurs=100000.0)
+d_["unklar_sell"] = 0.0
+e_ = {"markt": "BTC", "hebel": 0.5, "stop_long": 95000.0, "stop_short": 110000.0, "stand": "2026-10-13"}
+s_ = L._soll(0.3, -0.1, 100000.0, d_)
+s_.update(frei=0.3, gebunden=0.0, kurs=100000.0)
+st_, w_, g_ = {}, [], []
+B.regeln = [regel(methode="POST", pfad="/api/v3/order", pred=STOP_AUFTRAG, art="kurs", sym="BTCUSDT", preis=94000.0)]
+try:
+  L._spot_ohne_liste(sp_, "BTC", d_, st_, e_, s_, w_.append, g_, set(), RuntimeError("Liste"), {"auftraege": [], "zeilen": []}, lambda warten=None: L._lage(sp_, fu_, d_, warten))
+finally:
+  B.regeln = []
+gl_ = lage(k_, "BTCUSDT")
+pruefe("16.H5 _spot_ohne_liste im beidseitigen Modus, Stop würde sofort auslösen: verkauft wird nur die Netto-Richtung (0,2), die Absicherung des Shorts (0,1 BTC) bleibt",
+       gl_["coins"] >= 0.1 - 1e-6 and gl_["coins"] < 0.3 - 1e-6, (gl_, w_[:2], g_))
+B.stop_typen = ["LIMIT", "MARKET", "STOP_LOSS", "STOP_LOSS_LIMIT", "TAKE_PROFIT", "TAKE_PROFIT_LIMIT", "LIMIT_MAKER"]
+B.regeln = []
+B.ersetzen_fehlt = False
 
 # ── kleiner Fuzzer mit festen Seeds (der grosse: python3 -B pruef_fuzzer.py laeufe 0 200 / notaus 0 1600) ──
 funde = []

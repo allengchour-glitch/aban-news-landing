@@ -616,7 +616,13 @@ class Handler(BaseHTTPRequestHandler):
         der alte. Danach Storno, dann der neue Auftrag; scheitert erst der (z. B. «würde sofort auslösen», Guthaben), ist der
         alte weg: «teilweise gescheitert» (−2021, HTTP 409). Störungsregeln auf POST /api/v3/order gelten für den neuen
         Auftrag: 503/429 (Phase «nur Stornieren») → die ganze Anfrage scheitert, «ablehnen» (Filter) → nichts passiert.
-        Eigene Störung auf diesem Pfad: «nur_storno» = Storno gelingt, der neue Auftrag wird abgelehnt."""
+        Eigene Störung auf diesem Pfad: «nur_storno» = Storno gelingt, der neue Auftrag wird abgelehnt; «nur_storno_verloren» = dasselbe, aber die
+        ANTWORT geht verloren (503) — der Aufrufer weiss nicht, ob der Stop weg ist (16. Prüfung H7)."""
+        if art and art["art"] == "nur_storno_verloren":
+            antwort, code = self._ersetzen(p, k, dict(art, art="nur_storno"))
+            if code == 409:  # der Storno ist durch (der neue Auftrag abgelehnt): die Antwort kommt nie an
+                return {"code": -1001, "msg": "Internal error; unable to process your request. Please try again."}, 503
+            return antwort, code
         sym = p["symbol"]
         if p.get("cancelReplaceMode") not in ("STOP_ON_FAILURE", "ALLOW_FAILURE"):
             return {"code": -1102, "msg": "Mandatory parameter 'cancelReplaceMode' was not sent."}, 400

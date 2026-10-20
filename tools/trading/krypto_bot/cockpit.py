@@ -114,7 +114,7 @@ def notaus_an(schliessen=True, ausfuehren=None):
     import sperre
     vorab, alles_zu = [], True
     try:
-        gesperrt = sperre.lauf_sperre(warten=60)
+        gesperrt = sperre.lauf_sperre(warten=60, alt_nach=sperre.ALT_NACH_TOT)  # (16. Prüfung) eine tote Sperre (kein Herzschlag seit 150 s) hält den Not-Aus nicht auf
         gesperrt.__enter__()
     except sperre.Besetzt:
         gesperrt = None
@@ -348,6 +348,11 @@ def aktion(name, starter=None, befehl=None):
                 SG.push(t + "\nKeine Anlageberatung.")
         else:
             ok, text = starter(args, zeit)
+            if name == "handeln":  # (16. Prüfung) wie krypto-auto.bat: danach die Nachkontrolle von Pilot 2.0 (klärt Unklares, holt fehlende Stops nach, auch nach einem Zeitlimit-Abbruch)
+                try:
+                    nachkontrolle_starten()
+                except Exception:  # noqa: BLE001 — nicht startbar: der nächste Lauf prüft ohnehin
+                    pass
             if name == "backtest":
                 _BACKTEST.clear()  # neue Kursdateien: Diagramm beim nächsten Abruf neu rechnen (nicht erst nach Neustart)
     finally:
