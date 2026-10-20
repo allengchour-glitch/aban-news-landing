@@ -1,9 +1,19 @@
 {
- "stand": "2026-10-20T05:11Z",
+ "stand": "2026-10-20T15:49Z",
  "links_alt": 402,
- "links_neu": 402,
+ "links_neu": 411,
  "rueckgang": 0,
- "neu": [],
+ "neu": [
+  "aufbewahrungsboxen",
+  "glaetteisen",
+  "handschuhe",
+  "handtuchhalter",
+  "lockenstaebe",
+  "luftbefeuchter",
+  "strickjacken-cardigans",
+  "strickkleider",
+  "uhrenarmbaender"
+ ],
  "weg": [],
- "geschrieben": false
+ "geschrieben": true
 }

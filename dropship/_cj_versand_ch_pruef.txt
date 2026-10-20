@@ -11580,3 +11580,5 @@ gipsblumen-bouquet-getrocknet-644672	1398541164466016256	16	7.85	ok	landeseite
 manner-mehrzweck-armbanduhr-601200	2604051023331601600	7	7.19	ok	landeseite
 manner-uhren-multifunktional-wasserdicht-620000	2604051018241620400	7	6.84	ok	landeseite
 water-lambo-diy-zahlen-mal-set-425920	1397505372863991808	3	10.18	ok	landeseite
+paar-uhr-mit-kalenderfunktion-637100	2604051012581637400	7	6.22	ok	landeseite
+holz-nistkasten-fur-fledermause-627200	2502280912151627500	16	10.93	ok	landeseite

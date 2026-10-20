@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 14:29 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 15:48 UTC)
 
-Suche: `status:active AND created_at:>=2026-10-17` · gemessen 335 · **183 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 163, teilweise: 14, keine: 6; Preisspanne > 2×: 29) · 1 CJ-Variante: 152 · ohne Antwort: 0
+Suche: `status:active AND created_at:>=2026-10-17` · gemessen 344 · **192 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 172, teilweise: 14, keine: 6; Preisspanne > 2×: 29) · 1 CJ-Variante: 152 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -76,6 +76,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Feuchtigkeitslipgloss, langanhaltend, verwischfrei (`feuchtigkeitslipgloss-langanhaltend-verwischfr-635800`) | 8 | 7 | 2.17–2.17 | 16.90 | Starry Peach, Jue Brewing Plum Powder, Laid back Misty Pink, Electric Berry |
 | Gold-Foil-Chocolate Lidschatten (`gold-foil-chocolate-lidschatten-099712`) | 8 | 8 | 3.52–3.52 | 16.90 | 601 Pine Cone Wood Rose, 602 Elk Maple Grove, 603 Gold Foil Chocolate, Apricot Peach Plate |
 | Star Kiss Diamant Lippenstift (`star-kiss-diamant-lippenstift-625800`) | 8 | 8 | 2.57–2.57 | 16.90 | Deep purple brown-3.5g, Peach powder-3.5g, Rosy-3.5g, Naked rice tea-3.5g |
+| Schmaler Wollschal mit Hohlmuster (`schmaler-wollschal-mit-hohlmuster-617300`) | 8 | 8 | 2.34–2.34 | 16.90 | 01 Khaki-35cmX64cm, 02 Bright Red-35cmX64cm, 03 Army Green-35cmX64cm, 04 Gray-35cmX64cm |
 | Taktische Umhängetasche für Outdoor-Sport (`taktische-umhangetasche-fur-outdoor-sport-624800`) | 7 | 7 | 5.03–5.03 | 18.90 | Black-Below 20L, Brown-Below 20L, Italian Camouflage-Below 20L, Dark Night-Below 20L |
 | Umhängetasche mit Rautenmuster (`umhangetasche-mit-rautenmuster-623000`) | 7 | 7 | 7.99–7.99 | 21.90 | Color, Silver, Black Gold Diamand, Green |
 | Kristall-Hanf Kopftuch – Monochromes Design (`kristall-hanf-kopftuch-monochromes-design-606000`) | 7 | 7 | 3.1–3.1 | 16.90 | 2 White-Average Size, 3 Navy Blue-Average Size, 4 Pink Color-Average Size, 5 Light Khaki-Average Size |
@@ -91,6 +92,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Universal-Steckschlüssel (`universal-steckschlussel-44f388`) | 7 | 7 | 1.79–1.79 | 16.90 | Blue, Green, Red, Yellow |
 | Titanstahlring mit Totenkopf (`titanstahlring-mit-totenkopf-624100`) | 7 | 7 | 2.67–2.67 | 16.90 | Silver-No 6, Silver-No 7, Silver-No 8, Silver-No 9 |
 | Silk Kissenbezug Leopard Muster (`silk-kissenbezug-leopard-muster-608900`) | 7 | 7 | 20.83–20.83 | 30.90 | White-48x74cm, Navy Blue-48x74cm, Light Pink-48x74cm, Dark Gray-48x74cm |
+| Alpaka-Fleece-Set: Hut, Schal, Handschuhe (`alpaka-fleece-set-hut-schal-handschuhe-651600`) | 7 | 7 | 5.56–5.56 | 20.90 | Red, Gray, Black, Beige |
 | Wasserdichte Herren-Crossbody-Tasche aus Oxford-Stoff (`wasserdichte-herren-crossbody-tasche-aus-oxfor-625500`) | 6 | 6 | 3.86–4.86 | 17.90 | Black-Plastic buckle, Black-Magnetic buckle, Blue-Plastic buckle, Blue-Magnetic buckle |
 | Beetle Travel Outdoor Rucksack 36-55 L (`beetle-travel-outdoor-rucksack-36-55-l-384448`) | 6 | 6 | 9.0–12.05 | 40.90 | Red-Backpack, Red-Backpack 3piece, Blue-Backpack, Blue-Backpack 3piece |
 | Rucksack 20 L – Gelb, Orange, Schwarz (`rucksack-20-l-gelb-orange-schwarz-830976`) | 6 | 6 | 24.93–27.9 | 39.90 | Yellow-20L, Yellow-30L, Orange-20L, Orange-30L |
@@ -108,6 +110,8 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Titan-Milchtopf mit Hammerschlag-Textur (`titan-milchtopf-mit-hammerschlag-textur-610800`) | 6 | 6 | 14.31–18.17 | 60.90 | 18cm-with lid, 18cm-without lid, 20cm-with lid, 20cm-without lid |
 | Feuchtigkeitsspendendes Lipgloss- und Lipliner-Set (`feuchtigkeitsspendendes-lipgloss-und-lipliner-601000`) | 6 | 6 | 2.21–2.21 | 16.90 | 15ml-Caramel Cotton, 15ml-Strawberry Cake, 15ml-Classic Red, 15ml-Chocolate |
 | Wasserglanz-Lippenstift (`wasserglanz-lippenstift-624500`) | 6 | 6 | 6.97–6.97 | 16.90 | 01 Peony Ballet-4G, 02 Milk Flavor Peanut-4G, 03 Warm Rose-4G, 04 Grape Path-4G |
+| Grosser, dicker, warmer Split-Schal (`grosser-dicker-warmer-split-schal-658200`) | 6 | 6 | 5.97–5.97 | 20.90 | Gray-155cm, Amber-155cm, Camel-155cm, Dark Khaki Cloth Color-155cm |
+| Leichter Wanderrucksack 25 L für Outdoor-Trekking (`leichter-wanderrucksack-25-l-fur-outdoor-trekk-600400`) | 6 | 6 | 39.58–39.58 | 60.90 | Black-20to35L, Orange-20to35L, Gray-20to35L, Blue-20to35L |
 | Retro Postmann Umhängetasche (`retro-postmann-umhangetasche-626400`) | 5 | 5 | 22.39–22.39 | 53.90 | Army Green, Lake Water Green Color, Black, Khaki |
 | Outdoor-Rucksack 1000D/PU (`outdoor-rucksack-1000d-pu-205376`) | 5 | 5 | 10.09–10.09 | 32.90 | Black, Wolf Brown, Grey, CP Camo |
 | Canvas Rucksack mit Tragegriff – 25x45x23 cm (`canvas-rucksack-mit-tragegriff-25x45x23-cm-214400`) | 5 | 5 | 5.77–5.77 | 25.90 | Black, Khaki, Brown, Coffee color |
@@ -150,6 +154,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Armband mit Bodhi-Samen und Dzi-Perlen (`armband-mit-bodhi-samen-und-dzi-perlen-630500`) | 4 | 4 | 20.66–20.66 | 29.90 | 14mm-Size 15, 14mm-Size 16, 14mm-Size 17, 14mm-Size 18 |
 | Multifunktionale Quarzuhr mit Lederarmband (`multifunktionale-quarzuhr-mit-lederarmband-638200`) | 4 | 4 | 30.9–30.9 | 42.90 | White Shell And Blue Surface, White Shell And Black Surface, Black Shell Black Surface, Black Shell Green Surface |
 | Vintage Quarz-Armbanduhr für Damen (`vintage-quarz-armbanduhr-fur-damen-609400`) | 4 | 4 | 12.85–12.85 | 21.90 | Gold Strap Gold Noodles, Gold Strap Red Noodles, Gold Strap White Noodles, Silver Streak White Noodles |
+| Grossvolumiger wasserdichter Kompressionsrucksack (`grossvolumiger-wasserdichter-kompressionsrucks-632800`) | 4 | 4 | 32.81–32.81 | 65.90 | Black, Gray, Blue, Green |
 | Oversized Wollschal Dreieck 200 cm (`oversized-wollschal-dreieck-200-cm-605900`) | 3 | 3 | 12.44–12.44 | 21.90 | Raw Velvet Rice-200X90cm, Raw Velvet Camel-200X90cm, Gray-200X90cm |
 | Zylindrischer Angelrucksack (`zylindrischer-angelrucksack-228160`) | 3 | 3 | 7.87–8.08 | 17.90 | Black, Urban camouflage, Desert camouflage |
 | Halskette mit Kor, Türkis und Muschelperlen (`halskette-mit-kor-turkis-und-muschelperlen-635200`) | 3 | 3 | 4.3–5.18 | 16.90 | Necklace, Bracelet, Ear Studs |
@@ -167,6 +172,8 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Falsche Wimpern mit Strass-Design (`falsche-wimpern-mit-strass-design-639900`) | 3 | 3 | 2.21–2.21 | 16.90 | Diamond 301, Diamond 302, Diamond 303 |
 | Ultraflache Quarzuhr für Damen mit Milanaise-Armband (`ultraflache-quarzuhr-fur-damen-mit-milanaise-a-620000`) | 3 | 3 | 32.08–32.08 | 42.90 | White, Blue Face, Rose Shell |
 | Quarz-Uhr mit Stahlarmband für Herren (`quarz-uhr-mit-stahlarmband-fur-herren-637800`) | 3 | 3 | 4.2–5.25 | 16.90 | Silver Strap, Belt Brown, Belt Black |
+| Wicker-Stil Handkorb für Obst und Gemüse – Mittel (`wicker-stil-handkorb-fur-obst-und-gemuse-mitte-603100`) | 3 | 3 | 2.19–3.49 | 18.90 | L, M, S |
+| Schwarzer Strick-Cardigan mit Gürtelschnalle (`schwarzer-strick-cardigan-mit-gurtelschnalle-602100`) | 3 | 3 | 3.69–3.69 | 16.90 | Gray, Camel, Black |
 | Frosted Fahrrad-Rennrucksack (`frosted-fahrrad-rennrucksack-073600`) | 2 | 2 | 6.56–6.56 | 17.90 | Frosted Style, Carbon pattern |
 | Grosses Casual-Rucksack mit PU-Leder und Buchstaben-Print (`grosses-casual-rucksack-mit-pu-leder-und-buchs-609664`) | 2 | 2 | 7.63–7.63 | 33.90 | Patterned Black, Large Plaid Flower |
 | Männer-Wasserdichte Multifunktionstasche (`manner-wasserdichte-multifunktionstasche-540224`) | 2 | 2 | 9.12–10.78 | 29.90 | Cool black-10inches, Volcanic black-10inches |
@@ -189,3 +196,5 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Lidschatten-Palette mit 15 Farben (`lidschatten-palette-mit-15-farben-382080`) | 2 | 2 | 8.91–13.36 | 22.90 | 2pcs 15colors, 3pcs 15colors |
 | Smarter Ring für Präsentationen (`smarter-ring-fur-prasentationen-604800`) | 2 | 2 | 45.14–45.14 | 57.90 | No 9-Silver, No 12-Silver |
 | Cuban-Link Armband aus Edelstahl in Roségold (`cuban-link-armband-aus-edelstahl-in-rosegold-609700`) | 2 | 2 | 10.59–12.85 | 21.90 | Rose Gold-24Inch, Rose Gold-12mm 24Inch |
+| Grosses vertikales Kosmetik-Organizer mit Tragegriff (`grosses-vertikales-kosmetik-organizer-mit-trag-630600`) | 2 | 2 | 2.92–4.37 | 16.90 | Large Size Sholder Bag, Small Size Sholder Bag |
+| Umhang für Partys – A-Line Design aus Polyester (`umhang-fur-partys-a-line-design-aus-polyester-626300`) | 2 | 2 | 3.52–3.52 | 16.90 | Style 1-Average Size, Style3-Average Size |
