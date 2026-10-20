@@ -160,24 +160,45 @@ def norm_artnr(a):
     return re.sub(r'\s+', '', str(a or '')).upper().lstrip('0') or '0'
 
 
+def werktag_stunden(von, bis):
+    """20.10.2026 (Härtung 6): Stunden zwischen zwei Zeitpunkten OHNE Samstag/Sonntag (UTC-Kalendertage; Fortura arbeitet Mo–Fr). Beide
+    Zeitpunkte mit Zeitzone (oder beide ohne). Eine Freitag-Abend-Bestellung soll nicht am Samstag «seit 24 h ohne Lieferschein» melden."""
+    import datetime as _dt
+    if bis <= von:
+        return 0.0
+    gesamt, t = 0.0, von
+    while t < bis:
+        naechster_tag = (t + _dt.timedelta(days=1)).replace(hour=0, minute=0, second=0, microsecond=0)
+        ende = min(bis, naechster_tag)
+        if t.weekday() < 5:
+            gesamt += (ende - t).total_seconds() / 3600
+        t = ende
+    return gesamt
+
+
 def ve_aus_feed(artnrs, pfad=None):
     """{artnr: Internet_VE} aus dem täglichen Feed (cp1252, «|»). Artikel, die im Feed fehlen, fehlen auch im Ergebnis.
     13.10.2026 Nachtrag (N4): Feed fehlt/unlesbar → None (früher {} = keine VE-Sperre, fail-open). Aufrufer: None → kein XML."""
     import csv
     pfad = pfad or FEED                       # zur Laufzeit lesen (Selbsttest der Engine biegt FEED um)
-    out, gesucht = {}, {norm_artnr(a): a for a in artnrs}
+    exakt, locker, gesucht = {}, {}, {norm_artnr(a): a for a in artnrs}
     try:
         with open(pfad, encoding='cp1252', newline='') as f:
             r = csv.reader(f, delimiter='|'); kopf = next(r); a, v = kopf.index('ArtNr'), kopf.index('Internet_VE')
             for z in r:
                 if len(z) > v and norm_artnr(z[a]) in gesucht:
+                    ziel = gesucht[norm_artnr(z[a])]
                     try:
-                        out[gesucht[norm_artnr(z[a])]] = max(1, round(float(z[v].replace(',', '.') or 1)))
+                        ve = max(1, round(float(z[v].replace(',', '.') or 1)))
                     except ValueError:
-                        out[gesucht[norm_artnr(z[a])]] = 1
+                        ve = 1
+                    if z[a].strip() == str(ziel).strip():
+                        exakt[ziel] = ve                          # 20.10.2026: Treffer auf die EXAKTE Nummer schlägt jeden normalisierten
+                    else:
+                        locker[ziel] = max(locker.get(ziel, 1), ve)    # mehrere lockere Treffer (0123/123): die grössere VE gilt (Bündel nie unterschätzen)
     except (OSError, ValueError, StopIteration, UnicodeDecodeError):
         return None
-    return out
+    return {**locker, **exakt}
 
 
 def bestand_aus_feed(artnrs, pfad=None):
@@ -187,7 +208,7 @@ def bestand_aus_feed(artnrs, pfad=None):
     Feed fehlt/unlesbar oder Spalte fehlt → None (fail-closed, nie Rückfall auf Total)."""
     import csv
     pfad = pfad or FEED
-    out, gesucht = {}, {norm_artnr(a): a for a in artnrs}
+    exakt, locker, gesucht = {}, {}, {norm_artnr(a): a for a in artnrs}
     try:
         with open(pfad, encoding='cp1252', newline='') as f:
             r = csv.reader(f, delimiter='|'); kopf = next(r)
@@ -195,10 +216,15 @@ def bestand_aus_feed(artnrs, pfad=None):
             for z in r:
                 if len(z) > b and norm_artnr(z[a]) in gesucht:
                     zahl = menge_zahl(z[b])
-                    out[gesucht[norm_artnr(z[a])]] = zahl if zahl is not None else 0   # unlesbar = 0 (sichere Richtung)
+                    zahl = zahl if zahl is not None else 0         # unlesbar = 0 (sichere Richtung)
+                    ziel = gesucht[norm_artnr(z[a])]
+                    if z[a].strip() == str(ziel).strip():
+                        exakt[ziel] = zahl                         # 20.10.2026: exakte Nummer schlägt jeden normalisierten Treffer
+                    else:
+                        locker[ziel] = min(locker.get(ziel, zahl), zahl)    # mehrere lockere Treffer (0123/123): der kleinere Bestand gilt
     except (OSError, ValueError, StopIteration, UnicodeDecodeError):
         return None
-    return out
+    return {**locker, **exakt}
 
 
 def menge_zahl(s):

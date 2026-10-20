@@ -52,7 +52,7 @@ def unversandt_warnung(stati, h):
 FORTURA_LEDGER = os.path.join(REPO, "dropship/_fortura_bestellungen.tsv")
 
 
-def fortura_stand(nr, h, pfad=FORTURA_LEDGER):
+def fortura_stand(nr, h, pfad=FORTURA_LEDGER, jetzt=None):
     """Reine Fortura-Bestellung → (Stand, Warnzusatz). 13.10.2026 (Trockenlauf Fortura-Kette): nur «bestellt» (Stufe 1, Quittung)
     galt als in Ordnung — der Normalzustand von Stufe 2, «xml-hochgeladen», stand damit IMMER mit ⚠️ da. Jetzt: hochgeladen ist in
     Ordnung bis 24 h (seit 20.10.; dieselbe Frist wie fortura_bestell_engine: «bei Fortura nachfragen»), «bereit»/«versandt»/unbekannt bleiben ⚠️."""
@@ -63,7 +63,19 @@ def fortura_stand(nr, h, pfad=FORTURA_LEDGER):
             if len(t) > 3 and t[0] == nr: fst, info = t[3], (t[4] if len(t) > 4 else "")
     except Exception:
         pass
-    ok = fst == "bestellt" or (fst == "xml-hochgeladen" and h <= 24)   # 20.10.2026: 48 → 24 h (#1027: Fortura stornierte nach 20,7 h per Mail)
+    # 20.10.2026 (Härtung 6): die 24-h-Frist zählt Werktage-Stunden (Fortura arbeitet Mo–Fr) — wie fortura_bestell_engine. Ohne fortura_xml: echte Stunden.
+    try:
+        import datetime as _dt
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        from fortura_xml import werktag_stunden
+        _jetzt = jetzt or _dt.datetime.now(_dt.timezone.utc)
+        h_frist = werktag_stunden(_jetzt - _dt.timedelta(hours=h), _jetzt)
+    except Exception:
+        h_frist = h
+    ok = fst == "bestellt" or (fst == "xml-hochgeladen" and h_frist <= 24)   # 20.10.2026: 48 → 24 h (#1027: Fortura stornierte nach 20,7 h per Mail)
+    # 20.10.2026 (Härtung 2): «xml-unterwegs» = Absturz zwischen Senden und Quittung — der Betreiber muss bei Fortura nachfragen (`--erneut`/`--bestellt`)
+    if fst == "xml-unterwegs":
+        return f"Fortura: UPLOAD-UNKLAR · {info[:80]}", " ⚠️"
     # 13.10.2026 Nachtrag (Prüfer N2): «abweichend» (Lieferschein mit Ersatzartikel/fremder Nummer) und «teilgeliefert» zeigen,
     # WAS fehlt bzw. fremd ist — sonst steht nur ein Wort da und die Kundin wartet auf das bestellte Teil.
     if fst in ("abweichend", "teilgeliefert"):
@@ -92,8 +104,12 @@ def selbsttest():
     with tempfile.NamedTemporaryFile("w", delete=False, suffix=".tsv") as f:
         f.write("nr\tzeit\tpositionen\tstatus\tfortura_auftrag\n1030\tx\t93583×1\txml-hochgeladen\tORDERS_LX1030.xml\n"
                 "1031\tx\t93583×1\tbereit\t\n1032\tx\t93583×1\tbestellt\t\n")
-    faelle += [(fortura_stand("1030", 5, f.name), ("Fortura: xml-hochgeladen", "")),
-               (fortura_stand("1030", 60, f.name), ("Fortura: xml-hochgeladen", " ⚠️")),
+    import datetime as _d
+    mi = _d.datetime(2026, 10, 21, 12, 0, tzinfo=_d.timezone.utc)       # Mittwoch: Frist = echte Stunden (keine Wochenendlücke im Fenster)
+    so = _d.datetime(2026, 10, 25, 12, 0, tzinfo=_d.timezone.utc)       # Sonntag: 40 h zurück = Freitag 20:00 → nur 4 Werktage-Stunden
+    faelle += [(fortura_stand("1030", 5, f.name, jetzt=mi), ("Fortura: xml-hochgeladen", "")),
+               (fortura_stand("1030", 60, f.name, jetzt=mi), ("Fortura: xml-hochgeladen", " ⚠️")),
+               (fortura_stand("1030", 40, f.name, jetzt=so), ("Fortura: xml-hochgeladen", "")),      # Freitag-Abend-Bestellung warnt nicht am Wochenende
                (fortura_stand("1031", 1, f.name), ("Fortura: bereit", " ⚠️")),
                (fortura_stand("1032", 90, f.name), ("Fortura: bestellt", "")),
                (fortura_stand("1099", 1, f.name), ("Fortura: unbekannt", " ⚠️"))]
