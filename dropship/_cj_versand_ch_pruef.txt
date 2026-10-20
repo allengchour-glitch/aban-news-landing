@@ -11373,3 +11373,8 @@ lebensmittel-vakuumiergerat-628000	2509070931261628200	6	12.57	ok	landeseite
 frauen-plateau-casual-sneaker-816704	1772554709673451520	16	13.76	ok	landeseite
 perlenarmband-aus-susswasserperlen-439a4d	722F3930-ECE6-428A-9E74-B533CA3EFE71	16	6.01	ok	landeseite
 infrarot-alarm-fur-wandmontage-612800	2508250344381613800	16	6.90	ok	landeseite
+seewasserperle-hanf-armband-14k-gold-8bf2bf	0FAC024D-234A-441C-924C-3CBA076633CA	16	5.69	ok	landeseite
+aromadiffuser-mit-usb-anschluss-613500	2508210523391613700	16	14.79	ok	landeseite
+business-armbanduhr-fur-herren-623400	2604090558221623800	7	7.58	ok	landeseite
+4er-set-aus-su-wasserperlen-halskette-ohrsteck-18c26d	04CFEC06-7ABE-4F8D-94E0-ECCD9375EED4	16	6.01	ok	landeseite
+fingerprint-turschloss-mit-usb-610300	2508180632201610400	7	8.25	ok	landeseite
