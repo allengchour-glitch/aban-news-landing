@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 17:57 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-20 19:51 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1318 · **1252 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1061, teilweise: 165, keine: 26; Preisspanne > 2×: 155) · 1 CJ-Variante: 64 · ohne Antwort: 2
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1302 · **1236 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1046, teilweise: 164, keine: 26; Preisspanne > 2×: 154) · 1 CJ-Variante: 64 · ohne Antwort: 2
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -149,7 +149,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Handdampfglätter für Zuhause & Reisen (`handdampfglatter-fur-zuhause-reisen-809472`) | 20 | 17 | 35.92–38.76 | 71.90 | Green-220V, Purple-220V, White-220V, Yellow-220V |
 | Krokodil-PU-Leder mit Prägung (`krokodil-pu-leder-mit-pragung-490176`) | 20 | 20 | 4.61–4.61 | 29.90 | 1color, 2color, 3color, 4color |
 | Leinen-Kissen Quadratisch (`leinen-kissen-quadratisch-651520`) | 20 | 20 | 3.31–6.54 | 21.90 | Bean coffee-45x45cm single pillowcase, Bean coffee-45x45cm with core, Bean coffee-55x55cm pillowcase, Bean coffee-55x55cm with core |
-| DIY Weihnachtskissen-Stickset aus Wolle (`diy-weihnachtskissen-stickset-aus-wolle-804416`) | 20 | 15 | 5.31–5.31 | 17.90 | BZ387-English Color Printing, BZ388-English Color Printing, BZ389-English Color Printing, BZ591-English Color Printing |
 | Blau-weisse Patchwork Kissenhülle (`blau-weisse-patchwork-kissenhulle-666240`) | 20 | 20 | 6.93–10.88 | 23.90 | Shell Medium-45x45 pillowcase, Shell Medium-45x45 pillowcaseandcore, Shell Medium-50x50 pillowcase, Shell Medium-50x50 pillowcaseandedium |
 | Holzboot-Bausatz "Reibungslose Fahrt" (`holzboot-bausatz-reibungslose-fahrt-587392`) | 20 | 20 | 14.84–36.8 | 53.90 | Toy1, Toy2, Toy3, Toy4 |
 | Mehrfarbiger Falttürvorhang (`mehrfarbiger-faltturvorhang-619600`) | 19 | 16 | 2.94–13.27 | 47.90 | White-180x180cm, White-180x200cm, Pink-180x180cm, Pink-180x200cm |
@@ -288,7 +287,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Blumen Futon Kissen (`blumen-futon-kissen-613300`) | 12 | 12 | 5.14–6.55 | 39.90 | Sunflower-50X45CM, Sunflower-55X50CM, Pink Flower-50X45CM, Pink Flower-55X50CM |
 | Künstliche Nägel mit Sternenmuster (`kunstliche-nagel-mit-sternenmuster-614500`) | 12 | 12 | 4.89–4.89 | 17.90 | Long T-XS, Long T-S, Long T-M, Long T-L |
 | Wiederverwendbare Nescafé Kapsel aus Edelstahl (`wiederverwendbare-nescafe-kapsel-aus-edelstahl-785792`) | 12 | 12 | 5.33–23.32 | 21.90 | A1A, A2A, A3A, A4A |
-| Sniffball Bissspielzeug für Hund & Katze (`sniffball-bissspielzeug-fur-hund-katze-564544`) | 12 | 12 | 2.78–3.91 | 15.90 | A-15cm, A-20cm, B-15cm, B-20cm |
 | CoolBell Doppel-Laptop-Rucksack (`coolbell-doppel-laptop-rucksack-042496`) | 12 | 12 | 14.14–14.95 | 45.90 | Blue-15Style, Blue-17Style, Black-15Style, Black-17Style |
 | Keramik Wassernapf schräg für Haustiere (`keramik-wassernapf-schrag-fur-haustiere-694144`) | 12 | 12 | 2.51–15.16 | 14.90 | A, B, C, D |
 | Reflektierende Hundeleine für grosse Hunde (`reflektierende-hundeleine-fur-grosse-hunde-866880`) | 12 | 12 | 12.83–16.61 | 27.90 | Black-L mountaineering buckle, Black-M mountaineering buckle, Black-S shrimp button, Green-L mountaineering buckle |
@@ -369,7 +367,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Lordosenstützkissen für die Nacht (`lordosenstutzkissen-fur-die-nacht-629600`) | 10 | 10 | 3.35–3.86 | 20.90 | Navy Blue-Triangle Pad 60 X24x4cm, Navy Blue-Triangle Pad 60 X30x5cm, Pink-Triangle Pad 60 X24x4cm, Pink-Triangle Pad 60 X30x5cm |
 | Tischläufer "Handwerker-Blau" mit Pflanzenmuster (`tischlaufer-handwerker-blau-mit-pflanzenmuster-996352`) | 10 | 10 | 17.22–22.17 | 32.90 | Craftsman blue-32X160CM, Craftsman blue-32X180CM, Craftsman blue-32X200CM, Craftsman blue-32X220CM |
 | Keramik Futternapf für Katzen mit hohem Stand (`keramik-futternapf-fur-katzen-mit-hohem-stand-868032`) | 10 | 10 | 5.6–12.2 | 18.90 | Green, Yellow, Pink, Black and white A |
-| Ofenabdeckung UV-beständig (`ofenabdeckung-uv-bestandig-611700`) | 10 | 10 | 2.72–5.03 | 21.90 | 210D Black-Rectangular S, 210D Black-Rectangular M, 210D Black-Rectangular L, 210D Black-Rectangular XL |
 | Plüschkissen mit speziellem Design (`pluschkissen-mit-speziellem-design-605440`) | 10 | 10 | 3.97–4.66 | 14.90 | Red brown ball, Green ball, White ball, Red brown strip |
 | Bestickter Kissenbezug für Sofa und Zuhause (`bestickter-kissenbezug-fur-sofa-und-zuhause-619100`) | 10 | 10 | 3.24–3.68 | 22.90 | Beige-45x45cm Without Core, Beige Waist Pillow-30x50cm Without Core, Purple-45x45cm Without Core, Purple Waist Pillow-30x50cm Without Core |
 | Fleece-Kissen und -Decke "Big Eyes" (`fleece-kissen-und-decke-big-eyes-629500`) | 10 | 10 | 8.29–12.6 | 49.90 | Big Eyes Fruit Green-40x40cm, Big Eyes Fruit Green-50x50cm, Big Eyes Powder-40x40cm, Big Eyes Powder-50x50cm |
@@ -656,7 +653,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Boho Kissenbezug mit Fransen (`boho-kissenbezug-mit-fransen-571968`) | 6 | 6 | 3.0–3.75 | 15.90 | Grid-45x45-Pillowcase, Highspeed drop-45x45-Pillowcase, Highspeed separation-45x45-Pillowcase, Size than the symbol-45x45-Pillowcase |
 | Minimalistischer Kissenbezug mit Stickerei (`minimalistischer-kissenbezug-mit-stickerei-744448`) | 6 | 6 | 4.17–4.89 | 15.90 | 30x50cm-30x50cm-Pillowcase, 45x45cm1-45x45cm-Pillowcase, 45x45cm2-45x45cm-Pillowcase, 45x45cm3-45x45cm-Pillowcase |
 | Boho-Armband für Samsung/Huawei Smartwatches (`boho-armband-fur-samsung-huawei-smartwatches-132224`) | 6 | 6 | 6.93–6.93 | 19.90 | S-20mm, S-22mm, M-20mm, M-22mm |
-| Bestickter Kissenbezug mit Quasten (`bestickter-kissenbezug-mit-quasten-307200`) | 6 | 6 | 4.31–4.31 | 14.90 | PE20074E2-45x45cm, PE20251E1-30x50cm, PE20074E1-45x45cm, PE20074E3-45x45cm |
 | Kupfer-Zirkon Armband mit Teufelsauge (`kupfer-zirkon-armband-mit-teufelsauge-613600`) | 6 | 6 | 2.51–2.9 | 15.90 | Copper Beads Black Rope, Bead Necklace, Red Rope, Copper Bead Red String |
 | Bucheriti Cat's Eye Press-on Nägel (`bucheriti-cat-s-eye-press-on-nagel-867712`) | 6 | 6 | 4.87–4.87 | 17.90 | XS Short Square, S Short Square, M Short Square, XS Short Ladder |
 | Faltbarer Magnet-Kartenhalter mit Ständer (`faltbarer-magnet-kartenhalter-mit-stander-608300`) | 6 | 6 | 4.02–4.02 | 16.90 | Black-Super Magnetic In Stock, Dark Blue-Super Magnetic In Stock, Brown-Super Magnetic In Stock, Green-Super Magnetic In Stock |
@@ -778,7 +774,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | TV-Box & Router Wandhalterung ohne Bohren (`tv-box-router-wandhalterung-ohne-bohren-900608`) | 5 | 5 | 1.57–2.8 | 14.90 | 1A, 2A, 3A, 4A |
 | IQO Ilum One Schutzhülle (`iqo-ilum-one-schutzhulle-606700`) | 5 | 5 | 3.02–3.02 | 15.90 | Woven Pattern Black, Woven Red, Woven Light Brown, Woven Pattern Dark Brown |
 | Kupfer Magnetarmband – schlicht & poliert (`kupfer-magnetarmband-schlicht-poliert-629600`) | 5 | 5 | 2.63–2.99 | 15.90 | 8 Magnetic, 9 Magnetic, 11 Magnetic, 12 Magnetic |
-| Halsband- und Leinen-Set aus Samt (`halsband-und-leinen-set-aus-samt-055616`) | 5 | 5 | 5.6–5.6 | 18.90 | Yellow-XS, Yellow-S, Yellow-M, Yellow-L |
 | Herren Business-Freizeit Multifunktionsuhr (`herren-business-freizeit-multifunktionsuhr-528000`) | 5 | 5 | 13.46–13.46 | 28.90 | Orange, Black red, Black grey, Black brown |
 | Mädchen Herz Kissen für Bett & Fensterbank (`madchen-herz-kissen-fur-bett-fensterbank-879296`) | 5 | 5 | 6.62–8.72 | 26.90 | Rabbit Plush Love Pink, Rabbit Plush Donut, Rabbit Plush White Cloud, Rabbit Plush Grey Cloud |
 | Pinzette für Wimpernverlängerung (`pinzette-fur-wimpernverlangerung-30205d`) | 5 | 5 | 4.05–9.46 | 23.90 | 5SAJP, Set, 7SAJP, SSJP |
@@ -954,14 +949,10 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Abnehmbare Kunstnägel «North Sea King» (`abnehmbare-kunstnagel-north-sea-king-624900`) | 4 | 4 | 10.66–10.66 | 24.90 | Sunset-XS, Sunset-S, Sunset-M, Sunset-L |
 | Street Trendy Kühltasche (`street-trendy-kuhltasche-266304`) | 4 | 4 | 4.95–4.95 | 17.90 | Magic Claw Green, European and American gray, Fantasy smoke, Plaid blue |
 | Sägekette für Elektrokettensägen (`sagekette-fur-elektrokettensagen-845248`) | 4 | 4 | 3.69–4.12 | 25.90 | 2inch thick integrated guide, 12inch quenched chain, 16inch thick integrated guide, 16inch black quenched chain |
-| Freihand-Hundeleine für grosse und mittelgrosse Hunde (`freihand-hundeleine-fur-grosse-und-mittelgross-502336`) | 4 | 4 | 8.81–8.81 | 22.90 | Orange-L, Blue-L, Green-L, Pink-L |
 | Smartwatch mit Bluetooth-Telefonie und Gesundheitsmonitor (`smartwatch-mit-bluetooth-telefonie-und-gesundh-346304`) | 4 | 4 | 28.62–31.52 | 47.90 | Black, Black steel, Black leather, Rice dumplings |
-| Märchenhafte, handbemalte Fake Nails (`marchenhafte-handbemalte-fake-nails-608800`) | 4 | 4 | 66.83–66.83 | 95.90 | XS-As Shown In Figure A, S-As Shown In Figure A, M-As Shown In Figure A, L-As Shown In Figure A |
-| Handbemalte French Press-on-Nägel mit Spiegeleffekt (`handbemalte-mandarinente-french-magic-mirror-600000`) | 4 | 4 | 14.49–14.49 | 29.90 | Long trapezoidal shape-L, Long trapezoidal shape-M, Long trapezoidal shape-S, Long trapezoidal shape-XS |
 | Geometrisches Jacquard Flanell Sofakissen (`geometrisches-jacquard-flanell-sofakissen-693312`) | 4 | 4 | 5.2–21.96 | 24.90 | Sapphire-45x45cm-Pillow, Sapphire-45x45cm-Pillowcase, Brown gold-50x50cm-Pillow, Brown gold-50x50cm-Pillowcase |
 | Matte & Pearlescent Lidschatten-Palette (`matte-pearlescent-lidschatten-palette-593472`) | 4 | 4 | 2.36–2.46 | 15.90 | Sixteen color large territory, Sixteen Color Flower Fairy, Sixteen Color Green Wild Plate, Sixteen color amethyst disc |
 | Bohemian Kissenhülle (`bohemian-kissenhulle-416640`) | 4 | 4 | 4.08–4.33 | 16.90 | Ringed sun-45x45cm-Pillowcase, Round velvet moon-45x45cm-Pillowcase, Loop velvet rainbow-45x45cm-Pillowcase, Ring rain-45x45cm-Pillowcase |
-| Keramik-Topf im nordischen Stil (`keramik-topf-im-nordischen-stil-450304`) | 4 | 4 | 19.03–19.03 | 55.90 | Green-S, Pink-S, Red-S, Yellow-S |
 | Grosser Bausteine-Spass für Kleinkinder (`grosser-bausteine-spass-fur-kleinkinder-010240`) | 4 | 4 | 15.24–24.4 | 53.90 | City Commander-36P, City Commander-56P, Animal Summer Camp-36P, Animal Summer Camp-56P |
 | Tencel Memory Foam Kissen (`tencel-memory-foam-kissen-793536`) | 4 | 4 | 7.22–10.74 | 20.90 | White-50x30x10cm, White-58x35x10cm, White box pack-50x30x10cm, White box pack-58x35x10cm |
 | Kompressions-Reisebeutel 3er-Set (`kompressions-reisebeutel-3er-set-624700`) | 4 | 4 | 3.1–3.1 | 14.90 | Beige, Gray, Black, Blue |
@@ -1119,10 +1110,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Spanngurt mit Ratsche und Doppelhaken (`spanngurt-mit-ratsche-und-doppelhaken-810304`) | 3 | 3 | 0.99–1.14 | 14.90 | Photo Color-No hook 1inch 2meters, Photo Color-Double hook 1inch 3meters, Photo Color-Double hook 1inch 5meters |
 | Retro Quarz Multifunktionsuhr für Herren (`retro-quarz-multifunktionsuhr-fur-herren-512448`) | 3 | 3 | 17.04–17.04 | 32.90 | Ebony Zebra Gold, Olive wood between ebony, Walnut zebra wood red |
 | Keramik Futternapf für Katzen, schräges Design (`keramik-futternapf-fur-katzen-schrages-design-020928`) | 3 | 3 | 6.07–10.56 | 18.90 | Green, Pink, Staple Food and Water Bowl |
-| Perlglanz-Aquarellfarben-Set, tragbar (`perlglanz-aquarellfarben-set-tragbar-848512`) | 3 | 3 | 2.84–7.09 | 14.90 | set36, Set48, 12 color |
-| Extrahoher 304 Edelstahl Suppentopf, 20-28cm (`extrahoher-304-edelstahl-suppentopf-20-28cm-693888`) | 3 | 3 | 5.58–9.92 | 50.90 | 20cm, 22cm, 24cm |
 | Kupfer-Magnetarmband im Retro-Stil (`kupfer-magnetarmband-im-retro-stil-634700`) | 3 | 3 | 2.91–2.99 | 15.90 | 9 Magnet, 12 Magnets, 18 Magnet |
-| Handgelenk-Trainingsgurt für mehr Kraft (`handgelenk-trainingsgurt-fur-mehr-kraft-143616`) | 3 | 3 | 8.76–13.21 | 35.90 | 9cm, 7.5cm, 6.5cm |
 | Lidschattenstift & Eyeliner 2-in-1 (`lidschattenstift-eyeliner-2-in-1-050560`) | 3 | 3 | 2.65–2.65 | 15.90 | 01 Dream Stealing, 02 Dream, 03 Girl's Mind |
 | Nagellack-Display aus Acryl – Mehrstöckig (`nagellack-display-aus-acryl-mehrstockig-608400`) | 3 | 3 | 2.18–2.63 | 21.90 | Five Layers, Six Layers, Seven Layers |
 | Lidschatten-Palette – Brilliant Chain Limited (`lidschatten-palette-brilliant-chain-limited-742784`) | 3 | 3 | 2.01–2.01 | 21.90 | Sunset neon, Elk phantom, Midsummer star |
@@ -1235,10 +1223,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Edelstahl Wok Antihaft-Pfanne (`edelstahl-wok-antihaft-pfanne-736128`) | 2 | 2 | 7.14–7.88 | 41.90 | 34CM without cover, 32CM without cover |
 | Abnehmbarer Obstpflücker aus Edelstahl (`abnehmbarer-obstpflucker-aus-edelstahl-358016`) | 2 | 2 | 5.46–6.45 | 41.90 | 4 sections 1.6m, 6 sections 2.4m |
 | Business Laptop-Tasche (14/15.6 Zoll) (`business-laptop-tasche-14-15-6-zoll-519680`) | 2 | 2 | 12.34–12.34 | 31.90 | 15.6inch, 14inch |
-| Multicolor Tan Red Matte Pearl Blush Tray (`multicolor-tan-red-matte-pearl-blush-tray-159872`) | 2 | 2 | 2.05–2.05 | 14.90 | 01color, 02color |
-| Blumen Baumwollstoff (235 cm breit) (`blumen-baumwollstoff-235-cm-breit-356672`) | 2 | 2 | 2.07–2.07 | 14.90 | Version A-235X50CM, Version B-235X50CM |
-| Keramik Futternapf für Katzen – Halswirbelsäule Schutz (`keramik-futternapf-fur-katzen-halswirbelsaule-031936`) | 2 | 2 | 4.14–6.23 | 24.90 | Red, Yellow |
-| Multifunktionale Herren Quarzuhr im Trend-Design (`multifunktionale-herren-quarzuhr-im-trend-desi-798656`) | 2 | 2 | 8.52–8.52 | 21.90 | Black, Gold |
 | Kissenbezug Samtoptik – Hase & Avocado (`kissenbezug-samtoptik-hase-avocado-220928`) | 2 | 2 | 2.24–2.6 | 15.90 | Rabbit fur big green love-45x45cm, Teddy Avocado-45x45cm |
 | Weisses Gänse-Daunenkissen (`weisses-ganse-daunenkissen-578368`) | 2 | 2 | 35.26–50.18 | 53.90 | White goose down pillow-45x75cm 1200g, White goose down pillow-50x80cm 1400g |
 | Langanhaltender Lidschatten Pen – 12er Set (`langanhaltender-lidschatten-pen-12er-set-836480`) | 2 | 2 | 7.41–7.41 | 27.90 | DNM12 color 1bright color gro, DNM12 color 2soft color gro |
