@@ -11887,3 +11887,15 @@ patriotisches-flaggen-sommerhemd-613300	2606080438181613900	16	8.79	ok	landeseit
 taktischer-huftbeutel-423552	1744270922523086848	16	13.28	ok	landeseite
 automatischer-katzen-kugelspielball-602000	2501300719371602200	7	5.35	ok	landeseite
 herren-taille-bag-multifunktional-800512	1743502455175909376	16	12.21	ok	landeseite
+herren-freizeit-shirt-langarmlig-baumwolle-630700	2606070753021631300	16	10.01	ok	landeseite
+wasserdichter-huftbeutel-fur-outdoor-sport-sch-096192	1738123394433953792	16	8.11	ok	landeseite
+katzen-spielzeug-614600	2508311128481614800	7	9.02	ok	landeseite
+vintage-gurtel-tasche-420032	1727218225886277632	16	6.48	ok	landeseite
+susses-hunde-ballspielzeug-mit-sprungfunktion-629200	2508280839211629500	7	6.58	ok	landeseite
+reflektierendes-laufgurt-phone-tasche-340352	1722538157301837824	16	6.56	ok	landeseite
+katzentreppe-mit-nest-620200	2508150323511620400	11	62.08	ok	landeseite
+blaues-karo-hemd-mit-stickerei-613300	2606031020441613900	16	10.83	ok	landeseite
+outdoor-aufbewahrungstasche-145472	1716733247918448640	16	7.13	ok	landeseite
+elektrisches-schwein-katzen-spielzeug-mit-soun-603500	2508130713521603700	7	6.31	ok	landeseite
+schwarzes-hemd-616700	2606030848001617400	16	8.11	ok	landeseite
+outdoor-trainingsmaske-staub-neblig-226048	1385848618338095104	16	5.12	ok	landeseite
