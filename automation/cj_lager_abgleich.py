@@ -48,6 +48,7 @@ import collections, datetime, json, os, re, sys, time, urllib.request
 
 HIER = os.path.dirname(os.path.abspath(__file__)); REPO = os.path.dirname(HIER)
 sys.path.insert(0, HIER)
+import cj_sku   # 20.10.2026: EINE Quelle für CJ-SKU-Formen (siehe dort)
 LEDGER = os.path.join(REPO, "dropship", "_cj_lager.tsv")
 BERICHT = os.path.join(REPO, "dropship", "CJ-LAGER.md")
 EXPORT = "/tmp/cj_lager_export.jsonl"
@@ -82,12 +83,11 @@ def kern(sku):
 
 
 def produkt_sku(variant_sku):
-    """→ productSku: Varianten-Anhang (2 Ziffern + 2 Buchstaben) ab; eine Produkt-SKU ohne Anhang («CJJJJTJT22925») bleibt."""
-    k = kern(variant_sku)
-    m = re.match(r"^(CJ[A-Z]{2,6}\d{5,9})(\d{2}[A-Z]{2})$", k)
-    if m:
-        return m.group(1)
-    return k if re.match(r"^CJ[A-Z]{2,6}\d{5,9}$", k) else None
+    """→ productSku für product/query?productSku=…; None = keine CJ-Stamm-Form.
+    20.10.2026: delegiert an cj_sku.stamm(). Vorher kannte die Funktion nur «Stamm + 2 Ziffern + 2 Buchstaben» und den nackten Stamm;
+    die Form MIT Optionsanhang («CJYDQXHB00011-BROWN-39» → CJYDQXHB00011, gemessen 3'123 Varianten) ergab None → «keine-cj-sku»:
+    ein Produkt, dessen Varianten alle so heissen, bekam NIE eine Bestandsprüfung und blieb bei CJ-Auslistung im Verkauf."""
+    return cj_sku.stamm(variant_sku)
 
 
 def bestand(variante):
@@ -645,6 +645,14 @@ def selbsttest():
         (produkt_sku("fortura-12345") is None, "Nicht-CJ = nichts"),
         (produkt_sku("CJYD291508502BY") == "CJYD2915085", "ohne CJ-Präfix"),
         (produkt_sku("CJ-CJJJJTJT22925") == "CJJJJTJT22925", "Produkt-SKU ohne Anhang"),
+        (produkt_sku("CJYDQXHB00011-BROWN-39") == "CJYDQXHB00011", "Optionsanhang hinter «-» (20.10.)"),
+        (produkt_sku("CJ-CJBJMRJF00040-EU plug") == "CJBJMRJF00040", "Anhang mit Leerzeichen"),
+        (produkt_sku("CJXFLPJY00276-3") == "CJXFLPJY00276", "Anhang eine Ziffer"),
+        (produkt_sku("CJ-2608071241571604000") is None, "pid-Form hat keine productSku"),
+        (entscheiden([{"id": "h1", "sku": "CJYDQXHB00011-BROWN-39", "kaufbar": True}, {"id": "h2", "sku": "CJYDQXHB00011-BROWN-40", "kaufbar": True}],
+                     [{"variantSku": "CJYDQXHB00011-BROWN-39", "inventories": [{"totalInventory": 0}]},
+                      {"variantSku": "CJYDQXHB00011-BROWN-40", "inventories": [{"totalInventory": 7}]}], set())[0] == ["h1"],
+         "Hyphen-Variante mit Bestand 0 wird gesperrt, die mit Bestand bleibt"),
         (entscheiden([{"id": "x", "sku": "CJJJJTJT22925", "kaufbar": True}], [{"variantSku": "CJJJJTJT2292501AZ", "inventories": [{"totalInventory": 0}]}], set())[0] == ["x"], "Einzelvariante zugeordnet"),
         (entscheiden([{"id": "y", "sku": "CJYD291508502BY", "kaufbar": True}], [{"variantSku": "CJYD291508502BY", "inventories": [{"totalInventory": 0}]}, {"variantSku": "CJYD291508501AZ", "inventories": [{"totalInventory": 3}]}], set())[0] == ["y"], "Shop-SKU ohne CJ- trifft"),
         (d == ["a"], "Bestand 0 + kaufbar → sperren"),
