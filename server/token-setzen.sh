@@ -18,6 +18,7 @@
 # AUFRUF (in einem SSH-Terminal am PC — dort geht das Einfügen ohne Zeichenverlust; zwei Zeilen, jede mit Enter):
 #   curl -fsSL -o t.sh raw.githubusercontent.com/allengchour-glitch/aban-news-landing/claude/luxestyle-status-tztnn1/server/token-setzen.sh
 #   bash t.sh
+# (Gibst du den Token trotzdem hinter «bash t.sh» an, nimmt das Skript ihn — er landet dann aber im Shell-Verlauf: danach «history -c».)
 # Das Skript fragt dann «Token einfügen» — die Eingabe bleibt UNSICHTBAR (nichts im Verlauf, nichts auf dem Bildschirm).
 # Probelauf ohne Änderung: DRY=1 bash t.sh      Token aus der Umgebung statt Abfrage: TOKEN=… bash t.sh
 # Falls die Schreibprobe fälschlich ablehnt (nur dann): OHNE_PROBE=1 bash t.sh — den Beweis liefert Schritt 5 (echter Agentenlauf).
@@ -85,6 +86,10 @@ done
 echo "(Lesen geht immer — das Repo ist öffentlich. Nur die Schreibprobe zählt.)"
 
 log "2) Token einlesen"
+if [ -z "${TOKEN:-}" ] && [ -n "${1:-}" ]; then
+  TOKEN="$1"
+  warn "Der Token kam über die Befehlszeile — er steht jetzt im Shell-Verlauf (danach «history -c» eingeben). Besser: ohne Argument starten, dann fragt das Skript unsichtbar."
+fi
 if [ -z "${TOKEN:-}" ]; then
   [ -t 0 ] || { echo "Kein Terminal für die Eingabe — TOKEN=… vorausschicken."; exit 1; }
   printf 'GitHub-Token einfügen (Eingabe bleibt unsichtbar), dann Enter: '
