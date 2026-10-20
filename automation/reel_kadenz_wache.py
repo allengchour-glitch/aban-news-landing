@@ -77,6 +77,12 @@ KANAELE = {
     "YouTube": (re.compile(r"^posted-youtube$"), 12),
 }
 FAKTOR = 1.5
+# 20.10.2026 (Runde 22:00, Befund «Kadenz-Wache nachts»): der Vorlauf-Plan lässt NACHTS bewusst Lücken (IG/FB 18:15 → 10:15 = 16 h,
+# TikTok bis 13 h, im Plan bis 25.10. gemessen: IG/FB 17,0 h, TikTok 13,0 h) — die Wache meldete jede Nacht ab 12 h «IG/FB 12.8 h
+# (Takt 8 h)», obwohl der nächste Slot planmässig bevorstand. Ist der letzte Post ein Vorlauf-Slot UND der nächste Slot geplant, gilt die
+# GEPLANTE Lücke + 1,5 h als Schwelle, höchstens VORLAUF_LUECKE_MAX (SETZUNG: länger darf auch ein Plan nicht schweigen).
+VORLAUF_LUECKE_MAX = 20.0
+VORLAUF_TOLERANZ = 1.5
 # Vorlauf-Format → Kanal dieser Wache (social_vorlauf.py, automation/data/vorlauf_regeln.json)
 PLAN_FORMAT = {"reel_igfb": "IG/FB", "tiktok": "TikTok", "youtube": "YouTube"}
 PLAN_DATEI = os.path.join(REPO, "dropship", "_vorlauf_plan.json")
@@ -158,7 +164,10 @@ def befunde(rows, jetzt, alle=False, termine=None, plan=None):
         plan = f" · nächster geplant in {-g:.1f} h" if g is not None and g < 0 else ""
         if h is None:
             zeilen.append(f"{k} nie{plan}"); continue
-        if alle or h > FAKTOR * takt:
+        schwelle = FAKTOR * takt
+        if zusatz == "Vorlauf-Slot" and g is not None and g < 0:
+            schwelle = max(schwelle, min(h + (-g) + VORLAUF_TOLERANZ, VORLAUF_LUECKE_MAX))
+        if alle or h > schwelle:
             zeilen.append(f"{k} {h:.1f} h (Takt {takt} h)" + (f" · {zusatz}" if zusatz else "") + plan)
     return zeilen
 
@@ -204,8 +213,8 @@ def test():
     ok &= b6 == []
     # Fall 6b: TikTok-Planungszeit 11:00 (Zeile für einen späteren Slot) darf die echte Lücke (letzter Slot 05:00) NICHT verdecken
     j6b = datetime.datetime(2026, 10, 20, 20, 0, tzinfo=UTC)
-    b6b = befunde(zeilen6, j6b, False, {}, plan6)
-    ok &= any(x.startswith("TikTok 15.0 h") for x in b6b) and not any(x.startswith("IG/FB") for x in b6b)
+    b6b = befunde(zeilen6, j6b, True, {}, plan6)
+    ok &= any(x.startswith("TikTok 15.0 h") for x in b6b) and not any(x.startswith("TikTok 9.0") for x in b6b)
     # Fall 7: Slot zurückgezogen (status offen, keine mc_ids) → zählt nicht → «still»-Befund bleibt sichtbar
     plan7 = ({"IG/FB": [slot("2026-10-20T10:15:00Z", "offen", False)]}, set())
     b7 = befunde([zeilen6[0]], j6, False, {}, plan7)
@@ -225,6 +234,20 @@ def test():
     ok &= bool(OHNE_URL_RE.match("metricool:111 fb:112") and OHNE_URL_RE.match("metricool:5") and not OHNE_URL_RE.match("metricool:5 tiktok:https://t.co/x"))
     # Fall 11: Planer-Datei fehlt/kaputt → plan_lesen() liefert leer, Wache fällt auf das Ledger zurück (kein Absturz)
     ok &= plan_lesen("/nicht/da.json") == ({}, set())
+    # --- 20.10.2026 (Runde 22:00): geplante Lücke des Vorlauf-Plans ist KEIN Befund (Fall 12–14) -------------------------------
+    nacht = {"IG/FB": [slot("2026-10-20T10:15:00Z"), slot("2026-10-20T18:15:00Z"), slot("2026-10-21T10:15:00Z")],
+             "TikTok": [slot("2026-10-20T20:00:00Z"), slot("2026-10-21T07:00:00Z")], "YouTube": [slot("2026-10-20T20:00:00Z"), slot("2026-10-21T05:20:00Z")]}
+    j12 = datetime.datetime(2026, 10, 21, 7, 0, tzinfo=UTC)       # IG/FB: 12.75 h nach 18:15, nächster Slot 10:15 geplant (Lücke 16 h)
+    b12 = befunde([], j12, False, {}, (nacht, set()))
+    ok &= not any(x.startswith("IG/FB") for x in b12)             # vor der Änderung: «IG/FB 12.8 h (Takt 8 h)» jede Nacht
+    # Fall 13: auch ein PLAN darf nicht länger als VORLAUF_LUECKE_MAX schweigen (Lücke 25 h → ab 20 h Meldung, davor Ruhe)
+    lang = {"IG/FB": [slot("2026-10-20T10:15:00Z")], "TikTok": [slot("2026-10-20T05:00:00Z"), slot("2026-10-21T06:05:00Z")], "YouTube": [slot("2026-10-20T05:20:00Z")]}
+    ok &= not any(x.startswith("TikTok") for x in befunde([], datetime.datetime(2026, 10, 20, 23, 0, tzinfo=UTC), False, {}, (lang, set())))   # 18 h < 20
+    b13 = befunde([], datetime.datetime(2026, 10, 21, 1, 30, tzinfo=UTC), False, {}, (lang, set()))                                              # 20.5 h > 20
+    ok &= any(x.startswith("TikTok 20.5 h") and "nächster geplant" in x for x in b13)
+    # Fall 14: nur ein Vorlauf-Slot als LETZTER Post bekommt die Toleranz — fehlt der nächste Slot (Plan aus), gilt die alte Schwelle 12 h
+    plan14 = ({"IG/FB": [slot("2026-10-20T18:15:00Z")], "TikTok": [], "YouTube": []}, set())
+    ok &= any(x.startswith("IG/FB 12.8 h") for x in befunde([], j12, False, {}, plan14))
     print("TEST", "BESTANDEN" if ok else "GESCHEITERT", b2, b3, b4, b5, "| plan:", b6, b6b, b7, b8, b9)
     return 0 if ok else 1
 
