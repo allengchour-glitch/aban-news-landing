@@ -384,3 +384,4 @@ gid://shopify/Product/16654281769351	lidschatten-set-mit-drei-schimmernden-farbe
 gid://shopify/Product/16654283047303	armelloses-faltenkleid-603100	Ärmelloses Faltenkleid
 gid://shopify/Product/16654283112839	keramik-kaffeetasse-mit-untertasse-635000	Keramik-Kaffeetasse mit Untertasse
 gid://shopify/Product/16654283243911	78-farben-lidschatten-palette-matt-schimmernd-416768	78-Farben-Lidschatten-Palette Matt Schimmernd
+gid://shopify/Product/16654364672391	gestreiftes-langarmshirt-mit-puffarmeln-605500	Gestreiftes Langarmshirt mit Puffärmeln
