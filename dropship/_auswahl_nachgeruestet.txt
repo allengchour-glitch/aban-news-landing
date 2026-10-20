@@ -3053,3 +3053,6 @@
 16654059831687	Farbe:5:5	2026-10-19	clutch-geldborse-mit-reissverschluss-601200
 16654057668999	Farbe:5:5	2026-10-19	kuhleder-clip-munzborse-621300
 16654056128903	Farbe:2:2	2026-10-19	retro-stil-metall-mehrzweck-zink-alloy-kartenh-612900
+15509368471937	Grösse:3+Variante:2:6+ki	2026-10-20	wandbehang-sternenuniversum-mond-8aba97
+15516216492417	Farbe:2:2+ki	2026-10-20	schulrucksack-fur-laptop-morning-mist-gray-625300
+15516521234817	Motiv:6:6+ki	2026-10-20	faltbares-katzenbett-mit-plusch-600400
