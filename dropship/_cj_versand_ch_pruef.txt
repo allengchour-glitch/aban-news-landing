@@ -11331,3 +11331,6 @@ kindergarten-indoor-schuhe-fur-kinder-636400	2603100242161636800	16	9.07	ok	land
 hunde-geschirr-fur-kleine-und-mittelgrosse-hun-627500	2512041354511627700	16	5.85	ok	landeseite
 leichtes-sommerhemd-611200	2607080601201611800	16	8.93	ok	landeseite
 prinzessinnen-schuhe-mit-gummisohle-rutschsich-631700	2601110636311631900	16	10.01	ok	landeseite
+herren-sommer-t-shirt-629500	2607070902131621100	16	8.79	ok	landeseite
+cycling-langarmshirt-mit-icecooling-fabric-609200	2607070120181609800	16	6.77	ok	landeseite
+koreanische-schleifen-sandalen-fur-babys-rutsc-629100	2507011148591629300	16	5.41	ok	landeseite
