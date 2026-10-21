@@ -34,6 +34,12 @@
       }
     },
     {
+      "handle": "kostueme-ch-lager",
+      "anlass": "Halloween",
+      "datum": "2026-10-31",
+      "kostuem_zuerst": true
+    },
+    {
       "handle": "adventskalender",
       "anlass": "Advent",
       "datum": "2026-12-01"
