@@ -6901,14 +6901,18 @@ try:
         t_.join(30)
     pruefe("20.Protokoll Zwei Schreiber gleichzeitig: beide Einträge sind im Protokoll (der zweite wartet auf die Schreib-Sperre) — ohne Sperre ging einer verloren",
            [e_["n"] for e_ in json.loads(L.PROTOKOLL.read_text())] == [1, 2, 3, "A", "B"], L.PROTOKOLL.read_text()[:300])
-    # … ein von Hand zurückgesetztes Protokoll («{}», «null») ist kein Absturz: es beginnt neu
+    # … ein Inhalt, der kein Protokoll ist («{}», «null» nach einem Zurücksetzen von Hand, kaputtes JSON), ist kein Absturz — er wird BEISEITEGELEGT (wie das Logbuch) und ein neues Protokoll begonnen, nicht überschrieben
     for roh_ in ("{}", "null", '"text"', "[kaputt"):
         L.PROTOKOLL.write_text(roh_)
         aus_p_ = _io20.StringIO()
         with _cl20.redirect_stdout(aus_p_):
             L.protokoll_schreiben({"n": "neu"})
-        pruefe(f"20.Protokoll Ein zurückgesetztes Protokoll ({roh_}) beginnt neu — kein Absturz, ein Eintrag, kein Hinweis",
-               json.loads(L.PROTOKOLL.read_text()) == [{"n": "neu"}] and not aus_p_.getvalue().strip(), (L.PROTOKOLL.read_text()[:100], aus_p_.getvalue()))
+        beiseite_ = sorted(Path(sdp20_).glob("broker.json.kaputt-*"))
+        pruefe(f"20.Protokoll Ein Inhalt, der kein Protokoll ist ({roh_}), wird beiseitegelegt (mit dem alten Inhalt) und ein neues begonnen — kein Absturz, ein Hinweis",
+               json.loads(L.PROTOKOLL.read_text()) == [{"n": "neu"}] and len(beiseite_) == 1 and beiseite_[0].read_text() == roh_ and "beiseitegelegt" in aus_p_.getvalue(),
+               (L.PROTOKOLL.read_text()[:100], [b_.name for b_ in beiseite_], aus_p_.getvalue()))
+        for b_ in beiseite_:
+            b_.unlink()
     L.protokoll_schreiben({"n": 1})
     L.protokoll_schreiben({"n": 2})
     L.protokoll_schreiben({"n": 3})
@@ -6939,6 +6943,61 @@ try:
     pruefe("20.Protokoll Auch eine andere Ausnahme als OSError (hier: ein nicht schreibbarer Eintrag) bleibt folgenlos für den Lauf: Hinweis statt Absturz, die Datei unverändert",
            fehler20r_ is None and "Protokoll nicht geschrieben (TypeError)" in aus20r_.getvalue() and [e_["n"] for e_ in json.loads(L.PROTOKOLL.read_text())] == ["neu", 1, 2, 3] and not list(Path(sdp20_).glob("*.neu")),
            (fehler20r_, aus20r_.getvalue()))
+    # … eine kurz gesperrte Datei (Windows: Virenscanner, OneDrive) wird wiederholt, nicht für «leer» gehalten und überschrieben (vorher ging die ganze Geschichte verloren)
+    orig_rt20_, n_rt20_ = Path.read_text, [0]
+
+    def rt20_(self, *a, **k):
+        if self == L.PROTOKOLL and n_rt20_[0] == 0:
+            n_rt20_[0] += 1
+            raise PermissionError("kurz gesperrt")
+        return orig_rt20_(self, *a, **k)
+    Path.read_text = rt20_
+    try:
+        L.protokoll_schreiben({"n": 5})
+    finally:
+        Path.read_text = orig_rt20_
+    pruefe("20.Protokoll Das Lesen scheitert einmal kurz (PermissionError): der zweite Versuch liest das Protokoll, die bisherigen Einträge bleiben — der Eintrag wird angehängt (vorher: Protokoll als leer behandelt und überschrieben)",
+           [e_["n"] for e_ in json.loads(L.PROTOKOLL.read_text())] == ["neu", 1, 2, 3, 5] and n_rt20_[0] == 1, (L.PROTOKOLL.read_text()[:200], n_rt20_))
+    alt_bw20_ = L.BUCH_WARTEN
+    L.BUCH_WARTEN = (0, 0)
+
+    def rt20b_(self, *a, **k):
+        if self == L.PROTOKOLL:
+            raise PermissionError("gesperrt")
+        return orig_rt20_(self, *a, **k)
+    Path.read_text = rt20b_
+    aus20s_ = _io20.StringIO()
+    try:
+        with _cl20.redirect_stdout(aus20s_):
+            L.protokoll_schreiben({"n": 99})
+    finally:
+        Path.read_text = orig_rt20_
+        L.BUCH_WARTEN = alt_bw20_
+    pruefe("20.Protokoll Das Protokoll bleibt dauerhaft unlesbar: der Eintrag wird NICHT geschrieben (die bisherigen werden nie überschrieben), ein Hinweis, keine Ausnahme",
+           [e_["n"] for e_ in json.loads(L.PROTOKOLL.read_text())] == ["neu", 1, 2, 3, 5] and "nicht lesbar" in aus20s_.getvalue(), (L.PROTOKOLL.read_text()[:200], aus20s_.getvalue()))
+    # … ein kurz gesperrtes Umbenennen wird wiederholt
+    orig_rep20r_, n_rep20_ = Path.replace, [0]
+
+    def replace20r_(self, ziel):
+        if self.name.startswith("broker.json.") and self.name.endswith(".neu") and n_rep20_[0] == 0:
+            n_rep20_[0] += 1
+            raise PermissionError("kurz gehalten")
+        return orig_rep20r_(self, ziel)
+    Path.replace = replace20r_
+    try:
+        L.protokoll_schreiben({"n": 6})
+    finally:
+        Path.replace = orig_rep20r_
+    pruefe("20.Protokoll Das Umbenennen scheitert einmal kurz (Datei gehalten): der zweite Versuch gelingt, der Eintrag steht im Protokoll, keine Temp-Datei bleibt",
+           [e_["n"] for e_ in json.loads(L.PROTOKOLL.read_text())] == ["neu", 1, 2, 3, 5, 6] and n_rep20_[0] == 1 and not list(Path(sdp20_).glob("*.neu")), (L.PROTOKOLL.read_text()[:200], n_rep20_))
+    # … eine belegte Schreib-Sperre hält den Not-Aus nicht auf (er ruft `protokolliere` VOR dem Schliessen): höchstens PROTOKOLL_SPERRE_WARTEN, dann wird ohne Sperre geschrieben
+    (Path(sdp20_) / "broker.json-schreiben.lock").write_text("99999 0 fremd\n")
+    t0_p_ = _time20.time()
+    L.protokoll_schreiben({"n": 7})
+    dauer_p_ = _time20.time() - t0_p_
+    (Path(sdp20_) / "broker.json-schreiben.lock").unlink()
+    pruefe("20.Protokoll Eine belegte Schreib-Sperre hält den Lauf höchstens PROTOKOLL_SPERRE_WARTEN (1 s) auf — der Eintrag wird dann ohne Sperre geschrieben (vorher bis 15 s vor dem Schliessen im Not-Aus)",
+           [e_["n"] for e_ in json.loads(L.PROTOKOLL.read_text())] == ["neu", 1, 2, 3, 5, 6, 7] and 0.5 <= dauer_p_ < 5 and L.PROTOKOLL_SPERRE_WARTEN == 1.0, (dauer_p_, L.PROTOKOLL.read_text()[:200]))
 finally:
     L.PROTOKOLL = alt_prot20_
 

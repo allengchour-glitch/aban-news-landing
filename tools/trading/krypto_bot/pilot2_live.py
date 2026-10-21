@@ -4373,19 +4373,61 @@ def _notaus_schutz(spot, fut, st, k, sym, coin, pos, pos_vor, frei, gebunden, ku
     return ok[0]
 
 
-def _protokoll_anhaengen(eintrag):
+PROTOKOLL_SPERRE_WARTEN = 1.0  # Sekunden: das Protokoll ist ein Beleg — lieber ohne Sperre schreiben, als einen Not-Aus aufzuhalten (er ruft `protokolliere` vor dem Schliessen auf; die Buch-Sperre wartet bis 15 s)
+
+
+def _protokoll_sperre():
+    import sperre
+    return sperre.lauf_sperre(name=PROTOKOLL.name + "-schreiben", warten=PROTOKOLL_SPERRE_WARTEN, ordner=PROTOKOLL.parent, alt_nach=60)
+
+
+def _protokoll_lesen():
+    """Die bisherigen Einträge → Liste; None, wenn die Datei trotz Wiederholungen nicht lesbar ist (Windows: Virenscanner, OneDrive, ein offener Editor) — dann wird NICHT geschrieben, sonst ginge die ganze Geschichte
+    verloren (Code-Review der R20). Ist der Inhalt kein Protokoll (kaputtes JSON, «{}», «null» nach einem Zurücksetzen von Hand), wird er beiseitegelegt statt überschrieben — wie `pilot.lies` das Logbuch."""
+    roh = None
+    for i in range(len(BUCH_WARTEN) + 1):
+        try:
+            if not PROTOKOLL.exists():
+                return []
+            roh = PROTOKOLL.read_text()
+            break
+        except OSError:
+            if i >= len(BUCH_WARTEN):
+                return None
+            time.sleep(BUCH_WARTEN[i])
     try:
-        alt = json.loads(PROTOKOLL.read_text()) if PROTOKOLL.exists() else []
-    except (OSError, ValueError):
-        alt = []
-    if not isinstance(alt, list):  # z. B. «{}» oder «null» nach einem Zurücksetzen von Hand
-        alt = []
+        alt = json.loads(roh)
+    except ValueError:
+        alt = None
+    if isinstance(alt, list):
+        return alt
+    beiseite = PROTOKOLL.with_name(PROTOKOLL.name + f".kaputt-{datetime.now(timezone.utc):%Y%m%d-%H%M%S}")
+    try:
+        PROTOKOLL.replace(beiseite)
+        print(f"⚠️ Protokoll {PROTOKOLL.name} war kein Protokoll — beiseitegelegt als {beiseite.name}, ein neues begonnen.")
+    except OSError:
+        pass
+    return []
+
+
+def _protokoll_anhaengen(eintrag):
+    alt = _protokoll_lesen()
+    if alt is None:
+        print(f"⚠️ Protokoll {PROTOKOLL.name} nicht lesbar — der Eintrag wird nicht geschrieben, damit die bisherigen nicht überschrieben werden. Der Lauf selbst ist davon nicht betroffen.")
+        return
     PROTOKOLL.parent.mkdir(exist_ok=True)
     _buch_temp_aufraeumen(PROTOKOLL)
     tmp = _buch_tmp(PROTOKOLL)
     try:
-        tmp.write_text(json.dumps((alt + [eintrag])[-2000:], ensure_ascii=False, indent=1))
-        tmp.replace(PROTOKOLL)  # nie halb geschrieben
+        for i in range(len(BUCH_WARTEN) + 1):
+            try:
+                tmp.write_text(json.dumps((alt + [eintrag])[-2000:], ensure_ascii=False, indent=1))
+                tmp.replace(PROTOKOLL)  # nie halb geschrieben
+                return
+            except OSError:
+                if i >= len(BUCH_WARTEN):
+                    raise
+                time.sleep(BUCH_WARTEN[i])
     finally:
         try:
             tmp.unlink()
@@ -4396,12 +4438,13 @@ def _protokoll_anhaengen(eintrag):
 def protokoll_schreiben(eintrag):
     """Einen Eintrag ans Protokoll hängen (ein Beleg, kein Schutz). (20. Folge-Runde, Code-Review) Eigener Name der Temp-Datei je Schreiber wie beim Buch — zwei Schreiber teilten sich `<Protokoll>.neu`, das zweite
     `replace` fand die Datei nicht mehr —, Lesen-Ändern-Schreiben unter der kurzen Schreib-Sperre (sonst ging bei gleichzeitigen Schreibern, z. B. Not-Aus im Cockpit-Thread und Lauf, der Eintrag des einen verloren; ist die
-    Sperre nicht zu bekommen, wird trotzdem geschrieben) und BEST EFFORT: ein Fehler darf nie das Ergebnis eines Laufs ersetzen, dessen Aufträge schon raus sind (die Aufrufer stehen am Ende von `ausfuehren` und im Not-Aus)."""
+    Sperre binnen PROTOKOLL_SPERRE_WARTEN nicht zu bekommen, wird trotzdem geschrieben), Wiederholungen bei kurz gesperrter Datei, nie das Überschreiben eines nicht lesbaren Protokolls, und BEST EFFORT: ein Fehler darf nie
+    das Ergebnis eines Laufs ersetzen, dessen Aufträge schon raus sind (die Aufrufer stehen am Ende von `ausfuehren` und im Not-Aus)."""
     from contextlib import ExitStack
     try:
         with ExitStack() as stapel:
             try:
-                stapel.enter_context(_buch_sperre(PROTOKOLL))
+                stapel.enter_context(_protokoll_sperre())
             except Exception:  # noqa: BLE001 — Sperre belegt oder nicht anlegbar: lieber ohne Sperre schreiben als gar nicht
                 pass
             _protokoll_anhaengen(eintrag)

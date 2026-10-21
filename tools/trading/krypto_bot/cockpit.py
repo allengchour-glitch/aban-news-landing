@@ -271,6 +271,7 @@ NK_DURCHGANG_MAX_MIN = 5                       # (20. Prüfung, klein 1) so lang
 NK_SERIE = "krypto-nachkontrolle-serie.json"   # (20. Prüfung) `pilot.py --nachkontrolle --einmal` führt hier Buch über die Reihe gleichartiger Durchgänge: {art: ok|warnung|besetzt, anzahl, seit, zeit}
 NK_WARN_ROT = 2                                # so viele Durchgänge IN FOLGE mit Warnung (Rückgabewert 3) sind eine Dauerwarnung → rot; ein einzelner bleibt grau (⚠) mit Text
 NK_BESETZT_ROT = 4                             # so viele Durchgänge in Folge «Lauf-Sperre besetzt» (Rückgabewert 0) → rot: der Tageslauf braucht Minuten, die lange Nachkontrolle höchstens 11,5 — mehr als 2 in Folge sind kein Zufall, der Halter steht (z. B. angeklicktes Konsolenfenster)
+NK_SERIE_VORSPRUNG_MIN = 2                     # (Code-Review der R20) liegt der letzte Eintrag der Reihe mehr als so viele Minuten VOR dem Rückgabewert der Bat, hat die Bat danach einen Durchgang beendet, der `pilot.py` gar nicht aufrief (`:nk_ohne_buch`, kein Buch → rc=0): die Reihe ist überholt und zählt nicht
 NK_STARTER = "krypto-nachkontrolle-still.vbs"  # startet krypto-auto.bat «nachkontrolle» ohne sichtbares Fenster (alle 10 Minuten ein Konsolenfenster würde stören — und dazu verleiten, die Aufgabe abzuschalten)
 
 
@@ -711,6 +712,8 @@ def gesundheit(env, lb, ki, heute=None):
             except OSError:
                 rc_nk = None
             serie = nk_serie()  # (20. Prüfung) die Reihe der letzten Durchgänge: seit wann steht eine Warnung, wie lange war die Sperre besetzt
+            if serie is not None and rc_alter is not None and (time.time() - serie["zeit"]) / 60 - rc_alter > NK_SERIE_VORSPRUNG_MIN:
+                serie = None  # überholt: die Bat hat nach dem letzten Eintrag einen Durchgang ohne pilot.py beendet (kein Buch) — ein alter Stand «besetzt ×4» bliebe sonst bis zu 30 Minuten rot
             if minuten_nk > NK_ENDE_MAX_MIN and (rc_alter is None or rc_alter > minuten_nk):
                 # (19. Prüfung K5) jeder Start schreibt NACH seinem Ende einen neuen Rückgabewert (auch «ohne Buch»): ist der letzte Start älter als NK_ENDE_MAX_MIN und der Rückgabewert älter als er, ging der Durchgang nie zu Ende
                 # (hängt, oder das Zeitlimit der Aufgabe beendet ihn jedes Mal) — das Lebenszeichen allein zeigte «läuft»

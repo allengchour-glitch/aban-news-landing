@@ -534,23 +534,29 @@ with tempfile.TemporaryDirectory() as tmp:
                     pruefe(f"Ampel «Nachkontrolle (Aufgabenplanung)», veralteter Rückgabewert: {fall20} → {'grün' if erwartet20 else 'rot'}", z20 is not None and z20["ok"] is erwartet20 and wort20 in z20["text"], z20)
                 # wichtig 1: eine einzelne Warnung bleibt grau, trägt aber das Kennzeichen «warnung» (die Kopfzeile zählt sie); ab NK_WARN_ROT Durchgängen in Folge ist sie rot
                 for fall20, rc_text20, serie_a20, erwartet20, warn20, wort20 in (
-                        ("rc=3, Reihe: 1 Warnung", "x rc=3", ("warnung", 1, 3, 3), None, True, "letzte Durchgang meldete eine WARNUNG"),
+                        ("rc=3, Reihe: 1 Warnung", "x rc=3", ("warnung", 1, 3, 2), None, True, "letzte Durchgang meldete eine WARNUNG"),
                         ("rc=3 ohne Reihe-Datei (ältere Bat/Programmstand)", "x rc=3", None, None, True, "letzte Durchgang meldete eine WARNUNG"),
-                        ("rc=3, Reihe: 2 Warnungen in Folge", "x rc=3", ("warnung", 2, 13, 3), False, False, "seit 2 Durchgängen in Folge"),
-                        ("rc=3, Reihe: 6 Warnungen seit 55 Min.", "x rc=3", ("warnung", 6, 55, 5), False, False, "seit 6 Durchgängen in Folge (rund 55 Min.)"),
-                        ("rc=3, die Reihe sagt «ok» (widersprüchlich, z. B. Datei von vorher)", "x rc=3", ("ok", 4, 40, 3), None, True, "WARNUNG"),
+                        ("rc=3, Reihe: 2 Warnungen in Folge", "x rc=3", ("warnung", 2, 13, 2), False, False, "seit 2 Durchgängen in Folge"),
+                        ("rc=3, Reihe: 6 Warnungen seit 55 Min.", "x rc=3", ("warnung", 6, 55, 2), False, False, "seit 6 Durchgängen in Folge (rund 55 Min.)"),
+                        ("rc=3, die Reihe sagt «ok» (widersprüchlich, z. B. Datei von vorher)", "x rc=3", ("ok", 4, 40, 2), None, True, "WARNUNG"),
                         ("rc=3, die Reihe ist 45 Min. alt (sagt nichts über die Gegenwart)", "x rc=3", ("warnung", 5, 70, 45), None, True, "WARNUNG"),
-                        ("rc=0, Reihe: 3× besetzt (normal: Tageslauf/lange Nachkontrolle belegen die Sperre)", "x rc=0", ("besetzt", 3, 25, 5), True, False, "übersprungen (Lauf-Sperre belegt, 3×)"),
-                        ("rc=0, Reihe: 4× besetzt (der Halter steht)", "x rc=0", ("besetzt", 4, 35, 5), False, False, "Lauf-Sperre hält ein anderer Lauf"),
+                        ("rc=0, Reihe: 3× besetzt (normal: Tageslauf/lange Nachkontrolle belegen die Sperre)", "x rc=0", ("besetzt", 3, 25, 2), True, False, "übersprungen (Lauf-Sperre belegt, 3×)"),
+                        ("rc=0, Reihe: 4× besetzt (der Halter steht)", "x rc=0", ("besetzt", 4, 35, 2), False, False, "Lauf-Sperre hält ein anderer Lauf"),
                         ("rc=0, Reihe: 4× besetzt, aber 45 Min. alt", "x rc=0", ("besetzt", 4, 95, 45), True, False, "zuletzt vor"),
-                        ("rc=0, Reihe: ok", "x rc=0", ("ok", 9, 80, 3), True, False, "zuletzt vor"),
-                        ("rc=0, die Reihe sagt «warnung» (widersprüchlich: der Rückgabewert gilt)", "x rc=0", ("warnung", 5, 40, 3), True, False, "zuletzt vor")):
+                        ("rc=0, Reihe: ok", "x rc=0", ("ok", 9, 80, 2), True, False, "zuletzt vor"),
+                        ("rc=0, die Reihe sagt «warnung» (widersprüchlich: der Rückgabewert gilt)", "x rc=0", ("warnung", 5, 40, 2), True, False, "zuletzt vor"),
+                        ("rc=0, Reihe: 4× besetzt, aber ÜBERHOLT (die Bat beendete danach einen Durchgang ohne pilot.py: kein Buch → rc=0)", "x rc=0", ("besetzt", 4, 35, 8), True, False, "zuletzt vor"),
+                        ("rc=3, Reihe: 2 Warnungen, aber ÜBERHOLT (7 Minuten älter als der Rückgabewert)", "x rc=3", ("warnung", 2, 20, 9), None, True, "letzte Durchgang meldete eine WARNUNG")):
                     z20 = ampel20(3, 1, rc_text20, serie_a20)
                     gut20 = z20 is not None and z20["ok"] is erwartet20 and wort20 in z20["text"] and (z20.get("warnung") is True) == warn20 and ("warnung" in z20) == warn20
-                    if fall20.startswith("rc=0, Reihe: ") and erwartet20 is True and "besetzt" not in fall20:
+                    if (fall20.startswith("rc=0, Reihe: ") and erwartet20 is True and "besetzt" not in fall20) or "ÜBERHOLT" in fall20:
+                        gut20 = gut20 and "übersprungen" not in z20["text"]
+                    if "ÜBERHOLT" in fall20 and "WARNUNG" not in wort20:
                         gut20 = gut20 and "übersprungen" not in z20["text"]
                     pruefe(f"Ampel «Nachkontrolle (Aufgabenplanung)», Reihe der Durchgänge: {fall20} → {'grün' if erwartet20 else 'rot' if erwartet20 is False else 'grau' + (' mit Kennzeichen warnung' if warn20 else '')}", gut20, z20)
                 # … und die anderen Zeilen tragen das Kennzeichen nie (es steht nur an der Warnung)
+                rc_datei18.unlink(missing_ok=True)
+                serie20.unlink(missing_ok=True)
                 alle20 = C.gesundheit({}, {"entscheide": []}, {}, datetime.now(timezone.utc).date())
                 pruefe("Gesundheit: nur eine WARNUNG trägt das Kennzeichen «warnung» (graue Info-Zeilen und alle übrigen nicht)", [x["name"] for x in alle20 if "warnung" in x] == [], [x for x in alle20 if "warnung" in x])
                 rc_datei18.unlink(missing_ok=True)
@@ -579,16 +585,26 @@ with tempfile.TemporaryDirectory() as tmp:
         _rot_ = {"name": "d", "ok": False, "text": "x"}
         _faelle20 = {"leer": [], "grau": [_ok_, _grau_], "warn1": [_ok_, _warn_], "warn2": [_warn_, dict(_warn_, name="e")], "rot1": [_rot_, _ok_], "rot2": [_rot_, dict(_rot_, name="f")],
                      "rot_warn": [_rot_, _warn_], "zeichen": [_ok_, _rot_, _warn_, _grau_]}
-        k20 = None
+        k20, _js_kaputt20 = None, None
+        _node_ok20 = False
         if _m20 and _node20:
+            try:  # erst prüfen, ob node überhaupt läuft (ein nicht startbares node darf den Selbsttest vor dem Handeln nie scheitern lassen); läuft es, ist ein Fehler im Skript ein ECHTER Fehler der Kopfzeile
+                _pr20 = _sp20.run([_node20, "-e", "process.stdout.write('ok')"], capture_output=True, text=True, encoding="utf-8", timeout=60)
+                _node_ok20 = _pr20.returncode == 0 and _pr20.stdout == "ok"
+            except (OSError, _sp20.SubprocessError, ValueError):
+                _node_ok20 = False
+        if _node_ok20:
             _js20 = _m20.group(1) + ("\nconst faelle = JSON.parse(process.argv[1]);\nconst aus = {};\nfor (const [n, g] of Object.entries(faelle)) aus[n] = {kopf: gesundKopfzeile(g), zeichen: g.map(gesundZeichen)};\n"
                                     "process.stdout.write(JSON.stringify(aus));")
             try:
                 r_ = _sp20.run([_node20, "-e", _js20, json.dumps(_faelle20)], capture_output=True, text=True, encoding="utf-8", timeout=60)  # node schreibt UTF-8 (⚠, —) — nicht die Zeichentabelle der Konsole
                 k20 = json.loads(r_.stdout) if r_.returncode == 0 and r_.stdout else None
-            except (OSError, _sp20.SubprocessError, ValueError):
-                k20 = None
-        if k20 is not None:
+                _js_kaputt20 = None if k20 is not None else (r_.returncode, r_.stderr[-300:])
+            except (OSError, _sp20.SubprocessError, ValueError) as ex_:
+                k20, _js_kaputt20 = None, repr(ex_)
+        if _node_ok20 and k20 is None:
+            pruefe("Kopfzeile der Gesundheits-Karte: node läuft, aber die Funktionen gesundKopfzeile/gesundZeichen laufen nicht (Skriptfehler oder ungültige Ausgabe) — ein ECHTER Fehler, kein Grund zum Überspringen", False, _js_kaputt20)
+        elif k20 is not None:
             pruefe("Kopfzeile der Gesundheits-Karte: «alles in Ordnung» nur ohne rote Punkte UND ohne Warnung — eine graue Info-Zeile zählt nicht, eine Warnung steht dort (vorher blieb sie grün)",
                    k20["leer"]["kopf"] == "alles in Ordnung" and k20["grau"]["kopf"] == "alles in Ordnung" and k20["warn1"]["kopf"] == "1 Warnung — bitte unten ansehen"
                    and k20["warn2"]["kopf"] == "2 Warnungen — bitte unten ansehen" and k20["rot1"]["kopf"] == "1 Punkt braucht Aufmerksamkeit"
