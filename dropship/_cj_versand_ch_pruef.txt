@@ -12912,3 +12912,5 @@ reise-rucksack-business-605900	2512260825431606100	16	21.75	ok	landeseite
 wasserdichte-multifunktionale-herren-automatik-615700	2509051337201615900	16	7.35	ok	landeseite
 retro-rucksack-aus-echtleder-618900	2512260705011619100	16	24.44	ok	landeseite
 taktischer-rucksack-fur-herren-638900	2512201041471639100	16	12.21	ok	landeseite
+herren-business-automatikuhr-619300	2509051328191619500	16	7.28	ok	landeseite
+wasserdichte-business-uhr-mit-kalender-und-wei-601100	2508270313231601300	16	5.93	ok	landeseite
