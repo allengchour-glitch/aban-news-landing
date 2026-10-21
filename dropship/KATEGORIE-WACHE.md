@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-21T10:50Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-21T11:48Z
 
-Aktive gescannt: 13 · ohne Kategorie: 13 · heute gesetzt: 12 (SCHARF, CAP 1500) · danach offen: 1 · Fehler: 0
+Aktive gescannt: 10 · ohne Kategorie: 10 · heute gesetzt: 9 (SCHARF, CAP 1500) · danach offen: 1 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -11,9 +11,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- mannlicher-strickpullover-mit-kapuzenfunktion-637000 · Herrenmode → Apparel & Accessories > Clothing
-- poloshirt-mit-rundhalsausschnitt-gestrickter-p-623400 · Herrenmode → Apparel & Accessories > Clothing
-- langarmshirt-mit-leopardenmuster-639100 · Herrenmode → Apparel & Accessories > Clothing
-- doppelseitiges-polar-fleece-langarm-top-614500 · Herrenmode → Apparel & Accessories > Clothing
-- retro-lange-armel-plaid-shirt-621600 · Herrenmode → Apparel & Accessories > Clothing
+- brosche-schnecke-oktopus-dual-verwendung-451584 · Schmuck → Apparel & Accessories > Jewelry
+- kirsch-brosche-720576 · Schmuck → Apparel & Accessories > Jewelry
+- laptop-tasche-exportqualitat-mit-ruckenstutze-601000 · Taschen → Luggage & Bags
+- business-rucksack-retro-stil-639400 · Taschen → Luggage & Bags
+- kleid-mit-knopfleiste-und-stand-up-kragen-aus-629700 · Damenmode → Apparel & Accessories > Clothing
 
