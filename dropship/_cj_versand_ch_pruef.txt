@@ -12823,3 +12823,14 @@ kamera-drohne-fur-jugendliche-965568	1778678238873657344	0	-	KEINE CH-Option →
 wool-blend-cord-hosen-633600	2511191430541633800	16	11.72	ok	landeseite
 elegante-quarz-armbanduhr-616100	2601260421161616400	7	6.48	ok	landeseite
 mini-luftreiniger-mit-sternenhimmel-projektion-623200	2411120827061623300	7	7.78	ok	landeseite
+high-waist-yoga-pants-mit-beutlifting-effekt-632800	2511181349061633000	16	8.11	ok	landeseite
+herrenuhr-mit-quarzwerk-619400	2601240227411619800	7	5.99	ok	landeseite
+carbon-faser-kreuzungsrahmen-745344	1773202280309854208	16	5.81	ok	landeseite
+wanduhr-lampe-627200	2411080952501627400	3	39.59	ok	landeseite
+stylische-business-armbanduhr-fur-herren-604600	2601230856321605000	7	6.90	ok	landeseite
+hohe-lassige-hosen-mit-umschlag-601800	2511141429261602000	16	7.71	ok	landeseite
+herrenuhr-geschenkset-621600	2602040712331622000	3	7.62	ok	landeseite
+herrenquarzarmbanduhr-612200	2602040255521613200	7	6.18	ok	landeseite
+leuchtende-multifunktions-quarzuhr-mit-doppeld-602400	2602030247401602800	7	5.72	ok	landeseite
+jugendvoll-studentenuhr-mit-canvas-armband-606500	2602020941191606900	7	5.82	ok	landeseite
+etui-kleid-mit-tragern-kristall-applikationen-618400	2607130717021619200	16	10.83	ok	landeseite
