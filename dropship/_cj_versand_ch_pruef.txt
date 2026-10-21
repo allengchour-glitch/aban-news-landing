@@ -12176,3 +12176,6 @@ lamers-corduroy-jacket-628000	2607100343161628800	16	10.15	ok	landeseite
 haarglatter-mit-usb-ladung-321216	1455369092612624384	7	13.10	ok	landeseite
 langarm-yogaleot-fur-tanz-sport-603400	2412060706301603700	16	7.99	ok	landeseite
 leichter-reithelm-c58a7f	036FE1A8-23ED-4033-89BF-70A54A073F02	16	14.96	ok	landeseite
+aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben	-	-	-	unklar keine CJ-SKU	landeseite
+aroma-diffuser-holzoptik-hohl-design-ultraschall-luftbefeuchter-mit-led-licht	-	-	-	unklar keine CJ-SKU	landeseite
+streifen-bluse-marbella-color-block-kurzarm	-	-	-	unklar keine CJ-SKU	landeseite
