@@ -12891,3 +12891,15 @@ einfarbiges-blusenhemd-mit-umlegekragen-635300	2607130302121635900	16	8.11	ok	la
 grosses-leder-rucksack-set-607800	2603020552471608100	16	19.06	ok	landeseite
 lose-damenbluse-mit-lapel-604600	2607130130591605200	16	6.90	ok	landeseite
 manner-rucksack-fur-den-arbeitsweg-607600	2603020538411607900	16	21.16	ok	landeseite
+retro-print-damen-top-613900	2607130126271614500	16	7.43	ok	landeseite
+business-rucksack-unisex-623900	2602280211151624300	16	17.66	ok	landeseite
+herrenuhr-automatik-656000	2510220852201656200	16	5.97	ok	landeseite
+wasserdichter-transparentboden-geschafts-mecha-618500	2510130952511618700	16	7.43	ok	landeseite
+business-freizeit-gold-hohlraum-mechanische-uh-618100	2509280302211618300	16	6.33	ok	landeseite
+kleid-607000	2607130910331607600	16	8.39	ok	landeseite
+damenkleid-v-ausschnitt-plus-grosse-605400	2607130852071606000	16	9.07	ok	landeseite
+europaische-design-uhr-624400	2509160957411624600	7	7.06	ok	landeseite
+einfaches-armelloses-kleid-mit-ruckenausschnit-628200	2607130741321628800	16	8.79	ok	landeseite
+mannliche-armbanduhren-601800	2509150302081602000	7	6.75	ok	landeseite
+handgepack-tasche-business-style-rucksack-624100	2607130732261624700	16	20.24	ok	landeseite
+vintage-pullover-kleid-617200	2607130738371617800	16	8.79	ok	landeseite
