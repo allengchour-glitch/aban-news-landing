@@ -12549,3 +12549,5 @@ winter-suede-schuhe-fur-herren-729792	1735589066034393088	16	20.46	ok	landeseite
 camo-overalls-fur-herren-618700	2505191004491619000	16	11.49	ok	landeseite
 streifen-sneaker-fur-herren-und-damen-137600	1733444253751189504	16	14.96	ok	landeseite
 wanderstock-mit-sitz-613100	2607100719151613800	0	-	KEINE CH-Option → DRAFT	landeseite
+leichte-outdoor-hose-fur-herren-605900	2505110336341606600	16	11.00	ok	landeseite
+mini-wireless-keyboard-mit-air-mouse-e8301c	2B072C96-2419-4AE2-AD0D-AAFAE71753AD	7	7.78	ok	landeseite

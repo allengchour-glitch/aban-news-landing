@@ -497,6 +497,40 @@ def cj_nachpruefung_netz():
     return zeile() or ""
 
 
+def indexnow_netz():
+    """IndexNow-Meldung an Bing (automation/indexnow_netz.py, 21.10.2026): ⚠️ wenn der letzte erfolgreiche Lauf > 36 h her ist (Takt 6 h) oder
+    IndexNow die letzte Meldung abgelehnt hat. Anlass: Spähtrupp wf_32ed9d12 — die Meldung lief ohne jede Ampelzeile."""
+    try:
+        from indexnow_netz import zeile
+    except Exception:
+        import importlib.util
+        spur = os.path.join(os.path.dirname(os.path.abspath(__file__)), "indexnow_netz.py")
+        spec = importlib.util.spec_from_file_location("indexnow_netz", spur)
+        if not spec or not spec.loader:
+            return ""
+        modul = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(modul)
+        zeile = modul.zeile
+    return zeile() or ""
+
+
+def theme_marken_netz():
+    """Theme-Marken (automation/theme_marken_wache.py, 21.10.2026): ⚠️ wenn eine eigene Theme-Änderung im LIVE-Theme fehlt (Update/Editor hat
+    überschrieben) oder die tägliche Prüfung seit 36 h nicht lief. Leer, solange die Prüfung nie lief."""
+    try:
+        from theme_marken_wache import zeile
+    except Exception:
+        import importlib.util
+        spur = os.path.join(os.path.dirname(os.path.abspath(__file__)), "theme_marken_wache.py")
+        spec = importlib.util.spec_from_file_location("theme_marken_wache", spur)
+        if not spec or not spec.loader:
+            return ""
+        modul = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(modul)
+        zeile = modul.zeile
+    return zeile() or ""
+
+
 def lux_assistent_netz():
     """Kostenloser Shop-Assistent (automation/lux_assistent.py, 21.10.2026): ⚠️ wenn Abschnitt/Verweis fehlen, eine feste Antwort nicht mehr zu den
     Richtlinien passt (Gratisschwelle, Fristen, Zahlarten …), ein verlinkter Abschnitt fehlt oder die Wache seit 36 h nicht geprüft hat. Leer, solange
@@ -1085,6 +1119,8 @@ def startseiten_gewicht():
                      - datetime.datetime.strptime(z[0], "%Y-%m-%dT%H:%MZ").replace(tzinfo=datetime.timezone.utc)).total_seconds()
             w = {"bytes": int(z[1]), "links": int(z[2]), "ueberschriften": int(z[3]), "h1": int(z[4]),
                  "h1_versteckt": int(z[5]), "variant_links": int(z[6])}
+            if len(z) >= 14 and z[13].isdigit():
+                w["fuss"] = int(z[13])            # Byte-Offset der Fussleiste (Googlebot liest nur 2 MiB, 21.10.2026)
             b = sg.befunde(w, False)
             if alter > 48 * 3600:
                 b.append(f"letzte echte Messung vor {alter / 3600:.0f} h (Wächter steht?)")
@@ -1653,7 +1689,7 @@ def main():
     ohne_token = not os.path.exists(TOKPFAD)
     # Pruefungen, die den Shop-Token brauchen, laufen ohne ihn nicht — alle anderen schon (26.09.).
     MIT_TOKEN = (liechtenstein_gesperrt, klingen_pingpong, grow_zaehler, drafts_ohne_quittung, datei_speicher_voll, video_deckel, alter_lieferblock)
-    pruefungen = (bot_puls, waffen_netz, cj_sku_netz, druck_profil_netz, guard_vollpass_netz, cj_nachpruefung_netz, lux_assistent_netz, kassen_sentinel_netz, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kassen_lieferdatum, werbetest, verkauf_gewinn, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, codex_github, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik, startseiten_gewicht, such_boosts, alter_lieferblock, social_sperre, gsc_tot, index_stand, wearable_seo, koll_versprechen, koll_leer, texte_angehalten, cj_suche_tor, waisen_verzeichnis)
+    pruefungen = (bot_puls, waffen_netz, cj_sku_netz, druck_profil_netz, guard_vollpass_netz, cj_nachpruefung_netz, indexnow_netz, theme_marken_netz, lux_assistent_netz, kassen_sentinel_netz, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kassen_lieferdatum, werbetest, verkauf_gewinn, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, codex_github, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik, startseiten_gewicht, such_boosts, alter_lieferblock, social_sperre, gsc_tot, index_stand, wearable_seo, koll_versprechen, koll_leer, texte_angehalten, cj_suche_tor, waisen_verzeichnis)
     teile = [zugang_weg()]
     for f in pruefungen:
         if ohne_token and f in MIT_TOKEN:

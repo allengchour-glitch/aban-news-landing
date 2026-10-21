@@ -10,11 +10,14 @@ DuckDuckGo lesen den Bing-Index, und Shopify meldet Änderungen dort nicht selbs
 Schlüssel: dropship/_indexnow_key.txt (öffentlich per Protokoll, kein Geheimnis). Er liegt als Datei im Shopify-CDN,
 `luxestyle.ch/<key>.txt` leitet per URL-Redirect dorthin (gemessen: 301 → Inhalt = Schlüssel).
 
-  Je Lauf höchstens MAX (10'000) Adressen, Reihenfolge:
-  1. Kollektionen (Menü + alle veröffentlichten), Ratgeber-Artikel, Seiten — nie gemeldet oder > 30 T her
-  2. Produkte mit Kaufwillen-Tags (kunden-liebling, nachfrage-liebling, hype-jetzt), dann alle übrigen im Onlineshop
-  Eine Adresse wird höchstens alle WIEDER_TAGE (30) erneut gemeldet — IndexNow will nur Neues/Geändertes.
-  Ledger dropship/_indexnow_gemeldet.tsv (url, datum) · Protokoll dropship/_indexnow_laeufe.tsv (zeit, n, http).
+  Je Lauf höchstens MAX (10'000) Adressen. Reihenfolge (automation/indexnow_netz.py `auswahl`, seit 21.10.2026):
+  nie gemeldete zuerst (Neuware: jüngstes createdAt vorn), dann Prio (Kollektionen/Artikel/Seiten vor Vorrang-Produkten
+  kunden-liebling/nachfrage-liebling/hype-jetzt vor dem Rest), dann ältestes Ledger-Datum. Vorher `sorted((prio, url))` = Alphabet:
+  ab 02.11., wenn ~50'000 Adressen wieder fällig werden, hätte MAX Neuware «z…» abgeschnitten.
+  Wiederholfrist: Kollektionen/Artikel/Seiten WIEDER_TAGE (30), Produkte WIEDER_TAGE_PRODUKT (90) — IndexNow will nur Neues/Geändertes.
+  Entfernte Adressen (nicht mehr öffentlich) werden einmal gemeldet (Ledger «entfernt-JJJJ-MM-TT»).
+  Ledger dropship/_indexnow_gemeldet.tsv (url, datum) · Protokoll dropship/_indexnow_laeufe.tsv (zeit, n, http) ·
+  Stand dropship/_indexnow_stand.json (Ampel «INDEXNOW»). Takt 6 h im Aufseher (fixer_keepalive.sh).
   HTTP 200/202 = angenommen (202 = Schlüssel wird noch geprüft); 403 = Schlüssel ungültig → Abbruch, laut.
   python3 automation/indexnow_melden.py [--trocken] [--probe]   (--probe meldet nur die Startseite)
 """
@@ -24,13 +27,15 @@ HIER = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HIER)
 sys.path.insert(0, HIER)
 from seo_autopilot import gql
+from indexnow_netz import auswahl, entfernte, stand_schreiben, ENTFERNT, WIEDER_SEITE, WIEDER_PRODUKT
 
 HOST = "luxestyle.ch"
 SCHLUESSEL = open(os.path.join(REPO, "dropship", "_indexnow_key.txt")).read().strip()
 LEDGER = os.path.join(REPO, "dropship", "_indexnow_gemeldet.tsv")
 LAEUFE = os.path.join(REPO, "dropship", "_indexnow_laeufe.tsv")
 MAX = int(os.environ.get("MAX", "10000"))
-WIEDER_TAGE = int(os.environ.get("WIEDER_TAGE", "30"))
+WIEDER_TAGE = int(os.environ.get("WIEDER_TAGE", str(WIEDER_SEITE)))
+WIEDER_TAGE_PRODUKT = int(os.environ.get("WIEDER_TAGE_PRODUKT", str(WIEDER_PRODUKT)))
 VORRANG_TAGS = ("kunden-liebling", "nachfrage-liebling", "hype-jetzt")
 ENDPUNKT = "https://api.indexnow.org/indexnow"
 ONLINESHOP = "gid://shopify/Publication/301970915713"
@@ -60,22 +65,23 @@ def alle(feld, knoten, query=None):
 
 
 def kandidaten():
-    """(prio, url) aller öffentlichen Seiten. prio 0 = Kollektionen/Artikel/Seiten, 1 = Vorrang-Produkte, 2 = Rest."""
-    k = [(0, f"https://{HOST}/")]
+    """(prio, url, art, createdAt) aller öffentlichen Seiten. prio 0 = Kollektionen/Artikel/Seiten, 1 = Vorrang-Produkte, 2 = Rest;
+    art 'p' = Produkt, 's' = sonst; createdAt nur bei Produkten."""
+    k = [(0, f"https://{HOST}/", "s", "")]
     for c in alle("collections", f'handle publishedOnPublication(publicationId:"{ONLINESHOP}")'):
         if c["publishedOnPublication"]:                  # unveröffentlicht = 404 für Besucher und Bing
-            k.append((0, f"https://{HOST}/collections/{c['handle']}"))
+            k.append((0, f"https://{HOST}/collections/{c['handle']}", "s", ""))
     for a in alle("articles", "handle isPublished blog{handle}"):
         if a["isPublished"]:
-            k.append((0, f"https://{HOST}/blogs/{a['blog']['handle']}/{a['handle']}"))
+            k.append((0, f"https://{HOST}/blogs/{a['blog']['handle']}/{a['handle']}", "s", ""))
     for p in alle("pages", "handle isPublished"):
         if p["isPublished"]:
-            k.append((0, f"https://{HOST}/pages/{p['handle']}"))
-    for p in alle("products", "handle onlineStoreUrl tags", "status:active"):
+            k.append((0, f"https://{HOST}/pages/{p['handle']}", "s", ""))
+    for p in alle("products", "handle onlineStoreUrl tags createdAt", "status:active"):
         if not p.get("onlineStoreUrl"):
             continue                                     # nicht im Onlineshop → für Besucher 404
         prio = 1 if any(t in VORRANG_TAGS for t in p["tags"]) else 2
-        k.append((prio, f"https://{HOST}/products/{p['handle']}"))
+        k.append((prio, f"https://{HOST}/products/{p['handle']}", "p", p.get("createdAt") or ""))
     return k
 
 
@@ -116,28 +122,45 @@ def main():
         sys.exit(0 if s in (200, 202) else 1)
     led = ledger()
     heute = dt.date.today()
-    grenze = str(heute - dt.timedelta(days=WIEDER_TAGE))
     kand = kandidaten()
-    faellig = sorted({(p, u) for p, u in kand if led.get(u, "0000") < grenze})
-    urls = [u for _, u in faellig][:MAX]
-    print(f"  {len(kand)} öffentliche Seiten, {len(faellig)} fällig, melde {len(urls)}", flush=True)
+    urls, n_faellig, n_nie = auswahl(kand, led, heute, MAX, WIEDER_TAGE, WIEDER_TAGE_PRODUKT)
+    tot = entfernte([u for _, u, _, _ in kand], led) if "--ohne-entfernt" not in sys.argv else []
+    print(f"  {len(kand)} öffentliche Seiten, {n_faellig} fällig (davon {n_nie} nie gemeldet), melde {len(urls)} · "
+          f"{len(tot)} entfernte Adressen", flush=True)
     if "--trocken" in sys.argv:
-        print("FERTIG: trocken —", ", ".join(urls[:5]))
+        print("FERTIG: trocken —", ", ".join(urls[:5]), "· entfernt:", ", ".join(tot[:3]))
         return
     gemeldet = 0
+    s = None
     for i in range(0, len(urls), 10000):
         teil = urls[i:i + 10000]
         s, t = melden(teil)
         protokoll(len(teil), s, t)
         if s not in (200, 202):
             print(f"FEHLER: IndexNow HTTP {s} {t[:150]}", file=sys.stderr)
-            raise SystemExit(f"FERTIG: abgebrochen bei HTTP {s} nach {gemeldet} gemeldeten Adressen")
+            stand_schreiben(http=s, fehler=f"{dt.datetime.utcnow():%Y-%m-%dT%H:%MZ}")
+            raise SystemExit(f"Error: IndexNow abgebrochen bei HTTP {s} nach {gemeldet} gemeldeten Adressen")
         with open(LEDGER, "a", encoding="utf-8") as f:
             for u in teil:
                 f.write(f"{u}\t{heute}\n")
         gemeldet += len(teil)
-    rest = len(faellig) - gemeldet
-    print(f"FERTIG: {gemeldet} Adressen an IndexNow gemeldet (HTTP {s if urls else '-'}) · Rückstand {rest}")
+    # entfernte Adressen: einmal melden (404/410 für Bing), dann Marke — kommt die Seite zurück, gilt sie wieder als neu
+    abgemeldet = 0
+    if tot:
+        s2, t2 = melden(tot)
+        protokoll(len(tot), s2, "entfernt " + t2)
+        if s2 in (200, 202):
+            with open(LEDGER, "a", encoding="utf-8") as f:
+                for u in tot:
+                    f.write(f"{u}\t{ENTFERNT}{heute}\n")
+            abgemeldet = len(tot)
+            s = s2
+        else:
+            print(f"  Hinweis: Entfernt-Meldung HTTP {s2} {t2[:100]} — beim nächsten Lauf erneut", flush=True)
+    rest = n_faellig - gemeldet
+    stand_schreiben(fertig=f"{dt.datetime.utcnow():%Y-%m-%dT%H:%MZ}", http=s if s is not None else 200, gemeldet=gemeldet,
+                    entfernt=abgemeldet, nie_rest=max(0, n_nie - gemeldet), rueckstand=rest, seiten=len(kand))
+    print(f"FERTIG: {gemeldet} Adressen an IndexNow gemeldet, {abgemeldet} entfernte (HTTP {s if s is not None else '-'}) · Rückstand {rest}")
 
 
 if __name__ == "__main__":

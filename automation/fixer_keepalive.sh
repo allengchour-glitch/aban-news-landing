@@ -1394,14 +1394,26 @@ while true; do
   fi
   # INDEXNOW (02.10.2026, Betreiber «programmiere tools selber» statt Apps wie «IndexNow Kit»): ChatGPT, Copilot und
   # DuckDuckGo lesen den Bing-Index; 2 der letzten 4 Bestellungen kamen über ChatGPT. Täglich ≤ 10'000 Seiten an IndexNow,
-  # jede Adresse höchstens alle 30 T (nur Neues/Rückstand). Schlüssel-Datei: luxestyle.ch/<key>.txt → CDN (Redirect).
+  # Kollektionen/Artikel/Seiten alle 30 T, Produkte alle 90 T (nur Neues/Rückstand, Neuware zuerst — indexnow_netz.py, 21.10.2026), Takt 6 h
+  # statt 24 h (neue Importe erreichen Bing am selben Tag), tote Adressen einmal als «entfernt». Schlüssel-Datei: luxestyle.ch/<key>.txt → CDN (Redirect).
   IXN=/tmp/indexnow_melden.log
   if [ -f "$REPO/automation/indexnow_melden.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$IXN" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$IXN" || still_gestorben "$IXN"; then
+    if [ "$ALTER" -gt 21600 ] || absturz_nachholen "$IXN" || still_gestorben "$IXN"; then
       touch "$IXN"
       ( cd "$REPO" && timeout 1800 python3 automation/indexnow_melden.py >> "$IXN" 2>&1 )
       echo "$(date -u +%H:%M) indexnow_melden: $(tail -1 "$IXN")"
+    fi
+  fi
+  # THEME-MARKEN (21.10.2026, Spähtrupp wf_32ed9d12 L3): steht jede kleine Theme-Änderung (Blog-Seitenleiste …) noch im LIVE-Theme? Ein
+  # Horizon-Update oder Editor-Speichern überschreibt still. Täglich (24 h), Marken-Liste in theme_marken_wache.py; Ampel «THEME-MARKEN».
+  TMW=/tmp/theme_marken_wache.log
+  if [ -f "$REPO/automation/theme_marken_wache.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$TMW" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$TMW" || still_gestorben "$TMW"; then
+      touch "$TMW"
+      ( cd "$REPO" && timeout 300 python3 automation/theme_marken_wache.py >> "$TMW" 2>&1 )
+      echo "$(date -u +%H:%M) theme_marken_wache: $(tail -1 "$TMW")"
     fi
   fi
   # GESCHENK-WELTEN (02.10.2026, 12-Tage-Plan Tag 3): «für Sie/Ihn/Kinder» nach Warenart statt Tag-UND (vorher 22/24 Schmuck,
