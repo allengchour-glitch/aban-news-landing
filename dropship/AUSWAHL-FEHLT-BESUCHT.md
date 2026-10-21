@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-21 06:42 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-21 08:00 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 263 · **114 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 80, teilweise: 25, keine: 9; Preisspanne > 2×: 21) · 1 CJ-Variante: 149 · ohne Antwort: 0
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 260 · **111 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 78, teilweise: 25, keine: 8; Preisspanne > 2×: 20) · 1 CJ-Variante: 149 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -12,7 +12,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Reflektierendes Hunde-Brustgeschirr mit Leine (`reflektierendes-hunde-brustgeschirr-mit-leine-050816`) | 40 | 40 | 2.55–4.08 | 21.90 | Yellow-XS, Yellow-S, Yellow-M, Yellow-L |
 | 3D Glas Aroma Diffusor mit Farblicht (`3d-glas-aroma-diffusor-mit-farblicht-677613`) | 38 | 38 | 8.41–36.8 | 28.90 | A US, Special US, AU3pcs, Special AU |
 | Adventskalender 2026 mit Blind-Box-Überraschungen (`adventskalender-blind-box-sammlung-2026-636300`) | 37 | 20 | 2.76–5.52 | 16.90 | Christmas Girl-26x18x3CM, Snow Girl Oil Lamp-26x18x3CM, Characters Birth Night-26x18x3CM, Character Little Sheep-26x18x3CM |
-| Kuscheldecke mit Digitaldruck (`kuscheldecke-mit-digitaldruck-605600`) | 33 | 33 | 2.48–7.47 | 21.90 | Maple Leaf Branches-70X100cm, Maple Leaf Branches-130X150cm, Maple Leaf Branches-150X200cm, Pumpkin Maple Leaf-70X100cm |
 | Hundegeschirr-Set für kleine bis mittelgrosse Hunde (`hundegeschirr-set-fur-kleine-bis-mittelgrosse-e4d174`) | 31 | 31 | 2.31–3.17 | 21.90 | Macaran-S, Yellow bee-XL, Yellow bear-XXL, Lake Blue-XXL |
 | Zirkon-Ring mit Silikon-Einlage im Tropfen-Design (`zirkon-ring-mit-silikon-einlage-im-tropfen-des-610900`) | 30 | 30 | 3.08–3.08 | 15.90 | Pink-No 6, Pink-No 7, Pink-No 8, Pink-No 9 |
 | Tulpen Diffuser aus getrockneten Blumen (`tulpen-diffuser-aus-getrockneten-blumen-635900`) | 28 | 19 | 5.4–5.4 | 36.90 | Gardenia-Best wishes-French Classic, Gardenia-Blank Card-French Classic, Gardenia-Good luck-French Classic, Gardenia-Happy birthday-French Classic |
@@ -53,7 +52,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | 65 W GaN Schnellladegerät – USB-C (`65-w-gan-schnellladegerat-usb-c-618500`) | 9 | 9 | 3.42–3.77 | 22.90 | Black-Bare head-US, Black-Bare head-EU, Black-Bare head-UK, Black-Bagged-US |
 | Milchweisses Nagelverlängerungsgel zum Modellieren (`milchweisses-nagelverlangerungsgel-zum-modelli-085888`) | 9 | 9 | 3.65–3.65 | 21.90 | Milky white, Rose pink, Pink 016Thick, Salmon pink |
 | USB-Mixer für unterwegs (`usb-mixer-fur-unterwegs-208768`) | 9 | 9 | 4.7–6.3 | 24.90 | White-12 Dual Battery 1500 MA, White-12 Knives 1500 MA, White-8 Knife Single 1300 MA, Green-12 Dual Battery 1500 MA |
-| Herrenuhr mit Solar-Quarzwerk (`herrenuhr-mit-solar-quarzwerk-361536`) | 9 | 9 | 9.19–9.47 | 29.90 | A, B, C, D |
 | Mini Bluetooth Speaker Wasserdicht – Dusche, Outdoor & Reise mit Saugnapf (`mini-bluetooth-speaker-wasserdicht-dusche-outdoor-reise-mit-saugnapf`) | 8 | 1 | 10.37–10.74 | 29.90 | With radio-Red, With radio-Golden, With radio-Orange, With radio-Blue |
 | ROCKBROS Velo Frontlicht USB-Ladefunktion (`rockbros-velo-frontlicht-usb-ladefunktion-0d243e`) | 8 | 7 | 5.15–23.68 | 20.90 | LUMEN TD-100, R31000-1000lumens bright headlights, D31000-1000lumens bright headlights, LUMEN BC02-700 |
 | Mini LED Beamer für Handy & Heimkino (`mini-led-beamer-fur-handy-heimkino-150016`) | 8 | 8 | 38.95–47.08 | 64.90 | White-US-Ordinary paragraph, White-US-Projection models, White-EU-Ordinary paragraph, White-EU-Projection models |
@@ -77,7 +75,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Duschkopf mit Wassersparfunktion und Ventilator (`duschkopf-mit-wassersparfunktion-und-ventilato-030400`) | 6 | 6 | 3.22–9.55 | 22.90 | Adjustable gold-A Pack, Adjustable gold-B Pack, Adjustable gold-C Pack, Adjustable gold-Set |
 | Bestickter Vorhang mit Lichtdurchlass (`bestickter-vorhang-mit-lichtdurchlass-67cd53`) | 6 | 0 | 2.46–2.97 | 21.90 | Coffee-Four claws-Q1M, Blue-Four claws-Q1M, White-Four claws-Q1M, White-Punch-Q1M |
 | 5-Panel Cap «Sprint» · Nylon Schwarz (`5-panel-cap-sprint-nylon-schwarz`) | 6 | 4 | 2.13–2.13 | 27.90 | Black, Grey, Khaki, Army green |
-| Joy-Con Handgelenkschlaufen (2er-Pack) (`joy-con-handgelenkschlaufen-2er-pack-dde778`) | 6 | 0 | 3.35–3.35 | 16.90 | Red, Pink, Blue, Black |
 | Leichter Schulrucksack mit Print (`leichter-schulrucksack-mit-print-612500`) | 5 | 5 | 7.13–7.13 | 26.90 | Black Smiley Face-48x33x20cm, Gray Smiley-48x33x20cm, Pink Smiley Face-48x33x20cm, White-48x33x20cm |
 | Wandlampe mit kreativen LED-Farben (`wandlampe-mit-kreativen-led-farben-621800`) | 5 | 5 | 24.05–24.05 | 46.90 | Tad-Tricolor light, TheMayor-Tricolor light, Bert-Tricolor light, Gleen-Tricolor light |
 | Gänsedaunenkissen – Füllung für Kissenhüllen (`gansedaunenkissen-fullung-fur-kissenhullen-520f50`) | 5 | 5 | 2.74–7.41 | 27.90 | White-75x50cm, White-74x48cm, White-45x45cm, White-50x50cm |

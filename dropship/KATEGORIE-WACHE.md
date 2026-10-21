@@ -1,4 +1,4 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-21T07:01Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-21T07:57Z
 
 Aktive gescannt: 3 · ohne Kategorie: 3 · heute gesetzt: 1 (SCHARF, CAP 1500) · danach offen: 2 · Fehler: 0
 
@@ -11,5 +11,5 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- rucksack-fur-motorradrucksack-mit-grosser-kapa-617900 · Taschen → Luggage & Bags
+- kleid-mit-rundhalsausschnitt-lange-armel-a-lin-622500 · Damenmode → Apparel & Accessories > Clothing
 

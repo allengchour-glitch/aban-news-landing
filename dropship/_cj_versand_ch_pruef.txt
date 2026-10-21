@@ -12432,3 +12432,14 @@ manner-leder-geldborse-657700	2510110121361658000	16	6.77	ok	landeseite
 einfaches-sofakissenbezuge-622500	2509120522561622700	16	10.83	ok	landeseite
 elegante-obstschale-aus-eisen-627800	2605060819501628400	16	23.15	ok	landeseite
 retro-sofa-kissen-universal-chenille-621200	2509120410511621400	16	10.88	ok	landeseite
+cartoonsilikon-abtropfmatte-607500	2605060819001608300	16	13.16	ok	landeseite
+carbon-faser-muster-leder-manner-geldborse-647700	2509300940471647900	16	5.62	ok	landeseite
+eis-seide-sofa-bezug-628900	2509120341101620000	16	19.29	ok	landeseite
+leichter-reisepasshalter-616200	2509250656251616400	16	6.77	ok	landeseite
+mannlicher-business-clutch-aus-weichem-leder-625600	2509240542401625800	16	7.71	ok	landeseite
+kartenhalter-fur-business-607900	2509210203041608100	16	6.48	ok	landeseite
+herren-lederportemonnaie-614000	2509190819571614200	16	8.25	ok	landeseite
+herren-geldborse-business-601100	2509190754441601300	16	10.55	ok	landeseite
+herren-business-clutch-613400	2509190742361613600	16	7.34	ok	landeseite
+retro-denim-caprihosen-639700	2604050246251630000	16	12.44	ok	landeseite
+mehrfachkartenhalter-geldborse-621400	2509181134491621600	16	5.81	ok	landeseite
