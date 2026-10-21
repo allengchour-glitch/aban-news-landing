@@ -414,6 +414,13 @@ def nie_gesperrt(gql, ids):
         return []
 
 
+def neu_pruefbar(varianten):
+    """20.10.2026: Ein Produkt mit altem Befund «keine-cj-sku», dessen Varianten HEUTE einen productSku-Stamm hergeben (Optionsanhang-Form
+    «CJYDQXHB00011-BROWN-39», cj_sku.stamm), ist sofort fällig — sonst bliebe der Erstbefund 7–15 Tage stehen (Prüfabstand + Streuung).
+    Produkte ohne jede CJ-Stamm-Form bleiben dabei, was sie waren (keine Endlosschleife)."""
+    return any(produkt_sku(v.get("sku")) for v in varianten)
+
+
 def pid_des_produkts(p):
     """Produkt mit pid-SKU → pid, wenn KEINE Variante eine productSku hergibt und alle Varianten dieselbe pid tragen."""
     skus = [v.get("sku") for v in p.get("v") or []]
@@ -440,8 +447,10 @@ def main():
     except Exception:
         pass
 
-    def zeit(pid):          # «keine-cj-sku» von früher ist für pid-Ware keine Prüfung
-        return 0 if (pid in PIDS and status.get(pid) == "keine-cj-sku") else zuletzt.get(pid, 0)
+    def zeit(pid):          # «keine-cj-sku» von früher ist für pid-Ware keine Prüfung — und seit 20.10. auch nicht für SKU-Ware, die jetzt einen Stamm hat
+        if status.get(pid) == "keine-cj-sku" and (pid in PIDS or neu_pruefbar(P[pid].get("v") or [])):
+            return 0
+        return zuletzt.get(pid, 0)
 
     def abstand(pid):
         if status.get(pid) in ("fehler", "netz", "fehler-cj"):
@@ -649,6 +658,9 @@ def selbsttest():
         (produkt_sku("CJ-CJBJMRJF00040-EU plug") == "CJBJMRJF00040", "Anhang mit Leerzeichen"),
         (produkt_sku("CJXFLPJY00276-3") == "CJXFLPJY00276", "Anhang eine Ziffer"),
         (produkt_sku("CJ-2608071241571604000") is None, "pid-Form hat keine productSku"),
+        (neu_pruefbar([{"sku": "CJYDQXHB00011-BROWN-39"}, {"sku": "CJYDQXHB00011-BROWN-40"}]) is True, "alter Befund keine-cj-sku + neuer Stamm → sofort fällig"),
+        (neu_pruefbar([{"sku": "fortura-12345"}]) is False and neu_pruefbar([{"sku": ""}]) is False and neu_pruefbar([]) is False,
+         "ohne CJ-Stamm bleibt der Befund (keine Endlosschleife)"),
         (entscheiden([{"id": "h1", "sku": "CJYDQXHB00011-BROWN-39", "kaufbar": True}, {"id": "h2", "sku": "CJYDQXHB00011-BROWN-40", "kaufbar": True}],
                      [{"variantSku": "CJYDQXHB00011-BROWN-39", "inventories": [{"totalInventory": 0}]},
                       {"variantSku": "CJYDQXHB00011-BROWN-40", "inventories": [{"totalInventory": 7}]}], set())[0] == ["h1"],
