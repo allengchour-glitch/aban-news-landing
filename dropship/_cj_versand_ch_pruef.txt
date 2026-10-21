@@ -12686,3 +12686,4 @@ einfache-led-alarm-uhr-611300	2412221711371611500	7	7.44	ok	landeseite
 herren-sneaker-atmungsaktiv-outdoor-wandern-976768	1720023901914279936	16	14.72	ok	landeseite
 wasserdichter-business-manner-armband-629500	2604050859161629900	7	7.38	ok	landeseite
 eleganter-herrenquarzarmbanduhr-630400	2603160514291630800	7	6.54	ok	landeseite
+multifunktionaler-wasserdichter-quarzarmband-h-614000	2603160511051614400	7	6.64	ok	landeseite
