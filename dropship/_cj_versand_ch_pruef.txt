@@ -12679,3 +12679,10 @@ sequined-jumpsuit-sommer-621300	2501230205211621500	16	11.00	ok	landeseite
 baumwoll-gesichtstuch-610000	2601091201391610300	16	7.35	ok	landeseite
 kleiner-bluetooth-lautsprecher-621100	2412290654391621300	7	9.37	ok	landeseite
 hollow-back-jumpsuit-fur-yoga-und-sport-617500	2501170152191618000	16	9.47	ok	landeseite
+kotton-handtuch-set-619300	2601081148241619500	16	7.43	ok	landeseite
+outdoor-sneaker-fur-berg-natur-720960	1720618749839024128	16	14.72	ok	landeseite
+einfacher-jumpsuit-mit-tasche-617100	2501130127041617300	16	8.39	ok	landeseite
+einfache-led-alarm-uhr-611300	2412221711371611500	7	7.44	ok	landeseite
+herren-sneaker-atmungsaktiv-outdoor-wandern-976768	1720023901914279936	16	14.72	ok	landeseite
+wasserdichter-business-manner-armband-629500	2604050859161629900	7	7.38	ok	landeseite
+eleganter-herrenquarzarmbanduhr-630400	2603160514291630800	7	6.54	ok	landeseite
