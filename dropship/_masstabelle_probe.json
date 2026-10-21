@@ -1,155 +1,183 @@
 [
  {
-  "handle": "flache-sandalen-mit-perlen-und-steinen-687360",
-  "titel": "Flache Sandalen mit Perlen und Steinen",
-  "desc_bilder": 6,
-  "tabelle": null,
-  "in_produktbildern": false
- },
- {
-  "handle": "relaxed-fit-hoodie-cosy-mit-fell-panel-kordelzug",
-  "titel": "Relaxed-Fit Hoodie «Cosy» – mit Fell-Panel & Kordelzug",
-  "desc_bilder": 11,
-  "tabelle": null,
-  "in_produktbildern": false
- },
- {
-  "handle": "mini-kleid-mit-ruschen-spaghetti-trager-elastisch-sommer-2026",
-  "titel": "Mini-Kleid mit Rüschen · Spaghetti-Träger, elastisch",
-  "desc_bilder": 7,
-  "tabelle": "https://oss-cf.cjdropshipping.com/product/2026/06/01/09/fd9a1806-8a41-48c2-8090-78bc3bc3672a_trans.jpeg",
-  "in_produktbildern": false
- },
- {
-  "handle": "einfarbiges-plissee-hemd-mit-langen-armeln-630200",
-  "titel": "Einfarbiges Plissee-Hemd mit langen Ärmeln",
-  "desc_bilder": 7,
-  "tabelle": null,
-  "in_produktbildern": false
- },
- {
-  "handle": "gepunktetes-ruckenfreies-neckholder-kleid-609400",
-  "titel": "Gepunktetes rückenfreies Neckholder-Kleid",
-  "desc_bilder": 9,
-  "tabelle": null,
-  "in_produktbildern": false
- },
- {
-  "handle": "damen-bikini-maui-neckholder-floral",
-  "titel": "Damen Bikini «Maui» · Neckholder, Floral",
-  "desc_bilder": 6,
-  "tabelle": "https://oss-cf.cjdropshipping.com/product/2026/06/13/05/3d359c8e-be85-4844-8542-ded96b3244d3.jpg",
-  "in_produktbildern": false
- },
- {
-  "handle": "pumps-aus-schafsleder-mit-mittlerem-absatz-063360",
-  "titel": "Pumps aus Schafsleder mit mittlerem Absatz",
-  "desc_bilder": 11,
-  "tabelle": null,
-  "in_produktbildern": false
- },
- {
-  "handle": "schwarze-sandalen-mit-hummelfasern-851520",
-  "titel": "Schwarze Sandalen mit Hummelfasern",
-  "desc_bilder": 5,
-  "tabelle": null,
-  "in_produktbildern": false
- },
- {
-  "handle": "leichter-mesh-sneaker-mit-streifenmuster-626200",
-  "titel": "Leichter Mesh-Sneaker mit Streifenmuster",
-  "desc_bilder": 16,
-  "tabelle": null,
-  "in_produktbildern": false
- },
- {
-  "handle": "boho-jacke-fiore-bluten-stickerei-bindeband",
-  "titel": "Boho-Jacke «Fiore» · Blüten-Stickerei, Bindeband",
-  "desc_bilder": 6,
-  "tabelle": "https://oss-cf.cjdropshipping.com/product/2026/06/07/09/8a8751fd-1373-48b7-ad02-cb37f263d037_trans.jpeg",
-  "in_produktbildern": false
- },
- {
-  "handle": "langes-kleid-mit-v-ausschnitt-und-bindegurtel-622300",
-  "titel": "Langes Kleid mit V-Ausschnitt und Bindegürtel",
-  "desc_bilder": 9,
-  "tabelle": "https://oss-cf.cjdropshipping.com/product/2026/09/19/02/4dabbfe7-1479-47b3-aad6-702357b2173a.jpg",
-  "in_produktbildern": false
- },
- {
-  "handle": "kurzarmhemd-mit-digitaldruck-608400",
-  "titel": "Kurzarmhemd mit Digitaldruck",
-  "desc_bilder": 9,
-  "tabelle": "https://oss-cf.cjdropshipping.com/product/2025/03/17/06/79eff2a5-a781-4a90-b3c5-be83057ce574.jpeg?x-oss-process=image/quality,q_100",
-  "in_produktbildern": false
- },
- {
-  "handle": "bequeme-high-heel-sandalen-412544",
-  "titel": "Bequeme High-Heel-Sandalen",
-  "desc_bilder": 7,
-  "tabelle": null,
-  "in_produktbildern": false
- },
- {
-  "handle": "herren-kapuzenpullover-halbtransparent-618200",
-  "titel": "Herren-Kapuzenpullover, halbtransparent",
-  "desc_bilder": 11,
-  "tabelle": "https://oss-cf.cjdropshipping.com/product/2026/01/07/02/33e23d44-205d-4c76-92eb-6e08717d028e_trans.jpeg",
-  "in_produktbildern": false
- },
- {
-  "handle": "damen-komfort-sandalen-estate-elastik-riemen",
-  "titel": "Damen Komfort-Sandalen «Estate» · Elastik-Riemen",
-  "desc_bilder": 8,
-  "tabelle": null,
-  "in_produktbildern": false
- },
- {
-  "handle": "herren-cowboystiefel-mit-runder-zehenpartie-611200",
-  "titel": "Herren-Cowboystiefel mit runder Zehenpartie",
-  "desc_bilder": 9,
-  "tabelle": null,
-  "in_produktbildern": false
- },
- {
-  "handle": "tunika-mini-kleid-riva-v-ausschnitt-strand-stil-damen",
-  "titel": "Tunika-Mini-Kleid «Riva» · V-Ausschnitt, Strand-Stil (Damen)",
-  "desc_bilder": 10,
-  "tabelle": "https://oss-cf.cjdropshipping.com/product/2026/06/03/06/b450ba49-d7ca-48a6-a34d-c62f4dc57196_trans.jpeg",
-  "in_produktbildern": false
- },
- {
-  "handle": "kurze-lammfell-jacke-mit-kunstfellkragen-616900",
-  "titel": "Kurze Lammfell-Jacke mit Kunstfellkragen",
-  "desc_bilder": 7,
-  "tabelle": null,
-  "in_produktbildern": false
- },
- {
-  "handle": "gestricktes-kleid-fur-den-alltag-625200",
-  "titel": "Gestricktes Kleid für den Alltag",
-  "desc_bilder": 28,
-  "tabelle": null,
-  "in_produktbildern": false
- },
- {
-  "handle": "atmungsaktive-herren-halbschuhe-621700",
-  "titel": "Atmungsaktive Herren-Halbschuhe",
+  "handle": "square-toe-leichte-sandalen-mit-flachem-absatz-616100",
+  "titel": "Quadratischer Zeh leichte Sandalen mit flachem Absatz",
   "desc_bilder": 12,
   "tabelle": null,
   "in_produktbildern": false
  },
  {
-  "handle": "stiletto-sandalen-mit-glitzer-patten-537344",
-  "titel": "Stiletto-Sandalen mit Glitzer-Patten",
-  "desc_bilder": 7,
+  "handle": "manner-satin-shirt-einfarbig-slim-fit-628900",
+  "titel": "Männer Satin Shirt, einfarbig, Slim Fit",
+  "desc_bilder": 8,
+  "tabelle": "https://oss-cf.cjdropshipping.com/product/2026/10/09/11/775ba68d-2b3c-4765-997b-291f3e274f23_trans.jpeg",
+  "in_produktbildern": false
+ },
+ {
+  "handle": "herbst-winter-a-linien-kleid-mit-druck-603000",
+  "titel": "Herbst-Winter A-Linien Kleid mit Druck",
+  "desc_bilder": 10,
   "tabelle": null,
   "in_produktbildern": false
  },
  {
-  "handle": "sandalen-mit-quadratischem-zehenkopf-und-dicke-293376",
-  "titel": "Sandalen mit quadratischem Zehenkopf und dicker Sohle",
+  "handle": "strick-cardigan-mit-rundhals-und-farbblockmust-612500",
+  "titel": "Strick-Cardigan mit Rundhals und Farbblockmuster",
   "desc_bilder": 10,
+  "tabelle": null,
+  "in_produktbildern": false
+ },
+ {
+  "handle": "kurzarmeliges-arbeitshemd-mit-print-615900",
+  "titel": "Kurzärmeliges Arbeitshemd mit Print",
+  "desc_bilder": 19,
+  "tabelle": null,
+  "in_produktbildern": false
+ },
+ {
+  "handle": "perlen-off-shoulder-kleid-608000",
+  "titel": "Perlen-Off-Shoulder-Kleid",
+  "desc_bilder": 24,
+  "tabelle": "https://oss-cf.cjdropshipping.com/product/2026/10/17/12/d93069cd-f0b7-487c-92bc-39832e42b4f5_trans.jpeg",
+  "in_produktbildern": false
+ },
+ {
+  "handle": "off-shoulder-kleid-brise-locker-armellos",
+  "titel": "Off-Shoulder-Kleid «Brise» – locker & ärmellos",
+  "desc_bilder": 5,
+  "tabelle": null,
+  "in_produktbildern": false
+ },
+ {
+  "handle": "franzosisches-kleid-mit-kurzen-armeln-606100",
+  "titel": "Französisches Kleid mit kurzen Ärmeln",
+  "desc_bilder": 7,
+  "tabelle": "https://oss-cf.cjdropshipping.com/product/2026/10/17/11/28743143-8c02-40ac-8f35-1225cccbabb3_trans.jpeg",
+  "in_produktbildern": false
+ },
+ {
+  "handle": "herren-leinenhose-lino-locker-atmungsaktiv",
+  "titel": "Herren-Leinenhose «Lino» – locker & atmungsaktiv",
+  "desc_bilder": 23,
+  "tabelle": null,
+  "in_produktbildern": false
+ },
+ {
+  "handle": "schnurkleid-noir-schleifen-detail",
+  "titel": "Schnürkleid «Noir» – Schleifen-Detail",
+  "desc_bilder": 7,
+  "tabelle": "https://oss-cf.cjdropshipping.com/product/2026/05/30/06/4727cb34-46f9-46fc-8cfc-2a40d7124336_trans.jpeg",
+  "in_produktbildern": false
+ },
+ {
+  "handle": "armelloses-oberteil-mit-spitze-und-patchwork-603800",
+  "titel": "Ärmelloses Oberteil mit Spitze und Patchwork",
+  "desc_bilder": 5,
+  "tabelle": null,
+  "in_produktbildern": false
+ },
+ {
+  "handle": "damen-bikini-sole-one-shoulder-cut-out",
+  "titel": "Damen Bikini «Solé» · One-Shoulder, Cut-out",
+  "desc_bilder": 6,
+  "tabelle": null,
+  "in_produktbildern": false
+ },
+ {
+  "handle": "tassel-trenchkleid-mit-elastischer-taille-629800",
+  "titel": "Tassel-Trenchkleid mit elastischer Taille",
+  "desc_bilder": 8,
+  "tabelle": null,
+  "in_produktbildern": false
+ },
+ {
+  "handle": "strand-maxikleid-bali-luftiges-stufenkleid",
+  "titel": "Strand-Maxikleid «Bali» – luftiges Stufenkleid",
+  "desc_bilder": 22,
+  "tabelle": null,
+  "in_produktbildern": false
+ },
+ {
+  "handle": "retro-oberteil-mit-stehkragen-und-digitaldruck-607200",
+  "titel": "Retro-Oberteil mit Stehkragen und Digitaldruck",
+  "desc_bilder": 6,
+  "tabelle": "https://oss-cf.cjdropshipping.com/product/2026/10/20/01/5abdba0e-d135-4bdf-a380-78e7c373e5e7.jpg?x-oss-process=image/quality,q_100",
+  "in_produktbildern": false
+ },
+ {
+  "handle": "strandsandalen-mit-blumenmuster-622800",
+  "titel": "Strandsandalen mit Blumenmuster",
+  "desc_bilder": 21,
+  "tabelle": null,
+  "in_produktbildern": false
+ },
+ {
+  "handle": "strand-rock-a-linie-mit-ruschen-doppellagig-fliessend-damen-4-farben",
+  "titel": "Strand-Rock A-Linie mit Rüschen – doppellagig, fliessend (Damen, 4 Farben)",
+  "desc_bilder": 10,
+  "tabelle": null,
+  "in_produktbildern": false
+ },
+ {
+  "handle": "leichter-sneaker-mit-atmungsaktivem-mesh-oberm-631700",
+  "titel": "Leichter Sneaker mit atmungsaktivem Mesh-Obermaterial",
+  "desc_bilder": 4,
+  "tabelle": null,
+  "in_produktbildern": false
+ },
+ {
+  "handle": "halbsleeve-shirt-mit-stickerei-605600",
+  "titel": "Halbsleeve-Shirt mit Stickerei",
+  "desc_bilder": 6,
+  "tabelle": "https://oss-cf.cjdropshipping.com/product/2026/10/13/02/4302128f-0d5d-4aef-af08-1f3d168e6555.jpg",
+  "in_produktbildern": false
+ },
+ {
+  "handle": "einfarbiges-midikleid-mit-schlitz-schmaler-sch-624500",
+  "titel": "Einfarbiges Midikleid mit Schlitz, schmaler Schnitt",
+  "desc_bilder": 13,
+  "tabelle": null,
+  "in_produktbildern": false
+ },
+ {
+  "handle": "glitzerndes-strappy-kleid-in-hellgrun-625800",
+  "titel": "Glitzerndes Strappy-Kleid in Hellgrün",
+  "desc_bilder": 6,
+  "tabelle": null,
+  "in_produktbildern": false
+ },
+ {
+  "handle": "langarm-business-hemd-naturliche-farbe-638800",
+  "titel": "Langarm-Business-Hemd – natürliche Farbe",
+  "desc_bilder": 20,
+  "tabelle": "https://oss-cf.cjdropshipping.com/product/2026/10/08/07/66f305a3-ad18-47d1-8d42-069ef28bcaa5.jpg",
+  "in_produktbildern": false
+ },
+ {
+  "handle": "junge-herrenjacke-mit-paisley-muster-616500",
+  "titel": "Junge Herrenjacke mit Paisley-Muster",
+  "desc_bilder": 3,
+  "tabelle": null,
+  "in_produktbildern": false
+ },
+ {
+  "handle": "elegantes-sommerkleid-a-linie-hemdkragen-fliessend-damen-3-farben",
+  "titel": "Elegantes Sommerkleid A-Linie – Hemdkragen, fliessend (Damen, 3 Farben)",
+  "desc_bilder": 17,
+  "tabelle": "https://oss-cf.cjdropshipping.com/product/2026/05/30/08/54587889-9d50-4a72-8aba-26d59c56c060.jpg",
+  "in_produktbildern": false
+ },
+ {
+  "handle": "langarm-top-dentelle-spitzen-panel-color-block",
+  "titel": "Langarm-Top «Dentelle» – Spitzen-Panel, Colorblock",
+  "desc_bilder": 22,
+  "tabelle": "https://oss-cf.cjdropshipping.com/product/2026/05/31/07/2e2f9dea-26be-441a-ad52-530c2aee9b51_trans.jpeg",
+  "in_produktbildern": false
+ },
+ {
+  "handle": "tragerloses-kleid-mit-streifenmuster-603800",
+  "titel": "Trägerloses Kleid mit Streifenmuster",
+  "desc_bilder": 5,
   "tabelle": null,
   "in_produktbildern": false
  },
@@ -161,122 +189,94 @@
   "in_produktbildern": false
  },
  {
-  "handle": "locker-geschnittenes-strick-oberteil-fur-herre-605400",
-  "titel": "Locker geschnittenes Strick-Oberteil für Herren",
-  "desc_bilder": 14,
+  "handle": "loose-fit-pullover-ohne-kapuze-einfarbig-620900",
+  "titel": "Loose-Fit Pullover ohne Kapuze, einfarbig",
+  "desc_bilder": 9,
+  "tabelle": "https://oss-cf.cjdropshipping.com/product/2026/10/06/11/44992d57-6882-4c5d-92b2-0847175cdf79_fine.jpeg",
+  "in_produktbildern": false
+ },
+ {
+  "handle": "bogen-und-strass-bettrock-in-hellblau-611100",
+  "titel": "Bogen- und Strass-Bettrock in Hellblau",
+  "desc_bilder": 13,
   "tabelle": null,
   "in_produktbildern": false
  },
  {
-  "handle": "low-top-sneaker-mit-plattform-mesh-futter-613900",
-  "titel": "Low-Top Sneaker mit Plattform, Mesh-Futter",
-  "desc_bilder": 4,
-  "tabelle": null,
-  "in_produktbildern": false
- },
- {
-  "handle": "herren-strick-polo-lido-ajour-optik",
-  "titel": "Herren Strick-Polo «Lido» · Ajour-Optik",
-  "desc_bilder": 14,
-  "tabelle": "https://oss-cf.cjdropshipping.com/product/2026/06/13/01/bd76abd5-ed5b-4d43-a75c-95613f27d095.jpeg?x-oss-process=image/quality,q_100",
-  "in_produktbildern": false
- },
- {
-  "handle": "stiefelett-sandalen-mit-fischgrat-muster-009920",
-  "titel": "Stiefelett Sandalen mit Fischgrät-Muster",
-  "desc_bilder": 11,
-  "tabelle": null,
-  "in_produktbildern": false
- },
- {
-  "handle": "herren-leder-sandalen-adriano-vollnarbenleder",
-  "titel": "Herren Leder-Sandalen «Adriano» · Vollnarbenleder",
-  "desc_bilder": 6,
-  "tabelle": null,
-  "in_produktbildern": false
- },
- {
-  "handle": "langarmshirt-mit-augen-und-buchstaben-print-626400",
-  "titel": "Langarmshirt mit Augen- und Buchstaben-Print",
-  "desc_bilder": 14,
-  "tabelle": "https://oss-cf.cjdropshipping.com/product/2026/02/02/12/f12478de-2a73-4543-958b-ceb9d6de5ff9_trans.jpeg",
-  "in_produktbildern": false
- },
- {
-  "handle": "spitzen-tragertop-lacey-feminines-sommer-basic",
-  "titel": "Spitzen-Trägertop «Lacey» – feminines Sommer-Basic",
-  "desc_bilder": 12,
-  "tabelle": null,
-  "in_produktbildern": false
- },
- {
-  "handle": "damen-baumwollmantel-im-casual-stil-621600",
-  "titel": "Damen Baumwollmantel im Casual-Stil",
-  "desc_bilder": 7,
-  "tabelle": "https://oss-cf.cjdropshipping.com/product/2025/12/25/09/6afacc5c-9880-4e84-9cf4-18e9824c975e.jpg",
-  "in_produktbildern": false
- },
- {
-  "handle": "damen-high-heel-sandalette-capri-offene-spitze",
-  "titel": "Damen High-Heel-Sandalette «Capri» · offene Spitze",
-  "desc_bilder": 23,
-  "tabelle": null,
-  "in_produktbildern": false
- },
- {
-  "handle": "worker-boots-herren-sneaker-mit-verstecktem-au-614300",
-  "titel": "Worker-Boots Herren Sneaker mit verstecktem Aufzugsystem",
-  "desc_bilder": 23,
-  "tabelle": null,
-  "in_produktbildern": false
- },
- {
-  "handle": "off-shoulder-kleid-brise-locker-armellos",
-  "titel": "Off-Shoulder-Kleid «Brise» – locker & ärmellos",
+  "handle": "riemchensandalen-fur-damen-623400",
+  "titel": "Riemchensandalen für Damen",
   "desc_bilder": 5,
   "tabelle": null,
   "in_produktbildern": false
  },
  {
-  "handle": "gemustertes-armelloses-kleid-mit-taschen-625000",
-  "titel": "Gemustertes ärmelloses Kleid mit Taschen",
-  "desc_bilder": 7,
+  "handle": "damen-chiffon-kleid-capri-resort-fliessend",
+  "titel": "Damen Chiffon-Kleid «Capri» · Resort, fliessend",
+  "desc_bilder": 6,
   "tabelle": null,
   "in_produktbildern": false
  },
  {
-  "handle": "abendkleid-aurora-satin-spaghettitrager-schlitz",
-  "titel": "Abendkleid «Aurora» · Satin, Spaghettiträger & Schlitz",
-  "desc_bilder": 14,
-  "tabelle": "https://oss-cf.cjdropshipping.com/product/2026/06/08/09/e27c352c-b26f-44fa-b5bf-936a2546f183.jpg",
+  "handle": "boho-kleid-indigo-armellos-mit-knopfleiste-volant",
+  "titel": "Boho-Kleid «Indigo» · Ärmellos mit Knopfleiste & Volant",
+  "desc_bilder": 12,
+  "tabelle": "https://oss-cf.cjdropshipping.com/product/2026/06/07/05/7a84c2eb-3fe3-49ae-9184-e31b860d9cc5_trans.jpeg",
   "in_produktbildern": false
  },
  {
-  "handle": "schwarze-stiefeletten-mit-wildleder-oberflache-331008",
-  "titel": "Schwarze Stiefeletten mit Wild-Kunstleder-Oberfläche",
-  "desc_bilder": 9,
+  "handle": "herren-set-costa-kapuzen-shirt-jogger",
+  "titel": "Herren-Set «Costa» · Kapuzen-Shirt + Jogger",
+  "desc_bilder": 31,
+  "tabelle": "https://oss-cf.cjdropshipping.com/product/2026/06/08/00/f18c3ee3-3da4-4a03-a9ff-91f9874ff712.jpeg?x-oss-process=image/quality,q_100",
+  "in_produktbildern": false
+ },
+ {
+  "handle": "locker-geschnittener-cardigan-mit-geometermust-605500",
+  "titel": "Locker geschnittener Cardigan mit Geometermuster",
+  "desc_bilder": 18,
   "tabelle": null,
   "in_produktbildern": false
  },
  {
-  "handle": "herren-slip-on-sail-canvas-leichte-sohle",
-  "titel": "Herren-Slip-on «Sail» · Canvas, leichte Sohle",
-  "desc_bilder": 26,
+  "handle": "mannliches-flanell-chevron-hemd-605200",
+  "titel": "Männliches Flanell-Chevron-Hemd",
+  "desc_bilder": 13,
+  "tabelle": "https://cf.cjdropshipping.com/quick/product/dc452e1a-740f-4075-b31f-9b39054625a8.jpg",
+  "in_produktbildern": false
+ },
+ {
+  "handle": "satinbluse-mit-3d-effekten-625400",
+  "titel": "Satinbluse mit 3D-Effekten",
+  "desc_bilder": 1,
   "tabelle": null,
   "in_produktbildern": false
  },
  {
-  "handle": "herren-langarmhemd-mit-weihnachtsbaum-muster-603900",
-  "titel": "Herren-Langarmhemd mit Weihnachtsbaum-Muster",
+  "handle": "herrenlangarmshirt-mit-farbblock-design-626600",
+  "titel": "Herrenlangarmshirt mit Farbblock-Design",
+  "desc_bilder": 13,
+  "tabelle": null,
+  "in_produktbildern": false
+ },
+ {
+  "handle": "bambus-cotton-shirt-mit-maritimen-druck-639500",
+  "titel": "Bambus-Cotton Shirt mit maritimen Druck",
+  "desc_bilder": 6,
+  "tabelle": null,
+  "in_produktbildern": false
+ },
+ {
+  "handle": "damen-poloshirt-mit-langen-armeln-622900",
+  "titel": "Damen-Poloshirt mit langen Ärmeln",
+  "desc_bilder": 19,
+  "tabelle": null,
+  "in_produktbildern": false
+ },
+ {
+  "handle": "langarmshirt-aus-jacquard-weiss-braun-633400",
+  "titel": "Langarmshirt aus Jacquard, weiss-braun",
   "desc_bilder": 8,
   "tabelle": null,
-  "in_produktbildern": false
- },
- {
-  "handle": "klassisches-strickhemd-mit-karomuster-624200",
-  "titel": "Klassisches Strickhemd mit Karomuster",
-  "desc_bilder": 14,
-  "tabelle": "https://oss-cf.cjdropshipping.com/product/2025/03/31/11/1c5181bc-67e9-450e-9f50-6ec08af839d8.jpg",
   "in_produktbildern": false
  }
 ]
