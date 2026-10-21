@@ -1,9 +1,9 @@
 {
- "stand": "2026-10-14T23:10Z",
+ "stand": "2026-10-21T03:07Z",
  "profil": "gid://shopify/DeliveryProfile/152645108103",
- "stufe": 1,
+ "stufe": 2,
  "stufe_roh": {
-  "stufe": 1,
+  "stufe": 2,
   "seit": "2026-10-13",
   "stufe1_anzahl": 10,
   "stufe2_ab": "2026-10-17",
@@ -12,7 +12,8 @@
   "google_basis": [
    "Missing shipping info in some countries in [Free_listings,Shopping_ads] [LI]."
   ],
-  "google_basis_grund": "13.10.2026 21:45 UTC gemessen an 5 der 10 Stufe-1-Shirts UND an 37 von 60 Printful-Produkten im General profile (shopweit 28'541, GOOGLE-FEEDBACK.md) — bestand vor dem Profil, hält Stufe 2 nicht auf."
+  "google_basis_grund": "13.10.2026 21:45 UTC gemessen an 5 der 10 Stufe-1-Shirts UND an 37 von 60 Printful-Produkten im General profile (shopweit 28'541, GOOGLE-FEEDBACK.md) — bestand vor dem Profil, hält Stufe 2 nicht auf.",
+  "stufe2_gesetzt": "2026-10-20T02:14Z"
  },
  "modus": "scharf",
  "schwelle_befunde": [],
@@ -21,8 +22,13 @@
  "tarif_befunde": [],
  "transit_ok": true,
  "transit_befunde": [],
- "mitglieder_regel": 49,
- "soll_produkte": 10,
+ "standort_befund": {
+  "unisex-hoodie-selbst-gestalten": 8,
+  "bio-jutebeutel-selbst-gestalten": 1
+ },
+ "gesperrt": [],
+ "mitglieder_regel": 47,
+ "soll_produkte": 47,
  "soll_handles": [
   "shirt-1-august",
   "shirt-alpaufzug",
@@ -33,11 +39,49 @@
   "shirt-basel",
   "shirt-bernese-dog",
   "shirt-bernhardiner",
-  "shirt-braunvieh"
+  "shirt-braunvieh",
+  "shirt-buenzli",
+  "shirt-cervelat",
+  "shirt-chalet",
+  "shirt-chuchichaeschtli",
+  "shirt-edelweiss-line",
+  "shirt-eidgenoss",
+  "shirt-enzian",
+  "shirt-es-git-nu-eis-zueri",
+  "shirt-fasnacht-mask",
+  "shirt-feierabig",
+  "shirt-fondue",
+  "shirt-fondue-caquelon",
+  "shirt-gaell",
+  "shirt-gopfertami",
+  "shirt-gruezi-mitenand",
+  "shirt-haeee",
+  "shirt-haerzlech",
+  "shirt-heidi",
+  "shirt-hoi-zaeme",
+  "shirt-matterhorn",
+  "shirt-matterhorn-sun",
+  "shirt-merci-vilmal",
+  "shirt-murmeli",
+  "shirt-postauto-horn",
+  "shirt-prosit",
+  "shirt-raclette",
+  "shirt-sali-zaeme",
+  "shirt-schoggi-bar",
+  "shirt-steinbock",
+  "shirt-swiss-chocolate",
+  "shirt-swiss-cowbell",
+  "shirt-swiss-cross-badge",
+  "shirt-text-gruezi",
+  "shirt-text-hoi",
+  "shirt-text-merci",
+  "shirt-znueni",
+  "shirt-zum-selbstgestalten"
  ],
- "kosten_alter_tage": 1.1,
+ "kosten_alter_tage": 0.1,
  "geloest": 0,
  "zugeordnet": 0,
+ "kein_tarif": {},
  "matrix": {
   "zeilen": [
    {
@@ -106,7 +150,7 @@
       "Kostenloser Versand"
      ],
      [
-      0.0,
+      7.0,
       "Standard"
      ]
     ],
@@ -221,13 +265,13 @@
    ]
   }
  },
- "im_profil_varianten": 50,
- "im_profil_produkte": 10,
- "zeichen": 10,
+ "im_profil_varianten": 245,
+ "im_profil_produkte": 47,
+ "zeichen": 47,
  "im_profil_ohne_zeichen": [],
  "zeichen_ohne_profil": [],
  "gegen_regel": [],
  "soll_fehlt": [],
  "matrix_abweichend": 0,
- "naechste_stufe_ab": "2026-10-17"
+ "naechste_stufe_ab": null
 }

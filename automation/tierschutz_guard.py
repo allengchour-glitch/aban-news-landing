@@ -63,7 +63,9 @@ def gql(query, variables=None, tries=12):   # 21.09.: 4 → 12, Drosseln brauche
         except Exception as e:                      # noqa: BLE001
             last = {'exc': str(e)}
         time.sleep(2 + i * 2)
-    sys.exit('GraphQL antwortet nicht: ' + json.dumps(last)[:500])
+    # 21.10.2026: «Error:» VORAN — der Aufseher holt einen Abbruch nur nach, wenn in den letzten Zeilen Traceback|Error|Exception steht
+    # (absturz_nachholen); die nackte Meldung liess den Vollpass vom 20.10. dreimal an der Drosselung scheitern, ohne dass jemand nachholte.
+    sys.exit('Error: GraphQL antwortet nicht (Drosselung?): ' + json.dumps(last)[:500])
 
 
 M = json.load(open(os.path.join(HIER, 'tierschutz_geraet.json')))

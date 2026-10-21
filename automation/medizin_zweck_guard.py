@@ -141,7 +141,7 @@ def quelle():
         if d is None:
             # Eine gescheiterte Anfrage ist KEIN Ergebnis: lieber abbrechen, als eine
             # unvollständige Liste für «nichts gefunden» zu halten.
-            sys.exit("⛔ Shopify antwortet nicht — Lauf abgebrochen, nichts geändert.")
+            sys.exit("Error: ⛔ Shopify antwortet nicht — Lauf abgebrochen, nichts geändert.")   # «Error:» damit absturz_nachholen es sieht (21.10.2026)
         for p in d["products"]["nodes"]:
             yield p["id"], p["title"], p["createdAt"][:10], p.get("descriptionHtml")
         if not d["products"]["pageInfo"]["hasNextPage"]:
