@@ -1,53 +1,37 @@
-# Auswahl nachrüsten — scharf 2026-10-21 05:45 UTC
+# Auswahl nachrüsten — scharf 2026-10-21 07:03 UTC
 
-umgebaut: 40 · MANUELL: 1015 · Fehler: 0
+umgebaut: 21 · MANUELL: 1001 · Fehler: 0
 
 ## MANUELL (Grund)
 
-- Kuscheldecke mit Digitaldruck (`kuscheldecke-mit-digitaldruck-605600`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Joy-Con Handgelenkschlaufen (2er-Pack) (`joy-con-handgelenkschlaufen-2er-pack-dde778`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Herrenuhr mit Solar-Quarzwerk (`herrenuhr-mit-solar-quarzwerk-361536`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Damen-Uhr mit Strasssteinen (`damen-uhr-mit-strasssteinen-625300`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Musikalische Taschenuhr – individuell (`musikalische-taschenuhr-individuell-609100`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Quarz-Uhr mit Dreihand-Chronograph, 13 mm (`quarz-uhr-mit-dreihand-chronograph-13-mm-614400`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Nordische Tischuhr mit Wecker und Nachtlicht (`nordische-tischuhr-mit-wecker-und-nachtlicht-605800`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Gebäude-Modell Bausatz für Erwachsene (`gebaude-modell-bausatz-fur-erwachsene-600200`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Silber Armband mit Drachenknoten und Kordel (`silber-armband-mit-drachenknoten-und-kordel-636900`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Ewige Rose Bausteine – Kreatives Ornament (`ewige-rose-bausteine-kreatives-ornament-631000`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Harz-Schmuckfarbe (`harz-schmuckfarbe-c11c75`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Baustein-Spielzeug: Topfblumen-Strauss (`baustein-spielzeug-topfblumen-strauss-628700`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Fahrradhelm mit Visier (`fahrradhelm-mit-visier-605700`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Blumen-Pigment – Hochkonzentriert (`blumen-pigment-hochkonzentriert-262704`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Ewiges Blumen-Baustein-Set (`ewiges-blumen-baustein-set-619100`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Perlglanz-Pigmentpulver (`perlglanz-pigmentpulver-0a4ac8`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- UV-Harzkleber für Schmuckformen (`uv-harzkleber-fur-schmuckformen-97affa`): Preisspreizung > 4× (1.2–9.42)
-- Zweifarbige Orchidee zum Zusammenbauen (`zweifarbige-orchidee-zum-zusammenbauen-608600`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Magnetische Erdungszwinge für Schweissgeräte (`magnetische-erdungszwinge-fur-schweissgerate-e67c68`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- DIY Mikro-Landschaft Bastelset mit Pflanzen (`diy-mikro-landschaft-bastelset-mit-pflanzen-622100`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Silikonform für Schmuckanhänger (`silikonform-fur-schmuckanhanger-436a72`): Modell-Auswahl, aber Variantenbilder nicht unterscheidbar
-- Highland Kuh Adventskalender (`highland-kuh-adventskalender-613500`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- 3D-Kugel-Puzzle Weihnachtsanhänger – 60 Teile (`3d-kugel-puzzle-weihnachtsanhanger-60-teile-604800`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Lernspielzeug für Kinder – Hundert-Zahlen-Tafel (`lernspielzeug-fur-kinder-hundert-zahlen-tafel-607600`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Drohne mit HD-Kamera und Bildschirmsteuerung (`drohne-mit-hd-kamera-und-bildschirmsteuerung-617900`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Seiten-Autoaufkleber für Tür und Zierleiste (`seiten-autoaufkleber-fur-tur-und-zierleiste-064640`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Lichtleiste für Motorradhelm – 2 AA Batterien (`lichtleiste-fur-motorradhelm-2-aa-batterien-427072`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Kabellose In-Ear-Kopfhörer (`kabellose-in-ear-kopfhorer-639200`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- M10PLUS Ultra Clear Projektor 720p (`m10plus-ultra-clear-projektor-720p-604800`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- 2K HD Smart Wi-Fi Innenkamera (`2k-hd-smart-wi-fi-innenkamera-623000`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Damen-Uhr mit Strasssteinen (`damen-uhr-mit-strasssteinen-625300`): KI-Übersetzung fehlt/abgelehnt: ['Silver Black', 'Silver Gray', 'Silver Blue', 'Silver Green']
+- Musikalische Taschenuhr – individuell (`musikalische-taschenuhr-individuell-609100`): KI-Übersetzung fehlt/abgelehnt: ['Black P6001C', 'Gold P6002C', 'Silver P6003C', 'Rose Gold P6004C']
+- Gebäude-Modell Bausatz für Erwachsene (`gebaude-modell-bausatz-fur-erwachsene-600200`): KI-Übersetzung fehlt/abgelehnt: ['Peking University Standard', 'Tsinghua University Standard', 'Wuhan University Standard', 'Fudan University Standard']
+- Harz-Schmuckfarbe (`harz-schmuckfarbe-c11c75`): KI-Übersetzung fehlt/abgelehnt: ['Lemon', 'Dark Red', 'White', 'Purple']
+- Baustein-Spielzeug: Topfblumen-Strauss (`baustein-spielzeug-topfblumen-strauss-628700`): KI-Übersetzung fehlt/abgelehnt: ['Plum Blossom 599pcs', 'Bird Of Paradise 451pcs', 'Cottonrose Hibiscus 503pcs', 'Chrysanthemums 450 Pcs']
+- Fahrradhelm mit Visier (`fahrradhelm-mit-visier-605700`): KI-Übersetzung fehlt/abgelehnt: ['Chinese Red', 'Blue And White', 'Black And Blue', 'Pink']
+- Blumen-Pigment – Hochkonzentriert (`blumen-pigment-hochkonzentriert-262704`): Farbe-Auswahl, aber Variantenbilder nicht unterscheidbar
+- Perlglanz-Pigmentpulver (`perlglanz-pigmentpulver-0a4ac8`): Preisspreizung > 4× (0.58–4.55)
+- Zweifarbige Orchidee zum Zusammenbauen (`zweifarbige-orchidee-zum-zusammenbauen-608600`): KI-Übersetzung fehlt/abgelehnt: ['Two Toned Orchid', 'Champagne Orchid', 'Vanda Orchid', 'Qidailan']
+- DIY Mikro-Landschaft Bastelset mit Pflanzen (`diy-mikro-landschaft-bastelset-mit-pflanzen-622100`): KI-Übersetzung fehlt/abgelehnt: ['Wind In The Forest', 'Bell Pine Small Building', 'Wooden House Shimmer', 'Shanye Solitude']
+- Highland Kuh Adventskalender (`highland-kuh-adventskalender-613500`): KI-Übersetzung fehlt/abgelehnt: ['Cat Blind Box', 'Christmas Building Blocks', 'Cow Blind Box', 'Cow Calendar With A Butt']
+- 3D-Kugel-Puzzle Weihnachtsanhänger – 60 Teile (`3d-kugel-puzzle-weihnachtsanhanger-60-teile-604800`): KI-Übersetzung fehlt/abgelehnt: ['Football 3D Puzzle', 'Basketball 3D Puzzle', 'Earth 3D Puzzle', 'Jupiter 3D Puzzle']
+- Lernspielzeug für Kinder – Hundert-Zahlen-Tafel (`lernspielzeug-fur-kinder-hundert-zahlen-tafel-607600`): KI-Übersetzung fehlt/abgelehnt: ['Hundred count Board', 'Hundreds Of Boxes']
+- Drohne mit HD-Kamera und Bildschirmsteuerung (`drohne-mit-hd-kamera-und-bildschirmsteuerung-617900`): Ausführung-Auswahl, aber Variantenbilder nicht unterscheidbar
+- Seiten-Autoaufkleber für Tür und Zierleiste (`seiten-autoaufkleber-fur-tur-und-zierleiste-064640`): KI-Übersetzung fehlt/abgelehnt: ['Matte gold', 'Bright orange', 'Matte silver', 'Bright red']
+- M10PLUS Ultra Clear Projektor 720p (`m10plus-ultra-clear-projektor-720p-604800`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- 2K HD Smart Wi-Fi Innenkamera (`2k-hd-smart-wi-fi-innenkamera-623000`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — HTTP 429: {"error":{"message":"
 - Sport-Smartwatch für Herren, 50 mm, TPU-Armband (`sport-smartwatch-fur-herren-50-mm-tpu-armband-629300`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Thermochromatische Skimaske – einheitliche Grösse (`thermochromatische-skimaske-einheitliche-gross-638700`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Smartwatch mit Blut-Zucker- (`smartwatch-mit-blut-zucker-627700`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Smartwatch mit Herzfrequenz- und SpO2-Messung (`smartwatch-mit-herzfrequenz-und-spo2-messung-633100`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Monochrome Lidschatten-Palette – 6 Farben (`monochrome-lidschatten-palette-6-farben-070464`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- 6-Farben-Lidschatten-Palette, matt (`6-farben-lidschatten-palette-matt-118656`): Titel verspricht «6-Farben», CJ führt 6 Einzelvarianten → Titel prüfen (Mensch)
 - Feines Perlen-Matte Fixierpuder (`feines-perlen-matte-fixierpuder-442560`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Achtfarbige Lidschatten-Palette Hexagonal Star Diamond (`achtfarbige-lidschatten-palette-hexagonal-star-545536`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Matte Perlmutt-Lidschatten – 8 Farben (`matte-perlmutt-lidschatten-8-farben-680064`): Titel verspricht «8 Farben», CJ führt 3 Einzelvarianten → Titel prüfen (Mensch)
 - Lidschattenpalette 8 Farben Rosa Matt (`lidschattenpalette-8-farben-rosa-matt-840384`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Flüssige Foundation mit Concealer und Öl-Kontrolle (`flussige-foundation-mit-concealer-und-ol-kontr-640000`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Grosses Tote Crossbody für Frauen (`grosses-tote-crossbody-fur-frauen-620300`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Handliches Kosmetik-Set mit grossem Fassungsvermögen (`handliches-kosmetik-set-mit-grossem-fassungsve-639100`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Leder Business Aktentasche Ein-Schulter 21×17×9 cm (`leder-business-aktentasche-ein-schulter-21-17-613600`): Titel nennt nur «21×17×9 cm» (Grösse: ['21×17×9 cm', '23×18×9 cm', '25×20×9 cm', '28×24×9 cm']) → Titel prüfen (Mensch)
 - Flüssiger Rouge – 5-farbiges Set (`flussiger-rouge-5-farbiges-set-646300`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Isolierte Picknicktasche 13 L Schultertasche (`isolierte-picknicktasche-13-l-schultertasche-623600`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Make-up Set – Avantgarde Look (`make-up-set-avantgarde-look-653100`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
@@ -619,35 +603,27 @@ umgebaut: 40 · MANUELL: 1015 · Fehler: 0
 - Quarzuhr für Herren (`quarzuhr-fur-herren-cb00d3`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Paar-Quarzuhr mit Edelstahlband (`paar-quarzuhr-mit-edelstahlband-da3f7d`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Weinkühler-Set mit Dekanter und Gläsern (`weinkuhler-set-mit-dekanter-und-glasern-625500`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Silberner Ring für den Zeigefinger (`silberner-ring-fur-den-zeigefinger-624000`): Modell-Auswahl, aber Variantenbilder nicht unterscheidbar
 - Silikon-Box für Pizza und Gebäck (`silikon-box-fur-pizza-und-geback-600500`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Edelstahlring mit bunten Natursteinen (`edelstahlring-mit-bunten-natursteinen-606100`): Modell-Auswahl, aber Variantenbilder nicht unterscheidbar
 - Flexibles Schienenauto-Spielzeugset (`flexibles-schienenauto-spielzeugset-773696`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Antihaft-Vierloch-Omelettpfanne (`antihaft-vierloch-omelettpfanne-622500`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Kugelzelt-Bausatz für Kinder (`kugelzelt-bausatz-fur-kinder-762112`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Verdrehter Ring mit Steinbesatz (`verdrehter-ring-mit-steinbesatz-611300`): kein EU-Stecker bei CJ
-- 3-Karat Moissanit-Ring mit Diamantfassung (`3-karat-moissanit-ring-mit-diamantfassung-606500`): kein EU-Stecker bei CJ
 - LED-Beleuchtung für Baustein-Strassenansicht (`led-beleuchtung-fur-baustein-strassenansicht-815680`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Holzpuzzle für Kinder – 24 Teile (`holzpuzzle-fur-kinder-24-teile-924224`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Teelöffel-Waage für die Küche (`teeloffel-waage-fur-die-kuche-625500`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Fleischwolf aus Edelstahl (`fleischwolf-aus-edelstahl-607500`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Wandmontiertes Küchenregal aus Karbonstahl (`wandmontiertes-kuchenregal-aus-karbonstahl-612100`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Vintage Lederarmband aus Titanstahl für Herren (`vintage-lederarmband-aus-titanstahl-fur-herren-629100`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Fleischwolf aus Edelstahl für den Haushalt (`fleischwolf-aus-edelstahl-fur-den-haushalt-620700`): kein EU-Stecker bei CJ
 - Bar-Set mit Golddraht-Glas (`bar-set-mit-golddraht-glas-626600`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Elektrische Lunchbox mit Edelstahl-Liner (`elektrische-lunchbox-mit-edelstahl-liner-614800`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- 13-teiliges Topfset mit Antihaftbeschichtung (`13-teiliges-topfset-mit-antihaftbeschichtung-627900`): Titel verspricht «13-teiliges», CJ führt 3 Einzelvarianten → Titel prüfen (Mensch)
 - Kupfer Wasserhahn mit ausziehbarem Schlauch (`kupfer-wasserhahn-mit-ausziehbarem-schlauch-619900`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Edelstahl-Beckenarmatur, drehbar (`edelstahl-beckenarmatur-drehbar-629500`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Elektrische Lunchbox mit Heizfunktion (`elektrische-lunchbox-mit-heizfunktion-607100`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Edo Asterism Kristallglas (`edo-asterism-kristallglas-607600`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Küchenhelfer-Set Teakholz (`kuchenhelfer-set-teakholz-600600`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Messerregal aus Edelstahl (`messerregal-aus-edelstahl-077632`): Modell-Auswahl, aber Variantenbilder nicht unterscheidbar
 - Stahlküchengeräte-Set 6-8 Stück (`stahlkuchengerate-set-6-8-stuck-827008`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Manuelle Kartoffelschneidemaschine (`manuelle-kartoffelschneidemaschine-611700`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Runder Keramikteller für den Haushalt (`runder-keramikteller-fur-den-haushalt-617700`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Gemüse- und Salatschleuder (`gemuse-und-salatschleuder-601600`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Pizza-Schaufel aus Metall (`pizza-schaufel-aus-metall-604900`): Ausführung-Auswahl, aber Variantenbilder nicht unterscheidbar
 - Teetasse mit Unterteller (`teetasse-mit-unterteller-607700`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Celadon Ge Kiln Teekanne mit Eisriss-Glasur (`celadon-ge-kiln-teekanne-mit-eisriss-glasur-604100`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Edelstahl Besteckset für Kinder mit Schneidebrett (`edelstahl-besteckset-fur-kinder-mit-schneidebr-667776`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
@@ -986,24 +962,19 @@ umgebaut: 40 · MANUELL: 1015 · Fehler: 0
 - Concealer Basic Beauty Creme (`concealer-basic-beauty-creme-600300`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Wärmende Knöchelbandage (`warmende-knochelbandage-604800`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Mechanische Herrenuhr, wasserdicht, leuchtend (`mechanische-herrenuhr-wasserdicht-leuchtend-505088`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Geflochtenes PU-Leder mit Perlglanz-Finish (`geflochtenes-pu-leder-mit-perlglanz-finish-900928`): Modell-Auswahl, aber Variantenbilder nicht unterscheidbar
-- Krokodil-PU-Leder mit Prägung (`krokodil-pu-leder-mit-pragung-490176`): Modell-Auswahl, aber Variantenbilder nicht unterscheidbar
 - Drahtkorb "Personality" (`drahtkorb-personality-611700`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Minimalistischer Kosmetik-Organizer aus Metall (`minimalistischer-kosmetik-organizer-aus-metall-607800`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Wander- und Bergsteiger-Rucksack 15L (`wander-und-bergsteiger-rucksack-15l-002816`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Auto- und Heim-Organizer mit Zugbeutel (`auto-und-heim-organizer-mit-zugbeutel-622100`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Retro Rucksack für Schule und Freizeit (`retro-rucksack-fur-schule-und-freizeit-995712`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Schmucktablett mit Samtbezug (`schmucktablett-mit-samtbezug-625400`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- UV-Lampe für Wimpernkleber (`uv-lampe-fur-wimpernkleber-604100`): Stecker-Teil nicht in jedem Schlüssel genau einmal
 - Staubbeutel für Staubsauger (`staubbeutel-fur-staubsauger-628000`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Keramik-Futternapf Blume – Pastellfarben (`keramik-futternapf-blume-pastellfarben-584448`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Trendige Velo-Schultertasche für Sport & Freizeit (`trendige-velo-schultertasche-fur-sport-freizei-959488`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Keramik Futternapf für Katzen – Kippsicher (`keramik-futternapf-fur-katzen-kippsicher-739008`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Samt-Kissenbezug für Sofa oder Bett (`samt-kissenbezug-fur-sofa-oder-bett-183552`): Preissprung 2.5× zwischen zwei Varianten — Datenfehler oder Zubehör? → Mensch
 - Abstrakter Kissenbezug Wildleder Schwarz-Weiss (`abstrakter-kissenbezug-wildleder-schwarz-weiss-032384`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Ablageregal für Bad und Küche (`ablageregal-fur-bad-und-kuche-612800`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - S925 Sterling Silber Ring mit runden Strasssteinen (`s925-sterling-silber-ring-mit-runden-strasssteinen-608300`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Handdampfglätter für Zuhause & Reisen (`handdampfglatter-fur-zuhause-reisen-809472`): Stecker-Teil nicht in jedem Schlüssel genau einmal
 - Sterling Silber Zirkon Ring Set (`sterling-silber-zirkon-ring-set-607700`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Plüschiger Kissenbezug mit Tiermotiven (`pluschiger-kissenbezug-mit-tiermotiven-356608`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Portabler HD-Heimprojektor (`portabler-hd-heimprojektor-203584`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
@@ -1016,6 +987,21 @@ umgebaut: 40 · MANUELL: 1015 · Fehler: 0
 - Halsband & Leine Set im Farbmix mit Glöckchen (`halsband-leine-set-im-farbmix-mit-glockchen-239552`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - 3-stöckige Etagere im modernen Design (`3-stockige-etagere-im-modernen-design-626800`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Hundehalsband "Purple Flower" mit Metallschnalle (`hundehalsband-purple-flower-mit-metallschnalle-df75dd`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Kissenbezug Baumwolle Leinen mit Cut-Outs (`kissenbezug-baumwolle-leinen-mit-cut-outs-de8c0a`): CJ-variantSku passt nicht zum Bestell-Automaten: 'CJJJJFKD00295-45×45cm'
 - Wasserdichter Bürostuhlbezug (`wasserdichter-burostuhlbezug-8364e3`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Ultraflache Herrenuhr mit Milanaise-Armband (`ultraflache-herrenuhr-mit-milanaise-armband-347072`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Herrenuhr mit Leuchtzeigern und Chronograph (`herrenuhr-mit-leuchtzeigern-und-chronograph-264832`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Geometrischer Zirkonia-Ring für Frauen (`geometrischer-zirkonia-ring-fur-frauen-603700`): kein EU-Stecker bei CJ
+- Eleganter Zirkonia Ring mit Vier-Krappenfassung (`eleganter-zirkonia-ring-mit-vier-krappenfassun-627400`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Küchenutensilien-Set aus Edelstahl (`kuchenutensilien-set-aus-edelstahl-438080`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Leichte, handgemachte Eisenpfanne (`leichte-handgemachte-eisenpfanne-234944`): Typ-Auswahl, aber Variantenbilder nicht unterscheidbar
+- TUMU Lipgloss (`tumu-lipgloss-620400`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Stoff-Aufbewahrungsbox für Kleider & Textilien (`stoff-aufbewahrungsbox-fur-kleider-textilien-608800`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Chenille Kissenbezug Dschungel-Muster (`chenille-kissenbezug-dschungel-muster-634112`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Retro Kamera Bausteine (`retro-kamera-bausteine-627900`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Herren Business Casual Quarzuhr mit Kalender (`herren-business-casual-quarzuhr-mit-kalender-663168`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- 3D-gedruckte Drachen- und Ei-Ornamente (`3d-gedruckte-drachen-und-ei-ornamente-608200`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Armband Drache Pi Xiu Leopard-Muster (`armband-drache-pi-xiu-leopard-muster-615200`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Holzstruktur-Prägestab für Keramik (`holzstruktur-pragestab-fur-keramik-359296`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Nano Glas Fussfeile Set (`nano-glas-fussfeile-set-283712`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Nordisches Serviertablett aus Edelstahl (`nordisches-serviertablett-aus-edelstahl-307520`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Bone China Suppenschale mit Deckel (`bone-china-suppenschale-mit-deckel-611584`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge

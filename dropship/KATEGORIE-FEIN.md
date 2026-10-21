@@ -1,24 +1,30 @@
-# Feinkategorie (automatisch, 2026-10-21 06:04 UTC)
+# Feinkategorie (automatisch, 2026-10-21 07:01 UTC)
 
 Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 
 | Zustand | Produkte |
 |---|---:|
-| gleich | 36071 |
-| shopify-feiner | 16172 |
-| kein-google | 1636 |
-| rueckfall-grob | 1338 |
-| anderer-zweig | 930 |
+| gleich | 36128 |
+| shopify-feiner | 16197 |
+| kein-google | 1635 |
+| rueckfall-grob | 1337 |
+| anderer-zweig | 952 |
+| verfeinern | 36 |
 | kreuz | 20 |
-| schon-im-ledger | 20 |
+| schon-im-ledger | 13 |
 | titelprobe-nein | 11 |
-| ohne-kategorie | 2 |
+| ohne-kategorie | 3 |
 | keine-zuordnung | 1 |
-| verfeinern | 0 |
-| **geschrieben** | 0 (Fehler 0) |
+| **geschrieben** | 36 (Fehler 0) |
 
 ## Ziele (dieser Lauf)
 
+- 12 → Clothing > Dresses
+- 10 → Toys > Building Toys
+- 7 → Handbags, Wallets & Cases > Handbags
+- 4 → Backpacks
+- 2 → Jewelry > Bracelets
+- 1 → Exercise & Fitness
 
 ## Titelprobe hat abgelehnt (bleibt grob)
 
@@ -29,7 +35,6 @@ Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 - 1 × Necklaces
   - «Damen- und Kind-Freizeitanzug mit Print» → Activewear
   - «Blaues Denim für Herren» → Pants
-  - «Farbenfrohes Körperkreuz» → Dresses
   - «Mesh Maxi Cape mit Fledermausärmeln» → Dresses
   - «Acryl-Hängeornament» → Necklaces
   - «Langarm-Base-Layer für Herren» → Activewear
@@ -37,3 +42,4 @@ Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
   - «Abstrakter A-Linien-Maxi mit Batwing-Ärmeln» → Dresses
   - «Grasformband» → Bracelets
   - «Kristall-Handschmeichler» → Bracelets
+  - «Akryl-Blechlinge» → Bracelets
