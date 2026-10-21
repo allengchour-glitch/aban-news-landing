@@ -12903,3 +12903,5 @@ einfaches-armelloses-kleid-mit-ruckenausschnit-628200	2607130741321628800	16	8.7
 mannliche-armbanduhren-601800	2509150302081602000	7	6.75	ok	landeseite
 handgepack-tasche-business-style-rucksack-624100	2607130732261624700	16	20.24	ok	landeseite
 vintage-pullover-kleid-617200	2607130738371617800	16	8.79	ok	landeseite
+herren-sportuhr-quarz-607700	2509120545411608000	7	8.25	ok	landeseite
+wasserdichter-fin-beutel-30l-634800	2602260623541635100	16	18.47	ok	landeseite
