@@ -3416,3 +3416,5 @@
 16654411039111	Grösse:2:2+ki	2026-10-21	cuban-link-armband-aus-edelstahl-in-rosegold-609700
 16654367392135	Volumen:4+Länge:9:36+ki	2026-10-21	easy-fan-wimpernverlangerung-631700
 16654366474631	Stil:10:10+ki	2026-10-21	kuchenvorhang-baumwoll-leinen-mischung-617600
+16654365950343	Farbe:7:7+ki	2026-10-21	universal-steckschlussel-44f388
+16654364967303	Farbe:4:4+ki	2026-10-21	aufbewahrungstasche-furs-auto-rucksitz-630600
