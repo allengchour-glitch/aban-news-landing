@@ -12784,3 +12784,4 @@ quarzuhr-mit-kalender-626900	2602230756311627200	7	6.35	ok	landeseite
 intelligenter-offline-fotografie-ubersetzer-621800	2502220632011622000	7	9.24	ok	landeseite
 herren-armband-edelstahl-vielseitig-624400	2602200929361624700	16	6.12	ok	landeseite
 visueller-timer-wecker-628100	2412210141131628500	7	8.16	ok	landeseite
+herren-sportuhr-wasserdicht-leuchtend-623700	2602200655151624000	7	6.05	ok	landeseite
