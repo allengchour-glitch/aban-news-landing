@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-21 00:32 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-21 01:44 UTC)
 
-Suche: `status:active AND created_at:>=2026-10-18` · gemessen 317 · **190 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 171, teilweise: 13, keine: 6; Preisspanne > 2×: 28) · 1 CJ-Variante: 127 · ohne Antwort: 0
+Suche: `status:active AND created_at:>=2026-10-18` · gemessen 332 · **202 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 183, teilweise: 13, keine: 6; Preisspanne > 2×: 28) · 1 CJ-Variante: 130 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -63,6 +63,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Herren-Armbanduhr mit Stahlband und Quarzwerk (`herren-armbanduhr-mit-stahlband-und-quarzwerk-619800`) | 10 | 10 | 6.94–7.81 | 16.90 | Gun Black, Silver Case Black Noodles, Silver Case White Noodles, Silver Case Blue Face |
 | Stahlarmband-Uhr mit Quarzwerk – Silberschale (`stahlarmband-uhr-mit-quarzwerk-silberschale-602000`) | 10 | 10 | 8.68–10.07 | 19.90 | Silver Case Silver Surface, Silver Case Blue Face, Silver Case Black Noodles, Black Shell Black Surface |
 | Ladebare Nachtlicht-Tablette in Pilzform (`ladebare-nachtlicht-tablette-in-pilzform-600900`) | 10 | 10 | 4.7–6.63 | 23.90 | 1800mAh-White, 1800mAh-Yellow, 1800mAh-Rust Color, 1800mAh-Pink |
+| Grosser Outdoor-Rucksack mit wasserdichtem Design (`grosser-outdoor-rucksack-mit-wasserdichtem-des-622800`) | 10 | 10 | 6.77–7.29 | 30.90 | Black-Large Size, Black-Medium, Dark Blue-Large Size, Dark Blue-Medium |
 | Buntes, schmaler Retro-Schal in Regenbogenfarben (`buntes-schmaler-retro-schal-in-regenbogenfarbe-621000`) | 9 | 9 | 2.72–2.72 | 16.90 | Red Orange Purple-190X10cm, Gray Orange White-190X10cm, Blue Orange Rice-190X10cm, Gray White And Black-190X10cm |
 | Ovaler Fotorahmen für die Wand (`ovaler-fotorahmen-fur-die-wand-622100`) | 9 | 9 | 4.04–27.6 | 75.90 | 4 Pieces, 5 Pieces, Square, Ellipse |
 | Welpen Pullover Herbst & Winter (`puppy-pullover-herbst-winter-492992`) | 9 | 9 | 3.16–4.16 | 16.90 | Blue Rabbit Sweater-XS-Without bag, Blue Rabbit Sweater-M-Without bag, Blue Rabbit Sweater-L-Without bag, Blue Rabbit Sweater-XL-Without bag |
@@ -77,6 +78,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | 28-teilige Weihnachtsbaumschmuck-Kugel-Set (`28-teilige-weihnachtsbaumschmuck-kugel-set-602500`) | 8 | 8 | 3.19–3.19 | 16.90 | Red Style, Gold Style, Dark Green, Light Blue |
 | Makeup-Set mit Lippenstift, Rouge und Augenstift (`makeup-set-mit-lippenstift-rouge-und-augenstif-620000`) | 8 | 8 | 38.97–43.95 | 69.90 | Swan Lake Gift Box, Ballet Dream Gift Box, Dawn Endless Summer Gift Box, Shell Wind Chime Gift Box |
 | Makeup-Set mit Eyeshadow, Rouge und Foundation (`makeup-set-mit-eyeshadow-rouge-und-foundation-617300`) | 8 | 8 | 2.99–5.8 | 17.90 | ZP A05 003301, ZP A05 003302, ZP A05 003303, ZP A05 003304 |
+| Herren Crossbody Tasche Vollnarbenleder (`herren-crossbody-tasche-vollnarbenleder-639800`) | 8 | 8 | 4.92–4.92 | 20.90 | 6035 Black, 6035 Coffee, 6035 Brown, 6036 Black |
 | Taktische Umhängetasche für Outdoor-Sport (`taktische-umhangetasche-fur-outdoor-sport-624800`) | 7 | 7 | 5.03–5.03 | 18.90 | Black-Below 20L, Brown-Below 20L, Italian Camouflage-Below 20L, Dark Night-Below 20L |
 | Umhängetasche mit Rautenmuster (`umhangetasche-mit-rautenmuster-623000`) | 7 | 7 | 7.99–7.99 | 21.90 | Color, Silver, Black Gold Diamand, Green |
 | Kristall-Hanf Kopftuch – Monochromes Design (`kristall-hanf-kopftuch-monochromes-design-606000`) | 7 | 7 | 3.1–3.1 | 16.90 | 2 White-Average Size, 3 Navy Blue-Average Size, 4 Pink Color-Average Size, 5 Light Khaki-Average Size |
@@ -92,6 +94,8 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Universal-Steckschlüssel (`universal-steckschlussel-44f388`) | 7 | 7 | 1.79–1.79 | 16.90 | Blue, Green, Red, Yellow |
 | Titanstahlring mit Totenkopf (`titanstahlring-mit-totenkopf-624100`) | 7 | 7 | 2.67–2.67 | 16.90 | Silver-No 6, Silver-No 7, Silver-No 8, Silver-No 9 |
 | Silk Kissenbezug Leopard Muster (`silk-kissenbezug-leopard-muster-608900`) | 7 | 7 | 20.83–20.83 | 30.90 | White-48x74cm, Navy Blue-48x74cm, Light Pink-48x74cm, Dark Gray-48x74cm |
+| Lipstick – Matte, langanhaltend, leicht aufzutragen (`lipstick-matte-langanhaltend-leicht-aufzutrage-605300`) | 7 | 7 | 6.62–6.62 | 16.90 | Color 101, Color 102, Color 116, Color 115 |
+| Faltbare Damen Münzbörse in PU-Leder (`faltbare-damen-munzborse-in-pu-leder-626100`) | 7 | 7 | 4.36–4.36 | 16.90 | Black, Dark Purple, Purplish Red, Light Yellow |
 | Weiche Schläucheinführung CRV (`weiche-schlaucheinfuhrung-crv-910625`) | 6 | 0 | 0.66–2.3 | 16.90 | C-305mm, A-355mm, D-200mm, E-200mm |
 | Kashmirähnlicher Karomuster-Schal (`kashmirahnlicher-karomuster-schal-619500`) | 6 | 6 | 2.02–2.02 | 16.90 | WT1582 Black-200x64cm With Tassels, WT1583 Pink-200x64cm With Tassels, WT1585 Gray Big Plaid-200x64cm With Tassels, WT1586 Red Plaid-200x64cm With Tassels |
 | Flammen-Totenkopf-Ring aus Titanstahl (`flammen-totenkopf-ring-aus-titanstahl-636600`) | 6 | 6 | 2.6–2.6 | 16.90 | No 7, No 8, No 9, No 11 |
@@ -124,6 +128,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Geflochtene Vase aus Pflanzenfasern (`geflochtene-vase-aus-pflanzenfasern-624400`) | 5 | 5 | 12.94–14.59 | 46.90 | Pupian-S, Pupian-L, Stripes-S, Stripes-L |
 | Wasserfeste, schweissresistente Foundation (`wasserfeste-schweissresistente-foundation-600700`) | 5 | 5 | 2.11–2.11 | 16.90 | SNOW, NATURAL PORCELAIN,  NATURAL BEIGE, COOKIE |
 | Korrektur- und Farbwechsel Foundation-Stick (`korrektur-und-farbwechsel-foundation-stick-623500`) | 5 | 5 | 2.81–2.81 | 16.90 | Complexion, Natural color, Ivory white, Dark complexion |
+| Businessrucksack mit Luftpolster, wasserdicht (`businessrucksack-mit-luftpolster-wasserdicht-603400`) | 5 | 5 | 36.11–44.79 | 89.90 | 25051 Style, 25061 Style, 25041 Style, 25031 Style |
 | Iris-Blumenring (`iris-blumenring-631400`) | 4 | 4 | 2.11–2.11 | 16.90 | Iris Flower Ring 6028-No 6, Iris Flower Ring 6028-No 7, Iris Flower Ring 6028-No 8, Iris Flower Ring 6028-No 9 |
 | Männer-Quarz-Uhr mit quadratischem Zifferblatt (`manner-quarz-uhr-mit-quadratischem-zifferblatt-614400`) | 4 | 4 | 14.76–14.76 | 23.90 | Wine Red-Quartz Watch, Green-Quartz Watch, Dark Blue-Quartz Watch, Coffee With A Gray Disc-Quartz Watch |
 | Dumpling-Mold-Set 3D-gedruckt – Quadrat, Kreis, Herz (`dumpling-mold-set-3d-gedruckt-quadrat-kreis-he-620800`) | 4 | 4 | 3.09–9.44 | 27.90 | Square, Round, Heart Shape, Combination |
@@ -146,7 +151,9 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Multifunktionale Quarzuhr mit Lederarmband (`multifunktionale-quarzuhr-mit-lederarmband-638200`) | 4 | 4 | 30.9–30.9 | 42.90 | White Shell And Blue Surface, White Shell And Black Surface, Black Shell Black Surface, Black Shell Green Surface |
 | Vintage Quarz-Armbanduhr für Damen (`vintage-quarz-armbanduhr-fur-damen-609400`) | 4 | 4 | 12.85–12.85 | 21.90 | Gold Strap Gold Noodles, Gold Strap Red Noodles, Gold Strap White Noodles, Silver Streak White Noodles |
 | Kleines Nachtlicht mit Touch-Steuerung, USB (`kleines-nachtlicht-mit-touch-steuerung-usb-609700`) | 4 | 4 | 4.36–4.36 | 16.90 | Black-Handle Style, Black-Pull Cord Style, White-Handle Style, White-Pull Cord Style |
-| Eyeliner Stift – schnelltrocknend, wasser- & schweissresistent (`eyeliner-stift-schnelltrocknend-wasser-schweis-610000`) | 4 | 4 | 2.42–2.42 | 16.90 | Brown, Black, Coffee, Blue |
+| Sportrucksack für Tennis und Badminton – 40–50 l (`sportrucksack-fur-tennis-und-badminton-40-50-l-636800`) | 4 | 4 | 15.63–15.63 | 40.90 | Purple-40L To 50L, Peacock Blue-40L To 50L, White-40L To 50L, Fruit Green-40L To 50L |
+| Liquid Foundation – Feuchtigkeitsspendend, ölregulierend (`liquid-foundation-feuchtigkeitsspendend-olregu-650400`) | 4 | 4 | 2.97–2.97 | 16.90 | Imported Formula-1 Style, Imported Formula-2 Style, Imported Formula-3 Style, Imported Formula-4 Style |
+| Echtes Leder Portemonnaie für Damen (`echtes-leder-portemonnaie-fur-damen-614000`) | 4 | 4 | 9.78–9.78 | 21.90 | Brown, Brown Red, Khaki, Black |
 | Oversized Wollschal Dreieck 200 cm (`oversized-wollschal-dreieck-200-cm-605900`) | 3 | 3 | 12.44–12.44 | 21.90 | Raw Velvet Rice-200X90cm, Raw Velvet Camel-200X90cm, Gray-200X90cm |
 | Zylindrischer Angelrucksack (`zylindrischer-angelrucksack-228160`) | 3 | 3 | 7.87–8.08 | 17.90 | Black, Urban camouflage, Desert camouflage |
 | Halskette mit Kor, Türkis und Muschelperlen (`halskette-mit-kor-turkis-und-muschelperlen-635200`) | 3 | 3 | 4.3–5.18 | 16.90 | Necklace, Bracelet, Ear Studs |
@@ -167,10 +174,12 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Feuchtigkeits-Make-up-Stick mit weichem Fokus (`feuchtigkeits-make-up-stick-mit-weichem-fokus-612700`) | 3 | 3 | 2.81–2.81 | 16.90 | 5G-Deep Flesh Color, 5G-Natural Color, 5G-Light Flesh Color |
 | Augenbrauen-Färbeset mit Primer und Pinsel (`augenbrauen-farbeset-mit-primer-und-pinsel-624400`) | 3 | 3 | 2.81–2.81 | 16.90 | Black, Light Brown, Brunet brown |
 | Augenlidschatten-Palette Fruit Series, 12 Farben (`augenlidschatten-palette-fruit-series-12-farbe-224000`) | 3 | 3 | 3.45–3.45 | 16.90 | Orange, Pink, Purple |
-| Doppelkopf-Fleckenstift hellbraun (`doppelkopf-fleckenstift-hellbraun-606900`) | 3 | 3 | 2.11–2.11 | 16.90 | Dark brown, Brown, Light Brown |
 | Leichtgewichtiger nahtloser zweiköpfiger Foundation-Stick (`leichtgewichtiger-nahtloser-zweikopfiger-found-603300`) | 3 | 3 | 2.63–2.63 | 16.90 | ivory white, natural color, deep skin color |
-| Air Cushion Puder Cake (`air-cushion-puder-cake-603300`) | 3 | 3 | 2.28–2.28 | 16.90 | Ivory white, Natural color, Dark complexion |
 | Wimpern-Try-On-Cards – 12-Farben-Set (`wimpern-try-on-cards-12-farben-set-616300`) | 3 | 3 | 2.63–5.03 | 16.90 | Fine Makeup, Full Makeup And Light Makeup, Light Makeup |
+| Kurze Clutch-Handtasche mit Reissverschluss (`kurze-clutch-handtasche-mit-reissverschluss-625900`) | 3 | 3 | 5.8–5.8 | 16.90 | Blue, Black, Army Green |
+| Foundation Stick (`foundation-stick-633800`) | 3 | 3 | 2.28–2.28 | 16.90 | Dark complexion, Ivory white, Natural color |
+| Lederportemonnaie aus Rindfleisch – Blumenprägung (`lederportemonnaie-aus-rindfleisch-blumenpragun-629200`) | 3 | 3 | 14.59–14.59 | 24.90 | Retro Brown, Retro Black, Retro Coffee |
+| Geldbörse mit mehreren Kartenfächern aus Leder (`geldborse-mit-mehreren-kartenfachern-aus-leder-623300`) | 3 | 3 | 18.41–18.41 | 36.90 | 241044F4O1, 241044F4W1, 241044F4A1 |
 | Schwarzer Multifunktionaler Rucksack aus Nylon/Polyester (`schwarzer-multifunktionaler-rucksack-aus-nylon-06c75b`) | 2 | 0 | 20.68–20.68 | 54.90 | Black with logo, Black without logo |
 | Multifunktionaler Rucksack mit Diebstahlschutz (`multifunktionaler-rucksack-mit-diebstahlschutz-b9d9f9`) | 2 | 2 | 31.95–36.28 | 66.90 | Black  without logo, Black |
 | Wandsticker Gans aus Holz (`wandsticker-gans-aus-holz-610300`) | 2 | 2 | 2.48–4.04 | 16.90 | Resin, Wood |
@@ -196,3 +205,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Matte Metall-Glitzer Lidschatten-Palette, 30 Farben (`matte-metall-glitzer-lidschatten-palette-30-fa-891840`) | 2 | 2 | 2.1–2.1 | 16.90 | 1 Style, 2 Style |
 | Silky Tip Doppelseitiger Eyeliner (`silky-tip-doppelseitiger-eyeliner-609900`) | 2 | 2 | 2.11–2.11 | 16.90 | Black 4ml, Brown 4 Ml |
 | Soft-Matte Foundation mit langer Haltbarkeit (`soft-matte-foundation-mit-langer-haltbarkeit-632500`) | 2 | 2 | 3.44–3.44 | 16.90 | Natural Color, Ivory White |
+| Echtes Leder Rucksack – 20 L, Anti-Diebstahl (`echtes-leder-rucksack-20-l-anti-diebstahl-612300`) | 2 | 2 | 46.01–46.01 | 78.90 | Wine Red, Black |
+| Contour Compact mit integriertem Highlight (`contour-compact-mit-integriertem-highlight-624400`) | 2 | 2 | 13.27–13.27 | 23.90 | Honey Corouli Plate, Strawberry Creme Cassis G B |
+| Büro- und Fahrkarten-Case aus Leder (`buro-und-fahrkarten-case-aus-leder-604800`) | 2 | 2 | 4.86–4.86 | 16.90 | Black, Orange |
