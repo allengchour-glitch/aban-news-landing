@@ -348,3 +348,10 @@
 |---|---|---|
 | unklar | CJ nicht erreicht | [LEMFO Y99 Kinder Smartwatch mit 4G & GPS](https://luxestyle.ch/products/lemfo-y99-kinder-smartwatch-mit-4g-gps-323584) |
 | unklar | CJ nicht erreicht | [Smartwatch für Kinder mit Videoanruffunktion](https://luxestyle.ch/products/smartwatch-fur-kinder-mit-videoanruffunktion-091008) |
+
+## Lauf 2026-10-21 00:24 UTC
+
+| Urteil | Beleg | Produkt |
+|---|---|---|
+| unklar | CJ nicht erreicht | [LEMFO Y99 Kinder Smartwatch mit 4G & GPS](https://luxestyle.ch/products/lemfo-y99-kinder-smartwatch-mit-4g-gps-323584) |
+| unklar | CJ nicht erreicht | [Smartwatch für Kinder mit Videoanruffunktion](https://luxestyle.ch/products/smartwatch-fur-kinder-mit-videoanruffunktion-091008) |
