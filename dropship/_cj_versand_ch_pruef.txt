@@ -12587,3 +12587,15 @@ mini-luftbefeuchter-fur-zuhause-592768	1598153258906955776	7	10.58	ok	landeseite
 holzkiste-mit-luftfeuchtigkeitsmessgerat-958016	1597511904543649792	4	59.45	ok	landeseite
 keramik-blumentopf-621200	2505190255481621700	16	25.05	ok	landeseite
 tassen-fur-heissen-tee-619300	2505180731141619600	16	7.25	ok	landeseite
+tee-set-mit-filter-616400	2505180335591616700	16	11.00	ok	landeseite
+kleiner-aromatherapie-luftbefeuchter-792000	1594266243538890752	7	11.03	ok	landeseite
+tee-set-mit-tasse-und-teetablett-626000	2505180322241626200	16	21.90	ok	landeseite
+kleiner-luftbefeuchter-587072	1591789378454695936	7	6.59	ok	landeseite
+vintageloose-jeans-606000	2603261327101606300	16	14.32	ok	landeseite
+denim-rock-607600	2603261121171607900	16	11.00	ok	landeseite
+damen-ripped-straight-leg-jeans-blau-mid-rise-616400	2603260943351616800	16	14.60	ok	landeseite
+weisse-weite-hosen-614300	2603260307431614700	16	10.55	ok	landeseite
+hellblaue-amerikanische-flared-damenjeans-636800	2603250627351637200	16	11.00	ok	landeseite
+lockere-weitbein-jeans-625500	2603250208391625900	16	12.81	ok	landeseite
+tief-sitzende-weitbein-jeans-leicht-ausgestell-621800	2603241048501622200	16	11.00	ok	landeseite
+hochgeschnittene-skinny-shorts-636700	2603231455091637100	16	10.29	ok	landeseite
