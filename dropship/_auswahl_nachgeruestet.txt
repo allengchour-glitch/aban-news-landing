@@ -3312,3 +3312,6 @@
 15503236104577	Grösse:3:3	2026-10-21	holzpuzzle-buchstaben-formen-zahlen-571136
 15503164899713	Farbe:3:3	2026-10-21	wischfester-lipliner-fengying-602000
 15503147172225	Grösse:2:2	2026-10-21	quasten-kissenbezug-fur-auto-und-buro-a1770f
+15503146615169	Farbe:3+Grösse:3:9	2026-10-21	rosenherz-kissen-3e7d9f
+15503146287489	Farbe:2+Grösse:3:6	2026-10-21	halsband-aus-rindsleder-fur-hunde-5fffc0
+15503145468289	Modell:2:2	2026-10-21	elastischer-sofabezug-in-blau-79701f

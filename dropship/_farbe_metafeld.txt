@@ -507,3 +507,7 @@ gid://shopify/Product/16653789266311	Rot
 gid://shopify/Product/16654053966215	Gelb
 gid://shopify/Product/16654370931079	Gold
 gid://shopify/Product/16654412841351	Silber
+gid://shopify/Product/16655497822599	Orange
+gid://shopify/Product/16655498051975	Rot
+gid://shopify/Product/16655515517319	Silber
+gid://shopify/Product/16655516795271	Grün
