@@ -12750,3 +12750,15 @@ fahrrad-frontscheinwerfer-620000	2607120417551620600	7	8.10	ok	landeseite
 ei-formige-armbanduhr-fur-damen-602700	2602110147531603000	7	8.08	ok	landeseite
 infrarot-haarglatter-mit-lcd-display-543296	1384675395693056000	16	14.96	ok	landeseite
 lockenstab-mit-temperaturstufen-438336	1384373355943170048	16	9.47	ok	landeseite
+smart-sportuhr-im-instagram-stil-610400	2602080818511610800	7	5.60	ok	landeseite
+cartoons-regenstiefel-614200	2409270342211614500	16	12.56	ok	landeseite
+multifunktions-armbanduhr-mit-mondphasen-anzei-614100	2602061044101614500	7	6.25	ok	landeseite
+prinzessinnen-schuhe-mit-absatz-621700	2408160331151621900	16	10.15	ok	landeseite
+herren-arbeitsschuhe-mit-atm-mesh-stahlkappe-999744	1739562979366023168	16	13.76	ok	landeseite
+elegantes-abendkleid-in-grun-601400	2607130519311602000	16	8.79	ok	landeseite
+schwarze-leder-schuhe-mit-kurzabsatz-351680	1692371508817043456	16	20.35	ok	landeseite
+chic-damenkleid-628900	2607130122351629600	16	8.79	ok	landeseite
+outdoor-trekking-schuhe-788224	1692107106964480000	16	16.16	ok	landeseite
+herz-stickerei-schuhe-sandalen-mit-farbenfrohe-977600	1691318810147565568	16	13.76	ok	landeseite
+sicherheits-schuhe-mit-drehverschluss-391552	1689474142887751680	16	17.28	ok	landeseite
+mannliche-casual-sneaker-456512	1680473377728897024	16	14.00	ok	landeseite
