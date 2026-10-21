@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-21 18:56 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-21 20:22 UTC)
 
-Suche: `status:active AND created_at:>=2026-10-18` · gemessen 376 · **199 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 173, teilweise: 15, keine: 11; Preisspanne > 2×: 34) · 1 CJ-Variante: 177 · ohne Antwort: 0
+Suche: `status:active AND created_at:>=2026-10-18` · gemessen 379 · **201 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 175, teilweise: 15, keine: 11; Preisspanne > 2×: 34) · 1 CJ-Variante: 178 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -23,6 +23,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Sofaabdeckung aus Baumwolle, rutschfest, alljährlich (`sofaabdeckung-aus-baumwolle-rutschfest-alljahr-638900`) | 51 | 51 | 4.04–15.37 | 48.90 | Peach Joy-70x70cm, Peach Joy-70x90cm, Peach Joy-70x120cm, Peach Joy-70x150cm |
 | Sofaabdeckung mit geometrischem Muster – 180×130 cm (`sofaabdeckung-mit-geometrischem-muster-180-130-605500`) | 44 | 44 | 5.27–15.8 | 57.90 | Diamond Coffee Color-180x130cm, Diamond Coffee Color-180x180cm, Diamond Coffee Color-180x230cm, Diamond Coffee Color-180x260cm |
 | Kaschmir-Schal für kalte Wintertage (`kaschmir-schal-fur-kalte-wintertage-620300`) | 29 | 20 | 4.44–4.85 | 16.90 | Beige, Black, White, Oatmeal Color |
+| Business-Rollkoffer mit Hartschale (`business-rollkoffer-mit-hartschale-608600`) | 28 | 28 | 48.61–66.84 | 254.90 | Green-20 Inches, Green-24 Inches, Green-26 Inches, Green-28 Inches |
 | Notizbuch mit PU-Ledercover (`notizbuch-mit-pu-ledercover-623800`) | 27 | 20 | 2.77–10.41 | 38.90 | Charming Black, Business Brown, Tiffany Blue, Vitality Red |
 | Clutch mit Münztasche und Kartenhalter (`clutch-mit-munztasche-und-kartenhalter-619900`) | 26 | 17 | 5.27–6.63 | 16.90 | Wine Red, Midnight Black, Palaeo Yellow, Custom Orange |
 | Highland Kuh Adventskalender (`highland-kuh-adventskalender-613500`) | 25 | 18 | 2.94–5.38 | 19.90 | Cat Blind Box, Christmas Building Blocks, Cow Blind Box, Cow Calendar With A Butt |
@@ -180,6 +181,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Drohne mit HD-Kamera und Bildschirmsteuerung (`drohne-mit-hd-kamera-und-bildschirmsteuerung-617900`) | 3 | 3 | 16.67–20.14 | 33.90 | Orange Black-Electric Version, Orange Black-Second Electric Version, Orange Black-Three level Version |
 | Silikonform für Schmuckanhänger (`silikonform-fur-schmuckanhanger-436a72`) | 3 | 0 | 1.02–1.02 | 16.90 | 2style, 3style, 1style |
 | Flower Street Boutique Kleine Teilbausteine Puzzle für Kinder (`flower-street-boutique-kleine-teilbausteine-pu-608300`) | 3 | 3 | 4.0–4.0 | 18.90 | Tipsy Wine, Lifeline Coffee, Sunny Lemon Tea |
+| Business-Rucksack gross, wasserdicht, für Laptop (`business-rucksack-gross-wasserdicht-fur-laptop-639700`) | 3 | 3 | 5.9–5.9 | 18.90 | Light Gray, Sapphire Blue, Black |
 | Schwarzer Multifunktionaler Rucksack aus Nylon/Polyester (`schwarzer-multifunktionaler-rucksack-aus-nylon-06c75b`) | 2 | 0 | 20.68–20.68 | 54.90 | Black with logo, Black without logo |
 | Multifunktionaler Rucksack mit Diebstahlschutz (`multifunktionaler-rucksack-mit-diebstahlschutz-b9d9f9`) | 2 | 2 | 31.95–36.28 | 66.90 | Black  without logo, Black |
 | Wandsticker Gans aus Holz (`wandsticker-gans-aus-holz-610300`) | 2 | 2 | 2.48–4.04 | 16.90 | Resin, Wood |
