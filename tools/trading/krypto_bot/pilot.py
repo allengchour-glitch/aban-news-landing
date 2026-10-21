@@ -424,33 +424,67 @@ def lauf_merken(ok, hinweise, trocken=False, logbuch=None):
 
 PUSH_STILL = ROOT / "data" / "krypto-nachkontrolle-push.json"
 PUSH_ABSTAND_S = 3600
+PUSH_MERKEN = 8  # so viele verschiedene Meldungen der letzten Stunde bleiben gemerkt (abwechselnde Texte A, B, A, B dürfen nicht je einzeln durchkommen)
 
 
 def _push_nachkontrolle(text, einmal, datei=None, jetzt=None):
     """Push der Nachkontrolle. Im 10-Minuten-Takt (einmal) schickt dieselbe Meldung höchstens einmal je Stunde (18. Prüfung W3′: ein dauerhaft offener Markt hätte ~144 Pushes am Tag ausgelöst);
-    eine ANDERE Meldung geht sofort. Ein Fehler hier darf nie das Pushen verhindern. → True, wenn die Meldung zugestellt wurde."""
+    eine ANDERE Meldung geht sofort. Ein Fehler hier darf nie das Pushen verhindern. → True, wenn die Meldung zugestellt wurde.
+    (20. Prüfung, klein 5) Gemerkt werden mehrere Kennungen der letzten Stunde, nicht nur die letzte: wechselt der Text zwischen zwei Fassungen (A, B, A, B — z. B. mit einer Minutenangabe), kam jede einzelne an."""
     import hashlib
     import time
     import signale as SG
     datei = Path(datei) if datei else PUSH_STILL
     jetzt = time.time() if jetzt is None else jetzt
     kennung = hashlib.sha1(text.encode("utf-8", "replace")).hexdigest()[:16]
+    gemerkt = {}
     if einmal:
         try:
-            alt = json.loads(datei.read_text())
-            if alt.get("kennung") == kennung and 0 <= jetzt - float(alt.get("zeit") or 0) < PUSH_ABSTAND_S:
-                print(f"(gleiche Meldung vor {int((jetzt - float(alt['zeit'])) / 60)} Min. schon gemeldet — nicht nochmals gepusht)")
-                return False
+            roh = json.loads(datei.read_text())
+            if "kennung" in roh:  # alte Fassung der Datei: eine Meldung
+                roh = {roh["kennung"]: roh.get("zeit")}
+            gemerkt = {k: float(z) for k, z in roh.items() if 0 <= jetzt - float(z or 0) < PUSH_ABSTAND_S}
         except Exception:  # noqa: BLE001 — keine/kaputte Datei: pushen
-            pass
+            gemerkt = {}
+        if kennung in gemerkt:
+            print(f"(gleiche Meldung vor {int((jetzt - gemerkt[kennung]) / 60)} Min. schon gemeldet — nicht nochmals gepusht)")
+            return False
     gesendet = bool(SG.push(text + "\nKeine Anlageberatung."))
     if einmal and gesendet:  # (19. Prüfung W1) nur eine ZUGESTELLTE Meldung drosselt die nächste: `push` gibt False bei Telegram-/ntfy-Fehler oder ohne Kanal zurück — sonst schwiege derselbe Alarm nach einem Netzausfall eine Stunde lang
         try:
+            gemerkt[kennung] = jetzt
+            neueste = sorted(gemerkt.items(), key=lambda kz: kz[1], reverse=True)[:PUSH_MERKEN]
             datei.parent.mkdir(parents=True, exist_ok=True)
-            datei.write_text(json.dumps({"kennung": kennung, "zeit": jetzt}))
+            datei.write_text(json.dumps(dict(neueste)))
         except Exception:  # noqa: BLE001
             pass
     return gesendet
+
+
+NK_SERIE = ROOT / "data" / "krypto-nachkontrolle-serie.json"
+SERIE_LUECKE_S = 1800  # ein Durchgang, der länger als das zurückliegt (PC aus, Aufgabe angehalten), setzt die Reihe zurück: «in Folge» heisst im 10-Minuten-Takt
+
+
+def _serie_merken(art, datei=None, jetzt=None):
+    """(20. Prüfung, wichtig 1 + klein 8) Buch über die REIHE gleichartiger Durchgänge im 10-Minuten-Takt (`einmal`): «ok» / «warnung» (Rückgabewert 3) / «besetzt» (die Lauf-Sperre hielt ein anderer Lauf, Rückgabewert 0).
+    Die rc-Datei der Bat zeigt nur den LETZTEN Durchgang — ob eine Warnung seit einem Takt oder seit Stunden steht und ob die Sperre nur kurz belegt war oder ein Halter mit lebendem Herzschlag dasteht
+    (eine angeklickte Konsole im QuickEdit-Modus hält den Hauptfaden an, der Herzschlag läuft weiter), sieht erst das Cockpit an dieser Reihe → {art, anzahl, seit, zeit}. Ein Fehler hier ändert nichts am Durchgang."""
+    import time
+    datei = Path(datei) if datei else NK_SERIE
+    jetzt = time.time() if jetzt is None else jetzt
+    try:
+        try:
+            alt = json.loads(datei.read_text())
+            gleich = alt.get("art") == art and 0 <= jetzt - float(alt.get("zeit") or 0) < SERIE_LUECKE_S
+            anzahl, seit = (int(alt.get("anzahl") or 0) + 1, float(alt.get("seit") or jetzt)) if gleich else (1, jetzt)
+        except Exception:  # noqa: BLE001 — keine/kaputte Datei: die Reihe beginnt
+            anzahl, seit = 1, jetzt
+        datei.parent.mkdir(parents=True, exist_ok=True)
+        tmp = datei.with_name(f"{datei.name}.{os.getpid()}.neu")
+        tmp.write_text(json.dumps({"art": art, "anzahl": anzahl, "seit": seit, "zeit": jetzt}))
+        tmp.replace(datei)
+    except Exception:  # noqa: BLE001
+        pass
 
 
 def nachkontrolle(einmal=False):
@@ -470,6 +504,8 @@ def nachkontrolle(einmal=False):
     except sperre.Besetzt as ex:
         if not not_aus:
             print(f"{ex} Nachkontrolle übersprungen — der andere Lauf prüft selbst.")
+            if einmal:
+                _serie_merken("besetzt")
             return 0
         r = {"zeilen": [f"⚠️ Not-Aus: Nachkontrolle Pilot 2.0 konnte nicht laufen ({ex}) — stop.bat in 5 Minuten nochmals "
                         "ausführen und das Binance-Konto prüfen!"], "warnung": True, "auftraege": []}
@@ -480,6 +516,8 @@ def nachkontrolle(einmal=False):
         text_n = "\n".join(r["zeilen"])
         print(text_n)
         _push_nachkontrolle(text_n, einmal)
+    if einmal:
+        _serie_merken("warnung" if r["warnung"] else "ok")
     return 3 if r["warnung"] else 0
 
 

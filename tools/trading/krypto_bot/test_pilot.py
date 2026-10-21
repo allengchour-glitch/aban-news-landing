@@ -390,7 +390,10 @@ with _tf.TemporaryDirectory() as _sd:
     pruefe("Sperre pruefen(): nach dem Freigeben ist die Sperre nicht mehr registriert (nichts mehr zu prüfen)", not getattr(SP, "_gehalten", {"x": 1}) and getattr(SP, "pruefen", lambda: None)() is None, getattr(SP, "_gehalten", None))
     # eine liegen gebliebene Wache (der Prozess starb mitten in der Übernahme) blockiert nicht für immer: nach WACHE_ALT Sekunden wird sie gelöscht, die Übernahme gelingt
     _wk = Path(_sd) / "krypto-lauf.lock.uebernahme"
-    for _alter_w, _warten_w, _erw_w in ((getattr(SP, "WACHE_ALT", 30) + 60, 5, "uebernommen"), (5, 0, "besetzt")):
+    for _alter_w, _warten_w, _erw_w in ((getattr(SP, "WACHE_ALT", 30) + 60, 5, "uebernommen"), (5, 0, "besetzt"),
+                                        (-(getattr(SP, "WACHE_ALT", 30) + 60), 5, "uebernommen"),  # (20. Prüfung, klein 6) eine Wache «aus der Zukunft» (die Uhr sprang zurück) blockierte jede Übernahme
+                                        (-3, 0, "besetzt")):  # … eine nur wenige Sekunden vorausgehende (Dateisystem-Granularität) ist keine verwaiste
+
         _lk.write_text("1 0\n")
         _os_utime(_lk, (_time.time() - 2000, _time.time() - 2000))
         _wk.write_text("")
@@ -512,6 +515,109 @@ with _tf.TemporaryDirectory() as _sd:
     finally:
         _SG18.push = _alt_push18
     pruefe("Push-Drosselung: dieselbe Meldung wird nach 58 Min. noch gedrosselt und nach 62 Min. wieder gesendet (die Stunde steht fest, nicht nur als Konstante)", _abstand19 == [True, False, True] and _PI.PUSH_ABSTAND_S == 3600 and len(_gepusht19) == 2, (_abstand19, _PI.PUSH_ABSTAND_S))
+
+    # ── 20. Prüfung klein 5: mehrere Kennungen der letzten Stunde bleiben gemerkt (abwechselnde Texte A, B, A, B kamen vorher alle an) ──
+    import hashlib as _hl20  # noqa: E402
+    import json as _js20  # noqa: E402
+    _gepusht20 = []
+    _SG18.push = lambda t, *a, **k: (_gepusht20.append(t), True)[1]
+    _pd20 = Path(_sd) / "push20.json"
+    try:
+        _abab20 = [_PI._push_nachkontrolle(t_, True, datei=_pd20, jetzt=z_) for t_, z_ in
+                   (("Meldung A", 1000.0), ("Meldung B", 1600.0), ("Meldung A", 2200.0), ("Meldung B", 2800.0), ("Meldung A", 3400.0))]
+        _nach_h20 = _PI._push_nachkontrolle("Meldung A", True, datei=_pd20, jetzt=1000.0 + _PI.PUSH_ABSTAND_S + 1)   # A ist eine Stunde alt → geht wieder raus
+        _b_still20 = _PI._push_nachkontrolle("Meldung B", True, datei=_pd20, jetzt=1000.0 + _PI.PUSH_ABSTAND_S + 2)  # B (um 1600 gesendet) noch keine Stunde → still
+    finally:
+        _SG18.push = _alt_push18
+    pruefe("Push-Drosselung (20. klein 5): abwechselnde Meldungen A, B, A, B, A kommen nur je EINMAL je Stunde an (vorher alle fünf); nach einer Stunde geht A wieder raus, das jüngere B bleibt still",
+           _abab20 == [True, True, False, False, False] and _nach_h20 is True and _b_still20 is False and len(_gepusht20) == 3, (_abab20, _nach_h20, _b_still20, _gepusht20))
+    # … die Datei der früheren Fassung ({kennung, zeit}) wird verstanden; eine Obergrenze hält sie klein; abgelaufene Einträge verschwinden
+    _pd20b = Path(_sd) / "push20b.json"
+    _pd20b.write_text(_js20.dumps({"kennung": _hl20.sha1("Meldung X".encode("utf-8")).hexdigest()[:16], "zeit": 7000.0}))
+    _gepusht20.clear()
+    _SG18.push = lambda t, *a, **k: (_gepusht20.append(t), True)[1]
+    try:
+        _alt_fmt20 = _PI._push_nachkontrolle("Meldung X", True, datei=_pd20b, jetzt=7100.0)
+        _pd20c = Path(_sd) / "push20c.json"
+        for _i20 in range(_PI.PUSH_MERKEN + 4):
+            _PI._push_nachkontrolle(f"Meldung {_i20}", True, datei=_pd20c, jetzt=100.0 + _i20)
+        _inhalt20 = _js20.loads(_pd20c.read_text())
+        _gepusht20.clear()
+        _PI._push_nachkontrolle("Meldung 0", True, datei=_pd20c, jetzt=200.0)       # die älteste ist über die Obergrenze hinaus vergessen → geht wieder raus
+        _PI._push_nachkontrolle(f"Meldung {_PI.PUSH_MERKEN + 3}", True, datei=_pd20c, jetzt=201.0)  # die jüngste ist noch gemerkt → still
+    finally:
+        _SG18.push = _alt_push18
+    pruefe("Push-Drosselung (20. klein 5): die alte Dateifassung wird verstanden (gleiche Meldung gedrosselt); höchstens PUSH_MERKEN Einträge bleiben; was darüber hinausfällt, geht wieder raus, das Jüngste bleibt still",
+           _alt_fmt20 is False and len(_inhalt20) == _PI.PUSH_MERKEN and len(_gepusht20) == 1 and _gepusht20[0].startswith("Meldung 0"), (_alt_fmt20, len(_inhalt20), _gepusht20))
+
+    # ── 20. Prüfung wichtig 1 / klein 8: die Reihe gleichartiger Durchgänge (Grundlage der Cockpit-Ampel) ──
+    _sf20 = Path(_sd) / "serie20.json"
+
+    def _serie20():
+        return _js20.loads(_sf20.read_text())
+    _PI._serie_merken("ok", datei=_sf20, jetzt=1000.0)
+    _s1 = _serie20()
+    _PI._serie_merken("warnung", datei=_sf20, jetzt=1600.0)
+    _s2 = _serie20()
+    _PI._serie_merken("warnung", datei=_sf20, jetzt=2200.0)
+    _s3 = _serie20()
+    _PI._serie_merken("besetzt", datei=_sf20, jetzt=2800.0)
+    _s4 = _serie20()
+    _PI._serie_merken("besetzt", datei=_sf20, jetzt=3400.0)
+    _s5 = _serie20()
+    _PI._serie_merken("besetzt", datei=_sf20, jetzt=3400.0 + _PI.SERIE_LUECKE_S + 1)   # Lücke > 30 Min. (PC aus): «in Folge» heisst im 10-Minuten-Takt
+    _s6 = _serie20()
+    _PI._serie_merken("besetzt", datei=_sf20, jetzt=3400.0 + _PI.SERIE_LUECKE_S - 100)  # Uhr springt zurück: keine negative Dauer, die Reihe beginnt neu
+    _s7 = _serie20()
+    pruefe("Reihe der Durchgänge: ok, warnung ×2, besetzt ×2 — «anzahl» zählt gleichartige in Folge, «seit» ist der Beginn der Reihe",
+           (_s1["art"], _s1["anzahl"]) == ("ok", 1) and (_s2["art"], _s2["anzahl"], _s2["seit"]) == ("warnung", 1, 1600.0) and (_s3["art"], _s3["anzahl"], _s3["seit"]) == ("warnung", 2, 1600.0)
+           and (_s4["art"], _s4["anzahl"], _s4["seit"]) == ("besetzt", 1, 2800.0) and (_s5["anzahl"], _s5["seit"], _s5["zeit"]) == (2, 2800.0, 3400.0), (_s1, _s2, _s3, _s4, _s5))
+    pruefe("Reihe der Durchgänge: nach einer Lücke von mehr als SERIE_LUECKE_S (PC aus) und nach einem Zeitsprung zurück beginnt sie neu (anzahl 1)",
+           (_s6["anzahl"], _s6["seit"]) == (1, 3400.0 + _PI.SERIE_LUECKE_S + 1) and _s7["anzahl"] == 1 and _PI.SERIE_LUECKE_S == 1800, (_s6, _s7))
+    _sf20.write_text("{kaputt")
+    _PI._serie_merken("warnung", datei=_sf20, jetzt=9000.0)
+    _kaputt20 = _serie20()
+    try:
+        _PI._serie_merken("ok", datei=Path(_sd) / "serie20.json" / "unter" / "datei.json", jetzt=1.0)   # der Ordner ist eine Datei → Schreiben unmöglich
+        _fehlerfrei20 = True
+    except Exception:  # noqa: BLE001
+        _fehlerfrei20 = False
+    pruefe("Reihe der Durchgänge: eine kaputte Datei beginnt die Reihe neu; ein Schreibfehler stört den Durchgang nie (keine Ausnahme)", _kaputt20["anzahl"] == 1 and _kaputt20["art"] == "warnung" and _fehlerfrei20, (_kaputt20, _fehlerfrei20))
+    # `nachkontrolle(einmal=True)` führt die Reihe, die lange Fassung nicht
+    from contextlib import contextmanager as _cm20  # noqa: E402
+
+    @_cm20
+    def _sperre_besetzt20(*a, **k):
+        raise SP.Besetzt("Ein anderer Lauf handelt gerade (seit 12 s).")
+        yield  # pragma: no cover
+
+    _alt_serie20, _alt_push20, _alt_lauf20, _alt_sp20 = _PI.NK_SERIE, _PI._push_nachkontrolle, _P2L.nachkontrolle, SP.lauf_sperre
+    _antwort20 = [{"zeilen": [], "warnung": False, "auftraege": []}]
+    _PI.NK_SERIE = Path(_sd) / "serie20b.json"
+    _PI._push_nachkontrolle = lambda *a, **k: True
+    _P2L.nachkontrolle = lambda *a, **k: _antwort20[0]
+    SP.ORDNER = Path(_sd)
+    _arten20, _rcs20 = [], []
+    try:
+        def _lies20():
+            return _js20.loads(_PI.NK_SERIE.read_text())
+        _rcs20.append(_PI.nachkontrolle(einmal=True)); _arten20.append(_lies20())                       # ok
+        _antwort20[0] = {"zeilen": ["⚠️ Markt BTC weiterhin nicht vollständig gesichert"], "warnung": True, "auftraege": []}
+        _rcs20.append(_PI.nachkontrolle(einmal=True)); _arten20.append(_lies20())                       # warnung 1
+        _rcs20.append(_PI.nachkontrolle(einmal=True)); _arten20.append(_lies20())                       # warnung 2
+        _vor_lang20 = _PI.NK_SERIE.read_text()
+        _rcs20.append(_PI.nachkontrolle(einmal=False)); _nach_lang20 = _PI.NK_SERIE.read_text()          # die lange Fassung (hinter dem Tageslauf) führt keine Reihe
+        SP.lauf_sperre = _sperre_besetzt20
+        _rcs20.append(_PI.nachkontrolle(einmal=True)); _arten20.append(_lies20())                       # besetzt 1 (rc 0: der andere Lauf prüft selbst)
+        _rcs20.append(_PI.nachkontrolle(einmal=True)); _arten20.append(_lies20())                       # besetzt 2
+        SP.lauf_sperre = _alt_sp20
+        _P2L.nachkontrolle = lambda *a, **k: (_ for _ in ()).throw(RuntimeError("Absturz mitten im Durchgang"))
+        _rcs20.append(_PI.nachkontrolle(einmal=True)); _arten20.append(_lies20())                       # Ausnahme → Warnung (rc 3)
+    finally:
+        _PI.NK_SERIE, _PI._push_nachkontrolle, _P2L.nachkontrolle, SP.lauf_sperre, SP.ORDNER = _alt_serie20, _alt_push20, _alt_lauf20, _alt_sp20, _alt_ord
+    pruefe("nachkontrolle(einmal=True) führt die Reihe: ok → warnung ×2 (rc 3), die lange Fassung ändert sie nicht, «Sperre besetzt» (rc 0) zählt als «besetzt» ×2, eine Ausnahme im Durchgang ist eine Warnung (rc 3)",
+           [(a_["art"], a_["anzahl"]) for a_ in _arten20] == [("ok", 1), ("warnung", 1), ("warnung", 2), ("besetzt", 1), ("besetzt", 2), ("warnung", 1)]
+           and _rcs20 == [0, 3, 3, 3, 0, 0, 3] and _vor_lang20 == _nach_lang20, (_arten20, _rcs20))
 
 # ── Pilot: Märkte, Trendlänge je Coin, Logbuch, Wochenbericht ──
 import pilot as PI  # noqa: E402

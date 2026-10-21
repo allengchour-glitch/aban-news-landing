@@ -501,11 +501,91 @@ with tempfile.TemporaryDirectory() as tmp:
                     gnk19 = {x["name"]: x for x in C.gesundheit({}, {"entscheide": []}, {}, datetime.now(timezone.utc).date())}
                     zeile19 = gnk19.get("Nachkontrolle (Aufgabenplanung)")
                     pruefe(f"Ampel «Nachkontrolle (Aufgabenplanung)», Durchgang nie zu Ende: {fall19} → {'grün' if erwartet19 else 'rot'}", zeile19 is not None and zeile19["ok"] is erwartet19 and wort19 in zeile19["text"], zeile19)
+                # ── 20. Prüfung: veralteter Rückgabewert (klein 1), Dauerwarnung und «besetzt»-Reihe (wichtig 1, klein 8) ──
+                serie20 = Path(td17) / C.NK_SERIE
+
+                def ampel20(lebt_min, rc_min, rc_text="x rc=0", serie=None):
+                    """serie = (art, anzahl, Beginn vor … Min., letzter Durchgang vor … Min.) oder None."""
+                    jetzt20 = time.time()
+                    lebt17.write_text("x")
+                    _os17.utime(lebt17, (jetzt20 - lebt_min * 60, jetzt20 - lebt_min * 60))
+                    rc_datei18.unlink(missing_ok=True)
+                    if rc_min is not None:
+                        rc_datei18.write_text(rc_text)
+                        _os17.utime(rc_datei18, (jetzt20 - rc_min * 60, jetzt20 - rc_min * 60))
+                    serie20.unlink(missing_ok=True)
+                    if serie:
+                        serie20.write_text(json.dumps({"art": serie[0], "anzahl": serie[1], "seit": jetzt20 - serie[2] * 60, "zeit": jetzt20 - serie[3] * 60}))
+                    C.os = _NT17()
+                    C._AUFGABE_CACHE.update({"zeit": 0.0, "wert": None, "wert_nk": None})
+                    C._befehl = lambda cmd, zeit: (True, "")
+                    return {x["name"]: x for x in C.gesundheit({}, {"entscheide": []}, {}, datetime.now(timezone.utc).date())}.get("Nachkontrolle (Aufgabenplanung)")
+                # klein 1: das Lebenszeichen ist frisch, der Rückgabewert aber älter als drei Takte → die Durchgänge gehen nicht zu Ende (vorher 0–15 Minuten nach jedem Start grün, bei nie erneuerter Datei dauerhaft)
+                for fall20, lebt20, rc20, erwartet20, wort20 in (("Start vor 7 Min., Rückgabewert 45 Min. alt", 7, 45, False, "nicht zu Ende"),
+                                                                 ("Start vor 12 Min., Rückgabewert 45 Min. alt (im alten grünen Fenster)", 12, 45, False, "nicht zu Ende"),
+                                                                 ("Start vor 14 Min., Rückgabewert 31 Min. alt", 14, 31, False, "nicht zu Ende"),
+                                                                 ("Start vor 4 Min., Rückgabewert 45 Min. alt (erster Durchgang nach langer Pause läuft noch)", 4, 45, True, "zuletzt vor"),
+                                                                 ("Start vor 7 Min., Rückgabewert 29 Min. alt (unter der Grenze)", 7, 29, True, "zuletzt vor"),
+                                                                 ("Start vor 7 Min., Rückgabewert 15 Min. alt (normal)", 7, 15, True, "zuletzt vor")):
+                    z20 = ampel20(lebt20, rc20)
+                    pruefe(f"Ampel «Nachkontrolle (Aufgabenplanung)», veralteter Rückgabewert: {fall20} → {'grün' if erwartet20 else 'rot'}", z20 is not None and z20["ok"] is erwartet20 and wort20 in z20["text"], z20)
+                # wichtig 1: eine einzelne Warnung bleibt grau, trägt aber das Kennzeichen «warnung» (die Kopfzeile zählt sie); ab NK_WARN_ROT Durchgängen in Folge ist sie rot
+                for fall20, rc_text20, serie_a20, erwartet20, warn20, wort20 in (
+                        ("rc=3, Reihe: 1 Warnung", "x rc=3", ("warnung", 1, 3, 3), None, True, "letzte Durchgang meldete eine WARNUNG"),
+                        ("rc=3 ohne Reihe-Datei (ältere Bat/Programmstand)", "x rc=3", None, None, True, "letzte Durchgang meldete eine WARNUNG"),
+                        ("rc=3, Reihe: 2 Warnungen in Folge", "x rc=3", ("warnung", 2, 13, 3), False, False, "seit 2 Durchgängen in Folge"),
+                        ("rc=3, Reihe: 6 Warnungen seit 55 Min.", "x rc=3", ("warnung", 6, 55, 5), False, False, "seit 6 Durchgängen in Folge (rund 55 Min.)"),
+                        ("rc=3, die Reihe sagt «ok» (widersprüchlich, z. B. Datei von vorher)", "x rc=3", ("ok", 4, 40, 3), None, True, "WARNUNG"),
+                        ("rc=3, die Reihe ist 45 Min. alt (sagt nichts über die Gegenwart)", "x rc=3", ("warnung", 5, 70, 45), None, True, "WARNUNG"),
+                        ("rc=0, Reihe: 3× besetzt (normal: Tageslauf/lange Nachkontrolle belegen die Sperre)", "x rc=0", ("besetzt", 3, 25, 5), True, False, "übersprungen (Lauf-Sperre belegt, 3×)"),
+                        ("rc=0, Reihe: 4× besetzt (der Halter steht)", "x rc=0", ("besetzt", 4, 35, 5), False, False, "Lauf-Sperre hält ein anderer Lauf"),
+                        ("rc=0, Reihe: 4× besetzt, aber 45 Min. alt", "x rc=0", ("besetzt", 4, 95, 45), True, False, "zuletzt vor"),
+                        ("rc=0, Reihe: ok", "x rc=0", ("ok", 9, 80, 3), True, False, "zuletzt vor"),
+                        ("rc=0, die Reihe sagt «warnung» (widersprüchlich: der Rückgabewert gilt)", "x rc=0", ("warnung", 5, 40, 3), True, False, "zuletzt vor")):
+                    z20 = ampel20(3, 1, rc_text20, serie_a20)
+                    gut20 = z20 is not None and z20["ok"] is erwartet20 and wort20 in z20["text"] and (z20.get("warnung") is True) == warn20 and ("warnung" in z20) == warn20
+                    if fall20.startswith("rc=0, Reihe: ") and erwartet20 is True and "besetzt" not in fall20:
+                        gut20 = gut20 and "übersprungen" not in z20["text"]
+                    pruefe(f"Ampel «Nachkontrolle (Aufgabenplanung)», Reihe der Durchgänge: {fall20} → {'grün' if erwartet20 else 'rot' if erwartet20 is False else 'grau' + (' mit Kennzeichen warnung' if warn20 else '')}", gut20, z20)
+                # … und die anderen Zeilen tragen das Kennzeichen nie (es steht nur an der Warnung)
+                alle20 = C.gesundheit({}, {"entscheide": []}, {}, datetime.now(timezone.utc).date())
+                pruefe("Gesundheit: nur eine WARNUNG trägt das Kennzeichen «warnung» (graue Info-Zeilen und alle übrigen nicht)", [x["name"] for x in alle20 if "warnung" in x] == [], [x for x in alle20 if "warnung" in x])
                 rc_datei18.unlink(missing_ok=True)
+                serie20.unlink(missing_ok=True)
             finally:
                 C.os, C._befehl, C.DATA = alt_os17, alt_bef17, alt_data17
                 C._AUFGABE_CACHE.clear()
                 C._AUFGABE_CACHE.update(alt_cache17)
+        # ── 20. Prüfung wichtig 1: die Kopfzeile der Gesundheits-Karte zählt Warnungen mit (cockpit.html, reine Funktionen — hier mit node ausgeführt) ──
+        import re as _re20  # noqa: E402
+        import shutil as _sh20  # noqa: E402
+        import subprocess as _sp20  # noqa: E402
+        _html20 = (Path(C.__file__).parent / "cockpit.html").read_text(encoding="utf-8")
+        _m20 = _re20.search(r"// gesund:start[^\n]*\n(.*?)// gesund:ende", _html20, _re20.S)
+        _node20 = _sh20.which("node") or ("/opt/node22/bin/node" if Path("/opt/node22/bin/node").exists() else None)
+        pruefe("Oberfläche: die Gesundheits-Funktionen (Zeichen, Kopfzeile) stehen als reine Funktionen im Block gesund:start … gesund:ende und die Seite ruft sie auf",
+               bool(_m20) and "function gesundKopfzeile(g)" in _m20.group(1) and "function gesundZeichen(x)" in _m20.group(1) and "gesundKopfzeile(g)" in _html20.split("// gesund:ende", 1)[1]
+               and ".warn{color:var(--warning)}" in _html20, bool(_m20))
+        if _m20 and _node20:
+            _js20 = _m20.group(1) + "\nconst fall = JSON.parse(process.argv[1]);\nprocess.stdout.write(JSON.stringify({kopf: gesundKopfzeile(fall), zeichen: fall.map(gesundZeichen)}));"
+
+            def _kopf20(g_):
+                r_ = _sp20.run([_node20, "-e", _js20, json.dumps(g_)], capture_output=True, text=True, timeout=60)
+                return json.loads(r_.stdout) if r_.returncode == 0 and r_.stdout else {"fehler": r_.stderr[-300:]}
+            _ok_ = {"name": "a", "ok": True, "text": "x"}
+            _grau_ = {"name": "b", "ok": None, "text": "x"}
+            _warn_ = {"name": "c", "ok": None, "text": "x", "warnung": True}
+            _rot_ = {"name": "d", "ok": False, "text": "x"}
+            k20 = {"leer": _kopf20([]), "grau": _kopf20([_ok_, _grau_]), "warn1": _kopf20([_ok_, _warn_]), "warn2": _kopf20([_warn_, dict(_warn_, name="e")]),
+                   "rot1": _kopf20([_rot_, _ok_]), "rot2": _kopf20([_rot_, dict(_rot_, name="f")]), "rot_warn": _kopf20([_rot_, _warn_]), "zeichen": _kopf20([_ok_, _rot_, _warn_, _grau_])}
+            pruefe("Kopfzeile der Gesundheits-Karte: «alles in Ordnung» nur ohne rote Punkte UND ohne Warnung — eine graue Info-Zeile zählt nicht, eine Warnung steht dort (vorher blieb sie grün)",
+                   k20["leer"].get("kopf") == "alles in Ordnung" and k20["grau"].get("kopf") == "alles in Ordnung" and k20["warn1"].get("kopf") == "1 Warnung — bitte unten ansehen"
+                   and k20["warn2"].get("kopf") == "2 Warnungen — bitte unten ansehen" and k20["rot1"].get("kopf") == "1 Punkt brauchen Aufmerksamkeit"
+                   and k20["rot2"].get("kopf") == "2 Punkte brauchen Aufmerksamkeit" and k20["rot_warn"].get("kopf") == "1 Punkt brauchen Aufmerksamkeit · 1 Warnung", k20)
+            pruefe("Zeichen der Gesundheits-Zeilen: ✓ grün, ✗ rot, ⚠ für eine Warnung, ○ für grau ohne Warnung",
+                   k20["zeichen"].get("zeichen") == ['<span class="plus">✓</span>', '<span class="minus">✗</span>', '<span class="warn">⚠</span>', '<span class="null">○</span>'], k20["zeichen"])
+        else:
+            pruefe("Kopfzeile der Gesundheits-Karte: node nicht gefunden — nur die Bauform geprüft", bool(_m20), _node20)
         ok_b, out_b = C._befehl(["programm-das-es-nicht-gibt-xyz"], 5)
         pruefe("unbekanntes Programm: Meldung statt Absturz", not ok_b and "nicht gefunden" in out_b)
         heute = datetime(2026, 1, 20, tzinfo=timezone.utc).date()

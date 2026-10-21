@@ -177,12 +177,13 @@ def push(text):
     if not token or not chat:
         return ntfy
     daten = urllib.parse.urlencode({"chat_id": chat, "text": text, "disable_web_page_preview": "true"}).encode()
+    telegram = False
     try:
         with urllib.request.urlopen(urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=daten), timeout=15) as r:
-            return json.load(r).get("ok", False)
+            telegram = bool(json.load(r).get("ok", False))
     except Exception as e:  # noqa: BLE001
         print(f"Telegram-Fehler: {type(e).__name__}")
-        return False
+    return bool(ntfy or telegram)  # (20. Prüfung, klein 5) zugestellt, sobald EIN Kanal die Nachricht angenommen hat — vorher zählte bei eingerichtetem Telegram nur dessen Antwort, ein Fehler dort liess eine über ntfy angekommene Meldung als «nicht zugestellt» gelten
 
 
 # ───────────── Logbuch ─────────────

@@ -52,11 +52,13 @@ Sicherungen:
 """
 from __future__ import annotations
 
+import itertools
 import json
 import math
 import os
 import random
 import sys
+import threading
 import time
 import urllib.error
 import urllib.parse
@@ -155,7 +157,26 @@ def _voruebergehend(ex):
     return isinstance(ex, BF.NETZFEHLER)
 
 
-_RETRY_BUDGET = [None]  # (19. Prüfung W2) Sekunden, die `_nochmal` und `_platziere` zwischen Wiederholungen insgesamt noch schlafen dürfen (`_pause`) — NUR der Durchgang `einmal` der Nachkontrolle setzt sie (EINMAL_RETRY_S); None = unbegrenzt (Lauf, Not-Aus, lange Nachkontrolle)
+class _ThreadZelle:
+    """Eine Zelle mit der Schnittstelle `zelle[0]`, aber getrennt je Thread (20. Prüfung, klein 8): das Budget eines Durchgangs `einmal` darf nie einen anderen Thread im selben Prozess einschränken — z. B. einen Not-Aus, der
+    gleichzeitig läuft (der Cockpit-Prozess führt Not-Aus und lange Nachkontrolle in eigenen Threads aus)."""
+
+    def __init__(self, wert=None):
+        self._wert = wert
+        self._lokal = threading.local()
+
+    def __getitem__(self, i):
+        if i != 0:
+            raise IndexError(i)
+        return getattr(self._lokal, "wert", self._wert)
+
+    def __setitem__(self, i, wert):
+        if i != 0:
+            raise IndexError(i)
+        self._lokal.wert = wert
+
+
+_RETRY_BUDGET = _ThreadZelle()  # (19. Prüfung W2) Sekunden, die `_nochmal` und `_platziere` zwischen Wiederholungen insgesamt noch schlafen dürfen (`_pause`) — NUR der Durchgang `einmal` der Nachkontrolle setzt sie (EINMAL_RETRY_S) und nur für den eigenen Thread; None = unbegrenzt (Lauf, Not-Aus, lange Nachkontrolle)
 EINMAL_RETRY_S = 60.0   # ein Durchgang im 10-Minuten-Takt hielt die Lauf-Sperre bis 244 s (schnelle Fehler) bzw. 49 Minuten (hängendes Netz), der Tageslauf wartet nur 190 s: Wiederholungen nur noch für diese Zeit, danach gilt der erste Fehler
 
 
@@ -496,27 +517,55 @@ def _buch_speichern_zusammen(datei, modus, gesehen, buch):
         raise OSError(f"Buch gesperrt ({ex})") from None
 
 
+_TMP_ZAEHLER = itertools.count()
+TEMP_ALT_S = 3600  # eine Temp-Datei des Buchs, die älter ist, gehört einem toten Schreiber (kill -9, Stromausfall zwischen Schreiben und Umbenennen)
+
+
+def _buch_tmp(datei):
+    """(20. Prüfung, klein 2) Eigener Name je Schreiber (Prozess, Thread, Zähler): alle teilten vorher `<Buch>.neu` — ein Zombie, der erst nach dem Schreiben der Temp-Datei seine Sperre verliert, überschrieb oder löschte
+    die Temp-Datei des rechtmässigen Schreibers zwischen dessen Schreiben und Umbenennen (dessen `replace` übernahm dann den veralteten Inhalt, und er glaubte, gespeichert zu haben)."""
+    return Path(f"{datei}.{os.getpid()}-{threading.get_ident()}-{next(_TMP_ZAEHLER)}.neu")
+
+
+def _buch_temp_aufraeumen(datei):
+    """Verwaiste Temp-Dateien des Buchs (älter als TEMP_ALT_S) löschen — auch die gemeinsame der früheren Fassung. Fehler hier bleiben ohne Folgen."""
+    try:
+        d = Path(datei)
+        grenze = time.time() - TEMP_ALT_S
+        for t in list(d.parent.glob(d.name + ".*-*-*.neu")) + list(d.parent.glob(d.name + ".neu")):
+            try:
+                if t.stat().st_mtime < grenze:
+                    t.unlink()
+            except OSError:
+                pass
+    except OSError:
+        pass
+
+
 def _buch_schreiben_roh(datei, modus, buch):
     alt = _datei(datei)  # unlesbar → Abbruch statt den anderen Modus zu überschreiben
     alt[modus] = buch
     Path(datei).parent.mkdir(exist_ok=True)
-    tmp = Path(str(datei) + ".neu")
-    for i in range(len(BUCH_WARTEN) + 1):
-        try:
-            tmp.write_text(json.dumps(alt, indent=1))
-            _sperre_pruefen()  # (19. Prüfung, klein 1) auch UNMITTELBAR vor dem Umbenennen — das Buch kennt keinen recvWindow-Schutz wie die Aufträge; das Fenster nach der ersten Prüfung schrumpft so auf einen Aufruf
-            tmp.replace(datei)  # nie halb geschrieben
-            return
-        except _LaufSperreVerloren:
+    _buch_temp_aufraeumen(datei)
+    tmp = _buch_tmp(datei)
+    try:
+        for i in range(len(BUCH_WARTEN) + 1):
             try:
-                tmp.unlink()
-            except OSError:
-                pass
-            raise
-        except OSError:
-            if i >= len(BUCH_WARTEN):
+                tmp.write_text(json.dumps(alt, indent=1))
+                _sperre_pruefen()  # (19. Prüfung, klein 1) auch UNMITTELBAR vor dem Umbenennen — das Buch kennt keinen recvWindow-Schutz wie die Aufträge; das Fenster nach der ersten Prüfung schrumpft so auf einen Aufruf
+                tmp.replace(datei)  # nie halb geschrieben
+                return
+            except _LaufSperreVerloren:
                 raise
-            time.sleep(BUCH_WARTEN[i])
+            except OSError:
+                if i >= len(BUCH_WARTEN):
+                    raise
+                time.sleep(BUCH_WARTEN[i])
+    finally:
+        try:  # nach dem Umbenennen gibt es sie nicht mehr; bei einem Fehler oder dem Veto bleibt keine Temp-Datei liegen — die EIGENE, nie die eines anderen Schreibers
+            tmp.unlink()
+        except OSError:
+            pass
 
 
 def _gestartet(b):

@@ -93,7 +93,7 @@ footer{color:var(--ink-3);font-size:12px;margin:16px 0}
 .knoepfe button:disabled{opacity:.55;cursor:progress}
 .profit .gross{font-size:40px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1.1}
 .profit .gross small{font-size:18px;font-weight:700}
-.plus{color:var(--good)}.minus{color:var(--critical)}.null{color:var(--ink-2)}
+.plus{color:var(--good)}.minus{color:var(--critical)}.null{color:var(--ink-2)}.warn{color:var(--warning)}
 .perioden{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:12px 0}
 @media (max-width:860px){.perioden{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .perioden div{border:1px solid var(--line);border-radius:var(--r-s);padding:8px 10px}
@@ -372,6 +372,19 @@ function zeigeCalls(c) {
   $("calls").innerHTML = tab + letzte;
 }
 
+// gesund:start — reine Funktionen (ohne DOM), damit test_cockpit.py sie mit node ausführen kann
+function gesundZeichen(x) {
+  return x.ok === true ? `<span class="plus">✓</span>` : x.ok === false ? `<span class="minus">✗</span>` : x.warnung ? `<span class="warn">⚠</span>` : `<span class="null">○</span>`;
+}
+function gesundKopfzeile(g) {
+  const probleme = g.filter(x => x.ok === false).length;
+  const warnungen = g.filter(x => x.ok == null && x.warnung).length;  // (20. Prüfung) eine graue WARNUNG (z. B. Nachkontrolle: Rückgabewert 3) gehört in die Kopfzeile — sonst stand dort «alles in Ordnung» neben einem offenen Markt
+  const warnText = warnungen ? `${warnungen} Warnung${warnungen > 1 ? "en" : ""}` : "";
+  return probleme ? `${probleme} Punkt${probleme > 1 ? "e" : ""} brauchen Aufmerksamkeit` + (warnText ? ` · ${warnText}` : "")
+    : warnText ? `${warnText} — bitte unten ansehen` : "alles in Ordnung";
+}
+// gesund:ende
+
 function zeichne(d) {
   letzterStand = d;
   $("modus").textContent = d.modus_spot && d.modus_spot !== d.modus
@@ -384,10 +397,8 @@ function zeichne(d) {
   $("notausHinweis").hidden = !d.notaus;
   $("notaus").textContent = "🛑 Not-Aus";
   const g = d.gesundheit || [];
-  const zeichen = ok => ok === true ? `<span class="plus">✓</span>` : ok === false ? `<span class="minus">✗</span>` : `<span class="null">○</span>`;
-  $("gesund").innerHTML = g.map(x => `<li style="padding:3px 0">${zeichen(x.ok)} <b>${esc(x.name)}</b> — <span class="unter">${esc(x.text)}</span></li>`).join("");
-  const probleme = g.filter(x => x.ok === false).length;
-  $("g-kurz").textContent = probleme ? `${probleme} Punkt${probleme > 1 ? "e" : ""} brauchen Aufmerksamkeit` : "alles in Ordnung";
+  $("gesund").innerHTML = g.map(x => `<li style="padding:3px 0">${gesundZeichen(x)} <b>${esc(x.name)}</b> — <span class="unter">${esc(x.text)}</span></li>`).join("");
+  $("g-kurz").textContent = gesundKopfzeile(g);
   const ri = d.risiko || {stufe: 1, test: {}};
   document.querySelectorAll("#stufen button").forEach(b => {
     b.setAttribute("aria-pressed", String(+b.dataset.s === ri.stufe));

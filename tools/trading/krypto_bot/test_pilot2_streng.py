@@ -6592,7 +6592,7 @@ for weg19_ in ("buch_schreiben", "zusammen"):
 
     def wt19_(self, *a, **k):
         r_ = orig_wt19_(self, *a, **k)
-        if self.name.endswith(".json.neu"):
+        if self.name.startswith("bestand.json.") and self.name.endswith(".neu"):  # (20. Prüfung) die Temp-Datei trägt jetzt einen eigenen Namen je Schreiber
             lk19_.write_text("99999 0 fremd\n")                       # ein anderer Lauf übernimmt die Sperre als tot — genau zwischen dem Schreiben der Temp-Datei und dem Umbenennen
         return r_
     fehler19_ = None
@@ -6611,7 +6611,7 @@ for weg19_ in ("buch_schreiben", "zusammen"):
             finally:
                 Path.write_text = orig_wt19_
             unveraendert19_ = bf19_.read_text() == inhalt19_
-            temp_weg19_ = not Path(str(bf19_) + ".neu").exists()
+            temp_weg19_ = not list(Path(sd19_).glob("*.neu"))
     finally:
         lk19_.unlink(missing_ok=True)
     pruefe(f"19.K1 Sperre geht ZWISCHEN dem Schreiben der Temp-Datei und dem Umbenennen verloren ({weg19_}): das Buch bleibt unverändert, die Temp-Datei ist weg, OSError «Lauf-Sperre verloren»",
@@ -6624,7 +6624,7 @@ b19_["start"], b19_["uid"] = "2026-10-20", 1
 with SPR17.lauf_sperre(ordner=sd19_, warten=0):
     b19_["schutz_offen"] = ["BTC"]
     L.buch_schreiben(bf19_, "echt", b19_)
-pruefe("19.K1 Gegenprobe: gehört die Lauf-Sperre dem Prozess, wird das Buch geschrieben und keine Temp-Datei bleibt liegen", L.buch_lesen(bf19_, "echt")["schutz_offen"] == ["BTC"] and not Path(str(bf19_) + ".neu").exists())
+pruefe("19.K1 Gegenprobe: gehört die Lauf-Sperre dem Prozess, wird das Buch geschrieben und keine Temp-Datei bleibt liegen", L.buch_lesen(bf19_, "echt")["schutz_offen"] == ["BTC"] and not list(Path(sd19_).glob("*.neu")))
 
 # … Not-Aus innerhalb eines Durchgangs `einmal`: das Schliessen läuft OHNE Budget (es ist nicht zeitbegrenzt), der Durchgang selbst bleibt budgetiert
 neues_konto(20000)
@@ -6685,6 +6685,228 @@ for fall19_, dg19_, offen19_ in (("früher Durchgang offen, der zweite klärt", 
     pruefe(f"19.Werkzeug einmal-Aggregation im Fuzzer ({fall19_}): «nicht alles geklärt» zählt nur, wenn der LETZTE Durchgang offen endet", any("nicht alles geklärt" in x_ for x_ in z19_) is offen19_, z19_)
 z19_ = agg19_([[OFFEN19_, "a"], [GUT19_, "b"], []])
 pruefe("19.Werkzeug … die übrigen Zeilen aller Durchgänge bleiben erhalten (was ein Durchgang meldete oder tat, zählt)", "a" in z19_ and "b" in z19_ and GUT19_ in z19_, z19_)
+
+# ───────── 20. Folge-Runde (R20): Funde der 20. unabhängigen Prüfung (kein Blocker; 1 wichtig [Cockpit-Kopfzeile], 8 klein) ─────────
+import threading as _th20  # noqa: E402
+import time as _time20  # noqa: E402
+
+# klein 2 (K1-Rest): alle Schreiber teilten den Temp-Namen `<Buch>.neu`. Ein Zombie, der erst NACH dem Schreiben seiner Temp-Datei sein Veto bekommt, überschrieb die Temp-Datei des rechtmässigen Schreibers zwischen dessen
+# Schreiben und Umbenennen — dessen `replace` übernahm den veralteten Inhalt, und er glaubte, gespeichert zu haben. Jetzt hat jeder Schreiber einen eigenen Namen.
+sd20_ = _tf17.mkdtemp(prefix="k2_")
+bf20_ = Path(sd20_) / "bestand.json"
+b20_ = L.leer_buch()
+b20_["start"], b20_["uid"] = "2026-10-21", 1
+L.buch_schreiben(bf20_, "echt", b20_)
+namen20_ = [L._buch_tmp(bf20_) for _ in range(3)]
+namen_th20_ = []
+_t20 = _th20.Thread(target=lambda: namen_th20_.append(L._buch_tmp(bf20_)))
+_t20.start()
+_t20.join()
+pruefe("20.K2 Temp-Datei des Buchs: jeder Aufruf liefert einen anderen Namen (Prozess-Nummer, Thread, Zähler), im Ordner des Buchs, mit der Endung .neu — auch aus einem anderen Thread",
+       len({str(n_) for n_ in namen20_ + namen_th20_}) == 4 and all(n_.parent == bf20_.parent and n_.name.startswith("bestand.json.") and n_.name.endswith(".neu") and str(os.getpid()) in n_.name for n_ in namen20_ + namen_th20_)
+       and str(bf20_) + ".neu" not in {str(n_) for n_ in namen20_ + namen_th20_}, [n_.name for n_ in namen20_ + namen_th20_])
+
+b_b20_ = L.buch_lesen(bf20_, "echt")
+b_b20_["schutz_offen"] = ["BTC"]                                            # der rechtmässige Schreiber B
+b_z20_ = L.buch_lesen(bf20_, "echt")
+b_z20_["schutz_offen"] = ["VERALTET"]                                       # der Zombie mit dem alten Stand
+pfad_z20_ = L._buch_tmp(bf20_)                                              # SEINE Temp-Datei, wie ihn der Produktionscode benennt
+orig_pr20_, n_pr20_ = L._sperre_pruefen, [0]
+
+
+def pruefen20_():
+    n_pr20_[0] += 1
+    if n_pr20_[0] == 1:                                                     # B steht zwischen dem Schreiben und dem Umbenennen: der Zombie schreibt jetzt SEINE Temp-Datei
+        pfad_z20_.write_text(json.dumps({"echt": b_z20_}))
+    return orig_pr20_()
+
+
+L._sperre_pruefen = pruefen20_
+try:
+    L._buch_schreiben_roh(bf20_, "echt", b_b20_)
+finally:
+    L._sperre_pruefen = orig_pr20_
+pruefe("20.K2 Der Zombie schreibt seine Temp-Datei, während B zwischen Schreiben und Umbenennen steht: B speichert SEINEN Stand (vorher übernahm das replace den veralteten Inhalt des Zombies)",
+       L.buch_lesen(bf20_, "echt")["schutz_offen"] == ["BTC"] and pfad_z20_.exists(), (L.buch_lesen(bf20_, "echt")["schutz_offen"], pfad_z20_.exists()))
+pfad_z20_.unlink(missing_ok=True)
+
+# … verwaiste Temp-Dateien (kill -9 zwischen Schreiben und Umbenennen) werden nach TEMP_ALT_S aufgeräumt — auch die gemeinsame der früheren Fassung; eine frische (ein anderer Schreiber ist gerade dran) bleibt
+alt_t20_, jung_t20_, alt_alt20_ = Path(f"{bf20_}.4242-1-0.neu"), Path(f"{bf20_}.4243-1-0.neu"), Path(str(bf20_) + ".neu")
+for t_, alter_ in ((alt_t20_, L.TEMP_ALT_S + 60), (jung_t20_, 60), (alt_alt20_, L.TEMP_ALT_S + 60)):
+    t_.write_text("{}")
+    os.utime(t_, (_time20.time() - alter_, _time20.time() - alter_))
+fremd20_ = Path(sd20_) / "anderes.json.4242-1-0.neu"
+fremd20_.write_text("{}")
+os.utime(fremd20_, (_time20.time() - L.TEMP_ALT_S - 60, _time20.time() - L.TEMP_ALT_S - 60))
+b_b20_["schutz_offen"] = []
+L._buch_schreiben_roh(bf20_, "echt", b_b20_)
+pruefe("20.K2 Das Schreiben räumt alte Temp-Dateien des Buchs weg (auch die gemeinsame der früheren Fassung), lässt eine frische und die Dateien anderer Namen liegen",
+       not alt_t20_.exists() and not alt_alt20_.exists() and jung_t20_.exists() and fremd20_.exists(), (alt_t20_.exists(), alt_alt20_.exists(), jung_t20_.exists(), fremd20_.exists()))
+jung_t20_.unlink(missing_ok=True)
+fremd20_.unlink(missing_ok=True)
+
+# … scheitert das Umbenennen dauerhaft (Windows: Datei gehalten), bleibt keine eigene Temp-Datei liegen
+orig_rep20_, orig_bw20_ = Path.replace, L.BUCH_WARTEN
+
+
+def replace_zickt20_(self, ziel):
+    if self.name.startswith("bestand.json.") and self.name.endswith(".neu"):
+        raise PermissionError("gehalten")
+    return orig_rep20_(self, ziel)
+
+
+Path.replace, L.BUCH_WARTEN = replace_zickt20_, (0, 0)
+fehler_r20_ = None
+try:
+    L._buch_schreiben_roh(bf20_, "echt", b_b20_)
+except OSError as ex_:
+    fehler_r20_ = type(ex_).__name__
+finally:
+    Path.replace, L.BUCH_WARTEN = orig_rep20_, orig_bw20_
+pruefe("20.K2 Das Umbenennen scheitert dauerhaft: OSError an den Aufrufer, die eigene Temp-Datei ist weg", fehler_r20_ == "PermissionError" and not list(Path(sd20_).glob("*.neu")), (fehler_r20_, list(Path(sd20_).glob("*.neu"))))
+
+
+# … und ein Zombie, dessen Sperre SCHON weg ist, schreibt gar keine Temp-Datei mehr (die erste Prüfung der Aufrufer vor dem Schreiben; die zweite vor dem Umbenennen fängt nur das Fenster dazwischen)
+def temp_schreibungen20_(f_):
+    gez_ = []
+    orig_ = Path.write_text
+
+    def wt_(self, *a, **k):
+        if self.name.endswith(".neu"):
+            gez_.append(self.name)
+        return orig_(self, *a, **k)
+    Path.write_text = wt_
+    try:
+        f_()
+    finally:
+        Path.write_text = orig_
+    return gez_
+
+
+for weg20_ in ("buch_schreiben", "zusammen"):
+    sdz20_ = _tf17.mkdtemp(prefix="k1z_")
+    bfz20_ = Path(sdz20_) / "bestand.json"
+    bz20_ = L.leer_buch()
+    bz20_["start"], bz20_["uid"] = "2026-10-21", 1
+    L.buch_schreiben(bfz20_, "echt", bz20_)
+    gesz20_ = [json.dumps(L.buch_lesen(bfz20_, "echt"), sort_keys=True)]
+    lkz20_ = Path(sdz20_) / "krypto-lauf.lock"
+    fehler_z20_ = []
+    try:
+        with SPR17.lauf_sperre(ordner=sdz20_, warten=0):
+            bz20_ = L.buch_lesen(bfz20_, "echt")
+            bz20_["schutz_offen"] = ["BTC"]
+            lkz20_.write_text("99999 0 fremd\n")                            # ein anderer Lauf hat die Sperre als tot übernommen — BEVOR der Zombie schreibt
+            inhalt_z20_ = bfz20_.read_text()
+
+            def schreiben_z20_():
+                try:
+                    if weg20_ == "buch_schreiben":
+                        L.buch_schreiben(bfz20_, "echt", bz20_)
+                    else:
+                        L._buch_speichern_zusammen(bfz20_, "echt", gesz20_, bz20_)
+                except OSError as ex_:
+                    fehler_z20_.append(str(ex_))
+            gez_z20_ = temp_schreibungen20_(schreiben_z20_)
+            unveraendert_z20_ = bfz20_.read_text() == inhalt_z20_
+    finally:
+        lkz20_.unlink(missing_ok=True)
+    pruefe(f"20.K1 Sperre schon weg ({weg20_}): der Zombie schreibt KEINE Temp-Datei (nicht nur: keine Änderung am Buch), OSError «Lauf-Sperre verloren»",
+           not gez_z20_ and unveraendert_z20_ and fehler_z20_ and "Lauf-Sperre verloren" in fehler_z20_[0], (gez_z20_, unveraendert_z20_, fehler_z20_))
+
+kk20_, dn20_, envn20_ = K18.tag0(("BTC", 0.5, 1.0))
+bj20_ = json.loads(Path(dn20_).read_text())
+bj20_["echt"]["schutz_offen"] = ["BTC"]
+Path(dn20_).write_text(json.dumps(bj20_))
+sdn20_ = _tf17.mkdtemp(prefix="k1nk_")
+lkn20_ = Path(sdn20_) / "krypto-lauf.lock"
+standn20_ = {"n": 0, "an": False}
+gez_nk20_ = []
+orig_wt20_ = Path.write_text
+
+
+def wt_nk20_(self, *a, **k):
+    if standn20_["an"] and self.name.endswith(".neu"):
+        gez_nk20_.append(self.name)
+    return orig_wt20_(self, *a, **k)
+
+
+def haken_nk20_(m_, pfad_, p_):
+    standn20_["n"] += 1
+    if standn20_["n"] == 1:
+        standn20_["an"] = True                                              # ab hier gehört die Sperre einem anderen: jede Temp-Datei, die jetzt geschrieben wird, stammt vom Zombie
+        lkn20_.write_text("99999 0 fremd\n")
+
+
+B.vor_jeder_anfrage = haken_nk20_
+Path.write_text = wt_nk20_
+try:
+    with SPR17.lauf_sperre(ordner=sdn20_, warten=0):
+        rn20_ = L.nachkontrolle(envn20_, dn20_)
+finally:
+    Path.write_text = orig_wt20_
+    B.vor_jeder_anfrage = None
+    lkn20_.unlink(missing_ok=True)
+pruefe("20.K1 Nachkontrolle, deren Sperre übernommen wurde: kein einziges Schreiben einer Temp-Datei danach (die Prüfung vor dem Speichern greift), «Buch nicht gespeichert»",
+       standn20_["an"] and not gez_nk20_ and any("Buch nicht gespeichert" in z_ for z_ in rn20_["zeilen"]), (gez_nk20_, rn20_["zeilen"][-3:]))
+
+# klein 8: das Wiederholungs-Budget eines Durchgangs `einmal` gilt nur für SEINEN Thread (der Cockpit-Prozess führt Not-Aus und lange Nachkontrolle in eigenen Threads aus)
+res20_ = {}
+schlaf20_, alt_sl20_ = [], _time20.sleep
+_time20.sleep = lambda x_: schlaf20_.append((_th20.current_thread().name, x_))
+L._RETRY_BUDGET[0] = 0.5
+
+
+def anderer20_():
+    res20_["sieht"] = L._RETRY_BUDGET[0]
+    res20_["pause"] = L._pause(2.0)                                         # kein Budget in diesem Thread: schläft die ganze Zeit
+    L._RETRY_BUDGET[0] = 1.0
+    res20_["eigenes"] = L._RETRY_BUDGET[0]
+
+
+try:
+    t20_ = _th20.Thread(target=anderer20_, name="anderer")
+    t20_.start()
+    t20_.join()
+    res20_["haupt"] = L._RETRY_BUDGET[0]
+    res20_["haupt_pause"] = L._pause(2.0)                                   # 2 s > 0,5 s Budget: abgelehnt, ohne zu schlafen
+finally:
+    L._RETRY_BUDGET[0] = None
+    _time20.sleep = alt_sl20_
+try:
+    L._RETRY_BUDGET[1]
+    index_ok20_ = False
+except IndexError:
+    index_ok20_ = True
+pruefe("20.W8 Das Wiederholungs-Budget ist je Thread getrennt: ein anderer Thread sieht keins, schläft ganz und setzt sein eigenes, ohne das des Hauptthreads zu ändern; im Hauptthread lehnt `_pause` ab, was das Budget übersteigt",
+       res20_ == {"sieht": None, "pause": True, "eigenes": 1.0, "haupt": 0.5, "haupt_pause": False} and schlaf20_ == [("anderer", 2.0)] and index_ok20_, (res20_, schlaf20_))
+
+# klein 7 (Prüfwerkzeuge): der Einzelfehler-Raster der 20. Prüfung (pruef_nk_einzelfehler.py) liegt im Repo — Rauchprobe MIT Negativkontrolle: gegen den Produktionscode findet er nichts, gegen eine Nachkontrolle, deren
+# Folge-Durchgänge nichts tun (das Netz des 10-Minuten-Takts fehlt), findet er die Lücke nach Durchgang 1 (er ist nicht blind)
+import pruef_nk_einzelfehler as NKE  # noqa: E402
+sz20e_ = R.SZENARIEN[2]                                                      # ('BTC', 0.5, -0.5)
+ref20e_ = NKE.fall(sz20e_, "stops_scheitern", [], False, True)
+
+
+def sweep20_():
+    ergebnis_ = []
+    for i_ in range(ref20e_["anfragen"]):
+        for art_ in ("vor503", "nach503", "unsichtbar"):
+            m_ = NKE.fall(sz20e_, "stops_scheitern", [(i_, art_)], False, True)
+            if m_ is not None:
+                ergebnis_.append(m_)
+    return ergebnis_
+
+
+echt20e_ = [m_ for m_ in sweep20_() if m_["ausnahme"] or m_["arten"] or m_["unbekannt"]]
+orig_dg20_ = NKE.durchgang
+NKE.durchgang = lambda env_, d_, erster_, jung_, budget0_: orig_dg20_(env_, d_, erster_, jung_, budget0_) if erster_ else None   # Folge-Durchgänge tun nichts
+try:
+    mut20e_ = [m_ for m_ in sweep20_() if m_["ausnahme"] or m_["arten"] or m_["unbekannt"]]
+finally:
+    NKE.durchgang = orig_dg20_
+pruefe("20.Werkzeug Einzelfehler-Raster (Szenario 2, Stops scheitern, 23 Anfragen × 3 Störungsarten, Budget aufgebraucht): gegen den Produktionscode keine Befunde — und nicht blind: ohne die Folge-Durchgänge findet er die Lücke",
+       ref20e_ and ref20e_["anfragen"] >= 15 and not ref20e_["arten"] and not echt20e_ and len(mut20e_) >= 5, (ref20e_ and ref20e_["anfragen"], len(echt20e_), len(mut20e_)))
 
 # ── kleiner Fuzzer mit festen Seeds (der grosse: python3 -B pruef_fuzzer.py laeufe 0 200 / notaus 0 1600) ──
 funde = []
