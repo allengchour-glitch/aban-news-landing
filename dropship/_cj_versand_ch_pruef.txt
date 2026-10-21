@@ -12257,3 +12257,13 @@ yoga-formunterwasche-schnell-trocknend-624400	2411210522561624600	16	7.20	ok	lan
 fahrradhelm-fur-erwachsene-0093c6	49003A4B-8D9B-4809-AF81-6D127B9315D9	16	9.20	ok	landeseite
 warme-velours-schlappen-896384	1701784668670005248	16	11.96	ok	landeseite
 kinder-schutzhelm-8a33ca	33EE4456-50B6-458B-80BA-F01EB79743F0	16	16.76	ok	landeseite
+lange-lockige-perucke-mit-pony-396672	1442778856766443520	16	8.18	ok	landeseite
+warme-velour-kinderschuhe-639744	1671334776151748608	16	7.85	ok	landeseite
+balanciere-helm-fur-radfahren-301939	15DD0BB6-213A-4722-AFA3-DDB467E68DCF	16	10.01	ok	landeseite
+aufladbare-elektroscheren-fur-haustiere-und-me-155584	1439137652094930944	3	11.93	ok	landeseite
+fleecegefutterte-kinderschuhe-476352	1663795905146916864	16	8.79	ok	landeseite
+haarglatter-mit-umweltschutz-alloy-894400	1437599578064031744	16	11.90	ok	landeseite
+motorradhelm-tasche-c47a0b	1E3D56FD-1A83-4D5A-965A-037CE4448ECE	16	18.59	ok	landeseite
+kinder-sandalen-farbpassend-718720	1660873837598216192	16	9.88	ok	landeseite
+haarglatter-mit-lcd-display-063424	1437359651548172288	16	14.12	ok	landeseite
+universal-motorradhelm-four-seasons-913b93	00705198-F2DF-4FCA-A85C-700A50D0274F	11	33.98	ok	landeseite

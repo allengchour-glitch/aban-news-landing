@@ -721,9 +721,11 @@ hier teurer als ein offener Punkt.
 
 ---
 
-## 6️⃣ Shopify-Dateispeicher voll — ✅ ENTSCHIEDEN 21.09.: Grow-Plan am ~21.10.2026, zuerst Kunden
+## 6️⃣ Shopify-Dateispeicher voll — ✅ ERLEDIGT 01.10.2026: Grow-Plan ist aktiv (gemessen 21.10. `shop.plan.displayName` = «Shopify», `dropship/_grow_aktiv.txt`) — nichts mehr zu tun
 
-**Betreiber 21.09.2026:** «grow plan, in einer monat machen, brauche zuerst kunde». Eingetragen in
+> ⚠️ Die einmalige Erinnerung `trig_01NyrG6AEWrFxNwns3B9J1z2` («Grow-Plan fällig», 21.10. 07:30 UTC) ist damit **überholt**; ihr Abschalten wurde in der Sitzung vom System abgelehnt — kommt sie, nur den Stand melden (Plan = Grow, kein Klick nötig).
+
+**Betreiber 21.09.2026 (Verlauf):** «grow plan, in einer monat machen, brauche zuerst kunde». Eingetragen in
 `dropship/_dateispeicher_entscheid.txt` (grow · 2026-10-21); die Ampel meldet den vollen Speicher bis
 dahin als gewollten Zustand und ruft ab 22.10. wieder. Erinnerung als Routine gesetzt.
 **Was bis dahin still scheitert (gemessen an den Startlisten):** neue Bild-Uploads aus
