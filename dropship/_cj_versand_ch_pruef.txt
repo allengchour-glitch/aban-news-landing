@@ -12255,3 +12255,5 @@ leichte-rutschfeste-sneaker-fur-kinder-182592	1702158502560542720	16	12.32	ok	la
 kopfhautmassage-burste-mit-vibration-968320	1450740552587939840	7	8.10	ok	landeseite
 yoga-formunterwasche-schnell-trocknend-624400	2411210522561624600	16	7.20	ok	landeseite
 fahrradhelm-fur-erwachsene-0093c6	49003A4B-8D9B-4809-AF81-6D127B9315D9	16	9.20	ok	landeseite
+warme-velours-schlappen-896384	1701784668670005248	16	11.96	ok	landeseite
+kinder-schutzhelm-8a33ca	33EE4456-50B6-458B-80BA-F01EB79743F0	16	16.76	ok	landeseite

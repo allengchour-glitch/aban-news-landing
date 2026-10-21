@@ -61,8 +61,9 @@
   {
    "n": "vitalmessung-medizinisch",
    "re": "Blutdruckmessger|Blutdruckmessung|Blutzuckermess|Pulsoximeter|\\bOximeter\\b|EKG-(?:Ger[äa]t|Messger)",
-   "nicht": "Smartwatch|Smart-?Armband|Smart-?Watch|Sportuhr|Fitness(?:armband|tracker|uhr)|Bracelet|Wearable|Armbanduhr|Knopfzelle|Batterie|Akku\\b",
-   "warum": "Eigenständige Messgeräte für Blutdruck, Blutzucker oder Sauerstoffsättigung. Smartwatches bleiben bewusst draussen (eigene Reparatur), ebenso die «Silberoxid-Knopfzellen», die Blutzuckermessgeräte nur als Einsatzzweck der BATTERIE nennen — ein im Gedächtnis seit dem 11.08. notierter Fehltreffer."
+   "nicht": "Smartwatch|Smart-?Armband|Smart-?Watch|Sportuhr|Fitness(?:armband|tracker|uhr)|Bracelet|Wearable|Armbanduhr",
+   "warum": "Eigenständige Messgeräte für Blutdruck, Blutzucker oder Sauerstoffsättigung. Smartwatches bleiben bewusst draussen (eigene Reparatur), ebenso die «Silberoxid-Knopfzellen», die Blutzuckermessgeräte nur als Einsatzzweck der BATTERIE nennen — ein im Gedächtnis seit dem 11.08. notierter Fehltreffer. 21.10.2026: Batterie/Akku/Knopfzelle sperren NUR noch im TITEL (Batterie-Produkt). Im Volltext sperrten sie jedes echte Messgerät, dessen Text eine Batterie erwähnt («wird mit Trockenbatterien betrieben» → Blutdruckmessgerät CHF 18.90 elf Tage live in vier Werbekanälen, Spähtrupp wf_3b017e9f).",
+   "nicht_titel": "Knopfzelle|Silberoxid|Batterie|Akku\\b"
   },
   {
    "n": "geraet-nach-funktion",

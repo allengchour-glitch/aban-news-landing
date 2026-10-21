@@ -2911,7 +2911,7 @@ KLT=/tmp/test_klingen_tor.log
   WM=/tmp/wearable_mess.log
   if [ -f "$REPO/automation/wearable_messversprechen.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$WM" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$WM"; then
+    if [ "$ALTER" -gt 21600 ] || absturz_nachholen "$WM"; then
       touch "$WM"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       # Umleitung hinter dem Schloss — siehe wahlversprechen oben.
       ( cd "$REPO" && setsid bash -c \

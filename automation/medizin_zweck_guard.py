@@ -73,7 +73,8 @@ URL = "https://au3j0y-hq.myshopify.com/admin/api/2026-01/graphql.json"
 M = json.load(open(os.path.join(HIER, "medizin_zweck.json"), encoding="utf-8"))
 SPERRE = [(x["n"], re.compile(x["re"], re.I)) for x in M["sperre"]]
 TREFFER = [(x["n"], re.compile(x["re"], re.I),
-            re.compile(x["nicht"], re.I) if x.get("nicht") else None) for x in M["treffer"]]
+            re.compile(x["nicht"], re.I) if x.get("nicht") else None,
+            re.compile(x["nicht_titel"], re.I) if x.get("nicht_titel") else None) for x in M["treffer"]]
 TAGS = re.compile(r"<[^>]+>")
 
 
@@ -85,9 +86,12 @@ def medizin_zweck(titel, text):
     for _, c in SPERRE:
         if c.search(klar):
             return None
-    for name, c, nicht in TREFFER:
+    titel_klar = re.sub(r"\s+", " ", TAGS.sub(" ", titel or "")).replace("&nbsp;", " ").replace("&amp;", "&")
+    for name, c, nicht, nicht_titel in TREFFER:
         if nicht and nicht.search(klar):
             continue                      # Sperre gilt NUR für diese Regel
+        if nicht_titel and nicht_titel.search(titel_klar):
+            continue                      # 21.10.2026: Ausnahme nur im TITEL (Batterie-/Zubehör-Produkt), nicht im Fliesstext
         m = c.search(klar)
         if m:
             return name, klar[max(0, m.start() - 60):m.start() + 130]

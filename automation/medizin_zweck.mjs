@@ -35,7 +35,8 @@ const HIER = path.dirname(fileURLToPath(import.meta.url));
 const M = JSON.parse(fs.readFileSync(path.join(HIER, 'medizin_zweck.json'), 'utf8'));
 
 const bau = (l) => l.map(x => ({ n: x.n, re: new RegExp(x.re, 'i'),
-                                 nicht: x.nicht ? new RegExp(x.nicht, 'i') : null }));
+                                 nicht: x.nicht ? new RegExp(x.nicht, 'i') : null,
+                                 nichtTitel: x.nicht_titel ? new RegExp(x.nicht_titel, 'i') : null }));
 const SPERRE = bau(M.sperre);
 const TREFFER = bau(M.treffer);
 
@@ -46,9 +47,11 @@ export function medizinZweck(titel, text) {
   const klar = roh.replace(/<[^>]+>/g, ' ')
                   .replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&')
                   .replace(/\s+/g, ' ');
+  const titelKlar = String(titel || '').replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/\s+/g, ' ');
   for (const s of SPERRE) if (s.re.test(klar)) return null;
   for (const t of TREFFER) {
     if (t.nicht && t.nicht.test(klar)) continue;   // Sperre gilt NUR für diese Regel
+    if (t.nichtTitel && t.nichtTitel.test(titelKlar)) continue;   // 21.10.2026: Ausnahme nur im TITEL (Batterie-/Zubehör-Produkt)
     const m = t.re.exec(klar);
     if (m) return { grund: t.n, muster: m[0].slice(0, 90),
                     stelle: klar.slice(Math.max(0, m.index - 60), m.index + 120) };

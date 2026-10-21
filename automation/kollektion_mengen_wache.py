@@ -106,6 +106,28 @@ def kanarien():
     return ok == len(KANARIEN)
 
 
+def ist_kaufbar(n):
+    """Kaufbar = nicht getrackt (CJ-Direktversand: immer bestellbar) oder Bestand > 0. Fehlende Felder gelten als ausverkauft, wenn getrackt."""
+    return (not n.get("tracksInventory")) or (n.get("totalInventory") or 0) > 0
+
+
+def zaehle_kaufbar(gql, cid):
+    """Aktive, im Onlineshop veröffentlichte Produkte der Kollektion, die man jetzt BESTELLEN kann.
+    21.10.2026 (Spähtrupp wf_3b017e9f T2, GEMESSEN): «Über 1'500 Kostüme … die bei uns im Schweizer Lager liegen» stand bei 1'521 aktiven, aber nur
+    992 kaufbaren Produkten (528 getrackte Fortura-Artikel mit Bestand 0 seit der Bestandsumstellung vom 20.10.). Der Zähler `productsCount
+    (collection_id … status:active)` sieht das nicht, und `collection_id` + `inventory_total` in EINER Suche liefert 0 (Shopify-Eigenheit,
+    GEMESSEN) — darum blättern wir über die Produkte und prüfen die Felder selbst."""
+    n, cur = 0, None
+    while True:
+        d = gql('query($c:String,$q:String!){products(first:250,after:$c,query:$q){pageInfo{hasNextPage endCursor} '
+                'nodes{totalInventory tracksInventory}}}',
+                {"c": cur, "q": f"collection_id:{cid} status:active published_status:published"})["products"]
+        n += sum(1 for x in d["nodes"] if ist_kaufbar(x))
+        if not d["pageInfo"]["hasNextPage"]:
+            return n
+        cur = d["pageInfo"]["endCursor"]
+
+
 def klar(s):
     return re.sub(r"\s+", " ", htmlmod.unescape(re.sub(r"<[^>]+>", " ", s or ""))).strip()
 
@@ -126,8 +148,7 @@ def main():
             if not (ANSPRUCH.search(klar(n["descriptionHtml"])) or ANSPRUCH.search(seo_d)):
                 continue
             cid = n["id"].split("/")[-1]
-            aktiv = gql('query($q:String!){productsCount(query:$q,limit:null){count}}',
-                        {"q": f"collection_id:{cid} status:active published_status:published"})["productsCount"]["count"]
+            aktiv = zaehle_kaufbar(gql, cid)   # «aktiv» heisst hier seit 21.10.2026: kaufbar (aktiv + veröffentlicht + bestellbar)
             if aktiv < MIN_AKTIV:
                 melden.append((n["handle"], aktiv, klar(n["descriptionHtml"])[:80])); continue
             neu_d, a1 = ersetzen(n["descriptionHtml"], aktiv)
@@ -161,7 +182,32 @@ def main():
     print(f"FERTIG: KOLLEKTION-MENGEN {len(plan)} falsch{f' · gesetzt {ok} · fehler {fe}' if SCHARF else ' (TROCKEN)'} · melden {len(melden)}")
 
 
+def selbsttest():
+    f = []
+
+    def ok(n, b): f.append((n, bool(b)))
+    ok("ungetrackt mit Bestand 0 = kaufbar (CJ)", ist_kaufbar({"tracksInventory": False, "totalInventory": 0}))
+    ok("getrackt mit Bestand 0 = ausverkauft", not ist_kaufbar({"tracksInventory": True, "totalInventory": 0}))
+    ok("getrackt mit Bestand 5 = kaufbar", ist_kaufbar({"tracksInventory": True, "totalInventory": 5}))
+    ok("getrackt ohne Bestandsfeld = ausverkauft", not ist_kaufbar({"tracksInventory": True, "totalInventory": None}))
+    seiten = [{"products": {"pageInfo": {"hasNextPage": True, "endCursor": "x"}, "nodes": [
+                  {"tracksInventory": True, "totalInventory": 0}, {"tracksInventory": True, "totalInventory": 3}]}},
+              {"products": {"pageInfo": {"hasNextPage": False, "endCursor": None}, "nodes": [
+                  {"tracksInventory": False, "totalInventory": 0}, {"tracksInventory": True, "totalInventory": -2}]}}]
+    it = iter(seiten)
+    ok("zaehle_kaufbar blättert über alle Seiten (1 + 1 = 2 kaufbar von 4)", zaehle_kaufbar(lambda q, v=None: next(it), "1") == 2)
+    ok("Behauptung 'über 1'500' bei 992 kaufbar → 'über 990'", ersetzen("Über 1'500 Kostüme im Lager", 992)[0] == "Über 990 Kostüme im Lager")
+    import inspect
+    ok("main() zählt kaufbar (nicht den alten productsCount)", "zaehle_kaufbar(gql, cid)" in inspect.getsource(main) and "productsCount" not in inspect.getsource(main))
+    ok("Behauptung 'über 900' bei 992 kaufbar bleibt", ersetzen("Über 900 Kostüme im Lager", 992)[0] == "Über 900 Kostüme im Lager")
+    for n, b in f:
+        print(("  ok   " if b else "  FEHL ") + n)
+    return 0 if all(b for _, b in f) and kanarien() else 1
+
+
 if __name__ == "__main__":
+    if "--selbsttest" in sys.argv:
+        sys.exit(selbsttest())
     if "--kanarien" in sys.argv:
         sys.exit(0 if kanarien() else 1)
     main()

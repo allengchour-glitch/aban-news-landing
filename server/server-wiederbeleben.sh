@@ -7,8 +7,10 @@
 # TIPPSICHERE FASSUNG (20.10.: im Screenshot des Betreibers kam «https:» als «https;» und «|» als «\» an — «curl: Could not resolve host:
 # https», «-bash: //raw.githubusercontent.com/…: No such file»; die Hetzner-Konsole verliert bei «:» und «|» offenbar die Umschalttaste):
 # ZWEI Zeilen, einzeln mit Enter, nur Buchstaben, Ziffern, «-», «.», «/» — kein «:», «|», «_», «&», «>»:
-#   curl -fsSL -o wb.sh raw.githubusercontent.com/allengchour-glitch/aban-news-landing/claude/luxestyle-status-tztnn1/server/server-wiederbeleben.sh
-#   bash wb.sh
+#   curl -fsSL -o /dev/shm/wb.sh raw.githubusercontent.com/allengchour-glitch/aban-news-landing/claude/luxestyle-status-tztnn1/server/server-wiederbeleben.sh
+#   bash /dev/shm/wb.sh
+# (/dev/shm = Arbeitsspeicher: bei VOLLER Platte (21.10.: «No space left on device») kann `curl -o wb.sh` in /root nicht mehr schreiben und das
+#  Skript käme nie an — der Ablageort darf nicht auf der Platte liegen, die es retten soll. Vorher bei 100 %: `journalctl --vacuum-size=50M`.)
 # (ohne «https://» nimmt curl http und folgt der Weiterleitung auf https; gemessen 20.10.: 200, byte-gleich mit dem Repo)
 # Probelauf ohne Änderung:  … | DRY=1 bash
 #
@@ -46,6 +48,7 @@ UNITS="luxe-agent luxe-waechter abannews-deploy"
 log() { printf '\n\033[1;36m▶ %s\033[0m\n' "$*"; }
 warn() { printf '\033[1;33m⚠️  %s\033[0m\n' "$*"; }
 run() { if [ "$DRY" = 1 ]; then echo "[DRY] $*"; else "$@" </dev/null; fi; }
+TMPD=/dev/shm; [ -w "$TMPD" ] || TMPD=/tmp   # nachgeladene Skripte NICHT auf die volle Platte legen
 have_sd() { command -v systemctl >/dev/null 2>&1 && [ -d /run/systemd/system ]; }
 pcent() { df --output=pcent / 2>/dev/null | tail -1 | tr -dc 0-9; }
 [ "$DRY" = 1 ] && warn "PROBELAUF (DRY=1): es wird nichts verändert."
@@ -55,6 +58,10 @@ uptime; who -b 2>/dev/null || true
 df -h / | tail -2; df -i / | tail -1
 free -m | head -2
 VOR=$(pcent); echo "Platte «/» belegt: ${VOR:-?} %"
+echo "--- Platzfresser (nur lesen; die Ursache DAFÜR, dass sie nach dem Aufräumen wieder voll wird — 22.09., 13.10., 21.10.)"
+du -xsh /opt/* /var/lib/* /var/log /var/cache /root /tmp /home 2>/dev/null | sort -rh | head -10 | sed 's/^/   /'
+for d in /opt/*/repo /opt/abannews; do [ -d "$d/.git" ] && printf '   %-28s .git %s · Arbeitsbaum %s\n' "$d" "$(du -sh "$d/.git" 2>/dev/null | cut -f1)" "$(du -sh --exclude=.git "$d" 2>/dev/null | cut -f1)"; done
+echo "   grösste Einzeldateien:"; find /opt /var/lib /var/log /root -xdev -type f -size +200M -printf '   %s %p\n' 2>/dev/null | sort -rn | head -5 | awk '{printf "   %.1f GB %s\n", $1/1073741824, $2}'
 if have_sd; then
   echo "--- fehlgeschlagene Einheiten"; systemctl --failed --no-legend --no-pager 2>/dev/null | head -10
   echo "--- Timer"; systemctl list-timers --all --no-legend --no-pager 2>/dev/null | grep -E "luxe|abannews" | cut -c1-160 || echo "(keine luxe/abannews-Timer gefunden)"
@@ -127,9 +134,33 @@ NACH=$(pcent); echo "Platte «/» jetzt: ${NACH:-?} %  (vorher ${VOR:-?} %)"
 if [ "${NACH:-0}" -ge 90 ] 2>/dev/null; then
   warn "«/» noch über 90 % — Repo-Klone verschlanken (platte-schlank.sh)"
   if [ "$DRY" = 1 ]; then echo "[DRY] curl -fsSL $RAW/server/platte-schlank.sh | bash"
-  else curl -fsSL "$RAW/server/platte-schlank.sh" -o /tmp/platte-schlank.sh && timeout 3000 bash /tmp/platte-schlank.sh </dev/null || warn "platte-schlank.sh endete mit Fehler — Ausgabe oben lesen"; fi
+  else curl -fsSL "$RAW/server/platte-schlank.sh" -o "$TMPD/platte-schlank.sh" && timeout 3000 bash "$TMPD/platte-schlank.sh" </dev/null || warn "platte-schlank.sh endete mit Fehler — Ausgabe oben lesen"; fi
   NACH=$(pcent); echo "Platte «/» nach platte-schlank: ${NACH:-?} %"
 fi
+
+log "2c) Platz-Notfall-Timer einrichten (alle 10 Min, nur Wiederherstellbares — 21.10.: der Agent starb am vollen Datenträger, bevor irgendetwas aufräumen konnte)"
+# Eigene Einheit statt ExecStartPre am Agenten: dessen Vorlauf (git fetch) scheitert bei voller Platte SELBST, ein Aufräumschritt dahinter käme nie dran.
+if have_sd && [ "$DRY" != 1 ]; then
+cat > /usr/local/bin/luxe-platz-notfall <<'PLATZ'
+#!/usr/bin/env bash
+# luxe-platz-notfall — ab 92 % Belegung die Dinge löschen, die sich von selbst wiederherstellen. Löscht NIE Repo-Inhalt, Anmeldungen oder Aufträge.
+P=$(df --output=pcent / 2>/dev/null | tail -1 | tr -dc 0-9); P=${P:-0}
+[ "$P" -ge 92 ] || { echo "Platte $P % — nichts zu tun"; exit 0; }
+echo "PLATZ-NOTFALL: Platte $P % — räume Wiederherstellbares auf"
+journalctl --vacuum-size=50M >/dev/null 2>&1 || true
+apt-get clean >/dev/null 2>&1 || true
+rm -rf /root/.npm/_cacache 2>/dev/null || true
+find /var/log -type f \( -name '*.gz' -o -name '*.[0-9]' -o -name '*.old' \) -delete 2>/dev/null || true
+pgrep -x git >/dev/null || for d in /opt/*/repo/.git /opt/abannews/.git; do [ -d "$d" ] && find "$d" -name 'tmp_*' -type f -delete 2>/dev/null; done
+for c in Cache "Code Cache" GPUCache; do find /var/lib/luxe-agent/chrome-profil -type d -name "$c" -prune -exec rm -rf {} + 2>/dev/null || true; done
+echo "PLATZ-NOTFALL: jetzt $(df --output=pcent / | tail -1 | tr -dc 0-9) %"
+[ "$(df --output=pcent / | tail -1 | tr -dc 0-9)" -lt 97 ] || echo "PLATZ-NOTFALL: ⚠️ weiter über 97 % — server-wiederbeleben.sh von Hand (Repo-Klone verschlanken)"
+PLATZ
+chmod 755 /usr/local/bin/luxe-platz-notfall
+printf '[Unit]\nDescription=LuxeStyle Platz-Notfall (ab 92 Prozent aufraeumen)\n[Service]\nType=oneshot\nExecStart=/usr/local/bin/luxe-platz-notfall\n' > /etc/systemd/system/luxe-platz.service
+printf '[Unit]\nDescription=LuxeStyle Platz-Notfall (alle 10 Min)\n[Timer]\nOnBootSec=3min\nOnUnitActiveSec=10min\n[Install]\nWantedBy=timers.target\n' > /etc/systemd/system/luxe-platz.timer
+systemctl daemon-reload && systemctl enable --now luxe-platz.timer >/dev/null 2>&1 && echo "luxe-platz.timer: $(systemctl is-active luxe-platz.timer)" || warn "luxe-platz.timer nicht gestartet"
+else echo "[DRY/ohne systemd] luxe-platz-notfall + luxe-platz.timer würden eingerichtet"; fi
 
 log "3) Agent-Klon prüfen"
 APP=/opt/luxe-agent/repo
@@ -137,7 +168,7 @@ if [ -d "$APP/.git" ]; then
   if ! git -C "$APP" status --porcelain >/dev/null 2>&1 || [ "$SPACE_ERR" = 1 ]; then
     warn "Agent-Klon beschädigt oder Platte war voll — schlank neu aufsetzen (luxe-agent-schlank.sh)"
     if [ "$DRY" = 1 ]; then echo "[DRY] curl -fsSL $RAW/server/luxe-agent-schlank.sh | bash"
-    else curl -fsSL "$RAW/server/luxe-agent-schlank.sh" -o /tmp/luxe-agent-schlank.sh && timeout 1800 bash /tmp/luxe-agent-schlank.sh </dev/null || warn "luxe-agent-schlank.sh endete mit Fehler"; fi
+    else curl -fsSL "$RAW/server/luxe-agent-schlank.sh" -o "$TMPD/luxe-agent-schlank.sh" && timeout 1800 bash "$TMPD/luxe-agent-schlank.sh" </dev/null || warn "luxe-agent-schlank.sh endete mit Fehler"; fi
   else echo "Agent-Klon in Ordnung."; fi
 else echo "(kein Agent-Klon unter $APP — Einrichtung: server/luxe-agent-setup.sh)"; fi
 

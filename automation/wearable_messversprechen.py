@@ -52,7 +52,13 @@ TRAEGER  = re.compile(r'(?<![\wäöüß])(smartwatch|smart\s*watch|fitness[- ]?t
                       r'smart[- ]?ring|wearable)|[\wäöüß]*(uhr|watch|armband)(?![\wäöüß])', re.I)
 ZUBEHOER = re.compile(r'\b(hülle|huelle|schutzfolie|displayschutz|armband[- ]?ersatz|ersatzarmband|'
                       r'ladekabel|ladegerät|ladestation|halterung|schutzglas|panzerglas)\b', re.I)
-KRITISCH = re.compile(r'blutdruck|blutzucker|glukose|\bEKG\b|elektrokardiogramm|ecg\b', re.I)
+# 21.10.2026 (Spähtrupp wf_3b017e9f G-MESS-1): «Blut-Zucker-» (Bindestrich), «Harnsäure», «Blutfett» fehlten — die Smartwatch «mit Blut-Zucker-
+# Harnsäure-Blutdruck-Überwachung» (CHF 19.90, 3,5 h live in vier Werbekanälen) lief am Wächter vorbei. EINE Wortliste für Erkennung UND Reinigung.
+KRITISCH = re.compile(r'blutdruck|blut-?zucker|glukose|harns[äa]ure|blutfett|\bEKG\b|elektrokardiogramm|ecg\b', re.I)
+# Träger-Wort im TEXT (nicht nur im Titel): «Intelligenter Handring», «Multi-Sport Smart Bracelet», «Tracker mit Farbdisplay» tragen das Wort nicht im
+# Titel, wohl aber im Beschreibungstext (Handgelenk, Smartwatch, Tracker …). Motive («Mountain EKG Kurzarm-Shirt») haben es nicht.
+TRAEGER_TEXT = re.compile(r'smart[- ]?watch|smart[- ]?band|smart[- ]?ring|smart[- ]?armband|fitness[- ]?(?:tracker|armband|uhr)|'
+                          r'activity[- ]?tracker|handgelenk|wearable|bracelet|handring', re.I)
 # MOTIV (13.10.2026): «Titanring mit EKG-Muster», «Armband mit EKG-Herzschlag-Motiv» — die Herzlinie als
 # Schmuck- oder Druckmotiv ist keine Mess-Behauptung. Zaehlt ein Text NUR wegen eines Motivs, bleibt er.
 MOTIV    = re.compile(r'\bEKG[- ]?(?:Herzschlag[- ]?|Herz[- ]?)?(?:Muster|Motiv|Linie|Kurve|Design|Print|Anhänger|'
@@ -92,7 +98,7 @@ def titel_saeubern(t):
     # «Glukose», der Reiniger nicht — der Waechter fand «Smartwatch mit Blutsauerstoff &
     # Glukosemessung» und liess den Titel unveraendert stehen. Ein Waechter, der findet und
     # nicht beheben kann, meldet denselben Fall jeden Tag neu.
-    WORT = r'Blutdruck|EKG|Blutzucker|Glukose|Elektrokardiogramm|\bECG\b'
+    WORT = r'Blutdruck|EKG|Blut-?Zucker|Glukose|Harns[äa]ure|Blutfett|Elektrokardiogramm|\bECG\b'
     KOPF = r'(messung|überwachung|ueberwachung|funktion|analyse|sensor|tracking|messer)'
     # ⚠️ 13.10.2026: Bindestrich-Koppelung ZUERST aufloesen (wie flick() im Fliesstext). Ohne das ergab
     # «Smart-Armband mit Herz- & Blutdruckmessung» den Halbtitel «Smart-Armband mit Herz» (aktiv seit 03.09.).
@@ -225,7 +231,7 @@ def quelle_live():
     QUELLE = ROH
     gesehen = set()
     with open(ROH, 'w', encoding='utf-8') as raus:
-        for begriff in ('blutdruck', 'blutzucker', 'glukose', 'EKG', 'elektrokardiogramm'):
+        for begriff in ('blutdruck', 'blutzucker', 'glukose', 'EKG', 'elektrokardiogramm', 'harnsäure', 'blutfett'):
             cur = None
             while True:
                 r = gql(Q_LIVE, {'q': 'status:active AND ' + begriff, 'c': cur})
@@ -259,10 +265,10 @@ def main():
         if not o.get('id', '').startswith('gid://shopify/Product/'): continue
         if o['id'] in fertig: continue
         titel = o.get('title', '') or ''
-        if not TRAEGER.search(titel): continue
         if ZUBEHOER.search(titel):  continue          # Hülle/Folie/Ladekabel — nicht das Gerät
         roh = o.get('descriptionHtml') or ''
         klar = re.sub(r'<[^>]+>', ' ', roh)
+        if not (TRAEGER.search(titel) or TRAEGER_TEXT.search(klar)): continue   # 21.10.2026: Träger-Wort im Titel ODER im Text
         if not kritisch(titel + ' ' + klar): continue   # Motiv («EKG-Linie» als Schmuck) zaehlt nicht
         if MANUELL.search(klar) and not kritisch(titel):
             continue                                   # «manuell erfassen» ist keine Messung
@@ -685,6 +691,16 @@ def selbsttest():
     soll(alt_neu('Smartwatch mit EKG | LuxeStyle', ''), None, 'Alt ohne Titel → offen, nie leer')
     soll(alt_neu('F600 Smartwatch mit Blutzucker-Tracking – Ansicht 3', 'F600 Fitness-Smartwatch'),
          'F600 Fitness-Smartwatch – Ansicht 3', 'Alt «Ansicht N» bleibt')
+    # 21.10.2026: Bindestrich-Schreibung, Harnsäure, Träger-Wort im Text
+    soll(titel_saeubern('Smartwatch mit Blut-Zucker-'), 'Smartwatch', 'Halbtitel «Blut-Zucker-»')
+    soll(titel_saeubern('Smartwatch mit Blut-Zucker-Harnsäure-Blutdruck-Überwachung'), 'Smartwatch', 'Blut-Zucker-Harnsäure-Blutdruck')
+    soll(kritisch('Smartwatch mit Blut-Zucker-'), True, 'kritisch: Blut-Zucker-')
+    soll(kritisch('misst den Harnsäurewert automatisch'), True, 'kritisch: Harnsäure')
+    soll(kritisch('Armband mit EKG-Herzschlag-Motiv'), False, 'Motiv bleibt unkritisch')
+    soll(saeubere('<p>Dank Sensor misst die Smartwatch den Blutzucker, den Harnsäurewert und den Blutdruck automatisch.</p><p>Das Display ist 1,4 Zoll gross.</p>'),
+         '<p></p><p>Das Display ist 1,4 Zoll gross.</p>'.replace('<p></p>', ''), 'Satz mit Harnsäure fällt ganz')
+    soll(bool(TRAEGER_TEXT.search('Der Handring wird am Handgelenk getragen')), True, 'Träger im Text: Handgelenk')
+    soll(bool(TRAEGER_TEXT.search('Das Hemd mit EKG-Druck aus Baumwolle')), False, 'Shirt ist kein Träger')
     print(f'{f} Fehler' if f else '✅ Selbsttest: alle Kanarienvögel richtig')
     return 1 if f else 0
 
