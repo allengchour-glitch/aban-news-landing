@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-21 15:57 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-21 17:15 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1212 · **1146 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 965, teilweise: 159, keine: 22; Preisspanne > 2×: 149) · 1 CJ-Variante: 64 · ohne Antwort: 2
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1202 · **1136 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 955, teilweise: 159, keine: 22; Preisspanne > 2×: 149) · 1 CJ-Variante: 64 · ohne Antwort: 2
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -425,7 +425,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Outdoor Rucksack 40L (`outdoor-rucksack-40l-621400`) | 8 | 8 | 42.95–42.95 | 78.90 | Yellow-40L, Sapphire Blue-40L, Gray-40L, Light Gray-40L |
 | DIY Powerbank Kit für 16x 18650 Akkus (`diy-powerbank-kit-fur-16x-18650-akkus-685824`) | 8 | 8 | 2.78–6.59 | 15.90 | White-A, White-B, White-C, White-D |
 | Umhängetasche für Herren, Kontrastfarben (`umhangetasche-fur-herren-kontrastfarben-747200`) | 8 | 4 | 4.41–4.77 | 17.90 | Gray-Large Size, Gray-Small Size, Brown-Large Size, Brown-Small Size |
-| Handgemachtes Vintage Leder Portemonnaie (`handgemachtes-vintage-leder-portemonnaie-526080`) | 8 | 8 | 4.75–4.75 | 17.90 | Black, Blue, Brown, Coffee |
 | Traditioneller unbeschichteter Eisenwok (`traditioneller-unbeschichteter-eisenwok-611900`) | 8 | 8 | 8.29–11.11 | 71.90 | 30cm Vertical Cover Style, 30cm Wok With Lid Spatula, 30cm Transparent, 30cm Transparent Set |
 | Multifunktionaler Smart Wecker mit Sprachdialog (`multifunktionaler-smart-wecker-mit-sprachdialo-802112`) | 8 | 8 | 13.6–23.92 | 27.90 | 1sytle, 2sytle, 3sytle, 4sytle |
 | Retro Color-Block Badetuch aus Baumwolle (`retro-color-block-badetuch-aus-baumwolle-632100`) | 8 | 8 | 2.21–7.83 | 17.90 | Plaid Coconut Green-Face Towel 35X76, Plaid Coconut Green-Bath Towel 70X140, Plaid Coconut Yellow-Face Towel 35X76, Plaid Coconut Yellow-Bath Towel 70X140 |
@@ -518,7 +517,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Lederhalsband für Haustiere (`lederhalsband-fur-haustiere-626101`) | 7 | 7 | 22.05–40.68 | 44.90 | Collar-One Size, Collar-XS, Collar-S, Collar-M |
 | Holzmaserung Boden Reparaturstift (`holzmaserung-boden-reparaturstift-633900`) | 7 | 7 | 0.35–1.05 | 14.90 | Black, White, Reddish Brown, Dark Brown |
 | Breiter Ring mit Eis-Perlmutt-Effekt Hellblau-Grün (`breiter-ring-mit-eis-perlmutt-effekt-hellblau-629000`) | 7 | 7 | 2.87–2.87 | 15.90 | Light Blue Green-Inner Diameter 16, Light Blue Green-Inner Diameter 17, Light Blue Green-Inner Diameter 18, Light Blue Green-Inner Diameter 19 |
-| Herrenuhr mit Wechselarmbändern im Geschenkset (`herrenuhr-mit-wechselarmbandern-im-geschenkset-619200`) | 7 | 7 | 7.96–7.96 | 21.90 | Black, Silver White Black, Rose White Black, Silver Black Black |
 | Kissenbezug mit Tiger-Motiv (`kissenbezug-mit-tiger-motiv-823232`) | 7 | 7 | 3.31–4.06 | 15.90 | Tiger head-45x45cm, Tiger body-45x45cm, Tigers tail-45x45cm, Tiger cat-30x50cm |
 | Wandmontierter 3-Fach Seifenspender (`wandmontierter-3-fach-seifenspender-618300`) | 7 | 5 | 4.53–5.8 | 25.90 | All White, Electroplating White, Black, Gold |
 | Mechanische Herrenuhr – Business & Freizeit (`mechanische-herrenuhr-business-freizeit-625400`) | 7 | 7 | 12.6–12.6 | 27.90 | Rose Gold Shell Black Surface, Rose Shell White Surface Black, Gold Shell Black Brown Belt, Gold Shell White Surface |
@@ -577,8 +575,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Skmei Elegante Retro-Quarzuhr für Herren (`skmei-elegante-retro-quarzuhr-fur-herren-600600`) | 6 | 6 | 6.8–7.3 | 19.90 | Gold Face, Golden Black Surface, Silver Silver Surface, Silver Black Noodles |
 | Kuscheliges Cartoon Tier Kissen (`kuscheliges-cartoon-tier-kissen-922560`) | 6 | 6 | 4.36–5.8 | 16.90 | The lion-60x35x20cm, The lion-70x40x25cm, The Husky-60x35x20cm, The Husky-70x40x25cm |
 | WC-Matten-Set aus Kunstfell, rutschfest (`wc-matten-set-aus-kunstfell-rutschfest-631200`) | 6 | 6 | 2.11–3.52 | 17.90 | Combination Black-Two piece set, Combination White-Two piece set, Combination wine red-Two piece set, Combination coffee color-Two piece set |
-| Cream Bomb Öffner (`cream-bomb-offner-636500`) | 6 | 6 | 1.2–1.2 | 14.90 | Black, Red, Gold, Blue |
-| Grob gestrickter Kissenbezug mit Schachbrettmuster (`grob-gestrickter-kissenbezug-mit-schachbrettmu-607300`) | 6 | 6 | 2.42–2.95 | 15.90 | Black-45X45cm, Black-30X50cm, Black-50X50cm, White-45X45cm |
 | Big Bee Metall-Bausatz 3D-Modell (`big-bee-metall-bausatz-3d-modell-631000`) | 6 | 2 | 6.3–13.27 | 24.90 | Style1, Style2, Style3, Style4 |
 | 3D Stereoskopischer Rucksack für Kinder (`3d-stereoskopischer-rucksack-fur-kinder-607400`) | 6 | 6 | 8.46–8.46 | 30.90 | Purple Bunny-38x31x16CM, Pink Bunny-38x31x16CM, Blue Bunny-38x31x16CM, Orange Spaceman-38x31x16CM |
 | Rollender Messerschärfer mit Diamantbeschichtung (`rollender-messerscharfer-mit-diamantbeschichtu-627600`) | 6 | 6 | 9.95–11.5 | 28.90 | Wood Black Leather, Wood Color Graywall, Black, Set1 |
@@ -808,14 +804,11 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Lange Weisse Kunstnägel (`lange-weisse-kunstnagel-731008`) | 4 | 4 | 7.32–7.32 | 20.90 | Long Ladder-S, Long Ladder-M, Long Ladder-L, Long Ladder-XS |
 | Schichtdickenmessgerät für Lack (`schichtdickenmessgerat-fur-lack-603700`) | 4 | 4 | 69.68–136.55 | 159.90 | UT343D, UT343A, UT343E, UT345A |
 | Dekorative Pinnwand-Reissnägel (`dekorative-pinnwand-reissnagel-624600`) | 4 | 4 | 0.25–3.77 | 14.90 | Black-30pcs, Black-1pc, Gold-1pc, Silver White-1pc |
-| Handgemachte, ablösbare lange Nagelspitzen (`handgemachte-ablosbare-lange-nagelspitzen-606500`) | 4 | 4 | 2.19–2.19 | 14.90 | Long Ladder Type-XS, Long Ladder Type-S, Long Ladder Type-M, Long Ladder Type-L |
-| Leichter Rucksack mit grossem Fassungsvermögen (`leichter-rucksack-mit-grossem-fassungsvermogen-613500`) | 4 | 4 | 9.45–9.45 | 22.90 | Black Camouflage 8762, Blue Camouflage 8762, Yellow Camouflage 8762, Green Camouflage 8762 |
 | Lidschatten Pinsel Set (`lidschatten-pinsel-set-622201`) | 4 | 4 | 4.49–6.38 | 21.90 | Black, Black Set, Pink set, Pink set2 |
 | Kissenbezug mit Jacquard-Muster (`kissenbezug-mit-jacquard-muster-899712`) | 4 | 4 | 2.97–4.33 | 15.90 | Green-30x50 nonsplicing, Green-30x50 splicing, Green-48x48 nonsplicing, Green-48x48 splicing |
 | OneMo Kamera-Umhängetasche 7L/11L (`onemo-kamera-umhangetasche-7l-11l-607700`) | 4 | 4 | 71.32–77.78 | 112.90 | 7L Deep Space Black, 7L Camouflage Gray, 11L Deep Space Black, 11L Camouflage Gray |
 | 10 Make-up Pinsel in Pastellfarben (`10-make-up-pinsel-in-pastellfarben-1f3d7c`) | 4 | 1 | 2.61–2.61 | 15.90 | Lime, Peach, Watermelon red, Avocado |
 | Retro-Damenuhr mit Quarzwerk (`retro-damenuhr-mit-quarzwerk-602500`) | 4 | 4 | 26.53–26.53 | 44.90 | Golden White Shell, Golden Golden Shell, Golden Green Shell, Rose Gold White Shell |
-| Magnetischer Kaffeepulver-Verteiler (`magnetischer-kaffeepulver-verteiler-607100`) | 4 | 4 | 5.8–5.8 | 18.90 | Black, White, Pink, Green |
 | Holzkorb für Früchte und Gemüse (`holzkorb-fur-fruchte-und-gemuse-609800`) | 4 | 4 | 7.3–9.62 | 36.90 | Log Color 41X23X18cm, Style 2 41X23X18cm, Style Three 48X28X18cm, Style 4 34X23X15cm |
 | Panda Tee-Set Geschenkbox (`panda-tee-set-geschenkbox-619300`) | 4 | 4 | 7.96–7.96 | 24.90 | Panda Teacup Sandalwood, Panda Tea Cup Agarwood, Panda Teacup Laoshan, Panda Teacup Water Sink |
 | Philodendron Kissen (`philodendron-kissen-973248`) | 4 | 4 | 5.91–6.81 | 21.90 | Monstera, White brocade monstera, Philodendron, New green leaves |
@@ -986,7 +979,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Herren Automatikuhr, Business-Stil (`herren-automatikuhr-business-stil-337984`) | 3 | 3 | 85.93–85.93 | 105.90 | White shell blue faced steel, White shell black faced steel, 8200tiffany blue |
 | Kamera Bausteine mit Ewiger Blume Deko (`kamera-bausteine-mit-ewiger-blume-deko-614700`) | 3 | 3 | 10.93–17.64 | 44.90 | Huayu Polaroid, Huayu Instant Camera Gift Box, Huayu Polaroid Greeting Card |
 | Kupfer Wasserhahn für Badewanne (`kupfer-wasserhahn-fur-badewanne-625800`) | 3 | 3 | 14.93–20.73 | 51.90 | Black Bathtub Faucet, Black Gourd Short Faucet, Black Gourd High Faucet |
-| Aromatherapie-Geschenkset "Blue Lady" (`aromatherapie-geschenkset-blue-lady-625700`) | 3 | 3 | 7.3–7.96 | 37.90 | Blue 1-21X21X10CM, Blue 2-21X21X10CM, Blue 3-21X21X10CM |
 | Macaron Keramik Napf erhöht für Katzen (`macaron-keramik-napf-erhoht-fur-katzen-609200`) | 3 | 3 | 2.67–2.67 | 19.90 | White Background Pink, Yellow On Green Background, Pink Background Blue |
 | Glace-Napf für Katzen (`glace-napf-fur-katzen-623900`) | 3 | 1 | 2.37–2.56 | 19.90 | Pink, Chocolate, Khaki |
 | Motorrad Rucksack – Hartschale (`motorrad-rucksack-hartschale-619400`) | 3 | 2 | 24.54–24.54 | 59.90 | Carbon Fiber Pattern-Average Size, Black Carbon Fiber Pattern-Average Size, Bright Black-Average Size |
@@ -1085,9 +1077,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Multifunktionales Aufbau-Gel für Nägel (`multifunktionales-aufbau-gel-fur-nagel-259136`) | 2 | 2 | 2.48–5.4 | 15.90 | Construct Four In One Gel 15g, Construct Four In One Gel 58g |
 | Elegante S925 Silber Ohrclips für Damen (`elegante-s925-silber-ohrclips-fur-damen-630000`) | 2 | 2 | 5.58–5.58 | 18.90 | Gold-925 Silver, White Gold Color-925 Silver |
 | Barockperlen-Armband mit Paperclip-Kette (`barockperlen-armband-mit-paperclip-kette-636800`) | 2 | 2 | 16.09–18.76 | 31.90 | 14K Gold-925 Silver, Platinum-925 Silver |
-| Modische Armbanduhr für Sie und Ihn (`modische-armbanduhr-fur-sie-und-ihn-607500`) | 2 | 2 | 11.61–11.61 | 25.90 | Silver Case White Noodles, Silver Case Black Noodles |
 | Moppstiel-Adapter für US-Grobgewinde (`moppstiel-adapter-fur-us-grobgewinde-622300`) | 2 | 2 | 2.81–2.81 | 16.90 | New American Style, New German Style |
-| Grosse Keramik-Bratpfanne für Gasherde (`grosse-keramik-bratpfanne-fur-gasherde-616200`) | 2 | 2 | 7.46–9.12 | 77.90 | 2L-Covered, 2.8L-Covered |
 | Kartoffel-Pommes-Schneider aus Edelstahl (`kartoffel-pommes-schneider-aus-edelstahl-602600`) | 2 | 2 | 3.82–5.2 | 28.90 | Large Double Cutter Head, Small Size Single Cutter Head |
 | Bärendecke aus Musselin für Kinder (`barendecke-aus-musselin-fur-kinder-848832`) | 2 | 2 | 4.62–6.11 | 17.90 | Beige Double Layer Full Print, Beige Crochet Double Layer |
 | Dickes Futon-Haustierkissen für Meditation (`dickes-futon-haustierkissen-fur-meditation-475328`) | 2 | 2 | 45.47–45.47 | 65.90 | Charcoal, Water blue |

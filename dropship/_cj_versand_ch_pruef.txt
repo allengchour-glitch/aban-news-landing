@@ -12923,3 +12923,15 @@ mechanische-uhr-mit-kalenderfunktion-609100	2508210801161609300	16	5.69	ok	lande
 mannliche-multifunktionsuhr-mit-leuchtzifferbl-612900	2508210707561613200	16	6.01	ok	landeseite
 manner-armbanduhr-mit-nachtlicht-613900	2508210632301614100	16	6.77	ok	landeseite
 reisegepack-mit-schuhfach-619100	2512270643521619400	16	17.52	ok	landeseite
+manner-armbanduhr-mit-leuchtfunktion-618900	2508210620141619100	16	6.33	ok	landeseite
+kabelloses-tastatur-set-5836a1	4ECFEEFD-2E8F-42A2-804E-FE5B607B618B	7	8.65	ok	landeseite
+gerauschlose-gaming-maus-mit-6-tasten-ca3f7c	04BA5DCD-8F84-466F-B575-B8087ADCA173	7	8.42	ok	landeseite
+edle-wasserdichte-herrenuhr-mit-kalender-208000	1605037049202094080	7	7.13	ok	landeseite
+ps4-fernbedienung-mit-bluetooth-3-0-43ccd8	982AA061-257D-48EF-A531-1001FF88F750	7	6.49	ok	landeseite
+elegantes-langarm-kleid-mit-v-hals-606000	2607130958331606600	16	10.15	ok	landeseite
+lederarmband-mit-rundschlie-e-900544	1600770680289767424	16	5.20	ok	landeseite
+armygruene-damenkleid-626500	2607130955041627100	16	11.45	ok	landeseite
+luxus-uhrenarmband-edelstahl-994944	1600109087650492416	16	5.94	ok	landeseite
+mustardgruene-samt-blumenkleid-624700	2607130845351625700	16	10.96	ok	landeseite
+herren-wasserdichte-leuchtende-sportuhr-983552	1599007663424286720	7	6.09	ok	landeseite
+cocktailkleid-mit-patchwork-design-603200	2607130833451603800	16	9.20	ok	landeseite
