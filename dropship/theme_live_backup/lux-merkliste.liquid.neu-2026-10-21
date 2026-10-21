@@ -1,11 +1,11 @@
 <div class="lux-wishlist-wrap" style="max-width:1100px;margin:0 auto;padding:24px 16px;">
   <h1 style="margin:0 0 6px;font-size:26px;line-height:1.2;">Deine Merkliste</h1>
   <p style="margin:0 0 16px;font-size:13px;line-height:1.45;opacity:.75;">Gespeichert nur in diesem Browser auf diesem Gerät – nicht in einem Konto. Auf einem anderen Gerät oder nach dem Löschen der Browserdaten ist sie weg.</p>
-  <style>.lux-wl-rm::before{content:'';position:absolute;inset:-4px;}.lux-wl-rm:focus-visible,#lux-wl-clear:focus-visible{outline:2px solid #1a1a1a;outline-offset:2px;}@media (max-width:640px){#lux-wl-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important;}}</style>
+  <style>.lux-wl-rm::before{content:'';position:absolute;inset:-4px;}.lux-wl-rm:focus-visible,#lux-wl-clear:focus-visible{outline:2px solid #1a1a1a;outline-offset:2px;}.lux-wl-btn{white-space:nowrap;}@media (max-width:359px){.lux-wl-btn{font-size:13px!important;padding:10px 4px!important;}}@media (max-width:640px){#lux-wl-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important;}}</style>
   <div id="lux-wishlist">
     <div id="lux-wl-head" style="display:none;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap;">
       <strong id="lux-wl-count" role="status" style="font-size:16px;"></strong>
-      <button type="button" id="lux-wl-clear" style="border:1px solid rgba(0,0,0,.2);background:#fff;border-radius:999px;padding:12px 16px;font-size:13px;cursor:pointer;">Alle entfernen</button>
+      <button type="button" id="lux-wl-clear" style="border:1px solid rgba(0,0,0,.2);background:#fff;border-radius:999px;padding:14px 18px;font-size:13px;cursor:pointer;">Alle entfernen</button>
     </div>
     <p id="lux-wl-note" role="status" style="display:none;margin:0 0 14px;padding:10px 12px;border-radius:8px;background:#f6f1e8;font-size:14px;"></p>
     <div id="lux-wl-empty" style="display:none;">
@@ -35,7 +35,7 @@
   function zaehler(){var n=grid.children.length;cnt.textContent=n===1?'1 Artikel gemerkt':n+' Artikel gemerkt';
     head.style.display=n?'flex':'none';leer.style.display=n?'none':'block';}
   function karte(h,p){
-    var frei=p.available!==false, d=el('div','border:1px solid rgba(0,0,0,.08);border-radius:12px;overflow:hidden;background:#fff;position:relative;');
+    var frei=p.available!==false, d=el('div','border:1px solid rgba(0,0,0,.08);border-radius:12px;overflow:hidden;background:#fff;position:relative;display:flex;flex-direction:column;');
     d.setAttribute('data-h',h);
     var a=el('a','text-decoration:none;color:inherit;display:block;'); a.href=p.url;
     var img=(p.featured_image||'').replace(/^\/\//,'https://');
@@ -50,18 +50,18 @@
     var eigen=(p.tags||[]).some(function(x){return /selbst-gestalten|personalized|wunschdesign/i.test(x);});
     var v=p.variants||[], b;
     if(frei&&v.length===1&&v[0].available!==false&&!eigen){
-      b=el('button','display:block;width:calc(100% - 24px);margin:0 12px 12px;padding:10px;border:none;border-radius:8px;background:#1a1a1a;color:#fff;font-size:14px;cursor:pointer;','In den Warenkorb');
+      b=el('button','display:block;width:calc(100% - 24px);margin:auto 12px 12px;padding:10px;border:none;border-radius:8px;background:#1a1a1a;color:#fff;font-size:14px;cursor:pointer;','In den Warenkorb');
       b.type='button';
       b.addEventListener('click',function(){b.disabled=true;b.textContent='…';
         fetch('/cart/add.js',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({items:[{id:v[0].id,quantity:1}]})})
           .then(function(r){if(!r.ok)throw 0;b.textContent='✓ Im Warenkorb';b.style.background='#2e6b3f';ev('merkliste_liste_warenkorb');})
           .catch(function(){b.disabled=false;b.textContent='Nicht möglich – Produktseite öffnen';b.onclick=function(){location.href=p.url;};});});
     }else{
-      b=el('a','display:block;margin:0 12px 12px;padding:10px;border:1px solid rgba(0,0,0,.2);border-radius:8px;text-align:center;text-decoration:none;color:inherit;font-size:14px;',
+      b=el('a','display:block;margin:auto 12px 12px;padding:10px;border:1px solid rgba(0,0,0,.2);border-radius:8px;text-align:center;text-decoration:none;color:inherit;font-size:14px;',
         frei?(eigen?'Gestalten':v.length>1?'Option wählen':'Ansehen'):'Ansehen');
       b.href=p.url;
     }
-    d.appendChild(b);
+    b.className='lux-wl-btn';d.appendChild(b);
     var x=el('button','position:absolute;top:8px;right:8px;border:none;background:rgba(255,255,255,.92);border-radius:50%;width:36px;height:36px;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.15);','✕');
     x.type='button';x.className='lux-wl-rm';x.setAttribute('aria-label','Von der Merkliste entfernen');x.setAttribute('data-h',h);
     d.appendChild(x);return d;
