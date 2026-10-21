@@ -12582,3 +12582,8 @@ sportuhr-mit-smart-assistant-wetter-musik-blut-626400	2501150348211626600	7	8.10
 mini-feuchtigkeitsspender-fur-fahrzeuge-682624	1602246835496824832	7	8.10	ok	landeseite
 elektrischer-3-jet-luftbefeuchter-900992	1601752632970981376	16	13.28	ok	landeseite
 vulkanischer-ultraschall-luftbefeuchter-252864	1598580034598612992	7	23.43	ok	landeseite
+keramik-reis-topf-mit-offener-flamme-627100	2505261335321627300	11	40.88	ok	landeseite
+mini-luftbefeuchter-fur-zuhause-592768	1598153258906955776	7	10.58	ok	landeseite
+holzkiste-mit-luftfeuchtigkeitsmessgerat-958016	1597511904543649792	4	59.45	ok	landeseite
+keramik-blumentopf-621200	2505190255481621700	16	25.05	ok	landeseite
+tassen-fur-heissen-tee-619300	2505180731141619600	16	7.25	ok	landeseite
