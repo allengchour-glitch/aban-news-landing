@@ -8383,3 +8383,21 @@ gid://shopify/Product/15485407265153	zugeordnet	8	Rüschenkleid mit Spitze
 gid://shopify/Product/15485407330689	zugeordnet	36	Neckholder Minikleid
 gid://shopify/Product/15485407396225	zugeordnet	9	Retro Polka-Dot Neckholder Minikleid
 gid://shopify/Product/15485407527297	zugeordnet	36	Western Cowboy Wildleder Fransen Langarmshirt
+gid://shopify/Product/15495229833601	zugeordnet	24	Chunky Casual Sandalen mit Kreuzriemen
+gid://shopify/Product/15495229931905	zugeordnet	40	Flache Sandalen aus echtem Leder
+gid://shopify/Product/15495230062977	zugeordnet	20	Damen Keilabsatz-Sandalen mit Farbblock-Design
+gid://shopify/Product/15495230226817	bild-urls-tot
+gid://shopify/Product/15495230357889	zugeordnet	14	Bequeme Leder-Flats mit Klettverschluss
+gid://shopify/Product/15495230521729	zugeordnet	14	Bequeme Leder-Sandalen mit Klettverschluss
+gid://shopify/Product/15495231930753	zugeordnet	24	Atmungsaktive Mesh Freizeit-Sneakers mit Plateau
+gid://shopify/Product/15495232127361	zugeordnet	20	Britische Low-Top Leder-Sneaker für Herren
+gid://shopify/Product/15495232356737	zugeordnet	24	Britische Herren Freizeitschuhe mit Absatzerhöhung
+gid://shopify/Product/15495232848257	zugeordnet	18	Chunky Dad Sneakers mit Mesh-Obermaterial
+gid://shopify/Product/15495233044865	zugeordnet	18	Herren Casual Sportschuhe Stylisch & Vielseitig
+gid://shopify/Product/15495233470849	zugeordnet	21	Leichte, atmungsaktive Herren-Sneaker
+gid://shopify/Product/15495234257281	zugeordnet	16	Derby Loafers im Britischen Casual-Stil
+gid://shopify/Product/15495234552193	zugeordnet	40	Leichte Slip-on Freizeitschuhe für Herren
+gid://shopify/Product/15495234716033	zugeordnet	10	Minimalistische Chunky Sohlen Freizeitschuhe
+gid://shopify/Product/15495234814337	zugeordnet	48	Herren Loafer aus Wildlederimitat
+gid://shopify/Product/15495235142017	zugeordnet	24	Kinder Sneaker Sommer Atmungsaktiv
+gid://shopify/Product/15495235273089	zugeordnet	24	Kinder-Badesandalen mit Schleife
