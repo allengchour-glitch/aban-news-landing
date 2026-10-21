@@ -12570,3 +12570,4 @@ manner-sportuhr-mit-lichtsensor-606900	2504230727131607200	7	6.41	ok	landeseite
 old-money-stil-v-ausschnitt-sweaterjacke-618200	2604230133101618800	16	13.40	ok	landeseite
 business-polo-mit-kontrastfarbe-611400	2604200614461612000	16	7.69	ok	landeseite
 dt-sports-watch-mit-herzfrequenz-und-bluetooth-622200	2504170838531622500	7	7.76	ok	landeseite
+herren-modisch-high-neck-cardigan-pullover-her-608200	2604190314591608700	16	11.60	ok	landeseite
