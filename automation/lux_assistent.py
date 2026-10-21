@@ -5,8 +5,8 @@ Betreiber 21.10.: «smartbot auf shopify ist zu teuer — machst du es gratis un
 ist ein Theme-Abschnitt ohne App, ohne KI-Dienst, ohne Server: feste Antworten zu Versand, Lieferzeit, Rückgabe, Zahlung, Sendungsverfolgung
 und Kontakt + Produktsuche über /search/suggest.json. Er hängt in sections/footer-group.json.
 
-  --einbauen   Sicherung der Live-Gruppe, Abschnittsdatei hochladen, Gruppe um «lux_assistent» ergänzen, Rücklesen   (DRY=1 zeigt nur)
-  --zurueck    Abschnitt aus der Live-Gruppe nehmen und die Datei löschen (die Gruppe wird LIVE gelesen, Zwischenänderungen bleiben)
+  --einbauen   (nur mit --ja scharf, sonst Trockenlauf) Sicherung der Live-Gruppe, Abschnittsdatei hochladen, Gruppe um «lux_assistent» ergänzen, Rücklesen   (DRY=1 zeigt nur)
+  --zurueck    (nur mit --ja scharf) Abschnitt aus der Live-Gruppe nehmen und die Datei löschen (die Gruppe wird LIVE gelesen, Zwischenänderungen bleiben)
   --wache      prüft: Datei live, Gruppe verweist darauf, Inhalt = Repo-Fassung, jede feste Antwort ist noch durch die Richtlinien gedeckt
                (Zahlen/Fristen/Zahlarten), jeder verlinkte Abschnitt existiert. Schreibt dropship/_lux_assistent_stand.json
   --zeile      Ampelzeile (leer = in Ordnung; ⚠️ bei Befund oder wenn der Stand älter als 36 h ist)
@@ -283,6 +283,11 @@ if __name__ == "__main__":
     a = sys.argv[1:]
     if "--selbsttest" in a:
         sys.exit(selbsttest())
+    if ("--einbauen" in a or "--zurueck" in a) and "--ja" not in a and not DRY:
+        # 21.10.2026: `--einbauen --help` lief OHNE Rückfrage scharf und schrieb ins Live-Theme (unbekannte Schalter wurden ignoriert).
+        # Schreibende Aktionen laufen nur mit ausdrücklichem --ja; sonst Trockenlauf.
+        DRY = True
+        print("Trockenlauf (zum Ausführen --ja anhängen)")
     if "--einbauen" in a:
         sys.exit(einbauen())
     if "--zurueck" in a:
