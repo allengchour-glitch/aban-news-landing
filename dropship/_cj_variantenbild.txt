@@ -8454,3 +8454,14 @@ gid://shopify/Product/15485490528641	zugeordnet	32	Peep-Toe Sandalen mit Blockab
 gid://shopify/Product/15485495804289	zugeordnet	60	3D Retro Muster A-Linien-Kleid für Damen
 gid://shopify/Product/15485496295809	zugeordnet	72	Elegantes Freizeitkleid mit A-Linie
 gid://shopify/Product/15485496525185	zugeordnet	8	Spitzenkleid mit V-Ausschnitt & Rückenausschnitt
+gid://shopify/Product/15485496951169	zugeordnet	16	Kurzes Neckholder-Kleid aus Satin-Mix
+gid://shopify/Product/15485497147777	zugeordnet	12	Elegantes Tüllkleid mit Blumenprint
+gid://shopify/Product/15485497311617	zugeordnet	6	Elegantes Meerjungfrauen-Set aus Chiffon
+gid://shopify/Product/15485497966977	zugeordnet	6	Rüschenbluse mit 3D-Effekt
+gid://shopify/Product/15485600072065	zugeordnet	99	Geflochtene Sandalen für Damen
+gid://shopify/Product/15485600170369	zugeordnet	27	Winterstiefel für Damen
+gid://shopify/Product/15485600301441	zugeordnet	30	Mary Jane High Heels mit Blockabsatz
+gid://shopify/Product/15485600498049	zugeordnet	12	Französische Ballet Flats mit eckiger Spitze
+gid://shopify/Product/15485612523905	zugeordnet	33	Herren Badesandalen – Leicht & Rutschfest
+gid://shopify/Product/15485613179265	zugeordnet	20	Outdoor Sommer-Flip-Flops für Herren
+gid://shopify/Product/15485613244801	zugeordnet	20	Herren Outdoor-Pantoletten mit Zehenriemen
