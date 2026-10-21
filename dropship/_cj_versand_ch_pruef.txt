@@ -12667,3 +12667,4 @@ drei-pack-reine-baumwollhandtucher-618600	2603181130011619400	16	13.16	ok	landes
 retro-leopard-hose-cropped-614100	2603200250441614500	16	9.75	ok	landeseite
 vintage-ripped-jeans-600400	2603200246401600800	16	16.28	ok	landeseite
 6-teiliges-badtuch-set-aus-baumwolle-611200	2602080123511611600	16	16.64	ok	landeseite
+retro-cow-workshorts-607600	2603200240271608000	16	11.96	ok	landeseite
