@@ -12315,3 +12315,4 @@ edelstahl-duschkopf-mit-druck-632400	2604080611141632800	16	9.80	ok	landeseite
 einfache-hundeleine-fur-mittelgrosse-und-gross-622500	2603150226341622800	16	6.01	ok	landeseite
 ghost-pearl-diy-dekorationskit-620500	2607111134441621100	16	7.43	ok	landeseite
 hundeleine-ohne-handreiben-611200	2603150214121611700	16	6.95	ok	landeseite
+stretch-tuch-fur-kopf-und-haar-638600	2607110719341639200	16	7.71	ok	landeseite
