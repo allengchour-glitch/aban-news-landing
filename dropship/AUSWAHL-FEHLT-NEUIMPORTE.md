@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-21 14:39 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-21 15:57 UTC)
 
-Suche: `status:active AND created_at:>=2026-10-18` · gemessen 387 · **211 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 183, teilweise: 17, keine: 11; Preisspanne > 2×: 33) · 1 CJ-Variante: 176 · ohne Antwort: 0
+Suche: `status:active AND created_at:>=2026-10-18` · gemessen 385 · **209 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 182, teilweise: 16, keine: 11; Preisspanne > 2×: 33) · 1 CJ-Variante: 176 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -214,6 +214,4 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Achtfarbige Lidschatten-Palette Hexagonal Star Diamond (`achtfarbige-lidschatten-palette-hexagonal-star-545536`) | 2 | 2 | 2.57–2.57 | 16.90 | Taro powder purple plate, Honey orange yellow plate |
 | Feines Perlen-Matte Fixierpuder (`feines-perlen-matte-fixierpuder-442560`) | 2 | 2 | 11.44–11.44 | 20.90 | Fine pearl, Matte |
 | Lernspielzeug für Kinder – Hundert-Zahlen-Tafel (`lernspielzeug-fur-kinder-hundert-zahlen-tafel-607600`) | 2 | 2 | 2.67–3.95 | 27.90 | Hundred count Board, Hundreds Of Boxes |
-| Bohrlehre für präzise Holzbearbeitung (`bohrlehre-fur-prazise-holzbearbeitung-dae135`) | 2 | 1 | 23.0–23.0 | 46.90 | Red, Blue |
-| Crimpzange für Kabel (`crimpzange-fur-kabel-bfd16d`) | 2 | 2 | 5.38–5.54 | 17.90 | 08, 06 |
 | Schleifscheibe flach – Korngrösse 80 (`schleifscheibe-flach-korngrosse-80-a561f5`) | 2 | 2 | 0.48–0.48 | 16.90 | 60number, 80number |

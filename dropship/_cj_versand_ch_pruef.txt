@@ -12834,3 +12834,15 @@ herrenquarzarmbanduhr-612200	2602040255521613200	7	6.18	ok	landeseite
 leuchtende-multifunktions-quarzuhr-mit-doppeld-602400	2602030247401602800	7	5.72	ok	landeseite
 jugendvoll-studentenuhr-mit-canvas-armband-606500	2602020941191606900	7	5.82	ok	landeseite
 etui-kleid-mit-tragern-kristall-applikationen-618400	2607130717021619200	16	10.83	ok	landeseite
+herrenuhr-mit-edelstahlband-und-kalenderfunkti-613800	2601310959141614100	7	6.67	ok	landeseite
+gelb-puffarmel-kleid-mit-schnurdetail-632600	2607130446531633400	16	8.25	ok	landeseite
+multifunktionaler-herren-elektronik-wasserdich-617500	2601300915561617900	7	6.09	ok	landeseite
+retro-chiffon-kleid-mit-ruschen-630000	2607130205301630600	16	8.79	ok	landeseite
+premium-wasserdichte-herrenuhr-604800	2601260945071605200	16	7.57	ok	landeseite
+leder-rucksack-fur-herren-630800	2603020142501631200	16	24.67	ok	landeseite
+ohne-armel-taille-schmaler-damenkleid-619000	2607061151231619700	16	8.79	ok	landeseite
+grosses-unisex-rucksack-636900	2602260718471637200	16	14.96	ok	landeseite
+mannliche-sportuhr-mit-quarzwerk-607200	2601260546171607500	7	6.90	ok	landeseite
+einfacher-stadt-rucksack-624400	2602260706331624700	16	14.96	ok	landeseite
+casual-kapuzenpullover-605800	2607130449571606400	16	8.53	ok	landeseite
+fashionable-herren-armbanduhr-608300	2601230849061608600	7	8.19	ok	landeseite
