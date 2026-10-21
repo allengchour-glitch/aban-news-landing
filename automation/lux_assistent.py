@@ -46,7 +46,8 @@ FAKTEN = [
     ("TERMS_OF_SERVICE", "Apple Pay", "Apple Pay"),
     ("TERMS_OF_SERVICE", "Google Pay", "Google Pay"),
     ("CONTACT_INFORMATION", "info@luxestyle.ch", "info@luxestyle.ch"),
-    ("CONTACT_INFORMATION", "+41 79 538 28 14", "+41 79 538 28 14"),
+    ("PAGE:kontakt-support", "Antwort in der Regel innert 24 Stunden an Werktagen", "Antwort in der Regel innert 24 Stunden an Werktagen"),
+    ("PAGE:versand-lieferung", "Sendungsnummer folgt in einer zweiten E-Mail", "Sendungsnummer folgt in einer zweiten E-Mail"),
 ]
 
 
@@ -153,6 +154,8 @@ def einbauen():
     print(f"Rücklesen: Abschnittsdatei gleich {ok_s} · Gruppe verweist {ok_g}")
     if ok_s and ok_g:
         open(AKTIV, "w", encoding="utf-8").write(datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d") + "\tBetreiber «smartbot zu teuer, gratis und besser» (21.10.2026): Assistent eingebaut; Rückbau: python3 automation/lux_assistent.py --zurueck\n")
+    if ok_s and ok_g:
+        wache()          # sofort einen ersten Stand schreiben — ohne STAND bliebe der Assistent ungemessen, bis der Aufseher läuft
     return 0 if ok_s and ok_g else 1
 
 
@@ -166,13 +169,14 @@ def zurueck():
         datei_schreiben(gql, tid, GRUPPE_DATEI, gruppe_ohne(alt))
         print("Verweis aus der Gruppe entfernt")
     if not DRY:
-        for f in (AKTIV, STAND):
-            try: os.remove(f)
-            except OSError: pass
         try:
             datei_loeschen(gql, tid, SEKTION_DATEI); print("Abschnittsdatei gelöscht")
         except RuntimeError as e:
-            print(f"Abschnittsdatei nicht gelöscht: {e}")
+            print(f"⚠️ Abschnittsdatei nicht gelöscht: {e} — Marken bleiben, die Wache meldet es")
+            return 1
+        for f in (AKTIV, STAND):          # erst jetzt: eine übriggebliebene Datei ohne Wache wäre unbemerkt
+            try: os.remove(f)
+            except OSError: pass
     return 0
 
 
@@ -190,6 +194,9 @@ def wache():
     if not gruppe or not verweist(gruppe):
         befunde.append("footer-group.json verweist nicht (mehr) auf den Assistenten")
     pol = {p["type"]: _text(p["body"]) for p in gql("{shop{shopPolicies{type body}}}")["shop"]["shopPolicies"]}
+    for quelle_id in sorted({f[0] for f in FAKTEN if f[0].startswith("PAGE:")}):
+        n = gql('query($q:String!){pages(first:1,query:$q){nodes{handle body}}}', {"q": "handle:" + quelle_id[5:]})["pages"]["nodes"]
+        pol[quelle_id] = _text(n[0]["body"]) if n and n[0]["handle"] == quelle_id[5:] else ""
     befunde += fakten_pruefen(pol, quelle)
     seiten, kolls = links_aus_quelle(quelle)
     for h in seiten:
@@ -215,7 +222,9 @@ def zeile(jetzt=None, stand=None):
         try:
             stand = json.load(open(STAND, encoding="utf-8"))
         except Exception:
-            return ""        # noch nicht eingebaut / nie geprüft — kein Alarm, die Wache existiert erst mit dem Einbau
+            if os.path.exists(AKTIV):
+                return "⚠️ ASSISTENT: eingebaut, aber nie geprüft (kein Stand) — läuft die Wache im Aufseher?"
+            return ""        # nicht eingebaut — kein Alarm
     try:
         t = datetime.datetime.strptime(stand["stand"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=datetime.timezone.utc)
     except Exception:
@@ -236,7 +245,8 @@ def selbsttest():
     quelle = open(QUELLE, encoding="utf-8").read()
     pol_ok = {"SHIPPING_POLICY": "ab CHF 50 gratis. Liechtenstein CHF 14.90. 2–3 Werktage, 7–14 Werktage, 10–20 Werktage, 15–45 Tage",
               "REFUND_POLICY": "30-tägiges Rückgaberecht … innerhalb von 7 Tagen nach Erhalt … spätestens innerhalb von 14 Tagen nach Eingang",
-              "TERMS_OF_SERVICE": "TWINT PayPal Klarna Apple Pay Google Pay", "CONTACT_INFORMATION": "info@luxestyle.ch +41 79 538 28 14"}
+              "TERMS_OF_SERVICE": "TWINT PayPal Klarna Apple Pay Google Pay", "CONTACT_INFORMATION": "info@luxestyle.ch",
+              "PAGE:kontakt-support": "Antwort in der Regel innert 24 Stunden an Werktagen", "PAGE:versand-lieferung": "Die Sendungsnummer folgt in einer zweiten E-Mail, sobald"}
     soll(fakten_pruefen(pol_ok, quelle), [], "Quelle stimmt mit Richtlinien überein")
     pol_neu = dict(pol_ok, SHIPPING_POLICY=pol_ok["SHIPPING_POLICY"].replace("CHF 50", "CHF 60"))
     b = fakten_pruefen(pol_neu, quelle)
@@ -262,6 +272,8 @@ def selbsttest():
     soll(zeile(jetzt, {"stand": frisch, "befunde": ["x"]}).startswith("⚠️"), True, "Befund → ⚠️")
     soll("50 h" in zeile(jetzt, {"stand": alt, "befunde": []}), True, "Stand 50 h alt → ⚠️")
     soll(zeile(jetzt, {"stand": "kaputt", "befunde": []}).startswith("⚠️"), True, "Stand unlesbar → ⚠️")
+    soll("+41 79" in quelle, False, "Telefonnummer steht nicht im Assistenten")
+    soll("versenden wir gratis" in quelle, False, "keine unbedingte Gratis-Zusage für CH-Lager")
     if fehler:
         print("\n".join("❌ " + f for f in fehler)); return 1
     print("✅ Selbsttest lux_assistent: alle Fälle richtig"); return 0
