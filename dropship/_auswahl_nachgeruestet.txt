@@ -3462,3 +3462,6 @@
 16654277476743	Farbe:4:4+ki	2026-10-21	holiday-limited-christmas-lipgloss-set-608400
 16654273118599	Farbe:2:2+ki	2026-10-21	durchsichtiger-lippen-und-wangen-tint-601500
 16654126055815	Farbe:4:4+ki	2026-10-21	lipgloss-fur-glanzende-lippen-638100
+15493321556353	Grösse:7:7	2026-10-21	breiter-ring-mit-eis-perlmutt-effekt-hellblau-629000
+15493321130369	Modell:5:5	2026-10-21	eleganter-blumenring-aus-18k-vergoldetem-edels-611900
+15493320638849	Modell:10:10	2026-10-21	naturkristall-armband-verschiedene-designs-608400
