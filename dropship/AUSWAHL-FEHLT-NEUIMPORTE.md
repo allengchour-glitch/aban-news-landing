@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-21 08:01 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-21 09:18 UTC)
 
-Suche: `status:active AND created_at:>=2026-10-18` · gemessen 397 · **229 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 204, teilweise: 15, keine: 10; Preisspanne > 2×: 32) · 1 CJ-Variante: 168 · ohne Antwort: 0
+Suche: `status:active AND created_at:>=2026-10-18` · gemessen 384 · **216 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 191, teilweise: 15, keine: 10; Preisspanne > 2×: 31) · 1 CJ-Variante: 168 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -58,7 +58,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | HDMI-Distributor 4K Splitter mit USB-Ladeanschluss (`hdmi-distributor-4k-splitter-mit-usb-ladeansch-616200`) | 12 | 12 | 2.46–3.69 | 16.90 | 4K(HW HD102M)-American Standard, 4K(HW HD102M)-European Standard, 4K(HW HD102M)-USB Charger Lead, 1080P(HW HD102)-American Standard |
 | Seiten-Autoaufkleber für Tür und Zierleiste (`seiten-autoaufkleber-fur-tur-und-zierleiste-064640`) | 12 | 12 | 3.23–3.23 | 18.90 | Matte gold-2pcs, Bright orange-2pcs, Matte silver-2pcs, Bright red-2pcs |
 | USB-C 7-in-1 Dock mit HDMI-Ausgang und Kabeltrennung (`usb-c-7-in-1-dock-mit-hdmi-ausgang-und-kabeltr-612700`) | 11 | 8 | 2.19–24.71 | 38.90 | 7 In 1, 4 In 1, 5 In 1, 6 In 1 |
-| Grosses Tote Crossbody für Frauen (`grosses-tote-crossbody-fur-frauen-620300`) | 11 | 11 | 6.77–7.03 | 23.90 | Black, Brown, Gray, Pink |
 | Fahrradhelm mit Visier (`fahrradhelm-mit-visier-605700`) | 11 | 11 | 5.38–5.38 | 17.90 | Chinese Red-Free Size, Blue And White-Free Size, Black And Blue-Free Size, Pink-Free Size |
 | Grosses Dry-Wet Trennungs-Rucksack-Tagesrucksack (`grosses-dry-wet-trennungs-rucksack-tagesrucksa-603500`) | 10 | 10 | 5.14–5.14 | 22.90 | Pink, Light Purple, Black, Fog And Haze Blue |
 | Wollschal mit Wursthunde-Print (`wollschal-mit-wursthunde-print-614400`) | 10 | 10 | 3.35–3.35 | 16.90 | Pearl White-170cm, Beige-170cm, Light Gray-170cm, Khaki-170cm |
@@ -87,9 +86,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | 28-teilige Weihnachtsbaumschmuck-Kugel-Set (`28-teilige-weihnachtsbaumschmuck-kugel-set-602500`) | 8 | 8 | 3.19–3.19 | 16.90 | Red Style, Gold Style, Dark Green, Light Blue |
 | Makeup-Set mit Lippenstift, Rouge und Augenstift (`makeup-set-mit-lippenstift-rouge-und-augenstif-620000`) | 8 | 8 | 38.97–43.95 | 69.90 | Swan Lake Gift Box, Ballet Dream Gift Box, Dawn Endless Summer Gift Box, Shell Wind Chime Gift Box |
 | Makeup-Set mit Eyeshadow, Rouge und Foundation (`makeup-set-mit-eyeshadow-rouge-und-foundation-617300`) | 8 | 8 | 2.99–5.8 | 17.90 | ZP A05 003301, ZP A05 003302, ZP A05 003303, ZP A05 003304 |
-| Herren Crossbody Tasche Vollnarbenleder (`herren-crossbody-tasche-vollnarbenleder-639800`) | 8 | 8 | 4.92–4.92 | 20.90 | 6035 Black, 6035 Coffee, 6035 Brown, 6036 Black |
 | Handliches Kosmetik-Set mit grossem Fassungsvermögen (`handliches-kosmetik-set-mit-grossem-fassungsve-639100`) | 8 | 8 | 8.79–8.79 | 53.90 | Black Crocodile Pattern, Black Tabby, Brown Plaid, Red Crocodile Pattern |
-| Smartwatch mit Blut-Zucker- (`smartwatch-mit-blut-zucker-627700`) | 8 | 8 | 9.55–10.42 | 19.90 | Black Silicone, Silver Black Silicone, Black Belt, Silver Brown Leather |
 | M10PLUS Ultra Clear Projektor 720p (`m10plus-ultra-clear-projektor-720p-604800`) | 8 | 8 | 46.53–46.53 | 76.90 | White-EU, White-UK, White-US, White-AU |
 | Taktische Umhängetasche für Outdoor-Sport (`taktische-umhangetasche-fur-outdoor-sport-624800`) | 7 | 7 | 5.03–5.03 | 18.90 | Black-Below 20L, Brown-Below 20L, Italian Camouflage-Below 20L, Dark Night-Below 20L |
 | Umhängetasche mit Rautenmuster (`umhangetasche-mit-rautenmuster-623000`) | 7 | 7 | 7.99–7.99 | 21.90 | Color, Silver, Black Gold Diamand, Green |
@@ -123,10 +120,8 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Wasserglanz-Lippenstift (`wasserglanz-lippenstift-624500`) | 6 | 6 | 6.97–6.97 | 16.90 | 01 Peony Ballet-4G, 02 Milk Flavor Peanut-4G, 03 Warm Rose-4G, 04 Grape Path-4G |
 | Grosser, dicker, warmer Split-Schal (`grosser-dicker-warmer-split-schal-658200`) | 6 | 6 | 5.97–5.97 | 20.90 | Gray-155cm, Amber-155cm, Camel-155cm, Dark Khaki Cloth Color-155cm |
 | Foundation Stick für feines Contouring (`foundation-stick-fur-feines-contouring-632800`) | 6 | 6 | 2.77–2.77 | 16.90 | 01 IVORY, 02 NATURAL BEIGE, 03 LIGHT SAND, 04 WARM ALMOND |
-| Isolierte Picknicktasche 13 L Schultertasche (`isolierte-picknicktasche-13-l-schultertasche-623600`) | 6 | 6 | 7.29–8.33 | 29.90 | Black-Single layer 13L, Black-Double layer 18L, Green-Single layer 13L, Green-Double layer 18L |
 | 6-Farben-Lidschatten-Palette, matt (`6-farben-lidschatten-palette-matt-118656`) | 6 | 6 | 4.38–4.38 | 16.90 | 1 Style, 2 Style, 3 Style, 4 Style |
 | Monochrome Lidschatten-Palette – 6 Farben (`monochrome-lidschatten-palette-6-farben-070464`) | 6 | 6 | 3.66–3.66 | 16.90 | White Night Diamond, Wandering Starlight, Golden Brown Cowherd, Aimu powder purple |
-| Thermochromatische Skimaske – einheitliche Grösse (`thermochromatische-skimaske-einheitliche-gross-638700`) | 6 | 6 | 5.48–5.48 | 16.90 | Camouflage-Free Size Flexible, Vibrant Orange-Free Size Flexible, Ink Feather Blue-Free Size Flexible, Far Mountain Gray-Free Size Flexible |
 | Zweifarbige Orchidee zum Zusammenbauen (`zweifarbige-orchidee-zum-zusammenbauen-608600`) | 6 | 6 | 6.68–12.85 | 33.90 | Two Toned Orchid, Champagne Orchid, Vanda Orchid, Qidailan |
 | Sportliche Umhängetasche aus Polyester, einfarbig (`sportliche-umhangetasche-aus-polyester-einfarb-626400`) | 5 | 5 | 5.47–8.79 | 25.90 | Charcoal Black Lightweight, Derm Black Lightweight, Charcoal Black Upgrade, Derm Black Upgrade |
 | Wanddekoration im Bauhaus-Stil (`wanddekoration-im-bauhaus-stil-626600`) | 5 | 5 | 10.24–10.24 | 20.90 | Blue And Red-40x60cm, Coffee Brown-40x60cm, Coffee Color-40x60cm, Spring Green-40x60cm |
@@ -144,8 +139,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Geflochtene Vase aus Pflanzenfasern (`geflochtene-vase-aus-pflanzenfasern-624400`) | 5 | 5 | 12.94–14.59 | 46.90 | Pupian-S, Pupian-L, Stripes-S, Stripes-L |
 | Wasserfeste, schweissresistente Foundation (`wasserfeste-schweissresistente-foundation-600700`) | 5 | 5 | 2.11–2.11 | 16.90 | SNOW, NATURAL PORCELAIN,  NATURAL BEIGE, COOKIE |
 | Korrektur- und Farbwechsel Foundation-Stick (`korrektur-und-farbwechsel-foundation-stick-623500`) | 5 | 5 | 2.81–2.81 | 16.90 | Complexion, Natural color, Ivory white, Dark complexion |
-| Sport-Smartwatch für Herren, 50 mm, TPU-Armband (`sport-smartwatch-fur-herren-50-mm-tpu-armband-629300`) | 5 | 5 | 4.86–4.86 | 16.90 | Gold, Titanium Color, Blue, Black |
-| 2K HD Smart Wi-Fi Innenkamera (`2k-hd-smart-wi-fi-innenkamera-623000`) | 5 | 5 | 11.81–32.64 | 44.90 | White-No Memory, White-16GB, White-32g, White-64g |
 | UV-Harzkleber für Schmuckformen (`uv-harzkleber-fur-schmuckformen-97affa`) | 5 | 0 | 1.2–9.42 | 18.90 | Q60G, Q25G, Q10G, Q15G |
 | Damen-Uhr mit Strasssteinen (`damen-uhr-mit-strasssteinen-625300`) | 5 | 5 | 10.24–10.24 | 19.90 | Silver Black, Silver Gray, Silver Blue, Silver Green |
 | Iris-Blumenring (`iris-blumenring-631400`) | 4 | 4 | 2.11–2.11 | 16.90 | Iris Flower Ring 6028-No 6, Iris Flower Ring 6028-No 7, Iris Flower Ring 6028-No 8, Iris Flower Ring 6028-No 9 |
@@ -197,9 +190,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Augenlidschatten-Palette Fruit Series, 12 Farben (`augenlidschatten-palette-fruit-series-12-farbe-224000`) | 3 | 3 | 3.45–3.45 | 16.90 | Orange, Pink, Purple |
 | Leichtgewichtiger nahtloser zweiköpfiger Foundation-Stick (`leichtgewichtiger-nahtloser-zweikopfiger-found-603300`) | 3 | 3 | 2.63–2.63 | 16.90 | ivory white, natural color, deep skin color |
 | Wimpern-Try-On-Cards – 12-Farben-Set (`wimpern-try-on-cards-12-farben-set-616300`) | 3 | 3 | 2.63–5.03 | 16.90 | Fine Makeup, Full Makeup And Light Makeup, Light Makeup |
-| Foundation Stick (`foundation-stick-633800`) | 3 | 3 | 2.28–2.28 | 16.90 | Dark complexion, Ivory white, Natural color |
 | Geldbörse mit mehreren Kartenfächern aus Leder (`geldborse-mit-mehreren-kartenfachern-aus-leder-623300`) | 3 | 3 | 18.41–18.41 | 36.90 | 241044F4O1, 241044F4W1, 241044F4A1 |
-| Umhängetasche für Kurztrips, unisex (`umhangetasche-fur-kurztrips-unisex-610600`) | 3 | 3 | 14.24–14.24 | 43.90 | Black, Brown, 0892 Black |
 | Lidschattenpalette 8 Farben Rosa Matt (`lidschattenpalette-8-farben-rosa-matt-840384`) | 3 | 3 | 2.08–2.08 | 16.90 | Moss lake, Platycodon twilight, Persimmon Flower Sea |
 | Matte Perlmutt-Lidschatten – 8 Farben (`matte-perlmutt-lidschatten-8-farben-680064`) | 3 | 3 | 3.66–3.66 | 16.90 | Color1, Color2, Color3 |
 | Drohne mit HD-Kamera und Bildschirmsteuerung (`drohne-mit-hd-kamera-und-bildschirmsteuerung-617900`) | 3 | 3 | 16.67–20.14 | 33.90 | Orange Black-Electric Version, Orange Black-Second Electric Version, Orange Black-Three level Version |
@@ -227,11 +218,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Nachtlicht für Schlafzimmer mit eingebaute Batterie (`nachtlicht-fur-schlafzimmer-mit-eingebaute-bat-620800`) | 2 | 2 | 5.03–5.03 | 18.90 | Pointed Toe, Crown |
 | Smart Lamp mit RGB- und Warmlicht (`smart-lamp-mit-rgb-und-warmlicht-614600`) | 2 | 2 | 9.95–11.61 | 28.90 | Matter Version, Tuya Version |
 | Matte Metall-Glitzer Lidschatten-Palette, 30 Farben (`matte-metall-glitzer-lidschatten-palette-30-fa-891840`) | 2 | 2 | 2.1–2.1 | 16.90 | 1 Style, 2 Style |
-| Silky Tip Doppelseitiger Eyeliner (`silky-tip-doppelseitiger-eyeliner-609900`) | 2 | 2 | 2.11–2.11 | 16.90 | Black 4ml, Brown 4 Ml |
-| Soft-Matte Foundation mit langer Haltbarkeit (`soft-matte-foundation-mit-langer-haltbarkeit-632500`) | 2 | 2 | 3.44–3.44 | 16.90 | Natural Color, Ivory White |
 | Contour Compact mit integriertem Highlight (`contour-compact-mit-integriertem-highlight-624400`) | 2 | 2 | 13.27–13.27 | 23.90 | Honey Corouli Plate, Strawberry Creme Cassis G B |
-| Make-up Set – Avantgarde Look (`make-up-set-avantgarde-look-653100`) | 2 | 2 | 12.54–12.54 | 25.90 | Beauty Kits 1 Foreign Edition, Beauty Kits 2 Foreign Edition |
-| Flüssige Foundation mit Concealer und Öl-Kontrolle (`flussige-foundation-mit-concealer-und-ol-kontr-640000`) | 2 | 2 | 2.63–2.63 | 16.90 | MK218 01 White, MK218 02 Natural |
 | Achtfarbige Lidschatten-Palette Hexagonal Star Diamond (`achtfarbige-lidschatten-palette-hexagonal-star-545536`) | 2 | 2 | 2.57–2.57 | 16.90 | Taro powder purple plate, Honey orange yellow plate |
 | Feines Perlen-Matte Fixierpuder (`feines-perlen-matte-fixierpuder-442560`) | 2 | 2 | 11.44–11.44 | 20.90 | Fine pearl, Matte |
 | Lernspielzeug für Kinder – Hundert-Zahlen-Tafel (`lernspielzeug-fur-kinder-hundert-zahlen-tafel-607600`) | 2 | 2 | 2.67–3.95 | 27.90 | Hundred count Board, Hundreds Of Boxes |
