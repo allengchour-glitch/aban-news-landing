@@ -10,6 +10,9 @@ set PYTHONUTF8=1
 set PYTHONIOENCODING=utf-8
 cd /d "%~dp0\..\..\.."
 if not exist data mkdir data
+REM (17. Pruefung W4) Modus "nachkontrolle": nur die Nachkontrolle von Pilot 2.0 - die zweite Aufgabe der Aufgabenplanung startet sie alle 10 Minuten und bei der Anmeldung.
+REM Ohne Vermerk im Buch ist sie nach einer Sekunde fertig. (Kein Klammerblock: darin wuerde %PY% schon beim Einlesen ersetzt, also leer.)
+if /i "%~1"=="nachkontrolle" goto :nachkontrolle_allein
 if /i "%~1"=="auto" if not "%~2"=="geloggt" (
   echo ===== %date% %time% =====>> "data\krypto-auto.log"
   call "%~f0" auto geloggt >> "data\krypto-auto.log" 2>&1
@@ -82,6 +85,23 @@ if defined FEHLER (
 :ende
 if /i not "%~1"=="auto" pause
 goto :eof
+
+:nachkontrolle_allein
+REM Lebenszeichen fuer die Ampel im Cockpit - die Aufgabe laeuft unsichtbar. Bei JEDEM Start, auch wenn gleich danach nichts zu tun ist.
+>"data\krypto-nachkontrolle-lebt.txt" echo %date% %time%
+if not exist "data\krypto-pilot2-bestand.json" goto :nk_ohne_buch
+set PY=py
+where py >nul 2>nul || set PY=python
+REM 18. Pruefung W3: EIN Durchgang mit --einmal, der naechste Takt kommt in 10 Minuten - die lange Fassung hielt die Lauf-Sperre bis 11 Minuten und liess den Tageslauf ausfallen.
+REM 18. Pruefung K5: Das Ergebnis steht in data\krypto-nachkontrolle-rc.txt, die Cockpit-Ampel wird bei einem Absturz rot. Die Umleitung steht VOR dem Befehl, damit eine Ziffer davor nie als Handle gilt.
+%PY% tools\trading\krypto_bot\pilot.py --nachkontrolle --einmal >> "data\krypto-nachkontrolle.log" 2>&1
+set "NKRC=%errorlevel%"
+>"data\krypto-nachkontrolle-rc.txt" echo %date% %time% rc=%NKRC%
+exit /b %NKRC%
+:nk_ohne_buch
+REM 19. Pruefung: ohne Buch gibt es nichts zu pruefen - der Rueckgabewert 0 ueberschreibt einen alten Absturz-Wert, sonst zeigte die Ampel bis zu 30 Minuten falsch Rot.
+>"data\krypto-nachkontrolle-rc.txt" echo %date% %time% rc=0
+exit /b 0
 
 :schritt
 REM %1 Name, %2 Skript, %3 Argument. Rueckgabe: 0 ok, 3 Warnung (hat sich schon selbst gemeldet), sonst Absturz.

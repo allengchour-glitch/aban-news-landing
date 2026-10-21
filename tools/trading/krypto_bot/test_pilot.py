@@ -178,6 +178,21 @@ with _tf.TemporaryDirectory() as _sd:
         _lebt = True
     _lk.unlink(missing_ok=True)
     pruefe("Sperre mit Herzschlag vor 100 s: der Lauf lebt noch, auch mit ALT_NACH_TOT keine Übernahme", _lebt)
+    # (19. Prüfung, klein 3) Uhr zurück: starb der Halter und sprang die Uhr danach zurück, trägt die Sperre eine Änderungszeit «aus der Zukunft» — sie galt erst nach Δ + alt_nach als tot (der Tageslauf wurde abgewiesen,
+    # die Nachkontrolle übersprang still). Jetzt gilt sie als tot, sobald sie MEHR als alt_nach vorausliegt; eine kleine Abweichung (Uhren-Ungenauigkeit) bleibt eine lebende Sperre.
+    for _vor, _alt_n, _tot_erwartet in ((2000, None, True), (200, SP.ALT_NACH_TOT, True), (20, SP.ALT_NACH_TOT, False), (200, None, False), (-200, SP.ALT_NACH_TOT, True)):
+        _lk.write_text("1 0")
+        _os.utime(_lk, (_time.time() + _vor, _time.time() + _vor))  # (-200: eine ganz gewöhnliche tote Sperre, 200 s alt — die bisherige Regel bleibt)
+        _t0 = _time.time()
+        try:
+            with SP.lauf_sperre(ordner=_sd, warten=0, **({} if _alt_n is None else {"alt_nach": _alt_n})):
+                _uebernommen = True
+        except SP.Besetzt:
+            _uebernommen = False
+        _dauer_z = _time.time() - _t0
+        _lk.unlink(missing_ok=True)
+        # die Dauer gehört zum Urteil: eine zu früh «tote» Sperre aus der Zukunft liesse die Schleife bis zum Einholen der Änderungszeit drehen (Δ Sekunden Dauerlauf, dann Besetzt) — gleiches Ergebnis, aber 20 s Last
+        pruefe(f"Sperre aus der Zukunft (Änderungszeit {_vor:+d} s, alt_nach={'900 (Standard)' if _alt_n is None else _alt_n}): {'als tot übernommen' if _tot_erwartet else 'lebt (nicht übernommen)'}, sofort (keine Warteschleife)", _uebernommen is _tot_erwartet and _dauer_z < 5, (_uebernommen, _dauer_z))
     _alt_hz = SP.HERZSCHLAG
     SP.HERZSCHLAG = 0.05
     try:
@@ -339,6 +354,40 @@ with _tf.TemporaryDirectory() as _sd:
             SP._haken = _haken0
     pruefe("Sperre übernehmen: B sah die tote Sperre, A übernahm sie unterdessen und hält die neue — B löscht sie nicht (er prüft unter der Wache nochmals) und wird abgewiesen", _b_erg2 == ["besetzt"] and _a_erg2 == ["hat"], (_a_erg2, _b_erg2))
     _lk.unlink(missing_ok=True)
+    # (17. Prüfung W3) pruefen(): vor jedem schreibenden Auftrag — gehört die Sperre dieses Prozesses noch ihm? Ein eingefrorener Lauf (Ruhezustand) merkte sonst nicht, dass seine Sperre als tot übernommen wurde.
+    pruefe("Sperre pruefen(): ohne gehaltene Sperre nichts zu prüfen", getattr(SP, "pruefen", lambda: None)() is None)
+    with SP.lauf_sperre(ordner=_sd, warten=0):
+        _ok_eigene = getattr(SP, "pruefen", lambda: "fehlt")() is None
+        _lk.write_text("99999 0 fremd\n")  # ein anderer Lauf hat sie als tot übernommen
+        try:
+            SP.pruefen()
+            _verloren = False
+        except getattr(SP, "SperreVerloren", ()):
+            _verloren = True
+        _lk.unlink()
+        try:
+            SP.pruefen()
+            _weg = False
+        except getattr(SP, "SperreVerloren", ()):
+            _weg = True
+        _lk.write_text("1 0 x\n")  # damit das Freigeben nichts Fremdes löscht
+    _lk.unlink(missing_ok=True)
+    pruefe("Sperre pruefen(): eigene Sperre → still; fremde Marke → SperreVerloren; Datei weg → SperreVerloren", _ok_eigene and _verloren and _weg, (_ok_eigene, _verloren, _weg))
+    _read0 = Path.read_text
+
+    def _read_zickt(self, *a, **k):
+        if self.name.endswith(".lock"):
+            raise PermissionError("kurz gehalten")
+        return _read0(self, *a, **k)
+
+    with SP.lauf_sperre(ordner=_sd, warten=0):
+        Path.read_text = _read_zickt
+        try:
+            _unbekannt = getattr(SP, "pruefen", lambda: "fehlt")() is None
+        finally:
+            Path.read_text = _read0
+    pruefe("Sperre pruefen(): eine kurz nicht lesbare Datei (Virenscanner) zählt als «unbekannt» und lässt den Auftrag zu", _unbekannt)
+    pruefe("Sperre pruefen(): nach dem Freigeben ist die Sperre nicht mehr registriert (nichts mehr zu prüfen)", not getattr(SP, "_gehalten", {"x": 1}) and getattr(SP, "pruefen", lambda: None)() is None, getattr(SP, "_gehalten", None))
     # eine liegen gebliebene Wache (der Prozess starb mitten in der Übernahme) blockiert nicht für immer: nach WACHE_ALT Sekunden wird sie gelöscht, die Übernahme gelingt
     _wk = Path(_sd) / "krypto-lauf.lock.uebernahme"
     for _alter_w, _warten_w, _erw_w in ((getattr(SP, "WACHE_ALT", 30) + 60, 5, "uebernommen"), (5, 0, "besetzt")):
@@ -375,6 +424,94 @@ with _tf.TemporaryDirectory() as _sd:
     _quelle_main = _insp.getsource(_PI.main)
     pruefe("pilot.py: Tageslauf und Not-Aus-Lauf übernehmen eine Sperre ohne Herzschlag (alt_nach=ALT_NACH_TOT), beide warten lange genug dafür",
            _quelle_main.count("alt_nach=sperre.ALT_NACH_TOT") == 2 and _quelle_main.count("sperre.ALT_NACH_TOT + 40") == 2, _quelle_main.count("alt_nach=sperre.ALT_NACH_TOT"))
+
+    # ── 18. Prüfung W3′: der 10-Minuten-Takt der Aufgabenplanung macht EINEN Durchgang (`--nachkontrolle --einmal`); der Tageslauf, der die Sperre nicht bekommt, ist LAUT ──
+    _kw18 = []
+    SP.ORDNER = Path(_sd)
+    _P2L.nachkontrolle = lambda *a, **k: (_kw18.append(k), {"zeilen": [], "warnung": False, "auftraege": []})[1]
+    try:
+        _PI.nachkontrolle(einmal=True)
+        _PI.nachkontrolle()
+    finally:
+        SP.ORDNER, _P2L.nachkontrolle = _alt_ord, _alt_nk
+    pruefe("pilot.nachkontrolle(einmal=True) reicht einmal=True an Pilot 2.0 weiter; ohne Argument bleibt es die lange Fassung (einmal=False)", _kw18 == [{"einmal": True}, {"einmal": False}], _kw18)
+    _rec18, _alt_pn18, _alt_argv18 = [], _PI.nachkontrolle, sys.argv
+    _PI.nachkontrolle = lambda einmal=False: (_rec18.append(einmal), 0)[1]
+    try:
+        sys.argv = ["pilot.py", "--nachkontrolle", "--einmal"]
+        _rc18a = _PI.main()
+        sys.argv = ["pilot.py", "--nachkontrolle"]
+        _rc18b = _PI.main()
+    finally:
+        sys.argv, _PI.nachkontrolle = _alt_argv18, _alt_pn18
+    pruefe("pilot.py --nachkontrolle --einmal → nachkontrolle(einmal=True); ohne --einmal → False", _rec18 == [True, False] and _rc18a == 0 and _rc18b == 0, (_rec18, _rc18a, _rc18b))
+    import signale as _SG18  # noqa: E402
+    _gepusht18, _alt_push18 = [], _SG18.push
+    _SG18.push = lambda t, *a, **k: _gepusht18.append(t)
+    try:
+        _rcb18 = _PI.lauf_besetzt(SP.Besetzt("Ein anderer Lauf handelt gerade (seit 12 s)."), False)
+        _rct18 = _PI.lauf_besetzt(SP.Besetzt("Ein anderer Lauf handelt gerade (seit 12 s)."), True)
+    finally:
+        _SG18.push = _alt_push18
+    pruefe("Tageslauf, Sperre belegt: ein ECHTER Lauf ist eine Warnung (rc 3) mit Push — nicht mehr still rc 0; ein Probelauf wird einfach abgewiesen (rc 0, kein Push)",
+           _rcb18 == 3 and len(_gepusht18) == 1 and "NICHT gehandelt" in _gepusht18[0] and _rct18 == 0, (_rcb18, _rct18, _gepusht18))
+    _quelle_main18 = _insp.getsource(_PI.main)
+    pruefe("pilot.py main(): der Tageslauf ruft bei belegter Sperre `lauf_besetzt` (rc 3 + Push) — nicht mehr `return 0`", "return lauf_besetzt(ex, a.trocken)" in _quelle_main18, _quelle_main18[-400:])
+    # der Push der Nachkontrolle im 10-Minuten-Takt: dieselbe Meldung höchstens einmal je Stunde (sonst ~144 Pushes am Tag bei einem dauerhaft offenen Markt), eine andere sofort, die lange Fassung immer
+    _gepusht18.clear()
+    _SG18.push = lambda t, *a, **k: (_gepusht18.append(t), True)[1]  # (19. Prüfung W1) `push` gibt True nur bei zugestellter Meldung zurück
+    _pd18 = Path(_sd) / "push18.json"
+    try:
+        _r18 = [_PI._push_nachkontrolle("Meldung A", True, datei=_pd18, jetzt=1000.0),
+                _PI._push_nachkontrolle("Meldung A", True, datei=_pd18, jetzt=1600.0),
+                _PI._push_nachkontrolle("Meldung B", True, datei=_pd18, jetzt=1700.0),
+                _PI._push_nachkontrolle("Meldung B", True, datei=_pd18, jetzt=1700.0 + _PI.PUSH_ABSTAND_S + 1),
+                _PI._push_nachkontrolle("Meldung B", False, datei=_pd18, jetzt=1701.0 + _PI.PUSH_ABSTAND_S + 1)]
+    finally:
+        _SG18.push = _alt_push18
+    pruefe("Push der Nachkontrolle im 10-Minuten-Takt: gleiche Meldung nach 10 Min. still, andere Meldung sofort, nach einer Stunde wieder, die lange Fassung (einmal=False) immer",
+           _r18 == [True, False, True, True, True] and len(_gepusht18) == 4 and all("Keine Anlageberatung" in t for t in _gepusht18), (_r18, _gepusht18))
+    _pd18.write_text("{kaputt")
+    _SG18.push = lambda t, *a, **k: (_gepusht18.append(t), True)[1]
+    try:
+        _r_kaputt18 = _PI._push_nachkontrolle("Meldung C", True, datei=_pd18, jetzt=5000.0)
+    finally:
+        _SG18.push = _alt_push18
+    pruefe("Push-Drosselung: eine kaputte Drosselungs-Datei verhindert den Push nie", _r_kaputt18 is True and _gepusht18[-1].startswith("Meldung C"), _gepusht18)
+    # ── 19. Prüfung W1/K3: nur eine ZUGESTELLTE Meldung drosselt; Uhr zurück und geänderte Meldung pushen wieder ──
+    _pd19 = Path(_sd) / "push19.json"
+    _gepusht19, _antworten19 = [], [False, False, True, True]
+    _SG18.push = lambda t, *a, **k: (_gepusht19.append(t), _antworten19.pop(0))[1]
+    try:
+        _w1 = [_PI._push_nachkontrolle("Meldung D", True, datei=_pd19, jetzt=1000.0),   # Zustellung scheitert (Netz/Telegram weg) → False
+               _PI._push_nachkontrolle("Meldung D", True, datei=_pd19, jetzt=1600.0),   # NICHT gedrosselt: der erste Versuch kam nie an → False (immer noch Fehler)
+               _PI._push_nachkontrolle("Meldung D", True, datei=_pd19, jetzt=2200.0),   # kommt an → True
+               _PI._push_nachkontrolle("Meldung D", True, datei=_pd19, jetzt=2800.0)]   # jetzt gedrosselt → False, KEIN weiterer push-Aufruf
+    finally:
+        _SG18.push = _alt_push18
+    pruefe("Push-Drosselung (19. W1): eine NICHT zugestellte Meldung (push → False) drosselt nicht; erst die zugestellte Meldung drosselt die nächste",
+           len(_gepusht19) == 3 and _w1 == [False, False, True, False] and _antworten19 == [True], (_w1, _gepusht19, _antworten19))
+    _gepusht19.clear()
+    _SG18.push = lambda t, *a, **k: (_gepusht19.append(t), True)[1]
+    try:
+        _pd19b = Path(_sd) / "push19b.json"
+        _PI._push_nachkontrolle("Meldung E", True, datei=_pd19b, jetzt=10000.0)
+        _uhr_zurueck = _PI._push_nachkontrolle("Meldung E", True, datei=_pd19b, jetzt=10000.0 - 3000.0)  # Uhr springt 50 Min. zurück
+        _zeile2 = _PI._push_nachkontrolle("Meldung E\n⚠️ Markt ETH nicht gesichert", True, datei=_pd19b, jetzt=10000.0 - 2990.0)  # gleiche erste Zeile, andere zweite → ANDERE Meldung
+        _gleich = _PI._push_nachkontrolle("Meldung E\n⚠️ Markt ETH nicht gesichert", True, datei=_pd19b, jetzt=10000.0 - 2980.0)  # dieselbe nochmals → gedrosselt
+    finally:
+        _SG18.push = _alt_push18
+    pruefe("Push-Drosselung (19. K3): Uhr springt zurück → die Meldung geht wieder raus; eine Meldung mit geänderter ZWEITER Zeile ist eine andere Meldung (Kennung = ganzer Text); dieselbe nochmals wird gedrosselt",
+           _uhr_zurueck is True and _zeile2 is True and _gleich is False and len(_gepusht19) == 3, (_uhr_zurueck, _zeile2, _gleich, _gepusht19))
+    _pd19c = Path(_sd) / "push19c.json"
+    _SG18.push = lambda t, *a, **k: (_gepusht19.append(t), True)[1]
+    _gepusht19.clear()
+    try:
+        _abstand19 = [_PI._push_nachkontrolle("Meldung F", True, datei=_pd19c, jetzt=100000.0), _PI._push_nachkontrolle("Meldung F", True, datei=_pd19c, jetzt=100000.0 + 3500),
+                      _PI._push_nachkontrolle("Meldung F", True, datei=_pd19c, jetzt=100000.0 + 3700)]
+    finally:
+        _SG18.push = _alt_push18
+    pruefe("Push-Drosselung: dieselbe Meldung wird nach 58 Min. noch gedrosselt und nach 62 Min. wieder gesendet (die Stunde steht fest, nicht nur als Konstante)", _abstand19 == [True, False, True] and _PI.PUSH_ABSTAND_S == 3600 and len(_gepusht19) == 2, (_abstand19, _PI.PUSH_ABSTAND_S))
 
 # ── Pilot: Märkte, Trendlänge je Coin, Logbuch, Wochenbericht ──
 import pilot as PI  # noqa: E402

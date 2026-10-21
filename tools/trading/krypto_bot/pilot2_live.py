@@ -107,6 +107,9 @@ UNKLAR_MAX_ALTER_MS = 10 * 60 * 1000
 NACHKONTROLLE_TAKT_S = 30.0            # Nachkontrolle: so oft unklare Aufträge nachfragen …
 NACHKONTROLLE_MAX_S = UNKLAR_MAX_ALTER_MS / 1000 + 90   # … höchstens so lange (danach gilt «unbekannt» als nie ausgeführt)
 BUCH_SPERRE_WARTEN = 15  # Sekunden: so lange wartet ein Schreiber, bis ein anderer das Buch fertig geschrieben hat
+PERP_BLIND_MAX = 3            # (17. Prüfung K1) so viele Perp-Stops darf das Buch kennen, bevor bei unlesbarer Liste kein weiterer blind dazukommt
+VERMERK_VERSUCHE = 3          # (17. Prüfung W1) so oft wird der Vermerk vor dem ersten Auftrag gespeichert, bevor der Lauf auf Aufträge verzichtet
+VERMERK_WARTEN = (1.0, 3.0)   # Sekunden zwischen den Versuchen (Virenscanner und OneDrive halten die Datei meist kurz)
 BREITE_NOTSTOPS = (0.10, 0.20, 0.35)  # Not-Aus: zum Markt ging nicht → wenigstens ein weiter Not-Stop (Abstand vom letzten Kurs)
 MARKT_VERSUCHE = 5              # Not-Aus zum Markt: Teil-Ausführungen (EXPIRED) bis zu so oft mit dem Rest nachfassen
 PAAR_PAUSE_MS = 15 * 60 * 1000  # Not-Aus: Rückkauf eines Ernte-Shorts abgelehnt → das Paar so lange stehen lassen (keine Gebührenmühle)
@@ -152,6 +155,21 @@ def _voruebergehend(ex):
     return isinstance(ex, BF.NETZFEHLER)
 
 
+_RETRY_BUDGET = [None]  # (19. Prüfung W2) Sekunden, die `_nochmal` und `_platziere` zwischen Wiederholungen insgesamt noch schlafen dürfen (`_pause`) — NUR der Durchgang `einmal` der Nachkontrolle setzt sie (EINMAL_RETRY_S); None = unbegrenzt (Lauf, Not-Aus, lange Nachkontrolle)
+EINMAL_RETRY_S = 60.0   # ein Durchgang im 10-Minuten-Takt hielt die Lauf-Sperre bis 244 s (schnelle Fehler) bzw. 49 Minuten (hängendes Netz), der Tageslauf wartet nur 190 s: Wiederholungen nur noch für diese Zeit, danach gilt der erste Fehler
+
+
+def _pause(sekunden):
+    """Pause zwischen zwei Wiederholungen. Im Durchgang `einmal` der Nachkontrolle zählt sie gegen das Budget (_RETRY_BUDGET). → False, wenn das Budget nicht mehr reicht: dann wird NICHT geschlafen und der Aufrufer gibt
+    auf (der nächste Takt versucht es wieder)."""
+    if _RETRY_BUDGET[0] is not None:
+        if _RETRY_BUDGET[0] < sekunden:
+            return False
+        _RETRY_BUDGET[0] -= sekunden
+    time.sleep(sekunden)
+    return True
+
+
 def _nochmal(f, warten=None):
     """f() mit kurzen Wiederholungen bei vorübergehenden Fehlern. Nur für Lesen und Stornieren — nie für Marktaufträge."""
     warten = LESE_WARTEN if warten is None else warten
@@ -159,9 +177,8 @@ def _nochmal(f, warten=None):
         try:
             return f()
         except Exception as ex:  # noqa: BLE001
-            if i >= len(warten) or not _voruebergehend(ex):
+            if i >= len(warten) or not _voruebergehend(ex) or not _pause(warten[i]):
                 raise
-            time.sleep(warten[i])
 
 
 def _text(ex):
@@ -307,10 +324,26 @@ def _buch_sperre(datei):
     return sperre.lauf_sperre(name=Path(datei).name + "-schreiben", warten=BUCH_SPERRE_WARTEN, ordner=Path(datei).parent, alt_nach=60)
 
 
+class _LaufSperreVerloren(OSError):
+    """Die Lauf-Sperre gehört diesem Prozess nicht mehr (`_sperre_pruefen`): nicht schreiben und nicht wiederholen."""
+
+
+def _sperre_pruefen():
+    """(18. Prüfung W1′) Gehört die Lauf-Sperre dieses Prozesses noch ihm? Sonst OSError. Ein als tot übernommener Lauf (Zombie: aus dem Ruhezustand erwacht) darf nicht nur keine Aufträge mehr senden
+    (`sperre.pruefen()` in den Brokern), sondern auch das Buch nicht mehr schreiben: sonst bräche die Nachkontrolle, die inzwischen für ihn arbeitet, bei «Buch von einem anderen Lauf geändert» ab, bevor
+    sie geheilt hat (gemessen: 90 von 623 Lagen, bis 16'055 USDT bis zur nächsten Nachkontrolle)."""
+    import sperre
+    try:
+        sperre.pruefen()
+    except sperre.SperreVerloren as ex:
+        raise _LaufSperreVerloren(f"Lauf-Sperre verloren ({ex})") from None
+
+
 def buch_schreiben(datei, modus, buch):
     import sperre
     try:
         with _buch_sperre(datei):
+            _sperre_pruefen()
             _buch_schreiben_roh(datei, modus, buch)
     except sperre.Besetzt as ex:
         raise OSError(f"Buch gesperrt ({ex})") from None
@@ -455,6 +488,7 @@ def _buch_speichern_zusammen(datei, modus, gesehen, buch):
                 except ValueError:
                     basis = None
                 _buch_uebernehmen(buch, _buch_vereinen(jetzt, buch, basis if isinstance(basis, dict) else None))
+            _sperre_pruefen()  # (18. Prüfung W1′) ein Zombie schreibt das Buch nicht mehr — unmittelbar vor dem Schreiben, unter der Buch-Sperre
             _buch_schreiben_roh(datei, modus, buch)
             gesehen[0] = json.dumps(buch_lesen(datei, modus), sort_keys=True)
             return zusammen
@@ -470,8 +504,15 @@ def _buch_schreiben_roh(datei, modus, buch):
     for i in range(len(BUCH_WARTEN) + 1):
         try:
             tmp.write_text(json.dumps(alt, indent=1))
+            _sperre_pruefen()  # (19. Prüfung, klein 1) auch UNMITTELBAR vor dem Umbenennen — das Buch kennt keinen recvWindow-Schutz wie die Aufträge; das Fenster nach der ersten Prüfung schrumpft so auf einen Aufruf
             tmp.replace(datei)  # nie halb geschrieben
             return
+        except _LaufSperreVerloren:
+            try:
+                tmp.unlink()
+            except OSError:
+                pass
+            raise
         except OSError:
             if i >= len(BUCH_WARTEN):
                 raise
@@ -864,13 +905,17 @@ def ausfuehren(ents, trocken=False, env=None, spot=None, fut=None, protokolliere
     spot = spot or Spot(cfg["spot"])
     fut = fut or Fut(cfg["futures"])
 
-    def speichern():
+    def speichern(leise=False):
+        """→ True = Buch gespeichert (oder Probelauf), False = nicht gespeichert (gewarnt, ausser leise)."""
         if trocken:
-            return
+            return True
         try:
             _buch_speichern_zusammen(datei, cfg["modus"], gesehen, buch)
+            return True
         except (OSError, BuchKaputt) as ex:  # Aufträge sind trotzdem gültig; verwaiste Stops findet der nächste Lauf an der Kennung
-            warn(f"Buch nicht gespeichert ({type(ex).__name__}) — der nächste Lauf liest wieder den Kontostand.")
+            if not leise:
+                warn(f"Buch nicht gespeichert ({type(ex).__name__}) — der nächste Lauf liest wieder den Kontostand.")
+            return False
 
     transfer_ok = False
     gesperrt, gehandelt, abgelehnt = set(), set(), set()
@@ -994,7 +1039,20 @@ def ausfuehren(ents, trocken=False, env=None, spot=None, fut=None, protokolliere
     vorab_ = sorted(k_ for k_, p_ in plaene.items() if p_["schritte"])
     if vorab_:
         buch["schutz_offen"] = sorted(set(buch.get("schutz_offen") or []) | set(vorab_))
-        speichern()
+        # (17. Prüfung W1) Der Vermerk MUSS gespeichert sein, bevor ein Auftrag rausgeht — wie der Start: ist das Buch nicht beschreibbar (Virenscanner, OneDrive, Platte voll) UND stirbt der Lauf hart, wüsste die
+        # Nachkontrolle von den Märkten nichts (gemessen: 48 von 170 Abbruchstellen ohne Stop, bis 14'596 USDT). Darum kurz nochmals versuchen, sonst heute kein Auftrag.
+        for versuch_ in range(VERMERK_VERSUCHE):
+            if speichern(leise=versuch_ < VERMERK_VERSUCHE - 1) and set(vorab_) <= set(buch.get("schutz_offen") or []):
+                break
+            # (18. Prüfung K2) «gespeichert», aber im vereinten Stand fehlt der Vermerk (ein Schreiber ohne Sperre hat ihn nach meinem Lesen gelöscht, das Zusammenführen folgte ihm): nochmals eintragen
+            buch["schutz_offen"] = sorted(set(buch.get("schutz_offen") or []) | set(vorab_))
+            if versuch_ < VERMERK_VERSUCHE - 1:
+                time.sleep(VERMERK_WARTEN[min(versuch_, len(VERMERK_WARTEN) - 1)])
+        else:
+            warn("Vermerk für die Nachkontrolle nicht gespeichert — heute kein Auftrag (stürbe der Lauf hart, wüsste die Nachkontrolle nichts von den Märkten). Ordner/Datei prüfen "
+                 "(Virenscanner, OneDrive, Platte voll, offener Editor); der nächste Lauf versucht es wieder.")
+            erg["warnung"] = True
+            return erg
 
     def schritt(k, konto, seite, menge, reduce):
         """→ ausgeführte Menge (0.0 = nichts), None = sicher NICHT ausgeführt (abgelehnt), "unklar" = Status unbekannt."""
@@ -1018,7 +1076,7 @@ def ausfuehren(ents, trocken=False, env=None, spot=None, fut=None, protokolliere
                     buch["perp_offen"] = True
                     speichern()
                 try:
-                    fut.auftrag(d["sym"], seite, menge, reduce)
+                    r_f = fut.auftrag(d["sym"], seite, menge, reduce)
                 except BF.UnklarFehler as ex:  # Position nachlesen statt raten
                     try:
                         nach = _nochmal(lambda: fut.position_info(d["sym"]))[0]
@@ -1033,7 +1091,8 @@ def ausfuehren(ents, trocken=False, env=None, spot=None, fut=None, protokolliere
                              "zurückgerechnet; am Laufende wird per Kennung nachgefragt, Stops nach dem Kontostand.")
                         return "unklar"
                     warn(f"{k} Perp {seite} {menge:g}: Antwort unklar, Position zeigt AUSGEFÜHRT.")
-                gemacht = menge
+                    r_f = None
+                gemacht = _ausgefuehrt(r_f, menge)  # (17. Prüfung K2) die AUSGEFÜHRTE Menge (RESULT-Antwort), nicht die bestellte: eine teilweise ausgeführte Order (EXPIRED) verfälschte sonst _alt_deckt und die Schlussrechnung
             # (16. Prüfung) die AUSGEFÜHRTE Menge, nicht die bestellte: _alt_deckt rechnet damit zurück auf die Lage vor den heutigen Aufträgen — bei einer nur teilweise ausgeführten Order
             # (oder Gebühr in Coins) hielt es den alten Stop für ausreichend und löschte einen vielleicht angekommenen Stop, der den Short gebraucht hätte (1'226–3'865 USDT zu grosse Stops)
             erg["auftraege"].append((k, konto, seite, gemacht))
@@ -1231,8 +1290,8 @@ def ausfuehren(ents, trocken=False, env=None, spot=None, fut=None, protokolliere
         # (das Cockpit hat Pilot 2.0 deswegen übersprungen); danach schliesst die Nachkontrolle nochmals, was offen blieb.
         # Dieser Lauf kam nicht mehr zu seinem Stop-Abgleich: scheitert der Not-Aus (Konto/UID nicht lesbar, Rückkauf abgelehnt) und wird STOP wieder
         # aufgehoben, braucht jeder Markt, in dem er gehandelt hat, seine Stops — die Nachkontrolle holt sie nach (Folge-PR zur 14. Runde, E12,
-        # Lücken-Seed 90256). Erst HIER vermerkt, nicht schon vor dem ersten Auftrag: ein Vermerk mitten im Lauf öffnete der Nachkontrolle ein Fenster, in
-        # dem sie Stops für einen Markt setzte, den der Tageslauf noch bearbeitet (Verzahnungsscan der 14. Prüfung, Variante «Nachkontrolle»)
+        # Lücken-Seed 90256). Seit der 16. Folge-Runde steht jeder Markt mit Plan-Schritten schon VOR dem ersten Auftrag im Buch (`vorab_` oben); HIER kommen die Märkte dazu, in denen der Lauf gehandelt hat. Die
+        # Nachkontrolle läuft nie neben dem Lauf — beide halten dieselbe Lauf-Sperre (die Verzahnung, die der Vermerk früher öffnete, schliesst die Sperre).
         if gehandelt:
             buch["schutz_offen"] = sorted(set(buch.get("schutz_offen") or []) | set(gehandelt))
         speichern()
@@ -1390,9 +1449,8 @@ def _platziere(platzieren, cid, warten=None):
         except Exception as ex:  # noqa: BLE001
             if _doppelt(ex):
                 return {"cid": cid, "nachgesehen": True}
-            if i >= len(warten) or not _voruebergehend(ex):
+            if i >= len(warten) or not _voruebergehend(ex) or not _pause(warten[i]):  # (19. Prüfung W2) die Stop-Platzierung ist der Hauptteil der Dauer eines Durchgangs (jeder Preis × alle Wiederholungen)
                 raise
-            time.sleep(warten[i])
     return {"cid": cid}
 
 
@@ -2484,6 +2542,19 @@ def _perp_abgleich(fut, k, d, st, e, s, erg, warn, gesetzt, schutz, lesen, gehan
             _perp_merken(st, a.get("algoId"), a.get("clientAlgoId"))  # auch bei unlesbarer Liste später wieder löschbar
             _zu_gross(d)
             d["neue_runde"] = True
+    # (17. Prüfung, Vorschlag (e)) Schlussnachlesen: hat ein anderer Schreiber zwischen meinem Lesen und Setzen einen eigenen Perp-Stop gesetzt, der nicht in `alt` stand (die Nachkontrolle trotz Sperre — Verzahnungsscan
+    # «Nachkontrolle»: 3 von 1'050, zwei Stops à 0,048 BTC = 2'581 USDT zu viel Stop), und der NEUE deckt allein den ganzen Bedarf, sind die anderen überzählig (sie träfen beim Auslösen die Absicherung): löschen.
+    if not s.get("beidseitig") and not d.get("beidseitig") and not d.get("neue_runde"):
+        try:
+            frisch_ = _nochmal(lambda: fut.eigene_stops(sym), SCHUTZ_WARTEN)
+            neu_ = [a_ for a_ in frisch_ if (st.get("perp_cid") and a_.get("clientAlgoId") == st.get("perp_cid")) or (st.get("perp") is not None and str(a_.get("algoId")) == str(st.get("perp")))]
+            andere_ = [a_ for a_ in frisch_ if a_ not in neu_]
+            if neu_ and andere_ and sum(float(a_.get("quantity") or 0) for a_ in neu_) >= soll - regeln["step"] / 2:
+                for a_ in andere_:
+                    _nochmal(lambda a_=a_: _perp_alt_weg(fut, sym, st, a_))
+                warn(f"{k}: {len(andere_)} fremder eigener Perp-Stop (gleichzeitiger Lauf?) über dem Bedarf gelöscht.")
+        except Exception:  # noqa: BLE001 — nicht lesbar oder nicht löschbar: der nächste Lauf räumt auf
+            pass
 
 
 def _kennung_weg(fut, sym, cid):
@@ -2707,10 +2778,20 @@ def _perp_ohne_liste(fut, k, d, st, e, s, warn, gesetzt, gehandelt, ex, erg, les
                 warn(f"{k}: der alte Perp-Stop ließ sich nicht löschen ({type(ex2).__name__}) — ohne Short wirkungslos (reduceOnly).")
             return
         st["perp"] = st["perp_cid"] = None
+        d["nachkontrolle"] = True  # (17. Prüfung W2) blind gelöscht: ein unbekannter Stop kann noch stehen — die Nachkontrolle liest die Liste und räumt auf
         warn(f"{k}: offene Perp-Stops nicht lesbar ({type(ex).__name__}) — der bekannte alte Stop ist gelöscht (er träfe sonst die "
              "Ernte-Absicherung).")
         return
     alt_id, alt_cid = st.get("perp"), st.get("perp_cid")
+    # (17. Prüfung K1) Liste unlesbar UND ein bekannter alter Stop lässt sich nicht löschen: in jedem Takt der Nachkontrolle kam ein weiterer Stop dazu (bis 10, zusammen ein Vielfaches des Shorts). Kennt das Buch schon
+    # PERP_BLIND_MAX Stops, kommt keiner mehr dazu — sie decken den Short zusammen reichlich (reduceOnly: mehr als die Position schliesst keiner), und der Markt ist beidseitig gesichert und vermerkt.
+    bekannt_n = (1 if (alt_id is not None or alt_cid) else 0) + len(st.get("perp_weitere") or [])
+    if bekannt_n >= PERP_BLIND_MAX:
+        _zu_gross(d)
+        d["nachkontrolle"] = True
+        warn(f"{k}: offene Perp-Stops nicht lesbar ({type(ex).__name__}), das Buch kennt schon {bekannt_n} Stops (alte ließen sich nicht löschen) — kein weiterer blind; beidseitig gesichert, die Nachkontrolle räumt auf, "
+             "sobald die Liste wieder lesbar ist.")
+        return
     p = _stop_preis(e.get("stop_short"), st.get("p_short"), kurs, -1)
     grund_raus = f"Stop {PL.runde(p, regeln['tick']):g} würde sofort auslösen (Kurs gestiegen)"
 
@@ -2772,6 +2853,7 @@ def _perp_ohne_liste(fut, k, d, st, e, s, warn, gesetzt, gehandelt, ex, erg, les
     if st.get("perp_weitere") and not _perp_weitere_weg(fut, sym, st):  # der neue steht: jetzt auch die gemerkten alten weg
         _zu_gross(d)
         weg = False
+    d["nachkontrolle"] = True  # (17. Prüfung W2) blind gesetzt: die Nachkontrolle liest die Liste und räumt nach Mengen auf (ein unbekannter alter Stop kann noch stehen)
     warn(f"{k}: offene Perp-Stops nicht lesbar ({type(ex).__name__}) — Stop {menge:g} trotzdem gesetzt"
          + ("" if weg else "; der alte ließ sich nicht löschen (zwei stehen → Coins beidseitig gesichert)") + ". Bitte prüfen!")
 
@@ -2930,7 +3012,18 @@ def _not_preise(kurs, seite=-1):
 
 
 # ───────────────────────── Nachkontrolle ─────────────────────────
-def nachkontrolle(env=None, datei=None, spot=None, fut=None, schlafen=time.sleep, uhr=time.time):
+def nachkontrolle(env=None, datei=None, spot=None, fut=None, schlafen=time.sleep, uhr=time.time, einmal=False):
+    """Hülle um `_nachkontrolle` (Beschreibung dort). einmal=True: die Wiederholungen von `_nochmal` dürfen im ganzen Durchgang nur EINMAL_RETRY_S Sekunden schlafen (19. Prüfung W2)."""
+    if not einmal:
+        return _nachkontrolle(env, datei, spot, fut, schlafen, uhr, False)
+    _RETRY_BUDGET[0] = EINMAL_RETRY_S
+    try:
+        return _nachkontrolle(env, datei, spot, fut, schlafen, uhr, True)
+    finally:
+        _RETRY_BUDGET[0] = None
+
+
+def _nachkontrolle(env, datei, spot, fut, schlafen, uhr, einmal):
     """Nach einem Lauf oder Not-Aus, wenn etwas offen blieb: unklare Aufträge (Antwort verloren, Binance kennt den Auftrag noch
     nicht), Märkte ohne vollständigen Stop (schutz_offen) oder ein unvollständiger Not-Aus (notaus_offen). Alle
     NACHKONTROLLE_TAKT_S nachsehen, höchstens NACHKONTROLLE_MAX_S (10 Minuten + Reserve):
@@ -2940,7 +3033,9 @@ def nachkontrolle(env=None, datei=None, spot=None, fut=None, schlafen=time.sleep
         alle unklaren Aufträge warten; auch ohne «Not-Aus offen», sobald Pilot 2.0 Bestand hat (STOP kam während eines Laufs).
       • Erscheint STOP während der Nachkontrolle: sofort einmal schliessen und enden (der Not-Aus von stop.bat bekommt die Sperre).
     Speichert nur, wenn das Buch auf der Platte noch so ist, wie sie es zuletzt gesehen hat (sonst hat ein anderer Lauf — z. B.
-    ein Not-Aus ohne Sperre — es geändert: dann nichts überschreiben und enden). Ohne Offenes: sofort fertig."""
+    ein Not-Aus ohne Sperre — es geändert: dann nichts überschreiben und enden). Ohne Offenes: sofort fertig.
+    einmal=True (der 10-Minuten-Takt der Aufgabenplanung, 18. Prüfung W3′): EIN Durchgang, kein Warten — der nächste Takt kommt in 10 Minuten. Die lange Fassung hielt bei einem dauerhaft offenen Markt
+    die Lauf-Sperre bis 690 s (mit IgnoreNew rund 57 % der Zeit) und liess den Tageslauf, der nur 190 s wartet, still ausfallen. Jüngere unklare Aufträge bleiben im Buch und werden im nächsten Takt wieder geprüft."""
     env_ = os.environ if env is None else env
     datei = datei or BESTAND
     cfg = einstellungen(env_)
@@ -2991,6 +3086,7 @@ def nachkontrolle(env=None, datei=None, spot=None, fut=None, schlafen=time.sleep
             with _buch_sperre(datei):
                 if fremd_geaendert():
                     return
+                _sperre_pruefen()  # (18. Prüfung W1′) auch eine selbst eingefrorene Nachkontrolle schreibt nach der Übernahme nichts mehr
                 _buch_schreiben_roh(datei, cfg["modus"], buch)
                 gesehen[0] = json.dumps(buch_lesen(datei, cfg["modus"]), sort_keys=True)
         except (OSError, BuchKaputt, sperre.Besetzt) as ex:
@@ -3014,8 +3110,11 @@ def nachkontrolle(env=None, datei=None, spot=None, fut=None, schlafen=time.sleep
         return [m for m in COINS if m in betroffen]
     maerkte()
 
+    stops_gesetzt = [False]
+
     def stops_setzen():
         """Stops der betroffenen Märkte nach dem Kontostand (noch Unklares: beidseitig)."""
+        stops_gesetzt[0] = True
         daten, ents, mm = {}, [], maerkte()
         for m in mm:
             sym, coin = COINS[m]
@@ -3031,7 +3130,12 @@ def nachkontrolle(env=None, datei=None, spot=None, fut=None, schlafen=time.sleep
 
     def schliessen():
         """Not-Aus: alles schliessen, was geht (er klärt zuerst die unklaren Aufträge). → Ergebnis; das Buch neu laden."""
-        r = notaus_alle(env_, datei, spot=spot, fut=fut, protokolliere=protokoll_schreiben, wiederholung=True)
+        alt_budget = _RETRY_BUDGET[0]
+        _RETRY_BUDGET[0] = None  # (19. Prüfung W2) das Schliessen im Not-Aus ist nicht zeitbegrenzt: es wiederholt so lange, wie es seine Wiederholungen vorsehen
+        try:
+            r = notaus_alle(env_, datei, spot=spot, fut=fut, protokolliere=protokoll_schreiben, wiederholung=True)
+        finally:
+            _RETRY_BUDGET[0] = alt_budget
         try:
             buch.clear()
             buch.update(buch_lesen(datei, cfg["modus"]))
@@ -3061,7 +3165,7 @@ def nachkontrolle(env=None, datei=None, spot=None, fut=None, schlafen=time.sleep
                 stops_setzen()  # im Lauf fehlte ein Stop (Binance lehnte ab, Konto nicht lesbar) → nochmals versuchen
             if not buch["unklar"] and not buch.get("schutz_offen"):
                 break
-        if uhr() - start >= NACHKONTROLLE_MAX_S:
+        if einmal or uhr() - start >= NACHKONTROLLE_MAX_S:
             break
         warte(NACHKONTROLLE_TAKT_S)
     if letzte is not None:  # Not-Aus-Modus: das Ergebnis des letzten Schliessens melden
@@ -3071,9 +3175,12 @@ def nachkontrolle(env=None, datei=None, spot=None, fut=None, schlafen=time.sleep
     if fremd[0]:
         return erg
     for u in buch["unklar"]:
+        if einmal and int(time.time() * 1000) - int(u.get("zeit") or 0) <= UNKLAR_MAX_ALTER_MS:
+            continue  # ein Durchgang: der Auftrag ist jünger als die Frist, nach der «unbekannt» als nie ausgeführt gilt — der nächste Takt fragt wieder nach (der Markt ist beidseitig gesichert)
         warn(f"{u.get('markt')} {'Spot' if u.get('konto') == 'spot' else 'Perp'} {u.get('seite')} {u.get('menge')}: nach der "
              "Nachkontrolle noch immer unklar — Markt bleibt beidseitig gesichert. Bitte im Binance-Konto prüfen!")
-    stops_setzen()
+    if not (einmal and stops_gesetzt[0]):  # (19. Prüfung W2) ein Durchgang im 10-Minuten-Takt setzt die Stops nicht zweimal hintereinander (die Schleife tat es schon) — das verdoppelte die Haltedauer der Sperre
+        stops_setzen()
     try:
         buch["perp_offen"] = any(_nochmal(lambda m=m: fut.position_info(COINS[m][0]))[0] != 0 for m in COINS)
     except Exception:  # noqa: BLE001
@@ -3092,6 +3199,7 @@ def notaus_alle(env=None, datei=None, trocken=False, spot=None, fut=None, protok
     """Jeden GESTARTETEN Modus schliessen, mit den Schlüsseln DIESES Modus — egal wie die Freigabe-Schalter gerade stehen.
     «alles_zu» nur, wenn jeder Modus nachgeprüft zu ist. wiederholung: automatischer Versuch der Nachkontrolle — ein Paar, dessen
     Short-Rückkauf eben abgelehnt wurde, bleibt dann stehen (PAAR_PAUSE_MS); ein von Hand ausgelöster Not-Aus versucht es immer."""
+    import sperre as sperre_modul
     env = os.environ if env is None else env
     datei = datei or BESTAND
     # übergebene Verbindungen (Tests, Nachkontrolle, Lauf) gehören dem Modus, auf den die Schalter jetzt zeigen — jeder ANDERE gestartete Modus
@@ -3157,8 +3265,13 @@ def notaus_alle(env=None, datei=None, trocken=False, spot=None, fut=None, protok
             continue
         b0 = buch_lesen(datei, m)
         gesehen = [json.dumps(b0, sort_keys=True)]  # Stand beim Lesen: hat ihn ein anderer Lauf geändert → zusammenführen
-        r = _notaus(s, f, b0, lambda b, m=m, gesehen=gesehen: _buch_speichern_zusammen(datei, m, gesehen, b), m, trocken,
-                    wiederholung)
+        try:
+            r = _notaus(s, f, b0, lambda b, m=m, gesehen=gesehen: _buch_speichern_zusammen(datei, m, gesehen, b), m, trocken,
+                        wiederholung)
+        except sperre_modul.SperreVerloren as ex:  # (18. Prüfung K4) ein als tot übernommener Lauf (Zombie) schliesst nichts mehr: der Lauf, der die Sperre übernommen hat, schliesst — sauber melden statt Absturz
+            erg.update(alles_zu=False, warnung=True)
+            erg["zeilen"].append(f"⚠️ Not-Aus Pilot 2.0 ({m}): {ex} Der Lauf, der die Sperre übernommen hat, schliesst — NICHT «alles zu» gemeldet; Not-Aus bzw. Nachkontrolle wiederholen und das Binance-Konto prüfen!")
+            continue
         erg["zeilen"] += r["zeilen"]
         erg["auftraege"] += r["auftraege"]
         erg["warnung"] = erg["warnung"] or r["warnung"]
@@ -3904,7 +4017,11 @@ def _notaus_schutz(spot, fut, st, k, sym, coin, pos, pos_vor, frei, gebunden, ku
                 steht = sum(float(a.get("quantity") or 0) for a in _nochmal(lambda: fut.eigene_stops(sym), SCHUTZ_WARTEN))
             except Exception:  # noqa: BLE001
                 bekannt = {tuple(w[:2]) for w in st.get("perp_weitere") or []} | {(st.get("perp"), st.get("perp_cid"))}
-                if sum(1 for b in bekannt if b[0] is not None or b[1]) >= 2:
+                if sum(1 for b in bekannt if b[0] is not None or b[1]) >= PERP_BLIND_MAX:  # (19. Prüfung, klein 6) dieselbe Grenze wie im Tageslauf (`_perp_ohne_liste`): bis dahin kommt noch ein ganzer reduceOnly-Stop dazu (zwei Stops à 0,05 von 0,2 BTC ließen vorher 0,1 BTC ohne Stop)
+                    # (18. Prüfung W2′) NICHT still: das Buch führt nur Kennungen, keine Mengen — ob die bekannten Stops den ganzen Short decken, ist hier unbekannt (Beleg: zwei Stops à 0,05 von 0,2 BTC,
+                    # 9'405 USDT ohne Stop, der Not-Aus meldete ok). Lieber laut als eine Teil-Absicherung für «gesichert» halten.
+                    fehlt_schutz(f"Not-Aus {modus} {k}: zu grosser Perp-Stop bleibt, die Perp-Stop-Liste ist nicht lesbar und das Buch kennt schon {sum(1 for b in bekannt if b[0] is not None or b[1])} Stops — ob sie zusammen den "
+                                 f"ganzen Short ({short:g}) decken, ist unbekannt (das Buch führt keine Mengen): ein Teil kann ohne Stop sein. Sofort prüfen!")
                     return
                 steht = 0.0  # lieber ein Stop zu viel (reduceOnly) als ein Short zum Teil ohne Stop
             fehlt_g = PL.runde(short - steht, rfg["step"])
@@ -4012,7 +4129,7 @@ def _notaus_schutz(spot, fut, st, k, sym, coin, pos, pos_vor, frei, gebunden, ku
     # dort nicht (löst eine Seite aus, schützt die andere den Rest), und jedes Aufräumen nähme den Schutz kurz weg (der Spot-Stop über die Absicherung wurde in jedem Takt der Nachkontrolle gelöscht und gleich neu
     # gesetzt, solange ein Perp-Stop nicht löschbar war). Frische Zahlen, beide Listen lesbar; sonst der normale Weg.
     if (not beidseitig and stand_frisch and eigene and coins * kurs >= STAUB_USDT and short * kurs >= STAUB_USDT
-            and sum(_rest(o) for o in eigene if o.get("isWorking") is not True) >= coins - regeln["step"] / 2):  # ein hängender Stop-Limit schützt nichts
+            and sum(_rest(o) for o in eigene if o.get("isWorking") is not True) >= PL.runde(coins, regeln["step"]) - regeln["step"] / 2):  # ein hängender Stop-Limit schützt nichts; stoppbar sind nur ganze Lots
         try:
             rf_v = _nochmal(lambda: fut.regeln(sym), SCHUTZ_WARTEN)
             if sum(float(a.get("quantity") or 0) for a in _nochmal(lambda: fut.eigene_stops(sym), SCHUTZ_WARTEN)) >= short - rf_v["step"] / 2:
@@ -4200,8 +4317,8 @@ def _notaus_schutz(spot, fut, st, k, sym, coin, pos, pos_vor, frei, gebunden, ku
                                   else "zu grosser Spot-Stop bleibt (beidseitig), Spot-Stop über die übrigen Coins gesetzt")
         # (16. Folge-Runde, Lauf-Seed 242916) steht über ALLEN Coins ein Spot-Stop (oder sind sie verkauft), muss auch der Short beidseitig stehen: der zu grosse alte Perp-Stop deckt ihn nur zum Teil.
         # Ohne den Spot-Stop über allen Coins käme der Perp-Stop dazu, der beim Auslösen die ganze (ungeschützte) Absicherung zurückkauft — dann nicht.
-        if (perp_zu_gross and not (beidseitig or spot_zu_gross) and gestoppt - sum(_rest(o) for o in bleibt) >= coins - regeln["step"] / 2
-                and short * kurs >= STAUB_USDT):  # Coins unter einem hängenden Stop sind nicht gestoppt
+        if (perp_zu_gross and not (beidseitig or spot_zu_gross) and gestoppt - sum(_rest(o) for o in bleibt) >= PL.runde(coins, regeln["step"]) - regeln["step"] / 2
+                and short * kurs >= STAUB_USDT):  # Coins unter einem hängenden Stop sind nicht gestoppt; stoppbar sind nur ganze Lots (7,099893 Coins → 7,0998 — ein Rest unter einem Lot, auch über dem halben, bleibt ungestoppt)
             perp_ganz_ergaenzen()
     return ok[0]
 

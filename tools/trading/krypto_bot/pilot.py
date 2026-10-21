@@ -230,6 +230,7 @@ def main():
     ap.add_argument("--bericht", action="store_true")
     ap.add_argument("--backtest", action="store_true")
     ap.add_argument("--nachkontrolle", action="store_true", help="Pilot 2.0: unklare Aufträge klären, danach Stops setzen")
+    ap.add_argument("--einmal", action="store_true", help="mit --nachkontrolle: EIN Durchgang ohne Warten (der 10-Minuten-Takt der Aufgabenplanung)")
     a = ap.parse_args()
     if a.backtest:
         backtest()
@@ -238,7 +239,7 @@ def main():
         print(wochenbericht(lies(), date.today().isoformat(), erzwingen=True) or "Noch kein Kontostand im Logbuch — erst ein --lauf.")
         return 0
     if a.nachkontrolle:
-        return nachkontrolle()
+        return nachkontrolle(einmal=a.einmal)
     if not (a.status or a.lauf):
         ap.print_help()
         return 0
@@ -286,8 +287,19 @@ def main():
         with sperre.lauf_sperre(warten=0 if a.trocken else sperre.ALT_NACH_TOT + 40, alt_nach=sperre.ALT_NACH_TOT):
             return handeln(ents, lage, a.trocken)
     except sperre.Besetzt as ex:
-        print(f"{ex} Dieser Lauf handelt nicht — einfach später nochmals starten.")
+        return lauf_besetzt(ex, a.trocken)
+    return 0
+
+
+def lauf_besetzt(ex, trocken):
+    """Der Tageslauf bekam die Lauf-Sperre nicht (ein anderer Lauf oder die Nachkontrolle hielt sie länger als die Wartezeit). → Rückgabewert.
+    (18. Prüfung W3′) NICHT still: ein Lauf, der deswegen nicht handelt, ist ein ausgefallener Tag — rc 0 und «alles gelaufen» in der Bat verschwiegen es. Ein Probelauf darf einfach abgewiesen werden."""
+    print(f"{ex} Dieser Lauf handelt nicht — einfach später nochmals starten.")
+    if trocken:
         return 0
+    import signale as SG
+    SG.push(f"⚠️ Pilot: der Lauf hat NICHT gehandelt — {ex} (ein anderer Lauf oder die Nachkontrolle hielt die Sperre). Bitte später `pilot.py --lauf` nochmals starten oder im Cockpit «Jetzt handeln». Keine Anlageberatung.")
+    return 3
 
 
 def teilt_konto(env, p2_modus, bf=None):
@@ -410,9 +422,41 @@ def lauf_merken(ok, hinweise, trocken=False, logbuch=None):
     schreiben(lb, datei)
 
 
-def nachkontrolle():
+PUSH_STILL = ROOT / "data" / "krypto-nachkontrolle-push.json"
+PUSH_ABSTAND_S = 3600
+
+
+def _push_nachkontrolle(text, einmal, datei=None, jetzt=None):
+    """Push der Nachkontrolle. Im 10-Minuten-Takt (einmal) schickt dieselbe Meldung höchstens einmal je Stunde (18. Prüfung W3′: ein dauerhaft offener Markt hätte ~144 Pushes am Tag ausgelöst);
+    eine ANDERE Meldung geht sofort. Ein Fehler hier darf nie das Pushen verhindern. → True, wenn die Meldung zugestellt wurde."""
+    import hashlib
+    import time
+    import signale as SG
+    datei = Path(datei) if datei else PUSH_STILL
+    jetzt = time.time() if jetzt is None else jetzt
+    kennung = hashlib.sha1(text.encode("utf-8", "replace")).hexdigest()[:16]
+    if einmal:
+        try:
+            alt = json.loads(datei.read_text())
+            if alt.get("kennung") == kennung and 0 <= jetzt - float(alt.get("zeit") or 0) < PUSH_ABSTAND_S:
+                print(f"(gleiche Meldung vor {int((jetzt - float(alt['zeit'])) / 60)} Min. schon gemeldet — nicht nochmals gepusht)")
+                return False
+        except Exception:  # noqa: BLE001 — keine/kaputte Datei: pushen
+            pass
+    gesendet = bool(SG.push(text + "\nKeine Anlageberatung."))
+    if einmal and gesendet:  # (19. Prüfung W1) nur eine ZUGESTELLTE Meldung drosselt die nächste: `push` gibt False bei Telegram-/ntfy-Fehler oder ohne Kanal zurück — sonst schwiege derselbe Alarm nach einem Netzausfall eine Stunde lang
+        try:
+            datei.parent.mkdir(parents=True, exist_ok=True)
+            datei.write_text(json.dumps({"kennung": kennung, "zeit": jetzt}))
+        except Exception:  # noqa: BLE001
+            pass
+    return gesendet
+
+
+def nachkontrolle(einmal=False):
     """Pilot 2.0 nach dem Lauf: blieb ein Auftrag unklar, bis zu ~11 Minuten nachfragen und danach die Stops nach dem
-    Kontostand setzen (ein verspätet angekommener Kauf liegt so nie bis morgen ohne Stop). Ohne Unklares sofort fertig."""
+    Kontostand setzen (ein verspätet angekommener Kauf liegt so nie bis morgen ohne Stop). Ohne Unklares sofort fertig.
+    einmal: der 10-Minuten-Takt der Aufgabenplanung — EIN Durchgang, die Sperre ist nach Sekunden wieder frei (18. Prüfung W3′)."""
     import broker_futures as BF
     import pilot2_live as P2L
     import sperre
@@ -422,7 +466,7 @@ def nachkontrolle():
         # in Sekunden fertig; darum länger warten
         # (16. Prüfung) Tote Sperre (harter Abbruch des Laufs: kein Herzschlag seit ALT_NACH_TOT s) übernehmen — sonst lief die Nachkontrolle nach einem Abbruch gar nicht
         with sperre.lauf_sperre(warten=P2L.NACHKONTROLLE_MAX_S + 120 if not_aus else sperre.ALT_NACH_TOT + 40, alt_nach=sperre.ALT_NACH_TOT):
-            r = P2L.nachkontrolle()
+            r = P2L.nachkontrolle(einmal=einmal)
     except sperre.Besetzt as ex:
         if not not_aus:
             print(f"{ex} Nachkontrolle übersprungen — der andere Lauf prüft selbst.")
@@ -435,8 +479,7 @@ def nachkontrolle():
     if r["zeilen"]:
         text_n = "\n".join(r["zeilen"])
         print(text_n)
-        import signale as SG
-        SG.push(text_n + "\nKeine Anlageberatung.")
+        _push_nachkontrolle(text_n, einmal)
     return 3 if r["warnung"] else 0
 
 
