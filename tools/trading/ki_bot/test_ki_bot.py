@@ -279,14 +279,14 @@ class _TgAntwort20:
 
 def _push20(ntfy_ok, telegram, mit_token=True):
     """telegram: True/False = Antwort {"ok": …}, "fehler" = Netzfehler."""
-    alt_n, alt_u, alt_env = SG.push_ntfy, _ur20.urlopen, {k: _os20.environ.get(k) for k in ("TELEGRAM_BOT_TOKEN", "TELEGRAM_CHAT_ID")}
+    alt_n, alt_u, alt_env = SG.push_ntfy, _ur20.urlopen, {k: _os20.environ.get(k) for k in ("TELEGRAM_BOT_TOKEN", "TELEGRAM_CHAT_ID", "KI_BOT_NTFY")}
 
     def uo(req, *a, **k):
         if telegram == "fehler":
             raise OSError("Netz weg")
         return _TgAntwort20(telegram)
     SG.push_ntfy, _ur20.urlopen = (lambda text, env=None: ntfy_ok), uo
-    for k_, v_ in (("TELEGRAM_BOT_TOKEN", "t" if mit_token else None), ("TELEGRAM_CHAT_ID", "c" if mit_token else None)):
+    for k_, v_ in (("TELEGRAM_BOT_TOKEN", "t" if mit_token else None), ("TELEGRAM_CHAT_ID", "c" if mit_token else None), ("KI_BOT_NTFY", "thema")):  # ntfy ist in diesen Fällen eingerichtet (push_kanaele fragt die Variable)
         if v_ is None:
             _os20.environ.pop(k_, None)
         else:
@@ -307,6 +307,16 @@ _p20_ohne = {n_: _push20(n_, True, False) for n_ in (True, False)}
 pruefe("push(): ntfy angekommen + Telegram-Fehler (Netz weg) → zugestellt (vorher False: die Drosselung der Nachkontrolle liess sechs gleiche Meldungen je Stunde durch)", _p20[(True, "fehler")] is True and _p20[(True, False)] is True, _p20)
 pruefe("push(): ntfy ODER Telegram angenommen → zugestellt; beide gescheitert → False", _p20[(False, True)] is True and _p20[(True, True)] is True and _p20[(False, False)] is False and _p20[(False, "fehler")] is False, _p20)
 pruefe("push(): ohne Telegram-Zugang zählt ntfy allein (angekommen → True, nicht → False)", _p20_ohne == {True: True, False: False}, _p20_ohne)
+_alt_n20, _alt_env20 = SG.push_ntfy, _os20.environ.get("KI_BOT_NTFY")
+SG.push_ntfy = lambda text, env=None: (_ for _ in ()).throw(AssertionError("ntfy ohne Thema darf nicht gerufen werden"))
+_os20.environ.pop("KI_BOT_NTFY", None)
+try:
+    _kn20 = SG.push_kanaele("x")
+finally:
+    SG.push_ntfy = _alt_n20
+    if _alt_env20 is not None:
+        _os20.environ["KI_BOT_NTFY"] = _alt_env20
+pruefe("push_kanaele(): ein nicht eingerichteter Kanal ist None (ntfy wie Telegram), nicht False — und wird gar nicht erst gerufen", _kn20 == {"ntfy": None, "telegram": None}, _kn20)
 
 # `--test-push` (Einrichtungstest) verlangt ALLE eingerichteten Kanäle — push() gilt schon bei einem (Code-Review der R20: sonst meldete der Test einen kaputten Telegram-Zugang als Erfolg, weil ntfy 200 sagt)
 def _testpush20(ntfy_ok, telegram, ntfy_thema, token):

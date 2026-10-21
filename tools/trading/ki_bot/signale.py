@@ -171,10 +171,10 @@ def push_ntfy(text, env=None):
 
 
 def push_kanaele(text):
-    """Die Nachricht an alle eingerichteten Kanäle → {"ntfy": bool, "telegram": bool oder None (nicht eingerichtet)}. «ntfy» ist auch False, wenn KI_BOT_NTFY fehlt (push_ntfy unterscheidet beides nicht)."""
+    """Die Nachricht an alle eingerichteten Kanäle → {"ntfy": bool oder None, "telegram": bool oder None}; None = nicht eingerichtet (beide Kanäle gleich)."""
     token, chat = os.environ.get("TELEGRAM_BOT_TOKEN", ""), os.environ.get("TELEGRAM_CHAT_ID", "")
     print("\n" + text + "\n")
-    ntfy = push_ntfy(text)
+    ntfy = push_ntfy(text) if os.environ.get("KI_BOT_NTFY", "").strip() else None
     if not token or not chat:
         return {"ntfy": ntfy, "telegram": None}
     daten = urllib.parse.urlencode({"chat_id": chat, "text": text, "disable_web_page_preview": "true"}).encode()
@@ -340,8 +340,7 @@ def main() -> int:
     a = ap.parse_args()
     if a.test_push:
         k = push_kanaele("✅ Test: Der KI-Bot kann dir Nachrichten schicken.")
-        ntfy_da = bool(os.environ.get("KI_BOT_NTFY", "").strip())
-        fehlt = [n for n, ok in (("ntfy", k["ntfy"] if ntfy_da else None), ("Telegram", k["telegram"])) if ok is False]
+        fehlt = [n for n, ok in (("ntfy", k["ntfy"]), ("Telegram", k["telegram"])) if ok is False]
         if fehlt:
             print(f"❌ Kein Test-Push über: {', '.join(fehlt)} (Zugang oder Token prüfen).")
         return 0 if (any(v is True for v in k.values()) and not fehlt) else 1  # ein Test, der nur «irgendein Kanal» prüft, meldete einen kaputten Telegram-Zugang als Erfolg

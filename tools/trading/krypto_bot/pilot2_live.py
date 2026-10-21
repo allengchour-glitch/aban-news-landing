@@ -1350,9 +1350,11 @@ def ausfuehren(ents, trocken=False, env=None, spot=None, fut=None, protokolliere
         eintrag_lauf = {"zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), "modus": erg["modus"],
                         "kapital": erg["kapital"], "auftraege": list(erg["auftraege"]), "warnung": erg["warnung"]}
         erg["zeilen"].append("🛑 Not-Aus während des Laufs — Pilot 2.0 schliesst jetzt selbst (dieser Lauf hält die Sperre).")
-        r = notaus_alle(env_, datei, spot=spot_arg, fut=fut_arg, protokolliere=protokolliere)
-        if protokolliere:
-            protokolliere(eintrag_lauf)
+        try:
+            r = notaus_alle(env_, datei, spot=spot_arg, fut=fut_arg, protokolliere=protokolliere)
+        finally:  # auch wenn der Not-Aus eine Ausnahme wirft: die Aufträge dieses Laufs sind raus und gehören ins Protokoll (Code-Review der R20)
+            if protokolliere:
+                protokolliere(eintrag_lauf)
         erg["zeilen"] += r["zeilen"]
         erg["auftraege"] += r["auftraege"]
         erg["warnung"] = erg["warnung"] or r["warnung"]
@@ -4377,7 +4379,7 @@ def _notaus_schutz(spot, fut, st, k, sym, coin, pos, pos_vor, frei, gebunden, ku
     return ok[0]
 
 
-PROTOKOLL_SPERRE_WARTEN = 1.0  # Sekunden: das Protokoll ist ein Beleg — lieber ohne Sperre schreiben, als einen Not-Aus aufzuhalten (er ruft `protokolliere` vor dem Schliessen auf; die Buch-Sperre wartet bis 15 s)
+PROTOKOLL_SPERRE_WARTEN = 1.0  # Sekunden: das Protokoll ist ein Beleg — lieber ohne Sperre schreiben, als den Abschluss eines Laufs oder Not-Aus aufzuhalten (beide rufen `protokolliere` am Ende auf; die Buch-Sperre wartet bis 15 s)
 
 
 def _protokoll_sperre():

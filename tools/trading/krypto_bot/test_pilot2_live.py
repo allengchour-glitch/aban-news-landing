@@ -412,6 +412,25 @@ finally:
     L.notaus_alle = orig_na
     if not existierte and BF.STOP_DATEI.exists(): BF.STOP_DATEI.unlink()
 pruefe("Not-Aus während des Laufs: erst wird geschlossen, dann das Protokoll des Laufs geschrieben (ein langsames Protokoll hielte sonst das Schliessen auf)", folge == ["schliessen", "protokoll:notaus", "protokoll:lauf"], folge)
+# … wirft der Not-Aus eine Ausnahme, steht der Eintrag des Laufs trotzdem im Protokoll (die Aufträge sind raus; Code-Review der R20)
+X.reset(); d = neu_buch(); X.nach_order = stop_setzen; existierte = BF.STOP_DATEI.exists(); folge2 = []
+
+
+def na_wirft(*a, **k):
+    folge2.append("schliessen:wirft")
+    raise OSError("Buch kurz gesperrt")
+
+
+L.notaus_alle = na_wirft
+fehler_na = None
+try:
+    L.ausfuehren([E("BTC", 1.0), E("ETH", 1.0)], env=TEST, bestand_datei=d, protokolliere=lambda e: folge2.append("protokoll:lauf" if not e.get("notaus") else "protokoll:notaus"))
+except OSError as ex_na:
+    fehler_na = str(ex_na)
+finally:
+    L.notaus_alle = orig_na
+    if not existierte and BF.STOP_DATEI.exists(): BF.STOP_DATEI.unlink()
+pruefe("Not-Aus während des Laufs wirft eine Ausnahme: sie läuft weiter nach oben, der Eintrag des Laufs (mit den schon gesendeten Aufträgen) steht trotzdem im Protokoll", fehler_na == "Buch kurz gesperrt" and folge2 == ["schliessen:wirft", "protokoll:lauf"], (fehler_na, folge2))
 X.reset(stop_fehler=True); r = lauf([E("BTC", 1.0)], TEST, neu_buch())
 pruefe("Stop abgelehnt → Warnung «OHNE Stop»", r["warnung"] and any("OHNE Stop" in z for z in r["zeilen"]), r["zeilen"])
 # ── Rechte, Konto-ID, Konflikte ──

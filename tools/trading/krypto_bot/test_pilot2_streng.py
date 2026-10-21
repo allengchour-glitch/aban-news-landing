@@ -7008,7 +7008,7 @@ try:
     L.protokoll_schreiben({"n": 7})
     dauer_p_ = _time20.time() - t0_p_
     (Path(sdp20_) / "broker.json-schreiben.lock").unlink()
-    pruefe("20.Protokoll Eine belegte Schreib-Sperre hält den Lauf höchstens PROTOKOLL_SPERRE_WARTEN (1 s) auf — der Eintrag wird dann ohne Sperre geschrieben (vorher bis 15 s vor dem Schliessen im Not-Aus)",
+    pruefe("20.Protokoll Eine belegte Schreib-Sperre hält den Lauf höchstens PROTOKOLL_SPERRE_WARTEN (1 s) auf — der Eintrag wird dann ohne Sperre geschrieben (vorher bis 15 s am Ende eines Laufs oder Not-Aus)",
            [e_["n"] for e_ in json.loads(L.PROTOKOLL.read_text())] == ["neu", 1, 2, 3, 5, 6, 7] and 0.5 <= dauer_p_ < 5 and L.PROTOKOLL_SPERRE_WARTEN == 1.0, (dauer_p_, L.PROTOKOLL.read_text()[:200]))
 finally:
     L.PROTOKOLL = alt_prot20_

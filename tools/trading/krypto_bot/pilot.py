@@ -425,6 +425,8 @@ def lauf_merken(ok, hinweise, trocken=False, logbuch=None):
 
 PUSH_STILL = ROOT / "data" / "krypto-nachkontrolle-push.json"
 PUSH_ABSTAND_S = 3600
+_ZAHL = r"\d[\d'’.,]*"  # eine Zahl mit Tausender-/Dezimaltrennern ist EINE Zahl («3'641.5»)
+_ZEIT_KURS = re.compile(rf"(?<![\w.]){_ZAHL}\s*(?:s|Sek\.?|Sekunden|Min\.?|Minuten|Std\.?|Stunden|Tage|Tagen)(?!\w)|\b(?:Kurs|Preis|Stop-Kurs)\s*[:=]?\s*{_ZAHL}|@\s*{_ZAHL}")
 PUSH_MERKEN = 8  # so viele verschiedene Meldungen der letzten Stunde bleiben gemerkt (abwechselnde Texte A, B, A, B dürfen nicht je einzeln durchkommen)
 
 
@@ -439,9 +441,9 @@ def _push_nachkontrolle(text, einmal, datei=None, jetzt=None, warnung=True):
     import signale as SG
     datei = Path(datei) if datei else PUSH_STILL
     jetzt = time.time() if jetzt is None else jetzt
-    # Die Kennung ignoriert ZAHLEN (Code-Review der R20): Meldungen, die sich nur durch eine wandernde Zahl unterscheiden («seit 12 s», «zuletzt bekannten Kurs 3636»), sind dieselbe Warnung — sonst bekäme jeder
-    # Takt eine neue Kennung und die Drosselung liesse ~144 Pushes am Tag durch
-    kennung = hashlib.sha1(re.sub(r"\d+(?:['’.,]\d+)*", "#", text).encode("utf-8", "replace")).hexdigest()[:16]  # eine Zahl mit Tausender-/Dezimaltrennern ist EINE Zahl («3'641.5»)
+    # Die Kennung ignoriert Werte, die sich ändern, WEIL ZEIT VERGEHT (Code-Review der R20): Alter («seit 12 s», «vor 7 Min.») und Kurse («zuletzt bekannten Kurs 3636», «@ 4242») — sonst bekäme jeder Takt eine neue Kennung
+    # und die Drosselung liesse ~144 Pushes am Tag durch. MENGEN bleiben Teil der Kennung: «BTC Perp SELL 0.003 unklar» und «… 0.5 unklar» sind verschieden grosse Probleme.
+    kennung = hashlib.sha1(_ZEIT_KURS.sub("#", text).encode("utf-8", "replace")).hexdigest()[:16]
     art = "warnung" if warnung else "entwarnung"
     gemerkt = {}
     if einmal:
@@ -456,7 +458,11 @@ def _push_nachkontrolle(text, einmal, datei=None, jetzt=None, warnung=True):
         if kennung in gemerkt:
             print(f"(gleiche Meldung vor {int((jetzt - gemerkt[kennung]) / 60)} Min. schon gemeldet — nicht nochmals gepusht)")
             return False
-    gesendet = bool(SG.push(text + "\nKeine Anlageberatung."))
+    try:
+        gesendet = bool(SG.push(text + "\nKeine Anlageberatung."))
+    except Exception as ex:  # noqa: BLE001 — z. B. ein ntfy-Server ohne «https://» (ValueError vor dem Senden): eine Meldung, die nicht rausgeht, darf nie einen Durchgang (rc 1 = «Absturz?» im Cockpit) oder den Rest des Laufs beenden
+        print(f"⚠️ Push der Nachkontrolle fehlgeschlagen ({type(ex).__name__}).")
+        gesendet = False
     if einmal and gesendet:  # (19. Prüfung W1) nur eine ZUGESTELLTE Meldung drosselt die nächste: `push` gibt False bei Telegram-/ntfy-Fehler oder ohne Kanal zurück — sonst schwiege derselbe Alarm nach einem Netzausfall eine Stunde lang
         try:
             gemerkt[kennung] = jetzt
