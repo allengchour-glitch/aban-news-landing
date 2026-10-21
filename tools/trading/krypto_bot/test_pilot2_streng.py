@@ -5467,7 +5467,7 @@ finally:
     B.reduce_algo_streng = False
 
 
-def e40_notaus_(regeln_, st_=None, alte_=((0.1, 110000.0),), kurs_=100000.0, frei_=0.2):
+def e40_notaus_(regeln_, st_=None, alte_=((0.1, 110000.0),), kurs_=100000.0, frei_=0.2, unklar_=None):
     """Paar (Coins = Short = 0,2) mit alten Perp-Stops über den Netto-Short; `_notaus_schutz` direkt. → (ok, Lage, Warnungen, Buch, Zahl der Perp-Stop-Aufträge)"""
     k0_, sp0_, fu0_, dd0_ = handlage(coins=frei_, short=0.2, kurs=kurs_)
     for m_, p_ in alte_:
@@ -5476,7 +5476,7 @@ def e40_notaus_(regeln_, st_=None, alte_=((0.1, 110000.0),), kurs_=100000.0, fre
     B.regeln = regeln_
     w0_, s0_ = [], {} if st_ is None else st_
     try:
-        ok0_ = L._notaus_schutz(sp0_, fu0_, s0_, "BTC", "BTCUSDT", "BTC", -0.2, -0.2, frei_, 0.0, kurs_, dd0_["rs"], w0_.append, "echt")
+        ok0_ = L._notaus_schutz(sp0_, fu0_, s0_, "BTC", "BTCUSDT", "BTC", -0.2, -0.2, frei_, 0.0, kurs_, dd0_["rs"], w0_.append, "echt", unklar=unklar_)
     finally:
         B.regeln = []
     neu_ = sum(1 for x_ in B.log[n0_:] if x_[1] == "POST" and x_[2] == "/fapi/v1/algoOrder" and x_[4] == 200)
@@ -5521,6 +5521,11 @@ pruefe("19.K6 Perp-Liste nicht lesbar, das Buch kennt zwei Stops (0,1 + 0,1 von 
        neu_ == 1 and gl_["n_p"] == 3 and gl_["p_qty"] >= 0.2 - 1e-9 and ok_ is True, (ok_, gl_, w_, neu_))
 ok_, gl_, w_, st_, neu_ = e40_notaus_([LOESCHEN_KAPUTT_, LISTE_KAPUTT_], st_={"perp": 901, "perp_cid": "p2aAAAA"})
 pruefe("16.E40 Perp-Liste nicht lesbar, das Buch kennt nur einen Stop: einer über den ganzen Short kommt dazu, der alte bleibt gemerkt", neu_ == 1 and abs(gl_["p_qty"] - 0.3) < 1e-6 and [901, "p2aAAAA"] in (st_.get("perp_weitere") or []), (ok_, gl_, w_, neu_, st_))
+# … ist der Markt BEIDSEITIG (hier: ein unklarer Short-Auftrag), steht der ganze Short ohnehin unter dem neuen Stop: der alte, nicht löschbare bleibt, aber es kommt KEIN weiterer ergänzender Stop dazu (R16-M66: ohne die
+# Ausnahme «beidseitig» riefe der Schluss `perp_ganz_ergaenzen` trotzdem auf, und bei unlesbarer Liste käme in jedem Takt der Nachkontrolle ein weiterer ganzer reduceOnly-Stop dazu)
+ok_, gl_, w_, st_, neu_ = e40_notaus_([LOESCHEN_KAPUTT_, LISTE_KAPUTT_], st_={"perp": 901, "perp_cid": "p2aAAAA"}, unklar_=0.0)
+pruefe("20.M66 Markt beidseitig (unklarer Auftrag), Perp-Liste nicht lesbar, alter Stop nicht löschbar: genau EIN neuer Stop über den ganzen Short — kein weiterer ergänzender (beide Stops stehen, der alte bleibt gemerkt)",
+       neu_ == 1 and gl_["n_p"] == 2 and abs(gl_["p_qty"] - 0.3) < 1e-6 and [901, "p2aAAAA"] in (st_.get("perp_weitere") or []), (ok_, gl_, w_, neu_, st_))
 
 # E41 (Nachprüfung zu E40, Kette von Nachkontroll-Durchgängen): steht der Markt schon beidseitig vollständig (alle Coins unter einem Spot-Stop UND der ganze Short unter Perp-Stops), räumt der Not-Aus nicht auf:
 # das Aufräumen (der Spot-Stop über die Absicherung ist «zu gross») löschte den Spot-Stop in JEDEM Takt der Nachkontrolle und setzte ihn gleich neu — solange ein Perp-Stop nicht löschbar war, ein Fenster ohne Schutz.
