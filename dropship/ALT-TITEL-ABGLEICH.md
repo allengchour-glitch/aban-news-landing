@@ -1,34 +1,25 @@
-# Bild-Alt-Texte ↔ aktueller Titel — Stand 2026-10-19 05:43 UTC
+# Bild-Alt-Texte ↔ aktueller Titel — Stand 2026-10-21 00:33 UTC
 
-Regel: `automation/alt_titel_abgleich.py` (nur Schema «<Titel> – Bild N | LuxeStyle», POD/Editor ausgenommen, live entschieden). Export: 55801 aktive · Produkte geändert: 36 · Alt-Texte: 259 · Fehler: 0 · offen für den nächsten Lauf: 0
+Regel: `automation/alt_titel_abgleich.py` (nur Schema «<Titel> – Bild N | LuxeStyle», POD/Editor ausgenommen, live entschieden). Export: 56181 aktive · Produkte geändert: 47 · Alt-Texte: 427 · Fehler: 0 · offen für den nächsten Lauf: 0
 
-## anderer titel (27 Produkte)
+## anderer titel (44 Produkte)
 
-- «Zange mit Kaliper-Rohre – Bild 2 | LuxeStyle» → «Zange mit Klemmschlauch-Rohren – Bild 2 | LuxeStyle»
-- «Sicherheitsstiefel mit Stahlkappe – Low-Top – Bild 2 | LuxeStyle» → «Arbeitsstiefel mit Stahlkappe – Low-Top – Bild 2 | LuxeStyle»
-- «Mannlicher Schultertasche PU Leder 10" | LuxeStyle» → «Herren-Schultertasche PU Leder 10" | LuxeStyle»
-- «Weibliches Kuhleder Anti-Diebstahl-Longwallet – Bild 2 | LuxeStyle» → «Damen-Kuhleder Anti-Diebstahl-Longwallet – Bild 2 | LuxeStyle»
-- «Weibliches Lederportemonnaie mit Doppelkordel | LuxeStyle» → «Damen-Lederportemonnaie mit Doppelkordel | LuxeStyle»
-- «Mannlicher Canvas-Schultertasche, mittelgross | LuxeStyle» → «Herren-Canvas-Schultertasche, mittelgross | LuxeStyle»
-- «Mannliche Reisetasche Crossbody, grosse Kapazität | LuxeStyle» → «Herren-Reisetasche Crossbody, grosse Kapazität | LuxeStyle»
-- «Mannlicher Canvas-Satchel mit Computerfach | LuxeStyle» → «Herren-Canvas-Satchel mit Computerfach | LuxeStyle»
-- «Mannlicher Leder-Rucksack – Mittelgross, schwarz | LuxeStyle» → «Herren-Leder-Rucksack – Mittelgross, schwarz | LuxeStyle»
-- «Mannlicher Canvas-Backpack | LuxeStyle» → «Herren-Canvas-Backpack | LuxeStyle»
-- «Mannlicher wasserdichter Laptop-Rucksack 20-35L – Bild 5 | LuxeStyle» → «Wasserdichter Laptop-Rucksack 20-35L für Herren – Bild 5 | LuxeStyle»
-- «Mannlicher Retro-Leder-Crossbody – Bild 4 | LuxeStyle» → «Herren-Retro-Leder-Crossbody – Bild 4 | LuxeStyle»
+- «Hundespielzeug Slipper mit Sound & Zahnreinigung – Bild 4 | LuxeStyle» → «Hundespielzeug in Schuhform mit Sound – Bild 4 | LuxeStyle»
+- «Infrarot-Thermometer Schussgerät | LuxeStyle» → «Infrarot-Thermometer Messgerät | LuxeStyle»
+- «Resin-Tastenkappe für mechanische Tastatur | LuxeStyle» → «Harz-Tastenkappe für mechanische Tastatur | LuxeStyle»
+- «Holzbausteine 32-Teilig für Kleinkinder – Bild 3 | LuxeStyle» → «Holzbausteine 32-Teilig für Kinder – Bild 3 | LuxeStyle»
+- «Strass-Flip-Flops aus Lackleder | LuxeStyle» → «Strass-Flip-Flops aus Lack-Kunstleder | LuxeStyle»
+- «Herren-Sneaker aus Schweinsleder – Bild 4 | LuxeStyle» → «Herren-Sneaker aus Schweins-Kunstleder – Bild 4 | LuxeStyle»
+- «Männer Schuhe aus Leder – schwarze Casual Schuhe | LuxeStyle» → «Männer Schuhe aus Kunstleder – schwarze Casual Schuhe | LuxeStyle»
+- «Slipper aus Wildleder für Herren | LuxeStyle» → «Slipper aus Wild-Kunstleder für Herren | LuxeStyle»
+- «Leder-Reiserucksack für Herren, 20-35 L – Bild 5 | LuxeStyle» → «Kunstleder-Reiserucksack für Herren, 20-35 L – Bild 5 | LuxeStyle»
+- «Motorrad Seitentasche aus synthetischem Leder | LuxeStyle» → «Motorrad Seitentasche aus synthetischem Kunstleder | LuxeStyle»
+- «Retro-Leder-Rucksack für Männer | LuxeStyle» → «Retro-Kunstleder-Rucksack für Männer | LuxeStyle»
+- «Leder-Rucksack grosse Kapazität Business | LuxeStyle» → «Kunstleder-Rucksack grosse Kapazität Business | LuxeStyle»
 
-## titel+zusatz (8 Produkte)
+## titel+zusatz (3 Produkte)
 
-- «Sonnenaufgangs-Wecker mit Bluetooth-Soundundundund – Bild 3 | LuxeStyle» → «Sonnenaufgangs-Wecker mit Bluetooth-Sound – Bild 3 | LuxeStyle»
-- «Blumenmuster-Kleid mit Rundhals und Bindedetailililil | LuxeStyle» → «Blumenmuster-Kleid mit Rundhals und Bindedetail | LuxeStyle»
-- «Metall-Schalhalter, rechteckig & rundundundund | LuxeStyle» → «Metall-Schalhalter, rechteckig & rund | LuxeStyle»
-- «Retro-Spiegel in Schwarz, rundundundund – Bild 5 | LuxeStyle» → «Retro-Spiegel in Schwarz, rund – Bild 5 | LuxeStyle»
-- «Patchwork Kleid mit hohem Taillenbundundundund – Bild 3 | LuxeStyle» → «Patchwork Kleid mit hohem Taillenbund – Bild 3 | LuxeStyle»
-- «Keramische Doppelschüssel für Katze & kleinen Hundundundund | LuxeStyle» → «Keramische Doppelschüssel für Katze & kleinen Hund | LuxeStyle»
-- «Rosa A-Linien-Partykleid mit hohem Taillenbundundundund | LuxeStyle» → «Rosa A-Linien-Partykleid mit hohem Taillenbund | LuxeStyle»
-- «Intelligenter ferngesteuerter Roboterhundundundund | LuxeStyle» → «Intelligenter ferngesteuerter Roboterhund | LuxeStyle»
-
-## titel gekürzt (1 Produkte)
-
-- «Selbstklebende Möbelfolie – Bild 1 | LuxeStyle» → «Selbstklebende Möbelfolie · 500 × 90 cm Rolle, PVC – Bild 1 | LuxeStyle»
+- «Sonnenaufgangs-Wecker mit Bluetooth-Soundundund – Bild 3 | LuxeStyle» → «Sonnenaufgangs-Wecker mit Bluetooth-Sound – Bild 3 | LuxeStyle»
+- «Blumenmuster-Kleid mit Rundhals und Bindedetaililil | LuxeStyle» → «Blumenmuster-Kleid mit Rundhals und Bindedetail | LuxeStyle»
+- «3-Stück Kuchenprobe-Thermometer-Set · 3 Stück – Bild 2 | LuxeStyle» → «3-Stück Kuchenprobe-Thermometer-Set – Bild 2 | LuxeStyle»
 
