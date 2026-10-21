@@ -18657,3 +18657,5 @@ gid://shopify/Product/16655746892167	18->2	Lockerer Pullover mit Rundhalsausschn
 gid://shopify/Product/16655747219847	15->0	Herren locker sitzender Crewneck Pullover
 gid://shopify/Product/16655792701831	84->0	Laptop Tasche Exportqualität mit Rückenstütze
 gid://shopify/Product/16655826223495	30->1	Ergonomischer Sitzkissen zur Haltungskorrektur
+gid://shopify/Product/16655938388359	18->0	Chunky-Heel-Sandalen mit wasserfester Plattform
+gid://shopify/Product/16655940092295	12->0	Weiche Wolle mit Karomuster

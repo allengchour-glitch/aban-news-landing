@@ -12872,3 +12872,10 @@ high-waist-slim-jeans-641400	2510251351001641600	16	10.69	ok	landeseite
 plusch-spielzeug-fur-haustiere-602500	2504090220311602800	7	6.90	ok	landeseite
 anzug-fur-haarlose-katzen-604800	2504170220221605100	16	7.43	ok	landeseite
 elastische-high-waist-leggings-mit-reissversch-626600	2510230734221626800	16	8.66	ok	landeseite
+herrenuhr-mit-grosser-zifferblatt-602100	2607130113371602600	7	6.18	ok	landeseite
+personalisierte-namensohrstecker-607800	2607130345361608400	16	4.40	ok	landeseite
+mehrfachfunktionssportuhr-615000	2602010741251615300	7	7.17	ok	landeseite
+batterietester-mit-lagerbox-kapazitatsprufer-624100	2412020130051624300	16	11.82	ok	landeseite
+herren-quarz-armband-634200	2601300606531634600	7	6.62	ok	landeseite
+smart-wi-fi-taste-mit-tuya-app-und-sprachsteue-626700	2411250727481626900	7	8.74	ok	landeseite
+kabelloser-4-in-1-lader-617700	2411140112321617900	7	9.50	ok	landeseite
