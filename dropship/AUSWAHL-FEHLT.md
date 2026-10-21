@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-21 17:15 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-21 18:54 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1202 · **1136 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 955, teilweise: 159, keine: 22; Preisspanne > 2×: 149) · 1 CJ-Variante: 64 · ohne Antwort: 2
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1198 · **1132 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 951, teilweise: 159, keine: 22; Preisspanne > 2×: 148) · 1 CJ-Variante: 64 · ohne Antwort: 2
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -330,7 +330,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Powerbank 10000 mAh mit integriertem Kabel (`powerbank-10000-mah-mit-integriertem-kabel-602500`) | 10 | 10 | 4.96–6.24 | 15.90 | Beige-10000 MA, Beige-20000 MA, White-10000 MA, White-20000 MA |
 | Magnetische Handyhalterung für Sport & Golf (`magnetische-handyhalterung-fur-sport-golf-626900`) | 10 | 10 | 2.71–5.81 | 14.90 | C20CJ2A, C20CJ2, C20CC6, C20CC8 |
 | Aufklebe-Nägel im French-Design, schwarz (`french-black-armour-wearable-nails-317504`) | 10 | 10 | 2.01–2.35 | 14.90 | YS11, YS12, YS13, YS14 |
-| Naturkristall Armband – verschiedene Designs (`naturkristall-armband-verschiedene-designs-608400`) | 10 | 10 | 3.35–7.13 | 14.90 | 8610 Style-Natural Crystal Bracelet, 8011 Style-Natural Crystal Bracelet, 8012 Style-Natural Crystal Bracelet, 8015 Style-Natural Crystal Bracelet |
 | Smartwatch mit Herzfrequenzmessung · Herren (`smartwatch-mit-herzfrequenzmessung-herren-625000`) | 10 | 10 | 16.25–18.24 | 27.90 | Tape Black, Tape Silver, Belt Black, Belt Silver |
 | Jacquard Kissenbezug mit Pflanzenmuster (`jacquard-kissenbezug-mit-pflanzenmuster-924096`) | 10 | 10 | 2.68–3.16 | 15.90 | Hydrangea-45x45cm, Hydrangea-60x60cm, Black Badge-45x45cm, Black Badge-60x60cm |
 | Aktentasche aus Rindsleder für Herren (`aktentasche-aus-rindsleder-fur-herren-615300`) | 10 | 10 | 35.66–41.29 | 82.90 | 3319 Crazy Horse Brown, 3319 Crazy Horse Dark Brown, 3319 Crazy Horse Black, 3319 Crazy Horse Dark Coffee |
@@ -516,7 +515,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Dimension PD225W Fast Charge Power Bank (`dimension-pd225w-fast-charge-power-bank-629900`) | 7 | 7 | 8.62–14.26 | 18.90 | P168K Black 10000-10000mah, P168K White 10000-10000mah, P169K Black 20000-10000mah, P169K White 20000-10000mah |
 | Lederhalsband für Haustiere (`lederhalsband-fur-haustiere-626101`) | 7 | 7 | 22.05–40.68 | 44.90 | Collar-One Size, Collar-XS, Collar-S, Collar-M |
 | Holzmaserung Boden Reparaturstift (`holzmaserung-boden-reparaturstift-633900`) | 7 | 7 | 0.35–1.05 | 14.90 | Black, White, Reddish Brown, Dark Brown |
-| Breiter Ring mit Eis-Perlmutt-Effekt Hellblau-Grün (`breiter-ring-mit-eis-perlmutt-effekt-hellblau-629000`) | 7 | 7 | 2.87–2.87 | 15.90 | Light Blue Green-Inner Diameter 16, Light Blue Green-Inner Diameter 17, Light Blue Green-Inner Diameter 18, Light Blue Green-Inner Diameter 19 |
 | Kissenbezug mit Tiger-Motiv (`kissenbezug-mit-tiger-motiv-823232`) | 7 | 7 | 3.31–4.06 | 15.90 | Tiger head-45x45cm, Tiger body-45x45cm, Tigers tail-45x45cm, Tiger cat-30x50cm |
 | Wandmontierter 3-Fach Seifenspender (`wandmontierter-3-fach-seifenspender-618300`) | 7 | 5 | 4.53–5.8 | 25.90 | All White, Electroplating White, Black, Gold |
 | Mechanische Herrenuhr – Business & Freizeit (`mechanische-herrenuhr-business-freizeit-625400`) | 7 | 7 | 12.6–12.6 | 27.90 | Rose Gold Shell Black Surface, Rose Shell White Surface Black, Gold Shell Black Brown Belt, Gold Shell White Surface |
@@ -675,7 +673,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Faltbarer Einzelsessel mit Kissen (`faltbarer-einzelsessel-mit-kissen-623700`) | 5 | 5 | 7.99–7.99 | 53.90 | Fruit Green, Gray, Rose Red, Blue |
 | Lordosenstützkissen für erholsamen Schlaf (`lordosenstutzkissen-fur-erholsamen-schlaf-613700`) | 5 | 5 | 3.23–3.23 | 22.90 | Bean Green-Memory Foam Inner Core, Pink Jade-Memory Foam Inner Core, Light Gray-Memory Foam Inner Core, Light Blue-Memory Foam Inner Core |
 | Beheizbare Wimpernzange, USB-aufladbar (`beheizbare-wimpernzange-usb-aufladbar-612300`) | 5 | 5 | 7.81–7.81 | 21.90 | 160X70X40MM-White, 160X70X40MM-Pink, 160X70X40MM-Black, 160X70X40MM-Cola Red |
-| Eleganter Blumenring aus 18K vergoldetem Edelstahl (`eleganter-blumenring-aus-18k-vergoldetem-edels-611900`) | 5 | 5 | 2.19–2.19 | 14.90 | NMSRF6221-Free Size, NMSRF6222-Free Size, NMSRF6223-Free Size, NMSRF6224-Free Size |
 | Verstellbarer Naturkristall-Ring (`verstellbarer-naturkristall-ring-633000`) | 5 | 5 | 2.11–2.63 | 14.90 | Turquoise, Style 1 Green Jade, Style 2 Emerald, Amethyst |
 | Halsreif mit Anhänger für Damen (`halsreif-mit-anhanger-fur-damen-636000`) | 5 | 5 | 2.71–9.33 | 16.90 | Gold-4mm-Neck Collar, Gold-4mm-Necklace, Gold-5mm-Neck Collar, Steel Color-4mm-Neck Collar |
 | Wassertropfen-Ring mit Blaumondstein & Strass-Akzenten (`wassertropfen-ring-mit-blaumondstein-strass-akzenten-601400`) | 5 | 5 | 2.18–2.18 | 14.90 | Black Gold-No 6, Black Gold-No 7, Black Gold-No 8, Black Gold-No 9 |
@@ -973,7 +970,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Farbwechselnde Abdeck-Foundation (`farbwechselnde-abdeck-foundation-634900`) | 3 | 3 | 2.76–2.76 | 15.90 | 30G-Ivory White, 30G-Wheat Color, 30G-Bronze |
 | Elegante minimalistische Halskette (`elegante-minimalistische-halskette-600000`) | 3 | 3 | 2.67–3.48 | 15.90 | Red, Green, Bright Red |
 | Faltbarer Untersetzer mit Sonnenblumenmuster (`faltbarer-untersetzer-mit-sonnenblumenmuster-601500`) | 3 | 3 | 3.48–5.52 | 27.90 | Three Pieces SUNFLOWER, Four Pieces SUNFLOWER, Five Pieces SUNFLOWER |
-| Präzise Feinwaage für Schmuck & mehr (`prazise-feinwaage-fur-schmuck-mehr-617100`) | 3 | 3 | 10.45–11.93 | 24.90 | 20g  /0.001g, 30g   /0.001g, 50g   /0.001g |
 | Gimbal Motor für DJI Air 3S Kamera (`gimbal-motor-fur-dji-air-3s-kamera-605000`) | 3 | 3 | 20.83–34.72 | 51.90 | Camera Frame With P Motor, PTZ R Motor, Pan Y Motor |
 | Fotorucksack für DSLR-Kameras (`fotorucksack-fur-dslr-kameras-619900`) | 3 | 3 | 12.77–18.57 | 59.90 | Small Black, Large Black, Large Black 2 |
 | Herren Automatikuhr, Business-Stil (`herren-automatikuhr-business-stil-337984`) | 3 | 3 | 85.93–85.93 | 105.90 | White shell blue faced steel, White shell black faced steel, 8200tiffany blue |

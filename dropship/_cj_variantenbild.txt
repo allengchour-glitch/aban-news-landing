@@ -8481,3 +8481,15 @@ gid://shopify/Product/15495748977025	zugeordnet	15	Maxirock mit Blumenprint und 
 gid://shopify/Product/15495749108097	zugeordnet	20	Boho V-Ausschnitt Midikleid mit Muster
 gid://shopify/Product/15495753597313	zugeordnet	40	Herren Kurzarmhemd mit modischem Print
 gid://shopify/Product/15495771685249	zugeordnet	20	Trendiges V-Neck Fleece-Gilet für junge Männer
+gid://shopify/Product/16603325006215	zugeordnet	25	Langer Fellmantel mit Zottelfell in Weiss
+gid://shopify/Product/16603331658119	zugeordnet	15	Lange Steppweste mit Kapuze
+gid://shopify/Product/16603334771079	zugeordnet	20	Schwarzer Parka mit Fellkapuze und Taillenzug
+gid://shopify/Product/16603336442247	zugeordnet	22	Plus-Size Outdoor-Zehenschuhe mit Fleece
+gid://shopify/Product/16603588821383	zugeordnet	10	Halloween-Outfit für Mädchen
+gid://shopify/Product/16603589083527	zugeordnet	10	Baby-Strampler Halloween mit Kapuze
+gid://shopify/Product/16603589935495	zugeordnet	24	Fleece-gefülltes Langarmshirt in Streifen
+gid://shopify/Product/16603617952135	zugeordnet	6	Baby Swaddle-Tuch mit Hasenohr-Stirnband · 77 × 85 cm
+gid://shopify/Product/16603691221383	zugeordnet	12	Baby- und Kinder-Pyjama-Set
+gid://shopify/Product/16603737784711	zugeordnet	25	Baby-Set aus Baumwolle: Pullover & Shorts
+gid://shopify/Product/16603758788999	zugeordnet	12	Kinder Trägershirt mit Print, ärmellos
+gid://shopify/Product/16603763442055	zugeordnet	12	Trägerloses Maxi-Kleid mit Mesh

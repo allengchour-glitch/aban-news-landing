@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-20T22:11Z",
+ "stand": "2026-10-21T18:48Z",
  "scharf": true,
  "anlaesse": {
   "halloween": {
@@ -17,7 +17,7 @@
     "Verkleidungsteil": 2,
     "Partydeko": 28
    },
-   "grenzfaelle": 80,
+   "grenzfaelle": 81,
    "abmelden_paare": 0,
    "pro_kanal": {
     "TikTok": 0,
@@ -663,6 +663,12 @@
      "handle": "halloween-a-linien-kleid-im-vintage-stil-609000",
      "titel": "Halloween A-Linien-Kleid im Vintage-Stil",
      "typ": "Damenmode",
+     "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
+    },
+    {
+     "handle": "halloween-cottage-bauklotze-halloween-haus-set-618400",
+     "titel": "Halloween Cottage Bauklötze – Halloween-Haus-Set",
+     "typ": "Spass-Elektronik",
      "grund": "Halloween-Bezug, aber weder Kostüm noch Partydeko — bleibt"
     },
     {
