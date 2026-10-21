@@ -1,0 +1,1 @@
+2026-10-21T14:06Z	Merkliste v3 im Haupttheme eingebaut (automation/merkliste_einbauen.py); Rückweg: --thema main --zurueck --ja

@@ -1,4 +1,4 @@
     {%- comment -%} LUX-WISH-BILD (21.10.2026, Kollegen-Feedback 16.10.): Herz oben rechts am Hauptbild — nur Handy (Stil in layout/theme.liquid), auf dem Desktop sitzt das beschriftete Herz neben den Kauf-Knöpfen im ersten Bildschirm. {%- endcomment -%}
     {%- if closest.product.handle != blank -%}
-      <button type="button" class="lux-wish lux-wish--bild" data-handle="{{ closest.product.handle }}" aria-label="Zur Merkliste" aria-pressed="false">&#9825;</button>
+      <button type="button" class="lux-wish lux-wish--bild" data-handle="{{ closest.product.handle }}" aria-label="{{ closest.product.title | escape }}: zur Merkliste" aria-pressed="false">&#9825;</button>
     {%- endif -%}

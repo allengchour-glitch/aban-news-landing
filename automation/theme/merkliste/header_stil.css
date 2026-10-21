@@ -52,7 +52,7 @@
   /* Handy: das Herz braucht Platz in der Kopfzeile — die rechte Spalte wird um 44 px breiter (Konto, Herz, Warenkorb à 44 px), das Logo schrumpft in seiner Mitte-Spalte
      (gemessen 320–414 px: Logo und Konto-Symbol berühren sich nicht). */
   @media screen and (max-width: 749.98px) {
-    #header-component .header__columns:has(.lux-wish-link) {
+    #header-component[data-menu-style] .header__columns:has(.lux-wish-link) {   /* Spezifität über der Horizon-Regel «[data-menu-style='drawer']» — gewinnt unabhängig von der Stylesheet-Reihenfolge */
       --header-template-columns: var(--header-mobile-bookend) var(--header-mobile-bookend) 1fr calc(var(--header-mobile-bookend) * 2) var(--header-mobile-bookend);
     }
   }

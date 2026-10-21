@@ -1,0 +1,99 @@
+<div class="lux-wishlist-wrap" style="max-width:1100px;margin:0 auto;padding:24px 16px;">
+  <div id="lux-wishlist">
+    <div id="lux-wl-head" style="display:none;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap;">
+      <strong id="lux-wl-count" style="font-size:16px;"></strong>
+      <button type="button" id="lux-wl-clear" style="border:1px solid rgba(0,0,0,.2);background:#fff;border-radius:999px;padding:8px 14px;font-size:13px;cursor:pointer;">Alle entfernen</button>
+    </div>
+    <p id="lux-wl-note" role="status" style="display:none;margin:0 0 14px;padding:10px 12px;border-radius:8px;background:#f6f1e8;font-size:14px;"></p>
+    <div id="lux-wl-empty" style="display:none;">
+      <p style="margin:0 0 12px;">Deine Merkliste ist leer. Tippe auf das ♡ bei einem Produkt, um es hier zu speichern.</p>
+      <p style="margin:0;"><a href="/collections/neu-eingetroffen">Neuheiten ansehen</a> · <a href="/collections/hype-jetzt">Gerade im Trend</a></p>
+    </div>
+    <div id="lux-wl-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;"></div>
+  </div>
+</div>
+<script>
+/* Merkliste (Karten-Herz in theme.liquid schreibt die Handles nach localStorage «lux_wish»).
+   18.10.2026: Handles werden geprüft (nur a–z, 0–9, «-»), Titel nie als HTML eingesetzt, nicht mehr vorhandene Produkte
+   fliegen mit Hinweis aus der Liste (vorher blieben sie stumm für immer drin), Ausverkauftes ist gekennzeichnet,
+   «In den Warenkorb» für Ein-Varianten-Ware — NICHT für «Selbst gestalten»-Produkte (Tag selbst-gestalten): dort braucht
+   es den Editor, der Weg führt über die Produktseite. */
+(function(){
+  var KEY='lux_wish', OK=/^[a-z0-9][a-z0-9-]*$/;
+  var grid=document.getElementById('lux-wl-grid'), head=document.getElementById('lux-wl-head'),
+      cnt=document.getElementById('lux-wl-count'), note=document.getElementById('lux-wl-note'),
+      leer=document.getElementById('lux-wl-empty'), clr=document.getElementById('lux-wl-clear');
+  function lesen(){var l;try{l=JSON.parse(localStorage.getItem(KEY)||'[]');}catch(e){l=[];}
+    if(!Array.isArray(l))l=[]; var seen={}; return l.filter(function(h){if(typeof h!=='string'||!OK.test(h)||seen[h])return false;seen[h]=1;return true;});}
+  function schreiben(l){try{localStorage.setItem(KEY,JSON.stringify(l));}catch(e){}}
+  function el(tag,css,text){var e=document.createElement(tag);if(css)e.style.cssText=css;if(text!=null)e.textContent=text;return e;}
+  function chf(c){return 'CHF '+(c/100).toFixed(2);}
+  function zaehler(){var n=grid.children.length;cnt.textContent=n===1?'1 Artikel gemerkt':n+' Artikel gemerkt';
+    head.style.display=n?'flex':'none';leer.style.display=n?'none':'block';}
+  function karte(h,p){
+    var frei=p.available!==false, d=el('div','border:1px solid rgba(0,0,0,.08);border-radius:12px;overflow:hidden;background:#fff;position:relative;');
+    d.setAttribute('data-h',h);
+    var a=el('a','text-decoration:none;color:inherit;display:block;'); a.href=p.url;
+    var img=(p.featured_image||'').replace(/^\/\//,'https://');
+    if(img){var i=el('img','width:100%;aspect-ratio:1;object-fit:cover;'+(frei?'':'opacity:.45;'));i.alt='';i.loading='lazy';
+      i.src=img+(img.indexOf('?')>-1?'&':'?')+'width=400';i.onerror=function(){this.onerror=null;this.src=img;};a.appendChild(i);}
+    var t=el('div','padding:10px 12px;');t.appendChild(el('div','font-size:14px;line-height:1.35;',p.title||''));
+    var pr=el('div','font-weight:600;margin-top:6px;',chf(p.price));
+    if(p.compare_at_price&&p.compare_at_price>p.price){var s=el('span','font-weight:400;opacity:.55;text-decoration:line-through;margin-left:8px;',chf(p.compare_at_price));pr.appendChild(s);}
+    t.appendChild(pr);
+    if(!frei)t.appendChild(el('div','margin-top:6px;font-size:13px;color:#8a3b2e;','Aktuell ausverkauft'));
+    a.appendChild(t);d.appendChild(a);
+    var eigen=(p.tags||[]).some(function(x){return /selbst-gestalten|personalized|wunschdesign/i.test(x);});
+    var v=p.variants||[], b;
+    if(frei&&v.length===1&&v[0].available!==false&&!eigen){
+      b=el('button','display:block;width:calc(100% - 24px);margin:0 12px 12px;padding:10px;border:none;border-radius:8px;background:#1a1a1a;color:#fff;font-size:14px;cursor:pointer;','In den Warenkorb');
+      b.type='button';
+      b.addEventListener('click',function(){b.disabled=true;b.textContent='…';
+        fetch('/cart/add.js',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({items:[{id:v[0].id,quantity:1}]})})
+          .then(function(r){if(!r.ok)throw 0;b.textContent='✓ Im Warenkorb';b.style.background='#2e6b3f';})
+          .catch(function(){b.disabled=false;b.textContent='Nicht möglich – Produktseite öffnen';b.onclick=function(){location.href=p.url;};});});
+    }else{
+      b=el('a','display:block;margin:0 12px 12px;padding:10px;border:1px solid rgba(0,0,0,.2);border-radius:8px;text-align:center;text-decoration:none;color:inherit;font-size:14px;',
+        frei?(eigen?'Gestalten':v.length>1?'Option wählen':'Ansehen'):'Ansehen');
+      b.href=p.url;
+    }
+    d.appendChild(b);
+    var x=el('button','position:absolute;top:8px;right:8px;border:none;background:rgba(255,255,255,.92);border-radius:50%;width:30px;height:30px;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.15);','✕');
+    x.type='button';x.className='lux-wl-rm';x.setAttribute('aria-label','Aus der Merkliste entfernen');x.setAttribute('data-h',h);
+    d.appendChild(x);return d;
+  }
+  var liste=lesen();
+  if(!liste.length){zaehler();return;}
+  Promise.all(liste.map(function(h){
+    return fetch('/products/'+h+'.js').then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(p){return {h:h,p:p};}).catch(function(){return {h:h,p:null};});
+  })).then(function(res){
+    var weg=[];
+    res.forEach(function(x){if(x.p)grid.appendChild(karte(x.h,x.p));else weg.push(x.h);});
+    if(weg.length){
+      var rest=lesen().filter(function(h){return weg.indexOf(h)<0;});schreiben(rest);
+      note.textContent=weg.length===1?'1 Artikel gibt es nicht mehr und wurde aus deiner Merkliste entfernt.':weg.length+' Artikel gibt es nicht mehr und wurden aus deiner Merkliste entfernt.';
+      note.style.display='block';
+    }
+    zaehler();
+  });
+  document.addEventListener('click',function(e){
+    var b=e.target.closest&&e.target.closest('.lux-wl-rm');if(!b)return;
+    var h=b.getAttribute('data-h');schreiben(lesen().filter(function(x){return x!==h;}));
+    b.parentElement.remove();zaehler();
+  });
+  var timer;
+  clr.addEventListener('click',function(){
+    if(clr.getAttribute('data-ask')!=='1'){clr.setAttribute('data-ask','1');clr.textContent='Wirklich alle entfernen?';
+      timer=setTimeout(function(){clr.removeAttribute('data-ask');clr.textContent='Alle entfernen';},4000);return;}
+    clearTimeout(timer);clr.removeAttribute('data-ask');clr.textContent='Alle entfernen';
+    schreiben([]);grid.innerHTML='';note.style.display='none';zaehler();
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Merkliste",
+  "settings": []
+}
+{% endschema %}

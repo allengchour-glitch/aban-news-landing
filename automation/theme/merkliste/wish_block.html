@@ -6,11 +6,14 @@
     .lux-wish{position:absolute;top:8px;right:8px;z-index:3;width:34px;height:34px;border-radius:50%;border:none;cursor:pointer;background:rgba(255,255,255,.92);color:#1a1a1a;font-size:19px;line-height:1;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 4px rgba(0,0,0,.15);}
     .lux-wish::before{content:'';position:absolute;inset:-5px;}
     .lux-wish.on{color:#c0392b;}
-    .lux-wish:focus-visible,.lux-wish-link:focus-visible,.lux-wish-pdp__link:focus-visible,#lux-wish-toast a:focus-visible,#lux-wish-toast button:focus-visible{outline:2px solid #1a1a1a;outline-offset:2px;}
+    .lux-wish:focus-visible,.lux-wish-link:focus-visible,.lux-wish-pdp__link:focus-visible{outline:2px solid #1a1a1a;outline-offset:2px;}
+    .lux-wish:not(.lux-wish--pdp):focus-visible{box-shadow:0 0 0 5px #fff;}   /* Zweiton-Ring: auf dunklen Fotos bleibt der Fokus sichtbar */
+    #lux-wish-toast a:focus-visible,#lux-wish-toast button:focus-visible{outline:2px solid #fff;outline-offset:-4px;}   /* im dunklen Hinweis: weisser Ring innen */
     .product-card{position:relative;}
     .lux-wish.lux-wish--bild{top:12px;right:12px;width:44px;height:44px;font-size:23px;box-shadow:0 1px 6px rgba(0,0,0,.22);}
     .lux-wish.lux-wish--bild::before{inset:0;}
     @media (min-width:750px){.lux-wish.lux-wish--bild{display:none;}}
+    #quick-add-modal-content .lux-wish--bild{display:none;}   /* im Schnellkauf-Fenster würde es das kleine Vorschaubild verdecken */
     .lux-wish-pdp{display:flex;align-items:center;flex-wrap:wrap;gap:0 18px;margin:12px 0 4px;}
     .lux-wish.lux-wish--pdp{position:relative;top:auto;right:auto;width:auto;height:auto;min-height:44px;padding:0 20px;gap:8px;border:1px solid rgba(26,26,26,.55);border-radius:8px;background:transparent;box-shadow:none;font:inherit;font-size:15px;color:inherit;}
     .lux-wish--pdp::before{display:none;}
@@ -32,7 +35,7 @@
   </style>
   <script>
   (function(){
-    var KEY='lux_wish', OK=/^[^\s\/\\?#<>"'&%]{1,255}$/, mem=null, memOnly=false, tt, HERZ=String.fromCharCode(9829), LEER=String.fromCharCode(9825);
+    var KEY='lux_wish', OK=/^[^\s\u0000-\u001f\u007f\/\\?#<>"'&%]{1,255}$/, mem=null, memOnly=false, tt, HERZ=String.fromCharCode(9829), LEER=String.fromCharCode(9825);
     var ROOT=(window.Shopify&&Shopify.routes&&Shopify.routes.root)||'/', LISTE=ROOT+'pages/merkliste';
     function list(){
       var l, seen={};
@@ -106,7 +109,7 @@
         if(!(r.bottom<tr.top-8||r.top>tr.bottom+8||r.right<tr.left||r.left>tr.right)){t.classList.add('oben');t.style.bottom='';t.style.top=kopfunten()+'px';}
       }
     }
-    function zeige(ansage,kurz,mitLink,quelle,sichtbar){   /* ansage = vollständiger Satz für Screenreader, kurz = was auf dem Hinweis steht */
+    function zeige(ansage,kurz,mitLink,quelle,sichtbar,fest){   /* ansage = vollständiger Satz für Screenreader, kurz = was auf dem Hinweis steht */
       var t=ui(); if(!t)return;
       var lv=document.getElementById('lux-wish-live');
       if(lv){lv.textContent='';setTimeout(function(){lv.textContent=ansage;},60);}
@@ -115,7 +118,7 @@
       t.querySelector('a').hidden=!mitLink;
       var nu=document.getElementById('luxas-nudge'); if(nu)nu.hidden=true;   /* Hinweisblase des Assistenten nicht unter dem Hinweis */
       requestAnimationFrame(function(){platz(t,quelle);t.classList.add('show');});
-      halte(mitLink?6000:3500);
+      if(fest)clearTimeout(tt);else halte(mitLink?6000:3500);   /* per Tastatur ausgelöst: bleibt bis Escape/✕ (der Weg zum Link wäre sonst zu lang) */
     }
     function bump(){
       if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
@@ -131,10 +134,10 @@
       var l=list(),i=l.indexOf(h);
       if(i>-1){l.splice(i,1);}else{l.push(h);}
       var ok=save(l);paint();
-      var sicht=ort==='karte'||!ok;   /* auf der Produktseite zeigen Knopf + Zähler + Link schon alles */
-      if(i>-1){ev('merkliste_entfernt_'+ort);zeige('Von der Merkliste entfernt','Entfernt',false,b,sicht);}
+      var fest=e.detail===0, sicht=ort==='karte'||!ok;   /* auf der Produktseite zeigen Knopf + Zähler + Link schon alles */
+      if(i>-1){ev('merkliste_entfernt_'+ort);zeige('Von der Merkliste entfernt','Entfernt',false,b,sicht,false);}
       else{ev('merkliste_hinzu_'+ort);bump();
-        if(ok)zeige('Zur Merkliste hinzugefügt ('+l.length+')','Gemerkt ('+l.length+')',true,b,sicht);
+        if(ok)zeige('Zur Merkliste hinzugefügt ('+l.length+')','Gemerkt ('+l.length+')',true,b,sicht,fest);
         else zeige('Merken geht in diesem Browser gerade nicht – die Liste gilt nur, solange du auf dieser Seite bleibst.','Merken geht hier gerade nicht – nur bis zum Verlassen der Seite',false,b,true);}
     },true);
     document.addEventListener('click',function(e){
@@ -146,7 +149,16 @@
     window.addEventListener('pageshow',function(e){if(e.persisted)paint();});
     function start(){ui();paint();}
     if(document.readyState!=='loading'){start();}else{document.addEventListener('DOMContentLoaded',start);}
-    new MutationObserver(function(m){for(var i=0;i<m.length;i++){for(var j=0;j<m[i].addedNodes.length;j++){var n=m[i].addedNodes[j];if(n.nodeType===1&&(n.classList.contains('lux-wish')||n.classList.contains('lux-wish-link')||n.getElementsByClassName('lux-wish').length||n.getElementsByClassName('lux-wish-link').length)){paint();return;}}}}).observe(document.documentElement,{childList:true,subtree:true});
+    var geplant=false;
+    function plan(){if(geplant)return;geplant=true;requestAnimationFrame(function(){geplant=false;paint();});}
+    new MutationObserver(function(m){   /* Herzen, die der Server neu liefert (Karten nachladen, Filter-Morph in derselben Karte) werden neu gemalt — auch wenn nur ihr Inhalt/Text wechselt */
+      for(var i=0;i<m.length;i++){
+        var r=m[i], t=r.target;
+        if(t&&t.nodeType===3)t=t.parentNode;
+        if(t&&t.closest&&t.closest('.lux-wish, .lux-wish-link')){plan();return;}
+        for(var j=0;j<r.addedNodes.length;j++){var n=r.addedNodes[j];if(n.nodeType===1&&(n.classList.contains('lux-wish')||n.classList.contains('lux-wish-link')||n.getElementsByClassName('lux-wish').length||n.getElementsByClassName('lux-wish-link').length)){plan();return;}}
+      }
+    }).observe(document.documentElement,{childList:true,subtree:true,characterData:true});
   })();
   </script>
   <!-- LUX-WISH:END -->
