@@ -4929,3 +4929,16 @@ haarklammer-frosch-625600	hat-liste
 entfilzungs-burste-818370	nicht-aktiv
 haarklammer-wolke-609800	gesetzt-1
 gesichtsfirma-gel-609900	gesetzt-1
+schonheitspflaster-628100	gesetzt-1
+schonheitsmaske-873665	hat-liste
+ukulele-kit-463554	nicht-aktiv
+leichtes-korperol-zum-feuchtigkeitsspenden-636900	hat-liste
+pudel-kissen-bettdecke-628400	hat-liste
+schreibtisch-organizer-613700	gesetzt-3
+kottensack-fur-wohnzimmer-623000	gesetzt-1
+grauer-einfahrtsflor-mit-tpe-ruckseite-726786	nicht-aktiv
+glas-lebensbox-mit-dichtverschluss-608300	gesetzt-2
+stahlteestropfenfilter-160961	nicht-aktiv
+schutzcover-fuer-fiat-schlussel-638900	hat-liste
+ubersetzungs-ohrhorer-428481	nicht-aktiv
+tiger-augen-ohrstecker-600300	gesetzt-2
