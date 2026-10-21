@@ -12857,3 +12857,6 @@ tragbarer-rucksack-fur-make-up-kunstler-601600	2601030159321601900	11	36.24	ok	l
 warme-velour-yoga-hosen-624000	2511070900461624200	16	7.02	ok	landeseite
 rucksack-set-fur-herren-625200	2601021441371625800	16	13.52	ok	landeseite
 dunne-durchsichtige-leggings-605400	2511070545081605600	16	5.81	ok	landeseite
+taktisches-werkzeug-set-615400	2512310817591615600	16	7.43	ok	landeseite
+stretch-jeans-cropped-mittlere-weite-619100	2511010657171619300	16	11.23	ok	landeseite
+taktische-handy-tasche-639200	2512300635371639400	16	10.42	ok	landeseite
