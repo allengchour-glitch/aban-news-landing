@@ -1,10 +1,15 @@
 # Rankende Seiten, die es nicht mehr zu kaufen gibt
 
-> **Stand: 20.10.2026 02:13 UTC.** An einem Katalog, an dem taeglich Waechter arbeiten, altert
+> **Stand: 21.10.2026 02:17 UTC.** An einem Katalog, an dem taeglich Waechter arbeiten, altert
 > diese Liste in Stunden. Vor jeder Reparatur den Status am OBJEKT nachmessen.
 
 Automatisch erzeugt von `automation/tote_rankings.py`. Google schickt Besucher
 auf diese Adressen; für sie ist die Seite ein 404.
+
+## /products/schwingerhose-fgahb2887ml  — **DRAFT**
+Schwingerhose  ·  **~490 Suchen/Monat** betroffen
+- «schwingerhosen» — Position 57, 320/Monat
+- «zwilchhosen» — Position 67, 170/Monat
 
 ## /products/bluetooth-tastatur-927234  — **DRAFT**
 K68 Kabellose Mechanische 60% Gaming-Tastatur, Grau-Rot  ·  **~390 Suchen/Monat** betroffen
