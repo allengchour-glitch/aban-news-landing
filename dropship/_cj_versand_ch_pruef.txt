@@ -12056,3 +12056,14 @@ herren-cargo-hosen-fur-outdoor-653300	2510210836181653500	16	10.69	ok	landeseite
 wasserdichte-madchen-stiefel-mit-echtem-hasenf-626600	2410310535091626900	16	8.32	ok	landeseite
 obst-und-gemusekorb-625300	2605071003341625700	16	13.55	ok	landeseite
 neue-verstarkte-wasserdichte-skihose-herren-605100	2509120704541605400	16	17.28	ok	landeseite
+regenbogen-laufschuhe-fur-kinder-601100	2410300509581601300	16	6.01	ok	landeseite
+kinder-lauflernschuhe-fur-latein-tanz-601800	2410270509191602000	16	9.61	ok	landeseite
+retro-cargo-hosen-608800	2508240218131609000	16	10.42	ok	landeseite
+wasserdichte-kinder-sneaker-mit-fleecefutter-607400	2410200633211607600	16	12.21	ok	landeseite
+wasserdichte-hunde-regenjacke-607000	2603230205131607400	16	6.13	ok	landeseite
+cordrey-overalls-fur-herren-607900	2508230742141608100	16	11.12	ok	landeseite
+katzchen-slipper-608400	2410180356251608600	16	10.55	ok	landeseite
+wintermantel-fur-sphynx-katzen-extradicke-lamm-634200	2603220628211634600	16	6.90	ok	landeseite
+schwarze-slim-fit-overalls-628800	2508221000071629100	16	13.40	ok	landeseite
+mehrfach-pant-rack-637200	2607111350001638000	16	20.58	ok	landeseite
+warme-velcro-kinderschuhe-622200	2410120522261622400	16	11.24	ok	landeseite
