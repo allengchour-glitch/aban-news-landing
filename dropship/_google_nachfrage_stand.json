@@ -1,12 +1,12 @@
 {
- "stand": "2026-10-20T00:35Z",
+ "stand": "2026-10-21T00:39Z",
  "tage": 120,
- "mit_nachfrage": 207,
+ "mit_nachfrage": 208,
  "weg": 62,
- "ersatz": 8,
- "ohne_ersatz": 54,
+ "ersatz": 7,
+ "ohne_ersatz": 55,
  "ohne_ersatz_korb": 10,
- "behebbar": 14,
+ "behebbar": 15,
  "zeilen": [
   {
    "handle": "rizinusol-wickel-set-mit-bio-ol-323457",
@@ -253,6 +253,22 @@
    "handle": "morgenstern-71-cm-fgabo73235",
    "titel": "Morgenstern 71 cm",
    "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 2,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "bewusst nicht bei Google (Kostüm)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "schwingerhose-fgahb2887ml",
+   "titel": "Schwingerhose",
+   "status": "DRAFT",
    "google_kanal": false,
    "sitz": 2,
    "korb": 0,
@@ -518,8 +534,8 @@
    ],
    "grund": "ohne Lieferant → Lieferant suchen",
    "behebbar": true,
-   "ersatz": "mikrofaser-strandtuch-277504",
-   "ersatz_art": "Zwilling (Ähnlichkeit 0.5)"
+   "ersatz": null,
+   "ersatz_art": ""
   },
   {
    "handle": "kompakte-klimaanlage-angenehme-kuhle-uberall-1099314",
@@ -680,22 +696,6 @@
    "behebbar": true,
    "ersatz": "siegelring-marmor-gold",
    "ersatz_art": "Weiterleitung"
-  },
-  {
-   "handle": "schwingerhose-fgahb2887ml",
-   "titel": "Schwingerhose",
-   "status": "ACTIVE",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 0,
-   "kauf": 0,
-   "quelle": [
-    "Google-Suche"
-   ],
-   "grund": "bewusst nicht bei Google (Kostüm)",
-   "behebbar": false,
-   "ersatz": null,
-   "ersatz_art": ""
   },
   {
    "handle": "pgm-golfschlager-holz-fur-damen-und-herren-604000",

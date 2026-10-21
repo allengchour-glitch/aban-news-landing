@@ -1,6 +1,6 @@
-# Google-Nachfrage: verschwundene Produkte — Stand 2026-10-20T00:35Z (120 Tage)
+# Google-Nachfrage: verschwundene Produkte — Stand 2026-10-21T00:39Z (120 Tage)
 
-Produkte mit Google-Besuch: 207 · heute nicht mehr bei Google: 62 · mit aktivem Ersatz: 8 · **ohne Ersatz: 54** (davon mit Warenkorb 10, behebbar 14)
+Produkte mit Google-Besuch: 208 · heute nicht mehr bei Google: 62 · mit aktivem Ersatz: 7 · **ohne Ersatz: 55** (davon mit Warenkorb 10, behebbar 15)
 
 Quelle: ShopifyQL (utm_campaign = sag_organic + Google-Suche ohne utm, nur Menschen). Regel: `automation/google_nachfrage_wache.py`. Nichts wird geändert — die Liste ist die Arbeitsliste.
 
@@ -22,6 +22,7 @@ Quelle: ShopifyQL (utm_campaign = sag_organic + Google-Suche ohne utm, nur Mensc
 | 2 | 0 | 0 | Kühlmatte für Haustiere Petitto Blau (`kuhlmatte-fur-haustiere-petitto-blau-941211`) | DRAFT, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |
 | 2 | 0 | 0 | Silikon-Abtropfmatte für Geschirr (`silikon-abtropfmatte-fur-geschirr-637442`) | DRAFT, nicht im Google-Kanal | Grund unbekannt (kein Grund-Tag) | `abtropfmatte-aus-silikon-selbstentleerend-214` Zwilling (Ähnlichkeit 0.5) |
 | 2 | 0 | 0 | Morgenstern 71 cm (`morgenstern-71-cm-fgabo73235`) | ACTIVE, nicht im Google-Kanal | bewusst nicht bei Google (Kostüm) | — |
+| 2 | 0 | 0 | Schwingerhose (`schwingerhose-fgahb2887ml`) | DRAFT, nicht im Google-Kanal | bewusst nicht bei Google (Kostüm) | — |
 | 2 | 0 | 0 | 22-teiliges Leder Nähset für Lederarbeiten (`22-teiliges-leder-nahset-fur-lederarbeiten-105857`) | DRAFT, nicht im Google-Kanal | Grund unbekannt (kein Grund-Tag) | — |
 | 1 | 0 | 0 | Schwarzer Standventilator – Kraftvolle Kühle im Design (`schwarzer-standventilator-kraftvolle-kuhle-im-desi-551512`) | ARCHIVED, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |
 | 1 | 0 | 0 | 3D-Drucker-Tisch mit Filamenthalterung (`3d-drucker-tisch-mit-filamenthalterung-781569`) | DRAFT, nicht im Google-Kanal | Sortiment-Entscheid | — |
@@ -37,7 +38,7 @@ Quelle: ShopifyQL (utm_campaign = sag_organic + Google-Suche ohne utm, nur Mensc
 | 1 | 0 | 0 | Endless Hoop Ohrringe · Titan hypoallergen (`endless-hoop-ohrringe-titan-hypoallergen`) | DRAFT, nicht im Google-Kanal | ohne Lieferant → Lieferant suchen | — |
 | 1 | 0 | 0 | Tischventilator DOMO DO154A Weiss 6 W (`tischventilator-domo-do154a-weiss-6-w-902226`) | DRAFT, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |
 | 1 | 0 | 0 | Luftmatratze Intex 18 Gläser Silberfarben 188 x 30 x 71 cm (`schwimminsel-mit-haltern-dein-luxus-im-pool-659332`) | DRAFT, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |
-| 1 | 0 | 0 | Rundes Strandtuch XL · Mandala Mikrofaser (`rundes-strandtuch-xl-mandala-mikrofaser`) | DRAFT, nicht im Google-Kanal | ohne Lieferant → Lieferant suchen | `mikrofaser-strandtuch-277504` Zwilling (Ähnlichkeit 0.5) |
+| 1 | 0 | 0 | Rundes Strandtuch XL · Mandala Mikrofaser (`rundes-strandtuch-xl-mandala-mikrofaser`) | DRAFT, nicht im Google-Kanal | ohne Lieferant → Lieferant suchen | — |
 | 1 | 0 | 0 | Kompakte Klimaanlage: Angenehme Kühle überall! (`kompakte-klimaanlage-angenehme-kuhle-uberall-1099314`) | DRAFT, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |
 | 1 | 0 | 0 | Schaum-Abflussreiniger (`schaum-abflussreiniger-604000`) | DRAFT, nicht im Google-Kanal | nicht in die Schweiz lieferbar | — |
 | 1 | 0 | 0 | Universal-Ladegerät für 60V E-Scooter/Bike (`universal-ladegerat-fur-60v-e-scooter-bike-580481`) | DRAFT, nicht im Google-Kanal | nicht in die Schweiz lieferbar | — |
@@ -48,7 +49,6 @@ Quelle: ShopifyQL (utm_campaign = sag_organic + Google-Suche ohne utm, nur Mensc
 | 1 | 0 | 0 | Strand-Sandalen «Dorée» · Metallic-Riemchen, Flach (`strand-sandalen-doree-metallic-riemchen-flach`) | DRAFT, nicht im Google-Kanal | Saison (Sommerware) | — |
 | 1 | 0 | 0 | Galaxy Aurora LED-Projektor 360° · Sternenhimmel & Nordlicht (`galaxy-aurora-led-projektor-360-sternenhimmel`) | DRAFT, nicht im Google-Kanal | ohne Lieferant → Lieferant suchen | — |
 | 1 | 0 | 0 | Signet-Ring · Edelstahl matt gebürstet Unisex (`signet-ring-edelstahl-matt-geburstet-unisex`) | DRAFT, nicht im Google-Kanal | ohne Lieferant → Lieferant suchen | `siegelring-marmor-gold` Weiterleitung |
-| 1 | 0 | 0 | Schwingerhose (`schwingerhose-fgahb2887ml`) | ACTIVE, nicht im Google-Kanal | bewusst nicht bei Google (Kostüm) | — |
 | 1 | 0 | 0 | PGM Golfschläger (Holz) für Damen und Herren (`pgm-golfschlager-holz-fur-damen-und-herren-604000`) | DRAFT, nicht im Google-Kanal | Grund unbekannt (kein Grund-Tag) | — |
 | 1 | 0 | 0 | Damenuhr Bellevue B39 (Ø 35 mm) (`damenuhr-bellevue-b39-35-mm-295895`) | DRAFT, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |
 | 1 | 0 | 0 | Herrensonnenbrille Timberland · Modell 317884 (`herren-sonnenbrille-robuster-schutz-fur-starke-man-80688`) | DRAFT, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |
