@@ -1416,6 +1416,18 @@ while true; do
       echo "$(date -u +%H:%M) theme_marken_wache: $(tail -1 "$TMW")"
     fi
   fi
+  # ECHTE BEWERTUNGEN (21.10.2026, Betreiber «produktbewertungen» → «Echte Bewertungen sammeln»): Judge.me hat 16'891 Bewertungen, 0 von eigenen
+  # Käufern; die Wache zählt täglich Bestellungen, fällige (≥ 21 T geliefert) und Bewertungen dieser Käufer (nur Zähler, nie Namen/Adressen),
+  # Ampel «ECHTE BEWERTUNGEN». Nur lesen (Judge.me-Token aus /tmp/judgeme.env), 24 h Takt.
+  EBW=/tmp/echte_bewertungen_wache.log
+  if [ -f "$REPO/automation/echte_bewertungen_wache.py" ] && [ -f /tmp/judgeme.env ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$EBW" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$EBW" || still_gestorben "$EBW"; then
+      touch "$EBW"
+      ( cd "$REPO" && . /tmp/judgeme.env && timeout 300 python3 automation/echte_bewertungen_wache.py >> "$EBW" 2>&1 )
+      echo "$(date -u +%H:%M) echte_bewertungen_wache: $(tail -1 "$EBW")"
+    fi
+  fi
   # GESCHENK-WELTEN (02.10.2026, 12-Tage-Plan Tag 3): «für Sie/Ihn/Kinder» nach Warenart statt Tag-UND (vorher 22/24 Schmuck,
   # 22/24 Uhren, 16/24 Babykleider). Täglich neu wählen (Neuimporte, Drafts fallen raus), Tags nachziehen, erste 48 reihum.
   GW=/tmp/geschenk_unterwelten.log

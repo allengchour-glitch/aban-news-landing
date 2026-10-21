@@ -12733,3 +12733,5 @@ klassik-retro-wasserdichte-multifunktion-sport-638300	2602200646401638600	7	5.89
 reise-tasche-20-35l-620000	2411080406391620300	16	11.24	ok	landeseite
 mannliche-zylinderuhren-mit-leuchtzifferblatt-612500	2602200206351612800	7	7.30	ok	landeseite
 herren-multifunktions-armbanduhr-wasserdicht-m-635400	2602190929221635700	7	5.87	ok	landeseite
+business-stil-multi-funktion-stahlarmbanduhr-f-614900	2602190558081615200	7	6.62	ok	landeseite
+stahlarmband-uhr-mit-runden-zifferblatt-605900	2602150732311606200	7	7.30	ok	landeseite
