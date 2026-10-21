@@ -12803,3 +12803,11 @@ studentenleselampe-faltbar-aufladbare-schreibt-628000	2412090633241628200	7	16.0
 herren-uhr-geschenkset-626300	2602040707091626900	7	7.53	ok	landeseite
 herren-uhren-set-mit-geldborse-gurtel-schlusse-623000	2602040652521623300	7	12.30	ok	landeseite
 bluetooth-mikrofon-set-fur-familie-626100	2411230610561626300	7	14.52	ok	landeseite
+kaninchen-sandalen-fur-madchen-629100	2506230325251629300	16	9.88	ok	landeseite
+digitale-uhr-fur-unisex-636400	2601310949521636700	7	7.06	ok	landeseite
+bluetooth-lautsprecher-mit-mikrofon-wireless-s-602800	2411230553021602900	7	12.44	ok	landeseite
+herren-armbanduhr-aus-leder-632100	2601310125421632500	7	5.86	ok	landeseite
+turbofan-fur-reinigung-612700	2411230339141612900	7	27.14	ok	landeseite
+fitness-hosen-fur-damen-615100	2511271257521615300	16	7.57	ok	landeseite
+wetterstation-mit-multifunktion-603200	2411190647101603400	7	31.30	ok	landeseite
+einfache-quadratische-uhr-610200	2601290621411610600	7	6.18	ok	landeseite
