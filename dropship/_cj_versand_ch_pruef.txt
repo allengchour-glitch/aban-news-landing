@@ -12409,3 +12409,7 @@ grosses-business-rucksack-wasserabweisend-607300	2603020331101607700	16	21.16	ok
 tragbarer-schminktischspiegel-600700	2504200155281600900	16	12.56	ok	landeseite
 silikon-wasserflasche-mini-629900	2607111329491620600	16	5.63	ok	landeseite
 retro-dekorations-spiegel-603400	2503090930351603600	16	19.99	ok	landeseite
+herren-brusttasche-621700	2603020146171622000	16	12.56	ok	landeseite
+soccer-stiefel-transport-beutel-620700	2607111018021621300	16	11.00	ok	landeseite
+drehbares-make-up-spiegel-set-624900	2503060346041625300	7	8.10	ok	landeseite
+business-schultertasche-fur-herren-607100	2602080950281607500	16	7.71	ok	landeseite
