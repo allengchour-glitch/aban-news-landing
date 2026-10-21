@@ -12775,3 +12775,8 @@ automatischer-doppelwirkungs-haarglatter-fur-g-617900	2509200635171612500	7	12.4
 kabelloser-lockenstab-622200	2509071012441622400	7	14.22	ok	landeseite
 einheits-loafer-fur-madchen-612100	2604241045021612700	16	11.37	ok	landeseite
 herren-haarglatter-mit-langzeit-styling-626700	2508230928551627100	7	12.75	ok	landeseite
+perlensandalen-fur-madchen-636300	2604240453061636800	16	12.21	ok	landeseite
+kleiner-haarkrauser-mit-drehfunktion-606600	2508200233441606800	7	11.30	ok	landeseite
+autom-futtermittelspender-mit-zeitsteuerung-608300	2506220510451608500	16	23.50	ok	landeseite
+eierroll-styler-fur-locken-610300	2508040619381610600	7	11.31	ok	landeseite
+laufschuhe-modell-12-204160	1379690217841233920	16	14.96	ok	landeseite
