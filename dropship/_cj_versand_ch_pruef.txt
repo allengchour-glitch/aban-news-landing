@@ -12343,3 +12343,10 @@ automatische-brust-und-ruckengurt-set-631600	2512230703401631800	16	9.47	ok	land
 riechende-mini-leuchtern-623200	2605210905261624300	0	-	KEINE CH-Option → DRAFT	landeseite
 doppel-leine-fur-hunde-617700	2512200323121618200	16	8.02	ok	landeseite
 schutzhullen-fur-beine-und-gelenke-601800	2512060943531602000	16	11.83	ok	landeseite
+kottonstoff-fur-handwerksprojekte-622100	2607101115291622900	16	6.01	ok	landeseite
+kontrastfarbenes-hundehalsband-mit-reflektor-606100	2512050901011606300	16	7.72	ok	landeseite
+holzimitat-deckenventilator-mit-blumenmuster-612500	2607101108261613200	16	14.96	ok	landeseite
+aufbewahrungstasche-mit-griff-638700	2607101058401639400	16	11.23	ok	landeseite
+kuhlweste-fur-spaziergange-602500	2605060203201603300	16	4.79	ok	landeseite
+herzformige-wasche-box-637200	2607101017011637900	16	5.41	ok	landeseite
+elch-themen-weste-fur-haustiere-609000	2510300729471609300	16	5.42	ok	landeseite
