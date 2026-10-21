@@ -1,24 +1,24 @@
-# Google-Diagnosen (product.feedback der App «Google & YouTube») — Stand 2026-10-20T14:37Z
+# Google-Diagnosen (product.feedback der App «Google & YouTube») — Stand 2026-10-21T10:44Z
 
-Gescannt: 56111 aktive Produkte in 225 Seiten (vollständig), 381 s. Meldungen nur für Shopping Ads (ignoriert): 48753.
+Gescannt: 56344 aktive Produkte in 226 Seiten (vollständig), 300 s. Meldungen nur für Shopping Ads (ignoriert): 46995.
 
-## Free-Listings-Blocker: 45
+Rückmeldungs-Abdeckung (21.10.2026): 21388 von 56344 aktiven Produkten (38.0 %) haben KEINE Rückmeldung der App «Google & YouTube» — «leer» heisst NICHT «sauber», sondern «Google hat uns nichts gemeldet»; frisch (≤ 24 h / ≤ 72 h): 340 / 12413, jüngste Rückmeldung 2026-10-21T10:13:18Z.
+
+## Free-Listings-Blocker: 42
 
 | Klasse | Produkte | davon ohne onlineStoreUrl | davon Ziel «[]» |
 |---|---:|---:|---:|
-| Promotional overlay on image | 36 | 0 | – |
+| Promotional overlay on image | 35 | 0 | – |
 | Image processing or experiencing delays | 4 | 0 | – |
 | Product page unavailable | 2 | 0 | – |
-| Sale of live animals | 1 | 0 | – |
-| Tobacco products & related equipment | 1 | 0 | – |
 | Unable to show image | 1 | 0 | – |
 
-## Wartet bei Google (Prüfung, kein Fehler bei uns): 628
+## Wartet bei Google (Prüfung, kein Fehler bei uns): 629
 
-- Image under review: 623
-- Title under review: 5
+- Image under review: 625
+- Title under review: 4
 
-Verweildauer (dropship/_google_pruefung_seit.json): 40 länger als 14 Tage, ältestes seit 2026-10-02.
+Verweildauer (dropship/_google_pruefung_seit.json): 48 länger als 14 Tage, ältestes seit 2026-10-02.
 Nicht reagieren, solange die Verweildauer kurz ist: Google prüft. Wer hier ein Bild tauscht, setzt die Prüfung neu.
 
 Ziel «[]» = die App nennt kein betroffenes Ziel («… in [] [CH]» statt «in [Free_listings,Shopping_ads]»). Seit 14.10.: bei «Inappropriate image» vermutlich der Meldekontext Demand-Gen-Werbung (eigener Topf unten); für andere Klassen weiter UNBELEGT — Wahrheit = Status je Ziel im Merchant Center.
@@ -27,25 +27,25 @@ Ziel «[]» = die App nennt kein betroffenes Ziel («… in [] [CH]» statt «in
 
 Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.
 
-- Missing shipping info in some countries [LI]: 30480
+- Missing shipping info in some countries [LI]: 29190
 - Alcoholic beverages [LI]: 3
 
 «Missing shipping info … [LI]»: In Shopify gibt es den Tarif (General profile, Zone «Liechtenstein» CHF 14.90, seit 09.10.), Google hat ihn nicht übernommen — und übernimmt ihn von selbst NIE: QUELLE Shopify Help (help.shopify.com/en/manual/online-sales-channels/google/requirements) «You can import rates to ship your products only to the target country in your Google & YouTube channel» — die automatische Versandübernahme gilt nur für das EINE Zielland (CH). «Versand neu importieren» hilft deshalb nicht (GEMESSEN: 9 Tage seit der Freigabe ohne Wirkung). Optionen (Betreiber): (a) nichts tun — die Schweiz ist nicht betroffen, LI ist ein sehr kleiner Markt; (b) im Merchant Center unter «Versand und Rückgaben» einen Service «Liechtenstein, CHF 14.90» von Hand anlegen — QUELLE Google (support.google.com/merchants/answer/14232591): der Shopify-Sync «may overwrite manual updates from Merchant Center», ob der LI-Service überlebt, ist UNBELEGT. NICHT das Land aus dem Shopify-Markt entfernen — LI ist Lieferland. Wirkung = diese Zahl beim nächsten Scan.
 
 ## Nur Demand-Gen-Werbung (blockiert Gratis-Einträge vermutlich NICHT — wir schalten keine Demand-Gen-Werbung)
 
-- Inappropriate image: 291
+- Inappropriate image: 272
 
 Quelle: Google Merchant Help «Demand Gen product ads format requirements» (answer/13389785): Waffen, Totenköpfe, Körperfokus, Rauch/Flammen u. a. sind nur für Demand-Gen-Bilder verboten; «disapproved Demand Gen assets may continue to run on Google's other properties». Bestätigung = Status je Ziel im Merchant Center (Betreiber). Kein Bildtausch dafür (Aufseher seit 14.10.).
 
 ## Nur personalisierte Werbung (blockiert Gratis-Einträge NICHT — Targeting-Regel, siehe Kopf)
 
-- Personalized advertising: personal hardships: 83
+- Personalized advertising: personal hardships: 79
 - Personalized advertising: legal restrictions: 7
 
 ## Meldungen anderer Kanal-Apps (kein Google-Blocker)
 
-- [Shop] Dieses Produkt ist in Shop nicht auffindbar. Prüfe den Angebotsstatus im Shop-Kanal: 4
+- [Shop] Dieses Produkt ist in Shop nicht auffindbar. Prüfe den Angebotsstatus im Shop-Kanal: 3
 
 «ohne onlineStoreUrl» = nicht im Onlineshop publiziert, aber im Google-Kanal — Google sieht eine 404. Reparatur: Onlineshop-Publikation nachziehen oder aus dem Google-Kanal nehmen (Fixer folgt).
 
@@ -56,7 +56,7 @@ Quelle: Google Merchant Help «Demand Gen product ads format requirements» (ans
 - mousepad-fasnacht-mask
 - kletterbaum-fur-katzen-624900
 
-### Promotional overlay on image (36)
+### Promotional overlay on image (35)
 
 - painless-fast-nail-art-extension-set-621900
 - li-ion-akku-ladegerat-set-3000mah-626433
@@ -93,26 +93,17 @@ Quelle: Google Merchant Help «Demand Gen product ads format requirements» (ans
 - kompakter-bluetooth-subwoofer-mit-mikrofon-ad9885
 - hawaiihemd-fur-herren-mit-3d-print-606700
 - 6-farben-wasserfester-nude-matt-lippenstift-798464
-- vital-smooth-rouge-creme-010560
-
-### Sale of live animals (1)
-
-- ersatzfedern-fur-katzenangel-629300
 
 ### Product page unavailable (2)
 
 - weiche-rutschfeste-babyschuhe-607300
 - herren-strickjacke-mit-revers-612400
 
-### Tobacco products & related equipment (1)
-
-- retro-kupfer-weihrauchhalter-ornament-621632
-
 ### Unable to show image (1)
 
 - gurteltasche-fur-outdoor-und-wandern-615300
 
-### wartet: Image under review (623) — die ältesten zuerst
+### wartet: Image under review (625) — die ältesten zuerst
 
 - blumenkleid-mit-schnurung-613000 (seit 2026-10-02)
 - schonheitspflaster-628100 (seit 2026-10-02)
@@ -156,11 +147,10 @@ Quelle: Google Merchant Help «Demand Gen product ads format requirements» (ans
 - weit-geschnitten-v-ausschnitt-hoodie-mit-knopf-623200 (seit 2026-10-05)
 - …
 
-### wartet: Title under review (5) — die ältesten zuerst
+### wartet: Title under review (4) — die ältesten zuerst
 
 - distressed-jeans-fur-herren-632300 (seit 2026-10-10)
 - jacquard-kleid-set-mit-schleife-609700 (seit 2026-10-12)
 - schnelltrocknende-wasserschuhe-613600 (seit 2026-10-12)
-- strickkleid-mit-langen-armeln-616500 (seit 2026-10-12)
 - holzspielhaus-mit-telefon-21x18x14-cm-667968 (seit 2026-10-19)
 

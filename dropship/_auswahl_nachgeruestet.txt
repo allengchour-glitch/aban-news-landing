@@ -3380,3 +3380,7 @@
 16615659274631	Ausführung:2:2+ki	2026-10-21	lidschatten-palette-erdtone-508544
 16615607402887	Typ:8+Material:3:24+ki	2026-10-21	romantische-sommerblumen-wandbild-607500
 16615605436807	Farbe:3:3+ki	2026-10-21	metall-wanddekoration-sonne-622200
+16615510376839	Muster:9:9+ki	2026-10-21	leinen-schal-mit-streifen-608700
+16615508935047	Farbe:5:5+ki	2026-10-21	spitzen-schal-mit-sonnenschutz-607800
+16615394443655	Farbe:2+Grösse:2:3+ki	2026-10-21	spulbecken-abtropfkorb-aus-edelstahl-607000
+16615390740871	Muster:3:3+ki	2026-10-21	zigarrenschneider-011392
