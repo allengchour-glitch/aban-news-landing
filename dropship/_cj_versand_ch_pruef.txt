@@ -12169,3 +12169,10 @@ winter-laufschuhe-mit-klettverschluss-263680	1728312794581315584	16	11.84	ok	lan
 gebaechte-blaue-jeans-mit-lockeren-tragern-604400	2412110400421604600	16	14.60	ok	landeseite
 sicherheitshelm-fur-rennrader-613f2b	72E4E400-E8A7-4F1F-BD25-2A7274C2B6AE	16	8.86	ok	landeseite
 warmende-schneestiefel-fur-kinder-239744	1720313236047794176	16	9.20	ok	landeseite
+ruckenfreier-jumpsuit-600400	2412060809551600600	16	5.55	ok	landeseite
+smart-bluetooth-helm-a68649	488FA86F-45AA-47EE-A0F1-3C4D0AB5A6C7	7	12.60	ok	landeseite
+leder-lauflernschuhe-fur-kinder-852608	1716056034902544384	16	8.93	ok	landeseite
+lamers-corduroy-jacket-628000	2607100343161628800	16	10.15	ok	landeseite
+haarglatter-mit-usb-ladung-321216	1455369092612624384	7	13.10	ok	landeseite
+langarm-yogaleot-fur-tanz-sport-603400	2412060706301603700	16	7.99	ok	landeseite
+leichter-reithelm-c58a7f	036FE1A8-23ED-4033-89BF-70A54A073F02	16	14.96	ok	landeseite
