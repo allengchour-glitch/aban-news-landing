@@ -3402,3 +3402,5 @@
 15494983778689	Modell:18+Grösse:3:54	2026-10-21	abstrakte-wandteppiche-fur-ihr-zuhause-664512
 16655827042695	Farbe:2:2	2026-10-21	geschenkset-geldborse-stift-uhr-in-geschenkbox-611400
 16655826452871	Farbe:7:7	2026-10-21	doppelfach-stoff-taschenset-fur-stifte-618000
+16655826223495	Farbe:5:5	2026-10-21	ergonomischer-sitzkissen-zur-haltungskorrektur-622700
+16655792865671	Farbe:2:2	2026-10-21	business-rucksack-retro-stil-639400
