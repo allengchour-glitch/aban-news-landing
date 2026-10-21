@@ -4924,3 +4924,8 @@ elegante-leder-tasche-601400	gesetzt-2
 wickel-tasche-633900	gesetzt-2
 leder-handtasche-677505	gesetzt-1
 leder-querformat-tasche-966721	gesetzt-1
+damen-munzborse-626900	gesetzt-3
+haarklammer-frosch-625600	hat-liste
+entfilzungs-burste-818370	nicht-aktiv
+haarklammer-wolke-609800	gesetzt-1
+gesichtsfirma-gel-609900	gesetzt-1
