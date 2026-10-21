@@ -1050,3 +1050,5 @@
 15453898736001	keine-linie	faltbare-kleiderschranke-627000
 15453920625025	keine-linie	notfall-ladegerat-mit-radio-und-usb-601000
 15453923901825	keine-linie	rauchfreie-sojawachskerze-geschenk-fur-aromath-627500
+15453955457409	keine-linie	halbkorper-modell-aus-leinen-612300
+15453997891969	keine-linie	wasseraufnehmender-kieselgur-bodenmatte-fur-ba-630900
