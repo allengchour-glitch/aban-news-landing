@@ -1630,3 +1630,4 @@ gid://shopify/Product/16644310270343	ok	Echtes Leder Retro Rucksack
 gid://shopify/Product/16650218733959	ok	Rucksack aus Rindleder
 gid://shopify/Product/16655498609031	ok	Echtleder Reisetasche, Grosses Fassungsvermögen
 gid://shopify/Product/16655515713927	ok	Elektrische Küchenmaschine mit 8 Liter Kapazität
+gid://shopify/Product/16655501328775	ok	Full HD Weihnachtsmann Projektor
