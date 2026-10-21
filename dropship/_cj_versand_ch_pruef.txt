@@ -12283,3 +12283,5 @@ intelligenter-luftbefeuchter-fur-den-schreibti-023744	1611298383166189569	16	20.
 gro-e-turbinen-mini-fan-340544	1611310319534616576	16	9.61	ok	landeseite
 fahrrad-rucklicht-120512	1401725386248818688	16	7.43	ok	landeseite
 gro-volumiger-mutter-kind-feuchtegeber-651200	1610879521408954368	7	31.59	ok	landeseite
+fahrradlicht-set-mit-hoher-leistung-998464	1400715147839934464	7	8.57	ok	landeseite
+keramik-perlenkette-in-goldenem-finish-638100	2607120718101638700	16	4.50	ok	landeseite

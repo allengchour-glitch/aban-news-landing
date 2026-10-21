@@ -8361,3 +8361,25 @@ gid://shopify/Product/15521416282497	zugeordnet	24	Freizeit-Hemd für Herren –
 gid://shopify/Product/15484906176897	zugeordnet	20	Herren Sommer Jacquard Hemd Kurzarm
 gid://shopify/Product/15484922888577	zugeordnet	24	Elegantes Freizeitkleid mit langen Ärmeln
 gid://shopify/Product/15484923838849	zugeordnet	20	Midi-Kleid mit 3/4-Ärmeln und Mesh
+gid://shopify/Product/15484924658049	zugeordnet	40	Elegantes V-Neck Kleid mit Laternenärmeln
+gid://shopify/Product/15484930818433	zugeordnet	6	Neckholder Minikleid mit V-Ausschnitt
+gid://shopify/Product/15484930949505	zugeordnet	17	Damen Etuikleid mit Rüschenärmeln
+gid://shopify/Product/15484931998081	zugeordnet	40	Kapuzenpullover-Kleid für Damen
+gid://shopify/Product/15484932555137	zugeordnet	9	Langes Blumenkleid für Damen
+gid://shopify/Product/15484932850049	zugeordnet	48	Boho-Kleid mit Blumenmuster und ausgestellten Ärmeln
+gid://shopify/Product/15485394780545	zugeordnet	33	Modische Loafer für Herren
+gid://shopify/Product/15485394846081	zugeordnet	18	Freizeit-Slipper aus Canvas für Herren
+gid://shopify/Product/15485394878849	zugeordnet	10	Extra-grosse Slip-on Freizeitschuhe für Herren
+gid://shopify/Product/15485394944385	zugeordnet	33	Atmungsaktive Freizeit-Sneaker für Herren
+gid://shopify/Product/15485395009921	zugeordnet	66	Barfuss-Flyknit-Sneaker für Herren
+gid://shopify/Product/15485395042689	zugeordnet	44	Outdoor- und Wasserschuhe für Herren
+gid://shopify/Product/15485395796353	zugeordnet	20	Elegantes ärmelloses Schlitzkleid
+gid://shopify/Product/15485395861889	zugeordnet	14	Satin Neckholder-Kleid im französischen Stil
+gid://shopify/Product/15485395894657	zugeordnet	12	Nachthemd mit Spaghettiträgern – diverse Muster
+gid://shopify/Product/15485395960193	zugeordnet	12	Sport-Rock mit integrierten Shorts
+gid://shopify/Product/15485407068545	zugeordnet	96	Rückenfreies Abendkleid
+gid://shopify/Product/15485407166849	zugeordnet	10	Kurzes V-Ausschnitt-Kleid
+gid://shopify/Product/15485407265153	zugeordnet	8	Rüschenkleid mit Spitze
+gid://shopify/Product/15485407330689	zugeordnet	36	Neckholder Minikleid
+gid://shopify/Product/15485407396225	zugeordnet	9	Retro Polka-Dot Neckholder Minikleid
+gid://shopify/Product/15485407527297	zugeordnet	36	Western Cowboy Wildleder Fransen Langarmshirt
