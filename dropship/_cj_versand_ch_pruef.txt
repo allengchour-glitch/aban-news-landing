@@ -12811,3 +12811,15 @@ turbofan-fur-reinigung-612700	2411230339141612900	7	27.14	ok	landeseite
 fitness-hosen-fur-damen-615100	2511271257521615300	16	7.57	ok	landeseite
 wetterstation-mit-multifunktion-603200	2411190647101603400	7	31.30	ok	landeseite
 einfache-quadratische-uhr-610200	2601290621411610600	7	6.18	ok	landeseite
+high-waist-leggings-schlank-machend-611600	2511270736231611700	16	7.43	ok	landeseite
+digitaler-bilderrahmen-mit-e-tinte-610800	2411180754251611100	7	15.57	ok	landeseite
+herren-sportuhr-fur-schwimmen-618500	2601280610101619000	7	5.78	ok	landeseite
+braune-leggings-mit-hoher-elastizitat-621500	2511270732031621800	16	8.11	ok	landeseite
+selbstausloser-mit-licht-613000	2411180322291613300	6	9.06	ok	landeseite
+herren-quartz-uhr-mit-multifunktion-wasserdich-630700	2601270944181631100	7	7.30	ok	landeseite
+retro-hosen-mit-zip-detail-629800	2511191433131620100	16	11.10	ok	landeseite
+drei-modus-bluetooth-tastatur-623100	2411130703501623300	16	11.37	ok	landeseite
+kamera-drohne-fur-jugendliche-965568	1778678238873657344	0	-	KEINE CH-Option → DRAFT	landeseite
+wool-blend-cord-hosen-633600	2511191430541633800	16	11.72	ok	landeseite
+elegante-quarz-armbanduhr-616100	2601260421161616400	7	6.48	ok	landeseite
+mini-luftreiniger-mit-sternenhimmel-projektion-623200	2411120827061623300	7	7.78	ok	landeseite
