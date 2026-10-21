@@ -12620,3 +12620,10 @@ automatischer-futterplatz-609600	2509050132361600200	16	14.09	ok	landeseite
 weisse-stonewashed-jeans-630200	2603210922481630500	16	10.15	ok	landeseite
 keratine-kamm-mit-massagefunktion-376448	1390226523109330944	16	13.40	ok	landeseite
 weisse-perlen-prinzessin-schuhe-618400	2407140632141618600	16	9.88	ok	landeseite
+owl-puzzle-futterspielzeug-fur-katzen-626500	2508291452081626700	16	8.53	ok	landeseite
+dunkelblaue-slim-fit-jeans-mit-stretch-631600	2603210542251632100	16	10.91	ok	landeseite
+kabelloser-lockenstab-mit-schnellladung-486208	1390130160195473408	7	15.65	ok	landeseite
+avocado-futter-schussel-611100	2508220243261611300	16	15.07	ok	landeseite
+mini-haarstecker-mit-usb-219264	1387000238400737280	7	11.30	ok	landeseite
+stretch-denim-jeans-605100	2603210311331605400	16	8.93	ok	landeseite
+laufschuhe-fur-kids-601100	2407140552181601200	16	9.20	ok	landeseite
