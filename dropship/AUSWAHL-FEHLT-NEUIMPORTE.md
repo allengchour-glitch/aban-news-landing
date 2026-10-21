@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-21 10:37 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-21 13:17 UTC)
 
-Suche: `status:active AND created_at:>=2026-10-18` · gemessen 384 · **216 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 191, teilweise: 15, keine: 10; Preisspanne > 2×: 31) · 1 CJ-Variante: 168 · ohne Antwort: 0
+Suche: `status:active AND created_at:>=2026-10-18` · gemessen 394 · **221 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 195, teilweise: 16, keine: 10; Preisspanne > 2×: 31) · 1 CJ-Variante: 173 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -30,6 +30,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Highland Kuh Adventskalender (`highland-kuh-adventskalender-613500`) | 25 | 18 | 2.94–5.38 | 19.90 | Cat Blind Box, Christmas Building Blocks, Cow Blind Box, Cow Calendar With A Butt |
 | Titanstahl-Halskette mit rundem Anhänger (`titanstahl-halskette-mit-rundem-anhanger-636400`) | 24 | 24 | 3.98–13.71 | 22.90 | Steel-1 round block, Steel-2 round block, Steel-3 round block, Steel-4 round block |
 | Sofa-Bezug, modernes Design, schwarz-Marmor (`sofa-bezug-modernes-design-schwarz-marmor-626300`) | 24 | 24 | 6.42–11.98 | 40.90 | Black Marble-Single, Black Marble-Double, Black Marble-Three People, Black Leaf-Single |
+| Mechanische Tastatur 87 Tasten, Bluetooth (`mechanische-tastatur-87-tasten-bluetooth-627800`) | 24 | 17 | 19.9–34.83 | 68.90 | 87 Black, 87 White, 87 Female Pink, 108 Black |
 | Schwere Seidenkissenhülle 50×75 cm (`schwere-seidenkissenhulle-50-75-cm-631100`) | 22 | 16 | 32.64–32.64 | 43.90 | Champagne-50x75cm, Cameo Brown-50x75cm, Smoke Pink-50x75cm, Wine Red-50x75cm |
 | Harz-Schmuckfarbe (`harz-schmuckfarbe-c11c75`) | 22 | 0 | 0.68–0.8 | 16.90 | Lemon, Dark Red, White, Purple |
 | Smart Ring mit Herzfrequenz- und Schlafüberwachung (`smart-ring-mit-herzfrequenz-und-schlafuberwach-631300`) | 21 | 21 | 7.95–7.95 | 16.90 | Gold-No.7, Gold-No.8, Gold-No.9, Gold-No.10 |
@@ -104,6 +105,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Titanstahlring mit Totenkopf (`titanstahlring-mit-totenkopf-624100`) | 7 | 7 | 2.67–2.67 | 16.90 | Silver-No 6, Silver-No 7, Silver-No 8, Silver-No 9 |
 | Silk Kissenbezug Leopard Muster (`silk-kissenbezug-leopard-muster-608900`) | 7 | 7 | 20.83–20.83 | 30.90 | White-48x74cm, Navy Blue-48x74cm, Light Pink-48x74cm, Dark Gray-48x74cm |
 | Flüssiger Rouge – 5-farbiges Set (`flussiger-rouge-5-farbiges-set-646300`) | 7 | 7 | 3.44–4.19 | 16.90 | JC01 Sakura Custard, JC02 Blueberry Milkshake, JC03 Raspberry Toffee, JC04 Fig Coffee |
+| Doppelfach-Stoff-Taschenset für Stifte (`doppelfach-stoff-taschenset-fur-stifte-618000`) | 7 | 7 | 2.77–2.77 | 16.90 | Purple, Green, Pink, Light Blue |
 | Weiche Schläucheinführung CRV (`weiche-schlaucheinfuhrung-crv-910625`) | 6 | 0 | 0.66–2.3 | 16.90 | C-305mm, A-355mm, D-200mm, E-200mm |
 | Kashmirähnlicher Karomuster-Schal (`kashmirahnlicher-karomuster-schal-619500`) | 6 | 6 | 2.02–2.02 | 16.90 | WT1582 Black-200x64cm With Tassels, WT1583 Pink-200x64cm With Tassels, WT1585 Gray Big Plaid-200x64cm With Tassels, WT1586 Red Plaid-200x64cm With Tassels |
 | Flammen-Totenkopf-Ring aus Titanstahl (`flammen-totenkopf-ring-aus-titanstahl-636600`) | 6 | 6 | 2.6–2.6 | 16.90 | No 7, No 8, No 9, No 11 |
@@ -141,6 +143,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Korrektur- und Farbwechsel Foundation-Stick (`korrektur-und-farbwechsel-foundation-stick-623500`) | 5 | 5 | 2.81–2.81 | 16.90 | Complexion, Natural color, Ivory white, Dark complexion |
 | UV-Harzkleber für Schmuckformen (`uv-harzkleber-fur-schmuckformen-97affa`) | 5 | 0 | 1.2–9.42 | 18.90 | Q60G, Q25G, Q10G, Q15G |
 | Damen-Uhr mit Strasssteinen (`damen-uhr-mit-strasssteinen-625300`) | 5 | 5 | 10.24–10.24 | 19.90 | Silver Black, Silver Gray, Silver Blue, Silver Green |
+| Ergonomischer Sitzkissen zur Haltungskorrektur (`ergonomischer-sitzkissen-zur-haltungskorrektur-622700`) | 5 | 5 | 16.09–16.09 | 46.90 | Gray-410X350X320cm, Emerald-410X350X320cm, Navy Blue-410X350X320cm, Red-410X350X320cm |
 | Iris-Blumenring (`iris-blumenring-631400`) | 4 | 4 | 2.11–2.11 | 16.90 | Iris Flower Ring 6028-No 6, Iris Flower Ring 6028-No 7, Iris Flower Ring 6028-No 8, Iris Flower Ring 6028-No 9 |
 | Männer-Quarz-Uhr mit quadratischem Zifferblatt (`manner-quarz-uhr-mit-quadratischem-zifferblatt-614400`) | 4 | 4 | 14.76–14.76 | 23.90 | Wine Red-Quartz Watch, Green-Quartz Watch, Dark Blue-Quartz Watch, Coffee With A Gray Disc-Quartz Watch |
 | Dumpling-Mold-Set 3D-gedruckt – Quadrat, Kreis, Herz (`dumpling-mold-set-3d-gedruckt-quadrat-kreis-he-620800`) | 4 | 4 | 3.09–9.44 | 27.90 | Square, Round, Heart Shape, Combination |
@@ -222,3 +225,5 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Achtfarbige Lidschatten-Palette Hexagonal Star Diamond (`achtfarbige-lidschatten-palette-hexagonal-star-545536`) | 2 | 2 | 2.57–2.57 | 16.90 | Taro powder purple plate, Honey orange yellow plate |
 | Feines Perlen-Matte Fixierpuder (`feines-perlen-matte-fixierpuder-442560`) | 2 | 2 | 11.44–11.44 | 20.90 | Fine pearl, Matte |
 | Lernspielzeug für Kinder – Hundert-Zahlen-Tafel (`lernspielzeug-fur-kinder-hundert-zahlen-tafel-607600`) | 2 | 2 | 2.67–3.95 | 27.90 | Hundred count Board, Hundreds Of Boxes |
+| Business-Rucksack Retro-Stil (`business-rucksack-retro-stil-639400`) | 2 | 2 | 9.55–9.55 | 36.90 | 2655 Black, 2655 Brown |
+| Geschenkset: Geldbörse, Stift, Uhr in Geschenkbox (`geschenkset-geldborse-stift-uhr-in-geschenkbox-611400`) | 2 | 2 | 5.47–5.47 | 18.90 | 4 Pieces Brown-Gift Box, 4 Pieces Black-Gift Box |
