@@ -12325,3 +12325,11 @@ automatischer-sonnenschirm-mit-uv-schutz-604200	2607110343001604800	16	7.51	ok	l
 reflektierendes-hundehalsband-627500	2603050928181628000	16	5.31	ok	landeseite
 wlan-adapter-mit-wifi-6-636100	2607110317511636800	16	5.20	ok	landeseite
 katzenleine-600700	2603030634451601100	16	7.71	ok	landeseite
+tragbarer-usb-lufter-613600	2607110204521614200	7	26.22	ok	landeseite
+atmungsaktiver-brustgurt-fur-grosse-hunde-633700	2603010255081634400	16	6.63	ok	landeseite
+aufblasbares-sofa-kissen-625400	2607110148461626700	11	41.03	ok	landeseite
+automatische-hundeleine-605600	2602110851411606000	16	7.15	ok	landeseite
+elegantes-gradienten-kleid-636700	2607070516321637400	16	9.75	ok	landeseite
+faltbare-abfallbox-aus-bambus-stoff-631100	2607110142081631700	0	-	KEINE CH-Option → DRAFT	landeseite
+hundeleine-mit-geschirr-607600	2602020654121608000	16	6.47	ok	landeseite
+holz-abdeckung-fur-gitarren-schallloch-623500	2607110129001624200	16	5.12	ok	landeseite

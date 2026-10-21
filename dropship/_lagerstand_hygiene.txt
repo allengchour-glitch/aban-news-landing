@@ -375,3 +375,5 @@ gid://shopify/Product/15469969146241	draft-ausverkauft	Schwingerhose
 gid://shopify/Product/15466887152001	draft-ausverkauft	Faltbare 4K-Drohne mit Dual-Kamera
 gid://shopify/Product/15472044638593	draft-ausverkauft	Hundemantel für grosse Hunde, beidseitig tragbar
 gid://shopify/Product/15483935523201	draft-ausverkauft	Versteckte Leckereien
+gid://shopify/Product/15497457172865	draft-ausverkauft	BONA Classics Damen Laufschuhe
+gid://shopify/Product/15497534734721	draft-ausverkauft	Herren Platform Running Sneakers

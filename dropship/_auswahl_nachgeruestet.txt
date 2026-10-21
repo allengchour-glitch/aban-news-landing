@@ -3325,3 +3325,4 @@
 16655514042759	Variante:6:6+ki	2026-10-21	ewiges-blumen-baustein-set-619100
 16655511650695	Modell:3:3+ki	2026-10-21	magnetische-erdungszwinge-fur-schweissgerate-e67c68
 16655504048519	Farbe:6:6+ki	2026-10-21	lichtleiste-fur-motorradhelm-2-aa-batterien-427072
+16655501918599	Farbe:3:3+ki	2026-10-21	kabellose-in-ear-kopfhorer-639200
