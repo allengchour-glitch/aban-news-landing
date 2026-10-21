@@ -12864,3 +12864,11 @@ katzchen-schuttelspielzeug-621600	2504280526281622000	7	5.86	ok	landeseite
 dunne-hunde-weste-regenjacke-614300	2505300322221614600	16	6.33	ok	landeseite
 velvet-rauchrohr-leggings-659500	2510310257591659700	16	9.88	ok	landeseite
 reise-rucksack-mit-schuhfach-606400	2512290214541606600	16	19.65	ok	landeseite
+hohe-yoga-hosen-655200	2510301018331655500	16	7.99	ok	landeseite
+grosses-reise-rucksack-fur-unisex-619000	2512280557531619300	11	29.58	ok	landeseite
+katzenspielzeug-mit-feder-und-glockchen-610900	2504160340161611200	7	8.43	ok	landeseite
+taktische-outdoor-tasche-607600	2512270647281607800	16	9.47	ok	landeseite
+high-waist-slim-jeans-641400	2510251351001641600	16	10.69	ok	landeseite
+plusch-spielzeug-fur-haustiere-602500	2504090220311602800	7	6.90	ok	landeseite
+anzug-fur-haarlose-katzen-604800	2504170220221605100	16	7.43	ok	landeseite
+elastische-high-waist-leggings-mit-reissversch-626600	2510230734221626800	16	8.66	ok	landeseite
