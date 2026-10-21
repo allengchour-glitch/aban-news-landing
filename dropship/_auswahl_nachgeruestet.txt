@@ -3320,3 +3320,5 @@
 15521816478081	Variante:9:9+ki	2026-10-21	herrenuhr-mit-solar-quarzwerk-361536
 16655534195079	Farbe:11:11+ki	2026-10-21	quarz-uhr-mit-dreihand-chronograph-13-mm-614400
 16655516008839	Farbe:4:4+ki	2026-10-21	nordische-tischuhr-mit-wecker-und-nachtlicht-605800
+16655515517319	Farbe:2:2+ki	2026-10-21	silber-armband-mit-drachenknoten-und-kordel-636900
+16655514665351	Variante:3:3+ki	2026-10-21	ewige-rose-bausteine-kreatives-ornament-631000
