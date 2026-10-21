@@ -12780,3 +12780,4 @@ kleiner-haarkrauser-mit-drehfunktion-606600	2508200233441606800	7	11.30	ok	lande
 autom-futtermittelspender-mit-zeitsteuerung-608300	2506220510451608500	16	23.50	ok	landeseite
 eierroll-styler-fur-locken-610300	2508040619381610600	7	11.31	ok	landeseite
 laufschuhe-modell-12-204160	1379690217841233920	16	14.96	ok	landeseite
+quarzuhr-mit-kalender-626900	2602230756311627200	7	6.35	ok	landeseite
