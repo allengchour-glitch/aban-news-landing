@@ -8179,3 +8179,4 @@ gid://shopify/Product/15493847155073	zugeordnet	30	Kimmy LED-Sneakers für Kinde
 gid://shopify/Product/15493847351681	zugeordnet	11	Kinder-Clogs für Sommer & Strand
 gid://shopify/Product/15493847449985	zugeordnet	38	Atmungsaktive Denim-Sneakers für Kinder
 gid://shopify/Product/15493847515521	zugeordnet	15	Warme Winter-Boots für Kinder
+gid://shopify/Product/15493847581057	zugeordnet	96	Kinder Leder-Stiefeletten für Herbst & Winter
