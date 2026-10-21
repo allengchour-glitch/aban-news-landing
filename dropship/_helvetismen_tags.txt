@@ -375,3 +375,4 @@
 2026-10-15	gid://shopify/Product/16640749404551	natel	Einheits-Schultertasche für iPhone
 2026-10-20	gid://shopify/Product/16654370800007	finken	Mädelkleid mit Hausschuh-Accessoires
 2026-10-21	gid://shopify/Product/16655497757063	natel	Grosses Sport- und Reisetäschchen für Handy
+2026-10-21	gid://shopify/Product/16655513158023	finken	Badezimmer-Pantoffeln

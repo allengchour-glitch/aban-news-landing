@@ -391,3 +391,5 @@ gid://shopify/Product/16654381908359	smarter-ring-fur-prasentationen-604800	Smar
 gid://shopify/Product/16655153136007	kleines-nachtlicht-mit-touch-steuerung-usb-609700	Kleines Nachtlicht mit Touch-Steuerung, USB
 gid://shopify/Product/16655380840839	matte-glitzer-metallic-augenstiftpalette-457088	Matte Glitzer Metallic Augenstiftpalette
 gid://shopify/Product/16655500935559	nachtsichtkamera-fur-wildverfolgung-hd-infrare-632800	Nachtsichtkamera für Wildverfolgung HD Infrared
+gid://shopify/Product/16655534653831	schwarze-franzosische-sandalen-mit-patentleder-633800	Schwarze französische Sandalen mit Patentleder
+gid://shopify/Product/16655534850439	musikalische-taschenuhr-individuell-609100	Musikalische Taschenuhr – individuell
