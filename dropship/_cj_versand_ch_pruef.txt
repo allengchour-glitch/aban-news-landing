@@ -12862,3 +12862,5 @@ stretch-jeans-cropped-mittlere-weite-619100	2511010657171619300	16	11.23	ok	land
 taktische-handy-tasche-639200	2512300635371639400	16	10.42	ok	landeseite
 katzchen-schuttelspielzeug-621600	2504280526281622000	7	5.86	ok	landeseite
 dunne-hunde-weste-regenjacke-614300	2505300322221614600	16	6.33	ok	landeseite
+velvet-rauchrohr-leggings-659500	2510310257591659700	16	9.88	ok	landeseite
+reise-rucksack-mit-schuhfach-606400	2512290214541606600	16	19.65	ok	landeseite

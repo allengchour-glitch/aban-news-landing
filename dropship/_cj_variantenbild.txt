@@ -8465,3 +8465,19 @@ gid://shopify/Product/15485600498049	zugeordnet	12	Französische Ballet Flats mi
 gid://shopify/Product/15485612523905	zugeordnet	33	Herren Badesandalen – Leicht & Rutschfest
 gid://shopify/Product/15485613179265	zugeordnet	20	Outdoor Sommer-Flip-Flops für Herren
 gid://shopify/Product/15485613244801	zugeordnet	20	Herren Outdoor-Pantoletten mit Zehenriemen
+gid://shopify/Product/15495730889089	zugeordnet	99	V-Ausschnitt Kleid mit Blumenprint
+gid://shopify/Product/15495731315073	zugeordnet	30	Luftiges Leinenkleid für Frühling und Sommer
+gid://shopify/Product/15495731773825	zugeordnet	15	Lässiges Langarm-Kleid mit Rundhals
+gid://shopify/Product/15495732298113	zugeordnet	18	Bedrucktes V-Ausschnitt Midikleid mit 3/4-Ärmeln
+gid://shopify/Product/15495733117313	zugeordnet	10	Retro Pailletten Minikleid
+gid://shopify/Product/15495733412225	zugeordnet	10	Elegantes Satin-Abendkleid mit V-Ausschnitt
+gid://shopify/Product/15495747469697	zugeordnet	35	Etuikleid mit Rüschen und asymmetrischem Saum
+gid://shopify/Product/15495748256129	zugeordnet	12	Etuikleid Satin mit Spitze
+gid://shopify/Product/15495748387201	zugeordnet	15	Retro Denim V-Ausschnitt Rüschenkleid
+gid://shopify/Product/15495748747649	zugeordnet	30	Elegantes Polka-Dot Maxikleid mit Schnürung
+gid://shopify/Product/15495748813185	zugeordnet	28	Langärmliges A-Linien Hemdkleid mit Reverskragen
+gid://shopify/Product/15495748911489	zugeordnet	10	Elegantes A-Linien Kleid mit Farbverlauf
+gid://shopify/Product/15495748977025	zugeordnet	15	Maxirock mit Blumenprint und Plisseefalten
+gid://shopify/Product/15495749108097	zugeordnet	20	Boho V-Ausschnitt Midikleid mit Muster
+gid://shopify/Product/15495753597313	zugeordnet	40	Herren Kurzarmhemd mit modischem Print
+gid://shopify/Product/15495771685249	zugeordnet	20	Trendiges V-Neck Fleece-Gilet für junge Männer
