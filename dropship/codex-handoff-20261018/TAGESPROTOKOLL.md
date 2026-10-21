@@ -52,12 +52,19 @@ Morgenlauf: Konten/Planung gegen 08:01, drei Landeseiten gegen 08:03 und Bild/Va
 | Planung / Belege, Nachmittag | Dieselben 129 UUIDs gegen Morgenstand abgeglichen und elf zusätzliche PUBLISHED-Kanalzustände an neun bestehenden Postobjekten protokolliert | 119 PENDING / zehn PUBLISHED-Objekte; keine eigenen Social-Writes. Alter 15-s-Projektor auf FB/IG/TikTok veröffentlicht gemeldet; neue Facebook-URL-Zuordnung offen. Lücke 26.10. erhalten |
 | Produktnachweise, Nachmittag | 15 Claimgruppen des unveränderten aktuellen Produkttexts gegen vorhandene Belege und alten Beschreibungsvorschlag abgegrenzt; minimalen Prüftext und lesbaren Diff vorbereitet | Neue Dokumentations-/Textvorbereitung, keine Shopumsetzung. Physische Angaben und Bannerclaims ohne unabhängigen Nachweis im begrenzten Prüfumfang; ungeklärt bedeutet nicht falsch |
 | Tagesdaten / Zugriff, Nachmittag | Morgen-Kennzahlen und Flow-Report hashgeprüft wiederverwendet; Klaviyo-Konto und TTuuTS sowie Musik/Runtime frisch gegengeprüft | Keine zusätzlichen breiten Reportabfragen. Tracking weiter false und nur zur Freigabe; Musik hashgleich. Netzwerk jetzt enforced, daraus kein CJ-/DNS-Zugriff abgeleitet |
+| Abendprüfung, 19:20 | Konten, zwei Produkte und Planung erneut geprüft; Änderungen gegenüber 14 Uhr kanalbezogen erfasst | 131 Objekte: 113 PENDING / 18 mit PUBLISHED-Meldung; neun zusätzliche und sieben nicht mehr gelieferte UUIDs, keine behauptete Löschung. Keine eigenen Social-Writes; Lücke 26.10. |
+| Kaufstrecke, Abend | Hauptkaufknopf mobil geprüft und engen Warenkorb-Textdiff mit fünf lokalen Renderingfällen vorbereitet | Hauptknopf aktiv/unverdeckt. Versandbalken soll CH-Schätzung mit Kassenbestätigung nennen; keine Tarife geändert. CHF40.50-/CHF45-Abgleich bleibt Voraussetzung |
+| Suche, Abend | Paperang-Seite und vier Suchweisen samt aktueller Admin-Verfügbarkeit/seo.hidden gegengeprüft | Exakte Phrase findet Artikel; drei unzitierte Anfragen liefern ihn nicht. Gezielter Search-&-Discovery-Entwurf, keine Freischaltung; rueckhol-Social-Sperre erhalten |
+| Master-Prüfer, Abend | Lokalen CJ-Parser um eindeutige Variantenbelege und unbekannt-Behandlung unlesbarer/markiert gekürzter Antworten ergänzt | 14 Offline-Tests bestanden; lokale Vorbereitung, kein CJ-Lauf oder fertiger Film, Rechte/Motivzuordnung offen |
+| Abendpaket | Belegtes Content-/Verkaufspaket mit sechs Kanaltexten, UTM-Zielen und geprüften Diffs in der bestehenden Wissensbranch gespeichert | Commit 189ecb5e9288003949649616604356ec3126371c; exakt zurückgelesen. Protokollnachtrag am 21.10. ergänzt, Tätigkeiten gehören zum 20.10. |
 
 Nächster Arbeitsschritt: geeignete Originalaufnahmen nach korrigierten Mindestzeiten samt Modell-/Motivzuordnung und kommerziellen Dateirechten prüfen; danach denselben einen Master zur Abnahme entwickeln. Die Planungslücke erzwingt keinen ungeprüften Post. Genau ein Klaviyo-Vorschlag bleibt offen: TTuuTS add_tracking_params false → true, vor Umsetzung Konto-UTMs und Linkvorschauen prüfen. Kein Shop-/Feed-/Flow-/Rabatt-/Budget-/DNS-Write, Kundenkontakt oder kostenpflichtiger Render.
 
 Nachweis: [Morgenlauf mit sechs Kanaltexten und Statusbelegen](https://github.com/allengchour-glitch/aban-news-landing/blob/7847708362f4216113af36886b1416a171c356a4/dropship/codex-handoff-20261018/MORGENLAUF-20261020.md).
 
 Nachtrag zum Morgenbeleg: [Folgelauf gegen 14:05–14:08 Zürich mit kanalbezogenen Statusbelegen und neuer Nachweismatrix](https://github.com/allengchour-glitch/aban-news-landing/blob/b27c0b654f52e7d0af6bbebdf35b3e0516467651/dropship/codex-handoff-20261018/FOLGELAUF-20261020-1400.md).
+
+Nachtrag: [Abendpaket vom 20.10. mit Suchgegenprobe, Warenkorb-Diff und lokalem Quellenprüfer](https://github.com/allengchour-glitch/aban-news-landing/blob/189ecb5e9288003949649616604356ec3126371c/dropship/codex-handoff-20261018/ABENDLAUF-20261020.md).
 
 ## Fortführung
 
