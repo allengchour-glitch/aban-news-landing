@@ -3460,3 +3460,5 @@
 16654280917383	Motiv:3:3+ki	2026-10-21	keramiktasse-300-ml-susses-tiermotiv-635500
 16654280851847	Motiv:4:4+ki	2026-10-21	keramiktasse-mit-deckel-und-pinsel-610900
 16654277476743	Farbe:4:4+ki	2026-10-21	holiday-limited-christmas-lipgloss-set-608400
+16654273118599	Farbe:2:2+ki	2026-10-21	durchsichtiger-lippen-und-wangen-tint-601500
+16654126055815	Farbe:4:4+ki	2026-10-21	lipgloss-fur-glanzende-lippen-638100
