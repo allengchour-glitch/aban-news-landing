@@ -516,3 +516,15 @@ Im Shop und im Theme ist nichts geändert und nichts committet.
   - A7 Häkchen-SVG (Kaufknopf, mittleres Risiko, echter Warenkorbtest nötig)
   - A8 Kleinkram, A9 optional (Zoom-out-Titel, ?variant=, Karussell-Galerie/srcset, Kategorie-Liste, Häkchen-SVG, Kleinkram).
   Die Prüfer-Messung mit Ankern und Zeilennummern liegt in `scratchpad`; die wesentlichen Anker stehen oben im Plan.
+
+## Nachtrag 21.10.2026 — Googlebot liest nur 2 MiB (Spähtrupp wf_32ed9d12 L2, Skeptiker bestätigt)
+- QUELLE (developers.google.com/search/docs/crawling-indexing/googlebot): Googlebot holt die ersten 2 MB einer Datei, die Grenze gilt für die UNKOMPRIMIERTEN Daten; danach bricht der Abruf ab.
+  GEMESSEN: Startseite 2'524'769 B (curl, Googlebot-Kennung; Ledger seit 14.10. 2.46–2.49 MB). Byte 2'097'152 liegt in `elektronik_row`; dahinter stehen die Reihen sport-outdoor und make-up
+  (beides CREATED_DESC = die 8 neuesten Produkte), die Vertrauens-Kacheln und die Fussleiste mit den Rechtstexten (Fussleiste bei Byte ~2'407'000 = 310 KB zu spät). Die Rechtstexte-Links erreichen Google
+  über jede Produktseite (0.7 MB), verloren geht nur die Neuware-Verlinkung der letzten zwei Reihen. Wirkung auf den Index UNBELEGT (Fisher p=0.14), der sichere Gewinn ist Hygiene und mobile Last.
+- Die Grenze «2.70 MB» in `startseite_gewicht.py` schlug am 2-MiB-Limit nie an. Neu: Fussleisten-Offset in Zeile, Ledger (Spalte `fuss`) und Ampel; ⚠️ nur bei Wachstum über 2.55 MB, die Zeile nennt
+  «Googlebot liest 2 MiB: N KB davor zu viel, Ziel ≤ 1'950 KB».
+- **Ziel für die offenen Punkte A6–A9 (nicht stillschweigend kürzen, Karten/Reihen sind Betreiber-Wunsch 12./14.09.):** Fussleiste VOR Byte 1'950'000 (≈ −460 KB). Hebel nach Skeptiker-Messung:
+  A7 Häkchen-SVG −196 KB (Kaufknopf, echter Warenkorbtest nötig); `style`-Attribute der Karten in eine Klasse (bis −300 KB); Mega-Menü nur einmal rendern (265 KB, zweimal im Header); Quick-Add-Formular
+  (510 KB) nachladen statt inline (Kauf-Strecke, nur auf Theme-Kopie testen); danach erst Reihen 8 → 6 Karten (−400 KB, Betreiber-Entscheid). Reihenfolge-Variante: die drei CREATED_DESC-Reihen
+  (pl_senioren, pl_spass_gadgets, elektronik_row) vor die MANUAL-Reihen rücken — Verkaufsentscheid, nicht gemacht.

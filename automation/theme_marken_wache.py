@@ -81,12 +81,15 @@ def selbsttest():
     ok = lambda b, t: b or fehler.append(t)
     dateien = {"sections/main-blog.liquid": "{% comment %} LUX-BLOG-PAGINATE {% endcomment %} {% render 'pagination-controls' %}",
                "snippets/pagination-controls.liquid": '<ul class="pagination__list">'}
-    ok(befunde(dateien.get) == [], "alles da → keine Befunde")
+    testmarken = [("sections/main-blog.liquid", "LUX-BLOG-PAGINATE", "t"), ("sections/main-blog.liquid", "pagination-controls", "t"),
+                  ("snippets/pagination-controls.liquid", "pagination__list", "t")]       # unabhängig von MARKEN (wächst mit jeder Theme-Änderung)
+    ok(befunde(dateien.get, testmarken) == [], "alles da → keine Befunde")
     d2 = dict(dateien, **{"sections/main-blog.liquid": "{% for a in blog.articles %}{% endfor %}"})
-    b = befunde(d2.get)
+    b = befunde(d2.get, testmarken)
     ok(len(b) == 2 and "LUX-BLOG-PAGINATE" in b[0], f"Update überschreibt Blog-Abschnitt → 2 Befunde ({b})")
     d3 = {k: v for k, v in dateien.items() if k != "snippets/pagination-controls.liquid"}
-    ok(any("fehlt" in x and "pagination-controls.liquid" in x for x in befunde(d3.get)), "Datei fehlt → Befund")
+    ok(any("fehlt" in x and "pagination-controls.liquid" in x for x in befunde(d3.get, testmarken)), "Datei fehlt → Befund")
+    ok(all(any(m[1] == x for m in MARKEN) for x in ("LUX-BLOG-PAGINATE", "LUX-SEITENNAV")), "echte Liste trägt Blog- und Pilot-Marke")
     import tempfile
     tmp = os.path.join(tempfile.mkdtemp(), "s.json")
     jetzt = dt.datetime(2026, 10, 22, 12, 0)
