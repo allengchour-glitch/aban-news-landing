@@ -72,6 +72,17 @@ def kanarien():
             n += 1
             if len(k[feld]) > grenze or "ß" in k[feld] + k["html"]:
                 f += 1; print(f"  ✗ {k['handle']} {feld} {len(k[feld])} Zeichen (max {grenze}) oder ß")
+        # 21.10.2026 (Runde 20:25): «gratis ab CHF 50» ohne Land in der Nähe ist Regel R6 des Kollektions-Wächters (Liechtenstein
+        # zahlt immer CHF 14.90). futterautomaten trug die Zusage ohne Land; S3 konnte das Land nicht ergänzen (mit Land 157 > 155
+        # Zeichen) → «offen» in der Ampel (KOLL-VERSPRECHEN), bis von Hand gekürzt. Die Quelle muss R6 selbst bestehen.
+        n += 1
+        try:
+            from versprechen_wache import ab50_ohne_land
+            r6 = ab50_ohne_land(k["seo_desc"]) + ab50_ohne_land(re.sub(r"<[^>]+>", " ", k["html"]))
+        except Exception as e:  # ein stummer Ausfall der Prüfung wäre wieder «sauber»
+            r6 = [f"R6-Prüfung nicht verfügbar: {e}"]
+        if r6:
+            f += 1; print(f"  ✗ {k['handle']} R6 «gratis ab CHF 50» ohne Land: {r6[0][:90]}")
     # 20.10.2026: Kanarien für die drei neuen Sperren (Risiko-Tag, nein_tags, nein_typ) — in BEIDE Richtungen
     k0 = KOLL[0]
     for was, ergebnis, soll in (
