@@ -12047,3 +12047,12 @@ elektronisches-pluschspielzeug-fur-hunde-627800	2506160336081628100	7	7.45	ok	la
 kau-spielzeug-fur-haustiere-617200	2506040616021617600	16	8.16	ok	landeseite
 luxurioses-fruchtbrett-mit-ablauf-630900	2603300222321631300	16	10.49	ok	landeseite
 weiche-lauflernschuhe-anti-rutschsohle-623400	2411190628521624100	16	8.25	ok	landeseite
+warme-winter-kinderschuhe-601300	2411120637341601500	16	9.07	ok	landeseite
+herren-cargo-hosen-623300	2601140933581623500	16	8.79	ok	landeseite
+winterschuhe-fur-madchen-609700	2411090950451609900	16	8.53	ok	landeseite
+retro-herren-cargo-hose-610000	2511251054091610200	16	10.83	ok	landeseite
+warme-winterstiefel-613300	2411061222141613500	16	11.84	ok	landeseite
+herren-cargo-hosen-fur-outdoor-653300	2510210836181653500	16	10.69	ok	landeseite
+wasserdichte-madchen-stiefel-mit-echtem-hasenf-626600	2410310535091626900	16	8.32	ok	landeseite
+obst-und-gemusekorb-625300	2605071003341625700	16	13.55	ok	landeseite
+neue-verstarkte-wasserdichte-skihose-herren-605100	2509120704541605400	16	17.28	ok	landeseite
