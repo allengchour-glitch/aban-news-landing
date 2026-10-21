@@ -12551,3 +12551,7 @@ streifen-sneaker-fur-herren-und-damen-137600	1733444253751189504	16	14.96	ok	lan
 wanderstock-mit-sitz-613100	2607100719151613800	0	-	KEINE CH-Option → DRAFT	landeseite
 leichte-outdoor-hose-fur-herren-605900	2505110336341606600	16	11.00	ok	landeseite
 mini-wireless-keyboard-mit-air-mouse-e8301c	2B072C96-2419-4AE2-AD0D-AAFAE71753AD	7	7.78	ok	landeseite
+kissenbezuge-mit-schwarzem-rand-610900	2602100419391611200	16	8.79	ok	landeseite
+fitness-schuhe-mit-grip-148544	1733046892788977664	16	8.66	ok	landeseite
+antikes-blumenarrangement-636500	2607100704121637200	16	20.58	ok	landeseite
+retro-waschjeans-fur-herren-621800	2505040540121622000	16	12.21	ok	landeseite
