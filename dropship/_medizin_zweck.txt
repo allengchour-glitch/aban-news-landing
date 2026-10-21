@@ -17,3 +17,4 @@ gid://shopify/Product/15450833453441	hallux-korrektur	2026-07-07	Hallux Valgus K
 gid://shopify/Product/15503133475201	haemorrhoiden	2026-08-18	3U Hämorrhoidenkissen
 gid://shopify/Product/15524022059393	narbenpflaster	2026-09-22	Silikon-Narbenpflaster
 gid://shopify/Product/15452681535873	hoergeraet-funktion	2026-07-10	Digitaler Hörer im Ohr mit 32 Kanälen und Bluetooth
+gid://shopify/Product/16615374946695	vitalmessung-medizinisch	2026-10-11	Tragbares Handgelenk-Messgerät
