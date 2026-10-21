@@ -12317,3 +12317,4 @@ ghost-pearl-diy-dekorationskit-620500	2607111134441621100	16	7.43	ok	landeseite
 hundeleine-ohne-handreiben-611200	2603150214121611700	16	6.95	ok	landeseite
 stretch-tuch-fur-kopf-und-haar-638600	2607110719341639200	16	7.71	ok	landeseite
 harz-augenornament-605200	2607110632341606100	16	6.33	ok	landeseite
+leuchthalsband-fur-hunde-635400	2603140203141635800	16	11.37	ok	landeseite
