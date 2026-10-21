@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-21 00:27 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-21 01:33 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 265 · **116 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 82, teilweise: 25, keine: 9; Preisspanne > 2×: 22) · 1 CJ-Variante: 149 · ohne Antwort: 0
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 263 · **114 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 80, teilweise: 25, keine: 9; Preisspanne > 2×: 21) · 1 CJ-Variante: 149 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -67,7 +67,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | DIY Stickset mit 50 Garnfarben (`diy-stickset-mit-50-garnfarben-cb3e23`) | 7 | 0 | 2.57–7.17 | 21.90 | 136pcs, 10pcs, 12pcs, Set AC177 |
 | Titanstahlring mit Roboter-Alien-Design (`titanstahlring-mit-roboter-alien-design-633100`) | 7 | 7 | 2.25–2.25 | 21.90 | Steel Color-No 7, Steel Color-No 8, Steel Color-No 9, Steel Color-No 10 |
 | Mechanische Herrenuhr – Business & Freizeit (`mechanische-herrenuhr-business-freizeit-625400`) | 7 | 7 | 12.6–12.6 | 27.90 | Rose Gold Shell Black Surface, Rose Shell White Surface Black, Gold Shell Black Brown Belt, Gold Shell White Surface |
-| Sitzpouf-Hülle in Lederoptik zum Selbstbefüllen, ca. 53 × 35 cm (`leinwand-gestelltes-leder-sessel-mit-stauraum-621400`) | 7 | 7 | 4.78–6.08 | 24.90 | Bohemian Style-53X35CM, Flower Style Deep Coffee-53X35CM, Flower Style Black-53X35CM, Embroidery Style Deep Coffee-53X35CM |
 | Wandlampe im nordischen Minimal-Stil für Innen und Aussen (`nordische-minimallampen-design-fur-innen-und-a-636800`) | 6 | 6 | 14.62–20.79 | 35.90 | Warm White-61cm-Black, Warm White-81cm-Black, Neutral light-61cm-Black, Neutral light-81cm-Black |
 | Lenkradbezug Plüsch Pfotenabdruck 38cm (`lenkradbezug-plusch-pfotenabdruck-38cm-ebf475`) | 6 | 6 | 3.04–3.32 | 15.90 | Prestige Grey, Black, Purple, Black orange |
 | Webteppich mit Leoparden-Motiv (`sofabett-mit-modernem-muster-617500`) | 6 | 6 | 5.51–9.12 | 28.90 | Earrings Girl-130x160cm, Female Newspaper Reader-130x160cm, Pink Panther-130x160cm, Shell-130x160cm |
@@ -110,7 +109,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Edelstahl-Armband «Cœur» · Herz, Gold (`edelstahl-armband-coeur-herz-gold`) | 3 | 0 | 3.86–4.81 | 34.90 | Steel, Rose Gold, Gold |
 | Vintage Baseball-Cap «Liberty» · Washed Schwarz (`vintage-baseball-cap-liberty-washed-schwarz`) | 3 | 3 | 2.13–2.13 | 27.90 | Black, Deep Blue, Light blue |
 | Baseball-Cap «L.A.» · Hellblau (`baseball-cap-l-a-hellblau`) | 3 | 3 | 2.04–2.04 | 24.90 | Black, Light blue, Deep Blue |
-| Handlicher Outdoor-Stabfeuerzeug mit Holzgriff (`handlicher-outdoor-stabfeuerzeug-mit-holzgriff-616500`) | 3 | 3 | 3.69–8.62 | 16.90 | White Gun Body Wooden Handle, Black Gun Body Wooden Handle, White Gun Body Orange Handle |
 | WLAN Handy Beamer (`wlan-handy-beamer-35edfc`) | 3 | 3 | 41.55–70.56 | 65.90 | Android, Basic, Cell phone |
 | DIY Fotorahmen Bausteine (`diy-fotorahmen-bausteine-383936`) | 3 | 3 | 5.0–9.54 | 24.90 | White-32x32cm, Love peach-32x32cm, Black-32x32cm |
 | Studenten-Becher mit Sprühfunktion, 580 ml (`studenten-becher-mit-spruhfunktion-580-ml-614200`) | 3 | 3 | 19.57–19.57 | 43.90 | Jelly Galaxy-580ML, Cloud Diary-580ML, Sweet Dream Switch-580ML |

@@ -7988,3 +7988,5 @@ gid://shopify/Product/16615770161543	zugeordnet	10	Lauflernschuh mit Schnalle un
 gid://shopify/Product/16615802044807	zugeordnet	9	Baby Lauflernschuhe warm und rutschfest
 gid://shopify/Product/16639256527239	zugeordnet	20	Herren-Sneaker mit Farbblock und Netzstoff
 gid://shopify/Product/16652038734215	zugeordnet	36	Kinder-Schneestiefel mit Fleecefutter
+gid://shopify/Product/15493618958721	zugeordnet	10	Rollkragen-Maxikleid mit Knöpfen
+gid://shopify/Product/15493619155329	zugeordnet	24	Elegantes Etui-Kleid mit Schlitz und Ärmeln
