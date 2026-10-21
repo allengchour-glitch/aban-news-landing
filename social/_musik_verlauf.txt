@@ -582,3 +582,4 @@
 2026-10-20T13:28:14.000Z	luxe-epic-anime.wav	18.73	mode	bildreel-top-gun-bomberjacke-fgss5810	stimme:nein	anteil	quelle:bild
 2026-10-20T17:14:53.000Z	luxe-adventure-uplift.wav	34.53	kinder	bildreel-kinderkostum-eiskonigin-fgssck41201	stimme:nein	anteil	quelle:bild
 2026-10-20T18:47:12.000Z	luxe-epic-trailer.wav	7.82	mode	bildreel-rock-mit-pailletten-rosa-fgssck4741	stimme:ja	azure:de-CH-LeniNeural	quelle:bild
+2026-10-21T00:38:13.000Z	luxe-epic-spielerisch.wav	22.29	kinder	bildreel-kinder-erdbeer-halbschuhe-332480	stimme:ja	azure:de-CH-JanNeural	quelle:bild

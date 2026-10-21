@@ -3262,3 +3262,6 @@
 15504089284993	Grösse:2:2	2026-10-20	vielseitiger-korb-mit-herzmotiv-611000
 15502587560321	Ausführung:3:3+ki	2026-10-21	handlicher-outdoor-stabfeuerzeug-mit-holzgriff-616500
 16605817241991	Stil:7:7+ki	2026-10-21	leinwand-gestelltes-leder-sessel-mit-stauraum-621400
+16655493038471	Farbe:3:3+ki	2026-10-21	air-cushion-puder-cake-603300
+16655492972935	Farbe:4:4	2026-10-21	eyeliner-stift-schnelltrocknend-wasser-schweis-610000
+16655478292871	Farbe:3:3	2026-10-21	doppelkopf-fleckenstift-hellbraun-606900
