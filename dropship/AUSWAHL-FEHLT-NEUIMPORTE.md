@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-21 06:43 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-21 08:01 UTC)
 
-Suche: `status:active AND created_at:>=2026-10-18` · gemessen 404 · **237 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 212, teilweise: 15, keine: 10; Preisspanne > 2×: 32) · 1 CJ-Variante: 167 · ohne Antwort: 0
+Suche: `status:active AND created_at:>=2026-10-18` · gemessen 397 · **229 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 204, teilweise: 15, keine: 10; Preisspanne > 2×: 32) · 1 CJ-Variante: 168 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -60,7 +60,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | USB-C 7-in-1 Dock mit HDMI-Ausgang und Kabeltrennung (`usb-c-7-in-1-dock-mit-hdmi-ausgang-und-kabeltr-612700`) | 11 | 8 | 2.19–24.71 | 38.90 | 7 In 1, 4 In 1, 5 In 1, 6 In 1 |
 | Grosses Tote Crossbody für Frauen (`grosses-tote-crossbody-fur-frauen-620300`) | 11 | 11 | 6.77–7.03 | 23.90 | Black, Brown, Gray, Pink |
 | Fahrradhelm mit Visier (`fahrradhelm-mit-visier-605700`) | 11 | 11 | 5.38–5.38 | 17.90 | Chinese Red-Free Size, Blue And White-Free Size, Black And Blue-Free Size, Pink-Free Size |
-| Quarz-Uhr mit Dreihand-Chronograph, 13 mm (`quarz-uhr-mit-dreihand-chronograph-13-mm-614400`) | 11 | 11 | 5.77–9.59 | 18.90 | 8024 All Black, 8024 Black And Silver, 8024 Coffee, 8024 Green |
 | Grosses Dry-Wet Trennungs-Rucksack-Tagesrucksack (`grosses-dry-wet-trennungs-rucksack-tagesrucksa-603500`) | 10 | 10 | 5.14–5.14 | 22.90 | Pink, Light Purple, Black, Fog And Haze Blue |
 | Wollschal mit Wursthunde-Print (`wollschal-mit-wursthunde-print-614400`) | 10 | 10 | 3.35–3.35 | 16.90 | Pearl White-170cm, Beige-170cm, Light Gray-170cm, Khaki-170cm |
 | Kubanischer Ring mit Zirkonia (`kubanischer-ring-mit-zirkonia-606900`) | 10 | 10 | 6.14–6.14 | 16.90 | Gold-No 7, Gold-No 8, Gold-No 9, Gold-No 10 |
@@ -128,9 +127,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | 6-Farben-Lidschatten-Palette, matt (`6-farben-lidschatten-palette-matt-118656`) | 6 | 6 | 4.38–4.38 | 16.90 | 1 Style, 2 Style, 3 Style, 4 Style |
 | Monochrome Lidschatten-Palette – 6 Farben (`monochrome-lidschatten-palette-6-farben-070464`) | 6 | 6 | 3.66–3.66 | 16.90 | White Night Diamond, Wandering Starlight, Golden Brown Cowherd, Aimu powder purple |
 | Thermochromatische Skimaske – einheitliche Grösse (`thermochromatische-skimaske-einheitliche-gross-638700`) | 6 | 6 | 5.48–5.48 | 16.90 | Camouflage-Free Size Flexible, Vibrant Orange-Free Size Flexible, Ink Feather Blue-Free Size Flexible, Far Mountain Gray-Free Size Flexible |
-| Lichtleiste für Motorradhelm – 2 AA Batterien (`lichtleiste-fur-motorradhelm-2-aa-batterien-427072`) | 6 | 6 | 3.81–3.81 | 16.90 | Blue, Yellow, Green, Ice blue |
 | Zweifarbige Orchidee zum Zusammenbauen (`zweifarbige-orchidee-zum-zusammenbauen-608600`) | 6 | 6 | 6.68–12.85 | 33.90 | Two Toned Orchid, Champagne Orchid, Vanda Orchid, Qidailan |
-| Ewiges Blumen-Baustein-Set (`ewiges-blumen-baustein-set-619100`) | 6 | 6 | 11.94–17.19 | 73.90 | 24 Pieces Black Bucket, 24 Pieces Silver Bucket, 26 Pieces Silver Bucket, Type A 18 flowers |
 | Sportliche Umhängetasche aus Polyester, einfarbig (`sportliche-umhangetasche-aus-polyester-einfarb-626400`) | 5 | 5 | 5.47–8.79 | 25.90 | Charcoal Black Lightweight, Derm Black Lightweight, Charcoal Black Upgrade, Derm Black Upgrade |
 | Wanddekoration im Bauhaus-Stil (`wanddekoration-im-bauhaus-stil-626600`) | 5 | 5 | 10.24–10.24 | 20.90 | Blue And Red-40x60cm, Coffee Brown-40x60cm, Coffee Color-40x60cm, Spring Green-40x60cm |
 | Schlankmachender Baumwoll-Schal (`schlankmachender-baumwoll-schal-637200`) | 5 | 5 | 6.97–6.97 | 16.90 | Dark gray, Brown, Medium gray, Rose pink |
@@ -177,7 +174,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | 3D-Kugel-Puzzle Weihnachtsanhänger – 60 Teile (`3d-kugel-puzzle-weihnachtsanhanger-60-teile-604800`) | 4 | 4 | 3.16–3.16 | 16.90 | Football 3D Puzzle, Basketball 3D Puzzle, Earth 3D Puzzle, Jupiter 3D Puzzle |
 | Baustein-Spielzeug: Topfblumen-Strauss (`baustein-spielzeug-topfblumen-strauss-628700`) | 4 | 4 | 3.49–3.49 | 16.90 | Plum Blossom 599pcs, Bird Of Paradise 451pcs, Cottonrose Hibiscus 503pcs, Chrysanthemums 450 Pcs |
 | Gebäude-Modell Bausatz für Erwachsene (`gebaude-modell-bausatz-fur-erwachsene-600200`) | 4 | 4 | 2.19–2.19 | 16.90 | Peking University Standard, Tsinghua University Standard, Wuhan University Standard, Fudan University Standard |
-| Nordische Tischuhr mit Wecker und Nachtlicht (`nordische-tischuhr-mit-wecker-und-nachtlicht-605800`) | 4 | 4 | 3.69–3.69 | 21.90 | White Circle-11x11x5cm Battery Model, Green Round-11x11x5cm Battery Model, Black Round-11x11x5cm Battery Model, Blue Rounded-11x11x5cm Battery Model |
 | Musikalische Taschenuhr – individuell (`musikalische-taschenuhr-individuell-609100`) | 4 | 4 | 7.99–7.99 | 16.90 | Black P6001C, Gold P6002C, Silver P6003C, Rose Gold P6004C |
 | Oversized Wollschal Dreieck 200 cm (`oversized-wollschal-dreieck-200-cm-605900`) | 3 | 3 | 12.44–12.44 | 21.90 | Raw Velvet Rice-200X90cm, Raw Velvet Camel-200X90cm, Gray-200X90cm |
 | Zylindrischer Angelrucksack (`zylindrischer-angelrucksack-228160`) | 3 | 3 | 7.87–8.08 | 17.90 | Black, Urban camouflage, Desert camouflage |
@@ -206,11 +202,8 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Umhängetasche für Kurztrips, unisex (`umhangetasche-fur-kurztrips-unisex-610600`) | 3 | 3 | 14.24–14.24 | 43.90 | Black, Brown, 0892 Black |
 | Lidschattenpalette 8 Farben Rosa Matt (`lidschattenpalette-8-farben-rosa-matt-840384`) | 3 | 3 | 2.08–2.08 | 16.90 | Moss lake, Platycodon twilight, Persimmon Flower Sea |
 | Matte Perlmutt-Lidschatten – 8 Farben (`matte-perlmutt-lidschatten-8-farben-680064`) | 3 | 3 | 3.66–3.66 | 16.90 | Color1, Color2, Color3 |
-| Kabellose In-Ear-Kopfhörer (`kabellose-in-ear-kopfhorer-639200`) | 3 | 3 | 2.35–2.35 | 16.90 | D18 White, D18 Skin Color, D18 Black |
 | Drohne mit HD-Kamera und Bildschirmsteuerung (`drohne-mit-hd-kamera-und-bildschirmsteuerung-617900`) | 3 | 3 | 16.67–20.14 | 33.90 | Orange Black-Electric Version, Orange Black-Second Electric Version, Orange Black-Three level Version |
 | Silikonform für Schmuckanhänger (`silikonform-fur-schmuckanhanger-436a72`) | 3 | 0 | 1.02–1.02 | 16.90 | 2style, 3style, 1style |
-| Magnetische Erdungszwinge für Schweissgeräte (`magnetische-erdungszwinge-fur-schweissgerate-e67c68`) | 3 | 3 | 2.25–2.47 | 16.90 | A, A102, B |
-| Ewige Rose Bausteine – Kreatives Ornament (`ewige-rose-bausteine-kreatives-ornament-631000`) | 3 | 3 | 9.48–10.42 | 31.90 | 11003 Red Rose 649PCS, 11009 Black Rose 585PCS, 11018 Blue Rose 585PCS |
 | Schwarzer Multifunktionaler Rucksack aus Nylon/Polyester (`schwarzer-multifunktionaler-rucksack-aus-nylon-06c75b`) | 2 | 0 | 20.68–20.68 | 54.90 | Black with logo, Black without logo |
 | Multifunktionaler Rucksack mit Diebstahlschutz (`multifunktionaler-rucksack-mit-diebstahlschutz-b9d9f9`) | 2 | 2 | 31.95–36.28 | 66.90 | Black  without logo, Black |
 | Wandsticker Gans aus Holz (`wandsticker-gans-aus-holz-610300`) | 2 | 2 | 2.48–4.04 | 16.90 | Resin, Wood |
@@ -242,4 +235,3 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Achtfarbige Lidschatten-Palette Hexagonal Star Diamond (`achtfarbige-lidschatten-palette-hexagonal-star-545536`) | 2 | 2 | 2.57–2.57 | 16.90 | Taro powder purple plate, Honey orange yellow plate |
 | Feines Perlen-Matte Fixierpuder (`feines-perlen-matte-fixierpuder-442560`) | 2 | 2 | 11.44–11.44 | 20.90 | Fine pearl, Matte |
 | Lernspielzeug für Kinder – Hundert-Zahlen-Tafel (`lernspielzeug-fur-kinder-hundert-zahlen-tafel-607600`) | 2 | 2 | 2.67–3.95 | 27.90 | Hundred count Board, Hundreds Of Boxes |
-| Silber Armband mit Drachenknoten und Kordel (`silber-armband-mit-drachenknoten-und-kordel-636900`) | 2 | 2 | 27.6–27.6 | 37.90 | Silver, White K |

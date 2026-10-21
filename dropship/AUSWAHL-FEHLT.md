@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-21 06:42 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-21 08:01 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1257 · **1191 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1004, teilweise: 162, keine: 25; Preisspanne > 2×: 152) · 1 CJ-Variante: 64 · ohne Antwort: 2
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1247 · **1181 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 995, teilweise: 162, keine: 24; Preisspanne > 2×: 151) · 1 CJ-Variante: 64 · ohne Antwort: 2
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -314,7 +314,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Mondteller aus Bone China Porzellan, 8 Zoll (`mondteller-aus-bone-china-porzellan-8-zoll-809408`) | 11 | 11 | 5.92–9.7 | 19.90 | 10styles-4PCS, 11styles-4PCS, 1styles-4PCS, 2styles-4PCS |
 | Bone China Suppenschale mit Deckel (`bone-china-suppenschale-mit-deckel-611584`) | 11 | 11 | 6.84–8.76 | 46.90 | A, B, C, D |
 | 3D-gedruckte Drachen- und Ei-Ornamente (`3d-gedruckte-drachen-und-ei-ornamente-608200`) | 11 | 11 | 4.01–4.01 | 16.90 | 1 Blue And Red, 1 BlueGreen, 1 Hongjin, Mini Color |
-| Häkelnadel-Set mit Etui, 36 Teile (`hakelnadel-set-mit-etui-36-teile-557952`) | 11 | 11 | 3.99–8.07 | 14.90 | 1 Style, 2 Style, 3 Style, 4 Style |
 | Staubbeutel für Staubsauger (`staubbeutel-fur-staubsauger-628000`) | 11 | 8 | 2.18–2.84 | 14.90 | Lengt49 X Width22CM, Length65 X Width22CM, Length78 X Width32CM, Length95 X Width32CM |
 | Grosser Outdoor-Reiserucksack (`grosser-outdoor-reiserucksack-080640`) | 11 | 11 | 7.81–7.81 | 41.90 | Black, Desert camouflage, Desert digital, Jungle digital |
 | Titanring für Herren mit Holzmaserung, 8mm (`titanring-fur-herren-mit-holzmaserung-8mm-626200`) | 11 | 11 | 3.35–3.35 | 16.90 | Silver 8mm-US  11, Silver 8mm-US 11.5, Silver 8mm-US  12, Silver 8mm-US  12.5 |
@@ -536,7 +535,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Retro Armband aus Titanstahl (`retro-armband-aus-titanstahl-611700`) | 7 | 7 | 2.28–2.28 | 15.90 | Black Bracelet, Black Blue And Gold Bracelet, Water Ripple Gold Bracelet, Black Textured Gold Bracelet |
 | Fussgelenk-Manschette für Beintraining (`fussgelenk-manschette-fur-beintraining-520512`) | 7 | 7 | 3.33–9.46 | 24.90 | Black single hoist button, Gray Pair, Black Pair, Pink Pair |
 | TUMU Lipgloss (`tumu-lipgloss-620400`) | 7 | 7 | 2.42–2.42 | 15.90 | 01XoxoLightRose, 02Whimsicalwarmrose, 03BeautifullightPink, 04#Darling(bright plum) |
-| Zirkon Herzblumen Armband (`zirkon-herzblumen-armband-610000`) | 7 | 7 | 3.02–3.35 | 15.90 | A, B, C, D |
 | Ablageregal für Bad und Küche (`ablageregal-fur-bad-und-kuche-612800`) | 7 | 7 | 6.6–9.92 | 62.90 | Elegant Black 2 Pack, Pearl White 2 Pack, Black 2 Pack, White 2 Pack |
 | Trendige Velo-Schultertasche für Sport & Freizeit (`trendige-velo-schultertasche-fur-sport-freizei-959488`) | 7 | 7 | 5.51–5.51 | 18.90 | Green, Blue, Rose pink, Light Grey |
 | Gesteppter Aufbewahrungskorb «Love» oder «Bär» (`gesteppter-aufbewahrungskorb-love-oder-bar-626000`) | 7 | 7 | 2.82–3.86 | 15.90 | Love Rectangular Basket, Love Big, Love Small Size, White Bear Head Large Storage |
@@ -743,8 +741,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | 38CM Nussknacker Holzfigur (`38cm-nussknacker-holzfigur-624600`) | 5 | 5 | 5.64–5.64 | 18.90 | TN3836 Purple Swordsman-38CM, TN3838 Blue Blade-38CM, TN3839 Red King-38CM, TN3840 Green King-38CM |
 | Milchduft Futterball für Hunde (`milchduft-futterball-fur-hunde-314739`) | 5 | 5 | 3.41–6.0 | 15.90 | blue-Diameter 8 Cm, green-Diameter 14 Cm, Red-Diameter 8 cm, Violet-Diameter 14 cm |
 | Herren Business Casual Quarzuhr mit Kalender (`herren-business-casual-quarzuhr-mit-kalender-663168`) | 5 | 5 | 3.46–3.46 | 16.90 | Rose Gold Scale Black Belt, Silver Scale Black Belt, White Surface Silver Streak, Black Surface Silver Streak |
-| Geflochtenes Armband aus Edelstahl (`geflochtenes-armband-aus-edelstahl-619600`) | 5 | 5 | 2.72–2.72 | 15.90 | Blue, Green, Red, Brown |
-| Edelstahl Ölfiltertopf mit Sieb (`edelstahl-olfiltertopf-mit-sieb-341056`) | 5 | 5 | 7.06–10.36 | 32.90 | A, B, C, D |
 | Hundehalsband "Purple Flower" mit Metallschnalle (`hundehalsband-purple-flower-mit-metallschnalle-df75dd`) | 5 | 5 | 2.9–2.9 | 15.90 | Flower-S, Flower-XL, Purple Flower Fairy-XS, Flower-M |
 | Retro Rucksack für Schule und Freizeit (`retro-rucksack-fur-schule-und-freizeit-995712`) | 5 | 5 | 9.07–9.07 | 28.90 | Camouflage black, Camouflage sapphire blue, Honeycomb black, Camouflage hemp black |
 | Schmuck-Organizer im Buchformat (`schmuck-organizer-im-buchformat-611000`) | 5 | 5 | 2.63–4.83 | 16.90 | White Including Cloth Bag, Black Including Cloth Bag, Pink Including Cloth Bag, Dark Green Including Cloth Bag |
@@ -908,9 +904,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Armkraft-Trainingsstab (`armkraft-trainingsstab-212544`) | 4 | 4 | 75.16–108.48 | 235.90 | 12pounds Silver-Resistance, 12pounds Silver-No Resistance, 12pounds Black-Resistance, 12pounds Black-No Resistance |
 | Faltbarer Outdoor-Doppelnapf für Hunde (`faltbarer-outdoor-doppelnapf-fur-hunde-598976`) | 4 | 4 | 4.97–10.45 | 24.90 | White, Green, Khaki, White set |
 | Nordisches Serviertablett aus Edelstahl (`nordisches-serviertablett-aus-edelstahl-307520`) | 4 | 4 | 9.27–9.27 | 32.90 | Mirror colorful tray, Mirror golden tray, Mirror natural color tray, Mirror rose gold tray |
-| DACR Quarzuhr mit Kalenderanzeige (`dacr-quarzuhr-mit-kalenderanzeige-496448`) | 4 | 4 | 11.88–11.88 | 26.90 | Green, Black, Pink, Grey |
-| Haustier-Rucksack für Ausflüge (`haustier-rucksack-fur-ausfluge-914048`) | 4 | 4 | 10.46–10.46 | 22.90 | Blue-M, Navy Blue-M, Pink-M, Grey-M |
-| LED Wecker mit Spiegel & Kalender (`led-wecker-mit-spiegel-kalender-708480`) | 4 | 4 | 6.27–6.27 | 19.90 | White light-USB, Blue light-USB, Pink light-USB, Green light-USB |
 | Ultraflache Herrenuhr mit Milanaise-Armband (`ultraflache-herrenuhr-mit-milanaise-armband-347072`) | 4 | 4 | 5.93–7.99 | 16.90 | Black Belt, Rose Gold Strap, Silver Streak, Black Face Rose Gold Strap |
 | Keramik Futternapf für Katzen – Kippsicher (`keramik-futternapf-fur-katzen-kippsicher-739008`) | 4 | 4 | 3.55–4.12 | 34.90 | White-High, White-Short, Orange-High, Orange-Short |
 | Auto- und Heim-Organizer mit Zugbeutel (`auto-und-heim-organizer-mit-zugbeutel-622100`) | 4 | 4 | 2.18–2.18 | 14.90 | 20X12X8cm-Khaki, 20X12X8cm-Black, 20X12X8cm-Red, 20X12X8cm-Leaf Bear |
@@ -1167,9 +1160,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Wasserdichter Laptop-Rucksack mit USB-Ladefunktion (`wasserdichter-laptop-rucksack-mit-usb-ladefunk-946688`) | 2 | 2 | 17.59–17.59 | 44.90 | Black, Grey Canvas |
 | Kreatives Bausteine-Set: Welle oder Sternennacht (`kreatives-bausteine-set-welle-oder-sternennach-615300`) | 2 | 2 | 8.46–9.62 | 31.90 | The Great Wave Off Kanagawa, Van Gogh Starry Sky Painting |
 | Retro Kamera Bausteine (`retro-kamera-bausteine-627900`) | 2 | 2 | 3.21–3.21 | 16.90 | Moonlight White, Classic Black |
-| Kissenbezug Vierblättriges Kleeblatt (`kissenbezug-vierblattriges-kleeblatt-496576`) | 2 | 2 | 2.41–2.56 | 15.90 | 30x50cm-Single Pillowcase, 45x45cm-Single Pillowcase |
-| Luftbefeuchter mit Holzmaserung und Nachtlicht (`luftbefeuchter-mit-holzmaserung-und-nachtlicht-147648`) | 2 | 2 | 3.14–3.14 | 15.90 | Khaki, Brown |
-| Baumwollteppich mit Buffalo Plaid Muster (`baumwollteppich-mit-buffalo-plaid-muster-bcae4e`) | 2 | 0 | 2.52–3.36 | 22.90 | 60x130cm, 60x90cm |
 | Kissenbezug Baumwolle Leinen mit Cut-Outs (`kissenbezug-baumwolle-leinen-mit-cut-outs-de8c0a`) | 2 | 2 | 9.96–13.04 | 36.90 | 45×45cm, 30×50cm |
 | Eau de Parfum «Rosenduft» (`the-odour-of-roses-eau-de-parfum-630848`) | 2 | 2 | 2.1–2.1 | 14.90 | 100ml-7306a Royal Crown, 100ml-7306b Dark Rose |
 | Abstrakter Kissenbezug Wildleder Schwarz-Weiss (`abstrakter-kissenbezug-wildleder-schwarz-weiss-032384`) | 2 | 2 | 4.26–4.9 | 15.90 | Square pillow 45x45cm-Pillowcase, Waist pillow 30x50cm-Pillowcase |
