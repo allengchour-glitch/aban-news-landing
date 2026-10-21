@@ -8079,3 +8079,15 @@ gid://shopify/Product/15493798789505	zugeordnet	24	Elastische Stiefeletten mit C
 gid://shopify/Product/15493799018881	zugeordnet	24	Damen Cord Hoodie mit 3D Weihnachtsbaum-Print
 gid://shopify/Product/15493799412097	zugeordnet	42	Overknee-Stiefel mit Stretch und klobigem Absatz
 gid://shopify/Product/15493799444865	zugeordnet	8	Weihnachts-Sweatshirt mit Digitalprint
+gid://shopify/Product/15493799739777	zugeordnet	21	Chunky-Heel High-Top Boots mit dicker Sohle
+gid://shopify/Product/15493799870849	zugeordnet	55	Barfussschuhe mit breiter Zehenbox
+gid://shopify/Product/15493799969153	zugeordnet	18	Robuste Casual Sneaker mit Keilabsatz für Herren
+gid://shopify/Product/15493800067457	zugeordnet	36	Modische Herren-Sneakers für den Alltag
+gid://shopify/Product/15493800165761	zugeordnet	66	Professionelle, schnürsenkellose Velo-Schuhe
+gid://shopify/Product/15493800264065	zugeordnet	12	Sportliche Casual Sneakers im German-Style
+gid://shopify/Product/15493800362369	zugeordnet	18	Herren Arbeits-Sneaker Schwarz
+gid://shopify/Product/15493807014273	zugeordnet	20	Lässige Low-Cut Boots mit runder Kappe
+gid://shopify/Product/15493807079809	zugeordnet	22	Retro Leder Casual Boots für Herren
+gid://shopify/Product/15493807145345	zugeordnet	7	Retro Britische Worker-Boots für Herren
+gid://shopify/Product/15493807210881	zugeordnet	18	Herren Canvas-Schuhe mit rutschfester Sohle
+gid://shopify/Product/15493807341953	zugeordnet	12	Herren Sommer Casual Leder Boots
