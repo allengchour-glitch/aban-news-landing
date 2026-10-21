@@ -1,4 +1,4 @@
-# Feinkategorie (automatisch, 2026-10-21 13:40 UTC)
+# Feinkategorie (automatisch, 2026-10-21 14:37 UTC)
 
 Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 
@@ -7,35 +7,18 @@ Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 | gleich | 36143 |
 | shopify-feiner | 16198 |
 | kein-google | 1635 |
-| rueckfall-grob | 1337 |
+| rueckfall-grob | 1395 |
 | anderer-zweig | 956 |
-| verfeinern | 61 |
 | kreuz | 16 |
-| schon-im-ledger | 13 |
+| schon-im-ledger | 16 |
 | titelprobe-nein | 12 |
 | ohne-kategorie | 5 |
 | keine-zuordnung | 1 |
-| **geschrieben** | 61 (Fehler 0) |
+| verfeinern | 0 |
+| **geschrieben** | 0 (Fehler 0) |
 
 ## Ziele (dieser Lauf)
 
-- 20 → Clothing > Shirts & Tops
-- 8 → Clothing > Outerwear > Coats & Jackets
-- 5 → Lighting > Night Lights & Ambient Lighting
-- 5 → Clothing > Dresses
-- 4 → Lighting > Lamps
-- 4 → Audio > Audio Components > Speakers
-- 2 → Cameras & Optics
-- 2 → Video > Projectors
-- 2 → Backpacks
-- 2 → Jewelry > Brooches & Lapel Pins
-- 1 → Jewelry > Rings
-- 1 → Audio > Audio Components > Headphones & Headsets
-- 1 → Kitchen & Dining > Cookware & Bakeware > Cookware > Stock Pots
-- 1 → Kitchen & Dining > Tableware > Drinkware > Mugs
-- 1 → Kitchen & Dining > Cookware & Bakeware > Bakeware > Cake Pans & Molds
-- 1 → Tools > Tool Sets
-- 1 → Decor > Clocks
 
 ## Titelprobe hat abgelehnt (bleibt grob)
 

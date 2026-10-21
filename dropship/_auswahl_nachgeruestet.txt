@@ -3418,3 +3418,5 @@
 16654366474631	Stil:10:10+ki	2026-10-21	kuchenvorhang-baumwoll-leinen-mischung-617600
 16654365950343	Farbe:7:7+ki	2026-10-21	universal-steckschlussel-44f388
 16654364967303	Farbe:4:4+ki	2026-10-21	aufbewahrungstasche-furs-auto-rucksitz-630600
+16656200958343	Modell:2:2	2026-10-21	crimpzange-fur-kabel-bfd16d
+16656199090567	Farbe:2:2	2026-10-21	bohrlehre-fur-prazise-holzbearbeitung-dae135

@@ -1,5 +1,5 @@
 gid://shopify/Product/15448827888001	Tunmate Rizinus-Haaröl (Ölmischung) · 60 ml	14
-gid://shopify/Product/16603297251719	Aufblasbares Halloween-Kostüm für zwei Personen	13
+gid://shopify/Product/16603297251719	Aufblasbares Halloween-Kostüm für zwei Personen	14
 gid://shopify/Product/15411554320769	Aroma Diffuser Holzoptik 400ml – Ultraschall Luftbefeuchter mit 7 LED-Farben	6
 gid://shopify/Product/15411565035905	LED Schreibtischlampe Akku – 3 Helligkeitsstufen, Augenschutz & Sunset-Modus	6
 gid://shopify/Product/15511032365441	Handmixer mit 5 Geschwindigkeiten	6
@@ -19,11 +19,11 @@ gid://shopify/Product/15494693585281	Magisches Katzenkratzbrett mit Orgel-Design
 gid://shopify/Product/15496392147329	Kabellose Desinfektionspistole	3
 gid://shopify/Product/15503128265089	Vulkan Aroma Diffuser mit Flammen- & Quallen-Effekt	3
 gid://shopify/Product/15504121004417	Multicolor Lidschatten-Palette	3
+gid://shopify/Product/15509401698689	360° drehbarer Laptop-Ständer für Tische	3
 gid://shopify/Product/15521256604033	Sternenlicht-Projektor für Schlafzimmer	3
 gid://shopify/Product/15522058142081	Multifunktionaler Trimmer für Haar & Bart	3
 gid://shopify/Product/15453773103489	Doppelstrahl-Luftbefeuchter	3
 gid://shopify/Product/15509370306945	DIY Stickset mit 50 Garnfarben	3
-gid://shopify/Product/15509401698689	360° drehbarer Laptop-Ständer für Tische	3
 gid://shopify/Product/15500936282497	3D Acryl Notiztafel mit LED-Beleuchtung	2
 gid://shopify/Product/15494643417473	Multifunktionaler Gemüseschneider mit Spiralschneider	2
 gid://shopify/Product/15495226261889	ROCKBROS Velo Frontlicht USB-Ladefunktion	2
@@ -39,7 +39,6 @@ gid://shopify/Product/15477929509249	Dekorative Bücherregal-Laternenlampe	2
 gid://shopify/Product/15481887064449	USB-Stick Lippenstift-Design	2
 gid://shopify/Product/15484294955393	Magnetischer Telefonhalter	2
 gid://shopify/Product/15520411222401	Mini LED Beamer für Handy & Heimkino	2
-gid://shopify/Product/15506657935745	DIY Pixel-Herz Bausatz für Paare	1
 gid://shopify/Product/15509386494337	Handgefärbtes Vintage-Hochzeitsband mit Rohkante	1
 gid://shopify/Product/15521534443905	Nordic Viking Runen Kompass Totem Armband aus Titanstahl	1
 gid://shopify/Product/16603433599367	Halloween Hexenhut Nachtlicht	1
@@ -48,13 +47,11 @@ gid://shopify/Product/15477429961089	Kissenhülle Ahornblatt & Kürbis Stickerei
 gid://shopify/Product/15486308876673	Eleganter Fishtail-Rock im Retro-Stil	1
 gid://shopify/Product/15495107248513	Leuchtendes Diamond Painting für Erwachsene	1
 gid://shopify/Product/15496517321089	Kabelloser Dual-Vibrations-Bluetooth-Controller	1
-gid://shopify/Product/15523937550721	Futter- und Trinkbrunnen für Haustiere	1
 gid://shopify/Product/15524074193281	Flanell-Sofabezug	1
 gid://shopify/Product/16603388543367	Maiglöckchen Duftwärmer ohne Flamme	1
 gid://shopify/Product/16643494576519	Wasserdichte Oxford-Umhängetasche 20-35 l	1
 gid://shopify/Product/15431537000833	Edelstahl-Armband «Trésor» · Doppellagig mit Charms, Silber	1
 gid://shopify/Product/15453773332865	Kau- und Zahnputzspielzeug für Hunde	1
-gid://shopify/Product/15497421783425	U-förmige Wärmflasche für Nacken und Schultern	1
 gid://shopify/Product/15500111741313	Smart-Lautsprecher	1
 gid://shopify/Product/15508419838337	Aufbewahrungsbox für Haarstyling-Geräte	1
 gid://shopify/Product/15509400387969	Asakusa Aroma Diffuser aus Glas	1
@@ -67,19 +64,15 @@ gid://shopify/Product/16644536140167	Männer Brusttasche aus Oxford-Stoff, schwa
 gid://shopify/Product/15480830656897	USB-Taschenlampe für Outdoor und Zuhause	1
 gid://shopify/Product/15496361148801	Smarter 5-Kopf Rasierer mit USB-Ladefunktion	1
 gid://shopify/Product/15502559084929	Glättbürste mit Dampf-Sprühfunktion	1
-gid://shopify/Product/15508446314881	Rhinestone Kalenderuhr für Herren	1
 gid://shopify/Product/15519835029889	Skelett-Gerippe für Halloween-Deko	1
 gid://shopify/Product/15525457822081	Stickierter Vorhangstoff – Baumwolle, Polyester, Samt	1
-gid://shopify/Product/16603302625671	Kompakte Powerbank 10 000 mAh mit Dual-Display	1
 gid://shopify/Product/16603594621319	Wandlampe im nordischen Minimal-Stil für Innen und Aussen	1
-gid://shopify/Product/16608165757319	Handtasche aus Vollschicht-Rindleder	1
 gid://shopify/Product/15428421386625	Kreuz-Halskette Gold · Edelstahl-Anhänger	1
 gid://shopify/Product/15453727555969	Konsolen- & Controller-Skin für PS5 · Aufkleber-Set	1
 gid://shopify/Product/15495733051777	Marokkanisches Kissen mit Quasten	1
-gid://shopify/Product/15515087307137	UV-Gel-Nagelsticker für Semi-Cured-Maniküre	1
 gid://shopify/Product/15518599446913	Japanischer Schulrucksack mit hoher Kapazität	1
 gid://shopify/Product/15524021961089	Grosser USB-Reiserucksack mit Laptopfach	1
-gid://shopify/Product/16604956950919	Rennwagen-Modellbausteine für Kinder	1
+gid://shopify/Product/15448825430401	Meridian Bürste Nacken- & Schultermassage	1
 gid://shopify/Product/15493828837761	Ovale Vintage Opal-Ohrringe aus 925er Sterlingsilber	1
 gid://shopify/Product/15493835784577	USB Powerbank mit Handwärmer und Massage	1
 gid://shopify/Product/15494124208513	Trolley-Schulrucksack mit Rollen	1
@@ -91,7 +84,6 @@ gid://shopify/Product/15525461164417	Moderne schwarze Metall-Wanddekoration	1
 gid://shopify/Product/16604927263111	LED Ausziehbare Schmink-Wandleuchte	1
 gid://shopify/Product/16604955738503	Puppenhaus-Möbel aus Holz, Miniatur	1
 gid://shopify/Product/16649013657991	Leichte Reise-Tasche aus Leder	1
-gid://shopify/Product/15448825430401	Meridian Bürste Nacken- & Schultermassage	1
 gid://shopify/Product/15448845812097	Magnetischer Messerhalter aus Massivholz	1
 gid://shopify/Product/15453897359745	10-in-1-Reinigungbürste mit Sprachassistenz	1
 gid://shopify/Product/15467097719169	Zirkon-Ring mit Silikon-Einlage im Tropfen-Design	1
@@ -99,20 +91,15 @@ gid://shopify/Product/15473077485953	Sweet Spot Trainer für präzises Tennis-Tr
 gid://shopify/Product/15477388378497	Tulpen Diffuser aus getrockneten Blumen	1
 gid://shopify/Product/15481981632897	Outdoor Handmikrofon für Bühne & KTV	1
 gid://shopify/Product/15493576229249	Vintage Halskette im Punk-Stil	1
-gid://shopify/Product/15502661157249	Interaktives Katzenspielzeug mit Krallenschärfer	1
 gid://shopify/Product/15522128167297	Multifunktionaler Dual-Kopf Ventilator mit Licht	1
 gid://shopify/Product/15524857315713	Schmetterling Duschvorhang aus Stoff	1
 gid://shopify/Product/15431537066369	Edelstahl-Armreif «Couleur» · verstellbar, Gold	1
 gid://shopify/Product/15481980420481	Kabelmikrofon	1
-gid://shopify/Product/16607159779719	Adventskalender 2026 mit Blind-Box-Überraschungen	1
-gid://shopify/Product/15495140671873	3D Totenkopf Schaltknauf mit blauen LED-Augen	1
 gid://shopify/Product/15500904563073	Rosenwasser Roll-on Parfüm (10ml)	1
-gid://shopify/Product/15510306652545	Hundeleine mit Trinkflasche und Kotbeutelspender	1
-gid://shopify/Product/15522164900225	Automatischer Trinkbrunnen für Haustiere, 1.5L	1
+gid://shopify/Product/16607159779719	Adventskalender 2026 mit Blind-Box-Überraschungen	1
 gid://shopify/Product/15524883825025	Titanstahlring mit Roboter-Alien-Design	1
 gid://shopify/Product/16603332608391	65 W GaN Schnellladegerät – USB-C	1
 gid://shopify/Product/16606125162887	IBC-Tank-Adapter für 1000-Liter-Container	1
-gid://shopify/Product/16611666919815	Grosser Outdoor-Reiserucksack 60 L	1
 gid://shopify/Product/15448908267905	Automatische Skelett-Herrenuhr mit Leuchtzeigern	1
 gid://shopify/Product/15449465749889	Kleidungsreiniger	1
 gid://shopify/Product/15478820241793	5D Diamond Painting: Halloween Totenkopf	1
@@ -133,42 +120,31 @@ gid://shopify/Product/15453893394817	Camping-Cot-Tent	1
 gid://shopify/Product/15500509446529	Katzenspielzeug "Turntable"	1
 gid://shopify/Product/15522140586369	Multifunktionales Silikon-Wärmepad	1
 gid://shopify/Product/15525462835585	Windmühlen-Spieluhr aus Klemmbausteinen	1
-gid://shopify/Product/16604910289287	Ultraleichter Velo- und Laufrucksack	1
 gid://shopify/Product/16606172643719	Studentenrucksack Blumenmuster	1
 gid://shopify/Product/16607242092935	Wandteppich mit Berglandschaft	1
 gid://shopify/Product/16644537483655	Wasserdichte Angelrucksack aus TPU-Gewebe	1
 gid://shopify/Product/15478613574017	Leuchtende Kürbis-Laterne	1
 gid://shopify/Product/15495106724225	Auto Schiebedach-Ablaufreiniger	1
 gid://shopify/Product/15495237173633	Moocare Aromatherapie-Öl (20 Stk.)	1
-gid://shopify/Product/15500195070337	Reisebeutel mit Spiegel und Licht	1
 gid://shopify/Product/15501899694465	Herren Geschenkset: Uhr, Sonnenbrille & Accessoires	1
 gid://shopify/Product/15522283258241	Kreativer Weindekanter – Pinguin oder Bohnensprosse	1
-gid://shopify/Product/15522439102849	Keramik-Futternapf aus Bambus und Holz	1
 gid://shopify/Product/15524855382401	Baumwoll-Leinen Vorhang mit Entenmotiv	1
-gid://shopify/Product/15525462704513	Faltbares Strassen-Baustein-Set	1
 gid://shopify/Product/15525499863425	Silberarmband mit Moissanit-Besatz	1
 gid://shopify/Product/15525502222721	Saugfuss-Seilzug zum Trainieren	1
 gid://shopify/Product/16603944944007	Weihnachtsdeko Foto-Requisiten	1
 gid://shopify/Product/16615813579143	24-Raster Weihnachts-Bausteine-Adventskalender	1
-gid://shopify/Product/15476174422401	Glasbecher für Büro und Zuhause	1
 gid://shopify/Product/15523939484033	Transparenter Häkelvorhang Landhausstil	1
 gid://shopify/Product/15524698882433	Bento Box mit Bambus-Schneidebrett-Deckel	1
-gid://shopify/Product/15525462802817	Blumen-Blumentopf-Bausteine	1
 gid://shopify/Product/15481776767361	Ferngesteuerte Infrarot-Wurst	1
 gid://shopify/Product/15497438265729	Elektrisches Katzenspielzeug mit Feder	1
 gid://shopify/Product/16603593965959	Wandlampe aus Kupfer mit weissem Lampenschirm	1
-gid://shopify/Product/16604924641671	Nageldesign-Stift	1
-gid://shopify/Product/15453825368449	Modell Soft Velvet Wimpern	1
 gid://shopify/Product/15508421509505	Makeup-Set für Einsteiger mit Concealer & Eyeliner	1
 gid://shopify/Product/15523993584001	Schaukelspielzeug für Katzen mit Bällen	1
-gid://shopify/Product/15524078420353	Bausteine Ford Mustang Shelby GT500 Roadster	1
 gid://shopify/Product/16603350860167	Solar-Gartenlampe Ente	1
-gid://shopify/Product/16605480944007	Hundepullover aus Wolle, rot	1
 gid://shopify/Product/16606108057991	CO2-Kartuschen-Adapter für Fahrrad, CNC-Aluminium	1
 gid://shopify/Product/15431536968065	Edelstahl-Armband «Cœur» · Herz, Gold	1
 gid://shopify/Product/15493932482945	Kalkschutz-Vorfilter für Boiler	1
 gid://shopify/Product/15504188473729	Futterautomat mit Kamera für Hunde und Katzen	1
-gid://shopify/Product/15509400912257	Solar Powerbank mit zwei USB-Anschlüssen	1
 gid://shopify/Product/15525458542977	3D-Fibre Mascara mit Kollagen-Gel · 2 Stück	1
 gid://shopify/Product/15431530054017	Vintage Baseball-Cap «Liberty» · Washed Schwarz	1
 gid://shopify/Product/15431536017793	Baseball-Cap «Classic» · Rot, Baumwolle	1
@@ -177,11 +153,9 @@ gid://shopify/Product/15453826744705	Solar Helm mit Ventilator	1
 gid://shopify/Product/15454199382401	10-teiliges Badset aus Baumwolle	1
 gid://shopify/Product/15455515705729	Interaktives Katzen-Spielzeug	1
 gid://shopify/Product/15493874778497	Ohrringe mit schimmerndem Naturstein	1
-gid://shopify/Product/15523936895361	Kissenbezug mit Kürbis-Stickerei	1
 gid://shopify/Product/15525460672897	Dekorative Leinwandbilder Set – 3-teilige Wandkunst	1
 gid://shopify/Product/15525463884161	Edelstein-Bauklötze aus Holz und Acryl	1
 gid://shopify/Product/16603338080647	Plus-Size Retro-Hornknopf-Dufflemantel	1
-gid://shopify/Product/16608629096839	U-Form Kissen für Nacken-Unterstützung	1
 gid://shopify/Product/15431535985025	Baseball-Cap «L.A.» · Hellblau	1
 gid://shopify/Product/15445299364225	Gel Nagellack Stifte Set	1
 gid://shopify/Product/15459593453953	Aschenbecher mit Deckel	1
@@ -230,26 +204,22 @@ gid://shopify/Product/16607233409415	Wireless-Empfänger mit Hot-Spot-Funktion	1
 gid://shopify/Product/16643496051079	Smart-Fingerprint-Rucksack aus Vollnarbenleder	1
 gid://shopify/Product/15431537033601	Edelstahl-Halskette «Goutte» · Tropfen-Anhänger, Silber	1
 gid://shopify/Product/15454119002497	Männer-Geldbörse mit Tri-Fold-Design	1
-gid://shopify/Product/15502587560321	Handlicher Outdoor-Stabfeuerzeug mit Holzgriff	1
 gid://shopify/Product/15510322872705	Ultraschall-Porenreiniger	1
 gid://shopify/Product/15523905536385	Duschkopf mit Wassersparfunktion und Ventilator	1
+gid://shopify/Product/15524361372033	Sport-Smartwatch mit Temperatur- und Pulsmessung	1
 gid://shopify/Product/15448828182913	Tunmate Teebaum Haaröl	1
 gid://shopify/Product/15448873173377	VR-Brille mit verstellbarem Kopfband	1
 gid://shopify/Product/15448900731265	Ohrringe mit Katzenaugenstein und Türkis-Optik	1
 gid://shopify/Product/15454915199361	Elektrische Kamm für Locken und Glätte	1
 gid://shopify/Product/15493908070785	Nano Kratzerentferner-Tuch	1
-gid://shopify/Product/15521229603201	Automatisches Katzenspielzeug mit Ballspender	1
 gid://shopify/Product/15523906421121	Haarentfernungscreme Sanfte Reinigung	1
-gid://shopify/Product/15524361372033	Sport-Smartwatch mit Temperatur- und Pulsmessung	1
 gid://shopify/Product/15524868555137	Mini Tattoo Pen mit USB-Ladekabel	1
 gid://shopify/Product/15525495472513	USB-Mixer für unterwegs	1
-gid://shopify/Product/16608160153991	Ultra-dünne Langportemonnaie Frau	1
 gid://shopify/Product/15510920659329	Bohemian Perlenohrringe – Leicht & Elegant	1
 gid://shopify/Product/15523984146817	Verstellbarer Katzenschüssel 15°	1
 gid://shopify/Product/15524867473793	Reflektierendes Hunde-Brustgeschirr mit Leine	1
 gid://shopify/Product/15524885823873	Bestickter Vorhang mit Lichtdurchlass	1
 gid://shopify/Product/16603524366727	Schwingendes Geisterlicht für Halloween	1
-gid://shopify/Product/16605817241991	Sitzpouf-Hülle in Lederoptik zum Selbstbefüllen, ca. 53 × 35 cm	1
 gid://shopify/Product/15443241042305	Moissanit-Ohrstecker «Bogen» 0,5 ct · 925 Silber	1
 gid://shopify/Product/15490138440065	Parfüm mit grünem Duft im Eulen-Design	1
 gid://shopify/Product/15509347467649	Eiswürfelform aus Edelstahl	1
@@ -257,39 +227,30 @@ gid://shopify/Product/15509382791553	Duales USB Desktop Wireless-Ladegerät	1
 gid://shopify/Product/15523938468225	WLAN Handy Beamer	1
 gid://shopify/Product/15523939156353	Reinigungsbürsten-Set aus Bambus und Buchenholz	1
 gid://shopify/Product/16604955410823	DIY Fotorahmen Bausteine	1
-gid://shopify/Product/16606247485831	Laptop-Rucksack aus PU-Leder	1
 gid://shopify/Product/15443243598209	Vergoldete Halskette «Blatt» · 18k Gold-Optik	1
 gid://shopify/Product/15454916116865	Studenten-Becher mit Sprühfunktion, 580 ml	1
 gid://shopify/Product/15455422054785	Keratin Wimpern-Lift	1
 gid://shopify/Product/15481980682625	USB Kondensator-Mikrofon für Konferenzen & Gaming	1
 gid://shopify/Product/15508465025409	Multifunktionaler Vertikal-Spiralschneider	1
 gid://shopify/Product/15509907308929	304 Edelstahl Eiswürfelform	1
-gid://shopify/Product/15510924231041	Kuscheldecke mit Digitaldruck	1
-gid://shopify/Product/15516216852865	Saber Business-Rucksack für Laptop	1
 gid://shopify/Product/15525499666817	5-lagiges handgewebtes Armband	1
-gid://shopify/Product/16606109139335	Umhänge-Rucksack aus Oxford-Stoff für den Alltag	1
 gid://shopify/Product/15431535952257	5-Panel Cap «Sprint» · Nylon Schwarz	1
 gid://shopify/Product/15448964759937	Antiker Küchenarmatur für Warm- und Kaltwasser	1
 gid://shopify/Product/15479402561921	Performance Drum- und Perkussionsmikrofon	1
 gid://shopify/Product/15481380536705	Kabelloses Ansteckmikrofon mit Ladebox	1
-gid://shopify/Product/15496982200705	Joy-Con Handgelenkschlaufen (2er-Pack)	1
 gid://shopify/Product/15509362049409	Elastisches Perlenarmband-Set (5-teilig)	1
 gid://shopify/Product/15522085470593	Multifunktionaler Steckdosen-Tester mit Display	1
 gid://shopify/Product/15522216345985	Verstellbarer Spiralschneider mit Behälter	1
 gid://shopify/Product/15525501403521	Korrektur-Gurt für Kinder	1
 gid://shopify/Product/16604925493639	Minimalistische Tischlampe	1
-gid://shopify/Product/16606106714503	Weihnachts- und Halloween-Glasbecher	1
 gid://shopify/Product/16644535943559	Ein-Schulter Umhängetasche aus Oxford-Stoff, schwarz	1
 gid://shopify/Product/15448825397633	Ximonth Nagelpflege Essenz mit Bienengift	1
 gid://shopify/Product/15497447408001	Wasserdichter Bluetooth Lautsprecher für das Bad	1
-gid://shopify/Product/15503948415361	Silikon-Bürste für Shampoo und Massage	1
 gid://shopify/Product/15506243715457	Automatischer Lockenstab mit Drehfunktion	1
 gid://shopify/Product/15506272715137	USB Mini-Ventilator mit Clip – bürstenlos & leise	1
 gid://shopify/Product/15506299453825	Nordische Wanduhr – Schwarz-Weiss, Retro-Stil	1
 gid://shopify/Product/15508418986369	Wanduhr aus Buchenholz, geräuscharm	1
-gid://shopify/Product/15521816478081	Herrenuhr mit Solar-Quarzwerk	1
 gid://shopify/Product/15522433302913	Gänsedaunenkissen – Füllung für Kissenhüllen	1
-gid://shopify/Product/15524870259073	Maniküre-Set Schwarz-Weiss	1
 gid://shopify/Product/15525495898497	Doppelwandiger Isolierbehälter aus Edelstahl	1
 gid://shopify/Product/16603758854535	Handgefärbtes Batik-Kleid mit A-Linie	1
 gid://shopify/Product/16616537293191	Tensegrity Anti-Schwerkraft Bausteine	1
@@ -297,5 +258,3 @@ gid://shopify/Product/15453783785857	Babynahrung Zerkleinerer	1
 gid://shopify/Product/15478693822849	Nylon-Karotten-Spielzeug	1
 gid://shopify/Product/15496517452161	Kabelloser Elite-Controller für PS4	1
 gid://shopify/Product/15522298659201	Schräge Keramik Futterschale für Haustiere	1
-gid://shopify/Product/16604922970503	Geometrische Strickdecke für Sofa oder Bett	1
-gid://shopify/Product/16607257788807	Herrenuhr mit Zeiger- und Zahlenanzeige	1

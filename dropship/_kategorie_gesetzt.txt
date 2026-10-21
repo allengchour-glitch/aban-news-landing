@@ -53486,3 +53486,14 @@ mechanische-tastatur-87-tasten-bluetooth-627800	el-7-9-12-8	Büro & Home Office	
 geschenkset-geldborse-stift-uhr-in-geschenkbox-611400	hg-10-16	Büro & Home Office	2026-10-21T12:44Z
 chunky-heel-sandalen-mit-wasserfester-plattfor-631100	aa-8	Damenschuhe	2026-10-21T13:40Z
 weiche-wolle-mit-karomuster-602600	aa-8	Damenschuhe	2026-10-21T13:40Z
+intelligenter-pruf-stift-mit-linien-erkennung-323e74	ha-15	Werkzeug & Heimwerken	2026-10-21T14:38Z
+toilettenburstenhalter-weiss-silbergrau-3b311c	ha-15	Werkzeug & Heimwerken	2026-10-21T14:38Z
+winkelschleifer-stander-74ca3c	ha-15	Werkzeug & Heimwerken	2026-10-21T14:38Z
+fliesenlucken-reparaturstift-17e19d	ha-15	Werkzeug & Heimwerken	2026-10-21T14:38Z
+metall-handschutz-6c66f3	ha-15	Werkzeug & Heimwerken	2026-10-21T14:38Z
+schraubenschlussel-33-5-2-5-cm-d54231	ha-15	Werkzeug & Heimwerken	2026-10-21T14:38Z
+bohrlehre-fur-prazise-holzbearbeitung-dae135	ha-15	Werkzeug & Heimwerken	2026-10-21T14:38Z
+bandschleifmaschine-zum-polieren-d8198a	ha-15	Werkzeug & Heimwerken	2026-10-21T14:38Z
+crimpzange-fur-kabel-bfd16d	ha-15	Werkzeug & Heimwerken	2026-10-21T14:38Z
+schleifscheibe-flach-korngrosse-80-a561f5	ha-15	Werkzeug & Heimwerken	2026-10-21T14:38Z
+horizontaler-schnellspanner-fur-holzbearbeitun-8b14cc	ha-15	Werkzeug & Heimwerken	2026-10-21T14:38Z
