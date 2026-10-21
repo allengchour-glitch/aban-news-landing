@@ -12687,3 +12687,6 @@ herren-sneaker-atmungsaktiv-outdoor-wandern-976768	1720023901914279936	16	14.72	
 wasserdichter-business-manner-armband-629500	2604050859161629900	7	7.38	ok	landeseite
 eleganter-herrenquarzarmbanduhr-630400	2603160514291630800	7	6.54	ok	landeseite
 multifunktionaler-wasserdichter-quarzarmband-h-614000	2603160511051614400	7	6.64	ok	landeseite
+eleganter-halter-neck-kleid-in-laufsteg-stil-632800	2607130238461633400	16	18.47	ok	landeseite
+herrenquarzarmbanduhr-mit-barrel-design-wasser-637200	2603110242161637700	7	5.96	ok	landeseite
+business-armbanduhr-mit-kalender-602700	2603080716081603200	7	7.07	ok	landeseite
