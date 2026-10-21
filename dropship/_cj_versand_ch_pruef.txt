@@ -12413,3 +12413,5 @@ herren-brusttasche-621700	2603020146171622000	16	12.56	ok	landeseite
 soccer-stiefel-transport-beutel-620700	2607111018021621300	16	11.00	ok	landeseite
 drehbares-make-up-spiegel-set-624900	2503060346041625300	7	8.10	ok	landeseite
 business-schultertasche-fur-herren-607100	2602080950281607500	16	7.71	ok	landeseite
+wasserdichter-laptop-rucksack-601000	2601150554081601200	16	16.04	ok	landeseite
+kunstler-rucksack-mit-stauraum-623200	2601150447301623400	0	-	KEINE CH-Option → DRAFT	landeseite

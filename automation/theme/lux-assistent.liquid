@@ -1,77 +1,157 @@
 {%- comment -%}
-  LuxeStyle Assistent (21.10.2026, Betreiber: «smartbot auf shopify ist zu teuer — machst du es gratis und besser»).
+  LuxeStyle Assistent v3 (21.10.2026, Betreiber: «smartbot auf shopify ist zu teuer — machst du es gratis und besser», dann «optisch viel besser
+  und wie ein richtiger Top-Roboter, auch die Features»).
   Kostenlos, ohne App, ohne KI-Dienst, ohne Server: beantwortet Fragen zu Versand, Lieferzeit, Rückgabe, Zahlung, Sendungsverfolgung
-  und Kontakt aus FESTEN Antworten, die den Shop-Richtlinien entsprechen (kein Erfinden), und sucht Produkte über die Shopify-
-  Suchvorschlags-Schnittstelle (/search/suggest.json, gleiche Domain, gratis). Der Assistent speichert nichts; Suchbegriffe gehen wie
-  bei der normalen Shop-Suche an die eigene Shopify-Domain (eingegebene Mail-Adressen/Zahlenfolgen werden nie gesucht).
+  und Kontakt aus FESTEN Antworten, die den Shop-Richtlinien entsprechen (kein Erfinden), führt durch einen Geschenkfinder, kennt die
+  Kategorien (Trends, Bestbewertet, Neuheiten, Schweizer Lager, Saison) und sucht Produkte über die Shopify-Suchvorschlags-Schnittstelle
+  (/search/suggest.json, gleiche Domain, gratis). Verlauf nur im Tab (sessionStorage), keine Personendaten: Mail-Adressen/Zahlenfolgen werden
+  nie gesucht oder gespeichert; Suchbegriffe gehen wie bei der normalen Shop-Suche an die eigene Shopify-Domain. Zählt nur anonyme Ereignisse
+  (Clarity-Event-Namen, kein Text), falls Clarity geladen ist.
   Nur deutsche Sprachversion, nicht im Warenkorb. Die Zahlen/Fristen der Antworten prüft automation/lux_assistent.py täglich gegen die Richtlinien.
-  Rückbau: python3 automation/lux_assistent.py --zurueck (entfernt Eintrag in sections UND order der footer-group.json, danach die Datei).
+  Rückbau: python3 automation/lux_assistent.py --zurueck --ja (entfernt Eintrag in sections UND order der footer-group.json, danach die Datei).
 {%- endcomment -%}
 {%- if request.locale.iso_code == 'de' and request.page_type != 'cart' -%}
-<div id="luxas" hidden>
+<div id="luxas" data-state="idle" hidden>
+  <div class="luxas-nudge" id="luxas-nudge" role="status" hidden>
+    <button type="button" class="luxas-nudge-x" id="luxas-nudge-x" aria-label="Hinweis schliessen">×</button>
+    <span>Hallo 👋 Fragen zu Versand, Rückgabe oder Produkten? Ich helfe gern.</span>
+  </div>
   <button type="button" class="luxas-btn" id="luxas-open" aria-haspopup="dialog" aria-expanded="false" aria-controls="luxas-panel">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-    <span>Hilfe</span>
+    <span class="luxas-btn-bot" id="luxas-btn-bot" aria-hidden="true"></span>
+    <span class="luxas-btn-t">Hilfe</span>
   </button>
   <section id="luxas-panel" class="luxas-panel" role="dialog" aria-label="LuxeStyle Assistent" hidden>
     <header class="luxas-head">
-      <div><strong>LuxeStyle Assistent</strong><small>automatisch, keine Person · Fragen &amp; Produktsuche</small></div>
-      <button type="button" class="luxas-x" id="luxas-close" aria-label="Schliessen">×</button>
+      <span class="luxas-head-bot" id="luxas-head-bot" aria-hidden="true"></span>
+      <div class="luxas-head-t"><strong>LuxeStyle Assistent</strong><small><i class="luxas-on" aria-hidden="true"></i>automatisch, keine Person</small></div>
+      <button type="button" class="luxas-ico" id="luxas-reset" aria-label="Gespräch neu starten" title="Neu starten">↺</button>
+      <button type="button" class="luxas-ico" id="luxas-close" aria-label="Schliessen">×</button>
     </header>
     <div class="luxas-log" id="luxas-log" role="log" aria-live="polite" tabindex="-1"></div>
     <div class="luxas-chips" id="luxas-chips"></div>
     <form class="luxas-form" id="luxas-form" autocomplete="off">
-      <input type="text" id="luxas-in" name="frage" maxlength="120" placeholder="Stichwort oder Frage – keine persönlichen Daten" aria-label="Deine Frage oder dein Suchwort" enterkeyhint="send">
-      <button type="submit" aria-label="Senden">➤</button>
+      <input type="text" id="luxas-in" name="frage" maxlength="120" placeholder="Frage oder Stichwort …" aria-label="Deine Frage oder dein Suchwort" enterkeyhint="send">
+      <button type="submit" aria-label="Senden"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg></button>
     </form>
-    <p class="luxas-foot">Auskünfte ohne Gewähr – massgebend sind AGB, Versand- und Rückgabebedingungen.</p>
+    <p class="luxas-foot">Bitte keine persönlichen Daten eingeben. Auskünfte ohne Gewähr – massgebend sind AGB, Versand- und Rückgabebedingungen.</p>
   </section>
 </div>
 {% raw %}
 <style>
-#luxas{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:5;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:15px;line-height:1.45;color:#2c2c2c}
+#luxas{--lg:#d4b896;--lgd:#b8935a;--ld:#2c2c2c;--lc:#faf7f2;--lb:#7a5a2c;position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:5;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:15px;line-height:1.45;color:var(--ld)}
 #luxas[hidden],#luxas [hidden]{display:none!important}
 #luxas[data-hold]{display:none!important}
 body:has(.sticky-add-to-cart__bar[data-stuck="true"]) #luxas{bottom:calc(92px + env(safe-area-inset-bottom,0px))}
 html:has(dialog[open]) #luxas,html:has(.menu-drawer-container[open]) #luxas,html:has(.cart-drawer[open]) #luxas{display:none!important}
-.luxas-btn{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 18px 0 15px;border-radius:999px;border:1px solid #d4b896;background:#2c2c2c;color:#faf7f2;font-family:inherit;font-weight:600;font-size:15px;line-height:1;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.22)}
-.luxas-btn:focus-visible,.luxas-x:focus-visible,.luxas-chip:focus-visible,.luxas-form button:focus-visible,.luxas-form input:focus-visible,#luxas a:focus-visible{outline:3px solid #8a6a35;outline-offset:2px}
-.luxas-panel{position:fixed;right:14px;bottom:calc(74px + env(safe-area-inset-bottom,0px));z-index:12;width:min(380px,calc(100vw - 28px));height:min(560px,calc(100vh - 190px));height:min(560px,calc(100dvh - 190px));display:flex;flex-direction:column;background:#faf7f2;border:1px solid #d4b89680;border-radius:16px;box-shadow:0 14px 44px rgba(0,0,0,.28);overflow:hidden}
-body:has(.sticky-add-to-cart__bar[data-stuck="true"]) .luxas-panel{bottom:calc(152px + env(safe-area-inset-bottom,0px));height:min(560px,calc(100vh - 250px));height:min(560px,calc(100dvh - 250px))}
-.luxas-head{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 14px;background:#2c2c2c;color:#faf7f2}
-.luxas-head strong{display:block;font-size:15px}
-.luxas-head small{display:block;font-size:12px;opacity:.8}
-.luxas-x{min-width:44px;min-height:44px;border:0;background:transparent;color:inherit;font-size:28px;line-height:1;cursor:pointer}
-.luxas-log{flex:1;min-height:96px;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:10px;overscroll-behavior:contain}
+/* Roboter */
+.luxas-robot{display:block;width:100%;height:100%;overflow:visible}
+.luxas-robot .e-h,.luxas-robot .m-d{display:none}
+.luxas-robot .e-n,.luxas-robot .e-n *,.luxas-robot .luxas-led{transform-box:fill-box;transform-origin:center}
+@media (prefers-reduced-motion:no-preference){
+  .luxas-live .luxas-robot{animation:luxas-float 4.2s ease-in-out infinite}
+  .luxas-live .e-n{animation:luxas-blink 5.5s infinite}
+  .luxas-live .luxas-led{animation:luxas-led 2.2s ease-in-out infinite}
+  #luxas[data-state="denkt"] .luxas-live .e-n{animation:luxas-scan 1.1s ease-in-out infinite}
+  #luxas[data-state="denkt"] .luxas-live .luxas-led{animation:luxas-led .45s ease-in-out infinite}
+  .luxas-btn:hover .luxas-robot{animation-duration:1.6s}
+  .luxas-m,.luxas-cards,.luxas-tiles,.luxas-wait{animation:luxas-pop .22s ease-out}
+  .luxas-panel{animation:luxas-in .2s ease-out}
+  .luxas-nudge{animation:luxas-pop .3s ease-out}
+}
+@keyframes luxas-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+@keyframes luxas-blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+@keyframes luxas-led{0%,100%{opacity:.55;transform:scale(.85)}50%{opacity:1;transform:scale(1.15)}}
+@keyframes luxas-scan{0%,100%{transform:translateX(-2.2px)}50%{transform:translateX(2.2px)}}
+@keyframes luxas-pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes luxas-in{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes luxas-dot{0%,80%,100%{transform:translateY(0);opacity:.45}40%{transform:translateY(-4px);opacity:1}}
+#luxas[data-state="froh"] .luxas-live .e-n,#luxas[data-state="froh"] .luxas-live .m-n{display:none}
+#luxas[data-state="froh"] .luxas-live .e-h{display:inline}
+#luxas[data-state="denkt"] .luxas-live .m-n{display:none}
+#luxas[data-state="denkt"] .luxas-live .m-d{display:inline}
+/* Knopf */
+.luxas-btn{position:relative;display:inline-flex;align-items:center;gap:8px;min-height:58px;padding:0 20px 0 8px;border-radius:999px;border:1px solid var(--lg);background:linear-gradient(150deg,#3b3733 0%,#1f1d1b 100%);color:var(--lc);font-family:inherit;font-weight:600;font-size:15px;line-height:1;cursor:pointer;box-shadow:0 10px 28px rgba(0,0,0,.32),0 0 0 4px rgba(212,184,150,.2);transition:transform .15s ease,box-shadow .15s ease}
+.luxas-btn:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(0,0,0,.36),0 0 0 5px rgba(212,184,150,.28)}
+.luxas-btn-bot{width:44px;height:44px;flex:none}
+.luxas-btn:focus-visible,.luxas-ico:focus-visible,.luxas-chip:focus-visible,.luxas-tile:focus-visible,.luxas-form button:focus-visible,.luxas-form input:focus-visible,.luxas-fb button:focus-visible,#luxas a:focus-visible{outline:3px solid #8a6a35;outline-offset:2px}
+.luxas-nudge{position:absolute;right:4px;bottom:calc(100% + 12px);width:min(250px,calc(100vw - 40px));padding:11px 30px 11px 14px;border-radius:16px 16px 4px 16px;background:#fff;color:var(--ld);border:1px solid #e8dfd2;box-shadow:0 10px 28px rgba(0,0,0,.2);font-size:14px}
+.luxas-nudge-x{position:absolute;top:2px;right:2px;min-width:32px;min-height:32px;border:0;background:transparent;color:#5a5a5a;font-size:20px;line-height:1;cursor:pointer}
+/* Fenster */
+.luxas-panel{position:fixed;right:14px;bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:12;width:min(392px,calc(100vw - 28px));height:min(600px,calc(100vh - 200px));height:min(600px,calc(100dvh - 200px));display:flex;flex-direction:column;background:#f6f1e9;border:1px solid rgba(212,184,150,.55);border-radius:20px;box-shadow:0 18px 56px rgba(0,0,0,.32);overflow:hidden}
+body:has(.sticky-add-to-cart__bar[data-stuck="true"]) .luxas-panel{bottom:calc(162px + env(safe-area-inset-bottom,0px));height:min(600px,calc(100vh - 260px));height:min(600px,calc(100dvh - 260px))}
+.luxas-head{display:flex;align-items:center;gap:10px;padding:11px 6px 11px 12px;background:linear-gradient(150deg,#3b3733 0%,#1f1d1b 100%);color:var(--lc);border-bottom:2px solid var(--lg)}
+.luxas-head-bot{width:46px;height:46px;flex:none;border-radius:50%;background:rgba(250,247,242,.08);padding:3px}
+.luxas-head-t{flex:1;min-width:0}
+.luxas-head-t strong{display:block;font-size:15.5px;letter-spacing:.1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.luxas-head-t small{display:flex;align-items:center;gap:6px;font-size:12px;opacity:.85;white-space:nowrap}
+.luxas-on{width:8px;height:8px;border-radius:50%;background:#58c47d;box-shadow:0 0 0 3px rgba(88,196,125,.25);flex:none}
+.luxas-ico{min-width:40px;min-height:44px;border:0;background:transparent;color:inherit;font-size:26px;line-height:1;cursor:pointer;border-radius:12px}
+.luxas-ico:hover{background:rgba(250,247,242,.12)}
+#luxas-reset{font-size:22px}
+/* Gespräch */
+.luxas-log{flex:1;min-height:96px;overflow-y:auto;padding:14px 12px;display:flex;flex-direction:column;gap:10px;overscroll-behavior:contain;scroll-behavior:smooth}
 .luxas-log:focus{outline:none}
-.luxas-m{max-width:88%;padding:9px 12px;border-radius:14px;word-wrap:break-word;overflow-wrap:anywhere}
-.luxas-m a{color:#7a5a2c;font-weight:600;text-decoration:underline}
-.luxas-bot{align-self:flex-start;background:#fff;border:1px solid #e8dfd2;border-top-left-radius:4px}
-.luxas-me{align-self:flex-end;background:#d4b896;color:#2c2c2c;border-top-right-radius:4px}
+.luxas-row{display:flex;align-items:flex-start;gap:8px}
+.luxas-rme{justify-content:flex-end}
+.luxas-ava{width:28px;height:28px;flex:none;border-radius:50%;background:var(--ld);padding:2px}
+.luxas-m{max-width:calc(100% - 40px);padding:10px 13px;border-radius:16px;word-wrap:break-word;overflow-wrap:anywhere;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.luxas-m a{color:var(--lb);font-weight:600;text-decoration:underline}
+.luxas-bot{background:#fff;border:1px solid #ebe3d6;border-bottom-left-radius:5px}
+.luxas-me{background:linear-gradient(150deg,#e2c9a6,#d4b896);color:var(--ld);border-bottom-right-radius:5px;max-width:86%}
+.luxas-wait{display:flex;gap:5px;padding:13px 15px}
+.luxas-wait i{width:7px;height:7px;border-radius:50%;background:var(--lgd);animation:luxas-dot 1s infinite}
+.luxas-wait i:nth-child(2){animation-delay:.15s}.luxas-wait i:nth-child(3){animation-delay:.3s}
+.luxas-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;align-self:stretch}
+.luxas-tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:62px;padding:8px 4px;border-radius:14px;border:1px solid #e0d5c3;background:#fff;color:var(--ld);font-family:inherit;font-size:12.5px;font-weight:600;line-height:1.2;text-align:center;cursor:pointer;transition:transform .12s ease,border-color .12s ease,box-shadow .12s ease}
+.luxas-tile:hover{transform:translateY(-2px);border-color:var(--lgd);box-shadow:0 6px 14px rgba(0,0,0,.1)}
+.luxas-tile b{font-size:21px;line-height:1;font-weight:400}
 .luxas-cards{display:flex;flex-direction:column;gap:8px;align-self:stretch}
-.luxas-card{display:flex;gap:10px;align-items:center;padding:8px;background:#fff;border:1px solid #e8dfd2;border-radius:12px;text-decoration:none!important;color:inherit!important;min-height:64px}
-.luxas-card img{width:56px;height:56px;object-fit:cover;border-radius:8px;flex:none;background:#f1ece4}
+.luxas-card{display:flex;gap:11px;align-items:center;padding:8px;background:#fff;border:1px solid #ebe3d6;border-radius:14px;text-decoration:none!important;color:inherit!important;min-height:72px;transition:transform .12s ease,box-shadow .12s ease,border-color .12s ease}
+.luxas-card:hover{transform:translateY(-1px);border-color:var(--lgd);box-shadow:0 6px 16px rgba(0,0,0,.1)}
+.luxas-card img{width:60px;height:60px;object-fit:cover;border-radius:10px;flex:none;background:#f1ece4}
 .luxas-card b{display:block;font-size:14px;font-weight:600;line-height:1.3;max-height:2.6em;overflow:hidden}
-.luxas-card span{font-size:13px;color:#7a5a2c;font-weight:700}
-.luxas-more{align-self:flex-start;font-size:14px;color:#7a5a2c;font-weight:600;text-decoration:underline}
-.luxas-chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 12px 8px;max-height:104px;overflow-y:auto}
-.luxas-chip{min-height:36px;padding:0 12px;border-radius:999px;border:1px solid #b9a07a;background:#fff;color:#2c2c2c;font-family:inherit;font-weight:500;font-size:13.5px;line-height:1;cursor:pointer}
+.luxas-card span{display:inline-block;margin-top:2px;font-size:13.5px;color:var(--lb);font-weight:700}
+.luxas-more{align-self:flex-start;font-size:14px;color:var(--lb);font-weight:700;text-decoration:underline;padding:2px 4px}
+.luxas-fb{display:flex;align-items:center;gap:6px;margin:-4px 0 0 36px;font-size:12px;color:#5a5a5a}
+.luxas-fb button{min-width:36px;min-height:32px;border-radius:999px;border:1px solid #d9ccb8;background:#fff;font-size:15px;cursor:pointer}
+/* Schnellantworten */
+.luxas-chips{display:flex;flex-wrap:nowrap;gap:6px;padding:4px 12px 10px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.luxas-chips::-webkit-scrollbar{display:none}
+.luxas-chip{flex:none;min-height:38px;padding:0 14px;border-radius:999px;border:1px solid #b9a07a;background:#fff;color:var(--ld);font-family:inherit;font-weight:600;font-size:13.5px;line-height:1;cursor:pointer;white-space:nowrap;transition:background .12s ease}
+.luxas-chip:hover{background:#f3ebdd}
 .luxas-form{display:flex;gap:8px;padding:10px 12px 6px;border-top:1px solid #e8dfd2;background:#fff}
-.luxas-form input{flex:1;min-width:0;min-height:44px;padding:0 12px;border:1px solid #9b8561;border-radius:10px;font-family:inherit;font-size:16px;line-height:1;background:#fff;color:#2c2c2c}
-.luxas-form button{min-width:48px;min-height:44px;border:0;border-radius:10px;background:#2c2c2c;color:#faf7f2;font-size:18px;cursor:pointer}
-.luxas-foot{margin:0;padding:0 12px calc(8px + env(safe-area-inset-bottom,0px));background:#fff;font-size:11px;line-height:1.3;color:#5a5a5a}
-@media (max-width:600px){.luxas-panel{right:8px;left:8px;width:auto;bottom:calc(70px + env(safe-area-inset-bottom,0px))}}
+.luxas-form input{flex:1;min-width:0;min-height:46px;padding:0 14px;border:1px solid #9b8561;border-radius:23px;font-family:inherit;font-size:16px;line-height:1;background:#fff;color:var(--ld)}
+.luxas-form button{width:46px;min-height:46px;border:0;border-radius:50%;background:linear-gradient(150deg,#3b3733,#1f1d1b);color:var(--lg);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.luxas-foot{margin:0;padding:0 14px calc(8px + env(safe-area-inset-bottom,0px));background:#fff;font-size:11px;line-height:1.3;color:#5a5a5a}
+@media (max-width:600px){.luxas-panel{right:8px;left:8px;width:auto;bottom:calc(78px + env(safe-area-inset-bottom,0px));border-radius:18px}}
 @media (max-height:520px){.luxas-chips{display:none}}
-@media (prefers-reduced-motion:no-preference){.luxas-panel{animation:luxas-in .18s ease-out}@keyframes luxas-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}}
 </style>
 <script>
 (function(){
   'use strict';
   var root=document.getElementById('luxas'); if(!root) return;
   var $=function(i){return document.getElementById(i)};
-  var btn=$('luxas-open'),panel=$('luxas-panel'),log=$('luxas-log'),chips=$('luxas-chips'),form=$('luxas-form'),inp=$('luxas-in');
+  var btn=$('luxas-open'),panel=$('luxas-panel'),log=$('luxas-log'),chips=$('luxas-chips'),form=$('luxas-form'),inp=$('luxas-in'),nudge=$('luxas-nudge');
   var R=(window.Shopify&&window.Shopify.routes&&window.Shopify.routes.root)||'/';
-  var started=false,suchmodus=false;
+  var started=false,suchmodus=false,hist=[],stTimer=0;
+  var REDUCED=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  /* ---------- Roboter (Inline-SVG, flache Farben, keine IDs → beliebig oft verwendbar) ---------- */
+  function bot(live){
+    return '<span class="'+(live?'luxas-live':'')+'" style="display:block;width:100%;height:100%"><svg class="luxas-robot" viewBox="0 0 64 64" aria-hidden="true" focusable="false">'
+    +'<line x1="32" y1="5" x2="32" y2="14" stroke="#d4b896" stroke-width="3" stroke-linecap="round"/><circle class="luxas-led" cx="32" cy="4.5" r="3.4" fill="#f2c96b"/>'
+    +'<rect x="2" y="27" width="8" height="14" rx="4" fill="#d4b896"/><rect x="54" y="27" width="8" height="14" rx="4" fill="#d4b896"/>'
+    +'<rect x="8" y="13" width="48" height="41" rx="16" fill="#2c2c2c"/><path d="M12 24c0-6 4-9 10-9h20c6 0 10 3 10 9" fill="none" stroke="#fff" stroke-opacity=".14" stroke-width="2" stroke-linecap="round"/>'
+    +'<rect x="14" y="20" width="36" height="27" rx="11" fill="#faf7f2"/>'
+    +'<g class="e-n"><rect x="22" y="27" width="6.5" height="11" rx="3.2" fill="#2c2c2c"/><rect x="35.5" y="27" width="6.5" height="11" rx="3.2" fill="#2c2c2c"/><circle cx="24.4" cy="30" r="1.3" fill="#fff"/><circle cx="37.9" cy="30" r="1.3" fill="#fff"/></g>'
+    +'<g class="e-h"><path d="M21.5 36q3.7-8 7.4 0M35.1 36q3.7-8 7.4 0" fill="none" stroke="#2c2c2c" stroke-width="2.8" stroke-linecap="round"/></g>'
+    +'<path class="m-n" d="M27 41.5q5 4.2 10 0" fill="none" stroke="#b8935a" stroke-width="2.4" stroke-linecap="round"/><path class="m-d" d="M29.5 42h5" fill="none" stroke="#b8935a" stroke-width="2.4" stroke-linecap="round"/>'
+    +'<circle cx="18.5" cy="40" r="2.4" fill="#f0cfc0" opacity=".85"/><circle cx="45.5" cy="40" r="2.4" fill="#f0cfc0" opacity=".85"/>'
+    +'<rect x="24" y="54" width="16" height="5" rx="2" fill="#d4b896"/></svg></span>';
+  }
+  $('luxas-btn-bot').innerHTML=bot(true);$('luxas-head-bot').innerHTML=bot(true);
+  function state(s,ms){root.setAttribute('data-state',s);clearTimeout(stTimer);if(s!=='idle')stTimer=setTimeout(function(){root.setAttribute('data-state','idle')},ms||2200)}
+  function trk(n){try{if(typeof window.clarity==='function')window.clarity('event',n)}catch(e){}}
 
   /* ---------- Wissen: feste Antworten nach den Shop-Richtlinien (Versand, Rückgabe, AGB, Seiten; Stand 21.10.2026) ----------
      k = starke Stichwörter (3 Punkte), w = schwache (1 Punkt). Ein Thema wird nur bei mind. 3 Punkten beantwortet, sonst sucht der Assistent Produkte.
@@ -108,8 +188,17 @@ body:has(.sticky-add-to-cart__bar[data-stuck="true"]) .luxas-panel{bottom:calc(1
       c:['kontakt']}
   };
   var NAMEN={versand:'🚚 Versand & Kosten',lieferzeit:'⏱️ Lieferzeit',tracking:'📦 Lieferstatus & Tracking',rueckgabe:'↩️ Rückgabe',defekt:'⚠️ Defekt / falsch geliefert',zahlung:'💳 Zahlung',kontakt:'✉️ Kontakt',personal:'🎨 Personalisiert',firmen:'🏢 Firmen & Vereine'};
-  var START=['versand','lieferzeit','tracking','rueckgabe','zahlung','kontakt'];
   var PRIO=['defekt','rueckgabe','tracking','lieferzeit','versand','zahlung','personal','firmen','kontakt'];  /* bei Gleichstand */
+
+  /* ---------- Kategorien und Geschenkfinder: nur geprüfte Kollektionen (die Wache prüft jede verlinkte Adresse) ---------- */
+  var KATS=[
+    {t:'🔥 Im Trend',h:R+'collections/hype-jetzt',s:'Das ist gerade im Trend:'},
+    {t:'⭐ Bestbewertet',h:R+'collections/bestseller',s:'Unsere bestbewerteten Artikel:'},
+    {t:'✨ Neuheiten',h:R+'collections/neu-eingetroffen',s:'Frisch eingetroffen:'},
+    {t:'🇨🇭 Ab Schweizer Lager',h:R+'collections/blitzversand-schweiz',s:'Diese Artikel kommen aus dem Schweizer Lager (meist 2–3 Werktage):'}
+  ];
+  var WEM={sie:{t:'👩 Für Sie',h:R+'collections/geschenke-fuer-sie'},ihn:{t:'👨 Für Ihn',h:R+'collections/geschenke-fuer-ihn'},kind:{t:'🧒 Für Kinder',h:R+'collections/geschenke-fuer-kinder'},set:{t:'🎀 Sets & Bundles',h:R+'collections/sets-bundles'},egal:{t:'🎁 Alles Schöne',h:R+'collections/premium-geschenke'}};
+  var BUD={b30:{t:'bis CHF 30',h:R+'collections/%F0%9F%8E%81-geschenke-bis-chf-30'},b50:{t:'bis CHF 50',h:R+'collections/geschenke-unter-50-franken'},b100:{t:'bis CHF 100',h:R+'collections/geschenke-unter-100-franken'}};
 
   function norm(s){return String(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/ß/g,'ss').replace(/ae/g,'a').replace(/oe/g,'o').replace(/ue/g,'u').replace(/[^a-z0-9$@ -]+/g,' ').replace(/\s+/g,' ').trim()}
   var KW={};Object.keys(T).forEach(function(t){KW[t]={k:T[t].k.map(norm),w:T[t].w.map(norm)}});
@@ -125,31 +214,119 @@ body:has(.sticky-add-to-cart__bar[data-stuck="true"]) .luxas-panel{bottom:calc(1
     return bs>=3?best:'';
   }
   var STOP={};norm('habt ihr gibt es ich suche suchen brauche brauchen moechte will wuerde gern gerne kann kannst koennt man wie was wo wann wer welche welcher welches hat haben bei euch fuer von mit nach und oder in im am auf zu zum zur ist sind mein meine meinen bitte ein eine einen einem der die das den dem des mir mich dir uns noch auch nur mal sowas etwas').split(' ').forEach(function(w){STOP[w]=1});
-  function suchwort(q){return norm(q).split(' ').filter(function(w){return w.length>1&&!STOP[w]}).slice(0,5).join(' ')}
+  function suchwort(q){return String(q||'').toLowerCase().replace(/[^\p{L}\p{N} -]+/gu,' ').split(/\s+/).filter(function(w){return w.length>1&&!STOP[norm(w)]}).slice(0,5).join(' ')}
   function persoenlich(q){return /@/.test(q)||/\d{5,}/.test(q.replace(/[\s.-]/g,''))||/#\s?\d{3,}/.test(q)}
   function esc(s){var d=document.createElement('div');d.textContent=String(s);return d.innerHTML}
-  function msg(html,who){var m=document.createElement('div');m.className='luxas-m luxas-'+who;m.innerHTML=html;log.appendChild(m);log.scrollTop=(who==='bot')?Math.max(0,m.offsetTop-log.offsetTop-8):log.scrollHeight;return m}
+
+  /* ---------- Verlauf nur im Tab (kein Personenbezug: Eingaben mit Mail/Zahlenfolge werden nie gespeichert) ---------- */
+  function sichern(){try{sessionStorage.setItem('luxas.h',JSON.stringify(hist.slice(-24)))}catch(e){}}
+  function laden(){try{var j=JSON.parse(sessionStorage.getItem('luxas.h')||'[]');return Array.isArray(j)?j:[]}catch(e){return[]}}
+
+  function scrollen(zeile){log.scrollTop=zeile?Math.max(0,zeile.offsetTop-log.offsetTop-8):log.scrollHeight}
+  function zeile(html,who,merken){
+    var row=document.createElement('div');row.className='luxas-row'+(who==='me'?' luxas-rme':'');
+    if(who!=='me'){var a=document.createElement('span');a.className='luxas-ava';a.innerHTML=bot(false);row.appendChild(a)}
+    var m=document.createElement('div');m.className='luxas-m luxas-'+who;m.innerHTML=html;row.appendChild(m);log.appendChild(row);
+    scrollen(who==='bot'?row:null);
+    if(merken){hist.push({w:who,h:html});sichern()}
+    return row;
+  }
+  function msg(html,who){return zeile(html,who,true)}
+  function msgFl(html,who){return zeile(html,who,false)}
+  function tippen(){
+    var row=document.createElement('div');row.className='luxas-row';
+    var a=document.createElement('span');a.className='luxas-ava';a.innerHTML=bot(false);row.appendChild(a);
+    var m=document.createElement('div');m.className='luxas-m luxas-bot luxas-wait';m.innerHTML='<i></i><i></i><i></i>';row.appendChild(m);
+    log.appendChild(row);log.scrollTop=log.scrollHeight;state('denkt',9000);return row;
+  }
+  function verzoegert(fn,ms){ if(REDUCED){fn();return} var t=tippen();setTimeout(function(){t.remove();fn();state('froh',1800)},ms||420) }
+
   function setChips(list){
     var hatte=chips.contains(document.activeElement);
     chips.innerHTML='';
     list.forEach(function(c){var b=document.createElement('button');b.type='button';b.className='luxas-chip';b.textContent=c.t;b.addEventListener('click',c.f);chips.appendChild(b)});
+    chips.scrollLeft=0;
     if(hatte&&chips.firstChild){try{chips.firstChild.focus({preventScroll:true})}catch(e){}}
   }
-  function sucheChip(){return {t:'🔎 Produkt suchen',f:function(){suchmodus=true;msg('Was suchst du? Schreib ein Stichwort, z. B. „Handyhülle“ oder „Geschenk für Papa“.','bot');setChips([]);inp.focus()}}}
-  function chipTop(){
-    var l=START.map(function(t){return {t:NAMEN[t],f:function(){ask(NAMEN[t],t)}}});
-    l.push(sucheChip());
-    var d=new Date();
-    if(d<new Date('2026-11-01T00:00:00+01:00'))l.push({t:'🎃 Halloween',f:function(){linkAntwort('Halloween','Hier ist unsere Halloween-Welt mit Kostümen und Deko:',R+'collections/halloween')}});
-    if(d<new Date('2026-12-27T00:00:00+01:00'))l.push({t:'🎄 Weihnachten',f:function(){linkAntwort('Weihnachten','Weihnachtsgeschenke und Deko findest du hier:',R+'collections/weihnachten-2026')}});
-    l.push({t:'🎁 Geschenkideen',f:function(){msg('Geschenkideen','me');msg('Das hilft dir beim Aussuchen:<br>'+L(R+'collections/geschenke-fuer-sie','Geschenke für Sie')+' · '+L(R+'collections/geschenke-fuer-ihn','für Ihn')+' · '+L(R+'collections/geschenke-fuer-kinder','für Kinder')+' · '+L(R+'collections/geschenke-unter-50-franken','unter CHF 50'),'bot');chipTop()}});
-    setChips(l);
+  function produktTitel(){
+    try{
+      var og=document.querySelector('meta[property="og:type"]');
+      if(!og||og.content!=='product')return '';
+      var t=(document.querySelector('meta[property="og:title"]')||{}).content||'';
+      t=t.split('|')[0].replace(/[^\p{L}\p{N} -]+/gu,' ');
+      var w=suchwort(t).split(' ').slice(0,3).join(' ');
+      return w.length>2?w:'';
+    }catch(e){return ''}
   }
-  function linkAntwort(frage,text,href){msg(esc(frage),'me');msg(esc(text)+'<br>'+L(href,'Zur Kollektion ansehen'),'bot');chipTop()}
+  function basisChips(){
+    var l=[{t:'☰ Menü',f:menu},{t:'🔎 Produkt suchen',f:suchStart},{t:'🎁 Geschenkfinder',f:geschenk}];
+    var pt=produktTitel();
+    if(pt)l.splice(1,0,{t:'🧩 Ähnliche Artikel',f:function(){msg('Ähnliche Artikel','me');trk('assistent_aehnlich');suche(pt)}});
+    return l;
+  }
+  function suchStart(){suchmodus=true;msg('Was suchst du?','me');verzoegert(function(){msg('Schreib ein Stichwort, z. B. „Handyhülle“ oder „Geschenk für Papa“. Ich zeige dir passende Artikel aus dem Sortiment.','bot');setChips([{t:'☰ Menü',f:menu}]);inp.focus()},300)}
+  function menu(){
+    msg('Menü','me');
+    verzoegert(function(){
+      var row=zeile('Wobei kann ich helfen?','bot',false);
+      var g=document.createElement('div');g.className='luxas-tiles';
+      var T9=[['🚚','Versand & Kosten','versand'],['⏱️','Lieferzeit','lieferzeit'],['📦','Lieferstatus','tracking'],['↩️','Rückgabe','rueckgabe'],['💳','Zahlung','zahlung'],['✉️','Kontakt','kontakt'],['🎁','Geschenke','*g'],['🔥','Entdecken','*k'],['🔎','Produkt suchen','*s']];
+      T9.forEach(function(x){var b=document.createElement('button');b.type='button';b.className='luxas-tile';b.innerHTML='<b aria-hidden="true">'+x[0]+'</b>'+esc(x[1]);b.addEventListener('click',function(){
+        if(x[2]==='*g')geschenk();else if(x[2]==='*k')entdecken();else if(x[2]==='*s')suchStart();else ask(NAMEN[x[2]],x[2]);
+      });g.appendChild(b)});
+      log.appendChild(g);scrollen(row);setChips(basisChips());
+    },300);
+  }
+  function entdecken(){
+    msg('Entdecken','me');
+    verzoegert(function(){
+      msg('Wonach ist dir? Such dir einen Bereich aus:','bot');
+      var l=KATS.map(function(k){return {t:k.t,f:function(){linkAntwort(k.t,k.s,k.h,'Zur Kollektion ansehen')}}});
+      var d=new Date();
+      if(d<new Date('2026-11-01T00:00:00+01:00'))l.push({t:'🎃 Halloween',f:function(){linkAntwort('🎃 Halloween','Hier ist unsere Halloween-Welt mit Kostümen und Deko:',R+'collections/halloween','Zur Kollektion ansehen')}});
+      if(d<new Date('2026-12-27T00:00:00+01:00'))l.push({t:'🎄 Weihnachten',f:function(){linkAntwort('🎄 Weihnachten','Weihnachtsgeschenke und Deko findest du hier:',R+'collections/weihnachten-2026','Zur Kollektion ansehen')}});
+      l.push({t:'❤ Meine Merkliste',f:function(){linkAntwort('❤ Meine Merkliste','Deine gemerkten Artikel findest du hier:',R+'pages/merkliste','Zur Merkliste')}});
+      l.push({t:'☰ Menü',f:menu});setChips(l);
+    },300);
+  }
+  function linkAntwort(frage,text,href,label){trk('assistent_kategorie');msg(esc(frage),'me');verzoegert(function(){msg(esc(text)+'<br>'+L(href,label||'Ansehen'),'bot');setChips(basisChips())},300)}
+  function geschenk(){
+    msg('🎁 Geschenkfinder','me');trk('assistent_geschenk');
+    verzoegert(function(){
+      msg('Gern! <b>Für wen</b> suchst du ein Geschenk?','bot');
+      setChips(Object.keys(WEM).map(function(k){return {t:WEM[k].t,f:function(){geschenkBudget(k)}}}).concat([{t:'☰ Menü',f:menu}]));
+    },300);
+  }
+  function geschenkBudget(k){
+    msg(esc(WEM[k].t),'me');
+    verzoegert(function(){
+      msg('Und dein <b>Budget</b>?','bot');
+      var l=Object.keys(BUD).map(function(b){return {t:'💰 '+BUD[b].t,f:function(){geschenkErgebnis(k,b)}}});
+      l.push({t:'Egal',f:function(){geschenkErgebnis(k,'')}});l.push({t:'☰ Menü',f:menu});setChips(l);
+    },300);
+  }
+  function geschenkErgebnis(k,b){
+    msg(b?esc('💰 '+BUD[b].t):'Egal','me');
+    verzoegert(function(){
+      var h=L(WEM[k].h,WEM[k].t.replace(/^\S+\s/,'Geschenke '));
+      if(b)h+='<br>'+L(BUD[b].h,'Geschenkideen '+BUD[b].t);
+      msg('Das passt für dich:<br>'+h+'<br>Tipp: Bei jeder Kollektion siehst du die Lieferzeit pro Artikel auf der Produktseite.','bot');
+      setChips([{t:'🔁 Nochmal',f:geschenk},{t:'🔎 Produkt suchen',f:suchStart},{t:'☰ Menü',f:menu}]);
+    },350);
+  }
+  function feedback(row){
+    var f=document.createElement('div');f.className='luxas-fb';f.innerHTML='<span>Hilfreich?</span>';
+    [['👍','ja'],['👎','nein']].forEach(function(x){var b=document.createElement('button');b.type='button';b.textContent=x[0];b.setAttribute('aria-label',x[1]==='ja'?'Ja, hilfreich':'Nein, nicht hilfreich');b.addEventListener('click',function(){
+      trk('assistent_hilfreich_'+x[1]);f.innerHTML=x[1]==='ja'?'<span>Danke! 🙌</span>':'<span>Schade. Schreib uns gern: '+MAIL+'</span>';
+    });f.appendChild(b)});
+    row.parentNode.insertBefore(f,row.nextSibling);
+  }
   function ask(frage,t){
-    msg(esc(frage),'me');
-    msg(T[t].a,'bot');
-    setChips(T[t].c.map(function(x){return {t:NAMEN[x],f:function(){ask(NAMEN[x],x)}}}).concat([sucheChip(),{t:'↩︎ Anfang',f:chipTop}]));
+    msg(esc(frage),'me');trk('assistent_thema_'+t);
+    verzoegert(function(){
+      var row=msg(T[t].a,'bot');feedback(row);scrollen(row);
+      setChips(T[t].c.map(function(x){return {t:NAMEN[x],f:function(){ask(NAMEN[x],x)}}}).concat(basisChips().slice(0,2)));
+    },420);
   }
   function preis(p){
     var lo=parseFloat(p.price_min!=null?p.price_min:p.price),hi=parseFloat(p.price_max!=null?p.price_max:p.price);
@@ -157,11 +334,11 @@ body:has(.sticky-add-to-cart__bar[data-stuck="true"]) .luxas-panel{bottom:calc(1
     return (isFinite(hi)&&hi>lo?'ab ':'')+'CHF '+lo.toFixed(2);
   }
   function kontaktAntwort(vorspann){
-    msg(vorspann+'<br>'+T.kontakt.a,'bot');
-    setChips([sucheChip(),{t:'↩︎ Anfang',f:chipTop}]);
+    verzoegert(function(){msg(vorspann+'<br>'+T.kontakt.a,'bot');setChips(basisChips())},300);
   }
   function suche(q){
-    var wait=msg('Ich schaue im Sortiment …','bot');
+    trk('assistent_suche');
+    var wait=tippen();
     var url=R+'search/suggest.json?q='+encodeURIComponent(q)+'&resources[type]=product&resources[limit]=4&resources[options][unavailable_products]=hide';
     var ctl=('AbortController' in window)?new AbortController():null,tm=setTimeout(function(){ctl&&ctl.abort()},9000);
     fetch(url,{headers:{'Accept':'application/json'},signal:ctl?ctl.signal:undefined}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()}).then(function(j){
@@ -170,57 +347,88 @@ body:has(.sticky-add-to-cart__bar[data-stuck="true"]) .luxas-panel{bottom:calc(1
       ps=ps.filter(function(p){return p&&p.title&&/^\/[^\/]/.test(String(p.url||''))});
       wait.remove();
       if(!ps.length){
-        msg('Dazu habe ich nichts gefunden. Versuch ein anderes Wort – oder schreib uns, wir helfen gern: '+MAIL+'.','bot');
-        setChips([{t:'🔎 Anderes Wort',f:function(){suchmodus=true;inp.focus()}},{t:'✉️ Kontakt',f:function(){ask('Kontakt','kontakt')}},{t:'↩︎ Anfang',f:chipTop}]);return;
+        state('idle');msg('Dazu habe ich nichts gefunden. Versuch ein anderes Wort – oder schreib uns, wir helfen gern: '+MAIL+'.','bot');
+        setChips([{t:'🔎 Anderes Wort',f:suchStart},{t:'✉️ Kontakt',f:function(){ask('Kontakt','kontakt')}},{t:'☰ Menü',f:menu}]);return;
       }
-      msg('Das könnte passen:','bot');
+      state('froh',2500);
+      var intro=msg('Das könnte passen:','bot');
       var wrap=document.createElement('div');wrap.className='luxas-cards';
       ps.forEach(function(p){
         var a=document.createElement('a');a.className='luxas-card';
         a.href=String(p.url).split('?')[0]+'?ref=assistent';
+        a.addEventListener('click',function(){trk('assistent_karte')});
         var img=(p.featured_image&&p.featured_image.url)||p.image||'';
-        if(img){var im=document.createElement('img');im.alt='';im.loading='lazy';im.width=56;im.height=56;im.src=img+(img.indexOf('?')>-1?'&':'?')+'width=120';a.appendChild(im)}
+        if(img){var im=document.createElement('img');im.alt='';im.loading='lazy';im.width=60;im.height=60;im.src=img+(img.indexOf('?')>-1?'&':'?')+'width=130';a.appendChild(im)}
         var tx=document.createElement('div');var b=document.createElement('b');b.textContent=p.title;var s=document.createElement('span');s.textContent=preis(p);tx.appendChild(b);tx.appendChild(s);a.appendChild(tx);wrap.appendChild(a);
       });
       log.appendChild(wrap);
-      var more=document.createElement('a');more.className='luxas-m luxas-bot luxas-more';more.href=R+'search?type=product&q='+encodeURIComponent(q);more.textContent='Alle Treffer ansehen →';log.appendChild(more);
-      log.scrollTop=log.scrollHeight;
-      setChips([{t:'🔎 Neue Suche',f:function(){suchmodus=true;inp.focus()}},{t:'✉️ Kontakt',f:function(){ask('Kontakt','kontakt')}},{t:'↩︎ Anfang',f:chipTop}]);
+      var more=document.createElement('a');more.className='luxas-more';more.href=R+'search?type=product&q='+encodeURIComponent(q);more.textContent='Alle Treffer ansehen →';log.appendChild(more);
+      scrollen(intro);
+      setChips([{t:'🔎 Neue Suche',f:suchStart},{t:'✉️ Kontakt',f:function(){ask('Kontakt','kontakt')}},{t:'☰ Menü',f:menu}]);
     }).catch(function(){
-      clearTimeout(tm);wait.remove();
+      clearTimeout(tm);wait.remove();state('idle');
       msg('Die Suche ist gerade nicht erreichbar. Du findest alles auch über die Suche oben auf der Seite – oder schreib uns an '+MAIL+'.','bot');
-      setChips([{t:'✉️ Kontakt',f:function(){ask('Kontakt','kontakt')}},{t:'↩︎ Anfang',f:chipTop}]);
+      setChips([{t:'✉️ Kontakt',f:function(){ask('Kontakt','kontakt')}},{t:'☰ Menü',f:menu}]);
     });
   }
   function verarbeite(q){
     q=q.trim().slice(0,120);if(!q)return;
     var n=norm(q);
-    if(/^(hallo|hi|hoi|hey|gruezi|grezi|servus|moin|guten (tag|morgen|abend)|hilfe|help)[ !.?]*$/.test(n)){msg(esc(q),'me');msg('Hallo! Wobei kann ich helfen? Such dir ein Thema aus oder schreib dein Stichwort.','bot');chipTop();return}
-    if(/^(danke|merci|vielen dank|danke schon|super|perfekt|ok|okay)[ !.?]*$/.test(n)){msg(esc(q),'me');msg('Sehr gerne! Wenn noch etwas offen ist – ich bin da.','bot');chipTop();return}
-    if(persoenlich(q)){msg('(Eingabe nicht verarbeitet)','me');kontaktAntwort('Bitte gib hier keine persönlichen Daten oder Bestellnummern ein – dafür ist unser E-Mail-Kontakt der richtige Weg.');return}
+    if(persoenlich(q)){msgFl('(Eingabe nicht verarbeitet)','me');kontaktAntwort('Bitte gib hier keine persönlichen Daten oder Bestellnummern ein – dafür ist unser E-Mail-Kontakt der richtige Weg.');return}
+    if(/^(hallo|hi|hoi|hey|gruezi|grezi|servus|moin|guten (tag|morgen|abend)|hilfe|help)[ !.?]*$/.test(n)){msg(esc(q),'me');verzoegert(function(){msg('Hallo! Wobei kann ich helfen? Such dir ein Thema aus oder schreib dein Stichwort.','bot');setChips(basisChips())},300);return}
+    if(/^(danke|merci|vielen dank|danke schon|super|perfekt|ok|okay)[ !.?]*$/.test(n)){msg(esc(q),'me');verzoegert(function(){msg('Sehr gerne! Wenn noch etwas offen ist – ich bin da. 🙂','bot');setChips(basisChips())},300);return}
+    if(/^(menu|menue|start|anfang)$/.test(n)){menu();return}
+    if(/^(geschenk(e|idee|ideen|finder)?|geschenkfinder)$/.test(n)){geschenk();return}
     if(suchmodus){suchmodus=false;var s0=suchwort(q);msg(esc(q),'me');if(s0)suche(s0);else{msg('Magst du ein Stichwort schreiben, z. B. „Handyhülle“?','bot');suchmodus=true}return}
     var t=thema(q);
     if(t){ask(q,t);return}
     var s=suchwort(q);
     msg(esc(q),'me');
-    if(!s){msg('Dazu brauche ich ein Stichwort. Such dir ein Thema aus oder schreib, was du suchst.','bot');chipTop();return}
+    if(!s){verzoegert(function(){msg('Dazu brauche ich ein Stichwort. Such dir ein Thema aus oder schreib, was du suchst.','bot');setChips(basisChips())},300);return}
     suche(s);
   }
   function start(){
     if(started)return;started=true;
-    msg('Hallo 👋 Ich bin der <b>automatische</b> Shop-Assistent (keine Person). Ich beantworte Fragen zu Versand, Rückgabe und Zahlung und helfe dir, Produkte zu finden. Für alles Weitere erreichst du uns unter '+MAIL+'.','bot');
-    chipTop();
+    var alt=laden();
+    if(alt.length){
+      hist=alt;alt.forEach(function(x){zeile(x.h,x.w,false)});
+      var d=document.createElement('div');d.className='luxas-more';d.style.cssText='align-self:center;text-decoration:none;color:#5a5a5a;font-weight:500;font-size:12px';d.textContent='— weiter geht’s —';log.appendChild(d);
+      log.scrollTop=log.scrollHeight;setChips(basisChips());
+      return;
+    }
+    var row=zeile('Hallo 👋 Ich bin der <b>automatische</b> Shop-Assistent (keine Person). Wobei kann ich helfen? Für alles Weitere: '+MAIL+'.','bot',true);
+    state('froh',2600);menu2();
   }
-  function oeffnen(){panel.hidden=false;btn.setAttribute('aria-expanded','true');start();if(window.matchMedia&&matchMedia('(pointer:fine)').matches)setTimeout(function(){try{inp.focus({preventScroll:true})}catch(e){}},30)}
+  function menu2(){ /* Startmenü ohne «Menü»-Echo */
+    var g=document.createElement('div');g.className='luxas-tiles';
+    var T9=[['🚚','Versand & Kosten','versand'],['⏱️','Lieferzeit','lieferzeit'],['📦','Lieferstatus','tracking'],['↩️','Rückgabe','rueckgabe'],['💳','Zahlung','zahlung'],['✉️','Kontakt','kontakt'],['🎁','Geschenke','*g'],['🔥','Entdecken','*k'],['🔎','Produkt suchen','*s']];
+    T9.forEach(function(x){var b=document.createElement('button');b.type='button';b.className='luxas-tile';b.innerHTML='<b aria-hidden="true">'+x[0]+'</b>'+esc(x[1]);b.addEventListener('click',function(){
+      if(x[2]==='*g')geschenk();else if(x[2]==='*k')entdecken();else if(x[2]==='*s')suchStart();else ask(NAMEN[x[2]],x[2]);
+    });g.appendChild(b)});
+    log.appendChild(g);log.scrollTop=0;setChips(basisChips());
+  }
+  function neuStart(){hist=[];sichern();log.innerHTML='';started=false;suchmodus=false;state('idle');start()}
+  function oeffnen(){hideNudge(true);panel.hidden=false;btn.setAttribute('aria-expanded','true');trk('assistent_offen');start();if(window.matchMedia&&matchMedia('(pointer:fine)').matches)setTimeout(function(){try{inp.focus({preventScroll:true})}catch(e){}},30)}
   function schliessen(){panel.hidden=true;btn.setAttribute('aria-expanded','false');btn.focus()}
   btn.addEventListener('click',function(){panel.hidden?oeffnen():schliessen()});
   $('luxas-close').addEventListener('click',schliessen);
+  $('luxas-reset').addEventListener('click',neuStart);
   document.addEventListener('keydown',function(e){
     if(e.key!=='Escape'||panel.hidden)return;
     var a=document.activeElement;
     if(panel.contains(a)||a===btn||a===document.body)schliessen();
   });
   form.addEventListener('submit',function(e){e.preventDefault();var v=inp.value;inp.value='';verarbeite(v)});
+
+  /* Hinweisblase: höchstens einmal je Sitzung, nur nach 9 s Ruhe, nie bei offenen Bannern/Fenstern. */
+  function hideNudge(merken){nudge.hidden=true;if(merken){try{sessionStorage.setItem('luxas.n','1')}catch(e){}}}
+  $('luxas-nudge-x').addEventListener('click',function(){hideNudge(true)});
+  function nudgeZeigen(){
+    try{if(sessionStorage.getItem('luxas.n')==='1')return}catch(e){}
+    if(!panel.hidden||root.hasAttribute('data-hold'))return;
+    nudge.hidden=false;try{sessionStorage.setItem('luxas.n','1')}catch(e){}
+    setTimeout(function(){nudge.hidden=true},9000);
+  }
 
   /* Der Knopf darf Cookie-Banner, Shopify-Banner und E-Mail-Popup nicht überdecken: solange eines sichtbar ist, bleibt er weg. */
   var HALT=['lx-cookie-banner','lx-pop','shopify-pc__banner'];
@@ -231,6 +439,7 @@ body:has(.sticky-add-to-cart__bar[data-stuck="true"]) .luxas-panel{bottom:calc(1
   function zeigen(){
     root.hidden=false;halten();setInterval(halten,3000);
     HALT.forEach(function(i){var e=document.getElementById(i);if(e&&'MutationObserver' in window)new MutationObserver(halten).observe(e,{attributes:true,attributeFilter:['style','class','hidden']})});
+    setTimeout(nudgeZeigen,9000);
   }
   /* Erst nach dem Laden und einer kurzen Ruhe einblenden (kein Einfluss auf die Ladezeit der Seite). */
   var spaet=function(){setTimeout(zeigen,2500)};

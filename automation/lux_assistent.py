@@ -14,7 +14,7 @@ und Kontakt + Produktsuche über /search/suggest.json. Er hängt in sections/foo
 Die festen Antworten sind nur so wahr wie die Richtlinien: ändert sich eine Zahl dort (Gratisschwelle, Frist, Lieferzeit), schlägt die Wache an,
 BEVOR eine Kundin eine veraltete Auskunft liest.
 """
-import datetime, hashlib, html, json, os, re, sys
+import datetime, hashlib, html, json, os, re, sys, urllib.parse
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(REPO, "automation"))
@@ -71,7 +71,7 @@ def fakten_pruefen(richtlinien, quelle_text):
 def links_aus_quelle(quelle_text):
     """(Seiten-Handles, Kollektions-Handles), die der Assistent verlinkt (R+'pages/…' / R+'collections/…')."""
     return (sorted(set(re.findall(r"R\+'pages/([a-z0-9-]+)'", quelle_text))),
-            sorted(set(re.findall(r"R\+'collections/([a-z0-9-]+)'", quelle_text))))
+            sorted({urllib.parse.unquote(h) for h in re.findall(r"R\+'collections/([A-Za-z0-9%_-]+)'", quelle_text)}))
 
 
 def gruppe_zerlegen(inhalt):
@@ -256,6 +256,7 @@ def selbsttest():
     soll(len(fakten_pruefen({}, quelle)), len(FAKTEN), "leere Richtlinien → jede Zeile ein Befund")
     s, k = links_aus_quelle(quelle)
     soll(("rueckgabe" in s, "halloween" in k), (True, True), "Links erkannt")
+    soll(links_aus_quelle("R+'collections/%F0%9F%8E%81-geschenke-bis-chf-30'")[1], ["🎁-geschenke-bis-chf-30"], "%-kodierter Emoji-Handle wird dekodiert")
     # Gruppe: Ergänzen/Entfernen, Kommentarkopf bleibt, Reihenfolge, Idempotenz
     g = '/* kopf */\n{"sections":{"a":{"type":"footer","settings":{}}},"order":["a"]}'
     mit = gruppe_mit(g)
