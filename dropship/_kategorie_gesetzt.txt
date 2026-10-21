@@ -53497,3 +53497,8 @@ bandschleifmaschine-zum-polieren-d8198a	ha-15	Werkzeug & Heimwerken	2026-10-21T1
 crimpzange-fur-kabel-bfd16d	ha-15	Werkzeug & Heimwerken	2026-10-21T14:38Z
 schleifscheibe-flach-korngrosse-80-a561f5	ha-15	Werkzeug & Heimwerken	2026-10-21T14:38Z
 horizontaler-schnellspanner-fur-holzbearbeitun-8b14cc	ha-15	Werkzeug & Heimwerken	2026-10-21T14:38Z
+bauklotze-yuxing-modellboot-spielzeug-601100	ae-2-6	Spass-Elektronik	2026-10-21T18:49Z
+kinderspielzeug-bauklotze-5-teiliger-set-639800	tg-5-7	Spass-Elektronik	2026-10-21T18:49Z
+flower-street-boutique-kleine-teilbausteine-pu-608300	tg-5	Spielzeug & Spiele	2026-10-21T18:49Z
+tierstapel-spiel-mit-holzblocken-639900	tg-5	Spass-Elektronik	2026-10-21T18:49Z
+halloween-cottage-bauklotze-halloween-haus-set-618400	tg-5-7	Spass-Elektronik	2026-10-21T18:49Z
