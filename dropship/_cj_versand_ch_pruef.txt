@@ -12788,3 +12788,8 @@ herren-sportuhr-wasserdicht-leuchtend-623700	2602200655151624000	7	6.05	ok	lande
 smarter-vorhangschalter-616800	2412170201551617100	7	5.72	ok	landeseite
 multifunktions-elektronische-herrenuhr-621800	2602130752131622200	7	7.33	ok	landeseite
 musik-rhythmus-lampe-mit-sprachsteuerung-600300	2412161012161600400	7	10.65	ok	landeseite
+herren-armbanduhr-wasserdicht-automatisch-606500	2602100304421606800	7	6.18	ok	landeseite
+automatischer-gie-automat-606400	2412160902391606600	7	14.52	ok	landeseite
+digitale-lupe-mit-mikroskop-628200	2412160130381628700	7	10.18	ok	landeseite
+elegantes-freizeitkleid-617300	2607130119591617900	16	10.15	ok	landeseite
+leise-luxus-uhr-627100	2412150440361627400	7	15.12	ok	landeseite
