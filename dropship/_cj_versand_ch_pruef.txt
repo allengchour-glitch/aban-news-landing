@@ -12029,3 +12029,12 @@ dual-kamera-modell-911106	-	-	-	unklar pid 1602002 Product has been removed from
 edelstahl-3d-katzenpendant-mit-blumenkranz-uni-600700	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 reflektierende-hundeleine-630000	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 cords-hose-damen-weiter-schnitt-630100	2512010744151630300	16	8.66	ok	landeseite
+elektrisches-katzen-spielzeug-mit-feder-617800	2507060802171618100	7	8.89	ok	landeseite
+stadtrad-helm-5fa3ae	1A1DD6B4-C101-4105-A00D-C4A1285D34F8	16	11.37	ok	landeseite
+hohe-bequeme-velvet-hosen-624600	2511290719161625100	16	8.48	ok	landeseite
+achat-perlen-schmuckset-f6d4c0	FE0691F6-D450-428F-B3EE-AFBFBE5372A2	16	10.49	ok	landeseite
+teleskop-trainingsstab-fur-hunde-und-katzen-610200	2507040948191610400	16	8.66	ok	landeseite
+s925-silber-suuswasserperlen-schwan-ohrstecker-4ef7d6	1774274507050586112	16	4.36	ok	landeseite
+riding-helm-c4e73a	A6902129-EED0-4086-9EF4-E57EFA6BB965	1	11.59	ok	landeseite
+herz-jeans-gewaschen-624400	2604170252331625000	16	7.78	ok	landeseite
+perlenhalskette-876607	23E0F7D9-A82A-413D-A6F4-81208A90AB37	16	9.47	ok	landeseite
