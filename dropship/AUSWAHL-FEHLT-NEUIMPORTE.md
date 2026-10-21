@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-21 01:44 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-21 05:24 UTC)
 
-Suche: `status:active AND created_at:>=2026-10-18` · gemessen 332 · **202 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 183, teilweise: 13, keine: 6; Preisspanne > 2×: 28) · 1 CJ-Variante: 130 · ohne Antwort: 0
+Suche: `status:active AND created_at:>=2026-10-18` · gemessen 421 · **254 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 227, teilweise: 16, keine: 11; Preisspanne > 2×: 35) · 1 CJ-Variante: 167 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -27,9 +27,11 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Kaschmir-Schal für kalte Wintertage (`kaschmir-schal-fur-kalte-wintertage-620300`) | 29 | 20 | 4.44–4.85 | 16.90 | Beige, Black, White, Oatmeal Color |
 | Notizbuch mit PU-Ledercover (`notizbuch-mit-pu-ledercover-623800`) | 27 | 20 | 2.77–10.41 | 38.90 | Charming Black, Business Brown, Tiffany Blue, Vitality Red |
 | Clutch mit Münztasche und Kartenhalter (`clutch-mit-munztasche-und-kartenhalter-619900`) | 26 | 17 | 5.27–6.63 | 16.90 | Wine Red, Midnight Black, Palaeo Yellow, Custom Orange |
+| Highland Kuh Adventskalender (`highland-kuh-adventskalender-613500`) | 25 | 18 | 2.94–5.38 | 19.90 | Cat Blind Box, Christmas Building Blocks, Cow Blind Box, Cow Calendar With A Butt |
 | Titanstahl-Halskette mit rundem Anhänger (`titanstahl-halskette-mit-rundem-anhanger-636400`) | 24 | 24 | 3.98–13.71 | 22.90 | Steel-1 round block, Steel-2 round block, Steel-3 round block, Steel-4 round block |
 | Sofa-Bezug, modernes Design, schwarz-Marmor (`sofa-bezug-modernes-design-schwarz-marmor-626300`) | 24 | 24 | 6.42–11.98 | 40.90 | Black Marble-Single, Black Marble-Double, Black Marble-Three People, Black Leaf-Single |
 | Schwere Seidenkissenhülle 50×75 cm (`schwere-seidenkissenhulle-50-75-cm-631100`) | 22 | 16 | 32.64–32.64 | 43.90 | Champagne-50x75cm, Cameo Brown-50x75cm, Smoke Pink-50x75cm, Wine Red-50x75cm |
+| Harz-Schmuckfarbe (`harz-schmuckfarbe-c11c75`) | 22 | 0 | 0.68–0.8 | 16.90 | Lemon, Dark Red, White, Purple |
 | Smart Ring mit Herzfrequenz- und Schlafüberwachung (`smart-ring-mit-herzfrequenz-und-schlafuberwach-631300`) | 21 | 21 | 7.95–7.95 | 16.90 | Gold-No.7, Gold-No.8, Gold-No.9, Gold-No.10 |
 | Sofakissenbezug aus Milchvelvet – 70×70 cm (`sofakissenbezug-aus-milchvelvet-70-70-cm-621100`) | 20 | 20 | 3.16–7.99 | 36.90 | Dark Gray-70×70cm, Dark Gray-70×150cm, Dark Gray-70×180cm, Dark Gray-70×210cm |
 | Keramiktasse 400 ml 3D Zebra (`keramiktasse-400-ml-3d-zebra-624400`) | 20 | 16 | 3.02–3.02 | 16.90 | 3D Zebra-400ml, 3D Sika Deer-400ml, 3D Elephant-400ml, 3D Orangutan-400ml |
@@ -45,13 +47,22 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Kissenbezug Baumwolle, 100 % – Muster (`kissenbezug-baumwolle-100-muster-601500`) | 15 | 15 | 3.03–3.03 | 16.90 | Olive Green-48cmX74cm Single Pillowcase, Scotland-48cmX74cm Single Pillowcase, Turmeric-48cmX74cm Single Pillowcase, Purplish Blue-48cmX74cm Single Pillowcase |
 | Ring mit Elefanten-Design (`ring-mit-elefanten-design-605900`) | 14 | 14 | 2.02–2.19 | 16.90 | Steel Color-No 7, Steel Color-No 8, Steel Color-No 9, Steel Color-No 10 |
 | Smartwatch mit Bluetooth-Telefonie und Taschenlampe (`smartwatch-mit-bluetooth-telefonie-und-taschen-606100`) | 14 | 14 | 25.17–27.78 | 39.90 | TK18 Black, TK18 Blue, TK18 Red, TK18 Beige |
+| Blumen-Pigment – Hochkonzentriert (`blumen-pigment-hochkonzentriert-262704`) | 14 | 0 | 0.41–0.41 | 16.90 | Red, Redish black, Black, White |
 | Seiden-Stickerei-Schal – 70×180 cm (`seiden-stickerei-schal-70-180-cm-622400`) | 13 | 13 | 2.55–2.55 | 16.90 | Pink, Sky Blue, Beige, Turmeric |
 | Smartwatch mit Bluetooth-Anruf (`smartwatch-mit-bluetooth-anruf-602700`) | 13 | 13 | 16.81–51.84 | 67.90 | Flagship Black Silicone, Flagship Red Silicone, Flagship Blue Silicone, Top Black Steel |
 | Multifunktionales Babykissen zum Sitzenlernen (`multifunktionales-babykissen-zum-sitzenlernen-625200`) | 13 | 13 | 3.97–6.6 | 31.90 | Rhine Fish Set, Brunswick Cat Suit, Dolphin Sea Suit, Tongyan Xiyu Suit |
 | Magnetische Wimpern ohne Kleber (`magnetische-wimpern-ohne-kleber-631500`) | 13 | 13 | 6.56–6.91 | 16.90 | Fog Black-Round Box, Fog Black-Square Box, Fairy Lashes-Round Box, Fairy Lashes-Square Box |
+| Weihnachtsbaum-Anhänger H (`weihnachtsbaum-anhanger-h-463872`) | 13 | 13 | 3.28–3.28 | 16.90 | A, B, C, D |
+| DIY Mikro-Landschaft Bastelset mit Pflanzen (`diy-mikro-landschaft-bastelset-mit-pflanzen-622100`) | 13 | 13 | 2.35–5.87 | 18.90 | Wind In The Forest, Bell Pine Small Building, Wooden House Shimmer, Shanye Solitude |
+| Perlglanz-Pigmentpulver (`perlglanz-pigmentpulver-0a4ac8`) | 13 | 1 | 0.58–4.55 | 16.90 | Purple, Ice blue, Rose Red, Pink |
 | Hundemantel Winterwolle, monochrom (`hundemantel-winterwolle-monochrom-602700`) | 12 | 12 | 5.8–5.8 | 16.90 | Monochrome-XS, Monochrome-S, Monochrome-M, Monochrome-L |
 | HDMI-Distributor 4K Splitter mit USB-Ladeanschluss (`hdmi-distributor-4k-splitter-mit-usb-ladeansch-616200`) | 12 | 12 | 2.46–3.69 | 16.90 | 4K(HW HD102M)-American Standard, 4K(HW HD102M)-European Standard, 4K(HW HD102M)-USB Charger Lead, 1080P(HW HD102)-American Standard |
+| Seiten-Autoaufkleber für Tür und Zierleiste (`seiten-autoaufkleber-fur-tur-und-zierleiste-064640`) | 12 | 12 | 3.23–3.23 | 18.90 | Matte gold-2pcs, Bright orange-2pcs, Matte silver-2pcs, Bright red-2pcs |
 | USB-C 7-in-1 Dock mit HDMI-Ausgang und Kabeltrennung (`usb-c-7-in-1-dock-mit-hdmi-ausgang-und-kabeltr-612700`) | 11 | 8 | 2.19–24.71 | 38.90 | 7 In 1, 4 In 1, 5 In 1, 6 In 1 |
+| Grosses Tote Crossbody für Frauen (`grosses-tote-crossbody-fur-frauen-620300`) | 11 | 11 | 6.77–7.03 | 23.90 | Black, Brown, Gray, Pink |
+| Kreatives Bausteine-Set zum Selberbauen (`kreatives-bausteine-set-zum-selberbauen-628000`) | 11 | 11 | 7.8–17.34 | 44.90 | 88051 Model, Model 88052, 88053 Model, Model 33127 |
+| Fahrradhelm mit Visier (`fahrradhelm-mit-visier-605700`) | 11 | 11 | 5.38–5.38 | 17.90 | Chinese Red-Free Size, Blue And White-Free Size, Black And Blue-Free Size, Pink-Free Size |
+| Quarz-Uhr mit Dreihand-Chronograph, 13 mm (`quarz-uhr-mit-dreihand-chronograph-13-mm-614400`) | 11 | 11 | 5.77–9.59 | 18.90 | 8024 All Black, 8024 Black And Silver, 8024 Coffee, 8024 Green |
 | Grosses Dry-Wet Trennungs-Rucksack-Tagesrucksack (`grosses-dry-wet-trennungs-rucksack-tagesrucksa-603500`) | 10 | 10 | 5.14–5.14 | 22.90 | Pink, Light Purple, Black, Fog And Haze Blue |
 | Wollschal mit Wursthunde-Print (`wollschal-mit-wursthunde-print-614400`) | 10 | 10 | 3.35–3.35 | 16.90 | Pearl White-170cm, Beige-170cm, Light Gray-170cm, Khaki-170cm |
 | Kubanischer Ring mit Zirkonia (`kubanischer-ring-mit-zirkonia-606900`) | 10 | 10 | 6.14–6.14 | 16.90 | Gold-No 7, Gold-No 8, Gold-No 9, Gold-No 10 |
@@ -64,6 +75,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Stahlarmband-Uhr mit Quarzwerk – Silberschale (`stahlarmband-uhr-mit-quarzwerk-silberschale-602000`) | 10 | 10 | 8.68–10.07 | 19.90 | Silver Case Silver Surface, Silver Case Blue Face, Silver Case Black Noodles, Black Shell Black Surface |
 | Ladebare Nachtlicht-Tablette in Pilzform (`ladebare-nachtlicht-tablette-in-pilzform-600900`) | 10 | 10 | 4.7–6.63 | 23.90 | 1800mAh-White, 1800mAh-Yellow, 1800mAh-Rust Color, 1800mAh-Pink |
 | Grosser Outdoor-Rucksack mit wasserdichtem Design (`grosser-outdoor-rucksack-mit-wasserdichtem-des-622800`) | 10 | 10 | 6.77–7.29 | 30.90 | Black-Large Size, Black-Medium, Dark Blue-Large Size, Dark Blue-Medium |
+| Smartwatch mit Herzfrequenz- und SpO2-Messung (`smartwatch-mit-herzfrequenz-und-spo2-messung-633100`) | 10 | 10 | 44.79–49.65 | 64.90 | Top Of The Line Black Silicone, Black Three Bead Steel, Black Milanese Steel, Genuine Leather Black |
 | Buntes, schmaler Retro-Schal in Regenbogenfarben (`buntes-schmaler-retro-schal-in-regenbogenfarbe-621000`) | 9 | 9 | 2.72–2.72 | 16.90 | Red Orange Purple-190X10cm, Gray Orange White-190X10cm, Blue Orange Rice-190X10cm, Gray White And Black-190X10cm |
 | Ovaler Fotorahmen für die Wand (`ovaler-fotorahmen-fur-die-wand-622100`) | 9 | 9 | 4.04–27.6 | 75.90 | 4 Pieces, 5 Pieces, Square, Ellipse |
 | Welpen Pullover Herbst & Winter (`puppy-pullover-herbst-winter-492992`) | 9 | 9 | 3.16–4.16 | 16.90 | Blue Rabbit Sweater-XS-Without bag, Blue Rabbit Sweater-M-Without bag, Blue Rabbit Sweater-L-Without bag, Blue Rabbit Sweater-XL-Without bag |
@@ -79,6 +91,9 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Makeup-Set mit Lippenstift, Rouge und Augenstift (`makeup-set-mit-lippenstift-rouge-und-augenstif-620000`) | 8 | 8 | 38.97–43.95 | 69.90 | Swan Lake Gift Box, Ballet Dream Gift Box, Dawn Endless Summer Gift Box, Shell Wind Chime Gift Box |
 | Makeup-Set mit Eyeshadow, Rouge und Foundation (`makeup-set-mit-eyeshadow-rouge-und-foundation-617300`) | 8 | 8 | 2.99–5.8 | 17.90 | ZP A05 003301, ZP A05 003302, ZP A05 003303, ZP A05 003304 |
 | Herren Crossbody Tasche Vollnarbenleder (`herren-crossbody-tasche-vollnarbenleder-639800`) | 8 | 8 | 4.92–4.92 | 20.90 | 6035 Black, 6035 Coffee, 6035 Brown, 6036 Black |
+| Handliches Kosmetik-Set mit grossem Fassungsvermögen (`handliches-kosmetik-set-mit-grossem-fassungsve-639100`) | 8 | 8 | 8.79–8.79 | 53.90 | Black Crocodile Pattern, Black Tabby, Brown Plaid, Red Crocodile Pattern |
+| Smartwatch mit Blut-Zucker- (`smartwatch-mit-blut-zucker-627700`) | 8 | 8 | 9.55–10.42 | 19.90 | Black Silicone, Silver Black Silicone, Black Belt, Silver Brown Leather |
+| M10PLUS Ultra Clear Projektor 720p (`m10plus-ultra-clear-projektor-720p-604800`) | 8 | 8 | 46.53–46.53 | 76.90 | White-EU, White-UK, White-US, White-AU |
 | Taktische Umhängetasche für Outdoor-Sport (`taktische-umhangetasche-fur-outdoor-sport-624800`) | 7 | 7 | 5.03–5.03 | 18.90 | Black-Below 20L, Brown-Below 20L, Italian Camouflage-Below 20L, Dark Night-Below 20L |
 | Umhängetasche mit Rautenmuster (`umhangetasche-mit-rautenmuster-623000`) | 7 | 7 | 7.99–7.99 | 21.90 | Color, Silver, Black Gold Diamand, Green |
 | Kristall-Hanf Kopftuch – Monochromes Design (`kristall-hanf-kopftuch-monochromes-design-606000`) | 7 | 7 | 3.1–3.1 | 16.90 | 2 White-Average Size, 3 Navy Blue-Average Size, 4 Pink Color-Average Size, 5 Light Khaki-Average Size |
@@ -94,8 +109,8 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Universal-Steckschlüssel (`universal-steckschlussel-44f388`) | 7 | 7 | 1.79–1.79 | 16.90 | Blue, Green, Red, Yellow |
 | Titanstahlring mit Totenkopf (`titanstahlring-mit-totenkopf-624100`) | 7 | 7 | 2.67–2.67 | 16.90 | Silver-No 6, Silver-No 7, Silver-No 8, Silver-No 9 |
 | Silk Kissenbezug Leopard Muster (`silk-kissenbezug-leopard-muster-608900`) | 7 | 7 | 20.83–20.83 | 30.90 | White-48x74cm, Navy Blue-48x74cm, Light Pink-48x74cm, Dark Gray-48x74cm |
-| Lipstick – Matte, langanhaltend, leicht aufzutragen (`lipstick-matte-langanhaltend-leicht-aufzutrage-605300`) | 7 | 7 | 6.62–6.62 | 16.90 | Color 101, Color 102, Color 116, Color 115 |
-| Faltbare Damen Münzbörse in PU-Leder (`faltbare-damen-munzborse-in-pu-leder-626100`) | 7 | 7 | 4.36–4.36 | 16.90 | Black, Dark Purple, Purplish Red, Light Yellow |
+| RFID-geschützte Reisepasshülle & Geldbörse (`rfid-geschutzte-reisepasshulle-geldborse-619800`) | 7 | 7 | 3.61–3.61 | 16.90 | Black, Green, Dark Blue, Pink |
+| Flüssiger Rouge – 5-farbiges Set (`flussiger-rouge-5-farbiges-set-646300`) | 7 | 7 | 3.44–4.19 | 16.90 | JC01 Sakura Custard, JC02 Blueberry Milkshake, JC03 Raspberry Toffee, JC04 Fig Coffee |
 | Weiche Schläucheinführung CRV (`weiche-schlaucheinfuhrung-crv-910625`) | 6 | 0 | 0.66–2.3 | 16.90 | C-305mm, A-355mm, D-200mm, E-200mm |
 | Kashmirähnlicher Karomuster-Schal (`kashmirahnlicher-karomuster-schal-619500`) | 6 | 6 | 2.02–2.02 | 16.90 | WT1582 Black-200x64cm With Tassels, WT1583 Pink-200x64cm With Tassels, WT1585 Gray Big Plaid-200x64cm With Tassels, WT1586 Red Plaid-200x64cm With Tassels |
 | Flammen-Totenkopf-Ring aus Titanstahl (`flammen-totenkopf-ring-aus-titanstahl-636600`) | 6 | 6 | 2.6–2.6 | 16.90 | No 7, No 8, No 9, No 11 |
@@ -112,6 +127,13 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Wasserglanz-Lippenstift (`wasserglanz-lippenstift-624500`) | 6 | 6 | 6.97–6.97 | 16.90 | 01 Peony Ballet-4G, 02 Milk Flavor Peanut-4G, 03 Warm Rose-4G, 04 Grape Path-4G |
 | Grosser, dicker, warmer Split-Schal (`grosser-dicker-warmer-split-schal-658200`) | 6 | 6 | 5.97–5.97 | 20.90 | Gray-155cm, Amber-155cm, Camel-155cm, Dark Khaki Cloth Color-155cm |
 | Foundation Stick für feines Contouring (`foundation-stick-fur-feines-contouring-632800`) | 6 | 6 | 2.77–2.77 | 16.90 | 01 IVORY, 02 NATURAL BEIGE, 03 LIGHT SAND, 04 WARM ALMOND |
+| Isolierte Picknicktasche 13 L Schultertasche (`isolierte-picknicktasche-13-l-schultertasche-623600`) | 6 | 6 | 7.29–8.33 | 29.90 | Black-Single layer 13L, Black-Double layer 18L, Green-Single layer 13L, Green-Double layer 18L |
+| 6-Farben-Lidschatten-Palette, matt (`6-farben-lidschatten-palette-matt-118656`) | 6 | 6 | 4.38–4.38 | 16.90 | 1 Style, 2 Style, 3 Style, 4 Style |
+| Monochrome Lidschatten-Palette – 6 Farben (`monochrome-lidschatten-palette-6-farben-070464`) | 6 | 6 | 3.66–3.66 | 16.90 | White Night Diamond, Wandering Starlight, Golden Brown Cowherd, Aimu powder purple |
+| Thermochromatische Skimaske – einheitliche Grösse (`thermochromatische-skimaske-einheitliche-gross-638700`) | 6 | 6 | 5.48–5.48 | 16.90 | Camouflage-Free Size Flexible, Vibrant Orange-Free Size Flexible, Ink Feather Blue-Free Size Flexible, Far Mountain Gray-Free Size Flexible |
+| Lichtleiste für Motorradhelm – 2 AA Batterien (`lichtleiste-fur-motorradhelm-2-aa-batterien-427072`) | 6 | 6 | 3.81–3.81 | 16.90 | Blue, Yellow, Green, Ice blue |
+| Zweifarbige Orchidee zum Zusammenbauen (`zweifarbige-orchidee-zum-zusammenbauen-608600`) | 6 | 6 | 6.68–12.85 | 33.90 | Two Toned Orchid, Champagne Orchid, Vanda Orchid, Qidailan |
+| Ewiges Blumen-Baustein-Set (`ewiges-blumen-baustein-set-619100`) | 6 | 6 | 11.94–17.19 | 73.90 | 24 Pieces Black Bucket, 24 Pieces Silver Bucket, 26 Pieces Silver Bucket, Type A 18 flowers |
 | Sportliche Umhängetasche aus Polyester, einfarbig (`sportliche-umhangetasche-aus-polyester-einfarb-626400`) | 5 | 5 | 5.47–8.79 | 25.90 | Charcoal Black Lightweight, Derm Black Lightweight, Charcoal Black Upgrade, Derm Black Upgrade |
 | Wanddekoration im Bauhaus-Stil (`wanddekoration-im-bauhaus-stil-626600`) | 5 | 5 | 10.24–10.24 | 20.90 | Blue And Red-40x60cm, Coffee Brown-40x60cm, Coffee Color-40x60cm, Spring Green-40x60cm |
 | Schlankmachender Baumwoll-Schal (`schlankmachender-baumwoll-schal-637200`) | 5 | 5 | 6.97–6.97 | 16.90 | Dark gray, Brown, Medium gray, Rose pink |
@@ -128,7 +150,11 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Geflochtene Vase aus Pflanzenfasern (`geflochtene-vase-aus-pflanzenfasern-624400`) | 5 | 5 | 12.94–14.59 | 46.90 | Pupian-S, Pupian-L, Stripes-S, Stripes-L |
 | Wasserfeste, schweissresistente Foundation (`wasserfeste-schweissresistente-foundation-600700`) | 5 | 5 | 2.11–2.11 | 16.90 | SNOW, NATURAL PORCELAIN,  NATURAL BEIGE, COOKIE |
 | Korrektur- und Farbwechsel Foundation-Stick (`korrektur-und-farbwechsel-foundation-stick-623500`) | 5 | 5 | 2.81–2.81 | 16.90 | Complexion, Natural color, Ivory white, Dark complexion |
-| Businessrucksack mit Luftpolster, wasserdicht (`businessrucksack-mit-luftpolster-wasserdicht-603400`) | 5 | 5 | 36.11–44.79 | 89.90 | 25051 Style, 25061 Style, 25041 Style, 25031 Style |
+| Schlichte einfarbige Damen-Geldbörse (`schlichte-einfarbige-damen-geldborse-620500`) | 5 | 5 | 3.0–3.0 | 16.90 | Green, Red, Pink, Brown |
+| Sport-Smartwatch für Herren, 50 mm, TPU-Armband (`sport-smartwatch-fur-herren-50-mm-tpu-armband-629300`) | 5 | 5 | 4.86–4.86 | 16.90 | Gold, Titanium Color, Blue, Black |
+| 2K HD Smart Wi-Fi Innenkamera (`2k-hd-smart-wi-fi-innenkamera-623000`) | 5 | 5 | 11.81–32.64 | 44.90 | White-No Memory, White-16GB, White-32g, White-64g |
+| UV-Harzkleber für Schmuckformen (`uv-harzkleber-fur-schmuckformen-97affa`) | 5 | 0 | 1.2–9.42 | 18.90 | Q60G, Q25G, Q10G, Q15G |
+| Damen-Uhr mit Strasssteinen (`damen-uhr-mit-strasssteinen-625300`) | 5 | 5 | 10.24–10.24 | 19.90 | Silver Black, Silver Gray, Silver Blue, Silver Green |
 | Iris-Blumenring (`iris-blumenring-631400`) | 4 | 4 | 2.11–2.11 | 16.90 | Iris Flower Ring 6028-No 6, Iris Flower Ring 6028-No 7, Iris Flower Ring 6028-No 8, Iris Flower Ring 6028-No 9 |
 | Männer-Quarz-Uhr mit quadratischem Zifferblatt (`manner-quarz-uhr-mit-quadratischem-zifferblatt-614400`) | 4 | 4 | 14.76–14.76 | 23.90 | Wine Red-Quartz Watch, Green-Quartz Watch, Dark Blue-Quartz Watch, Coffee With A Gray Disc-Quartz Watch |
 | Dumpling-Mold-Set 3D-gedruckt – Quadrat, Kreis, Herz (`dumpling-mold-set-3d-gedruckt-quadrat-kreis-he-620800`) | 4 | 4 | 3.09–9.44 | 27.90 | Square, Round, Heart Shape, Combination |
@@ -151,9 +177,15 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Multifunktionale Quarzuhr mit Lederarmband (`multifunktionale-quarzuhr-mit-lederarmband-638200`) | 4 | 4 | 30.9–30.9 | 42.90 | White Shell And Blue Surface, White Shell And Black Surface, Black Shell Black Surface, Black Shell Green Surface |
 | Vintage Quarz-Armbanduhr für Damen (`vintage-quarz-armbanduhr-fur-damen-609400`) | 4 | 4 | 12.85–12.85 | 21.90 | Gold Strap Gold Noodles, Gold Strap Red Noodles, Gold Strap White Noodles, Silver Streak White Noodles |
 | Kleines Nachtlicht mit Touch-Steuerung, USB (`kleines-nachtlicht-mit-touch-steuerung-usb-609700`) | 4 | 4 | 4.36–4.36 | 16.90 | Black-Handle Style, Black-Pull Cord Style, White-Handle Style, White-Pull Cord Style |
-| Sportrucksack für Tennis und Badminton – 40–50 l (`sportrucksack-fur-tennis-und-badminton-40-50-l-636800`) | 4 | 4 | 15.63–15.63 | 40.90 | Purple-40L To 50L, Peacock Blue-40L To 50L, White-40L To 50L, Fruit Green-40L To 50L |
-| Liquid Foundation – Feuchtigkeitsspendend, ölregulierend (`liquid-foundation-feuchtigkeitsspendend-olregu-650400`) | 4 | 4 | 2.97–2.97 | 16.90 | Imported Formula-1 Style, Imported Formula-2 Style, Imported Formula-3 Style, Imported Formula-4 Style |
-| Echtes Leder Portemonnaie für Damen (`echtes-leder-portemonnaie-fur-damen-614000`) | 4 | 4 | 9.78–9.78 | 21.90 | Brown, Brown Red, Khaki, Black |
+| Leder Business Aktentasche Ein-Schulter 21×17×9 cm (`leder-business-aktentasche-ein-schulter-21-17-613600`) | 4 | 4 | 3.86–5.38 | 20.90 | 21X17X9cm, 23X18X9cm, 25X20X9cm, 28X24X9cm |
+| Wasserdichte Glitzer-Matte Lidschatten-Palette (`wasserdichte-glitzer-matte-lidschatten-palette-773120`) | 4 | 4 | 2.64–7.82 | 22.90 | 1Style, 2Style, 3Style, 4Style |
+| Full HD Weihnachtsmann Projektor (`full-hd-weihnachtsmann-projektor-621400`) | 4 | 4 | 69.27–69.27 | 116.90 | Santa Projector-US, Santa Projector-EU, Santa Projector-UK, Santa Projector-AU |
+| 3D-Kugel-Puzzle Weihnachtsanhänger – 60 Teile (`3d-kugel-puzzle-weihnachtsanhanger-60-teile-604800`) | 4 | 4 | 3.16–3.16 | 16.90 | Football 3D Puzzle, Basketball 3D Puzzle, Earth 3D Puzzle, Jupiter 3D Puzzle |
+| Kugel-Anhänger-Form für DIY Schmuck (`kugel-anhanger-form-fur-diy-schmuck-04fe4f`) | 4 | 0 | 0.37–0.77 | 16.90 | 20mm, 3pieces, 30mm, 25mm |
+| Baustein-Spielzeug: Topfblumen-Strauss (`baustein-spielzeug-topfblumen-strauss-628700`) | 4 | 4 | 3.49–3.49 | 16.90 | Plum Blossom 599pcs, Bird Of Paradise 451pcs, Cottonrose Hibiscus 503pcs, Chrysanthemums 450 Pcs |
+| Gebäude-Modell Bausatz für Erwachsene (`gebaude-modell-bausatz-fur-erwachsene-600200`) | 4 | 4 | 2.19–2.19 | 16.90 | Peking University Standard, Tsinghua University Standard, Wuhan University Standard, Fudan University Standard |
+| Nordische Tischuhr mit Wecker und Nachtlicht (`nordische-tischuhr-mit-wecker-und-nachtlicht-605800`) | 4 | 4 | 3.69–3.69 | 21.90 | White Circle-11x11x5cm Battery Model, Green Round-11x11x5cm Battery Model, Black Round-11x11x5cm Battery Model, Blue Rounded-11x11x5cm Battery Model |
+| Musikalische Taschenuhr – individuell (`musikalische-taschenuhr-individuell-609100`) | 4 | 4 | 7.99–7.99 | 16.90 | Black P6001C, Gold P6002C, Silver P6003C, Rose Gold P6004C |
 | Oversized Wollschal Dreieck 200 cm (`oversized-wollschal-dreieck-200-cm-605900`) | 3 | 3 | 12.44–12.44 | 21.90 | Raw Velvet Rice-200X90cm, Raw Velvet Camel-200X90cm, Gray-200X90cm |
 | Zylindrischer Angelrucksack (`zylindrischer-angelrucksack-228160`) | 3 | 3 | 7.87–8.08 | 17.90 | Black, Urban camouflage, Desert camouflage |
 | Halskette mit Kor, Türkis und Muschelperlen (`halskette-mit-kor-turkis-und-muschelperlen-635200`) | 3 | 3 | 4.3–5.18 | 16.90 | Necklace, Bracelet, Ear Studs |
@@ -176,10 +208,20 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Augenlidschatten-Palette Fruit Series, 12 Farben (`augenlidschatten-palette-fruit-series-12-farbe-224000`) | 3 | 3 | 3.45–3.45 | 16.90 | Orange, Pink, Purple |
 | Leichtgewichtiger nahtloser zweiköpfiger Foundation-Stick (`leichtgewichtiger-nahtloser-zweikopfiger-found-603300`) | 3 | 3 | 2.63–2.63 | 16.90 | ivory white, natural color, deep skin color |
 | Wimpern-Try-On-Cards – 12-Farben-Set (`wimpern-try-on-cards-12-farben-set-616300`) | 3 | 3 | 2.63–5.03 | 16.90 | Fine Makeup, Full Makeup And Light Makeup, Light Makeup |
-| Kurze Clutch-Handtasche mit Reissverschluss (`kurze-clutch-handtasche-mit-reissverschluss-625900`) | 3 | 3 | 5.8–5.8 | 16.90 | Blue, Black, Army Green |
 | Foundation Stick (`foundation-stick-633800`) | 3 | 3 | 2.28–2.28 | 16.90 | Dark complexion, Ivory white, Natural color |
-| Lederportemonnaie aus Rindfleisch – Blumenprägung (`lederportemonnaie-aus-rindfleisch-blumenpragun-629200`) | 3 | 3 | 14.59–14.59 | 24.90 | Retro Brown, Retro Black, Retro Coffee |
 | Geldbörse mit mehreren Kartenfächern aus Leder (`geldborse-mit-mehreren-kartenfachern-aus-leder-623300`) | 3 | 3 | 18.41–18.41 | 36.90 | 241044F4O1, 241044F4W1, 241044F4A1 |
+| Umhängetasche für Kurztrips, unisex (`umhangetasche-fur-kurztrips-unisex-610600`) | 3 | 3 | 14.24–14.24 | 43.90 | Black, Brown, 0892 Black |
+| Grosses Sport- und Reisetäschchen für Handy (`grosses-sport-und-reisetaschchen-fur-handy-614700`) | 3 | 3 | 7.45–7.45 | 18.90 | Blue, Black And Gray, Light Brown |
+| Lidschattenpalette 8 Farben Rosa Matt (`lidschattenpalette-8-farben-rosa-matt-840384`) | 3 | 3 | 2.08–2.08 | 16.90 | Moss lake, Platycodon twilight, Persimmon Flower Sea |
+| Matte Perlmutt-Lidschatten – 8 Farben (`matte-perlmutt-lidschatten-8-farben-680064`) | 3 | 3 | 3.66–3.66 | 16.90 | Color1, Color2, Color3 |
+| Kabellose In-Ear-Kopfhörer (`kabellose-in-ear-kopfhorer-639200`) | 3 | 3 | 2.35–2.35 | 16.90 | D18 White, D18 Skin Color, D18 Black |
+| Drohne mit HD-Kamera und Bildschirmsteuerung (`drohne-mit-hd-kamera-und-bildschirmsteuerung-617900`) | 3 | 3 | 16.67–20.14 | 33.90 | Orange Black-Electric Version, Orange Black-Second Electric Version, Orange Black-Three level Version |
+| Silikonform für Schmuckanhänger (`silikonform-fur-schmuckanhanger-436a72`) | 3 | 0 | 1.02–1.02 | 16.90 | 2style, 3style, 1style |
+| Magnetische Erdungszwinge für Schweissgeräte (`magnetische-erdungszwinge-fur-schweissgerate-e67c68`) | 3 | 3 | 2.25–2.47 | 16.90 | A, A102, B |
+| Elektrischer Fusselrasierer für Wolle (`elektrischer-fusselrasierer-fur-wolle-ec9a60`) | 3 | 1 | 4.62–4.62 | 17.90 | Rose red, Purple, Pink |
+| Badezimmer-Pantoffeln (`badezimmer-pantoffeln-c1d31d`) | 3 | 3 | 2.59–2.59 | 16.90 | Pink, Blue, Grey |
+| Ewige Rose Bausteine – Kreatives Ornament (`ewige-rose-bausteine-kreatives-ornament-631000`) | 3 | 3 | 9.48–10.42 | 31.90 | 11003 Red Rose 649PCS, 11009 Black Rose 585PCS, 11018 Blue Rose 585PCS |
+| Elektrische Küchenmaschine mit 8 Liter Kapazität (`elektrische-kuchenmaschine-mit-8-liter-kapazit-618300`) | 3 | 3 | 37.15–37.67 | 122.90 | 8L Porridge Cooker-EU 220V, 8L Porridge Cooker-UK 220V, 8L Porridge Cooker-US 110V |
 | Schwarzer Multifunktionaler Rucksack aus Nylon/Polyester (`schwarzer-multifunktionaler-rucksack-aus-nylon-06c75b`) | 2 | 0 | 20.68–20.68 | 54.90 | Black with logo, Black without logo |
 | Multifunktionaler Rucksack mit Diebstahlschutz (`multifunktionaler-rucksack-mit-diebstahlschutz-b9d9f9`) | 2 | 2 | 31.95–36.28 | 66.90 | Black  without logo, Black |
 | Wandsticker Gans aus Holz (`wandsticker-gans-aus-holz-610300`) | 2 | 2 | 2.48–4.04 | 16.90 | Resin, Wood |
@@ -205,6 +247,16 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Matte Metall-Glitzer Lidschatten-Palette, 30 Farben (`matte-metall-glitzer-lidschatten-palette-30-fa-891840`) | 2 | 2 | 2.1–2.1 | 16.90 | 1 Style, 2 Style |
 | Silky Tip Doppelseitiger Eyeliner (`silky-tip-doppelseitiger-eyeliner-609900`) | 2 | 2 | 2.11–2.11 | 16.90 | Black 4ml, Brown 4 Ml |
 | Soft-Matte Foundation mit langer Haltbarkeit (`soft-matte-foundation-mit-langer-haltbarkeit-632500`) | 2 | 2 | 3.44–3.44 | 16.90 | Natural Color, Ivory White |
-| Echtes Leder Rucksack – 20 L, Anti-Diebstahl (`echtes-leder-rucksack-20-l-anti-diebstahl-612300`) | 2 | 2 | 46.01–46.01 | 78.90 | Wine Red, Black |
 | Contour Compact mit integriertem Highlight (`contour-compact-mit-integriertem-highlight-624400`) | 2 | 2 | 13.27–13.27 | 23.90 | Honey Corouli Plate, Strawberry Creme Cassis G B |
-| Büro- und Fahrkarten-Case aus Leder (`buro-und-fahrkarten-case-aus-leder-604800`) | 2 | 2 | 4.86–4.86 | 16.90 | Black, Orange |
+| Make-up Set – Avantgarde Look (`make-up-set-avantgarde-look-653100`) | 2 | 2 | 12.54–12.54 | 25.90 | Beauty Kits 1 Foreign Edition, Beauty Kits 2 Foreign Edition |
+| Spielzeug-Make-up-Set für Mädchen 4-6 Jahre (`spielzeug-make-up-set-fur-madchen-4-6-jahre-625100`) | 2 | 2 | 6.8–6.8 | 24.90 | Rose Red, Orange Pink |
+| Vera Vollnarbigleder Crossbody Tasche (`vera-vollnarbigleder-crossbody-tasche-608500`) | 2 | 2 | 15.28–15.28 | 37.90 | Black, Brown |
+| Kartenhalter mit Reissverschluss aus Rindsleder (`kartenhalter-mit-reissverschluss-aus-rindslede-606400`) | 2 | 2 | 9.14–9.14 | 19.90 | Blue, Brown |
+| Flüssige Foundation mit Concealer und Öl-Kontrolle (`flussige-foundation-mit-concealer-und-ol-kontr-640000`) | 2 | 2 | 2.63–2.63 | 16.90 | MK218 01 White, MK218 02 Natural |
+| Achtfarbige Lidschatten-Palette Hexagonal Star Diamond (`achtfarbige-lidschatten-palette-hexagonal-star-545536`) | 2 | 2 | 2.57–2.57 | 16.90 | Taro powder purple plate, Honey orange yellow plate |
+| Feines Perlen-Matte Fixierpuder (`feines-perlen-matte-fixierpuder-442560`) | 2 | 2 | 11.44–11.44 | 20.90 | Fine pearl, Matte |
+| Bluetooth-Lautsprecher mit Resonanz & Ladefunktion (`bluetooth-lautsprecher-mit-resonanz-ladefunkti-602900`) | 2 | 2 | 15.28–15.28 | 33.90 | Black, White |
+| Acryl-Lautsprecher, Metall, modern minimalistisch (`acryl-lautsprecher-metall-modern-minimalistisc-622200`) | 2 | 2 | 20.83–24.31 | 62.90 | Blue-S, Gold-L |
+| Lernspielzeug für Kinder – Hundert-Zahlen-Tafel (`lernspielzeug-fur-kinder-hundert-zahlen-tafel-607600`) | 2 | 2 | 2.67–3.95 | 27.90 | Hundred count Board, Hundreds Of Boxes |
+| Programmierbarer Roboterarm Bausatz (`programmierbarer-roboterarm-bausatz-618900`) | 2 | 2 | 30.38–36.81 | 87.90 | T1110 Dynamic Edition, T2007 Dynamic Edition |
+| Silber Armband mit Drachenknoten und Kordel (`silber-armband-mit-drachenknoten-und-kordel-636900`) | 2 | 2 | 27.6–27.6 | 37.90 | Silver, White K |
