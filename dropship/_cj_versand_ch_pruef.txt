@@ -12846,3 +12846,5 @@ mannliche-sportuhr-mit-quarzwerk-607200	2601260546171607500	7	6.90	ok	landeseite
 einfacher-stadt-rucksack-624400	2602260706331624700	16	14.96	ok	landeseite
 casual-kapuzenpullover-605800	2607130449571606400	16	8.53	ok	landeseite
 fashionable-herren-armbanduhr-608300	2601230849061608600	7	8.19	ok	landeseite
+premium-business-rucksack-fur-herren-633500	2602230650201634000	16	15.92	ok	landeseite
+farbtrendige-jugenduhr-609600	2601230622271600000	7	5.29	ok	landeseite
