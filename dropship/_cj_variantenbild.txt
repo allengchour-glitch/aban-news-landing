@@ -8238,3 +8238,26 @@ gid://shopify/Product/15493861212545	zugeordnet	45	Damen Body mit Spitze und Cut
 gid://shopify/Product/15493861409153	zugeordnet	12	One-Shoulder Halterneck-Kleid
 gid://shopify/Product/15493861802369	zugeordnet	16	Ärmelloses Schlitzkleid mit Rollkragen
 gid://shopify/Product/15493862162817	zugeordnet	98	Weihnachts-Pullover für Damen mit Rundhals
+gid://shopify/Product/15493862293889	zugeordnet	45	Damen Hoodie mit Ahornblatt-Camouflage-Print
+gid://shopify/Product/15493862424961	zugeordnet	36	Kapuzenpullover im Streetwear-Stil für Damen
+gid://shopify/Product/15493862588801	zugeordnet	88	Kapuzenpullover mit 3D-Print für Damen
+gid://shopify/Product/15493862949249	zugeordnet	48	Kapuzenpullover mit Fleecefutter und Stehkragen
+gid://shopify/Product/15493863211393	zugeordnet	30	Thermisches Outdoor-Kapuzenhoodie für Herren
+gid://shopify/Product/15493863309697	zugeordnet	20	Sportlicher Freizeit-Hoodie für Herren
+gid://shopify/Product/15493863440769	zugeordnet	80	Henley Langarm-Hoodie mit Reissverschluss
+gid://shopify/Product/15493863571841	zugeordnet	25	Herren Rundhals-Pullover in Unifarben
+gid://shopify/Product/15493863735681	zugeordnet	45	Colorblock Strickjacke für Herren
+gid://shopify/Product/15493863866753	zugeordnet	48	Herren Hoodie mit Katzen-Print
+gid://shopify/Product/15493863997825	zugeordnet	50	Herren-Hoodie mit Fleecefutter
+gid://shopify/Product/15493864096129	zugeordnet	30	Personalisierter Street Hoodie für Herren
+gid://shopify/Product/15493864358273	zugeordnet	40	Retro Casual Pullover mit Stehkragen
+gid://shopify/Product/15493864489345	zugeordnet	80	Herren Corduroy Hoodie Langarm
+gid://shopify/Product/15493864653185	zugeordnet	30	Herren Strickpullover mit Kerbkragen und Patchwork
+gid://shopify/Product/15493865243009	zugeordnet	35	Herren Fleece-Pullover mit Stehkragen
+gid://shopify/Product/15493865537921	zugeordnet	30	Herren Lammwoll-Pullover mit Stehkragen
+gid://shopify/Product/15493865734529	zugeordnet	7	Vintage Kapuzenpullover aus Baumwolle
+gid://shopify/Product/15493865800065	zugeordnet	33	Herren Jeans Straight Loose Business
+gid://shopify/Product/15493865996673	zugeordnet	8	Herren Loose Fit Straight Jeans
+gid://shopify/Product/15493871600001	zugeordnet	72	Retro-Denimkleid im A-Linien-Schnitt
+gid://shopify/Product/15493872451969	zugeordnet	40	Lässiges V-Neck T-Shirt mit kurzen Ärmeln
+gid://shopify/Product/15493872648577	zugeordnet	20	Gemustertes ärmelloses Damen T-Shirt mit Rundhals
