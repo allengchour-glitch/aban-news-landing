@@ -22,7 +22,7 @@
    «In den Warenkorb» für Ein-Varianten-Ware — NICHT für «Selbst gestalten»-Produkte (Tag selbst-gestalten): dort braucht
    es den Editor, der Weg führt über die Produktseite. */
 (function(){
-  var KEY='lux_wish', OK=/^[^\s\/\\?#<>"'&%]{1,255}$/;
+  var KEY='lux_wish', OK=/^[^\s\u0000-\u001f\u007f\/\\?#<>"'&%]{1,255}$/;
   var grid=document.getElementById('lux-wl-grid'), head=document.getElementById('lux-wl-head'),
       cnt=document.getElementById('lux-wl-count'), note=document.getElementById('lux-wl-note'),
       leer=document.getElementById('lux-wl-empty'), clr=document.getElementById('lux-wl-clear');
@@ -30,6 +30,11 @@
     if(!Array.isArray(l))l=[]; var seen={}; return l.filter(function(h){if(typeof h!=='string'||!OK.test(h)||seen[h])return false;seen[h]=1;return true;});}
   function schreiben(l){try{localStorage.setItem(KEY,JSON.stringify(l));}catch(e){}try{window.dispatchEvent(new Event('lux-wish'));}catch(e){}}   /* 21.10.: Zähler im Kopf nachziehen */
   function ev(n){try{if(typeof window.clarity==='function')window.clarity('event',n);}catch(e){}}   /* nur Ereignisnamen */
+  function korbMelden(){   /* Horizon-Kopf (cart-icon.js) und Schublade hören nur auf das Ereignis cart:update — ohne es bleibt die Zahl im Kopf auf 0 */
+    fetch('/cart.js',{headers:{'Accept':'application/json'}}).then(function(r){return r.json();}).then(function(c){
+      var evn=new Event('cart:update',{bubbles:true});evn.detail={resource:c,sourceId:'lux-merkliste',data:{itemCount:c.item_count}};document.dispatchEvent(evn);
+    }).catch(function(){});
+  }
   function el(tag,css,text){var e=document.createElement(tag);if(css)e.style.cssText=css;if(text!=null)e.textContent=text;return e;}
   function chf(c){return 'CHF '+(c/100).toFixed(2);}
   function zaehler(){var n=grid.children.length;cnt.textContent=n===1?'1 Artikel gemerkt':n+' Artikel gemerkt';
@@ -52,9 +57,10 @@
     if(frei&&v.length===1&&v[0].available!==false&&!eigen){
       b=el('button','display:block;width:calc(100% - 24px);margin:auto 12px 12px;padding:10px;border:none;border-radius:8px;background:#1a1a1a;color:#fff;font-size:14px;cursor:pointer;','In den Warenkorb');
       b.type='button';
-      b.addEventListener('click',function(){b.disabled=true;b.textContent='…';
+      var imKorb=false;
+      b.addEventListener('click',function(){if(imKorb){location.href='/cart';return;}b.disabled=true;b.textContent='…';
         fetch('/cart/add.js',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({items:[{id:v[0].id,quantity:1}]})})
-          .then(function(r){if(!r.ok)throw 0;b.textContent='✓ Im Warenkorb';b.style.background='#2e6b3f';ev('merkliste_liste_warenkorb');})
+          .then(function(r){if(!r.ok)throw 0;imKorb=true;b.disabled=false;b.textContent='✓ Im Warenkorb – ansehen';b.style.background='#2e6b3f';ev('merkliste_liste_warenkorb');korbMelden();})
           .catch(function(){b.disabled=false;b.textContent='Nicht möglich – Produktseite öffnen';b.onclick=function(){location.href=p.url;};});});
     }else{
       b=el('a','display:block;margin:auto 12px 12px;padding:10px;border:1px solid rgba(0,0,0,.2);border-radius:8px;text-align:center;text-decoration:none;color:inherit;font-size:14px;',
@@ -83,16 +89,21 @@
   });
   document.addEventListener('click',function(e){
     var b=e.target.closest&&e.target.closest('.lux-wl-rm');if(!b)return;
-    var h=b.getAttribute('data-h');ev('merkliste_liste_entfernt');schreiben(lesen().filter(function(x){return x!==h;}));
-    b.parentElement.remove();zaehler();
+    var h=b.getAttribute('data-h'), k=b.parentElement, nx=k.nextElementSibling||k.previousElementSibling;
+    ev('merkliste_liste_entfernt');schreiben(lesen().filter(function(x){return x!==h;}));
+    k.remove();zaehler();
+    var f=nx&&nx.querySelector('.lux-wl-rm');   /* Tastaturfokus nicht verlieren */
+    if(f){f.focus();}else{leer.setAttribute('tabindex','-1');leer.focus();}
   });
   grid.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a');if(a)ev('merkliste_liste_produkt');});
+  window.addEventListener('pageshow',function(e){if(e.persisted)location.reload();});   /* Zurück-Taste (bfcache): Liste neu lesen */
+  window.addEventListener('storage',function(e){if(e.key===KEY||e.key===null)location.reload();});   /* anderer Tab hat die Liste geändert */
   var timer;
   clr.addEventListener('click',function(){
     if(clr.getAttribute('data-ask')!=='1'){clr.setAttribute('data-ask','1');clr.textContent='Wirklich alle entfernen?';
       timer=setTimeout(function(){clr.removeAttribute('data-ask');clr.textContent='Alle entfernen';},4000);return;}
     ev('merkliste_liste_leeren');clearTimeout(timer);clr.removeAttribute('data-ask');clr.textContent='Alle entfernen';
-    schreiben([]);grid.innerHTML='';note.style.display='none';zaehler();
+    schreiben([]);grid.innerHTML='';note.style.display='none';zaehler();leer.setAttribute('tabindex','-1');leer.focus();
   });
 })();
 </script>
