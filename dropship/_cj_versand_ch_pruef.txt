@@ -12350,3 +12350,15 @@ aufbewahrungstasche-mit-griff-638700	2607101058401639400	16	11.23	ok	landeseite
 kuhlweste-fur-spaziergange-602500	2605060203201603300	16	4.79	ok	landeseite
 herzformige-wasche-box-637200	2607101017011637900	16	5.41	ok	landeseite
 elch-themen-weste-fur-haustiere-609000	2510300729471609300	16	5.42	ok	landeseite
+wecker-mit-aufwachlicht-625100	2607100928451625800	16	7.85	ok	landeseite
+warmende-hundekleidung-fur-herbst-und-winter-628400	2510081028031628600	16	6.62	ok	landeseite
+wasserdichte-hundejacke-625600	2509250353531625800	16	7.69	ok	landeseite
+velours-wintermantel-fur-grosse-hunde-624300	2506270924201624600	16	8.53	ok	landeseite
+regenponcho-fur-hunde-604800	2506180838541605200	16	8.79	ok	landeseite
+quarz-armbanduhr-622700	2604051010111623100	7	6.98	ok	landeseite
+reise-makeup-bursten-628100	2504010556491628800	16	5.50	ok	landeseite
+herz-und-sternschmuckkette-603000	2607111244341603600	16	4.50	ok	landeseite
+pinselreinigungsarmreif-629100	2503270548251629400	16	5.00	ok	landeseite
+wasserdichte-herrenuhr-mit-multi-hand-anzeige-614200	2604050916521614600	7	6.49	ok	landeseite
+faserhaar-gradienten-bursten-set-16er-628200	2503180522441628400	16	6.77	ok	landeseite
+reise-make-up-pinsel-set-605800	2503170617171606000	16	7.15	ok	landeseite
