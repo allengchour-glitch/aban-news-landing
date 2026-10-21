@@ -1370,7 +1370,9 @@ for was12, schritte12, short12, stop12, erwartet12 in (
         ("mit einem neuen Short 1,0 (kommt mit schon gekauften Coins): der Stop bleibt (Plan-Ende 2,1 > 1,2), der Abgleich hebt ihn am Laufende an",
          [("perp", "SELL", 1.0, False)], 1.6, 1.2, 1.2),
         ("mit einem kleinen neuen Short 0,05: nur bis aufs Plan-Ende (2,55) verkleinert, nicht bis auf das, was jetzt ungesichert ist (2,5)",
-         [("perp", "SELL", 0.05, False)], 3.0, 2.6, 2.55)):
+         [("perp", "SELL", 0.05, False)], 3.0, 2.6, 2.55),
+        ("mit einem reduceOnly-Verkauf 0,05 (schliesst einen Perp-Long, KEIN neuer Short — R14-M53): zählt nicht mit, der Stop schrumpft auf 2,5",
+         [("perp", "SELL", 0.05, True)], 3.0, 2.6, 2.5)):
     k = neues_konto(400000)
     cfg = L.einstellungen(env_echt(kapital=400000))
     spot, fut = L.Spot(cfg["spot"]), L.Fut(cfg["futures"])
