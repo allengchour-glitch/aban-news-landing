@@ -12879,3 +12879,15 @@ batterietester-mit-lagerbox-kapazitatsprufer-624100	2412020130051624300	16	11.82
 herren-quarz-armband-634200	2601300606531634600	7	6.62	ok	landeseite
 smart-wi-fi-taste-mit-tuya-app-und-sprachsteue-626700	2411250727481626900	7	8.74	ok	landeseite
 kabelloser-4-in-1-lader-617700	2411140112321617900	7	9.50	ok	landeseite
+mannliche-armbanduhr-mit-mehreren-zeitzonen-604800	2512070832291605100	7	9.21	ok	landeseite
+vintage-ohrclips-mit-saturn-motiv-639900	2607060857251630500	16	4.50	ok	landeseite
+automatische-herren-armbanduhr-mit-tourbillon-631500	2510020754241631800	16	8.25	ok	landeseite
+business-herren-mechanik-uhr-608700	2509290246161608900	16	6.40	ok	landeseite
+intelligentes-turschloss-mit-gesichtserkennung-614900	2411010517161615100	3	55.81	ok	landeseite
+elektrischer-handmassage-compress-602100	2410300906031602600	7	14.38	ok	landeseite
+bequeme-damen-langarm-plaid-shirt-mit-knopfen-609100	2607130638371609700	16	7.71	ok	landeseite
+gestrickter-pullover-mit-schleifenknoten-626900	2607130440001627800	16	9.07	ok	landeseite
+einfarbiges-blusenhemd-mit-umlegekragen-635300	2607130302121635900	16	8.11	ok	landeseite
+grosses-leder-rucksack-set-607800	2603020552471608100	16	19.06	ok	landeseite
+lose-damenbluse-mit-lapel-604600	2607130130591605200	16	6.90	ok	landeseite
+manner-rucksack-fur-den-arbeitsweg-607600	2603020538411607900	16	21.16	ok	landeseite
