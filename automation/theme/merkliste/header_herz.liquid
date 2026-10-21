@@ -1,0 +1,13 @@
+  {%- comment -%} LUX-WISH-HEADER (21.10.2026, Kollegen-Feedback 16.10.: «die Merkliste finde ich nirgends»): Herz mit Zähler im Kopf, Ziel /pages/merkliste. Zähler und Füllung setzt das Skript in layout/theme.liquid (localStorage lux_wish); Stil unten im stylesheet-Block (LUX-WISH-HEADER). {%- endcomment -%}
+  <a
+    href="{{ routes.root_url | append: '/pages/merkliste' | replace: '//', '/' }}"
+    class="header-actions__action lux-wish-link{% if display_style == 'text' %} header-actions__text-style{% endif %}"
+    aria-label="Merkliste"
+    {% if request.path contains '/pages/merkliste' %}aria-current="page"{% endif %}
+    rel="nofollow"
+    data-testid="lux-wish-link"
+  >
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20.5s-7.5-4.6-9.4-9.2C1.2 7.9 3.3 4.5 6.7 4.5c2 0 3.5 1.1 5.3 3.1 1.8-2 3.3-3.1 5.3-3.1 3.4 0 5.5 3.4 4.1 6.8-1.9 4.6-9.4 9.2-9.4 9.2z"/></svg>
+    <span class="lux-wish-count" data-lux-wish-count hidden></span>
+  </a>
+

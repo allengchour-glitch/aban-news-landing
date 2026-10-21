@@ -1,0 +1,146 @@
+  <!-- LUX-WISH:BEGIN v3 -->
+  <style>
+    /* LUX-WISH v3 (21.10.2026, Kollegen-Feedback 16.10.: «Herz nur in der Übersicht, nicht in der Produktansicht; die Liste finde ich nirgends»;
+       v3 nach unabhängiger Prüfung: Kopf-Herz auf dem Handy ohne Logo-Kollision (Stil in snippets/header-actions.liquid), Herz am Hauptbild,
+       Hinweis oben/unten ohne Verdeckung, Barrierefreiheit, Unicode-Handles). Schlüssel `lux_wish` und Klasse `.lux-wish` bleiben (Wächter merkliste_wache.py). */
+    .lux-wish{position:absolute;top:8px;right:8px;z-index:3;width:34px;height:34px;border-radius:50%;border:none;cursor:pointer;background:rgba(255,255,255,.92);color:#1a1a1a;font-size:19px;line-height:1;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 4px rgba(0,0,0,.15);}
+    .lux-wish::before{content:'';position:absolute;inset:-5px;}
+    .lux-wish.on{color:#c0392b;}
+    .lux-wish:focus-visible,.lux-wish-link:focus-visible,.lux-wish-pdp__link:focus-visible,#lux-wish-toast a:focus-visible,#lux-wish-toast button:focus-visible{outline:2px solid #1a1a1a;outline-offset:2px;}
+    .product-card{position:relative;}
+    .lux-wish.lux-wish--bild{top:12px;right:12px;width:44px;height:44px;font-size:23px;box-shadow:0 1px 6px rgba(0,0,0,.22);}
+    .lux-wish.lux-wish--bild::before{inset:0;}
+    @media (min-width:750px){.lux-wish.lux-wish--bild{display:none;}}
+    .lux-wish-pdp{display:flex;align-items:center;flex-wrap:wrap;gap:0 18px;margin:12px 0 4px;}
+    .lux-wish.lux-wish--pdp{position:relative;top:auto;right:auto;width:auto;height:auto;min-height:44px;padding:0 20px;gap:8px;border:1px solid rgba(26,26,26,.55);border-radius:8px;background:transparent;box-shadow:none;font:inherit;font-size:15px;color:inherit;}
+    .lux-wish--pdp::before{display:none;}
+    .lux-wish--pdp .lux-wish__icon{font-size:20px;line-height:1;}
+    .lux-wish--pdp.on{border-color:#c0392b;color:#c0392b;background:rgba(192,57,43,.06);}
+    .lux-wish-pdp__link{display:inline-flex;align-items:center;min-height:44px;font-size:14px;color:inherit;text-decoration:underline;text-underline-offset:3px;}
+    .lux-wish-pdp__link[hidden]{display:none;}
+    #lux-wish-toast{position:fixed;left:16px;right:16px;max-width:440px;bottom:88px;z-index:9990;display:flex;align-items:center;flex-wrap:wrap;gap:0 6px;padding:2px 4px 2px 16px;border-radius:12px;background:#1a1a1a;color:#fff;font-size:14px;line-height:1.35;box-shadow:0 6px 24px rgba(0,0,0,.28);opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .22s ease,transform .22s ease,visibility 0s linear .22s;}
+    #lux-wish-toast.show{opacity:1;visibility:visible;transform:none;transition-delay:0s;}
+    #lux-wish-toast.oben{bottom:auto;top:12px;transform:translateY(-10px);}
+    #lux-wish-toast.oben.show{transform:none;}
+    #lux-wish-toast .lux-wish-toast__text{flex:1 1 auto;padding:10px 0;}
+    #lux-wish-toast a{display:inline-flex;align-items:center;min-height:44px;padding:0 6px;color:#fff;font-weight:600;white-space:nowrap;text-decoration:underline;text-underline-offset:3px;}
+    #lux-wish-toast a[hidden]{display:none;}
+    #lux-wish-toast button{width:44px;height:44px;border:none;background:transparent;color:#fff;font-size:18px;line-height:1;cursor:pointer;}
+    @media (prefers-reduced-motion:reduce){#lux-wish-toast{transition:none;}}
+    @media (forced-colors:active){#lux-wish-toast{border:1px solid CanvasText;}.lux-wish{border:1px solid CanvasText;}}
+  </style>
+  <script>
+  (function(){
+    var KEY='lux_wish', OK=/^[^\s\/\\?#<>"'&%]{1,255}$/, mem=null, memOnly=false, tt, HERZ=String.fromCharCode(9829), LEER=String.fromCharCode(9825);
+    var ROOT=(window.Shopify&&Shopify.routes&&Shopify.routes.root)||'/', LISTE=ROOT+'pages/merkliste';
+    function list(){
+      var l, seen={};
+      if(memOnly&&mem){l=mem;}else{try{l=JSON.parse(localStorage.getItem(KEY)||'[]');}catch(e){l=mem||[];}}
+      if(!Array.isArray(l))l=[];
+      return l.filter(function(h){if(typeof h!=='string'||!OK.test(h)||seen[h])return false;seen[h]=1;return true;});
+    }
+    function save(l){mem=l;try{localStorage.setItem(KEY,JSON.stringify(l));memOnly=false;return true;}catch(e){memOnly=true;return false;}}
+    function ev(n){try{if(typeof window.clarity==='function')window.clarity('event',n);}catch(e){}}   /* nur Ereignisnamen mit Ort, nie Handles (Nutzung messbar, Betreiber-Punkt 18.10.) */
+    function each(cls,fn){var c=document.getElementsByClassName(cls);for(var i=0;i<c.length;i++)fn(c[i]);}   /* getElementsByClassName statt querySelectorAll: die Seite hat ~2,5 MB HTML, ein Selektor-Durchlauf kostet dort mehrere ms */
+    function attr(e,k,v){if(e.getAttribute(k)!==v)e.setAttribute(k,v);}   /* nur schreiben, was sich ändert (24 Herzen pro Seite) */
+    function paint(){
+      var l=list(), n=l.length;
+      each('lux-wish',function(b){
+        var on=l.indexOf(b.dataset.handle)>-1, ic=b.querySelector('.lux-wish__icon'), tx=b.querySelector('.lux-wish__txt');
+        if(b.classList.contains('on')!==on)b.classList.toggle('on',on);
+        if(tx){   /* beschrifteter Knopf: der sichtbare Text ist der Name und trägt den Zustand («Merken»/«Gemerkt») */
+          if(b.hasAttribute('aria-pressed'))b.removeAttribute('aria-pressed');
+          if(b.hasAttribute('aria-label'))b.removeAttribute('aria-label');
+          var t=on?'Gemerkt':'Merken';if(tx.textContent!==t)tx.textContent=t;
+        }else{    /* Herz allein: fester Name + Schalter-Zustand */
+          attr(b,'aria-pressed',on?'true':'false');
+          if(!b.hasAttribute('aria-label'))b.setAttribute('aria-label','Zur Merkliste');
+        }
+        var h=on?HERZ:LEER;
+        if(ic){if(ic.textContent!==h)ic.textContent=h;}else if(!tx&&b.textContent!==h){b.textContent=h;}
+      });
+      each('lux-wish-count',function(c){var t=n>99?'99+':String(n);if(c.textContent!==t)c.textContent=t;if(c.hidden===!!n)c.hidden=!n;});
+      each('lux-wish-count-text',function(c){var t=n?' ('+n+')':'';if(c.textContent!==t)c.textContent=t;});
+      each('lux-wish-link',function(a){
+        if(a.classList.contains('on')!==(n>0))a.classList.toggle('on',n>0);
+        attr(a,'aria-label',n?'Merkliste, '+n+' Artikel':'Merkliste');
+      });
+    }
+    function ui(){   /* Hinweis + unsichtbare Ansage-Region einmal anlegen (beides bleibt stehen: Screenreader melden nur Änderungen in einer vorhandenen Region) */
+      var t=document.getElementById('lux-wish-toast');
+      if(t||!document.body)return t;
+      var lv=document.createElement('div');lv.id='lux-wish-live';lv.setAttribute('role','status');lv.setAttribute('aria-live','polite');lv.setAttribute('aria-atomic','true');
+      lv.style.cssText='position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;';
+      document.body.appendChild(lv);
+      t=document.createElement('div');t.id='lux-wish-toast';
+      var s=document.createElement('span');s.className='lux-wish-toast__text';t.appendChild(s);
+      var a=document.createElement('a');a.href=LISTE;a.textContent='Merkliste ansehen';a.hidden=true;t.appendChild(a);
+      var x=document.createElement('button');x.type='button';x.setAttribute('aria-label','Hinweis schliessen');x.textContent=String.fromCharCode(10005);t.appendChild(x);
+      x.addEventListener('click',schliesse);
+      t.addEventListener('mouseenter',function(){clearTimeout(tt);});
+      t.addEventListener('focusin',function(){clearTimeout(tt);});
+      t.addEventListener('mouseleave',function(){halte(2500);});
+      t.addEventListener('focusout',function(){halte(2500);});
+      document.body.appendChild(t);
+      document.addEventListener('keydown',function(e){if(e.key==='Escape'&&t.classList.contains('show'))schliesse();});
+      return t;
+    }
+    function halte(ms){clearTimeout(tt);tt=setTimeout(schliesse,ms);}
+    function schliesse(){clearTimeout(tt);var t=document.getElementById('lux-wish-toast');if(t)t.classList.remove('show');}
+    function platz(t,q){   /* unten über Cookie-Banner/Kaufleiste; deckt er den eben gedrückten Knopf zu, wandert er nach oben */
+      var h=window.innerHeight, b=88;
+      ['#lx-cookie-banner','.sticky-add-to-cart__bar[data-stuck="true"]'].forEach(function(s){
+        var e=document.querySelector(s); if(!e)return;
+        var r=e.getBoundingClientRect();
+        if(r.height>0&&r.top<h&&r.bottom>h-40)b=Math.max(b,h-r.top+12);
+      });
+      t.classList.remove('oben');t.style.bottom=b+'px';
+      if(q&&q.isConnected){
+        var r=q.getBoundingClientRect(), tr=t.getBoundingClientRect();
+        if(!(r.bottom<tr.top-8||r.top>tr.bottom+8||r.right<tr.left||r.left>tr.right)){t.classList.add('oben');t.style.bottom='';}
+      }
+    }
+    function zeige(ansage,kurz,mitLink,quelle,sichtbar){   /* ansage = vollständiger Satz für Screenreader, kurz = was auf dem Hinweis steht */
+      var t=ui(); if(!t)return;
+      var lv=document.getElementById('lux-wish-live');
+      if(lv){lv.textContent='';setTimeout(function(){lv.textContent=ansage;},60);}
+      if(!sichtbar)return;
+      t.querySelector('.lux-wish-toast__text').textContent=kurz;
+      t.querySelector('a').hidden=!mitLink;
+      var nu=document.getElementById('luxas-nudge'); if(nu)nu.hidden=true;   /* Hinweisblase des Assistenten nicht unter dem Hinweis */
+      requestAnimationFrame(function(){platz(t,quelle);t.classList.add('show');});
+      halte(mitLink?6000:3500);
+    }
+    function bump(){
+      if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+      each('lux-wish-link',function(a){
+        try{a.animate([{transform:'scale(1)'},{transform:'scale(1.3)'},{transform:'scale(1)'}],{duration:500,easing:'ease'});}catch(e){}
+      });
+    }
+    document.addEventListener('click',function(e){
+      var b=e.target.closest&&e.target.closest('.lux-wish');if(!b)return;
+      e.preventDefault();e.stopPropagation();
+      var h=b.dataset.handle;if(!h||!OK.test(h))return;
+      var ort=b.classList.contains('lux-wish--pdp')?'produkt':b.classList.contains('lux-wish--bild')?'bild':'karte';
+      var l=list(),i=l.indexOf(h);
+      if(i>-1){l.splice(i,1);}else{l.push(h);}
+      var ok=save(l);paint();
+      var sicht=ort==='karte'||!ok;   /* auf der Produktseite zeigen Knopf + Zähler + Link schon alles */
+      if(i>-1){ev('merkliste_entfernt_'+ort);zeige('Von der Merkliste entfernt','Entfernt',false,b,sicht);}
+      else{ev('merkliste_hinzu_'+ort);bump();
+        if(ok)zeige('Zur Merkliste hinzugefügt ('+l.length+')','Gemerkt ('+l.length+')',true,b,sicht);
+        else zeige('Merken geht in diesem Browser gerade nicht – die Liste gilt nur, solange du auf dieser Seite bleibst.','Merken geht hier gerade nicht – nur bis zum Verlassen der Seite',false,b,true);}
+    },true);
+    document.addEventListener('click',function(e){
+      var a=e.target.closest&&e.target.closest('.lux-wish-link, .lux-wish-pdp__link, #lux-wish-toast a');if(!a)return;
+      ev(a.closest('#lux-wish-toast')?'merkliste_hinweis_klick':a.classList.contains('lux-wish-link')?'merkliste_kopf_klick':'merkliste_produkt_link_klick');
+    },true);
+    window.addEventListener('storage',function(e){if(e.key===KEY||e.key===null)paint();});
+    window.addEventListener('lux-wish',paint);
+    window.addEventListener('pageshow',function(e){if(e.persisted)paint();});
+    function start(){ui();paint();}
+    if(document.readyState!=='loading'){start();}else{document.addEventListener('DOMContentLoaded',start);}
+    new MutationObserver(function(m){for(var i=0;i<m.length;i++){for(var j=0;j<m[i].addedNodes.length;j++){var n=m[i].addedNodes[j];if(n.nodeType===1&&(n.classList.contains('lux-wish')||n.classList.contains('lux-wish-link')||n.getElementsByClassName('lux-wish').length||n.getElementsByClassName('lux-wish-link').length)){paint();return;}}}}).observe(document.documentElement,{childList:true,subtree:true});
+  })();
+  </script>
+  <!-- LUX-WISH:END -->

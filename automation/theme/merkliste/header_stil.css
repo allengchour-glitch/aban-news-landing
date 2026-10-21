@@ -1,0 +1,77 @@
+  /* LUX-WISH-HEADER:BEGIN (21.10.2026) — Stil hier statt am Ende der 2,5-MB-Seite: kommt mit dem frühen Stylesheet, kein Sprung der Kopf-Symbole */
+  .lux-wish-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    height: 44px;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .lux-wish-link svg {
+    width: 22px;
+    height: 22px;
+    display: block;
+  }
+
+  .lux-wish-link svg path {
+    fill: none;
+    stroke: currentcolor;
+    stroke-width: 1.6;
+    stroke-linejoin: round;
+  }
+
+  .lux-wish-link.on svg path {
+    fill: #c0392b;
+    stroke: #c0392b;
+  }
+
+  .lux-wish-count {
+    position: absolute;
+    top: 1px;
+    right: -1px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    box-sizing: border-box;
+    border-radius: 9px;
+    background: #c0392b;
+    color: #fff;
+    font: 700 11px/18px system-ui, -apple-system, sans-serif;
+    text-align: center;
+    pointer-events: none;
+    box-shadow: 0 0 0 2px var(--color-background, #fff);
+  }
+
+  .lux-wish-count[hidden] {
+    display: none;
+  }
+
+  /* Handy: das Herz braucht Platz in der Kopfzeile — die rechte Spalte wird um 44 px breiter (Konto, Herz, Warenkorb à 44 px), das Logo schrumpft in seiner Mitte-Spalte
+     (gemessen 320–414 px: Logo und Konto-Symbol berühren sich nicht). */
+  @media screen and (max-width: 749.98px) {
+    #header-component .header__columns:has(.lux-wish-link) {
+      --header-template-columns: var(--header-mobile-bookend) var(--header-mobile-bookend) 1fr calc(var(--header-mobile-bookend) * 2) var(--header-mobile-bookend);
+    }
+  }
+
+  /* Tablet: die Hauptmenü-Zeile ist schon voll (bei 1024 px würde «Schuhe» ins «Mehr» rutschen) — Merkliste dort über Hinweis, Produktseite, Menü und Fusszeile. */
+  @media screen and (min-width: 750px) and (max-width: 1099.98px) {
+    .lux-wish-link {
+      display: none;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .lux-wish-count {
+      border: 1px solid LinkText;
+    }
+
+    .lux-wish-link.on svg path {
+      fill: Highlight;
+      stroke: Highlight;
+    }
+  }
+  /* LUX-WISH-HEADER:END */
