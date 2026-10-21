@@ -57,8 +57,9 @@
     }
   }
 
-  /* Tablet: die Hauptmenü-Zeile ist schon voll (bei 1024 px würde «Schuhe» ins «Mehr» rutschen) — Merkliste dort über Hinweis, Produktseite, Menü und Fusszeile. */
-  @media screen and (min-width: 750px) and (max-width: 1099.98px) {
+  /* Tablet und kleiner Laptop: die Hauptmenü-Zeile ist schon voll — gemessen: das Herz (44 px) schiebt bei ca. 1024 px «Schuhe», bei 1150 px «Schmuck & Uhren»,
+     bei 1280–1300 px «Beauty & Pflege» ins «Mehr» (bei 1366 und 1440 px nicht). Dort bleibt die Merkliste über Hinweis, Produktseite, Menü und Fusszeile erreichbar. */
+  @media screen and (min-width: 750px) and (max-width: 1349.98px) {
     .lux-wish-link {
       display: none;
     }

@@ -494,6 +494,7 @@
     if(nudgeGezeigt)return;
     try{if(sessionStorage.getItem('luxas.n')==='1')return}catch(e){}
     if(!panel.hidden||root.hasAttribute('data-hold'))return;
+    if(document.querySelector('#lux-wish-toast.show')){setTimeout(nudgeZeigen,7000);return;}   /* Merkliste-Hinweis steht gerade: Blase später */
     nudgeGezeigt=true;nudge.hidden=false;try{sessionStorage.setItem('luxas.n','1')}catch(e){}
     setTimeout(function(){nudge.hidden=true},9000);
   }

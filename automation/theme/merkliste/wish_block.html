@@ -25,7 +25,8 @@
     #lux-wish-toast .lux-wish-toast__text{flex:1 1 auto;padding:10px 0;}
     #lux-wish-toast a{display:inline-flex;align-items:center;min-height:44px;padding:0 6px;color:#fff;font-weight:600;white-space:nowrap;text-decoration:underline;text-underline-offset:3px;}
     #lux-wish-toast a[hidden]{display:none;}
-    #lux-wish-toast button{width:44px;height:44px;border:none;background:transparent;color:#fff;font-size:18px;line-height:1;cursor:pointer;}
+    #lux-wish-toast button{flex:none;width:44px;height:44px;margin-left:auto;border:none;background:transparent;color:#fff;font-size:18px;line-height:1;cursor:pointer;}
+    @media (max-width:340px){#lux-wish-toast{padding-left:12px;}#lux-wish-toast a{padding:0 2px;font-size:13px;}}
     @media (prefers-reduced-motion:reduce){#lux-wish-toast{transition:none;}}
     @media (forced-colors:active){#lux-wish-toast{border:1px solid CanvasText;}.lux-wish{border:1px solid CanvasText;}}
   </style>
@@ -60,7 +61,7 @@
         if(ic){if(ic.textContent!==h)ic.textContent=h;}else if(!tx&&b.textContent!==h){b.textContent=h;}
       });
       each('lux-wish-count',function(c){var t=n>99?'99+':String(n);if(c.textContent!==t)c.textContent=t;if(c.hidden===!!n)c.hidden=!n;});
-      each('lux-wish-count-text',function(c){var t=n?' ('+n+')':'';if(c.textContent!==t)c.textContent=t;});
+      each('lux-wish-count-text',function(c){var t=n?String.fromCharCode(160)+'('+n+')':'';if(c.textContent!==t)c.textContent=t;   /* geschütztes Leerzeichen: ein inline-flex-Link schluckt ein gewöhnliches */});
       each('lux-wish-link',function(a){
         if(a.classList.contains('on')!==(n>0))a.classList.toggle('on',n>0);
         attr(a,'aria-label',n?'Merkliste, '+n+' Artikel':'Merkliste');
@@ -87,6 +88,11 @@
     }
     function halte(ms){clearTimeout(tt);tt=setTimeout(schliesse,ms);}
     function schliesse(){clearTimeout(tt);var t=document.getElementById('lux-wish-toast');if(t)t.classList.remove('show');}
+    function kopfunten(){   /* Unterkante der klebenden Kopfzone (Kopf + Suchleiste), damit der Hinweis oben nicht Menü/Warenkorb/Zähler verdeckt */
+      var m=12;
+      ['header-component','#luxsb-wrap'].forEach(function(s){var e=document.querySelector(s);if(!e)return;var r=e.getBoundingClientRect();if(r.height>0&&r.top<80&&r.bottom>m)m=r.bottom;});
+      return Math.round(Math.min(m+8,window.innerHeight*0.4));
+    }
     function platz(t,q){   /* unten über Cookie-Banner/Kaufleiste; deckt er den eben gedrückten Knopf zu, wandert er nach oben */
       var h=window.innerHeight, b=88;
       ['#lx-cookie-banner','.sticky-add-to-cart__bar[data-stuck="true"]'].forEach(function(s){
@@ -94,10 +100,10 @@
         var r=e.getBoundingClientRect();
         if(r.height>0&&r.top<h&&r.bottom>h-40)b=Math.max(b,h-r.top+12);
       });
-      t.classList.remove('oben');t.style.bottom=b+'px';
+      t.classList.remove('oben');t.style.top='';t.style.bottom=b+'px';
       if(q&&q.isConnected){
         var r=q.getBoundingClientRect(), tr=t.getBoundingClientRect();
-        if(!(r.bottom<tr.top-8||r.top>tr.bottom+8||r.right<tr.left||r.left>tr.right)){t.classList.add('oben');t.style.bottom='';}
+        if(!(r.bottom<tr.top-8||r.top>tr.bottom+8||r.right<tr.left||r.left>tr.right)){t.classList.add('oben');t.style.bottom='';t.style.top=kopfunten()+'px';}
       }
     }
     function zeige(ansage,kurz,mitLink,quelle,sichtbar){   /* ansage = vollständiger Satz für Screenreader, kurz = was auf dem Hinweis steht */
