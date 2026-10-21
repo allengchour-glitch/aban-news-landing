@@ -3435,3 +3435,6 @@
 15493869502849	Farbe:2+Grösse:2:2	2026-10-21	bestickter-kissenbezug-mit-blumenmuster-928000
 15493864718721	Farbe:5:5	2026-10-21	c60-smartwatch-mit-hd-display-und-temperaturme-658432
 15493864587649	Farbe:5:5	2026-10-21	vielseitige-sportuhr-fur-herren-600500
+15493862719873	Farbe:12:12	2026-10-21	kissenbezug-chrysantheme-einfarbig-688768
+15493858820481	stecker-eu	2026-10-21	multifunktionaler-handmixer-fur-babynahrung-614200
+15493858361729	Modell:6:6	2026-10-21	uv-led-gel-nagel-starter-kit-600500
