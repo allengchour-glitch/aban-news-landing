@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-20T10:09Z",
+ "stand": "2026-10-21T06:11Z",
  "datum_in_kasse": true,
  "bearbeitungszeit_tage": 1,
  "versand_werktage": [
@@ -61,13 +61,13 @@
    "profile": [
     "CH-Lager"
    ],
-   "anzahl": 2372
+   "anzahl": 2371
   },
   "cj": {
    "profile": [
     "General profile"
    ],
-   "anzahl": 53189
+   "anzahl": 53421
   }
  },
  "ch_lager_im_asien_profil": false,
@@ -84,7 +84,7 @@
   "je_quelle": {},
   "liste": [],
   "produkte": {
-   "gelesen": 1625,
+   "gelesen": 1624,
    "offen_vorher": 0,
    "geschrieben": 0,
    "unloesbar": 0,
