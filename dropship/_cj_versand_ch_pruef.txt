@@ -12285,3 +12285,14 @@ fahrrad-rucklicht-120512	1401725386248818688	16	7.43	ok	landeseite
 gro-volumiger-mutter-kind-feuchtegeber-651200	1610879521408954368	7	31.59	ok	landeseite
 fahrradlicht-set-mit-hoher-leistung-998464	1400715147839934464	7	8.57	ok	landeseite
 keramik-perlenkette-in-goldenem-finish-638100	2607120718101638700	16	4.50	ok	landeseite
+phototherapie-gesundheitslampe-479872	1609092859976757248	11	29.34	ok	landeseite
+kleiner-fischteich-fur-zuhause-600300	2502100523481600500	16	21.99	ok	landeseite
+fahrradlicht-set-mit-usb-ladung-292416	1391582767409664000	7	10.98	ok	landeseite
+kleiner-tragbarer-luftbefeuchter-007872	1607180965057671168	7	8.75	ok	landeseite
+frontscheinwerfer-furs-bike-298368	1391336331900227584	7	7.92	ok	landeseite
+gold-schmuckstein-ring-626000	2607120644231626600	16	4.52	ok	landeseite
+fahrrad-scheinwerfer-mit-usb-ladung-077760	1391334829886410752	7	8.24	ok	landeseite
+mobiltelefonhalterung-mit-starkem-licht-fur-ra-717632	1390878830041894912	7	8.84	ok	landeseite
+mini-aquarium-mit-bambusbasis-574464	1399209723202506752	7	15.13	ok	landeseite
+fahrrad-frontlicht-mit-usb-ladung-273920	1389184518551900160	7	11.43	ok	landeseite
+nachtsicht-fahrlicht-434944	1387297646129057792	16	8.79	ok	landeseite
