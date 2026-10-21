@@ -8358,3 +8358,6 @@ gid://shopify/Product/15521216921985	zugeordnet	12	Intelligente beheizte Schuhe 
 gid://shopify/Product/15521224753537	zugeordnet	30	Plüsch-Prinzessin Winterstiefel für Kinder
 gid://shopify/Product/15521392394625	zugeordnet	99	Herren Langarmhemd Slim Fit Business
 gid://shopify/Product/15521416282497	zugeordnet	24	Freizeit-Hemd für Herren – Frühling & Sommer
+gid://shopify/Product/15484906176897	zugeordnet	20	Herren Sommer Jacquard Hemd Kurzarm
+gid://shopify/Product/15484922888577	zugeordnet	24	Elegantes Freizeitkleid mit langen Ärmeln
+gid://shopify/Product/15484923838849	zugeordnet	20	Midi-Kleid mit 3/4-Ärmeln und Mesh

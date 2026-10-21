@@ -12282,3 +12282,4 @@ einfacher-feldfahrer-helm-96ba85	12BF16A5-1173-4AB3-AA18-8D9964BEEBED	16	12.21	o
 intelligenter-luftbefeuchter-fur-den-schreibti-023744	1611298383166189569	16	20.58	ok	landeseite
 gro-e-turbinen-mini-fan-340544	1611310319534616576	16	9.61	ok	landeseite
 fahrrad-rucklicht-120512	1401725386248818688	16	7.43	ok	landeseite
+gro-volumiger-mutter-kind-feuchtegeber-651200	1610879521408954368	7	31.59	ok	landeseite

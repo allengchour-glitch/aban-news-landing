@@ -1628,3 +1628,5 @@ gid://shopify/Product/16647029686663	ok	Rucksack Männer 56-75l mit Anti-Diebsta
 gid://shopify/Product/16647030833543	ok	Multifunktionaler Rucksack für Outdoor-Lauftraining
 gid://shopify/Product/16644310270343	ok	Echtes Leder Retro Rucksack
 gid://shopify/Product/16650218733959	ok	Rucksack aus Rindleder
+gid://shopify/Product/16655498609031	ok	Echtleder Reisetasche, Grosses Fassungsvermögen
+gid://shopify/Product/16655515713927	ok	Elektrische Küchenmaschine mit 8 Liter Kapazität
