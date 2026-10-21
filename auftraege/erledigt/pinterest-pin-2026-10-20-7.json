@@ -1,0 +1,53 @@
+{
+  "typ": "skript",
+  "skript": "pinterest_pin_erstellen.mjs",
+  "id": "pinterest-pin-2026-10-20-7",
+  "warum": "Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus auftraege/pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). 7 von 10 heute.",
+  "stand": "ok",
+  "begonnen": "2026-10-21T07:34:05.099Z",
+  "dauer_s": 59.6,
+  "ergebnis": {
+    "gepinnt": [
+      "herren-arbeitsjacke-mit-unifarbe-622300"
+    ],
+    "unklar": [],
+    "uebersprungen": [],
+    "schritte": [
+      "Warteschlange 193, quittiert 74, offen 172",
+      "Boards auf dem Profil: /luxestyleCH/home-geschenkideen/, /luxestyleCH/sommerkleider-damenmode-2026/, /luxestyleCH/herrenmode-schweiz/, /luxestyleCH/geschenkideen-schweiz/, /luxestyleCH/wohnen-deko/, /luxestyleCH/schmuck-accessoires/, /luxestyleCH/wellness-beauty/, /luxestyleCH/schuhe-sandalen/, /luxestyleCH/schlaf-aromatherapie/, /luxestyleCH/k%C3%BCche-genuss/, /luxestyleCH/tech-gadgets/, /luxestyleCH/leder-accessoires/, /luxestyleCH/wellness-self-care/, /luxestyleCH/beauty-pflege/",
+      "Pinnwand «Herrenmode Schweiz» (https://ch.pinterest.com/luxestyleCH/herrenmode-schweiz/, 698 Z.): Titel nicht da",
+      "Bild 80037 Bytes (image/jpeg)",
+      "Beschreibung eingetragen",
+      "Nachlesen: Titel auf der Pinnwand (750 Z.)"
+    ],
+    "bilder": [
+      "server:/var/lib/luxe-agent/ergebnis-angemeldet/pinterest-pin-2026-10-20-7-1-bild.png",
+      "server:/var/lib/luxe-agent/ergebnis-angemeldet/pinterest-pin-2026-10-20-7-2-ausgefuellt.png",
+      "server:/var/lib/luxe-agent/ergebnis-angemeldet/pinterest-pin-2026-10-20-7-3-nachher.png"
+    ],
+    "pin": {
+      "handle": "herren-arbeitsjacke-mit-unifarbe-622300",
+      "board": "Herrenmode Schweiz",
+      "title": "Herren-Arbeitsjacke mit Unifarbe"
+    }
+  },
+  "bilder_weiche": {
+    "oeffentlich": false,
+    "im_repo": [],
+    "auf_server": [
+      {
+        "datei": "/var/lib/luxe-agent/ergebnis-angemeldet/pinterest-pin-2026-10-20-7-1-bild.png",
+        "bytes": 268282
+      },
+      {
+        "datei": "/var/lib/luxe-agent/ergebnis-angemeldet/pinterest-pin-2026-10-20-7-2-ausgefuellt.png",
+        "bytes": 285884
+      },
+      {
+        "datei": "/var/lib/luxe-agent/ergebnis-angemeldet/pinterest-pin-2026-10-20-7-3-nachher.png",
+        "bytes": 121155
+      }
+    ],
+    "hinweis": "Bilder aus angemeldeten Diensten bleiben auf dem Server (Plan Hetzner Schritt 11, 13.10.2026). Für den Inhalt als Text: Auftragsart seite_text."
+  }
+}
