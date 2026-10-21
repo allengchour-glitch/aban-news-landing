@@ -8416,3 +8416,7 @@ gid://shopify/Product/15506324455809	zugeordnet	12	Sandaletten mit eckiger Kappe
 gid://shopify/Product/15506324750721	zugeordnet	40	Plateau Flip-Flops mit Strass
 gid://shopify/Product/15506410275201	zugeordnet	37	Plateau-Sandalen mit Schnallenriemen
 gid://shopify/Product/15506531254657	zugeordnet	22	Kinder Sandalen mit weicher Anti-Rutsch-Sohle
+gid://shopify/Product/15506536071553	zugeordnet	51	Mädchen Sneaker – Rutschfest & Warm
+gid://shopify/Product/15506538037633	zugeordnet	15	Wasserdichte Kinder-Regenstiefel mit Cartoon-Dino
+gid://shopify/Product/15506669142401	zugeordnet	6	Elegantes Neckholder-Kleid mit Schlitz
+gid://shopify/Product/15507718996353	zugeordnet	18	Plateau-Sandalen mit runder Kappe
