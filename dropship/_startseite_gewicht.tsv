@@ -1,4 +1,4 @@
-zeit	bytes	links	ueberschriften	h1	h1_versteckt	variant	karten	img	burst	zoom_out	proc_ms	cache
+zeit	bytes	links	ueberschriften	h1	h1_versteckt	variant	karten	img	burst	zoom_out	proc_ms	cache	fuss
 2026-10-14T09:57Z	2942812	833	151	1	1	360	124	419	120	120	955	0
 2026-10-14T09:59Z	2942810	833	150	1	0	360	124	419	120	120	1377	0
 2026-10-14T10:00Z	2947534	833	150	1	0	360	124	419	120	120	1419	0
@@ -12,3 +12,4 @@ zeit	bytes	links	ueberschriften	h1	h1_versteckt	variant	karten	img	burst	zoom_ou
 2026-10-19T05:35Z	2458226	833	30	1	0	0	124	311	120	0	1011	0
 2026-10-20T02:09Z	2485667	833	30	1	0	0	124	329	120	0	2145	0
 2026-10-20T22:11Z	2480816	833	30	1	0	0	124	327	120	0	1108	0
+2026-10-21T09:08Z	2524760	839	31	1	0	0	124	325	120	0	924	0	2407344

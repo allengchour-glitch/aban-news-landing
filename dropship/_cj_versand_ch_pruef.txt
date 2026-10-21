@@ -12537,3 +12537,15 @@ herren-cargo-hose-mit-viel-taschen-khaki-rot-g-605700	2507200257271605900	16	11.
 schwarze-damen-sneaker-leichtgewicht-atmungsak-779264	1743188739993636864	16	9.75	ok	landeseite
 sicherheits-schuhe-fur-herren-587520	1742742754939113472	16	14.48	ok	landeseite
 leichte-sommerhose-herren-615000	2507110325431615300	16	10.15	ok	landeseite
+fitness-laufschuhe-fur-outdoor-aktivitaten-238976	1740923139518902272	16	8.93	ok	landeseite
+weiche-madchen-schuhe-610000	2604240952581610600	16	10.15	ok	landeseite
+luxus-kissenhulle-mit-kern-612000	2603110223251612800	16	7.71	ok	landeseite
+herren-cargo-hose-mit-bandeln-und-grossen-tasc-613600	2506190147331613900	16	9.47	ok	landeseite
+retro-herren-trouser-606200	2506120956221606500	16	11.00	ok	landeseite
+memory-foam-halsstutze-623900	2603070101071624400	16	19.42	ok	landeseite
+braune-freizeit-hose-627800	2506040547321627900	16	11.72	ok	landeseite
+atmungsaktive-kissenbezuge-fur-kinder-608200	2602231203181608500	16	6.48	ok	landeseite
+winter-suede-schuhe-fur-herren-729792	1735589066034393088	16	20.46	ok	landeseite
+camo-overalls-fur-herren-618700	2505191004491619000	16	11.49	ok	landeseite
+streifen-sneaker-fur-herren-und-damen-137600	1733444253751189504	16	14.96	ok	landeseite
+wanderstock-mit-sitz-613100	2607100719151613800	0	-	KEINE CH-Option → DRAFT	landeseite
