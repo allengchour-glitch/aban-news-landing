@@ -66,6 +66,31 @@ Nachtrag zum Morgenbeleg: [Folgelauf gegen 14:05–14:08 Zürich mit kanalbezoge
 
 Nachtrag: [Abendpaket vom 20.10. mit Suchgegenprobe, Warenkorb-Diff und lokalem Quellenprüfer](https://github.com/allengchour-glitch/aban-news-landing/blob/189ecb5e9288003949649616604356ec3126371c/dropship/codex-handoff-20261018/ABENDLAUF-20261020.md).
 
+## 21.10.2026
+
+Tageszwischenstand: Morgenprüfung gegen 07:15–07:20; Konten-Gegenprobe gegen 12:23–12:26; Konten/Produktdaten/Planung gegen 17:52 Europe/Zurich. Kennzahlen und Flow-Report wurden nur im Morgenlauf abgefragt. Spätere Codearbeit ist keine zusätzliche Live-Verkaufsprüfung.
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Konten und Produkte | Shopify/Metricool samt sechs Kanalidentitäten, zwei aktive Produkte, Preise, Tags sowie morgens Storefront, Tracking und inventoryPolicy geprüft | Identitäten passend; Projektor CHF 34.90, Paperang-Grundmodell CHF 31.90. Neu beobachtetes auswahl-offen am Projektor; Paperang rueckhol-0907 weiter sozial gesperrt. Keine Produktänderung |
+| Planung | Sieben Tage 21.–27.10. gelesen, morgens und gegen 17:52 per UUID/Kanal abgeglichen | Dieselben 107 Objekte: zuletzt 93 PENDING und 14 mit 16 PUBLISHED-Kanalzuständen aus bestehenden Fremdabläufen. Keine eigenen Posts/Termine; 26./27.10. sechs Kanäle ohne Planung |
+| Dubletten / Belege | Gleiche Fenster und Medien-URLs/Kanal-Zeit-Slots verglichen, gelieferte Plattformzustände getrennt dokumentiert | Keine exakten URL-/Slot-Dubletten im Fenster; vollständige Masterhistorie unbekannt. Facebook-Zuordnung eines Seiten-URL-Anteils offen; Register nicht initialisiert |
+| Shopsuche / Kaufdarstellung | Drei Suchweisen gezielt gegengeprüft; mobile Produktkarte per Screenshot und DOM untersucht | Paperang bei zwei unzitierten Begriffen nicht gefunden, exakte Phrase findet ihn. Sichtbarer Preis korrekt CHF 31.90; CHF 15.90 in dieser Ansicht verborgen. Keine Preistextänderung begründet |
+| SEO / Merchant | Zwölf verfügbare Paperang-Metafelder gelesen und Einzelprodukt-Suchverbesserung konkret vorbereitet | Shopping_ads-Ausschluss als Shopify-Attribut bestätigt; kein Nachweis zu Free Listings. Private Suchregeln noch unbekannt; kein Shop-/Feedwrite |
+| Tageskennzahlen / Klaviyo | Sechs gültige Feldlisten und kleine Kanalabfragen sowie Placed-Order-Metrik und einen Flow-Report gelesen | IG/FB-Viewssummen vollständig, andere Reihen teilweise unbekannt. Recovery-Ursache bei einer Zeile offen; keine neuen Käufe/Sync-Fehler daraus abgeleitet. Einziger Flowvorschlag TTuuTS-Linktracking weiterhin Entwurf |
+| Master / Quellen | Denselben 18-s-Master fortgeführt, nachvollziehbaren Bedienungs-/Projektionsübergang präzisiert, sechs Caption-/UTM-Entwürfe und Musikhash gegengeprüft | Weiter Storyboard, keine neue MP4. Hochwertige Originalaufnahmen, Modell-/Motivzuordnung, Rechte und Abnahme fehlen |
+| Claude Code | Bestehenden Assist um automatische lokale Übergabe-/Tagesprotokoll-Prüfung erweitert; sechs Dateien, feste Pfade und Testabdeckung | 181/181 lokale Tests auf Node 24.19.0, elf neu. Patch bytegenau rückangewandt und frische main-Blobs geprüft. Nur Entwurf; keine Aktivierung auf dem Inhaberrechner |
+| Code-Status / Zugriff | PR 2669 live gegengeprüft, öffentliche DNS-Namen und aktuelle Laufzeit-Zugriffe gelesen | PR gemergt, keine produktive Ausführung daraus belegt. Vier DNS-Ergänzungen bereits genehmigt, öffentlich morgens nicht nachweisbar; authentifizierter DNS-Schreibzugang weiterhin nicht verfügbar |
+| Übergabe | Freigabepaket, Claude-Code-Anleitung und vollständigen Patch auf bestehender Wissensbranch gespeichert und exakt zurückgelesen | Dokumentation/Codevorbereitung bestätigt. Zusätzliche Subagent-Prüfungen endeten am Nutzungslimit; Hauptreview und volle lokale Tests abgeschlossen. Zeitplan unverändert |
+
+Nächster Schritt: vorhandene Search-&-Discovery-Regeln gezielt lesen und einen Ergänzungs-Diff für genau den Paperang-Artikel vorbereiten; für denselben Master Originalaufnahmen und Dateirechte klären. Kein Kundenkontakt, neuer Social-Write, Shop-/Feed-/Flow-/Rabatt-/Budget-/DNS-Write oder kostenpflichtiger Render. Neue Codevorbereitung ist kein Deployment und kein bestätigter Claude-Clientstart.
+
+Nachweise:
+
+- [Heutiges Content-/Verkaufspaket mit 16 getrennten Kanalzuständen](https://github.com/allengchour-glitch/aban-news-landing/blob/f888940576c25987752c435b263cbc377aeedf17/dropship/codex-handoff-20261018/FREIGABEPAKET-20261021.md)
+- [Claude-Code-Erweiterung, Grenzen und Testbelege](https://github.com/allengchour-glitch/aban-news-landing/blob/691212dc9efa73d3fc3c39b9914ca1678fb26431/dropship/codex-handoff-20261018/CLAUDE-ASSIST-20261021.md)
+- [Vollständiger geprüfter Patch](https://github.com/allengchour-glitch/aban-news-landing/blob/2f081af2302896d2897b2ff9c90cc78b6006d626/dropship/codex-handoff-20261018/CLAUDE-ASSIST-20261021.patch)
+
 ## Fortführung
 
 Jeder Zürcher Kalendertag erhält einen eigenen Datumsblock mit den belegten Tätigkeiten dieses Tages. Mehrere Läufe ergänzen denselben Tag. Bereits erfasste Tätigkeiten nicht erneut als neu ausgeben; Korrekturen nachvollziehbar benennen. Bei fehlenden oder unlesbaren Quellen keine leere Vergangenheit behaupten und das Protokoll nicht zurücksetzen.
