@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-21 00:29 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-21 01:38 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1278 · **1212 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1022, teilweise: 164, keine: 26; Preisspanne > 2×: 154) · 1 CJ-Variante: 64 · ohne Antwort: 2
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1280 · **1214 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 1024, teilweise: 164, keine: 26; Preisspanne > 2×: 154) · 1 CJ-Variante: 64 · ohne Antwort: 2
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -672,6 +672,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Nadel-Kaffeeverteiler (`nadel-kaffeeverteiler-604500`) | 6 | 6 | 12.29–12.29 | 32.90 | 51mm Twilight Black, 53mm Twilight Black, 58mm Twilight Black, 51mm Sand Beige |
 | Bambusblätter-Throw-Pillow in Grün (`bambusblatter-throw-pillow-in-grun-612900`) | 6 | 6 | 6.3–15.09 | 25.90 | Flannel Embroidered Green-45x 45 Pillowcase, Flannel Embroidered Green-45x45 PP Cotton Core, Ink Painting-45x 45 Pillowcase, Ink Painting-45x45 PP Cotton Core |
 | Kinderflugzeug-Reise-Tablett Aufbewahrungstasche (`kinderflugzeug-reise-tablett-aufbewahrungstasc-603600`) | 6 | 6 | 4.49–4.49 | 16.90 | Dinosaur-44x30cm, Alpaca-44x30cm, Christmas Rabbit-44x30cm, Rainbow-44x30cm |
+| Grosser, dicker, warmer Split-Schal (`grosser-dicker-warmer-split-schal-658200`) | 6 | 6 | 5.97–5.97 | 20.90 | Gray-155cm, Amber-155cm, Camel-155cm, Dark Khaki Cloth Color-155cm |
 | Lederrucksack für Herren (`lederrucksack-fur-herren-621700`) | 5 | 5 | 22.27–29.52 | 53.90 | 8019 Black Lychee Grain, 8019 Coffee Color, 8016 Black Lychee Pattern, 8015 Black |
 | Weinroter Kissenbezug aus Rex Kaninchenfell (`weinroter-kissenbezug-aus-rex-kaninchenfell-600500`) | 5 | 5 | 2.95–11.28 | 15.90 | Red Brown-45x45cm, Blackred Thread Grid-45x45cm, Rex Rabbit Fur Wine Red-45x45cm, Black And Red Grid-30x50cm |
 | Multi-Kartenleser USB 3.0 & Type-C (`multi-kartenleser-usb-3-0-type-c-662848`) | 5 | 4 | 4.24–6.99 | 14.90 | Aluminum Alloy Double Reading, Aluminum Alloy Single Reading, USB20 Single Read, ABS Double Reading |
@@ -793,6 +794,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Bio-Baumwollstoff mit Ozean-Motiven (`bio-baumwollstoff-mit-ozean-motiven-381568`) | 5 | 3 | 3.45–4.09 | 22.90 | HY2 shells, HY3 mermaids, HY5 crabs, HY7 conch |
 | Bedruckte Tragetasche für Schule und Reisen (`bedruckte-tragetasche-fur-schule-und-reisen-995584`) | 5 | 5 | 7.09–11.44 | 26.90 | Cat Gray White Mini Version, Catgray White Standard Edition, Catgray White Large Version, Catgray White Upgraded Version |
 | Keramik Servierplatte rechteckig (`keramik-servierplatte-rechteckig-609600`) | 5 | 5 | 3.24–5.34 | 22.90 | 7 Inch Dinner Plate, 8.5inch Shallow Plate, 9.5 Inch Deep Plates, 9 Inch Dinner Plate |
+| Neun Farben Augen-Malpalette mit Glitzer (`neun-farben-augen-malpalette-mit-glitzer-731328`) | 5 | 5 | 2.46–2.46 | 16.90 | P102 Toffee, P103 Chocolate, P107 Peach Disk, P108 Purple Taro New Color |
 | Freizeit-Schultertasche (`freizeit-schultertasche-520770`) | 4 | 4 | 5.8–5.8 | 14.90 | Pink, Black, Gray, Whirt |
 | Ma Pi Brusttasche aus Echtleder (`ma-pi-brusttasche-aus-echtleder-611900`) | 4 | 4 | 28.36–32.67 | 56.90 | Crazy Horse Coffee-17x8x31.5cm, Black-17x8x31.5cm, Rub Color-17x8x31.5cm, Brown-17x8x31.5cm |
 | HD8ultra Smartwatch mit Bluetooth-Telefonie (`hd8ultra-smartwatch-mit-bluetooth-telefonie-608300`) | 4 | 4 | 16.58–16.58 | 36.90 | Black Belt, Blue Ribbon, Orange Belt, Leucorrhea |
