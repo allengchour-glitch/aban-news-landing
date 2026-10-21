@@ -12165,3 +12165,7 @@ moon-fahrradhelm-mv53-l-schwarz-weiss-rot-52f23d	4A957142-36C6-4CBA-8CC6-1AFACA7
 warmes-coral-fleece-pajama-601100	2412160327071601300	16	13.40	ok	landeseite
 kinderschutzhelm-mit-cartoon-design-6dec35	452364AE-80AE-45F8-AD33-286B6ACCCD2E	16	16.33	ok	landeseite
 spray-kamm-mit-vibration-924608	1467701950161227776	7	7.78	ok	landeseite
+winter-laufschuhe-mit-klettverschluss-263680	1728312794581315584	16	11.84	ok	landeseite
+gebaechte-blaue-jeans-mit-lockeren-tragern-604400	2412110400421604600	16	14.60	ok	landeseite
+sicherheitshelm-fur-rennrader-613f2b	72E4E400-E8A7-4F1F-BD25-2A7274C2B6AE	16	8.86	ok	landeseite
+warmende-schneestiefel-fur-kinder-239744	1720313236047794176	16	9.20	ok	landeseite

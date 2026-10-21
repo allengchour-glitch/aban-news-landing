@@ -1,0 +1,37 @@
+{
+ "stand": "2026-10-21T04:56:58Z",
+ "schichten": {
+  "Standort: cjdropshipping": {
+   "proben": 2,
+   "ohne_tarif": [],
+   "unklar": 0
+  },
+  "Standort: gelato": {
+   "proben": 4,
+   "ohne_tarif": [],
+   "unklar": 0
+  },
+  "Standort: Printful": {
+   "proben": 4,
+   "ohne_tarif": [],
+   "unklar": 0
+  },
+  "Profil: CH-Lager": {
+   "proben": 3,
+   "ohne_tarif": [],
+   "unklar": 0
+  },
+  "Profil: Druck auf Bestellung": {
+   "proben": 3,
+   "ohne_tarif": [],
+   "unklar": 0
+  },
+  "Neueste": {
+   "proben": 4,
+   "ohne_tarif": [],
+   "unklar": 0
+  }
+ },
+ "befunde": [],
+ "unklar": []
+}

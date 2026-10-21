@@ -3631,6 +3631,20 @@ JSON
       echo "$(date -u +%H:%M) ueberwachung_waffen_guard gestartet ($UW_MODUS)"
     fi
   fi
+  # 🧾 KASSEN-SENTINEL, alle 12 h (21.10.2026): hat jede Sorte Ware (Standort × Versandprofil × Neueste) an der Kasse einen Versandtarif nach CH und LI?
+  # Anlass: Hoodie + Jutebeutel «selbst gestalten» lagen 25 h im Druck-Profil OHNE Tarif (Bestand am Printful-Standort), nur ein Absturz fiel auf.
+  # Eine Zufallsstichprobe findet das nicht (148 von 150 = General/Shop location) — der Wächter schichtet. Exit 1 = Befund (FERTIG-Zeile, kein
+  # Nachholen), Exit >= 2 = Fehler. Stand dropship/_kassen_sentinel.json, Ampel «KASSEN-SENTINEL: …».
+  KSN=/tmp/kassen_sentinel.log
+  if [ -f "$REPO/automation/kassen_sentinel.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$KSN" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 43200 ] || absturz_nachholen "$KSN" || still_gestorben "$KSN"; then
+      touch "$KSN"
+      ( cd "$REPO" && setsid bash -c "echo \"START \$(date -u +%FT%TZ) kassen-sentinel\"; timeout 900 python3 -u automation/kassen_sentinel.py; rc=\$?; if [ \$rc -le 1 ]; then echo \"FERTIG kassen-sentinel (Exit \$rc)\"; else echo \"Error: kassen_sentinel Exit \$rc\"; fi" \
+          >> "$KSN" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) kassen_sentinel gestartet"
+    fi
+  fi
   # 🔤 CJ-SKU-FORMEN, einmal täglich (20.10.2026): Vollmessung fand 3'466 nackte CJ-SKUs («CJYDQXHB00011-BROWN-39»), die der Bestellmotor und
   # mehrere Wächter nicht erkannten. Die Erkennung steht jetzt in automation/cj_sku.py; diese Wache prüft die Neuimporte der letzten 3 Tage auf
   # unbekannte Formen und den Code-Kanarienvogel (Selbsttest + Einbindung in alle Verbraucher) und schreibt dropship/_cj_sku_stand.json,
