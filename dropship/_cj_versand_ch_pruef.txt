@@ -12322,3 +12322,6 @@ sonnenschirm-augen-602700	2607100154071603300	5	5.18	ok	landeseite
 schockabsorbierende-leine-fur-grosse-hunde-633500	2603110314191633900	16	7.99	ok	landeseite
 farbenprachtiges-blutenanhanger-schal-kettchen-628000	2607111446311628600	16	4.50	ok	landeseite
 automatischer-sonnenschirm-mit-uv-schutz-604200	2607110343001604800	16	7.51	ok	landeseite
+reflektierendes-hundehalsband-627500	2603050928181628000	16	5.31	ok	landeseite
+wlan-adapter-mit-wifi-6-636100	2607110317511636800	16	5.20	ok	landeseite
+katzenleine-600700	2603030634451601100	16	7.71	ok	landeseite

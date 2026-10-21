@@ -3323,3 +3323,5 @@
 16655515517319	Farbe:2:2+ki	2026-10-21	silber-armband-mit-drachenknoten-und-kordel-636900
 16655514665351	Variante:3:3+ki	2026-10-21	ewige-rose-bausteine-kreatives-ornament-631000
 16655514042759	Variante:6:6+ki	2026-10-21	ewiges-blumen-baustein-set-619100
+16655511650695	Modell:3:3+ki	2026-10-21	magnetische-erdungszwinge-fur-schweissgerate-e67c68
+16655504048519	Farbe:6:6+ki	2026-10-21	lichtleiste-fur-motorradhelm-2-aa-batterien-427072
