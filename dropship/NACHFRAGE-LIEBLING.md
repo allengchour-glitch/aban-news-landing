@@ -1,4 +1,4 @@
-# Nachfrage-Lieblinge (automatisch, 2026-10-20 15:32 UTC)
+# Nachfrage-Lieblinge (automatisch, 2026-10-21 11:34 UTC)
 
 > `automation/nachfrage_liebling.py`: Produktseiten mit ≥2 Warenkorb- oder ≥1 Kassen-Sitzung (90 T, nur Menschen) → Tag `nachfrage-liebling` → Vorrang in allen Social-Queues (nach `kunden-liebling`).
 
