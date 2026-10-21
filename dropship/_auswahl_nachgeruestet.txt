@@ -3316,3 +3316,4 @@
 15503146287489	Farbe:2+Grösse:3:6	2026-10-21	halsband-aus-rindsleder-fur-hunde-5fffc0
 15503145468289	Modell:2:2	2026-10-21	elastischer-sofabezug-in-blau-79701f
 15510924231041	Motiv:11+Grösse:5:33+ki	2026-10-21	kuscheldecke-mit-digitaldruck-605600
+15496982200705	Farbe:6:6+ki	2026-10-21	joy-con-handgelenkschlaufen-2er-pack-dde778
