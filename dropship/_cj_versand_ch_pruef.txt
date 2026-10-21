@@ -12318,3 +12318,7 @@ hundeleine-ohne-handreiben-611200	2603150214121611700	16	6.95	ok	landeseite
 stretch-tuch-fur-kopf-und-haar-638600	2607110719341639200	16	7.71	ok	landeseite
 harz-augenornament-605200	2607110632341606100	16	6.33	ok	landeseite
 leuchthalsband-fur-hunde-635400	2603140203141635800	16	11.37	ok	landeseite
+sonnenschirm-augen-602700	2607100154071603300	5	5.18	ok	landeseite
+schockabsorbierende-leine-fur-grosse-hunde-633500	2603110314191633900	16	7.99	ok	landeseite
+farbenprachtiges-blutenanhanger-schal-kettchen-628000	2607111446311628600	16	4.50	ok	landeseite
+automatischer-sonnenschirm-mit-uv-schutz-604200	2607110343001604800	16	7.51	ok	landeseite
