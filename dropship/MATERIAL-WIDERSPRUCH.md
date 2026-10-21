@@ -1,10 +1,10 @@
-# Material-Widerspruch Titel ↔ Materialangabe — Stand 2026-10-20 05:54 UTC
+# Material-Widerspruch Titel ↔ Materialangabe — Stand 2026-10-21 01:59 UTC
 
-Regel: `automation/material_widerspruch.py` (Leder automatisch, Rest gemeldet). Geändert: 1 · Fehler: 0 · nur gemeldet: 1
+Regel: `automation/material_widerspruch.py` (Leder automatisch, Rest gemeldet). Geändert: 0 · Fehler: 0 · nur gemeldet: 1
 
 ## Änderungen
 
-- `leder-notizbuch-mit-metallspirale-a5-612800` (leder, Material «pu-leder»): «Leder-Notizbuch mit Metallspirale A5» → «Kunstleder-Notizbuch mit Metallspirale A5»
+
 
 ## Nur gemeldet (Sichtprüfung)
 
