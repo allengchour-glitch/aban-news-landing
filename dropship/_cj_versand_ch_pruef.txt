@@ -12522,3 +12522,6 @@ personalisierte-retro-uhr-609300	2603100319331609700	7	8.10	ok	landeseite
 leichte-hohe-jeans-fur-damen-600200	2603270529571600500	16	6.90	ok	landeseite
 wasserfilter-fur-kuche-624000	2607100827461624600	16	11.22	ok	landeseite
 elegante-quarz-armbanduhr-fur-damen-635300	2603070218311635700	7	5.58	ok	landeseite
+retro-hochbundjeans-619100	2603270529431619500	16	8.11	ok	landeseite
+farb-block-jeans-637500	2603262343151637900	16	11.23	ok	landeseite
+herren-laufschuhe-788864	1766737203213897728	16	13.16	ok	landeseite
