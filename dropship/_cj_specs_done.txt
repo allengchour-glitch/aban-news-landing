@@ -4942,3 +4942,17 @@ stahlteestropfenfilter-160961	nicht-aktiv
 schutzcover-fuer-fiat-schlussel-638900	hat-liste
 ubersetzungs-ohrhorer-428481	nicht-aktiv
 tiger-augen-ohrstecker-600300	gesetzt-2
+katzenspielzeug-622200	gesetzt-3
+hundebademantel-412801	hat-liste
+leopard-print-kleid-617900	hat-liste
+hundeschutzmatte-620900	gesetzt-1
+katzen-geburtstag-163522	gesetzt-1
+faltenhundebett-aus-kunststoff-622800	hat-liste
+haarbancken-fur-madchen-601900	gesetzt-2
+widerstands-bander-set-524610	nicht-aktiv
+minimassager-604900	gesetzt-3
+schreibhilfe-fur-kinder-635600	gesetzt-1
+farbblock-strickpullover-604700	hat-liste
+lederfreie-strickjacke-638300	hat-liste
+hochtaillierte-caprihosen-638600	hat-liste
+punktiertes-spitzen-top-und-maxi-rock-682818	hat-liste
