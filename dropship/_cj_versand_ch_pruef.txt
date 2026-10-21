@@ -12793,3 +12793,13 @@ automatischer-gie-automat-606400	2412160902391606600	7	14.52	ok	landeseite
 digitale-lupe-mit-mikroskop-628200	2412160130381628700	7	10.18	ok	landeseite
 elegantes-freizeitkleid-617300	2607130119591617900	16	10.15	ok	landeseite
 leise-luxus-uhr-627100	2412150440361627400	7	15.12	ok	landeseite
+kalender-quarzuhr-mit-nylonarmband-622800	2602060726341623100	7	7.30	ok	landeseite
+herren-sportuhr-mit-leuchtzifferblatt-639100	2602050712021639500	7	5.99	ok	landeseite
+zeitgesteuertes-regensystem-regensimulation-616800	2412120143291617500	7	15.42	ok	landeseite
+radio-mit-bluetooth-und-hd-display-617400	2412100325031617800	7	12.09	ok	landeseite
+smael-elegante-herrenquarzuhren-mit-sportivem-634000	2602050616101634400	7	6.90	ok	landeseite
+elegantes-midi-kleid-mit-patchwork-617500	2607060947331618100	16	11.60	ok	landeseite
+studentenleselampe-faltbar-aufladbare-schreibt-628000	2412090633241628200	7	16.01	ok	landeseite
+herren-uhr-geschenkset-626300	2602040707091626900	7	7.53	ok	landeseite
+herren-uhren-set-mit-geldborse-gurtel-schlusse-623000	2602040652521623300	7	12.30	ok	landeseite
+bluetooth-mikrofon-set-fur-familie-626100	2411230610561626300	7	14.52	ok	landeseite
