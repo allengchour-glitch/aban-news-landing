@@ -12607,3 +12607,6 @@ automatischer-futternapf-658200	2510140845501658400	16	19.42	ok	landeseite
 gezackte-denim-shorts-630200	2603230520241630600	16	9.47	ok	landeseite
 mini-haarstyling-gerat-448768	1399174581259997184	16	7.11	ok	landeseite
 intelligenter-futternapf-mit-zeitsteuerung-611400	2509120631371611700	7	20.97	ok	landeseite
+tierhaar-entferner-385152	1394602515844173824	16	12.21	ok	landeseite
+wi-fi-led-steuerung-fur-rgb-leds-969c24	995D1E83-8226-4849-8997-32BB46FD5720	16	8.11	ok	landeseite
+heizschussel-fur-haustiere-628800	2509081036191629000	7	19.53	ok	landeseite
