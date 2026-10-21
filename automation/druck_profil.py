@@ -365,6 +365,90 @@ def regel(p, kv):
     return aus
 
 
+# ---------------------------------------------------------------- Standort-Tor und Tarifprobe (20.10.2026)
+# ANLASS: Stufe 2 (20.10. 02:14 UTC) ordnete Hoodie + Bio-Jutebeutel «selbst gestalten» dem Profil zu. Deren Bestand liegt am
+# Fulfillment-Standort «Printful» (9999, CONTINUE); der Standortblock des Profils kennt nur «Shop location» (STANDORT) → die Kasse
+# fand für diese Varianten KEINEN Versandtarif (draftOrderCalculate: availableShippingRates leer) — Kundinnen kamen nicht zur
+# Zahlung. Der Lauf, der das in der Korb-Matrix gesehen und den Rückweg gefahren hätte, starb stattdessen im Print (`:.2f` auf None).
+# Tor 1: nur Produkte, deren ALLE Varianten ausschliesslich am Profil-Standort liegen. Tor 2: Probe je Produkt nach dem Zuordnen.
+SPERRE = os.path.join(REPO, "dropship", "_druck_profil_ohne_tarif.json")
+Q_STANDORT = """query($i:ID!){product(id:$i){variants(first:100){nodes{id inventoryItem{inventoryLevels(first:5){nodes{location{id}}}}}}}}"""
+
+
+def fremd_varianten(nodes):
+    """Varianten-IDs, deren Bestand NICHT ausschliesslich am Profil-Standort liegt (Printful-Standort, zweiter Ort, gar kein Ort).
+    Unbekannt gilt als fremd: ein Profil kann nur ab seinen Standorten Tarife liefern."""
+    aus = []
+    for v in nodes:
+        orte = {(lv.get("location") or {}).get("id")
+                for lv in (((v.get("inventoryItem") or {}).get("inventoryLevels") or {}).get("nodes") or [])}
+        if orte != {STANDORT}:
+            aus.append(v["id"])
+    return aus
+
+
+def standort_holen(prod_id):
+    return gql(Q_STANDORT, {"i": prod_id})["product"]["variants"]["nodes"]
+
+
+def standort_pruefen(urteile, bestehend, holen=None):
+    """Streicht Mitglieder mit Bestand ausserhalb des Profil-Standorts aus `urteile` (in place) → {product_id: Anzahl Varianten}.
+    Lesefehler: ein Produkt, das schon im Profil liegt, bleibt (kein Hin und Her wegen eines Aussetzers), ein neues kommt nicht hinein."""
+    holen = holen or standort_holen
+    befund = {}
+    for prod_id, u in urteile.items():
+        if not u["mitglied"]:
+            continue
+        try:
+            fremd = fremd_varianten(holen(prod_id))
+        except Exception as e:  # noqa: BLE001
+            if prod_id in bestehend:
+                continue
+            u.update(mitglied=False, grund=f"Standort nicht prüfbar ({type(e).__name__})")
+            continue
+        if fremd:
+            u.update(mitglied=False, grund=f"Bestand an {len(fremd)} Variante(n) ausserhalb des Profil-Standorts (Fulfillment-Standort ohne Tarif in der Kasse)")
+            befund[prod_id] = len(fremd)
+    return befund
+
+
+def sperre_lesen(pfad=None):
+    try:
+        return json.load(open(pfad or SPERRE, encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        return {}
+
+
+def tore_anwenden(urteile, bestehend, holen=None, sperre=None):
+    """Beide Tore auf die Regel-Urteile (in place): gesperrte Produkte (Tarifprobe schlug fehl) und Bestand ausserhalb des
+    Profil-Standorts sind KEINE Mitglieder. → (Standort-Befund, Sperre). Eine Stelle für Lauf UND --test (sonst prüft der Test
+    ein anderes Soll als der Lauf — das hätte den Hoodie als Testartikel gewählt)."""
+    sperre = sperre_lesen() if sperre is None else sperre
+    for x, u in urteile.items():
+        if x in sperre and u["mitglied"]:
+            u.update(mitglied=False, grund=f"gesperrt (Tarifprobe): {sperre[x].get('grund')}")
+    return standort_pruefen(urteile, bestehend, holen), sperre
+
+
+def tarifprobe(nach, soll, inhalt, probe=None):
+    """Probe nach dem Zuordnen: erste und letzte Variante im Profil müssen in CH, die erste auch in LI einen Tarif bekommen.
+    → {product_id: [Länder ohne Tarif]}. Ein Fehler der Berechnung (Zwischensumme None) ist KEIN Befund, sondern unklar."""
+    probe = probe or korb
+    kein = {}
+    for prod_id in sorted(soll, key=nr):
+        vs = [v["id"] for v in (nach.get(prod_id) or {}).get("varianten", []) if v["id"] in inhalt]
+        if not vs:
+            continue
+        fehlt = []
+        for land, vid in (("CH", vs[0]), ("CH", vs[-1]), ("LI", vs[0])):
+            sub, rates = probe([vid], land)
+            if sub is not None and not rates and land not in fehlt:
+                fehlt.append(land)
+        if fehlt:
+            kein[prod_id] = fehlt
+    return kein
+
+
 def stufe_lesen():
     try:
         s = json.load(open(STUFE_DATEI, encoding="utf-8"))
@@ -570,11 +654,18 @@ def matrix(art, pid_druck):
     return zeilen, teurer, falsch
 
 
+def _betrag(x):
+    """20.10.2026: None-sicher. Ein Korb OHNE jeden Versandtarif liefert versand=None (matrix(): `rates[0][0] if rates else None`);
+    das `:.2f` auf None warf TypeError — die Zeile stand VOR dem automatischen Rückweg, der Lauf starb bei JEDEM Aufruf seit der
+    Umschaltung auf Stufe 2 (20.10. 02:14 UTC, 4 Abstürze, Stand-Datei 147 h alt, Seiten-Zeichen 10 von 49) und der Rückweg lief nie."""
+    return "KEIN TARIF" if x is None else f"{x:.2f}"
+
+
 def matrix_drucken(zeilen):
     for z in zeilen:
         if "fall" in z and "versand" in z:
-            print(f"  {'✓' if z['urteil'] == 'ok' else '✗'} {z['fall']:22} Zwischensumme {z['zwischensumme']:6.2f} → günstigster "
-                  f"{z['versand']:.2f} (erwartet {z['erwartet']:.2f}, ohne Profil {z['vorher']:.2f}) {z['tarife']}")
+            print(f"  {'✓' if z['urteil'] == 'ok' else '✗'} {z['fall']:22} Zwischensumme {_betrag(z['zwischensumme']):>6} → günstigster "
+                  f"{_betrag(z['versand'])} (erwartet {_betrag(z['erwartet'])}, ohne Profil {_betrag(z['vorher'])}) {z['tarife']}")
         else:
             print(f"  · {z['fall']}: {z.get('fehlt') or z.get('fehler')}")
 
@@ -632,6 +723,13 @@ def lauf(scharf):
     produkte = produkte_laden()
     urteile = {p["id"]: regel(p, k.get("varianten") or {}) for p in produkte}
     nach = {p["id"]: p for p in produkte}
+    # Tore (20.10.): gesperrte Produkte (Tarifprobe schlug fehl) und Bestand ausserhalb des Profil-Standorts sind KEINE Mitglieder
+    standort_bef, sperre = tore_anwenden(urteile, set(profil_inhalt(pid).values()))
+    stand["standort_befund"] = {nach[x]["handle"]: n for x, n in standort_bef.items()}
+    stand["gesperrt"] = sorted(v.get("handle", k_) for k_, v in sperre.items())
+    if standort_bef:
+        print(f"⚠️ DRUCK-PROFIL: {len(standort_bef)} Produkt(e) mit Bestand ausserhalb des Profil-Standorts bleiben draussen: "
+              f"{sorted(stand['standort_befund'])}")
     # Stufen-Umschaltung 1 → 2 (selbst, mit Google-Halt)
     heute = jetzt().date().isoformat()
     s1 = soll_menge(urteile, 1, anzahl)
@@ -670,6 +768,7 @@ def lauf(scharf):
     stand.update({"mitglieder_regel": sum(u["mitglied"] for u in urteile.values()), "soll_produkte": len(soll),
                   "soll_handles": sorted(nach[x]["handle"] for x in soll), "kosten_alter_tage": round(alter, 1)})
     matrix_bef = None
+    kein = {}
     if scharf:
         # 1) Zeichen zuerst kürzen: nur Soll-Produkte, deren ALLE Varianten schon im Profil liegen
         z1 = {x for x in zeichen_ist if x in soll and voll_im_profil(x, inhalt)}
@@ -685,6 +784,22 @@ def lauf(scharf):
             rein = []
         stand["zugeordnet"] = profil_aendern(pid, "variantsToAssociate", rein, "zugeordnet") if rein else 0
         inhalt = profil_inhalt(pid)
+        # 3b) Tarifprobe je Produkt (20.10.): ohne Tarif in der Kasse kann niemand zahlen → Produkt lösen, sperren, nie wieder zuordnen
+        kein = tarifprobe(nach, soll, inhalt)
+        stand["kein_tarif"] = {nach[x]["handle"]: ls for x, ls in kein.items()}
+        if kein:
+            print(f"⚠️ DRUCK-PROFIL: {len(kein)} Produkt(e) OHNE Versandtarif in der Kasse → gelöst und gesperrt: {stand['kein_tarif']}")
+            z_neu = {x for x in zeichen_ist if x not in kein}
+            if z_neu != zeichen_ist and zeichen_schreiben(shop_id, z_neu, "kein-tarif"):
+                zeichen_ist = z_neu
+            vids = sorted(v["id"] for x in kein for v in nach[x]["varianten"] if v["id"] in inhalt)
+            profil_aendern(pid, "variantsToDissociate", vids, "kein-tarif")
+            sp = sperre_lesen()
+            for x, ls in kein.items():
+                sp[x] = {"handle": nach[x]["handle"], "seit": jetzt().strftime("%Y-%m-%d"), "grund": f"kein Tarif in {','.join(ls)}"}
+            json.dump(sp, open(SPERRE, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+            soll = soll - set(kein)
+            inhalt = profil_inhalt(pid)
         # 4) Korb-Matrix (täglich): teurer als ohne Profil → Rückweg
         art = matrix_artikel(produkte, soll)
         zeilen, teurer, falsch = matrix(art, pid)
@@ -716,12 +831,57 @@ def lauf(scharf):
         naechste = stufe_roh["stufe2_ab"]
     stand["naechste_stufe_ab"] = naechste
     json.dump(stand, open(STAND, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-    probleme = (len(ohne_zeichen) if scharf else 0) + len(zeichen_ohne) + (len(gegen_regel) + len(fehlt) if scharf else 0)
+    probleme = (len(ohne_zeichen) if scharf else 0) + len(zeichen_ohne) + (len(gegen_regel) + len(fehlt) if scharf else 0) + len(kein)
     print(f"DRUCK-PROFIL: Stufe {stufe} · {len(im_profil_prod)} Produkte / {len(inhalt)} Varianten im Profil · Zeichen "
           f"{len(zeichen_ist)} · ohne Zeichen {len(ohne_zeichen)} · Zeichen ohne Profil {len(zeichen_ohne)} · gegen Regel "
           f"{len(gegen_regel)} · fehlt {len(fehlt)}" + (f" · zugeordnet {stand.get('zugeordnet', 0)} · gelöst "
                                                          f"{stand.get('geloest', 0)}" if scharf else " (Probelauf)"))
     return 0 if not (tarif_bef or transit_bef or probleme or matrix_bef) else 1
+
+
+ALT_TAGE = 2.0
+
+
+def fehler_merken(e, pfad=None):
+    """Ein gestorbener Lauf schreibt seinen Grund in den Stand (alles andere bleibt) — sonst sah man 6 Tage lang nur «keine Datei»:
+    Stand 14.10. 23:10, 20.10. fünf Abstürze (Drosselung, `:.2f` auf None), nichts davon in einer Ampel."""
+    pfad = pfad or STAND
+    try:
+        d = json.load(open(pfad, encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        d = {}
+    d["letzter_fehler"] = {"zeit": jetzt().strftime("%Y-%m-%dT%H:%MZ"), "text": f"{type(e).__name__}: {str(e)[:160]}"}
+    tmp = pfad + ".tmp"
+    json.dump(d, open(tmp, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    os.replace(tmp, pfad)
+
+
+def zeile(pfad=None, jetzt_=None):
+    """Ampelzeile aus dem Stand (ohne Shopify); None = in Ordnung. Fehlender/alter/unlesbarer Stand ist «unklar», nie «in Ordnung»."""
+    pfad = pfad or STAND
+    jetzt_ = jetzt_ or jetzt()
+    try:
+        d = json.load(open(pfad, encoding="utf-8"))
+        t = dt.datetime.strptime(d["stand"], "%Y-%m-%dT%H:%MZ").replace(tzinfo=dt.timezone.utc)
+    except Exception as e:  # noqa: BLE001
+        return f"⚠️ DRUCK-PROFIL: kein lesbarer Stand ({type(e).__name__}) — Tageslauf läuft nicht (automation/druck_profil.py --scharf)"
+    teile = []
+    if d.get("letzter_fehler"):
+        teile.append(f"letzter Lauf gestorben ({d['letzter_fehler'].get('zeit')}): {d['letzter_fehler'].get('text')}")
+    alter = (jetzt_ - t).total_seconds() / 86400.0
+    if alter > ALT_TAGE:
+        teile.append(f"Stand {int(alter)} Tage alt (Tageslauf kommt nicht durch)")
+    for schl, text in (("tarif_befunde", "Tarif-Befund"), ("transit_befunde", "Transit-Befund")):
+        if d.get(schl):
+            teile.append(f"{text}: {str(d[schl][0])[:80]}")
+    if d.get("kein_tarif"):
+        teile.append(f"{len(d['kein_tarif'])} Produkt(e) ohne Kassen-Tarif gelöst+gesperrt ({', '.join(sorted(d['kein_tarif'])[:3])})")
+    m = d.get("matrix") or {}
+    if m.get("teurer") or m.get("abweichend"):
+        teile.append(f"Korb-Matrix: teurer {m.get('teurer')} · abweichend {m.get('abweichend')}")
+    if d.get("auto_rueckweg"):
+        teile.append("automatischer Rückweg gefahren")
+    return ("⚠️ DRUCK-PROFIL: " + " · ".join(teile)) if teile else None
 
 
 def liste():
@@ -742,6 +902,7 @@ def test_lauf():
     k = kosten_laden()
     produkte = produkte_laden()
     urteile = {p["id"]: regel(p, k.get("varianten") or {}) for p in produkte}
+    tore_anwenden(urteile, set(profil_inhalt(pid).values()) if pid else set())
     soll = soll_menge(urteile, stufe, anzahl)
     art = matrix_artikel(produkte, soll)
     print("Testartikel: " + " · ".join(f"{k_}={v[1] if v else '–'}" for k_, v in art.items()))
@@ -792,6 +953,103 @@ def selbsttest(leise=False):
     faelle += [("Stufe 1: 2 ohne Editor, kleinste IDs", lambda: sorted(soll_menge(u, 1, 2), key=nr),
                 ["gid://shopify/Product/4", "gid://shopify/Product/9"]),
                ("Stufe 2: alle Mitglieder", lambda: len(soll_menge(u, 2, 2)), 4)]
+    # 20.10.2026: Standort-Tor, Tarifprobe, None-sichere Matrix
+    import contextlib
+    import io
+
+    def still(f):
+        b = io.StringIO()
+        with contextlib.redirect_stdout(b):
+            f()
+        return b.getvalue()
+
+    pf = "gid://shopify/Location/109743276417"          # Fulfillment-Standort «Printful»
+
+    def vn(i, *orte):
+        return {"id": i, "inventoryItem": {"inventoryLevels": {"nodes": [{"location": {"id": o}} for o in orte]}}}
+    P1, P2, P3 = "gid://shopify/Product/1", "gid://shopify/Product/2", "gid://shopify/Product/3"
+
+    def urt(**kw):
+        return {k_: {"mitglied": m, "grund": "ok", "marge_min": 1.0, "editor": False} for k_, m in kw.items()}
+
+    def so_pruefen(bestehend, karte):
+        u = urt(**{"p1": True, "p2": True, "p3": False})
+        u = {P1: u["p1"], P2: u["p2"], P3: u["p3"]}
+        gerufen = []
+
+        def holen(x):
+            gerufen.append(x)
+            r = karte[x]
+            if isinstance(r, Exception):
+                raise r
+            return r
+        bef = standort_pruefen(u, bestehend, holen)
+        return bef, {k_: v["mitglied"] for k_, v in u.items()}, gerufen
+
+    def tor_sperre():
+        u = {x: {"mitglied": True, "grund": "ok", "marge_min": 1.0, "editor": False} for x in (P1, P2)}
+        bef, _ = tore_anwenden(u, set(), lambda x: [vn("a", STANDORT)], {P1: {"grund": "kein Tarif in CH"}})
+        return bef, {x: v["mitglied"] for x, v in u.items()}
+    def ampel_fall(kw):
+        import tempfile
+        d = {"stand": "2026-10-21T06:00Z"}
+        d.update(kw)
+        with tempfile.TemporaryDirectory() as dd:
+            f = os.path.join(dd, "s.json")
+            json.dump(d, open(f, "w"))
+            return zeile(f, dt.datetime(2026, 10, 21, 8, 0, tzinfo=dt.timezone.utc))
+
+    def fehler_roundtrip():
+        import tempfile
+        with tempfile.TemporaryDirectory() as dd:
+            f = os.path.join(dd, "s.json")
+            json.dump({"stand": "2026-10-21T06:00Z", "stufe": 2}, open(f, "w"))
+            fehler_merken(RuntimeError("dauerhaft gedrosselt"), f)
+            d = json.load(open(f))
+            return d["stand"], d["letzter_fehler"]["text"]
+
+    def pb(sub_rates):
+        return lambda vids, land: sub_rates(vids[0], land)
+    nach_t = {P1: {"varianten": [{"id": "v1"}, {"id": "v2"}, {"id": "v3"}]}}
+    gut = (38.9, [(7.0, "Standard")])
+    faelle += [
+        ("Tarif None → «KEIN TARIF», sonst 2 Stellen", lambda: (_betrag(None), _betrag(7.0)), ("KEIN TARIF", "7.00")),
+        ("Matrix-Druck stirbt nicht bei Korb ohne Tarif",
+         lambda: "KEIN TARIF" in still(lambda: matrix_drucken([{"fall": "x", "land": "CH", "zwischensumme": 38.9, "versand": None,
+                                                                 "erwartet": 0.0, "vorher": 7.0, "tarife": [], "urteil": "TEURER"}])), True),
+        ("Standort: nur Shop location → nicht fremd", lambda: fremd_varianten([vn("a", STANDORT)]), []),
+        ("Standort: Printful-Standort → fremd", lambda: fremd_varianten([vn("a", pf)]), ["a"]),
+        ("Standort: Shop + Printful → fremd", lambda: fremd_varianten([vn("a", STANDORT, pf)]), ["a"]),
+        ("Standort: gar kein Ort → fremd (unbekannt ≠ ok)", lambda: fremd_varianten([vn("a")]), ["a"]),
+        ("Standort: gemischt → nur die fremde Variante", lambda: fremd_varianten([vn("a", STANDORT), vn("b", pf)]), ["b"]),
+        ("Tor: fremdes Produkt fliegt raus, eigenes bleibt, Nicht-Mitglied wird nicht gefragt",
+         lambda: (lambda r: (r[0], r[1], P3 in r[2]))(so_pruefen(set(), {P1: [vn("a", STANDORT)], P2: [vn("b", pf), vn("c", STANDORT)]})),
+         ({P2: 1}, {P1: True, P2: False, P3: False}, False)),
+        ("Tor: Lesefehler → bestehendes bleibt, neues bleibt draussen",
+         lambda: so_pruefen({P1}, {P1: RuntimeError("x"), P2: RuntimeError("y")})[1], {P1: True, P2: False, P3: False}),
+        ("Probe: letzte Variante ohne CH-Tarif → Befund",
+         lambda: tarifprobe(nach_t, {P1}, {"v1", "v2", "v3"}, pb(lambda v, land: (38.9, []) if (v == "v3" and land == "CH") else gut)),
+         {P1: ["CH"]}),
+        ("Probe: nur LI ohne Tarif → Befund LI",
+         lambda: tarifprobe(nach_t, {P1}, {"v1", "v2", "v3"}, pb(lambda v, land: (38.9, []) if land == "LI" else gut)), {P1: ["LI"]}),
+        ("Probe: alles hat Tarif → kein Befund",
+         lambda: tarifprobe(nach_t, {P1}, {"v1", "v2", "v3"}, pb(lambda v, land: gut)), {}),
+        ("Probe: Rechenfehler (Zwischensumme None) ist kein Befund",
+         lambda: tarifprobe(nach_t, {P1}, {"v1", "v2", "v3"}, pb(lambda v, land: (None, []))), {}),
+        ("Probe: Variante ausserhalb des Profils wird nicht geprüft",
+         lambda: tarifprobe(nach_t, {P1}, {"v1"}, pb(lambda v, land: (38.9, []) if v != "v1" else gut)), {}),
+        ("Sperre: fehlende Datei → leer", lambda: sperre_lesen("/nirgends/sperre.json"), {}),
+        ("Ampel: fehlender Stand → Warnung", lambda: (zeile("/nirgends/stand.json") or "").startswith("⚠️ DRUCK-PROFIL: kein lesbarer Stand"), True),
+        ("Ampel: Stand/Befunde in Ordnung → None", lambda: ampel_fall({}), None),
+        ("Ampel: Stand 4 Tage alt → Warnung", lambda: "4 Tage alt" in (ampel_fall({"stand": "2026-10-17T06:00Z"}) or ""), True),
+        ("Ampel: genau 2,0 Tage → noch in Ordnung", lambda: ampel_fall({"stand": "2026-10-19T08:00Z"}), None),
+        ("Ampel: kein_tarif → Warnung mit Handle", lambda: "hoodie" in (ampel_fall({"kein_tarif": {"hoodie": ["CH"]}}) or ""), True),
+        ("Ampel: Matrix teurer → Warnung", lambda: "teurer 2" in (ampel_fall({"matrix": {"teurer": 2, "abweichend": 0}}) or ""), True),
+        ("Ampel: gestorbener Lauf → Warnung mit Grund",
+         lambda: "TypeError" in (ampel_fall({"letzter_fehler": {"zeit": "2026-10-21T02:00Z", "text": "TypeError: x"}}) or ""), True),
+        ("fehler_merken behält den Stand und setzt den Grund", fehler_roundtrip, ("2026-10-21T06:00Z", "RuntimeError: dauerhaft gedrosselt")),
+        ("Tore: gesperrtes Mitglied wird Nicht-Mitglied, Rest unberührt", tor_sperre, ({}, {P1: False, P2: True})),
+    ]
     fehler = 0
     for name, f, soll in faelle:
         ist = f()
@@ -808,6 +1066,9 @@ def main():
     a = sys.argv[1:]
     if "--selbsttest" in a:
         return 0 if selbsttest() else 1
+    if "--zeile" in a:
+        print(zeile() or "")
+        return 0
     if not selbsttest(leise=True):
         print("⚠️ DRUCK-PROFIL: Selbsttest rot — nichts geschrieben")
         return 1
@@ -824,7 +1085,11 @@ def main():
         return test_lauf()
     if "--rueckweg" in a:
         return rueckweg(profil_finden(), "--scharf" in a)
-    return lauf(scharf="--scharf" in a)
+    try:
+        return lauf(scharf="--scharf" in a)
+    except Exception as e:  # noqa: BLE001
+        fehler_merken(e)
+        raise
 
 
 if __name__ == "__main__":
