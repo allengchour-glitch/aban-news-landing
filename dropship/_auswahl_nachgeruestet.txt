@@ -3326,3 +3326,7 @@
 16655511650695	Modell:3:3+ki	2026-10-21	magnetische-erdungszwinge-fur-schweissgerate-e67c68
 16655504048519	Farbe:6:6+ki	2026-10-21	lichtleiste-fur-motorradhelm-2-aa-batterien-427072
 16655501918599	Farbe:3:3+ki	2026-10-21	kabellose-in-ear-kopfhorer-639200
+15503128330625	Farbe:4:4	2026-10-21	led-wecker-mit-spiegel-kalender-708480
+15503126692225	Typ:5:5	2026-10-21	edelstahl-olfiltertopf-mit-sieb-341056
+15503126593921	Farbe:5:5	2026-10-21	geflochtenes-armband-aus-edelstahl-619600
+15503125840257	Typ:7:7	2026-10-21	zirkon-herzblumen-armband-610000

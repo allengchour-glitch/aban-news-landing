@@ -12333,3 +12333,13 @@ elegantes-gradienten-kleid-636700	2607070516321637400	16	9.75	ok	landeseite
 faltbare-abfallbox-aus-bambus-stoff-631100	2607110142081631700	0	-	KEINE CH-Option → DRAFT	landeseite
 hundeleine-mit-geschirr-607600	2602020654121608000	16	6.47	ok	landeseite
 holz-abdeckung-fur-gitarren-schallloch-623500	2607110129001624200	16	5.12	ok	landeseite
+reflektierendes-hundeleinen-set-616800	2601270214441617100	16	10.15	ok	landeseite
+akustik-gitarren-dampfer-aus-holz-629500	2607110125211620100	16	5.12	ok	landeseite
+hundehalsband-fur-grosse-hunde-619300	2601080838371619500	16	7.43	ok	landeseite
+automatische-leine-fur-katzen-und-hunde-617200	2601070131051617400	16	5.41	ok	landeseite
+wasserdichte-handschuhe-fur-hundebesitzer-604400	2512301015331606600	16	7.57	ok	landeseite
+gedrehter-keramik-blumenbecher-619300	2607091006121610100	16	17.12	ok	landeseite
+automatische-brust-und-ruckengurt-set-631600	2512230703401631800	16	9.47	ok	landeseite
+riechende-mini-leuchtern-623200	2605210905261624300	0	-	KEINE CH-Option → DRAFT	landeseite
+doppel-leine-fur-hunde-617700	2512200323121618200	16	8.02	ok	landeseite
+schutzhullen-fur-beine-und-gelenke-601800	2512060943531602000	16	11.83	ok	landeseite
