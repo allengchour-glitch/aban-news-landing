@@ -12464,3 +12464,6 @@ leichter-poloshirt-aus-ice-silk-636100	2606150605541637800	16	8.11	ok	landeseite
 kinder-softschaufel-sandalen-aus-kunstleder-672192	1647176184628781056	16	10.55	ok	landeseite
 leichter-pullover-mit-v-ausschnitt-617300	2606140622541618000	16	7.99	ok	landeseite
 madchen-sandalen-mit-anti-rutsch-so-e-700416	1624230446626254852	16	10.01	ok	landeseite
+cleveres-paar-t-shirt-622500	2606131359561623100	16	6.77	ok	landeseite
+kinder-schuhe-aus-baumwolle-535552	1623508587467255808	16	7.43	ok	landeseite
+retro-polo-mit-stickerei-614400	2606131013511615100	16	8.11	ok	landeseite
