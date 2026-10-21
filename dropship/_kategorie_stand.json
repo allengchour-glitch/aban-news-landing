@@ -1,10 +1,12 @@
 {
- "stand": "2026-10-21T09:14Z",
- "gescannt": 13,
- "ohne_kategorie_vorher": 13,
- "gesetzt": 13,
- "ohne_kategorie_nachher": 0,
+ "stand": "2026-10-21T09:48Z",
+ "gescannt": 9,
+ "ohne_kategorie_vorher": 9,
+ "gesetzt": 8,
+ "ohne_kategorie_nachher": 1,
  "fehler": 0,
- "unbekannte_typen": {},
+ "unbekannte_typen": {
+  "Baby & Kinder": 1
+ },
  "scharf": true
 }

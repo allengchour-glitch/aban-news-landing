@@ -12573,3 +12573,8 @@ dt-sports-watch-mit-herzfrequenz-und-bluetooth-622200	2504170838531622500	7	7.76
 herren-modisch-high-neck-cardigan-pullover-her-608200	2604190314591608700	16	11.60	ok	landeseite
 fitness-armband-mit-herzfrequenzmessung-620300	2503300520021620900	6	5.42	ok	landeseite
 herren-sportuhr-wasserdicht-626400	2503200656541626600	7	5.86	ok	landeseite
+stahlarmband-mit-fallschirmschlie-e-618900	2503180314001619200	16	5.49	ok	landeseite
+kalender-mesh-gurt-armbanduhr-herren-wasserdic-629000	2503050322241629200	7	7.30	ok	landeseite
+sportliches-armband-612300	2501160333471612600	7	6.49	ok	landeseite
+gesichts-dampfer-mit-aromatherapie-065920	1604754026988580864	7	27.14	ok	landeseite
+mini-luftbefeuchter-319232	1604336072815816704	7	10.98	ok	landeseite

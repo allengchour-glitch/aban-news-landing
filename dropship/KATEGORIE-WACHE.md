@@ -1,15 +1,19 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-21T09:14Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-21T09:48Z
 
-Aktive gescannt: 13 · ohne Kategorie: 13 · heute gesetzt: 13 (SCHARF, CAP 300) · danach offen: 0 · Fehler: 0
+Aktive gescannt: 9 · ohne Kategorie: 9 · heute gesetzt: 8 (SCHARF, CAP 3000) · danach offen: 1 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
 
+## Unbekannte Typen (nicht geraten — Tabelle ergänzen)
+
+- Baby & Kinder: 1
+
 ## Beispiele (heute gesetzt)
 
-- gummibander-gelb-500-g-608700 · Büro & Home Office → Office Supplies > General Office Supplies > Rubber Bands
-- elektronische-hangewaage-500-kg-200-g-genauigk-612200 · Büro & Home Office → Hardware > Tools > Measuring Tools & Sensors > Measuring Scales > Digital Scales
-- retro-casual-sandalen-fur-damen-braun-schwarz-635000 · Damenschuhe → Apparel & Accessories > Shoes
-- weite-absatz-sandalen-mit-riemchen-und-schnall-615200 · Damenschuhe → Apparel & Accessories > Shoes
-- platform-sandalen-mit-hohem-absatz-607600 · Damenschuhe → Apparel & Accessories > Shoes
+- kinder-badeanzug-mit-cardigan-uberzug-611500 · Baby & Kinder → Apparel & Accessories > Clothing > Baby & Children's Clothing > Baby & Children's Swimwear
+- kinder-badeanzug-mit-langen-armeln-weiss-blau-606900 · Baby & Kinder → Apparel & Accessories > Clothing > Baby & Children's Clothing > Baby & Children's Swimwear
+- kurzarm-badeanzug-mit-druck-621800 · Baby & Kinder → Apparel & Accessories > Clothing > Baby & Children's Clothing > Baby & Children's Swimwear
+- langarmliges-baumwoll-set-fur-babys-607500 · Baby & Kinder → Apparel & Accessories > Clothing > Baby & Children's Clothing > Baby & Children's Outfits
+- manner-sneaker-mit-fleece-futter-und-dicker-so-606600 · Herrenschuhe → Apparel & Accessories > Shoes
 
