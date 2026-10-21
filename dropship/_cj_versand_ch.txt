@@ -1615,3 +1615,4 @@ gid://shopify/Product/16654281048455	ok	Violetter Tontopf im Antikstil für den 
 gid://shopify/Product/16654281408903	ok	Zepterförmige Vase aus Yixing-Ton
 gid://shopify/Product/16654367097223	ok	Heissluftfritteuse mit zwei Sichtfenster-Fächern
 gid://shopify/Product/16654423982471	ok	Smartwatch mit Schlafanalyse & Bluetooth-Anrufen
+gid://shopify/Product/16638445584775	nicht-versendbar	Faltzelt 3 × 3 m – Ausstellung & Camping
