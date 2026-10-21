@@ -1,110 +1,117 @@
 {
-  "stand": "2026-10-21T16:36:16.323Z",
+  "stand": "2026-10-21T23:08:40.720Z",
   "methode": "Score je Post am Median seines Kanals+Formats (±21 Tage) gemessen, rel = (Score+5)/(Median+5), ln(rel) gekappt bei ×8; Gewicht = exp(Σ ln(rel) / (n + 3)) — Bayes-Glättung Richtung Durchschnitt (1.0). n = Inhalte (ein Reel auf IG und TikTok zählt einmal). belastbar ab n ≥ 3. «hooks» (liest der Reel-Motor) enthält NUR belastbare Hooks, Wert = vorsprung auf ln-Skala (0 = Durchschnitt, <0 schwächer); nicht gelistete Hooks zählen dort 0 = neutral. Posts unter 24 h zählen nicht.",
   "fenster_tage": 90,
   "k_glaettung": 3,
   "min_n": 3,
   "beobachtungen": {
-    "instagram": 190,
-    "tiktok": 73,
-    "pinterest": 291,
-    "facebook": 102,
+    "instagram": 192,
+    "tiktok": 74,
+    "pinterest": 294,
+    "facebook": 103,
     "youtube": 41,
-    "zu_jung": 10
+    "zu_jung": 23
   },
-  "inhalte": 449,
-  "posts": 697,
+  "inhalte": 455,
+  "posts": 704,
   "musik_verlauf": {
     "zeilen": 587,
-    "verknuepfte_inhalte": 67
+    "verknuepfte_inhalte": 68
   },
   "quellen_fehler": [],
   "hooks": {
-    "Endlich Ruhe beim Gassi?": 0.416,
-    "Für die Katze, die alles darf": 0.301,
-    "Kennst du das schon?": 0.277,
-    "Neu bei LuxeStyle": 0.228,
-    "Dein Zuhause, gemütlicher": 0.188,
-    "Das eine Teil fürs Wohnzimmer": 0.186,
-    "Wusstest du das schon?": 0.17,
-    "Licht an, Stimmung an": 0.159,
-    "Dein Hund wird es lieben": 0.061,
+    "Endlich Ruhe beim Gassi?": 0.426,
+    "Für die Katze, die alles darf": 0.315,
+    "Kennst du das schon?": 0.28,
+    "Neu bei LuxeStyle": 0.235,
+    "Dein Zuhause, gemütlicher": 0.196,
+    "Das eine Teil fürs Wohnzimmer": 0.194,
+    "Wusstest du das schon?": 0.184,
+    "Licht an, Stimmung an": 0.162,
+    "Dein Hund wird es lieben": 0.071,
+    "Küche, aber einfacher": 0.017,
     "Dein 2-Minuten-Ritual": 0.01,
-    "Küche, aber einfacher": 0.007,
     "Das fehlt in jeder Küche": 0.006,
-    "Warum hat das niemand früher gebaut?": 0.001,
+    "Warum hat das niemand früher gebaut?": 0.003,
     "Dein neues Lieblingsteil?": -0.001,
-    "Das trägt jetzt jeder": -0.064,
-    "Genau das hat gefehlt": -0.098
+    "Das trägt jetzt jeder": -0.048,
+    "Genau das hat gefehlt": -0.09
   },
   "hooks_detail": {
     "Endlich Ruhe beim Gassi?": {
       "n": 8,
-      "gewicht": 1.52,
-      "vorsprung": 0.416,
-      "median_rel": 2.32,
+      "gewicht": 1.53,
+      "vorsprung": 0.426,
+      "median_rel": 2.35,
       "belastbar": true
     },
     "Das Gadget, das alle wollen": {
       "n": 1,
-      "gewicht": 1.4,
-      "vorsprung": 0.34,
-      "median_rel": 3.89,
+      "gewicht": 1.41,
+      "vorsprung": 0.345,
+      "median_rel": 3.98,
       "belastbar": false
     },
     "Für die Katze, die alles darf": {
       "n": 3,
-      "gewicht": 1.35,
-      "vorsprung": 0.301,
-      "median_rel": 1.59,
+      "gewicht": 1.37,
+      "vorsprung": 0.315,
+      "median_rel": 1.64,
       "belastbar": true
     },
     "Kennst du das schon?": {
       "n": 4,
       "gewicht": 1.32,
-      "vorsprung": 0.277,
+      "vorsprung": 0.28,
       "median_rel": 1.42,
       "belastbar": true
     },
     "Neu bei LuxeStyle": {
       "n": 11,
       "gewicht": 1.26,
-      "vorsprung": 0.228,
+      "vorsprung": 0.235,
       "median_rel": 1.09,
       "belastbar": true
     },
     "Echt getragen, nicht im Studio fotografiert.": {
       "n": 1,
-      "gewicht": 1.22,
-      "vorsprung": 0.196,
-      "median_rel": 2.19,
+      "gewicht": 1.23,
+      "vorsprung": 0.203,
+      "median_rel": 2.26,
       "belastbar": false
     },
     "Dein Zuhause, gemütlicher": {
       "n": 6,
-      "gewicht": 1.21,
-      "vorsprung": 0.188,
+      "gewicht": 1.22,
+      "vorsprung": 0.196,
       "median_rel": 1.04,
       "belastbar": true
     },
     "Das eine Teil fürs Wohnzimmer": {
       "n": 3,
-      "gewicht": 1.2,
-      "vorsprung": 0.186,
+      "gewicht": 1.21,
+      "vorsprung": 0.194,
       "median_rel": 1.14,
       "belastbar": true
     },
     "Wusstest du das schon?": {
       "n": 25,
-      "gewicht": 1.19,
-      "vorsprung": 0.17,
-      "median_rel": 1,
+      "gewicht": 1.2,
+      "vorsprung": 0.184,
+      "median_rel": 1.01,
       "belastbar": true
+    },
+    "Haltungs-Korrektor": {
+      "n": 1,
+      "gewicht": 1.19,
+      "vorsprung": 0.172,
+      "median_rel": 1.99,
+      "belastbar": false
     },
     "Licht an, Stimmung an": {
       "n": 4,
-      "gewicht": 1.17,
-      "vorsprung": 0.159,
+      "gewicht": 1.18,
+      "vorsprung": 0.162,
       "median_rel": 0.98,
       "belastbar": true
     },
@@ -112,42 +119,35 @@
       "n": 1,
       "gewicht": 1.17,
       "vorsprung": 0.157,
-      "median_rel": 1.87,
-      "belastbar": false
-    },
-    "Haltungs-Korrektor": {
-      "n": 1,
-      "gewicht": 1.16,
-      "vorsprung": 0.152,
-      "median_rel": 1.83,
+      "median_rel": 1.88,
       "belastbar": false
     },
     "Eleganter Damenmantel mit Fellkragen": {
       "n": 1,
-      "gewicht": 1.11,
-      "vorsprung": 0.105,
-      "median_rel": 1.52,
+      "gewicht": 1.12,
+      "vorsprung": 0.11,
+      "median_rel": 1.55,
       "belastbar": false
     },
     "Dein Raum. Neues Licht.": {
       "n": 1,
-      "gewicht": 1.07,
-      "vorsprung": 0.072,
-      "median_rel": 1.33,
+      "gewicht": 1.09,
+      "vorsprung": 0.085,
+      "median_rel": 1.41,
       "belastbar": false
     },
     "Dein Hund wird es lieben": {
       "n": 5,
-      "gewicht": 1.06,
-      "vorsprung": 0.061,
+      "gewicht": 1.07,
+      "vorsprung": 0.071,
       "median_rel": 1.01,
       "belastbar": true
     },
     "Kleines Upgrade, grosser Glow": {
       "n": 2,
-      "gewicht": 1.06,
-      "vorsprung": 0.057,
-      "median_rel": 1.15,
+      "gewicht": 1.07,
+      "vorsprung": 0.064,
+      "median_rel": 1.17,
       "belastbar": false
     },
     "Dinosaurier-Hundespielzeug für grosse Hunde Jetzt bei LuxeSt": {
@@ -159,16 +159,23 @@
     },
     "Sportlicher Herren Hoodie mit Taschen": {
       "n": 1,
+      "gewicht": 1.04,
+      "vorsprung": 0.036,
+      "median_rel": 1.16,
+      "belastbar": false
+    },
+    "Katzenschüssel": {
+      "n": 1,
       "gewicht": 1.03,
-      "vorsprung": 0.028,
-      "median_rel": 1.12,
+      "vorsprung": 0.034,
+      "median_rel": 1.14,
       "belastbar": false
     },
     "Welä Ohrring nimmsch — 1 oder 2? Schrib's i d Kommentär! Spe": {
       "n": 1,
-      "gewicht": 1.02,
-      "vorsprung": 0.024,
-      "median_rel": 1.1,
+      "gewicht": 1.03,
+      "vorsprung": 0.027,
+      "median_rel": 1.11,
       "belastbar": false
     },
     "Salon-Feeling zuhause": {
@@ -178,11 +185,18 @@
       "median_rel": 1.1,
       "belastbar": false
     },
-    "Katzenschüssel": {
+    "Küche, aber einfacher": {
+      "n": 3,
+      "gewicht": 1.02,
+      "vorsprung": 0.017,
+      "median_rel": 1.04,
+      "belastbar": true
+    },
+    "2-teiliges Leinen-Set Provence – Hemd & Wide-Leg-Hose": {
       "n": 1,
       "gewicht": 1.02,
-      "vorsprung": 0.021,
-      "median_rel": 1.09,
+      "vorsprung": 0.016,
+      "median_rel": 1.07,
       "belastbar": false
     },
     "Kleines Teil, grosse Wirkung": {
@@ -206,13 +220,6 @@
       "median_rel": 1.02,
       "belastbar": false
     },
-    "Küche, aber einfacher": {
-      "n": 3,
-      "gewicht": 1.01,
-      "vorsprung": 0.007,
-      "median_rel": 1.04,
-      "belastbar": true
-    },
     "Luftreiniger mit Feuchtigkeitsspender Jetzt bei LuxeStyle —": {
       "n": 1,
       "gewicht": 1.01,
@@ -229,20 +236,20 @@
     },
     "Kerzenlicht-Aromadiffuser Jetzt bei LuxeStyle — CHF 14.90. S": {
       "n": 1,
-      "gewicht": 1,
-      "vorsprung": 0.004,
-      "median_rel": 1.01,
+      "gewicht": 1.01,
+      "vorsprung": 0.005,
+      "median_rel": 1.02,
       "belastbar": false
+    },
+    "Warum hat das niemand früher gebaut?": {
+      "n": 6,
+      "gewicht": 1,
+      "vorsprung": 0.003,
+      "median_rel": 1,
+      "belastbar": true
     },
     "Für kleine Entdecker": {
       "n": 2,
-      "gewicht": 1,
-      "vorsprung": 0.002,
-      "median_rel": 1.01,
-      "belastbar": false
-    },
-    "2-teiliges Leinen-Set Provence – Hemd & Wide-Leg-Hose": {
-      "n": 1,
       "gewicht": 1,
       "vorsprung": 0.002,
       "median_rel": 1.01,
@@ -262,13 +269,6 @@
       "median_rel": 1,
       "belastbar": false
     },
-    "Warum hat das niemand früher gebaut?": {
-      "n": 6,
-      "gewicht": 1,
-      "vorsprung": 0.001,
-      "median_rel": 1,
-      "belastbar": true
-    },
     "Dein neues Lieblingsteil?": {
       "n": 3,
       "gewicht": 1,
@@ -280,13 +280,13 @@
       "n": 1,
       "gewicht": 1,
       "vorsprung": -0.001,
-      "median_rel": 0.99,
+      "median_rel": 1,
       "belastbar": false
     },
     "Retro-Jacke für Herren mit Revers": {
       "n": 1,
       "gewicht": 1,
-      "vorsprung": -0.003,
+      "vorsprung": -0.002,
       "median_rel": 0.99,
       "belastbar": false
     },
@@ -294,13 +294,20 @@
       "n": 1,
       "gewicht": 0.99,
       "vorsprung": -0.006,
-      "median_rel": 0.97,
+      "median_rel": 0.98,
       "belastbar": false
     },
     "Das Teil, nach dem alle fragen": {
       "n": 1,
       "gewicht": 0.99,
       "vorsprung": -0.006,
+      "median_rel": 0.97,
+      "belastbar": false
+    },
+    "Wimpernlift-Kit Jetzt bei LuxeStyle — CHF 24.90. Blitzversan": {
+      "n": 1,
+      "gewicht": 0.99,
+      "vorsprung": -0.008,
       "median_rel": 0.97,
       "belastbar": false
     },
@@ -311,17 +318,17 @@
       "median_rel": 0.97,
       "belastbar": false
     },
-    "Wimpernlift-Kit Jetzt bei LuxeStyle — CHF 24.90. Blitzversan": {
+    "Herren Business Quarzuhr": {
       "n": 1,
       "gewicht": 0.99,
       "vorsprung": -0.009,
       "median_rel": 0.96,
       "belastbar": false
     },
-    "Herren Business Quarzuhr": {
+    "Multifunktional": {
       "n": 1,
       "gewicht": 0.99,
-      "vorsprung": -0.009,
+      "vorsprung": -0.011,
       "median_rel": 0.96,
       "belastbar": false
     },
@@ -341,10 +348,17 @@
     },
     "Alles dabei. Schnell zur Hand.": {
       "n": 1,
-      "gewicht": 0.95,
-      "vorsprung": -0.051,
-      "median_rel": 0.81,
+      "gewicht": 0.96,
+      "vorsprung": -0.045,
+      "median_rel": 0.84,
       "belastbar": false
+    },
+    "Das trägt jetzt jeder": {
+      "n": 3,
+      "gewicht": 0.95,
+      "vorsprung": -0.048,
+      "median_rel": 0.99,
+      "belastbar": true
     },
     "Alltag, aber glänzender": {
       "n": 1,
@@ -353,19 +367,19 @@
       "median_rel": 0.8,
       "belastbar": false
     },
-    "Das trägt jetzt jeder": {
-      "n": 3,
-      "gewicht": 0.94,
-      "vorsprung": -0.064,
-      "median_rel": 0.96,
-      "belastbar": true
-    },
     "Kürbis-Strichbürste für Hunde & Katzen – Selbstreinigend Jet": {
       "n": 1,
       "gewicht": 0.93,
-      "vorsprung": -0.073,
+      "vorsprung": -0.072,
       "median_rel": 0.75,
       "belastbar": false
+    },
+    "Genau das hat gefehlt": {
+      "n": 4,
+      "gewicht": 0.91,
+      "vorsprung": -0.09,
+      "median_rel": 0.86,
+      "belastbar": true
     },
     "Outfit fertig in 10 Sekunden": {
       "n": 1,
@@ -374,99 +388,99 @@
       "median_rel": 0.69,
       "belastbar": false
     },
-    "Genau das hat gefehlt": {
-      "n": 4,
-      "gewicht": 0.91,
-      "vorsprung": -0.098,
-      "median_rel": 0.84,
-      "belastbar": true
+    "Fitness Leggings": {
+      "n": 1,
+      "gewicht": 0.72,
+      "vorsprung": -0.324,
+      "median_rel": 0.27,
+      "belastbar": false
     }
   },
   "themen": {
     "kinder": {
       "n": 10,
       "gewicht": 1.64,
-      "vorsprung": 0.496,
+      "vorsprung": 0.494,
       "median_rel": 1.43,
       "belastbar": true
     },
     "mode": {
-      "n": 87,
-      "gewicht": 1.53,
-      "vorsprung": 0.426,
-      "median_rel": 1.11,
+      "n": 89,
+      "gewicht": 1.51,
+      "vorsprung": 0.414,
+      "median_rel": 1.07,
       "belastbar": true
     },
     "gadget": {
       "n": 30,
       "gewicht": 1.42,
-      "vorsprung": 0.349,
+      "vorsprung": 0.353,
       "median_rel": 1.16,
       "belastbar": true
     },
     "beauty": {
       "n": 30,
       "gewicht": 1.39,
-      "vorsprung": 0.331,
-      "median_rel": 1.15,
-      "belastbar": true
-    },
-    "fitness": {
-      "n": 16,
-      "gewicht": 1.33,
-      "vorsprung": 0.287,
+      "vorsprung": 0.332,
       "median_rel": 1.15,
       "belastbar": true
     },
     "haustier": {
       "n": 45,
-      "gewicht": 1.28,
-      "vorsprung": 0.247,
+      "gewicht": 1.3,
+      "vorsprung": 0.261,
       "median_rel": 1.01,
       "belastbar": true
     },
+    "fitness": {
+      "n": 17,
+      "gewicht": 1.23,
+      "vorsprung": 0.208,
+      "median_rel": 1.16,
+      "belastbar": true
+    },
     "home": {
-      "n": 74,
-      "gewicht": 1.22,
-      "vorsprung": 0.196,
-      "median_rel": 0.99,
+      "n": 76,
+      "gewicht": 1.2,
+      "vorsprung": 0.179,
+      "median_rel": 0.98,
       "belastbar": true
     },
     "schmuck": {
       "n": 22,
-      "gewicht": 1.15,
-      "vorsprung": 0.137,
-      "median_rel": 1.05,
+      "gewicht": 1.14,
+      "vorsprung": 0.129,
+      "median_rel": 1.04,
       "belastbar": true
     },
     "allgemein": {
-      "n": 101,
+      "n": 102,
       "gewicht": 1.12,
-      "vorsprung": 0.111,
-      "median_rel": 1.03,
+      "vorsprung": 0.115,
+      "median_rel": 1.02,
       "belastbar": true
     },
     "kueche": {
       "n": 34,
-      "gewicht": 1.07,
-      "vorsprung": 0.067,
+      "gewicht": 1.08,
+      "vorsprung": 0.075,
       "median_rel": 0.99,
       "belastbar": true
     }
   },
   "zeitfenster": {
-    "pinterest 18–21": {
-      "n": 14,
-      "gewicht": 2.72,
-      "vorsprung": 1,
-      "median_rel": 4.08,
+    "pinterest 21–24": {
+      "n": 34,
+      "gewicht": 2.53,
+      "vorsprung": 0.928,
+      "median_rel": 3.75,
       "belastbar": true
     },
-    "pinterest 21–24": {
-      "n": 33,
-      "gewicht": 2.61,
-      "vorsprung": 0.961,
-      "median_rel": 3.83,
+    "pinterest 18–21": {
+      "n": 15,
+      "gewicht": 2.52,
+      "vorsprung": 0.926,
+      "median_rel": 3.33,
       "belastbar": true
     },
     "pinterest 03–06": {
@@ -478,9 +492,9 @@
     },
     "facebook 21–24": {
       "n": 9,
-      "gewicht": 2.08,
-      "vorsprung": 0.733,
-      "median_rel": 2.14,
+      "gewicht": 2.14,
+      "vorsprung": 0.762,
+      "median_rel": 2.33,
       "belastbar": true
     },
     "pinterest 15–18": {
@@ -488,13 +502,6 @@
       "gewicht": 1.89,
       "vorsprung": 0.637,
       "median_rel": 4.5,
-      "belastbar": true
-    },
-    "facebook 18–21": {
-      "n": 26,
-      "gewicht": 1.6,
-      "vorsprung": 0.467,
-      "median_rel": 1.09,
       "belastbar": true
     },
     "tiktok 21–24": {
@@ -511,25 +518,32 @@
       "median_rel": 1.94,
       "belastbar": true
     },
-    "facebook 09–12": {
-      "n": 40,
-      "gewicht": 1.46,
-      "vorsprung": 0.38,
+    "facebook 18–21": {
+      "n": 27,
+      "gewicht": 1.5,
+      "vorsprung": 0.408,
       "median_rel": 1,
       "belastbar": true
     },
-    "instagram 12–15": {
-      "n": 17,
-      "gewicht": 1.32,
-      "vorsprung": 0.277,
-      "median_rel": 1.35,
+    "facebook 09–12": {
+      "n": 40,
+      "gewicht": 1.48,
+      "vorsprung": 0.391,
+      "median_rel": 1,
       "belastbar": true
     },
     "facebook 12–15": {
       "n": 6,
-      "gewicht": 1.3,
-      "vorsprung": 0.263,
-      "median_rel": 1.13,
+      "gewicht": 1.35,
+      "vorsprung": 0.302,
+      "median_rel": 1.21,
+      "belastbar": true
+    },
+    "instagram 12–15": {
+      "n": 17,
+      "gewicht": 1.31,
+      "vorsprung": 0.273,
+      "median_rel": 1.31,
       "belastbar": true
     },
     "pinterest 09–12": {
@@ -540,10 +554,10 @@
       "belastbar": true
     },
     "instagram 18–21": {
-      "n": 28,
-      "gewicht": 1.27,
-      "vorsprung": 0.24,
-      "median_rel": 1.14,
+      "n": 29,
+      "gewicht": 1.23,
+      "vorsprung": 0.206,
+      "median_rel": 1.11,
       "belastbar": true
     },
     "youtube 06–09": {
@@ -553,32 +567,25 @@
       "median_rel": 1.49,
       "belastbar": true
     },
-    "instagram 00–03": {
-      "n": 22,
-      "gewicht": 1.14,
-      "vorsprung": 0.135,
-      "median_rel": 1.22,
-      "belastbar": true
-    },
     "pinterest 06–09": {
       "n": 192,
       "gewicht": 1.14,
-      "vorsprung": 0.131,
+      "vorsprung": 0.135,
       "median_rel": 1,
+      "belastbar": true
+    },
+    "instagram 00–03": {
+      "n": 22,
+      "gewicht": 1.14,
+      "vorsprung": 0.129,
+      "median_rel": 1.2,
       "belastbar": true
     },
     "instagram 15–18": {
       "n": 18,
-      "gewicht": 1.1,
-      "vorsprung": 0.095,
-      "median_rel": 0.97,
-      "belastbar": true
-    },
-    "instagram 21–24": {
-      "n": 32,
-      "gewicht": 1.1,
-      "vorsprung": 0.093,
-      "median_rel": 1.22,
+      "gewicht": 1.11,
+      "vorsprung": 0.101,
+      "median_rel": 0.92,
       "belastbar": true
     },
     "youtube 03–06": {
@@ -588,11 +595,18 @@
       "median_rel": 1.24,
       "belastbar": false
     },
+    "instagram 21–24": {
+      "n": 33,
+      "gewicht": 1.08,
+      "vorsprung": 0.076,
+      "median_rel": 1.15,
+      "belastbar": true
+    },
     "instagram 09–12": {
       "n": 37,
-      "gewicht": 1.07,
-      "vorsprung": 0.064,
-      "median_rel": 0.93,
+      "gewicht": 1.06,
+      "vorsprung": 0.06,
+      "median_rel": 0.91,
       "belastbar": true
     },
     "tiktok 06–09": {
@@ -616,6 +630,13 @@
       "median_rel": 1.02,
       "belastbar": false
     },
+    "facebook 06–09": {
+      "n": 7,
+      "gewicht": 1,
+      "vorsprung": 0.003,
+      "median_rel": 0.86,
+      "belastbar": true
+    },
     "tiktok 00–03": {
       "n": 1,
       "gewicht": 1,
@@ -627,14 +648,7 @@
       "n": 3,
       "gewicht": 0.99,
       "vorsprung": -0.006,
-      "median_rel": 0.99,
-      "belastbar": true
-    },
-    "tiktok 18–21": {
-      "n": 22,
-      "gewicht": 0.99,
-      "vorsprung": -0.007,
-      "median_rel": 0.99,
+      "median_rel": 1,
       "belastbar": true
     },
     "youtube 21–24": {
@@ -644,11 +658,11 @@
       "median_rel": 0.71,
       "belastbar": true
     },
-    "facebook 06–09": {
-      "n": 7,
-      "gewicht": 0.97,
-      "vorsprung": -0.029,
-      "median_rel": 0.86,
+    "tiktok 18–21": {
+      "n": 23,
+      "gewicht": 0.99,
+      "vorsprung": -0.008,
+      "median_rel": 0.98,
       "belastbar": true
     },
     "youtube 09–12": {
@@ -658,25 +672,25 @@
       "median_rel": 0.99,
       "belastbar": true
     },
+    "instagram 03–06": {
+      "n": 15,
+      "gewicht": 0.94,
+      "vorsprung": -0.064,
+      "median_rel": 0.93,
+      "belastbar": true
+    },
     "instagram 06–09": {
       "n": 21,
       "gewicht": 0.93,
-      "vorsprung": -0.077,
-      "median_rel": 0.8,
-      "belastbar": true
-    },
-    "instagram 03–06": {
-      "n": 15,
-      "gewicht": 0.92,
-      "vorsprung": -0.079,
-      "median_rel": 0.91,
+      "vorsprung": -0.068,
+      "median_rel": 0.78,
       "belastbar": true
     },
     "facebook 15–18": {
       "n": 8,
-      "gewicht": 0.91,
-      "vorsprung": -0.097,
-      "median_rel": 0.68,
+      "gewicht": 0.93,
+      "vorsprung": -0.068,
+      "median_rel": 0.72,
       "belastbar": true
     },
     "youtube 15–18": {
@@ -686,25 +700,25 @@
       "median_rel": 1.1,
       "belastbar": true
     },
-    "pinterest 00–03": {
-      "n": 7,
-      "gewicht": 0.86,
-      "vorsprung": -0.156,
-      "median_rel": 0.83,
-      "belastbar": true
-    },
     "facebook 03–06": {
       "n": 2,
-      "gewicht": 0.83,
-      "vorsprung": -0.183,
-      "median_rel": 0.63,
+      "gewicht": 0.85,
+      "vorsprung": -0.162,
+      "median_rel": 0.67,
       "belastbar": false
     },
     "facebook 00–03": {
       "n": 4,
-      "gewicht": 0.82,
-      "vorsprung": -0.196,
-      "median_rel": 0.7,
+      "gewicht": 0.85,
+      "vorsprung": -0.166,
+      "median_rel": 0.74,
+      "belastbar": true
+    },
+    "pinterest 00–03": {
+      "n": 8,
+      "gewicht": 0.84,
+      "vorsprung": -0.172,
+      "median_rel": 0.83,
       "belastbar": true
     },
     "youtube 18–21": {
@@ -716,24 +730,24 @@
     }
   },
   "formate": {
+    "instagram karussell": {
+      "n": 25,
+      "median_score": 10
+    },
+    "instagram reel": {
+      "n": 64,
+      "median_score": 32
+    },
     "instagram bild": {
       "n": 103,
       "median_score": 15.2
     },
-    "instagram reel": {
-      "n": 63,
-      "median_score": 32.4
-    },
-    "instagram karussell": {
-      "n": 24,
-      "median_score": 11.5
-    },
     "tiktok reel": {
-      "n": 73,
+      "n": 74,
       "median_score": 273
     },
     "facebook reel": {
-      "n": 102,
+      "n": 103,
       "median_score": 1
     },
     "youtube reel": {
@@ -741,7 +755,7 @@
       "median_score": 172
     },
     "pinterest pin": {
-      "n": 230,
+      "n": 233,
       "median_score": 2
     },
     "pinterest pin-video": {
@@ -759,9 +773,16 @@
     },
     "luxe-orchestra.wav": {
       "n": 14,
-      "gewicht": 1.06,
-      "vorsprung": 0.063,
-      "median_rel": 0.99,
+      "gewicht": 1.07,
+      "vorsprung": 0.07,
+      "median_rel": 1,
+      "belastbar": true
+    },
+    "luxe-epic-anime.wav": {
+      "n": 12,
+      "gewicht": 1.01,
+      "vorsprung": 0.012,
+      "median_rel": 0.98,
       "belastbar": true
     },
     "luxe-epic-trailer.wav": {
@@ -770,20 +791,6 @@
       "vorsprung": 0.009,
       "median_rel": 1.02,
       "belastbar": false
-    },
-    "luxe-epic-anime.wav": {
-      "n": 12,
-      "gewicht": 1.01,
-      "vorsprung": 0.008,
-      "median_rel": 0.98,
-      "belastbar": true
-    },
-    "luxe-epic-hero.wav": {
-      "n": 4,
-      "gewicht": 1,
-      "vorsprung": 0.005,
-      "median_rel": 1.01,
-      "belastbar": true
     },
     "luxe-hype-pro.mp3": {
       "n": 1,
@@ -799,47 +806,54 @@
       "median_rel": 1.01,
       "belastbar": false
     },
+    "luxe-epic-hero.wav": {
+      "n": 5,
+      "gewicht": 1,
+      "vorsprung": -0.001,
+      "median_rel": 1,
+      "belastbar": true
+    },
+    "luxe-house2.wav": {
+      "n": 1,
+      "gewicht": 0.99,
+      "vorsprung": -0.011,
+      "median_rel": 0.96,
+      "belastbar": false
+    },
     "luxe-epic-fantasy.wav": {
       "n": 5,
       "gewicht": 0.99,
-      "vorsprung": -0.014,
+      "vorsprung": -0.013,
       "median_rel": 0.98,
       "belastbar": true
     },
     "luxe-epic-winter.wav": {
       "n": 4,
-      "gewicht": 0.98,
+      "gewicht": 0.99,
       "vorsprung": -0.015,
-      "median_rel": 0.97,
+      "median_rel": 0.98,
       "belastbar": true
-    },
-    "luxe-house2.wav": {
-      "n": 1,
-      "gewicht": 0.98,
-      "vorsprung": -0.018,
-      "median_rel": 0.93,
-      "belastbar": false
     },
     "luxe-adventure-uplift.wav": {
       "n": 16,
       "gewicht": 0.98,
-      "vorsprung": -0.022,
+      "vorsprung": -0.015,
       "median_rel": 1.01,
       "belastbar": true
     }
   },
   "stimme": {
     "ohne Stimme": {
-      "n": 39,
+      "n": 40,
       "gewicht": 1.04,
-      "vorsprung": 0.035,
+      "vorsprung": 0.039,
       "median_rel": 1.01,
       "belastbar": true
     },
     "mit Stimme": {
       "n": 28,
       "gewicht": 1,
-      "vorsprung": -0.003,
+      "vorsprung": 0,
       "median_rel": 0.98,
       "belastbar": true
     }
@@ -847,16 +861,16 @@
   "hashtags": {
     "#hundeliebe": {
       "n": 3,
-      "gewicht": 1.73,
-      "vorsprung": 0.55,
-      "median_rel": 2.83,
+      "gewicht": 1.75,
+      "vorsprung": 0.561,
+      "median_rel": 3.01,
       "belastbar": true
     },
     "#abendkleid": {
       "n": 4,
-      "gewicht": 1.73,
-      "vorsprung": 0.548,
-      "median_rel": 2.63,
+      "gewicht": 1.72,
+      "vorsprung": 0.544,
+      "median_rel": 2.6,
       "belastbar": true
     },
     "#leinen": {
@@ -882,150 +896,150 @@
     },
     "#techschweiz": {
       "n": 18,
-      "gewicht": 1.64,
-      "vorsprung": 0.497,
+      "gewicht": 1.66,
+      "vorsprung": 0.508,
       "median_rel": 1.36,
       "belastbar": true
     },
     "#reiserucksack": {
       "n": 2,
       "gewicht": 1.63,
-      "vorsprung": 0.488,
-      "median_rel": 3.39,
+      "vorsprung": 0.487,
+      "median_rel": 3.38,
       "belastbar": false
     },
     "#veganleder": {
       "n": 2,
       "gewicht": 1.63,
-      "vorsprung": 0.488,
-      "median_rel": 3.39,
+      "vorsprung": 0.487,
+      "median_rel": 3.38,
       "belastbar": false
     },
     "#rucksack": {
       "n": 2,
       "gewicht": 1.63,
-      "vorsprung": 0.488,
-      "median_rel": 3.39,
-      "belastbar": false
-    },
-    "#ohrringset": {
-      "n": 2,
-      "gewicht": 1.59,
-      "vorsprung": 0.465,
-      "median_rel": 3.19,
+      "vorsprung": 0.487,
+      "median_rel": 3.38,
       "belastbar": false
     },
     "#tierliebe": {
       "n": 24,
-      "gewicht": 1.58,
-      "vorsprung": 0.458,
-      "median_rel": 1.13,
+      "gewicht": 1.62,
+      "vorsprung": 0.479,
+      "median_rel": 1.16,
       "belastbar": true
     },
     "#haustiere": {
       "n": 25,
-      "gewicht": 1.55,
-      "vorsprung": 0.44,
-      "median_rel": 1.09,
+      "gewicht": 1.59,
+      "vorsprung": 0.461,
+      "median_rel": 1.15,
       "belastbar": true
+    },
+    "#ohrringset": {
+      "n": 2,
+      "gewicht": 1.57,
+      "vorsprung": 0.454,
+      "median_rel": 3.11,
+      "belastbar": false
     },
     "#pandahandyhalter": {
       "n": 2,
-      "gewicht": 1.55,
-      "vorsprung": 0.439,
-      "median_rel": 3,
+      "gewicht": 1.57,
+      "vorsprung": 0.453,
+      "median_rel": 3.11,
       "belastbar": false
     },
     "#handyhalter": {
       "n": 2,
-      "gewicht": 1.55,
-      "vorsprung": 0.439,
-      "median_rel": 3,
+      "gewicht": 1.57,
+      "vorsprung": 0.453,
+      "median_rel": 3.11,
       "belastbar": false
     },
     "#schreibtischaccessoires": {
       "n": 2,
-      "gewicht": 1.55,
-      "vorsprung": 0.439,
-      "median_rel": 3,
+      "gewicht": 1.57,
+      "vorsprung": 0.453,
+      "median_rel": 3.11,
       "belastbar": false
     },
     "#ohrringe": {
       "n": 3,
-      "gewicht": 1.52,
-      "vorsprung": 0.418,
-      "median_rel": 1.28,
+      "gewicht": 1.51,
+      "vorsprung": 0.409,
+      "median_rel": 1.21,
       "belastbar": true
     },
     "#herrenschmuck": {
       "n": 5,
-      "gewicht": 1.51,
-      "vorsprung": 0.414,
-      "median_rel": 0.96,
-      "belastbar": true
-    },
-    "#homedecor": {
-      "n": 25,
       "gewicht": 1.49,
-      "vorsprung": 0.396,
-      "median_rel": 1,
+      "vorsprung": 0.402,
+      "median_rel": 0.96,
       "belastbar": true
     },
     "#gadgets": {
       "n": 21,
-      "gewicht": 1.47,
-      "vorsprung": 0.382,
+      "gewicht": 1.49,
+      "vorsprung": 0.396,
+      "median_rel": 1.09,
+      "belastbar": true
+    },
+    "#homedecor": {
+      "n": 26,
+      "gewicht": 1.45,
+      "vorsprung": 0.371,
+      "median_rel": 1.03,
+      "belastbar": true
+    },
+    "#technik": {
+      "n": 21,
+      "gewicht": 1.44,
+      "vorsprung": 0.366,
       "median_rel": 1.09,
       "belastbar": true
     },
     "#cubanlink": {
       "n": 2,
-      "gewicht": 1.45,
-      "vorsprung": 0.371,
-      "median_rel": 2.53,
-      "belastbar": false
-    },
-    "#technik": {
-      "n": 21,
       "gewicht": 1.43,
-      "vorsprung": 0.356,
-      "median_rel": 1.09,
-      "belastbar": true
+      "vorsprung": 0.361,
+      "median_rel": 2.47,
+      "belastbar": false
     },
     "#pflege": {
       "n": 10,
-      "gewicht": 1.4,
-      "vorsprung": 0.336,
+      "gewicht": 1.41,
+      "vorsprung": 0.341,
       "median_rel": 1.09,
-      "belastbar": true
-    },
-    "#zuhause": {
-      "n": 28,
-      "gewicht": 1.39,
-      "vorsprung": 0.328,
-      "median_rel": 1,
-      "belastbar": true
-    },
-    "#wohnen": {
-      "n": 28,
-      "gewicht": 1.39,
-      "vorsprung": 0.328,
-      "median_rel": 1,
       "belastbar": true
     },
     "#onlineshopping": {
       "n": 74,
-      "gewicht": 1.37,
-      "vorsprung": 0.315,
+      "gewicht": 1.39,
+      "vorsprung": 0.33,
       "median_rel": 1,
       "belastbar": true
     },
-    "#fuerihn": {
-      "n": 2,
-      "gewicht": 1.35,
-      "vorsprung": 0.299,
-      "median_rel": 2.11,
-      "belastbar": false
+    "#fundstück": {
+      "n": 63,
+      "gewicht": 1.37,
+      "vorsprung": 0.317,
+      "median_rel": 1.03,
+      "belastbar": true
+    },
+    "#zuhause": {
+      "n": 29,
+      "gewicht": 1.36,
+      "vorsprung": 0.305,
+      "median_rel": 1,
+      "belastbar": true
+    },
+    "#wohnen": {
+      "n": 29,
+      "gewicht": 1.36,
+      "vorsprung": 0.305,
+      "median_rel": 1,
+      "belastbar": true
     },
     "#totebag": {
       "n": 4,
@@ -1034,12 +1048,12 @@
       "median_rel": 1,
       "belastbar": true
     },
-    "#fundstück": {
-      "n": 63,
-      "gewicht": 1.35,
-      "vorsprung": 0.296,
-      "median_rel": 1.03,
-      "belastbar": true
+    "#fuerihn": {
+      "n": 2,
+      "gewicht": 1.34,
+      "vorsprung": 0.289,
+      "median_rel": 2.06,
+      "belastbar": false
     },
     "#bluetoothspeaker": {
       "n": 2,
@@ -1071,121 +1085,135 @@
     },
     "#damenschmuck": {
       "n": 4,
-      "gewicht": 1.31,
-      "vorsprung": 0.27,
-      "median_rel": 1.06,
+      "gewicht": 1.29,
+      "vorsprung": 0.256,
+      "median_rel": 1.04,
+      "belastbar": true
+    },
+    "#fashionschweiz": {
+      "n": 53,
+      "gewicht": 1.29,
+      "vorsprung": 0.251,
+      "median_rel": 0.97,
       "belastbar": true
     },
     "#watch": {
       "n": 2,
-      "gewicht": 1.3,
-      "vorsprung": 0.26,
-      "median_rel": 1.92,
-      "belastbar": false
-    },
-    "#fashionschweiz": {
-      "n": 53,
       "gewicht": 1.28,
       "vorsprung": 0.25,
+      "median_rel": 1.87,
+      "belastbar": false
+    },
+    "#geschenkidee": {
+      "n": 26,
+      "gewicht": 1.28,
+      "vorsprung": 0.244,
       "median_rel": 1,
       "belastbar": true
     },
     "#petsoftiktok": {
       "n": 2,
-      "gewicht": 1.26,
-      "vorsprung": 0.232,
-      "median_rel": 1.79,
+      "gewicht": 1.27,
+      "vorsprung": 0.239,
+      "median_rel": 1.82,
       "belastbar": false
     },
-    "#geschenkidee": {
-      "n": 26,
+    "#alltag": {
+      "n": 72,
       "gewicht": 1.26,
-      "vorsprung": 0.228,
+      "vorsprung": 0.233,
       "median_rel": 1,
       "belastbar": true
     },
     "#kleid": {
       "n": 3,
-      "gewicht": 1.24,
-      "vorsprung": 0.219,
+      "gewicht": 1.26,
+      "vorsprung": 0.229,
       "median_rel": 1.2,
       "belastbar": true
     },
     "#kleiderliebe": {
       "n": 3,
-      "gewicht": 1.24,
-      "vorsprung": 0.219,
+      "gewicht": 1.26,
+      "vorsprung": 0.229,
       "median_rel": 1.2,
       "belastbar": true
     },
+    "#slimwallet": {
+      "n": 2,
+      "gewicht": 1.22,
+      "vorsprung": 0.2,
+      "median_rel": 1.65,
+      "belastbar": false
+    },
+    "#lederaccessoires": {
+      "n": 2,
+      "gewicht": 1.22,
+      "vorsprung": 0.2,
+      "median_rel": 1.65,
+      "belastbar": false
+    },
+    "#katze": {
+      "n": 5,
+      "gewicht": 1.22,
+      "vorsprung": 0.2,
+      "median_rel": 1.17,
+      "belastbar": true
+    },
     "#zürich": {
-      "n": 107,
-      "gewicht": 1.24,
-      "vorsprung": 0.215,
+      "n": 109,
+      "gewicht": 1.22,
+      "vorsprung": 0.2,
       "median_rel": 1,
       "belastbar": true
     },
     "#uhren": {
       "n": 4,
-      "gewicht": 1.24,
-      "vorsprung": 0.214,
-      "median_rel": 1.22,
+      "gewicht": 1.22,
+      "vorsprung": 0.199,
+      "median_rel": 1.19,
       "belastbar": true
-    },
-    "#alltag": {
-      "n": 72,
-      "gewicht": 1.24,
-      "vorsprung": 0.213,
-      "median_rel": 1,
-      "belastbar": true
-    },
-    "#slimwallet": {
-      "n": 2,
-      "gewicht": 1.23,
-      "vorsprung": 0.21,
-      "median_rel": 1.69,
-      "belastbar": false
-    },
-    "#lederaccessoires": {
-      "n": 2,
-      "gewicht": 1.23,
-      "vorsprung": 0.21,
-      "median_rel": 1.69,
-      "belastbar": false
     },
     "#swissstyle": {
-      "n": 64,
-      "gewicht": 1.22,
-      "vorsprung": 0.196,
+      "n": 66,
+      "gewicht": 1.2,
+      "vorsprung": 0.182,
       "median_rel": 1,
       "belastbar": true
     },
     "#beautyroutine": {
       "n": 1,
-      "gewicht": 1.2,
-      "vorsprung": 0.184,
-      "median_rel": 2.09,
+      "gewicht": 1.19,
+      "vorsprung": 0.176,
+      "median_rel": 2.03,
       "belastbar": false
     },
-    "#lederarmband": {
-      "n": 4,
+    "#sternenprojektor": {
+      "n": 3,
       "gewicht": 1.19,
-      "vorsprung": 0.176,
-      "median_rel": 0.88,
+      "vorsprung": 0.171,
+      "median_rel": 0.92,
       "belastbar": true
     },
-    "#katze": {
-      "n": 5,
+    "#wohnideen": {
+      "n": 3,
       "gewicht": 1.19,
-      "vorsprung": 0.176,
-      "median_rel": 1.17,
+      "vorsprung": 0.171,
+      "median_rel": 0.92,
       "belastbar": true
     },
     "#selfcare": {
       "n": 22,
-      "gewicht": 1.18,
-      "vorsprung": 0.169,
+      "gewicht": 1.19,
+      "vorsprung": 0.171,
       "median_rel": 1.01,
+      "belastbar": true
+    },
+    "#shoppingschweiz": {
+      "n": 92,
+      "gewicht": 1.18,
+      "vorsprung": 0.168,
+      "median_rel": 1,
       "belastbar": true
     },
     "#selbstgestalten": {
@@ -1195,33 +1223,33 @@
       "median_rel": 1,
       "belastbar": true
     },
-    "#shoppingschweiz": {
-      "n": 92,
+    "#lederarmband": {
+      "n": 4,
+      "gewicht": 1.18,
+      "vorsprung": 0.162,
+      "median_rel": 0.86,
+      "belastbar": true
+    },
+    "#haustier": {
+      "n": 51,
       "gewicht": 1.17,
-      "vorsprung": 0.153,
+      "vorsprung": 0.16,
       "median_rel": 1,
       "belastbar": true
+    },
+    "#herbst2026": {
+      "n": 1,
+      "gewicht": 1.17,
+      "vorsprung": 0.156,
+      "median_rel": 1.87,
+      "belastbar": false
     },
     "#halloweenparty": {
       "n": 2,
       "gewicht": 1.16,
-      "vorsprung": 0.145,
-      "median_rel": 1.44,
+      "vorsprung": 0.152,
+      "median_rel": 1.46,
       "belastbar": false
-    },
-    "#sternenprojektor": {
-      "n": 3,
-      "gewicht": 1.15,
-      "vorsprung": 0.143,
-      "median_rel": 0.92,
-      "belastbar": true
-    },
-    "#wohnideen": {
-      "n": 3,
-      "gewicht": 1.15,
-      "vorsprung": 0.143,
-      "median_rel": 0.92,
-      "belastbar": true
     },
     "#ootdschweiz": {
       "n": 82,
@@ -1230,29 +1258,22 @@
       "median_rel": 1,
       "belastbar": true
     },
-    "#haustier": {
-      "n": 51,
-      "gewicht": 1.15,
-      "vorsprung": 0.143,
-      "median_rel": 1,
-      "belastbar": true
-    },
     "#luxestyle": {
-      "n": 543,
+      "n": 547,
       "gewicht": 1.15,
       "vorsprung": 0.14,
       "median_rel": 1,
       "belastbar": true
     },
-    "#swissmade": {
-      "n": 33,
-      "gewicht": 1.15,
-      "vorsprung": 0.137,
-      "median_rel": 1,
+    "#outfit": {
+      "n": 16,
+      "gewicht": 1.14,
+      "vorsprung": 0.135,
+      "median_rel": 0.88,
       "belastbar": true
     },
-    "#schweizmode": {
-      "n": 88,
+    "#swissmade": {
+      "n": 33,
       "gewicht": 1.14,
       "vorsprung": 0.134,
       "median_rel": 1,
@@ -1265,39 +1286,32 @@
       "median_rel": 1.02,
       "belastbar": true
     },
-    "#outfit": {
-      "n": 16,
+    "#schweizmode": {
+      "n": 88,
       "gewicht": 1.14,
-      "vorsprung": 0.128,
-      "median_rel": 0.88,
+      "vorsprung": 0.132,
+      "median_rel": 1,
       "belastbar": true
     },
     "#beauty": {
       "n": 11,
       "gewicht": 1.14,
-      "vorsprung": 0.127,
+      "vorsprung": 0.128,
+      "median_rel": 1,
+      "belastbar": true
+    },
+    "#gruselig": {
+      "n": 3,
+      "gewicht": 1.13,
+      "vorsprung": 0.126,
       "median_rel": 1,
       "belastbar": true
     },
     "#guasha": {
       "n": 3,
       "gewicht": 1.13,
-      "vorsprung": 0.126,
+      "vorsprung": 0.121,
       "median_rel": 1.19,
-      "belastbar": true
-    },
-    "#herbst2026": {
-      "n": 1,
-      "gewicht": 1.13,
-      "vorsprung": 0.123,
-      "median_rel": 1.64,
-      "belastbar": false
-    },
-    "#gruselig": {
-      "n": 3,
-      "gewicht": 1.13,
-      "vorsprung": 0.12,
-      "median_rel": 1,
       "belastbar": true
     },
     "#mamaleben": {
@@ -1309,58 +1323,58 @@
     },
     "#sportuhr": {
       "n": 2,
-      "gewicht": 1.13,
-      "vorsprung": 0.118,
-      "median_rel": 1.34,
+      "gewicht": 1.11,
+      "vorsprung": 0.108,
+      "median_rel": 1.31,
       "belastbar": false
     },
     "#gmt": {
       "n": 2,
-      "gewicht": 1.13,
-      "vorsprung": 0.118,
-      "median_rel": 1.34,
+      "gewicht": 1.11,
+      "vorsprung": 0.108,
+      "median_rel": 1.31,
       "belastbar": false
-    },
-    "#herrenuhr": {
-      "n": 8,
-      "gewicht": 1.12,
-      "vorsprung": 0.116,
-      "median_rel": 1.11,
-      "belastbar": true
-    },
-    "#echtleder": {
-      "n": 4,
-      "gewicht": 1.12,
-      "vorsprung": 0.115,
-      "median_rel": 1.04,
-      "belastbar": true
-    },
-    "#rfidschutz": {
-      "n": 4,
-      "gewicht": 1.12,
-      "vorsprung": 0.115,
-      "median_rel": 1.04,
-      "belastbar": true
     },
     "#fyp": {
       "n": 62,
       "gewicht": 1.11,
-      "vorsprung": 0.104,
+      "vorsprung": 0.105,
       "median_rel": 1,
       "belastbar": true
     },
     "#skincare": {
       "n": 22,
-      "gewicht": 1.1,
-      "vorsprung": 0.099,
+      "gewicht": 1.11,
+      "vorsprung": 0.103,
       "median_rel": 1.01,
+      "belastbar": true
+    },
+    "#echtleder": {
+      "n": 4,
+      "gewicht": 1.11,
+      "vorsprung": 0.1,
+      "median_rel": 0.99,
+      "belastbar": true
+    },
+    "#rfidschutz": {
+      "n": 4,
+      "gewicht": 1.11,
+      "vorsprung": 0.1,
+      "median_rel": 0.99,
+      "belastbar": true
+    },
+    "#herrenuhr": {
+      "n": 8,
+      "gewicht": 1.1,
+      "vorsprung": 0.097,
+      "median_rel": 1.08,
       "belastbar": true
     },
     "#modeschweiz": {
       "n": 13,
-      "gewicht": 1.1,
-      "vorsprung": 0.091,
-      "median_rel": 1,
+      "gewicht": 1.09,
+      "vorsprung": 0.088,
+      "median_rel": 0.98,
       "belastbar": true
     },
     "#streetwear": {
@@ -1370,87 +1384,80 @@
       "median_rel": 1.2,
       "belastbar": true
     },
-    "#kühlmatte": {
-      "n": 2,
+    "#ambiente": {
+      "n": 3,
       "gewicht": 1.09,
       "vorsprung": 0.085,
-      "median_rel": 1.24,
+      "median_rel": 1.49,
+      "belastbar": true
+    },
+    "#kühlmatte": {
+      "n": 2,
+      "gewicht": 1.08,
+      "vorsprung": 0.079,
+      "median_rel": 1.22,
       "belastbar": false
     },
     "#hunde": {
       "n": 2,
-      "gewicht": 1.09,
-      "vorsprung": 0.085,
-      "median_rel": 1.24,
+      "gewicht": 1.08,
+      "vorsprung": 0.079,
+      "median_rel": 1.22,
       "belastbar": false
     },
     "#katzen": {
       "n": 2,
-      "gewicht": 1.09,
-      "vorsprung": 0.085,
-      "median_rel": 1.24,
-      "belastbar": false
-    },
-    "#ambiente": {
-      "n": 3,
-      "gewicht": 1.09,
-      "vorsprung": 0.083,
-      "median_rel": 1.49,
-      "belastbar": true
-    },
-    "#schweizershop": {
-      "n": 1,
-      "gewicht": 1.09,
-      "vorsprung": 0.083,
-      "median_rel": 1.39,
-      "belastbar": false
-    },
-    "#poloshirt": {
-      "n": 2,
       "gewicht": 1.08,
-      "vorsprung": 0.077,
-      "median_rel": 1.21,
-      "belastbar": false
-    },
-    "#icesilk": {
-      "n": 2,
-      "gewicht": 1.08,
-      "vorsprung": 0.077,
-      "median_rel": 1.21,
-      "belastbar": false
-    },
-    "#leselupe": {
-      "n": 2,
-      "gewicht": 1.08,
-      "vorsprung": 0.074,
-      "median_rel": 1.2,
-      "belastbar": false
-    },
-    "#led": {
-      "n": 2,
-      "gewicht": 1.08,
-      "vorsprung": 0.074,
-      "median_rel": 1.2,
-      "belastbar": false
-    },
-    "#vergrösserung": {
-      "n": 2,
-      "gewicht": 1.08,
-      "vorsprung": 0.074,
-      "median_rel": 1.2,
+      "vorsprung": 0.079,
+      "median_rel": 1.22,
       "belastbar": false
     },
     "#schweiz": {
       "n": 325,
-      "gewicht": 1.07,
-      "vorsprung": 0.071,
+      "gewicht": 1.08,
+      "vorsprung": 0.073,
       "median_rel": 1,
       "belastbar": true
     },
-    "#fitnesstracker": {
+    "#poloshirt": {
       "n": 2,
       "gewicht": 1.07,
-      "vorsprung": 0.069,
+      "vorsprung": 0.071,
+      "median_rel": 1.2,
+      "belastbar": false
+    },
+    "#icesilk": {
+      "n": 2,
+      "gewicht": 1.07,
+      "vorsprung": 0.071,
+      "median_rel": 1.2,
+      "belastbar": false
+    },
+    "#halloween": {
+      "n": 6,
+      "gewicht": 1.07,
+      "vorsprung": 0.07,
+      "median_rel": 1.01,
+      "belastbar": true
+    },
+    "#leselupe": {
+      "n": 2,
+      "gewicht": 1.07,
+      "vorsprung": 0.068,
+      "median_rel": 1.19,
+      "belastbar": false
+    },
+    "#led": {
+      "n": 2,
+      "gewicht": 1.07,
+      "vorsprung": 0.068,
+      "median_rel": 1.19,
+      "belastbar": false
+    },
+    "#vergrösserung": {
+      "n": 2,
+      "gewicht": 1.07,
+      "vorsprung": 0.068,
       "median_rel": 1.19,
       "belastbar": false
     },
@@ -1461,54 +1468,19 @@
       "median_rel": 1,
       "belastbar": true
     },
-    "#halloween": {
-      "n": 6,
+    "#fitnesstracker": {
+      "n": 2,
       "gewicht": 1.07,
       "vorsprung": 0.066,
-      "median_rel": 1.01,
-      "belastbar": true
+      "median_rel": 1.18,
+      "belastbar": false
     },
-    "#schmuck": {
-      "n": 21,
-      "gewicht": 1.07,
-      "vorsprung": 0.065,
+    "#ootd": {
+      "n": 15,
+      "gewicht": 1.06,
+      "vorsprung": 0.062,
       "median_rel": 1,
       "belastbar": true
-    },
-    "#armband": {
-      "n": 6,
-      "gewicht": 1.07,
-      "vorsprung": 0.064,
-      "median_rel": 0.77,
-      "belastbar": true
-    },
-    "#crossbodybag": {
-      "n": 2,
-      "gewicht": 1.06,
-      "vorsprung": 0.063,
-      "median_rel": 1.17,
-      "belastbar": false
-    },
-    "#veganetasche": {
-      "n": 2,
-      "gewicht": 1.06,
-      "vorsprung": 0.063,
-      "median_rel": 1.17,
-      "belastbar": false
-    },
-    "#sommertasche": {
-      "n": 2,
-      "gewicht": 1.06,
-      "vorsprung": 0.063,
-      "median_rel": 1.17,
-      "belastbar": false
-    },
-    "#smartphonefach": {
-      "n": 2,
-      "gewicht": 1.06,
-      "vorsprung": 0.063,
-      "median_rel": 1.17,
-      "belastbar": false
     },
     "#aufbewahrung": {
       "n": 2,
@@ -1524,11 +1496,11 @@
       "median_rel": 1.17,
       "belastbar": false
     },
-    "#neu": {
-      "n": 26,
+    "#schmuck": {
+      "n": 21,
       "gewicht": 1.06,
-      "vorsprung": 0.062,
-      "median_rel": 1.03,
+      "vorsprung": 0.061,
+      "median_rel": 1,
       "belastbar": true
     },
     "#bärndütsch": {
@@ -1538,19 +1510,54 @@
       "median_rel": 1.2,
       "belastbar": true
     },
-    "#ootd": {
-      "n": 15,
+    "#schweizershop": {
+      "n": 1,
       "gewicht": 1.06,
-      "vorsprung": 0.06,
-      "median_rel": 1,
+      "vorsprung": 0.059,
+      "median_rel": 1.27,
+      "belastbar": false
+    },
+    "#neu": {
+      "n": 26,
+      "gewicht": 1.06,
+      "vorsprung": 0.054,
+      "median_rel": 1.02,
       "belastbar": true
     },
-    "#wasserdicht": {
-      "n": 4,
-      "gewicht": 1.06,
-      "vorsprung": 0.055,
-      "median_rel": 1.11,
+    "#armband": {
+      "n": 6,
+      "gewicht": 1.05,
+      "vorsprung": 0.053,
+      "median_rel": 0.74,
       "belastbar": true
+    },
+    "#crossbodybag": {
+      "n": 2,
+      "gewicht": 1.05,
+      "vorsprung": 0.052,
+      "median_rel": 1.14,
+      "belastbar": false
+    },
+    "#veganetasche": {
+      "n": 2,
+      "gewicht": 1.05,
+      "vorsprung": 0.052,
+      "median_rel": 1.14,
+      "belastbar": false
+    },
+    "#sommertasche": {
+      "n": 2,
+      "gewicht": 1.05,
+      "vorsprung": 0.052,
+      "median_rel": 1.14,
+      "belastbar": false
+    },
+    "#smartphonefach": {
+      "n": 2,
+      "gewicht": 1.05,
+      "vorsprung": 0.052,
+      "median_rel": 1.14,
+      "belastbar": false
     },
     "#kristallset": {
       "n": 2,
@@ -1573,18 +1580,11 @@
       "median_rel": 1.14,
       "belastbar": false
     },
-    "#smartwatch": {
+    "#wasserdicht": {
       "n": 4,
       "gewicht": 1.05,
-      "vorsprung": 0.047,
-      "median_rel": 0.99,
-      "belastbar": true
-    },
-    "#amoled": {
-      "n": 4,
-      "gewicht": 1.05,
-      "vorsprung": 0.047,
-      "median_rel": 0.99,
+      "vorsprung": 0.046,
+      "median_rel": 1.08,
       "belastbar": true
     },
     "#barque": {
@@ -1601,81 +1601,32 @@
       "median_rel": 1.2,
       "belastbar": false
     },
-    "#swissfashion": {
-      "n": 2,
-      "gewicht": 1.04,
-      "vorsprung": 0.042,
-      "median_rel": 1.11,
-      "belastbar": false
-    },
-    "#basel": {
-      "n": 2,
-      "gewicht": 1.04,
-      "vorsprung": 0.042,
-      "median_rel": 1.11,
-      "belastbar": false
-    },
-    "#edelstahl": {
-      "n": 2,
-      "gewicht": 1.04,
-      "vorsprung": 0.042,
-      "median_rel": 1.11,
-      "belastbar": false
-    },
-    "#saphirglas": {
-      "n": 2,
-      "gewicht": 1.04,
-      "vorsprung": 0.042,
-      "median_rel": 1.11,
-      "belastbar": false
-    },
-    "#damenuhr": {
-      "n": 2,
-      "gewicht": 1.04,
-      "vorsprung": 0.039,
-      "median_rel": 1.1,
-      "belastbar": false
-    },
-    "#bluetoothkopfhörer": {
-      "n": 2,
-      "gewicht": 1.04,
-      "vorsprung": 0.039,
-      "median_rel": 1.1,
-      "belastbar": false
-    },
-    "#anc": {
-      "n": 2,
-      "gewicht": 1.04,
-      "vorsprung": 0.039,
-      "median_rel": 1.1,
-      "belastbar": false
-    },
-    "#noisecancelling": {
-      "n": 2,
-      "gewicht": 1.04,
-      "vorsprung": 0.039,
-      "median_rel": 1.1,
-      "belastbar": false
-    },
-    "#musikgenuss": {
-      "n": 2,
-      "gewicht": 1.04,
-      "vorsprung": 0.039,
-      "median_rel": 1.1,
-      "belastbar": false
-    },
-    "#kochenmitliebe": {
-      "n": 4,
-      "gewicht": 1.04,
-      "vorsprung": 0.039,
-      "median_rel": 1.08,
-      "belastbar": true
-    },
     "#wasserfest": {
       "n": 5,
       "gewicht": 1.04,
       "vorsprung": 0.039,
       "median_rel": 1,
+      "belastbar": true
+    },
+    "#hund": {
+      "n": 31,
+      "gewicht": 1.04,
+      "vorsprung": 0.038,
+      "median_rel": 1,
+      "belastbar": true
+    },
+    "#smartwatch": {
+      "n": 4,
+      "gewicht": 1.04,
+      "vorsprung": 0.038,
+      "median_rel": 0.97,
+      "belastbar": true
+    },
+    "#amoled": {
+      "n": 4,
+      "gewicht": 1.04,
+      "vorsprung": 0.038,
+      "median_rel": 0.97,
       "belastbar": true
     },
     "#hundespielzeug": {
@@ -1687,51 +1638,93 @@
     },
     "#minibluetoothspeaker": {
       "n": 2,
-      "gewicht": 1.04,
-      "vorsprung": 0.035,
+      "gewicht": 1.03,
+      "vorsprung": 0.033,
       "median_rel": 1.09,
       "belastbar": false
     },
     "#duschradio": {
       "n": 2,
-      "gewicht": 1.04,
-      "vorsprung": 0.035,
+      "gewicht": 1.03,
+      "vorsprung": 0.033,
       "median_rel": 1.09,
       "belastbar": false
     },
-    "#bern": {
-      "n": 1,
+    "#fashion": {
+      "n": 8,
       "gewicht": 1.03,
-      "vorsprung": 0.033,
-      "median_rel": 1.14,
+      "vorsprung": 0.032,
+      "median_rel": 0.91,
+      "belastbar": true
+    },
+    "#swissfashion": {
+      "n": 2,
+      "gewicht": 1.03,
+      "vorsprung": 0.032,
+      "median_rel": 1.08,
       "belastbar": false
     },
-    "#bartpflegeset": {
+    "#basel": {
+      "n": 2,
+      "gewicht": 1.03,
+      "vorsprung": 0.032,
+      "median_rel": 1.08,
+      "belastbar": false
+    },
+    "#edelstahl": {
+      "n": 2,
+      "gewicht": 1.03,
+      "vorsprung": 0.032,
+      "median_rel": 1.08,
+      "belastbar": false
+    },
+    "#saphirglas": {
+      "n": 2,
+      "gewicht": 1.03,
+      "vorsprung": 0.032,
+      "median_rel": 1.08,
+      "belastbar": false
+    },
+    "#kochenmitliebe": {
+      "n": 4,
+      "gewicht": 1.03,
+      "vorsprung": 0.031,
+      "median_rel": 1.08,
+      "belastbar": true
+    },
+    "#damenuhr": {
       "n": 2,
       "gewicht": 1.03,
       "vorsprung": 0.029,
       "median_rel": 1.08,
       "belastbar": false
     },
-    "#bartpflege": {
+    "#bluetoothkopfhörer": {
       "n": 2,
       "gewicht": 1.03,
       "vorsprung": 0.029,
-      "median_rel": 1.08,
+      "median_rel": 1.07,
       "belastbar": false
     },
-    "#männerpflege": {
+    "#anc": {
       "n": 2,
       "gewicht": 1.03,
       "vorsprung": 0.029,
-      "median_rel": 1.08,
+      "median_rel": 1.07,
       "belastbar": false
     },
-    "#grooming": {
+    "#noisecancelling": {
       "n": 2,
       "gewicht": 1.03,
       "vorsprung": 0.029,
-      "median_rel": 1.08,
+      "median_rel": 1.07,
+      "belastbar": false
+    },
+    "#musikgenuss": {
+      "n": 2,
+      "gewicht": 1.03,
+      "vorsprung": 0.029,
+      "median_rel": 1.07,
       "belastbar": false
     },
     "#bambus": {
@@ -1741,75 +1734,47 @@
       "median_rel": 0.93,
       "belastbar": true
     },
-    "#fashion": {
-      "n": 8,
-      "gewicht": 1.02,
-      "vorsprung": 0.023,
-      "median_rel": 0.91,
-      "belastbar": true
-    },
-    "#wellness": {
-      "n": 2,
-      "gewicht": 1.02,
-      "vorsprung": 0.023,
-      "median_rel": 1.06,
-      "belastbar": false
-    },
-    "#entspannung": {
-      "n": 2,
-      "gewicht": 1.02,
-      "vorsprung": 0.023,
-      "median_rel": 1.06,
-      "belastbar": false
-    },
-    "#hund": {
-      "n": 31,
+    "#bern": {
+      "n": 1,
       "gewicht": 1.02,
       "vorsprung": 0.02,
-      "median_rel": 1,
+      "median_rel": 1.08,
+      "belastbar": false
+    },
+    "#bartpflegeset": {
+      "n": 2,
+      "gewicht": 1.02,
+      "vorsprung": 0.019,
+      "median_rel": 1.05,
+      "belastbar": false
+    },
+    "#bartpflege": {
+      "n": 2,
+      "gewicht": 1.02,
+      "vorsprung": 0.019,
+      "median_rel": 1.05,
+      "belastbar": false
+    },
+    "#männerpflege": {
+      "n": 2,
+      "gewicht": 1.02,
+      "vorsprung": 0.019,
+      "median_rel": 1.05,
+      "belastbar": false
+    },
+    "#grooming": {
+      "n": 2,
+      "gewicht": 1.02,
+      "vorsprung": 0.019,
+      "median_rel": 1.05,
+      "belastbar": false
+    },
+    "#accessoires": {
+      "n": 9,
+      "gewicht": 1.02,
+      "vorsprung": 0.016,
+      "median_rel": 0.93,
       "belastbar": true
-    },
-    "#sonnenbrille": {
-      "n": 2,
-      "gewicht": 1.02,
-      "vorsprung": 0.019,
-      "median_rel": 1.05,
-      "belastbar": false
-    },
-    "#retro": {
-      "n": 2,
-      "gewicht": 1.02,
-      "vorsprung": 0.019,
-      "median_rel": 1.05,
-      "belastbar": false
-    },
-    "#vintagestyle": {
-      "n": 2,
-      "gewicht": 1.02,
-      "vorsprung": 0.019,
-      "median_rel": 1.05,
-      "belastbar": false
-    },
-    "#uv400": {
-      "n": 2,
-      "gewicht": 1.02,
-      "vorsprung": 0.019,
-      "median_rel": 1.05,
-      "belastbar": false
-    },
-    "#ledschreibtischlampe": {
-      "n": 2,
-      "gewicht": 1.02,
-      "vorsprung": 0.018,
-      "median_rel": 1.05,
-      "belastbar": false
-    },
-    "#büroideen": {
-      "n": 2,
-      "gewicht": 1.02,
-      "vorsprung": 0.018,
-      "median_rel": 1.05,
-      "belastbar": false
     },
     "#sneaker": {
       "n": 1,
@@ -1818,31 +1783,101 @@
       "median_rel": 1.06,
       "belastbar": false
     },
-    "#gemüseschneider": {
+    "#ledschreibtischlampe": {
+      "n": 2,
+      "gewicht": 1.02,
+      "vorsprung": 0.015,
+      "median_rel": 1.04,
+      "belastbar": false
+    },
+    "#büroideen": {
+      "n": 2,
+      "gewicht": 1.02,
+      "vorsprung": 0.015,
+      "median_rel": 1.04,
+      "belastbar": false
+    },
+    "#wellness": {
       "n": 2,
       "gewicht": 1.01,
       "vorsprung": 0.013,
       "median_rel": 1.03,
+      "belastbar": false
+    },
+    "#entspannung": {
+      "n": 2,
+      "gewicht": 1.01,
+      "vorsprung": 0.013,
+      "median_rel": 1.03,
+      "belastbar": false
+    },
+    "#sonnenbrille": {
+      "n": 2,
+      "gewicht": 1.01,
+      "vorsprung": 0.009,
+      "median_rel": 1.02,
+      "belastbar": false
+    },
+    "#retro": {
+      "n": 2,
+      "gewicht": 1.01,
+      "vorsprung": 0.009,
+      "median_rel": 1.02,
+      "belastbar": false
+    },
+    "#vintagestyle": {
+      "n": 2,
+      "gewicht": 1.01,
+      "vorsprung": 0.009,
+      "median_rel": 1.02,
+      "belastbar": false
+    },
+    "#uv400": {
+      "n": 2,
+      "gewicht": 1.01,
+      "vorsprung": 0.009,
+      "median_rel": 1.02,
+      "belastbar": false
+    },
+    "#kinder": {
+      "n": 9,
+      "gewicht": 1.01,
+      "vorsprung": 0.007,
+      "median_rel": 1,
+      "belastbar": true
+    },
+    "#menstyle": {
+      "n": 13,
+      "gewicht": 1.01,
+      "vorsprung": 0.007,
+      "median_rel": 1,
+      "belastbar": true
+    },
+    "#gemüseschneider": {
+      "n": 2,
+      "gewicht": 1.01,
+      "vorsprung": 0.007,
+      "median_rel": 1.02,
       "belastbar": false
     },
     "#multifunktional": {
       "n": 2,
       "gewicht": 1.01,
-      "vorsprung": 0.013,
-      "median_rel": 1.03,
+      "vorsprung": 0.007,
+      "median_rel": 1.02,
       "belastbar": false
     },
-    "#fitness": {
-      "n": 3,
+    "#tech": {
+      "n": 8,
       "gewicht": 1.01,
       "vorsprung": 0.006,
-      "median_rel": 1.01,
+      "median_rel": 1,
       "belastbar": true
     },
-    "#jaderoller": {
-      "n": 4,
+    "#reels": {
+      "n": 77,
       "gewicht": 1,
-      "vorsprung": 0.004,
+      "vorsprung": 0.005,
       "median_rel": 1,
       "belastbar": true
     },
@@ -1853,52 +1888,24 @@
       "median_rel": 1.01,
       "belastbar": false
     },
-    "#accessoires": {
-      "n": 9,
-      "gewicht": 1,
-      "vorsprung": 0.001,
-      "median_rel": 0.9,
-      "belastbar": true
-    },
-    "#menstyle": {
-      "n": 13,
-      "gewicht": 1,
-      "vorsprung": 0,
-      "median_rel": 1,
-      "belastbar": true
-    },
-    "#reels": {
-      "n": 77,
+    "#trend": {
+      "n": 10,
       "gewicht": 1,
       "vorsprung": -0.001,
-      "median_rel": 1,
-      "belastbar": true
-    },
-    "#fitnessuhr": {
-      "n": 2,
-      "gewicht": 1,
-      "vorsprung": -0.003,
-      "median_rel": 0.99,
-      "belastbar": false
-    },
-    "#sportmodi": {
-      "n": 2,
-      "gewicht": 1,
-      "vorsprung": -0.003,
-      "median_rel": 0.99,
-      "belastbar": false
-    },
-    "#tech": {
-      "n": 8,
-      "gewicht": 1,
-      "vorsprung": -0.003,
-      "median_rel": 1,
+      "median_rel": 0.97,
       "belastbar": true
     },
     "#foryou": {
       "n": 59,
-      "gewicht": 0.99,
-      "vorsprung": -0.006,
+      "gewicht": 1,
+      "vorsprung": -0.002,
+      "median_rel": 1,
+      "belastbar": true
+    },
+    "#jaderoller": {
+      "n": 4,
+      "gewicht": 1,
+      "vorsprung": -0.003,
       "median_rel": 1,
       "belastbar": true
     },
@@ -1909,19 +1916,19 @@
       "median_rel": 0.97,
       "belastbar": false
     },
-    "#trend": {
-      "n": 10,
+    "#fitnessuhr": {
+      "n": 2,
       "gewicht": 0.99,
-      "vorsprung": -0.007,
-      "median_rel": 1,
-      "belastbar": true
+      "vorsprung": -0.013,
+      "median_rel": 0.97,
+      "belastbar": false
     },
-    "#kinder": {
-      "n": 9,
+    "#sportmodi": {
+      "n": 2,
       "gewicht": 0.99,
-      "vorsprung": -0.007,
-      "median_rel": 1,
-      "belastbar": true
+      "vorsprung": -0.013,
+      "median_rel": 0.97,
+      "belastbar": false
     },
     "#gesichtspflege": {
       "n": 2,
@@ -1937,10 +1944,17 @@
       "median_rel": 1.01,
       "belastbar": true
     },
+    "#trending": {
+      "n": 21,
+      "gewicht": 0.98,
+      "vorsprung": -0.02,
+      "median_rel": 1,
+      "belastbar": true
+    },
     "#damenschuhe": {
       "n": 8,
       "gewicht": 0.98,
-      "vorsprung": -0.02,
+      "vorsprung": -0.021,
       "median_rel": 0.97,
       "belastbar": true
     },
@@ -1949,13 +1963,6 @@
       "gewicht": 0.98,
       "vorsprung": -0.023,
       "median_rel": 0.92,
-      "belastbar": true
-    },
-    "#trending": {
-      "n": 21,
-      "gewicht": 0.98,
-      "vorsprung": -0.023,
-      "median_rel": 1,
       "belastbar": true
     },
     "#aromadiffuser": {
@@ -1968,8 +1975,8 @@
     "#shoes": {
       "n": 5,
       "gewicht": 0.97,
-      "vorsprung": -0.032,
-      "median_rel": 0.93,
+      "vorsprung": -0.03,
+      "median_rel": 0.97,
       "belastbar": true
     },
     "#shorts": {
@@ -1979,151 +1986,53 @@
       "median_rel": 1,
       "belastbar": true
     },
+    "#herrenmode": {
+      "n": 21,
+      "gewicht": 0.96,
+      "vorsprung": -0.037,
+      "median_rel": 0.97,
+      "belastbar": true
+    },
     "#homeworkout": {
       "n": 5,
-      "gewicht": 0.97,
-      "vorsprung": -0.034,
+      "gewicht": 0.96,
+      "vorsprung": -0.041,
       "median_rel": 1,
       "belastbar": true
     },
     "#küchenhelfer": {
-      "n": 11,
+      "n": 12,
       "gewicht": 0.96,
-      "vorsprung": -0.036,
+      "vorsprung": -0.043,
       "median_rel": 1,
       "belastbar": true
     },
     "#babylätzchen": {
       "n": 2,
-      "gewicht": 0.96,
-      "vorsprung": -0.036,
-      "median_rel": 0.91,
+      "gewicht": 0.95,
+      "vorsprung": -0.047,
+      "median_rel": 0.89,
       "belastbar": false
     },
     "#silikonlätzchen": {
       "n": 2,
-      "gewicht": 0.96,
-      "vorsprung": -0.036,
-      "median_rel": 0.91,
+      "gewicht": 0.95,
+      "vorsprung": -0.047,
+      "median_rel": 0.89,
       "belastbar": false
     },
     "#babyessentials": {
       "n": 2,
-      "gewicht": 0.96,
-      "vorsprung": -0.036,
-      "median_rel": 0.91,
+      "gewicht": 0.95,
+      "vorsprung": -0.047,
+      "median_rel": 0.89,
       "belastbar": false
     },
     "#babyzubehör": {
       "n": 2,
-      "gewicht": 0.96,
-      "vorsprung": -0.036,
-      "median_rel": 0.91,
-      "belastbar": false
-    },
-    "#herrenmode": {
-      "n": 21,
-      "gewicht": 0.96,
-      "vorsprung": -0.04,
-      "median_rel": 0.99,
-      "belastbar": true
-    },
-    "#krallenschleifer": {
-      "n": 2,
-      "gewicht": 0.96,
-      "vorsprung": -0.045,
+      "gewicht": 0.95,
+      "vorsprung": -0.047,
       "median_rel": 0.89,
-      "belastbar": false
-    },
-    "#hundezubehör": {
-      "n": 2,
-      "gewicht": 0.96,
-      "vorsprung": -0.045,
-      "median_rel": 0.89,
-      "belastbar": false
-    },
-    "#katzenzubehör": {
-      "n": 2,
-      "gewicht": 0.96,
-      "vorsprung": -0.045,
-      "median_rel": 0.89,
-      "belastbar": false
-    },
-    "#travelset": {
-      "n": 2,
-      "gewicht": 0.95,
-      "vorsprung": -0.048,
-      "median_rel": 0.89,
-      "belastbar": false
-    },
-    "#reiseaccessoires": {
-      "n": 2,
-      "gewicht": 0.95,
-      "vorsprung": -0.048,
-      "median_rel": 0.89,
-      "belastbar": false
-    },
-    "#reisepasshülle": {
-      "n": 2,
-      "gewicht": 0.95,
-      "vorsprung": -0.048,
-      "median_rel": 0.89,
-      "belastbar": false
-    },
-    "#reisen": {
-      "n": 2,
-      "gewicht": 0.95,
-      "vorsprung": -0.048,
-      "median_rel": 0.89,
-      "belastbar": false
-    },
-    "#schuhe": {
-      "n": 10,
-      "gewicht": 0.95,
-      "vorsprung": -0.049,
-      "median_rel": 0.88,
-      "belastbar": true
-    },
-    "#strandtuch": {
-      "n": 2,
-      "gewicht": 0.95,
-      "vorsprung": -0.05,
-      "median_rel": 0.88,
-      "belastbar": false
-    },
-    "#biobaumwolle": {
-      "n": 2,
-      "gewicht": 0.95,
-      "vorsprung": -0.05,
-      "median_rel": 0.88,
-      "belastbar": false
-    },
-    "#sommeressentials": {
-      "n": 2,
-      "gewicht": 0.95,
-      "vorsprung": -0.05,
-      "median_rel": 0.88,
-      "belastbar": false
-    },
-    "#strandtag": {
-      "n": 2,
-      "gewicht": 0.95,
-      "vorsprung": -0.05,
-      "median_rel": 0.88,
-      "belastbar": false
-    },
-    "#portemonnaie": {
-      "n": 2,
-      "gewicht": 0.95,
-      "vorsprung": -0.05,
-      "median_rel": 0.88,
-      "belastbar": false
-    },
-    "#damenaccessoires": {
-      "n": 2,
-      "gewicht": 0.95,
-      "vorsprung": -0.05,
-      "median_rel": 0.88,
       "belastbar": false
     },
     "#schmuckliebe": {
@@ -2133,26 +2042,33 @@
       "median_rel": 0.88,
       "belastbar": false
     },
-    "#herrenarmband": {
+    "#krallenschleifer": {
       "n": 2,
       "gewicht": 0.95,
-      "vorsprung": -0.052,
+      "vorsprung": -0.05,
       "median_rel": 0.88,
       "belastbar": false
     },
-    "#anker": {
+    "#hundezubehör": {
       "n": 2,
       "gewicht": 0.95,
-      "vorsprung": -0.052,
+      "vorsprung": -0.05,
       "median_rel": 0.88,
       "belastbar": false
     },
-    "#maritim": {
+    "#katzenzubehör": {
       "n": 2,
       "gewicht": 0.95,
-      "vorsprung": -0.052,
+      "vorsprung": -0.05,
       "median_rel": 0.88,
       "belastbar": false
+    },
+    "#schuhe": {
+      "n": 10,
+      "gewicht": 0.95,
+      "vorsprung": -0.051,
+      "median_rel": 0.9,
+      "belastbar": true
     },
     "#mondsteinring": {
       "n": 1,
@@ -2168,110 +2084,194 @@
       "median_rel": 0.8,
       "belastbar": false
     },
-    "#sternenhimmelprojektor": {
+    "#travelset": {
       "n": 2,
       "gewicht": 0.94,
-      "vorsprung": -0.062,
+      "vorsprung": -0.059,
       "median_rel": 0.86,
       "belastbar": false
     },
-    "#babynachtlicht": {
+    "#reiseaccessoires": {
       "n": 2,
       "gewicht": 0.94,
-      "vorsprung": -0.062,
+      "vorsprung": -0.059,
       "median_rel": 0.86,
       "belastbar": false
     },
-    "#nachtlicht": {
+    "#reisepasshülle": {
       "n": 2,
       "gewicht": 0.94,
-      "vorsprung": -0.062,
+      "vorsprung": -0.059,
       "median_rel": 0.86,
       "belastbar": false
     },
-    "#babyzimmer": {
+    "#reisen": {
       "n": 2,
       "gewicht": 0.94,
-      "vorsprung": -0.062,
+      "vorsprung": -0.059,
       "median_rel": 0.86,
       "belastbar": false
     },
-    "#resistancebands": {
+    "#strandtuch": {
       "n": 2,
       "gewicht": 0.94,
-      "vorsprung": -0.062,
+      "vorsprung": -0.06,
       "median_rel": 0.86,
       "belastbar": false
     },
-    "#fitnessbänder": {
+    "#biobaumwolle": {
       "n": 2,
       "gewicht": 0.94,
-      "vorsprung": -0.062,
+      "vorsprung": -0.06,
       "median_rel": 0.86,
       "belastbar": false
     },
-    "#heimtraining": {
+    "#sommeressentials": {
       "n": 2,
       "gewicht": 0.94,
-      "vorsprung": -0.062,
+      "vorsprung": -0.06,
+      "median_rel": 0.86,
+      "belastbar": false
+    },
+    "#strandtag": {
+      "n": 2,
+      "gewicht": 0.94,
+      "vorsprung": -0.06,
+      "median_rel": 0.86,
+      "belastbar": false
+    },
+    "#portemonnaie": {
+      "n": 2,
+      "gewicht": 0.94,
+      "vorsprung": -0.06,
+      "median_rel": 0.86,
+      "belastbar": false
+    },
+    "#damenaccessoires": {
+      "n": 2,
+      "gewicht": 0.94,
+      "vorsprung": -0.06,
+      "median_rel": 0.86,
+      "belastbar": false
+    },
+    "#herrenarmband": {
+      "n": 2,
+      "gewicht": 0.94,
+      "vorsprung": -0.063,
+      "median_rel": 0.86,
+      "belastbar": false
+    },
+    "#anker": {
+      "n": 2,
+      "gewicht": 0.94,
+      "vorsprung": -0.063,
+      "median_rel": 0.86,
+      "belastbar": false
+    },
+    "#maritim": {
+      "n": 2,
+      "gewicht": 0.94,
+      "vorsprung": -0.063,
       "median_rel": 0.86,
       "belastbar": false
     },
     "#herrenschuhe": {
       "n": 4,
       "gewicht": 0.94,
-      "vorsprung": -0.064,
-      "median_rel": 0.89,
+      "vorsprung": -0.063,
+      "median_rel": 0.88,
+      "belastbar": true
+    },
+    "#sternenhimmelprojektor": {
+      "n": 2,
+      "gewicht": 0.93,
+      "vorsprung": -0.072,
+      "median_rel": 0.83,
+      "belastbar": false
+    },
+    "#babynachtlicht": {
+      "n": 2,
+      "gewicht": 0.93,
+      "vorsprung": -0.072,
+      "median_rel": 0.83,
+      "belastbar": false
+    },
+    "#nachtlicht": {
+      "n": 2,
+      "gewicht": 0.93,
+      "vorsprung": -0.072,
+      "median_rel": 0.83,
+      "belastbar": false
+    },
+    "#babyzimmer": {
+      "n": 2,
+      "gewicht": 0.93,
+      "vorsprung": -0.072,
+      "median_rel": 0.83,
+      "belastbar": false
+    },
+    "#resistancebands": {
+      "n": 2,
+      "gewicht": 0.93,
+      "vorsprung": -0.072,
+      "median_rel": 0.83,
+      "belastbar": false
+    },
+    "#fitnessbänder": {
+      "n": 2,
+      "gewicht": 0.93,
+      "vorsprung": -0.072,
+      "median_rel": 0.83,
+      "belastbar": false
+    },
+    "#heimtraining": {
+      "n": 2,
+      "gewicht": 0.93,
+      "vorsprung": -0.072,
+      "median_rel": 0.83,
+      "belastbar": false
+    },
+    "#schultertasche": {
+      "n": 3,
+      "gewicht": 0.93,
+      "vorsprung": -0.072,
+      "median_rel": 0.9,
+      "belastbar": true
+    },
+    "#familie": {
+      "n": 7,
+      "gewicht": 0.93,
+      "vorsprung": -0.073,
+      "median_rel": 0.98,
+      "belastbar": true
+    },
+    "#style": {
+      "n": 21,
+      "gewicht": 0.92,
+      "vorsprung": -0.078,
+      "median_rel": 0.95,
+      "belastbar": true
+    },
+    "#küche": {
+      "n": 35,
+      "gewicht": 0.92,
+      "vorsprung": -0.083,
+      "median_rel": 1,
       "belastbar": true
     },
     "#schallzahnbürste": {
       "n": 2,
       "gewicht": 0.92,
-      "vorsprung": -0.081,
-      "median_rel": 0.82,
+      "vorsprung": -0.086,
+      "median_rel": 0.81,
       "belastbar": false
     },
     "#reise": {
       "n": 2,
       "gewicht": 0.92,
-      "vorsprung": -0.081,
-      "median_rel": 0.82,
-      "belastbar": false
-    },
-    "#style": {
-      "n": 21,
-      "gewicht": 0.92,
-      "vorsprung": -0.083,
-      "median_rel": 0.97,
-      "belastbar": true
-    },
-    "#edelstahlschmuck": {
-      "n": 2,
-      "gewicht": 0.92,
       "vorsprung": -0.086,
       "median_rel": 0.81,
       "belastbar": false
-    },
-    "#minimalistisch": {
-      "n": 2,
-      "gewicht": 0.92,
-      "vorsprung": -0.086,
-      "median_rel": 0.81,
-      "belastbar": false
-    },
-    "#familie": {
-      "n": 7,
-      "gewicht": 0.91,
-      "vorsprung": -0.09,
-      "median_rel": 0.98,
-      "belastbar": true
-    },
-    "#schultertasche": {
-      "n": 3,
-      "gewicht": 0.91,
-      "vorsprung": -0.091,
-      "median_rel": 0.9,
-      "belastbar": true
     },
     "#gadget": {
       "n": 10,
@@ -2280,32 +2280,39 @@
       "median_rel": 0.96,
       "belastbar": true
     },
-    "#küche": {
-      "n": 34,
-      "gewicht": 0.9,
-      "vorsprung": -0.101,
-      "median_rel": 1,
-      "belastbar": true
+    "#edelstahlschmuck": {
+      "n": 2,
+      "gewicht": 0.91,
+      "vorsprung": -0.096,
+      "median_rel": 0.79,
+      "belastbar": false
+    },
+    "#minimalistisch": {
+      "n": 2,
+      "gewicht": 0.91,
+      "vorsprung": -0.096,
+      "median_rel": 0.79,
+      "belastbar": false
     },
     "#shopping": {
       "n": 23,
-      "gewicht": 0.9,
-      "vorsprung": -0.102,
+      "gewicht": 0.91,
+      "vorsprung": -0.1,
       "median_rel": 1,
+      "belastbar": true
+    },
+    "#handtasche": {
+      "n": 9,
+      "gewicht": 0.9,
+      "vorsprung": -0.104,
+      "median_rel": 0.99,
       "belastbar": true
     },
     "#herbstmode": {
       "n": 47,
       "gewicht": 0.9,
-      "vorsprung": -0.107,
+      "vorsprung": -0.105,
       "median_rel": 0.83,
-      "belastbar": true
-    },
-    "#schreibtischlampe": {
-      "n": 4,
-      "gewicht": 0.9,
-      "vorsprung": -0.108,
-      "median_rel": 0.8,
       "belastbar": true
     },
     "#interior": {
@@ -2315,80 +2322,52 @@
       "median_rel": 0.84,
       "belastbar": true
     },
-    "#monitorlichtleiste": {
-      "n": 2,
+    "#schreibtischlampe": {
+      "n": 4,
       "gewicht": 0.89,
-      "vorsprung": -0.118,
-      "median_rel": 0.75,
-      "belastbar": false
+      "vorsprung": -0.117,
+      "median_rel": 0.8,
+      "belastbar": true
     },
-    "#schreibtischlicht": {
-      "n": 2,
+    "#kochen": {
+      "n": 36,
       "gewicht": 0.89,
-      "vorsprung": -0.118,
-      "median_rel": 0.75,
-      "belastbar": false
-    },
-    "#handtasche": {
-      "n": 9,
-      "gewicht": 0.89,
-      "vorsprung": -0.118,
-      "median_rel": 0.99,
+      "vorsprung": -0.12,
+      "median_rel": 0.98,
       "belastbar": true
     },
     "#bag": {
       "n": 11,
-      "gewicht": 0.88,
-      "vorsprung": -0.13,
+      "gewicht": 0.89,
+      "vorsprung": -0.12,
       "median_rel": 0.91,
       "belastbar": true
     },
+    "#monitorlichtleiste": {
+      "n": 2,
+      "gewicht": 0.88,
+      "vorsprung": -0.123,
+      "median_rel": 0.74,
+      "belastbar": false
+    },
+    "#schreibtischlicht": {
+      "n": 2,
+      "gewicht": 0.88,
+      "vorsprung": -0.123,
+      "median_rel": 0.74,
+      "belastbar": false
+    },
     "#tasche": {
       "n": 6,
-      "gewicht": 0.87,
-      "vorsprung": -0.137,
+      "gewicht": 0.88,
+      "vorsprung": -0.127,
       "median_rel": 0.85,
       "belastbar": true
-    },
-    "#kochen": {
-      "n": 35,
-      "gewicht": 0.87,
-      "vorsprung": -0.138,
-      "median_rel": 0.99,
-      "belastbar": true
-    },
-    "#automatikuhr": {
-      "n": 2,
-      "gewicht": 0.85,
-      "vorsprung": -0.164,
-      "median_rel": 0.66,
-      "belastbar": false
-    },
-    "#skelettuhr": {
-      "n": 2,
-      "gewicht": 0.85,
-      "vorsprung": -0.164,
-      "median_rel": 0.66,
-      "belastbar": false
     },
     "#ordnung": {
       "n": 2,
       "gewicht": 0.85,
       "vorsprung": -0.166,
-      "median_rel": 0.66,
-      "belastbar": false
-    },
-    "#ledlampe": {
-      "n": 2,
-      "gewicht": 0.84,
-      "vorsprung": -0.169,
-      "median_rel": 0.66,
-      "belastbar": false
-    },
-    "#arbeitsplatz": {
-      "n": 2,
-      "gewicht": 0.84,
-      "vorsprung": -0.169,
       "median_rel": 0.66,
       "belastbar": false
     },
@@ -2406,11 +2385,39 @@
       "median_rel": 0.65,
       "belastbar": false
     },
+    "#automatikuhr": {
+      "n": 2,
+      "gewicht": 0.84,
+      "vorsprung": -0.174,
+      "median_rel": 0.65,
+      "belastbar": false
+    },
+    "#skelettuhr": {
+      "n": 2,
+      "gewicht": 0.84,
+      "vorsprung": -0.174,
+      "median_rel": 0.65,
+      "belastbar": false
+    },
+    "#ledlampe": {
+      "n": 2,
+      "gewicht": 0.84,
+      "vorsprung": -0.179,
+      "median_rel": 0.64,
+      "belastbar": false
+    },
+    "#arbeitsplatz": {
+      "n": 2,
+      "gewicht": 0.84,
+      "vorsprung": -0.179,
+      "median_rel": 0.64,
+      "belastbar": false
+    },
     "#homeoffice": {
       "n": 4,
       "gewicht": 0.81,
-      "vorsprung": -0.205,
-      "median_rel": 0.75,
+      "vorsprung": -0.216,
+      "median_rel": 0.74,
       "belastbar": true
     },
     "#jewelry": {
@@ -2433,28 +2440,49 @@
       "vorsprung": -0.25,
       "median_rel": 0.37,
       "belastbar": false
+    },
+    "#fitness": {
+      "n": 5,
+      "gewicht": 0.73,
+      "vorsprung": -0.319,
+      "median_rel": 1,
+      "belastbar": true
+    },
+    "#training": {
+      "n": 2,
+      "gewicht": 0.6,
+      "vorsprung": -0.518,
+      "median_rel": 0.27,
+      "belastbar": false
+    },
+    "#fitnessschweiz": {
+      "n": 2,
+      "gewicht": 0.6,
+      "vorsprung": -0.518,
+      "median_rel": 0.27,
+      "belastbar": false
     }
   },
   "quelle": {
     "video": {
-      "n": 188,
+      "n": 190,
       "gewicht": 1.12,
-      "vorsprung": 0.109,
-      "median_rel": 1,
+      "vorsprung": 0.114,
+      "median_rel": 1.01,
       "belastbar": true
     },
     "bild": {
       "n": 10,
-      "gewicht": 0.98,
-      "vorsprung": -0.016,
+      "gewicht": 0.99,
+      "vorsprung": -0.007,
       "median_rel": 0.98,
       "belastbar": true
     }
   },
   "quelle_je_kanal": {
     "instagram video": {
-      "n": 55,
-      "median_score": 32.8,
+      "n": 56,
+      "median_score": 32.6,
       "median_views": 29
     },
     "instagram bild": {
@@ -2463,9 +2491,9 @@
       "median_views": 16
     },
     "tiktok video": {
-      "n": 61,
+      "n": 62,
       "median_score": 275,
-      "median_views": 273
+      "median_views": 272.5
     },
     "tiktok bild": {
       "n": 4,
@@ -2473,7 +2501,7 @@
       "median_views": 260.5
     },
     "facebook video": {
-      "n": 56,
+      "n": 57,
       "median_score": 3,
       "median_views": 3
     },

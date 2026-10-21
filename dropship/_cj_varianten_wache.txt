@@ -10992,3 +10992,14 @@ gid://shopify/Product/15431384859009	1792544971	unklar	ALLE 4 Shop-SKUs fehlen b
 gid://shopify/Product/15431384269185	1792560525	unklar	ALLE 4 Shop-SKUs fehlen bei CJ (6 lebend) — Ableitung pruefen
 gid://shopify/Product/15431384498561	1792560525	unklar	ALLE 4 Shop-SKUs fehlen bei CJ (8 lebend) — Ableitung pruefen
 gid://shopify/Product/15431384859009	1792560525	unklar	ALLE 4 Shop-SKUs fehlen bei CJ (15 lebend) — Ableitung pruefen
+gid://shopify/Product/15412751499649	1792624116	ok	15 Shop / 15 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15412751860097	1792624116	ok	20 Shop / 20 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15412752155009	1792624116	ok	10 Shop / 10 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15412825063809	1792624116	ok	18 Shop / 18 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15412825129345	1792624116	ok	40 Shop / 64 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15412825194881	1792624116	ok	4 Shop / 4 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15412828733825	1792624116	ok	30 Shop / 30 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15412830634369	1792624116	ok	24 Shop / 24 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15412830896513	1792624116	ok	48 Shop / 48 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15412831256961	1792624116	ok	30 Shop / 30 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15412899676545	1792624116	ok	3 Shop / 3 CJ / 0 fehlend / 0 DENY

@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-21T22:09Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-21T23:09Z
 
-Aktive gescannt: 12 · ohne Kategorie: 12 · heute gesetzt: 9 (SCHARF, CAP 1500) · danach offen: 3 · Fehler: 0
+Aktive gescannt: 27 · ohne Kategorie: 27 · heute gesetzt: 24 (SCHARF, CAP 1500) · danach offen: 3 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -12,9 +12,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- outdoor-rucksack-fur-wanderer-608700 · Taschen → Luggage & Bags
-- tyvek-grillthermo-tasche-23-braun-613800 · Aufbewahrung & Organizer → Luggage & Bags
-- sandalen-mit-floralen-verzierungen-und-perlenk-634800 · Damenschuhe → Apparel & Accessories > Shoes
-- polyester-aufbewahrungsbeutel-611000 · Aufbewahrung & Organizer → Home & Garden > Household Supplies > Storage & Organization
-- strassband-stiletto-sandale-mit-chunky-heel-622200 · Damenschuhe → Apparel & Accessories > Shoes
+- sandalen-baotou-roman-platform-grosse-grosse-635400 · Damenschuhe → Apparel & Accessories > Shoes
+- businessrucksack-mit-20-35-l-kapazitat-622600 · Taschen → Luggage & Bags
+- koreanische-square-toe-mary-jane-pumps-614100 · Damenschuhe → Apparel & Accessories > Shoes
+- multifunktionaler-rucksack-fur-studenten-603100 · Taschen → Luggage & Bags
+- wandregal-aus-holz-40-15-3-cm-braun-611600 · Aufbewahrung & Organizer → Home & Garden > Household Supplies > Storage & Organization
 
