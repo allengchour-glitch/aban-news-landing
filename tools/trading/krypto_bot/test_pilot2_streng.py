@@ -7096,6 +7096,65 @@ except IndexError:
 pruefe("20.W8 Das Wiederholungs-Budget ist je Thread getrennt: ein anderer Thread sieht keins, schläft ganz und setzt sein eigenes, ohne das des Hauptthreads zu ändern; im Hauptthread lehnt `_pause` ab, was das Budget übersteigt",
        res20_ == {"sieht": None, "pause": True, "eigenes": 1.0, "haupt": 0.5, "haupt_pause": False} and schlaf20_ == [("anderer", 2.0)] and index_ok20_, (res20_, schlaf20_))
 
+# Kampagnenfund der R20 (Delta-Kampagne camp20, strenger Not-Aus-Seed 1510735 — schon im Stand der R19): ETH, Coins 0,1647, Short 0,053, Spot-Stop über die Netto-Richtung (0,1117); der Not-Aus verkauft die freien
+# Coins, das Verkleinern des Spot-Stops (cancelReplace) wird zweimal mit 429 abgewiesen, beim dritten Mal kommt es an, aber die Antwort geht verloren → «zu grosser Spot-Stop vielleicht noch offen»: der Short bekommt
+# seinen Stop über die GANZE Menge. Kam das Ersetzen an, waren 0,053 Coins frei und OHNE Stop, der Schutz rechnete aber mit dem alten (grossen) Stop: löste der Perp-Stop aus, standen 0,053 ETH (≈ 244 USDT) bis zur
+# Wiederholung des Not-Aus ohne Stop. Jetzt wird nach einem unklaren Verkleinern neu gelesen (wie im Tageslauf) und die freien Coins bekommen den Zusatz-Stop («Spot-Stop über die übrigen Coins»).
+def seed20f_(aenderung=None):
+    """Seed 1510735 (streng) nachspielen; `aenderung()` verändert die Störungen des ERSTEN Not-Aus (die Nachkontrolle und der saubere Not-Aus danach laufen ohne Störung). → (Befunde, Zeilen des ersten Not-Aus)"""
+    zeilen_, erst_, orig_ = [], [True], P.lauf
+
+    def lauf_(ents_, env_, datei_, trocken=False, notaus=False, protokolliere=None):
+        if not (notaus and erst_[0]):
+            return orig_(ents_, env_, datei_, trocken, notaus, protokolliere)
+        erst_[0] = False
+        if aenderung:
+            aenderung()
+        r_ = orig_(ents_, env_, datei_, trocken, notaus, protokolliere)
+        zeilen_.extend(r_.get("zeilen") or [])
+        return r_
+    P.lauf, P.STRENG = lauf_, True
+    try:
+        return P.notaus_runde(1510735), zeilen_
+    finally:
+        P.lauf, P.STRENG = orig_, False
+        B.reduce_algo_streng = False
+
+
+def stop_schreibungen20f_():
+    """(Spot-Stop-Verkleinerungen per cancelReplace, Spot-Stops neu gesetzt) aus dem Börsen-Protokoll der letzten Runde"""
+    return ([e_ for e_ in B.log if e_[2] == "/api/v3/order/cancelReplace" and e_[4] == 200 and e_[3].get("quantity") == "0.0587" and str(e_[3].get("type", "")).startswith("STOP")],
+            [e_ for e_ in B.log if e_[2] == "/api/v3/order" and e_[1] == "POST" and e_[4] == 200 and str(e_[3].get("type", "")).startswith("STOP")])
+
+
+funde20f_, zeilen20f_ = seed20f_()
+ersetzt20f_, stops20f_ = stop_schreibungen20f_()
+nach20f_ = [e_ for e_ in stops20f_ if e_[3].get("quantity") == "0.053" and B.log.index(e_) > B.log.index(ersetzt20f_[-1])] if ersetzt20f_ else []
+pruefe("20.F1 Strenger Not-Aus-Seed 1510735: kam das Verkleinern des Spot-Stops (Antwort verloren) doch an, bekommen die freigegebenen Coins einen eigenen Stop — kein Befund, ein Spot-Stop über 0,053 nach dem unklaren Bescheid, die Meldung «kam an»",
+       not funde20f_ and len(ersetzt20f_) >= 1 and len(nach20f_) == 1 and any("kam an (neu gelesen" in z_ for z_ in zeilen20f_),
+       ([(f_[0], f_[1].get("wann")) for f_ in funde20f_][:4], len(ersetzt20f_), len(nach20f_), zeilen20f_[-3:]))
+# … ist der Kontostand NACH dem unklaren Bescheid nicht lesbar (Anfragen 99 ff., fünf Versuche scheitern), weiss der Schutz nicht, was frei ist: kein Absturz, laut («NICHT vollständig gesichert», für die Nachkontrolle vermerkt),
+# der Short hat seinen Perp-Stop über die ganze Menge; der saubere Not-Aus danach schliesst alles. Die freien Coins ohne Stop sind bis zur Wiederholung das dokumentierte Restrisiko (README) — bei BEIDEM: Antwort verloren UND Konto nicht lesbar.
+funde20g_, zeilen20g_ = seed20f_(lambda: B.regeln.append(dict(methode="GET", pfad="/api/v3/account", art="vor503", anzahl=6, ab_req=99)))   # ab der Anfrage NACH dem unklaren cancelReplace (Nr. 98)
+perp20g_ = [e_ for e_ in B.log if e_[2] == "/fapi/v1/algoOrder" and e_[1] == "POST" and e_[4] == 200]
+pruefe("20.F1 Dasselbe, der Kontostand ist nach dem unklaren Bescheid nicht lesbar: kein Absturz, laut («UND Kontostand nicht lesbar», «NICHT vollständig gesichert»), der Short hat seinen Perp-Stop über die ganze Menge, nach der Wiederholung höchstens der Befund «Stop zu gross»",
+       [f_[0] for f_ in funde20g_] in ([], ["PERP_STOP_UEBER_NETTO"]) and any(e_[3].get("quantity") == "0.053" for e_ in perp20g_)
+       and any("UND Kontostand nicht lesbar" in z_ for z_ in zeilen20g_) and any("NICHT vollständig gesichert" in z_ for z_ in zeilen20g_),
+       ([(f_[0], f_[1].get("wann")) for f_ in funde20g_][:4], [e_[3].get("quantity") for e_ in perp20g_], zeilen20g_[-3:]))
+
+
+def nicht_angekommen20f_():
+    for r_ in B.regeln:
+        if r_.get("pfad") == "/api/v3/order/cancelReplace" and r_.get("art") == "nach503":
+            r_["art"] = "vor503"                                                  # 503 VOR der Verarbeitung: das Verkleinern kam nie an
+
+
+funde20h_, zeilen20h_ = seed20f_(nicht_angekommen20f_)
+ersetzt20h_, stops20h_ = stop_schreibungen20f_()
+pruefe("20.F1 Kam das Verkleinern NICHT an (der alte Stop steht, nichts ist frei): kein zweiter Stop über schon gesperrte Coins, kein Befund, keine Meldung «kam an»",
+       not funde20h_ and not ersetzt20h_ and len(stops20h_) == 1 and not any("kam an (neu gelesen" in z_ for z_ in zeilen20h_),
+       ([(f_[0], f_[1].get("wann")) for f_ in funde20h_][:4], len(ersetzt20h_), [(e_[3].get("quantity"), e_[4]) for e_ in stops20h_]))
+
 # klein 7 (Prüfwerkzeuge): der Einzelfehler-Raster der 20. Prüfung (pruef_nk_einzelfehler.py) liegt im Repo — Rauchprobe MIT Negativkontrolle: gegen den Produktionscode findet er nichts, gegen eine Nachkontrolle, deren
 # Folge-Durchgänge nichts tun (das Netz des 10-Minuten-Takts fehlt), findet er die Lücke nach Durchgang 1 (er ist nicht blind)
 import pruef_nk_einzelfehler as NKE  # noqa: E402

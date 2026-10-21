@@ -4215,6 +4215,21 @@ def _notaus_schutz(spot, fut, st, k, sym, coin, pos, pos_vor, frei, gebunden, ku
         if spot_zu_gross:
             warn(f"Not-Aus {modus} {k}: zu grosser Spot-Stop " + ("vielleicht noch offen (Antwort unklar)" if unsicher else "bleibt stehen")
                  + " — der Short bekommt seinen Stop über die ganze Menge.")
+        if unsicher:
+            # (20. Folge-Runde, Kampagnenfund Not-Aus-Seed 1510735) Kam das Ersetzen doch an, sind die freigegebenen Coins jetzt FREI und ohne Stop — und der Short hat (spot_zu_gross) seinen Stop über die GANZE Menge:
+            # löst der aus, bliebe der freigegebene Teil ohne Stop (0,053 ETH ≈ 244 USDT bis zur Nachkontrolle). Wie im Tageslauf nach «Ersetzen unklar» (`_spot_rest_sichern` mit frischen Zahlen): neu lesen — der
+            # Zusatz-Stop unten («zu grosser Spot-Stop bleibt», Spot-Stop über die übrigen Coins) fasst dann die freien Coins. Steht der alte noch, sind keine frei (alles wie bisher). Die Entscheidung `spot_zu_gross` oben bleibt bei der
+            # pessimistischen Rechnung (auch ein jetzt bestätigtes Verkleinern lässt den Markt beidseitig stehen, bis der Not-Aus wiederholt wird: der Zusatz-Stop unten fasst ALLE Coins ohne Stop, `frei` begrenzt ihn).
+            # Nicht lesbar: laut und für die Nachkontrolle vermerkt (ob freigegebene Coins ohne Stop sind, ist dann unbekannt). Kommt das Ersetzen erst NACH dem Lesen an, holt es die Wiederholung des Not-Aus nach.
+            try:
+                frei_n, gebunden_n = bestand(_nochmal(spot.konto, SCHUTZ_WARTEN), coin)
+            except Exception as ex:  # noqa: BLE001
+                fehlt_schutz(f"Not-Aus {modus} {k}: Antwort beim Verkleinern des Spot-Stops verloren UND Kontostand nicht lesbar ({type(ex).__name__}) — ob freigegebene {coin} ohne Stop sind, ist unbekannt. "
+                             "Sofort prüfen, Not-Aus wiederholen!")
+            else:
+                if gebunden_n < vorher - regeln["step"] / 2:
+                    warn(f"Not-Aus {modus} {k}: das Verkleinern des Spot-Stops kam an (neu gelesen: {gebunden_n:g} {coin} gesperrt, {frei_n:g} frei).")
+                frei, gebunden = frei_n, gebunden_n
     menge = PL.runde(max(0.0, min(frei, soll_s - gebunden)), regeln["step"])
     gestoppt = gebunden  # Coins unter einem eigenen Spot-Stop (können bei fallendem Kurs wegfallen)
     if menge * kurs >= regeln["min_notional"]:
