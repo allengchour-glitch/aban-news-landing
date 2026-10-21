@@ -169,18 +169,38 @@ def gemischt(produkte):
     return out
 
 
+def kaufbar_von(p):
+    """6. Tupelfeld = kaufbar (Bestand > 0 oder nicht getrackt). Fehlt das Feld (alte Aufrufer, Tests), gilt die Ware als kaufbar."""
+    return p[5] if len(p) > 5 else True
+
+
 def ziel_reihenfolge(produkte, kostuem_zuerst=False):
-    """produkte: [(id, aktiv, schnell[, titel, (klasse, gruppe)])] in aktueller Ordnung → stabile Aufteilung:
-    schnell+aktiv · langsam+aktiv · inaktiv. kostuem_zuerst: schnelle aktive zusätzlich nach kostuem_klasse (stabil)."""
-    a = [p for p in produkte if p[1] and p[2]]
+    """produkte: [(id, aktiv, schnell[, titel, (klasse, gruppe)[, kaufbar]])] in aktueller Ordnung → stabile Aufteilung:
+    kaufbar+schnell · kaufbar+langsam · ausverkauft (schnell vor langsam) · inaktiv. kostuem_zuerst: schnelle kaufbare aktive zusätzlich
+    nach kostuem_klasse (stabil).
+    21.10.2026 (Spähtrupp wf_3b017e9f, GEMESSEN): nach der Fortura-Bestandsumstellung vom 20.10. standen in /collections/halloween 11 von 24,
+    in kostueme-ch-lager 11 von 24 und in blitzversand-schweiz 10 von 24 Produkten auf «Momentan ausverkauft» — die Sortierung kannte nur
+    Typ/Lager, nie Kaufbarkeit; auf Platz 1 und 2 zwei ausverkaufte Hexen-Kostüme. Ausverkauftes bleibt sichtbar, steht aber hinten."""
+    aktiv = [p for p in produkte if p[1]]
+    gut = [p for p in aktiv if kaufbar_von(p)]
+    aus = [p for p in aktiv if not kaufbar_von(p)]
+    a = [p for p in gut if p[2]]
     if kostuem_zuerst:
         a = sorted(a, key=lambda p: p[4][0] if len(p) > 4 else 2)
         k0 = [p for p in a if len(p) > 4 and p[4][0] == 0]
         a = gemischt(k0) + [p for p in a if not (len(p) > 4 and p[4][0] == 0)]
-    a = [p[0] for p in a]
-    b = [p[0] for p in produkte if p[1] and not p[2]]
-    c = [p[0] for p in produkte if not p[1]]
-    return a + b + c
+    b = [p for p in gut if not p[2]]
+    c = [p for p in aus if p[2]] + [p for p in aus if not p[2]]
+    d = [p for p in produkte if not p[1]]
+    return [p[0] for p in a + b + c + d]
+
+
+def kaufbar_reihenfolge(produkte):
+    """Nur die Kaufbarkeit, sonst stabil: kaufbare aktive · ausverkaufte aktive · Entwürfe. Für dauerhaft gepflegte MANUAL-Kollektionen
+    (Tabelle: kaufbar_dauerhaft), deren Reihenfolge sonst nicht angetastet wird (blitzversand-schweiz, Startseiten-Reihe)."""
+    gut = [p[0] for p in produkte if p[1] and kaufbar_von(p)]
+    aus = [p[0] for p in produkte if p[1] and not kaufbar_von(p)]
+    return gut + aus + [p[0] for p in produkte if not p[1]]
 
 
 def lade(gql, handle):
@@ -190,7 +210,7 @@ def lade(gql, handle):
     out, cur = [], None
     while True:
         d = gql('query($id:ID!,$c:String){ collection(id:$id){ products(first:250, after:$c, sortKey:COLLECTION_DEFAULT){ '
-                'pageInfo{hasNextPage endCursor} nodes{ id title status tags productType options{ name } '
+                'pageInfo{hasNextPage endCursor} nodes{ id title status tags productType totalInventory tracksInventory options{ name } '
                 'variants(first:1){ nodes{ sku deliveryProfile{ name } } } } } } }',
                 {"id": c["id"], "c": cur})
         pg = d["collection"]["products"]
@@ -198,8 +218,10 @@ def lade(gql, handle):
             v0 = (p["variants"]["nodes"] or [{}])[0] or {}
             sku = v0.get("sku") or ""
             prof = (v0.get("deliveryProfile") or {}).get("name")
+            kaufbar = (not p.get("tracksInventory")) or (p.get("totalInventory") or 0) > 0
             out.append((p["id"], p["status"] == "ACTIVE", schnell_profil(p["tags"], sku, prof), p["title"],
-                        kostuem_klasse(p["title"], p.get("productType"), [o["name"] for o in p.get("options") or []], p["tags"])))
+                        kostuem_klasse(p["title"], p.get("productType"), [o["name"] for o in p.get("options") or []], p["tags"]),
+                        kaufbar))
         if not pg["pageInfo"]["hasNextPage"]:
             return c, out
         cur = pg["pageInfo"]["endCursor"]
@@ -218,7 +240,10 @@ def ledger_alt(handle):
     return alt
 
 
-def umsortieren(gql, c, ziel, alt_sort):
+KOPF = 600   # 21.10.2026: bei grossen Kollektionen (kostueme-ch-lager 1'673, blitzversand-schweiz 2'942) nur die vordersten Plätze bewegen — Job-Last, und hinten sieht niemand nach
+
+
+def umsortieren(gql, c, ziel, alt_sort, kopf=KOPF):
     if c["sortOrder"] != "MANUAL":
         r = gql('mutation($i:CollectionInput!){ collectionUpdate(input:$i){ userErrors{ message } } }',
                 {"i": {"id": c["id"], "sortOrder": "MANUAL"}})
@@ -226,7 +251,7 @@ def umsortieren(gql, c, ziel, alt_sort):
             return f"Sortierung nicht umgestellt: {r['collectionUpdate']['userErrors']}"
         with open(LEDGER, "a", encoding="utf-8") as f:
             f.write(f"{c['handle'] if 'handle' in c else ''}\tvorher\t{alt_sort}\t{dt.datetime.utcnow():%Y-%m-%dT%H:%MZ}\n")
-    moves = [{"id": pid, "newPosition": str(i)} for i, pid in enumerate(ziel)]
+    moves = [{"id": pid, "newPosition": str(i)} for i, pid in enumerate(ziel[:kopf])]
     for k in range(0, len(moves), 250):
         r = gql('mutation($id:ID!,$m:[MoveInput!]!){ collectionReorderProducts(id:$id, moves:$m){ job{ id done } userErrors{ message } } }',
                 {"id": c["id"], "m": moves[k:k + 250]})
@@ -491,7 +516,15 @@ def satz_abgleich(gql, a, fen, eintrag, heute):
 
 def kostueme_oben(prods, n=12):
     """Zahl ganzer Kostüme (Klasse 0) unter den obersten n aktiven."""
-    return sum(1 for p in [p for p in prods if p[1]][:n] if len(p) > 4 and p[4][0] == 0)
+    return sum(1 for p in [p for p in prods if p[1]][:n] if len(p) > 4 and p[4][0] == 0 and kaufbar_von(p))
+
+
+def ausverkauft_oben(prods, n=24):
+    """Zahl ausverkaufter aktiver Produkte unter den obersten n aktiven (Wächter: > AUSVERKAUFT_OBEN_MAX ist ein Befund)."""
+    return sum(1 for p in [p for p in prods if p[1]][:n] if not kaufbar_von(p))
+
+
+AUSVERKAUFT_OBEN_MAX = 3
 
 
 def front_abgleich(gql):
@@ -577,7 +610,7 @@ def main(nur_hinweis=False):
                 zeilen.append(f"| {a['handle']} | {a['datum']} | auch Schweizer Lager zu spät — nichts umgestellt | {c['sortOrder']} |")
             else:
                 ziel = ziel_reihenfolge(prods, a.get("kostuem_zuerst", False))
-                if [p[0] for p in prods] == ziel and c["sortOrder"] == "MANUAL":
+                if [p[0] for p in prods][:KOPF] == ziel[:KOPF] and c["sortOrder"] == "MANUAL":
                     zahl["schon_richtig"] += 1
                     zeilen.append(f"| {a['handle']} | {a['datum']} | schon richtig ({n_schnell} Lager-Artikel im Profil «CH-Lager» oben) | MANUAL |")
                 else:
@@ -595,6 +628,23 @@ def main(nur_hinweis=False):
                                   f"{plus_werktage(heute, wt['zusage_langsam_max'])} → Lager-Ware (Profil «CH-Lager») nach oben "
                                   f"({n_schnell} von {n_akt} aktiven; vorher oben 12: {oben_langsam} langsam){nach}"
                                   f"{'' if SCHARF else ' (TROCKEN)'} | {c['sortOrder']} → MANUAL |")
+        # 21.10.2026: Wächter «ausverkauft ganz oben» — nach dem Sortieren (SCHARF: zurückgelesen, sonst simuliert) dürfen höchstens
+        # AUSVERKAUFT_OBEN_MAX der obersten 24 Produkte ausverkauft sein (sonst Befund; hebt sich selbst auf, wenn Bestand nachkommt).
+        if not nur_hinweis and heute >= fen["ab"] and heute <= datum:
+            try:
+                if SCHARF:
+                    cache.pop(a["handle"], None)
+                    _, jetzt_p = laden(a["handle"])
+                else:
+                    by_id = {p[0]: p for p in prods}
+                    jetzt_p = [by_id[i] for i in ziel_reihenfolge(prods, a.get("kostuem_zuerst", False))]
+                n_aus = ausverkauft_oben(jetzt_p)
+                n_kauf = sum(1 for p in jetzt_p if p[1] and kaufbar_von(p))
+                if n_aus > AUSVERKAUFT_OBEN_MAX and n_kauf >= 24:
+                    befunde_anlass.append(f"{a['handle']}: {n_aus} ausverkaufte Produkte unter den obersten 24 (Soll ≤ {AUSVERKAUFT_OBEN_MAX}) trotz {n_kauf} kaufbaren")
+                zeilen.append(f"| {a['handle']} | {a['datum']} | ausverkauft unter den obersten 24: {n_aus} (kaufbar insgesamt {n_kauf}) | — |")
+            except Exception as e:  # pragma: no cover
+                befunde_anlass.append(f"{a['handle']}: Ausverkauft-Prüfung gescheitert: {e}"[:200])
         if a.get("kostuem_zuerst") and endspurt(fen, heute) and not nur_hinweis:
             cache.pop(a["handle"], None) if SCHARF else None
             _, aktuell = laden(a["handle"])
@@ -634,6 +684,38 @@ def main(nur_hinweis=False):
             zeilen.append(f"| {a['handle']} | {a['datum']} | Hinweis auf Tag «{tag}» (ohne {MARKE_PROFIL}): "
                           f"{'«kommt erst nach» ' if heute >= fen['kipptag'] else '«nicht garantiert» '}(Kipptag {fen['kipptag']}, "
                           f"schnell bis {fen['schnell_bis']}) · Link {('/collections/' + link) if link else '— (keine Kollektion oben schnell)'} | — |")
+
+    # ---- 21.10.2026: dauerhaft gepflegte MANUAL-Kollektionen (z. B. Startseiten-Reihe blitzversand-schweiz): Ausverkauftes nach hinten, sonst nichts
+    if not nur_hinweis:
+        for h in tab.get("kaufbar_dauerhaft") or []:
+            try:
+                c2, p2 = laden(h)
+                if not c2:
+                    zeilen.append(f"| {h} | dauerhaft | Kollektion fehlt | — |"); continue
+                if c2["sortOrder"] != "MANUAL":
+                    zeilen.append(f"| {h} | dauerhaft | Sortierung {c2['sortOrder']} (nicht MANUAL) — nicht angefasst | {c2['sortOrder']} |"); continue
+                c2["handle"] = h
+                ziel2 = kaufbar_reihenfolge(p2)
+                if [p[0] for p in p2][:KOPF] == ziel2[:KOPF]:
+                    zeilen.append(f"| {h} | dauerhaft | kaufbare Ware schon vorn (ausverkauft oben 24: {ausverkauft_oben(p2)}) | MANUAL |")
+                    continue
+                fehler2 = umsortieren(gql, c2, ziel2, "MANUAL") if SCHARF else None
+                if fehler2:
+                    zeilen.append(f"| {h} | dauerhaft | ⚠️ {fehler2} | MANUAL |"); continue
+                n_vor = ausverkauft_oben(p2)
+                if SCHARF:
+                    time.sleep(3)
+                    cache.pop(h, None)
+                    _, p2n = laden(h)
+                    n_nach = ausverkauft_oben(p2n)
+                else:
+                    n_nach = ausverkauft_oben([next(p for p in p2 if p[0] == i) for i in ziel2])
+                zahl["umsortiert"] += 1
+                zeilen.append(f"| {h} | dauerhaft | Ausverkauftes nach hinten: oben 24 vorher {n_vor} → nachher {n_nach}{'' if SCHARF else ' (TROCKEN)'} | MANUAL |")
+                if n_nach > AUSVERKAUFT_OBEN_MAX and sum(1 for p in p2 if p[1] and kaufbar_von(p)) >= 24:
+                    befunde_anlass.append(f"{h}: {n_nach} ausverkaufte Produkte unter den obersten 24 nach dem Sortieren")
+            except Exception as e:  # pragma: no cover
+                befunde_anlass.append(f"{h}: kaufbar-Sortierung gescheitert: {e}"[:200])
 
     # ---- Metafeld (Soll) + Wächter (Theme-Block, Metafeld aktuell)
     soll = {"stand": heute.isoformat(), "quelle": "automation/anlass_lieferzeit_wache.py",
@@ -691,6 +773,20 @@ def main(nur_hinweis=False):
     return 0 if not befunde else 1
 
 
+def _lade_kaufbar():
+    """Selbsttest-Helfer: lade() gegen eine falsche gql — liefert die Kaufbar-Flags der vier Bestandsfälle."""
+    def gql_falsch(q, v=None):
+        if "collectionByHandle" in q:
+            return {"collectionByHandle": {"id": "C1", "title": "T", "sortOrder": "MANUAL"}}
+        fall = [(False, 0), (True, 0), (True, 5), (True, None)]
+        nodes = [{"id": f"p{i}", "title": f"t{i}", "status": "ACTIVE", "tags": [], "productType": "", "options": [],
+                  "tracksInventory": tr, "totalInventory": inv, "variants": {"nodes": [{"sku": "x", "deliveryProfile": {"name": "CH-Lager"}}]}}
+                 for i, (tr, inv) in enumerate(fall)]
+        return {"collection": {"products": {"pageInfo": {"hasNextPage": False, "endCursor": None}, "nodes": nodes}}}
+    _, prods = lade(gql_falsch, "x")
+    return [p[5] for p in prods]
+
+
 def selbsttest():
     f = 0
     mo = dt.date(2026, 10, 12)  # Montag
@@ -711,6 +807,23 @@ def selbsttest():
         (plus_werktage(dt.date(2026, 10, 27), 4) > dt.date(2026, 10, 31), True, "Lager 4 WT ab Di 27.10. zu spät (Mo 02.11.)"),
         (plus_werktage(dt.date(2026, 10, 15), 12) > dt.date(2026, 10, 31), True, "Direktversand 12 WT ab Do 15.10. zu spät → umsortieren"),
         (ziel_reihenfolge([("a", True, False), ("b", True, True), ("c", False, True), ("d", True, True)]), ["b", "d", "a", "c"], "stabil"),
+        # 21.10.2026: Kaufbarkeit vor Typ/Lager
+        (ziel_reihenfolge([("aus1", True, True, "", (0, "x"), False), ("ok1", True, True, "", (0, "x"), True),
+                           ("aus2", True, False, "", (0, "x"), False), ("ok2", True, False, "", (0, "x"), True)], True),
+         ["ok1", "ok2", "aus1", "aus2"], "ausverkaufte Kostüme hinter alle kaufbaren (schnell vor langsam)"),
+        (ziel_reihenfolge([("aus", True, True, "", (0, "x"), False), ("ok", True, False, "", (3, "x"), True)], True), ["ok", "aus"],
+         "kaufbare Deko vor ausverkauftem ganzem Kostüm"),
+        (ziel_reihenfolge([("i", False, True, "", (0, "x"), True), ("aus", True, True, "", (0, "x"), False)]), ["aus", "i"],
+         "Entwurf bleibt ganz hinten, auch hinter Ausverkauftem"),
+        (ziel_reihenfolge([("a", True, True), ("b", True, False)]), ["a", "b"], "ohne Kaufbar-Feld gilt kaufbar (alte Aufrufer)"),
+        (kaufbar_reihenfolge([("aus", True, True, "", (0, "x"), False), ("ok", True, False, "", (0, "x"), True),
+                              ("ent", False, True, "", (0, "x"), True), ("ok2", True, True, "", (0, "x"), True)]),
+         ["ok", "ok2", "aus", "ent"], "kaufbar_reihenfolge: stabil, Ausverkauftes hinter Kaufbarem, Entwurf zuletzt"),
+        (kaufbar_reihenfolge([("a", True, True), ("b", True, False)]), ["a", "b"], "kaufbar_reihenfolge ohne Feld: unverändert"),
+        (_lade_kaufbar(), [True, False, True, False], "lade(): getrackt+0 = ausverkauft, ungetrackt+0 = kaufbar, getrackt+5 = kaufbar, None = ausverkauft"),
+        (ausverkauft_oben([("a", True, True, "", (0, "x"), False), ("b", True, True, "", (0, "x"), True), ("i", False, True, "", (0, "x"), False)]),
+         1, "Entwurf zählt nicht als ausverkauft oben"),
+        (kostueme_oben([("a", True, True, "", (0, "x"), False), ("b", True, True, "", (0, "x"), True)]), 1, "ausverkauftes Kostüm zählt nicht als Kostüm oben"),
         # 14.10.2026 S2a: Kostüm-Klassen + Mischung
         (kostuem_klasse("Kostüm Sternenhexe", "Kostüm", ["Grösse"], ["damenkostuem"]), (0, "damenkostuem"), "Kostüm + Grösse = 0"),
         (kostuem_klasse("Kostüm Hexe schwarz", "Kostüm", ["Title"], []), (1, "andere"), "Kostüm Einheitsgrösse = 1"),
