@@ -267,6 +267,11 @@ NK_LEBT = "krypto-nachkontrolle-lebt.txt"      # Lebenszeichen: krypto-auto.bat 
 NK_RC = "krypto-nachkontrolle-rc.txt"          # (18. Prüfung K5) die Bat schreibt hier NACH der Nachkontrolle «<Zeit> rc=N»: 0 = in Ordnung, 3 = Warnung (schon gemeldet), alles andere = Absturz von pilot.py
 NK_LEBT_MAX_MIN = 30                           # drei verpasste Takte der Aufgabe (alle 10 Minuten) — dann steht die Ampel auf Rot
 NK_ENDE_MAX_MIN = 15                           # (19. Prüfung K5) so lange darf ein Durchgang höchstens laufen, bevor «nie zu Ende gegangen» gilt (normal: Sekunden bis wenige Minuten; die Aufgabe startet alle 10 Minuten)
+NK_DURCHGANG_MAX_MIN = 5                       # (20. Prüfung, klein 1) so lange darf ein einzelner Durchgang höchstens laufen (Wiederholungs-Budget 60 s + Anfragen); ist der Rückgabewert dann noch älter als NK_LEBT_MAX_MIN, gingen die letzten Durchgänge nie zu Ende
+NK_SERIE = "krypto-nachkontrolle-serie.json"   # (20. Prüfung) `pilot.py --nachkontrolle --einmal` führt hier Buch über die Reihe gleichartiger Durchgänge: {art: ok|warnung|besetzt, anzahl, seit, zeit}
+NK_WARN_ROT = 2                                # so viele Durchgänge IN FOLGE mit Warnung (Rückgabewert 3) sind eine Dauerwarnung → rot; ein einzelner bleibt grau (⚠) mit Text
+NK_BESETZT_ROT = 4                             # so viele Durchgänge in Folge «Lauf-Sperre besetzt» (Rückgabewert 0) → rot: der Tageslauf braucht Minuten, die lange Nachkontrolle höchstens 11,5 — mehr als 2 in Folge sind kein Zufall, der Halter steht (z. B. angeklicktes Konsolenfenster)
+NK_SERIE_VORSPRUNG_MIN = 2                     # (Code-Review der R20) liegt der letzte Eintrag der Reihe mehr als so viele Minuten VOR dem Rückgabewert der Bat, hat die Bat danach einen Durchgang beendet, der `pilot.py` gar nicht aufrief (`:nk_ohne_buch`, kein Buch → rc=0): die Reihe ist überholt und zählt nicht
 NK_STARTER = "krypto-nachkontrolle-still.vbs"  # startet krypto-auto.bat «nachkontrolle» ohne sichtbares Fenster (alle 10 Minuten ein Konsolenfenster würde stören — und dazu verleiten, die Aufgabe abzuschalten)
 
 
@@ -609,13 +614,25 @@ def calls_stand():
 _AUFGABE_CACHE = {"zeit": 0.0, "wert": None}
 
 
+def nk_serie(jetzt=None):
+    """(20. Prüfung) Die Reihe gleichartiger Durchgänge der Nachkontrolle (data/krypto-nachkontrolle-serie.json, von `pilot.py --nachkontrolle --einmal` geführt) → {art, anzahl, seit, zeit}
+    oder None, wenn die Datei fehlt, kaputt oder älter als NK_LEBT_MAX_MIN ist (dann sagt sie nichts über die Gegenwart)."""
+    jetzt = time.time() if jetzt is None else jetzt
+    try:
+        d = json.loads((DATA / NK_SERIE).read_text())
+        serie = {"art": str(d["art"]), "anzahl": int(d["anzahl"]), "seit": float(d["seit"]), "zeit": float(d["zeit"])}
+    except Exception:  # noqa: BLE001 — fehlt/kaputt: keine Reihe
+        return None
+    return serie if 0 <= jetzt - serie["zeit"] <= NK_LEBT_MAX_MIN * 60 else None
+
+
 def gesundheit(env, lb, ki, heute=None):
-    """Ampel-Liste: was läuft, was fehlt. Jeder Punkt: {name, ok (True/False/None = Info), text}."""
+    """Ampel-Liste: was läuft, was fehlt. Jeder Punkt: {name, ok (True/False/None = Info), text}; ein grauer Punkt mit warnung=True ist eine WARNUNG (zählt in der Kopfzeile mit)."""
     heute = heute or datetime.now(timezone.utc).date()
     punkte = []
 
-    def p(name, ok, text):
-        punkte.append({"name": name, "ok": ok, "text": text})
+    def p(name, ok, text, warnung=False):
+        punkte.append({"name": name, "ok": ok, "text": text, **({"warnung": True} if warnung else {})})
 
     p("Futures-Schlüssel (Pilot)", bool(env.get("BINANCE_FUTURES_API_KEY") and env.get("BINANCE_FUTURES_API_SECRET")),
       "gesetzt" if env.get("BINANCE_FUTURES_API_KEY") else "fehlt — ohne Schlüssel nur Probeläufe")
@@ -694,17 +711,42 @@ def gesundheit(env, lb, ki, heute=None):
                     rc_nk = int(m_rc.group(1)) if m_rc else None
             except OSError:
                 rc_nk = None
+            serie = nk_serie()  # (20. Prüfung) die Reihe der letzten Durchgänge: seit wann steht eine Warnung, wie lange war die Sperre besetzt
+            if serie is not None and rc_alter is not None and (time.time() - serie["zeit"]) / 60 - rc_alter > NK_SERIE_VORSPRUNG_MIN:
+                serie = None  # überholt: die Bat hat nach dem letzten Eintrag einen Durchgang ohne pilot.py beendet (kein Buch) — ein alter Stand «besetzt ×4» bliebe sonst bis zu 30 Minuten rot
             if minuten_nk > NK_ENDE_MAX_MIN and (rc_alter is None or rc_alter > minuten_nk):
                 # (19. Prüfung K5) jeder Start schreibt NACH seinem Ende einen neuen Rückgabewert (auch «ohne Buch»): ist der letzte Start älter als NK_ENDE_MAX_MIN und der Rückgabewert älter als er, ging der Durchgang nie zu Ende
                 # (hängt, oder das Zeitlimit der Aufgabe beendet ihn jedes Mal) — das Lebenszeichen allein zeigte «läuft»
                 p("Nachkontrolle (Aufgabenplanung)", False, f"gestartet vor {minuten_nk:.0f} Min., aber der Durchgang ist nie zu Ende gegangen (kein neuer Rückgabewert) — hängt er oder beendet ihn das Zeitlimit der Aufgabe? "
                   "Aufgabenplanung → «Krypto-Pilot-Nachkontrolle» → Verlauf und data\\krypto-nachkontrolle.log ansehen")
+            elif (rc_alter is None or rc_alter > NK_LEBT_MAX_MIN) and minuten_nk > NK_DURCHGANG_MAX_MIN:
+                # (20. Prüfung, klein 1) das Lebenszeichen ist frisch, der Rückgabewert aber älter als drei Takte (oder gar nicht da): die Durchgänge gehen seit einer halben Stunde nicht mehr zu Ende — vorher stand die Ampel in den ersten
+                # 15 Minuten nach jedem Start grün (rund 43 % der Zeit), wenn das Zeitlimit der Aufgabe jeden Durchgang abbrach, und blieb es ganz, wenn die Rückgabewert-Datei nie erneuert wurde (Code-Review: auch wenn sie fehlte)
+                rc_wort = "es gibt noch gar keinen Rückgabewert" if rc_alter is None else f"der letzte Rückgabewert ist {rc_alter:.0f} Min. alt"
+                p("Nachkontrolle (Aufgabenplanung)", False, f"gestartet vor {minuten_nk:.0f} Min., aber {rc_wort} — die Durchgänge gehen nicht zu Ende (hängt es, oder beendet das Zeitlimit der Aufgabe jeden?) "
+                  "Aufgabenplanung → «Krypto-Pilot-Nachkontrolle» → Verlauf und data\\krypto-nachkontrolle.log ansehen")
             elif rc_nk not in (None, 0, 3):
                 p("Nachkontrolle (Aufgabenplanung)", False, f"läuft (zuletzt vor {minuten_nk:.0f} Min.), aber `pilot.py --nachkontrolle` endete mit Rückgabewert {rc_nk} — Absturz? data\\krypto-nachkontrolle.log ansehen")
-            elif rc_nk == 3:  # (19. Prüfung) eine Dauerwarnung («Markt weiterhin nicht vollständig gesichert») ist nicht «grün» — grau mit Text, der Push kommt höchstens einmal je Stunde
-                p("Nachkontrolle (Aufgabenplanung)", None, f"läuft (zuletzt vor {minuten_nk:.0f} Min.), der letzte Durchgang meldete eine WARNUNG (Rückgabewert 3: ein Markt nicht vollständig gesichert oder ein Auftrag noch unklar) — Handy-Nachricht und data\\krypto-nachkontrolle.log ansehen")
+            elif rc_nk == 3:
+                # (19. Prüfung) eine Dauerwarnung («Markt weiterhin nicht vollständig gesichert») ist nicht «grün» — grau mit Text, der Push kommt höchstens einmal je Stunde
+                # (20. Prüfung, wichtig 1) … und sie steht in der Kopfzeile (warnung=True); hält sie über NK_WARN_ROT Durchgänge in Folge an, ist sie rot — ein Markt, den zwei Durchgänge nacheinander nicht sichern konnten, braucht einen Menschen
+                n_warn = serie["anzahl"] if serie and serie["art"] == "warnung" else 1
+                if n_warn >= NK_WARN_ROT:
+                    seit_min = max(0.0, (time.time() - serie["seit"]) / 60)
+                    p("Nachkontrolle (Aufgabenplanung)", False, f"läuft (zuletzt vor {minuten_nk:.0f} Min.), aber die WARNUNG (Rückgabewert 3: ein Markt nicht vollständig gesichert oder ein Auftrag noch unklar) steht seit {n_warn} Durchgängen "
+                      f"in Folge (rund {seit_min:.0f} Min.) — bitte im Binance-Konto prüfen; Handy-Nachricht und data\\krypto-nachkontrolle.log ansehen")
+                else:
+                    p("Nachkontrolle (Aufgabenplanung)", None, f"läuft (zuletzt vor {minuten_nk:.0f} Min.), der letzte Durchgang meldete eine WARNUNG (Rückgabewert 3: ein Markt nicht vollständig gesichert oder ein Auftrag noch unklar) — Handy-Nachricht und data\\krypto-nachkontrolle.log ansehen",
+                      warnung=True)
+            elif serie and serie["art"] == "besetzt" and serie["anzahl"] >= NK_BESETZT_ROT:
+                # (20. Prüfung, klein 8) ein überspringender Durchgang (die Sperre hält ein anderer Lauf) endet mit Rückgabewert 0 — hielte den Hauptfaden des Halters etwas an (angeklicktes Konsolenfenster), lebt sein Herzschlag weiter und
+                # niemand prüft mehr
+                seit_min = max(0.0, (time.time() - serie["seit"]) / 60)
+                p("Nachkontrolle (Aufgabenplanung)", False, f"die letzten {serie['anzahl']} Durchgänge (rund {seit_min:.0f} Min.) wurden übersprungen: die Lauf-Sperre hält ein anderer Lauf — hängt der Tageslauf oder die lange Nachkontrolle "
+                  "(ein angeklicktes Konsolenfenster hält ein Programm an)? Fenster ansehen, Taste drücken oder schliessen; data\\krypto-nachkontrolle.log ansehen")
             else:
-                p("Nachkontrolle (Aufgabenplanung)", True, f"eingerichtet (alle 10 Minuten), zuletzt vor {minuten_nk:.0f} Min.")
+                p("Nachkontrolle (Aufgabenplanung)", True, f"eingerichtet (alle 10 Minuten), zuletzt vor {minuten_nk:.0f} Min."
+                  + (f" — der letzte Durchgang wurde übersprungen (Lauf-Sperre belegt, {serie['anzahl']}×)" if serie and serie["art"] == "besetzt" else ""))
     mvrv = HIER.parent / "daten" / "info_mvrv_btc.json"
     if mvrv.exists():
         stunden = (time.time() - mvrv.stat().st_mtime) / 3600

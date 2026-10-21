@@ -52,11 +52,13 @@ Sicherungen:
 """
 from __future__ import annotations
 
+import itertools
 import json
 import math
 import os
 import random
 import sys
+import threading
 import time
 import urllib.error
 import urllib.parse
@@ -155,7 +157,27 @@ def _voruebergehend(ex):
     return isinstance(ex, BF.NETZFEHLER)
 
 
-_RETRY_BUDGET = [None]  # (19. Prüfung W2) Sekunden, die `_nochmal` und `_platziere` zwischen Wiederholungen insgesamt noch schlafen dürfen (`_pause`) — NUR der Durchgang `einmal` der Nachkontrolle setzt sie (EINMAL_RETRY_S); None = unbegrenzt (Lauf, Not-Aus, lange Nachkontrolle)
+class _ThreadZelle:
+    """Eine Zelle mit der Schnittstelle `zelle[0]`, aber getrennt je Thread (20. Prüfung, klein 8, latent): das Budget eines Durchgangs `einmal` darf nie einen anderen Thread im selben Prozess einschränken. Heute läuft
+    ein Durchgang `einmal` nur in `pilot.py --nachkontrolle --einmal` (eigener Prozess, ein Thread; der Cockpit-Prozess startet die Nachkontrolle als Unterprozess, führt aber den Not-Aus in Handler-Threads aus) — die
+    Trennung schützt einen künftigen Aufruf von `nachkontrolle(einmal=True)` im Cockpit-Prozess davor, einen gleichzeitigen Not-Aus einzuschränken."""
+
+    def __init__(self, wert=None):
+        self._wert = wert
+        self._lokal = threading.local()
+
+    def __getitem__(self, i):
+        if i != 0:
+            raise IndexError(i)
+        return getattr(self._lokal, "wert", self._wert)
+
+    def __setitem__(self, i, wert):
+        if i != 0:
+            raise IndexError(i)
+        self._lokal.wert = wert
+
+
+_RETRY_BUDGET = _ThreadZelle()  # (19. Prüfung W2) Sekunden, die `_nochmal` und `_platziere` zwischen Wiederholungen insgesamt noch schlafen dürfen (`_pause`) — NUR der Durchgang `einmal` der Nachkontrolle setzt sie (EINMAL_RETRY_S) und nur für den eigenen Thread; None = unbegrenzt (Lauf, Not-Aus, lange Nachkontrolle)
 EINMAL_RETRY_S = 60.0   # ein Durchgang im 10-Minuten-Takt hielt die Lauf-Sperre bis 244 s (schnelle Fehler) bzw. 49 Minuten (hängendes Netz), der Tageslauf wartet nur 190 s: Wiederholungen nur noch für diese Zeit, danach gilt der erste Fehler
 
 
@@ -496,27 +518,55 @@ def _buch_speichern_zusammen(datei, modus, gesehen, buch):
         raise OSError(f"Buch gesperrt ({ex})") from None
 
 
+_TMP_ZAEHLER = itertools.count()
+TEMP_ALT_S = 3600  # eine Temp-Datei des Buchs, die älter ist, gehört einem toten Schreiber (kill -9, Stromausfall zwischen Schreiben und Umbenennen)
+
+
+def _buch_tmp(datei):
+    """(20. Prüfung, klein 2) Eigener Name je Schreiber (Prozess, Thread, Zähler): alle teilten vorher `<Buch>.neu` — ein Zombie, der erst nach dem Schreiben der Temp-Datei seine Sperre verliert, überschrieb oder löschte
+    die Temp-Datei des rechtmässigen Schreibers zwischen dessen Schreiben und Umbenennen (dessen `replace` übernahm dann den veralteten Inhalt, und er glaubte, gespeichert zu haben)."""
+    return Path(f"{datei}.{os.getpid()}-{threading.get_ident()}-{next(_TMP_ZAEHLER)}.neu")
+
+
+def _buch_temp_aufraeumen(datei):
+    """Verwaiste Temp-Dateien des Buchs (älter als TEMP_ALT_S) löschen — auch die gemeinsame der früheren Fassung. Fehler hier bleiben ohne Folgen."""
+    try:
+        d = Path(datei)
+        grenze = time.time() - TEMP_ALT_S
+        for t in list(d.parent.glob(d.name + ".*-*-*.neu")) + list(d.parent.glob(d.name + ".neu")):
+            try:
+                if t.stat().st_mtime < grenze:
+                    t.unlink()
+            except OSError:
+                pass
+    except OSError:
+        pass
+
+
 def _buch_schreiben_roh(datei, modus, buch):
     alt = _datei(datei)  # unlesbar → Abbruch statt den anderen Modus zu überschreiben
     alt[modus] = buch
     Path(datei).parent.mkdir(exist_ok=True)
-    tmp = Path(str(datei) + ".neu")
-    for i in range(len(BUCH_WARTEN) + 1):
-        try:
-            tmp.write_text(json.dumps(alt, indent=1))
-            _sperre_pruefen()  # (19. Prüfung, klein 1) auch UNMITTELBAR vor dem Umbenennen — das Buch kennt keinen recvWindow-Schutz wie die Aufträge; das Fenster nach der ersten Prüfung schrumpft so auf einen Aufruf
-            tmp.replace(datei)  # nie halb geschrieben
-            return
-        except _LaufSperreVerloren:
+    _buch_temp_aufraeumen(datei)
+    tmp = _buch_tmp(datei)
+    try:
+        for i in range(len(BUCH_WARTEN) + 1):
             try:
-                tmp.unlink()
-            except OSError:
-                pass
-            raise
-        except OSError:
-            if i >= len(BUCH_WARTEN):
+                tmp.write_text(json.dumps(alt, indent=1))
+                _sperre_pruefen()  # (19. Prüfung, klein 1) auch UNMITTELBAR vor dem Umbenennen — das Buch kennt keinen recvWindow-Schutz wie die Aufträge; das Fenster nach der ersten Prüfung schrumpft so auf einen Aufruf
+                tmp.replace(datei)  # nie halb geschrieben
+                return
+            except _LaufSperreVerloren:
                 raise
-            time.sleep(BUCH_WARTEN[i])
+            except OSError:
+                if i >= len(BUCH_WARTEN):
+                    raise
+                time.sleep(BUCH_WARTEN[i])
+    finally:
+        try:  # nach dem Umbenennen gibt es sie nicht mehr; bei einem Fehler oder dem Veto bleibt keine Temp-Datei liegen — die EIGENE, nie die eines anderen Schreibers
+            tmp.unlink()
+        except OSError:
+            pass
 
 
 def _gestartet(b):
@@ -1295,11 +1345,16 @@ def ausfuehren(ents, trocken=False, env=None, spot=None, fut=None, protokolliere
         if gehandelt:
             buch["schutz_offen"] = sorted(set(buch.get("schutz_offen") or []) | set(gehandelt))
         speichern()
-        if protokolliere:  # die Aufträge dieses Laufs (vor dem STOP); der Not-Aus protokolliert seine eigenen
-            protokolliere({"zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), "modus": erg["modus"],
-                           "kapital": erg["kapital"], "auftraege": list(erg["auftraege"]), "warnung": erg["warnung"]})
+        # die Aufträge dieses Laufs (vor dem STOP) protokollieren — aber NACH dem Schliessen (Code-Review der R20: das Protokoll wartet auf eine Sperre und wiederholt bei gesperrter Datei, das darf den Not-Aus nie aufhalten);
+        # der Eintrag trägt die Zeit von JETZT, der Not-Aus protokolliert seine eigenen
+        eintrag_lauf = {"zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), "modus": erg["modus"],
+                        "kapital": erg["kapital"], "auftraege": list(erg["auftraege"]), "warnung": erg["warnung"]}
         erg["zeilen"].append("🛑 Not-Aus während des Laufs — Pilot 2.0 schliesst jetzt selbst (dieser Lauf hält die Sperre).")
-        r = notaus_alle(env_, datei, spot=spot_arg, fut=fut_arg, protokolliere=protokolliere)
+        try:
+            r = notaus_alle(env_, datei, spot=spot_arg, fut=fut_arg, protokolliere=protokolliere)
+        finally:  # auch wenn der Not-Aus eine Ausnahme wirft: die Aufträge dieses Laufs sind raus und gehören ins Protokoll (Code-Review der R20)
+            if protokolliere:
+                protokolliere(eintrag_lauf)
         erg["zeilen"] += r["zeilen"]
         erg["auftraege"] += r["auftraege"]
         erg["warnung"] = erg["warnung"] or r["warnung"]
@@ -3016,11 +3071,12 @@ def nachkontrolle(env=None, datei=None, spot=None, fut=None, schlafen=time.sleep
     """Hülle um `_nachkontrolle` (Beschreibung dort). einmal=True: die Wiederholungen von `_nochmal` dürfen im ganzen Durchgang nur EINMAL_RETRY_S Sekunden schlafen (19. Prüfung W2)."""
     if not einmal:
         return _nachkontrolle(env, datei, spot, fut, schlafen, uhr, False)
+    vorher = _RETRY_BUDGET[0]  # (Code-Review der R20) wiederherstellen, nicht auf None setzen: wie `schliessen()` überschreibt der Durchgang kein Budget, das ein Aufrufer in diesem Thread schon gesetzt hatte
     _RETRY_BUDGET[0] = EINMAL_RETRY_S
     try:
         return _nachkontrolle(env, datei, spot, fut, schlafen, uhr, True)
     finally:
-        _RETRY_BUDGET[0] = None
+        _RETRY_BUDGET[0] = vorher
 
 
 def _nachkontrolle(env, datei, spot, fut, schlafen, uhr, einmal):
@@ -4159,6 +4215,21 @@ def _notaus_schutz(spot, fut, st, k, sym, coin, pos, pos_vor, frei, gebunden, ku
         if spot_zu_gross:
             warn(f"Not-Aus {modus} {k}: zu grosser Spot-Stop " + ("vielleicht noch offen (Antwort unklar)" if unsicher else "bleibt stehen")
                  + " — der Short bekommt seinen Stop über die ganze Menge.")
+        if unsicher:
+            # (20. Folge-Runde, Kampagnenfund Not-Aus-Seed 1510735) Kam das Ersetzen doch an, sind die freigegebenen Coins jetzt FREI und ohne Stop — und der Short hat (spot_zu_gross) seinen Stop über die GANZE Menge:
+            # löst der aus, bliebe der freigegebene Teil ohne Stop (0,053 ETH ≈ 244 USDT bis zur Nachkontrolle). Wie im Tageslauf nach «Ersetzen unklar» (`_spot_rest_sichern` mit frischen Zahlen): neu lesen — der
+            # Zusatz-Stop unten («zu grosser Spot-Stop bleibt», Spot-Stop über die übrigen Coins) fasst dann die freien Coins. Steht der alte noch, sind keine frei (alles wie bisher). Die Entscheidung `spot_zu_gross` oben bleibt bei der
+            # pessimistischen Rechnung (auch ein jetzt bestätigtes Verkleinern lässt den Markt beidseitig stehen, bis der Not-Aus wiederholt wird: der Zusatz-Stop unten fasst ALLE Coins ohne Stop, `frei` begrenzt ihn).
+            # Nicht lesbar: laut und für die Nachkontrolle vermerkt (ob freigegebene Coins ohne Stop sind, ist dann unbekannt). Kommt das Ersetzen erst NACH dem Lesen an, holt es die Wiederholung des Not-Aus nach.
+            try:
+                frei_n, gebunden_n = bestand(_nochmal(spot.konto, SCHUTZ_WARTEN), coin)
+            except Exception as ex:  # noqa: BLE001
+                fehlt_schutz(f"Not-Aus {modus} {k}: Antwort beim Verkleinern des Spot-Stops verloren UND Kontostand nicht lesbar ({type(ex).__name__}) — ob freigegebene {coin} ohne Stop sind, ist unbekannt. "
+                             "Sofort prüfen, Not-Aus wiederholen!")
+            else:
+                if gebunden_n < vorher - regeln["step"] / 2:
+                    warn(f"Not-Aus {modus} {k}: das Verkleinern des Spot-Stops kam an (neu gelesen: {gebunden_n:g} {coin} gesperrt, {frei_n:g} frei).")
+                frei, gebunden = frei_n, gebunden_n
     menge = PL.runde(max(0.0, min(frei, soll_s - gebunden)), regeln["step"])
     gestoppt = gebunden  # Coins unter einem eigenen Spot-Stop (können bei fallendem Kurs wegfallen)
     if menge * kurs >= regeln["min_notional"]:
@@ -4323,12 +4394,83 @@ def _notaus_schutz(spot, fut, st, k, sym, coin, pos, pos_vor, frei, gebunden, ku
     return ok[0]
 
 
-def protokoll_schreiben(eintrag):
+PROTOKOLL_SPERRE_WARTEN = 1.0  # Sekunden: das Protokoll ist ein Beleg — lieber ohne Sperre schreiben, als den Abschluss eines Laufs oder Not-Aus aufzuhalten (beide rufen `protokolliere` am Ende auf; die Buch-Sperre wartet bis 15 s)
+
+
+def _protokoll_sperre():
+    import sperre
+    return sperre.lauf_sperre(name=PROTOKOLL.name + "-schreiben", warten=PROTOKOLL_SPERRE_WARTEN, ordner=PROTOKOLL.parent, alt_nach=60)
+
+
+def _protokoll_lesen():
+    """Die bisherigen Einträge → Liste; None, wenn die Datei trotz Wiederholungen nicht lesbar ist (Windows: Virenscanner, OneDrive, ein offener Editor) — dann wird NICHT geschrieben, sonst ginge die ganze Geschichte
+    verloren (Code-Review der R20). Ist der Inhalt kein Protokoll (kaputtes JSON, «{}», «null» nach einem Zurücksetzen von Hand), wird er beiseitegelegt statt überschrieben — wie `pilot.lies` das Logbuch."""
+    roh = None
+    for i in range(len(BUCH_WARTEN) + 1):
+        try:
+            if not PROTOKOLL.exists():
+                return []
+            roh = PROTOKOLL.read_text()
+            break
+        except UnicodeDecodeError:  # Bytes, die in der Zeichentabelle nicht gelten (von Hand gespeichert): kein Protokoll → unten beiseitegelegt (ein ValueError, kein OSError)
+            roh = None
+            break
+        except OSError:
+            if i >= len(BUCH_WARTEN):
+                return None
+            time.sleep(BUCH_WARTEN[i])
     try:
-        alt = json.loads(PROTOKOLL.read_text()) if PROTOKOLL.exists() else []
-    except (OSError, ValueError):
-        alt = []
+        alt = json.loads(roh) if roh is not None else None
+    except ValueError:
+        alt = None
+    if isinstance(alt, list):
+        return alt
+    beiseite = PROTOKOLL.with_name(PROTOKOLL.name + f".kaputt-{datetime.now(timezone.utc):%Y%m%d-%H%M%S}")
+    try:
+        PROTOKOLL.replace(beiseite)
+        print(f"⚠️ Protokoll {PROTOKOLL.name} war kein Protokoll — beiseitegelegt als {beiseite.name}, ein neues begonnen.")
+    except OSError:
+        pass
+    return []
+
+
+def _protokoll_anhaengen(eintrag):
+    alt = _protokoll_lesen()
+    if alt is None:
+        print(f"⚠️ Protokoll {PROTOKOLL.name} nicht lesbar — der Eintrag wird nicht geschrieben, damit die bisherigen nicht überschrieben werden. Der Lauf selbst ist davon nicht betroffen.")
+        return
     PROTOKOLL.parent.mkdir(exist_ok=True)
-    tmp = Path(str(PROTOKOLL) + ".neu")
-    tmp.write_text(json.dumps((alt + [eintrag])[-2000:], ensure_ascii=False, indent=1))
-    tmp.replace(PROTOKOLL)  # nie halb geschrieben
+    _buch_temp_aufraeumen(PROTOKOLL)
+    tmp = _buch_tmp(PROTOKOLL)
+    try:
+        for i in range(len(BUCH_WARTEN) + 1):
+            try:
+                tmp.write_text(json.dumps((alt + [eintrag])[-2000:], ensure_ascii=False, indent=1))
+                tmp.replace(PROTOKOLL)  # nie halb geschrieben
+                return
+            except OSError:
+                if i >= len(BUCH_WARTEN):
+                    raise
+                time.sleep(BUCH_WARTEN[i])
+    finally:
+        try:
+            tmp.unlink()
+        except OSError:
+            pass
+
+
+def protokoll_schreiben(eintrag):
+    """Einen Eintrag ans Protokoll hängen (ein Beleg, kein Schutz). (20. Folge-Runde, Code-Review) Eigener Name der Temp-Datei je Schreiber wie beim Buch — zwei Schreiber teilten sich `<Protokoll>.neu`, das zweite
+    `replace` fand die Datei nicht mehr —, Lesen-Ändern-Schreiben unter der kurzen Schreib-Sperre (sonst ging bei gleichzeitigen Schreibern, z. B. Not-Aus im Cockpit-Thread und Lauf, der Eintrag des einen verloren; ist die
+    Sperre binnen PROTOKOLL_SPERRE_WARTEN nicht zu bekommen, wird trotzdem geschrieben), Wiederholungen bei kurz gesperrter Datei, nie das Überschreiben eines nicht lesbaren Protokolls, und BEST EFFORT: ein Fehler darf nie
+    das Ergebnis eines Laufs ersetzen, dessen Aufträge schon raus sind (die Aufrufer stehen am Ende von `ausfuehren` und im Not-Aus)."""
+    from contextlib import ExitStack
+    try:
+        with ExitStack() as stapel:
+            try:
+                stapel.enter_context(_protokoll_sperre())
+            except Exception:  # noqa: BLE001 — Sperre belegt oder nicht anlegbar: lieber ohne Sperre schreiben als gar nicht
+                pass
+            _protokoll_anhaengen(eintrag)
+    except Exception as ex:  # noqa: BLE001
+        print(f"⚠️ Protokoll nicht geschrieben ({type(ex).__name__}) — der Lauf selbst ist davon nicht betroffen.")

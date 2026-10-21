@@ -428,6 +428,8 @@ with tempfile.TemporaryDirectory() as tmp:
         gi_text = gi_pfad.read_text(encoding="utf-8") if gi_pfad.exists() else None  # in einem Sandkasten nur mit tools/trading (Mutationsprobe) fehlt sie: dann nicht prüfbar
         pruefe("(18. Prüfung) die Laufzeit-Dateien der Nachkontroll-Aufgabe (Lebenszeichen, Rückgabewert, Push-Drosselung, Log) stehen in .gitignore — sonst wären sie auf dem PC des Users «ungetrackt» und störten das Aktualisieren",
                (gi_text is None or "data/krypto-nachkontrolle*" in gi_text.splitlines()) and C.NK_LEBT.startswith("krypto-nachkontrolle") and C.NK_RC.startswith("krypto-nachkontrolle"))
+        pruefe("(Code-Review der R20) auch die Temp-Dateien des Buchs und des Protokolls (<Datei>.<Prozess>-<Thread>-<Zähler>.neu, bleiben nach einem harten Abbruch liegen) stehen in .gitignore — `git add data/` darf sie nie einsammeln",
+               gi_text is None or "data/*.neu" in gi_text.splitlines())
         e = C.aktion("update", befehl=lambda c, z: (False, "error: Your local changes would be overwritten"))
         pruefe("Update gescheitert: verständlicher Hinweis", not e["ok"] and "eigene Änderungen" in e["text"])
         pruefe("Aufgabe vorhanden? (schtasks /query)", C.aufgabe_da(lambda c, z: (c[:2] == ["schtasks", "/query"], "")) is True)
@@ -501,11 +503,133 @@ with tempfile.TemporaryDirectory() as tmp:
                     gnk19 = {x["name"]: x for x in C.gesundheit({}, {"entscheide": []}, {}, datetime.now(timezone.utc).date())}
                     zeile19 = gnk19.get("Nachkontrolle (Aufgabenplanung)")
                     pruefe(f"Ampel «Nachkontrolle (Aufgabenplanung)», Durchgang nie zu Ende: {fall19} → {'grün' if erwartet19 else 'rot'}", zeile19 is not None and zeile19["ok"] is erwartet19 and wort19 in zeile19["text"], zeile19)
+                # ── 20. Prüfung: veralteter Rückgabewert (klein 1), Dauerwarnung und «besetzt»-Reihe (wichtig 1, klein 8) ──
+                serie20 = Path(td17) / C.NK_SERIE
+
+                def ampel20(lebt_min, rc_min, rc_text="x rc=0", serie=None):
+                    """serie = (art, anzahl, Beginn vor … Min., letzter Durchgang vor … Min.) oder None."""
+                    jetzt20 = time.time()
+                    lebt17.write_text("x")
+                    _os17.utime(lebt17, (jetzt20 - lebt_min * 60, jetzt20 - lebt_min * 60))
+                    rc_datei18.unlink(missing_ok=True)
+                    if rc_min is not None:
+                        rc_datei18.write_text(rc_text)
+                        _os17.utime(rc_datei18, (jetzt20 - rc_min * 60, jetzt20 - rc_min * 60))
+                    serie20.unlink(missing_ok=True)
+                    if serie:
+                        serie20.write_text(json.dumps({"art": serie[0], "anzahl": serie[1], "seit": jetzt20 - serie[2] * 60, "zeit": jetzt20 - serie[3] * 60}))
+                    C.os = _NT17()
+                    C._AUFGABE_CACHE.update({"zeit": 0.0, "wert": None, "wert_nk": None})
+                    C._befehl = lambda cmd, zeit: (True, "")
+                    return {x["name"]: x for x in C.gesundheit({}, {"entscheide": []}, {}, datetime.now(timezone.utc).date())}.get("Nachkontrolle (Aufgabenplanung)")
+                # klein 1: das Lebenszeichen ist frisch, der Rückgabewert aber älter als drei Takte → die Durchgänge gehen nicht zu Ende (vorher 0–15 Minuten nach jedem Start grün, bei nie erneuerter Datei dauerhaft)
+                for fall20, lebt20, rc20, erwartet20, wort20 in (("Start vor 7 Min., Rückgabewert 45 Min. alt", 7, 45, False, "nicht zu Ende"),
+                                                                 ("Start vor 12 Min., Rückgabewert 45 Min. alt (im alten grünen Fenster)", 12, 45, False, "nicht zu Ende"),
+                                                                 ("Start vor 14 Min., Rückgabewert 31 Min. alt", 14, 31, False, "nicht zu Ende"),
+                                                                 ("Start vor 4 Min., Rückgabewert 45 Min. alt (erster Durchgang nach langer Pause läuft noch)", 4, 45, True, "zuletzt vor"),
+                                                                 ("Start vor 7 Min., Rückgabewert 29 Min. alt (unter der Grenze)", 7, 29, True, "zuletzt vor"),
+                                                                 ("Start vor 7 Min., Rückgabewert 15 Min. alt (normal)", 7, 15, True, "zuletzt vor"),
+                                                                 ("Start vor 7 Min., GAR kein Rückgabewert (Code-Review: vorher grün bis 15 Minuten)", 7, None, False, "gar keinen Rückgabewert"),
+                                                                 ("Start vor 14 Min., GAR kein Rückgabewert", 14, None, False, "gar keinen Rückgabewert"),
+                                                                 ("Start vor 4 Min., GAR kein Rückgabewert (der erste Durchgang läuft noch)", 4, None, True, "zuletzt vor")):
+                    z20 = ampel20(lebt20, rc20)
+                    pruefe(f"Ampel «Nachkontrolle (Aufgabenplanung)», veralteter Rückgabewert: {fall20} → {'grün' if erwartet20 else 'rot'}", z20 is not None and z20["ok"] is erwartet20 and wort20 in z20["text"], z20)
+                # wichtig 1: eine einzelne Warnung bleibt grau, trägt aber das Kennzeichen «warnung» (die Kopfzeile zählt sie); ab NK_WARN_ROT Durchgängen in Folge ist sie rot
+                for fall20, rc_text20, serie_a20, erwartet20, warn20, wort20 in (
+                        ("rc=3, Reihe: 1 Warnung", "x rc=3", ("warnung", 1, 3, 2), None, True, "letzte Durchgang meldete eine WARNUNG"),
+                        ("rc=3 ohne Reihe-Datei (ältere Bat/Programmstand)", "x rc=3", None, None, True, "letzte Durchgang meldete eine WARNUNG"),
+                        ("rc=3, Reihe: 2 Warnungen in Folge", "x rc=3", ("warnung", 2, 13, 2), False, False, "seit 2 Durchgängen in Folge"),
+                        ("rc=3, Reihe: 6 Warnungen seit 55 Min.", "x rc=3", ("warnung", 6, 55, 2), False, False, "seit 6 Durchgängen in Folge (rund 55 Min.)"),
+                        ("rc=3, die Reihe sagt «ok» (widersprüchlich, z. B. Datei von vorher)", "x rc=3", ("ok", 4, 40, 2), None, True, "WARNUNG"),
+                        ("rc=3, die Reihe ist 45 Min. alt (sagt nichts über die Gegenwart)", "x rc=3", ("warnung", 5, 70, 45), None, True, "WARNUNG"),
+                        ("rc=0, Reihe: 3× besetzt (normal: Tageslauf/lange Nachkontrolle belegen die Sperre)", "x rc=0", ("besetzt", 3, 25, 2), True, False, "übersprungen (Lauf-Sperre belegt, 3×)"),
+                        ("rc=0, Reihe: 4× besetzt (der Halter steht)", "x rc=0", ("besetzt", 4, 35, 2), False, False, "Lauf-Sperre hält ein anderer Lauf"),
+                        ("rc=0, Reihe: 4× besetzt, aber 45 Min. alt", "x rc=0", ("besetzt", 4, 95, 45), True, False, "zuletzt vor"),
+                        ("rc=0, Reihe: ok", "x rc=0", ("ok", 9, 80, 2), True, False, "zuletzt vor"),
+                        ("rc=0, die Reihe sagt «warnung» (widersprüchlich: der Rückgabewert gilt)", "x rc=0", ("warnung", 5, 40, 2), True, False, "zuletzt vor"),
+                        ("rc=0, Reihe: 4× besetzt, aber ÜBERHOLT (die Bat beendete danach einen Durchgang ohne pilot.py: kein Buch → rc=0)", "x rc=0", ("besetzt", 4, 35, 8), True, False, "zuletzt vor"),
+                        ("rc=3, Reihe: 2 Warnungen, aber ÜBERHOLT (7 Minuten älter als der Rückgabewert)", "x rc=3", ("warnung", 2, 20, 9), None, True, "letzte Durchgang meldete eine WARNUNG")):
+                    z20 = ampel20(3, 1, rc_text20, serie_a20)
+                    gut20 = z20 is not None and z20["ok"] is erwartet20 and wort20 in z20["text"] and (z20.get("warnung") is True) == warn20 and ("warnung" in z20) == warn20
+                    if (fall20.startswith("rc=0, Reihe: ") and erwartet20 is True and "besetzt" not in fall20) or "ÜBERHOLT" in fall20:
+                        gut20 = gut20 and "übersprungen" not in z20["text"]
+                    if "ÜBERHOLT" in fall20 and "WARNUNG" not in wort20:
+                        gut20 = gut20 and "übersprungen" not in z20["text"]
+                    pruefe(f"Ampel «Nachkontrolle (Aufgabenplanung)», Reihe der Durchgänge: {fall20} → {'grün' if erwartet20 else 'rot' if erwartet20 is False else 'grau' + (' mit Kennzeichen warnung' if warn20 else '')}", gut20, z20)
+                # … eine Reihe, die älter als NK_LEBT_MAX_MIN ist, sagt nichts über die Gegenwart — auch wenn der Rückgabewert daneben (29 Min.) noch gilt und die Reihe ihn nicht um mehr als NK_SERIE_VORSPRUNG_MIN überholt
+                # (30,5 statt 31 Minuten: bei genau 2 Minuten Abstand schlägt die Zeit, die der Test selbst braucht, über die Grenze, und die ANDERE Prüfung — «Reihe endet zu lange vor dem Rückgabewert» — verwirft die Reihe schon)
+                z20k = ampel20(3, 29, "x rc=3", ("warnung", 5, 60, 30.5))
+                pruefe("Ampel «Nachkontrolle (Aufgabenplanung)», Reihe 30,5 Min. alt neben einem 29 Min. alten Rückgabewert (rc=3): die Reihe zählt nicht (älter als 30 Minuten) → grau mit Kennzeichen, nicht rot «seit 5 Durchgängen»",
+                       z20k is not None and z20k["ok"] is None and z20k.get("warnung") is True and "WARNUNG" in z20k["text"], z20k)
+                # … und die anderen Zeilen tragen das Kennzeichen nie (es steht nur an der Warnung)
                 rc_datei18.unlink(missing_ok=True)
+                serie20.unlink(missing_ok=True)
+                alle20 = C.gesundheit({}, {"entscheide": []}, {}, datetime.now(timezone.utc).date())
+                pruefe("Gesundheit: nur eine WARNUNG trägt das Kennzeichen «warnung» (graue Info-Zeilen und alle übrigen nicht)", [x["name"] for x in alle20 if "warnung" in x] == [], [x for x in alle20 if "warnung" in x])
+                rc_datei18.unlink(missing_ok=True)
+                serie20.unlink(missing_ok=True)
             finally:
                 C.os, C._befehl, C.DATA = alt_os17, alt_bef17, alt_data17
                 C._AUFGABE_CACHE.clear()
                 C._AUFGABE_CACHE.update(alt_cache17)
+        # ── 20. Prüfung wichtig 1: die Kopfzeile der Gesundheits-Karte zählt Warnungen mit (cockpit.html, reine Funktionen — hier mit node ausgeführt) ──
+        import re as _re20  # noqa: E402
+        import shutil as _sh20  # noqa: E402
+        import subprocess as _sp20  # noqa: E402
+        _html20 = (Path(C.__file__).parent / "cockpit.html").read_text(encoding="utf-8")
+        _m20 = _re20.search(r"// gesund:start[^\n]*\n(.*?)// gesund:ende", _html20, _re20.S)
+        _node20 = _sh20.which("node") or ("/opt/node22/bin/node" if Path("/opt/node22/bin/node").exists() else None)
+        pruefe("Oberfläche: die Gesundheits-Funktionen (Zeichen, Kopfzeile) stehen als reine Funktionen im Block gesund:start … gesund:ende und die Seite ruft sie auf",
+               bool(_m20) and "function gesundKopfzeile(g)" in _m20.group(1) and "function gesundZeichen(x)" in _m20.group(1) and "gesundKopfzeile(g)" in _html20.split("// gesund:ende", 1)[1]
+               and ".warn{color:var(--warn-text)}" in _html20 and _html20.count("--warn-text:") == 3, bool(_m20))  # ein Wert für jedes der drei Themen (hell; dunkel per Systemeinstellung; dunkel per Schalter)
+        import pilot as _PI21  # noqa: E402
+        pruefe("Reihe der Durchgänge: pilot.py (schreibt) und cockpit.py (liest) benennen dieselbe Datei im selben Ordner — jede Seite hat ihre eigene Konstante, nur dieser Test hält sie zusammen",
+               _PI21.NK_SERIE.name == C.NK_SERIE and _PI21.NK_SERIE.parent == C.ROOT / "data" and C.NK_SERIE.startswith("krypto-nachkontrolle"), (_PI21.NK_SERIE, C.NK_SERIE))
+        pruefe("Übersprungene Durchgänge: die Lampe im Cockpit (NK_BESETZT_ROT) und der Push aufs Handy (pilot.BESETZT_PUSH_AB) springen beim selben Durchgang an — zwei Konstanten, ein Test hält sie zusammen",
+               _PI21.BESETZT_PUSH_AB == C.NK_BESETZT_ROT, (_PI21.BESETZT_PUSH_AB, C.NK_BESETZT_ROT))
+        # Der Test gehört zum Selbsttest vor dem Handeln (krypto-auto.bat): ein node, das sich nicht starten lässt, darf nie das Handeln blockieren → bei jedem Fehler bleibt es bei der Prüfung der Bauform
+        _ok_ = {"name": "a", "ok": True, "text": "x"}
+        _grau_ = {"name": "b", "ok": None, "text": "x"}
+        _warn_ = {"name": "c", "ok": None, "text": "x", "warnung": True}
+        _rot_ = {"name": "d", "ok": False, "text": "x"}
+        _faelle20 = {"leer": [], "grau": [_ok_, _grau_], "warn1": [_ok_, _warn_], "warn2": [_warn_, dict(_warn_, name="e")], "rot1": [_rot_, _ok_], "rot2": [_rot_, dict(_rot_, name="f")],
+                     "rot_warn": [_rot_, _warn_], "zeichen": [_ok_, _rot_, _warn_, _grau_]}
+        k20, _js_kaputt20 = None, None
+        _node_ok20 = False
+        import tempfile as _tf20  # noqa: E402
+
+        def _node_lauf20(skript_, eingabe_=""):
+            """Skript als DATEI starten, Eingabe über stdin (Code-Review der R20: ein Windows-Shim `node.cmd` verstümmelt mehrzeilige `-e`-Skripte und Anführungszeichen in Argumenten)."""
+            with _tf20.TemporaryDirectory() as td_:
+                f_ = Path(td_) / "kopf.js"
+                f_.write_text(skript_, encoding="utf-8")
+                return _sp20.run([_node20, str(f_)], input=eingabe_, capture_output=True, text=True, encoding="utf-8", timeout=60)  # node schreibt UTF-8 (⚠, —) — nicht die Zeichentabelle der Konsole
+        if _m20 and _node20:
+            try:  # erst prüfen, ob node überhaupt läuft (ein nicht startbares node darf den Selbsttest vor dem Handeln nie scheitern lassen); läuft es, ist ein Fehler im Skript ein ECHTER Fehler der Kopfzeile
+                _pr20 = _node_lauf20("let e = '';\nprocess.stdin.on('data', d => e += d);\nprocess.stdin.on('end', () => process.stdout.write(JSON.parse(e).wort));\n", json.dumps({"wort": "ok ⚠ \"q\""}))
+                _node_ok20 = _pr20.returncode == 0 and _pr20.stdout == 'ok ⚠ "q"'
+            except (OSError, _sp20.SubprocessError, ValueError):
+                _node_ok20 = False
+        if _node_ok20:
+            _js20 = _m20.group(1) + ("\nlet eingabe = '';\nprocess.stdin.on('data', d => eingabe += d);\nprocess.stdin.on('end', () => {\n  const faelle = JSON.parse(eingabe);\n  const aus = {};\n"
+                                    "  for (const [n, g] of Object.entries(faelle)) aus[n] = {kopf: gesundKopfzeile(g), zeichen: g.map(gesundZeichen)};\n  process.stdout.write(JSON.stringify(aus));\n});\n")
+            try:
+                r_ = _node_lauf20(_js20, json.dumps(_faelle20))
+                k20 = json.loads(r_.stdout) if r_.returncode == 0 and r_.stdout else None
+                _js_kaputt20 = None if k20 is not None else (r_.returncode, r_.stderr[-300:])
+            except (OSError, _sp20.SubprocessError, ValueError) as ex_:
+                k20, _js_kaputt20 = None, repr(ex_)
+        if _node_ok20 and k20 is None:
+            pruefe("Kopfzeile der Gesundheits-Karte: node läuft, aber die Funktionen gesundKopfzeile/gesundZeichen laufen nicht (Skriptfehler oder ungültige Ausgabe) — ein ECHTER Fehler, kein Grund zum Überspringen", False, _js_kaputt20)
+        elif k20 is not None:
+            pruefe("Kopfzeile der Gesundheits-Karte: «alles in Ordnung» nur ohne rote Punkte UND ohne Warnung — eine graue Info-Zeile zählt nicht, eine Warnung steht dort (vorher blieb sie grün)",
+                   k20["leer"]["kopf"] == "alles in Ordnung" and k20["grau"]["kopf"] == "alles in Ordnung" and k20["warn1"]["kopf"] == "1 Warnung — bitte unten ansehen"
+                   and k20["warn2"]["kopf"] == "2 Warnungen — bitte unten ansehen" and k20["rot1"]["kopf"] == "1 Punkt braucht Aufmerksamkeit"
+                   and k20["rot2"]["kopf"] == "2 Punkte brauchen Aufmerksamkeit" and k20["rot_warn"]["kopf"] == "1 Punkt braucht Aufmerksamkeit · 1 Warnung", {n_: v_["kopf"] for n_, v_ in k20.items()})
+            pruefe("Zeichen der Gesundheits-Zeilen: ✓ grün, ✗ rot, ⚠ für eine Warnung, ○ für grau ohne Warnung",
+                   k20["zeichen"]["zeichen"] == ['<span class="plus">✓</span>', '<span class="minus">✗</span>', '<span class="warn">⚠</span>', '<span class="null">○</span>'], k20["zeichen"])
+        else:
+            pruefe("Kopfzeile der Gesundheits-Karte: node nicht vorhanden oder nicht ausführbar — nur die Bauform geprüft (der Selbsttest vor dem Handeln darf daran nie scheitern)", bool(_m20), _node20)
         ok_b, out_b = C._befehl(["programm-das-es-nicht-gibt-xyz"], 5)
         pruefe("unbekanntes Programm: Meldung statt Absturz", not ok_b and "nicht gefunden" in out_b)
         heute = datetime(2026, 1, 20, tzinfo=timezone.utc).date()

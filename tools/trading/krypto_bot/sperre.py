@@ -88,7 +88,7 @@ def _wache(datei):
         return w
     except FileExistsError:
         try:
-            if time.time() - w.stat().st_mtime > WACHE_ALT:
+            if abs(time.time() - w.stat().st_mtime) > WACHE_ALT:  # (20. Prüfung, klein 6) auch eine Wache «aus der Zukunft» (der Halter starb, danach sprang die Uhr zurück): sonst blockierte sie jede Übernahme für Δ + WACHE_ALT
                 w.unlink()  # vergessen (der Prozess starb mitten in der Übernahme)
         except OSError:
             pass

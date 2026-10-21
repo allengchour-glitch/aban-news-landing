@@ -25,6 +25,7 @@ Aufruf:
   python3 -B pruef_kill.py VON BIS [AUSGABE.json] --nk
         # Abbruch der NACHKONTROLLE: der Tageslauf stirbt nach dem 1., mittleren und letzten Auftrag; die Nachkontrolle (ein Kind-Prozess) stirbt ihrerseits nach dem n2-ten Auftrag (n2 = 0, 1, … bis sie durchläuft);
         # danach die zweite, ungestörte Nachkontrolle — es darf nichts ungeschützt bleiben (der Vermerk bleibt, solange nicht alles gesichert ist).
+        # PRUEF_KILL_NK_EINMAL=1: das sterbende Kind ist ein Durchgang `einmal` (10-Minuten-Takt) statt der langen Fassung; mit PRUEF_NK_EINMAL=3 ist auch die zweite Nachkontrolle die Folge von drei Durchgängen.
   python3 -B pruef_kill.py VON BIS [AUSGABE.json] --notaus
         # Abbruch des NOT-AUS: er stirbt nach dem n-ten Auftrag (die Datei STOP liegt); danach die Nachkontrolle im Not-Aus-Modus — sie muss alles schliessen (flach) und nichts ungeschützt lassen.
 Intern: pruef_kill.py --kind JSON(env) JSON(ents) BUCHDATEI N TMPDIR [nk|notaus]   (das Kind)
@@ -82,7 +83,8 @@ def _kind(argv):
 
         def schlafen(s):
             zeit[0] += s
-        L.nachkontrolle(env=env, datei=buch, schlafen=schlafen, uhr=lambda: zeit[0])
+        # (20. Folge-Runde) PRUEF_KILL_NK_EINMAL=1: das Kind ist ein Durchgang `einmal` (der 10-Minuten-Takt der Aufgabenplanung), nicht die lange Nachkontrolle — sonst prüft der Scan nur die lange Fassung
+        L.nachkontrolle(env=env, datei=buch, schlafen=schlafen, uhr=lambda: zeit[0], einmal=os.environ.get("PRUEF_KILL_NK_EINMAL") == "1")
     elif modus == "notaus":
         L.ausfuehren([], env=env, bestand_datei=buch, notaus=True)
     else:

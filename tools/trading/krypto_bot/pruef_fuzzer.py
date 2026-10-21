@@ -453,6 +453,7 @@ def sauber_schliessen(env, datei, versuche=2):
 
 
 NK_EINMAL = int(os.environ.get("PRUEF_NK_EINMAL") or 0)  # 18. Folge-Runde: N >= 1 → statt EINER langen Nachkontrolle N Durchgänge im 10-Minuten-Takt (`einmal=True`, wie die Aufgabenplanung sie ruft)
+NK_JUNG = os.environ.get("PRUEF_NK_JUNG") not in (None, "", "0")  # 20. Folge-Runde: mit PRUEF_NK_EINMAL — Durchgang 1 sieht unklare Aufträge als JUNG (< UNKLAR_MAX_ALTER_MS, wie direkt nach einem abgestürzten Tageslauf), erst die folgenden als alt
 EINMAL_BUDGET = os.environ.get("PRUEF_EINMAL_BUDGET")  # 19. Folge-Runde: mit PRUEF_NK_EINMAL — Wiederholungs-Budget des Durchgangs in Sekunden; "0" = aufgebraucht (jeder vorübergehende Fehler zählt sofort, keine Wiederholung innerhalb des Durchgangs: der schlimmste Fall des 10-Minuten-Takts)
 
 
@@ -473,6 +474,7 @@ def nachkontrolle(env, datei):
                 L.LESE_WARTEN, L.SCHUTZ_WARTEN, L.EINMAL_RETRY_S = (1e-6,) * len(alt_w[0]), (1e-6,) * len(alt_w[1]), float(EINMAL_BUDGET)
             try:
                 for _i in range(NK_EINMAL):
+                    L.UNKLAR_MAX_ALTER_MS = alt if (NK_JUNG and _i == 0) else -1   # (20. Folge-Runde) PRUEF_NK_JUNG: der erste Durchgang kennt das Alter-Limit des Produktionscodes
                     rn = L.nachkontrolle(env=env, datei=datei, schlafen=schlafen, uhr=lambda: zeit[0], einmal=True)
                     # was irgendein Durchgang meldete oder tat, zählt (die letzten Durchgänge haben meist nichts mehr zu tun) — AUSSER «nicht alles geklärt/gesichert»: ein früher Durchgang darf offen enden
                     # (ein verspäteter Auftrag ist erst im nächsten Takt sichtbar, ein Stop wird erst im zweiten Durchgang angenommen); massgebend ist der LETZTE Durchgang (19. Folge-Runde, camp19 Seed 1210012)

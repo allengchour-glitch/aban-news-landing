@@ -390,7 +390,10 @@ with _tf.TemporaryDirectory() as _sd:
     pruefe("Sperre pruefen(): nach dem Freigeben ist die Sperre nicht mehr registriert (nichts mehr zu prüfen)", not getattr(SP, "_gehalten", {"x": 1}) and getattr(SP, "pruefen", lambda: None)() is None, getattr(SP, "_gehalten", None))
     # eine liegen gebliebene Wache (der Prozess starb mitten in der Übernahme) blockiert nicht für immer: nach WACHE_ALT Sekunden wird sie gelöscht, die Übernahme gelingt
     _wk = Path(_sd) / "krypto-lauf.lock.uebernahme"
-    for _alter_w, _warten_w, _erw_w in ((getattr(SP, "WACHE_ALT", 30) + 60, 5, "uebernommen"), (5, 0, "besetzt")):
+    for _alter_w, _warten_w, _erw_w in ((getattr(SP, "WACHE_ALT", 30) + 60, 5, "uebernommen"), (5, 0, "besetzt"),
+                                        (-(getattr(SP, "WACHE_ALT", 30) + 60), 5, "uebernommen"),  # (20. Prüfung, klein 6) eine Wache «aus der Zukunft» (die Uhr sprang zurück) blockierte jede Übernahme
+                                        (-3, 0, "besetzt")):  # … eine nur wenige Sekunden vorausgehende (Dateisystem-Granularität) ist keine verwaiste
+
         _lk.write_text("1 0\n")
         _os_utime(_lk, (_time.time() - 2000, _time.time() - 2000))
         _wk.write_text("")
@@ -406,6 +409,7 @@ with _tf.TemporaryDirectory() as _sd:
     # die Nachkontrolle (pilot.py --nachkontrolle) wartet auf die Übernahme einer toten Sperre, statt nach 120 s still zu überspringen
     import pilot as _PI  # noqa: E402
     import pilot2_live as _P2L  # noqa: E402
+    testumgebung.schalter_umbiegen(_PI)  # (Code-Review der R20) `nachkontrolle(einmal=True)` schreibt die Reihe der Durchgänge: nie in die echte data/-Datei des Nutzers (sie würde eine rote Dauerwarnung zurücksetzen)
     _alt_ord, _alt_nk = SP.ORDNER, _P2L.nachkontrolle
     SP.ORDNER = Path(_sd)
     _lief = []
@@ -512,6 +516,232 @@ with _tf.TemporaryDirectory() as _sd:
     finally:
         _SG18.push = _alt_push18
     pruefe("Push-Drosselung: dieselbe Meldung wird nach 58 Min. noch gedrosselt und nach 62 Min. wieder gesendet (die Stunde steht fest, nicht nur als Konstante)", _abstand19 == [True, False, True] and _PI.PUSH_ABSTAND_S == 3600 and len(_gepusht19) == 2, (_abstand19, _PI.PUSH_ABSTAND_S))
+
+    # ── 20. Prüfung klein 5: mehrere Kennungen der letzten Stunde bleiben gemerkt (abwechselnde Texte A, B, A, B kamen vorher alle an) ──
+    import hashlib as _hl20  # noqa: E402
+    import json as _js20  # noqa: E402
+    _gepusht20 = []
+    _SG18.push = lambda t, *a, **k: (_gepusht20.append(t), True)[1]
+    _pd20 = Path(_sd) / "push20.json"
+    try:
+        _abab20 = [_PI._push_nachkontrolle(t_, True, datei=_pd20, jetzt=z_) for t_, z_ in
+                   (("Meldung A", 1000.0), ("Meldung B", 1600.0), ("Meldung A", 2200.0), ("Meldung B", 2800.0), ("Meldung A", 3400.0))]
+        _nach_h20 = _PI._push_nachkontrolle("Meldung A", True, datei=_pd20, jetzt=1000.0 + _PI.PUSH_ABSTAND_S + 1)   # A ist eine Stunde alt → geht wieder raus
+        _b_still20 = _PI._push_nachkontrolle("Meldung B", True, datei=_pd20, jetzt=1000.0 + _PI.PUSH_ABSTAND_S + 2)  # B (um 1600 gesendet) noch keine Stunde → still
+    finally:
+        _SG18.push = _alt_push18
+    pruefe("Push-Drosselung (20. klein 5): abwechselnde Meldungen A, B, A, B, A kommen nur je EINMAL je Stunde an (vorher alle fünf); nach einer Stunde geht A wieder raus, das jüngere B bleibt still",
+           _abab20 == [True, True, False, False, False] and _nach_h20 is True and _b_still20 is False and len(_gepusht20) == 3, (_abab20, _nach_h20, _b_still20, _gepusht20))
+    # … die Datei der früheren Fassung ({kennung, zeit}) wird verstanden; eine Obergrenze hält sie klein; abgelaufene Einträge verschwinden
+    _pd20b = Path(_sd) / "push20b.json"
+    _pd20b.write_text(_js20.dumps({"kennung": _hl20.sha1("Meldung X".encode("utf-8")).hexdigest()[:16], "zeit": 7000.0}))
+    _gepusht20.clear()
+    _SG18.push = lambda t, *a, **k: (_gepusht20.append(t), True)[1]
+    try:
+        _alt_fmt20 = _PI._push_nachkontrolle("Meldung X", True, datei=_pd20b, jetzt=7100.0)
+        _pd20c = Path(_sd) / "push20c.json"
+        _buchst20 = [chr(ord("A") + _i20) for _i20 in range(_PI.PUSH_MERKEN + 4)]   # Buchstaben, keine Zahlen: Zahlen gelten in der Kennung als dieselbe Meldung
+        for _i20, _b20 in enumerate(_buchst20):
+            _PI._push_nachkontrolle(f"Meldung {_b20}", True, datei=_pd20c, jetzt=100.0 + _i20)
+        _inhalt20 = _js20.loads(_pd20c.read_text())["meldungen"]
+        _gepusht20.clear()
+        _PI._push_nachkontrolle("Meldung A", True, datei=_pd20c, jetzt=200.0)       # die älteste ist über die Obergrenze hinaus vergessen → geht wieder raus
+        _PI._push_nachkontrolle(f"Meldung {_buchst20[-1]}", True, datei=_pd20c, jetzt=201.0)  # die jüngste ist noch gemerkt → still
+    finally:
+        _SG18.push = _alt_push18
+    pruefe("Push-Drosselung (20. klein 5): die alte Dateifassung wird verstanden (gleiche Meldung gedrosselt); höchstens PUSH_MERKEN Einträge bleiben; was darüber hinausfällt, geht wieder raus, das Jüngste bleibt still",
+           _alt_fmt20 is False and len(_inhalt20) == _PI.PUSH_MERKEN and len(_gepusht20) == 1 and _gepusht20[0].startswith("Meldung A"), (_alt_fmt20, len(_inhalt20), _gepusht20))
+
+    # … (Code-Review der R20) eine ENTWARNUNG («geklärt») beendet die Folge der Warnungen: kehrt dieselbe Warnung zurück, ist das ein neues Ereignis und geht sofort raus (A, C, A, C — vorher stünde «geklärt» auf dem Handy, während der Markt wieder offen ist)
+    _pd20e = Path(_sd) / "push20e.json"
+    _gepusht20.clear()
+    _SG18.push = lambda t, *a, **k: (_gepusht20.append(t), True)[1]
+    try:
+        _folge20 = [_PI._push_nachkontrolle(t_, True, datei=_pd20e, jetzt=z_, warnung=w_) for t_, z_, w_ in
+                    (("Meldung A", 1000.0, True), ("Meldung A", 1100.0, True),            # gleiche Warnung: gedrosselt
+                     ("Meldung C geklärt", 1200.0, False), ("Meldung C geklärt", 1300.0, False),  # gleiche Entwarnung: gedrosselt
+                     ("Meldung A", 1400.0, True),                                           # die Warnung kehrt zurück → neu
+                     ("Meldung C geklärt", 1500.0, False),                                  # … und die Entwarnung dazu auch
+                     ("Meldung A", 1600.0, True),                                           # wieder eine Warnung → neu
+                     ("Meldung B", 1700.0, True), ("Meldung A", 1800.0, True), ("Meldung B", 1900.0, True))]  # innerhalb einer Folge: A, B, A, B → nur je einmal
+    finally:
+        _SG18.push = _alt_push18
+    pruefe("Push-Drosselung (Code-Review R20): eine Entwarnung beendet die Folge der Warnungen — A, A (still), C, C (still), A, C, A, B (alle neu), A, B (still)",
+           _folge20 == [True, False, True, False, True, True, True, True, False, False] and len(_gepusht20) == 6, (_folge20, _gepusht20))
+    _SG18.push = lambda t, *a, **k: (_gepusht20.append(t), True)[1]
+    try:
+        _vorab20 = _PI._push_nachkontrolle("Meldung A", True, datei=_pd20e, jetzt=2000.0)   # ohne «warnung» gilt die Meldung als Warnung (Vorgabe, wie bisher)
+    finally:
+        _SG18.push = _alt_push18
+    pruefe("Push-Drosselung: ohne Angabe gilt eine Meldung als Warnung (Vorgabe warnung=True) — dieselbe Warnung innerhalb der Folge bleibt gedrosselt", _vorab20 is False, _vorab20)
+
+    # … (Code-Review der R20) die Kennung ignoriert ZAHLEN: dieselbe Warnung mit wandernder Zahl («seit 12 s», «Kurs 3636») ist ein und dieselbe Meldung — sonst bekäme jeder Takt eine neue und die Drosselung liesse ~144 Pushes am Tag durch
+    _pd20n = Path(_sd) / "push20n.json"
+    _gepusht20.clear()
+    _SG18.push = lambda t, *a, **k: (_gepusht20.append(t), True)[1]
+    try:
+        _zahl20 = [_PI._push_nachkontrolle(t_, True, datei=_pd20n, jetzt=z_) for t_, z_ in
+                   (("Not-Aus: Ein anderer Lauf handelt gerade (seit 12 s).", 100.0), ("Not-Aus: Ein anderer Lauf handelt gerade (seit 87 s).", 700.0),
+                    ("Kein Kurs lesbar, zuletzt bekannter Kurs 3636", 800.0), ("Kein Kurs lesbar, zuletzt bekannter Kurs 3'641.5", 1400.0),
+                    ("Stop 1.776 @ 4242 fehlt", 1450.0), ("Stop 1.776 @ 4'250.5 fehlt", 1460.0), ("vor 7 Min. nicht gesichert: Markt BTC", 1470.0), ("vor 77 Min. nicht gesichert: Markt BTC", 1480.0),
+                    ("Markt BTC nicht gesichert", 1500.0), ("Markt ETH nicht gesichert", 1600.0),
+                    ("BTC Perp SELL 0.003: noch immer unklar", 1700.0), ("BTC Perp SELL 0.5: noch immer unklar", 1800.0))]
+    finally:
+        _SG18.push = _alt_push18
+    pruefe("Push-Drosselung (Code-Review R20): Meldungen, die sich nur durch ein ALTER («seit 12 s», «vor 7 Min.») oder einen KURS («Kurs 3636», «@ 4242») unterscheiden, sind dieselbe Meldung (je einmal je Stunde); ein anderer Markt ist eine andere — und eine andere MENGE auch (0,003 gegenüber 0,5 BTC unklar)",
+           _zahl20 == [True, False, True, False, True, False, True, False, True, True, True, True] and len(_gepusht20) == 8, (_zahl20, _gepusht20))
+    # … ein Push, der mit einer Ausnahme scheitert (z. B. ein ntfy-Server ohne «https://»: ValueError vor dem Senden), beendet nie den Durchgang
+    _SG18.push = lambda t, *a, **k: (_ for _ in ()).throw(ValueError("unknown url type: 'ntfy.sh/abc'"))
+    try:
+        import io as _io20x  # noqa: E402
+        import contextlib as _cl20x  # noqa: E402
+        _aus20x = _io20x.StringIO()
+        with _cl20x.redirect_stdout(_aus20x):
+            _fehl20 = _PI._push_nachkontrolle("Markt BTC nicht gesichert (Ausnahme)", True, datei=Path(_sd) / "push20x.json", jetzt=1.0)
+        _fehl20_ok = _fehl20 is False and "Push der Nachkontrolle fehlgeschlagen (ValueError)" in _aus20x.getvalue()
+    except Exception as _ex20x:  # noqa: BLE001
+        _fehl20_ok = False
+        _fehl20 = repr(_ex20x)
+    finally:
+        _SG18.push = _alt_push18
+    pruefe("Push-Drosselung: scheitert der Push mit einer Ausnahme (ValueError), gibt `_push_nachkontrolle` False zurück und meldet es im Protokoll — der Durchgang stürzt nicht ab (vorher: Ausnahme, rc 1 = «Absturz?» im Cockpit)", _fehl20_ok, _fehl20)
+
+    # … übersprungene Durchgänge (die Lauf-Sperre hält ein anderer Lauf): ab BESETZT_PUSH_AB in Folge geht EINE Meldung aufs Handy (höchstens einmal je Stunde) — die Lampe im Cockpit sieht nur, wer es offen hat
+    from contextlib import contextmanager as _cm20b  # noqa: E402
+    import broker_futures as _BF20b  # noqa: E402
+
+    @_cm20b
+    def _besetzt20b(*a, **k):
+        raise SP.Besetzt("Ein anderer Lauf handelt gerade (seit 12 s).")
+        yield  # pragma: no cover
+    _alt20b = (_BF20b.einstellungen, _PI.NK_SERIE, _P2L.nachkontrolle, SP.lauf_sperre, _PI.PUSH_STILL)
+    _BF20b.einstellungen = lambda *a, **k: {"stop": False}
+    _PI.NK_SERIE, _PI.PUSH_STILL = Path(_sd) / "serie20b2.json", Path(_sd) / "push20b2.json"
+    SP.lauf_sperre = _besetzt20b
+    _gepusht20.clear()
+    _SG18.push = lambda t, *a, **k: (_gepusht20.append(t), True)[1]
+    _rc20b = []
+    try:
+        for _i20b in range(6):
+            _rc20b.append((_PI.nachkontrolle(einmal=True), len(_gepusht20)))
+    finally:
+        _SG18.push = _alt_push18
+        _BF20b.einstellungen, _PI.NK_SERIE, _P2L.nachkontrolle, SP.lauf_sperre, _PI.PUSH_STILL = _alt20b
+    pruefe("Übersprungene Durchgänge (Lauf-Sperre belegt): Rückgabewert 0 wie bisher; die ersten drei still, ab dem 4. in Folge EIN Push (die Drosselung hält die weiteren zurück: gleiche Meldung, keine Zahl im Text)",
+           _rc20b == [(0, 0), (0, 0), (0, 0), (0, 1), (0, 1), (0, 1)] and "Lauf-Sperre hält ein anderer Lauf" in _gepusht20[0] and _PI.BESETZT_PUSH_AB == 4, (_rc20b, _gepusht20))
+    # … und ein Push, der mit einer Ausnahme scheitert, macht aus dem Überspringen keinen Absturz (rc 0 bleibt)
+    _BF20b.einstellungen = lambda *a, **k: {"stop": False}
+    SP.lauf_sperre = _besetzt20b
+    _PI.PUSH_STILL = Path(_sd) / "push20b3.json"
+    _SG18.push = lambda t, *a, **k: (_ for _ in ()).throw(ValueError("unknown url type"))
+    try:
+        with _cl20x.redirect_stdout(_io20x.StringIO()):
+            _rc20c = _PI.nachkontrolle(einmal=True)
+    except Exception as _ex20c:  # noqa: BLE001
+        _rc20c = repr(_ex20c)
+    finally:
+        _SG18.push = _alt_push18
+        _BF20b.einstellungen, _PI.NK_SERIE, _P2L.nachkontrolle, SP.lauf_sperre, _PI.PUSH_STILL = _alt20b
+    pruefe("Übersprungene Durchgänge: scheitert der Push mit einer Ausnahme, bleibt es beim Rückgabewert 0 (kein Absturz, kein «Absturz?» im Cockpit)", _rc20c == 0, _rc20c)
+
+    # ── 20. Prüfung wichtig 1 / klein 8: die Reihe gleichartiger Durchgänge (Grundlage der Cockpit-Ampel) ──
+    _sf20 = Path(_sd) / "serie20.json"
+
+    def _serie20():
+        return _js20.loads(_sf20.read_text())
+    _PI._serie_merken("ok", datei=_sf20, jetzt=1000.0)
+    _s1 = _serie20()
+    _PI._serie_merken("warnung", datei=_sf20, jetzt=1600.0)
+    _s2 = _serie20()
+    _PI._serie_merken("warnung", datei=_sf20, jetzt=2200.0)
+    _s3 = _serie20()
+    _PI._serie_merken("besetzt", datei=_sf20, jetzt=2800.0)
+    _s4 = _serie20()
+    _PI._serie_merken("besetzt", datei=_sf20, jetzt=3400.0)
+    _s5 = _serie20()
+    _PI._serie_merken("besetzt", datei=_sf20, jetzt=3400.0 + _PI.SERIE_LUECKE_S + 1)   # Lücke > 30 Min. (PC aus): «in Folge» heisst im 10-Minuten-Takt
+    _s6 = _serie20()
+    _PI._serie_merken("besetzt", datei=_sf20, jetzt=3400.0 + _PI.SERIE_LUECKE_S - 100)  # Uhr springt zurück: keine negative Dauer, die Reihe beginnt neu
+    _s7 = _serie20()
+    pruefe("Reihe der Durchgänge: ok, warnung ×2, besetzt ×2 — «anzahl» zählt gleichartige in Folge, «seit» ist der Beginn der Reihe",
+           (_s1["art"], _s1["anzahl"]) == ("ok", 1) and (_s2["art"], _s2["anzahl"], _s2["seit"]) == ("warnung", 1, 1600.0) and (_s3["art"], _s3["anzahl"], _s3["seit"]) == ("warnung", 2, 1600.0)
+           and (_s4["art"], _s4["anzahl"], _s4["seit"]) == ("besetzt", 1, 2800.0) and (_s5["anzahl"], _s5["seit"], _s5["zeit"]) == (2, 2800.0, 3400.0), (_s1, _s2, _s3, _s4, _s5))
+    pruefe("Reihe der Durchgänge: nach einer Lücke von mehr als SERIE_LUECKE_S (PC aus) und nach einem Zeitsprung zurück beginnt sie neu (anzahl 1)",
+           (_s6["anzahl"], _s6["seit"]) == (1, 3400.0 + _PI.SERIE_LUECKE_S + 1) and _s7["anzahl"] == 1 and _PI.SERIE_LUECKE_S == 1800, (_s6, _s7))
+    _sf20.write_text("{kaputt")
+    _PI._serie_merken("warnung", datei=_sf20, jetzt=9000.0)
+    _kaputt20 = _serie20()
+    import contextlib as _cl20  # noqa: E402
+    import io as _io20  # noqa: E402
+    _aus20 = _io20.StringIO()
+    try:
+        with _cl20.redirect_stdout(_aus20):
+            _PI._serie_merken("ok", datei=Path(_sd) / "serie20.json" / "unter" / "datei.json", jetzt=1.0)   # der Ordner ist eine Datei → Schreiben unmöglich
+        _fehlerfrei20 = True
+    except Exception:  # noqa: BLE001
+        _fehlerfrei20 = False
+    pruefe("Reihe der Durchgänge: eine kaputte Datei beginnt die Reihe neu; ein Schreibfehler stört den Durchgang nie (keine Ausnahme) — steht aber im Protokoll (sonst bliebe eine Dauerwarnung unbemerkt grau)",
+           _kaputt20["anzahl"] == 1 and _kaputt20["art"] == "warnung" and _fehlerfrei20 and "Reihe der Durchgänge nicht gespeichert" in _aus20.getvalue(), (_kaputt20, _fehlerfrei20, _aus20.getvalue()))
+    pruefe("Reihe der Durchgänge: nach einem Schreibfehler bleibt keine Zwischendatei liegen", not list(Path(_sd).glob("serie20*.tmp*")), list(Path(_sd).glob("serie20*.tmp*")))
+    # … auch dann nicht, wenn die Zwischendatei schon geschrieben ist und erst das UMBENENNEN scheitert (Windows: Datei gehalten) — der Fall oben scheitert vor dem Schreiben und kann das Aufräumen nicht zeigen
+    _orig_replace20 = _os.replace
+
+    def _replace_zickt20(a_, b_, *args_, **kw_):
+        if "serie20c" in str(b_):
+            raise PermissionError("gehalten")
+        return _orig_replace20(a_, b_, *args_, **kw_)
+    _os.replace = _replace_zickt20
+    _aus20c = _io20.StringIO()
+    try:
+        with _cl20.redirect_stdout(_aus20c):
+            _PI._serie_merken("ok", datei=Path(_sd) / "serie20c.json", jetzt=5.0)
+    finally:
+        _os.replace = _orig_replace20
+    pruefe("Reihe der Durchgänge: scheitert erst das Umbenennen (Zwischendatei schon geschrieben), wird sie aufgeräumt und der Fehler gemeldet — keine Ausnahme, kein Rest",
+           not list(Path(_sd).glob("serie20c*")) and "Reihe der Durchgänge nicht gespeichert (PermissionError)" in _aus20c.getvalue(), (list(Path(_sd).glob("serie20c*")), _aus20c.getvalue()))
+    # `nachkontrolle(einmal=True)` führt die Reihe, die lange Fassung nicht
+    from contextlib import contextmanager as _cm20  # noqa: E402
+
+    @_cm20
+    def _sperre_besetzt20(*a, **k):
+        raise SP.Besetzt("Ein anderer Lauf handelt gerade (seit 12 s).")
+        yield  # pragma: no cover
+
+    import broker_futures as _BF20  # noqa: E402
+    _alt_ein20 = _BF20.einstellungen
+    _BF20.einstellungen = lambda *a, **k: {"stop": False}  # (Code-Review) unabhängig von KI_BOT_STOP=1 in der Umgebung und von einer STOP-Datei: ein aktiver Not-Aus nimmt den Zweig «Sperre besetzt» ganz anders
+    _alt_serie20, _alt_push20, _alt_lauf20, _alt_sp20 = _PI.NK_SERIE, _PI._push_nachkontrolle, _P2L.nachkontrolle, SP.lauf_sperre
+    _antwort20 = [{"zeilen": [], "warnung": False, "auftraege": []}]
+    _PI.NK_SERIE = Path(_sd) / "serie20b.json"
+    _pushs20 = []
+    _PI._push_nachkontrolle = lambda text_, einmal_, *a, **k: (_pushs20.append((text_, einmal_, k.get("warnung"))), True)[1]
+    _P2L.nachkontrolle = lambda *a, **k: _antwort20[0]
+    SP.ORDNER = Path(_sd)
+    _arten20, _rcs20 = [], []
+    try:
+        def _lies20():
+            return _js20.loads(_PI.NK_SERIE.read_text())
+        _antwort20[0] = {"zeilen": ["Nachkontrolle: geklärt, Stops gesetzt."], "warnung": False, "auftraege": []}
+        _rcs20.append(_PI.nachkontrolle(einmal=True)); _arten20.append(_lies20())                       # ok (mit einer Entwarnung: push mit warnung=False)
+        _antwort20[0] = {"zeilen": ["⚠️ Markt BTC weiterhin nicht vollständig gesichert"], "warnung": True, "auftraege": []}
+        _rcs20.append(_PI.nachkontrolle(einmal=True)); _arten20.append(_lies20())                       # warnung 1
+        _rcs20.append(_PI.nachkontrolle(einmal=True)); _arten20.append(_lies20())                       # warnung 2
+        _vor_lang20 = _PI.NK_SERIE.read_text()
+        _rcs20.append(_PI.nachkontrolle(einmal=False)); _nach_lang20 = _PI.NK_SERIE.read_text()          # die lange Fassung (hinter dem Tageslauf) führt keine Reihe
+        SP.lauf_sperre = _sperre_besetzt20
+        _rcs20.append(_PI.nachkontrolle(einmal=True)); _arten20.append(_lies20())                       # besetzt 1 (rc 0: der andere Lauf prüft selbst)
+        _rcs20.append(_PI.nachkontrolle(einmal=True)); _arten20.append(_lies20())                       # besetzt 2
+        SP.lauf_sperre = _alt_sp20
+        _P2L.nachkontrolle = lambda *a, **k: (_ for _ in ()).throw(RuntimeError("Absturz mitten im Durchgang"))
+        _rcs20.append(_PI.nachkontrolle(einmal=True)); _arten20.append(_lies20())                       # Ausnahme → Warnung (rc 3)
+    finally:
+        _PI.NK_SERIE, _PI._push_nachkontrolle, _P2L.nachkontrolle, SP.lauf_sperre, SP.ORDNER = _alt_serie20, _alt_push20, _alt_lauf20, _alt_sp20, _alt_ord
+        _BF20.einstellungen = _alt_ein20
+    pruefe("nachkontrolle(einmal=True) führt die Reihe: ok → warnung ×2 (rc 3), die lange Fassung ändert sie nicht, «Sperre besetzt» (rc 0) zählt als «besetzt» ×2, eine Ausnahme im Durchgang ist eine Warnung (rc 3)",
+           [(a_["art"], a_["anzahl"]) for a_ in _arten20] == [("ok", 1), ("warnung", 1), ("warnung", 2), ("besetzt", 1), ("besetzt", 2), ("warnung", 1)]
+           and _rcs20 == [0, 3, 3, 3, 0, 0, 3] and _vor_lang20 == _nach_lang20, (_arten20, _rcs20))
+    pruefe("nachkontrolle(einmal=True) meldet der Push-Drosselung die ART des Durchgangs: eine Entwarnung (warnung=False) beendet die Folge der Warnungen, eine Warnung (warnung=True) nicht; die lange Fassung drosselt nicht (einmal=False)",
+           [(e_, w_) for _t, e_, w_ in _pushs20[:4]] == [(True, False), (True, True), (True, True), (False, True)], _pushs20)
 
 # ── Pilot: Märkte, Trendlänge je Coin, Logbuch, Wochenbericht ──
 import pilot as PI  # noqa: E402

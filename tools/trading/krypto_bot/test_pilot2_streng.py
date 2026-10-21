@@ -1370,7 +1370,9 @@ for was12, schritte12, short12, stop12, erwartet12 in (
         ("mit einem neuen Short 1,0 (kommt mit schon gekauften Coins): der Stop bleibt (Plan-Ende 2,1 > 1,2), der Abgleich hebt ihn am Laufende an",
          [("perp", "SELL", 1.0, False)], 1.6, 1.2, 1.2),
         ("mit einem kleinen neuen Short 0,05: nur bis aufs Plan-Ende (2,55) verkleinert, nicht bis auf das, was jetzt ungesichert ist (2,5)",
-         [("perp", "SELL", 0.05, False)], 3.0, 2.6, 2.55)):
+         [("perp", "SELL", 0.05, False)], 3.0, 2.6, 2.55),
+        ("mit einem reduceOnly-Verkauf 0,05 (schliesst einen Perp-Long, KEIN neuer Short — R14-M53): zählt nicht mit, der Stop schrumpft auf 2,5",
+         [("perp", "SELL", 0.05, True)], 3.0, 2.6, 2.5)):
     k = neues_konto(400000)
     cfg = L.einstellungen(env_echt(kapital=400000))
     spot, fut = L.Spot(cfg["spot"]), L.Fut(cfg["futures"])
@@ -5467,7 +5469,7 @@ finally:
     B.reduce_algo_streng = False
 
 
-def e40_notaus_(regeln_, st_=None, alte_=((0.1, 110000.0),), kurs_=100000.0, frei_=0.2):
+def e40_notaus_(regeln_, st_=None, alte_=((0.1, 110000.0),), kurs_=100000.0, frei_=0.2, unklar_=None):
     """Paar (Coins = Short = 0,2) mit alten Perp-Stops über den Netto-Short; `_notaus_schutz` direkt. → (ok, Lage, Warnungen, Buch, Zahl der Perp-Stop-Aufträge)"""
     k0_, sp0_, fu0_, dd0_ = handlage(coins=frei_, short=0.2, kurs=kurs_)
     for m_, p_ in alte_:
@@ -5476,7 +5478,7 @@ def e40_notaus_(regeln_, st_=None, alte_=((0.1, 110000.0),), kurs_=100000.0, fre
     B.regeln = regeln_
     w0_, s0_ = [], {} if st_ is None else st_
     try:
-        ok0_ = L._notaus_schutz(sp0_, fu0_, s0_, "BTC", "BTCUSDT", "BTC", -0.2, -0.2, frei_, 0.0, kurs_, dd0_["rs"], w0_.append, "echt")
+        ok0_ = L._notaus_schutz(sp0_, fu0_, s0_, "BTC", "BTCUSDT", "BTC", -0.2, -0.2, frei_, 0.0, kurs_, dd0_["rs"], w0_.append, "echt", unklar=unklar_)
     finally:
         B.regeln = []
     neu_ = sum(1 for x_ in B.log[n0_:] if x_[1] == "POST" and x_[2] == "/fapi/v1/algoOrder" and x_[4] == 200)
@@ -5521,6 +5523,11 @@ pruefe("19.K6 Perp-Liste nicht lesbar, das Buch kennt zwei Stops (0,1 + 0,1 von 
        neu_ == 1 and gl_["n_p"] == 3 and gl_["p_qty"] >= 0.2 - 1e-9 and ok_ is True, (ok_, gl_, w_, neu_))
 ok_, gl_, w_, st_, neu_ = e40_notaus_([LOESCHEN_KAPUTT_, LISTE_KAPUTT_], st_={"perp": 901, "perp_cid": "p2aAAAA"})
 pruefe("16.E40 Perp-Liste nicht lesbar, das Buch kennt nur einen Stop: einer über den ganzen Short kommt dazu, der alte bleibt gemerkt", neu_ == 1 and abs(gl_["p_qty"] - 0.3) < 1e-6 and [901, "p2aAAAA"] in (st_.get("perp_weitere") or []), (ok_, gl_, w_, neu_, st_))
+# … ist der Markt BEIDSEITIG (hier: ein unklarer Short-Auftrag), steht der ganze Short ohnehin unter dem neuen Stop: der alte, nicht löschbare bleibt, aber es kommt KEIN weiterer ergänzender Stop dazu (R16-M66: ohne die
+# Ausnahme «beidseitig» riefe der Schluss `perp_ganz_ergaenzen` trotzdem auf, und bei unlesbarer Liste käme in jedem Takt der Nachkontrolle ein weiterer ganzer reduceOnly-Stop dazu)
+ok_, gl_, w_, st_, neu_ = e40_notaus_([LOESCHEN_KAPUTT_, LISTE_KAPUTT_], st_={"perp": 901, "perp_cid": "p2aAAAA"}, unklar_=0.0)
+pruefe("20.M66 Markt beidseitig (unklarer Auftrag), Perp-Liste nicht lesbar, alter Stop nicht löschbar: genau EIN neuer Stop über den ganzen Short — kein weiterer ergänzender (beide Stops stehen, der alte bleibt gemerkt)",
+       neu_ == 1 and gl_["n_p"] == 2 and abs(gl_["p_qty"] - 0.3) < 1e-6 and [901, "p2aAAAA"] in (st_.get("perp_weitere") or []), (ok_, gl_, w_, neu_, st_))
 
 # E41 (Nachprüfung zu E40, Kette von Nachkontroll-Durchgängen): steht der Markt schon beidseitig vollständig (alle Coins unter einem Spot-Stop UND der ganze Short unter Perp-Stops), räumt der Not-Aus nicht auf:
 # das Aufräumen (der Spot-Stop über die Absicherung ist «zu gross») löschte den Spot-Stop in JEDEM Takt der Nachkontrolle und setzte ihn gleich neu — solange ein Perp-Stop nicht löschbar war, ein Fenster ohne Schutz.
@@ -6589,10 +6596,12 @@ for weg19_ in ("buch_schreiben", "zusammen"):
     ges19_ = [json.dumps(L.buch_lesen(bf19_, "echt"), sort_keys=True)]
     lk19_ = Path(sd19_) / "krypto-lauf.lock"
     orig_wt19_ = Path.write_text
+    schreibungen19_ = [0]
 
     def wt19_(self, *a, **k):
         r_ = orig_wt19_(self, *a, **k)
-        if self.name.endswith(".json.neu"):
+        if self.name.startswith("bestand.json.") and self.name.endswith(".neu"):  # (20. Prüfung) die Temp-Datei trägt jetzt einen eigenen Namen je Schreiber
+            schreibungen19_[0] += 1
             lk19_.write_text("99999 0 fremd\n")                       # ein anderer Lauf übernimmt die Sperre als tot — genau zwischen dem Schreiben der Temp-Datei und dem Umbenennen
         return r_
     fehler19_ = None
@@ -6611,11 +6620,13 @@ for weg19_ in ("buch_schreiben", "zusammen"):
             finally:
                 Path.write_text = orig_wt19_
             unveraendert19_ = bf19_.read_text() == inhalt19_
-            temp_weg19_ = not Path(str(bf19_) + ".neu").exists()
+            temp_weg19_ = not list(Path(sd19_).glob("*.neu"))
     finally:
         lk19_.unlink(missing_ok=True)
     pruefe(f"19.K1 Sperre geht ZWISCHEN dem Schreiben der Temp-Datei und dem Umbenennen verloren ({weg19_}): das Buch bleibt unverändert, die Temp-Datei ist weg, OSError «Lauf-Sperre verloren»",
            fehler19_ and "Lauf-Sperre verloren" in fehler19_ and unveraendert19_ and temp_weg19_, (fehler19_, unveraendert19_, temp_weg19_))
+    # … und das Veto wird NICHT wie ein Schreibfehler wiederholt (Windows-Virenscanner-Pfad: drei Versuche, 1,3 s, jedes Mal eine neue Temp-Datei) — mit dem Aufräumen im finally (R20) ist das Endergebnis gleich, nur die Zahl der Schreibungen verrät es
+    pruefe(f"19.K1 … das Veto ({weg19_}) wird nicht wiederholt: genau EINE Temp-Datei wurde geschrieben (nicht drei im Takt der Schreibfehler-Wiederholungen)", schreibungen19_[0] == 1, schreibungen19_[0])
 # … Gegenprobe: gehört die Sperre dem Prozess, wird geschrieben und keine Temp-Datei bleibt liegen
 sd19_ = _tf17.mkdtemp(prefix="k1b_")
 bf19_ = Path(sd19_) / "bestand.json"
@@ -6624,7 +6635,7 @@ b19_["start"], b19_["uid"] = "2026-10-20", 1
 with SPR17.lauf_sperre(ordner=sd19_, warten=0):
     b19_["schutz_offen"] = ["BTC"]
     L.buch_schreiben(bf19_, "echt", b19_)
-pruefe("19.K1 Gegenprobe: gehört die Lauf-Sperre dem Prozess, wird das Buch geschrieben und keine Temp-Datei bleibt liegen", L.buch_lesen(bf19_, "echt")["schutz_offen"] == ["BTC"] and not Path(str(bf19_) + ".neu").exists())
+pruefe("19.K1 Gegenprobe: gehört die Lauf-Sperre dem Prozess, wird das Buch geschrieben und keine Temp-Datei bleibt liegen", L.buch_lesen(bf19_, "echt")["schutz_offen"] == ["BTC"] and not list(Path(sd19_).glob("*.neu")))
 
 # … Not-Aus innerhalb eines Durchgangs `einmal`: das Schliessen läuft OHNE Budget (es ist nicht zeitbegrenzt), der Durchgang selbst bleibt budgetiert
 neues_konto(20000)
@@ -6685,6 +6696,498 @@ for fall19_, dg19_, offen19_ in (("früher Durchgang offen, der zweite klärt", 
     pruefe(f"19.Werkzeug einmal-Aggregation im Fuzzer ({fall19_}): «nicht alles geklärt» zählt nur, wenn der LETZTE Durchgang offen endet", any("nicht alles geklärt" in x_ for x_ in z19_) is offen19_, z19_)
 z19_ = agg19_([[OFFEN19_, "a"], [GUT19_, "b"], []])
 pruefe("19.Werkzeug … die übrigen Zeilen aller Durchgänge bleiben erhalten (was ein Durchgang meldete oder tat, zählt)", "a" in z19_ and "b" in z19_ and GUT19_ in z19_, z19_)
+
+# ───────── 20. Folge-Runde (R20): Funde der 20. unabhängigen Prüfung (kein Blocker; 1 wichtig [Cockpit-Kopfzeile], 8 klein) ─────────
+import threading as _th20  # noqa: E402
+import time as _time20  # noqa: E402
+
+# klein 2 (K1-Rest): alle Schreiber teilten den Temp-Namen `<Buch>.neu`. Ein Zombie, der erst NACH dem Schreiben seiner Temp-Datei sein Veto bekommt, überschrieb die Temp-Datei des rechtmässigen Schreibers zwischen dessen
+# Schreiben und Umbenennen — dessen `replace` übernahm den veralteten Inhalt, und er glaubte, gespeichert zu haben. Jetzt hat jeder Schreiber einen eigenen Namen.
+sd20_ = _tf17.mkdtemp(prefix="k2_")
+bf20_ = Path(sd20_) / "bestand.json"
+b20_ = L.leer_buch()
+b20_["start"], b20_["uid"] = "2026-10-21", 1
+L.buch_schreiben(bf20_, "echt", b20_)
+namen20_ = [L._buch_tmp(bf20_) for _ in range(3)]
+namen_th20_ = []
+_t20 = _th20.Thread(target=lambda: namen_th20_.append(L._buch_tmp(bf20_)))
+_t20.start()
+_t20.join()
+pruefe("20.K2 Temp-Datei des Buchs: jeder Aufruf liefert einen anderen Namen (Prozess-Nummer, Thread, Zähler), im Ordner des Buchs, mit der Endung .neu — auch aus einem anderen Thread",
+       len({str(n_) for n_ in namen20_ + namen_th20_}) == 4 and all(n_.parent == bf20_.parent and n_.name.startswith("bestand.json.") and n_.name.endswith(".neu") and str(os.getpid()) in n_.name for n_ in namen20_ + namen_th20_)
+       and str(bf20_) + ".neu" not in {str(n_) for n_ in namen20_ + namen_th20_}, [n_.name for n_ in namen20_ + namen_th20_])
+
+b_b20_ = L.buch_lesen(bf20_, "echt")
+b_b20_["schutz_offen"] = ["BTC"]                                            # der rechtmässige Schreiber B
+b_z20_ = L.buch_lesen(bf20_, "echt")
+b_z20_["schutz_offen"] = ["VERALTET"]                                       # der Zombie mit dem alten Stand
+pfad_z20_ = L._buch_tmp(bf20_)                                              # SEINE Temp-Datei, wie ihn der Produktionscode benennt
+orig_pr20_, n_pr20_ = L._sperre_pruefen, [0]
+
+
+def pruefen20_():
+    n_pr20_[0] += 1
+    if n_pr20_[0] == 1:                                                     # B steht zwischen dem Schreiben und dem Umbenennen: der Zombie schreibt jetzt SEINE Temp-Datei
+        pfad_z20_.write_text(json.dumps({"echt": b_z20_}))
+    return orig_pr20_()
+
+
+L._sperre_pruefen = pruefen20_
+try:
+    L._buch_schreiben_roh(bf20_, "echt", b_b20_)
+finally:
+    L._sperre_pruefen = orig_pr20_
+pruefe("20.K2 Der Zombie schreibt seine Temp-Datei, während B zwischen Schreiben und Umbenennen steht: B speichert SEINEN Stand (vorher übernahm das replace den veralteten Inhalt des Zombies)",
+       L.buch_lesen(bf20_, "echt")["schutz_offen"] == ["BTC"] and pfad_z20_.exists(), (L.buch_lesen(bf20_, "echt")["schutz_offen"], pfad_z20_.exists()))
+pfad_z20_.unlink(missing_ok=True)
+
+# … verwaiste Temp-Dateien (kill -9 zwischen Schreiben und Umbenennen) werden nach TEMP_ALT_S aufgeräumt — auch die gemeinsame der früheren Fassung; eine frische (ein anderer Schreiber ist gerade dran) bleibt
+alt_t20_, jung_t20_, alt_alt20_ = Path(f"{bf20_}.4242-1-0.neu"), Path(f"{bf20_}.4243-1-0.neu"), Path(str(bf20_) + ".neu")
+for t_, alter_ in ((alt_t20_, L.TEMP_ALT_S + 60), (jung_t20_, 60), (alt_alt20_, L.TEMP_ALT_S + 60)):
+    t_.write_text("{}")
+    os.utime(t_, (_time20.time() - alter_, _time20.time() - alter_))
+fremd20_ = Path(sd20_) / "anderes.json.4242-1-0.neu"
+fremd20_.write_text("{}")
+os.utime(fremd20_, (_time20.time() - L.TEMP_ALT_S - 60, _time20.time() - L.TEMP_ALT_S - 60))
+b_b20_["schutz_offen"] = []
+L._buch_schreiben_roh(bf20_, "echt", b_b20_)
+pruefe("20.K2 Das Schreiben räumt alte Temp-Dateien des Buchs weg (auch die gemeinsame der früheren Fassung), lässt eine frische und die Dateien anderer Namen liegen",
+       not alt_t20_.exists() and not alt_alt20_.exists() and jung_t20_.exists() and fremd20_.exists(), (alt_t20_.exists(), alt_alt20_.exists(), jung_t20_.exists(), fremd20_.exists()))
+jung_t20_.unlink(missing_ok=True)
+fremd20_.unlink(missing_ok=True)
+
+# … die Frist ist absolut festgelegt, nicht nur «älter als die Konstante» (eine Frist von 100 Stunden räumte nie auf): ein Rest von zwei Stunden ist weg, ein Rest von einer Minute bleibt
+zwei_h20_, eine_min20_ = Path(f"{bf20_}.4244-1-0.neu"), Path(f"{bf20_}.4245-1-0.neu")
+for t_, alter_ in ((zwei_h20_, 7200), (eine_min20_, 60)):
+    t_.write_text("{}")
+    os.utime(t_, (_time20.time() - alter_, _time20.time() - alter_))
+L._buch_schreiben_roh(bf20_, "echt", b_b20_)
+pruefe("20.K2 Die Frist ist absolut gemessen: ein Rest von zwei Stunden wird aufgeräumt, einer von einer Minute bleibt (Frist weder Tage lang noch Sekunden kurz)",
+       not zwei_h20_.exists() and eine_min20_.exists() and 60 < L.TEMP_ALT_S <= 7200, (zwei_h20_.exists(), eine_min20_.exists(), L.TEMP_ALT_S))
+eine_min20_.unlink(missing_ok=True)
+
+# … scheitert das Umbenennen dauerhaft (Windows: Datei gehalten), bleibt keine eigene Temp-Datei liegen
+orig_rep20_, orig_bw20_ = Path.replace, L.BUCH_WARTEN
+
+
+def replace_zickt20_(self, ziel):
+    if self.name.startswith("bestand.json.") and self.name.endswith(".neu"):
+        raise PermissionError("gehalten")
+    return orig_rep20_(self, ziel)
+
+
+Path.replace, L.BUCH_WARTEN = replace_zickt20_, (0, 0)
+fehler_r20_ = None
+try:
+    L._buch_schreiben_roh(bf20_, "echt", b_b20_)
+except OSError as ex_:
+    fehler_r20_ = type(ex_).__name__
+finally:
+    Path.replace, L.BUCH_WARTEN = orig_rep20_, orig_bw20_
+pruefe("20.K2 Das Umbenennen scheitert dauerhaft: OSError an den Aufrufer, die eigene Temp-Datei ist weg", fehler_r20_ == "PermissionError" and not list(Path(sd20_).glob("*.neu")), (fehler_r20_, list(Path(sd20_).glob("*.neu"))))
+
+
+# … und ein Zombie, dessen Sperre SCHON weg ist, schreibt gar keine Temp-Datei mehr (die erste Prüfung der Aufrufer vor dem Schreiben; die zweite vor dem Umbenennen fängt nur das Fenster dazwischen)
+def temp_schreibungen20_(f_):
+    gez_ = []
+    orig_ = Path.write_text
+
+    def wt_(self, *a, **k):
+        if self.name.endswith(".neu"):
+            gez_.append(self.name)
+        return orig_(self, *a, **k)
+    Path.write_text = wt_
+    try:
+        f_()
+    finally:
+        Path.write_text = orig_
+    return gez_
+
+
+for weg20_ in ("buch_schreiben", "zusammen"):
+    sdz20_ = _tf17.mkdtemp(prefix="k1z_")
+    bfz20_ = Path(sdz20_) / "bestand.json"
+    bz20_ = L.leer_buch()
+    bz20_["start"], bz20_["uid"] = "2026-10-21", 1
+    L.buch_schreiben(bfz20_, "echt", bz20_)
+    gesz20_ = [json.dumps(L.buch_lesen(bfz20_, "echt"), sort_keys=True)]
+    lkz20_ = Path(sdz20_) / "krypto-lauf.lock"
+    fehler_z20_ = []
+    try:
+        with SPR17.lauf_sperre(ordner=sdz20_, warten=0):
+            bz20_ = L.buch_lesen(bfz20_, "echt")
+            bz20_["schutz_offen"] = ["BTC"]
+            lkz20_.write_text("99999 0 fremd\n")                            # ein anderer Lauf hat die Sperre als tot übernommen — BEVOR der Zombie schreibt
+            inhalt_z20_ = bfz20_.read_text()
+
+            def schreiben_z20_():
+                try:
+                    if weg20_ == "buch_schreiben":
+                        L.buch_schreiben(bfz20_, "echt", bz20_)
+                    else:
+                        L._buch_speichern_zusammen(bfz20_, "echt", gesz20_, bz20_)
+                except OSError as ex_:
+                    fehler_z20_.append(str(ex_))
+            gez_z20_ = temp_schreibungen20_(schreiben_z20_)
+            unveraendert_z20_ = bfz20_.read_text() == inhalt_z20_
+    finally:
+        lkz20_.unlink(missing_ok=True)
+    pruefe(f"20.K1 Sperre schon weg ({weg20_}): der Zombie schreibt KEINE Temp-Datei (nicht nur: keine Änderung am Buch), OSError «Lauf-Sperre verloren»",
+           not gez_z20_ and unveraendert_z20_ and fehler_z20_ and "Lauf-Sperre verloren" in fehler_z20_[0], (gez_z20_, unveraendert_z20_, fehler_z20_))
+
+kk20_, dn20_, envn20_ = K18.tag0(("BTC", 0.5, 1.0))
+bj20_ = json.loads(Path(dn20_).read_text())
+bj20_["echt"]["schutz_offen"] = ["BTC"]
+Path(dn20_).write_text(json.dumps(bj20_))
+sdn20_ = _tf17.mkdtemp(prefix="k1nk_")
+lkn20_ = Path(sdn20_) / "krypto-lauf.lock"
+standn20_ = {"n": 0, "an": False}
+gez_nk20_ = []
+orig_wt20_ = Path.write_text
+
+
+def wt_nk20_(self, *a, **k):
+    if standn20_["an"] and self.name.endswith(".neu"):
+        gez_nk20_.append(self.name)
+    return orig_wt20_(self, *a, **k)
+
+
+def haken_nk20_(m_, pfad_, p_):
+    standn20_["n"] += 1
+    if standn20_["n"] == 1:
+        standn20_["an"] = True                                              # ab hier gehört die Sperre einem anderen: jede Temp-Datei, die jetzt geschrieben wird, stammt vom Zombie
+        lkn20_.write_text("99999 0 fremd\n")
+
+
+B.vor_jeder_anfrage = haken_nk20_
+Path.write_text = wt_nk20_
+try:
+    with SPR17.lauf_sperre(ordner=sdn20_, warten=0):
+        rn20_ = L.nachkontrolle(envn20_, dn20_)
+finally:
+    Path.write_text = orig_wt20_
+    B.vor_jeder_anfrage = None
+    lkn20_.unlink(missing_ok=True)
+pruefe("20.K1 Nachkontrolle, deren Sperre übernommen wurde: kein einziges Schreiben einer Temp-Datei danach (die Prüfung vor dem Speichern greift), «Buch nicht gespeichert»",
+       standn20_["an"] and not gez_nk20_ and any("Buch nicht gespeichert" in z_ for z_ in rn20_["zeilen"]), (gez_nk20_, rn20_["zeilen"][-3:]))
+
+# Code-Review der R20: `protokoll_schreiben` teilte sich denselben Temp-Namen `<Protokoll>.neu` (zwei Schreiber → das zweite `replace` fand die Datei nicht mehr, die Ausnahme ersetzte das Ergebnis eines Laufs, dessen Aufträge
+# schon raus waren) — jetzt wie beim Buch ein Name je Schreiber, und best effort (der Eintrag ist ein Beleg, kein Schutz)
+import contextlib as _cl20  # noqa: E402
+import io as _io20  # noqa: E402
+sdp20_ = _tf17.mkdtemp(prefix="prot_")
+alt_prot20_ = L.PROTOKOLL
+L.PROTOKOLL = Path(sdp20_) / "broker.json"
+try:
+    L.protokoll_schreiben({"n": 1})
+    L.protokoll_schreiben({"n": 2})
+    ok_norm20_ = [e_["n"] for e_ in json.loads(L.PROTOKOLL.read_text())] == [1, 2] and not list(Path(sdp20_).glob("*.neu"))
+    pruefe("20.Protokoll Einträge werden angehängt, keine Temp-Datei bleibt liegen", ok_norm20_, list(Path(sdp20_).glob("*")))
+    fremd20_ = L._buch_tmp(L.PROTOKOLL)                                       # die Temp-Datei eines ANDEREN Schreibers, wie der Produktionscode sie benennt
+    orig_wt20p_, n_wt20_ = Path.write_text, [0]
+
+    def wt20p_(self, *a, **k):
+        r_ = orig_wt20p_(self, *a, **k)
+        if self.name.startswith("broker.json.") and self.name.endswith(".neu") and n_wt20_[0] == 0:
+            n_wt20_[0] += 1
+            fremd20_.write_text(json.dumps([{"n": 99}]))                      # der andere Schreiber schreibt SEINE Temp-Datei, während dieser zwischen Schreiben und Umbenennen steht
+        return r_
+    Path.write_text = wt20p_
+    try:
+        L.protokoll_schreiben({"n": 3})
+    finally:
+        Path.write_text = orig_wt20p_
+    pruefe("20.Protokoll Ein anderer Schreiber schreibt seine Temp-Datei zwischen Schreiben und Umbenennen: der Eintrag landet unverfälscht im Protokoll (vorher übernahm das replace die Datei des anderen), seine Datei bleibt unberührt",
+           [e_["n"] for e_ in json.loads(L.PROTOKOLL.read_text())] == [1, 2, 3] and fremd20_.exists() and json.loads(fremd20_.read_text()) == [{"n": 99}], (L.PROTOKOLL.read_text()[:200], fremd20_.exists()))
+    fremd20_.unlink(missing_ok=True)
+    # … zwei Schreiber gleichzeitig (Not-Aus im Cockpit-Thread und ein Lauf): Lesen-Ändern-Schreiben unter der Schreib-Sperre — der zweite wartet, KEIN Eintrag geht verloren (ohne Sperre überschrieb das replace des ersten den des zweiten)
+    import threading as _th20p  # noqa: E402
+    orig_wt20q_, gestartet20_, tb20_ = Path.write_text, [False], []
+
+    def wt20q_(self, *a, **k):
+        r_ = orig_wt20q_(self, *a, **k)
+        if self.name.startswith("broker.json.") and self.name.endswith(".neu") and not gestartet20_[0]:
+            gestartet20_[0] = True
+            t_ = _th20p.Thread(target=lambda: L.protokoll_schreiben({"n": "B"}))      # der zweite Schreiber beginnt, WÄHREND der erste zwischen Schreiben und Umbenennen steht
+            tb20_.append(t_)
+            t_.start()
+            t_.join(0.6)                                                               # mit Sperre wartet er (lebt noch); ohne Sperre ist er längst fertig und der erste überschreibt ihn gleich
+        return r_
+    Path.write_text = wt20q_
+    try:
+        L.protokoll_schreiben({"n": "A"})
+    finally:
+        Path.write_text = orig_wt20q_
+    for t_ in tb20_:
+        t_.join(30)
+    pruefe("20.Protokoll Zwei Schreiber gleichzeitig: beide Einträge sind im Protokoll (der zweite wartet auf die Schreib-Sperre) — ohne Sperre ging einer verloren",
+           [e_["n"] for e_ in json.loads(L.PROTOKOLL.read_text())] == [1, 2, 3, "A", "B"], L.PROTOKOLL.read_text()[:300])
+    # … ein Inhalt, der kein Protokoll ist («{}», «null» nach einem Zurücksetzen von Hand, kaputtes JSON), ist kein Absturz — er wird BEISEITEGELEGT (wie das Logbuch) und ein neues Protokoll begonnen, nicht überschrieben
+    for roh_ in ("{}", "null", '"text"', "[kaputt"):
+        L.PROTOKOLL.write_text(roh_)
+        aus_p_ = _io20.StringIO()
+        with _cl20.redirect_stdout(aus_p_):
+            L.protokoll_schreiben({"n": "neu"})
+        beiseite_ = sorted(Path(sdp20_).glob("broker.json.kaputt-*"))
+        pruefe(f"20.Protokoll Ein Inhalt, der kein Protokoll ist ({roh_}), wird beiseitegelegt (mit dem alten Inhalt) und ein neues begonnen — kein Absturz, ein Hinweis",
+               json.loads(L.PROTOKOLL.read_text()) == [{"n": "neu"}] and len(beiseite_) == 1 and beiseite_[0].read_text() == roh_ and "beiseitegelegt" in aus_p_.getvalue(),
+               (L.PROTOKOLL.read_text()[:100], [b_.name for b_ in beiseite_], aus_p_.getvalue()))
+        for b_ in beiseite_:
+            b_.unlink()
+    L.protokoll_schreiben({"n": 1})
+    L.protokoll_schreiben({"n": 2})
+    L.protokoll_schreiben({"n": 3})
+    orig_rep20p_ = Path.replace
+
+    def replace20p_(self, ziel):
+        if self.name.startswith("broker.json.") and self.name.endswith(".neu"):
+            raise PermissionError("gehalten")
+        return orig_rep20p_(self, ziel)
+    aus20p_, fehler20p_ = _io20.StringIO(), None
+    Path.replace = replace20p_
+    try:
+        with _cl20.redirect_stdout(aus20p_):
+            L.protokoll_schreiben({"n": 4})
+    except Exception as ex_:  # noqa: BLE001
+        fehler20p_ = type(ex_).__name__
+    finally:
+        Path.replace = orig_rep20p_
+    pruefe("20.Protokoll Scheitert das Umbenennen: keine Ausnahme (der Eintrag ist ein Beleg, kein Schutz), ein Hinweis im Protokoll des Laufs, die eigene Temp-Datei ist weg, die alten Einträge unverändert",
+           fehler20p_ is None and "Protokoll nicht geschrieben" in aus20p_.getvalue() and not list(Path(sdp20_).glob("*.neu")) and [e_["n"] for e_ in json.loads(L.PROTOKOLL.read_text())] == ["neu", 1, 2, 3],
+           (fehler20p_, aus20p_.getvalue(), list(Path(sdp20_).glob("*"))))
+    aus20r_, fehler20r_ = _io20.StringIO(), None
+    try:
+        with _cl20.redirect_stdout(aus20r_):
+            L.protokoll_schreiben({"n": object()})                                  # nicht als JSON schreibbar → TypeError, nicht OSError
+    except Exception as ex_:  # noqa: BLE001
+        fehler20r_ = type(ex_).__name__
+    pruefe("20.Protokoll Auch eine andere Ausnahme als OSError (hier: ein nicht schreibbarer Eintrag) bleibt folgenlos für den Lauf: Hinweis statt Absturz, die Datei unverändert",
+           fehler20r_ is None and "Protokoll nicht geschrieben (TypeError)" in aus20r_.getvalue() and [e_["n"] for e_ in json.loads(L.PROTOKOLL.read_text())] == ["neu", 1, 2, 3] and not list(Path(sdp20_).glob("*.neu")),
+           (fehler20r_, aus20r_.getvalue()))
+    # … eine kurz gesperrte Datei (Windows: Virenscanner, OneDrive) wird wiederholt, nicht für «leer» gehalten und überschrieben (vorher ging die ganze Geschichte verloren)
+    orig_rt20_, n_rt20_ = Path.read_text, [0]
+
+    def rt20_(self, *a, **k):
+        if self == L.PROTOKOLL and n_rt20_[0] == 0:
+            n_rt20_[0] += 1
+            raise PermissionError("kurz gesperrt")
+        return orig_rt20_(self, *a, **k)
+    Path.read_text = rt20_
+    try:
+        L.protokoll_schreiben({"n": 5})
+    finally:
+        Path.read_text = orig_rt20_
+    pruefe("20.Protokoll Das Lesen scheitert einmal kurz (PermissionError): der zweite Versuch liest das Protokoll, die bisherigen Einträge bleiben — der Eintrag wird angehängt (vorher: Protokoll als leer behandelt und überschrieben)",
+           [e_["n"] for e_ in json.loads(L.PROTOKOLL.read_text())] == ["neu", 1, 2, 3, 5] and n_rt20_[0] == 1, (L.PROTOKOLL.read_text()[:200], n_rt20_))
+    alt_bw20_ = L.BUCH_WARTEN
+    L.BUCH_WARTEN = (0, 0)
+
+    def rt20b_(self, *a, **k):
+        if self == L.PROTOKOLL:
+            raise PermissionError("gesperrt")
+        return orig_rt20_(self, *a, **k)
+    Path.read_text = rt20b_
+    aus20s_ = _io20.StringIO()
+    try:
+        with _cl20.redirect_stdout(aus20s_):
+            L.protokoll_schreiben({"n": 99})
+    finally:
+        Path.read_text = orig_rt20_
+        L.BUCH_WARTEN = alt_bw20_
+    pruefe("20.Protokoll Das Protokoll bleibt dauerhaft unlesbar: der Eintrag wird NICHT geschrieben (die bisherigen werden nie überschrieben), ein Hinweis, keine Ausnahme",
+           [e_["n"] for e_ in json.loads(L.PROTOKOLL.read_text())] == ["neu", 1, 2, 3, 5] and "nicht lesbar" in aus20s_.getvalue(), (L.PROTOKOLL.read_text()[:200], aus20s_.getvalue()))
+    # … Bytes, die in keiner Zeichentabelle gelten (von Hand gespeichert): kein Protokoll → beiseitegelegt (mit den Bytes), ein neues begonnen — vorher fiel jeder spätere Eintrag still weg
+    L.PROTOKOLL.write_bytes(b'[{"n": "\x81"}]')
+    aus20u_ = _io20.StringIO()
+    with _cl20.redirect_stdout(aus20u_):
+        L.protokoll_schreiben({"n": "u1"})
+        L.protokoll_schreiben({"n": "u2"})
+    beiseite20u_ = sorted(Path(sdp20_).glob("broker.json.kaputt-*"))
+    pruefe("20.Protokoll Ein Protokoll mit unlesbaren Bytes wird beiseitegelegt (die Bytes bleiben erhalten) und ein neues begonnen — beide Einträge landen darin (vorher ging jeder spätere verloren)",
+           len(beiseite20u_) == 1 and beiseite20u_[0].read_bytes() == b'[{"n": "\x81"}]' and [e_["n"] for e_ in json.loads(L.PROTOKOLL.read_text())] == ["u1", "u2"], (beiseite20u_, aus20u_.getvalue()))
+    for b_ in beiseite20u_:
+        b_.unlink()
+    L.PROTOKOLL.write_text(json.dumps([{"n": "neu"}, {"n": 1}, {"n": 2}, {"n": 3}, {"n": 5}]))   # die Lage für die folgenden Fälle: neu, 1, 2, 3, 5
+    # … ein kurz gesperrtes Umbenennen wird wiederholt
+    orig_rep20r_, n_rep20_ = Path.replace, [0]
+
+    def replace20r_(self, ziel):
+        if self.name.startswith("broker.json.") and self.name.endswith(".neu") and n_rep20_[0] == 0:
+            n_rep20_[0] += 1
+            raise PermissionError("kurz gehalten")
+        return orig_rep20r_(self, ziel)
+    Path.replace = replace20r_
+    try:
+        L.protokoll_schreiben({"n": 6})
+    finally:
+        Path.replace = orig_rep20r_
+    pruefe("20.Protokoll Das Umbenennen scheitert einmal kurz (Datei gehalten): der zweite Versuch gelingt, der Eintrag steht im Protokoll, keine Temp-Datei bleibt",
+           [e_["n"] for e_ in json.loads(L.PROTOKOLL.read_text())] == ["neu", 1, 2, 3, 5, 6] and n_rep20_[0] == 1 and not list(Path(sdp20_).glob("*.neu")), (L.PROTOKOLL.read_text()[:200], n_rep20_))
+    # … eine belegte Schreib-Sperre hält den Not-Aus nicht auf (er ruft `protokolliere` VOR dem Schliessen): höchstens PROTOKOLL_SPERRE_WARTEN, dann wird ohne Sperre geschrieben
+    (Path(sdp20_) / "broker.json-schreiben.lock").write_text("99999 0 fremd\n")
+    t0_p_ = _time20.time()
+    L.protokoll_schreiben({"n": 7})
+    dauer_p_ = _time20.time() - t0_p_
+    (Path(sdp20_) / "broker.json-schreiben.lock").unlink()
+    pruefe("20.Protokoll Eine belegte Schreib-Sperre hält den Lauf höchstens PROTOKOLL_SPERRE_WARTEN (1 s) auf — der Eintrag wird dann ohne Sperre geschrieben (vorher bis 15 s am Ende eines Laufs oder Not-Aus)",
+           [e_["n"] for e_ in json.loads(L.PROTOKOLL.read_text())] == ["neu", 1, 2, 3, 5, 6, 7] and 0.5 <= dauer_p_ < 5 and L.PROTOKOLL_SPERRE_WARTEN == 1.0, (dauer_p_, L.PROTOKOLL.read_text()[:200]))
+    # … jeder Schreiber hat SEINEN Temp-Namen (Prozess, Thread, Zähler): zwei Schreibungen nacheinander benutzen zwei verschiedene Namen — ein gemeinsamer «<Protokoll>.neu» wäre beim Schreiben ohne Sperre
+    # (die Wartezeit ist abgelaufen) ein Wettlauf; die Tests oben fangen das nur mit einem selbstgebauten Namen ab, der vom Namen des Produktionscodes abweicht
+    import re as _re20  # noqa: E402
+    L.PROTOKOLL = Path(sdp20_) / "eigen.json"
+    namen20_, orig_wt20n_ = [], Path.write_text
+
+    def wt20n_(self, *a, **k):
+        if self.name.startswith("eigen.json.") and self.name.endswith(".neu"):
+            namen20_.append(self.name)
+        return orig_wt20n_(self, *a, **k)
+    Path.write_text = wt20n_
+    try:
+        L.protokoll_schreiben({"n": "e1"})
+        L.protokoll_schreiben({"n": "e2"})
+    finally:
+        Path.write_text = orig_wt20n_
+    pruefe("20.Protokoll Jeder Schreiber hat seinen eigenen Temp-Namen <Protokoll>.<Prozess>-<Thread>-<Zähler>.neu: zwei Schreibungen benutzen zwei verschiedene Namen",
+           len(namen20_) == 2 and len(set(namen20_)) == 2 and all(_re20.fullmatch(r"eigen\.json\.\d+-\d+-\d+\.neu", n_) for n_ in namen20_), namen20_)
+    # … verwaiste Temp-Dateien des Protokolls (kill -9 zwischen Schreiben und Umbenennen) räumt das nächste Schreiben auf; eine frische (ein anderer Schreiber ist gerade dran) bleibt
+    alt_p20_, jung_p20_ = Path(f"{L.PROTOKOLL}.4242-1-0.neu"), Path(f"{L.PROTOKOLL}.4243-1-0.neu")
+    for t_, alter_ in ((alt_p20_, 7200), (jung_p20_, 60)):
+        t_.write_text("[]")
+        os.utime(t_, (_time20.time() - alter_, _time20.time() - alter_))
+    L.protokoll_schreiben({"n": "e3"})
+    pruefe("20.Protokoll Das Schreiben räumt verwaiste Temp-Dateien des Protokolls auf (zwei Stunden alt) und lässt eine frische (eine Minute) liegen",
+           not alt_p20_.exists() and jung_p20_.exists(), (alt_p20_.exists(), jung_p20_.exists()))
+    jung_p20_.unlink(missing_ok=True)
+finally:
+    L.PROTOKOLL = alt_prot20_
+
+# Code-Review der R20: der Durchgang `einmal` stellt das Budget wieder her, das ein Aufrufer in diesem Thread schon gesetzt hatte (statt es auf None zu setzen)
+neues_konto(20000)
+d_b20_ = neu_buch()
+L._RETRY_BUDGET[0] = 123.0
+try:
+    L.nachkontrolle(env=env_echt(), datei=d_b20_, schlafen=lambda s_: None, uhr=lambda: 0.0, einmal=True)
+    nachher20_ = L._RETRY_BUDGET[0]
+finally:
+    L._RETRY_BUDGET[0] = None
+pruefe("20.W8 Ein Durchgang `einmal` hinterlässt das Budget so, wie er es vorfand (123 s bleiben 123 s; vorher wurde es auf «unbegrenzt» gesetzt)", nachher20_ == 123.0, nachher20_)
+
+# klein 8: das Wiederholungs-Budget eines Durchgangs `einmal` gilt nur für SEINEN Thread (der Cockpit-Prozess führt Not-Aus und lange Nachkontrolle in eigenen Threads aus)
+res20_ = {}
+schlaf20_, alt_sl20_ = [], _time20.sleep
+_time20.sleep = lambda x_: schlaf20_.append((_th20.current_thread().name, x_))
+L._RETRY_BUDGET[0] = 0.5
+
+
+def anderer20_():
+    res20_["sieht"] = L._RETRY_BUDGET[0]
+    res20_["pause"] = L._pause(2.0)                                         # kein Budget in diesem Thread: schläft die ganze Zeit
+    L._RETRY_BUDGET[0] = 1.0
+    res20_["eigenes"] = L._RETRY_BUDGET[0]
+
+
+try:
+    t20_ = _th20.Thread(target=anderer20_, name="anderer")
+    t20_.start()
+    t20_.join()
+    res20_["haupt"] = L._RETRY_BUDGET[0]
+    res20_["haupt_pause"] = L._pause(2.0)                                   # 2 s > 0,5 s Budget: abgelehnt, ohne zu schlafen
+finally:
+    L._RETRY_BUDGET[0] = None
+    _time20.sleep = alt_sl20_
+try:
+    L._RETRY_BUDGET[1]
+    index_ok20_ = False
+except IndexError:
+    index_ok20_ = True
+pruefe("20.W8 Das Wiederholungs-Budget ist je Thread getrennt: ein anderer Thread sieht keins, schläft ganz und setzt sein eigenes, ohne das des Hauptthreads zu ändern; im Hauptthread lehnt `_pause` ab, was das Budget übersteigt",
+       res20_ == {"sieht": None, "pause": True, "eigenes": 1.0, "haupt": 0.5, "haupt_pause": False} and schlaf20_ == [("anderer", 2.0)] and index_ok20_, (res20_, schlaf20_))
+
+# Kampagnenfund der R20 (Delta-Kampagne camp20, strenger Not-Aus-Seed 1510735 — schon im Stand der R19): ETH, Coins 0,1647, Short 0,053, Spot-Stop über die Netto-Richtung (0,1117); der Not-Aus verkauft die freien
+# Coins, das Verkleinern des Spot-Stops (cancelReplace) wird zweimal mit 429 abgewiesen, beim dritten Mal kommt es an, aber die Antwort geht verloren → «zu grosser Spot-Stop vielleicht noch offen»: der Short bekommt
+# seinen Stop über die GANZE Menge. Kam das Ersetzen an, waren 0,053 Coins frei und OHNE Stop, der Schutz rechnete aber mit dem alten (grossen) Stop: löste der Perp-Stop aus, standen 0,053 ETH (≈ 244 USDT) bis zur
+# Wiederholung des Not-Aus ohne Stop. Jetzt wird nach einem unklaren Verkleinern neu gelesen (wie im Tageslauf) und die freien Coins bekommen den Zusatz-Stop («Spot-Stop über die übrigen Coins»).
+def seed20f_(aenderung=None):
+    """Seed 1510735 (streng) nachspielen; `aenderung()` verändert die Störungen des ERSTEN Not-Aus (die Nachkontrolle und der saubere Not-Aus danach laufen ohne Störung). → (Befunde, Zeilen des ersten Not-Aus)"""
+    zeilen_, erst_, orig_ = [], [True], P.lauf
+
+    def lauf_(ents_, env_, datei_, trocken=False, notaus=False, protokolliere=None):
+        if not (notaus and erst_[0]):
+            return orig_(ents_, env_, datei_, trocken, notaus, protokolliere)
+        erst_[0] = False
+        if aenderung:
+            aenderung()
+        r_ = orig_(ents_, env_, datei_, trocken, notaus, protokolliere)
+        zeilen_.extend(r_.get("zeilen") or [])
+        return r_
+    P.lauf, P.STRENG = lauf_, True
+    try:
+        return P.notaus_runde(1510735), zeilen_
+    finally:
+        P.lauf, P.STRENG = orig_, False
+        B.reduce_algo_streng = False
+
+
+def stop_schreibungen20f_():
+    """(Spot-Stop-Verkleinerungen per cancelReplace, Spot-Stops neu gesetzt) aus dem Börsen-Protokoll der letzten Runde"""
+    return ([e_ for e_ in B.log if e_[2] == "/api/v3/order/cancelReplace" and e_[4] == 200 and e_[3].get("quantity") == "0.0587" and str(e_[3].get("type", "")).startswith("STOP")],
+            [e_ for e_ in B.log if e_[2] == "/api/v3/order" and e_[1] == "POST" and e_[4] == 200 and str(e_[3].get("type", "")).startswith("STOP")])
+
+
+funde20f_, zeilen20f_ = seed20f_()
+ersetzt20f_, stops20f_ = stop_schreibungen20f_()
+nach20f_ = [e_ for e_ in stops20f_ if e_[3].get("quantity") == "0.053" and B.log.index(e_) > B.log.index(ersetzt20f_[-1])] if ersetzt20f_ else []
+pruefe("20.F1 Strenger Not-Aus-Seed 1510735: kam das Verkleinern des Spot-Stops (Antwort verloren) doch an, bekommen die freigegebenen Coins einen eigenen Stop — kein Befund, ein Spot-Stop über 0,053 nach dem unklaren Bescheid, die Meldung «kam an»",
+       not funde20f_ and len(ersetzt20f_) >= 1 and len(nach20f_) == 1 and any("kam an (neu gelesen" in z_ for z_ in zeilen20f_),
+       ([(f_[0], f_[1].get("wann")) for f_ in funde20f_][:4], len(ersetzt20f_), len(nach20f_), zeilen20f_[-3:]))
+# … ist der Kontostand NACH dem unklaren Bescheid nicht lesbar (Anfragen 99 ff., fünf Versuche scheitern), weiss der Schutz nicht, was frei ist: kein Absturz, laut («NICHT vollständig gesichert», für die Nachkontrolle vermerkt),
+# der Short hat seinen Perp-Stop über die ganze Menge; der saubere Not-Aus danach schliesst alles. Die freien Coins ohne Stop sind bis zur Wiederholung das dokumentierte Restrisiko (README) — bei BEIDEM: Antwort verloren UND Konto nicht lesbar.
+funde20g_, zeilen20g_ = seed20f_(lambda: B.regeln.append(dict(methode="GET", pfad="/api/v3/account", art="vor503", anzahl=6, ab_req=99)))   # ab der Anfrage NACH dem unklaren cancelReplace (Nr. 98)
+perp20g_ = [e_ for e_ in B.log if e_[2] == "/fapi/v1/algoOrder" and e_[1] == "POST" and e_[4] == 200]
+pruefe("20.F1 Dasselbe, der Kontostand ist nach dem unklaren Bescheid nicht lesbar: kein Absturz, laut («UND Kontostand nicht lesbar», «NICHT vollständig gesichert»), der Short hat seinen Perp-Stop über die ganze Menge, nach der Wiederholung höchstens der Befund «Stop zu gross»",
+       [f_[0] for f_ in funde20g_] in ([], ["PERP_STOP_UEBER_NETTO"]) and any(e_[3].get("quantity") == "0.053" for e_ in perp20g_)
+       and any("UND Kontostand nicht lesbar" in z_ for z_ in zeilen20g_) and any("NICHT vollständig gesichert" in z_ for z_ in zeilen20g_),
+       ([(f_[0], f_[1].get("wann")) for f_ in funde20g_][:4], [e_[3].get("quantity") for e_ in perp20g_], zeilen20g_[-3:]))
+
+
+def nicht_angekommen20f_():
+    for r_ in B.regeln:
+        if r_.get("pfad") == "/api/v3/order/cancelReplace" and r_.get("art") == "nach503":
+            r_["art"] = "vor503"                                                  # 503 VOR der Verarbeitung: das Verkleinern kam nie an
+
+
+funde20h_, zeilen20h_ = seed20f_(nicht_angekommen20f_)
+ersetzt20h_, stops20h_ = stop_schreibungen20f_()
+pruefe("20.F1 Kam das Verkleinern NICHT an (der alte Stop steht, nichts ist frei): kein zweiter Stop über schon gesperrte Coins, kein Befund, keine Meldung «kam an»",
+       not funde20h_ and not ersetzt20h_ and len(stops20h_) == 1 and not any("kam an (neu gelesen" in z_ for z_ in zeilen20h_),
+       ([(f_[0], f_[1].get("wann")) for f_ in funde20h_][:4], len(ersetzt20h_), [(e_[3].get("quantity"), e_[4]) for e_ in stops20h_]))
+
+# klein 7 (Prüfwerkzeuge): der Einzelfehler-Raster der 20. Prüfung (pruef_nk_einzelfehler.py) liegt im Repo — Rauchprobe MIT Negativkontrolle: gegen den Produktionscode findet er nichts, gegen eine Nachkontrolle, deren
+# Folge-Durchgänge nichts tun (das Netz des 10-Minuten-Takts fehlt), findet er die Lücke nach Durchgang 1 (er ist nicht blind)
+import pruef_nk_einzelfehler as NKE  # noqa: E402
+sz20e_ = R.SZENARIEN[2]                                                      # ('BTC', 0.5, -0.5)
+ref20e_ = NKE.fall(sz20e_, "stops_scheitern", [], False, True)
+
+
+def sweep20_():
+    ergebnis_ = []
+    for i_ in range(ref20e_["anfragen"]):
+        for art_ in ("vor503", "nach503", "unsichtbar"):
+            m_ = NKE.fall(sz20e_, "stops_scheitern", [(i_, art_)], False, True)
+            if m_ is not None:
+                ergebnis_.append(m_)
+    return ergebnis_
+
+
+echt20e_ = [m_ for m_ in sweep20_() if m_["ausnahme"] or m_["arten"] or m_["unbekannt"]]
+orig_dg20_ = NKE.durchgang
+NKE.durchgang = lambda env_, d_, erster_, jung_, budget0_: orig_dg20_(env_, d_, erster_, jung_, budget0_) if erster_ else None   # Folge-Durchgänge tun nichts
+try:
+    mut20e_ = [m_ for m_ in sweep20_() if m_["ausnahme"] or m_["arten"] or m_["unbekannt"]]
+finally:
+    NKE.durchgang = orig_dg20_
+pruefe("20.Werkzeug Einzelfehler-Raster (Szenario 2, Stops scheitern, 23 Anfragen × 3 Störungsarten, Budget aufgebraucht): gegen den Produktionscode keine Befunde — und nicht blind: ohne die Folge-Durchgänge findet er die Lücke",
+       ref20e_ and ref20e_["anfragen"] >= 15 and not ref20e_["arten"] and not echt20e_ and len(mut20e_) >= 5, (ref20e_ and ref20e_["anfragen"], len(echt20e_), len(mut20e_)))
 
 # ── kleiner Fuzzer mit festen Seeds (der grosse: python3 -B pruef_fuzzer.py laeufe 0 200 / notaus 0 1600) ──
 funde = []
