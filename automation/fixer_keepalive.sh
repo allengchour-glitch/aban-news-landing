@@ -2506,7 +2506,12 @@ fi
     # besuchte Seiten 90 T, Social-Warteschlangen, Kunden-Lieblinge) täglich; Stufe B = übriger CJ-Bestand (46'224) rollierend,
     # 1500/Lauf, jedes Produkt spätestens alle 30 T. Ledger dropship/_cj_nachpruefung.tsv macht jeden Lauf neustartfest —
     # darum auch still_gestorben (Container ~stündlich neu, ein Lauf dauert ~45 min; FERTIG-Zeile ist unbedingt).
-    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$CAW" || still_gestorben "$CAW"; then
+    # 21.10.2026 (Spähtrupp W1, gemessen): der Lauf dauert länger als ein Container lebt (Median 14,5 min) und wurde nur 3×/Tag nachgeholt —
+    # Stufe A lief an 5 von 24 Tagen komplett, der Rest-Bestand war zu 6,8 % in 30 T geprüft. Jetzt zusätzlich: Start bei JEDEM Tick, solange das
+    # Tagesziel (Stufe A + 1500 Rest, aus dem Ledger) nicht erreicht ist und der CJ-Eimer nicht eben leer war (cj_nachpruefung_netz.py --noetig;
+    # nur wenn kein Lauf gerade das Schloss hält, sonst zählt der Starts-Zähler Leerstarts mit).
+    if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$CAW" || still_gestorben "$CAW" \
+       || { flock -n /tmp/lock_cj_ausgelistet.lock true && python3 "$REPO/automation/cj_nachpruefung_netz.py" --noetig >/dev/null 2>&1; }; then
       touch "$CAW"
       ( cd "$REPO" && setsid bash -c \
           "exec 9>/tmp/lock_cj_ausgelistet.lock; flock -n 9 || exit 0; exec >> \"$CAW\" 2>&1; \

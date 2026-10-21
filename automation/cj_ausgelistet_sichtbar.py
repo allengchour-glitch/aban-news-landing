@@ -17,6 +17,7 @@ sys.path.insert(0, os.path.join(REPO, "automation"))
 from cj_takt import takt  # noqa: E402  (1/s-Drossel, gemeinsam mit allen CJ-Skripten)
 import urllib.parse  # noqa: E402
 import cj_sku  # noqa: E402  (20.10.2026: EINE Quelle für CJ-SKU-Formen)
+import cj_nachpruefung_netz as netz  # noqa: E402  (21.10.2026: Stand, Tagesziel, Ampelzeile)
 
 SHOP = "au3j0y-hq.myshopify.com"
 DRY = os.environ.get("DRY") == "1"
@@ -49,7 +50,10 @@ def gql(q, v=None):
 
 
 def cj_status(pid, tok):
-    """'weg' (1602002), 'ok' (Produkt geliefert) oder None (kein Urteil).
+    """'weg' (1602002), 'ok' (Produkt geliefert), 'eimer' (API-Punkte-Eimer leer, 16900500), 'unklar' (1602001 «Produkt unbekannt»
+    — ein Urteil über die Abfrage, keins über das Produkt) oder None (Netz/Drossel/sonst nichts).
+    21.10.2026 (Spähtrupp W1): 16900500 war None und zählte 54–60 % aller Fragen als «ohne Urteil» — jede mit Takt-Verbrauch; der Lauf fragte
+    einen leeren Eimer stundenlang ab. Kontozustand ist kein Produkturteil (Vault-Falle 23.09.).
     27.09.: Zwei SKU-Formen — «CJ-<Zahl/UUID>» = Produkt-ID (?pid=), «CJ-CJYD…AZ» = Varianten-SKU (?variantSku=). Der erste
     Lauf fragte beide als pid: 205 von 645 «ohne Urteil» (CJ: 1602001 «Product not found: pid:CJYD…»)."""
     feld = "pid" if re.fullmatch(r"[0-9]{10,}|[0-9A-Fa-f-]{30,}", pid) else (cj_sku.abfrage(pid) or ("variantSku", pid))[0]
@@ -65,6 +69,10 @@ def cj_status(pid, tok):
             return "weg"
         if j.get("code") in (200, 0) and (j.get("data") or {}).get("pid"):
             return "ok"
+        if str(j.get("code")) == "16900500":
+            return "eimer"
+        if j.get("code") == 1602001:
+            return "unklar"
         if j.get("code") == 1600200:
             time.sleep(8); continue
         return None
@@ -187,6 +195,9 @@ def rest_bestand(schon, stand):
 
 
 def main():
+    # 21.10.2026: «START » als ERSTE Zeile — der Aufseher (still_gestorben/letzter_lauf) erkennt damit einen gestorbenen Lauf auch dann,
+    # wenn das FERTIG des Vortags noch im Log steht.
+    print(f"START {datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')} (cj_ausgelistet_sichtbar)", flush=True)
     tok = open("/tmp/_cjtok").read().strip() if os.path.exists("/tmp/_cjtok") else ""
     if not tok:
         print("⛔ Kein CJ-Token (/tmp/_cjtok) — KEIN Urteil (kein «0 ausgelistet»)"); sys.exit(2)
@@ -195,15 +206,33 @@ def main():
     ware, quelle = sichtbare_ware()
     a_offen = {g: v for g, v in ware.items() if stand.get(g, ("", ""))[0] != heute}   # Stufe A: täglich, Neustart-fest
     rest, cj_aktiv = rest_bestand(set(ware), stand)
-    print(f"Start | Stufe A sichtbar {len(ware)} ({quelle}), heute offen {len(a_offen)} | Stufe B Rest {len(rest)} "
-          f"von {cj_aktiv} aktiven CJ | DRY={DRY}", flush=True)
-    weg, unklar, gepr = [], 0, 0
+    a_ids = set(a_offen)
+    ziel = len(ware) + ROLLEN                         # Tagesziel: Stufe A komplett + ROLLEN Rest-Bestand (Ledger-Einträge von heute)
+    heute_n, abgedeckt, _ = netz.ledger_zaehlen(heute)
+    print(f"Stufe A sichtbar {len(ware)} ({quelle}), heute offen {len(a_offen)} | Stufe B Rest {len(rest)} "
+          f"von {cj_aktiv} aktiven CJ | Tagesziel {heute_n}/{ziel} | DRY={DRY}", flush=True)
+    jetzt_iso = lambda: datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+    def stand_schreiben(extra=None):
+        if DRY:
+            return
+        f = {"tag": heute, "a_gesamt": len(ware), "a_offen": len(a_ids), "ziel": ziel, "cj_aktiv": cj_aktiv,
+             "b_abgedeckt": netz.ledger_zaehlen(heute)[1], "eimer": ""}
+        if not a_ids:
+            f["a_voll"] = jetzt_iso()                 # Stufe A heute vollständig (auch wenn der Lauf nichts mehr zu fragen hatte)
+        f.update(extra or {})
+        netz.schreiben(f)
+    stand_schreiben()
+    weg, unklar, gepr, unbekannt, eimer_folge = [], 0, 0, 0, 0
     alle = list(a_offen.items()) + list(rest.items())
     for n, (gid, (ref, handle, titel, woher)) in enumerate(alle, 1):
         # 28.09.: Fortschritt alle 25 — sonst steht nach einem Neustart das FERTIG des VORIGEN Laufs in den letzten 3 Log-Zeilen,
         # und fixer_keepalive.still_gestorben hält den abgebrochenen Lauf für beendet (gemessen 18:09: 567/2277, kein Neustart).
         if n % 25 == 0:
             print(f"  … {n}/{len(alle)} geprüft", flush=True)
+            stand_schreiben()
+        if heute_n >= ziel and not DRY:
+            print(f"  Tagesziel {heute_n}/{ziel} erreicht — Rest morgen", flush=True)
+            break
         # 05.10.2026 (Prüfer): die Kandidatenliste stammt aus dem Export — ein anderer Wächter (ek_luecke_cj.py) hatte
         # 47 davon schon gedraftet, und dieser Lauf fragte 7 erneut bei CJ an (10 Punkte je Abfrage, zweite «weg»-Zeile).
         # Live-Status vor der CJ-Abfrage: DRAFT/ARCHIVED = schon entschieden, überspringen.
@@ -212,11 +241,32 @@ def main():
         except Exception:
             live = None
         if live and live != "ACTIVE":
+            a_ids.discard(gid)                        # nicht mehr sichtbar → für Stufe A erledigt
             continue
         s = cj_status(ref, tok)
+        if s == "eimer":
+            # 21.10.2026: leerer CJ-Punkte-Eimer ist ein Kontozustand — nach 3 in Folge sauber beenden (PAUSE als LETZTE Zeile; der
+            # Aufseher startet nach EIMER_PAUSE_MIN neu), statt Stunden lang Takt-Slots für nichts zu verbrauchen.
+            eimer_folge += 1; unklar += 1
+            if eimer_folge >= 3:
+                stand_schreiben({"eimer": jetzt_iso()})
+                print(f"  geprüft {gepr}, ausgelistet {len(weg)}, kein Urteil {unklar}", flush=True)
+                print(f"PAUSE: CJ-Punkte-Eimer leer (API 16900500) nach {n} Fragen — Stufe A offen {len(a_ids)} von {len(ware)}, "
+                      f"nächster Versuch nach {netz.EIMER_PAUSE_MIN} min (Reset 00:00 UTC)", flush=True)
+                sys.exit(0)
+            continue
+        eimer_folge = 0
         if s is None:
             unklar += 1; continue
-        gepr += 1
+        if s == "unklar":
+            # 1602001: das Produkt ist für CJ unbekannt, aber NICHT als ausgelistet gemeldet → kein Draft (nur 1602002 ist ein Urteil).
+            # Mit Datum ins Ledger, damit die Schlange weiterrückt und der Kopf nicht für immer an diesen Einträgen klebt.
+            unbekannt += 1; unklar += 1; heute_n += 1; a_ids.discard(gid)
+            if not DRY:
+                with open(NACHPRUEF, "a", encoding="utf-8") as f:
+                    f.write(f"{gid}\t{heute}\tunklar\n")
+            continue
+        gepr += 1; heute_n += 1; a_ids.discard(gid)
         if not DRY:
             with open(NACHPRUEF, "a", encoding="utf-8") as f:
                 f.write(f"{gid}\t{heute}\t{s}\n")
@@ -226,18 +276,18 @@ def main():
             if not DRY:
                 gql('mutation($id:ID!){productUpdate(product:{id:$id,status:DRAFT}){userErrors{message}}}', {"id": gid})
                 gql('mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}', {"id": gid, "t": ["cj-entfernt", f"cj-entfernt-{heute}"]})
-    stand = ledger()
-    abgedeckt = sum(1 for d, _ in stand.values() if d >= (datetime.date.today() - datetime.timedelta(days=ZYKLUS_TAGE)).isoformat())
+    abgedeckt = netz.ledger_zaehlen(heute)[1]
+    stand_schreiben()
     zeit = datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
     zeilen = [f"# CJ ausgelistet — Nachprüfung (Stand {zeit})", "",
-              f"Stufe A (täglich, sichtbar): {len(ware)} · Stufe B (rollierend, {ZYKLUS_TAGE} T): {len(rest)} dieser Lauf · "
-              f"aktive CJ gesamt {cj_aktiv} · in {ZYKLUS_TAGE} T geprüft: {abgedeckt}",
-              f"Dieser Lauf: geprüft {gepr} · ausgelistet **{len(weg)}** → DRAFT · kein Urteil {unklar}",
+              f"Stufe A (täglich, sichtbar): {len(ware)} (heute offen am Ende: {len(a_ids)}) · Stufe B (rollierend, {ZYKLUS_TAGE} T): {len(rest)} dieser Lauf · "
+              f"aktive CJ gesamt {cj_aktiv} · in {ZYKLUS_TAGE} T geprüft (ok/weg): {abgedeckt}",
+              f"Dieser Lauf: geprüft {gepr} · ausgelistet **{len(weg)}** → DRAFT · von CJ «unbekannt» (1602001) {unbekannt} · kein Urteil insgesamt {unklar}",
               "", "| Produkt | Quelle | CJ-Referenz |", "|---|---|---|"] + [f"| {t} (`{h}`) | {w} | {r} |" for h, t, w, r in weg]
     if not DRY:
         open(BERICHT, "w", encoding="utf-8").write("\n".join(zeilen) + "\n")
-    print(f"FERTIG: {gepr} geprüft, {len(weg)} ausgelistet{' (DRY)' if DRY else ' → DRAFT'}, {unklar} ohne Urteil · "
-          f"Abdeckung {abgedeckt}/{cj_aktiv} in {ZYKLUS_TAGE} T")
+    print(f"FERTIG: {gepr} geprüft, {len(weg)} ausgelistet{' (DRY)' if DRY else ' → DRAFT'}, {unklar} ohne Urteil ({unbekannt} unbekannt bei CJ) · "
+          f"Abdeckung {abgedeckt}/{cj_aktiv} in {ZYKLUS_TAGE} T · Stufe A offen {len(a_ids)}")
 
 if __name__ == "__main__":
     main()

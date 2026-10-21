@@ -12267,3 +12267,4 @@ motorradhelm-tasche-c47a0b	1E3D56FD-1A83-4D5A-965A-037CE4448ECE	16	18.59	ok	land
 kinder-sandalen-farbpassend-718720	1660873837598216192	16	9.88	ok	landeseite
 haarglatter-mit-lcd-display-063424	1437359651548172288	16	14.12	ok	landeseite
 universal-motorradhelm-four-seasons-913b93	00705198-F2DF-4FCA-A85C-700A50D0274F	11	33.98	ok	landeseite
+leuchtende-kinderschuhe-344832	1654327882472230912	7	8.57	ok	landeseite
