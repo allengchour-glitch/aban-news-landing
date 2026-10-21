@@ -683,6 +683,22 @@ with _tf.TemporaryDirectory() as _sd:
     pruefe("Reihe der Durchgänge: eine kaputte Datei beginnt die Reihe neu; ein Schreibfehler stört den Durchgang nie (keine Ausnahme) — steht aber im Protokoll (sonst bliebe eine Dauerwarnung unbemerkt grau)",
            _kaputt20["anzahl"] == 1 and _kaputt20["art"] == "warnung" and _fehlerfrei20 and "Reihe der Durchgänge nicht gespeichert" in _aus20.getvalue(), (_kaputt20, _fehlerfrei20, _aus20.getvalue()))
     pruefe("Reihe der Durchgänge: nach einem Schreibfehler bleibt keine Zwischendatei liegen", not list(Path(_sd).glob("serie20*.tmp*")), list(Path(_sd).glob("serie20*.tmp*")))
+    # … auch dann nicht, wenn die Zwischendatei schon geschrieben ist und erst das UMBENENNEN scheitert (Windows: Datei gehalten) — der Fall oben scheitert vor dem Schreiben und kann das Aufräumen nicht zeigen
+    _orig_replace20 = _os.replace
+
+    def _replace_zickt20(a_, b_, *args_, **kw_):
+        if "serie20c" in str(b_):
+            raise PermissionError("gehalten")
+        return _orig_replace20(a_, b_, *args_, **kw_)
+    _os.replace = _replace_zickt20
+    _aus20c = _io20.StringIO()
+    try:
+        with _cl20.redirect_stdout(_aus20c):
+            _PI._serie_merken("ok", datei=Path(_sd) / "serie20c.json", jetzt=5.0)
+    finally:
+        _os.replace = _orig_replace20
+    pruefe("Reihe der Durchgänge: scheitert erst das Umbenennen (Zwischendatei schon geschrieben), wird sie aufgeräumt und der Fehler gemeldet — keine Ausnahme, kein Rest",
+           not list(Path(_sd).glob("serie20c*")) and "Reihe der Durchgänge nicht gespeichert (PermissionError)" in _aus20c.getvalue(), (list(Path(_sd).glob("serie20c*")), _aus20c.getvalue()))
     # `nachkontrolle(einmal=True)` führt die Reihe, die lange Fassung nicht
     from contextlib import contextmanager as _cm20  # noqa: E402
 

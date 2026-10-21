@@ -556,6 +556,11 @@ with tempfile.TemporaryDirectory() as tmp:
                     if "ÜBERHOLT" in fall20 and "WARNUNG" not in wort20:
                         gut20 = gut20 and "übersprungen" not in z20["text"]
                     pruefe(f"Ampel «Nachkontrolle (Aufgabenplanung)», Reihe der Durchgänge: {fall20} → {'grün' if erwartet20 else 'rot' if erwartet20 is False else 'grau' + (' mit Kennzeichen warnung' if warn20 else '')}", gut20, z20)
+                # … eine Reihe, die älter als NK_LEBT_MAX_MIN ist, sagt nichts über die Gegenwart — auch wenn der Rückgabewert daneben (29 Min.) noch gilt und die Reihe ihn nicht um mehr als NK_SERIE_VORSPRUNG_MIN überholt
+                # (30,5 statt 31 Minuten: bei genau 2 Minuten Abstand schlägt die Zeit, die der Test selbst braucht, über die Grenze, und die ANDERE Prüfung — «Reihe endet zu lange vor dem Rückgabewert» — verwirft die Reihe schon)
+                z20k = ampel20(3, 29, "x rc=3", ("warnung", 5, 60, 30.5))
+                pruefe("Ampel «Nachkontrolle (Aufgabenplanung)», Reihe 30,5 Min. alt neben einem 29 Min. alten Rückgabewert (rc=3): die Reihe zählt nicht (älter als 30 Minuten) → grau mit Kennzeichen, nicht rot «seit 5 Durchgängen»",
+                       z20k is not None and z20k["ok"] is None and z20k.get("warnung") is True and "WARNUNG" in z20k["text"], z20k)
                 # … und die anderen Zeilen tragen das Kennzeichen nie (es steht nur an der Warnung)
                 rc_datei18.unlink(missing_ok=True)
                 serie20.unlink(missing_ok=True)

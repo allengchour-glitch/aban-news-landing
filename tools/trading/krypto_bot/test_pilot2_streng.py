@@ -6589,10 +6589,12 @@ for weg19_ in ("buch_schreiben", "zusammen"):
     ges19_ = [json.dumps(L.buch_lesen(bf19_, "echt"), sort_keys=True)]
     lk19_ = Path(sd19_) / "krypto-lauf.lock"
     orig_wt19_ = Path.write_text
+    schreibungen19_ = [0]
 
     def wt19_(self, *a, **k):
         r_ = orig_wt19_(self, *a, **k)
         if self.name.startswith("bestand.json.") and self.name.endswith(".neu"):  # (20. Prüfung) die Temp-Datei trägt jetzt einen eigenen Namen je Schreiber
+            schreibungen19_[0] += 1
             lk19_.write_text("99999 0 fremd\n")                       # ein anderer Lauf übernimmt die Sperre als tot — genau zwischen dem Schreiben der Temp-Datei und dem Umbenennen
         return r_
     fehler19_ = None
@@ -6616,6 +6618,8 @@ for weg19_ in ("buch_schreiben", "zusammen"):
         lk19_.unlink(missing_ok=True)
     pruefe(f"19.K1 Sperre geht ZWISCHEN dem Schreiben der Temp-Datei und dem Umbenennen verloren ({weg19_}): das Buch bleibt unverändert, die Temp-Datei ist weg, OSError «Lauf-Sperre verloren»",
            fehler19_ and "Lauf-Sperre verloren" in fehler19_ and unveraendert19_ and temp_weg19_, (fehler19_, unveraendert19_, temp_weg19_))
+    # … und das Veto wird NICHT wie ein Schreibfehler wiederholt (Windows-Virenscanner-Pfad: drei Versuche, 1,3 s, jedes Mal eine neue Temp-Datei) — mit dem Aufräumen im finally (R20) ist das Endergebnis gleich, nur die Zahl der Schreibungen verrät es
+    pruefe(f"19.K1 … das Veto ({weg19_}) wird nicht wiederholt: genau EINE Temp-Datei wurde geschrieben (nicht drei im Takt der Schreibfehler-Wiederholungen)", schreibungen19_[0] == 1, schreibungen19_[0])
 # … Gegenprobe: gehört die Sperre dem Prozess, wird geschrieben und keine Temp-Datei bleibt liegen
 sd19_ = _tf17.mkdtemp(prefix="k1b_")
 bf19_ = Path(sd19_) / "bestand.json"
@@ -6744,6 +6748,16 @@ pruefe("20.K2 Das Schreiben räumt alte Temp-Dateien des Buchs weg (auch die gem
        not alt_t20_.exists() and not alt_alt20_.exists() and jung_t20_.exists() and fremd20_.exists(), (alt_t20_.exists(), alt_alt20_.exists(), jung_t20_.exists(), fremd20_.exists()))
 jung_t20_.unlink(missing_ok=True)
 fremd20_.unlink(missing_ok=True)
+
+# … die Frist ist absolut festgelegt, nicht nur «älter als die Konstante» (eine Frist von 100 Stunden räumte nie auf): ein Rest von zwei Stunden ist weg, ein Rest von einer Minute bleibt
+zwei_h20_, eine_min20_ = Path(f"{bf20_}.4244-1-0.neu"), Path(f"{bf20_}.4245-1-0.neu")
+for t_, alter_ in ((zwei_h20_, 7200), (eine_min20_, 60)):
+    t_.write_text("{}")
+    os.utime(t_, (_time20.time() - alter_, _time20.time() - alter_))
+L._buch_schreiben_roh(bf20_, "echt", b_b20_)
+pruefe("20.K2 Die Frist ist absolut gemessen: ein Rest von zwei Stunden wird aufgeräumt, einer von einer Minute bleibt (Frist weder Tage lang noch Sekunden kurz)",
+       not zwei_h20_.exists() and eine_min20_.exists() and 60 < L.TEMP_ALT_S <= 7200, (zwei_h20_.exists(), eine_min20_.exists(), L.TEMP_ALT_S))
+eine_min20_.unlink(missing_ok=True)
 
 # … scheitert das Umbenennen dauerhaft (Windows: Datei gehalten), bleibt keine eigene Temp-Datei liegen
 orig_rep20_, orig_bw20_ = Path.replace, L.BUCH_WARTEN
@@ -7010,6 +7024,33 @@ try:
     (Path(sdp20_) / "broker.json-schreiben.lock").unlink()
     pruefe("20.Protokoll Eine belegte Schreib-Sperre hält den Lauf höchstens PROTOKOLL_SPERRE_WARTEN (1 s) auf — der Eintrag wird dann ohne Sperre geschrieben (vorher bis 15 s am Ende eines Laufs oder Not-Aus)",
            [e_["n"] for e_ in json.loads(L.PROTOKOLL.read_text())] == ["neu", 1, 2, 3, 5, 6, 7] and 0.5 <= dauer_p_ < 5 and L.PROTOKOLL_SPERRE_WARTEN == 1.0, (dauer_p_, L.PROTOKOLL.read_text()[:200]))
+    # … jeder Schreiber hat SEINEN Temp-Namen (Prozess, Thread, Zähler): zwei Schreibungen nacheinander benutzen zwei verschiedene Namen — ein gemeinsamer «<Protokoll>.neu» wäre beim Schreiben ohne Sperre
+    # (die Wartezeit ist abgelaufen) ein Wettlauf; die Tests oben fangen das nur mit einem selbstgebauten Namen ab, der vom Namen des Produktionscodes abweicht
+    import re as _re20  # noqa: E402
+    L.PROTOKOLL = Path(sdp20_) / "eigen.json"
+    namen20_, orig_wt20n_ = [], Path.write_text
+
+    def wt20n_(self, *a, **k):
+        if self.name.startswith("eigen.json.") and self.name.endswith(".neu"):
+            namen20_.append(self.name)
+        return orig_wt20n_(self, *a, **k)
+    Path.write_text = wt20n_
+    try:
+        L.protokoll_schreiben({"n": "e1"})
+        L.protokoll_schreiben({"n": "e2"})
+    finally:
+        Path.write_text = orig_wt20n_
+    pruefe("20.Protokoll Jeder Schreiber hat seinen eigenen Temp-Namen <Protokoll>.<Prozess>-<Thread>-<Zähler>.neu: zwei Schreibungen benutzen zwei verschiedene Namen",
+           len(namen20_) == 2 and len(set(namen20_)) == 2 and all(_re20.fullmatch(r"eigen\.json\.\d+-\d+-\d+\.neu", n_) for n_ in namen20_), namen20_)
+    # … verwaiste Temp-Dateien des Protokolls (kill -9 zwischen Schreiben und Umbenennen) räumt das nächste Schreiben auf; eine frische (ein anderer Schreiber ist gerade dran) bleibt
+    alt_p20_, jung_p20_ = Path(f"{L.PROTOKOLL}.4242-1-0.neu"), Path(f"{L.PROTOKOLL}.4243-1-0.neu")
+    for t_, alter_ in ((alt_p20_, 7200), (jung_p20_, 60)):
+        t_.write_text("[]")
+        os.utime(t_, (_time20.time() - alter_, _time20.time() - alter_))
+    L.protokoll_schreiben({"n": "e3"})
+    pruefe("20.Protokoll Das Schreiben räumt verwaiste Temp-Dateien des Protokolls auf (zwei Stunden alt) und lässt eine frische (eine Minute) liegen",
+           not alt_p20_.exists() and jung_p20_.exists(), (alt_p20_.exists(), jung_p20_.exists()))
+    jung_p20_.unlink(missing_ok=True)
 finally:
     L.PROTOKOLL = alt_prot20_
 
