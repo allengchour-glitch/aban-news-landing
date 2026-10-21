@@ -12918,3 +12918,8 @@ wasserdichte-leuchtende-automatik-herrenuhr-606600	2508250743331607000	16	6.17	o
 herren-automatik-armbanduhr-606500	2508230534191606700	16	6.65	ok	landeseite
 wasserdichter-reisekoffer-622900	2607130836401623800	16	27.82	ok	landeseite
 herren-mechanik-armbanduhr-wasserdicht-613600	2508230314461613800	16	6.01	ok	landeseite
+mannliche-business-uhr-mit-tourbillon-617400	2508211332141617600	16	7.03	ok	landeseite
+mechanische-uhr-mit-kalenderfunktion-609100	2508210801161609300	16	5.69	ok	landeseite
+mannliche-multifunktionsuhr-mit-leuchtzifferbl-612900	2508210707561613200	16	6.01	ok	landeseite
+manner-armbanduhr-mit-nachtlicht-613900	2508210632301614100	16	6.77	ok	landeseite
+reisegepack-mit-schuhfach-619100	2512270643521619400	16	17.52	ok	landeseite
