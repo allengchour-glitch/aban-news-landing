@@ -380,7 +380,7 @@ function gesundKopfzeile(g) {
   const probleme = g.filter(x => x.ok === false).length;
   const warnungen = g.filter(x => x.ok == null && x.warnung).length;  // (20. Prüfung) eine graue WARNUNG (z. B. Nachkontrolle: Rückgabewert 3) gehört in die Kopfzeile — sonst stand dort «alles in Ordnung» neben einem offenen Markt
   const warnText = warnungen ? `${warnungen} Warnung${warnungen > 1 ? "en" : ""}` : "";
-  return probleme ? `${probleme} Punkt${probleme > 1 ? "e" : ""} brauchen Aufmerksamkeit` + (warnText ? ` · ${warnText}` : "")
+  return probleme ? (probleme > 1 ? `${probleme} Punkte brauchen` : "1 Punkt braucht") + " Aufmerksamkeit" + (warnText ? ` · ${warnText}` : "")
     : warnText ? `${warnText} — bitte unten ansehen` : "alles in Ordnung";
 }
 // gesund:ende

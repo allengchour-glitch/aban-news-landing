@@ -158,8 +158,9 @@ def _voruebergehend(ex):
 
 
 class _ThreadZelle:
-    """Eine Zelle mit der Schnittstelle `zelle[0]`, aber getrennt je Thread (20. Prüfung, klein 8): das Budget eines Durchgangs `einmal` darf nie einen anderen Thread im selben Prozess einschränken — z. B. einen Not-Aus, der
-    gleichzeitig läuft (der Cockpit-Prozess führt Not-Aus und lange Nachkontrolle in eigenen Threads aus)."""
+    """Eine Zelle mit der Schnittstelle `zelle[0]`, aber getrennt je Thread (20. Prüfung, klein 8, latent): das Budget eines Durchgangs `einmal` darf nie einen anderen Thread im selben Prozess einschränken. Heute läuft
+    ein Durchgang `einmal` nur in `pilot.py --nachkontrolle --einmal` (eigener Prozess, ein Thread; der Cockpit-Prozess startet die Nachkontrolle als Unterprozess, führt aber den Not-Aus in Handler-Threads aus) — die
+    Trennung schützt einen künftigen Aufruf von `nachkontrolle(einmal=True)` im Cockpit-Prozess davor, einen gleichzeitigen Not-Aus einzuschränken."""
 
     def __init__(self, wert=None):
         self._wert = wert
@@ -4373,11 +4374,23 @@ def _notaus_schutz(spot, fut, st, k, sym, coin, pos, pos_vor, frei, gebunden, ku
 
 
 def protokoll_schreiben(eintrag):
+    """Einen Eintrag ans Protokoll hängen (ein Beleg, kein Schutz). (20. Folge-Runde, Code-Review) Eigener Name der Temp-Datei je Schreiber wie beim Buch — zwei Schreiber teilten sich `<Protokoll>.neu`, das zweite
+    `replace` fand die Datei nicht mehr — und BEST EFFORT: ein Schreibfehler darf nie das Ergebnis eines Laufs ersetzen, dessen Aufträge schon raus sind (die Aufrufer stehen am Ende von `ausfuehren` und im Not-Aus)."""
     try:
-        alt = json.loads(PROTOKOLL.read_text()) if PROTOKOLL.exists() else []
-    except (OSError, ValueError):
-        alt = []
-    PROTOKOLL.parent.mkdir(exist_ok=True)
-    tmp = Path(str(PROTOKOLL) + ".neu")
-    tmp.write_text(json.dumps((alt + [eintrag])[-2000:], ensure_ascii=False, indent=1))
-    tmp.replace(PROTOKOLL)  # nie halb geschrieben
+        try:
+            alt = json.loads(PROTOKOLL.read_text()) if PROTOKOLL.exists() else []
+        except (OSError, ValueError):
+            alt = []
+        PROTOKOLL.parent.mkdir(exist_ok=True)
+        _buch_temp_aufraeumen(PROTOKOLL)
+        tmp = _buch_tmp(PROTOKOLL)
+        try:
+            tmp.write_text(json.dumps((alt + [eintrag])[-2000:], ensure_ascii=False, indent=1))
+            tmp.replace(PROTOKOLL)  # nie halb geschrieben
+        finally:
+            try:
+                tmp.unlink()
+            except OSError:
+                pass
+    except OSError as ex:
+        print(f"⚠️ Protokoll nicht geschrieben ({type(ex).__name__}) — der Lauf selbst ist davon nicht betroffen.")

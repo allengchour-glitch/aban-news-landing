@@ -526,7 +526,10 @@ with tempfile.TemporaryDirectory() as tmp:
                                                                  ("Start vor 14 Min., Rückgabewert 31 Min. alt", 14, 31, False, "nicht zu Ende"),
                                                                  ("Start vor 4 Min., Rückgabewert 45 Min. alt (erster Durchgang nach langer Pause läuft noch)", 4, 45, True, "zuletzt vor"),
                                                                  ("Start vor 7 Min., Rückgabewert 29 Min. alt (unter der Grenze)", 7, 29, True, "zuletzt vor"),
-                                                                 ("Start vor 7 Min., Rückgabewert 15 Min. alt (normal)", 7, 15, True, "zuletzt vor")):
+                                                                 ("Start vor 7 Min., Rückgabewert 15 Min. alt (normal)", 7, 15, True, "zuletzt vor"),
+                                                                 ("Start vor 7 Min., GAR kein Rückgabewert (Code-Review: vorher grün bis 15 Minuten)", 7, None, False, "gar keinen Rückgabewert"),
+                                                                 ("Start vor 14 Min., GAR kein Rückgabewert", 14, None, False, "gar keinen Rückgabewert"),
+                                                                 ("Start vor 4 Min., GAR kein Rückgabewert (der erste Durchgang läuft noch)", 4, None, True, "zuletzt vor")):
                     z20 = ampel20(lebt20, rc20)
                     pruefe(f"Ampel «Nachkontrolle (Aufgabenplanung)», veralteter Rückgabewert: {fall20} → {'grün' if erwartet20 else 'rot'}", z20 is not None and z20["ok"] is erwartet20 and wort20 in z20["text"], z20)
                 # wichtig 1: eine einzelne Warnung bleibt grau, trägt aber das Kennzeichen «warnung» (die Kopfzeile zählt sie); ab NK_WARN_ROT Durchgängen in Folge ist sie rot
@@ -566,26 +569,31 @@ with tempfile.TemporaryDirectory() as tmp:
         pruefe("Oberfläche: die Gesundheits-Funktionen (Zeichen, Kopfzeile) stehen als reine Funktionen im Block gesund:start … gesund:ende und die Seite ruft sie auf",
                bool(_m20) and "function gesundKopfzeile(g)" in _m20.group(1) and "function gesundZeichen(x)" in _m20.group(1) and "gesundKopfzeile(g)" in _html20.split("// gesund:ende", 1)[1]
                and ".warn{color:var(--warning)}" in _html20, bool(_m20))
+        # Der Test gehört zum Selbsttest vor dem Handeln (krypto-auto.bat): ein node, das sich nicht starten lässt, darf nie das Handeln blockieren → bei jedem Fehler bleibt es bei der Prüfung der Bauform
+        _ok_ = {"name": "a", "ok": True, "text": "x"}
+        _grau_ = {"name": "b", "ok": None, "text": "x"}
+        _warn_ = {"name": "c", "ok": None, "text": "x", "warnung": True}
+        _rot_ = {"name": "d", "ok": False, "text": "x"}
+        _faelle20 = {"leer": [], "grau": [_ok_, _grau_], "warn1": [_ok_, _warn_], "warn2": [_warn_, dict(_warn_, name="e")], "rot1": [_rot_, _ok_], "rot2": [_rot_, dict(_rot_, name="f")],
+                     "rot_warn": [_rot_, _warn_], "zeichen": [_ok_, _rot_, _warn_, _grau_]}
+        k20 = None
         if _m20 and _node20:
-            _js20 = _m20.group(1) + "\nconst fall = JSON.parse(process.argv[1]);\nprocess.stdout.write(JSON.stringify({kopf: gesundKopfzeile(fall), zeichen: fall.map(gesundZeichen)}));"
-
-            def _kopf20(g_):
-                r_ = _sp20.run([_node20, "-e", _js20, json.dumps(g_)], capture_output=True, text=True, timeout=60)
-                return json.loads(r_.stdout) if r_.returncode == 0 and r_.stdout else {"fehler": r_.stderr[-300:]}
-            _ok_ = {"name": "a", "ok": True, "text": "x"}
-            _grau_ = {"name": "b", "ok": None, "text": "x"}
-            _warn_ = {"name": "c", "ok": None, "text": "x", "warnung": True}
-            _rot_ = {"name": "d", "ok": False, "text": "x"}
-            k20 = {"leer": _kopf20([]), "grau": _kopf20([_ok_, _grau_]), "warn1": _kopf20([_ok_, _warn_]), "warn2": _kopf20([_warn_, dict(_warn_, name="e")]),
-                   "rot1": _kopf20([_rot_, _ok_]), "rot2": _kopf20([_rot_, dict(_rot_, name="f")]), "rot_warn": _kopf20([_rot_, _warn_]), "zeichen": _kopf20([_ok_, _rot_, _warn_, _grau_])}
+            _js20 = _m20.group(1) + ("\nconst faelle = JSON.parse(process.argv[1]);\nconst aus = {};\nfor (const [n, g] of Object.entries(faelle)) aus[n] = {kopf: gesundKopfzeile(g), zeichen: g.map(gesundZeichen)};\n"
+                                    "process.stdout.write(JSON.stringify(aus));")
+            try:
+                r_ = _sp20.run([_node20, "-e", _js20, json.dumps(_faelle20)], capture_output=True, text=True, timeout=60)
+                k20 = json.loads(r_.stdout) if r_.returncode == 0 and r_.stdout else None
+            except (OSError, _sp20.SubprocessError, ValueError):
+                k20 = None
+        if k20 is not None:
             pruefe("Kopfzeile der Gesundheits-Karte: «alles in Ordnung» nur ohne rote Punkte UND ohne Warnung — eine graue Info-Zeile zählt nicht, eine Warnung steht dort (vorher blieb sie grün)",
-                   k20["leer"].get("kopf") == "alles in Ordnung" and k20["grau"].get("kopf") == "alles in Ordnung" and k20["warn1"].get("kopf") == "1 Warnung — bitte unten ansehen"
-                   and k20["warn2"].get("kopf") == "2 Warnungen — bitte unten ansehen" and k20["rot1"].get("kopf") == "1 Punkt brauchen Aufmerksamkeit"
-                   and k20["rot2"].get("kopf") == "2 Punkte brauchen Aufmerksamkeit" and k20["rot_warn"].get("kopf") == "1 Punkt brauchen Aufmerksamkeit · 1 Warnung", k20)
+                   k20["leer"]["kopf"] == "alles in Ordnung" and k20["grau"]["kopf"] == "alles in Ordnung" and k20["warn1"]["kopf"] == "1 Warnung — bitte unten ansehen"
+                   and k20["warn2"]["kopf"] == "2 Warnungen — bitte unten ansehen" and k20["rot1"]["kopf"] == "1 Punkt braucht Aufmerksamkeit"
+                   and k20["rot2"]["kopf"] == "2 Punkte brauchen Aufmerksamkeit" and k20["rot_warn"]["kopf"] == "1 Punkt braucht Aufmerksamkeit · 1 Warnung", {n_: v_["kopf"] for n_, v_ in k20.items()})
             pruefe("Zeichen der Gesundheits-Zeilen: ✓ grün, ✗ rot, ⚠ für eine Warnung, ○ für grau ohne Warnung",
-                   k20["zeichen"].get("zeichen") == ['<span class="plus">✓</span>', '<span class="minus">✗</span>', '<span class="warn">⚠</span>', '<span class="null">○</span>'], k20["zeichen"])
+                   k20["zeichen"]["zeichen"] == ['<span class="plus">✓</span>', '<span class="minus">✗</span>', '<span class="warn">⚠</span>', '<span class="null">○</span>'], k20["zeichen"])
         else:
-            pruefe("Kopfzeile der Gesundheits-Karte: node nicht gefunden — nur die Bauform geprüft", bool(_m20), _node20)
+            pruefe("Kopfzeile der Gesundheits-Karte: node nicht vorhanden oder nicht ausführbar — nur die Bauform geprüft (der Selbsttest vor dem Handeln darf daran nie scheitern)", bool(_m20), _node20)
         ok_b, out_b = C._befehl(["programm-das-es-nicht-gibt-xyz"], 5)
         pruefe("unbekanntes Programm: Meldung statt Absturz", not ok_b and "nicht gefunden" in out_b)
         heute = datetime(2026, 1, 20, tzinfo=timezone.utc).date()

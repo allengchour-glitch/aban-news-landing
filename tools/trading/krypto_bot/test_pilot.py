@@ -577,12 +577,18 @@ with _tf.TemporaryDirectory() as _sd:
     _sf20.write_text("{kaputt")
     _PI._serie_merken("warnung", datei=_sf20, jetzt=9000.0)
     _kaputt20 = _serie20()
+    import contextlib as _cl20  # noqa: E402
+    import io as _io20  # noqa: E402
+    _aus20 = _io20.StringIO()
     try:
-        _PI._serie_merken("ok", datei=Path(_sd) / "serie20.json" / "unter" / "datei.json", jetzt=1.0)   # der Ordner ist eine Datei → Schreiben unmöglich
+        with _cl20.redirect_stdout(_aus20):
+            _PI._serie_merken("ok", datei=Path(_sd) / "serie20.json" / "unter" / "datei.json", jetzt=1.0)   # der Ordner ist eine Datei → Schreiben unmöglich
         _fehlerfrei20 = True
     except Exception:  # noqa: BLE001
         _fehlerfrei20 = False
-    pruefe("Reihe der Durchgänge: eine kaputte Datei beginnt die Reihe neu; ein Schreibfehler stört den Durchgang nie (keine Ausnahme)", _kaputt20["anzahl"] == 1 and _kaputt20["art"] == "warnung" and _fehlerfrei20, (_kaputt20, _fehlerfrei20))
+    pruefe("Reihe der Durchgänge: eine kaputte Datei beginnt die Reihe neu; ein Schreibfehler stört den Durchgang nie (keine Ausnahme) — steht aber im Protokoll (sonst bliebe eine Dauerwarnung unbemerkt grau)",
+           _kaputt20["anzahl"] == 1 and _kaputt20["art"] == "warnung" and _fehlerfrei20 and "Reihe der Durchgänge nicht gespeichert" in _aus20.getvalue(), (_kaputt20, _fehlerfrei20, _aus20.getvalue()))
+    pruefe("Reihe der Durchgänge: nach einem Schreibfehler bleibt keine Zwischendatei liegen", not list(Path(_sd).glob("serie20*.tmp*")), list(Path(_sd).glob("serie20*.tmp*")))
     # `nachkontrolle(einmal=True)` führt die Reihe, die lange Fassung nicht
     from contextlib import contextmanager as _cm20  # noqa: E402
 
@@ -591,6 +597,9 @@ with _tf.TemporaryDirectory() as _sd:
         raise SP.Besetzt("Ein anderer Lauf handelt gerade (seit 12 s).")
         yield  # pragma: no cover
 
+    import broker_futures as _BF20  # noqa: E402
+    _alt_ein20 = _BF20.einstellungen
+    _BF20.einstellungen = lambda *a, **k: {"stop": False}  # (Code-Review) unabhängig von KI_BOT_STOP=1 in der Umgebung und von einer STOP-Datei: ein aktiver Not-Aus nimmt den Zweig «Sperre besetzt» ganz anders
     _alt_serie20, _alt_push20, _alt_lauf20, _alt_sp20 = _PI.NK_SERIE, _PI._push_nachkontrolle, _P2L.nachkontrolle, SP.lauf_sperre
     _antwort20 = [{"zeilen": [], "warnung": False, "auftraege": []}]
     _PI.NK_SERIE = Path(_sd) / "serie20b.json"
@@ -615,6 +624,7 @@ with _tf.TemporaryDirectory() as _sd:
         _rcs20.append(_PI.nachkontrolle(einmal=True)); _arten20.append(_lies20())                       # Ausnahme → Warnung (rc 3)
     finally:
         _PI.NK_SERIE, _PI._push_nachkontrolle, _P2L.nachkontrolle, SP.lauf_sperre, SP.ORDNER = _alt_serie20, _alt_push20, _alt_lauf20, _alt_sp20, _alt_ord
+        _BF20.einstellungen = _alt_ein20
     pruefe("nachkontrolle(einmal=True) führt die Reihe: ok → warnung ×2 (rc 3), die lange Fassung ändert sie nicht, «Sperre besetzt» (rc 0) zählt als «besetzt» ×2, eine Ausnahme im Durchgang ist eine Warnung (rc 3)",
            [(a_["art"], a_["anzahl"]) for a_ in _arten20] == [("ok", 1), ("warnung", 1), ("warnung", 2), ("besetzt", 1), ("besetzt", 2), ("warnung", 1)]
            and _rcs20 == [0, 3, 3, 3, 0, 0, 3] and _vor_lang20 == _nach_lang20, (_arten20, _rcs20))

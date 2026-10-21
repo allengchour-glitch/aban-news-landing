@@ -21,7 +21,6 @@ Aufruf:
   --doppel      zusätzlich eine zweite Störung (vor503) bei j > i (Stichprobe jede 3. Stelle)
   --keinbudget  Durchgang 1 mit dem Wiederholungs-Budget des Produktionscodes statt «aufgebraucht»
 """
-import os
 import sys
 import json
 import time
@@ -88,7 +87,7 @@ def aufbauen(sz, vorlage):
 
 def offen(d):
     try:
-        b = json.loads(open(d).read()).get("echt") or {}
+        b = json.loads(Path(d).read_text()).get("echt") or {}
     except (OSError, ValueError):
         return False
     return bool(b.get("unklar") or b.get("schutz_offen"))
@@ -188,6 +187,7 @@ def main():
     print("FERTIG", dict(z))
     for f in funde[:8]:
         print(json.dumps({q: f.get(q) for q in ("art", "sz", "vorlage", "fehler", "betrag", "arten", "vermerkt", "ausnahme", "unbekannt")}, default=str)[:520])
+    print(f"{len(funde)} Befunde")  # jeder Eintrag in `funde` ist ein Befund (UNGESCHUETZT*, AUSNAHME*, REFERENZ_…, OHNE_VERMERK_…)
 
 
 if __name__ == "__main__":

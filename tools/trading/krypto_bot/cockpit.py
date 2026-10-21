@@ -716,10 +716,11 @@ def gesundheit(env, lb, ki, heute=None):
                 # (hängt, oder das Zeitlimit der Aufgabe beendet ihn jedes Mal) — das Lebenszeichen allein zeigte «läuft»
                 p("Nachkontrolle (Aufgabenplanung)", False, f"gestartet vor {minuten_nk:.0f} Min., aber der Durchgang ist nie zu Ende gegangen (kein neuer Rückgabewert) — hängt er oder beendet ihn das Zeitlimit der Aufgabe? "
                   "Aufgabenplanung → «Krypto-Pilot-Nachkontrolle» → Verlauf und data\\krypto-nachkontrolle.log ansehen")
-            elif rc_alter is not None and rc_alter > NK_LEBT_MAX_MIN and minuten_nk > NK_DURCHGANG_MAX_MIN:
-                # (20. Prüfung, klein 1) das Lebenszeichen ist frisch, der Rückgabewert aber älter als drei Takte: die Durchgänge gehen seit einer halben Stunde nicht mehr zu Ende — vorher stand die Ampel in den ersten 15 Minuten nach
-                # jedem Start grün (rund 43 % der Zeit), wenn das Zeitlimit der Aufgabe jeden Durchgang abbrach, und blieb es ganz, wenn die Rückgabewert-Datei nie erneuert wurde
-                p("Nachkontrolle (Aufgabenplanung)", False, f"gestartet vor {minuten_nk:.0f} Min., aber der letzte Rückgabewert ist {rc_alter:.0f} Min. alt — die Durchgänge gehen nicht zu Ende (hängt es, oder beendet das Zeitlimit der Aufgabe jeden?) "
+            elif (rc_alter is None or rc_alter > NK_LEBT_MAX_MIN) and minuten_nk > NK_DURCHGANG_MAX_MIN:
+                # (20. Prüfung, klein 1) das Lebenszeichen ist frisch, der Rückgabewert aber älter als drei Takte (oder gar nicht da): die Durchgänge gehen seit einer halben Stunde nicht mehr zu Ende — vorher stand die Ampel in den ersten
+                # 15 Minuten nach jedem Start grün (rund 43 % der Zeit), wenn das Zeitlimit der Aufgabe jeden Durchgang abbrach, und blieb es ganz, wenn die Rückgabewert-Datei nie erneuert wurde (Code-Review: auch wenn sie fehlte)
+                rc_wort = "es gibt noch gar keinen Rückgabewert" if rc_alter is None else f"der letzte Rückgabewert ist {rc_alter:.0f} Min. alt"
+                p("Nachkontrolle (Aufgabenplanung)", False, f"gestartet vor {minuten_nk:.0f} Min., aber {rc_wort} — die Durchgänge gehen nicht zu Ende (hängt es, oder beendet das Zeitlimit der Aufgabe jeden?) "
                   "Aufgabenplanung → «Krypto-Pilot-Nachkontrolle» → Verlauf und data\\krypto-nachkontrolle.log ansehen")
             elif rc_nk not in (None, 0, 3):
                 p("Nachkontrolle (Aufgabenplanung)", False, f"läuft (zuletzt vor {minuten_nk:.0f} Min.), aber `pilot.py --nachkontrolle` endete mit Rückgabewert {rc_nk} — Absturz? data\\krypto-nachkontrolle.log ansehen")

@@ -6850,6 +6850,56 @@ finally:
 pruefe("20.K1 Nachkontrolle, deren Sperre übernommen wurde: kein einziges Schreiben einer Temp-Datei danach (die Prüfung vor dem Speichern greift), «Buch nicht gespeichert»",
        standn20_["an"] and not gez_nk20_ and any("Buch nicht gespeichert" in z_ for z_ in rn20_["zeilen"]), (gez_nk20_, rn20_["zeilen"][-3:]))
 
+# Code-Review der R20: `protokoll_schreiben` teilte sich denselben Temp-Namen `<Protokoll>.neu` (zwei Schreiber → das zweite `replace` fand die Datei nicht mehr, die Ausnahme ersetzte das Ergebnis eines Laufs, dessen Aufträge
+# schon raus waren) — jetzt wie beim Buch ein Name je Schreiber, und best effort (der Eintrag ist ein Beleg, kein Schutz)
+import contextlib as _cl20  # noqa: E402
+import io as _io20  # noqa: E402
+sdp20_ = _tf17.mkdtemp(prefix="prot_")
+alt_prot20_ = L.PROTOKOLL
+L.PROTOKOLL = Path(sdp20_) / "broker.json"
+try:
+    L.protokoll_schreiben({"n": 1})
+    L.protokoll_schreiben({"n": 2})
+    ok_norm20_ = [e_["n"] for e_ in json.loads(L.PROTOKOLL.read_text())] == [1, 2] and not list(Path(sdp20_).glob("*.neu"))
+    pruefe("20.Protokoll Einträge werden angehängt, keine Temp-Datei bleibt liegen", ok_norm20_, list(Path(sdp20_).glob("*")))
+    fremd20_ = L._buch_tmp(L.PROTOKOLL)                                       # die Temp-Datei eines ANDEREN Schreibers, wie der Produktionscode sie benennt
+    orig_wt20p_, n_wt20_ = Path.write_text, [0]
+
+    def wt20p_(self, *a, **k):
+        r_ = orig_wt20p_(self, *a, **k)
+        if self.name.startswith("broker.json.") and self.name.endswith(".neu") and n_wt20_[0] == 0:
+            n_wt20_[0] += 1
+            fremd20_.write_text(json.dumps([{"n": 99}]))                      # der andere Schreiber schreibt SEINE Temp-Datei, während dieser zwischen Schreiben und Umbenennen steht
+        return r_
+    Path.write_text = wt20p_
+    try:
+        L.protokoll_schreiben({"n": 3})
+    finally:
+        Path.write_text = orig_wt20p_
+    pruefe("20.Protokoll Ein anderer Schreiber schreibt seine Temp-Datei zwischen Schreiben und Umbenennen: der Eintrag landet unverfälscht im Protokoll (vorher übernahm das replace die Datei des anderen), seine Datei bleibt unberührt",
+           [e_["n"] for e_ in json.loads(L.PROTOKOLL.read_text())] == [1, 2, 3] and fremd20_.exists() and json.loads(fremd20_.read_text()) == [{"n": 99}], (L.PROTOKOLL.read_text()[:200], fremd20_.exists()))
+    fremd20_.unlink(missing_ok=True)
+    orig_rep20p_ = Path.replace
+
+    def replace20p_(self, ziel):
+        if self.name.startswith("broker.json.") and self.name.endswith(".neu"):
+            raise PermissionError("gehalten")
+        return orig_rep20p_(self, ziel)
+    aus20p_, fehler20p_ = _io20.StringIO(), None
+    Path.replace = replace20p_
+    try:
+        with _cl20.redirect_stdout(aus20p_):
+            L.protokoll_schreiben({"n": 4})
+    except Exception as ex_:  # noqa: BLE001
+        fehler20p_ = type(ex_).__name__
+    finally:
+        Path.replace = orig_rep20p_
+    pruefe("20.Protokoll Scheitert das Umbenennen: keine Ausnahme (der Eintrag ist ein Beleg, kein Schutz), ein Hinweis im Protokoll des Laufs, die eigene Temp-Datei ist weg, die alten Einträge unverändert",
+           fehler20p_ is None and "Protokoll nicht geschrieben" in aus20p_.getvalue() and not list(Path(sdp20_).glob("*.neu")) and [e_["n"] for e_ in json.loads(L.PROTOKOLL.read_text())] == [1, 2, 3],
+           (fehler20p_, aus20p_.getvalue(), list(Path(sdp20_).glob("*"))))
+finally:
+    L.PROTOKOLL = alt_prot20_
+
 # klein 8: das Wiederholungs-Budget eines Durchgangs `einmal` gilt nur für SEINEN Thread (der Cockpit-Prozess führt Not-Aus und lange Nachkontrolle in eigenen Threads aus)
 res20_ = {}
 schlaf20_, alt_sl20_ = [], _time20.sleep

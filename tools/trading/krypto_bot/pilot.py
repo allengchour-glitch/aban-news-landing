@@ -468,7 +468,8 @@ SERIE_LUECKE_S = 1800  # ein Durchgang, der länger als das zurückliegt (PC aus
 def _serie_merken(art, datei=None, jetzt=None):
     """(20. Prüfung, wichtig 1 + klein 8) Buch über die REIHE gleichartiger Durchgänge im 10-Minuten-Takt (`einmal`): «ok» / «warnung» (Rückgabewert 3) / «besetzt» (die Lauf-Sperre hielt ein anderer Lauf, Rückgabewert 0).
     Die rc-Datei der Bat zeigt nur den LETZTEN Durchgang — ob eine Warnung seit einem Takt oder seit Stunden steht und ob die Sperre nur kurz belegt war oder ein Halter mit lebendem Herzschlag dasteht
-    (eine angeklickte Konsole im QuickEdit-Modus hält den Hauptfaden an, der Herzschlag läuft weiter), sieht erst das Cockpit an dieser Reihe → {art, anzahl, seit, zeit}. Ein Fehler hier ändert nichts am Durchgang."""
+    (eine angeklickte Konsole im QuickEdit-Modus hält den Hauptfaden an, der Herzschlag läuft weiter), sieht erst das Cockpit an dieser Reihe → {art, anzahl, seit, zeit}. Ein Fehler hier ändert nichts am Durchgang —
+    aber er steht im Protokoll (Code-Review: ohne die Reihe bliebe eine Dauerwarnung grau, und das fiele nirgends auf)."""
     import time
     datei = Path(datei) if datei else NK_SERIE
     jetzt = time.time() if jetzt is None else jetzt
@@ -479,12 +480,13 @@ def _serie_merken(art, datei=None, jetzt=None):
             anzahl, seit = (int(alt.get("anzahl") or 0) + 1, float(alt.get("seit") or jetzt)) if gleich else (1, jetzt)
         except Exception:  # noqa: BLE001 — keine/kaputte Datei: die Reihe beginnt
             anzahl, seit = 1, jetzt
-        datei.parent.mkdir(parents=True, exist_ok=True)
-        tmp = datei.with_name(f"{datei.name}.{os.getpid()}.neu")
-        tmp.write_text(json.dumps({"art": art, "anzahl": anzahl, "seit": seit, "zeit": jetzt}))
-        tmp.replace(datei)
-    except Exception:  # noqa: BLE001
-        pass
+        schreiben({"art": art, "anzahl": anzahl, "seit": seit, "zeit": jetzt}, datei)
+    except Exception as ex:  # noqa: BLE001
+        print(f"⚠️ Reihe der Durchgänge nicht gespeichert ({type(ex).__name__}) — die Cockpit-Ampel kann eine Dauerwarnung dann nicht rot färben.")
+        try:
+            datei.with_name(datei.name + f".tmp{os.getpid()}").unlink()
+        except OSError:
+            pass
 
 
 def nachkontrolle(einmal=False):
