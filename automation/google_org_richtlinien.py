@@ -39,6 +39,11 @@ VERSAND_CHF = 7.00
 from ch_lager_profil import GRATIS_AB_CH as GRATIS_AB_CHF  # noqa: E402  (eine Quelle; Entscheid D 40.50 vorbereitet)
 LI_VERSAND_CHF = 14.90
 LAENDER = ["CH", "LI"]
+# 21.10.2026 (Spähtrupp wf_32ed9d12 OFF-2, Skeptiker bestätigt): Organization ohne sameAs — Google empfiehlt es («Recommended properties»), es klärt, dass
+# luxestyle.ch und diese Konten dieselbe Firma sind (Entitätsklärung, Hygiene — KEIN belegter Index- oder Ranking-Hebel). Nur Konten, die der Skeptiker per
+# curl mit HTTP 200 geprüft hat bzw. die in diesem Repo als unsere geführt sind; Threads fehlt bewusst (Handle ungeprüft, threads.net → threads.com).
+SAME_AS = ["https://www.facebook.com/1049840534888592", "https://www.instagram.com/luxestyle.ch/", "https://www.tiktok.com/@luxestyle.ch",
+           "https://www.pinterest.com/luxestyleCH/", "https://www.youtube.com/@luxestyle_ch"]
 
 
 def markup():
@@ -73,7 +78,7 @@ def markup():
              "shippingRate": {"@type": "MonetaryAmount", "value": LI_VERSAND_CHF, "currency": "CHF"}},
         ],
     }
-    teil = json.dumps({"hasMerchantReturnPolicy": rueckgabe, "hasShippingService": [versand, versand_li]}, ensure_ascii=False)
+    teil = json.dumps({"hasMerchantReturnPolicy": rueckgabe, "hasShippingService": [versand, versand_li], "sameAs": SAME_AS}, ensure_ascii=False)
     return teil[1:-1]   # ohne äussere Klammern → wird als weitere Felder ins Organization-Objekt gesetzt
 
 

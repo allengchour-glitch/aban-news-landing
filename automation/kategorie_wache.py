@@ -638,6 +638,13 @@ BUEROREGELN = [
     (r"^(?!.*(?:powerbank|lade))(?:.*(?:schmink-?spiegel\w*|kosmetik-?spiegel\w*|make-?up-?spiegel\w*|vergr[öo]sserungs-?spiegel\w*))", "hb-3-2-5-1-6"),
     (r"^(?!.*(?:krypto|crypto|hardware-?wallet|bitcoin|h[üu]lle|wallet-?case|handy|smartphone|iphone|samsung))"
      r".*(?:geldb[öo]rse\w*|portemonnaie\w*|portmonee\w*|portmonnaie\w*|brieftasche\w*|geldbeutel\w*|\w*wallet\b|m[üu]nzb[öo]rse\w*|kartenetui\w*|geldklammer\w*)", "aa-5-5-7"),
+    # 21.10.2026 (Spähtrupp wf_32ed9d12 KAN-4): die letzten 2 aktiven Produkte ohne Kategorie — «Gummibänder Gelb 500 g» (os-4-10 Rubber Bands) und
+    # «Elektronische Hängewaage» (Digital Scales). Gummiband nur als eigenes Hauptwort (kein Gummiband-Hose/-Rock, kein Haar-/Fitness-/Gürtel-Zusammenhang),
+    # Waage nur Hänge-/Kran-/Gepäckwaage (Küchen-/Körper-/Schmuckwaage haben andere Blätter und bleiben hier still).
+    (_KEIN_MODE + r"^(?!.*(?:haar|hose|rock\b|g[üu]rtel|widerstand|fitness|expander|yoga|schuh|stirnband|zopf|schleife|schmuck|b[üu]gel|trainings))"
+     + _KOPF + r"\bgummib[äa]nd(?:er)?\b", "os-4-10"),
+    (r"^(?!.*(?:k[üu]chen|k[öo]rper|body|schmuck|baby|fett))(?=.*(?:elektronisch|digital))" + _KOPF + r"(?:h[äa]nge|kran|gep[äa]ck)-?waage\w*", "ha-15-36-18-1"),
+    (r"^(?!.*(?:k[üu]chen|k[öo]rper|body|schmuck|baby|fett))" + _KOPF + r"(?:h[äa]nge|kran|gep[äa]ck)-?waage\w*", "ha-15-36-18"),
 ]
 _BR = [(_re.compile(m, _re.I), z) for m, z in BUEROREGELN]
 
@@ -869,6 +876,9 @@ KANARIEN = [
     ("Büro & Home Office", "Gaming Tastatur mit Silent Switch", "el-7-9-12-8"),
     ("Büro & Home Office", "Bluetooth Tastatur für iPad, Mac, Switch", "el-7-9-12-8"),
     ("Büro & Home Office", "Switches für Tastatur 90 Stück", "el-7-9-11-5"),
+    ("Büro & Home Office", "Gummibänder Gelb 500 g", "os-4-10"),
+    ("Büro & Home Office", "Elektronische Hängewaage – 500 kg, 200 g Genauigkeit", "ha-15-36-18-1"),
+    ("Büro & Home Office", "Mechanische Gepäckwaage 50 kg", "ha-15-36-18"),
     ("Gadget", "Intelligente WLAN-Steckdose", "el-7-15"),
     # 19.10.2026 (G5): Bücher / Modellbau-Zubehör aus dem Büro-Sammelkorb; Negative bleiben bei ihren Regeln
     ("Büro & Home Office", "LUZ Geschichtenbuch, 64 Seiten Hardcover", "me-1-3"),
@@ -1228,6 +1238,8 @@ BUERO_NICHT = [
     "DIY Weihnachtskalender Geschenkbeutel 50x100 cm", "Wasserdichtes Kalender-Armband", "Halloween Countdown Kalender Set",
     "Universal Hüft-Etui für Outdoor", "Spiegel-Etui mit 100 ölbindenden Tüchern", "Schlüsselmäppchen mit Strass und Rosen",
     "PLA Filament für 3D-Drucker und 3D-Stifte",
+    "Hose mit Gummiband und Taschen", "Gummibänder für Haare, 100 Stück", "Fitness Widerstandsband Gummiband Set", "Gummibandhose für Damen",
+    "Digitale Küchenwaage 5 kg", "Körperwaage digital mit App", "Digitale Schmuckwaage 0,01 g",   # 21.10. (KAN-4); «Wasserwaage» ist eine Libelle (Regel ha-15-36-17), kein Nicht-Treffer
     "Tablettenhülle", "Tabletten-Tasche für unterwegs",   # 14.10. (3. Prüfung): tablet(?!te|t(?!asche))
 ]
 

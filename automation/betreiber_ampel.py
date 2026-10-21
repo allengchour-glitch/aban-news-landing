@@ -662,7 +662,18 @@ def google_feedback():
         aelt_tm = f"{aelt[8:10]}.{aelt[5:7]}." if aelt and len(aelt) >= 10 else "?"
         wz = (f" · {s.get('wartet_summe', sum(s['wartet'].values()))} warten bei Google ({s.get('wartet_ueber', '?')} > "
               f"{s.get('wartet_ueber_tage', 14)} T, ältestes seit {aelt_tm}{', Liste gedeckelt' if s.get('wartet_gedeckelt') else ''})")
-    return f"GOOGLE: {s.get('blocker')} Blocker ({top}){wz}{alt}{voll}{shopz}{liz}"
+    # 21.10.2026 (Spähtrupp wf_32ed9d12 M2a): Abdeckung der Rückmeldungen. «Leer» = Google hat nichts gemeldet (nicht «sauber»); ⚠️ wenn die jüngste
+    # Rückmeldung älter als 72 h ist — dann liefert Googles Schub nicht mehr, und jede Blocker-Zahl oben ist veraltet.
+    rz = ""
+    rm = s.get("rueckmeldung")
+    if rm:
+        try:
+            jh = (datetime.datetime.utcnow() - datetime.datetime.strptime(rm["juengste"], "%Y-%m-%dT%H:%M:%SZ")).total_seconds() / 3600
+            rz = (f" · Rückmeldung: {rm['leer_prozent']} % ohne, jüngste vor {jh:.0f} h, {rm['frisch_24h']} in 24 h"
+                  + (" · ⚠️ keine frische Rückmeldung seit > 72 h" if jh > 72 else ""))
+        except Exception:
+            rz = " · ⚠️ Rückmeldung: Stand unlesbar"
+    return f"GOOGLE: {s.get('blocker')} Blocker ({top}){wz}{alt}{voll}{shopz}{liz}{rz}"
 
 
 

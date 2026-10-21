@@ -251,6 +251,11 @@ def bericht_schreiben(stand):
         f.write(f"# Google-Diagnosen (product.feedback der App «Google & YouTube») — Stand {stand['stand']}\n\n")
         f.write(f"Gescannt: {stand['gescannt']} aktive Produkte in {stand['seiten']} Seiten ({'vollständig' if stand['vollstaendig'] else '⚠️ DECKEL erreicht'}), "
                 f"{stand['dauer_s']} s. Meldungen nur für Shopping Ads (ignoriert): {stand['anzeigen_meldungen']}.\n\n")
+        rm = stand.get("rueckmeldung")
+        if rm:
+            f.write(f"Rückmeldungs-Abdeckung (21.10.2026): {rm['leer']} von {rm['gescannt']} aktiven Produkten ({rm['leer_prozent']} %) haben KEINE Rückmeldung der App "
+                    f"«Google & YouTube» — «leer» heisst NICHT «sauber», sondern «Google hat uns nichts gemeldet»; frisch (≤ 24 h / ≤ 72 h): "
+                    f"{rm['frisch_24h']} / {rm['frisch_72h']}, jüngste Rückmeldung {rm['juengste'] or '–'}.\n\n")
         f.write(f"## Free-Listings-Blocker: {stand['blocker']}\n\n| Klasse | Produkte | davon ohne onlineStoreUrl | davon Ziel «[]» |\n|---|---:|---:|---:|\n")
         for k, v in stand["klassen"].items():
             f.write(f"| {k} | {v} | {stand['ohne_onlineStoreUrl'].get(k, 0)} | {(stand.get('ziel_leer') or {}).get(k, '–')} |\n")
@@ -308,6 +313,40 @@ def bericht_schreiben(stand):
                     + "\n".join(f"- {h} (seit {seit.get(h, '?')})" for h in alt_zuerst[:40]) + ("\n- …" if len(alt_zuerst) > 40 else "") + "\n\n")
 
 
+def rueckmeldung_zaehlen(details, jetzt, acc):
+    """Rückmeldungs-Abdeckung (21.10.2026, Spähtrupp wf_32ed9d12 M2a): wie viele aktive Produkte hat Google überhaupt je bewertet, und wie frisch ist es?
+    `details` = feedback.details eines Produkts, `jetzt` = datetime (UTC, naiv), `acc` = Zähler {n, leer, h24, h72, juengste}. «Leer» heisst
+    NICHT «sauber»: ohne Rückmeldung der App «Google & YouTube» wissen wir nicht, ob Google die Ware kennt (38 % am 20.10.)."""
+    acc["n"] = acc.get("n", 0) + 1
+    google = [d for d in (details or []) if ((d.get("app") or {}).get("title") or "") == "Google & YouTube"]
+    if not google:
+        acc["leer"] = acc.get("leer", 0) + 1
+        return
+    neuste = None
+    for d in google:
+        try:
+            t = datetime.datetime.strptime((d.get("feedbackGeneratedAt") or "")[:19], "%Y-%m-%dT%H:%M:%S")
+        except ValueError:
+            continue
+        if neuste is None or t > neuste:
+            neuste = t
+    if neuste is None:
+        return
+    alter_h = (jetzt - neuste).total_seconds() / 3600
+    if alter_h <= 24:
+        acc["h24"] = acc.get("h24", 0) + 1
+    if alter_h <= 72:
+        acc["h72"] = acc.get("h72", 0) + 1
+    if not acc.get("juengste") or neuste.strftime("%Y-%m-%dT%H:%M:%SZ") > acc["juengste"]:
+        acc["juengste"] = neuste.strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def rueckmeldung_stand(acc):
+    n = acc.get("n", 0) or 1
+    return {"gescannt": acc.get("n", 0), "leer": acc.get("leer", 0), "leer_prozent": round(100 * acc.get("leer", 0) / n, 1),
+            "frisch_24h": acc.get("h24", 0), "frisch_72h": acc.get("h72", 0), "juengste": acc.get("juengste")}
+
+
 def main():
     if "--kanarienvogel" in sys.argv:
         faelle = [("Missing shipping info in some countries in [Free_listings,Shopping_ads] [LI].", False),
@@ -351,7 +390,23 @@ def main():
         ok += sum(ist == soll for ist, soll in led)
         for i, (ist, soll) in enumerate(led):
             print(f"{'✓' if ist == soll else '✗'} Verweildauer Fall {i + 1} → {ist}")
-        print(f"Kanarienvögel {ok}/{len(faelle) + len(pers) + len(wart) + len(led)}")
+        jetzt = datetime.datetime(2026, 10, 21, 12, 0, 0)
+        acc = {}
+        g = lambda ts, app="Google & YouTube": [{"app": {"title": app}, "feedbackGeneratedAt": ts, "messages": []}]
+        rueckmeldung_zaehlen(None, jetzt, acc)                                           # leer
+        rueckmeldung_zaehlen([], jetzt, acc)                                             # leer
+        rueckmeldung_zaehlen(g("2026-10-21T08:00:00Z", "Shop"), jetzt, acc)              # nur fremde App → für Google leer
+        rueckmeldung_zaehlen(g("2026-10-21T08:00:00Z"), jetzt, acc)                      # 4 h → 24 h und 72 h
+        rueckmeldung_zaehlen(g("2026-10-19T13:26:18Z"), jetzt, acc)                      # 46 h → nur 72 h
+        rueckmeldung_zaehlen(g("2026-10-10T00:00:00Z"), jetzt, acc)                      # alt
+        rueckmeldung_zaehlen(g("kaputt"), jetzt, acc)                                    # unlesbarer Stempel zählt weder frisch noch leer
+        rs = rueckmeldung_stand(acc)
+        rm = [(rs["gescannt"], 7), (rs["leer"], 3), (rs["frisch_24h"], 1), (rs["frisch_72h"], 2), (rs["juengste"], "2026-10-21T08:00:00Z"),
+              (rs["leer_prozent"], 42.9)]
+        ok += sum(ist == soll for ist, soll in rm)
+        for i, (ist, soll) in enumerate(rm):
+            print(f"{'✓' if ist == soll else '✗'} Rückmeldung Fall {i + 1} → {ist} (soll {soll})")
+        print(f"Kanarienvögel {ok}/{len(faelle) + len(pers) + len(wart) + len(led) + len(rm)}")
         return
     if "--pruefung-vorbefuellen" in sys.argv:
         pruefung_vorbefuellen()
@@ -402,6 +457,8 @@ def main():
     wartet, handles_wartet = {}, {}
     demand, handles_demand = {}, {}
     anzeigen_meldungen = 0
+    rueck = {}                                  # 21.10.2026 (M2a): Rückmeldungs-Abdeckung, siehe rueckmeldung_zaehlen()
+    jetzt_scan = datetime.datetime.utcnow()
     t0 = time.time()
     # 03.10.2026 FORTSETZEN: Der Vollscan (~206 Seiten, Eimer-Wartezeiten) braucht länger als eine Stunde; der Container
     # startet etwa stündlich neu. Heute wurde der Lauf um 07:11, 08:09 und 08:31 gestartet und jedes Mal abgebrochen
@@ -421,14 +478,16 @@ def main():
         ziel_leer = teil_alt.get("ziel_leer", {})
         wartet, handles_wartet = teil_alt.get("wartet", {}), teil_alt.get("handles_wartet", {})
         demand, handles_demand = teil_alt.get("demand", {}), teil_alt.get("handles_demand", {})
+        rueck = teil_alt.get("rueck", {})
         t0 -= teil_alt.get("dauer_s", 0)
         print(f"FORTSETZEN ab Seite {seiten} ({gescannt} gescannt)", flush=True)
     while True:
         d = gql("query($c:String){ products(first:250, after:$c, query:\"status:active\"){ pageInfo{hasNextPage endCursor} "
-                "nodes{ handle onlineStoreUrl feedback{ details{ app{title} messages{ message } } } } } }", {"c": cursor})
+                "nodes{ handle onlineStoreUrl feedback{ details{ app{title} feedbackGeneratedAt messages{ message } } } } } }", {"c": cursor})
         pg = d["data"]["products"]; seiten += 1
         for n in pg["nodes"]:
             gescannt += 1
+            rueckmeldung_zaehlen((n.get("feedback") or {}).get("details"), jetzt_scan, rueck)
             for det in ((n.get("feedback") or {}).get("details") or []):
                 app = ((det.get("app") or {}).get("title") or "?")
                 for m in det.get("messages") or []:
@@ -481,7 +540,7 @@ def main():
         json.dump({"cursor": cursor, "seiten": seiten, "gescannt": gescannt, "klassen": klassen, "handles": handles,
                    "ohne_url": ohne_url, "andere": andere, "ausland": ausland, "anzeigen": anzeigen_meldungen, "personal": personal, "handles_pers": handles_pers, "ziel_leer": ziel_leer,
                    "wartet": wartet, "handles_wartet": handles_wartet, "demand": demand, "handles_demand": handles_demand,
-                   "dauer_s": round(time.time() - t0)}, open(tmp, "w", encoding="utf-8"), ensure_ascii=False)
+                   "rueck": rueck, "dauer_s": round(time.time() - t0)}, open(tmp, "w", encoding="utf-8"), ensure_ascii=False)
         os.replace(tmp, TEIL)
     voll = seiten < SEITEN_MAX
     blocker = sum(klassen.values())
@@ -498,6 +557,7 @@ def main():
              "handles_wartet": handles_wartet,                # ohne Deckel; google_bildtausch_bilanz: Gruppe «in Prüfung»
              "nur_demand_gen": dict(sorted(demand.items(), key=lambda x: -x[1])),   # 14.10.: kein Gratis-Eintrag-Blocker
              "handles_demand_gen": handles_demand,
+             "rueckmeldung": rueckmeldung_stand(rueck),   # 21.10.2026 (M2a): wie viele hat Google je bewertet, wie frisch?
              "dauer_s": round(time.time() - t0)}
     heute = stand["stand"][:10]
     seit = seit_neu(seit_lesen(), {h for v in handles_wartet.values() for h in v}, heute, voll)

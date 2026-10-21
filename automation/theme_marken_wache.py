@@ -22,6 +22,7 @@ MARKEN = [
     ("sections/main-blog.liquid", "LUX-BLOG-PAGINATE", "Blog-Index mit 24 Artikeln je Seite und Seiten-Links (21.10.2026)"),
     ("sections/main-blog.liquid", "pagination-controls", "Blog-Index rendert die Seitenleiste"),
     ("snippets/pagination-controls.liquid", "pagination__list", "Seitenleisten-Baustein des Themes ist vorhanden"),
+    ("snippets/product-grid.liquid", "LUX-SEITENNAV", "Pagination-Pilot: Seitenlinks unter dem Raster der 12 Pilot-Kollektionen (21.10.2026, dropship/PAGINATION-PILOT-2026-10-21.md)"),
 ]
 
 
