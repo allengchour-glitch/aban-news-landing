@@ -1626,3 +1626,5 @@ gid://shopify/Product/16617711436167	ok	Ausziehbares Küchenregal
 gid://shopify/Product/16638444175751	ok	Doppeltes Schlafsack Outdoor mit dickerem Kälteschutz
 gid://shopify/Product/16647029686663	ok	Rucksack Männer 56-75l mit Anti-Diebstahl und Nass-Trockenscheidung
 gid://shopify/Product/16647030833543	ok	Multifunktionaler Rucksack für Outdoor-Lauftraining
+gid://shopify/Product/16644310270343	ok	Echtes Leder Retro Rucksack
+gid://shopify/Product/16650218733959	ok	Rucksack aus Rindleder

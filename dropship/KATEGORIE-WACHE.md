@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-21T01:16Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-21T02:12Z
 
-Aktive gescannt: 3 · ohne Kategorie: 3 · heute gesetzt: 1 (SCHARF, CAP 1500) · danach offen: 2 · Fehler: 0
+Aktive gescannt: 48 · ohne Kategorie: 48 · heute gesetzt: 46 (SCHARF, CAP 1500) · danach offen: 2 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -11,5 +11,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- lipstick-matte-langanhaltend-leicht-aufzutrage-605300 · Make-up → Health & Beauty > Personal Care > Cosmetics > Makeup
+- makeup-palette-fur-augen-und-wangen-623700 · Make-up → Health & Beauty > Personal Care > Cosmetics > Makeup
+- faltbare-damen-munzborse-in-pu-leder-626100 · Taschen → Luggage & Bags
+- kindermake-up-set-mit-gruner-tasche-605800 · Make-up → Health & Beauty > Personal Care > Cosmetics > Makeup
+- businessrucksack-mit-luftpolster-wasserdicht-603400 · Taschen → Luggage & Bags
+- kurze-clutch-handtasche-mit-reissverschluss-625900 · Taschen → Luggage & Bags
 
