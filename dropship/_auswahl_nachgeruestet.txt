@@ -3371,3 +3371,5 @@
 16612716315015	Farbe:2:2	2026-10-21	rucksack-fur-reisen-und-alltag-20-l-170944
 16612772249991	Farbe:3:3	2026-10-21	yogamatte-fur-training-und-fitness-033024
 16612707369351	Farbe:3:3	2026-10-21	hundeschussel-anti-rutsch-m-mittel-7380b5
+16615663436167	Variante:7:7+ki	2026-10-21	kreatives-blumen-bausteinmodell-phalaenopsis-178752
+16615663206791	Variante:3+Ausführung:2:3+ki	2026-10-21	elektrische-bausteine-steckpuzzle-fur-kinder-527232

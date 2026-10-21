@@ -12642,3 +12642,5 @@ wasserreiniger-heisswasserspender-624400	2505300122421624600	3	65.26	ok	landesei
 schlankes-streifen-kleid-623300	2607070206161624200	16	11.00	ok	landeseite
 keramik-bugeleisen-mit-3-stufen-regelung-2600w-617800	2505281234441618400	7	29.07	ok	landeseite
 smart-armbanduhr-mit-gesundheits-features-044608	1791377390191513600	7	6.44	ok	landeseite
+mini-handheld-scanner-mit-bildschirm-und-wlan-613600	2505240904221613800	7	12.09	ok	landeseite
+taktische-uhr-mit-dual-display-723776	1785285086083026944	7	7.58	ok	landeseite
