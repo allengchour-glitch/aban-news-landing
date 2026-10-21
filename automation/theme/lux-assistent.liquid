@@ -220,10 +220,13 @@
       c:['lieferzeit','rueckgabe']},
     firmen:{k:['firmen','firma$','verein$','vereine','b2b','grosshandel','grossbestellung','grosse bestellung','mengenrabatt','wiederverkauf','geschaeftskunden','geschaeftlich'],w:[],
       a:'Für Firmen, Vereine und grössere Bestellungen haben wir eine eigene Seite mit Anfrageformular: '+L(R+'pages/firmen-vereine','Firmen &amp; Vereine')+'.',
+      c:['kontakt']},
+    merkliste:{k:['merkliste','merklisten','wunschliste','wunschlisten','merkzettel','gemerkte','gemerkten','favoritenliste','meine favoriten','herzli','wo ist die liste','wo finde ich die liste','finde die liste','gemerkt$','wo sind meine gemerkten','mit dem herz','das herz'],w:['herz$','herzen$','merken$','liste$','favoriten$'],
+      a:'Deine <b>Merkliste</b> findest du oben in der Kopfzeile: auf das <b>Herz</b> tippen (die Zahl zeigt, wie viele Artikel du gemerkt hast) – oder direkt hier: '+L(R+'pages/merkliste','Zur Merkliste')+'. Gemerkt wird mit dem Herz auf jeder Produktkarte und auf der Produktseite. Die Liste bleibt auf diesem Gerät gespeichert.',
       c:['kontakt']}
   };
-  var NAMEN={versand:'Versand & Kosten',lieferzeit:'Lieferzeit',tracking:'Lieferstatus & Tracking',rueckgabe:'Rückgabe',defekt:'Defekt / falsch geliefert',garantie:'Garantie',zoll:'Zoll & Einfuhr',zahlung:'Zahlung',kontakt:'Kontakt',personal:'Personalisiert',firmen:'Firmen & Vereine',ich:'Bist du ein Mensch?'};
-  var PRIO=['defekt','garantie','rueckgabe','tracking','lieferzeit','zoll','versand','zahlung','personal','firmen','ich','kontakt'];  /* bei Gleichstand */
+  var NAMEN={versand:'Versand & Kosten',lieferzeit:'Lieferzeit',tracking:'Lieferstatus & Tracking',rueckgabe:'Rückgabe',defekt:'Defekt / falsch geliefert',garantie:'Garantie',zoll:'Zoll & Einfuhr',zahlung:'Zahlung',kontakt:'Kontakt',personal:'Personalisiert',firmen:'Firmen & Vereine',merkliste:'Merkliste',ich:'Bist du ein Mensch?'};
+  var PRIO=['defekt','garantie','rueckgabe','tracking','lieferzeit','zoll','versand','zahlung','personal','firmen','merkliste','ich','kontakt'];  /* bei Gleichstand */
 
   /* ---------- Kategorien und Geschenkfinder: nur geprüfte Kollektionen (die Wache prüft jede verlinkte Adresse) ---------- */
   var KATS=[
