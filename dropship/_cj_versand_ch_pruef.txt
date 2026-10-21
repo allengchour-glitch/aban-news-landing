@@ -12471,3 +12471,4 @@ einfarbiger-rundhalspullover-614200	2606130843461615000	16	11.60	ok	landeseite
 kinder-stiefel-221440	1616315286699913216	16	10.15	ok	landeseite
 pluschspielzeug-fur-hunde-621100	2502160553401621300	16	7.15	ok	landeseite
 ripped-kurzarm-shirt-mit-tattoo-muster-620200	2606130456321620900	16	9.33	ok	landeseite
+gelbe-kinderstiefel-111936	1616311079066415104	16	9.47	ok	landeseite

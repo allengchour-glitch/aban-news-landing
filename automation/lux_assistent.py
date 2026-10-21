@@ -48,6 +48,13 @@ FAKTEN = [
     ("CONTACT_INFORMATION", "info@luxestyle.ch", "info@luxestyle.ch"),
     ("PAGE:kontakt-support", "Antwort in der Regel innert 24 Stunden an Werktagen", "Antwort in der Regel innert 24 Stunden an Werktagen"),
     ("PAGE:versand-lieferung", "Sendungsnummer folgt in einer zweiten E-Mail", "Sendungsnummer folgt in einer zweiten E-Mail"),
+    ("PAGE:kontakt-support", "Eine Telefon-Hotline gibt es bewusst nicht", "Eine Telefon-Hotline gibt es bewusst nicht"),
+    ("PAGE:faq", "ab rund CHF 60 Warenwert inklusive Versand", "ab rund CHF 60 Warenwert inklusive Versand"),
+    ("PAGE:faq", "ab einem Steuerbetrag von CHF 5 erhoben", "ab einem Steuerbetrag von CHF 5 erhoben"),
+    ("PAGE:faq", "Blitzversand aus dem Schweizer Lager", "Blitzversand aus dem Schweizer Lager"),
+    ("PAGE:faq", "ausschliesslich an volljährige Personen ab", "ausschliesslich an volljährige Personen ab"),
+    ("PAGE:garantie", "Eine separate Herstellergarantie gibt es bei Dropship-Ware nicht", "Eine separate Herstellergarantie gibt es bei Dropship-Ware nicht"),
+    ("PAGE:rueckgabe", "Einen direkten Umtausch bieten wir nicht an", "Einen direkten Umtausch gibt es nicht"),
 ]
 
 
@@ -246,7 +253,9 @@ def selbsttest():
     pol_ok = {"SHIPPING_POLICY": "ab CHF 50 gratis. Liechtenstein CHF 14.90. 2–3 Werktage, 7–14 Werktage, 10–20 Werktage, 15–45 Tage",
               "REFUND_POLICY": "30-tägiges Rückgaberecht … innerhalb von 7 Tagen nach Erhalt … spätestens innerhalb von 14 Tagen nach Eingang",
               "TERMS_OF_SERVICE": "TWINT PayPal Klarna Apple Pay Google Pay", "CONTACT_INFORMATION": "info@luxestyle.ch",
-              "PAGE:kontakt-support": "Antwort in der Regel innert 24 Stunden an Werktagen", "PAGE:versand-lieferung": "Die Sendungsnummer folgt in einer zweiten E-Mail, sobald"}
+              "PAGE:kontakt-support": "Antwort in der Regel innert 24 Stunden an Werktagen. Eine Telefon-Hotline gibt es bewusst nicht — schriftlich", "PAGE:versand-lieferung": "Die Sendungsnummer folgt in einer zweiten E-Mail, sobald",
+              "PAGE:faq": "dort fällt nie etwas an: Blitzversand aus dem Schweizer Lager. Einfuhrsteuer wird erst ab einem Steuerbetrag von CHF 5 erhoben — ab rund CHF 60 Warenwert inklusive Versand. Raucherzubehör — geben wir ausschliesslich an volljährige Personen ab.",
+              "PAGE:garantie": "Eine separate Herstellergarantie gibt es bei Dropship-Ware nicht — sag uns Bescheid", "PAGE:rueckgabe": "Einen direkten Umtausch bieten wir nicht an. Am schnellsten"}
     soll(fakten_pruefen(pol_ok, quelle), [], "Quelle stimmt mit Richtlinien überein")
     pol_neu = dict(pol_ok, SHIPPING_POLICY=pol_ok["SHIPPING_POLICY"].replace("CHF 50", "CHF 60"))
     b = fakten_pruefen(pol_neu, quelle)
@@ -275,6 +284,8 @@ def selbsttest():
     soll(zeile(jetzt, {"stand": "kaputt", "befunde": []}).startswith("⚠️"), True, "Stand unlesbar → ⚠️")
     soll("+41 79" in quelle, False, "Telefonnummer steht nicht im Assistenten")
     soll("versenden wir gratis" in quelle, False, "keine unbedingte Gratis-Zusage für CH-Lager")
+    soll("\\u0300-\\u036f" in quelle, True, "Diakritika-Klasse als Escape (kein unsichtbares Literal)")
+    soll(any("\u0300" <= ch <= "\u036f" for ch in quelle), False, "keine rohen Kombinationszeichen im Quelltext")
     if fehler:
         print("\n".join("❌ " + f for f in fehler)); return 1
     print("✅ Selbsttest lux_assistent: alle Fälle richtig"); return 0
