@@ -12578,3 +12578,7 @@ kalender-mesh-gurt-armbanduhr-herren-wasserdic-629000	2503050322241629200	7	7.30
 sportliches-armband-612300	2501160333471612600	7	6.49	ok	landeseite
 gesichts-dampfer-mit-aromatherapie-065920	1604754026988580864	7	27.14	ok	landeseite
 mini-luftbefeuchter-319232	1604336072815816704	7	10.98	ok	landeseite
+sportuhr-mit-smart-assistant-wetter-musik-blut-626400	2501150348211626600	7	8.10	ok	landeseite
+mini-feuchtigkeitsspender-fur-fahrzeuge-682624	1602246835496824832	7	8.10	ok	landeseite
+elektrischer-3-jet-luftbefeuchter-900992	1601752632970981376	16	13.28	ok	landeseite
+vulkanischer-ultraschall-luftbefeuchter-252864	1598580034598612992	7	23.43	ok	landeseite
