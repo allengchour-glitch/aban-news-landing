@@ -3390,3 +3390,7 @@
 15497361031553	stecker-eu	2026-10-21	thermostat-steckdose-mit-timer-f7ff56
 15496539636097	Typ:3:3	2026-10-21	led-teelichter-flackernd-batteriebetrieben-594688
 15496515027329	Länge:2:2	2026-10-21	smart-power-off-ladekabel-fur-apple-gerate-270400
+15497354969473	Modell:5:5+ki	2026-10-21	weltraum-rakete-bausteine-puzzle-602200
+15496379269505	Grösse:4:4	2026-10-21	magnetisches-kupferarmband-verstellbar-623000
+15496371798401	Farbe:5:5	2026-10-21	wc-sitzauflage-flauschig-wasserdicht-607200
+15496251146625	Menge:4:4	2026-10-21	nadelruckfuhrmaschine-stecker-set-612200
