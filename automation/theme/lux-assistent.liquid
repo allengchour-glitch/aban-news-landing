@@ -1,0 +1,208 @@
+{%- comment -%}
+  LuxeStyle Assistent (21.10.2026, Betreiber: «smartbot auf shopify ist zu teuer — machst du es gratis und besser»).
+  Kostenlos, ohne App, ohne KI-Dienst, ohne Server: beantwortet Fragen zu Versand, Lieferzeit, Rückgabe, Zahlung, Sendungsverfolgung
+  und Kontakt aus FESTEN Antworten, die den Shop-Richtlinien entsprechen (kein Erfinden), und sucht Produkte über die Shopify-
+  Suchvorschlags-Schnittstelle (/search/suggest.json, gleiche Domain, gratis). Es wird nichts gespeichert und nichts an Dritte gesendet.
+  Nur deutsche Sprachversion, nicht im Warenkorb. Ausblenden/Rückbau: Abschnitt «lux_assistent» aus sections/footer-group.json nehmen.
+{%- endcomment -%}
+{%- if request.locale.iso_code == 'de' and request.page_type != 'cart' -%}
+<div id="luxas" hidden>
+  <button type="button" class="luxas-btn" id="luxas-open" aria-haspopup="dialog" aria-expanded="false" aria-controls="luxas-panel">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <span>Hilfe</span>
+  </button>
+  <section id="luxas-panel" class="luxas-panel" role="dialog" aria-label="LuxeStyle Assistent" hidden>
+    <header class="luxas-head">
+      <div><strong>LuxeStyle Assistent</strong><small>Fragen zum Shop · Produkte finden</small></div>
+      <button type="button" class="luxas-x" id="luxas-close" aria-label="Schliessen">×</button>
+    </header>
+    <div class="luxas-log" id="luxas-log" role="log" aria-live="polite"></div>
+    <div class="luxas-chips" id="luxas-chips"></div>
+    <form class="luxas-form" id="luxas-form" autocomplete="off">
+      <input type="text" id="luxas-in" name="frage" maxlength="120" placeholder="Frage stellen oder Produkt suchen …" aria-label="Deine Frage oder dein Suchwort" enterkeyhint="send">
+      <button type="submit" aria-label="Senden">➤</button>
+    </form>
+  </section>
+</div>
+{% raw %}
+<style>
+#luxas{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:5;font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#2c2c2c}
+#luxas[hidden],#luxas [hidden]{display:none!important}
+#luxas[data-hold]{display:none!important}
+body:has(.sticky-add-to-cart__bar[data-stuck="true"]) #luxas{bottom:calc(92px + env(safe-area-inset-bottom,0px))}
+html:has(dialog[open]) #luxas,html:has(.menu-drawer[open]) #luxas,html:has(.cart-drawer[open]) #luxas{display:none!important}
+.luxas-btn{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 18px 0 15px;border-radius:999px;border:1px solid #d4b896;background:#2c2c2c;color:#faf7f2;font:600 15px/1 inherit;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.22)}
+.luxas-btn:focus-visible,.luxas-x:focus-visible,.luxas-chip:focus-visible,.luxas-form button:focus-visible,.luxas-form input:focus-visible,#luxas a:focus-visible{outline:3px solid #b8935a;outline-offset:2px}
+.luxas-panel{position:fixed;right:14px;bottom:calc(74px + env(safe-area-inset-bottom,0px));z-index:12;width:min(380px,calc(100vw - 28px));height:min(560px,calc(100dvh - 110px));display:flex;flex-direction:column;background:#faf7f2;border:1px solid #d4b89680;border-radius:16px;box-shadow:0 14px 44px rgba(0,0,0,.28);overflow:hidden}
+body:has(.sticky-add-to-cart__bar[data-stuck="true"]) .luxas-panel{bottom:calc(152px + env(safe-area-inset-bottom,0px));height:min(560px,calc(100dvh - 170px))}
+.luxas-head{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 14px;background:#2c2c2c;color:#faf7f2}
+.luxas-head strong{display:block;font-size:15px}
+.luxas-head small{display:block;font-size:12px;opacity:.75}
+.luxas-x{min-width:44px;min-height:44px;border:0;background:transparent;color:inherit;font-size:28px;line-height:1;cursor:pointer}
+.luxas-log{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:10px;overscroll-behavior:contain}
+.luxas-m{max-width:88%;padding:9px 12px;border-radius:14px;word-wrap:break-word;overflow-wrap:anywhere}
+.luxas-m a{color:#7a5a2c;font-weight:600;text-decoration:underline}
+.luxas-bot{align-self:flex-start;background:#fff;border:1px solid #e8dfd2;border-top-left-radius:4px}
+.luxas-me{align-self:flex-end;background:#d4b896;color:#2c2c2c;border-top-right-radius:4px}
+.luxas-cards{display:flex;flex-direction:column;gap:8px;align-self:stretch}
+.luxas-card{display:flex;gap:10px;align-items:center;padding:8px;background:#fff;border:1px solid #e8dfd2;border-radius:12px;text-decoration:none!important;color:inherit!important;min-height:64px}
+.luxas-card img{width:56px;height:56px;object-fit:cover;border-radius:8px;flex:none;background:#f1ece4}
+.luxas-card b{display:block;font-size:14px;font-weight:600;line-height:1.3;max-height:2.6em;overflow:hidden}
+.luxas-card span{font-size:13px;color:#7a5a2c;font-weight:700}
+.luxas-more{align-self:flex-start;font-size:14px;color:#7a5a2c;font-weight:600;text-decoration:underline}
+.luxas-chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 12px 8px}
+.luxas-chip{min-height:36px;padding:0 12px;border-radius:999px;border:1px solid #d4b896;background:#fff;color:#2c2c2c;font:500 13.5px/1 inherit;cursor:pointer}
+.luxas-form{display:flex;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));border-top:1px solid #e8dfd2;background:#fff}
+.luxas-form input{flex:1;min-width:0;min-height:44px;padding:0 12px;border:1px solid #d4b896;border-radius:10px;font:16px/1 inherit;background:#fff;color:#2c2c2c}
+.luxas-form button{min-width:48px;min-height:44px;border:0;border-radius:10px;background:#2c2c2c;color:#faf7f2;font-size:18px;cursor:pointer}
+@media (max-width:600px){.luxas-panel{right:8px;left:8px;width:auto;bottom:calc(70px + env(safe-area-inset-bottom,0px))}}
+@media (prefers-reduced-motion:no-preference){.luxas-panel{animation:luxas-in .18s ease-out}@keyframes luxas-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}}
+</style>
+<script>
+(function(){
+  'use strict';
+  var root=document.getElementById('luxas'); if(!root) return;
+  var $=function(i){return document.getElementById(i)};
+  var btn=$('luxas-open'),panel=$('luxas-panel'),log=$('luxas-log'),chips=$('luxas-chips'),form=$('luxas-form'),inp=$('luxas-in');
+  var R=(window.Shopify&&window.Shopify.routes&&window.Shopify.routes.root)||'/';
+  var started=false,suchmodus=false;
+
+  /* ---------- Wissen: feste Antworten nach den Shop-Richtlinien (Versand, Rückgabe, AGB; Stand 21.10.2026) ---------- */
+  var L=function(h,t){return '<a href="'+h+'">'+t+'</a>'};
+  var T={
+    versand:{k:['versandkosten','porto','gratis','kostenlos','versand','liefergebiet','ausland','liechtenstein','deutschland','oesterreich','schweiz'],
+      a:'Wir liefern in die <b>Schweiz</b> und nach <b>Liechtenstein</b>. In der Schweiz ist der Standardversand <b>ab CHF 50 gratis</b>; darunter siehst du die Kosten im Warenkorb, bevor du bestellst. Artikel ab Schweizer Lager versenden wir gratis. Liechtenstein: CHF 14.90 pro Bestellung. Andere Länder sind derzeit nicht möglich.<br>'+L(R+'pages/versand-lieferung','Alle Versandinfos'),
+      c:['lieferzeit','tracking']},
+    lieferzeit:{k:['lieferzeit','wie lange','dauer','wann kommt','wann ist','ankunft','liefertermin','lieferdatum','unterwegs','schnell','express','lieferfrist'],
+      a:'Das hängt vom Artikel ab – auf jeder Produktseite steht die Angabe für genau diesen Artikel:<br>• <b>Ab Schweizer Lager:</b> meist 2–3 Werktage (das genaue Datum zeigt die Kasse)<br>• <b>Druck auf Bestellung</b> (personalisiert): 7–14 Werktage<br>• <b>Direktversand ab Lieferant</b> (der grösste Teil): 10–20 Werktage<br>• <b>Liechtenstein:</b> meist 15–45 Tage<br>Das sind Richtwerte. Verzögert sich etwas spürbar, melden wir uns per E-Mail.<br>'+L(R+'pages/versand-lieferung','Details zu Lieferzeiten'),
+      c:['tracking','versand']},
+    tracking:{k:['tracking','sendungsverfolgung','sendung','paket','wo ist','bestellstatus','bestellung verfolgen','verfolgen','status','versandbestatigung','versandbestaetigung','nicht angekommen','noch nicht da'],
+      a:'Sobald deine Bestellung versandt ist, bekommst du eine <b>Versandbestätigung per E-Mail</b> – wenn verfügbar mit Link zur Sendungsverfolgung. Die Seite dazu: '+L(R+'pages/tracking','Sendungsverfolgung')+'.<br>Ist deine Lieferung deutlich später als angegeben, schreib uns mit der Bestellnummer an '+L('mailto:info@luxestyle.ch','info@luxestyle.ch')+'.',
+      c:['lieferzeit','kontakt']},
+    rueckgabe:{k:['ruckgabe','rueckgabe','zuruck','zurueck','retour','umtausch','widerruf','ruecksend','rucksend','erstattung','geld zuruck','geld zurueck','refund','umtauschen'],
+      a:'Du hast <b>30 Tage Rückgaberecht ab Erhalt</b>, ohne Angabe von Gründen – die Ware muss unbenutzt und originalverpackt sein. So geht es: Schreib uns mit Bestellnummer an '+L('mailto:info@luxestyle.ch','info@luxestyle.ch')+', du bekommst per E-Mail die gültige <b>Retourenadresse</b> (bitte keine Pakete unaufgefordert an die Impressums-Adresse schicken). Die Rücksendekosten trägst du selbst – ausser bei defekter, beschädigter oder falscher Ware. Die Erstattung folgt spätestens 14 Tage nach Eingang. Ausgenommen sind z. B. geöffnete Hygieneartikel und personalisierte Artikel.<br>'+L(R+'pages/rueckgabe','Alle Details zur Rückgabe'),
+      c:['defekt','kontakt']},
+    defekt:{k:['defekt','kaputt','beschadigt','beschaedigt','falsch','falscher artikel','mangel','fehlt','garantie','reklamation','reklamieren','funktioniert nicht'],
+      a:'Das tut uns leid. Ist ein Artikel <b>defekt, beschädigt oder falsch geliefert</b>, melde dich bitte <b>innerhalb von 7 Tagen nach Erhalt</b> unter '+L('mailto:info@luxestyle.ch','info@luxestyle.ch')+' – mit Bestellnummer und einem <b>Foto oder Video</b> vom Mangel. Nach der Prüfung bekommst du kostenlosen Ersatz oder die volle Erstattung; die Rücksendung ist dann für dich kostenlos.<br>'+L(R+'pages/garantie','Garantie & Rückgabe'),
+      c:['rueckgabe','kontakt']},
+    zahlung:{k:['zahl','bezahl','twint','klarna','paypal','rechnung','kreditkarte','visa','mastercard','amex','american express','apple pay','google pay','vorkasse','raten'],
+      a:'Du kannst bezahlen mit <b>Kreditkarte</b> (Visa, Mastercard, American Express), <b>TWINT</b>, <b>PayPal</b>, <b>Klarna</b>, <b>Apple Pay</b> und <b>Google Pay</b> – je nach Verfügbarkeit im Checkout. Die genauen Optionen siehst du in der Kasse.',
+      c:['versand','rueckgabe']},
+    kontakt:{k:['kontakt','mail','telefon','anrufen','nummer','mensch','person','support','erreichen','adresse','mitarbeiter','berater','schreiben'],
+      a:'Schreib uns: '+L('mailto:info@luxestyle.ch','info@luxestyle.ch')+' · Telefon <a href="tel:+41795382814">+41 79 538 28 14</a>. Bitte gib bei Fragen zu einer Bestellung die Bestellnummer an.<br>'+L(R+'pages/kontakt-support','Kontakt & Support'),
+      c:['tracking','rueckgabe']},
+    personal:{k:['selbst gestalten','personalis','bedruck','druck','eigenes design','eigenes foto','gravur','individuell'],
+      a:'Personalisierte Artikel („Druck auf Bestellung“) werden für dich gefertigt: <b>7–14 Werktage</b> inklusive Produktion. Bitte beachte: Personalisierte und individuell angefertigte Artikel sind von der Rückgabe ausgeschlossen, sofern kein Mangel vorliegt.',
+      c:['lieferzeit','rueckgabe']},
+    firmen:{k:['firma','firmen','verein','vereine','b2b','grosshandel','grossbestellung','mengenrabatt','stuckzahl','stückzahl','wiederverkauf'],
+      a:'Für Firmen, Vereine und grössere Bestellungen haben wir eine eigene Seite mit Anfrageformular: '+L(R+'pages/firmen-vereine','Firmen & Vereine')+'.',
+      c:['kontakt']}
+  };
+  var NAMEN={versand:'🚚 Versand & Kosten',lieferzeit:'⏱️ Lieferzeit',tracking:'📦 Wo ist meine Bestellung?',rueckgabe:'↩️ Rückgabe',defekt:'⚠️ Defekt / falsch geliefert',zahlung:'💳 Zahlung',kontakt:'✉️ Kontakt',personal:'🎨 Personalisiert',firmen:'🏢 Firmen & Vereine'};
+  var START=['versand','lieferzeit','tracking','rueckgabe','zahlung','kontakt'];
+
+  function norm(s){return String(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/ß/g,'ss').replace(/ä/g,'a').replace(/ö/g,'o').replace(/ü/g,'u').replace(/\s+/g,' ').trim()}
+  var NK={};Object.keys(T).forEach(function(t){NK[t]=T[t].k.map(norm)});
+  function thema(q){
+    var n=norm(q),best='',bs=0;
+    Object.keys(NK).forEach(function(t){var s=0;NK[t].forEach(function(k){if(n.indexOf(k)>-1)s+=k.length>4?2:1});if(s>bs){bs=s;best=t}});
+    return best;
+  }
+  function esc(s){var d=document.createElement('div');d.textContent=String(s);return d.innerHTML}
+  function msg(html,who){var m=document.createElement('div');m.className='luxas-m luxas-'+who;m.innerHTML=html;log.appendChild(m);log.scrollTop=(who==='bot')?Math.max(0,m.offsetTop-log.offsetTop-8):log.scrollHeight;return m}
+  function setChips(list){
+    chips.innerHTML='';
+    list.forEach(function(c){var b=document.createElement('button');b.type='button';b.className='luxas-chip';b.textContent=c.t;b.addEventListener('click',c.f);chips.appendChild(b)});
+  }
+  function chipTop(){
+    var l=START.map(function(t){return {t:NAMEN[t],f:function(){ask(NAMEN[t],t)}}});
+    l.push({t:'🔎 Produkt suchen',f:function(){suchmodus=true;msg('Was suchst du? Schreib ein Stichwort, z. B. „Handyhülle“ oder „Geschenk für Papa“.','bot');setChips([]);inp.focus()}});
+    var d=new Date();
+    if(d<new Date('2026-11-01T00:00:00+01:00'))l.push({t:'🎃 Halloween',f:function(){linkAntwort('Halloween','Hier ist unsere Halloween-Welt mit Kostümen und Deko:',R+'collections/halloween')}});
+    if(d<new Date('2026-12-27T00:00:00+01:00'))l.push({t:'🎄 Weihnachten',f:function(){linkAntwort('Weihnachten','Weihnachtsgeschenke und Deko findest du hier:',R+'collections/weihnachten-2026')}});
+    l.push({t:'🎁 Geschenkideen',f:function(){msg('Geschenkideen','me');msg('Das hilft dir beim Aussuchen:<br>'+L(R+'collections/geschenke-fuer-sie','Geschenke für Sie')+' · '+L(R+'collections/geschenke-fuer-ihn','für Ihn')+' · '+L(R+'collections/geschenke-fuer-kinder','für Kinder')+' · '+L(R+'collections/geschenke-unter-30','unter CHF 30'),'bot');setChips(chipTop())}});
+    setChips(l);
+  }
+  function linkAntwort(frage,text,href){msg(esc(frage),'me');msg(esc(text)+'<br>'+L(href,'Zur Kollektion ansehen'),'bot');chipTop()}
+  function ask(frage,t){
+    msg(esc(frage),'me');
+    var th=T[t];
+    msg(th.a,'bot');
+    setChips(th.c.map(function(x){return {t:NAMEN[x],f:function(){ask(NAMEN[x],x)}}}).concat([{t:'🔎 Produkt suchen',f:function(){suchmodus=true;msg('Was suchst du?','bot');setChips([]);inp.focus()}},{t:'↩︎ Anfang',f:chipTop}]));
+  }
+  function preis(p){var v=parseFloat(p);return isFinite(v)?'CHF '+v.toFixed(2):''}
+  function suche(q){
+    var wait=msg('Ich schaue im Sortiment …','bot');
+    var url=R+'search/suggest.json?q='+encodeURIComponent(q)+'&resources[type]=product&resources[limit]=4&resources[options][unavailable_products]=hide';
+    var ctl=('AbortController' in window)?new AbortController():null,tm=setTimeout(function(){ctl&&ctl.abort()},9000);
+    fetch(url,{headers:{'Accept':'application/json'},signal:ctl?ctl.signal:undefined}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()}).then(function(j){
+      clearTimeout(tm);
+      var ps=((((j||{}).resources||{}).results||{}).products)||[];
+      wait.remove();
+      if(!ps.length){
+        msg('Dazu habe ich nichts gefunden. Versuch ein anderes Wort – oder schreib uns, wir helfen gern: '+L('mailto:info@luxestyle.ch','info@luxestyle.ch')+'.','bot');
+        setChips([{t:'🔎 Anderes Wort',f:function(){suchmodus=true;inp.focus()}},{t:'✉️ Kontakt',f:function(){ask('Kontakt','kontakt')}},{t:'↩︎ Anfang',f:chipTop}]);return;
+      }
+      msg('Das habe ich gefunden:','bot');
+      var wrap=document.createElement('div');wrap.className='luxas-cards';
+      ps.forEach(function(p){
+        var a=document.createElement('a');a.className='luxas-card';
+        var path=String(p.url||'').split('?')[0];a.href=path+'?ref=assistent';
+        var img=p.featured_image&&p.featured_image.url||p.image||'';
+        if(img){var im=document.createElement('img');im.alt='';im.loading='lazy';im.width=56;im.height=56;im.src=img+(img.indexOf('?')>-1?'&':'?')+'width=120';a.appendChild(im)}
+        var tx=document.createElement('div');var b=document.createElement('b');b.textContent=p.title||'';var s=document.createElement('span');s.textContent=preis(p.price);tx.appendChild(b);tx.appendChild(s);a.appendChild(tx);wrap.appendChild(a);
+      });
+      log.appendChild(wrap);
+      var more=document.createElement('a');more.className='luxas-m luxas-bot luxas-more';more.href=R+'search?type=product&q='+encodeURIComponent(q);more.textContent='Alle Treffer ansehen →';log.appendChild(more);
+      log.scrollTop=log.scrollHeight;
+      setChips([{t:'🔎 Neue Suche',f:function(){suchmodus=true;inp.focus()}},{t:'↩︎ Anfang',f:chipTop}]);
+    }).catch(function(){
+      clearTimeout(tm);wait.remove();
+      msg('Die Suche ist gerade nicht erreichbar. Du findest alles auch über die Suche oben auf der Seite – oder schreib uns an '+L('mailto:info@luxestyle.ch','info@luxestyle.ch')+'.','bot');
+      setChips([{t:'✉️ Kontakt',f:function(){ask('Kontakt','kontakt')}},{t:'↩︎ Anfang',f:chipTop}]);
+    });
+  }
+  function verarbeite(q){
+    q=q.trim().slice(0,120);if(!q)return;
+    var n=norm(q);
+    if(/^(hallo|hi|hoi|hey|gruezi|grezi|guten (tag|morgen|abend)|servus|moin|hilfe|help)\b/.test(n)&&n.split(' ').length<3){msg(esc(q),'me');msg('Hallo! Wobei kann ich helfen? Such dir ein Thema aus oder schreib dein Stichwort.','bot');chipTop();return}
+    if(/^(danke|merci|vielen dank|super|perfekt|ok|okay)\b/.test(n)&&n.split(' ').length<4){msg(esc(q),'me');msg('Sehr gerne! Wenn noch etwas offen ist – ich bin da.','bot');chipTop();return}
+    if(suchmodus){suchmodus=false;msg(esc(q),'me');suche(q);return}
+    var t=thema(q);
+    if(t){ask(q,t);return}
+    msg(esc(q),'me');suche(q);
+  }
+  function start(){
+    if(started)return;started=true;
+    msg('Hallo 👋 Ich bin der Shop-Assistent. Ich beantworte Fragen zu Versand, Rückgabe und Zahlung und helfe dir, Produkte zu finden. (Kein Mensch – für alles Weitere erreichst du uns unter '+L('mailto:info@luxestyle.ch','info@luxestyle.ch')+'.)','bot');
+    chipTop();
+  }
+  function oeffnen(){panel.hidden=false;btn.setAttribute('aria-expanded','true');start();if(window.matchMedia&&matchMedia('(pointer:fine)').matches)setTimeout(function(){try{inp.focus({preventScroll:true})}catch(e){}},30);try{sessionStorage.setItem('luxas','1')}catch(e){}}
+  function schliessen(){panel.hidden=true;btn.setAttribute('aria-expanded','false');try{sessionStorage.removeItem('luxas')}catch(e){};btn.focus()}
+  btn.addEventListener('click',function(){panel.hidden?oeffnen():schliessen()});
+  $('luxas-close').addEventListener('click',schliessen);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!panel.hidden)schliessen()});
+  form.addEventListener('submit',function(e){e.preventDefault();var v=inp.value;inp.value='';verarbeite(v)});
+
+  /* Der Knopf darf Cookie-Banner und E-Mail-Popup nicht überdecken: solange eines sichtbar ist, bleibt er weg. */
+  function halten(){
+    var h=false;['lx-cookie-banner','lx-pop'].forEach(function(i){var e=document.getElementById(i);if(e&&getComputedStyle(e).display!=='none')h=true});
+    if(h)root.setAttribute('data-hold','');else root.removeAttribute('data-hold');
+  }
+  function zeigen(){root.hidden=false;halten();setInterval(halten,1500);
+    ['lx-cookie-banner','lx-pop'].forEach(function(i){var e=document.getElementById(i);if(e&&'MutationObserver' in window)new MutationObserver(halten).observe(e,{attributes:true,attributeFilter:['style','class']})});
+    try{if(sessionStorage.getItem('luxas')==='1')oeffnen()}catch(e){}}
+  /* Erst nach dem Laden und einer kurzen Ruhe einblenden (kein Einfluss auf die Ladezeit der Seite). */
+  var spaet=function(){setTimeout(zeigen,2500)};
+  if(document.readyState==='complete')spaet();else window.addEventListener('load',spaet);
+})();
+</script>
+{% endraw %}
+{%- endif -%}
+{% schema %}
+{
+  "name": "LuxeStyle Assistent",
+  "settings": [],
+  "presets": []
+}
+{% endschema %}

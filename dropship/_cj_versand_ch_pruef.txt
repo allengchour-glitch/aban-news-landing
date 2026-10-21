@@ -12274,3 +12274,11 @@ keramik-wellenstab-439360	1427168622895304704	16	14.02	ok	landeseite
 leichte-sommerschuhe-fur-kinder-051136	1648124054483771392	16	9.47	ok	landeseite
 multifunktionales-locken-und-glatte-tool-738944	1420213461278920704	16	12.81	ok	landeseite
 sicherheitshelm-fur-sport-und-outdoor-2713f3	284371AA-1646-4CE4-98A4-3B2190330055	1	9.80	ok	landeseite
+atmungsaktive-maske-fur-sport-659873	3B5CF7FF-E5AA-457C-90B6-DA24549AD255	1	5.62	ok	landeseite
+2-in-1-haartrockner-kamm-136512	1418401026481983488	7	14.66	ok	landeseite
+babyschlappen-mit-stickbarchen-weiche-sohle-ru-837696	1647902493441003520	16	6.10	ok	landeseite
+vier-seasons-helm-c3bc67	47CDDB30-18BE-4632-A4C3-06AC667B8813	16	23.50	ok	landeseite
+einfacher-feldfahrer-helm-96ba85	12BF16A5-1173-4AB3-AA18-8D9964BEEBED	16	12.21	ok	landeseite
+intelligenter-luftbefeuchter-fur-den-schreibti-023744	1611298383166189569	16	20.58	ok	landeseite
+gro-e-turbinen-mini-fan-340544	1611310319534616576	16	9.61	ok	landeseite
+fahrrad-rucklicht-120512	1401725386248818688	16	7.43	ok	landeseite

@@ -2927,6 +2927,19 @@ KLT=/tmp/test_klingen_tor.log
       WMS=$(grep -a "WEARABLE-SEO:" "$WM" 2>/dev/null | tail -n 1); case "$WMS" in *"⚠️"*|*unklar*) echo "$(date -u +%H:%M) $WMS";; esac
     fi
   fi
+  # 21.10.2026 (Betreiber «smartbot zu teuer, gratis und besser»): Wache des kostenlosen Shop-Assistenten — Abschnitt live, Gruppe verweist,
+  # jede feste Antwort noch durch die Richtlinien gedeckt (Gratisschwelle, Fristen, Lieferzeiten, Zahlarten), verlinkte Seiten existieren.
+  # Läuft nur, solange dropship/_lux_assistent_aktiv.txt steht (Einbau schreibt sie, Rückbau löscht sie). START/FERTIG/Error für still_gestorben.
+  LAW=/tmp/lux_assistent_wache.log
+  if [ -f "$REPO/automation/lux_assistent.py" ] && [ -f "$REPO/dropship/_lux_assistent_aktiv.txt" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$LAW" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 43200 ] || absturz_nachholen "$LAW" || still_gestorben "$LAW"; then
+      touch "$LAW"
+      ( cd "$REPO" && setsid bash -c \
+          "exec >> \"$LAW\" 2>&1; echo \"START \$(date -u +%Y-%m-%dT%H:%M:%SZ)\"; python3 automation/lux_assistent.py --wache; rc=\$?; [ \$rc -le 1 ] || echo \"Error: lux_assistent rc=\$rc\"; echo \"FERTIG \$(date -u +%H:%M:%SZ) rc=\$rc\"" 9>&- & )
+      echo "$(date -u +%H:%M) Assistent-Wache geprüft"
+    fi
+  fi
   # SELBSTKONTROLLE: zaehlt die bekannten Falschaussage-Klassen AM OBJEKT (voller
   # Katalog live, tag-tolerante Muster) statt ueber die Shopify-Suche. Grund: an EINEM
   # Tag stand hier dreimal «Klasse auf 0», dreimal falsch, jedes Mal weil mit demselben
