@@ -12743,3 +12743,10 @@ transparente-elektronik-uhr-620500	2602130813461620800	7	5.62	ok	landeseite
 elektrisches-glatteisen-mit-temperaturregelung-862976	1385148935273844736	16	13.16	ok	landeseite
 handventilator-mit-usb-623600	2607121100411624200	7	6.13	ok	landeseite
 locken-und-glatte-styler-056768	1384758591239622656	16	11.00	ok	landeseite
+goldene-herren-armbanduhr-638900	2602120505311639200	7	6.98	ok	landeseite
+retro-overall-fur-herren-606300	2506180723531606600	16	10.83	ok	landeseite
+nano-titanium-haarglatter-136384	1384485080575119360	16	11.68	ok	landeseite
+fahrrad-frontscheinwerfer-620000	2607120417551620600	7	8.10	ok	landeseite
+ei-formige-armbanduhr-fur-damen-602700	2602110147531603000	7	8.08	ok	landeseite
+infrarot-haarglatter-mit-lcd-display-543296	1384675395693056000	16	14.96	ok	landeseite
+lockenstab-mit-temperaturstufen-438336	1384373355943170048	16	9.47	ok	landeseite
