@@ -1,0 +1,248 @@
+--- a/.claude/commands/luxestyle-assist.md
++++ b/.claude/commands/luxestyle-assist.md
+@@ -4,7 +4,7 @@
+ 
+ Arbeite ausschliesslich an LuxeStyle. Lies zuerst die aktuellen ausdrücklichen Inhabervorgaben, `SHARED-MEMORY.md` und `dropship/assistant/README.md`. Historische Autonomie-Notizen ersetzen keine aktuellen Einschränkungen.
+ 
+-1. Rufe `luxestyle-assist` → `luxe_doctor` auf. Prüfe `localReadiness` und den konkreten Vorschlag `nextWork`: Bei Blockern erst Ursache prüfen, keine Locks löschen oder Historie initialisieren. Der Vorschlag berücksichtigt alle verfügbaren Journalzeilen und hebt keine Freigabegrenze auf. Anschliessend `luxe_handoff_read` und benötigte Reviews lesen; `luxe_review_get` liefert einen vollen Einzelauftrag. Falls MCP nicht verfügbar ist, vom Repo-Root `node automation/claude-assist.mjs self-check` und die CLI-Funktionen ausführen. Der Selbsttest startet nur das feste lokale Protokoll, keine Business-Tools. Fehlend oder ungeprüft bleibt unbekannt; lokale Bereitschaft ist keine frische Shopify-/Metricool-Prüfung und kein bestätigter Claude-Clientstart.
++1. Rufe `luxestyle-assist` → `luxe_doctor` auf. Lies die beiden in `dailyContext.documents` fest genannten LuxeStyle-Dokumente und die aktuelle Chat-Vorgabe zuerst. `dailyContext` hasht nur lokale Kopien und erkennt den Zürcher Datumsblock. `stale` oder `unknown` bedeutet: lokalen Stand gegen die bekannte Wissensbranch gegenprüfen; niemals fehlende Arbeit, leere Vergangenheit oder einen Freigabestatus daraus ableiten. Keine Wiederholung bereits belegter Tageskennzahlen nur wegen dieses Befunds. Auch `available` belegt nur eine lokale Tabelle vom selben Datum, keine erledigten Prüfungen. Prüfe danach `localReadiness` und den konkreten Vorschlag `nextWork`: Bei Blockern erst Ursache prüfen, keine Locks löschen oder Historie initialisieren. Der Vorschlag berücksichtigt alle verfügbaren Journalzeilen und hebt keine Freigabegrenze auf. Anschliessend `luxe_handoff_read` und benötigte Reviews lesen; `luxe_review_get` liefert einen vollen Einzelauftrag. Falls MCP nicht verfügbar ist, vom Repo-Root `node automation/claude-assist.mjs self-check` und die CLI-Funktionen ausführen. Der Selbsttest startet nur das feste lokale Protokoll, keine Business-Tools. Fehlend oder ungeprüft bleibt unbekannt; lokale Bereitschaft ist keine frische Shopify-/Metricool-Prüfung und kein bestätigter Claude-Clientstart.
+ 2. Rufe bei Codeänderungen `luxe_change_plan` auf und führe passende feste Profile über `luxe_checks` mit `changed`, `core`, `seo` oder `assist` aus. Für eine bereits committierte Übergabe kann derselbe Planer das explizite Paar `baseCommit`/`headCommit` mit je vollständigen 40-stelligen Commit-IDs lokal vergleichen. Keine freien Refs oder automatische andere Vergleichsbasis; fehlende Objekte/flache Historie bleiben unbekannt, keine Fetches oder Checkouts auslösen. Das ist reine Planung, kein Test gegen den Ziel-Commit. Lokale Änderungen bei Bedarf zusätzlich ohne Argumente prüfen. `changed` und alle festen Prüfungen laufen weiterhin gegen die aktuelle Arbeitskopie und übernehmen keine Commit-IDs. Unbekannte Abdeckung und reine Dokumentänderungen sind kein grüner Testlauf. Fehlende Dateien bleiben unbekannt. Keine operativen Skripte aufgrund eines DRY_RUN-Flags starten. Kein beliebiges Shell-Kommando an den Helfer übergeben.
+ 3. Bearbeite einen sinnvollen lokalen Code-/Entwurfsschritt und führe notwendige Regressionen aus. `luxe_context` kann begrenzte Dateiauszüge für eine konkrete Frage vorbereiten. `luxe_review_request` merkt die Frage mit bis zu sechs tatsächlichen Dateihashes vor. Für einen bestehenden Auftrag dürfen belegte Ergebnisse mit `luxe_review_answer` manuell eingetragen werden: `requestId`, `verdict`, `summary`, `nextStep`, optional `blockers`. Erst mit `luxe_review_get` Quelle und aktuelle Anwendbarkeit prüfen. Geänderte/fehlende Quellen blockieren einen positiven Abschluss. Keine erfundene Modellantwort oder Freigabe aus grünen Tests ableiten.
+ 4. Speichere bestätigte Änderungen, Blocker und den nächsten Schritt mit `luxe_handoff_save`; bei belegten Quellen optional `files` mit bis zu sechs erlaubten Dateipfaden angeben. Beim Wiederaufnehmen `nextWork.evidence` prüfen: `verify_handoff_sources` erfordert eine Gegenprüfung, ungepinnte Altübergaben bleiben unbekannte manuelle Vorschläge. Testergebnisse nennen Hashbelege ihrer festen Inputs vor/nach dem Lauf; Änderungen oder unbekannte Abdeckung sind kein grüner Nachweis. Keine Geheimnisse oder Kundendaten speichern. Der eigene Hash-Verlauf verhindert kein Git-Mergeproblem: Beschädigung/Lock melden, nicht zurücksetzen. `dropship/assistant/handoff.jsonl` erst mit dem Arbeitsergebnis committen/pushen, damit andere Checkouts ihn sehen. Keine automatische Veröffentlichung, kein Dispatch/Merge/Deployment durch dieses Kommando.
+--- a/automation/lib/claude_assist.mjs
++++ b/automation/lib/claude_assist.mjs
+@@ -8,6 +8,7 @@
+ import { createBoundedRunner } from './claude_assist_runner.mjs';
+ import { validateCommitPins, planCommitRange } from './claude_assist_commits.mjs';
+ import { captureCheckEvidence, compareCheckEvidence } from './claude_assist_evidence.mjs';
++import { inspectDailyContext } from './claude_assist_daily.mjs';
+ 
+ const REPO = 'allengchour-glitch/aban-news-landing';
+ const JOURNAL = 'dropship/assistant/handoff.jsonl';
+@@ -22,7 +23,7 @@
+ export const CHECK_INPUTS = Object.freeze({
+   core: Object.freeze([...SUITES.core, 'automation/lib/shopify_gql.mjs', 'automation/lib/shopify_secret.mjs', 'automation/lib/kanal_sperren.mjs', 'automation/lib/claude_assist_offline.mjs']),
+   seo: Object.freeze([...SUITES.seo, 'automation/seo-optimizer.mjs', 'automation/lib/seo_titel.mjs', 'automation/lib/shopify_gql.mjs', 'automation/lib/shopify_secret.mjs', 'automation/lib/claude_assist_offline.mjs']),
+-  assist: Object.freeze([...SUITES.assist, 'automation/claude-assist.mjs', ...['claude_assist', 'claude_assist_mcp', 'claude_assist_offline', 'claude_assist_changes', 'claude_assist_readiness', 'claude_assist_launch', 'claude_assist_runner', 'claude_assist_commits', 'claude_assist_evidence'].map(name => 'automation/lib/' + name + '.mjs')]),
++  assist: Object.freeze([...SUITES.assist, 'automation/claude-assist.mjs', ...['claude_assist', 'claude_assist_mcp', 'claude_assist_offline', 'claude_assist_changes', 'claude_assist_readiness', 'claude_assist_launch', 'claude_assist_runner', 'claude_assist_commits', 'claude_assist_evidence', 'claude_assist_daily'].map(name => 'automation/lib/' + name + '.mjs')]),
+ });
+ export const POLICY = Object.freeze({
+   scope: 'LuxeStyle / luxestyle.ch only', brandId: 6227837, timezone: 'Europe/Zurich',
+@@ -153,7 +154,9 @@
+     const localReadiness = inspectReadiness({ nodeVersion: process.versions.node, config, configState,
+       cliPresent: present('automation/claude-assist.mjs'), commandPresent: present('.claude/commands/luxestyle-assist.md'),
+       lockState, repoState: repo.state, historyState: handoff.state });
+-    return { observedAt: new Date().toISOString(), source: 'local_files_only', repository: repo, node: process.versions.node,
++    const observedAt = new Date().toISOString();
++    const dailyContext = inspectDailyContext({ observedAt, readFile: (file, max) => readRaw(root, file, max) });
++    return { observedAt, dailyContext, source: 'local_files_only', repository: repo, node: process.versions.node,
+       localReadiness, nextWork: nextWork(localReadiness), claudeClient: 'unknown; local configuration is not a connected client',
+       references, handoff, reviews: reviewList(), policy: POLICY, liveAccountChecks: 'unknown', publications: 'unknown', revenue: 'unknown',
+       codexLink: 'Review requests are saved for a future Codex/Claude session. No background ChatGPT connection or model invocation.' };
+--- a/automation/lib/claude_assist_changes.mjs
++++ b/automation/lib/claude_assist_changes.mjs
+@@ -20,6 +20,7 @@
+   'automation/lib/claude_assist.mjs', 'automation/lib/claude_assist_test.mjs',
+   'automation/lib/claude_assist_mcp.mjs', 'automation/lib/claude_assist_mcp_test.mjs',
+   'automation/lib/claude_assist_offline.mjs',
++  'automation/lib/claude_assist_daily.mjs',
+   'automation/lib/claude_assist_changes.mjs', 'automation/lib/claude_assist_changes_test.mjs',
+   'automation/lib/claude_assist_readiness.mjs', 'automation/lib/claude_assist_readiness_test.mjs',
+   'automation/lib/claude_assist_launch.mjs', 'automation/lib/claude_assist_launch_test.mjs',
+--- /dev/null
++++ b/automation/lib/claude_assist_daily.mjs
+@@ -0,0 +1,88 @@
++/** Fixed local documentation reads only. Calendar coverage is not live evidence. */
++import { createHash } from 'node:crypto';
++
++export const DAILY_CONTEXT_FILES = Object.freeze([
++  'dropship/codex-handoff-20261018/README.md',
++  'dropship/codex-handoff-20261018/TAGESPROTOKOLL.md',
++]);
++const MAX_BYTES = 256 * 1024;
++const NOTE = 'Local checkout only; another branch or session may contain newer work. A dated table is not proof of completed checks, live accounts, sales, publication, rights or owner approval. Read both documents and current owner instructions before using nextWork; no remote fetch or automatic write was performed.';
++const hash = raw => createHash('sha256').update(raw).digest('hex');
++
++function dayFromHeading(value) {
++  const match = /^(\d{2})\.(\d{2})\.(\d{4})$/.exec(value);
++  if (!match) return null;
++  const [, day, month, year] = match;
++  const iso = `${year}-${month}-${day}`;
++  const date = new Date(`${iso}T12:00:00Z`);
++  return Number(year) >= 2000 && Number.isFinite(date.getTime()) && date.toISOString().slice(0, 10) === iso ? iso : null;
++}
++
++function inspectBlocks(text, today) {
++  let fence = null, active = null;
++  const blocks = [];
++  for (const line of text.split(/\r?\n/)) {
++    const marker = /^ {0,3}(`{3,}|~{3,})(.*)$/.exec(line);
++    if (fence) {
++      if (marker && marker[1][0] === fence.char && marker[1].length >= fence.length && !marker[2].trim()) fence = null;
++      continue;
++    }
++    if (marker) { fence = { char: marker[1][0], length: marker[1].length }; continue; }
++    const heading = /^##[ \t]+(.+?)[ \t]*$/.exec(line);
++    if (heading) {
++      active = null;
++      if (/^\d/.test(heading[1])) {
++        const day = dayFromHeading(heading[1]);
++        if (!day) return { state: 'unknown', reason: 'invalid_daily_heading', latestLocalDate: null };
++        if (blocks.some(block => block.day === day)) return { state: 'unknown', reason: 'duplicate_daily_heading', latestLocalDate: null };
++        if (blocks.length && day < blocks.at(-1).day) return { state: 'unknown', reason: 'unordered_daily_headings', latestLocalDate: null };
++        active = { day, lines: [] }; blocks.push(active);
++      }
++    } else if (active) active.lines.push(line);
++  }
++  if (fence) return { state: 'unknown', reason: 'unclosed_code_fence', latestLocalDate: null };
++  if (!blocks.length) return { state: 'unknown', reason: 'no_dated_block_in_local_copy', latestLocalDate: null };
++  const latest = blocks.at(-1);
++  if (latest.day > today) return { state: 'unknown', reason: 'future_daily_heading', latestLocalDate: latest.day };
++  const header = '| Bereich | Was Codex gemacht hat | Ergebnis / Status |';
++  const index = latest.lines.findIndex(line => line.trim().replace(/[ \t]+/g, ' ') === header);
++  const separator = latest.lines[index + 1] ?? '';
++  const firstRow = latest.lines[index + 2] ?? '';
++  if (index < 0 || !/^\s*\|\s*:?-{3,}:?\s*\|\s*:?-{3,}:?\s*\|\s*:?-{3,}:?\s*\|\s*$/.test(separator)
++    || !/^\s*\|.+\|.+\|.+\|\s*$/.test(firstRow)) {
++    return { state: 'unknown', reason: 'latest_daily_table_missing_or_unrecognised', latestLocalDate: latest.day };
++  }
++  return { state: latest.day === today ? 'available' : 'stale', latestLocalDate: latest.day,
++    calendarCoverage: latest.day === today ? 'same_day_table_present' : 'older_local_table_only' };
++}
++
++/** Caller supplies the existing bounded, symlink-rejecting reader; no arbitrary paths. */
++export function inspectDailyContext({ readFile, observedAt = new Date().toISOString() } = {}) {
++  const result = { state: 'unknown', source: 'fixed_local_documents', timezone: 'Europe/Zurich',
++    observedAt, calendarDate: null, documents: [], latestLocalDate: null,
++    handoffFreshness: 'unknown', requiresDocumentRead: true, note: NOTE };
++  if (typeof observedAt !== 'string' || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?(?:Z|[+-]\d{2}:\d{2})$/.test(observedAt)
++    || !Number.isFinite(Date.parse(observedAt))) return { ...result, reason: 'invalid_observation_time' };
++  const parts = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Zurich', year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(new Date(observedAt));
++  const part = type => parts.find(row => row.type === type)?.value;
++  result.calendarDate = `${part('year')}-${part('month')}-${part('day')}`;
++  if (typeof readFile !== 'function') return { ...result, reason: 'local_reader_unavailable' };
++  const texts = new Map();
++  result.documents = DAILY_CONTEXT_FILES.map((file, index) => {
++    try {
++      const raw = readFile(file, MAX_BYTES);
++      if (!Buffer.isBuffer(raw) || raw.length === 0 || raw.length > MAX_BYTES) throw Error('invalid_bytes');
++      const text = new TextDecoder('utf-8', { fatal: true }).decode(raw);
++      const title = index === 0 ? /^# LuxeStyle:/ : /^# LuxeStyle: Tagesprotokoll\s*(?:\n|$)/;
++      if (!title.test(text) || text.includes('\0') || /^(?:<{7}|={7}|>{7})(?:\s|$)/m.test(text)) throw Error('invalid_document');
++      texts.set(file, text);
++      return { file, state: 'present', sha256: hash(raw), bytes: raw.length };
++    } catch {
++      return { file, state: 'unknown', sha256: null, bytes: null, reason: 'missing_unreadable_unsafe_or_invalid_local_document' };
++    }
++  });
++  const log = texts.get(DAILY_CONTEXT_FILES[1]);
++  const coverage = log ? inspectBlocks(log, result.calendarDate) : { state: 'unknown', reason: 'local_daily_log_unavailable', latestLocalDate: null };
++  return { ...result, ...coverage, ...(result.documents.some(row => row.state !== 'present')
++    ? { state: 'unknown', reason: 'local_context_incomplete' } : {}) };
++}
+--- a/automation/lib/claude_assist_test.mjs
++++ b/automation/lib/claude_assist_test.mjs
+@@ -127,7 +127,7 @@
+   const f = fixture(t);
+   const here = path.dirname(fileURLToPath(import.meta.url));
+   fs.mkdirSync(path.join(f.root, 'automation/lib'), { recursive: true });
+-  for (const file of ['claude_assist.mjs','claude_assist_mcp.mjs','claude_assist_offline.mjs','claude_assist_changes.mjs','claude_assist_readiness.mjs','claude_assist_launch.mjs','claude_assist_runner.mjs','claude_assist_commits.mjs','claude_assist_evidence.mjs']) fs.copyFileSync(path.join(here, file), path.join(f.root, 'automation/lib', file));
++  for (const file of ['claude_assist.mjs','claude_assist_mcp.mjs','claude_assist_offline.mjs','claude_assist_changes.mjs','claude_assist_readiness.mjs','claude_assist_launch.mjs','claude_assist_runner.mjs','claude_assist_commits.mjs','claude_assist_evidence.mjs','claude_assist_daily.mjs']) fs.copyFileSync(path.join(here, file), path.join(f.root, 'automation/lib', file));
+   fs.copyFileSync(path.join(here, '../claude-assist.mjs'), path.join(f.root, 'automation/claude-assist.mjs'));
+   for (const args of [['-c','init.templateDir=','init','--quiet',f.root], ['-C',f.root,'config','--local','remote.origin.url',remote]]) {
+     const r = spawnSync('git', args, { env: cleanEnv(), encoding: 'utf8' }); assert.equal(r.status, 0, r.stderr);
+@@ -682,3 +682,79 @@
+   assert.equal(stale.nextWork.kind,'verify_handoff_sources');assert.equal(stale.nextWork.evidence.state,'stale');
+   assert.equal(JSON.parse(run(['handoff-read']).stdout).records,1);
+ });
++
++// Fixed local continuity documents. No remote freshness or completed work is inferred.
++import { inspectDailyContext, DAILY_CONTEXT_FILES } from './claude_assist_daily.mjs';
++import { classifyChanges } from './claude_assist_changes.mjs';
++const dailyTable = day => `## ${day}\n\n| Bereich | Was Codex gemacht hat | Ergebnis / Status |\n|---|---|---|\n| Prüfung | Beleg gelesen | Unbekannt bleibt unbekannt |\n`;
++function dailyFixture(log = dailyTable('21.10.2026')) {
++  const files = new Map([[DAILY_CONTEXT_FILES[0], Buffer.from('# LuxeStyle: Übergabe\nHistorischer Stand.')],
++    [DAILY_CONTEXT_FILES[1], Buffer.from('# LuxeStyle: Tagesprotokoll\n\n' + log)]]);
++  const calls = [];
++  return { files, calls, readFile(file, max) { calls.push({ file, max }); if (!files.has(file)) throw Error('missing'); return files.get(file); } };
++}
++const dailyAt = '2026-10-21T05:00:00Z';
++test('daily context reads exactly two fixed bounded files and reports raw-byte hashes, no contents or completed-work claim', () => {
++  const f = dailyFixture(), r = inspectDailyContext({ readFile: f.readFile, observedAt: dailyAt });
++  assert.equal(r.state, 'available'); assert.equal(r.calendarDate, '2026-10-21');
++  assert.equal(r.calendarCoverage, 'same_day_table_present'); assert.equal(r.handoffFreshness, 'unknown');
++  assert.deepEqual(f.calls.map(c => c.file), DAILY_CONTEXT_FILES); assert.ok(f.calls.every(c => c.max === 262144));
++  assert.equal(r.documents[1].sha256, createHash('sha256').update(f.files.get(DAILY_CONTEXT_FILES[1])).digest('hex'));
++  assert.equal(JSON.stringify(r).includes('Historischer Stand.'), false);
++});
++test('daily calendar uses Zurich across UTC midnight and October DST change', () => {
++  for (const [at, day, iso] of [['2026-10-20T22:10:00Z','21.10.2026','2026-10-21'],['2026-10-25T22:10:00Z','25.10.2026','2026-10-25'],['2026-10-25T23:10:00Z','26.10.2026','2026-10-26']]) {
++    const f = dailyFixture(dailyTable(day)), r = inspectDailyContext({ readFile: f.readFile, observedAt: at });
++    assert.equal(r.calendarDate, iso); assert.equal(r.state, 'available');
++  }
++});
++test('older local daily table is stale, not missing work or an empty history', () => {
++  const f = dailyFixture(dailyTable('20.10.2026')), r = inspectDailyContext({ readFile: f.readFile, observedAt: dailyAt });
++  assert.equal(r.state,'stale'); assert.equal(r.latestLocalDate,'2026-10-20');
++  assert.equal(r.calendarCoverage,'older_local_table_only'); assert.match(r.note,/another branch or session/);
++});
++test('daily metadata rejects duplicate, invalid, future and unordered headings', () => {
++  for (const [log, reason] of [[dailyTable('21.10.2026')+dailyTable('21.10.2026'),'duplicate_daily_heading'],
++    [dailyTable('31.02.2026'),'invalid_daily_heading'],[dailyTable('22.10.2026'),'future_daily_heading'],
++    [dailyTable('21.10.2026')+dailyTable('20.10.2026'),'unordered_daily_headings']]) {
++    const f=dailyFixture(log),r=inspectDailyContext({ readFile:f.readFile,observedAt:dailyAt });
++    assert.equal(r.state,'unknown'); assert.equal(r.reason,reason);
++  }
++});
++test('daily metadata requires the owner table and does not take fenced examples as activity', () => {
++  for (const [log,reason] of [['## 21.10.2026\nNo table.','latest_daily_table_missing_or_unrecognised'],
++    ['```md\n'+dailyTable('21.10.2026')+'```\n','no_dated_block_in_local_copy'],
++    [dailyTable('21.10.2026')+'~~~\nunclosed','unclosed_code_fence']]) {
++    const f=dailyFixture(log),r=inspectDailyContext({readFile:f.readFile,observedAt:dailyAt});assert.equal(r.state,'unknown');assert.equal(r.reason,reason);
++  }
++  const f=dailyFixture('````md\n```\n'+dailyTable('22.10.2026')+'````\n'+dailyTable('21.10.2026'));
++  assert.equal(inspectDailyContext({readFile:f.readFile,observedAt:dailyAt}).state,'available');
++});
++test('daily unknown sources do not hide the independent document observation', () => {
++  const f=dailyFixture();f.files.delete(DAILY_CONTEXT_FILES[0]);
++  const r=inspectDailyContext({readFile:f.readFile,observedAt:dailyAt});
++  assert.equal(r.state,'unknown');assert.equal(r.latestLocalDate,'2026-10-21');assert.equal(r.documents[1].state,'present');
++  assert.equal(r.documents[0].sha256,null);assert.equal(r.documents[0].bytes,null);
++});
++test('daily invalid UTF8, oversized bytes, merge markers and wrong title remain unknown without outputting raw data', () => {
++  for(const raw of [Buffer.from([0xc3,0x28]),Buffer.alloc(262145,65),Buffer.from('# LuxeStyle: Tagesprotokoll\n<<<<<<< ours\n'+dailyTable('21.10.2026')),Buffer.from('# Other brand\n'+dailyTable('21.10.2026')),Buffer.from('')]) {
++    const f=dailyFixture();f.files.set(DAILY_CONTEXT_FILES[1],raw);
++    const r=inspectDailyContext({readFile:f.readFile,observedAt:dailyAt});assert.equal(r.state,'unknown');assert.equal(r.documents[1].sha256,null);
++  }
++});
++test('daily invalid observation clock does not read files', () => {
++  for (const observedAt of ['bad','2026-10-21',null,42]) { const f=dailyFixture();const r=inspectDailyContext({readFile:f.readFile,observedAt});assert.equal(r.state,'unknown');assert.equal(f.calls.length,0); }
++});
++test('doctor exposes local daily context while leaving missing journal and live states unknown', async t => {
++  const f=fixture(t);for(const [file,raw] of dailyFixture(dailyTable(new Intl.DateTimeFormat('de-CH',{timeZone:'Europe/Zurich',day:'2-digit',month:'2-digit',year:'numeric'}).format(new Date()))).files)write(f.root,file,raw);
++  const r=await f.app.doctor();assert.equal(r.dailyContext.state,'available');assert.equal(r.handoff.state,'unknown');assert.equal(r.liveAccountChecks,'unknown');assert.equal(r.publications,'unknown');assert.equal(r.localReadiness.state,'unknown');
++  assert.equal(f.calls.length,1);assert.equal(fs.existsSync(path.join(f.root,'dropship/assistant/handoff.jsonl')),false);
++});
++test('doctor rejects symlinked continuity files and leaves their bytes untouched', async t => {
++  const f=fixture(t),outside=path.join(f.root,'outside.md');write(f.root,'outside.md','# LuxeStyle: Tagesprotokoll\n'+dailyTable('21.10.2026'));
++  write(f.root,DAILY_CONTEXT_FILES[0],'# LuxeStyle: Übergabe\n');fs.symlinkSync(outside,path.join(f.root,DAILY_CONTEXT_FILES[1]));
++  const before=fs.readFileSync(outside);const r=await f.app.doctor();assert.equal(r.dailyContext.state,'unknown');assert.equal(r.dailyContext.documents[1].state,'unknown');assert.deepEqual(fs.readFileSync(outside),before);
++});
++test('new daily helper is covered by fixed assist selection and byte evidence', () => {
++  const file='automation/lib/claude_assist_daily.mjs';assert.equal(CHECK_INPUTS.assist.includes(file),true);assert.deepEqual(classifyChanges([file]).suites,['assist']);
++});
+--- a/dropship/assistant/README.md
++++ b/dropship/assistant/README.md
+@@ -62,6 +62,12 @@
+ 
+ `nextWork` wertet intern das ganze validierte Journal aus. Zuerst den ältesten unbeantworteten Review-Auftrag lesen und bei veralteten/fehlenden Dateien dessen Quellen gegenprüfen. Ohne offenen Auftrag gilt der jüngste echte Handoff oder eine spätere manuelle Review-Antwort mit ihrem nächsten Schritt und ihren Blockern. Deren Verdict und Quellenzustand bleiben sichtbar; veraltete/fehlende Quellen benötigen eine Gegenprüfung. Ein neuerer Handoff löst diesen Antwortstand ab. Eine spätere Notiz verdeckt keinen offenen Review hinter Seite 1. Bei Startblockern wird zuerst deren Prüfung empfohlen, kein Schreibschritt. Aufgezeichnete Vorschläge bleiben Daten und erweitern keine Inhaberfreigabe.
+ 
++## Lokaler Tageskontext in doctor
++
++`luxe_doctor` und CLI `doctor` liefern zusätzlich `dailyContext`: genau die beiden lokalen Dateien `dropship/codex-handoff-20261018/README.md` und `TAGESPROTOKOLL.md`, Originalbyte-SHA-256, Leseumfang und Kalenderdatum Europe/Zurich. Höchstens 256 KiB pro Datei, bestehender Symlink-/UTF-8-Schutz; keine frei übergebenen Pfade, Dateiinhalte oder Kundendaten in diesem Befund. Ein Tagesblock samt Tabelle vom selben lokalen Datum ergibt `available`, ein älterer `stale`; fehlende, unlesbare, ungültige, doppelte, künftige oder unklar geordnete Datumsblöcke bleiben `unknown`. Codezäune werden nicht als Tagesblöcke gewertet.
++
++Das ist eine automatische lokale Leseprüfung, keine Behauptung aktueller Remote-Daten oder erledigter Arbeit. Die Wissensbranch oder eine andere Sitzung kann weiter sein als dieser Checkout. `handoffFreshness` bleibt ausdrücklich unbekannt: Der Datumsblock bestätigt weder die Aktualität der README noch die Wahrheit ihrer Einträge. Beide Dokumente und die aktuelle Inhabervorgabe vor Verwendung von `nextWork` lesen; vorhandene Tagesbelege wiederverwenden. Kein automatisches Fetch, kein Zurücksetzen, keine neue Aufgabe, kein Zeitplanwechsel und keine Business-Abfrage. `localReadiness`, bisherige Journal-Wiederaufnahme und CLI-Exitcode behalten ihre bisherige Bedeutung.
++
+ ## Tests und Fehlermeldungen
+ 
+ `core` startet ausschliesslich die bestehenden Tests für Shopify-GraphQL-, Secret- und Kanalhelfer. `seo` startet ausschliesslich `seo-optimizer_test.mjs` und `seo_titel_test.mjs`; fehlen diese auf dem gewählten Branch, ist das Ergebnis unbekannt. `assist` prüft die eigenen acht Regressionstest-Dateien. Diese Integrationstests benötigen Kindprozesse und laufen ohne Netzwerk-Preload, aber mit bereinigter Umgebung. Die SEO-Überarbeitung aus PR [2694](https://github.com/allengchour-glitch/aban-news-landing/pull/2694) war beim Aufbau noch ein Entwurf und wird nicht stillschweigend integriert.
