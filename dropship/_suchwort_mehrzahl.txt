@@ -4342,3 +4342,23 @@ gid://shopify/Product/16652112068999	kleider	Ärmelloses Minikleid mit Leoparden
 gid://shopify/Product/16652115378567	kleider	Minikleid mit hohem Bund und A-Linie
 gid://shopify/Product/16652455379335	kleider	Langärmliges Spitzenkleid mit Rüschen
 gid://shopify/Product/16653092192647	taschen	Kinderflugzeug-Reise-Tablett Aufbewahrungstasche
+gid://shopify/Product/16654064124295	taschen	Clutch mit Münztasche und Kartenhalter
+gid://shopify/Product/16654273446279	kleider	Langärmliges Damenkleid mit Kordelzug, japanischer Stil
+gid://shopify/Product/16654276985223	taschen	Meerjungfrauen-Handtaschen-Makeup-Set
+gid://shopify/Product/16654277083527	kleider	Western-Style Off-Shoulder Fellkragen Langärmliges Rockkleid
+gid://shopify/Product/16654277443975	kleider	Rosenrotes Satin-Abendkleid mit Off-Shoulder
+gid://shopify/Product/16654277542279	kleider	Schlank geschnittenes Langkleid mit Schlitz
+gid://shopify/Product/16654277640583	kleider	Schlank geschnittenes Meerjungfrau-Abendkleid
+gid://shopify/Product/16654280524167	kleider	Elegantes Tüllkleid mit langen Ärmeln
+gid://shopify/Product/16654280982919	kleider	Tassel-Trenchkleid mit elastischer Taille
+gid://shopify/Product/16654281146759	kleider	Samtkleid mit Rundhals und langen Ärmeln
+gid://shopify/Product/16654281245063	kleider	Minikleid mit Lochmuster und Spitze
+gid://shopify/Product/16654281703815	kleider	Strickkleid knielang mit langen Ärmeln
+gid://shopify/Product/16654282817927	kleider	Einfarbiges Midikleid mit Schlitz, schmaler Schnitt
+gid://shopify/Product/16654283047303	kleider	Ärmelloses Faltenkleid
+gid://shopify/Product/16654347141511	kleider	Weites Strickkleid mit Quasten
+gid://shopify/Product/16654364967303	taschen	Aufbewahrungstasche fürs Auto – Rücksitz
+gid://shopify/Product/16654365032839	kleider	Ärmelloses Wickelkleid mit Blumenmuster
+gid://shopify/Product/16654370800007	kleider	Mädelkleid mit Hausschuh-Accessoires
+gid://shopify/Product/16654415888775	kleider	Strickkleid mit Rundhals und Regenbogenstreifen
+gid://shopify/Product/16655380054407	taschen	Komplettes Make-up-Set inkl. Aufbewahrungstasche

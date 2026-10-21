@@ -12491,3 +12491,10 @@ damen-straight-jeans-625500	2603310333001625900	16	10.83	ok	landeseite
 herren-elektronik-uhr-mit-doppeldisplay-637400	2603210245551637800	7	6.98	ok	landeseite
 multifunktionale-sportuhr-fur-herren-620700	2603200927021621300	7	6.31	ok	landeseite
 knochelgerissene-kurzbeine-fur-damen-605000	2603310256341605400	16	11.37	ok	landeseite
+mondphasen-armbanduhr-fur-herren-638000	2603200642401638300	7	6.98	ok	landeseite
+damen-high-waist-ripped-stretch-jeans-634100	2603301025481634500	16	12.09	ok	landeseite
+sportuhr-fur-herren-600800	2603200634081601500	7	6.90	ok	landeseite
+rissige-denim-hose-mit-sackleiste-619600	2603300855341610000	16	12.21	ok	landeseite
+quarz-armbanduhr-business-stil-603500	2603190616311604000	7	7.30	ok	landeseite
+weite-jeans-fur-damen-616700	2603300849461617100	16	11.00	ok	landeseite
+herren-quarz-armbanduhr-mit-leuchtband-604100	2603190308291604500	7	7.08	ok	landeseite
