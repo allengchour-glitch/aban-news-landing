@@ -568,7 +568,10 @@ with tempfile.TemporaryDirectory() as tmp:
         _node20 = _sh20.which("node") or ("/opt/node22/bin/node" if Path("/opt/node22/bin/node").exists() else None)
         pruefe("Oberfläche: die Gesundheits-Funktionen (Zeichen, Kopfzeile) stehen als reine Funktionen im Block gesund:start … gesund:ende und die Seite ruft sie auf",
                bool(_m20) and "function gesundKopfzeile(g)" in _m20.group(1) and "function gesundZeichen(x)" in _m20.group(1) and "gesundKopfzeile(g)" in _html20.split("// gesund:ende", 1)[1]
-               and ".warn{color:var(--warning)}" in _html20, bool(_m20))
+               and ".warn{color:var(--warn-text)}" in _html20 and _html20.count("--warn-text:") == 3, bool(_m20))  # ein Wert für jedes der drei Themen (hell; dunkel per Systemeinstellung; dunkel per Schalter)
+        import pilot as _PI21  # noqa: E402
+        pruefe("Reihe der Durchgänge: pilot.py (schreibt) und cockpit.py (liest) benennen dieselbe Datei im selben Ordner — jede Seite hat ihre eigene Konstante, nur dieser Test hält sie zusammen",
+               _PI21.NK_SERIE.name == C.NK_SERIE and _PI21.NK_SERIE.parent == C.ROOT / "data" and C.NK_SERIE.startswith("krypto-nachkontrolle"), (_PI21.NK_SERIE, C.NK_SERIE))
         # Der Test gehört zum Selbsttest vor dem Handeln (krypto-auto.bat): ein node, das sich nicht starten lässt, darf nie das Handeln blockieren → bei jedem Fehler bleibt es bei der Prüfung der Bauform
         _ok_ = {"name": "a", "ok": True, "text": "x"}
         _grau_ = {"name": "b", "ok": None, "text": "x"}
@@ -581,7 +584,7 @@ with tempfile.TemporaryDirectory() as tmp:
             _js20 = _m20.group(1) + ("\nconst faelle = JSON.parse(process.argv[1]);\nconst aus = {};\nfor (const [n, g] of Object.entries(faelle)) aus[n] = {kopf: gesundKopfzeile(g), zeichen: g.map(gesundZeichen)};\n"
                                     "process.stdout.write(JSON.stringify(aus));")
             try:
-                r_ = _sp20.run([_node20, "-e", _js20, json.dumps(_faelle20)], capture_output=True, text=True, timeout=60)
+                r_ = _sp20.run([_node20, "-e", _js20, json.dumps(_faelle20)], capture_output=True, text=True, encoding="utf-8", timeout=60)  # node schreibt UTF-8 (⚠, —) — nicht die Zeichentabelle der Konsole
                 k20 = json.loads(r_.stdout) if r_.returncode == 0 and r_.stdout else None
             except (OSError, _sp20.SubprocessError, ValueError):
                 k20 = None

@@ -14,7 +14,7 @@ def schalter_umbiegen(*module):
     module = tuple(module) + (CK,)
     CK.BUCH, CK.PRUEFUNG = ordner / "calls-kopierer.json", ordner / "calls-pruefung.json"
     for m in module:
-        for name in ("STOP_DATEI", "PAUSE_DATEI", "STOP", "PAUSE"):
+        for name in ("STOP_DATEI", "PAUSE_DATEI", "STOP", "PAUSE", "NK_SERIE", "PUSH_STILL"):  # (R20) auch die Reihe der Nachkontroll-Durchgänge und die Push-Drosselung: ein Test darf die Dateien des Nutzers nie überschreiben
             wert = getattr(m, name, None)
             if isinstance(wert, Path):
                 setattr(m, name, ordner / wert.name)

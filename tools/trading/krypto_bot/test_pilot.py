@@ -409,6 +409,7 @@ with _tf.TemporaryDirectory() as _sd:
     # die Nachkontrolle (pilot.py --nachkontrolle) wartet auf die Übernahme einer toten Sperre, statt nach 120 s still zu überspringen
     import pilot as _PI  # noqa: E402
     import pilot2_live as _P2L  # noqa: E402
+    testumgebung.schalter_umbiegen(_PI)  # (Code-Review der R20) `nachkontrolle(einmal=True)` schreibt die Reihe der Durchgänge: nie in die echte data/-Datei des Nutzers (sie würde eine rote Dauerwarnung zurücksetzen)
     _alt_ord, _alt_nk = SP.ORDNER, _P2L.nachkontrolle
     SP.ORDNER = Path(_sd)
     _lief = []
@@ -541,7 +542,7 @@ with _tf.TemporaryDirectory() as _sd:
         _pd20c = Path(_sd) / "push20c.json"
         for _i20 in range(_PI.PUSH_MERKEN + 4):
             _PI._push_nachkontrolle(f"Meldung {_i20}", True, datei=_pd20c, jetzt=100.0 + _i20)
-        _inhalt20 = _js20.loads(_pd20c.read_text())
+        _inhalt20 = _js20.loads(_pd20c.read_text())["meldungen"]
         _gepusht20.clear()
         _PI._push_nachkontrolle("Meldung 0", True, datei=_pd20c, jetzt=200.0)       # die älteste ist über die Obergrenze hinaus vergessen → geht wieder raus
         _PI._push_nachkontrolle(f"Meldung {_PI.PUSH_MERKEN + 3}", True, datei=_pd20c, jetzt=201.0)  # die jüngste ist noch gemerkt → still
@@ -549,6 +550,29 @@ with _tf.TemporaryDirectory() as _sd:
         _SG18.push = _alt_push18
     pruefe("Push-Drosselung (20. klein 5): die alte Dateifassung wird verstanden (gleiche Meldung gedrosselt); höchstens PUSH_MERKEN Einträge bleiben; was darüber hinausfällt, geht wieder raus, das Jüngste bleibt still",
            _alt_fmt20 is False and len(_inhalt20) == _PI.PUSH_MERKEN and len(_gepusht20) == 1 and _gepusht20[0].startswith("Meldung 0"), (_alt_fmt20, len(_inhalt20), _gepusht20))
+
+    # … (Code-Review der R20) eine ENTWARNUNG («geklärt») beendet die Folge der Warnungen: kehrt dieselbe Warnung zurück, ist das ein neues Ereignis und geht sofort raus (A, C, A, C — vorher stünde «geklärt» auf dem Handy, während der Markt wieder offen ist)
+    _pd20e = Path(_sd) / "push20e.json"
+    _gepusht20.clear()
+    _SG18.push = lambda t, *a, **k: (_gepusht20.append(t), True)[1]
+    try:
+        _folge20 = [_PI._push_nachkontrolle(t_, True, datei=_pd20e, jetzt=z_, warnung=w_) for t_, z_, w_ in
+                    (("Meldung A", 1000.0, True), ("Meldung A", 1100.0, True),            # gleiche Warnung: gedrosselt
+                     ("Meldung C geklärt", 1200.0, False), ("Meldung C geklärt", 1300.0, False),  # gleiche Entwarnung: gedrosselt
+                     ("Meldung A", 1400.0, True),                                           # die Warnung kehrt zurück → neu
+                     ("Meldung C geklärt", 1500.0, False),                                  # … und die Entwarnung dazu auch
+                     ("Meldung A", 1600.0, True),                                           # wieder eine Warnung → neu
+                     ("Meldung B", 1700.0, True), ("Meldung A", 1800.0, True), ("Meldung B", 1900.0, True))]  # innerhalb einer Folge: A, B, A, B → nur je einmal
+    finally:
+        _SG18.push = _alt_push18
+    pruefe("Push-Drosselung (Code-Review R20): eine Entwarnung beendet die Folge der Warnungen — A, A (still), C, C (still), A, C, A, B (alle neu), A, B (still)",
+           _folge20 == [True, False, True, False, True, True, True, True, False, False] and len(_gepusht20) == 6, (_folge20, _gepusht20))
+    _SG18.push = lambda t, *a, **k: (_gepusht20.append(t), True)[1]
+    try:
+        _vorab20 = _PI._push_nachkontrolle("Meldung A", True, datei=_pd20e, jetzt=2000.0)   # ohne «warnung» gilt die Meldung als Warnung (Vorgabe, wie bisher)
+    finally:
+        _SG18.push = _alt_push18
+    pruefe("Push-Drosselung: ohne Angabe gilt eine Meldung als Warnung (Vorgabe warnung=True) — dieselbe Warnung innerhalb der Folge bleibt gedrosselt", _vorab20 is False, _vorab20)
 
     # ── 20. Prüfung wichtig 1 / klein 8: die Reihe gleichartiger Durchgänge (Grundlage der Cockpit-Ampel) ──
     _sf20 = Path(_sd) / "serie20.json"
@@ -603,14 +627,16 @@ with _tf.TemporaryDirectory() as _sd:
     _alt_serie20, _alt_push20, _alt_lauf20, _alt_sp20 = _PI.NK_SERIE, _PI._push_nachkontrolle, _P2L.nachkontrolle, SP.lauf_sperre
     _antwort20 = [{"zeilen": [], "warnung": False, "auftraege": []}]
     _PI.NK_SERIE = Path(_sd) / "serie20b.json"
-    _PI._push_nachkontrolle = lambda *a, **k: True
+    _pushs20 = []
+    _PI._push_nachkontrolle = lambda text_, einmal_, *a, **k: (_pushs20.append((text_, einmal_, k.get("warnung"))), True)[1]
     _P2L.nachkontrolle = lambda *a, **k: _antwort20[0]
     SP.ORDNER = Path(_sd)
     _arten20, _rcs20 = [], []
     try:
         def _lies20():
             return _js20.loads(_PI.NK_SERIE.read_text())
-        _rcs20.append(_PI.nachkontrolle(einmal=True)); _arten20.append(_lies20())                       # ok
+        _antwort20[0] = {"zeilen": ["Nachkontrolle: geklärt, Stops gesetzt."], "warnung": False, "auftraege": []}
+        _rcs20.append(_PI.nachkontrolle(einmal=True)); _arten20.append(_lies20())                       # ok (mit einer Entwarnung: push mit warnung=False)
         _antwort20[0] = {"zeilen": ["⚠️ Markt BTC weiterhin nicht vollständig gesichert"], "warnung": True, "auftraege": []}
         _rcs20.append(_PI.nachkontrolle(einmal=True)); _arten20.append(_lies20())                       # warnung 1
         _rcs20.append(_PI.nachkontrolle(einmal=True)); _arten20.append(_lies20())                       # warnung 2
@@ -628,6 +654,8 @@ with _tf.TemporaryDirectory() as _sd:
     pruefe("nachkontrolle(einmal=True) führt die Reihe: ok → warnung ×2 (rc 3), die lange Fassung ändert sie nicht, «Sperre besetzt» (rc 0) zählt als «besetzt» ×2, eine Ausnahme im Durchgang ist eine Warnung (rc 3)",
            [(a_["art"], a_["anzahl"]) for a_ in _arten20] == [("ok", 1), ("warnung", 1), ("warnung", 2), ("besetzt", 1), ("besetzt", 2), ("warnung", 1)]
            and _rcs20 == [0, 3, 3, 3, 0, 0, 3] and _vor_lang20 == _nach_lang20, (_arten20, _rcs20))
+    pruefe("nachkontrolle(einmal=True) meldet der Push-Drosselung die ART des Durchgangs: eine Entwarnung (warnung=False) beendet die Folge der Warnungen, eine Warnung (warnung=True) nicht; die lange Fassung drosselt nicht (einmal=False)",
+           [(e_, w_) for _t, e_, w_ in _pushs20[:4]] == [(True, False), (True, True), (True, True), (False, True)], _pushs20)
 
 # ── Pilot: Märkte, Trendlänge je Coin, Logbuch, Wochenbericht ──
 import pilot as PI  # noqa: E402

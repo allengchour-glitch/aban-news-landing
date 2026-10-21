@@ -427,23 +427,27 @@ PUSH_ABSTAND_S = 3600
 PUSH_MERKEN = 8  # so viele verschiedene Meldungen der letzten Stunde bleiben gemerkt (abwechselnde Texte A, B, A, B dürfen nicht je einzeln durchkommen)
 
 
-def _push_nachkontrolle(text, einmal, datei=None, jetzt=None):
+def _push_nachkontrolle(text, einmal, datei=None, jetzt=None, warnung=True):
     """Push der Nachkontrolle. Im 10-Minuten-Takt (einmal) schickt dieselbe Meldung höchstens einmal je Stunde (18. Prüfung W3′: ein dauerhaft offener Markt hätte ~144 Pushes am Tag ausgelöst);
     eine ANDERE Meldung geht sofort. Ein Fehler hier darf nie das Pushen verhindern. → True, wenn die Meldung zugestellt wurde.
-    (20. Prüfung, klein 5) Gemerkt werden mehrere Kennungen der letzten Stunde, nicht nur die letzte: wechselt der Text zwischen zwei Fassungen (A, B, A, B — z. B. mit einer Minutenangabe), kam jede einzelne an."""
+    (20. Prüfung, klein 5) Gemerkt werden mehrere Kennungen der letzten Stunde, nicht nur die letzte: wechselt der Text zwischen zwei Fassungen (A, B, A, B — z. B. mit einer Minutenangabe), kam jede einzelne an.
+    (Code-Review der R20) Das gilt nur INNERHALB einer Folge gleicher Art: `warnung=False` (der Durchgang meldet eine Entwarnung, z. B. «geklärt») beendet die Folge der Warnungen und umgekehrt — kehrt dieselbe
+    Warnung nach einer Entwarnung zurück, ist das ein NEUES Ereignis und geht sofort raus (sonst stünde auf dem Handy «geklärt», während der Markt wieder offen ist)."""
     import hashlib
     import time
     import signale as SG
     datei = Path(datei) if datei else PUSH_STILL
     jetzt = time.time() if jetzt is None else jetzt
     kennung = hashlib.sha1(text.encode("utf-8", "replace")).hexdigest()[:16]
+    art = "warnung" if warnung else "entwarnung"
     gemerkt = {}
     if einmal:
         try:
             roh = json.loads(datei.read_text())
-            if "kennung" in roh:  # alte Fassung der Datei: eine Meldung
-                roh = {roh["kennung"]: roh.get("zeit")}
-            gemerkt = {k: float(z) for k, z in roh.items() if 0 <= jetzt - float(z or 0) < PUSH_ABSTAND_S}
+            if "kennung" in roh:  # Datei der R19: eine Meldung (immer eine Warnung)
+                roh = {"art": "warnung", "meldungen": {roh["kennung"]: roh.get("zeit")}}
+            if roh.get("art") == art:  # eine andere Art beendet die Folge: alles Gemerkte gilt als erledigt
+                gemerkt = {k: float(z) for k, z in (roh.get("meldungen") or {}).items() if 0 <= jetzt - float(z or 0) < PUSH_ABSTAND_S}
         except Exception:  # noqa: BLE001 — keine/kaputte Datei: pushen
             gemerkt = {}
         if kennung in gemerkt:
@@ -455,7 +459,7 @@ def _push_nachkontrolle(text, einmal, datei=None, jetzt=None):
             gemerkt[kennung] = jetzt
             neueste = sorted(gemerkt.items(), key=lambda kz: kz[1], reverse=True)[:PUSH_MERKEN]
             datei.parent.mkdir(parents=True, exist_ok=True)
-            datei.write_text(json.dumps(dict(neueste)))
+            datei.write_text(json.dumps({"art": art, "meldungen": dict(neueste)}))
         except Exception:  # noqa: BLE001
             pass
     return gesendet
@@ -517,7 +521,7 @@ def nachkontrolle(einmal=False):
     if r["zeilen"]:
         text_n = "\n".join(r["zeilen"])
         print(text_n)
-        _push_nachkontrolle(text_n, einmal)
+        _push_nachkontrolle(text_n, einmal, warnung=bool(r["warnung"]))
     if einmal:
         _serie_merken("warnung" if r["warnung"] else "ok")
     return 3 if r["warnung"] else 0

@@ -6879,6 +6879,39 @@ try:
     pruefe("20.Protokoll Ein anderer Schreiber schreibt seine Temp-Datei zwischen Schreiben und Umbenennen: der Eintrag landet unverfälscht im Protokoll (vorher übernahm das replace die Datei des anderen), seine Datei bleibt unberührt",
            [e_["n"] for e_ in json.loads(L.PROTOKOLL.read_text())] == [1, 2, 3] and fremd20_.exists() and json.loads(fremd20_.read_text()) == [{"n": 99}], (L.PROTOKOLL.read_text()[:200], fremd20_.exists()))
     fremd20_.unlink(missing_ok=True)
+    # … zwei Schreiber gleichzeitig (Not-Aus im Cockpit-Thread und ein Lauf): Lesen-Ändern-Schreiben unter der Schreib-Sperre — der zweite wartet, KEIN Eintrag geht verloren (ohne Sperre überschrieb das replace des ersten den des zweiten)
+    import threading as _th20p  # noqa: E402
+    orig_wt20q_, gestartet20_, tb20_ = Path.write_text, [False], []
+
+    def wt20q_(self, *a, **k):
+        r_ = orig_wt20q_(self, *a, **k)
+        if self.name.startswith("broker.json.") and self.name.endswith(".neu") and not gestartet20_[0]:
+            gestartet20_[0] = True
+            t_ = _th20p.Thread(target=lambda: L.protokoll_schreiben({"n": "B"}))      # der zweite Schreiber beginnt, WÄHREND der erste zwischen Schreiben und Umbenennen steht
+            tb20_.append(t_)
+            t_.start()
+            t_.join(0.6)                                                               # mit Sperre wartet er (lebt noch); ohne Sperre ist er längst fertig und der erste überschreibt ihn gleich
+        return r_
+    Path.write_text = wt20q_
+    try:
+        L.protokoll_schreiben({"n": "A"})
+    finally:
+        Path.write_text = orig_wt20q_
+    for t_ in tb20_:
+        t_.join(30)
+    pruefe("20.Protokoll Zwei Schreiber gleichzeitig: beide Einträge sind im Protokoll (der zweite wartet auf die Schreib-Sperre) — ohne Sperre ging einer verloren",
+           [e_["n"] for e_ in json.loads(L.PROTOKOLL.read_text())] == [1, 2, 3, "A", "B"], L.PROTOKOLL.read_text()[:300])
+    # … ein von Hand zurückgesetztes Protokoll («{}», «null») ist kein Absturz: es beginnt neu
+    for roh_ in ("{}", "null", '"text"', "[kaputt"):
+        L.PROTOKOLL.write_text(roh_)
+        aus_p_ = _io20.StringIO()
+        with _cl20.redirect_stdout(aus_p_):
+            L.protokoll_schreiben({"n": "neu"})
+        pruefe(f"20.Protokoll Ein zurückgesetztes Protokoll ({roh_}) beginnt neu — kein Absturz, ein Eintrag, kein Hinweis",
+               json.loads(L.PROTOKOLL.read_text()) == [{"n": "neu"}] and not aus_p_.getvalue().strip(), (L.PROTOKOLL.read_text()[:100], aus_p_.getvalue()))
+    L.protokoll_schreiben({"n": 1})
+    L.protokoll_schreiben({"n": 2})
+    L.protokoll_schreiben({"n": 3})
     orig_rep20p_ = Path.replace
 
     def replace20p_(self, ziel):
@@ -6895,8 +6928,17 @@ try:
     finally:
         Path.replace = orig_rep20p_
     pruefe("20.Protokoll Scheitert das Umbenennen: keine Ausnahme (der Eintrag ist ein Beleg, kein Schutz), ein Hinweis im Protokoll des Laufs, die eigene Temp-Datei ist weg, die alten Einträge unverändert",
-           fehler20p_ is None and "Protokoll nicht geschrieben" in aus20p_.getvalue() and not list(Path(sdp20_).glob("*.neu")) and [e_["n"] for e_ in json.loads(L.PROTOKOLL.read_text())] == [1, 2, 3],
+           fehler20p_ is None and "Protokoll nicht geschrieben" in aus20p_.getvalue() and not list(Path(sdp20_).glob("*.neu")) and [e_["n"] for e_ in json.loads(L.PROTOKOLL.read_text())] == ["neu", 1, 2, 3],
            (fehler20p_, aus20p_.getvalue(), list(Path(sdp20_).glob("*"))))
+    aus20r_, fehler20r_ = _io20.StringIO(), None
+    try:
+        with _cl20.redirect_stdout(aus20r_):
+            L.protokoll_schreiben({"n": object()})                                  # nicht als JSON schreibbar → TypeError, nicht OSError
+    except Exception as ex_:  # noqa: BLE001
+        fehler20r_ = type(ex_).__name__
+    pruefe("20.Protokoll Auch eine andere Ausnahme als OSError (hier: ein nicht schreibbarer Eintrag) bleibt folgenlos für den Lauf: Hinweis statt Absturz, die Datei unverändert",
+           fehler20r_ is None and "Protokoll nicht geschrieben (TypeError)" in aus20r_.getvalue() and [e_["n"] for e_ in json.loads(L.PROTOKOLL.read_text())] == ["neu", 1, 2, 3] and not list(Path(sdp20_).glob("*.neu")),
+           (fehler20r_, aus20r_.getvalue()))
 finally:
     L.PROTOKOLL = alt_prot20_
 

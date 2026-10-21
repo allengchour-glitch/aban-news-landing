@@ -4373,24 +4373,37 @@ def _notaus_schutz(spot, fut, st, k, sym, coin, pos, pos_vor, frei, gebunden, ku
     return ok[0]
 
 
+def _protokoll_anhaengen(eintrag):
+    try:
+        alt = json.loads(PROTOKOLL.read_text()) if PROTOKOLL.exists() else []
+    except (OSError, ValueError):
+        alt = []
+    if not isinstance(alt, list):  # z. B. «{}» oder «null» nach einem Zurücksetzen von Hand
+        alt = []
+    PROTOKOLL.parent.mkdir(exist_ok=True)
+    _buch_temp_aufraeumen(PROTOKOLL)
+    tmp = _buch_tmp(PROTOKOLL)
+    try:
+        tmp.write_text(json.dumps((alt + [eintrag])[-2000:], ensure_ascii=False, indent=1))
+        tmp.replace(PROTOKOLL)  # nie halb geschrieben
+    finally:
+        try:
+            tmp.unlink()
+        except OSError:
+            pass
+
+
 def protokoll_schreiben(eintrag):
     """Einen Eintrag ans Protokoll hängen (ein Beleg, kein Schutz). (20. Folge-Runde, Code-Review) Eigener Name der Temp-Datei je Schreiber wie beim Buch — zwei Schreiber teilten sich `<Protokoll>.neu`, das zweite
-    `replace` fand die Datei nicht mehr — und BEST EFFORT: ein Schreibfehler darf nie das Ergebnis eines Laufs ersetzen, dessen Aufträge schon raus sind (die Aufrufer stehen am Ende von `ausfuehren` und im Not-Aus)."""
+    `replace` fand die Datei nicht mehr —, Lesen-Ändern-Schreiben unter der kurzen Schreib-Sperre (sonst ging bei gleichzeitigen Schreibern, z. B. Not-Aus im Cockpit-Thread und Lauf, der Eintrag des einen verloren; ist die
+    Sperre nicht zu bekommen, wird trotzdem geschrieben) und BEST EFFORT: ein Fehler darf nie das Ergebnis eines Laufs ersetzen, dessen Aufträge schon raus sind (die Aufrufer stehen am Ende von `ausfuehren` und im Not-Aus)."""
+    from contextlib import ExitStack
     try:
-        try:
-            alt = json.loads(PROTOKOLL.read_text()) if PROTOKOLL.exists() else []
-        except (OSError, ValueError):
-            alt = []
-        PROTOKOLL.parent.mkdir(exist_ok=True)
-        _buch_temp_aufraeumen(PROTOKOLL)
-        tmp = _buch_tmp(PROTOKOLL)
-        try:
-            tmp.write_text(json.dumps((alt + [eintrag])[-2000:], ensure_ascii=False, indent=1))
-            tmp.replace(PROTOKOLL)  # nie halb geschrieben
-        finally:
+        with ExitStack() as stapel:
             try:
-                tmp.unlink()
-            except OSError:
+                stapel.enter_context(_buch_sperre(PROTOKOLL))
+            except Exception:  # noqa: BLE001 — Sperre belegt oder nicht anlegbar: lieber ohne Sperre schreiben als gar nicht
                 pass
-    except OSError as ex:
+            _protokoll_anhaengen(eintrag)
+    except Exception as ex:  # noqa: BLE001
         print(f"⚠️ Protokoll nicht geschrieben ({type(ex).__name__}) — der Lauf selbst ist davon nicht betroffen.")

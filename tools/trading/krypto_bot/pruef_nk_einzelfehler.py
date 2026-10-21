@@ -118,7 +118,7 @@ def fall(sz, vorlage, fehler, jung, budget0, nach=2):
     ex = None
     try:
         durchgang(env, d, True, jung, budget0)
-    except BaseException:  # noqa: BLE001
+    except Exception:  # noqa: BLE001
         ex = traceback.format_exc()[-500:]
     finally:
         B.regeln = []
@@ -127,7 +127,7 @@ def fall(sz, vorlage, fehler, jung, budget0, nach=2):
         try:
             P.pending_abarbeiten(); B.n_listen += 1000
             durchgang(env, d, False, jung, budget0)
-        except BaseException:  # noqa: BLE001
+        except Exception:  # noqa: BLE001
             ex = ex or traceback.format_exc()[-500:]
     bf = K.befunde(k, d)
     return dict(sz=sz, vorlage=vorlage, fehler=fehler, ausnahme=ex, betrag=K.betrag(bf), arten=[b[0] for b in bf], vermerkt=P.vermerkt_je_markt(d), anfragen=n_anfragen,
