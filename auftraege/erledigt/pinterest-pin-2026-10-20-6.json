@@ -3,6 +3,51 @@
   "skript": "pinterest_pin_erstellen.mjs",
   "id": "pinterest-pin-2026-10-20-6",
   "warum": "Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus auftraege/pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). 6 von 10 heute.",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "begonnen": "2026-10-21T07:33:01.513Z",
+  "dauer_s": 61.8,
+  "ergebnis": {
+    "gepinnt": [
+      "photonen-hautverjungungsgerat-mit-mikrostrom-604400"
+    ],
+    "unklar": [],
+    "uebersprungen": [],
+    "schritte": [
+      "Warteschlange 193, quittiert 73, offen 173",
+      "Boards auf dem Profil: /luxestyleCH/home-geschenkideen/, /luxestyleCH/sommerkleider-damenmode-2026/, /luxestyleCH/herrenmode-schweiz/, /luxestyleCH/geschenkideen-schweiz/, /luxestyleCH/wohnen-deko/, /luxestyleCH/schmuck-accessoires/, /luxestyleCH/wellness-beauty/, /luxestyleCH/schuhe-sandalen/, /luxestyleCH/schlaf-aromatherapie/, /luxestyleCH/k%C3%BCche-genuss/, /luxestyleCH/tech-gadgets/, /luxestyleCH/leder-accessoires/, /luxestyleCH/wellness-self-care/, /luxestyleCH/beauty-pflege/",
+      "Pinnwand «Wellness & Beauty» (https://ch.pinterest.com/luxestyleCH/wellness-beauty/, 1021 Z.): Titel nicht da",
+      "Bild 67123 Bytes (image/jpeg)",
+      "Beschreibung eingetragen",
+      "Nachlesen: Titel auf der Pinnwand (1085 Z.)"
+    ],
+    "bilder": [
+      "server:/var/lib/luxe-agent/ergebnis-angemeldet/pinterest-pin-2026-10-20-6-1-bild.png",
+      "server:/var/lib/luxe-agent/ergebnis-angemeldet/pinterest-pin-2026-10-20-6-2-ausgefuellt.png",
+      "server:/var/lib/luxe-agent/ergebnis-angemeldet/pinterest-pin-2026-10-20-6-3-nachher.png"
+    ],
+    "pin": {
+      "handle": "photonen-hautverjungungsgerat-mit-mikrostrom-604400",
+      "board": "Wellness & Beauty",
+      "title": "Photonen-Hautverjüngungsgerät mit Mikrostrom"
+    }
+  },
+  "bilder_weiche": {
+    "oeffentlich": false,
+    "im_repo": [],
+    "auf_server": [
+      {
+        "datei": "/var/lib/luxe-agent/ergebnis-angemeldet/pinterest-pin-2026-10-20-6-1-bild.png",
+        "bytes": 224432
+      },
+      {
+        "datei": "/var/lib/luxe-agent/ergebnis-angemeldet/pinterest-pin-2026-10-20-6-2-ausgefuellt.png",
+        "bytes": 250130
+      },
+      {
+        "datei": "/var/lib/luxe-agent/ergebnis-angemeldet/pinterest-pin-2026-10-20-6-3-nachher.png",
+        "bytes": 120667
+      }
+    ],
+    "hinweis": "Bilder aus angemeldeten Diensten bleiben auf dem Server (Plan Hetzner Schritt 11, 13.10.2026). Für den Inhalt als Text: Auftragsart seite_text."
+  }
 }
