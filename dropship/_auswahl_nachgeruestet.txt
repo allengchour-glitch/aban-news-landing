@@ -3386,3 +3386,7 @@
 16615390740871	Muster:3:3+ki	2026-10-21	zigarrenschneider-011392
 15497534439809	Ausführung:9:9+ki	2026-10-21	keramik-schmortopf-fur-eine-person-440832
 15497444032897	Farbe:2:2+ki	2026-10-21	water-light-cushion-foundation-614400
+15497430598017	Modell:4:4	2026-10-21	geschenkset-lidschatten-blush-accessoires-613500
+15497361031553	stecker-eu	2026-10-21	thermostat-steckdose-mit-timer-f7ff56
+15496539636097	Typ:3:3	2026-10-21	led-teelichter-flackernd-batteriebetrieben-594688
+15496515027329	Länge:2:2	2026-10-21	smart-power-off-ladekabel-fur-apple-gerate-270400
