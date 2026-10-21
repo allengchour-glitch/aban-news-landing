@@ -20,6 +20,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import sys
 from datetime import date, datetime, timezone
 from pathlib import Path
@@ -438,7 +439,9 @@ def _push_nachkontrolle(text, einmal, datei=None, jetzt=None, warnung=True):
     import signale as SG
     datei = Path(datei) if datei else PUSH_STILL
     jetzt = time.time() if jetzt is None else jetzt
-    kennung = hashlib.sha1(text.encode("utf-8", "replace")).hexdigest()[:16]
+    # Die Kennung ignoriert ZAHLEN (Code-Review der R20): Meldungen, die sich nur durch eine wandernde Zahl unterscheiden («seit 12 s», «zuletzt bekannten Kurs 3636»), sind dieselbe Warnung — sonst bekäme jeder
+    # Takt eine neue Kennung und die Drosselung liesse ~144 Pushes am Tag durch
+    kennung = hashlib.sha1(re.sub(r"\d+(?:['’.,]\d+)*", "#", text).encode("utf-8", "replace")).hexdigest()[:16]  # eine Zahl mit Tausender-/Dezimaltrennern ist EINE Zahl («3'641.5»)
     art = "warnung" if warnung else "entwarnung"
     gemerkt = {}
     if einmal:
@@ -467,6 +470,7 @@ def _push_nachkontrolle(text, einmal, datei=None, jetzt=None, warnung=True):
 
 NK_SERIE = ROOT / "data" / "krypto-nachkontrolle-serie.json"
 SERIE_LUECKE_S = 1800  # ein Durchgang, der länger als das zurückliegt (PC aus, Aufgabe angehalten), setzt die Reihe zurück: «in Folge» heisst im 10-Minuten-Takt
+BESETZT_PUSH_AB = 4    # so viele übersprungene Durchgänge in Folge (rund 40 Minuten) gehen aufs Handy — wie NK_BESETZT_ROT im Cockpit (ein Test hält beide zusammen): die Lampe sieht nur, wer das Cockpit offen hat
 
 
 def _serie_merken(art, datei=None, jetzt=None):
@@ -485,12 +489,14 @@ def _serie_merken(art, datei=None, jetzt=None):
         except Exception:  # noqa: BLE001 — keine/kaputte Datei: die Reihe beginnt
             anzahl, seit = 1, jetzt
         schreiben({"art": art, "anzahl": anzahl, "seit": seit, "zeit": jetzt}, datei)
+        return anzahl
     except Exception as ex:  # noqa: BLE001
         print(f"⚠️ Reihe der Durchgänge nicht gespeichert ({type(ex).__name__}) — die Cockpit-Ampel kann eine Dauerwarnung dann nicht rot färben.")
         try:
             datei.with_name(datei.name + f".tmp{os.getpid()}").unlink()
         except OSError:
             pass
+        return 0
 
 
 def nachkontrolle(einmal=False):
@@ -510,8 +516,11 @@ def nachkontrolle(einmal=False):
     except sperre.Besetzt as ex:
         if not not_aus:
             print(f"{ex} Nachkontrolle übersprungen — der andere Lauf prüft selbst.")
-            if einmal:
-                _serie_merken("besetzt")
+            if einmal and _serie_merken("besetzt") >= BESETZT_PUSH_AB:
+                # Hängt der Halter (ein angeklicktes Konsolenfenster hält ein Programm an, sein Herzschlag läuft weiter), prüft niemand mehr — und rc 0 meldet nichts. Der Text trägt KEINE Zahl: die Drosselung
+                # (höchstens einmal je Stunde) erkennt dieselbe Meldung wieder
+                _push_nachkontrolle("⚠️ Nachkontrolle Pilot 2.0: seit über 30 Minuten übersprungen — die Lauf-Sperre hält ein anderer Lauf (hängt der Tageslauf oder die lange Nachkontrolle? Ein angeklicktes "
+                                    "Konsolenfenster hält ein Programm an). Solange prüft niemand die Stops. Bitte das Fenster ansehen (Taste drücken oder schliessen) und data\\krypto-nachkontrolle.log lesen.", einmal)
             return 0
         r = {"zeilen": [f"⚠️ Not-Aus: Nachkontrolle Pilot 2.0 konnte nicht laufen ({ex}) — stop.bat in 5 Minuten nochmals "
                         "ausführen und das Binance-Konto prüfen!"], "warnung": True, "auftraege": []}

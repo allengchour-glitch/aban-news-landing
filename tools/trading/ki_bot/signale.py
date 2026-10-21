@@ -170,12 +170,13 @@ def push_ntfy(text, env=None):
         return False
 
 
-def push(text):
+def push_kanaele(text):
+    """Die Nachricht an alle eingerichteten Kanäle → {"ntfy": bool, "telegram": bool oder None (nicht eingerichtet)}. «ntfy» ist auch False, wenn KI_BOT_NTFY fehlt (push_ntfy unterscheidet beides nicht)."""
     token, chat = os.environ.get("TELEGRAM_BOT_TOKEN", ""), os.environ.get("TELEGRAM_CHAT_ID", "")
     print("\n" + text + "\n")
     ntfy = push_ntfy(text)
     if not token or not chat:
-        return ntfy
+        return {"ntfy": ntfy, "telegram": None}
     daten = urllib.parse.urlencode({"chat_id": chat, "text": text, "disable_web_page_preview": "true"}).encode()
     telegram = False
     try:
@@ -183,7 +184,13 @@ def push(text):
             telegram = bool(json.load(r).get("ok", False))
     except Exception as e:  # noqa: BLE001
         print(f"Telegram-Fehler: {type(e).__name__}")
-    return bool(ntfy or telegram)  # (20. Prüfung, klein 5) zugestellt, sobald EIN Kanal die Nachricht angenommen hat — vorher zählte bei eingerichtetem Telegram nur dessen Antwort, ein Fehler dort liess eine über ntfy angekommene Meldung als «nicht zugestellt» gelten
+    return {"ntfy": ntfy, "telegram": telegram}
+
+
+def push(text):
+    """True, sobald EIN Kanal die Nachricht angenommen hat (20. Prüfung, klein 5) — vorher zählte bei eingerichtetem Telegram nur dessen Antwort, ein Fehler dort liess eine über ntfy angekommene Meldung als
+    «nicht zugestellt» gelten. Den Einrichtungstest (`--test-push`) fragt das nicht: er verlangt ALLE eingerichteten Kanäle (`push_kanaele`)."""
+    return any(v is True for v in push_kanaele(text).values())
 
 
 # ───────────── Logbuch ─────────────
@@ -332,7 +339,12 @@ def main() -> int:
     ap.add_argument("--trocken", action="store_true", help="Broker: Aufträge nur anzeigen")
     a = ap.parse_args()
     if a.test_push:
-        return 0 if push("✅ Test: Der KI-Bot kann dir Nachrichten schicken.") else 1
+        k = push_kanaele("✅ Test: Der KI-Bot kann dir Nachrichten schicken.")
+        ntfy_da = bool(os.environ.get("KI_BOT_NTFY", "").strip())
+        fehlt = [n for n, ok in (("ntfy", k["ntfy"] if ntfy_da else None), ("Telegram", k["telegram"])) if ok is False]
+        if fehlt:
+            print(f"❌ Kein Test-Push über: {', '.join(fehlt)} (Zugang oder Token prüfen).")
+        return 0 if (any(v is True for v in k.values()) and not fehlt) else 1  # ein Test, der nur «irgendein Kanal» prüft, meldete einen kaputten Telegram-Zugang als Erfolg
     if a.rueckblick:
         rueckblick()
         return 0

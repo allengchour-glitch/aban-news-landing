@@ -146,6 +146,7 @@ data/krypto-auto-status.json
 data/selbsttest-*.log
 data/*.kaputt-*
 data/*.tmp*
+data/*.neu
 tools/trading/daten/funding/
 tools/trading/daten/binance_1m_fut/
 tools/trading/daten/copytrading/

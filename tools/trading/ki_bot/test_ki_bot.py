@@ -308,6 +308,38 @@ pruefe("push(): ntfy angekommen + Telegram-Fehler (Netz weg) → zugestellt (vor
 pruefe("push(): ntfy ODER Telegram angenommen → zugestellt; beide gescheitert → False", _p20[(False, True)] is True and _p20[(True, True)] is True and _p20[(False, False)] is False and _p20[(False, "fehler")] is False, _p20)
 pruefe("push(): ohne Telegram-Zugang zählt ntfy allein (angekommen → True, nicht → False)", _p20_ohne == {True: True, False: False}, _p20_ohne)
 
+# `--test-push` (Einrichtungstest) verlangt ALLE eingerichteten Kanäle — push() gilt schon bei einem (Code-Review der R20: sonst meldete der Test einen kaputten Telegram-Zugang als Erfolg, weil ntfy 200 sagt)
+def _testpush20(ntfy_ok, telegram, ntfy_thema, token):
+    alt_n, alt_u, alt_argv = SG.push_ntfy, _ur20.urlopen, sys.argv
+    alt_env = {k: _os20.environ.get(k) for k in ("TELEGRAM_BOT_TOKEN", "TELEGRAM_CHAT_ID", "KI_BOT_NTFY")}
+
+    def uo(req, *a, **k):
+        if telegram == "fehler":
+            raise OSError("Netz weg")
+        return _TgAntwort20(telegram)
+    SG.push_ntfy, _ur20.urlopen, sys.argv = (lambda text, env=None: ntfy_ok), uo, ["signale.py", "--test-push"]
+    for k_, v_ in (("TELEGRAM_BOT_TOKEN", "t" if token else None), ("TELEGRAM_CHAT_ID", "c" if token else None), ("KI_BOT_NTFY", "thema" if ntfy_thema else None)):
+        if v_ is None:
+            _os20.environ.pop(k_, None)
+        else:
+            _os20.environ[k_] = v_
+    try:
+        return SG.main()
+    finally:
+        SG.push_ntfy, _ur20.urlopen, sys.argv = alt_n, alt_u, alt_argv
+        for k_, v_ in alt_env.items():
+            if v_ is None:
+                _os20.environ.pop(k_, None)
+            else:
+                _os20.environ[k_] = v_
+
+
+_tp20 = {"beide ok": _testpush20(True, True, True, True), "ntfy ok, Telegram kaputt": _testpush20(True, "fehler", True, True), "ntfy kaputt, Telegram ok": _testpush20(False, True, True, True),
+         "nur ntfy ok": _testpush20(True, True, True, False), "nur ntfy kaputt": _testpush20(False, True, True, False), "nur Telegram ok": _testpush20(False, True, False, True),
+         "nur Telegram kaputt": _testpush20(False, "fehler", False, True), "nichts eingerichtet": _testpush20(False, True, False, False)}
+pruefe("--test-push: Rückgabe 0 nur, wenn ALLE eingerichteten Kanäle die Test-Nachricht annahmen (ein kaputter Telegram-Zugang neben einem funktionierenden ntfy ist ein Fehlschlag); ohne Kanal ebenfalls 1",
+       _tp20 == {"beide ok": 0, "ntfy ok, Telegram kaputt": 1, "ntfy kaputt, Telegram ok": 1, "nur ntfy ok": 0, "nur ntfy kaputt": 1, "nur Telegram ok": 0, "nur Telegram kaputt": 1, "nichts eingerichtet": 1}, _tp20)
+
 # Wochenbericht
 lbw = {"strategien": {"Ausgleich": {"positionen": {"Gold": {"wert": 5000}}, "eintraege": [
     {"stand": "2026-09-01", "depot": 10000}, {"stand": "2026-09-25", "depot": 10200}, {"stand": "2026-10-02", "depot": 10404}]}}}

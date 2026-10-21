@@ -396,6 +396,22 @@ try:
 finally:
     if not existierte and BF.STOP_DATEI.exists(): BF.STOP_DATEI.unlink()
 pruefe("Not-Aus während des Laufs: nach dem ersten Auftrag nichts mehr", len([o for o in markt_orders() if o[1] == "BUY"]) == 1, markt_orders())
+# Code-Review der R20: das Protokoll des unterbrochenen Laufs kommt NACH dem Schliessen — es wartet auf eine Sperre und wiederholt bei gesperrter Datei, das darf den Not-Aus nie aufhalten
+X.reset(); d = neu_buch(); X.nach_order = stop_setzen; existierte = BF.STOP_DATEI.exists(); folge = []; orig_na = L.notaus_alle
+
+
+def na_folge(*a, **k):
+    folge.append("schliessen")
+    return orig_na(*a, **k)
+
+
+L.notaus_alle = na_folge
+try:
+    L.ausfuehren([E("BTC", 1.0), E("ETH", 1.0)], env=TEST, bestand_datei=d, protokolliere=lambda e: folge.append("protokoll:notaus" if e.get("notaus") else "protokoll:lauf"))
+finally:
+    L.notaus_alle = orig_na
+    if not existierte and BF.STOP_DATEI.exists(): BF.STOP_DATEI.unlink()
+pruefe("Not-Aus während des Laufs: erst wird geschlossen, dann das Protokoll des Laufs geschrieben (ein langsames Protokoll hielte sonst das Schliessen auf)", folge == ["schliessen", "protokoll:notaus", "protokoll:lauf"], folge)
 X.reset(stop_fehler=True); r = lauf([E("BTC", 1.0)], TEST, neu_buch())
 pruefe("Stop abgelehnt → Warnung «OHNE Stop»", r["warnung"] and any("OHNE Stop" in z for z in r["zeilen"]), r["zeilen"])
 # ── Rechte, Konto-ID, Konflikte ──

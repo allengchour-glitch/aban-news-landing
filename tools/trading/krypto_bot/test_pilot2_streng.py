@@ -6975,6 +6975,18 @@ try:
         L.BUCH_WARTEN = alt_bw20_
     pruefe("20.Protokoll Das Protokoll bleibt dauerhaft unlesbar: der Eintrag wird NICHT geschrieben (die bisherigen werden nie überschrieben), ein Hinweis, keine Ausnahme",
            [e_["n"] for e_ in json.loads(L.PROTOKOLL.read_text())] == ["neu", 1, 2, 3, 5] and "nicht lesbar" in aus20s_.getvalue(), (L.PROTOKOLL.read_text()[:200], aus20s_.getvalue()))
+    # … Bytes, die in keiner Zeichentabelle gelten (von Hand gespeichert): kein Protokoll → beiseitegelegt (mit den Bytes), ein neues begonnen — vorher fiel jeder spätere Eintrag still weg
+    L.PROTOKOLL.write_bytes(b'[{"n": "\x81"}]')
+    aus20u_ = _io20.StringIO()
+    with _cl20.redirect_stdout(aus20u_):
+        L.protokoll_schreiben({"n": "u1"})
+        L.protokoll_schreiben({"n": "u2"})
+    beiseite20u_ = sorted(Path(sdp20_).glob("broker.json.kaputt-*"))
+    pruefe("20.Protokoll Ein Protokoll mit unlesbaren Bytes wird beiseitegelegt (die Bytes bleiben erhalten) und ein neues begonnen — beide Einträge landen darin (vorher ging jeder spätere verloren)",
+           len(beiseite20u_) == 1 and beiseite20u_[0].read_bytes() == b'[{"n": "\x81"}]' and [e_["n"] for e_ in json.loads(L.PROTOKOLL.read_text())] == ["u1", "u2"], (beiseite20u_, aus20u_.getvalue()))
+    for b_ in beiseite20u_:
+        b_.unlink()
+    L.PROTOKOLL.write_text(json.dumps([{"n": "neu"}, {"n": 1}, {"n": 2}, {"n": 3}, {"n": 5}]))   # die Lage für die folgenden Fälle: neu, 1, 2, 3, 5
     # … ein kurz gesperrtes Umbenennen wird wiederholt
     orig_rep20r_, n_rep20_ = Path.replace, [0]
 
@@ -7000,6 +7012,17 @@ try:
            [e_["n"] for e_ in json.loads(L.PROTOKOLL.read_text())] == ["neu", 1, 2, 3, 5, 6, 7] and 0.5 <= dauer_p_ < 5 and L.PROTOKOLL_SPERRE_WARTEN == 1.0, (dauer_p_, L.PROTOKOLL.read_text()[:200]))
 finally:
     L.PROTOKOLL = alt_prot20_
+
+# Code-Review der R20: der Durchgang `einmal` stellt das Budget wieder her, das ein Aufrufer in diesem Thread schon gesetzt hatte (statt es auf None zu setzen)
+neues_konto(20000)
+d_b20_ = neu_buch()
+L._RETRY_BUDGET[0] = 123.0
+try:
+    L.nachkontrolle(env=env_echt(), datei=d_b20_, schlafen=lambda s_: None, uhr=lambda: 0.0, einmal=True)
+    nachher20_ = L._RETRY_BUDGET[0]
+finally:
+    L._RETRY_BUDGET[0] = None
+pruefe("20.W8 Ein Durchgang `einmal` hinterlässt das Budget so, wie er es vorfand (123 s bleiben 123 s; vorher wurde es auf «unbegrenzt» gesetzt)", nachher20_ == 123.0, nachher20_)
 
 # klein 8: das Wiederholungs-Budget eines Durchgangs `einmal` gilt nur für SEINEN Thread (der Cockpit-Prozess führt Not-Aus und lange Nachkontrolle in eigenen Threads aus)
 res20_ = {}

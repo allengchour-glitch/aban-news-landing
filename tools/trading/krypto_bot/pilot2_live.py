@@ -1345,11 +1345,14 @@ def ausfuehren(ents, trocken=False, env=None, spot=None, fut=None, protokolliere
         if gehandelt:
             buch["schutz_offen"] = sorted(set(buch.get("schutz_offen") or []) | set(gehandelt))
         speichern()
-        if protokolliere:  # die Aufträge dieses Laufs (vor dem STOP); der Not-Aus protokolliert seine eigenen
-            protokolliere({"zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), "modus": erg["modus"],
-                           "kapital": erg["kapital"], "auftraege": list(erg["auftraege"]), "warnung": erg["warnung"]})
+        # die Aufträge dieses Laufs (vor dem STOP) protokollieren — aber NACH dem Schliessen (Code-Review der R20: das Protokoll wartet auf eine Sperre und wiederholt bei gesperrter Datei, das darf den Not-Aus nie aufhalten);
+        # der Eintrag trägt die Zeit von JETZT, der Not-Aus protokolliert seine eigenen
+        eintrag_lauf = {"zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), "modus": erg["modus"],
+                        "kapital": erg["kapital"], "auftraege": list(erg["auftraege"]), "warnung": erg["warnung"]}
         erg["zeilen"].append("🛑 Not-Aus während des Laufs — Pilot 2.0 schliesst jetzt selbst (dieser Lauf hält die Sperre).")
         r = notaus_alle(env_, datei, spot=spot_arg, fut=fut_arg, protokolliere=protokolliere)
+        if protokolliere:
+            protokolliere(eintrag_lauf)
         erg["zeilen"] += r["zeilen"]
         erg["auftraege"] += r["auftraege"]
         erg["warnung"] = erg["warnung"] or r["warnung"]
@@ -3066,11 +3069,12 @@ def nachkontrolle(env=None, datei=None, spot=None, fut=None, schlafen=time.sleep
     """Hülle um `_nachkontrolle` (Beschreibung dort). einmal=True: die Wiederholungen von `_nochmal` dürfen im ganzen Durchgang nur EINMAL_RETRY_S Sekunden schlafen (19. Prüfung W2)."""
     if not einmal:
         return _nachkontrolle(env, datei, spot, fut, schlafen, uhr, False)
+    vorher = _RETRY_BUDGET[0]  # (Code-Review der R20) wiederherstellen, nicht auf None setzen: wie `schliessen()` überschreibt der Durchgang kein Budget, das ein Aufrufer in diesem Thread schon gesetzt hatte
     _RETRY_BUDGET[0] = EINMAL_RETRY_S
     try:
         return _nachkontrolle(env, datei, spot, fut, schlafen, uhr, True)
     finally:
-        _RETRY_BUDGET[0] = None
+        _RETRY_BUDGET[0] = vorher
 
 
 def _nachkontrolle(env, datei, spot, fut, schlafen, uhr, einmal):
@@ -4391,12 +4395,15 @@ def _protokoll_lesen():
                 return []
             roh = PROTOKOLL.read_text()
             break
+        except UnicodeDecodeError:  # Bytes, die in der Zeichentabelle nicht gelten (von Hand gespeichert): kein Protokoll → unten beiseitegelegt (ein ValueError, kein OSError)
+            roh = None
+            break
         except OSError:
             if i >= len(BUCH_WARTEN):
                 return None
             time.sleep(BUCH_WARTEN[i])
     try:
-        alt = json.loads(roh)
+        alt = json.loads(roh) if roh is not None else None
     except ValueError:
         alt = None
     if isinstance(alt, list):

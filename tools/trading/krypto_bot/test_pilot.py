@@ -540,16 +540,17 @@ with _tf.TemporaryDirectory() as _sd:
     try:
         _alt_fmt20 = _PI._push_nachkontrolle("Meldung X", True, datei=_pd20b, jetzt=7100.0)
         _pd20c = Path(_sd) / "push20c.json"
-        for _i20 in range(_PI.PUSH_MERKEN + 4):
-            _PI._push_nachkontrolle(f"Meldung {_i20}", True, datei=_pd20c, jetzt=100.0 + _i20)
+        _buchst20 = [chr(ord("A") + _i20) for _i20 in range(_PI.PUSH_MERKEN + 4)]   # Buchstaben, keine Zahlen: Zahlen gelten in der Kennung als dieselbe Meldung
+        for _i20, _b20 in enumerate(_buchst20):
+            _PI._push_nachkontrolle(f"Meldung {_b20}", True, datei=_pd20c, jetzt=100.0 + _i20)
         _inhalt20 = _js20.loads(_pd20c.read_text())["meldungen"]
         _gepusht20.clear()
-        _PI._push_nachkontrolle("Meldung 0", True, datei=_pd20c, jetzt=200.0)       # die älteste ist über die Obergrenze hinaus vergessen → geht wieder raus
-        _PI._push_nachkontrolle(f"Meldung {_PI.PUSH_MERKEN + 3}", True, datei=_pd20c, jetzt=201.0)  # die jüngste ist noch gemerkt → still
+        _PI._push_nachkontrolle("Meldung A", True, datei=_pd20c, jetzt=200.0)       # die älteste ist über die Obergrenze hinaus vergessen → geht wieder raus
+        _PI._push_nachkontrolle(f"Meldung {_buchst20[-1]}", True, datei=_pd20c, jetzt=201.0)  # die jüngste ist noch gemerkt → still
     finally:
         _SG18.push = _alt_push18
     pruefe("Push-Drosselung (20. klein 5): die alte Dateifassung wird verstanden (gleiche Meldung gedrosselt); höchstens PUSH_MERKEN Einträge bleiben; was darüber hinausfällt, geht wieder raus, das Jüngste bleibt still",
-           _alt_fmt20 is False and len(_inhalt20) == _PI.PUSH_MERKEN and len(_gepusht20) == 1 and _gepusht20[0].startswith("Meldung 0"), (_alt_fmt20, len(_inhalt20), _gepusht20))
+           _alt_fmt20 is False and len(_inhalt20) == _PI.PUSH_MERKEN and len(_gepusht20) == 1 and _gepusht20[0].startswith("Meldung A"), (_alt_fmt20, len(_inhalt20), _gepusht20))
 
     # … (Code-Review der R20) eine ENTWARNUNG («geklärt») beendet die Folge der Warnungen: kehrt dieselbe Warnung zurück, ist das ein neues Ereignis und geht sofort raus (A, C, A, C — vorher stünde «geklärt» auf dem Handy, während der Markt wieder offen ist)
     _pd20e = Path(_sd) / "push20e.json"
@@ -573,6 +574,44 @@ with _tf.TemporaryDirectory() as _sd:
     finally:
         _SG18.push = _alt_push18
     pruefe("Push-Drosselung: ohne Angabe gilt eine Meldung als Warnung (Vorgabe warnung=True) — dieselbe Warnung innerhalb der Folge bleibt gedrosselt", _vorab20 is False, _vorab20)
+
+    # … (Code-Review der R20) die Kennung ignoriert ZAHLEN: dieselbe Warnung mit wandernder Zahl («seit 12 s», «Kurs 3636») ist ein und dieselbe Meldung — sonst bekäme jeder Takt eine neue und die Drosselung liesse ~144 Pushes am Tag durch
+    _pd20n = Path(_sd) / "push20n.json"
+    _gepusht20.clear()
+    _SG18.push = lambda t, *a, **k: (_gepusht20.append(t), True)[1]
+    try:
+        _zahl20 = [_PI._push_nachkontrolle(t_, True, datei=_pd20n, jetzt=z_) for t_, z_ in
+                   (("Not-Aus: Ein anderer Lauf handelt gerade (seit 12 s).", 100.0), ("Not-Aus: Ein anderer Lauf handelt gerade (seit 87 s).", 700.0),
+                    ("Kein Kurs lesbar, zuletzt bekannter Kurs 3636", 800.0), ("Kein Kurs lesbar, zuletzt bekannter Kurs 3'641.5", 1400.0),
+                    ("Markt BTC nicht gesichert", 1500.0), ("Markt ETH nicht gesichert", 1600.0))]
+    finally:
+        _SG18.push = _alt_push18
+    pruefe("Push-Drosselung (Code-Review R20): Meldungen, die sich nur durch eine Zahl unterscheiden, sind dieselbe Meldung (je einmal je Stunde); ein anderer Markt ist eine andere",
+           _zahl20 == [True, False, True, False, True, True] and len(_gepusht20) == 4, (_zahl20, _gepusht20))
+
+    # … übersprungene Durchgänge (die Lauf-Sperre hält ein anderer Lauf): ab BESETZT_PUSH_AB in Folge geht EINE Meldung aufs Handy (höchstens einmal je Stunde) — die Lampe im Cockpit sieht nur, wer es offen hat
+    from contextlib import contextmanager as _cm20b  # noqa: E402
+    import broker_futures as _BF20b  # noqa: E402
+
+    @_cm20b
+    def _besetzt20b(*a, **k):
+        raise SP.Besetzt("Ein anderer Lauf handelt gerade (seit 12 s).")
+        yield  # pragma: no cover
+    _alt20b = (_BF20b.einstellungen, _PI.NK_SERIE, _P2L.nachkontrolle, SP.lauf_sperre, _PI.PUSH_STILL)
+    _BF20b.einstellungen = lambda *a, **k: {"stop": False}
+    _PI.NK_SERIE, _PI.PUSH_STILL = Path(_sd) / "serie20b2.json", Path(_sd) / "push20b2.json"
+    SP.lauf_sperre = _besetzt20b
+    _gepusht20.clear()
+    _SG18.push = lambda t, *a, **k: (_gepusht20.append(t), True)[1]
+    _rc20b = []
+    try:
+        for _i20b in range(6):
+            _rc20b.append((_PI.nachkontrolle(einmal=True), len(_gepusht20)))
+    finally:
+        _SG18.push = _alt_push18
+        _BF20b.einstellungen, _PI.NK_SERIE, _P2L.nachkontrolle, SP.lauf_sperre, _PI.PUSH_STILL = _alt20b
+    pruefe("Übersprungene Durchgänge (Lauf-Sperre belegt): Rückgabewert 0 wie bisher; die ersten drei still, ab dem 4. in Folge EIN Push (die Drosselung hält die weiteren zurück: gleiche Meldung, keine Zahl im Text)",
+           _rc20b == [(0, 0), (0, 0), (0, 0), (0, 1), (0, 1), (0, 1)] and "Lauf-Sperre hält ein anderer Lauf" in _gepusht20[0] and _PI.BESETZT_PUSH_AB == 4, (_rc20b, _gepusht20))
 
     # ── 20. Prüfung wichtig 1 / klein 8: die Reihe gleichartiger Durchgänge (Grundlage der Cockpit-Ampel) ──
     _sf20 = Path(_sd) / "serie20.json"

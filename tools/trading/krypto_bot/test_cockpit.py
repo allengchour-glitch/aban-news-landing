@@ -428,6 +428,8 @@ with tempfile.TemporaryDirectory() as tmp:
         gi_text = gi_pfad.read_text(encoding="utf-8") if gi_pfad.exists() else None  # in einem Sandkasten nur mit tools/trading (Mutationsprobe) fehlt sie: dann nicht prüfbar
         pruefe("(18. Prüfung) die Laufzeit-Dateien der Nachkontroll-Aufgabe (Lebenszeichen, Rückgabewert, Push-Drosselung, Log) stehen in .gitignore — sonst wären sie auf dem PC des Users «ungetrackt» und störten das Aktualisieren",
                (gi_text is None or "data/krypto-nachkontrolle*" in gi_text.splitlines()) and C.NK_LEBT.startswith("krypto-nachkontrolle") and C.NK_RC.startswith("krypto-nachkontrolle"))
+        pruefe("(Code-Review der R20) auch die Temp-Dateien des Buchs und des Protokolls (<Datei>.<Prozess>-<Thread>-<Zähler>.neu, bleiben nach einem harten Abbruch liegen) stehen in .gitignore — `git add data/` darf sie nie einsammeln",
+               gi_text is None or "data/*.neu" in gi_text.splitlines())
         e = C.aktion("update", befehl=lambda c, z: (False, "error: Your local changes would be overwritten"))
         pruefe("Update gescheitert: verständlicher Hinweis", not e["ok"] and "eigene Änderungen" in e["text"])
         pruefe("Aufgabe vorhanden? (schtasks /query)", C.aufgabe_da(lambda c, z: (c[:2] == ["schtasks", "/query"], "")) is True)
@@ -578,6 +580,8 @@ with tempfile.TemporaryDirectory() as tmp:
         import pilot as _PI21  # noqa: E402
         pruefe("Reihe der Durchgänge: pilot.py (schreibt) und cockpit.py (liest) benennen dieselbe Datei im selben Ordner — jede Seite hat ihre eigene Konstante, nur dieser Test hält sie zusammen",
                _PI21.NK_SERIE.name == C.NK_SERIE and _PI21.NK_SERIE.parent == C.ROOT / "data" and C.NK_SERIE.startswith("krypto-nachkontrolle"), (_PI21.NK_SERIE, C.NK_SERIE))
+        pruefe("Übersprungene Durchgänge: die Lampe im Cockpit (NK_BESETZT_ROT) und der Push aufs Handy (pilot.BESETZT_PUSH_AB) springen beim selben Durchgang an — zwei Konstanten, ein Test hält sie zusammen",
+               _PI21.BESETZT_PUSH_AB == C.NK_BESETZT_ROT, (_PI21.BESETZT_PUSH_AB, C.NK_BESETZT_ROT))
         # Der Test gehört zum Selbsttest vor dem Handeln (krypto-auto.bat): ein node, das sich nicht starten lässt, darf nie das Handeln blockieren → bei jedem Fehler bleibt es bei der Prüfung der Bauform
         _ok_ = {"name": "a", "ok": True, "text": "x"}
         _grau_ = {"name": "b", "ok": None, "text": "x"}
@@ -587,17 +591,25 @@ with tempfile.TemporaryDirectory() as tmp:
                      "rot_warn": [_rot_, _warn_], "zeichen": [_ok_, _rot_, _warn_, _grau_]}
         k20, _js_kaputt20 = None, None
         _node_ok20 = False
+        import tempfile as _tf20  # noqa: E402
+
+        def _node_lauf20(skript_, eingabe_=""):
+            """Skript als DATEI starten, Eingabe über stdin (Code-Review der R20: ein Windows-Shim `node.cmd` verstümmelt mehrzeilige `-e`-Skripte und Anführungszeichen in Argumenten)."""
+            with _tf20.TemporaryDirectory() as td_:
+                f_ = Path(td_) / "kopf.js"
+                f_.write_text(skript_, encoding="utf-8")
+                return _sp20.run([_node20, str(f_)], input=eingabe_, capture_output=True, text=True, encoding="utf-8", timeout=60)  # node schreibt UTF-8 (⚠, —) — nicht die Zeichentabelle der Konsole
         if _m20 and _node20:
             try:  # erst prüfen, ob node überhaupt läuft (ein nicht startbares node darf den Selbsttest vor dem Handeln nie scheitern lassen); läuft es, ist ein Fehler im Skript ein ECHTER Fehler der Kopfzeile
-                _pr20 = _sp20.run([_node20, "-e", "process.stdout.write('ok')"], capture_output=True, text=True, encoding="utf-8", timeout=60)
-                _node_ok20 = _pr20.returncode == 0 and _pr20.stdout == "ok"
+                _pr20 = _node_lauf20("let e = '';\nprocess.stdin.on('data', d => e += d);\nprocess.stdin.on('end', () => process.stdout.write(JSON.parse(e).wort));\n", json.dumps({"wort": "ok ⚠ \"q\""}))
+                _node_ok20 = _pr20.returncode == 0 and _pr20.stdout == 'ok ⚠ "q"'
             except (OSError, _sp20.SubprocessError, ValueError):
                 _node_ok20 = False
         if _node_ok20:
-            _js20 = _m20.group(1) + ("\nconst faelle = JSON.parse(process.argv[1]);\nconst aus = {};\nfor (const [n, g] of Object.entries(faelle)) aus[n] = {kopf: gesundKopfzeile(g), zeichen: g.map(gesundZeichen)};\n"
-                                    "process.stdout.write(JSON.stringify(aus));")
+            _js20 = _m20.group(1) + ("\nlet eingabe = '';\nprocess.stdin.on('data', d => eingabe += d);\nprocess.stdin.on('end', () => {\n  const faelle = JSON.parse(eingabe);\n  const aus = {};\n"
+                                    "  for (const [n, g] of Object.entries(faelle)) aus[n] = {kopf: gesundKopfzeile(g), zeichen: g.map(gesundZeichen)};\n  process.stdout.write(JSON.stringify(aus));\n});\n")
             try:
-                r_ = _sp20.run([_node20, "-e", _js20, json.dumps(_faelle20)], capture_output=True, text=True, encoding="utf-8", timeout=60)  # node schreibt UTF-8 (⚠, —) — nicht die Zeichentabelle der Konsole
+                r_ = _node_lauf20(_js20, json.dumps(_faelle20))
                 k20 = json.loads(r_.stdout) if r_.returncode == 0 and r_.stdout else None
                 _js_kaputt20 = None if k20 is not None else (r_.returncode, r_.stderr[-300:])
             except (OSError, _sp20.SubprocessError, ValueError) as ex_:
