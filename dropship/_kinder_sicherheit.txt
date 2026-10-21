@@ -1720,3 +1720,21 @@ gid://shopify/Product/16652817367431	a	kids
 gid://shopify/Product/16652062785927	w	Kleinteile	DIY-Armband-Set für Kinder – 155 Teile
 gid://shopify/Product/16652062785927	a	kids
 gid://shopify/Product/16653945799047	a	kids
+gid://shopify/Product/16655507587463	w	Kleinteile	Geheimnisvolles Gothic Schloss Bausatz
+gid://shopify/Product/16655508242823	w	Kleinteile	Programmierbarer Roboterarm Bausatz
+gid://shopify/Product/16655508570503	w	Kleinteile	Krokodil Sheriff Baustein-Modell
+gid://shopify/Product/16655508996487	w	Kleinteile	3D-Kugel-Puzzle Weihnachtsanhänger – 60 Teile
+gid://shopify/Product/16655509422471	w	Kleinteile	Highland Kuh Adventskalender
+gid://shopify/Product/16655509913991	w	Kleinteile	Bauklotz-Rennwagen mit Fernsteuerung
+gid://shopify/Product/16655510307207	w	Kleinteile	Bausteine Retro-Schreibmaschine
+gid://shopify/Product/16655510995335	w	Kleinteile	Kreatives Bausteine-Set zum Selberbauen
+gid://shopify/Product/16655511880071	w	Kleinteile	Zweifarbige Orchidee zum Zusammenbauen
+gid://shopify/Product/16655514042759	w	Kleinteile	Ewiges Blumen-Baustein-Set
+gid://shopify/Product/16655514337671	w	Kleinteile	Baustein-Spielzeug: Topfblumen-Strauss
+gid://shopify/Product/16655514665351	w	Kleinteile	Ewige Rose Bausteine – Kreatives Ornament
+gid://shopify/Product/16655515648391	w	Kleinteile	Architektur-Gebäude-Bausteine
+gid://shopify/Product/16655515943303	w	Kleinteile	Gebäude-Modell Bausatz für Erwachsene
+gid://shopify/Product/16655516369287	w	Kleinteile	Holzpuzzle zum Zusammenbauen
+gid://shopify/Product/16655517876615	w	Kleinteile	Motor-Modellbausatz Dynamische Version
+gid://shopify/Product/16654276952455	a	kids
+gid://shopify/Product/16654423163271	a	kids
