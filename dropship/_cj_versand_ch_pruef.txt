@@ -12905,3 +12905,10 @@ handgepack-tasche-business-style-rucksack-624100	2607130732261624700	16	20.24	ok
 vintage-pullover-kleid-617200	2607130738371617800	16	8.79	ok	landeseite
 herren-sportuhr-quarz-607700	2509120545411608000	7	8.25	ok	landeseite
 wasserdichter-fin-beutel-30l-634800	2602260623541635100	16	18.47	ok	landeseite
+herren-mechanik-uhr-mit-silikonband-620000	2509101251261620400	16	6.09	ok	landeseite
+wasserdichte-paaruhren-quarz-damen-629400	2509100612461629700	7	5.86	ok	landeseite
+automatik-mode-herrenuhr-wasserdicht-mechanisc-619000	2509051406181619200	16	5.81	ok	landeseite
+reise-rucksack-business-605900	2512260825431606100	16	21.75	ok	landeseite
+wasserdichte-multifunktionale-herren-automatik-615700	2509051337201615900	16	7.35	ok	landeseite
+retro-rucksack-aus-echtleder-618900	2512260705011619100	16	24.44	ok	landeseite
+taktischer-rucksack-fur-herren-638900	2512201041471639100	16	12.21	ok	landeseite
