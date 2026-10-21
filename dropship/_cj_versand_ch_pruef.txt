@@ -12415,3 +12415,10 @@ drehbares-make-up-spiegel-set-624900	2503060346041625300	7	8.10	ok	landeseite
 business-schultertasche-fur-herren-607100	2602080950281607500	16	7.71	ok	landeseite
 wasserdichter-laptop-rucksack-601000	2601150554081601200	16	16.04	ok	landeseite
 kunstler-rucksack-mit-stauraum-623200	2601150447301623400	0	-	KEINE CH-Option → DRAFT	landeseite
+camping-rucksack-camouflage-639200	2601150220011639400	16	22.58	ok	landeseite
+rattan-sesselkissen-652400	2509300535311652600	16	24.44	ok	landeseite
+retro-sofa-tuch-618800	2509280518311619000	16	15.44	ok	landeseite
+orthopadisches-sitzkissen-611800	2509250338191612000	16	14.00	ok	landeseite
+wasserfeste-laufumhangetasche-605000	2607090955551605700	16	6.01	ok	landeseite
+universal-sofabezuge-611600	2509241002021611800	16	8.11	ok	landeseite
+memory-foam-kissen-fur-stuhl-608900	2509170537011609100	16	17.82	ok	landeseite
