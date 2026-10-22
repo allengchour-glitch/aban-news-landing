@@ -46,3 +46,15 @@ Begründung der Reihenfolge: zuerst die Hauptkategorien im Menü (sie tragen die
 - **Heute 08:31 abgerufen, noch «Crawled – currently not indexed»: 5** — schuhe, schmuck-uhren, beauty-pflege, elektronik-technik, fur-ihn. Google hat sie auf den Antrag hin geholt und noch nicht aufgenommen; bei den 34 früheren folgte die Aufnahme binnen etwa einem Tag. Nachmessen am 23.10.
 - **sub-beleuchtung: letzter Abruf weiter 22.06.** — der Antrag ist dort noch nicht verarbeitet (oder nicht abgeschickt). Nachmessen am 23.10.; steht sie dann unverändert, bitte den Antrag für diese Adresse einzeln wiederholen.
 - Ledger: 10 Zeilen «Betreiber (Meldung 22.10.)» in `dropship/_index_beantragt.tsv`.
+
+## Nächste Kandidaten aus der GSC-Liste «Gefunden – zurzeit nicht indexiert» (Betreiber-Screenshot 22.10., live nachgemessen ~09:10 UTC)
+**Der GSC-Bericht hinkt:** `holzuhren` steht dort noch als «Gefunden», ist live aber seit dem Antrag vom 19.10. indexiert («Submitted and indexed», Abruf 19.10. 20:10); `herren-pullover` ist seit dem Abruf von 08:37 UTC heute indexiert (vermutlich Dein Antrag, im Ledger nicht eingetragen). Massgeblich ist die Einzel-Prüfung, nicht die Beispielliste.
+
+Noch NICHT im Index (live gemessen), nach Nutzen geordnet:
+1. [collections/spielzeug](https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=jeqwbpOWC9lS1jfpS6b2Xg&utm_medium=link&utm_source=api) — Hauptkategorie, «URL is unknown to Google»
+2. [collections/hochzeitsgeschenke](https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=QSkS1-5-eIJ7x-EA6997Bw&utm_medium=link&utm_source=api) — «URL is unknown to Google»
+3. [collections/garten-leuchten](https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=m5HtjAUg7O0joLvZBtQVCQ&utm_medium=link&utm_source=api) — Discovered, nie abgerufen
+4. [collections/gerade-auf-instagram](https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=hxCmYc7SA-JihdgztHDEjQ&utm_medium=link&utm_source=api) — Discovered, nie abgerufen
+5. [blogs/magazin/9-geschenkideen-fur-frauen-unter-chf-60-…](https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=LrmwqTImv-akaAJ02YmMog&utm_medium=link&utm_source=api) — Magazin-Artikel, Discovered (saisonal: Muttertag; niedrig)
+
+Nicht beantragen: `collections/🎁-geschenke-bis-chf-30` (Emoji-Handle, Google kennt die Adresse nicht; die Geschenk-Kollektionen «unter 50/100 Franken» sind seit 19.10. indexiert) und die zwei `/fr/blogs/ratgeber/…`-Adressen (Sprachpfad, kaum Nachfrage).
