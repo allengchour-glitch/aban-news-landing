@@ -3554,3 +3554,7 @@
 16656672326023	Farbe:9:9+ki	2026-10-22	quadratische-quarz-uhr-mit-edelstahlarmband-wa-604800
 16656672227719	Farbe:5:5	2026-10-22	ceramische-quarz-uhr-mit-wasserdichtem-barrel-627900
 16656668459399	Farbe:2:2	2026-10-22	herren-automatikuhr-mit-strass-akzenten-633700
+16656668295559	Modell:5:5	2026-10-22	zundkerze-fur-gasherde-601200
+16656668262791	Farbe:5:5+ki	2026-10-22	quarzuhr-mit-stahlband-fur-damen-604400
+16656668131719	Farbe:6:6	2026-10-22	armbanduhr-mit-sternenzifferblatt-630500
+16656667607431	Farbe:6:6	2026-10-22	damen-armbanduhr-mit-ultraflachem-mesh-armband-636000
