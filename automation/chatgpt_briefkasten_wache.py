@@ -22,6 +22,21 @@ AUFTRAEGE = os.path.join(REPO, "dropship", "CHATGPT-AUFTRAEGE.md")
 PLAN = os.path.join(REPO, "dropship", "_vorlauf_plan.json")
 GEPRUEFT = os.path.join(REPO, "dropship", "_chatgpt_geprueft.json")
 POST_STAND = os.path.join(REPO, "dropship", "_chatgpt_post_stand.txt")
+PAUSE = os.path.join(REPO, "dropship", "_chatgpt_pause_bis.txt")
+
+
+def pausiert(jetzt, pfad=PAUSE):
+    """22.10.2026 (Betreiber: «er hat keine Nutzungsdaten mehr, noch 5 Tage»): ChatGPT ist bis zu einem Datum nicht erreichbar.
+    Datei dropship/_chatgpt_pause_bis.txt, erste Zeile «JJJJ-MM-TT [Grund]». -> (Datum, Grund) solange jetzt (Zuerich) vor dem Tag
+    LIEGT, sonst None. Ein kaputtes oder fehlendes Format pausiert NIE (still schweigen waere schlimmer als warnen). Die Pause
+    laeuft von selbst ab; die Zeile bleibt sichtbar (kein Schweigen), nur ohne ⚠️."""
+    try:
+        erste = open(pfad, encoding="utf-8").read().strip().splitlines()[0]
+        tag, _, grund = erste.partition(" ")
+        bis = datetime.strptime(tag, "%Y-%m-%d").replace(tzinfo=TZ)
+    except (OSError, ValueError, IndexError):
+        return None
+    return (bis, grund.strip() or "ChatGPT nicht erreichbar") if jetzt < bis else None
 
 EMOJI = re.compile("[\U0001F000-\U0001FAFF☀-➿⬀-⯿️]")
 PREIS = re.compile(r"(?i)\b(chf|fr\.|eur|€|\$)\s*\d|\d+[.,]\d{2}\s*(chf|fr\.|€)|\bab\s+\d+\s*(chf|fr)|gratis\s*versand|lieferzeit|\b\d+\s*(werk)?tage?\b")
@@ -281,6 +296,23 @@ def selbsttest():
     os.unlink(f.name)   # 19.10.: Tempdatei nicht liegen lassen (/tmp-Leichen-Klasse)
     if not (st and len(zz) == 1 and zz[0]["netze"] == {"facebook", "instagram", "tiktok"} and zz[0]["termin"].hour == 18):
         fehler.append(f"Auftragstabelle nicht gelesen: {zz}")
+    # Pause: Datum in der Zukunft pausiert, Vergangenheit/kaputt/fehlend nie
+    with tempfile.NamedTemporaryFile("w", suffix=".txt", delete=False, encoding="utf-8") as f:
+        f.write("2026-10-27 Nutzungsgrenze bis Montag\n")
+    pz = pausiert(datetime(2026, 10, 22, 10, 0, tzinfo=TZ), f.name)
+    if not (pz and pz[0].day == 27 and pz[1] == "Nutzungsgrenze bis Montag"):
+        fehler.append(f"Pause nicht erkannt: {pz}")
+    if pausiert(datetime(2026, 10, 27, 0, 0, tzinfo=TZ), f.name) is not None:
+        fehler.append("Pause endet nicht am Stichtag 00:00")
+    if pausiert(datetime(2026, 10, 28, 9, 0, tzinfo=TZ), f.name) is not None:
+        fehler.append("Pause laeuft nicht aus")
+    with open(f.name, "w", encoding="utf-8") as g:
+        g.write("bald wieder\n")
+    if pausiert(datetime(2026, 10, 22, 10, 0, tzinfo=TZ), f.name) is not None:
+        fehler.append("kaputtes Datum pausiert (muss warnen)")
+    os.unlink(f.name)
+    if pausiert(datetime(2026, 10, 22, 10, 0, tzinfo=TZ), f.name + ".fehlt") is not None:
+        fehler.append("fehlende Datei pausiert")
     print("SELBSTTEST chatgpt_briefkasten_wache:", "OK" if not fehler else "FEHLER " + " | ".join(fehler))
     return 0 if not fehler else 1
 
@@ -294,6 +326,12 @@ def main():
         stand, zeilen = auftrag_lesen()
         if not zeilen:
             print("CHATGPT-BRIEFKASTEN: unklar (Auftragstabelle nicht lesbar — Format geaendert?)")
+            return
+        pause = pausiert(jetzt)
+        if pause and "--liste" not in sys.argv:
+            offen = sum(1 for z in zeilen if z["termin"] < pause[0])
+            print(f"CHATGPT-BRIEFKASTEN: pausiert bis {pause[0]:%d.%m.} ({pause[1]}) · {offen} Termine des Auftrags fallen in die Pause "
+                  f"(Plaetze bleiben frei, kein Eigenersatz) · danach laeuft die Pruefung von selbst weiter")
             return
         planer = W.holen(jetzt)
     except Exception as e:
