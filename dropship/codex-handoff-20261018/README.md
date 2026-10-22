@@ -1,5 +1,7 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+**Betriebsübernahme 22.10.:** Claude-Code-Token ist nicht verfügbar. Codex führt die LuxeStyle-Prüfungen, Entwürfe, Qualitäts-/Rechteprüfungen und zulässigen Metricool-Schritte selbst weiter. Claude-Handoffs bleiben nur Dokumentation; eine Claude-Lesebestätigung wird nicht vorausgesetzt. Shopify-, DNS-, Feed-, Flow-, Budget- und Rendergrenzen bleiben unverändert.
+
 **Technische Sichtbarkeit Plus 22.10.:** [Öffentliche Gegenprobe und Prioritäten](SICHTBARKEIT-MAX-PLUS-20261022.md). Neu dokumentiert: strukturierte Daten vorhanden, drei fehlende Bild-Altattribute am Projektor, möglicher Ladeumfang und ein Versand-Schema-Konflikt CHF 40.50 versus verbindliche CHF 50. Keine Live-Änderung.
 
 **Sichtbarkeits-Maximalplan 22.10.:** [Prüf- und Freigabepaket](SICHTBARKEIT-MAX-20261022.md). Enthält Search-&-Discovery, Filter, Collection-Architektur, Merchant-/Free-Listings-Grenzen, SEO, Social und Conversion. Keine Live-Aktivierung; Merchant-Leistungsabfrage heute wegen inkompatibler Feldkombinationen/Timeout unbekannt.
