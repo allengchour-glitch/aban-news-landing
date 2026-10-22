@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-21T09:20:29Z",
+ "stand": "2026-10-22T09:23:13Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,83 +18,83 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "OpenAI GPT-6: Neue KI-Modelle ersetzen bald auch C- und Cobol-Entwickler",
-   "u": "https://www.golem.de/news/openai-gpt-6-neue-ki-modelle-ersetzen-bald-auch-c-und-cobol-entwickler-2610-214343.html",
-   "q": "Golem",
-   "d": "2026-10-21T08:54:02Z",
-   "s": "Einige Programmiersprachen sind für LLMs noch schwierig zu realisieren. OpenAI konnte große Fortschritte erzielen. (Programmiersprachen, KI)",
-   "sprache": "de"
-  },
-  {
-   "t": "heise+ | Von Gehirnscan zu Bild: Wie KI rekonstruiert, was Menschen gerade sehen",
-   "u": "https://www.heise.de/hintergrund/Von-Gehirnscan-zu-Bild-Wie-KI-rekonstruiert-was-Menschen-gerade-sehen-11492135.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
+   "t": "heise+ | Melty ausprobiert: Faszinierende Spiele-Mashups mit KI, fragwürdige Sicherheit",
+   "u": "https://www.heise.de/tests/Melty-ausprobiert-Faszinierende-Spiele-Mashups-mit-KI-fragwuerdige-Sicherheit-11482744.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
    "q": "heise",
-   "d": "2026-10-21T08:30:00Z",
-   "s": "Eine Forschergruppe entwickelte einen Gehirn-Decoder, indem sie ein KI-Modell mit MRT-Daten von Probanden trainierte, denen 9.000 Bilder gezeigt wurden.",
+   "d": "2026-10-22T08:50:00Z",
+   "s": "Melty verspricht, beliebige Spiele miteinander zu kombinieren – KI sei Dank. Wir haben ausprobiert, was dabei herauskommt und wo es potenziell gefährlich wird.",
    "sprache": "de"
   },
   {
-   "t": "FSR: AMD bringt KI-Upscaling auf Xbox Series X/S",
-   "u": "https://www.golem.de/news/fsr-amd-bringt-ki-upscaling-auf-xbox-series-x-s-2610-214340.html",
-   "q": "Golem",
-   "d": "2026-10-21T08:24:01Z",
-   "s": "Microsofts Xbox Series soll mit FSR 4.1 eine bessere Grafikqualität bekommen. Das könnte vor allem auf der S einige Vorteile bringen. (Xbox, Microsoft)",
-   "sprache": "de"
+   "t": "AI’s hidden storage bill: What inference leaves behind",
+   "u": "https://www.technologyreview.com/2026/10/22/1146948/ais-hidden-storage-bill-what-inference-leaves-behind/",
+   "q": "MIT Tech Review",
+   "d": "2026-10-22T08:41:18Z",
+   "s": "Ask most executives to picture the cost of AI and they’ll likely see GPUs—racks of accelerators with gigawatts of power—and a waitlist for silicon. But that picture leaves something out: Data storage …",
+   "sprache": "en"
   },
   {
-   "t": "Debatte um offene KI: Es geht um Cybersicherheit, Demokratie – und sehr viel Geld",
-   "u": "https://t3n.de/news/debatte-um-offene-ki-es-geht-um-cybersicherheit-demokratie-und-sehr-viel-geld-1768097/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-10-21T08:10:50Z",
-   "s": "Geschlossen gegen offen: Die Debatte tobt in der KI-Szene so heftig wie noch nie. Doch die Diskussion ist komplexer, als es auf den ersten Blick scheint.weiterlesen auf t3n.de",
-   "sprache": "de"
-  },
-  {
-   "t": "Google rollt Personal Intelligence für Android Auto aus: Warum deutsche Autofahrer leer ausgehen",
-   "u": "https://t3n.de/news/android-auto-personal-intelligence-deutsche-autofahrer-1769096/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-10-21T07:28:14Z",
-   "s": "Google veröffentlicht ein großes Update für Android Auto, mit dem auch Geminis Personal Intelligence unterwegs verfügbar ist. Allerdings gibt es für deutsche Autofahrer:innen, die sich schon auf die K…",
-   "sprache": "de"
-  },
-  {
-   "t": "Nach QSSR: AMD bringt FSR 4.1 auf die Xbox",
-   "u": "https://www.heise.de/news/Xbox-Series-X-S-AMDs-KI-Upscaler-FSR-4-1-kommt-auf-Microsofts-Konsolen-11494982.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "t": "HyperArmor: Broadcoms Antwort auf KI-Angriffe auf VMware ESX",
+   "u": "https://www.heise.de/news/VMware-HyperArmor-schuetzt-ESX-Hypervisor-vor-KI-Angriffen-11496495.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "q": "heise",
-   "d": "2026-10-21T06:35:00Z",
-   "s": "AMD bringt sein KI-Upscaling FSR 4.1 auf die Xbox Series X/S und ältere GPUs. Einen Termin für die Konsolen gibt es noch nicht.",
+   "d": "2026-10-22T08:12:00Z",
+   "s": "Broadcom präsentierte den neuen Schutz HyperArmor für ESX-Hypervisor, der KI-beschleunigte Angriffe abwehren soll. Ein vSphere-8-Nachfolger blieb jedoch aus.",
    "sprache": "de"
   },
   {
-   "t": "Southeast Asia’s digital economy to hit $368 billion",
-   "u": "https://blog.google/company-news/inside-google/around-the-globe/google-asia/e-conomy-sea-report-2026/",
-   "q": "Google AI",
-   "d": "2026-10-21T04:00:00Z",
-   "s": "Widespread AI adoption is propelling Southeast Asia's digital economy to a projected $368 billion in 2026 and $1 trillion by 2035.",
-   "sprache": "en"
+   "t": "Anthropic zeigt Claude Duet: Wie der KI-Assistent Muse und Dots Konkurrenz machen soll",
+   "u": "https://t3n.de/news/anthropic-claude-duet-1769375/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-10-22T08:07:36Z",
+   "s": "Anthropic will Meta mit Muse und OpenAI mit Dots Konkurrenz machen. Dafür veröffentlicht das KI-Unternehmen jetzt seinen eigenen agentischen Assistenten. Was Claude Duet leisten und für wen es gedacht…",
+   "sprache": "de"
   },
   {
-   "t": "Anthropic pitches AI safety bill that may block a model if 50+ people could be killed",
-   "u": "https://techcrunch.com/2026/10/20/anthropic-pitches-ai-safety-bill-that-may-block-a-model-if-50-people-could-be-killed/",
-   "q": "TechCrunch AI",
-   "d": "2026-10-20T23:01:23Z",
-   "s": "The proposed policy seems to offer protections against AI running amok but actually forbids federal agencies from blocking a model's release without the permission of a judge.",
-   "sprache": "en"
-  },
-  {
-   "t": "Hugging Face CEO warns that Netflix’s OpenAI hack documentary isn’t accurate",
-   "u": "https://techcrunch.com/2026/10/20/hugging-face-ceo-warns-that-netflixs-openai-hack-documentary-isnt-accurate/",
-   "q": "TechCrunch AI",
-   "d": "2026-10-20T22:24:02Z",
-   "s": "Before you share the Netflix documentary \"AI Gone Rogue,\" take note. Clem Delangue, Hugging Face's co-founder who is featured in the film, says it went \"full doomer mode\" and isn't accurate.",
-   "sprache": "en"
-  },
-  {
-   "t": "NVIDIA Cosmos3-H-Dreams: Bringing Clinical Surgery to Life Through Generative Simulation",
-   "u": "https://huggingface.co/blog/nvidia/cosmos3-h-dreams",
+   "t": "Ensemble forecasting with IBM Granite time-series models",
+   "u": "https://huggingface.co/blog/ibm-research/granite-timeseries-ensemble-r1",
    "q": "Hugging Face",
-   "d": "2026-10-20T18:17:47Z",
+   "d": "2026-10-22T07:51:31Z",
    "s": "",
+   "sprache": "en"
+  },
+  {
+   "t": "AI-RAN im Labortest: Telekom, Nokia und Nvidia erzielen mehr Uplink-Durchsatz",
+   "u": "https://www.golem.de/news/ai-ran-im-labortest-telekom-nokia-und-nvidia-erzielen-mehr-uplink-durchsatz-2610-214367.html",
+   "q": "Golem",
+   "d": "2026-10-22T06:13:02Z",
+   "s": "In Labortests von Deutscher Telekom, Nokia und Nvidia steigert eine KI-basierte Kanalschätzung den Uplink-Durchsatz. Es gibt aber praktische Probleme. (Nvidia, Grafikkarten)",
+   "sprache": "de"
+  },
+  {
+   "t": "KI-Agent fürs Postfach: So sortiert ChatGPT jeden Morgen deine E-Mails",
+   "u": "https://t3n.de/news/ki-agent-fuers-postfach-so-sortiert-chatgpt-jeden-morgen-deine-e-mails-1769198/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-10-22T05:30:23Z",
+   "s": "Dein E-Mail-Postfach ist voll und du bist kurz vor dem Verzweifeln? Prompt Engineer Susanne Renate Schneider hat sich einen KI-Agenten gebaut, der ihre Mails jeden Morgen vorsortiert. Im Podcast t3n M…",
+   "sprache": "de"
+  },
+  {
+   "t": "Anzeige: Claude Code: KI-Agenten für die Softwareentwicklung nutzen",
+   "u": "https://www.golem.de/news/anzeige-claude-code-ki-agenten-fuer-die-softwareentwicklung-nutzen-2610-214321.html",
+   "q": "Golem",
+   "d": "2026-10-22T05:15:01Z",
+   "s": "Claude Code unterstützt die Softwareentwicklung mit KI-Agenten. Ein dreitägiger Workshop vermittelt Spec-Driven Development, Context Engineering und Agentic Workflows. (Golem Karrierewelt, Programmier…",
+   "sprache": "de"
+  },
+  {
+   "t": "Blackstone’s Jas Khaira says fears over AI-buildout debt are overblown",
+   "u": "https://techcrunch.com/2026/10/21/blackstones-jas-khaira-says-fears-over-ai-buildout-debt-are-overblown/",
+   "q": "TechCrunch AI",
+   "d": "2026-10-21T22:51:22Z",
+   "s": "Blackstone’s AI head on why the PE giant isn't panicked by market jitters.",
+   "sprache": "en"
+  },
+  {
+   "t": "TechCrunch Founder Summit 2026: Everything you need to know",
+   "u": "https://techcrunch.com/2026/10/21/techcrunch-founder-summit-2026-everything-you-need-to-know/",
+   "q": "TechCrunch AI",
+   "d": "2026-10-21T21:16:20Z",
+   "s": "TechCrunch Founder Summit is a full-day gathering in Boston on November 4 where founders across all stages connect with top VCs and experienced entrepreneurs to gain tactical insights on building and …",
    "sprache": "en"
   }
  ]
