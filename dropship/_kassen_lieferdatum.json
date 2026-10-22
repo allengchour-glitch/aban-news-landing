@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-22T02:16Z",
+ "stand": "2026-10-22T23:09Z",
  "datum_in_kasse": true,
  "bearbeitungszeit_tage": 1,
  "versand_werktage": [
@@ -67,7 +67,7 @@
    "profile": [
     "General profile"
    ],
-   "anzahl": 53562
+   "anzahl": 53780
   }
  },
  "ch_lager_im_asien_profil": false,
@@ -75,7 +75,7 @@
   "befunde": [],
   "md5": {
    "templates/cart.json": "24c11d674873cd3ce8d5832afc871573",
-   "templates/product.json": "30adc4e64f44433ff7b0c63bd680aad2"
+   "templates/product.json": "f6625c20bb13716b520b3a3975ebb5b8"
   }
  },
  "zusage_ch_lager": {
