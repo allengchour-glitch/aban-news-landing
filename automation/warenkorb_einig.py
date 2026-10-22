@@ -44,7 +44,10 @@ from kaufwille_zeile import gql  # noqa: E402
 
 THEME = "gid://shopify/OnlineStoreTheme/187533001089"
 from ch_lager_profil import GRATIS_AB_CH  # noqa: E402  (eine Quelle für die Tarif-Schwelle)
-TARIF, VERSPRECHEN, VERSAND = int(round(GRATIS_AB_CH * 100)), 5000, 700           # Rappen
+TARIF, VERSAND = int(round(GRATIS_AB_CH * 100)), 700                                 # Rappen
+# Versprechen = Warenwert VOR Rabatt, ab dem auch der Mengenrabatt (-10 % auf alles ab 2 Artikeln) den Betrag nicht unter den Tarif drückt: TARIF / 0,9 aufgerundet
+# (Tarif 45 -> 50.00, früher fest 5000; Tarif 50 seit 22.10.2026 -> 55.56).
+VERSPRECHEN = -(-TARIF * 10 // 9)
 MARKE = "LUX-WARENKORB-EINIG"
 
 
@@ -55,16 +58,17 @@ def noch(sub, tot):
     return max(VERSPRECHEN - sub, ((TARIF - tot) * 10 + 8) // 9)
 
 
-KANARIEN = [  # (Name, Warenwert vor Rabatt, nach Rabatt, erwartet «noch»)
-    ("1× Leinen 39.90", 3990, 3990, 1010),
-    ("1× Sirène 49.90 (Tarif gratis)", 4990, 4990, 0),
-    ("1× 45.90", 4590, 4590, 0),
-    ("2× 24.90 → 44.82", 4980, 4482, 0),          # 13.10.2026 Entscheid D (Tarif 40.50): vorher 0.20
-    ("39.90 + 5.90 → 41.22", 4580, 4122, 0),      # vorher 4.20
+KANARIEN = [  # (Name, Warenwert vor Rabatt, nach Rabatt, erwartet «noch») — 22.10.2026 für Tarif 50 / Versprechen 55.56 neu gerechnet
+    ("1× Leinen 39.90", 3990, 3990, 1566),
+    ("1× Sirène 49.90 (knapp unter Tarif)", 4990, 4990, 566),
+    ("1× 45.90", 4590, 4590, 966),
+    ("2× 24.90 → 44.82", 4980, 4482, 576),
+    ("39.90 + 5.90 → 41.22", 4580, 4122, 976),
     ("2× Leinen → 71.82", 7980, 7182, 0),
-    ("Code zusätzlich: 52.00 → 42.12", 5200, 4212, 0),   # vorher 3.20
-    ("2× 19.90 → 35.82 (unter 40.50)", 3980, 3582, 1020),  # neu: Rabatt-Pfad unter dem Tarif bleibt geprüft
-    ("1× 35.00", 3500, 3500, 1500),
+    ("Code zusätzlich: 52.00 → 42.12", 5200, 4212, 876),
+    ("2× 19.90 → 35.82 (unter 50)", 3980, 3582, 1576),
+    ("1× 35.00", 3500, 3500, 2056),
+    ("1× 50.00 (Tarif gratis)", 5000, 5000, 0),
 ]
 
 

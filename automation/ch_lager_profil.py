@@ -77,7 +77,9 @@ BLOCK = 50
 # ihn mit der Betreiber-Freigabe «D ja» ausgeführt; Ledger dropship/_gratis_schwelle.tsv). Reihenfolge beim Umstellen: (1) gratis_schwelle_setzen.py --scharf,
 # (2) versand_transit_wache.py --scharf, (3) HIER 40.50, (4) Theme-Zahlen 4500 → 4050 (Bericht GRATISVERSAND-CH-LAGER-UND-4050).
 # Nie (3) vor (1): versandschwelle_rabatt würde sonst nur das General profile umstellen.
-GRATIS_AB_CH = 40.50
+# 22.10.2026 ~22:30 UTC (Betreiber-Antwort «Alle auf CHF 50» nach Messung: General 50, CH-Lager/Druck 40.50 = Mischkörbe ohne Gratis): alle 3 Profile auf 50.00
+# (gratis_schwelle_setzen.py SOLL=50 --scharf, zurückgelesen; alte 40.50-Versandarten inaktiv, Rückweg --zurueck). Öffentliche JSON-LD bleibt auf Betreiber-Wort vorerst 40.50.
+GRATIS_AB_CH = 50.00
 
 
 def gql(q, v=None, ver="2026-01"):
