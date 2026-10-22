@@ -26,7 +26,8 @@ REPO = os.path.dirname(HIER)
 sys.path.insert(0, HIER)
 SCHARF = os.environ.get("SCHARF") == "1"
 SUFFIX = ".vor-gratis5000-2210"
-DATEIEN = ["layout/theme.liquid", "snippets/cart-summary.liquid", "templates/product.json"]
+DATEIEN = ["layout/theme.liquid", "snippets/cart-summary.liquid", "templates/product.json", "sections/header-group.json",
+           "sections/lux-assistent.liquid", "snippets/meta-tags.liquid", "templates/collection.json", "templates/index.json"]
 
 # (Datei, alt, neu, erwartete Anzahl) — exakte Zeichenketten, jede muss genau so oft vorkommen
 ERSETZUNGEN = [
@@ -44,6 +45,20 @@ ERSETZUNGEN = [
     ("snippets/cart-summary.liquid", "⌈(40.50 − Betrag nach Rabatt)", "⌈(50 − Betrag nach Rabatt)", 1),
     ("templates/product.json", "product.price_min >= 4500", "product.price_min >= 5556", 2),
     ("templates/product.json", "product.price_min >= 4050", "product.price_min >= 5000", 2),
+    # Betreiber «50 behalten, Text anpassen»: der automatische 10-%-Rabatt ab 2 Artikeln drückt Körbe von 50.00–55.55 unter 50 → Versprechen «ab CHF 50 nach Rabatt»
+    # (NICHT angefasst: die Zeichenketten '<p>Gratis-Versand ab CHF 50 ·' in templates/product.json — das ist Suchlogik gegen den Beschreibungstext)
+    ("layout/theme.liquid", "(ab CHF 50 Warenwert)", "(ab CHF 50 nach Rabatt)", 1),
+    ("snippets/cart-summary.liquid", "bis zum Gratisversand (ab CHF 50)</span>", "bis zum Gratisversand (ab CHF 50 nach Rabatt)</span>", 1),
+    ("templates/product.json", "(zusammen mit anderer Ware: gratis ab CHF 50)", "(zusammen mit anderer Ware: gratis ab CHF 50 nach Rabatt)", 2),
+    ("templates/product.json", "In der Schweiz gratis ab CHF 50{% endif %}", "In der Schweiz gratis ab CHF 50 nach Rabatt{% endif %}", 1),
+    ("templates/product.json", "<strong>gratis</strong> ab CHF 50</span>{% endif %}", "<strong>gratis</strong> ab CHF 50 nach Rabatt</span>{% endif %}", 1),
+    ("sections/header-group.json", "in der Schweiz gratis ab CHF 50\",", "in der Schweiz gratis ab CHF 50 nach Rabatt\",", 1),
+    ("sections/lux-assistent.liquid", "<b>ab CHF 50 gratis</b>; darunter", "<b>ab CHF 50 nach Rabatt gratis</b>; darunter", 1),
+    ("snippets/meta-tags.liquid", "in der Schweiz gratis ab CHF 50.'", "in der Schweiz gratis ab CHF 50 nach Rabatt.'", 1),
+    ("templates/collection.json", "Gratis-Versand ab CHF 50, sonst CHF 7.00.</p>", "Gratis-Versand ab CHF 50 nach Rabatt, sonst CHF 7.00.</p>", 1),
+    ("templates/collection.json", "</strong> in der Schweiz ab CHF 50</span>", "</strong> in der Schweiz ab CHF 50 nach Rabatt</span>", 1),
+    ("templates/index.json", "Gratis-Versand in der Schweiz ab CHF 50 · ", "Gratis-Versand in der Schweiz ab CHF 50 nach Rabatt · ", 1),
+    ("templates/index.json", "<br>in der Schweiz ab CHF 50</div>", "<br>in der Schweiz ab CHF 50 nach Rabatt</div>", 1),
     ("templates/product.json", "Entscheid D: Tarif ab 40.50 → ab 45 auch mit 10-%-Code gratis, 40.50–44.99 ohne Gutschein.",
      "Tarif ab 50 (22.10.2026) → ab 55.56 auch mit 10-%-Code gratis, 50–55.55 ohne Gutschein.", 1),
 ]
@@ -91,7 +106,9 @@ def hauptlauf():
     if not geaendert:
         print("nichts zu tun")
         return 0
-    json_ok(neu["templates/product.json"])
+    for n in geaendert:
+        if n.endswith(".json"):
+            json_ok(neu[n])
     rest = {n: sorted(set(re.findall(r"4050|4500", neu[n]))) for n in geaendert}
     print("  übrig gebliebene Zahlen 4050/4500:", rest)
     if not SCHARF:
@@ -139,19 +156,24 @@ def zurueck():
 
 
 def selbsttest():
-    probe = {"layout/theme.liquid": "Math.max(5000-sub, var SCHWELLE=4050, x; tot>=4050 y ((4050-tot)*10+8)/9 Entscheid D: Tarif ab 40.50 und >= 40.50 (Tarif seit Entscheid D;",
-             "snippets/cart-summary.liquid": "lux_gv_rest = 5000 | minus: cart.total_price >= 4050 -%} lux_gv_rest2 = 4050 | Tarif gratis ab 40.50 (seit Betreiber-Entscheid D, ⌈(40.50 − Betrag nach Rabatt)",
-             "templates/product.json": "product.price_min >= 4500 a product.price_min >= 4500 b product.price_min >= 4050 c product.price_min >= 4050 "
-                                       "Entscheid D: Tarif ab 40.50 → ab 45 auch mit 10-%-Code gratis, 40.50–44.99 ohne Gutschein."}
+    # Probe aus der Tabelle selbst: jede Zeile steht n-mal in ihrer Datei (getrennt durch Leerzeichen)
+    probe = {d: "" for d in DATEIEN}
+    for datei, alt, _, n in ERSETZUNGEN:
+        probe[datei] += (alt + " | ") * n
     neu, fehler = ersetze(probe)
-    ok = (not fehler and "4050" not in neu["layout/theme.liquid"] and "4050" not in neu["snippets/cart-summary.liquid"]
-          and neu["templates/product.json"].count(">= 5556") == 2 and neu["templates/product.json"].count(">= 5000") == 2
-          and "4500" not in neu["templates/product.json"] and "4050" not in neu["templates/product.json"])
+    ok = not fehler
+    for datei, alt, ers, n in ERSETZUNGEN:
+        ok = ok and neu[datei].count(ers) >= n
     zweimal, f2 = ersetze(neu)
-    ok = ok and not f2 and zweimal == neu   # idempotent
-    _, f3 = ersetze({**probe, "layout/theme.liquid": probe["layout/theme.liquid"] + " tot>=4050"})
-    ok = ok and bool(f3)                     # doppelter Anker wird abgelehnt
-    print("SELBSTTEST OK: Ersetzung, Idempotenz, Doppelanker" if ok else "SELBSTTEST FEHLGESCHLAGEN")
+    ok = ok and not f2 and zweimal == neu                      # idempotent
+    erste = ERSETZUNGEN[0]
+    doppelt = dict(probe)
+    doppelt[erste[0]] += erste[1]
+    ok = ok and bool(ersetze(doppelt)[1])                      # ein zusätzlicher Anker (zu viele Treffer) wird abgelehnt
+    fehlt = dict(probe)
+    fehlt[erste[0]] = fehlt[erste[0]].replace(erste[1], "", 1)
+    ok = ok and bool(ersetze(fehlt)[1])                        # fehlender Anker wird abgelehnt
+    print(f"SELBSTTEST OK: {len(ERSETZUNGEN)} Ersetzungen, Idempotenz, Doppel- und Fehlanker" if ok else "SELBSTTEST FEHLGESCHLAGEN")
     return 0 if ok else 1
 
 

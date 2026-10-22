@@ -113,7 +113,7 @@ CHL_PFLICHT = {   # Datei → Textstücke, die live stehen müssen (Entscheid C)
                             "Gratis-Versand in der Schweiz</strong> · Ware ab Schweizer Lager"],
     "templates/cart.lux-chlager.liquid": ["{%- layout none -%}", "contains 'profil-ch-lager'", '"alle_chlager"'],
     "templates/product.json": ["product.tags contains 'profil-ch-lager' %}", "closest.product.tags contains 'profil-ch-lager' %}",
-                               "für Ware ab Schweizer Lager (zusammen mit anderer Ware: gratis ab CHF 50)"],
+                               "für Ware ab Schweizer Lager (zusammen mit anderer Ware: gratis ab CHF 50 nach Rabatt)"],   # 22.10.2026: «nach Rabatt» (Mengenrabatt -10 % ab 2 Artikeln, Tarif 50)
 }
 
 

@@ -1,0 +1,530 @@
+{%- comment -%}
+  LuxeStyle Assistent v4 (21.10.2026, Betreiber: «smartbot auf shopify ist zu teuer — machst du es gratis und besser», dann «optisch viel besser
+  und wie ein richtiger Top-Roboter, auch die Features und alles»). v4 = v3 + Befunde dreier unabhängiger Prüfer (Optik, Code, Fakten).
+  Kostenlos, ohne App, ohne KI-Dienst, ohne Server: beantwortet Fragen zu Versand, Lieferzeit, Zoll, Rückgabe, Garantie, Zahlung,
+  Sendungsverfolgung und Kontakt aus FESTEN Antworten, die den Shop-Richtlinien und Seiten entsprechen (kein Erfinden), führt durch einen
+  Geschenkfinder, kennt die Kategorien und sucht Produkte über die Shopify-Suchvorschlags-Schnittstelle (/search/suggest.json, gleiche Domain).
+  Verlauf nur im Tab (sessionStorage); Eingaben mit Mail-Adresse, Telefon-/Bestellnummer-Muster werden nie gesucht oder gespeichert (Namen und
+  Adressen kann kein Muster erkennen — darum die Bitte «keine persönlichen Daten»); Suchbegriffe gehen wie bei der normalen Shop-Suche an die
+  eigene Shopify-Domain. Zählt nur anonyme Ereignisnamen (Clarity, kein Text); der Inhalt des Fensters ist für Sitzungsaufzeichnungen maskiert.
+  Nur deutsche Sprachversion, nicht im Warenkorb. Die Zahlen/Fristen der Antworten prüft automation/lux_assistent.py täglich gegen Richtlinien und Seiten.
+  Rückbau: python3 automation/lux_assistent.py --zurueck --ja (entfernt Eintrag in sections UND order der footer-group.json, danach die Datei).
+{%- endcomment -%}
+{%- if request.locale.iso_code == 'de' and request.page_type != 'cart' -%}
+<div id="luxas" data-state="idle" data-clarity-mask="True" hidden>
+  <div class="luxas-nudge" id="luxas-nudge" role="status" hidden>
+    <button type="button" class="luxas-nudge-x" id="luxas-nudge-x" aria-label="Hinweis schliessen">×</button>
+    <span>Automatischer Assistent: Fragen zu Versand, Rückgabe oder Produkten?</span>
+  </div>
+  <button type="button" class="luxas-btn" id="luxas-open" aria-haspopup="dialog" aria-expanded="false" aria-controls="luxas-panel" aria-label="Hilfe – Shop-Assistent öffnen">
+    <span class="luxas-btn-bot" id="luxas-btn-bot" aria-hidden="true"></span>
+    <span class="luxas-btn-t" aria-hidden="true">Hilfe</span>
+  </button>
+  <section id="luxas-panel" class="luxas-panel" role="dialog" aria-labelledby="luxas-titel" hidden>
+    <header class="luxas-head">
+      <span class="luxas-head-bot" id="luxas-head-bot" aria-hidden="true"></span>
+      <div class="luxas-head-t"><h2 id="luxas-titel">LuxeStyle Assistent</h2><small><i class="luxas-on" aria-hidden="true"></i>automatisch, keine Person</small></div>
+      <button type="button" class="luxas-ico" id="luxas-reset" aria-label="Gespräch neu starten" title="Neu starten">↺</button>
+      <button type="button" class="luxas-ico" id="luxas-close" aria-label="Schliessen">×</button>
+    </header>
+    <div class="luxas-log" id="luxas-log" role="log" aria-live="polite" tabindex="0"></div>
+    <div class="luxas-chips" id="luxas-chips"></div>
+    <form class="luxas-form" id="luxas-form" autocomplete="off">
+      <input type="text" id="luxas-in" name="frage" maxlength="120" placeholder="Frage oder Stichwort …" aria-label="Deine Frage oder dein Suchwort" enterkeyhint="send">
+      <button type="submit" aria-label="Senden"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg></button>
+    </form>
+    <p class="luxas-foot">Keine persönlichen Daten eingeben. Ohne Gewähr – massgebend: <a href="/policies/terms-of-service">AGB</a>, <a href="/policies/shipping-policy">Versand</a>, <a href="/policies/refund-policy">Rückgabe</a>.</p>
+  </section>
+</div>
+{% raw %}
+<style>
+#luxas{--lg:#d4b896;--lgd:#b8935a;--ld:#2c2c2c;--lc:#faf7f2;--lb:#7a5a2c;position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:5;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:15px;line-height:1.45;color:var(--ld);transition:bottom .2s ease}
+#luxas[hidden],#luxas [hidden]{display:none!important}
+#luxas[data-hold]{display:none!important}
+#luxas.luxas-up{bottom:calc(92px + env(safe-area-inset-bottom,0px))}
+/* Roboter */
+.luxas-robot{display:block;width:100%;height:100%;overflow:visible}
+.luxas-robot .e-h,.luxas-robot .m-d{display:none}
+.luxas-robot .e-n,.luxas-robot .luxas-led{transform-box:fill-box;transform-origin:center}
+@media (prefers-reduced-motion:no-preference){
+  .luxas-live .luxas-robot{animation:luxas-float 4.2s ease-in-out infinite}
+  .luxas-live .e-n{animation:luxas-blink 5.5s infinite}
+  .luxas-live .luxas-led{animation:luxas-led 2.2s ease-in-out infinite}
+  #luxas[data-state="denkt"] .luxas-live .e-n{animation:luxas-scan 1.1s ease-in-out infinite}
+  #luxas[data-state="denkt"] .luxas-live .luxas-led{animation:luxas-led .45s ease-in-out infinite}
+  .luxas-m,.luxas-cards,.luxas-tiles,.luxas-wait{animation:luxas-pop .22s ease-out}
+  .luxas-panel{animation:luxas-in .2s ease-out}
+  .luxas-nudge{animation:luxas-pop .3s ease-out}
+  .luxas-log{scroll-behavior:smooth}
+  .luxas-wait i{animation:luxas-dot 1s infinite}
+  .luxas-wait i:nth-child(2){animation-delay:.15s}.luxas-wait i:nth-child(3){animation-delay:.3s}
+}
+@media (hover:hover){
+  .luxas-btn:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(0,0,0,.36),0 0 0 5px rgba(212,184,150,.28)}
+  .luxas-btn:hover .luxas-robot{animation-duration:1.6s}
+  .luxas-tile:hover{transform:translateY(-2px);border-color:var(--lgd);box-shadow:0 6px 14px rgba(0,0,0,.1)}
+  .luxas-card:hover{transform:translateY(-1px);border-color:var(--lgd);box-shadow:0 6px 16px rgba(0,0,0,.1)}
+  .luxas-chip:hover{background:#f3ebdd}
+  .luxas-ico:hover{background:rgba(250,247,242,.12)}
+}
+@keyframes luxas-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+@keyframes luxas-blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+@keyframes luxas-led{0%,100%{opacity:.55;transform:scale(.85)}50%{opacity:1;transform:scale(1.15)}}
+@keyframes luxas-scan{0%,100%{transform:translateX(-2.2px)}50%{transform:translateX(2.2px)}}
+@keyframes luxas-pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes luxas-in{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes luxas-dot{0%,80%,100%{transform:translateY(0);opacity:.45}40%{transform:translateY(-4px);opacity:1}}
+#luxas[data-state="froh"] .luxas-live .e-n,#luxas[data-state="froh"] .luxas-live .m-n{display:none}
+#luxas[data-state="froh"] .luxas-live .e-h{display:inline}
+#luxas[data-state="denkt"] .luxas-live .m-n{display:none}
+#luxas[data-state="denkt"] .luxas-live .m-d{display:inline}
+/* Knopf */
+.luxas-btn{position:relative;display:inline-flex;align-items:center;gap:8px;min-height:58px;padding:0 20px 0 8px;border-radius:999px;border:1px solid var(--lg);background:linear-gradient(150deg,#3b3733 0%,#1f1d1b 100%);color:var(--lc);font-family:inherit;font-weight:600;font-size:15px;line-height:1;cursor:pointer;box-shadow:0 10px 28px rgba(0,0,0,.32),0 0 0 4px rgba(212,184,150,.2);transition:transform .15s ease,box-shadow .15s ease}
+.luxas-btn-bot{width:44px;height:44px;flex:none}
+.luxas-btn:focus-visible,.luxas-chip:focus-visible,.luxas-tile:focus-visible,.luxas-form button:focus-visible,.luxas-form input:focus-visible,.luxas-fb button:focus-visible,.luxas-log:focus-visible,#luxas a:focus-visible{outline:3px solid #8a6a35;outline-offset:2px}
+.luxas-ico:focus-visible,.luxas-btn:focus-visible{outline-color:#f2c96b}
+.luxas-log:focus-visible{outline-offset:-3px}
+.luxas-nudge{position:absolute;right:4px;bottom:calc(100% + 12px);width:min(250px,calc(100vw - 40px));padding:11px 36px 11px 14px;border-radius:16px 16px 4px 16px;background:#fff;color:var(--ld);border:1px solid #e8dfd2;box-shadow:0 10px 28px rgba(0,0,0,.2);font-size:14px}
+.luxas-nudge-x{position:absolute;top:-4px;right:-4px;min-width:44px;min-height:44px;border:0;background:transparent;color:#5a5a5a;font-size:20px;line-height:1;cursor:pointer}
+/* Fenster */
+.luxas-panel{position:fixed;right:14px;bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:12;width:min(392px,calc(100vw - 28px));height:min(600px,calc(100vh - 200px));height:min(600px,calc(100dvh - 200px));display:flex;flex-direction:column;background:#f6f1e9;border:1px solid rgba(212,184,150,.55);border-radius:20px;box-shadow:0 18px 56px rgba(0,0,0,.32);overflow:hidden}
+#luxas.luxas-up .luxas-panel{bottom:calc(162px + env(safe-area-inset-bottom,0px));height:min(600px,calc(100vh - 260px));height:min(600px,calc(100dvh - 260px))}
+.luxas-head{display:flex;align-items:center;gap:10px;padding:11px 6px 11px 12px;background:linear-gradient(150deg,#3b3733 0%,#1f1d1b 100%);color:var(--lc);border-bottom:2px solid var(--lg)}
+.luxas-head-bot{width:46px;height:46px;flex:none;border-radius:50%;background:rgba(250,247,242,.08);padding:3px;box-shadow:0 0 0 2px rgba(212,184,150,.55)}
+.luxas-head-t{flex:1;min-width:0}
+.luxas-head-t h2{display:block;margin:0;padding:0;font-family:inherit;font-size:15.5px;font-weight:700;line-height:1.3;letter-spacing:.1px;color:inherit;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.luxas-head-t small{display:flex;align-items:center;gap:6px;font-size:12px;opacity:.9;white-space:nowrap}
+.luxas-on{width:8px;height:8px;border-radius:50%;background:var(--lgd);box-shadow:0 0 0 3px rgba(184,147,90,.3);flex:none}
+.luxas-ico{min-width:44px;min-height:44px;border:0;background:transparent;color:inherit;font-size:26px;line-height:1;cursor:pointer;border-radius:12px}
+#luxas-reset{font-size:22px}
+/* Gespräch */
+.luxas-log{flex:1;min-height:96px;overflow-y:auto;padding:14px 12px;display:flex;flex-direction:column;gap:10px;overscroll-behavior:contain}
+.luxas-row{display:flex;align-items:flex-start;gap:8px}
+.luxas-rme{justify-content:flex-end}
+.luxas-ava{width:28px;height:28px;flex:none;border-radius:50%;background:var(--ld);padding:2px;box-shadow:0 0 0 1.5px rgba(212,184,150,.7)}
+.luxas-m{max-width:calc(100% - 40px);padding:10px 13px;border-radius:16px;word-wrap:break-word;overflow-wrap:anywhere;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.luxas-m:focus{outline:none}
+.luxas-m a{color:var(--lb);font-weight:600;text-decoration:underline}
+.luxas-li{display:block;padding-left:14px;text-indent:-14px;margin-top:4px}
+.luxas-bot{background:#fff;border:1px solid #ebe3d6;border-bottom-left-radius:5px}
+.luxas-me{background:linear-gradient(150deg,#e2c9a6,#d4b896);color:var(--ld);border-bottom-right-radius:5px;max-width:86%}
+.luxas-wait{display:flex;gap:5px;padding:13px 15px}
+.luxas-wait i{width:7px;height:7px;border-radius:50%;background:var(--lgd);opacity:.8}
+.luxas-tiles{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:8px;align-self:stretch}
+.luxas-tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-height:62px;padding:8px 4px;border-radius:14px;border:1px solid #c9b99f;background:#fff;color:var(--ld);font-family:inherit;font-size:12.5px;font-weight:600;line-height:1.2;text-align:center;cursor:pointer;transition:transform .12s ease,border-color .12s ease,box-shadow .12s ease}
+.luxas-tile svg{width:24px;height:24px;flex:none;stroke:var(--lb);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.luxas-cards{display:flex;flex-direction:column;gap:8px;align-self:stretch}
+.luxas-card{display:flex;gap:11px;align-items:center;padding:8px;background:#fff;border:1px solid #ebe3d6;border-radius:14px;text-decoration:none!important;color:inherit!important;min-height:72px;transition:transform .12s ease,box-shadow .12s ease,border-color .12s ease}
+.luxas-card>div{min-width:0}
+.luxas-card img{width:60px;height:60px;object-fit:cover;border-radius:10px;flex:none;background:#f1ece4}
+.luxas-card b{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere;font-size:14px;font-weight:600;line-height:1.3}
+.luxas-card span{display:inline-block;margin-top:2px;font-size:13.5px;color:var(--lb);font-weight:700}
+.luxas-more{display:inline-flex;align-items:center;min-height:44px;align-self:flex-start;font-size:14px;color:var(--lb);font-weight:700;text-decoration:underline;padding:2px 4px}
+.luxas-fb{display:flex;align-items:center;gap:6px;margin:-4px 0 0 36px;font-size:12px;color:#5a5a5a}
+.luxas-fb button{min-width:44px;min-height:44px;border-radius:999px;border:1px solid #d9ccb8;background:#fff;font-size:15px;cursor:pointer}
+/* Schnellantworten */
+.luxas-chips{display:flex;flex-wrap:nowrap;gap:6px;padding:6px 12px 10px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.luxas-chips::-webkit-scrollbar{display:none}
+.luxas-chips:empty{display:none}
+.luxas-chip{flex:none;min-height:44px;padding:0 15px;border-radius:999px;border:1px solid #8a7350;background:#fff;color:var(--ld);font-family:inherit;font-weight:500;font-size:14px;line-height:1;cursor:pointer;white-space:nowrap;transition:background .12s ease}
+.luxas-form{display:flex;gap:8px;padding:10px 12px 6px;border-top:1px solid #e8dfd2;background:#fff}
+.luxas-form input{flex:1;min-width:0;min-height:48px;padding:0 14px;border:1px solid #9b8561;border-radius:24px;font-family:inherit;font-size:16px;line-height:1;background:#fff;color:var(--ld)}
+.luxas-form button{width:48px;min-height:48px;border:0;border-radius:50%;background:linear-gradient(150deg,#3b3733,#1f1d1b);color:var(--lg);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.luxas-foot{margin:0;padding:0 14px calc(8px + env(safe-area-inset-bottom,0px));background:#fff;font-size:12px;line-height:1.35;color:#5a5a5a}
+.luxas-foot a{color:var(--lb);text-decoration:underline}
+@media (hover:hover){.luxas-chips{scrollbar-width:thin;scrollbar-color:#b9a07a transparent;padding-bottom:6px}.luxas-chips::-webkit-scrollbar{display:block;height:6px}.luxas-chips::-webkit-scrollbar-thumb{background:#b9a07a;border-radius:3px}}
+@media (max-width:600px){.luxas-panel{right:8px;left:8px;width:auto;bottom:calc(78px + env(safe-area-inset-bottom,0px));border-radius:18px}}
+@media (max-width:340px){.luxas-head-t small{display:none}}
+/* niedrige Fenster (Querformat, 200 % Zoom): Fenster füllt die Höhe, der Knopf tritt zurück */
+@media (max-height:520px){
+  #luxas:has(.luxas-panel:not([hidden])){z-index:10}
+  #luxas:has(.luxas-panel:not([hidden])) .luxas-btn{display:none}
+  .luxas-panel,#luxas.luxas-up .luxas-panel{top:8px;bottom:calc(8px + env(safe-area-inset-bottom,0px));height:auto;max-height:none}
+  .luxas-log{min-height:0}
+  .luxas-foot{display:none}
+  .luxas-chips{display:none}
+  .luxas-head{padding:6px 6px 6px 12px}
+  .luxas-head-bot{width:36px;height:36px}
+}
+</style>
+<script>
+(function(){
+  'use strict';
+  var root=document.getElementById('luxas'); if(!root) return;
+  var $=function(i){return document.getElementById(i)};
+  var btn=$('luxas-open'),panel=$('luxas-panel'),log=$('luxas-log'),chips=$('luxas-chips'),form=$('luxas-form'),inp=$('luxas-in'),nudge=$('luxas-nudge');
+  var R=(window.Shopify&&window.Shopify.routes&&window.Shopify.routes.root)||'/';
+  var started=false,suchmodus=false,hist=[],stTimer=0,gen=0,ctl=null,botNr=0,nudgeGezeigt=false;
+  var REDUCED=!!(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches);
+  var COARSE=!!(window.matchMedia&&matchMedia('(pointer:coarse)').matches);
+
+  /* ---------- Roboter (Inline-SVG, je Instanz eigene Verlaufs-ID) ---------- */
+  function bot(live){
+    var g='luxg'+(++botNr);
+    return '<span class="'+(live?'luxas-live':'')+'" style="display:block;width:100%;height:100%"><svg class="luxas-robot" viewBox="0 0 64 64" aria-hidden="true" focusable="false">'
+    +'<defs><linearGradient id="'+g+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#46413c"/><stop offset="1" stop-color="#232120"/></linearGradient></defs>'
+    +'<line x1="32" y1="5" x2="32" y2="14" stroke="#d4b896" stroke-width="3" stroke-linecap="round"/><circle class="luxas-led" cx="32" cy="4.5" r="3.4" fill="#f2c96b"/>'
+    +'<rect x="2" y="27" width="8" height="14" rx="4" fill="#d4b896"/><rect x="54" y="27" width="8" height="14" rx="4" fill="#d4b896"/>'
+    +'<rect x="8" y="13" width="48" height="41" rx="16" fill="url(#'+g+')"/><path d="M12 24c0-6 4-9 10-9h20c6 0 10 3 10 9" fill="none" stroke="#fff" stroke-opacity=".16" stroke-width="2" stroke-linecap="round"/>'
+    +'<rect x="14" y="20" width="36" height="27" rx="11" fill="#faf7f2"/>'
+    +'<g class="e-n"><rect x="22" y="27" width="6.5" height="11" rx="3.2" fill="#2c2c2c"/><rect x="35.5" y="27" width="6.5" height="11" rx="3.2" fill="#2c2c2c"/><circle cx="24.4" cy="30" r="1.3" fill="#fff"/><circle cx="37.9" cy="30" r="1.3" fill="#fff"/></g>'
+    +'<g class="e-h"><path d="M21.5 36q3.7-8 7.4 0M35.1 36q3.7-8 7.4 0" fill="none" stroke="#2c2c2c" stroke-width="2.8" stroke-linecap="round"/></g>'
+    +'<path class="m-n" d="M27 41.5q5 4.2 10 0" fill="none" stroke="#b8935a" stroke-width="2.4" stroke-linecap="round"/><path class="m-d" d="M29.5 42h5" fill="none" stroke="#b8935a" stroke-width="2.4" stroke-linecap="round"/>'
+    +'<circle cx="18.5" cy="40" r="2.4" fill="#f0cfc0" opacity=".85"/><circle cx="45.5" cy="40" r="2.4" fill="#f0cfc0" opacity=".85"/>'
+    +'<rect x="24" y="54" width="16" height="5" rx="2" fill="#d4b896"/></svg></span>';
+  }
+  $('luxas-btn-bot').innerHTML=bot(true);$('luxas-head-bot').innerHTML=bot(true);
+  function state(s,ms){root.setAttribute('data-state',s);clearTimeout(stTimer);if(s!=='idle')stTimer=setTimeout(function(){root.setAttribute('data-state','idle')},ms||2200)}
+  function trk(n){try{if(typeof window.clarity==='function')window.clarity('event',n)}catch(e){}}
+
+  /* ---------- Wissen: feste Antworten nach den Shop-Richtlinien und Seiten (Stand 21.10.2026) ----------
+     k = starke Stichwörter (3 Punkte), w = schwache (1 Punkt). Ein Thema wird bei mind. 3 Punkten beantwortet — oder bei 1–2 Punkten, wenn
+     JEDES Inhaltswort der Eingabe zu diesem Thema gehört («Versand», «Zahlung», «Paket»). Sonst sucht der Assistent Produkte.
+     Stichwort mit «$» am Ende = nur als ganzes Wort; Stichwort mit Leerzeichen = ganze Wortfolge; sonst Wortanfang (versandkosten → «Versandkosten»). */
+  var L=function(h,t){return '<a href="'+h+'">'+t+'</a>'};
+  var MAIL=L('mailto:info@luxestyle.ch','info@luxestyle.ch');
+  var LI=function(t){return '<span class="luxas-li">• '+t+'</span>'};
+  var T={
+    versand:{k:['versandkosten','gratisversand','gratis versand','versandart','liefergebiet','liechtenstein','osterreich','oesterreich','porto$','ins ausland','lieferung ins ausland','liefert ihr','versendet ihr','versand kostet','kostet der versand','kostet versand','versandkostenfrei','ab wann gratis','ab wann kostenlos','nach deutschland','nach osterreich','nach oesterreich','nach frankreich','nach italien'],w:['versand','kostenlos','gratis','lieferung$','liefern','ausland','deutschland','schweiz$'],
+      a:'Wir liefern in die <b>Schweiz</b> und nach <b>Liechtenstein</b>. In der Schweiz ist der Standardversand <b>ab CHF 50 gratis</b>; darunter siehst du die Kosten im Warenkorb, bevor du bestellst. Liechtenstein: CHF 14.90 pro Bestellung. Andere Länder (z. B. EU oder USA) sind derzeit nicht möglich.<br>'+L(R+'pages/versand-lieferung','Versand &amp; Lieferung')+' · '+L(R+'policies/shipping-policy','Versandbedingungen'),
+      c:['lieferzeit','zoll']},
+    lieferzeit:{k:['lieferzeit','lieferdauer','lieferfrist','liefertermin','lieferdatum','wie lange dauert','wie lange braucht','wie lange liefert','wann kommt meine','wann kommt mein','wann kommt die','wann kommt das','wann bekomme ich','wann erhalte ich','ankunft'],w:['wie lange','wann kommt','dauert','dauer$','lieferung$','unterwegs','schnell','express'],
+      a:'Das hängt vom Artikel ab – auf jeder Produktseite steht die Angabe für genau diesen Artikel:<br>'+LI('<b>Ab Schweizer Lager:</b> meist 2–3 Werktage (das genaue Datum zeigt die Kasse)')+LI('<b>Druck auf Bestellung</b> (personalisierte Artikel, Poster, Textilien): 7–14 Werktage')+LI('<b>Direktversand ab Lieferant</b> (der grösste Teil des Sortiments): 10–20 Werktage')+LI('<b>Liechtenstein:</b> in der Regel 15–45 Tage')+'Das sind Richtwerte, keine garantierten Termine. Verzögert sich etwas spürbar, melden wir uns per E-Mail.<br>'+L(R+'pages/versand-lieferung','Details zu Lieferzeiten'),
+      c:['tracking','zoll']},
+    tracking:{k:['sendungsverfolgung','tracking','trackingnummer','sendungsnummer','bestellstatus','bestellung verfolgen','wo ist meine bestellung','wo ist mein paket','lieferstatus','nicht angekommen','noch nicht da','nichts erhalten','nicht erhalten','paket nicht','versandbestaetigung'],w:['paket$','pakete$','sendung','status$','verfolgen','bestellung$','bestellungen$'],
+      a:'Direkt nach der Bestellung bekommst du die Bestellbestätigung per E-Mail. Die <b>Sendungsnummer folgt in einer zweiten E-Mail</b>, sobald dein Paket unterwegs ist – bei Direktversand also nicht am selben Tag. Die Seite dazu: '+L(R+'pages/tracking','Sendungsverfolgung')+'.<br>Ist deine Lieferung deutlich später als angegeben, schreib uns mit der Bestellnummer an '+MAIL+'.',
+      c:['lieferzeit','kontakt']},
+    zoll:{k:['zollgebuehr','zollgebuehren','einfuhrsteuer','einfuhrgebuehr','einfuhrgebuehren','verzollung','zusatzkosten','zoll bezahlen','fallen zoll','faellt zoll','zoll an','zoll und','zoll kosten'],w:['zoll$','zoelle$','einfuhr'],
+      a:'Bei den meisten Bestellungen fallen <b>keine Zusatzkosten</b> an – versprechen können wir es aber nicht für jede. Artikel mit dem Hinweis «Blitzversand aus dem Schweizer Lager» werden aus der Schweiz verschickt; dort fällt nie etwas an. Beim Direktversand wird Einfuhrsteuer erst ab einem Steuerbetrag von CHF 5 erhoben – bei 8,1 % MwSt. also ab rund CHF 60 Warenwert inklusive Versand. Darüber können Einfuhrsteuer und eine Verzollungsgebühr des Zustellers anfallen; die Rechnung dafür kommt vom Zusteller, nicht von uns.<br>'+L(R+'pages/faq','Häufige Fragen'),
+      c:['versand','lieferzeit']},
+    rueckgabe:{k:['rueckgabe','zurueckschicken','zuruecksenden','ruecksendung','retoure','retour','umtausch','umtauschen','widerruf','erstattung','rueckerstattung','geld zurueck','refund','zurueckgeben'],w:['zurueck$'],
+      a:'Du hast <b>30 Tage Rückgaberecht ab Erhalt</b> (freiwillig, ohne Angabe von Gründen) – die Ware muss unbenutzt und originalverpackt sein. So geht es: Schreib uns mit Bestellnummer an '+MAIL+'; du bekommst per E-Mail die gültige <b>Retourenadresse</b> (bitte keine Pakete unaufgefordert an die Impressums-Adresse schicken). Die Rücksendekosten trägst du selbst – ausser bei defekter, beschädigter oder falscher Ware. Die Erstattung folgt spätestens 14 Tage nach Eingang. Einen direkten Umtausch gibt es nicht: Sende den Artikel zurück und bestelle die gewünschte Grösse oder Farbe neu. Ausgenommen sind z. B. geöffnete Hygieneartikel und personalisierte Artikel. <b>Liechtenstein:</b> zusätzlich gilt das gesetzliche Rücktrittsrecht (14 Tage); dann erstatten wir auch die Kosten der Standardlieferung.<br>'+L(R+'pages/rueckgabe','Alle Details zur Rückgabe'),
+      c:['defekt','kontakt']},
+    defekt:{k:['defekt','kaputt','beschaedigt','mangel','reklamation','reklamieren','funktioniert nicht','falsch geliefert','falsche ware','falscher artikel','falsches produkt','falschen artikel','gebrochen','kaputt angekommen'],w:['falsch$','falsche$','falscher$'],
+      a:'Das tut uns leid. Ist ein Artikel <b>defekt, beschädigt oder falsch geliefert</b>, melde dich bitte <b>innerhalb von 7 Tagen nach Erhalt</b> unter '+MAIL+' – mit Bestellnummer und einem <b>Foto oder Video</b> vom Mangel. Nach der Prüfung bekommst du kostenlosen Ersatz oder die volle Erstattung; die Rücksendung ist dann für dich kostenlos. Gesetzliche Gewährleistungsrechte bleiben unberührt.<br>Hast du selbst eine falsche Grösse oder Adresse gewählt? Dann gilt die 30-Tage-Rückgabe (Rücksendekosten trägst du).<br>'+L(R+'pages/garantie','Garantie &amp; Rückgabe'),
+      c:['rueckgabe','kontakt']},
+    garantie:{k:['garantie','gewaehrleistung','herstellergarantie'],w:[],
+      a:'Eine separate Herstellergarantie gibt es bei Dropship-Ware nicht. Es gelten die <b>gesetzlichen Gewährleistungsrechte nach Schweizer Recht</b> für Mängel, die bei der Lieferung schon bestanden – zusätzlich zum freiwilligen 30-Tage-Rückgaberecht. Ist etwas defekt, beschädigt oder falsch geliefert, melde dich bitte innerhalb von 7 Tagen nach Erhalt unter '+MAIL+' (Bestellnummer, Foto oder Video).<br>'+L(R+'pages/garantie','Garantie &amp; Rückgabe'),
+      c:['defekt','rueckgabe']},
+    zahlung:{k:['zahlung','zahlungen','zahlungsart','zahlungsarten','zahlungsmittel','zahlungsmoeglichkeit','bezahlen','bezahlung','bezahl','twint','klarna','paypal','kreditkarte','apple pay','google pay','auf rechnung','rechnung$','vorkasse','visa$','mastercard'],w:['zahlen$','karte$'],
+      a:'Du kannst bezahlen mit <b>Kreditkarte</b> (Visa, Mastercard, American Express), <b>TWINT</b>, <b>PayPal</b>, <b>Klarna</b> (auch Kauf auf Rechnung), <b>Apple Pay</b> und <b>Google Pay</b> – je nach Verfügbarkeit im Checkout. Welche Optionen für deine Bestellung gelten, siehst du in der Kasse.',
+      c:['versand','rueckgabe']},
+    kontakt:{k:['kontakt$','kontaktieren','erreiche','telefonnummer','hotline','anrufen','emailadresse','e-mail','kundendienst','kundenservice','mitarbeiter','stornieren','storno','bestellung aendern','adresse aendern','falsche adresse','falsche lieferadresse','lieferadresse','adresse angegeben'],w:['mail$','person$','hilfe$','telefon$','support$'],
+      a:'Schreib uns: '+MAIL+' – <b>Antwort in der Regel innert 24 Stunden an Werktagen</b>. Bitte gib bei Fragen zu einer Bestellung die Bestellnummer an; bei Defekten gehören Fotos dazu. Eine Telefon-Hotline gibt es bewusst nicht – schriftlich bleibt alles nachvollziehbar.<br>'+L(R+'pages/kontakt-support','Kontakt &amp; Support'),
+      c:['tracking','rueckgabe']},
+    ich:{k:['roboter','chatbot','bot$','ki$','kuenstliche intelligenz','chatgpt','echte person','ein mensch','mit einem menschen','mit einer person','live chat','jemandem sprechen','mensch$'],w:[],
+      a:'Ich bin ein <b>automatischer Assistent</b> – keine Person und keine KI. Meine Antworten sind feste Texte nach unseren Versand-, Rückgabe- und Zahlungsbedingungen. Eine Person erreichst du per E-Mail: '+MAIL+' (Antwort in der Regel innert 24 Stunden an Werktagen).',
+      c:['kontakt','versand']},
+    personal:{k:['personalisier','selbst gestalten','selbst gestaltet','bedrucken lassen','druck auf bestellung','eigenes design','eigenes foto','eigenes logo','mit meinem foto','individuell gestalt'],w:[],
+      a:'Bei „Druck auf Bestellung“ (personalisierte Artikel, Poster, Textilien) rechnest du mit <b>7–14 Werktagen</b> inklusive Produktion. Bitte beachte: Selbst gestaltete oder personalisierte Artikel sind von der Rückgabe ausgeschlossen, sofern kein Mangel vorliegt.',
+      c:['lieferzeit','rueckgabe']},
+    firmen:{k:['firmen','firma$','verein$','vereine','b2b','grosshandel','grossbestellung','grosse bestellung','mengenrabatt','wiederverkauf','geschaeftskunden','geschaeftlich'],w:[],
+      a:'Für Firmen, Vereine und grössere Bestellungen haben wir eine eigene Seite mit Anfrageformular: '+L(R+'pages/firmen-vereine','Firmen &amp; Vereine')+'.',
+      c:['kontakt']},
+    merkliste:{k:['merkliste','merklisten','wunschliste','wunschlisten','merkzettel','gemerkte','gemerkten','favoritenliste','meine favoriten','herzli','wo ist die liste','wo finde ich die liste','finde die liste','gemerkt$','wo sind meine gemerkten','mit dem herz','das herz'],w:['herz$','herzen$','merken$','liste$','favoriten$'],
+      a:'Deine <b>Merkliste</b> öffnest du hier: '+L(R+'pages/merkliste','Zur Merkliste')+'. Am Handy und an grossen Bildschirmen (ab ca. 1350 Pixel Breite) findest du sie auch oben in der Kopfzeile beim <b>Herz</b> (die Zahl zeigt, wie viele Artikel du gemerkt hast); sonst im Menü (<b>♥ Merkliste</b>) und ganz unten auf der Seite. Gemerkt wird mit dem Herz auf jeder Produktkarte und auf der Produktseite. Die Liste bleibt nur auf diesem Gerät in diesem Browser gespeichert.',
+      c:['kontakt']}
+  };
+  var NAMEN={versand:'Versand & Kosten',lieferzeit:'Lieferzeit',tracking:'Lieferstatus & Tracking',rueckgabe:'Rückgabe',defekt:'Defekt / falsch geliefert',garantie:'Garantie',zoll:'Zoll & Einfuhr',zahlung:'Zahlung',kontakt:'Kontakt',personal:'Personalisiert',firmen:'Firmen & Vereine',merkliste:'Merkliste',ich:'Bist du ein Mensch?'};
+  var PRIO=['defekt','garantie','rueckgabe','tracking','lieferzeit','zoll','versand','zahlung','personal','firmen','merkliste','ich','kontakt'];  /* bei Gleichstand */
+
+  /* ---------- Kategorien und Geschenkfinder: nur geprüfte Kollektionen (die Wache prüft jede verlinkte Adresse) ---------- */
+  var KATS=[
+    {t:'Im Trend',h:R+'collections/hype-jetzt',s:'Das ist gerade im Trend:'},
+    {t:'Beliebt',h:R+'collections/bestseller',s:'Beliebte Artikel aus unserem Sortiment:'},
+    {t:'Neuheiten',h:R+'collections/neu-eingetroffen',s:'Frisch eingetroffen:'},
+    {t:'Ab Schweizer Lager',h:R+'collections/blitzversand-schweiz',s:'Diese Artikel kommen aus dem Schweizer Lager (meist 2–3 Werktage) – vor allem Kostüme, Party- und Deko-Artikel:'}
+  ];
+  var WEM={sie:{t:'Für Sie',n:'Geschenke für Sie',h:R+'collections/geschenke-fuer-sie'},ihn:{t:'Für Ihn',n:'Geschenke für Ihn',h:R+'collections/geschenke-fuer-ihn'},kind:{t:'Für Kinder',n:'Geschenke für Kinder',h:R+'collections/geschenke-fuer-kinder'},set:{t:'Sets & Bundles',n:'Geschenk-Sets &amp; Bundles',h:R+'collections/sets-bundles'},egal:{t:'Für alle',n:'Geschenkideen für alle',h:R+'collections/premium-geschenke'}};
+  var BUD={b30:{t:'bis CHF 30',h:R+'collections/%F0%9F%8E%81-geschenke-bis-chf-30'},b50:{t:'bis CHF 50',h:R+'collections/geschenke-unter-50-franken'},b100:{t:'bis CHF 100',h:R+'collections/geschenke-unter-100-franken'}};
+  var ICON={versand:'<path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/>',lieferzeit:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',tracking:'<path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/>',rueckgabe:'<path d="M9 14L4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/>',zahlung:'<rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 15h4"/>',kontakt:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',geschenk:'<rect x="3" y="9" width="18" height="12" rx="1"/><path d="M12 9v12M3 13h18M12 9C9 9 7.5 5 10 4.5S12 7 12 9zm0 0c3 0 4.5-4 2-4.5S12 7 12 9z"/>',entdecken:'<path d="M12 3c1 4 5 5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-4 0-6 1-9z"/>',suchen:'<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>'};
+
+  function norm(s){return String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ß/g,'ss').replace(/ae/g,'a').replace(/oe/g,'o').replace(/ue/g,'u').replace(/[^a-z0-9$@ -]+/g,' ').replace(/\s+/g,' ').trim()}
+  var KW={};Object.keys(T).forEach(function(t){KW[t]={k:T[t].k.map(norm),w:T[t].w.map(norm)}});
+  function trefferWort(n,toks,kw){
+    if(kw.indexOf(' ')>-1) return (' '+n+' ').indexOf(' '+kw+' ')>-1 || (' '+n+' ').indexOf(' '+kw)>-1;
+    var exakt=kw.charAt(kw.length-1)==='$',w=exakt?kw.slice(0,-1):kw;
+    for(var i=0;i<toks.length;i++){ if(exakt?toks[i]===w:(w.length<5?toks[i]===w:toks[i].indexOf(w)===0)) return true }
+    return false;
+  }
+  var STOP={};norm('habt ihr gibt es ich suche suchen brauche brauchen moechte will wuerde gern gerne kann kannst koennt man wie was wo wann wer welche welcher welches hat haben bei euch fuer von mit nach und oder in im am auf zu zum zur ist sind mein meine meinen bitte ein eine einen einem der die das den dem des mir mich dir uns noch auch nur mal sowas etwas lange').split(' ').forEach(function(w){STOP[w]=1});
+  function inhaltsWoerter(n){return n.split(' ').filter(function(w){return w.length>1&&!STOP[w]})}
+  function thema(q){
+    var n=norm(q),toks=n.split(' ').filter(Boolean),best='',bs=0;
+    var zeitFrage=trefferWort(n,toks,'wie lange')||trefferWort(n,toks,'wann'),liefWort=toks.some(function(x){return /^(lieferung|liefer|versand|bestellung|paket|sendung)/.test(x)});
+    PRIO.forEach(function(t){var s=0;KW[t].k.forEach(function(k){if(trefferWort(n,toks,k))s+=3});KW[t].w.forEach(function(k){if(trefferWort(n,toks,k))s+=1});
+      if(t==='lieferzeit'&&zeitFrage&&liefWort)s+=3; /* «Wie lange … Lieferung/Bestellung» */
+      if(s>bs){bs=s;best=t}});
+    if(bs>=3)return best;
+    if(bs>=1){ /* nur Themenwörter: «Versand», «Zahlung», «Paket» */
+      var cw=inhaltsWoerter(n);
+      if(cw.length&&cw.length<=2&&cw.every(function(w){return KW[best].k.concat(KW[best].w).some(function(kw){return trefferWort(w,[w],kw)})}))return best;
+    }
+    return '';
+  }
+  function suchwort(q){return String(q||'').toLowerCase().replace(/[^\p{L}\p{N} -]+/gu,' ').split(/\s+/).filter(function(w){return w.length>1&&!STOP[norm(w)]}).slice(0,5).join(' ')}
+  /* Muster für Personendaten: Mail (auch umschrieben), Telefon, Bestellnummer, IBAN. Namen/Adressen erkennt kein Muster – darum der Hinweis im Fenster. */
+  function persoenlich(q){
+    var s=String(q||''),k=s.replace(/[\s.\-\/(),_]/g,''),gruppen=(s.match(/\d+(?:[\s.\-\/]\d+){2,}/g)||[]).some(function(g){return g.replace(/\D/g,'').length>=9});
+    return /@|＠/.test(s)||/(^|[\s(\[])(at|ät)([\s)\]]|$)/i.test(s)||/\[at\]|\(at\)/i.test(s)||/\d{9,}/.test(s)||gruppen||/(\+|00)\d{8,}/.test(k)||/\b(iban|ch\d\d)\b/i.test(s)
+      ||/(bestell\w*|auftrag|rechnung|nr\.?|nummer|lx|#)\s?-?\d{3,}/i.test(s)||/#\s?\d{3,}/.test(s);
+  }
+  var ALTER=/tabak|grinder|shisha|vape|zigarette|feuerzeug|aschenbecher|\bbong\b|joint|rauchzubeh/i;
+  function esc(s){var d=document.createElement('div');d.textContent=String(s);return d.innerHTML}
+
+  /* ---------- Verlauf nur im Tab ---------- */
+  function sichern(){try{sessionStorage.setItem('luxas.h',JSON.stringify(hist.slice(-24)))}catch(e){}}
+  function laden(){
+    try{var j=JSON.parse(sessionStorage.getItem('luxas.h')||'[]');if(!Array.isArray(j))return [];
+      return j.filter(function(x){return x&&typeof x.h==='string'&&x.h.length<6000&&(x.w==='me'||x.w==='bot'||x.w==='raw')})}catch(e){return []}
+  }
+  function scrollen(zeile){log.scrollTop=zeile?Math.max(0,zeile.offsetTop-log.offsetTop-8):log.scrollHeight}
+  function zeile(html,who,merken){
+    var row=document.createElement('div');row.className='luxas-row'+(who==='me'?' luxas-rme':'');
+    if(who!=='me'){var a=document.createElement('span');a.className='luxas-ava';a.innerHTML=bot(false);row.appendChild(a)}
+    var m=document.createElement('div');m.className='luxas-m luxas-'+who;m.innerHTML=html;row.appendChild(m);log.appendChild(row);
+    scrollen(who==='bot'?row:null);
+    if(merken){hist.push({w:who,h:html});sichern()}
+    return row;
+  }
+  function roh(html,klasse,merken){
+    var d=document.createElement('div');d.className=klasse;d.innerHTML=html;log.appendChild(d);log.scrollTop=log.scrollHeight;
+    if(merken){hist.push({w:'raw',h:'<div class="'+klasse+'">'+html+'</div>'});sichern()}
+    return d;
+  }
+  function msg(html,who){return zeile(html,who,true)}
+  function msgFl(html,who){return zeile(html,who,false)}
+  function tippen(){
+    var row=document.createElement('div');row.className='luxas-row';
+    var a=document.createElement('span');a.className='luxas-ava';a.innerHTML=bot(false);row.appendChild(a);
+    var m=document.createElement('div');m.className='luxas-m luxas-bot luxas-wait';m.innerHTML='<i></i><i></i><i></i>';row.appendChild(m);
+    log.appendChild(row);log.scrollTop=log.scrollHeight;state('denkt',9000);return row;
+  }
+  function verzoegert(fn,ms){ var g=gen; if(REDUCED){fn();return} var t=tippen();setTimeout(function(){t.remove();if(g!==gen)return;fn();state('froh',1800)},ms||420) }
+
+  function setChips(list){
+    var hatte=chips.contains(document.activeElement);
+    chips.innerHTML='';
+    list.forEach(function(c){var b=document.createElement('button');b.type='button';b.className='luxas-chip';b.textContent=c.t;b.addEventListener('click',function(){
+      Array.prototype.forEach.call(chips.querySelectorAll('button'),function(x){x.disabled=true});c.f()});chips.appendChild(b)});
+    chips.scrollLeft=0;
+    if(hatte&&chips.firstChild){try{chips.firstChild.focus({preventScroll:true})}catch(e){}}
+  }
+  chips.addEventListener('wheel',function(e){if(chips.scrollWidth>chips.clientWidth&&Math.abs(e.deltaY)>Math.abs(e.deltaX)){chips.scrollLeft+=e.deltaY;e.preventDefault()}},{passive:false});
+  function produktTitel(){
+    try{
+      var og=document.querySelector('meta[property="og:type"]');
+      if(!og||og.content!=='product')return '';
+      var t=(document.querySelector('meta[property="og:title"]')||{}).content||'';
+      var w=suchwort(t.split('|')[0]).split(' ').slice(0,3).join(' ');
+      return w.length>2?w:'';
+    }catch(e){return ''}
+  }
+  function aehnlichChip(){
+    var pt=produktTitel();
+    return pt?{t:'Ähnliche Artikel',f:function(){suchmodus=false;msg('Ähnliche Artikel','me');trk('assistent_aehnlich');suche(pt)}}:null;
+  }
+  function basisChips(){
+    var l=[{t:'☰ Menü',f:menu},{t:'Produkt suchen',f:suchStart},{t:'Geschenkfinder',f:geschenk}];
+    var a=aehnlichChip();
+    if(a)l.splice(1,0,a);
+    return l;
+  }
+  function suchStart(){suchmodus=true;msg('Produkt suchen','me');verzoegert(function(){msg('Was suchst du? Schreib ein Stichwort, z. B. „Handyhülle“ oder „Geschenk für Papa“. Ich zeige dir passende Artikel aus dem Sortiment.','bot');setChips([{t:'☰ Menü',f:menu}]);inp.focus()},300)}
+  function kacheln(){
+    var g=document.createElement('div');g.className='luxas-tiles';
+    [['versand','Versand & Kosten','versand'],['lieferzeit','Lieferzeit','lieferzeit'],['tracking','Lieferstatus','tracking'],['rueckgabe','Rückgabe','rueckgabe'],['zahlung','Zahlung','zahlung'],['kontakt','Kontakt','kontakt'],['geschenk','Geschenke','*g'],['entdecken','Entdecken','*k'],['suchen','Produkt suchen','*s']].forEach(function(x){
+      var b=document.createElement('button');b.type='button';b.className='luxas-tile';
+      b.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">'+ICON[x[0]]+'</svg>'+esc(x[1]);
+      b.addEventListener('click',function(ev){var tast=ev.detail===0;
+        if(x[2]==='*g')geschenk();else if(x[2]==='*k')entdecken();else if(x[2]==='*s')suchStart();else ask(NAMEN[x[2]],x[2],tast)});
+      g.appendChild(b)});
+    return g;
+  }
+  function menu(){
+    suchmodus=false;msgFl('Menü','me');
+    verzoegert(function(){var row=zeile('Wobei kann ich helfen?','bot',false);log.appendChild(kacheln());scrollen(row);setChips(basisChips())},300);
+  }
+  function entdecken(){
+    suchmodus=false;msg('Entdecken','me');
+    verzoegert(function(){
+      msg('Wonach ist dir? Such dir einen Bereich aus:','bot');
+      var l=KATS.map(function(k){return {t:k.t,f:function(){linkAntwort(k.t,k.s,k.h,'Zur Kollektion ansehen')}}});
+      var d=new Date();
+      if(d<new Date('2026-11-01T00:00:00+01:00'))l.push({t:'Halloween',f:function(){linkAntwort('Halloween','Hier ist unsere Halloween-Welt mit Kostümen und Deko:',R+'collections/halloween','Zur Kollektion ansehen')}});
+      if(d<new Date('2026-12-27T00:00:00+01:00'))l.push({t:'Weihnachten',f:function(){linkAntwort('Weihnachten','Weihnachtsgeschenke und Deko findest du hier:',R+'collections/weihnachten-2026','Zur Kollektion ansehen')}});
+      l.push({t:'Meine Merkliste',f:function(){linkAntwort('Meine Merkliste','Deine gemerkten Artikel findest du hier:',R+'pages/merkliste','Zur Merkliste')}});
+      l.push({t:'☰ Menü',f:menu});setChips(l);
+    },300);
+  }
+  function linkAntwort(frage,text,href,label){suchmodus=false;trk('assistent_kategorie');msg(esc(frage),'me');verzoegert(function(){msg(esc(text)+'<br>'+L(href,label||'Ansehen'),'bot');setChips(basisChips())},300)}
+  function geschenk(){
+    suchmodus=false;msg('Geschenkfinder','me');trk('assistent_geschenk');
+    verzoegert(function(){
+      msg('Gern! <b>Für wen</b> suchst du ein Geschenk?','bot');
+      setChips(Object.keys(WEM).map(function(k){return {t:WEM[k].t,f:function(){geschenkBudget(k)}}}).concat([{t:'☰ Menü',f:menu}]));
+    },300);
+  }
+  function geschenkBudget(k){
+    msg(esc(WEM[k].t),'me');
+    verzoegert(function(){
+      msg('Und dein <b>Budget</b>?','bot');
+      var l=Object.keys(BUD).map(function(b){return {t:BUD[b].t,f:function(){geschenkErgebnis(k,b)}}});
+      l.push({t:'Egal',f:function(){geschenkErgebnis(k,'')}});l.push({t:'☰ Menü',f:menu});setChips(l);
+    },300);
+  }
+  function geschenkErgebnis(k,b){
+    msg(b?esc(BUD[b].t):'Egal','me');
+    verzoegert(function(){
+      var h=L(WEM[k].h,WEM[k].n);
+      if(b)h+='<br>'+L(BUD[b].h,'Geschenkideen '+BUD[b].t);
+      msg('Hier findest du passende Geschenke:<br>'+h+'<br>Das Budget gilt für alle Empfänger – auf der Seite kannst du nach Preis filtern. Die Lieferzeit steht bei jedem Artikel auf der Produktseite.','bot');
+      setChips([{t:'Nochmal',f:geschenk},{t:'Produkt suchen',f:suchStart},{t:'☰ Menü',f:menu}]);
+    },350);
+  }
+  function feedback(row){
+    var f=document.createElement('div');f.className='luxas-fb';f.innerHTML='<span>Hilfreich?</span>';
+    [['👍','ja'],['👎','nein']].forEach(function(x){var b=document.createElement('button');b.type='button';b.textContent=x[0];b.setAttribute('aria-label',x[1]==='ja'?'Ja, hilfreich':'Nein, nicht hilfreich');b.addEventListener('click',function(){
+      trk('assistent_hilfreich_'+x[1]);f.innerHTML=x[1]==='ja'?'<span>Danke! 🙌</span>':'<span>Schade. Schreib uns gern: '+MAIL+'</span>';
+    });f.appendChild(b)});
+    row.parentNode.insertBefore(f,row.nextSibling);
+  }
+  function ask(frage,t,tast){
+    suchmodus=false;msg(esc(frage),'me');trk('assistent_thema_'+t);
+    verzoegert(function(){
+      var row=msg(T[t].a,'bot');feedback(row);scrollen(row);
+      if(tast){var m=row.querySelector('.luxas-m');if(m){m.tabIndex=-1;try{m.focus({preventScroll:true})}catch(e){}}}
+      setChips(T[t].c.map(function(x){return {t:NAMEN[x],f:function(){ask(NAMEN[x],x)}}}).concat(basisChips().slice(0,2)));
+    },420);
+  }
+  function preis(p){
+    var lo=parseFloat(p.price_min!=null?p.price_min:p.price),hi=parseFloat(p.price_max!=null?p.price_max:p.price);
+    if(!isFinite(lo))return '';
+    return (isFinite(hi)&&hi>lo?'ab ':'')+'CHF '+lo.toFixed(2);
+  }
+  function sicherPfad(u){
+    u=String(u||'');if(!/^\/(?![\/\\])/.test(u))return '';
+    try{var x=new URL(u,location.origin);return x.origin===location.origin?x.pathname:''}catch(e){return ''}
+  }
+  function kontaktAntwort(vorspann){
+    verzoegert(function(){msgFl(vorspann+'<br>'+T.kontakt.a,'bot');setChips(basisChips())},300);
+  }
+  function suche(q){
+    trk('assistent_suche');
+    var g=gen;if(ctl){try{ctl.abort()}catch(e){}}
+    var wait=tippen();
+    var url=R+'search/suggest.json?q='+encodeURIComponent(q)+'&resources[type]=product&resources[limit]=4&resources[options][unavailable_products]=hide';
+    ctl=('AbortController' in window)?new AbortController():null;var mine=ctl,tm=setTimeout(function(){mine&&mine.abort()},9000);
+    fetch(url,{headers:{'Accept':'application/json'},signal:mine?mine.signal:undefined}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()}).then(function(j){
+      clearTimeout(tm);wait.remove();if(g!==gen)return;
+      var ps=((((j||{}).resources||{}).results||{}).products)||[];
+      ps=ps.filter(function(p){return p&&p.title&&sicherPfad(p.url)});
+      if(!ps.length){
+        state('idle');msg('Zu „'+esc(q)+'“ habe ich nichts gefunden. Versuch ein anderes Wort – oder schreib uns, wir helfen gern: '+MAIL+'.','bot');
+        setChips([{t:'Anderes Wort',f:suchStart},{t:'Kontakt',f:function(){ask('Kontakt','kontakt')}},{t:'☰ Menü',f:menu}]);return;
+      }
+      state('froh',2500);
+      var intro=msg('Das könnte passen zu „'+esc(q)+'“:','bot');
+      var h=ps.map(function(p){
+        var img=(p.featured_image&&p.featured_image.url)||p.image||'';
+        var im=img?'<img src="'+esc(img+(img.indexOf('?')>-1?'&':'?')+'width=130')+'" alt="" loading="lazy" width="60" height="60">':'';
+        return '<a class="luxas-card" href="'+esc(sicherPfad(p.url)+'?ref=assistent')+'">'+im+'<div><b>'+esc(p.title)+'</b><span>'+esc(preis(p))+'</span></div></a>';
+      }).join('');
+      var cards=roh(h,'luxas-cards',true);
+      Array.prototype.forEach.call(cards.querySelectorAll('a'),function(a){a.addEventListener('click',function(){trk('assistent_karte')})});
+      roh('<a class="luxas-more" href="'+esc(R+'search?type=product&q='+encodeURIComponent(q))+'">Alle Treffer ansehen →</a>','',true);
+      scrollen(intro);
+      setChips([{t:'Neue Suche',f:suchStart},{t:'Kontakt',f:function(){ask('Kontakt','kontakt')}},{t:'☰ Menü',f:menu}]);
+    }).catch(function(){
+      clearTimeout(tm);wait.remove();if(g!==gen)return;state('idle');
+      msg('Die Suche ist gerade nicht erreichbar. Du findest alles auch über die Suche oben auf der Seite – oder schreib uns an '+MAIL+'.','bot');
+      setChips([{t:'Kontakt',f:function(){ask('Kontakt','kontakt')}},{t:'☰ Menü',f:menu}]);
+    });
+  }
+  function verarbeite(q){
+    q=q.trim().slice(0,120);if(!q)return;
+    var n=norm(q);
+    if(persoenlich(q)){msgFl('(Eingabe nicht verarbeitet)','me');kontaktAntwort('Bitte gib hier keine persönlichen Daten oder Bestellnummern ein – dafür ist unser E-Mail-Kontakt der richtige Weg.');return}
+    if(/^(hallo|hi|hoi|hey|gruezi|grezi|servus|moin|guten (tag|morgen|abend)|hilfe|help)[ !.?]*$/.test(n)){msg(esc(q),'me');verzoegert(function(){msg('Hallo! Wobei kann ich helfen? Such dir ein Thema aus oder schreib dein Stichwort.','bot');setChips(basisChips())},300);return}
+    if(/^(danke|merci|vielen dank|danke schon|super|perfekt|ok|okay)[ !.?]*$/.test(n)){msg(esc(q),'me');verzoegert(function(){msg('Sehr gerne! Wenn noch etwas offen ist – ich bin da. 🙂','bot');setChips(basisChips())},300);return}
+    if(/^(menu|menue|start|anfang)$/.test(n)){menu();return}
+    if(/^(geschenk(e|idee|ideen|finder)?|geschenkfinder)$/.test(n)){geschenk();return}
+    if(suchmodus){suchmodus=false;var s0=suchwort(q);msg(esc(q),'me');if(ALTER.test(q)){altersAntwort();return}if(s0)suche(s0);else{msg('Magst du ein Stichwort schreiben, z. B. „Handyhülle“?','bot');suchmodus=true}return}
+    var t=thema(q);
+    if(t){ask(q,t);return}
+    var s=suchwort(q);
+    msg(esc(q),'me');
+    if(ALTER.test(q)){altersAntwort();return}
+    if(!s){verzoegert(function(){msg('Dazu brauche ich ein Stichwort. Such dir ein Thema aus oder schreib, was du suchst.','bot');setChips(basisChips())},300);return}
+    suche(s);
+  }
+  function altersAntwort(){
+    verzoegert(function(){msg('Altersbeschränkte Artikel (z. B. Raucherzubehör) geben wir ausschliesslich an volljährige Personen ab.<br>'+L(R+'pages/faq','Häufige Fragen'),'bot');setChips(basisChips())},300);
+  }
+  function start(){
+    if(started)return;started=true;
+    var alt=laden();
+    if(alt.length){
+      hist=alt;log.setAttribute('aria-live','off');
+      alt.forEach(function(x){if(x.w==='raw'){var d=document.createElement('div');d.innerHTML=x.h;while(d.firstChild)log.appendChild(d.firstChild)}else zeile(x.h,x.w,false)});
+      var d2=document.createElement('div');d2.style.cssText='align-self:center;color:#5a5a5a;font-size:12px';d2.textContent='— weiter geht’s —';log.appendChild(d2);
+      log.scrollTop=log.scrollHeight;setChips(basisChips());setTimeout(function(){log.setAttribute('aria-live','polite')},50);
+      return;
+    }
+    zeile('Hallo 👋 Ich bin der <b>automatische</b> Shop-Assistent (keine Person). Wobei kann ich helfen? Für alles Weitere: '+MAIL+'.','bot',true);
+    state('froh',2600);log.appendChild(kacheln());log.scrollTop=0;var ac=aehnlichChip();setChips(ac?[ac]:[]);
+  }
+  function neuStart(){gen++;if(ctl){try{ctl.abort()}catch(e){}}hist=[];sichern();log.innerHTML='';started=false;suchmodus=false;state('idle');start()}
+  function oeffnen(){hideNudge(true);panel.hidden=false;btn.setAttribute('aria-expanded','true');trk('assistent_offen');start();if(window.matchMedia&&matchMedia('(pointer:fine)').matches)setTimeout(function(){try{inp.focus({preventScroll:true})}catch(e){}},30)}
+  function schliessen(){panel.hidden=true;btn.setAttribute('aria-expanded','false');btn.focus()}
+  btn.addEventListener('click',function(){panel.hidden?oeffnen():schliessen()});
+  $('luxas-close').addEventListener('click',schliessen);
+  $('luxas-reset').addEventListener('click',neuStart);
+  document.addEventListener('keydown',function(e){
+    if(e.key!=='Escape'||panel.hidden)return;
+    var a=document.activeElement;
+    if(panel.contains(a)||a===btn||a===document.body)schliessen();
+  });
+  form.addEventListener('submit',function(e){e.preventDefault();var v=inp.value;inp.value='';if(COARSE)inp.blur();verarbeite(v)});
+
+  /* Hinweisblase: höchstens einmal je Sitzung, nach 9 s Ruhe, nie bei offenen Bannern/Fenstern. */
+  function hideNudge(merken){nudge.hidden=true;if(merken){nudgeGezeigt=true;try{sessionStorage.setItem('luxas.n','1')}catch(e){}}}
+  $('luxas-nudge-x').addEventListener('click',function(){hideNudge(true)});
+  function nudgeZeigen(){
+    if(nudgeGezeigt)return;
+    try{if(sessionStorage.getItem('luxas.n')==='1')return}catch(e){}
+    if(!panel.hidden||root.hasAttribute('data-hold'))return;
+    if(document.querySelector('#lux-wish-toast.show')){setTimeout(nudgeZeigen,7000);return;}   /* Merkliste-Hinweis steht gerade: Blase später */
+    nudgeGezeigt=true;nudge.hidden=false;try{sessionStorage.setItem('luxas.n','1')}catch(e){}
+    setTimeout(function(){nudge.hidden=true},9000);
+  }
+
+  /* Der Knopf darf Cookie-Banner, Shopify-Banner, E-Mail-Popup, offene Fenster/Schubladen und die Sticky-Kaufleiste nicht stören
+     (rein per JS, ohne :has(), damit es auch in älteren Browsern greift). */
+  var HALT=['lx-cookie-banner','lx-pop','shopify-pc__banner'];
+  function halten(){
+    var h=false;HALT.forEach(function(i){var e=document.getElementById(i);if(e&&getComputedStyle(e).display!=='none'&&e.getClientRects().length)h=true});
+    if(document.querySelector('dialog[open],.menu-drawer-container[open],.cart-drawer[open]'))h=true;
+    if(h)root.setAttribute('data-hold','');else root.removeAttribute('data-hold');
+    var up=!!document.querySelector('.sticky-add-to-cart__bar[data-stuck="true"]');
+    if(up!==root.classList.contains('luxas-up'))root.classList.toggle('luxas-up',up);
+  }
+  function zeigen(){
+    root.hidden=false;halten();setInterval(halten,1500);
+    HALT.forEach(function(i){var e=document.getElementById(i);if(e&&'MutationObserver' in window)new MutationObserver(halten).observe(e,{attributes:true,attributeFilter:['style','class','hidden']})});
+    setTimeout(nudgeZeigen,9000);
+  }
+  /* Erst nach dem Laden und einer kurzen Ruhe einblenden (kein Einfluss auf die Ladezeit der Seite). */
+  var spaet=function(){setTimeout(zeigen,2500)};
+  if(document.readyState==='complete')spaet();else window.addEventListener('load',spaet);
+})();
+</script>
+{% endraw %}
+{%- endif -%}
+{% schema %}
+{
+  "name": "LuxeStyle Assistent",
+  "settings": [],
+  "presets": []
+}
+{% endschema %}
