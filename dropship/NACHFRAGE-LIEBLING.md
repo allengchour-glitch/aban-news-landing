@@ -1,4 +1,4 @@
-# Nachfrage-Lieblinge (automatisch, 2026-10-21 11:34 UTC)
+# Nachfrage-Lieblinge (automatisch, 2026-10-22 08:17 UTC)
 
 > `automation/nachfrage_liebling.py`: Produktseiten mit ≥2 Warenkorb- oder ≥1 Kassen-Sitzung (90 T, nur Menschen) → Tag `nachfrage-liebling` → Vorrang in allen Social-Queues (nach `kunden-liebling`).
 
@@ -10,7 +10,6 @@
 | abendkleid-aurora-satin-spaghettitrager-schlitz | 54 | 1 | 1 | ✅ Tag |
 | reise-hangematte-aus-fallschirm-nylon-86eb20 | 4 | 1 | 1 | ✅ Tag |
 | led-wasserwellen-projektionsleuchte-677504 | 3 | 1 | 1 | ✅ Tag |
-| elektrischer-shaker-fur-protein-shakes-342592 | 3 | 1 | 1 | ✅ Tag |
 | y2k-harajuku-hoodie-mit-nieten-629700 | 1 | 1 | 1 | ✅ Tag |
 | leinenhemd-langarm-lassig-bequem-621700 | 1 | 1 | 1 | ✅ Tag |
 | scheinwerfer-vernebler-becher-a1978c | 1 | 1 | 1 | ✅ Tag |
