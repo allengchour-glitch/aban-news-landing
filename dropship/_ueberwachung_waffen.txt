@@ -49,3 +49,4 @@
 16617626141063	waffe	schusswaffen-zubehoer	tag:waffe-pruefen	Taktische Angeltasche Schwarz 100 cm	bild: Gewehrfutterale 100 cm in ACU/Black/Mud/Green/CP — Titel «Taktische Angeltasche», CJ «Camouflage fishing tacti
 16617699148167	waffe	schusswaffen-zubehoer	tag:waffe-pruefen	Multifunktions-Schraubenschlüssel	bild: AR-15-Schaftschlüssel (Armorer-Wrench) — Titel «Multifunktions-Schraubenschlüssel», CJ «Multifunctional tactic
 16651339497863	waffe	waffennachbildung-bausatz	tag:waffe-pruefen	Laser-Handschutz für 1911-Pistole, schwarz
+16655500935559	ueberwachung	kamera-zum-diskreten-platzieren	tag:verdeckte-ueberwachung	Nachtsichtkamera für Wildverfolgung HD Infrared
