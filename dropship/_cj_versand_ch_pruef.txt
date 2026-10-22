@@ -13202,3 +13202,10 @@ bergfahrradhelm-56b743	30E8D9A6-055B-428E-9D1F-987341F38446	16	9.47	ok	landeseit
 deemount-fahrradhelm-e8db3a	28562B52-C494-4C45-A1F5-0F09CC9EA94A	16	9.88	ok	landeseite
 einfache-vielseitige-schuhe-mit-dicker-sohle-585536	1660548380940054528	16	17.66	ok	landeseite
 herren-kardigan-grau-locker-601000	2604181251161601900	16	12.21	ok	landeseite
+sportliche-casual-schuhe-mit-dicker-sohle-788032	1660471905800953856	16	11.37	ok	landeseite
+mini-finger-skateboard-brucke-643400	2510250759071643700	16	4.81	ok	landeseite
+herren-pullover-dick-und-gemutlich-603000	2604130718561603400	16	13.59	ok	landeseite
+minimalistische-skate-schuhe-879040	1660468318685376512	16	18.83	ok	landeseite
+mittelrahmen-abdeckung-fur-dji-mavic-air-2-623800	2510230956401624000	16	5.61	ok	landeseite
+herzanhanger-mit-liebesbrief-617700	2607131103491618400	7	7.70	ok	landeseite
+reise-rucksack-607100	2601240219541607500	16	22.34	ok	landeseite
