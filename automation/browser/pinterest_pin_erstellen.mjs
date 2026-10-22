@@ -190,6 +190,15 @@ export default async function ({ ctx, REPO, ERGEBNIS, auftrag }) {
       return ergebnis;
     }
     ergebnis.unklar.push(k.handle);                      // ab hier gilt: Klick passiert, Quittung offen
+    // 22.10.2026 (Inventur SOC-01): stirbt der Lauf NACH dem Klick (Server-Platte voll, Neustart), bleibt die Quittung leer («abgebrochen-unklar», ergebnis=null) —
+    // schonGepinnt() kannte den Handle nicht, die Warteschlange lieferte dasselbe Produkt wieder: GEMESSEN 13 überzählige Pins auf 10 Produkten seit 05.10.
+    // Darum VOR dem Klick eine eigene Vorab-Quittung auf die lokale Platte (schonGepinnt liest jede pinterest-pin-*.json in auftraege/erledigt).
+    try {
+      const vd = path.join(REPO, 'auftraege/erledigt');
+      fs.mkdirSync(vd, { recursive: true });
+      fs.writeFileSync(path.join(vd, `pinterest-pin-vorab-${k.handle.slice(0, 80)}.json`),
+        JSON.stringify({ vorab: true, zeit: new Date().toISOString(), teilergebnis: { unklar: [k.handle] } }));
+    } catch (e) { schritte.push(`Vorab-Quittung nicht geschrieben: ${String(e).slice(0, 60)}`); }
     await publ.click({ timeout: 10000 });
     await seite.waitForTimeout(9000);
     await schuss('3-nachher');

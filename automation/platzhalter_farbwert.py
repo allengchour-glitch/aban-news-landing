@@ -61,10 +61,12 @@ def kandidaten_live(gql):
     """Produkt-IDs, deren Varianten «Color» im Titel tragen (Suche ist Vorfilter; entschieden wird an den Optionen)."""
     ids, cur = [], None
     while True:
-        d = gql("query($q:String,$c:String){productVariants(first:250,after:$c,query:$q){pageInfo{hasNextPage endCursor} nodes{product{id}}}}",
+        d = gql("query($q:String,$c:String){productVariants(first:250,after:$c,query:$q){pageInfo{hasNextPage endCursor} nodes{product{id} selectedOptions{name value}}}}",
                 {"q": "product_status:active AND (title:*Color* OR title:*Colour* OR title:Farbe*)", "c": cur})
         pv = d["productVariants"]
-        ids += [n["product"]["id"] for n in pv["nodes"]]
+        # Vorfilter an den Optionen der Variante selbst: nur exakte Platzhalter-Werte in einer Farb-Option (die Suche trifft auch «Multicolor», «Colorful» …)
+        ids += [n["product"]["id"] for n in pv["nodes"]
+                if any((o["name"] or "").strip().lower() in OPTIONSNAMEN and PLATZHALTER.match(o["value"] or "") for o in n["selectedOptions"])]
         if not pv["pageInfo"]["hasNextPage"]:
             return list(dict.fromkeys(ids))
         cur = pv["pageInfo"]["endCursor"]
@@ -125,7 +127,10 @@ def main():
         if k not in ("ok", "trocken", "nichts") and not k.startswith("ausgenommen"):
             print(f"  {k}: {pid.rsplit('/', 1)[-1]} {titel[:60]}")
     print("ERGEBNIS", json.dumps(zahl, ensure_ascii=False))
-    return 1 if any(k.startswith(("FEHLER", "RÜCKLESEN")) for k in zahl) else 0
+    schlecht = any(k.startswith(("FEHLER", "RÜCKLESEN")) for k in zahl)
+    if not schlecht and len(ks) <= MAX:
+        print(f"FERTIG: Platzhalter-Farbwert {zahl.get('ok', 0)} umbenannt, {len(ks)} Kandidaten geprüft")   # Marke für den Aufseher (20-h-Takt)
+    return 1 if schlecht else 0
 
 
 def zeile():
