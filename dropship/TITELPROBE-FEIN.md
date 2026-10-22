@@ -1,4 +1,4 @@
-# Titelprobe-Fein — Stand 2026-10-20 20:45 UTC
+# Titelprobe-Fein — Stand 2026-10-22 21:16 UTC
 
 Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 0 · gesetzt 0 · fehler 0.
 
@@ -7,7 +7,7 @@ Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 0 · gese
 
 - Velours-Kolbenrock mit V-Ausschnitt
 
-## Ohne Treffer — bleibt grob (46)
+## Ohne Treffer — bleibt grob (48)
 
 - Ear-Cuffs «Papillon» – blauer Schmetterling  [G: Earrings]
 - Damen- und Kind-Freizeitanzug mit Print  [G: Activewear]
@@ -25,7 +25,6 @@ Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 0 · gese
 - Premium-Herz-U-Form Hörlinge  [G: Earrings]
 - Blumenprint-Midi mit Volantsärmeln und A-Silhouette  [G: Dresses]
 - Blaues Denim für Herren  [G: Pants]
-- Farbenfrohes Körperkreuz  [G: Dresses]
 - Türkisfarbener Boho-Handgelenk-Band  [G: Bracelets]
 - Langtrench mit Slim-Fit  [G: Coats & Jackets]
 - Mittellanger Damen-Trench mit Taschen  [G: Coats & Jackets]
@@ -39,7 +38,9 @@ Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 0 · gese
 - Pflanzen-Wachstumslampe für Setzlinge  [G: Necklaces]
 - Rattan Vintage Wandlampe  [G: Necklaces]
 - Herren-Baselayer mit Reissverschluss, Langarm  [G: Activewear]
+- Mini-Short mit Rüschen aus Denim  [G: Shorts]
 - Abstrakter A-Linien-Maxi mit Batwing-Ärmeln  [G: Dresses]
+- Langrocke in Einfarbigem Stoff – Midi  [G: Skirts]
 - Einseitige Schulter, Meerjungfrau-Schnitt  [G: Dresses]
 - Einseitiger Rüschensprunganzug  [G: Jumpsuits & Rompers]
 - Einteiliger Rückenfreier Sommeranzug  [G: Jumpsuits & Rompers]
@@ -55,3 +56,4 @@ Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 0 · gese
 - Langärmelige Bead- und Diamanten-Verzierter Rock  [G: Dresses]
 - Blauer Striped-Langarm-Shirtrock  [G: Dresses]
 - Akryl-Blechlinge  [G: Bracelets]
+- Farbenfrohes Körperkreuz  [G: Dresses]
