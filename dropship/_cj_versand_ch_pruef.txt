@@ -13659,3 +13659,8 @@ mikrofaser-reinigungstucher-set-637600	-	-	-	unklar pid 1602002 Product has been
 lederarmbanduhr-fur-unis-600300	2505210847351600700	7	5.89	ok	landeseite
 gestreiftes-herren-t-shirt-mit-v-ausschnitt-637500	2606240315101638200	16	9.20	ok	landeseite
 kopfhorer-halter-605400	2607091255131606300	16	12.74	ok	landeseite
+herren-mechanische-uhr-mit-hohlmuster-619200	2505151351171619400	7	7.13	ok	landeseite
+automatikuhr-herren-wasserdicht-606500	2505120126501607000	7	6.73	ok	landeseite
+kontrast-kragen-sport-top-611500	2606230809351612400	16	7.99	ok	landeseite
+automatische-herrenarmbanduhr-609300	2505071219331600200	7	6.90	ok	landeseite
+herren-polo-mit-kragen-und-langen-armeln-639900	2606220125291630500	16	7.99	ok	landeseite
