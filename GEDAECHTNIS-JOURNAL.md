@@ -21417,3 +21417,33 @@ Verschoben am 04.10.2026:
 
 ## 📚 Index-Archiv: eine Einzeile vom 22.10.2026 (🧸 Runde 04:25, aus CLAUDE.md verschoben am 22.10.2026 17:40)
 - 2026-10-22 · 🧸 **Runde 04:25: Spielzeug-Auto in falscher Kategorie. Neuimport «Magnetische Rennstrecke mit Auto» stand Shopify `vp-1` (Titelregel «auto» vor der Spielzeugregel) und Google «Baby & Toddler» (Tag-Rückfall `kinder`, Tag `spielzeug` fehlte). 18 Spielzeuge im Feed auf «Baby & Toddler» (von 56'463), 1 echtes Fehlstück in Vehicles & Parts. Fix: Spielzeug-Auto-Regel vor der Fahrzeugregel (`kategorie_wache.py`, 388/388), `spielzeug` vor `kinder` in `google_kategorie.py` UND `.mjs` (zwei Umsetzungen derselben Tabelle!), Baby-Titel ausgenommen; live 3 Shopify- + 15 Google-Kategorien (zurückgelesen). Wächter `google_kategorie_kanarien.py` (py+mjs+Übereinstimmung, 3 Mutanten) im Aufseher. Falle: «neue Regel ≠ Live» zeigte 1'586 — `google_kategorie.py` schreibt nur leere Felder, richtig ist Alt- gegen Neu-Regel (726).** → Journal 22.10. 🧸
+
+## 📚 Index-Archiv: Stand 15.09.2026 (Block aus CLAUDE.md verschoben am 22.10.2026 18:10, VERBATIM)
+- **BigBuy ist zu Ende.** Abo «Pack Ecommerce» lief am 15.09. aus (gekündigt 16.08.). `bigbuy_abschied.py`
+  hat 274 Produkte gedraftet; **0 aktive mit BigBuy-Merkmal**. Seine Abfrage traf nur `tag:bigbuy` — 136
+  Produkte mit `bb-…`-SKU wären bestellbar geblieben; Auswahl ist jetzt Tag ODER SKU. Die PC-Routine
+  `trig_01Fks8G3…` (16.09. 05:00) ist ein Doppel und findet nichts mehr vor.
+- **Folgeschäden des Abschieds behoben:** «Premium & Marken» hatte die Regel `Tag=bigbuy` → jetzt
+  `Tag=premium` (41 aktiv); 27 Ratgeber-Links von leeren auf gefüllte Kategorien umgebogen.
+  **118 von 518 Kollektionen ohne kaufbare Ware — aber nur 2 davon im Onlineshop sichtbar** (beide erledigt: abgemeldet + 301). Die übrigen 116 waren nie veröffentlicht, kosten nichts (`dropship/LEERE-KOLLEKTIONEN-2026-09-15.md`).
+- **Hauptmenü hatte sechs tote Links** (`/en/collections/…` = 404, u. a. «Schmuck & Uhren»). Repariert;
+  `menue_links.py` dekodiert jetzt Emoji-Handles und prüft den Pfad statt nur den Handle.
+- **⛔ Cowork-Punkt 1 ZURÜCKGEZOGEN:** «Versandschwelle 45 → 50» hätte rabattierten Körben den Gratisversand
+  nehmen können (automatischer 10-%-Rabatt ab 2 Artikeln seit 01.06.). Ersetzt durch zwei Testkörbe.
+- **Weihnachten 2026 gefüllt:** 4 → 166 Artikel, Text neu (er bewarb drei Adventskalender ohne Lieferant).
+- **Startseite mobil repariert:** die gestrige Kundenstimmen-Sektion machte die Seite 1488 px breit;
+  jetzt 390/390 gemessen. «verifizierte Bewertungen» gestrichen (Judge.me: 0 verifizierte Käufe).
+- **✅ ERLEDIGT 17.09.: die sendende Routine `trig_01KAnvaXU7rbVVBbaUqrg6ci` ist weg.** Sie hiess «Drafts schreiben»
+  und SENDETE (15.09. 06:23 eine Rückerstattungs-Zusage an #1017 gegen den Entscheid vom 11.09., dazu die BigBuy-Mail
+  vom 08.09. wortgleich erneut). Der Betreiber hat sie abgeschaltet. **Zwei unabhängige Belege am 17.09. 07:50:**
+  (1) `list_triggers` zeigt 11 Routinen, sie ist in keiner — auch nicht im Rohtext; (2) **wichtiger**, der Postausgang
+  der letzten 2 Tage enthält NUR eigene Mails, obwohl ihr 06:xx-Fenster längst durch war.
+  ⚠️ Die Lehre bleibt: **jeden Kundenentwurf VOR dem Senden gegen den frischen Thread lesen** — ein Automat kann
+  in der Zwischenzeit etwas zugesagt haben, und eine Zusage im Thread bindet uns.
+- **💶 BigBuy-Guthaben EUR 1'000.00 gemessen (seit 15.07. unverändert = nie ausgezahlt).** Kein Auszahlungs-Endpunkt in der
+  API. Klickweg + Mailentwurf: `dropship/BIGBUY-1000-EURO.md`. Abo endet heute, BigBuy zahlt nur dienstags.
+- **~~#1017/#1018 fahren~~ — FALSCH, korrigiert 16.09.:** alle sieben Stationen lagen in China;
+  «Schweizer Post» war das Feld `lastMileCarrier` (Plan, keine Station). #1017 kam zurück und ist
+  erstattet. #1018 (E-Scooter-Ladegerät, anderer Kunde) ist davon nicht betroffen.
+- **Antwort auf «Was könnte man noch machen?»:** `dropship/WEBSITE-IDEEN-2026-09-15.md` (39 geprüfte
+  Massnahmen, 8 verworfene, Vollständigkeits-Kritik mit 8 Lücken).

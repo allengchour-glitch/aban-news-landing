@@ -5,6 +5,10 @@
 > EIGENES abannews-Konto (LIESMICH: «nicht das LuxeStyle-Konto») und bleibt pausiert, bis der Betreiber Konto, App und
 > `ABAN_PINTEREST_*`-Secrets eingerichtet hat. Wer ihn einschaltet, trägt es hier ein.
 
+## ⏸️ 22.10. 17:45 UTC · Grind-PAUSE vom Betreiber bis 25.10. 15:38 UTC («mache zuerst alles sauber bevor mehr Grind») — Einwand zu Routine-Texten
+
+Wer eine Routine auslöst, deren Text «Grind läuft (4 Runner) … nicht abschalten» / «Grind WIEDER AN, `_GRIND_PAUSE_BIS` = 0» sagt (Keepalive `trig_01Uy3z…`, Autonome Runde `trig_01XDyg…`, Produktzahl-Wächter `trig_019RPG…`): **`dropship/_GRIND_PAUSE_BIS` = 1792942700 NICHT auf 0 setzen** — das ist der Betreiber-Wille vom 22.10. (`_GRIND_RUNNER_ZAHL` bleibt 3; `STAND: 0 CJ-Runner` ist in dieser Zeit gewollt). Die Routinen selbst bleiben an (nur ihr Text ist überholt; Fenster der Vorrang-Ruhe real 00:00–01:30 UTC). Bilanz: `dropship/SAUBER-BILANZ-2026-10-22.md`.
+
 ## 🛑 20.10. 07:20 UTC · Bewertungs-Import ist vom Betreiber GESTOPPT — Sitzung `claude/project-thread-shf90k` bitte nicht mehr importieren
 
 An jede Sitzung, die `automation/cj_reviews_import.mjs` oder `automation/reviews-import.mjs` von `main` laufen lässt: **Betreiber-Entscheid vom 20.10. («A»): kein Judge.me-Import.**

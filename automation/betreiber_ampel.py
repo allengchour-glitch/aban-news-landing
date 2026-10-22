@@ -599,6 +599,19 @@ def filtergrenze_netz():
     return zeile() or ""
 
 
+def claude_md_groesse():
+    """CLAUDE.md-Grösse (Inventur 22.10., R5): die Datei trägt alle Hausregeln und wird bei jedem Sitzungsstart geladen; über ~70'000 Byte wird sie zu lang
+    («prompt zu lang immer», Betreiber 14.09.). GEMESSEN 22.10.: 69'949 B ohne jede Wache. ℹ️ ab 69'000 B: Index-Einzeilen ins Journal-Archiv verschieben."""
+    try:
+        n = os.path.getsize(os.path.join(REPO, "CLAUDE.md"))
+    except OSError:
+        return ""
+    if n > 69000:
+        return (f"ℹ️ CLAUDE.md {n:,} Byte (Grenze ~70'000): älteste Index-Einzeilen unter «📚 Jüngste Lehren» VERBATIM ins Journal «📚 Index-Archiv» verschieben "
+                "und die Archiv-Klausel ergänzen").replace(",", "'")
+    return ""
+
+
 def merkliste_netz():
     """Merkliste (automation/merkliste_wache.py, 21.10.2026): ⚠️ wenn ein Teil des Herzens/der Liste im LIVE-Theme fehlt, die Prüfung «unklar» ist oder der
     Stand älter als 36 h ist. Leer, solange die Prüfung nie lief (ohne dropship/_merkliste_v3_aktiv.txt prüft sie nur den alten Stand)."""
@@ -1838,7 +1851,7 @@ def main():
     ohne_token = not os.path.exists(TOKPFAD)
     # Pruefungen, die den Shop-Token brauchen, laufen ohne ihn nicht — alle anderen schon (26.09.).
     MIT_TOKEN = (liechtenstein_gesperrt, klingen_pingpong, grow_zaehler, drafts_ohne_quittung, datei_speicher_voll, video_deckel, alter_lieferblock)
-    pruefungen = (bot_puls, waffen_netz, cj_sku_netz, druck_profil_netz, guard_vollpass_netz, cj_nachpruefung_netz, indexnow_netz, theme_marken_netz, headless_netz, unterkat_netz, server_platte_netz, filtergrenze_netz, merkliste_netz, echte_bewertungen_netz, lux_assistent_netz, kassen_sentinel_netz, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kassen_lieferdatum, werbetest, verkauf_gewinn, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, codex_github, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik, startseiten_gewicht, such_boosts, alter_lieferblock, social_sperre, gsc_tot, index_stand, wearable_seo, koll_versprechen, koll_leer, texte_angehalten, cj_suche_tor, waisen_verzeichnis)
+    pruefungen = (bot_puls, waffen_netz, cj_sku_netz, druck_profil_netz, guard_vollpass_netz, cj_nachpruefung_netz, indexnow_netz, theme_marken_netz, headless_netz, unterkat_netz, server_platte_netz, filtergrenze_netz, claude_md_groesse, merkliste_netz, echte_bewertungen_netz, lux_assistent_netz, kassen_sentinel_netz, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kassen_lieferdatum, werbetest, verkauf_gewinn, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, codex_github, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik, startseiten_gewicht, such_boosts, alter_lieferblock, social_sperre, gsc_tot, index_stand, wearable_seo, koll_versprechen, koll_leer, texte_angehalten, cj_suche_tor, waisen_verzeichnis)
     teile = [zugang_weg()]
     for f in pruefungen:
         if ohne_token and f in MIT_TOKEN:

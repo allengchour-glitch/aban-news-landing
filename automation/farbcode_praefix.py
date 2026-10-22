@@ -110,6 +110,9 @@ def kanarien(still=False):
 def paritaet():
     """py = js über alle Farb-/Ausführungsoptionen des Exports (mit Titel)."""
     gruppen = []
+    if not os.path.exists(EXPORT):   # 22.10.2026 (Inventur R7): ohne Export (nach Neustart weg) war der Selbsttest ein Absturz statt «Paritätsteil übersprungen»
+        print(f"PARITÄT übersprungen: Export {EXPORT} fehlt (Kanarien oben sind der Selbsttest)")
+        return True
     for z in open(EXPORT, encoding="utf-8"):
         p = json.loads(z)
         for o in p.get("options") or []:

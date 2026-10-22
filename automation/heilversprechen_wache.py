@@ -330,6 +330,10 @@ TITEL_ERSATZ += [
     ("Wiederaufladbarer Wärme-Massagegurt für Menstruationsschmerzen", "Wiederaufladbarer Wärme-Massagegurt"),
     ("Atemtrainer zur Verbesserung der Lungenkapazität", "Atemtrainer"),
 ]
+TITEL_ERSATZ += [   # 22.10.2026 (Inventur texte T2)
+    ("Silikon-Springseil 3 m für Fettabbau", "Silikon-Springseil 3 m für Fitness & Ausdauer"),
+    ("Springseil für Fitness und Gewichtsverlust", "Springseil für Fitness und Training"),
+]
 ERSATZ.sort(key=lambda p: -len(p[0]))
 
 MUSTER = re.compile(
@@ -370,7 +374,11 @@ MUSTER = re.compile(
     # und «Moxibustionstherapie» bleiben als Technikbezeichnung draussen — 8 Wärmegeräte). Tiere (Zahnungsbeschwerden beim Hund) fängt FEHLALARM.
     r"|Linderung (?:von |der )?\w*(?:schmerz|beschwerd|verspannung|zerrung)\w*|(?:Schmerzen|Beschwerden|Symptome)[^.<]{0,60}zu lindern"
     r"|(?:Rücken|Nacken|Schulter|Muskel)?(?:schmerzen|beschwerden) vorzubeugen|Menstruations(?:schmerz|beschwerd)\w*|Lendenmuskelzerrung\w*|Lungenkapazit\w*|Vitalfunktion\w*"
-    r"|\bHeilstift\b|Pseudomyopie", re.I)
+    r"|\bHeilstift\b|Pseudomyopie"
+    # 22.10.2026 (Inventur texte T2): «Ultraschall-Fettabbaugerät … Reduktion von hartnäckiger Cellulite und Fettansammlungen» und «Silikon-Springseil … für Fettabbau»
+    # liefen durch — «Cellulite (reduz|…)» kennt die Wendung «Reduktion von … Cellulite» nicht. Offline-Test gegen 56'684 aktive (Titel+Text): 3 Treffer, alle gelesen.
+    # «Cellulite-Massage» (Roller) bleibt bewusst draussen (beschreibt die Anwendung, verspricht nichts).
+    r"|Fettabbau\w*|Reduktion von (?:\w+ )?(?:Cellulite|Fett\w*)|Fettansammlung\w*", re.I)
 FEHLALARM = re.compile(
     r"Bezug abnehmen|l[äa]sst sich \w* ?abnehmen|anbringen und \w* ?abnehmen|Anbringen und Abnehmen"
     r"|Ratgeber:|nicht für medizinische|selbst heilt|Spezialeffekt|Kunstblut|Halloween|Wundschminke|Beschaffenheit des Holzes|Digital Detox|Geräusche wie|schnarchende|durch Schnarchen gestört"

@@ -8,7 +8,8 @@ Arbeitsgebiet ist der **CJ-Dropship-Import für den Shopify-Shop LuxeStyle CH**.
 > `GEDAECHTNIS-JOURNAL.md`** — dort NEUE Lehren eintragen (oben), hier nur die Einzeile im Index unten.
 > Suche über alles: `python3 tools/gedaechtnis.py "stichwort"`. Parallel-Sessions: `SHARED-MEMORY.md`.
 
-## 📌 Aktueller Stand (16.09.2026, 07:30 UTC) — was JETZT gilt
+## 📌 Aktueller Stand (22.10.2026, 18:00 UTC) — was JETZT gilt (ältere Zeilen tragen ihr eigenes Datum)
+- **⏸️ GRIND PAUSIERT bis 25.10.2026 15:38 UTC (Betreiber 22.10. «mache zuerst alles sauber bevor mehr Grind»):** `dropship/_GRIND_PAUSE_BIS` = 1792942700, `_GRIND_RUNNER_ZAHL` = 3 (unverändert). Routine-Texte, die «Grind läuft/4 Runner/nicht abschalten» sagen, sind ÜBERHOLT — die Pause gilt, nicht auf 0 zurücksetzen ohne den Betreiber. Bilanz + offene Klicks: `dropship/SAUBER-BILANZ-2026-10-22.md` (Hetzner-Platte voll, Filtergrenze, Unterkategorien). Danach «wann Grind wieder an?» fragen.
 - **🚚 Gratisversand CH ab CHF 40.50 seit 13.10. ~23:30 UTC** (alle 3 Profile; EINE Quelle `ch_lager_profil.GRATIS_AB_CH`; Werbetext bleibt «ab CHF 50»). Ware ab Schweizer Lager (Zeichen `profil-ch-lager`) immer gratis, auch im Warenkorb angezeigt.
 - **📢 Werbetest A «geschenke-test» (Betreiber «A ja» 13.10.):** 13 Geschenk-Produkte, CHF 10/Tag, Gebot ≤ 0.50, Stopp bei CHF 30 ohne Warenkorb. **Bis 24.10. die 13 Produkte in `dropship/_werbetest_sperre.txt` NICHT schreiben** (Helfer `automation/werbetest_sperre.py` / `lib/werbetest_sperre.mjs`; jeder Schreiber fragt selbst — Lieferbarkeit/Preis ausgenommen). Ampel zählt ab dem ersten Tag mit `utm_campaign=geschenke-test` (Plan = 14.10.), prüft alle 13 (fremde Landeseiten, Google [CH], geändert). Klickweg: `dropship/WERBETEST-GESCHENKE-VORBEREITUNG-2026-10-13.md` §«Für den Betreiber».
 - **💳 Zahllink-Dauerauftrag (Betreiber 11.10.):** Wartet eine CJ-Bestellung auf Zahlung, erstellt die Sitzung den Zahllink direkt und legt ihn vor — der Betreiber zahlt nur. Stand + Regel: `dropship/ZAHLUNG-LINKS-MERKEN.md`. 13.10.: LX1023/1025/1026 bezahlt (API UNSHIPPED), kein Zahllink offen.
@@ -38,35 +39,10 @@ Arbeitsgebiet ist der **CJ-Dropship-Import für den Shopify-Shop LuxeStyle CH**.
 - **⛔ B2B bleibt AUS** (Betreiber 15.09.: «b2b sein lassen wen kosten»). Gemessen: 0 Firmen,
   0 B2B-Kataloge, Plan Basic. Ersatz = Seite «Firmen & Vereine» mit Anfrageformular.
 
-## 📌 Stand vom 15.09.2026
-- **BigBuy ist zu Ende.** Abo «Pack Ecommerce» lief am 15.09. aus (gekündigt 16.08.). `bigbuy_abschied.py`
-  hat 274 Produkte gedraftet; **0 aktive mit BigBuy-Merkmal**. Seine Abfrage traf nur `tag:bigbuy` — 136
-  Produkte mit `bb-…`-SKU wären bestellbar geblieben; Auswahl ist jetzt Tag ODER SKU. Die PC-Routine
-  `trig_01Fks8G3…` (16.09. 05:00) ist ein Doppel und findet nichts mehr vor.
-- **Folgeschäden des Abschieds behoben:** «Premium & Marken» hatte die Regel `Tag=bigbuy` → jetzt
-  `Tag=premium` (41 aktiv); 27 Ratgeber-Links von leeren auf gefüllte Kategorien umgebogen.
-  **118 von 518 Kollektionen ohne kaufbare Ware — aber nur 2 davon im Onlineshop sichtbar** (beide erledigt: abgemeldet + 301). Die übrigen 116 waren nie veröffentlicht, kosten nichts (`dropship/LEERE-KOLLEKTIONEN-2026-09-15.md`).
-- **Hauptmenü hatte sechs tote Links** (`/en/collections/…` = 404, u. a. «Schmuck & Uhren»). Repariert;
-  `menue_links.py` dekodiert jetzt Emoji-Handles und prüft den Pfad statt nur den Handle.
-- **⛔ Cowork-Punkt 1 ZURÜCKGEZOGEN:** «Versandschwelle 45 → 50» hätte rabattierten Körben den Gratisversand
-  nehmen können (automatischer 10-%-Rabatt ab 2 Artikeln seit 01.06.). Ersetzt durch zwei Testkörbe.
-- **Weihnachten 2026 gefüllt:** 4 → 166 Artikel, Text neu (er bewarb drei Adventskalender ohne Lieferant).
-- **Startseite mobil repariert:** die gestrige Kundenstimmen-Sektion machte die Seite 1488 px breit;
-  jetzt 390/390 gemessen. «verifizierte Bewertungen» gestrichen (Judge.me: 0 verifizierte Käufe).
-- **✅ ERLEDIGT 17.09.: die sendende Routine `trig_01KAnvaXU7rbVVBbaUqrg6ci` ist weg.** Sie hiess «Drafts schreiben»
-  und SENDETE (15.09. 06:23 eine Rückerstattungs-Zusage an #1017 gegen den Entscheid vom 11.09., dazu die BigBuy-Mail
-  vom 08.09. wortgleich erneut). Der Betreiber hat sie abgeschaltet. **Zwei unabhängige Belege am 17.09. 07:50:**
-  (1) `list_triggers` zeigt 11 Routinen, sie ist in keiner — auch nicht im Rohtext; (2) **wichtiger**, der Postausgang
-  der letzten 2 Tage enthält NUR eigene Mails, obwohl ihr 06:xx-Fenster längst durch war.
-  ⚠️ Die Lehre bleibt: **jeden Kundenentwurf VOR dem Senden gegen den frischen Thread lesen** — ein Automat kann
-  in der Zwischenzeit etwas zugesagt haben, und eine Zusage im Thread bindet uns.
-- **💶 BigBuy-Guthaben EUR 1'000.00 gemessen (seit 15.07. unverändert = nie ausgezahlt).** Kein Auszahlungs-Endpunkt in der
-  API. Klickweg + Mailentwurf: `dropship/BIGBUY-1000-EURO.md`. Abo endet heute, BigBuy zahlt nur dienstags.
-- **~~#1017/#1018 fahren~~ — FALSCH, korrigiert 16.09.:** alle sieben Stationen lagen in China;
-  «Schweizer Post» war das Feld `lastMileCarrier` (Plan, keine Station). #1017 kam zurück und ist
-  erstattet. #1018 (E-Scooter-Ladegerät, anderer Kunde) ist davon nicht betroffen.
-- **Antwort auf «Was könnte man noch machen?»:** `dropship/WEBSITE-IDEEN-2026-09-15.md` (39 geprüfte
-  Massnahmen, 8 verworfene, Vollständigkeits-Kritik mit 8 Lücken).
+## 📌 Stand vom 15.09.2026 (gekürzt — Volltext: Journal «📚 Index-Archiv: Stand 15.09.2026»)
+- **BigBuy ist zu Ende** (Abo 15.09. ausgelaufen, 0 aktive mit BigBuy-Merkmal). **⛔ Cowork-Punkt «Versandschwelle 45 → 50» ZURÜCKGEZOGEN** (automatischer 10-%-Rabatt ab 2 Artikeln).
+- **✅ Die sendende Routine «Drafts schreiben» ist weg** (sagte am 15.09. #1017 eine Rückerstattung zu, gegen den Entscheid vom 11.09.). ⚠️ Die Lehre bleibt: **jeden Kundenentwurf VOR dem Senden gegen den frischen Thread lesen** — ein Automat kann in der Zwischenzeit etwas zugesagt haben, und eine Zusage im Thread bindet uns.
+- **~~#1017/#1018 fahren~~ — FALSCH:** alle sieben Stationen lagen in China («Schweizer Post» war das Feld `lastMileCarrier`); #1017 kam zurück und ist erstattet.
 
 ## 📌 Stand vom 14.09.2026 (gekürzt — Volltext im Journal)
 - **Branch `claude/luxestyle-status-tztnn1`**, offener Draft-PR #1608 nach `main`.
@@ -132,8 +108,8 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 2. **Lies `dropship/CJ-IMPORT-LOG.md`** für Produktliste & Historie.
 3. Dann **einfach loslegen** (Conversion-First-Routine, §10): Autopilot-Drafts veredeln → ACTIVE →
    publizieren; QA auf FAILED-Bilder; Heroes/Copy/Collections/SEO verbessern; bei Bedarf 1–2 saubere
-   Produkte ergänzen. Committen, auf **`claude/luxestyle-product-CizQ6`** pushen (fester Dropship-Branch,
-   vom User 2026-06-07 festgelegt), Draft-PR nach `main`, Stand melden.
+   Produkte ergänzen. Committen, auf den im Sitzungsauftrag genannten Branch pushen (zuletzt `claude/luxestyle-status-tztnn1`),
+   Draft-PR nach `main`, Stand melden.
    Nicht nach Erlaubnis fragen — der Auftrag steht. Nur die 3 User-Klicks (AGB-Fix, Pixel,
    Kampagne+Budget, §10) kann ich nicht selbst — die klar benennen.
 
@@ -285,13 +261,12 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   pro Lauf neu holen). LuxeStyle: shop `au3j0y-hq.myshopify.com`. `automation/reel-analytics.mjs` macht das
   bereits (Secrets `SHOPIFY_CLIENT_ID`/`SHOPIFY_CLIENT_SECRET`/`SHOPIFY_SHOP`). **Kein `shpat_` mehr suchen!**
   (Für Live-Abfragen nutze ich ohnehin die `mcp__…__*`-Shopify-Tools direkt.)
-- **Branch (FEST, 2026-06-07):** alles auf **`claude/luxestyle-product-CizQ6`** → Draft-PR nach `main`.
+- **Branch:** die Sitzungsreihe arbeitet auf **`claude/luxestyle-status-tztnn1`** (PR #1608 → `main`); der frühere Dropship-Branch `claude/luxestyle-product-CizQ6` ruht seit 06.09.2026 (Inventur 22.10.). Massgeblich ist der Branch im Sitzungsauftrag.
   Nie direkt nach `main` pushen. ⚠️ Die alten Branches `claude/dropship-lade-memory-SrAs5` (PR #5) und
   `claude/dropshipping-session-LehDs` sind **in `main` gemergt und vom Remote gelöscht** — nicht mehr nutzen.
   Der gesamte Dropship-Stand liegt jetzt auf `main` (zuletzt Memory Teil 14, PR #400).
-- **Scheduler (`CronCreate`/`ScheduleWakeup`) ist hier nicht aktiv** → kein echter Cron-Loop
-  über Stunden möglich; Autonomie = Charge für Charge in der laufenden Session, plus dieses
-  Memory, damit jede neue Session nahtlos weitermacht.
+- **Scheduler (Stand 22.10.):** Routinen (`list_triggers`, `send_later`, 2 feuern in diese Session) sind VERFÜGBAR; `CronCreate`/`ScheduleWakeup` nur sitzungsgebunden.
+  Autonomie = Routinen + dieses Memory, damit jede neue Session nahtlos weitermacht.
 - **🌐 Browser-Agent (FEST, User 2026-06-12):** Der User hat **Brave + Playwright-MCP auf seinem PC-Claude**
   eingerichtet (Setup: `dropship/BROWSER-AGENT-SETUP.md`, Port 9222, Meta Business Suite eingeloggt).
   **✅ KORRIGIERT 27./29.09.: Cloud-Sessions HABEN einen Browser** — `tools/browser.mjs` (Chromium 141 + globales Playwright, vertraut per SPKI genau den Proxy-CAs; Selbsttest 12/12, luxestyle.ch HTTP 200 in 390 px, nachgemessen 29.09.). Nur Dienste mit Anmeldung (IG, TikTok, Konsolen) bleiben PC-/Handy-Weg. ~~Cloud-Sessions haben KEINEN Browser~~ — für Anmelde-Aufgaben (IG/FB aufräumen, Web-UI-Klicks) den User
@@ -448,8 +423,8 @@ Ledger verhindern jede Wiederholung (plattformübergreifend). 29 ready in reels_
 
 ## ⏱️ Keepalive ausgedünnt (User-Ja, 25.08.2026)
 Zwei Stunden-Routinen feuerten versetzt = Session-Wake alle ~20–40 Min. Die durable Routine
-`trig_01DBsWkRtnrmimnU4sbXGTBQ` läuft jetzt **alle 2 h** (:14), die Umgebungs-Routine
-`trig_01Uy3zVefXbzCZn9Dr2qvkwh` bleibt stündlich — spart ~30 % Routine-Turns, das
+(`trig_01DBs…`, 2 h) gibt es nicht mehr (22.10.: `get_trigger` «resource not found»); die Umgebungs-Routine
+`trig_01Uy3zVefXbzCZn9Dr2qvkwh` läuft stündlich — spart ~30 % Routine-Turns, das
 idempotente `engine_keepalive.sh` deckt weiterhin alles ab.
 
 ## 💾 Der Container stellt beim Restart einen ALTEN Snapshot her (2026-08-25, 2×)
