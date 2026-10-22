@@ -1656,3 +1656,6 @@ gid://shopify/Product/16656667378055	nicht-versendbar	Rollkoffer aus Aluminium-M
 gid://shopify/Product/16656662823303	ok	Haushaltspfanne mit Antihaft-Beschichtung
 gid://shopify/Product/16656667541895	ok	Rollkoffer mit Laptopfach – 18 Zoll
 gid://shopify/Product/16656725737863	ok	Automatik-Mechanik-Uhr mit Lederarmband
+gid://shopify/Product/16656660070791	nicht-versendbar	Trolley Koffer für Business und Reise
+gid://shopify/Product/16656660332935	nicht-versendbar	Reisekoffer mit Zahlenschloss
+gid://shopify/Product/16656662626695	nicht-versendbar	Reisekoffer mit Teleskopgriff
