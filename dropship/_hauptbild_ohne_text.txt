@@ -58480,3 +58480,6 @@ gid://shopify/Product/16655507161479	schon-sauber	0
 gid://shopify/Product/16655507456391	schon-sauber	0
 gid://shopify/Product/16655507587463	schon-sauber	3
 gid://shopify/Product/16655507751303	schon-sauber	0
+gid://shopify/Product/16655507915143	schon-sauber	0
+gid://shopify/Product/16655508078983	schon-sauber	0
+gid://shopify/Product/16655508242823	umgestellt	7	gid://shopify/MediaImage/77794202288519	gid://shopify/MediaImage/77794202157447
