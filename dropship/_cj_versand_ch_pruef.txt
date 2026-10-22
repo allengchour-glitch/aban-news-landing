@@ -13376,3 +13376,8 @@ kleiner-ventilator-mit-kuhlfunktion-628100	2607130554401628700	7	7.30	ok	landese
 lockeres-herren-t-shirt-mit-aufdruck-612700	2606061318581613400	16	8.53	ok	landeseite
 seidenfacher-mit-goldsprenkel-616700	2607130550541617400	16	12.21	ok	landeseite
 sommerhemd-mit-amerikanischer-flagge-628500	2606050847191629100	16	8.25	ok	landeseite
+cartoonesque-pullover-607500	2606050546231608100	16	9.88	ok	landeseite
+einheitsfarbiger-schal-607400	2607130522071607900	16	6.01	ok	landeseite
+sommer-shirt-fur-herren-slim-fit-632900	2606041254281633500	16	7.71	ok	landeseite
+herren-kurzarm-hemd-plaid-615000	2606041220401615700	16	8.11	ok	landeseite
+sport-weste-fur-herren-locker-atmungsaktiv-634300	2606040506281634900	16	6.01	ok	landeseite
