@@ -511,3 +511,8 @@ gid://shopify/Product/16655497822599	Orange
 gid://shopify/Product/16655498051975	Rot
 gid://shopify/Product/16655515517319	Silber
 gid://shopify/Product/16655516795271	Grün
+gid://shopify/Product/16656438296967	Schwarz
+gid://shopify/Product/16656510484871	Schwarz
+gid://shopify/Product/16656510583175	Schwarz
+gid://shopify/Product/16656522346887	Schwarz
+gid://shopify/Product/16656658104711	Schwarz
