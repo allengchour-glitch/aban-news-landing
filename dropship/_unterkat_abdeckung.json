@@ -1,5 +1,5 @@
 {
- "gemessen": "2026-10-22T16:05:05Z",
+ "gemessen": "2026-10-22T16:17:54Z",
  "schwelle_anteil": 0.2,
  "kategorien": [
   {
@@ -7,9 +7,9 @@
    "ohne": 19,
    "anteil_ohne": 0.048,
    "je_kind": {
-    "hochzeitsgeschenke": 38,
-    "geschenke-fuer-sie": 161,
     "geschenke-unter-50-franken": 146,
+    "geschenke-fuer-sie": 161,
+    "hochzeitsgeschenke": 38,
     "unter-chf-25": 120,
     "geschenke-fuer-ihn": 98,
     "geschenke-unter-100-franken": 67,
@@ -121,6 +121,44 @@
      1
     ]
    ],
+   "koll_ohne": {
+    "bestseller-unter-50": 16,
+    "neu-eingetroffen": 12,
+    "sub-kueche": 8,
+    "kuechenhelfer": 8,
+    "wohnen-dekoration": 5,
+    "sub-taschen": 4,
+    "gadgets": 4,
+    "elektronik-technik": 4,
+    "elektronik-gadgets": 4,
+    "elektronik-computer": 4,
+    "🎁-geschenke-bis-chf-30-alt-20261010": 3,
+    "handtaschen-umhaengetaschen": 3,
+    "reisegepaeck": 3,
+    "💎-premium-ab-chf-80": 3,
+    "sub-reise": 3,
+    "reise-gadgets": 3,
+    "elektronik-kleinteile": 3,
+    "elektronik-laden": 3,
+    "🎁-geschenke-bis-chf-30": 2,
+    "fitness-training": 2,
+    "outdoor-garten": 2,
+    "fitness": 2,
+    "sport-outdoor": 2,
+    "fitness-sub": 2,
+    "sub-trinkflaschen": 1,
+    "drohnen-kameras": 1,
+    "trends-gadgets": 1,
+    "spass-elektronik": 1,
+    "drohnen-fpv": 1,
+    "hightech-gadgets": 1,
+    "handy-zubehoer": 1,
+    "handy-powerbanks": 1,
+    "elektronik-audio": 1,
+    "lautsprecher": 1,
+    "audio-sub": 1,
+    "kopfhoerer-audio": 1
+   },
    "titel": "🎁 Geschenke & Weihnachten",
    "handle": "premium-geschenke",
    "kinder": [
@@ -140,8 +178,9 @@
     "%F0%9F%92%8E-premium-ab-chf-80",
     "smoke-zubehoer"
    ],
-   "sekunden": 2.7,
-   "gross": []
+   "sekunden": 2.6,
+   "gross": [],
+   "kandidaten": []
   },
   {
    "aktiv": 10683,
@@ -269,6 +308,48 @@
      15
     ]
    ],
+   "koll_ohne": {
+    "bestseller-unter-50": 1325,
+    "neu-eingetroffen": 304,
+    "🎁-geschenke-bis-chf-30-alt-20261010": 175,
+    "leggings": 110,
+    "damen-sets": 89,
+    "sub-yoga-fitness": 73,
+    "sommer": 65,
+    "sommer-2026": 65,
+    "yoga-pilates": 65,
+    "yoga": 65,
+    "neu": 61,
+    "fitness": 61,
+    "fitness-training": 61,
+    "fitness-sub": 61,
+    "schwimmen-badi": 48,
+    "sub-bademode": 48,
+    "westen-gilets": 47,
+    "viral-hits": 40,
+    "portemonnaie": 37,
+    "trends-gadgets": 37,
+    "trend-gadgets": 37,
+    "handtaschen-umhaengetaschen": 26,
+    "damen-jacken": 24,
+    "strickjacken-cardigans": 24,
+    "caps-huete": 23,
+    "geschenke-fuer-ihn": 20,
+    "ft-maske": 19,
+    "unter-chf-25": 15,
+    "premium-geschenke": 14,
+    "hautpflege": 14,
+    "lederwaren": 13,
+    "sub-baby-kids": 13,
+    "beauty-hautpflege": 12,
+    "beauty-pflege": 12,
+    "weihnachtspyjama-familie": 11,
+    "winter-kaelte": 10,
+    "weihnachten-2026": 10,
+    "fortura-weihnachten": 10,
+    "hautpflege-skincare": 10,
+    "hautpflege-tools": 10
+   },
    "titel": "Damen",
    "handle": "damen-mode",
    "kinder": [
@@ -291,8 +372,9 @@
     "shorts-bermudas",
     "nachtwaesche-pyjamas"
    ],
-   "sekunden": 95.0,
-   "gross": []
+   "sekunden": 68.2,
+   "gross": [],
+   "kandidaten": []
   },
   {
    "aktiv": 5323,
@@ -409,6 +491,48 @@
      18
     ]
    ],
+   "koll_ohne": {
+    "bestseller-unter-50": 1259,
+    "neu-eingetroffen": 387,
+    "jacken-outdoor": 245,
+    "jeans-denim": 201,
+    "westen-gilets": 90,
+    "damen-jacken": 85,
+    "🎁-geschenke-bis-chf-30-alt-20261010": 59,
+    "💎-premium-ab-chf-80": 56,
+    "t-shirts-tops": 38,
+    "neu": 35,
+    "trends-gadgets": 32,
+    "viral-hits": 32,
+    "trend-gadgets": 32,
+    "jumpsuits-overalls": 30,
+    "winter-kaelte": 29,
+    "hoodies-sweatshirts": 22,
+    "herbst-favoriten": 17,
+    "shorts-bermudas": 16,
+    "lederwaren": 14,
+    "winterjacken": 14,
+    "herren-sets-sub": 14,
+    "herren-mode-sub": 7,
+    "sub-yoga-fitness": 6,
+    "schuhe-sneaker": 6,
+    "sub-laufschuhe": 6,
+    "tshirts-polos": 3,
+    "gerade-auf-instagram": 3,
+    "bastel-diy": 3,
+    "querbeet": 2,
+    "weihnachtspullover": 2,
+    "gravur-personalisiert": 2,
+    "katzenwelt": 2,
+    "sonnenbrillen-damen": 2,
+    "fussball-fanshop": 2,
+    "sub-trinkflaschen": 2,
+    "sub-taschen": 2,
+    "sub-reise": 2,
+    "waerme-komfort": 2,
+    "guertel": 2,
+    "schmuck-uhren": 2
+   },
    "titel": "Herren",
    "handle": "fur-ihn",
    "kinder": [
@@ -421,8 +545,9 @@
     "herren-jacken",
     "sub-bart-rasur"
    ],
-   "sekunden": 47.2,
-   "gross": []
+   "sekunden": 32.8,
+   "gross": [],
+   "kandidaten": []
   },
   {
    "aktiv": 4786,
@@ -480,6 +605,21 @@
      1
     ]
    ],
+   "koll_ohne": {
+    "bestseller-unter-50": 4,
+    "neu": 3,
+    "trends-gadgets": 2,
+    "viral-hits": 2,
+    "trend-gadgets": 2,
+    "blitzversand-schweiz": 1,
+    "beauty-pflege": 1,
+    "schuhe-stiefel": 1,
+    "sub-reise": 1,
+    "reisen-sommer": 1,
+    "reise-gadgets": 1,
+    "damen-mode": 1,
+    "sommer-2026": 1
+   },
    "titel": "Schuhe",
    "handle": "schuhe",
    "kinder": [
@@ -496,8 +636,9 @@
     "sub-hausschuhe",
     "sub-wander-arbeitsschuhe"
    ],
-   "sekunden": 40.4,
-   "gross": []
+   "sekunden": 30.0,
+   "gross": [],
+   "kandidaten": []
   },
   {
    "aktiv": 5656,
@@ -615,6 +756,48 @@
      17
     ]
    ],
+   "koll_ohne": {
+    "bestseller-unter-50": 1041,
+    "sub-uhren": 878,
+    "gadgets": 878,
+    "elektronik-technik": 878,
+    "elektronik-gadgets": 878,
+    "elektronik-computer": 878,
+    "smartwatches-wearables": 517,
+    "neu-eingetroffen": 492,
+    "geschenke-unter-30": 279,
+    "🎁-geschenke-bis-chf-30-alt-20261010": 210,
+    "herrenuhren-schmuck": 178,
+    "uhrenarmbaender": 132,
+    "neu": 52,
+    "trends-gadgets": 50,
+    "viral-hits": 50,
+    "trend-gadgets": 50,
+    "💎-premium-ab-chf-80": 48,
+    "sub-baby-kids": 46,
+    "geschenke-fuer-ihn": 45,
+    "ersatzteile-zubehoer": 45,
+    "lederwaren": 40,
+    "uhren-herren": 28,
+    "herren-uhren": 28,
+    "chronographen-automatik": 21,
+    "geschenke-fuer-sie": 18,
+    "kopfhoerer-audio": 14,
+    "sonnenbrillen-damen": 10,
+    "sub-yoga-fitness": 9,
+    "gravur-personalisiert": 7,
+    "damen-uhren": 7,
+    "wandern-trekking": 7,
+    "uhren-damen": 6,
+    "kleine-geschenke-mitbringsel": 5,
+    "geschenke-unter-100-franken": 5,
+    "sets-bundles": 5,
+    "bastel-diy": 4,
+    "🎁-geschenke-bis-chf-30": 4,
+    "handy-huellen": 4,
+    "unter-chf-25": 3,
+    "wanduhren": 3
+   },
    "titel": "Schmuck & Uhren",
    "handle": "schmuck-uhren",
    "kinder": [
@@ -627,8 +810,38 @@
     "schmuck-sets",
     "sonnenbrillen-alle"
    ],
-   "sekunden": 69.9,
-   "gross": []
+   "sekunden": 42.0,
+   "gross": [],
+   "kandidaten": [
+    {
+     "handle": "smartwatches-wearables",
+     "titel": "Smartwatches & Wearables",
+     "luecke": 517,
+     "gesamt": 828,
+     "im_eltern": 0.72
+    },
+    {
+     "handle": "herrenuhren-schmuck",
+     "titel": "Herrenuhren & Schmuck",
+     "luecke": 178,
+     "gesamt": 1945,
+     "im_eltern": 0.9
+    },
+    {
+     "handle": "uhrenarmbaender",
+     "titel": "Uhrenarmbänder & Smartwatch-Armbänder",
+     "luecke": 132,
+     "gesamt": 158,
+     "im_eltern": 0.97
+    },
+    {
+     "handle": "chronographen-automatik",
+     "titel": "Chronographen & Automatik",
+     "luecke": 21,
+     "gesamt": 175,
+     "im_eltern": 0.87
+    }
+   ]
   },
   {
    "aktiv": 4096,
@@ -745,6 +958,48 @@
      11
     ]
    ],
+   "koll_ohne": {
+    "bestseller-unter-50": 1110,
+    "beauty-selfcare": 1030,
+    "neu-eingetroffen": 381,
+    "🎁-geschenke-bis-chf-30-alt-20261010": 283,
+    "sub-aroma-diffuser": 154,
+    "aromatherapie": 152,
+    "beauty-tools": 114,
+    "luftreiniger-klimageraete": 108,
+    "luftbefeuchter": 100,
+    "hautpflege": 74,
+    "beauty-geraete": 58,
+    "sub-massage": 44,
+    "wellness-selfcare": 39,
+    "geschenke-fuer-sie": 37,
+    "🎁-geschenke-bis-chf-30": 36,
+    "beauty-makeup": 35,
+    "💎-premium-ab-chf-80": 34,
+    "gesichtspflege-geraete": 28,
+    "hochzeitsgeschenke": 28,
+    "ft-maske": 25,
+    "recovery": 22,
+    "beauty-hautpflege": 21,
+    "schminkspiegel": 21,
+    "sub-bart-rasur": 21,
+    "neu": 21,
+    "spielzeug-schminkset": 17,
+    "kleine-geschenke-mitbringsel": 15,
+    "geschenke-unter-50-franken": 15,
+    "premium-geschenke": 14,
+    "geschenke-fuer-ihn": 14,
+    "lockenstaebe": 14,
+    "wellness-beauty-tools": 13,
+    "wellness-komplettset": 13,
+    "wellness-massage": 13,
+    "wellness-gesundheit": 13,
+    "viral-hits": 12,
+    "licht-nachtlicht-projektor": 12,
+    "trends-gadgets": 12,
+    "sets-bundles": 11,
+    "geschenke-unter-100-franken": 11
+   },
    "titel": "Beauty & Pflege",
    "handle": "beauty-pflege",
    "kinder": [
@@ -757,12 +1012,56 @@
     "haarstyling-geraete",
     "parfum-duefte"
    ],
-   "sekunden": 69.2,
-   "gross": []
+   "sekunden": 39.0,
+   "gross": [],
+   "kandidaten": [
+    {
+     "handle": "sub-aroma-diffuser",
+     "titel": "Aroma & Diffuser",
+     "luecke": 154,
+     "gesamt": 285,
+     "im_eltern": 0.59
+    },
+    {
+     "handle": "luftbefeuchter",
+     "titel": "Luftbefeuchter",
+     "luecke": 100,
+     "gesamt": 149,
+     "im_eltern": 0.67
+    },
+    {
+     "handle": "beauty-geraete",
+     "titel": "Beauty-Geräte & Haarentfernung",
+     "luecke": 58,
+     "gesamt": 184,
+     "im_eltern": 0.54
+    },
+    {
+     "handle": "gesichtspflege-geraete",
+     "titel": "Gesichtspflege-Geräte",
+     "luecke": 28,
+     "gesamt": 58,
+     "im_eltern": 0.62
+    },
+    {
+     "handle": "ft-maske",
+     "titel": "Masken",
+     "luecke": 25,
+     "gesamt": 246,
+     "im_eltern": 0.53
+    },
+    {
+     "handle": "schminkspiegel",
+     "titel": "Schminkspiegel",
+     "luecke": 21,
+     "gesamt": 35,
+     "im_eltern": 0.69
+    }
+   ]
   },
   {
    "aktiv": 5309,
-   "ohne": 760,
+   "ohne": 758,
    "anteil_ohne": 0.143,
    "je_kind": {
     "aufbewahrung-sub": 2470,
@@ -784,6 +1083,7 @@
     "teppiche": 31,
     "werkzeug-maschinen": 2,
     "wanddeko": 17,
+    "diamond-painting": 5,
     "wecker": 2,
     "woks": 3,
     "waeschekoerbe": 15,
@@ -898,6 +1198,48 @@
      6
     ]
    ],
+   "koll_ohne": {
+    "bestseller-unter-50": 681,
+    "neu-eingetroffen": 454,
+    "party-deko-ch": 176,
+    "geschenke-unter-30": 159,
+    "weihnachten-2026": 129,
+    "fortura-weihnachten": 129,
+    "🎁-geschenke-bis-chf-30-alt-20261010": 83,
+    "sub-baby-kids": 57,
+    "baby-kleinkind": 31,
+    "💎-premium-ab-chf-80": 30,
+    "🎁-geschenke-bis-chf-30": 25,
+    "unter-chf-25": 23,
+    "premium-geschenke": 21,
+    "kleine-geschenke-mitbringsel": 17,
+    "geschenke-unter-50-franken": 17,
+    "sub-massage": 17,
+    "beauty-tools": 17,
+    "camping-outdoor": 14,
+    "sub-reise": 14,
+    "geschenke-fuer-sie": 13,
+    "kinderspielzeug": 12,
+    "spielzeug": 12,
+    "spielzeug-neuheiten": 12,
+    "adventskalender": 12,
+    "geschenke-fuer-kinder": 11,
+    "sub-yoga-fitness": 11,
+    "geschirr-servieren": 11,
+    "yoga-pilates": 9,
+    "yoga": 9,
+    "halloween-2026": 8,
+    "halloween": 8,
+    "fortura-halloween": 8,
+    "bastel-diy": 7,
+    "wohnen-bad": 6,
+    "hundewelt": 6,
+    "hochzeitsgeschenke": 6,
+    "ft-pluesch": 6,
+    "pc-homeoffice": 5,
+    "querbeet": 5,
+    "katzenwelt": 5
+   },
    "titel": "Wohnen & Garten",
    "handle": "wohnen-dekoration",
    "kinder": [
@@ -917,6 +1259,8 @@
     "vorhaenge",
     "duschvorhaenge",
     "basteln-diy",
+    "malen-nach-zahlen",
+    "diamond-painting",
     "outdoor-garten",
     "haengematten",
     "werkzeug-maschinen",
@@ -933,8 +1277,9 @@
     "haushaltsgeraete",
     "licht-led-strip"
    ],
-   "sekunden": 56.6,
-   "gross": []
+   "sekunden": 41.6,
+   "gross": [],
+   "kandidaten": []
   },
   {
    "aktiv": 4515,
@@ -945,11 +1290,11 @@
     "smartwatches-wearables": 582,
     "trends-gadgets": 1527,
     "elektronik-kleinteile": 708,
+    "elektronik-laden": 540,
     "handy-zubehoer": 542,
     "kabel-adapter": 349,
-    "elektronik-laden": 540,
-    "pc-homeoffice": 73,
     "buro-home-office": 28,
+    "pc-homeoffice": 73,
     "beamer-heimkino": 32,
     "usb-sticks": 44,
     "drohnen-kameras": 84,
@@ -1058,6 +1403,48 @@
      15
     ]
    ],
+   "koll_ohne": {
+    "elektronik-gadgets": 1432,
+    "elektronik-computer": 1432,
+    "gadgets": 1419,
+    "bestseller-unter-50": 1180,
+    "sub-uhren": 512,
+    "schmuck-uhren": 403,
+    "neu-eingetroffen": 353,
+    "🎁-geschenke-bis-chf-30-alt-20261010": 229,
+    "herrenuhren-schmuck": 174,
+    "mikrofone": 127,
+    "💎-premium-ab-chf-80": 116,
+    "uhrenarmbaender": 106,
+    "ersatzteile-zubehoer": 53,
+    "pc-komponenten": 48,
+    "uhren": 36,
+    "geschenke-unter-30": 30,
+    "lederwaren": 30,
+    "sub-beleuchtung": 28,
+    "beleuchtung-lampen": 28,
+    "speicher-datentraeger": 28,
+    "uhren-herren": 26,
+    "herren-uhren": 26,
+    "smart-home-gadgets": 23,
+    "hightech-gadgets": 23,
+    "sub-baby-kids": 22,
+    "handy-powerbanks": 22,
+    "licht-nachtlicht-projektor": 21,
+    "sub-yoga-fitness": 20,
+    "geschenke-fuer-sie": 19,
+    "chronographen-automatik": 18,
+    "sub-massage": 17,
+    "beauty-tools": 17,
+    "foto-tech": 17,
+    "netzwerk-router": 14,
+    "recovery": 14,
+    "geschenke-fuer-kinder": 13,
+    "sommer-2026": 11,
+    "laptop-tablet-zubehoer": 10,
+    "ventilatoren": 10,
+    "geschenke-unter-100-franken": 9
+   },
    "titel": "Technik & Gaming",
    "handle": "elektronik-technik",
    "kinder": [
@@ -1077,8 +1464,31 @@
     "beamer-heimkino",
     "kabel-adapter"
    ],
-   "sekunden": 55.3,
-   "gross": []
+   "sekunden": 35.0,
+   "gross": [],
+   "kandidaten": [
+    {
+     "handle": "mikrofone",
+     "titel": "Mikrofone & Streaming",
+     "luecke": 127,
+     "gesamt": 286,
+     "im_eltern": 0.56
+    },
+    {
+     "handle": "uhrenarmbaender",
+     "titel": "Uhrenarmbänder & Smartwatch-Armbänder",
+     "luecke": 106,
+     "gesamt": 158,
+     "im_eltern": 0.84
+    },
+    {
+     "handle": "foto-tech",
+     "titel": "Foto & Video",
+     "luecke": 17,
+     "gesamt": 46,
+     "im_eltern": 0.63
+    }
+   ]
   },
   {
    "aktiv": 3765,
@@ -1087,11 +1497,16 @@
    "je_kind": {
     "klemmbausteine-bausaetze": 482,
     "spielzeug": 1380,
+    "baby-kinder-sets": 112,
     "babykleidung": 237,
+    "strampler-bodys": 69,
     "kinderschuhe": 1380,
     "spielzeug-fahrzeuge": 56,
     "sub-haustier": 13,
-    "spielzeug-ch-lager": 231
+    "haustier-katzen": 5,
+    "haustier-hunde": 6,
+    "spielzeug-ch-lager": 231,
+    "tier-pflege-unterwegs": 1
    },
    "woerter": [
     [
@@ -1195,20 +1610,81 @@
      6
     ]
    ],
+   "koll_ohne": {
+    "bestseller-unter-50": 671,
+    "neu-eingetroffen": 236,
+    "baby-kleinkind": 204,
+    "wohnen-dekoration": 181,
+    "neu": 168,
+    "🎁-geschenke-bis-chf-30-alt-20261010": 117,
+    "blitzversand-schweiz": 114,
+    "kostueme-fasnacht": 111,
+    "kostueme-ch-lager": 111,
+    "elektronik-gadgets": 102,
+    "ft-kinderkostuem": 100,
+    "gadgets": 97,
+    "elektronik-technik": 96,
+    "elektronik-computer": 96,
+    "sport-outdoor": 87,
+    "aufbewahrung-sub": 68,
+    "trends-gadgets": 66,
+    "schmuck-uhren": 63,
+    "kissen-wohntextilien": 61,
+    "sub-uhren": 61,
+    "fitness": 49,
+    "fitness-training": 49,
+    "fitness-sub": 49,
+    "outdoor-garten": 48,
+    "sub-kueche": 45,
+    "schuhe": 44,
+    "kuechenhelfer": 43,
+    "smartwatches-wearables": 42,
+    "sneaker-sportschuhe": 39,
+    "viral-hits": 36,
+    "trend-gadgets": 36,
+    "rucksaecke": 35,
+    "sub-taschen": 31,
+    "beauty-pflege": 28,
+    "beauty-selfcare": 28,
+    "basteln-diy": 25,
+    "geschenke-fuer-kinder": 23,
+    "damen-mode": 21,
+    "rucksaecke-schule": 20,
+    "sommer-2026": 20
+   },
    "titel": "Kinder & Haustier",
    "handle": "sub-baby-kids",
    "kinder": [
     "sub-baby-kids",
     "babykleidung",
+    "strampler-bodys",
+    "baby-kinder-sets",
     "sub-haustier",
+    "haustier-hunde",
+    "haustier-katzen",
+    "tier-leinen-kleidung",
+    "tierspielzeug",
+    "tier-naepfe-fuettern",
+    "tier-pflege-unterwegs",
+    "kratzbaeume",
+    "hundebetten",
     "spielzeug",
     "kinderschuhe",
     "spielzeug-fahrzeuge",
     "spielzeug-ch-lager",
     "klemmbausteine-bausaetze"
    ],
-   "sekunden": 36.8,
-   "gross": []
+   "sekunden": 57.3,
+   "gross": [],
+   "kandidaten": [
+    {
+     "handle": "geschenke-fuer-kinder",
+     "titel": "Geschenke für Kinder",
+     "luecke": 23,
+     "gesamt": 400,
+     "im_eltern": 0.65
+    }
+   ]
   },
   {
    "aktiv": 32,
@@ -1321,6 +1797,48 @@
      1
     ]
    ],
+   "koll_ohne": {
+    "bestseller-unter-50": 19,
+    "🎁-geschenke-bis-chf-30-alt-20261010": 9,
+    "sub-haustier": 5,
+    "favoriten": 5,
+    "neu": 5,
+    "damen-mode": 5,
+    "frontpage": 5,
+    "highlights": 5,
+    "neu-eingetroffen": 5,
+    "sub-kueche": 4,
+    "kuechenhelfer": 4,
+    "sub-kleider": 3,
+    "hundewelt": 3,
+    "haustier-hunde": 3,
+    "wellness-komplettset": 2,
+    "bestseller-shop": 2,
+    "top-5-start": 2,
+    "kinderschuhe": 2,
+    "baby-kleinkind": 2,
+    "sub-baby-kids": 2,
+    "lederwaren": 2,
+    "schmuck-uhren": 2,
+    "haustier-hund": 2,
+    "haustier-napf-futter": 1,
+    "haustier-futter-naepfe": 1,
+    "strand-look": 1,
+    "strand-bademode": 1,
+    "damen-sets": 1,
+    "trainingsanzuege-sets": 1,
+    "schuhe": 1,
+    "damen-schuhe": 1,
+    "sommer-2026": 1,
+    "sub-sandalen": 1,
+    "schuhe-sandalen": 1,
+    "westen-gilets": 1,
+    "wohnen-kueche": 1,
+    "kochen-backen": 1,
+    "pfannen-toepfe": 1,
+    "vegan": 1,
+    "sub-stiefel-boots": 1
+   },
    "titel": "Highlights",
    "handle": "bestseller",
    "kinder": [
@@ -1335,8 +1853,9 @@
     "fussball-fanshop",
     "vr-ai-neuheiten"
    ],
-   "sekunden": 0.9,
-   "gross": []
+   "sekunden": 0.6,
+   "gross": [],
+   "kandidaten": []
   },
   {
    "aktiv": 413,
@@ -1453,6 +1972,48 @@
      7
     ]
    ],
+   "koll_ohne": {
+    "bestseller-unter-50": 280,
+    "fur-ihn": 243,
+    "damen-jacken-maentel": 68,
+    "damen-mode": 68,
+    "jeans-denim": 43,
+    "neu": 38,
+    "💎-premium-ab-chf-80": 31,
+    "kostueme-ch-lager": 30,
+    "blitzversand-schweiz": 30,
+    "kostueme-fasnacht": 28,
+    "ft-damenkostuem": 17,
+    "neu-eingetroffen": 16,
+    "damen-jacken": 12,
+    "lederwaren": 11,
+    "ft-herrenkostuem": 8,
+    "herren-jacken": 7,
+    "trends-gadgets": 6,
+    "viral-hits": 6,
+    "trend-gadgets": 6,
+    "herren-hemden": 5,
+    "winter-kaelte": 5,
+    "ft-unisexkostuem": 3,
+    "herren-shirts": 2,
+    "spielzeug-ch-lager": 2,
+    "shorts-bermudas": 2,
+    "tier-leinen-kleidung": 2,
+    "sub-haustier": 2,
+    "haustier-hunde": 2,
+    "ft-pluesch": 2,
+    "fitness": 2,
+    "fitness-training": 2,
+    "fitness-sub": 2,
+    "sub-yoga-fitness": 2,
+    "damen-sets": 2,
+    "ft-trachten": 1,
+    "ft-peruecke": 1,
+    "sub-trinkflaschen": 1,
+    "katzenwelt": 1,
+    "haustier-katzen": 1,
+    "hundewelt": 1
+   },
    "titel": "Herbst & Übergang",
    "handle": "jacken-outdoor",
    "kinder": [
@@ -1471,16 +2032,17 @@
     "handwaermer",
     "sub-reise"
    ],
-   "sekunden": 5.0,
-   "gross": []
+   "sekunden": 12.9,
+   "gross": [],
+   "kandidaten": []
   },
   {
    "aktiv": 1465,
    "ohne": 983,
    "anteil_ohne": 0.671,
    "je_kind": {
-    "sub-reise": 57,
     "camping-outdoor": 69,
+    "sub-reise": 57,
     "wandern-trekking": 16,
     "sub-yoga-fitness": 330,
     "rucksaecke": 71,
@@ -1590,6 +2152,48 @@
      9
     ]
    ],
+   "koll_ohne": {
+    "fitness": 983,
+    "fitness-sub": 983,
+    "sport-outdoor": 979,
+    "outdoor-garten": 977,
+    "bestseller-unter-50": 790,
+    "neu-eingetroffen": 432,
+    "velo-radsport": 184,
+    "🎁-geschenke-bis-chf-30-alt-20261010": 120,
+    "💎-premium-ab-chf-80": 81,
+    "fitness-geraete": 47,
+    "sub-baby-kids": 46,
+    "sub-taschen": 31,
+    "beauty-tools": 18,
+    "sub-massage": 17,
+    "geschenke-fuer-kinder": 13,
+    "westen-gilets": 13,
+    "camping-schlafen": 12,
+    "sommer-2026": 9,
+    "winter-kaelte": 9,
+    "handtaschen-umhaengetaschen": 8,
+    "viral-hits": 6,
+    "shorts-bermudas": 5,
+    "haustier-napf-futter": 5,
+    "hightech-gadgets": 5,
+    "neu": 5,
+    "premium-geschenke": 4,
+    "handy-zubehoer": 4,
+    "spielzeug-musik": 4,
+    "elektronik-kleinteile": 4,
+    "trends-gadgets": 4,
+    "trend-gadgets": 4,
+    "ventilatoren": 3,
+    "recovery": 3,
+    "querbeet": 3,
+    "bauchtaschen": 3,
+    "pool": 3,
+    "pool-schwimmen": 3,
+    "angeln": 3,
+    "herren-jacken": 3,
+    "spielzeug-outdoor-wasser": 3
+   },
    "titel": "Sport & Party",
    "handle": "fitness-training",
    "kinder": [
@@ -1608,8 +2212,17 @@
     "camping-outdoor",
     "taschenlampen"
    ],
-   "sekunden": 17.9,
-   "gross": []
+   "sekunden": 71.3,
+   "gross": [],
+   "kandidaten": [
+    {
+     "handle": "velo-radsport",
+     "titel": "Velo & Radsport",
+     "luecke": 184,
+     "gesamt": 365,
+     "im_eltern": 0.51
+    }
+   ]
   }
  ]
 }

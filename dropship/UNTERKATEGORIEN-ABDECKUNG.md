@@ -1,4 +1,4 @@
-# Unterkategorien: Wo fehlen Chips? (gemessen 2026-10-22T16:05:05Z)
+# Unterkategorien: Wo fehlen Chips? (gemessen 2026-10-22T16:17:54Z)
 
 Die Chips oben in der App (und die Menü-Unterpunkte im Web) sind die Unterpunkte der Hauptkategorie im Menü `main-menu`. Ein Produkt, das in keiner Unterkollektion (Kind oder Enkel) steht, erreicht man nur über die lange Gesamtliste.
 
@@ -12,7 +12,7 @@ Befund-Schwelle: ≥ 300 aktive Produkte UND (≥ 20 % ohne Unterkollektion ODER
 | Schuhe | 4786 | 4 | 0 % | – | ok |
 | Schmuck & Uhren | 5656 | 1213 | 21 % | – | ⚠️ |
 | Beauty & Pflege | 4096 | 1199 | 29 % | – | ⚠️ |
-| Wohnen & Garten | 5309 | 760 | 14 % | – | ok |
+| Wohnen & Garten | 5309 | 758 | 14 % | – | ok |
 | Technik & Gaming | 4515 | 1432 | 31 % | – | ⚠️ |
 | Kinder & Haustier | 3765 | 769 | 20 % | – | ⚠️ |
 | Highlights | 32 | 20 | 62 % | – | ok |
@@ -29,11 +29,31 @@ Hinweis: Eine fehlende Unterkollektion zeigt sich hier als Wortgruppe (z. B. «m
 
 smartwatch (462), watch (94), apple (79), herzfrequenz (66), bluetooth (63), armband (40), wasserdichte (37), quarzuhr (33), outdoor (32), lederarmband (31), sport (30), bluetooth-telefonie (29), sportuhr (28), bluetooth-anruf (25), herzfrequenz- (24), uhrenarmband (24), edelstahl (22), silikonarmband (22), bluetooth-anrufen (21), bluetooth-anruffunktion (21)
 
+Bestehende Kollektionen, die Lücken-Produkte abdecken (noch nicht im Menü unter dieser Kategorie):
+
+| Kollektion | Handle | Lücken-Produkte | Grösse gesamt | davon in der Kategorie |
+|---|---|---:|---:|---:|
+| Smartwatches & Wearables | `smartwatches-wearables` | 517 | 828 | 72 % |
+| Herrenuhren & Schmuck | `herrenuhren-schmuck` | 178 | 1945 | 90 % |
+| Uhrenarmbänder & Smartwatch-Armbänder | `uhrenarmbaender` | 132 | 158 | 97 % |
+| Chronographen & Automatik | `chronographen-automatik` | 21 | 175 | 87 % |
+
 Hinweis: Eine fehlende Unterkollektion zeigt sich hier als Wortgruppe (z. B. «mikrofon», «projektor»). Erst prüfen, ob es die Kollektion schon gibt (`automation/menue_unterkat_ordnen.py` hängt vorhandene Fachkollektionen ins Menü), sonst `automation/data/suchbegriff_kollektionen.json` (Feeder oder neue Kollektion).
 
 ## Beauty & Pflege — häufigste Titelwörter der Produkte OHNE Unterkollektion
 
 luftbefeuchter (72), aroma (39), diffuser (28), kabelloser (28), farben (24), elektrischer (23), zuhause (20), porenreiniger (20), puder (16), haarschneider (16), pinselset (16), multifunktionaler (16), ultraschall (15), elektrische (15), gesichtsreinigungsbürste (15), gesicht (14), holzmaserung (14), locken (14), diffusor (13), lipgloss (12)
+
+Bestehende Kollektionen, die Lücken-Produkte abdecken (noch nicht im Menü unter dieser Kategorie):
+
+| Kollektion | Handle | Lücken-Produkte | Grösse gesamt | davon in der Kategorie |
+|---|---|---:|---:|---:|
+| Aroma & Diffuser | `sub-aroma-diffuser` | 154 | 285 | 59 % |
+| Luftbefeuchter | `luftbefeuchter` | 100 | 149 | 67 % |
+| Beauty-Geräte & Haarentfernung | `beauty-geraete` | 58 | 184 | 54 % |
+| Gesichtspflege-Geräte | `gesichtspflege-geraete` | 28 | 58 | 62 % |
+| Masken | `ft-maske` | 25 | 246 | 53 % |
+| Schminkspiegel | `schminkspiegel` | 21 | 35 | 69 % |
 
 Hinweis: Eine fehlende Unterkollektion zeigt sich hier als Wortgruppe (z. B. «mikrofon», «projektor»). Erst prüfen, ob es die Kollektion schon gibt (`automation/menue_unterkat_ordnen.py` hängt vorhandene Fachkollektionen ins Menü), sonst `automation/data/suchbegriff_kollektionen.json` (Feeder oder neue Kollektion).
 
@@ -41,11 +61,25 @@ Hinweis: Eine fehlende Unterkollektion zeigt sich hier als Wortgruppe (z. B. «m
 
 watch (91), smart (90), smart-armband (90), apple (80), bluetooth (75), armband (74), kabelloses (39), mikrofon (33), herzfrequenz (30), wasserdichte (30), sportuhr (29), quarzuhr (28), farbdisplay (28), uhrenarmband (27), power (25), lederarmband (24), herzfrequenzmessung (23), smartes (23), projektor (20), wireless (19)
 
+Bestehende Kollektionen, die Lücken-Produkte abdecken (noch nicht im Menü unter dieser Kategorie):
+
+| Kollektion | Handle | Lücken-Produkte | Grösse gesamt | davon in der Kategorie |
+|---|---|---:|---:|---:|
+| Mikrofone & Streaming | `mikrofone` | 127 | 286 | 56 % |
+| Uhrenarmbänder & Smartwatch-Armbänder | `uhrenarmbaender` | 106 | 158 | 84 % |
+| Foto & Video | `foto-tech` | 17 | 46 | 63 % |
+
 Hinweis: Eine fehlende Unterkollektion zeigt sich hier als Wortgruppe (z. B. «mikrofon», «projektor»). Erst prüfen, ob es die Kollektion schon gibt (`automation/menue_unterkat_ordnen.py` hängt vorhandene Fachkollektionen ins Menü), sonst `automation/data/suchbegriff_kollektionen.json` (Feeder oder neue Kollektion).
 
 ## Kinder & Haustier — häufigste Titelwörter der Produkte OHNE Unterkollektion
 
 kinderkostüm (50), mädchen (39), kostüm (38), smartwatch (37), kindergrösse (24), babys (22), erwachsene (14), baumwolle (14), kinderzimmer (11), kinderrucksack (11), jungen (10), wasserdicht (10), kleinkinder (9), wasserdichte (8), babynahrung (8), tragbarer (7), kamera (7), cartoon (7), spielzeug (7), elektrischer (7)
+
+Bestehende Kollektionen, die Lücken-Produkte abdecken (noch nicht im Menü unter dieser Kategorie):
+
+| Kollektion | Handle | Lücken-Produkte | Grösse gesamt | davon in der Kategorie |
+|---|---|---:|---:|---:|
+| Geschenke für Kinder | `geschenke-fuer-kinder` | 23 | 400 | 65 % |
 
 Hinweis: Eine fehlende Unterkollektion zeigt sich hier als Wortgruppe (z. B. «mikrofon», «projektor»). Erst prüfen, ob es die Kollektion schon gibt (`automation/menue_unterkat_ordnen.py` hängt vorhandene Fachkollektionen ins Menü), sonst `automation/data/suchbegriff_kollektionen.json` (Feeder oder neue Kollektion).
 
@@ -58,5 +92,11 @@ Hinweis: Eine fehlende Unterkollektion zeigt sich hier als Wortgruppe (z. B. «m
 ## Sport & Party — häufigste Titelwörter der Produkte OHNE Unterkollektion
 
 fahrradhelm (34), outdoor (27), velohelm (27), wasserdichte (21), training (20), velo-rücklicht (19), springseil (18), rücklicht (18), erwachsene (16), intelligentes (14), licht (13), multifunktionales (13), fernbedienung (12), bauchtrainer (12), sport (11), zuhause (11), sporttasche (10), krafttraining (9), taekwondo (9), board (9)
+
+Bestehende Kollektionen, die Lücken-Produkte abdecken (noch nicht im Menü unter dieser Kategorie):
+
+| Kollektion | Handle | Lücken-Produkte | Grösse gesamt | davon in der Kategorie |
+|---|---|---:|---:|---:|
+| Velo & Radsport | `velo-radsport` | 184 | 365 | 51 % |
 
 Hinweis: Eine fehlende Unterkollektion zeigt sich hier als Wortgruppe (z. B. «mikrofon», «projektor»). Erst prüfen, ob es die Kollektion schon gibt (`automation/menue_unterkat_ordnen.py` hängt vorhandene Fachkollektionen ins Menü), sonst `automation/data/suchbegriff_kollektionen.json` (Feeder oder neue Kollektion).
