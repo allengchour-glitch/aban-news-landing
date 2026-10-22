@@ -81,3 +81,5 @@ CJWJYEYE01268-Climbing	2026-10-19	schnitt 4: PRUEFUNG: Loop-Naht 6.96 > 1,3 x Re
 CJJSBGBG01000-Black	2026-10-19	schnitt 4: PRUEFUNG: Loop-Naht 19.17 > 1,3 x Referenz 13.6
 CJMY299347801AZ	2026-10-20	schnitt 3: UNGEEIGNET: nur 5.0 s sauberes Material (< 6 s, Regel Handwerk: dann das ganze Video verwerfen)
 CJYD202596801AZ	2026-10-20	schnitt 3: UNGEEIGNET: kein sauberes Material (Fremdtext: 8 lateinische Woerter (course, desig, design, jmade, lcourse, nail))
+CJLS296611001AZ	2026-10-22	schnitt 3: UNGEEIGNET: nur 5.0 s sauberes Material (< 6 s, Regel Handwerk: dann das ganze Video verwerfen)
+CJWC296606301AZ	2026-10-22	schnitt 4: PRUEFUNG: Loop-Naht 9.92 > 1,3 x Referenz 7.26

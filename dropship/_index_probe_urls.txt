@@ -67,3 +67,14 @@ suchbegriff https://luxestyle.ch/collections/weihnachtspyjama-familie
 saison https://luxestyle.ch/collections/geschenke-unter-50-franken
 saison https://luxestyle.ch/collections/geschenke-unter-100-franken
 ratgeber https://luxestyle.ch/blogs/ratgeber/geschenke-fuer-maenner-2026-schweiz
+
+# automatisch aus automation/data/suchbegriff_kollektionen.json ergänzt 2026-10-22
+suchbegriff https://luxestyle.ch/collections/aufbewahrungsboxen
+suchbegriff https://luxestyle.ch/collections/handschuhe
+suchbegriff https://luxestyle.ch/collections/strickjacken-cardigans
+suchbegriff https://luxestyle.ch/collections/strickkleider
+suchbegriff https://luxestyle.ch/collections/luftbefeuchter
+suchbegriff https://luxestyle.ch/collections/lockenstaebe
+suchbegriff https://luxestyle.ch/collections/glaetteisen
+suchbegriff https://luxestyle.ch/collections/uhrenarmbaender
+suchbegriff https://luxestyle.ch/collections/handtuchhalter
