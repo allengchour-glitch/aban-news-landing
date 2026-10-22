@@ -377,3 +377,4 @@
 2026-10-21	gid://shopify/Product/16655497757063	natel	Grosses Sport- und Reisetäschchen für Handy
 2026-10-21	gid://shopify/Product/16655513158023	finken	Badezimmer-Pantoffeln
 2026-10-22	gid://shopify/Product/16656522543495	natel	Universal Canvas Handygürteltasche
+2026-10-22	gid://shopify/Product/16656617832839	natel	One-Shoulder Handy-Tasche aus Polyester
