@@ -13112,3 +13112,9 @@ e88pro-bildschirm-steuerung-doppelt-strom-837634	-	-	-	unklar pid 1602002 Produc
 x01-mit-4-5-zoll-bildschirm-und-doppelter-stro-888577	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 s6-doppelt-kamera-rc-spielzeug-blau-orange-350210	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
 dual-kamera-modell-911106	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+edelstahl-3d-katzenpendant-mit-blumenkranz-uni-600700	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+reflektierende-hundeleine-630000	-	-	-	unklar pid 1602002 Product has been removed from 	landeseite
+damen-sneaker-mit-atmungsaktivem-mesh-und-hohe-857280	1662682506019217408	16	10.55	ok	landeseite
+vintage-crossbody-tasche-fur-herren-610000	2511170757071610400	16	8.79	ok	landeseite
+herzanhanger-607100	2607131112591607700	16	5.81	ok	landeseite
+herren-quarzuhr-mit-stahlarmband-628000	2509150350281628200	7	6.81	ok	landeseite
