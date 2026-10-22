@@ -1,0 +1,49 @@
+{
+  "typ": "skript",
+  "skript": "pinterest_pin_erstellen.mjs",
+  "id": "pinterest-pin-2026-10-22-5",
+  "warum": "Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus auftraege/pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). 5 von 10 heute.",
+  "stand": "ok",
+  "begonnen": "2026-10-22T01:29:08.609Z",
+  "dauer_s": 62.7,
+  "ergebnis": {
+    "gepinnt": [],
+    "unklar": [
+      "uv-ozon-desinfektionsbox-fur-unterwasche-1987b1"
+    ],
+    "uebersprungen": [],
+    "schritte": [
+      "Warteschlange 193, quittiert 77, offen 169",
+      "Boards auf dem Profil: /luxestyleCH/home-geschenkideen/, /luxestyleCH/sommerkleider-damenmode-2026/, /luxestyleCH/tech-gadgets/, /luxestyleCH/herrenmode-schweiz/, /luxestyleCH/schmuck-accessoires/, /luxestyleCH/wellness-beauty/, /luxestyleCH/geschenkideen-schweiz/, /luxestyleCH/wohnen-deko/, /luxestyleCH/schuhe-sandalen/, /luxestyleCH/schlaf-aromatherapie/, /luxestyleCH/k%C3%BCche-genuss/, /luxestyleCH/leder-accessoires/, /luxestyleCH/wellness-self-care/, /luxestyleCH/beauty-pflege/",
+      "Pinnwand «Home & Geschenkideen» (https://ch.pinterest.com/luxestyleCH/home-geschenkideen/, 1068 Z.): Titel nicht da",
+      "Bild 26574 Bytes (image/jpeg)",
+      "Beschreibung eingetragen",
+      "Nachlesen: Titel NICHT gefunden (1132 Z.)"
+    ],
+    "bilder": [
+      "server:/var/lib/luxe-agent/ergebnis-angemeldet/pinterest-pin-2026-10-22-5-1-bild.png",
+      "server:/var/lib/luxe-agent/ergebnis-angemeldet/pinterest-pin-2026-10-22-5-2-ausgefuellt.png",
+      "server:/var/lib/luxe-agent/ergebnis-angemeldet/pinterest-pin-2026-10-22-5-3-nachher.png"
+    ],
+    "hinweis": "Pin nach dem Klick nicht auf der Pinnwand gesehen — bleibt als «unklar» gesperrt (kein zweiter Versuch ohne Mensch)"
+  },
+  "bilder_weiche": {
+    "oeffentlich": false,
+    "im_repo": [],
+    "auf_server": [
+      {
+        "datei": "/var/lib/luxe-agent/ergebnis-angemeldet/pinterest-pin-2026-10-22-5-1-bild.png",
+        "bytes": 0
+      },
+      {
+        "datei": "/var/lib/luxe-agent/ergebnis-angemeldet/pinterest-pin-2026-10-22-5-2-ausgefuellt.png",
+        "bytes": 0
+      },
+      {
+        "datei": "/var/lib/luxe-agent/ergebnis-angemeldet/pinterest-pin-2026-10-22-5-3-nachher.png",
+        "bytes": 0
+      }
+    ],
+    "hinweis": "Bilder aus angemeldeten Diensten bleiben auf dem Server (Plan Hetzner Schritt 11, 13.10.2026). Für den Inhalt als Text: Auftragsart seite_text."
+  }
+}
