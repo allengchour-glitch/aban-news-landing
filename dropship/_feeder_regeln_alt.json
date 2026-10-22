@@ -1,0 +1,77 @@
+{
+ "smartwatches-wearables": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "smartwatch"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "fitness-tracker"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "fitnessarmband"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "fitnessuhr"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "smart-band"
+   }
+  ]
+ },
+ "beamer-heimkino": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "beamer"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "heimkino"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "tv-stick"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "streaming-stick"
+   }
+  ]
+ },
+ "drohnen-kameras": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Drohne"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Quadcopter"
+   },
+   {
+    "column": "TITLE",
+    "relation": "CONTAINS",
+    "condition": "Actionkamera"
+   }
+  ]
+ }
+}

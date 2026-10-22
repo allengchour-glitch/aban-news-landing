@@ -13365,3 +13365,11 @@ futter-schussel-fur-hunde-638700	2607130738041639300	16	10.42	ok	landeseite
 warmeleuchte-604400	2607130708051605200	16	5.81	ok	landeseite
 herren-baselayer-shirt-im-britischen-stil-636000	2606090950051636700	16	8.25	ok	landeseite
 reinigungsdusche-mit-aminosaure-filter-600300	2607130646091600900	16	13.21	ok	landeseite
+fussball-trikot-fur-herren-600800	2606090643501601400	16	9.07	ok	landeseite
+kleiderstander-mit-3-ebenen-605300	2607130644031605900	0	-	KEINE CH-Option → DRAFT	landeseite
+street-chic-t-shirt-mit-lochmuster-601700	2606090635521602300	16	8.53	ok	landeseite
+ruckenstutze-fur-auto-und-buro-634200	2607130640341634800	16	14.84	ok	landeseite
+vintage-hemd-fur-herren-604900	2606080253101605500	16	8.79	ok	landeseite
+turtle-basking-lampe-608800	2607130632251609300	16	7.43	ok	landeseite
+retro-street-t-shirt-629200	2606061323291629900	16	8.53	ok	landeseite
+kleiner-ventilator-mit-kuhlfunktion-628100	2607130554401628700	7	7.30	ok	landeseite
