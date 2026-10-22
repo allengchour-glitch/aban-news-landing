@@ -1,11 +1,16 @@
-{%- comment -%}
+{%- comment -%} LUX-VIDEO-JSONLD
   22.10.2026 (LuxeStyle, Betreiber «video ja»): VideoObject fuer Produktseiten mit echtem Video-Medium.
   GEMESSEN 22.10.: nur 27 von 1'082 `video-hit`-Produkten tragen ein Video-Medium (Dauer 0,9-48 s, Median 5,2 s) —
   das Tag allein beweist kein Video, darum wird am MEDIUM entschieden, nie am Tag. Eigener Block neben dem Product-
   JSON-LD (dessen aggregateRating-Logik oben bleibt unberuehrt). Nur das erste Video-Medium, nur Shopify-Videos mit
-  MP4-Quelle UND Vorschaubild (Google verlangt name, description, thumbnailUrl, uploadDate + contentUrl/embedUrl);
-  sonst kein Block. Jeder Wert laeuft durch `json` (Anfuehrungszeichen und `<` im Text bleiben sicher).
-  Wache: automation/video_auszeichnung_wache.py (Block steht live? Selbsttest mit Mutanten).
+  MP4-Quelle UND Vorschaubild; sonst kein Block. Pflicht bei Google: name, thumbnailUrl, uploadDate; empfohlen:
+  description, contentUrl. Jeder Wert laeuft durch `json` (Anfuehrungszeichen und `<` im Text bleiben sicher).
+  `video_source.url` und die Vorschau kommen in Shopify PROTOKOLL-RELATIV (//luxestyle.ch/cdn/...) — beide bekommen https:
+  (Pruefer 22.10., Live-Seite gemessen). Die Beschreibung wird vor dem Strippen an jedem schliessenden Tag getrennt, sonst
+  verkleben Ueberschrift und Liste («…ausSchnell…»), und gaengige Entitaeten werden aufgeloest.
+  EHRLICH: Datenpflege, kein erwarteter Sichtbarkeitsgewinn — Google indexiert Videos nur von Watch-Seiten, eine
+  Produktseite mit Zusatzvideo gilt nicht als solche (Search-Console-Hilfe «Video indexing report»).
+  Wache: automation/video_auszeichnung_kanarien.py (Quelle) + theme_marken_wache.py (steht live?).
 {%- endcomment -%}
 {%- assign luxe_vid = closest.product.media | where: 'media_type', 'video' | first -%}
 {%- if luxe_vid -%}
@@ -15,7 +20,11 @@
     {%- unless luxe_vthumb contains 'https:' -%}
       {%- assign luxe_vthumb = luxe_vthumb | prepend: 'https:' -%}
     {%- endunless -%}
-    {%- assign luxe_vdesc = closest.product.description | strip_html | strip_newlines | strip | truncate: 300 -%}
+    {%- assign luxe_vurl = luxe_vsrc.url -%}
+    {%- unless luxe_vurl contains 'https:' -%}
+      {%- assign luxe_vurl = luxe_vurl | prepend: 'https:' -%}
+    {%- endunless -%}
+    {%- assign luxe_vdesc = closest.product.description | replace: '</', ' </' | strip_html | replace: '&amp;', '&' | replace: '&nbsp;', ' ' | replace: '&quot;', '"' | split: ' ' | join: ' ' | truncate: 300 -%}
     {%- unless luxe_vdesc.size > 0 -%}
       {%- assign luxe_vdesc = closest.product.title -%}
     {%- endunless -%}
@@ -27,8 +36,9 @@
         "description": {{ luxe_vdesc | json }},
         "thumbnailUrl": [{{ luxe_vthumb | json }}],
         "uploadDate": {{ closest.product.published_at | default: closest.product.created_at | date: '%Y-%m-%d' | json }},
-        "contentUrl": {{ luxe_vsrc.url | json }}
+        "contentUrl": {{ luxe_vurl | json }}
       }
     </script>
   {%- endif -%}
 {%- endif -%}
+{%- comment -%} /LUX-VIDEO-JSONLD {%- endcomment -%}
