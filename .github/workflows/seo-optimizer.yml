@@ -1,12 +1,13 @@
-name: SEO-Optimizer (wöchentlich, fehlende Produkt-SEO füllen)
+name: LuxeStyle SEO-Vorschläge (manuell)
 
-# Füllt automatisch fehlende SEO-Titel/-Metas aktiver Produkte (deutsch, CH) + meldet FAILED-Bilder.
-# Braucht Produkt-Scopes am Shopify-Token (read_products, write_products). Ohne = sauberer No-Op/Log.
-
+# Nur lesen und konkrete Vorschläge erzeugen. Keine Shop-Writes, Nachrichten oder Cron-Aktivierung.
 on:
-  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
-    # - cron: '0 6 * * 1'   # Montags 06:00 UTC
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      product_ids:
+        description: '1–6 geprüfte LuxeStyle-Produkt-IDs, kommagetrennt'
+        required: true
+        type: string
 
 permissions:
   contents: read
@@ -14,19 +15,29 @@ permissions:
 jobs:
   seo:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: SEO füllen
+      - name: Begrenzte SEO-Vorschläge ohne Shop-Schreibzugriff
         env:
           SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
           SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
           SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
           SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          LIMIT: '150'
-        run: node automation/seo-optimizer.mjs
+          PRODUCT_IDS: ${{ inputs.product_ids }}
+          SCAN_LIMIT: '6'
+          LIMIT: '6'
+          DRY_RUN: '1'
+          APPLY_SEO_APPROVED: '0'
+        run: node automation/seo-optimizer.mjs > seo-vorschlaege.json
+      - name: Vorschläge und unbekannte Antworten als Prüfbeleg sichern
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: luxestyle-seo-vorschlaege-${{ github.run_id }}
+          path: seo-vorschlaege.json
+          if-no-files-found: warn
+          retention-days: 7
