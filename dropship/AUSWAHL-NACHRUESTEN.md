@@ -1,6 +1,6 @@
-# Auswahl nachrüsten — scharf 2026-10-22 20:51 UTC
+# Auswahl nachrüsten — scharf 2026-10-22 22:10 UTC
 
-umgebaut: 0 · MANUELL: 367 · Fehler: 0
+umgebaut: 12 · MANUELL: 460 · Fehler: 0
 
 ## MANUELL (Grund)
 
@@ -280,7 +280,6 @@ umgebaut: 0 · MANUELL: 367 · Fehler: 0
 - Magnetisches Holzpuzzle für Kinder (`magnetisches-holzpuzzle-fur-kinder-813696`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Magnetisches Bauklötzchen-Set für Mädchen (`magnetisches-bauklotzchen-set-fur-madchen-849024`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Schulter-Crossbody Tasche mit Diebstahlschutz (`schulter-crossbody-tasche-mit-diebstahlschutz-612000`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Hörverstärker 6-Kanal kabellos (`horverstarker-6-kanal-kabellos-610300`): nicht mehr aktiv
 - Outdoor-Sofa aus Oxford-Gewebe (`outdoor-sofa-aus-oxford-gewebe-606500`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Nylon-Hängematte Parachute-Stoff 300×200 cm (`nylon-hangematte-parachute-stoff-300-200-cm-624000`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Kinderzelt Schlafzelt mit Licht (`kinderzelt-schlafzelt-mit-licht-621000`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
@@ -371,3 +370,97 @@ umgebaut: 0 · MANUELL: 367 · Fehler: 0
 - Geschenkbox mit 16 Anhängern, 6 PVC-Figuren und 2 Plüschpuppen (`geschenkbox-mit-16-anhangern-6-pvc-figuren-und-630500`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Diamant-Band für Apple Watch – Edelstahl (`diamant-band-fur-apple-watch-edelstahl-495040`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Edelstahl-Uhrarmband mit Drachendesign (`edelstahl-uhrarmband-mit-drachendesign-408576`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Uhrarmband aus Stahl mit Doppeldiamant-Shell (`uhrarmband-aus-stahl-mit-doppeldiamant-shell-072576`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Smart-Armband mit Musiksteuerung (`smart-bracelet-mit-musiksteuerung-613504`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Transluzente Nachttischpendelleuchte mit Marmoroptik (`transluzente-nachttischpendelleuchte-mit-marmo-608400`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Hexenkapellen-Lampe – Nachtlicht mit USB-Anschluss (`hexenkapellen-lampe-nachtlicht-mit-usb-anschlu-633100`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Wandlampe im Schlauch-Stil mit minimalistischem LED-Spot (`hose-style-wandlampe-mit-minimalistischem-led-636200`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Wandlampe mit Marmormotiv für Bettgestell (`wandlampe-mit-marmormotiv-fur-bettgestell-639500`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Herren Sportuhr mit Quarzwerk (`herren-sportuhr-mit-quarzwerk-897088`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Multifunktions-Sportuhr mit Anruffunktion (`multifunktions-sportuhr-mit-anruffunktion-277440`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Smartwatch mit HD-Bildschirm und Offline-Zahlung (`smartwatch-mit-hd-bildschirm-und-offline-zahlu-881088`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Leder-Uhrenarmband für Apple Watch (`leder-uhrenarmband-fur-apple-watch-809536`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Smartwatch-Armband aus Silikon mit Magnetverschluss (`smartwatch-armband-aus-silikon-mit-magnetversc-776576`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Schutzhülle mit Ständer für Steam Deck (`schutzhulle-mit-stander-fur-steam-deck-606500`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Kinder Smartwatch 4G mit Herzfrequenz (`kinder-smartwatch-4g-mit-herzfrequenz-521792`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Smartwatch mit Edelstahlarmband und Bluetooth-Anrufen (`smartwatch-mit-edelstahlarmband-und-bluetooth-625536`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- AMOLED Smartwatch mit HD-Display (`amoled-smartwatch-mit-hd-display-941184`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Milan Magnetisches Armband aus Edelstahl (`milan-magnetisches-armbandband-aus-edelstahl-653504`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Magnetisches Edelstahlarmband für Smartwatches (`magnetisches-edelstahlarmband-fur-smartwatches-219520`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Smart Touch Sport Armband (`smart-touch-sport-armband-759872`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Smartwatch-Armband aus Harz (`smartwatch-armband-aus-harz-006016`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Gebogenes Uhrenarmband aus TPU (`arcuate-uhrenarmband-aus-tpu-706048`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Bluetooth Smartwatch für Telefon & Gesundheit (`bluetooth-smartwatch-fur-telefon-gesundheit-376128`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Smartwatch mit Herzfrequenz, Schlafanalyse und Schrittzähler (`smartwatch-mit-herzfrequenz-schlafanalyse-und-141568`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Multisport Smart-Armband (`multisport-smart-armband-689152`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Nylon-Geflechtarmband für Smartwatches (`nylon-geflechtarmband-fur-smartwatches-208448`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Silikon-Armband für Smartwatch (`silikon-armband-fur-smartwatch-721344`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Silikon-Uhrarmband 41-45 mm – Schwarz, Weiss, Blau, Rot, Gelb, Grün (`silicone-uhrarmband-41-45-mm-schwarz-weiss-bla-835136`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Kabelloses Schnellladepad für das Auto (`kabelloses-schnellladepad-fur-das-auto-637900`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Smartwatch 1,5" mit Herzfrequenz & Schlafanalyse (`smartwatch-1-5-mit-herzfrequenz-schlafanalyse-390848`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- USB Sternenlicht für das Auto (`usb-sternenlicht-fur-das-auto-138560`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Smartwatch-Armband aus Silikon (`smartwatch-armband-aus-silikon-316736`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Sportuhr mit Keramikarmband (`sportuhr-mit-keramikarmband-674944`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Smartwatch mit Bluetooth-Anruf und NFC-Zugang (`smartwatch-mit-bluetooth-anruf-und-nfc-zugang-012608`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Tragbarer Heimkino-Projektor (`tragbarer-heimkino-projektor-631000`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Smartwatch mit Bluetooth-Anrufen und Schrittzähler (`smartwatch-mit-bluetooth-anrufen-und-schrittza-925312`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Smart-Armbanduhr mit HD-Display und Bluetooth (`smart-armbanduhr-mit-hd-display-und-bluetooth-314688`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- LED Sternenhimmel Projektionslampe (`led-sternenhimmel-projektionslampe-639100`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Weihnachts-Projektorlicht für Fahrzeuge (`weihnachts-projektorlicht-fur-fahrzeuge-627500`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Armband für Apple Watch, Leder, schmal (`armband-fur-apple-watch-leder-schmal-814656`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Armband für Smartwatch – Böhmischer Stil (`armband-fur-smartwatch-bohmischer-stil-904768`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Tigerauge Uhrenarmband im Bohème-Stil (`tigerauge-uhrenarmband-im-boheme-stil-060672`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Armband für Apple Watch 6 Generation SE (`armband-fur-apple-watch-6-generation-se-784832`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Armband für Smartwatch (`armband-fur-smartwatch-817024`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Multifunktionaler Schal (`multifunktionaler-schal-616000`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Unifarbener Kopftuch-Turban aus Modal (`unifarbener-kopftuch-turban-aus-modal-623200`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Einfarbiger Schal aus Baumwoll-Modal-Mischung (`einfarbiger-schal-aus-baumwoll-modal-mischung-615500`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Kopfbedeckung aus Mercerisiertem Baumwollgarn (`kopfbedeckung-aus-mercerisiertem-baumwollgarn-611800`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Sonnenschutz-Schal für Frauen (`sonnenschutz-schal-fur-frauen-626200`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Tischdecke mit Quasten (`tischdecke-mit-quasten-638900`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Keramik-Ölflasche Fischform (`keramik-olflasche-fischform-636600`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Schürze wasser- und ölabweisend (`schurze-wasser-und-olabweisend-887040`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Brustpresse Expander für Krafttraining (`brustpresse-expander-fur-krafttraining-829248`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Bedrucktes Yogahandtuch (`bedrucktes-yogahandtuch-325504`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Fussmatte aus Kieselgur, rutschfest (`fussmatte-aus-kieselgur-rutschfest-639100`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Abtropfbecken aus Edelstahl für die Küche (`abtropfbecken-aus-edelstahl-fur-die-kuche-009792`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Elektrischer Ofen mit Heissluftfrittierfunktion (`elektrischer-ofen-mit-heissluftfrittierfunktio-626900`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Muay Thai Boxhandschuh für Training (`muay-thai-boxhandschuh-fur-training-119872`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Keramik-Blumentopf aus Lila Ton (`keramik-blumentopf-aus-lila-ton-604600`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Taekwondo Boxen Sanda Fusstritt-Zielscheibe (`taekwondo-boxen-sanda-fusstritt-zielscheibe-351808`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Box-Zielpolster für Beine und Füsse (`box-zielpolster-fur-beine-und-fusse-124928`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Hantelstangen-Verschluss aus Aluminium (`hantelstangen-verschluss-aus-aluminium-082496`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Fitness-Haken aus Edelstahl (`fitness-haken-aus-edelstahl-958208`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Hantelset mit Gummibeschichtung (`hantelset-mit-gummibeschichtung-054272`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Taekwondo-Boxhandschuhe, 8-12 oz, schwarz (`taekwondo-boxhandschuhe-8-12-oz-schwarz-372672`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Multifunktionale taktische Aufbewahrungstasche (`multifunktionale-taktische-aufbewahrungstasche-432064`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Fusstarget für Taekwondo, Sanda, Muay Thai (`fusstarget-fur-taekwondo-sanda-muay-thai-966464`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Fitness-Trapezband aus Nylon, 9 m (`fitness-trapezband-aus-nylon-9-m-898688`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Robustes Fitness-Springseil (`springseil-heavy-duty-fitness-seil-540672`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Trainingselastikseil mit Stab (`trainingselastikseil-mit-stab-031168`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Yogarad für Pilates und Yoga (`yogarad-fur-pilates-und-yoga-115200`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Oxford-Polyester Rucksack Outdoor Camping (`oxford-polyester-rucksack-outdoor-camping-334720`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Militärische Taillentasche mit Zorro-Motiv (`militarische-taillentasche-mit-zorro-motiv-616832`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Balance Board für Fitness und Yoga (`balance-board-fur-fitness-und-yoga-940864`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Fitness-Stange 96 cm (`fitness-bar-mit-stange-96-cm-166592`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Aluminiumlegierung Klapplichthalter für Fahrrad (`aluminiumlegierung-klapplichthalter-fur-fahrra-609800`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Intelligente Futter- und Wasserschale für Katzen (`intelligente-futter-und-wasserschale-fur-katze-614000`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Automatischer Futternapf für Hund und Katze (`automatischer-futternapf-fur-hund-und-katze-622600`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Verstellbarer Futternapf-Ständer aus Holz (`verstellbarer-futternapf-stander-aus-holz-606200`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Erhöhte Keramikschüssel mit Katzenohr-Design (`erhohte-keramikschussel-mit-katzenohr-design-600000`): KI-Übersetzung fehlt/abgelehnt: ['High Leg Cat Ear Style 1', 'High Leg Cat Ear Style 2', 'High Leg Cat Ear Style 3', 'High Leg Cat Ear Style 4']
+- Langsame Fütterung Silikon-Schüssel für Haustiere (`langsame-futterung-silikon-schussel-fur-hausti-620500`): KI-Übersetzung fehlt/abgelehnt: ['Coral Purple Blue', 'Cream Pink', 'Pasture Blue Green', 'Elephant Gray']
+- Edelstahl-Futternapf mit bunten Kugeln (`edelstahl-futternapf-mit-bunten-kugeln-636500`): KI-Übersetzung fehlt/abgelehnt: ['Natural Color No Silicone Ring', 'With Silicone Ring', 'Color']
+- Langsamer Trinkschüssel für Hunde – Silikon, 22,2 cm (`langsamer-trinkschussel-fur-hunde-silikon-22-2-606800`): KI-Übersetzung fehlt/abgelehnt: ['Blue Water Drop', 'Orange Coral', 'Rose Red Flower']
+- Armdrehkraftgerät mit einstellbarer Last (`armdrehkraftgerat-mit-einstellbarer-last-052480`): Variante-Auswahl, aber Variantenbilder nicht unterscheidbar
+- Bauch-Trainingsgürtel mit Silikonbändern (`abdominal-belt-trainingsgurtel-mit-silikonband-957248`): KI-Übersetzung fehlt/abgelehnt: ['1 host 1 belt', '1 host 1 thigh', '1 host 1 arm calf', '2 host 2 thighs']
+- Brust-Trainingsgerät – 36 kg bis 90 kg (`pectoral-trainingsgerat-36-kg-bis-90-kg-802176`): KI-Übersetzung fehlt/abgelehnt: ['36kg', '48kg', '69kg', '90kg']
+- Schwarzer Strickschal aus Wolle – 230 × 20 cm (`schwarzer-strickschal-aus-wolle-230-20-cm-616900`): KI-Übersetzung fehlt/abgelehnt: ['Red', 'Black', 'Wine Red', 'Light Blue']
+- Bestickter Winter-Schal für Damen (`bestickter-winter-schal-fur-damen-607000`): KI-Übersetzung fehlt/abgelehnt: ['Dark Gray', 'Purplish Red', 'Bean Green', 'Milky White']
+- Bambus-Section Leinen Viskose Cape für Damen (`bambus-section-leinen-viskose-cape-fur-damen-627400`): KI-Übersetzung fehlt/abgelehnt: ['Retro Red', 'Forest Green', 'Cheese Yellow', 'Soft Mist Powder']
+- Anti-Lost-Halsband für Hunde (`anti-lost-halsband-fur-hunde-605700`): KI-Übersetzung fehlt/abgelehnt: ['Black', 'Gray', 'Army Green', 'Rose Red']
+- Hundebreitschiene für Spaziergänge (`hundebreitschiene-fur-spaziergange-607900`): KI-Übersetzung fehlt/abgelehnt: ['Shadow Black', 'Coral Orange', 'Mist Gray', 'Avocado Green']
+- Keramik-Pet-Schüssel 800 ml Anti-Rutsch (`keramik-pet-schussel-800-ml-anti-rutsch-f31808`): Titel nennt nur «Schüssel» (Ausführung: ['Schüssel mit Holzständer', 'Schüssel']) → Titel prüfen (Mensch)
+- Keramische Haustier-Schüssel S (`keramische-haustier-schussel-s-4383b6`): KI-Übersetzung fehlt/abgelehnt: ['Red', 'Color', 'Black']
+- Intelligenter Haustierfütterer mit Kamera (`intelligenter-haustierfutterer-mit-kamera-610000`): Ausführung-Auswahl, aber Variantenbilder nicht unterscheidbar
+- Silikon-Anti-Schling-Napf mit Wabenmuster und Deckel (`hutzeln-schlauch-fur-langsames-fressen-609900`): KI-Übersetzung fehlt/abgelehnt: ['Leek Green', 'Beige', 'Macaron Purple', 'Dark Blue']
+- Keramische Hundeschüssel mit Ablage (`keramische-hundeschussel-mit-ablage-09bbbb`): Titel nennt nur «Schüssel» (Variante: ['Schüssel 2 Stück', 'Schüsselablage 2 Stück', 'Schüsselablage', 'Schüssel']) → Titel prüfen (Mensch)

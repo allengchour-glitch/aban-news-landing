@@ -3624,3 +3624,6 @@
 16612711989639	Variante:2:2+ki	2026-10-22	tischtennis-schlager-aus-carbon-685568
 16612711301511	Menge:3:3+ki	2026-10-22	magnetisches-bauchband-034432
 16614845251975	Farbe:3:3+ki	2026-10-22	grosses-crossbody-fur-herren-urbanes-minimalde-639700
+16612707500423	Farbe:12:12+ki	2026-10-22	keramische-katzenmahlzeit-schussel-mit-hohem-r-779040
+16610241413511	Motiv:5:5+ki	2026-10-22	weihnachts-stoffkorb-zum-selbermachen-602300
+16610240496007	Farbe:4+Menge:5:20+ki	2026-10-22	ablageregal-mit-fachern-633600
