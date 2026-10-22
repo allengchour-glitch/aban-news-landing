@@ -1245,9 +1245,14 @@ while true; do
   # geregelt ist (Download → Merkliste 24 h; Pin → späterer Lauf las die Pinnwand; lesende Aufträge). Alles andere
   # bleibt in der Ampel. Ohne das meldete die Ampel 8 h lang dieselben zwei Downloads — Rauschen verdeckt Pannen.
   if [ -f "$REPO/automation/auftrag_haenger_schliessen.py" ]; then
+    # 22.10.2026: Selbsttest (Fälle + Mutanten) VOR dem Schliessen — ein Schliesser, der sich irrt, wischt echte Pannen weg
+    if ! ( cd "$REPO" && timeout 60 python3 automation/auftrag_haenger_schliessen.py --selbsttest >/dev/null 2>&1 ); then
+      echo "$(date -u +%H:%M) ⚠️ auftrag_haenger_schliessen --selbsttest FEHLGESCHLAGEN — Schliesser ausgesetzt"
+    else
     AH=$( cd "$REPO" && SCHARF=1 timeout 120 python3 automation/auftrag_haenger_schliessen.py 2>&1 | tail -1 )
     case "$AH" in "FERTIG: 0 "*) ;; *) echo "$(date -u +%H:%M) haenger: $AH"
       ( cd "$REPO" && bash automation/git_sichern.sh "Server-Quittungen: hängende geschlossen [skip ci]" auftraege/erledigt >/dev/null 2>&1 ) ;; esac
+    fi
   fi
   # SPEICHER KÜRZEN (01.10.2026, Betreiber «a dann b aber nicht das fehler gibt»): Läufe dauern Stunden, der Container startet
   # stündlich neu → hier fortsetzen, bis die Fertig-Marke liegt. Ledger dropship/_speicher_kuerzen.tsv macht es idempotent.
