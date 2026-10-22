@@ -3,6 +3,100 @@
   "typ": "skript",
   "skript": "storefront_wahrheit.mjs",
   "warum": "Taegliche Pruefung der oeffentlichen Seite von einer ECHTEN Besucher-IP. Von unserer eigenen IP ist sie nicht pruefbar (Bot-Cache, 19.08. gemessen). Handy-Breite, weil 77 % des Verkehrs Handy ist.",
-  "stand": "laufend",
-  "hinweis": "Vor der Ausfuehrung gesichert. Steht hier spaeter immer noch \"laufend\", ist der Lauf mittendrin gestorben — dann VON HAND pruefen, was passiert ist, und den Auftrag nicht einfach wiederholen."
+  "stand": "ok",
+  "begonnen": "2026-10-22T07:05:49.819Z",
+  "dauer_s": 66.8,
+  "ergebnis": {
+    "zusammenfassung": "✅ 3 Seiten sauber, jede mehrfach geladen (5/5 · 2/2 · 2/2) — von echter Besucher-IP",
+    "befunde": [
+      {
+        "seite": "startseite",
+        "ziel": "https://luxestyle.ch/?frisch=storefront-2026-10-22-5",
+        "erreichbar": true,
+        "geladen": "5/5",
+        "ohne_cachebust": "1/1",
+        "kalt_gerendert": "4/4",
+        "querscrollen": false,
+        "breite": {
+          "dok": 390,
+          "fenster": 390
+        },
+        "versandzusage": "CHF 50 — richtig",
+        "preis_sichtbar": true,
+        "fehlertexte": [],
+        "zeichen": 5547,
+        "zeichen_spanne": [
+          5506,
+          5547
+        ],
+        "bild": "server:/var/lib/luxe-agent/ergebnis-angemeldet/storefront-2026-10-22-startseite.png"
+      },
+      {
+        "seite": "kollektion",
+        "ziel": "https://luxestyle.ch/collections/neu-eingetroffen?frisch=storefront-2026-10-22-2",
+        "erreichbar": true,
+        "geladen": "2/2",
+        "ohne_cachebust": "1/1",
+        "kalt_gerendert": "1/1",
+        "querscrollen": false,
+        "breite": {
+          "dok": 390,
+          "fenster": 390
+        },
+        "versandzusage": "CHF 50 — richtig",
+        "preis_sichtbar": true,
+        "fehlertexte": [],
+        "zeichen": 3801,
+        "zeichen_spanne": [
+          3801,
+          3801
+        ],
+        "bild": "server:/var/lib/luxe-agent/ergebnis-angemeldet/storefront-2026-10-22-kollektion.png"
+      },
+      {
+        "seite": "faq",
+        "ziel": "https://luxestyle.ch/pages/faq?frisch=storefront-2026-10-22-2",
+        "erreichbar": true,
+        "geladen": "2/2",
+        "ohne_cachebust": "1/1",
+        "kalt_gerendert": "1/1",
+        "querscrollen": false,
+        "breite": {
+          "dok": 390,
+          "fenster": 390
+        },
+        "versandzusage": "CHF 50 — richtig",
+        "preis_sichtbar": true,
+        "fehlertexte": [],
+        "zeichen": 3114,
+        "zeichen_spanne": [
+          3114,
+          3114
+        ],
+        "bild": "server:/var/lib/luxe-agent/ergebnis-angemeldet/storefront-2026-10-22-faq.png"
+      }
+    ]
+  },
+  "bilder_weiche": {
+    "oeffentlich": true,
+    "im_repo": [],
+    "auf_server": [
+      {
+        "datei": "/var/lib/luxe-agent/ergebnis-angemeldet/storefront-2026-10-22-faq.png",
+        "bytes": 0,
+        "grund": "Verkleinern fehlgeschlagen: page.evaluate: EncodingError: The source image cannot be decoded."
+      },
+      {
+        "datei": "/var/lib/luxe-agent/ergebnis-angemeldet/storefront-2026-10-22-kollektion.png",
+        "bytes": 0,
+        "grund": "Verkleinern fehlgeschlagen: page.evaluate: EncodingError: The source image cannot be decoded."
+      },
+      {
+        "datei": "/var/lib/luxe-agent/ergebnis-angemeldet/storefront-2026-10-22-startseite.png",
+        "bytes": 0,
+        "grund": "Verkleinern fehlgeschlagen: page.evaluate: EncodingError: The source image cannot be decoded."
+      }
+    ],
+    "hinweis": "Bilder aus angemeldeten Diensten bleiben auf dem Server (Plan Hetzner Schritt 11, 13.10.2026). Für den Inhalt als Text: Auftragsart seite_text."
+  }
 }
