@@ -587,3 +587,4 @@
 2026-10-21T07:03:26.000Z	luxe-epic-warm.wav	28.8	allgemein	bildreel-tutu-vojuhila-fuchsia-schwarz-fgssor40190	stimme:ja	azure:de-CH-LeniNeural	quelle:bild
 2026-10-22T00:44:58.000Z	luxe-epic-hero.wav	42.64	allgemein	bildreel-multifunktionaler-vertikal-spiralschneider-58cc21	stimme:nein	anteil	quelle:bild
 2026-10-22T01:19:27.000Z	luxe-epic-sport.wav	54.5	allgemein	bildreel-perucke-valentina-neon-orange-fga974975	stimme:nein	anteil	quelle:bild
+2026-10-22T02:12:35.000Z	luxe-epic-tech.wav	42.7	allgemein	bildreel-augenmaske-teufel-fga908485	stimme:ja	azure:de-CH-JanNeural	quelle:bild

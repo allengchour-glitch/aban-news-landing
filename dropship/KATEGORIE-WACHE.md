@@ -1,4 +1,4 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-22T01:09Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-22T02:10Z
 
 Aktive gescannt: 4 · ohne Kategorie: 4 · heute gesetzt: 1 (SCHARF, CAP 1500) · danach offen: 3 · Fehler: 0
 
@@ -12,5 +12,5 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- grosses-holz-bauklotz-set-fur-kinder-4-6-jahre-603000 · Spass-Elektronik → Electronics
+- grosse-schmuckschatulle-mit-mehreren-fachern-626000 · Aufbewahrung & Organizer → Apparel & Accessories > Jewelry
 
