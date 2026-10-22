@@ -1645,3 +1645,5 @@ gid://shopify/Product/16656645357959	nicht-versendbar	Grosser Canvas-Trolleykoff
 gid://shopify/Product/16656659906951	nicht-versendbar	Grosser Rollkoffer mit Nass- und Trockenfach
 gid://shopify/Product/16656659775879	nicht-versendbar	Multifunktionaler Rollkoffer
 gid://shopify/Product/16656522641799	ok	Magnetische Bausteine 60-Teile-Set
+gid://shopify/Product/16656659710343	nicht-versendbar	Trolley-Koffer mit Becherhalter und USB-Anschluss
+gid://shopify/Product/16656615833991	ok	Grosse Schmuckschatulle mit mehreren Fächern
