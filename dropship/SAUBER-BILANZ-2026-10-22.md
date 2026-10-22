@@ -22,7 +22,7 @@ Stand beim Schreiben: 5 von 7 Spähtrupps abgeliefert (Repo, Texte laufen noch �
 | 9 | **Social: Doppelpost** XXL Leselupe (Bild-Post 07.10 + Pin 08.10, dann Reel IG+FB geplant 24.10.) | 2 Planer-Einträge | gelöscht (399467813/-816, zurückgelesen) | siehe `OFFEN` (Prüfer-Lücke) |
 | 10 | **Pinterest-Agent Doppelpins** (13 überzählige Pins auf 10 Produkten seit 05.10.) | abgebrochene Quittung ohne Handle sperrte nichts | Vorab-Quittung VOR dem Klick (`pinterest-pin-vorab-<handle>.json`), `schonGepinnt()` liest sie (Funktionstest) | `pinterest_pin_erstellen.mjs` |
 | 11 | **Platzhalter «Color»** in der Farbauswahl | 60 aktive Produkte | 60 → «Wie abgebildet» (0 Fehler, Preise/SKUs unverändert), 2 ausgenommen (Zielname schon da) | `platzhalter_farbwert.py` (8 Fälle, 4 Mutanten), täglich im Aufseher |
-| 12 | **Tote Produktlinks in Ratgeber-Seiten** (2 gedraftete Produkte in 4 Seiten) | 2 | 0 (2 Listenpunkte gestrichen, 2 Links auf `/collections/portemonnaie`) | `seiten_tote_produktlinks.py` (4 Fälle, 3 Mutanten), Sicherung `dropship/_ratgeber_vorher/` |
+| 12 | **Tote Produktlinks in Ratgeber-Seiten** (2 gedraftete Produkte in 4 Seiten) | 2 | **0** (`tote_links.py` danach: 444 Seiten/Artikel, 961 Ziele, 0 tot; 2 Listenpunkte gestrichen, 2 Links auf `/collections/portemonnaie`) | `seiten_tote_produktlinks.py` (4 Fälle, 3 Mutanten), Sicherung `dropship/_ratgeber_vorher/` |
 | 13 | **Cloud-Platte** (diese Sitzung) | 96 % (1,8 GB frei), 8,3 GB Scratch unter `/tmp/claude-0` | 81 % (7,1 GB frei); Aufseher/Keepalive räumt ab 85 % Ordner ohne Änderung seit 3 Tagen | `engine_keepalive.sh` `claude_scratch_raeumen` (Wegwerf-Test: alt weg, neu bleibt) |
 
 ## OFFEN — nach Art getrennt
