@@ -1,6 +1,6 @@
-# Google-Nachfrage: verschwundene Produkte — Stand 2026-10-21T00:39Z (120 Tage)
+# Google-Nachfrage: verschwundene Produkte — Stand 2026-10-22T03:17Z (120 Tage)
 
-Produkte mit Google-Besuch: 208 · heute nicht mehr bei Google: 62 · mit aktivem Ersatz: 7 · **ohne Ersatz: 55** (davon mit Warenkorb 10, behebbar 15)
+Produkte mit Google-Besuch: 209 · heute nicht mehr bei Google: 62 · mit aktivem Ersatz: 8 · **ohne Ersatz: 54** (davon mit Warenkorb 10, behebbar 14)
 
 Quelle: ShopifyQL (utm_campaign = sag_organic + Google-Suche ohne utm, nur Menschen). Regel: `automation/google_nachfrage_wache.py`. Nichts wird geändert — die Liste ist die Arbeitsliste.
 
@@ -16,8 +16,8 @@ Quelle: ShopifyQL (utm_campaign = sag_organic + Google-Suche ohne utm, nur Mensc
 | 1 | 1 | 0 | Elektrischer Fleischwolf 5L – Küchenmaschine (`elektrischer-fleischwolf-5l-kuchenmaschine-656962`) | DRAFT, nicht im Google-Kanal | nicht in die Schweiz lieferbar | — |
 | 1 | 1 | 0 | Smartes Raumklima: Kraftvolle Kühlung, einfach per App! (`smartes-raumklima-kraftvolle-kuhlung-einfach-per-a-1194795`) | DRAFT, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |
 | 1 | 1 | 0 | U-förmiges Schwangerschaftskissen aus Eisseide (`u-formiges-schwangerschaftskissen-aus-eisseide-004544`) | DRAFT, nicht im Google-Kanal | Verlust → Preis/EK prüfen | `u-formiges-schwangerschaftskissen-679488` Zwilling (Ähnlichkeit 0.67) |
-| 1 | 1 | 0 | Warmer Campingschlafsack – Für kühle Nächte bis -8°C! (`warmer-campingschlafsack-fur-kuhle-nachte-bis-8-c-815094`) | DRAFT, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |
 | 1 | 1 | 0 | 2-in-1 Wendegürtel für Damen (`2-in-1-wendegurtel-fur-damen-236417`) | DRAFT, nicht im Google-Kanal | Grund unbekannt (kein Grund-Tag) | — |
+| 1 | 1 | 0 | Warmer Campingschlafsack – Für kühle Nächte bis -8°C! (`warmer-campingschlafsack-fur-kuhle-nachte-bis-8-c-815094`) | DRAFT, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |
 | 4 | 0 | 0 | Aufblasbare Pool-Liege · Lounge XL (`aufblasbare-pool-liege-lounge-xl`) | DRAFT, nicht im Google-Kanal | ohne Lieferant → Lieferant suchen | `aufblasbare-wasserliege-fur-pool-und-see-6298` Weiterleitung |
 | 2 | 0 | 0 | Kühlmatte für Haustiere Petitto Blau (`kuhlmatte-fur-haustiere-petitto-blau-941211`) | DRAFT, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |
 | 2 | 0 | 0 | Silikon-Abtropfmatte für Geschirr (`silikon-abtropfmatte-fur-geschirr-637442`) | DRAFT, nicht im Google-Kanal | Grund unbekannt (kein Grund-Tag) | `abtropfmatte-aus-silikon-selbstentleerend-214` Zwilling (Ähnlichkeit 0.5) |
@@ -38,7 +38,7 @@ Quelle: ShopifyQL (utm_campaign = sag_organic + Google-Suche ohne utm, nur Mensc
 | 1 | 0 | 0 | Endless Hoop Ohrringe · Titan hypoallergen (`endless-hoop-ohrringe-titan-hypoallergen`) | DRAFT, nicht im Google-Kanal | ohne Lieferant → Lieferant suchen | — |
 | 1 | 0 | 0 | Tischventilator DOMO DO154A Weiss 6 W (`tischventilator-domo-do154a-weiss-6-w-902226`) | DRAFT, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |
 | 1 | 0 | 0 | Luftmatratze Intex 18 Gläser Silberfarben 188 x 30 x 71 cm (`schwimminsel-mit-haltern-dein-luxus-im-pool-659332`) | DRAFT, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |
-| 1 | 0 | 0 | Rundes Strandtuch XL · Mandala Mikrofaser (`rundes-strandtuch-xl-mandala-mikrofaser`) | DRAFT, nicht im Google-Kanal | ohne Lieferant → Lieferant suchen | — |
+| 1 | 0 | 0 | Rundes Strandtuch XL · Mandala Mikrofaser (`rundes-strandtuch-xl-mandala-mikrofaser`) | DRAFT, nicht im Google-Kanal | ohne Lieferant → Lieferant suchen | `mikrofaser-strandtuch-277504` Zwilling (Ähnlichkeit 0.5) |
 | 1 | 0 | 0 | Kompakte Klimaanlage: Angenehme Kühle überall! (`kompakte-klimaanlage-angenehme-kuhle-uberall-1099314`) | DRAFT, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |
 | 1 | 0 | 0 | Schaum-Abflussreiniger (`schaum-abflussreiniger-604000`) | DRAFT, nicht im Google-Kanal | nicht in die Schweiz lieferbar | — |
 | 1 | 0 | 0 | Universal-Ladegerät für 60V E-Scooter/Bike (`universal-ladegerat-fur-60v-e-scooter-bike-580481`) | DRAFT, nicht im Google-Kanal | nicht in die Schweiz lieferbar | — |
@@ -52,8 +52,8 @@ Quelle: ShopifyQL (utm_campaign = sag_organic + Google-Suche ohne utm, nur Mensc
 | 1 | 0 | 0 | PGM Golfschläger (Holz) für Damen und Herren (`pgm-golfschlager-holz-fur-damen-und-herren-604000`) | DRAFT, nicht im Google-Kanal | Grund unbekannt (kein Grund-Tag) | — |
 | 1 | 0 | 0 | Damenuhr Bellevue B39 (Ø 35 mm) (`damenuhr-bellevue-b39-35-mm-295895`) | DRAFT, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |
 | 1 | 0 | 0 | Herrensonnenbrille Timberland · Modell 317884 (`herren-sonnenbrille-robuster-schutz-fur-starke-man-80688`) | DRAFT, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |
-| 1 | 0 | 0 | Tennis-Armband Zirkonia · 316L Edelstahl (`tennis-armband-zirkonia-316l-edelstahl`) | DRAFT, nicht im Google-Kanal | ohne Lieferant → Lieferant suchen | `tennis-armband-aus-edelstahl-mit-zirkonia-637` Weiterleitung |
 | 1 | 0 | 0 | Kostüm Hosenanzug «Good Vibes» · 5 Designs (`kostum-hosenanzug-fgss3865`) | ACTIVE, nicht im Google-Kanal | bewusst nicht bei Google (Kostüm) | — |
+| 1 | 0 | 0 | Tennis-Armband Zirkonia · 316L Edelstahl (`tennis-armband-zirkonia-316l-edelstahl`) | DRAFT, nicht im Google-Kanal | ohne Lieferant → Lieferant suchen | `tennis-armband-aus-edelstahl-mit-zirkonia-637` Weiterleitung |
 | 1 | 0 | 0 | Pilzsammel-Taschen-Set (`pilzsammel-taschen-set-421313`) | DRAFT, nicht im Google-Kanal | Grund unbekannt (kein Grund-Tag) | — |
 | 1 | 0 | 0 | Paul Hewitt Armband «R-23M» (`paul-hewitt-armband-r-23m-s0397548`) | DRAFT, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |
 | 1 | 0 | 0 | Zitruspresse «Orbegozo» 18269 (`zitruspresse-orbegozo-18269-s9916470`) | DRAFT, nicht im Google-Kanal | Lieferant beendet (BigBuy) | — |

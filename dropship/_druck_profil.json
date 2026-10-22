@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-21T03:07Z",
+ "stand": "2026-10-22T03:13Z",
  "profil": "gid://shopify/DeliveryProfile/152645108103",
  "stufe": 2,
  "stufe_roh": {
@@ -78,7 +78,7 @@
   "shirt-znueni",
   "shirt-zum-selbstgestalten"
  ],
- "kosten_alter_tage": 0.1,
+ "kosten_alter_tage": 1.1,
  "geloest": 0,
  "zugeordnet": 0,
  "kein_tarif": {},

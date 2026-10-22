@@ -1,12 +1,12 @@
 {
- "stand": "2026-10-21T00:39Z",
+ "stand": "2026-10-22T03:17Z",
  "tage": 120,
- "mit_nachfrage": 208,
+ "mit_nachfrage": 209,
  "weg": 62,
- "ersatz": 7,
- "ohne_ersatz": 55,
+ "ersatz": 8,
+ "ohne_ersatz": 54,
  "ohne_ersatz_korb": 10,
- "behebbar": 15,
+ "behebbar": 14,
  "zeilen": [
   {
    "handle": "rizinusol-wickel-set-mit-bio-ol-323457",
@@ -170,22 +170,6 @@
    "ersatz_art": "Zwilling (Ähnlichkeit 0.67)"
   },
   {
-   "handle": "warmer-campingschlafsack-fur-kuhle-nachte-bis-8-c-815094",
-   "titel": "Warmer Campingschlafsack – Für kühle Nächte bis -8°C!",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 1,
-   "kauf": 0,
-   "quelle": [
-    "Google-Suche"
-   ],
-   "grund": "Lieferant beendet (BigBuy)",
-   "behebbar": false,
-   "ersatz": null,
-   "ersatz_art": ""
-  },
-  {
    "handle": "2-in-1-wendegurtel-fur-damen-236417",
    "titel": "2-in-1 Wendegürtel für Damen",
    "status": "DRAFT",
@@ -198,6 +182,22 @@
    ],
    "grund": "Grund unbekannt (kein Grund-Tag)",
    "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "warmer-campingschlafsack-fur-kuhle-nachte-bis-8-c-815094",
+   "titel": "Warmer Campingschlafsack – Für kühle Nächte bis -8°C!",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 1,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Lieferant beendet (BigBuy)",
+   "behebbar": false,
    "ersatz": null,
    "ersatz_art": ""
   },
@@ -534,8 +534,8 @@
    ],
    "grund": "ohne Lieferant → Lieferant suchen",
    "behebbar": true,
-   "ersatz": null,
-   "ersatz_art": ""
+   "ersatz": "mikrofaser-strandtuch-277504",
+   "ersatz_art": "Zwilling (Ähnlichkeit 0.5)"
   },
   {
    "handle": "kompakte-klimaanlage-angenehme-kuhle-uberall-1099314",
@@ -746,22 +746,6 @@
    "ersatz_art": ""
   },
   {
-   "handle": "tennis-armband-zirkonia-316l-edelstahl",
-   "titel": "Tennis-Armband Zirkonia · 316L Edelstahl",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 0,
-   "kauf": 0,
-   "quelle": [
-    "Google-Suche"
-   ],
-   "grund": "ohne Lieferant → Lieferant suchen",
-   "behebbar": true,
-   "ersatz": "tennis-armband-aus-edelstahl-mit-zirkonia-637200",
-   "ersatz_art": "Weiterleitung"
-  },
-  {
    "handle": "kostum-hosenanzug-fgss3865",
    "titel": "Kostüm Hosenanzug «Good Vibes» · 5 Designs",
    "status": "ACTIVE",
@@ -776,6 +760,22 @@
    "behebbar": false,
    "ersatz": null,
    "ersatz_art": ""
+  },
+  {
+   "handle": "tennis-armband-zirkonia-316l-edelstahl",
+   "titel": "Tennis-Armband Zirkonia · 316L Edelstahl",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "ohne Lieferant → Lieferant suchen",
+   "behebbar": true,
+   "ersatz": "tennis-armband-aus-edelstahl-mit-zirkonia-637200",
+   "ersatz_art": "Weiterleitung"
   },
   {
    "handle": "pilzsammel-taschen-set-421313",
