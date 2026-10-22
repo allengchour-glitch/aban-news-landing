@@ -13417,3 +13417,7 @@ sommer-polo-mit-halbzipp-610900	2606020654481611800	16	8.53	ok	landeseite
 retro-hundehalterung-636600	2510140745261636800	16	5.81	ok	landeseite
 wiederverwendbare-eiswurfel-617400	2607130131531618000	16	18.01	ok	landeseite
 extravagantes-pullover-fur-herren-624100	2606020322371624800	16	6.90	ok	landeseite
+sommerhut-fur-kleine-hunde-634000	2510090540241634200	16	5.34	ok	landeseite
+fisch-schlusselanhanger-602400	2607120834401603000	16	5.81	ok	landeseite
+vintage-t-shirt-kurzarmlig-636600	2606011230511637200	16	7.43	ok	landeseite
+dunnes-mesh-t-shirt-fur-herren-635900	2605291001531636500	16	6.01	ok	landeseite

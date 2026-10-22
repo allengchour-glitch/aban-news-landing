@@ -67,7 +67,8 @@ def puls_zeile(pfad=PULS, jetzt=None):
         tage = f", {alter_h/24:.1f} Tage" if alter_h > 24 else ""
         return (f"⚠️ BOT STILL seit {alter_h:.1f} h{tage} (letzter Lauf {wann:%d.%m. %H:%M} UTC) — "
                 f"kein Browser-Auftrag wird mehr erledigt. Auf dem Server: "
-                f"systemctl status luxe-agent.timer · Häufigste Ursache (20.10.): GitHub-Zugang abgelaufen/fehlt — "
+                f"systemctl status luxe-agent.timer · Ursachen (gemessen): (1) VOLLE PLATTE `df -h /` (21.10.: 100 %, 115 MB frei — "
+                f"Abhilfe server/platte-schlank.sh; Zeile SERVER-PLATTE der Ampel), (2) 20.10. GitHub-Zugang abgelaufen/fehlt — "
                 f"`journalctl -u luxe-agent.service -n 60 --no-pager` zeigt «could not read Username»; "
                 f"Abhilfe: server/token-setzen.sh (Anleitung dropship/COWORK-BEFEHL.md)")
     ablauf = _token_ablauf(d)

@@ -109,6 +109,7 @@ def main():
         return
     import re, urllib.parse
     handles = []
+    seiten = []
     befund = []
     # ⚠️ 15.09.2026, zwei Fehler dieses Werkzeugs am selben Morgen gefunden:
     # (1) Der Handle kam PROZENT-KODIERT aus dem Menue («%F0%9F%92%8E-premium-ab-chf-80»),
@@ -153,6 +154,12 @@ def main():
         if u in tot_durch_sprache:
             continue          # schon gemeldet — sonst steht derselbe Link zweimal im Bericht
         mo = re.search(r"/collections/([^/?#]+)", u)
+        mp = re.match(r"/pages/([^/?#]+)", u or "")
+        if mp:                       # 22.10.2026: Seiten-Links prüfen (Footer «Daten-Weitergabe ablehnen» zeigte 13 T auf eine unveröffentlichte Seite = 404 auf jeder Seite)
+            ph = urllib.parse.unquote(mp.group(1))
+            if ph not in seiten:
+                seiten.append(ph)
+            continue
         if not mo:
             continue
         if not u.split("?")[0].startswith("/collections/"):
@@ -162,7 +169,22 @@ def main():
         h = urllib.parse.unquote(mo.group(1))
         if h not in handles and h != "all":
             handles.append(h)
-    print(f"Hauptmenue: {len(links)} Eintraege, {len(handles)} Kollektionen", flush=True)
+    print(f"Hauptmenue: {len(links)} Eintraege, {len(handles)} Kollektionen, {len(seiten)} Seiten", flush=True)
+    # Seiten: existiert der Handle UND ist die Seite veröffentlicht? Eine fehlgeschlagene Abfrage führt zu PAUSE, nie zu einem Befund.
+    for i in range(0, len(seiten), 6):
+        teil = seiten[i:i + 6]
+        felder = " ".join(f'p{j}: pages(first:2, query:"handle:{h}") {{ nodes {{ handle isPublished }} }}' for j, h in enumerate(teil))
+        d = gql("{ " + felder + " }")
+        if d is None or not d.get("data"):
+            print("PAUSE (Seitenabfrage fehlgeschlagen — Seiten ungeprueft, kein Befund)")
+            return
+        for j, h in enumerate(teil):
+            knoten = [n for n in ((d["data"].get(f"p{j}") or {}).get("nodes") or []) if n["handle"] == h]
+            if not knoten:
+                befund.append((f"/pages/{h}", "Seite existiert nicht -> 404"))
+            elif not knoten[0]["isPublished"]:
+                befund.append((f"/pages/{h}", "Seite nicht veroeffentlicht -> 404"))
+        time.sleep(0.4)
 
     offen = []          # (handle, id, productsCount) — Aktiv-Pruefung folgt
     # 6 statt 20 Kollektionen je Abfrage: 240 Punkte auf einmal sind zu viel, wenn die

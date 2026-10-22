@@ -666,7 +666,7 @@ while true; do
     ( cd "$REPO" && flock -n /tmp/lock_hype_export.lock python3 automation/hype_export_bauen.py >> /tmp/hype_export_bauen.log 2>&1 )
     echo "$(date -u +%H:%M) export.jsonl im falschen Format → neu gebaut"
   fi
-  for L in verkauf_gewinn_wache queue_schreiber_wache preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache produkttexte_du_form verlustbringer social_queue_saeubern jury_nachbessern bild_queue_captions_ehrlich google_feedback_wache google_bild_abruf startseite_gewicht startseite_schlank_patch bild_mini_entfernen kategorie_wache bild_heilversprechen styling_floskel_wache heilversprechen_seo_wache koll_seo_laengen beleuchtung_tags_fix kollektion_accessoires_fix ig_gepostet_tags herbst_kuratieren google_titel_reparatur bild_werbetext_rueckholer kollektion_doppel preis_verlustschutz fortura_ek_nachtragen kinder_sicherheit baby_claims_wache umschrift_heilen fuellmenge_nachtragen nachfrage_liebling social_saison_vorrang gfeed_anstupsen google_kategorie_fein schmuck_tag_heilen saison_tags_nachtragen anlass_social_sperre cj_real_luecke merkliste_wache; do
+  for L in verkauf_gewinn_wache queue_schreiber_wache preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache produkttexte_du_form verlustbringer social_queue_saeubern jury_nachbessern bild_queue_captions_ehrlich google_feedback_wache google_bild_abruf startseite_gewicht startseite_schlank_patch bild_mini_entfernen kategorie_wache bild_heilversprechen styling_floskel_wache heilversprechen_seo_wache koll_seo_laengen beleuchtung_tags_fix kollektion_accessoires_fix ig_gepostet_tags herbst_kuratieren google_titel_reparatur bild_werbetext_rueckholer kollektion_doppel preis_verlustschutz fortura_ek_nachtragen kinder_sicherheit baby_claims_wache umschrift_heilen fuellmenge_nachtragen nachfrage_liebling social_saison_vorrang gfeed_anstupsen google_kategorie_fein schmuck_tag_heilen saison_tags_nachtragen anlass_social_sperre cj_real_luecke merkliste_wache medizinprodukte_guard; do
     fehlt "$REPO/automation/$L.py" && continue
     # ⚠️ FERTIG IST KEIN AUSSCHALTER (04.09.2026). Bis heute hiess «FERTIG im Log» =
     # nie wieder starten — nur ein /tmp-Wipe hat die Waechter je wieder geweckt. Gemessen:
@@ -1329,6 +1329,14 @@ while true; do
       touch "$UKM"
       ( cd "$REPO" && nohup timeout 2400 python3 automation/unterkat_abdeckung.py >> "$UKM" 2>&1 & )
       echo "$(date -u +%H:%M) unterkat_abdeckung: Wochenmessung im Hintergrund gestartet (Log $UKM)"
+    fi
+  fi
+  # 22.10.2026: SERVER-PLATTE (Sauber-Inventur «betrieb»): die tägliche Quittung server-zustand trägt `df -h /` des Hetzner-Servers; 21.10. 100 % / 115 MB frei
+  # erklärte den stillen Agenten, den toten Wächter und die mitten im Lauf gestorbenen Aufträge. Nur der Selbsttest läuft hier (billig); die Ampelzeile
+  # «SERVER-PLATTE» liest die Quittung selbst. Abhilfe steht in der Zeile (server/platte-schlank.sh, root auf dem Server).
+  if [ -f "$REPO/automation/server_platte_wache.py" ]; then
+    if ! ( cd "$REPO" && timeout 60 python3 automation/server_platte_wache.py --selbsttest >/dev/null 2>&1 ); then
+      echo "$(date -u +%H:%M) ⚠️ SERVER-PLATTE-SELBSTTEST fehlgeschlagen (automation/server_platte_wache.py --selbsttest)"
     fi
   fi
   # Hinweis für den SCHARF-Block (Z. ~945): davor `[ -f /tmp/kategorie_wache.kanarien_fehler ] && skip` einbauen.

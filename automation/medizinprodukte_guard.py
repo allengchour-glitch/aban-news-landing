@@ -45,7 +45,7 @@ LEDGER = "dropship/_medizinprodukte.txt"
 # Hörgeräte, nur mit einem Wort davor, das nicht auf der Liste stand. Lehre: bei
 # Medizinprodukten nach der FUNKTION suchen, nicht nach der Produktbezeichnung des Verkäufers.
 GERAET = re.compile(r'H[öo]rger[äa]t|H[öo]rverst[äa]rker|H[öo]rtest|Fetusstethoskop|'
-                    r'Atemtrainer|Notfallmaske|Vernebler|Inhalator|Ventilator[- ]Nasen|CPAP|'
+                    r'Atemtrainer|Atmungstrainer|Lungentrainer|Spirometer|Lungenfunktion\w*|Notfallmaske|Vernebler|Inhalator|Ventilator[- ]Nasen|CPAP|'
                     r'(?:Stirn|Fieber|Ohr)thermometer|Thermometer.{0,20}kontaktlos|'
                     r'kontaktlos.{0,20}Thermometer|Milchpumpe|Entlastungsschuh|'
                     r'Vorfuss\w*schuh|Zahnsteinentferner|Zahnstein\w*Entferner|'
@@ -53,7 +53,10 @@ GERAET = re.compile(r'H[öo]rger[äa]t|H[öo]rverst[äa]rker|H[öo]rtest|Fetusst
 # ⚠️ Zubehör ist kein Gerät. Das «Reinigungsset für digitale Hörgeräte» trägt das Wort
 # «Hörgerät» im Titel und ist doch nur eine Bürste mit Tuch.
 ZUBEHOER = re.compile(r'Reinigungs(?:set|-?Set|b[üu]rste)|Pflegeset|Ersatz(?:filter|polster)|'
-                      r'Aufbewahrungsbox|Etui\b', re.I)
+                      r'Aufbewahrungsbox|Etui\b|'
+                      # 22.10.2026: «Ultraschall-Vernebler» im Aroma-Diffusor/Luftbefeuchter ist ein Wohnartikel, kein Inhalationsgerät (3 Fehlalarme im Trockenlauf)
+                      r'Diffusor|Diffuser|Aroma|Luftbefeuchter|Duftlampe|Raumduft|[ÖO]l-?Vernebler|Nebel-?Maschine|Kunstnebel|'
+                      r'Scheinwerfer|Auto-?Lack|Politur|Aufbereitung', re.I)   # «Scheinwerfer-Vernebler-Becher» = Autopflege, 22.10.
 
 # ⚠️ Eine Selbstaussage im Text («dies ist ein medizinisches Gerät», «FDA-zertifiziert») war im
 # ersten Entwurf ein Draft-Grund. Der Probelauf zeigte, warum das nicht trägt:
@@ -131,6 +134,10 @@ def main():
         if re.search(r'Blutzucker', t + html[:1500], re.I):
             zucker.append((p["id"], t, titel_ohne_zucker(t), html))
 
+    # 22.10.2026: Sicherung gegen ein zu weit geratenes Muster — mehr als MAX_TREFFER Treffer in EINEM Lauf sind ein Muster-Fehler, kein Warensturz
+    if len(geraete) > int(os.environ.get("MAX_TREFFER", "15")):
+        print(f"⚠️ MEDIZINPRODUKTE-WÄCHTER: {len(geraete)} Treffer (> MAX_TREFFER) — nichts geschrieben, Muster prüfen", flush=True)
+        raise SystemExit(2)
     print(f"Medizingeräte → DRAFT: {len(geraete)}", flush=True)
     for _, t, pr in geraete:
         print(f"   CHF {pr:>6.2f}  {t[:56]}", flush=True)

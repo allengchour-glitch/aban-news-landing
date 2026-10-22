@@ -565,6 +565,23 @@ def unterkat_netz():
     return zeile() or ""
 
 
+def server_platte_netz():
+    """Hetzner-Platte (automation/server_platte_wache.py, 22.10.2026): liest `df` aus der täglichen Quittung server-zustand. ⚠️ bei >= 95 % belegt oder
+    < 1 GB frei (21.10. gemessen: 100 %, 115 MB — der Agent konnte nicht pushen, Wächter/Aufträge starben mitten im Lauf), «unklar» ohne Quittung."""
+    try:
+        from server_platte_wache import zeile
+    except Exception:
+        import importlib.util
+        spur = os.path.join(os.path.dirname(os.path.abspath(__file__)), "server_platte_wache.py")
+        spec = importlib.util.spec_from_file_location("server_platte_wache", spur)
+        if not spec or not spec.loader:
+            return ""
+        modul = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(modul)
+        zeile = modul.zeile
+    return zeile() or ""
+
+
 def merkliste_netz():
     """Merkliste (automation/merkliste_wache.py, 21.10.2026): ⚠️ wenn ein Teil des Herzens/der Liste im LIVE-Theme fehlt, die Prüfung «unklar» ist oder der
     Stand älter als 36 h ist. Leer, solange die Prüfung nie lief (ohne dropship/_merkliste_v3_aktiv.txt prüft sie nur den alten Stand)."""
@@ -1282,19 +1299,40 @@ def drafts_ohne_quittung():
             "dropship/DRAFTS-OHNE-QUITTUNG-2026-09-22.md (drei CJ-Formen + Klingen-Tor), dann Ledger-Zeile")
 
 
-def server_waechter():
-    """Laufen die Waechter schon auf dem Hetzner-Server? Zustand statt Quittung: ein Commit des
-    Autors «luxe-waechter», juenger als 2 h, belegt es (der Server-Aufseher committet seine Ledger
-    selbst). Fehlt er, bleibt der Ruf — COWORK Punkt 7 (21.09.2026, «schneller automation»)."""
+def server_waechter_text(letzter_iso, jetzt):
+    """Reine Entscheidung (testbar): Text der Ampelzeile oder None. `letzter_iso` = Commitzeit des letzten
+    Commits des Autors «luxe-waechter» (ISO) oder leer. < 2 h → laeuft; 2–24 h → schweigen (der Wächter
+    committet nur bei Aenderungen); >= 24 h → «STILL seit n Tagen»; nie einer → Setup fehlt."""
+    from datetime import datetime, timezone
+    if not letzter_iso:
+        return ("🖥️ Waechter nie auf dem Hetzner-Server gelaufen — Setup auf dem Server "
+                "(5 Min, server/luxe-waechter-setup.sh, COWORK Punkt 7)")
     try:
-        out = subprocess.run(["git", "-C", REPO, "log", "--since=2 hours ago", "--author=luxe-waechter",
-                              "-1", "--format=%cI"], capture_output=True, text=True, timeout=20).stdout.strip()
+        wann = datetime.fromisoformat(letzter_iso.replace("Z", "+00:00"))
+        if wann.tzinfo is None:
+            wann = wann.replace(tzinfo=timezone.utc)
+    except Exception:
+        return None
+    alter_h = (jetzt - wann).total_seconds() / 3600.0
+    if alter_h < 24:
+        return None
+    return (f"🖥️ Hetzner-Wächter STILL seit {alter_h/24:.1f} Tagen (letzter Commit {wann:%d.%m. %H:%M} UTC) — kein Setup-Mangel: "
+            "auf dem Server `journalctl -u luxe-waechter.service -n 40 --no-pager`; häufigste Ursache (22.10. gemessen) "
+            "volle Platte (siehe SERVER-PLATTE-Zeile, Abhilfe server/platte-schlank.sh)")
+
+
+def server_waechter():
+    """Laufen die Waechter auf dem Hetzner-Server? Zustand statt Quittung: der Server-Aufseher committet seine Ledger
+    selbst als Autor «luxe-waechter». Früher hiess es bei jedem Commit aelter als 2 h «Setup nötig» — falsch, wenn
+    der Wächter schon lief und nur still wurde (22.10.2026: letzter Commit 16.10., Platte voll). Jetzt: Alter des
+    LETZTEN Commits (ohne --since), Text trennt «nie gelaufen» von «STILL seit n Tagen»."""
+    from datetime import datetime, timezone
+    try:
+        out = subprocess.run(["git", "-C", REPO, "log", "--author=luxe-waechter", "-1", "--format=%cI"],
+                             capture_output=True, text=True, timeout=20).stdout.strip()
     except Exception:
         return None                      # nicht messbar → kein erfundener Befund
-    if out:
-        return None                      # Server pusht → Zeile verschwindet von selbst
-    return ("🖥️ Waechter laufen nur in Session-Arbeitszeit — Setup auf dem Hetzner-Server "
-            "(5 Min, server/luxe-waechter-setup.sh, COWORK Punkt 7)")
+    return server_waechter_text(out, datetime.now(timezone.utc))
 
 
 def judgeme_verdacht():
@@ -1783,7 +1821,7 @@ def main():
     ohne_token = not os.path.exists(TOKPFAD)
     # Pruefungen, die den Shop-Token brauchen, laufen ohne ihn nicht — alle anderen schon (26.09.).
     MIT_TOKEN = (liechtenstein_gesperrt, klingen_pingpong, grow_zaehler, drafts_ohne_quittung, datei_speicher_voll, video_deckel, alter_lieferblock)
-    pruefungen = (bot_puls, waffen_netz, cj_sku_netz, druck_profil_netz, guard_vollpass_netz, cj_nachpruefung_netz, indexnow_netz, theme_marken_netz, headless_netz, unterkat_netz, merkliste_netz, echte_bewertungen_netz, lux_assistent_netz, kassen_sentinel_netz, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kassen_lieferdatum, werbetest, verkauf_gewinn, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, codex_github, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik, startseiten_gewicht, such_boosts, alter_lieferblock, social_sperre, gsc_tot, index_stand, wearable_seo, koll_versprechen, koll_leer, texte_angehalten, cj_suche_tor, waisen_verzeichnis)
+    pruefungen = (bot_puls, waffen_netz, cj_sku_netz, druck_profil_netz, guard_vollpass_netz, cj_nachpruefung_netz, indexnow_netz, theme_marken_netz, headless_netz, unterkat_netz, server_platte_netz, merkliste_netz, echte_bewertungen_netz, lux_assistent_netz, kassen_sentinel_netz, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kassen_lieferdatum, werbetest, verkauf_gewinn, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, codex_github, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik, startseiten_gewicht, such_boosts, alter_lieferblock, social_sperre, gsc_tot, index_stand, wearable_seo, koll_versprechen, koll_leer, texte_angehalten, cj_suche_tor, waisen_verzeichnis)
     teile = [zugang_weg()]
     for f in pruefungen:
         if ohne_token and f in MIT_TOKEN:

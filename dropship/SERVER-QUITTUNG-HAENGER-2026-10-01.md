@@ -38,3 +38,12 @@
 ## Offen
 - Warum der Lauf von 00:16 starb: `journalctl -u luxe-agent.service --since '2026-10-22 00:10' --until '00:30'` auf dem Server (Betreiber-Klick) — oder abwarten: stirbt der Lauf am 23.10. wieder, bleibt die Ampel rot (Wiederholungs-Sperre) und es lohnt sich.
 
+
+## Nachtrag 22.10.2026 17:10 UTC — Ursache jetzt belegt statt «UNBELEGT»
+Die Server-Quittungen tragen `df -h /`: **20.10. `/dev/sda1 38G 35G 718M 99 %`, 21.10. `38G 36G 115M 100 %`** (GEMESSEN, `auftraege/erledigt/server-zustand-*.json`).
+Eine volle Platte erklärt, was vorher als Einzelfälle galt: der Agent kann nicht pushen, der Wächter scheitert schon im `git fetch` (ExecStartPre), und Aufträge sterben
+mitten im Lauf ohne Schlussquittung (`server-zustand` 00:16, 8 von 10 Pin-Aufträgen). Die Ampel nannte bisher nur den GitHub-Token als Ursache und sagte beim Wächter
+fälschlich «Setup nötig» (er hatte bis 16.10. gearbeitet).
+- NEU `automation/server_platte_wache.py` (Selbsttest 11 Fälle, 5 Mutanten, im Aufseher täglich) + Ampelzeile «SERVER-PLATTE» (≥ 95 % oder < 1 GB frei → ⚠️ mit Abhilfe).
+- `bot_puls.py` nennt die volle Platte zuerst; `server_waechter()` unterscheidet «nie gelaufen» von «STILL seit n Tagen».
+- **Betreiber-Klick (root auf dem Hetzner-Server):** `curl -fsSL https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/claude/luxestyle-status-tztnn1/server/platte-schlank.sh | bash` — Anleitung im Kopf von `server/platte-schlank.sh`.
