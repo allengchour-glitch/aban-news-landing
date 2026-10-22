@@ -1,0 +1,1237 @@
+{
+  "scope": "LuxeStyle only, 2026-10-22 Europe/Zurich",
+  "notAPublicationLedger": true,
+  "summary": {
+    "queue": {
+      "objects": 85,
+      "states": {
+        "PUBLISHED": 20,
+        "PENDING": 65
+      },
+      "drafts": 0,
+      "perDay": {
+        "22": {
+          "facebook": 5,
+          "instagram": 8,
+          "tiktok": 4,
+          "youtube": 2,
+          "threads": 1,
+          "pinterest": 4
+        },
+        "23": {
+          "facebook": 4,
+          "instagram": 7,
+          "tiktok": 3,
+          "youtube": 2,
+          "threads": 1,
+          "pinterest": 4
+        },
+        "24": {
+          "facebook": 4,
+          "instagram": 7,
+          "tiktok": 3,
+          "youtube": 2,
+          "threads": 1,
+          "pinterest": 4
+        },
+        "25": {
+          "facebook": 4,
+          "instagram": 7,
+          "tiktok": 3,
+          "youtube": 2,
+          "threads": 1,
+          "pinterest": 4
+        },
+        "26": {
+          "facebook": 0,
+          "instagram": 0,
+          "tiktok": 0,
+          "youtube": 0,
+          "threads": 0,
+          "pinterest": 0
+        },
+        "27": {
+          "facebook": 0,
+          "instagram": 0,
+          "tiktok": 0,
+          "youtube": 0,
+          "threads": 0,
+          "pinterest": 0
+        },
+        "28": {
+          "facebook": 0,
+          "instagram": 0,
+          "tiktok": 0,
+          "youtube": 0,
+          "threads": 0,
+          "pinterest": 0
+        }
+      },
+      "duplicateMedia": [],
+      "duplicateSlots": [],
+      "overlap": {
+        "new": 85,
+        "old": 85,
+        "added": [
+          "2878909041268114098",
+          "-5088273423135586730"
+        ],
+        "absent": [
+          "5787787314642700359",
+          "-5231134645624289730"
+        ],
+        "changed": [
+          {
+            "uuid": "-4173766366821857517",
+            "fields": [
+              "providers"
+            ]
+          },
+          {
+            "uuid": "-8043502962248102872",
+            "fields": [
+              "providers"
+            ]
+          },
+          {
+            "uuid": "3559838438826001408",
+            "fields": [
+              "providers"
+            ]
+          },
+          {
+            "uuid": "3476111162736722415",
+            "fields": [
+              "providers"
+            ]
+          },
+          {
+            "uuid": "-2028053722264875623",
+            "fields": [
+              "providers"
+            ]
+          },
+          {
+            "uuid": "2919906854109988022",
+            "fields": [
+              "providers"
+            ]
+          },
+          {
+            "uuid": "8155909711782235108",
+            "fields": [
+              "providers"
+            ]
+          },
+          {
+            "uuid": "-3087892748780485741",
+            "fields": [
+              "providers"
+            ]
+          },
+          {
+            "uuid": "3069786118696224076",
+            "fields": [
+              "providers"
+            ]
+          },
+          {
+            "uuid": "1484830844118910853",
+            "fields": [
+              "providers"
+            ]
+          },
+          {
+            "uuid": "-7144281724213246362",
+            "fields": [
+              "providers"
+            ]
+          },
+          {
+            "uuid": "-6011229334700536918",
+            "fields": [
+              "providers"
+            ]
+          },
+          {
+            "uuid": "1395041988345941389",
+            "fields": [
+              "providers"
+            ]
+          },
+          {
+            "uuid": "2085069766565249033",
+            "fields": [
+              "providers"
+            ]
+          },
+          {
+            "uuid": "6380262122539535006",
+            "fields": [
+              "providers"
+            ]
+          },
+          {
+            "uuid": "-1487407879680012597",
+            "fields": [
+              "providers"
+            ]
+          },
+          {
+            "uuid": "-3353182801853725881",
+            "fields": [
+              "providers"
+            ]
+          },
+          {
+            "uuid": "-2662095187505954767",
+            "fields": [
+              "providers"
+            ]
+          },
+          {
+            "uuid": "4428878647304669366",
+            "fields": [
+              "providers"
+            ]
+          },
+          {
+            "uuid": "-1687869797962855701",
+            "fields": [
+              "providers"
+            ]
+          }
+        ]
+      }
+    },
+    "analytics": {
+      "instagram": [
+        {
+          "field": "IGEV05",
+          "knownSum": 1185,
+          "knownDays": 7,
+          "missingDays": []
+        },
+        {
+          "field": "IGEV38",
+          "knownSum": 8,
+          "knownDays": 4,
+          "missingDays": [
+            "20261016",
+            "20261017",
+            "20261019"
+          ]
+        }
+      ],
+      "facebook": [
+        {
+          "field": "FBEV49",
+          "knownSum": 663,
+          "knownDays": 7,
+          "missingDays": []
+        },
+        {
+          "field": "FBEV34",
+          "knownSum": 0,
+          "knownDays": 1,
+          "missingDays": [
+            "20261015",
+            "20261016",
+            "20261017",
+            "20261018",
+            "20261019",
+            "20261020"
+          ]
+        }
+      ],
+      "tiktok": [
+        {
+          "field": "TKEV02",
+          "knownSum": 4206,
+          "knownDays": 6,
+          "missingDays": [
+            "20261016"
+          ]
+        },
+        {
+          "field": "TKEV06",
+          "knownSum": 18,
+          "knownDays": 6,
+          "missingDays": [
+            "20261016"
+          ]
+        }
+      ],
+      "threads": [
+        {
+          "field": "THEV06",
+          "knownSum": 5,
+          "knownDays": 4,
+          "missingDays": [
+            "20261015",
+            "20261016",
+            "20261018"
+          ]
+        },
+        {
+          "field": "THEV05",
+          "knownSum": 0,
+          "knownDays": 1,
+          "missingDays": [
+            "20261015",
+            "20261016",
+            "20261017",
+            "20261018",
+            "20261019",
+            "20261020"
+          ]
+        }
+      ],
+      "pinterest": [
+        {
+          "field": "PIEV01",
+          "knownSum": 24014,
+          "knownDays": 5,
+          "missingDays": [
+            "20261020",
+            "20261021"
+          ]
+        },
+        {
+          "field": "PIEV04",
+          "knownSum": 390,
+          "knownDays": 5,
+          "missingDays": [
+            "20261020",
+            "20261021"
+          ]
+        },
+        {
+          "field": "PIEV06",
+          "knownSum": 11,
+          "knownDays": 5,
+          "missingDays": [
+            "20261020",
+            "20261021"
+          ]
+        }
+      ],
+      "youtube": [
+        {
+          "field": "YTEV17",
+          "knownSum": 297,
+          "knownDays": 5,
+          "missingDays": [
+            "20261020",
+            "20261021"
+          ]
+        },
+        {
+          "field": "YTEV14",
+          "knownSum": 21,
+          "knownDays": 5,
+          "missingDays": [
+            "20261020",
+            "20261021"
+          ]
+        },
+        {
+          "field": "YTEV18",
+          "knownSum": 2,
+          "knownDays": 5,
+          "missingDays": [
+            "20261020",
+            "20261021"
+          ]
+        }
+      ]
+    },
+    "public": {
+      "projector": {
+        "id": 15521256604033,
+        "available": true,
+        "variants": [
+          {
+            "id": 56197916361089,
+            "title": "Default Title",
+            "price": 3490,
+            "available": true
+          }
+        ]
+      },
+      "printer": {
+        "id": 15449432162689,
+        "available": true,
+        "variants": [
+          {
+            "id": 55881799729537,
+            "title": "Drucker (Grundmodell)",
+            "price": 3190,
+            "available": true
+          },
+          {
+            "id": 55881799696769,
+            "title": "Drucker P2",
+            "price": 5990,
+            "available": true
+          },
+          {
+            "id": 55881799631233,
+            "title": "Drucker P1S · rosa",
+            "price": 7790,
+            "available": true
+          },
+          {
+            "id": 55881799762305,
+            "title": "Drucker P1S · grün",
+            "price": 7790,
+            "available": true
+          },
+          {
+            "id": 55881799565697,
+            "title": "Nur Spezial-Thermopapier (ohne Drucker)",
+            "price": 1590,
+            "available": true
+          },
+          {
+            "id": 55881799598465,
+            "title": "Nur Thermopapier (ohne Drucker)",
+            "price": 1590,
+            "available": true
+          },
+          {
+            "id": 55881799664001,
+            "title": "Nur Thermopapier, selbstklebend (ohne Drucker)",
+            "price": 1590,
+            "available": true
+          }
+        ]
+      }
+    },
+    "music": {
+      "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+      "blob": "61de48704b2b3ae22fb028e6cf0a3c88e4826a7c",
+      "size": 11343950,
+      "matchesRepo": true,
+      "rights": "unknown"
+    },
+    "page": {
+      "canonical": [
+        "<link\n  rel=\"canonical\"\n  href=\"https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544\"\n>"
+      ],
+      "captureMarkers": [
+        "XWqMAD",
+        "T2VHfu"
+      ]
+    },
+    "ownSocialWrites": 0
+  },
+  "metricsAndFlowReport": {
+    "scope": "2026-10-15 through 2026-10-21 Europe/Zurich",
+    "observed": "2026-10-22 ca.14:00 Europe/Zurich",
+    "provenance": "Aus den heutigen Toolantworten gesichert; keine zweite Analytics-Abfrage. Feldlisten vor Abfrage entdeckt. Fehlende Werte bleiben null.",
+    "networks": {
+      "instagram": {
+        "ids": [
+          "IGEV05",
+          "IGEV38"
+        ],
+        "rows": [
+          [
+            245,
+            2,
+            "20261021"
+          ],
+          [
+            245,
+            1,
+            "20261015"
+          ],
+          [
+            37,
+            null,
+            "20261016"
+          ],
+          [
+            42,
+            null,
+            "20261017"
+          ],
+          [
+            233,
+            3,
+            "20261020"
+          ],
+          [
+            120,
+            2,
+            "20261018"
+          ],
+          [
+            263,
+            null,
+            "20261019"
+          ]
+        ]
+      },
+      "facebook": {
+        "ids": [
+          "FBEV49",
+          "FBEV34"
+        ],
+        "rows": [
+          [
+            240,
+            0,
+            "20261021"
+          ],
+          [
+            191,
+            null,
+            "20261015"
+          ],
+          [
+            6,
+            null,
+            "20261016"
+          ],
+          [
+            3,
+            null,
+            "20261017"
+          ],
+          [
+            106,
+            null,
+            "20261020"
+          ],
+          [
+            25,
+            null,
+            "20261018"
+          ],
+          [
+            92,
+            null,
+            "20261019"
+          ]
+        ]
+      },
+      "tiktok": {
+        "ids": [
+          "TKEV02",
+          "TKEV06"
+        ],
+        "rows": [
+          [
+            1053,
+            1,
+            "20261021"
+          ],
+          [
+            278,
+            4,
+            "20261015"
+          ],
+          [
+            242,
+            1,
+            "20261017"
+          ],
+          [
+            1054,
+            5,
+            "20261020"
+          ],
+          [
+            545,
+            1,
+            "20261018"
+          ],
+          [
+            1034,
+            6,
+            "20261019"
+          ]
+        ]
+      },
+      "threads": {
+        "ids": [
+          "THEV06",
+          "THEV05"
+        ],
+        "rows": [
+          [
+            1,
+            0,
+            "20261021"
+          ],
+          [
+            2,
+            null,
+            "20261020"
+          ],
+          [
+            1,
+            null,
+            "20261017"
+          ],
+          [
+            1,
+            null,
+            "20261019"
+          ]
+        ]
+      },
+      "pinterest": {
+        "ids": [
+          "PIEV01",
+          "PIEV04",
+          "PIEV06"
+        ],
+        "rows": [
+          [
+            3268,
+            53,
+            1,
+            "20261015"
+          ],
+          [
+            3735,
+            75,
+            1,
+            "20261016"
+          ],
+          [
+            3764,
+            72,
+            0,
+            "20261017"
+          ],
+          [
+            8475,
+            120,
+            7,
+            "20261018"
+          ],
+          [
+            4772,
+            70,
+            2,
+            "20261019"
+          ]
+        ]
+      },
+      "youtube": {
+        "ids": [
+          "YTEV17",
+          "YTEV14",
+          "YTEV18"
+        ],
+        "rows": [
+          [
+            85,
+            18,
+            0,
+            "20261015"
+          ],
+          [
+            12,
+            0,
+            0,
+            "20261016"
+          ],
+          [
+            18,
+            0,
+            0,
+            "20261017"
+          ],
+          [
+            55,
+            1,
+            2,
+            "20261018"
+          ],
+          [
+            127,
+            2,
+            0,
+            "20261019"
+          ]
+        ]
+      }
+    },
+    "klaviyo": {
+      "account": "XWqMAD",
+      "currency": "USD",
+      "placedOrderMetric": "W7XTVD",
+      "flows": {
+        "Vse76a": "draft",
+        "VbLQj6": "live",
+        "RnTvsY": "live",
+        "XEGbTB": "live"
+      },
+      "report": [
+        {
+          "flow": "XEGbTB",
+          "message": "VfffLv",
+          "recipients": 1,
+          "delivered": 0,
+          "clicks_unique": 0,
+          "conversions": 0
+        },
+        {
+          "flow": "RnTvsY",
+          "message": "Tr6DXE",
+          "recipients": 3,
+          "delivered": 3,
+          "clicks_unique": 1,
+          "conversions": 0
+        }
+      ],
+      "welcomeMessage": {
+        "id": "TTuuTS",
+        "add_tracking_params": false
+      },
+      "formList": {
+        "data": [],
+        "next": null,
+        "meaning": "API-Liste leer; kein Beweis fehlender öffentlich eingebundener Capture-Formulare."
+      }
+    }
+  },
+  "publishedChannelReceipts": [
+    {
+      "metricoolId": 399397657,
+      "uuid": "-4173766366821857517",
+      "date": {
+        "dateTime": "2026-10-22T18:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "network": "facebook",
+      "status": "PUBLISHED",
+      "platformId": "2099327847371676",
+      "publicUrl": "https://facebook.com/reel/2099327847371676",
+      "origin": "bestehender fremder Ablauf; keine eigene Publikation dieses Laufs"
+    },
+    {
+      "metricoolId": 399397657,
+      "uuid": "-4173766366821857517",
+      "date": {
+        "dateTime": "2026-10-22T18:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "network": "instagram",
+      "status": "PUBLISHED",
+      "platformId": "https://www.instagram.com/reel/DezayVvFQJz/",
+      "publicUrl": "https://www.instagram.com/reel/DezayVvFQJz/",
+      "origin": "bestehender fremder Ablauf; keine eigene Publikation dieses Laufs"
+    },
+    {
+      "metricoolId": 399397657,
+      "uuid": "-4173766366821857517",
+      "date": {
+        "dateTime": "2026-10-22T18:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "network": "tiktok",
+      "status": "PUBLISHED",
+      "platformId": "7699530884399123744",
+      "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7699530884399123744",
+      "origin": "bestehender fremder Ablauf; keine eigene Publikation dieses Laufs"
+    },
+    {
+      "metricoolId": 399454552,
+      "uuid": "-8043502962248102872",
+      "date": {
+        "dateTime": "2026-10-22T07:20:00",
+        "timezone": "Europe/Zurich"
+      },
+      "network": "youtube",
+      "status": "PUBLISHED",
+      "platformId": "tvS9TqDBgxQ",
+      "publicUrl": "https://www.youtube.com/shorts/tvS9TqDBgxQ",
+      "origin": "bestehender fremder Ablauf; keine eigene Publikation dieses Laufs"
+    },
+    {
+      "metricoolId": 399454646,
+      "uuid": "3559838438826001408",
+      "date": {
+        "dateTime": "2026-10-22T08:05:00",
+        "timezone": "Europe/Zurich"
+      },
+      "network": "tiktok",
+      "status": "PUBLISHED",
+      "platformId": "7699369363190680864",
+      "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7699369363190680864",
+      "origin": "bestehender fremder Ablauf; keine eigene Publikation dieses Laufs"
+    },
+    {
+      "metricoolId": 399454786,
+      "uuid": "3476111162736722415",
+      "date": {
+        "dateTime": "2026-10-22T09:45:00",
+        "timezone": "Europe/Zurich"
+      },
+      "network": "instagram",
+      "status": "PUBLISHED",
+      "platformId": "https://www.instagram.com/p/DeyeiaJDRUz/",
+      "publicUrl": "https://www.instagram.com/p/DeyeiaJDRUz/",
+      "origin": "bestehender fremder Ablauf; keine eigene Publikation dieses Laufs"
+    },
+    {
+      "metricoolId": 399454878,
+      "uuid": "-2028053722264875623",
+      "date": {
+        "dateTime": "2026-10-22T12:15:00",
+        "timezone": "Europe/Zurich"
+      },
+      "network": "instagram",
+      "status": "PUBLISHED",
+      "platformId": "https://www.instagram.com/reel/DeyvvAiFPcB/",
+      "publicUrl": "https://www.instagram.com/reel/DeyvvAiFPcB/",
+      "origin": "bestehender fremder Ablauf; keine eigene Publikation dieses Laufs"
+    },
+    {
+      "metricoolId": 399454881,
+      "uuid": "2919906854109988022",
+      "date": {
+        "dateTime": "2026-10-22T12:15:00",
+        "timezone": "Europe/Zurich"
+      },
+      "network": "facebook",
+      "status": "PUBLISHED",
+      "platformId": "1151627860790507",
+      "publicUrl": "https://facebook.com/reel/1151627860790507",
+      "origin": "bestehender fremder Ablauf; keine eigene Publikation dieses Laufs"
+    },
+    {
+      "metricoolId": 399455135,
+      "uuid": "8155909711782235108",
+      "date": {
+        "dateTime": "2026-10-22T12:45:00",
+        "timezone": "Europe/Zurich"
+      },
+      "network": "instagram",
+      "status": "PUBLISHED",
+      "platformId": "https://www.instagram.com/stories/luxestyle.ch/4013495197270288115",
+      "publicUrl": "https://www.instagram.com/stories/luxestyle.ch/4013495197270288115",
+      "origin": "bestehender fremder Ablauf; keine eigene Publikation dieses Laufs"
+    },
+    {
+      "metricoolId": 399455141,
+      "uuid": "-3087892748780485741",
+      "date": {
+        "dateTime": "2026-10-22T12:45:00",
+        "timezone": "Europe/Zurich"
+      },
+      "network": "facebook",
+      "status": "PUBLISHED",
+      "platformId": "1087377014169487",
+      "publicUrl": "https://facebook.com/122108214291350792/posts/1087377014169487",
+      "origin": "bestehender fremder Ablauf; keine eigene Publikation dieses Laufs"
+    },
+    {
+      "metricoolId": 399455258,
+      "uuid": "3069786118696224076",
+      "date": {
+        "dateTime": "2026-10-22T13:05:00",
+        "timezone": "Europe/Zurich"
+      },
+      "network": "tiktok",
+      "status": "PUBLISHED",
+      "platformId": "7699446813505441057",
+      "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7699446813505441057",
+      "origin": "bestehender fremder Ablauf; keine eigene Publikation dieses Laufs"
+    },
+    {
+      "metricoolId": 399455678,
+      "uuid": "1484830844118910853",
+      "date": {
+        "dateTime": "2026-10-22T14:40:00",
+        "timezone": "Europe/Zurich"
+      },
+      "network": "pinterest",
+      "status": "PUBLISHED",
+      "platformId": "1111333645583701930",
+      "publicUrl": "https://www.pinterest.es/pin/1111333645583701930",
+      "origin": "bestehender fremder Ablauf; keine eigene Publikation dieses Laufs"
+    },
+    {
+      "metricoolId": 399455779,
+      "uuid": "-7144281724213246362",
+      "date": {
+        "dateTime": "2026-10-22T16:05:00",
+        "timezone": "Europe/Zurich"
+      },
+      "network": "youtube",
+      "status": "PUBLISHED",
+      "platformId": "RDnQPUuh25M",
+      "publicUrl": "https://www.youtube.com/shorts/RDnQPUuh25M",
+      "origin": "bestehender fremder Ablauf; keine eigene Publikation dieses Laufs"
+    },
+    {
+      "metricoolId": 399456345,
+      "uuid": "-6011229334700536918",
+      "date": {
+        "dateTime": "2026-10-22T19:40:00",
+        "timezone": "Europe/Zurich"
+      },
+      "network": "pinterest",
+      "status": "PUBLISHED",
+      "platformId": "1111333645583725248",
+      "publicUrl": "https://www.pinterest.es/pin/1111333645583725248",
+      "origin": "bestehender fremder Ablauf; keine eigene Publikation dieses Laufs"
+    },
+    {
+      "metricoolId": 399456458,
+      "uuid": "1395041988345941389",
+      "date": {
+        "dateTime": "2026-10-22T20:05:00",
+        "timezone": "Europe/Zurich"
+      },
+      "network": "tiktok",
+      "status": "PUBLISHED",
+      "platformId": "7699554925742705952",
+      "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7699554925742705952",
+      "origin": "bestehender fremder Ablauf; keine eigene Publikation dieses Laufs"
+    },
+    {
+      "metricoolId": 399464101,
+      "uuid": "2085069766565249033",
+      "date": {
+        "dateTime": "2026-10-22T20:15:00",
+        "timezone": "Europe/Zurich"
+      },
+      "network": "instagram",
+      "status": "PUBLISHED",
+      "platformId": "https://www.instagram.com/reel/DezmxUmCiX9/",
+      "publicUrl": "https://www.instagram.com/reel/DezmxUmCiX9/",
+      "origin": "bestehender fremder Ablauf; keine eigene Publikation dieses Laufs"
+    },
+    {
+      "metricoolId": 399464110,
+      "uuid": "6380262122539535006",
+      "date": {
+        "dateTime": "2026-10-22T20:15:00",
+        "timezone": "Europe/Zurich"
+      },
+      "network": "facebook",
+      "status": "PUBLISHED",
+      "platformId": "1122139923907304",
+      "publicUrl": "https://facebook.com/reel/1122139923907304",
+      "origin": "bestehender fremder Ablauf; keine eigene Publikation dieses Laufs"
+    },
+    {
+      "metricoolId": 399477259,
+      "uuid": "-1487407879680012597",
+      "date": {
+        "dateTime": "2026-10-22T09:45:00",
+        "timezone": "Europe/Zurich"
+      },
+      "network": "threads",
+      "status": "PUBLISHED",
+      "platformId": "18031273475684076",
+      "publicUrl": "https://www.threads.com/@luxestyle.ch/post/Deyeij2iGlt",
+      "origin": "bestehender fremder Ablauf; keine eigene Publikation dieses Laufs"
+    },
+    {
+      "metricoolId": 399490427,
+      "uuid": "-3353182801853725881",
+      "date": {
+        "dateTime": "2026-10-22T17:10:00",
+        "timezone": "Europe/Zurich"
+      },
+      "network": "pinterest",
+      "status": "PUBLISHED",
+      "platformId": "1111333645583713025",
+      "publicUrl": "https://www.pinterest.es/pin/1111333645583713025",
+      "origin": "bestehender fremder Ablauf; keine eigene Publikation dieses Laufs"
+    },
+    {
+      "metricoolId": 399529298,
+      "uuid": "-2662095187505954767",
+      "date": {
+        "dateTime": "2026-10-22T16:10:00",
+        "timezone": "Europe/Zurich"
+      },
+      "network": "instagram",
+      "status": "PUBLISHED",
+      "platformId": "https://www.instagram.com/p/DezKtHIjQ2A/",
+      "publicUrl": "https://www.instagram.com/p/DezKtHIjQ2A/",
+      "origin": "bestehender fremder Ablauf; keine eigene Publikation dieses Laufs"
+    },
+    {
+      "metricoolId": 399529599,
+      "uuid": "4428878647304669366",
+      "date": {
+        "dateTime": "2026-10-22T19:10:00",
+        "timezone": "Europe/Zurich"
+      },
+      "network": "instagram",
+      "status": "PUBLISHED",
+      "platformId": "https://www.instagram.com/stories/luxestyle.ch/4013689286582522296",
+      "publicUrl": "https://www.instagram.com/stories/luxestyle.ch/4013689286582522296",
+      "origin": "bestehender fremder Ablauf; keine eigene Publikation dieses Laufs"
+    },
+    {
+      "metricoolId": 399529602,
+      "uuid": "-1687869797962855701",
+      "date": {
+        "dateTime": "2026-10-22T19:10:00",
+        "timezone": "Europe/Zurich"
+      },
+      "network": "facebook",
+      "status": "PUBLISHED",
+      "platformId": "1143294088039407",
+      "publicUrl": "https://facebook.com/122108214291350792/posts/1143294088039407",
+      "origin": "bestehender fremder Ablauf; keine eigene Publikation dieses Laufs"
+    }
+  ],
+  "publicProbe": [
+    {
+      "file": "projector-public.json",
+      "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544.js",
+      "status": 200,
+      "final_url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544.js",
+      "bytes": 11035,
+      "sha256": "bf4e323cd32983e755869b4ef8babf5d9c9c9580c7c5a285db8527515009c319"
+    },
+    {
+      "file": "printer-public.json",
+      "url": "https://luxestyle.ch/products/mini-fotodrucker-c75644.js",
+      "status": 200,
+      "final_url": "https://luxestyle.ch/products/mini-fotodrucker-c75644.js",
+      "bytes": 15412,
+      "sha256": "bac7109aa677f5bd040b5bd02fb44fb82ea8bdd3934c990bd652092a6699eb46"
+    },
+    {
+      "file": "projector.html",
+      "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+      "status": 200,
+      "final_url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+      "bytes": 821549,
+      "sha256": "c95f8da060f0f75ea67cf38f933b259e780ce101512e0cf4328e88f7b30331f6"
+    },
+    {
+      "file": "product-reference.jpg",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+      "status": 200,
+      "final_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+      "bytes": 118008,
+      "sha256": "bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d"
+    }
+  ],
+  "dnsAndSearch": [
+    {
+      "file": "dns-send.json",
+      "dnsStatus": 3,
+      "answers": []
+    },
+    {
+      "file": "dns-mtd1._domainkey.json",
+      "dnsStatus": 3,
+      "answers": []
+    },
+    {
+      "file": "dns-mtd2._domainkey.json",
+      "dnsStatus": 3,
+      "answers": []
+    },
+    {
+      "file": "dns-root.json",
+      "dnsStatus": 0,
+      "answers": [
+        {
+          "type": 16,
+          "data": "v=spf1 include:zohomail.eu ~all"
+        },
+        {
+          "type": 16,
+          "data": "zoho-verification=zb02252844.zmverify.zoho.eu"
+        },
+        {
+          "type": 16,
+          "data": "tiktok-developers-site-verification=tpfDEE0emwAaM7BtXF5Qb9tzANuBCnah"
+        }
+      ]
+    },
+    {
+      "file": "suggest-paperang.json",
+      "products": [
+        {
+          "id": 15431537131905,
+          "handle": "schmetterling-ohrhanger-papillon-kristall-grun",
+          "title": "Schmetterling-Ohrhänger «Papillon» · Kristall, Grün"
+        },
+        {
+          "id": 15453745185153,
+          "handle": "quilted-paper-malset-283392",
+          "title": "Quilted Paper Malset"
+        },
+        {
+          "id": 15453760455041,
+          "handle": "quilted-paper-malerei-932416",
+          "title": "Quilted Paper Malerei"
+        },
+        {
+          "id": 15493850562945,
+          "handle": "buroklammern-paperclip-628100",
+          "title": "Büroklammern «Paperclip»"
+        }
+      ]
+    },
+    {
+      "file": "suggest-mini-fotodrucker.json",
+      "products": [
+        {
+          "id": 15447578476929,
+          "handle": "mini-thermodrucker-fur-mobiltelefone-364097",
+          "title": "Mini-Thermodrucker für Mobiltelefone"
+        },
+        {
+          "id": 15427285123457,
+          "handle": "kissen-zum-selbstgestalten",
+          "title": "Fotokissen bedrucken · Kissen selbst gestalten"
+        },
+        {
+          "id": 15427282633089,
+          "handle": "tasse-zum-selbstgestalten",
+          "title": "Tasse bedrucken & selbst gestalten · dein Foto"
+        },
+        {
+          "id": 15427283157377,
+          "handle": "shirt-zum-selbstgestalten",
+          "title": "T-Shirt bedrucken & selbst gestalten · dein Foto oder Motiv"
+        },
+        {
+          "id": 15448586813825,
+          "handle": "bedrucktes-minikleid-mit-v-ausschnitt-und-spit-609000",
+          "title": "Bedrucktes Minikleid mit V-Ausschnitt und Spitze"
+        },
+        {
+          "id": 16654364180871,
+          "handle": "mini-spruhflasche-mit-luftdruck-628900",
+          "title": "Mini-Sprühflasche mit Luftdruck"
+        },
+        {
+          "id": 15454333305217,
+          "handle": "3d-druck-kleid-mit-stickereimuster-605800",
+          "title": "3D-Druck Kleid mit Stickereimuster"
+        },
+        {
+          "id": 15523986080129,
+          "handle": "tragbarer-fotodrucker-639744",
+          "title": "Tragbarer Fotodrucker"
+        },
+        {
+          "id": 15448755536257,
+          "handle": "bedrucktes-midikleid-im-tie-dye-look-628700",
+          "title": "Bedrucktes Midikleid im Tie-Dye-Look"
+        },
+        {
+          "id": 15448104632705,
+          "handle": "bedruckter-zip-up-hoodie-locker-geschnitten-630300",
+          "title": "Bedruckter Zip-Up Hoodie – Locker geschnitten"
+        }
+      ]
+    }
+  ],
+  "searchFields": {
+    "productId": "15449432162689",
+    "readableMetafieldCount": 12,
+    "hasNextPage": false,
+    "seoHidden": null,
+    "excludedDestination": [
+      "Shopping_ads"
+    ],
+    "privateSearchRules": "unknown"
+  },
+  "code": {
+    "pullRequest": 2708,
+    "head": "8dcc7765903ba973a7ad4d0551ce9e3ddf99cc7a",
+    "base": "cad892059dfec771a542dc69365838baa8d6bbb2",
+    "localAssistTests": {
+      "pass": 174,
+      "fail": 0
+    },
+    "githubChecks": {
+      "LuxeStyle Assist tests": "success",
+      "LuxeStyle automation tests": "success"
+    },
+    "ownerClaudeSession": "unknown",
+    "deployed": false
+  },
+  "ownSocialWrites": 0,
+  "priorDayVisibility": [
+    {
+      "key": "hausschuhe",
+      "requestedUrl": "https://luxestyle.ch/collections/sub-hausschuhe",
+      "observedAt": "2026-10-21T16:08:58.405780+00:00",
+      "status": 200,
+      "canonical": [
+        "https://luxestyle.ch/collections/sub-hausschuhe"
+      ],
+      "metaRobots": [],
+      "xRobotsTag": null,
+      "sha256": "536717d7f031f5db805284d5c60221d38d97b1baea102c11ee82c004fd5e5eaf"
+    },
+    {
+      "key": "schuhe",
+      "requestedUrl": "https://luxestyle.ch/collections/schuhe",
+      "observedAt": "2026-10-21T16:09:00.129011+00:00",
+      "status": 200,
+      "canonical": [
+        "https://luxestyle.ch/collections/schuhe"
+      ],
+      "metaRobots": [],
+      "xRobotsTag": null,
+      "sha256": "0ca3e76ac5ce826c5d180af5c81f8347693518e4dbb9351340fef6d9bbd59223"
+    },
+    {
+      "key": "camisole",
+      "requestedUrl": "https://luxestyle.ch/products/baumwoll-camisole-608000",
+      "observedAt": "2026-10-21T16:09:02.311589+00:00",
+      "status": 200,
+      "canonical": [
+        "https://luxestyle.ch/products/baumwoll-camisole-608000"
+      ],
+      "metaRobots": [],
+      "xRobotsTag": null,
+      "sha256": "a4640b1df5b89202cfefae05b8418420cb3adb88ea26b36825c07f720ec59d64"
+    },
+    {
+      "key": "tops",
+      "requestedUrl": "https://luxestyle.ch/collections/t-shirts-tops",
+      "observedAt": "2026-10-21T16:09:03.115482+00:00",
+      "status": 200,
+      "canonical": [
+        "https://luxestyle.ch/collections/t-shirts-tops"
+      ],
+      "metaRobots": [],
+      "xRobotsTag": null,
+      "sha256": "143f3ea3a6d01f5575d3cea598e60b0b25b2e7c1ee8d4f8671ed69ec783f6bfd"
+    },
+    {
+      "key": "robots",
+      "requestedUrl": "https://luxestyle.ch/robots.txt",
+      "observedAt": "2026-10-21T16:09:04.783356+00:00",
+      "status": 200,
+      "canonical": null,
+      "metaRobots": null,
+      "xRobotsTag": null,
+      "sha256": "183bd4057aade622ad023f27d37a3bad0407a5dbe195d823291c0dbeac278f1b"
+    },
+    {
+      "key": "sitemap",
+      "requestedUrl": "https://luxestyle.ch/sitemap.xml",
+      "observedAt": "2026-10-21T16:09:05.313990+00:00",
+      "status": 200,
+      "canonical": null,
+      "metaRobots": null,
+      "xRobotsTag": null,
+      "sha256": "35ba11403b9fcec47f46f1b60ceb76e1c7ef6ede62e2c1fb5b427e1ae8467cbb"
+    }
+  ]
+}
