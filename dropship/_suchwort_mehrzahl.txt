@@ -4362,3 +4362,16 @@ gid://shopify/Product/16654365032839	kleider	Ärmelloses Wickelkleid mit Blumenm
 gid://shopify/Product/16654370800007	kleider	Mädelkleid mit Hausschuh-Accessoires
 gid://shopify/Product/16654415888775	kleider	Strickkleid mit Rundhals und Regenbogenstreifen
 gid://shopify/Product/16655380054407	taschen	Komplettes Make-up-Set inkl. Aufbewahrungstasche
+gid://shopify/Product/16655497101703	taschen	Kurze Clutch-Handtasche mit Reissverschluss
+gid://shopify/Product/16655497691527	taschen	Umhängetasche für Kurztrips, unisex
+gid://shopify/Product/16655498019207	taschen	Isolierte Picknicktasche 13 L Schultertasche
+gid://shopify/Product/16655498445191	taschen	Leder Business Aktentasche Ein-Schulter 21×17×9 cm
+gid://shopify/Product/16655498510727	taschen	Herren Schultertasche aus Vollnarbenleder mit Krokodille-Optik
+gid://shopify/Product/16655498609031	taschen	Echtleder Reisetasche, Grosses Fassungsvermögen
+gid://shopify/Product/16655502246279	kleider	Samtkleid mit Knopfleiste und langen Ärmeln
+gid://shopify/Product/16655502606727	kleider	Leoparden-Strickkleid mit langen Ärmeln
+gid://shopify/Product/16655503589767	kleider	Samtkleid mit Stehkragen und hohem Schlitz
+gid://shopify/Product/16655503950215	kleider	Asymmetrisches Midikleid
+gid://shopify/Product/16655504736647	kleider	Elegantes Damenkleid mit Puffärmeln
+gid://shopify/Product/16655505031559	kleider	Maxikleid mit Stehkragen und Vintage-Print
+gid://shopify/Product/16655505555847	kleider	Damenkleid mit Digitaldruck und langen Ärmeln

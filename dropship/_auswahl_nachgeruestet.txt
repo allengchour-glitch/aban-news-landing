@@ -3473,3 +3473,7 @@
 16654053966215	Farbe:3:3+ki	2026-10-21	genuine-leder-clutch-wallet-retro-gelb-606900
 16653945799047	Farbe:4+Grösse:2:8+ki	2026-10-21	kinder-rucksack-prinzessin-style-616000
 16653092192647	Motiv:6:6+ki	2026-10-21	kinderflugzeug-reise-tablett-aufbewahrungstasc-603600
+16656660758919	Farbe:5:5	2026-10-22	umhangetasche-aus-gewaschenem-canvas-610300
+16656660562311	Grösse:7:7	2026-10-22	kupferstempel-fur-backwaren-und-leder-634500
+16656660496775	Farbe:14+Grösse:4:56+ki	2026-10-22	trolley-aus-aluminium-magnesium-legierung-626800
+16656660332935	Farbe:5+Grösse:4:20+ki	2026-10-22	reisekoffer-mit-zahlenschloss-607600
