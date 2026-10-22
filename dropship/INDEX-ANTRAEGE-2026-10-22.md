@@ -58,3 +58,7 @@ Noch NICHT im Index (live gemessen), nach Nutzen geordnet:
 5. [blogs/magazin/9-geschenkideen-fur-frauen-unter-chf-60-…](https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=LrmwqTImv-akaAJ02YmMog&utm_medium=link&utm_source=api) — Magazin-Artikel, Discovered (saisonal: Muttertag; niedrig)
 
 Nicht beantragen: `collections/🎁-geschenke-bis-chf-30` (Emoji-Handle, Google kennt die Adresse nicht; die Geschenk-Kollektionen «unter 50/100 Franken» sind seit 19.10. indexiert) und die zwei `/fr/blogs/ratgeber/…`-Adressen (Sprachpfad, kaum Nachfrage).
+
+## Nachmessung 22.10. ~10:30 UTC (`inspect_urls`, 0 Credits)
+- **Alle 10 Adressen der Klickliste stehen im Index («Submitted and indexed», Abruf 08:31 UTC):** schuhe, schmuck-uhren, beauty-pflege, elektronik-technik, fur-ihn, sub-beleuchtung (der Abruf vom 22.06. war eine veraltete Anzeige — der Antrag war angekommen), sicherheitsschuhe, camisole-traegertops, smart-ring, schrank-organizer. Zusammen mit den früheren 34: **44 von 44 beantragte Adressen indexiert**, jeweils binnen ~1,5 Stunden bis 1 Tag.
+- **Die vier neuen Kandidaten sind NICHT beantragt** (kein Abruf, `spielzeug` und `garten-leuchten` «URL is unknown to Google», `hochzeitsgeschenke` und `gerade-auf-instagram` «Discovered»). Direktlinks weiter oben im Abschnitt «Nächste Kandidaten».
