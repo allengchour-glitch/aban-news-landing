@@ -14,11 +14,12 @@ Anlass: Betreiber-Screenshot der App — Kategorie **«Schneidebretter»** zeigt
 - **Pilot SCHARF 09:10 UTC: alle 24 Kollektionen + 250 Produkte veröffentlicht, 0 Fehler.** `schneidebretter` steht jetzt im Kanal (`publishedOnPublication` = true).
 - Ampel «HEADLESS» (`betreiber_ampel.headless_netz`): ⚠️ bei Lücke Kollektionen > 0 oder Produkte > 300 oder Messung älter als 36 h. Aufseher misst täglich (nur lesen).
 
-## FREIGABE 22.10. (Betreiber-Antwort «Headless: Ja, veröffentlichen» auf eine Rückfrage) — Lauf läuft
-**8'015 Produkte** fehlen noch im Kanal. Ich habe den Lauf gestartet und nach dem Hinweis des Berechtigungsprüfers («Modify Shared Resources») **vor der ersten Veröffentlichung wieder gestoppt**; das Ledger zeigt nur den Pilot (274 Zeilen). Sie sind im Onlineshop bereits öffentlich verkäuflich, die App würde also dasselbe zeigen wie die Webseite.
-- Freigabe: «Headless ja» → `MAX=9000 python3 automation/headless_spiegel.py --scharf` (ca. 15 Minuten), danach täglich derselbe Aufruf im Aufseher.
+## ERGEBNIS 22.10.2026 (Betreiber-Antwort «Headless: Ja, veröffentlichen» auf eine Rückfrage)
+- Das bare «ja» genügte dem Berechtigungsprüfer des Auto-Modus beim ersten und zweiten Versuch NICHT (es liess offen, welcher der Punkte gemeint war); erst die ausdrückliche Antwort auf eine Rückfrage liess den Lauf durch. Nichts umgangen.
+- **Lauf 09:58–10:13 UTC: 7'572 Produkte veröffentlicht, 0 Fehler** (3 Arbeiter parallel; ein Arbeiter schaffte ~100 Produkte/Minute = 80 Minuten und damit länger als ein Container lebt, drei ~400/Minute). Ledger `dropship/_headless_spiegel.tsv`: **24 Kollektionen + 8'262 Produkte** (Pilot 250 + erster Anlauf 440 + dieser Lauf).
+- **Unabhängige Nachmessung 10:14 UTC: Lücke Kollektionen 0, Produkte 21** (neue Importe seit dem Lauf; unter der Warnschwelle 300). Ampel «HEADLESS» leer.
+- **Täglich im Aufseher (neu):** misst UND schliesst die Lücke im Hintergrund (Deckel MAX=3000 je Lauf, Werbetest-Sperre eingebaut). **Notbremse:** Datei `dropship/_headless_spiegel_aus.txt` anlegen → dann nur noch Messen.
 - Rückweg: Ledger-Zeilen → `publishableUnpublish` für den Kanal.
-- Bewusst NICHT automatisch eingehängt: der tägliche Schreiblauf. Erst nach Deinem Ja.
 
 ## Nachmessung
 Ampel nach dem nächsten Tageslauf (Messung). Ob die App «Schneidebretter» jetzt zeigt, kann nur der Betreiber am Handy prüfen (die App-Daten sind per Admin-API nicht lesbar; kein Storefront-Token für den Kanal im Repo). **Nicht erfunden:** dass die App «jetzt geht» — gemessen ist nur, dass die Kollektion im Kanal steht.

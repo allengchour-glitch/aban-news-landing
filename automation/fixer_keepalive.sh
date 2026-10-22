@@ -1293,15 +1293,21 @@ while true; do
       echo "$(date -u +%H:%M) ⚠️ VIDEO-AUSZEICHNUNG-KANARIEN: $(grep -c '❌' /tmp/video_auszeichnung_kanarien.log) Verstösse — dropship/theme_patches/video_auszeichnung_*.liquid prüfen (Log /tmp/video_auszeichnung_kanarien.log)"
     fi
   fi
-  # 22.10.2026: HEADLESS-KANAL (App «Luxe Style Headless») hinkt dem Onlineshop nach — Betreiber-Screenshot «Schneidebretter · Kategorie nicht gefunden».
-  # NUR MESSEN (täglich, schreibt dropship/_headless_spiegel_stand.json für die Ampel «HEADLESS»); das Veröffentlichen (--scharf) bleibt ein bewusster Aufruf,
-  # solange der Betreiber die Massen-Veröffentlichung von ~8'000 Produkten nicht freigegeben hat (Bericht dropship/HEADLESS-KANAL-2026-10-22.md).
+  # 22.10.2026: HEADLESS-KANAL (App «Luxe Style Headless») spiegelt den Onlineshop — Betreiber-Screenshot «Schneidebretter · Kategorie nicht gefunden».
+  # Täglich: Lücke messen UND schliessen (Betreiber-Freigabe 22.10. «Headless: Ja, veröffentlichen»; neue Importe tauchen sonst täglich als Lücke auf).
+  # Notbremse: Datei dropship/_headless_spiegel_aus.txt anlegen → dann nur noch MESSEN. Deckel MAX=3000 Produkte je Lauf, Werbetest-Sperre eingebaut,
+  # Rückgängig-Ledger dropship/_headless_spiegel.tsv. Im Hintergrund (ein Lauf kann Minuten dauern); Bericht dropship/HEADLESS-KANAL-2026-10-22.md.
   HLM=/tmp/headless_spiegel_messung.log
   if [ -f "$REPO/automation/headless_spiegel.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$HLM" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 82800 ]; then
-      ( cd "$REPO" && timeout 280 python3 automation/headless_spiegel.py >> "$HLM" 2>&1 )
-      echo "$(date -u +%H:%M) headless_spiegel (Messung): $(tail -1 "$HLM" | cut -c1-160)"
+      if [ -f "$REPO/dropship/_headless_spiegel_aus.txt" ]; then
+        ( cd "$REPO" && timeout 280 python3 automation/headless_spiegel.py >> "$HLM" 2>&1 )
+        echo "$(date -u +%H:%M) headless_spiegel (nur Messung, Notbremse gesetzt): $(tail -1 "$HLM" | cut -c1-160)"
+      else
+        ( cd "$REPO" && MAX=3000 nohup timeout 1500 python3 automation/headless_spiegel.py --scharf >> "$HLM" 2>&1 & )
+        echo "$(date -u +%H:%M) headless_spiegel: Lauf im Hintergrund gestartet (Log $HLM)"
+      fi
     fi
   fi
   # Hinweis für den SCHARF-Block (Z. ~945): davor `[ -f /tmp/kategorie_wache.kanarien_fehler ] && skip` einbauen.
