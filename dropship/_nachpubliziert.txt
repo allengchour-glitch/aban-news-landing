@@ -395,3 +395,4 @@ gid://shopify/Product/16655534653831	schwarze-franzosische-sandalen-mit-patentle
 gid://shopify/Product/16655534850439	musikalische-taschenuhr-individuell-609100	Musikalische Taschenuhr – individuell
 gid://shopify/Product/16656675570055	taktischer-becher-mit-magazin-design-634600	Taktischer Becher mit Magazin-Design
 gid://shopify/Product/16656675668359	gold-case-uhr-mit-goldteller-mediterraner-stil-602500	Gold-Case-Uhr mit Goldteller – Mediterraner Stil
+gid://shopify/Product/16656701784455	3d-militarausgabe-jubilaumsbecher-634500	3D-Militärausgabe Jubiläumsbecher
