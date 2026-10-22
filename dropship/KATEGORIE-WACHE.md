@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-22T03:09Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-22T04:20Z
 
-Aktive gescannt: 23 · ohne Kategorie: 23 · heute gesetzt: 20 (SCHARF, CAP 1500) · danach offen: 3 · Fehler: 0
+Aktive gescannt: 28 · ohne Kategorie: 28 · heute gesetzt: 25 (SCHARF, CAP 1500) · danach offen: 3 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -12,9 +12,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- canvas-schultertasche-grosse-kapazitat-630000 · Taschen → Luggage & Bags
-- all-cotton-aufbewahrungstasche-fur-baby-und-mu-635400 · Aufbewahrung & Organizer → Home & Garden > Household Supplies > Storage & Organization
-- stadtstrasse-3d-puzzle-aus-papier-634400 · Spielzeug & Spiele → Toys & Games > Toys
-- one-shoulder-handy-tasche-aus-polyester-634800 · Taschen → Luggage & Bags
-- kosmetikaufbewahrungsbox-mit-pinsel-und-lippen-627900 · Aufbewahrung & Organizer → Home & Garden > Household Supplies > Storage & Organization
+- outdoor-backpack-22-l-wasserfest-leicht-628700 · Taschen → Luggage & Bags
+- schwarzer-eisen-notizablagehalter-616000 · Aufbewahrung & Organizer → Home & Garden > Household Supplies > Storage & Organization
+- kristallglas-floss-aufbewahrungsbox-klar-champ-607900 · Aufbewahrung & Organizer → Home & Garden > Household Supplies > Storage & Organization
+- wasserfester-rucksack-fur-studenten-und-busine-626800 · Taschen → Luggage & Bags
+- echtleder-box-fur-ohrringe-und-schmuck-600700 · Aufbewahrung & Organizer → Home & Garden > Household Supplies > Storage & Organization
 
