@@ -485,7 +485,11 @@ test('self-check does not run an unexpected config command and detects protocol 
   write(f.root,'.mcp.json',JSON.stringify({mcpServers:{'luxestyle-assist':{type:'stdio',command:'unapproved-program',args:['--write']}}}));
   const result=await f.app.selfCheck();assert.equal(result.status,'failed');assert.equal(result.protocol.reason,'invalid_or_incomplete_protocol');
   const launch=f.calls.find(c=>c.cmd!=='git');assert.equal(launch.cmd,process.execPath);assert.equal(launch.args.at(-1),'mcp');
-  assert.ok(!launch.args.includes('--write'));assert.match(launch.options.input,/tools\/list/);assert.doesNotMatch(launch.options.input,/tools\/call/);
+  assert.ok(!launch.args.includes('--write'));
+  const frames=launch.options.input.trim().split('\n').map(JSON.parse);
+  for(const method of ['initialize','ping','tools/list','tools/call']) assert.ok(frames.find(r=>r.method===method).params._meta);
+  const call=frames.find(r=>r.method==='tools/call');assert.equal(call.params.name,'luxe_handoff_read');assert.deepEqual(call.params.arguments,{});
+  assert.ok(frames.some(r=>!r.method&&Object.hasOwn(r,'result')));assert.ok(frames.some(r=>!r.method&&Object.hasOwn(r,'error')));
 });
 test('doctor CLI fails for active locks and self-check CLI validates the real server', t => {
   const f=checkout(t);localSetup(f.root);const cli=path.join(f.root,'automation/claude-assist.mjs');

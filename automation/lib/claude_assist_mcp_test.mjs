@@ -48,6 +48,69 @@ test('validated arguments reach only the selected injected handler', async () =>
   assert.equal(response.result.isError, false);
 });
 
+test('MCP request metadata is accepted without entering business arguments', async () => {
+  const seen = [];
+  const metadata = [{}, { progressToken: 0 }, { progressToken: 'call-1', 'example.org/context': { trace: true } }];
+  const frames = metadata.flatMap(_meta => [
+    ['initialize', { protocolVersion: '2025-06-18', capabilities: {}, clientInfo: {}, _meta }],
+    ['ping', { _meta }], ['tools/list', { _meta }],
+    ['tools/call', { name: 'luxe_checks', arguments: { suite: 'seo' }, _meta }]
+  ]);
+  const responses = await exchange(frames.map(([method, params], id) => request(id, method, params) + '\n'), {
+    luxe_checks: args => { seen.push(args); return { okay: true }; }
+  });
+  assert.equal(responses.length, frames.length);
+  assert.ok(responses.every(response => response.result && !response.error));
+  assert.deepEqual(seen, metadata.map(() => ({ suite: 'seo' })));
+  assert.ok(responses.filter((_, i) => i % 4 === 3).every(response => response.result.isError === false));
+});
+
+test('malformed MCP metadata cannot invoke tools and does not poison later requests', async () => {
+  const bad = [null, [], true, 1, 'metadata', { progressToken: null }, { progressToken: [] }, { progressToken: {} }, { progressToken: true }];
+  const frames = bad.flatMap(_meta => [
+    ['initialize', { protocolVersion: '2025-06-18', _meta }], ['ping', { _meta }], ['tools/list', { _meta }],
+    ['tools/call', { name: 'luxe_doctor', arguments: {}, _meta }]
+  ]);
+  let calls = 0;
+  const responses = await exchange([
+    ...frames.map(([method, params], id) => request(id, method, params) + '\n'), request('after', 'ping') + '\n'
+  ], { luxe_doctor: () => { calls++; } });
+  assert.equal(calls, 0);
+  assert.ok(responses.slice(0, -1).every(response => response.error?.code === -32602));
+  assert.equal(responses.at(-1).id, 'after'); assert.deepEqual(responses.at(-1).result, {});
+});
+
+test('metadata permission does not permit new transport fields or tool arguments', async () => {
+  let calls = 0;
+  const frames = [
+    ['tools/call', { name: 'luxe_doctor', arguments: { _meta: {} }, _meta: {} }],
+    ['tools/call', { name: 'luxe_doctor', arguments: {}, _meta: {}, shell: 'unexpected' }],
+    ['tools/call', { name: 'luxe_checks', arguments: { suite: 'all' }, _meta: {} }],
+    ['tools/call', { name: 'shell', arguments: {}, _meta: {} }],
+    ['ping', { _meta: {}, cursor: 'unexpected' }], ['tools/list', { _meta: {}, cursor: 'unexpected' }]
+  ];
+  const responses = await exchange(frames.map(([method, params], id) => request(id, method, params) + '\n'), {
+    luxe_doctor: () => { calls++; }, luxe_checks: () => { calls++; }
+  });
+  assert.equal(calls, 0); assert.equal(responses.length, frames.length);
+  assert.ok(responses.every(response => response.error?.code === -32602));
+});
+
+test('incoming response frames are silent and the next real request still works', async () => {
+  let calls = 0;
+  const responses = await exchange([
+    JSON.stringify({ jsonrpc: '2.0', id: 1, result: {} }) + '\n',
+    JSON.stringify({ jsonrpc: '2.0', id: 2, error: { code: -32601, message: 'Unsupported' } }) + '\n',
+    JSON.stringify({ jsonrpc: '2.0', id: null, error: { code: -32700, message: 'Parse error' } }) + '\n',
+    request('after', 'tools/call', { name: 'luxe_doctor', _meta: {} }) + '\n'
+  ], { luxe_doctor: args => { calls++; assert.deepEqual(args, {}); return { okay: true }; } });
+  assert.equal(calls, 1); assert.equal(responses.length, 1);
+  assert.equal(responses[0].id, 'after'); assert.equal(responses[0].result.isError, false);
+  // A missing method without response fields remains an invalid request.
+  const [invalid] = await exchange([JSON.stringify({ jsonrpc: '2.0', id: 3 }) + '\n']);
+  assert.equal(invalid.error.code, -32600);
+});
+
 test('handoff source pins are optional, bounded and forwarded without widening arguments', async () => {
   const [catalog]=await exchange([request(1,'tools/list')+'\n']);
   const schema=catalog.result.tools.find(t=>t.name==='luxe_handoff_save').inputSchema;

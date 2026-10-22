@@ -313,24 +313,33 @@ export function createAssistant(root, { runner = boundedRun } = {}) {
     try { readSmall(root, 'automation/claude-assist.mjs', 65536); readSmall(root, 'automation/lib/claude_assist_offline.mjs', 65536); }
     catch { return { status: 'unknown', localReadiness: report.localReadiness, protocol: { state: 'unknown', reason: 'server_files_missing_or_unsafe' }, claudeClient: 'unknown', modelCalled: false }; }
     const input = [
-      { jsonrpc: '2.0', id: 1, method: 'initialize', params: { protocolVersion: '2025-06-18', capabilities: {}, clientInfo: { name: 'luxestyle-self-check', version: '1' } } },
+      { jsonrpc: '2.0', id: 1, method: 'initialize', params: { protocolVersion: '2025-06-18', capabilities: {}, clientInfo: { name: 'luxestyle-self-check', version: '1' }, _meta: {} } },
       { jsonrpc: '2.0', method: 'notifications/initialized' },
-      { jsonrpc: '2.0', id: 2, method: 'ping' },
-      { jsonrpc: '2.0', id: 3, method: 'tools/list' },
+      { jsonrpc: '2.0', id: 'unsolicited-result', result: {} },
+      { jsonrpc: '2.0', id: 'unsolicited-error', error: { code: -32601, message: 'Unsupported request' } },
+      { jsonrpc: '2.0', id: 2, method: 'ping', params: { _meta: {} } },
+      { jsonrpc: '2.0', id: 3, method: 'tools/list', params: { _meta: { progressToken: 'catalog' } } },
+      { jsonrpc: '2.0', id: 4, method: 'tools/call', params: { name: 'luxe_handoff_read',
+        arguments: {}, _meta: { progressToken: 4 } } },
     ].map(JSON.stringify).join('\n') + '\n';
     const run = await runner(process.execPath, ['--import', path.join(root, 'automation/lib/claude_assist_offline.mjs'), path.join(root, 'automation/claude-assist.mjs'), 'mcp'],
-      { cwd: root, env: cleanEnv(), input, timeoutMs: 5000, maxBytes: 32768 });
+      { cwd: root, env: cleanEnv(), input, timeoutMs: 5000, maxBytes: 512 * 1024 });
     let protocol = { state: run.status === 'failed' ? 'failed' : 'unknown', reason: run.reason ?? (run.timedOut ? 'timeout' : run.truncated ? 'output_limit' : 'server_protocol_unverified') };
     if (run.status === 'passed') {
       try {
         const responses = (run.stdout ?? run.output).trim().split('\n').map(JSON.parse);
         const expected = ['luxe_doctor','luxe_checks','luxe_handoff_read','luxe_handoff_save','luxe_review_request','luxe_change_plan','luxe_review_list','luxe_review_get','luxe_review_answer','luxe_context'].sort();
         const names = responses[2]?.result?.tools?.map(t => t.name).sort();
-        if (responses.length !== 3 || responses.some((r,i) => r.jsonrpc !== '2.0' || r.id !== i+1 || r.error || !r.result)
+        const call = responses[3]?.result, handoff = JSON.parse(call?.content?.[0]?.text);
+        if (responses.length !== 4 || responses.some((r,i) => r.jsonrpc !== '2.0' || r.id !== i+1 || r.error || !r.result)
           || responses[0].result.protocolVersion !== '2025-06-18' || responses[0].result.serverInfo?.name !== 'luxestyle-claude-assist'
-          || JSON.stringify(names) !== JSON.stringify(expected) || Object.keys(responses[1].result).length) throw Error('invalid_protocol');
+          || JSON.stringify(names) !== JSON.stringify(expected) || Object.keys(responses[1].result).length
+          || call.isError !== false || call.content.length !== 1 || call.content[0].type !== 'text'
+          || !['available', 'unknown'].includes(handoff.state)
+          || (handoff.state === 'available' ? !Number.isSafeInteger(handoff.records) || handoff.records < 0 || !Array.isArray(handoff.latest)
+            : handoff.records !== null || handoff.latest !== null)) throw Error('invalid_protocol');
         protocol = { state: 'passed', tools: names.length, serverVersion: responses[0].result.serverInfo.version,
-          scope: 'initialize, ping and tools/list only; fixed local script, not an arbitrary config command' };
+          scope: 'initialize, ping, tools/list and read-only luxe_handoff_read with MCP metadata; response frames ignored; fixed local script, not an arbitrary config command' };
       } catch { protocol = { state: 'failed', reason: 'invalid_or_incomplete_protocol' }; }
     }
     return { status: protocol.state === 'failed' || report.localReadiness.state === 'blocked' ? 'failed' : protocol.state === 'passed' && report.localReadiness.state === 'ready' ? 'passed' : 'unknown',
