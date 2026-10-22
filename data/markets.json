@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "last_updated": "2026-10-21",
+  "last_updated": "2026-10-22",
   "titel": "Märkte — Krypto & Aktien",
   "untertitel": "Live-Kurse, Finanz-News und KI-Sentiment auf einen Blick. Anti-Hype, mit Quellen.",
   "hinweis": "Keine Anlageberatung. Krypto-Kurse aktualisieren live im Browser (CoinGecko); Aktien, News und KI-Sentiment werden von aban news regelmäßig automatisch aktualisiert. KI-Einordnung ist experimentell und ersetzt keine eigene Recherche.",
@@ -12,38 +12,38 @@
       "name": "Bitcoin",
       "type": "crypto",
       "coingecko_id": "bitcoin",
-      "price": 83435,
-      "change_24h": 2.5,
+      "price": 81712,
+      "change_24h": -2.03,
       "currency": "usd",
-      "sentiment": "bullish",
-      "confidence": 0.7,
-      "rationale": "JPMorgan Asset Management sieht Bitcoin als potenziell besser als Aktien, und ein Unternehmen hat weitere 22 Millionen Dollar in Bitcoin investiert.",
-      "signal": "Positive institutionelle Einschätzung und Investitionen.",
+      "sentiment": "neutral",
+      "confidence": 0.6,
+      "rationale": "JPMorgan sieht Bitcoin als potenziell besser als Aktien, während gleichzeitig Betrugsfälle und regulatorische Prüfungen zunehmen.",
+      "signal": "Gemischte Signale, Betrugsfälle und institutionelles Interesse.",
       "spark": [
-        86596.74,
         86183.2944,
         84382.3999,
         84377.9651,
-        84416.715,
+        84075.7166,
         84448.7502,
         83479.2543,
-        83576.1346,
+        83640.1016,
         84841.6663,
         84506.469,
         84742.7864,
-        85770.8722,
+        86489.7348,
         85540.0871,
         83282.0454,
-        82564.2941,
+        81685.8869,
         82917.9034,
         83690.8692,
         81794.8488,
-        81603.6546,
+        83115.1016,
         82155.5398,
         81523.658,
-        82019.5829,
+        81408.3452,
         81875.2639,
-        82943.8315
+        82943.8315,
+        84082.2665
       ],
       "asset_news": [
         {
@@ -78,21 +78,21 @@
         }
       ],
       "stats": {
-        "market_cap": 1676751523821,
-        "volume": 27617848900,
-        "high_24h": 83568,
-        "low_24h": 81273,
+        "market_cap": 1642850125626,
+        "volume": 37440873957,
+        "high_24h": 84808,
+        "low_24h": 81742,
         "ath": 126080,
-        "ath_change": -33.82,
-        "change_7d": 1.64,
-        "change_30d": -4.22,
-        "high_30d": 86596.74,
-        "low_30d": 81523.658
+        "ath_change": -35.19,
+        "change_7d": 2.35,
+        "change_30d": -2.44,
+        "high_30d": 86489.7348,
+        "low_30d": 81408.3452
       },
       "analysis": [
-        "Treiber: JPMorgan Asset Management prognostiziert, dass Bitcoin Aktien übertreffen könnte, und ein Unternehmen stockt seine Bitcoin-Bestände auf.",
-        "Risiko: Berichte über Betrugsfälle mit Krypto-ATMs und die Prüfung von Krypto-Kiosk-Unternehmen durch das DOJ könnten das Vertrauen beeinträchtigen.",
-        "Einordnung: Trotz Betrugswarnungen zeigen institutionelles Interesse und weitere Käufe eine positive Grundstimmung."
+        "Treiber: Institutionelles Interesse (JPMorgan), strategische Käufe und steigende Akzeptanz von Prediction Markets.",
+        "Risiko: Betrugsfälle (Krypto-ATM-Scam) und regulatorische Prüfungen durch das DOJ.",
+        "Einordnung: Das institutionelle Interesse steht im Kontrast zu den anhaltenden Herausforderungen durch Betrug und regulatorische Unsicherheiten."
       ]
     },
     {
@@ -101,38 +101,38 @@
       "name": "Ethereum",
       "type": "crypto",
       "coingecko_id": "ethereum",
-      "price": 2460.99,
-      "change_24h": 3.28,
+      "price": 2397.86,
+      "change_24h": -2.48,
       "currency": "usd",
       "sentiment": "bullish",
       "confidence": 0.8,
-      "rationale": "JPMorgan erweitert die Nutzung seines JPM Coin auf Ethereum für institutionelle Kunden, was die Akzeptanz der Blockchain fördert.",
-      "signal": "JPMorgan integriert JPM Coin in Ethereum.",
+      "rationale": "JPMorgan erweitert die Nutzung seines JPM Coin auf Ethereum für institutionelle Kunden, was die Akzeptanz der Blockchain unterstreicht.",
+      "signal": "JPMorgan integriert JPM Coin auf Ethereum.",
       "spark": [
-        2775.1687,
         2752.6291,
         2684.3429,
         2687.126,
-        2695.6048,
+        2690.8887,
         2687.5353,
         2687.9217,
-        2684.7086,
+        2677.3845,
         2705.2959,
         2667.9504,
         2686.8914,
-        2710.4182,
+        2725.9105,
         2697.1724,
         2573.2309,
-        2485.7049,
+        2472.7267,
         2504.314,
         2534.6324,
         2445.8884,
-        2419.6896,
+        2496.5901,
         2439.9619,
         2420.5598,
-        2407.8424,
+        2400.3079,
         2405.9184,
-        2446.4879
+        2446.4879,
+        2472.679
       ],
       "asset_news": [
         {
@@ -167,21 +167,21 @@
         }
       ],
       "stats": {
-        "market_cap": 300560971169,
-        "volume": 12019784314,
-        "high_24h": 2471.63,
-        "low_24h": 2380.1,
+        "market_cap": 292962730369,
+        "volume": 14194789889,
+        "high_24h": 2518.86,
+        "low_24h": 2403.64,
         "ath": 4946.05,
-        "ath_change": -50.24,
-        "change_7d": 1.11,
-        "change_30d": -11.84,
-        "high_30d": 2775.1687,
-        "low_30d": 2405.9184
+        "ath_change": -51.52,
+        "change_7d": 1.34,
+        "change_30d": -10.17,
+        "high_30d": 2752.6291,
+        "low_30d": 2400.3079
       },
       "analysis": [
-        "Treiber: JPMorgan bringt seinen JPM Coin als Einlagen-Token auf Ethereum für institutionelle Kunden, was die Akzeptanz und Nutzung der Blockchain erhöht.",
-        "Risiko: Keine spezifischen Risiken in den vorliegenden Nachrichten genannt.",
-        "Einordnung: Die Integration durch JPMorgan ist ein starkes Signal für die institutionelle Reife und Akzeptanz von Ethereum."
+        "Treiber: JPMorgan integriert JPM Coin auf Ethereum für institutionelle Kunden.",
+        "Risiko: Keine spezifischen Risiken in den News genannt, aber allgemeine Krypto-Volatilität bleibt bestehen.",
+        "Einordnung: Die Integration durch JPMorgan ist ein starkes Signal für die institutionelle Akzeptanz von Ethereum."
       ]
     },
     {
@@ -190,38 +190,38 @@
       "name": "Solana",
       "type": "crypto",
       "coingecko_id": "solana",
-      "price": 106.8,
-      "change_24h": 2.53,
+      "price": 103.7,
+      "change_24h": -2.88,
       "currency": "usd",
       "sentiment": "neutral",
       "confidence": 0.5,
-      "rationale": "Solana führt ein großes Netzwerk-Update durch und verzeichnet Erfolge bei Staking-Plattformen, aber ein Unternehmen hat seine SOL-Bestände verkauft.",
-      "signal": "Netzwerk-Update und Staking-Erfolge, aber auch Verkäufe.",
+      "rationale": "Solana erlebt ein großes Netzwerk-Update und steigende Staked Assets, während gleichzeitig ein großer Treasury-Verkauf stattfand.",
+      "signal": "Netzwerk-Update und Staking-Wachstum versus Treasury-Verkauf.",
       "spark": [
-        118.8722,
         118.5071,
         114.9854,
         117.0095,
-        121.3788,
+        122.081,
         121.9555,
         118.8202,
-        118.04,
+        119.0932,
         118.3818,
         118.5893,
         119.6016,
-        120.7634,
+        121.516,
         120.6806,
         116.2261,
-        109.0743,
+        109.5077,
         109.9998,
         111.2523,
         105.6365,
-        104.1938,
+        106.7489,
         105.3442,
         104.3166,
-        103.9996,
+        103.3616,
         104.9774,
-        106.3859
+        106.3859,
+        106.9383
       ],
       "asset_news": [
         {
@@ -256,21 +256,21 @@
         }
       ],
       "stats": {
-        "market_cap": 62954267303,
-        "volume": 2580270249,
-        "high_24h": 107.93,
-        "low_24h": 103.78,
+        "market_cap": 61153138781,
+        "volume": 2894641278,
+        "high_24h": 109.08,
+        "low_24h": 103.61,
         "ath": 293.31,
-        "ath_change": -63.59,
-        "change_7d": 2.1,
-        "change_30d": -10.5,
-        "high_30d": 121.9555,
-        "low_30d": 103.9996
+        "ath_change": -64.65,
+        "change_7d": 1.51,
+        "change_30d": -9.76,
+        "high_30d": 122.081,
+        "low_30d": 103.3616
       },
       "analysis": [
-        "Treiber: Solanas größtes Netzwerk-Update 'Alpenglow' geht live, und eine KI-Agentur verwaltet über 40 Millionen Dollar an gestakten Assets auf Solana.",
-        "Risiko: SkyAI hat seine gesamten Solana-Bestände verkauft, was auf eine mögliche negative Einschätzung hindeutet.",
-        "Einordnung: Die Nachrichtenlage ist gemischt, mit positiven technischen Entwicklungen und Staking-Erfolgen, aber auch größeren Verkäufen."
+        "Treiber: 'Alpenglow' Netzwerk-Update und Wachstum der gestakten Assets durch AI-Agenten.",
+        "Risiko: Verkauf des gesamten Solana-Treasury durch SkyAI und Diskussionen über Staking-Renditen.",
+        "Einordnung: Positive technische Entwicklungen und Staking-Wachstum stehen einem signifikanten Treasury-Verkauf gegenüber."
       ]
     },
     {
@@ -278,16 +278,15 @@
       "symbol": "NVDA",
       "name": "NVIDIA",
       "type": "stock",
-      "price": 216.47,
-      "change_24h": -0.29,
+      "price": 221.97,
+      "change_24h": 2.54,
       "currency": "usd",
       "sentiment": "bullish",
       "confidence": 0.7,
-      "rationale": "Nvidia erhält Berichten zufolge Großaufträge aus China, was das Umsatzwachstum antreiben könnte.",
-      "signal": "Großaufträge aus China für Nvidia.",
+      "rationale": "Nvidia sichert sich Berichten zufolge Großaufträge aus China, was das Wachstumspotenzial trotz geopolitischer Spannungen unterstreicht.",
+      "signal": "Großaufträge aus China treiben Wachstum an.",
       "yahoo_symbol": "NVDA",
       "spark": [
-        227.38,
         228.87,
         225.51,
         224.58,
@@ -308,7 +307,8 @@
         217.23,
         214.13,
         217.09,
-        216.47
+        216.47,
+        221.97
       ],
       "stooq_symbol": "nvda.us",
       "asset_news": [
@@ -346,16 +346,16 @@
       "stats": {
         "week52_high": 243.37,
         "week52_low": 164.27,
-        "volume": 77454645,
+        "volume": 86111324,
         "high_30d": 239.24,
         "low_30d": 214.13,
-        "change_7d": -5.27,
-        "change_30d": -4.8
+        "change_7d": 0.3,
+        "change_30d": -3.01
       },
       "analysis": [
-        "Treiber: Berichte über Chip-Bestellungen im Wert von 35 Milliarden Dollar von chinesischen Unternehmen könnten das Wachstum von Nvidia stark ankurbeln.",
-        "Risiko: Trotz der Gerüchte über Großaufträge konnte der Aktienkurs nicht signifikant steigen, was auf Skepsis oder andere Belastungen hindeutet.",
-        "Einordnung: Die potenziellen Großaufträge sind ein starker positiver Impuls, auch wenn der Kurs noch nicht vollständig reagiert hat."
+        "Treiber: Berichte über 35 Milliarden Dollar Chip-Bestellungen von chinesischen Unternehmen.",
+        "Risiko: Geopolitische Spannungen und die Notwendigkeit, 'compliant' Chips zu liefern.",
+        "Einordnung: Die hohen Bestellungen aus China sind ein starker Wachstumstreiber, aber die Einhaltung von Exportbeschränkungen ist entscheidend."
       ]
     },
     {
@@ -363,16 +363,15 @@
       "symbol": "AAPL",
       "name": "Apple",
       "type": "stock",
-      "price": 339.5,
-      "change_24h": -1.0,
+      "price": 343.99,
+      "change_24h": 1.32,
       "currency": "usd",
       "sentiment": "bearish",
-      "confidence": 0.6,
-      "rationale": "Analysten stufen Apple herab und warnen vor einem möglichen Kursrückgang, da sie vorsichtiger werden.",
-      "signal": "Analysten stufen Apple-Aktie herab.",
+      "confidence": 0.7,
+      "rationale": "Analysten stufen Apple aufgrund von Bedenken hinsichtlich des iPhone-Geschäfts und eines möglichen Kursrückgangs herab.",
+      "signal": "Analysten stufen Apple herab, warnen vor Kursrückgang.",
       "yahoo_symbol": "AAPL",
       "spark": [
-        338.98,
         339.75,
         337.02,
         335.92,
@@ -393,7 +392,8 @@
         342.0,
         343.46,
         342.94,
-        339.5
+        339.5,
+        343.99
       ],
       "stooq_symbol": "aapl.us",
       "asset_news": [
@@ -431,16 +431,16 @@
       "stats": {
         "week52_high": 348.15,
         "week52_low": 243.42,
-        "volume": 35678066,
-        "high_30d": 343.46,
+        "volume": 35368592,
+        "high_30d": 343.99,
         "low_30d": 329.4,
-        "change_7d": -0.52,
-        "change_30d": 0.15
+        "change_7d": 0.3,
+        "change_30d": 1.25
       },
       "analysis": [
-        "Treiber: Keine positiven Treiber in den vorliegenden Nachrichten genannt.",
-        "Risiko: Analysten stufen die Apple-Aktie herab und warnen vor einem möglichen Kursrückgang von bis zu 27%.",
-        "Einordnung: Die Stimmung ist aufgrund der Analysten-Herabstufungen und der Warnungen vor einem Kursrückgang negativ."
+        "Treiber: Qnity sichert sich iPhone-Geschäft von Apple.",
+        "Risiko: Herabstufungen durch Analysten und Prognosen eines erheblichen Kursrückgangs.",
+        "Einordnung: Die Skepsis der Analysten bezüglich des iPhone-Geschäfts dominiert die aktuelle Nachrichtenlage."
       ]
     },
     {
@@ -448,16 +448,15 @@
       "symbol": "MSFT",
       "name": "Microsoft",
       "type": "stock",
-      "price": 531.87,
-      "change_24h": -0.31,
+      "price": 532.95,
+      "change_24h": 0.2,
       "currency": "usd",
       "sentiment": "neutral",
-      "confidence": 0.5,
-      "rationale": "Microsofts Aktienstärke wird für eine Strategie genutzt, aber das Unternehmen lehnt tokenisierte Aktien ab.",
-      "signal": "Stärke der Aktie, aber Ablehnung tokenisierter Aktien.",
+      "confidence": 0.6,
+      "rationale": "Microsofts Stärke wird hervorgehoben, aber das Unternehmen lehnt zusammen mit anderen die Tokenisierung von Aktien ab.",
+      "signal": "Stärke und Ablehnung tokenisierter Aktien.",
       "yahoo_symbol": "MSFT",
       "spark": [
-        501.61,
         498.0,
         500.59,
         497.93,
@@ -478,7 +477,8 @@
         539.44,
         529.05,
         533.52,
-        531.87
+        531.87,
+        532.95
       ],
       "stooq_symbol": "msft.us",
       "asset_news": [
@@ -516,16 +516,16 @@
       "stats": {
         "week52_high": 553.72,
         "week52_low": 349.2,
-        "volume": 14432432,
+        "volume": 13826924,
         "high_30d": 543.45,
         "low_30d": 497.93,
-        "change_7d": -2.13,
-        "change_30d": 6.03
+        "change_7d": -0.14,
+        "change_30d": 7.02
       },
       "analysis": [
-        "Treiber: Die aktuelle Stärke der Microsoft-Aktie könnte eine Strategie für zweistellige Renditen ermöglichen.",
-        "Risiko: Microsoft lehnt zusammen mit anderen großen Unternehmen tokenisierte Aktien ab, was zukünftige Innovationen in diesem Bereich einschränken könnte.",
-        "Einordnung: Die Nachrichtenlage ist gemischt, mit positiven Aussichten für die Aktie, aber einer konservativen Haltung gegenüber neuen Finanzprodukten."
+        "Treiber: Stärke des Microsoft-Aktienkurses und Potenzial für zweistellige Renditen.",
+        "Risiko: Ablehnung der Tokenisierung von Aktien zusammen mit anderen Großunternehmen.",
+        "Einordnung: Die fundamentale Stärke des Unternehmens wird durch die konservative Haltung gegenüber neuen Finanzprodukten ergänzt."
       ]
     },
     {
@@ -533,16 +533,15 @@
       "symbol": "TSLA",
       "name": "Tesla",
       "type": "stock",
-      "price": 373.71,
-      "change_24h": 1.54,
+      "price": 386.47,
+      "change_24h": 3.41,
       "currency": "usd",
       "sentiment": "neutral",
       "confidence": 0.5,
-      "rationale": "Es gibt Spekulationen über eine mögliche Fusion von SpaceX und Tesla, aber auch Berichte über einen Kursrückgang nach der Einführung eines Flugautos.",
-      "signal": "Fusionsspekulationen und Kursrückgang nach Produktvorstellung.",
+      "rationale": "Spekulationen über zukünftige Kursziele und mögliche Übernahmen stehen neben der Veröffentlichung von Quartalszahlen.",
+      "signal": "Spekulationen und Quartalszahlen im Fokus.",
       "yahoo_symbol": "TSLA",
       "spark": [
-        375.3,
         378.9,
         380.12,
         377.94,
@@ -563,7 +562,8 @@
         362.44,
         354.72,
         368.06,
-        373.71
+        373.71,
+        386.47
       ],
       "stooq_symbol": "tsla.us",
       "asset_news": [
@@ -601,56 +601,56 @@
       "stats": {
         "week52_high": 498.83,
         "week52_low": 297.38,
-        "volume": 30761382,
-        "high_30d": 382.7,
+        "volume": 44779790,
+        "high_30d": 386.47,
         "low_30d": 352.84,
-        "change_7d": -0.41,
-        "change_30d": -0.42
+        "change_7d": 5.26,
+        "change_30d": 2.0
       },
       "analysis": [
-        "Treiber: Spekulationen über eine mögliche Fusion von SpaceX und Tesla könnten das Interesse wecken.",
-        "Risiko: Die Tesla-Aktie rutschte nach der Vorstellung ihres 'Flugautos' ab, was auf Skepsis oder Enttäuschung hindeutet.",
-        "Einordnung: Die Nachrichtenlage ist uneinheitlich, mit potenziellen positiven Katalysatoren und negativen Reaktionen auf Produktneuheiten."
+        "Treiber: Spekulationen über hohe zukünftige Kursziele und mögliche Übernahme durch SpaceX.",
+        "Risiko: Aktueller Kursrückgang nach dem Debüt des 'Flying Car' und Unsicherheiten bei den Q3-Ergebnissen.",
+        "Einordnung: Langfristige bullische Spekulationen stehen kurzfristigen Kursrückgängen und anstehenden Quartalszahlen gegenüber."
       ]
     },
     {
-      "price": 1.36,
-      "change_24h": 4.78,
+      "price": 1.33,
+      "change_24h": -2.34,
       "currency": "usd",
       "sentiment": "neutral",
       "confidence": 0.5,
-      "rationale": "Ripple beteiligt sich an Tokenisierungsinitiativen, aber ein erwarteter Kursschub blieb bisher aus.",
-      "signal": "Beteiligung an Tokenisierung, aber kein Kursschub.",
+      "rationale": "Ripple beteiligt sich an der Tokenisierungsinitiative der DTCC, während ein erwarteter XRP-Kursanstieg ausbleibt.",
+      "signal": "Beteiligung an Tokenisierung, aber kein Kursanstieg.",
       "id": "ripple",
       "symbol": "XRP",
       "name": "XRP",
       "type": "crypto",
       "coingecko_id": "ripple",
       "spark": [
-        1.535,
         1.5713,
         1.5011,
         1.534,
-        1.5273,
+        1.5681,
         1.5165,
         1.4959,
-        1.4896,
+        1.4901,
         1.4941,
         1.4846,
         1.4862,
-        1.5077,
+        1.5197,
         1.4968,
         1.4208,
-        1.3947,
+        1.3793,
         1.4012,
         1.409,
         1.341,
-        1.3306,
+        1.3651,
         1.3335,
         1.31,
-        1.3057,
+        1.2927,
         1.3031,
-        1.3343
+        1.3343,
+        1.3651
       ],
       "asset_news": [
         {
@@ -685,31 +685,31 @@
         }
       ],
       "stats": {
-        "market_cap": 85625128259,
-        "volume": 1529450315,
-        "high_24h": 1.35,
-        "low_24h": 1.29,
+        "market_cap": 83699314298,
+        "volume": 1973984392,
+        "high_24h": 1.4,
+        "low_24h": 1.33,
         "ath": 3.65,
-        "ath_change": -62.79,
-        "change_7d": 0.28,
-        "change_30d": -13.07,
+        "ath_change": -63.65,
+        "change_7d": 2.37,
+        "change_30d": -13.12,
         "high_30d": 1.5713,
-        "low_30d": 1.3031
+        "low_30d": 1.2927
       },
       "analysis": [
-        "Treiber: Ripple beteiligt sich an der Tokenisierungsinitiative von DTCC, was die Akzeptanz und Nutzung von XRP fördern könnte.",
-        "Risiko: Der erwartete Kursschub nach dem öffentlichen Debüt eines XRP-Treasury-Unternehmens blieb aus, und die ETF-Zuflüsse endeten.",
-        "Einordnung: Trotz der Beteiligung an wichtigen Initiativen fehlt es an unmittelbaren positiven Kursimpulsen."
+        "Treiber: Ripple tritt der DTCC-Tokenisierungsinitiative bei.",
+        "Risiko: Erwarteter Kursanstieg nach dem öffentlichen Debüt einer XRP-Treasury-Firma blieb aus.",
+        "Einordnung: Die strategische Beteiligung an der Tokenisierung ist positiv, aber kurzfristige Kursimpulse fehlen."
       ]
     },
     {
-      "price": 747.92,
-      "change_24h": 2.77,
+      "price": 732.43,
+      "change_24h": -2.11,
       "currency": "usd",
       "sentiment": "neutral",
-      "confidence": 0.5,
-      "rationale": "BNB Chain führt Token-Burns durch und sucht Community-Input, aber der Kurs kämpft mit Widerständen.",
-      "signal": "Token-Burns und Community-Input, aber Kursdruck.",
+      "confidence": 0.6,
+      "rationale": "BNB Chain verbrennt Token und teilt die Asset-Macht auf, während Grayscale BNB nicht als Konsens-Trade sieht.",
+      "signal": "Token-Burn und Governance-Änderungen, gemischte Analystenmeinungen.",
       "id": "bnb",
       "symbol": "BNB",
       "name": "BNB",
@@ -748,87 +748,87 @@
         }
       ],
       "spark": [
-        772.2241,
-        799.1367,
         788.1391,
         767.227,
+        776.4242,
         776.9555,
-        773.2697,
         778.5292,
+        763.6764,
         758.4489,
-        768.7995,
         771.4236,
         768.04,
+        786.7952,
         795.182,
-        786.3872,
         779.1962,
+        772.0487,
         735.3774,
-        741.7373,
         749.5771,
         753.4665,
+        732.3112,
         741.2266,
-        729.8955,
         728.8799,
+        720.8827,
         717.4127,
-        722.6807,
-        731.4387
+        731.4387,
+        740.7389,
+        745.9887
       ],
       "stats": {
-        "market_cap": 98350478232,
-        "volume": 715799543,
-        "high_24h": 747.27,
-        "low_24h": 727.02,
+        "market_cap": 96340185327,
+        "volume": 847542451,
+        "high_24h": 750.97,
+        "low_24h": 731.44,
         "ath": 1369.99,
-        "ath_change": -45.41,
-        "change_7d": -1.32,
-        "change_30d": -5.28,
-        "high_30d": 799.1367,
+        "ath_change": -46.54,
+        "change_7d": 2.35,
+        "change_30d": -5.35,
+        "high_30d": 795.182,
         "low_30d": 717.4127
       },
       "analysis": [
-        "Treiber: BNB Chain führt vierteljährliche Token-Burns durch und sucht Community-Input für ihre neue Layer 1.",
-        "Risiko: Der Kurs von BNB kämpft mit Verkaufsdruck und Widerständen nahe 740 Dollar.",
-        "Einordnung: Die Bemühungen um Token-Knappheit und Community-Beteiligung sind positiv, werden aber durch den aktuellen Verkaufsdruck gebremst."
+        "Treiber: 37. vierteljährlicher Token-Burn und Aufteilung der Asset-Macht innerhalb der BNB Chain.",
+        "Risiko: Grayscale sieht BNB nicht als 'Consensus Trade' und Sell-Side-Druck nahe 740 $.",
+        "Einordnung: Interne Verbesserungen und Token-Burns stehen einer vorsichtigen Einschätzung durch Analysten gegenüber."
       ]
     },
     {
-      "price": 0.225267,
-      "change_24h": 4.47,
+      "price": 0.21518,
+      "change_24h": -4.42,
       "currency": "usd",
       "sentiment": "bearish",
-      "confidence": 0.6,
-      "rationale": "Cardano verzeichnete einen deutlichen Kursrückgang und ein Analyst sieht ein Verkaufssignal.",
-      "signal": "Deutlicher Kursrückgang und Verkaufssignal.",
+      "confidence": 0.7,
+      "rationale": "Cardano verzeichnete einen starken Kursrückgang, und Analysten sehen ein Verkaufssignal, während DeFi-Werte gering bleiben.",
+      "signal": "Starker Kursrückgang, Verkaufssignal, geringer DeFi-Wert.",
       "id": "cardano",
       "symbol": "ADA",
       "name": "Cardano",
       "type": "crypto",
       "coingecko_id": "cardano",
       "spark": [
-        0.2073,
-        0.2036,
-        0.2085,
-        0.1954,
-        0.2025,
-        0.2245,
-        0.2278,
-        0.245,
         0.254,
         0.2385,
         0.2476,
-        0.254,
+        0.2586,
         0.255,
         0.2472,
-        0.2465,
+        0.2444,
         0.2463,
         0.2443,
         0.2439,
-        0.2704,
+        0.2597,
         0.2675,
         0.2554,
-        0.243,
+        0.232,
         0.249,
-        0.252
+        0.252,
+        0.2329,
+        0.2358,
+        0.2298,
+        0.2255,
+        0.2193,
+        0.218,
+        0.2238,
+        0.2251
       ],
       "asset_news": [
         {
@@ -863,31 +863,31 @@
         }
       ],
       "stats": {
-        "market_cap": 8459363508,
-        "volume": 279149210,
-        "high_24h": 0.226044,
-        "low_24h": 0.215369,
+        "market_cap": 8087369626,
+        "volume": 305752801,
+        "high_24h": 0.230254,
+        "low_24h": 0.214417,
         "ath": 3.09,
-        "ath_change": -92.7,
-        "change_7d": -6.8,
-        "change_30d": 21.56,
-        "high_30d": 0.2704,
-        "low_30d": 0.1954
+        "ath_change": -93.03,
+        "change_7d": -2.05,
+        "change_30d": -11.38,
+        "high_30d": 0.2675,
+        "low_30d": 0.218
       },
       "analysis": [
-        "Treiber: Der Gründer von Cardano entwickelt eine neue Programmiersprache für das Netzwerk, was zukünftige Innovationen ermöglichen könnte.",
-        "Risiko: Cardano fiel diese Woche um 12,6%, und ein Top-Analyst sieht ein Verkaufssignal für ADA.",
-        "Einordnung: Trotz langfristiger Entwicklungsbemühungen ist die kurzfristige Stimmung aufgrund des Kursrückgangs und der Analystenmeinung negativ."
+        "Treiber: Entwicklung einer neuen Programmiersprache durch den Gründer.",
+        "Risiko: Starker Kursrückgang (12.6% diese Woche) und Verkaufssignal durch Top-Analysten.",
+        "Einordnung: Trotz technischer Weiterentwicklungen dominieren kurzfristige Kursverluste und negative Analystenmeinungen."
       ]
     },
     {
-      "price": 0.082056,
-      "change_24h": 3.84,
+      "price": 0.078988,
+      "change_24h": -3.72,
       "currency": "usd",
       "sentiment": "neutral",
       "confidence": 0.5,
-      "rationale": "Dogecoin verzeichnet Kursgewinne, aber die Nachrichtenlage ist dünn und spekulativ.",
-      "signal": "Kursgewinne, aber dünne Nachrichtenlage.",
+      "rationale": "Dogecoin verzeichnet leichte Gewinne, aber die Nachrichtenlage ist von Spekulationen über zukünftige Kursziele geprägt.",
+      "signal": "Leichte Gewinne, Spekulationen über zukünftige Kurse.",
       "id": "dogecoin",
       "symbol": "DOGE",
       "name": "Dogecoin",
@@ -926,57 +926,57 @@
         }
       ],
       "stats": {
-        "market_cap": 12834272552,
-        "volume": 472928463,
-        "high_24h": 0.082241,
-        "low_24h": 0.078839,
+        "market_cap": 12355956907,
+        "volume": 595563201,
+        "high_24h": 0.083711,
+        "low_24h": 0.078868,
         "ath": 0.731578,
-        "ath_change": -88.78,
-        "change_7d": 1.29,
-        "change_30d": 13.41,
-        "high_30d": 0.0998,
-        "low_30d": 0.0801
+        "ath_change": -89.2,
+        "change_7d": 0.99,
+        "change_30d": -18.43,
+        "high_30d": 0.1004,
+        "low_30d": 0.0793
       },
       "analysis": [
-        "Treiber: Dogecoin verzeichnete Kursgewinne, zusammen mit anderen großen Kryptowährungen.",
-        "Risiko: Die Nachrichtenlage ist dünn und konzentriert sich hauptsächlich auf spekulative Preisprognosen ohne konkrete fundamentale Entwicklungen.",
-        "Einordnung: Die aktuellen Kursgewinne sind positiv, aber es fehlen fundamentale Nachrichten, die eine klare Richtung vorgeben würden."
+        "Treiber: Leichte Kursgewinne zusammen mit anderen großen Kryptowährungen.",
+        "Risiko: Die Nachrichtenlage ist stark von Spekulationen über zukünftige Kursziele geprägt, ohne konkrete fundamentale Treiber.",
+        "Einordnung: Der Kurs bewegt sich im Einklang mit dem breiteren Markt, aber konkrete wert-spezifische positive Nachrichten fehlen."
       ],
       "spark": [
-        0.0828,
-        0.0816,
-        0.0817,
-        0.0878,
-        0.0897,
-        0.0909,
-        0.0905,
-        0.0862,
-        0.0829,
-        0.0843,
-        0.0848,
-        0.0836,
-        0.0801,
-        0.0808,
-        0.0874,
-        0.0877,
-        0.0873,
-        0.0998,
+        0.1004,
         0.0927,
         0.0957,
         0.0989,
         0.0969,
         0.0939,
-        0.0939
+        0.0939,
+        0.0943,
+        0.0929,
+        0.0928,
+        0.0958,
+        0.0937,
+        0.089,
+        0.084,
+        0.0857,
+        0.0867,
+        0.0822,
+        0.0843,
+        0.0811,
+        0.0808,
+        0.0793,
+        0.0797,
+        0.0817,
+        0.0819
       ]
     },
     {
-      "price": 340.27,
-      "change_24h": -1.13,
+      "price": 334.76,
+      "change_24h": -1.62,
       "currency": "usd",
       "sentiment": "neutral",
       "confidence": 0.5,
-      "rationale": "Es gibt Erwartungen an starkes Cloud-Wachstum, aber Alphabet lehnt tokenisierte Aktien ab.",
-      "signal": "Erwartetes Cloud-Wachstum, Ablehnung tokenisierter Aktien.",
+      "rationale": "Alphabet wird vor den Quartalszahlen analysiert, während es sich gegen tokenisierte Aktien ausspricht.",
+      "signal": "Quartalszahlen erwartet, Ablehnung tokenisierter Aktien.",
       "id": "alphabet",
       "symbol": "GOOGL",
       "name": "Alphabet",
@@ -984,7 +984,6 @@
       "yahoo_symbol": "GOOGL",
       "stooq_symbol": "googl.us",
       "spark": [
-        354.97,
         351.16,
         337.83,
         342.36,
@@ -1005,7 +1004,8 @@
         349.22,
         340.59,
         344.18,
-        340.28
+        340.28,
+        334.76
       ],
       "asset_news": [
         {
@@ -1041,27 +1041,27 @@
       ],
       "stats": {
         "week52_high": 408.61,
-        "week52_low": 249.29,
-        "volume": 17907615,
-        "high_30d": 354.97,
-        "low_30d": 337.83,
-        "change_7d": -3.82,
-        "change_30d": -4.14
+        "week52_low": 251.85,
+        "volume": 28525256,
+        "high_30d": 353.78,
+        "low_30d": 334.76,
+        "change_7d": -3.7,
+        "change_30d": -4.67
       },
       "analysis": [
-        "Treiber: Es wird erwartet, dass Alphabet ein Cloud-Umsatzwachstum von über 100% melden wird.",
-        "Risiko: Alphabet lehnt zusammen mit anderen großen Unternehmen tokenisierte Aktien ab, was zukünftige Innovationen in diesem Bereich einschränken könnte.",
-        "Einordnung: Die Aussichten für das Cloud-Geschäft sind positiv, aber die Haltung gegenüber tokenisierten Aktien ist konservativ."
+        "Treiber: Erwartungen an starkes Wachstum im Google Cloud-Bereich vor den Q3-Berichten.",
+        "Risiko: Ablehnung der Tokenisierung von Aktien zusammen mit anderen Großunternehmen.",
+        "Einordnung: Die Erwartungen an die Quartalszahlen sind positiv, aber die Haltung zu tokenisierten Aktien ist konservativ."
       ]
     },
     {
-      "price": 262.63,
-      "change_24h": 0.07,
+      "price": 262.37,
+      "change_24h": -0.1,
       "currency": "usd",
       "sentiment": "bullish",
       "confidence": 0.7,
-      "rationale": "Morgan Stanley sieht mehrere Katalysatoren für Amazon und erhöht das Kursziel.",
-      "signal": "Positive Analystenbewertung und erhöhte Kursziele.",
+      "rationale": "Amazon-Aktien steigen nach positiven Analystenkommentaren und der Identifizierung von Wachstumskatalysatoren.",
+      "signal": "Analysten heben Kursziel an, Wachstumskatalysatoren.",
       "id": "amazon",
       "symbol": "AMZN",
       "name": "Amazon",
@@ -1069,7 +1069,6 @@
       "yahoo_symbol": "AMZN",
       "stooq_symbol": "amzn.us",
       "spark": [
-        258.45,
         254.98,
         249.27,
         249.38,
@@ -1090,7 +1089,8 @@
         254.76,
         250.0,
         262.45,
-        262.63
+        262.63,
+        262.37
       ],
       "asset_news": [
         {
@@ -1127,26 +1127,26 @@
       "stats": {
         "week52_high": 287.2,
         "week52_low": 196.0,
-        "volume": 34498734,
+        "volume": 30981629,
         "high_30d": 262.63,
         "low_30d": 246.15,
-        "change_7d": 1.57,
-        "change_30d": 1.62
+        "change_7d": 3.26,
+        "change_30d": 2.9
       },
       "analysis": [
-        "Treiber: Morgan Stanley identifiziert fünf Katalysatoren für Amazon und erhöht das Kursziel, was zu einem Kursanstieg führt.",
-        "Risiko: Keine spezifischen Risiken in den vorliegenden Nachrichten genannt.",
-        "Einordnung: Die positive Einschätzung durch Morgan Stanley und die identifizierten Katalysatoren deuten auf eine bullische Stimmung hin."
+        "Treiber: Morgan Stanley identifiziert 5 Katalysatoren und hebt das Kursziel an.",
+        "Risiko: Keine spezifischen Risiken in den News genannt, aber allgemeine Marktvolatilität bleibt bestehen.",
+        "Einordnung: Positive Analystenbewertungen und identifizierte Wachstumstreiber stützen den Kurs."
       ]
     },
     {
-      "price": 694.25,
-      "change_24h": -1.59,
+      "price": 697.52,
+      "change_24h": 0.47,
       "currency": "usd",
-      "sentiment": "bearish",
-      "confidence": 0.6,
-      "rationale": "Meta-Aktie fällt vor den Quartalszahlen, und Analysten erwarten einen weiteren Rückgang.",
-      "signal": "Kursrückgang vor Quartalszahlen, negative Prognosen.",
+      "sentiment": "neutral",
+      "confidence": 0.5,
+      "rationale": "Meta-Aktien werden vor den Quartalszahlen analysiert, mit gemischten Erwartungen bezüglich des weiteren Kursverlaufs.",
+      "signal": "Quartalszahlen erwartet, gemischte Erwartungen.",
       "id": "meta",
       "symbol": "META",
       "name": "Meta",
@@ -1154,7 +1154,6 @@
       "yahoo_symbol": "META",
       "stooq_symbol": "meta.us",
       "spark": [
-        741.25,
         736.6,
         744.1,
         777.59,
@@ -1175,7 +1174,8 @@
         736.72,
         709.33,
         705.44,
-        694.25
+        694.25,
+        697.52
       ],
       "asset_news": [
         {
@@ -1212,26 +1212,26 @@
       "stats": {
         "week52_high": 779.82,
         "week52_low": 520.26,
-        "volume": 16684869,
+        "volume": 26478796,
         "high_30d": 777.59,
         "low_30d": 694.25,
-        "change_7d": -8.95,
-        "change_30d": -6.34
+        "change_7d": -5.43,
+        "change_30d": -5.31
       },
       "analysis": [
-        "Treiber: Keine positiven Treiber in den vorliegenden Nachrichten genannt.",
-        "Risiko: Die Meta-Aktie fällt vor den Quartalszahlen, und es wird ein weiterer Rückgang von über 10% erwartet.",
-        "Einordnung: Die Erwartungen für die kommenden Quartalszahlen sind negativ, was zu einem Kursrückgang führt."
+        "Treiber: Meta-Aktie ist im Jahresverlauf gestiegen.",
+        "Risiko: Prognosen eines möglichen Kursrückgangs von über 10% vor den Quartalszahlen.",
+        "Einordnung: Die Aktie befindet sich vor den Quartalszahlen in einer Phase der Unsicherheit, mit sowohl positiven als auch negativen Erwartungen."
       ]
     },
     {
-      "price": 534.74,
-      "change_24h": -0.62,
+      "price": 552.72,
+      "change_24h": 3.36,
       "currency": "usd",
       "sentiment": "bullish",
       "confidence": 0.7,
-      "rationale": "AMD wird eine große Chance im KI-Chip-Markt zugeschrieben und geht eine Partnerschaft mit Microsoft ein.",
-      "signal": "Große KI-Chip-Chance und Microsoft-Partnerschaft.",
+      "rationale": "AMD profitiert von der KI-Chip-Nachfrage und einer Partnerschaft mit Microsoft, was den Kurs steigen lässt.",
+      "signal": "KI-Chip-Nachfrage und Microsoft-Partnerschaft treiben Kurs.",
       "id": "amd",
       "symbol": "AMD",
       "name": "AMD",
@@ -1239,7 +1239,6 @@
       "yahoo_symbol": "AMD",
       "stooq_symbol": "amd.us",
       "spark": [
-        615.52,
         623.77,
         614.61,
         629.26,
@@ -1260,7 +1259,8 @@
         562.23,
         528.75,
         538.05,
-        534.74
+        534.74,
+        552.72
       ],
       "asset_news": [
         {
@@ -1297,33 +1297,32 @@
       "stats": {
         "week52_high": 658.52,
         "week52_low": 188.22,
-        "volume": 14863088,
+        "volume": 17756841,
         "high_30d": 649.42,
         "low_30d": 528.75,
-        "change_7d": -11.69,
-        "change_30d": -13.12
+        "change_7d": -3.17,
+        "change_30d": -11.39
       },
       "analysis": [
-        "Treiber: AMD wird eine große Chance im KI-Chip-Markt zugeschrieben und geht eine Upscaling-Partnerschaft mit Microsofts Xbox ein.",
-        "Risiko: Das hohe KGV von über 70 könnte Bedenken hinsichtlich der Bewertung aufwerfen.",
-        "Einordnung: Die Aussichten im KI-Bereich und die Partnerschaft mit Microsoft sind starke positive Treiber, trotz der hohen Bewertung."
+        "Treiber: KI-Chip-Nachfrage und Upscaling-Partnerschaft mit Microsoft (Xbox).",
+        "Risiko: Hohes P/E-Verhältnis von über 70.",
+        "Einordnung: Die starke Positionierung im KI-Sektor und strategische Partnerschaften sind positive Treiber, das hohe P/E-Verhältnis erfordert jedoch Aufmerksamkeit."
       ]
     },
     {
-      "price": 7712.57,
-      "change_24h": 0.28,
+      "price": 7757.17,
+      "change_24h": 0.58,
       "currency": "usd",
       "sentiment": "bullish",
       "confidence": 0.7,
-      "rationale": "Der S&P 500 steigt, da Tech-Aktien sich erholen und Anleger auf positive Quartalsergebnisse hoffen.",
-      "signal": "S&P 500 steigt, Tech-Erholung, Gewinnerwartungen.",
+      "rationale": "Der S&P 500 steigt, da die Anleger auf positive Unternehmensgewinne setzen und Tech-Aktien sich erholen.",
+      "signal": "Steigender Index, Tech-Erholung, Gewinnerwartungen.",
       "id": "sp500",
       "symbol": "S&P 500",
       "name": "S&P 500",
       "type": "index",
       "yahoo_symbol": "^GSPC",
       "spark": [
-        7764.7002,
         7764.6401,
         7706.0298,
         7704.1299,
@@ -1344,7 +1343,8 @@
         7744.0601,
         7659.4399,
         7690.73,
-        7712.5698
+        7712.5698,
+        7757.1699
       ],
       "asset_news": [
         {
@@ -1381,33 +1381,32 @@
       "stats": {
         "week52_high": 7844.52,
         "week52_low": 6316.91,
-        "volume": 2721619000,
+        "volume": 2889474000,
         "high_30d": 7818.9302,
         "low_30d": 7651.54,
-        "change_7d": -1.19,
-        "change_30d": -0.67
+        "change_7d": 0.5,
+        "change_30d": -0.1
       },
       "analysis": [
-        "Treiber: Der S&P 500 steigt, angetrieben durch die Erholung der Tech-Aktien und die Hoffnung auf positive Quartalsergebnisse.",
-        "Risiko: Keine spezifischen Risiken in den vorliegenden Nachrichten genannt.",
-        "Einordnung: Die allgemeine Marktstimmung ist positiv, unterstützt durch Tech-Erholung und Erwartungen an Unternehmensgewinne."
+        "Treiber: Erholung der Tech-Aktien und Optimismus bezüglich der Unternehmensgewinne.",
+        "Risiko: Keine spezifischen Risiken in den News genannt, aber allgemeine Marktvolatilität bleibt bestehen.",
+        "Einordnung: Der Markt zeigt sich optimistisch, getragen von der Erholung im Technologiesektor und positiven Gewinnerwartungen."
       ]
     },
     {
-      "price": 26424.82,
-      "change_24h": -0.02,
+      "price": 26702.86,
+      "change_24h": 1.05,
       "currency": "usd",
       "sentiment": "bullish",
       "confidence": 0.7,
-      "rationale": "Der Nasdaq Composite steigt, angetrieben durch die Stärke von KI- und Halbleiteraktien.",
-      "signal": "Nasdaq steigt, KI- und Halbleiter-Stärke.",
+      "rationale": "Der Nasdaq Composite steigt, angetrieben von der Erholung der Tech-Aktien und der Stärke im KI- und Halbleiterbereich.",
+      "signal": "Steigender Index, Tech-Erholung, KI-Stärke.",
       "id": "nasdaq",
       "symbol": "Nasdaq",
       "name": "Nasdaq Composite",
       "type": "index",
       "yahoo_symbol": "^IXIC",
       "spark": [
-        27122.0898,
         27244.2793,
         26936.0391,
         26939.3691,
@@ -1428,7 +1427,8 @@
         26713.0293,
         26140.0293,
         26430.8906,
-        26424.8203
+        26424.8203,
+        26702.8594
       ],
       "asset_news": [
         {
@@ -1465,33 +1465,32 @@
       "stats": {
         "week52_high": 27722.75,
         "week52_low": 20690.25,
-        "volume": 6999145000,
+        "volume": 6898345000,
         "high_30d": 27599.7891,
         "low_30d": 26140.0293,
-        "change_7d": -2.87,
-        "change_30d": -2.57
+        "change_7d": 0.04,
+        "change_30d": -1.99
       },
       "analysis": [
-        "Treiber: Der Nasdaq Composite steigt, angetrieben durch die Stärke von KI- und Halbleiteraktien.",
-        "Risiko: Keine spezifischen Risiken in den vorliegenden Nachrichten genannt.",
-        "Einordnung: Die Tech-lastige Nasdaq profitiert von der positiven Entwicklung im KI- und Halbleitersektor."
+        "Treiber: Rebound der Tech-Aktien und Stärke im KI- und Halbleitersektor.",
+        "Risiko: Keine spezifischen Risiken in den News genannt, aber allgemeine Marktvolatilität bleibt bestehen.",
+        "Einordnung: Der Index profitiert von der breiten Erholung im Technologiesektor und der anhaltenden Stärke in zukunftsweisenden Branchen."
       ]
     },
     {
-      "price": 25370.11,
-      "change_24h": 0.26,
+      "price": 25378.96,
+      "change_24h": -1.04,
       "currency": "eur",
       "sentiment": "neutral",
       "confidence": 0.5,
-      "rationale": "Der DAX eröffnet leicht höher, aber das deutsche Wirtschaftssentiment fällt.",
-      "signal": "Leichter Anstieg, aber fallendes Wirtschaftssentiment.",
+      "rationale": "Der DAX zeigt sich wenig verändert, da das deutsche Wirtschaftssentiment fällt.",
+      "signal": "Wenig Veränderung, fallendes Wirtschaftssentiment.",
       "id": "dax",
       "symbol": "DAX",
       "name": "DAX",
       "type": "index",
       "yahoo_symbol": "^GDAXI",
       "spark": [
-        25575.0098,
         25578.8496,
         25410.6309,
         25266.5293,
@@ -1513,7 +1512,8 @@
         25622.6094,
         25319.7695,
         25304.4199,
-        25370.1094
+        25645.0391,
+        25378.9609
       ],
       "asset_news": [
         {
@@ -1551,32 +1551,31 @@
         "week52_high": 26618.74,
         "week52_low": 21863.81,
         "volume": 0,
-        "high_30d": 25622.6094,
+        "high_30d": 25645.0391,
         "low_30d": 24806.9707,
-        "change_7d": 0.28,
-        "change_30d": -0.8
+        "change_7d": -0.01,
+        "change_30d": -0.78
       },
       "analysis": [
-        "Treiber: Der DAX eröffnet leicht höher.",
-        "Risiko: Das deutsche Wirtschaftssentiment fällt, was zukünftige Belastungen bedeuten könnte.",
-        "Einordnung: Die Nachrichtenlage ist gemischt, mit einem leichten Kursanstieg, aber negativen makroökonomischen Indikatoren."
+        "Treiber: Keine spezifischen positiven Treiber in den News genannt.",
+        "Risiko: Fallendes deutsches Wirtschaftssentiment.",
+        "Einordnung: Der Index zeigt sich stabil, aber das fallende Wirtschaftssentiment könnte zukünftige Bewegungen beeinflussen."
       ]
     },
     {
-      "price": 14486.27,
-      "change_24h": 0.05,
+      "price": 14513.39,
+      "change_24h": -0.27,
       "currency": "chf",
       "sentiment": "bullish",
-      "confidence": 0.6,
-      "rationale": "Sandoz steigt in den SMI auf, und die Schweizer Börse verzeichnete einen Anstieg.",
-      "signal": "Sandoz-Aufstieg, Schweizer Aktienmarkt steigt.",
+      "confidence": 0.7,
+      "rationale": "Der SMI profitiert vom Aufstieg von Sandoz in den Index und der Aufnahme von Galderma, was die Gesundheitsbranche stärkt.",
+      "signal": "Sandoz und Galderma stärken Index.",
       "id": "smi",
       "symbol": "SMI",
       "name": "SMI",
       "type": "index",
       "yahoo_symbol": "^SSMI",
       "spark": [
-        13956.5801,
         13953.3896,
         13921.7197,
         13905.8203,
@@ -1598,7 +1597,8 @@
         14391.3096,
         14368.7803,
         14478.3701,
-        14486.2695
+        14552.3896,
+        14513.3896
       ],
       "asset_news": [
         {
@@ -1636,32 +1636,31 @@
         "week52_high": 14669.51,
         "week52_low": 12053.51,
         "volume": 0,
-        "high_30d": 14486.2695,
+        "high_30d": 14552.3896,
         "low_30d": 13622.8496,
-        "change_7d": 2.52,
-        "change_30d": 3.8
+        "change_7d": 1.14,
+        "change_30d": 4.01
       },
       "analysis": [
-        "Treiber: Sandoz steigt in den Swiss Market Index (SMI) auf, und Schweizer Aktien verzeichneten einen Anstieg.",
-        "Risiko: ABB rutschte aufgrund einer Steuerbelastung ab, was den Gesamtmarkt belasten könnte.",
-        "Einordnung: Der Aufstieg von Sandoz und der allgemeine Anstieg der Schweizer Aktien deuten auf eine positive Stimmung hin, trotz einzelner Belastungen."
+        "Treiber: Sandoz und Galderma treten dem SMI bei, was die Gesundheitsbranche im Index stärkt.",
+        "Risiko: ABB rutscht aufgrund einer Steuerbelastung ab.",
+        "Einordnung: Die Aufnahme neuer, starker Unternehmen in den Index ist ein positives Signal für die Diversifizierung und Stärke des SMI."
       ]
     },
     {
-      "price": 4142.4,
-      "change_24h": -0.0,
+      "price": 4099.9,
+      "change_24h": -1.21,
       "currency": "usd",
       "sentiment": "bearish",
-      "confidence": 0.6,
-      "rationale": "Gold fällt den dritten Tag in Folge, da die US-Anleiherenditen hoch bleiben.",
-      "signal": "Gold fällt, hohe Anleiherenditen belasten.",
+      "confidence": 0.7,
+      "rationale": "Der Goldpreis fällt trotz des Interesses von Investoren und Zentralbanken, da die US-Anleiherenditen steigen.",
+      "signal": "Goldpreis fällt, steigende US-Renditen.",
       "id": "gold",
       "symbol": "Gold",
       "name": "Gold",
       "type": "commodity",
       "yahoo_symbol": "GC=F",
       "spark": [
-        4383.8999,
         4376.3999,
         4318.3999,
         4298.0,
@@ -1683,7 +1682,8 @@
         4181.1001,
         4160.1001,
         4142.6001,
-        4142.3999
+        4150.0,
+        4099.8999
       ],
       "asset_news": [
         {
@@ -1720,33 +1720,32 @@
       "stats": {
         "week52_high": 5586.2,
         "week52_low": 3901.3,
-        "volume": 45936,
-        "high_30d": 4383.8999,
-        "low_30d": 4107.8999,
-        "change_7d": 0.84,
-        "change_30d": -5.51
+        "volume": 76284,
+        "high_30d": 4376.3999,
+        "low_30d": 4099.8999,
+        "change_7d": -1.68,
+        "change_30d": -6.32
       },
       "analysis": [
-        "Treiber: Keine positiven Treiber in den vorliegenden Nachrichten genannt.",
-        "Risiko: Gold fällt den dritten Tag in Folge, da die US-Anleiherenditen hoch bleiben und die Nachfrage nach sicheren Häfen reduziert wird.",
-        "Einordnung: Die hohen Anleiherenditen üben Druck auf den Goldpreis aus, was zu einer negativen Stimmung führt."
+        "Treiber: Anhaltendes Interesse von Investoren und Zentralbanken.",
+        "Risiko: Steigende US-Anleiherenditen und ein dritter aufeinanderfolgender Rückgang.",
+        "Einordnung: Trotz langfristiger Nachfrage wird der Goldpreis kurzfristig durch steigende Anleiherenditen belastet."
       ]
     },
     {
-      "price": 57.47,
-      "change_24h": -0.42,
+      "price": 55.97,
+      "change_24h": -2.53,
       "currency": "usd",
       "sentiment": "bearish",
-      "confidence": 0.6,
+      "confidence": 0.7,
       "rationale": "Silber fällt, und ein starker Rückgang deutet auf eine bevorstehende wirtschaftliche Verlangsamung hin.",
-      "signal": "Silber fällt, deutet auf Verlangsamung hin.",
+      "signal": "Silber fällt, Hinweis auf Wirtschaftsabschwung.",
       "id": "silber",
       "symbol": "Silber",
       "name": "Silber",
       "type": "commodity",
       "yahoo_symbol": "SI=F",
       "spark": [
-        65.825,
         65.932,
         64.382,
         63.457,
@@ -1768,7 +1767,8 @@
         56.995,
         56.974,
         57.706,
-        57.465
+        57.422,
+        55.97
       ],
       "asset_news": [
         {
@@ -1805,33 +1805,32 @@
       "stats": {
         "week52_high": 121.3,
         "week52_low": 45.845,
-        "volume": 10297,
+        "volume": 20674,
         "high_30d": 65.932,
         "low_30d": 55.55,
-        "change_7d": 3.45,
-        "change_30d": -12.7
+        "change_7d": -1.53,
+        "change_30d": -15.11
       },
       "analysis": [
-        "Treiber: Keine positiven Treiber in den vorliegenden Nachrichten genannt.",
-        "Risiko: Silber fällt, und ein starker Rückgang von 50% deutet auf eine bevorstehende wirtschaftliche Verlangsamung hin.",
-        "Einordnung: Der Rückgang des Silberpreises wird als Indikator für eine negative Wirtschaftsentwicklung interpretiert."
+        "Treiber: Keine spezifischen positiven Treiber in den News genannt.",
+        "Risiko: Starker Rückgang von 50% vom Rekordhoch, was auf eine wirtschaftliche Verlangsamung hindeutet.",
+        "Einordnung: Der signifikante Preisrückgang deutet auf eine negative Marktstimmung und wirtschaftliche Bedenken hin."
       ]
     },
     {
-      "price": 99.0,
-      "change_24h": -2.74,
+      "price": 99.26,
+      "change_24h": 2.17,
       "currency": "usd",
-      "sentiment": "bearish",
+      "sentiment": "bullish",
       "confidence": 0.7,
-      "rationale": "Die US-Rohölbestände steigen, und der Ölpreis fällt unter 80 Dollar.",
-      "signal": "Steigende US-Bestände, Ölpreis fällt.",
+      "rationale": "Der Ölpreis steigt aufgrund von Berichten über einen Hormuz-Deal und iranische Angriffe, während die EIA ihre Prognose anhebt.",
+      "signal": "Ölpreis steigt, geopolitische Spannungen, höhere Prognose.",
       "id": "oel",
       "symbol": "Öl (WTI)",
       "name": "Rohöl WTI",
       "type": "commodity",
       "yahoo_symbol": "CL=F",
       "spark": [
-        95.78,
         94.59,
         92.16,
         94.61,
@@ -1853,7 +1852,8 @@
         101.41,
         103.66,
         101.79,
-        99.0
+        97.15,
+        99.26
       ],
       "asset_news": [
         {
@@ -1890,56 +1890,56 @@
       "stats": {
         "week52_high": 119.48,
         "week52_low": 54.98,
-        "volume": 52804,
+        "volume": 63479,
         "high_30d": 103.66,
         "low_30d": 88.28,
-        "change_7d": 4.11,
-        "change_30d": 3.36
+        "change_7d": 1.32,
+        "change_30d": 4.94
       },
       "analysis": [
-        "Treiber: Keine positiven Treiber in den vorliegenden Nachrichten genannt.",
-        "Risiko: Die US-Rohölbestände steigen, und der Ölpreis fällt unter 80 Dollar, was auf ein Überangebot oder eine geringere Nachfrage hindeutet.",
-        "Einordnung: Die steigenden Bestände und der fallende Preis deuten auf eine negative Stimmung im Ölmarkt hin."
+        "Treiber: Berichte über einen Hormuz-Deal und iranische Angriffe treiben den Preis nach oben.",
+        "Risiko: Keine spezifischen Risiken in den News genannt, aber geopolitische Spannungen können volatil sein.",
+        "Einordnung: Geopolitische Ereignisse und eine angehobene Prognose stützen den steigenden Ölpreis."
       ]
     },
     {
-      "price": 12.39,
-      "change_24h": 3.77,
+      "price": 12.0,
+      "change_24h": -3.02,
       "currency": "usd",
       "sentiment": "bullish",
       "confidence": 0.7,
-      "rationale": "Archax wählt Chainlink für die Preisgestaltung tokenisierter Staatsanleihen, und Google Gemini AI prognostiziert einen großen Anstieg.",
-      "signal": "Archax-Partnerschaft, positive KI-Prognose.",
+      "rationale": "Chainlink wird von Archax zur Preisgestaltung tokenisierter Staatsanleihen ausgewählt, und Google Gemini AI prognostiziert einen starken Anstieg.",
+      "signal": "Archax wählt Chainlink, KI prognostiziert Anstieg.",
       "id": "chainlink",
       "symbol": "LINK",
       "name": "Chainlink",
       "type": "crypto",
       "coingecko_id": "chainlink",
       "spark": [
-        12.5156,
-        13.175,
         13.0348,
         12.3514,
+        13.2136,
         13.9255,
-        14.1441,
         14.0174,
+        15.44,
         14.6043,
-        14.3629,
         14.3804,
         13.7928,
+        14.1131,
         14.2655,
-        13.8544,
         13.9593,
+        13.3211,
         12.6979,
-        12.8017,
         13.0016,
         13.3357,
+        12.6123,
         12.8761,
-        12.4256,
         12.4482,
+        12.3344,
         11.9773,
-        12.0256,
-        12.0498
+        12.0498,
+        12.3157,
+        12.4969
       ],
       "asset_news": [
         {
@@ -1974,31 +1974,31 @@
         }
       ],
       "stats": {
-        "market_cap": 9501059730,
-        "volume": 258819040,
-        "high_24h": 12.46,
-        "low_24h": 11.89,
+        "market_cap": 9207809251,
+        "volume": 272021085,
+        "high_24h": 12.8,
+        "low_24h": 12.01,
         "ath": 52.7,
-        "ath_change": -76.49,
-        "change_7d": -6.42,
-        "change_30d": -3.72,
-        "high_30d": 14.6043,
+        "ath_change": -77.23,
+        "change_7d": 0.39,
+        "change_30d": -4.13,
+        "high_30d": 15.44,
         "low_30d": 11.9773
       },
       "analysis": [
-        "Treiber: Archax wählt Chainlink für die Preisgestaltung tokenisierter Staatsanleihen, und Google Gemini AI prognostiziert einen großen Anstieg für LINK.",
-        "Risiko: Keine spezifischen Risiken in den vorliegenden Nachrichten genannt.",
-        "Einordnung: Die Partnerschaft mit Archax und die positive KI-Prognose sind starke bullische Signale."
+        "Treiber: Archax wählt Chainlink für die Preisgestaltung tokenisierter Staatsanleihen; Google Gemini AI prognostiziert starken Anstieg.",
+        "Risiko: Keine spezifischen Risiken in den News genannt, aber allgemeine Krypto-Volatilität bleibt bestehen.",
+        "Einordnung: Die institutionelle Akzeptanz und positive KI-Prognosen sind starke Treiber für Chainlink."
       ]
     },
     {
-      "price": 1.16,
-      "change_24h": 1.84,
+      "price": 1.11,
+      "change_24h": -3.73,
       "currency": "usd",
       "sentiment": "neutral",
       "confidence": 0.5,
-      "rationale": "Polkadot hielt sich stabil, während andere Kryptowährungen fielen, aber es gibt keine klaren bullischen Treiber.",
-      "signal": "Stabile Performance, aber keine klaren Treiber.",
+      "rationale": "Polkadot hält sich stabil, während andere Kryptowährungen fallen, und es gibt Spekulationen über zukünftige Höchststände.",
+      "signal": "Stabilisierung, Spekulationen über Höchststände.",
       "id": "polkadot",
       "symbol": "DOT",
       "name": "Polkadot",
@@ -2037,57 +2037,57 @@
         }
       ],
       "stats": {
-        "market_cap": 1977273220,
-        "volume": 137694455,
+        "market_cap": 1901552704,
+        "volume": 133304891,
         "high_24h": 1.19,
-        "low_24h": 1.13,
+        "low_24h": 1.1,
         "ath": 54.98,
-        "ath_change": -97.89,
-        "change_7d": -0.66,
-        "change_30d": 1.56,
+        "ath_change": -97.98,
+        "change_7d": -0.39,
+        "change_30d": -6.05,
         "high_30d": 1.2677,
         "low_30d": 1.0896
       },
       "analysis": [
-        "Treiber: Polkadot hielt sich stabil, während Ethereum und Solana fielen, was auf eine relative Stärke hindeutet.",
-        "Risiko: Keine spezifischen Risiken in den vorliegenden Nachrichten genannt, aber auch keine starken bullischen Treiber.",
-        "Einordnung: Die Stabilität in einem schwächeren Markt ist positiv, aber es fehlen konkrete Nachrichten für eine bullische Einschätzung."
+        "Treiber: Polkadot hält sich stabil, während Ethereum und Solana fallen.",
+        "Risiko: Keine spezifischen Risiken in den News genannt, aber allgemeine Krypto-Volatilität bleibt bestehen.",
+        "Einordnung: Die relative Stabilität im Vergleich zu anderen Kryptowährungen ist bemerkenswert, aber konkrete positive Treiber fehlen."
       ],
       "spark": [
-        1.1342,
-        1.2062,
         1.2179,
         1.1017,
+        1.155,
         1.2126,
-        1.2418,
         1.2677,
+        1.1814,
         1.1929,
-        1.2224,
         1.1762,
         1.1542,
+        1.1848,
         1.2041,
-        1.2304,
         1.2011,
+        1.1172,
         1.0896,
-        1.2358,
         1.2577,
         1.2549,
+        1.1679,
         1.1596,
-        1.1463,
         1.1487,
+        1.1821,
         1.1147,
-        1.1162,
-        1.1519
+        1.1519,
+        1.1505,
+        1.1442
       ]
     },
     {
-      "price": 9.71,
-      "change_24h": 2.8,
+      "price": 9.23,
+      "change_24h": -4.99,
       "currency": "usd",
-      "sentiment": "bullish",
+      "sentiment": "bearish",
       "confidence": 0.6,
-      "rationale": "Gerichte in Dubai nutzen Avalanche, und Bitwise startet einen Avalanche ETF.",
-      "signal": "Gerichtsnutzung, Bitwise ETF-Start.",
+      "rationale": "Avalanche fällt nach einem großen Upgrade, obwohl Dubai Courts Orders auf der Blockchain aufzeichnen.",
+      "signal": "Kurs fällt nach Upgrade, trotz institutioneller Nutzung.",
       "id": "avalanche",
       "symbol": "AVAX",
       "name": "Avalanche",
@@ -2126,29 +2126,57 @@
         }
       ],
       "stats": {
-        "market_cap": 4310840810,
-        "volume": 267454113,
-        "high_24h": 9.9,
-        "low_24h": 9.39,
+        "market_cap": 4095483905,
+        "volume": 332951984,
+        "high_24h": 10.04,
+        "low_24h": 9.17,
         "ath": 144.96,
-        "ath_change": -93.3,
-        "change_7d": -5.0,
-        "change_30d": -11.36
+        "ath_change": -93.64,
+        "change_7d": -3.76,
+        "change_30d": -14.58,
+        "high_30d": 11.6038,
+        "low_30d": 9.6008
       },
       "analysis": [
-        "Treiber: Gerichte in Dubai zeichnen nun Anordnungen auf Avalanche auf, und Bitwise startet einen Avalanche ETF mit Staking-Plänen.",
-        "Risiko: Avalanche fiel um 8% nach einem großen Upgrade, was auf mögliche technische Herausforderungen oder Gewinnmitnahmen hindeutet.",
-        "Einordnung: Die institutionelle Akzeptanz und der ETF-Start sind positiv, aber der Kursrückgang nach dem Upgrade ist ein Wermutstropfen."
+        "Treiber: Dubai Courts zeichnen Orders auf Avalanche auf.",
+        "Risiko: Kursrückgang von 8% nach einem großen Upgrade.",
+        "Einordnung: Trotz institutioneller Nutzung führt ein großes Upgrade zu einem kurzfristigen Kursrückgang."
+      ],
+      "spark": [
+        11.3028,
+        10.2561,
+        10.1991,
+        10.648,
+        10.9013,
+        10.6071,
+        11.4342,
+        10.9874,
+        10.7966,
+        11.122,
+        11.0972,
+        11.6038,
+        11.1237,
+        10.0703,
+        10.3546,
+        10.9619,
+        10.1397,
+        10.2253,
+        10.0324,
+        9.9445,
+        9.7576,
+        9.6008,
+        9.7391,
+        9.6549
       ]
     },
     {
-      "price": 0.330903,
-      "change_24h": -0.31,
+      "price": 0.330446,
+      "change_24h": -0.12,
       "currency": "usd",
-      "sentiment": "neutral",
-      "confidence": 0.5,
-      "rationale": "TRON verzeichnet ein Wachstum der Token-Delegation und ist eine der wenigen großen Kryptowährungen im Plus.",
-      "signal": "Wachstum der Token-Delegation, positive Performance.",
+      "sentiment": "bullish",
+      "confidence": 0.7,
+      "rationale": "TRON ist eine der wenigen großen Kryptowährungen, die über zwei Wochen gestiegen ist, und Luganodes öffnet den RPC-Zugang.",
+      "signal": "TRON steigt, RPC-Zugang geöffnet.",
       "id": "tron",
       "symbol": "TRX",
       "name": "Tron",
@@ -2187,64 +2215,63 @@
         }
       ],
       "spark": [
-        0.3425,
-        0.3446,
         0.342,
         0.3421,
+        0.3401,
         0.3381,
-        0.3343,
         0.3334,
+        0.3354,
         0.3343,
-        0.3374,
         0.3347,
         0.3346,
-        0.3357,
-        0.3361,
         0.3354,
+        0.3357,
+        0.3354,
+        0.3352,
         0.3325,
-        0.3317,
         0.3306,
         0.3299,
+        0.3289,
         0.3272,
-        0.3322,
         0.3323,
+        0.3351,
         0.3334,
-        0.3323,
-        0.3318
+        0.3318,
+        0.3312,
+        0.3306
       ],
       "stats": {
-        "market_cap": 31436651719,
-        "volume": 303191453,
-        "high_24h": 0.33237,
-        "low_24h": 0.33033,
+        "market_cap": 31394561568,
+        "volume": 397758883,
+        "high_24h": 0.333105,
+        "low_24h": 0.329962,
         "ath": 0.431288,
-        "ath_change": -23.28,
-        "change_7d": 1.41,
-        "change_30d": -3.12,
-        "high_30d": 0.3446,
+        "ath_change": -23.38,
+        "change_7d": -0.51,
+        "change_30d": -3.33,
+        "high_30d": 0.3421,
         "low_30d": 0.3272
       },
       "analysis": [
-        "Treiber: TRON verzeichnet ein Wachstum der Token-Delegation und ist eine der wenigen großen Kryptowährungen, die über zwei Wochen im Plus liegen.",
-        "Risiko: Keine spezifischen Risiken in den vorliegenden Nachrichten genannt.",
-        "Einordnung: Die positive Performance und das Wachstum der Token-Delegation sind gute Zeichen, aber es fehlen weitere fundamentale Treiber."
+        "Treiber: TRON gehört zu den wenigen großen Kryptowährungen mit Kursgewinnen über zwei Wochen; Luganodes öffnet TRON RPC-Zugang.",
+        "Risiko: Keine spezifischen Risiken in den News genannt, aber allgemeine Krypto-Volatilität bleibt bestehen.",
+        "Einordnung: Die relative Stärke im Vergleich zum Markt und die Erweiterung des RPC-Zugangs sind positive Signale."
       ]
     },
     {
-      "price": 52495.88,
-      "change_24h": 1.02,
+      "price": 52856.09,
+      "change_24h": 0.69,
       "currency": "usd",
       "sentiment": "bullish",
       "confidence": 0.7,
-      "rationale": "Der Dow Jones steigt deutlich, angetrieben durch Optimismus bei den Unternehmensgewinnen.",
-      "signal": "Dow Jones steigt, Optimismus bei Gewinnen.",
+      "rationale": "Der Dow Jones steigt aufgrund von Optimismus bezüglich der Unternehmensgewinne und der Erholung der Tech-Aktien.",
+      "signal": "Steigender Index, Gewinnerwartungen, Tech-Erholung.",
       "id": "dowjones",
       "symbol": "Dow Jones",
       "name": "Dow Jones",
       "type": "index",
       "yahoo_symbol": "^DJI",
       "spark": [
-        52048.8281,
         51863.6914,
         51511.5898,
         51349.9805,
@@ -2265,7 +2292,8 @@
         52177.6914,
         52002.4102,
         51966.0312,
-        52495.8789
+        52495.8789,
+        52856.0898
       ],
       "asset_news": [
         {
@@ -2302,33 +2330,32 @@
       "stats": {
         "week52_high": 54744.33,
         "week52_low": 45057.28,
-        "volume": 368648006,
-        "high_30d": 52495.8789,
+        "volume": 359385262,
+        "high_30d": 52856.0898,
         "low_30d": 50906.0508,
-        "change_7d": 1.6,
-        "change_30d": 0.86
+        "change_7d": 2.39,
+        "change_30d": 1.91
       },
       "analysis": [
-        "Treiber: Der Dow Jones steigt um 500 Punkte, angetrieben durch Optimismus bei den Unternehmensgewinnen und die Erholung von Tech-Aktien.",
-        "Risiko: Keine spezifischen Risiken in den vorliegenden Nachrichten genannt.",
-        "Einordnung: Die positive Stimmung bei den Unternehmensgewinnen und die Erholung der Tech-Aktien treiben den Dow Jones an."
+        "Treiber: Optimismus bezüglich der Unternehmensgewinne und Erholung der Tech-Aktien.",
+        "Risiko: Keine spezifischen Risiken in den News genannt, aber allgemeine Marktvolatilität bleibt bestehen.",
+        "Einordnung: Der Index profitiert von positiven Gewinnerwartungen und der Erholung im Technologiesektor."
       ]
     },
     {
-      "price": 10725.22,
-      "change_24h": -0.07,
+      "price": 10689.92,
+      "change_24h": -0.59,
       "currency": "gbp",
       "sentiment": "bearish",
       "confidence": 0.6,
-      "rationale": "Der FTSE 100 fällt aufgrund von Schwäche bei Banken und rohstoffbezogenen Aktien.",
-      "signal": "FTSE 100 fällt, Banken und Rohstoffe schwach.",
+      "rationale": "Der FTSE 100 fällt, belastet durch Banken und rohstoffbezogene Aktien.",
+      "signal": "Index fällt, Banken und Rohstoffe belasten.",
       "id": "ftse100",
       "symbol": "FTSE 100",
       "name": "FTSE 100",
       "type": "index",
       "yahoo_symbol": "^FTSE",
       "spark": [
-        10739.0,
         10708.2998,
         10705.2998,
         10680.0,
@@ -2350,7 +2377,8 @@
         10881.9004,
         10764.7002,
         10733.0,
-        10725.2197
+        10752.9004,
+        10689.9199
       ],
       "asset_news": [
         {
@@ -2390,23 +2418,23 @@
         "volume": 0,
         "high_30d": 10881.9004,
         "low_30d": 10428.2998,
-        "change_7d": 0.0,
-        "change_30d": -0.13
+        "change_7d": -1.39,
+        "change_30d": -0.17
       },
       "analysis": [
-        "Treiber: Keine positiven Treiber in den vorliegenden Nachrichten genannt.",
-        "Risiko: Der FTSE 100 fällt aufgrund von Schwäche bei Banken und rohstoffbezogenen Aktien.",
-        "Einordnung: Die Schwäche in wichtigen Sektoren führt zu einer negativen Stimmung für den FTSE 100."
+        "Treiber: Keine spezifischen positiven Treiber in den News genannt.",
+        "Risiko: Belastung durch Banken und rohstoffbezogene Aktien.",
+        "Einordnung: Der Index wird durch die Schwäche in wichtigen Sektoren nach unten gezogen."
       ]
     },
     {
-      "price": 64621.24,
-      "change_24h": 0.85,
+      "price": 62907.84,
+      "change_24h": -2.65,
       "currency": "jpy",
-      "sentiment": "bullish",
-      "confidence": 0.7,
-      "rationale": "Der Nikkei 225 steigt deutlich, und japanische sowie südkoreanische Aktien schließen höher.",
-      "signal": "Nikkei steigt, asiatische Märkte legen zu.",
+      "sentiment": "neutral",
+      "confidence": 0.5,
+      "rationale": "Der Nikkei 225 zeigt gemischte Bewegungen, mit einem Anstieg, aber auch Bedenken bezüglich der KI-Volatilität.",
+      "signal": "Gemischte Bewegungen, KI-Volatilität.",
       "id": "nikkei",
       "symbol": "Nikkei 225",
       "name": "Nikkei 225",
@@ -2431,7 +2459,8 @@
         65324.2891,
         64916.6992,
         64075.4219,
-        64621.2383
+        64621.2383,
+        62907.8398
       ],
       "asset_news": [
         {
@@ -2470,31 +2499,30 @@
         "week52_low": 48235.3,
         "volume": 0,
         "high_30d": 70683.9766,
-        "low_30d": 64075.4219,
-        "change_7d": -4.61,
-        "change_30d": -1.36
+        "low_30d": 62907.8398,
+        "change_7d": -2.36,
+        "change_30d": -3.98
       },
       "analysis": [
-        "Treiber: Der Nikkei 225 steigt um über 1%, und japanische sowie südkoreanische Aktien schließen höher.",
-        "Risiko: Keine spezifischen Risiken in den vorliegenden Nachrichten genannt.",
-        "Einordnung: Die asiatischen Märkte zeigen eine positive Entwicklung, angeführt vom Nikkei 225."
+        "Treiber: Leichte Kursgewinne.",
+        "Risiko: KI-Wobbles bringen wichtige Unterstützungszonen in den Fokus.",
+        "Einordnung: Der Index zeigt sich volatil, mit kurzfristigen Gewinnen, aber auch Bedenken bezüglich der Stabilität im KI-Sektor."
       ]
     },
     {
-      "price": 6146.32,
-      "change_24h": 0.4,
+      "price": 6103.74,
+      "change_24h": -1.67,
       "currency": "eur",
       "sentiment": "neutral",
       "confidence": 0.5,
-      "rationale": "Der Euro Stoxx 50 steigt leicht, aber es gibt bevorstehende methodische Änderungen.",
-      "signal": "Leichter Anstieg, methodische Änderungen angekündigt.",
+      "rationale": "Der Euro Stoxx 50 wird methodisch angepasst, während Nokia wieder aufgenommen und Volkswagen gestrichen wird.",
+      "signal": "Methodenänderungen, Nokia rein, VW raus.",
       "id": "eurostoxx50",
       "symbol": "Euro Stoxx 50",
       "name": "Euro Stoxx 50",
       "type": "index",
       "yahoo_symbol": "^STOXX50E",
       "spark": [
-        6318.2002,
         6324.7202,
         6299.8198,
         6272.5,
@@ -2516,7 +2544,8 @@
         6204.23,
         6144.8101,
         6121.6602,
-        6146.3198
+        6207.52,
+        6103.7402
       ],
       "asset_news": [
         {
@@ -2553,33 +2582,32 @@
       "stats": {
         "week52_high": 6577.2,
         "week52_low": 5376.81,
-        "volume": null,
+        "volume": 0,
         "high_30d": 6324.7202,
-        "low_30d": 6121.6602,
-        "change_7d": -0.71,
-        "change_30d": -2.72
+        "low_30d": 6103.7402,
+        "change_7d": -1.05,
+        "change_30d": -3.49
       },
       "analysis": [
-        "Treiber: Der Euro Stoxx 50 steigt leicht.",
-        "Risiko: Der Index wird ab 2027 methodische Änderungen erfahren, und Nokia wird wieder aufgenommen, während Volkswagen herausfällt.",
-        "Einordnung: Der leichte Anstieg ist positiv, aber die bevorstehenden Änderungen könnten Unsicherheit schaffen."
+        "Treiber: Nokia wird wieder in den Index aufgenommen.",
+        "Risiko: Volkswagen wird aus dem Index gestrichen.",
+        "Einordnung: Die Änderungen in der Indexzusammensetzung führen zu einer Neubewertung, ohne klare Richtung."
       ]
     },
     {
-      "price": 2.92,
-      "change_24h": -1.42,
+      "price": 2.77,
+      "change_24h": -0.65,
       "currency": "usd",
-      "sentiment": "bearish",
-      "confidence": 0.6,
-      "rationale": "Die Erdgaspreise fallen, und die USA haben mehr Erdgas, als sie verbrauchen können.",
-      "signal": "Erdgaspreise fallen, Überangebot in den USA.",
+      "sentiment": "neutral",
+      "confidence": 0.5,
+      "rationale": "Die USA verfügen über reichlich Erdgas, aber der globale Markt ist durch Kriege gestört, was zu hohen Preisen führt.",
+      "signal": "Reichlich US-Gas, globale Marktstörungen.",
       "id": "erdgas",
       "symbol": "Erdgas",
       "name": "Erdgas",
       "type": "commodity",
       "yahoo_symbol": "NG=F",
       "spark": [
-        2.836,
         2.965,
         3.023,
         3.297,
@@ -2601,7 +2629,8 @@
         3.116,
         3.058,
         2.963,
-        2.921
+        2.79,
+        2.772
       ],
       "asset_news": [
         {
@@ -2638,33 +2667,32 @@
       "stats": {
         "week52_high": 7.827,
         "week52_low": 2.483,
-        "volume": 13371,
+        "volume": 14807,
         "high_30d": 3.297,
-        "low_30d": 2.836,
-        "change_7d": -8.66,
-        "change_30d": 3.0
+        "low_30d": 2.772,
+        "change_7d": -14.34,
+        "change_30d": -6.51
       },
       "analysis": [
-        "Treiber: Keine positiven Treiber in den vorliegenden Nachrichten genannt.",
-        "Risiko: Die Erdgaspreise fallen, und die USA haben ein Überangebot an Erdgas, was auf anhaltenden Preisdruck hindeutet.",
-        "Einordnung: Das Überangebot in den USA und die fallenden Preise deuten auf eine negative Stimmung im Erdgasmarkt hin."
+        "Treiber: Die USA verfügen über mehr Erdgas, als sie verbrauchen können.",
+        "Risiko: Globale Marktstörungen durch Kriege führen zu hohen Preisen.",
+        "Einordnung: Die lokale Verfügbarkeit steht im Kontrast zu den globalen Marktstörungen, die die Preise beeinflussen."
       ]
     },
     {
-      "price": 6.55,
-      "change_24h": -0.28,
+      "price": 6.42,
+      "change_24h": -1.91,
       "currency": "usd",
       "sentiment": "bearish",
       "confidence": 0.6,
-      "rationale": "Kupfer fällt unter 13.000 Dollar, mit Fokus auf Lagerbestände und China-Nachfrage.",
-      "signal": "Kupfer fällt, Lagerbestände und China-Nachfrage im Fokus.",
+      "rationale": "Kupfer fällt unter 13.000, belastet durch hohe Lagerbestände und die Nachfrage in China.",
+      "signal": "Kupfer fällt, hohe Lagerbestände, China-Nachfrage.",
       "id": "kupfer",
       "symbol": "Kupfer",
       "name": "Kupfer",
       "type": "commodity",
       "yahoo_symbol": "HG=F",
       "spark": [
-        6.6865,
         6.7595,
         6.678,
         6.7185,
@@ -2686,7 +2714,8 @@
         6.531,
         6.538,
         6.5665,
-        6.548
+        6.543,
+        6.418
       ],
       "asset_news": [
         {
@@ -2723,16 +2752,16 @@
       "stats": {
         "week52_high": 6.83,
         "week52_low": 4.9045,
-        "volume": 11548,
+        "volume": 22138,
         "high_30d": 6.7595,
-        "low_30d": 6.482,
-        "change_7d": -0.96,
-        "change_30d": -2.07
+        "low_30d": 6.418,
+        "change_7d": -1.44,
+        "change_30d": -5.05
       },
       "analysis": [
-        "Treiber: Keine positiven Treiber in den vorliegenden Nachrichten genannt.",
-        "Risiko: Kupfer fällt unter 13.000 Dollar, wobei die Lagerbestände und die Nachfrage aus China im Fokus stehen, was auf eine mögliche Schwäche hindeutet.",
-        "Einordnung: Der fallende Kupferpreis und die Bedenken hinsichtlich der Nachfrage deuten auf eine negative Stimmung hin."
+        "Treiber: Keine spezifischen positiven Treiber in den News genannt.",
+        "Risiko: Kupfer fällt unter 13.000, hohe Lagerbestände und Fokus auf China-Nachfrage.",
+        "Einordnung: Der Preisrückgang wird durch hohe Lagerbestände und Unsicherheiten bei der Nachfrage getrieben."
       ]
     },
     {
@@ -2812,12 +2841,12 @@
       },
       "sentiment": "neutral",
       "confidence": 0.5,
-      "rationale": "Der S&P 500 ETF wird als langfristige Anlage empfohlen, aber es gibt keine spezifischen kurzfristigen Treiber.",
-      "signal": "Langfristige Empfehlung, keine kurzfristigen Treiber.",
+      "rationale": "Der S&P 500 ETF wird hinsichtlich seiner Erholung und langfristigen Haltepotenzials diskutiert.",
+      "signal": "Erholung und langfristiges Potenzial diskutiert.",
       "analysis": [
-        "Treiber: Der S&P 500 ETF wird als langfristige Anlage empfohlen.",
-        "Risiko: Keine spezifischen Risiken in den vorliegenden Nachrichten genannt.",
-        "Einordnung: Die Nachrichtenlage ist neutral, da es keine spezifischen kurzfristigen Treiber gibt, die über die allgemeine Marktstimmung hinausgehen."
+        "Treiber: Potenzial für langfristiges Halten und Diversifizierung.",
+        "Risiko: Diskussionen über die Erholungsdauer nach einem 10%-Rückgang.",
+        "Einordnung: Der ETF wird als langfristige Anlageoption betrachtet, aber kurzfristige Erholungszeiten sind unsicher."
       ]
     },
     {
@@ -2897,12 +2926,12 @@
       },
       "sentiment": "neutral",
       "confidence": 0.5,
-      "rationale": "Der Nasdaq-100 ETF wird als Investitionsmöglichkeit genannt, aber es gibt keine klaren kurzfristigen Treiber.",
-      "signal": "Investitionsmöglichkeit, keine klaren Treiber.",
+      "rationale": "Der Nasdaq-100 ETF zeigt leichte Kursrückgänge, während seine Performance und Zusammensetzung analysiert werden.",
+      "signal": "Leichte Rückgänge, Performance-Analyse.",
       "analysis": [
-        "Treiber: Der Nasdaq-100 ETF wird als Investitionsmöglichkeit genannt.",
-        "Risiko: Keine spezifischen Risiken in den vorliegenden Nachrichten genannt.",
-        "Einordnung: Die Nachrichtenlage ist neutral, da es keine spezifischen kurzfristigen Treiber gibt, die über die allgemeine Marktstimmung hinausgehen."
+        "Treiber: Keine spezifischen positiven Treiber in den News genannt.",
+        "Risiko: Leichte Kursrückgänge und Diskussionen über die Zusammensetzung.",
+        "Einordnung: Der ETF zeigt leichte Verluste, und die Analyse konzentriert sich auf seine langfristige Eignung."
       ]
     },
     {
@@ -2982,12 +3011,12 @@
       },
       "sentiment": "neutral",
       "confidence": 0.5,
-      "rationale": "Der iShares MSCI World ETF nimmt Nvidia und Apple auf, aber es gibt keine klaren kurzfristigen Treiber.",
-      "signal": "Aufnahme von Nvidia und Apple, keine klaren Treiber.",
+      "rationale": "Der MSCI World ETF nimmt Nvidia und Apple auf, während seine Performance und Diversifizierung diskutiert werden.",
+      "signal": "Nvidia und Apple aufgenommen, Diversifizierung diskutiert.",
       "analysis": [
-        "Treiber: Der iShares MSCI World ETF nimmt Nvidia und Apple auf.",
-        "Risiko: Keine spezifischen Risiken in den vorliegenden Nachrichten genannt.",
-        "Einordnung: Die Aufnahme großer Tech-Werte ist eine strukturelle Änderung, aber es fehlen kurzfristige Treiber für eine bullische oder bearische Einschätzung."
+        "Treiber: Aufnahme von Nvidia und Apple in den ETF.",
+        "Risiko: Keine spezifischen Risiken in den News genannt, aber allgemeine Marktvolatilität bleibt bestehen.",
+        "Einordnung: Die Aufnahme großer Tech-Werte beeinflusst die Zusammensetzung, aber die Gesamtstimmung ist neutral."
       ]
     },
     {
@@ -3067,12 +3096,12 @@
       },
       "sentiment": "neutral",
       "confidence": 0.5,
-      "rationale": "Der Total US Market ETF wird als Diversifikationsmöglichkeit genannt, aber es gibt keine klaren kurzfristigen Treiber.",
-      "signal": "Diversifikationsmöglichkeit, keine klaren Treiber.",
+      "rationale": "Der Total US Market ETF wird hinsichtlich seiner Diversifizierung und der Vermeidung von Überschneidungen analysiert.",
+      "signal": "Diversifizierung und Überschneidungsanalyse.",
       "analysis": [
-        "Treiber: Der Total US Market ETF wird als Diversifikationsmöglichkeit genannt.",
-        "Risiko: Keine spezifischen Risiken in den vorliegenden Nachrichten genannt.",
-        "Einordnung: Die Nachrichtenlage ist neutral, da es keine spezifischen kurzfristigen Treiber gibt, die über die allgemeine Marktstimmung hinausgehen."
+        "Treiber: Fokus auf Diversifizierung und Vermeidung von Überschneidungen mit anderen Fonds.",
+        "Risiko: Diskussionen über die Zukunft von Dividend-Skipping ETFs.",
+        "Einordnung: Der ETF wird als Instrument zur breiten Marktabdeckung betrachtet, aber regulatorische Unsicherheiten bestehen."
       ]
     },
     {
@@ -3114,54 +3143,54 @@
           "datum": "20 Oct 2026"
         }
       ],
-      "price": 61.59,
-      "change_24h": 4.2,
+      "price": 59.23,
+      "change_24h": -3.84,
       "spark": [
-        58.7249,
-        61.9886,
         62.9351,
         61.8775,
+        71.93,
         72.5301,
-        72.5538,
         71.272,
+        69.2068,
         66.8069,
-        67.1852,
         68.0878,
         69.8569,
+        70.2564,
         70.6647,
-        70.094,
         68.9731,
+        66.0584,
         63.1111,
-        63.4394,
         63.9736,
         64.6025,
+        60.9832,
         61.1469,
-        59.224,
         60.9822,
+        59.6652,
         58.7833,
-        59.0539,
-        59.6751
+        59.6751,
+        61.515,
+        61.5353
       ],
       "stats": {
-        "market_cap": 4786026612,
-        "volume": 292006723,
-        "high_24h": 62.1,
-        "low_24h": 58.27,
+        "market_cap": 4606767131,
+        "volume": 267628072,
+        "high_24h": 62.33,
+        "low_24h": 59.23,
         "ath": 410.26,
-        "ath_change": -84.99,
-        "change_7d": -2.41,
-        "change_30d": 1.62,
-        "high_30d": 72.5538,
-        "low_30d": 58.7249
+        "ath_change": -85.56,
+        "change_7d": 0.91,
+        "change_30d": -2.22,
+        "high_30d": 72.5301,
+        "low_30d": 58.7833
       },
       "sentiment": "bullish",
       "confidence": 0.7,
-      "rationale": "Litecoin verzeichnete Zuflüsse in seinen ETF und steigt im Kurs.",
-      "signal": "ETF-Zuflüsse und Kursanstieg.",
+      "rationale": "Litecoin verzeichnete Zuflüsse in seinen ETF und wird an einer KIBC World Konferenz teilnehmen.",
+      "signal": "ETF-Zuflüsse, Konferenzteilnahme.",
       "analysis": [
-        "Treiber: Litecoin verzeichnete Zuflüsse von 581.140 Dollar in seinen ETF und steigt im Kurs.",
-        "Risiko: Keine spezifischen Risiken in den vorliegenden Nachrichten genannt.",
-        "Einordnung: Die ETF-Zuflüsse und der Kursanstieg deuten auf eine positive Stimmung hin."
+        "Treiber: Zuflüsse von 581.140 $ in den Litecoin ETF und Teilnahme an der AIBC World Konferenz.",
+        "Risiko: Keine spezifischen Risiken in den News genannt, aber allgemeine Krypto-Volatilität bleibt bestehen.",
+        "Einordnung: Die ETF-Zuflüsse und die Präsenz auf wichtigen Konferenzen sind positive Signale für Litecoin."
       ]
     },
     {
@@ -3203,54 +3232,54 @@
           "datum": "30 Sep 2026"
         }
       ],
-      "price": 0.096018,
-      "change_24h": 4.47,
+      "price": 0.090973,
+      "change_24h": -5.15,
       "stats": {
-        "market_cap": 1021162103,
-        "volume": 49152210,
-        "high_24h": 0.096309,
-        "low_24h": 0.091627,
+        "market_cap": 967987139,
+        "volume": 58044107,
+        "high_24h": 0.097388,
+        "low_24h": 0.09055,
         "ath": 1.29,
-        "ath_change": -92.54,
-        "change_7d": -8.95,
-        "change_30d": -15.05,
+        "ath_change": -92.93,
+        "change_7d": -0.94,
+        "change_30d": -13.69,
         "high_30d": 0.122,
-        "low_30d": 0.0914
+        "low_30d": 0.0926
       },
       "spark": [
-        0.109,
-        0.1121,
         0.1096,
         0.1012,
+        0.1087,
         0.1162,
-        0.1205,
         0.122,
+        0.1169,
         0.1176,
-        0.114,
         0.1078,
         0.1073,
+        0.1102,
         0.1101,
-        0.1091,
         0.1074,
+        0.1026,
         0.0982,
-        0.1008,
         0.102,
         0.1041,
+        0.0988,
         0.1017,
-        0.0954,
         0.0955,
+        0.0943,
         0.0928,
-        0.0914,
-        0.0926
+        0.0926,
+        0.0948,
+        0.0946
       ],
-      "sentiment": "neutral",
-      "confidence": 0.5,
-      "rationale": "Polygon hebt die Kosteneffizienz hervor und schließt eine Akquisition ab, aber der Kurs fällt.",
-      "signal": "Kosteneffizienz, Akquisition, aber Kursrückgang.",
+      "sentiment": "bearish",
+      "confidence": 0.6,
+      "rationale": "Polygon fällt unter 0,10 $, da das Futures-Interesse nachlässt, trotz der Übernahme von Coinme.",
+      "signal": "Kurs fällt, Futures-Interesse sinkt.",
       "analysis": [
-        "Treiber: Polygon hebt die Kosteneffizienz von Transaktionen hervor und schließt die Coinme-Akquisition ab, um in den Zahlungsverkehr einzusteigen.",
-        "Risiko: Der Polygon-Kurs fällt um 7% unter 0,10 Dollar, was auf Verkaufsdruck hindeutet.",
-        "Einordnung: Trotz positiver strategischer Entwicklungen belastet der aktuelle Kursrückgang die Stimmung."
+        "Treiber: Übernahme von Coinme zur Herausforderung von Visa und Stripe im Zahlungsverkehr.",
+        "Risiko: Kursrückgang von 7% unter 0,10 $ und nachlassendes Futures-Interesse.",
+        "Einordnung: Trotz strategischer Akquisitionen wird der Kurs durch nachlassendes Interesse im Futures-Markt belastet."
       ]
     },
     {
@@ -3292,54 +3321,54 @@
           "datum": "20 Oct 2026"
         }
       ],
-      "price": 7.54,
-      "change_24h": 5.64,
+      "price": 7.04,
+      "change_24h": -6.62,
       "stats": {
-        "market_cap": 4711642456,
-        "volume": 536595213,
-        "high_24h": 7.75,
-        "low_24h": 7.11,
+        "market_cap": 4399294593,
+        "volume": 512357134,
+        "high_24h": 7.72,
+        "low_24h": 7.03,
         "ath": 44.92,
-        "ath_change": -83.21,
-        "change_7d": -3.6,
-        "change_30d": 24.86,
+        "ath_change": -84.32,
+        "change_7d": 0.37,
+        "change_30d": -27.08,
         "high_30d": 10.2187,
-        "low_30d": 5.9489
+        "low_30d": 6.9729
       },
       "spark": [
-        6.8535,
-        6.7479,
-        6.1587,
-        5.9489,
-        6.3704,
-        6.1253,
-        6.5287,
-        6.694,
-        7.7915,
-        8.862,
-        8.6661,
-        8.99,
         10.2187,
         9.2356,
+        9.1473,
         9.63,
-        9.7011,
         9.6746,
         8.8041,
-        8.8767,
+        8.8855,
         8.9774,
         8.9489,
+        9.0514,
         9.077,
-        9.0829,
-        8.5572
+        8.5572,
+        7.9107,
+        7.1095,
+        7.5836,
+        7.7646,
+        6.9729,
+        7.5365,
+        7.4238,
+        7.3266,
+        7.1452,
+        7.3086,
+        7.4313,
+        7.4514
       ],
       "sentiment": "bullish",
-      "confidence": 0.8,
-      "rationale": "Uniswap-Futures werden an der CME gelistet, was eine wichtige institutionelle Akzeptanz darstellt.",
-      "signal": "Uniswap-Futures an der CME gelistet.",
+      "confidence": 0.7,
+      "rationale": "Uniswap erhält eine CME Futures-Listung, was die Regulierung und Akzeptanz von DeFi-Token vorantreibt.",
+      "signal": "CME Futures-Listung, Regulierung von DeFi-Token.",
       "analysis": [
-        "Treiber: Uniswap-Futures werden an der CME gelistet, was eine bedeutende institutionelle Akzeptanz für den DeFi-Token darstellt.",
-        "Risiko: Keine spezifischen Risiken in den vorliegenden Nachrichten genannt.",
-        "Einordnung: Die Listung an der CME ist ein starkes bullisches Signal für Uniswap und den DeFi-Sektor."
+        "Treiber: CME Futures-Listung für Uniswap, was den ersten regulierten Futures-Handel für einen DeFi-Token darstellt.",
+        "Risiko: Keine spezifischen Risiken in den News genannt, aber allgemeine Krypto-Volatilität bleibt bestehen.",
+        "Einordnung: Die CME Futures-Listung ist ein bedeutender Schritt für die institutionelle Akzeptanz und Regulierung von Uniswap."
       ]
     },
     {
@@ -3350,10 +3379,9 @@
       "currency": "usd",
       "yahoo_symbol": "NFLX",
       "stooq_symbol": "nflx.us",
-      "price": 68.69,
-      "change_24h": -1.66,
+      "price": 65.04,
+      "change_24h": -5.31,
       "spark": [
-        73.36,
         72.16,
         71.36,
         71.72,
@@ -3374,16 +3402,17 @@
         72.61,
         70.53,
         69.85,
-        68.69
+        68.69,
+        65.04
       ],
       "stats": {
         "week52_high": 116.733,
-        "week52_low": 65.08,
-        "volume": 62819587,
-        "high_30d": 73.36,
-        "low_30d": 67.06,
-        "change_7d": -2.51,
-        "change_30d": -6.37
+        "week52_low": 64.1,
+        "volume": 100931063,
+        "high_30d": 72.61,
+        "low_30d": 65.04,
+        "change_7d": -7.84,
+        "change_30d": -9.87
       },
       "asset_news": [
         {
@@ -3419,12 +3448,12 @@
       ],
       "sentiment": "bearish",
       "confidence": 0.7,
-      "rationale": "Netflix-Aktie sinkt nach enttäuschenden Prognosen für das vierte Quartal.",
-      "signal": "Netflix-Aktie sinkt, enttäuschende Prognosen.",
+      "rationale": "Netflix-Aktien sinken nach enttäuschenden Q3-Ergebnissen und einer schwachen Umsatzprognose für Q4.",
+      "signal": "Aktie sinkt, enttäuschende Q3-Ergebnisse, schwache Q4-Prognose.",
       "analysis": [
-        "Treiber: Keine positiven Treiber in den vorliegenden Nachrichten genannt.",
-        "Risiko: Die Netflix-Aktie sinkt nach enttäuschenden Umsatzprognosen für das vierte Quartal und einem verlangsamten Umsatzwachstum.",
-        "Einordnung: Die negativen Prognosen und das verlangsamte Wachstum führen zu einer bearischen Stimmung."
+        "Treiber: Keine spezifischen positiven Treiber in den News genannt.",
+        "Risiko: Kursrückgang nach Q3-Ergebnissen und schwacher Umsatzprognose für Q4.",
+        "Einordnung: Die enttäuschenden Quartalszahlen und die schwache Prognose belasten den Aktienkurs erheblich."
       ]
     },
     {
@@ -3435,10 +3464,9 @@
       "currency": "usd",
       "yahoo_symbol": "AVGO",
       "stooq_symbol": "avgo.us",
-      "price": 334.37,
-      "change_24h": -0.07,
+      "price": 337.8,
+      "change_24h": 1.03,
       "spark": [
-        362.66,
         364.54,
         354.99,
         350.36,
@@ -3459,16 +3487,17 @@
         344.33,
         328.75,
         334.59,
-        334.37
+        334.37,
+        337.8
       ],
       "stats": {
         "week52_high": 495.0,
         "week52_low": 289.96,
-        "volume": 15742796,
+        "volume": 16959641,
         "high_30d": 376.51,
         "low_30d": 328.75,
-        "change_7d": -6.42,
-        "change_30d": -7.8
+        "change_7d": -2.44,
+        "change_30d": -7.34
       },
       "asset_news": [
         {
@@ -3504,12 +3533,12 @@
       ],
       "sentiment": "bullish",
       "confidence": 0.7,
-      "rationale": "Broadcom wird als vielversprechende KI-Aktie genannt und steigt nach positiven Nachrichten.",
-      "signal": "Vielversprechende KI-Aktie, Kurs steigt.",
+      "rationale": "Broadcom wird als 'Once-In-A-Decade Opportunity' bezeichnet und profitiert von der KI-Chip-Nachfrage.",
+      "signal": "KI-Chip-Nachfrage, 'Once-In-A-Decade Opportunity'.",
       "analysis": [
-        "Treiber: Broadcom wird als vielversprechende KI-Aktie genannt und steigt nach positiven Nachrichten.",
-        "Risiko: Keine spezifischen Risiken in den vorliegenden Nachrichten genannt.",
-        "Einordnung: Die positive Einschätzung im KI-Sektor und der Kursanstieg deuten auf eine bullische Stimmung hin."
+        "Treiber: Hohe Nachfrage nach KI-Chips und positive Analystenbewertungen.",
+        "Risiko: Keine spezifischen Risiken in den News genannt, aber allgemeine Marktvolatilität bleibt bestehen.",
+        "Einordnung: Die starke Positionierung im KI-Sektor und positive Analystenmeinungen treiben den Kurs an."
       ]
     },
     {
@@ -3519,10 +3548,9 @@
       "type": "commodity",
       "currency": "usd",
       "yahoo_symbol": "PL=F",
-      "price": 1640.1,
-      "change_24h": -0.39,
+      "price": 1594.1,
+      "change_24h": -1.93,
       "spark": [
-        1798.5,
         1822.6,
         1745.7,
         1749.1,
@@ -3534,6 +3562,7 @@
         1683.2,
         1706.9,
         1692.7,
+        1633.2,
         1625.7,
         1679.3,
         1679.4,
@@ -3543,16 +3572,17 @@
         1623.3,
         1638.8,
         1646.6,
-        1640.1
+        1625.5,
+        1594.1
       ],
       "stats": {
         "week52_high": 2852.4,
         "week52_low": 1477.1,
-        "volume": 5577,
+        "volume": 10044,
         "high_30d": 1822.6,
-        "low_30d": 1601.3,
-        "change_7d": 2.42,
-        "change_30d": -8.81
+        "low_30d": 1594.1,
+        "change_7d": -1.03,
+        "change_30d": -12.54
       },
       "asset_news": [
         {
@@ -3588,12 +3618,12 @@
       ],
       "sentiment": "neutral",
       "confidence": 0.5,
-      "rationale": "Die Nachrichtenlage zu Platin konzentriert sich auf Preisprognosen, ohne klare kurzfristige Treiber.",
-      "signal": "Preisprognosen, keine klaren Treiber.",
+      "rationale": "Platin wird hinsichtlich seiner Preisentwicklung und Investitionsaussichten analysiert.",
+      "signal": "Preisentwicklung und Investitionsaussichten analysiert.",
       "analysis": [
-        "Treiber: Keine spezifischen Treiber in den vorliegenden Nachrichten genannt.",
-        "Risiko: Keine spezifischen Risiken in den vorliegenden Nachrichten genannt.",
-        "Einordnung: Die Nachrichtenlage ist neutral, da sie sich hauptsächlich auf langfristige Prognosen konzentriert und keine unmittelbaren Treiber liefert."
+        "Treiber: Keine spezifischen positiven Treiber in den News genannt.",
+        "Risiko: Keine spezifischen Risiken in den News genannt, aber allgemeine Rohstoffvolatilität bleibt bestehen.",
+        "Einordnung: Die Nachrichtenlage ist neutral, mit Fokus auf Prognosen und Investitionsaussichten."
       ]
     }
   ],
@@ -3616,7 +3646,7 @@
       "title": "Housing is flashing warning signs just as the Fed weighs more interest rate hikes",
       "source": "CNBC Markets",
       "url": "https://www.cnbc.com/2026/10/20/housing-mortgage-rates-real-estate-federal-reserve.html",
-      "datum": "Tue, 20 Oct 2026 19:28:43 GMT",
+      "datum": "Wed, 21 Oct 2026 11:20:58 GMT",
       "sentiment": "bearish"
     },
     {
@@ -3624,49 +3654,49 @@
       "source": "CNBC Markets",
       "url": "https://www.cnbc.com/2026/10/19/ai-job-losses-women-automation-risk.html",
       "datum": "Mon, 19 Oct 2026 18:36:21 GMT",
-      "sentiment": "neutral"
-    },
-    {
-      "title": "Why is Intuitive Surgical stock tumbling today?",
-      "source": "Investing.com",
-      "url": "https://www.investing.com/news/stock-market-news/why-is-intuitive-surgical-stock-tumbling-today-93CH-4962037",
-      "datum": "2026-10-21",
-      "sentiment": "neutral"
-    },
-    {
-      "title": "Global flight activity declines in week 42, Middle East sees sharp drop says Citi",
-      "source": "Investing.com",
-      "url": "https://www.investing.com/news/stock-market-news/global-flight-activity-declines-in-week-42-middle-east-sees-sharp-drop-says-citi-93CH-4962036",
-      "datum": "2026-10-21",
       "sentiment": "bearish"
     },
     {
-      "title": "Gift Nifty 50 bear flag breaks below key MAs: Live levels",
+      "title": "Panasonic Industry moves up AI sales target to fiscal 2029",
+      "source": "Investing.com",
+      "url": "https://www.investing.com/news/stock-market-news/panasonic-industry-moves-up-ai-sales-target-to-fiscal-2029-93CH-4965112",
+      "datum": "2026-10-22",
+      "sentiment": "bullish"
+    },
+    {
+      "title": "+43% upside: Profits are surging for this AI-picked tech giant climbing fast",
+      "source": "Investing.com",
+      "url": "https://www.investing.com/news/stock-market-news/43-upside-profits-are-surging-for-this-aipicked-tech-giant-climbing-fast-4965096",
+      "datum": "2026-10-22",
+      "sentiment": "bullish"
+    },
+    {
+      "title": "Yara reports Q3 earnings miss as energy costs weigh on results",
+      "source": "Investing.com",
+      "url": "https://www.investing.com/news/stock-market-news/yara-reports-q3-earnings-miss-as-energy-costs-weigh-on-results-93CH-4965094",
+      "datum": "2026-10-22",
+      "sentiment": "bearish"
+    },
+    {
+      "title": "Gift Nifty 50 bounces from $22,670 support in oversold bear flag: Live",
       "source": "Investing.com",
       "url": "https://www.investing.com/news/stock-market-news/gift-nifty-50-faces-bull-trap-risk-at-23036-vwap-live-levels-93CH-4956292",
-      "datum": "2026-10-21",
+      "datum": "2026-10-22",
+      "sentiment": "neutral"
+    },
+    {
+      "title": "Asian stocks tumble, bitcoin retreats as China enters bear market",
+      "source": "CoinDesk",
+      "url": "https://www.coindesk.com/markets/2026/10/22/asian-stocks-tumble-bitcoin-retreats-as-china-enters-bear-market",
+      "datum": "Thu, 22 Oct 2026 08:49:08 +0000",
       "sentiment": "bearish"
     },
     {
-      "title": "Why is Svenska Handelsbanken stock sliding today?",
-      "source": "Investing.com",
-      "url": "https://www.investing.com/news/stock-market-news/why-is-svenska-handelsbanken-stock-sliding-today-93CH-4962032",
-      "datum": "2026-10-21",
-      "sentiment": "neutral"
-    },
-    {
-      "title": "SpaceX and Tesla explore merger that would unite more than 30,000 bitcoin",
+      "title": "China seeks to seize 61,800 BTC tied to $5.7 billion fraud scheme",
       "source": "CoinDesk",
-      "url": "https://www.coindesk.com/markets/2026/10/21/spacex-and-tesla-explore-merger-that-would-unite-more-than-30-000-bitcoin",
-      "datum": "Wed, 21 Oct 2026 09:23:00 +0000",
-      "sentiment": "neutral"
-    },
-    {
-      "title": "Monero futures are again heating with leverage, raising volatility risks",
-      "source": "CoinDesk",
-      "url": "https://www.coindesk.com/markets/2026/10/21/monero-futures-are-again-heating-with-leverage-raising-volatility-risks",
-      "datum": "Wed, 21 Oct 2026 08:57:29 +0000",
-      "sentiment": "neutral"
+      "url": "https://www.coindesk.com/markets/2026/10/22/china-seeks-to-seize-61-800-btc-tied-to-usd5-7-billion-fraud-scheme",
+      "datum": "Thu, 22 Oct 2026 06:24:10 +0000",
+      "sentiment": "bearish"
     }
   ],
   "quellen": [
@@ -3679,10 +3709,10 @@
       "url": "https://finance.yahoo.com"
     }
   ],
-  "fetched_at": "2026-10-21T09:25:26+00:00",
+  "fetched_at": "2026-10-22T09:32:50+00:00",
   "fx": {
     "usd": 1.0,
-    "chf": 0.8236,
-    "eur": 0.8917
+    "chf": 0.8239,
+    "eur": 0.8901
   }
 }
