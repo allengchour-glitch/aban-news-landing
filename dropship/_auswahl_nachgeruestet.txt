@@ -3586,3 +3586,6 @@
 16656450945415	Farbe:3:3	2026-10-22	polyester-aufbewahrungsbeutel-611000
 16656617472391	Farbe:5:5	2026-10-22	canvas-schultertasche-grosse-kapazitat-630000
 16656791404935	Farbe:2:2	2026-10-22	quarzuhr-mit-zifferblatt-und-silikonarmband-619100
+16656790290823	Farbe:5:5	2026-10-22	wasserdichte-leuchtende-multifunktions-quarz-d-634700
+16656789209479	Farbe:2:2	2026-10-22	kreative-quarzuhr-fur-paare-625100
+16656788128135	Farbe:2:2	2026-10-22	quarzuhr-fur-damen-mit-armband-635700
