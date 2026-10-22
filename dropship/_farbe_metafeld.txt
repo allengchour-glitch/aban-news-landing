@@ -520,3 +520,6 @@ gid://shopify/Product/16656672457095	Schwarz
 gid://shopify/Product/16656716759431	Silber
 gid://shopify/Product/16656725180807	Blau
 gid://shopify/Product/16656725311879	Schwarz
+gid://shopify/Product/16656726720903	Gold
+gid://shopify/Product/16656776298887	Schwarz
+gid://shopify/Product/16656788455815	Transparent
