@@ -67,9 +67,66 @@ def gql(q, v=None):
 PRAEFIX_SUCHTAGS = ("google-gesperrt-adult", "google-gesperrt-cbd", "google-gesperrt-notlage")
 
 
+# 22.10.2026 (Sauber-Inventur G6): gs.ausschluss_tag() erklärt JEDEN Tag mit Präfix `google-kanal-` als Ausschluss, die Vorfilter-Suche kannte aber nur
+# feste Namen — `google-kanal-markenware-unklar` (Seagate Exos 10 TB, ACTIVE, im Google-Kanal) fiel durch. Shopify kann keine Tag-Präfix-Suche; deshalb
+# werden die real vorhandenen Tags aus `productTags` gelesen (GEMESSEN 22.10.: 4'141 Tags, 17 Seiten, 7 s) und nach Präfix gefiltert.
+# `google-gesperrt-fehlalarm` ist die bewusste FREIGABE (Google-Meldung geprüft, kein Verstoss) und bleibt draussen.
+PRAEFIXE = ("google-kanal-", "google-gesperrt-")
+PRAEFIX_AUSNAHMEN = {"google-gesperrt-fehlalarm"}
+
+
+def waehle_praefix_tags(alle):
+    """Rein: aus allen Shop-Tags die Sperr-Tags mit Präfix (ohne die Freigabe-Tags)."""
+    return sorted({t for t in alle if t.lower().startswith(PRAEFIXE) and t.lower() not in PRAEFIX_AUSNAHMEN})
+
+
+def praefix_tags_live():
+    """Alle real vorhandenen Präfix-Sperr-Tags des Shops; bei Fehler leer (der Aufrufer fällt auf die festen Namen zurück)."""
+    alle, cur = [], None
+    for _ in range(80):
+        try:
+            d = gql("query($c:String){ productTags(first:250, after:$c){ pageInfo{hasNextPage endCursor} edges{node} } }", {"c": cur})
+            pt = d["data"]["productTags"]
+        except Exception as e:  # noqa: BLE001
+            print(f"⚠️ productTags nicht lesbar ({type(e).__name__}) — nur feste Sperr-Tags")
+            return []
+        alle += [e["node"] for e in pt["edges"]]
+        if not pt["pageInfo"]["hasNextPage"]:
+            return waehle_praefix_tags(alle)
+        cur = pt["pageInfo"]["endCursor"]
+    return waehle_praefix_tags(alle)
+
+
 def suchtags():
-    """Alle exakten Tags, nach denen die Vorfilter-Suche fragt (Ausschluss-Tags + bekannte Google-Sperr-Tags)."""
-    return sorted(set(gs.AUSSCHLUSS_TAGS) | set(PRAEFIX_SUCHTAGS))
+    """Alle exakten Tags, nach denen die Vorfilter-Suche fragt (Ausschluss-Tags + bekannte Google-Sperr-Tags + alle Präfix-Sperr-Tags des Shops)."""
+    return sorted(set(gs.AUSSCHLUSS_TAGS) | set(PRAEFIX_SUCHTAGS) | set(praefix_tags_live()))
+
+
+def praefix_selbsttest():
+    """Reiner Test von waehle_praefix_tags mit zwei Mutanten (Ausnahme vergessen / Präfix google-kanal- vergessen). → Fehlerliste."""
+    import types
+    quelle = open(os.path.abspath(__file__), encoding="utf-8").read()
+
+    def faelle(m):
+        f = []
+        alle = ["google-kanal-markenware-unklar", "google-kanal-klinge-outdoor", "google-gesperrt-adult", "google-gesperrt-fehlalarm",
+                "Google-Kanal-Neu", "kostuem", "google-kanal", "xgoogle-kanal-x"]
+        w = m.waehle_praefix_tags(alle)
+        if w != ["Google-Kanal-Neu", "google-gesperrt-adult", "google-kanal-klinge-outdoor", "google-kanal-markenware-unklar"]:
+            f.append(f"Auswahl falsch: {w}")
+        return f
+    fehler = faelle(sys.modules[__name__])
+    for name, alt, neu in (("Ausnahme vergessen", "and t.lower() not in PRAEFIX_AUSNAHMEN", "and True"),
+                           ("google-kanal- vergessen", 'PRAEFIXE = ("google-kanal-", ' + '"google-gesperrt-")', 'PRAEFIXE = ("google-gesperrt-",)')):
+        if quelle.count(alt) < 1:
+            fehler.append(f"Mutant «{name}»: Stelle fehlt")
+            continue
+        m = types.ModuleType("mutant")
+        m.__file__ = os.path.abspath(__file__)
+        exec(compile(quelle.replace(alt, neu, 1), "mutant", "exec"), m.__dict__)
+        if not faelle(m):
+            fehler.append(f"Mutant «{name}» NICHT erkannt")
+    return fehler
 
 
 def kandidaten():
@@ -246,6 +303,12 @@ def heilschmuck_kandidaten():
 
 def main():
     if "--kanarien" in sys.argv:
+        fp = praefix_selbsttest()
+        for e in fp:
+            print(f"  FEHLER Präfix-Tags: {e}")
+        print(f"FERTIG: Präfix-Tag-Selbsttest (1 Fall, 2 Mutanten), {len(fp)} Fehler")
+        if fp:
+            sys.exit(1)
         n3, f3 = gs.heilschmuck_kanarien()
         for t, e in f3:
             print(f"  FEHLER Heil-Schmuck: «{t}» erwartet {e}")

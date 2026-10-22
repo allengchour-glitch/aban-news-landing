@@ -78,6 +78,11 @@ PLAN = {
             ("Schminkspiegel", "schminkspiegel", None),
         ],
     },
+    "Herren": {   # 22.10.: Herren-Jeans neu (150 aktive, Regel Tag such-herren-jeans) direkt hinter «Hosen»
+        "reihenfolge": ["herren-schuhe", "herren-hemden", "herren-shirts", "herren-hosen", "herren-jeans", "herren-pullover", "herren-jacken",
+                        "herren-uhren", "sub-bart-rasur"],
+        "einhaengen": [("Herren-Jeans", "herren-jeans", None)],
+    },
     "Kinder & Haustier": {
         "reihenfolge": [],
         "einhaengen": [("Geschenke für Kinder", "geschenke-fuer-kinder", None)],

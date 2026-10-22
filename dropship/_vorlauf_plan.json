@@ -943,20 +943,20 @@
    "basis_utc": "2026-10-24T10:15:00Z",
    "format": "reel_igfb",
    "grund": "",
-   "handle": "xxl-leselupe-mit-led-licht-5-10-vergrosserung-2-helligkeitsstufen",
+   "handle": "steampunk-korsage-schwarz-fgssor9537",
    "handles": [
-    "bildreel-xxl-leselupe-mit-led-licht-5-10-vergrosserung-2-helligkeitsstufen",
-    "xxl-leselupe-mit-led-licht-5-10-vergrosserung-2-helligkeitsstufen"
+    "pid:15469972226433",
+    "steampunk-korsage-schwarz-fgssor9537"
    ],
-   "letzter_versuch": "2026-10-18T22:15:05Z",
+   "letzter_versuch": "2026-10-22T17:13:01Z",
    "mc_ids": [
-    399467813,
-    399467816
+    403378886,
+    403378909
    ],
-   "reserviert_um": "2026-10-18T22:15:05Z",
+   "reserviert_um": "2026-10-22T17:13:01Z",
    "status": "geplant",
    "termin_utc": "2026-10-24T10:15:00Z",
-   "versuche": 1
+   "versuche": 2
   },
   "reel_igfb-20261024T1815": {
    "basis_utc": "2026-10-24T18:15:00Z",
@@ -1805,6 +1805,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-22T16:57:41Z",
+ "stand": "2026-10-22T17:14:21Z",
  "version": 1
 }

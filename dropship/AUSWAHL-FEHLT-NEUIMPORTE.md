@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-22 15:58 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-22 17:16 UTC)
 
-Suche: `status:active AND created_at:>=2026-10-19` · gemessen 479 · **284 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 255, teilweise: 20, keine: 9; Preisspanne > 2×: 37) · 1 CJ-Variante: 195 · ohne Antwort: 0
+Suche: `status:active AND created_at:>=2026-10-19` · gemessen 463 · **268 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 240, teilweise: 19, keine: 9; Preisspanne > 2×: 37) · 1 CJ-Variante: 195 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -96,7 +96,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Damen Quarzuhr mit Mesh-Armband (`damen-quarzuhr-mit-mesh-armband-617000`) | 9 | 9 | 6.77–6.77 | 16.90 | Mesh Belt Rose White, Mesh Belt Rose Black, Black Belt Black Rose, Mesh Belt Rose Blue |
 | Männer-Wasserdichte Luminierende Quarz-Uhr (`manner-wasserdichte-luminierende-quarz-uhr-605000`) | 9 | 9 | 6.34–7.47 | 16.90 | 825 Rooms In Gold And Blue, 825 Rooms In Gold And White, 825 Rooms In Gold And Black, 825 Rooms Of Golden Green |
 | Gestrickter Kapuzen-Schal mit Quasten (`gestrickter-kapuzen-schal-mit-quasten-607700`) | 9 | 9 | 4.02–6.25 | 20.90 | Wine Red-Average Size, Rose Red-Average Size, Yellow-Average Size, Sky Blue-Average Size |
-| Wickeltuch mit fester Krempe (`wickeltuch-mit-fester-krempe-622300`) | 9 | 8 | 3.62–3.62 | 16.90 | Black, White, Gray, Wine Red |
 | Herren-Armbanduhr, wasserdicht, ultradünn (`herren-armbanduhr-wasserdicht-ultradunn-633400`) | 9 | 9 | 7.3–8.54 | 17.90 | Silver Case Blue Face, Silver Case Black Face, Silver Case White Dial Blue, Silver Case White And Black |
 | Feuchtigkeitslipgloss, langanhaltend, verwischfrei (`feuchtigkeitslipgloss-langanhaltend-verwischfr-635800`) | 8 | 7 | 2.17–2.17 | 16.90 | Starry Peach, Jue Brewing Plum Powder, Laid back Misty Pink, Electric Berry |
 | Gold-Foil-Chocolate Lidschatten (`gold-foil-chocolate-lidschatten-099712`) | 8 | 8 | 3.52–3.52 | 16.90 | 601 Pine Cone Wood Rose, 602 Elk Maple Grove, 603 Gold Foil Chocolate, Apricot Peach Plate |
@@ -109,7 +108,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Grosser Koffer für Reisen (`grosser-koffer-fur-reisen-607400`) | 8 | 8 | 70.31–112.3 | 252.90 | White-20 Inches, Gun Gray-20 Inches, Red-20 Inches, Camouflage-20 Inches |
 | Bratpfanne aus Edelstahl (`bratpfanne-aus-edelstahl-639200`) | 8 | 8 | 16.26–52.42 | 181.90 | 304 Pairs Without Cover-26cm with Fried Shovel, 304 Pairs Without Cover-28cm with Fried Shovel, 304 Pairs Without Cover-30cm with Fried Shovel, 304 Pairs Without Cover-26and28a30cm with Fried Shovel |
 | Silber-Case Uhr mit orangefarbenem Armband (`silber-case-uhr-mit-orangefarbenem-armband-615400`) | 8 | 8 | 8.68–9.2 | 17.90 | Red Belt-Black, Red Belt-Silver, Black Belt-Black, Black Belt-Silver |
-| Minimalistischer Fünf-Sterne-Doppellagen-Schal (`minimalistischer-funf-sterne-doppellagen-schal-622200`) | 8 | 8 | 2.63–2.63 | 16.90 | Black, White, Gray, Walnut Yellow |
 | Taktische Umhängetasche für Outdoor-Sport (`taktische-umhangetasche-fur-outdoor-sport-624800`) | 7 | 7 | 5.03–5.03 | 18.90 | Black-Below 20L, Brown-Below 20L, Italian Camouflage-Below 20L, Dark Night-Below 20L |
 | Umhängetasche mit Rautenmuster (`umhangetasche-mit-rautenmuster-623000`) | 7 | 7 | 7.99–7.99 | 21.90 | Color, Silver, Black Gold Diamand, Green |
 | Kristall-Hanf Kopftuch – Monochromes Design (`kristall-hanf-kopftuch-monochromes-design-606000`) | 7 | 7 | 3.1–3.1 | 16.90 | 2 White-Average Size, 3 Navy Blue-Average Size, 4 Pink Color-Average Size, 5 Light Khaki-Average Size |
@@ -127,8 +125,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Businessrucksack mit 20-35 l Kapazität (`businessrucksack-mit-20-35-l-kapazitat-622600`) | 7 | 7 | 7.64–8.68 | 31.90 | 5022 Black, 5022 Gray, 9022A Black, 9022A Khaki |
 | Quarz-Armbanduhr, schwarz, 11 mm Gehäusedicke (`quarz-armbanduhr-schwarz-11-mm-gehausedicke-624100`) | 7 | 7 | 9.78–9.78 | 18.90 | Black Noodles, Silver White, Silver Red, Black And Red |
 | Schwarzer Wollschal für Winter (`schwarzer-wollschal-fur-winter-621600`) | 7 | 7 | 2.97–2.97 | 16.90 | Ankela Red, Beige, Light Gray, Black |
-| Doppelseitiger Quastenschal aus Polyestermischung (`doppelseitiger-quastenschal-aus-polyestermisch-600300`) | 7 | 7 | 3.32–3.32 | 16.90 | Black, White, Gray, Wine Red |
-| Business-Quartz-Uhr mit Dual-Kalender und Leuchtzeigern (`business-quartz-uhr-mit-dual-kalender-und-leuc-605400`) | 7 | 7 | 9.62–10.28 | 19.90 | Steel Belt Silver Black, Gold And Silver Blue, Steel Belt Silver Blue, Gold And Silver White |
 | Kashmirähnlicher Karomuster-Schal (`kashmirahnlicher-karomuster-schal-619500`) | 6 | 6 | 2.02–2.02 | 16.90 | WT1582 Black-200x64cm With Tassels, WT1583 Pink-200x64cm With Tassels, WT1585 Gray Big Plaid-200x64cm With Tassels, WT1586 Red Plaid-200x64cm With Tassels |
 | Flammen-Totenkopf-Ring aus Titanstahl (`flammen-totenkopf-ring-aus-titanstahl-636600`) | 6 | 6 | 2.6–2.6 | 16.90 | No 7, No 8, No 9, No 11 |
 | Herrenring aus Wolframkarbid mit Zirkonia (`herrenring-aus-wolframkarbid-mit-zirkonia-612000`) | 6 | 6 | 12.94–12.94 | 21.90 | Black-No 7, Black-No 8, Black-No 9, Black-No 10 |
@@ -150,11 +146,8 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Grosses Holz-Bauklotz-Set für Kinder 4–6 Jahre (`grosses-holz-bauklotz-set-fur-kinder-4-6-jahre-603000`) | 6 | 6 | 6.25–11.28 | 57.90 | Printed wood-Bagged, Printed wood-Bucket, Beech wood-Bagged, Beech wood-Bucket |
 | Stadtstrasse 3D-Puzzle aus Papier (`stadtstrasse-3d-puzzle-aus-papier-634400`) | 6 | 6 | 2.62–2.62 | 16.90 | Fire Station, Police Station, Shopping Mall, Post Office |
 | Wasserfester Rucksack für Studenten und Business (`wasserfester-rucksack-fur-studenten-und-busine-626800`) | 6 | 6 | 17.41–17.41 | 48.90 | Light Gray, Blue, Black, Gray Without Logo |
-| Uhr mit Farbverlauf-Dial (`uhr-mit-farbverlauf-dial-606700`) | 6 | 6 | 6.77–6.77 | 16.90 | Gradient Turquoise, Gradient Purple Color Brown, Gradient Blue, Gradient Pink Yellow |
 | Business-Quarz-Uhr mit Kalender und 24-Stundenanzeige (`business-quarz-uhr-mit-kalender-und-24-stunden-614800`) | 6 | 6 | 9.38–10.59 | 20.90 | Gold Shell Gold Surface, Gold Shell Black Surface, Gold Shell Silver Surface, Golden Shell Black Surface |
 | Wasserdichte Armbanduhr Gold Chronograph (`wasserdichte-armbanduhr-gold-chronograph-604800`) | 6 | 6 | 6.25–6.25 | 16.90 | Black, Titanium Color, Army Green, Apricot |
-| Retro Quarz-Damenuhr mit Mineralglas (`retro-quarz-damenuhr-mit-mineralglas-615000`) | 6 | 6 | 9.78–9.78 | 18.90 | A1 Gold Color, A2 Gold Color, A3 silver Color, A4 rose gold Color |
-| Quarzuhr mit magnetischem Kugelsystem (`quarzuhr-mit-magnetischem-kugelsystem-606900`) | 6 | 6 | 11.94–12.94 | 22.90 | Silver Tape, All Black Tape, Steel Belt Silver White, Steel Belt All Black |
 | Wanddekoration im Bauhaus-Stil (`wanddekoration-im-bauhaus-stil-626600`) | 5 | 5 | 10.24–10.24 | 20.90 | Blue And Red-40x60cm, Coffee Brown-40x60cm, Coffee Color-40x60cm, Spring Green-40x60cm |
 | Schlankmachender Baumwoll-Schal (`schlankmachender-baumwoll-schal-637200`) | 5 | 5 | 6.97–6.97 | 16.90 | Dark gray, Brown, Medium gray, Rose pink |
 | Silberner Damenring mit Pferdaugen-Schliff (`silberner-damenring-mit-pferdaugen-schliff-620200`) | 5 | 5 | 17.91–17.91 | 27.90 | 925 Silver-US Size 5, 925 Silver-US Size 6, 925 Silver-US Size 7, 925 Silver-US Size 8 |
@@ -185,7 +178,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Sportliches Uhrenarmband-Quarzzeitmesser (`sportliches-uhrenarmband-quarzzeitmesser-605800`) | 5 | 5 | 5.8–5.8 | 16.90 | Army Green-Full Luminescent, Army Green-Standard Luminescent, Black-Standard Luminescent,  Black silicone strap-Standard Luminescent |
 | Herren-Armbanduhr mit Mondphase und Kalender (`herren-armbanduhr-mit-mondphase-und-kalender-609100`) | 5 | 5 | 6.97–7.13 | 16.90 | Gun Black, Black With Black Surface, Brown Strap  White Face, Black With White Surface |
 | Damen-Armbanduhr mit Strass-Besatz (`damen-armbanduhr-mit-strass-besatz-632200`) | 5 | 5 | 12.11–12.11 | 21.90 | Gold Necklace Gold Noodles, Gold Necklace White Noodles, Golden White Noodles, Silver Necklace White Noodles |
-| Sport Chronograph Herrenuhr mit Silikonarmband (`sport-chronograph-herrenuhr-mit-silikonarmband-617600`) | 5 | 5 | 21.06–21.06 | 30.90 | 01 Rose Black Shell Black, 02 Rose Blue Shell Blue, 03 Black Shell Black Orange, 04 Black Shell Red |
 | Iris-Blumenring (`iris-blumenring-631400`) | 4 | 4 | 2.11–2.11 | 16.90 | Iris Flower Ring 6028-No 6, Iris Flower Ring 6028-No 7, Iris Flower Ring 6028-No 8, Iris Flower Ring 6028-No 9 |
 | Männer-Quarz-Uhr mit quadratischem Zifferblatt (`manner-quarz-uhr-mit-quadratischem-zifferblatt-614400`) | 4 | 4 | 14.76–14.76 | 23.90 | Wine Red-Quartz Watch, Green-Quartz Watch, Dark Blue-Quartz Watch, Coffee With A Gray Disc-Quartz Watch |
 | Dumpling-Mold-Set 3D-gedruckt – Quadrat, Kreis, Herz (`dumpling-mold-set-3d-gedruckt-quadrat-kreis-he-620800`) | 4 | 4 | 3.09–9.44 | 27.90 | Square, Round, Heart Shape, Combination |
@@ -221,10 +213,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Herren-Armbanduhr Quarz Wasserfest (`herren-armbanduhr-quarz-wasserfest-601600`) | 4 | 4 | 10.42–11.63 | 20.90 | RZY082 Silver White Ring, RZY082 Silver Black Ring, RZY082 Black And White Circle, RZY082 All Black Ring |
 | Lumenwasserfeste Quarz-Uhr (`lumenwasserfeste-quarz-uhr-619800`) | 4 | 4 | 6.6–6.6 | 16.90 | Silver Case Black Noodles, Silver Case White Noodles, Silver Case Blue Face, Silver Case Green Surface |
 | Business Armbanduhr mit Dual-Datum und Stahlband (`business-armbanduhr-mit-dual-datum-und-stahlba-633900`) | 4 | 4 | 5.14–5.8 | 16.90 | 2831H Black, 2831J Gold, 2831LANSAN, 2831Y Silver |
-| Mechanische Herren-Uhr mit Kalenderquarz (`mechanische-herren-uhr-mit-kalenderquarz-624900`) | 4 | 4 | 7.63–7.96 | 16.90 | 865 Steel Band, 865 Gray Steel Strip, 865 Gold Silicone Tape, 865 Gray Silicone Tape |
 | Multifunktionale wasserdichte Quarz-Uhr für Herren (`multifunktionale-wasserdichte-quarz-uhr-fur-he-634900`) | 4 | 4 | 17.58–19.24 | 29.90 | Steel Case Black Noodles, Rose Shell Blue Surface, Blue Shell And Blue Surface, Black Shell Black Surface |
-| Quarz-Uhr mit Volldiamanten-Glanz aus Edelstahl (`quarz-uhr-mit-volldiamanten-glanz-aus-edelstah-604400`) | 4 | 4 | 8.13–8.13 | 16.90 | 01 Silver White, 01 Rose Gold, 02 Silver White, 02 Rose Gold |
-| Super Player Quarzuhr für Herren (`super-player-quarzuhr-fur-herren-633500`) | 4 | 4 | 6.63–6.63 | 18.90 | Blue Face, Black Noodles, White Noodles, Green Surface |
 | Oversized Wollschal Dreieck 200 cm (`oversized-wollschal-dreieck-200-cm-605900`) | 3 | 3 | 12.44–12.44 | 21.90 | Raw Velvet Rice-200X90cm, Raw Velvet Camel-200X90cm, Gray-200X90cm |
 | Zylindrischer Angelrucksack (`zylindrischer-angelrucksack-228160`) | 3 | 3 | 7.87–8.08 | 17.90 | Black, Urban camouflage, Desert camouflage |
 | Halskette mit Kor, Türkis und Muschelperlen (`halskette-mit-kor-turkis-und-muschelperlen-635200`) | 3 | 3 | 4.3–5.18 | 16.90 | Necklace, Bracelet, Ear Studs |
@@ -252,10 +241,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Spatel aus Akazienholz (`spatel-aus-akazienholz-638400`) | 3 | 3 | 6.65–12.64 | 30.90 | 4 sets 3 pieces each, 7 sets 1, 10 sets 4 pieces each |
 | Versteckter Klapp-Wasserhahn – Edelstahl (`versteckter-klapp-wasserhahn-edelstahl-637600`) | 3 | 3 | 19.1–23.44 | 64.90 | Brushed Color, Black, Gun Gray |
 | Umhängetasche für Laptop (`umhangetasche-fur-laptop-620200`) | 3 | 3 | 6.8–6.8 | 28.90 | 8005 Horizontal Black, 8005 Horizontal Style In Brown, 8005 Horizontal Khaki |
-| Mesh-Armband Uhr, wasserabweisend, Quarz (`mesh-armband-uhr-wasserabweisend-quarz-613400`) | 3 | 3 | 9.62–9.62 | 19.90 | Black And Red Needle, Black And Blue Needle, Black Acupuncture Needle |
-| Quarz-Uhr mit Kalender, wasserdicht, 8 mm (`quarz-uhr-mit-kalender-wasserdicht-8-mm-618200`) | 3 | 3 | 5.31–5.31 | 16.90 | Steel Belt Full Gold, Steel Belt Black, Steel Strip White |
-| Armbanduhr mit Donglingstein und Hetian Jade (`armbanduhr-mit-donglingstein-und-hetian-jade-602300`) | 3 | 3 | 11.34–11.34 | 20.90 | Gold Chain, Chain Golden Green, Chain Silver Green |
-| Mark Fairwhale Herren-Quarzuhr (`mark-fairwhale-herren-quarzuhr-606000`) | 3 | 3 | 18.75–18.75 | 32.90 | Black Shell Black Surface, Black Shell And Red Noodles, White Shell And Black Surface |
 | Multifunktionaler Rucksack mit Diebstahlschutz (`multifunktionaler-rucksack-mit-diebstahlschutz-b9d9f9`) | 2 | 2 | 31.95–36.28 | 66.90 | Black  without logo, Black |
 | Wandsticker Gans aus Holz (`wandsticker-gans-aus-holz-610300`) | 2 | 2 | 2.48–4.04 | 16.90 | Resin, Wood |
 | Tiger Eye Stein & Muschelperlenhalskette 41–50 cm (`tiger-eye-stein-muschelperlenhalskette-41-50-c-607400`) | 2 | 2 | 3.77–4.13 | 16.90 | Old Sandalwood Style, Tigereye Style |
@@ -287,6 +272,5 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Alloy Craft Ornament Elektronische Uhr (`alloy-craft-ornament-elektronische-uhr-604100`) | 2 | 2 | 10.47–11.3 | 24.90 | Watch Without Box, With Black Gift Box |
 | Magnetische Levitation Sci-Fi Studentenuhr (`magnetische-levitation-sci-fi-studentenuhr-616600`) | 2 | 2 | 25.21–25.21 | 36.90 | E033DG3A Male, E045DG5A Female |
 | Smart-Sportuhr mit GPS und Herzfrequenz (`smart-sportuhr-mit-gps-und-herzfrequenz-635100`) | 2 | 2 | 39.76–39.76 | 52.90 | Sports Vinyl, Sport Orange Glue |
-| Elektrischer Gemüseschneider (`elektrischer-gemuseschneider-615700`) | 2 | 2 | 18.23–20.83 | 55.90 | Basic Style, Smart Digital Display |
 | Herren-Quarzuhr mit Multifunktion (`herren-quarzuhr-mit-multifunktion-623900`) | 2 | 2 | 10.42–11.11 | 19.90 | Gold Shell Gold Surface, Silver Case Silver Surface |
 | Herrenarmbanduhr mit Sternenhimmel-Design (`herrenarmbanduhr-mit-sternenhimmel-design-620300`) | 2 | 2 | 4.21–4.21 | 16.90 | Rose Shell Brown Belt, Silver Case Black |

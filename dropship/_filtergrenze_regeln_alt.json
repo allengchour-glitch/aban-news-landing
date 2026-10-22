@@ -58,5 +58,95 @@
     "condition": "kategorie-uhr"
    }
   ]
+ },
+ "fur-ihn@2026-10-22T17:15": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TYPE",
+    "relation": "EQUALS",
+    "condition": "Herrenmode"
+   },
+   {
+    "column": "TYPE",
+    "relation": "EQUALS",
+    "condition": "Herrenschuhe"
+   },
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "herrenschmuck"
+   },
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "herrenuhr"
+   },
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "vatertag"
+   }
+  ]
+ },
+ "schmuck-uhren@2026-10-22T17:16": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TYPE",
+    "relation": "EQUALS",
+    "condition": "Schmuck"
+   },
+   {
+    "column": "TYPE",
+    "relation": "EQUALS",
+    "condition": "Uhren"
+   },
+   {
+    "column": "TYPE",
+    "relation": "EQUALS",
+    "condition": "Ring"
+   },
+   {
+    "column": "TYPE",
+    "relation": "EQUALS",
+    "condition": "Halskette"
+   },
+   {
+    "column": "TYPE",
+    "relation": "EQUALS",
+    "condition": "Armband"
+   },
+   {
+    "column": "TYPE",
+    "relation": "EQUALS",
+    "condition": "Ohrringe"
+   }
+  ]
+ },
+ "wohnen-dekoration@2026-10-22T17:16": {
+  "appliedDisjunctively": true,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "wohnen"
+   },
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "dekoration"
+   },
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "wandbild"
+   },
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "pflanzentopf"
+   }
+  ]
  }
 }

@@ -120,7 +120,7 @@ const SPERR = new Set(['nicht-bewerben', 'nur-onlineshop', '18plus', 'raucher', 
 const HEIL = /schmerz|heil|migräne|krampfader|fettverbrenn|abnehmen|cellulite|arthr|rheuma|diabetes|entgift|detox|blutdruck|haarausfall|schnarch|inkontinenz/i;
 // 24.09.2026: Lizenzfiguren nicht selbst bewerben (echte Fortura-Ware darf verkauft, aber nicht mit geschützter Figur
 // gepinnt werden) — am Titel, weil Plüsch/Ballone/Perücken keinen Lizenz-Tag tragen (Gleichlauf tiktok_karussell.py).
-const LIZENZ_FIGUR = /\b(?:batman|joker|superman|supergirl|spider-?man|marvel|avengers|deadpool|harley quinn|disney|mickey|minnie|pok[eé]mon|hello kitty|sanrio|kuromi|barbie|star wars|harry potter|hogwarts|gryffindor|slytherin|wednesday|addams|morticia|naruto|super mario|sonic (?:the hedgehog|classic|movie|shadow)|minecraft|paw patrol|labubu)\b/i;
+const LIZENZ_FIGUR = /\b(?:batman|joker|superman|supergirl|spider-?man|marvel|avengers|deadpool|harley quinn|disney|mickey|minnie|pok[eé]mon|hello kitty|sanrio|kuromi|barbie|star wars|harry potter|hogwarts|gryffindor|slytherin|wednesday|addams|morticia|naruto|super mario|sonic (?:the hedgehog|classic|movie|shadow)|minecraft|paw patrol|labubu|eisk[oö]nigin|frozen|elsa|olaf|top gun|pennywise|pj masks|ninja turtles|squid game|wonder ?woman|catwoman|batgirl|pikachu|hagrid|dumbledore|voldemort)\b/i;
 // Board-Zuordnung: erstes passendes Muster gewinnt (Reihenfolge = Spezifität).
 const BOARDS = [
   [/kleider(?:b[üu]e?gel|ständer|staender|schrank|stange|haken)|kleiderb(?:ü|ue)gel/i, 'Wohnen & Deko'],   // 19.10. (Prüfung): «Kleiderbügel/-ständer» sind kein Kleid → nicht aufs Sommerkleider-Board

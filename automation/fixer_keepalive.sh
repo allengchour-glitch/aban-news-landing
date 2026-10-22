@@ -1666,6 +1666,10 @@ while true; do
     ALTER=$(( $(date +%s) - $(stat -c %Y "$FGW" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
       touch "$FGW"
+      # 22.10.2026: Selbsttest davor; die Wache schreibt jetzt dropship/_filtergrenze_stand.json (Ampel «FILTERGRENZE», vorher nur dieses /tmp-Log,
+      # das niemand las — drei Menü-Kollektionen standen 18 Tage unbemerkt wieder über der Grenze). Abhilfe: automation/filtergrenze_reparieren.py.
+      ( cd "$REPO" && timeout 60 python3 automation/filtergrenze_wache.py --selbsttest >/dev/null 2>&1 && timeout 60 python3 automation/filtergrenze_reparieren.py --selbsttest >/dev/null 2>&1 ) \
+        || echo "$(date -u +%H:%M) ⚠️ FILTERGRENZE-SELBSTTEST fehlgeschlagen (filtergrenze_wache.py / filtergrenze_reparieren.py --selbsttest)"
       ( cd "$REPO" && timeout 600 python3 automation/filtergrenze_wache.py >> "$FGW" 2>&1 )
       echo "$(date -u +%H:%M) $(tail -1 "$FGW")"
     fi
