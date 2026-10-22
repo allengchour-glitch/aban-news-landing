@@ -1,20 +1,19 @@
 {
- "stand": "2026-10-21T10:44Z",
- "gescannt": 56344,
- "seiten": 226,
+ "stand": "2026-10-22T08:09Z",
+ "gescannt": 56621,
+ "seiten": 227,
  "vollstaendig": true,
- "blocker": 42,
+ "blocker": 41,
  "klassen": {
   "Promotional overlay on image": 35,
-  "Image processing or experiencing delays": 4,
+  "Image processing or experiencing delays": 3,
   "Product page unavailable": 2,
   "Unable to show image": 1
  },
  "ohne_onlineStoreUrl": {},
- "anzeigen_meldungen": 46995,
+ "anzeigen_meldungen": 46533,
  "handles": {
   "Image processing or experiencing delays": [
-   "schweiz-magnet-fondue",
    "tote-basel",
    "mousepad-fasnacht-mask",
    "kletterbaum-fur-katzen-624900"
@@ -65,10 +64,10 @@
   ]
  },
  "andere_apps": {
-  "[Shop] Dieses Produkt ist in Shop nicht auffindbar. Prüfe den Angebotsstatus im Shop-Kanal": 3
+  "[Shop] Dieses Produkt ist in Shop nicht auffindbar. Prüfe den Angebotsstatus im Shop-Kanal": 5
  },
  "nur_ausland": {
-  "Missing shipping info in some countries [LI]": 29190,
+  "Missing shipping info in some countries [LI]": 28745,
   "Alcoholic beverages [LI]": 3
  },
  "nur_personalisiert": {
@@ -173,23 +172,19 @@
   ]
  },
  "wartet": {
-  "Image under review": 625,
+  "Image under review": 621,
   "Title under review": 4
  },
  "handles_wartet": {
   "Image under review": [
-   "solar-camping-laterne-im-vintage-look-wiederaufladbar-ip44-wetterfest",
-   "fransen-minirock-santa-fe-wildleder-optik-2-lagig",
-   "transparente-iphone®-hulle-selbst-gestalten",
-   "recycelter-unisex-allover-pullover-selbst-gestalten",
-   "schweiz-poster-alpsee-see-spiegelung-kunstdruck",
+   "schweiz-magnet-gruezi-mitenand",
    "schweiz-sticker-steinbock",
    "pod-sticker-art-veggies",
-   "pod-sticker-bicycle-line",
-   "pod-sticker-boombox-graffiti",
+   "pod-sticker-badge-explorer",
    "pod-sticker-dice-d20",
    "pod-sticker-dumbbell",
    "pod-sticker-grapes",
+   "pod-sticker-hamster",
    "pod-sticker-kangaroo",
    "pod-sticker-llama-cute",
    "pod-sticker-moon-face",
@@ -294,12 +289,8 @@
    "wetterfestes-zelt-636000",
    "katzenfestes-einheitssofauberwurf-603200",
    "3d-bubble-chiffon-esstuhl-bezug-618900",
-   "gesichtsfirma-gel-609900",
-   "schonheitspflaster-628100",
-   "katzenspielzeug-622200",
    "marmergriff-gold-245888",
    "einreihiger-anzug-618700",
-   "kau-spielzeug-fur-hunde-643100",
    "wasserdichte-sportuhr-627700",
    "schonheits-nacken-pflege-memory-kopfkissen-631300",
    "crossover-tasche-fur-herren-615500",
@@ -427,6 +418,7 @@
    "plusch-kapuzenpullover-mit-reissverschluss-616400",
    "kapuzenpullover-kleid-fur-damen-609200",
    "elegantes-satin-kleid-schulterfrei-606000",
+   "kinder-strandschuhe-mit-klettverschluss-623500",
    "professionelle-schnursenkellose-velo-schuhe-632000",
    "spitze-lederstiefel-fur-herren-249920",
    "herren-mid-top-schnurstiefeletten-mattleder-842496",
@@ -440,6 +432,8 @@
    "ausziehbarer-veloschutz-mit-rucklicht-4eb858",
    "chunky-casual-sandalen-mit-kreuzriemen-611200",
    "herren-casual-sportschuhe-stylisch-vielseitig-604500",
+   "casual-v-neck-kleid-mit-digitalprint-601400",
+   "etuikleid-satin-mit-spitze-622700",
    "gepunktetes-v-ausschnitt-freizeitkleid-mit-3-4-628200",
    "halterneck-v-ausschnitt-kleid-mit-ruschensaum-605700",
    "loser-strickpullover-611500",
@@ -467,6 +461,7 @@
    "leichter-baumwoll-coat-mit-kapuze-612400",
    "short-cotton-padded-mantel-mit-kapuze-637900",
    "mittelgrosser-wollmantel-mit-kapuze-601300",
+   "ammulliger-hufstarker-mantel-611500",
    "weitlaufiger-kaschmir-schal-mit-kordel-609700",
    "corduroy-hemd-mit-kapuze-614900",
    "mushroom-form-led-wandlampe-ip65-628100",
@@ -483,7 +478,6 @@
    "damenparfum-langanhaltend-618100",
    "ginseng-infused-chantilly-schaumreiniger-626800",
    "muschel-und-susswasserperlenbrosche-618700",
-   "baby-set-aus-baumwolle-pullover-shorts-626600",
    "drahtloser-wasserleck-melder-7c6770",
    "elektrischer-bleistiftspitzer-fur-kinder-609500",
    "nackenkissen-mit-memory-schaum-622200",
@@ -802,7 +796,8 @@
    "retro-umhangetasche-aus-vollnarben-rindsleder-637800",
    "abisolierzange-mit-ratschen-selbsthemmung-626700",
    "sicherer-arbeitsschuh-mit-stahlkappe-und-atmun-629700",
-   "emaille-wasserkessel-teekanne-639100"
+   "emaille-wasserkessel-teekanne-639100",
+   "titan-milchtopf-mit-hammerschlag-textur-610800"
   ],
   "Title under review": [
    "distressed-jeans-fur-herren-632300",
@@ -812,15 +807,19 @@
   ]
  },
  "nur_demand_gen": {
-  "Inappropriate image": 272
+  "Inappropriate image": 273
  },
  "handles_demand_gen": {
   "Inappropriate image": [
+   "cellulite-massage-roller",
    "herren-ring-vintage-edelstahl-retro",
+   "high-waist-hose-lina-wide-leg-fliessend-damen-s-2xl",
    "pod-sticker-flame-graffiti",
    "pod-sticker-ice-hockey",
    "pod-sticker-pumpkin-jack",
    "pod-sticker-tattoo-skull-rose",
+   "pod-sticker-text-einfachmachen",
+   "mousepad-chuchichaeschtli",
    "retro-flammen-tischlampe-led",
    "herren-cargo-hose-trail-multi-pocket-outdoor",
    "vertikaler-gaming-pistolengriff-mit-trigger-610900",
@@ -885,10 +884,8 @@
    "olgo-gaming-mauspad-verschiedene-grossen-396160",
    "nahtloser-yoga-bodysuit-mit-cut-outs-926592",
    "interaktiver-futterspender-fur-haustiere-653376",
-   "retro-kupfer-schadel-anhanger-604400",
+   "atmungsaktives-nackthautgefuhl-yoga-dress-dame-628300",
    "arm-strength-trainer-627900",
-   "katzen-spielzeug-mit-futter-feeder-605200",
-   "taktische-tasche-fur-unterwegs-606700",
    "camo-hosen-robust-lose-passform-602500",
    "halloween-glasbecher-622800",
    "herren-arbeitshose-mit-schlaufe-615400",
@@ -943,7 +940,6 @@
    "multifunktionaler-3-in-1-outdoor-regenmantel-629200",
    "moderner-ethanol-tischkamin-aus-metall-631100",
    "sleeveless-vest-mit-polster-630900",
-   "gotischer-kopfschmuck-schwarz-fgack13679",
    "totenkopf-eimer-17x15-cm-fgabo74555",
    "halskette-mit-totenkopfen-fga98597",
    "horrorhand-mit-klammer-fgack27892",
@@ -951,7 +947,6 @@
    "e-gitarre-skelett-55-cm-fgapc24061",
    "tischdecke-boneshine-fever-fga25574",
    "animatronic-xxl-skelett-243-cm-fga20884",
-   "man-tga-holztransport-lkw-mit-ladekran-und-fga02769",
    "bruder-polizistin-mit-hellem-fga060430",
    "animatronic-xxl-hexe-300-cm-fga20883",
    "bruder-bworld-polizist-fga060051",
@@ -1013,6 +1008,7 @@
    "canvas-rucksack-mit-totenkopf-print-068416",
    "rc-helikopter-apache-absturzsicheres-flugzeug-8b9fdb",
    "flugzeug-modellbausatz-zum-stecken-740038",
+   "led-teelichter-flackernd-batteriebetrieben-594688",
    "keramik-welleisen-fur-grosse-locken-747840",
    "hundehalsband-reflektierend-weich-571200",
    "auto-sterilisations-zerstauber-846255",
@@ -1091,16 +1087,16 @@
   ]
  },
  "rueckmeldung": {
-  "gescannt": 56344,
-  "leer": 21388,
-  "leer_prozent": 38.0,
-  "frisch_24h": 340,
-  "frisch_72h": 12413,
-  "juengste": "2026-10-21T10:13:18Z"
+  "gescannt": 56621,
+  "leer": 22113,
+  "leer_prozent": 39.1,
+  "frisch_24h": 299,
+  "frisch_72h": 925,
+  "juengste": "2026-10-22T05:17:18Z"
  },
- "dauer_s": 300,
- "wartet_summe": 629,
+ "dauer_s": 868,
+ "wartet_summe": 625,
  "wartet_ueber_tage": 14,
- "wartet_ueber": 48,
+ "wartet_ueber": 69,
  "wartet_aeltestes": "2026-10-02"
 }
