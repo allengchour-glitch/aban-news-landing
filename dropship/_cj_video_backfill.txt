@@ -1859,3 +1859,10 @@ gid://shopify/Product/15447980310913	kein-video-beim-lieferanten
 gid://shopify/Product/15447980474753	kein-video-beim-lieferanten
 gid://shopify/Product/15447980638593	kein-video-beim-lieferanten
 gid://shopify/Product/15447980802433	kein-video-beim-lieferanten
+gid://shopify/Product/15447980966273	kein-video-beim-lieferanten
+gid://shopify/Product/15447981097345	kein-video-beim-lieferanten
+gid://shopify/Product/15447981261185	kein-video-beim-lieferanten
+gid://shopify/Product/15447981457793	kein-video-beim-lieferanten
+gid://shopify/Product/15447981654401	kein-video-beim-lieferanten
+gid://shopify/Product/15447981719937	kein-video-beim-lieferanten
+gid://shopify/Product/15447981851009	kein-video-beim-lieferanten
