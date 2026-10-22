@@ -11007,3 +11007,5 @@ gid://shopify/Product/15412902855041	1792638726	ok	2 Shop / 2 CJ / 0 fehlend / 0
 gid://shopify/Product/15412902953345	1792638726	ok	10 Shop / 10 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15412911964545	1792638726	ok	36 Shop / 36 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15412915110273	1792638726	ok	8 Shop / 8 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15412915339649	1792638726	ok	12 Shop / 12 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15412915470721	1792638726	ok	16 Shop / 16 CJ / 0 fehlend / 0 DENY
