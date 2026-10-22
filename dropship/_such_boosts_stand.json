@@ -292,24 +292,6 @@
   ],
   "handle": "solar-powerbank-holzmaserung-mit-led-licht-614000"
  },
- "gid://shopify/Product/15479514399105": {
-  "begriffe": [
-   "powerbank",
-   "power bank",
-   "powerbanks"
-  ],
-  "handle": "powerbank-mit-led-anzeige-20-000-mah-605600"
- },
- "gid://shopify/Product/15479516299649": {
-  "begriffe": [
-   "geschenk für mann",
-   "geschenk für ihn",
-   "geschenke für männer",
-   "geschenk für freund",
-   "geschenk für papa"
-  ],
-  "handle": "ultradunne-magsafe-powerbank-10-000-mah-627600"
- },
  "gid://shopify/Product/15481712378241": {
   "begriffe": [
    "handwärmer",
@@ -335,6 +317,14 @@
   ],
   "handle": "mini-powerbank-abnehmbare-zylinderzellen-606800"
  },
+ "gid://shopify/Product/15481713066369": {
+  "begriffe": [
+   "powerbank",
+   "power bank",
+   "powerbanks"
+  ],
+  "handle": "3-in-1-powerbank-mit-ac-stecker-10-000-mah-652800"
+ },
  "gid://shopify/Product/15481839452545": {
   "begriffe": [
    "powerbank",
@@ -350,6 +340,16 @@
    "powerbanks"
   ],
   "handle": "magnetische-powerbank-mit-grossem-akku-612800"
+ },
+ "gid://shopify/Product/15491624370561": {
+  "begriffe": [
+   "staubsauger",
+   "handstaubsauger",
+   "akku staubsauger",
+   "mini staubsauger",
+   "autostaubsauger"
+  ],
+  "handle": "kabelloser-auto-staubsauger-628400"
  },
  "gid://shopify/Product/15493276631425": {
   "begriffe": [
@@ -368,16 +368,6 @@
    "powerbanks"
   ],
   "handle": "mini-powerbank-mit-hoher-kapazitat-815171"
- },
- "gid://shopify/Product/15493811634561": {
-  "begriffe": [
-   "staubsauger",
-   "handstaubsauger",
-   "akku staubsauger",
-   "mini staubsauger",
-   "autostaubsauger"
-  ],
-  "handle": "mini-usb-tisch-staubsauger-880704"
  },
  "gid://shopify/Product/15496383660417": {
   "begriffe": [
@@ -655,6 +645,16 @@
    "autostaubsauger"
   ],
   "handle": "kabelloser-mini-staubsauger-furs-auto-f2796b"
+ },
+ "gid://shopify/Product/16615000244615": {
+  "begriffe": [
+   "geschenk für mann",
+   "geschenk für ihn",
+   "geschenke für männer",
+   "geschenk für freund",
+   "geschenk für papa"
+  ],
+  "handle": "reisetasche-fur-outdoor-aktivitaten-40-60-l-01913d"
  },
  "gid://shopify/Product/16615231390087": {
   "begriffe": [

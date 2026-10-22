@@ -1631,3 +1631,6 @@ gid://shopify/Product/16650218733959	ok	Rucksack aus Rindleder
 gid://shopify/Product/16655498609031	ok	Echtleder Reisetasche, Grosses Fassungsvermögen
 gid://shopify/Product/16655515713927	ok	Elektrische Küchenmaschine mit 8 Liter Kapazität
 gid://shopify/Product/16655501328775	ok	Full HD Weihnachtsmann Projektor
+gid://shopify/Product/16656660660615	nicht-versendbar	3-teiliges Hartschalen-Kofferset
+gid://shopify/Product/16656659153287	nicht-versendbar	Wäschekorb aus Bambus
+gid://shopify/Product/16656658760071	nicht-versendbar	Schuhschrank mit Sitzbank aus Massivholz
