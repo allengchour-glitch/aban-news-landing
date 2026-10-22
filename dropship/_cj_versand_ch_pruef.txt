@@ -13381,3 +13381,15 @@ einheitsfarbiger-schal-607400	2607130522071607900	16	6.01	ok	landeseite
 sommer-shirt-fur-herren-slim-fit-632900	2606041254281633500	16	7.71	ok	landeseite
 herren-kurzarm-hemd-plaid-615000	2606041220401615700	16	8.11	ok	landeseite
 sport-weste-fur-herren-locker-atmungsaktiv-634300	2606040506281634900	16	6.01	ok	landeseite
+edelstahl-mechanik-uhr-herren-624896	1506492082435928064	7	6.18	ok	landeseite
+v6-smart-sportuhr-mit-schlafuberwachung-118528	1502830047953170432	6	8.57	ok	landeseite
+aviator-vintage-armband-aus-handgezogenem-lede-098560	1502153224441311232	16	5.12	ok	landeseite
+smarte-armbanduhr-mit-sturz-erkennung-914048	1475284640028823552	7	8.73	ok	landeseite
+wasserdichte-multifunktionsuhr-979264	1461507203776253952	7	6.41	ok	landeseite
+feuchtigkeitsspendende-leichte-fettfreie-sonne-628200	2607130753211628900	3	6.02	ok	landeseite
+wasserdichte-kinder-sportsuhr-mit-leuchtfunkti-616000	1445007244923113472	7	8.10	ok	landeseite
+unisex-casual-quarzarmbanduhr-mit-belt-design-256576	1442731888933474304	7	5.69	ok	landeseite
+wasserdichter-leuchtender-quarzarmbanduhr-mit-650944	1442335777513148416	7	6.34	ok	landeseite
+sommer-t-shirt-herren-kurzarm-634200	2606260312311634800	16	8.79	ok	landeseite
+fashion-armbanduhr-mit-multi-funktionen-018240	1441685363184766976	7	6.00	ok	landeseite
+smart-armband-mit-touchscreen-324928	1441215805256765440	7	6.49	ok	landeseite
