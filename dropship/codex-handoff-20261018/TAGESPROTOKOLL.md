@@ -91,6 +91,37 @@ Nachweise:
 - [Claude-Code-Erweiterung, Grenzen und Testbelege](https://github.com/allengchour-glitch/aban-news-landing/blob/691212dc9efa73d3fc3c39b9914ca1678fb26431/dropship/codex-handoff-20261018/CLAUDE-ASSIST-20261021.md)
 - [Vollständiger geprüfter Patch](https://github.com/allengchour-glitch/aban-news-landing/blob/2f081af2302896d2897b2ff9c90cc78b6006d626/dropship/codex-handoff-20261018/CLAUDE-ASSIST-20261021.patch)
 
+Nachtrag am 22.10. zu belegten Tätigkeiten vom 21.10. gegen 18:09 Zürich (keine neue Messung):
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Sichtbarkeit / Such-Landeseiten | Vier konkrete Ranking-Ziele sowie robots.txt und sitemap.xml gelesen; drei alte SEO-Diffs öffentlich gegengeprüft | Alle sechs HTTP 200; vier Seiten Canonical passend, kein geliefertes noindex. Textkorrektur und zwei interne Links bereits öffentlich vorhanden, keine eigene Änderung oder Rankingsteigerung belegt |
+| Shopsuche / Theme | Elf gezielte Dateien des MAIN-Themes gelesen | Kein erkennbarer Paperang-Sonderfilter; private Suchregeln dadurch nicht geprüft |
+| Merchant / Zugang | Begrenzten Windsor-Merchant-Status und dortige Anschlüsse geprüft | Negative Pending-Zahl: ganze Statuszeile verworfen. Kein Free-Listings- oder Katalogquotenbefund; TRIAL ist kein dauerhaft kostenloser Semrush-Zugang. Keine Feedänderung |
+
+Datierte Nachweise und Grenzen: [Nachtrag im Paket vom 22.10.](FREIGABEPAKET-20261022.md#nachgetragene-sichtbarkeitsprüfung-vom-2110-keine-neue-tagesmessung).
+
+## 22.10.2026
+
+Konsolidierter Tagesstand: Briefkasten gegen 06:41, Tageskennzahlen/Flow-Report einmal gegen 14:00, Konten/Produkte/Planung gegen 20:47 und ergänzende enge Such-/Codeprüfung bis gegen 21:10 Europe/Zurich. Spätere Berichtsarbeit enthält keine zweite Tageskennzahlen-Abfrage.
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Claude-Briefkasten | Originalauftrag, Brückendokument, unveränderten Wächter und Vorlaufplan gelesen; sechs Slots in drei kleinen Metricool-Fenstern gegengeprüft | Morgenbefund 15 FEHLT / 3 ABGELAUFEN, nicht drei gelieferte Videos. Alter Auftrag zählt sechs Filme × drei Kanäle; aktuelle Vorgabe bleibt ein 18-s-Master. Originalstatus/Prüfmarker erhalten |
+| Claude-Code-Korrektur | Eigenständigen MCP-Metadatenfehler behoben, Selbsttest um echten Leseaufruf erweitert; vier Dateien auf aktuellem main-Gegenstand geprüft | Entwurfs-PR 2708, Commit 8dcc7765903ba973a7ad4d0551ce9e3ddf99cc7a. 174/174 lokale Tests und beide LuxeStyle-CIs erfolgreich; vier Remote-Blobs bestätigt. Kein Merge oder bestätigter Inhaber-Clientbetrieb |
+| Konten / Produkte | Shopify und Metricool samt sechs Kanalidentitäten sowie zwei aktive Produkte, CHF-Preise, Bilder, Tags, Tracking, inventoryPolicy und öffentliche Kaufbarkeit geprüft | Identitäten passend. Projektor CHF 34.90; Paperang-Grundmodell CHF 31.90. Untracked/CONTINUE; Zähler 0 ist kein Ausverkaufsbeweis. Paperang wegen rueckhol-0907 für neue Social-Posts gesperrt |
+| Planung / Dubletten | 22.–28.10. in kleinen Fenstern gelesen, gleiche UUIDs und Medien-/Kanal-Zeit-Dubletten abgeglichen | 85 Objekte: 65 PENDING, 20 mit 22 getrennten PUBLISHED-Kanalzuständen bestehender Fremdabläufe. 26.–28.10. ohne Planung. Keine eigenen Posts/Termine; kreative Gesamthistorie unbekannt, Register nicht initialisiert |
+| Tageskennzahlen | Sechs gültige Feldlisten entdeckt und letzte sieben abgeschlossene Tage kanalweise gelesen | IG/FB-Views vollständig, andere Reihen oder Interaktionen teilweise unbekannt. Datenlücken nicht als Null; keine Käufe aus Views abgeleitet |
+| Klaviyo / Capture | Placed-Order-Metrik W7XTVD vor Flow-Report entdeckt, Flowzustände und Welcome-Tracking geprüft; öffentliche Capture-Marker gegengeprüft | Vse76a draft, VbLQj6/RnTvsY/XEGbTB live. Formular-API leer, öffentliche Marker vorhanden. USD/CHF getrennt; Einzelauftrags-Sync unbekannt. Einziger Flow-Entwurf bleibt TTuuTS-Tracking false → true |
+| Shopsuche / Verkaufsentwurf | Zwei öffentliche Suchvorschlags-Abfragen und zwölf zugängliche Metafelder am Paperang-Artikel geprüft | Artikel fehlt in gelieferten Vorschlägen; seo.hidden null; Shopping_ads-Ausschluss sichtbar, Free Listings unbekannt. Enger Entwurf für eine paperang-Produktanhebung; private Regeln fehlen, kein Write |
+| Master / Content | Echte Bildreferenz visuell geprüft, gezielte VIDEO-Abfrage und Musikhash abgeglichen; durchgehende Geräte-/Projektionszuordnung im einen 18-s-Storyboard präzisiert; sechs Caption-/UTM-Entwürfe | Nur bekannte 960×540-Quelle. Hochwertige Originale, Modell-/Motiv- und Rechtebelege sowie Abnahme fehlen. Kein fertiger Master/Render; neue Veröffentlichung auf allen sechs Kanälen blockiert |
+| DNS / Zugriff | Vier bereits genehmigte Record-Ziele öffentlich und aktuelle Runtime geprüft | Drei Namen NXDOMAIN, Verifizierungs-TXT nicht geliefert; authentifizierter DNS-Zugriff fehlt. Genehmigung unverändert, nichts umgesetzt; vorhandene CJ-Helfer nicht als fehlend bezeichnet |
+| Übergabe / Tagesprotokoll | Empfangsbeleg, Freigabepaket und begrenzte Prüfbelege auf bestehender Wissensbranch gesichert; historischen Sichtbarkeitsbefund nachgetragen | Dokumentation, kein Publikationsregister oder Claude-Lesebestätigung. Bestehende Geschichte erhalten; Berichtsrhythmus unverändert |
+
+Nächster konkreter Schritt: vorhandene private Suchregeln für die eine paperang-Abfrage lesbar machen und den Ergänzungs-Diff vor einer freigegebenen Umsetzung prüfen; geeignete Originalaufnahmen und kommerzielle Dateirechte für denselben Projektor-Master beschaffen/prüfen. Keine Kundenansprache. Versandvorgaben CHF 50/45 und Kundendomäne unverändert durch diesen Lauf; keine Shop-/Feed-/Flow-/Budget-/Rabatt-/DNS-Änderung.
+
+Nachweise: [Content-/Verkaufspaket mit Storyboard und sechs UTM-Entwürfen](FREIGABEPAKET-20261022.md), [Briefkasten-Empfang und Diagnose](BRIEFKASTEN-20261022.md), [Morgen-Gegenprobe](BRIEFKASTEN-GEGENPROBE-20261022.json), [Prüfbelege und 22 getrennte Kanalzustände](PRUEFBELEGE-20261022.json), [Entwurfs-PR 2708](https://github.com/allengchour-glitch/aban-news-landing/pull/2708).
+
 ## Fortführung
 
 Jeder Zürcher Kalendertag erhält einen eigenen Datumsblock mit den belegten Tätigkeiten dieses Tages. Mehrere Läufe ergänzen denselben Tag. Bereits erfasste Tätigkeiten nicht erneut als neu ausgeben; Korrekturen nachvollziehbar benennen. Bei fehlenden oder unlesbaren Quellen keine leere Vergangenheit behaupten und das Protokoll nicht zurücksetzen.
