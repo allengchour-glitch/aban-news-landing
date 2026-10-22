@@ -313,24 +313,12 @@ if [ "${TMPV:-0}" -ge 85 ]; then
   echo "TMP-HYGIENE: /tmp ${TMPV}% → $(df --output=pcent /tmp | tail -1 | tr -d ' ')"
 fi
 # 22.10.2026: CLAUDE-SCRATCH — die Sitzungs-Arbeitsordner unter /tmp/claude-0 (Spähtrupp-Exporte, Kontaktbögen, Workflow-Auszüge) wuchsen auf 8,3 GB und trieben die
-#    Cloud-Platte auf 96 % (Inventur 22.10., BET-5); die TMP-Hygiene oben sieht sie nicht (nur Dateien direkt in /tmp). Ab CLAUDE_SCRATCH_AB % (Standard 85) werden Ordner
-#    entfernt, in denen seit 3 Tagen KEINE Datei verändert wurde: die Fremdordner direkt unter /tmp/claude-0 und die Sitzungsordner des Projekts (die laufende Sitzung schreibt
-#    laufend und bleibt unberührt). Ausgabe: Zahl der entfernten Ordner und frei vorher/nachher. Test (22.10.): Wegwerf-Baum mit CLAUDE_TMP=… CLAUDE_SCRATCH_AB=0 → alte Ordner weg, neue bleiben.
-claude_scratch_raeumen() {
-  local basis="${CLAUDE_TMP:-/tmp/claude-0}" ab="${CLAUDE_SCRATCH_AB:-85}" rv vor nach n=0 d
-  rv=$(df --output=pcent "$basis" 2>/dev/null | tail -1 | tr -dc 0-9)
-  [ -d "$basis" ] && [ "${rv:-0}" -ge "$ab" ] || return 0
-  vor=$(df -BM --output=avail "$basis" | tail -1 | tr -dc 0-9)
-  for d in "$basis"/* "$basis"/-home-user-aban-news-landing/*; do
-    [ -d "$d" ] || continue
-    [ "$d" = "$basis/-home-user-aban-news-landing" ] && continue
-    [ -n "$(find "$d" -type f -mtime -3 -print -quit 2>/dev/null)" ] && continue
-    rm -rf "$d" && n=$((n+1))
-  done
-  nach=$(df -BM --output=avail "$basis" | tail -1 | tr -dc 0-9)
-  echo "CLAUDE-SCRATCH: ${n} alte Ordner entfernt, frei ${vor} MB → ${nach} MB (Platte ${rv}%)"
-}
-claude_scratch_raeumen
+#    Cloud-Platte auf 96 % (Inventur 22.10., BET-5); die TMP-Hygiene oben sieht sie nicht (nur Dateien direkt in /tmp). Regel + Selbsttest (8 Fälle, 3 Mutanten) in
+#    automation/claude_scratch_raeumen.sh: erst ab CLAUDE_SCRATCH_AB % (Standard 85); Symlinks und leere Ordner bleiben, ein Ordner bleibt, wenn IRGENDEIN Eintrag
+#    (auch ein Unterordner) in 3 Tagen geändert wurde (die erste Fassung mit `-type f` löschte frische leere Ordner und Ordner mit nur Unterordnern).
+if [ -f "$REPO/automation/claude_scratch_raeumen.sh" ]; then
+  timeout 60 bash "$REPO/automation/claude_scratch_raeumen.sh" 2>/dev/null || echo "CLAUDE-SCRATCH: unklar (claude_scratch_raeumen.sh fehlgeschlagen oder > 60 s)"
+fi
 # 19.10.2026: PLATTE — Zeile «PLATTE: frei X GB · .git …» in jeder Meldung; packt lose Git-Objekte (> 1 GiB oder > 20'000), sonst wuchs .git
 #    auf 13 GB bei 2,0 GB frei (gc.auto=0, nie ein repack). Entscheidet nach dem ZUSTAND, nicht nach touch (automation/platte_wartung.sh).
 timeout 120 bash "$REPO/automation/platte_wartung.sh" 2>/dev/null || echo "PLATTE: unklar (platte_wartung.sh fehlgeschlagen oder > 120 s)"

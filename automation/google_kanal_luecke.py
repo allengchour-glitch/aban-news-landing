@@ -86,6 +86,15 @@ except Exception:
 
 def grund(titel, tags):
     """Nennt den ERSTEN Grund, warum das Produkt nicht in den Google-Kanal darf."""
+    # 22.10.2026 (Gegenprüfung): die Präfix-Tags `google-kanal-*` / `google-gesperrt-*` (google_sperrliste.ausschluss_tag) fehlten hier — der nächtliche Publisher holte zwei
+    # von Google gemeldete Produkte (google-gesperrt-fehlalarm, 20.10. ausgeschlossen) am 22.10. 02:14 wieder in den Kanal.
+    try:
+        from google_sperrliste import ausschluss_tag as _ausschluss_praefix
+        _p = [x for x in tags if str(x).lower().startswith(("google-kanal-", "google-gesperrt"))]
+        if _p and _ausschluss_praefix(_p):
+            return f"Tag «{_p[0]}»"
+    except Exception:
+        pass
     for t in tags:
         if t.lower() in _AUSSCHLUSS:
             return f"Tag «{t}»"

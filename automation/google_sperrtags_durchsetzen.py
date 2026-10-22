@@ -70,14 +70,16 @@ PRAEFIX_SUCHTAGS = ("google-gesperrt-adult", "google-gesperrt-cbd", "google-gesp
 # 22.10.2026 (Sauber-Inventur G6): gs.ausschluss_tag() erklärt JEDEN Tag mit Präfix `google-kanal-` als Ausschluss, die Vorfilter-Suche kannte aber nur
 # feste Namen — `google-kanal-markenware-unklar` (Seagate Exos 10 TB, ACTIVE, im Google-Kanal) fiel durch. Shopify kann keine Tag-Präfix-Suche; deshalb
 # werden die real vorhandenen Tags aus `productTags` gelesen (GEMESSEN 22.10.: 4'141 Tags, 17 Seiten, 7 s) und nach Präfix gefiltert.
-# `google-gesperrt-fehlalarm` ist die bewusste FREIGABE (Google-Meldung geprüft, kein Verstoss) und bleibt draussen.
+# ⚠️ KORREKTUR 22.10. abends (unabhängige Gegenprüfung): `google-gesperrt-fehlalarm` ist KEINE Freigabe, sondern ein Ausschluss — merchant_issue_fix.py setzte es am
+# 20.10. 15:22 auf zwei von Google gemeldete Produkte («Tabak»/«Sale of live animals», Weihrauchhalter, Katzenangel-Federn), um sie AUS dem Google-Kanal zu nehmen
+# (Onlineshop bleibt; dropship/_merchant_issue_done.txt). «Fehlalarm» beschreibt Googles Diagnose, nicht unsere Entscheidung. Meine erste Fassung nahm das Tag als
+# Ausnahme aus — beide Produkte wurden vom nächtlichen google_kanal_luecke wieder publiziert und von hier nicht mehr gefunden. Es gibt keine Ausnahmen.
 PRAEFIXE = ("google-kanal-", "google-gesperrt-")
-PRAEFIX_AUSNAHMEN = {"google-gesperrt-fehlalarm"}
 
 
 def waehle_praefix_tags(alle):
-    """Rein: aus allen Shop-Tags die Sperr-Tags mit Präfix (ohne die Freigabe-Tags)."""
-    return sorted({t for t in alle if t.lower().startswith(PRAEFIXE) and t.lower() not in PRAEFIX_AUSNAHMEN})
+    """Rein: aus allen Shop-Tags die Sperr-Tags mit Präfix (jedes Tag mit diesem Präfix ist ein Ausschluss)."""
+    return sorted({t for t in alle if t.lower().startswith(PRAEFIXE)})
 
 
 def praefix_tags_live():
@@ -103,7 +105,7 @@ def suchtags():
 
 
 def praefix_selbsttest():
-    """Reiner Test von waehle_praefix_tags mit zwei Mutanten (Ausnahme vergessen / Präfix google-kanal- vergessen). → Fehlerliste."""
+    """Reiner Test von waehle_praefix_tags mit drei Mutanten (Präfix google-kanal- / google-gesperrt- vergessen, Gross/klein). → Fehlerliste."""
     import types
     quelle = open(os.path.abspath(__file__), encoding="utf-8").read()
 
@@ -112,12 +114,13 @@ def praefix_selbsttest():
         alle = ["google-kanal-markenware-unklar", "google-kanal-klinge-outdoor", "google-gesperrt-adult", "google-gesperrt-fehlalarm",
                 "Google-Kanal-Neu", "kostuem", "google-kanal", "xgoogle-kanal-x"]
         w = m.waehle_praefix_tags(alle)
-        if w != ["Google-Kanal-Neu", "google-gesperrt-adult", "google-kanal-klinge-outdoor", "google-kanal-markenware-unklar"]:
+        if w != ["Google-Kanal-Neu", "google-gesperrt-adult", "google-gesperrt-fehlalarm", "google-kanal-klinge-outdoor", "google-kanal-markenware-unklar"]:
             f.append(f"Auswahl falsch: {w}")
         return f
     fehler = faelle(sys.modules[__name__])
-    for name, alt, neu in (("Ausnahme vergessen", "and t.lower() not in PRAEFIX_AUSNAHMEN", "and True"),
-                           ("google-kanal- vergessen", 'PRAEFIXE = ("google-kanal-", ' + '"google-gesperrt-")', 'PRAEFIXE = ("google-gesperrt-",)')):
+    for name, alt, neu in (("google-gesperrt- vergessen", 'PRAEFIXE = ("google-kanal-", ' + '"google-gesperrt-")', 'PRAEFIXE = ("google-kanal-",)'),
+                           ("google-kanal- vergessen", 'PRAEFIXE = ("google-kanal-", ' + '"google-gesperrt-")', 'PRAEFIXE = ("google-gesperrt-",)'),
+                           ("Gross/klein", "t.lower().startswith(PRAEFIXE)", "t.startswith(PRAEFIXE)")):
         if quelle.count(alt) < 1:
             fehler.append(f"Mutant «{name}»: Stelle fehlt")
             continue
@@ -306,7 +309,7 @@ def main():
         fp = praefix_selbsttest()
         for e in fp:
             print(f"  FEHLER Präfix-Tags: {e}")
-        print(f"FERTIG: Präfix-Tag-Selbsttest (1 Fall, 2 Mutanten), {len(fp)} Fehler")
+        print(f"FERTIG: Präfix-Tag-Selbsttest (1 Fall, 3 Mutanten), {len(fp)} Fehler")
         if fp:
             sys.exit(1)
         n3, f3 = gs.heilschmuck_kanarien()

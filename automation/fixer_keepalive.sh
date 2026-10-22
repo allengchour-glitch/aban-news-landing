@@ -1341,6 +1341,12 @@ while true; do
       echo "$(date -u +%H:%M) ⚠️ SERVER-PLATTE-SELBSTTEST fehlgeschlagen (automation/server_platte_wache.py --selbsttest)"
     fi
   fi
+  # 22.10.2026: CLAUDE-SCRATCH-Selbsttest (rm -rf unter /tmp/claude-0 — eine kaputte Regel löscht frische Arbeitsordner der laufenden Sitzung).
+  if [ -f "$REPO/automation/claude_scratch_raeumen.sh" ]; then
+    if ! ( cd "$REPO" && timeout 100 bash automation/claude_scratch_raeumen.sh --selbsttest >/dev/null 2>&1 ); then
+      echo "$(date -u +%H:%M) ⚠️ CLAUDE-SCRATCH-SELBSTTEST fehlgeschlagen (automation/claude_scratch_raeumen.sh --selbsttest) — Aufräumen im Keepalive prüfen"
+    fi
+  fi
   # Hinweis für den SCHARF-Block (Z. ~945): davor `[ -f /tmp/kategorie_wache.kanarien_fehler ] && skip` einbauen.
   # KATEGORIE-NEUWARE (02.10.2026, Verbesserungsrunde): der Grind legt ~250 Produkte/Tag an, die Tageswache ordnete sie
   # erst bis zu 24 h später ein (Ampel 285 ohne Kategorie) — stündlich, nur Produkte ohne Kategorie, Sperre im Skript.
