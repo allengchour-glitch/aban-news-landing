@@ -516,3 +516,7 @@ gid://shopify/Product/16656510484871	Schwarz
 gid://shopify/Product/16656510583175	Schwarz
 gid://shopify/Product/16656522346887	Schwarz
 gid://shopify/Product/16656658104711	Schwarz
+gid://shopify/Product/16656672457095	Schwarz
+gid://shopify/Product/16656716759431	Silber
+gid://shopify/Product/16656725180807	Blau
+gid://shopify/Product/16656725311879	Schwarz
