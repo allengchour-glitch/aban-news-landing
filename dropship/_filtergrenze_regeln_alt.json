@@ -148,5 +148,15 @@
     "condition": "pflanzentopf"
    }
   ]
+ },
+ "uhren@2026-10-22T19:05": {
+  "appliedDisjunctively": false,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "uhren"
+   }
+  ]
  }
 }
