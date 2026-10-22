@@ -174,3 +174,6 @@ gid://shopify/Product/16652101255559	2026-10-20	Taschen & Rucksäcke
 gid://shopify/Product/15503164047745	2026-10-20	Handy-Zubehör
 gid://shopify/Product/16652013044103	2026-10-21	Schuhe
 gid://shopify/Product/16655376482695	2026-10-21	Beauty & Pflege
+gid://shopify/Product/16656524280199	2026-10-22	Schuhe
+gid://shopify/Product/16656714203527	2026-10-22	Uhren
+gid://shopify/Product/16604931948935	2026-10-22	Smartwatches & Wearables
