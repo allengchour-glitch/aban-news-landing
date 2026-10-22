@@ -1,0 +1,151 @@
+{
+ "id": "gid://shopify/Menu/310224126337",
+ "handle": "footer",
+ "title": "Footer",
+ "items": [
+  {
+   "id": "gid://shopify/MenuItem/807932789121",
+   "title": "Alle Kategorien",
+   "type": "HTTP",
+   "url": "/pages/alle-kategorien",
+   "resourceId": null,
+   "tags": [],
+   "items": []
+  },
+  {
+   "id": "gid://shopify/MenuItem/1482720936327",
+   "title": "♥ Merkliste",
+   "type": "HTTP",
+   "url": "/pages/merkliste",
+   "resourceId": null,
+   "tags": [],
+   "items": []
+  },
+  {
+   "id": "gid://shopify/MenuItem/807932821889",
+   "title": "Versand & Lieferung",
+   "type": "HTTP",
+   "url": "/pages/versand-lieferung",
+   "resourceId": null,
+   "tags": [],
+   "items": []
+  },
+  {
+   "id": "gid://shopify/MenuItem/807932854657",
+   "title": "Sendungsverfolgung",
+   "type": "HTTP",
+   "url": "/pages/tracking",
+   "resourceId": null,
+   "tags": [],
+   "items": []
+  },
+  {
+   "id": "gid://shopify/MenuItem/807932887425",
+   "title": "Rückgabe & Umtausch",
+   "type": "HTTP",
+   "url": "/pages/rueckgabe",
+   "resourceId": null,
+   "tags": [],
+   "items": []
+  },
+  {
+   "id": "gid://shopify/MenuItem/807932920193",
+   "title": "Garantie",
+   "type": "HTTP",
+   "url": "/pages/garantie",
+   "resourceId": null,
+   "tags": [],
+   "items": []
+  },
+  {
+   "id": "gid://shopify/MenuItem/807932952961",
+   "title": "FAQ",
+   "type": "HTTP",
+   "url": "/pages/faq",
+   "resourceId": null,
+   "tags": [],
+   "items": []
+  },
+  {
+   "id": "gid://shopify/MenuItem/807932985729",
+   "title": "Kontakt & Support",
+   "type": "HTTP",
+   "url": "/pages/kontakt-support",
+   "resourceId": null,
+   "tags": [],
+   "items": []
+  },
+  {
+   "id": "gid://shopify/MenuItem/807933018497",
+   "title": "Über uns",
+   "type": "HTTP",
+   "url": "/pages/ueber-uns",
+   "resourceId": null,
+   "tags": [],
+   "items": []
+  },
+  {
+   "id": "gid://shopify/MenuItem/807933051265",
+   "title": "Firmen & Vereine",
+   "type": "HTTP",
+   "url": "/pages/firmen-vereine",
+   "resourceId": null,
+   "tags": [],
+   "items": []
+  },
+  {
+   "id": "gid://shopify/MenuItem/807933084033",
+   "title": "Magazin",
+   "type": "HTTP",
+   "url": "/blogs/magazin",
+   "resourceId": null,
+   "tags": [],
+   "items": []
+  },
+  {
+   "id": "gid://shopify/MenuItem/807933116801",
+   "title": "AGB",
+   "type": "HTTP",
+   "url": "/policies/terms-of-service",
+   "resourceId": null,
+   "tags": [],
+   "items": []
+  },
+  {
+   "id": "gid://shopify/MenuItem/807933149569",
+   "title": "Datenschutz",
+   "type": "HTTP",
+   "url": "/policies/privacy-policy",
+   "resourceId": null,
+   "tags": [],
+   "items": []
+  },
+  {
+   "id": "gid://shopify/MenuItem/807933182337",
+   "title": "Impressum",
+   "type": "HTTP",
+   "url": "/pages/impressum",
+   "resourceId": null,
+   "tags": [],
+   "items": []
+  },
+  {
+   "id": "gid://shopify/MenuItem/807933215105",
+   "title": "Cookie-Einstellungen",
+   "type": "HTTP",
+   "url": "/pages/cookie-richtlinie",
+   "resourceId": null,
+   "tags": [],
+   "items": []
+  },
+  {
+   "id": "gid://shopify/MenuItem/807933247873",
+   "title": "Daten-Weitergabe ablehnen",
+   "type": "HTTP",
+   "url": "/pages/data-sharing-opt-out",
+   "resourceId": null,
+   "tags": [],
+   "items": []
+  }
+ ]
+}

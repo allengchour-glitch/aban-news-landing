@@ -29,3 +29,10 @@ gid://shopify/Product/15466071458177	draft-medizinprodukt	Tragbare elektrische M
 gid://shopify/Product/15470741684609	draft-medizinprodukt	Freihändige elektrische Milchpumpe
 gid://shopify/Product/15481801146753	draft-medizinprodukt	Stirnthermometer kontaktlos
 gid://shopify/Product/15490726592897	draft-medizinprodukt	Handgelenk-Lichtwellen-Therapiegerät
+gid://shopify/Product/15449467060609	draft-medizinprodukt	Atmungstrainer für die Lunge
+gid://shopify/Product/15504112025985	draft-medizinprodukt	Atemtrainer
+gid://shopify/Product/16614837682567	draft-medizinprodukt	Hörverstärker 6-Kanal kabellos
+gid://shopify/Product/16617694560647	draft-medizinprodukt	Tragbarer Ultraschall-Vernebler für Kinder
+gid://shopify/Product/15496320024961	draft-medizinprodukt	Digitales Hand-Spirometer
+gid://shopify/Product/15496384872833	draft-medizinprodukt	Atem-Hantel für Lungenfunktion & Yoga
+gid://shopify/Product/15496705737089	draft-medizinprodukt	Atemtrainer für Yoga und Pilates
