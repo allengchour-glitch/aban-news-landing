@@ -13671,3 +13671,8 @@ herren-loose-crew-neck-sweater-606300	2604040926031606700	16	10.15	ok	landeseite
 modecasual-einfarbig-rundhals-pullover-622900	2603310322561623300	16	11.84	ok	landeseite
 casual-herren-cardigan-im-erwachsenenstil-614000	2603310312441614400	16	11.24	ok	landeseite
 weit-geschnittene-retro-strick-oberteile-fur-p-633600	2603270934421634000	16	9.20	ok	landeseite
+herrenmode-crew-neck-pullover-mit-ingots-stick-600800	2603242145311601100	16	9.75	ok	landeseite
+herren-strickhemd-mit-stehkragen-und-rei-versc-608600	2603241343301609100	16	14.60	ok	landeseite
+herren-strickpullover-im-retro-look-in-5-farbe-602400	2603200349211601501	16	8.25	ok	landeseite
+herren-fitness-vest-609000	2606290146411609700	16	6.33	ok	landeseite
+hawaii-hemd-621800	2606240239361622400	16	8.53	ok	landeseite
