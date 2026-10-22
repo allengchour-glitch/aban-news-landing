@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-22 04:32 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-22 06:07 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1197 · **1131 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 950, teilweise: 159, keine: 22; Preisspanne > 2×: 147) · 1 CJ-Variante: 64 · ohne Antwort: 2
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1196 · **1130 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 949, teilweise: 159, keine: 22; Preisspanne > 2×: 147) · 1 CJ-Variante: 64 · ohne Antwort: 2
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -38,7 +38,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Halsband mit grosser Schleife für Katzen & Hunde (`halsband-mit-grosser-schleife-fur-katzen-hunde-877120`) | 52 | 52 | 4.21–5.4 | 19.90 | Pearl purple-XS, Pearl purple-S, Pearl purple-M, Pearl purple-L |
 | Wasserdichter Bürostuhlbezug (`wasserdichter-burostuhlbezug-8364e3`) | 51 | 0 | 4.02–8.35 | 16.90 | Light coffee-L, Blue-S, Brown print-L, Wave point-S |
 | Khaki Kissenbezug mit Rüschen & Stickerei (`khaki-kissenbezug-mit-ruschen-stickerei-205120`) | 50 | 50 | 5.8–11.74 | 17.90 | Jade pink 1-45x45cm, Jade pink 1-50x50cm, Jade pink 1-55x55cm, Jade pink 1-60x60cm |
-| Multifunktionaler Trolley mit USB & Schloss (`multifunktionaler-trolley-mit-usb-schloss-609300`) | 50 | 50 | 17.19–26.74 | 155.90 | Black-20 Inches, Black-22 Inches, Black-24 Inches, Black-26 Inches |
 | Muschelförmiges Schmuckkästchen aus Samt (`muschelformiges-schmuckkastchen-aus-samt-628301`) | 49 | 42 | 2.1–3.18 | 14.90 | Ring box-Deep blue, Ring box-Purple, Ring box-Grass green, Ring box-Coffee brown |
 | 3-teiliges Samt-Bettwäsche-Set für den Winter (`3-teiliges-samt-bettwasche-set-fur-den-winter-15bcb2`) | 49 | 41 | 4.21–15.67 | 23.90 | Blue Sheet Quilt Cover set-150x200, Blue Sheet Quilt Cover set-180x220, Blue Sheet Quilt Cover set-200x230, Blue Sheet Quilt Cover set-220x240 |
 | Sommerdecke aus Baumwollgaze mit Sojafasern (`sommerdecke-aus-baumwollgaze-mit-sojafasern-614300`) | 48 | 48 | 30.43–37.26 | 102.90 | Clover-150x200cm 1.2kg, Clover-150x200cm 1.6kg, Clover-200x230cm 1.6kg, Clover-200x230cm 2.8kg |
