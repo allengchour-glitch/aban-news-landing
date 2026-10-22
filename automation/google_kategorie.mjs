@@ -60,9 +60,15 @@ const NACH_TAG = [
   ['gaming',              'Electronics > Video Game Console Accessories'],
   ['elektronik',          'Electronics'],
   ['tech',                'Electronics'],
+  // 22.10.2026 (Runde 04:25, GEMESSEN): «Magnetische Rennstrecke mit Auto» (Tags gadgets+kinder+spielzeug) stand als «Baby & Toddler» im
+  // Feed — der Tag `kinder` griff, weil kein Titelmuster das Spielzeug erkannte. Der Tag `spielzeug` steht davor; Baby-/Kleinkind-Titel
+  // bleiben ausgenommen (BABY_TITEL, siehe Schleife) und fallen weiter auf `kinder`.
+  ['spielzeug',           'Toys & Games > Toys'],
   ['kinder',              'Baby & Toddler'],
   ['mode',                'Apparel & Accessories > Clothing'],   // zuletzt: trägt fast jedes Teil
 ];
+
+const BABY_TITEL = /\bbaby\w*|neugeboren\w*|s[äa]ugling\w*|kleinkind\w*/i;
 
 const NACH_TYP = {
   'Auto-Zubehör':             'Vehicles & Parts > Vehicle Parts & Accessories',
@@ -343,6 +349,7 @@ export function googleKategorie(title, tags, productType) {
       const k = KLEIDUNG.find(([m]) => m.test(ti));
       if (k) return k[1];
     }
+    if (tag === 'spielzeug' && BABY_TITEL.test(ti)) continue;   // Babyspielzeug bleibt bei `kinder` → Baby & Toddler
     return pfad;
   }
   if (SAMMELKORB.has(productType)) return null;

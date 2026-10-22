@@ -78,6 +78,9 @@ REGELN = [
     ("fitness",             "Sporting Goods > Exercise & Fitness"),
     ("elektronik",          "Electronics"),
     ("tech",                "Electronics"),
+    # 22.10.2026 (Runde 04:25): Spielzeug-Tag vor `kinder` — «Magnetische Rennstrecke mit Auto» stand als «Baby & Toddler» im Feed.
+    # Baby-/Kleinkind-Titel sind in AUSNAHMEN ausgenommen und fallen weiter auf `kinder`. Spiegel von google_kategorie.mjs.
+    ("spielzeug",           "Toys & Games > Toys"),
     ("kinder",              "Baby & Toddler"),
     # Ganz zuletzt das Grobe: «mode» trägt fast jedes Kleidungsstück, ist aber nur dann die
     # Antwort, wenn nichts Genaueres gegriffen hat.
@@ -178,6 +181,7 @@ AUSNAHMEN = {
     "herrenschuhe": re.compile(r'Schuhregal|Schuhschrank|Schuh-?Organizer', re.I),
     "kategorie-tasche": re.compile(r'Pinsel-?[Ss]et|Schrank-?Organizer|Schuh-?Organizer', re.I),
     "damen-taschen": re.compile(r'Pinsel-?[Ss]et|Schrank-?Organizer', re.I),
+    "spielzeug": re.compile(r'\bbaby\w*|neugeboren\w*|s[äa]ugling\w*|kleinkind\w*', re.I),
 }
 
 

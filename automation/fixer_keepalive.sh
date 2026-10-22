@@ -1280,6 +1280,13 @@ while true; do
       rm -f /tmp/kategorie_wache.kanarien_fehler
     fi
   fi
+  # 22.10.2026 (Runde 04:25): Kanarienvögel der Google-Produktkategorie — BEIDE Umsetzungen (google_kategorie.py + .mjs) und ihre Übereinstimmung.
+  # Anlass: Spielzeug mit Tag `kinder` landete als «Baby & Toddler» im Feed (18 Produkte). Ohne Shop-Zugriff, < 2 s; nur Meldung, kein Schreibstopp.
+  if [ -f "$REPO/automation/google_kategorie_kanarien.py" ]; then
+    if ! ( cd "$REPO" && timeout 60 python3 automation/google_kategorie_kanarien.py > /tmp/google_kategorie_kanarien.log 2>&1 ); then
+      echo "$(date -u +%H:%M) ⚠️ GOOGLE-KATEGORIE-KANARIEN: $(grep -c '❌' /tmp/google_kategorie_kanarien.log) Fälle falsch — automation/google_kategorie.py/.mjs prüfen (Log /tmp/google_kategorie_kanarien.log)"
+    fi
+  fi
   # Hinweis für den SCHARF-Block (Z. ~945): davor `[ -f /tmp/kategorie_wache.kanarien_fehler ] && skip` einbauen.
   # KATEGORIE-NEUWARE (02.10.2026, Verbesserungsrunde): der Grind legt ~250 Produkte/Tag an, die Tageswache ordnete sie
   # erst bis zu 24 h später ein (Ampel 285 ohne Kategorie) — stündlich, nur Produkte ohne Kategorie, Sperre im Skript.

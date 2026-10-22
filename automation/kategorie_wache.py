@@ -178,6 +178,12 @@ TITELREGELN = [   # Reihenfolge = Vorrang; Wortfallen (Lehre 9b): Handschuh ≠ 
     (r"\b(hut|mütze|beanie|cap|kappe)\b|baseballcap", "aa-2-17"),
     (r"anklet|fusskett|tassel-?schmuck|pendel\w*\b", "aa-6"),
     (r"baby|neugeboren|strampler|kinderwagen|schnuller|windel|lätzchen|krabbel", "bt"),
+    # 22.10.2026 (Runde 04:25, GEMESSEN): «Magnetische Rennstrecke mit Auto – 68-Teile-Set» (Spass-Elektronik) und «Alloy Auto Modell 1:32»
+    # standen auf vp-1 (Vehicles & Parts > Vehicle Parts & Accessories) — das Wort «Auto» der Regel unten traf das SPIELZEUG-Auto. Nur
+    # eindeutige Spielzeug-Konstruktionen VOR der Fahrzeugregel: Spielzeug-Auto / Modellauto, Rennbahn/Rennstrecke MIT Auto-Wort,
+    # Massstab-Modell (1:32). Bewusst NICHT «Kinder», «Modell» oder «Spiel» allein: «Autositz für Kinder», «Auto-Bluetooth-Modell»
+    # (Lautsprecher in Autoform) und «Rücksitz-Spielzeugtasche» bleiben bei ihren Regeln (Kanarienvögel unten).
+    (r"spielzeug-?autos?\b|modell-?autos?\b|(?=.*\bautos?\b)(?=.*(?:renn(?:bahn|strecke)|modell\s*1\s?:\s?\d+))", "tg-5"),
     (r"\bauto(?:-|\b)|\bkfz\b|fahrzeug|lenkrad|autositz|scheibenwischer", "vp-1"),
     (r"luftbefeuchter|diffus[eo]r|luftreiniger|ventilator|(?<!be)lüfter|staubsauger|entfeuchter|heizgerät|heizer\b|wasserkocher|befeuchter|feuchter\b|air\s?fryer|heissluftfritteuse", "hg-9"),
     (r"ohrhörer|earbuds|headset|kopfhörer|lautsprecher|soundbar", "el-2"),
@@ -871,6 +877,16 @@ def korrektur():
 # 05.10.2026: Kanarienvögel (`python3 kategorie_wache.py --test`, ohne Shop-Zugriff). Jede Regeländerung muss hier 0 Fehler
 # zeigen; die drei Prüfer-Fälle vom 05.10. stehen oben, die älteren Wortfallen (9b) dahinter.
 KANARIEN = [
+    # 22.10.2026: Spielzeug-Auto ist Spielzeug, Zubehör fürs Auto bleibt Fahrzeugzubehör (beide Richtungen)
+    ("Spass-Elektronik", "Magnetische Rennstrecke mit Auto – 68-Teile-Set", "tg-5"),
+    ("Spass-Elektronik", "Alloy Auto Modell 1:32", "tg-5"),
+    ("Kinder", "Spielzeug-Auto Set 6 Stück", "tg-5"),
+    ("Spass-Elektronik", "Rennbahn mit 2 Autos und Looping", "tg-5"),
+    ("Gadget", "Auto-Sitzbezug aus Leder, universal", "vp-1"),
+    ("Gadget", "Autositz-Schutzmatte rutschfest", "vp-1"),
+    ("Gadget", "Scheibenwischer-Set 2 Stück", "vp-1"),
+    ("Gadget", "Rennstrecken-Handschuhe aus Leder", "aa-2"),   # Rennstrecke OHNE Auto-Wort ist nicht Spielzeug
+    ("Gadget", "Wandtattoo Rennstrecke Kinderzimmer", "hg-3"),
     # 14.10. (4. Prüfung): einzelnes «Switch» im Titel nimmt einer Tastatur nicht mehr das Blatt Keyboards
     ("Büro & Home Office", "Mechanische Gaming-Tastatur mit Yellow Switch", "el-7-9-12-8"),
     ("Büro & Home Office", "Gaming Tastatur mit Silent Switch", "el-7-9-12-8"),
