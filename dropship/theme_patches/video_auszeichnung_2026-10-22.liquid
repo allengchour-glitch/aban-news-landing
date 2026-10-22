@@ -1,0 +1,34 @@
+{%- comment -%}
+  22.10.2026 (LuxeStyle, Betreiber «video ja»): VideoObject fuer Produktseiten mit echtem Video-Medium.
+  GEMESSEN 22.10.: nur 27 von 1'082 `video-hit`-Produkten tragen ein Video-Medium (Dauer 0,9-48 s, Median 5,2 s) —
+  das Tag allein beweist kein Video, darum wird am MEDIUM entschieden, nie am Tag. Eigener Block neben dem Product-
+  JSON-LD (dessen aggregateRating-Logik oben bleibt unberuehrt). Nur das erste Video-Medium, nur Shopify-Videos mit
+  MP4-Quelle UND Vorschaubild (Google verlangt name, description, thumbnailUrl, uploadDate + contentUrl/embedUrl);
+  sonst kein Block. Jeder Wert laeuft durch `json` (Anfuehrungszeichen und `<` im Text bleiben sicher).
+  Wache: automation/video_auszeichnung_wache.py (Block steht live? Selbsttest mit Mutanten).
+{%- endcomment -%}
+{%- assign luxe_vid = closest.product.media | where: 'media_type', 'video' | first -%}
+{%- if luxe_vid -%}
+  {%- assign luxe_vsrc = luxe_vid.sources | where: 'mime_type', 'video/mp4' | sort: 'height' | last -%}
+  {%- if luxe_vsrc and luxe_vid.preview_image -%}
+    {%- assign luxe_vthumb = luxe_vid.preview_image | image_url: width: 1200 -%}
+    {%- unless luxe_vthumb contains 'https:' -%}
+      {%- assign luxe_vthumb = luxe_vthumb | prepend: 'https:' -%}
+    {%- endunless -%}
+    {%- assign luxe_vdesc = closest.product.description | strip_html | strip_newlines | strip | truncate: 300 -%}
+    {%- unless luxe_vdesc.size > 0 -%}
+      {%- assign luxe_vdesc = closest.product.title -%}
+    {%- endunless -%}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "VideoObject",
+        "name": {{ closest.product.title | prepend: 'Produktvideo: ' | json }},
+        "description": {{ luxe_vdesc | json }},
+        "thumbnailUrl": [{{ luxe_vthumb | json }}],
+        "uploadDate": {{ closest.product.published_at | default: closest.product.created_at | date: '%Y-%m-%d' | json }},
+        "contentUrl": {{ luxe_vsrc.url | json }}
+      }
+    </script>
+  {%- endif -%}
+{%- endif -%}

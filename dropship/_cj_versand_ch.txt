@@ -1647,3 +1647,11 @@ gid://shopify/Product/16656659775879	nicht-versendbar	Multifunktionaler Rollkoff
 gid://shopify/Product/16656522641799	ok	Magnetische Bausteine 60-Teile-Set
 gid://shopify/Product/16656659710343	nicht-versendbar	Trolley-Koffer mit Becherhalter und USB-Anschluss
 gid://shopify/Product/16656615833991	ok	Grosse Schmuckschatulle mit mehreren Fächern
+gid://shopify/Product/16656662331783	nicht-versendbar	Wabi-sabi Wandbild
+gid://shopify/Product/16656662790535	ok	Grosser Koffer für Reisen
+gid://shopify/Product/16656667967879	nicht-versendbar	Trolley-Koffer aus Metall
+gid://shopify/Product/16656667804039	nicht-versendbar	Reisekoffer mit hoher Kapazität
+gid://shopify/Product/16656666263943	ok	Bratpfanne aus Edelstahl
+gid://shopify/Product/16656667378055	nicht-versendbar	Rollkoffer aus Aluminium-Magnesium-Legierung
+gid://shopify/Product/16656662823303	ok	Haushaltspfanne mit Antihaft-Beschichtung
+gid://shopify/Product/16656667541895	ok	Rollkoffer mit Laptopfach – 18 Zoll
