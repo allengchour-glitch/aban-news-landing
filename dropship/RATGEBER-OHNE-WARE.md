@@ -195,4 +195,5 @@ Die Produktseite sagt «Ausverkauft», der Ratgeber wirbt weiter. Ware nachlegen
 | Ratgeber | Produkt |
 |---|---|
 | [Trainingsanzug & Jogging-Set 2026: Bequem & s](/blogs/ratgeber/trainingsanzug-jogging-set-2026-ratgeber) | [Kostüm Trainingsanzug](/products/kostum-trainingsanzug-fgss00180) |
+| [Halloween-Deko selber machen: 10 Ideen für dr](/blogs/ratgeber/halloween-deko-selber-machen-10-ideen-ratgeber) | [Spinnennetz weiss](/products/spinnennetz-weiss-fga95405) |
 | [Halloween-Deko selber machen: 10 Ideen für dr](/blogs/ratgeber/halloween-deko-selber-machen-10-ideen-ratgeber) | [Skelett beweglich](/products/skelett-beweglich-fga904874) |
