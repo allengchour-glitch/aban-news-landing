@@ -13530,3 +13530,4 @@ warme-fleece-leggings-626200	2510141153331626400	16	10.29	ok	landeseite
 blaues-skinny-pantalon-mit-print-640200	2510141143181640400	16	7.71	ok	landeseite
 laufschuhe-fur-jungen-623500	2412210307201623900	16	11.12	ok	landeseite
 winterweste-fur-hunde-618200	2503141706311618400	16	7.57	ok	landeseite
+warme-freizeit-hose-mit-fleece-650000	2510140338361650200	16	9.88	ok	landeseite
