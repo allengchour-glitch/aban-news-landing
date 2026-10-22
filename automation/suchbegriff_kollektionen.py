@@ -31,6 +31,9 @@ for k in KOLL:
     # für Damen») und nein_typ (Regex auf productType, z. B. Beauty-Tools/Haustierbedarf/Auto-Zubehör), weil der Titel allein Fremdware durchlässt.
     k["_nein_tags"] = re.compile(k["nein_tags"], re.I) if k.get("nein_tags") else None
     k["_nein_typ"] = re.compile(k["nein_typ"], re.I) if k.get("nein_typ") else None
+    # 22.10.2026: ja_tags = Regex auf einzelne Produkt-Tags, mindestens EIN Tag muss passen (z. B. «^herren$»). Die Herren-Unterkollektionen suchten
+    # «Herren-Pullover» im Titel, die Ware heisst «Strickpullover mit Stehkragen» und trägt nur das Tag `herren` (GEMESSEN: 26 % ohne Chip).
+    k["_ja_tags"] = re.compile(k["ja_tags"], re.I) if k.get("ja_tags") else None
 # Produkte mit einem dieser Tags kommen in KEINE Suchseite (Hausregeln: Kostüm, 18+, Rauch, Google-/Werbe-Sperre, Waffe, Heilversprechen,
 # Medizinprodukt, Messer). Ohne diese Sperre trafen die neuen Titel-Muster 11 Kostüm-/Policy-Produkte (Prüfer 20.10.).
 RISIKO_TAGS = re.compile(r"kostuem|18plus|raucher|google-policy|nicht-google|nicht-bewerben|adult|waffe|heilversprechen|medizinprodukt|messer", re.I)
@@ -53,6 +56,7 @@ def soll_tags(titel, tags=(), typ=""):
         return set()
     return {k["tag"] for k in KOLL
             if k["_ja"].search(titel or "") and not k["_nein"].search(titel or "")
+            and (not k["_ja_tags"] or any(k["_ja_tags"].search(t) for t in tags))
             and not (k["_nein_tags"] and any(k["_nein_tags"].search(t) for t in tags))
             and not (k["_nein_typ"] and k["_nein_typ"].search(typ or ""))}
 
@@ -60,14 +64,21 @@ def soll_tags(titel, tags=(), typ=""):
 def kanarien():
     f = n = 0
     for k in KOLL:
+        kt = k.get("kanarien_tags") or []      # 22.10.2026: Tags, mit denen die Kanarienvögel geprüft werden (für Einträge mit ja_tags)
         for t in k["kanarien"]["ja"]:
             n += 1
-            if k["tag"] not in soll_tags(t):
+            if k["tag"] not in soll_tags(t, kt):
                 f += 1; print(f"  ✗ {k['tag']} sollte treffen: {t}")
         for t in k["kanarien"]["nein"]:
             n += 1
-            if k["tag"] in soll_tags(t):
+            if k["tag"] in soll_tags(t, kt):
                 f += 1; print(f"  ✗ {k['tag']} sollte NICHT treffen: {t}")
+        if k.get("ja_tags"):                   # ohne das Pflicht-Tag darf der Eintrag nie treffen
+            n += 1
+            if k["tag"] in soll_tags(k["kanarien"]["ja"][0], []):
+                f += 1; print(f"  ✗ {k['tag']} trifft ohne Pflicht-Tag ({k['ja_tags']})")
+        if k.get("feeder_fuer"):      # 22.10.2026: Feeder füllen nur eine bestehende Kollektion, haben keine eigene Seite
+            continue
         for feld, grenze in (("seo_title", 60), ("seo_desc", 160)):
             n += 1
             if len(k[feld]) > grenze or "ß" in k[feld] + k["html"]:
@@ -147,8 +158,46 @@ def tags_angleichen(gql, produkte, scharf):
     return plus, minus
 
 
+FEEDER_SICHERUNG = os.path.join(REPO, "dropship", "_feeder_regeln_alt.json")
+
+
+def feeder_regel(gql, k, scharf):
+    """22.10.2026 (Betreiber-Screenshot «Elektronik & Technik»: 31 % der Produkte in KEINER Unterkollektion). Ein Feeder-Eintrag
+    (`feeder_fuer: <Handle>`) legt keine eigene Kollektion an, sondern hängt «Tag = such-…» als ODER-Regel an eine BESTEHENDE
+    Smart-Kollektion, deren Titel-Regeln eine Wortform nicht kennen (z. B. «Smart-Armband» bei Smartwatches). Alte Regel wird gesichert.
+    Nicht möglich bei UND-Regeln mit mehreren Bedingungen (würde die Bedeutung ändern) → Warnung, nichts geschrieben."""
+    c = gql('query($h:String!){collectionByHandle(handle:$h){id ruleSet{appliedDisjunctively rules{column relation condition}}}}',
+            {"h": k["feeder_fuer"]})["collectionByHandle"]
+    if not c or not c["ruleSet"]:
+        print(f"  ⚠️ Feeder-Ziel {k['feeder_fuer']} fehlt oder ist keine Smart-Kollektion")
+        return
+    rs = c["ruleSet"]
+    regeln = [{"column": r["column"], "relation": r["relation"], "condition": r["condition"]} for r in rs["rules"]]
+    neu = {"column": "TAG", "relation": "EQUALS", "condition": k["tag"]}
+    if neu in regeln:
+        return
+    if not rs["appliedDisjunctively"] and len(regeln) > 1:
+        print(f"  ⚠️ {k['feeder_fuer']}: UND-Regel mit {len(regeln)} Bedingungen — Feeder nicht möglich")
+        return
+    print(f"  FEEDER {k['feeder_fuer']} ← Tag {k['tag']} (ODER, vorher {len(regeln)} Regel(n))")
+    if not scharf:
+        return
+    try:
+        alt = json.load(open(FEEDER_SICHERUNG, encoding="utf-8"))
+    except Exception:
+        alt = {}
+    alt.setdefault(k["feeder_fuer"], {"appliedDisjunctively": rs["appliedDisjunctively"], "rules": regeln})
+    json.dump(alt, open(FEEDER_SICHERUNG, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    r = gql('mutation($c:CollectionInput!){collectionUpdate(input:$c){userErrors{field message}}}',
+            {"c": {"id": c["id"], "ruleSet": {"appliedDisjunctively": True, "rules": regeln + [neu]}}})["collectionUpdate"]
+    print("   ⚠️" if r["userErrors"] else "   ok", r["userErrors"] or "")
+
+
 def kollektionen(gql, scharf):
     for k in KOLL:
+        if k.get("feeder_fuer"):
+            feeder_regel(gql, k, scharf)
+            continue
         c = gql('query($h:String!){collectionByHandle(handle:$h){id title seo{title description} descriptionHtml '
                 'ruleSet{rules{column relation condition}} resourcePublications(first:20){nodes{publication{id}}}}}',
                 {"h": k["handle"]})["collectionByHandle"]

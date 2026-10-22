@@ -13373,3 +13373,6 @@ vintage-hemd-fur-herren-604900	2606080253101605500	16	8.79	ok	landeseite
 turtle-basking-lampe-608800	2607130632251609300	16	7.43	ok	landeseite
 retro-street-t-shirt-629200	2606061323291629900	16	8.53	ok	landeseite
 kleiner-ventilator-mit-kuhlfunktion-628100	2607130554401628700	7	7.30	ok	landeseite
+lockeres-herren-t-shirt-mit-aufdruck-612700	2606061318581613400	16	8.53	ok	landeseite
+seidenfacher-mit-goldsprenkel-616700	2607130550541617400	16	12.21	ok	landeseite
+sommerhemd-mit-amerikanischer-flagge-628500	2606050847191629100	16	8.25	ok	landeseite

@@ -1315,6 +1315,22 @@ while true; do
       fi
     fi
   fi
+  # 22.10.2026: UNTERKATEGORIEN (Betreiber-Screenshot «Elektronik & Technik»: so viele Produkte, kein Filter/keine Unterkategorie). Die Chips der App sind die
+  # Menü-Unterpunkte; GEMESSEN 22.10.: Technik 31 %, Herren 26 %, Beauty 29 %, Schmuck & Uhren 21 % der Produkte in KEINER Unterkollektion. Täglich die billigen
+  # Selbsttests (Wächter + Menü-Werkzeug + Regeln der Keyword-Kollektionen), wöchentlich die Messung (~12 min, im Hintergrund, Anspruch VOR dem Start).
+  # Ergebnis: Ampel «🗂️ UNTERKATEGORIEN», Bericht dropship/UNTERKATEGORIEN-ABDECKUNG.md. Das Menü ändert nur automation/menue_unterkat_ordnen.py (von Hand, SCHARF=1).
+  UKM=/tmp/unterkat_abdeckung.log
+  if [ -f "$REPO/automation/unterkat_abdeckung.py" ]; then
+    if ! ( cd "$REPO" && timeout 90 python3 automation/unterkat_abdeckung.py --selbsttest >/dev/null 2>&1 && timeout 90 python3 automation/menue_unterkat_ordnen.py --selbsttest >/dev/null 2>&1 ); then
+      echo "$(date -u +%H:%M) ⚠️ UNTERKATEGORIEN-SELBSTTEST fehlgeschlagen (automation/unterkat_abdeckung.py / menue_unterkat_ordnen.py --selbsttest)"
+    fi
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$UKM" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 518400 ]; then
+      touch "$UKM"
+      ( cd "$REPO" && nohup timeout 2400 python3 automation/unterkat_abdeckung.py >> "$UKM" 2>&1 & )
+      echo "$(date -u +%H:%M) unterkat_abdeckung: Wochenmessung im Hintergrund gestartet (Log $UKM)"
+    fi
+  fi
   # Hinweis für den SCHARF-Block (Z. ~945): davor `[ -f /tmp/kategorie_wache.kanarien_fehler ] && skip` einbauen.
   # KATEGORIE-NEUWARE (02.10.2026, Verbesserungsrunde): der Grind legt ~250 Produkte/Tag an, die Tageswache ordnete sie
   # erst bis zu 24 h später ein (Ampel 285 ohne Kategorie) — stündlich, nur Produkte ohne Kategorie, Sperre im Skript.

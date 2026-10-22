@@ -3,6 +3,8 @@
 Die Chips oben in der App (und die Menü-Unterpunkte im Web) sind die Unterpunkte der Hauptkategorie im Menü `main-menu`. Ein Produkt, das in keiner Unterkollektion (Kind oder Enkel) steht, erreicht man nur über die lange Gesamtliste.
 
 Befund-Schwelle: ≥ 300 aktive Produkte UND (≥ 20 % ohne Unterkollektion ODER eine Unterkollektion mit > 50 % der Hauptkategorie).
+Ausnahmen (Hauptkollektion ist selbst das Thema, kein Befund): `jacken-outdoor` — Hauptkollektion = Thema «Jacken & Mäntel»; `fitness-training` — Hauptkollektion = Thema «Sport & Fitness».
+
 
 | Hauptkategorie | aktiv | ohne Unterkollektion | Anteil | zu grobe Unterkollektion | Befund |
 |---|---:|---:|---:|---|---|
@@ -16,8 +18,8 @@ Befund-Schwelle: ≥ 300 aktive Produkte UND (≥ 20 % ohne Unterkollektion ODER
 | Technik & Gaming | 4515 | 1432 | 31 % | – | ⚠️ |
 | Kinder & Haustier | 3765 | 769 | 20 % | – | ⚠️ |
 | Highlights | 32 | 20 | 62 % | – | ok |
-| Herbst & Übergang | 413 | 348 | 84 % | – | ⚠️ |
-| Sport & Party | 1465 | 983 | 67 % | – | ⚠️ |
+| Herbst & Übergang | 413 | 348 | 84 % | – | ok |
+| Sport & Party | 1465 | 983 | 67 % | – | ok |
 
 ## Herren — häufigste Titelwörter der Produkte OHNE Unterkollektion
 
@@ -80,23 +82,5 @@ Bestehende Kollektionen, die Lücken-Produkte abdecken (noch nicht im Menü unte
 | Kollektion | Handle | Lücken-Produkte | Grösse gesamt | davon in der Kategorie |
 |---|---|---:|---:|---:|
 | Geschenke für Kinder | `geschenke-fuer-kinder` | 23 | 400 | 65 % |
-
-Hinweis: Eine fehlende Unterkollektion zeigt sich hier als Wortgruppe (z. B. «mikrofon», «projektor»). Erst prüfen, ob es die Kollektion schon gibt (`automation/menue_unterkat_ordnen.py` hängt vorhandene Fachkollektionen ins Menü), sonst `automation/data/suchbegriff_kollektionen.json` (Feeder oder neue Kollektion).
-
-## Herbst & Übergang — häufigste Titelwörter der Produkte OHNE Unterkollektion
-
-jacke (59), jeansjacke (34), kapuzenjacke (19), reissverschluss (18), stehkragen (15), retro (14), kapuze (14), leichte (14), kurze (14), übergangsjacke (13), freizeitjacke (13), herrenjacke (11), gefütterte (11), vintage (10), revers (9), reverskragen (9), strickjacke (9), outdoor-jacke (8), lockere (8), lederjacke (8)
-
-Hinweis: Eine fehlende Unterkollektion zeigt sich hier als Wortgruppe (z. B. «mikrofon», «projektor»). Erst prüfen, ob es die Kollektion schon gibt (`automation/menue_unterkat_ordnen.py` hängt vorhandene Fachkollektionen ins Menü), sonst `automation/data/suchbegriff_kollektionen.json` (Feeder oder neue Kollektion).
-
-## Sport & Party — häufigste Titelwörter der Produkte OHNE Unterkollektion
-
-fahrradhelm (34), outdoor (27), velohelm (27), wasserdichte (21), training (20), velo-rücklicht (19), springseil (18), rücklicht (18), erwachsene (16), intelligentes (14), licht (13), multifunktionales (13), fernbedienung (12), bauchtrainer (12), sport (11), zuhause (11), sporttasche (10), krafttraining (9), taekwondo (9), board (9)
-
-Bestehende Kollektionen, die Lücken-Produkte abdecken (noch nicht im Menü unter dieser Kategorie):
-
-| Kollektion | Handle | Lücken-Produkte | Grösse gesamt | davon in der Kategorie |
-|---|---|---:|---:|---:|
-| Velo & Radsport | `velo-radsport` | 184 | 365 | 51 % |
 
 Hinweis: Eine fehlende Unterkollektion zeigt sich hier als Wortgruppe (z. B. «mikrofon», «projektor»). Erst prüfen, ob es die Kollektion schon gibt (`automation/menue_unterkat_ordnen.py` hängt vorhandene Fachkollektionen ins Menü), sonst `automation/data/suchbegriff_kollektionen.json` (Feeder oder neue Kollektion).

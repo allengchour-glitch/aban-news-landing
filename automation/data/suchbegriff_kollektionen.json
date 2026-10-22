@@ -671,6 +671,204 @@
      "Duschvorhang mit Haken"
     ]
    }
+  },
+  {
+   "handle": "smartwatches-wearables",
+   "feeder_fuer": "smartwatches-wearables",
+   "titel": "Smartwatches & Wearables",
+   "tag": "such-smartband",
+   "ja": "smart[- ]?(e[sr]?[- ]?)?((sport|sports|health|gesundheits)[- ]?)?armband|smart[- ]?armbanduhr|(sport|fitness|gesundheits|health)[- ]?armband|aktivit(ä|ae)ts-?tracker|schrittz(ä|ae)hler|pedometer|(kinder|senioren)[- ]?(4g[- ]?)?(telefon|video-?anruf|anruf)[- ]?uhr|video-?anruf-?uhr|telefonuhr|smart[- ]?(watch|uhr)",
+   "nein": "apple watch|uhren-?armband|uhrenband|watch ?band|ersatz|wechsel|schutzh(ü|ue)lle|folie|ladekabel|ladest|ladeger|halter|st(ä|ae)nder|werkzeug|schnalle|magnet|kupfer|turmalin|germanium|energie|akupressur|reiki|chakra|schmuck|kette|perlen|charm|hund|katze|harzarmband",
+   "kanarien": {
+    "ja": [
+     "Smart-Armband mit Herzfrequenz und Schrittzähler",
+     "Smartes Sport-Armband Z7 mit Farbdisplay",
+     "Smart Watch Sport-Armband mit Herzfrequenz",
+     "Wasserdichtes Sport-Armband",
+     "i9L Kinder 4G Videoanruf-Uhr",
+     "Pedometer Bluetooth Uhr",
+     "Smartes Gesundheits-Armband mit Temperaturmessung"
+    ],
+    "nein": [
+     "Titan-Ersatzarmband für Apple Watch",
+     "Magnetisches Gesundheits-Armband aus Kupfer",
+     "Smart-Armband Schutzfolie",
+     "Smart Watch Ladekabel",
+     "Edelstahl Armband Schmuck Perlen",
+     "Smart Watch Ovales Harzarmband"
+    ]
+   }
+  },
+  {
+   "handle": "beamer-heimkino",
+   "feeder_fuer": "beamer-heimkino",
+   "titel": "Beamer & Heimkino",
+   "tag": "such-projektor",
+   "ja": "projektor|projector|beamer",
+   "nein": "lampe|nacht-?licht|stern|galaxie|galaxy|planet|starry|aurora|sunset|sonnenuntergang|hologramm|logo|t(ü|ue)r-?projektor|auto-?projektor|willkommens|ersatz|weihnacht|regenbogen|laser-?licht|projektorlicht|fahrzeug|santa|halloween|ostern|geist|kerze|holograph",
+   "kanarien": {
+    "ja": [
+     "Heimprojektor YG400 HD",
+     "Kabelloser tragbarer Projektor",
+     "Mini-Projektor mit Multi-Screen Funktion",
+     "Beamer 4K mit WLAN"
+    ],
+    "nein": [
+     "Snail Sternenhimmel Projektionslampe",
+     "Sternenlicht-Projektor «Planet Starry Sky»",
+     "Sternenhimmel-Projektor für Auto-Interieur",
+     "Auto-Türlicht Logo Projektor",
+     "Weihnachts-Projektorlicht für Fahrzeuge",
+     "Full HD Weihnachtsmann Projektor",
+     "Regenbogen-Projektor Lampe",
+     "3D Holographischer LED-Projektor"
+    ]
+   }
+  },
+  {
+   "handle": "drohnen-kameras",
+   "feeder_fuer": "drohnen-kameras",
+   "titel": "Drohnen & Kameras",
+   "tag": "such-kamera",
+   "ja": "kamera|camcorder|dashcam|action-?cam|webcam",
+   "nein": "handy|smartphone|tablet|iphone|samsung|laptop|selfie|ringlicht|stativ|tasche|h(ü|ue)lle|schutz|objektiv|linse|rucksack|spielzeug|puppe|attrappe|r(ü|ue)ckfahr|detektor|wanzen|signal|smart-?watch|smartwatch|armband|uhr\\b",
+   "kanarien": {
+    "ja": [
+     "Überwachungskamera mit Auto-Tracking",
+     "Sportkamera 4K wasserdicht",
+     "Dashcam mit Nachtsicht",
+     "Wildkamera mit Bewegungsmelder"
+    ],
+    "nein": [
+     "Handy Kamera Objektiv Set",
+     "Kameratasche für Drohne",
+     "Kamera Schutzhülle",
+     "Selfie Stick mit Kamera Halterung",
+     "HD Rückfahrkamera mit Infrarot-Nachtsicht",
+     "Wanzen- & Kamera-Detektor",
+     "Kinder Smartwatch mit GPS & Kamera"
+    ]
+   }
+  },
+  {
+   "handle": "herren-jeans",
+   "titel": "Herren-Jeans",
+   "tag": "such-herren-jeans",
+   "ja_tags": "^herren$",
+   "kanarien_tags": [
+    "herren"
+   ],
+   "ja": "jeans|denim",
+   "nein": "damen|frauen|m(ä|ae)dchen|kinder|baby|jungen\\b|jeansjacke|jeansweste|jeans-?hemd|jeanshemd|jeans-?kleid|jeans-?rock|shorts|g(ü|ue)rtel|tasche|rucksack|m(ü|ue)tze|\\bcap\\b|hut\\b|schuh|socke|jacke|weste|shirt|hemd|sneaker|stiefel|boots?\\b|high-?top|low-?top|mid-?top|sandale|slipper",
+   "seo_title": "Herren-Jeans kaufen: Slim-Fit, Bootcut & mehr | LuxeStyle",
+   "seo_desc": "Herren-Jeans in Slim-Fit, Straight, Bootcut und Loose-Fit: von hell bis dunkel, mit und ohne Stretch, für Alltag und Büro. Versand in die Schweiz.",
+   "html": "<p>Slim-Fit, Bootcut oder locker geschnitten: Herren-Jeans für Alltag, Büro und Freizeit. Hier findest du Jeans in verschiedenen Waschungen, von Hellblau bis Schwarz.</p><h2>Worauf achten?</h2><ul><li><strong>Schnitt:</strong> Slim-Fit sitzt eng, Straight gerade, Bootcut weitet sich ab dem Knie, Loose-Fit ist weit geschnitten. Die Angabe steht bei jedem Produkt.</li><li><strong>Grösse:</strong> Bundweite und Länge fallen je nach Modell verschieden aus. Die Grössenangaben stehen auf der Produktseite.</li><li><strong>Stretch:</strong> Ein Elasthan-Anteil macht die Jeans bequemer, reine Baumwolle ist fester.</li><li><strong>Waschung:</strong> Dunkle Jeans wirken formeller, helle lässiger.</li></ul><p>Passend dazu: <a href=\"/collections/herren-hemden\">Herren-Hemden</a> und <a href=\"/collections/herren-pullover\">Herren-Pullover &amp; Strick</a>. Lieferzeit und Versandweg stehen auf jeder Produktseite. Bezahlen kannst du mit TWINT oder Klarna.</p>",
+   "kanarien": {
+    "ja": [
+     "Herren Bootcut Jeans",
+     "Slim-Fit Jeans · Herren",
+     "Dünne, lockere Business-Jeans für Herren",
+     "Weisse Jeans mit Flag-Patchwork"
+    ],
+    "nein": [
+     "Lockere Jeansjacke im Korea-Stil für Herren",
+     "Damen Jeans mit hoher Taille",
+     "Jeansrock für Mädchen",
+     "Jeans-Gürtel aus Leder für Herren",
+     "Kinder Jeans Shorts",
+     "Amerikanisches Retro-Long-Sleeve-Denim-Shirt",
+     "Plateau-Sneaker aus Denim und Canvas",
+     "Vintage Denim Boots mit Metallschnalle"
+    ]
+   }
+  },
+  {
+   "handle": "herren-jacken",
+   "feeder_fuer": "herren-jacken",
+   "titel": "Herren-Jacken & Hoodies",
+   "tag": "such-herren-jacken",
+   "ja_tags": "^herren$",
+   "kanarien_tags": [
+    "herren"
+   ],
+   "ja": "jacke|mantel|parka|bomber|windbreaker|fleece|blouson|hoodie|kapuzenpullover|softshell|daunen",
+   "nein": "damen|frauen|m(ä|ae)dchen|kinder|baby|jungen\\b|\\bset\\b|hose|schutz|h(ü|ue)lle|weihnacht|kost(ü|ue)m|schuh|sneaker|stiefel|boots?\\b|high-?top|low-?top|mid-?top|sandale|slipper|socke",
+   "kanarien": {
+    "ja": [
+     "Herren Winter Daunenjacke mit Stehkragen",
+     "Herren Windbreaker",
+     "Heavyweight Hoodie mit verstärkter Kapuze",
+     "Lockere Jeansjacke im Korea-Stil für Herren",
+     "Kapuzenpullover für Herren"
+    ],
+    "nein": [
+     "Damen Winterjacke mit Pelzkragen",
+     "Kinder Regenjacke",
+     "Weihnachtsmann Kostüm Jacke",
+     "Jacken-Set mit Hose",
+     "Fleecegefütterte wasserdichte High-Top Sneaker"
+    ]
+   }
+  },
+  {
+   "handle": "herren-pullover",
+   "feeder_fuer": "herren-pullover",
+   "titel": "Herren-Pullover & Strick",
+   "tag": "such-herren-pullover",
+   "ja_tags": "^herren$",
+   "kanarien_tags": [
+    "herren"
+   ],
+   "ja": "pullover|strick|cardigan|kardigan|sweatshirt|sweater|rollkragen|troyer|norweger",
+   "nein": "damen|frauen|m(ä|ae)dchen|kinder|baby|jungen\\b|weihnacht|hose|kapuze|hoodie|\\bset\\b|socke|handschuh|m(ü|ue)tze|schal\\b|schuh|sneaker|stiefel|boots?\\b|high-?top|low-?top|mid-?top|sandale|slipper|socke|weste|christmas|xmas",
+   "kanarien": {
+    "ja": [
+     "Kaschmir-Pullover für Herren",
+     "Gestreifter Strickpullover für Herren",
+     "Woll-Kardigan mit Kragen und Knöpfen",
+     "V-Hals Cardigan für Herren",
+     "Herren Halb-Zip Pullover mit Stehkragen"
+    ],
+    "nein": [
+     "Damen Strickpullover Oversize",
+     "Weihnachtspullover mit Rentier",
+     "Kapuzenpullover für Herren",
+     "Strickmütze und Schal Set",
+     "Kinder Pullover mit Print",
+     "Herren-Weste, gestrickt, sleeveless",
+     "Jacquard Christmas Pullover für Herren",
+     "Strick Sneaker für Herren"
+    ]
+   }
+  },
+  {
+   "handle": "herren-shirts",
+   "feeder_fuer": "herren-shirts",
+   "titel": "Herren-Shirts & Tops",
+   "tag": "such-herren-shirts",
+   "ja_tags": "^herren$",
+   "kanarien_tags": [
+    "herren"
+   ],
+   "ja": "tank-?top|tanktop|polo|oberteil|longsleeve|henley|singlet|muskel|\\btop\\b|\\btee\\b",
+   "nein": "damen|frauen|m(ä|ae)dchen|kinder|baby|jungen\\b|\\bset\\b|hose|jacke|weste|pullover|hoodie|strickpullover|cardigan|schuh|sneaker|stiefel|boots?\\b|high-?top|low-?top|mid-?top|sandale|slipper|socke",
+   "kanarien": {
+    "ja": [
+     "Herren-Tanktop aus Ice Silk",
+     "Lässige Herren-Oberteile",
+     "Y2K Loose Fit Kurzarm-Top für Herren",
+     "Herren Polo mit Kragen"
+    ],
+    "nein": [
+     "Damen Crop Top",
+     "Kinder Tanktop Set",
+     "Herren Strickpullover mit Rundhals",
+     "Jacke mit Top Set",
+     "Sicherheitsschuhe Low-Top, Mikrofaserleder",
+     "Fleecegefütterte High-Top Lederstiefel",
+     "Worker-Boots für Herren, Mid-Top"
+    ]
+   }
   }
  ]
 }
