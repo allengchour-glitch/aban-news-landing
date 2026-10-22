@@ -1,4 +1,4 @@
-# Netzstecker je Variante — Stand 2026-10-20
+# Netzstecker je Variante — Stand 2026-10-22
 
 Waechter `automation/cj_stecker_pruefen.py --varianten` (taeglich im Aufseher). Klasse: aktive Produkte mit ≥ 2 Varianten, von denen mindestens eine einen fremden Stecker (US/UK/AU/CN/JP …) traegt.
 
