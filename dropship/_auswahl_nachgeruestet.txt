@@ -3477,3 +3477,7 @@
 16656660562311	Grösse:7:7	2026-10-22	kupferstempel-fur-backwaren-und-leder-634500
 16656660496775	Farbe:14+Grösse:4:56+ki	2026-10-22	trolley-aus-aluminium-magnesium-legierung-626800
 16656660332935	Farbe:5+Grösse:4:20+ki	2026-10-22	reisekoffer-mit-zahlenschloss-607600
+16656660267399	Farbe:2:2	2026-10-22	seifenschale-aus-silikon-mit-deckel-609100
+16656660201863	Grösse:2:2	2026-10-22	eissiegel-aus-rosenholz-mit-messingkopf-621900
+16656660169095	Farbe:3+Grösse:4:12	2026-10-22	leichter-rollkoffer-mit-grossem-volumen-610300
+16656660136327	Farbe:4:4	2026-10-22	wolkenformiges-eckregal-fur-das-bad-621000

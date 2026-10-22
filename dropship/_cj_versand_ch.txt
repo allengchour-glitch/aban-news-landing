@@ -1636,3 +1636,4 @@ gid://shopify/Product/16656659153287	nicht-versendbar	Wäschekorb aus Bambus
 gid://shopify/Product/16656658760071	nicht-versendbar	Schuhschrank mit Sitzbank aus Massivholz
 gid://shopify/Product/16656660496775	nicht-versendbar	Trolley aus Aluminium-Magnesium-Legierung
 gid://shopify/Product/16656435675527	nicht-versendbar	Business-Rollkoffer mit Hartschale
+gid://shopify/Product/16656660595079	nicht-versendbar	Aluminium-Magnesium-Legierung Handgepäck Koffer
