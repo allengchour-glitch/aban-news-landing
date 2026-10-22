@@ -1,6 +1,6 @@
-# Füllmenge fehlt — Stand 2026-10-21 14:52 UTC
+# Füllmenge fehlt — Stand 2026-10-22 11:25 UTC
 
-Werkzeug `automation/fuellmenge_nachtragen.py` · Kandidaten: 142 aktive Kosmetik-Flüssigprodukte ohne ml-Angabe · diesmal geschrieben: 0 · Text-Sperre belegt: 0
+Werkzeug `automation/fuellmenge_nachtragen.py` · Kandidaten: 143 aktive Kosmetik-Flüssigprodukte ohne ml-Angabe · diesmal geschrieben: 1 · Text-Sperre belegt: 0
 
 Sicher = ml und fl oz auf demselben Bild passen rechnerisch. «Vorschlag — sichten»: Bild ansehen, dann `{handle: "30 ml"}` in `dropship/_fuellmenge_gesichtet.json` eintragen.
 
@@ -148,3 +148,4 @@ Sicher = ml und fl oz auf demselben Bild passen rechnerisch. «Vorschlag — sic
 | [Feuchtigkeitsspendende Sonnen-BB-Creme](https://luxestyle.ch/products/feuchtigkeitsspendende-sonnen-bb-creme-621100) | — | nichts lesbar |  |
 | [Magnesiumcreme für besseren Schlaf](https://luxestyle.ch/products/magnesiumcreme-fur-besseren-schlaf-631100) | — | nichts lesbar |  |
 | [Flüssige Foundation mit Concealer und Öl-Kontrolle](https://luxestyle.ch/products/flussige-foundation-mit-concealer-und-ol-kontr-640000) | — | nichts lesbar |  |
+| [Ätherisches Öl](https://luxestyle.ch/products/atherisches-ol-633600) | 30 ml | sicher (ml+oz) · geschrieben | 30 1 @ 99b517e1-f797-4ada-ad56-d286b1f66d16.png; 30 1 @ 045a25fe-698c-41ad-88fa-ac394cd5c4a7.png |
