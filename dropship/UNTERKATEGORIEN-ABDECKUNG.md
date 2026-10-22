@@ -1,4 +1,4 @@
-# Unterkategorien: Wo fehlen Chips? (gemessen 2026-10-22T16:17:54Z)
+# Unterkategorien: Wo fehlen Chips? (gemessen 2026-10-22T17:18:29Z)
 
 Die Chips oben in der App (und die Menü-Unterpunkte im Web) sind die Unterpunkte der Hauptkategorie im Menü `main-menu`. Ein Produkt, das in keiner Unterkollektion (Kind oder Enkel) steht, erreicht man nur über die lange Gesamtliste.
 
@@ -10,77 +10,25 @@ Ausnahmen (Hauptkollektion ist selbst das Thema, kein Befund): `jacken-outdoor` 
 |---|---:|---:|---:|---|---|
 | 🎁 Geschenke & Weihnachten | 400 | 19 | 4 % | – | ok |
 | Damen | 10683 | 1350 | 12 % | – | ok |
-| Herren | 5323 | 1385 | 26 % | – | ⚠️ |
+| Herren | 5323 | 423 | 7 % | – | ok |
 | Schuhe | 4786 | 4 | 0 % | – | ok |
-| Schmuck & Uhren | 5656 | 1213 | 21 % | – | ⚠️ |
-| Beauty & Pflege | 4096 | 1199 | 29 % | – | ⚠️ |
-| Wohnen & Garten | 5309 | 758 | 14 % | – | ok |
-| Technik & Gaming | 4515 | 1432 | 31 % | – | ⚠️ |
-| Kinder & Haustier | 3765 | 769 | 20 % | – | ⚠️ |
+| Schmuck & Uhren | 5656 | 512 | 9 % | – | ok |
+| Beauty & Pflege | 4096 | 936 | 22 % | – | ⚠️ |
+| Wohnen & Garten | 4915 | 757 | 15 % | – | ok |
+| Technik & Gaming | 4515 | 803 | 17 % | – | ok |
+| Kinder & Haustier | 3764 | 745 | 19 % | – | ok |
 | Highlights | 32 | 20 | 62 % | – | ok |
-| Herbst & Übergang | 413 | 348 | 84 % | – | ok |
-| Sport & Party | 1465 | 983 | 67 % | – | ok |
-
-## Herren — häufigste Titelwörter der Produkte OHNE Unterkollektion
-
-jeans (119), pullover (96), hoodie (65), retro (48), stehkragen (47), casual (44), reissverschluss (39), vintage (39), jeansjacke (38), slim-fit (32), jacke (32), kapuzenpullover (30), cardigan (30), strickpullover (28), kapuze (27), loose-fit (26), langarm (24), weste (23), loose (23), kapuzenjacke (21)
-
-Hinweis: Eine fehlende Unterkollektion zeigt sich hier als Wortgruppe (z. B. «mikrofon», «projektor»). Erst prüfen, ob es die Kollektion schon gibt (`automation/menue_unterkat_ordnen.py` hängt vorhandene Fachkollektionen ins Menü), sonst `automation/data/suchbegriff_kollektionen.json` (Feeder oder neue Kollektion).
-
-## Schmuck & Uhren — häufigste Titelwörter der Produkte OHNE Unterkollektion
-
-smartwatch (462), watch (94), apple (79), herzfrequenz (66), bluetooth (63), armband (40), wasserdichte (37), quarzuhr (33), outdoor (32), lederarmband (31), sport (30), bluetooth-telefonie (29), sportuhr (28), bluetooth-anruf (25), herzfrequenz- (24), uhrenarmband (24), edelstahl (22), silikonarmband (22), bluetooth-anrufen (21), bluetooth-anruffunktion (21)
-
-Bestehende Kollektionen, die Lücken-Produkte abdecken (noch nicht im Menü unter dieser Kategorie):
-
-| Kollektion | Handle | Lücken-Produkte | Grösse gesamt | davon in der Kategorie |
-|---|---|---:|---:|---:|
-| Smartwatches & Wearables | `smartwatches-wearables` | 517 | 828 | 72 % |
-| Herrenuhren & Schmuck | `herrenuhren-schmuck` | 178 | 1945 | 90 % |
-| Uhrenarmbänder & Smartwatch-Armbänder | `uhrenarmbaender` | 132 | 158 | 97 % |
-| Chronographen & Automatik | `chronographen-automatik` | 21 | 175 | 87 % |
-
-Hinweis: Eine fehlende Unterkollektion zeigt sich hier als Wortgruppe (z. B. «mikrofon», «projektor»). Erst prüfen, ob es die Kollektion schon gibt (`automation/menue_unterkat_ordnen.py` hängt vorhandene Fachkollektionen ins Menü), sonst `automation/data/suchbegriff_kollektionen.json` (Feeder oder neue Kollektion).
+| Herbst & Übergang | 413 | 341 | 82 % | – | ok |
+| Sport & Party | 1459 | 795 | 54 % | – | ok |
 
 ## Beauty & Pflege — häufigste Titelwörter der Produkte OHNE Unterkollektion
 
-luftbefeuchter (72), aroma (39), diffuser (28), kabelloser (28), farben (24), elektrischer (23), zuhause (20), porenreiniger (20), puder (16), haarschneider (16), pinselset (16), multifunktionaler (16), ultraschall (15), elektrische (15), gesichtsreinigungsbürste (15), gesicht (14), holzmaserung (14), locken (14), diffusor (13), lipgloss (12)
+kabelloser (24), farben (21), elektrischer (19), puder (16), haarschneider (16), pinselset (16), multifunktionaler (16), locken (14), gesicht (13), lipgloss (12), teilig (12), augen (11), glättkamm (11), teiliges (11), gloss (11), pinsel (10), feuchtigkeitsspendender (10), makeup (10), pinsel-set (10), elektrisches (9)
 
 Bestehende Kollektionen, die Lücken-Produkte abdecken (noch nicht im Menü unter dieser Kategorie):
 
 | Kollektion | Handle | Lücken-Produkte | Grösse gesamt | davon in der Kategorie |
 |---|---|---:|---:|---:|
-| Aroma & Diffuser | `sub-aroma-diffuser` | 154 | 285 | 59 % |
-| Luftbefeuchter | `luftbefeuchter` | 100 | 149 | 67 % |
-| Beauty-Geräte & Haarentfernung | `beauty-geraete` | 58 | 184 | 54 % |
-| Gesichtspflege-Geräte | `gesichtspflege-geraete` | 28 | 58 | 62 % |
-| Masken | `ft-maske` | 25 | 246 | 53 % |
-| Schminkspiegel | `schminkspiegel` | 21 | 35 | 69 % |
-
-Hinweis: Eine fehlende Unterkollektion zeigt sich hier als Wortgruppe (z. B. «mikrofon», «projektor»). Erst prüfen, ob es die Kollektion schon gibt (`automation/menue_unterkat_ordnen.py` hängt vorhandene Fachkollektionen ins Menü), sonst `automation/data/suchbegriff_kollektionen.json` (Feeder oder neue Kollektion).
-
-## Technik & Gaming — häufigste Titelwörter der Produkte OHNE Unterkollektion
-
-watch (91), smart (90), smart-armband (90), apple (80), bluetooth (75), armband (74), kabelloses (39), mikrofon (33), herzfrequenz (30), wasserdichte (30), sportuhr (29), quarzuhr (28), farbdisplay (28), uhrenarmband (27), power (25), lederarmband (24), herzfrequenzmessung (23), smartes (23), projektor (20), wireless (19)
-
-Bestehende Kollektionen, die Lücken-Produkte abdecken (noch nicht im Menü unter dieser Kategorie):
-
-| Kollektion | Handle | Lücken-Produkte | Grösse gesamt | davon in der Kategorie |
-|---|---|---:|---:|---:|
-| Mikrofone & Streaming | `mikrofone` | 127 | 286 | 56 % |
-| Uhrenarmbänder & Smartwatch-Armbänder | `uhrenarmbaender` | 106 | 158 | 84 % |
-| Foto & Video | `foto-tech` | 17 | 46 | 63 % |
-
-Hinweis: Eine fehlende Unterkollektion zeigt sich hier als Wortgruppe (z. B. «mikrofon», «projektor»). Erst prüfen, ob es die Kollektion schon gibt (`automation/menue_unterkat_ordnen.py` hängt vorhandene Fachkollektionen ins Menü), sonst `automation/data/suchbegriff_kollektionen.json` (Feeder oder neue Kollektion).
-
-## Kinder & Haustier — häufigste Titelwörter der Produkte OHNE Unterkollektion
-
-kinderkostüm (50), mädchen (39), kostüm (38), smartwatch (37), kindergrösse (24), babys (22), erwachsene (14), baumwolle (14), kinderzimmer (11), kinderrucksack (11), jungen (10), wasserdicht (10), kleinkinder (9), wasserdichte (8), babynahrung (8), tragbarer (7), kamera (7), cartoon (7), spielzeug (7), elektrischer (7)
-
-Bestehende Kollektionen, die Lücken-Produkte abdecken (noch nicht im Menü unter dieser Kategorie):
-
-| Kollektion | Handle | Lücken-Produkte | Grösse gesamt | davon in der Kategorie |
-|---|---|---:|---:|---:|
-| Geschenke für Kinder | `geschenke-fuer-kinder` | 23 | 400 | 65 % |
+| Masken | `ft-maske` | 17 | 246 | 53 % |
 
 Hinweis: Eine fehlende Unterkollektion zeigt sich hier als Wortgruppe (z. B. «mikrofon», «projektor»). Erst prüfen, ob es die Kollektion schon gibt (`automation/menue_unterkat_ordnen.py` hängt vorhandene Fachkollektionen ins Menü), sonst `automation/data/suchbegriff_kollektionen.json` (Feeder oder neue Kollektion).
