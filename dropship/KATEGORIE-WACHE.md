@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-21T23:09Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-22T00:12Z
 
-Aktive gescannt: 27 · ohne Kategorie: 27 · heute gesetzt: 24 (SCHARF, CAP 1500) · danach offen: 3 · Fehler: 0
+Aktive gescannt: 24 · ohne Kategorie: 24 · heute gesetzt: 21 (SCHARF, CAP 1500) · danach offen: 3 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -12,9 +12,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- sandalen-baotou-roman-platform-grosse-grosse-635400 · Damenschuhe → Apparel & Accessories > Shoes
-- businessrucksack-mit-20-35-l-kapazitat-622600 · Taschen → Luggage & Bags
-- koreanische-square-toe-mary-jane-pumps-614100 · Damenschuhe → Apparel & Accessories > Shoes
-- multifunktionaler-rucksack-fur-studenten-603100 · Taschen → Luggage & Bags
-- wandregal-aus-holz-40-15-3-cm-braun-611600 · Aufbewahrung & Organizer → Home & Garden > Household Supplies > Storage & Organization
+- retro-martin-plattform-arbeitsstiefel-herren-611300 · Herrenschuhe → Apparel & Accessories > Shoes
+- leder-crossbody-tasche-herren-schwarz-622200 · Taschen → Luggage & Bags
+- keramik-aufbewahrungsbox-mit-deckel-fur-butter-636800 · Aufbewahrung & Organizer → Home & Garden > Household Supplies > Storage & Organization
+- atmungsaktive-canvas-loafer-fur-herren-617600 · Herrenschuhe → Apparel & Accessories > Shoes
+- universal-canvas-handygurteltasche-607700 · Taschen → Luggage & Bags
 
