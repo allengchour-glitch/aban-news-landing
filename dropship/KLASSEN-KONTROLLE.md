@@ -1,4 +1,4 @@
-# Klassen-Kontrolle (VOLLSCAN, 56182 aktive Produkte)
+# Klassen-Kontrolle (VOLLSCAN, 56465 aktive Produkte)
 
 > Gemessen AM OBJEKT mit tag-toleranten Mustern, nicht ueber die Shopify-Suche.
 > Eine Klassenzahl gilt nur fuer die Form, mit der man gesucht hat — deshalb dieser Lauf.
@@ -19,17 +19,7 @@ Vollstaendige Liste: `dropship/_klassen/sie-anrede-im-produkttext.txt`
 - `15509400781185` Wimpernkleber-Entferner mit Schallvibration
 - `15520411156865` HD Mini Heimprojektor für Kinder
 
-## Mess-Versprechen an Wearables — 1
-
-Kein optisches Armband misst Blutdruck, EKG oder Blutzucker (Lehre 11.08.).
-
-Reparatur: `automation/wearable_messversprechen.py  (QUELLE=live)`
-
-Vollstaendige Liste: `dropship/_klassen/mess-versprechen-an-wearables.txt`
-
-- `16638824546695` Smartwatch mit HD-Display, Herzfrequenz
-
-## Auswahl-Versprechen bei EINER Variante — 1288
+## Auswahl-Versprechen bei EINER Variante — 1207
 
 Der Text beschreibt das CJ-Listing, nicht was wir verkaufen (Lehre 27.08.).
 
@@ -62,5 +52,5 @@ Vollstaendige Liste: `dropship/_klassen/auswahl-versprechen-bei-einer-variante.t
 - `15448927175041` Nackenstützkissen mit Massageperlen
 - `15448927666561` Wolkenkissen im französischen Stil
 - `15448944804225` Plüschtier mit Quietscher für Hunde
-- … und 1263 weitere
+- … und 1182 weitere
 
