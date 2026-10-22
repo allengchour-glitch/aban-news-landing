@@ -11019,3 +11019,4 @@ gid://shopify/Product/15412945191297	1792653349	ok	6 Shop / 6 CJ / 0 fehlend / 0
 gid://shopify/Product/15412945224065	1792653349	ok	8 Shop / 8 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15412945289601	1792653349	ok	6 Shop / 6 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15412945355137	1792653349	ok	4 Shop / 4 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15412959773057	1792668001	ok	6 Shop / 6 CJ / 0 fehlend / 0 DENY
