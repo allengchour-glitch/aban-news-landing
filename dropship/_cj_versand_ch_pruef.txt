@@ -13334,3 +13334,17 @@ herren-anzughose-mit-kniebund-600000	2503300557511600300	16	9.88	ok	landeseite
 herrenuhr-automatisch-stahl-624300	2508120614591624500	16	6.48	ok	landeseite
 vakuumiergerat-portabel-625600	2607131033591626200	7	9.54	ok	landeseite
 distressed-overalls-622800	2503230941061623000	16	10.15	ok	landeseite
+herrenuhr-mit-lederarmband-601700	2508120606441602000	16	8.85	ok	landeseite
+holzarmbanduhr-141248	1576892227744444416	7	6.66	ok	landeseite
+wasserdichte-herren-sportuhr-mit-luminous-618432	1576824030294978560	7	8.10	ok	landeseite
+vintage-kleines-goldarmband-mode-trend-fur-dam-776960	1575696568282525696	7	7.40	ok	landeseite
+sportuhr-mit-temperatur-pulsuberwachung-190464	1572520842335105024	7	6.22	ok	landeseite
+smart-armband-mit-bluetooth-temperaturmessung-335488	1532232024604553216	7	7.30	ok	landeseite
+casual-jeans-trendig-und-cool-fur-jugendliche-605000	2607130839431605600	16	10.15	ok	landeseite
+rundes-display-wasserdicht-nfc-bildschirm-herz-941888	1514865942910742528	7	5.69	ok	landeseite
+leichte-hellblaue-jeans-628800	2607130730081629400	16	9.07	ok	landeseite
+manner-armbanduhr-gold-689792	1509018358161879040	7	7.84	ok	landeseite
+herren-langarm-vintage-t-shirt-606900	2607030553461607600	16	7.99	ok	landeseite
+leichtes-sommerhemd-fur-herren-607600	2606300132481608300	16	8.11	ok	landeseite
+retro-hemd-set-herren-616200	2606290838551616800	16	8.11	ok	landeseite
+warmes-velcro-leder-schuh-fur-baby-madchen-606000	2506200819041606200	16	6.09	ok	landeseite

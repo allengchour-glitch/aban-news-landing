@@ -1,0 +1,1615 @@
+{
+ "gemessen": "2026-10-22T16:05:05Z",
+ "schwelle_anteil": 0.2,
+ "kategorien": [
+  {
+   "aktiv": 400,
+   "ohne": 19,
+   "anteil_ohne": 0.048,
+   "je_kind": {
+    "hochzeitsgeschenke": 38,
+    "geschenke-fuer-sie": 161,
+    "geschenke-unter-50-franken": 146,
+    "unter-chf-25": 120,
+    "geschenke-fuer-ihn": 98,
+    "geschenke-unter-100-franken": 67,
+    "weihnachten-2026": 20,
+    "geschenke-fuer-kinder": 78,
+    "sets-bundles": 8,
+    "kleine-geschenke-mitbringsel": 11,
+    "adventskalender": 2
+   },
+   "woerter": [
+    [
+     "reisetasche",
+     3
+    ],
+    [
+     "keramiktasse",
+     3
+    ],
+    [
+     "untertasse",
+     3
+    ],
+    [
+     "teetasse",
+     2
+    ],
+    [
+     "alltag",
+     1
+    ],
+    [
+     "schultertasche",
+     1
+    ],
+    [
+     "retro-leder",
+     1
+    ],
+    [
+     "niedliche",
+     1
+    ],
+    [
+     "faultier",
+     1
+    ],
+    [
+     "canvas",
+     1
+    ],
+    [
+     "umhängetasche",
+     1
+    ],
+    [
+     "rindsleder",
+     1
+    ],
+    [
+     "kaffee-",
+     1
+    ],
+    [
+     "porzellan",
+     1
+    ],
+    [
+     "thermobecher",
+     1
+    ],
+    [
+     "strohhalm",
+     1
+    ],
+    [
+     "grosse",
+     1
+    ],
+    [
+     "keramik-tasse",
+     1
+    ],
+    [
+     "stone",
+     1
+    ],
+    [
+     "grosser",
+     1
+    ],
+    [
+     "kapazität",
+     1
+    ],
+    [
+     "gps-drohne",
+     1
+    ],
+    [
+     "dual-kamera",
+     1
+    ],
+    [
+     "tiermotiv",
+     1
+    ],
+    [
+     "solar",
+     1
+    ]
+   ],
+   "titel": "🎁 Geschenke & Weihnachten",
+   "handle": "premium-geschenke",
+   "kinder": [
+    "weihnachten-2026",
+    "adventskalender",
+    "weihnachtspyjama-familie",
+    "geschenke-fuer-sie",
+    "geschenke-fuer-ihn",
+    "geschenke-fuer-kinder",
+    "hochzeitsgeschenke",
+    "kleine-geschenke-mitbringsel",
+    "unter-chf-25",
+    "%F0%9F%8E%81-geschenke-bis-chf-30",
+    "geschenke-unter-50-franken",
+    "geschenke-unter-100-franken",
+    "sets-bundles",
+    "%F0%9F%92%8E-premium-ab-chf-80",
+    "smoke-zubehoer"
+   ],
+   "sekunden": 2.7,
+   "gross": []
+  },
+  {
+   "aktiv": 10683,
+   "ohne": 1350,
+   "anteil_ohne": 0.126,
+   "je_kind": {
+    "damen-schuhe": 2214,
+    "sub-kleider": 3212,
+    "midikleider": 152,
+    "sub-taschen": 112,
+    "damen-blusen": 367,
+    "jeans-denim": 436,
+    "damen-jacken-maentel": 562,
+    "damen-strick-pullover": 978,
+    "t-shirts-tops": 594,
+    "sub-roecke": 409,
+    "abendkleider": 116,
+    "jumpsuits-overalls": 271,
+    "damen-hosen": 277,
+    "shorts-bermudas": 118,
+    "jacken-outdoor": 103,
+    "nachtwaesche-pyjamas": 36,
+    "accessoires": 130,
+    "bauchtaschen": 1
+   },
+   "woerter": [
+    [
+     "leggings",
+     84
+    ],
+    [
+     "shirt",
+     61
+    ],
+    [
+     "v-ausschnitt",
+     47
+    ],
+    [
+     "high-waist",
+     46
+    ],
+    [
+     "gestreiftes",
+     38
+    ],
+    [
+     "elegantes",
+     35
+    ],
+    [
+     "langarm-shirt",
+     33
+    ],
+    [
+     "ärmelloses",
+     32
+    ],
+    [
+     "retro",
+     32
+    ],
+    [
+     "ärmeln",
+     29
+    ],
+    [
+     "v-neck",
+     29
+    ],
+    [
+     "print",
+     28
+    ],
+    [
+     "spitze",
+     21
+    ],
+    [
+     "kurzarm-shirt",
+     20
+    ],
+    [
+     "pants",
+     20
+    ],
+    [
+     "damen-shirt",
+     19
+    ],
+    [
+     "blumenmuster",
+     18
+    ],
+    [
+     "elegante",
+     18
+    ],
+    [
+     "weste",
+     18
+    ],
+    [
+     "baseball",
+     18
+    ],
+    [
+     "portemonnaie",
+     17
+    ],
+    [
+     "baumwoll-leinen",
+     16
+    ],
+    [
+     "langarm-top",
+     16
+    ],
+    [
+     "casual",
+     16
+    ],
+    [
+     "leder",
+     15
+    ]
+   ],
+   "titel": "Damen",
+   "handle": "damen-mode",
+   "kinder": [
+    "sub-taschen",
+    "bauchtaschen",
+    "accessoires",
+    "sub-kleider",
+    "midikleider",
+    "abendkleider",
+    "damen-schuhe",
+    "t-shirts-tops",
+    "damen-strick-pullover",
+    "jeans-denim",
+    "damen-jacken-maentel",
+    "jacken-outdoor",
+    "jumpsuits-overalls",
+    "damen-blusen",
+    "damen-hosen",
+    "sub-roecke",
+    "shorts-bermudas",
+    "nachtwaesche-pyjamas"
+   ],
+   "sekunden": 95.0,
+   "gross": []
+  },
+  {
+   "aktiv": 5323,
+   "ohne": 1385,
+   "anteil_ohne": 0.26,
+   "je_kind": {
+    "herren-shirts": 838,
+    "herren-hemden": 890,
+    "herren-schuhe": 1902,
+    "herren-jacken": 88,
+    "herren-pullover": 107,
+    "herren-hosen": 142,
+    "herren-uhren": 3
+   },
+   "woerter": [
+    [
+     "jeans",
+     119
+    ],
+    [
+     "pullover",
+     96
+    ],
+    [
+     "hoodie",
+     65
+    ],
+    [
+     "retro",
+     48
+    ],
+    [
+     "stehkragen",
+     47
+    ],
+    [
+     "casual",
+     44
+    ],
+    [
+     "reissverschluss",
+     39
+    ],
+    [
+     "vintage",
+     39
+    ],
+    [
+     "jeansjacke",
+     38
+    ],
+    [
+     "slim-fit",
+     32
+    ],
+    [
+     "jacke",
+     32
+    ],
+    [
+     "kapuzenpullover",
+     30
+    ],
+    [
+     "cardigan",
+     30
+    ],
+    [
+     "strickpullover",
+     28
+    ],
+    [
+     "kapuze",
+     27
+    ],
+    [
+     "loose-fit",
+     26
+    ],
+    [
+     "langarm",
+     24
+    ],
+    [
+     "weste",
+     23
+    ],
+    [
+     "loose",
+     23
+    ],
+    [
+     "kapuzenjacke",
+     21
+    ],
+    [
+     "sakko",
+     21
+    ],
+    [
+     "v-ausschnitt",
+     20
+    ],
+    [
+     "denim",
+     20
+    ],
+    [
+     "leichter",
+     20
+    ],
+    [
+     "taschen",
+     18
+    ]
+   ],
+   "titel": "Herren",
+   "handle": "fur-ihn",
+   "kinder": [
+    "herren-schuhe",
+    "herren-hemden",
+    "herren-shirts",
+    "herren-uhren",
+    "herren-hosen",
+    "herren-pullover",
+    "herren-jacken",
+    "sub-bart-rasur"
+   ],
+   "sekunden": 47.2,
+   "gross": []
+  },
+  {
+   "aktiv": 4786,
+   "ohne": 4,
+   "anteil_ohne": 0.001,
+   "je_kind": {
+    "sub-stiefel-boots": 519,
+    "herren-schuhe": 1915,
+    "sub-wander-arbeitsschuhe": 167,
+    "sub-laufschuhe": 961,
+    "sub-ballerinas": 195,
+    "damen-schuhe": 2220,
+    "sub-sandalen": 1582,
+    "sub-pumps-heels": 263,
+    "kinderschuhe": 18,
+    "sub-hausschuhe": 149,
+    "winterschuhe": 68,
+    "sneaker-sportschuhe": 633
+   },
+   "woerter": [
+    [
+     "araber",
+     1
+    ],
+    [
+     "schuhüberzug",
+     1
+    ],
+    [
+     "soccer-stiefel-",
+     1
+    ],
+    [
+     "transport-beutel",
+     1
+    ],
+    [
+     "freizeitschuhe",
+     1
+    ],
+    [
+     "reise-tasche",
+     1
+    ],
+    [
+     "wasserdicht",
+     1
+    ],
+    [
+     "schultergurt",
+     1
+    ],
+    [
+     "schuhfach",
+     1
+    ]
+   ],
+   "titel": "Schuhe",
+   "handle": "schuhe",
+   "kinder": [
+    "damen-schuhe",
+    "herren-schuhe",
+    "sub-sandalen",
+    "kinderschuhe",
+    "sub-laufschuhe",
+    "sub-stiefel-boots",
+    "winterschuhe",
+    "sneaker-sportschuhe",
+    "sub-pumps-heels",
+    "sub-ballerinas",
+    "sub-hausschuhe",
+    "sub-wander-arbeitsschuhe"
+   ],
+   "sekunden": 40.4,
+   "gross": []
+  },
+  {
+   "aktiv": 5656,
+   "ohne": 1213,
+   "anteil_ohne": 0.214,
+   "je_kind": {
+    "uhren": 2101,
+    "sub-armbaender": 1141,
+    "sub-ringe": 519,
+    "schmuck-sets": 96,
+    "sub-halsketten": 457,
+    "sub-ohrringe": 242,
+    "sonnenbrillen-alle": 3,
+    "premium-schmuck": 78
+   },
+   "woerter": [
+    [
+     "smartwatch",
+     462
+    ],
+    [
+     "watch",
+     94
+    ],
+    [
+     "apple",
+     79
+    ],
+    [
+     "herzfrequenz",
+     66
+    ],
+    [
+     "bluetooth",
+     63
+    ],
+    [
+     "armband",
+     40
+    ],
+    [
+     "wasserdichte",
+     37
+    ],
+    [
+     "quarzuhr",
+     33
+    ],
+    [
+     "outdoor",
+     32
+    ],
+    [
+     "lederarmband",
+     31
+    ],
+    [
+     "sport",
+     30
+    ],
+    [
+     "bluetooth-telefonie",
+     29
+    ],
+    [
+     "sportuhr",
+     28
+    ],
+    [
+     "bluetooth-anruf",
+     25
+    ],
+    [
+     "herzfrequenz-",
+     24
+    ],
+    [
+     "uhrenarmband",
+     24
+    ],
+    [
+     "edelstahl",
+     22
+    ],
+    [
+     "silikonarmband",
+     22
+    ],
+    [
+     "bluetooth-anrufen",
+     21
+    ],
+    [
+     "bluetooth-anruffunktion",
+     21
+    ],
+    [
+     "brosche",
+     19
+    ],
+    [
+     "herrenuhr",
+     19
+    ],
+    [
+     "wasserdicht",
+     18
+    ],
+    [
+     "kamera",
+     17
+    ],
+    [
+     "touchscreen",
+     17
+    ]
+   ],
+   "titel": "Schmuck & Uhren",
+   "handle": "schmuck-uhren",
+   "kinder": [
+    "premium-schmuck",
+    "uhren",
+    "sub-armbaender",
+    "sub-ringe",
+    "sub-halsketten",
+    "sub-ohrringe",
+    "schmuck-sets",
+    "sonnenbrillen-alle"
+   ],
+   "sekunden": 69.9,
+   "gross": []
+  },
+  {
+   "aktiv": 4096,
+   "ohne": 1199,
+   "anteil_ohne": 0.293,
+   "je_kind": {
+    "haarstyling-geraete": 386,
+    "hautpflege-skincare": 635,
+    "make-up": 795,
+    "wimpern-lashes": 149,
+    "naegel-manikuere": 1013,
+    "beauty-haar": 260,
+    "parfum-duefte": 34
+   },
+   "woerter": [
+    [
+     "luftbefeuchter",
+     72
+    ],
+    [
+     "aroma",
+     39
+    ],
+    [
+     "diffuser",
+     28
+    ],
+    [
+     "kabelloser",
+     28
+    ],
+    [
+     "farben",
+     24
+    ],
+    [
+     "elektrischer",
+     23
+    ],
+    [
+     "zuhause",
+     20
+    ],
+    [
+     "porenreiniger",
+     20
+    ],
+    [
+     "puder",
+     16
+    ],
+    [
+     "haarschneider",
+     16
+    ],
+    [
+     "pinselset",
+     16
+    ],
+    [
+     "multifunktionaler",
+     16
+    ],
+    [
+     "ultraschall",
+     15
+    ],
+    [
+     "elektrische",
+     15
+    ],
+    [
+     "gesichtsreinigungsbürste",
+     15
+    ],
+    [
+     "gesicht",
+     14
+    ],
+    [
+     "holzmaserung",
+     14
+    ],
+    [
+     "locken",
+     14
+    ],
+    [
+     "diffusor",
+     13
+    ],
+    [
+     "lipgloss",
+     12
+    ],
+    [
+     "teilig",
+     12
+    ],
+    [
+     "augen",
+     11
+    ],
+    [
+     "glättkamm",
+     11
+    ],
+    [
+     "teiliges",
+     11
+    ],
+    [
+     "kleiner",
+     11
+    ]
+   ],
+   "titel": "Beauty & Pflege",
+   "handle": "beauty-pflege",
+   "kinder": [
+    "beauty-pflege",
+    "naegel-manikuere",
+    "make-up",
+    "wimpern-lashes",
+    "hautpflege-skincare",
+    "beauty-haar",
+    "haarstyling-geraete",
+    "parfum-duefte"
+   ],
+   "sekunden": 69.2,
+   "gross": []
+  },
+  {
+   "aktiv": 5309,
+   "ohne": 760,
+   "anteil_ohne": 0.143,
+   "je_kind": {
+    "aufbewahrung-sub": 2470,
+    "sub-kueche": 277,
+    "wandregale": 12,
+    "kuechenhelfer": 171,
+    "sub-beleuchtung": 229,
+    "kissen-wohntextilien": 1597,
+    "haushaltsgeraete": 30,
+    "vorhaenge": 121,
+    "sub-deko": 98,
+    "licht-led-strip": 11,
+    "wandteppiche": 54,
+    "duschvorhaenge": 14,
+    "lunchboxen": 21,
+    "etageren": 8,
+    "geschenkverpackung": 19,
+    "schneidebretter": 17,
+    "teppiche": 31,
+    "werkzeug-maschinen": 2,
+    "wanddeko": 17,
+    "wecker": 2,
+    "woks": 3,
+    "waeschekoerbe": 15,
+    "bettwaesche": 29,
+    "kuschel-heizdecken": 14,
+    "ersatzteile-zubehoer": 3,
+    "sub-aroma-diffuser": 20,
+    "basteln-diy": 1,
+    "wanduhren": 5,
+    "haengematten": 1,
+    "outdoor-garten": 1
+   },
+   "woerter": [
+    [
+     "elastischer",
+     26
+    ],
+    [
+     "sofaüberzug",
+     18
+    ],
+    [
+     "sofabezug",
+     16
+    ],
+    [
+     "baumwolle",
+     15
+    ],
+    [
+     "er-set",
+     12
+    ],
+    [
+     "muster",
+     11
+    ],
+    [
+     "chenille",
+     10
+    ],
+    [
+     "weihnachtskranz",
+     9
+    ],
+    [
+     "pflanzenmuster",
+     8
+    ],
+    [
+     "verdunkelungsvorhänge",
+     8
+    ],
+    [
+     "rutschfest",
+     7
+    ],
+    [
+     "memory-schaum",
+     7
+    ],
+    [
+     "weihnachtskugeln",
+     7
+    ],
+    [
+     "vorhänge",
+     7
+    ],
+    [
+     "jahreszeiten",
+     7
+    ],
+    [
+     "weiss",
+     6
+    ],
+    [
+     "geometrischem",
+     6
+    ],
+    [
+     "cartoon",
+     6
+    ],
+    [
+     "weihnachtsbaum",
+     6
+    ],
+    [
+     "adventskalender",
+     6
+    ],
+    [
+     "retro",
+     6
+    ],
+    [
+     "schonbezug",
+     6
+    ],
+    [
+     "wasserdichter",
+     6
+    ],
+    [
+     "anti-rutsch",
+     6
+    ],
+    [
+     "babys",
+     6
+    ]
+   ],
+   "titel": "Wohnen & Garten",
+   "handle": "wohnen-dekoration",
+   "kinder": [
+    "wohnen-dekoration",
+    "aufbewahrung-sub",
+    "waeschekoerbe",
+    "wandregale",
+    "sub-kueche",
+    "schneidebretter",
+    "woks",
+    "etageren",
+    "kuechenhelfer",
+    "lunchboxen",
+    "kissen-wohntextilien",
+    "teppiche",
+    "bettwaesche",
+    "vorhaenge",
+    "duschvorhaenge",
+    "basteln-diy",
+    "outdoor-garten",
+    "haengematten",
+    "werkzeug-maschinen",
+    "sub-aroma-diffuser",
+    "sub-deko",
+    "wanddeko",
+    "wandteppiche",
+    "wanduhren",
+    "ersatzteile-zubehoer",
+    "sub-beleuchtung",
+    "wecker",
+    "geschenkverpackung",
+    "kuschel-heizdecken",
+    "haushaltsgeraete",
+    "licht-led-strip"
+   ],
+   "sekunden": 56.6,
+   "gross": []
+  },
+  {
+   "aktiv": 4515,
+   "ohne": 1432,
+   "anteil_ohne": 0.317,
+   "je_kind": {
+    "kopfhoerer-audio": 232,
+    "smartwatches-wearables": 582,
+    "trends-gadgets": 1527,
+    "elektronik-kleinteile": 708,
+    "handy-zubehoer": 542,
+    "kabel-adapter": 349,
+    "elektronik-laden": 540,
+    "pc-homeoffice": 73,
+    "buro-home-office": 28,
+    "beamer-heimkino": 32,
+    "usb-sticks": 44,
+    "drohnen-kameras": 84,
+    "gaming": 1,
+    "auto-kfz-zubehoer": 7
+   },
+   "woerter": [
+    [
+     "watch",
+     91
+    ],
+    [
+     "smart",
+     90
+    ],
+    [
+     "smart-armband",
+     90
+    ],
+    [
+     "apple",
+     80
+    ],
+    [
+     "bluetooth",
+     75
+    ],
+    [
+     "armband",
+     74
+    ],
+    [
+     "kabelloses",
+     39
+    ],
+    [
+     "mikrofon",
+     33
+    ],
+    [
+     "herzfrequenz",
+     30
+    ],
+    [
+     "wasserdichte",
+     30
+    ],
+    [
+     "sportuhr",
+     29
+    ],
+    [
+     "quarzuhr",
+     28
+    ],
+    [
+     "farbdisplay",
+     28
+    ],
+    [
+     "uhrenarmband",
+     27
+    ],
+    [
+     "power",
+     25
+    ],
+    [
+     "lederarmband",
+     24
+    ],
+    [
+     "herzfrequenzmessung",
+     23
+    ],
+    [
+     "smartes",
+     23
+    ],
+    [
+     "projektor",
+     20
+    ],
+    [
+     "wireless",
+     19
+    ],
+    [
+     "herrenuhr",
+     18
+    ],
+    [
+     "outdoor",
+     18
+    ],
+    [
+     "edelstahl",
+     18
+    ],
+    [
+     "tragbarer",
+     17
+    ],
+    [
+     "sport",
+     15
+    ]
+   ],
+   "titel": "Technik & Gaming",
+   "handle": "elektronik-technik",
+   "kinder": [
+    "elektronik-technik",
+    "trends-gadgets",
+    "elektronik-kleinteile",
+    "elektronik-laden",
+    "handy-zubehoer",
+    "smartwatches-wearables",
+    "auto-kfz-zubehoer",
+    "gaming",
+    "kopfhoerer-audio",
+    "drohnen-kameras",
+    "pc-homeoffice",
+    "usb-sticks",
+    "buro-home-office",
+    "beamer-heimkino",
+    "kabel-adapter"
+   ],
+   "sekunden": 55.3,
+   "gross": []
+  },
+  {
+   "aktiv": 3765,
+   "ohne": 769,
+   "anteil_ohne": 0.204,
+   "je_kind": {
+    "klemmbausteine-bausaetze": 482,
+    "spielzeug": 1380,
+    "babykleidung": 237,
+    "kinderschuhe": 1380,
+    "spielzeug-fahrzeuge": 56,
+    "sub-haustier": 13,
+    "spielzeug-ch-lager": 231
+   },
+   "woerter": [
+    [
+     "kinderkostüm",
+     50
+    ],
+    [
+     "mädchen",
+     39
+    ],
+    [
+     "kostüm",
+     38
+    ],
+    [
+     "smartwatch",
+     37
+    ],
+    [
+     "kindergrösse",
+     24
+    ],
+    [
+     "babys",
+     22
+    ],
+    [
+     "erwachsene",
+     14
+    ],
+    [
+     "baumwolle",
+     14
+    ],
+    [
+     "kinderzimmer",
+     11
+    ],
+    [
+     "kinderrucksack",
+     11
+    ],
+    [
+     "jungen",
+     10
+    ],
+    [
+     "wasserdicht",
+     10
+    ],
+    [
+     "kleinkinder",
+     9
+    ],
+    [
+     "wasserdichte",
+     8
+    ],
+    [
+     "babynahrung",
+     8
+    ],
+    [
+     "tragbarer",
+     7
+    ],
+    [
+     "kamera",
+     7
+    ],
+    [
+     "cartoon",
+     7
+    ],
+    [
+     "spielzeug",
+     7
+    ],
+    [
+     "elektrischer",
+     7
+    ],
+    [
+     "malen",
+     7
+    ],
+    [
+     "zahlen",
+     7
+    ],
+    [
+     "schwimmbrille",
+     7
+    ],
+    [
+     "rucksack",
+     6
+    ],
+    [
+     "grosser",
+     6
+    ]
+   ],
+   "titel": "Kinder & Haustier",
+   "handle": "sub-baby-kids",
+   "kinder": [
+    "sub-baby-kids",
+    "babykleidung",
+    "sub-haustier",
+    "spielzeug",
+    "kinderschuhe",
+    "spielzeug-fahrzeuge",
+    "spielzeug-ch-lager",
+    "klemmbausteine-bausaetze"
+   ],
+   "sekunden": 36.8,
+   "gross": []
+  },
+  {
+   "aktiv": 32,
+   "ohne": 20,
+   "anteil_ohne": 0.625,
+   "je_kind": {
+    "luxestyle-premium": 2,
+    "viral-hits": 9,
+    "vr-ai-neuheiten": 1
+   },
+   "woerter": [
+    [
+     "keramik",
+     2
+    ],
+    [
+     "hunde",
+     2
+    ],
+    [
+     "fressnapf",
+     1
+    ],
+    [
+     "haustiere",
+     1
+    ],
+    [
+     "strand-maxikleid",
+     1
+    ],
+    [
+     "luftiges",
+     1
+    ],
+    [
+     "stufenkleid",
+     1
+    ],
+    [
+     "resort-set",
+     1
+    ],
+    [
+     "teilig",
+     1
+    ],
+    [
+     "plateau-sandalen",
+     1
+    ],
+    [
+     "retro-style",
+     1
+    ],
+    [
+     "komfort-sohle",
+     1
+    ],
+    [
+     "verstellbare",
+     1
+    ],
+    [
+     "fleece-weste",
+     1
+    ],
+    [
+     "brustgeschirr",
+     1
+    ],
+    [
+     "edelstahl",
+     1
+    ],
+    [
+     "antihaft-bratpfanne",
+     1
+    ],
+    [
+     "boho-kleid",
+     1
+    ],
+    [
+     "ibiza",
+     1
+    ],
+    [
+     "baumwoll-leinen",
+     1
+    ],
+    [
+     "locker",
+     1
+    ],
+    [
+     "kinder-halbstiefel",
+     1
+    ],
+    [
+     "kunstleder",
+     1
+    ],
+    [
+     "lederarmband",
+     1
+    ],
+    [
+     "verschluss",
+     1
+    ]
+   ],
+   "titel": "Highlights",
+   "handle": "bestseller",
+   "kinder": [
+    "bestseller",
+    "blitzversand-schweiz",
+    "kostueme-ch-lager",
+    "viral-hits",
+    "eu-lager-schnell",
+    "erste-august",
+    "luxestyle-premium",
+    "ventilatoren",
+    "fussball-fanshop",
+    "vr-ai-neuheiten"
+   ],
+   "sekunden": 0.9,
+   "gross": []
+  },
+  {
+   "aktiv": 413,
+   "ohne": 348,
+   "anteil_ohne": 0.843,
+   "je_kind": {
+    "hoodies-sweatshirts": 8,
+    "herren-pullover": 7,
+    "winterjacken": 18,
+    "damen-strick-pullover": 19,
+    "herbst-favoriten": 11,
+    "waerme-komfort": 3,
+    "westen-gilets": 1
+   },
+   "woerter": [
+    [
+     "jacke",
+     59
+    ],
+    [
+     "jeansjacke",
+     34
+    ],
+    [
+     "kapuzenjacke",
+     19
+    ],
+    [
+     "reissverschluss",
+     18
+    ],
+    [
+     "stehkragen",
+     15
+    ],
+    [
+     "retro",
+     14
+    ],
+    [
+     "kapuze",
+     14
+    ],
+    [
+     "leichte",
+     14
+    ],
+    [
+     "kurze",
+     14
+    ],
+    [
+     "übergangsjacke",
+     13
+    ],
+    [
+     "freizeitjacke",
+     13
+    ],
+    [
+     "herrenjacke",
+     11
+    ],
+    [
+     "gefütterte",
+     11
+    ],
+    [
+     "vintage",
+     10
+    ],
+    [
+     "revers",
+     9
+    ],
+    [
+     "reverskragen",
+     9
+    ],
+    [
+     "strickjacke",
+     9
+    ],
+    [
+     "outdoor-jacke",
+     8
+    ],
+    [
+     "lockere",
+     8
+    ],
+    [
+     "lederjacke",
+     8
+    ],
+    [
+     "slim-fit",
+     8
+    ],
+    [
+     "taillierte",
+     8
+    ],
+    [
+     "wasserdichte",
+     7
+    ],
+    [
+     "gepolsterte",
+     7
+    ],
+    [
+     "korea-stil",
+     7
+    ]
+   ],
+   "titel": "Herbst & Übergang",
+   "handle": "jacken-outdoor",
+   "kinder": [
+    "herbst-favoriten",
+    "jacken-outdoor",
+    "winterjacken",
+    "damen-strick-pullover",
+    "hoodies-sweatshirts",
+    "herren-pullover",
+    "weihnachtspullover",
+    "sub-stiefel-boots",
+    "muetzen-schals",
+    "westen-gilets",
+    "kuschel-heizdecken",
+    "waerme-komfort",
+    "handwaermer",
+    "sub-reise"
+   ],
+   "sekunden": 5.0,
+   "gross": []
+  },
+  {
+   "aktiv": 1465,
+   "ohne": 983,
+   "anteil_ohne": 0.671,
+   "je_kind": {
+    "sub-reise": 57,
+    "camping-outdoor": 69,
+    "wandern-trekking": 16,
+    "sub-yoga-fitness": 330,
+    "rucksaecke": 71,
+    "halloween": 1,
+    "fussball-fanshop": 10,
+    "taschenlampen": 8
+   },
+   "woerter": [
+    [
+     "fahrradhelm",
+     34
+    ],
+    [
+     "outdoor",
+     27
+    ],
+    [
+     "velohelm",
+     27
+    ],
+    [
+     "wasserdichte",
+     21
+    ],
+    [
+     "training",
+     20
+    ],
+    [
+     "velo-rücklicht",
+     19
+    ],
+    [
+     "springseil",
+     18
+    ],
+    [
+     "rücklicht",
+     18
+    ],
+    [
+     "erwachsene",
+     16
+    ],
+    [
+     "intelligentes",
+     14
+    ],
+    [
+     "licht",
+     13
+    ],
+    [
+     "multifunktionales",
+     13
+    ],
+    [
+     "fernbedienung",
+     12
+    ],
+    [
+     "bauchtrainer",
+     12
+    ],
+    [
+     "sport",
+     11
+    ],
+    [
+     "zuhause",
+     11
+    ],
+    [
+     "sporttasche",
+     10
+    ],
+    [
+     "krafttraining",
+     9
+    ],
+    [
+     "taekwondo",
+     9
+    ],
+    [
+     "board",
+     9
+    ],
+    [
+     "zähler",
+     9
+    ],
+    [
+     "basketball",
+     9
+    ],
+    [
+     "fahrrad",
+     9
+    ],
+    [
+     "nachtfahrten",
+     9
+    ],
+    [
+     "lumen",
+     9
+    ]
+   ],
+   "titel": "Sport & Party",
+   "handle": "fitness-training",
+   "kinder": [
+    "fitness-training",
+    "rucksaecke",
+    "kostueme-ch-lager",
+    "kostueme-fasnacht",
+    "party-deko-ch",
+    "suesses-esswaren",
+    "sub-reise",
+    "sub-yoga-fitness",
+    "halloween",
+    "weihnachten-2026",
+    "wandern-trekking",
+    "fussball-fanshop",
+    "camping-outdoor",
+    "taschenlampen"
+   ],
+   "sekunden": 17.9,
+   "gross": []
+  }
+ ]
+}
