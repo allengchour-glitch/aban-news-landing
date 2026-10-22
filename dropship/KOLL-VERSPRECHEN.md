@@ -1,8 +1,8 @@
-# Kollektionen: Versprechen ohne Beleg — Stand 2026-10-22 00:19 UTC
+# Kollektionen: Versprechen ohne Beleg — Stand 2026-10-22 20:32 UTC
 
-⚠️ KOLL-VERSPRECHEN: 0 veröffentlicht / 42 unveröffentlicht (R1 0/0 · R3 0/0 · R4 0/1 · R5 0/0 · R6 0/0 · R9 0/41) · manuell 0/28 · Premium-Hinweis 4/4 · Ware-Hinweis 9/0 · unveröffentlicht, aber in anderen Kanälen: 2 · JSON-LD Organization 1 (Soll 1) · Slogan ok
+⚠️ KOLL-VERSPRECHEN: 0 veröffentlicht / 42 unveröffentlicht (R1 0/0 · R3 0/0 · R4 0/1 · R5 0/0 · R6 0/0 · R9 0/41) · manuell 0/28 · Premium-Hinweis 4/4 · Ware-Hinweis 9/0 · JSON-LD Organization 1 (Soll 1) · Slogan ok
 
-Geprüft: 578 Kollektionen (418 im Onlineshop veröffentlicht, 160 nicht — die meisten davon hängen an «Luxe Style Headless», «Shop» oder «Google & YouTube»). Anteil profil-ch-lager live gemessen für 11 Kollektionen mit Tempo-/Werktage-Angabe. Theme gid://shopify/OnlineStoreTheme/187533001089. Regel: `automation/data/versprechen_regel.json` → `kollektion` (S3, 14.10.2026). Der Wächter schreibt nichts; ersetzt wird mit `automation/kollektion_versprechen_s3.py` (feste Satzpaare, dieselben Finder).
+Geprüft: 579 Kollektionen (419 im Onlineshop veröffentlicht, 160 nicht — die meisten davon hängen an «Luxe Style Headless», «Shop» oder «Google & YouTube»). Anteil profil-ch-lager live gemessen für 11 Kollektionen mit Tempo-/Werktage-Angabe. Theme gid://shopify/OnlineStoreTheme/187533001089. Regel: `automation/data/versprechen_regel.json` → `kollektion` (S3, 14.10.2026). Der Wächter schreibt nichts; ersetzt wird mit `automation/kollektion_versprechen_s3.py` (feste Satzpaare, dieselben Finder).
 
 R1 «✔ Geprüfte …» · R3 «Geprüft…» · R4 Tempo/Werktage ohne belegtes CH-Lager (Anteil < 95 %; 50–94 % nur Werktage in qualifiziertem Satzteil; der Lager-Ort allein ist kein Fund) · R5 «Premium-Marken/-Qualität» ausserhalb Premium-Kollektionen · R6 «ab CHF 50» ohne Land in der Nähe der Zusage · R9 Markenname ohne ein aktives Produkt im Shop (Liste `marken_ohne_ware`). «manuell» = Titel/SEO-Titel (das Werkzeug schreibt sie nicht), «Premium-Hinweis» = Premium-Kollektion (dort nur Satzpaare, PREMIUM_VOLL aus) — beide zählen nicht in die Rot-Zahl, stehen aber unten mit Handle. «Ware-Hinweis» = im Text genannte Ware, die in der Kollektion kein aktives Produkt hat (Liste `ware_im_text`, zählt nicht rot).
 
@@ -25,7 +25,7 @@ R1 «✔ Geprüfte …» · R3 «Geprüft…» · R4 Tempo/Werktage ohne belegte
 - `kaffee-maschinen` — R9 «Melitta» · Kanäle: Headless, Inbox, Luxe Style Headless, Point of Sale
 - `kinderspielzeug` — R9 «Ob du ein Puppenhaus von Playmobil oder Barbie suchst, ein S» · Kanäle: keine
 - `lancome` — R9 «Entdecke bei LuxeStyle die exquisite Welt von Lancôme, wo ze» · Kanäle: Headless, Inbox, Luxe Style Headless, Point of Sale
-- `loreal` — R9 «L'Oréal bei LuxeStyle» · Kanäle: Facebook & Instagram, Google & YouTube, Headless, Inbox, Luxe Style Headless, Pinterest, Shop, TikTok
+- `loreal` — R9 «L'Oréal bei LuxeStyle» · Kanäle: keine
 - `marke-adidas` — R9 «Entdecke hier deine neuen Adidas-Lieblinge» · Kanäle: Headless, Luxe Style Headless
 - `marke-chanel` — R9 «Entdecke bei uns die Welt von Chanel» · Kanäle: Headless, Inbox, Luxe Style Headless, Point of Sale
 - `marke-clinique` — R9 «Entdecke hier die Welt von Clinique» · Kanäle: Headless, Inbox, Luxe Style Headless
@@ -48,7 +48,7 @@ R1 «✔ Geprüfte …» · R3 «Geprüft…» · R4 Tempo/Werktage ohne belegte
 - `tauchen-schnorcheln` — R9 «Entdecke bequeme Neoprenanzüge für optimalen Schutz und Komf» · Kanäle: Headless, Luxe Style Headless
 - `tech-marken` — R9 «Technik-Top-Marken: JBL, Sony, Logitech, Trust, Nacon, Start» · Kanäle: Headless, Inbox, Luxe Style Headless, Point of Sale
 - `tommy-hilfiger` — R9 «Entdecke hier die vielfältige Welt von Tommy Hilfiger» · Kanäle: Headless, Inbox, Luxe Style Headless, Point of Sale
-- `trainingsanzuege-sets` — R9 «Ob farbenfrohe Modelle von Adidas, Puma oder Champion für Da» · Kanäle: Facebook & Instagram, Google & YouTube, Headless, Inbox, Luxe Style Headless, Pinterest, Point of Sale, Shop, TikTok
+- `trainingsanzuege-sets` — R9 «Ob farbenfrohe Modelle von Adidas, Puma oder Champion für Da» · Kanäle: keine
 - `under-armour` — R9 «Entdecke bei LuxeStyle die innovative Under Armour Kollektio» · Kanäle: Headless, Inbox, Luxe Style Headless, Point of Sale
 - `vereins-fanartikel` — R9 «Hier findest du eine tolle Auswahl an Fanartikeln, von Fussb» · Kanäle: Headless, Inbox, Luxe Style Headless, Point of Sale
 - `weleda` — R9 «Weleda bei LuxeStyle» · Kanäle: Headless, Inbox, Luxe Style Headless, Point of Sale
@@ -96,12 +96,10 @@ R1 «✔ Geprüfte …» · R3 «Geprüft…» · R4 Tempo/Werktage ohne belegte
 - `premium-bundles` (unveröffentlicht) — R1 descriptionHtml: «✔ Geprüfte Qualität» · R3 descriptionHtml: «✔ Geprüfte Qualität» · R4 descriptionHtml: «🚚 Schnelle Lieferung» · R6 descriptionHtml: «Gratis-Versand ab CHF 50» · R6 seo.description: «Gratis-Versand ab CHF 50, –10% mit Code WELCOME10»
 - `premium-marken-lager` (unveröffentlicht) — R6 descriptionHtml: «🚚 Gratis-Versand ab CHF 50» · R6 seo.description: «Gratis-Versand ab CHF 50, 30 Tage Rückgabe, −10% mit Code WELCOME10»
 
-## Nicht im Onlineshop, aber in anderen Kanälen veröffentlicht (2) — Betreiber-Entscheid
+## Nicht im Onlineshop, aber in anderen Kanälen veröffentlicht (0) — Betreiber-Entscheid
 
 Roter Fund in einer Kollektion, die im Onlineshop unveröffentlicht ist, aber in anderen Verkaufskanälen steht (ohne Headless, Inbox, Luxe Style Headless, Online Store, Point of Sale). Ob diese Kanäle den Kollektionstext anzeigen, ist nicht geprüft; die Ampel zählt nur den Onlineshop.
 
-- `loreal` — Facebook & Instagram, Google & YouTube, Pinterest, Shop, TikTok · R9 «L'Oréal bei LuxeStyle»
-- `trainingsanzuege-sets` — Facebook & Instagram, Google & YouTube, Pinterest, Shop, TikTok · R9 «Ob farbenfrohe Modelle von Adidas, Puma oder Champion für Da»
 
 ## Ware-Hinweis (im Text genannt, kein aktives Produkt in der Kollektion) (11)
 
