@@ -13664,3 +13664,10 @@ automatikuhr-herren-wasserdicht-606500	2505120126501607000	7	6.73	ok	landeseite
 kontrast-kragen-sport-top-611500	2606230809351612400	16	7.99	ok	landeseite
 automatische-herrenarmbanduhr-609300	2505071219331600200	7	6.90	ok	landeseite
 herren-polo-mit-kragen-und-langen-armeln-639900	2606220125291630500	16	7.99	ok	landeseite
+herren-workpants-mit-grossen-taschen-628000	2504232323141628300	16	14.60	ok	landeseite
+kaffee-maschine-portafilter-griffe-639100	2512200653421639300	16	9.45	ok	landeseite
+herren-v-ausschnitt-pullover-mit-kontraststrei-638500	2604041149281638800	16	10.15	ok	landeseite
+herren-loose-crew-neck-sweater-606300	2604040926031606700	16	10.15	ok	landeseite
+modecasual-einfarbig-rundhals-pullover-622900	2603310322561623300	16	11.84	ok	landeseite
+casual-herren-cardigan-im-erwachsenenstil-614000	2603310312441614400	16	11.24	ok	landeseite
+weit-geschnittene-retro-strick-oberteile-fur-p-633600	2603270934421634000	16	9.20	ok	landeseite
