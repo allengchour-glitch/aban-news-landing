@@ -1738,3 +1738,22 @@ gid://shopify/Product/16655516369287	w	Kleinteile	Holzpuzzle zum Zusammenbauen
 gid://shopify/Product/16655517876615	w	Kleinteile	Motor-Modellbausatz Dynamische Version
 gid://shopify/Product/16654276952455	a	kids
 gid://shopify/Product/16654423163271	a	kids
+gid://shopify/Product/16656414343559	w	Kleinteile	Kinderspielzeug Bauklötze – 5-teiliger Set
+gid://shopify/Product/16656414507399	w	Kleinteile	Flower Street Boutique Kleine Teilbausteine Puzzle für Kinder
+gid://shopify/Product/16656522641799	w	Magnete	Magnetische Bausteine 60-Teile-Set
+gid://shopify/Product/16656573661575	w	Kleinteile	Grosses Holz-Bauklotz-Set für Kinder 4–6 Jahre
+gid://shopify/Product/16656617701767	w	Kleinteile	Stadtstrasse 3D-Puzzle aus Papier
+gid://shopify/Product/16656618029447	w	Kleinteile	Camper Van Outdoor Cooking Spielbaustein-Set
+gid://shopify/Product/16656618226055	w	Kleinteile	23-Stück Acryl-Bausteine für sensorisches Lernen
+gid://shopify/Product/16656620552583	w	Kleinteile	3D Holzpuzzle Minihaus DIY Baukasten
+gid://shopify/Product/16656627564935	w	Kleinteile	Magische Eule Bauklötze mit Licht
+gid://shopify/Product/16656657842567	w	Kleinteile	Bauklötze mit Licht – 1991 Stück (Blacksmith’s Workshop)
+gid://shopify/Product/16656657875335	w	Kleinteile	Sportwagen Modellbaustein
+gid://shopify/Product/16656657940871	w	Kleinteile	Tank Bauklötze Set – 77036
+gid://shopify/Product/16656657973639	w	Kleinteile	Egyptian Golden Mask Bauklötze – Hochschwieriges Set
+gid://shopify/Product/16656658039175	w	Kleinteile	Baustein-Puzzle für Kinder 4–6 Jahre
+gid://shopify/Product/16656658170247	w	Kleinteile	Magnetische Rennstrecke mit Auto – 68-Teile-Set
+gid://shopify/Product/16656658268551	w	Magnete	Magnetische Bausteine 20-Teilig
+gid://shopify/Product/16656658399623	w	Kleinteile	Bausatz Raumschiff aus Bausteinen – 800 Teile
+gid://shopify/Product/16656658465159	w	Kleinteile	Mecha-Junge Bauklötze Set, 800 Teile
+gid://shopify/Product/16656618652039	a	toddler
