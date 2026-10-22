@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-22T09:16Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-22T10:13Z
 
-Aktive gescannt: 25 · ohne Kategorie: 25 · heute gesetzt: 23 (SCHARF, CAP 1500) · danach offen: 2 · Fehler: 0
+Aktive gescannt: 35 · ohne Kategorie: 35 · heute gesetzt: 33 (SCHARF, CAP 1500) · danach offen: 2 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -11,9 +11,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- retro-digitaluhr-sanda-y2k-14mm-612000 · Uhren → Apparel & Accessories > Jewelry > Watches
-- quarz-armbanduhr-10-mm-blaues-zifferblatt-605400 · Uhren → Apparel & Accessories > Jewelry > Watches
-- quarz-armbanduhr-schwarz-11-mm-gehausedicke-624100 · Uhren → Apparel & Accessories > Jewelry > Watches
-- goldmechanische-uhr-mit-lederarmband-637400 · Uhren → Apparel & Accessories > Jewelry > Watches
-- taschenuhr-aus-edelstahl-mit-glaszifferblatt-620800 · Uhren → Apparel & Accessories > Jewelry > Watches
+- schal-mit-dicken-tassel-clip-blumen-618400 · Accessoires → Apparel & Accessories > Clothing Accessories
+- gemusterter-strickschal-mit-baren-und-kaninche-644000 · Accessoires → Apparel & Accessories > Clothing Accessories
+- satin-polyester-schal-180-80-cm-622700 · Accessoires → Apparel & Accessories > Clothing Accessories
+- gestrickter-kapuzen-schal-mit-quasten-607700 · Accessoires → Apparel & Accessories > Clothing Accessories
+- schal-mit-tusche-muster-615200 · Accessoires → Apparel & Accessories > Clothing Accessories
 
