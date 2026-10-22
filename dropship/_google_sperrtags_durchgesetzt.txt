@@ -907,3 +907,4 @@
 2026-10-20T21:58:59Z	gid://shopify/Product/16644312498567	waffe-pruefen	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	taktische-weste-oxford-stoff-28-35-12-cm-654500
 2026-10-20T21:59:00Z	gid://shopify/Product/16644640342407	waffe-pruefen	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	taktische-weste-aus-cordura-atmungsaktiv-633900
 2026-10-21T06:34:38Z	gid://shopify/Product/16655500935559	verdeckte-ueberwachung	Google & YouTube+TikTok+Facebook & Instagram+Pinterest	nachtsichtkamera-fur-wildverfolgung-hd-infrare-632800
+2026-10-22T17:00:11Z	gid://shopify/Product/15479469506945	google-kanal-markenware-unklar	Google & YouTube	seagate-exos-enterprise-helium-festplatte-10-t-890240

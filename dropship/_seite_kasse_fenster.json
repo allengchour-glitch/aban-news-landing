@@ -1,13 +1,13 @@
 {
- "stand": "2026-10-22T00:29Z",
+ "stand": "2026-10-22T17:01Z",
  "zeilen": [
   {
    "datei": "templates/cart.json",
    "tier": "Asien",
    "zeichen": "mit",
-   "seite": "05.11.–19.11.",
+   "seite": "06.11.–20.11.",
    "rechnung": "Werktage 9–19 + Bearbeitung 1",
-   "kasse": "05.11.–19.11.",
+   "kasse": "06.11.–20.11.",
    "profil": "General profile",
    "gleich": true
   },
@@ -15,9 +15,9 @@
    "datei": "templates/cart.json",
    "tier": "Asien",
    "zeichen": "ohne",
-   "seite": "05.11.–19.11.",
+   "seite": "06.11.–20.11.",
    "rechnung": "Werktage 9–19 + Bearbeitung 1",
-   "kasse": "05.11.–19.11.",
+   "kasse": "06.11.–20.11.",
    "profil": "General profile",
    "gleich": true
   },
@@ -25,9 +25,9 @@
    "datei": "templates/cart.json",
    "tier": "CH-Lager",
    "zeichen": "mit",
-   "seite": "26.10.–27.10.",
+   "seite": "27.10.–28.10.",
    "rechnung": "Werktage 1–2 + Bearbeitung 1",
-   "kasse": "26.10.–27.10.",
+   "kasse": "27.10.–28.10.",
    "profil": "CH-Lager",
    "gleich": true
   },
@@ -35,9 +35,9 @@
    "datei": "templates/cart.json",
    "tier": "CH-Lager",
    "zeichen": "ohne",
-   "seite": "05.11.–19.11.",
+   "seite": "06.11.–20.11.",
    "rechnung": "Werktage 9–19 + Bearbeitung 1",
-   "kasse": "05.11.–19.11.",
+   "kasse": "06.11.–20.11.",
    "profil": "General profile",
    "gleich": true
   },
@@ -45,9 +45,9 @@
    "datei": "templates/cart.json",
    "tier": "Druck",
    "zeichen": "mit",
-   "seite": "02.11.–11.11.",
+   "seite": "03.11.–12.11.",
    "rechnung": "Werktage 6–13 + Bearbeitung 1",
-   "kasse": "02.11.–11.11.",
+   "kasse": "03.11.–12.11.",
    "profil": "Druck auf Bestellung",
    "gleich": true
   },
@@ -55,9 +55,9 @@
    "datei": "templates/cart.json",
    "tier": "Druck",
    "zeichen": "ohne",
-   "seite": "05.11.–19.11.",
+   "seite": "06.11.–20.11.",
    "rechnung": "Werktage 9–19 + Bearbeitung 1",
-   "kasse": "05.11.–19.11.",
+   "kasse": "06.11.–20.11.",
    "profil": "General profile",
    "gleich": true
   },
@@ -67,7 +67,7 @@
    "zeichen": "mit",
    "seite": "26.10.–02.11.",
    "rechnung": "Kalendertage 3–10",
-   "kasse": "05.11.–19.11.",
+   "kasse": "06.11.–20.11.",
    "profil": "General profile",
    "gleich": false
   },
@@ -77,7 +77,7 @@
    "zeichen": "ohne",
    "seite": "26.10.–02.11.",
    "rechnung": "Kalendertage 3–10",
-   "kasse": "05.11.–19.11.",
+   "kasse": "06.11.–20.11.",
    "profil": "General profile",
    "gleich": false
   },
@@ -85,9 +85,9 @@
    "datei": "templates/product.json",
    "tier": "Asien",
    "zeichen": "mit",
-   "seite": "05.11.–19.11.",
+   "seite": "06.11.–20.11.",
    "rechnung": "Werktage 9–19 + Bearbeitung 1",
-   "kasse": "05.11.–19.11.",
+   "kasse": "06.11.–20.11.",
    "profil": "General profile",
    "gleich": true
   },
@@ -95,9 +95,9 @@
    "datei": "templates/product.json",
    "tier": "Asien",
    "zeichen": "ohne",
-   "seite": "05.11.–19.11.",
+   "seite": "06.11.–20.11.",
    "rechnung": "Werktage 9–19 + Bearbeitung 1",
-   "kasse": "05.11.–19.11.",
+   "kasse": "06.11.–20.11.",
    "profil": "General profile",
    "gleich": true
   },
@@ -105,9 +105,9 @@
    "datei": "templates/product.json",
    "tier": "CH-Lager",
    "zeichen": "mit",
-   "seite": "26.10.–27.10.",
+   "seite": "27.10.–28.10.",
    "rechnung": "Werktage 1–2 + Bearbeitung 1",
-   "kasse": "26.10.–27.10.",
+   "kasse": "27.10.–28.10.",
    "profil": "CH-Lager",
    "gleich": true
   },
@@ -115,9 +115,9 @@
    "datei": "templates/product.json",
    "tier": "CH-Lager",
    "zeichen": "ohne",
-   "seite": "05.11.–19.11.",
+   "seite": "06.11.–20.11.",
    "rechnung": "Werktage 9–19 + Bearbeitung 1",
-   "kasse": "05.11.–19.11.",
+   "kasse": "06.11.–20.11.",
    "profil": "General profile",
    "gleich": true
   },
@@ -125,9 +125,9 @@
    "datei": "templates/product.json",
    "tier": "Druck",
    "zeichen": "mit",
-   "seite": "02.11.–11.11.",
+   "seite": "03.11.–12.11.",
    "rechnung": "Werktage 6–13 + Bearbeitung 1",
-   "kasse": "02.11.–11.11.",
+   "kasse": "03.11.–12.11.",
    "profil": "Druck auf Bestellung",
    "gleich": true
   },
@@ -135,9 +135,9 @@
    "datei": "templates/product.json",
    "tier": "Druck",
    "zeichen": "ohne",
-   "seite": "05.11.–19.11.",
+   "seite": "06.11.–20.11.",
    "rechnung": "Werktage 9–19 + Bearbeitung 1",
-   "kasse": "05.11.–19.11.",
+   "kasse": "06.11.–20.11.",
    "profil": "General profile",
    "gleich": true
   },
@@ -147,7 +147,7 @@
    "zeichen": "mit",
    "seite": "26.10.–02.11.",
    "rechnung": "Kalendertage 3–10",
-   "kasse": "05.11.–19.11.",
+   "kasse": "06.11.–20.11.",
    "profil": "General profile",
    "gleich": false
   },
@@ -157,15 +157,15 @@
    "zeichen": "ohne",
    "seite": "26.10.–02.11.",
    "rechnung": "Kalendertage 3–10",
-   "kasse": "05.11.–19.11.",
+   "kasse": "06.11.–20.11.",
    "profil": "General profile",
    "gleich": false
   }
  ],
  "befunde": [
-  "EU-Lager mit Zeichen: Korb 26.10.–02.11. · Kasse 05.11.–19.11.",
-  "EU-Lager ohne Zeichen: Korb 26.10.–02.11. · Kasse 05.11.–19.11.",
-  "EU-Lager mit Zeichen: Seite 26.10.–02.11. · Kasse 05.11.–19.11.",
-  "EU-Lager ohne Zeichen: Seite 26.10.–02.11. · Kasse 05.11.–19.11."
+  "EU-Lager mit Zeichen: Korb 26.10.–02.11. · Kasse 06.11.–20.11.",
+  "EU-Lager ohne Zeichen: Korb 26.10.–02.11. · Kasse 06.11.–20.11.",
+  "EU-Lager mit Zeichen: Seite 26.10.–02.11. · Kasse 06.11.–20.11.",
+  "EU-Lager ohne Zeichen: Seite 26.10.–02.11. · Kasse 06.11.–20.11."
  ]
 }
