@@ -1,0 +1,137 @@
+{
+  "at": "2026-10-22T04:41:48.752872+00:00",
+  "source_stand": "2026-10-18T21:45:00+00:00",
+  "summe": {
+    "ABGELAUFEN": 3,
+    "FEHLT": 15
+  },
+  "rows": [
+    {
+      "nr": "1.1",
+      "netz": "facebook",
+      "zustand": "ABGELAUFEN",
+      "bis_termin_h": -12.2,
+      "mangel": []
+    },
+    {
+      "nr": "1.1",
+      "netz": "instagram",
+      "zustand": "ABGELAUFEN",
+      "bis_termin_h": -12.2,
+      "mangel": []
+    },
+    {
+      "nr": "1.1",
+      "netz": "tiktok",
+      "zustand": "ABGELAUFEN",
+      "bis_termin_h": -12.2,
+      "mangel": []
+    },
+    {
+      "nr": "1.2",
+      "netz": "facebook",
+      "zustand": "FEHLT",
+      "bis_termin_h": 3.3,
+      "mangel": []
+    },
+    {
+      "nr": "1.2",
+      "netz": "instagram",
+      "zustand": "FEHLT",
+      "bis_termin_h": 3.3,
+      "mangel": []
+    },
+    {
+      "nr": "1.2",
+      "netz": "tiktok",
+      "zustand": "FEHLT",
+      "bis_termin_h": 3.3,
+      "mangel": []
+    },
+    {
+      "nr": "1.3",
+      "netz": "facebook",
+      "zustand": "FEHLT",
+      "bis_termin_h": 27.3,
+      "mangel": []
+    },
+    {
+      "nr": "1.3",
+      "netz": "instagram",
+      "zustand": "FEHLT",
+      "bis_termin_h": 27.3,
+      "mangel": []
+    },
+    {
+      "nr": "1.3",
+      "netz": "tiktok",
+      "zustand": "FEHLT",
+      "bis_termin_h": 27.3,
+      "mangel": []
+    },
+    {
+      "nr": "1.4",
+      "netz": "facebook",
+      "zustand": "FEHLT",
+      "bis_termin_h": 35.8,
+      "mangel": []
+    },
+    {
+      "nr": "1.4",
+      "netz": "instagram",
+      "zustand": "FEHLT",
+      "bis_termin_h": 35.8,
+      "mangel": []
+    },
+    {
+      "nr": "1.4",
+      "netz": "tiktok",
+      "zustand": "FEHLT",
+      "bis_termin_h": 35.8,
+      "mangel": []
+    },
+    {
+      "nr": "1.5",
+      "netz": "facebook",
+      "zustand": "FEHLT",
+      "bis_termin_h": 51.3,
+      "mangel": []
+    },
+    {
+      "nr": "1.5",
+      "netz": "instagram",
+      "zustand": "FEHLT",
+      "bis_termin_h": 51.3,
+      "mangel": []
+    },
+    {
+      "nr": "1.5",
+      "netz": "tiktok",
+      "zustand": "FEHLT",
+      "bis_termin_h": 51.3,
+      "mangel": []
+    },
+    {
+      "nr": "1.6",
+      "netz": "facebook",
+      "zustand": "FEHLT",
+      "bis_termin_h": 59.8,
+      "mangel": []
+    },
+    {
+      "nr": "1.6",
+      "netz": "instagram",
+      "zustand": "FEHLT",
+      "bis_termin_h": 59.8,
+      "mangel": []
+    },
+    {
+      "nr": "1.6",
+      "netz": "tiktok",
+      "zustand": "FEHLT",
+      "bis_termin_h": 59.8,
+      "mangel": []
+    }
+  ],
+  "limitation": "Read-only scheduled-post connector; absent past-slot results do not prove never published. No product/rights readiness inferred."
+}
