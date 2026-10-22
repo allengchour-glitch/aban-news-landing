@@ -29,6 +29,12 @@ Folge: jeder weitere Antrag hat auf dieser Seite eine gemessene Trefferquote von
 
 Begründung der Reihenfolge: zuerst die Hauptkategorien im Menü (sie tragen die internen Links an alle Unterseiten), dann die zwei «Crawled – currently not indexed»-Fälle, zuletzt die Such-Kollektionen.
 
+## Vorher geprüft (22.10. 07:55 UTC, Routine «Google-Index-Liste täglich»)
+- **Admin-API:** alle 10 Kollektionen existieren, tragen Ware (schuhe 5'221 · schmuck-uhren 7'783 · beauty-pflege 7'022 · elektronik-technik 6'018 · fur-ihn 6'113 [Titel «Herren-Mode»] · sub-beleuchtung 579 · sicherheitsschuhe 113 · camisole-traegertops 42 · smart-ring 11 · schrank-organizer 7) und sind in Onlineshop, Google & YouTube und den übrigen Kanälen veröffentlicht.
+- **`sicherheitsschuhe`** (Routine-Bedingung «Name und Ware nach der PSA-Umbenennung»): Titel heute «Arbeitsschuhe mit Stahlkappe», der Text sagt ausdrücklich «keine zertifizierten Sicherheitsschuhe (keine PSA nach EN ISO 20345)» — Name und Ware passen, der URL-Handle bleibt `sicherheitsschuhe`.
+- **Besucher-Sicht (WebFetch):** `smart-ring` (11 Artikel) und `camisole-traegertops` (42 Artikel) laden ohne Fehler; die übrigen Abrufe liefen in HTTP 429 (Drosselung) und wurden nicht wiederholt — die Admin-Daten oben tragen die Aussage.
+- **Geschenke-Seiten** stehen nicht mehr auf der Liste: alle 9 sind seit 19.10. indexiert.
+
 ## Danach
 - Meldung genügt («22.10. alle 10 beantragt») — die Sitzung trägt die Zeilen in `dropship/_index_beantragt.tsv` ein.
 - Nachmessung nach 1–3 Tagen: `python3 tools/index_probe.py` (Mo + Do automatisch), danach `python3 tools/index_probe.py --antraege`. **Wirkungslos** (beantragt, nach 3+ Tagen weiter draussen) wäre ein Befund an der Seite selbst, nicht am fehlenden Antrag — davon gibt es bisher 0.
