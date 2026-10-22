@@ -1287,6 +1287,23 @@ while true; do
       echo "$(date -u +%H:%M) ⚠️ GOOGLE-KATEGORIE-KANARIEN: $(grep -c '❌' /tmp/google_kategorie_kanarien.log) Fälle falsch — automation/google_kategorie.py/.mjs prüfen (Log /tmp/google_kategorie_kanarien.log)"
     fi
   fi
+  # 22.10.2026: Kanarienvogel des VideoObject-Blocks (Quelle dropship/theme_patches/video_auszeichnung_*.liquid) — ohne Shop-Zugriff, < 2 s; nur Meldung.
+  if [ -f "$REPO/automation/video_auszeichnung_kanarien.py" ]; then
+    if ! ( cd "$REPO" && timeout 60 python3 automation/video_auszeichnung_kanarien.py > /tmp/video_auszeichnung_kanarien.log 2>&1 ); then
+      echo "$(date -u +%H:%M) ⚠️ VIDEO-AUSZEICHNUNG-KANARIEN: $(grep -c '❌' /tmp/video_auszeichnung_kanarien.log) Verstösse — dropship/theme_patches/video_auszeichnung_*.liquid prüfen (Log /tmp/video_auszeichnung_kanarien.log)"
+    fi
+  fi
+  # 22.10.2026: HEADLESS-KANAL (App «Luxe Style Headless») hinkt dem Onlineshop nach — Betreiber-Screenshot «Schneidebretter · Kategorie nicht gefunden».
+  # NUR MESSEN (täglich, schreibt dropship/_headless_spiegel_stand.json für die Ampel «HEADLESS»); das Veröffentlichen (--scharf) bleibt ein bewusster Aufruf,
+  # solange der Betreiber die Massen-Veröffentlichung von ~8'000 Produkten nicht freigegeben hat (Bericht dropship/HEADLESS-KANAL-2026-10-22.md).
+  HLM=/tmp/headless_spiegel_messung.log
+  if [ -f "$REPO/automation/headless_spiegel.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$HLM" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 82800 ]; then
+      ( cd "$REPO" && timeout 280 python3 automation/headless_spiegel.py >> "$HLM" 2>&1 )
+      echo "$(date -u +%H:%M) headless_spiegel (Messung): $(tail -1 "$HLM" | cut -c1-160)"
+    fi
+  fi
   # Hinweis für den SCHARF-Block (Z. ~945): davor `[ -f /tmp/kategorie_wache.kanarien_fehler ] && skip` einbauen.
   # KATEGORIE-NEUWARE (02.10.2026, Verbesserungsrunde): der Grind legt ~250 Produkte/Tag an, die Tageswache ordnete sie
   # erst bis zu 24 h später ein (Ampel 285 ohne Kategorie) — stündlich, nur Produkte ohne Kategorie, Sperre im Skript.

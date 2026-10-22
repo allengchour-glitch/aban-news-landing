@@ -531,6 +531,23 @@ def theme_marken_netz():
     return zeile() or ""
 
 
+def headless_netz():
+    """Headless-Kanal (automation/headless_spiegel.py, 22.10.2026): ⚠️ wenn der App-Kanal «Luxe Style Headless» dem Onlineshop nachhinkt
+    (Kollektion > 0 oder Produkte > 300 fehlen — die App zeigt dann «Kategorie nicht gefunden») oder die Messung seit 36 h fehlt. Leer, solange nie gemessen."""
+    try:
+        from headless_spiegel import zeile
+    except Exception:
+        import importlib.util
+        spur = os.path.join(os.path.dirname(os.path.abspath(__file__)), "headless_spiegel.py")
+        spec = importlib.util.spec_from_file_location("headless_spiegel", spur)
+        if not spec or not spec.loader:
+            return ""
+        modul = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(modul)
+        zeile = modul.zeile
+    return zeile() or ""
+
+
 def merkliste_netz():
     """Merkliste (automation/merkliste_wache.py, 21.10.2026): ⚠️ wenn ein Teil des Herzens/der Liste im LIVE-Theme fehlt, die Prüfung «unklar» ist oder der
     Stand älter als 36 h ist. Leer, solange die Prüfung nie lief (ohne dropship/_merkliste_v3_aktiv.txt prüft sie nur den alten Stand)."""
@@ -1749,7 +1766,7 @@ def main():
     ohne_token = not os.path.exists(TOKPFAD)
     # Pruefungen, die den Shop-Token brauchen, laufen ohne ihn nicht — alle anderen schon (26.09.).
     MIT_TOKEN = (liechtenstein_gesperrt, klingen_pingpong, grow_zaehler, drafts_ohne_quittung, datei_speicher_voll, video_deckel, alter_lieferblock)
-    pruefungen = (bot_puls, waffen_netz, cj_sku_netz, druck_profil_netz, guard_vollpass_netz, cj_nachpruefung_netz, indexnow_netz, theme_marken_netz, merkliste_netz, echte_bewertungen_netz, lux_assistent_netz, kassen_sentinel_netz, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kassen_lieferdatum, werbetest, verkauf_gewinn, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, codex_github, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik, startseiten_gewicht, such_boosts, alter_lieferblock, social_sperre, gsc_tot, index_stand, wearable_seo, koll_versprechen, koll_leer, texte_angehalten, cj_suche_tor, waisen_verzeichnis)
+    pruefungen = (bot_puls, waffen_netz, cj_sku_netz, druck_profil_netz, guard_vollpass_netz, cj_nachpruefung_netz, indexnow_netz, theme_marken_netz, headless_netz, merkliste_netz, echte_bewertungen_netz, lux_assistent_netz, kassen_sentinel_netz, shopify_rechnung, bigbuy_ticket, cj_dispute_1017, liechtenstein_gesperrt, klingen_pingpong, verlust_kaufbar, google_feedback, kassen_lieferdatum, werbetest, verkauf_gewinn, kategorie_offen, kollektion_doppel_offen, fortura_bestand_alter, grow_zaehler, metricool_kanaele, social_meta_live, drafts_ohne_quittung, fortura_zugang, azure_stimme, datei_speicher_voll, video_deckel, tiktok_queue_alt, ki_textstufe, ki_guthaben, codex_github, server_waechter, judgeme_verdacht, iban_grep, startseiten_optik, startseiten_gewicht, such_boosts, alter_lieferblock, social_sperre, gsc_tot, index_stand, wearable_seo, koll_versprechen, koll_leer, texte_angehalten, cj_suche_tor, waisen_verzeichnis)
     teile = [zugang_weg()]
     for f in pruefungen:
         if ohne_token and f in MIT_TOKEN:
