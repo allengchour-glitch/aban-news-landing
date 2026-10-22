@@ -29,7 +29,9 @@ MAX = int(os.environ.get("MAX") or 3000)
 ZIEL = "Wie abgebildet"
 PLATZHALTER = re.compile(r"^\s*(color|colour|farbe)\s*$", re.I)
 OPTIONSNAMEN = {"farbe", "color", "colour", "farbe / muster"}
-POD = ("selbst-gestalten", "pod", "printful")
+# Editor/POD-Erkennung am TEIL des Tags (echte Tags: «printful_personalized_product», «prodigi_personalized_product», «selbst-gestalten», «pod»); ein Vergleich auf
+# Gleichheit hätte die echten Tags verfehlt (Prüfung 22.10.). «pod»/«editor» nur als ganzes Wort, damit «ipod-zubehoer» nicht ausgenommen wird.
+POD_MUSTER = re.compile(r"selbst-?gestalten|printful|prodigi|personali[sz]ed|(?:^|[-_ ])(?:pod|editor)(?:$|[-_ ])", re.I)
 
 
 def entscheide(optionsname, werte, tags=()):
@@ -40,7 +42,7 @@ def entscheide(optionsname, werte, tags=()):
     alt = [w for w in werte if PLATZHALTER.match(w or "")]
     if not alt:
         return "nichts", []
-    if any(t.lower() in POD for t in tags or ()):
+    if any(POD_MUSTER.search(t or "") for t in tags or ()):
         return "ausgenommen", ["editor"]
     if any((w or "").strip().lower() == ZIEL.lower() for w in werte):
         return "ausgenommen", ["zielname-schon-da"]
@@ -158,8 +160,11 @@ def selbsttest():
             f.append("D nur Farb-Optionen")
         if m.entscheide("Farbe", ["Color", "Wie abgebildet"]) != ("ausgenommen", ["zielname-schon-da"]):
             f.append("E Zielname schon da → Doppelwert verhindern")
-        if m.entscheide("Farbe", ["Color"], ["selbst-gestalten"])[0] != "ausgenommen":
-            f.append("F Editor/POD ausnehmen")
+        for pod_tag in ("selbst-gestalten", "pod", "printful_personalized_product", "prodigi_personalized_product", "Printful"):
+            if m.entscheide("Farbe", ["Color"], ["cj-real", pod_tag])[0] != "ausgenommen":
+                f.append(f"F Editor/POD ausnehmen (echtes Tag «{pod_tag}»)")
+        if m.entscheide("Farbe", ["Color"], ["cj-real", "dropship", "ipod-zubehoer", "podcast-mikrofon"])[0] != "umbenennen":
+            f.append("F2 Teilwort «pod» in fremden Tags darf nicht ausnehmen")
         if m.entscheide("farbe", ["COLOUR", "Blau"]) != ("umbenennen", ["COLOUR"]):
             f.append("G Gross/klein egal, Colour zählt")
         if m.entscheide("Farbe", ["Color", "Colour", "Blau"])[0] != "ausgenommen":
@@ -168,7 +173,9 @@ def selbsttest():
     fehler = faelle(sys.modules[__name__])
     mut = [("Teilnamen werden gematcht", 'r"^\\s*(color|colour|farbe)\\s*$"', 'r"(color|colour|farbe)"'),
            ("Zielname egal", 'if any((w or "").strip().lower() == ZIEL.lower() for w in werte):', "if False:"),
-           ("POD egal", 'if any(t.lower() in POD for t in tags or ()):', "if False:"),
+           ("POD egal", 'if any(POD_MUSTER.search(t or "") for t in tags or ()):', "if False:"),
+           ("POD nur gleiche Tags", 'if any(POD_MUSTER.search(t or "") for t in tags or ()):', 'if any(t.lower() in ("selbst-gestalten", "pod", "printful") for t in tags or ()):'),
+           ("pod als Teilwort", "(?:^|[-_ ])(?:pod|editor)(?:$|[-_ ])", "pod|editor"),
            ("Optionsname egal", 'if (optionsname or "").strip().lower() not in OPTIONSNAMEN:', "if False:")]
     erkannt = 0
     for name, alt, neu in mut:
@@ -185,7 +192,7 @@ def selbsttest():
     if fehler:
         print("SELBSTTEST FEHLGESCHLAGEN:\n  " + "\n  ".join(fehler))
         return 1
-    print(f"SELBSTTEST OK: 8 Fälle, {erkannt}/{len(mut)} Mutanten erkannt")
+    print(f"SELBSTTEST OK: 9 Fälle, {erkannt}/{len(mut)} Mutanten erkannt")
     return 0
 
 

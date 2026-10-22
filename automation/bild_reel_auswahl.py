@@ -91,7 +91,7 @@ SPERR = {"nicht-bewerben", "nur-onlineshop", "18plus", "raucher", "erotik", "kos
          "medizinprodukt-pruefen", "marken-pruefen", "lizenz-risiko", "lizenz-nicht-bewerben", "adult-nicht-bewerben", "gmc-adult-pull",
          "messer-nicht-bewerben", "smoke-zubehoer", "waffe-pruefen", "verdeckte-ueberwachung", "google-policy-flag", "arzneimittel-ohne-zulassung"}
 HEIL = re.compile(r"schmerz|heil|migräne|krampfader|fettverbrenn|abnehmen|cellulite|arthr|rheuma|diabetes|entgift|detox|blutdruck|haarausfall|schnarch|inkontinenz", re.I)
-LIZENZ_FIGUR = jsre(r"\b(?:batman|joker|superman|supergirl|spider-?man|marvel|avengers|deadpool|harley quinn|disney|mickey|minnie|pok[eé]mon|hello kitty|sanrio|kuromi|barbie|star wars|harry potter|hogwarts|gryffindor|slytherin|wednesday|addams|morticia|naruto|super mario|sonic (?:the hedgehog|classic|movie|shadow)|minecraft|paw patrol|labubu|eisk[oö]nigin|frozen|elsa|olaf|top gun|pennywise|pj masks|ninja turtles|squid game|wonder ?woman|catwoman|batgirl|pikachu|hagrid|dumbledore|voldemort)\b", re.I)
+LIZENZ_FIGUR = jsre(r"\b(?:batman|joker|superman|supergirl|spider-?man|marvel|avengers|deadpool|harley quinn|disney|mickey|minnie|pok[eé]mon|hello kitty|sanrio|kuromi|barbie|star wars|harry potter|hogwarts|gryffindor|slytherin|wednesday|addams|morticia|naruto|super mario|sonic (?:the hedgehog|classic|movie|shadow)|minecraft|paw patrol|labubu|eisk[oö]nigin|frozen|elsa|olaf|top gun|pennywise|pj masks|ninja turtles|squid game|wonder ?woman|catwoman|batgirl|pikachu|hagrid|dumbledore|voldemort|robin classic|bulbasaur|hermine|blues clues)\b", re.I)
 # post_guard.mjs MODEL_MEDIEN
 MODEL_MEDIEN = re.compile(r"(^|[^a-z])(kundin-\d\d|luxestyle-model-(clean|musik)|tati-model|tatjana)", re.I)
 

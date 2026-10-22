@@ -266,7 +266,7 @@ def bilder(p):
 # 24.09.2026: Lizenzfiguren (Batman, Wednesday, Mickey …) bewerben wir nicht selbst — die Fortura-Ware ist echt und darf
 # verkauft werden, aber ein eigener Post mit einer geschützten Figur ist Marken-/Urheberrecht des Rechteinhabers. Am Titel,
 # nicht am Tag: 23 solche Artikel tragen weder «kostuem» noch einen Lizenz-Tag (Plüsch, Ballone, Perücken).
-LIZENZ_FIGUR = re.compile(r"\b(?:batman|joker|superman|supergirl|spider-?man|marvel|avengers|deadpool|harley quinn|disney|mickey|minnie|pok[eé]mon|hello kitty|sanrio|kuromi|barbie|star wars|harry potter|hogwarts|gryffindor|slytherin|wednesday|addams|morticia|naruto|super mario|sonic (?:the hedgehog|classic|movie|shadow)|minecraft|paw patrol|labubu|eisk[oö]nigin|frozen|elsa|olaf|top gun|pennywise|pj masks|ninja turtles|squid game|wonder ?woman|catwoman|batgirl|pikachu|hagrid|dumbledore|voldemort)\b", re.I)
+LIZENZ_FIGUR = re.compile(r"\b(?:batman|joker|superman|supergirl|spider-?man|marvel|avengers|deadpool|harley quinn|disney|mickey|minnie|pok[eé]mon|hello kitty|sanrio|kuromi|barbie|star wars|harry potter|hogwarts|gryffindor|slytherin|wednesday|addams|morticia|naruto|super mario|sonic (?:the hedgehog|classic|movie|shadow)|minecraft|paw patrol|labubu|eisk[oö]nigin|frozen|elsa|olaf|top gun|pennywise|pj masks|ninja turtles|squid game|wonder ?woman|catwoman|batgirl|pikachu|hagrid|dumbledore|voldemort|robin classic|bulbasaur|hermine|blues clues)\b", re.I)
 TOPISCH = re.compile(r'Creme|Serum|Hautpflege|Lotion|Gesichtsmaske|Augenmaske|Ampulle|'
                      r'Peeling|Balsam|Salbe|[ÖO]l\b.*(?:Gesicht|Haut)|Essence', re.I)
 

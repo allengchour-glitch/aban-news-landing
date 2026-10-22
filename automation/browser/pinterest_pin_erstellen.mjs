@@ -25,6 +25,7 @@ import path from 'node:path';
 import { ist_anmeldeseite } from '../../server/anmelde_erkennung.mjs';
 
 const HOST = 'https://ch.pinterest.com';
+import { VORAB_DIR, vorabSchreiben, schonGepinntAus } from './pinterest_vorab.mjs';
 const NUTZER = 'luxestyleCH';
 const norm = s => (s || '').toLowerCase().replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/[^a-z0-9]/g, '');
 
@@ -39,19 +40,8 @@ function warteschlange(REPO) {
   return zeilen.map(z => Object.fromEntries(z.split('\t').map((v, i) => [k[i], v])));
 }
 function schonGepinnt(REPO) {
-  const dir = path.join(REPO, 'auftraege/erledigt');
-  const out = new Set();
-  for (const f of fs.existsSync(dir) ? fs.readdirSync(dir) : []) {
-    if (!/^pinterest-pin-/.test(f) || !f.endsWith('.json')) continue;
-    try {
-      const d = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
-      for (const h of (d.ergebnis?.gepinnt || d.teilergebnis?.gepinnt || [])) out.add(h);
-      // «laufend» oder abgebrochen NACH dem Klick: sicherheitshalber ebenfalls sperren
-      if (d.ergebnis?.unklar) for (const h of d.ergebnis.unklar) out.add(h);
-      if (d.teilergebnis?.unklar) for (const h of d.teilergebnis.unklar) out.add(h);
-    } catch {}
-  }
-  return out;
+  // 22.10.2026: neben dem Repo-Klon auch der Ort ausserhalb (VORAB_DIR) — platte-schlank.sh löscht den Klon, die Vorab-Quittungen müssen überleben
+  return schonGepinntAus([path.join(REPO, 'auftraege/erledigt'), VORAB_DIR]);
 }
 
 export default async function ({ ctx, REPO, ERGEBNIS, auftrag }) {
@@ -189,16 +179,13 @@ export default async function ({ ctx, REPO, ERGEBNIS, auftrag }) {
       schritte.push(`Formular stimmt nicht: Titel «${titelJetzt.slice(0, 40)}», Link «${linkJetzt.slice(0, 50)}», Pinnwand «${boardJetzt.replace(/\n/g, ' ').slice(0, 40)}» — nicht geklickt`);
       return ergebnis;
     }
+    // 22.10.2026 (Inventur SOC-01 + Prüfung): stirbt der Lauf NACH dem Klick (Server-Platte voll, Neustart), blieb die Quittung leer, und die Warteschlange lieferte
+    // dasselbe Produkt wieder: GEMESSEN 13 überzählige Pins auf 10 Produkten seit 05.10. Darum VOR dem Klick eine Vorab-Quittung — FAIL-CLOSED: lässt sie sich an
+    // keinem Ort atomar schreiben und zurücklesen (oder ist der Handle ungültig), wird NICHT geklickt (pinterest_vorab.mjs, Selbsttest dort).
+    const vq = vorabSchreiben(k.handle, [VORAB_DIR, path.join(REPO, 'auftraege/erledigt')]);
+    if (!vq.ok) { schritte.push(`Vorab-Quittung nicht schreibbar (${vq.fehler.join('; ').slice(0, 160)}) — nicht geklickt`); return ergebnis; }
+    schritte.push(`Vorab-Quittung an ${vq.orte.length} Ort(en) geschrieben`);
     ergebnis.unklar.push(k.handle);                      // ab hier gilt: Klick passiert, Quittung offen
-    // 22.10.2026 (Inventur SOC-01): stirbt der Lauf NACH dem Klick (Server-Platte voll, Neustart), bleibt die Quittung leer («abgebrochen-unklar», ergebnis=null) —
-    // schonGepinnt() kannte den Handle nicht, die Warteschlange lieferte dasselbe Produkt wieder: GEMESSEN 13 überzählige Pins auf 10 Produkten seit 05.10.
-    // Darum VOR dem Klick eine eigene Vorab-Quittung auf die lokale Platte (schonGepinnt liest jede pinterest-pin-*.json in auftraege/erledigt).
-    try {
-      const vd = path.join(REPO, 'auftraege/erledigt');
-      fs.mkdirSync(vd, { recursive: true });
-      fs.writeFileSync(path.join(vd, `pinterest-pin-vorab-${k.handle.slice(0, 80)}.json`),
-        JSON.stringify({ vorab: true, zeit: new Date().toISOString(), teilergebnis: { unklar: [k.handle] } }));
-    } catch (e) { schritte.push(`Vorab-Quittung nicht geschrieben: ${String(e).slice(0, 60)}`); }
     await publ.click({ timeout: 10000 });
     await seite.waitForTimeout(9000);
     await schuss('3-nachher');

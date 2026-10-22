@@ -48,11 +48,7 @@ HALLOWEEN_WORT = re.compile(r"(?i)geist|gespenst|ghost|hexe|witch|vampir|dracula
 # 27.09.: Lizenzfiguren bewerben wir nicht selbst (Regel 24.09., tiktok_karussell.LIZENZ_FIGUR) — erweitert um die
 # Figuren, die in Fortura-Kostümtiteln stehen («Kostüm ES Klassik Clown» = Pennywise, Hagrid, PJ Masks …); «clown» ist
 # darum kein Halloween-Wort mehr (einziger Treffer war Pennywise).
-LIZENZ_FIGUR = re.compile(r"\b(?:batman|batgirl|robin classic|joker|superman|supergirl|wonder ?woman|catwoman|spider-?man|marvel|"
-                          r"avengers|deadpool|harley quinn|disney|mickey|minnie|pok[eé]mon|pikachu|bulbasaur|hello kitty|sanrio|"
-                          r"kuromi|barbie|star wars|harry potter|hogwarts|gryffindor|slytherin|hagrid|dumbledore|voldemort|hermine|"
-                          r"wednesday|addams|morticia|naruto|super mario|sonic|minecraft|paw patrol|pj masks|ninja turtles|"
-                          r"squid game|blues clues|top gun|labubu|pennywise)\b|\bKostüm ES\b", re.I)
+LIZENZ_FIGUR = re.compile(r"\b(?:batman|batgirl|robin classic|joker|superman|supergirl|wonder ?woman|catwoman|spider-?man|marvel|avengers|deadpool|harley quinn|disney|mickey|minnie|pok[eé]mon|pikachu|bulbasaur|hello kitty|sanrio|kuromi|barbie|star wars|harry potter|hogwarts|gryffindor|slytherin|hagrid|dumbledore|voldemort|hermine|wednesday|addams|morticia|naruto|super mario|minecraft|paw patrol|pj masks|ninja turtles|squid game|blues clues|top gun|labubu|pennywise|sonic (?:the hedgehog|classic|movie|shadow)|eisk[oö]nigin|frozen|elsa|olaf)\b|\bKostüm ES\b", re.I)
 VERBOTEN_KOSTUEM_OK = re.compile(VERBOTEN.pattern.replace("kostüm|kostum|", "").replace("perücke|perucke|", ""), re.I)
 
 Q = """query($q:String!,$c:String){ products(first:40, after:$c, query:$q, sortKey:CREATED_AT, reverse:true){

@@ -32,9 +32,12 @@ ZWEI GETRENNTE PROBLEME:
 
 DRY=1 meldet nur.
 """
-import json, os, re, subprocess, time
+import json, os, re, subprocess, sys, time
 
-TOK = open("/tmp/cj_shop_token.txt").read().strip()
+try:
+    TOK = open("/tmp/cj_shop_token.txt").read().strip()
+except OSError:   # 22.10.2026: --selbsttest braucht kein Token; main() bricht ohne Token laut ab
+    TOK = ""
 DRY = os.environ.get("DRY") == "1"
 EXPORT = os.environ.get("EXPORT", "/tmp/export.jsonl")
 LEDGER = "dropship/_medizinprodukte.txt"
@@ -56,7 +59,15 @@ ZUBEHOER = re.compile(r'Reinigungs(?:set|-?Set|b[üu]rste)|Pflegeset|Ersatz(?:fi
                       r'Aufbewahrungsbox|Etui\b|'
                       # 22.10.2026: «Ultraschall-Vernebler» im Aroma-Diffusor/Luftbefeuchter ist ein Wohnartikel, kein Inhalationsgerät (3 Fehlalarme im Trockenlauf)
                       r'Diffusor|Diffuser|Aroma|Luftbefeuchter|Duftlampe|Raumduft|[ÖO]l-?Vernebler|Nebel-?Maschine|Kunstnebel|'
-                      r'Scheinwerfer|Auto-?Lack|Politur|Aufbereitung', re.I)   # «Scheinwerfer-Vernebler-Becher» = Autopflege, 22.10.
+                      r'Scheinwerfer|Auto-?Lack|Politur|Aufbereitung|'
+                      # 22.10.2026 (Prüfung): ein Ventilator/Kühler/Lüfter MIT Vernebler (Sprühnebel-Kühlung) ist kein Inhalationsgerät
+                      r'(?:Ventilator|K[üu]hler|L[üu]fter|Klimager[äa]t)\b.{0,40}Vernebler|Vernebler.{0,40}(?:Ventilator|K[üu]hler|L[üu]fter)', re.I)   # «Scheinwerfer-Vernebler-Becher» = Autopflege, 22.10.
+
+
+def ist_geraet(titel):
+    """Rein: ist der Titel ein Medizingerät (Funktion), kein Zubehör/Wohnartikel?"""
+    return bool(GERAET.search(titel)) and not ZUBEHOER.search(titel)
+
 
 # ⚠️ Eine Selbstaussage im Text («dies ist ein medizinisches Gerät», «FDA-zertifiziert») war im
 # ersten Entwurf ein Draft-Grund. Der Probelauf zeigte, warum das nicht trägt:
@@ -119,6 +130,8 @@ def text_ohne_zucker(html):
 
 
 def main():
+    if not TOK:
+        raise SystemExit("MEDIZINPRODUKTE-WÄCHTER: kein Shopify-Token (/tmp/cj_shop_token.txt) — nichts geschrieben")
     geraete, zucker = [], []
     for zeile in open(EXPORT):
         p = json.loads(zeile)
@@ -126,7 +139,7 @@ def main():
             continue
         t = p["title"]
         html = p.get("descriptionHtml") or ""
-        if GERAET.search(t) and not ZUBEHOER.search(t):
+        if ist_geraet(t):
             geraete.append((p["id"], t, float(p["priceRangeV2"]["minVariantPrice"]["amount"])))
             continue
         if not TRAGBAR.search(t):
@@ -134,9 +147,14 @@ def main():
         if re.search(r'Blutzucker', t + html[:1500], re.I):
             zucker.append((p["id"], t, titel_ohne_zucker(t), html))
 
-    # 22.10.2026: Sicherung gegen ein zu weit geratenes Muster — mehr als MAX_TREFFER Treffer in EINEM Lauf sind ein Muster-Fehler, kein Warensturz
-    if len(geraete) > int(os.environ.get("MAX_TREFFER", "15")):
-        print(f"⚠️ MEDIZINPRODUKTE-WÄCHTER: {len(geraete)} Treffer (> MAX_TREFFER) — nichts geschrieben, Muster prüfen", flush=True)
+    done = set()
+    if os.path.exists(LEDGER):
+        done = {l.split("\t")[0] for l in open(LEDGER)}
+    # 22.10.2026: Sicherung gegen ein zu weit geratenes Muster — mehr als MAX_TREFFER NEUE Treffer (nicht schon im Ledger) in EINEM Lauf sind ein Muster-Fehler, kein
+    # Warensturz. (Die erste Fassung zählte auch Treffer, die das Ledger längst kannte, und schlug dann bei einem veralteten Export grundlos an.)
+    neue = [g for g in geraete if g[0] not in done]
+    if len(neue) > int(os.environ.get("MAX_TREFFER", "15")):
+        print(f"⚠️ MEDIZINPRODUKTE-WÄCHTER: {len(neue)} neue Treffer (> MAX_TREFFER) — nichts geschrieben, Muster prüfen", flush=True)
         raise SystemExit(2)
     print(f"Medizingeräte → DRAFT: {len(geraete)}", flush=True)
     for _, t, pr in geraete:
@@ -147,16 +165,18 @@ def main():
     if DRY:
         return
 
-    done = set()
-    if os.path.exists(LEDGER):
-        done = {l.split("\t")[0] for l in open(LEDGER)}
     f = open(LEDGER, "a")
     n1 = n2 = 0
     for gid, t, _ in geraete:
         if gid in done:
             continue
-        gql('mutation($i:ProductInput!){productUpdate(input:$i){userErrors{message}}}',
-            {"i": {"id": gid, "status": "DRAFT"}})
+        # 22.10.2026: userErrors prüfen, BEVOR das Ledger quittiert (sonst bleibt ein nicht gedrafteter Treffer für immer «erledigt»)
+        r = gql('mutation($i:ProductInput!){productUpdate(input:$i){product{status} userErrors{message}}}',
+                {"i": {"id": gid, "status": "DRAFT"}})
+        pu = (r.get("data") or {}).get("productUpdate") or {}
+        if pu.get("userErrors") or (pu.get("product") or {}).get("status") != "DRAFT":
+            print(f"  ⚠️ Draften fehlgeschlagen: {t[:40]}: {(pu.get('userErrors') or [{'message': 'Status nicht DRAFT'}])[0]['message'][:60]}", flush=True)
+            continue
         gql('mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}',
             {"id": gid, "t": ["medizinprodukt-pruefen"]})
         n1 += 1
@@ -181,5 +201,48 @@ def main():
     print(f"FERTIG: {n1} Medizingeräte gedraftet, {n2} Blutzucker-Versprechen gestrichen")
 
 
+def selbsttest():
+    import types
+    quelle = open(os.path.abspath(__file__), encoding="utf-8").read()
+    ECHT = ["Hörgerät für Senioren", "Hörverstärker mit Akku", "Fetusstethoskop", "Ventilator Nasenpolster-Set", "Infrarot Stirnthermometer", "Ultraschall-Vernebler für Kinder",
+            "Atemtrainer für Lungen", "Elektrische Milchpumpe"]
+    KEIN = ["Reinigungsset für digitale Hörgeräte", "Aroma-Diffusor Ultraschall-Vernebler", "Scheinwerfer-Vernebler-Becher", "Luftbefeuchter mit Vernebler",
+            "Tisch-Ventilator mit Vernebler und Wasserspray", "Mini-Kühler mit Vernebler für den Sommer", "Vernebler-Lüfter für Terrasse", "Silberoxid-Knopfzellen 10er Pack",
+            "Smartwatch mit Pulsmesser"]
+
+    def faelle(m):
+        f = []
+        for t in ECHT:
+            if not m.ist_geraet(t):
+                f.append(f"A «{t}» muss ein Medizingerät sein")
+        for t in KEIN:
+            if m.ist_geraet(t):
+                f.append(f"B «{t}» darf kein Medizingerät sein")
+        return f
+    fehler = faelle(sys.modules[__name__])
+    mut = [("Ventilator mit Vernebler zählt als Gerät", "(?:Ventilator|K[üu]hler|L[üu]fter|Klimager[äa]t)\\b.{0,40}Vernebler|Vernebler.{0,40}(?:Ventilator|K[üu]hler|L[üu]fter)", "ZZZZ"),
+           ("Zubehör egal", "and not ZUBEHOER.search(titel)", ""),
+           ("Diffusor zählt als Gerät", "Diffusor|Diffuser|Aroma|Luftbefeuchter|", "")]
+    erkannt = 0
+    for name, alt, neu in mut:
+        if quelle.count(alt) < 1:
+            fehler.append(f"Mutant «{name}»: Stelle fehlt")
+            continue
+        m = types.ModuleType("mutant")
+        m.__file__ = os.path.abspath(__file__)
+        exec(compile(quelle.replace(alt, neu, 1), "mutant", "exec"), m.__dict__)
+        if faelle(m):
+            erkannt += 1
+        else:
+            fehler.append(f"Mutant «{name}» NICHT erkannt")
+    if fehler:
+        print("SELBSTTEST FEHLGESCHLAGEN:\n  " + "\n  ".join(fehler))
+        return 1
+    print(f"SELBSTTEST OK: {len(ECHT) + len(KEIN)} Titel, {erkannt}/{len(mut)} Mutanten erkannt")
+    return 0
+
+
 if __name__ == "__main__":
+    if "--selbsttest" in sys.argv:
+        sys.exit(selbsttest())
     main()

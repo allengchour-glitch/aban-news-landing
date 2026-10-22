@@ -1347,6 +1347,26 @@ while true; do
       echo "$(date -u +%H:%M) ⚠️ CLAUDE-SCRATCH-SELBSTTEST fehlgeschlagen (automation/claude_scratch_raeumen.sh --selbsttest) — Aufräumen im Keepalive prüfen"
     fi
   fi
+  # 22.10.2026: Selbsttests der in der Prüfung gehärteten Werkzeuge (Pinterest-Vorab-Quittung fail-closed, Medizinprodukte-Muster) — billig, ohne Netz.
+  if [ -f "$REPO/automation/browser/pinterest_vorab.mjs" ]; then
+    if ! ( cd "$REPO" && timeout 60 "$(command -v node || echo /opt/node22/bin/node)" automation/browser/pinterest_vorab.mjs --selbsttest >/dev/null 2>&1 ); then
+      echo "$(date -u +%H:%M) ⚠️ PINTEREST-VORAB-SELBSTTEST fehlgeschlagen (automation/browser/pinterest_vorab.mjs --selbsttest) — Pins ohne Vorab-Quittung riskieren Doppel-Pins"
+    fi
+  fi
+  if [ -f "$REPO/automation/medizinprodukte_guard.py" ]; then
+    if ! ( cd "$REPO" && timeout 60 python3 automation/medizinprodukte_guard.py --selbsttest >/dev/null 2>&1 ); then
+      echo "$(date -u +%H:%M) ⚠️ MEDIZINPRODUKTE-SELBSTTEST fehlgeschlagen (automation/medizinprodukte_guard.py --selbsttest)"
+    fi
+  fi
+  # 22.10.2026: LIZENZ-PARITÄT — die Liste der Lizenzfiguren steht in vier Kopien (Bild-/Reel-Auswahl, TikTok-Karussell, Reel-Motor, Pinterest); ein Unterschied lässt Ware
+  # über genau einen Poster doch laufen. Selbsttest + Prüfung (kein Netz); `--angleichen` heilt. Auch social_saison_vorrang.py filtert damit.
+  if [ -f "$REPO/automation/lizenz_figur_paritaet.py" ]; then
+    if ! ( cd "$REPO" && timeout 60 python3 automation/lizenz_figur_paritaet.py --selbsttest >/dev/null 2>&1 && timeout 60 python3 automation/social_saison_vorrang.py --selbsttest >/dev/null 2>&1 ); then
+      echo "$(date -u +%H:%M) ⚠️ LIZENZ-PARITÄT-SELBSTTEST fehlgeschlagen (lizenz_figur_paritaet.py / social_saison_vorrang.py --selbsttest)"
+    fi
+    LP=$(cd "$REPO" && timeout 30 python3 automation/lizenz_figur_paritaet.py --zeile 2>/dev/null)
+    [ -n "$LP" ] && echo "$(date -u +%H:%M) $LP"
+  fi
   # Hinweis für den SCHARF-Block (Z. ~945): davor `[ -f /tmp/kategorie_wache.kanarien_fehler ] && skip` einbauen.
   # KATEGORIE-NEUWARE (02.10.2026, Verbesserungsrunde): der Grind legt ~250 Produkte/Tag an, die Tageswache ordnete sie
   # erst bis zu 24 h später ein (Ampel 285 ohne Kategorie) — stündlich, nur Produkte ohne Kategorie, Sperre im Skript.

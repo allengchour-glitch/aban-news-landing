@@ -38,8 +38,14 @@ def bewerte(stand, jetzt=None):
     if ueber:
         return ("⚠️ FILTERGRENZE: " + " · ".join(f"{h} {n}" for h, n in sorted(ueber.items())) + " aktive Produkte > 5'000 — Shopify blendet dort ALLE Filter aus; "
                 "Abhilfe automation/filtergrenze_reparieren.py (PLAN anpassen: Regel einer Unterkategorie mit eigenem Menüpunkt streichen)")
+    waisen = {h: n for h, n in (stand.get("waisen") or {}).items() if n is not None and n > 0}
+    if waisen:
+        return ("⚠️ FILTERGRENZE-WAISEN: " + " · ".join(f"{h} {n}" for h, n in sorted(waisen.items())) + " aktive Produkte der beim Filtergrenzen-Schnitt entfernten Regel stehen in KEINER "
+                "Kollektion des Menü-Teilbaums mehr (nicht mehr auffindbar) — automation/filtergrenze_reparieren.py (KIND_ERWEITERN / TAGS_AUS_TYP)")
     if alter > STAND_ALT_H:
         return f"ℹ️ FILTERGRENZE: letzte Messung vor {alter:.0f} h (Aufseher-Lauf täglich)"
+    if any(n is None for n in (stand.get("waisen") or {}).values()):
+        return "ℹ️ FILTERGRENZE: Erreichbarkeit nach dem Schnitt nicht prüfbar (Menü/Teilbaum unlesbar)"
     nah = {h: n for h, n in (stand.get("werte") or {}).items() if n >= WARN}
     if nah:
         return "ℹ️ FILTERGRENZE: nahe der Grenze: " + " · ".join(f"{h} {n}" for h, n in sorted(nah.items()))
@@ -77,11 +83,24 @@ def main():
         werte[h] = n
         if n >= WARN:
             befund.append(f"{h} {n}{' ⛔ ohne Filter' if n > 5000 else ''}")
+    # 22.10.2026: Erreichbarkeit nach dem Schnitt (Prüfung): Waisen = aktive Produkte der geschnittenen Regel, die in keiner Kollektion des Teilbaums mehr stehen
+    waisen = {}
+    try:
+        import filtergrenze_reparieren as fr
+        items = fr.menue_items(gql)
+        for h, (art, arg) in fr.PLAN.items():
+            if art == "entfernen":
+                w = fr.verwaist(gql, h, arg, items)
+                waisen[h] = None if w is None else w[0]
+    except Exception as e:  # Messung darf die Wache nie umwerfen
+        print(f"FILTERGRENZE: Waisenprüfung fehlgeschlagen ({type(e).__name__}: {e})")
+        waisen = {h: None for h in waisen} or {}
     if werte:
         tmp = STAND + ".tmp"
-        json.dump({"zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), "werte": werte, "warn": WARN}, open(tmp, "w", encoding="utf-8"), ensure_ascii=False)
+        json.dump({"zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), "werte": werte, "warn": WARN, "waisen": waisen}, open(tmp, "w", encoding="utf-8"), ensure_ascii=False)
         os.replace(tmp, STAND)
-    print("FILTERGRENZE: " + ("ok (alle Menü-Kollektionen < %d aktiv)" % WARN if not befund else " · ".join(befund)))
+    wais_txt = "".join(f" · WAISEN {h} {n}" for h, n in sorted(waisen.items()) if n)
+    print("FILTERGRENZE: " + ("ok (alle Menü-Kollektionen < %d aktiv)" % WARN if not befund else " · ".join(befund)) + wais_txt)
 
 
 def selbsttest():
@@ -104,10 +123,22 @@ def selbsttest():
             f.append("E ohne Stand muss «unklar» heissen")
         if m.bewerte({"zeit": frisch, "werte": {"a": 5000}}, jetzt) is not None and (m.bewerte({"zeit": frisch, "werte": {"a": 5000}}, jetzt) or "").startswith("⚠️"):
             f.append("F genau 5'000 ist noch erlaubt (Grenze: MEHR als 5'000)")
+        w = m.bewerte({"zeit": frisch, "werte": {"a": 3000}, "waisen": {"schmuck-uhren": 221, "fur-ihn": 0}}, jetzt) or ""
+        if not w.startswith("⚠️ FILTERGRENZE-WAISEN: schmuck-uhren 221") or "fur-ihn" in w:
+            f.append(f"G Waisen müssen ⚠️ melden (nur Handles mit n > 0): {w[:80]}")
+        if m.bewerte({"zeit": frisch, "werte": {"a": 3000}, "waisen": {"schmuck-uhren": 0, "fur-ihn": 0}}, jetzt) is not None:
+            f.append("H 0 Waisen muss schweigen")
+        if "nicht prüfbar" not in (m.bewerte({"zeit": frisch, "werte": {"a": 3000}, "waisen": {"fur-ihn": None}}, jetzt) or ""):
+            f.append("I unmessbare Erreichbarkeit (None) darf nicht still als ok gelten")
+        if not (m.bewerte({"zeit": frisch, "werte": {"a": 5400}, "waisen": {"fur-ihn": 9}}, jetzt) or "").startswith("⚠️ FILTERGRENZE: a 5400"):
+            f.append("J Grenzüberschreitung geht den Waisen vor")
         return f
     fehler = faelle(sys.modules[__name__])
     mut = [("Grenze zu tief", "if n > 5000}", "if n > 4000}"), ("Veraltung ignoriert", "if alter > STAND_ALT_H:", "if False:"),
-           ("Unklar wird still", 'return "FILTERGRENZE: unklar (keine Messung in dropship/_filtergrenze_stand.json)"', "return None")]
+           ("Unklar wird still", 'return "FILTERGRENZE: unklar (keine Messung in dropship/_filtergrenze_stand.json)"', "return None"),
+           ("Waisen werden ignoriert", "    if waisen:\n        return", "    if False:\n        return"),
+           ("None zählt als ok", "if any(n is None for n in", "if False and any(n is None for n in"),
+           ("Waisen mit 0 zählen", "if n is not None and n > 0}", "if n is not None and n >= 0}")]
     erkannt = 0
     for name, alt, neu in mut:
         if quelle.count(alt) < 1:
@@ -123,7 +154,7 @@ def selbsttest():
     if fehler:
         print("SELBSTTEST FEHLGESCHLAGEN:\n  " + "\n  ".join(fehler))
         return 1
-    print(f"SELBSTTEST OK: 6 Fälle, {erkannt}/{len(mut)} Mutanten erkannt")
+    print(f"SELBSTTEST OK: 10 Fälle, {erkannt}/{len(mut)} Mutanten erkannt")
     return 0
 
 
