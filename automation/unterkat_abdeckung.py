@@ -28,6 +28,7 @@ import os
 import re
 import sys
 import time
+import urllib.parse
 from datetime import datetime, timezone
 
 HIER = os.path.dirname(os.path.abspath(__file__))
@@ -42,8 +43,10 @@ STOPP = {"mit", "und", "für", "fuer", "aus", "der", "die", "das", "von", "bei",
 
 
 def handle_aus_url(url):
+    """Kollektions-Handle aus der Menü-URL. Prozent-kodierte Handles (z. B. «%F0%9F%8E%81-geschenke-…» für «🎁-geschenke-…») werden dekodiert (22.10. Prüfung):
+    die Admin-API kennt den Handle mit dem Emoji, die Menü-URL liefert ihn kodiert."""
     m = re.search(r"/collections/([^/?#]+)", url or "")
-    return m.group(1) if m else None
+    return urllib.parse.unquote(m.group(1)) if m else None
 
 
 def abdeckung(produkte, kinder, eltern):
@@ -266,12 +269,16 @@ def selbsttest():
             f.append(f"E Chip-Reihenfolge {r}")
         if m.abdeckung([], ["a"], "e")["anteil_ohne"] != 0.0:
             f.append("F leere Kategorie")
+        if m.handle_aus_url("https://x.ch/collections/%F0%9F%8E%81-geschenke-bis-chf-30?x=1") != "🎁-geschenke-bis-chf-30" or m.handle_aus_url("/collections/uhren") != "uhren" \
+                or m.handle_aus_url("/pages/kontakt") is not None or m.handle_aus_url(None) is not None:
+            f.append("H Handle aus URL (kodierter Emoji-Handle, normaler, Nicht-Kollektion, None)")
         return f
     fehler = faelle(sys.modules[__name__])
     mut = [("Hauptkollektion zählt als Kind", "kinder = {k for k in kinder if k and k " + "!= eltern}", "kinder = {k for k in kinder if k}"),
            ("Lücke nicht gezählt", "if not hit:\n            ohne.append(p)", "if False:\n            ohne.append(p)"),
            ("Sammelgruppe nicht nach hinten", "return (" + "3, -g)", "return (1, -g)"),
            ("Kleinstgruppen vorn", "return (" + "2, -g)", "return (0, -g)"),
+           ("Handle bleibt kodiert", "return urllib.parse." + "unquote(m.group(1)) if m else None", "return m.group(1) if m else None"),
            ("Lücken-Zähler zählt alle", "            ohne.append(p)\n            for k in p[\"kollektionen\"] - kinder - {eltern}:\n                k_ohne[k] += 1\n",
             "            ohne.append(p)\n")]
     erkannt = 0
@@ -292,7 +299,7 @@ def selbsttest():
     if fehler:
         print("SELBSTTEST FEHLGESCHLAGEN:\n  " + "\n  ".join(fehler))
         return 1
-    print(f"SELBSTTEST OK: 7 Fälle, {erkannt}/{len(mut)} Mutanten erkannt")
+    print(f"SELBSTTEST OK: 8 Fälle, {erkannt}/{len(mut)} Mutanten erkannt")
     return 0
 
 

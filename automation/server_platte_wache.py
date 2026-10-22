@@ -131,6 +131,12 @@ def selbsttest():
             f.append("H 56 % / 16 GB frei muss schweigen")
         if not (m.bewerte(56, 16000, 50) or "").startswith("ℹ️ SERVER-PLATTE"):
             f.append("I alte Messung muss gemeldet werden")
+        # L Einheiten und Dezimalkomma (df -h in deutschem Locale schreibt «1,4G»)
+        if [m.mb(x) for x in ("950K", "115M", "1.4G", "1,4G", "2T", "512", "kaputt", "")] != [950 / 1024, 115, 1.4 * 1024, 1.4 * 1024, 2 * 1024 * 1024, 512 / 1048576, None, None]:
+            f.append(f"L Einheiten K/M/G/T, Dezimalkomma, reine Zahl, Unlesbares: {[m.mb(x) for x in ('950K', '115M', '1,4G', '2T', 'kaputt')]}")
+        # M FAST über den freien Platz allein (Prozent 80 %, aber nur 1,5 GB frei)
+        if not (m.bewerte(80, 1500, 5) or "").startswith("⚠️ SERVER-PLATTE FAST VOLL"):
+            f.append("M 80 % belegt, 1,5 GB frei muss FAST VOLL melden (freier Platz allein zählt)")
         with tempfile.TemporaryDirectory() as d:
             if "unklar" not in (m.zeile(verzeichnis=d) or ""):
                 f.append("J ohne Quittung muss «unklar» heissen, nie leer")
@@ -146,6 +152,10 @@ def selbsttest():
     mut = [("Prozent-Schwelle weg", "prozent >= VOLL_PROZENT or frei_mb < VOLL_FREI_MB", "frei_mb < VOLL_FREI_MB"),
            ("freier Platz zählt nicht", "prozent >= VOLL_PROZENT or frei_mb < VOLL_FREI_MB", "prozent >= VOLL_PROZENT"),
            ("laufende Quittung zählt", 'if d.get("stand") != ' + '"ok":', 'if False:'),
+           ("Einheit K falsch", '"K": 1 / 1024,', '"K": 1,'),
+           ("Einheit T falsch", '"T": 1024 * 1024}', '"T": 1024}'),
+           ("Dezimalkomma ungelesen", 'group(1).replace(",", ".")', 'group(1)'),
+           ("FAST nur nach Prozent", "prozent >= FAST_PROZENT or frei_mb < FAST_FREI_MB", "prozent >= FAST_PROZENT"),
            ("Einhängepunkt egal", 'teile[-1] == ' + '"/" and', "True and"),
            ("Unklar wird leer", 'return "SERVER-PLATTE: unklar' + ' (keine', 'return None  # (keine')]
     erkannt = 0
@@ -166,7 +176,7 @@ def selbsttest():
     if fehler:
         print("SELBSTTEST FEHLGESCHLAGEN:\n  " + "\n  ".join(fehler))
         return 1
-    print(f"SELBSTTEST OK: 11 Fälle, {erkannt}/{len(mut)} Mutanten erkannt")
+    print(f"SELBSTTEST OK: 13 Fälle, {erkannt}/{len(mut)} Mutanten erkannt")
     return 0
 
 

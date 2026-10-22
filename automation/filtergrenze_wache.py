@@ -59,6 +59,17 @@ def zeile():
         return bewerte(None)
 
 
+def schreibe_stand(werte, waisen, pfad=None, jetzt=None):
+    """Stand atomar schreiben (tmp + rename). Ohne Messwerte NICHT schreiben (ein leerer Lauf darf den letzten guten Stand nicht überdecken). → True, wenn geschrieben."""
+    if not werte:
+        return False
+    pfad = pfad or STAND
+    tmp = pfad + ".tmp"
+    json.dump({"zeit": (jetzt or datetime.now(timezone.utc)).isoformat(timespec="seconds"), "werte": werte, "warn": WARN, "waisen": waisen}, open(tmp, "w", encoding="utf-8"), ensure_ascii=False)
+    os.replace(tmp, pfad)
+    return True
+
+
 def main():
     werte = {}
     menue = [m for m in gql('{menus(first:30){nodes{handle items{url items{url items{url}}}}}}')["menus"]["nodes"]
@@ -95,10 +106,7 @@ def main():
     except Exception as e:  # Messung darf die Wache nie umwerfen
         print(f"FILTERGRENZE: Waisenprüfung fehlgeschlagen ({type(e).__name__}: {e})")
         waisen = {h: None for h in waisen} or {}
-    if werte:
-        tmp = STAND + ".tmp"
-        json.dump({"zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), "werte": werte, "warn": WARN, "waisen": waisen}, open(tmp, "w", encoding="utf-8"), ensure_ascii=False)
-        os.replace(tmp, STAND)
+    schreibe_stand(werte, waisen)
     wais_txt = "".join(f" · WAISEN {h} {n}" for h, n in sorted(waisen.items()) if n)
     print("FILTERGRENZE: " + ("ok (alle Menü-Kollektionen < %d aktiv)" % WARN if not befund else " · ".join(befund)) + wais_txt)
 
@@ -132,9 +140,23 @@ def selbsttest():
             f.append("I unmessbare Erreichbarkeit (None) darf nicht still als ok gelten")
         if not (m.bewerte({"zeit": frisch, "werte": {"a": 5400}, "waisen": {"fur-ihn": 9}}, jetzt) or "").startswith("⚠️ FILTERGRENZE: a 5400"):
             f.append("J Grenzüberschreitung geht den Waisen vor")
+        # K Stand schreiben: Inhalt rücklesbar, bewertet gleich; ohne Werte kein Schreiben und kein Überdecken
+        import tempfile
+        with tempfile.TemporaryDirectory() as d:
+            pf = os.path.join(d, "stand.json")
+            if not m.schreibe_stand({"a": 3000}, {"fur-ihn": 9}, pf, jetzt):
+                f.append("K1 Stand mit Werten muss geschrieben werden")
+            else:
+                gelesen = json.load(open(pf, encoding="utf-8"))
+                if gelesen.get("waisen") != {"fur-ihn": 9} or gelesen.get("werte") != {"a": 3000} or not (m.bewerte(gelesen, jetzt) or "").startswith("⚠️ FILTERGRENZE-WAISEN"):
+                    f.append(f"K2 gelesener Stand falsch: {gelesen}")
+            if m.schreibe_stand({}, {"fur-ihn": 9}, pf, jetzt) or json.load(open(pf, encoding="utf-8")).get("werte") != {"a": 3000}:
+                f.append("K3 ohne Messwerte darf der letzte gute Stand nicht überschrieben werden")
         return f
     fehler = faelle(sys.modules[__name__])
-    mut = [("Grenze zu tief", "if n > 5000}", "if n > 4000}"), ("Veraltung ignoriert", "if alter > STAND_ALT_H:", "if False:"),
+    mut = [("Leerer Lauf überschreibt", "    if not werte:\n        return False\n", "    pass\n"),
+           ("Waisen nicht im Stand", '"warn": WARN, "waisen": waisen}', '"warn": WARN}'),
+           ("Grenze zu tief", "if n > 5000}", "if n > 4000}"), ("Veraltung ignoriert", "if alter > STAND_ALT_H:", "if False:"),
            ("Unklar wird still", 'return "FILTERGRENZE: unklar (keine Messung in dropship/_filtergrenze_stand.json)"', "return None"),
            ("Waisen werden ignoriert", "    if waisen:\n        return", "    if False:\n        return"),
            ("None zählt als ok", "if any(n is None for n in", "if False and any(n is None for n in"),
@@ -154,7 +176,7 @@ def selbsttest():
     if fehler:
         print("SELBSTTEST FEHLGESCHLAGEN:\n  " + "\n  ".join(fehler))
         return 1
-    print(f"SELBSTTEST OK: 10 Fälle, {erkannt}/{len(mut)} Mutanten erkannt")
+    print(f"SELBSTTEST OK: 11 Fälle, {erkannt}/{len(mut)} Mutanten erkannt")
     return 0
 
 

@@ -1341,6 +1341,7 @@ def server_waechter_text(letzter_iso, jetzt):
         wann = datetime.fromisoformat(letzter_iso.replace("Z", "+00:00"))
         if wann.tzinfo is None:
             wann = wann.replace(tzinfo=timezone.utc)
+        wann = wann.astimezone(timezone.utc)   # Anzeige «UTC» muss stimmen, auch wenn git einen Zonenversatz liefert (22.10. Prüfung)
     except Exception:
         return None
     alter_h = (jetzt - wann).total_seconds() / 3600.0
@@ -1358,11 +1359,13 @@ def server_waechter():
     LETZTEN Commits (ohne --since), Text trennt «nie gelaufen» von «STILL seit n Tagen»."""
     from datetime import datetime, timezone
     try:
-        out = subprocess.run(["git", "-C", REPO, "log", "--author=luxe-waechter", "-1", "--format=%cI"],
-                             capture_output=True, text=True, timeout=20).stdout.strip()
+        r = subprocess.run(["git", "-C", REPO, "log", "--author=luxe-waechter", "-1", "--format=%cI"],
+                           capture_output=True, text=True, timeout=20)
     except Exception:
         return None                      # nicht messbar → kein erfundener Befund
-    return server_waechter_text(out, datetime.now(timezone.utc))
+    if r.returncode != 0:                # git-Fehler (gesperrtes Repo, flacher Klon) ist KEIN «nie gelaufen» (22.10. Prüfung)
+        return None
+    return server_waechter_text(r.stdout.strip(), datetime.now(timezone.utc))
 
 
 def judgeme_verdacht():

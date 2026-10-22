@@ -17,6 +17,7 @@ import json
 import os
 import re
 import sys
+import time
 
 HIER = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HIER)
@@ -124,7 +125,10 @@ def main():
             print(f"{'→' if SCHARF else '[TROCKEN]'} {h}: {n} Änderung(en) für {tot[:34]}… ({'Listenpunkt gestrichen' if not ersatz else '→ /collections/' + ersatz})")
             if not SCHARF:
                 continue
-            json.dump({"handle": h, "body": s["body"]}, open(os.path.join(VORHER, f"{h}_2026-10-22-seite.json"), "w", encoding="utf-8"), ensure_ascii=False)
+            sich = os.path.join(VORHER, f"{h}_2026-10-22-seite.json")
+            if os.path.exists(sich):   # zweiter Schreibgang: die ERSTE Sicherung (Originaltext) nie überschreiben (Prüfung 22.10.)
+                sich = os.path.join(VORHER, f"{h}_2026-10-22-seite-{time.strftime('%H%M%S')}.json")
+            json.dump({"handle": h, "body": s["body"]}, open(sich, "w", encoding="utf-8"), ensure_ascii=False)
             r = gql('mutation($id:ID!,$p:PageUpdateInput!){pageUpdate(id:$id,page:$p){page{body} userErrors{message}}}', {"id": s["id"], "p": {"body": neu}})["pageUpdate"]
             if r["userErrors"] or f"/products/{tot}" in (r["page"] or {}).get("body", ""):
                 print(f"   ⚠️ Schreiben/Rücklesen: {r['userErrors'] or 'Link steht noch'}")
