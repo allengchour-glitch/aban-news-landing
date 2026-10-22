@@ -74,7 +74,9 @@ def main():
     if zurueck != neu:
         print(f"⚠️ Rücklesen weicht ab (Länge {len(zurueck or '')} statt {len(neu)}) — Backup liegt unter {BACKUP}")
         return 2
+    md5 = lambda t: hashlib.md5(t.encode()).hexdigest()
     print(f"SCHARF: geschrieben und zurückgelesen ({len(zurueck)} Zeichen). Backup: {os.path.relpath(BACKUP, REPO)}")
+    print(f"md5 vorher {md5(live)} · nachher {md5(zurueck)} — danach NUR Antworten mit `render;dur` im Server-Timing prüfen; bei «Liquid error» sofort zurück (Rückweg im Kopf der Datei)")
     return 0
 
 

@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """video_auszeichnung_kanarien.py — Kanarienvogel für den VideoObject-Block der Produktseite (22.10.2026, Betreiber «video ja»).
 
-ANLASS (GEMESSEN 22.10.): Das Live-Theme gab kein VideoObject aus; nur 27 von 1'082 `video-hit`-Produkten tragen ein echtes Video-Medium
-(Dauer 0,9–48 s). Der Block steht in dropship/theme_patches/video_auszeichnung_2026-10-22.liquid und im Live-Theme in
-sections/product-information.liquid (Marke `luxe_vid`, die tägliche Marken-Wache theme_marken_wache.py meldet sein Verschwinden).
+ANLASS (GEMESSEN 22.10.): Das Live-Theme gab kein VideoObject aus; 547 von 56'652 aktiven Produkten haben ein echtes Video-Medium (nur 33 davon das
+Tag `video-hit`; meine erste Zählung «27 von 1'082» las nur die ersten 12 Medien je Produkt und nur das Tag). Der Block steht in
+dropship/theme_patches/video_auszeichnung_2026-10-22.liquid; im Live-Theme soll er in sections/product-information.liquid stehen (NOCH NICHT live;
+nach dem Einbau die Marken `LUX-VIDEO-JSONLD` / `luxe_vid` in theme_marken_wache.MARKEN eintragen — heute prüft dieser Test nur die QUELLE).
 Dieser Test schützt die QUELLE des Blocks gegen Rückfälle, die kein Shopify-Fehler anzeigt:
-  1. Entschieden wird am Medium (`media_type`), nie am Tag `video-hit` (das Tag war bei 1'055 von 1'082 Produkten ohne Video).
+  1. Entschieden wird am Medium (`media_type`), nie am Tag `video-hit` (das Tag `video-hit` trägt 1'082 Produkte, nur 33 davon ein Video; umgekehrt haben 547 ein Video).
   2. Pflichtfelder für Google: name, description, thumbnailUrl, uploadDate, contentUrl.
   3. JEDER ausgegebene Wert läuft durch `| json` (ein `</script>` oder ein Anführungszeichen im Produkttext bricht sonst den Block).
   4. Nur MP4 (kein m3u8), und nur MIT Vorschaubild UND Quelle; sonst kein Block.

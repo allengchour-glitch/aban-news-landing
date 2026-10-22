@@ -1,7 +1,7 @@
 {%- comment -%} LUX-VIDEO-JSONLD
   22.10.2026 (LuxeStyle, Betreiber «video ja»): VideoObject fuer Produktseiten mit echtem Video-Medium.
-  GEMESSEN 22.10.: nur 27 von 1'082 `video-hit`-Produkten tragen ein Video-Medium (Dauer 0,9-48 s, Median 5,2 s) —
-  das Tag allein beweist kein Video, darum wird am MEDIUM entschieden, nie am Tag. Eigener Block neben dem Product-
+  GEMESSEN 22.10. (Vollzaehlung per Admin-API, Pruefer): 547 von 56'652 aktiven Produkten haben ein Video-Medium (Dauer 0,9-125 s,
+  Median 21,7 s), nur 33 davon tragen das Tag `video-hit` — das Tag beweist kein Video, darum wird am MEDIUM entschieden, nie am Tag. Eigener Block neben dem Product-
   JSON-LD (dessen aggregateRating-Logik oben bleibt unberuehrt). Nur das erste Video-Medium, nur Shopify-Videos mit
   MP4-Quelle UND Vorschaubild; sonst kein Block. Pflicht bei Google: name, thumbnailUrl, uploadDate; empfohlen:
   description, contentUrl. Jeder Wert laeuft durch `json` (Anfuehrungszeichen und `<` im Text bleiben sicher).
