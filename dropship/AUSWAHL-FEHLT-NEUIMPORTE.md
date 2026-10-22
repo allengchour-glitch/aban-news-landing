@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-22 04:40 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-22 09:15 UTC)
 
-Suche: `status:active AND created_at:>=2026-10-19` · gemessen 446 · **265 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 239, teilweise: 16, keine: 10; Preisspanne > 2×: 38) · 1 CJ-Variante: 181 · ohne Antwort: 0
+Suche: `status:active AND created_at:>=2026-10-19` · gemessen 531 · **337 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 311, teilweise: 16, keine: 10; Preisspanne > 2×: 41) · 1 CJ-Variante: 194 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -9,9 +9,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Stahlarmband (`stahlarmband-627300`) | 99 | 99 | 2.24–3.46 | 16.90 | Style 244, Style 245, Style 246, Style 247 |
 | Chenille Sofakissen – Rundum Komfort (`chenille-sofakissen-rundum-komfort-611800`) | 99 | 99 | 3.51–19.1 | 79.90 | White-70x70cm, White-70x90cm, White-70x120cm, White-70x150cm |
 | Chenille Sofa-Kissen 70×70 cm (`chenille-sofa-kissen-70-70-cm-611300`) | 96 | 96 | 2.76–14.06 | 52.90 | Black Brown-70×70cm, Black Brown-70×90cm, Black Brown-70×120cm, Black Brown-70×150cm |
-| Aluminium-Magnesium-Legierung Handgepäck Koffer (`aluminium-magnesium-legierung-handgepack-koffe-604500`) | 96 | 96 | 43.06–61.63 | 243.90 | Gray-20 Inches, Gray-24 Inches, Gray-26 Inches, Gray-28 Inches |
 | Sofakissen 70×70 cm Chenille rutschfest (`sofakissen-70-70-cm-chenille-rutschfest-628700`) | 95 | 95 | 3.51–12.85 | 48.90 | Gray-70x70cm, Gray-70x90cm, Gray-70x120cm, Gray-70x150cm |
-| Trolley-Koffer aus Aluminium-Magnesium-Legierung (`trolley-koffer-aus-aluminium-magnesium-legieru-621700`) | 95 | 95 | 24.31–59.9 | 202.90 | A1830 Aluminum Frame Silver-20 Inch, A1830 Aluminum Frame Silver-22 Inch, A1830 Aluminum Frame Silver-24 Inch, A1830 Aluminum Frame Silver-26 Inch |
 | Chenille Sofakissenbezug – Streifen, 70–240 cm (`chenille-sofakissenbezug-streifen-70-240-cm-638300`) | 90 | 90 | 2.21–10.76 | 55.90 | Coffee Color-70x70cm, Coffee Color-70x90cm, Coffee Color-70x120cm, Coffee Color-70x150cm |
 | Kissenbezug mit abstraktem Kunstmuster (`kissenbezug-mit-abstraktem-kunstmuster-620200`) | 88 | 88 | 2.21–10.07 | 48.90 | Dust Trail Brown-70×70cm, Dust Trail Brown-70×90cm, Dust Trail Brown-70×120cm, Dust Trail Brown-70×150cm |
 | Sofa-Kissenbezug Retro Baumwoll-Leinen (`sofa-kissenbezug-retro-baumwoll-leinen-638300`) | 81 | 81 | 3.34–15.45 | 60.90 | Dark Gray-70X70cm, Dark Gray-70X90cm, Dark Gray-70X120cm, Dark Gray-70X150cm |
@@ -23,45 +21,39 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Kopftuch aus Modal-Baumwolle mit Marmor-Print (`kopftuch-aus-modal-baumwolle-mit-marmor-print-609900`) | 63 | 16 | 3.35–3.35 | 16.90 | 02style-170x70cm, 03style-170x70cm, 04style-170x70cm, 05style-170x70cm |
 | Personalisierte bestickte Geschenktasche 50×70 cm (`personalisierte-bestickte-geschenktasche-50-70-614600`) | 60 | 60 | 8.1–9.25 | 19.90 | White-50x70cm-Single Color Embroidery, White-50x70cm-Mixed Color Embroidery, White-40x60cm-Single Color Embroidery, White-40x60cm-Mixed Color Embroidery |
 | Edelstahlarmband (`edelstahlarmband-618300`) | 59 | 59 | 2.15–3.46 | 16.90 | Style 442, Style 443, Style 444, Style 445 |
-| Trolley aus Aluminium-Magnesium-Legierung (`trolley-aus-aluminium-magnesium-legierung-626800`) | 56 | 56 | 43.06–65.63 | 259.90 | Classic Silver-20 Inches, Classic Silver-24 Inches, Classic Silver-26 Inches, Classic Silver-29 Inches |
 | Sofaabdeckung aus Baumwolle, rutschfest, alljährlich (`sofaabdeckung-aus-baumwolle-rutschfest-alljahr-638900`) | 51 | 51 | 4.04–15.37 | 48.90 | Peach Joy-70x70cm, Peach Joy-70x90cm, Peach Joy-70x120cm, Peach Joy-70x150cm |
-| Multifunktionaler Trolley mit USB & Schloss (`multifunktionaler-trolley-mit-usb-schloss-609300`) | 50 | 50 | 17.19–26.74 | 155.90 | Black-20 Inches, Black-22 Inches, Black-24 Inches, Black-26 Inches |
 | Sofaabdeckung mit geometrischem Muster – 180×130 cm (`sofaabdeckung-mit-geometrischem-muster-180-130-605500`) | 44 | 44 | 5.27–15.8 | 57.90 | Diamond Coffee Color-180x130cm, Diamond Coffee Color-180x180cm, Diamond Coffee Color-180x230cm, Diamond Coffee Color-180x260cm |
 | Kaschmir-Schal für kalte Wintertage (`kaschmir-schal-fur-kalte-wintertage-620300`) | 29 | 20 | 4.44–4.85 | 16.90 | Beige, Black, White, Oatmeal Color |
-| Business-Rollkoffer mit Hartschale (`business-rollkoffer-mit-hartschale-608600`) | 28 | 28 | 48.61–66.84 | 254.90 | Green-20 Inches, Green-24 Inches, Green-26 Inches, Green-28 Inches |
 | Notizbuch mit PU-Ledercover (`notizbuch-mit-pu-ledercover-623800`) | 27 | 20 | 2.77–10.41 | 38.90 | Charming Black, Business Brown, Tiffany Blue, Vitality Red |
 | Clutch mit Münztasche und Kartenhalter (`clutch-mit-munztasche-und-kartenhalter-619900`) | 26 | 17 | 5.27–6.63 | 16.90 | Wine Red, Midnight Black, Palaeo Yellow, Custom Orange |
 | Highland Kuh Adventskalender (`highland-kuh-adventskalender-613500`) | 25 | 18 | 2.94–5.38 | 19.90 | Cat Blind Box, Christmas Building Blocks, Cow Blind Box, Cow Calendar With A Butt |
-| Multifunktionaler Rollkoffer (`multifunktionaler-rollkoffer-622700`) | 25 | 25 | 17.71–24.65 | 121.90 | White Brown-20 Inches, White Brown-22 Inches, White Brown-24 Inches, White Brown-26 Inches |
 | Titanstahl-Halskette mit rundem Anhänger (`titanstahl-halskette-mit-rundem-anhanger-636400`) | 24 | 24 | 3.98–13.71 | 22.90 | Steel-1 round block, Steel-2 round block, Steel-3 round block, Steel-4 round block |
 | Sofa-Bezug, modernes Design, schwarz-Marmor (`sofa-bezug-modernes-design-schwarz-marmor-626300`) | 24 | 24 | 6.42–11.98 | 40.90 | Black Marble-Single, Black Marble-Double, Black Marble-Three People, Black Leaf-Single |
 | Mechanische Tastatur 87 Tasten, Bluetooth (`mechanische-tastatur-87-tasten-bluetooth-627800`) | 24 | 17 | 19.9–34.83 | 68.90 | 87 Black, 87 White, 87 Female Pink, 108 Black |
-| Trolley-Koffer mit Becherhalter und USB-Anschluss (`trolley-koffer-mit-becherhalter-und-usb-anschl-626900`) | 24 | 24 | 11.81–17.01 | 105.90 | 998 Cup Holder Pink-20 Inches, 998 Cup Holder Pink-22 Inches, 998 Cup Holder Pink-24 Inches, 998 Cup Holder Pink-26 Inches |
 | Trolley Koffer für Business und Reise (`trolley-koffer-fur-business-und-reise-605000`) | 24 | 24 | 14.34–20.66 | 100.90 | DY5209 Lemon Yellow-20 Inches, DY5209 Lemon Yellow-22 Inches, DY5209 Lemon Yellow-24 Inches, DY5209 Lemon Yellow-26 Inches |
+| Minimalistische Quarz-Uhr für Business & Sport (`minimalistische-quarz-uhr-fur-business-sport-604800`) | 23 | 19 | 11.46–11.46 | 20.90 | Black ShellBlack BrownLeather, Black Sail, White Shell Brown Leather, Black Sail 1 |
 | Schwere Seidenkissenhülle 50×75 cm (`schwere-seidenkissenhulle-50-75-cm-631100`) | 22 | 16 | 32.64–32.64 | 43.90 | Champagne-50x75cm, Cameo Brown-50x75cm, Smoke Pink-50x75cm, Wine Red-50x75cm |
 | Harz-Schmuckfarbe (`harz-schmuckfarbe-c11c75`) | 22 | 0 | 0.68–0.8 | 16.90 | Lemon, Dark Red, White, Purple |
 | Smart Ring mit Herzfrequenz- und Schlafüberwachung (`smart-ring-mit-herzfrequenz-und-schlafuberwach-631300`) | 21 | 21 | 7.95–7.95 | 16.90 | Gold-No.7, Gold-No.8, Gold-No.9, Gold-No.10 |
 | Sofakissenbezug aus Milchvelvet – 70×70 cm (`sofakissenbezug-aus-milchvelvet-70-70-cm-621100`) | 20 | 20 | 3.16–7.99 | 36.90 | Dark Gray-70×70cm, Dark Gray-70×150cm, Dark Gray-70×180cm, Dark Gray-70×210cm |
 | Keramiktasse 400 ml 3D Zebra (`keramiktasse-400-ml-3d-zebra-624400`) | 20 | 16 | 3.02–3.02 | 16.90 | 3D Zebra-400ml, 3D Sika Deer-400ml, 3D Elephant-400ml, 3D Orangutan-400ml |
 | Ovaler Zirconring-Set – 2- oder 3-teilige Varianten (`ovaler-zirconring-set-2-oder-3-teilige-variant-633700`) | 20 | 20 | 2.02–3.16 | 16.90 | White Gold 2 Piece Set-No 5, White Gold 2 Piece Set-No 6, White Gold 2 Piece Set-No 7, White Gold 2 Piece Set-No 8 |
-| Grosser Rollkoffer mit Nass- und Trockenfach (`grosser-rollkoffer-mit-nass-und-trockenfach-612200`) | 20 | 20 | 16.49–21.7 | 122.90 | Wine Red-20 Inches, Wine Red-24 Inches, Wine Red-26 Inches, Wine Red-28 Inches |
-| Reisekoffer mit Zahlenschloss (`reisekoffer-mit-zahlenschloss-607600`) | 20 | 20 | 14.34–20.66 | 100.90 | DY5209 Lemon Yellow-20 Inches, DY5209 Lemon Yellow-22 Inches, DY5209 Lemon Yellow-24 Inches, DY5209 Lemon Yellow-26 Inches |
 | Geschenkverpackung aus Hartpapier (`geschenkverpackung-aus-hartpapier-606400`) | 18 | 18 | 2.92–2.92 | 16.90 | 1 Brushed Silver-12x12x12cm, 2 Pure White-12x12x12cm, 3 Luxury Gold-12x12x12cm, 4 Pure Gold-12x12x12cm |
 | Silberner Kissenbezug aus Mulberry-Seide (`silberner-kissenbezug-aus-mulberry-seide-610700`) | 17 | 16 | 25.17–25.17 | 34.90 | Wine Red, Smoke Pink, Lake Blue, Gray And Blue |
 | Sofa-Bezug mit Textur-Muster (`sofa-bezug-mit-textur-muster-600500`) | 16 | 16 | 2.39–21.01 | 84.90 | Coffee Color-Single Seat, Coffee Color-Two Seat, Coffee Color-Three Seat, Coffee Color-Four Seat |
 | Leder-Notizbuch mit Metallspirale A5 (`leder-notizbuch-mit-metallspirale-a5-612800`) | 16 | 15 | 2.55–2.55 | 16.90 | Pink 25 Years, Black 25 Years, Gray 25 Years, Blue 25 Years |
 | Keramik-Blumentopf für Pflanzen (`keramik-blumentopf-fur-pflanzen-606500`) | 16 | 16 | 4.33–5.94 | 36.90 | Light Blue-Ceramic- KY148, Light Blue-Ceramic- KY149, Light Blue-Ceramic- KY150, Light Blue-Ceramic- KY151 |
 | Universal Canvas Handygürteltasche (`universal-canvas-handygurteltasche-607700`) | 16 | 16 | 3.13–3.14 | 16.90 | Black-Universal 6 Inches, Black-Universal 6.9 Inches, Dark Blue-Universal 6 Inches, Dark Blue-Universal 6.9 Inches |
-| Grosser tragbarer Aufbewahrungswagen (`grosser-tragbarer-aufbewahrungswagen-638900`) | 16 | 15 | 3.86–6.35 | 49.90 | Black-L-Mobile Version, Black-L-Floor Model, Black-M-Mobile Version, Black-M-Floor Model |
 | Geometrischer Ring mit Zirkonia (`geometrischer-ring-mit-zirkonia-621600`) | 15 | 15 | 6.63–6.63 | 16.90 | Gold-No 7, Gold-No 8, Gold-No 9, Gold-No 10 |
 | Silberring mit Wassertropfen-Design (`silberring-mit-wassertropfen-design-622900`) | 15 | 15 | 50.58–50.58 | 63.90 | R494 White Diamond-No 5, R494 White Diamond-No 6, R494 White Diamond-No 7, R494 White Diamond-No 8 |
 | S138 UAV mit 360° Hinderniserkennung, Dualkamera (`s138-uav-mit-360-hinderniserkennung-dualkamera-618900`) | 15 | 15 | 7.46–15.75 | 32.90 | No Camera-Single Electric Package, No Camera-2 Electric Package, No Camera-3 Electric Package, Single E88 Black-Single Electric Package |
 | Kissenbezug Baumwolle, 100 % – Muster (`kissenbezug-baumwolle-100-muster-601500`) | 15 | 15 | 3.03–3.03 | 16.90 | Olive Green-48cmX74cm Single Pillowcase, Scotland-48cmX74cm Single Pillowcase, Turmeric-48cmX74cm Single Pillowcase, Purplish Blue-48cmX74cm Single Pillowcase |
-| Grosser Canvas-Trolleykoffer 20 Zoll (`grosser-canvas-trolleykoffer-20-zoll-630300`) | 15 | 15 | 22.31–22.31 | 125.90 | Black-20 Inches-20inch, Brown-20 Inches-20inch, Chocolate-20 Inches-20inch, Elegant Black-20 Inches-20inch |
+| Reisekoffer mit Teleskopgriff (`reisekoffer-mit-teleskopgriff-603800`) | 15 | 15 | 22.4–25.87 | 100.90 | Ivory White-20 Inches, Ivory White-22 Inches, Ivory White-24 Inches, Obsidian Black-20 Inches |
 | Ring mit Elefanten-Design (`ring-mit-elefanten-design-605900`) | 14 | 14 | 2.02–2.19 | 16.90 | Steel Color-No 7, Steel Color-No 8, Steel Color-No 9, Steel Color-No 10 |
 | Smartwatch mit Bluetooth-Telefonie und Taschenlampe (`smartwatch-mit-bluetooth-telefonie-und-taschen-606100`) | 14 | 14 | 25.17–27.78 | 39.90 | TK18 Black, TK18 Blue, TK18 Red, TK18 Beige |
 | Blumen-Pigment – Hochkonzentriert (`blumen-pigment-hochkonzentriert-262704`) | 14 | 0 | 0.41–0.41 | 16.90 | Red, Redish black, Black, White |
-| Leichter Rollkoffer für Handgepäck, bedruckt (`leichter-rollkoffer-fur-handgepack-bedruckt-628100`) | 14 | 14 | 17.01–23.96 | 126.90 | Printed Mint Blue-20 Inches, Printed Mint Blue-24 Inches, Grain White-20 Inches, Grain White-24 Inches |
+| Leichter Rollkoffer mit 20 Zoll (`leichter-rollkoffer-mit-20-zoll-630500`) | 14 | 14 | 3.95–6.75 | 52.90 | Silver Gray-20 Inches, Silver Gray-24 Inches, White-20 Inches, White-24 Inches |
+| Wasserdichte Business-Uhr für Paare (`wasserdichte-business-uhr-fur-paare-614500`) | 14 | 14 | 6.6–7.64 | 16.90 | Gun Black Male, Silver Black Male, Silver Black Female, Silver White Male |
 | Seiden-Stickerei-Schal – 70×180 cm (`seiden-stickerei-schal-70-180-cm-622400`) | 13 | 13 | 2.55–2.55 | 16.90 | Pink, Sky Blue, Beige, Turmeric |
 | Smartwatch mit Bluetooth-Anruf (`smartwatch-mit-bluetooth-anruf-602700`) | 13 | 13 | 16.81–51.84 | 67.90 | Flagship Black Silicone, Flagship Red Silicone, Flagship Blue Silicone, Top Black Steel |
 | Multifunktionales Babykissen zum Sitzenlernen (`multifunktionales-babykissen-zum-sitzenlernen-625200`) | 13 | 13 | 3.97–6.6 | 31.90 | Rhine Fish Set, Brunswick Cat Suit, Dolphin Sea Suit, Tongyan Xiyu Suit |
@@ -72,11 +64,19 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Hundemantel Winterwolle, monochrom (`hundemantel-winterwolle-monochrom-602700`) | 12 | 12 | 5.8–5.8 | 16.90 | Monochrome-XS, Monochrome-S, Monochrome-M, Monochrome-L |
 | HDMI-Distributor 4K Splitter mit USB-Ladeanschluss (`hdmi-distributor-4k-splitter-mit-usb-ladeansch-616200`) | 12 | 12 | 2.46–3.69 | 16.90 | 4K(HW HD102M)-American Standard, 4K(HW HD102M)-European Standard, 4K(HW HD102M)-USB Charger Lead, 1080P(HW HD102)-American Standard |
 | Seiten-Autoaufkleber für Tür und Zierleiste (`seiten-autoaufkleber-fur-tur-und-zierleiste-064640`) | 12 | 12 | 3.23–3.23 | 18.90 | Matte gold-2pcs, Bright orange-2pcs, Matte silver-2pcs, Bright red-2pcs |
-| Leichter Rollkoffer mit grossem Volumen (`leichter-rollkoffer-mit-grossem-volumen-610300`) | 12 | 12 | 34.55–51.91 | 195.90 | Dark Green-20 Inches, Dark Green-24 Inches, Dark Green-26 Inches, Dark Green-28 Inches |
+| Haushaltspfanne mit Antihaft-Beschichtung (`haushaltspfanne-mit-antihaft-beschichtung-631200`) | 12 | 12 | 7.41–32.82 | 148.90 | 26cm Without Coating-0 Coating, 28cm Without Coating-0 Coating, 30cm Without Coating-0 Coating, 26 Cm With Lid-0 Coating |
+| Titanium-Topf 16 cm – Antihaft-Kochgeschirr (`titanium-topf-16-cm-antihaft-kochgeschirr-614300`) | 12 | 12 | 15.45–26.91 | 69.90 | 16 Single Pots-Titanium, 18 Single Pots-Titanium, 20 Single Pots-Titanium, 22 Single Pots-Titanium |
+| Quarzuhr für Damen mit Stahlband (`quarzuhr-fur-damen-mit-stahlband-607100`) | 12 | 12 | 12.85–12.85 | 21.90 | IEKE88073, IEKE88298, IEKE88107, IEKE88172 |
+| Automatische, wasserdichte Herren-Armbanduhr (`automatische-wasserdichte-herren-armbanduhr-615300`) | 12 | 12 | 25.17–26.13 | 35.90 | P1416 Gold Gray, P1416 Gold White, P1416 Gold Black, P1416 Gold |
+| Wasserdichte Herren-Uhr mit Lichterzeugung (`wasserdichte-herren-uhr-mit-lichterzeugung-621400`) | 12 | 12 | 5.64–6.86 | 16.90 | Silver Case Gray Surface, Silver Case White Noodles, Silver Case Black Noodles, Silver Case Blue Face |
+| Business-Armbanduhr mit Dual-Kalender und Leuchtzeiger (`business-armbanduhr-mit-dual-kalender-und-leuc-605200`) | 12 | 12 | 3.74–3.74 | 16.90 | Gold Silver White, Gold Silver Blue, Gold Silver Black, Silver |
 | USB-C 7-in-1 Dock mit HDMI-Ausgang und Kabeltrennung (`usb-c-7-in-1-dock-mit-hdmi-ausgang-und-kabeltr-612700`) | 11 | 8 | 2.19–24.71 | 38.90 | 7 In 1, 4 In 1, 5 In 1, 6 In 1 |
 | Fahrradhelm mit Visier (`fahrradhelm-mit-visier-605700`) | 11 | 11 | 5.38–5.38 | 17.90 | Chinese Red-Free Size, Blue And White-Free Size, Black And Blue-Free Size, Pink-Free Size |
 | A4 Aktenordner mit 6 Fächern (`a4-aktenordner-mit-6-fachern-617500`) | 11 | 11 | 2.48–2.48 | 16.90 | Gradient Blue And White, Gradient Green And White, Gradient Orange And Black, Morandi White |
 | Marmor Seifenspender – Nordischer Stil (`marmor-seifenspender-nordischer-stil-637900`) | 11 | 11 | 13.02–13.02 | 51.90 | Circular-White, Circular-Green, Circular-Black, Circular-Grey |
+| Minimalistische Quarzuhr für Damen (`minimalistische-quarzuhr-fur-damen-626500`) | 11 | 11 | 3.51–4.21 | 16.90 | Steel Belt Gold White, Steel Belt Full Gold, Steel Belt Silver White, Steel Belt Silver Black |
+| Wasserdichte Armbanduhr mit Silikonarmband (`wasserdichte-armbanduhr-mit-silikonarmband-639900`) | 11 | 11 | 5.23–5.23 | 16.90 | 1 Style, 2 Style, 3 Style, 4 Style |
+| Herrenuhr mit Leuchtfunktion und Wasserschutz (`herrenuhr-mit-leuchtfunktion-und-wasserschutz-617000`) | 11 | 11 | 14.91–14.91 | 23.90 | Black, Blue, Gold, Golden And Black |
 | Wollschal mit Wursthunde-Print (`wollschal-mit-wursthunde-print-614400`) | 10 | 10 | 3.35–3.35 | 16.90 | Pearl White-170cm, Beige-170cm, Light Gray-170cm, Khaki-170cm |
 | Kubanischer Ring mit Zirkonia (`kubanischer-ring-mit-zirkonia-606900`) | 10 | 10 | 6.14–6.14 | 16.90 | Gold-No 7, Gold-No 8, Gold-No 9, Gold-No 10 |
 | Vergoldeter Ring mit Zirkonia-Steinen (`vergoldeter-ring-mit-zirkonia-steinen-637900`) | 10 | 10 | 7.46–7.46 | 16.90 | Gold-No 7, Gold-No 8, Gold-No 9, Gold-No 10 |
@@ -86,12 +86,21 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Stahlarmband-Uhr mit Quarzwerk – Silberschale (`stahlarmband-uhr-mit-quarzwerk-silberschale-602000`) | 10 | 10 | 8.68–10.07 | 19.90 | Silver Case Silver Surface, Silver Case Blue Face, Silver Case Black Noodles, Black Shell Black Surface |
 | Grosser Outdoor-Rucksack mit wasserdichtem Design (`grosser-outdoor-rucksack-mit-wasserdichtem-des-622800`) | 10 | 10 | 6.77–7.29 | 30.90 | Black-Large Size, Black-Medium, Dark Blue-Large Size, Dark Blue-Medium |
 | Smartwatch mit Herzfrequenz- und SpO2-Messung (`smartwatch-mit-herzfrequenz-und-spo2-messung-633100`) | 10 | 10 | 44.79–49.65 | 64.90 | Top Of The Line Black Silicone, Black Three Bead Steel, Black Milanese Steel, Genuine Leather Black |
+| Quadratische mechanische Herrenarmbanduhr (`quadratische-mechanische-herrenarmbanduhr-622900`) | 10 | 10 | 14.93–15.97 | 25.90 | Black Belt, Silver Black Belt, Silver Blue Belt, Gold Black Belt |
+| 3D-Militärausgabe Jubiläumsbecher (`3d-militarausgabe-jubilaumsbecher-634500`) | 10 | 10 | 4.39–17.56 | 57.90 | Type A, Type B, Type A 2PC, Type B 2PC |
+| Quarz-Uhr wasserdicht, leuchtend, multifunktional für Herren (`quarz-uhr-wasserdicht-leuchtend-multifunktiona-621200`) | 10 | 10 | 9.38–37.5 | 59.90 | Black Shell Black-1PC, Gold Shell Gold Surface-1PC, Rose Gold Black Surface-1PC, Rose Gold Blue Surface-1PC |
+| Hohle Automatik-Uhr mit Leuchtfunktion (`hohle-automatik-uhr-mit-leuchtfunktion-615400`) | 10 | 10 | 17.88–17.88 | 27.90 | Gold Black-Leather Strap, Gold Black-Steel Belt, Gold Blue-Leather Strap, Gold Blue-Steel Belt |
 | Buntes, schmaler Retro-Schal in Regenbogenfarben (`buntes-schmaler-retro-schal-in-regenbogenfarbe-621000`) | 9 | 9 | 2.72–2.72 | 16.90 | Red Orange Purple-190X10cm, Gray Orange White-190X10cm, Blue Orange Rice-190X10cm, Gray White And Black-190X10cm |
 | Ovaler Fotorahmen für die Wand (`ovaler-fotorahmen-fur-die-wand-622100`) | 9 | 9 | 4.04–27.6 | 75.90 | 4 Pieces, 5 Pieces, Square, Ellipse |
 | Welpen Pullover Herbst & Winter (`puppy-pullover-herbst-winter-492992`) | 9 | 9 | 3.16–4.16 | 16.90 | Blue Rabbit Sweater-XS-Without bag, Blue Rabbit Sweater-M-Without bag, Blue Rabbit Sweater-L-Without bag, Blue Rabbit Sweater-XL-Without bag |
 | Nichthaftende Bratpfanne mit gebogener Handhabung (`nichthaftende-bratpfanne-mit-gebogener-handhab-626200`) | 9 | 9 | 4.04–6.6 | 32.90 | Bent Handle Gas Model White-22cm, Gas Payment White-22cm, Curved Handle White-22cm, Curved Handle White Gift-22cm |
 | Hochtemperatur-Quarzschale (`hochtemperatur-quarzschale-c87af8`) | 9 | 0 | 0.51–8.97 | 24.90 | 98X37mm, 105X43mm, 140X51mm, 78X34mm |
 | Herzfoto-Armband mit Geburtsstein (`herzfoto-armband-mit-geburtsstein-605900`) | 9 | 9 | 7.08–9.95 | 18.90 | Gold-1photo right 1engraving left, Gold-2 photo 1back engraving, Gold-1 photo right, Silver-1photo right 1engraving left |
+| Herren-Quarzuhr mit Dual-Kalender und Lederarmband (`herren-quarzuhr-mit-dual-kalender-und-lederarm-630900`) | 9 | 9 | 3.16–3.16 | 16.90 | Coffee Belt White Gold, Coffee Belt Blue Gold, Coffee Belt Black Gold, Black Belt Silver |
+| Damen Quarzuhr mit Mesh-Armband (`damen-quarzuhr-mit-mesh-armband-617000`) | 9 | 9 | 6.77–6.77 | 16.90 | Mesh Belt Rose White, Mesh Belt Rose Black, Black Belt Black Rose, Mesh Belt Rose Blue |
+| Quadratische Quarz-Uhr mit Edelstahlarmband, wasserdicht (`quadratische-quarz-uhr-mit-edelstahlarmband-wa-604800`) | 9 | 9 | 6.34–6.6 | 16.90 | SteelBlue Face, All Black With A Blue Surface, All Black And Black Noodles, Steel Black Surface |
+| Männer-Wasserdichte Luminierende Quarz-Uhr (`manner-wasserdichte-luminierende-quarz-uhr-605000`) | 9 | 9 | 6.34–7.47 | 16.90 | 825 Rooms In Gold And Blue, 825 Rooms In Gold And White, 825 Rooms In Gold And Black, 825 Rooms Of Golden Green |
+| Wasserdichte leuchtende Quarz-Herrenarmenuhr (`wasserdichte-leuchtende-quarz-herrenarmenuhr-608600`) | 9 | 9 | 5.38–6.6 | 16.90 | Golden And Blue Surface, Golden White Noodles, Golden Black Noodles, Golden Green Surface |
 | Feuchtigkeitslipgloss, langanhaltend, verwischfrei (`feuchtigkeitslipgloss-langanhaltend-verwischfr-635800`) | 8 | 7 | 2.17–2.17 | 16.90 | Starry Peach, Jue Brewing Plum Powder, Laid back Misty Pink, Electric Berry |
 | Gold-Foil-Chocolate Lidschatten (`gold-foil-chocolate-lidschatten-099712`) | 8 | 8 | 3.52–3.52 | 16.90 | 601 Pine Cone Wood Rose, 602 Elk Maple Grove, 603 Gold Foil Chocolate, Apricot Peach Plate |
 | Star Kiss Diamant Lippenstift (`star-kiss-diamant-lippenstift-625800`) | 8 | 8 | 2.57–2.57 | 16.90 | Deep purple brown-3.5g, Peach powder-3.5g, Rosy-3.5g, Naked rice tea-3.5g |
@@ -100,7 +109,14 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Handliches Kosmetik-Set mit grossem Fassungsvermögen (`handliches-kosmetik-set-mit-grossem-fassungsve-639100`) | 8 | 8 | 8.79–8.79 | 53.90 | Black Crocodile Pattern, Black Tabby, Brown Plaid, Red Crocodile Pattern |
 | M10PLUS Ultra Clear Projektor 720p (`m10plus-ultra-clear-projektor-720p-604800`) | 8 | 8 | 46.53–46.53 | 76.90 | White-EU, White-UK, White-US, White-AU |
 | Bauklötze – Yuxing Modellboot Spielzeug (`bauklotze-yuxing-modellboot-spielzeug-601100`) | 8 | 8 | 8.16–20.49 | 57.90 | 10217 Catamaran Sailboat, 10190 Modern Sailing Ship, 10194S Two Mast Sailboat, 10134 Small Exploration Ship |
-| Magnetische Rennstrecke mit Auto – 68-Teile-Set (`magnetische-rennstrecke-mit-auto-68-teile-set-619400`) | 8 | 8 | 5.56–14.43 | 64.90 | 7260D Building Block Track Car, 7260E Building Block Track Car, Magnetic Track Cars 66pcs, Magnetic Track Car 86pcs |
+| Grosser Koffer für Reisen (`grosser-koffer-fur-reisen-607400`) | 8 | 8 | 70.31–112.3 | 252.90 | White-20 Inches, Gun Gray-20 Inches, Red-20 Inches, Camouflage-20 Inches |
+| Bratpfanne aus Edelstahl (`bratpfanne-aus-edelstahl-639200`) | 8 | 8 | 16.26–52.42 | 181.90 | 304 Pairs Without Cover-26cm with Fried Shovel, 304 Pairs Without Cover-28cm with Fried Shovel, 304 Pairs Without Cover-30cm with Fried Shovel, 304 Pairs Without Cover-26and28a30cm with Fried Shovel |
+| Herrenuhr mit Lederarmband und schwarzem Zifferblatt (`herrenuhr-mit-lederarmband-und-schwarzem-ziffe-605800`) | 8 | 8 | 6.08–6.08 | 16.90 | 1 Style, 2 Style, 3 Style, 4 Style |
+| Quarz-Uhr mit Doppelknopf-Ösen, wasserdicht (`quarz-uhr-mit-doppelknopf-osen-wasserdicht-626000`) | 8 | 8 | 7.9–9.11 | 17.90 | Silver Case Blue Face, Silver Case White Noodles, Silver Case Black Noodles, Silver Case Green Surface |
+| Moka Kanne mit Doppelventil (`moka-kanne-mit-doppelventil-629600`) | 8 | 8 | 37.33–47.74 | 73.90 | Black-2 Cups, Black-4 Cups, White-2 Cups, White-4 Cups |
+| Silber-Case Uhr mit orangefarbenem Armband (`silber-case-uhr-mit-orangefarbenem-armband-615400`) | 8 | 8 | 8.68–9.2 | 17.90 | Red Belt-Black, Red Belt-Silver, Black Belt-Black, Black Belt-Silver |
+| Multifunktionale wasserdichte Digitaluhr (`multifunktionale-wasserdichte-digitaluhr-619500`) | 8 | 8 | 7.92–7.92 | 16.90 | Black Silver, All Black, Black Orange, Black And Blue |
+| Quarz-Herrenuhr mit Stahlarmband (`quarz-herrenuhr-mit-stahlarmband-611900`) | 8 | 8 | 6.38–9.04 | 17.90 | Silver Blue Steel Belt, Silver Black Steel Belt, Rose Gold Black Steel Belt, Rose Gold Blue Steel Belt |
 | Taktische Umhängetasche für Outdoor-Sport (`taktische-umhangetasche-fur-outdoor-sport-624800`) | 7 | 7 | 5.03–5.03 | 18.90 | Black-Below 20L, Brown-Below 20L, Italian Camouflage-Below 20L, Dark Night-Below 20L |
 | Umhängetasche mit Rautenmuster (`umhangetasche-mit-rautenmuster-623000`) | 7 | 7 | 7.99–7.99 | 21.90 | Color, Silver, Black Gold Diamand, Green |
 | Kristall-Hanf Kopftuch – Monochromes Design (`kristall-hanf-kopftuch-monochromes-design-606000`) | 7 | 7 | 3.1–3.1 | 16.90 | 2 White-Average Size, 3 Navy Blue-Average Size, 4 Pink Color-Average Size, 5 Light Khaki-Average Size |
@@ -116,9 +132,9 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Flüssiger Rouge – 5-farbiges Set (`flussiger-rouge-5-farbiges-set-646300`) | 7 | 7 | 3.44–4.19 | 16.90 | JC01 Sakura Custard, JC02 Blueberry Milkshake, JC03 Raspberry Toffee, JC04 Fig Coffee |
 | Tyvek Grillthermo-Tasche 23" (braun) (`tyvek-grillthermo-tasche-23-braun-613800`) | 7 | 7 | 4.74–8.51 | 21.90 | Brown-15Inch, Brown-21Inch, Brown-23Inch, Black-21Inch |
 | Businessrucksack mit 20-35 l Kapazität (`businessrucksack-mit-20-35-l-kapazitat-622600`) | 7 | 7 | 7.64–8.68 | 31.90 | 5022 Black, 5022 Gray, 9022A Black, 9022A Khaki |
-| Outdoor-Backpack 22 L, wasserfest, leicht (`outdoor-backpack-22-l-wasserfest-leicht-628700`) | 7 | 7 | 21.54–21.54 | 36.90 | Moon Gray-22L, Melbourne Black-22L, Ore Gray-22L, Khaki Light-22L |
-| Käsereibe mit Aufbewahrungsbox und Holzdesign (`kasereibe-mit-aufbewahrungsbox-und-holzdesign-615100`) | 7 | 7 | 2.81–3.56 | 16.90 | Silver Standard, Silver Handle Style, Round Handle Silver Model, Black Standard |
-| Kupferstempel für Backwaren und Leder (`kupferstempel-fur-backwaren-und-leder-634500`) | 7 | 7 | 6.85–11.72 | 20.90 | 2.5cm, 3cm, 3.2cm, 3.5cm |
+| Sportliche Bauchtasche für Outdoor-Aktivitäten (`sportliche-bauchtasche-fur-outdoor-aktivitaten-636000`) | 7 | 7 | 4.34–4.34 | 16.90 | Black, Purple, Green, Light Blue |
+| Quarz-Armbanduhr, schwarz, 11 mm Gehäusedicke (`quarz-armbanduhr-schwarz-11-mm-gehausedicke-624100`) | 7 | 7 | 9.78–9.78 | 18.90 | Black Noodles, Silver White, Silver Red, Black And Red |
+| Vollautomatische mechanische Tourbillon-Uhr, quadratisch (`vollautomatische-mechanische-tourbillon-uhr-qu-628200`) | 7 | 7 | 32.64–32.64 | 42.90 | White shell and black face, Black shell and black face, Gold shell and gold surface, Black face with golden shell |
 | Kashmirähnlicher Karomuster-Schal (`kashmirahnlicher-karomuster-schal-619500`) | 6 | 6 | 2.02–2.02 | 16.90 | WT1582 Black-200x64cm With Tassels, WT1583 Pink-200x64cm With Tassels, WT1585 Gray Big Plaid-200x64cm With Tassels, WT1586 Red Plaid-200x64cm With Tassels |
 | Flammen-Totenkopf-Ring aus Titanstahl (`flammen-totenkopf-ring-aus-titanstahl-636600`) | 6 | 6 | 2.6–2.6 | 16.90 | No 7, No 8, No 9, No 11 |
 | Herrenring aus Wolframkarbid mit Zirkonia (`herrenring-aus-wolframkarbid-mit-zirkonia-612000`) | 6 | 6 | 12.94–12.94 | 21.90 | Black-No 7, Black-No 8, Black-No 9, Black-No 10 |
@@ -139,11 +155,16 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Acryl-Display-Box mit Doppelwand, staubgeschützt (`acryl-display-box-mit-doppelwand-staubgeschutz-603400`) | 6 | 6 | 2.17–6.51 | 17.90 | MINIGT-1PCS, Tomica-1PCS, MINIGT-2PCS, MINIGT-3PCS |
 | Grosses Holz-Bauklotz-Set für Kinder 4–6 Jahre (`grosses-holz-bauklotz-set-fur-kinder-4-6-jahre-603000`) | 6 | 6 | 6.25–11.28 | 57.90 | Printed wood-Bagged, Printed wood-Bucket, Beech wood-Bagged, Beech wood-Bucket |
 | Stadtstrasse 3D-Puzzle aus Papier (`stadtstrasse-3d-puzzle-aus-papier-634400`) | 6 | 6 | 2.62–2.62 | 16.90 | Fire Station, Police Station, Shopping Mall, Post Office |
-| Baby- und Mami-Organizer aus Polyester (`baby-und-mami-organizer-aus-polyester-628900`) | 6 | 6 | 2.94–2.94 | 16.90 | Dark Gray, Beige, M White Rabbit, Pink |
 | Wasserfester Rucksack für Studenten und Business (`wasserfester-rucksack-fur-studenten-und-busine-626800`) | 6 | 6 | 17.41–17.41 | 48.90 | Light Gray, Blue, Black, Gray Without Logo |
-| Kleine Canvas Aufbewahrungstasche (`kleine-canvas-aufbewahrungstasche-626400`) | 6 | 6 | 3.86–3.86 | 16.90 | Gray-24x10x14CM, Coffee-24x10x14CM, Dark Blue-24x10x14CM, Army Green-24x10x14CM |
-| Keksstempel – Weihnachtsmotiv (`keksstempel-weihnachtsmotiv-622000`) | 6 | 6 | 6.71–8.84 | 17.90 | Single stamp 3D printing, Single stamp acrylic, Stamp  Circular Cutter, Stamp  Fanshaped cutter |
-| Bücherregal Metall für Schreibtisch (`bucherregal-metall-fur-schreibtisch-619700`) | 6 | 6 | 4.2–4.65 | 45.90 | Black-Large, Black-Small, Gold-Large, Gold-Small |
+| Silikon-Wärmeplatte für Speisen (`silikon-warmeplatte-fur-speisen-619000`) | 6 | 6 | 16.67–16.67 | 50.90 | Beige-US, Beige-UK, Beige-EU, Dark Blue-US |
+| Uhr mit Farbverlauf-Dial (`uhr-mit-farbverlauf-dial-606700`) | 6 | 6 | 6.77–6.77 | 16.90 | Gradient Turquoise, Gradient Purple Color Brown, Gradient Blue, Gradient Pink Yellow |
+| Damen-Armbanduhr mit ultraflachem Mesh-Armband (`damen-armbanduhr-mit-ultraflachem-mesh-armband-636000`) | 6 | 6 | 6.77–6.77 | 16.90 | Silver Green, Silver Purple, Silver Blue, Pink And Yellow |
+| Armbanduhr mit Sternenzifferblatt (`armbanduhr-mit-sternenzifferblatt-630500`) | 6 | 6 | 8.51–8.51 | 17.90 | Silver Pink, Silver Blue, Silver Light Blue, Silver White |
+| Dualkalender Business-Uhr mit Edelstahlarmband (`dualkalender-business-uhr-mit-edelstahlarmband-624100`) | 6 | 6 | 24.31–24.31 | 34.90 | 1Style, 2Style, 3Style, 4Style |
+| Business-Quarz-Uhr mit Kalender und 24-Stundenanzeige (`business-quarz-uhr-mit-kalender-und-24-stunden-614800`) | 6 | 6 | 9.38–10.59 | 20.90 | Gold Shell Gold Surface, Gold Shell Black Surface, Gold Shell Silver Surface, Golden Shell Black Surface |
+| Wasserdichte Armbanduhr Gold Chronograph (`wasserdichte-armbanduhr-gold-chronograph-604800`) | 6 | 6 | 6.25–6.25 | 16.90 | Black, Titanium Color, Army Green, Apricot |
+| Multifunktionale LED Digitaluhr (`multifunktionale-led-digitaluhr-630800`) | 6 | 6 | 3.16–3.16 | 16.90 | White, Black, Orange, Gray |
+| Quadratische Business-Armbanduhr – 8,5 mm (`quadratische-business-armbanduhr-8-5-mm-611400`) | 6 | 6 | 5.14–5.64 | 16.90 | 2881HH, 2881JJ Gold, HSAN Black To Gold Gradient, 2881JSAN Golden Gradual Change |
 | Wanddekoration im Bauhaus-Stil (`wanddekoration-im-bauhaus-stil-626600`) | 5 | 5 | 10.24–10.24 | 20.90 | Blue And Red-40x60cm, Coffee Brown-40x60cm, Coffee Color-40x60cm, Spring Green-40x60cm |
 | Schlankmachender Baumwoll-Schal (`schlankmachender-baumwoll-schal-637200`) | 5 | 5 | 6.97–6.97 | 16.90 | Dark gray, Brown, Medium gray, Rose pink |
 | Silberner Damenring mit Pferdaugen-Schliff (`silberner-damenring-mit-pferdaugen-schliff-620200`) | 5 | 5 | 17.91–17.91 | 27.90 | 925 Silver-US Size 5, 925 Silver-US Size 6, 925 Silver-US Size 7, 925 Silver-US Size 8 |
@@ -168,9 +189,26 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Canvas Schultertasche – grosse Kapazität (`canvas-schultertasche-grosse-kapazitat-630000`) | 5 | 5 | 5.9–5.9 | 23.90 | Khaki, Black, Gray, Brown |
 | One-Shoulder Handy-Tasche aus Polyester (`one-shoulder-handy-tasche-aus-polyester-634800`) | 5 | 5 | 7.35–7.35 | 16.90 | Yellow, Black, Grey, Purple |
 | Echtleder Box für Ohrringe und Schmuck (`echtleder-box-fur-ohrringe-und-schmuck-600700`) | 5 | 5 | 19.97–19.97 | 32.90 | GREEN, Black, Golden Brown, Chocolate |
-| Trolley-Einsatztasche mit Schulterriemen (`trolley-einsatztasche-mit-schulterriemen-613800`) | 5 | 5 | 5.27–5.27 | 16.90 | Sewing Pattern, Midnight Blue Daisy, Siberian Hazelnut Dragonfly, Blue Bee |
-| Grosses Aufbewahrungsnetz für Kosmetik & Zubehör (`grosses-aufbewahrungsnetz-fur-kosmetik-zubehor-609400`) | 5 | 5 | 8.91–8.91 | 26.90 | Pink, Wine Red, Black, Lake Blue |
-| Umhängetasche aus gewaschenem Canvas (`umhangetasche-aus-gewaschenem-canvas-610300`) | 5 | 5 | 4.92–4.92 | 16.90 | Black, Green, Gray, Brown |
+| Gürteltasche für Outdoor-Aktivitäten (`gurteltasche-fur-outdoor-aktivitaten-634400`) | 5 | 5 | 3.25–3.25 | 16.90 | Black, Khaki, Army Green, Copy |
+| Faltbare Reisetasche mit grosser Kapazität (`faltbare-reisetasche-mit-grosser-kapazitat-628900`) | 5 | 5 | 10.69–10.69 | 36.90 | Beige, Pink, All Black, Black Brown |
+| Küchenreibe für Kartoffeln und Gemüse (`kuchenreibe-fur-kartoffeln-und-gemuse-601800`) | 5 | 5 | 4.55–7.1 | 20.90 | Coarse Medium Fine Slice, Coarse Medium Slice, Coarse Slice, Medium Slice |
+| Grosser Rollkoffer (`grosser-rollkoffer-616400`) | 5 | 5 | 19.44–19.44 | 96.90 | Black-73x35x45CM, Gray-73x35x45CM, Blue-73x35x45CM, Dark Brown-73x35x45CM |
+| Quarzuhr mit Stahlband für Damen (`quarzuhr-mit-stahlband-fur-damen-604400`) | 5 | 5 | 29.84–29.84 | 39.90 | White Noodles, Pink Noodles, Blue Face, Green Surface |
+| Zündkerze für Gasherde (`zundkerze-fur-gasherde-601200`) | 5 | 5 | 15.63–15.63 | 25.90 | SIC007, SIC008, SIC011, SIC013 |
+| Ceramische Quarz-Uhr mit wasserdichtem Barrel-Design (`ceramische-quarz-uhr-mit-wasserdichtem-barrel-627900`) | 5 | 5 | 13.72–16.49 | 25.90 | Silver, White Rose, Pink, Gold |
+| Dünne wasserdichte Quarz-Uhr – 9 mm (`dunne-wasserdichte-quarz-uhr-9-mm-620600`) | 5 | 5 | 12.5–12.5 | 21.90 | Gun Case Black Surface, Black Shell Gold Surface, Black Shell And Blue Surface, Silver Casing And Gold Face |
+| Herren-Armbanduhr mit Kalender (`herren-armbanduhr-mit-kalender-613300`) | 5 | 5 | 11.28–11.28 | 20.90 | Gold Shell White Surface, Gold Shell Black Surface, Gold Shell Gold Surface, Silver Case White Noodles |
+| Herren Umhängetasche Camouflage (`herren-umhangetasche-camouflage-603400`) | 5 | 5 | 5.03–5.03 | 20.90 | Black, Gray, Pure Khaki, Black Camouflage |
+| Klassische Quarzuhr aus Edelstahl für Herren (`klassische-quarzuhr-aus-edelstahl-fur-herren-619400`) | 5 | 5 | 6.6–7.64 | 16.90 | Gun Black, Silver Case Black Noodles, Silver Case White Noodles, Silver Case Blue Face |
+| Digital Dual-Display Quarz-Uhr (`digital-dual-display-quarz-uhr-634300`) | 5 | 5 | 7.64–7.64 | 16.90 | Red, Black, White, Blue |
+| Vintage Asymmetrische Quarz-Uhr mit Dual-Display (`vintage-asymmetrische-quarz-uhr-mit-dual-displ-624900`) | 5 | 5 | 12.15–12.15 | 21.90 | Silver Black, Silver Red, Silver White, Silver Blue |
+| Keramiktasse mit Untertasse, 100-200 ml (`keramiktasse-mit-untertasse-100-200-ml-605300`) | 5 | 5 | 8.68–8.68 | 21.90 | Scale Color Red-200ml, Scale Color Gray-200ml, Bangkok Brown-200ml, Blue-200ml |
+| Multifunktionale Chronographen-Uhr mit Silikonarmband (`multifunktionale-chronographen-uhr-mit-silikon-612800`) | 5 | 5 | 10.76–11.11 | 19.90 | Black And Yellow, Black And Red, Black And Blue, Rose Black |
+| Quarz-Uhr mit Luminanz & Wasserdicht (`quarz-uhr-mit-luminanz-wasserdicht-625300`) | 5 | 5 | 15.28–16.84 | 26.90 | Silver Case Light Blue Dial, Black Case Gunmetal Dial, Silver Case Light Gray Dial, Silver Rose Shell |
+| Automatik-Mechanik-Uhr mit Lederarmband (`automatik-mechanik-uhr-mit-lederarmband-618400`) | 5 | 5 | 77.67–77.67 | 101.90 | Brown White, Brown Rose Black, Brown Rose Blue, Black Leather Black |
+| Herren Automatikuhr (`herren-automatikuhr-628200`) | 5 | 5 | 28.65–29.51 | 39.90 | Gold Shell Blue, Gold Shell Black, Gold Shell Gold Surface, White Shell And Gray Surface |
+| Quarz-Uhr mit Wasserfestigkeit, ultradünn, analog (`quarz-uhr-mit-wasserfestigkeit-ultradunn-analo-614700`) | 5 | 5 | 7.3–7.3 | 16.90 | Gray White Gray, White, Blue And White, Green Gold |
+| Sportliches Uhrenarmband-Quarzzeitmesser (`sportliches-uhrenarmband-quarzzeitmesser-605800`) | 5 | 5 | 5.8–5.8 | 16.90 | Army Green-Full Luminescent, Army Green-Standard Luminescent, Black-Standard Luminescent,  Black silicone strap-Standard Luminescent |
 | Iris-Blumenring (`iris-blumenring-631400`) | 4 | 4 | 2.11–2.11 | 16.90 | Iris Flower Ring 6028-No 6, Iris Flower Ring 6028-No 7, Iris Flower Ring 6028-No 8, Iris Flower Ring 6028-No 9 |
 | Männer-Quarz-Uhr mit quadratischem Zifferblatt (`manner-quarz-uhr-mit-quadratischem-zifferblatt-614400`) | 4 | 4 | 14.76–14.76 | 23.90 | Wine Red-Quartz Watch, Green-Quartz Watch, Dark Blue-Quartz Watch, Coffee With A Gray Disc-Quartz Watch |
 | Dumpling-Mold-Set 3D-gedruckt – Quadrat, Kreis, Herz (`dumpling-mold-set-3d-gedruckt-quadrat-kreis-he-620800`) | 4 | 4 | 3.09–9.44 | 27.90 | Square, Round, Heart Shape, Combination |
@@ -199,10 +237,19 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Kosmetikaufbewahrungsbox mit Pinsel- und Lippenstiftfach (`kosmetikaufbewahrungsbox-mit-pinsel-und-lippen-627900`) | 4 | 4 | 6.6–12.85 | 77.90 | Black And Silver, White Gold Color, Black Wood Grain Style, Medium White |
 | Magnetische Bausteine 20-Teilig (`magnetische-bausteine-20-teilig-609600`) | 4 | 4 | 3.35–3.35 | 16.90 | Adventure, Forest, Princess And Knight, Girly Heart |
 | Aufbewahrungskorb aus Baumwollseil mit Löwenmuster (`aufbewahrungskorb-aus-baumwollseil-mit-lowenmu-620100`) | 4 | 4 | 3.49–3.49 | 16.90 | Beige Lion, Beige Giraffe, Pure White Lion, Pure White Giraffe |
-| Kupfer-Induktions-Kochtopf (`kupfer-induktions-kochtopf-603000`) | 4 | 4 | 21.7–24.31 | 55.90 | 15cm-Without lid, 15cm-With lid, 16cm-Without lid, 16cm-With lid |
-| Automatisches Vakuumiergerät für Lebensmittel (`automatisches-vakuumiergerat-fur-lebensmittel-628300`) | 4 | 4 | 5.09–5.09 | 25.90 | AU-Single Sealing Machine-ENGLISH, EU-Single Sealing Machine-ENGLISH, UK-Single Sealing Machine-ENGLISH, US-Single Sealing Machine-ENGLISH |
-| Wolkenförmiges Eckregal für das Bad (`wolkenformiges-eckregal-fur-das-bad-621000`) | 4 | 4 | 2.28–2.28 | 16.90 | Blue, Red, White, Pink |
 | Wandmontiertes Küchenregal (`wandmontiertes-kuchenregal-602100`) | 4 | 4 | 2.39–2.57 | 23.90 | Gun Gray-Single Box, Gun Gray-With Rod, Milky White-Single Box, Milky White-With Rod |
+| Tragbare wasserdichte Crossbody-Tasche (`tragbare-wasserdichte-crossbody-tasche-638800`) | 4 | 4 | 4.32–9.7 | 18.90 | Black, White, Pink, Brown |
+| Quarzuhr mit gedrehtem Design (`quarzuhr-mit-gedrehtem-design-613800`) | 4 | 4 | 9.55–9.55 | 18.90 | Silver Shell Blue Band, Rose Gold Shell Brown Belt, Golden Shell Black Ribbon, Golden Shell Brown Belt |
+| Oval-Uhr mit Quarzwerk und dekorativem Gehäuse (`oval-uhr-mit-quarzwerk-und-dekorativem-gehause-612800`) | 4 | 4 | 12.59–12.59 | 21.90 | Chain Gold Black, Gold Chain, Chain Coffee Coffee, Chain Silver Gray |
+| Quadratische Damenuhr mit Stahlarmband (`quadratische-damenuhr-mit-stahlarmband-621900`) | 4 | 4 | 42.36–45.89 | 57.90 | Silver Steel Green Plate, Silver Steel Blue Dial, Silver Steel White Dial, Silver Steel Black Disc |
+| Herren-Armbanduhr mit grossem, quadratischem Zifferblatt (`herren-armbanduhr-mit-grossem-quadratischem-zi-622300`) | 4 | 4 | 7.81–7.81 | 16.90 | Gold Face Black Belt, Silver Blue, Silver Orange, Black Face With A Red Band |
+| Herren-Armbanduhr Quarz Wasserfest (`herren-armbanduhr-quarz-wasserfest-601600`) | 4 | 4 | 10.42–11.63 | 20.90 | RZY082 Silver White Ring, RZY082 Silver Black Ring, RZY082 Black And White Circle, RZY082 All Black Ring |
+| Bagger Trinkbecher für Kinder · 500 ml (`bagger-trinkbecher-fur-kinder-500-ml-600400`) | 4 | 4 | 3.13–3.13 | 16.90 | Yellow-500ML, Pink-500ML, Blue-500ML, Green-500ML |
+| Lumenwasserfeste Quarz-Uhr (`lumenwasserfeste-quarz-uhr-619800`) | 4 | 4 | 6.6–6.6 | 16.90 | Silver Case Black Noodles, Silver Case White Noodles, Silver Case Blue Face, Silver Case Green Surface |
+| Wasserdichte Quarz-Uhr für Business (`wasserdichte-quarz-uhr-fur-business-611000`) | 4 | 4 | 32.26–32.26 | 42.90 | White, Yellow, Red, Gray |
+| Retro Digitaluhr Sanda Y2K 14mm (`retro-digitaluhr-sanda-y2k-14mm-612000`) | 4 | 4 | 9.09–9.09 | 17.90 | Sand Black, Gold, Silver Blue, Blue Orange |
+| Business Armbanduhr mit Dual-Datum und Stahlband (`business-armbanduhr-mit-dual-datum-und-stahlba-633900`) | 4 | 4 | 5.14–5.8 | 16.90 | 2831H Black, 2831J Gold, 2831LANSAN, 2831Y Silver |
+| Herren-Armbanduhr mit Kalender und Lederarmband (`herren-armbanduhr-mit-kalender-und-lederarmban-619500`) | 4 | 4 | 15.28–15.28 | 24.90 | Steel Case, Blue Case, Rose Case, Black Case |
 | Oversized Wollschal Dreieck 200 cm (`oversized-wollschal-dreieck-200-cm-605900`) | 3 | 3 | 12.44–12.44 | 21.90 | Raw Velvet Rice-200X90cm, Raw Velvet Camel-200X90cm, Gray-200X90cm |
 | Zylindrischer Angelrucksack (`zylindrischer-angelrucksack-228160`) | 3 | 3 | 7.87–8.08 | 17.90 | Black, Urban camouflage, Desert camouflage |
 | Halskette mit Kor, Türkis und Muschelperlen (`halskette-mit-kor-turkis-und-muschelperlen-635200`) | 3 | 3 | 4.3–5.18 | 16.90 | Necklace, Bracelet, Ear Studs |
@@ -228,13 +275,22 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Polyester Aufbewahrungsbeutel (`polyester-aufbewahrungsbeutel-611000`) | 3 | 3 | 2.21–2.21 | 16.90 | Red, Orange, Pink |
 | Weihnachtsornamenten-Aufbewahrungsbox mit Schalen (`weihnachtsornamenten-aufbewahrungsbox-mit-scha-603400`) | 3 | 3 | 3.42–8.16 | 49.90 | Red And Green-30X30X30cm, Red And Green-61X31X17cm, Red And Green-61X31X31cm |
 | Magnetische Bausteine 60-Teile-Set (`magnetische-bausteine-60-teile-set-610500`) | 3 | 3 | 15.28–34.38 | 115.90 | 60 Pieces, 100 Pieces, 120 Pieces |
-| Männliche Crossbody-Tasche aus Vollschale (`mannliche-crossbody-tasche-aus-vollschale-634200`) | 3 | 3 | 16.74–17.08 | 33.90 | Brown, Dark Brown, Red Brown |
-| Baby-Windelaufbewahrungstasche (`baby-windelaufbewahrungstasche-600900`) | 3 | 3 | 2.02–2.02 | 16.90 | Rainbow, Animal Park, Cactus |
-| Kristallglas-Floss-Aufbewahrungsbox – klar, Champagner, grau (`kristallglas-floss-aufbewahrungsbox-klar-champ-607900`) | 3 | 3 | 8.68–9.55 | 23.90 | Champagne-5×5×10cm, Transparent-5×5×10cm, Transparent Gray-5×5×10cm |
-| Crossbody Tasche aus echtem Rindsleder mit mehreren Taschen (`crossbody-tasche-aus-echtem-rindsleder-mit-meh-602000`) | 3 | 3 | 17.91–17.91 | 30.90 | YB0015 Coffee Color-30.5x1.5x22cm, YB0015 Brown-30.5x1.5x22cm, YB0015 Black-30.5x1.5x22cm |
-| Baumwoll-Aufbewahrungskorb 38 × 30 × 46 cm (`baumwoll-aufbewahrungskorb-38-30-46-cm-610500`) | 3 | 3 | 9.55–9.55 | 43.90 | Beige Brown White, Black And White, Gray And White |
-| Bauklötze mit Licht – 1991 Stück (Blacksmith’s Workshop) (`bauklotze-mit-licht-1991-stuck-blacksmith-s-wo-616800`) | 3 | 3 | 21.76–21.76 | 60.90 | 033031 Blacksmith 1991pcs, 033032 Magic House 2095pcs, 033033 Tavern 1872pcs |
-| Multifunktionaler Rucksack mit 20-35 L Kapazität (`multifunktionaler-rucksack-mit-20-35-l-kapazit-609400`) | 3 | 3 | 5.64–5.64 | 24.90 | Black, Light Gray, Dark Gray |
+| Leichter Outdoor-Tagesrucksack (`leichter-outdoor-tagesrucksack-611600`) | 3 | 3 | 17.01–17.01 | 28.90 | Black, White, White With Purple |
+| Hüfttasche aus strapazierfähigem Canvas (`hufttasche-aus-strapazierfahigem-canvas-616100`) | 3 | 3 | 9.88–9.88 | 19.90 | black, Khaki, Army Green |
+| Outdoor-Rucksack für Sport und Wandern (`outdoor-rucksack-fur-sport-und-wandern-602600`) | 3 | 3 | 6.25–6.25 | 21.90 | Black-Below 20L, Khaki-Below 20L, Army Green-Below 20L |
+| Grosser Rucksack für Bergtouren (`grosser-rucksack-fur-bergtouren-600100`) | 3 | 3 | 6.86–6.86 | 24.90 | Black, Khaki, Army Green |
+| Rucksack für Angelausrüstung (`rucksack-fur-angelausrustung-639900`) | 3 | 3 | 13.02–13.02 | 43.90 | Black-49x41.5x23.8cm, Khaki-49x41.5x23.8cm, Digital Camouflage-49x41.5x23.8cm |
+| Leder-Geldklammer mit Magnet (`leder-geldklammer-mit-magnet-601000`) | 3 | 3 | 6.48–6.48 | 16.90 | Coffee, Brown, Black |
+| Spatel aus Akazienholz (`spatel-aus-akazienholz-638400`) | 3 | 3 | 6.65–12.64 | 30.90 | 4 sets 3 pieces each, 7 sets 1, 10 sets 4 pieces each |
+| Versteckter Klapp-Wasserhahn – Edelstahl (`versteckter-klapp-wasserhahn-edelstahl-637600`) | 3 | 3 | 19.1–23.44 | 64.90 | Brushed Color, Black, Gun Gray |
+| Smartwatch mit Blutsauerstoff & Herzfrequenz (`smartwatch-mit-blutsauerstoff-herzfrequenz-638500`) | 3 | 3 | 64.24–67.36 | 86.90 | Black, Blue, Red |
+| Herren-Crossbody-Rucksack, atmungsaktiv & wasserdicht (`herren-crossbody-rucksack-atmungsaktiv-wasserd-608900`) | 3 | 3 | 3.19–3.19 | 21.90 | Black, Dark Brown, Khaki |
+| Kameratasche für Reisen (`kameratasche-fur-reisen-604100`) | 3 | 3 | 20.73–20.73 | 49.90 | Black, Army Green, Brown |
+| Strassbesetzte Business-Quarz-Uhr (`strassbesetzte-business-quarz-uhr-638200`) | 3 | 3 | 6.25–6.25 | 16.90 | Silver, Gold, Rose Gold |
+| Minimalistische Silikon-Quarz-Uhr (`minimalistische-silikon-quarz-uhr-638800`) | 3 | 3 | 11.28–11.28 | 21.90 | Light Blue, Black, White |
+| Umhängetasche für Laptop (`umhangetasche-fur-laptop-620200`) | 3 | 3 | 6.8–6.8 | 28.90 | 8005 Horizontal Black, 8005 Horizontal Style In Brown, 8005 Horizontal Khaki |
+| Armbanduhr mit Datum und Luminanz (`armbanduhr-mit-datum-und-luminanz-607400`) | 3 | 3 | 14.93–14.93 | 23.90 | Silver Case Blue, Silver Case White, Silver Case Green |
+| Taschenuhr aus Edelstahl mit Glaszifferblatt (`taschenuhr-aus-edelstahl-mit-glaszifferblatt-620800`) | 3 | 3 | 64.06–64.06 | 80.90 | Rose Gold, Local Gold, Silver |
 | Multifunktionaler Rucksack mit Diebstahlschutz (`multifunktionaler-rucksack-mit-diebstahlschutz-b9d9f9`) | 2 | 2 | 31.95–36.28 | 66.90 | Black  without logo, Black |
 | Wandsticker Gans aus Holz (`wandsticker-gans-aus-holz-610300`) | 2 | 2 | 2.48–4.04 | 16.90 | Resin, Wood |
 | Tiger Eye Stein & Muschelperlenhalskette 41–50 cm (`tiger-eye-stein-muschelperlenhalskette-41-50-c-607400`) | 2 | 2 | 3.77–4.13 | 16.90 | Old Sandalwood Style, Tigereye Style |
@@ -262,12 +318,28 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Multifunktionaler Rucksack für Studenten (`multifunktionaler-rucksack-fur-studenten-603100`) | 2 | 2 | 5.25–5.25 | 27.90 | Black, Gray |
 | Aufbewahrungsbox für Modellautos (`aufbewahrungsbox-fur-modellautos-633300`) | 2 | 2 | 3.16–5.09 | 19.90 | 15 Slots, 24 Frames |
 | Grosse Schmuckschatulle mit mehreren Fächern (`grosse-schmuckschatulle-mit-mehreren-fachern-626000`) | 2 | 0 | 28.65–28.65 | 103.90 | Dark Green-22.5x18.2x28.5CM, Pink-22.5x18.2x28.5CM |
-| Crossbody-Tasche wasserdicht, leicht (`crossbody-tasche-wasserdicht-leicht-606200`) | 2 | 2 | 16.49–16.49 | 33.90 | Black, Camouflage |
-| Leichte elastische Camouflage-Aufbewahrungstasche (`leichte-elastische-camouflage-aufbewahrungstas-631500`) | 2 | 2 | 12.88–12.88 | 21.90 | Default Item-Black, Default Item-Camouflage |
-| Rindsleder-Crossbody Bag für den Alltag (`rindsleder-crossbody-bag-fur-den-alltag-639000`) | 2 | 2 | 12.44–12.44 | 26.90 | Black-18x7x22cm, Coffee-18x7x22cm |
 | Holzarmband-Display aus Walnuss (`holzarmband-display-aus-walnuss-633000`) | 2 | 2 | 4.2–4.72 | 16.90 | Walnut Base, Beechwood Base |
 | Küchenarmatur 3-in-1, schwarz, Edelstahl (`kuchenarmatur-3-in-1-schwarz-edelstahl-626000`) | 2 | 2 | 23.44–23.44 | 67.90 | Electroplating-No Piping, Black-No Piping |
-| Infrarot-Haarglätter mit Massagefunktion (`infrarot-haarglatter-mit-massagefunktion-637300`) | 2 | 2 | 13.02–13.02 | 29.90 | US, EU |
-| Silikon-Dusch-Organizer mit Saugnapf (`silikon-dusch-organizer-mit-saugnapf-612900`) | 2 | 2 | 2.54–4.85 | 16.90 | Purple-2PCS, Purple-1PCS |
-| Eissiegel aus Rosenholz mit Messingkopf (`eissiegel-aus-rosenholz-mit-messingkopf-621900`) | 2 | 2 | 7.74–8.84 | 17.90 | 3cm, 4cm |
-| Seifenschale aus Silikon mit Deckel (`seifenschale-aus-silikon-mit-deckel-609100`) | 2 | 2 | 2.06–2.06 | 16.90 | Blue, Pink |
+| Klärende Reinigung Seife (`klarende-reinigung-seife-632900`) | 2 | 2 | 3.63–7.26 | 23.90 | Set1, Set2 |
+| Fahrradrucksack (`fahrradrucksack-609400`) | 2 | 2 | 5.09–5.09 | 17.90 | Black-20to35L, Gray-20to35L |
+| Hüfttasche für Hundetraining (`hufttasche-fur-hundetraining-625200`) | 2 | 2 | 3.07–4.0 | 16.90 | Black-17.5x8x13.6, Red-17.5x8x13.6 |
+| 2-in-1 Elektrischer Haarentferner für Frauen (`2-in-1-elektrischer-haarentferner-fur-frauen-633900`) | 2 | 2 | 6.6–6.6 | 16.90 | Pink, Purple |
+| Herren Umhängetasche aus Vollnarben-Rindsleder (`herren-umhangetasche-aus-vollnarben-rindsleder-607800`) | 2 | 2 | 3.69–3.69 | 16.90 | Black, Brown |
+| Winddichte Backplatte mit Antihaftbeschichtung (`winddichte-backplatte-mit-antihaftbeschichtung-630200`) | 2 | 2 | 30.38–32.81 | 86.90 | P28 Baking Tray, P28 Pot Lid |
+| Alloy Craft Ornament Elektronische Uhr (`alloy-craft-ornament-elektronische-uhr-604100`) | 2 | 2 | 10.47–11.3 | 24.90 | Watch Without Box, With Black Gift Box |
+| Männliche Hip-Hop Uhren mit Strasssteinen (`mannliche-hip-hop-uhren-mit-strasssteinen-638600`) | 2 | 2 | 19.44–19.44 | 28.90 | Gold, Silver |
+| Magnetische Levitation Sci-Fi Studentenuhr (`magnetische-levitation-sci-fi-studentenuhr-616600`) | 2 | 2 | 25.21–25.21 | 36.90 | E033DG3A Male, E045DG5A Female |
+| Smart-Sportuhr mit GPS und Herzfrequenz (`smart-sportuhr-mit-gps-und-herzfrequenz-635100`) | 2 | 2 | 39.76–39.76 | 52.90 | Sports Vinyl, Sport Orange Glue |
+| Elektrischer Gemüseschneider (`elektrischer-gemuseschneider-615700`) | 2 | 2 | 18.23–20.83 | 55.90 | Basic Style, Smart Digital Display |
+| Herren-Quarzuhr mit Multifunktion (`herren-quarzuhr-mit-multifunktion-623900`) | 2 | 2 | 10.42–11.11 | 19.90 | Gold Shell Gold Surface, Silver Case Silver Surface |
+| Herren Automatikuhr mit Strass-Akzenten (`herren-automatikuhr-mit-strass-akzenten-633700`) | 2 | 2 | 26.89–26.89 | 37.90 | Gold Steel Belt 8302-No Specifications, Silver Steel Belt 8302-No Specifications |
+| Multifunktionaler Gemüsehobel & Reibe (`multifunktionaler-gemusehobel-reibe-604500`) | 2 | 2 | 3.27–3.27 | 18.90 | Red, Orange |
+| Whiskeyglas aus Bleikristall (`whiskeyglas-aus-bleikristall-624900`) | 2 | 2 | 5.09–6.42 | 18.90 | TT6202, TT6202 cover |
+| Gold-Case-Uhr mit Goldteller – Mediterraner Stil (`gold-case-uhr-mit-goldteller-mediterraner-stil-602500`) | 2 | 2 | 13.72–13.72 | 23.90 | Gold Black, Black Gold |
+| Crossbody-Tasche aus echtem Rindfleischleder (`crossbody-tasche-aus-echtem-rindfleischleder-609900`) | 2 | 2 | 9.78–9.78 | 21.90 | Black, Yellowish Brown |
+| Outdoor Brusttasche grosse Kapazität Unisex (`outdoor-brusttasche-grosse-kapazitat-unisex-615600`) | 2 | 2 | 4.7–4.7 | 16.90 | Black, Army Green |
+| Kaffeebereiter mit Filter und Glaskanne (`kaffeebereiter-mit-filter-und-glaskanne-605000`) | 2 | 2 | 20.49–22.22 | 38.90 | Transparent, Colorful Style |
+| Quarz-Armbanduhr, 10 mm, blaues Zifferblatt (`quarz-armbanduhr-10-mm-blaues-zifferblatt-605400`) | 2 | 2 | 7.96–7.96 | 16.90 | Gold, Black |
+| Herrenarmbanduhr mit Sternenhimmel-Design (`herrenarmbanduhr-mit-sternenhimmel-design-620300`) | 2 | 2 | 4.21–4.21 | 16.90 | Rose Shell Brown Belt, Silver Case Black |
+| Wolishi Herren-Automatikuhr mit Lederarmband (`wolishi-herren-automatikuhr-mit-lederarmband-632400`) | 2 | 2 | 30.38–30.38 | 40.90 | Cool Black Mens Style, Golden Mens Style |
+| Hip-Hop Diamant-Uhr Herren Gold/Silber (`hip-hop-diamant-uhr-herren-gold-silber-615000`) | 2 | 2 | 9.62–9.62 | 18.90 | Gold, Silver |
