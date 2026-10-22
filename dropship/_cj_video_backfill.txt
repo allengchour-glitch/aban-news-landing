@@ -1835,3 +1835,4 @@ gid://shopify/Product/15447976182145	kein-video-beim-lieferanten
 gid://shopify/Product/15447976509825	kein-video-beim-lieferanten
 gid://shopify/Product/15447976739201	ok	Sportliches Slim Fit Polo-Shirt für Damen
 gid://shopify/Product/15447976935809	ok	Halter Sport-BH für Workout & Yoga
+gid://shopify/Product/15447977099649	kein-video-beim-lieferanten
