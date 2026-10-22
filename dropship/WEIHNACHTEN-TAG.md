@@ -1,4 +1,4 @@
-# Tag «weihnachten» ohne Weihnachtsbezug — Stand 2026-10-20 22:46 UTC
+# Tag «weihnachten» ohne Weihnachtsbezug — Stand 2026-10-22 00:41 UTC
 
 Aktiv mit Tag: 300 · verdient (Weihnachtswort im Titel): 298 · unverdient Partydeko: 0 → entfernt 0, Fehler 0 · unverdient andere Quelle (nur gemeldet): 2
 

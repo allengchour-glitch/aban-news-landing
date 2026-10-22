@@ -121,3 +121,4 @@ gid://shopify/Product/15507723321729	3	GZ25663 Red → Rot | GZ25663 Black → S
 gid://shopify/Product/15507724009857	2	Black X8989 → Schwarz | Yellow X8989 → Gelb	Herren-Snowboots mit Fleecefutter
 gid://shopify/Product/15507730432385	6	J020 Pink Blue → Pink Blue | J020 White Blue → White Blue | J01 September Purple → September Purple | J019 Light Moon Pink → Light Moon Pink | J018 Light Blue → Hellblau | J018 Blue → Blau	Unisex Laufschuhe für Leichtathletik
 gid://shopify/Product/16617707209095	2	White KD22884B → Weiss | Purple KD22884C → Lila	Baby-Set Langarmshirt und Hose
+gid://shopify/Product/16655501918599	3	D18 · Weiss → Weiss | D18 · Hautfarbe → Hautfarbe | D18 · Schwarz → Schwarz	Kabellose In-Ear-Kopfhörer
