@@ -132,6 +132,16 @@ Nächster konkreter Schritt: vorhandene private Suchregeln für die eine paperan
 
 Nachweise: [Content-/Verkaufspaket mit Storyboard und sechs UTM-Entwürfen](FREIGABEPAKET-20261022.md), [Briefkasten-Empfang und Diagnose](BRIEFKASTEN-20261022.md), [Morgen-Gegenprobe](BRIEFKASTEN-GEGENPROBE-20261022.json), [Prüfbelege und 22 getrennte Kanalzustände](PRUEFBELEGE-20261022.json), [Entwurfs-PR 2708](https://github.com/allengchour-glitch/aban-news-landing/pull/2708).
 
+## 23.10.2026
+
+Tagesfortführung: gezielte Shopify-SEO-Gegenprobe und Kategorie-Metadatenpflege gegen 00:00–00:30 Europe/Zurich. Keine zusätzliche Metricool-/Klaviyo-Messung nur für dieses Protokoll.
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Kategorie-SEO | Drei aktive LuxeStyle-Kollektionen (Naturkosmetik & Beauty, Reise & Outdoor, Küche & Kochen) frisch gelesen und SEO-Beschreibungen gezielt verbessert | Beschreibungen live aktualisiert und ohne UserErrors zurückgelesen. SEO-Titel wurden nach Rücklesung wiederhergestellt und verifiziert; Produkt-/Collection-Mitgliedschaften unverändert |
+| Verkaufsgrundlage | Texte auf Suchintention, Schweizer Shop-Kontext und überprüfbare Aussagen begrenzt | Keine erfundenen Eigenschaften, Masse, Reviews, Liefer- oder Bestandsversprechen; keine Rabatt-, Feed-, Theme- oder Flow-Änderung |
+| Nächster Schritt | Öffentliche Indexierung und Snippet-Propagation weiter beobachten; Theme-Versand-JSON-LD bleibt wegen unklarer Draft-Rücklesung offen | SEO-Metadaten sind Shopify-seitig aktualisiert; Google-Neuaufnahme und öffentliche Cache-Änderung bleiben unbekannt |
+
 ## Fortführung
 
 Jeder Zürcher Kalendertag erhält einen eigenen Datumsblock mit den belegten Tätigkeiten dieses Tages. Mehrere Läufe ergänzen denselben Tag. Bereits erfasste Tätigkeiten nicht erneut als neu ausgeben; Korrekturen nachvollziehbar benennen. Bei fehlenden oder unlesbaren Quellen keine leere Vergangenheit behaupten und das Protokoll nicht zurücksetzen.
