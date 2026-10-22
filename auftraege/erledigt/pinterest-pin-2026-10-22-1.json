@@ -1,0 +1,49 @@
+{
+  "typ": "skript",
+  "skript": "pinterest_pin_erstellen.mjs",
+  "id": "pinterest-pin-2026-10-22-1",
+  "warum": "Täglicher Pin-Plan (Betreiber 22.09.: mehr Besucher; Pinterest nicht unter dem Social-Stopp). Genau EIN Pin aus auftraege/pinterest_pins_queue.tsv, Quittung vor Nebenwirkung (Pinnwand vorher/nachher). 1 von 10 heute.",
+  "stand": "ok",
+  "begonnen": "2026-10-22T00:47:08.297Z",
+  "dauer_s": 63,
+  "ergebnis": {
+    "gepinnt": [],
+    "unklar": [
+      "perlen-off-shoulder-kleid-608000"
+    ],
+    "uebersprungen": [],
+    "schritte": [
+      "Warteschlange 193, quittiert 76, offen 170",
+      "Boards auf dem Profil: /luxestyleCH/sommerkleider-damenmode-2026/, /luxestyleCH/tech-gadgets/, /luxestyleCH/herrenmode-schweiz/, /luxestyleCH/schmuck-accessoires/, /luxestyleCH/wellness-beauty/, /luxestyleCH/home-geschenkideen/, /luxestyleCH/geschenkideen-schweiz/, /luxestyleCH/wohnen-deko/, /luxestyleCH/schuhe-sandalen/, /luxestyleCH/schlaf-aromatherapie/, /luxestyleCH/k%C3%BCche-genuss/, /luxestyleCH/leder-accessoires/, /luxestyleCH/wellness-self-care/, /luxestyleCH/beauty-pflege/",
+      "Pinnwand «Sommerkleider & Damenmode 2026» (https://ch.pinterest.com/luxestyleCH/sommerkleider-damenmode-2026/, 1237 Z.): Titel nicht da",
+      "Bild 30793 Bytes (image/jpeg)",
+      "Beschreibung eingetragen",
+      "Nachlesen: Titel NICHT gefunden (1293 Z.)"
+    ],
+    "bilder": [
+      "server:/var/lib/luxe-agent/ergebnis-angemeldet/pinterest-pin-2026-10-22-1-1-bild.png",
+      "server:/var/lib/luxe-agent/ergebnis-angemeldet/pinterest-pin-2026-10-22-1-2-ausgefuellt.png",
+      "server:/var/lib/luxe-agent/ergebnis-angemeldet/pinterest-pin-2026-10-22-1-3-nachher.png"
+    ],
+    "hinweis": "Pin nach dem Klick nicht auf der Pinnwand gesehen — bleibt als «unklar» gesperrt (kein zweiter Versuch ohne Mensch)"
+  },
+  "bilder_weiche": {
+    "oeffentlich": false,
+    "im_repo": [],
+    "auf_server": [
+      {
+        "datei": "/var/lib/luxe-agent/ergebnis-angemeldet/pinterest-pin-2026-10-22-1-1-bild.png",
+        "bytes": 173308
+      },
+      {
+        "datei": "/var/lib/luxe-agent/ergebnis-angemeldet/pinterest-pin-2026-10-22-1-2-ausgefuellt.png",
+        "bytes": 192883
+      },
+      {
+        "datei": "/var/lib/luxe-agent/ergebnis-angemeldet/pinterest-pin-2026-10-22-1-3-nachher.png",
+        "bytes": 122405
+      }
+    ],
+    "hinweis": "Bilder aus angemeldeten Diensten bleiben auf dem Server (Plan Hetzner Schritt 11, 13.10.2026). Für den Inhalt als Text: Auftragsart seite_text."
+  }
+}
