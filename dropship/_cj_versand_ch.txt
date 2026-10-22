@@ -1655,3 +1655,4 @@ gid://shopify/Product/16656666263943	ok	Bratpfanne aus Edelstahl
 gid://shopify/Product/16656667378055	nicht-versendbar	Rollkoffer aus Aluminium-Magnesium-Legierung
 gid://shopify/Product/16656662823303	ok	Haushaltspfanne mit Antihaft-Beschichtung
 gid://shopify/Product/16656667541895	ok	Rollkoffer mit Laptopfach – 18 Zoll
+gid://shopify/Product/16656725737863	ok	Automatik-Mechanik-Uhr mit Lederarmband
