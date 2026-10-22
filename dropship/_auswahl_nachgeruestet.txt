@@ -3535,3 +3535,6 @@
 16656699523463	Farbe:5:5	2026-10-22	vintage-asymmetrische-quarz-uhr-mit-dual-displ-624900
 16656698868103	Farbe:2:2	2026-10-22	crossbody-tasche-aus-echtem-rindfleischleder-609900
 16656698343815	Farbe:5:5	2026-10-22	digital-dual-display-quarz-uhr-634300
+16656697360775	Modell:6:6	2026-10-22	dualkalender-business-uhr-mit-edelstahlarmband-624100
+16656675668359	Farbe:2:2	2026-10-22	gold-case-uhr-mit-goldteller-mediterraner-stil-602500
+16656675176839	Farbe:4:4	2026-10-22	bagger-trinkbecher-fur-kinder-500-ml-600400
