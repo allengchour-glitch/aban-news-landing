@@ -3620,3 +3620,7 @@
 16612740596103	Farbe:3+Form:2:6+ki	2026-10-22	keramische-futternapf-mit-breitem-durchmesser-602100
 16612740432263	Farbe:3:3+ki	2026-10-22	silicone-tier-schlankesschussel-mit-lickmatte-632400
 16612717265287	Farbe:3:3+ki	2026-10-22	katzen-futternapf-stander-mit-schragem-hals-614400
+16612712251783	Ausführung:3:3+ki	2026-10-22	edelstahl-napf-mit-erhohtem-acrylstander-603000
+16612711989639	Variante:2:2+ki	2026-10-22	tischtennis-schlager-aus-carbon-685568
+16612711301511	Menge:3:3+ki	2026-10-22	magnetisches-bauchband-034432
+16614845251975	Farbe:3:3+ki	2026-10-22	grosses-crossbody-fur-herren-urbanes-minimalde-639700
