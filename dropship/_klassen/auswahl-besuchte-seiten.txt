@@ -1,17 +1,17 @@
 gid://shopify/Product/15448827888001	Tunmate Rizinus-Haaröl (Ölmischung) · 60 ml	14
 gid://shopify/Product/16603297251719	Aufblasbares Halloween-Kostüm für zwei Personen	14
 gid://shopify/Product/15411554320769	Aroma Diffuser Holzoptik 400ml – Ultraschall Luftbefeuchter mit 7 LED-Farben	6
-gid://shopify/Product/15411565035905	LED Schreibtischlampe Akku – 3 Helligkeitsstufen, Augenschutz & Sunset-Modus	6
-gid://shopify/Product/15511032365441	Handmixer mit 5 Geschwindigkeiten	6
 gid://shopify/Product/15411555533185	Smartwatch Pro 1.78″ AMOLED – Herzfrequenz, Fitness-Tracker & Bluetooth	6
 gid://shopify/Product/15411564446081	Mini Bluetooth Speaker Wasserdicht – Dusche, Outdoor & Reise mit Saugnapf	6
+gid://shopify/Product/15411565035905	LED Schreibtischlampe Akku – 3 Helligkeitsstufen, Augenschutz & Sunset-Modus	6
 gid://shopify/Product/15411565429121	Elektrischer Gemüseschneider Multifunktional – Schneiden, Reiben & Hobeln	6
+gid://shopify/Product/15511032365441	Handmixer mit 5 Geschwindigkeiten	6
 gid://shopify/Product/15453773431169	Pinguin-Aromadiffusor mit Duftölen	6
 gid://shopify/Product/15452706439553	Selbstbastel-Diamant-Malset Igel-Muster Geburtstagskarte	5
 gid://shopify/Product/15491599106433	Farbiger Gel-Nagellackstift für einfache Maniküre	5
+gid://shopify/Product/15500935496065	Leuchthalsband für Hunde mit USB-Ladefunktion	5
 gid://shopify/Product/15411554910593	Aromadiffusor Holzmaserung	5
 gid://shopify/Product/15493500305793	Magnetisches 15W Wireless Ladegerät für iPhone	5
-gid://shopify/Product/15500935496065	Leuchthalsband für Hunde mit USB-Ladefunktion	5
 gid://shopify/Product/15411556614529	Rugged Smartwatch X5 – 5 ATM Wasserdicht, GPS, Bluetooth-Calling	4
 gid://shopify/Product/15449478758785	Perlen-Halskette aus Süsswasserperlen	4
 gid://shopify/Product/15451638104449	Smarter Türspion mit HD-Kamera	4
@@ -25,19 +25,19 @@ gid://shopify/Product/15522058142081	Multifunktionaler Trimmer für Haar & Bart	
 gid://shopify/Product/15453773103489	Doppelstrahl-Luftbefeuchter	3
 gid://shopify/Product/15509370306945	DIY Stickset mit 50 Garnfarben	3
 gid://shopify/Product/15500936282497	3D Acryl Notiztafel mit LED-Beleuchtung	2
+gid://shopify/Product/15508364296577	3D Glas Aroma Diffusor mit Farblicht	2
 gid://shopify/Product/15494643417473	Multifunktionaler Gemüseschneider mit Spiralschneider	2
 gid://shopify/Product/15495226261889	ROCKBROS Velo Frontlicht USB-Ladefunktion	2
-gid://shopify/Product/15508364296577	3D Glas Aroma Diffusor mit Farblicht	2
 gid://shopify/Product/15517532324225	Handkurbel-Schäler für Äpfel und Birnen	2
 gid://shopify/Product/15523842064769	Grosser Schulrucksack für Kinder (20-35 L)	2
 gid://shopify/Product/15493909250433	Esszimmerstuhlhusse – Niedriger Rücken, Stretch	2
 gid://shopify/Product/15523210396033	Hundegeschirr-Set für kleine bis mittelgrosse Hunde	2
 gid://shopify/Product/15431536673153	Edelstahl-Armband «Amore» · Herz & Geburtsstein, Gold	2
+gid://shopify/Product/15484294955393	Magnetischer Telefonhalter	2
 gid://shopify/Product/15500346130817	3-in-1 Mini-Drohne für Land, Wasser & Luft	2
 gid://shopify/Product/15521230520705	Futterspielzeug "Karotte" mit Saugnapf	2
 gid://shopify/Product/15477929509249	Dekorative Bücherregal-Laternenlampe	2
 gid://shopify/Product/15481887064449	USB-Stick Lippenstift-Design	2
-gid://shopify/Product/15484294955393	Magnetischer Telefonhalter	2
 gid://shopify/Product/15520411222401	Mini LED Beamer für Handy & Heimkino	2
 gid://shopify/Product/15509386494337	Handgefärbtes Vintage-Hochzeitsband mit Rohkante	1
 gid://shopify/Product/15521534443905	Nordic Viking Runen Kompass Totem Armband aus Titanstahl	1
@@ -80,6 +80,7 @@ gid://shopify/Product/15495140344193	Lenkradbezug Plüsch Pfotenabdruck 38cm	1
 gid://shopify/Product/15508397687169	Pilz Luftbefeuchter mit Ventilator & Nachtlicht	1
 gid://shopify/Product/15510323233153	Multifunktionale Gesichtsreinigungsbürste	1
 gid://shopify/Product/15522274017665	Mattes portugiesisches Besteck-Set (24-teilig)	1
+gid://shopify/Product/15524857315713	Schmetterling Duschvorhang aus Stoff	1
 gid://shopify/Product/15525461164417	Moderne schwarze Metall-Wanddekoration	1
 gid://shopify/Product/16604927263111	LED Ausziehbare Schmink-Wandleuchte	1
 gid://shopify/Product/16604955738503	Puppenhaus-Möbel aus Holz, Miniatur	1
@@ -92,7 +93,6 @@ gid://shopify/Product/15477388378497	Tulpen Diffuser aus getrockneten Blumen	1
 gid://shopify/Product/15481981632897	Outdoor Handmikrofon für Bühne & KTV	1
 gid://shopify/Product/15493576229249	Vintage Halskette im Punk-Stil	1
 gid://shopify/Product/15522128167297	Multifunktionaler Dual-Kopf Ventilator mit Licht	1
-gid://shopify/Product/15524857315713	Schmetterling Duschvorhang aus Stoff	1
 gid://shopify/Product/15431537066369	Edelstahl-Armreif «Couleur» · verstellbar, Gold	1
 gid://shopify/Product/15481980420481	Kabelmikrofon	1
 gid://shopify/Product/15500904563073	Rosenwasser Roll-on Parfüm (10ml)	1
@@ -179,13 +179,13 @@ gid://shopify/Product/16603594981767	Wandlampe für den Garten	1
 gid://shopify/Product/16604932178311	Armband für Apple Watch mit Dornschliesse	1
 gid://shopify/Product/15431607452033	Halskette «Rosée» · Kristall-Tropfen, Silber	1
 gid://shopify/Product/15453764616577	Männertasche mit CP-Design	1
+gid://shopify/Product/15481764413825	Kabelloses Lavalier Mikrofon mit Ladecase	1
 gid://shopify/Product/15496509063553	Stahlfelgen- und Nabenbürste	1
 gid://shopify/Product/15506186764673	LED Schmuck-Geschenkbox	1
 gid://shopify/Product/16603594260871	Wandlampe im amerikanischen Vintage-Stil	1
 gid://shopify/Product/16605820813703	Kissen für Balkonfenster – gestreift, 55×55 cm	1
 gid://shopify/Product/15453773201793	Kau- und Zahnbürsten-Snack für Hunde	1
 gid://shopify/Product/15460025008513	Fledermaus-Lampe	1
-gid://shopify/Product/15481764413825	Kabelloses Lavalier Mikrofon mit Ladecase	1
 gid://shopify/Product/15496509522305	Scheinwerfer-Vernebler-Becher	1
 gid://shopify/Product/15503082914177	Gürtel Herrenuhr – Schlicht & Business-tauglich	1
 gid://shopify/Product/15506663080321	Zigaretten Rollmaschine Easy Handroll 80mm	1
@@ -206,13 +206,13 @@ gid://shopify/Product/15431537033601	Edelstahl-Halskette «Goutte» · Tropfen-A
 gid://shopify/Product/15454119002497	Männer-Geldbörse mit Tri-Fold-Design	1
 gid://shopify/Product/15510322872705	Ultraschall-Porenreiniger	1
 gid://shopify/Product/15523905536385	Duschkopf mit Wassersparfunktion und Ventilator	1
+gid://shopify/Product/15523906421121	Haarentfernungscreme Sanfte Reinigung	1
 gid://shopify/Product/15524361372033	Sport-Smartwatch mit Temperatur- und Pulsmessung	1
 gid://shopify/Product/15448828182913	Tunmate Teebaum Haaröl	1
 gid://shopify/Product/15448873173377	VR-Brille mit verstellbarem Kopfband	1
 gid://shopify/Product/15448900731265	Ohrringe mit Katzenaugenstein und Türkis-Optik	1
 gid://shopify/Product/15454915199361	Elektrische Kamm für Locken und Glätte	1
 gid://shopify/Product/15493908070785	Nano Kratzerentferner-Tuch	1
-gid://shopify/Product/15523906421121	Haarentfernungscreme Sanfte Reinigung	1
 gid://shopify/Product/15524868555137	Mini Tattoo Pen mit USB-Ladekabel	1
 gid://shopify/Product/15525495472513	USB-Mixer für unterwegs	1
 gid://shopify/Product/15510920659329	Bohemian Perlenohrringe – Leicht & Elegant	1
@@ -221,6 +221,7 @@ gid://shopify/Product/15524867473793	Reflektierendes Hunde-Brustgeschirr mit Lei
 gid://shopify/Product/15524885823873	Bestickter Vorhang mit Lichtdurchlass	1
 gid://shopify/Product/16603524366727	Schwingendes Geisterlicht für Halloween	1
 gid://shopify/Product/15443241042305	Moissanit-Ohrstecker «Bogen» 0,5 ct · 925 Silber	1
+gid://shopify/Product/15454916116865	Studenten-Becher mit Sprühfunktion, 580 ml	1
 gid://shopify/Product/15490138440065	Parfüm mit grünem Duft im Eulen-Design	1
 gid://shopify/Product/15509347467649	Eiswürfelform aus Edelstahl	1
 gid://shopify/Product/15509382791553	Duales USB Desktop Wireless-Ladegerät	1
@@ -228,7 +229,6 @@ gid://shopify/Product/15523938468225	WLAN Handy Beamer	1
 gid://shopify/Product/15523939156353	Reinigungsbürsten-Set aus Bambus und Buchenholz	1
 gid://shopify/Product/16604955410823	DIY Fotorahmen Bausteine	1
 gid://shopify/Product/15443243598209	Vergoldete Halskette «Blatt» · 18k Gold-Optik	1
-gid://shopify/Product/15454916116865	Studenten-Becher mit Sprühfunktion, 580 ml	1
 gid://shopify/Product/15455422054785	Keratin Wimpern-Lift	1
 gid://shopify/Product/15481980682625	USB Kondensator-Mikrofon für Konferenzen & Gaming	1
 gid://shopify/Product/15508465025409	Multifunktionaler Vertikal-Spiralschneider	1
@@ -241,6 +241,7 @@ gid://shopify/Product/15481380536705	Kabelloses Ansteckmikrofon mit Ladebox	1
 gid://shopify/Product/15509362049409	Elastisches Perlenarmband-Set (5-teilig)	1
 gid://shopify/Product/15522085470593	Multifunktionaler Steckdosen-Tester mit Display	1
 gid://shopify/Product/15522216345985	Verstellbarer Spiralschneider mit Behälter	1
+gid://shopify/Product/15522433302913	Gänsedaunenkissen – Füllung für Kissenhüllen	1
 gid://shopify/Product/15525501403521	Korrektur-Gurt für Kinder	1
 gid://shopify/Product/16604925493639	Minimalistische Tischlampe	1
 gid://shopify/Product/16644535943559	Ein-Schulter Umhängetasche aus Oxford-Stoff, schwarz	1
@@ -250,11 +251,10 @@ gid://shopify/Product/15506243715457	Automatischer Lockenstab mit Drehfunktion	1
 gid://shopify/Product/15506272715137	USB Mini-Ventilator mit Clip – bürstenlos & leise	1
 gid://shopify/Product/15506299453825	Nordische Wanduhr – Schwarz-Weiss, Retro-Stil	1
 gid://shopify/Product/15508418986369	Wanduhr aus Buchenholz, geräuscharm	1
-gid://shopify/Product/15522433302913	Gänsedaunenkissen – Füllung für Kissenhüllen	1
+gid://shopify/Product/15522298659201	Schräge Keramik Futterschale für Haustiere	1
 gid://shopify/Product/15525495898497	Doppelwandiger Isolierbehälter aus Edelstahl	1
 gid://shopify/Product/16603758854535	Handgefärbtes Batik-Kleid mit A-Linie	1
 gid://shopify/Product/16616537293191	Tensegrity Anti-Schwerkraft Bausteine	1
 gid://shopify/Product/15453783785857	Babynahrung Zerkleinerer	1
 gid://shopify/Product/15478693822849	Nylon-Karotten-Spielzeug	1
 gid://shopify/Product/15496517452161	Kabelloser Elite-Controller für PS4	1
-gid://shopify/Product/15522298659201	Schräge Keramik Futterschale für Haustiere	1
