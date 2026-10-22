@@ -3614,3 +3614,4 @@
 16656768303495	Farbe:9:9+ki	2026-10-22	wickeltuch-mit-fester-krempe-622300
 16656767025543	Farbe:8:8+ki	2026-10-22	minimalistischer-funf-sterne-doppellagen-schal-622200
 16656667509127	Farbe:6:6+ki	2026-10-22	uhr-mit-farbverlauf-dial-606700
+16656667246983	Ausführung:2:2+ki	2026-10-22	elektrischer-gemuseschneider-615700
