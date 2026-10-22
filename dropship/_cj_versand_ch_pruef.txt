@@ -13421,3 +13421,4 @@ sommerhut-fur-kleine-hunde-634000	2510090540241634200	16	5.34	ok	landeseite
 fisch-schlusselanhanger-602400	2607120834401603000	16	5.81	ok	landeseite
 vintage-t-shirt-kurzarmlig-636600	2606011230511637200	16	7.43	ok	landeseite
 dunnes-mesh-t-shirt-fur-herren-635900	2605291001531636500	16	6.01	ok	landeseite
+atmungsaktives-hundehalsband-643800	2509300958561644000	16	6.25	ok	landeseite
