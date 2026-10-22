@@ -1,4 +1,4 @@
-# Händlerwörter + Uhren-Modellnamen — Stand 2026-10-21 00:36 UTC
+# Händlerwörter + Uhren-Modellnamen — Stand 2026-10-22 00:20 UTC
 
 Werkzeug `automation/haendlerwort.py`, Regel `automation/data/haendlerwort_regel.json` (Importer: `haendlerwort.mjs` in `fallenSicher`). Geändert: {'dublette-titel-bleibt': 1}
 
