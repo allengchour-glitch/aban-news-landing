@@ -13612,3 +13612,12 @@ herren-langarmhemd-casual-leinen-607500	2606080655511608300	16	8.25	ok	landeseit
 herren-leder-armband-automatik-625100	2508110608241625600	16	5.93	ok	landeseite
 automatik-herrenuhr-mit-gro-em-zifferblatt-602800	2508110604391603000	16	6.56	ok	landeseite
 automatikuhr-mit-grossem-zifferblatt-623200	2508100328391623500	16	6.56	ok	landeseite
+herren-langarm-shirt-lockere-passform-603900	2606011150291604500	16	11.00	ok	landeseite
+herren-lumineszenz-armbanduhr-624700	2508100326241625000	7	7.78	ok	landeseite
+vollautomatische-stahlarmband-star-sea-mechani-628600	2508100323371628900	16	7.17	ok	landeseite
+herren-bequem-rundhals-t-shirt-mit-jacquard-ri-623200	2607130329091623800	16	6.90	ok	landeseite
+trendig-vielseitiger-herrenpullover-600500	2607040926081601100	16	7.51	ok	landeseite
+herren-automatik-uhr-620900	2508100318021621200	16	6.40	ok	landeseite
+modische-automatische-uhren-620400	2507291020581620600	7	6.90	ok	landeseite
+herrenuhr-casual-618300	2507250308301618500	7	6.02	ok	landeseite
+asymmetrisches-kleid-611500	2607100301591612100	16	9.75	ok	landeseite
