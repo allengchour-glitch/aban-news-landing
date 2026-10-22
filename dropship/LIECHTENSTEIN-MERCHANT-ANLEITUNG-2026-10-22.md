@@ -42,3 +42,9 @@ Meine Empfehlung: B, weil es nichts kostet und CH nicht berührt. Zwei Vorbehalt
 - Nach 1–2 Tagen: `google_feedback_wache.py` zählt «Missing shipping info … [LI]» neu (heute 28'745). Fällt die Zahl deutlich, hat B gewirkt.
 - Bleibt sie gleich oder steigt sie wieder, hat der Shopify-Abgleich den Dienst überschrieben → dann ist A die ehrliche Antwort (nichts tun, LI-Meldung hinnehmen).
 - Ergebnis kommt hierher und in die Journal-Zeile.
+
+## ERLEDIGT 22.10.2026 (Betreiber-Screenshot, Merchant Center «Shipping and returns»)
+- Neuer Versanddienst **«Liechtenstein CHF 14.90»**: Sichtbarkeit grün, Status **Complete**, Kosten **Flat**, Lieferzeit beginnt bei **15** (die Spalte war im Screenshot abgeschnitten — die Obergrenze ist nicht gesehen, soll 45 sein).
+- Die drei bestehenden Schweizer Dienste (`flat_7.00_CHF…`, `price_based_CHF…versand`, `flat_15.00_CHF…`) stehen unverändert, Lieferzeit je ab 10.
+- **Ausgangswert für die Nachmessung:** «Missing shipping info in some countries [LI]» = **28'745** (Google-Scan 22.10. 08:09 UTC), Free-Listings-Blocker CH = 41.
+- Nachmessung: nächster Vollscan (`google_feedback_wache.py`, täglich) am 23.10.; Erinnerung der Sitzung 23.10. 10:00 UTC. Fällt die Zahl deutlich → B wirkt. Bleibt sie → der Shopify-Abgleich hat den Dienst überschrieben oder Google braucht länger (dann am 25.10. erneut messen, bevor A als Antwort gilt).
