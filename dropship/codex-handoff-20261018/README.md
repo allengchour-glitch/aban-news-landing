@@ -1,5 +1,7 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+**Technische Sichtbarkeit Plus 22.10.:** [Öffentliche Gegenprobe und Prioritäten](SICHTBARKEIT-MAX-PLUS-20261022.md). Neu dokumentiert: strukturierte Daten vorhanden, drei fehlende Bild-Altattribute am Projektor, möglicher Ladeumfang und ein Versand-Schema-Konflikt CHF 40.50 versus verbindliche CHF 50. Keine Live-Änderung.
+
 **Sichtbarkeits-Maximalplan 22.10.:** [Prüf- und Freigabepaket](SICHTBARKEIT-MAX-20261022.md). Enthält Search-&-Discovery, Filter, Collection-Architektur, Merchant-/Free-Listings-Grenzen, SEO, Social und Conversion. Keine Live-Aktivierung; Merchant-Leistungsabfrage heute wegen inkompatibler Feldkombinationen/Timeout unbekannt.
 
 **Neue Filtermatrix für Claude:** [Technik & Schuhe – Filtermatrix](FILTERMATRIX-TECHNIK-SCHUHE.md). Der Entwurf definiert kundenrelevante Filter, normalisierte Werte und interne Tags, die verborgen bleiben müssen. Er ist noch nicht im Shopify-Shop aktiviert. Die nächste sinnvolle Prüfung ist der Abgleich mit den bestehenden Search-&-Discovery-Regeln.
