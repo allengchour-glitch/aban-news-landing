@@ -1637,3 +1637,11 @@ gid://shopify/Product/16656658760071	nicht-versendbar	Schuhschrank mit Sitzbank 
 gid://shopify/Product/16656660496775	nicht-versendbar	Trolley aus Aluminium-Magnesium-Legierung
 gid://shopify/Product/16656435675527	nicht-versendbar	Business-Rollkoffer mit Hartschale
 gid://shopify/Product/16656660595079	nicht-versendbar	Aluminium-Magnesium-Legierung Handgepäck Koffer
+gid://shopify/Product/16656660234631	nicht-versendbar	Trolley-Koffer aus Aluminium-Magnesium-Legierung
+gid://shopify/Product/16656660169095	nicht-versendbar	Leichter Rollkoffer mit grossem Volumen
+gid://shopify/Product/16656624550279	nicht-versendbar	Multifunktionaler Trolley mit USB & Schloss
+gid://shopify/Product/16656629334407	nicht-versendbar	Leichter Rollkoffer für Handgepäck, bedruckt
+gid://shopify/Product/16656645357959	nicht-versendbar	Grosser Canvas-Trolleykoffer 20 Zoll
+gid://shopify/Product/16656659906951	nicht-versendbar	Grosser Rollkoffer mit Nass- und Trockenfach
+gid://shopify/Product/16656659775879	nicht-versendbar	Multifunktionaler Rollkoffer
+gid://shopify/Product/16656522641799	ok	Magnetische Bausteine 60-Teile-Set

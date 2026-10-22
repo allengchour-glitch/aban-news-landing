@@ -12963,3 +12963,14 @@ leichter-chiffon-jumpsuit-621400	2607130221371622100	16	9.47	ok	landeseite
 kuhlendes-handy-zubehor-mit-digitaldisplay-602400	2509220224431602600	7	6.66	ok	landeseite
 rundspitze-sneaker-mit-mittelsocke-268928	1674322504460017664	16	13.16	ok	landeseite
 mehrschichtiges-kleid-mit-print-und-schleife-635000	2607130137341636400	16	7.71	ok	landeseite
+aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben	-	-	-	unklar keine CJ-SKU	landeseite
+aroma-diffuser-holzoptik-hohl-design-ultraschall-luftbefeuchter-mit-led-licht	-	-	-	unklar keine CJ-SKU	landeseite
+streifen-bluse-marbella-color-block-kurzarm	-	-	-	unklar keine CJ-SKU	landeseite
+spitzen-bluse-dentelle-v-ausschnitt-loose-fit	-	-	-	unklar keine CJ-SKU	landeseite
+strick-bluse-maglia-hollow-out-loose-langarm	-	-	-	unklar keine CJ-SKU	landeseite
+chiffon-set-solare-bluse-weite-hose	-	-	-	unklar keine CJ-SKU	landeseite
+flat-cap-brigade-camouflage-baumwolle	-	-	-	unklar keine CJ-SKU	landeseite
+vintage-baseball-cap-liberty-washed-schwarz	-	-	-	unklar keine CJ-SKU	landeseite
+baseball-cap-mama-mintgrun	-	-	-	unklar keine CJ-SKU	landeseite
+vintage-cap-tuesday-washed-grau	-	-	-	unklar keine CJ-SKU	landeseite
+5-panel-cap-sprint-nylon-schwarz	-	-	-	unklar keine CJ-SKU	landeseite
