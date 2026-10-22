@@ -1383,9 +1383,24 @@ def index_stand():
     if AUF_SERVER:
         return None
     sys.path.insert(0, os.path.join(REPO, "tools"))
-    from index_probe import bewerte, lies_stand
-    r = bewerte(lies_stand(os.path.join(REPO, "dropship", "_index_stand.tsv")))
-    return f"🔎 {r['zeile']}" if r["alarm"] else None
+    from index_probe import bewerte, lies_stand, gueltig, antraege_offen, lies_antraege
+    laeufe = lies_stand(os.path.join(REPO, "dropship", "_index_stand.tsv"))
+    r = bewerte(laeufe)
+    # 22.10.2026: die Zeile nennt jetzt auch, was NUR der Betreiber beheben kann — nicht indexierte Adressen ohne «Indexierung
+    # beantragen» (GEMESSEN 22.10.: 34 von 34 beantragten stehen im Index, 10 von 10 unbeantragten nicht; IndexNow wirkt nur bei Bing).
+    # «Wirkungslos» (beantragt, nach 3+ Tagen weiter draussen) ist ⚠️: dann liegt es an der Seite, nicht am fehlenden Antrag.
+    teile = []
+    gl = [k for k in sorted(laeufe) if gueltig(laeufe[k])]
+    if gl and r.get("alter", 99) <= 8:
+        ao = antraege_offen(laeufe[gl[-1]], lies_antraege(os.path.join(REPO, "dropship", "_index_beantragt.tsv")))
+        if ao["wirkungslos"]:
+            teile.append(f"⚠️ {len(ao['wirkungslos'])} beantragt, aber nach 3+ T weiter nicht indexiert "
+                         f"({', '.join(u.split('luxestyle.ch')[-1] for u, _ in ao['wirkungslos'][:2])}) → Seite prüfen, nicht erneut beantragen")
+        if ao["ohne"]:
+            teile.append(f"{len(ao['ohne'])} nicht indexiert OHNE Antrag (Betreiber-Klick, ca. 10/Tag) → python3 tools/index_probe.py --antraege")
+    if r["alarm"]:
+        return "🔎 " + " · ".join([r["zeile"]] + teile)
+    return ("🔎 INDEX-ANTRÄGE: " + " · ".join(teile)) if teile else None
 
 
 def wearable_seo():

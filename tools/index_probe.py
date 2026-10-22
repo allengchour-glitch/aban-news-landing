@@ -26,6 +26,8 @@ Weitere Aufrufe:
     python3 tools/index_probe.py --abgerufen-seit 2026-10-10 [teil-der-url]
         → Runbook-Regel (a): eine Nachmessung zählt nur, wenn Google die Seite NACH der Änderung abgerufen hat
     python3 tools/index_probe.py --abgleich <alte.tsv>           → Vergleich mit einer früheren Handmessung
+    python3 tools/index_probe.py --antraege                      → welche nicht indexierte Adresse wurde nie beantragt (Klickliste),
+        welche beantragte wartet / wirkt / ist nach 3 Tagen weiter draussen (22.10.2026, liest dropship/_index_beantragt.tsv)
     python3 tools/index_probe.py --selbsttest
 """
 import datetime as dt, json, os, sys
@@ -40,6 +42,11 @@ GUELTIG_ANTEIL = 0.5      # ein Lauf mit mehr als der Hälfte «unklar» zählt 
 # Register der Suchbegriff-Kollektionen (automation/suchbegriff_kollektionen.py legt sie an). Jede Kollektion dort kommt
 # automatisch in die Messliste (Gruppe «suchbegriff») — so erfasst das Gerät auch Kollektionen, die NACH dem 13.10. entstehen.
 REGISTER = os.path.join(REPO, "automation", "data", "suchbegriff_kollektionen.json")
+# Anträge «Indexierung beantragen» (Search Console, ~10/Tag, nur der Betreiber im eingeloggten Konto). GEMESSEN 22.10.2026: die 10 Anträge
+# vom 20.10. abends standen am 22.10. 00:33 UTC ALLE im Index (Abruf 20.10. 21:48–21:54), keine der 10 nicht beantragten Adressen — der
+# Antrag ist der einzige Hebel, der bei Google wirkt (IndexNow gilt nur für Bing). Die Handarbeit «welche Adresse fehlt noch?» steckt hier.
+BEANTRAGT = os.path.join(REPO, "dropship", "_index_beantragt.tsv")
+WIRKT_TAGE = 3            # beantragt und nach so vielen Tagen weiter nicht indexiert → eigene Klasse (Seite/Qualität), nicht «Antrag fehlt»
 
 
 def norm(url):
@@ -233,6 +240,58 @@ def suchbegriff_quote(lauf, register=None):
     return ja, len(z)
 
 
+def lies_antraege(pfad=BEANTRAGT):
+    """→ {url: 'JJJJ-MM-TT'} der Anträge, die der BETREIBER wirklich gestellt hat (Spalte «wer» beginnt mit «Betreiber»; jüngster
+    Eintrag je Adresse). Vorschläge der Sitzung und Nachmessungen zählen NICHT — sonst gälte eine nur vorgeschlagene Adresse als beantragt."""
+    out = {}
+    if not os.path.exists(pfad):
+        return out
+    for n, z in enumerate(open(pfad, encoding="utf-8")):
+        t = z.rstrip("\n").split("\t")
+        if n == 0 or len(t) < 3 or not t[2].strip().lower().startswith("betreiber"):
+            continue
+        try:
+            dt.date.fromisoformat(t[0].strip())
+        except ValueError:
+            continue
+        u = norm(t[1])
+        out[u] = max(out.get(u, ""), t[0].strip())
+    return out
+
+
+def antraege_offen(lauf, antraege, heute=None):
+    """Nur Seiten mit gültigem Urteil (indexiert 1/0; «unklar» zählt nicht). → dict:
+    ohne = nicht indexiert, nie beantragt (→ Klickliste für den Betreiber) · wartet = beantragt vor weniger als WIRKT_TAGE ·
+    wirkungslos = beantragt vor ≥ WIRKT_TAGE und weiter nicht indexiert (Seite/Qualität prüfen, NICHT nochmal beantragen) ·
+    wirkt = indexiert und beantragt (Beleg für den Hebel)."""
+    heute = heute or dt.datetime.utcnow().date()
+    ohne, wartet, wirkungslos, wirkt = [], [], [], []
+    for z in lauf:
+        if z["indexiert"] == "unklar":
+            continue
+        d = antraege.get(z["url"])
+        if z["indexiert"] == "1":
+            if d:
+                wirkt.append((z["url"], d))
+            continue
+        if not d:
+            ohne.append(z["url"])
+        elif (heute - dt.date.fromisoformat(d)).days >= WIRKT_TAGE:
+            wirkungslos.append((z["url"], d))
+        else:
+            wartet.append((z["url"], d))
+    return {"ohne": ohne, "wartet": wartet, "wirkungslos": wirkungslos, "wirkt": wirkt}
+
+
+def antraege_zeile(r):
+    """Eine Zeile für Bericht und Ampel (ohne Antwort-Details)."""
+    z = (f"ANTRÄGE: {len(r['wirkt'])} beantragt und indexiert · {len(r['ohne'])} nicht indexiert OHNE Antrag"
+         f" · {len(r['wartet'])} warten · {len(r['wirkungslos'])} wirkungslos")
+    if r["wirkungslos"]:
+        z += " — ⚠️ beantragt, aber nach " + str(WIRKT_TAGE) + "+ Tagen weiter nicht im Index: Seite prüfen, nicht erneut beantragen"
+    return z
+
+
 def drucke_lauf(zeilen, warn):
     for z in zeilen:
         print(f"  {z['indexiert']:>6}  {z['letzter_abruf']:>10}  {z['gruppe']:<11} {z['url'].split('luxestyle.ch')[-1]}")
@@ -344,6 +403,34 @@ def selbsttest():
     st = lies_stand(p)
     pruefe("gleicher Tag ersetzt, neuer Tag hängt an", sorted(st), ["2026-10-13T19:00Z", "2026-10-16T08:00Z"])
     pruefe("Spalten vollständig", sorted(st["2026-10-16T08:00Z"][0]), sorted(KOPF))
+    # Anträge (22.10.): wer wurde wirklich beantragt, was fehlt noch
+    pt = os.path.join(tempfile.mkdtemp(), "beantragt.tsv")
+    with open(pt, "w", encoding="utf-8") as f:
+        f.write("datum\turl\twer\tstatus\n")
+        f.write("2026-10-13\thttps://luxestyle.ch/collections/a\tBetreiber (GSC «Indexierung beantragen»)\tindexiert\n")
+        f.write("2026-10-20\thttps://luxestyle.ch/collections/b\tvorgeschlagen (Sitzung, OpenSEO)\tvorgeschlagen für 22.10.\n")
+        f.write("2026-10-21\thttps://luxestyle.ch/collections/c\tBetreiber (GSC)\tbeantragt\n")
+        f.write("2026-10-17\thttps://luxestyle.ch/collections/d\tBetreiber (GSC)\tbeantragt\n")
+        f.write("2026-10-10\thttps://luxestyle.ch/collections/d\tSitzung (Nachmessung)\talt\n")
+        f.write("2026-10-05\thttps://luxestyle.ch/collections/h\tBetreiber (GSC)\tbeantragt\n")
+        f.write("2026-10-19\thttps://luxestyle.ch/collections/h\tBetreiber (GSC)\tnochmal beantragt\n")
+        f.write("kaputt\n")
+    an = lies_antraege(pt)
+    pruefe("Anträge: nur Betreiber-Zeilen, jüngstes Datum", {u.split("/")[-1]: d for u, d in an.items()},
+           {"a": "2026-10-13", "c": "2026-10-21", "d": "2026-10-17", "h": "2026-10-19"})
+    heute22 = dt.date(2026, 10, 22)
+    lz = [{"gruppe": "x", "url": "https://luxestyle.ch/collections/" + k, "indexiert": v, "letzter_abruf": "-"}
+          for k, v in (("a", "1"), ("b", "0"), ("c", "0"), ("d", "0"), ("e", "0"), ("f", "unklar"), ("g", "1"))]
+    ro = antraege_offen(lz, an, heute22)
+    pruefe("a indexiert+beantragt → wirkt", [u.split("/")[-1] for u, _ in ro["wirkt"]], ["a"])
+    pruefe("b nur vorgeschlagen, e nie → ohne Antrag", sorted(u.split("/")[-1] for u in ro["ohne"]), ["b", "e"])
+    pruefe("c vor 1 Tag beantragt → wartet", [u.split("/")[-1] for u, _ in ro["wartet"]], ["c"])
+    pruefe("d vor 5 Tagen beantragt, weiter 0 → wirkungslos", [u.split("/")[-1] for u, _ in ro["wirkungslos"]], ["d"])
+    pruefe("unklar (f) und indexiert ohne Antrag (g) tauchen nirgends auf",
+           any("/f" in u or "/g" in u for k in ("ohne", "wartet", "wirkungslos", "wirkt")
+               for u in [x if isinstance(x, str) else x[0] for x in ro[k]]), False)
+    pruefe("Zeile nennt Wirkungslos als Warnung", "⚠️" in antraege_zeile(ro) and "1 wirkungslos" in antraege_zeile(ro), True)
+    pruefe("Zeile ohne Wirkungslose hat kein ⚠️", "⚠️" in antraege_zeile(antraege_offen(lz[:3], an, heute22)), False)
     print(f"SELBSTTEST {'OK' if not fehler else f'{fehler} FEHLER'}")
     return fehler == 0
 
@@ -372,6 +459,21 @@ def main():
         print(bewerte(laeufe)["zeile"])
         ja, n = suchbegriff_quote(laeufe[k])
         print(f"SUCHBEGRIFF: {ja}/{n}")
+        return 0
+    if "--antraege" in a:
+        if not laeufe:
+            print("kein Stand"); return 1
+        k = sorted(laeufe)[-1]
+        r = antraege_offen(laeufe[k], lies_antraege())
+        print(f"Stand {k}")
+        for name, titel in (("ohne", "NICHT INDEXIERT, NIE BEANTRAGT (Klickliste für den Betreiber)"), ("wartet", "beantragt, wartet"),
+                            ("wirkungslos", "BEANTRAGT, WIRKUNGSLOS (nicht nochmal beantragen — Seite prüfen)"), ("wirkt", "beantragt und indexiert")):
+            if r[name]:
+                print(f"{titel}:")
+                for x in r[name]:
+                    u, d = (x, "") if isinstance(x, str) else x
+                    print(f"  {u.split('luxestyle.ch')[-1]}" + (f"  (beantragt {d})" if d else ""))
+        print(antraege_zeile(r))
         return 0
     if "--abgerufen-seit" in a:
         i = a.index("--abgerufen-seit")
@@ -415,6 +517,7 @@ def main():
     schreibe_lauf(zeilen, messdatum)
     print(f"FERTIG: Lauf {messdatum} ({len(zeilen)} Seiten) → {os.path.relpath(STAND, REPO)}")
     print(bewerte(lies_stand())["zeile"])
+    print(antraege_zeile(antraege_offen(zeilen, lies_antraege())))
     return 0
 
 
