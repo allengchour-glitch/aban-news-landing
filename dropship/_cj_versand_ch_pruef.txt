@@ -13622,3 +13622,5 @@ modische-automatische-uhren-620400	2507291020581620600	7	6.90	ok	landeseite
 herrenuhr-casual-618300	2507250308301618500	7	6.02	ok	landeseite
 asymmetrisches-kleid-611500	2607100301591612100	16	9.75	ok	landeseite
 herrenarmbanduhr-stahlgehause-automatik-siliko-615900	2507200620571616400	16	5.85	ok	landeseite
+automatische-vintage-uhr-herren-wasserdicht-le-619200	2507150317481610600	16	7.43	ok	landeseite
+doppeltkalender-herrenuhr-edelstahl-leuchtend-616900	2507110417391617100	7	6.66	ok	landeseite
