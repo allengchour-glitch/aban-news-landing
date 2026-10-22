@@ -40,3 +40,9 @@ Begründung der Reihenfolge: zuerst die Hauptkategorien im Menü (sie tragen die
 - Nachmessung nach 1–3 Tagen: `python3 tools/index_probe.py` (Mo + Do automatisch), danach `python3 tools/index_probe.py --antraege`. **Wirkungslos** (beantragt, nach 3+ Tagen weiter draussen) wäre ein Befund an der Seite selbst, nicht am fehlenden Antrag — davon gibt es bisher 0.
 - Die Ampel zeigt ab jetzt «🔎 INDEX-ANTRÄGE: n nicht indexiert OHNE Antrag», solange die letzte Messung höchstens 8 Tage alt ist.
 - «Indexierung beantragen» ist keine Garantie; Google entscheidet. Die 34 von 34 sind eine Beobachtung an dieser Seite, kein Versprechen.
+
+## Nachmessung 22.10. ~08:40 UTC (nach der Meldung «alle indexiert», `inspect_urls`, 0 Credits)
+- **Im Index («Submitted and indexed», Abruf 08:31 UTC): 4 von 10** — sicherheitsschuhe, camisole-traegertops, smart-ring, schrank-organizer.
+- **Heute 08:31 abgerufen, noch «Crawled – currently not indexed»: 5** — schuhe, schmuck-uhren, beauty-pflege, elektronik-technik, fur-ihn. Google hat sie auf den Antrag hin geholt und noch nicht aufgenommen; bei den 34 früheren folgte die Aufnahme binnen etwa einem Tag. Nachmessen am 23.10.
+- **sub-beleuchtung: letzter Abruf weiter 22.06.** — der Antrag ist dort noch nicht verarbeitet (oder nicht abgeschickt). Nachmessen am 23.10.; steht sie dann unverändert, bitte den Antrag für diese Adresse einzeln wiederholen.
+- Ledger: 10 Zeilen «Betreiber (Meldung 22.10.)» in `dropship/_index_beantragt.tsv`.
