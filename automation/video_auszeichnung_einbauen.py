@@ -6,6 +6,7 @@ bestehenden Product-JSON-LD-Script (Anker `{{ luxe_sd }}` … `</script>`); dess
 
   python3 automation/video_auszeichnung_einbauen.py            TROCKEN: zeigt Einfügestelle und was sich ändert, schreibt nichts
   python3 automation/video_auszeichnung_einbauen.py --scharf   Backup (Repo + Scratch), Race-Schutz, Upsert, Rücklesen + Gegenprobe
+  python3 automation/video_auszeichnung_einbauen.py --zurueck  RÜCKWEG: spielt das Backup (Original vom 22.10., md5 2c437a49…) ins Live-Theme zurück
 
 Idempotent: steht der Block schon (Marke LUX-VIDEO-JSONLD), wird er zwischen Anfang- und Ende-Marke ersetzt statt verdoppelt.
 Rückweg: die Backup-Datei dropship/theme_patches/product-information.vorher-2026-10-22.liquid per Upsert zurückspielen (themeFilesUpsert).
@@ -41,7 +42,27 @@ def entfernen(neu, block):
     return neu.replace("\n" + block.rstrip("\n") + "\n", "", 1)
 
 
+ORIGINAL_MD5 = "2c437a49bbb0b68a8b04afe6b45af6a2"
+
+
+def zurueck():
+    """Rückweg: Backup ins Live-Theme. Bricht ab, wenn das Backup nicht das geprüfte Original ist."""
+    from lux_assistent import _gql, theme_id, datei_lesen, datei_schreiben
+    orig = open(BACKUP, encoding="utf-8").read()
+    if hashlib.md5(orig.encode()).hexdigest() != ORIGINAL_MD5:
+        raise SystemExit(f"Backup {BACKUP} ist nicht das geprüfte Original (md5 weicht ab) — nichts geschrieben")
+    g = _gql()
+    tid = theme_id(g)
+    datei_schreiben(g, tid, DATEI, orig)
+    z = datei_lesen(g, tid, DATEI)
+    ok = z == orig
+    print(f"{'ZURÜCK' if ok else '⚠️ RÜCKLESEN WEICHT AB'}: {DATEI} {len(z or '')} Zeichen, md5 {hashlib.md5((z or '').encode()).hexdigest()} (soll {ORIGINAL_MD5})")
+    return 0 if ok else 2
+
+
 def main():
+    if "--zurueck" in sys.argv:
+        return zurueck()
     scharf = "--scharf" in sys.argv
     block = open(BLOCK, encoding="utf-8").read()
     if MARKE_A not in block or MARKE_E not in block:

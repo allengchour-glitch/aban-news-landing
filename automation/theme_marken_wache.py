@@ -23,6 +23,9 @@ MARKEN = [
     ("sections/main-blog.liquid", "pagination-controls", "Blog-Index rendert die Seitenleiste"),
     ("snippets/pagination-controls.liquid", "pagination__list", "Seitenleisten-Baustein des Themes ist vorhanden"),
     ("snippets/product-grid.liquid", "LUX-SEITENNAV", "Pagination-Pilot: Seitenlinks unter dem Raster der 12 Pilot-Kollektionen (21.10.2026, dropship/PAGINATION-PILOT-2026-10-21.md)"),
+    ("sections/product-information.liquid", "LUX-VIDEO-JSONLD", "VideoObject-Block auf Produktseiten mit Video-Medium, 547 Seiten (22.10.2026, dropship/VIDEO-AUSZEICHNUNG-2026-10-22.md; Rückweg video_auszeichnung_einbauen.py --zurueck)"),
+    ("sections/product-information.liquid", '"@type": "VideoObject"', "VideoObject-Ausgabe selbst (nicht nur der Kommentar)"),
+    ("sections/product-information.liquid", "replace_first: '\"@type\":\"Product\",'", "Bewertungs-Logik (aggregateRating) des Product-JSON-LD vom 22.09.2026 — der Video-Einbau darf sie nicht berühren"),
 ]
 
 

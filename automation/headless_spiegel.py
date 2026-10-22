@@ -29,6 +29,7 @@ STALE_H = 36
 SCHWELLE_PRODUKTE = 300      # darunter ist es der Tageszugang neuer Ware, kein Befund
 MAX_PRODUKTE = int(os.environ.get("MAX", "4000"))
 BATCH = 20
+ARBEITER = int(os.environ.get("ARBEITER", "3"))
 
 
 def waehle(luecke, gesperrt):
@@ -78,24 +79,34 @@ def luecke_produkte(g, os_id, hl_id, grenze):
 
 
 def veroeffentlichen(g, hl_id, art, eintraege):
-    n_ok = n_fehl = 0
+    """Veröffentlicht in Paketen zu BATCH Einträgen; ARBEITER Pakete gleichzeitig (der Server arbeitet die Aliase eines Pakets nacheinander ab —
+    22.10.: ~100 Produkte/Minute mit einem Arbeiter, 8'000 Produkte = 80 Minuten und damit länger als ein Container lebt)."""
+    import threading
+    from concurrent.futures import ThreadPoolExecutor
+    sperre = threading.Lock()
+    summe = {"ok": 0, "fehl": 0}
     fehler = []
-    for i in range(0, len(eintraege), BATCH):
-        teil = eintraege[i:i + BATCH]
+
+    def paket(teil):
         m = "mutation{" + " ".join(
             f'p{j}:publishablePublish(id:"{x["id"]}",input:[{{publicationId:"{hl_id}"}}]){{userErrors{{message}}}}' for j, x in enumerate(teil)) + "}"
         d = g(m)
-        with open(LEDGER, "a", encoding="utf-8") as f:
-            for j, x in enumerate(teil):
-                e = (d.get(f"p{j}") or {}).get("userErrors") or []
-                if e:
-                    n_fehl += 1
-                    fehler.append(f"{x['handle']}: {e[0]['message'][:80]}")
-                else:
-                    n_ok += 1
-                    f.write(f"{dt.datetime.utcnow():%Y-%m-%dT%H:%M:%SZ}\t{art}\t{x['id']}\t{x['handle']}\n")
-        time.sleep(0.4)
-    return n_ok, n_fehl, fehler
+        with sperre:
+            with open(LEDGER, "a", encoding="utf-8") as f:
+                for j, x in enumerate(teil):
+                    e = (d.get(f"p{j}") or {}).get("userErrors") or []
+                    if e:
+                        summe["fehl"] += 1
+                        fehler.append(f"{x['handle']}: {e[0]['message'][:80]}")
+                    else:
+                        summe["ok"] += 1
+                        f.write(f"{dt.datetime.utcnow():%Y-%m-%dT%H:%M:%SZ}\t{art}\t{x['id']}\t{x['handle']}\n")
+        time.sleep(0.2)
+
+    pakete = [eintraege[i:i + BATCH] for i in range(0, len(eintraege), BATCH)]
+    with ThreadPoolExecutor(max_workers=ARBEITER) as ex:
+        list(ex.map(paket, pakete))
+    return summe["ok"], summe["fehl"], fehler
 
 
 def schreibe_stand(s):

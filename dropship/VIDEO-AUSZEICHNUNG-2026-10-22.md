@@ -29,11 +29,16 @@ Wache: `automation/video_auszeichnung_kanarien.py` (prüft die QUELLE: statische
 ## EHRLICHE ERWARTUNG (Prüfer, QUELLE Google)
 **Kein erwarteter Sichtbarkeitsgewinn.** Google indexiert Videos nur von Watch-Seiten; eine Produktseite mit Zusatzvideo gilt ausdrücklich nicht als solche (Search-Console-Hilfe «Video indexing report»). Zusätzlich liegt das `<video>` im Live-Shop erst nach Klick im DOM. Der Block ist Datenpflege: kostenlos, ungefährlich, aber nicht der Hebel. Echte Video-Sichtbarkeit bräuchte eigene Watch-Seiten — bei 547 Clips unverhältnismässig. Ich hatte vorher gesagt, es lohne sich erst nach den Hauptkategorien; das bleibt richtig.
 
-## STATUS: NICHT LIVE
-Der Live-Einbau (`themeFilesUpsert` auf `sections/product-information.liquid`) wurde vom Berechtigungsprüfer des Auto-Modus **abgelehnt** (ohne Begründung). Ich habe ihn nicht umgangen. Alles andere ist fertig. Zum Einbauen:
-`python3 automation/video_auszeichnung_einbauen.py --scharf` (nach dem Einbau in `theme_marken_wache.py` die Marke `luxe_vid` eintragen und die Ampel prüfen lassen).
+## STATUS: LIVE seit 22.10.2026 ~09:55 UTC (Betreiber «Ja, einbauen»)
+- Der Auto-Modus hatte den Einbau zweimal abgelehnt, solange nur ein mehrdeutiges «ja» vorlag; nach der ausdrücklichen Antwort des Betreibers («Video-Block: Ja, einbauen») lief er durch. Nichts umgangen.
+- `automation/video_auszeichnung_einbauen.py --scharf`: `sections/product-information.liquid` 14'106 → 17'114 Zeichen (+3'008), zurückgelesen identisch. **md5 vorher `2c437a49bbb0b68a8b04afe6b45af6a2`, nachher `e4ba950be4a05c5d6dd6f6ebf5d8a0a9`.** Backup (md5 geprüft = Original): `dropship/theme_patches/product-information.vorher-2026-10-22.liquid`. **Rückweg:** `python3 automation/video_auszeichnung_einbauen.py --zurueck`.
+- **Besucher-Probe** (`automation/video_auszeichnung_nachpruefung.py`, nur Antworten mit `render;dur`): **9 gewertete Antworten, 0 Fehler** — Video-Seiten (kerzenlicht-aromadiffuser, kreative-nachrichtentafel) je genau 1 `VideoObject`, Kontrollseiten (haarklammern, schultertasche) 0; alle `ld+json` parsen; Product-/ProductGroup-Markup und Kaufknopf vorhanden; kein «Liquid error». 3 weitere Antworten kamen aus dem Cache (nicht gewertet).
+- Ausgegebener Block (kerzenlicht-aromadiffuser): `contentUrl` und `thumbnailUrl` mit `https://luxestyle.ch/cdn/shop/…`, Beschreibung ohne verklebte Wörter, `uploadDate` 2026-09-07.
+- **Falle im eigenen Prüfwerkzeug (erste Fassung):** `curl -D -` vermischt Header und Body und bei Proxy steht die CONNECT-Antwort davor — meine erste Probe meldete bei 12 von 12 Seiten «Kaufknopf fehlt, kein Product-JSON-LD», obwohl die Seiten in Ordnung waren (Diagnose an der echten Antwort: 721 KB, 3 ld+json, 46 Kaufknopf-Marker, bevor irgendetwas zurückgerollt wurde). Jetzt Header und Body in getrennten Dateien. **Lehre: erst die Antwort ansehen, dann zurückrollen — ein rotes Prüfwerkzeug ist noch kein kaputtes Theme.**
+- **Live-Wache:** `theme_marken_wache.py` trägt jetzt `LUX-VIDEO-JSONLD`, `"@type": "VideoObject"` und `replace_first: '"@type":"Product",'` (7 Marken, 0 Befunde, täglich). Der Prüfer weist darauf hin, dass ein überschriebener Block bis zu 24 h unentdeckt bliebe.
 
-Nachmessung nach dem Einbau: Search Console → «Videoindexierung»; per `inspect_urls` auf einer der 547 Seiten nach `richResultType` «Video» sehen (nur wenn die Seite neu abgerufen wurde).
+### Noch zu messen (Checkliste des Prüfers)
+Variantenwechsel und Quick-Add im Browser (`tools/browser.mjs`: 4 ld+json auf Video-Seiten, 3 sonst), Rich-Results-Test/URL-Inspektion auf 3 Video-URLs (nur nach neuem Google-Abruf), Merchant-Center am Folgetag (kein Anstieg «Product page unavailable»), Search Console → «Videoindexierung» nach 3–14 Tagen. Erwartung bleibt: kein messbarer Effekt.
 
 ## Weitere Befunde des Regressions-Prüfers (nicht Teil dieses Patches)
 - `uploadDate` = Produkt-Veröffentlichungsdatum, nicht Video-Upload (bei 16 von 33 geprüften Seiten kam das Video später); Liquid kennt kein Video-Datum — bekannte Ungenauigkeit.

@@ -14,7 +14,7 @@ Anlass: Betreiber-Screenshot der App — Kategorie **«Schneidebretter»** zeigt
 - **Pilot SCHARF 09:10 UTC: alle 24 Kollektionen + 250 Produkte veröffentlicht, 0 Fehler.** `schneidebretter` steht jetzt im Kanal (`publishedOnPublication` = true).
 - Ampel «HEADLESS» (`betreiber_ampel.headless_netz`): ⚠️ bei Lücke Kollektionen > 0 oder Produkte > 300 oder Messung älter als 36 h. Aufseher misst täglich (nur lesen).
 
-## OFFEN — braucht Deine Freigabe
+## FREIGABE 22.10. (Betreiber-Antwort «Headless: Ja, veröffentlichen» auf eine Rückfrage) — Lauf läuft
 **8'015 Produkte** fehlen noch im Kanal. Ich habe den Lauf gestartet und nach dem Hinweis des Berechtigungsprüfers («Modify Shared Resources») **vor der ersten Veröffentlichung wieder gestoppt**; das Ledger zeigt nur den Pilot (274 Zeilen). Sie sind im Onlineshop bereits öffentlich verkäuflich, die App würde also dasselbe zeigen wie die Webseite.
 - Freigabe: «Headless ja» → `MAX=9000 python3 automation/headless_spiegel.py --scharf` (ca. 15 Minuten), danach täglich derselbe Aufruf im Aufseher.
 - Rückweg: Ledger-Zeilen → `publishableUnpublish` für den Kanal.
