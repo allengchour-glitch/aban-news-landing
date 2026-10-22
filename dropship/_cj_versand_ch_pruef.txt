@@ -13201,3 +13201,4 @@ herren-casual-langarm-hoodie-603300	2607130604531603900	16	9.47	ok	landeseite
 bergfahrradhelm-56b743	30E8D9A6-055B-428E-9D1F-987341F38446	16	9.47	ok	landeseite
 deemount-fahrradhelm-e8db3a	28562B52-C494-4C45-A1F5-0F09CC9EA94A	16	9.88	ok	landeseite
 einfache-vielseitige-schuhe-mit-dicker-sohle-585536	1660548380940054528	16	17.66	ok	landeseite
+herren-kardigan-grau-locker-601000	2604181251161601900	16	12.21	ok	landeseite
