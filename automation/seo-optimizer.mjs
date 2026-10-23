@@ -66,9 +66,18 @@ TOKEN = await getToken();
 if(!TOKEN){ console.error('Kein Token.'); process.exit(0); }
 
 let after = null, scanned = 0, updated = 0, failedImgs = [];
+// Abfragekosten am echten Shop gemessen (2026-10-18), je Seite mit 50 Produkten:
+//   51 = wie bisher · 44 = ohne das nie gelesene `featuredMedia` · 16 = ohne die Bildpruefung.
+// `featuredMedia` wurde geholt und nirgends benutzt — reine Kosten, darum ersatzlos weg.
+// Die Bildpruefung (`media`) kostet allein 28 Punkte je Seite und gehoert eigentlich zum
+// Bild-Audit; sie bleibt eingeschaltet, laesst sich fuer lange Laeufe aber mit BILDCHECK=0
+// abstellen. Das ist kein Schoenheitsfehler: Shopifys Eimer fasst 2000 Punkte und fuellt sich
+// mit 100/s nach; teilt sich der Shop den Eimer mit anderen Zugriffen, passt eine Seite zu 16
+// Punkten noch in die Luecken, eine zu 51 nicht mehr.
+const BILDCHECK = process.env.BILDCHECK !== '0';
 const Q = `query($after:String,$q:String){ products(first:50, after:$after, query:$q, sortKey:${SORT}, reverse:${REVERSE}){
   pageInfo{ hasNextPage endCursor }
-  nodes{ id title seo{ title description } featuredMedia{ ... on MediaImage{ id alt } } media(first:3){ nodes{ status } } } } }`;
+  nodes{ id title seo{ title description }${BILDCHECK ? ' media(first:3){ nodes{ status } }' : ''} } } }`;
 const M = `mutation($input:ProductInput!){ productUpdate(input:$input){ product{ id } userErrors{ field message } } }`;
 
 outer:
@@ -96,7 +105,8 @@ while(true){
 }
 
 const msg = `🔎 SEO-Optimizer: ${scanned} Produkte gescannt (${PQUERY}, ${SORT}${REVERSE?'':' aufsteigend'}) · ${updated} SEO ${DRY?'(DRY)':'gefüllt'}`
-  + (failedImgs.length ? `\n⚠️ ${failedImgs.length} Produkt(e) mit FAILED-Bild: ${failedImgs.slice(0,8).join(', ')}` : `\n✅ keine FAILED-Bilder`);
+  + (!BILDCHECK ? `\n· Bilder nicht geprueft (BILDCHECK=0)`
+     : failedImgs.length ? `\n⚠️ ${failedImgs.length} Produkt(e) mit FAILED-Bild: ${failedImgs.slice(0,8).join(', ')}` : `\n✅ keine FAILED-Bilder`);
 console.log(msg);
 if(TG_T && TG_C && (updated>0 || failedImgs.length)){
   try{ await fetch(`https://api.telegram.org/bot${TG_T}/sendMessage`,{method:'POST',headers:{'Content-Type':'application/json'},
