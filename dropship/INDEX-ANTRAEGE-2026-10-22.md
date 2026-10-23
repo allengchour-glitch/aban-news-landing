@@ -62,3 +62,6 @@ Nicht beantragen: `collections/🎁-geschenke-bis-chf-30` (Emoji-Handle, Google 
 ## Nachmessung 22.10. ~10:30 UTC (`inspect_urls`, 0 Credits)
 - **Alle 10 Adressen der Klickliste stehen im Index («Submitted and indexed», Abruf 08:31 UTC):** schuhe, schmuck-uhren, beauty-pflege, elektronik-technik, fur-ihn, sub-beleuchtung (der Abruf vom 22.06. war eine veraltete Anzeige — der Antrag war angekommen), sicherheitsschuhe, camisole-traegertops, smart-ring, schrank-organizer. Zusammen mit den früheren 34: **44 von 44 beantragte Adressen indexiert**, jeweils binnen ~1,5 Stunden bis 1 Tag.
 - **Die vier neuen Kandidaten sind NICHT beantragt** (kein Abruf, `spielzeug` und `garten-leuchten` «URL is unknown to Google», `hochzeitsgeschenke` und `gerade-auf-instagram` «Discovered»). Direktlinks weiter oben im Abschnitt «Nächste Kandidaten».
+
+## Ergebnis 23.10.2026 (Nachmessung, OpenSEO `inspect_urls`, GEMESSEN)
+Alle 10 Adressen dieser Liste stehen im Index («Submitted and indexed»): schuhe (Abruf 23.10. 02:13 UTC), schmuck-uhren, beauty-pflege, elektronik-technik, fur-ihn, sub-beleuchtung, sicherheitsschuhe, camisole-traegertops, smart-ring, schrank-organizer (Abruf 22.10. 08:31 UTC). Beantragt 22.10. → indexiert binnen ~1 Tag, wie bei den 10 vom 20.10. Nächste Liste: `dropship/INDEX-ANTRAEGE-2026-10-23.md`.
