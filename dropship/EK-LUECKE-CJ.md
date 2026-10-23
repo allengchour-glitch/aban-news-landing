@@ -1,6 +1,6 @@
-# EK-Lücke CJ — scharf 2026-10-20 22:43 UTC
+# EK-Lücke CJ — scharf 2026-10-23 04:27 UTC
 
-Kandidaten: 3 ganz ohne EK, 1 teils · nach Nachtrag mit EK: 0 · CJ ausgelistet (1602002) → DRAFT: **0** · kein Urteil: 3
+Kandidaten: 3 ganz ohne EK, 0 teils · nach Nachtrag mit EK: 0 · CJ ausgelistet (1602002) → DRAFT: **0** · kein Urteil: 3
 
 | ausgelistet | CJ-Referenz |
 |---|---|
