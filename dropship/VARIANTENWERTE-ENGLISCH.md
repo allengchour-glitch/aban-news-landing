@@ -1,18 +1,18 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-23 06:14 UTC, Stand 2026-10-23 08:14 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-23 06:14 UTC, Stand 2026-10-23 08:15 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **52'820**
-- Optionen mit englischen Werten (Kandidaten): 2'875
+- Produkte gesehen: **53'419**
+- Optionen mit englischen Werten (Kandidaten): 2'895
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 14'813
+- Werte mit unbekanntem Wort (unverändert): 14'963
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 86
+- übersprungen «kleidungsstueck-im-wert»: 88
 - übersprungen «kollision-nach-uebersetzung»: 42
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
@@ -57,6 +57,7 @@
 - `16615380779399` [Farbe] **Satinbluse Langarm** — hose: Braun | Champagner | Schwarz | Grün | Lila | Claret | Coffee pants | Brown set
 - `16615410958727` [Farbe] **Damen-Kleid Moonlight Melody** — oberteil: Moonlight Color | White Blouse
 - `16615656194439` [Farbe] **Jacquard Kleid-Set mit Schleife** — jacke, oberteil, rock · Titel nennt Set: Top Skirt Blazer | Top Skirt Blouse Sleeve | Black Skirt Support
+- `16615807222151` [Farbe] **Hochzeitskleid-Set für Puppen** — weste · Titel nennt Set: Wedding Progress-Without Baby | Mr Vest-Without Baby
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -132,5 +133,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 588, `light` 440, `color` 359, `shell` 159, `size` 159, `degrees` 159, `⟨satzbau:material-vor-farbe⟩` 151, `core` 137, `surface` 131, `powder` 127, `diamond` 109, `skin` 106, `high` 104, `inside` 104, `no` 97, `shoes` 95, `bag` 91, `three` 91, `⟨satzbau:mass-ohne-einheit⟩` 90, `belt` 89, `french` 89, `rain` 88, `yards` 88, `dinosaur` 87, `code` 85, `case` 84, `dark` 83, `four` 82, `opp` 81, `inner` 79, `buckle` 78, `cloth` 78, `to` 77, `cherry` 76, `rope` 75, `spring` 72, `chain` 70, `autumn` 69, `dual` 68, `net` 68, `petal` 68, `little` 66, `hat` 66, `half` 66, `base` 63, `strap` 62, `feet` 62, `⟨satzbau:mass-unplausibel⟩` 62, `bear` 61, `of` 60, `⟨satzbau:menge-vor-nomen⟩` 60, `tea` 59, `plush` 59, `one` 56, `background` 54, `rice` 54, `night` 54, `bottom` 54, `face` 53, `line` 52
+`⟨satzbau:adjektiv-vor-nomen⟩` 588, `light` 440, `color` 359, `size` 162, `shell` 159, `degrees` 159, `⟨satzbau:material-vor-farbe⟩` 151, `core` 137, `surface` 131, `powder` 128, `diamond` 109, `skin` 106, `high` 104, `inside` 104, `three` 99, `yards` 98, `no` 97, `shoes` 95, `bag` 91, `⟨satzbau:mass-ohne-einheit⟩` 90, `belt` 89, `dinosaur` 89, `french` 89, `rain` 88, `to` 86, `code` 85, `case` 84, `dark` 83, `four` 82, `opp` 81, `inner` 79, `buckle` 78, `cloth` 78, `cherry` 76, `rope` 75, `spring` 72, `chain` 70, `autumn` 69, `dual` 68, `net` 68, `petal` 68, `little` 67, `hat` 66, `half` 66, `base` 63, `strap` 62, `feet` 62, `⟨satzbau:mass-unplausibel⟩` 62, `bear` 61, `of` 60, `⟨satzbau:menge-vor-nomen⟩` 60, `tea` 59, `plush` 59, `one` 56, `rice` 55, `background` 54, `night` 54, `bottom` 54, `face` 53, `line` 52
 
