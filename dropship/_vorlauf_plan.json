@@ -144,7 +144,7 @@
   "bild-20261023T0745": {
    "basis_utc": "2026-10-23T07:45:00Z",
    "format": "bild",
-   "grund": "",
+   "grund": "Planer-Status Fehler nach dem Termin",
    "handle": "herren-ring-vintage-edelstahl-retro",
    "handles": [
     "herren-ring-vintage-edelstahl-retro"
@@ -155,7 +155,7 @@
     399491227
    ],
    "reserviert_um": "2026-10-18T23:02:59Z",
-   "status": "geplant",
+   "status": "fehler",
    "termin_utc": "2026-10-23T07:45:00Z",
    "versuche": 2
   },
@@ -1805,6 +1805,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-23T07:46:33Z",
+ "stand": "2026-10-23T07:53:46Z",
  "version": 1
 }
