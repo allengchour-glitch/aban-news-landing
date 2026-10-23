@@ -378,3 +378,4 @@ gid://shopify/Product/15483935523201	draft-ausverkauft	Versteckte Leckereien
 gid://shopify/Product/15497457172865	draft-ausverkauft	BONA Classics Damen Laufschuhe
 gid://shopify/Product/15497534734721	draft-ausverkauft	Herren Platform Running Sneakers
 gid://shopify/Product/15493857116545	draft-ausverkauft	Wasserdichte, rutschfeste Herrenschuhe zum Schnüren
+gid://shopify/Product/15499053171073	draft-ausverkauft	Makramee Wandbehang „Nordic“
