@@ -34,3 +34,8 @@
 - **Ahrefs Site Audit «crawl failed to start» (12.10.):** Bericht unter https://app.ahrefs.com/site-audit/10486687/overview. Vermutlich blockt der Bot-Schutz von Shopify den Crawler; dieselbe Ursache hatte OpenSEO, dort hilft eine Crawler-Signatur. Kein Geldthema.
 - **Fruugo (13.10.):** Verkaufsangebot für einen Marktplatz. Keine Handlung nötig.
 - **Influencer-Bewerbung (11.10., info@):** Entscheid des Betreibers. Keine eigenen Creator-Anfragen (Verbot vom 06.10.). Eine eingehende Bewerbung beantwortet die Sitzung nicht von sich aus.
+
+## Nachprüfung Netlify Free — 23.10.2026 07:45 UTC (GEMESSEN)
+- Netlify-Team «aban» (`6a0ace512317373217058617`): `get-team` → `type_name: "Free"`, `updated_at` 21.10.2026 00:32:36 UTC (Rückstufung wirksam, nicht erst zum Periodenende 22.10.).
+- Gmail `from:netlify.com newer_than:3d`: genau ein Thread, «[Netlify] You've downgraded aban to a Free plan» (21.10. 00:32 UTC, 300 Credits/Monat im Free-Plan). **Keine Rechnung über USD 20**, keine Zahlungsmail.
+- Ergebnis: Auftrag erledigt, nichts offen. Bei einer neuen Netlify-Rechnung in den nächsten Wochen trotzdem melden.
