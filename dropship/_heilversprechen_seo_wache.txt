@@ -40,3 +40,5 @@
 2026-10-19	gid://shopify/Product/15521252114817	title+description	imagic-concealer-fur-gesichtsunreinheiten-385088
 2026-10-19	gid://shopify/Product/15523850453377	title+description	minimalistischer-hautentfernungspenner-424064
 2026-10-20	gid://shopify/Product/15460288037249	title+description	waschbare-inkontinenz-pads-fur-senioren-630800
+2026-10-23	gid://shopify/Product/16614565970311	title+description	silikon-springseil-3-m-fur-fettabbau-018112
+2026-10-23	gid://shopify/Product/16617695904135	title+description	springseil-fur-fitness-und-gewichtsverlust-fd0617
