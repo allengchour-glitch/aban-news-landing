@@ -151,6 +151,8 @@ Tagesfortführung: gezielte Shopify-SEO-Gegenprobe und Kategorie-Metadatenpflege
 
 | Sitemap / Indexierung | XML-Sitemap-Index, Collection-Sitemap und robots.txt öffentlich geprüft | Beauty-/Reise-/Küche-Collections sind in der Collection-Sitemap enthalten; robots.txt verweist auf die Sitemap. Eine Google-Indexierung oder Rankingwirkung ist damit nicht bestätigt |
 
+| Metricool-Einzelfehler | Bestehende Planung am 23.10. nochmals kanalweise gelesen und den ERROR-Zustand gezielt identifiziert | Instagram-Objekt UUID `3320188730394559300` konnte das verknüpfte Bild nicht abrufen. Keine Wiederholung, kein Ersatzpost und kein Blind-Retry; bestehender Fremdpost bleibt ungeändert |
+
 ## Fortführung
 
 Jeder Zürcher Kalendertag erhält einen eigenen Datumsblock mit den belegten Tätigkeiten dieses Tages. Mehrere Läufe ergänzen denselben Tag. Bereits erfasste Tätigkeiten nicht erneut als neu ausgeben; Korrekturen nachvollziehbar benennen. Bei fehlenden oder unlesbaren Quellen keine leere Vergangenheit behaupten und das Protokoll nicht zurücksetzen.
