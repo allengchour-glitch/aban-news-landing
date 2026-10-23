@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-23 04:30 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-23 08:54 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 260 · **111 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 78, teilweise: 25, keine: 8; Preisspanne > 2×: 20) · 1 CJ-Variante: 149 · ohne Antwort: 0
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 261 · **112 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 79, teilweise: 25, keine: 8; Preisspanne > 2×: 21) · 1 CJ-Variante: 149 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -77,6 +77,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | 5-Panel Cap «Sprint» · Nylon Schwarz (`5-panel-cap-sprint-nylon-schwarz`) | 6 | 4 | 2.13–2.13 | 27.90 | Black, Grey, Khaki, Army green |
 | Leichter Schulrucksack mit Print (`leichter-schulrucksack-mit-print-612500`) | 5 | 5 | 7.13–7.13 | 26.90 | Black Smiley Face-48x33x20cm, Gray Smiley-48x33x20cm, Pink Smiley Face-48x33x20cm, White-48x33x20cm |
 | Wandlampe mit kreativen LED-Farben (`wandlampe-mit-kreativen-led-farben-621800`) | 5 | 5 | 24.05–24.05 | 46.90 | Tad-Tricolor light, TheMayor-Tricolor light, Bert-Tricolor light, Gleen-Tricolor light |
+| Holz-Bausatz zum Selberbauen (`holz-bausatz-zum-selberbauen-529600`) | 5 | 5 | 3.57–33.0 | 63.90 | TG406, TG302, AM601, MC502 |
 | Gänsedaunenkissen – Füllung für Kissenhüllen (`gansedaunenkissen-fullung-fur-kissenhullen-520f50`) | 5 | 5 | 2.74–7.41 | 27.90 | White-75x50cm, White-74x48cm, White-45x45cm, White-50x50cm |
 | Aromadiffusor Holzmaserung (`aroma-diffuser-holzoptik-hohl-design-ultraschall-luftbefeuchter-mit-led-licht`) | 4 | 4 | 13.86–14.12 | 44.90 | Light wood grain-AU, Light wood grain-UK, Light wood grain-US, Light wood grain-EU |
 | Magisches Katzenkratzbrett mit Orgel-Design (`magisches-katzenkratzbrett-mit-orgel-design-709120`) | 4 | 1 | 3.81–3.81 | 16.90 | Deep Wood Grain, White, Cartoon Print, Wansheng Bat |

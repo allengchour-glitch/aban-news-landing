@@ -13785,3 +13785,16 @@ herren-v-ausschnitt-t-shirt-slim-fit-einfarbig-631500	2606231217541632100	16	7.8
 herren-v-shirt-aus-atmungsaktivem-material-ohn-625600	2606231102201626300	16	8.11	ok	landeseite
 striped-cardigan-623300	2606230818271624300	16	8.25	ok	landeseite
 lassiger-herren-lapelle-cardigan-sommerleicht-626300	2606221026511627100	16	8.25	ok	landeseite
+herren-cardigan-mit-kapuze-621700	2606220829431622300	16	10.69	ok	landeseite
+einfarbiges-wellen-web-t-shirt-mit-tief-v-auss-629800	2606220129381620400	16	7.74	ok	landeseite
+kinderfu-socken-mit-cartoon-motiven-604500	2503040641491604700	16	7.99	ok	landeseite
+baumwoll-indoor-schuhe-fur-kleinkinder-mit-ant-616800	2502190356511617000	16	5.41	ok	landeseite
+jungen-laufschuhe-619700	2502160922171619900	16	7.17	ok	landeseite
+weiche-durchatmende-baby-schuhe-mit-schleife-606200	2502120556311606400	16	5.88	ok	landeseite
+lauflernschuhe-mit-pailletten-622500	2502030527271622800	16	11.37	ok	landeseite
+weiche-rutschfeste-atmungsaktive-schuhe-fur-ma-613500	2501211255111613700	16	7.85	ok	landeseite
+winterlauflernschuhe-fur-babys-616200	2501210552411616400	16	6.01	ok	landeseite
+herren-automatic-mechanik-uhr-609900	2505150308591600200	7	7.03	ok	landeseite
+herren-vollhohes-stahlgehause-automatik-uhr-611400	2504290940151612300	7	6.49	ok	landeseite
+herrenarmbanduhr-automatik-wasserdicht-604000	2504260916561604200	7	7.78	ok	landeseite
+damen-laufschuhe-689664	1743186425702518784	16	10.83	ok	landeseite
