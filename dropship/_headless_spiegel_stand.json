@@ -1,8 +1,9 @@
 {
- "gemessen": "2026-10-22T10:14Z",
+ "gemessen": "2026-10-23T08:31Z",
  "kollektionen_luecke": 0,
- "produkte_luecke": 21,
+ "produkte_luecke": 0,
  "veroeffentlicht_kollektionen": 0,
- "veroeffentlicht_produkte": 0,
- "uebersprungen_sperre": 0
+ "veroeffentlicht_produkte": 30,
+ "uebersprungen_sperre": 0,
+ "fehler": []
 }
