@@ -13849,3 +13849,5 @@ topfer-topf-fur-offenes-feuer-611500	2607130918321612900	11	34.02	ok	landeseite
 kaffee-zirkon-ring-628100	2607130936091628900	16	4.40	ok	landeseite
 doppelseitig-geholt-automatik-herrenuhr-617300	2508060825101617500	7	7.30	ok	landeseite
 quadratisches-stich-und-pop-handwerksset-633000	2607130901441633700	16	9.47	ok	landeseite
+chiffon-ribbons-blume-kleid-626100	2607131506221626800	16	7.71	ok	landeseite
+blumenmuster-taille-betonendes-kleid-634200	2607131454531634800	16	7.71	ok	landeseite
