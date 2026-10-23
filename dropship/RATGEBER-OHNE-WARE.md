@@ -20,7 +20,6 @@ Das ist nicht nur eine Lücke, sondern eine Falschaussage: ein Artikel mit Namen
 | [Aromatherapy Guide: 10 ätherische Öle und ihre Wirkung 🌸](/blogs/ratgeber/aromatherapy-guide-10-atherische-ole-wirkung) | 0 |
 | [Schweizer Wohlfühl-Geheimnisse — 7 Rituale, die wir aus den ](/blogs/ratgeber/schweizer-wohlfuhl-geheimnisse) | 0 |
 | [Sommerkleider-Trends 2026: Die schönsten Looks für die Schwe](/blogs/ratgeber/sommerkleider-trends-2026-die-schonsten-looks-fur-die-schweiz) | 0 |
-| [Geschenkideen Schweiz 2026: für Sie, für Ihn & jeden Anlass](/blogs/ratgeber/geschenkideen-schweiz-2026-fur-sie-fur-ihn-jeden-anlass) | 0 |
 | [Partner-Geschenke & Couple-Sets: Ideen für Verliebte 2026](/blogs/ratgeber/partner-geschenke-couple-sets-ideen-fur-verliebte-2026) | 0 |
 | [Taschen-Trends 2026: von Crossbody bis Henkeltasche](/blogs/ratgeber/taschen-trends-2026-von-crossbody-bis-henkeltasche) | 0 |
 | [Open-Ear Kopfhörer: Die bessere Wahl für Sport, Velo & Büro?](/blogs/ratgeber/open-ear-kopfhoerer-sport-velo-ratgeber) | 0 |
