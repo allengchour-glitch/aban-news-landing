@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-22T21:56Z",
+ "stand": "2026-10-23T19:10Z",
  "profil": "gid://shopify/DeliveryProfile/152621121927",
  "stufe": 2,
  "stufe_seit": "2026-10-14",
@@ -47,6 +47,8 @@
  "falsch_varianten": 0,
  "google_produkte_im_soll": 31,
  "ch_lager_aktiv": 2371,
+ "zugeordnet": 0,
+ "geloest": 0,
  "marke": {
   "gesetzt": 0,
   "entfernt": 0,
