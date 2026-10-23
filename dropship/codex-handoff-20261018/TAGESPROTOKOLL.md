@@ -149,6 +149,8 @@ Tagesfortführung: gezielte Shopify-SEO-Gegenprobe und Kategorie-Metadatenpflege
 
 | Öffentliche Collection-IDs | Canonicals der sichtbaren Kategorien gegen Shopify-IDs abgeglichen und drei SEO-Metadaten-Sätze auf den tatsächlich verlinkten Collections aktualisiert | Beauty & Pflege, Reise & Outdoor und Küche & Kochen live angepasst; HTTP 200 und Titel/Beschreibungen öffentlich zurückgelesen. Frühere interne Collection-IDs bleiben unverändert; keine Produktzuordnungen geändert |
 
+| Sitemap / Indexierung | XML-Sitemap-Index, Collection-Sitemap und robots.txt öffentlich geprüft | Beauty-/Reise-/Küche-Collections sind in der Collection-Sitemap enthalten; robots.txt verweist auf die Sitemap. Eine Google-Indexierung oder Rankingwirkung ist damit nicht bestätigt |
+
 ## Fortführung
 
 Jeder Zürcher Kalendertag erhält einen eigenen Datumsblock mit den belegten Tätigkeiten dieses Tages. Mehrere Läufe ergänzen denselben Tag. Bereits erfasste Tätigkeiten nicht erneut als neu ausgeben; Korrekturen nachvollziehbar benennen. Bei fehlenden oder unlesbaren Quellen keine leere Vergangenheit behaupten und das Protokoll nicht zurücksetzen.
