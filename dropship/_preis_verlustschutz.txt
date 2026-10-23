@@ -345586,3 +345586,5 @@
 67761092428167	heben	17.90	18.90	14.37	2026-10-23	quarz-herrenuhr-mit-stahlarmband-611900
 67761092460935	heben	17.90	18.90	14.37	2026-10-23	quarz-herrenuhr-mit-stahlarmband-611900
 67761817387399	heben	27.90	28.90	22.40	2026-10-23	armbanduhr-im-mid-century-stil-623100
+67763092816263	heben	22.90	24.90	19.74	2026-10-23	quarzuhr-mit-magnetischem-kugelsystem-606900
+67763092849031	heben	22.90	24.90	19.74	2026-10-23	quarzuhr-mit-magnetischem-kugelsystem-606900
