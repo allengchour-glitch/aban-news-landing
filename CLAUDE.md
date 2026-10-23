@@ -84,6 +84,51 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-23 abends (🛍️ Interne Querverweise: Fläche vermessen, zu breites Ziel-Muster abgefangen):**
+Alles live gemessen. Nach der SEO-Titel-Fläche ist das die nächste grosse punktefreie Baustelle.
+- **🚨 DIE FLÄCHE IST VIEL GRÖSSER ALS DIE 2400 VOM 18.10.:** gemessen haben **2862 von 3000**
+  aktiven Produkten (95 %) **keinen internen Collection-Link**. 45–55 % davon haben ein erkennbares
+  Thema und bekommen eine Box; der Rest bleibt unter `NUR_THEMA` bewusst ohne.
+- **🧰 `cross_sell.mjs` konnte nur EIN Fenster erreichen.** Ohne Schalter beginnt jeder Lauf bei den
+  zuletzt geänderten Produkten — und eine Schreibung ändert `UPDATED_AT`, der Lauf bleibt also in
+  seinem eigenen Fenster. Neu `PQUERY`/`SORT`/`REVERSE` wie beim seo-optimizer; Seitengrösse 50
+  statt 100 (52 Punkte passen in die Lücken des geteilten Eimers, 102 nicht). Der Bericht nennt die
+  gelaufene Region, damit eine Zahl ohne sie nicht missverstanden wird.
+- **🚨 EINE DARREICHUNGSFORM IST KEIN THEMA — 265 Fehllinks abgewendet.** Im ältesten Katalogteil
+  gingen **331 von 373** Zuordnungen nach „Schweiz-Edition": **265 allein wegen des Wortes
+  `sticker`**, 21 wegen `poster`, nur 45 wegen `schweiz-edition`. Beleg: „Kiss-Cut Aufkleber –
+  Selbst gestalten" (Blanko-Produkt, Tags `printful_personalized_product`, `wunschdesign`) hätte
+  einen Link auf die 1.-August-Collection bekommen. Nachher: **331 → 100, und alle 100 echt**
+  (95 × `schweiz-edition`, 5 × `grueezi`, einzeln nachgelesen); dafür erkennt das Muster jetzt
+  `grueezi` und `mundart`. 36 Tests grün, 8 neu, Gegenprobe in beide Richtungen; Mutation
+  (`sticker` zurück ins Muster) fällt rot. **Zweites Mal in diesem Modul nach `schweiz-versand`
+  und dritte Wiederholung der Klasse `rueckhol`: ein zu breites Muster sieht aus wie ein anderes
+  Ergebnis, nicht wie ein Fehler. Aufgefallen ist die VERTEILUNG (89 % auf ein Ziel), nicht ein Fehler.**
+- **Gesetzt in dieser Sitzung: über 13 794 Boxen, 0 Fehler** (die Zahl wächst, solange der
+  Durchlauf läuft) — je Fenster mit Gegenprobe: die offene Zahl sinkt genau um die geschriebene,
+  danach meldet derselbe Lauf `zuSetzen: 0`. Eine Dublette fiele damit sofort auf.
+- **Lauf-Rezept, bestätigt:** `LIVE=1 PQUERY='status:active AND created_at:>=JJJJ-MM-TT'
+  SORT=CREATED_AT REVERSE=0 SCAN=3000 MAXFIX=1000 node automation/cross_sell.mjs`. `SCAN` ist bei
+  3000, `MAXFIX` bei 1000 gedeckelt → mehrere Läufe je Fenster, bis `zuSetzen: 0`, dann das
+  **Zeitfenster weiterschieben**. Das nächste Fenster findet man mit
+  **dem Bericht selbst: `letztesErstellt`** ist mit `SORT=CREATED_AT REVERSE=0` genau der Anfang des
+  nächsten Fensters. (`productsCount` taugt dafür NICHT — es zählt nur bis 10 000 und meldet für
+  diesen Katalog überall „10000".) Überlappung ist harmlos (idempotent), eine Lücke nicht. **Gegenprobe nach jeder Charge:** `zuSetzen` muss auf 0
+  fallen und `missingCrossSell` genau um die geschriebene Zahl sinken — eine Dublette zeigt sich sofort.
+- **🔁 Der ganze Durchlauf ist jetzt EIN Befehl:** `AB=<ISO-Datum> RUNDEN=20 LIVE=1 bash
+  automation/cross_sell_durchlauf.sh` schiebt das Fenster selbst weiter (erst wenn `zuSetzen` 0 ist,
+  sonst bleiben Produkte übersprungen) und zählt mit. Ohne `LIVE=1` wird nur gemessen — und der
+  Trockenlauf bleibt Vorgabe, weil die Verteilung je Ziel VOR der Charge gelesen werden muss.
+- **Alle neun Ziel-Collections live geprüft: 9 × HTTP 200.** Mess-Lehre am Rand: meine eigenen
+  geratenen Handles (`fuer-ihn`, `wohnen-deko`) gaben 404 — richtig sind `fur-ihn` und
+  `wohnen-dekoration`. **Nicht das Werkzeug war falsch, sondern mein Gegencheck.**
+- **✅ Die drei Traffic-Seiten sind technisch sauber.** 54 % aller Sitzungen (566 von 1040 in 30
+  Tagen) landen auf `abendkleid-sirene…` (227), `2-teiliges-leinen-set-provence…` (181) und
+  `abendkleid-aurora…` (158, **0 Warenkörbe**). Geprüft: HTTP 200, Kauf-Knopf da, kein
+  „Ausverkauft", 120 KB übertragen, erste Antwort 0,3–0,5 s. Was fehlt, sind **Bewertungen — alle
+  drei haben null**, und CJ hat für genau diese drei keine Kommentare (seit 17.10. im Leer-Ledger,
+  Grund `keine-kommentare`, mit Trockenlauf gegengeprüft). Dort helfen nur echte Käufer:innen.
+
 **📌 2026-10-23 (✅ SEO-Titel FERTIG — 56 668 aktive Produkte, 0 offen; dazu zwei Bremsen gelöst):**
 Die grösste punktefreie Fläche des Shops ist geschlossen. Alles live gemessen, PRs #2698, #2709, #2710.
 - **✅ Nichts mehr offen, am ganzen Katalog gezählt:** `DRY_RUN=1 LIMIT=1 BILDCHECK=0 SORT=CREATED_AT REVERSE=0

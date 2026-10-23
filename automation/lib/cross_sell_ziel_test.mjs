@@ -34,6 +34,22 @@ for (const [name, tags] of Object.entries(ECHT_SCHWEIZ)) {
   pruef(`${name} → Schweiz-Edition`, zielFinden(tags, '').schluessel, 'schweiz');
 }
 
+// ── 2b. Die Form ist kein Thema (gemessen 2026-10-23: 265 Fehlzuordnungen allein über `sticker`) ──
+// Gegenprobe in die andere Richtung zum Block darüber: dort entscheidet das Schweiz-Wort, hier
+// darf die blosse Darreichungsform NICHT entscheiden. Beide Richtungen zusammen halten die Regel.
+const NUR_FORM = {
+  'Blanko-Aufkleber zum Selbstgestalten': ['printful_personalized_product', 'sg-accessoires', 'wunschdesign'],
+  'Poster ohne Motivangabe':              ['poster', 'kunstdruck'],
+  'Mauspad ohne Motivangabe':             ['mauspad'],
+  'Sticker-Set ohne Motivangabe':         ['sticker', 'bild-ok'],
+};
+for (const [name, tags] of Object.entries(NUR_FORM)) {
+  pruef(`${name} → NICHT Schweiz-Edition`, zielFinden(tags, '').schluessel !== 'schweiz', true);
+}
+// Und das Gegenstück: mit Schweiz-Wort bleibt es ein Thema, auch wenn die Form dabeisteht.
+pruef('Edelweiss-Poster bleibt Schweiz-Edition', zielFinden(['poster', 'edelweiss'], '').schluessel, 'schweiz');
+pruef('Grüezi-Mundart-Druck ist Schweiz-Edition', zielFinden(['grueezi', 'mundart'], '').schluessel, 'schweiz');
+
 // ── 3. Die richtigen Treffer mitten im Wort dürfen nicht verlorengehen ──
 pruef('kategorie-uhr bleibt Schmuck & Uhren', zielFinden(['kategorie-uhr'], '').schluessel, 'schmuck');
 pruef('kat-aroma bleibt Wohnen & Deko',       zielFinden(['kat-aroma'], '').schluessel, 'wohnen');

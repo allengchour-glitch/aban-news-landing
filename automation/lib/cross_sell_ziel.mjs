@@ -38,8 +38,22 @@ export const ZIELE = {
  */
 export const NICHT_THEMA = /(^|-)versand(-|$)/;
 
-/** Nur die Schweiz-EDITION ist ein Thema, nicht die Schweiz als Lagerort. */
-const SCHWEIZ_EDITION = /schweiz-edition|edelweiss|matterhorn|alphorn|fondue|raclette|sticker|poster|mauspad/;
+/**
+ * Nur die Schweiz-EDITION ist ein Thema, nicht die Schweiz als Lagerort — und auch nicht die
+ * Darreichungsform. GEMESSEN 2026-10-23 im aeltesten Katalogteil (600 aktive Produkte,
+ * Trockenlauf): 331 von 373 Zuordnungen gingen nach „Schweiz-Edition", davon **265 allein
+ * wegen des Wortes `sticker`** und 21 wegen `poster` — nur 45 wegen `schweiz-edition`.
+ * Beleg: „Kiss-Cut Aufkleber – Selbst gestalten" (Tags printful_personalized_product,
+ * sg-accessoires, wunschdesign) haette einen Link auf die 1.-August-Collection bekommen.
+ * Ein Aufkleber, ein Poster oder ein Mauspad ist eine Form, kein Thema; dass die Poster in
+ * genau dieser Region schweizerisch sind, ist Zufall der Region, keine Regel.
+ * Dieselbe Fehlerklasse wie `schweiz-versand` darueber und `rueckhol` im Google-Sperrmuster:
+ * **ein zu breites Muster sieht aus wie ein anderes Ergebnis, nicht wie ein Fehler.**
+ * Echte Schweiz-Ware traegt ohnehin `schweiz-edition` oder einen Motivnamen — die bleiben drin.
+ * Ohne Thema faellt so ein Produkt in den Rueckfall und bekommt unter NUR_THEMA gar keine Box:
+ * keine Box ist besser als eine falsche.
+ */
+const SCHWEIZ_EDITION = /schweiz-edition|edelweiss|matterhorn|alphorn|fondue|raclette|grueezi|mundart/;
 
 const REGELN = [
   ['schmuck', /schmuck|ring|kette|armband|ohrring|halskette|uhr/],
