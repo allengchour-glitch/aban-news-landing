@@ -147,6 +147,8 @@ Tagesfortführung: gezielte Shopify-SEO-Gegenprobe und Kategorie-Metadatenpflege
 | Produkt / Master | Projektor mit Produkt-/Varianten-ID, ACTIVE-Status, Tags, CHF-Preis, echtem Bild, Kaufbarkeit sowie Tracking/inventoryPolicy gelesen | CHF 34.90, availableForSale true, inventoryQuantity 0, untracked/CONTINUE; keine Bestands- oder Lieferzusage. Master bleibt wegen fehlender professioneller MP4 und offener Rechte/Motivzuordnung blockiert |
 | Content / Verkauf | Kompaktes Master-Paket mit zwei Hooks, 18-s-Schnittplan, Kanal-UTM-Entwürfen und klarer Verkaufsaktion weitergeführt | Entwurf zur Inhaberfreigabe; keine Social-Veröffentlichung und keine Flow-/Rabatt-/Budgetänderung |
 
+| Öffentliche Collection-IDs | Canonicals der sichtbaren Kategorien gegen Shopify-IDs abgeglichen und drei SEO-Metadaten-Sätze auf den tatsächlich verlinkten Collections aktualisiert | Beauty & Pflege, Reise & Outdoor und Küche & Kochen live angepasst; HTTP 200 und Titel/Beschreibungen öffentlich zurückgelesen. Frühere interne Collection-IDs bleiben unverändert; keine Produktzuordnungen geändert |
+
 ## Fortführung
 
 Jeder Zürcher Kalendertag erhält einen eigenen Datumsblock mit den belegten Tätigkeiten dieses Tages. Mehrere Läufe ergänzen denselben Tag. Bereits erfasste Tätigkeiten nicht erneut als neu ausgeben; Korrekturen nachvollziehbar benennen. Bei fehlenden oder unlesbaren Quellen keine leere Vergangenheit behaupten und das Protokoll nicht zurücksetzen.
