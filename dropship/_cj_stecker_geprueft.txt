@@ -1086,3 +1086,28 @@
 15495048495489	kein-stecker-merkmal	2026-10-20	Kabellose 5-in-1 Ladestation mit Wecker
 15495048921473	kein-stecker-merkmal	2026-10-20	Ladeadapter für PS5 Controller-Halterung
 15495067337089	kein-stecker-merkmal	2026-10-20	PS5 Wireless Controller Ladestation mit RGB-Licht
+15495082180993	kein-stecker-merkmal	2026-10-23	Audio-Adapter mit Ladefunktion und Ringhalterung
+15495083524481	kein-stecker-merkmal	2026-10-23	PS5 Dual-Ladestation für Gamepads
+15495109673345	kein-stecker-merkmal	2026-10-23	4-in-1 Ladestation für Switch Joy-Cons
+15495110001025	kein-stecker-merkmal	2026-10-23	Mini Wireless CarPlay Adapter
+15495111934337	kein-stecker-merkmal	2026-10-23	DOBE Xbox One Dual-Akku-Ladestation
+15495121895809	mehrere-varianten	2026-10-23	Faltbare 3-in-1 Wireless Ladestation
+15495125795201	kein-stecker-merkmal	2026-10-23	VR-Brillen Controller Magnetische Ladestation
+15495125926273	kein-stecker-merkmal	2026-10-23	Oculus Quest 2 Wand-Ladestation
+15495126352257	mehrere-varianten	2026-10-23	3-in-1 Wireless Charger mit Nachtlicht
+15495142834561	kein-stecker-merkmal	2026-10-23	Smart Bluetooth Speaker mit Ambience Light & Charger
+15495143915905	kein-stecker-merkmal	2026-10-23	Universelle kabellose Ladestation
+15495155089793	kein-stecker-merkmal	2026-10-23	PS4 Slim Ladestation mit Kühler und Hub
+15495214072193	unklar-eu-vorhanden:AU/EU/UK/US	2026-10-23	Dual-Port USB-C Schnellladeadapter 20W
+15495214301569	kein-stecker-merkmal	2026-10-23	Multifunktions-Adapter für Game-Konsolen
+15495215350145	kein-stecker-merkmal	2026-10-23	3-in-1 Desktop Wireless Ladestation
+15495215448449	kein-stecker-merkmal	2026-10-23	Multifunktionale kabellose Ladestation
+15495216660865	kein-stecker-merkmal	2026-10-23	PS5 Controller Ladestation Duo
+15495240745345	kein-stecker-merkmal	2026-10-23	PS5 Controller Dual-Ladestation
+15495319847297	kein-stecker-merkmal	2026-10-23	Audio-Adapter iPhone auf USB-C (Digital)
+15495395967361	unklar-eu-vorhanden:AU/EU/UK/US	2026-10-23	12-Port USB Smart Charger
+15495407534465	kein-stecker-merkmal	2026-10-23	PG-9186 Ladestation für Switch Controller
+15496263958913	kein-stecker-merkmal	2026-10-23	Wireless Charger für A3, A4L, A5, A6, A7
+15496264384897	kein-stecker-merkmal	2026-10-23	Multifunktionale Ladestation für Nintendo Switch
+15496288829825	kein-stecker-merkmal	2026-10-23	Joy-Con Ladestation
+15496382415233	draft-kein-eu-stecker:US	2026-10-23	Qi 15W Fast Wireless Charger
