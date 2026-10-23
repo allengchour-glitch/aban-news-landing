@@ -13851,3 +13851,4 @@ doppelseitig-geholt-automatik-herrenuhr-617300	2508060825101617500	7	7.30	ok	lan
 quadratisches-stich-und-pop-handwerksset-633000	2607130901441633700	16	9.47	ok	landeseite
 chiffon-ribbons-blume-kleid-626100	2607131506221626800	16	7.71	ok	landeseite
 blumenmuster-taille-betonendes-kleid-634200	2607131454531634800	16	7.71	ok	landeseite
+v-ausschnitt-blumenkleid-mit-taille-622600	2607131437191623200	16	10.01	ok	landeseite
