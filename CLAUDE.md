@@ -104,9 +104,18 @@ Alles live gemessen. Nach der SEO-Titel-Fläche ist das die nächste grosse punk
   (`sticker` zurück ins Muster) fällt rot. **Zweites Mal in diesem Modul nach `schweiz-versand`
   und dritte Wiederholung der Klasse `rueckhol`: ein zu breites Muster sieht aus wie ein anderes
   Ergebnis, nicht wie ein Fehler. Aufgefallen ist die VERTEILUNG (89 % auf ein Ziel), nicht ein Fehler.**
-- **Gesetzt in dieser Sitzung: über 19 950 Boxen, 0 Fehler** (13 794 + 6 156; die Zahl wächst,
-  solange der Durchlauf läuft) — je Fenster mit Gegenprobe: die offene Zahl sinkt genau um die
-  geschriebene, danach meldet derselbe Lauf `zuSetzen: 0`. Eine Dublette fiele damit sofort auf.
+- **✅ DER DURCHLAUF IST DURCH: 35 312 Boxen gesetzt, 0 Fehler** (13 794 + 6 156 + 9 555 + 5 807).
+  Der Treiber schob das Fenster von der ältesten Ware bis **22.10.** und meldete dann „Fenster bewegt
+  sich nicht mehr". Gegenprobe je Fenster: die offene Zahl sinkt genau um die geschriebene, danach
+  meldet derselbe Lauf `zuSetzen: 0` — eine Dublette fiele sofort auf. Zweite Gegenprobe am
+  **Katalog-Anfang** (`PQUERY='status:active' SORT=CREATED_AT REVERSE=0 SCAN=3000 MAXFIX=0`):
+  379 Produkte ohne internen Link, **alle 379 bewusst ohne Thema** (`ohneThemaUebersprungen: 379`),
+  `zuSetzen: 0`. **Das ist der Normalzustand, nicht eine Lücke** — `NUR_THEMA` lässt ein Produkt ohne
+  erkennbares Thema absichtlich ohne Box, statt ihm einen beliebigen Link anzuhängen.
+  **Lauf-Lehre:** ein Lauf ohne Ausgabe sah zweimal aus wie ein hängender Lauf und wurde einmal
+  irrtümlich abgebrochen; der Treiber schreibt jetzt vor jeder Runde eine Zeile mit Fenster und
+  Uhrzeit. Das Tempo hängt allein am geteilten Punkte-Budget (200 Boxen in 2,5 h bei leerem Eimer
+  gegen 145 in 90 s bei freiem) — **langsam ist nicht hängend.**
 - **🚗 DREI ZIELE WAREN NUR DIE ZWEITBESTE WAHL — gemessen, nicht geraten.** Im Fenster ab 25.07.
   gingen **776 von 1669** Zuordnungen nach „Trends & Gadgets" (46 %). Das war kein zu breites
   Muster: **544 kamen über `elektronik`** und sind echte Elektronik. Aber **118 über `auto`**
