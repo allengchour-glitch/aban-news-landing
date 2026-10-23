@@ -1,4 +1,4 @@
-# Kosmetik: Inhaltsstoff-Beleg — Stand 2026-10-22 20:30 UTC
+# Kosmetik: Inhaltsstoff-Beleg — Stand 2026-10-23 17:54 UTC
 
 GEPRÜFT-OHNE-INCI: 1882 von 1888 Kosmetik ohne Inhaltsstoff-Liste · sichtbar 0 (Theme-Bedingung aktiv) · Reinstoff-Titel mit Mischung 0 · ohne Liste 3 · EDITOR-RÜCKGABE: 0 von 32 Editor-Produkten ohne Ausschluss-Satz · Theme ok (Klassen 5/7/16)
 
