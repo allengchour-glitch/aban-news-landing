@@ -1,6 +1,16 @@
-# Heilversprechen in Produkttexten — Stand 2026-10-22T06:05:56Z
+# Heilversprechen in Produkttexten — Stand 2026-10-23T02:22:40Z
 
-Geprüft: 2433 (Filter: `status:active updated_at:>2026-10-21T10:03:25Z`) · entschärft: 0 · offen: 0 · Schreibfehler: 0
+Geprüft: 11888 (Filter: `status:active updated_at:>2026-10-22T06:05:56Z`) · entschärft: 0 · offen: 5 · Schreibfehler: 0
 
 Offen = Muster getroffen, aber keine geprüfte Ersatzphrase. Satz lesen, Ersatz in `ERSATZ` eintragen, nächster Lauf schreibt.
 
+- **Notizbuch für Gewichtsverfolgung** (`notizbuch-fur-gewichtsverfolgung-639400`)
+  - …Für das tägliche Festhalten von Fortschritten beim Abnehmen. Das Notizbuch hat einen Kupferplatten‑Buchdeckel und enthä…
+- **Antihaft-Vierloch-Omelettpfanne** (`antihaft-vierloch-omelettpfanne-622500`)
+  - …von 19 cm und ist mit einer Antihaftbeschichtung aus Weizen-Heilsteinen versehen. Sie ist in den Farben Blaugrau, Milchweiss und Sc…
+- **Jade-Rollerset für Gesicht** (`jade-rollerset-fur-gesicht-15e51f`)
+  - …Jade-Roller mit zwei Köpfen, die zum Aufklimmen, Festigen, Entgiften und Scrapen der Gesichtshaut verwendet werden. Der Roller…
+- **Erhöhte Keramikschüssel mit Katzenohr-Design** (`erhohte-keramikschussel-mit-katzenohr-design-600000`)
+  - …ützung für die Halswirbelsäule und reduziert das Risiko von Akne. Die Schüssel ist aus Keramik gefertigt und hat ein niedlic…
+- **Hundegürtel mit Brusttasche – atmungsaktiv** (`hundegurtel-mit-brusttasche-atmungsaktiv-5a37cc`)
+  - …und so die Körpertemperatur reguliert. Er ist atmungsaktiv, schmerzlindernd und verhindert ein Überhitzen. Das zeichnet es aus Komp…
