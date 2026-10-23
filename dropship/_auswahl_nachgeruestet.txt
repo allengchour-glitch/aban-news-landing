@@ -3657,3 +3657,5 @@
 16652013797767	Farbe:7:7+ki	2026-10-23	kristall-hanf-kopftuch-monochromes-design-606000
 16652009734535	Farbe:10:10+ki	2026-10-23	wollschal-mit-wursthunde-print-614400
 16617719398791	Motiv:7:7+ki	2026-10-23	herz-anhanger-fur-taschen-601700
+16618011853191	Farbe:8:8+ki	2026-10-23	portemonnaie-mit-reissverschluss-anti-diebstah-602600
+16617715925383	Motiv:5:5+ki	2026-10-23	jute-tischlaufer-mit-quasten-611200
