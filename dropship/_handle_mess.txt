@@ -254,3 +254,4 @@ gid://shopify/Product/16647561183623	satchel-aus-leder-mit-doppelboden-braun-625
 gid://shopify/Product/16651901272455	low-top-herren-sneaker-aus-synthetischem-leder-619900	low-top-herren-sneaker-aus-synthetischem-kunstleder-619900	301
 gid://shopify/Product/16652426281351	leder-sneaker-mit-atmungsaktivem-obermaterial-629200	kunstleder-sneaker-mit-atmungsaktivem-obermaterial-629200	301
 gid://shopify/Product/16653947371911	leder-notizbuch-mit-metallspirale-a5-612800	kunstleder-notizbuch-mit-metallspirale-a5-612800	301
+gid://shopify/Product/16656730358151	hip-hop-diamant-uhr-herren-gold-silber-615000	hip-hop-strass-uhr-herren-gold-silber-615000	301

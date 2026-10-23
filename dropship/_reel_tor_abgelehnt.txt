@@ -83,3 +83,4 @@ CJMY299347801AZ	2026-10-20	schnitt 3: UNGEEIGNET: nur 5.0 s sauberes Material (<
 CJYD202596801AZ	2026-10-20	schnitt 3: UNGEEIGNET: kein sauberes Material (Fremdtext: 8 lateinische Woerter (course, desig, design, jmade, lcourse, nail))
 CJLS296611001AZ	2026-10-22	schnitt 3: UNGEEIGNET: nur 5.0 s sauberes Material (< 6 s, Regel Handwerk: dann das ganze Video verwerfen)
 CJWC296606301AZ	2026-10-22	schnitt 4: PRUEFUNG: Loop-Naht 9.92 > 1,3 x Referenz 7.26
+CJWV294909901AZ	2026-10-23	schnitt 3: UNGEEIGNET: kein sauberes Material (Fremdtext: Textzeilen in 26% der Bilder ohne lesbares Latein (Verdacht chinesische/fremde Schrift — OCR liest Szenentext nicht))
