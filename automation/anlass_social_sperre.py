@@ -673,10 +673,82 @@ def faellig(jetzt_=None, stand_datei=STAND):
     return False
 
 
+def grenze_ohne_lauf(jetzt_=None, stand_datei=STAND):
+    """Nur für die Ampel (23.10.2026): True, wenn eine Fenstergrenze überschritten wurde, die der letzte SCHARFE Lauf nicht kennt
+    (kein scharfer Stand ODER Stand-Phase ≠ Phase jetzt). Anders als faellig() OHNE die 20-h-Tagesregel: GEMESSEN 23.10. 12:20 UTC —
+    der Tageslauf war nach 21 h «fällig» und lief gerade, die Ampel meldete trotzdem «Fenstergrenze 15.10. überschritten, kein
+    scharfer Lauf danach» (falsche Ursache, 56 gesperrt / 0 offen). Den fehlenden Tageslauf meldet die Ampel separat («Stand > 30 h»)."""
+    t = jetzt_ or jetzt()
+    try:
+        st = json.load(open(stand_datei, encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        return True
+    if not st.get("scharf"):  # grenze
+        return True
+    for r in regel():
+        phase_jetzt = phase_von(r, t)
+        alt = (st.get("anlaesse") or {}).get(r["anlass"], {}).get("phase")
+        if alt != phase_jetzt:  # grenze
+            return True
+    return False
+
+
+def selbsttest_grenze(leise=False):
+    """Fälle + Mutanten für grenze_ohne_lauf() (Ampel-Zeile «Fenstergrenze überschritten»)."""
+    import tempfile
+    import types
+    quelle = open(os.path.abspath(__file__), encoding="utf-8").read()
+    r0 = regel()[0]
+    mitte = zeit(r0["ab"]) + dt.timedelta(days=1)          # sicher im Fenster
+    ordner = tempfile.mkdtemp(prefix="sperre-grenze-")
+
+    def stand(name, scharf, phase, alter_h):
+        pfad = os.path.join(ordner, name)
+        st = {"stand": (mitte - dt.timedelta(hours=alter_h)).strftime("%Y-%m-%dT%H:%MZ"), "scharf": scharf,
+              "anlaesse": {r["anlass"]: {"phase": phase} for r in regel()}}
+        json.dump(st, open(pfad, "w", encoding="utf-8"))
+        return pfad
+
+    def faelle(m):
+        f = []
+        if m.grenze_ohne_lauf(mitte, stand("a.json", True, "im", 21)):
+            f.append("A scharfer Stand mit richtiger Phase, 21 h alt → KEINE Grenz-Warnung (Tageslauf ist ein anderer Fall)")
+        if not m.grenze_ohne_lauf(mitte, stand("b.json", True, "vor", 2)):
+            f.append("B Stand kennt die Phase «im» nicht → Warnung")
+        if not m.grenze_ohne_lauf(mitte, stand("c.json", False, "im", 2)):
+            f.append("C Stand ohne scharfen Lauf → Warnung")
+        if not m.grenze_ohne_lauf(mitte, os.path.join(ordner, "gibt-es-nicht.json")):
+            f.append("D fehlende Stand-Datei → Warnung")
+        return f
+
+    mod = sys.modules[__name__]
+    fehler = faelle(mod)
+    erkannt = 0
+    mutanten = [("Phase wird nicht verglichen", 'if alt != phase_jetzt:  # grenze', 'if False:  # grenze'),
+                ("scharf wird nicht verlangt", 'if not st.get("scharf"):  # grenze', 'if False:  # grenze')]
+    for name, alt, ers in mutanten:
+        if quelle.count(alt) < 1:  # die Mutanten-Liste selbst enthält den Text auch → die ERSTE Stelle ist der echte Code
+            fehler.append(f"Mutant «{name}»: Stelle fehlt")
+            continue
+        mm = types.ModuleType("mutant_grenze")
+        mm.__file__ = os.path.abspath(__file__)
+        exec(compile(quelle.replace(alt, ers, 1), "mutant_grenze", "exec"), mm.__dict__)
+        if faelle(mm):
+            erkannt += 1
+        else:
+            fehler.append(f"Mutant «{name}» NICHT erkannt")
+    if fehler:
+        print("SELBSTTEST GRENZE FEHLGESCHLAGEN:\n  " + "\n  ".join(fehler))
+        return False
+    if not leise:
+        print(f"SELBSTTEST GRENZE OK: 4 Fälle, {erkannt}/{len(mutanten)} Mutanten erkannt")
+    return True
+
+
 def main():
     a = sys.argv[1:]
     if "--selbsttest" in a:
-        return 0 if selbsttest() else 1
+        return 0 if (selbsttest() and selbsttest_grenze()) else 1
     if "--faellig" in a:            # Exit 0 = Phasenwechsel seit dem letzten scharfen Lauf → Aufseher startet sofort
         f = faellig()
         print("FAELLIG (Fenstergrenze seit letztem scharfem Lauf)" if f else "nicht fällig (Phase unverändert)")

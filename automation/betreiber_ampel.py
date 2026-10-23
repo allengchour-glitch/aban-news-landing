@@ -1836,7 +1836,7 @@ def social_sperre():
     jetzt = datetime.datetime.now(datetime.timezone.utc)
     for r in ass.regel():
         grenze = ass.zeit(r["ab"]) if jetzt < ass.zeit(r["bis"]) else ass.zeit(r["bis"])
-        if ass.faellig(jetzt, pfad) and jetzt >= grenze + datetime.timedelta(hours=1):
+        if ass.grenze_ohne_lauf(jetzt, pfad) and jetzt >= grenze + datetime.timedelta(hours=1):  # nicht faellig(): 20-h-Tagesregel ist keine Grenze (23.10.)
             warn.append(f"⚠️ SOCIAL-SPERRE {r['anlass']}: Fenstergrenze {grenze:%d.%m. %H:%M} UTC überschritten, kein scharfer Lauf "
                         f"danach → python3 automation/anlass_social_sperre.py --scharf (Log /tmp/anlass_social_sperre.log)")
         a = (st.get("anlaesse") or {}).get(r["anlass"]) or {}

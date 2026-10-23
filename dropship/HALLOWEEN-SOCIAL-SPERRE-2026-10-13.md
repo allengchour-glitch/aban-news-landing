@@ -216,3 +216,7 @@ Grundlage: Prüfung des Commits af54e13c7 (6 Befunde «ok: false»). Alles Folge
   - `--ampel` zeigt «54 gesperrt / 0 offen» (oder mehr).
   - `productsCount(tag:social-pause-halloween)` = 54+.
   - `/tmp/anlass_social_sperre.log` hat einen START kurz nach 00:00 UTC.
+
+## Nachtrag 23.10.2026 (Verbesserungsrunde 12:25 UTC) — Ampel nannte die falsche Ursache
+- GEMESSEN 23.10. 12:20 UTC: Ampel «⚠️ SOCIAL-SPERRE halloween: Fenstergrenze 15.10. überschritten, kein scharfer Lauf danach», obwohl das Log «FERTIG 22.10. 15:33Z — 56 gesperrt / 0 offen» zeigte. Ursache: `betreiber_ampel.social_sperre()` fragte `faellig()`, und das ist auch dann wahr, wenn der letzte scharfe Lauf nur ≥ 20 h her ist (Tageslauf fällig, lief um 12:23 gerade). Die Sperre selbst war nie lückenhaft.
+- Fix: `anlass_social_sperre.grenze_ohne_lauf()` (nur «kein scharfer Stand» oder «Stand-Phase ≠ Phase jetzt»); die Ampel nutzt sie statt `faellig()`. Der fehlende Tageslauf bleibt über die bestehende Zeile «Stand > 30 h — Tageslauf fehlt» sichtbar. `python3 automation/anlass_social_sperre.py --selbsttest` prüft jetzt zusätzlich 4 Fälle + 2 Mutanten (Phase nicht verglichen / scharf nicht verlangt), beide erkannt. Ampel danach: keine SOCIAL-SPERRE-Zeile.
