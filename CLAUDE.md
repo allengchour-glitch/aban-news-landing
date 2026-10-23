@@ -82,6 +82,44 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-23 (✅ SEO-Titel FERTIG — 56 668 aktive Produkte, 0 offen; dazu zwei Bremsen gelöst):**
+Die grösste punktefreie Fläche des Shops ist geschlossen. Alles live gemessen, PRs #2698, #2709, #2710.
+- **✅ Nichts mehr offen, am ganzen Katalog gezählt:** `DRY_RUN=1 LIMIT=1 BILDCHECK=0 SORT=CREATED_AT REVERSE=0
+  node automation/seo-optimizer.mjs` geht durch alle **56 668** aktiven Produkte und findet **0**. In dieser
+  Sitzung gesetzt: 164 + 5000 + 5000 + 680 + 12 + 5000 + 5000 + 3390 = **24 246 Titel**, 0 Fehler.
+- **🚨 EIN STILLER ERFOLG SAH AUS WIE EINE LÜCKE — 3009 Produkte auf dem Laufband.** Shopify speichert
+  einen SEO-Titel **nicht**, der Wort für Wort dem Produkttitel entspricht: `seo.title` bleibt `null`, und
+  die Seite trägt ohnehin genau diesen Titel. Genau das erzeugt `seoTitel` für jeden Titel, der zu lang für
+  die angehängte Marke und zu kurz fürs Kürzen ist. Die Prüfung `!seo.title` meldete diese Produkte bei
+  JEDEM Lauf als offen und verbrauchte jedes Mal eine Schreib-Abfrage, die nichts änderte. Gemessen:
+  **alte Regel 3009 offen, davon 3009 genau dieser Fall, neue Regel 0.** Fix `seoOffen` in
+  `automation/lib/seo_titel.mjs` (9 Fälle, Gegenprobe in beide Richtungen: wo die Marke hineinpasst, bleibt
+  ein fehlender Titel eine echte Lücke). Beleg: `Relaxed-Fit Hoodie «Cosy» – mit Fell-Panel & Kordelzug`, 54 Z.
+  **Gefunden hat es nicht der Lauf, sondern die Gegenprobe danach** — sie stiess nach 48 von 56 668 Produkten
+  auf den ersten Fall. **Dieselbe Fehlerklasse wie der stille Skip, nur umgekehrt.**
+- **🐌 DIE ABFRAGE WAR DREIMAL ZU TEUER.** Am Shop gemessen, je Seite mit 50 Produkten: **51 Punkte** wie
+  bisher, **44** ohne das nie gelesene `featuredMedia`, **16** ohne die Bildprüfung (`media(first:3)` kostet
+  allein 28). `featuredMedia` wurde geholt und nirgends benutzt → weg. Die Bildprüfung bleibt Vorgabe,
+  lässt sich mit **`BILDCHECK=0`** abstellen; abgeschaltet sagt der Bericht „Bilder nicht geprüft" statt
+  „keine FAILED-Bilder". Wirkung: vorher starben zwei Läufe nach 680 bzw. 100 Produkten, nachher **5000
+  Titel je Lauf, 0 Drosselungen**.
+- **⏳ `shopify_gql.mjs` TAKTET SICH JETZT SELBST.** Shopifys Eimer fässt **2000 Punkte** und füllt sich mit
+  **100/s** nach; der Lauf wartet nach jeder Antwort so lange, bis der nächste gleich teure Aufruf wieder
+  hineinpasst (`taktPause`, Deckel 10 s, unbekannte Kostenangabe bremst NICHT). Die wachsende Pause allein
+  reichte nicht: am Rand verbraucht der nächste Aufruf den nachgefüllten Rest sofort.
+- **🚨 DER EIMER WIRD VON AUSSEN GELEERT — nicht von uns.** Über Minuten stand er bei **16–42 von 2000**,
+  obwohl von hier nur **alle 20 Sekunden eine einzige** Abfrage ging; lokal lief kein Prozess. Irgendetwas
+  anderes (Parallelsitzung, Shop-App, Action) verbraucht laufend fast die ganze Nachfüllrate. **Darum bei
+  Massenarbeit immer die billigste Abfrage nehmen** — 16 Punkte passen in die Lücken, 51 nicht.
+- **🖼️ Bild-Audit, erste scharfe Charge (60 Produkte): 10 Hauptbilder unter 800 px, 0 getauscht** — für
+  keines gab es ein grösseres Zweitbild, das als sauberes Produktfoto bestätigt wurde. Die Gegenprobe
+  greift also; die 10 brauchen ein neues Bild, keinen Tausch (`dropship/image-audit-report.csv`).
+- **🔑 MESS-LEHRE am eigenen Leib, zum zweiten Mal an einem Tag:** mein Protokoll-Grep meldete
+  „2 Drosselungen" — es waren zwei Produktnamen mit *Full Throttle* darin (ein Ducati-Modell). Es waren
+  null. **Auch ein Suchmuster ist ein Messgerät und will gegengeprüft werden.**
+- **🟡 Beim User, unverändert:** die 16 nicht publizierten Collections durchsehen (11 davon Dubletten
+  lebender Seiten) · Env-Eintrag umdrehen · Google-Kanal-Entscheid · Widmann-/Holzspiegel-Preise.
+
 **📌 2026-10-18 abends (🧹 Aufräum-Runde: 80 Kategorieseiten lieferten 404, drei Werkzeuge waren blind):**
 Alles heute live gemessen und nachgeprüft. PRs #2690–#2693.
 - **🚨 80 Collections mit zusammen 25 320 Produkten gaben HTTP 404** — angelegt, befüllt, beschrieben,
