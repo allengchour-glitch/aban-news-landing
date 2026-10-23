@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-23 08:55 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-23 10:12 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1194 · **1128 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 947, teilweise: 159, keine: 22; Preisspanne > 2×: 147) · 1 CJ-Variante: 64 · ohne Antwort: 2
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 1193 · **1127 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 946, teilweise: 159, keine: 22; Preisspanne > 2×: 146) · 1 CJ-Variante: 64 · ohne Antwort: 2
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -541,7 +541,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Mechanische Herrenuhr im quadratischen Design (`mechanische-herrenuhr-im-quadratischen-design-228480`) | 7 | 7 | 14.59–14.59 | 35.90 | Gold shell black face, Golden Shell Golden Noodles, Black faced blue purple, Black faced orange |
 | Vertikale Umhängetasche aus Rindsleder (`vertikale-umhangetasche-aus-rindsleder-490432`) | 7 | 7 | 5.26–12.4 | 24.90 | Coffee, Coffee2, Coffee3, Coffee4 |
 | Elektrisches Nagelpflege-Set (`elektrisches-nagelpflege-set-904960`) | 7 | 7 | 5.52–5.52 | 23.90 | Black US, Rose EU, Rose US, White EU |
-| Herbst- und Winterpullover für Hunde (`herbst-und-winterpullover-fur-hunde-604000`) | 7 | 7 | 2.55–8.29 | 18.90 | Twisted Vintage Diamond-XS, Twisted Vintage Diamond-S, Twisted Vintage Diamond-M, Twisted Vintage Diamond-L |
 | Flüssiger Rouge – 5-farbiges Set (`flussiger-rouge-5-farbiges-set-646300`) | 7 | 7 | 3.44–4.19 | 16.90 | JC01 Sakura Custard, JC02 Blueberry Milkshake, JC03 Raspberry Toffee, JC04 Fig Coffee |
 | Wasserdichte Automatikuhr für Herren (`wasserdichte-automatikuhr-fur-herren-626300`) | 6 | 6 | 17.8–17.8 | 39.90 | Golden White, Golden Black, Full Gold, Natural Black |
 | Smart Beissfester Hundeball mit Zahnreinigung (`smart-beissfester-hundeball-mit-zahnreinigung-628600`) | 6 | 6 | 2.81–3.34 | 19.90 | Paw Print Blue, Paw Print Orange, Paw Print In Blue 1 Rope, Red Paw Print 1 Rope |
