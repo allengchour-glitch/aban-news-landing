@@ -4375,3 +4375,26 @@ gid://shopify/Product/16655503950215	kleider	Asymmetrisches Midikleid
 gid://shopify/Product/16655504736647	kleider	Elegantes Damenkleid mit Puffärmeln
 gid://shopify/Product/16655505031559	kleider	Maxikleid mit Stehkragen und Vintage-Print
 gid://shopify/Product/16655505555847	kleider	Damenkleid mit Digitaldruck und langen Ärmeln
+gid://shopify/Product/16656509960583	taschen	Personalisierte bestickte Geschenktasche 50×70 cm
+gid://shopify/Product/16656510255495	taschen	Kühlertasche Khaki aus DuPont-Papier
+gid://shopify/Product/16656522543495	taschen	Universal Canvas Handygürteltasche
+gid://shopify/Product/16656522772871	taschen	Wasserdichte Umhängetasche aus Nylon
+gid://shopify/Product/16656523329927	taschen	Lichtundurchlässige Vlies-Aufbewahrungstasche
+gid://shopify/Product/16656617472391	taschen	Canvas Schultertasche – grosse Kapazität
+gid://shopify/Product/16656617570695	taschen	All-Cotton-Aufbewahrungstasche für Baby-und Mütter-Zubehör
+gid://shopify/Product/16656623337863	taschen	Baby-Windelaufbewahrungstasche
+gid://shopify/Product/16656658301319	taschen	Kleine Canvas Aufbewahrungstasche
+gid://shopify/Product/16656658432391	taschen	Leichte elastische Camouflage-Aufbewahrungstasche
+gid://shopify/Product/16656658530695	taschen	Trolley-Einsatztasche mit Schulterriemen
+gid://shopify/Product/16656660627847	ketten	Gewebte Etiketten für Kleidung
+gid://shopify/Product/16656660758919	taschen	Umhängetasche aus gewaschenem Canvas
+gid://shopify/Product/16656661873031	taschen	Hüfttasche aus strapazierfähigem Canvas
+gid://shopify/Product/16656662135175	taschen	Sportliche Bauchtasche für Outdoor-Aktivitäten
+gid://shopify/Product/16656662200711	taschen	Gürteltasche für Outdoor-Aktivitäten
+gid://shopify/Product/16656662266247	taschen	Hüfttasche für Hundetraining
+gid://shopify/Product/16656662364551	taschen	Werkzeugtasche mit Trennwand
+gid://shopify/Product/16656662462855	taschen	Herren Umhängetasche aus Vollnarben-Rindsleder
+gid://shopify/Product/16656666984839	taschen	Faltbare Reisetasche mit grosser Kapazität
+gid://shopify/Product/16656672522631	taschen	Kameratasche für Reisen
+gid://shopify/Product/16656674947463	taschen	Umhängetasche für Laptop
+gid://shopify/Product/16656675111303	taschen	Herren Umhängetasche Camouflage
