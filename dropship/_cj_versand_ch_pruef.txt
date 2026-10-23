@@ -13784,3 +13784,4 @@ herren-abgenutztes-box-fit-kurzarm-t-shirt-603000	2606231434001603800	16	9.47	ok
 herren-v-ausschnitt-t-shirt-slim-fit-einfarbig-631500	2606231217541632100	16	7.85	ok	landeseite
 herren-v-shirt-aus-atmungsaktivem-material-ohn-625600	2606231102201626300	16	8.11	ok	landeseite
 striped-cardigan-623300	2606230818271624300	16	8.25	ok	landeseite
+lassiger-herren-lapelle-cardigan-sommerleicht-626300	2606221026511627100	16	8.25	ok	landeseite
