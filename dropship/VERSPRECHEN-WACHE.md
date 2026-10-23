@@ -1,12 +1,11 @@
-# Versprechen ohne Beleg — Stand 2026-10-22 20:32 UTC
+# Versprechen ohne Beleg — Stand 2026-10-23 21:22 UTC
 
-Kollektionen und Theme (zählt nur, Liste `dropship/KOLL-VERSPRECHEN.md`): ⚠️ KOLL-VERSPRECHEN: 0 veröffentlicht / 42 unveröffentlicht (R1 0/0 · R3 0/0 · R4 0/1 · R5 0/0 · R6 0/0 · R9 0/41) · manuell 0/28 · Premium-Hinweis 4/4 · Ware-Hinweis 9/0 · JSON-LD Organization 1 (Soll 1) · Slogan ok [579 Kollektionen, Anteil 11× gemessen, 138 s]
+Kollektionen und Theme (zählt nur, Liste `dropship/KOLL-VERSPRECHEN.md`): ⚠️ KOLL-VERSPRECHEN: 0 veröffentlicht / 42 unveröffentlicht (R1 0/0 · R3 0/0 · R4 0/1 · R5 0/0 · R6 0/0 · R9 0/41) · manuell 0/28 · Premium-Hinweis 4/4 · Ware-Hinweis 9/0 · JSON-LD Organization 1 (Soll 1) · Slogan ok [579 Kollektionen, Anteil 11× gemessen, 307 s]
 
-Regel: `automation/data/versprechen_regel.json` (Lieferversprechen nur bei Schweizer Lager; «Qualität geprüft», «meistverkauft», «unser Bestseller» nie; dekorative «Diamanten» = Strasssteine bzw. Zirkonia). Geprüft: 56675 aktive · geändert: 1 (alt 8, diamant 1, seo 1, title 1) · Fehler: 0
+Regel: `automation/data/versprechen_regel.json` (Lieferversprechen nur bei Schweizer Lager; «Qualität geprüft», «meistverkauft», «unser Bestseller» nie; dekorative «Diamanten» = Strasssteine bzw. Zirkonia). Geprüft: 56666 aktive · geändert: 0 () · Fehler: 0
 
 ## Beispiele
 
-- `hip-hop-diamant-uhr-herren-gold-silber-615000` — {"title": "Hip-Hop Strass-Uhr Herren Gold/Silber", "seo": {"title": "Hip-Hop Strass-Uhr Herren Gold/Silber | LuxeStyle CH", "description": "Für den urbanen Lifestyle bietet diese Diamant‑Uhr ein auffälliges Statement am Handgelenk. 11 mm dick."}}
 
 ## «Diamant» mit Echtheitsangabe (Karat/VVS/Labor, ohne Moissanit) — Einzelprüfung (4)
 

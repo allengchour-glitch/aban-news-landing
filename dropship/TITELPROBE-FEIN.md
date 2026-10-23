@@ -1,4 +1,4 @@
-# Titelprobe-Fein — Stand 2026-10-22 21:16 UTC
+# Titelprobe-Fein — Stand 2026-10-23 21:23 UTC
 
 Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 0 · gesetzt 0 · fehler 0.
 
