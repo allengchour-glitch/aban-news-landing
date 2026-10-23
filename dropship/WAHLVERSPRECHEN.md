@@ -1625,29 +1625,21 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…in vier Grössen…»
 - `15523863527809` · Nagelclipper für Senioren – 5,7 cm & 8 cm
   - «…in zwei Grössen…»
-- `16612711563655` · Edelstahl Automatische Trinkschüssel für Hunde
-  - «…Farben: Blau, Grün,…»
 - `16614563611015` · Hundebreitschiene für Spaziergänge
   - «…Farben: Schwarz, Grün, Blau, Orange,…»
 - `16614719291783` · Anti-Lost-Halsband für Hunde
   - «…Farben: Schwarz, Grau, Grün, Rot, Blau,…»
-- `16614845251975` · Grosses Crossbody für Herren – urbanes Minimaldesign
-  - «…Verfügbare Farben:…»
 - `16615507362183` · Bambus-Section Leinen Viskose Cape für Damen
   - «…Farben: Vintage Rot, Waldgrün, Käsegelb,…»
 - `16615802241415` · Bestickter Winter-Schal für Damen
   - «…Verfügbare Farben:…»
 - `16615802929543` · Schwarzer Strickschal aus Wolle – 230 × 20 cm
   - «…Farben: Rot, Schwarz, Weinrot, Hellblau, Marineblau, Hellgrau, Hautros…»
-- `16638824644999` · Stahlarmband für Apple Watch, 5,5–8,5 Zoll
-  - «…Farben: Schwarz, Silber, Roségold, Rosarot, Gold, Silber/Gold, Silber/…»
-- `16639199478151` · Reisebeutel mit Smartphone-Fach – schwarz
-  - «…Farben: schwarz, PU‑Leder, khaki, grau Innenfächer: Smartphone‑Fach,…»
-- `16647276396935` · Wasserdichter Canvas-Rucksack mit Batik-Muster
-  - «…Farben: Army Green, Khaki,…»
-- `16651911627143` · Oversized Wollschal Dreieck 200 cm
-  - «…Farben: Raw Velvet Rice, Camel,…»
 - `16652425363847` · Herbst- und Winterpullover für Hunde
   - «…Grössen: XS, S, M, L, XL,…»
 - `16652813828487` · Kissenbezug mit abstraktem Kunstmuster
   - «…Farben: Dust Mark – Coffee, Dust Mark – Black, Swirl Sequence – Coffee…»
+- `16655497429383` · Grosser Outdoor-Rucksack mit wasserdichtem Design
+  - «…Farben: Schwarz, Dunkelblau, Hellblau, Rot, Smaragdgrün Unisex-Design …»
+- `16656624550279` · Multifunktionaler Trolley mit USB & Schloss
+  - «…Farben: Schwarz, Weiss, Beige, Braun, Rosa,…»
