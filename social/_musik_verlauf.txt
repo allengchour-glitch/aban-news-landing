@@ -589,3 +589,4 @@
 2026-10-22T01:19:27.000Z	luxe-epic-sport.wav	54.5	allgemein	bildreel-perucke-valentina-neon-orange-fga974975	stimme:nein	anteil	quelle:bild
 2026-10-22T02:12:35.000Z	luxe-epic-tech.wav	42.7	allgemein	bildreel-augenmaske-teufel-fga908485	stimme:ja	azure:de-CH-JanNeural	quelle:bild
 2026-10-23T00:27:52.000Z	luxe-epic-glamour.wav	1.98	allgemein	bildreel-zylinder-rot-deluxe-fga925708	stimme:nein	anteil	quelle:bild
+2026-10-23T01:16:38.000Z	luxe-epic-fantasy.wav	13.79	allgemein	bildreel-schamanen-maske-mit-horner-fga908481	stimme:nein	anteil	quelle:bild
