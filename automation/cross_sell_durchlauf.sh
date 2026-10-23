@@ -22,16 +22,26 @@ cd "$(dirname "$0")/.."
 AB="${AB:-}"; RUNDEN="${RUNDEN:-10}"; GESETZT=0
 for ((i=1; i<=RUNDEN; i++)); do
   Q="status:active"; [ -n "$AB" ] && Q="status:active AND created_at:>=$AB"
-  OUT=$(SHOPIFY_SHOP="${SHOPIFY_SHOP:-au3j0y-hq.myshopify.com}" \
-        PQUERY="$Q" SORT=CREATED_AT REVERSE=0 SCAN=3000 MAXFIX=1000 \
-        node automation/cross_sell.mjs 2>&1) || { echo "Lauf $i abgebrochen:"; echo "$OUT" | tail -3; break; }
-  read -r SETZ ADD LETZT < <(printf '%s' "$OUT" | python3 -c '
+  # Ein Lauf kann STUNDEN brauchen: bis zu 1000 Schreib-Abfragen, und jede wartet nach Shopifys
+  # eigener Punkte-Angabe. Der Eimer wird von aussen fast leergehalten (siehe shopify_gql.mjs).
+  # Darum sagt das Skript VOR dem Lauf, was es tut — sonst sieht ein laufender Durchlauf
+  # stundenlang wie ein haengender aus. Genau das ist mir am 23.10. passiert.
+  echo "Lauf $i · Fenster ab ${AB:-Anfang} · gestartet $(date -u +%H:%M:%SZ) · kann Stunden dauern"
+  BERICHT="${TMPDIR:-/tmp}/cross_sell_lauf.$$.json"
+  SHOPIFY_SHOP="${SHOPIFY_SHOP:-au3j0y-hq.myshopify.com}" \
+    PQUERY="$Q" SORT=CREATED_AT REVERSE=0 SCAN=3000 MAXFIX=1000 \
+    node automation/cross_sell.mjs > "$BERICHT" 2>&1 \
+    || { echo "Lauf $i abgebrochen:"; tail -3 "$BERICHT"; rm -f "$BERICHT"; break; }
+  # Ueber eine Datei statt Prozess-Substitution: so bleibt der Bericht bei einem Abbruch lesbar.
+  ZEILE=$(python3 -c '
 import sys, json
-d = json.load(sys.stdin)
-print(d.get("zuSetzen", 0), d.get("crossSellAdded") or 0, d.get("letztesErstellt") or "")' 2>/dev/null) \
-    || { echo "Lauf $i: Bericht nicht lesbar:"; echo "$OUT" | tail -3; break; }
+d = json.load(open(sys.argv[1]))
+print(d.get("zuSetzen", 0), d.get("crossSellAdded") or 0, d.get("letztesErstellt") or "")' "$BERICHT" 2>/dev/null) \
+    || { echo "Lauf $i: Bericht nicht lesbar:"; tail -3 "$BERICHT"; rm -f "$BERICHT"; break; }
+  rm -f "$BERICHT"
+  read -r SETZ ADD LETZT <<<"$ZEILE"
   GESETZT=$((GESETZT + ADD))
-  echo "Lauf $i · Fenster ab ${AB:-Anfang} · zu setzen $SETZ · gesetzt $ADD · Summe $GESETZT"
+  echo "Lauf $i · fertig $(date -u +%H:%M:%SZ) · zu setzen $SETZ · gesetzt $ADD · Summe $GESETZT"
   # Erst weiterschieben, wenn das Fenster leer ist — sonst bleiben Produkte uebersprungen.
   if [ "$SETZ" = "0" ]; then
     [ -z "$LETZT" ] && { echo "Katalogende erreicht."; break; }
