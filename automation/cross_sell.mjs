@@ -7,7 +7,8 @@
  * Idempotent: überspringt Produkte, deren Beschreibung schon einen /collections/-Link enthält.
  * Body wird per GraphQL-Variable gesetzt (kein Escaping/Timeout-Risiko), 1 productUpdate/Produkt.
  *
- * No-op-sicher · DRY-Default · LIVE=1 · SCAN=Anzahl zuletzt geänderter Produkte (Default 300, max 3000).
+ * No-op-sicher · DRY-Default · LIVE=1 · SCAN=Anzahl geprüfter Produkte (Default 300, max 3000).
+ * Katalogregion: PQUERY (Default status:active) · SORT (Default UPDATED_AT) · REVERSE=0 für aufsteigend.
  * ENV: SHOPIFY_SHOP + (SHOPIFY_ADMIN_TOKEN | SHOPIFY_CLIENT_ID+SHOPIFY_CLIENT_SECRET)
  */
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
@@ -21,7 +22,15 @@ const SHOP=process.env.SHOPIFY_SHOP||'', TOK_ST=process.env.SHOPIFY_ADMIN_TOKEN|
   // Vorgabe: nur Produkte mit ERKANNTEM Thema bekommen eine Box. Gemessen am 2026-10-18 landen
   // sonst 282 von 600 (47 %) im Rueckfall „Geschenkideen" — eine Box, die nichts Passendes nennt,
   // ist kein interner Link, sondern Fuellmaterial. NUR_THEMA=0 schaltet den Rueckfall wieder ein.
-  NUR_THEMA=process.env.NUR_THEMA!=='0';
+  NUR_THEMA=process.env.NUR_THEMA!=='0',
+  // Wie beim seo-optimizer und beim alt_text_guard: ohne diese Schalter beginnt JEDER Lauf bei den
+  // zuletzt geaenderten Produkten — also genau bei denen, die der vorige Lauf gerade versorgt hat.
+  // Nach den 2400 Boxen vom 18.10. blaettert ein neuer Lauf damit zuerst durch das schon Fertige.
+  // Gegenmittel: SORT=CREATED_AT REVERSE=0 fuer den alten, noch unversorgten Teil des Katalogs.
+  // Vorgabe bleibt UPDATED_AT absteigend, damit sich am bisherigen Verhalten nichts aendert.
+  PQUERY=process.env.PQUERY||'status:active',
+  SORT=(process.env.SORT||'UPDATED_AT').toUpperCase().replace(/[^A-Z_]/g,''),
+  REVERSE=process.env.REVERSE==='0'?false:true;
 
 async function getToken(){
   if(!(CID&&CS)&&TOK_ST) return TOK_ST;
@@ -45,11 +54,14 @@ async function main(){
 
   let prods=[], cur=null;
   while(prods.length<SCAN){
-    const d=await gql(token,`query($c:String){ products(first:100, after:$c, sortKey:UPDATED_AT, reverse:true, query:"status:active"){ pageInfo{hasNextPage endCursor} nodes{ id title tags productType descriptionHtml } } }`,{c:cur});
+    // first:50 statt 100: Shopifys Eimer fasst 2000 Punkte, und je Knoten kostet die Seite einen —
+    // 52 Punkte passen in die Luecken, 102 nicht. Begruendung: automation/lib/shopify_gql.mjs.
+    const d=await gql(token,`query($c:String,$q:String){ products(first:50, after:$c, sortKey:${SORT}, reverse:${REVERSE}, query:$q){ pageInfo{hasNextPage endCursor} nodes{ id title tags productType descriptionHtml } } }`,{c:cur,q:PQUERY});
     prods.push(...d.products.nodes);
     if(!d.products.pageInfo.hasNextPage) break; cur=d.products.pageInfo.endCursor;
   }
   prods=prods.slice(0,SCAN); report.scanned=prods.length;
+  report.region=`${PQUERY} · ${SORT} ${REVERSE?'absteigend':'aufsteigend'}`;
 
   const todo=prods.filter(p=>!(p.descriptionHtml||'').includes('/collections/'));
   report.missingCrossSell=todo.length;
