@@ -58700,3 +58700,6 @@ gid://shopify/Product/16656658006407	schon-sauber	0
 gid://shopify/Product/16656658039175	schon-sauber	0
 gid://shopify/Product/16656658104711	schon-sauber	0
 gid://shopify/Product/16656658137479	schon-sauber	0
+gid://shopify/Product/16656658170247	umgestellt	5	gid://shopify/MediaImage/77801142845831	gid://shopify/MediaImage/77801142878599
+gid://shopify/Product/16656658268551	umgestellt	10	gid://shopify/MediaImage/77801147302279	gid://shopify/MediaImage/77801147597191
+gid://shopify/Product/16656658301319	umgestellt	12	gid://shopify/MediaImage/77801147531655	gid://shopify/MediaImage/77801147859335
