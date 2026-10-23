@@ -1,9 +1,11 @@
 {
- "stand": "2026-10-22T05:18Z",
+ "stand": "2026-10-23T05:21Z",
  "links_alt": 411,
- "links_neu": 411,
+ "links_neu": 412,
  "rueckgang": 0,
- "neu": [],
+ "neu": [
+  "herren-jeans"
+ ],
  "weg": [],
  "geschrieben": true
 }
