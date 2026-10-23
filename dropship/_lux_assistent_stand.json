@@ -1,6 +1,8 @@
 {
- "stand": "2026-10-22T21:24:07Z",
- "befunde": [],
+ "stand": "2026-10-23T09:32:36Z",
+ "befunde": [
+  "Live-Abschnitt weicht von automation/theme/lux-assistent.liquid ab (von Hand geändert?)"
+ ],
  "seiten": 8,
  "kollektionen": 14,
  "fakten": 24
