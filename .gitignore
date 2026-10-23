@@ -146,6 +146,7 @@ data/krypto-auto-status.json
 data/selbsttest-*.log
 data/*.kaputt-*
 data/*.tmp*
+data/*.neu
 tools/trading/daten/funding/
 tools/trading/daten/binance_1m_fut/
 tools/trading/daten/copytrading/
@@ -153,4 +154,9 @@ tools/trading/daten/delisting/
 data/krypto-pilot2-broker.json
 data/krypto-pilot2-bestand.json
 data/krypto-pilot2-testnetz-pruefung.json
+data/krypto-nachkontrolle*
 dropship/*.jsonl.lock
+
+# LuxeStyle Assist: transient locks only; handoff.jsonl is versioned
+/dropship/assistant/.handoff.lock
+/dropship/assistant/.handoff-*.tmp

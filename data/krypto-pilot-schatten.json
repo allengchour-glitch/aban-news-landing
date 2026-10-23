@@ -128,6 +128,101 @@
     "BTC": 0.000247,
     "ETH": 0.000178
    }
+  },
+  {
+   "stand": "2026-10-18",
+   "kapital": 9663.61,
+   "rendite": 0.005507,
+   "maerkte": {
+    "BTC": {
+     "kurs": 82017.6,
+     "hebel": 1.0
+    },
+    "ETH": {
+     "kurs": 2408.74,
+     "hebel": 0.97
+    }
+   },
+   "funding": {
+    "BTC": 0.000148,
+    "ETH": 0.000146
+   }
+  },
+  {
+   "stand": "2026-10-19",
+   "kapital": 9644.11,
+   "rendite": -0.002018,
+   "maerkte": {
+    "BTC": {
+     "kurs": 81853.54,
+     "hebel": 1.0
+    },
+    "ETH": {
+     "kurs": 2404.82,
+     "hebel": 1.0
+    }
+   },
+   "funding": {
+    "BTC": 0.000227,
+    "ETH": 0.000222
+   }
+  },
+  {
+   "stand": "2026-10-20",
+   "kapital": 9790.45,
+   "rendite": 0.015174,
+   "maerkte": {
+    "BTC": {
+     "kurs": 82941.0,
+     "hebel": 1.0
+    },
+    "ETH": {
+     "kurs": 2446.73,
+     "hebel": 1.0
+    }
+   },
+   "funding": {
+    "BTC": 0.000186,
+    "ETH": 0.000179
+   }
+  },
+  {
+   "stand": "2026-10-21",
+   "kapital": 9899.97,
+   "rendite": 0.011187,
+   "maerkte": {
+    "BTC": {
+     "kurs": 84011.97,
+     "hebel": 1.0
+    },
+    "ETH": {
+     "kurs": 2470.77,
+     "hebel": 1.0
+    }
+   },
+   "funding": {
+    "BTC": 0.000162,
+    "ETH": 0.000203
+   }
+  },
+  {
+   "stand": "2026-10-22",
+   "kapital": 9570.0,
+   "rendite": -0.033331,
+   "maerkte": {
+    "BTC": {
+     "kurs": 81311.89,
+     "hebel": 1.0
+    },
+    "ETH": {
+     "kurs": 2386.19,
+     "hebel": 0.981
+    }
+   },
+   "funding": {
+    "BTC": 0.000131,
+    "ETH": 0.000149
+   }
   }
  ],
  "start": "2026-10-11",
@@ -261,6 +356,101 @@
    "funding": {
     "BTC": 0.000247,
     "ETH": 0.000178
+   }
+  },
+  {
+   "stand": "2026-10-18",
+   "kapital": 9670.55,
+   "rendite": 0.005631,
+   "maerkte": {
+    "BTC": {
+     "kurs": 82017.6,
+     "hebel": 1.0
+    },
+    "ETH": {
+     "kurs": 2408.74,
+     "hebel": 0.97
+    }
+   },
+   "funding": {
+    "BTC": 0.000148,
+    "ETH": 0.000146
+   }
+  },
+  {
+   "stand": "2026-10-19",
+   "kapital": 9652.98,
+   "rendite": -0.001817,
+   "maerkte": {
+    "BTC": {
+     "kurs": 81853.54,
+     "hebel": 1.0
+    },
+    "ETH": {
+     "kurs": 2404.82,
+     "hebel": 1.0
+    }
+   },
+   "funding": {
+    "BTC": 0.000227,
+    "ETH": 0.000222
+   }
+  },
+  {
+   "stand": "2026-10-20",
+   "kapital": 9801.22,
+   "rendite": 0.015356,
+   "maerkte": {
+    "BTC": {
+     "kurs": 82941.0,
+     "hebel": 1.0
+    },
+    "ETH": {
+     "kurs": 2446.73,
+     "hebel": 1.0
+    }
+   },
+   "funding": {
+    "BTC": 0.000186,
+    "ETH": 0.000179
+   }
+  },
+  {
+   "stand": "2026-10-21",
+   "kapital": 9912.65,
+   "rendite": 0.011369,
+   "maerkte": {
+    "BTC": {
+     "kurs": 84011.97,
+     "hebel": 1.0
+    },
+    "ETH": {
+     "kurs": 2470.77,
+     "hebel": 1.0
+    }
+   },
+   "funding": {
+    "BTC": 0.000162,
+    "ETH": 0.000203
+   }
+  },
+  {
+   "stand": "2026-10-22",
+   "kapital": 9583.5,
+   "rendite": -0.033205,
+   "maerkte": {
+    "BTC": {
+     "kurs": 81311.89,
+     "hebel": 1.0
+    },
+    "ETH": {
+     "kurs": 2386.19,
+     "hebel": 0.981
+    }
+   },
+   "funding": {
+    "BTC": 0.000131,
+    "ETH": 0.000149
    }
   }
  ]

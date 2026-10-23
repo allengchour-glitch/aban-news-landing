@@ -6,6 +6,15 @@ Binance-TESTNETZ (Spielgeld) nachprüfen — bevor echtes Geld fliesst. Benutzt 
   A  Futures: reduceOnly-Stop (bedingter Algo-Auftrag, STOP_MARKET) über MEHR als den offenen Short — nimmt Binance ihn an,
      bleibt er stehen? Ohne Position (verspätet ankommender Short), zwei Stops gleichzeitig (Phase «zuerst neu setzen, dann
      alten löschen»), nach dem Schliessen der Position, reduceOnly-Marktauftrag über mehr als die Position (nie long drehen).
+  A6 Futures: wie schnell steht ein eben gesetzter bedingter Auftrag in der Liste der offenen Algo-Aufträge (sofort oder erst nach
+     mehreren Abfragen)? Davon hängt ab, wie oft der Fall der 14. Prüfung (F1) real vorkommt: Antwort verloren + Liste hinkt nach.
+  A7/A8 Futures: Storno über die Kennung (clientAlgoId) einer nie gesetzten (A7) bzw. schon gelöschten (A8) Kennung — Pilot 2.0 liest
+     «Erfolg» und «−2011» als «weg»; jeder andere Code gälte ihm als «Löschen gescheitert» (Dauer-Alarm statt Schutzverlust).
+     Lehnt Binance in A1 einen Stop ohne Position ab (der wahrscheinlichste Ausgang), holt das Skript A6 und A8 mit offener Position nach.
+  A9 Futures (15. Prüfung W3): Storno UNMITTELBAR nach dem Setzen, ohne die Liste vorher zu lesen — so löscht Pilot 2.0 einen Stop, dessen
+     Antwort verloren ging. Bleibt der Stop trotz «Erfolg»/«−2011» stehen oder erscheint er erst später in der Liste (Gespenst), wäre «weg» falsch.
+  A10 Futures (15. Prüfung W3): Storno eines Stops, der schon AUSGELÖST hat (Stop knapp über dem Markt, das Skript wartet bis zu
+     AUSLOESEN_N × AUSLOESEN_PAUSE_S Sekunden auf die Aufwärtsbewegung; löst er nie aus: «nicht geprüft», später nochmals laufen lassen).
   B  Spot: Stop ersetzen per cancelReplace (STOP_ON_FAILURE). Lehnt Binance den neuen Auftrag ab — steht der alte noch, und
      liest Pilot 2.0 die Antwort richtig (ok / nichts = alter steht / nur_storno = alter weg)? Fälle: würde sofort auslösen,
      Filter, zu wenig Coins, alter Auftrag schon weg, Erfolg, Not-Aus-Verkauf.
@@ -20,7 +29,7 @@ Aufruf auf dem PC — in EINEM neuen Fenster, mit «set» nur für dieses Fenste
   set BINANCE_FUTURES_API_KEY=<Futures-Testnetz-Schlüssel>    (testnet.binancefuture.com)
   set BINANCE_FUTURES_API_SECRET=<…>
   python tools\\trading\\krypto_bot\\testnetz_pruefung.py         liest nur (Schlüssel, Regeln, Symbol leer?) — sendet nichts
-  python tools\\trading\\krypto_bot\\testnetz_pruefung.py --los   prüft im Testnetz (rund 1 Minute) und räumt auf
+  python tools\\trading\\krypto_bot\\testnetz_pruefung.py --los   prüft im Testnetz (rund 1–2 Minuten) und räumt auf
 Nicht laufen lassen, während ein anderer Bot im selben Testnetz-Konto handelt. Bericht: Bildschirm und
 data/krypto-pilot2-testnetz-pruefung.json. Rückgabe 0 = alles wie erwartet, 1 = Abweichung, 2 = nicht geprüft. Keine Anlageberatung.
 """
@@ -50,6 +59,15 @@ FUT_HOSTS = {"testnet.binancefuture.com", "demo-fapi.binance.com"}
 LOKAL = {"127.0.0.1", "localhost"}   # nur für die Tests gegen die nachgebaute Börse (pruef_boerse.py)
 KENNUNG = "p2t"        # eigene Aufträge dieses Skripts (Pilot 2.0 selbst: p2s…, p2a…, p2<Ziffern>)
 STEHEN_S = 5.0         # so lange warten, ob ein angenommener Stop stehen bleibt
+SICHT_ABFRAGEN = 12    # A6: so oft in der Liste nachsehen, ob ein eben gesetzter bedingter Auftrag erscheint
+SICHT_PAUSE_S = 0.5    # … mit dieser Pause dazwischen
+GESPENST_ABFRAGEN = 4  # A9: so oft nach dem sofortigen Storno in der Liste nachsehen, ob der Stop doch (noch) erscheint
+AUSLOESEN_NAH = 0.0004  # A10: Stop-Kurs um diesen Anteil über dem Markt (löst schon bei einer kleinen Aufwärtsbewegung aus)
+AUSLOESEN_N = 30       # A10: so oft nachsehen, ob der Stop ausgelöst hat …
+AUSLOESEN_PAUSE_S = 2.0  # … mit dieser Pause dazwischen (höchstens AUSLOESEN_N × AUSLOESEN_PAUSE_S = 60 s)
+STORNO_HINWEIS = ("Pilot 2.0 hielte das Löschen für gescheitert (er erwartet −2011 für «unbekannt»): bei einem schon ausgelösten Stop "
+                  "meldete er «liess sich nicht löschen» und sicherte beidseitig — Dauer-Alarm statt Schutz. Dann "
+                  "algo_abbrechen_kennung auf diesen Code erweitern.")
 BERICHT = HIER.parents[2] / "data" / "krypto-pilot2-testnetz-pruefung.json"
 OFFEN = ("NEW", "PARTIALLY_FILLED")
 
@@ -150,10 +168,149 @@ def pruefe_futures(fut, sym, b, warte=time.sleep):
     def pos():
         return fut.position_info(sym)[0]
 
+    def storno_punkt(nr, name, c, zusatz=""):
+        """Storno über die Kennung c, Antwort unverändert lesen: Erfolg und −2011 sind für Pilot 2.0 «weg», jeder andere Code «gescheitert»."""
+        try:
+            fut._req("DELETE", "/fapi/v1/algoOrder", {"clientAlgoId": c}, signiert=True)
+            antwort, code = "Erfolg gemeldet", None
+        except BF.BinanceFehler as ex:
+            antwort, code = kurz(ex), code_von(ex)
+        except BF.NETZFEHLER as ex:
+            b.punkt(nr, name, f"nicht prüfbar ({type(ex).__name__}){zusatz}", "nicht_geprueft")
+            return
+        weg = code is None or code == -2011
+        b.punkt(nr, name, antwort + zusatz, "ok" if weg else "abweichung", "" if weg else STORNO_HINWEIS, {"code": code})
+
+    def a6(zusatz=""):
+        """A6 (14. Prüfung F1): wie schnell zeigt die Liste einen eben gesetzten bedingten Auftrag? Pilot 2.0 rechnet damit, dass er nach einer
+        verlorenen Antwort VERZÖGERT sichtbar sein kann (dann löscht er im Buch bekannte, nicht gezeigte Stops über die Kennung); sofort
+        sichtbar ist der Normalfall. Nie sichtbar, obwohl angenommen, wäre schlimmer: die Liste wäre als Quelle unbrauchbar.
+        → Kennung des gesetzten und wieder gelöschten Stops (für A8), sonst None."""
+        name = "Sichtbarkeit eines eben gesetzten bedingten Auftrags"
+        geloescht = None
+        try:
+            cid6, _ = stop(q, hoch)
+            bei = None
+            for n_ in range(1, SICHT_ABFRAGEN + 1):
+                if steht(cid6):
+                    bei = n_
+                    break
+                warte(SICHT_PAUSE_S)
+            if bei == 1:
+                b.punkt("A6", name, "schon bei der 1. Abfrage in der Liste" + zusatz, "ok", "", {"abfrage": 1})
+            elif bei:
+                b.punkt("A6", name, f"erst bei Abfrage {bei} in der Liste (Pause {SICHT_PAUSE_S:g} s){zusatz}", "info",
+                        "Die Liste hinkt nach: der Fall der 14. Prüfung (F1) ist REAL — Pilot 2.0 löscht dann im Buch bekannte, nicht "
+                        "gezeigte Stops nach dem neuen über die Kennung (14.F1). Bitte den Wert weitergeben.", {"abfrage": bei})
+            else:
+                b.punkt("A6", name, f"nach {SICHT_ABFRAGEN} Abfragen ({SICHT_ABFRAGEN * SICHT_PAUSE_S:g} s) NICHT in der Liste{zusatz}",
+                        "abweichung", "Angenommen, aber nicht sichtbar: Pilot 2.0 liest die Liste jede Runde — er setzte immer wieder "
+                        "neue Stops. Vor dem Echtgeld-Start klären.", {"abfrage": None})
+            fut.algo_abbrechen_kennung(sym, cid6)
+            geloescht = cid6
+        except BF.BinanceFehler as ex:
+            b.punkt("A6", name, f"abgelehnt ({kurz(ex)}){zusatz}", "nicht_geprueft",
+                    "Anderer Fehler — die Frage bleibt offen; Meldung bitte weitergeben.", {"code": code_von(ex)})
+        return geloescht
+
+    def a9():
+        """A9 (15. Prüfung W3): Storno UNMITTELBAR nach dem Setzen, ohne die Liste vorher zu lesen — so löscht Pilot 2.0 einen Stop, dessen
+        Antwort verloren ging (_kennung_weg). Meldet Binance «Erfolg» oder «−2011» (= nicht (mehr) offen), der Stop steht aber trotzdem
+        (noch) bzw. erscheint danach in der Liste, dann ist «weg» falsch: ein zu grosser, vergessener Stop kauft beim Auslösen die Absicherung
+        zurück (Fall G1/G1b der 15. Prüfung)."""
+        name = "Storno unmittelbar nach dem Setzen (Liste vorher nicht gelesen)"
+        try:
+            cid9, _ = stop(q, hoch)
+        except BF.BinanceFehler as ex:
+            b.punkt("A9", name, f"Stop abgelehnt ({kurz(ex)})", "nicht_geprueft",
+                    "Anderer Fehler — die Frage bleibt offen; Meldung bitte weitergeben.", {"code": code_von(ex)})
+            return
+        try:
+            try:
+                fut._req("DELETE", "/fapi/v1/algoOrder", {"clientAlgoId": cid9}, signiert=True)
+                antwort, code = "Erfolg gemeldet", None
+            except BF.BinanceFehler as ex:
+                antwort, code = kurz(ex), code_von(ex)
+            warte(STEHEN_S)
+            gesehen = None
+            for n_ in range(1, GESPENST_ABFRAGEN + 1):
+                if steht(cid9):
+                    gesehen = n_
+                    break
+                warte(SICHT_PAUSE_S)
+        except BF.NETZFEHLER as ex:
+            b.punkt("A9", name, f"nicht prüfbar ({type(ex).__name__})", "nicht_geprueft")
+            return
+        weg = code is None or code == -2011
+        roh = {"code": code, "gesehen_bei_abfrage": gesehen, "kennung": cid9}
+        if gesehen:
+            b.punkt("A9", name, f"{antwort}, der Stop steht trotzdem in der Liste (Abfrage {gesehen} nach {STEHEN_S:g} s)", "abweichung",
+                    "Gespenst-Stop: Pilot 2.0 hielte ihn für gelöscht und liesse ihn stehen — als zu grosser reduceOnly-Stop kaufte er beim "
+                    "Auslösen die Absicherung zurück. Dann muss Pilot 2.0 nach einem Storno ohne Sicht später nochmals in die Liste sehen.", roh)
+        elif not weg:
+            b.punkt("A9", name, antwort, "abweichung", STORNO_HINWEIS, roh)
+        else:
+            b.punkt("A9", name, f"{antwort}; danach {GESPENST_ABFRAGEN} Abfragen lang nicht in der Liste", "ok", "", roh)
+
+    def a10():
+        """A10 (15. Prüfung W3): Storno eines Stops, der schon AUSGELÖST hat. Pilot 2.0 liest Erfolg und −2011 als «weg»; ein anderer Code
+        (z. B. «Auftrag schon ausgeführt») gälte ihm als «Löschen gescheitert». Der Stop sitzt knapp über dem Markt (AUSLOESEN_NAH); das
+        Skript wartet bis zu AUSLOESEN_N × AUSLOESEN_PAUSE_S auf die Aufwärtsbewegung — löst er nicht aus, bleibt die Frage offen."""
+        name = "Storno eines schon ausgelösten Stops"
+        try:
+            if pos() > -step / 2:
+                fut.auftrag(sym, "SELL", q, reduce_only=False)
+            offen = pos()
+            if offen > -step / 2:
+                b.punkt("A10", name, "nicht prüfbar: kein Short offen", "nicht_geprueft")
+                return
+            cid10 = None
+            for faktor in (1, 3):
+                try:
+                    cid10, _ = stop(auf(abs(offen), step), fut.markpreis(sym)[0] * (1 + faktor * AUSLOESEN_NAH))
+                    break
+                except BF.BinanceFehler as ex:
+                    if faktor == 3 or code_von(ex) != -2021:   # -2021: würde sofort auslösen → mit mehr Abstand nochmals
+                        b.punkt("A10", name, f"Stop abgelehnt ({kurz(ex)})", "nicht_geprueft",
+                                "Anderer Fehler — die Frage bleibt offen; Meldung bitte weitergeben.", {"code": code_von(ex)})
+                        return
+            ausgeloest, verschwunden = None, False
+            for i in range(1, AUSLOESEN_N + 1):
+                warte(AUSLOESEN_PAUSE_S)
+                if abs(pos()) < step / 2:
+                    ausgeloest = i
+                    break
+                if not steht(cid10):    # Stop weg, Position noch offen — die Ausführung kann einen Augenblick nachhinken
+                    warte(AUSLOESEN_PAUSE_S)
+                    if abs(pos()) < step / 2:
+                        ausgeloest = i
+                    else:
+                        verschwunden = True
+                    break
+        except (BF.BinanceFehler, BF.UnklarFehler, *BF.NETZFEHLER) as ex:
+            b.punkt("A10", name, f"nicht prüfbar ({kurz(ex)})", "nicht_geprueft")
+            return
+        if ausgeloest:
+            storno_punkt("A10", name, cid10, f" (Stop nach rund {ausgeloest * AUSLOESEN_PAUSE_S:g} s ausgelöst, Position geschlossen)")
+        elif verschwunden:
+            b.punkt("A10", name, "der Stop ist aus der Liste verschwunden, die Position ist aber noch offen", "abweichung",
+                    "Binance hat ihn ohne Ausführung entfernt: ein ausgelöster Stop, der nichts schliesst, wäre ein Schutzverlust — "
+                    "Meldung bitte weitergeben.", {"ausgeloest": False})
+        else:
+            b.punkt("A10", name, f"der Markt erreichte den Stop in {AUSLOESEN_N * AUSLOESEN_PAUSE_S:g} s nicht", "nicht_geprueft",
+                    "Die Frage bleibt offen: bei bewegtem Markt nochmals laufen lassen.", {"ausgeloest": False})
+
     try:
         # A1: ohne Position — so sichert Pilot 2.0 einen Short, der noch unklar ist (verspätet ankommen kann)
+        ohne_pos_ok, a1_cid = False, None
         try:
             cid, _ = stop(q, hoch)
+            ohne_pos_ok = True
+        except BF.BinanceFehler as ex:
+            b.punkt("A1", "reduceOnly-Stop ohne offene Position", f"abgelehnt ({kurz(ex)})", *_ablehnung(ex,
+                    "Ein verspätet ankommender Short bekäme erst in der nächsten Runde der Nachkontrolle (alle 30 s) einen Stop — "
+                    "die README-Aussage «ein verspäteter Short ist nie nackt» stimmt dann nicht."), {"code": code_von(ex)})
+        if ohne_pos_ok:
             warte(STEHEN_S)
             s = steht(cid)
             b.punkt("A1", "reduceOnly-Stop ohne offene Position", f"angenommen, steht nach {STEHEN_S:.0f} s: {'ja' if s else 'NEIN'}",
@@ -161,19 +318,36 @@ def pruefe_futures(fut, sym, b, warte=time.sleep):
                     "" if s else "Binance räumt ihn weg: ein verspätet ankommender Short bekäme erst in der nächsten Runde der "
                                  "Nachkontrolle (alle 30 s) einen Stop.")
             fut.algo_abbrechen_kennung(sym, cid)
-        except BF.BinanceFehler as ex:
-            b.punkt("A1", "reduceOnly-Stop ohne offene Position", f"abgelehnt ({kurz(ex)})", *_ablehnung(ex,
-                    "Ein verspätet ankommender Short bekäme erst in der nächsten Runde der Nachkontrolle (alle 30 s) einen Stop — "
-                    "die README-Aussage «ein verspäteter Short ist nie nackt» stimmt dann nicht."), {"code": code_von(ex)})
+            a1_cid = cid
+
+        # A6/A8 brauchen einen angenommenen Stop: Lehnt Binance ihn ohne Position ab (A1), holt das Skript sie nach dem Eröffnen des Shorts nach.
+        a6_cid = a6() if ohne_pos_ok else None
+        # A7: Storno einer nie gesetzten Kennung; A8: einer schon gelöschten — Pilot 2.0 liest Erfolg und «−2011 (unbekannt)» als «weg»
+        #     (schon ausgelöst, gelöscht oder nie angekommen); jeden anderen Code hielte er für «Löschen gescheitert» (→ beidseitig, Alarm).
+        storno_punkt("A7", "Storno einer nie gesetzten Kennung", P2._kennung(KENNUNG))
+        geloescht = a1_cid or a6_cid
+        if geloescht:
+            storno_punkt("A8", "Storno einer schon gelöschten Kennung", geloescht)
+        nachholen = not ohne_pos_ok
 
         # Short öffnen (Spielgeld)
         try:
             fut.auftrag(sym, "SELL", q, reduce_only=False)
         except (BF.BinanceFehler, BF.UnklarFehler) as ex:
-            for nr in ("A2", "A3", "A4", "A5"):
+            for nr in ("A2", "A3", "A4", "A5", "A9", "A10") + (("A6", "A8") if nachholen else ()):
                 b.punkt(nr, "Futures-Prüfung", f"nicht prüfbar: Short {BF.fmt(q)} nicht eröffnet ({kurz(ex)})", "nicht_geprueft")
             return
         p0 = pos()
+
+        if nachholen:
+            zusatz = " (mit offenem Short nachgeholt, weil A1 abgelehnt wurde)"
+            c6 = a6(zusatz)
+            if c6:
+                storno_punkt("A8", "Storno einer schon gelöschten Kennung", c6, zusatz)
+            else:
+                b.punkt("A8", "Storno einer schon gelöschten Kennung", "nicht prüfbar: auch mit offenem Short kein Stop gesetzt", "nicht_geprueft")
+
+        a9()
 
         # A2: Stop über das Doppelte der Position (beidseitig: ganzer Short + unklare Shorts)
         cid2 = None
@@ -246,6 +420,9 @@ def pruefe_futures(fut, sym, b, warte=time.sleep):
                         "Auftrag mit −2022 ab).", {"vorher": vorher, "nachher": nachher})
         except (BF.BinanceFehler, BF.UnklarFehler) as ex:
             b.punkt("A5", "reduceOnly-Kauf über mehr als die Position", f"nicht prüfbar ({kurz(ex)})", "nicht_geprueft")
+
+        # A10 zuletzt: der Stop schliesst die Position, wenn er auslöst — A2–A5 brauchen sie offen
+        a10()
     except (BF.BinanceFehler, BF.UnklarFehler, *BF.NETZFEHLER) as ex:
         b.punkt("A?", "Futures-Prüfung", f"abgebrochen ({kurz(ex)})", "nicht_geprueft")
     finally:
@@ -446,7 +623,7 @@ def main(argv=None, env=None, warte=time.sleep):
         except BF.NETZFEHLER as ex:
             raise Abbruch(f"Testnetz nicht erreichbar ({type(ex).__name__}: {str(ex)[:100]}).") from None
         if not a.los:
-            print("Bereit. Ohne --los wurde nichts gesendet. Mit --los prüft das Skript (rund 1 Minute) und räumt danach auf.")
+            print("Bereit. Ohne --los wurde nichts gesendet. Mit --los prüft das Skript (rund 1–2 Minuten) und räumt danach auf.")
             return 0
         if fut_noetig:
             pruefe_futures(fut, a.futures_symbol, b, warte=warte)

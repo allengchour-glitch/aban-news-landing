@@ -6,7 +6,7 @@ Sicherungen:
   • Testnetz ist Standard (testnet.binancefuture.com). Echtes Geld NUR, wenn BEIDES gesetzt ist:
         BINANCE_FUTURES_TESTNET=false   und   KI_BOT_ECHTGELD="JA, MIT ECHTEM GELD"
   • Echtgeld: Erlaubt der Schlüssel Auszahlungen, handelt der Pilot NICHT (Rechteprüfung vor jedem Lauf).
-  • Hebel: Risiko-Stufe 1 / 1,5 / 2 (Cockpit oder KRYPTO_RISIKO; altes KRYPTO_MAX_HEBEL wirkt als Deckel), hart gedeckelt auf 2. Margin-Art ISOLATED: Verlust höchstens das Pfand der Position.
+  • Hebel: Risiko-Stufe 1 / 1,5 / 1,75 / 2 (Cockpit oder KRYPTO_RISIKO; altes KRYPTO_MAX_HEBEL wirkt als Deckel), hart gedeckelt auf 2. Margin-Art ISOLATED: Verlust höchstens das Pfand der Position.
   • Nur Einweg-Modus (kein Hedge), nur Marktaufträge; Verkleinern immer mit reduceOnly.
   • Stop an der Börse: STOP_MARKET closePosition auf den Markpreis, nach jedem Lauf neu gesetzt.
   • Höchstens KI_BOT_ANTEIL (Standard 0.5) des Kontos, je Auftrag höchstens KI_BOT_MAX_AUFTRAG USDT (Standard 1000).
@@ -120,6 +120,9 @@ class Futures:
 
     def _req(self, methode, pfad, params=None, signiert=False, basis=None):
         params = dict(params or {})
+        if signiert and methode in ("POST", "DELETE", "PUT"):
+            import sperre  # (17. Prüfung W3) hat ein anderer Lauf die Sperre dieses Prozesses übernommen (Ruhezustand, Stillstand), geht kein Auftrag mehr raus
+            sperre.pruefen()
         if signiert:
             params["timestamp"] = self._zeit()
             params["recvWindow"] = 10000

@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "luxestyle-assist": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "-e",
+        "(async () => {\n  try {\n    const fs = require('node:fs');\n    const path = require('node:path');\n    const { pathToFileURL } = require('node:url');\n    const { spawnSync } = require('node:child_process');\n    const env = {\n      PATH: process.env.PATH || '/usr/bin:/bin', LANG: 'C.UTF-8', TZ: 'Europe/Zurich',\n      GIT_CONFIG_NOSYSTEM: '1', GIT_CONFIG_GLOBAL: process.platform === 'win32' ? 'NUL' : '/dev/null',\n      GIT_TERMINAL_PROMPT: '0'\n    };\n    const git = args => {\n      const result = spawnSync('git', ['--no-optional-locks', '-C', process.cwd(),\n        '-c', 'core.fsmonitor=false', ...args],\n        { env, encoding: 'utf8', timeout: 3000, maxBuffer: 4096, windowsHide: true });\n      if (result.error || result.status !== 0 || result.signal || typeof result.stdout !== 'string') throw Error();\n      const value = result.stdout.replace(/\\r?\\n$/, '');\n      if (!value || /[\\r\\n\\0]/.test(value)) throw Error();\n      return value;\n    };\n    const root = fs.realpathSync(git(['rev-parse', '--show-toplevel']));\n    const origin = git(['config', '--local', '--get', 'remote.origin.url']);\n    if (!/^(?:https:\\/\\/github\\.com\\/|git@github\\.com:|ssh:\\/\\/git@github\\.com\\/)allengchour-glitch\\/aban-news-landing(?:\\.git)?\\/?$/i.test(origin)) throw Error();\n    const directory = path.join(root, 'automation');\n    const target = path.join(directory, 'claude-assist.mjs');\n    const parent = fs.lstatSync(directory), script = fs.lstatSync(target);\n    if (!parent.isDirectory() || parent.isSymbolicLink() || !script.isFile() || script.isSymbolicLink()) throw Error();\n    process.argv = [process.execPath, target, 'mcp'];\n    await import(pathToFileURL(target).href);\n  } catch {\n    process.stderr.write('LuxeStyle Assist konnte nicht sicher gestartet werden.\\n');\n    process.exitCode = 1;\n  }\n})();"
+      ],
+      "env": {
+        "NODE_OPTIONS": "",
+        "NODE_PATH": ""
+      }
+    }
+  }
+}

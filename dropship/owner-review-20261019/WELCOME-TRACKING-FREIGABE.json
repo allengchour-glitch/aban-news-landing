@@ -1,0 +1,33 @@
+{
+  "status": "proposal_only_not_applied",
+  "checkedDate": "2026-10-19",
+  "accountId": "XWqMAD",
+  "flowId": "VbLQj6",
+  "flowMessageId": "TTuuTS",
+  "templateId": "VZnxDz",
+  "singleImprovement": "Herkunft der bestehenden Welcome-Besuche durch vorhandenes Link-Tracking messbar machen",
+  "diff": {
+    "add_tracking_params": { "before": false, "after": true }
+  },
+  "templateCurrentLinks": [
+    "https://luxestyle.ch/collections/neu-eingetroffen",
+    "https://luxestyle.ch/collections/blitzversand-schweiz"
+  ],
+  "currentTemplateHasUTMParameters": false,
+  "requiresOwnerApproval": true,
+  "preflightBeforeApprovedChange": [
+    "Aktuelle Kontozuordnung und bestehende Nachricht erneut lesen",
+    "Konto-UTM-Konfiguration und resultierende Linkvorschau ohne Versand prüfen",
+    "Keine doppelten UTM-Schlüssel oder zweite manuelle UTM-Schicht einführen",
+    "Expliziten aktuellen Diff auf genau dieses eine Feld begrenzen",
+    "Nach Umsetzung bestehende Nachricht und Trackingflag gezielt zurücklesen"
+  ],
+  "unchanged": [
+    "Flowstatus und Zielgruppe",
+    "Bestehende Inhalte und Rabatte",
+    "Capture-Liste T2VHfu",
+    "Shop-, DNS- und Versandeinstellungen"
+  ],
+  "successEvidence": "Resultierende Vorschau beider vorhandenen Shoplinks enthält eindeutige, nicht doppelte Herkunftsparameter; keine Kundennachricht auslösen.",
+  "salesImpact": "Keine Umsatz- oder Kaufgarantie; bessere Messbarkeit vor weiterem Versandvolumen."
+}

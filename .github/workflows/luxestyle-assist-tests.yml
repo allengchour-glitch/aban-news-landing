@@ -1,0 +1,30 @@
+name: LuxeStyle Assist tests
+on:
+  pull_request:
+    paths:
+      - 'automation/claude-assist.mjs'
+      - 'automation/lib/claude_assist*.mjs'
+      - '.mcp.json'
+      - '.github/workflows/luxestyle-assist-tests.yml'
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            automation/claude-assist.mjs
+            automation/lib/claude_assist*.mjs
+            .mcp.json
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Local assistant and MCP regressions
+        run: |
+          node --check automation/claude-assist.mjs
+          node --test automation/lib/claude_assist_test.mjs automation/lib/claude_assist_mcp_test.mjs automation/lib/claude_assist_changes_test.mjs automation/lib/claude_assist_readiness_test.mjs automation/lib/claude_assist_launch_test.mjs automation/lib/claude_assist_runner_test.mjs automation/lib/claude_assist_commits_test.mjs automation/lib/claude_assist_evidence_test.mjs
+          node -e 'JSON.parse(require("node:fs").readFileSync(".mcp.json","utf8"))'

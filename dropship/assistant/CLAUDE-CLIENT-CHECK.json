@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "observedAtUTC": "2026-10-19T10:07:33.452084+00:00",
+  "scope": "isolated pilot checkout and isolated Claude config only",
+  "client": {
+    "package": "@anthropic-ai/claude-code",
+    "version": "2.1.303",
+    "packageIntegrity": "sha512-vGwsxL/bjxl7crYg2/BLBs75ErQ22x9L3LKqZqwqZ9vwp6A41sVCDdBXsPftM19V5LAwK6/s/sAxIVjX6F4O6Q==",
+    "nativePackage": "@anthropic-ai/claude-code-linux-x64",
+    "nativePackageIntegrity": "sha512-yUbFvO0As5DKZfeu102GLBtrGz0ghkFteHyW4rbkKVXZCwSWisXqtbm4Nolt9AlKSCAggQoyqCEG7EEF0wXciQ==",
+    "installation": "local prefix; npm lifecycle scripts skipped; packaged native executable used"
+  },
+  "initialProjectScope": "pending_approval; no connection attempted before approval",
+  "connectedScope": "explicit local entry in isolated pilot profile",
+  "probes": [
+    {
+      "probe": "root",
+      "exitCode": 0,
+      "connected": true,
+      "configScope": "local in isolated pilot",
+      "stdoutSHA256": "a4b58f8ff214c0e53e59fde8155069c03f41a363ccf8b72b0cfcb3f5e3b8fc6e",
+      "stderrEmpty": true
+    },
+    {
+      "probe": "nested",
+      "exitCode": 0,
+      "connected": true,
+      "configScope": "local in isolated pilot",
+      "stdoutSHA256": "a4b58f8ff214c0e53e59fde8155069c03f41a363ccf8b72b0cfcb3f5e3b8fc6e",
+      "stderrEmpty": true
+    },
+    {
+      "probe": "parent-node-options",
+      "exitCode": 0,
+      "connected": true,
+      "configScope": "local in isolated pilot",
+      "stdoutSHA256": "a4b58f8ff214c0e53e59fde8155069c03f41a363ccf8b72b0cfcb3f5e3b8fc6e",
+      "stderrEmpty": true
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": ".mcp.json",
+      "sha256": "4fa53ca4f100aaa1385f7b2334a458c739c3e6b25388946626663a5b309c8edd"
+    },
+    {
+      "path": "automation/claude-assist.mjs",
+      "sha256": "ccff1dfcd3cb66a05808f670949220b1008bb36e0e2a94d99d06d06b2a17f1f2"
+    },
+    {
+      "path": "automation/lib/claude_assist.mjs",
+      "sha256": "0ca98f39eb94765f3176c7044256a2e25a40dc9968ad19c922d29adb5fb03725"
+    },
+    {
+      "path": "automation/lib/claude_assist_changes.mjs",
+      "sha256": "7f9e2f122f7ecca6b2d3fe8a4c14d4833c1afd13936c54c16d9e346874f3844a"
+    },
+    {
+      "path": "automation/lib/claude_assist_commits.mjs",
+      "sha256": "ae60bbcd0d4b82c028fce1924a0be04690084e9cc6a4e48e885494851559388e"
+    },
+    {
+      "path": "automation/lib/claude_assist_evidence.mjs",
+      "sha256": "c9934bce431112a2667619295f038b28fbf3310461cbc1267882aaff98cebbb9"
+    },
+    {
+      "path": "automation/lib/claude_assist_launch.mjs",
+      "sha256": "295fbc349bf097e63ae6303256e837c9f60b2588d3e4ddfb765351a33edfa404"
+    },
+    {
+      "path": "automation/lib/claude_assist_mcp.mjs",
+      "sha256": "072383e3838e97636c3901540ab994dc37a17aaabac6905aa009fe7a6f656d9b"
+    },
+    {
+      "path": "automation/lib/claude_assist_offline.mjs",
+      "sha256": "9fe0ac22df62bd0bf960e6f91ef4c754d7d139fb423f8a82d90b00c3d5d61ca6"
+    },
+    {
+      "path": "automation/lib/claude_assist_readiness.mjs",
+      "sha256": "2977dee1b6d61c585f6e12b9a368bd7e56c915557bee8c93abd8f3c49dd6b237"
+    },
+    {
+      "path": "automation/lib/claude_assist_runner.mjs",
+      "sha256": "e478a3a15c8acc106a15014c9e96dcc9cc229122fc8941902927557c55fcac17"
+    }
+  ],
+  "modelCalls": 0,
+  "conversationAuthentication": "not_tested",
+  "ownerClientInstallationAndApproval": "unknown",
+  "businessWrites": 0,
+  "existingUserProfilesChanged": false,
+  "note": "CLI health-check connectivity is evidence for this pilot, not proof of an owner conversation, model review or production publication approval.",
+  "serverVersion": "2.4.0"
+}

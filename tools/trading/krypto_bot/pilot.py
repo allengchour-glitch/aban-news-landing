@@ -12,7 +12,7 @@ Trend-Schnitt je Coin: Bitcoin 150 Tage, Ethereum 200 Tage (pilot_pruefung.py, R
 MVRV-Bremse: kein Short, solange der Kurs unter dem Einstandswert aller Coins liegt (MVRV < 1). Die übrigen freien
 Markt-Infos (Angst & Gier, Funding, VIX, Dollar, Zins, Notenbank, Stablecoins) erscheinen nur als Lagebild — sie
 bestanden den Test in info_pruefung.py nicht und beeinflussen keinen Auftrag.
-Einstellungen: Risiko-Stufe 1 / 1,5 / 2 (Cockpit-Knopf oder KRYPTO_RISIKO; hebel_pruefung.py) · KRYPTO_SHORT (1 = auch short, 0 = nur long) · Schlüssel siehe
+Einstellungen: Risiko-Stufe 1 / 1,5 / 1,75 / 2 (Cockpit-Knopf oder KRYPTO_RISIKO; hebel_pruefung.py) · KRYPTO_SHORT (1 = auch short, 0 = nur long) · Schlüssel siehe
 broker_futures.py. Einmal pro Woche kommt der Kontostand als Push (Telegram/ntfy). Keine Anlageberatung.
 """
 from __future__ import annotations
@@ -20,6 +20,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import sys
 from datetime import date, datetime, timezone
 from pathlib import Path
@@ -230,6 +231,7 @@ def main():
     ap.add_argument("--bericht", action="store_true")
     ap.add_argument("--backtest", action="store_true")
     ap.add_argument("--nachkontrolle", action="store_true", help="Pilot 2.0: unklare Aufträge klären, danach Stops setzen")
+    ap.add_argument("--einmal", action="store_true", help="mit --nachkontrolle: EIN Durchgang ohne Warten (der 10-Minuten-Takt der Aufgabenplanung)")
     a = ap.parse_args()
     if a.backtest:
         backtest()
@@ -238,7 +240,7 @@ def main():
         print(wochenbericht(lies(), date.today().isoformat(), erzwingen=True) or "Noch kein Kontostand im Logbuch — erst ein --lauf.")
         return 0
     if a.nachkontrolle:
-        return nachkontrolle()
+        return nachkontrolle(einmal=a.einmal)
     if not (a.status or a.lauf):
         ap.print_help()
         return 0
@@ -247,7 +249,7 @@ def main():
     if a.lauf and not a.trocken and BF.einstellungen()["stop"]:  # Datei STOP oder KI_BOT_STOP=1
         # Not-Aus hat Vorrang (auch vor der Pause) und braucht keine Kurse von Yahoo: nur schliessen, alle Märkte
         try:
-            with sperre.lauf_sperre(warten=120):
+            with sperre.lauf_sperre(warten=sperre.ALT_NACH_TOT + 40, alt_nach=sperre.ALT_NACH_TOT):  # (16. Prüfung) eine tote Sperre (kein Herzschlag seit 150 s) hält den Not-Aus nicht auf
                 alles_zu, zeilen = schliessen_alle()
         except sperre.Besetzt as ex:
             print(f"{ex} Not-Aus trotzdem: schliesse ohne Sperre.")
@@ -283,11 +285,22 @@ def main():
         print("Auto-Handel ist aus (Pause) — nichts gehandelt. Einschalten im Cockpit oder mit weiter.bat.")
         return 0
     try:
-        with sperre.lauf_sperre(warten=0 if a.trocken else 120):
+        with sperre.lauf_sperre(warten=0 if a.trocken else sperre.ALT_NACH_TOT + 40, alt_nach=sperre.ALT_NACH_TOT):
             return handeln(ents, lage, a.trocken)
     except sperre.Besetzt as ex:
-        print(f"{ex} Dieser Lauf handelt nicht — einfach später nochmals starten.")
+        return lauf_besetzt(ex, a.trocken)
+    return 0
+
+
+def lauf_besetzt(ex, trocken):
+    """Der Tageslauf bekam die Lauf-Sperre nicht (ein anderer Lauf oder die Nachkontrolle hielt sie länger als die Wartezeit). → Rückgabewert.
+    (18. Prüfung W3′) NICHT still: ein Lauf, der deswegen nicht handelt, ist ein ausgefallener Tag — rc 0 und «alles gelaufen» in der Bat verschwiegen es. Ein Probelauf darf einfach abgewiesen werden."""
+    print(f"{ex} Dieser Lauf handelt nicht — einfach später nochmals starten.")
+    if trocken:
         return 0
+    import signale as SG
+    SG.push(f"⚠️ Pilot: der Lauf hat NICHT gehandelt — {ex} (ein anderer Lauf oder die Nachkontrolle hielt die Sperre). Bitte später `pilot.py --lauf` nochmals starten oder im Cockpit «Jetzt handeln». Keine Anlageberatung.")
+    return 3
 
 
 def teilt_konto(env, p2_modus, bf=None):
@@ -410,9 +423,92 @@ def lauf_merken(ok, hinweise, trocken=False, logbuch=None):
     schreiben(lb, datei)
 
 
-def nachkontrolle():
+PUSH_STILL = ROOT / "data" / "krypto-nachkontrolle-push.json"
+PUSH_ABSTAND_S = 3600
+_ZAHL = r"\d[\d'’.,]*"  # eine Zahl mit Tausender-/Dezimaltrennern ist EINE Zahl («3'641.5»)
+_ZEIT_KURS = re.compile(rf"(?<![\w.]){_ZAHL}\s*(?:s|Sek\.?|Sekunden|Min\.?|Minuten|Std\.?|Stunden|Tage|Tagen)(?!\w)|\b(?:Kurs|Preis|Stop-Kurs)\s*[:=]?\s*{_ZAHL}|@\s*{_ZAHL}")
+PUSH_MERKEN = 8  # so viele verschiedene Meldungen der letzten Stunde bleiben gemerkt (abwechselnde Texte A, B, A, B dürfen nicht je einzeln durchkommen)
+
+
+def _push_nachkontrolle(text, einmal, datei=None, jetzt=None, warnung=True):
+    """Push der Nachkontrolle. Im 10-Minuten-Takt (einmal) schickt dieselbe Meldung höchstens einmal je Stunde (18. Prüfung W3′: ein dauerhaft offener Markt hätte ~144 Pushes am Tag ausgelöst);
+    eine ANDERE Meldung geht sofort. Ein Fehler hier darf nie das Pushen verhindern. → True, wenn die Meldung zugestellt wurde.
+    (20. Prüfung, klein 5) Gemerkt werden mehrere Kennungen der letzten Stunde, nicht nur die letzte: wechselt der Text zwischen zwei Fassungen (A, B, A, B — z. B. mit einer Minutenangabe), kam jede einzelne an.
+    (Code-Review der R20) Das gilt nur INNERHALB einer Folge gleicher Art: `warnung=False` (der Durchgang meldet eine Entwarnung, z. B. «geklärt») beendet die Folge der Warnungen und umgekehrt — kehrt dieselbe
+    Warnung nach einer Entwarnung zurück, ist das ein NEUES Ereignis und geht sofort raus (sonst stünde auf dem Handy «geklärt», während der Markt wieder offen ist)."""
+    import hashlib
+    import time
+    import signale as SG
+    datei = Path(datei) if datei else PUSH_STILL
+    jetzt = time.time() if jetzt is None else jetzt
+    # Die Kennung ignoriert Werte, die sich ändern, WEIL ZEIT VERGEHT (Code-Review der R20): Alter («seit 12 s», «vor 7 Min.») und Kurse («zuletzt bekannten Kurs 3636», «@ 4242») — sonst bekäme jeder Takt eine neue Kennung
+    # und die Drosselung liesse ~144 Pushes am Tag durch. MENGEN bleiben Teil der Kennung: «BTC Perp SELL 0.003 unklar» und «… 0.5 unklar» sind verschieden grosse Probleme.
+    kennung = hashlib.sha1(_ZEIT_KURS.sub("#", text).encode("utf-8", "replace")).hexdigest()[:16]
+    art = "warnung" if warnung else "entwarnung"
+    gemerkt = {}
+    if einmal:
+        try:
+            roh = json.loads(datei.read_text())
+            if "kennung" in roh:  # Datei der R19: eine Meldung (immer eine Warnung)
+                roh = {"art": "warnung", "meldungen": {roh["kennung"]: roh.get("zeit")}}
+            if roh.get("art") == art:  # eine andere Art beendet die Folge: alles Gemerkte gilt als erledigt
+                gemerkt = {k: float(z) for k, z in (roh.get("meldungen") or {}).items() if 0 <= jetzt - float(z or 0) < PUSH_ABSTAND_S}
+        except Exception:  # noqa: BLE001 — keine/kaputte Datei: pushen
+            gemerkt = {}
+        if kennung in gemerkt:
+            print(f"(gleiche Meldung vor {int((jetzt - gemerkt[kennung]) / 60)} Min. schon gemeldet — nicht nochmals gepusht)")
+            return False
+    try:
+        gesendet = bool(SG.push(text + "\nKeine Anlageberatung."))
+    except Exception as ex:  # noqa: BLE001 — z. B. ein ntfy-Server ohne «https://» (ValueError vor dem Senden): eine Meldung, die nicht rausgeht, darf nie einen Durchgang (rc 1 = «Absturz?» im Cockpit) oder den Rest des Laufs beenden
+        print(f"⚠️ Push der Nachkontrolle fehlgeschlagen ({type(ex).__name__}).")
+        gesendet = False
+    if einmal and gesendet:  # (19. Prüfung W1) nur eine ZUGESTELLTE Meldung drosselt die nächste: `push` gibt False bei Telegram-/ntfy-Fehler oder ohne Kanal zurück — sonst schwiege derselbe Alarm nach einem Netzausfall eine Stunde lang
+        try:
+            gemerkt[kennung] = jetzt
+            neueste = sorted(gemerkt.items(), key=lambda kz: kz[1], reverse=True)[:PUSH_MERKEN]
+            datei.parent.mkdir(parents=True, exist_ok=True)
+            datei.write_text(json.dumps({"art": art, "meldungen": dict(neueste)}))
+        except Exception:  # noqa: BLE001
+            pass
+    return gesendet
+
+
+NK_SERIE = ROOT / "data" / "krypto-nachkontrolle-serie.json"
+SERIE_LUECKE_S = 1800  # ein Durchgang, der länger als das zurückliegt (PC aus, Aufgabe angehalten), setzt die Reihe zurück: «in Folge» heisst im 10-Minuten-Takt
+BESETZT_PUSH_AB = 4    # so viele übersprungene Durchgänge in Folge (rund 40 Minuten) gehen aufs Handy — wie NK_BESETZT_ROT im Cockpit (ein Test hält beide zusammen): die Lampe sieht nur, wer das Cockpit offen hat
+
+
+def _serie_merken(art, datei=None, jetzt=None):
+    """(20. Prüfung, wichtig 1 + klein 8) Buch über die REIHE gleichartiger Durchgänge im 10-Minuten-Takt (`einmal`): «ok» / «warnung» (Rückgabewert 3) / «besetzt» (die Lauf-Sperre hielt ein anderer Lauf, Rückgabewert 0).
+    Die rc-Datei der Bat zeigt nur den LETZTEN Durchgang — ob eine Warnung seit einem Takt oder seit Stunden steht und ob die Sperre nur kurz belegt war oder ein Halter mit lebendem Herzschlag dasteht
+    (eine angeklickte Konsole im QuickEdit-Modus hält den Hauptfaden an, der Herzschlag läuft weiter), sieht erst das Cockpit an dieser Reihe → {art, anzahl, seit, zeit}. Ein Fehler hier ändert nichts am Durchgang —
+    aber er steht im Protokoll (Code-Review: ohne die Reihe bliebe eine Dauerwarnung grau, und das fiele nirgends auf)."""
+    import time
+    datei = Path(datei) if datei else NK_SERIE
+    jetzt = time.time() if jetzt is None else jetzt
+    try:
+        try:
+            alt = json.loads(datei.read_text())
+            gleich = alt.get("art") == art and 0 <= jetzt - float(alt.get("zeit") or 0) < SERIE_LUECKE_S
+            anzahl, seit = (int(alt.get("anzahl") or 0) + 1, float(alt.get("seit") or jetzt)) if gleich else (1, jetzt)
+        except Exception:  # noqa: BLE001 — keine/kaputte Datei: die Reihe beginnt
+            anzahl, seit = 1, jetzt
+        schreiben({"art": art, "anzahl": anzahl, "seit": seit, "zeit": jetzt}, datei)
+        return anzahl
+    except Exception as ex:  # noqa: BLE001
+        print(f"⚠️ Reihe der Durchgänge nicht gespeichert ({type(ex).__name__}) — die Cockpit-Ampel kann eine Dauerwarnung dann nicht rot färben.")
+        try:
+            datei.with_name(datei.name + f".tmp{os.getpid()}").unlink()
+        except OSError:
+            pass
+        return 0
+
+
+def nachkontrolle(einmal=False):
     """Pilot 2.0 nach dem Lauf: blieb ein Auftrag unklar, bis zu ~11 Minuten nachfragen und danach die Stops nach dem
-    Kontostand setzen (ein verspätet angekommener Kauf liegt so nie bis morgen ohne Stop). Ohne Unklares sofort fertig."""
+    Kontostand setzen (ein verspätet angekommener Kauf liegt so nie bis morgen ohne Stop). Ohne Unklares sofort fertig.
+    einmal: der 10-Minuten-Takt der Aufgabenplanung — EIN Durchgang, die Sperre ist nach Sekunden wieder frei (18. Prüfung W3′)."""
     import broker_futures as BF
     import pilot2_live as P2L
     import sperre
@@ -420,11 +516,17 @@ def nachkontrolle():
     try:
         # Not-Aus: nie still überspringen — eine laufende Nachkontrolle gibt bei STOP nach einem Takt ab, ein Not-Aus-Lauf ist
         # in Sekunden fertig; darum länger warten
-        with sperre.lauf_sperre(warten=P2L.NACHKONTROLLE_MAX_S + 120 if not_aus else 120):
-            r = P2L.nachkontrolle()
+        # (16. Prüfung) Tote Sperre (harter Abbruch des Laufs: kein Herzschlag seit ALT_NACH_TOT s) übernehmen — sonst lief die Nachkontrolle nach einem Abbruch gar nicht
+        with sperre.lauf_sperre(warten=P2L.NACHKONTROLLE_MAX_S + 120 if not_aus else sperre.ALT_NACH_TOT + 40, alt_nach=sperre.ALT_NACH_TOT):
+            r = P2L.nachkontrolle(einmal=einmal)
     except sperre.Besetzt as ex:
         if not not_aus:
             print(f"{ex} Nachkontrolle übersprungen — der andere Lauf prüft selbst.")
+            if einmal and _serie_merken("besetzt") >= BESETZT_PUSH_AB:
+                # Hängt der Halter (ein angeklicktes Konsolenfenster hält ein Programm an, sein Herzschlag läuft weiter), prüft niemand mehr — und rc 0 meldet nichts. Der Text trägt KEINE Zahl: die Drosselung
+                # (höchstens einmal je Stunde) erkennt dieselbe Meldung wieder
+                _push_nachkontrolle("⚠️ Nachkontrolle Pilot 2.0: seit über 30 Minuten übersprungen — die Lauf-Sperre hält ein anderer Lauf (hängt der Tageslauf oder die lange Nachkontrolle? Ein angeklicktes "
+                                    "Konsolenfenster hält ein Programm an). Solange prüft niemand die Stops. Bitte das Fenster ansehen (Taste drücken oder schliessen) und data\\krypto-nachkontrolle.log lesen.", einmal)
             return 0
         r = {"zeilen": [f"⚠️ Not-Aus: Nachkontrolle Pilot 2.0 konnte nicht laufen ({ex}) — stop.bat in 5 Minuten nochmals "
                         "ausführen und das Binance-Konto prüfen!"], "warnung": True, "auftraege": []}
@@ -434,8 +536,9 @@ def nachkontrolle():
     if r["zeilen"]:
         text_n = "\n".join(r["zeilen"])
         print(text_n)
-        import signale as SG
-        SG.push(text_n + "\nKeine Anlageberatung.")
+        _push_nachkontrolle(text_n, einmal, warnung=bool(r["warnung"]))
+    if einmal:
+        _serie_merken("warnung" if r["warnung"] else "ok")
     return 3 if r["warnung"] else 0
 
 

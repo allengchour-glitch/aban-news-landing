@@ -32,9 +32,12 @@ SKILL_MIN = 0.60
 EINBRUCH_MAX = -0.45
 STOP_SIGMA = 3.0          # pilot_pruefung.py 1L: 3σ auf der Live-Konfiguration in allen Feldern besser als 4σ (11.10.2026)
 MVRV_TIEF = 1.0
-# Risiko-Stufe (hebel_pruefung.py): 1 = Standard und im Test am besten (Rendite ÷ Einbruch). 1,5 und 2 = alles grösser
-# (Schwankungsziel × Stufe, Deckel = Stufe): mehr Rendite, aber Einbrüche bis −44 % bzw. −60 %. Ab 5×: −97 %, 10×: Konto weg.
-STUFEN = (1.0, 1.5, 2.0)
+# Risiko-Stufe (hebel_pruefung.py): 1 = Standard und im Test am besten (Rendite ÷ Einbruch). 1,5 / 1,75 / 2 = alles grösser
+# (Schwankungsziel × Stufe, Deckel = Stufe): mehr Rendite, aber tiefere Einbrüche. 1,75 ist die Stufe, die der Max-Profit-
+# Prüfstand (maxprofit_pruefung.py, Regel vorab festgelegt) nach seiner Regel empfiehlt: ab 2020 +48,7 % statt +33,4 % pro Jahr,
+# schlimmster Einbruch −53 % statt −30 %; 2× bestand sie nicht (8 % der Zufallsjahre tiefer als −60 %). Ab 5×: −97 %, 10×: Konto weg.
+# Bei gleichem Abstand gewinnt die kleinere Stufe (die Reihenfolge der Liste zählt).
+STUFEN = (1.0, 1.5, 1.75, 2.0)
 EINSTELLUNGEN = Path(__file__).resolve().parents[3] / "data" / "krypto-einstellungen.json"
 GEBUEHR = 0.0005
 FUNDING_8H = 0.0001
@@ -64,7 +67,7 @@ def schwankung(p):
 
 def risiko(env=None, datei=None):
     """→ {stufe, ziel_vol, max_hebel}. Quelle: KRYPTO_RISIKO, sonst die Cockpit-Einstellung (nur wenn env nicht vorgegeben
-    oder eine Datei übergeben wird), sonst 1. Werte werden auf 1 / 1,5 / 2 gerundet — mehr gibt es nicht.
+    oder eine Datei übergeben wird), sonst 1. Werte werden auf 1 / 1,5 / 1,75 / 2 gerundet — mehr gibt es nicht.
     Altes KRYPTO_MAX_HEBEL ohne Stufe: wirkt wie bisher nur als Deckel."""
     nur_env = env is not None and datei is None
     env = os.environ if env is None else env

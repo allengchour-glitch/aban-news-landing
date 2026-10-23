@@ -270,8 +270,12 @@ with tempfile.TemporaryDirectory() as tmp:
             pruefe("zurück auf 1×, Stufen-Knöpfe starten kein Skript", Km.risiko()["stufe"] == 1.0 and len(gestartet) == 1)
         finally:
             Km.EINSTELLUNGEN = alt_einst
+        NACHKONTROLLE.clear()
         C.aktion("handeln", starter)
         pruefe("Jetzt handeln startet pilot.py --lauf", gestartet[-1] == ["pilot.py", "--lauf"])
+        # (16. Prüfung) wie krypto-auto.bat: nach dem Lauf folgt die Nachkontrolle von Pilot 2.0 (sonst bleibt ein beim Lauf unklar gebliebener oder ausgefallener Stop bis morgen offen)
+        pruefe("Jetzt handeln startet danach die Nachkontrolle von Pilot 2.0", NACHKONTROLLE == [1], NACHKONTROLLE)
+        NACHKONTROLLE.clear()
         e = C.aktion("selbsttest", starter)
         n_t = len(C.SELBSTTESTS)
         pruefe("Selbsttest: alle Testdateien, letzte Zeile je Datei", [g[0] for g in gestartet[-n_t:]] == C.SELBSTTESTS
@@ -320,6 +324,89 @@ with tempfile.TemporaryDirectory() as tmp:
                and "nicht auf Akku" in e["text"], (cmd, e["text"]))
         e = C.aktion("aufgabe", befehl=lambda c, z: (False, "Zugriff verweigert"))
         pruefe("beides scheitert: Fehler mit Grund", not e["ok"] and "Zugriff verweigert" in e["text"])
+        # ── (17. Prüfung W4) zweite Aufgabe: die Nachkontrolle von Pilot 2.0 hat einen eigenen Takt (alle 10 Minuten + Anmeldung) ──
+        xml_nk = C.aufgabe_xml_nk(benutzer="MEINPC\\Hans & Co")
+        xml_nk_ohne = C.aufgabe_xml_nk(benutzer="")
+        pruefe("Nachkontroll-Aufgabe: gültiges XML, alle 10 Minuten (PT10M) UND bei der Anmeldung, über den UNSICHTBAREN Starter (wscript //B), nie zwei Instanzen, auch auf Akku",
+               __import__("xml.dom.minidom").dom.minidom.parseString(xml_nk.split("?>", 1)[1].strip()) is not None
+               and "<Interval>PT10M</Interval>" in xml_nk and "<LogonTrigger><Enabled>true</Enabled><UserId>MEINPC\\Hans &amp; Co</UserId></LogonTrigger>" in xml_nk
+               and "<Command>wscript.exe</Command>" in xml_nk and "//B //Nologo" in xml_nk and "krypto-nachkontrolle-still.vbs" in xml_nk
+               and "<MultipleInstancesPolicy>IgnoreNew" in xml_nk and "<DisallowStartIfOnBatteries>false" in xml_nk, xml_nk[:300])
+        pruefe("Nachkontroll-Aufgabe: der Anmelde-Auslöser trägt den Benutzer (sonst Administratorrechte nötig: die XML-Variante scheiterte); ohne bekannten Benutzer fehlt er, das XML bleibt gültig und die 10-Minuten-Wiederholung steht",
+               "<LogonTrigger>" not in xml_nk_ohne and "<Interval>PT10M</Interval>" in xml_nk_ohne
+               and __import__("xml.dom.minidom").dom.minidom.parseString(xml_nk_ohne.split("?>", 1)[1].strip()) is not None, xml_nk_ohne[:400])
+        os_umgebung17 = {k_: __import__("os").environ.get(k_) for k_ in ("USERDOMAIN", "USERNAME")}
+        try:
+            __import__("os").environ["USERDOMAIN"], __import__("os").environ["USERNAME"] = "TESTPC", "Anna"
+            benutzer_env17 = C._anmelde_benutzer()
+            __import__("os").environ.pop("USERDOMAIN")
+            benutzer_ohne17 = C._anmelde_benutzer()
+        finally:
+            for k_, v_ in os_umgebung17.items():
+                if v_ is None:
+                    __import__("os").environ.pop(k_, None)
+                else:
+                    __import__("os").environ[k_] = v_
+        pruefe("_anmelde_benutzer: USERDOMAIN\\USERNAME, ohne eines von beiden None", benutzer_env17 == "TESTPC\\Anna" and benutzer_ohne17 is None, (benutzer_env17, benutzer_ohne17))
+        # (18. Prüfung, Mutationsprobe R17-M39) der Knopf ruft `aufgabe_xml_nk()` OHNE Argument: der Benutzer kommt aus der Umgebung
+        try:
+            __import__("os").environ["USERDOMAIN"], __import__("os").environ["USERNAME"] = "TESTPC", "Anna"
+            xml_env18 = C.aufgabe_xml_nk()
+            __import__("os").environ.pop("USERDOMAIN")
+            xml_ohne_env18 = C.aufgabe_xml_nk()
+        finally:
+            for k_, v_ in os_umgebung17.items():
+                if v_ is None:
+                    __import__("os").environ.pop(k_, None)
+                else:
+                    __import__("os").environ[k_] = v_
+        pruefe("aufgabe_xml_nk() ohne Argument (so legt der Knopf die Aufgabe an) liest den Benutzer aus der Umgebung: Anmelde-Auslöser mit TESTPC\\Anna; fehlt einer von beiden, gibt es keinen Anmelde-Auslöser und das XML bleibt gültig",
+               "<LogonTrigger><Enabled>true</Enabled><UserId>TESTPC\\Anna</UserId></LogonTrigger>" in xml_env18 and "<LogonTrigger>" not in xml_ohne_env18
+               and __import__("xml.dom.minidom").dom.minidom.parseString(xml_ohne_env18.split("?>", 1)[1].strip()) is not None, (xml_env18[:300], xml_ohne_env18[:300]))
+        befehle.clear()
+        e = C.aktion("aufgabe", befehl=fake_befehl)
+        namen = [c[c.index("/tn") + 1] for c in befehle if "/tn" in c]
+        pruefe("Aufgabe einrichten legt beide an: zuerst die Nachkontrolle, zuletzt die tägliche (deren Befehl bleibt der letzte)",
+               namen == ["Krypto-Pilot-Nachkontrolle", "Krypto-Pilot"] and e["ok"] and "alle 10 Minuten" in e["text"], (namen, e["text"]))
+        befehle.clear()
+        e = C.aktion("aufgabe", befehl=nur_einfach)
+        pruefe("XML scheitert: auch die Nachkontrolle bekommt die einfache Variante (alle 10 Minuten, /sc minute)",
+               any(c[:2] == ["schtasks", "/create"] and "minute" in c and c[c.index("/mo") + 1] == "10" and c[c.index("/tn") + 1] == "Krypto-Pilot-Nachkontrolle"
+                   and c[c.index("/tr") + 1].startswith("wscript.exe //B //Nologo ") and "krypto-nachkontrolle-still.vbs" in c[c.index("/tr") + 1] for c in befehle)
+               and e["ok"], (befehle, e["text"]))
+
+        pruefe("(18. Prüfung K5) die einfache Variante der Nachkontroll-Aufgabe sagt, was ihr fehlt: «auch auf Akku» und «verpassten Lauf nachholen»", "Akku" in e["text"] and "nachholen" in e["text"], e["text"])
+
+        def nk_scheitert(cmd, zeit):
+            befehle.append(cmd)
+            return ("Nachkontrolle" not in " ".join(cmd)), "FEHLER: nicht erlaubt" if "Nachkontrolle" in " ".join(cmd) else "ERFOLG"
+        e = C.aktion("aufgabe", befehl=nk_scheitert)
+        pruefe("Scheitert nur die Nachkontroll-Aufgabe, geht die tägliche trotzdem — mit lauter Warnung", e["ok"] and "Nachkontroll-Aufgabe ließ sich nicht einrichten" in e["text"] and "täglich 02:30" in e["text"], e["text"])
+        bat_text = (C.HIER / "krypto-auto.bat").read_text(encoding="utf-8")
+        i_nk = bat_text.index("\n:nachkontrolle_allein\n") + 1  # die Marke selbst (nicht der goto davor)
+        abschnitt = bat_text[i_nk:bat_text.index("\n:schritt", i_nk)]
+        pruefe("krypto-auto.bat: Modus «nachkontrolle» springt zum Abschnitt (ohne Klammerblock: dort würde %PY% beim Einlesen leer ersetzt) und startet pilot.py --nachkontrolle nur mit Buch",
+               'if /i "%~1"=="nachkontrolle" goto :nachkontrolle_allein' in bat_text and "(" not in abschnitt and "krypto-pilot2-bestand.json" in abschnitt
+               and "pilot.py --nachkontrolle" in abschnitt and "exit /b" in abschnitt, abschnitt)
+        pruefe("krypto-auto.bat «nachkontrolle»: das Lebenszeichen (data\\krypto-nachkontrolle-lebt.txt) steht VOR der Prüfung auf das Buch — es kommt bei jedem Start, auch ohne Pilot 2.0",
+               abschnitt.index("krypto-nachkontrolle-lebt.txt") < abschnitt.index("krypto-pilot2-bestand.json") and C.NK_LEBT == "krypto-nachkontrolle-lebt.txt", abschnitt)
+        vbs_b = (C.HIER / C.NK_STARTER).read_bytes()
+        vbs_t = vbs_b.decode("ascii")
+        pruefe("Starter krypto-nachkontrolle-still.vbs: nur ASCII, Windows-Zeilenenden, startet krypto-auto.bat «nachkontrolle» im Ordner des Skripts mit Fensterstil 0 (unsichtbar) und wartet",
+               all(c_ < 128 for c_ in vbs_b) and vbs_b.count(b"\n") == vbs_b.count(b"\r\n") > 5 and "Option Explicit" in vbs_t and "WScript.ScriptFullName" in vbs_t
+               and '"\\krypto-auto.bat"" nachkontrolle"""' in vbs_t and ", 0, True)" in vbs_t and "WScript.Quit rc" in vbs_t, vbs_t)
+        # Die Anführungszeichen des Starters (kein Windows hier zum Ausprobieren): die VBScript-Zeichenketten werden wie VBScript gelesen («""» = ein Anführungszeichen) und zusammengesetzt — mit einem Ordner MIT Leerzeichen
+        zeile_run = next(z_ for z_ in vbs_t.splitlines() if "sh.Run(" in z_)
+        ausdruck17 = zeile_run[zeile_run.index("sh.Run(") + 7: zeile_run.rindex(", 0, True)")]
+
+        def vb17(teil_):
+            if teil_ == "ordner":
+                return "C:\\Pfad mit Leerzeichen\\krypto_bot"
+            assert teil_.startswith('"') and teil_.endswith('"'), teil_
+            return teil_[1:-1].replace('""', '"')
+        befehl17 = "".join(vb17(x_.strip()) for x_ in ausdruck17.split(" & "))
+        pruefe("Starter: die Befehlszeile lautet cmd /c \"<Ordner>\\krypto-auto.bat\" nachkontrolle mit äusseren Anführungszeichen (sonst scheitern Pfade mit Leerzeichen)",
+               befehl17 == 'cmd /c ""C:\\Pfad mit Leerzeichen\\krypto_bot\\krypto-auto.bat" nachkontrolle"', befehl17)
         n_b = len(befehle)
         e = C.aktion("update", befehl=fake_befehl)
         pruefe("Update: erst Kurs-Zwischenspeicher zurücksetzen (sonst blockiert git pull), dann git pull --ff-only",
@@ -327,9 +414,222 @@ with tempfile.TemporaryDirectory() as tmp:
                and "neu starten" not in e["text"], befehle[n_b:])
         e = C.aktion("update", befehl=lambda c, z: (True, "Updating abc..def\nFast-forward"))
         pruefe("Update mit neuer Version: Hinweis Cockpit neu starten", "neu starten" in e["text"])
+        pruefe("krypto-auto.bat «nachkontrolle» (18. Prüfung W3′/K5): EIN Durchgang (--einmal, kein 11-Minuten-Warten mit gehaltener Sperre), der Rückgabewert steht in data\\krypto-nachkontrolle-rc.txt, die Umleitung steht VOR dem Befehl (eine Ziffer davor gälte als Handle)",
+               "pilot.py --nachkontrolle --einmal" in abschnitt and C.NK_RC == "krypto-nachkontrolle-rc.txt" and f'>"data\\{C.NK_RC}" echo' in abschnitt and "rc=%NKRC%" in abschnitt and "exit /b %NKRC%" in abschnitt
+               and abschnitt.index("--einmal") < abschnitt.index(C.NK_RC) and f'>"data\\{C.NK_LEBT}" echo' in abschnitt, abschnitt)
+        # (19. Prüfung K5) ohne Buch endet die Bat früh — der alte Absturz-Wert (rc=1) in der rc-Datei hielt die Ampel bis zu 30 Minuten zu Unrecht rot: jetzt schreibt auch dieser Zweig «rc=0»
+        i_ohne = abschnitt.index("\n:nk_ohne_buch\n") + 1
+        zweig19 = abschnitt[i_ohne:]
+        pruefe("krypto-auto.bat «nachkontrolle» ohne Buch (19. Prüfung K5): der Zweig :nk_ohne_buch liegt NACH dem normalen exit /b, schreibt rc=0 in die rc-Datei (Umleitung zuerst) und endet mit exit /b 0; der Sprung steht nach dem Lebenszeichen",
+               "if not exist \"data\\krypto-pilot2-bestand.json\" goto :nk_ohne_buch" in abschnitt and abschnitt.index("exit /b %NKRC%") < i_ohne
+               and f'>"data\\{C.NK_RC}" echo' in zweig19 and "rc=0" in zweig19 and "exit /b 0" in zweig19 and "(" not in zweig19
+               and abschnitt.index(C.NK_LEBT) < abschnitt.index("goto :nk_ohne_buch"), zweig19)
+        gi_pfad = C.HIER.parents[2] / ".gitignore"
+        gi_text = gi_pfad.read_text(encoding="utf-8") if gi_pfad.exists() else None  # in einem Sandkasten nur mit tools/trading (Mutationsprobe) fehlt sie: dann nicht prüfbar
+        pruefe("(18. Prüfung) die Laufzeit-Dateien der Nachkontroll-Aufgabe (Lebenszeichen, Rückgabewert, Push-Drosselung, Log) stehen in .gitignore — sonst wären sie auf dem PC des Users «ungetrackt» und störten das Aktualisieren",
+               (gi_text is None or "data/krypto-nachkontrolle*" in gi_text.splitlines()) and C.NK_LEBT.startswith("krypto-nachkontrolle") and C.NK_RC.startswith("krypto-nachkontrolle"))
+        pruefe("(Code-Review der R20) auch die Temp-Dateien des Buchs und des Protokolls (<Datei>.<Prozess>-<Thread>-<Zähler>.neu, bleiben nach einem harten Abbruch liegen) stehen in .gitignore — `git add data/` darf sie nie einsammeln",
+               gi_text is None or "data/*.neu" in gi_text.splitlines())
         e = C.aktion("update", befehl=lambda c, z: (False, "error: Your local changes would be overwritten"))
         pruefe("Update gescheitert: verständlicher Hinweis", not e["ok"] and "eigene Änderungen" in e["text"])
         pruefe("Aufgabe vorhanden? (schtasks /query)", C.aufgabe_da(lambda c, z: (c[:2] == ["schtasks", "/query"], "")) is True)
+        abgefragt = []
+        pruefe("Nachkontroll-Aufgabe vorhanden? (schtasks /query /tn Krypto-Pilot-Nachkontrolle)",
+               C.aufgabe_da(lambda c, z: (abgefragt.append(c) or True, ""), name=C.AUFGABE_NK) is True and abgefragt[-1][abgefragt[-1].index("/tn") + 1] == "Krypto-Pilot-Nachkontrolle", abgefragt)
+        # Ampel «Nachkontrolle (Aufgabenplanung)» (Windows-Zweig von gesundheit(), hier mit vorgetäuschtem os.name == "nt", einer Aufgabenplanung, die nur die gewünschten Aufgaben kennt, und einem eigenen data/-Ordner):
+        # die Aufgabe läuft UNSICHTBAR — ihr Lebenszeichen (data/krypto-nachkontrolle-lebt.txt) macht einen stillen Ausfall sichtbar
+        import os as _os17
+
+        class _NT17:
+            name = "nt"
+
+            def __getattr__(self, a_):
+                return getattr(_os17, a_)
+        alt_os17, alt_bef17, alt_cache17, alt_data17 = C.os, C._befehl, dict(C._AUFGABE_CACHE), C.DATA
+        with tempfile.TemporaryDirectory() as td17:
+            C.DATA = Path(td17)
+            lebt17 = Path(td17) / C.NK_LEBT
+            try:
+                for fall17, da17, alter17, erwartet17, wort17 in (("frisches Lebenszeichen", True, 3 * 60, True, "zuletzt vor"), ("noch kein Lebenszeichen", True, None, None, "noch kein Lauf"),
+                                                                  ("Lebenszeichen seit 45 Minuten alt", True, 45 * 60, False, "kein Lauf"), ("Aufgabe fehlt", False, 3 * 60, False, "fehlt")):
+                    lebt17.unlink(missing_ok=True)
+                    if alter17 is not None:
+                        lebt17.write_text("x")
+                        _os17.utime(lebt17, (time.time() - alter17, time.time() - alter17))
+                    C.os = _NT17()
+                    C._AUFGABE_CACHE.update({"zeit": 0.0, "wert": None, "wert_nk": None})
+                    C._befehl = lambda cmd, zeit, da=da17: ((da if "Krypto-Pilot-Nachkontrolle" in cmd else True), "")
+                    gnk17 = {x["name"]: x for x in C.gesundheit({}, {"entscheide": []}, {}, datetime.now(timezone.utc).date())}
+                    zeile17 = gnk17.get("Nachkontrolle (Aufgabenplanung)")
+                    pruefe(f"Ampel «Nachkontrolle (Aufgabenplanung)», {fall17}: {erwartet17} — und die tägliche Aufgabe bleibt grün",
+                           zeile17 is not None and zeile17["ok"] is erwartet17 and wort17 in zeile17["text"] and gnk17["Täglicher Start (Aufgabenplanung)"]["ok"] is True, (zeile17, gnk17.get("Täglicher Start (Aufgabenplanung)")))
+                # (18. Prüfung K5) das Lebenszeichen schreibt die Bat VOR Python: ein abstürzendes `pilot.py --nachkontrolle` liess die Ampel grün. Jetzt wertet sie zusätzlich den Rückgabewert (NK_RC):
+                # 0 = in Ordnung (grün), 3 = Warnung (19. Prüfung K5: GRAU mit Text — «grün» täuschte bei einer Dauerwarnung), alles andere — auch NEGATIVE Werte (NTSTATUS bei Kill/Absturz) — ist ein Absturz → rot;
+                # ein veralteter Rückgabewert (älter als NK_LEBT_MAX_MIN) zählt nicht
+                rc_datei18 = Path(td17) / C.NK_RC
+                for fall18, rc_text18, rc_alter18, erwartet18, wort18 in (("rc=0 frisch", "Tue 20.10.2026 18:30:01,12 rc=0", 60, True, "zuletzt vor"), ("rc=3 frisch (Warnung)", "x rc=3", 60, None, "WARNUNG"),
+                                                                          ("rc=1 frisch (Absturz)", "x rc=1", 60, False, "Rückgabewert 1"), ("rc=9009 frisch", "x rc=9009", 60, False, "Rückgabewert 9009"),
+                                                                          ("rc=-1073741510 frisch (Windows: Prozess beendet)", "x rc=-1073741510", 60, False, "Rückgabewert -1073741510"),
+                                                                          ("rc=-1 frisch", "x rc=-1", 60, False, "Rückgabewert -1"),
+                                                                          ("rc=1, aber 45 Minuten alt (veraltet)", "x rc=1", 45 * 60, True, "zuletzt vor"), ("rc=3, aber 45 Minuten alt (veraltet)", "x rc=3", 45 * 60, True, "zuletzt vor"),
+                                                                          ("rc-Datei ohne rc=", "kaputt", 60, True, "zuletzt vor")):
+                    lebt17.write_text("x")
+                    _os17.utime(lebt17, (time.time() - 3 * 60, time.time() - 3 * 60))
+                    rc_datei18.write_text(rc_text18)
+                    _os17.utime(rc_datei18, (time.time() - rc_alter18, time.time() - rc_alter18))
+                    C.os = _NT17()
+                    C._AUFGABE_CACHE.update({"zeit": 0.0, "wert": None, "wert_nk": None})
+                    C._befehl = lambda cmd, zeit: (True, "")
+                    gnk18 = {x["name"]: x for x in C.gesundheit({}, {"entscheide": []}, {}, datetime.now(timezone.utc).date())}
+                    zeile18 = gnk18.get("Nachkontrolle (Aufgabenplanung)")
+                    pruefe(f"Ampel «Nachkontrolle (Aufgabenplanung)», Rückgabewert der Bat: {fall18} → {'grün' if erwartet18 else 'grau' if erwartet18 is None else 'rot'}", zeile18 is not None and zeile18["ok"] is erwartet18 and wort18 in zeile18["text"], zeile18)
+                # (19. Prüfung K5) jeder Start schreibt NACH seinem Ende einen neuen Rückgabewert: ist der letzte Start älter als NK_ENDE_MAX_MIN und der Rückgabewert älter als er, ging der Durchgang nie zu Ende
+                # (hängt / das Zeitlimit der Aufgabe beendet ihn) → rot, auch wenn das Lebenszeichen frisch ist; ein laufender (junger) Durchgang und ein beendeter verspäteter Start bleiben grün
+                for fall19, lebt_min19, rc_min19, rc_text19, erwartet19, wort19 in (("Start vor 20 Min., Rückgabewert (rc=0) von VOR dem Start", 20, 25, "x rc=0", False, "nie zu Ende"),
+                                                                                    ("Start vor 20 Min., kein Rückgabewert-Datei", 20, None, "", False, "nie zu Ende"),
+                                                                                    ("Start vor 20 Min., Rückgabewert (rc=0) von NACH dem Start (beendet)", 20, 18, "x rc=0", True, "zuletzt vor"),
+                                                                                    ("Start vor 3 Min. läuft noch, Rückgabewert von vorher", 3, 13, "x rc=0", True, "zuletzt vor"),
+                                                                                    ("Start vor 14 Min., Rückgabewert von vorher (unter der Grenze)", 14, 24, "x rc=0", True, "zuletzt vor"),
+                                                                                    ("Start vor 16 Min., Rückgabewert von vorher (über der Grenze)", 16, 26, "x rc=0", False, "nie zu Ende")):
+                    lebt17.write_text("x")
+                    _os17.utime(lebt17, (time.time() - lebt_min19 * 60, time.time() - lebt_min19 * 60))
+                    rc_datei18.unlink(missing_ok=True)
+                    if rc_min19 is not None:
+                        rc_datei18.write_text(rc_text19)
+                        _os17.utime(rc_datei18, (time.time() - rc_min19 * 60, time.time() - rc_min19 * 60))
+                    C.os = _NT17()
+                    C._AUFGABE_CACHE.update({"zeit": 0.0, "wert": None, "wert_nk": None})
+                    C._befehl = lambda cmd, zeit: (True, "")
+                    gnk19 = {x["name"]: x for x in C.gesundheit({}, {"entscheide": []}, {}, datetime.now(timezone.utc).date())}
+                    zeile19 = gnk19.get("Nachkontrolle (Aufgabenplanung)")
+                    pruefe(f"Ampel «Nachkontrolle (Aufgabenplanung)», Durchgang nie zu Ende: {fall19} → {'grün' if erwartet19 else 'rot'}", zeile19 is not None and zeile19["ok"] is erwartet19 and wort19 in zeile19["text"], zeile19)
+                # ── 20. Prüfung: veralteter Rückgabewert (klein 1), Dauerwarnung und «besetzt»-Reihe (wichtig 1, klein 8) ──
+                serie20 = Path(td17) / C.NK_SERIE
+
+                def ampel20(lebt_min, rc_min, rc_text="x rc=0", serie=None):
+                    """serie = (art, anzahl, Beginn vor … Min., letzter Durchgang vor … Min.) oder None."""
+                    jetzt20 = time.time()
+                    lebt17.write_text("x")
+                    _os17.utime(lebt17, (jetzt20 - lebt_min * 60, jetzt20 - lebt_min * 60))
+                    rc_datei18.unlink(missing_ok=True)
+                    if rc_min is not None:
+                        rc_datei18.write_text(rc_text)
+                        _os17.utime(rc_datei18, (jetzt20 - rc_min * 60, jetzt20 - rc_min * 60))
+                    serie20.unlink(missing_ok=True)
+                    if serie:
+                        serie20.write_text(json.dumps({"art": serie[0], "anzahl": serie[1], "seit": jetzt20 - serie[2] * 60, "zeit": jetzt20 - serie[3] * 60}))
+                    C.os = _NT17()
+                    C._AUFGABE_CACHE.update({"zeit": 0.0, "wert": None, "wert_nk": None})
+                    C._befehl = lambda cmd, zeit: (True, "")
+                    return {x["name"]: x for x in C.gesundheit({}, {"entscheide": []}, {}, datetime.now(timezone.utc).date())}.get("Nachkontrolle (Aufgabenplanung)")
+                # klein 1: das Lebenszeichen ist frisch, der Rückgabewert aber älter als drei Takte → die Durchgänge gehen nicht zu Ende (vorher 0–15 Minuten nach jedem Start grün, bei nie erneuerter Datei dauerhaft)
+                for fall20, lebt20, rc20, erwartet20, wort20 in (("Start vor 7 Min., Rückgabewert 45 Min. alt", 7, 45, False, "nicht zu Ende"),
+                                                                 ("Start vor 12 Min., Rückgabewert 45 Min. alt (im alten grünen Fenster)", 12, 45, False, "nicht zu Ende"),
+                                                                 ("Start vor 14 Min., Rückgabewert 31 Min. alt", 14, 31, False, "nicht zu Ende"),
+                                                                 ("Start vor 4 Min., Rückgabewert 45 Min. alt (erster Durchgang nach langer Pause läuft noch)", 4, 45, True, "zuletzt vor"),
+                                                                 ("Start vor 7 Min., Rückgabewert 29 Min. alt (unter der Grenze)", 7, 29, True, "zuletzt vor"),
+                                                                 ("Start vor 7 Min., Rückgabewert 15 Min. alt (normal)", 7, 15, True, "zuletzt vor"),
+                                                                 ("Start vor 7 Min., GAR kein Rückgabewert (Code-Review: vorher grün bis 15 Minuten)", 7, None, False, "gar keinen Rückgabewert"),
+                                                                 ("Start vor 14 Min., GAR kein Rückgabewert", 14, None, False, "gar keinen Rückgabewert"),
+                                                                 ("Start vor 4 Min., GAR kein Rückgabewert (der erste Durchgang läuft noch)", 4, None, True, "zuletzt vor")):
+                    z20 = ampel20(lebt20, rc20)
+                    pruefe(f"Ampel «Nachkontrolle (Aufgabenplanung)», veralteter Rückgabewert: {fall20} → {'grün' if erwartet20 else 'rot'}", z20 is not None and z20["ok"] is erwartet20 and wort20 in z20["text"], z20)
+                # wichtig 1: eine einzelne Warnung bleibt grau, trägt aber das Kennzeichen «warnung» (die Kopfzeile zählt sie); ab NK_WARN_ROT Durchgängen in Folge ist sie rot
+                for fall20, rc_text20, serie_a20, erwartet20, warn20, wort20 in (
+                        ("rc=3, Reihe: 1 Warnung", "x rc=3", ("warnung", 1, 3, 2), None, True, "letzte Durchgang meldete eine WARNUNG"),
+                        ("rc=3 ohne Reihe-Datei (ältere Bat/Programmstand)", "x rc=3", None, None, True, "letzte Durchgang meldete eine WARNUNG"),
+                        ("rc=3, Reihe: 2 Warnungen in Folge", "x rc=3", ("warnung", 2, 13, 2), False, False, "seit 2 Durchgängen in Folge"),
+                        ("rc=3, Reihe: 6 Warnungen seit 55 Min.", "x rc=3", ("warnung", 6, 55, 2), False, False, "seit 6 Durchgängen in Folge (rund 55 Min.)"),
+                        ("rc=3, die Reihe sagt «ok» (widersprüchlich, z. B. Datei von vorher)", "x rc=3", ("ok", 4, 40, 2), None, True, "WARNUNG"),
+                        ("rc=3, die Reihe ist 45 Min. alt (sagt nichts über die Gegenwart)", "x rc=3", ("warnung", 5, 70, 45), None, True, "WARNUNG"),
+                        ("rc=0, Reihe: 3× besetzt (normal: Tageslauf/lange Nachkontrolle belegen die Sperre)", "x rc=0", ("besetzt", 3, 25, 2), True, False, "übersprungen (Lauf-Sperre belegt, 3×)"),
+                        ("rc=0, Reihe: 4× besetzt (der Halter steht)", "x rc=0", ("besetzt", 4, 35, 2), False, False, "Lauf-Sperre hält ein anderer Lauf"),
+                        ("rc=0, Reihe: 4× besetzt, aber 45 Min. alt", "x rc=0", ("besetzt", 4, 95, 45), True, False, "zuletzt vor"),
+                        ("rc=0, Reihe: ok", "x rc=0", ("ok", 9, 80, 2), True, False, "zuletzt vor"),
+                        ("rc=0, die Reihe sagt «warnung» (widersprüchlich: der Rückgabewert gilt)", "x rc=0", ("warnung", 5, 40, 2), True, False, "zuletzt vor"),
+                        ("rc=0, Reihe: 4× besetzt, aber ÜBERHOLT (die Bat beendete danach einen Durchgang ohne pilot.py: kein Buch → rc=0)", "x rc=0", ("besetzt", 4, 35, 8), True, False, "zuletzt vor"),
+                        ("rc=3, Reihe: 2 Warnungen, aber ÜBERHOLT (7 Minuten älter als der Rückgabewert)", "x rc=3", ("warnung", 2, 20, 9), None, True, "letzte Durchgang meldete eine WARNUNG")):
+                    z20 = ampel20(3, 1, rc_text20, serie_a20)
+                    gut20 = z20 is not None and z20["ok"] is erwartet20 and wort20 in z20["text"] and (z20.get("warnung") is True) == warn20 and ("warnung" in z20) == warn20
+                    if (fall20.startswith("rc=0, Reihe: ") and erwartet20 is True and "besetzt" not in fall20) or "ÜBERHOLT" in fall20:
+                        gut20 = gut20 and "übersprungen" not in z20["text"]
+                    if "ÜBERHOLT" in fall20 and "WARNUNG" not in wort20:
+                        gut20 = gut20 and "übersprungen" not in z20["text"]
+                    pruefe(f"Ampel «Nachkontrolle (Aufgabenplanung)», Reihe der Durchgänge: {fall20} → {'grün' if erwartet20 else 'rot' if erwartet20 is False else 'grau' + (' mit Kennzeichen warnung' if warn20 else '')}", gut20, z20)
+                # … eine Reihe, die älter als NK_LEBT_MAX_MIN ist, sagt nichts über die Gegenwart — auch wenn der Rückgabewert daneben (29 Min.) noch gilt und die Reihe ihn nicht um mehr als NK_SERIE_VORSPRUNG_MIN überholt
+                # (30,5 statt 31 Minuten: bei genau 2 Minuten Abstand schlägt die Zeit, die der Test selbst braucht, über die Grenze, und die ANDERE Prüfung — «Reihe endet zu lange vor dem Rückgabewert» — verwirft die Reihe schon)
+                z20k = ampel20(3, 29, "x rc=3", ("warnung", 5, 60, 30.5))
+                pruefe("Ampel «Nachkontrolle (Aufgabenplanung)», Reihe 30,5 Min. alt neben einem 29 Min. alten Rückgabewert (rc=3): die Reihe zählt nicht (älter als 30 Minuten) → grau mit Kennzeichen, nicht rot «seit 5 Durchgängen»",
+                       z20k is not None and z20k["ok"] is None and z20k.get("warnung") is True and "WARNUNG" in z20k["text"], z20k)
+                # … und die anderen Zeilen tragen das Kennzeichen nie (es steht nur an der Warnung)
+                rc_datei18.unlink(missing_ok=True)
+                serie20.unlink(missing_ok=True)
+                alle20 = C.gesundheit({}, {"entscheide": []}, {}, datetime.now(timezone.utc).date())
+                pruefe("Gesundheit: nur eine WARNUNG trägt das Kennzeichen «warnung» (graue Info-Zeilen und alle übrigen nicht)", [x["name"] for x in alle20 if "warnung" in x] == [], [x for x in alle20 if "warnung" in x])
+                rc_datei18.unlink(missing_ok=True)
+                serie20.unlink(missing_ok=True)
+            finally:
+                C.os, C._befehl, C.DATA = alt_os17, alt_bef17, alt_data17
+                C._AUFGABE_CACHE.clear()
+                C._AUFGABE_CACHE.update(alt_cache17)
+        # ── 20. Prüfung wichtig 1: die Kopfzeile der Gesundheits-Karte zählt Warnungen mit (cockpit.html, reine Funktionen — hier mit node ausgeführt) ──
+        import re as _re20  # noqa: E402
+        import shutil as _sh20  # noqa: E402
+        import subprocess as _sp20  # noqa: E402
+        _html20 = (Path(C.__file__).parent / "cockpit.html").read_text(encoding="utf-8")
+        _m20 = _re20.search(r"// gesund:start[^\n]*\n(.*?)// gesund:ende", _html20, _re20.S)
+        _node20 = _sh20.which("node") or ("/opt/node22/bin/node" if Path("/opt/node22/bin/node").exists() else None)
+        pruefe("Oberfläche: die Gesundheits-Funktionen (Zeichen, Kopfzeile) stehen als reine Funktionen im Block gesund:start … gesund:ende und die Seite ruft sie auf",
+               bool(_m20) and "function gesundKopfzeile(g)" in _m20.group(1) and "function gesundZeichen(x)" in _m20.group(1) and "gesundKopfzeile(g)" in _html20.split("// gesund:ende", 1)[1]
+               and ".warn{color:var(--warn-text)}" in _html20 and _html20.count("--warn-text:") == 3, bool(_m20))  # ein Wert für jedes der drei Themen (hell; dunkel per Systemeinstellung; dunkel per Schalter)
+        import pilot as _PI21  # noqa: E402
+        pruefe("Reihe der Durchgänge: pilot.py (schreibt) und cockpit.py (liest) benennen dieselbe Datei im selben Ordner — jede Seite hat ihre eigene Konstante, nur dieser Test hält sie zusammen",
+               _PI21.NK_SERIE.name == C.NK_SERIE and _PI21.NK_SERIE.parent == C.ROOT / "data" and C.NK_SERIE.startswith("krypto-nachkontrolle"), (_PI21.NK_SERIE, C.NK_SERIE))
+        pruefe("Übersprungene Durchgänge: die Lampe im Cockpit (NK_BESETZT_ROT) und der Push aufs Handy (pilot.BESETZT_PUSH_AB) springen beim selben Durchgang an — zwei Konstanten, ein Test hält sie zusammen",
+               _PI21.BESETZT_PUSH_AB == C.NK_BESETZT_ROT, (_PI21.BESETZT_PUSH_AB, C.NK_BESETZT_ROT))
+        # Der Test gehört zum Selbsttest vor dem Handeln (krypto-auto.bat): ein node, das sich nicht starten lässt, darf nie das Handeln blockieren → bei jedem Fehler bleibt es bei der Prüfung der Bauform
+        _ok_ = {"name": "a", "ok": True, "text": "x"}
+        _grau_ = {"name": "b", "ok": None, "text": "x"}
+        _warn_ = {"name": "c", "ok": None, "text": "x", "warnung": True}
+        _rot_ = {"name": "d", "ok": False, "text": "x"}
+        _faelle20 = {"leer": [], "grau": [_ok_, _grau_], "warn1": [_ok_, _warn_], "warn2": [_warn_, dict(_warn_, name="e")], "rot1": [_rot_, _ok_], "rot2": [_rot_, dict(_rot_, name="f")],
+                     "rot_warn": [_rot_, _warn_], "zeichen": [_ok_, _rot_, _warn_, _grau_]}
+        k20, _js_kaputt20 = None, None
+        _node_ok20 = False
+        import tempfile as _tf20  # noqa: E402
+
+        def _node_lauf20(skript_, eingabe_=""):
+            """Skript als DATEI starten, Eingabe über stdin (Code-Review der R20: ein Windows-Shim `node.cmd` verstümmelt mehrzeilige `-e`-Skripte und Anführungszeichen in Argumenten)."""
+            with _tf20.TemporaryDirectory() as td_:
+                f_ = Path(td_) / "kopf.js"
+                f_.write_text(skript_, encoding="utf-8")
+                return _sp20.run([_node20, str(f_)], input=eingabe_, capture_output=True, text=True, encoding="utf-8", timeout=60)  # node schreibt UTF-8 (⚠, —) — nicht die Zeichentabelle der Konsole
+        if _m20 and _node20:
+            try:  # erst prüfen, ob node überhaupt läuft (ein nicht startbares node darf den Selbsttest vor dem Handeln nie scheitern lassen); läuft es, ist ein Fehler im Skript ein ECHTER Fehler der Kopfzeile
+                _pr20 = _node_lauf20("let e = '';\nprocess.stdin.on('data', d => e += d);\nprocess.stdin.on('end', () => process.stdout.write(JSON.parse(e).wort));\n", json.dumps({"wort": "ok ⚠ \"q\""}))
+                _node_ok20 = _pr20.returncode == 0 and _pr20.stdout == 'ok ⚠ "q"'
+            except (OSError, _sp20.SubprocessError, ValueError):
+                _node_ok20 = False
+        if _node_ok20:
+            _js20 = _m20.group(1) + ("\nlet eingabe = '';\nprocess.stdin.on('data', d => eingabe += d);\nprocess.stdin.on('end', () => {\n  const faelle = JSON.parse(eingabe);\n  const aus = {};\n"
+                                    "  for (const [n, g] of Object.entries(faelle)) aus[n] = {kopf: gesundKopfzeile(g), zeichen: g.map(gesundZeichen)};\n  process.stdout.write(JSON.stringify(aus));\n});\n")
+            try:
+                r_ = _node_lauf20(_js20, json.dumps(_faelle20))
+                k20 = json.loads(r_.stdout) if r_.returncode == 0 and r_.stdout else None
+                _js_kaputt20 = None if k20 is not None else (r_.returncode, r_.stderr[-300:])
+            except (OSError, _sp20.SubprocessError, ValueError) as ex_:
+                k20, _js_kaputt20 = None, repr(ex_)
+        if _node_ok20 and k20 is None:
+            pruefe("Kopfzeile der Gesundheits-Karte: node läuft, aber die Funktionen gesundKopfzeile/gesundZeichen laufen nicht (Skriptfehler oder ungültige Ausgabe) — ein ECHTER Fehler, kein Grund zum Überspringen", False, _js_kaputt20)
+        elif k20 is not None:
+            pruefe("Kopfzeile der Gesundheits-Karte: «alles in Ordnung» nur ohne rote Punkte UND ohne Warnung — eine graue Info-Zeile zählt nicht, eine Warnung steht dort (vorher blieb sie grün)",
+                   k20["leer"]["kopf"] == "alles in Ordnung" and k20["grau"]["kopf"] == "alles in Ordnung" and k20["warn1"]["kopf"] == "1 Warnung — bitte unten ansehen"
+                   and k20["warn2"]["kopf"] == "2 Warnungen — bitte unten ansehen" and k20["rot1"]["kopf"] == "1 Punkt braucht Aufmerksamkeit"
+                   and k20["rot2"]["kopf"] == "2 Punkte brauchen Aufmerksamkeit" and k20["rot_warn"]["kopf"] == "1 Punkt braucht Aufmerksamkeit · 1 Warnung", {n_: v_["kopf"] for n_, v_ in k20.items()})
+            pruefe("Zeichen der Gesundheits-Zeilen: ✓ grün, ✗ rot, ⚠ für eine Warnung, ○ für grau ohne Warnung",
+                   k20["zeichen"]["zeichen"] == ['<span class="plus">✓</span>', '<span class="minus">✗</span>', '<span class="warn">⚠</span>', '<span class="null">○</span>'], k20["zeichen"])
+        else:
+            pruefe("Kopfzeile der Gesundheits-Karte: node nicht vorhanden oder nicht ausführbar — nur die Bauform geprüft (der Selbsttest vor dem Handeln darf daran nie scheitern)", bool(_m20), _node20)
         ok_b, out_b = C._befehl(["programm-das-es-nicht-gibt-xyz"], 5)
         pruefe("unbekanntes Programm: Meldung statt Absturz", not ok_b and "nicht gefunden" in out_b)
         heute = datetime(2026, 1, 20, tzinfo=timezone.utc).date()
@@ -441,7 +741,28 @@ with tempfile.TemporaryDirectory() as tmp:
                 Sp.lauf_sperre = alt_warten
         pruefe("Not-Aus bei besetzter Sperre: schliesst trotzdem, meldet aber NICHT «alles zu»", "NICHT ALLES GESCHLOSSEN" in meldung
                and "anderer Lauf" in meldung and meldung.count("✅") == 2, meldung)
+        pruefe("Not-Aus bei besetzter Sperre (17. Prüfung K4): die Meldung nennt auch den Absturz (eine tote Sperre gilt erst nach 150 s als tot) und dass die Nachkontrolle dann schliesst",
+               "abgestürzt" in meldung and "150 s" in meldung and "Nachkontrolle schliesst Pilot 2.0" in meldung, meldung)
         C.STOP.unlink()
+        # (16. Prüfung) eine Sperre ohne Herzschlag (hart beendeter Lauf) hält den Not-Aus nicht auf: nach 150 s gilt der Lauf als tot, der Not-Aus übernimmt und schliesst Pilot 2.0 selbst
+        _lock_t = Path(tmp) / "krypto-lauf.lock"
+        for _alter, _tot in ((200, True), (100, False)):
+            _lock_t.write_text("4242 0\n")
+            __import__("os").utime(_lock_t, (time.time() - _alter, time.time() - _alter))
+            alt_warten = Sp.lauf_sperre
+            Sp.lauf_sperre = lambda name="krypto-lauf", warten=0, **k: alt_warten(name, 0, **k)
+            try:
+                meldung = C.notaus_an(ausfuehren=schliesst)
+            finally:
+                Sp.lauf_sperre = alt_warten
+            if _tot:
+                pruefe("Not-Aus bei toter Sperre (kein Herzschlag seit 200 s): übernimmt, schliesst, kein «anderer Lauf aktiv»",
+                       "anderer Lauf" not in meldung and meldung.count("✅") == 2 and not _lock_t.exists(), (meldung, _lock_t.exists()))
+            else:
+                pruefe("Not-Aus bei noch lebender Sperre (Herzschlag vor 100 s): wartet nicht darauf, meldet «anderer Lauf», nicht «alles zu»",
+                       "anderer Lauf" in meldung and "NICHT ALLES GESCHLOSSEN" in meldung, meldung)
+            _lock_t.unlink(missing_ok=True)
+            C.STOP.unlink(missing_ok=True)
 
         # ── Gesundheit: letzter echter Lauf und täglicher Start (krypto-auto.bat) ──
         heute2 = datetime(2026, 1, 20, tzinfo=timezone.utc).date()
@@ -504,6 +825,33 @@ with tempfile.TemporaryDirectory() as tmp:
             e_r = C.aktion("risiko_1_5")
             pruefe("Risiko-Knopf ohne Variable: gespeichert und richtig gemeldet", e_r["ok"] and "1.5×" in e_r["text"]
                    and json.loads(_K.EINSTELLUNGEN.read_text(encoding="utf-8"))["risiko"] == 1.5, e_r)
+            e_r = C.aktion("risiko_1_75")
+            pruefe("Risiko-Knopf 1,75×: gespeichert, der Pilot liest 1,75, Warnung dabei", e_r["ok"] and "1.75×" in e_r["text"] and "Achtung" in e_r["text"]
+                   and json.loads(_K.EINSTELLUNGEN.read_text(encoding="utf-8"))["risiko"] == 1.75 and _K.risiko({}, _K.EINSTELLUNGEN)["max_hebel"] == 1.75, e_r)
+            # Testzahlen je Stufe: der Max-Profit-Prüfstand (ab 2020/2022 + Wahrscheinlichkeit), sonst der ältere Hebel-Prüfstand (ab 2019)
+            (Path(tmp) / "krypto-maxprofit-pruefung.json").write_text(json.dumps({"kandidaten": {
+                "F-1.75": {"cagr_oos": 0.49, "einbruch_oos": -0.53, "cagr_2022": 0.44, "einbruch_2022": -0.45, "p_einbruch60": 0.036},
+                "F-1": {"cagr_oos": 0.33}}}), encoding="utf-8")  # F-1 unvollständig → zählt nicht
+            (Path(tmp) / "krypto-hebel-pruefung.json").write_text(json.dumps({"varianten": {"B alles × 1.5×": {
+                "2019–heute": {"cagr": 0.5, "einbruch": -0.44}, "2022–heute": {"cagr": 0.35, "einbruch": -0.40}}}}), encoding="utf-8")
+            st_t = C.stufen_test()
+            pruefe("Stufen-Testzahlen: 1,75 aus dem Max-Profit-Prüfstand (2020/2022 + Wahrscheinlichkeit), 1,5 aus dem älteren (2019), "
+                   "unvollständige/fehlende Stufen leer", st_t["1.75"] == {"2020–heute": {"cagr": 0.49, "einbruch": -0.53},
+                   "2022–heute": {"cagr": 0.44, "einbruch": -0.45}, "p60": 0.036}
+                   and st_t["1.5"] == {"2019–heute": {"cagr": 0.5, "einbruch": -0.44}, "2022–heute": {"cagr": 0.35, "einbruch": -0.40}}
+                   and st_t["1"] == {} and st_t["2"] == {}, st_t)
+            pruefe("Cockpit-Stand enthält die Stufe 1,75 samt Testzahlen", C.stand(env={})["risiko"]["test"]["1.75"]["p60"] == 0.036)
+            _html = (Path(C.__file__).parent / "cockpit.html").read_text(encoding="utf-8")
+            pruefe("Oberfläche: Knopf für 1,75× (als Schaltfläche, nicht nur im Stil) und die Zuordnung zur Aktion risiko_1_75",
+                   '<button type="button" data-s="1.75" aria-pressed="false">1,75× viel Risiko<small id="st-1.75"></small></button>' in _html
+                   and '"1.75": "risiko_1_75"' in _html)
+            pruefe("Kontoanteil: Standard 0,5, KI_BOT_ANTEIL=0.3 → 0,3 (die Testzahlen gelten fürs ganze Konto)",
+                   C.konto_anteil({}) == 0.5 and C.konto_anteil({"KI_BOT_ANTEIL": "0.3"}) == 0.3 and C.stand(env={})["risiko"]["anteil"] == 0.5
+                   and C.stand(env={"KI_BOT_ANTEIL": "1"})["risiko"]["anteil"] == 1.0)
+            pruefe("Oberfläche: die Rückfrage nennt den Kontoanteil und dass die Zahlen fürs GANZE Konto gelten",
+                   "% des Kontos ein (KI_BOT_ANTEIL)" in _html and "gelten für das GANZE Konto" in _html)
+            pruefe("Oberfläche: die Rückfrage vor jeder höheren Stufe warnt vor dem Verlust und nennt die Wahrscheinlichkeit eines Jahres unter −60 %",
+                   "nur Geld einsetzen, dessen Verlust du verkraftest" in _html and "tiefer als −60 %" in _html)
         finally:
             _K.EINSTELLUNGEN, C.umgebung = alt_einst, alt_umg2
         # ── ETH-Sammler-Karte: «unklar» nicht im Ø-Preis ──
@@ -614,6 +962,10 @@ with tempfile.TemporaryDirectory() as tmp:
 auto = (HIER / "krypto-auto.bat").read_bytes()
 txt = auto.decode("ascii")
 pruefe("krypto-auto.bat: Windows-Zeilenenden (sonst springt «goto» falsch)", auto.count(b"\n") == auto.count(b"\r\n") > 10)
+_notaus_zweig = auto[auto.index(b"if defined NOTAUS ("):auto.index(b"goto bilanz")]
+pruefe("krypto-auto.bat: der Not-Aus-Zweig ruft nach dem Not-Aus-Lauf auch die Pilot-2.0-Nachkontrolle (wie stop.bat)",
+       b"pilot.py --lauf" in _notaus_zweig and b"--nachkontrolle" in _notaus_zweig
+       and _notaus_zweig.index(b"--lauf") < _notaus_zweig.index(b"--nachkontrolle"))
 pruefe("krypto-auto.bat: UTF-8 erzwungen (Emoji-Absturz beim Umleiten)", "set PYTHONUTF8=1" in txt and "set PYTHONIOENCODING=utf-8" in txt)
 pruefe("krypto-auto.bat: Not-Aus wird VOR der Pause geprüft", txt.index('ki_bot\\STOP"') < txt.index('ki_bot\\PAUSE"'))
 pruefe("krypto-auto.bat: Ausgabe nicht mehr nach nul, Fehler gemeldet", ".py >nul" not in txt and "meldung.py --fehler" in txt and "--push" in txt

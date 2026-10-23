@@ -1,0 +1,42 @@
+[
+  {
+    "name": "send.luxestyle.ch",
+    "queryType": "CNAME",
+    "dnsStatus": 3,
+    "answers": []
+  },
+  {
+    "name": "mtd1._domainkey.luxestyle.ch",
+    "queryType": "CNAME",
+    "dnsStatus": 3,
+    "answers": []
+  },
+  {
+    "name": "mtd2._domainkey.luxestyle.ch",
+    "queryType": "CNAME",
+    "dnsStatus": 3,
+    "answers": []
+  },
+  {
+    "name": "luxestyle.ch",
+    "queryType": "TXT",
+    "dnsStatus": 0,
+    "answers": [
+      {
+        "name": "luxestyle.ch.",
+        "type": 16,
+        "data": "tiktok-developers-site-verification=tpfDEE0emwAaM7BtXF5Qb9tzANuBCnah"
+      },
+      {
+        "name": "luxestyle.ch.",
+        "type": 16,
+        "data": "zoho-verification=zb02252844.zmverify.zoho.eu"
+      },
+      {
+        "name": "luxestyle.ch.",
+        "type": 16,
+        "data": "v=spf1 include:zohomail.eu ~all"
+      }
+    ]
+  }
+]

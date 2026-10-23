@@ -21,6 +21,7 @@ import argparse
 import json
 import queue
 import os
+import re
 import subprocess
 import sys
 import threading
@@ -114,12 +115,15 @@ def notaus_an(schliessen=True, ausfuehren=None):
     import sperre
     vorab, alles_zu = [], True
     try:
-        gesperrt = sperre.lauf_sperre(warten=60)
+        gesperrt = sperre.lauf_sperre(warten=60, alt_nach=sperre.ALT_NACH_TOT)  # (16. Prüfung) eine tote Sperre (kein Herzschlag seit 150 s) hält den Not-Aus nicht auf
         gesperrt.__enter__()
     except sperre.Besetzt:
         gesperrt = None
         alles_zu = False  # ein anderer Lauf könnte gleichzeitig noch etwas aufgebaut haben → nicht «alles zu» melden
-        vorab.append("⚠️ Ein anderer Lauf war noch aktiv — Not-Aus trotzdem ausgeführt. In 5 Minuten nochmals «Not-Aus» drücken.")
+        # (17. Prüfung K4) die Sperre kann auch ein ABGESTÜRZTER Lauf hinterlassen haben: sie gilt erst nach ALT_NACH_TOT (150 s) ohne Herzschlag als tot — länger als die 60 s Wartezeit hier. Die Nachkontrolle unten
+        # (Not-Aus-Modus) wartet darauf und schliesst Pilot 2.0 dann selbst; die Meldung sagt es.
+        vorab.append("⚠️ Ein anderer Lauf hält die Sperre (oder ist abgestürzt: eine tote Sperre gilt erst nach 150 s als tot) — Not-Aus trotzdem ausgeführt; die Nachkontrolle schliesst Pilot 2.0, sobald die Sperre frei "
+                     "oder tot ist. In 5 Minuten nochmals «Not-Aus» drücken.")
     try:
         env = umgebung()  # aktuelle Schalter + Schlüssel (auch PILOT2_*) aus der Einstellungsdatei, nicht die beim Start
         if ausfuehren is None:
@@ -185,6 +189,7 @@ AKTIONEN = {
     "auto_an": ([], 10, "Auto-Handel an"),
     "risiko_1": ([], 10, "Risiko-Stufe 1× (Standard)"),
     "risiko_1_5": ([], 10, "Risiko-Stufe 1,5×"),
+    "risiko_1_75": ([], 10, "Risiko-Stufe 1,75×"),
     "risiko_2": ([], 10, "Risiko-Stufe 2×"),
     "auto_aus": ([], 10, "Auto-Handel aus"),
 }
@@ -206,6 +211,7 @@ def _skript(args, zeit):
 
 
 AUFGABE = "Krypto-Pilot"
+AUFGABE_NK = "Krypto-Pilot-Nachkontrolle"  # (17. Prüfung W4) zweite Aufgabe: alle 10 Minuten und bei der Anmeldung die Nachkontrolle von Pilot 2.0
 
 
 def _befehl(cmd, zeit):
@@ -257,29 +263,104 @@ def aufgabe_xml():
 """
 
 
+NK_LEBT = "krypto-nachkontrolle-lebt.txt"      # Lebenszeichen: krypto-auto.bat «nachkontrolle» schreibt es bei JEDEM Start (data/) — fehlt es zu lange, läuft der unsichtbare Starter nicht (Windows Script Host gesperrt, Virenscanner, Pfad)
+NK_RC = "krypto-nachkontrolle-rc.txt"          # (18. Prüfung K5) die Bat schreibt hier NACH der Nachkontrolle «<Zeit> rc=N»: 0 = in Ordnung, 3 = Warnung (schon gemeldet), alles andere = Absturz von pilot.py
+NK_LEBT_MAX_MIN = 30                           # drei verpasste Takte der Aufgabe (alle 10 Minuten) — dann steht die Ampel auf Rot
+NK_ENDE_MAX_MIN = 15                           # (19. Prüfung K5) so lange darf ein Durchgang höchstens laufen, bevor «nie zu Ende gegangen» gilt (normal: Sekunden bis wenige Minuten; die Aufgabe startet alle 10 Minuten)
+NK_DURCHGANG_MAX_MIN = 5                       # (20. Prüfung, klein 1) so lange darf ein einzelner Durchgang höchstens laufen (Wiederholungs-Budget 60 s + Anfragen); ist der Rückgabewert dann noch älter als NK_LEBT_MAX_MIN, gingen die letzten Durchgänge nie zu Ende
+NK_SERIE = "krypto-nachkontrolle-serie.json"   # (20. Prüfung) `pilot.py --nachkontrolle --einmal` führt hier Buch über die Reihe gleichartiger Durchgänge: {art: ok|warnung|besetzt, anzahl, seit, zeit}
+NK_WARN_ROT = 2                                # so viele Durchgänge IN FOLGE mit Warnung (Rückgabewert 3) sind eine Dauerwarnung → rot; ein einzelner bleibt grau (⚠) mit Text
+NK_BESETZT_ROT = 4                             # so viele Durchgänge in Folge «Lauf-Sperre besetzt» (Rückgabewert 0) → rot: der Tageslauf braucht Minuten, die lange Nachkontrolle höchstens 11,5 — mehr als 2 in Folge sind kein Zufall, der Halter steht (z. B. angeklicktes Konsolenfenster)
+NK_SERIE_VORSPRUNG_MIN = 2                     # (Code-Review der R20) liegt der letzte Eintrag der Reihe mehr als so viele Minuten VOR dem Rückgabewert der Bat, hat die Bat danach einen Durchgang beendet, der `pilot.py` gar nicht aufrief (`:nk_ohne_buch`, kein Buch → rc=0): die Reihe ist überholt und zählt nicht
+NK_STARTER = "krypto-nachkontrolle-still.vbs"  # startet krypto-auto.bat «nachkontrolle» ohne sichtbares Fenster (alle 10 Minuten ein Konsolenfenster würde stören — und dazu verleiten, die Aufgabe abzuschalten)
+
+
+def aufgabe_befehl_nk():
+    """Einfacher Rückfall der Nachkontroll-Aufgabe: alle 10 Minuten der unsichtbare Starter (wscript → krypto-auto.bat «nachkontrolle»)."""
+    return ["schtasks", "/create", "/sc", "minute", "/mo", "10", "/tn", AUFGABE_NK, "/tr", f'wscript.exe //B //Nologo "{HIER / NK_STARTER}"', "/f"]
+
+
+def _anmelde_benutzer():
+    """«RECHNER\\Benutzer» der laufenden Anmeldung (Windows: USERDOMAIN\\USERNAME), sonst None. Ein Anmelde-Auslöser OHNE Benutzer gilt für JEDEN Benutzer und lässt sich nur mit Administratorrechten anlegen
+    (schtasks: «Zugriff verweigert») — mit dem eigenen Benutzer geht er ohne."""
+    d_, u_ = os.environ.get("USERDOMAIN"), os.environ.get("USERNAME")
+    return f"{d_}\\{u_}" if d_ and u_ else None
+
+
+def aufgabe_xml_nk(benutzer=None):
+    """(17. Prüfung W4) Die Nachkontrolle von Pilot 2.0 hatte keinen eigenen Takt: sie lief nur hinter dem Tageslauf (krypto-auto.bat) und nach «Jetzt handeln». Starb die Bat mit dem Prozess (Fenster zu, Neustart),
+    blieb ein unvermerkter oder unfertiger Markt bis zum nächsten Tageslauf (02:30) ohne Stop. Diese Aufgabe startet krypto-auto.bat «nachkontrolle» (über den unsichtbaren Starter krypto-nachkontrolle-still.vbs) alle 10 Minuten UND bei jeder
+    Anmeldung — ohne Vermerk im Buch ist sie nach einer Sekunde fertig. Auch auf Akku, nie zwei Instanzen zugleich."""
+    from xml.sax.saxutils import escape
+    vbs = escape(str(HIER / NK_STARTER))
+    benutzer = _anmelde_benutzer() if benutzer is None else benutzer
+    # Anmelde-Auslöser nur MIT Benutzer (sonst Administratorrechte nötig → die ganze XML-Variante scheiterte und es bliebe die einfache ohne Anmeldung); ohne Benutzer fehlt er — StartWhenAvailable holt den Takt nach dem Einschalten nach
+    logon = f"\n    <LogonTrigger><Enabled>true</Enabled><UserId>{escape(benutzer)}</UserId></LogonTrigger>" if benutzer else ""
+    return f"""<?xml version="1.0" encoding="UTF-16"?>
+<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
+  <RegistrationInfo><Description>Krypto-Pilot: Nachkontrolle von Pilot 2.0 (alle 10 Minuten und, wenn der Benutzer bekannt ist, bei der Anmeldung; ohne sichtbares Fenster; ohne Vermerk sofort fertig)</Description></RegistrationInfo>
+  <Triggers>
+    <TimeTrigger>
+      <Repetition><Interval>PT10M</Interval></Repetition>
+      <StartBoundary>2026-01-01T00:03:00</StartBoundary>
+      <Enabled>true</Enabled>
+    </TimeTrigger>{logon}
+  </Triggers>
+  <Principals><Principal id="Author"><LogonType>InteractiveToken</LogonType><RunLevel>LeastPrivilege</RunLevel></Principal></Principals>
+  <Settings>
+    <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>
+    <DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries>
+    <StopIfGoingOnBatteries>false</StopIfGoingOnBatteries>
+    <StartWhenAvailable>true</StartWhenAvailable>
+    <RunOnlyIfNetworkAvailable>false</RunOnlyIfNetworkAvailable>
+    <ExecutionTimeLimit>PT30M</ExecutionTimeLimit>
+    <Enabled>true</Enabled>
+  </Settings>
+  <Actions Context="Author">
+    <Exec><Command>wscript.exe</Command><Arguments>//B //Nologo "{vbs}"</Arguments></Exec>
+  </Actions>
+</Task>
+"""
+
+
+def _aufgabe_nk_einrichten(befehl, td):
+    """Die Nachkontroll-Aufgabe: erst XML, sonst die einfache Variante. → (ok, Text). Scheitert sie, geht die tägliche trotzdem."""
+    datei = Path(td) / "krypto-pilot-nachkontrolle.xml"
+    datei.write_text(aufgabe_xml_nk(), encoding="utf-16")
+    ok, text = befehl(["schtasks", "/create", "/tn", AUFGABE_NK, "/xml", str(datei), "/f"], 60)
+    if ok:
+        return True, "Nachkontrolle: alle 10 Minuten und bei der Anmeldung (Aufgabe «" + AUFGABE_NK + "»)."
+    ok2, text2 = befehl(aufgabe_befehl_nk(), 60)
+    if ok2:
+        return True, ("Nachkontrolle: alle 10 Minuten (einfache Variante, Aufgabe «" + AUFGABE_NK + "») — OHNE die Einstellungen «auch auf Akku» und «verpassten Lauf nachholen»: "
+                      "auf einem Laptop im Akkubetrieb läuft sie dann nicht, und nach dem Einschalten wartet sie auf den nächsten Takt.")
+    return False, "⚠️ Die Nachkontroll-Aufgabe ließ sich nicht einrichten (" + (text2 or text or "?").strip()[:120] + ") — ohne sie läuft die Nachkontrolle nur hinter dem Tageslauf."
+
+
 def aufgabe_einrichten(befehl=None, ordner=None):
-    """Erst die XML-Variante (Akku + nachholen); geht die nicht, die einfache. → (ok, Text)."""
+    """Erst die XML-Variante (Akku + nachholen); geht die nicht, die einfache. Dazu (zuerst, best effort) die Nachkontroll-Aufgabe. → (ok, Text)."""
     befehl = befehl or _befehl
     import tempfile
     with tempfile.TemporaryDirectory(dir=ordner) as td:
+        nk_ok, nk_text = _aufgabe_nk_einrichten(befehl, td)  # zuerst: der letzte Befehl bleibt der der täglichen Aufgabe
         datei = Path(td) / "krypto-pilot-aufgabe.xml"
         datei.write_text(aufgabe_xml(), encoding="utf-16")
         ok, text = befehl(["schtasks", "/create", "/tn", AUFGABE, "/xml", str(datei), "/f"], 60)
     if ok:
         return True, ("✅ Eingerichtet: täglich 02:30 startet krypto-auto.bat (Aufgabe «" + AUFGABE + "»), auch auf Akku. "
-                      "War der PC aus oder im Ruhezustand, läuft er beim nächsten Start nach.\n" + text)
+                      "War der PC aus oder im Ruhezustand, läuft er beim nächsten Start nach.\n" + nk_text + "\n" + text)
     ok2, text2 = befehl(aufgabe_befehl(), 60)
     if ok2:
         return True, ("✅ Eingerichtet (einfache Variante): täglich 02:30 startet krypto-auto.bat. Achtung: Windows startet sie dann "
-                      "nicht auf Akku und holt verpasste Läufe nicht nach.\n" + text2)
-    return False, "❌ Einrichten fehlgeschlagen:\n" + text + "\n" + text2
+                      "nicht auf Akku und holt verpasste Läufe nicht nach.\n" + nk_text + "\n" + text2)
+    return False, "❌ Einrichten fehlgeschlagen:\n" + text + "\n" + text2 + "\n" + nk_text
 
 
-def aufgabe_da(befehl=None):
-    """True/False auf Windows, None anderswo."""
+def aufgabe_da(befehl=None, name=None):
+    """True/False auf Windows, None anderswo. name: die Aufgabe (Standard: die tägliche; AUFGABE_NK = die Nachkontrolle)."""
     if os.name != "nt" and befehl is None:
         return None
-    ok, _ = (befehl or _befehl)(["schtasks", "/query", "/tn", AUFGABE], 20)
+    ok, _ = (befehl or _befehl)(["schtasks", "/query", "/tn", name or AUFGABE], 20)
     return ok
 
 
@@ -300,7 +381,7 @@ def aktion(name, starter=None, befehl=None):
             ok, text = True, pause_an()
         elif name.startswith("risiko_"):
             import pilot_kern as K
-            stufe = {"risiko_1": 1.0, "risiko_1_5": 1.5, "risiko_2": 2.0}[name]
+            stufe = {"risiko_1": 1.0, "risiko_1_5": 1.5, "risiko_1_75": 1.75, "risiko_2": 2.0}[name]
             gesetzt = umgebung().get("KRYPTO_RISIKO")
             if gesetzt:  # zuerst prüfen: sonst läge eine nie bestätigte Stufe gespeichert und wirkte später still
                 ok, text = False, (f"KRYPTO_RISIKO={gesetzt} ist als Umgebungsvariable gesetzt und hat Vorrang — NICHTS geändert. "
@@ -347,6 +428,11 @@ def aktion(name, starter=None, befehl=None):
                 SG.push(t + "\nKeine Anlageberatung.")
         else:
             ok, text = starter(args, zeit)
+            if name == "handeln":  # (16. Prüfung) wie krypto-auto.bat: danach die Nachkontrolle von Pilot 2.0 (klärt Unklares, holt fehlende Stops nach, auch nach einem Zeitlimit-Abbruch)
+                try:
+                    nachkontrolle_starten()
+                except Exception:  # noqa: BLE001 — nicht startbar: der nächste Lauf prüft ohnehin
+                    pass
             if name == "backtest":
                 _BACKTEST.clear()  # neue Kursdateien: Diagramm beim nächsten Abruf neu rechnen (nicht erst nach Neustart)
     finally:
@@ -409,6 +495,37 @@ def backtest_kurven():
     return _BACKTEST["k"]
 
 
+def konto_anteil(env):
+    """Welcher Teil des Kontos der Pilot einsetzt (KI_BOT_ANTEIL, Standard 0,5). Die Testzahlen je Stufe gelten für das GANZE Konto —
+    bei 50 % wirken Rendite und Einbruch aufs Gesamtkonto etwa halb so stark. None, wenn nicht lesbar."""
+    try:
+        import broker_futures as BF
+        return BF.einstellungen(env)["anteil"]
+    except Exception:  # noqa: BLE001
+        return None
+
+
+def stufen_test():
+    """Testzahlen je Risiko-Stufe für Anzeige und Rückfrage. Quelle: der Max-Profit-Prüfstand (ab 2020 und ab 2022, dazu die
+    Wahrscheinlichkeit eines Jahres mit Einbruch unter −60 %); fehlt eine Stufe dort, der ältere Hebel-Prüfstand (ab 2019)."""
+    mp = _json("krypto-maxprofit-pruefung.json", {}).get("kandidaten", {})
+    hb = _json("krypto-hebel-pruefung.json", {}).get("varianten", {})
+    out = {}
+    for st, kand, alt in ((1.0, "F-1", "B alles × 1×"), (1.5, "F-1.5", "B alles × 1.5×"), (1.75, "F-1.75", None), (2.0, "F-2", "B alles × 2×")):
+        k = mp.get(kand)
+        if k and all(x in k for x in ("cagr_oos", "einbruch_oos", "cagr_2022", "einbruch_2022")):
+            out[f"{st:g}"] = {"2020–heute": {"cagr": k["cagr_oos"], "einbruch": k["einbruch_oos"]},
+                              "2022–heute": {"cagr": k["cagr_2022"], "einbruch": k["einbruch_2022"]}}
+            if k.get("p_einbruch60") is not None:
+                out[f"{st:g}"]["p60"] = k["p_einbruch60"]
+        elif alt:
+            v = hb.get(alt, {})
+            out[f"{st:g}"] = {f: {"cagr": v[f]["cagr"], "einbruch": v[f]["einbruch"]} for f in ("2019–heute", "2022–heute") if f in v}
+        else:
+            out[f"{st:g}"] = {}
+    return out
+
+
 def stand(env=None):
     env = umgebung() if env is None else env
     import ki_trader as KT
@@ -455,12 +572,7 @@ def stand(env=None):
         except Exception:  # noqa: BLE001
             vgl = {}
     import pilot_kern as K
-    hb = _json("krypto-hebel-pruefung.json", {}).get("varianten", {})
-    stufen = {}
-    for st, name in ((1.0, "B alles × 1×"), (1.5, "B alles × 1.5×"), (2.0, "B alles × 2×")):
-        v = hb.get(name, {})
-        stufen[f"{st:g}"] = {f: {"cagr": v[f]["cagr"], "einbruch": v[f]["einbruch"]} for f in ("2019–heute", "2022–heute") if f in v}
-    risiko = {"stufe": K.risiko()["stufe"], "test": stufen}
+    risiko = {"stufe": K.risiko()["stufe"], "test": stufen_test(), "anteil": konto_anteil(env)}
     sam = _json("eth-sammler.json", {})
     echt_futures = (env.get("BINANCE_FUTURES_TESTNET") or "true").strip().lower() == "false" and env.get("KI_BOT_ECHTGELD", "") == "JA, MIT ECHTEM GELD"
     echt_spot = (env.get("BINANCE_TESTNET") or "true").strip().lower() == "false" and env.get("KI_BOT_ECHTGELD", "") == "JA, MIT ECHTEM GELD"
@@ -502,13 +614,25 @@ def calls_stand():
 _AUFGABE_CACHE = {"zeit": 0.0, "wert": None}
 
 
+def nk_serie(jetzt=None):
+    """(20. Prüfung) Die Reihe gleichartiger Durchgänge der Nachkontrolle (data/krypto-nachkontrolle-serie.json, von `pilot.py --nachkontrolle --einmal` geführt) → {art, anzahl, seit, zeit}
+    oder None, wenn die Datei fehlt, kaputt oder älter als NK_LEBT_MAX_MIN ist (dann sagt sie nichts über die Gegenwart)."""
+    jetzt = time.time() if jetzt is None else jetzt
+    try:
+        d = json.loads((DATA / NK_SERIE).read_text())
+        serie = {"art": str(d["art"]), "anzahl": int(d["anzahl"]), "seit": float(d["seit"]), "zeit": float(d["zeit"])}
+    except Exception:  # noqa: BLE001 — fehlt/kaputt: keine Reihe
+        return None
+    return serie if 0 <= jetzt - serie["zeit"] <= NK_LEBT_MAX_MIN * 60 else None
+
+
 def gesundheit(env, lb, ki, heute=None):
-    """Ampel-Liste: was läuft, was fehlt. Jeder Punkt: {name, ok (True/False/None = Info), text}."""
+    """Ampel-Liste: was läuft, was fehlt. Jeder Punkt: {name, ok (True/False/None = Info), text}; ein grauer Punkt mit warnung=True ist eine WARNUNG (zählt in der Kopfzeile mit)."""
     heute = heute or datetime.now(timezone.utc).date()
     punkte = []
 
-    def p(name, ok, text):
-        punkte.append({"name": name, "ok": ok, "text": text})
+    def p(name, ok, text, warnung=False):
+        punkte.append({"name": name, "ok": ok, "text": text, **({"warnung": True} if warnung else {})})
 
     p("Futures-Schlüssel (Pilot)", bool(env.get("BINANCE_FUTURES_API_KEY") and env.get("BINANCE_FUTURES_API_SECRET")),
       "gesetzt" if env.get("BINANCE_FUTURES_API_KEY") else "fehlt — ohne Schlüssel nur Probeläufe")
@@ -561,9 +685,68 @@ def gesundheit(env, lb, ki, heute=None):
     p("Auto-Handel", not PAUSE.exists(), "an" if not PAUSE.exists() else "aus (Pause) — es wird nicht gehandelt, Positionen bleiben")
     if os.name == "nt":
         if time.time() - _AUFGABE_CACHE["zeit"] > 300:
-            _AUFGABE_CACHE.update({"zeit": time.time(), "wert": aufgabe_da()})
+            _AUFGABE_CACHE.update({"zeit": time.time(), "wert": aufgabe_da(), "wert_nk": aufgabe_da(name=AUFGABE_NK)})
         da = _AUFGABE_CACHE["wert"]
         p("Täglicher Start (Aufgabenplanung)", da, "eingerichtet (02:30)" if da else "fehlt — Knopf «Täglich automatisch einrichten»")
+        da_nk = _AUFGABE_CACHE.get("wert_nk")  # (17. Prüfung W4) ohne sie läuft die Nachkontrolle nur hinter dem Tageslauf — stirbt der mit dem Prozess, bleibt ein Markt bis morgen ohne Stop
+        # Der Starter läuft UNSICHTBAR (kein Konsolenfenster alle 10 Minuten) — ein stiller Ausfall (Windows Script Host gesperrt, Virenscanner, falscher Pfad) wäre sonst nicht zu sehen: das Lebenszeichen zeigt es
+        try:
+            minuten_nk = (time.time() - (DATA / NK_LEBT).stat().st_mtime) / 60
+        except OSError:
+            minuten_nk = None
+        if not da_nk:
+            p("Nachkontrolle (Aufgabenplanung)", da_nk, "fehlt — Knopf «Täglich automatisch einrichten» legt sie mit an")
+        elif minuten_nk is None:
+            p("Nachkontrolle (Aufgabenplanung)", None, "eingerichtet (alle 10 Minuten), noch kein Lauf gesehen — bis zu 10 Minuten warten, dann sollte hier ein Lebenszeichen stehen")
+        elif minuten_nk > NK_LEBT_MAX_MIN:
+            p("Nachkontrolle (Aufgabenplanung)", False, f"eingerichtet, aber seit {minuten_nk:.0f} Min. kein Lauf — läuft der unsichtbare Starter ({NK_STARTER}) nicht? "
+              "Aufgabenplanung → «Krypto-Pilot-Nachkontrolle» → Verlauf ansehen, Windows Script Host und Virenscanner prüfen")
+        else:
+            rc_nk, rc_alter = None, None  # (18. Prüfung K5) das Lebenszeichen schreibt die Bat VOR Python — ein abstürzendes `pilot.py --nachkontrolle` liess die Ampel grün; der Rückgabewert steht NACH dem Lauf in NK_RC
+            try:
+                rc_datei = DATA / NK_RC
+                rc_alter = (time.time() - rc_datei.stat().st_mtime) / 60
+                if rc_alter <= NK_LEBT_MAX_MIN:
+                    m_rc = re.search(r"rc=(-?\d+)\s*$", rc_datei.read_text(errors="replace").strip())  # (19. Prüfung) auch negative Rückgabewerte (NTSTATUS bei Kill/Absturz) sind ein Absturz
+                    rc_nk = int(m_rc.group(1)) if m_rc else None
+            except OSError:
+                rc_nk = None
+            serie = nk_serie()  # (20. Prüfung) die Reihe der letzten Durchgänge: seit wann steht eine Warnung, wie lange war die Sperre besetzt
+            if serie is not None and rc_alter is not None and (time.time() - serie["zeit"]) / 60 - rc_alter > NK_SERIE_VORSPRUNG_MIN:
+                serie = None  # überholt: die Bat hat nach dem letzten Eintrag einen Durchgang ohne pilot.py beendet (kein Buch) — ein alter Stand «besetzt ×4» bliebe sonst bis zu 30 Minuten rot
+            if minuten_nk > NK_ENDE_MAX_MIN and (rc_alter is None or rc_alter > minuten_nk):
+                # (19. Prüfung K5) jeder Start schreibt NACH seinem Ende einen neuen Rückgabewert (auch «ohne Buch»): ist der letzte Start älter als NK_ENDE_MAX_MIN und der Rückgabewert älter als er, ging der Durchgang nie zu Ende
+                # (hängt, oder das Zeitlimit der Aufgabe beendet ihn jedes Mal) — das Lebenszeichen allein zeigte «läuft»
+                p("Nachkontrolle (Aufgabenplanung)", False, f"gestartet vor {minuten_nk:.0f} Min., aber der Durchgang ist nie zu Ende gegangen (kein neuer Rückgabewert) — hängt er oder beendet ihn das Zeitlimit der Aufgabe? "
+                  "Aufgabenplanung → «Krypto-Pilot-Nachkontrolle» → Verlauf und data\\krypto-nachkontrolle.log ansehen")
+            elif (rc_alter is None or rc_alter > NK_LEBT_MAX_MIN) and minuten_nk > NK_DURCHGANG_MAX_MIN:
+                # (20. Prüfung, klein 1) das Lebenszeichen ist frisch, der Rückgabewert aber älter als drei Takte (oder gar nicht da): die Durchgänge gehen seit einer halben Stunde nicht mehr zu Ende — vorher stand die Ampel in den ersten
+                # 15 Minuten nach jedem Start grün (rund 43 % der Zeit), wenn das Zeitlimit der Aufgabe jeden Durchgang abbrach, und blieb es ganz, wenn die Rückgabewert-Datei nie erneuert wurde (Code-Review: auch wenn sie fehlte)
+                rc_wort = "es gibt noch gar keinen Rückgabewert" if rc_alter is None else f"der letzte Rückgabewert ist {rc_alter:.0f} Min. alt"
+                p("Nachkontrolle (Aufgabenplanung)", False, f"gestartet vor {minuten_nk:.0f} Min., aber {rc_wort} — die Durchgänge gehen nicht zu Ende (hängt es, oder beendet das Zeitlimit der Aufgabe jeden?) "
+                  "Aufgabenplanung → «Krypto-Pilot-Nachkontrolle» → Verlauf und data\\krypto-nachkontrolle.log ansehen")
+            elif rc_nk not in (None, 0, 3):
+                p("Nachkontrolle (Aufgabenplanung)", False, f"läuft (zuletzt vor {minuten_nk:.0f} Min.), aber `pilot.py --nachkontrolle` endete mit Rückgabewert {rc_nk} — Absturz? data\\krypto-nachkontrolle.log ansehen")
+            elif rc_nk == 3:
+                # (19. Prüfung) eine Dauerwarnung («Markt weiterhin nicht vollständig gesichert») ist nicht «grün» — grau mit Text, der Push kommt höchstens einmal je Stunde
+                # (20. Prüfung, wichtig 1) … und sie steht in der Kopfzeile (warnung=True); hält sie über NK_WARN_ROT Durchgänge in Folge an, ist sie rot — ein Markt, den zwei Durchgänge nacheinander nicht sichern konnten, braucht einen Menschen
+                n_warn = serie["anzahl"] if serie and serie["art"] == "warnung" else 1
+                if n_warn >= NK_WARN_ROT:
+                    seit_min = max(0.0, (time.time() - serie["seit"]) / 60)
+                    p("Nachkontrolle (Aufgabenplanung)", False, f"läuft (zuletzt vor {minuten_nk:.0f} Min.), aber die WARNUNG (Rückgabewert 3: ein Markt nicht vollständig gesichert oder ein Auftrag noch unklar) steht seit {n_warn} Durchgängen "
+                      f"in Folge (rund {seit_min:.0f} Min.) — bitte im Binance-Konto prüfen; Handy-Nachricht und data\\krypto-nachkontrolle.log ansehen")
+                else:
+                    p("Nachkontrolle (Aufgabenplanung)", None, f"läuft (zuletzt vor {minuten_nk:.0f} Min.), der letzte Durchgang meldete eine WARNUNG (Rückgabewert 3: ein Markt nicht vollständig gesichert oder ein Auftrag noch unklar) — Handy-Nachricht und data\\krypto-nachkontrolle.log ansehen",
+                      warnung=True)
+            elif serie and serie["art"] == "besetzt" and serie["anzahl"] >= NK_BESETZT_ROT:
+                # (20. Prüfung, klein 8) ein überspringender Durchgang (die Sperre hält ein anderer Lauf) endet mit Rückgabewert 0 — hielte den Hauptfaden des Halters etwas an (angeklicktes Konsolenfenster), lebt sein Herzschlag weiter und
+                # niemand prüft mehr
+                seit_min = max(0.0, (time.time() - serie["seit"]) / 60)
+                p("Nachkontrolle (Aufgabenplanung)", False, f"die letzten {serie['anzahl']} Durchgänge (rund {seit_min:.0f} Min.) wurden übersprungen: die Lauf-Sperre hält ein anderer Lauf — hängt der Tageslauf oder die lange Nachkontrolle "
+                  "(ein angeklicktes Konsolenfenster hält ein Programm an)? Fenster ansehen, Taste drücken oder schliessen; data\\krypto-nachkontrolle.log ansehen")
+            else:
+                p("Nachkontrolle (Aufgabenplanung)", True, f"eingerichtet (alle 10 Minuten), zuletzt vor {minuten_nk:.0f} Min."
+                  + (f" — der letzte Durchgang wurde übersprungen (Lauf-Sperre belegt, {serie['anzahl']}×)" if serie and serie["art"] == "besetzt" else ""))
     mvrv = HIER.parent / "daten" / "info_mvrv_btc.json"
     if mvrv.exists():
         stunden = (time.time() - mvrv.stat().st_mtime) / 3600

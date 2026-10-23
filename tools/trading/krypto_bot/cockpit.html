@@ -11,7 +11,7 @@
   --bg:#f4f4f2; --panel:#fcfcfb; --line:#e3e2de; --grid:#ebeae6;
   --ink:#0b0b0b; --ink-2:#52514e; --ink-3:#7a7974;
   --s-claude:#2a78d6; --s-pilot:#eb6834; --s-halten:#1baf7a;
-  --good:#0ca30c; --critical:#d03b3b; --warning:#fab219;
+  --good:#0ca30c; --critical:#d03b3b; --warning:#fab219; --warn-text:#9a6700;
   --r-s:8px; --r-c:14px;
 }
 @media (prefers-color-scheme:dark){
@@ -19,14 +19,14 @@
     color-scheme:dark;
     --bg:#111110; --panel:#1a1a19; --line:#2c2c2a; --grid:#262624;
     --ink:#ffffff; --ink-2:#c3c2b7; --ink-3:#8d8c84;
-    --s-claude:#3987e5; --s-pilot:#d95926; --s-halten:#199e70;
+    --s-claude:#3987e5; --s-pilot:#d95926; --s-halten:#199e70; --warn-text:#fab219;
   }
 }
 :root[data-theme="dark"]{
   color-scheme:dark;
   --bg:#111110; --panel:#1a1a19; --line:#2c2c2a; --grid:#262624;
   --ink:#ffffff; --ink-2:#c3c2b7; --ink-3:#8d8c84;
-  --s-claude:#3987e5; --s-pilot:#d95926; --s-halten:#199e70;
+  --s-claude:#3987e5; --s-pilot:#d95926; --s-halten:#199e70; --warn-text:#fab219;
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
@@ -93,7 +93,7 @@ footer{color:var(--ink-3);font-size:12px;margin:16px 0}
 .knoepfe button:disabled{opacity:.55;cursor:progress}
 .profit .gross{font-size:40px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1.1}
 .profit .gross small{font-size:18px;font-weight:700}
-.plus{color:var(--good)}.minus{color:var(--critical)}.null{color:var(--ink-2)}
+.plus{color:var(--good)}.minus{color:var(--critical)}.null{color:var(--ink-2)}.warn{color:var(--warn-text)}  /* dunkles Bernstein im hellen Thema (Kontrast ≥ 4,5:1), das helle Gelb nur im dunklen */
 .perioden{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:12px 0}
 @media (max-width:860px){.perioden{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .perioden div{border:1px solid var(--line);border-radius:var(--r-s);padding:8px 10px}
@@ -107,7 +107,7 @@ footer{color:var(--ink-3);font-size:12px;margin:16px 0}
 .stufen button small{color:var(--ink-3);font-size:11.5px}
 .stufen button[aria-pressed="true"]{background:var(--grid);font-weight:800}
 .stufen button[data-s="2"][aria-pressed="true"]{box-shadow:inset 0 -3px 0 var(--critical)}
-.stufen button[data-s="1.5"][aria-pressed="true"]{box-shadow:inset 0 -3px 0 var(--warning)}
+.stufen button[data-s="1.5"][aria-pressed="true"],.stufen button[data-s="1.75"][aria-pressed="true"]{box-shadow:inset 0 -3px 0 var(--warning)}
 .konsole{margin-top:12px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-s);max-height:300px;overflow:auto;
   font:12.5px/1.45 ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;padding:8px 10px}
 .konsole .ekopf{color:var(--ink-2);font-weight:700;margin-top:6px}
@@ -152,6 +152,7 @@ footer{color:var(--ink-3);font-size:12px;margin:16px 0}
       <div class="stufen" id="stufen">
         <button type="button" data-s="1" aria-pressed="true">1× Standard<small id="st-1">im Test am besten</small></button>
         <button type="button" data-s="1.5" aria-pressed="false">1,5× mehr Risiko<small id="st-1.5"></small></button>
+        <button type="button" data-s="1.75" aria-pressed="false">1,75× viel Risiko<small id="st-1.75"></small></button>
         <button type="button" data-s="2" aria-pressed="false">2× hohes Risiko<small id="st-2"></small></button>
       </div>
       <span class="unter">Mehr als 2× gibt es nicht: 3× fiel im Test um −81 %, 5× um −97 %, 10× war das Konto weg.</span>
@@ -371,6 +372,19 @@ function zeigeCalls(c) {
   $("calls").innerHTML = tab + letzte;
 }
 
+// gesund:start — reine Funktionen (ohne DOM), damit test_cockpit.py sie mit node ausführen kann
+function gesundZeichen(x) {
+  return x.ok === true ? `<span class="plus">✓</span>` : x.ok === false ? `<span class="minus">✗</span>` : x.warnung ? `<span class="warn">⚠</span>` : `<span class="null">○</span>`;
+}
+function gesundKopfzeile(g) {
+  const probleme = g.filter(x => x.ok === false).length;
+  const warnungen = g.filter(x => x.ok == null && x.warnung).length;  // (20. Prüfung) eine graue WARNUNG (z. B. Nachkontrolle: Rückgabewert 3) gehört in die Kopfzeile — sonst stand dort «alles in Ordnung» neben einem offenen Markt
+  const warnText = warnungen ? `${warnungen} Warnung${warnungen > 1 ? "en" : ""}` : "";
+  return probleme ? (probleme > 1 ? `${probleme} Punkte brauchen` : "1 Punkt braucht") + " Aufmerksamkeit" + (warnText ? ` · ${warnText}` : "")
+    : warnText ? `${warnText} — bitte unten ansehen` : "alles in Ordnung";
+}
+// gesund:ende
+
 function zeichne(d) {
   letzterStand = d;
   $("modus").textContent = d.modus_spot && d.modus_spot !== d.modus
@@ -383,16 +397,14 @@ function zeichne(d) {
   $("notausHinweis").hidden = !d.notaus;
   $("notaus").textContent = "🛑 Not-Aus";
   const g = d.gesundheit || [];
-  const zeichen = ok => ok === true ? `<span class="plus">✓</span>` : ok === false ? `<span class="minus">✗</span>` : `<span class="null">○</span>`;
-  $("gesund").innerHTML = g.map(x => `<li style="padding:3px 0">${zeichen(x.ok)} <b>${esc(x.name)}</b> — <span class="unter">${esc(x.text)}</span></li>`).join("");
-  const probleme = g.filter(x => x.ok === false).length;
-  $("g-kurz").textContent = probleme ? `${probleme} Punkt${probleme > 1 ? "e" : ""} brauchen Aufmerksamkeit` : "alles in Ordnung";
+  $("gesund").innerHTML = g.map(x => `<li style="padding:3px 0">${gesundZeichen(x)} <b>${esc(x.name)}</b> — <span class="unter">${esc(x.text)}</span></li>`).join("");
+  $("g-kurz").textContent = gesundKopfzeile(g);
   const ri = d.risiko || {stufe: 1, test: {}};
   document.querySelectorAll("#stufen button").forEach(b => {
     b.setAttribute("aria-pressed", String(+b.dataset.s === ri.stufe));
-    const t = ri.test[b.dataset.s];
-    if (t && t["2019–heute"]) $("st-" + b.dataset.s).textContent =
-      `Test ab 2019: ${fmtPct(t["2019–heute"].cagr)}/J · Einbruch ${fmtZahl(t["2019–heute"].einbruch * 100)} %`;
+    const T = ri.test[b.dataset.s] || {}, jahr = T["2020–heute"] ? "2020" : "2019", t = T[jahr + "–heute"];
+    if (t) $("st-" + b.dataset.s).textContent =
+      `Test ab ${jahr}: ${fmtPct(t.cagr)}/J · Einbruch ${fmtZahl(t.einbruch * 100)} %`;
   });
   const aus = d.notaus || d.pause;
   $("auto").setAttribute("aria-checked", String(!aus));
@@ -537,10 +549,13 @@ $("stufen").addEventListener("click", e => {
   const b = e.target.closest("button[data-s]"); if (!b) return;
   const s = +b.dataset.s, ri = (letzterStand && letzterStand.risiko) || {stufe: 1, test: {}};
   if (s === ri.stufe) return;
-  const t = ri.test[b.dataset.s] && ri.test[b.dataset.s]["2019–heute"], t22 = ri.test[b.dataset.s] && ri.test[b.dataset.s]["2022–heute"];
-  if (s > 1 && !confirm(`Risiko-Stufe ${b.dataset.s.replace(".", ",")}× wählen?\n\nIm Test ab 2019: ${t ? fmtPct(t.cagr) + " pro Jahr, schlimmster Einbruch " + fmtZahl(t.einbruch * 100) + " %" : "—"}` +
-      `${t22 ? "\nab 2022: " + fmtPct(t22.cagr) + " pro Jahr, Einbruch " + fmtZahl(t22.einbruch * 100) + " %" : ""}\n\nMit 1× war das Verhältnis Rendite zu Einbruch besser. Gilt ab dem nächsten Lauf.`)) return;
-  knopf({"1": "risiko_1", "1.5": "risiko_1_5", "2": "risiko_2"}[b.dataset.s]);
+  const T = ri.test[b.dataset.s] || {}, jahr = T["2020–heute"] ? "2020" : "2019", t = T[jahr + "–heute"], t22 = T["2022–heute"];
+  if (s > 1 && !confirm(`Risiko-Stufe ${b.dataset.s.replace(".", ",")}× wählen?\n\nIm Test ab ${jahr}: ${t ? fmtPct(t.cagr) + " pro Jahr, schlimmster Einbruch " + fmtZahl(t.einbruch * 100) + " %" : "—"}` +
+      `${t22 ? "\nab 2022: " + fmtPct(t22.cagr) + " pro Jahr, Einbruch " + fmtZahl(t22.einbruch * 100) + " %" : ""}` +
+      `${T.p60 != null ? "\nIn " + fmtZahl(T.p60 * 100, 1) + " % der simulierten Jahre fiel das Konto tiefer als −60 %." : ""}` +
+      `${ri.anteil != null ? "\n\nDeine Einstellung: Der Pilot setzt " + fmtZahl(ri.anteil * 100) + " % des Kontos ein (KI_BOT_ANTEIL). Die Zahlen oben gelten für das GANZE Konto — auf dein Gesamtkonto wirken Rendite und Einbruch etwa " + fmtZahl(ri.anteil, 2) + "-mal so stark." : ""}` +
+      `\n\nMit 1× war das Verhältnis Rendite zu Einbruch besser. Gilt ab dem nächsten Lauf. Das ist eine Rückrechnung, keine Garantie — nur Geld einsetzen, dessen Verlust du verkraftest.`)) return;
+  knopf({"1": "risiko_1", "1.5": "risiko_1_5", "1.75": "risiko_1_75", "2": "risiko_2"}[b.dataset.s]);
 });
 ladeProtokoll();
 addEventListener("resize", () => letzterStand && zeichne(letzterStand));

@@ -396,6 +396,41 @@ try:
 finally:
     if not existierte and BF.STOP_DATEI.exists(): BF.STOP_DATEI.unlink()
 pruefe("Not-Aus während des Laufs: nach dem ersten Auftrag nichts mehr", len([o for o in markt_orders() if o[1] == "BUY"]) == 1, markt_orders())
+# Code-Review der R20: das Protokoll des unterbrochenen Laufs kommt NACH dem Schliessen — es wartet auf eine Sperre und wiederholt bei gesperrter Datei, das darf den Not-Aus nie aufhalten
+X.reset(); d = neu_buch(); X.nach_order = stop_setzen; existierte = BF.STOP_DATEI.exists(); folge = []; orig_na = L.notaus_alle
+
+
+def na_folge(*a, **k):
+    folge.append("schliessen")
+    return orig_na(*a, **k)
+
+
+L.notaus_alle = na_folge
+try:
+    L.ausfuehren([E("BTC", 1.0), E("ETH", 1.0)], env=TEST, bestand_datei=d, protokolliere=lambda e: folge.append("protokoll:notaus" if e.get("notaus") else "protokoll:lauf"))
+finally:
+    L.notaus_alle = orig_na
+    if not existierte and BF.STOP_DATEI.exists(): BF.STOP_DATEI.unlink()
+pruefe("Not-Aus während des Laufs: erst wird geschlossen, dann das Protokoll des Laufs geschrieben (ein langsames Protokoll hielte sonst das Schliessen auf)", folge == ["schliessen", "protokoll:notaus", "protokoll:lauf"], folge)
+# … wirft der Not-Aus eine Ausnahme, steht der Eintrag des Laufs trotzdem im Protokoll (die Aufträge sind raus; Code-Review der R20)
+X.reset(); d = neu_buch(); X.nach_order = stop_setzen; existierte = BF.STOP_DATEI.exists(); folge2 = []
+
+
+def na_wirft(*a, **k):
+    folge2.append("schliessen:wirft")
+    raise OSError("Buch kurz gesperrt")
+
+
+L.notaus_alle = na_wirft
+fehler_na = None
+try:
+    L.ausfuehren([E("BTC", 1.0), E("ETH", 1.0)], env=TEST, bestand_datei=d, protokolliere=lambda e: folge2.append("protokoll:lauf" if not e.get("notaus") else "protokoll:notaus"))
+except OSError as ex_na:
+    fehler_na = str(ex_na)
+finally:
+    L.notaus_alle = orig_na
+    if not existierte and BF.STOP_DATEI.exists(): BF.STOP_DATEI.unlink()
+pruefe("Not-Aus während des Laufs wirft eine Ausnahme: sie läuft weiter nach oben, der Eintrag des Laufs (mit den schon gesendeten Aufträgen) steht trotzdem im Protokoll", fehler_na == "Buch kurz gesperrt" and folge2 == ["schliessen:wirft", "protokoll:lauf"], (fehler_na, folge2))
 X.reset(stop_fehler=True); r = lauf([E("BTC", 1.0)], TEST, neu_buch())
 pruefe("Stop abgelehnt → Warnung «OHNE Stop»", r["warnung"] and any("OHNE Stop" in z for z in r["zeilen"]), r["zeilen"])
 # ── Rechte, Konto-ID, Konflikte ──
@@ -674,13 +709,13 @@ pruefe("echt gestartet, Schalter auf Testnetz → laute Warnung, KEIN zweiter Mo
 r = lauf([E("BTC", 0.5)], {k: v for k, v in ECHT.items() if k != "PILOT2_API_KEY"}, d)
 pruefe("echt gestartet, PILOT2_API_KEY fehlt → laute Warnung «NICHT verwaltet» (nicht nur eine Zeile)", r["warnung"]
        and any("NICHT verwaltet" in z for z in r["zeilen"]), r["zeilen"])
-schreiben_alt = L.buch_schreiben
+schreiben_alt = L._buch_schreiben_roh  # unterste Stelle: Lauf und Not-Aus speichern (zusammenführend) über sie
 def gesperrt_(*a, **k): raise PermissionError("Datei gesperrt")
-L.buch_schreiben = gesperrt_
+L._buch_schreiben_roh = gesperrt_
 try:
     X.reset(); d = neu_buch(); r = lauf([E("BTC", 1.0)], TEST, d)
 finally:
-    L.buch_schreiben = schreiben_alt
+    L._buch_schreiben_roh = schreiben_alt
 pruefe("Start lässt sich nicht speichern → KEIN Auftrag (sonst kennte der Not-Aus die Positionen nicht)", not markt_orders() and r["warnung"]
        and any("Start nicht gespeichert" in z for z in r["zeilen"]), r["zeilen"])
 # ── Ernte zurück, nie die Richtung (W7) ──

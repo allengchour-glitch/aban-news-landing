@@ -1,0 +1,70 @@
+{
+  "date": "2026-10-19",
+  "scope": "LuxeStyle / brand 6227837",
+  "packageStatus": "owner_review_no_business_writes",
+  "masterStatus": "18-second storyboard only; no approved MP4 or new publication",
+  "publicationHistory": "unknown; no ledger initialized",
+  "dailyAnalyticsAlreadyReadForDate": "2026-10-19",
+  "metricsPeriod": [
+    "2026-10-12",
+    "2026-10-18"
+  ],
+  "requiresFreshPreflightForFutureRun": true,
+  "excluded": [
+    "raw page HTML",
+    "film MP4",
+    "product image binary",
+    "credentials",
+    "customer records"
+  ],
+  "files": [
+    {
+      "file": "FREIGABEPAKET.md",
+      "sha256": "87466b66a5be0d50a024fc3dd0915d46850255bc03edadd7c4d6cb08e300e94b"
+    },
+    {
+      "file": "KANALTEXTE.md",
+      "sha256": "f479152c39d5891fe2bd747999e53d23ec44b617569cc9660edfaad765f4be18"
+    },
+    {
+      "file": "STORYBOARD.md",
+      "sha256": "82b7a2bbbb467b6b00d28acf8618e255d9c0e3d55ef66f16ba2161b4cd48b736"
+    },
+    {
+      "file": "WELCOME-TRACKING-FREIGABE.json",
+      "sha256": "e6305dea02f5942256b235664dd7123ee5e1653b34358834f93e71db48d280c3"
+    },
+    {
+      "file": "channel-drafts.json",
+      "sha256": "22dfc4ce1eb0e20f78e2b6f6dfc2213ac3810d992ebdd2fde01a39e79a98e7f8"
+    },
+    {
+      "file": "current-evidence.json",
+      "sha256": "42e47efba66300b6fe03ffb45bc023939c68962b69efd3fcc35088b068372714"
+    },
+    {
+      "file": "dns-readonly.json",
+      "sha256": "f5110d6152c91e723dd0c8e6405877ef00954d9d292b32b3ea88bdee678528c2"
+    },
+    {
+      "file": "existing-film-inspection.json",
+      "sha256": "418ac53210fb9c6a6f8e878338c9f7ae87f48ed9b8de78b0a9da91ac342dc0de"
+    },
+    {
+      "file": "http-evidence.json",
+      "sha256": "6b884cdab05d8ff5e04fabbefd5c05b32f1e077d1a5e113ef26aa738660f270f"
+    },
+    {
+      "file": "klaviyo-evidence.json",
+      "sha256": "65c549a52e3677a7ee9575b4621a2bb50b196c3654c23dce69c9c8af3582634d"
+    },
+    {
+      "file": "tag-gate.json",
+      "sha256": "ee86918a17c2fe18b519eaece59f9ff8001aac3addc979ada8b9d35e850a4ce2"
+    },
+    {
+      "file": "welcome-link-check.json",
+      "sha256": "c8c074a3cceb3601768421358c7356a757bf655874f0bbf5761b0ac2f21de424"
+    }
+  ]
+}

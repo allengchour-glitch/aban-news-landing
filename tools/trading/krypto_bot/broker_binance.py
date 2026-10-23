@@ -89,6 +89,9 @@ class Binance:
 
     def _req(self, methode, pfad, params=None, signiert=False):
         params = dict(params or {})
+        if signiert and methode in ("POST", "DELETE", "PUT"):
+            import sperre  # (17. Prüfung W3) hat ein anderer Lauf die Sperre dieses Prozesses übernommen (Ruhezustand, Stillstand), geht kein Auftrag mehr raus
+            sperre.pruefen()
         if signiert:
             params["timestamp"] = self._zeit()  # PC-Uhr kann falsch gehen: Börsenzeit verwenden
             params["recvWindow"] = 10000

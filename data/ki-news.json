@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-18T08:49:48Z",
+ "stand": "2026-10-23T09:19:08Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,84 +18,84 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Selfie hochladen, Kleidung anprobieren: ChatGPT wird zum virtuellen Modeberater",
-   "u": "https://t3n.de/news/selfie-hochladen-kleidung-anprobieen-chatgpt-1766318/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-10-18T08:10:00Z",
-   "s": "ChatGPT führt zwei neue Shopping-Funktionen ein. Zum einen eine virtuelle Anprobe von Kleidung und zum anderen eine neue Favoriten-Funktion, mit der Produkte gespeichert werden können. weiterlesen auf…",
-   "sprache": "de"
-  },
-  {
-   "t": "(g+) Kolibri von Aleph Alpha: Deutschlands KI kann doch noch überraschen",
-   "u": "https://www.golem.de/news/kolibri-von-aleph-alpha-deutschlands-ki-kann-doch-noch-ueberraschen-2610-213958.html",
-   "q": "Golem",
-   "d": "2026-10-18T08:00:02Z",
-   "s": "Das deutsche Aleph Alpha hat ein neues Sprachmodell für das Mittelfeld vorgestellt und dabei einige interessante Ideen verbaut. Eine Analyse von Tim Elsner (Souveränität, KI)",
-   "sprache": "de"
-  },
-  {
-   "t": "Eine Milliarde Nutzer von ChatGPT: Dennoch hassen viele Menschen KI",
-   "u": "https://t3n.de/news/eine-milliarde-nutzer-chatgpt-ki-hass-1766749/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-10-18T06:20:00Z",
-   "s": "Umfragen der Stanford University und Gallup belegen, dass die Menschen kein gutes Bild von KI-Produkten und den Rechenzentren haben. Gleichzeitig steigen die Nuweiterlesen auf t3n.de",
-   "sprache": "de"
-  },
-  {
-   "t": "Meta removes language that raised scraping and AI training concerns",
-   "u": "https://techcrunch.com/2026/10/17/meta-removes-language-that-raised-scraping-and-ai-training-concerns/",
-   "q": "TechCrunch AI",
-   "d": "2026-10-17T21:31:32Z",
-   "s": "A Meta spokesperson insisted that the updated terms did not reflect a change in the way Meta crawls the web.",
-   "sprache": "en"
-  },
-  {
-   "t": "Anthropic says its workforce has become less junior and is spending more time in meetings",
-   "u": "https://techcrunch.com/2026/10/17/anthropic-says-its-workforce-has-become-less-junior-and-is-spending-more-time-in-meetings/",
-   "q": "TechCrunch AI",
-   "d": "2026-10-17T20:21:19Z",
-   "s": "The composition of Anthropic’s workforce and the type of work getting done have changed significantly in the past year.",
-   "sprache": "en"
-  },
-  {
-   "t": "Cody Wilson: KI hat gerade eine Schusswaffe entworfen",
-   "u": "https://www.golem.de/news/cody-wilson-ki-hat-gerade-eine-schusswaffe-entworfen-2610-214215.html",
-   "q": "Golem",
-   "d": "2026-10-17T11:45:02Z",
-   "s": "Ein Aktivist hat eine Waffe vorgestellt, die eine speziell trainierte KI entworfen hat. Bereits 2012 hat er die weltweit erste 3D-gedruckte Schusswaffe vorgestellt. (3D-Drucker, KI)",
-   "sprache": "de"
-  },
-  {
-   "t": "heise-Angebot: enterJS: Call for Proposals 2027 und letzter Aufruf für KI-Online-Thementag 2026",
-   "u": "https://www.heise.de/news/enterJS-Call-for-Proposals-2027-und-letzter-Aufruf-fuer-KI-Online-Thementag-2026-11456215.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "t": "W3C: Ein Auftrag ist kein Freibrief für KI-Agenten",
+   "u": "https://www.heise.de/news/W3C-Ein-Auftrag-ist-kein-Freibrief-fuer-KI-Agenten-11497919.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "q": "heise",
-   "d": "2026-10-17T11:00:00Z",
-   "s": "Der Call for Proposals für die enterJS 2027 ist eröffnet und läuft bis zum 3. November. Nächsten Donnerstag findet der Online-Thementag enterJS Agentic statt.",
+   "d": "2026-10-23T09:07:00Z",
+   "s": "Wie bleiben Nutzer in Kontrolle, wenn KI-Agenten Websites bedienen? Das W3C-Strategieteam skizziert Anforderungen an sichere Webstandards.",
    "sprache": "de"
   },
   {
-   "t": "How Itaú is building generative AI for its entire customer base",
-   "u": "https://openai.com/index/itau-generative-ai",
+   "t": "Nintendo: Switch 2 mit KI und mechanischem Knopf geknackt",
+   "u": "https://www.golem.de/news/nintendo-switch-2-mit-ki-und-mechanischem-knopf-geknackt-2610-214432.html",
+   "q": "Golem",
+   "d": "2026-10-23T09:06:01Z",
+   "s": "Ein Entwickler hat mit Codex einen Jailbreak für die Switch 2 geschaffen. Für einige Versuche nutzte er einen Lichtschalter-Betätiger. (Nintendo Switch 2, Homebrew)",
+   "sprache": "de"
+  },
+  {
+   "t": "heise+ | So schützt Google seine KI-Agenten vor Prompt Injections – ein Interview",
+   "u": "https://www.heise.de/hintergrund/So-schuetzt-Google-seine-KI-Agenten-vor-Prompt-Injections-ein-Interview-11471465.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
+   "q": "heise",
+   "d": "2026-10-23T08:30:00Z",
+   "s": "Seit dem Aufkommen von LLMs gibt es Prompt Injections. Wie Google damit umgeht, darüber berichtet Software-Ingenieurin Viviana Sutedjo im Interview.",
+   "sprache": "de"
+  },
+  {
+   "t": "Preussenelektra: Alte Kernkraftwerke könnten KI-Rechenzentren werden",
+   "u": "https://www.golem.de/news/preussenelektra-alte-kernkraftwerke-koennten-ki-rechenzentren-werden-2610-214429.html",
+   "q": "Golem",
+   "d": "2026-10-23T08:29:01Z",
+   "s": "Alte Kraftwerksstandorte wären ideal für KI-Rechenzentren. Nvidia und Preussenelektra prüfen, ob sich Kernkraftstandorte eignen. (Energie & Klima, Nvidia)",
+   "sprache": "de"
+  },
+  {
+   "t": "Koalitionsverhandlungen in Berlin: Rot-Rot-Grün muss KI-Kameras stoppen",
+   "u": "https://netzpolitik.org/2026/koalitionsverhandlungen-in-berlin-rot-rot-gruen-muss-ki-kameras-stoppen/",
+   "q": "netzpolitik.org",
+   "d": "2026-10-23T07:21:35Z",
+   "s": "Muss da dringend wieder weg: Videoüberwachung am Kottbusser Tor in Berlin. – CC-BY-NC-SA 4.0: netzpolitik.orgWie geht es weiter mit den KI-Kameras in Berlin? Das haben Verhandler*innen von Linken, Grü…",
+   "sprache": "de"
+  },
+  {
+   "t": "Jailbreak für die Nintendo Switch 2: So hat ein Programmierer OpenAIs Codex dafür genutzt",
+   "u": "https://t3n.de/news/jailbreak-nintendo-switch-2-openai-codex-1769559/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-10-23T07:10:01Z",
+   "s": "Ein Entwickler hat eine erste Version eines Jailbreaks für die Nintendo Switch 2 veröffentlicht. Den Hack konnte er dank KI-Hilfe realisieren. Wie er OpenAIs Codex dafür genutzt hat und welche Problem…",
+   "sprache": "de"
+  },
+  {
+   "t": "Uber rival inDrive eyes 2027 robotaxi tests in Central Asia with Pony.ai and Nvidia",
+   "u": "https://techcrunch.com/2026/10/22/uber-rival-indrive-eyes-2027-robotaxi-tests-in-central-asia-with-pony-ai-and-nvidia/",
+   "q": "TechCrunch AI",
+   "d": "2026-10-23T04:00:00Z",
+   "s": "inDrive plans to begin testing Pony.ai's robotaxis in Kazakhstan's capital in the first half of 2027.",
+   "sprache": "en"
+  },
+  {
+   "t": "Left alone with nothing to do, AI agents started playing",
+   "u": "https://techcrunch.com/2026/10/22/left-alone-with-nothing-to-do-ai-agents-started-playing/",
+   "q": "TechCrunch AI",
+   "d": "2026-10-23T00:45:37Z",
+   "s": "MIT researchers marooned 13 AIs on a virtual island, and they responded by inventing games, mourning a lost ring and, eventually, getting better at their jobs.",
+   "sprache": "en"
+  },
+  {
+   "t": "OpenAI and Poland’s NASK partner to advance AI safety and security",
+   "u": "https://openai.com/index/openai-nask-ai-safety-security-partnership",
    "q": "OpenAI",
-   "d": "2026-10-16T19:00:00Z",
-   "s": "With ia.i, a conversational interface, and the IARA governance platform, Itaú is applying its AI First strategy to customers and employees — in one of Brazil’s most regulated sectors.",
+   "d": "2026-10-23T00:00:00Z",
+   "s": "OpenAI and Poland’s NASK are partnering on AI safety, security, and technical research to strengthen safeguards and support a more resilient digital ecosystem.",
    "sprache": "en"
   },
   {
-   "t": "Roundtables: A Conversation With the Creator of AI-Designed Viruses",
-   "u": "https://www.technologyreview.com/2026/10/16/1146224/roundtables-a-conversation-with-the-creator-of-ai-designed-viruses/",
-   "q": "MIT Tech Review",
-   "d": "2026-10-16T18:00:00Z",
-   "s": "Listen to the session or watch below Can AI design new life forms? In 2025, Stanford University PhD student Samuel King came up with a preliminary answer when he used a generative AI model to propose …",
+   "t": "Turning Database Grading into RL Rewards: Post-Training Agents with ThinkingBox",
+   "u": "https://huggingface.co/blog/microsoft/thinkingbox-training",
+   "q": "Hugging Face",
+   "d": "2026-10-22T22:24:34Z",
+   "s": "",
    "sprache": "en"
-  },
-  {
-   "t": "RTX Spark im Test: Nvidias erster Notebook-Chip für lokale KI",
-   "u": "https://www.heise.de/news/RTX-Spark-im-Test-Nvidias-erster-Notebook-Chip-fuer-lokale-KI-11490664.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-16T15:38:00Z",
-   "s": "Das erste RTX-Spark-Notebook im c’t-3003-Testlabor: Kann das Asus ProArt P14 die KI-Versprechen einlösen? Und: Läuft es wirklich nur mit Windows?",
-   "sprache": "de"
   }
  ]
 }

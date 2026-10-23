@@ -1,0 +1,26 @@
+[
+  {
+    "name": "product",
+    "status": 200,
+    "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+    "bytes": 721734,
+    "sha256": "eda06656840ff2d95a345b363c796479c0a924f98efc9654cf402dbe9c8ee4f9",
+    "path": "/workspace/luxestyle-review/owner-review-20261019/product-page.html"
+  },
+  {
+    "name": "storefront-json",
+    "status": 200,
+    "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544.js",
+    "bytes": 11019,
+    "sha256": "5dca055ce96cedccdef5246c78b2742481278fab5711b77cb748e93662038582",
+    "path": "/workspace/luxestyle-review/owner-review-20261019/product.js.json"
+  },
+  {
+    "name": "image",
+    "status": 200,
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+    "bytes": 118008,
+    "sha256": "bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d",
+    "path": "/workspace/luxestyle-review/owner-review-20261019/product-reference.jpg"
+  }
+]
