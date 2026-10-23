@@ -1,6 +1,6 @@
-# SEO-Voll-Audit · 22.10.2026 14:27 UTC
+# SEO-Voll-Audit · 23.10.2026 02:27 UTC
 
-Aktive Produkte im Onlineshop: **56683** · Prüfungen wie Semrush Site Audit, lokal gerechnet.
+Aktive Produkte im Onlineshop: **56672** · Prüfungen wie Semrush Site Audit, lokal gerechnet.
 
 | Klasse | Produkte | Beispiele |
 |---|---:|---|
@@ -10,7 +10,7 @@ Aktive Produkte im Onlineshop: **56683** · Prüfungen wie Semrush Site Audit, l
 | meta_leer | 0 |  |
 | titel_lang | 0 |  |
 | meta_lang | 0 |  |
-| text_duenn | 25 | stilvoller-tragbarer-zigarrenaschenbecher-au-618100, kreatives-feuchtigkeitsdichtes-zigarettenetu-627200, quadratischer-aschenbecher-mit-deckel-625100, retro-keramik-aschenbecher-613100 |
+| text_duenn | 20 | stilvoller-tragbarer-zigarrenaschenbecher-au-618100, retro-zigarettenetui-metall-kartenhalter-616900, shisha-kopf-zubehor-612000, elektrischer-kohleanzunder-500w-kompakt-5-st-714562 |
 | alt_leer | 0 |  |
 
 ## Grösste Titel-Gruppen
