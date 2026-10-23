@@ -13798,3 +13798,24 @@ herren-automatic-mechanik-uhr-609900	2505150308591600200	7	7.03	ok	landeseite
 herren-vollhohes-stahlgehause-automatik-uhr-611400	2504290940151612300	7	6.49	ok	landeseite
 herrenarmbanduhr-automatik-wasserdicht-604000	2504260916561604200	7	7.78	ok	landeseite
 damen-laufschuhe-689664	1743186425702518784	16	10.83	ok	landeseite
+led-spiegel-mit-dimmbarem-licht-627100	2508291320041627300	7	19.72	ok	landeseite
+herren-sommerhemd-waffelstrick-kurzarm-einheit-608800	2605280350481609400	16	10.15	ok	landeseite
+sommerleichtes-herren-loose-shirt-mit-print-635700	2605280234411636200	16	8.79	ok	landeseite
+retro-herren-pullover-612200	2605271450081612900	16	7.17	ok	landeseite
+herren-racing-print-t-shirt-leicht-und-atmungs-636500	2605260653091637000	16	7.43	ok	landeseite
+y2k-style-kurzarm-t-shirt-mit-kreuz-design-her-623400	2605260622461624000	16	7.17	ok	landeseite
+streetstyle-kurzarm-t-shirt-herren-632900	2605260546451633400	16	7.43	ok	landeseite
+kurzes-herren-pullover-615600	2605250838131616200	16	9.61	ok	landeseite
+herren-t-shirt-aus-mercerized-baumwolle-601300	2605250708561601800	16	8.11	ok	landeseite
+regenponcho-fuer-hunde-607300	2503211004481607600	16	5.52	ok	landeseite
+relaxed-patchwork-casual-hemd-636500	2605250352331637800	16	6.56	ok	landeseite
+retro-t-shirt-606500	2605230824081607000	16	7.03	ok	landeseite
+hundemantel-herbst-winter-warm-schmutzabweisen-613800	2412160940361614100	16	5.69	ok	landeseite
+warmes-hundecoat-mit-reflektor-623600	2411300851191623900	16	8.11	ok	landeseite
+mesh-trainingsshirt-fur-basketball-fussball-619800	2605230806291610700	16	7.71	ok	landeseite
+kinder-sneaker-mit-streifen-622800	2501070759511623000	16	9.47	ok	landeseite
+mini-aquarium-mit-uhrenfunktion-temperaturalar-061248	1412277112169172992	16	23.15	ok	landeseite
+lauflernschuhe-fur-madchen-mit-klettverschluss-620500	2409210636111620700	16	8.66	ok	landeseite
+kinder-schuhe-aus-baumwolle-mit-fleecefutter-r-629500	-	-	-	unklar sku 0 	landeseite
+herbst-western-stil-babys-weichsohlen-laufschu-624700	2408290512501624900	16	8.11	ok	landeseite
+babyschuhe-mit-weicher-sohle-haube-als-fotopro-622200	2408200507341622800	16	6.40	ok	landeseite
