@@ -379,3 +379,4 @@ gid://shopify/Product/15497457172865	draft-ausverkauft	BONA Classics Damen Laufs
 gid://shopify/Product/15497534734721	draft-ausverkauft	Herren Platform Running Sneakers
 gid://shopify/Product/15493857116545	draft-ausverkauft	Wasserdichte, rutschfeste Herrenschuhe zum Schnüren
 gid://shopify/Product/15499053171073	draft-ausverkauft	Makramee Wandbehang „Nordic“
+gid://shopify/Product/15499054973313	draft-ausverkauft	Mechanische Herrenuhr aus Edelstahl
