@@ -52280,3 +52280,5 @@ gid://shopify/Product/16610068857223	ok
 gid://shopify/Product/16610068988295	ok
 gid://shopify/Product/16610069184903	ok
 gid://shopify/Product/16610069217671	ok
+gid://shopify/Product/16610069250439	ok
+gid://shopify/Product/16610069545351	ok
