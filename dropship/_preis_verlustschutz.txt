@@ -345580,3 +345580,9 @@
 67761232019847	heben	17.90	19.90	15.33	2026-10-23	quarz-uhr-mit-doppelknopf-osen-wasserdicht-626000
 67761232052615	heben	17.90	20.90	15.95	2026-10-23	quarz-uhr-mit-doppelknopf-osen-wasserdicht-626000
 67761166123399	heben	38.90	41.90	33.32	2026-10-23	kaffeebereiter-mit-filter-und-glaskanne-605000
+67760939598215	heben	39.90	40.90	32.51	2026-10-23	herren-automatikuhr-628200
+67761095573895	heben	39.90	40.90	32.51	2026-10-23	herren-automatikuhr-628200
+67761095606663	heben	39.90	40.90	32.51	2026-10-23	herren-automatikuhr-628200
+67761092428167	heben	17.90	18.90	14.37	2026-10-23	quarz-herrenuhr-mit-stahlarmband-611900
+67761092460935	heben	17.90	18.90	14.37	2026-10-23	quarz-herrenuhr-mit-stahlarmband-611900
+67761817387399	heben	27.90	28.90	22.40	2026-10-23	armbanduhr-im-mid-century-stil-623100
