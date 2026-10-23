@@ -1,4 +1,4 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-23 12:24 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-10-23 13:30 UTC)
 
 Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 261 · **112 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 79, teilweise: 25, keine: 8; Preisspanne > 2×: 21) · 1 CJ-Variante: 149 · ohne Antwort: 0
 
