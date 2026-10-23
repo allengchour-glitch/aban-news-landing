@@ -156,6 +156,7 @@ Tagesfortführung: gezielte Shopify-SEO-Gegenprobe und Kategorie-Metadatenpflege
 | Klaviyo-Flowreport 23.10. | Placed-Order-Metrik frisch als `W7XTVD` entdeckt, Flow-Liste und 7-Tage-Report gelesen | Welcome Series `VbLQj6` live, Abandoned Checkout `Vse76a` draft, Abandoned Checkout · 1 Std `XEGbTB` live, Post-Purchase `RnTvsY` live. Report: XEGbTB 1 Empfänger ohne Zustellung; RnTvsY 3 zugestellt, 2 Opens, 2 Klicks, 0 Placed-Order-Conversions. Keine Aktivierung oder Änderung |
 
 | Medien-URL-Gegenprobe 23.10. | Historische ERROR-Medien-URL des bestehenden Instagram-Objekts und aktuelles Projektorbild per HEAD geprüft | Beide Shopify-CDN-URLs liefern aktuell HTTP 200 als JPEG. Der frühere Metricool-Fehler bleibt zeitlich ungeklärt; kein Retry, kein Update und kein Ersatzpost ausgelöst |
+\n| SEO Aroma-Diffuser | Aktives Produkt mit Preis, Bild, Kaufbarkeit, Tagbestand und Tracking geprüft; unbelegte SEO-Formulierung entfernt | SEO-Titel und Meta-Beschreibung live aktualisiert, Shopify ohne UserErrors; öffentliche Produktseite HTTP 200 und neue Metadaten zurückgelesen. Keine Produkt-, Preis-, Bestands- oder Shop-Einstellung geändert |
 \n## Fortführung
 
 Jeder Zürcher Kalendertag erhält einen eigenen Datumsblock mit den belegten Tätigkeiten dieses Tages. Mehrere Läufe ergänzen denselben Tag. Bereits erfasste Tätigkeiten nicht erneut als neu ausgeben; Korrekturen nachvollziehbar benennen. Bei fehlenden oder unlesbaren Quellen keine leere Vergangenheit behaupten und das Protokoll nicht zurücksetzen.
