@@ -11291,3 +11291,5 @@ gid://shopify/Product/15446272934273	1792732549	ok	6 Shop / 6 CJ / 0 fehlend / 0
 gid://shopify/Product/15446273098113	1792732549	ok	7 Shop / 7 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15446273917313	1792732549	ok	2 Shop / 2 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15446273950081	1792732549	ok	6 Shop / 6 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15431384269185	1792747806	unklar	ALLE 4 Shop-SKUs fehlen bei CJ (6 lebend) — Ableitung pruefen
+gid://shopify/Product/15431384498561	1792747806	unklar	ALLE 4 Shop-SKUs fehlen bei CJ (8 lebend) — Ableitung pruefen
