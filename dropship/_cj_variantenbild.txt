@@ -8521,3 +8521,16 @@ gid://shopify/Product/15478714007937	zugeordnet	24	Corduroy-Kleid mit Off-Should
 gid://shopify/Product/15478714171777	zugeordnet	50	3D Digitaldruck Flaggen-Kleid für Damen
 gid://shopify/Product/15478714401153	zugeordnet	12	V-Neck Strick-Cardigan mit Farbblock-Streifen
 gid://shopify/Product/15478714532225	zugeordnet	50	Retro Loose Pullover Sweater für Damen
+gid://shopify/Product/15478714696065	zugeordnet	42	Gestreifte Strickjacke mit Reissverschluss
+gid://shopify/Product/15478714761601	zugeordnet	15	Warmer Strickpullover für Damen
+gid://shopify/Product/15478716105089	zugeordnet	40	Kapuzen-Strickpullover mit Kordelzug
+gid://shopify/Product/15478780461441	zugeordnet	5	Sportarmband
+gid://shopify/Product/15478780592513	zugeordnet	12	Magnetisches Silikonarmband für Samsung Watch Ultra
+gid://shopify/Product/15478780821889	zugeordnet	2	Herrenuhr wasserdicht, Leuchtzeiger, Stahlarmband
+gid://shopify/Product/15478780887425	zugeordnet	4	Outdoor Sportuhr mit vielen Funktionen
+gid://shopify/Product/15478781018497	zugeordnet	24	Explorer-Armband für 7. Generation Ultra Watch
+gid://shopify/Product/15478781608321	zugeordnet	6	SKMEI Quadratische Sportuhr mit Datumsanzeige
+gid://shopify/Product/15478781706625	zugeordnet	5	Herrenuhr, Automatik, wasserdicht, Kalender
+gid://shopify/Product/15478781772161	zugeordnet	8	Kinder Sandalen mit Anti-Kollisionsschutz
+gid://shopify/Product/15478781804929	zugeordnet	7	Sportliche Herrenuhr mit Doppel-Display
+gid://shopify/Product/15478782198145	zugeordnet	9	V-förmige Fugenbürste mit Halter
