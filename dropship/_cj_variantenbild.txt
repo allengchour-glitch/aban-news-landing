@@ -8579,3 +8579,18 @@ gid://shopify/Product/15491401712001	zugeordnet	18	Britische Schnür-Sneaker fü
 gid://shopify/Product/15491404333441	zugeordnet	40	Spitzenkleid mit Stickereien in A-Linie
 gid://shopify/Product/15491404431745	zugeordnet	40	Ärmelloses Minikleid mit Rundhals und Spaghettiträgern
 gid://shopify/Product/15491404530049	zugeordnet	15	Damen Kleid mit Puffärmeln und Taillierung
+gid://shopify/Product/15496506737025	zugeordnet	27	Schlangenprint Peep-Toe Sandalen mit hohem Blockabsatz
+gid://shopify/Product/15496506900865	zugeordnet	21	Leichte Plateau-Sandalen für Damen
+gid://shopify/Product/15496507883905	zugeordnet	16	Riemchensandalen mit Super-High-Heel
+gid://shopify/Product/15496507949441	zugeordnet	75	Sandalen mit T-Riemen und Cut-Outs
+gid://shopify/Product/15496508080513	zugeordnet	24	Keil-Sandalen mit Riemen und Schnalle
+gid://shopify/Product/15496508178817	zugeordnet	28	Bequeme flache Sommersandalen für Damen
+gid://shopify/Product/15496508375425	zugeordnet	21	Leichte Pantoletten mit dicker Sohle
+gid://shopify/Product/15496508539265	zugeordnet	27	High-Heel Sandalen mit Kreuzriemen und Chunky-Absatz
+gid://shopify/Product/15496508703105	zugeordnet	12	Römer-Sandalen mit Cutouts und hohem Schaft
+gid://shopify/Product/15496508998017	zugeordnet	69	Gestrickte Sandalen mit Riemenverschluss
+gid://shopify/Product/15496509358465	zugeordnet	12	Elegante Flache Sandalen im französischen Stil
+gid://shopify/Product/15496509686145	zugeordnet	14	Retro Sandalen mit eckiger Zehenpartie
+gid://shopify/Product/15496509948289	zugeordnet	21	Spitze Slip-on Schuhe mit Keilabsatz
+gid://shopify/Product/15496510013825	zugeordnet	18	Glitzer-Rhinestone-Sandalen mit mittlerem Absatz
+gid://shopify/Product/15496510243201	zugeordnet	40	Handgenähte High-Top Herrenschuhe für Draussen
