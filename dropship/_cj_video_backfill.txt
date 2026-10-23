@@ -1937,3 +1937,5 @@ gid://shopify/Product/15447995154817	kein-video-beim-lieferanten
 gid://shopify/Product/15447995318657	kein-video-beim-lieferanten
 gid://shopify/Product/15447995482497	kein-video-beim-lieferanten
 gid://shopify/Product/15447995679105	kein-video-beim-lieferanten
+gid://shopify/Product/15447995908481	kein-video-beim-lieferanten
+gid://shopify/Product/15447996203393	kein-video-beim-lieferanten
