@@ -1,18 +1,18 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-23 06:14 UTC, Stand 2026-10-23 06:19 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-23 06:14 UTC, Stand 2026-10-23 06:20 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **1'244**
-- Optionen mit englischen Werten (Kandidaten): 17
+- Produkte gesehen: **1'823**
+- Optionen mit englischen Werten (Kandidaten): 94
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 149
+- Werte mit unbekanntem Wort (unverändert): 536
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kollision-nach-uebersetzung»: 1
+- übersprungen «kollision-nach-uebersetzung»: 2
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -26,6 +26,7 @@ _keine_
 > Die Übersetzung ergäbe zwei gleichlautende Werte (meist «Blue» neben «Blau»). Zusammenlegen ist Sache von `farbwert_dubletten.py` bzw. eines Menschen.
 
 - `15450839777665` [Farbe] xxl-hoodie-decke-mit-taschen-fur-sie-ihn-059264: 120cm pink → 120 cm Pink; 120cm black → 120 cm Schwarz; 120cm navy blue → 120 cm Marineblau; 120cm grey → 120 cm Grau; 150cm pink → 150 cm Pink
+- `15443497025921` [Farbe] smartwatch-activeone-fitness-anrufe-101440: Braun Aprikose Gelb → Braun-Aprikose-Gelb; Braun Aprikose Braun → Braun-Aprikose-Braun; Braun Aprikose → Braun-Aprikose
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -54,5 +55,5 @@ _keine_
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`promax` 13, `high` 12, `carbon` 12, `stone` 12, `iphone13` 12, `color` 10, `platinum` 9, `16color` 7, `⟨satzbau:adjektiv-vor-nomen⟩` 7, `ice` 6, `moissanite` 6, `15promax` 6, `loose` 5, `spiral` 5, `notebook` 5, `shell` 5, `15pro` 5, `code` 4, `iphone16` 4, `iphone16pro` 4, `iphone16promax` 4, `iphone16plus` 4, `crown` 3, `tree` 3, `of` 3, `life` 3, `case` 3, `iphone12` 3, `iphone12pro` 3, `iphone12promax` 3, `ck` 3, `background` 2, `smiling` 2, `sun` 2, `grid` 2, `belt` 2, `magnetic` 2, `strap` 2, `no` 2, `shoe` 2, `buckle` 2, `skull` 2, `ghost` 2, `pumpkin` 2, `replenishment` 2, `base` 1, `foundation` 1, `on` 1, `little` 1, `brownish` 1, `band` 1, `strip` 1, `grandmother` 1, `01bleach` 1, `02books` 1, `03light` 1, `04pink` 1, `05gray` 1, `06black` 1, `face` 1
+`light` 31, `generation` 30, `batteries` 24, `of` 23, `bag` 21, `color` 19, `high` 19, `hat` 18, `gallium` 16, `nitride` 16, `electric` 16, `suit` 15, `handle` 15, `stone` 14, `promax` 13, `carbon` 12, `iphone13` 12, `45se6` 12, `steel color` 12, `to9mm` 11, `no` 9, `platinum` 9, `three` 9, `monolever` 9, `watch` 9, `cup` 9, `lens` 9, `ice` 8, `regular` 8, `16color` 7, `⟨satzbau:adjektiv-vor-nomen⟩` 7, `belt` 7, `strap` 7, `shell` 7, `tea` 7, `one` 7, `chain` 7, `moissanite` 6, `15promax` 6, `laser` 6, `rows` 6, `columns` 6, `infrared` 6, `obstacle` 6, `avoidance` 6, `storage` 6, `loose` 5, `spiral` 5, `notebook` 5, `case` 5, `face` 5, `15pro` 5, `diamond` 5, `milk` 5, `key` 5, `elephant` 5, `ber` 5, `lampshade` 5, `headlights` 5, `dual` 5
 
