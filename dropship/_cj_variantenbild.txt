@@ -8549,3 +8549,4 @@ gid://shopify/Product/15491382444417	zugeordnet	66	Herrenschuhe mit Flachsohle
 gid://shopify/Product/15491382641025	zugeordnet	44	Herren Leder-Sneaker
 gid://shopify/Product/15491382772097	zugeordnet	44	Bequeme Sneaker · Herren
 gid://shopify/Product/15491383067009	zugeordnet	22	Herren Stiefel
+gid://shopify/Product/15491387523457	zugeordnet	40	Elegantes A-Linien-Kleid mit V-Ausschnitt
