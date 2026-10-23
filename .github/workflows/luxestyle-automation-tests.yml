@@ -42,6 +42,7 @@ jobs:
             automation/metricool-schedule.mjs
             automation/price_guard.mjs
             automation/cross_sell.mjs
+            automation/lieferbarkeit_guard.mjs
             automation/image-audit.mjs
             automation/titel_deutsch_fix.mjs
             automation/shop_brain.mjs
