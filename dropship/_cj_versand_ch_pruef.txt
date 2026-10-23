@@ -13840,3 +13840,4 @@ herren-retro-diamant-muster-steppweste-619000	2607131256411619600	16	8.11	ok	lan
 abnehmbarer-wasserdichter-huftbeutel-345152	1763749456203231232	16	10.42	ok	landeseite
 crochet-top-mit-blumenmuster-622700	2607131252021623400	16	8.11	ok	landeseite
 lern-tischset-mit-saugnapfen-632300	2603210248571632700	16	14.37	ok	landeseite
+herren-motorrad-hufttasche-crossbody-328448	1643171245057380352	16	9.20	ok	landeseite
