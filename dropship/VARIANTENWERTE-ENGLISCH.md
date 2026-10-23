@@ -1,129 +1,47 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-22 09:02 UTC, Stand 2026-10-22 09:31 UTC — **vollständig**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-23 06:14 UTC, Stand 2026-10-23 06:19 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **56'652**
-- Optionen mit englischen Werten (Kandidaten): 2'993
-- Optionen übersetzt: **8** · Werte übersetzt: **67**
-- Optionen nur codebereinigt: 2
-- Werte mit unbekanntem Wort (unverändert): 15'292
+- Produkte gesehen: **1'244**
+- Optionen mit englischen Werten (Kandidaten): 17
+- Optionen übersetzt: **0** · Werte übersetzt: **0**
+- Optionen nur codebereinigt: 0
+- Werte mit unbekanntem Wort (unverändert): 149
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 90
-- übersprungen «kollision-nach-uebersetzung»: 42
+- übersprungen «kollision-nach-uebersetzung»: 1
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
 > Zwei verschiedene Kleidungsstücke in EINER Option, oder ein Kleidungsstück, das nicht zum Titel passt. Beispiel Jeansjacke: «Blue Coat» / «Blue Pants» — die zweite «Farbe» ist eine Hose. Entscheid am Bild und Preis: Option umbenennen (z. B. «Artikel»: Jacke/Hose) oder Variante entfernen.
 
-- `15447951835521` [Farbe] **Weihnachts-Hoodie für die ganze Familie** — hose: Dark Red Winter Fleece Lining-Crawling Suit 66 | Dark Red Winter Fleece Lining-Crawling Suit 73 | Dark Red Winter Fleece Lining-Crawling Suit 80 | Dark Red Winter Fleece Lining-Climbing Suit 90 | Dark Red Winter Fleece Lining-80cm | Dark Red Winter Fleece Lining-90cm | Dark Red Winter Fleece Lining-100cm | Dark Red Winter Fleece Lining-110cm
-- `15447957733761` [Farbe] **Familien-T-Shirt im Partnerlook · Kurzarm mit Brusttasche** — hose, jacke: coat | coat-100 | coat-110 | coat-120 | coat-130 | coat-140 | coat-150 | coat-Female S
-- `15447962091905` [Farbe] **Partnerlook Herbst Sweatshirts für Eltern & Kinder** — overall, pullover: Sweater Autumn-90cm | Sweater Autumn-100cm | Sweater Autumn-110cm | Sweater Autumn-120cm | Sweater Autumn-130cm | Sweater Autumn-140cm | Sweater Autumn-150cm | Sweater Autumn-Adult S
-- `15447964516737` [Farbe] **Hoodie & Jogginghose Set im Partnerlook** — hose, pullover · Titel nennt Set: Gray Sweater | Gray Trousers | Grey Suit | Set1
-- `15447969595777` [Ausführung] **Freizeit Cheongsam Familien-Set im China-Stil** — hose, oberteil, rock · Titel nennt Set: Men's top | Men's Shorts | Women's Shirt | Female Style Skirt | Green Cheongsam Suit
-- `15448011178369` [Farbe] **T-Shirt mit Cartoon-Hasen-Print für Damen** — pullover: Violent Robber Bear | Delivery Team | HOODIE Bear | Paradise Shark Letters | MOTORS Letters | POTRO Letters | VINTAGE Yellow Letters | Three Rows Lettered Rabbit
-- `15448509383041` [Farbe] **Gefüttertes Kapuzen-Sweatshirt für Damen – Black-Hoodie** — hose, pullover: Black-Hoodie | Black-Pants | Milky Apricot-Hoodie | Milky Apricot-Pants | Slate Blue-Hoodie | Slate Blue-Pants | Olive Green-Hoodie | Olive Green-Pants
-- `15448574099841` [Farbe] **Eleganter Off-Shoulder Jumpsuit** — oberteil · Titel nennt Set: OliveGreen | Blau | a white Tshirt
-- `15448670273921` [Farbe] **Damen Wollmantel für Winter Business** — oberteil: Marineblau | White Long Sleeve Shirt
-- `15448718180737` [Farbe] **Gestreifter Business-Anzug für Herren** — jacke, weste · Titel nennt Set: Caramel Jacket | Sugar Coffee Vest | Set
-- `15449055854977` [Farbe] **Kapuzen-Sweatshirt-Set, Fleece-gefüttert · Modell 2** — hose, pullover · Titel nennt Set: Blue-Hoodie | Blue-Pants | Grayish Brown-Hoodie | Grayish Brown-Pants | Navy Blue-Hoodie | Navy Blue-Pants | Leafy Gray-Hoodie | Leafy Gray-Pants
-- `15449066766721` [Farbe] **Vintage Patchwork Distressed Jeansjacke für Herren** — hose, jacke: Single Jacket | Single Pants
-- `15449108578689` [Farbe] **Damen Langarm-Top aus Gold-Samt** — weste: Long sleeves | Vest | Off shoulder
-- `15449114837377` [Ausführung] **Herren Hoodie und Trainerhosen Set** — hose, pullover · Titel nennt Set: Dark gray-L-Hoodie | Dark gray-M-Hoodie | Dark gray-S-Hoodie | Dark gray-S-Pants | Dark gray-XL-Hoodie | Royal blue-L-Hoodie | Royal blue-L-Pants | Royal blue-M-Hoodie
-- `15449165824385` [Ausführung] **Streetwear Hoodie mit Herz-Augenmaske** — hose, pullover: Pale yellow-L-Sweatshirt | Pale yellow-L-Pants | Pale yellow-M-Sweatshirt | Pale yellow-M-Pants | Pale yellow-S-Sweatshirt | Pale yellow-S-Pants | Pale yellow-XL-Sweatshirt | Pale yellow-XL-Pants
-- `15449439994241` [Farbe] **Retro Sport-Casual Gestreifte Jacke und Weitbein-Hose** — hose, jacke: Coat Red | Coat Black | Pants Red | Pants Black
-- `15453570728321` [Farbe] **Japanischer Segler-Anzug** — kleid, rock · Titel nennt Set: Short Sleeves Bow Tie | Long Sleeves Bow Tie | Short Sleeves Skirt Bow Tie | Long Sleeve With Dress Bow Tie | Skirt
-- `15459786752385` [Farbe] **Haltbare Einheitsjacke mit mehreren Taschen** — hose, oberteil: Black Suspender Pants | Dark Gray Suspender Pants | Dark Gray Split Suit | Dark Gray Trousers | Dark Gray Single Blouse
-- `15489629618561` [Ausführung] **Herren Kapuzen-Mantel, dick wattiert** — weste: Conventional | Hooded | Vest
-- `15491406987649` [Farbe] **Hoodie und Hose im Set** — hose, pullover · Titel nennt Set: Gray Sweater | Gray Trousers
-- `15493919900033` [Farbe] **Hoodie-Set mit geradem Bein im Preppy-Stil** — hose · Titel nennt Set: gray wide leg pants | gray K02 pants | gray black sweatpants | gray flare pants | gray floral pants | gray+floral pants | white K02 pants | white black sweatpants
-- `15494893339009` [Farbe] **Slim-Fit T-Shirt mit Totem-Print** — oberteil, weste: Black Gray-T Shirt | Black Gray-Vest | Black Red-T Shirt | Black Red-Vest
-- `15495404061057` [Farbe] **Ärmelloses Top mit Vintage-Maxirock** — jacke, kleid: Beige Coat | Apricot Dress
-- `15497420833153` [Farbe] **Ballett-Trägerkleid im Western-Stil** — rock: Blue Suspender Skirt-With A Tail Fin | Blue Suspender Skirt-Without A Tail Fin | Pink Suspender Skirt-With A Tail Fin | Pink Suspender Skirt-Without A Tail Fin
-- `15500261392769` [Ausführung] **Schlichter Baumwoll-Top** — weste: Vest | Short
-- `15500925993345` [Farbe] **Tiermotiv-Knitted-Jacke** — hose, overall, pullover: Red-100cm-Cardigan | Red-100cm-Romper | Red-110cm-Cardigan | Red-110cm-Romper | Red-66cm-Cardigan | Red-66cm-Romper | Red-73cm-Cardigan | Red-73cm-Romper
-- `15503157526913` [Farbe] **Retro-Chic Midikleid mit Tüll-Oberteil** — pullover, rock: Black Cardigan-Plus Size L | Black Cardigan-Plus Size XL | Black Cardigan-Plus Size 2XL | Black Cardigan-Plus Size 3XL | Black Cardigan-Plus Size 4XL | Black Cardigan | Sleeveless Floral Skirt-Plus Size L | Sleeveless Floral Skirt-Plus Size XL
-- `15506707251585` [Farbe] **Hemd und Hose mit Taillengürtel** — hose, oberteil: 689 White Shirt | 690 White Trousers
-- `15523850486145` [Farbe] **Bambus-Strickjacke: wasserabweisend, öl- & fleckenresistent** — oberteil: SF23451-38-Mens long sleeved shirt | SF23451-38-Mens short sleeved shirt | SF23451-39-Mens long sleeved shirt | SF23451-39-Mens short sleeved shirt | SF23451-40-Mens long sleeved shirt | SF23451-40-Mens short sleeved shirt | SF23451-41-Mens long sleeved shirt | SF23451-41-Mens short sleeved shirt
-- `16603331658119` [Farbe] **Lange Steppweste mit Kapuze** — jacke, weste: Black Vest Jacket | Khaki Cotton Jacket Vest Coat | Brown Cotton Coat Vest Coat
-- `16603338408327` [Farbe] **Slim-Fit Daunenjacke mit weisser Federfüllung** — pullover: Beige Hooded | Light Purple Hoodie | Black Hooded | Navy Blue Hooded | Rose Red Hooded | White Hooded | Bean Green Hooded
-- `16603765899655` [Farbe] **Baby Strick-Set mit Hose und Haarband · 3 Stück** — hose, pullover · Titel nennt Set: Cardigan Sweater | Knitted Pants | Hair Band | Three Piece Set
-- `16613406179719` [Farbe] **Strick-Set für Mädchen – Pullover & Shorts** — jacke, overall · Titel nennt Set: Romper Grape Red | Coat Grape Red | Romper Apricot | Coat Apricot
-- `16613406966151` [Farbe] **Baby-Overall aus Baumwolle** — overall, weste: Beige Romper | Coffee Color Romper | Beige Vest | Coffee Vest | Pink | Hellgrau | Grün | Blau
-- `16614832112007` [Farbe] **Halloween Kostümkleid Set** — rock · Titel nennt Set: 8735 One Skirt | 8735 Single Cloak | 8735 Skirt Cloak
-- `16615380779399` [Farbe] **Satinbluse Langarm** — hose: Braun | Champagner | Schwarz | Grün | Lila | Claret | Coffee pants | Brown set
-- `16615410958727` [Farbe] **Damen-Kleid Moonlight Melody** — oberteil: Moonlight Color | White Blouse
-- `16615656194439` [Farbe] **Jacquard Kleid-Set mit Schleife** — jacke, oberteil, rock · Titel nennt Set: Top Skirt Blazer | Top Skirt Blouse Sleeve | Black Skirt Support
-- `16615807222151` [Farbe] **Hochzeitskleid-Set für Puppen** — weste · Titel nennt Set: Wedding Progress-Without Baby | Mr Vest-Without Baby
+_keine_
+
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
 > Die Übersetzung ergäbe zwei gleichlautende Werte (meist «Blue» neben «Blau»). Zusammenlegen ist Sache von `farbwert_dubletten.py` bzw. eines Menschen.
 
 - `15450839777665` [Farbe] xxl-hoodie-decke-mit-taschen-fur-sie-ihn-059264: 120cm pink → 120 cm Pink; 120cm black → 120 cm Schwarz; 120cm navy blue → 120 cm Marineblau; 120cm grey → 120 cm Grau; 150cm pink → 150 cm Pink
-- `15443497025921` [Farbe] smartwatch-activeone-fitness-anrufe-101440: Braun Aprikose Gelb → Braun-Aprikose-Gelb; Braun Aprikose Braun → Braun-Aprikose-Braun; Braun Aprikose → Braun-Aprikose
-- `15447596302721` [Farbe] glanzendes-mini-kleid-mit-raffung-634500: Marineblaublau → Marineblau
-- `15447598268801` [Farbe] damen-kleid-mit-puffarmeln-und-taillengurtel-613900: Marineblaublau → Marineblau
-- `15447603413377` [Farbe] leinenhemd-kurzarm-loose-fit-fur-herren-613900: Marineblaublau → Marineblau
-- `15447603806593` [Farbe] casual-loose-fit-t-shirt-mit-zwei-taschen-628400: Marineblaublau → Marineblau
-- `15447603937665` [Farbe] herren-jacquard-polo-shirt-mit-reissverschluss-614101: Marineblaublau → Marineblau
-- `15447604658561` [Farbe] polo-shirt-kurzarm-slim-fit-pique-baumwolle-615000: Marineblaublau → Marineblau
-- `15447605510529` [Farbe] leinenhemd-langarmlig-fur-herren-624700: Marineblaublau → Marineblau
-- `15447606198657` [Farbe] jacquard-polo-shirt-mit-reverskragen-602400: Marineblaublau → Marineblau
-- `15447606428033` [Farbe] herren-langarmhemd-mit-revers-619700: Marineblaublau → Marineblau
-- `15447606657409` [Farbe] leinenhemd-kurzarm-fur-herren-605000: Marineblaublau → Marineblau
-- `15447889740161` [Farbe] sonnen-cape-im-retro-stil-617300: Black Lake Blue → Schwarz-Seeblau; Rose Red Black → Rosarot-Schwarz; White Color → Weiss; Light Blue Silver → Hellblau-Silber
-- `15448539922817` [Farbe] eleganter-casual-jumpsuit-mit-weitem-bein-613100: Lemon Green → Zitronengrün
-- `15448673288577` [Farbe] gefutterter-coral-fleece-loungewear-hoodie-615800: Black Red Checkered → Schwarz-Rot kariert; Deep Green → Dunkelgrün; Dark Green → Dunkelgrün; Flower Gray → Graumeliert; Gray Brown → Grau-Braun
-- `15448903385473` [Farbe] herren-automatikuhr-skelettiert-609900: Black Golden Black → Schwarz-Gold-Schwarz; Black Gold Black → Schwarz-Gold-Schwarz; Black Silver Black → Schwarz-Silber-Schwarz; Brown With Gold And White → Braun mit Gold-Weiss; Brown Gold White → Braun-Gold-Weiss
-- `15449065718145` [Farbe] corduroy-weste-im-preppy-stil-fur-herren-635500: Deep Coffee → Dunkelkaffeebraun; Green Coffee → Grün-Kaffeebraun
-- `15449432555905` [Farbe] ems-bauch-und-muskel-trainer-b08b29: A Set1 → A Set 1; A Set2 → A Set 2; Red battery → Rot Batterie; Set2 → Set 2; Set1 → Set 1
-- `15450036601217` [Farbe] retro-high-top-schuhe-fur-herren-600800: Black → Schwarz
-- `15450830176641` [Farbe] kuschel-hoodie-mit-grosser-tasche-052928: Dark gray → Dunkelgrau; Army Green Blue → Armeegrün-Blau; Army Green 2pcs → Armeegrün · 2 Stück; Coffee 2pcs → Kaffeebraun · 2 Stück; Grey 2pcs → Grau · 2 Stück
-- `15450837975425` [Farbe] hangematte-mit-moskitonetz-pop-up-241216: Blue blue → Blau; Green green → Grün
-- `15450840596865` [Farbe] kompression-shorts-mit-taschen-ebe7fd: Camouflage grey → Camouflage Grau; Army green camouflage → Armeegrün Camouflage; Weissweiss → Weiss; Schwarzschwarz → Schwarz; White camouflage → Weiss Camouflage
-- `15453570597249` [Farbe] hochtaillierte-caprihosen-638600: Marineblaublau → Marineblau
-- `15453761798529` [Farbe] lassiger-waffelstrick-stehkragen-pullover-mit-610300: Marineblaublau → Marineblau
-- `15453761929601` [Farbe] farbige-hoodie-mit-kordelzug-636100: Marineblaublau → Marineblau
-- `15454132371841` [Farbe] mid-rise-flared-jeans-629100: Medium Blue → Mittelblau
-- `15454235689345` [Farbe] high-waist-yoga-pants-mit-beutlifting-effekt-632800: Kaffeebraun-Braun → Kaffeebraun
-- `15455729582465` [Farbe] sonnenschutzpullover-mit-kragen-und-kurzarmel-629700: Mustard Yellow → Senfgelb
-- `15456157794689` [Farbe] weite-cropped-hosen-620200: Marineblaublau → Marineblau
-- `15458844049793` [Farbe] herren-langarm-button-down-hemd-615300: Pink Color → Pink
-- `15466024305025` [Farbe] elegantes-a-linien-kleid-mit-ruschenarmeln-620600: Polka Dot → Gepunktet; Marineblaublau → Marineblau
-- `15468651315585` [Farbe] retro-bluse-622200: Pink Color → Pink
-- `15480167530881` [Farbe] leder-sneaker-mit-seitenreissverschluss-630000: US8 → US 8; US9 → US 9; US9.5 → US 9.5; US10.5 → US 10.5; US11.5 → US 11.5
-- `15485613965697` [Farbe] herren-outdoor-flip-flops-fur-zuhause-604300: Black → Schwarz
-- `15493619810689` [Farbe] elegantes-langarm-kleid-mit-blumenmuster-625900: Medium Orange → Mittelorange
-- `15493845287297` [Farbe] v-ausschnitt-strickkleid-fur-herbst-winter-605200: Deep Orange → Dunkelorange
-- `15498676502913` [Farbe] kapuzen-shirt-mit-stickerei-und-hakel-details-620500: 2 White → 2 Weiss; 2 Apricot → 2 Aprikose; 3 White → 3 Weiss; 3 Apricot → 3 Aprikose; 4 White → 4 Weiss
-- `15499303190913` [Farbe] blade-sports-mesh-laufschuhe-614000: All Black-39-Heel height 10cm → Komplett Schwarz-39-Absatzhöhe 10 cm; All Black-40-Heel height 10cm → Komplett Schwarz-40-Absatzhöhe 10 cm; All Black-41-Heel height 10cm → Komplett Schwarz-41-Absatzhöhe 10 cm; All Black-42-Heel height 10cm → Komplett Schwarz-42-Absatzhöhe 10 cm; All Black-43-Heel height 10cm → Komplett Schwarz-43-Absatzhöhe 10 cm
-- `15503958442369` [Farbe] kinder-barfussschuhe-fur-strand-und-freizeit-0515f4: black red → Schwarz-Rot; black blue → Schwarz-Blau; black and white → Schwarz-Weiss
-- `15504103768449` [Farbe] pailletten-disco-hemd-fur-teenager-618700: Black Color → Schwarz
-- `15506325275009` [Farbe] ethno-sandalen-mit-klettverschluss-und-dicker-624200: Brown And Pink → Braun-Pink; Red Color → Rot; Blue Color → Blau; Red Flower → Rot geblümt; Green Flower → Grün geblümt
-- `15517782933889` [Farbe] a-linien-kleid-mit-spitze-und-ruschen-616000: Emerald Green → Smaragdgrün
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
-- 4 Sitzungen · `15412918190465` blumen-maxikleid-fleurette-neckholder-mit-fishtail [Farbe]: Color
 - 4 Sitzungen · `15450836566401` led-wasserwellen-projektionsleuchte-677504 [Ausführung]: 3W-16color plug in square-1PC | 3W-16color plug in crown-3PCS | 3W-16color plug in crown-1PC | 3W-16color plug in square-2PCS | 3W-16color plug in crown-2PCS | 3W-16color plug in square-3PCS
-- 1 Sitzungen · `15476000293249` a5-notizbuch-im-retro-stil-634100 [Ausführung]: A5 Loose Spiral Notebook-Tree Of Life Brownish Red | A5 Loose Spiral Notebook-Tree Of Life Gray | A5 Loose Spiral Notebook-Tree Of Life Green | A5 Loose Spiral Notebook-Smiling Sun Brown | A5 Loose Spiral Notebook-Smiling Sun Blue
 - 1 Sitzungen · `15521235992961` damen-v-ausschnitt-trager-mehrlagiges-bedruckt-624900 [Farbe]: Foundation Flower | White Background Pink | Purple On White Background | Big Red Flower | Little Blue Flowers
+- 1 Sitzungen · `15476000293249` a5-notizbuch-im-retro-stil-634100 [Ausführung]: A5 Loose Spiral Notebook-Tree Of Life Brownish Red | A5 Loose Spiral Notebook-Tree Of Life Gray | A5 Loose Spiral Notebook-Tree Of Life Green | A5 Loose Spiral Notebook-Smiling Sun Brown | A5 Loose Spiral Notebook-Smiling Sun Blue
 - 1 Sitzungen · `15450839777665` xxl-hoodie-decke-mit-taschen-fur-sie-ihn-059264 [Farbe]: Short pink | Short black | Short navy blue | Short wine red | Short grey | 120cm red black grid
 - 1 Sitzungen · `15443496927617` fitness-tracker-activeband-herzfrequenz-schrit-635800 [Farbe]: Rose Gold Steel Belt | Black Steel Belt Silicone Band | Silver Steel Strip | Black Magnetic Silicone Strap | Silver Magnetic Silicone Strap
 - 1 Sitzungen · `15450851967361` augenbrauen-epilierer-5121f6 [Farbe]: Black usb charging color box | Blue usb charging color box | Red usb charging color box | Rose usb charging color box | White usb charging color box | Black charging color box 2PC
 - 1 Sitzungen · `15453761372545` dehnbare-yoga-hose-aus-ice-silk-622700 [Ausführung]: 01Bleach Color-100 X 165CM -75D ice silk | 02Books White-100 X 165CM -75D ice silk | 03Light Blue-100 X 165CM -75D ice silk | 04Pink-100 X 165CM -75D ice silk | 05Gray-100 X 165CM -75D ice silk | 06Black-100 X 165CM -75D ice silk
 - 1 Sitzungen · `15412945224065` herrenuhr-carre-minimalist-square [Farbe]: Silver Case Blue Face Blue | Silver Shell Brown | Gold Shell Black | Golden Shell Brown | Golden Shell Blue Blue | Gold Shell Blue
-- 1 Sitzungen · `15450829521281` kabelloser-mini-entsafter-fur-fruchte-gemuse-545600 [Farbe]: Fresh Green | Simple White
 - 1 Sitzungen · `15414490399105` oversized-sonnenbrille-street-getont-square-style-3-farben [Farbe]: Transparent-Tea
 - 1 Sitzungen · `15443182813569` moissanit-ring-marquise-4ct-925-silber-625300 [Ausführung]: Code No Gold High carbon stone | Code No Platinum Gold High carbon stone | US Code No 8-Gold-High carbon stone | US Code No 8-Platinum gold-High carbon stone | Gold High carbon stone | Platinum Gold High carbon stone
 - 1 Sitzungen · `15450851836289` press-lock-schnursenkel-elastisch-bindefrei-755456 [Farbe]: Big red | White shoe buckle | Black shoe buckle
 - 1 Sitzungen · `15450828800385` e-ink-smartphone-hulle-mit-personalisierbarem-336320 [Farbe]: Black-Apple 15pro | Black-Apple 15Promax | Black-Apple 14 Promax | Gray-Apple 15pro | Gray-Apple 15Promax | Gray-Apple 14 Promax
 - 1 Sitzungen · `15475226247553` kuscheldecke-mit-halloween-print-611200 [Farbe]: White Skull Ghost | Bat Spider White | Pumpkin Ghost Skull White | Pumpkin Hat White | Elk White | Easter One
-- 1 Sitzungen · `15493835620737` herren-kunstlederhose-mit-reissverschluss-717504 [Farbe]: Black 6655Full Leather | Black1318 Full Leather | Black6562 Full Leather | Black 1623Full Leather | Black6565 Full Leather | Black 6566Full Leather
 - 1 Sitzungen · `15472044147073` retro-kariert-schal-608600 [Farbe]: Rice Coffee
 - 1 Sitzungen · `15449569722753` eleganter-a-linien-maxi-rock-613900 [Ausführung]: Short stature | Regular style
 
@@ -136,5 +54,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 592, `light` 443, `color` 415, `size` 164, `shell` 159, `degrees` 159, `⟨satzbau:material-vor-farbe⟩` 152, `core` 137, `surface` 132, `powder` 128, `skin` 111, `diamond` 109, `high` 104, `inside` 104, `three` 102, `dinosaur` 101, `yards` 98, `no` 97, `shoes` 95, `bag` 91, `to` 90, `⟨satzbau:mass-ohne-einheit⟩` 90, `belt` 89, `rain` 89, `french` 89, `code` 85, `dark` 85, `case` 84, `four` 82, `opp` 81, `buckle` 80, `inner` 79, `cloth` 78, `cherry` 76, `rope` 75, `spring` 72, `little` 70, `chain` 70, `autumn` 69, `hat` 68, `dual` 68, `net` 68, `petal` 68, `half` 67, `base` 63, `strap` 62, `feet` 62, `bear` 62, `⟨satzbau:menge-vor-nomen⟩` 62, `⟨satzbau:mass-unplausibel⟩` 62, `of` 60, `tea` 59, `plush` 59, `one` 56, `rice` 55, `background` 54, `night` 54, `bottom` 54, `face` 53, `line` 52
+`promax` 13, `high` 12, `carbon` 12, `stone` 12, `iphone13` 12, `color` 10, `platinum` 9, `16color` 7, `⟨satzbau:adjektiv-vor-nomen⟩` 7, `ice` 6, `moissanite` 6, `15promax` 6, `loose` 5, `spiral` 5, `notebook` 5, `shell` 5, `15pro` 5, `code` 4, `iphone16` 4, `iphone16pro` 4, `iphone16promax` 4, `iphone16plus` 4, `crown` 3, `tree` 3, `of` 3, `life` 3, `case` 3, `iphone12` 3, `iphone12pro` 3, `iphone12promax` 3, `ck` 3, `background` 2, `smiling` 2, `sun` 2, `grid` 2, `belt` 2, `magnetic` 2, `strap` 2, `no` 2, `shoe` 2, `buckle` 2, `skull` 2, `ghost` 2, `pumpkin` 2, `replenishment` 2, `base` 1, `foundation` 1, `on` 1, `little` 1, `brownish` 1, `band` 1, `strip` 1, `grandmother` 1, `01bleach` 1, `02books` 1, `03light` 1, `04pink` 1, `05gray` 1, `06black` 1, `face` 1
 
