@@ -56,3 +56,25 @@ export function seoTitel(roh) {
     + `Jetzt –10% mit Code WELCOME10.`, MAX_BESCHREIBUNG);
   return { title, description };
 }
+
+/**
+ * Fehlt an diesem Produkt wirklich ein SEO-Feld?
+ *
+ * WARUM (am 2026-10-23 am Live-Shop gemessen): Shopify speichert einen SEO-Titel NICHT, der Wort
+ * fuer Wort dem Produkttitel entspricht — `seo.title` bleibt `null`, und die Seite traegt ohnehin
+ * genau diesen Titel. Genau das erzeugt `seoTitel` fuer jeden Produkttitel, der zu lang fuer die
+ * Marke und zu kurz fuers Kuerzen ist: dann kommt der Titel unveraendert zurueck. Ein Lauf, der
+ * nur `!seo.title` prueft, meldet diese Produkte bei JEDEM Lauf als offen und verbraucht jedes Mal
+ * eine Schreib-Abfrage, die nichts aendert. Belegt am Produkt „Relaxed-Fit Hoodie «Cosy» – mit
+ * Fell-Panel & Kordelzug" (54 Zeichen): Beschreibung gesetzt, `seo.title` nach dem Schreiben null.
+ *
+ * Dieselbe Fehlerklasse wie der stille Skip, nur umgekehrt: ein stiller ERFOLG sieht aus wie eine
+ * Luecke. Darum gilt `null` als „wie der Produkttitel", sobald genau das erzeugt wuerde.
+ */
+export function seoOffen(produktTitel, seo) {
+  const erzeugt = seoTitel(produktTitel);
+  if (!erzeugt.title && !erzeugt.description) return false;   // es gibt nichts zu setzen
+  if (!seo?.description) return true;                         // Beschreibung fehlt — nachtragen
+  if (seo?.title) return false;                               // beides da
+  return erzeugt.title !== produktTitel;                      // null = wie der Produkttitel
+}

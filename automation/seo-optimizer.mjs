@@ -11,7 +11,7 @@
  *      TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
  */
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
-import { seoTitel } from './lib/seo_titel.mjs';
+import { seoTitel, seoOffen } from './lib/seo_titel.mjs';
 import { shopifyGql } from './lib/shopify_gql.mjs';
 const SHOP = process.env.SHOPIFY_SHOP || '';
 const TOK_STATIC = process.env.SHOPIFY_ADMIN_TOKEN || '';
@@ -88,7 +88,11 @@ while(true){
   for(const p of conn.nodes){
     scanned++;
     if(p.media?.nodes?.some(m => m.status && m.status !== 'READY')) failedImgs.push(p.title);
-    const needs = !p.seo?.title || !p.seo?.description;
+    // Nicht `!seo.title` pruefen: Shopify speichert keinen SEO-Titel, der dem Produkttitel
+    // gleicht, und genau den erzeugt seoTitel fuer mittellange Titel. Begruendung + Tests in
+    // automation/lib/seo_titel.mjs (seoOffen) — sonst meldet jeder Lauf dieselben Produkte
+    // als offen und verbraucht jedes Mal eine Schreib-Abfrage, die nichts aendert.
+    const needs = seoOffen(p.title, p.seo);
     if(needs){
       const seo = mkSeo(p.title);
       if(DRY){ console.log('würde SEO setzen:', p.title, '→', seo.title); updated++; }
