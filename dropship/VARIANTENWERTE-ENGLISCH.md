@@ -6,11 +6,11 @@
 
 ## Zahlen
 
-- Produkte gesehen: **37'233**
-- Optionen mit englischen Werten (Kandidaten): 2'478
+- Produkte gesehen: **37'831**
+- Optionen mit englischen Werten (Kandidaten): 2'487
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 13'435
+- Werte mit unbekanntem Wort (unverändert): 13'445
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
 - übersprungen «kleidungsstueck-im-wert»: 60
 - übersprungen «kollision-nach-uebersetzung»: 40
@@ -119,5 +119,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 543, `light` 425, `color` 304, `shell` 159, `degrees` 159, `size` 140, `core` 137, `⟨satzbau:material-vor-farbe⟩` 131, `surface` 129, `powder` 120, `diamond` 108, `high` 101, `skin` 101, `no` 95, `bag` 91, `three` 91, `⟨satzbau:mass-ohne-einheit⟩` 90, `belt` 89, `rain` 88, `shoes` 85, `case` 84, `french` 84, `four` 82, `opp` 81, `dark` 80, `yards` 79, `inner` 78, `rope` 75, `code` 73, `to` 73, `spring` 69, `chain` 68, `dual` 68, `petal` 68, `dinosaur` 66, `autumn` 66, `half` 66, `little` 65, `buckle` 65, `base` 63, `cloth` 63, `net` 63, `feet` 62, `⟨satzbau:mass-unplausibel⟩` 62, `of` 60, `strap` 60, `cherry` 60, `tea` 57, `plush` 56, `one` 55, `night` 54, `face` 52, `line` 52, `yarn` 52, `person` 51, `fold` 51, `lens` 50, `ice` 49, `bear` 49, `rice` 48
+`⟨satzbau:adjektiv-vor-nomen⟩` 543, `light` 426, `color` 305, `shell` 159, `degrees` 159, `size` 140, `core` 137, `⟨satzbau:material-vor-farbe⟩` 131, `surface` 129, `powder` 120, `diamond` 108, `high` 101, `skin` 101, `no` 95, `bag` 91, `three` 91, `⟨satzbau:mass-ohne-einheit⟩` 90, `belt` 89, `rain` 88, `shoes` 85, `case` 84, `french` 84, `four` 82, `dark` 81, `opp` 81, `yards` 79, `inner` 78, `rope` 75, `code` 73, `to` 73, `spring` 69, `chain` 68, `dual` 68, `petal` 68, `dinosaur` 66, `autumn` 66, `half` 66, `little` 65, `buckle` 65, `base` 63, `cloth` 63, `net` 63, `feet` 62, `⟨satzbau:mass-unplausibel⟩` 62, `of` 60, `strap` 60, `cherry` 60, `tea` 57, `plush` 56, `one` 55, `night` 54, `face` 52, `line` 52, `yarn` 52, `person` 51, `fold` 51, `lens` 50, `ice` 49, `bear` 49, `rice` 48
 
