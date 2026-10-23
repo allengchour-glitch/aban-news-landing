@@ -1,6 +1,6 @@
 /** Test fuer seoTitel. Die Titel unten sind ECHT, am 2026-10-17 aus dem Live-Katalog gelesen.
  *  Lauf: /opt/node22/bin/node automation/lib/seo_titel_test.mjs   */
-import { seoTitel, titelNormalisieren, kuerzen, MAX_TITEL, MAX_BESCHREIBUNG } from './seo_titel.mjs';
+import { seoTitel, seoOffen, titelNormalisieren, kuerzen, MAX_TITEL, MAX_BESCHREIBUNG } from './seo_titel.mjs';
 let fehler = 0;
 const pruef = (n, ok, extra = '') => { if (!ok) { fehler++; console.log(`FAIL ${n}  ${extra}`); } else console.log(`ok   ${n}`); };
 
@@ -54,6 +54,25 @@ pruef('kuerzen laesst Kurzes unberührt', kuerzen('kurz', 60) === 'kurz');
 pruef('ein überlanges Wort wird nicht leer', kuerzen('A'.repeat(80), 20).length === 20, kuerzen('A'.repeat(80), 20));
 // Emoji im Titel (der Katalog hat welche) darf nicht zerstoert werden
 pruef('Emoji bleibt', titelNormalisieren('Transportbox 🐾 für Hund') === 'Transportbox 🐾 für Hund');
+
+// ── seoOffen: Shopify speichert einen SEO-Titel nicht, der dem Produkttitel gleicht ──
+// Echter Fall vom 2026-10-23: 54 Zeichen, Marke passt nicht mehr dazu, gekuerzt wird nichts.
+const GLEICH = 'Relaxed-Fit Hoodie «Cosy» – mit Fell-Panel & Kordelzug';
+pruef('erzeugter Titel gleicht hier dem Produkttitel', seoTitel(GLEICH).title === GLEICH, seoTitel(GLEICH).title);
+pruef('Beschreibung da, Titel null, erzeugt = Produkttitel → NICHT offen',
+  seoOffen(GLEICH, { title: null, description: 'irgendwas' }) === false);
+// GEGENPROBE 1: die alte Regel hielt genau diesen Fall fuer offen — sonst aendert der Fix nichts
+pruef('alte Regel haette ihn offen gemeldet', (!null || !'irgendwas') === true);
+// GEGENPROBE 2: wo die Marke hineinpasst, ist ein fehlender Titel eine ECHTE Luecke
+const KURZ = 'Jade Roller';
+pruef('kurzer Titel bekommt die Marke', seoTitel(KURZ).title !== KURZ, seoTitel(KURZ).title);
+pruef('Beschreibung da, Titel null, erzeugt ≠ Produkttitel → offen',
+  seoOffen(KURZ, { title: null, description: 'irgendwas' }) === true);
+// Die uebrigen Faelle
+pruef('nichts gesetzt → offen', seoOffen(KURZ, null) === true);
+pruef('nur Titel gesetzt → offen (Beschreibung fehlt)', seoOffen(KURZ, { title: 'X', description: '' }) === true);
+pruef('beides gesetzt → nicht offen', seoOffen(KURZ, { title: 'X', description: 'Y' }) === false);
+pruef('leerer Produkttitel → nicht offen (es gibt nichts zu setzen)', seoOffen('   ', null) === false);
 
 console.log(fehler ? `\n${fehler} FEHLER` : '\nalle Tests gruen');
 process.exit(fehler ? 1 : 0);
