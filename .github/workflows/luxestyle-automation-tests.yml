@@ -7,6 +7,7 @@ on:
       - 'automation/metricool-schedule.mjs'
       - 'automation/price_guard.mjs'
       - 'automation/cross_sell.mjs'
+      - 'automation/lieferbarkeit_guard.mjs'
       - 'automation/image-audit.mjs'
       - 'automation/titel_deutsch_fix.mjs'
       - 'automation/shop_brain.mjs'
@@ -69,6 +70,7 @@ jobs:
           node --check dropship/cj_enrich.mjs
           node --check automation/publish_guard.mjs
           node --check automation/cross_sell.mjs
+          node --check automation/lieferbarkeit_guard.mjs
           node --check automation/image-audit.mjs
           node --check automation/titel_deutsch_fix.mjs
           node --check automation/shop_brain.mjs
@@ -81,6 +83,7 @@ jobs:
           node automation/lib/cross_sell_ziel_test.mjs
           node automation/lib/bild_befund_test.mjs
           node automation/lib/titel_deutsch_test.mjs
+          node automation/lib/lieferbarkeit_test.mjs
       - name: CJ failures and publication regressions (mock APIs only)
         run: |
           node automation/lib/cj_response_test.mjs
