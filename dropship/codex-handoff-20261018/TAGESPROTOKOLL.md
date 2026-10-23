@@ -142,6 +142,11 @@ Tagesfortführung: gezielte Shopify-SEO-Gegenprobe und Kategorie-Metadatenpflege
 | Verkaufsgrundlage | Texte auf Suchintention, Schweizer Shop-Kontext und überprüfbare Aussagen begrenzt | Keine erfundenen Eigenschaften, Masse, Reviews, Liefer- oder Bestandsversprechen; keine Rabatt-, Feed-, Theme- oder Flow-Änderung |
 | Nächster Schritt | Öffentliche Indexierung und Snippet-Propagation weiter beobachten; Theme-Versand-JSON-LD bleibt wegen unklarer Draft-Rücklesung offen | SEO-Metadaten sind Shopify-seitig aktualisiert; Google-Neuaufnahme und öffentliche Cache-Änderung bleiben unbekannt |
 
+| Shopify / Metricool Gegenprobe | Shop-Identität, Metricool brandId 6227837, Europe/Zurich und sechs Kanal-IDs frisch gelesen | Shopify luxestyle.ch und alle bekannten Kanalidentitäten passend bestätigt; keine Abweichung, kein Write |
+| Planung | Metricool in kleinen Tagesabfragen für 23.–29.10. geprüft; UUIDs, Netzwerke und Medien verglichen | 23.10.: 21 Objekte, davon 1 PUBLISHED-Kanalzustand und 20 PENDING; 24.–25.10.: je 21 PENDING; 26.–29.10.: keine gelieferten Daten. Keine exakten Doppelungen derselben Netzwerk-/Medienkombination in 23.–25.10.; vollständige Historie unbekannt |
+| Produkt / Master | Projektor mit Produkt-/Varianten-ID, ACTIVE-Status, Tags, CHF-Preis, echtem Bild, Kaufbarkeit sowie Tracking/inventoryPolicy gelesen | CHF 34.90, availableForSale true, inventoryQuantity 0, untracked/CONTINUE; keine Bestands- oder Lieferzusage. Master bleibt wegen fehlender professioneller MP4 und offener Rechte/Motivzuordnung blockiert |
+| Content / Verkauf | Kompaktes Master-Paket mit zwei Hooks, 18-s-Schnittplan, Kanal-UTM-Entwürfen und klarer Verkaufsaktion weitergeführt | Entwurf zur Inhaberfreigabe; keine Social-Veröffentlichung und keine Flow-/Rabatt-/Budgetänderung |
+
 ## Fortführung
 
 Jeder Zürcher Kalendertag erhält einen eigenen Datumsblock mit den belegten Tätigkeiten dieses Tages. Mehrere Läufe ergänzen denselben Tag. Bereits erfasste Tätigkeiten nicht erneut als neu ausgeben; Korrekturen nachvollziehbar benennen. Bei fehlenden oder unlesbaren Quellen keine leere Vergangenheit behaupten und das Protokoll nicht zurücksetzen.
