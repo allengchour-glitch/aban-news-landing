@@ -4,6 +4,21 @@
 > Wer nur eine der beiden sieht, hält die andere für einen Fehler und „korrigiert" sie kaputt.
 > Das ist am 04.10.2026 zwei Sitzungen am selben Tag passiert. Vor jeder Änderung diese Seite lesen.
 
+> ## ⚠️ KORREKTUR 23.10.2026 — die Regeln sind inzwischen GETAUSCHT
+>
+> Live gemessen am 23.10.2026: **„ab CHF 45“ ist AUS, „ab CHF 50“ ist AKTIV** — also genau umgekehrt
+> wie in der Tabelle unten. Alles andere auf dieser Seite gilt weiter, besonders: **Shopify prüft
+> den Betrag NACH Rabatt.** Gegenprobe an echten Körben (Storefront, CH-Adresse):
+> Warenwert **54.80 → nach dem automatischen „Bundle: 2+ Artikel -10%“ 49.32 → nur Standard CHF 7.00**;
+> Warenwert **59.80 → 53.82 → Kostenloser Versand 0.00**.
+> Damit braucht es real **CHF 55.56 Warenwert**, während jede Seite „gratis ab CHF 50“ verspricht —
+> Körbe von 50.00 bis 55.55 zahlen CHF 7. Genau dagegen war die 45er-Regel gedacht.
+> **Entscheid liegt beim Besitzer** (Empfehlung: 45er-Regel wieder ein, 50er aus). Wer das per API
+> macht: nur die beiden `active`-Schalter anfassen — `1527737287047` (45) und `1540193485191` (50).
+>
+> Die Tabelle unten bleibt als Beleg für den Stand vom 04.10. stehen. **Vor jeder Änderung die
+> Regeln live lesen, nicht dieser Datei glauben.**
+
 ## Gemessen am 04.10.2026 (live, mit Gegenprobe)
 
 **Versandregeln** (Admin-API, Profil „Allgemeines Profil", Zone Domestic/CH):

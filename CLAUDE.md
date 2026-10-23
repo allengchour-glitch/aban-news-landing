@@ -84,6 +84,56 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-23 nachts (🤖 ChatGPTs Arbeit nachgeprüft — ein echter Blocker behoben, eine Versand-Regel gekippt):**
+Der User: „chatgpt hat gearbeitet schaue nach und update dich immer“. Dauerauftrag ab jetzt: **ChatGPTs
+Arbeit in jeder Sitzung nachsehen und danach das Gedächtnis nachführen.**
+- **🔎 SO ERKENNT MAN SIE:** Branches `codex/<thema>-<JJJJMMTT>`, PRs mit
+  `performed_via_github_app: chatgpt-codex-connector` (Autor ist trotzdem der Besitzer), und im
+  Commit **fehlt `Co-Authored-By: Claude`** — das trennt die Historie sauber. ChatGPT läuft in drei
+  Fenstern am Tag: **08–09, 14–15, 19–20 Uhr** Europe/Zurich (eigene Aufgabe, kein Repo-Cron).
+- **Gemergt auf `main`:** #2669 (Checkpoints für CJ-Import/Metricool/Meta-Posts), #2696/#2701/#2702/#2704
+  = „LuxeStyle Assist“ 2.2–2.4 (lokaler MCP-Server, zehn lesende Werkzeuge). **Hier nachgerechnet, alles
+  grün:** `review_safety_test`, `metricool_checkpoint_test`, `meta_checkpoint_test`,
+  `cj_import_checkpoint_test`, `cj_response_test`, `test_render_brand_video.py`. Claudes
+  Schutzschichten sind **intakt** — `kanal_sperren` im publish_guard und `taktPause` im shopify_gql
+  haben den Umbau überlebt. Live-Posten ist doppelt verriegelt (`DRY_RUN=0` **und**
+  `APPROVE_PUBLISH=1`, fail-closed geprüft). Qualität sauber: datierte Messwerte, Unbekanntes bleibt
+  „unbekannt“, keine erfundenen Zahlen, keine Fake-Bewertungen.
+- **🚨 DER ASSIST WAR VOM ECHTEN CLIENT AUS UNBENUTZBAR — und das sah aus wie ein fertiges Werkzeug.**
+  Claude Code schickt an jedem Toolaufruf `params._meta` (Fortschritts-Token); der Server auf `main`
+  antwortete darauf mit `-32602`. Alle zehn Werkzeuge gingen im Selbsttest, aber keines im echten
+  Betrieb. ChatGPTs PR **#2708** behebt genau das; selbst gegengeprüft (Aufruf mit `_meta` klappt,
+  **zusätzliche Argumente und fremde Top-Level-Felder fliegen weiter**) und gemergt.
+- **⚙️ `luxe_change_plan` mit Commit-Pins braucht Git ≥ 2.45** (`--no-lazy-fetch`). Auf älterem Git
+  (dieser Container: 2.43) meldet es `unknown: git_commit_read_incomplete` — fail-closed, aber
+  wirkungslos, und genau dieser eine von 174 Assist-Tests fällt dann rot. In GitHub-CI ist Git neu
+  genug, darum fällt es dort nicht auf. **Auf dem PC des Users zuerst `git --version` prüfen.**
+- **🚨 GRATIS-VERSAND IST AUF CHF 50 GEKIPPT — und bricht damit das Versprechen auf jeder Seite.**
+  Live gemessen: die Regel „ab **45**“ (`MethodDefinition/1527737287047`) ist **aus**, „ab **50**“
+  (`…1540193485191`) ist **aktiv** — am 04.10. war es genau umgekehrt. Shopify prüft **nach Rabatt**,
+  und auf 2+ Artikel läuft der automatische „Bundle: 2+ Artikel -10%“. Gegenprobe an echten Körben:
+  **54.80 → nach Rabatt 49.32 → nur Standard CHF 7.00**, **59.80 → 53.82 → Kostenloser Versand 0.00**.
+  Real braucht es also **CHF 55.56 Warenwert**; Körbe von 50.00–55.55 zahlen CHF 7 trotz Versprechen.
+  **`dropship/VERSAND-SCHWELLE.md` ist mit „45 ist aktiv“ veraltet** (Korrekturblock dort ergänzt).
+  Nicht selbst umgestellt: die Profil-Mutation kann ganze Zonen überschreiben, und die Datei warnt
+  ausdrücklich vor Sitzungen, die sich hier gegenseitig „korrigieren“ → **Entscheid beim User**
+  (Empfehlung: 45er-Regel ein, 50er aus — zwei Klicks im Admin).
+- **Nebenbefund, kein Fehler:** `WELCOME10` ist aktiv bis 31.12.2027, kombiniert aber nicht mit den
+  automatischen Rabatten (`combinesWith.orderDiscounts: false`) → auf 2+ Artikeln meldet die Kasse
+  `applicable: false`, weil die 10 % schon automatisch drin sind. **Das ist kein kaputter Code.**
+- **📅 FÜR LUXESTYLE LÄUFT EIN VOLLER METRICOOL-KALENDER — „Social null“ gilt nur für abannews.**
+  ChatGPT hat am 19.10. gelesen: **149 Post-Objekte für 19.–25.10., davon 144 aktive Termine**,
+  `autoPublish=true`, sechs Kanäle, keine Lücken. Marken-ID ist **6227837** (die `6394001` im
+  Workflow war veraltet). Zwei aktive Termine (`399397572`, `399397657`) nennen in der
+  Medienbeschreibung eine **hochdeutsche KI-Stimme** — das widerspricht „ALLE Videos OHNE
+  Voiceover“; der Ton wurde nicht angehört, die Termine sind durch. Der 18-Sekunden-Projektor-Master
+  bleibt Storyboard. Belege: `dropship/owner-review-20261019/`.
+- **Drei Codex-Entwürfe stehen offen und sind alle `dirty`:** #2689 (grosse Doku-Übergabe, wird
+  laufend ergänzt), #2673 (Inhaltsprüfung vor Ausspielung), #2694 (SEO-Optimizer begrenzen). Sie
+  fassen `seo-optimizer.mjs`, `cj_reviews_import.mjs` und `publish_guard.mjs` auf einem Stand von
+  17.–19.10. an — Claude hat diese Dateien danach umgebaut. **Einfach mergen geht nicht**, sie
+  müssen erst auf den neuen Stand gehoben werden.
+
 **📌 2026-10-23 abends (🛍️ Interne Querverweise: Fläche vermessen, zu breites Ziel-Muster abgefangen):**
 Alles live gemessen. Nach der SEO-Titel-Fläche ist das die nächste grosse punktefreie Baustelle.
 - **🚨 DIE FLÄCHE IST VIEL GRÖSSER ALS DIE 2400 VOM 18.10.:** gemessen haben **2862 von 3000**
