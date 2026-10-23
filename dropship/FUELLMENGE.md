@@ -1,12 +1,12 @@
-# Füllmenge fehlt — Stand 2026-10-22 11:25 UTC
+# Füllmenge fehlt — Stand 2026-10-23 09:17 UTC
 
-Werkzeug `automation/fuellmenge_nachtragen.py` · Kandidaten: 143 aktive Kosmetik-Flüssigprodukte ohne ml-Angabe · diesmal geschrieben: 1 · Text-Sperre belegt: 0
+Werkzeug `automation/fuellmenge_nachtragen.py` · Kandidaten: 142 aktive Kosmetik-Flüssigprodukte ohne ml-Angabe · diesmal geschrieben: 0 · Text-Sperre belegt: 0
 
 Sicher = ml und fl oz auf demselben Bild passen rechnerisch. «Vorschlag — sichten»: Bild ansehen, dann `{handle: "30 ml"}` in `dropship/_fuellmenge_gesichtet.json` eintragen.
 
 | Produkt | Menge | Status | Beleg (OCR) |
 |---|---|---|---|
-| [Kühlendes Gel mit Pflanzenextrakten](https://luxestyle.ch/products/kuhlendes-gel-mit-pflanzenextrakten-604500) | 50 ml | Vorschlag — sichten | 50 @ d1c8ff1d-6c86-49b1-b4ee-60e040e0f0d3.jpg; 50 @ 29e06320-c409-4a47-8431-e1d00c98dc60.jpg; 50 @ eace5441-3694-41ab-a12f-96842a3de8ca.jpg; 50 @ 9f33a78a-9764- |
+| [Kühlendes Gel mit Pflanzenextrakten](https://luxestyle.ch/products/kuhlendes-gel-mit-pflanzenextrakten-604500) | 50 ml | Vorschlag — sichten | 50 @ 29e06320-c409-4a47-8431-e1d00c98dc60.jpg; 50 @ eace5441-3694-41ab-a12f-96842a3de8ca.jpg; 50 @ 9f33a78a-9764-48a1-9cb2-418df1b5e42b.jpg |
 | [WNP 3 Hyaluronsäure Serum Ultra-Hydrating Vials](https://luxestyle.ch/products/wnp-3-hyaluronsaure-serum-ultra-hydrating-vial-606800) | 5 ml | Vorschlag — sichten | 5 @ 46e26515-4ba9-48b0-b1b2-2c6424632e9e_trans.jpg |
 | [Straffendes Serum & Feuchtigkeitscreme Set](https://luxestyle.ch/products/straffendes-serum-feuchtigkeitscreme-set-604900) | 30 ml | Vorschlag — sichten | 30 30 1.01 1.01 @ 29d78e6d-757f-4af4-8197-e50df6680ff2.jpg |
 | [DR Reismilch Gesichtsreiniger](https://luxestyle.ch/products/dr-reismilch-gesichtsreiniger-919106) | — | nichts lesbar |  |
@@ -148,4 +148,3 @@ Sicher = ml und fl oz auf demselben Bild passen rechnerisch. «Vorschlag — sic
 | [Feuchtigkeitsspendende Sonnen-BB-Creme](https://luxestyle.ch/products/feuchtigkeitsspendende-sonnen-bb-creme-621100) | — | nichts lesbar |  |
 | [Magnesiumcreme für besseren Schlaf](https://luxestyle.ch/products/magnesiumcreme-fur-besseren-schlaf-631100) | — | nichts lesbar |  |
 | [Flüssige Foundation mit Concealer und Öl-Kontrolle](https://luxestyle.ch/products/flussige-foundation-mit-concealer-und-ol-kontr-640000) | — | nichts lesbar |  |
-| [Ätherisches Öl](https://luxestyle.ch/products/atherisches-ol-633600) | 30 ml | sicher (ml+oz) · geschrieben | 30 1 @ 99b517e1-f797-4ada-ad56-d286b1f66d16.png; 30 1 @ 045a25fe-698c-41ad-88fa-ac394cd5c4a7.png |

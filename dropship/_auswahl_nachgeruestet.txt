@@ -3656,3 +3656,4 @@
 16652033393031	Farbe:4+Menge:8:32+ki	2026-10-23	titanstahl-halskette-mit-rundem-anhanger-636400
 16652013797767	Farbe:7:7+ki	2026-10-23	kristall-hanf-kopftuch-monochromes-design-606000
 16652009734535	Farbe:10:10+ki	2026-10-23	wollschal-mit-wursthunde-print-614400
+16617719398791	Motiv:7:7+ki	2026-10-23	herz-anhanger-fur-taschen-601700

@@ -13852,3 +13852,15 @@ quadratisches-stich-und-pop-handwerksset-633000	2607130901441633700	16	9.47	ok	l
 chiffon-ribbons-blume-kleid-626100	2607131506221626800	16	7.71	ok	landeseite
 blumenmuster-taille-betonendes-kleid-634200	2607131454531634800	16	7.71	ok	landeseite
 v-ausschnitt-blumenkleid-mit-taille-622600	2607131437191623200	16	10.01	ok	landeseite
+damenmode-abgesteckter-taillengurt-sexy-trager-620900	2607131352461621500	16	8.79	ok	landeseite
+lassiger-lockerer-langrock-606500	2607131318301607000	16	8.79	ok	landeseite
+lichtsensor-fahrradlampe-554048	1376779002697617408	7	6.27	ok	landeseite
+enge-kleid-mit-schlitz-608900	2607131122371609400	16	8.25	ok	landeseite
+360-drehscheiben-ruckspiegel-fur-fahrrader-126080	1373462852395995136	7	6.41	ok	landeseite
+wollrock-kleid-retro-stil-612700	2607130907081613300	16	8.25	ok	landeseite
+leuchte-mit-zoom-5-modi-usb-ladbar-wasserdicht-257152	1372862360393486336	7	7.78	ok	landeseite
+figurschmeichelndes-strandkleid-leichte-passfo-632900	2607130904361633600	16	6.77	ok	landeseite
+fahrradlicht-fur-nachtliche-fahrten-816832	1372045379289354240	7	6.85	ok	landeseite
+cotten-gestopfte-kleidung-fur-hunde-katzen-607700	2503141558541607900	16	6.77	ok	landeseite
+sommerliches-druckkleid-631500	2607130230201632300	16	9.47	ok	landeseite
+wasserdichte-mtb-lampe-180736	1367811661515329536	7	8.96	ok	landeseite
