@@ -1,4 +1,4 @@
-# Hype-Recherche (automatisch, 2026-10-22 06:06 UTC)
+# Hype-Recherche (automatisch, 2026-10-23 07:58 UTC)
 
 Werkzeug: `automation/hype_recherche.py` → `tools/recherche.py` (openai/gpt-oss-120b, 8.5 s). Alles aus dem Netz ist **QUELLE**; die Spalte «aktiv im Shop» ist **GEMESSEN** (`productsCount title:*wort* status:active`). THEMEN in `hype_kuratieren.py` ändert nur die Verbesserungsrunde.
 
@@ -6,53 +6,55 @@ Gegenprobe: «Ladestation» findet 121 aktive (Verfahren sieht Treffer).
 
 | Thema (Quelle) | Suchwörter (aktiv je Wort) | aktiv gesamt | schon in THEMEN | heikel |
 |---|---|---:|:-:|:-:|
-| Glas-Haarschuh-bürste | Haarschuh 0 | 0 |  |  |
-| Kabelloser Hochdruckreiniger | Hochdruckreiniger 10 | 10 |  |  |
-| Locken-/CURL-Iron | Lockenstab 202 | 202 | ja |  |
-| Staubsauger-Roboter | Saugroboter 16 | 16 |  |  |
-| Modulares Sofa | Sofa 290 | 290 |  |  |
-| Regen-/Winterjacke mit Heizung | Heizjacke 3 | 3 | ja |  |
-| IPL-Haarentfernungs-Gerät | Haarentferner 4 | 4 | ja |  |
-| LED-Halloween-Fledermäuse | LED-Fledermaus 0 | 0 |  |  |
-| Animierte Augentürglocke | Augentürglocke 0 | 0 |  |  |
-| 4-in-1 Laser-Level + Bohr-Staub-Collector | Wasserwaage 3 | 3 |  |  |
-| Squishy-Brain-Fidget-Toy | FidgetToy 0 | 0 |  | ⚠️ |
-| Feuerlöscher-Getränkedispenser | Feuerlöscher 0 | 0 |  |  |
+| Halloween-Dekorationen (Aufblas- und Lichtdeko) | Aufblasdeko 0 · Lichtdeko 0 | 0 |  |  |
+| Ziel-Store-Herbst-Finds | Herbstmode 0 · Accessoires 16 | 16 |  |  |
+| Amazon-Winter-Must-Haves | Handwärmer 12 · Heizdecke 1 | 13 | ja |  |
+| Amazon-Wasch-Must-Haves | Trocknerbälle 0 · Faltschubladen 0 | 0 |  |  |
+| Amazon-Schreibtisch-Must-Haves | Schreibtischorganizer 0 · Kabelmanagement 1 | 1 |  |  |
+| Amazon-Küchen-Must-Haves | Mikrowellen-Gadget 0 · Aufbewahrung 285 | 285 | ja |  |
+| Costco-Finds-Food-Alternativen | Snackpaket 0 · MealPrep 0 | 0 |  |  |
+| Amazon-Gym-Must-Haves | Fitnessband 2 · Trainingsgerät 16 | 18 | ja |  |
+| Dupe-Suchen für Designer-Bags | Designerhandtasche 0 · Dupe 0 | 0 |  |  |
+| Dupe-Suchen für Parfums | Dupeparfüm 0 | 0 |  |  |
+| Amazon-Reise-Must-Haves | Packwürfel 0 · Koffer 28 | 28 |  |  |
+| Amazon-Büro-Must-Haves | Stehschreibtisch 0 · Monitorständer 2 | 2 | ja |  |
+| Amazon-Männer-Must-Haves | Rasierset 0 · Pflegegadget 0 | 0 |  |  |
+| Target-Männer-Finds | Männermode 0 · Pflege 55 | 55 | ja |  |
+| Aritzia-Fall-Must-Haves | Kapselkleidung 0 · Strickwaren 0 | 0 |  | ⚠️ |
 
-**Kandidaten für die Startseite (Ware da, neu, nicht heikel):** Kabelloser Hochdruckreiniger (10), Staubsauger-Roboter (16), Modulares Sofa (290), 4-in-1 Laser-Level + Bohr-Staub-Collector (3)
+**Kandidaten für die Startseite (Ware da, neu, nicht heikel):** Ziel-Store-Herbst-Finds (16), Amazon-Schreibtisch-Must-Haves (1), Amazon-Reise-Must-Haves (28)
 
 Vor dem Übernehmen: Kanarienvögel prüfen (Wortgrenzen, «IPL» in «Lipliner»), Ablehnungsklassen aus QUELLE.
 
 ## Antwort der Recherche
 
-**Produktarten, die im Oktober 2026 auf TikTok („TikTok made me buy it“, TikTok Shop) und in Dropshipping-Trendlisten viral gehen**  
+**TikTok-Made-Me-Buy-It & TikTok Shop – Produkte, die im Oktober 2026 viral gehen (nach Trend-Listen der letzten 14 Tage)**  
 
-| # | Produktart (allgemein, keine Marke) | Warum viral (Kurz-Info) | Quelle (URL + Datum) |
-|---|--------------------------------------|--------------------------|----------------------|
-| 1 | Glas-Haarschuh-bürste (ribbon-Cherry-Glass-Hair-Brush) | Impuls-Preis unter 25 USD + visueller Demo | Z Media TikTok Shop Index Oct 2026 – 21. Oct 2026 |
-| 2 | Kabelloser Hochdruckreiniger (Cordless Pressure Washer) | Praktisches DIY-Tool, kurze Vor- und Nach-Demonstration | Z Media TikTok Shop Index Oct 2026 – 21. Oct 2026 |
-| 3 | Locken-/CURL-Iron (TYMO CURLPRO Curling Iron) | Beauty-Trend, schnelle Vorher-Nachher-Clips | Z Media TikTok Shop Index Oct 2026 – 21. Oct 2026 |
-| 4 | Staubsauger-Roboter (Shark Freestyle Pro Vacuum) | Home-Tech-Demo, „clean-room“-Videos | Z Media TikTok Shop Index Oct 2026 – 21. Oct 2026 |
-| 5 | Modulares Sofa (U-Shaped Modular Sofa „Cloud Couch“) | Großformat-Wohn-Transformation, TikTok-Room-Makeover | Z Media TikTok Shop Index Oct 2026 – 21. Oct 2026 |
-| 6 | Regen-/Winterjacke mit Heizung (Heated Winter Jacket) | Saisonale Kälte-Lösung, USB-Power-Demo | AutoDS „Best Dropshipping Products Oct 2026“ – 15. Sep 2026 |
-| 7 | IPL-Haarentfernungs-Gerät (Ulike Air 10 IPL) | Beauty-Trend, „before-after“-Videos | Z Media TikTok Shop Index Oct 2026 – 21. Oct 2026 |
-| 8 | LED-Halloween-Fledermäuse (LED Halloween Bats) | Schnelle „room-glow“-Transformation, perfekt für Halloween-Clips | AutoDS „Best Dropshipping Products Oct 2026“ – 15. Sep 2026 |
-| 9 | Animierte Augentürglocke (Animated Eyeball Doorbell) | Interaktive, überraschende Reaktion – ideal für kurze TikTok-Reaktions-Videos | AutoDS „Best Dropshipping Products Oct 2026“ – 15. Sep 2026 |
-|10| 4-in-1 Laser-Level + Bohr-Staub-Collector | DIY-Tool, klare Vor-Nach-Mess-Demos | AutoDS „Best Dropshipping Products Oct 2026“ – 15. Sep 2026 |
-|11| Squishy-Brain-Fidget-Toy | Humorvolle, taktile „desk-toy“-Demonstration, Halloween-Spin-off | AutoDS „Best Dropshipping Products Oct 2026“ – 15. Sep 2026 |
-|12| Feuerlöscher-Getränkedispenser (Fire Extinguisher Drink Dispenser) | Überraschende Form, Party-Demo, hoher „wow-Factor“ | AutoDS „Best Dropshipping Products Oct 2026“ – 15. Sep 2026 |
+| Produktart (keine Marke, kein Lebensmittel) | Warum viral / Trend-Hinweis | Quelle (URL) | Datum der Quelle |
+|---|---|---|---|
+| Halloween-Dekorationen (Aufblas- und Lichtdeko) | Größter Suchbegriff „halloween decorations 2026“ – 931 k Suchen in 7 Tagen, viele kurze Hauls-Videos | https://tokconnect.com/trends/products/october-2026/ | 8 Oct 2026 |
+| Ziel-Store-Herbst-Finds (Kleidung- und Accessoire-Hauls) | Suchbegriff „target fall finds 2026“ – 691 k Suchen, hohe Video-Play-Zahlen | https://tokconnect.com/trends/products/october-2026/ | 8 Oct 2026 |
+| Amazon-Winter-Must-Haves (Handwärmer, Heizdecken, beheizte Gadgets) | Suchbegriff „amazon winter must haves“ + 1 061 % Wachstum, kaum aktuelle Videos → große Lücke | https://tokconnect.com/trends/products/october-2026/ | 8 Oct 2026 |
+| Amazon-Wasch-Must-Haves (Wäschetrockner-Bälle, Faltschubladen, etc.) | Hohe Suchzahlen (288 k) und niedrige Konkurrenz | https://tokconnect.com/trends/products/october-2026/ | 8 Oct 2026 |
+| Amazon-Schreibtisch-Must-Haves (Organizer, Lampen, Kabel-Management) | 238 k Suchen, Videos-Gap, gutes Potenzial für Dropshipping | https://tokconnect.com/trends/products/october-2026/ | 8 Oct 2026 |
+| Amazon-Küchen-Must-Haves (Mikrowellen-Gadgets, Aufbewahrungssets) | 242 k Suchen, wenig Video-Content | https://tokconnect.com/trends/products/october-2026/ | 8 Oct 2026 |
+| Costco-Finds-Food-Alternativen (Snack- und Meal-Prep-Kits) | 250 k Suchen, neu im Oktober, geringe Videodichte | https://tokconnect.com/trends/products/october-2026/ | 8 Oct 2026 |
+| Amazon-Gym-Must-Haves (Fitness-Bänder, kompakte Trainingsgeräte) | 43 k Suchen (aufsteigend), wenig Videos | https://tokconnect.com/trends/products/october-2026/ | 8 Oct 2026 |
+| Dupe-Suchen für Designer-Bags (z. B. „the row dupe“) | Explosives Wachstum (+16 642 % in einer Woche), Suchvolumen 200 k, fast keine Videos | https://tokconnect.com/trends/products/october-2026/ | 8 Oct 2026 |
+| Dupe-Suchen für Parfums (z. B. „imagination dupes“) | 254 k Suchen, große Lücke für Vergleichsvideos | https://tokconnect.com/trends/products/october-2026/ | 8 Oct 2026 |
+| Amazon-Reise-Must-Haves (Kompakte Koffer, Pack-Cubes) | 247 k Suchen, wenig Video-Content | https://tokconnect.com/trends/products/october-2026/ | 8 Oct 2026 |
+| Amazon-Büro-Must-Haves (Stehpult-Adapter, Monitor-Ständer) | 238 k Suchen, niedrige Video-Konkurrenz | https://tokconnect.com/trends/products/october-2026/ | 8 Oct 2026 |
+| Amazon-Männer-Must-Haves (Rasier-Sets, Pflege-Gadgets) | 269 k Suchen, wachsende Nische | https://tokconnect.com/trends/products/october-2026/ | 8 Oct 2026 |
+| Target-Männer-Finds (Mode- und Pflege-Hauls) | 259 k Suchen, starkes Wachstum (+403 %) | https://tokconnect.com/trends/products/october-2026/ | 8 Oct 2026 |
+| Aritzia-Fall-Must-Haves (Kapsel-Kleidung, Strickwaren) | 220 k Suchen, kaum Videos – ideal für First-Mover | https://tokconnect.com/trends/products/october-2026/ | 8 Oct 2026 |
 
-**Hinweis** – Alle genannten Quellen stammen aus dem Zeitraum der letzten 14 Tage (Z Media-Artikel vom 21. Oktober 2026, AutoDS-Blog vom 15. September 2026). Keine Marken- oder Lebensmittel-Produkttypen wurden angegeben.
+*Alle Angaben stammen aus der „TikTok Trending Products October 2026“-Übersicht von TokConnect, die täglich mit TikTok Creator Search Insights aktualisiert wird. Die Seite wurde zuletzt am 8 Oktober 2026 bearbeitet – innerhalb der geforderten 14-Tage-Frist.*
 
 ## Quellen
 
-- https://www.z.media/insights/tiktok-shop-index-october-2026
-- https://www.autods.com/blog/best-items-to-dropship-in-october-2026/
-- https://tokconnect.com
+- https://tokconnect.com/trends/products/october-2026/
+- https://www.z.media
 - https://www.nolyn.ai
-- https://www.buzzfeed.com
 - https://www.tiktok.com
-- https://news.astools.app
-- https://kolvant.com
-- https://dodropshipping.com
-- https://dropshipnews.com
+- https://www.buzzfeed.com
+- https://www.purewow.com
