@@ -3654,3 +3654,5 @@
 16652105056647	Material:6:6+ki	2026-10-23	silikon-smartwatch-mit-bluetooth-gesundheitsfu-625700
 16652102173063	Farbe:5:5+ki	2026-10-23	kuhltragetasche-fur-picknick-und-reisen-628200
 16652033393031	Farbe:4+Menge:8:32+ki	2026-10-23	titanstahl-halskette-mit-rundem-anhanger-636400
+16652013797767	Farbe:7:7+ki	2026-10-23	kristall-hanf-kopftuch-monochromes-design-606000
+16652009734535	Farbe:10:10+ki	2026-10-23	wollschal-mit-wursthunde-print-614400
