@@ -90,6 +90,9 @@ function errorResult(message) {
 
 async function dispatch(request, handlers) {
   if (!object(request)) return rpcError(null, -32600, 'JSON-RPC-Batches und Nicht-Objekte sind nicht unterstützt.');
+  // Responses are not requests. Never answer them (including an unsolicited
+  // response), otherwise two peers can enter an error-response loop.
+  if (!own(request, 'method') && (own(request, 'result') || own(request, 'error'))) return null;
   // All notifications are deliberately silent, including unknown notifications.
   if (!own(request, 'id')) return null;
   const id = request.id;
@@ -101,6 +104,13 @@ async function dispatch(request, handlers) {
   }
   const result = value => ({ jsonrpc: '2.0', id, result: value });
   const params = request.params;
+  // MCP metadata belongs to the transport, not to business tool arguments.
+  // Additional metadata keys are reserved for clients/extensions and ignored.
+  if (object(params) && own(params, '_meta') && (!object(params._meta)
+    || (own(params._meta, 'progressToken') && !(typeof params._meta.progressToken === 'string'
+      || (typeof params._meta.progressToken === 'number' && Number.isFinite(params._meta.progressToken)))))) {
+    return rpcError(id, -32602, 'Ungültige MCP-Metadaten.');
+  }
   if (request.method === 'initialize') {
     if (!object(params) || typeof params.protocolVersion !== 'string'
       || (own(params, 'capabilities') && !object(params.capabilities))
@@ -113,13 +123,13 @@ async function dispatch(request, handlers) {
       instructions: 'Lokaler LuxeStyle-Helfer. Keine Live-APIs, Publikationen oder Modellaufrufe. Übergaben sind datierte Belege.' });
   }
   if (request.method === 'ping' || request.method === 'tools/list') {
-    if (params !== undefined && (!object(params) || Object.keys(params).length !== 0)) {
+    if (params !== undefined && (!object(params) || Object.keys(params).some(key => key !== '_meta'))) {
       return rpcError(id, -32602, 'Diese Methode erwartet keine Argumente.');
     }
     return result(request.method === 'ping' ? {} : { tools: MCP_TOOLS });
   }
   if (request.method !== 'tools/call') return rpcError(id, -32601, 'Methode nicht unterstützt.');
-  if (!object(params) || Object.keys(params).some(key => !['name', 'arguments'].includes(key))
+  if (!object(params) || Object.keys(params).some(key => !['name', 'arguments', '_meta'].includes(key))
     || typeof params.name !== 'string' || !MCP_TOOLS.some(tool => tool.name === params.name)) {
     return rpcError(id, -32602, 'Unbekanntes Tool oder ungültige Tool-Parameter.');
   }
