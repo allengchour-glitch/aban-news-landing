@@ -41,3 +41,8 @@ Kontroll-Zeilen fielen beim Ausrollen aus dem Ledger (Rekonstruktion aus aaa2908
 bearbeitet: Von 250 blockierten haben nur noch 2 keinen Ledger-Eintrag (≤ 1 Bild). Ein weiterer SCHARF-Lauf ist nicht nötig.
 **Nächste Messung:** der laufende Vollscan vom 03.10. (Start 08:09 UTC). «tausch-g» (150, nur Gemini) dort getrennt auswerten.
 Rückweg je Produkt: alte media-id aus Spalte 4 per productReorderMedia an Position 0.
+
+## Nachtrag 23.10.2026 (Verbesserungsrunde 08:25 UTC) — «Promotional overlay on image» (GEMESSEN)
+- Google-Scan 23.10. 04:24 UTC: **32** Produkte mit diesem Blocker. `google_overlay_bereinigen.py` (SCHARF=1, 08:53 UTC): **0 bereinigt**, 22 «unsicher» (Rand unruhig, Streuung 16–100 → Text lässt sich nicht sicher entfernen), 7 gesperrt (Bildtausch-/Werbetest-Sperre), 3 «sauber» = im Bild ist **kein** Text zu entfernen (`10-paar-unsichtbare-socken-fur-damen-195841`, `reflektierender-wasserdichter-halter-fur-airta-242112`, `bambusfaser-stretch-businesshemd-fur-herren-656400`) → der Befund dort ist kein Text-Overlay (Rahmen/Logo/Stempel?) oder veraltet. Es wurde nichts geschrieben (`_google_bild_tausch.tsv` ohne Eintrag vom 23.10.).
+- ⚠️ Irrtum in meiner Zwischenmeldung 09:00: «3 sauber bereinigbar» war falsch — «sauber» heisst hier «nichts zu entfernen», nicht «bereinigt».
+- Offen (Entscheid): für die 22 «unsicher» gibt es nur (a) Ersatzbild vom Lieferanten per `google_bild_tausch.py` oder (b) Produkt aus dem Google-Kanal nehmen. Beides ist eine Sortimentsentscheidung, keine automatische.
