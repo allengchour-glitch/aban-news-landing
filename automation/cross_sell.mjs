@@ -56,12 +56,17 @@ async function main(){
   while(prods.length<SCAN){
     // first:50 statt 100: Shopifys Eimer fasst 2000 Punkte, und je Knoten kostet die Seite einen —
     // 52 Punkte passen in die Luecken, 102 nicht. Begruendung: automation/lib/shopify_gql.mjs.
-    const d=await gql(token,`query($c:String,$q:String){ products(first:50, after:$c, sortKey:${SORT}, reverse:${REVERSE}, query:$q){ pageInfo{hasNextPage endCursor} nodes{ id title tags productType descriptionHtml } } }`,{c:cur,q:PQUERY});
+    const d=await gql(token,`query($c:String,$q:String){ products(first:50, after:$c, sortKey:${SORT}, reverse:${REVERSE}, query:$q){ pageInfo{hasNextPage endCursor} nodes{ id title tags productType descriptionHtml createdAt } } }`,{c:cur,q:PQUERY});
     prods.push(...d.products.nodes);
     if(!d.products.pageInfo.hasNextPage) break; cur=d.products.pageInfo.endCursor;
   }
   prods=prods.slice(0,SCAN); report.scanned=prods.length;
   report.region=`${PQUERY} · ${SORT} ${REVERSE?'absteigend':'aufsteigend'}`;
+  // Damit das naechste Zeitfenster nicht geraten werden muss: der Lauf nennt das Erstelldatum des
+  // letzten geprueften Produkts. Mit SORT=CREATED_AT REVERSE=0 ist das genau der Anfang des
+  // naechsten Fensters (`created_at:>=…`). Vorher musste man es ueber productsCount suchen — und
+  // das zaehlt nur bis 10 000, taugt also fuer diesen Katalog nicht.
+  report.letztesErstellt=prods.length?prods[prods.length-1].createdAt:null;
 
   const todo=prods.filter(p=>!(p.descriptionHtml||'').includes('/collections/'));
   report.missingCrossSell=todo.length;
