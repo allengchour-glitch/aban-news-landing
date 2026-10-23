@@ -18733,3 +18733,4 @@ gid://shopify/Product/16656787145095	73->0	Multifunktionale wasserdichte Quarz-U
 gid://shopify/Product/16656787538311	49->2	Quarz-Uhr mit Kalender, wasserdicht, 8 mm
 gid://shopify/Product/16656787603847	46->0	Armbanduhr im Mid-Century-Stil
 gid://shopify/Product/16656841015687	136->0	Langarmshirt mit dunklen Streifen
+gid://shopify/Product/16656523952519	11->0	Weisser High-Top Arbeitsschuh mit Stahlkappe
