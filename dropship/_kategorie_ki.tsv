@@ -28,3 +28,5 @@
 2026-10-22	familien-pack-aus-rotem-baumwoll-remo-fur-elte-601100	Baby & Kinder	Familien-Pack aus rotem Baumwoll-Remo für Eltern und Kind	gemini-2.5-flash:aa-1-25-5	groq:qwen/qwen3.8-27b:aa-1-25-5	GESETZT
 2026-10-22	chloridioxid-testpapier-50-stuck-622100	Büro & Home Office	Chloridioxid-Testpapier 50 Stück	gemini-2.5-flash:ha-15-36	groq:qwen/qwen3.8-27b:0	UNEINIG
 2026-10-22	vinyl-schallplattenspieler-schallkopf-28-10-mm-626100	Büro & Home Office	Vinyl-Schallplattenspieler-Schallkopf (28×10 mm)	gemini-2.5-flash:el-2	groq:qwen/qwen3.8-27b:0	UNEINIG
+2026-10-23	chloridioxid-testpapier-50-stuck-622100	Büro & Home Office	Chloridioxid-Testpapier 50 Stück	gemini-2.5-flash:ha-15-36	groq:openai/gpt-oss-120b:0	UNEINIG
+2026-10-23	vinyl-schallplattenspieler-schallkopf-28-10-mm-626100	Büro & Home Office	Vinyl-Schallplattenspieler-Schallkopf (28×10 mm)	gemini-2.5-flash:el-2	groq:openai/gpt-oss-120b:el-2	GESETZT
