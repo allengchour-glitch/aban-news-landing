@@ -104,9 +104,27 @@ Alles live gemessen. Nach der SEO-Titel-Fläche ist das die nächste grosse punk
   (`sticker` zurück ins Muster) fällt rot. **Zweites Mal in diesem Modul nach `schweiz-versand`
   und dritte Wiederholung der Klasse `rueckhol`: ein zu breites Muster sieht aus wie ein anderes
   Ergebnis, nicht wie ein Fehler. Aufgefallen ist die VERTEILUNG (89 % auf ein Ziel), nicht ein Fehler.**
-- **Gesetzt in dieser Sitzung: über 13 794 Boxen, 0 Fehler** (die Zahl wächst, solange der
-  Durchlauf läuft) — je Fenster mit Gegenprobe: die offene Zahl sinkt genau um die geschriebene,
-  danach meldet derselbe Lauf `zuSetzen: 0`. Eine Dublette fiele damit sofort auf.
+- **Gesetzt in dieser Sitzung: über 19 950 Boxen, 0 Fehler** (13 794 + 6 156; die Zahl wächst,
+  solange der Durchlauf läuft) — je Fenster mit Gegenprobe: die offene Zahl sinkt genau um die
+  geschriebene, danach meldet derselbe Lauf `zuSetzen: 0`. Eine Dublette fiele damit sofort auf.
+- **🚗 DREI ZIELE WAREN NUR DIE ZWEITBESTE WAHL — gemessen, nicht geraten.** Im Fenster ab 25.07.
+  gingen **776 von 1669** Zuordnungen nach „Trends & Gadgets" (46 %). Das war kein zu breites
+  Muster: **544 kamen über `elektronik`** und sind echte Elektronik. Aber **118 über `auto`**
+  (Sitzbezüge, Lenkradbezüge, Autoschlüssel-Etuis), **99 über `gadget`** (darunter ausnahmslos
+  PS4/PS5/Xbox-Controller) und **5 über `haushalt`** (Latte-Art-Kännchen, Teekannen-Set). Für alle
+  drei gibt es eine eigene, live geprüfte Collection → neue Ziele **`auto-handy` „Auto & Handy"**,
+  **`gaming` „Gaming"**, **`sub-kueche` „Küche & Kochen"** (je HTTP 200). Dasselbe Fenster verteilt
+  sich jetzt auf 616 / 118 / 37 / 5 — gleiche Summe, grösstes Ziel 37 statt 46 %.
+  **Ein schwacher Link ist kein falscher, aber er ist messbar schwächer** — ein Lenkradbezug unter
+  „Trends & Gadgets" bringt niemanden weiter.
+  Zwei Gegenproben in die andere Richtung: (1) das Auto-Muster verlangt das **blanke Tag** `auto`
+  (`(^| )auto( |$)`), sonst träfe es die Chargen-Markierung `auto-entwurf-0926` (3223 Produkte) und
+  `duplikat-auto-draft` — am Katalog nachgezählt richtet das heute keinen Schaden an (alle 30 aktiven
+  landen anderswo), die Wortgrenze kostet aber nichts; (2) die Küchen-Regel steht **absichtlich nach**
+  `gadget`, damit ein Gerät mit `elektronik`-Tag sein Ziel behält. 56 Tests grün (22 neu),
+  Mutationsproben: Wortgrenze weg = 4 Fehler, Küche vor `gadget` = 1 Fehler.
+  **Und noch einmal die Handle-Lehre:** `auto-handy-laden` gab **404** (eine der 16 nie publizierten
+  Dubletten vom 18.10.) — nie einen Handle raten, immer abrufen.
 - **Lauf-Rezept, bestätigt:** `LIVE=1 PQUERY='status:active AND created_at:>=JJJJ-MM-TT'
   SORT=CREATED_AT REVERSE=0 SCAN=3000 MAXFIX=1000 node automation/cross_sell.mjs`. `SCAN` ist bei
   3000, `MAXFIX` bei 1000 gedeckelt → mehrere Läufe je Fenster, bis `zuSetzen: 0`, dann das

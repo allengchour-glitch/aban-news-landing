@@ -18,7 +18,12 @@
  * diese 36 richtigen Zuordnungen zerstört. Gemessen, nicht vermutet.
  */
 
-/** Verifizierte Collection-Handles → Label (alle am 2026-10-18 live geprüft, alle vorhanden). */
+/**
+ * Verifizierte Collection-Handles → Label. Die ersten neun am 2026-10-18 live geprüft, die drei
+ * neuen (`auto-handy`, `gaming`, `sub-kueche`) am 2026-10-23 — alle HTTP 200.
+ * **Nie einen Handle raten:** derselbe Gegencheck gab für `auto-handy-laden` 404 (eine der 16 nie
+ * publizierten Dubletten vom 18.10.), und meine geratenen `fuer-ihn`/`wohnen-deko` ebenfalls.
+ */
 export const ZIELE = {
   schmuck:  ['premium-schmuck', 'Schmuck & Uhren'],
   herren:   ['fur-ihn', 'Für Ihn'],
@@ -29,6 +34,9 @@ export const ZIELE = {
   schweiz:  ['erste-august', 'Schweiz-Edition'],
   sommer:   ['sommer', 'Sommer'],
   geschenk: ['premium-geschenke', 'Geschenkideen'],
+  auto:     ['auto-handy', 'Auto & Handy'],
+  gaming:   ['gaming', 'Gaming'],
+  kueche:   ['sub-kueche', 'Küche & Kochen'],
 };
 
 /**
@@ -55,12 +63,43 @@ export const NICHT_THEMA = /(^|-)versand(-|$)/;
  */
 const SCHWEIZ_EDITION = /schweiz-edition|edelweiss|matterhorn|alphorn|fondue|raclette|grueezi|mundart/;
 
+/**
+ * Autozubehör: das BLANKE Tag `auto` zählt, nicht jedes Tag, in dem „auto" vorkommt.
+ * `themenTags` fügt die Tags mit Leerzeichen zusammen, darum ist `(^| )auto( |$)` genau das
+ * ganze Tag. GEMESSEN 2026-10-23: ohne diese Wortgrenze träfe das Muster auch die
+ * Chargen-Markierung `auto-entwurf-0926` (3223 Produkte, 30 davon aktiv) und
+ * `duplikat-auto-draft` — Haushaltsmarkierungen, kein Thema. Am Katalog nachgezählt richtet
+ * das heute keinen Schaden an (alle 30 aktiven `auto-entwurf-0926` landen anderswo oder sind
+ * schon verlinkt), aber die Wortgrenze kostet nichts und hält, wenn die nächste Charge kommt.
+ * Dieselbe Klasse wie `schweiz-versand` und `rueckhol` — nur diesmal vorher gemessen.
+ */
+const AUTO = /(^| )auto( |$)|auto-zubehoer|autoschluessel|autowaesche|autoladegeraet|kfz|motorrad/;
+
+/**
+ * Spielkonsolen-Zubehör. `konsole` braucht die Wortgrenze, sonst trifft es `mittelkonsole`
+ * (Auto-Innenraum) — darum steht die Auto-Regel ohnehin davor.
+ */
+const GAMING = /gaming|(^| )konsole( |$)|ps4|ps5|xbox|nintendo/;
+
+/**
+ * GEMESSEN 2026-10-23 im Fenster ab 25.07. (3000 aktive Produkte, Trockenlauf): von 776
+ * Zuordnungen nach „Trends & Gadgets" kamen **544 über `elektronik`** (echte Elektronik,
+ * richtig), aber **118 über `auto`** (Sitzbezüge, Lenkradbezüge, Autoschlüssel-Etuis),
+ * **99 über `gadget`** (ausnahmslos PS4/PS5/Xbox-Controller) und **5 über `haushalt`**
+ * (Latte-Art-Kännchen, Teekannen-Set). Für alle drei gibt es eine eigene, live geprüfte
+ * Collection — ein Lenkradbezug unter „Trends & Gadgets" ist kein falscher Link, aber ein
+ * schwacher. Die Küchen-Regel steht ABSICHTLICH NACH `gadget`: so behält ein Gerät mit
+ * `elektronik`-Tag sein Ziel, und nur echtes Geschirr ohne Elektronik-Tag landet in der Küche.
+ */
 const REGELN = [
   ['schmuck', /schmuck|ring|kette|armband|ohrring|halskette|uhr/],
   ['herren',  /herren|männer|manner|mann\b/],
   ['schweiz', SCHWEIZ_EDITION],
   ['wohnen',  /diffuser|aroma|wohnen|deko|kissen|lampe|beleuchtung|kerze/],
-  ['gadget',  /gadget|tech|auto|elektronik|haushalt|küche|kueche/],
+  ['auto',    AUTO],
+  ['gaming',  GAMING],
+  ['gadget',  /gadget|tech|elektronik/],
+  ['kueche',  /küche|kueche|kochen|haushalt|geschirr/],
   ['sommer',  /sommer|bikini|bademode|strand/],
   ['damen',   /damen|kleid|rock|bluse|mode/],
   ['premium', /highend|premium|luxus|bigbuy/],

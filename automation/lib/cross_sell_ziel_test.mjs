@@ -64,6 +64,47 @@ pruef('versandkosten-frei BLEIBT (ein Wort)', NICHT_THEMA.test('versandkosten-fr
 pruef('Versand-Tag fliegt aus dem Heuhaufen',
   themenTags(['damen', 'schweiz-versand'], ''), 'damen');
 
+// ── 4b. Auto, Gaming und Küche haben eigene Ziele (gemessen 2026-10-23) ──
+// Echte Tag-Sätze aus dem Fenster ab 25.07., Titel zur Orientierung im Kommentar.
+const AUTO_ECHT = {
+  'Universelle Auto-Vordersitzbezüge':   ['auto', 'auto-zubehoer', 'kfz', 'rueckhol-0907'],
+  'Schutzhülle für Autoschlüssel':       ['auto', 'auto-zubehoer', 'autoschluessel'],
+  'Schaum-Sprühflasche Autowäsche':      ['auto', 'auto-zubehoer', 'autowaesche'],
+  'USB-Autoladegerät':                   ['autoladegeraet', 'cj-real'],
+};
+for (const [name, tags] of Object.entries(AUTO_ECHT)) {
+  pruef(`${name} → Auto & Handy`, zielFinden(tags, '').schluessel, 'auto');
+}
+// GEGENPROBE: Haushaltsmarkierungen mit „auto" darin sind KEIN Autozubehör.
+for (const tag of ['auto-entwurf-0926', 'duplikat-auto-draft', 'verlust-auto-draft', 'vision-qa-draft-1014']) {
+  pruef(`${tag} ist kein Autozubehör`, zielFinden([tag, 'cj-real'], '').schluessel !== 'auto', true);
+}
+pruef('auto-entwurf-0926 fällt auf Geschenkideen zurück',
+  zielFinden(['auto-entwurf-0926', 'cj-real'], '').schluessel, 'geschenk');
+
+const GAMING_ECHT = {
+  'Drahtloser PS4-Controller': ['gadgets', 'gaming', 'konsole', 'ps4', 'ps5', 'xbox'],
+  'Nintendo-Zubehör':          ['nintendo', 'cj-real'],
+};
+for (const [name, tags] of Object.entries(GAMING_ECHT)) {
+  pruef(`${name} → Gaming`, zielFinden(tags, '').schluessel, 'gaming');
+}
+// GEGENPROBE: die Mittelkonsole eines Autos ist kein Spielkonsolen-Zubehör.
+pruef('Mittelkonsolen-Matte bleibt Auto',
+  zielFinden(['auto', 'auto-zubehoer', 'mittelkonsole', 'matte'], '').schluessel, 'auto');
+pruef('mittelkonsole allein ist kein Gaming',
+  zielFinden(['mittelkonsole', 'cj-real'], '').schluessel !== 'gaming', true);
+
+pruef('Latte-Art-Kännchen → Küche & Kochen',
+  zielFinden(['haushalt', 'kaennchen', 'kochen', 'kueche'], '').schluessel, 'kueche');
+pruef('Keramik-Teekannen-Set → Küche & Kochen',
+  zielFinden(['haushalt', 'kochen', 'kueche', 'geschenkwelt-unter100'], '').schluessel, 'kueche');
+// GEGENPROBE: ein Gerät MIT Elektronik-Tag behält sein Ziel — darum steht Küche nach gadget.
+pruef('Mini Waschmaschine bleibt Trends & Gadgets',
+  zielFinden(['elektronik', 'gadget', 'haushalt', 'tech'], '').schluessel, 'gadget');
+pruef('echte Elektronik bleibt Trends & Gadgets',
+  zielFinden(['elektronik', 'gadget', 'tech', 'ladegeraet'], '').schluessel, 'gadget');
+
 // ── 5. Jedes Ziel hat Handle und Label, der Rückfall greift ──
 for (const [k, v] of Object.entries(ZIELE)) {
   pruef(`Ziel ${k} vollständig`, Boolean(v[0] && v[1]), true);
