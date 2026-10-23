@@ -7,8 +7,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -22,7 +20,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
@@ -59,14 +56,6 @@ import ch.luxestyle.app.data.breadcrumb
 import ch.luxestyle.app.data.deliveryWindow
 import ch.luxestyle.app.data.sameDepartment
 import ch.luxestyle.app.data.Storefront.Sort
-import ch.luxestyle.app.data.sizeGuide
-import androidx.compose.foundation.border
-import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.semantics
-import ch.luxestyle.app.data.Image
 import coil3.compose.AsyncImage
 import kotlinx.coroutines.launch
 
@@ -91,7 +80,6 @@ fun ProductScreen(handle: String) {
     }
 }
 
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun ProductDetail(p: Product) {
     val shop = LocalShop.current
@@ -114,13 +102,12 @@ private fun ProductDetail(p: Product) {
         shop.api.collection(h, Sort.BEST, null).second.products.filter { it.id != p.id }.take(12)
     }
     var viewer by remember { mutableStateOf<Int?>(null) }
-    val guide = remember(p.handle) {
-        sizeGuide(p.descriptionHtml)?.only(p.options.firstOrNull { it.name == SIZE_OPTION }?.values.orEmpty())
-    }
-    val list = rememberLazyListState()
+    val guide = remember(p.handle) { p.guide() }
     // Noch nicht gewählt (Grösse wird bewusst nicht vorausgewählt)
-    val missingOption = p.options.firstOrNull { it.values.size > 1 && selection[it.name] == null }
+    val missingOption = p.missingOption(selection)
     var showGuide by rememberSaveable(p.handle) { mutableStateOf(false) }
+    var showBuy by rememberSaveable(p.handle) { mutableStateOf(false) }
+    if (showBuy) BuySheet(p, selection, { selection = it }) { showBuy = false }
     LaunchedEffect(p.handle) { shop.recent.seen(p.toCard()) }
     viewer?.let { start -> ImageViewer(images, start) { viewer = null } }
     if (showGuide && guide != null) SizeGuideSheet(guide, selection[SIZE_OPTION]) { showGuide = false }
@@ -136,7 +123,7 @@ private fun ProductDetail(p: Product) {
     }
 
     Box(Modifier.fillMaxSize()) {
-        LazyColumn(Modifier.fillMaxSize().testTag("product"), state = list, contentPadding = PaddingValues(bottom = 110.dp)) {
+        LazyColumn(Modifier.fillMaxSize().testTag("product"), contentPadding = PaddingValues(bottom = 110.dp)) {
             item {
                 Box(Modifier.fillMaxWidth().aspectRatio(0.8f).background(LocalLuxe.current.card)) {
                     HorizontalPager(pager, Modifier.fillMaxSize()) { i ->
@@ -181,6 +168,16 @@ private fun ProductDetail(p: Product) {
                         Gap(6)
                     }
                     Text(p.title, style = MaterialTheme.typography.headlineMedium)
+                    p.rating?.let { r ->
+                        Gap(6)
+                        // Antippen öffnet die Bewertungen auf der Produktseite des Shops (Judge.me)
+                        RatingLine(
+                            r, big = true,
+                            modifier = Modifier.clip(Radius.Small)
+                                .clickable(onClickLabel = "Bewertungen lesen") { nav.web(p.url + "#judgeme_product_reviews", "Bewertungen") }
+                                .padding(vertical = 4.dp),
+                        )
+                    }
                     Gap(12)
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         val v = variant ?: p.variants.first()
@@ -200,45 +197,9 @@ private fun ProductDetail(p: Product) {
                     }
                 }
             }
-            p.options.forEach { opt ->
-                item(key = "opt-" + opt.name) {
-                    Column(Modifier.padding(horizontal = 20.dp).padding(bottom = 18.dp)) {
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Text(opt.name, style = MaterialTheme.typography.titleSmall)
-                            selection[opt.name]?.let { Text(": $it", style = MaterialTheme.typography.bodyMedium, color = LocalLuxe.current.muted) }
-                            Spacer(Modifier.weight(1f))
-                            if (guide != null && opt.name == SIZE_OPTION) {
-                                Row(
-                                    Modifier.clip(Radius.Small).clickable(onClickLabel = "Grössentabelle öffnen") { showGuide = true }
-                                        .padding(horizontal = 4.dp, vertical = 4.dp),
-                                    verticalAlignment = Alignment.CenterVertically,
-                                ) {
-                                    Icon(painterResource(R.drawable.ic_ruler), null, tint = MaterialTheme.colorScheme.secondary, modifier = Modifier.size(18.dp))
-                                    Spacer(Modifier.width(6.dp))
-                                    Text("Grössentabelle", style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.secondary)
-                                }
-                            }
-                        }
-                        Gap(10)
-                        val swatches = remember(p.handle, opt.name) { if (opt.name == SIZE_OPTION) null else p.swatches(opt.name) }
-                        if (swatches != null) FlowRow(horizontalArrangement = Arrangement.spacedBy(10.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                            opt.values.forEach { value ->
-                                Swatch(
-                                    swatches.getValue(value), value,
-                                    selected = selection[opt.name] == value,
-                                    enabled = p.isValueAvailable(opt.name, value, selection),
-                                ) { selection = selection + (opt.name to value) }
-                            }
-                        } else FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                            opt.values.forEach { value ->
-                                ChoiceChip(
-                                    value,
-                                    selected = selection[opt.name] == value,
-                                    enabled = p.isValueAvailable(opt.name, value, selection),
-                                ) { selection = selection + (opt.name to value) }
-                            }
-                        }
-                    }
+            if (p.options.isNotEmpty()) item(key = "optionen") {
+                Box(Modifier.padding(horizontal = 20.dp)) {
+                    OptionPickers(p, selection, { selection = it }, guide?.let { { showGuide = true } })
                 }
             }
             item {
@@ -287,9 +248,8 @@ private fun ProductDetail(p: Product) {
                         modifier = Modifier.fillMaxWidth(),
                     ) {
                         if (missingOption != null) {
-                            // Zur Auswahl scrollen: Galerie (0), Titel (1), dann die Optionen
-                            val idx = 2 + p.options.indexOf(missingOption)
-                            scope.launch { list.animateScrollToItem(idx) }
+                            // Grösse und Farbe im Blatt direkt über dem Knopf – kein Suchen auf der Seite
+                            showBuy = true
                             return@PillButton
                         }
                         val v = variant ?: return@PillButton
@@ -307,28 +267,6 @@ private fun ProductDetail(p: Product) {
                 }
             }
         }
-    }
-}
-
-private const val SIZE_OPTION = "Grösse"
-
-/** Ausführung als Bild statt als Text – man sieht sofort, welche Farbe gemeint ist. */
-@Composable
-private fun Swatch(image: Image, label: String, selected: Boolean, enabled: Boolean, onClick: () -> Unit) {
-    val c = MaterialTheme.colorScheme
-    Box(
-        Modifier.size(62.dp, 78.dp).clip(Radius.Small)
-            .border(if (selected) 2.dp else 1.dp, if (selected) c.primary else LocalLuxe.current.line, Radius.Small)
-            .padding(if (selected) 3.dp else 0.dp).clip(Radius.Small)
-            .background(LocalLuxe.current.card)
-            .semantics { contentDescription = label + if (enabled) "" else ", ausverkauft" }
-            .clickable(role = Role.RadioButton, onClick = onClick),
-    ) {
-        AsyncImage(
-            image.sized(200), null, contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize().alpha(if (enabled) 1f else 0.35f),
-        )
-        if (!enabled) Box(Modifier.align(Alignment.Center).width(44.dp).height(1.5.dp).rotate(-35f).background(c.onSurface.copy(alpha = 0.55f)))
     }
 }
 

@@ -2,6 +2,7 @@ package ch.luxestyle.app.ui
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -19,6 +20,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -34,6 +37,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextOverflow
@@ -77,31 +81,65 @@ fun ScreenTitle(title: String, back: Boolean = false, trailing: @Composable () -
     }
 }
 
+/**
+ * Sortieren, Preis und „Nur lieferbar" in EINER Zeile (vorher zwei Chip-Reihen, rund 40 % des
+ * Bildschirms vor dem ersten Produkt). Sortierung und Preis öffnen ein kleines Menü.
+ */
 @Composable
-fun SortRow(sort: Sort, options: List<Sort> = Sort.entries, edge: Dp = 16.dp, onSort: (Sort) -> Unit) {
-    LazyRow(
-        contentPadding = PaddingValues(horizontal = edge, vertical = 8.dp),
+fun ListControls(
+    sort: Sort,
+    options: List<Sort>,
+    onSort: (Sort) -> Unit,
+    filters: Filters,
+    onFilters: (Filters) -> Unit,
+) {
+    Row(
+        Modifier.fillMaxWidth().padding(vertical = 8.dp).testTag("listen-steuerung"),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalAlignment = Alignment.CenterVertically,
     ) {
-        items(options) { s -> ChoiceChip(s.label, selected = s == sort) { onSort(s) } }
+        MenuChip(
+            if (sort == options.first()) "Sortieren" else sort.label, active = sort != options.first(),
+            items = options.map { it.label to (it == sort) },
+        ) { onSort(options[it]) }
+        MenuChip(
+            filters.price?.label ?: "Preis", active = filters.price != null,
+            items = listOf("Alle Preise" to (filters.price == null)) + PriceBand.entries.map { it.label to (it == filters.price) },
+        ) { i -> onFilters(filters.copy(price = if (i == 0) null else PriceBand.entries[i - 1])) }
+        ChoiceChip("Nur lieferbar", selected = filters.onlyAvailable) {
+            onFilters(filters.copy(onlyAvailable = !filters.onlyAvailable))
+        }
     }
 }
 
-/** Preis-Stufen und „nur lieferbar" als Chips – mehr Filter pflegt der Shop derzeit nicht sauber. */
+/** Chip mit Pfeil nach unten, öffnet eine Auswahl; der gewählte Eintrag trägt ein Häkchen. */
 @Composable
-fun FilterRow(filters: Filters, edge: Dp = 16.dp, onChange: (Filters) -> Unit) {
-    LazyRow(
-        contentPadding = PaddingValues(horizontal = edge, vertical = 4.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
-    ) {
-        item {
-            ChoiceChip("Nur lieferbar", selected = filters.onlyAvailable) {
-                onChange(filters.copy(onlyAvailable = !filters.onlyAvailable))
-            }
+private fun MenuChip(text: String, active: Boolean, items: List<Pair<String, Boolean>>, onPick: (Int) -> Unit) {
+    var open by remember { mutableStateOf(false) }
+    val c = MaterialTheme.colorScheme
+    Box {
+        Row(
+            Modifier.clip(Radius.Pill)
+                .background(if (active) c.primary else Color.Transparent)
+                .border(1.dp, if (active) c.primary else LocalLuxe.current.line, Radius.Pill)
+                .clickable(role = Role.DropdownList) { open = true }
+                .padding(start = 14.dp, end = 10.dp, top = 9.dp, bottom = 9.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(text, style = MaterialTheme.typography.labelMedium, color = if (active) c.onPrimary else c.onSurface, maxLines = 1)
+            Spacer(Modifier.width(4.dp))
+            Icon(
+                painterResource(R.drawable.ic_chevron), null, Modifier.size(14.dp).rotate(90f),
+                tint = if (active) c.onPrimary else c.onSurface,
+            )
         }
-        items(PriceBand.entries) { band ->
-            ChoiceChip(band.label, selected = filters.price == band) {
-                onChange(filters.copy(price = if (filters.price == band) null else band))
+        DropdownMenu(open, { open = false }, containerColor = c.surface) {
+            items.forEachIndexed { i, (label, chosen) ->
+                DropdownMenuItem(
+                    text = { Text(label, style = MaterialTheme.typography.bodyMedium) },
+                    trailingIcon = if (chosen) { { Icon(painterResource(R.drawable.ic_check), null, Modifier.size(18.dp), tint = c.secondary) } } else null,
+                    onClick = { open = false; onPick(i) },
+                )
             }
         }
     }
@@ -164,10 +202,7 @@ fun CollectionScreen(handle: String, initialTitle: String) {
                     }
                 }
                 item(span = { GridItemSpan(maxLineSpan) }) {
-                    Column {
-                        SortRow(sort, listOf(Sort.FEATURED, Sort.BEST, Sort.NEW, Sort.PRICE_ASC, Sort.PRICE_DESC), edge = 0.dp) { sort = it }
-                        FilterRow(filters, edge = 0.dp) { filters = it }
-                    }
+                    ListControls(sort, listOf(Sort.FEATURED, Sort.BEST, Sort.NEW, Sort.PRICE_ASC, Sort.PRICE_DESC), { sort = it }, filters) { filters = it }
                 }
             },
             empty = {
