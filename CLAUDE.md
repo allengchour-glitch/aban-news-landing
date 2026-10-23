@@ -84,6 +84,45 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-23 nachts (🚚 Elf von elf Erstattungen hatten denselben Grund — jetzt gibt es einen Wächter dafür):**
+Angefangen bei der Frage „warum kauft niemand auf den drei Traffic-Seiten", gelandet bei der teuersten
+Stelle des Shops. Alles live gemessen, PR #2715.
+- **🚨 DIE DREI TRAFFIC-SEITEN HABEN KEINEN MANGEL — die Arbeit dort wäre Arbeit an einem Nicht-Problem.**
+  Live geprüft: HTTP 200, Kauf-Knopf, keine Ausverkauft-Meldung, Bilder READY, Masstabellen, SEO,
+  neun Kanäle, `ProductGroup`-Strukturdaten mit Preis und Verfügbarkeit je Variante, robots.txt offen
+  für alle Bots, je 16 Frachtlinien. **Die Gegenprobe liegt in DERSELBEN Seite, darum trägt sie:**
+  TikTok-Besucher legen dort in **4 von 530** Sitzungen etwas in den Korb (0,75 %), direkte Besucher
+  derselben Seiten in **4 von 30** (13 %). Die Startseite macht aus 290 Sitzungen 17 Körbe und **vier
+  Käufe** — mehr als die drei Seiten zusammen, die in 60 Tagen **null** Bestellung brachten.
+- **🤖 ZWEI VON ACHT BEZAHLTEN BESTELLUNGEN KAMEN ÜBER CHATGPT** (Nibosi Quarzuhr, E-Scooter-Ladegerät,
+  beide direkt auf die Produktseite). Aus TikTok, Facebook und Instagram kam in zwölf Bestellungen
+  **keine einzige**. Was kauft, ist eine konkrete Suche nach einem benannten Ding — darum zahlen sich
+  Sachangaben aus (Masse, Kompatibilität, Preis, Schweizer Versand), nicht mehr Social-Reichweite.
+- **🚚 ELF VON ELF ERSTATTUNGEN: „nicht lieferbar"** (`ausverkauft-lieferant`, `nicht-lieferbar-ch`,
+  `cj-nicht-versendbar-ch`, „lager leer", Storno `INVENTORY`). **Jedes Mal wurde das Produkt erst NACH
+  dem Kauf auf DRAFT gesetzt.** 1998 Produkte tragen den Sperr-Tag — alle von Hand; **keiner der rund
+  70 Läufe im Repo prüfte das.** Neu: `automation/lieferbarkeit_guard.mjs` + `automation/lib/lieferbarkeit.mjs`,
+  16 Tests, 4 Mutationen rot. Trockenlauf ist Vorgabe.
+- **Das Messgerät:** `logistic/freightCalculate` CN→CH. Gegenprobe in beide Richtungen, **16 von 16
+  richtig**: acht bekannt gesperrte Produkte bekommen **null** Linien, acht gesunde 7–16. Wenige Linien
+  sind kein Befund (Rizinusöl hat 3).
+- **🚨 WAS NICHT TAUGT, und beinahe falsche Sicherheit gegeben hätte:** das Taschenmesser, das CJ als
+  verbotenen Artikel zurückschickte (#1016, #1017), trug denselben `status: "3"` wie ein gesundes Kleid,
+  hatte **5628 Stück an Lager** und bekam **sogar eine Frachtlinie**. Ein Wächter auf Status oder Bestand
+  wäre wertlos gewesen. Die rechtliche Sperre sieht die API nicht — nur den logistischen Fall. Das ist
+  die ehrliche Grenze, und sie steht im Modul.
+- **🔑 DIE WICHTIGSTE REGEL IST DIE ZURÜCKHALTUNG: `1602001 Product not found` heisst UNBEKANNT, nicht
+  unlieferbar.** Zwei der 30 besuchten Produkte tragen eine interne UUID statt einer CJ-SKU. Als Befund
+  gewertet hätte das zwei gesunde Produkte aus dem Verkauf genommen. **Dieselbe Fehlerklasse wie der
+  stumme Skip im Review-Import und das zu breite `rueckhol`-Muster — nur umgekehrt.**
+- **Test-Lehre:** eine Mutation fiel zuerst nicht durch, weil die `vid`-Prüfung von der Fracht-Prüfung
+  verdeckt wird (beide enden auf `unbekannt`). Erst ein Fall, der NUR sie erreicht (Fracht gemessen,
+  aber keine Variante), macht sie prüfbar. Doppelt abgesicherte Stellen brauchen den direkten Fall.
+- **✅ Gemessen, nichts zu tun: 75 aktive Produkte geprüft, 0 Befunde** — die 30 besuchten und 45 aus dem
+  ältesten Katalogteil. Die akute Fläche ist sauber.
+- **🔁 `ERNEUT=1` ist ein eigener Hebel:** er prüft die **1998 gesperrten** Produkte nochmals und meldet
+  unter `wiederLieferbar`, was ein Lieferant wieder versenden kann. Noch nicht gelaufen (CJ-Punkte).
+
 **📌 2026-10-23 nachts (🤖 ChatGPTs Arbeit nachgeprüft — ein echter Blocker behoben, eine Versand-Regel gekippt):**
 Der User: „chatgpt hat gearbeitet schaue nach und update dich immer“. Dauerauftrag ab jetzt: **ChatGPTs
 Arbeit in jeder Sitzung nachsehen und danach das Gedächtnis nachführen.**
