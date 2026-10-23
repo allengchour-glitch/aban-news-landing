@@ -13864,3 +13864,17 @@ fahrradlicht-fur-nachtliche-fahrten-816832	1372045379289354240	7	6.85	ok	landese
 cotten-gestopfte-kleidung-fur-hunde-katzen-607700	2503141558541607900	16	6.77	ok	landeseite
 sommerliches-druckkleid-631500	2607130230201632300	16	9.47	ok	landeseite
 wasserdichte-mtb-lampe-180736	1367811661515329536	7	8.96	ok	landeseite
+herbst-winter-haustier-cotton-westen-619200	2503140459301619400	16	5.75	ok	landeseite
+fahrradlicht-fur-nachtfahrten-338240	1367432363457515520	7	5.23	ok	landeseite
+liebes-anhanger-fur-die-mutter-618200	2607131155021618800	16	11.00	ok	landeseite
+damen-bluse-mit-laternenarmeln-625100	2607131017301625700	16	7.85	ok	landeseite
+beruhigungs-weste-fur-katzen-607200	2503040247461607500	16	6.33	ok	landeseite
+drehbare-schmuckbox-mit-kette-628300	2607131148371628900	16	8.11	ok	landeseite
+vorderlicht-fur-nachtfahrten-usb-ladung-200m-r-099712	1365498620429864960	7	11.30	ok	landeseite
+langer-pullover-mit-lockerer-passform-633400	2607140246411634100	16	11.00	ok	landeseite
+hundebauch-wrap-jacke-624300	2503030848141624500	16	8.79	ok	landeseite
+nachladbare-fahrrad-rucklichtsensor-064960	1362383971018739712	7	6.49	ok	landeseite
+eng-anliegendes-strapse-kleid-626700	2607130903011627701	16	9.40	ok	landeseite
+selbstleuchtendes-fahrradlicht-051904	1357958878934994944	16	5.81	ok	landeseite
+hundeschuhe-uberzug-621800	2503030716531622100	16	8.11	ok	landeseite
+kopfmontierte-led-lampe-mit-aufladefunktion-258112	1357574271941087232	7	7.78	ok	landeseite
