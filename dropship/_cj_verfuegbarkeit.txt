@@ -52428,3 +52428,9 @@ gid://shopify/Product/16610233319815	ok
 gid://shopify/Product/16610233811335	ok
 gid://shopify/Product/16610234990983	ok
 gid://shopify/Product/15447926833537	bei-cj-weg	CJ-CJST255282501AZ	via-varianten-wache-2026-10-23
+gid://shopify/Product/16610235974023	ok
+gid://shopify/Product/16610237153671	ok
+gid://shopify/Product/16610238398855	ok
+gid://shopify/Product/16610239480199	ok
+gid://shopify/Product/16610239873415	ok
+gid://shopify/Product/16610240496007	ok
