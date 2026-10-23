@@ -1757,3 +1757,7 @@ gid://shopify/Product/16656658268551	w	Magnete	Magnetische Bausteine 20-Teilig
 gid://shopify/Product/16656658399623	w	Kleinteile	Bausatz Raumschiff aus Bausteinen – 800 Teile
 gid://shopify/Product/16656658465159	w	Kleinteile	Mecha-Junge Bauklötze Set, 800 Teile
 gid://shopify/Product/16656618652039	a	toddler
+gid://shopify/Product/16656617570695	a	toddler
+gid://shopify/Product/16656623337863	a	toddler
+gid://shopify/Product/16656628089223	a	toddler
+gid://shopify/Product/16656675176839	a	kids
