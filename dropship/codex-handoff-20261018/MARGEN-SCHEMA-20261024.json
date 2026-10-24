@@ -1,0 +1,235 @@
+{
+  "version": 1,
+  "createdFor": "LUXESTYLE_PROFIT_4_20261024",
+  "shop": "luxestyle.ch",
+  "currency": "CHF",
+  "format": {
+    "encoding": "UTF-8",
+    "delimiter": ";",
+    "decimalSeparator": ".",
+    "csvHasFormulas": false
+  },
+  "source": {
+    "file": "SHOPIFY-KOSTENREFERENZ-20261024.json",
+    "localSourceFile": "../data/shopify-costs.json",
+    "sha256": "e0b99a783ed7e13f1667faad78b577f6abcea08f4543431d5681a673135be25c",
+    "readAtUtc": "2026-10-24T21:30:10.961Z",
+    "scope": "exact two known Shopify variants unitCost first read; no catalogue/order/analytics scan",
+    "kind": "Shopify Admin GraphQL recorded fields only"
+  },
+  "calculationBasis": "Exactly one order containing one unit of the selected variant; use separate calculation for other baskets.",
+  "missingInput": "empty field means unknown, never zero",
+  "outputUnknown": "UNBEKANNT",
+  "actualVariableCostsVerified": false,
+  "actualNetRevenueVerified": false,
+  "actualContributionMarginAndCAC": "unknown",
+  "evidenceReview": "open",
+  "advertisingApproved": false,
+  "gates": [
+    "All net revenue, customer shipping and all seven variable cost inputs need nonnegative numeric values plus dated evidence references; a verified zero needs evidence too.",
+    "Foreign currency requires original amount/currency, positive CHF-per-unit conversion, date and source before the CHF input is accepted.",
+    "Reference retail price and recorded Shopify unitCost never auto-fill net revenue or complete supplier/landed costs.",
+    "Customer shipping is income once; supplier shipping is cost once. Identify bundled components and never duplicate them.",
+    "Refunds already deducted from net revenue must not be deducted again under return handling.",
+    "DB = net merchandise + net customer shipping - purchase - supplier shipping - packaging - import - payment fees - other variable fees - return handling.",
+    "Break-even CAC exists only for positive DB. Target CAC also requires a justified fixed-cost/profit reserve below DB.",
+    "No profit, winner, advertising activation or forecast conclusion follows from reference price minus recorded unitCost.",
+    "CSV contains no executable formulas. XLSX structure is validated but no Excel engine recalculation has been certified."
+  ],
+  "excludedUnverifiedAssumptions": [
+    "CHF100/month fixed costs",
+    "CHF150/month Google Ads",
+    "19/month subscription amount and currency"
+  ],
+  "fields": {
+    "Produkt": {
+      "role": "reference",
+      "type": "text"
+    },
+    "Product_GID": {
+      "role": "reference",
+      "type": "Shopify GID"
+    },
+    "Variant_GID": {
+      "role": "reference",
+      "type": "Shopify GID"
+    },
+    "SKU": {
+      "role": "reference",
+      "type": "text"
+    },
+    "Angebotspreis_CHF_Referenz": {
+      "role": "reference",
+      "type": "decimal",
+      "meaning": "Aktueller Shopangebotspreis; Steuerbehandlung unbekannt, kein Nettoerloes."
+    },
+    "Shopify_unitCost_Referenz": {
+      "role": "reference",
+      "type": "decimal",
+      "meaning": "Gespeichertes Shopify-Kostenfeld; aktuelle CJ-Rechnung und Landed Costs nicht bestaetigt."
+    },
+    "unitCost_Waehrung": {
+      "role": "reference",
+      "type": "currency"
+    },
+    "Quellzeit_UTC": {
+      "role": "reference",
+      "type": "ISO datetime"
+    },
+    "Quell_SHA256": {
+      "role": "reference",
+      "type": "SHA-256",
+      "meaning": "Lokale Shopify-Leseantwort; ersetzt keine Kostenrechnung."
+    },
+    "Kalkulationsbasis": {
+      "role": "scope",
+      "type": "text",
+      "meaning": "Genau eine Bestellung mit einer Einheit der genannten Variante. Andere Warenkoerbe separat kalkulieren."
+    },
+    "Nettowaren_CHF": {
+      "role": "input_required",
+      "type": "nonnegative decimal CHF",
+      "meaning": "Nach Rabatt, bereits erfassten Rueckerstattungen und abzufuehrender Steuer; Quelle muss Steuerbehandlung belegen."
+    },
+    "Nettowaren_Beleg": {
+      "role": "evidence_required",
+      "type": "text",
+      "meaning": "Quelle, Datum und Ableitung des Nettoerloeses."
+    },
+    "Netto_Kundenshipping_CHF": {
+      "role": "input_required",
+      "type": "nonnegative decimal CHF",
+      "meaning": "Vom Kunden bezahlter Netto-Versanderloes, einmal addieren. Kostenloser Versand nur mit Beleg als0."
+    },
+    "Kundenshipping_Beleg": {
+      "role": "evidence_required",
+      "type": "text"
+    },
+    "Einkauf_CHF": {
+      "role": "input_required",
+      "type": "nonnegative decimal CHF",
+      "meaning": "Aktuelle, verifizierte Beschaffungskosten der exakten Variante; unitCost nicht automatisch uebernehmen."
+    },
+    "Einkauf_Beleg": {
+      "role": "evidence_required",
+      "type": "text",
+      "meaning": "Belegreferenz, Datum und eindeutige Kostenzuordnung. Ein Nullwert braucht ebenfalls einen Nachweis."
+    },
+    "Lieferantenversand_CHF": {
+      "role": "input_required",
+      "type": "nonnegative decimal CHF",
+      "meaning": "Lieferantenseitiger Versand, pro Kalkulationsbasis genau einmal; enthaltene Positionen kennzeichnen."
+    },
+    "Lieferantenversand_Beleg": {
+      "role": "evidence_required",
+      "type": "text",
+      "meaning": "Belegreferenz, Datum und eindeutige Kostenzuordnung. Ein Nullwert braucht ebenfalls einen Nachweis."
+    },
+    "Verpackung_CHF": {
+      "role": "input_required",
+      "type": "nonnegative decimal CHF",
+      "meaning": "Zusaetzliche variable Verpackungskosten, soweit nicht bereits enthalten."
+    },
+    "Verpackung_Beleg": {
+      "role": "evidence_required",
+      "type": "text",
+      "meaning": "Belegreferenz, Datum und eindeutige Kostenzuordnung. Ein Nullwert braucht ebenfalls einen Nachweis."
+    },
+    "Import_CHF": {
+      "role": "input_required",
+      "type": "nonnegative decimal CHF",
+      "meaning": "Zoll, Einfuhr-/Abwicklungsgebuehren und nicht abziehbare Importsteuer; keine doppelte Belastung."
+    },
+    "Import_Beleg": {
+      "role": "evidence_required",
+      "type": "text",
+      "meaning": "Belegreferenz, Datum und eindeutige Kostenzuordnung. Ein Nullwert braucht ebenfalls einen Nachweis."
+    },
+    "Zahlungsgebuehren_CHF": {
+      "role": "input_required",
+      "type": "nonnegative decimal CHF",
+      "meaning": "Tatsaechliche variable Zahlungsgebuehren der Kalkulationsbasis."
+    },
+    "Zahlungsgebuehren_Beleg": {
+      "role": "evidence_required",
+      "type": "text",
+      "meaning": "Belegreferenz, Datum und eindeutige Kostenzuordnung. Ein Nullwert braucht ebenfalls einen Nachweis."
+    },
+    "Sonstige_variable_Gebuehren_CHF": {
+      "role": "input_required",
+      "type": "nonnegative decimal CHF",
+      "meaning": "Uebrige variable Kosten, noch nirgends erfasst."
+    },
+    "Sonstige_variable_Gebuehren_Beleg": {
+      "role": "evidence_required",
+      "type": "text",
+      "meaning": "Belegreferenz, Datum und eindeutige Kostenzuordnung. Ein Nullwert braucht ebenfalls einen Nachweis."
+    },
+    "Retourenabwicklung_CHF": {
+      "role": "input_required",
+      "type": "nonnegative decimal CHF",
+      "meaning": "Belegbare Ruecksendungs-/Bearbeitungskosten der Basis; bereits im Nettoerloes beruecksichtigte Rueckerstattung nicht erneut abziehen."
+    },
+    "Retourenabwicklung_Beleg": {
+      "role": "evidence_required",
+      "type": "text",
+      "meaning": "Belegreferenz, Datum und eindeutige Kostenzuordnung. Ein Nullwert braucht ebenfalls einen Nachweis."
+    },
+    "FX_Belege": {
+      "role": "evidence_conditional",
+      "type": "text",
+      "meaning": "Je Fremdwaehrungsposition alle Details in diesem Textfeld: Komponentenname, Originalbetrag/-waehrung, CHF je Einheit, Kursdatum und Quelle. Ohne Umrechnung keine Rechnung. Die zusaetzliche KOSTEN-EINGABE.csv/Excel-Datei ist nur eine lokale Beilage und keine Voraussetzung fuer diesen portablen Datensatz."
+    },
+    "Nettoeinnahmen_CHF": {
+      "role": "output",
+      "type": "decimal CHF or UNBEKANNT"
+    },
+    "Variable_Kosten_CHF": {
+      "role": "output",
+      "type": "decimal CHF or UNBEKANNT"
+    },
+    "DB_vor_Werbung_CHF": {
+      "role": "output",
+      "type": "decimal CHF or UNBEKANNT",
+      "meaning": "Nettoeinnahmen minus sieben Kostenpositionen. Kein Gewinn nach Fixkosten."
+    },
+    "DB_Prozent_Nettoware": {
+      "role": "output",
+      "type": "decimal fraction or UNBEKANNT",
+      "meaning": "DB geteilt durch positiven Nettowarenumsatz; keine Prozentpunkte."
+    },
+    "CAC_Kostendeckung_CHF": {
+      "role": "output",
+      "type": "positive decimal CHF or UNBEKANNT",
+      "meaning": "Nur bei positivem DB; verbraucht den gesamten DB vor Werbung und deckt keine Fixkosten-/Gewinnreserve."
+    },
+    "Reserve_Fixkosten_Gewinn_CHF": {
+      "role": "input_target_cac",
+      "type": "nonnegative decimal CHF",
+      "meaning": "Begruendete Reserve pro Kalkulationsbestellung; keine Annahme vorbefuellt."
+    },
+    "Reserve_Begruendung": {
+      "role": "evidence_target_cac",
+      "type": "text"
+    },
+    "Ziel_CAC_CHF": {
+      "role": "output",
+      "type": "positive decimal CHF or UNBEKANNT",
+      "meaning": "DB minus begruendete Reserve; nur wenn ein positiver Spielraum besteht."
+    },
+    "Netto_ROAS_Kostendeckung": {
+      "role": "output",
+      "type": "positive decimal or UNBEKANNT",
+      "meaning": "Nettowarenumsatz geteilt durch positiven DB; kein plattformgemeldeter Brutto-ROAS."
+    },
+    "Rechenstatus": {
+      "role": "output",
+      "type": "text"
+    },
+    "Werbefreigabe": {
+      "role": "status",
+      "type": "text",
+      "meaning": "Fest NICHT FREIGEGEBEN. Diese Vorlage erteilt keine Werbe-/Budget-/Preis-/Shopfreigabe."
+    }
+  }
+}
