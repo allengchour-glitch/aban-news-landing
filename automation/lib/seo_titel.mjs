@@ -80,31 +80,47 @@ export function seoOffen(produktTitel, seo) {
 }
 
 /**
- * Nur die FEHLENDEN SEO-Felder zurueckgeben — niemals einen vorhandenen Wert.
+ * Den vollstaendigen SEO-Block zurueckgeben, bei dem vorhandene Werte ERHALTEN bleiben und
+ * nur die fehlenden aus `seoTitel` ergaenzt werden.
  *
- * Der Grund stammt aus ChatGPTs Entwurf #2694 („preserve existing metadata") und ist echt:
- * `seoOffen` meldet ein Produkt auch dann als offen, wenn nur die BESCHREIBUNG fehlt
- * (Zeile „Beschreibung fehlt — nachtragen"). Der Lauf sendete danach `seoTitel(titel)`
- * vollstaendig, also auch den Titel — und haette damit einen vorhandenen, von Hand
- * geschriebenen Keyword-Titel durch den erzeugten Standardtitel ersetzt. Genau das darf
- * nicht passieren: CLAUDE.md haelt fuer die 164 handgeschriebenen Titel ausdruecklich fest,
- * dass sie besser sind und unangetastet bleiben, „der Optimizer fuellt nur fehlende".
+ * Der Anlass kam aus ChatGPTs Entwurf #2694 („preserve existing metadata") und war echt:
+ * `seoOffen` meldet ein Produkt auch dann als offen, wenn nur die BESCHREIBUNG fehlt. Der Lauf
+ * sendete danach `seoTitel(titel)` vollstaendig, also auch den Titel — und haette damit einen
+ * vorhandenen, von Hand geschriebenen Keyword-Titel durch den erzeugten Standardtitel ersetzt.
+ * CLAUDE.md haelt fuer die 164 handgeschriebenen Titel ausdruecklich fest, dass sie besser sind
+ * und unangetastet bleiben: „der Optimizer fuellt nur fehlende".
  *
- * Gemessen am 24.10.2026 ueber 5000 aktive Produkte (3000 aelteste nach CREATED_AT,
- * 2000 nach UPDATED_AT): 1 offenes Produkt, **0 im Risikofall** — heute gibt es also keinen
- * Altschaden. Die Luecke war ein Fehler im Code, kein Schaden im Katalog; sie haette erst
- * beim naechsten Produkt mit eigenem Titel ohne Beschreibung zugeschlagen.
+ * 🚨 ABER: NUR das fehlende Feld zu senden ist SCHLIMMER, nicht besser.
+ * **`ProductInput.seo` ist bei Shopify ein ERSETZEN, kein Zusammenfuehren.** Am 24.10.2026 live
+ * gemessen und mit frischem Lesen gegengeprueft (Produkt 15491411804545):
+ *   - nur `{description}` gesendet  -> `seo.title` steht danach auf **null**, der Titel ist WEG
+ *   - `{title, description}` gesendet -> beide stehen
+ * Eine erste Fassung dieser Funktion gab nur das fehlende Feld zurueck und hat genau dadurch
+ * bei zwei Produkten die vorhandene Beschreibung GELOESCHT — also exakt der Schaden, den sie
+ * verhindern sollte, nur am anderen Feld.
  *
- * Gibt {} zurueck, wenn nichts zu setzen ist — der Aufrufer schreibt dann nicht.
+ * Darum wird hier CLIENT-SEITIG zusammengefuehrt: der vorhandene Wert geht unveraendert mit
+ * zurueck in die Mutation, der fehlende kommt aus `seoTitel`. Gibt `{}` zurueck, wenn nichts
+ * zu ergaenzen ist — der Aufrufer schreibt dann nicht.
+ *
+ * LEHRE: ein Modultest kann das nie finden. Erst die Gegenprobe am echten Shop — schreiben,
+ * dann FRISCH lesen — zeigt, ob ein Feld ein Patch oder ein Ersetzen ist.
  */
 export function seoNachtrag(produktTitel, seo) {
   const erzeugt = seoTitel(produktTitel);
+  const vorhandenTitel = seo?.title || '';
+  const vorhandenBeschreibung = seo?.description || '';
+  // Ein Vorschlag, der dem Produkttitel GLEICHT, ist keine Ergaenzung: Shopify speichert ihn
+  // nicht (siehe `seoOffen`), die Schreib-Abfrage waere umsonst.
+  const neuerTitel = erzeugt.title && erzeugt.title !== produktTitel ? erzeugt.title : '';
+  const fehltTitel = !vorhandenTitel && !!neuerTitel;
+  const fehltBeschreibung = !vorhandenBeschreibung && !!erzeugt.description;
+  if (!fehltTitel && !fehltBeschreibung) return {};
   const patch = {};
-  // Ein vorhandener Titel bleibt stehen. `null`/leer gilt als fehlend.
-  // Und ein Vorschlag, der dem Produkttitel GLEICHT, gehoert nicht in den Patch: Shopify
-  // speichert ihn nicht (siehe `seoOffen`), die Schreib-Abfrage waere umsonst. Gefunden hat
-  // das die Gegenprobe des Tests, nicht der Haupttest.
-  if (!seo?.title && erzeugt.title && erzeugt.title !== produktTitel) patch.title = erzeugt.title;
-  if (!seo?.description && erzeugt.description) patch.description = erzeugt.description;
+  // Beide Felder gehen IMMER mit, sonst loescht das Ersetzen das jeweils andere.
+  const title = vorhandenTitel || neuerTitel;
+  const description = vorhandenBeschreibung || erzeugt.description;
+  if (title) patch.title = title;
+  if (description) patch.description = description;
   return patch;
 }

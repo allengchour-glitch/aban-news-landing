@@ -76,18 +76,28 @@ pruef('leerer Produkttitel → nicht offen (es gibt nichts zu setzen)', seoOffen
 
 
 // ---------------------------------------------------------------------------
-// seoNachtrag: nur FEHLENDE Felder senden (Kern von ChatGPTs Entwurf #2694).
+// seoNachtrag: vorhandene Felder BEWAHREN (Kern von ChatGPTs Entwurf #2694).
 // Angehaengt VOR der Zusammenfassung — die Lehre vom 24.10. (CLAUDE.md): Tests nach
 // `process.exit` laufen nie, und „alle Tests gruen" kommt dann aus dem alten Block.
+// 🚨 Der Patch schickt IMMER beide Felder, sobald er ueberhaupt etwas schickt:
+// `ProductInput.seo` ist bei Shopify ein ERSETZEN, kein Zusammenfuehren (am 24.10. am
+// echten Shop gemessen: nur `{description}` gesendet → `seo.title` danach `null`).
+// Das Zusammenfuehren passiert hier, im Aufrufer.
 // ---------------------------------------------------------------------------
-pruef('Titel vorhanden, Beschreibung fehlt → NUR die Beschreibung im Patch',
-  JSON.stringify(Object.keys(seoNachtrag(KURZ, { title: 'Mein handgeschriebener Keyword-Titel', description: null })))
-    === JSON.stringify(['description']),
-  JSON.stringify(seoNachtrag(KURZ, { title: 'Mein handgeschriebener Keyword-Titel', description: null })));
-pruef('der vorhandene Titel steht NICHT im Patch',
-  seoNachtrag(KURZ, { title: 'Mein handgeschriebener Keyword-Titel', description: null }).title === undefined);
-// GEGENPROBE in die andere Richtung: fehlt der Titel wirklich, MUSS er gesetzt werden —
-// ein zu zurueckhaltender Patch waere derselbe Fehler, nur umgekehrt (die Luecke bliebe offen).
+const HAND = { title: 'Mein handgeschriebener Keyword-Titel', description: null };
+pruef('Titel vorhanden, Beschreibung fehlt → BEIDE Felder im Patch (sonst loescht das Ersetzen den Titel)',
+  JSON.stringify(Object.keys(seoNachtrag(KURZ, HAND)).sort()) === JSON.stringify(['description','title']),
+  JSON.stringify(seoNachtrag(KURZ, HAND)));
+pruef('der vorhandene Titel wird UNVERAENDERT mitgeschickt, nicht ueberschrieben',
+  seoNachtrag(KURZ, HAND).title === HAND.title,
+  JSON.stringify(seoNachtrag(KURZ, HAND)));
+pruef('die fehlende Beschreibung wird wirklich gefuellt',
+  seoNachtrag(KURZ, HAND).description === seoTitel(KURZ).description);
+// Gegenprobe in die andere Richtung: ist die Beschreibung da und der Titel fehlt,
+// muss die vorhandene Beschreibung erhalten bleiben.
+pruef('Beschreibung vorhanden, Titel fehlt → vorhandene Beschreibung bleibt erhalten',
+  seoNachtrag(KURZ, { title: null, description: 'Mein Text' }).description === 'Mein Text',
+  JSON.stringify(seoNachtrag(KURZ, { title: null, description: 'Mein Text' })));
 pruef('nichts gesetzt → Titel UND Beschreibung im Patch',
   JSON.stringify(Object.keys(seoNachtrag(KURZ, null)).sort()) === JSON.stringify(['description','title']),
   JSON.stringify(seoNachtrag(KURZ, null)));
@@ -100,6 +110,11 @@ pruef('leerer Produkttitel → leerer Patch', Object.keys(seoNachtrag('   ', nul
 pruef('titelgleicher Fall mit vorhandener Beschreibung → leerer Patch',
   Object.keys(seoNachtrag(GLEICH, { title: null, description: 'irgendwas' })).length === 0,
   JSON.stringify(seoNachtrag(GLEICH, { title: null, description: 'irgendwas' })));
+// Titelgleich OHNE Beschreibung: die Beschreibung fehlt wirklich, aber ein titelgleicher
+// SEO-Titel wuerde von Shopify nicht gespeichert → er darf NICHT mitgeschickt werden.
+pruef('titelgleicher Fall ohne Beschreibung → nur die Beschreibung, kein titelgleicher Titel',
+  JSON.stringify(Object.keys(seoNachtrag(GLEICH, null))) === JSON.stringify(['description']),
+  JSON.stringify(seoNachtrag(GLEICH, null)));
 
 console.log(fehler ? `\n${fehler} FEHLER` : '\nalle Tests gruen');
 process.exit(fehler ? 1 : 0);

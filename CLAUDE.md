@@ -116,11 +116,24 @@ und waren konfliktbehaftet, weil Claude dieselben Dateien danach umgebaut hat. P
   Produkt auch dann als offen, wenn nur die BESCHREIBUNG fehlt — der Lauf sendete danach
   `seoTitel()` vollständig, also auch den Titel, und hätte einen handgeschriebenen Keyword-Titel
   ersetzt. Genau das verbietet dieses Dokument für die 164 handgeschriebenen Titel. Neu:
-  `seoNachtrag()` in `automation/lib/seo_titel.mjs` gibt nur die fehlenden Felder zurück.
+  `seoNachtrag()` in `automation/lib/seo_titel.mjs` füllt nur die fehlenden Felder, schickt aber
+  IMMER beide mit.
   **Gemessen, nicht geschätzt: Trockenlauf über den GANZEN Katalog (56 667 aktive Produkte) ergab
   2 offene Produkte, 0 im Risikofall** — kein Altschaden, die Lücke war im Code, nicht im Katalog.
   Die zwei offenen waren die beiden heute live gegangenen Produkte (Fleischwolf,
   Halloween-Schaukelgeist) und sind **gesetzt**.
+  **🚨 UND HIER HAT ChatGPTs PRINZIP SELBST SCHADEN ANGERICHTET — `ProductInput.seo` ist bei
+  Shopify ein ERSETZEN, kein Zusammenführen.** Nur das fehlende Feld zu senden ist nicht
+  schonender, es löscht das andere. Live gemessen: eine Mutation mit ausschliesslich
+  `{description}` kam mit `userErrors: []` zurück, und die FRISCHE Lesung danach zeigte
+  `seo.title: null`. Meine erste Fassung von `seoNachtrag()` tat genau das und hat bei diesen
+  zwei Produkten die vorhandene BESCHREIBUNG gelöscht — derselbe Schaden, den sie verhindern
+  sollte, nur auf dem anderen Feld. Beide sind repariert und per frischer Lesung nachgeprüft
+  (Titel UND Beschreibung stehen); der Original-Beschreibungstext des Fleischwolfs war nicht
+  wiederherstellbar (die API führt keine Feldhistorie), er trägt jetzt den erzeugten Standardtext.
+  **LEHRE: ein Modultest kann das nie finden.** Erst die Gegenprobe am echten Shop — schreiben,
+  dann FRISCH lesen — zeigt, ob ein Feld ein Patch oder ein Ersetzen ist. Dieselbe Klasse wie
+  „ein Filter, der am Titel geprüft wurde, ist nicht am fertigen Feed geprüft".
   **Die Gegenprobe fand eine Lücke im eigenen neuen Helfer**, nicht der Haupttest: ein Vorschlag,
   der dem Produkttitel GLEICHT, gehört nicht in den Patch (Shopify speichert ihn nicht).
 - **📄 #2689 Doku-Übergabe bewusst OFFEN gelassen** — rein Dokumentation (30 Dateien, kein Code),
