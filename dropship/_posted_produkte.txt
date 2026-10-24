@@ -525,3 +525,5 @@ name:catkompaktlader
 slug:bildreel-steampunk-korsage-schwarz-fgssor9537
 pid:15469972226433
 slug:steampunk-korsage-schwarz-fgssor9537
+slug:outdoor-bluetooth-karaoke-lautsprecher-600000
+name:outdoorbluetoothkaraokelautsprecher
