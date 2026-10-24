@@ -84,6 +84,12 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-24 abends (💶 Auf Wunsch des Besitzers: 9 Widmann-Artikel über 2× ohne Verlust gesenkt):**
+Auftrag „nur 12 Artikel anpassen, so dass ich keinen Verlust habe“. Geändert 9, Marge pro Stück vorher CHF 3.2–9.3, nachher 1.0–1.7. Alt/neu: `dropship/FORTURA-PREISANPASSUNG-2410.csv`.
+- **🚨 Der Galaxus-Preis liegt bei allen 12 UNTER unserem Einkauf (`unitCost`).** Ohne Verlust ist ein Gleichziehen unmöglich; die neuen Preise bleiben ~1.7–2.1× über Galaxus. Hebel wäre ein günstigerer Einkauf, nicht der Verkaufspreis.
+- **Drei Waggis-Hosen NICHT angefasst:** die Galaxus-Treffer tragen fremde Titel (Astronautenhelm, Strumpfhose) → falsch zugeordneter Vergleich. **Der Barcode-Treffer ist nicht in jedem Fall der gleiche Artikel — Titel gegenlesen, bevor ein Faktor zählt.**
+- Regel: Preis = (EK+0.30)/0.971+1.00, aufgerundet auf x.90; Fracht Fortura→Kunde ungeprüft.
+
 **📌 2026-10-24 spätnachmittags (🔥 Firecrawl: Widmann gegen Galaxus gemessen — 60 % teurer, Median 1.29):**
 751 Artikel mit Barcode, 737 Credits, nur lesend. Von 590 vergleichbaren sind 355 teurer (137 ab 1.5×, 12 ab 2×), 120 nicht bei Galaxus, 41 unlesbar.
 Bericht `dropship/FORTURA-GALAXUS-VERGLEICH-2410.md`. Werkzeug `automation/fortura_galaxus_lauf.mjs` + `lib/galaxus_treffer.mjs` (29 Tests, 8/8 Mutationen).
