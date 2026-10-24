@@ -1,4 +1,4 @@
-# Produktkategorie (Taxonomie) — Stand 2026-10-24T10:13Z
+# Produktkategorie (Taxonomie) — Stand 2026-10-24T13:12Z
 
 Aktive gescannt: 0 · ohne Kategorie: 0 · heute gesetzt: 0 (SCHARF, CAP 1500) · danach offen: 0 · Fehler: 0
 
