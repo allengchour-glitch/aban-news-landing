@@ -6,13 +6,13 @@
 
 ## Zahlen
 
-- Produkte gesehen: **41'453**
-- Optionen mit englischen Werten (Kandidaten): 2'578
+- Produkte gesehen: **42'048**
+- Optionen mit englischen Werten (Kandidaten): 2'596
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 13'836
+- Werte mit unbekanntem Wort (unverändert): 13'867
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 64
+- übersprungen «kleidungsstueck-im-wert»: 65
 - übersprungen «kollision-nach-uebersetzung»: 41
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
@@ -121,5 +121,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 556, `light` 428, `color` 313, `shell` 159, `degrees` 159, `⟨satzbau:material-vor-farbe⟩` 141, `size` 140, `core` 137, `surface` 131, `powder` 122, `diamond` 108, `skin` 103, `high` 101, `no` 95, `shoes` 92, `bag` 91, `three` 91, `⟨satzbau:mass-ohne-einheit⟩` 90, `belt` 89, `french` 89, `rain` 88, `code` 85, `case` 84, `dark` 82, `four` 82, `opp` 81, `yards` 79, `inner` 78, `buckle` 77, `dinosaur` 76, `rope` 75, `to` 73, `cloth` 71, `spring` 69, `chain` 68, `dual` 68, `petal` 68, `little` 66, `autumn` 66, `half` 66, `base` 63, `net` 63, `strap` 62, `feet` 62, `⟨satzbau:mass-unplausibel⟩` 62, `of` 60, `cherry` 60, `tea` 58, `plush` 56, `one` 55, `night` 54, `face` 52, `line` 52, `yarn` 52, `person` 51, `fold` 51, `background` 50, `rice` 50, `lens` 50, `ice` 49
+`⟨satzbau:adjektiv-vor-nomen⟩` 564, `light` 428, `color` 314, `shell` 159, `degrees` 159, `⟨satzbau:material-vor-farbe⟩` 141, `size` 140, `core` 137, `surface` 131, `powder` 122, `diamond` 108, `skin` 106, `high` 104, `no` 95, `shoes` 92, `bag` 91, `three` 91, `⟨satzbau:mass-ohne-einheit⟩` 90, `belt` 89, `french` 89, `rain` 88, `code` 85, `case` 84, `dark` 82, `four` 82, `opp` 81, `yards` 79, `inner` 78, `buckle` 77, `dinosaur` 76, `rope` 75, `to` 73, `cloth` 71, `spring` 69, `chain` 68, `dual` 68, `petal` 68, `little` 66, `autumn` 66, `half` 66, `base` 63, `net` 63, `strap` 62, `feet` 62, `⟨satzbau:mass-unplausibel⟩` 62, `of` 60, `cherry` 60, `tea` 58, `plush` 56, `one` 55, `night` 54, `face` 52, `line` 52, `yarn` 52, `person` 51, `fold` 51, `background` 50, `rice` 50, `lens` 50, `ice` 49
 
