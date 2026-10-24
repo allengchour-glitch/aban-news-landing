@@ -42,3 +42,4 @@
 2026-10-20	gid://shopify/Product/15460288037249	title+description	waschbare-inkontinenz-pads-fur-senioren-630800
 2026-10-23	gid://shopify/Product/16614565970311	title+description	silikon-springseil-3-m-fur-fettabbau-018112
 2026-10-23	gid://shopify/Product/16617695904135	title+description	springseil-fur-fitness-und-gewichtsverlust-fd0617
+2026-10-24	gid://shopify/Product/15460288037249	title+description	waschbare-inkontinenz-pads-fur-senioren-630800
