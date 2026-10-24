@@ -84,6 +84,164 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-24 vormittags (🚚 „Sourcing Succeeded" heisst NICHT lieferbar — 3 von 4 neuen Treffern fallen durch):**
+Der User: „sourcing erfolgreich weil mails gekommen". Stand erneut abgefragt, nichts neu gesendet.
+**5 von 17 fertig, 11 `Pending`, 1 „Similar Products".** Bericht `dropship/cj_sourcing_ergebnis.md`.
+- **🚨 DIE LEHRE DES TAGES: CJs „Sourcing Succeeded" sagt nichts über die Schweiz.** Drei der vier
+  neuen Treffer bekommen **null Frachtlinien CN→CH**: Resistance Bands, Rizinusöl-Wickel-Set,
+  Schaum-Abflussreiniger. CJ hat einen Lieferanten gefunden — nur keinen, der nach CH versendet.
+  **Das Messgerät lief im selben Durchgang richtig** (der Fleischwolf bekam 7 Linien), die Null ist
+  also ein Befund und kein Ausfall. **Ohne eigene Frachtmessung wären drei nicht lieferbare Produkte
+  live gegangen — genau die Ursache aller elf Erstattungen des Shops.**
+- **Besonders bitter: das `rizinusol-wickel-set-mit-bio-ol-323457`** ist die vierthäufigste
+  Produktseite des ganzen Shops (64 von 2619 Sitzungen) und rentabel — der gesuchte Ersatzlieferant
+  liefert trotzdem nicht in die Schweiz. **Bleibt gesperrt.**
+- **✅ `elektrischer-fleischwolf-5l-kuchenmaschine-656962` ist LIVE** (CJ-Produkt
+  `1687282481562652672`, EU-Variante `CJYD181444603CX`, 110–240 V): **7 Frachtlinien**, günstigste
+  USD 35.52 (6–10 Tage). EK USD 9.55 + Fracht = USD 45.07 = **CHF 37.16** gegen VK **CHF 75.90** →
+  Marge ≈ **CHF 38.74**. Der alte Lieferant kostete CHF 53.61 allein für die Ware.
+- **🔑 EIN LIEFERANTENWECHSEL IST NICHT NUR EIN KLICK AUF ACTIVE:** Varianten-SKU auf
+  `CJYD181444603CX` und Kosten auf CHF 7.87 gesetzt. Ohne das messen `lieferbarkeit_guard.mjs` und
+  jeder Preiswächter weiter den alten, nicht versendbaren Lieferanten — und melden „nicht lieferbar"
+  für ein Produkt, das verkauft wird.
+- **„Similar Products" ist kein Treffer:** die Schwingerhose bekam eine interne UUID
+  (`DDD50071-…`) statt einer CJ-SKU zurück — nach der Regel von `automation/lib/lieferbarkeit.mjs`
+  ist das **unbekannt**, nicht lieferbar und nicht unlieferbar. Nichts geändert.
+- **11 Anfragen sind weiter offen** → in einer späteren Sitzung `STATUS=1 node
+  automation/cj_sourcing.mjs`. **Nicht neu senden**, das Tagesbudget ist 25.
+
+**📌 2026-10-24 (🔎 Google: die Seite nannte Google 2662 Adressen, die es so nicht gibt — PR #2721):**
+Auftrag war „merchant und console google machen". Dabei gemessen: **Search Console ist für beide
+Domains längst verifiziert**, die Baustelle lag woanders. Alles live gemessen.
+- **✅ KEINE EINRICHTUNG NÖTIG: beide Domains sind per DNS-TXT verifiziert.** abannews.com
+  `google-site-verification=nr2qu7fKG6Obt8PM8vKnD2o4zmz9YQDimircfUXk-m4`, luxestyle.ch
+  `…=BUuBXKpNZg8E6Rd1lhl9ix_GZoN-XqzhvhsO9PxjFJw` (dort zusätzlich als `<meta>`). **Nicht erneut
+  aufrollen.** GSC-**Daten** sind von hier aus nicht lesbar: keine Google-Zugangsdaten, und im
+  Connector-Verzeichnis gibt es **keinen Search-Console- und keinen Merchant-Center-Connector**
+  (nachgesehen; nur Drittanbieter wie Supermetrics, Windsor.ai, OpenSEO).
+- **🚨 2662 VON 2667 SITEMAP-ADRESSEN ANTWORTEN MIT 308 — und jede Seite nannte sich selbst unter
+  genau dieser umleitenden Adresse.** Cloudflare Pages kürzt **jede** `.html`-Adresse per 308 auf
+  die Adresse ohne `.html`; dafür gibt es keinen Schalter. Gleichzeitig stand in `rel="canonical"`
+  die `.html`-Adresse (**2687 Dateien**, dazu **2298** mit `og:url`) und in der Sitemap ebenso.
+  Google wertet eine kanonische Adresse, die umleitet, **nicht** → solche Seiten landen unter
+  „Seite mit Weiterleitung", nicht im Index. **Gute Nachricht aus derselben Messung: keine Seite
+  ist tot** (2666 von 2667 enden bei 200) — es war nie ein Inhalts-, immer ein Adressproblem.
+- **🔧 BEHOBEN ALS BAU-SCHRITT, NICHT IN DER QUELLE:** `tools/kanonische_urls.py` läuft in
+  `build-pages.sh` nach `inject-engine` über `_site` und zieht `rel="canonical"`, `og:url` und die
+  Sitemap-`<loc>` auf die 200-Adresse. **Die Quelldateien behalten absichtlich `.html`** — die
+  Angaben stammen aus **51 Generatoren**, die es wieder zurückschreiben würden; der Bau-Schritt
+  deckt auch jede künftig erzeugte Seite ab. **Nicht „korrigieren", wenn in einer Quelldatei
+  `.html` steht.** Angefasst werden ausschliesslich diese drei Stellen; gewöhnliche Links bleiben.
+  **8 Adressen zeigen woandershin** (`/about` → `/ueber-aban`, `/zinseszins-rechner` →
+  `/sparplan-statt-trading`, `/ki-audit`, `/themen`, `/vorlagen`, `/scheinselbststaendigkeit`,
+  `minispiele/index.html`) → das Werkzeug liest `_redirects` mit. 23 Tests grün, zur Hälfte
+  Gegenproben in die andere Richtung; **8 von 9 Mutationen erkannt**, die neunte gleichwertig
+  (zwei Schranken fangen denselben Kreis) und im Werkzeug vermerkt.
+- **🚨 EIN UMLEITUNGS-KREIS MACHTE DIE PRESSE-SEITE UNERREICHBAR:** `/press.html` → 308 →
+  `/press` → 301 (Regel in `_redirects`) → `/press.html` → … Für Besucher **und** Google tot. Die
+  Regel war überflüssig, Pages liefert `/press` ohne Regel direkt aus. **Alle 325 Regeln auf
+  dasselbe Muster geprüft — das war der einzige Kreis.** **REGEL: nie `/X → /X.html` anlegen,
+  wenn `X.html` existiert.**
+- **🚨 DER FEED, DER ZUM EINTRAGEN BEREITLAG, WAR DIE KAPUTTE FASSUNG — und antwortete mit 200.**
+  Auf `brain/intel` liegen **3186 Artikel, 0 `g:shipping`, 0 Kategorien, 0 `g:mpn`, 4 doppelte
+  IDs** = genau die vier Mängel, die am 17.10. behoben wurden. Den Branch beliefert der
+  GitLab-Job, und der **liefert seit 27.06. nichts mehr**. Ein geplanter Abruf hätte den kaputten
+  Feed geholt und wie ein Feed-Problem ausgesehen, nicht wie eine tote Lieferkette. **Die alte
+  `raw.githubusercontent`-Adresse nie wieder nennen.**
+- **✅ NEU: `https://abannews.com/google-merchant-feed.xml`** (Repo-Wurzel, vom Pages-Deploy
+  ausgeliefert wie `sitemap.xml`; `automation/` ist vom Deploy ausgeschlossen, darum nicht dort).
+  Täglich erzeugt im Job `merchant-feed` in `tages-update.yml` — **kein neuer Cron**. Der Lauf
+  prüft vorher selbst und **bricht ab, statt Kaputtes zu veröffentlichen**: XML wohlgeformt ·
+  ≥ 1000 Artikel · 0 doppelte Feed-IDs. Stand: **5861 Artikel, 0 Dubletten**, Versand und
+  Kategorie bei allen (85 wegen Sperrtag, 54 wegen Marken-/Safety-Risiko ausgelassen).
+- **⚠️ Ehrliche Grenze:** der Lauf prüft **6000 der rund 56 700** aktiven Produkte und beginnt bei
+  den zuletzt geänderten — die **Fortura-Ware mit den 97 % Barcodes liegt ausserhalb**, darum
+  **0 GTIN** im Feed. Dieselbe Fensterfalle wie beim SEO-Titel-Lauf.
+- **🔑 MESS-LEHREN:** (1) **Ein 200 auf eine Feed-Adresse heisst nicht, dass der Feed stimmt** —
+  erst der Vergleich der Felder zeigte die alte Fassung; darum prüft der Lauf jetzt den Feed
+  selbst. (2) **Eine Umleitung ist kein Fehler und sieht darum nach nichts aus** — 2662 × 308
+  wirkt harmlos, ist aber genau der Zustand, in dem Google die eigene Angabe verwirft; aufgefallen
+  nur, weil die Messung den **Statuscode** festhielt und nicht bloss „erreichbar". (3) Vor der
+  Messung eine erfundene Adresse abgefragt (404) — sonst wäre „alles 308" auch mit einem kaputten
+  Prüfer herausgekommen.
+- **🟡 Beim User (Google-Konto):** Merchant Center → geplanter Abruf auf die neue Adresse, alte
+  Adresse löschen (Klick-Anleitung in `/mnt/project-files/google/FORTURA-SHOPPING-2410.md`) ·
+  Search Console → nach zwei bis drei Wochen „Seite mit Weiterleitung" beobachten (das ist die
+  Gegenprobe). Voller Bericht: `/mnt/project-files/google/MERCHANT-CONSOLE-2410.md`.
+  **Die beiden früheren Entscheide sind erledigt** (User 24.10.: „3 ja", „4 keine ahnung"):
+  Fortura ist im Feed, `excluded_destination` ist aufgeklärt und entfernt — siehe nächster Block.
+
+**📌 2026-10-24 früh (🛒 Fortura im Merchant-Feed · 29 Lizenz-Artikel abgefangen · „70 % ausgeschlossen" aufgeklärt):**
+Antwort auf die vier Punkte des Users („1 nein 2 ist schon 3 ja 4 keine ahnung"). Alles live
+gemessen, Bericht `/mnt/project-files/google/FORTURA-SHOPPING-2410.md`.
+- **✅ FORTURA IST IM FEED — und erst jetzt hat der Feed überhaupt GTINs.** Der Generator las nur
+  **ein** Fenster (die 6000 zuletzt geänderten Produkte); die Fortura-Ware liegt ausserhalb, darum
+  standen dort **0 GTIN**. `merchant_feed.mjs` kann jetzt **mehrere Abfragen** (`FEED_QUERY` mit
+  `||` trennen, je eigenes SCAN-Fenster, Dubletten fallen über `ids` weg) plus `SORT`/`REVERSE`,
+  und der Bericht nennt die **gelaufene Region je Abfrage**. Vorher/nachher: **5861 → 8084
+  Artikel, GTIN 0 → 2156**, Kategorie 5857 → 6656, doppelte IDs 0, `identifier_exists` 0,
+  Versandangabe bei allen 8084. Fortura selbst: **2371 aktiv, 97,1 % Barcode**, 64,3 % lieferbar,
+  34,7 % mit Kategorie; 2223 gehen in den Feed. Der Tages-Lauf prüft jetzt auch die **Dateigrösse**
+  (Pages liefert über 25 MiB nicht aus; 8084 Artikel sind bereits **16,6 MB**).
+- **🚨 26 ARTIKEL MIT LIZENZNAMEN WÄREN IN DEN FEED GEGANGEN — Kontosperr-Risiko, nicht bloss eine
+  Ablehnung.** `RISIKO` kannte nur `disney|frozen`, und „Kostüm Batman Classic" enthält keines
+  seiner Wörter. Neues Muster `LIZENZ` in `automation/lib/gmc_feed_item.mjs` (Batman, Harry Potter,
+  Pokemon, Sonic, Super Mario, Paw Patrol, Spiderman, Mickey/Minnie, Superman, Iron Man, Captain
+  America, Spongebob …). **Alle 31 Treffer der Fortura-Ware wurden EINZELN nachgelesen, bevor ein
+  Name im Muster stand** — kein Fehltreffer. **Die Gegenprobe fing die eigene Überbreite:** `anna`
+  trifft über die Wortgrenze am Bindestrich den Vornamen in „Kapuzenpullover «Anna-Lena»" →
+  **`anna` und `elsa` sind bewusst NICHT im Muster** (Frozen deckt `frozen` ab). **Nicht
+  nachtragen.** 19 Lizenz-Tests + 14 Gegenproben, 4 Mutationen rot.
+- **✅ `excluded_destination` AUFGEKLÄRT: eine Charge vom 17.08.2026, kein Entscheid.** Der Befund
+  „70,3 % von Shopping ausgeschlossen" vom 17.10. ist kein Ausschluss. Alle **1368** Fortura- und
+  **123 von 124** CJ-Metafelder wurden am **selben Tag** angelegt, quer über Produkte aus Mai,
+  Juni und Juli; der Wert ist **immer genau** `["Shopping_ads"]`; **kein Skript im Repo schreibt
+  das Feld**. **Die Gegenprobe entscheidet es: das Feld deckt sich nicht mit der Wirklichkeit** —
+  bei der CJ-Ware sind **124 von 124** „ausgeschlossenen" Produkte auf dem Google-Kanal, bei
+  Fortura 484 von 1368, und 709 ohne Feld liegen trotzdem nicht auf Google. **Ein Ausschluss, der
+  für kein Produkt gilt, ist kein Entscheid.** Nicht belegbar bleibt, **wer** die Charge schrieb
+  (kein Audit-Log über die API). Der Feed liest das Feld ohnehin nicht (geprüft).
+- **🧹 Aufgeräumt mit `automation/gmc_ausschluss_aufraeumen.mjs` (+ `lib/gmc_ausschluss.mjs`):**
+  **alle 2371 Fortura-Produkte sind frei, 1368 → 0**, 0 Fehler, Gegenprobe nach dem Lauf.
+  **Die Regel ist eng:** nur `mm-google-shopping.excluded_destination` und nur beim Wert genau
+  `["Shopping_ads"]` — jeder andere Wert bleibt stehen und wird genannt, sonst löschte ein zu
+  breiter Lauf einen echten Entscheid und schöbe Ware nach Google, die dort bewusst nicht sein
+  soll (dieselbe Klasse wie das zu breite `rueckhol`-Muster, nur mit Schreibzugriff). Trockenlauf
+  ist Vorgabe. 19 Tests, 6 Mutationen rot; **die Mutationsprobe fand eine echte Lücke:** ohne die
+  Array-Prüfung stürzt der Entscheid bei JSON `null` ab, statt eine Antwort zu geben — die
+  Längenprüfung allein deckt das nicht.
+- **🚨 DER LIEFERBARKEITS-WÄCHTER IST AUF FORTURA NICHT ANWENDBAR — und hätte es verschwiegen.**
+  Er fragt CJs Frachtrechner, und **0 von 2371 Fortura-Artikeln haben eine CJ-Nummer**
+  (`if(!/^CJ/i.test(sku)) continue`, Gegenprobe: bei `tag:cj-real` 100 %). Der Lauf meldete
+  `gelesen: 1000, geprueft: 0` — wer nur auf „keine Befunde" schaut, liest daraus eine Freigabe.
+  **Dieselbe Klasse wie der stumme Skip.** Ersatzmessung: Barcode, Verfügbarkeit, Kategorie,
+  Sperrtags, Lizenznamen.
+- **⚠️ EHRLICHE GRENZE, bewusst nicht behoben:** alle Fortura-Artikel tragen als Lieferant
+  **„LuxeStyle"** (der ganze Katalog tut das), der Barcode gehört aber dem Hersteller (bei den
+  Kostümen Widmann; nur 22 Titel nennen ihn). Google kann das als „Mismatched value (brand)"
+  anmerken — Anmerkung je Artikel, **kein Feed-Fehler**. Das Lieferanten-Feld umzustellen ist eine
+  **Marken-Entscheidung des Users**, keine technische.
+- **🔑 MESS-LEHREN:** (1) **Ein Wächter, der die Ware nicht messen kann, meldet „0 Befunde" und
+  sieht aus wie eine Freigabe** — immer prüfen, wie viele Produkte er überhaupt ANGEFASST hat,
+  nicht nur, was er gefunden hat. (2) **Die Gegenprobe in die andere Richtung fand den Fehler im
+  eigenen neuen Muster** (`anna`), nicht der Haupttest. (3) **Ob ein Ausschluss ein Entscheid ist,
+  zeigt nur der Abgleich mit der Wirklichkeit** — 124 von 124 widersprochen ist der Beweis, das
+  Anlagedatum allein wäre nur ein Verdacht gewesen.
+- **🚨 NACHTRAG (PR #2723): DREI LIZENZFIGUREN STANDEN IN DER BESCHREIBUNG, nicht im Titel — und
+  gefunden hat sie die Gegenprobe AM VERÖFFENTLICHTEN FEED, nicht der Test.** Nach dem Deploy habe
+  ich den Live-Feed über **alle** Felder nach Lizenznamen durchsucht: zwei generische
+  „Zauberer-Kostüm" mit sauberem Titel, aber „Harry Potter lässt grüssen." im Text, dazu einer mit
+  Hello Kitty. Google liest die Beschreibung mit — ein generisches Kostüm, das eine Lizenzfigur
+  anruft, ist genau der Fall „implied licensed product", also derselbe **Kontosperr**-Grund.
+  `pruefeProdukt` prüft jetzt **Titel UND Beschreibung**; betroffen 3 von 8084. Feed danach:
+  **8081 Artikel · 2154 GTIN · 0 Lizenz-Treffer in allen Feldern · 0 doppelte IDs**; der Filter
+  hält insgesamt **29** zurück. Gegenproben: „Superheld/Ultrasonic/Marionetten-Optik/Hulahoop"
+  greift nicht, eine fehlende Beschreibung stürzt nicht ab; 2 Mutationen rot.
+  **🔑 LEHRE: ein Filter, der am Titel geprüft wurde, ist nicht am fertigen Feed geprüft.** Der
+  Modultest konnte diese Fälle nie sehen — nur die Messung am veröffentlichten Ergebnis.
+  **Offen beim Besitzer:** die drei **Shop-Beschreibungen** rufen die Figur weiter an. Im Feed ist
+  es dicht, auf der Produktseite nicht — das ist Copy-Arbeit, nicht angefasst.
+
 **📌 2026-10-24 nachts, später (✅ Erste CJ-Sourcing-Antwort: lieferbar, rentabel, live — 16 bleiben offen):**
 Der User schickte CJs Mail „Success! Your Sourcing Request is Complete" (#CJSPU960265818) weiter.
 Alles live gemessen, Bericht `dropship/cj_sourcing_ergebnis.md`.

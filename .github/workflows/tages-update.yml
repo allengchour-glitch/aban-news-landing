@@ -128,6 +128,67 @@ jobs:
             echo "Keine Aenderung."
           fi
 
+  merchant-feed:
+    # Google-Merchant-Feed fuer LuxeStyle taeglich neu erzeugen und auf
+    # https://abannews.com/google-merchant-feed.xml ausliefern.
+    # ⚠️ WARUM HIER: der frueher genannte Pfad auf dem Branch `brain/intel` wird vom
+    # GitLab-Job beliefert, der seit 27.06.2026 nichts mehr liefert. GEMESSEN am
+    # 24.10.2026: die dort liegende Datei hatte 3186 Artikel, 0 Versandangaben,
+    # 0 Kategorien und 4 doppelte IDs — also genau die Fassung VOR den Korrekturen
+    # vom 17.10. Ein geplanter Abruf im Merchant Center haette den kaputten Feed geholt.
+    # Kein neuer Cron: haengt am bestehenden Tages-Update.
+    needs: ki-news
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Feed erzeugen
+        env:
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          OUT: google-merchant-feed.xml
+          SCAN: '6000'
+        run: node automation/autopilot/merchant_feed.mjs
+      - name: Feed pruefen (kein kaputter Feed darf raus)
+        run: |
+          test -s google-merchant-feed.xml || { echo "::error::Feed ist leer"; exit 1; }
+          python3 -c "import xml.etree.ElementTree as E; E.parse('google-merchant-feed.xml')"
+          n=$(grep -c '<item>' google-merchant-feed.xml)
+          echo "Artikel: $n"
+          [ "$n" -ge 1000 ] || { echo "::error::nur $n Artikel — verdaechtig wenig, nicht ausliefern"; exit 1; }
+          d=$(grep -o '<g:id>[^<]*' google-merchant-feed.xml | sort | uniq -d | wc -l)
+          [ "$d" -eq 0 ] || { echo "::error::$d doppelte Feed-IDs — Google weist den Feed ab"; exit 1; }
+          # Cloudflare Pages liefert keine Datei ueber 25 MiB aus. Am 24.10. waren es 16,6 MB
+          # bei 8084 Artikeln — die Datei waechst mit dem Katalog, darum eine Schranke, bevor
+          # ein zu grosser Feed den ganzen Deploy stillschweigend scheitern laesst.
+          b=$(wc -c < google-merchant-feed.xml)
+          echo "Groesse: $b Byte"
+          [ "$b" -lt 24000000 ] || { echo "::error::Feed $b Byte — Pages liefert ueber 25 MiB nicht aus; Fenster verkleinern"; exit 1; }
+      - name: Feed committen (falls geaendert)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git add google-merchant-feed.xml
+          if ! git diff --cached --quiet; then
+            git config user.name "aban-news-bot"
+            git config user.email "bot@users.noreply.github.com"
+            git commit -m "chore(merchant): Produktfeed des Tages [skip ci]"
+            git stash --include-untracked || true
+            for _i in 1 2 3 4 5; do git push && break; git pull --rebase origin main || true; sleep 3; done
+            # Pushes mit dem Actions-Token loesen keinen Deploy aus (Lehre vom 01.10.)
+            gh workflow run cf-deploy-mainsite.yml --ref main && echo "Deploy gestartet." || echo "::warning::Deploy nicht gestartet"
+          else
+            echo "Feed unveraendert."
+          fi
+
   maerkte:
     needs: [ki-news, uebungsdepot]
     if: always()
