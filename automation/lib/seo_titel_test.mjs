@@ -1,6 +1,6 @@
 /** Test fuer seoTitel. Die Titel unten sind ECHT, am 2026-10-17 aus dem Live-Katalog gelesen.
  *  Lauf: /opt/node22/bin/node automation/lib/seo_titel_test.mjs   */
-import { seoTitel, seoOffen, titelNormalisieren, kuerzen, MAX_TITEL, MAX_BESCHREIBUNG } from './seo_titel.mjs';
+import { seoTitel, seoOffen, titelNormalisieren, kuerzen, MAX_TITEL, MAX_BESCHREIBUNG, seoNachtrag } from './seo_titel.mjs';
 let fehler = 0;
 const pruef = (n, ok, extra = '') => { if (!ok) { fehler++; console.log(`FAIL ${n}  ${extra}`); } else console.log(`ok   ${n}`); };
 
@@ -73,6 +73,48 @@ pruef('nichts gesetzt → offen', seoOffen(KURZ, null) === true);
 pruef('nur Titel gesetzt → offen (Beschreibung fehlt)', seoOffen(KURZ, { title: 'X', description: '' }) === true);
 pruef('beides gesetzt → nicht offen', seoOffen(KURZ, { title: 'X', description: 'Y' }) === false);
 pruef('leerer Produkttitel → nicht offen (es gibt nichts zu setzen)', seoOffen('   ', null) === false);
+
+
+// ---------------------------------------------------------------------------
+// seoNachtrag: vorhandene Felder BEWAHREN (Kern von ChatGPTs Entwurf #2694).
+// Angehaengt VOR der Zusammenfassung — die Lehre vom 24.10. (CLAUDE.md): Tests nach
+// `process.exit` laufen nie, und „alle Tests gruen" kommt dann aus dem alten Block.
+// 🚨 Der Patch schickt IMMER beide Felder, sobald er ueberhaupt etwas schickt:
+// `ProductInput.seo` ist bei Shopify ein ERSETZEN, kein Zusammenfuehren (am 24.10. am
+// echten Shop gemessen: nur `{description}` gesendet → `seo.title` danach `null`).
+// Das Zusammenfuehren passiert hier, im Aufrufer.
+// ---------------------------------------------------------------------------
+const HAND = { title: 'Mein handgeschriebener Keyword-Titel', description: null };
+pruef('Titel vorhanden, Beschreibung fehlt → BEIDE Felder im Patch (sonst loescht das Ersetzen den Titel)',
+  JSON.stringify(Object.keys(seoNachtrag(KURZ, HAND)).sort()) === JSON.stringify(['description','title']),
+  JSON.stringify(seoNachtrag(KURZ, HAND)));
+pruef('der vorhandene Titel wird UNVERAENDERT mitgeschickt, nicht ueberschrieben',
+  seoNachtrag(KURZ, HAND).title === HAND.title,
+  JSON.stringify(seoNachtrag(KURZ, HAND)));
+pruef('die fehlende Beschreibung wird wirklich gefuellt',
+  seoNachtrag(KURZ, HAND).description === seoTitel(KURZ).description);
+// Gegenprobe in die andere Richtung: ist die Beschreibung da und der Titel fehlt,
+// muss die vorhandene Beschreibung erhalten bleiben.
+pruef('Beschreibung vorhanden, Titel fehlt → vorhandene Beschreibung bleibt erhalten',
+  seoNachtrag(KURZ, { title: null, description: 'Mein Text' }).description === 'Mein Text',
+  JSON.stringify(seoNachtrag(KURZ, { title: null, description: 'Mein Text' })));
+pruef('nichts gesetzt → Titel UND Beschreibung im Patch',
+  JSON.stringify(Object.keys(seoNachtrag(KURZ, null)).sort()) === JSON.stringify(['description','title']),
+  JSON.stringify(seoNachtrag(KURZ, null)));
+pruef('leerer Titel-String gilt als fehlend', seoNachtrag(KURZ, { title: '', description: 'Y' }).title !== undefined);
+pruef('beides gesetzt → leerer Patch, es wird nicht geschrieben',
+  Object.keys(seoNachtrag(KURZ, { title: 'X', description: 'Y' })).length === 0);
+pruef('leerer Produkttitel → leerer Patch', Object.keys(seoNachtrag('   ', null)).length === 0);
+// Der Fall, der dem Lauf sonst die Schreib-Abfrage kostet: titelgleicher Vorschlag.
+// `seoOffen` sagt hier „nicht offen"; der Patch waere nur die Beschreibung, die schon da ist.
+pruef('titelgleicher Fall mit vorhandener Beschreibung → leerer Patch',
+  Object.keys(seoNachtrag(GLEICH, { title: null, description: 'irgendwas' })).length === 0,
+  JSON.stringify(seoNachtrag(GLEICH, { title: null, description: 'irgendwas' })));
+// Titelgleich OHNE Beschreibung: die Beschreibung fehlt wirklich, aber ein titelgleicher
+// SEO-Titel wuerde von Shopify nicht gespeichert → er darf NICHT mitgeschickt werden.
+pruef('titelgleicher Fall ohne Beschreibung → nur die Beschreibung, kein titelgleicher Titel',
+  JSON.stringify(Object.keys(seoNachtrag(GLEICH, null))) === JSON.stringify(['description']),
+  JSON.stringify(seoNachtrag(GLEICH, null)));
 
 console.log(fehler ? `\n${fehler} FEHLER` : '\nalle Tests gruen');
 process.exit(fehler ? 1 : 0);

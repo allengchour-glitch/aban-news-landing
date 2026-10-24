@@ -46,6 +46,7 @@ jobs:
           fetch-depth: 1
           sparse-checkout: |
             automation/video-autopost-meta.mjs
+            automation/lib/social_queue.mjs
             social/video_queue.csv
           sparse-checkout-cone-mode: false
       - uses: actions/setup-node@v4

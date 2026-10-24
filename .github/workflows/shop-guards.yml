@@ -27,6 +27,9 @@ jobs:
       SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
       SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
       LIVE: ${{ github.event_name == 'schedule' && '1' || github.event.inputs.live }}
+      # publish_guard verlangt seit der Inhaltspruefung LIVE=1 UND APPROVE_PUBLISH=1.
+      # Ohne diese Zeile waere der Montagslauf still zum Trockenlauf geworden.
+      APPROVE_PUBLISH: ${{ github.event_name == 'schedule' && '1' || github.event.inputs.live }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

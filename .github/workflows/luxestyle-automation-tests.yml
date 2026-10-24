@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - 'automation/lib/**'
+      - 'automation/seo-optimizer.mjs'
       - 'automation/metricool-schedule.mjs'
       - 'automation/price_guard.mjs'
       - 'automation/cross_sell.mjs'
@@ -18,7 +19,12 @@ on:
       - 'automation/metricool_checkpoint_test.mjs'
       - 'automation/meta_checkpoint_test.mjs'
       - 'automation/cj_import_checkpoint_test.mjs'
+      - 'automation/social_queue_test.mjs'
+      - 'automation/publish_guard_test.mjs'
+      - 'automation/content_preflight.py'
+      - 'automation/test_content_preflight.py'
       - 'dropship/cj_enrich.mjs'
+      - 'dropship/cj_enrich_test.mjs'
       - 'dropship/ads/render_brand_video.py'
       - 'dropship/ads/test_render_brand_video.py'
       - '.github/workflows/luxestyle-automation-tests.yml'
@@ -39,6 +45,7 @@ jobs:
         with:
           sparse-checkout: |
             automation/lib
+            automation/seo-optimizer.mjs
             automation/metricool-schedule.mjs
             automation/price_guard.mjs
             automation/cross_sell.mjs
@@ -53,7 +60,12 @@ jobs:
             automation/metricool_checkpoint_test.mjs
             automation/meta_checkpoint_test.mjs
             automation/cj_import_checkpoint_test.mjs
+            automation/social_queue_test.mjs
+            automation/publish_guard_test.mjs
+            automation/content_preflight.py
+            automation/test_content_preflight.py
             dropship/cj_enrich.mjs
+            dropship/cj_enrich_test.mjs
             dropship/ads/render_brand_video.py
             dropship/ads/test_render_brand_video.py
           sparse-checkout-cone-mode: false
@@ -76,6 +88,7 @@ jobs:
           node --check automation/titel_deutsch_fix.mjs
           node --check automation/shop_brain.mjs
           node --check automation/video-autopost-meta.mjs
+          node --check automation/seo-optimizer.mjs
       - name: Existing helper checks
         run: |
           node automation/lib/shopify_gql_test.mjs
@@ -85,6 +98,8 @@ jobs:
           node automation/lib/bild_befund_test.mjs
           node automation/lib/titel_deutsch_test.mjs
           node automation/lib/lieferbarkeit_test.mjs
+          # Lief bisher in KEINEM Workflow — ein Test, der nie laeuft, ist kein Test.
+          node automation/lib/seo_titel_test.mjs
       - name: CJ failures and publication regressions (mock APIs only)
         run: |
           node automation/lib/cj_response_test.mjs
@@ -95,3 +110,8 @@ jobs:
           node automation/metricool_checkpoint_test.mjs
           node automation/meta_checkpoint_test.mjs
           node automation/cj_import_checkpoint_test.mjs
+      - name: Shopify host, queue input and publication guards (mock APIs only)
+        run: |
+          node --test automation/lib/shopify_host_test.mjs automation/social_queue_test.mjs automation/publish_guard_test.mjs dropship/cj_enrich_test.mjs
+      - name: Content preflight (offline evidence only)
+        run: python3 -B -m unittest discover -s automation -p 'test_content_preflight.py' -v

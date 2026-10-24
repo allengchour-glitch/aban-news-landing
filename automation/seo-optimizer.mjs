@@ -11,7 +11,7 @@
  *      TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
  */
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
-import { seoTitel, seoOffen } from './lib/seo_titel.mjs';
+import { seoOffen, seoNachtrag } from './lib/seo_titel.mjs';
 import { shopifyGql } from './lib/shopify_gql.mjs';
 const SHOP = process.env.SHOPIFY_SHOP || '';
 const TOK_STATIC = process.env.SHOPIFY_ADMIN_TOKEN || '';
@@ -60,7 +60,7 @@ async function gql(query, variables){
 // „Gaming-Controller" → „Gaming – Controller" (985 von 2415 Titeln = 41 % betroffen); die Marke
 // fiel bei langen Titeln ab und hinterliess „|…" (255 = 11 %); und die Beschreibung versprach
 // „schnelle Lieferung", obwohl CJ 10–20 Werktage braucht.
-const mkSeo = (title) => seoTitel(title);
+// (`seoTitel` wird jetzt ueber `seoNachtrag` aufgerufen — siehe die Schreibstelle unten.)
 
 TOKEN = await getToken();
 if(!TOKEN){ console.error('Kein Token.'); process.exit(0); }
@@ -94,8 +94,13 @@ while(true){
     // als offen und verbraucht jedes Mal eine Schreib-Abfrage, die nichts aendert.
     const needs = seoOffen(p.title, p.seo);
     if(needs){
-      const seo = mkSeo(p.title);
-      if(DRY){ console.log('würde SEO setzen:', p.title, '→', seo.title); updated++; }
+      // Nur die FEHLENDEN Felder senden. Vorher ging `seoTitel(titel)` vollstaendig raus,
+      // also auch der Titel — bei einem Produkt mit eigenem Titel und fehlender Beschreibung
+      // haette der Lauf den handgeschriebenen Keyword-Titel ueberschrieben. Begruendung,
+      // Messung und Gegenproben in automation/lib/seo_titel.mjs (seoNachtrag).
+      const seo = seoNachtrag(p.title, p.seo);
+      if(!Object.keys(seo).length) continue;   // nichts zu setzen — keine Schreib-Abfrage
+      if(DRY){ console.log('würde SEO setzen:', p.title, '→', Object.keys(seo).join('+'), seo.title ?? '(Titel bleibt)'); updated++; }
       else{
         const r = await gql(M, { input: { id: p.id, seo } });
         const err = r?.data?.productUpdate?.userErrors?.[0]?.message;

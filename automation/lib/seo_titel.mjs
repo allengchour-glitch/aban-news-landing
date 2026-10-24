@@ -78,3 +78,49 @@ export function seoOffen(produktTitel, seo) {
   if (seo?.title) return false;                               // beides da
   return erzeugt.title !== produktTitel;                      // null = wie der Produkttitel
 }
+
+/**
+ * Den vollstaendigen SEO-Block zurueckgeben, bei dem vorhandene Werte ERHALTEN bleiben und
+ * nur die fehlenden aus `seoTitel` ergaenzt werden.
+ *
+ * Der Anlass kam aus ChatGPTs Entwurf #2694 („preserve existing metadata") und war echt:
+ * `seoOffen` meldet ein Produkt auch dann als offen, wenn nur die BESCHREIBUNG fehlt. Der Lauf
+ * sendete danach `seoTitel(titel)` vollstaendig, also auch den Titel — und haette damit einen
+ * vorhandenen, von Hand geschriebenen Keyword-Titel durch den erzeugten Standardtitel ersetzt.
+ * CLAUDE.md haelt fuer die 164 handgeschriebenen Titel ausdruecklich fest, dass sie besser sind
+ * und unangetastet bleiben: „der Optimizer fuellt nur fehlende".
+ *
+ * 🚨 ABER: NUR das fehlende Feld zu senden ist SCHLIMMER, nicht besser.
+ * **`ProductInput.seo` ist bei Shopify ein ERSETZEN, kein Zusammenfuehren.** Am 24.10.2026 live
+ * gemessen und mit frischem Lesen gegengeprueft (Produkt 15491411804545):
+ *   - nur `{description}` gesendet  -> `seo.title` steht danach auf **null**, der Titel ist WEG
+ *   - `{title, description}` gesendet -> beide stehen
+ * Eine erste Fassung dieser Funktion gab nur das fehlende Feld zurueck und hat genau dadurch
+ * bei zwei Produkten die vorhandene Beschreibung GELOESCHT — also exakt der Schaden, den sie
+ * verhindern sollte, nur am anderen Feld.
+ *
+ * Darum wird hier CLIENT-SEITIG zusammengefuehrt: der vorhandene Wert geht unveraendert mit
+ * zurueck in die Mutation, der fehlende kommt aus `seoTitel`. Gibt `{}` zurueck, wenn nichts
+ * zu ergaenzen ist — der Aufrufer schreibt dann nicht.
+ *
+ * LEHRE: ein Modultest kann das nie finden. Erst die Gegenprobe am echten Shop — schreiben,
+ * dann FRISCH lesen — zeigt, ob ein Feld ein Patch oder ein Ersetzen ist.
+ */
+export function seoNachtrag(produktTitel, seo) {
+  const erzeugt = seoTitel(produktTitel);
+  const vorhandenTitel = seo?.title || '';
+  const vorhandenBeschreibung = seo?.description || '';
+  // Ein Vorschlag, der dem Produkttitel GLEICHT, ist keine Ergaenzung: Shopify speichert ihn
+  // nicht (siehe `seoOffen`), die Schreib-Abfrage waere umsonst.
+  const neuerTitel = erzeugt.title && erzeugt.title !== produktTitel ? erzeugt.title : '';
+  const fehltTitel = !vorhandenTitel && !!neuerTitel;
+  const fehltBeschreibung = !vorhandenBeschreibung && !!erzeugt.description;
+  if (!fehltTitel && !fehltBeschreibung) return {};
+  const patch = {};
+  // Beide Felder gehen IMMER mit, sonst loescht das Ersetzen das jeweils andere.
+  const title = vorhandenTitel || neuerTitel;
+  const description = vorhandenBeschreibung || erzeugt.description;
+  if (title) patch.title = title;
+  if (description) patch.description = description;
+  return patch;
+}

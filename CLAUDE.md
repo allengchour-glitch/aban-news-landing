@@ -84,6 +84,88 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-24 mittags (🤖 ChatGPTs drei offene Entwürfe abgearbeitet — zwei stille Blocker, eine Zahl aufgeklärt):**
+Auftrag war „erledige chatgpt sachen". Alle drei Codex-Entwürfe standen seit dem 17./18.10. offen
+und waren konfliktbehaftet, weil Claude dieselben Dateien danach umgebaut hat. PR #2728.
+- **🔑 PORTIEREN STATT MERGEN ist das Rezept:** jeder Codex-Branch trägt genau **einen** eigenen
+  Commit auf einem alten `main` (Ausnahme: der Doku-Branch mit 76). Also
+  `gh api -H "Accept: application/vnd.github.patch" repos/<o>/<r>/commits/<sha> > x.patch`, dann
+  `git apply --3way x.patch` auf einem frischen Branch. **„no merge base" beim `git diff` heisst
+  nur, dass der Container flach geklont ist** — kein echtes Problem, nicht jagen.
+- **✅ #2673 Inhaltsprüfung portiert, alles grün.** `automation/lib/social_queue.mjs` (+218 Tests):
+  eine strikte Queue, die Metricool und der Meta-Poster gemeinsam lesen — Strukturfehler, doppelte
+  IDs, falsche Kanalnamen, Zugangsdaten in Medien-URLs und vergangene Termine stoppen **vor** dem
+  ersten Request. `automation/lib/shopify_host.mjs`: Zugangsdaten nur an eine geprüfte einzelne
+  `myshopify.com`-Domain. `automation/content_preflight.py` (+16 Tests): Review-Queue offline,
+  `publishing_enabled` bleibt immer false. Dazu Antwortprüfungen im `publish_guard` (DRAFT/ARCHIVED
+  werden auch bei eigenem `PQUERY` nie publiziert).
+  **Konflikt aufgelöst:** `review_safety_test.mjs` kopiert weiter den GANZEN `lib`-Ordner (Claudes
+  Fassung), nicht ChatGPTs Namensliste — die wäre beim nächsten neuen Modul wieder veraltet.
+- **🚨 STILLER BLOCKER 1: der neue Schalter hätte den Montagslauf stillgelegt.** `shop-guards.yml`
+  fährt `publish_guard.mjs` jeden Montag 07:00 UTC mit `LIVE=1`, kennt aber kein
+  `APPROVE_PUBLISH` — der Wächter wäre ab dem Merge ein **Trockenlauf** gewesen und hätte keine
+  Kanäle mehr nachgezogen, ohne dass es irgendwo auffällt. Schalter im Workflow nachgezogen, und
+  der Lauf sagt es jetzt laut auf **stderr** (stdout muss reines JSON bleiben, der Test liest es
+  mit `JSON.parse`). **Zweite Instanz derselben Klasse nach dem `_meta`-Fund (#2708) — REGEL: bei
+  jedem neuen Gate vorher `grep -rn "<SCHALTER>" .github/workflows/`.**
+- **⚖️ #2694 SEO: Kern übernommen, Umschreibung begründet ABGELEHNT.** ChatGPT macht aus dem
+  Massenlauf ein Werkzeug für ausdrücklich genannte Produkt-IDs — das hätte `seoOffen` (#2710),
+  `BILDCHECK` (#2709) und `PQUERY`/`SORT`/`REVERSE` verloren und den Massenlauf abgeschafft, mit
+  dem die Fläche am 23.10. geschlossen wurde.
+  **Der Befund dahinter war aber echt und ein Fehler in Claudes Fassung:** `seoOffen` meldet ein
+  Produkt auch dann als offen, wenn nur die BESCHREIBUNG fehlt — der Lauf sendete danach
+  `seoTitel()` vollständig, also auch den Titel, und hätte einen handgeschriebenen Keyword-Titel
+  ersetzt. Genau das verbietet dieses Dokument für die 164 handgeschriebenen Titel. Neu:
+  `seoNachtrag()` in `automation/lib/seo_titel.mjs` füllt nur die fehlenden Felder, schickt aber
+  IMMER beide mit.
+  **Gemessen, nicht geschätzt: Trockenlauf über den GANZEN Katalog (56 667 aktive Produkte) ergab
+  2 offene Produkte, 0 im Risikofall** — kein Altschaden, die Lücke war im Code, nicht im Katalog.
+  Die zwei offenen waren die beiden heute live gegangenen Produkte (Fleischwolf,
+  Halloween-Schaukelgeist) und sind **gesetzt**.
+  **🚨 UND HIER HAT ChatGPTs PRINZIP SELBST SCHADEN ANGERICHTET — `ProductInput.seo` ist bei
+  Shopify ein ERSETZEN, kein Zusammenführen.** Nur das fehlende Feld zu senden ist nicht
+  schonender, es löscht das andere. Live gemessen: eine Mutation mit ausschliesslich
+  `{description}` kam mit `userErrors: []` zurück, und die FRISCHE Lesung danach zeigte
+  `seo.title: null`. Meine erste Fassung von `seoNachtrag()` tat genau das und hat bei diesen
+  zwei Produkten die vorhandene BESCHREIBUNG gelöscht — derselbe Schaden, den sie verhindern
+  sollte, nur auf dem anderen Feld. Beide sind repariert und per frischer Lesung nachgeprüft
+  (Titel UND Beschreibung stehen); der Original-Beschreibungstext des Fleischwolfs war nicht
+  wiederherstellbar (die API führt keine Feldhistorie), er trägt jetzt den erzeugten Standardtext.
+  **LEHRE: ein Modultest kann das nie finden.** Erst die Gegenprobe am echten Shop — schreiben,
+  dann FRISCH lesen — zeigt, ob ein Feld ein Patch oder ein Ersetzen ist. Dieselbe Klasse wie
+  „ein Filter, der am Titel geprüft wurde, ist nicht am fertigen Feed geprüft".
+  **Die Gegenprobe fand eine Lücke im eigenen neuen Helfer**, nicht der Haupttest: ein Vorschlag,
+  der dem Produkttitel GLEICHT, gehört nicht in den Patch (Shopify speichert ihn nicht).
+- **📄 #2689 Doku-Übergabe bewusst OFFEN gelassen** — rein Dokumentation (30 Dateien, kein Code),
+  und ChatGPT ergänzt den Branch laufend (letzter Commit heute 07:40). Einen wachsenden Branch
+  nicht einfrieren.
+- **🚚 DIE DRITTE VERSAND-ZAHL IST AUFGEKLÄRT, und ChatGPT hatte recht — nur datiert.** Es
+  schreibt in `codex-handoff-20261018/VERBESSERUNGEN-1944.md`, im allgemeinen Profil sei
+  **CHF 40.50 aktiv**. Heute live gemessen: 45 (`…1527737287047`) **aus**, 50 (`…1540193485191`)
+  **aktiv**, Standard CHF 7.00 aktiv — eine 40.50er-Bedingung gibt es nicht. Der Beleg steht im
+  ausgelieferten Warenkorb-Code selbst: `var SCHWELLE=5000 … // Tarif ab 50 (22.10.2026, vorher
+  Entscheid D: 40.50)`. Geschichte: **40.50 → am 22.10. auf 50 umgestellt → 45 liegt daneben und
+  ist aus.** Hätte man die CLAUDE.md-Hunks von #2689 gemergt, wäre ein überholter Tarif ins
+  Gedächtnis gewandert. **Der Entscheid selbst bleibt beim User** (Texte versprechen 50, Shopify
+  prüft nach Rabatt, echte Schwelle CHF 55.56).
+- **🚨 STILLER BLOCKER 2, eigener: `automation/lib/seo_titel_test.mjs` lief in KEINEM Workflow.**
+  Ein Test, der nie läuft, ist kein Test — und genau dieser deckt das Bindestrich-Muster ab, das
+  am 17.10. 41 % der Titel kaputtgeschrieben hätte. Jetzt in `luxestyle-automation-tests.yml`.
+  **Dazu: `pull_request`-Workflows feuern auf einem Claude-PR nicht zwangsläufig.** Auf #2728 lief
+  nur `push` (Voice Linter, Quality Check); `luxestyle-automation-tests` wurde gar nicht angelegt,
+  obwohl `automation/lib/**` geändert war. Behelf: den Workflow von Hand gegen den eigenen Branch
+  starten (`run_workflow` mit `ref: <branch>`) — er nimmt dann die Fassung **vom Branch**. Lief so
+  grün. **Nicht auf das Fehlen roter Checks vertrauen, sondern nachsehen, welche Läufe es gab.**
+- **Qualitätsurteil nach zwei Durchgängen: ChatGPTs Arbeit ist sauber und ernst zu nehmen.**
+  Datierte Messwerte, Unbekanntes bleibt unbekannt, Live-Posten doppelt verriegelt, keine
+  erfundenen Zahlen. Es wendet die Projektlehren an: die Gegenprobe seiner Inhaltsprüfung prüft
+  ausdrücklich, dass das harmlose Chargen-Tag `rueckhol-0907` NICHT sperrt. Seine Schwachstelle ist
+  nicht die Qualität, sondern die **Verdrahtung** (beide stillen Blocker).
+- **Beim Merge von `main` (#2727, Pinterest):** beide Seiten behalten, und `prepared` trägt jetzt
+  auch `PIN_COLS` — ohne das hätten dem neuen Pinterest-Guard board/title gefehlt und **kein Pin
+  wäre mehr rausgegangen**. Die Zahlen „136 Node-/19 Python-Tests" aus ChatGPTs Bericht liessen
+  sich nicht nachmessen; hier gemessen 77/77 und 16/16, ersetzt statt übernommen.
+
 **📌 2026-10-24 vormittags (🚚 „Sourcing Succeeded" heisst NICHT lieferbar — 3 von 4 neuen Treffern fallen durch):**
 Der User: „sourcing erfolgreich weil mails gekommen". Stand erneut abgefragt, nichts neu gesendet.
 **5 von 17 fertig, 11 `Pending`, 1 „Similar Products".** Bericht `dropship/cj_sourcing_ergebnis.md`.
