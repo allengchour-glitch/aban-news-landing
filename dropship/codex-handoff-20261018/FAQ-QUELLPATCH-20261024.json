@@ -1,0 +1,62 @@
+{
+  "recordType": "portable_source_patch_specification_not_executable_or_approved",
+  "taskId": "LUXESTYLE_PROFIT_4_20261024:3",
+  "status": "OWNER_REVIEW_ONLY_NO_SHOP_WRITE",
+  "snapshotReadAtUtc": "2026-10-24T17:00:31.104Z",
+  "shop": {
+    "primaryHost": "luxestyle.ch",
+    "currency": "CHF"
+  },
+  "targetCollection": {
+    "gid": "gid://shopify/Collection/690626658689",
+    "liquidId": 690626658689,
+    "handle": "licht-nachtlicht-projektor",
+    "templateSuffixAtSnapshot": null
+  },
+  "sourceTheme": {
+    "gid": "gid://shopify/OnlineStoreTheme/187533001089",
+    "roleRequired": "MAIN",
+    "filename": "templates/collection.json",
+    "checksumMd5Required": "1137d372b40844b60ee7c56f841ebab4",
+    "sha256Required": "aebb44991ab474c82d0f1350d1729491c4d9a394cc2a5a862574051f016e76de"
+  },
+  "jsonPointer": "/sections/lux_faq/settings/custom_liquid",
+  "exactOldBlock": "<details style=\"border-top:1px solid #ececec;padding:11px 0\"><summary style=\"cursor:pointer;font-weight:600;list-style:none\">\ud83d\udccf Wie finde ich die richtige Gr\u00f6sse?</summary><p style=\"margin:8px 0 0;color:#555\">Bei Mode- und Schuh-Artikeln findest du eine cm-Gr\u00f6ssentabelle direkt auf der jeweiligen Produktseite.</p></details>",
+  "oldBlockSha256": "80e84e71198f37290e442f722bd2bcf6b8ca6a3e196956e70677835808fe6777",
+  "replacementIf": "{% if collection.id == 690626658689 and collection.handle == 'licht-nachtlicht-projektor' %}",
+  "exactTargetBlock": "<details style=\"border-top:1px solid #ececec;padding:11px 0\"><summary style=\"cursor:pointer;font-weight:600;list-style:none\">Was sollte ich vor der Wahl eines Projektors pr\u00fcfen?</summary><p style=\"margin:8px 0 0;color:#555\">Sieh dir zuerst die Produktansichten und die Angaben zur konkreten Ausf\u00fchrung an. Vergleiche Stromversorgung und Lieferumfang. Ob zus\u00e4tzliche Funktionen oder bestimmte Motive dazugeh\u00f6ren, muss f\u00fcr diese Ausf\u00fchrung ausdr\u00fccklich angegeben sein.</p></details>",
+  "replacementElse": "{% else %}",
+  "replacementEnd": "{% endif %}",
+  "oldBlockExpectedOccurrencesInSelectedString": 1,
+  "oldFullLiquidSha256": "a89b5de9ec4a16316edfb3ea25c09ceba434fbf80f994f33bc02e756f544b703",
+  "newFullLiquidSha256": "abbdd27574df3bb6c461d0c3fd20786fac2ce2e33a93c46ffdabd2e3f1d42ee3",
+  "expectedProposedFullFileSha256": "cc0267f4475c4f58fe33bedc93dbb9be13fe6f29135ffccf01d3132dfd508aba",
+  "prepareRule": "Within the selected decoded JSON string only, replace exactOldBlock once with replacementIf + exactTargetBlock + replacementElse + exactOldBlock + replacementEnd. Replace the exact JSON string token in the original raw template text; preserve all other bytes including its leading generated comment. Do not reserialize the whole template.",
+  "mandatoryBeforeAnyShopWrite": [
+    "Read actual connected shop identity and current target collection/theme again",
+    "Require current MAIN role, collection ID/handle/default template mapping and raw MD5/SHA exactly as specified",
+    "Stop on any mismatch or unknown source; do not silently rebase",
+    "Prepare and review the exact one-JSON-path source diff plus rollback bytes",
+    "Perform allowed Liquid/theme preview including target and non-target collection; these remain NOT PERFORMED",
+    "Obtain the separate concrete owner approval; current handoff is not execution authority",
+    "Respect Main-theme write restrictions; no bypass workflow or alternate write API",
+    "After any later authorized write, verify actual target/non-target output and preserved unrelated fields"
+  ],
+  "mustRemainUnchanged": [
+    "all other JSON values and raw source bytes",
+    "original non-target size FAQ",
+    "other service FAQ",
+    "public CHF50 shipping threshold",
+    "internal CHF45 after discount",
+    "customer domain account.luxestyle.com.co",
+    "prices, tags, inventory, variants, collection membership, filters, SEO, discounts and flows"
+  ],
+  "validation": {
+    "localOriginalMd5AndBothFullFileSha256Match": true,
+    "exactSingleBlockAndGuardReconstructionMatch": true,
+    "fullThemeOrLiquidRender": false,
+    "browserPreview": false,
+    "shopWrite": false,
+    "ownerApproval": false
+  }
+}
