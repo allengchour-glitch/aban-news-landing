@@ -25,6 +25,9 @@ const AUS=process.env.AUS||'dropship/fortura_preisvergleich.csv';
 const MAX_CREDITS=parseInt(process.env.MAX_CREDITS||'50',10);
 const NUR=parseInt(process.env.NUR||'10',10);
 const HAENDLER=(process.env.HAENDLER||'toppreise,galaxus').split(',').map(s=>s.trim()).filter(Boolean);
+// Nur zum Pruefen: erlaubt einen oertlichen Nachbau der Firecrawl-API, damit die Kette
+// CSV -> Messung -> CSV ohne Netz und ohne Credits geprueft werden kann.
+const BASIS=(process.env.FIRECRAWL_BASIS||'https://api.firecrawl.dev').replace(/\/$/,'');
 
 if(!KEY){
   console.log('No-op: FIRECRAWL_API_KEY fehlt.');
@@ -42,7 +45,7 @@ const SUCHE={
 let credits=0;
 async function hole(url){
   if(credits>=MAX_CREDITS) throw new Error(`Credit-Deckel ${MAX_CREDITS} erreicht`);
-  const r=await fetch('https://api.firecrawl.dev/v2/scrape',{method:'POST',
+  const r=await fetch(`${BASIS}/v2/scrape`,{method:'POST',
     headers:{'Content-Type':'application/json',Authorization:`Bearer ${KEY}`},
     body:JSON.stringify({url,formats:['markdown'],onlyMainContent:true,proxy:'auto',timeout:45000})});
   credits++;  // Firecrawl verbraucht auch bei Fehlerseiten - darum HIER zaehlen, nicht erst bei Erfolg.

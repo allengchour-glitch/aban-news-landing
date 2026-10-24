@@ -20,6 +20,7 @@ on:
       - 'automation/cj_import_checkpoint_test.mjs'
       - 'automation/fortura_preis_kandidaten.mjs'
       - 'automation/fortura_preisvergleich.mjs'
+      - 'automation/fortura_preisvergleich_test.mjs'
       - 'dropship/cj_enrich.mjs'
       - 'dropship/ads/render_brand_video.py'
       - 'dropship/ads/test_render_brand_video.py'
@@ -57,6 +58,7 @@ jobs:
             automation/cj_import_checkpoint_test.mjs
             automation/fortura_preis_kandidaten.mjs
             automation/fortura_preisvergleich.mjs
+            automation/fortura_preisvergleich_test.mjs
             dropship/cj_enrich.mjs
             dropship/ads/render_brand_video.py
             dropship/ads/test_render_brand_video.py
@@ -93,6 +95,7 @@ jobs:
           node automation/lib/lieferbarkeit_test.mjs
           node automation/lib/fortura_marke_test.mjs
           node automation/lib/chf_preis_test.mjs
+          node automation/fortura_preisvergleich_test.mjs
       - name: CJ failures and publication regressions (mock APIs only)
         run: |
           node automation/lib/cj_response_test.mjs
