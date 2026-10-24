@@ -10,6 +10,10 @@
  *            Body: { publicationDate{dateTime,timezone}, text, providers:[{network}],
  *                    media:[<normalisierte URL>], autoPublish:true }
  *
+ * Pinterest verlangt zusätzlich pinterestData{boardId,pinTitle}: dafür die Queue-Spalten
+ * pin_board_id, pin_title und (optional) pin_link füllen. Fehlen sie, wird die Zeile mit
+ * genanntem Grund NICHT gesendet, statt still zu scheitern (Metricool antwortet sonst HTTP 400).
+ *
  * ENV: METRICOOL_USER_TOKEN (Pflicht) · METRICOOL_USER_ID (Default 4801419) ·
  *      METRICOOL_BLOG_ID (explizit erforderlich für Live) · MC_TZ (Default Europe/Zurich) ·
  *      MAX_PER_RUN (Default 50) · DRY_RUN=0 + APPROVE_PUBLISH=1 für Live; sonst Dry-Run.
@@ -28,6 +32,8 @@ const MAX   = Math.max(1, parseInt(process.env.MAX_PER_RUN || '50', 10) || 50);
 const BASE  = 'https://app.metricool.com/api';
 const CSV   = new URL('../social/metricool_queue.csv', import.meta.url).pathname;
 const COLS  = ['id','publish_date','media_url','text','networks','status','scheduled_at','note'];
+// Nur für Pinterest nötig; fehlende Spalten sind erlaubt und werden leer gelesen.
+const PIN_COLS = ['pin_board_id','pin_title','pin_link'];
 const RESULT_COLS = ['metricool_post_id', 'metricool_post_uuid', 'request_started_at'];
 const TIMEOUT_MS = 60000;
 
@@ -119,6 +125,15 @@ async function schedule(row, beforePost){
   };
   if (providers.some(p=>p.network==='instagram')) body.instagramData = { autoPublish: true };
   if (providers.some(p=>p.network==='tiktok'))    body.tiktokData    = { autoPublish: true };
+  if (providers.some(p=>p.network==='pinterest')) {
+    // Ohne Board und Pin-Titel lehnt Metricool den Pin ab; das soll die Zeile laut beenden.
+    if (!row.pin_board_id || !row.pin_title) {
+      console.error(`  ✗ Pinterest ohne pin_board_id/pin_title: ${row.id}; kein POST gesendet.`);
+      return { status: 'not_sent' };
+    }
+    body.pinterestData = { boardId: row.pin_board_id, pinTitle: row.pin_title, pinNewFormat: true };
+    if (row.pin_link) body.pinterestData.pinLink = row.pin_link;
+  }
   beforePost(); // If this checkpoint fails, no publication request is made.
   let r, txt;
   try {
@@ -150,7 +165,7 @@ for (const col of RESULT_COLS) {
     for (const row of rows.slice(1)) row[column] = '';
   }
 }
-const idx = Object.fromEntries([...COLS, ...RESULT_COLS].map(c=>[c, header.indexOf(c)]));
+const idx = Object.fromEntries([...COLS, ...RESULT_COLS, ...PIN_COLS].map(c=>[c, header.indexOf(c)]));
 const data = rows.slice(1);
 const get = (r,k)=> (r[idx[k]]||'').trim();
 const unresolved = data.filter(r => ['inflight', 'uncertain'].includes(get(r,'status')));
@@ -162,7 +177,8 @@ console.log(`Metricool: ${ready.length} Posts · userId=${USER} blogId=${BLOG} �
 let done=0, fail=unresolved.length > 0;
 for(const r of ready.slice(0,MAX)){
   const row = { id:get(r,'id'), publish_date:get(r,'publish_date'), media_url:get(r,'media_url'),
-                text:get(r,'text'), networks:get(r,'networks') };
+                text:get(r,'text'), networks:get(r,'networks'),
+                pin_board_id:get(r,'pin_board_id'), pin_title:get(r,'pin_title'), pin_link:get(r,'pin_link') };
   console.log(`→ ${row.id} (${row.networks})`);
   if(DRY){ console.log('  DRY: würde normalisieren + planen'); done++; continue; }
   const result = await schedule(row, () => {

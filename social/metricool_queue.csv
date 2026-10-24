@@ -1,41 +1,84 @@
-id,publish_date,media_url,text,networks,status,scheduled_at,note
+id,publish_date,media_url,text,networks,status,scheduled_at,note,metricool_post_id,metricool_post_uuid,request_started_at,pin_board_id,pin_title,pin_link
 mc-schmuck,2026-06-14T18:00:00,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-schmuck-tiktok.mp4?v=1781266484,"Schmuck-Drop 2026 ✨ Welches Teil ist deins? Serpent-Armreif · Coeur-Herzkette · Onyx · Stella — 925er Silber. −10% mit Code WELCOME10
-#schmuck #uhren #schweiz #fashionschweiz #luxestyle #fyp","instagram,facebook,tiktok",hold,,
+#schmuck #uhren #schweiz #fashionschweiz #luxestyle #fyp","instagram,facebook,tiktok",hold,,,,,,,,
 mc-selbstgestalten,2026-06-15T18:00:00,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-win-selbstgestalten-stumm.mp4?v=1781292965,"Mach dys eiges Teil 🎨🇨🇭 Schwiizer Sprüch & Motive uf Shirt, Hoodie, Täsche & Tasse — ab CHF 20.90, mit Code WELCOME10 -10%.
-#selbstgestalten #mundart #fashionschweiz #schweizmode #luxestyle #fyp","instagram,facebook,tiktok",hold,,
+#selbstgestalten #mundart #fashionschweiz #schweizmode #luxestyle #fyp","instagram,facebook,tiktok",hold,,,,,,,,
 mc-chleider,2026-06-16T18:00:00,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-win-chleider-stumm.mp4?v=1781292966,"Dyni Summer-Chleider 2026 ☀️ Boho, Maxi & elegant — ab CHF 34.90. Mit Code WELCOME10 -10%.
-#schweizmode #fashionschweiz #ootdschweiz #sommerkleid #luxestyle #fyp","instagram,facebook,tiktok",hold,,
+#schweizmode #fashionschweiz #ootdschweiz #sommerkleid #luxestyle #fyp","instagram,facebook,tiktok",hold,,,,,,,,
 mc-sie-ihn,2026-06-17T18:00:00,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-sie-ihn-60s-stumm.mp4?v=1781278228,"Für Sie & Ihn ✨ Kleider, Schmuck & Uhren — Damen UND Herren. −10% mit Code WELCOME10
-#schmuck #herrenschmuck #uhren #kleider #schweiz #luxestyle","instagram,facebook,tiktok",hold,,
+#schmuck #herrenschmuck #uhren #kleider #schweiz #luxestyle","instagram,facebook,tiktok",hold,,,,,,,,
 mc-grand,2026-06-18T18:00:00,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-grand-61s-stumm.mp4?v=1781276231,"Schmuck, Uhren & mehr bei LuxeStyle ✨ Vom Armreif bis zur Automatik-Uhr — plus Mode & dein eigenes Design. −10% WELCOME10
-#schmuck #uhren #watch #schweiz #luxestyle #fyp","instagram,facebook,tiktok",hold,,
+#schmuck #uhren #watch #schweiz #luxestyle #fyp","instagram,facebook,tiktok",hold,,,,,,,,
 mc-img-herrenuhr,2026-06-14T12:00:00,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/post-herrenuhr-edelstahl.jpg?v=1781295271,"Zeitlos am Handgelenk ⌚ Herrenuhr Edelstahl · Saphirglas, 50m wasserdicht. CHF 129.90 · −10% WELCOME10
-#herrenuhr #uhren #schweiz #fashionschweiz #luxestyle","instagram,facebook",hold,,
+#herrenuhr #uhren #schweiz #fashionschweiz #luxestyle","instagram,facebook",hold,,,,,,,,
 mc-img-skelettuhr,2026-06-16T12:00:00,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/post-skelettuhr-heritage.jpg?v=1781295271,"Echter Uhrmacher-Luxus ⚙️ Automatik-Skelettuhr · offenes Werk. CHF 99.90 · −10% WELCOME10
-#automatikuhr #herrenuhr #schweiz #luxestyle","instagram,facebook",hold,,
+#automatikuhr #herrenuhr #schweiz #luxestyle","instagram,facebook",hold,,,,,,,,
 mc-img-pacific,2026-06-18T12:00:00,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/post-two-tone-business.jpg?v=1781295271,"Sportlich-elegant 🌊 Edelstahl-Sportuhr «Pacific» · GMT-Bezel & Datum. CHF 69.90 · −10% WELCOME10
-#sportuhr #gmt #herrenuhr #schweiz #luxestyle","instagram,facebook",hold,,
+#sportuhr #gmt #herrenuhr #schweiz #luxestyle","instagram,facebook",hold,,,,,,,,
 mc-img-damenuhr,2026-06-20T12:00:00,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/post-damenuhr-petite.jpg?v=1781295272,"Zarte Eleganz ✨ Damenuhr «Petite» · Perlmutt-Zifferblatt. CHF 59.90 · −10% WELCOME10
-#damenuhr #uhren #schmuck #fashionschweiz #luxestyle","instagram,facebook",hold,,
+#damenuhr #uhren #schmuck #fashionschweiz #luxestyle","instagram,facebook",hold,,,,,,,,
 mc-img-leder,2026-06-21T12:00:00,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/post-leder-anker-armband.jpg?v=1781295271,"Für ihn: maritimer Style 🤎 Leder-Armband «Anker» · Edelstahl. CHF 29.90 · −10% WELCOME10
-#herrenschmuck #lederarmband #fuerihn #schweiz #luxestyle","instagram,facebook",hold,,
+#herrenschmuck #lederarmband #fuerihn #schweiz #luxestyle","instagram,facebook",hold,,,,,,,,
 mc-img-cuban,2026-06-22T12:00:00,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/post-cuban-link-armband.jpg?v=1781295271,"Statement am Handgelenk 🔗 Cuban-Link-Armband · wasserfest. CHF 32.90 · −10% WELCOME10
-#herrenschmuck #cubanlink #armband #schweiz #luxestyle","instagram,facebook",hold,,
+#herrenschmuck #cubanlink #armband #schweiz #luxestyle","instagram,facebook",hold,,,,,,,,
 mc-img-ohrstecker,2026-06-23T12:00:00,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/post-moissanite-ohrstecker.jpg?v=1781299682,"Funkelnde Moissanite-Ohrstecker ✨ S925, 0.5–1 Karat. CHF 139.90 · −10% WELCOME10
-#schmuck #ohrringe #moissanite #fashionschweiz #luxestyle","instagram,facebook",hold,,
+#schmuck #ohrringe #moissanite #fashionschweiz #luxestyle","instagram,facebook",hold,,,,,,,,
 mc-img-duo-ring,2026-06-24T12:00:00,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/post-doppel-ring-duo.jpg?v=1781299682,"Doppel-Ring «Duo» 💍 S925 mit Zirkonia & Topas-Blau. CHF 49.90 · −10% WELCOME10
-#schmuck #ring #schweiz #luxestyle","instagram,facebook",hold,,
+#schmuck #ring #schweiz #luxestyle","instagram,facebook",hold,,,,,,,,
 mc-img-smaragd-set,2026-06-25T12:00:00,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/post-smaragd-set-vintage.jpg?v=1781299682,"Smaragd-Set «Vintage» 💚 Ohrringe, Ring & Kette. CHF 18.90 · −10% WELCOME10
-#schmuck #schmuckset #fashionschweiz #luxestyle","instagram,facebook",hold,,
+#schmuck #schmuckset #fashionschweiz #luxestyle","instagram,facebook",hold,,,,,,,,
 mc-img-evil,2026-06-26T12:00:00,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/post-armband-evil.jpg?v=1781299682,"Sommer-Armband «Évil» 🦋 vergoldet mit Schmetterling & Nazar. CHF 19.90 · −10% WELCOME10
-#schmuck #armband #schweiz #luxestyle","instagram,facebook",hold,,
+#schmuck #armband #schweiz #luxestyle","instagram,facebook",hold,,,,,,,,
 mc-img-choker,2026-06-27T12:00:00,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/post-choker-layer.jpg?v=1781299682,"Choker im Layer-Look 🖤 mehrlagig & trendig. CHF 19.90 · −10% WELCOME10
-#schmuck #choker #ootdschweiz #luxestyle","instagram,facebook",hold,,
+#schmuck #choker #ootdschweiz #luxestyle","instagram,facebook",hold,,,,,,,,
 mc-img-ibiza,2026-06-28T12:00:00,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/post-boho-kleid-ibiza.jpg?v=1781299682,"Boho-Kleid «Ibiza» 🌿 Baumwoll-Leinen, locker & luftig. CHF 34.90 · −10% WELCOME10
-#sommerkleid #bohostyle #schweizmode #fashionschweiz #luxestyle","instagram,facebook",hold,,
+#sommerkleid #bohostyle #schweizmode #fashionschweiz #luxestyle","instagram,facebook",hold,,,,,,,,
 mc-img-aria,2026-06-29T12:00:00,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/post-maxi-kleid-aria.jpg?v=1781299682,"Maxi-Kleid «Aria» ✨ tailliert mit Gürtel, fliessend. CHF 49.90 · −10% WELCOME10
-#maxikleid #schweizmode #ootdschweiz #luxestyle","instagram,facebook",hold,,
+#maxikleid #schweizmode #ootdschweiz #luxestyle","instagram,facebook",hold,,,,,,,,
 mc-img-riva,2026-06-30T12:00:00,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/post-tunika-kleid-riva.jpg?v=1781299682,"Tunika-Kleid «Riva» ☀️ V-Ausschnitt, Strand-Stil. CHF 34.90 · −10% WELCOME10
-#sommerkleid #strand #fashionschweiz #luxestyle","instagram,facebook",hold,,
+#sommerkleid #strand #fashionschweiz #luxestyle","instagram,facebook",hold,,,,,,,,
 mc-img-indigo,2026-07-01T12:00:00,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/post-boho-kleid-indigo.jpg?v=1781299681,"Boho-Kleid «Indigo» 🌊 ärmellos mit Volant. CHF 39.90 · −10% WELCOME10
-#bohostyle #sommerkleid #schweizmode #luxestyle","instagram,facebook",hold,,
+#bohostyle #sommerkleid #schweizmode #luxestyle","instagram,facebook",hold,,,,,,,,
+mc-prime-wolf-1,2026-10-26T12:15:00,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b05b124d-5541-4c48-9bae-e3b2b0e3dabe.jpg?v=1783188756,"Elektrischer Fleischwolf 5L 🔪
+Fleisch, Gemüse, Zwiebeln, Knoblauch und Kräuter – ein Gerät für Wurst, Füllungen, Saucen und Babynahrung.
+
+CHF 75.90 · 400 W · 110–240 V · 5 Liter
+🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe
+🔗 https://luxestyle.ch/products/elektrischer-fleischwolf-5l-kuchenmaschine-656962
+
+#küche #küchenmaschine #fleischwolf #kochen #schweiz #luxestyle","instagram,facebook",scheduled,2026-10-24T11:20:19.401Z,Prime-Sourcing 24.10. · Angaben aus der Produktseite,404927218,3370014454796207908,2026-10-24T11:20:18.762Z,,,
+mc-prime-geist-1,2026-10-26T19:10:00,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fb9ef97a-9af8-42fa-bb96-f5327c95c61b.jpg?v=1786150977,"Leuchtender Schaukelgeist 👻
+Grosse Geisterfigur für draussen: integrierte Beleuchtung, schaukelt vor und zurück. Für Türeingang, Garten und Vorplatz, aus robustem Kunststoff.
+
+CHF 17.90
+🚚 Lieferung 10–20 Werktage – plane ihn für die nächste Saison ein
+🔄 30 Tage Rückgabe
+🔗 https://luxestyle.ch/products/leuchtender-halloween-schaukelgeist-627400
+
+#halloween #deko #gartendeko #herbst #schweiz #luxestyle","instagram,facebook",scheduled,2026-10-24T11:20:19.757Z,Prime-Sourcing 24.10. · bewusst OHNE Halloween-Frist: 10–20 Werktage,404927223,1910940002626912625,2026-10-24T11:20:19.515Z,,,
+mc-prime-wolf-pin,2026-10-27T14:40:00,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/85715bfd-99f6-412f-846b-80ef0812c00e.jpg?v=1783188756,"Elektrischer Fleischwolf 5L – Küchenmaschine
+Fünf Stufen: 8000 U/min für Gemüse und Obst, 10000 U/min für Fleisch, Karotten und Kürbis. Dazu Eier-Rührgang und Entsafter-Gang.
+
+CHF 75.90 · Lieferung 10–20 Werktage
+https://luxestyle.ch/products/elektrischer-fleischwolf-5l-kuchenmaschine-656962
+
+#küchenhelfer #mealprep #fleischwolf #kochen #luxestyle",pinterest,scheduled,2026-10-24T11:23:11.188Z,Prime-Sourcing 24.10. · HTTP 400 ohne Board; im Planer abgeglichen: nicht angelegt,404928616,2877674070200569146,2026-10-24T11:23:10.946Z,1111333714239114036,Elektrischer Fleischwolf 5L - Kuechenmaschine,https://luxestyle.ch/products/elektrischer-fleischwolf-5l-kuchenmaschine-656962?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin
+mc-prime-geist-pin,2026-10-27T17:10:00,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a4e04940-fd0b-421d-9727-638a1829a317.jpg?v=1786150978,"Leuchtender Schaukelgeist für draussen
+Beleuchtete Geisterfigur mit Schaukelbewegung für Türeingang, Garten und Vorplatz. Robuster Kunststoff.
+
+CHF 17.90 · Lieferung 10–20 Werktage
+https://luxestyle.ch/products/leuchtender-halloween-schaukelgeist-627400
+
+#halloweendeko #gartendeko #aussendeko #herbstdeko #luxestyle",pinterest,scheduled,2026-10-24T11:23:11.615Z,Prime-Sourcing 24.10. · HTTP 400 ohne Board; im Planer abgeglichen: nicht angelegt,404928620,-3165721293129560265,2026-10-24T11:23:11.313Z,1111333714239114033,Leuchtender Schaukelgeist fuer draussen,https://luxestyle.ch/products/leuchtender-halloween-schaukelgeist-627400?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin
+mc-prime-wolf-threads,2026-10-28T09:45:00,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b05b124d-5541-4c48-9bae-e3b2b0e3dabe.jpg?v=1783188756,"Fünf Stufen, ein Gerät: Stufe I mit 8000 U/min macht Gemüse und Obst in 5–10 Sekunden klein, Stufe II mit 10000 U/min Fleisch, Karotten und Kürbis in 10–20 Sekunden.
+
+Elektrischer Fleischwolf 5L · CHF 75.90 · Lieferung 10–20 Werktage
+🔗 https://luxestyle.ch/products/elektrischer-fleischwolf-5l-kuchenmaschine-656962",threads,scheduled,2026-10-24T11:20:21.045Z,Prime-Sourcing 24.10.,404927234,2383637826676869482,2026-10-24T11:20:20.804Z,,,
+mc-prime-wolf-2,2026-10-29T12:15:00,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/85715bfd-99f6-412f-846b-80ef0812c00e.jpg?v=1783188756,"Mealprep ohne Handarbeit 🥕
+Gemüse in 5–10 Sekunden, Fleisch in 10–20 Sekunden. Eier-Rührgang fürs Verquirlen, Entsafter-Gang für Früchte – alles im selben 5-Liter-Behälter.
+
+Elektrischer Fleischwolf 5L · CHF 75.90 · 400 W
+🚚 Lieferung 10–20 Werktage
+🔗 https://luxestyle.ch/products/elektrischer-fleischwolf-5l-kuchenmaschine-656962
+
+#mealprep #küche #kochen #haushalt #schweiz #luxestyle","instagram,facebook",scheduled,2026-10-24T11:20:21.418Z,Prime-Sourcing 24.10.,404927236,-884200541558521239,2026-10-24T11:20:21.166Z,,,
