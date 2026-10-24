@@ -591,3 +591,4 @@
 2026-10-23T00:27:52.000Z	luxe-epic-glamour.wav	1.98	allgemein	bildreel-zylinder-rot-deluxe-fga925708	stimme:nein	anteil	quelle:bild
 2026-10-23T01:16:38.000Z	luxe-epic-fantasy.wav	13.79	allgemein	bildreel-schamanen-maske-mit-horner-fga908481	stimme:nein	anteil	quelle:bild
 2026-10-23T02:25:39.000Z	luxe-epic-hybrid.wav	22.62	allgemein	bildreel-helm-pilot-mit-visier-fgabo01420	stimme:ja	azure:de-CH-JanNeural	quelle:bild
+2026-10-24T08:06:56.000Z	luxe-epic-elegant.wav	26.0	allgemein	bildreel-krone-seekonigin-fgabo64556	stimme:nein	fehler	quelle:bild
