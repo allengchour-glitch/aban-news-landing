@@ -1,5 +1,47 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## LUXESTYLE_GOOGLE_FREE_20261024
+
+### Claude Code: kostenlose Google-Produkteinträge und Search Console
+
+Task-ID: **LUXESTYLE_GOOGLE_FREE_20261024**. Inhaberauftrag vom 24.10.2026: Punkte 4 und 5 als konkrete Aufgabe für Claude Code. Status: **vorbereitet und zur Übernahme vorgesehen; Ausführung und Lesebestätigung unbekannt**. Ausschliesslich LuxeStyle, luxestyle.ch, Repo allengchour-glitch/aban-news-landing. Sprache Deutsch Schweiz.
+
+### Ziel und Befugnis
+
+Kostenlose Google-Sichtbarkeit gezielt verbessern: tatsächliche Free-Listings-Hindernisse feststellen und belegte Search-Console-Chancen in konkrete Freigabeentwürfe übersetzen. Dieser Auftrag erlaubt aktuelle begrenzte Leseprüfungen, lokale Vorbereitung und Dokumentation. Er aktiviert oder ändert keine Shop-/Feed-/Flow-/DNS-/Rabatt-/Budgeteinstellungen und startet keine Workflows, Deployments oder kostenpflichtigen Dienste. Punkte 1–3 sind in diesem Auftrag keine freigegebenen Shopänderungen. Keine Kunden-/Lieferantenansprache, keine andere Marke.
+
+Zuerst die aktuelle Übergabe und TAGESPROTOKOLL.md auf Branch codex/luxestyle-claude-handoff-20261018 lesen. Historische Einträge erhalten. Tages-Checkpoints beachten: Heute wurden Metricool-Kennzahlen und ein Klaviyo-Flowreport bereits gelesen; für diesen Google-Auftrag keine weiteren Social-/Klaviyo-Abfragen. Falls identische Merchant-/Search-Console-Daten heute bereits gelesen wurden, ihre belegten Exporte nutzen. Höchstens eine kleine Tagesmessung je Aufgabe/Quelle, ausser ein konkreter neuer Fehler rechtfertigt eine dokumentierte Gegenprobe.
+
+Vor Zugriff vorhandene Google-/Shopify-Helfer und Wächter im Repo prüfen. Keine Neuinstallation nur wegen eines fehlenden ChatGPT-Plugins. Shopify-Shop frisch als LuxeStyle/luxestyle.ch/CHF bestätigen; Merchant-Konto und Search-Console-Property anhand tatsächlicher Kontodaten zuordnen. Bekannte Domain-Property: sc-domain:luxestyle.ch, vor Nutzung verifizieren. Unklare Identität blockiert Änderungen; Auth/403/429/Quota/Timeout ist unbekannt, keine leere Liste oder 404. Keine Schlüssel oder Passwörter im Chat anfordern, ausgeben oder in Dateien/Logs kopieren.
+
+### Aufgabe 4: kostenlose Google-Produkteinträge
+
+1. Aktuelles Merchant-Konto und die tatsächlich verfügbaren Berichte/Diagnosefelder entdecken. Free Listings und Shopping Ads getrennt auswerten. Ein Shopping_ads-Ausschluss belegt keinen Ausschluss aus kostenlosen Einträgen. Bestehende absichtliche Schutz-/Ausschlussregeln erhalten.
+2. Eine gezielte Stichprobe von höchstens zehn bereits vorhandenen Produkten prüfen, keine Massenpagination. Ausgangskandidaten: Projektor Product15521256604033/Variante56197916361089 und Diffuser Product15411554320769/Variante55743280021889; alle Eigenschaften frisch gegenprüfen. Google-Angebots-IDs aus tatsächlichen Feed-/API-Daten zuordnen, kein ID-Schema erfinden. Bei fehlender Kontozuordnung keinen fremden Account prüfen.
+3. Tatsächliche Eignung/Zulassung, betroffene Destination, Problemcode und Begründung je Produkt erfassen. Negative Zähler oder inkonsistente Statussummen verwerfen. Höchstens eine gezielte unabhängige Gegenprobe bei einem solchen neuen konkreten Fehler; ohne gültige Daten keine Feed-Empfehlung als erwiesen ausgeben. Die frühere Stichprobe von 12 Produkten/2 Shopping_ads-Ausschlüssen ist keine aktuelle Katalogquote.
+4. Bei den konkret betroffenen Artikeln Preis/Währung CHF, öffentliche Produktseite, echte Bildzuordnung, Kaufbarkeit und Liefer-/Versandangaben vergleichen. Bestand0 bei untracked/CONTINUE ist allein kein Ausverkaufsbeweis. Keine Bestands- oder Lieferzeitversprechen erfinden. GTIN/Marke/MPN nur mit echtem Nachweis; aus fehlender GTIN nicht automatisch identifier_exists=false setzen.
+5. Bekannten Versand-Schema-Konflikt CHF40.50 versus öffentliche Gratisversandgrenze CHF50 frisch prüfen und gegebenenfalls als konkreten Quell-/Theme-Diff vorbereiten. Interne CHF45 nach Rabatt und Kundendomäne account.luxestyle.com.co erhalten. Ein unveröffentlichter Theme-Entwurf gilt nicht als aktive Korrektur; Main-Theme-Schreibgrenzen nicht umgehen.
+
+Lieferung: kurze Tabelle «Google-Angebots-ID / Shopify-ID | Destination | belegtes Problem | Quelle/Zeit | konkrete Korrektur als Diff | Status». Eine gültige Teilmessung als Stichprobe benennen. Nur aus aktuellen belegten Fehlern höchstens drei priorisierte Korrekturentwürfe erstellen; nichts pauschal freischalten, importieren oder entfernen. Keine Feed-/Merchant-/Shop-Einstellung schreiben.
+
+### Aufgabe 5: Search Console in konkrete SEO-Chancen übersetzen
+
+1. sc-domain:luxestyle.ch und berechtigten Zugriff verifizieren. Bereits erfolgte Verifizierung/Indexierung nicht erneut als Pflichtaufgabe ausgeben. Inhaber hat die Sternenlicht-Indexierung bestätigt; Quelle als Inhaberbestätigung kennzeichnen, wenn keine aktuelle API-Gegenprobe vorliegt.
+2. Letzte vollständig verfügbare finale 28 Tage mit den vorherigen 28 Tagen vergleichen, solange beide Zeitfenster vorliegen. Zwei kleine Abfragen, jeweils höchstens25 Query-/Seiten-Zeilen, keine Pagination. Datum, Datenstand, Quellenzeitzone und Filter explizit dokumentieren. Frische unvollständige Tage ausschliessen. Schweiz-/Gerätefilter nur entsprechend den entdeckten gültigen Parametern und für beide Zeiträume identisch verwenden.
+3. Klicks, Impressionen, CTR und durchschnittliche Position je Suchanfrage/Seite auswerten; Markenanfragen erkennbar markieren. Bevorzugt Chancen mit vorhandenen Impressionen, verbesserbarer Klickrate und Position etwa4–20 suchen. Keine Mindestanzahl an Chancen erzwingen. Fehlende Zeilen einer begrenzten Topliste sind unbekannt, keine Null und kein Rankingverlust. CTR nur aus gültigen Klicks/Impressionen berechnen, bei fehlendem oder0-Nenner unbekannt. Aus Position, Views oder Klicks keine Verkäufe ableiten.
+4. Höchstens drei passende URLs auswählen. Jede einmal öffentlich lesen, maximal drei zusätzliche GETs, keine Wiederholungsschleife. H1, Title, Meta-Description, Canonical, Indexierbarkeit und vorhandene interne Links gegen die tatsächliche Suchabsicht prüfen. HTTP200 belegt Erreichbarkeit, keine Google-Indexierung oder Rankingwirkung.
+5. Je belegter Chance konkrete Vorher-/Nachher-Vorschläge für Titel/Meta sowie einen passenden bestehenden internen Link erstellen. Ergänzende Produkt-/FAQ-Texte nur aus verifizierten Produkteigenschaften; keine erfundenen Masse, Materialien, Funktionen oder Reviews. Keine neuen ähnlichen Landingpages ohne Suchabsicht/Abgrenzung. Änderungen bleiben Freigabeentwürfe; keine automatische Indexierungsanforderung, kein Sitemap-Neueinreichen und keine Shop-/Themeänderung.
+
+Lieferung: maximal drei Zeilen «Suchanfrage | URL | Zeitraum/Quelle | Impressionen/Klicks/CTR/Position | konkreter Änderungsvorschlag | erwarteter Messpunkt». Datenmangel offen nennen. Bei fehlendem Zugriff einen konkreten Zugriffsblocker und die unabhängig mögliche URL-/Textprüfung liefern, keinen Erfolg oder Rankinganstieg versprechen.
+
+### Abnahme und Übergabe zurück
+
+- Erst Quellen/Gegenprobe, dann konkrete Diffs; aktuelle IDs/SHAs und Rücksetzreferenz erhalten. Lokal passend und begrenzt validieren, keine unnötige Testsuite/Installation.
+- Prioritäten nach belegtem Sichtbarkeits-/Kaufhindernis setzen, kostenlos und ohne Budgetänderung. Tatsächliche Writes werden in diesem Auftrag nicht erwartet oder als erledigt ausgegeben.
+- Ergebnis in einem kompakten Markdown-Bericht und maschinenlesbaren Belegen ablegen. Keine Rohdaten mit Kunden-/Credentialwerten. Vorhandene Kontowährungen getrennt halten.
+- TAGESPROTOKOLL.md mit frischem Datei-SHA, geprüftem Ergänzungs-Diff und gezieltem Rücklesen ergänzen. Spalten «Bereich | Was Codex gemacht hat | Ergebnis / Status» erhalten; Claude darf eigene Ausführung nicht als Tätigkeit von Codex darstellen und muss den Ausführenden explizit nennen. Die heutige Codex-Tätigkeit ist zunächst nur die Vorbereitung/Ablage dieses Auftrags.
+- Task-ID bei Übernahme und Abschluss ausdrücklich nennen. Eine Dateiablage ist keine Claude-Lesebestätigung; unbekannte Übernahme nicht als laufende Ausführung melden. Bestehender Prüf-/Berichtsrhythmus unverändert.
+
 **Betriebsübernahme 22.10.:** Claude-Code-Token ist nicht verfügbar. Codex führt die LuxeStyle-Prüfungen, Entwürfe, Qualitäts-/Rechteprüfungen und zulässigen Metricool-Schritte selbst weiter. Claude-Handoffs bleiben nur Dokumentation; eine Claude-Lesebestätigung wird nicht vorausgesetzt. Shopify-, DNS-, Feed-, Flow-, Budget- und Rendergrenzen bleiben unverändert.
 
 **Technische Sichtbarkeit Plus 22.10.:** [Öffentliche Gegenprobe und Prioritäten](SICHTBARKEIT-MAX-PLUS-20261022.md). Neu dokumentiert: strukturierte Daten vorhanden, drei fehlende Bild-Altattribute am Projektor, möglicher Ladeumfang und ein Versand-Schema-Konflikt CHF 40.50 versus verbindliche CHF 50. Keine Live-Änderung.
