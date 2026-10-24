@@ -84,6 +84,55 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-24 nachts (🛒 CJ Prime ausgemessen: eine von drei Leistungen ist über die API erreichbar):**
+Alles live gemessen, PRs #2717–#2719 gemergt. Branch dieser Sitzung: `claude/project-thread-yeliwp`.
+- **🚨 VON CJ PRIMES DREI BEWORBENEN LEISTUNGEN IST NUR EINE ÜBER DIE API ZU HOLEN.** Sourcing-Anfragen
+  (25/Tag) gehen über `POST /product/sourcing/create`, Stand über `/product/sourcing/queryList`.
+  **Gutscheine (5 × 3 USD) und die VIP-Produktliste haben KEINEN Endpunkt** — `setting/get` listet 69
+  Stück, keiner heisst VIP oder Coupon. Nicht erneut danach suchen; die Gutscheine kann nur der User in
+  CJs Weboberfläche beim Bezahlen einlösen (ab 10 USD Bestellwert).
+- **17 Sourcing-Anfragen gesendet, alle `Pending`** (3 bezahlt-und-erstattet, 14 besuchte gesperrte
+  Seiten). Ledger `dropship/cj_sourcing_ledger.txt`. **Stand nachsehen:** `STATUS=1 node
+  automation/cj_sourcing.mjs` — nicht neu senden, das Tagesbudget ist 25.
+- **🔑 DIE AUSWAHLREGEL, DIE WIRKLICH ZÄHLT: das Tagesbudget gehört der NACHFRAGE, nicht der Marge.**
+  Die erste Fassung sortierte nach Rohmarge und füllte die 25 Anfragen mit 300-Franken-Koffern und
+  Möbeln, die **nie jemand aufgerufen hat**. `BESUCHT=1 TAGE=30` nimmt stattdessen die meistbesuchten
+  Produktseiten aus ShopifyQL. Dabei gefunden: **die vierthäufigste Seite des ganzen Shops ist ein
+  gesperrter Entwurf** (`rizinusol-wickel-set-mit-bio-ol-323457`, 64 von 2619 Sitzungen).
+- **🖼️ MEHR BILDER ODER VIDEOS VON CJ LOHNEN NICHT — gemessen, nicht geschätzt** (`automation/cj_medien_audit.mjs`,
+  schreibt nichts). Von 22 auflösbaren Produkten haben **18 im Shop schon alles**, was CJ hält; **0 Videos**
+  in 82 geprüften Produkten. Die Felder heissen `productImage` (JSON als **Text**), `productImageSet`
+  (Liste) und `productVideo`. Bericht `dropship/cj-medien-audit.csv`.
+- **🚨 DER BREITE PRODUKT-GRIND SAGT NEIN, und der Abgleich mit dem eigenen Katalog ist der Grund.**
+  `automation/cj_top_produkte.mjs` (32 Suchwörter, misst **Fracht CN→CH** statt sie zu raten): 1920
+  Treffer, **1524 verschiedene**, davon 25 Kandidaten und **16 wirklich nach CH lieferbar**. Aber der Shop
+  führt schon 469 Uhren, 1610 Armbänder, 357 Halsketten, 313 Cardigans, 280 Yoga, 150 Luftbefeuchter,
+  127 Ohrringe, 64 Diffuser — **15 der 16 Funde fallen in genau diese Gruppen.** Neu ist einer: ein
+  Reptilien-Nebelgerät (9 Läden, 10.09 USD) in einer Gruppe mit 2 Produkten. **Nichts angelegt** — ein
+  einzelnes Gerät trägt keine Nische. **Lehre: beim nächsten Grind zuerst den Katalog fragen, dann suchen.**
+- **Drei Fallen in den CJ-Katalogfeldern, jede einmal zugeschlagen:** `shippingCountryCodes` ist das
+  **LAGER**, nicht das Zielland (`CN`, `CN_US`, `US`, `GB`, `AU`) — „ohne CH verwerfen" hätte jeden
+  Treffer weggeworfen und wie ein leerer Katalog ausgesehen · `listedNum` ist klein (Höchstwert **18**,
+  Median 0 über 240 Treffer), eine geratene Schwelle von 20 lässt nie etwas durch · `sellPrice` kann eine
+  Spanne sein (`"1.83 -- 3.69"`), `Number()` gibt NaN und 32 von 240 Treffern galten als preislos.
+- **⏳ `authentication/getAccessToken` darf nur alle 5 Minuten gerufen werden** (sonst `16900202`, sieht
+  aus wie ein kaputter Zugang) → Zwischenspeicher `automation/lib/cj_token.mjs` (4 Tests, Gegenprobe in
+  beide Richtungen: ein in 2 Minuten ablaufendes Token wird NICHT wiederverwendet).
+- **🔑 ZUM VIERTEN MAL DIE KLASSE „ZU BREITES MUSTER": `/ring\b/` hat vorne KEINE Wortgrenze** und traf
+  „S**pring**" → ein Cardigan zählte als Ring. Richtig ist `/(^|[^a-z])rings?([^a-z]|$)/i`. Dazu die
+  **Musterreihenfolge**: „Reptile … Fogger" landete unter Luftbefeuchter und verdeckte damit ausgerechnet
+  den einzigen brauchbaren Fund; „Pendant Earrings" zählte als Halskette. **Das Spezifische zuerst.**
+- **Test-Lehre:** die Zusammenfassung und `process.exit` standen **vor** den neu angehängten Tests → die
+  neuen liefen nie und „alle Tests grün" kam aus dem alten Block. Dieselbe Klasse wie der stumme Skip.
+  Dazu: Klinge-/Markenmuster waren nur deutsch, gegen englische CJ-Titel („Folding Pocket Knife") blind →
+  `KLINGE_EN`/`MARKE_EN`; ein blankes `switch` im Markenmuster traf „Light **Switch** Cover Plate".
+- **ShopifyQL über die Admin-API, vier Anläufe:** kein `... on TableResponse` (gibt es nicht), das Feld
+  heisst `rows` (nicht `rowData`), `parseErrors` ist eine **skalare** String-Liste, und die Zeilen kommen
+  als **Objekte** (`{landing_page_path, sessions}`), nicht als Feld-Listen.
+- **🟡 Beim User:** die fünf CJ-Gutscheine einlösen · Entscheid, ob die Reptilien-/Terrarien-Nische
+  aufgebaut wird (dafür bräuchte es 5–10 Produkte und eine eigene Kategorieseite) · alles Ältere
+  unverändert (Versand-Schwelle 50/45, Env-Eintrag, Google-Kanal, Preise).
+
 **📌 2026-10-23 nachts (🚚 Elf von elf Erstattungen hatten denselben Grund — jetzt gibt es einen Wächter dafür):**
 Angefangen bei der Frage „warum kauft niemand auf den drei Traffic-Seiten", gelandet bei der teuersten
 Stelle des Shops. Alles live gemessen, PR #2715.
