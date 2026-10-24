@@ -1,6 +1,6 @@
 /** Test fuer seoTitel. Die Titel unten sind ECHT, am 2026-10-17 aus dem Live-Katalog gelesen.
  *  Lauf: /opt/node22/bin/node automation/lib/seo_titel_test.mjs   */
-import { seoTitel, seoOffen, titelNormalisieren, kuerzen, MAX_TITEL, MAX_BESCHREIBUNG } from './seo_titel.mjs';
+import { seoTitel, seoOffen, titelNormalisieren, kuerzen, MAX_TITEL, MAX_BESCHREIBUNG, seoNachtrag } from './seo_titel.mjs';
 let fehler = 0;
 const pruef = (n, ok, extra = '') => { if (!ok) { fehler++; console.log(`FAIL ${n}  ${extra}`); } else console.log(`ok   ${n}`); };
 
@@ -73,6 +73,33 @@ pruef('nichts gesetzt → offen', seoOffen(KURZ, null) === true);
 pruef('nur Titel gesetzt → offen (Beschreibung fehlt)', seoOffen(KURZ, { title: 'X', description: '' }) === true);
 pruef('beides gesetzt → nicht offen', seoOffen(KURZ, { title: 'X', description: 'Y' }) === false);
 pruef('leerer Produkttitel → nicht offen (es gibt nichts zu setzen)', seoOffen('   ', null) === false);
+
+
+// ---------------------------------------------------------------------------
+// seoNachtrag: nur FEHLENDE Felder senden (Kern von ChatGPTs Entwurf #2694).
+// Angehaengt VOR der Zusammenfassung — die Lehre vom 24.10. (CLAUDE.md): Tests nach
+// `process.exit` laufen nie, und „alle Tests gruen" kommt dann aus dem alten Block.
+// ---------------------------------------------------------------------------
+pruef('Titel vorhanden, Beschreibung fehlt → NUR die Beschreibung im Patch',
+  JSON.stringify(Object.keys(seoNachtrag(KURZ, { title: 'Mein handgeschriebener Keyword-Titel', description: null })))
+    === JSON.stringify(['description']),
+  JSON.stringify(seoNachtrag(KURZ, { title: 'Mein handgeschriebener Keyword-Titel', description: null })));
+pruef('der vorhandene Titel steht NICHT im Patch',
+  seoNachtrag(KURZ, { title: 'Mein handgeschriebener Keyword-Titel', description: null }).title === undefined);
+// GEGENPROBE in die andere Richtung: fehlt der Titel wirklich, MUSS er gesetzt werden —
+// ein zu zurueckhaltender Patch waere derselbe Fehler, nur umgekehrt (die Luecke bliebe offen).
+pruef('nichts gesetzt → Titel UND Beschreibung im Patch',
+  JSON.stringify(Object.keys(seoNachtrag(KURZ, null)).sort()) === JSON.stringify(['description','title']),
+  JSON.stringify(seoNachtrag(KURZ, null)));
+pruef('leerer Titel-String gilt als fehlend', seoNachtrag(KURZ, { title: '', description: 'Y' }).title !== undefined);
+pruef('beides gesetzt → leerer Patch, es wird nicht geschrieben',
+  Object.keys(seoNachtrag(KURZ, { title: 'X', description: 'Y' })).length === 0);
+pruef('leerer Produkttitel → leerer Patch', Object.keys(seoNachtrag('   ', null)).length === 0);
+// Der Fall, der dem Lauf sonst die Schreib-Abfrage kostet: titelgleicher Vorschlag.
+// `seoOffen` sagt hier „nicht offen"; der Patch waere nur die Beschreibung, die schon da ist.
+pruef('titelgleicher Fall mit vorhandener Beschreibung → leerer Patch',
+  Object.keys(seoNachtrag(GLEICH, { title: null, description: 'irgendwas' })).length === 0,
+  JSON.stringify(seoNachtrag(GLEICH, { title: null, description: 'irgendwas' })));
 
 console.log(fehler ? `\n${fehler} FEHLER` : '\nalle Tests gruen');
 process.exit(fehler ? 1 : 0);

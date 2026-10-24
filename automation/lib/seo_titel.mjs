@@ -78,3 +78,33 @@ export function seoOffen(produktTitel, seo) {
   if (seo?.title) return false;                               // beides da
   return erzeugt.title !== produktTitel;                      // null = wie der Produkttitel
 }
+
+/**
+ * Nur die FEHLENDEN SEO-Felder zurueckgeben — niemals einen vorhandenen Wert.
+ *
+ * Der Grund stammt aus ChatGPTs Entwurf #2694 („preserve existing metadata") und ist echt:
+ * `seoOffen` meldet ein Produkt auch dann als offen, wenn nur die BESCHREIBUNG fehlt
+ * (Zeile „Beschreibung fehlt — nachtragen"). Der Lauf sendete danach `seoTitel(titel)`
+ * vollstaendig, also auch den Titel — und haette damit einen vorhandenen, von Hand
+ * geschriebenen Keyword-Titel durch den erzeugten Standardtitel ersetzt. Genau das darf
+ * nicht passieren: CLAUDE.md haelt fuer die 164 handgeschriebenen Titel ausdruecklich fest,
+ * dass sie besser sind und unangetastet bleiben, „der Optimizer fuellt nur fehlende".
+ *
+ * Gemessen am 24.10.2026 ueber 5000 aktive Produkte (3000 aelteste nach CREATED_AT,
+ * 2000 nach UPDATED_AT): 1 offenes Produkt, **0 im Risikofall** — heute gibt es also keinen
+ * Altschaden. Die Luecke war ein Fehler im Code, kein Schaden im Katalog; sie haette erst
+ * beim naechsten Produkt mit eigenem Titel ohne Beschreibung zugeschlagen.
+ *
+ * Gibt {} zurueck, wenn nichts zu setzen ist — der Aufrufer schreibt dann nicht.
+ */
+export function seoNachtrag(produktTitel, seo) {
+  const erzeugt = seoTitel(produktTitel);
+  const patch = {};
+  // Ein vorhandener Titel bleibt stehen. `null`/leer gilt als fehlend.
+  // Und ein Vorschlag, der dem Produkttitel GLEICHT, gehoert nicht in den Patch: Shopify
+  // speichert ihn nicht (siehe `seoOffen`), die Schreib-Abfrage waere umsonst. Gefunden hat
+  // das die Gegenprobe des Tests, nicht der Haupttest.
+  if (!seo?.title && erzeugt.title && erzeugt.title !== produktTitel) patch.title = erzeugt.title;
+  if (!seo?.description && erzeugt.description) patch.description = erzeugt.description;
+  return patch;
+}
