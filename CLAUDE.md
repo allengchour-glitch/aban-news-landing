@@ -139,10 +139,68 @@ Domains längst verifiziert**, die Baustelle lag woanders. Alles live gemessen.
   Messung eine erfundene Adresse abgefragt (404) — sonst wäre „alles 308" auch mit einem kaputten
   Prüfer herausgekommen.
 - **🟡 Beim User (Google-Konto):** Merchant Center → geplanter Abruf auf die neue Adresse, alte
-  Adresse löschen · Search Console → Sitemaps einreichen und danach „Seite mit Weiterleitung"
-  beobachten (das ist die Gegenprobe) · Entscheid Fortura (~1500 CH-Lager-Artikel) · Entscheid
-  `excluded_destination` (70,3 % der Stichprobe). Voller Bericht:
-  `/mnt/project-files/google/MERCHANT-CONSOLE-2410.md`.
+  Adresse löschen (Klick-Anleitung in `/mnt/project-files/google/FORTURA-SHOPPING-2410.md`) ·
+  Search Console → nach zwei bis drei Wochen „Seite mit Weiterleitung" beobachten (das ist die
+  Gegenprobe). Voller Bericht: `/mnt/project-files/google/MERCHANT-CONSOLE-2410.md`.
+  **Die beiden früheren Entscheide sind erledigt** (User 24.10.: „3 ja", „4 keine ahnung"):
+  Fortura ist im Feed, `excluded_destination` ist aufgeklärt und entfernt — siehe nächster Block.
+
+**📌 2026-10-24 früh (🛒 Fortura im Merchant-Feed · 26 Lizenz-Artikel abgefangen · „70 % ausgeschlossen" aufgeklärt):**
+Antwort auf die vier Punkte des Users („1 nein 2 ist schon 3 ja 4 keine ahnung"). Alles live
+gemessen, Bericht `/mnt/project-files/google/FORTURA-SHOPPING-2410.md`.
+- **✅ FORTURA IST IM FEED — und erst jetzt hat der Feed überhaupt GTINs.** Der Generator las nur
+  **ein** Fenster (die 6000 zuletzt geänderten Produkte); die Fortura-Ware liegt ausserhalb, darum
+  standen dort **0 GTIN**. `merchant_feed.mjs` kann jetzt **mehrere Abfragen** (`FEED_QUERY` mit
+  `||` trennen, je eigenes SCAN-Fenster, Dubletten fallen über `ids` weg) plus `SORT`/`REVERSE`,
+  und der Bericht nennt die **gelaufene Region je Abfrage**. Vorher/nachher: **5861 → 8084
+  Artikel, GTIN 0 → 2156**, Kategorie 5857 → 6656, doppelte IDs 0, `identifier_exists` 0,
+  Versandangabe bei allen 8084. Fortura selbst: **2371 aktiv, 97,1 % Barcode**, 64,3 % lieferbar,
+  34,7 % mit Kategorie; 2223 gehen in den Feed. Der Tages-Lauf prüft jetzt auch die **Dateigrösse**
+  (Pages liefert über 25 MiB nicht aus; 8084 Artikel sind bereits **16,6 MB**).
+- **🚨 26 ARTIKEL MIT LIZENZNAMEN WÄREN IN DEN FEED GEGANGEN — Kontosperr-Risiko, nicht bloss eine
+  Ablehnung.** `RISIKO` kannte nur `disney|frozen`, und „Kostüm Batman Classic" enthält keines
+  seiner Wörter. Neues Muster `LIZENZ` in `automation/lib/gmc_feed_item.mjs` (Batman, Harry Potter,
+  Pokemon, Sonic, Super Mario, Paw Patrol, Spiderman, Mickey/Minnie, Superman, Iron Man, Captain
+  America, Spongebob …). **Alle 31 Treffer der Fortura-Ware wurden EINZELN nachgelesen, bevor ein
+  Name im Muster stand** — kein Fehltreffer. **Die Gegenprobe fing die eigene Überbreite:** `anna`
+  trifft über die Wortgrenze am Bindestrich den Vornamen in „Kapuzenpullover «Anna-Lena»" →
+  **`anna` und `elsa` sind bewusst NICHT im Muster** (Frozen deckt `frozen` ab). **Nicht
+  nachtragen.** 19 Lizenz-Tests + 14 Gegenproben, 4 Mutationen rot.
+- **✅ `excluded_destination` AUFGEKLÄRT: eine Charge vom 17.08.2026, kein Entscheid.** Der Befund
+  „70,3 % von Shopping ausgeschlossen" vom 17.10. ist kein Ausschluss. Alle **1368** Fortura- und
+  **123 von 124** CJ-Metafelder wurden am **selben Tag** angelegt, quer über Produkte aus Mai,
+  Juni und Juli; der Wert ist **immer genau** `["Shopping_ads"]`; **kein Skript im Repo schreibt
+  das Feld**. **Die Gegenprobe entscheidet es: das Feld deckt sich nicht mit der Wirklichkeit** —
+  bei der CJ-Ware sind **124 von 124** „ausgeschlossenen" Produkte auf dem Google-Kanal, bei
+  Fortura 484 von 1368, und 709 ohne Feld liegen trotzdem nicht auf Google. **Ein Ausschluss, der
+  für kein Produkt gilt, ist kein Entscheid.** Nicht belegbar bleibt, **wer** die Charge schrieb
+  (kein Audit-Log über die API). Der Feed liest das Feld ohnehin nicht (geprüft).
+- **🧹 Aufgeräumt mit `automation/gmc_ausschluss_aufraeumen.mjs` (+ `lib/gmc_ausschluss.mjs`):**
+  **alle 2371 Fortura-Produkte sind frei, 1368 → 0**, 0 Fehler, Gegenprobe nach dem Lauf.
+  **Die Regel ist eng:** nur `mm-google-shopping.excluded_destination` und nur beim Wert genau
+  `["Shopping_ads"]` — jeder andere Wert bleibt stehen und wird genannt, sonst löschte ein zu
+  breiter Lauf einen echten Entscheid und schöbe Ware nach Google, die dort bewusst nicht sein
+  soll (dieselbe Klasse wie das zu breite `rueckhol`-Muster, nur mit Schreibzugriff). Trockenlauf
+  ist Vorgabe. 19 Tests, 6 Mutationen rot; **die Mutationsprobe fand eine echte Lücke:** ohne die
+  Array-Prüfung stürzt der Entscheid bei JSON `null` ab, statt eine Antwort zu geben — die
+  Längenprüfung allein deckt das nicht.
+- **🚨 DER LIEFERBARKEITS-WÄCHTER IST AUF FORTURA NICHT ANWENDBAR — und hätte es verschwiegen.**
+  Er fragt CJs Frachtrechner, und **0 von 2371 Fortura-Artikeln haben eine CJ-Nummer**
+  (`if(!/^CJ/i.test(sku)) continue`, Gegenprobe: bei `tag:cj-real` 100 %). Der Lauf meldete
+  `gelesen: 1000, geprueft: 0` — wer nur auf „keine Befunde" schaut, liest daraus eine Freigabe.
+  **Dieselbe Klasse wie der stumme Skip.** Ersatzmessung: Barcode, Verfügbarkeit, Kategorie,
+  Sperrtags, Lizenznamen.
+- **⚠️ EHRLICHE GRENZE, bewusst nicht behoben:** alle Fortura-Artikel tragen als Lieferant
+  **„LuxeStyle"** (der ganze Katalog tut das), der Barcode gehört aber dem Hersteller (bei den
+  Kostümen Widmann; nur 22 Titel nennen ihn). Google kann das als „Mismatched value (brand)"
+  anmerken — Anmerkung je Artikel, **kein Feed-Fehler**. Das Lieferanten-Feld umzustellen ist eine
+  **Marken-Entscheidung des Users**, keine technische.
+- **🔑 MESS-LEHREN:** (1) **Ein Wächter, der die Ware nicht messen kann, meldet „0 Befunde" und
+  sieht aus wie eine Freigabe** — immer prüfen, wie viele Produkte er überhaupt ANGEFASST hat,
+  nicht nur, was er gefunden hat. (2) **Die Gegenprobe in die andere Richtung fand den Fehler im
+  eigenen neuen Muster** (`anna`), nicht der Haupttest. (3) **Ob ein Ausschluss ein Entscheid ist,
+  zeigt nur der Abgleich mit der Wirklichkeit** — 124 von 124 widersprochen ist der Beweis, das
+  Anlagedatum allein wäre nur ein Verdacht gewesen.
 
 **📌 2026-10-24 nachts (🛒 CJ Prime ausgemessen: eine von drei Leistungen ist über die API erreichbar):**
 Alles live gemessen, PRs #2717–#2719 gemergt. Branch dieser Sitzung: `claude/project-thread-yeliwp`.
