@@ -23,6 +23,9 @@ on:
       - 'automation/publish_guard_test.mjs'
       - 'automation/content_preflight.py'
       - 'automation/test_content_preflight.py'
+      - 'automation/fortura_preis_kandidaten.mjs'
+      - 'automation/fortura_preisvergleich.mjs'
+      - 'automation/fortura_preisvergleich_test.mjs'
       - 'dropship/cj_enrich.mjs'
       - 'dropship/cj_enrich_test.mjs'
       - 'dropship/ads/render_brand_video.py'
@@ -64,6 +67,9 @@ jobs:
             automation/publish_guard_test.mjs
             automation/content_preflight.py
             automation/test_content_preflight.py
+            automation/fortura_preis_kandidaten.mjs
+            automation/fortura_preisvergleich.mjs
+            automation/fortura_preisvergleich_test.mjs
             dropship/cj_enrich.mjs
             dropship/cj_enrich_test.mjs
             dropship/ads/render_brand_video.py
@@ -89,6 +95,8 @@ jobs:
           node --check automation/shop_brain.mjs
           node --check automation/video-autopost-meta.mjs
           node --check automation/seo-optimizer.mjs
+          node --check automation/fortura_preis_kandidaten.mjs
+          node --check automation/fortura_preisvergleich.mjs
       - name: Existing helper checks
         run: |
           node automation/lib/shopify_gql_test.mjs
@@ -100,6 +108,9 @@ jobs:
           node automation/lib/lieferbarkeit_test.mjs
           # Lief bisher in KEINEM Workflow — ein Test, der nie laeuft, ist kein Test.
           node automation/lib/seo_titel_test.mjs
+          node automation/lib/fortura_marke_test.mjs
+          node automation/lib/chf_preis_test.mjs
+          node automation/fortura_preisvergleich_test.mjs
       - name: CJ failures and publication regressions (mock APIs only)
         run: |
           node automation/lib/cj_response_test.mjs
