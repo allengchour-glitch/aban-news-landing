@@ -177,3 +177,4 @@ gid://shopify/Product/16655376482695	2026-10-21	Beauty & Pflege
 gid://shopify/Product/16656524280199	2026-10-22	Schuhe
 gid://shopify/Product/16656714203527	2026-10-22	Uhren
 gid://shopify/Product/16604931948935	2026-10-22	Smartwatches & Wearables
+gid://shopify/Product/16617712124295	2026-10-24	Küche & Kochen

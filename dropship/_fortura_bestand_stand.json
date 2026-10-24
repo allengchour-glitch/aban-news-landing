@@ -1,11 +1,11 @@
 {
- "stand": "2026-10-23T03:19Z",
- "feed_hash": "0ddc84408b80",
+ "stand": "2026-10-24T00:13Z",
+ "feed_hash": "323571bed8b3",
  "spalte": "Lagerbestand Fortura",
  "puffer": 1,
  "varianten": 8416,
- "geaendert": 210,
+ "geaendert": 258,
  "offen": 0,
- "unveraendert": 8206,
- "verkaufbar_nach_lauf": 4625
+ "unveraendert": 8158,
+ "verkaufbar_nach_lauf": 4608
 }
