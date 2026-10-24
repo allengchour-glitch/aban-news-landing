@@ -18,7 +18,8 @@
  * REGEL: Dieser Lauf darf aussteigen, aber er muss den Grund nennen (Status + Antworttext).
  *
  * ENV: SHOPIFY_CLIENT_ID+SECRET (+SHOPIFY_SHOP) ODER SHOPIFY_ADMIN_TOKEN.
- *      FEED_QUERY · SCAN (Deckel, Vorgabe 6000) · VERSAND_LAND/VERSAND_PREIS · OUT
+ *      FEED_QUERY (mehrere Abfragen mit `||` trennen) · SCAN (Deckel je Abfrage, Vorgabe 6000)
+ *      SORT (ProductSortKeys, z. B. CREATED_AT) · REVERSE (0/1) · VERSAND_LAND/VERSAND_PREIS · OUT
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -38,7 +39,15 @@ const VERSAND = { versandLand: process.env.VERSAND_LAND || 'CH', versandPreis: +
 // „Google & YouTube", 1689 davon ohne jeden Sperrtag, und 1604 von diesen sind Fortura-Ware aus
 // dem Schweizer Lager mit echtem Barcode (97 % GTIN) — das beste Shopping-Material des Shops.
 // Die Sperrtags und der Marken-/Safety-Filter in `gmc_feed_item.mjs` halten den Rest draussen.
-const QUERY = process.env.FEED_QUERY || 'status:active';
+// MEHRERE ABFRAGEN, weil EIN Fenster nicht reicht (gemessen 24.10.): ohne Sortierung beginnt
+// jeder Lauf am selben Katalogende und erreicht die Fortura-Ware nie — genau die mit den
+// Barcodes. Darum `FEED_QUERY` mit `||` trennbar; jede Abfrage bekommt ihr eigenes SCAN-Fenster,
+// Dubletten fallen ueber `ids` weg. Dieselbe Fensterfalle wie beim SEO-Titel-Lauf.
+const QUERIES = (process.env.FEED_QUERY || 'status:active||status:active AND tag:fortura')
+  .split('||').map(q => q.trim()).filter(Boolean);
+// Ohne SORT entscheidet Shopify (Vorgabe) — das ist der alte Lauf, unveraendert.
+const SORT = (process.env.SORT || '').trim() || null;
+const REVERSE = process.env.REVERSE === undefined ? null : process.env.REVERSE !== '0';
 
 async function holeToken() {
   if (process.env.SHOPIFY_ADMIN_TOKEN) return process.env.SHOPIFY_ADMIN_TOKEN;
@@ -60,7 +69,8 @@ async function holeToken() {
 const TOKEN = await holeToken();
 if (!TOKEN) process.exit(1);
 
-const SEITE = `query($q:String!,$after:String){ products(first:50, query:$q, after:$after){
+const SEITE = `query($q:String!,$after:String,$sort:ProductSortKeys,$rev:Boolean){
+  products(first:50, query:$q, after:$after, sortKey:$sort, reverse:$rev){
   pageInfo{ hasNextPage endCursor }
   edges{ node{
     title handle onlineStoreUrl vendor productType tags
@@ -72,16 +82,20 @@ const SEITE = `query($q:String!,$after:String){ products(first:50, query:$q, aft
   } }
 } }`;
 
-let cursor = null, gesehen = 0;
+let gesehen = 0;
 const items = [];
 const ids = new Set();
 const gruende = new Map();
-while (gesehen < SCAN) {
-  const daten = await shopifyGql(SHOP, API, TOKEN, SEITE, { q: QUERY, after: cursor });
+const jeAbfrage = [];
+for (const QUERY of QUERIES) {
+ let cursor = null, nQ = 0, vorher = items.length;
+ while (nQ < SCAN) {
+  const daten = await shopifyGql(SHOP, API, TOKEN, SEITE,
+    { q: QUERY, after: cursor, sort: SORT, rev: REVERSE });
   const p = daten?.products;
   if (!p) { console.log(`ABBRUCH: keine Produktdaten · ${JSON.stringify(daten).slice(0, 200)}`); process.exit(1); }
   for (const e of p.edges) {
-    const x = e.node; gesehen++;
+    const x = e.node; gesehen++; nQ++;
     const mf = Object.fromEntries(x.mf.edges.map(m => [m.node.key, m.node.value]));
     const v = x.variants.edges[0]?.node || {};
     const bilder = x.media.edges.map(m => m.node.preview?.image?.url).filter(Boolean);
@@ -111,6 +125,8 @@ while (gesehen < SCAN) {
   }
   if (!p.pageInfo.hasNextPage) break;
   cursor = p.pageInfo.endCursor;
+ }
+ jeAbfrage.push({ query: QUERY, gelesen: nQ, neu: items.length - vorher, gedeckelt: nQ >= SCAN });
 }
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -126,7 +142,11 @@ fs.mkdirSync(path.dirname(OUT), { recursive: true });
 fs.writeFileSync(OUT, xml);
 const mitGtin = items.filter(i => i.includes('<g:gtin>')).length;
 const mitKat = items.filter(i => i.includes('<g:google_product_category>')).length;
-console.log(`✅ ${path.relative(ROOT, OUT)}: ${items.length} Artikel von ${gesehen} geprüften` +
-  `${gesehen >= SCAN ? ` (Teilmessung, SCAN-Deckel ${SCAN})` : ''}.`);
+console.log(`✅ ${path.relative(ROOT, OUT)}: ${items.length} Artikel von ${gesehen} geprüften.`);
 console.log(`   davon mit GTIN ${mitGtin} · mit google_product_category ${mitKat}`);
+// Die gelaufene Region MIT nennen: eine Zahl ohne sie laedt zum Fehlschluss ein,
+// der Lauf habe den ganzen Katalog gesehen.
+console.log(`   Sortierung: ${SORT || 'Shopify-Vorgabe'}${REVERSE === null ? '' : REVERSE ? ' (rueckwaerts)' : ' (vorwaerts)'}`);
+for (const a of jeAbfrage) console.log(`   Abfrage «${a.query}»: ${a.gelesen} gelesen` +
+  `${a.gedeckelt ? ` (Teilmessung, Deckel ${SCAN})` : ''} · ${a.neu} neu im Feed`);
 for (const [grund, n] of [...gruende].sort((a, b) => b[1] - a[1])) console.log(`   ausgelassen · ${grund}: ${n}`);

@@ -18,6 +18,26 @@
  */
 import { sperrTags } from './kanal_sperren.mjs';
 
+/**
+ * Lizenz-/Figurennamen. Ein Kostüm „Batman Classic" oder „Kostüm Pokemon Pikachu" im
+ * Merchant-Feed ist der klassische Grund für eine KONTOSPERRE (Markenrechtsverletzung) —
+ * schlimmer als ein einzelner abgelehnter Artikel.
+ *
+ * GEMESSEN 2026-10-24 an der Fortura-Ware (2371 aktive Produkte): **31 Artikel mit einem
+ * Lizenznamen gingen durch** — `RISIKO` kannte nur `disney|frozen`, und „Kostüm Batman Classic"
+ * enthält weder „kinder" noch eine der Markenwörter. Alle 31 Titel wurden EINZELN nachgelesen,
+ * bevor ein Name hier steht: Harry Potter, Batman, Superman, Sonic, Super Mario, Paw Patrol,
+ * Pokemon, Hello Kitty, Spiderman, Mickey Mouse, Peppa, Barbie. Kein Fehltreffer darunter.
+ *
+ * Die Wortgrenzen sind nicht Zierde, sondern die Gegenprobe (vierte Wiederholung der Klasse
+ * „zu breites Muster", vgl. `rueckhol` und `/ring\b/`): ohne `\b` trifft `sonic` das Wort
+ * „ultrasonic" und `mario` die „Marionette" — beides harmlose Ware, die stumm verschwände.
+ * BEWUSST NICHT IM MUSTER: `anna` und `elsa`. Die Gegenprobe fing sie — `anna` trifft über die
+ * Wortgrenze am Bindestrich den Vornamen in „Kapuzenpullover «Anna-Lena»". Beide sind gewöhnliche
+ * Vornamen; die Frozen-Figuren deckt `frozen` in `RISIKO` ab. Nicht nachtragen.
+ */
+export const LIZENZ = /\b(harry potter|batman|superman|spider[- ]?man|paw patrol|pok[eé]mon|peppa|star wars|marvel|avengers|minions?|hello kitty|barbie|mickey|minnie|super mario|sonic|bluey|spongebob|hulk|iron man|captain america)\b/i;
+
 /** Titel/Marken, die Google als Markenfälschungs- oder Safety-Risiko lesen kann. */
 export const RISIKO = /\b(nike|adidas|puma|reebok|converse|vans|disney|frozen|timberland|chanel|gucci|rolex|louis vuitton|supreme)\b|baby|kinder|lern-tablet|schwimmring|schwimmbrille|schwimmflügel|pool.?float/i;
 
@@ -48,6 +68,8 @@ export function pruefeProdukt(p = {}) {
   if (!(p.id || p.sku || p.handle)) return { ok: false, grund: 'keine ID (id/sku/handle fehlen)' };
   if (!p.link) return { ok: false, grund: 'kein Link' };
   if (RISIKO.test(p.titel) || RISIKO.test(p.marke || '')) return { ok: false, grund: 'Marken-/Safety-Risiko' };
+  const lizenz = (String(p.titel).match(LIZENZ) || [])[0];
+  if (lizenz) return { ok: false, grund: `Lizenzname: ${lizenz}` };
   return { ok: true, grund: 'im Feed' };
 }
 

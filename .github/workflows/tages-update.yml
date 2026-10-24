@@ -166,6 +166,12 @@ jobs:
           [ "$n" -ge 1000 ] || { echo "::error::nur $n Artikel — verdaechtig wenig, nicht ausliefern"; exit 1; }
           d=$(grep -o '<g:id>[^<]*' google-merchant-feed.xml | sort | uniq -d | wc -l)
           [ "$d" -eq 0 ] || { echo "::error::$d doppelte Feed-IDs — Google weist den Feed ab"; exit 1; }
+          # Cloudflare Pages liefert keine Datei ueber 25 MiB aus. Am 24.10. waren es 16,6 MB
+          # bei 8084 Artikeln — die Datei waechst mit dem Katalog, darum eine Schranke, bevor
+          # ein zu grosser Feed den ganzen Deploy stillschweigend scheitern laesst.
+          b=$(wc -c < google-merchant-feed.xml)
+          echo "Groesse: $b Byte"
+          [ "$b" -lt 24000000 ] || { echo "::error::Feed $b Byte — Pages liefert ueber 25 MiB nicht aus; Fenster verkleinern"; exit 1; }
       - name: Feed committen (falls geaendert)
         env:
           GH_TOKEN: ${{ github.token }}

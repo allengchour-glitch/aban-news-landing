@@ -1,7 +1,7 @@
 /** Test für den Google-Merchant-Feed-Eintrag.
  *  Die Tag-Sätze und Barcodes unten sind ECHT, am 2026-10-17 aus dem Live-Katalog gelesen.
  *  Lauf: /opt/node22/bin/node automation/lib/gmc_feed_item_test.mjs   */
-import { feedItem, pruefeProdukt, kuerzeTitel, escXml, RISIKO } from './gmc_feed_item.mjs';
+import { feedItem, pruefeProdukt, kuerzeTitel, escXml, RISIKO, LIZENZ } from './gmc_feed_item.mjs';
 
 let fehler = 0;
 const pruef = (name, ist, soll) => {
@@ -73,6 +73,38 @@ pruef('Schwimmring raus', feedItem({ ...BASIS, titel: 'Aufblasbarer Schwimmring 
 // Gegenprobe: harmlose Wörter, die Teilstrings enthalten, dürfen NICHT greifen.
 pruef('„Vanille" ist nicht „vans"', RISIKO.test('Vanille Duftkerze'), false);
 pruef('„Pumas" als Wort greift, „Pumpe" nicht', [RISIKO.test('Puma Shirt'), RISIKO.test('Vakuumpumpe')], [true, false]);
+
+// ── 5b. Lizenznamen (Kontosperr-Risiko) ──
+// Alle 17 Titel unten sind ECHT, am 2026-10-24 aus der Fortura-Ware gelesen; sie gingen
+// vorher ALLE in den Feed, weil `RISIKO` nur `disney|frozen` kannte.
+const LIZENZTITEL = [
+  'Set Zauberlehrling Harry Potter', 'Harry Potter Besen 90 cm', 'Kostüm Harry Potter',
+  'Kostüm Batman Classic', 'Kostüm Batman Dark Knight', 'Kostüm Superman · Widmann Nr. 58026',
+  'Kostüm Rubble Paw Patrol', 'Kostüm Marshall Paw Patrol', 'Kostüm Pokemon Pikachu Anzug',
+  'Kostüm Pokemon Bulbasaur', 'Kostüm Hello Kitty · Erwachsene', 'Kinderkostüm Super Mario',
+  'Plüsch Super Mario', 'Kostüm Sonic Movie für Kinder', 'Plüsch Sonic Classic',
+  'Folienballon Mickey Mouse', 'Maske Spiderman', 'Kinderkostüm Peppa Fairy Dress',
+  'Kostüm Barbie Rollerblades',
+];
+for (const titel of LIZENZTITEL) {
+  pruef(`Lizenz raus: ${titel}`, feedItem({ ...BASIS, titel }), null);
+}
+pruef('Lizenz-Grund wird benannt',
+  pruefeProdukt({ ...BASIS, titel: 'Kostüm Batman Classic' }).grund, 'Lizenzname: Batman');
+// GEGENPROBE IN DIE ANDERE RICHTUNG — ein zu breites Muster würde harmlose Ware stumm
+// verschlucken. Genau diese Wörter brachen frühere Muster (`rueckhol`, `/ring\b/`).
+const HARMLOS = [
+  'Ultrasonic Luftbefeuchter 300 ml', 'Marionette Holzfigur 30 cm', 'Hula-Hoop-Reifen',
+  'Annahme-Set für Pakete', 'Elsass-Weinglas 2er-Set', 'Markenlose Sonnenbrille',
+  'Supermarkt-Einkaufstasche', 'Batterie-Ladegerät USB-C', 'Kapuzenpullover «Anna-Lena»',
+  'Hulahoop Fitness', 'Mikrofon-Ständer', 'Marvellous Duftkerze',
+];
+for (const titel of HARMLOS) {
+  pruef(`harmlos bleibt: ${titel}`, LIZENZ.test(titel), false);
+}
+pruef('harmloses Kostüm geht durch', pruefeProdukt({ ...BASIS, titel: 'Kostüm Pirat · Erwachsene' }).ok, true);
+pruef('„Supermann" ohne Lizenzbezug? → Wortgrenze greift',
+  [LIZENZ.test('Superman Kostüm'), LIZENZ.test('Supermanschette')], [true, false]);
 
 // ── 6. XML-Sicherheit und Titellänge ──
 pruef('XML wird maskiert', escXml(`Kleid & "Spitze" <neu>`), 'Kleid &amp; &quot;Spitze&quot; &lt;neu&gt;');
