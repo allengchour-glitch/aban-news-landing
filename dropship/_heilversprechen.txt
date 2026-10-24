@@ -146387,3 +146387,4 @@ gid://shopify/Product/16615378157959	c906904a0a0d	2026-10-24	sauber
 gid://shopify/Product/16615379337607	8cff4d655f0b	2026-10-24	sauber
 gid://shopify/Product/16615380615559	b2841cddb28c	2026-10-24	sauber
 gid://shopify/Product/16615380779399	9ef2f7fae48f	2026-10-24	sauber
+gid://shopify/Product/15501746995585	3f85298b9db1	2026-10-24	sauber+offen

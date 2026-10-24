@@ -69,3 +69,14 @@
 - Sendung EQKPT8613048701YQ: nur «Label created. Warehouse is processing» (11.10. 09:26), noch kein Scan beim Zusteller. Nach 2 T 7 h ist das normal (gemessen 1–5 T bis zur Übergabe).
 - Leere Hülle «#1023» DP2610110912410642200 (CREATED, Betrag 0) **nie bezahlen**. Sie ist nur der Shopify-Import.
 - Neu in der Bestell-Ampel: ab 5 T unversandt erscheint «⚠️ seit N T unversandt → CJ fragen». Für LX1023 wäre das am 16.10. ~09:15 UTC. Bisher gab es dafür keinen Wächter (versand_stillstand prüft nur erfüllte Sendungen).
+
+## 24.10.2026 10:00 UTC: Shopify #1028 → zwei CJ-Aufträge, nur LX1028 ist richtig (Betreiber «falsches Produkt und zu teuer?»)
+- Shopify #1028 (07:58 UTC): bezahlt CHF 20.41, Genève, 1 × LED Wasserwellen-Projektionsleuchte, Variante «3W-16color plug in square-1PC» (SKU CJYD188109102BY).
+- **RICHTIG:** Automat LX1028 = **SD2610240910290652100**, vid 1717718400048312320 = exakt diese SKU, Ware $2.00 + CJPacket EQ Sensitive $10.96 = **$12.96**
+  (billigste der 7 Fracht-Optionen; nächste: CJPacket Sensitive $11.56, YunExpress $12.49), Status CREATED, unbezahlt → Betreiber zahlt in
+  https://cjdropshipping.com/mine/dropshipping/orderList?orderType=5 (nur diese Zeile über $12.96).
+- **FALSCH:** Hülle `DP2610240831200987600` (08:31 UTC, CJ-Shopify-Connector, Status IN_CART, $19.84 = $5.24 + $14.60), vid 1697153030640115712 /
+  SKU CJJT161977605EV = ein ANDERES CJ-Produkt. Der Connector hat die Shopify-Variante falsch zugeordnet. **Nie bezahlen, Betreiber entfernt sie**;
+  nicht von Hand ein zweites #1028 anlegen (sonst doppelte Lieferung).
+- Ursache nicht behebbar von hier: die Zuordnung Shopify-Variante → CJ-Produkt liegt in der CJ-App (Store-Mapping). Der Automat nimmt die
+  SKU aus dem Shopify-Artikel und ist deshalb von der Fehlzuordnung nicht betroffen.
