@@ -1,84 +1,103 @@
-# CJ-Sourcing: Antworten (Stand 2026-10-24)
+# CJ-Sourcing: alle 17 Antworten durchgemessen (Stand 2026-10-24, nachmittags)
 
-Gemessen mit `STATUS=1 node automation/cj_sourcing.mjs` (nur lesend) und
-`logistic/freightCalculate` CN→CH. Das Ledger der gesendeten Anfragen liegt in
-`dropship/cj_sourcing_ledger.txt`.
+Auslöser: der Besitzer schrieb „erledige alle mails" — CJ hatte inzwischen jede Anfrage
+beantwortet. Gemessen mit **`node automation/cj_sourcing_pruefen.mjs`** (nur lesend); das
+Werkzeug holt den Stand, löst jede vorgeschlagene CJ-pid auf und misst
+`logistic/freightCalculate` CN→CH je Variante. Ledger: `dropship/cj_sourcing_ledger.txt`.
 
-## Stand aller 17 Anfragen
+## 🚨 Das Ergebnis in einem Satz
 
-| Anfragen | Stand |
+**13 von 17 Ersatzlieferanten versenden nicht in die Schweiz** — obwohl CJ bei allen
+„Sourcing Succeeded" meldet.
+
+| Urteil | Anzahl |
 |---|---|
-| 1 | **Sourcing Succeeded** |
-| 16 | `Pending` |
+| lieferbar | **3** (zwei davon stehen schon live) |
+| nicht lieferbar (null Frachtlinien CN→CH) | **13** |
+| unbekannt | **1** |
 
-CJ antwortet nicht sofort. **Nicht erneut senden** — das Tagesbudget ist 25 Anfragen,
-und eine Wiederholung verbraucht es für nichts. Stand in einer späteren Sitzung
-erneut abfragen.
+CJs Statuswort misst, ob *irgendein* Lieferant gefunden wurde — nicht, ob er in die Schweiz
+liefert. **Ohne eigene Frachtmessung wären hier dreizehn nicht lieferbare Produkte live
+gegangen**, genau die Ursache aller elf Erstattungen des Shops.
 
-## Der eine Treffer, vollständig durchgemessen
+## Die drei lieferbaren
 
-`leuchtender-halloween-schaukelgeist-627400` (Anfrage `2610240115194488002`,
-CJ-Mail #CJSPU960265818) → CJ-Produkt `2608070456571627400`.
+| Produkt | Linien | Fracht | EK | gelandet | Stand |
+|---|---|---|---|---|---|
+| `leuchtender-halloween-schaukelgeist-627400` | 16 | USD 15.09 | USD 4.92 | CHF 16.50 | **live** |
+| `elektrischer-fleischwolf-5l-kuchenmaschine-656962` | 7 | USD 35.52 | USD 9.55 | CHF 37.15 | **live** |
+| `sternenhimmel-projektor-baby-nachtlicht-mit-musik` | 16 | USD 11.46 | USD 11.88 | CHF 19.24 | **bleibt DRAFT, siehe unten** |
 
-- **Lieferbar:** alle vier Varianten bekommen **16 Frachtlinien CN→CH**
-  (günstigste USD 15.09, CJPacket EQ Ordinary, 5–9 Tage). Das ist der sichere
-  Positivfall, den `automation/lib/lieferbarkeit.mjs` sucht.
-- **Rentabel, gerechnet statt geschätzt:** EK USD 4.92 + Fracht USD 15.09 = USD 20.01
-  = **CHF 16.50** (Kurs 0.82435 vom 23.10.). VK im Shop ist **CHF 17.90**.
-  Im Einzelartikel-Korb zahlt die Kundin CHF 7 Versand → Marge ≈ **CHF 8.40** vor
-  Zahlgebühr. Im Gratis-Versand-Korb (echte Schwelle CHF 55.56) trägt der Shop die
-  Fracht → der Artikel trägt nur noch ≈ **CHF 1.40** bei. Beides positiv.
-- **Die Sperrtags waren veraltet:** `cj-entfernt` / `cj-entfernt-2026-09-27` — CJ führt
-  das Produkt wieder. Dazu zwei falsche Kategorietags (`aufbewahrung`, `organizer`,
-  aus CJs Kategorie „Home Office Storage"), für eine Halloween-Deko falsch. Entfernt;
-  `automation/lib/kanal_sperren.mjs` meldet keine Kanalsperre.
-- **Zeitpunkt ist kein Einwand:** der Shop führt bereits **247 aktive
-  Halloween-Produkte** mit derselben China-Laufzeit, und die Beschreibung nennt
-  „Lieferung 10–20 Werktage" ehrlich.
-- **Live:** ACTIVE, in 7 Kanälen, `tracked:false` + `CONTINUE`, 5 Medien READY,
-  HTTP 200 nachgeprüft.
+## 🚨 Der dritte Treffer ist ein ANDERES GERÄT — und das sieht man nur am Bild
 
----
+CJ meldet für den Sternenhimmel-Projektor **`Similar Products`**, nicht „Succeeded": es ist
+ausdrücklich ein ähnliches, kein gleiches Produkt. Die Zahlen sahen gut aus (16 Linien,
+gelandet CHF 19.24 gegen VK CHF 39.90 = Marge ≈ CHF 20.66), also wäre es verlockend gewesen,
+den Entwurf einfach auf ACTIVE zu stellen.
 
-## Zweite Runde, 24.10.2026 vormittags
+**Beide Bilder nebeneinander gelegt zeigen zwei verschiedene Geräte:**
 
-Der Besitzer meldete weitere CJ-Mails. Stand erneut abgefragt (nichts neu gesendet):
-**5 „Sourcing Succeeded", 11 `Pending`, 1 „Similar Products"** von 17.
+| | Shop-Seite | CJs Ersatz (`1633069064715251712`) |
+|---|---|---|
+| Form | tropfenförmig, seitliche Linse | tierförmiges Gehäuse, **Kristallkugel oben** |
+| Projektion | Laser-Sternenfeld + Nebel | **Wasserwellen-Muster + Mond** |
+| Musik | 12 **integrierte** Schlaflieder mit Timer | **Bluetooth** (Musik kommt vom Handy) |
+| Bedienung | Fernbedienung mit STAR/NEBULA | Tastenreihe mit USB/LED + Fernbedienung |
 
-| Anfrage | Produkt | Fracht CN→CH | Urteil |
-|---|---|---|---|
-| `2610240115194488002` | Halloween-Schaukelgeist | **16 Linien** | lieferbar, rentabel → **live** (oben) |
-| `2610240120534509902` | Elektrischer Fleischwolf 5L | **7 Linien** | lieferbar, rentabel → **live** |
-| `2610240121044490402` | Resistance Bands Set | **0 Linien** | nicht lieferbar → bleibt DRAFT |
-| `2610240115214481400` | Rizinusöl-Wickel-Set | **0 Linien** | nicht lieferbar → bleibt DRAFT |
-| `2610240121014492402` | Schaum-Abflussreiniger | **0 Linien** | nicht lieferbar → bleibt DRAFT |
-| `2610240115184481100` | Schwingerhose | „Similar Products", interne UUID statt CJ-SKU | kein Produkt → unbekannt |
+Die Produktseite verspricht „12 integrierte Schlaflieder mit Timer" und „8 Farbmodi".
+Mit diesem Gerät stimmt **keine** der beiden Angaben. Ein Tausch hätte die Seite zur
+Falschauszeichnung gemacht — dieselbe Klasse wie der „Mini-Kühlschrank", der eine
+Insulin-Kühlbox war. **Der Entwurf bleibt DRAFT**, Tag `cj-ersatz-anderes-geraet-1024`.
 
-**🚨 Die wichtigste Lehre dieser Runde: „Sourcing Succeeded" heisst NICHT lieferbar.** Drei von
-vier neuen Treffern bekommen **null Frachtlinien in die Schweiz** — CJ hat einen Lieferanten
-gefunden, aber keinen, der nach CH versendet. Das Messgerät funktionierte im selben Lauf (der
-Fleischwolf bekam 7 Linien), also ist die Null ein Befund und kein Ausfall. **Ohne die eigene
-Frachtmessung wären drei nicht lieferbare Produkte freigeschaltet worden — genau die Ursache
-aller elf Erstattungen des Shops.**
+**Ein eigenes neues Produkt dafür anzulegen lohnt auch nicht, und das ist gemessen:** der
+Shop führt bereits **73 aktive „Projektor"-Produkte**, darunter zwei aktive
+Sternenhimmel-Projektoren (`led-sternenhimmel-projektor-lampe-417728`,
+`romantischer-sternenhimmel-projektor-066dbc`, je CHF 15.90). Gegenprobe mit
+`lieferbarkeit_guard.mjs`: **beide sind lieferbar (2 von 2 geprüft, 0 Befunde)**. Die Nische
+ist also versorgt; ein weiteres Gerät wäre mehr Katalog ohne mehr Umsatz.
 
-Besonders bitter beim **Rizinusöl-Wickel-Set**: das ist die vierthäufigste Produktseite des
-ganzen Shops (64 von 2619 Sitzungen) und rentabel. Der gesuchte Ersatzlieferant liefert
-trotzdem nicht in die Schweiz. Die Seite bleibt gesperrt.
+## Die dreizehn ohne Versandlinie
 
-### Der zweite Treffer, durchgemessen
+Je `product/query` gelesen, je Variante Fracht gemessen, **alle null Linien CN→CH**:
 
-`elektrischer-fleischwolf-5l-kuchenmaschine-656962` → CJ-Produkt `1687282481562652672`,
-EU-Variante `CJYD181444603CX` (110–240 V, also für die Schweiz passend).
+| Produkt | EK neuer Lieferant |
+|---|---|
+| `rizinusol-wickel-set-mit-bio-ol-323457` | USD 7.85 |
+| `ubersetzer-kopfhorer-144-sprachen-echtzeit-bluetooth-5-3` | USD 29.37 |
+| `full-hd-dashcam-1080p-auto-kamera-90-weitwinkel-nachtsicht-loop` | USD 23.89 |
+| `bausteine-set-widebody-racer-321-teile` | USD 14.00 |
+| `bausteine-set-police-racer-318-teile` | USD 15.00 |
+| `quallen-diffuser-medusa-mit-musik-led` | USD 19.00 |
+| `spulbecken-organizer-schwamm-seifenhalter-mit-ablauf` | USD 12.50 |
+| `reed-diffuser-aroma-duftstabchen-ohne-flamme` | USD 2.94 |
+| `schaum-abflussreiniger-604000` | USD 2.81 |
+| `4l-luftbefeuchter-cool-mist-fur-grosse-raume-leise-lang-anhaltend` | USD 20.40 |
+| `resistance-bands-set-5-teilig-fitnessbander-heim-training` | USD 26.04 |
+| `selbstklebende-3d-wimpern-wiederverwendbar-ohne-kleber-naturlicher-look` | USD 10.91 |
+| `silikon-abtropfmatte-xl-rutschfest-hitzebestandig-furs-spulbecken` | USD 16.99 |
 
-- **Lieferbar:** 7 Frachtlinien, günstigste USD 35.52 (CJPacket EQ Sensitive, 6–10 Tage).
-- **Rentabel:** EK USD 9.55 + Fracht USD 35.52 = USD 45.07 = **CHF 37.16** (Kurs 0.82435).
-  VK **CHF 75.90** — über der Gratis-Versand-Schwelle, der Shop trägt die Fracht →
-  Marge ≈ **CHF 38.74** vor Zahlgebühr. Der alte Lieferant kostete CHF 53.61 allein für die Ware.
-- **Lieferantenwechsel vollzogen:** Varianten-SKU auf `CJYD181444603CX` und Kosten auf CHF 7.87
-  gesetzt, sonst messen künftige Wächter weiter den alten, nicht versendbaren Lieferanten.
-- Sperrtag `cj-nicht-versendbar-ch` entfernt (gilt nicht mehr), keine Kanalsperre,
-  8 Bilder, `tracked:false`+`CONTINUE`, Beschreibung nennt „Lieferung 10–20 Werktage".
-- **Live:** ACTIVE, 7 Kanäle, HTTP 200 nachgeprüft.
+Alle tragen jetzt `cj-ersatz-nicht-lieferbar-1024`, damit keine spätere Sitzung dasselbe
+Tagesbudget noch einmal dafür ausgibt. **Alle 14 betroffenen Produkte sind DRAFT** —
+nachgeprüft, es steht nichts davon im Verkauf.
 
-**11 Anfragen sind weiter offen** — in einer späteren Sitzung erneut `STATUS=1 node
-automation/cj_sourcing.mjs`, nicht neu senden.
+**Besonders bitter bleibt das `rizinusol-wickel-set-mit-bio-ol-323457`:** die vierthäufigste
+Produktseite des ganzen Shops (64 von 2619 Sitzungen) und rentabel — auch der gesuchte
+Ersatzlieferant versendet nicht in die Schweiz.
+
+## Der eine unbekannte Fall
+
+`schwingerhose-fgahb2887ml` bekam `Similar Products` mit einer **internen UUID**
+(`DDD50071-…`) statt einer CJ-SKU. Nach der Regel in `automation/lib/lieferbarkeit.mjs` ist
+das **unbekannt** — nicht lieferbar und nicht unlieferbar. Nichts geändert, Tag
+`cj-ersatz-unklar-1024`.
+
+## Was das fürs nächste Mal heisst
+
+1. **Eine CJ-Erfolgsmeldung ist kein Lieferversprechen.** Die Quote dieser Runde ist
+   3 von 17, und zwei der drei kannte man schon. Sourcing-Anfragen sind billig, aber ihr
+   Ertrag ist klein — das Tagesbudget gehört den meistbesuchten Produktseiten
+   (`BESUCHT=1 TAGE=30`), nicht der Marge.
+2. **`Similar Products` nie als Ersatz behandeln, ohne die Bilder zu vergleichen.** Die
+   Zahlen stimmten hier, das Gerät nicht.
+3. **Vor einem neuen Produkt den eigenen Katalog zählen.** 73 Projektoren sind die Antwort
+   auf die Frage, ob sich ein 74. lohnt.
