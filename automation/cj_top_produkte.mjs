@@ -26,24 +26,104 @@
  *   LISTED    Mindestzahl Läden (Vorgabe 5 — gemessen, siehe top_kandidaten.mjs)
  *   MAXEK     höchster Einkauf in USD (Vorgabe 40)
  *   BERICHT   Zieldatei (Vorgabe dropship/cj-top-kandidaten.csv)
+ *   NEU=1     misst auch pids neu, die das Ledger schon kennt
  */
+import { shopifyGql } from './lib/shopify_gql.mjs';
+import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 import { cjFetch } from './lib/cj_fetch.mjs';
 import { cjToken } from './lib/cj_token.mjs';
 import { topUrteil, topAuswahl } from './lib/top_kandidaten.mjs';
-import { writeFile } from 'node:fs/promises';
+import { readFile, writeFile, appendFile } from 'node:fs/promises';
 
-const BASE = 'https://developers.cjdropshipping.com/api2.0/v1',
+/**
+ * Die Suchwörter stammen aus GEMESSENER Nachfrage dieses Shops, nicht aus einer Trendliste:
+ * Rizinusöl ist das stärkste Suchthema (64 von 214 Suchsitzungen), und die acht bezahlten
+ * Bestellungen kamen über konkrete Suchen nach benannten Dingen — Quarzuhr, E-Scooter-
+ * Ladegerät, Gemüseschneider, Katzenspielzeug, Hängematte — nicht über Mode. Darum Haushalt,
+ * Technik, Tier und Pflege, und bewusst keine Kleider: die drei meistbesuchten Modeseiten
+ * haben in 60 Tagen null Bestellung gebracht.
+ */
+const STANDARD_SUCHE = [
+  'castor oil', 'humidifier', 'aroma diffuser', 'phone charger', 'watch men', 'pet grooming',
+  'vegetable cutter', 'cat toy', 'hammock', 'led strip light', 'car phone holder',
+  'kitchen organizer', 'massage gun', 'jade roller', 'water bottle', 'yoga mat',
+  'dog bed', 'cat litter', 'bluetooth speaker', 'smart watch', 'power bank', 'desk lamp',
+  'wall clock', 'storage box', 'shower head', 'hair dryer brush', 'nail lamp',
+  'coffee grinder', 'air fryer accessories', 'garden tools', 'bike light', 'travel organizer',
+].join(',');
+
+const SHOP = process.env.SHOPIFY_SHOP || '', API = '2025-01',
+  CID = process.env.SHOPIFY_CLIENT_ID || '', CS = shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET) || '',
+  BASE = 'https://developers.cjdropshipping.com/api2.0/v1',
   SEITEN = Math.min(parseInt(process.env.SEITEN || '2', 10), 10),
   MAX = Math.min(parseInt(process.env.MAX || '15', 10), 50),
   LISTED = parseInt(process.env.LISTED || '5', 10),
   MAXEK = parseFloat(process.env.MAXEK || '40'),
   BERICHT = process.env.BERICHT || 'dropship/cj-top-kandidaten.csv',
+  LEDGER = process.env.LEDGER || 'dropship/cj_top_ledger.txt',
+  NEU = process.env.NEU === '1',
   // Vorgabe aus gemessener Nachfrage: Rizinusöl ist das stärkste Suchthema des Shops, und die
   // Käufe kamen über konkrete Suchen nach benannten Dingen (Uhr, Ladegerät) — nicht über Mode.
-  SUCHE = (process.env.SUCHE || 'castor oil,humidifier,aroma diffuser,phone charger,watch men,pet grooming')
+  SUCHE = (process.env.SUCHE || STANDARD_SUCHE)
     .split(',').map(s => s.trim()).filter(Boolean);
 
 const schlaf = ms => new Promise(r => setTimeout(r, ms));
+
+async function shopToken() {
+  if (process.env.SHOPIFY_ADMIN_TOKEN) return process.env.SHOPIFY_ADMIN_TOKEN;
+  if (!SHOP || !CID || !CS) return '';
+  const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ client_id: CID, client_secret: CS, grant_type: 'client_credentials' }),
+  });
+  if (!r.ok) { console.error(`Shopify-Token: HTTP ${r.status} — ${(await r.text()).slice(0, 200)}`); return ''; }
+  return (await r.json()).access_token || '';
+}
+
+/**
+ * Deutsche Suchwörter zu einem englischen CJ-Titel. Bewusst grob und kurz: die Frage ist
+ * „führt der Shop so etwas schon?", nicht „ist es dasselbe Produkt".
+ */
+const WARENGRUPPE = [
+  // Reihenfolge zählt: das SPEZIFISCHE zuerst. Im ersten Lauf landete ein
+  // „Reptile Pet Incubation Fogger" unter „Luftbefeuchter", weil `humidifier` vorn stand.
+  [/reptile|terrarium/i, 'Reptil'],
+  [/humidifier|air purifier/i, 'Luftbefeuchter'], [/diffuser|aroma|fragrance/i, 'Diffuser'],
+  // Ohrringe vor Halskette: „Pendant Earrings" ist ein Ohrring, kein Anhänger.
+  [/watch/i, 'Uhr'], [/earrings?/i, 'Ohrringe'], [/necklace|pendant/i, 'Halskette'],
+  [/bracelet/i, 'Armband'],
+  // `\bring\b` reicht NICHT: die Wortgrenze vorne fehlt in `/ring\b/`, und damit traf das
+  // Muster „SpRING" — ein Cardigan wurde als Ring gezählt. Zweimal dieselbe Klasse an einem
+  // Abend (vorher `switch` im Lichtschalter).
+  [/(^|[^a-z])rings?([^a-z]|$)/i, 'Ring'],
+  [/yoga|legging/i, 'Yoga'],
+  [/cardigan|jacket|coat/i, 'Cardigan'],
+  [/speaker/i, 'Lautsprecher'], [/power ?bank/i, 'Powerbank'], [/lamp|light/i, 'Lampe'],
+  [/hammock/i, 'Hängematte'], [/massage/i, 'Massage'], [/charger/i, 'Ladegerät'],
+];
+
+/**
+ * Wie viele AKTIVE Produkte der Shop in derselben Warengruppe schon führt.
+ *
+ * WARUM das hierher gehört: der Dauerauftrag heisst „Kunden, die kaufen" — mehr Produkte sind
+ * Mittel, nicht Zweck. Gemessen am 24.10.2026 führt der Shop bereits 155 Luftbefeuchter,
+ * 64 Diffuser, 2106 Uhren und 2662 Schmuckstücke. Ein weiteres davon anzulegen ist Arbeit
+ * ohne Wirkung; die dünnen Gruppen sind der eigentliche Fund. -1 heisst „nicht gemessen".
+ */
+async function schonImShop(tok, name, cache) {
+  const treffer = WARENGRUPPE.find(([re]) => re.test(name));
+  if (!tok || !treffer) return { gruppe: '', vorhanden: -1 };
+  const gruppe = treffer[1];
+  if (cache.has(gruppe)) return { gruppe, vorhanden: cache.get(gruppe) };
+  try {
+    const d = await shopifyGql(SHOP, API, tok, `query($q:String!){productsCount(query:$q){count}}`,
+      { q: `status:active AND title:*${gruppe}*` });
+    const n = Number(d?.productsCount?.count);
+    const wert = Number.isFinite(n) ? n : -1;
+    cache.set(gruppe, wert);
+    return { gruppe, vorhanden: wert };
+  } catch { return { gruppe, vorhanden: -1 }; }
+}
 
 async function suchen(tok, wort) {
   const out = [];
@@ -76,9 +156,31 @@ async function fracht(tok, pid) {
   } catch { return { vid, linien: null }; }
 }
 
+/**
+ * Das Gedächtnis des Laufs: jede schon gemessene pid mit ihrem Frachturteil.
+ *
+ * Ohne das kostet jeder weitere Lauf dieselben Frachtabfragen noch einmal — und derselbe
+ * Treffer taucht bei mehreren Suchwörtern auf. Ein `unbekannt` wird NICHT festgeschrieben:
+ * es hiess „nicht lesbar", nicht „nicht lieferbar", und darf beim nächsten Lauf neu gemessen
+ * werden. Mit `NEU=1` wird alles nochmals gemessen.
+ */
+async function ledgerLesen() {
+  const m = new Map();
+  try {
+    for (const z of (await readFile(LEDGER, 'utf8')).split('\n').filter(Boolean)) {
+      const [pid, , urteil] = z.split('\u00b7').map(x => x.trim());
+      if (pid && urteil && urteil !== 'unbekannt') m.set(pid, urteil);
+    }
+  } catch { /* noch kein Ledger */ }
+  return m;
+}
+
 (async () => {
   const tok = await cjToken();
   if (!tok) { console.error('Kein CJ-Token: CJ_EMAIL/CJ_API_KEY fehlen oder CJ lehnt ab. Abbruch.'); process.exit(1); }
+  const stok = await shopToken();
+  if (!stok) console.error('Kein Shopify-Token — die Spalte „schon im Shop" bleibt leer (nicht: null).');
+  const gruppenCache = new Map();
 
   const treffer = [];
   for (const w of SUCHE) {
@@ -96,17 +198,26 @@ async function fracht(tok, pid) {
   for (const t of einmalig) { const u = topUrteil(t, { listedMin: LISTED, maxEk: MAXEK }); gruende[u.grund] = (gruende[u.grund] || 0) + 1; }
   console.log('Gründe:', JSON.stringify(gruende));
 
-  const gewaehlt = topAuswahl(einmalig, MAX, { listedMin: LISTED, maxEk: MAXEK });
+  const bekannt = NEU ? new Map() : await ledgerLesen();
+  const frisch = einmalig.filter(t => !bekannt.has(String(t.pid)));
+  if (bekannt.size) console.log(`Ledger: ${bekannt.size} pids schon gemessen, ${einmalig.length - frisch.length} davon heute wieder getroffen.`);
+
+  const gewaehlt = topAuswahl(frisch, MAX, { listedMin: LISTED, maxEk: MAXEK });
   console.log(`\nFracht nach CH wird für ${gewaehlt.length} Kandidaten gemessen:`);
   const zeilen = [['suchwort', 'pid', 'name', 'laeden', 'ek_usd', 'frachtlinien', 'urteil', 'bild'].join(',')];
   let lieferbar = 0, unbekannt = 0;
   for (const { t, u } of gewaehlt) {
     const { linien } = await fracht(tok, t.pid);
     const urteil = linien === null ? 'unbekannt' : (linien > 0 ? 'lieferbar-ch' : 'keine-ch-fracht');
+    const { gruppe, vorhanden } = urteil === 'lieferbar-ch'
+      ? await schonImShop(stok, t.productNameEn, gruppenCache) : { gruppe: '', vorhanden: -1 };
     if (urteil === 'lieferbar-ch') lieferbar++; if (urteil === 'unbekannt') unbekannt++;
-    console.log(`  ${urteil.padEnd(15)} ${String(u.laeden).padStart(5)} Läden  $${u.preis}  ${t.productNameEn.slice(0, 60)}`);
+    const hinweis = vorhanden < 0 ? '' : vorhanden === 0 ? '  ← NEU im Shop' : `  (Shop hat schon ${vorhanden} × ${gruppe})`;
+    console.log(`  ${urteil.padEnd(15)} ${String(u.laeden).padStart(5)} Läden  $${u.preis}  ${t.productNameEn.slice(0, 50)}${hinweis}`);
     zeilen.push([t.suchwort, t.pid, `"${String(t.productNameEn).replace(/"/g, "'")}"`, u.laeden, u.preis,
-      linien ?? '', urteil, `"${(u.lager || []).join(' ')}"`, t.productImage].join(','));
+      linien ?? '', urteil, gruppe, vorhanden < 0 ? '' : vorhanden,
+      `"${(u.lager || []).join(' ')}"`, t.productImage].join(','));
+    await appendFile(LEDGER, `${t.pid} \u00b7 ${new Date().toISOString().slice(0, 10)} \u00b7 ${urteil} \u00b7 ${String(t.productNameEn).replace(/\u00b7/g, '-').slice(0, 70)}\n`);
     await schlaf(400);
   }
   await writeFile(BERICHT, zeilen.join('\n') + '\n');
