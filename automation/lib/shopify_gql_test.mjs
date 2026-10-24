@@ -9,7 +9,7 @@ const lauf = (antworten) => {
   let n = 0;
   const f = async () => { const a = antworten[n++]; if (a instanceof Error) throw a; return a; };
   return { gewartet, aufrufe: () => n,
-    erg: shopifyGql('s', '2025-01', 't', '{x}', {}, { fetch: f, warte: ms => { gewartet.push(ms); }, basisMs: 10 }) };
+    erg: shopifyGql('test.myshopify.com', '2025-01', 't', '{x}', {}, { fetch: f, warte: ms => { gewartet.push(ms); }, basisMs: 10 }) };
 };
 
 // 1. Drosselung zweimal, dann Erfolg → Ergebnis da, zweimal gewartet, wachsende Pausen
@@ -40,7 +40,7 @@ for (const code of [429, 503]) {
 {
   const T = antwort({ errors: [{ message: 'Throttled' }] });
   let geflogen = null;
-  try { await shopifyGql('s', '2025-01', 't', '{x}', {}, { fetch: async () => T, warte: async () => {}, versuche: 3 }); }
+  try { await shopifyGql('test.myshopify.com', '2025-01', 't', '{x}', {}, { fetch: async () => T, warte: async () => {}, versuche: 3 }); }
   catch (e) { geflogen = e.message; }
   pruef('Dauerdrosselung → Fehler mit Grund', !!geflogen && /Throttled/.test(geflogen), String(geflogen));
 }
