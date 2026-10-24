@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-24 04:28 UTC, Stand 2026-10-24 08:07 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-24 04:28 UTC, Stand 2026-10-24 08:12 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **12'602**
-- Optionen mit englischen Werten (Kandidaten): 1'342
+- Produkte gesehen: **14'454**
+- Optionen mit englischen Werten (Kandidaten): 1'589
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 6'744
+- Werte mit unbekanntem Wort (unverändert): 8'181
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 35
-- übersprungen «kollision-nach-uebersetzung»: 25
+- übersprungen «kleidungsstueck-im-wert»: 37
+- übersprungen «kollision-nach-uebersetzung»: 29
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -66,6 +66,10 @@
 - `15453570597249` [Farbe] hochtaillierte-caprihosen-638600: Marineblaublau → Marineblau
 - `15453761798529` [Farbe] lassiger-waffelstrick-stehkragen-pullover-mit-610300: Marineblaublau → Marineblau
 - `15453761929601` [Farbe] farbige-hoodie-mit-kordelzug-636100: Marineblaublau → Marineblau
+- `15454132371841` [Farbe] mid-rise-flared-jeans-629100: Medium Blue → Mittelblau
+- `15454235689345` [Farbe] high-waist-yoga-pants-mit-beutlifting-effekt-632800: Kaffeebraun-Braun → Kaffeebraun
+- `15455729582465` [Farbe] sonnenschutzpullover-mit-kragen-und-kurzarmel-629700: Mustard Yellow → Senfgelb
+- `15456157794689` [Farbe] weite-cropped-hosen-620200: Marineblaublau → Marineblau
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -94,5 +98,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 261, `light` 238, `color` 171, `degrees` 159, `shell` 78, `skin` 78, `high` 69, `rope` 66, `feet` 62, `three` 57, `⟨satzbau:material-vor-farbe⟩` 57, `surface` 53, `core` 53, `size` 50, `dark` 49, `line` 48, `of` 47, `hat` 47, `powder` 47, `to` 45, `bag` 43, `no` 42, `buckle` 42, `perforated` 42, `case` 40, `acupuncture` 40, `opp` 39, `lens` 38, `bear` 38, `cup` 37, `adjustable` 37, `electric` 37, `magnetic` 36, `generation` 36, `belt` 35, `tea` 35, `⟨satzbau:nomen-vor-farbe⟩` 35, `person` 35, `carbon` 34, `suit` 34, `⟨satzbau:menge-vor-nomen⟩` 34, `⟨satzbau:adjektivfolge⟩` 32, `fiber` 32, `four` 31, `mother` 30, `eyelets` 30, `button` 30, `plush` 30, `winding` 30, `little` 29, `iphone13` 29, `ice` 28, `lamp` 28, `code` 27, `regular` 27, `flame` 27, `mushroom` 27, `full` 26, `insert` 26, `number` 26
+`⟨satzbau:adjektiv-vor-nomen⟩` 333, `light` 246, `color` 189, `degrees` 159, `⟨satzbau:material-vor-farbe⟩` 102, `shell` 96, `core` 92, `skin` 83, `powder` 79, `three` 78, `high` 73, `surface` 72, `rope` 66, `case` 63, `feet` 62, `bag` 60, `dark` 58, `belt` 55, `of` 54, `code` 52, `size` 50, `lens` 50, `to` 49, `line` 48, `four` 48, `hat` 47, `bear` 46, `clock` 45, `buckle` 44, `no` 43, `electric` 43, `dual` 43, `acupuncture` 43, `net` 43, `perforated` 42, `button` 41, `face` 40, `cat` 39, `opp` 39, `carbon` 38, `little` 37, `ice` 37, `handle` 37, `cup` 37, `adjustable` 37, `⟨satzbau:adjektivfolge⟩` 37, `magnetic` 36, `tea` 36, `suit` 36, `generation` 36, `person` 36, `⟨satzbau:nomen-vor-farbe⟩` 35, `fiber` 35, `⟨satzbau:menge-vor-nomen⟩` 35, `star` 33, `⟨satzbau:nomen-nomen⟩` 33, `plush` 32, `sky` 31, `noodles` 31, `camera` 31
 
