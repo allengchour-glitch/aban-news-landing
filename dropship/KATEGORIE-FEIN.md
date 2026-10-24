@@ -1,13 +1,13 @@
-# Feinkategorie (automatisch, 2026-10-24 06:10 UTC)
+# Feinkategorie (automatisch, 2026-10-24 07:10 UTC)
 
 Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 
 | Zustand | Produkte |
 |---|---:|
-| gleich | 36363 |
+| gleich | 36369 |
 | shopify-feiner | 16328 |
-| kein-google | 1642 |
-| rueckfall-grob | 1342 |
+| kein-google | 1643 |
+| rueckfall-grob | 1336 |
 | anderer-zweig | 964 |
 | kreuz | 13 |
 | schon-im-ledger | 13 |
