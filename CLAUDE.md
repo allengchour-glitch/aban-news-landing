@@ -84,6 +84,66 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-24 (🔎 Google: die Seite nannte Google 2662 Adressen, die es so nicht gibt — PR #2721):**
+Auftrag war „merchant und console google machen". Dabei gemessen: **Search Console ist für beide
+Domains längst verifiziert**, die Baustelle lag woanders. Alles live gemessen.
+- **✅ KEINE EINRICHTUNG NÖTIG: beide Domains sind per DNS-TXT verifiziert.** abannews.com
+  `google-site-verification=nr2qu7fKG6Obt8PM8vKnD2o4zmz9YQDimircfUXk-m4`, luxestyle.ch
+  `…=BUuBXKpNZg8E6Rd1lhl9ix_GZoN-XqzhvhsO9PxjFJw` (dort zusätzlich als `<meta>`). **Nicht erneut
+  aufrollen.** GSC-**Daten** sind von hier aus nicht lesbar: keine Google-Zugangsdaten, und im
+  Connector-Verzeichnis gibt es **keinen Search-Console- und keinen Merchant-Center-Connector**
+  (nachgesehen; nur Drittanbieter wie Supermetrics, Windsor.ai, OpenSEO).
+- **🚨 2662 VON 2667 SITEMAP-ADRESSEN ANTWORTEN MIT 308 — und jede Seite nannte sich selbst unter
+  genau dieser umleitenden Adresse.** Cloudflare Pages kürzt **jede** `.html`-Adresse per 308 auf
+  die Adresse ohne `.html`; dafür gibt es keinen Schalter. Gleichzeitig stand in `rel="canonical"`
+  die `.html`-Adresse (**2687 Dateien**, dazu **2298** mit `og:url`) und in der Sitemap ebenso.
+  Google wertet eine kanonische Adresse, die umleitet, **nicht** → solche Seiten landen unter
+  „Seite mit Weiterleitung", nicht im Index. **Gute Nachricht aus derselben Messung: keine Seite
+  ist tot** (2666 von 2667 enden bei 200) — es war nie ein Inhalts-, immer ein Adressproblem.
+- **🔧 BEHOBEN ALS BAU-SCHRITT, NICHT IN DER QUELLE:** `tools/kanonische_urls.py` läuft in
+  `build-pages.sh` nach `inject-engine` über `_site` und zieht `rel="canonical"`, `og:url` und die
+  Sitemap-`<loc>` auf die 200-Adresse. **Die Quelldateien behalten absichtlich `.html`** — die
+  Angaben stammen aus **51 Generatoren**, die es wieder zurückschreiben würden; der Bau-Schritt
+  deckt auch jede künftig erzeugte Seite ab. **Nicht „korrigieren", wenn in einer Quelldatei
+  `.html` steht.** Angefasst werden ausschliesslich diese drei Stellen; gewöhnliche Links bleiben.
+  **8 Adressen zeigen woandershin** (`/about` → `/ueber-aban`, `/zinseszins-rechner` →
+  `/sparplan-statt-trading`, `/ki-audit`, `/themen`, `/vorlagen`, `/scheinselbststaendigkeit`,
+  `minispiele/index.html`) → das Werkzeug liest `_redirects` mit. 23 Tests grün, zur Hälfte
+  Gegenproben in die andere Richtung; **8 von 9 Mutationen erkannt**, die neunte gleichwertig
+  (zwei Schranken fangen denselben Kreis) und im Werkzeug vermerkt.
+- **🚨 EIN UMLEITUNGS-KREIS MACHTE DIE PRESSE-SEITE UNERREICHBAR:** `/press.html` → 308 →
+  `/press` → 301 (Regel in `_redirects`) → `/press.html` → … Für Besucher **und** Google tot. Die
+  Regel war überflüssig, Pages liefert `/press` ohne Regel direkt aus. **Alle 325 Regeln auf
+  dasselbe Muster geprüft — das war der einzige Kreis.** **REGEL: nie `/X → /X.html` anlegen,
+  wenn `X.html` existiert.**
+- **🚨 DER FEED, DER ZUM EINTRAGEN BEREITLAG, WAR DIE KAPUTTE FASSUNG — und antwortete mit 200.**
+  Auf `brain/intel` liegen **3186 Artikel, 0 `g:shipping`, 0 Kategorien, 0 `g:mpn`, 4 doppelte
+  IDs** = genau die vier Mängel, die am 17.10. behoben wurden. Den Branch beliefert der
+  GitLab-Job, und der **liefert seit 27.06. nichts mehr**. Ein geplanter Abruf hätte den kaputten
+  Feed geholt und wie ein Feed-Problem ausgesehen, nicht wie eine tote Lieferkette. **Die alte
+  `raw.githubusercontent`-Adresse nie wieder nennen.**
+- **✅ NEU: `https://abannews.com/google-merchant-feed.xml`** (Repo-Wurzel, vom Pages-Deploy
+  ausgeliefert wie `sitemap.xml`; `automation/` ist vom Deploy ausgeschlossen, darum nicht dort).
+  Täglich erzeugt im Job `merchant-feed` in `tages-update.yml` — **kein neuer Cron**. Der Lauf
+  prüft vorher selbst und **bricht ab, statt Kaputtes zu veröffentlichen**: XML wohlgeformt ·
+  ≥ 1000 Artikel · 0 doppelte Feed-IDs. Stand: **5861 Artikel, 0 Dubletten**, Versand und
+  Kategorie bei allen (85 wegen Sperrtag, 54 wegen Marken-/Safety-Risiko ausgelassen).
+- **⚠️ Ehrliche Grenze:** der Lauf prüft **6000 der rund 56 700** aktiven Produkte und beginnt bei
+  den zuletzt geänderten — die **Fortura-Ware mit den 97 % Barcodes liegt ausserhalb**, darum
+  **0 GTIN** im Feed. Dieselbe Fensterfalle wie beim SEO-Titel-Lauf.
+- **🔑 MESS-LEHREN:** (1) **Ein 200 auf eine Feed-Adresse heisst nicht, dass der Feed stimmt** —
+  erst der Vergleich der Felder zeigte die alte Fassung; darum prüft der Lauf jetzt den Feed
+  selbst. (2) **Eine Umleitung ist kein Fehler und sieht darum nach nichts aus** — 2662 × 308
+  wirkt harmlos, ist aber genau der Zustand, in dem Google die eigene Angabe verwirft; aufgefallen
+  nur, weil die Messung den **Statuscode** festhielt und nicht bloss „erreichbar". (3) Vor der
+  Messung eine erfundene Adresse abgefragt (404) — sonst wäre „alles 308" auch mit einem kaputten
+  Prüfer herausgekommen.
+- **🟡 Beim User (Google-Konto):** Merchant Center → geplanter Abruf auf die neue Adresse, alte
+  Adresse löschen · Search Console → Sitemaps einreichen und danach „Seite mit Weiterleitung"
+  beobachten (das ist die Gegenprobe) · Entscheid Fortura (~1500 CH-Lager-Artikel) · Entscheid
+  `excluded_destination` (70,3 % der Stichprobe). Voller Bericht:
+  `/mnt/project-files/google/MERCHANT-CONSOLE-2410.md`.
+
 **📌 2026-10-24 nachts (🛒 CJ Prime ausgemessen: eine von drei Leistungen ist über die API erreichbar):**
 Alles live gemessen, PRs #2717–#2719 gemergt. Branch dieser Sitzung: `claude/project-thread-yeliwp`.
 - **🚨 VON CJ PRIMES DREI BEWORBENEN LEISTUNGEN IST NUR EINE ÜBER DIE API ZU HOLEN.** Sourcing-Anfragen
