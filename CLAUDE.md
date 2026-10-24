@@ -84,6 +84,32 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-24 vormittags (🚚 „Sourcing Succeeded" heisst NICHT lieferbar — 3 von 4 neuen Treffern fallen durch):**
+Der User: „sourcing erfolgreich weil mails gekommen". Stand erneut abgefragt, nichts neu gesendet.
+**5 von 17 fertig, 11 `Pending`, 1 „Similar Products".** Bericht `dropship/cj_sourcing_ergebnis.md`.
+- **🚨 DIE LEHRE DES TAGES: CJs „Sourcing Succeeded" sagt nichts über die Schweiz.** Drei der vier
+  neuen Treffer bekommen **null Frachtlinien CN→CH**: Resistance Bands, Rizinusöl-Wickel-Set,
+  Schaum-Abflussreiniger. CJ hat einen Lieferanten gefunden — nur keinen, der nach CH versendet.
+  **Das Messgerät lief im selben Durchgang richtig** (der Fleischwolf bekam 7 Linien), die Null ist
+  also ein Befund und kein Ausfall. **Ohne eigene Frachtmessung wären drei nicht lieferbare Produkte
+  live gegangen — genau die Ursache aller elf Erstattungen des Shops.**
+- **Besonders bitter: das `rizinusol-wickel-set-mit-bio-ol-323457`** ist die vierthäufigste
+  Produktseite des ganzen Shops (64 von 2619 Sitzungen) und rentabel — der gesuchte Ersatzlieferant
+  liefert trotzdem nicht in die Schweiz. **Bleibt gesperrt.**
+- **✅ `elektrischer-fleischwolf-5l-kuchenmaschine-656962` ist LIVE** (CJ-Produkt
+  `1687282481562652672`, EU-Variante `CJYD181444603CX`, 110–240 V): **7 Frachtlinien**, günstigste
+  USD 35.52 (6–10 Tage). EK USD 9.55 + Fracht = USD 45.07 = **CHF 37.16** gegen VK **CHF 75.90** →
+  Marge ≈ **CHF 38.74**. Der alte Lieferant kostete CHF 53.61 allein für die Ware.
+- **🔑 EIN LIEFERANTENWECHSEL IST NICHT NUR EIN KLICK AUF ACTIVE:** Varianten-SKU auf
+  `CJYD181444603CX` und Kosten auf CHF 7.87 gesetzt. Ohne das messen `lieferbarkeit_guard.mjs` und
+  jeder Preiswächter weiter den alten, nicht versendbaren Lieferanten — und melden „nicht lieferbar"
+  für ein Produkt, das verkauft wird.
+- **„Similar Products" ist kein Treffer:** die Schwingerhose bekam eine interne UUID
+  (`DDD50071-…`) statt einer CJ-SKU zurück — nach der Regel von `automation/lib/lieferbarkeit.mjs`
+  ist das **unbekannt**, nicht lieferbar und nicht unlieferbar. Nichts geändert.
+- **11 Anfragen sind weiter offen** → in einer späteren Sitzung `STATUS=1 node
+  automation/cj_sourcing.mjs`. **Nicht neu senden**, das Tagesbudget ist 25.
+
 **📌 2026-10-24 (🔎 Google: die Seite nannte Google 2662 Adressen, die es so nicht gibt — PR #2721):**
 Auftrag war „merchant und console google machen". Dabei gemessen: **Search Console ist für beide
 Domains längst verifiziert**, die Baustelle lag woanders. Alles live gemessen.
