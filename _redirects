@@ -136,7 +136,10 @@
 /3d-druck         /geld-verdienen-mit-3d-druck.html     301
 /3d               /geld-verdienen-mit-3d-druck.html     301
 /dropshipping     /geld-verdienen-mit-3d-druck.html     301
-/press            /press.html           301
+# ⚠️ KEINE Regel `/press -> /press.html`: Cloudflare Pages kuerzt jede .html-Adresse
+# selbst auf die Adresse ohne .html (308). Zusammen war das ein Kreis
+# (/press -> /press.html -> /press -> ...) und die Presse-Seite fuer Besucher und
+# Google unerreichbar (gemessen 2026-10-24). Pages liefert /press ohne Regel direkt aus.
 /ueber            /ueber-aban.html      301
 /about            /ueber-aban.html      301
 

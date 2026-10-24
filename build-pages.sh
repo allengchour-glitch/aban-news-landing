@@ -123,6 +123,15 @@ test -f _site/_headers   && echo "_headers ok"
 # Tolerant: bricht den Build nicht ab, falls node fehlt.
 ( command -v node >/dev/null 2>&1 && node automation/inject-engine.mjs _site ) || echo "inject-engine übersprungen (node fehlt)"
 
+# Selbst gemeldete Adressen (rel="canonical", og:url, Sitemap-<loc>) auf die Adresse
+# ziehen, die auch mit 200 antwortet. GEMESSEN 2026-10-24: Cloudflare Pages beantwortet
+# jede .html-Adresse mit 308 auf die Adresse ohne .html — 2662 von 2667 Sitemap-Einträgen
+# waren Umleitungen, und jede Seite nannte sich selbst unter der .html-Adresse. Google
+# wertet eine kanonische Adresse, die umleitet, nicht. Läuft NACH inject-engine, damit
+# auch dort gesetzte Angaben erfasst werden; die Quelle bleibt unangetastet.
+# Tolerant: bricht den Build nicht ab.
+( command -v python3 >/dev/null 2>&1 && python3 tools/kanonische_urls.py _site ) || echo "kanonische_urls übersprungen"
+
 # Bezahlte Produkt-Quellen (content/packs) dürfen NIE öffentlich werden — sie werden nur als
 # geschützte ZIPs (downloads/kits, gehashter Name) nach verifizierter Zahlung ausgeliefert.
 if [ -e _site/content ]; then echo "FEHLER: content/ ist im Deploy (bezahlte Produkte öffentlich) — Abbruch." >&2; exit 1; fi
