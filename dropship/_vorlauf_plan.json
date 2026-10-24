@@ -1207,12 +1207,12 @@
    "handles": [
     "wanddeko-kranz-totenkopf-fga910996"
    ],
-   "letzter_versuch": "2026-10-19T00:33:54Z",
+   "letzter_versuch": "2026-10-24T01:09:17Z",
    "mc_ids": [],
-   "reserviert_um": "2026-10-19T00:33:54Z",
-   "status": "offen",
+   "reserviert_um": "2026-10-24T01:09:17Z",
+   "status": "reserviert",
    "termin_utc": "2026-10-24T17:10:00Z",
-   "versuche": 0
+   "versuche": 1
   },
   "story-20261025T1145": {
    "basis_utc": "2026-10-25T11:45:00Z",
@@ -1802,6 +1802,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-24T00:27:00Z",
+ "stand": "2026-10-24T01:09:17Z",
  "version": 1
 }
