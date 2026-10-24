@@ -206,3 +206,64 @@ test('Dry-Run ändert weder Queue noch Sperrdatei', t => {
   assert.equal(fs.readFileSync(f.csv, 'utf8'), before);
   assert.equal(fs.existsSync(f.lock), false);
 });
+
+// --- Pinterest: Metricool verlangt pinterestData{boardId,pinTitle} (HTTP 400 ohne) ---
+
+function pinFixture(t, row) {
+  const f = fixture(t, 0);
+  fs.writeFileSync(f.csv,
+    'id,publish_date,media_url,text,networks,status,scheduled_at,note,pin_board_id,pin_title,pin_link\n' + row);
+  return f;
+}
+
+const PIN_BODY = `let body=null;
+  globalThis.fetch=async(url,opts={})=>{
+    ${NORMALIZE}
+    body=JSON.parse(opts.body);
+    fs.writeFileSync('body.json', opts.body);
+    return {ok:true,status:200,text:async()=>JSON.stringify({id:7,uuid:'-7'})};
+  };`;
+
+test('Pinterest-Zeile sendet boardId und pinTitle mit', t => {
+  const f = pinFixture(t,
+    'pin-1,2026-12-01T10:00:00,https://example.invalid/1.jpg,Text,pinterest,ready,,,B123,Mein Pin,https://luxestyle.ch/p\n');
+  const r = run(f, PIN_BODY);
+  assert.equal(r.status, 0, r.stderr);
+  const body = JSON.parse(fs.readFileSync(path.join(f.root, 'body.json'), 'utf8'));
+  assert.deepEqual(body.pinterestData,
+    { boardId: 'B123', pinTitle: 'Mein Pin', pinNewFormat: true, pinLink: 'https://luxestyle.ch/p' });
+  assert.equal(records(f)[0].status, 'scheduled');
+});
+
+test('Pinterest ohne Board oder Titel wird laut NICHT gesendet und bleibt ready', t => {
+  for (const [board, title] of [['', 'Titel'], ['B123', ''], ['', '']]) {
+    const f = pinFixture(t,
+      `pin-x,2026-12-01T10:00:00,https://example.invalid/1.jpg,Text,pinterest,ready,,,${board},${title},\n`);
+    const r = run(f, `globalThis.fetch=async(url,opts={})=>{
+      ${NORMALIZE}
+      throw new Error('POST DARF NICHT PASSIEREN');
+    };`);
+    assert.equal(r.status, 1);
+    assert.match(r.stderr, /pin_board_id\/pin_title/);
+    assert.equal(records(f)[0].status, 'ready');
+  }
+});
+
+// Gegenprobe in die andere Richtung: andere Kanäle brauchen die Spalten nicht,
+// und eine Queue ohne die Pinterest-Spalten muss weiterlaufen.
+test('Nicht-Pinterest-Zeile setzt kein pinterestData', t => {
+  const f = pinFixture(t,
+    'ig-1,2026-12-01T10:00:00,https://example.invalid/1.jpg,Text,instagram,ready,,,,,\n');
+  const r = run(f, PIN_BODY);
+  assert.equal(r.status, 0, r.stderr);
+  const body = JSON.parse(fs.readFileSync(path.join(f.root, 'body.json'), 'utf8'));
+  assert.equal(body.pinterestData, undefined);
+  assert.deepEqual(body.instagramData, { autoPublish: true });
+});
+
+test('Queue ohne Pinterest-Spalten plant andere Kanäle unverändert', t => {
+  const f = fixture(t, 1);
+  const r = run(f, PIN_BODY);
+  assert.equal(r.status, 0, r.stderr);
+  assert.equal(records(f)[0].status, 'scheduled');
+});

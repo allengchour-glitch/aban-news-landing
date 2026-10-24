@@ -10,6 +10,10 @@
  *            Body: { publicationDate{dateTime,timezone}, text, providers:[{network}],
  *                    media:[<normalisierte URL>], autoPublish:true }
  *
+ * Pinterest verlangt zusätzlich pinterestData{boardId,pinTitle}: dafür die Queue-Spalten
+ * pin_board_id, pin_title und (optional) pin_link füllen. Fehlen sie, wird die Zeile mit
+ * genanntem Grund NICHT gesendet, statt still zu scheitern (Metricool antwortet sonst HTTP 400).
+ *
  * ENV: METRICOOL_USER_TOKEN (Pflicht) · METRICOOL_USER_ID (Default 4801419) ·
  *      METRICOOL_BLOG_ID (explizit erforderlich für Live) · MC_TZ (Default Europe/Zurich) ·
  *      MAX_PER_RUN (Default 50) · DRY_RUN=0 + APPROVE_PUBLISH=1 für Live; sonst Dry-Run.
@@ -29,6 +33,8 @@ let MAX;
 const BASE  = 'https://app.metricool.com/api';
 const CSV   = new URL('../social/metricool_queue.csv', import.meta.url).pathname;
 const COLS  = ['id','publish_date','media_url','text','networks','status','scheduled_at','note'];
+// Nur für Pinterest nötig; fehlende Spalten sind erlaubt und werden leer gelesen.
+const PIN_COLS = ['pin_board_id','pin_title','pin_link'];
 const RESULT_COLS = ['metricool_post_id', 'metricool_post_uuid', 'request_started_at'];
 const TIMEOUT_MS = 60000;
 
@@ -112,6 +118,15 @@ async function schedule(row, beforePost){
   if (providers.some(p=>p.network==='tiktok'))    body.tiktokData    = { autoPublish: true };
   // A media download may take long enough for a previously future slot to expire.
   validateMetricoolRow(row, { timeZone:TZ });
+  if (providers.some(p=>p.network==='pinterest')) {
+    // Ohne Board und Pin-Titel lehnt Metricool den Pin ab; das soll die Zeile laut beenden.
+    if (!row.pin_board_id || !row.pin_title) {
+      console.error(`  ✗ Pinterest ohne pin_board_id/pin_title: ${row.id}; kein POST gesendet.`);
+      return { status: 'not_sent' };
+    }
+    body.pinterestData = { boardId: row.pin_board_id, pinTitle: row.pin_title, pinNewFormat: true };
+    if (row.pin_link) body.pinterestData.pinLink = row.pin_link;
+  }
   beforePost(); // If this checkpoint fails, no publication request is made.
   let r, txt;
   try {
@@ -141,7 +156,7 @@ for (const col of RESULT_COLS) {
     for (const row of rows.slice(1)) row[column] = '';
   }
 }
-const idx = Object.fromEntries([...COLS, ...RESULT_COLS].map(c=>[c, header.indexOf(c)]));
+const idx = Object.fromEntries([...COLS, ...RESULT_COLS, ...PIN_COLS].map(c=>[c, header.indexOf(c)]));
 const data = rows.slice(1);
 const get = (r,k)=> (r[idx[k]]||'').trim();
 const unresolved = data.filter(r => ['inflight', 'uncertain'].includes(get(r,'status')));
@@ -153,7 +168,10 @@ const prepared = new Map();
 for (let i = 0; i < data.length; i++) {
   const source = data[i];
   if (get(source,'status') !== 'ready') continue;
-  const record = Object.fromEntries(COLS.map(key => [key, get(source,key)]));
+  // PIN_COLS muessen mit: ohne sie fehlen dem Pinterest-Guard board/title und KEIN Pin
+  // ginge mehr raus. `validateMetricoolRow` liest nur die Pflichtfelder, zusaetzliche
+  // Schluessel stoeren es nicht.
+  const record = Object.fromEntries([...COLS, ...PIN_COLS].map(key => [key, get(source,key)]));
   const validation = validateMetricoolRow(record, { row:i + 2, timeZone:TZ });
   record.networks = validation.networks.join(' ');
   record.media_url = validation.mediaUrl;
