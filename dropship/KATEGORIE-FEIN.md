@@ -1,11 +1,11 @@
-# Feinkategorie (automatisch, 2026-10-24 12:14 UTC)
+# Feinkategorie (automatisch, 2026-10-24 13:16 UTC)
 
 Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 
 | Zustand | Produkte |
 |---|---:|
-| gleich | 36369 |
-| shopify-feiner | 16328 |
+| gleich | 36368 |
+| shopify-feiner | 16327 |
 | kein-google | 1643 |
 | rueckfall-grob | 1336 |
 | anderer-zweig | 964 |
@@ -13,11 +13,12 @@ Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 | schon-im-ledger | 13 |
 | titelprobe-nein | 13 |
 | keine-zuordnung | 1 |
-| verfeinern | 0 |
-| **geschrieben** | 0 (Fehler 0) |
+| verfeinern | 1 |
+| **geschrieben** | 1 (Fehler 0) |
 
 ## Ziele (dieser Lauf)
 
+- 1 → Kitchen & Dining > Kitchen Appliances > Food Grinders & Mills
 
 ## Titelprobe hat abgelehnt (bleibt grob)
 
