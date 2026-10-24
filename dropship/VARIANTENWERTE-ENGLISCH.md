@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-24 04:28 UTC, Stand 2026-10-24 09:19 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-24 04:28 UTC, Stand 2026-10-24 10:14 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **42'048**
-- Optionen mit englischen Werten (Kandidaten): 2'596
+- Produkte gesehen: **45'618**
+- Optionen mit englischen Werten (Kandidaten): 2'714
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 13'867
+- Werte mit unbekanntem Wort (unverändert): 14'314
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 65
-- übersprungen «kollision-nach-uebersetzung»: 41
+- übersprungen «kleidungsstueck-im-wert»: 68
+- übersprungen «kollision-nach-uebersetzung»: 42
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -93,6 +93,7 @@
 - `15503958442369` [Farbe] kinder-barfussschuhe-fur-strand-und-freizeit-0515f4: black red → Schwarz-Rot; black blue → Schwarz-Blau; black and white → Schwarz-Weiss
 - `15504103768449` [Farbe] pailletten-disco-hemd-fur-teenager-618700: Black Color → Schwarz
 - `15506325275009` [Farbe] ethno-sandalen-mit-klettverschluss-und-dicker-624200: Brown And Pink → Braun-Pink; Red Color → Rot; Blue Color → Blau; Red Flower → Rot geblümt; Green Flower → Grün geblümt
+- `15517782933889` [Farbe] a-linien-kleid-mit-spitze-und-ruschen-616000: Emerald Green → Smaragdgrün
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -121,5 +122,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 564, `light` 428, `color` 314, `shell` 159, `degrees` 159, `⟨satzbau:material-vor-farbe⟩` 141, `size` 140, `core` 137, `surface` 131, `powder` 122, `diamond` 108, `skin` 106, `high` 104, `no` 95, `shoes` 92, `bag` 91, `three` 91, `⟨satzbau:mass-ohne-einheit⟩` 90, `belt` 89, `french` 89, `rain` 88, `code` 85, `case` 84, `dark` 82, `four` 82, `opp` 81, `yards` 79, `inner` 78, `buckle` 77, `dinosaur` 76, `rope` 75, `to` 73, `cloth` 71, `spring` 69, `chain` 68, `dual` 68, `petal` 68, `little` 66, `autumn` 66, `half` 66, `base` 63, `net` 63, `strap` 62, `feet` 62, `⟨satzbau:mass-unplausibel⟩` 62, `of` 60, `cherry` 60, `tea` 58, `plush` 56, `one` 55, `night` 54, `face` 52, `line` 52, `yarn` 52, `person` 51, `fold` 51, `background` 50, `rice` 50, `lens` 50, `ice` 49
+`⟨satzbau:adjektiv-vor-nomen⟩` 575, `light` 431, `color` 321, `shell` 159, `degrees` 159, `⟨satzbau:material-vor-farbe⟩` 146, `size` 140, `core` 137, `surface` 131, `powder` 123, `diamond` 109, `skin` 106, `high` 104, `inside` 104, `no` 95, `shoes` 94, `bag` 91, `three` 91, `⟨satzbau:mass-ohne-einheit⟩` 90, `belt` 89, `french` 89, `rain` 88, `code` 85, `case` 84, `dark` 82, `four` 82, `opp` 81, `inner` 79, `yards` 79, `buckle` 77, `dinosaur` 76, `rope` 75, `cloth` 73, `to` 73, `chain` 70, `spring` 69, `dual` 68, `petal` 68, `little` 66, `autumn` 66, `half` 66, `base` 63, `net` 63, `strap` 62, `feet` 62, `⟨satzbau:mass-unplausibel⟩` 62, `of` 60, `cherry` 60, `⟨satzbau:menge-vor-nomen⟩` 60, `tea` 58, `plush` 56, `one` 55, `night` 54, `face` 52, `rice` 52, `line` 52, `yarn` 52, `bottom` 52, `background` 51, `person` 51
 
