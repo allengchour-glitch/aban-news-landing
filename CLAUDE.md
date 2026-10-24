@@ -202,6 +202,32 @@ gemessen, Bericht `/mnt/project-files/google/FORTURA-SHOPPING-2410.md`.
   zeigt nur der Abgleich mit der Wirklichkeit** — 124 von 124 widersprochen ist der Beweis, das
   Anlagedatum allein wäre nur ein Verdacht gewesen.
 
+**📌 2026-10-24 nachts, später (✅ Erste CJ-Sourcing-Antwort: lieferbar, rentabel, live — 16 bleiben offen):**
+Der User schickte CJs Mail „Success! Your Sourcing Request is Complete" (#CJSPU960265818) weiter.
+Alles live gemessen, Bericht `dropship/cj_sourcing_ergebnis.md`.
+- **Stand aller 17 Anfragen live gelesen (`STATUS=1 node automation/cj_sourcing.mjs`): 1 „Sourcing
+  Succeeded", 16 weiter `Pending`.** CJ antwortet nicht sofort → in einer späteren Sitzung erneut
+  fragen. **Nicht erneut senden**, das Tagesbudget ist 25 und eine Wiederholung verbraucht es für nichts.
+- **✅ `leuchtender-halloween-schaukelgeist-627400` ist LIVE** (Anfrage `2610240115194488002` →
+  CJ-Produkt `2608070456571627400`): ACTIVE, 7 Kanäle, `tracked:false`+`CONTINUE`, 5 Medien READY,
+  HTTP 200 mit Cache-Buster nachgeprüft.
+- **Lieferbarkeit bewiesen, nicht angenommen:** alle vier Varianten bekommen **16 Frachtlinien CN→CH**
+  (günstigste USD 15.09, CJPacket EQ Ordinary, 5–9 Tage) — der sichere Positivfall aus
+  `automation/lib/lieferbarkeit.mjs`.
+- **Rentabilität gerechnet, nicht geschätzt:** EK USD 4.92 + Fracht USD 15.09 = USD 20.01 = **CHF 16.50**
+  (Kurs 0.82435 vom 23.10.), VK **CHF 17.90**. Einzelartikel-Korb (Kundin zahlt CHF 7 Versand): Marge
+  ≈ **CHF 8.40** vor Zahlgebühr. Gratis-Versand-Korb (echte Schwelle CHF 55.56): der Shop trägt die
+  Fracht, der Artikel trägt nur ≈ **CHF 1.40** bei. **Beides positiv** — also kein Verlustfall wie die
+  bewusst gesperrten CHF-3–6-Produkte.
+- **🔑 EIN SPERRGRUND KANN VERFALLEN.** Die Tags waren `cj-entfernt` / `cj-entfernt-2026-09-27` — CJ führt
+  das Produkt wieder, der Grund stimmt nicht mehr. Dazu zwei falsche Kategorietags (`aufbewahrung`,
+  `organizer`, aus CJs Kategorie „Home Office Storage", für eine Halloween-Deko unpassend). Entfernt,
+  `automation/lib/kanal_sperren.mjs` meldet keine Kanalsperre. **Die Regel „ein Entwurf hat einen Grund"
+  gilt weiter — ergänzt um: prüfen, ob der Grund HEUTE noch gilt.**
+- **Zeitpunkt war kein Einwand, auch das gemessen:** der Shop führt bereits **247 aktive
+  Halloween-Produkte** mit derselben China-Laufzeit, und die Beschreibung nennt „Lieferung 10–20
+  Werktage" ehrlich. Kein Sonderfall.
+
 **📌 2026-10-24 nachts (🛒 CJ Prime ausgemessen: eine von drei Leistungen ist über die API erreichbar):**
 Alles live gemessen, PRs #2717–#2719 gemergt. Branch dieser Sitzung: `claude/project-thread-yeliwp`.
 - **🚨 VON CJ PRIMES DREI BEWORBENEN LEISTUNGEN IST NUR EINE ÜBER DIE API ZU HOLEN.** Sourcing-Anfragen
