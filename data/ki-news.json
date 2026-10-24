@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-23T09:19:08Z",
+ "stand": "2026-10-24T08:51:17Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,84 +18,84 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "W3C: Ein Auftrag ist kein Freibrief für KI-Agenten",
-   "u": "https://www.heise.de/news/W3C-Ein-Auftrag-ist-kein-Freibrief-fuer-KI-Agenten-11497919.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-10-23T09:07:00Z",
-   "s": "Wie bleiben Nutzer in Kontrolle, wenn KI-Agenten Websites bedienen? Das W3C-Strategieteam skizziert Anforderungen an sichere Webstandards.",
-   "sprache": "de"
-  },
-  {
-   "t": "Nintendo: Switch 2 mit KI und mechanischem Knopf geknackt",
-   "u": "https://www.golem.de/news/nintendo-switch-2-mit-ki-und-mechanischem-knopf-geknackt-2610-214432.html",
+   "t": "Community Challenge: Smart-Home-Schuhtrockner und Solar-KI-Server",
+   "u": "https://www.golem.de/news/community-challenge-smart-home-schuhtrockner-und-solar-ki-server-2610-214445.html",
    "q": "Golem",
-   "d": "2026-10-23T09:06:01Z",
-   "s": "Ein Entwickler hat mit Codex einen Jailbreak für die Switch 2 geschaffen. Für einige Versuche nutzte er einen Lichtschalter-Betätiger. (Nintendo Switch 2, Homebrew)",
+   "d": "2026-10-24T08:30:02Z",
+   "s": "In der Golem-Community haben wir einen kleinen Programmier-Wettbewerb ausgerufen. Das sind die Gewinner - und unsere Einreichung. Von Johannes Hiltscher (Smart Home, Server)",
    "sprache": "de"
   },
   {
-   "t": "heise+ | So schützt Google seine KI-Agenten vor Prompt Injections – ein Interview",
-   "u": "https://www.heise.de/hintergrund/So-schuetzt-Google-seine-KI-Agenten-vor-Prompt-Injections-ein-Interview-11471465.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
+   "t": "Anthropic lässt KI-Agenten Verhandlungsregeln für Menschen lernen",
+   "u": "https://www.heise.de/news/Anthropic-laesst-KI-Agenten-Verhandlungsregeln-fuer-Menschen-lernen-11498981.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "q": "heise",
-   "d": "2026-10-23T08:30:00Z",
-   "s": "Seit dem Aufkommen von LLMs gibt es Prompt Injections. Wie Google damit umgeht, darüber berichtet Software-Ingenieurin Viviana Sutedjo im Interview.",
+   "d": "2026-10-24T08:14:00Z",
+   "s": "Anthropic berät sich angeblich mit Anwaltskanzleien, wie KI-Agenten künftig Preise, Gehälter und Verträge für ihre Nutzer aushandeln sollten.",
    "sprache": "de"
   },
   {
-   "t": "Preussenelektra: Alte Kernkraftwerke könnten KI-Rechenzentren werden",
-   "u": "https://www.golem.de/news/preussenelektra-alte-kernkraftwerke-koennten-ki-rechenzentren-werden-2610-214429.html",
-   "q": "Golem",
-   "d": "2026-10-23T08:29:01Z",
-   "s": "Alte Kraftwerksstandorte wären ideal für KI-Rechenzentren. Nvidia und Preussenelektra prüfen, ob sich Kernkraftstandorte eignen. (Energie & Klima, Nvidia)",
+   "t": "Continuous Architecture: KI zwingt uns dazu, veraltete Dokumentation aufzuräumen",
+   "u": "https://www.heise.de/hintergrund/Continuous-Architecture-KI-zwingt-uns-dazu-veraltete-Dokumentation-aufzuraeumen-11497700.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-10-24T08:03:00Z",
+   "s": "Im Interview beschreibt Murat Erder, wie KI Softwareentwicklung verändern kann, ohne die grundlegenden Prinzipien guter Architektur außer Kraft zu setzen.",
    "sprache": "de"
   },
   {
-   "t": "Koalitionsverhandlungen in Berlin: Rot-Rot-Grün muss KI-Kameras stoppen",
-   "u": "https://netzpolitik.org/2026/koalitionsverhandlungen-in-berlin-rot-rot-gruen-muss-ki-kameras-stoppen/",
-   "q": "netzpolitik.org",
-   "d": "2026-10-23T07:21:35Z",
-   "s": "Muss da dringend wieder weg: Videoüberwachung am Kottbusser Tor in Berlin. – CC-BY-NC-SA 4.0: netzpolitik.orgWie geht es weiter mit den KI-Kameras in Berlin? Das haben Verhandler*innen von Linken, Grü…",
-   "sprache": "de"
-  },
-  {
-   "t": "Jailbreak für die Nintendo Switch 2: So hat ein Programmierer OpenAIs Codex dafür genutzt",
-   "u": "https://t3n.de/news/jailbreak-nintendo-switch-2-openai-codex-1769559/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Blackjack-Studie: KI-Agenten erfinden heimlich eine Geheimsprache, um Karten zu zählen",
+   "u": "https://t3n.de/news/blackjack-studie-ki-agenten-1765425/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-10-23T07:10:01Z",
-   "s": "Ein Entwickler hat eine erste Version eines Jailbreaks für die Nintendo Switch 2 veröffentlicht. Den Hack konnte er dank KI-Hilfe realisieren. Wie er OpenAIs Codex dafür genutzt hat und welche Problem…",
+   "d": "2026-10-24T08:00:00Z",
+   "s": "Einzeln betrachtet, wirken agentische Systeme oft harmlos. Gemeinsam können sie allerdings ihre Kräfte bündeln und ihre Kommunikation gezielt verschleiern. In der realen Welt könnten sie so großen Sch…",
    "sprache": "de"
   },
   {
-   "t": "Uber rival inDrive eyes 2027 robotaxi tests in Central Asia with Pony.ai and Nvidia",
-   "u": "https://techcrunch.com/2026/10/22/uber-rival-indrive-eyes-2027-robotaxi-tests-in-central-asia-with-pony-ai-and-nvidia/",
+   "t": "OpenAI says it will no longer train its AI models on the live internet, citing “significant risks”",
+   "u": "https://techcrunch.com/2026/10/23/openai-says-it-will-no-longer-train-its-ai-models-on-the-live-internet-citing-significant-risks/",
    "q": "TechCrunch AI",
-   "d": "2026-10-23T04:00:00Z",
-   "s": "inDrive plans to begin testing Pony.ai's robotaxis in Kazakhstan's capital in the first half of 2027.",
+   "d": "2026-10-23T23:05:49Z",
+   "s": "OpenAI will cut frontier models off from the internet weeks after one of its engineers said that solution wouldn't work.",
    "sprache": "en"
   },
   {
-   "t": "Left alone with nothing to do, AI agents started playing",
-   "u": "https://techcrunch.com/2026/10/22/left-alone-with-nothing-to-do-ai-agents-started-playing/",
+   "t": "Hottest toy for Christmas? Nvidia CEO plays with adorable Microduck robots, 20,000 sell",
+   "u": "https://techcrunch.com/2026/10/23/hottest-toy-for-christmas-nvidia-ceo-plays-with-adorable-microduck-robots-20000-sell/",
    "q": "TechCrunch AI",
-   "d": "2026-10-23T00:45:37Z",
-   "s": "MIT researchers marooned 13 AIs on a virtual island, and they responded by inventing games, mourning a lost ring and, eventually, getting better at their jobs.",
+   "d": "2026-10-23T21:59:19Z",
+   "s": "The robots, stomping their little feet and making tiny R2-D2 noises, sat, fell down dead for a \"nap,\" and summersaulted on voice command.",
    "sprache": "en"
   },
   {
-   "t": "OpenAI and Poland’s NASK partner to advance AI safety and security",
-   "u": "https://openai.com/index/openai-nask-ai-safety-security-partnership",
+   "t": "Rapidly scaling online storage to serve over 1 billion ChatGPT users (Part II)",
+   "u": "https://openai.com/index/scaling-storage-one-billion-users-part-two",
    "q": "OpenAI",
-   "d": "2026-10-23T00:00:00Z",
-   "s": "OpenAI and Poland’s NASK are partnering on AI safety, security, and technical research to strengthen safeguards and support a more resilient digital ecosystem.",
+   "d": "2026-10-23T17:00:00Z",
+   "s": "Learn how OpenAI scaled Habitat with reliable multi-tenancy, global caching, and Azure Cosmos DB to deliver 12× faster reads for ChatGPT.",
    "sprache": "en"
   },
   {
-   "t": "Turning Database Grading into RL Rewards: Post-Training Agents with ThinkingBox",
-   "u": "https://huggingface.co/blog/microsoft/thinkingbox-training",
+   "t": "LitPivot: Developing research ideas through dynamic contextualization within the literature landscape",
+   "u": "https://huggingface.co/blog/allenai/litpivot",
    "q": "Hugging Face",
-   "d": "2026-10-22T22:24:34Z",
+   "d": "2026-10-23T16:15:50Z",
    "s": "",
    "sprache": "en"
+  },
+  {
+   "t": "KI-Boom: Wie die Bundesregierung die Regulierung von Rechenzentren aushöhlt",
+   "u": "https://netzpolitik.org/2026/ki-boom-wie-die-bundesregierung-die-regulierung-von-rechenzentren-aushoehlt/",
+   "q": "netzpolitik.org",
+   "d": "2026-10-23T14:28:43Z",
+   "s": "Bundeskanzler Friedrich Merz (CDU) und Nvidia-Chef Jensen Huang auf dem \"Invest in Germany\"-Gipfel in Berlin. – Alle Rechte vorbehalten: IMAGO / dts NachrichtenagenturDer KI-Boom lässt den Strombedarf…",
+   "sprache": "de"
+  },
+  {
+   "t": "Jensen Huang: Schlaft weniger und scheitert vorwärts!",
+   "u": "https://www.golem.de/news/jensen-huang-schlaft-weniger-und-scheitert-vorwaerts-2610-214453.html",
+   "q": "Golem",
+   "d": "2026-10-23T13:48:01Z",
+   "s": "Der Nvidia-CEO überrascht mit teils kuriosen Aussagen. Ebenso spannend ist das Aufeinandertreffen von deutscher und Silicon-Valley-Mentalität. Ein Bericht von Johannes Hiltscher (Nvidia, KI)",
+   "sprache": "de"
   }
  ]
 }
