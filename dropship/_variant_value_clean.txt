@@ -3922,3 +3922,4 @@ gid://shopify/Product/16656618652039	Farbe	3
 gid://shopify/Product/16656645456263	Farbe	15
 gid://shopify/Product/16656660332935	Farbe	5
 gid://shopify/Product/16656674849159	Ausführung	1
+gid://shopify/Product/16616700838279	Farbe	5
