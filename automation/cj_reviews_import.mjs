@@ -21,6 +21,7 @@ import { cjFetch, WEICHE_CODES } from './lib/cj_fetch.mjs';
 import { bewerteAntwort } from './lib/judgeme_antwort.mjs';
 import { shopifyGql } from './lib/shopify_gql.mjs';
 import { reviewKey, loadReviewStates, recordReviewState } from './lib/cj_review_ledger.mjs';
+import { normalizeShopifyHost } from './lib/shopify_host.mjs';
 
 const CJ_EMAIL = (process.env.CJ_EMAIL || '').trim();
 const CJ_API_KEY = (process.env.CJ_API_KEY || '').trim();
@@ -31,8 +32,7 @@ const GROQKEY = (process.env.GROQ_API_KEY || '').trim();   // Rückfall, s. lib/
 const ADMIN_TOKEN = (process.env.SHOPIFY_ADMIN_TOKEN || '').trim();
 const CID = (process.env.SHOPIFY_CLIENT_ID || '').trim();
 const CSEC = shopifyClientSecret();  // s. automation/lib/shopify_secret.mjs (vertauschte Env-Felder)
-let SHOP = (process.env.SHOPIFY_SHOP || '').replace(/^https?:\/\//, '').replace(/\/.*$/, '').trim();
-if (!/myshopify\.com$/.test(SHOP)) SHOP = 'au3j0y-hq.myshopify.com';
+const SHOP = normalizeShopifyHost(process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com');
 
 const QUERY = process.env.QUERY || 'tag:cj-real';
 const ONLY = (process.env.ONLY || '').split(',').map(s => s.trim()).filter(Boolean);
@@ -85,7 +85,7 @@ async function sgql(tok, q, v) {
 }
 async function sWorks(t) { try { const r = await sgql(t, '{shop{name}}'); return !!r?.data?.shop?.name; } catch { return false; } }
 async function sCC() {
-  const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ client_id: CID, client_secret: CSEC, grant_type: 'client_credentials' }) });
+  const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, { method: 'POST', redirect:'error', signal:AbortSignal.timeout(30000), headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ client_id: CID, client_secret: CSEC, grant_type: 'client_credentials' }) });
   const roh = await r.text();
   let j = {}; try { j = JSON.parse(roh); } catch {}
   // Den Grund NENNEN. Ein stiller Fehlschlag sieht aus wie „keine Creds" und kostet

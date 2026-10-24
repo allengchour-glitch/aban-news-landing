@@ -13,6 +13,7 @@ function fixture(t, platforms = 'instagram', results = {}, status = 'ready') {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'luxe-meta-checkpoint-'));
   t.after(() => fs.rmSync(root, { recursive:true, force:true }));
   fs.mkdirSync(path.join(root, 'automation'));
+  fs.cpSync(new URL('lib/', import.meta.url),path.join(root,'automation/lib'),{recursive:true});
   fs.mkdirSync(path.join(root, 'social'));
   const script = path.join(root, 'automation/video-autopost-meta.mjs');
   fs.copyFileSync(new URL('video-autopost-meta.mjs', import.meta.url), script);

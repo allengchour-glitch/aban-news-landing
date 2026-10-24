@@ -42,6 +42,7 @@ jobs:
           fetch-depth: 1
           sparse-checkout: |
             automation/metricool-schedule.mjs
+            automation/lib/social_queue.mjs
             social/metricool_queue.csv
           sparse-checkout-cone-mode: false
       - uses: actions/setup-node@v4

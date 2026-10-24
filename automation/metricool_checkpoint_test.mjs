@@ -12,6 +12,7 @@ function fixture(t, count = 1) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'luxe-metricool-checkpoint-'));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   fs.mkdirSync(path.join(root, 'automation'));
+  fs.cpSync(new URL('lib/', import.meta.url),path.join(root,'automation/lib'),{recursive:true});
   fs.mkdirSync(path.join(root, 'social'));
   const script = path.join(root, 'automation/metricool-schedule.mjs');
   fs.copyFileSync(new URL('metricool-schedule.mjs', import.meta.url), script);
