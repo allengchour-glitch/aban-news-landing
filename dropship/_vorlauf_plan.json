@@ -1,5 +1,5 @@
 {
- "pruefer_stand": "2026-10-23T22:11:51Z",
+ "pruefer_stand": "2026-10-24T00:26:59Z",
  "slots": {
   "bild-20261019T0745": {
    "basis_utc": "2026-10-19T07:45:00Z",
@@ -1202,20 +1202,17 @@
   "story-20261024T1710": {
    "basis_utc": "2026-10-24T17:10:00Z",
    "format": "story",
-   "grund": "",
+   "grund": "zurückgezogen: Produkt wanddeko-kranz-totenkopf-fga910996 nicht kaufbar/nicht veröffentlicht",
    "handle": "",
    "handles": [
     "wanddeko-kranz-totenkopf-fga910996"
    ],
    "letzter_versuch": "2026-10-19T00:33:54Z",
-   "mc_ids": [
-    399530525,
-    399530529
-   ],
+   "mc_ids": [],
    "reserviert_um": "2026-10-19T00:33:54Z",
-   "status": "geplant",
+   "status": "offen",
    "termin_utc": "2026-10-24T17:10:00Z",
-   "versuche": 1
+   "versuche": 0
   },
   "story-20261025T1145": {
    "basis_utc": "2026-10-25T11:45:00Z",
@@ -1805,6 +1802,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-24T00:09:18Z",
+ "stand": "2026-10-24T00:27:00Z",
  "version": 1
 }
