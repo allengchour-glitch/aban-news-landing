@@ -1,14 +1,12 @@
 {
  "host": "vm",
- "stunde": "2026-10-24T05:00Z",
- "stand": "2026-10-24T05:09:33Z",
+ "stunde": "2026-10-24T06:00Z",
+ "stand": "2026-10-24T06:10:46Z",
  "fenster_min": 60,
- "summe": 140,
+ "summe": 15,
  "skripte": {
-  "cj_varianten_wache.py": 106,
-  "cj_fulfill_engine.py": 22,
-  "versand_stillstand.py": 6,
-  "cj_order_engine.py": 4,
+  "cj_fulfill_engine.py": 11,
+  "cj_order_engine.py": 2,
   "cj_zahlung_offen.py": 2
  }
 }
