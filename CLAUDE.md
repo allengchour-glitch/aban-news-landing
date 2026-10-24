@@ -84,6 +84,11 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-24 abends, später (🔎 Firecrawl auf Wunsch „max“: billigerer Einkauf für die Widmann-Artikel — Weg gefunden, Preise unbekannt):**
+Mit 7 Credits (262 blieben) gesucht. **Widmann hat ein eigenes B2B-Portal mit Anmeldeformular** (`widmannsrl.com/de/partner`, „Schweiz“ und „Online“ wählbar, Datenfeed, FTP/EDI). Preise erst nach Freischaltung; HL Grosshandel zeigt „0,00 €“ ohne Händlerzugang, Scherzwelt „Widmann Point“ nimmt nur stationäre Händler.
+- **Anmelden kann nur der Besitzer** (Firmendaten, Formular nach aussen). Erst mit den B2B-Preisen ist klar, ob ein Preis nahe Galaxus ohne Verlust geht.
+- Ein offenes Händlerportal mit Preis hinter dem Login ist mit Firecrawl nicht lesbar — nicht erneut versuchen.
+
 **📌 2026-10-24 abends (💶 Auf Wunsch des Besitzers: 9 Widmann-Artikel über 2× ohne Verlust gesenkt):**
 Auftrag „nur 12 Artikel anpassen, so dass ich keinen Verlust habe“. Geändert 9, Marge pro Stück vorher CHF 3.2–9.3, nachher 1.0–1.7. Alt/neu: `dropship/FORTURA-PREISANPASSUNG-2410.csv`.
 - **🚨 Der Galaxus-Preis liegt bei allen 12 UNTER unserem Einkauf (`unitCost`).** Ohne Verlust ist ein Gleichziehen unmöglich; die neuen Preise bleiben ~1.7–2.1× über Galaxus. Hebel wäre ein günstigerer Einkauf, nicht der Verkaufspreis.
