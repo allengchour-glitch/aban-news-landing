@@ -2,6 +2,8 @@
 
 ## LUXESTYLE_PROFIT_4_20261024
 
+**Zusätzliche Codex-Vorarbeit, 24.10.2026:** [Konkrete Arbeitsunterlagen für Claude](CLAUDE-HILFE-20261024.md) mit zwei frisch gelesenen Shopify-Kostenreferenzen, [portabler Margeneingabe](MARGENPILOT-20261024.csv), [Feld-/Rechenschema](MARGEN-SCHEMA-20261024.json) und [rekonstruierbarem FAQ-Quellpatch](FAQ-QUELLPATCH-20261024.json). Gespeicherte unitCost ist keine vollständige Beschaffungskosten-/Gewinnrechnung; fehlende Kosten bleiben unbekannt. Nur Dokumentation vorbereitet und zurückgelesen, keine Shop-/Ads-Änderung und keine Claude-Ausführung bestätigt.
+
 ### Claude Code: vier Aufgaben für profitablere LuxeStyle-Verkäufe
 
 **Task-ID: LUXESTYLE_PROFIT_4_20261024**  
