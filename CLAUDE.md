@@ -84,6 +84,11 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-24 abends, später (🔎 Firecrawl auf Wunsch „max“: billigerer Einkauf für die Widmann-Artikel — Weg gefunden, Preise unbekannt):**
+Mit 7 Credits (262 blieben) gesucht. **Widmann hat ein eigenes B2B-Portal mit Anmeldeformular** (`widmannsrl.com/de/partner`, „Schweiz“ und „Online“ wählbar, Datenfeed, FTP/EDI). Preise erst nach Freischaltung; HL Grosshandel zeigt „0,00 €“ ohne Händlerzugang, Scherzwelt „Widmann Point“ nimmt nur stationäre Händler.
+- **Anmelden kann nur der Besitzer** (Firmendaten, Formular nach aussen). Erst mit den B2B-Preisen ist klar, ob ein Preis nahe Galaxus ohne Verlust geht.
+- Ein offenes Händlerportal mit Preis hinter dem Login ist mit Firecrawl nicht lesbar — nicht erneut versuchen.
+
 **📌 2026-10-24 spätnachmittags (🔥 Firecrawl: Widmann gegen Galaxus gemessen — 60 % teurer, Median 1.29):**
 751 Artikel mit Barcode, 737 Credits, nur lesend. Von 590 vergleichbaren sind 355 teurer (137 ab 1.5×, 12 ab 2×), 120 nicht bei Galaxus, 41 unlesbar.
 Bericht `dropship/FORTURA-GALAXUS-VERGLEICH-2410.md`. Werkzeug `automation/fortura_galaxus_lauf.mjs` + `lib/galaxus_treffer.mjs` (29 Tests, 8/8 Mutationen).
