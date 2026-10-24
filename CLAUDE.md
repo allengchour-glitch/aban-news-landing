@@ -145,7 +145,7 @@ Domains längst verifiziert**, die Baustelle lag woanders. Alles live gemessen.
   **Die beiden früheren Entscheide sind erledigt** (User 24.10.: „3 ja", „4 keine ahnung"):
   Fortura ist im Feed, `excluded_destination` ist aufgeklärt und entfernt — siehe nächster Block.
 
-**📌 2026-10-24 früh (🛒 Fortura im Merchant-Feed · 26 Lizenz-Artikel abgefangen · „70 % ausgeschlossen" aufgeklärt):**
+**📌 2026-10-24 früh (🛒 Fortura im Merchant-Feed · 29 Lizenz-Artikel abgefangen · „70 % ausgeschlossen" aufgeklärt):**
 Antwort auf die vier Punkte des Users („1 nein 2 ist schon 3 ja 4 keine ahnung"). Alles live
 gemessen, Bericht `/mnt/project-files/google/FORTURA-SHOPPING-2410.md`.
 - **✅ FORTURA IST IM FEED — und erst jetzt hat der Feed überhaupt GTINs.** Der Generator las nur
@@ -201,6 +201,20 @@ gemessen, Bericht `/mnt/project-files/google/FORTURA-SHOPPING-2410.md`.
   eigenen neuen Muster** (`anna`), nicht der Haupttest. (3) **Ob ein Ausschluss ein Entscheid ist,
   zeigt nur der Abgleich mit der Wirklichkeit** — 124 von 124 widersprochen ist der Beweis, das
   Anlagedatum allein wäre nur ein Verdacht gewesen.
+- **🚨 NACHTRAG (PR #2723): DREI LIZENZFIGUREN STANDEN IN DER BESCHREIBUNG, nicht im Titel — und
+  gefunden hat sie die Gegenprobe AM VERÖFFENTLICHTEN FEED, nicht der Test.** Nach dem Deploy habe
+  ich den Live-Feed über **alle** Felder nach Lizenznamen durchsucht: zwei generische
+  „Zauberer-Kostüm" mit sauberem Titel, aber „Harry Potter lässt grüssen." im Text, dazu einer mit
+  Hello Kitty. Google liest die Beschreibung mit — ein generisches Kostüm, das eine Lizenzfigur
+  anruft, ist genau der Fall „implied licensed product", also derselbe **Kontosperr**-Grund.
+  `pruefeProdukt` prüft jetzt **Titel UND Beschreibung**; betroffen 3 von 8084. Feed danach:
+  **8081 Artikel · 2154 GTIN · 0 Lizenz-Treffer in allen Feldern · 0 doppelte IDs**; der Filter
+  hält insgesamt **29** zurück. Gegenproben: „Superheld/Ultrasonic/Marionetten-Optik/Hulahoop"
+  greift nicht, eine fehlende Beschreibung stürzt nicht ab; 2 Mutationen rot.
+  **🔑 LEHRE: ein Filter, der am Titel geprüft wurde, ist nicht am fertigen Feed geprüft.** Der
+  Modultest konnte diese Fälle nie sehen — nur die Messung am veröffentlichten Ergebnis.
+  **Offen beim Besitzer:** die drei **Shop-Beschreibungen** rufen die Figur weiter an. Im Feed ist
+  es dicht, auf der Produktseite nicht — das ist Copy-Arbeit, nicht angefasst.
 
 **📌 2026-10-24 nachts, später (✅ Erste CJ-Sourcing-Antwort: lieferbar, rentabel, live — 16 bleiben offen):**
 Der User schickte CJs Mail „Success! Your Sourcing Request is Complete" (#CJSPU960265818) weiter.
