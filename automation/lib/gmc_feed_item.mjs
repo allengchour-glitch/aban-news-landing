@@ -68,7 +68,14 @@ export function pruefeProdukt(p = {}) {
   if (!(p.id || p.sku || p.handle)) return { ok: false, grund: 'keine ID (id/sku/handle fehlen)' };
   if (!p.link) return { ok: false, grund: 'kein Link' };
   if (RISIKO.test(p.titel) || RISIKO.test(p.marke || '')) return { ok: false, grund: 'Marken-/Safety-Risiko' };
-  const lizenz = (String(p.titel).match(LIZENZ) || [])[0];
+  // AUCH DIE BESCHREIBUNG, gemessen am fertigen Live-Feed vom 24.10.: zwei generische
+  // „Zauberer-Kostüm" trugen einen sauberen Titel, aber „Harry Potter lässt grüssen." im Text.
+  // Google liest die Beschreibung mit — ein generisches Kostüm, das eine Lizenzfigur anruft, ist
+  // genau der Fall „implied licensed product". Gefunden hat es nicht der Test, sondern die
+  // Gegenprobe AM VEROEFFENTLICHTEN FEED; die Titelprüfung allein sah sie nie.
+  // Betroffen sind 3 von 8084 Artikeln — der Preis dafür ist klein.
+  const lizenz = (String(p.titel).match(LIZENZ) || [])[0]
+    || (String(p.beschreibung ?? '').match(LIZENZ) || [])[0];
   if (lizenz) return { ok: false, grund: `Lizenzname: ${lizenz}` };
   return { ok: true, grund: 'im Feed' };
 }
