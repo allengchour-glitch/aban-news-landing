@@ -1202,15 +1202,18 @@
   "story-20261024T1710": {
    "basis_utc": "2026-10-24T17:10:00Z",
    "format": "story",
-   "grund": "zurückgezogen: Produkt wanddeko-kranz-totenkopf-fga910996 nicht kaufbar/nicht veröffentlicht",
+   "grund": "",
    "handle": "",
    "handles": [
-    "wanddeko-kranz-totenkopf-fga910996"
+    "outdoor-bluetooth-karaoke-lautsprecher-600000"
    ],
    "letzter_versuch": "2026-10-24T01:09:17Z",
-   "mc_ids": [],
+   "mc_ids": [
+    404693791,
+    404693796
+   ],
    "reserviert_um": "2026-10-24T01:09:17Z",
-   "status": "reserviert",
+   "status": "geplant",
    "termin_utc": "2026-10-24T17:10:00Z",
    "versuche": 1
   },
@@ -1802,6 +1805,6 @@
    "versuche": 1
   }
  },
- "stand": "2026-10-24T01:09:17Z",
+ "stand": "2026-10-24T01:09:50Z",
  "version": 1
 }
