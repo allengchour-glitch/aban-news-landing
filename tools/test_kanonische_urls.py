@@ -44,7 +44,22 @@ pruef("canonical begradigt", 'rel="canonical" href="https://abannews.com/shop"' 
 pruef("og:url begradigt", 'content="https://abannews.com/shop"' in neu, True)
 # Gegenproben: Links und alternate bleiben, wie sie sind.
 pruef("normaler Link bleibt", '<a href="https://abannews.com/shop.html">' in neu, True)
-pruef("alternate bleibt", 'rel="alternate" href="https://abannews.com/en/shop.html"' in neu, True)
+pruef("alternate ohne hreflang bleibt",
+      'rel="alternate" href="https://abannews.com/en/shop.html"' in neu, True)
+
+# --- hreflang: muss mit, sonst widerspricht es dem canonical ----------------
+h = ('<link rel="alternate" hreflang="de" href="https://abannews.com/about.html" />'
+     '<link rel="alternate" hreflang="x-default" href="https://abannews.com/" />'
+     '<link rel="alternate" type="application/rss+xml" href="https://abannews.com/feed.xml">')
+neuh, nh = K.seite(h)
+pruef("hreflang begradigt", nh, 1)
+pruef("hreflang Inhalt", 'hreflang="de" href="https://abannews.com/about"' in neuh, True)
+# Gegenproben: x-default auf die Startseite bleibt, RSS bleibt.
+pruef("x-default bleibt", 'hreflang="x-default" href="https://abannews.com/"' in neuh, True)
+pruef("RSS-alternate bleibt", 'href="https://abannews.com/feed.xml"' in neuh, True)
+# Umgekehrte Reihenfolge (href vor hreflang) kommt ebenfalls vor.
+neuh2, nh2 = K.seite('<link rel="alternate" href="https://abannews.com/it/a.html" hreflang="it">')
+pruef("href vor hreflang", (nh2, 'href="https://abannews.com/it/a"' in neuh2), (1, True))
 
 # Umgekehrte Attribut-Reihenfolge kommt in den Dateien vor.
 neu2, n2 = K.seite('<link href="https://abannews.com/a.html" rel="canonical">')

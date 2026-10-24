@@ -104,6 +104,15 @@ MUSTER = [
     # <meta property="og:url" content="…">
     (re.compile(r'(<meta\b[^>]*\b(?:property|name)=["\']og:url["\'][^>]*\bcontent=["\'])([^"\']+)', re.I), 2),
     (re.compile(r'(<meta\b[^>]*\bcontent=["\'])([^"\']+)(["\'][^>]*\b(?:property|name)=["\']og:url["\'])', re.I), 2),
+    # <link rel="alternate" hreflang="de" href="…">
+    # ⚠️ Muss mit: nach dem Begradigen sagt die Seite „ich bin /en/about", die
+    # hreflang-Angabe aber „/en/about.html". Google verlangt in hreflang die
+    # kanonische Adresse und verwirft das Paar, wenn beides auseinanderläuft —
+    # die Angabe wäre dann schlechter als vorher. Gemessen: 1701 Dateien.
+    # `hreflang` muss im Treffer vorkommen, damit RSS-Alternativen
+    # (`rel="alternate" type="application/rss+xml"`) nicht erfasst werden.
+    (re.compile(r'(<link\b[^>]*\bhreflang=["\'][^"\']*["\'][^>]*\bhref=["\'])([^"\']+)', re.I), 2),
+    (re.compile(r'(<link\b[^>]*\bhref=["\'])([^"\']+)(["\'][^>]*\bhreflang=["\'])', re.I), 2),
 ]
 
 
