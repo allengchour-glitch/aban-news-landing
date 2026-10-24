@@ -89,6 +89,18 @@ const LIZENZTITEL = [
 for (const titel of LIZENZTITEL) {
   pruef(`Lizenz raus: ${titel}`, feedItem({ ...BASIS, titel }), null);
 }
+// Echte Fälle aus dem veröffentlichten Feed: sauberer Titel, Lizenzfigur in der Beschreibung.
+pruef('Lizenz in der Beschreibung raus', feedItem({ ...BASIS, titel: 'Zauberer-Kostüm',
+  beschreibung: 'Harry Potter lässt grüssen. Marke: Widmann, Farbe: schwarz.' }), null);
+pruef('Lizenz in der Beschreibung: Grund genannt', pruefeProdukt({ ...BASIS, titel: 'Kostüm Zauberer',
+  beschreibung: 'Dein Kind kann es locker mit Harry Potter aufnehmen!' }).grund, 'Lizenzname: Harry Potter');
+// Gegenprobe: eine Beschreibung OHNE Lizenzfigur darf nicht leiden — auch nicht mit Wörtern,
+// die nach Figur klingen.
+pruef('harmlose Beschreibung bleibt', pruefeProdukt({ ...BASIS, titel: 'Zauberer-Kostüm',
+  beschreibung: 'Wie ein echter Superheld. Ultrasonic gereinigt, Marionetten-Optik, Hulahoop dazu.' }).ok, true);
+pruef('leere Beschreibung stürzt nicht ab',
+  pruefeProdukt({ ...BASIS, titel: 'Zauberer-Kostüm', beschreibung: undefined }).ok, true);
+
 pruef('Lizenz-Grund wird benannt',
   pruefeProdukt({ ...BASIS, titel: 'Kostüm Batman Classic' }).grund, 'Lizenzname: Batman');
 // GEGENPROBE IN DIE ANDERE RICHTUNG — ein zu breites Muster würde harmlose Ware stumm
