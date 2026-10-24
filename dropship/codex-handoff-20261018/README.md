@@ -1,5 +1,101 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## LUXESTYLE_PROFIT_4_20261024
+
+### Claude Code: vier Aufgaben für profitablere LuxeStyle-Verkäufe
+
+**Task-ID: LUXESTYLE_PROFIT_4_20261024**  
+Inhaberauftrag vom 24.10.2026: die vier zuletzt besprochenen Aufgaben gründlich ausarbeiten und Claude Code übergeben. Status: **zur Übernahme bereitgestellt; Claude-Lesebestätigung und Ausführung unbekannt**. Sprache Deutsch Schweiz. Ausschliesslich LuxeStyle/luxestyle.ch im Repo allengchour-glitch/aban-news-landing.
+
+### Arbeitsweise und bestehende Grenzen
+
+Zuerst diese Übergabe und dropship/codex-handoff-20261018/TAGESPROTOKOLL.md auf Branch codex/luxestyle-claude-handoff-20261018 lesen. Historische Einträge, Freigaben, Post-IDs/UUIDs und bestehende Schutzregeln erhalten. Keine alten Entwürfe als neue Umsetzung ausgeben.
+
+Ziel sind überprüfbare Margen, drei geeignete Pilotprodukte, bessere Kaufgrundlagen und ein messbarer späterer Ads-Test. **Die vier Aufgaben erlauben begrenzte Leseprüfungen, lokale Ausarbeitung/Codeentwürfe, Diffs und Dokumentation. Shop-, Theme-, Filter-, Feed-, Flow-, Rabatt-, Budget-, Tracking-/Consent-, DNS- oder Kampagneneinstellungen bleiben Freigabeentwürfe.** Keine Kunden-/Lieferantennachrichten, Testkäufe, gesendeten Tracking-Ereignisse, kostenpflichtigen Renders, Installationen, Workflowstarts oder Deployments. Main-Theme-Schreibgrenzen nicht über alternative Wege umgehen.
+
+**CHF 150/Monat wurde ausschliesslich für eine Werbeprognose gewählt und ist keine Ausgaben-/Kampagnenfreigabe.** CHF 100 monatliche Fixkosten sowie 20/30/35% Restmarge und Wachstumsraten waren Modellannahmen, keine Istwerte. Die zuvor diskutierten 19/Monat sind kein nachgewiesenes Abo oder vollständiger Kostenblock.
+
+Vor Kontoabfragen Shopify-Identität LuxeStyle, primär luxestyle.ch, CHF verifizieren; andere Marken nicht bearbeiten. Vorhandene CJ-/Shopify-/Google-Helfer und Wächter verwenden. CJ_API_KEY ist laut Inhaber-Screenshot im Repo vorhanden; GitHub-Secret-Ablage ist keine Runtimebindung oder erfolgreiche Anmeldung. Keine Schlüssel auslesen/ausgeben und keinen Import-/Reviewjob als Zugangstest starten. Fehlende lokale Dateien oder Plugins bedeuten keinen fehlenden Connector. Bei fehlendem Zugriff den konkreten Blocker festhalten und unabhängig möglichen Rest erledigen.
+
+Kennzahlen und umfangreiche Verkaufsprüfungen höchstens einmal täglich. Vorhandene Abfragen über alle Teilaufgaben hinweg wiederverwenden; ein neuer Zweck allein erlaubt keine Wiederholung. Nur ein neuer konkreter Befund rechtfertigt eine dokumentierte gezielte Gegenprobe. Heutige Metricool-/Klaviyo-Erstberichte und neuere finanzielle Aggregate sind im Tagesprotokoll dokumentiert. Auth/403/429/Quota/Timeout oder fehlende Zeilen bleiben unbekannt, nicht Null/404. Vor Änderungen frische Gegenprobe, konkreten Diff und Rücksetzreferenz vorbereiten. Öffentliche Gratisversandgrenze CHF 50, interne CHF 45 nach Rabatt und Kundendomäne account.luxestyle.com.co erhalten. Die vier früher genehmigten Klaviyo-DNS-Ergänzungen sind ein separater enger Auftrag und werden hier weder erweitert noch erneut zur Genehmigung gestellt.
+
+Firecrawl führt laut Inhaber eine andere Session aus. **Keinen zweiten Crawl starten.** Vorhandene Ergebnisse mit URL, Zeitpunkt, Scope und Datei-/Commitnachweis lesen, wenn sie verfügbar sind; fremde Tätigkeiten nicht als eigene ausgeben. Fehlende Ergebnisse als unbekannt behandeln.
+
+### 1. Echte Marge und drei Pilotprodukte bestimmen
+
+**Ergebnis:** belegte, vergleichbare CHF-Rechnung je konkreter Variante und eine begründete kleine Auswahl. Drei Produkte anstreben, höchstens fünf unterschiedliche Produktdatensätze prüfen, keine Massenpagination. Wenn nur zwei ausreichend belegbar sind, zwei liefern und die dritte Datenlücke benennen; keine Mindestzahl durch Vermutungen füllen.
+
+Zwei bekannte Ausgangskandidaten, vor Nutzung frisch lesen:
+
+- Sternenlicht-Projektor: Product15521256604033, Variante56197916361089, SKU CJ-1477820492730732544, zuletzt CHF34.90; https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544.
+- Aroma-Diffuser in Holzoptik: Product15411554320769, Variante55743280021889, SKU CJ-CJJJJTJT22925, zuletzt CHF44.90; https://luxestyle.ch/products/aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben.
+
+Weitere Kandidaten nur aus vorhandenen aktiven, eindeutig zuordenbaren Produkten wählen. Keine neuen CJ-Produkte importieren oder DRAFT/fehlende Kanäle aktivieren. Aktuellen Status, Tags, Varianten-ID, Preis/Währung, reales Bild, Inventory-Tracking, inventoryPolicy und Storefront-Kaufbarkeit frisch prüfen. Bestand0 bei untracked/CONTINUE ist kein Ausverkaufsbeweis. Fehlende Tags, rueckhol und bestehende Werbe-/Compliance-/Kanalsperren erhalten; im jeweils vorgesehenen Geltungsbereich automation/lib/kanal_sperren.mjs anwenden. Google-Ausschlüsse nicht entfernen oder als Socialfreigabe umdeuten.
+
+Je Variante belegen:
+
+1. Nettowarenumsatz nach tatsächlichen Rabatten/Erstattungen und gegebenenfalls abzuführenden Steuern. Keine Steuerpflicht/-freiheit unterstellen.
+2. Beim Kunden vereinnahmte Versandgebühr und die wirkliche Versandbelastung getrennt erfassen. Öffentliche CHF50-Regel nicht ändern.
+3. Einkauf der exakten Lieferantenvariante, Versand nach CH, Verpackung, Zoll/Einfuhrkosten und gegebenenfalls nicht erstattbare Einfuhrsteuer. CJ-Prime-Vorteile nur mit tatsächlichem Nachweis anrechnen. Keine Kauf-/Order-/Renderendpunkte.
+4. Zahlungs-/variable Plattformgebühren und belegte Retouren-/Ersatz-/Ausfallkosten beziehungsweise klar bezeichnete Reserve. Bereits vom Nettoumsatz abgezogene Rückerstattungen nicht nochmals vollständig als Kosten abziehen. Keine pauschal erfundene Retourenquote.
+5. Fremdwährungen nur mit belegtem Kurs, Kursdatum und Quelle nach CHF umrechnen. Klaviyo-USD-Werte nicht mit Shop-CHF vermischen. Leere Einkaufspreise oder COGS0 sind kein Nachweis kostenloser Ware.
+6. Tatsächliche laufende Fixkosten aus legitim verfügbaren Kostenbelegen erfassen, falls vorhanden; andernfalls unbekannt statt CHF100 behaupten. Eigene Arbeitszeit/Inhaberlohn und Steuern getrennt benennen.
+
+Rechnung: **Deckungsbeitrag vor Werbung = Nettowarenumsatz + vereinnahmter Netto-Versand − Landed Costs (Einkauf plus Lieferung/Import zusammen genau einmal) − Zahlungs-/sonstige variable Gebühren − verbleibende Retourenabwicklung.** Gesamtgewinn benötigt zusätzlich die echten Fixkosten. Unbekannte Kosten als unbekannt oder begründete Spanne führen; keinen unvollständigen Beitrag als bestätigte Profitabilität verkaufen.
+
+Lieferung MARGENPILOT.csv und kurzer Bericht mit «Produkt/Variante | Preis netto CHF | Versanderlös | Einkauf/Lieferung | Gebühren | Retourenreserve | DB CHF/% | Quellen/Datum | Datenlücken | Pilotentscheidung». Den maximal kostendeckenden Akquisepreis aus dem DB berechnen; dieser lässt noch keine Reserve für Fixkosten/Gewinn. Eine spätere Ziel-CAC muss diese Reserve berücksichtigen und begründet werden. Keine LTV-/Wiederkaufannahme ohne Nachweis.
+
+### 2. Produktseiten dieser Auswahl verkaufsbereit vorbereiten
+
+**Ergebnis:** je bestätigtem Pilotprodukt ein enger, quellenbelegter Inhalts-/Codeentwurf mit Vorher/Nachher und Rücksetzreferenz. Erst die bestehende Seite prüfen, keine pauschale Neufassung und keine neue Serie von Produktseiten.
+
+1. Produkt-/Variantenidentität, Auswahl, Preis, reales Hauptbild und kaufbaren CTA miteinander abgleichen. Bilder visuell prüfen. Vorhandene Inhaberbestätigung der Shopproduktbildrechte akzeptieren; sie gilt nicht automatisch für fremde Filme/Musik. Kein generischer Stock oder erfundene Produktansicht.
+2. Konkrete Kauf-Fragen beantworten: Welche Ausführung ist angeboten? Was ist belegbar enthalten? Welche Stromversorgung/Kompatibilität ist tatsächlich belegt? Masse/Materialien nur aus der exakten Quelle übernehmen. Fehlende Angaben offen lassen beziehungsweise zur Quellenklärung markieren. Keine medizinischen Wirkungen, Bewertungen, Swiss-made-, Lager- oder Lieferzeitversprechen erfinden.
+3. Vorhandene Titel/H1/Meta/Canonical, Bilder/Alttexte und mobile Kaufstrecke gezielt prüfen. Bereits korrigierte Felder erhalten. Ein öffentlicher Produktlink beweist keine Google-Indexierung, ein HTML-Abruf keine funktionierende mobile Interaktion.
+4. Bestehende Beschreibung-only-Entwürfe fortführen. Der Projektor hatte zuletzt unbelegte Mass-/PVC-/Lebensdauer-/Elektro-/Modellclaims; aktuellen Wortlaut neu gegenlesen. Kein alter Text als heute bestätigt übernehmen. Fremde Produktlinks aus dem globalen Suchmodal nicht als belegten Fehler der Produktempfehlungen ausgeben.
+5. Genau dokumentieren, welche Felder/Template-Dateien geändert würden und weshalb. Preise, Tags, Inventar, Lieferprofile, Varianten, Rabatte und Checkout-Flows sind ausserhalb eines Textdiffs. Nötige Theme-/Attributänderungen separat als Freigabeentwurf kennzeichnen. Bei Liquid/Code passende begrenzte Validierung und verfügbare Vorschau, keine gefälschte Render-/Browserabnahme.
+
+Lieferung PRODUKTSEITEN-PILOT.md, je Produkt Vorher-/Nachherdaten, enger Diff und Prüftabelle. Abnahme: jeder neue Tatsachenclaim hat einen Beleg; Kaufziel und Ausführung passen; alle verbleibenden Blocker klar. Ein Entwurf ist keine Liveänderung und kein Verkaufsnachweis.
+
+### 3. Bestehende Kategorien und kostenlose Google-Einstiege stärken
+
+**Ergebnis:** die drei Pilotprodukte über sinnvolle bestehende Kategorien auffindbar machen und höchstens drei belegte SEO-/Free-Listings-Korrekturen vorbereiten.
+
+Den vorhandenen Task **LUXESTYLE_GOOGLE_FREE_20261024** unter dieser Aufgabe weiterführen und referenzieren; keine zweite identische Merchant-/Search-Console-Auswertung starten. Älteren Auftrag und Nachweise erhalten, Übernahme/Status explizit koordinieren.
+
+1. Vorhandene Kategorien/Unterkategorien, Collection-Regeln und Filterattribute gezielt lesen. Sie sind bereits vorhanden. Bisherige öffentliche Stichprobe: Technik zeigte unter anderem Damenmode/Partydeko/Schmuck, Grössen mischten Zahlen/cm/mm. Erst tatsächliche Produktzuordnungen und Kombinationsartikel prüfen; keine pauschale Löschung oder Tagentfernung. Interne Automations-/Sperrtags dürfen keine Kundenfilter werden.
+2. Pro Pilotprodukt eine passende primäre bestehende Kategorie und wenige sinnvolle interne Links bestimmen. Keine ähnliche neue Landingpage ohne abgegrenzte Suchabsicht anlegen. Erreichbarkeit, Canonical, Titel/H1 und passende Einleitung prüfen; HTTP200 ist kein Ranking-/Indexierungsnachweis. Von der anderen Firecrawl-Session vorhandene Befunde übernehmen und bei einem konkreten Fix gezielt gegenprüfen, ohne neuen Crawl.
+3. Kategoriebezogene Kaufhilfe statt allgemeiner Mode-/Schuhfragen für Technik/Licht vorbereiten. Bereits konkretisierter enger FAQ-Entwurf: Collection690626658689 / Handle licht-nachtlicht-projektor, MAIN-Theme187533001089, templates/collection.json, JSON-Pfad /sections/lux_faq/settings/custom_liquid, zuletzt MD51137d372b40844b60ee7c56f841ebab4. Nur Ziel-ID UND Handle adressieren, originalen Nichtziel-Block und sonstige Inhalte erhalten. Vor Verwendung Quelle/MD5 frisch lesen; statischer Diff ist keine Liquid-/Darstellungsvorschau und keine Livefreigabe.
+4. Kostenlose Merchant-Einträge getrennt von Shopping Ads prüfen: richtige Kontozuordnung, maximal zehn bestehende Produkte, tatsächliche Angebots-IDs/Destinationen/Problemcodes. Negative Zähler verwerfen; höchstens eine begründete kleine Gegenprobe, keine daraus abgeleiteten Feedänderungen. Shopping_ads-Ausschluss beweist keinen Free-Listings-Ausschluss. Fehlende GTIN rechtfertigt nicht automatisch identifier_exists=false.
+5. Search Console sc-domain:luxestyle.ch frisch zuordnen. Bestehende Tagesexporte nutzen; sonst zwei kleine finale28-Tage-Vergleichsabfragen mit je höchstens25 Query-/Seiten-Zeilen, keine Pagination. Höchstens drei konkrete Chancen mit belegten Impressionen/Klicks/CTR/Position und passendem Seiteninhalt. Fehlende Toplisten-Zeilen sind unbekannt, keine0 oder belegter Rankingverlust. Quelle/Datum/Filter beibehalten; keine Verkäufe aus Klicks ableiten.
+6. Bereits erledigte oder beantragte URLs anhand Tagesprotokoll/Inhabermeldungen ausschliessen. Die heute gelieferten19 Seitenadressen und der früher bestätigte Projektor dürfen nicht als neue Indexierungsarbeit ausgegeben werden. Inhaberstatus als solchen führen; keine Indexierungsanträge/Sitemap-Wiederholungen durch diesen Auftrag.
+
+Lieferung SICHTBARKEIT-PILOT.md mit «Produkt | bestehende Kategorie | belegter Befund | Quellzeit/ID | konkreter Diff | Prüfung | Freigabestatus» und maximal drei priorisierten SEO-/Merchant-Entwürfen. Keine Feed-/Filter-/Collection-/Themeaktivierung. Messplan: Suchklicks, Kategorie→Produkt-Klicks, Warenkorbzugänge und tatsächliche Bestellungen getrennt, soweit legitime Daten vorliegen. Keine Rankings oder Käufe versprechen.
+
+### 4. Begrenzten Google-Ads-Test nur planen
+
+**Ergebnis:** ein entscheidungsfähiger Testplan nach den Margen-/Seitenarbeiten, keine aktive Kampagne und keine Ausgaben. Unabhängig mögliche Vorbereitung erledigen; fehlende Voraussetzungen als Blocker nennen und keinen angeblich startbereiten Test erfinden.
+
+1. Tatsächliche Google-Ads-/Merchant-/Analytics-Kontoidentitäten für LuxeStyle prüfen, soweit legitimer Lesezugriff vorhanden. Bestehende Kampagnen, Budgets oder Trackingdaten nicht verändern. Keine Arbeit an anderen Konten/Marken.
+2. Nur ein bis zwei belegbar geeignete Pilotprodukte auswählen. Positiver belegter DB, passende Landingpage/Variante, aktuelle Kaufbarkeit und Werbe-/Compliance-/Rechte-/Destinationseignung sind Voraussetzungen. Bei unbekannter Marge keinen verbindlichen Ziel-CPA, Gebot oder garantierten ROAS festlegen.
+3. Echten Purchase-/Conversionstatus, CHF-Werte, Deduplizierung und erforderlichen Consent lesend prüfen. Ein vorhandenes Tag/Pixel belegt keine funktionierende Messung. Keine Conversion-/Consent-/Pixel-/GA4-/Shop-Einstellung aktivieren, keine Testkäufe oder Trackingereignisse senden. Unbekanntes Tracking blockiert einen späteren Start.
+4. Eine geeignete Kampagnenart mit konkreter Such-/Kaufabsicht begründen. Entwurf für enge Produkt-/Suchbegriffe, CH-Zielgebiet, belegte Sprache, passende Anzeigen/Produktziele und gegebenenfalls auszuschliessende unpassende Suchbegriffe erstellen. Keine erfundenen CPCs, Klickzahlen, Conversionraten oder Nachfrage. Bei fehlenden gültigen Planungsdaten Werte als offen oder ausdrücklich als Szenario führen.
+5. Rechenannahme: CHF150 für einen vorgeschlagenen30-Tage-Test als Gesamtkostendeckel im Entwurf. Kein laufendes Budget, Tagesbudget oder automatischer Folgemonat ist freigegeben. Tatsächliche Freigabe wäre separat am vollständigen Plan erforderlich. Bei späterer Genehmigung wären reale Plattform-Budget-/Abrechnungsgrenzen vor einem Write zu prüfen.
+6. Kostendeckenden CAC aus Aufgabe1 und konservativen Ziel-CAC mit begründeter Fixkosten-/Gewinnreserve ableiten. Bei30% nur angenommener Restquote liegt zusätzliche Netto-ROAS-Kostendeckung rund3.33, nicht bei2. Quelle, Marge und Schwellen gehören in den Plan. Wirklich zusätzlicher Nettoumsatz zählt; Google-Zurechnung ist kein Beweis für Inkrementalität. Keine doppelten Basis-/Werbeumsätze, unbelegte Wiederkäufe oder garantierte Gewinne rechnen.
+7. Vorher klare Auswertungs-/Stoppbedingungen formulieren: absolute Kostengrenze, Trackingfehler, fehlende tatsächliche Kaufbarkeit, belegter Kosten-pro-Auftrag-Grenzwert und fehlende eindeutige Messbarkeit. Zahlen erst aus den belegten Margen/zulässigen Daten ableiten. Kleine Stichproben als unsicher kennzeichnen, keinen schnellen Gewinner erzwingen. Keine Kampagne ohne neue konkrete Inhaberfreigabe starten oder bestehende pausieren.
+
+Lieferung GOOGLE-ADS-TESTPLAN.md: Produkte/Varianten, Ziel-URLs/UTMs, Kampagnenart, Konten/Trackingstatus, CHF150-Annahme, DB-/CAC-Grenzen, begründete Suchbegriffe/Anzeigentexte, Messfenster, Stoppregeln, offene Blocker und ausdrücklicher Status ENTWURF/START NICHT FREIGEGEBEN. Ein lokaler Settings-Entwurf darf keine Execute-/Dispatch-/Publish-Schritte enthalten.
+
+### Reihenfolge, Nachweise und Abschluss
+
+Aufgabe1 zuerst beginnen. Die unabhängigen Quellen-/Seitenarbeiten aus2/3 können parallel fortgeführt werden. Aufgabe4 bleibt ein bedingter Plan und darf fehlende Margen/Tracking-/Rechtefreigaben nicht überspringen. Innerhalb des Auftrags keine Social-Publikation und keinen neuen Filmauftrag starten; der bestehende professionelle Master samt Register-/Kanalregeln bleibt ein separater offener Arbeitsstrang, aktuell ohne Voiceover.
+
+Jede Lieferung nennt Task-ID und Teilaufgabe, tatsächliche Prüftätigkeit, Zeit/Quelle, aktuelle IDs/SHAs, kleine Diffs/Rücksetzreferenz, Validation/Previewstatus und konkreten nächsten Schritt. Lokale Arbeitsdateien früherer Codex-Läufe sind nur Zusatzbelege, falls im aktuellen Workspace tatsächlich verfügbar; sie ersetzen keine frische Gegenprobe und ihre Abwesenheit beweist keinen fehlenden Connector.
+
+TAGESPROTOKOLL.md am selben Zürcher Datumsblock ausschliesslich ergänzen: vor Write frisch lesen, aktuellen Datei-SHA und geprüften Diff verwenden, danach gezielt zurücklesen. Historie erhalten, bei unklarem Write keine blinden Wiederholungen. Ausführenden explizit nennen: Claude darf seine eigenen Arbeiten nicht als Tätigkeiten von Codex ausgeben. Die bisherige Codex-Leistung dieses Auftrags ist die Vorbereitung/Ablage und Gegenprüfung, keine Claude-Ausführung.
+
+Abschlussbericht als kompakte Tabelle «Aufgabe | tatsächlich erledigt | geprüftes Ergebnis | Entwurf/Blocker | benötigte Freigabe». Keine Mindestzahl an Änderungen oder Gewinnern erzwingen. Statusübernahme erst nach belegter Claude-Lesebestätigung, Umsetzung erst nach tatsächlicher Ausführung/Rücklesung melden. Bestehender Prüf-/Berichtsrhythmus bleibt unverändert.
+
 ## LUXESTYLE_GOOGLE_FREE_20261024
 
 ### Claude Code: kostenlose Google-Produkteinträge und Search Console
