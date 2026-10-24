@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-24 04:28 UTC, Stand 2026-10-24 09:15 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-10-24 04:28 UTC, Stand 2026-10-24 09:19 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **29'411**
-- Optionen mit englischen Werten (Kandidaten): 2'270
+- Produkte gesehen: **41'453**
+- Optionen mit englischen Werten (Kandidaten): 2'578
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 12'601
+- Werte mit unbekanntem Wort (unverändert): 13'836
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 54
-- übersprungen «kollision-nach-uebersetzung»: 36
+- übersprungen «kleidungsstueck-im-wert»: 64
+- übersprungen «kollision-nach-uebersetzung»: 41
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -42,6 +42,11 @@
 - `15493919900033` [Farbe] **Hoodie-Set mit geradem Bein im Preppy-Stil** — hose · Titel nennt Set: gray wide leg pants | gray K02 pants | gray black sweatpants | gray flare pants | gray floral pants | gray+floral pants | white K02 pants | white black sweatpants
 - `15494893339009` [Farbe] **Slim-Fit T-Shirt mit Totem-Print** — oberteil, weste: Black Gray-T Shirt | Black Gray-Vest | Black Red-T Shirt | Black Red-Vest
 - `15495404061057` [Farbe] **Ärmelloses Top mit Vintage-Maxirock** — jacke, kleid: Beige Coat | Apricot Dress
+- `15497420833153` [Farbe] **Ballett-Trägerkleid im Western-Stil** — rock: Blue Suspender Skirt-With A Tail Fin | Blue Suspender Skirt-Without A Tail Fin | Pink Suspender Skirt-With A Tail Fin | Pink Suspender Skirt-Without A Tail Fin
+- `15500261392769` [Ausführung] **Schlichter Baumwoll-Top** — weste: Vest | Short
+- `15500925993345` [Farbe] **Tiermotiv-Knitted-Jacke** — hose, overall, pullover: Red-100cm-Cardigan | Red-100cm-Romper | Red-110cm-Cardigan | Red-110cm-Romper | Red-66cm-Cardigan | Red-66cm-Romper | Red-73cm-Cardigan | Red-73cm-Romper
+- `15503157526913` [Farbe] **Retro-Chic Midikleid mit Tüll-Oberteil** — pullover, rock: Black Cardigan-Plus Size L | Black Cardigan-Plus Size XL | Black Cardigan-Plus Size 2XL | Black Cardigan-Plus Size 3XL | Black Cardigan-Plus Size 4XL | Black Cardigan | Sleeveless Floral Skirt-Plus Size L | Sleeveless Floral Skirt-Plus Size XL
+- `15506707251585` [Farbe] **Hemd und Hose mit Taillengürtel** — hose, oberteil: 689 White Shirt | 690 White Trousers
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -83,6 +88,11 @@
 - `15485613965697` [Farbe] herren-outdoor-flip-flops-fur-zuhause-604300: Black → Schwarz
 - `15493619810689` [Farbe] elegantes-langarm-kleid-mit-blumenmuster-625900: Medium Orange → Mittelorange
 - `15493845287297` [Farbe] v-ausschnitt-strickkleid-fur-herbst-winter-605200: Deep Orange → Dunkelorange
+- `15498676502913` [Farbe] kapuzen-shirt-mit-stickerei-und-hakel-details-620500: 2 White → 2 Weiss; 2 Apricot → 2 Aprikose; 3 White → 3 Weiss; 3 Apricot → 3 Aprikose; 4 White → 4 Weiss
+- `15499303190913` [Farbe] blade-sports-mesh-laufschuhe-614000: All Black-39-Heel height 10cm → Komplett Schwarz-39-Absatzhöhe 10 cm; All Black-40-Heel height 10cm → Komplett Schwarz-40-Absatzhöhe 10 cm; All Black-41-Heel height 10cm → Komplett Schwarz-41-Absatzhöhe 10 cm; All Black-42-Heel height 10cm → Komplett Schwarz-42-Absatzhöhe 10 cm; All Black-43-Heel height 10cm → Komplett Schwarz-43-Absatzhöhe 10 cm
+- `15503958442369` [Farbe] kinder-barfussschuhe-fur-strand-und-freizeit-0515f4: black red → Schwarz-Rot; black blue → Schwarz-Blau; black and white → Schwarz-Weiss
+- `15504103768449` [Farbe] pailletten-disco-hemd-fur-teenager-618700: Black Color → Schwarz
+- `15506325275009` [Farbe] ethno-sandalen-mit-klettverschluss-und-dicker-624200: Brown And Pink → Braun-Pink; Red Color → Rot; Blue Color → Blau; Red Flower → Rot geblümt; Green Flower → Grün geblümt
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -111,5 +121,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 525, `light` 419, `color` 264, `shell` 159, `degrees` 159, `core` 137, `surface` 126, `⟨satzbau:material-vor-farbe⟩` 117, `powder` 110, `size` 109, `diamond` 108, `high` 101, `skin` 99, `no` 94, `three` 91, `⟨satzbau:mass-ohne-einheit⟩` 90, `bag` 89, `rain` 88, `belt` 86, `case` 84, `french` 84, `four` 82, `opp` 81, `rope` 70, `dark` 69, `spring` 68, `dual` 68, `petal` 68, `chain` 67, `to` 67, `autumn` 66, `net` 63, `half` 63, `base` 62, `feet` 62, `of` 60, `buckle` 58, `tea` 57, `yards` 57, `plush` 56, `little` 55, `night` 54, `strap` 53, `code` 53, `one` 53, `inner` 53, `face` 52, `line` 52, `cherry` 51, `person` 51, `fold` 51, `lens` 50, `bear` 49, `ice` 48, `⟨satzbau:menge-vor-nomen⟩` 48, `hat` 47, `suit` 47, `cloud` 47, `space` 47, `sheet` 46
+`⟨satzbau:adjektiv-vor-nomen⟩` 556, `light` 428, `color` 313, `shell` 159, `degrees` 159, `⟨satzbau:material-vor-farbe⟩` 141, `size` 140, `core` 137, `surface` 131, `powder` 122, `diamond` 108, `skin` 103, `high` 101, `no` 95, `shoes` 92, `bag` 91, `three` 91, `⟨satzbau:mass-ohne-einheit⟩` 90, `belt` 89, `french` 89, `rain` 88, `code` 85, `case` 84, `dark` 82, `four` 82, `opp` 81, `yards` 79, `inner` 78, `buckle` 77, `dinosaur` 76, `rope` 75, `to` 73, `cloth` 71, `spring` 69, `chain` 68, `dual` 68, `petal` 68, `little` 66, `autumn` 66, `half` 66, `base` 63, `net` 63, `strap` 62, `feet` 62, `⟨satzbau:mass-unplausibel⟩` 62, `of` 60, `cherry` 60, `tea` 58, `plush` 56, `one` 55, `night` 54, `face` 52, `line` 52, `yarn` 52, `person` 51, `fold` 51, `background` 50, `rice` 50, `lens` 50, `ice` 49
 

@@ -1,7 +1,7 @@
 {
  "wartet_auf_export": false,
  "export": "/tmp/kost28.jsonl",
- "export_alter_h": 1.0,
+ "export_alter_h": 21.9,
  "produkte_im_export": 56669,
  "varianten_mit_ek": 495627,
  "heben": 0,
@@ -14,7 +14,7 @@
  "unklar": 0,
  "erledigt_gesamt": 1967,
  "rest_raus": 0,
- "stand": "2026-10-23",
- "zeit": "2026-10-23T12:22Z",
+ "stand": "2026-10-24",
+ "zeit": "2026-10-24T09:17Z",
  "modus": "scharf"
 }
