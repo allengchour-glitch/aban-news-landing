@@ -84,6 +84,13 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-10-24 spätnachmittags (🔥 Firecrawl: Widmann gegen Galaxus gemessen — 60 % teurer, Median 1.29):**
+751 Artikel mit Barcode, 737 Credits, nur lesend. Von 590 vergleichbaren sind 355 teurer (137 ab 1.5×, 12 ab 2×), 120 nicht bei Galaxus, 41 unlesbar.
+Bericht `dropship/FORTURA-GALAXUS-VERGLEICH-2410.md`. Werkzeug `automation/fortura_galaxus_lauf.mjs` + `lib/galaxus_treffer.mjs` (29 Tests, 8/8 Mutationen).
+- **Galaxus-Direktlink = Captcha, die Suche per Barcode nicht;** die Weiterleitung auf `/product/` ist der Identitätsbeweis. Tiefster Preis auf der Seite ist falsch (Fremdvarianten) → erste `**CHF…**`-Zeile nach der Überschrift.
+- **Der JSON-Extraktor lieferte bei Captcha still `preis_chf: 0`** (Fake-Zahl) → Captcha und Preis <= 0 sind `unbekannt`. 429er sind `offen` (nicht ins Ledger), sonst gelten sie für immer als erledigt.
+- Galaxus ist nicht der billigste Händler: der Faktor ist eine Untergrenze. Spitzenwerte (Waggis-Hosen 4×) nicht einzeln geprüft. **Preise entscheidet allein der Besitzer.**
+
 **📌 2026-10-24 mittags (🤖 ChatGPTs drei offene Entwürfe abgearbeitet — zwei stille Blocker, eine Zahl aufgeklärt):**
 Auftrag war „erledige chatgpt sachen". Alle drei Codex-Entwürfe standen seit dem 17./18.10. offen
 und waren konfliktbehaftet, weil Claude dieselben Dateien danach umgebaut hat. PR #2728.
