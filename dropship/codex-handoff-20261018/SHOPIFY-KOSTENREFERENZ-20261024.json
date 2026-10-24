@@ -1,0 +1,69 @@
+{
+  "readAtUtc": "2026-10-24T21:30:10.961Z",
+  "shop": "luxestyle.ch",
+  "shopCurrency": "CHF",
+  "scope": "exact two known Shopify variants unitCost first read; no catalogue/order/analytics scan",
+  "source": "Shopify Admin GraphQL",
+  "costMeaning": "Shopify recorded unitCost only; not independently verified supplier invoice or landed costs",
+  "rows": [
+    {
+      "productId": "gid://shopify/Product/15521256604033",
+      "variantId": "gid://shopify/ProductVariant/56197916361089",
+      "title": "Sternenlicht-Projektor für Schlafzimmer",
+      "handle": "sternenlicht-projektor-fur-schlafzimmer-732544",
+      "status": "ACTIVE",
+      "sku": "CJ-1477820492730732544",
+      "listedPriceCHF": "34.90",
+      "recordedUnitCost": {
+        "amount": "27.81",
+        "currencyCode": "CHF"
+      },
+      "inventoryItemId": "gid://shopify/InventoryItem/55556790026625",
+      "priceMinusRecordedCostCHF": "7.09",
+      "realContributionMargin": "unknown",
+      "shippingFeesTaxReturns": "unknown",
+      "verifiedSupplierCurrentCost": "unknown"
+    },
+    {
+      "productId": "gid://shopify/Product/15411554320769",
+      "variantId": "gid://shopify/ProductVariant/55743280021889",
+      "title": "Aroma-Diffuser in Holzoptik",
+      "handle": "aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben",
+      "status": "ACTIVE",
+      "sku": "CJ-CJJJJTJT22925",
+      "listedPriceCHF": "44.90",
+      "recordedUnitCost": {
+        "amount": "26.73",
+        "currencyCode": "CHF"
+      },
+      "inventoryItemId": "gid://shopify/InventoryItem/55091414761857",
+      "priceMinusRecordedCostCHF": "18.17",
+      "realContributionMargin": "unknown",
+      "shippingFeesTaxReturns": "unknown",
+      "verifiedSupplierCurrentCost": "unknown"
+    }
+  ],
+  "theme": {
+    "id": "gid://shopify/OnlineStoreTheme/187533001089",
+    "role": "MAIN",
+    "files": {
+      "nodes": [
+        {
+          "filename": "templates/collection.json",
+          "checksumMd5": "1137d372b40844b60ee7c56f841ebab4",
+          "updatedAt": "2026-10-22T22:00:26Z"
+        }
+      ],
+      "pageInfo": {
+        "hasNextPage": false,
+        "endCursor": "InRlbXBsYXRlc1wvY29sbGVjdGlvbi5qc29uIg=="
+      }
+    }
+  },
+  "validation": {
+    "cliStandalone": "failed_environment_assets_directory_missing; both input modes same error",
+    "mcpValidator": "skipped",
+    "nativeQuery": "succeeded"
+  },
+  "noWrites": true
+}
