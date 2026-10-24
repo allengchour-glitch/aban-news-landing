@@ -13,13 +13,14 @@
  */
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 import { shopifyGql } from './lib/shopify_gql.mjs';
-const SHOP=process.env.SHOPIFY_SHOP||'', TOK_ST=process.env.SHOPIFY_ADMIN_TOKEN||'',
+import { normalizeShopifyHost } from './lib/shopify_host.mjs';
+const SHOP=normalizeShopifyHost(process.env.SHOPIFY_SHOP), TOK_ST=process.env.SHOPIFY_ADMIN_TOKEN||'',
   CID=process.env.SHOPIFY_CLIENT_ID||'', CS=shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET)||'',
   LIVE=process.env.LIVE==='1', SCAN=Math.min(parseInt(process.env.SCAN||'250',10),3000), API='2025-01';
 
 async function getToken(){
   if(!(CID&&CS)&&TOK_ST) return TOK_ST;
-  if(SHOP&&CID&&CS){ const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',
+  if(SHOP&&CID&&CS){ const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',redirect:'error',signal:AbortSignal.timeout(30000),
     headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:CID,client_secret:CS,grant_type:'client_credentials'})});
     const j=await r.json().catch(()=>({})); return j.access_token||''; }
   return TOK_ST||'';

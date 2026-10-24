@@ -18,7 +18,12 @@ on:
       - 'automation/metricool_checkpoint_test.mjs'
       - 'automation/meta_checkpoint_test.mjs'
       - 'automation/cj_import_checkpoint_test.mjs'
+      - 'automation/social_queue_test.mjs'
+      - 'automation/publish_guard_test.mjs'
+      - 'automation/content_preflight.py'
+      - 'automation/test_content_preflight.py'
       - 'dropship/cj_enrich.mjs'
+      - 'dropship/cj_enrich_test.mjs'
       - 'dropship/ads/render_brand_video.py'
       - 'dropship/ads/test_render_brand_video.py'
       - '.github/workflows/luxestyle-automation-tests.yml'
@@ -53,7 +58,12 @@ jobs:
             automation/metricool_checkpoint_test.mjs
             automation/meta_checkpoint_test.mjs
             automation/cj_import_checkpoint_test.mjs
+            automation/social_queue_test.mjs
+            automation/publish_guard_test.mjs
+            automation/content_preflight.py
+            automation/test_content_preflight.py
             dropship/cj_enrich.mjs
+            dropship/cj_enrich_test.mjs
             dropship/ads/render_brand_video.py
             dropship/ads/test_render_brand_video.py
           sparse-checkout-cone-mode: false
@@ -95,3 +105,8 @@ jobs:
           node automation/metricool_checkpoint_test.mjs
           node automation/meta_checkpoint_test.mjs
           node automation/cj_import_checkpoint_test.mjs
+      - name: Shopify host, queue input and publication guards (mock APIs only)
+        run: |
+          node --test automation/lib/shopify_host_test.mjs automation/social_queue_test.mjs automation/publish_guard_test.mjs dropship/cj_enrich_test.mjs
+      - name: Content preflight (offline evidence only)
+        run: python3 -B -m unittest discover -s automation -p 'test_content_preflight.py' -v

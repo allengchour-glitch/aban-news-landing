@@ -10,6 +10,7 @@
  * Ebenfalls behandelt: HTTP 429 und 5xx (Shopify-Seite). Alles andere wird wie bisher geworfen,
  * damit echte Fehler (falsches Feld, fehlendes Recht) NICHT in einer Warteschleife verschwinden.
  */
+import { normalizeShopifyHost } from './shopify_host.mjs';
 const DROSSEL = /throttled|exceeded.*cost|rate limit/i;
 
 /**
@@ -38,6 +39,8 @@ export function taktPause(j, opt = {}) {
 }
 
 export async function shopifyGql(shop, api, token, query, variables, opt = {}) {
+  shop=normalizeShopifyHost(shop);
+  if (!shop) throw new Error('SHOPIFY_HOST: Shop-Domain fehlt');
   const versuche = opt.versuche ?? 6;
   const basis = opt.basisMs ?? 1500;
   const fetchFn = opt.fetch ?? fetch;
@@ -47,6 +50,7 @@ export async function shopifyGql(shop, api, token, query, variables, opt = {}) {
     let r, j;
     try {
       r = await fetchFn(`https://${shop}/admin/api/${api}/graphql.json`, { method: 'POST',
+        redirect:'error', signal:AbortSignal.timeout(opt.timeoutMs ?? 30000),
         headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': token },
         body: JSON.stringify({ query, variables }) });
     } catch (e) {                                   // Netzfehler: auch das ist ein Warte-Fall

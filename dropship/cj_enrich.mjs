@@ -11,12 +11,12 @@
  *
  * CJ-Limits: getAccessToken 1×/5min · QPS 1 req/sek · 1000 req/Tag (Gratis-Tier).
  */
-import { chromium } from '/opt/node22/lib/node_modules/playwright/index.mjs';
 import fs from 'fs';
+import { readCjResponse } from '../automation/lib/cj_response.mjs';
 
 const EMAIL = process.env.CJ_EMAIL, APIKEY = process.env.CJ_API_KEY;
 const BASE = 'https://developers.cjdropshipping.com/api2.0/v1';
-const TOKEN_FILE = '/tmp/cj_token.json';
+const TOKEN_FILE = process.env.CJ_TOKEN_CACHE || '/tmp/cj_token.json';
 if (!EMAIL || !APIKEY) { console.error('FEHLER: CJ_EMAIL und CJ_API_KEY müssen gesetzt sein.'); process.exit(1); }
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
@@ -28,29 +28,24 @@ const KEYWORDS = [
   { kw: 'bbq grill mat non stick',     must:['grill','mat'],         take: 1 },
 ];
 
-let _b, _ctx;
-async function ctx() { if (_ctx) return _ctx;
-  _b = await chromium.launch({ headless: true, args: ['--ignore-certificate-errors', '--no-sandbox'] });
-  _ctx = await _b.newContext({ ignoreHTTPSErrors: true }); return _ctx; }
-
 async function getToken() {
-  if (fs.existsSync(TOKEN_FILE)) { const t = JSON.parse(fs.readFileSync(TOKEN_FILE));
-    if (t.exp > Date.now() + 60000) return t.accessToken; }
-  const c = await ctx();
-  const r = await c.request.post(`${BASE}/authentication/getAccessToken`,
-    { data: { email: EMAIL, password: APIKEY }, headers: { 'Content-Type': 'application/json' }, timeout: 30000 });
-  const j = await r.json(); if (!j.result) throw new Error('AUTH FAIL: ' + JSON.stringify(j));
-  fs.writeFileSync(TOKEN_FILE, JSON.stringify({ accessToken: j.data.accessToken, exp: Date.now() + 14 * 864e5 }));
+  try { if (fs.existsSync(TOKEN_FILE)) { const t = JSON.parse(fs.readFileSync(TOKEN_FILE));
+    if (typeof t.accessToken === 'string' && t.accessToken && t.exp > Date.now() + 60000) return t.accessToken; } } catch {}
+  const r = await fetch(`${BASE}/authentication/getAccessToken`,
+    { method:'POST', redirect:'error', signal:AbortSignal.timeout(30000), body:JSON.stringify({ email: EMAIL, password: APIKEY }), headers: { 'Content-Type': 'application/json' } });
+  const j = await readCjResponse(r,'authentication/getAccessToken');
+  if (typeof j.data?.accessToken !== 'string' || !j.data.accessToken) throw new Error('CJ_AUTH: Token fehlt');
+  fs.writeFileSync(TOKEN_FILE, JSON.stringify({ accessToken: j.data.accessToken, exp: Date.now() + 14 * 864e5 }),{mode:0o600});
   return j.data.accessToken;
 }
 async function apiGet(path, params = {}) {
-  const c = await ctx(); const tok = await getToken();
+  const tok = await getToken();
   const qs = new URLSearchParams(params).toString();
   for (let a = 0; a < 4; a++) {
-    const r = await c.request.get(`${BASE}${path}?${qs}`, { headers: { 'CJ-Access-Token': tok }, timeout: 30000 });
+    const r = await fetch(`${BASE}${path}?${qs}`, { redirect:'error', signal:AbortSignal.timeout(30000), headers: { 'CJ-Access-Token': tok } });
     const j = await r.json();
-    if (j.code === 1600200 || /Too Many|QPS/i.test(j.message || '')) { await sleep((a + 1) * 2500); continue; }
-    return j;
+    if (r.status === 429 || j.code === 1600200 || /Too Many|QPS/i.test(j.message || '')) { await sleep((a + 1) * 2500); continue; }
+    return readCjResponse({status:r.status,json:async()=>j},path);
   }
   throw new Error('RATE LIMIT erschöpft für ' + path);
 }
@@ -66,11 +61,13 @@ function stockByCountry(variants) {
 
 (async () => {
   const out = [];
+  const seen = new Set();
   try {
     for (const { kw, must, take } of KEYWORDS) {
       console.error(`🔎 ${kw}`);
       const r = await apiGet('/product/list', { pageNum: 1, pageSize: 40, productNameEn: kw });
-      const list = (r.data?.list || []).filter(p => {
+      if (!Array.isArray(r.data?.list)) throw new Error('CJ_DATA: Produktliste fehlt');
+      const list = r.data.list.filter(p => {
         const n = (p.productNameEn || '').toLowerCase();
         // Herren-Suche: „women/woman" ausschliessen (sonst matcht das Teilwort „men").
         if (must.includes('men') && /wom[ae]n/.test(n)) return false;
@@ -80,9 +77,11 @@ function stockByCountry(variants) {
       console.error(`   ${list.length} relevante Treffer`);
       await sleep(2400);
       for (const p of list.slice(0, take)) {
+        if (!p.pid || seen.has(String(p.pid))) continue;
         const d = (await apiGet('/product/query', { pid: p.pid })).data;
         await sleep(2400);
-        if (!d) continue;
+        if (!d?.pid || !Array.isArray(d.variants)) throw new Error('CJ_DATA: Produktdetails oder Varianten fehlen');
+        seen.add(String(d.pid));
         const variants = d.variants || [];
         const costs = variants.map(v => Number(v.variantSellPrice)).filter(Boolean);
         out.push({
@@ -93,6 +92,7 @@ function stockByCountry(variants) {
           costUsdFrom: costs.length ? Math.min(...costs) : Number(d.sellPrice),
           costUsdTo: costs.length ? Math.max(...costs) : Number(d.sellPrice),
           variantCount: variants.length,
+          variants: variants.map(v=>({vid:v.vid,sku:v.variantSku,key:v.variantKey,costUsd:v.variantSellPrice,weightG:v.variantWeight,inventories:v.inventories ?? null})),
           weightG: variants[0]?.variantWeight || d.productWeight,
           category: d.categoryName,
           listedNum: d.listedNum,
@@ -105,13 +105,13 @@ function stockByCountry(variants) {
         console.error(`   ✔ ${d.productNameEn.slice(0, 55)} | $${costs.length ? Math.min(...costs) : d.sellPrice} | ${variants.length} Var.`);
       }
     }
-    fs.writeFileSync('/tmp/cj_enriched.json', JSON.stringify(out, null, 2));
-    console.error(`\n✅ ${out.length} angereicherte Kandidaten → /tmp/cj_enriched.json`);
+    const output=process.env.CJ_ENRICH_OUTPUT || '/tmp/cj_enriched.json';
+    fs.writeFileSync(output, JSON.stringify(out, null, 2));
+    console.error(`\n${out.length} angereicherte Kandidaten → ${output}`);
     // Kompakte Übersicht auf stdout
     console.log(JSON.stringify(out.map(o => ({
       name: o.nameEn.slice(0, 60), sku: o.sku, cost$: `${o.costUsdFrom}-${o.costUsdTo}`,
       vars: o.variantCount, imgs: o.images.length, video: o.hasVideo, stock: o.stock, listed: o.listedNum,
     })), null, 2));
   } catch (e) { console.error('CJ-Anreicherung fehlgeschlagen:', e.message); process.exitCode = 1; }
-  finally { if (_b) await _b.close(); }
 })();
