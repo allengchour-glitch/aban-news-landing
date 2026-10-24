@@ -23,6 +23,9 @@ on:
       - 'automation/publish_guard_test.mjs'
       - 'automation/content_preflight.py'
       - 'automation/test_content_preflight.py'
+      - 'automation/fortura_galaxus_lauf.mjs'
+      - 'automation/lib/galaxus_treffer.mjs'
+      - 'automation/lib/galaxus_treffer_test.mjs'
       - 'automation/fortura_preis_kandidaten.mjs'
       - 'automation/fortura_preisvergleich.mjs'
       - 'automation/fortura_preisvergleich_test.mjs'
@@ -67,6 +70,9 @@ jobs:
             automation/publish_guard_test.mjs
             automation/content_preflight.py
             automation/test_content_preflight.py
+            automation/fortura_galaxus_lauf.mjs
+            automation/lib/galaxus_treffer.mjs
+            automation/lib/galaxus_treffer_test.mjs
             automation/fortura_preis_kandidaten.mjs
             automation/fortura_preisvergleich.mjs
             automation/fortura_preisvergleich_test.mjs
@@ -95,6 +101,8 @@ jobs:
           node --check automation/shop_brain.mjs
           node --check automation/video-autopost-meta.mjs
           node --check automation/seo-optimizer.mjs
+          node --check automation/fortura_galaxus_lauf.mjs
+          node --check automation/lib/galaxus_treffer.mjs
           node --check automation/fortura_preis_kandidaten.mjs
           node --check automation/fortura_preisvergleich.mjs
       - name: Existing helper checks
@@ -109,6 +117,7 @@ jobs:
           # Lief bisher in KEINEM Workflow — ein Test, der nie laeuft, ist kein Test.
           node automation/lib/seo_titel_test.mjs
           node automation/lib/fortura_marke_test.mjs
+          node automation/lib/galaxus_treffer_test.mjs
           node automation/lib/chf_preis_test.mjs
           node automation/fortura_preisvergleich_test.mjs
       - name: CJ failures and publication regressions (mock APIs only)
