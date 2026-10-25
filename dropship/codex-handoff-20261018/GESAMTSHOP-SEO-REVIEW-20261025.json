@@ -1,0 +1,702 @@
+{
+  "taskId": "LUXESTYLE_SITEWIDE_SEO_20261025_FOLLOWUP",
+  "status": "LOCAL_REVIEW_PROPOSALS_NO_LIVE_CHANGES",
+  "createdAtUtc": "2026-10-25T17:56:22.812624+00:00",
+  "sourcePolicy": "Only already archived 2026-10-25 local sources; no new connector, crawl, HTTP, KPI, analytics or store read.",
+  "coverage": {
+    "pilotUrls": 6,
+    "htmlSources": 6,
+    "titleDecisions": {
+      "NO_CHANGE": 6
+    },
+    "h1Decisions": {
+      "NO_CHANGE": 6
+    },
+    "metaDescriptionDecisions": {
+      "NO_CHANGE": 4,
+      "REVIEW_PROPOSAL": 2
+    },
+    "categoryPurchaseHelpInsertions": 3,
+    "reviewDeltas": 5,
+    "affectedUrlsWithReviewDeltas": 3
+  },
+  "sources": [
+    {
+      "id": "home_html",
+      "path": "/workspace/luxestyle-review/sitewide-20261025/evidence/home-current.html",
+      "sha256": "10781e6d329baf71f670e67af49f143dd25974cc4055af283c4c3678db5da110",
+      "bytes": 1500000,
+      "archiveDateEuropeZurich": "2026-10-25",
+      "exactUrl": "https://luxestyle.ch/",
+      "rootHeadUsed": true,
+      "firstRawRootHeadByteSpan": [
+        41,
+        210721
+      ],
+      "mainH1Only": true,
+      "iframeDocumentsExcluded": true,
+      "firecrawlMergedMetadataUsedForSeoFields": false,
+      "timestampPrecision": "day_only_existing_sitewide_archive",
+      "originalHttpStatus": 200,
+      "scrapeId": "01a17303-b51d-756f-9e27-ca6005d4164f",
+      "archiveWholePageCompleteness": "not_assumed; head and first main H1 are present; local archive is 1500000 bytes"
+    },
+    {
+      "id": "technik_html",
+      "path": "/workspace/luxestyle-review/sitewide-20261025/structure/sources/technik.html",
+      "sha256": "e7bc6bde7108565b69d0ef68a5e03beca4d79b0da175788fcf88438ceed88951",
+      "bytes": 2012100,
+      "archiveDateEuropeZurich": "2026-10-25",
+      "exactUrl": "https://luxestyle.ch/collections/elektronik-technik",
+      "rootHeadUsed": true,
+      "firstRawRootHeadByteSpan": [
+        31,
+        253495
+      ],
+      "mainH1Only": true,
+      "iframeDocumentsExcluded": true,
+      "firecrawlMergedMetadataUsedForSeoFields": false,
+      "archivedRetrievalDate": "2026-10-25",
+      "archivedReadTimeEuropeZurich": "2026-10-25 13:23 CET",
+      "timestampPrecision": "minute supplied by parent source record; category metadata itself records the day only",
+      "originalHttpStatus": 200,
+      "scrapeId": "01a17303-b979-7234-9461-488f5d2989d7"
+    },
+    {
+      "id": "wohnen_html",
+      "path": "/workspace/luxestyle-review/sitewide-20261025/structure/sources/wohnen.html",
+      "sha256": "acf1cb02d68576ce33b16901fd3f0a6c4c7a876cb78fee5faaa794f8471eaddc",
+      "bytes": 2145127,
+      "archiveDateEuropeZurich": "2026-10-25",
+      "exactUrl": "https://luxestyle.ch/collections/wohnen-dekoration",
+      "rootHeadUsed": true,
+      "firstRawRootHeadByteSpan": [
+        31,
+        264640
+      ],
+      "mainH1Only": true,
+      "iframeDocumentsExcluded": true,
+      "firecrawlMergedMetadataUsedForSeoFields": false,
+      "archivedRetrievalDate": "2026-10-25",
+      "archivedReadTimeEuropeZurich": "2026-10-25 13:23 CET",
+      "timestampPrecision": "minute supplied by parent source record; category metadata itself records the day only",
+      "originalHttpStatus": 200,
+      "scrapeId": "01a17303-b937-75d8-b41b-57ffa3efc112"
+    },
+    {
+      "id": "schuhe_html",
+      "path": "/workspace/luxestyle-review/sitewide-20261025/structure/sources/schuhe.html",
+      "sha256": "e562c972174c93a1da8ba63eac9c5edc92881b7fda4baffd3f9b5cc3c5f31cde",
+      "bytes": 1899995,
+      "archiveDateEuropeZurich": "2026-10-25",
+      "exactUrl": "https://luxestyle.ch/collections/damen-schuhe",
+      "rootHeadUsed": true,
+      "firstRawRootHeadByteSpan": [
+        31,
+        338710
+      ],
+      "mainH1Only": true,
+      "iframeDocumentsExcluded": true,
+      "firecrawlMergedMetadataUsedForSeoFields": false,
+      "archivedRetrievalDate": "2026-10-25",
+      "archivedReadTimeEuropeZurich": "2026-10-25 13:23 CET",
+      "timestampPrecision": "minute supplied by parent source record; category metadata itself records the day only",
+      "originalHttpStatus": 200,
+      "scrapeId": "01a17303-b918-746a-9aa7-bcb596fe1930"
+    },
+    {
+      "id": "projector_html",
+      "path": "/workspace/luxestyle-review/morgen-20261025/products/projector-page.html",
+      "sha256": "d1e267c6e8e2205b89165a55a74befbbe9264a4b004e59acf9dfebb7de4daf67",
+      "bytes": 827878,
+      "archiveDateEuropeZurich": "2026-10-25",
+      "exactUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+      "rootHeadUsed": true,
+      "firstRawRootHeadByteSpan": [
+        41,
+        185009
+      ],
+      "mainH1Only": true,
+      "iframeDocumentsExcluded": true,
+      "firecrawlMergedMetadataUsedForSeoFields": false,
+      "archivedReadAtUtc": "2026-10-25T07:07:02.518177+00:00",
+      "timestampPrecision": "exact_archived_reader_timestamp",
+      "originalHttpStatus": 200
+    },
+    {
+      "id": "diffuser_html",
+      "path": "/workspace/luxestyle-review/morgen-20261025/products/diffuser-page.html",
+      "sha256": "765c0017526d03d1eb0dd056097d98ac188c99f42f21035a32c6e5ea3fd57bad",
+      "bytes": 780561,
+      "archiveDateEuropeZurich": "2026-10-25",
+      "exactUrl": "https://luxestyle.ch/products/aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben",
+      "rootHeadUsed": true,
+      "firstRawRootHeadByteSpan": [
+        41,
+        185133
+      ],
+      "mainH1Only": true,
+      "iframeDocumentsExcluded": true,
+      "firecrawlMergedMetadataUsedForSeoFields": false,
+      "archivedReadAtUtc": "2026-10-25T07:07:02.735369+00:00",
+      "timestampPrecision": "exact_archived_reader_timestamp",
+      "originalHttpStatus": 200
+    },
+    {
+      "id": "structure_evidence",
+      "path": "/workspace/luxestyle-review/sitewide-20261025/structure/CURRENT-EVIDENCE.json",
+      "sha256": "948d922bd0af43f513227d910f96fb6db85b60ad858817ba6efd4e737e76dedd",
+      "archiveDateEuropeZurich": "2026-10-25"
+    },
+    {
+      "id": "product_public_record",
+      "path": "/workspace/luxestyle-review/morgen-20261025/products/PUBLIC-CHECK.json",
+      "sha256": "c23b1b13e6f58edd267e3122f01fdb8c64febd93e180758ddbfb3763896744dc",
+      "archiveDateEuropeZurich": "2026-10-25"
+    }
+  ],
+  "pages": [
+    {
+      "key": "home",
+      "label": "Startseite",
+      "url": "https://luxestyle.ch/",
+      "canonicalObserved": "https://luxestyle.ch/",
+      "canonicalDecision": "NO_CHANGE",
+      "current": {
+        "title": "LuxeStyle CH – Premium Mode, Beauty & Lifestyle Shop Schweiz",
+        "meta_description": "LuxeStyle aus Belp: Mode, Beauty, Technik & Wohnen. Versand in die Schweiz (ab Schweizer Lager meist 2–3, sonst 10–20 Werktage) und nach Liechtenstein.",
+        "h1": "Premium-Style. Schweizer Shop."
+      },
+      "decisions": {
+        "title": {
+          "status": "NO_CHANGE",
+          "before": "LuxeStyle CH – Premium Mode, Beauty & Lifestyle Shop Schweiz",
+          "after": "LuxeStyle CH – Premium Mode, Beauty & Lifestyle Shop Schweiz",
+          "reason": "Vorhandene Bezeichnung passt zur Seite; ohne belegten Mangel keine neue Titel-/H1-Fassung erzwingen.",
+          "sourceId": "home_html",
+          "sourceXPath": "/html/head/title",
+          "beforeCharacters": 60,
+          "afterCharacters": 60
+        },
+        "meta_description": {
+          "status": "NO_CHANGE",
+          "before": "LuxeStyle aus Belp: Mode, Beauty, Technik & Wohnen. Versand in die Schweiz (ab Schweizer Lager meist 2–3, sonst 10–20 Werktage) und nach Liechtenstein.",
+          "after": "LuxeStyle aus Belp: Mode, Beauty, Technik & Wohnen. Versand in die Schweiz (ab Schweizer Lager meist 2–3, sonst 10–20 Werktage) und nach Liechtenstein.",
+          "reason": "Bereits konkrete Seiten-/Produktorientierung; kein belegter Grund für Ersatz. Vorhandene Service-/Produktaussagen sind zitierter Bestand und werden hier nicht neu bestätigt.",
+          "sourceId": "home_html",
+          "sourceXPath": "/html/head/meta[@name=\"description\"]/@content",
+          "beforeCharacters": 151,
+          "afterCharacters": 151
+        },
+        "h1": {
+          "status": "NO_CHANGE",
+          "before": "Premium-Style. Schweizer Shop.",
+          "after": "Premium-Style. Schweizer Shop.",
+          "reason": "Vorhandene Bezeichnung passt zur Seite; ohne belegten Mangel keine neue Titel-/H1-Fassung erzwingen.",
+          "sourceId": "home_html",
+          "sourceXPath": "//main[@id=\"MainContent\"]//h1[not(ancestor::iframe)]",
+          "beforeCharacters": 30,
+          "afterCharacters": 30
+        }
+      },
+      "categoryPurchaseHelp": {
+        "status": "NO_CHANGE",
+        "reason": "Keine neue Kategorieeinleitung auf Start-/Produktseite. Vorhandene Produktbeschreibungsentwürfe sind separat und werden nicht wiederholt."
+      }
+    },
+    {
+      "key": "technik",
+      "label": "Technik",
+      "url": "https://luxestyle.ch/collections/elektronik-technik",
+      "canonicalObserved": "https://luxestyle.ch/collections/elektronik-technik",
+      "canonicalDecision": "NO_CHANGE",
+      "current": {
+        "title": "Elektronik & Technik kaufen | LuxeStyle Schweiz",
+        "meta_description": "Elektronik & Technik online kaufen bei LuxeStyle: Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe, Lieferzeit auf jeder Produktseite.",
+        "h1": "Elektronik & Technik"
+      },
+      "decisions": {
+        "title": {
+          "status": "NO_CHANGE",
+          "before": "Elektronik & Technik kaufen | LuxeStyle Schweiz",
+          "after": "Elektronik & Technik kaufen | LuxeStyle Schweiz",
+          "reason": "Vorhandene Bezeichnung passt zur Seite; ohne belegten Mangel keine neue Titel-/H1-Fassung erzwingen.",
+          "sourceId": "technik_html",
+          "sourceXPath": "/html/head/title",
+          "beforeCharacters": 47,
+          "afterCharacters": 47
+        },
+        "meta_description": {
+          "status": "REVIEW_PROPOSAL",
+          "before": "Elektronik & Technik online kaufen bei LuxeStyle: Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe, Lieferzeit auf jeder Produktseite.",
+          "after": "Elektronik & Technik bei LuxeStyle: Entdecke Laden & Strom, Audio und Gaming. Vergleiche vor der Auswahl Anschlüsse und die Angaben zur Kompatibilität.",
+          "reason": "Der aktuelle Metatext wiederholt vorwiegend Servicezusagen. Ein kurzer kategoriespezifischer Auswahlhinweis beschreibt den beobachteten Einstieg und vermeidet neue Leistungs-/Serviceversprechen.",
+          "sourceId": "technik_html",
+          "sourceXPath": "/html/head/meta[@name=\"description\"]/@content",
+          "beforeCharacters": 143,
+          "afterCharacters": 151
+        },
+        "h1": {
+          "status": "NO_CHANGE",
+          "before": "Elektronik & Technik",
+          "after": "Elektronik & Technik",
+          "reason": "Vorhandene Bezeichnung passt zur Seite; ohne belegten Mangel keine neue Titel-/H1-Fassung erzwingen.",
+          "sourceId": "technik_html",
+          "sourceXPath": "//main[@id=\"MainContent\"]//h1[not(ancestor::iframe)]",
+          "beforeCharacters": 20,
+          "afterCharacters": 20
+        }
+      },
+      "categoryPurchaseHelp": {
+        "status": "REVIEW_INSERT_ONLY",
+        "currentIntroParagraphs": [
+          "Elektronik und Technik für Alltag und Unterwegs: Ladegeräte und Ladestationen für Handy, Uhr und Kopfhörer, Smartwatches und Übersetzer-Kopfhörer, Mini-Beamer und Webcams, Monitor-Lichtleisten fürs Homeoffice, smarte Steckdosen und Kabel – täglich kommen neue Artikel dazu.",
+          "🚚 Lieferzeit auf jeder Produktseite · Gratis-Versand in der Schweiz ab CHF 50 · ↩️ 30 Tage Rückgabe · –10 % mit Code WELCOME10",
+          "Passend dazu: Nintendo Switch · 3D-Drucker & Stifte · Kopfhörer & Lautsprecher · PC-Komponenten & Speicher"
+        ],
+        "genericFaqObserved": {
+          "question": "📏 Wie finde ich die richtige Grösse?",
+          "answer": "Bei Mode- und Schuh-Artikeln findest du eine cm-Grössentabelle direkt auf der jeweiligen Produktseite.",
+          "sourceId": "technik_html"
+        },
+        "proposedParagraph": "Wähle zuerst den Einsatzbereich. Prüfe beim einzelnen Artikel, welche Anschlüsse, Stromversorgung und kompatiblen Geräte ausdrücklich angegeben sind. Fehlt eine Angabe, kläre sie vor der Bestellung.",
+        "proposedHtmlFragment": "<p>Wähle zuerst den Einsatzbereich. Prüfe beim einzelnen Artikel, welche Anschlüsse, Stromversorgung und kompatiblen Geräte ausdrücklich angegeben sind. Fehlt eine Angabe, kläre sie vor der Bestellung.</p>",
+        "placementReview": "Als ein zusätzlicher Absatz nach der vorhandenen Einleitung und vor vorhandenen Passend-dazu-/Übersichtslinks. Bestehende Absätze, Links und das globale FAQ bleiben in diesem Entwurf unverändert.",
+        "existingLinksToPreserve": [
+          {
+            "label": "Nintendo Switch",
+            "urlAsArchived": "https://luxestyle.ch/collections/nintendo-switch"
+          },
+          {
+            "label": "3D-Drucker & Stifte",
+            "urlAsArchived": "https://luxestyle.ch/collections/3d-drucker"
+          },
+          {
+            "label": "Kopfhörer & Lautsprecher",
+            "urlAsArchived": "https://luxestyle.ch/collections/elektronik-audio"
+          },
+          {
+            "label": "PC-Komponenten & Speicher",
+            "urlAsArchived": "https://luxestyle.ch/collections/pc-komponenten"
+          }
+        ],
+        "scopeLimit": "Nur logischer Review-Zusatz zur Kategorieeinleitung. Öffentliche Rendererbytes sind keine native unbearbeitete Admin-descriptionHtml. Kein ausführbarer Gesamtfeldersatz und kein Templatepatch.",
+        "categorySpecificBasis": "Vorhandene Bereichslinks Laden & Strom, Kopfhörer & Audio, Gaming. Im gemeinsamen FAQ steht stattdessen eine Mode-/Schuhfrage."
+      }
+    },
+    {
+      "key": "wohnen",
+      "label": "Wohnen",
+      "url": "https://luxestyle.ch/collections/wohnen-dekoration",
+      "canonicalObserved": "https://luxestyle.ch/collections/wohnen-dekoration",
+      "canonicalDecision": "NO_CHANGE",
+      "current": {
+        "title": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+        "meta_description": "Wohnen & Dekoration online kaufen bei LuxeStyle: Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe, Lieferzeit auf jeder Produktseite.",
+        "h1": "Wohnen & Dekoration"
+      },
+      "decisions": {
+        "title": {
+          "status": "NO_CHANGE",
+          "before": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+          "after": "Wohnen & Dekoration kaufen | LuxeStyle Schweiz",
+          "reason": "Vorhandene Bezeichnung passt zur Seite; ohne belegten Mangel keine neue Titel-/H1-Fassung erzwingen.",
+          "sourceId": "wohnen_html",
+          "sourceXPath": "/html/head/title",
+          "beforeCharacters": 46,
+          "afterCharacters": 46
+        },
+        "meta_description": {
+          "status": "REVIEW_PROPOSAL",
+          "before": "Wohnen & Dekoration online kaufen bei LuxeStyle: Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe, Lieferzeit auf jeder Produktseite.",
+          "after": "Wohnen & Dekoration bei LuxeStyle: Entdecke Beleuchtung, Aufbewahrung und Wohntextilien. Vergleiche die Angaben zu Abmessungen und zur Ausführung.",
+          "reason": "Der aktuelle Metatext wiederholt vorwiegend Servicezusagen. Ein kurzer kategoriespezifischer Auswahlhinweis beschreibt den beobachteten Einstieg und vermeidet neue Leistungs-/Serviceversprechen.",
+          "sourceId": "wohnen_html",
+          "sourceXPath": "/html/head/meta[@name=\"description\"]/@content",
+          "beforeCharacters": 142,
+          "afterCharacters": 146
+        },
+        "h1": {
+          "status": "NO_CHANGE",
+          "before": "Wohnen & Dekoration",
+          "after": "Wohnen & Dekoration",
+          "reason": "Vorhandene Bezeichnung passt zur Seite; ohne belegten Mangel keine neue Titel-/H1-Fassung erzwingen.",
+          "sourceId": "wohnen_html",
+          "sourceXPath": "//main[@id=\"MainContent\"]//h1[not(ancestor::iframe)]",
+          "beforeCharacters": 19,
+          "afterCharacters": 19
+        }
+      },
+      "categoryPurchaseHelp": {
+        "status": "REVIEW_INSERT_ONLY",
+        "currentIntroParagraphs": [
+          "Mach dein Zuhause zu deinem Lieblingsort: Bei LuxeStyle findest du über 2'700 Artikel für Wohnen & Dekoration — von stimmungsvoller Beleuchtung über Aufbewahrung und Textilien bis zu Wanddeko und kleinen Alltagshelfern. Täglich kommen Neuheiten dazu. Gratis-Versand in der Schweiz ab CHF 50 · 30 Tage Rückgabe.",
+          "Passend dazu: Vorhänge · Beleuchtung · Beistelltisch Acryl"
+        ],
+        "genericFaqObserved": {
+          "question": "📏 Wie finde ich die richtige Grösse?",
+          "answer": "Bei Mode- und Schuh-Artikeln findest du eine cm-Grössentabelle direkt auf der jeweiligen Produktseite.",
+          "sourceId": "wohnen_html"
+        },
+        "proposedParagraph": "Wähle zuerst den Bereich: Beleuchtung, Aufbewahrung oder Wohntextilien. Prüfe vor der Auswahl die Angaben zu Abmessungen und zur Ausführung des einzelnen Artikels. Fehlt eine Angabe, kläre sie vor der Bestellung.",
+        "proposedHtmlFragment": "<p>Wähle zuerst den Bereich: Beleuchtung, Aufbewahrung oder Wohntextilien. Prüfe vor der Auswahl die Angaben zu Abmessungen und zur Ausführung des einzelnen Artikels. Fehlt eine Angabe, kläre sie vor der Bestellung.</p>",
+        "placementReview": "Als ein zusätzlicher Absatz nach der vorhandenen Einleitung und vor vorhandenen Passend-dazu-/Übersichtslinks. Bestehende Absätze, Links und das globale FAQ bleiben in diesem Entwurf unverändert.",
+        "existingLinksToPreserve": [
+          {
+            "label": "Vorhänge",
+            "urlAsArchived": "https://luxestyle.ch/collections/vorhaenge"
+          },
+          {
+            "label": "Beleuchtung",
+            "urlAsArchived": "https://luxestyle.ch/collections/sub-beleuchtung"
+          },
+          {
+            "label": "Beistelltisch Acryl",
+            "urlAsArchived": "https://luxestyle.ch/products/acryl-beistelltisch-fur-wohn-und-schlafzimmer-184768"
+          }
+        ],
+        "scopeLimit": "Nur logischer Review-Zusatz zur Kategorieeinleitung. Öffentliche Rendererbytes sind keine native unbearbeitete Admin-descriptionHtml. Kein ausführbarer Gesamtfeldersatz und kein Templatepatch.",
+        "categorySpecificBasis": "Vorhandene Bereichslinks Beleuchtung, Aufbewahrung, Kissen & Wohntextilien. Im gemeinsamen FAQ steht stattdessen eine Mode-/Schuhfrage."
+      }
+    },
+    {
+      "key": "schuhe",
+      "label": "Damenschuhe",
+      "url": "https://luxestyle.ch/collections/damen-schuhe",
+      "canonicalObserved": "https://luxestyle.ch/collections/damen-schuhe",
+      "canonicalDecision": "NO_CHANGE",
+      "current": {
+        "title": "Schuhe Damen: Sandalen, Pumps & Boots | LuxeStyle",
+        "meta_description": "Schuhe Damen: Sandalen mit Blockabsatz, Plateau-Sandalen, Pumps, High Heels, Ankle Boots, Stiefel und Hausschuhe. Versand in die ganze Schweiz.",
+        "h1": "Damen-Schuhe"
+      },
+      "decisions": {
+        "title": {
+          "status": "NO_CHANGE",
+          "before": "Schuhe Damen: Sandalen, Pumps & Boots | LuxeStyle",
+          "after": "Schuhe Damen: Sandalen, Pumps & Boots | LuxeStyle",
+          "reason": "Vorhandene Bezeichnung passt zur Seite; ohne belegten Mangel keine neue Titel-/H1-Fassung erzwingen.",
+          "sourceId": "schuhe_html",
+          "sourceXPath": "/html/head/title",
+          "beforeCharacters": 49,
+          "afterCharacters": 49
+        },
+        "meta_description": {
+          "status": "NO_CHANGE",
+          "before": "Schuhe Damen: Sandalen mit Blockabsatz, Plateau-Sandalen, Pumps, High Heels, Ankle Boots, Stiefel und Hausschuhe. Versand in die ganze Schweiz.",
+          "after": "Schuhe Damen: Sandalen mit Blockabsatz, Plateau-Sandalen, Pumps, High Heels, Ankle Boots, Stiefel und Hausschuhe. Versand in die ganze Schweiz.",
+          "reason": "Bereits konkrete Seiten-/Produktorientierung; kein belegter Grund für Ersatz. Vorhandene Service-/Produktaussagen sind zitierter Bestand und werden hier nicht neu bestätigt.",
+          "sourceId": "schuhe_html",
+          "sourceXPath": "/html/head/meta[@name=\"description\"]/@content",
+          "beforeCharacters": 143,
+          "afterCharacters": 143
+        },
+        "h1": {
+          "status": "NO_CHANGE",
+          "before": "Damen-Schuhe",
+          "after": "Damen-Schuhe",
+          "reason": "Vorhandene Bezeichnung passt zur Seite; ohne belegten Mangel keine neue Titel-/H1-Fassung erzwingen.",
+          "sourceId": "schuhe_html",
+          "sourceXPath": "//main[@id=\"MainContent\"]//h1[not(ancestor::iframe)]",
+          "beforeCharacters": 12,
+          "afterCharacters": 12
+        }
+      },
+      "categoryPurchaseHelp": {
+        "status": "REVIEW_INSERT_ONLY",
+        "currentIntroParagraphs": [
+          "Entdecke Damenschuhe für jeden Anlass: flache Loafer und Ballerinas für den Alltag, Slingback-Pumps und Stiletto-Sandaletten für den Abend, Plateau-Sneaker und Keil-Sandalen für den Sommer. Dazu Stiefeletten und Boots für die kühle Jahreszeit – die Auswahl wächst laufend.",
+          "🚚 Lieferzeit auf jeder Produktseite · Gratis-Versand in der Schweiz ab CHF 50 · ↩️ 30 Tage Rückgabe · –10 % mit Code WELCOME10",
+          "Zur Übersicht: Damen"
+        ],
+        "genericFaqObserved": {
+          "question": "📏 Wie finde ich die richtige Grösse?",
+          "answer": "Bei Mode- und Schuh-Artikeln findest du eine cm-Grössentabelle direkt auf der jeweiligen Produktseite.",
+          "sourceId": "schuhe_html"
+        },
+        "proposedParagraph": "Wähle zuerst den Schuhtyp. Nutze eine Grössentabelle nur, falls sie beim einzelnen Modell vorhanden ist und ihre Zuordnung klar genannt wird. Ein Filterwert allein belegt kein bestimmtes Grössensystem. Fehlen Modellangaben oder die Zuordnung, kläre sie vor der Bestellung.",
+        "proposedHtmlFragment": "<p>Wähle zuerst den Schuhtyp. Nutze eine Grössentabelle nur, falls sie beim einzelnen Modell vorhanden ist und ihre Zuordnung klar genannt wird. Ein Filterwert allein belegt kein bestimmtes Grössensystem. Fehlen Modellangaben oder die Zuordnung, kläre sie vor der Bestellung.</p>",
+        "placementReview": "Als ein zusätzlicher Absatz nach der vorhandenen Einleitung und vor vorhandenen Passend-dazu-/Übersichtslinks. Bestehende Absätze, Links und das globale FAQ bleiben in diesem Entwurf unverändert.",
+        "existingLinksToPreserve": [
+          {
+            "label": "Damen",
+            "urlAsArchived": "https://luxestyle.ch/collections/damen-mode"
+          }
+        ],
+        "scopeLimit": "Nur logischer Review-Zusatz zur Kategorieeinleitung. Öffentliche Rendererbytes sind keine native unbearbeitete Admin-descriptionHtml. Kein ausführbarer Gesamtfeldersatz und kein Templatepatch.",
+        "categorySpecificBasis": "Die Grössenfrage ist thematisch passend, verspricht jedoch eine cm-Tabelle auf jeder Produktseite. Gemischte Filterwerte belegen keine einheitliche Modell-/Systemzuordnung; die Tabellenabdeckung ist unbekannt."
+      }
+    },
+    {
+      "key": "projector",
+      "label": "Projektor",
+      "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+      "canonicalObserved": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+      "canonicalDecision": "NO_CHANGE",
+      "current": {
+        "title": "Sternenlicht-Projektor fürs Schlafzimmer | LuxeStyle",
+        "meta_description": "Sternenlicht-Projektor für stimmungsvolle Beleuchtung im Schlafzimmer. Produktdetails, Preis und Verfügbarkeit bei LuxeStyle online ansehen.",
+        "h1": "Sternenlicht-Projektor für Schlafzimmer"
+      },
+      "decisions": {
+        "title": {
+          "status": "NO_CHANGE",
+          "before": "Sternenlicht-Projektor fürs Schlafzimmer | LuxeStyle",
+          "after": "Sternenlicht-Projektor fürs Schlafzimmer | LuxeStyle",
+          "reason": "Vorhandene Bezeichnung passt zur Seite; ohne belegten Mangel keine neue Titel-/H1-Fassung erzwingen.",
+          "sourceId": "projector_html",
+          "sourceXPath": "/html/head/title",
+          "beforeCharacters": 52,
+          "afterCharacters": 52
+        },
+        "meta_description": {
+          "status": "NO_CHANGE",
+          "before": "Sternenlicht-Projektor für stimmungsvolle Beleuchtung im Schlafzimmer. Produktdetails, Preis und Verfügbarkeit bei LuxeStyle online ansehen.",
+          "after": "Sternenlicht-Projektor für stimmungsvolle Beleuchtung im Schlafzimmer. Produktdetails, Preis und Verfügbarkeit bei LuxeStyle online ansehen.",
+          "reason": "Bereits konkrete Seiten-/Produktorientierung; kein belegter Grund für Ersatz. Vorhandene Service-/Produktaussagen sind zitierter Bestand und werden hier nicht neu bestätigt.",
+          "sourceId": "projector_html",
+          "sourceXPath": "/html/head/meta[@name=\"description\"]/@content",
+          "beforeCharacters": 140,
+          "afterCharacters": 140
+        },
+        "h1": {
+          "status": "NO_CHANGE",
+          "before": "Sternenlicht-Projektor für Schlafzimmer",
+          "after": "Sternenlicht-Projektor für Schlafzimmer",
+          "reason": "Vorhandene Bezeichnung passt zur Seite; ohne belegten Mangel keine neue Titel-/H1-Fassung erzwingen.",
+          "sourceId": "projector_html",
+          "sourceXPath": "//main[@id=\"MainContent\"]//h1[not(ancestor::iframe)]",
+          "beforeCharacters": 39,
+          "afterCharacters": 39
+        }
+      },
+      "categoryPurchaseHelp": {
+        "status": "NO_CHANGE",
+        "reason": "Keine neue Kategorieeinleitung auf Start-/Produktseite. Vorhandene Produktbeschreibungsentwürfe sind separat und werden nicht wiederholt."
+      },
+      "existingProductDraft": {
+        "status": "EXISTING_DRAFT_NOT_NEW_WORK",
+        "path": "/workspace/luxestyle-review/improve-next-20261025/products/projector.diff",
+        "sourceSnapshot": "/workspace/luxestyle-review/improve-next-20261025/products/projector-BEFORE.json",
+        "sourceSnapshotSha256": "337b981ecd18bcd3ba94b75d7275162058b231595808978bd80cb39ee98498a1",
+        "archivedSeoPreserveMatchesRenderedSeo": true,
+        "productDescriptionChangedByThisReview": false,
+        "supplierTechnicalDetailsVerified": false
+      }
+    },
+    {
+      "key": "diffuser",
+      "label": "Diffuser",
+      "url": "https://luxestyle.ch/products/aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben",
+      "canonicalObserved": "https://luxestyle.ch/products/aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben",
+      "canonicalDecision": "NO_CHANGE",
+      "current": {
+        "title": "Aroma-Diffuser in Holzoptik | LuxeStyle",
+        "meta_description": "Aroma-Diffuser in Holzoptik mit rundem Sockel, abnehmbarem Aufsatz und Bedientasten. Entdecke das Design und die Produktansichten bei LuxeStyle.",
+        "h1": "Aroma-Diffuser in Holzoptik"
+      },
+      "decisions": {
+        "title": {
+          "status": "NO_CHANGE",
+          "before": "Aroma-Diffuser in Holzoptik | LuxeStyle",
+          "after": "Aroma-Diffuser in Holzoptik | LuxeStyle",
+          "reason": "Vorhandene Bezeichnung passt zur Seite; ohne belegten Mangel keine neue Titel-/H1-Fassung erzwingen.",
+          "sourceId": "diffuser_html",
+          "sourceXPath": "/html/head/title",
+          "beforeCharacters": 39,
+          "afterCharacters": 39
+        },
+        "meta_description": {
+          "status": "NO_CHANGE",
+          "before": "Aroma-Diffuser in Holzoptik mit rundem Sockel, abnehmbarem Aufsatz und Bedientasten. Entdecke das Design und die Produktansichten bei LuxeStyle.",
+          "after": "Aroma-Diffuser in Holzoptik mit rundem Sockel, abnehmbarem Aufsatz und Bedientasten. Entdecke das Design und die Produktansichten bei LuxeStyle.",
+          "reason": "Bereits konkrete Seiten-/Produktorientierung; kein belegter Grund für Ersatz. Vorhandene Service-/Produktaussagen sind zitierter Bestand und werden hier nicht neu bestätigt.",
+          "sourceId": "diffuser_html",
+          "sourceXPath": "/html/head/meta[@name=\"description\"]/@content",
+          "beforeCharacters": 144,
+          "afterCharacters": 144
+        },
+        "h1": {
+          "status": "NO_CHANGE",
+          "before": "Aroma-Diffuser in Holzoptik",
+          "after": "Aroma-Diffuser in Holzoptik",
+          "reason": "Vorhandene Bezeichnung passt zur Seite; ohne belegten Mangel keine neue Titel-/H1-Fassung erzwingen.",
+          "sourceId": "diffuser_html",
+          "sourceXPath": "//main[@id=\"MainContent\"]//h1[not(ancestor::iframe)]",
+          "beforeCharacters": 27,
+          "afterCharacters": 27
+        }
+      },
+      "categoryPurchaseHelp": {
+        "status": "NO_CHANGE",
+        "reason": "Keine neue Kategorieeinleitung auf Start-/Produktseite. Vorhandene Produktbeschreibungsentwürfe sind separat und werden nicht wiederholt."
+      },
+      "existingProductDraft": {
+        "status": "EXISTING_DRAFT_NOT_NEW_WORK",
+        "path": "/workspace/luxestyle-review/improve-next-20261025/products/diffuser.diff",
+        "sourceSnapshot": "/workspace/luxestyle-review/improve-next-20261025/products/diffuser-BEFORE.json",
+        "sourceSnapshotSha256": "aaefa35aee1016ea6244687e2d2f936e279079ff99f37c90afc72a1b06611aa4",
+        "archivedSeoPreserveMatchesRenderedSeo": true,
+        "productDescriptionChangedByThisReview": false,
+        "supplierTechnicalDetailsVerified": false
+      }
+    }
+  ],
+  "reviewFieldDiffs": [
+    {
+      "id": "technik_meta_description",
+      "url": "https://luxestyle.ch/collections/elektronik-technik",
+      "reviewField": "meta_description",
+      "operation": "replace_review_value",
+      "before": "Elektronik & Technik online kaufen bei LuxeStyle: Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe, Lieferzeit auf jeder Produktseite.",
+      "after": "Elektronik & Technik bei LuxeStyle: Entdecke Laden & Strom, Audio und Gaming. Vergleiche vor der Auswahl Anschlüsse und die Angaben zur Kompatibilität.",
+      "sourceIds": [
+        "technik_html"
+      ],
+      "nativeObjectId": null,
+      "executableMutation": false,
+      "freshNativeSourceRequiredBeforeAnySeparateImplementation": true
+    },
+    {
+      "id": "technik_intro_purchase_help",
+      "url": "https://luxestyle.ch/collections/elektronik-technik",
+      "reviewField": "Kategorieeinleitung / logischer Zusatz zu descriptionHtml",
+      "operation": "insert_review_fragment",
+      "beforeFragment": "",
+      "afterFragment": "<p>Wähle zuerst den Einsatzbereich. Prüfe beim einzelnen Artikel, welche Anschlüsse, Stromversorgung und kompatiblen Geräte ausdrücklich angegeben sind. Fehlt eine Angabe, kläre sie vor der Bestellung.</p>",
+      "placement": "nach bestehender Einleitung, vor bestehenden verwandten Links",
+      "preserveExistingParagraphsLinksAndGlobalFaq": true,
+      "sourceIds": [
+        "technik_html",
+        "structure_evidence"
+      ],
+      "nativeObjectId": null,
+      "executableMutation": false,
+      "freshNativeSourceRequiredBeforeAnySeparateImplementation": true
+    },
+    {
+      "id": "wohnen_meta_description",
+      "url": "https://luxestyle.ch/collections/wohnen-dekoration",
+      "reviewField": "meta_description",
+      "operation": "replace_review_value",
+      "before": "Wohnen & Dekoration online kaufen bei LuxeStyle: Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe, Lieferzeit auf jeder Produktseite.",
+      "after": "Wohnen & Dekoration bei LuxeStyle: Entdecke Beleuchtung, Aufbewahrung und Wohntextilien. Vergleiche die Angaben zu Abmessungen und zur Ausführung.",
+      "sourceIds": [
+        "wohnen_html"
+      ],
+      "nativeObjectId": null,
+      "executableMutation": false,
+      "freshNativeSourceRequiredBeforeAnySeparateImplementation": true
+    },
+    {
+      "id": "wohnen_intro_purchase_help",
+      "url": "https://luxestyle.ch/collections/wohnen-dekoration",
+      "reviewField": "Kategorieeinleitung / logischer Zusatz zu descriptionHtml",
+      "operation": "insert_review_fragment",
+      "beforeFragment": "",
+      "afterFragment": "<p>Wähle zuerst den Bereich: Beleuchtung, Aufbewahrung oder Wohntextilien. Prüfe vor der Auswahl die Angaben zu Abmessungen und zur Ausführung des einzelnen Artikels. Fehlt eine Angabe, kläre sie vor der Bestellung.</p>",
+      "placement": "nach bestehender Einleitung, vor bestehenden verwandten Links",
+      "preserveExistingParagraphsLinksAndGlobalFaq": true,
+      "sourceIds": [
+        "wohnen_html",
+        "structure_evidence"
+      ],
+      "nativeObjectId": null,
+      "executableMutation": false,
+      "freshNativeSourceRequiredBeforeAnySeparateImplementation": true
+    },
+    {
+      "id": "schuhe_intro_purchase_help",
+      "url": "https://luxestyle.ch/collections/damen-schuhe",
+      "reviewField": "Kategorieeinleitung / logischer Zusatz zu descriptionHtml",
+      "operation": "insert_review_fragment",
+      "beforeFragment": "",
+      "afterFragment": "<p>Wähle zuerst den Schuhtyp. Nutze eine Grössentabelle nur, falls sie beim einzelnen Modell vorhanden ist und ihre Zuordnung klar genannt wird. Ein Filterwert allein belegt kein bestimmtes Grössensystem. Fehlen Modellangaben oder die Zuordnung, kläre sie vor der Bestellung.</p>",
+      "placement": "nach bestehender Einleitung, vor bestehenden verwandten Links",
+      "preserveExistingParagraphsLinksAndGlobalFaq": true,
+      "sourceIds": [
+        "schuhe_html",
+        "structure_evidence"
+      ],
+      "nativeObjectId": null,
+      "executableMutation": false,
+      "freshNativeSourceRequiredBeforeAnySeparateImplementation": true
+    }
+  ],
+  "indexationStatus": {
+    "projector": {
+      "status": "OWNER_REPORTED_INDEXED",
+      "source": "parent relayed current owner confirmation",
+      "independentlyVerified": false
+    },
+    "home": {
+      "status": "UNKNOWN"
+    },
+    "technik": {
+      "status": "UNKNOWN",
+      "candidateReason": "Parent named this exact previously checked URL as an indexing candidate; archived HTTP200 establishes reachability only."
+    },
+    "wohnen": {
+      "status": "UNKNOWN"
+    },
+    "schuhe": {
+      "status": "UNKNOWN"
+    },
+    "diffuser": {
+      "status": "UNKNOWN"
+    },
+    "accessContextRelayedByParent": {
+      "asOfEuropeZurich": "Abend 25.10.2026 (CET)",
+      "timestampPrecision": "evening_only; no exact measurement timestamp asserted",
+      "performedBy": "parent, not this SEO subtask",
+      "boundedConnectorDirectoryCheck": "Windsor get_connectors with include_actions=false, include_options=true, include_not_yet_connected=false",
+      "observedConnectedSource": "google_merchant account 5797470070 LuxeStyle CH only; no searchconsole returned",
+      "merchantStatusOrMetricsRead": false,
+      "authFlowStarted": false,
+      "interpretation": "Does not establish that the site lacks Search Console; no usable Search Console connection was returned in that bounded directory result."
+    },
+    "googleIndexVerificationPerformedByThisReview": false,
+    "indexingRequestedByThisReview": false,
+    "noInference": "HTTP200, title, meta description, canonical and connector presence do not establish Google indexing. No Google verification or indexing request was executed in this review."
+  },
+  "limits": [
+    "Archivbeobachtungen sind keine aktuelle Wiederholungsmessung oder vollständige Websiteprüfung.",
+    "HTML aus eingebetteten Konto-/Shopframes wird nicht als Root-Title/H1/Canonical behandelt.",
+    "Vorhandene Meta-/Servicetexte werden zitiert; Preis-, Liefer-, Rückgabe-, Review-, Material- oder Funktionsclaims werden nicht neu bestätigt oder ergänzt.",
+    "Kategorie-/Produktzuordnungen, technische Kompatibilität, Grössensysteme und Modelltabellenabdeckung sind nicht vollständig belegt. Die Kaufhilfen fordern daher Prüfung beziehungsweise Klärung.",
+    "Öffentliches Beschreibung-Rendering ist keine native Admin-Feldquelle. Die drei Einfügungen sind kleine Reviewfragmente, keine ausführbaren Gesamtfeldpayloads.",
+    "Kein neuer globaler FAQ-/Templatepatch. Das bestehende generische FAQ bleibt ein separat dokumentierter Befund; alte Licht-FAQ- und Produktbeschreibungsdiffs werden nicht als neue Arbeit ausgegeben.",
+    "Zeichenlängen sind nur Vergleichswerte, keine Zusage zur Suchergebnisdarstellung.",
+    "Keine Rankings, Indexierung, Suchnachfrage, Klick-/Verkaufssteigerung oder Core Web Vitals gemessen beziehungsweise versprochen.",
+    "Der Inhaber meldet den Sternenlicht-Projektor als indexiert; das ist keine unabhängige Verifizierung. Die übrigen fünf Pilot-URLs bleiben hinsichtlich Indexierung unbekannt. Keine Indexierung beantragt oder Google-URL-Prüfung ausgeführt.",
+    "Öffentliche CHF50-Regel, interne CHF45-Regel nach Rabatt, Preise, Rabatte, Kundendomäne und alle operativen Einstellungen bleiben unangetastet."
+  ],
+  "validation": {
+    "sixUniquePilotUrls": true,
+    "rootHeadAndMainH1Present": true,
+    "allObservedCanonicalsMatchExactPilotUrl": true,
+    "categorySourceHashesMatchExistingEvidence": true,
+    "productSourceHashesMatchExistingPublicRecord": true,
+    "productSeoMatchesArchivedNativeSnapshots": true,
+    "exactlyTwoMetadataReviewDeltas": true,
+    "exactlyThreeInsertFragments": true,
+    "threeFragmentsParseAsSinglePlainParagraphWithoutLinksOrScripts": true,
+    "titleOrH1Changes": 0,
+    "newLinksAdded": 0,
+    "existingDescriptionDraftsReissuedAsNew": false,
+    "nativeAdminFieldOrLiquidRuntimeValidation": "not_applicable_no_operation_or_template_generated",
+    "browserOrShopPreview": "not_performed_by_this_review"
+  },
+  "operationalActions": {
+    "connectorReads": 0,
+    "networkRequests": 0,
+    "kpiReads": 0,
+    "crawls": 0,
+    "shopWrites": 0,
+    "themeWrites": 0,
+    "repositoryWrites": 0,
+    "workflowRuns": 0,
+    "deployments": 0,
+    "customerContact": 0
+  }
+}
