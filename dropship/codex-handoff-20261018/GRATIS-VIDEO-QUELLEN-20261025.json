@@ -1,0 +1,103 @@
+{
+  "recordedAfterReadsUtc": "2026-10-24T21:54:01Z",
+  "recordedAfterReadsEuropeZurich": "2026-10-24T23:54:01+02:00",
+  "scope": {
+    "uniqueOfficialPages": 6,
+    "pageRetrievals": 7,
+    "successfulSearches": 2,
+    "localFileInspections": 0,
+    "luxestyleCrawls": 0,
+    "providerExecutions": 0,
+    "installs": 0,
+    "uploads": 0,
+    "purchases": 0
+  },
+  "retrievalNote": "Official publisher pages read through connected Firecrawl. Tool research, not a free rendering service execution. Targeted answers are excerpts, not full-page reads, except Shotcut FAQ second retrieval.",
+  "requestError": {
+    "operation": "initial second search",
+    "state": "INVALID_ARGUMENT before execution",
+    "reason": "includeDomains accepts domain names, not github.com/SubtitleEdit paths; corrected to github.com",
+    "emptyDataClaimed": false
+  },
+  "searches": [
+    {
+      "searchId": "01a16fe6-7fea-709b-a244-3c71b4aebfc0",
+      "feedbackRecorded": true,
+      "valuableSource": "https://kdenlive.org/"
+    },
+    {
+      "searchId": "01a16fe6-a2b2-70bc-bdf0-b64521085d44",
+      "feedbackRecorded": true,
+      "valuableSource": "https://www.ffmpeg.org/legal.html"
+    }
+  ],
+  "sources": [
+    {
+      "tool": "Shotcut",
+      "url": "https://www.shotcut.org/FAQ/",
+      "scrapeId": "01a16fe7-8f6d-73fc-b81e-01a0bf749e71",
+      "statusCode": 200,
+      "evidenceType": "full markdown read",
+      "text": "## Is Shotcut free for commercial use?\n\nYes, because the software is made available under the GPLv3 license, it\nsupports [The Free Software Definition](https://www.gnu.org/philosophy/free-sw.html),\nwhich includes:\n\n> The freedom to run the program as you wish, for any purpose (freedom 0).\n\n## Which Export preset should I use?\n\nIt all depends; that is why there are so many of them! But here are some\nsuggestions:\n\n- Upload to a video-sharing web site: `H.264 High Profile` or `YouTube`\n- Extract the audio: `Ogg Vorbis`, `FLAC` (lossless with compression), or good old `MP3`\n- Save to an intermediate file to use with another tool: `DNxHR HQ` or\n`ProRes 422` \\- really depends on what the other tool accepts\n- Put onto my own web site: `WebM` and/or `Default` (moderate quality H.264)\n- Screen recording (Linux only): `intermediate/MJPEG`\n- Capture from SDI/HDMI: `intermediate/ProRes 422` if your system can handle it,\notherwise `intermediate/MPEG-2`\n\n#### About\n\nShotcut is a free, open source, cross-platform video editor for Windows, Mac and Linux. Major features include support for a wide range of formats; no import required meaning native timeline editing; Blackmagic Design support for input and preview monitoring; and resolution support to 4k.\n\n#### Social Links\n\nCopyright © 2011-2026 by [Meltytech, LLC](https://www.meltytech.com/)\n\nShotcut is a trademark of [Meltytech, LLC.](https://www.meltytech.com/)\n\n|     |     |\n| --- | --- |\n|  |  |",
+      "warning": null
+    },
+    {
+      "tool": "Kdenlive",
+      "url": "https://kdenlive.org/",
+      "scrapeId": "01a16fe7-0ae9-733d-9213-3329a82e9417",
+      "statusCode": 200,
+      "evidenceType": "targeted direct quotations",
+      "text": "Free and Open Source Video Editor\n\nAsset Management\n\nTake control of your edit with a flexible non-linear workflow, [multicam](https://docs.kdenlive.org/project_and_asset_management/project_settings/proxy_settings.html?mtm_campaign=kdenliveorg_front_features) and [3-point editing](https://docs.kdenlive.org/cutting_and_assembling/editing.html?mtm_campaign=kdenliveorg_front_features#point-editing).\n\nScreenshots collage of Kdenlive widgets related to audio.\n\nCan you hear the difference? Shape your soundtrack with powerful [mixers](https://docs.kdenlive.org/effects_and_filters/audio.html?mtm_campaign=kdenliveorg_front_features#audio-mixer), built-in [voiceover recording](https://docs.kdenlive.org/effects_and_filters/audio.html?mtm_campaign=kdenliveorg_front_features#audio-recording), and an [audio spectrum](https://docs.kdenlive.org/user_interface/menu/view_menu.html?mtm_campaign=kdenliveorg_front_features#scope-audio-spectrum) that lets you see exactly what you’re hearing.\n\nAdd smooth [transitions](https://docs.kdenlive.org/compositing/transitions.html?mtm_campaign=kdenliveorg_front_features) between clips and combine layers with flexible [compositions](https://docs.kdenlive.org/compositing/compositions.html?mtm_campaign=kdenliveorg_front_features) to create polished, dynamic sequences.\n\nCreate professional [subtitles](https://docs.kdenlive.org/effects_and_filters/subtitles.html?mtm_campaign=kdenliveorg_front_features) with [automatic transcription](https://docs.kdenlive.org/effects_and_filters/speech_to_text.html?mtm_campaign=kdenliveorg_front_features), advanced layering and styling.",
+      "warning": null
+    },
+    {
+      "tool": "DaVinci Resolve",
+      "url": "https://www.blackmagicdesign.com/products/davinciresolve",
+      "scrapeId": "01a16fe7-0af9-70ef-93e1-6b74e5231f34",
+      "statusCode": 200,
+      "evidenceType": "targeted direct quotations",
+      "text": "The free version works with virtually all 8-bit video formats at up to 60fps in resolutions as high as Ultra HD 3840 x 2160. The free version includes multi-user collaboration and HDR grading!\n\nIt also supports 10-bit video up to 120 frames per second and resolutions beyond 4K.",
+      "warning": null
+    },
+    {
+      "tool": "FFmpeg",
+      "url": "https://www.ffmpeg.org/legal.html",
+      "scrapeId": "01a16fe7-0b54-74b9-ab63-3b48c4f8f1a6",
+      "statusCode": 200,
+      "evidenceType": "targeted direct quotations",
+      "text": "FFmpeg is licensed under the [GNU Lesser\\ General Public License (LGPL) version 2.1](http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html) or later. If those parts get used the GPL applies to all of FFmpeg.\n\nNote that FFmpeg is not available under any other licensing terms, especially not proprietary/commercial ones, not even in exchange for payment.\n\nQ: Bottom line: Should I be worried about patent issues if I use FFmpeg?\n\nA: Are you a private user working with FFmpeg for your own personal purposes? If so, there is remarkably little reason to be concerned. Are you using FFmpeg in a commercial software product?\n\nA: You might have a problem here. These companies found out that once you start trying to make money from patented technologies, the owners of the patents will come after their licensing fees. Notably, MPEG LA is vigilant and diligent about collecting for MPEG-related technologies.",
+      "warning": "This scrape job was throttled at your current concurrency limit. If you'd like to scrape faster, you can upgrade your plan."
+    },
+    {
+      "tool": "Audacity",
+      "url": "https://manual.audacityteam.org/man/faq_about_audacity.html",
+      "scrapeId": "01a16fe7-0b31-77ed-a8de-ebd441d4d682",
+      "statusCode": 200,
+      "evidenceType": "targeted direct quotations",
+      "text": "Yes, Audacity is [completely free, open source software](https://web.audacityteam.org/about/). You are free to use this application for any personal, commercial, or educational purposes, including installing it on as many different computers as you wish. You are also free to give it away, sell it, or modify it for your own use, under the terms of the [GNU General Public License](https://web.audacityteam.org/about/license).\n\nIt is legal to sell Audacity, as long as the vendor makes the application and source code available under the GNU General Public License (GPL).",
+      "warning": null
+    },
+    {
+      "tool": "Subtitle Edit",
+      "url": "https://github.com/SubtitleEdit/subtitleedit",
+      "scrapeId": "01a16fe7-0b13-7491-b71a-4ac3f0ad6a51",
+      "statusCode": 200,
+      "evidenceType": "targeted direct quotations",
+      "text": "| Name | Name | Last commit message | Last commit date |\n| --- | --- | --- | --- |\n| [LICENSE](https://github.com/SubtitleEdit/subtitleedit/blob/main/LICENSE) | [LICENSE](https://github.com/SubtitleEdit/subtitleedit/blob/main/LICENSE) | [Minor clean + update license](https://github.com/SubtitleEdit/subtitleedit/commit/7edae3283fbb977a35e8559a0f23e5c0ebb4fc53) | 7 months agoMar 26, 2026 |\n\n[MIT license](https://github.com/SubtitleEdit/subtitleedit#MIT-1-ov-file)",
+      "warning": null
+    }
+  ],
+  "feedback": {
+    "bothSuccessfulSearchesSubmittedOnce": true,
+    "oneScrapeFeedbackPerOfficialSourceSubmitted": true
+  },
+  "unverified": [
+    "Actual installed versions or hardware compatibility",
+    "Actual export from any editor",
+    "Watermark behaviour where absent from cited page",
+    "1080x1920 custom preset where absent from cited page",
+    "Commercial stock/music/footage rights",
+    "Audition of LuxeStyle music",
+    "Tool authoring skill of Claude Code"
+  ]
+}
