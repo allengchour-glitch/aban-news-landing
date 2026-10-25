@@ -174,6 +174,15 @@ class DeliveryWindowTest {
         assertEquals("Lieferung ca. 30. Sept.–14. Okt. (10–20 Werktage)", deliveryWindow(html, day(2026, 9, 16)))
         assertNull(deliveryWindow("<p>Kein Hinweis</p>", day(2026, 9, 16)))
     }
+
+    @Test
+    fun warenkorbZeigtDasLangsamsteStück() {
+        val a = deliveryDays("<p>Lieferung 7–12 Tage</p>")!!
+        val b = deliveryDays("<p>Lieferung 10–20 Werktage</p>")!!
+        assertEquals(DeliveryDays(10..20, true), slowest(listOf(a, b)))
+        assertEquals(a, slowest(listOf(a)))
+        assertNull(slowest(emptyList()))
+    }
 }
 
 class CartSuggestionTest {
@@ -285,14 +294,21 @@ class HomeContentTest {
         val rails = ch.luxestyle.app.ui.homeRails("damen-mode")
         assertEquals(RailSpec("damen-mode", newest = true, title = "Neu bei Damen"), rails.first())
         assertEquals(rails.size, rails.distinctBy { it.handle to it.newest }.size)
-        assertTrue(rails.indexOfFirst { it.handle == "bestseller" } > rails.indexOfFirst { it.handle == "schmuck-uhren" })
+        assertTrue(rails.indexOfFirst { it.handle == "make-up" } > rails.indexOfFirst { it.handle == "schmuck-uhren" })
+        // Beamer, Kinderschuhe, Kissenbezüge gehören nicht auf die Startseite
+        assertTrue(rails.none { it.handle in setOf("neu-eingetroffen", "bestseller", "schuhe", "wohnen-dekoration") })
         assertTrue(rails.none { it.handle == "halloween" })
         assertTrue(ch.luxestyle.app.ui.LUCK_RAIL in rails)
     }
 
     @Test
     fun halloweenNurImHerbst() {
-        assertEquals("halloween", ch.luxestyle.app.ui.homeRails("jacken-outdoor", halloween = true)[1].handle)
+        val (herbst, _) = ch.luxestyle.app.ui.seasonFor(10)
+        val rails = ch.luxestyle.app.ui.homeRails(herbst, halloween = true)
+        assertEquals("halloween", rails[1].handle)
+        // Herbst: Damen-Jacken statt „Jacken & Outdoor" (führt mit Herrenjacken), dazu Stiefel
+        assertEquals(ch.luxestyle.app.ui.COAT_RAIL, rails[2])
+        assertTrue(ch.luxestyle.app.ui.BOOT_RAIL in rails)
         assertTrue(ch.luxestyle.app.ui.isHalloweenTime(9, 15))
         assertTrue(ch.luxestyle.app.ui.isHalloweenTime(10, 31))
         assertTrue(!ch.luxestyle.app.ui.isHalloweenTime(9, 14))

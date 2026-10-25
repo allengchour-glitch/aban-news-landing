@@ -31,13 +31,15 @@ jobs:
       - name: Validate HTML files
         run: |
           set +e
-          FAIL=0
-          for f in $(find . -maxdepth 3 -name '*.html' -not -path './node_modules/*' -not -path './.git/*'); do
-            echo "::group::html-validate $f"
-            npx html-validate --formatter stylish "$f" || FAIL=1
-            echo "::endgroup::"
-          done
-          if [ "$FAIL" = "1" ]; then
+          # Ein html-validate-Aufruf je 200 Dateien statt einer pro Datei: bei ~2'700 Seiten
+          # startete die alte Schleife 2'700 npx-Prozesse und lief in die 8-Minuten-Grenze
+          # (Job «cancelled» auf main und auf jedem PR).
+          find . -maxdepth 3 -name '*.html' -not -path './node_modules/*' -not -path './.git/*' -print0 \
+            | xargs -0 -n 200 npx html-validate --formatter stylish > html-validate.log 2>&1
+          FAIL=$?
+          echo "Befunde: $(grep -c ' error ' html-validate.log || true) Fehlerzeilen"
+          tail -n 40 html-validate.log
+          if [ "$FAIL" != "0" ]; then
             echo "::warning::HTML validation reported issues (non-blocking for now)"
           fi
 
