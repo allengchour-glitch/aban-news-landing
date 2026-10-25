@@ -1,0 +1,1423 @@
+{
+  "recordType": "whole_shop_design_review_NOT_live_deployment_or_publication_ledger",
+  "sourceTheme": {
+    "status": "READ_ONLY_SOURCE_AUDIT",
+    "recordedAtUtc": "2026-10-25T12:30:07.458205+00:00",
+    "shop": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currency": "CHF",
+      "verification": "fresh connected Shopify get_shop_info during this subtask"
+    },
+    "theme": {
+      "id": "gid://shopify/OnlineStoreTheme/187533001089",
+      "name": "Horizon · LuxeStyle + Email-Popup (Claude)",
+      "role": "MAIN",
+      "updatedAt": "2026-10-22T22:00:27Z"
+    },
+    "repository": {
+      "fullName": "allengchour-glitch/aban-news-landing",
+      "ref": "codex/luxestyle-claude-handoff-20261018",
+      "handoffReadme": {
+        "sha": "f15ff779673c1ba85da2eb25bb5973521502bdf7",
+        "url": "https://github.com/allengchour-glitch/aban-news-landing/blob/codex/luxestyle-claude-handoff-20261018/dropship/codex-handoff-20261018/README.md"
+      },
+      "handoffTagesprotokoll": {
+        "sha": "d6d1663680e9cf154c85381af4b8391772429c54",
+        "url": "https://github.com/allengchour-glitch/aban-news-landing/blob/codex/luxestyle-claude-handoff-20261018/dropship/codex-handoff-20261018/TAGESPROTOKOLL.md"
+      }
+    },
+    "scope": {
+      "distinctCoreThemeFiles": 8,
+      "requestedFilesReturned": 8,
+      "filePaginationHasNextPage": false,
+      "broadThemePagination": false,
+      "targetedCounterprobe": "Exactly one repeat of settings_data.json because supplied checksum did not match received content. Same bytes and metadata returned. No extra distinct core file read.",
+      "analyticsOrExtensiveSalesRead": false
+    },
+    "schemaFirst": [
+      "QueryRoot",
+      "OnlineStoreTheme",
+      "OnlineStoreThemeFile",
+      "OnlineStoreThemeFileBodyText",
+      "ThemeRole"
+    ],
+    "validationOfReadOperations": "Connector validator invoked; returned skipped with validation delegated to executing query. Both successful read-only queries execute validation.",
+    "files": [
+      {
+        "filename": "config/settings_data.json",
+        "apiChecksumMd5": "1522ac2076ed20d9df6ba273ad476550",
+        "receivedBytesMd5": "5079c756fe896c7cc94da5d9494ccdf4",
+        "apiMd5MatchesReceivedBytes": false,
+        "sha256": "28c100c78cac8e391274eb2f25df640199b01941018afa9c4fc8f8afbcfe5e7d",
+        "bytes": 11123,
+        "updatedAt": "2026-10-13T20:14:25Z",
+        "localExactCopy": "current/config/settings_data.json"
+      },
+      {
+        "filename": "layout/theme.liquid",
+        "apiChecksumMd5": "f57ce18b9b264e9c95848c867234d5b9",
+        "receivedBytesMd5": "f57ce18b9b264e9c95848c867234d5b9",
+        "apiMd5MatchesReceivedBytes": true,
+        "sha256": "3314127aa82dd895afddbe4161ef2a1b74b1be42781e0518691033d5479bdcad",
+        "bytes": 53213,
+        "updatedAt": "2026-10-22T22:00:25Z",
+        "localExactCopy": "current/layout/theme.liquid"
+      },
+      {
+        "filename": "sections/footer-group.json",
+        "apiChecksumMd5": "368187170859033dc70fce5fa332ce27",
+        "receivedBytesMd5": "368187170859033dc70fce5fa332ce27",
+        "apiMd5MatchesReceivedBytes": true,
+        "sha256": "c10b8cf27ec413d44dae0bbd78d92914ffc24cd4b296a440d8a049ff22307e5f",
+        "bytes": 20091,
+        "updatedAt": "2026-10-21T06:38:31Z",
+        "localExactCopy": "current/sections/footer-group.json"
+      },
+      {
+        "filename": "sections/header-group.json",
+        "apiChecksumMd5": "682e9473226c6124ef978b6c7ed7439a",
+        "receivedBytesMd5": "682e9473226c6124ef978b6c7ed7439a",
+        "apiMd5MatchesReceivedBytes": true,
+        "sha256": "b686199d4efd12ba03fabfaa877e026efa0c9b20aee4cf6876bb830d123ef008",
+        "bytes": 11883,
+        "updatedAt": "2026-10-22T22:00:26Z",
+        "localExactCopy": "current/sections/header-group.json"
+      },
+      {
+        "filename": "templates/cart.json",
+        "apiChecksumMd5": "24c11d674873cd3ce8d5832afc871573",
+        "receivedBytesMd5": "24c11d674873cd3ce8d5832afc871573",
+        "apiMd5MatchesReceivedBytes": true,
+        "sha256": "941e60c1962256cafc80595ddfd95e7887aa063622ac82fd21deeaffc2981ade",
+        "bytes": 14441,
+        "updatedAt": "2026-10-13T22:26:53Z",
+        "localExactCopy": "current/templates/cart.json"
+      },
+      {
+        "filename": "templates/collection.json",
+        "apiChecksumMd5": "1137d372b40844b60ee7c56f841ebab4",
+        "receivedBytesMd5": "1137d372b40844b60ee7c56f841ebab4",
+        "apiMd5MatchesReceivedBytes": true,
+        "sha256": "aebb44991ab474c82d0f1350d1729491c4d9a394cc2a5a862574051f016e76de",
+        "bytes": 20292,
+        "updatedAt": "2026-10-22T22:00:26Z",
+        "localExactCopy": "current/templates/collection.json"
+      },
+      {
+        "filename": "templates/index.json",
+        "apiChecksumMd5": "501259490b875e6bb8dee7ebd7a4cc04",
+        "receivedBytesMd5": "501259490b875e6bb8dee7ebd7a4cc04",
+        "apiMd5MatchesReceivedBytes": true,
+        "sha256": "ac66467b60d0a9f34aaf14ed6299b688b9e36a72fbf9f983b445dfb8669fb42a",
+        "bytes": 148143,
+        "updatedAt": "2026-10-22T22:00:27Z",
+        "localExactCopy": "current/templates/index.json"
+      },
+      {
+        "filename": "templates/product.json",
+        "apiChecksumMd5": "f6625c20bb13716b520b3a3975ebb5b8",
+        "receivedBytesMd5": "f6625c20bb13716b520b3a3975ebb5b8",
+        "apiMd5MatchesReceivedBytes": true,
+        "sha256": "3ae8917a808a900c017e1c9a570e835ebb79654b62d608b338a0b3a5218445d9",
+        "bytes": 51873,
+        "updatedAt": "2026-10-22T22:00:26Z",
+        "localExactCopy": "current/templates/product.json"
+      }
+    ],
+    "checksumAnomaly": {
+      "filename": "config/settings_data.json",
+      "apiChecksumMd5": "1522ac2076ed20d9df6ba273ad476550",
+      "receivedBytesMd5": "5079c756fe896c7cc94da5d9494ccdf4",
+      "sameOnTargetedCounterprobe": true,
+      "cause": "unknown",
+      "changeCandidate": false
+    },
+    "findings": {
+      "home": {
+        "sectionsTotal": 25,
+        "enabledSections": 22,
+        "productListsTotal": 18,
+        "enabledProductLists": 15,
+        "categorySectionId": "collection_list_hREdj9",
+        "categoryPositionOneBased": 8,
+        "existingHeroAndMobileAsset": true,
+        "heroAssetOverrideInLuxUsp": true
+      },
+      "collection": {
+        "existingNativeFilters": true,
+        "filterStyle": "horizontal",
+        "sortingEnabled": true,
+        "existingTagAndSubcategoryChips": true,
+        "productsPerPage": 24,
+        "infiniteScrollEnabled": true,
+        "globalFaqHasSizeQuestion": true
+      },
+      "product": {
+        "existingStickyAddToCart": true,
+        "existingPriceVariantsBuyButtonsWishlistDeliveryTrustDescriptionsAndSpecifications": true,
+        "relatedRecommendationCount": 4
+      },
+      "cart": {
+        "cartType": "drawer",
+        "existingPageSummaryAndTrust": true,
+        "bestsellerRecommendationCount": 4
+      },
+      "navigation": {
+        "announcementBlocks": 5,
+        "stickyHeader": "always",
+        "existingSeparateMobileSearch": true,
+        "existingCollisionFixes": true,
+        "footerNewsletterLabel": "Sign up",
+        "newsletterCaptureCodeExists": true,
+        "captureOrConsentInteractionExercised": false
+      }
+    },
+    "preservedConstraints": {
+      "publicFreeShippingCHF": 50,
+      "internalAfterDiscountOwnerRuleCHF": 45,
+      "customerDomain": "account.luxestyle.com.co",
+      "internalShippingRateOrDiscountRuleRead": false,
+      "rateConflictProven": false,
+      "note": "UI render(cart) in layout lines 428-453 builds .luxe-ship-bar and uses 5000 for display. It neither reads nor changes Shopify rates or discounts. This is not evidence of an internal CHF45-rule change.",
+      "allThresholdAndAccountSettingsChanges": false
+    },
+    "recommendedFutureFileScope": [
+      "templates/index.json",
+      "templates/collection.json",
+      "templates/product.json",
+      "templates/cart.json",
+      "layout/theme.liquid"
+    ],
+    "concretePreparedPatch": {
+      "manifest": "INDEX-CHANGE.json",
+      "diff": "index-order.diff",
+      "file": "proposed/templates/index.json",
+      "onlyJsonPath": "/order",
+      "movedSection": "collection_list_hREdj9",
+      "fromOneBased": 8,
+      "toOneBased": 3,
+      "allSectionsSettingsDisabledFlagsAndProductListsPreserved": true,
+      "note": "Only this narrow homepage order patch is prepared. Broad visual redesign remains the separate shopwide preview and staged future design scope.",
+      "validation": {
+        "mode": "full_app_targeted_one_file",
+        "beforeResult": "failed_missing_real_section_dependencies",
+        "afterResult": "failed_missing_real_section_dependencies",
+        "beforeAfterDiagnosticsIdentical": true,
+        "newDiagnosticsFromOrderChange": 0,
+        "existingMissingSectionReferenceDiagnostics": 25,
+        "missingTypes": [
+          "hero",
+          "product-list",
+          "collection-list",
+          "custom-liquid"
+        ],
+        "cachedSchemasUsedAfterDocsFetchFailure": true,
+        "fullThemeOrBrowserApproval": false
+      },
+      "beforeSha256": "ac66467b60d0a9f34aaf14ed6299b688b9e36a72fbf9f983b445dfb8669fb42a",
+      "afterSha256": "d2f638387142dc1120dc4333465a917cd2d8e406ac911961144c8ff9e46d339e"
+    },
+    "reusedExistingArtifacts": [
+      {
+        "path": "/workspace/luxestyle-review/abend-20261024/sales/CHANGE.json",
+        "status": "historical local draft, not live",
+        "freshSourceMd5StillMatches": true,
+        "sourceMd5": "1137d372b40844b60ee7c56f841ebab4",
+        "targetCollectionId": "690626658689",
+        "targetHandle": "licht-nachtlicht-projektor",
+        "actualPriorValidation": "limited static only; no Liquid engine or browser preview"
+      },
+      {
+        "path": "/workspace/luxestyle-review/conversion-next-20261018/theme/change-manifest.json",
+        "status": "historical local draft, not live",
+        "freshSourceMd5StillMatches": false,
+        "historicalProductTemplateMd5": "6e823bd00682cc6167112222f5f8ff77",
+        "note": "Do not apply without rebasing; scoped old width label case, no sitewide issue inference."
+      }
+    ],
+    "existingRemoteHelpers": [
+      {
+        "path": "automation/lib/shopify_gql.mjs",
+        "blobSha": "429e62520bcdad79165164116ee6cad35655a5db",
+        "executed": false
+      },
+      {
+        "path": "automation/lib/shopify_secret.mjs",
+        "blobSha": "da8105d94e258fc9b8225a58267ac29164d954cf",
+        "executed": false
+      }
+    ],
+    "docs": [
+      "https://shopify.dev/docs/api/admin-graphql/2026-10/objects/OnlineStoreTheme",
+      "https://shopify.dev/docs/api/admin-graphql/2026-10/queries/theme",
+      "https://shopify.dev/docs/storefronts/themes/best-practices/performance/use-filter-chains",
+      "https://shopify.dev/docs/storefronts/themes/best-practices/performance/use-shopify-image-filters-efficiently"
+    ],
+    "runtimeObservation": {
+      "revision": 517,
+      "networkPolicy": "unrestricted/enforced",
+      "secretsBound": 0,
+      "outboundIdentities": 0,
+      "noCredentialsOrWorkflowsTested": true
+    },
+    "limitations": [
+      "Not a full theme fetch or full-theme validation.",
+      "No Shopify runtime or browser preview of actual theme.",
+      "No native filter data cleanup or current shipping-rate/account-domain configuration verification.",
+      "No new analytics, marketing, flow, social or sales reports.",
+      "CLI docs search attempted using existing bundled helper, failed fetch; connected Shopify documentation search supplied current references."
+    ],
+    "operationalWrites": {
+      "shop": 0,
+      "theme": 0,
+      "flow": 0,
+      "budget": 0,
+      "dns": 0,
+      "repository": 0,
+      "workflowRuns": 0,
+      "deployments": 0,
+      "customerContact": 0
+    }
+  },
+  "homepageOrderChange": {
+    "status": "LOCAL_REVIEW_DRAFT_NOT_APPLIED",
+    "recordedAtUtc": "2026-10-25T12:29:10.477124+00:00",
+    "themeId": "gid://shopify/OnlineStoreTheme/187533001089",
+    "roleAtRead": "MAIN",
+    "filename": "templates/index.json",
+    "sourceApiMd5": "501259490b875e6bb8dee7ebd7a4cc04",
+    "beforeSha256": "ac66467b60d0a9f34aaf14ed6299b688b9e36a72fbf9f983b445dfb8669fb42a",
+    "afterSha256": "d2f638387142dc1120dc4333465a917cd2d8e406ac911961144c8ff9e46d339e",
+    "beforeBytes": 148143,
+    "afterBytes": 148143,
+    "changedJsonPaths": [
+      "/order"
+    ],
+    "movedSection": "collection_list_hREdj9",
+    "beforePositionOneBased": 8,
+    "afterPositionOneBased": 3,
+    "beforeOrder": [
+      "hero_jVaWmY",
+      "lux_usp",
+      "mode_row",
+      "pl_trends",
+      "pl_kinder",
+      "pl_herbst",
+      "pl_tech_gadgets",
+      "collection_list_hREdj9",
+      "product_list_topseller",
+      "lux_kundenstimmen",
+      "product_list_wm2026",
+      "banner_selbst_gestalten",
+      "product_list_blitz",
+      "pl_wohnen",
+      "product_list_schweiz",
+      "schmuck_row",
+      "pl_beauty",
+      "lux_spotlight_video",
+      "elektronik_row",
+      "pl_senioren",
+      "pl_spass_gadgets",
+      "pl_wechsel_taschen",
+      "product_list_L3EDnA",
+      "pl_querbeet",
+      "trust_advantages"
+    ],
+    "afterOrder": [
+      "hero_jVaWmY",
+      "lux_usp",
+      "collection_list_hREdj9",
+      "mode_row",
+      "pl_trends",
+      "pl_kinder",
+      "pl_herbst",
+      "pl_tech_gadgets",
+      "product_list_topseller",
+      "lux_kundenstimmen",
+      "product_list_wm2026",
+      "banner_selbst_gestalten",
+      "product_list_blitz",
+      "pl_wohnen",
+      "product_list_schweiz",
+      "schmuck_row",
+      "pl_beauty",
+      "lux_spotlight_video",
+      "elektronik_row",
+      "pl_senioren",
+      "pl_spass_gadgets",
+      "pl_wechsel_taschen",
+      "product_list_L3EDnA",
+      "pl_querbeet",
+      "trust_advantages"
+    ],
+    "checks": {
+      "bothJsoncParse": true,
+      "sectionOrderBijection": true,
+      "orderUnique": true,
+      "sectionCountPreserved": 25,
+      "allSectionsByteSemanticsUnchanged": true,
+      "allSettingsAndDisabledFlagsUnchanged": true,
+      "allOtherJsonValuesUnchanged": true,
+      "orderBlockOnlyRawChange": true,
+      "exactReversalRestoresSource": true,
+      "activeSectionsBefore": 22,
+      "activeSectionsAfter": 22
+    },
+    "shippingThresholdsChanged": false,
+    "customerAccountDomainChanged": false,
+    "productDataOrListsChanged": false,
+    "shopOrThemeWrites": 0,
+    "browserOrShopifyRuntimePreview": "not_performed",
+    "liquidCodeChanged": false,
+    "rollback": "Exact current/templates/index.json source; only after a separately approved implementation and fresh source comparison.",
+    "shopifyValidator": {
+      "mode": "full_app_targeted_one_file",
+      "beforeResult": "failed_missing_real_section_dependencies",
+      "afterResult": "failed_missing_real_section_dependencies",
+      "beforeAfterDiagnosticsIdentical": true,
+      "newDiagnosticsFromOrderChange": 0,
+      "existingMissingSectionReferenceDiagnostics": 25,
+      "missingTypes": [
+        "hero",
+        "product-list",
+        "collection-list",
+        "custom-liquid"
+      ],
+      "cachedSchemasUsedAfterDocsFetchFailure": true,
+      "fullThemeOrBrowserApproval": false
+    }
+  },
+  "categoryReadScope": {
+    "pages": [
+      "https://luxestyle.ch/collections/elektronik-technik",
+      "https://luxestyle.ch/collections/wohnen-dekoration",
+      "https://luxestyle.ch/collections/damen-schuhe"
+    ],
+    "status": "three200/canonicalmatched; other links observed only",
+    "proposalMainGroups": 6,
+    "proposalDirectChildLinks": 44,
+    "sourceNestedLinkEntries": 201,
+    "allSourceLinksMigrated": false
+  },
+  "catalogScope": {
+    "products": 6,
+    "variants": 92,
+    "fullCatalogMigrated": false,
+    "allVariantImagesMatched": false,
+    "imageMeaning": "one genuine featured image reference per product; no claim of all colour image mappings"
+  },
+  "rootBrowser": {
+    "scope": "local generated whole-shop prototype, not live Shopify or checkout validation",
+    "sourceSha256": "7c73ae6cb969893c490d5ffb23c87a23ff6a9cd479bd1c7c12e843674f39d779",
+    "networkAttempts": [],
+    "pageErrors": [],
+    "checks": [
+      {
+        "device": "desktop",
+        "home": {
+          "viewport": 1440,
+          "width": 1440,
+          "bodyFont": "16px",
+          "nav": 6,
+          "images": [
+            {
+              "loaded": true,
+              "alt": true
+            },
+            {
+              "loaded": true,
+              "alt": true
+            },
+            {
+              "loaded": true,
+              "alt": true
+            },
+            {
+              "loaded": true,
+              "alt": true
+            },
+            {
+              "loaded": true,
+              "alt": true
+            },
+            {
+              "loaded": true,
+              "alt": true
+            },
+            {
+              "loaded": true,
+              "alt": true
+            },
+            {
+              "loaded": true,
+              "alt": true
+            },
+            {
+              "loaded": true,
+              "alt": true
+            },
+            {
+              "loaded": true,
+              "alt": true
+            },
+            {
+              "loaded": true,
+              "alt": true
+            },
+            {
+              "loaded": true,
+              "alt": true
+            }
+          ]
+        }
+      },
+      {
+        "device": "desktop",
+        "categoryPriceSort": [
+          "CHF 49.90",
+          "CHF 31.90"
+        ],
+        "titleFont": "14px",
+        "mobileFilters": false,
+        "cartQuantityMath": "34.90 then69.80",
+        "checkout": "demo explanation only",
+        "search": "Sternenlicht found; Escape closes",
+        "horizontalOverflow": false
+      },
+      {
+        "device": "mobile",
+        "home": {
+          "viewport": 390,
+          "width": 390,
+          "bodyFont": "16px",
+          "nav": 6,
+          "images": [
+            {
+              "loaded": true,
+              "alt": true
+            },
+            {
+              "loaded": true,
+              "alt": true
+            },
+            {
+              "loaded": true,
+              "alt": true
+            },
+            {
+              "loaded": true,
+              "alt": true
+            },
+            {
+              "loaded": true,
+              "alt": true
+            },
+            {
+              "loaded": true,
+              "alt": true
+            },
+            {
+              "loaded": true,
+              "alt": true
+            },
+            {
+              "loaded": true,
+              "alt": true
+            },
+            {
+              "loaded": true,
+              "alt": true
+            },
+            {
+              "loaded": true,
+              "alt": true
+            },
+            {
+              "loaded": true,
+              "alt": true
+            },
+            {
+              "loaded": true,
+              "alt": true
+            }
+          ]
+        }
+      },
+      {
+        "device": "mobile",
+        "categoryPriceSort": [
+          "CHF 49.90",
+          "CHF 31.90"
+        ],
+        "titleFont": "14px",
+        "mobileFilters": true,
+        "cartQuantityMath": "34.90 then69.80",
+        "checkout": "demo explanation only",
+        "search": "Sternenlicht found; Escape closes",
+        "horizontalOverflow": false
+      }
+    ],
+    "status": "PASS in stated prototype scope"
+  },
+  "independentBrowser": {
+    "scope": "independent local prototype review only; no live Shopify readiness or checkout claim",
+    "checkedAtUtc": "2026-10-25T12:53:09.677548+00:00",
+    "sourceSha256": "7c73ae6cb969893c490d5ffb23c87a23ff6a9cd479bd1c7c12e843674f39d779",
+    "networkAttempts": [],
+    "pageErrors": [],
+    "checks": [
+      {
+        "width": 1440,
+        "height": 1000,
+        "navNodes": [
+          {
+            "id": "mode",
+            "products": 2,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "wohnen",
+            "products": 3,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "technik",
+            "products": 2,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "beauty",
+            "products": 1,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "familie",
+            "products": 1,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "geschenke",
+            "products": 1,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "damen",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "herren",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "schuhe",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "damenschuhe",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "herrenschuhe",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "schmuck-uhren",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "taschen-rucksacke",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "accessoires",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "wohnen-deko",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "beleuchtung",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "led-strips-lichterketten",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "aroma-diffuser",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "kuche-kochen",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "aufbewahrung",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "kissen-wohntextilien",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "garten-outdoor",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "technik-entdecken",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "handy-zubehor",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "kopfhorer-audio",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "ladegerate-powerbanks",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "gaming",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "foto-video",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "pc-homeoffice",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "smart-home-gadgets",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "beauty-pflege-entdecken",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "hautpflege",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "make-up-kosmetik",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "haarpflege-styling",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "nagel-manikure",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "beauty-gerate",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "kinder-baby",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "spielzeug-plusch",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "haustierwelt",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "sport-fitness",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "reisen-outdoor",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "camping-outdoor",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "geschenke-entdecken",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "geschenke-fur-sie",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "geschenke-fur-ihn",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "geschenke-fur-kinder",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "geschenke-unter-chf-50",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "weihnachten",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "partydeko-ballone",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "kostume-party",
+            "products": 0,
+            "hasOriginalDestination": true
+          }
+        ],
+        "pdps": [
+          {
+            "slug": "projector",
+            "price": 34.9,
+            "variantId": "56197916361089",
+            "shippingLinks": 1,
+            "refundLinks": 1
+          },
+          {
+            "slug": "diffuser",
+            "price": 44.9,
+            "variantId": "55743280021889",
+            "shippingLinks": 1,
+            "refundLinks": 1
+          },
+          {
+            "slug": "sirene",
+            "price": 49.9,
+            "variantId": "55747898343809",
+            "shippingLinks": 1,
+            "refundLinks": 1
+          },
+          {
+            "slug": "trenchcoat",
+            "price": 31.9,
+            "variantId": "67610284884359",
+            "shippingLinks": 1,
+            "refundLinks": 1
+          },
+          {
+            "slug": "ladestation",
+            "price": 75.9,
+            "variantId": "56105579643265",
+            "shippingLinks": 1,
+            "refundLinks": 1
+          },
+          {
+            "slug": "haengematte",
+            "price": 34.9,
+            "variantId": "55889986683265",
+            "shippingLinks": 1,
+            "refundLinks": 1
+          }
+        ],
+        "servicePages": 4,
+        "demoCheckoutExplanation": true,
+        "noHorizontalOverflow": true
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "navNodes": [
+          {
+            "id": "mode",
+            "products": 2,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "wohnen",
+            "products": 3,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "technik",
+            "products": 2,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "beauty",
+            "products": 1,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "familie",
+            "products": 1,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "geschenke",
+            "products": 1,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "damen",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "herren",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "schuhe",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "damenschuhe",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "herrenschuhe",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "schmuck-uhren",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "taschen-rucksacke",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "accessoires",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "wohnen-deko",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "beleuchtung",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "led-strips-lichterketten",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "aroma-diffuser",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "kuche-kochen",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "aufbewahrung",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "kissen-wohntextilien",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "garten-outdoor",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "technik-entdecken",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "handy-zubehor",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "kopfhorer-audio",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "ladegerate-powerbanks",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "gaming",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "foto-video",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "pc-homeoffice",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "smart-home-gadgets",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "beauty-pflege-entdecken",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "hautpflege",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "make-up-kosmetik",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "haarpflege-styling",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "nagel-manikure",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "beauty-gerate",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "kinder-baby",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "spielzeug-plusch",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "haustierwelt",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "sport-fitness",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "reisen-outdoor",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "camping-outdoor",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "geschenke-entdecken",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "geschenke-fur-sie",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "geschenke-fur-ihn",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "geschenke-fur-kinder",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "geschenke-unter-chf-50",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "weihnachten",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "partydeko-ballone",
+            "products": 0,
+            "hasOriginalDestination": true
+          },
+          {
+            "id": "kostume-party",
+            "products": 0,
+            "hasOriginalDestination": true
+          }
+        ],
+        "pdps": [
+          {
+            "slug": "projector",
+            "price": 34.9,
+            "variantId": "56197916361089",
+            "shippingLinks": 1,
+            "refundLinks": 1
+          },
+          {
+            "slug": "diffuser",
+            "price": 44.9,
+            "variantId": "55743280021889",
+            "shippingLinks": 1,
+            "refundLinks": 1
+          },
+          {
+            "slug": "sirene",
+            "price": 49.9,
+            "variantId": "55747898343809",
+            "shippingLinks": 1,
+            "refundLinks": 1
+          },
+          {
+            "slug": "trenchcoat",
+            "price": 31.9,
+            "variantId": "67610284884359",
+            "shippingLinks": 1,
+            "refundLinks": 1
+          },
+          {
+            "slug": "ladestation",
+            "price": 75.9,
+            "variantId": "56105579643265",
+            "shippingLinks": 1,
+            "refundLinks": 1
+          },
+          {
+            "slug": "haengematte",
+            "price": 34.9,
+            "variantId": "55889986683265",
+            "shippingLinks": 1,
+            "refundLinks": 1
+          }
+        ],
+        "servicePages": 4,
+        "demoCheckoutExplanation": true,
+        "noHorizontalOverflow": true
+      }
+    ],
+    "findings": [],
+    "sourceUnchangedDuringCheck": true,
+    "status": "PASS"
+  },
+  "independentDataCode": {
+    "status": "PASS_LOCAL_DATA_CODE_REVIEW_ONLY",
+    "sourceSha256": "7c73ae6cb969893c490d5ffb23c87a23ff6a9cd479bd1c7c12e843674f39d779",
+    "products": [
+      {
+        "slug": "projector",
+        "productId": "15521256604033",
+        "variantCount": 1,
+        "publicProductSha256": "bf4e323cd32983e755869b4ef8babf5d9c9c9580c7c5a285db8527515009c319",
+        "sourceImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+        "imageSha256": "bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d",
+        "checks": {
+          "adminActive": true,
+          "nativeCurrencyCHF": true,
+          "productIdMatchesPublic": true,
+          "imageSourceInPublic": true,
+          "localImageHashMatches": true,
+          "publicVariantCountMatches": true,
+          "publicVariantPriceAvailableOptionsMatch": true,
+          "nativeAllVariantPricesMatch": true
+        }
+      },
+      {
+        "slug": "diffuser",
+        "productId": "15411554320769",
+        "variantCount": 1,
+        "publicProductSha256": "57459589d490c2db00d2464de57c435e89e6a0a8e3ba272fb974247084f9a8d0",
+        "sourceImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1911719589035.jpg?v=1780140363",
+        "imageSha256": "0f3efc5740b0be89c5b357d6cb596026471b776cae3576085cdbd263beb35234",
+        "checks": {
+          "adminActive": true,
+          "nativeCurrencyCHF": true,
+          "productIdMatchesPublic": true,
+          "imageSourceInPublic": true,
+          "localImageHashMatches": true,
+          "publicVariantCountMatches": true,
+          "publicVariantPriceAvailableOptionsMatch": true,
+          "nativeAllVariantPricesMatch": true
+        }
+      },
+      {
+        "slug": "sirene",
+        "productId": "15412915110273",
+        "variantCount": 8,
+        "publicProductSha256": "b6a5d5de30d1f04f2692e78c2c991a3875163143fec9a0da7a1329cfd75077e3",
+        "sourceImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d83dfdec-8988-4191-bd19-31e3ed729ead.jpg?v=1780242313",
+        "imageSha256": "7cb6bcae4818cb97933bc68437c33e2c6cd1cb811e6e9a794840b0d9f8eaa25c",
+        "checks": {
+          "adminActive": true,
+          "nativeCurrencyCHF": true,
+          "productIdMatchesPublic": true,
+          "imageSourceInPublic": true,
+          "localImageHashMatches": true,
+          "publicVariantCountMatches": true,
+          "publicVariantPriceAvailableOptionsMatch": true,
+          "nativeAllVariantPricesMatch": true
+        }
+      },
+      {
+        "slug": "trenchcoat",
+        "productId": "16603335754119",
+        "variantCount": 48,
+        "publicProductSha256": "2fadc84abf0708e02726aaf90913693c68246e8dc6860a9b2a57e3ae51df67eb",
+        "sourceImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/343238f1-66e5-4e44-a7f9-ee796cc02630.jpg?v=1790876646",
+        "imageSha256": "a63bcb44bd70ae310da9ccdf875b53f8bfdb83975c7c674064c86b10d36cc510",
+        "checks": {
+          "adminActive": true,
+          "nativeCurrencyCHF": true,
+          "productIdMatchesPublic": true,
+          "imageSourceInPublic": true,
+          "localImageHashMatches": true,
+          "publicVariantCountMatches": true,
+          "publicVariantPriceAvailableOptionsMatch": true,
+          "nativeAllVariantPricesMatch": true
+        }
+      },
+      {
+        "slug": "ladestation",
+        "productId": "15499700142465",
+        "variantCount": 1,
+        "publicProductSha256": "ac02b92dcff1050a6fd00f0a3c5d15067b6152faa653dd95650b4c7f9629e35e",
+        "sourceImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7f27aec6-cca7-4edf-9fc1-5c0bbd8eedc1.jpg?v=1786749525",
+        "imageSha256": "0817d1c24033ee1f3c0c9cbbb08575ed1c9301184c42a0e4e431b64a921210b2",
+        "checks": {
+          "adminActive": true,
+          "nativeCurrencyCHF": true,
+          "productIdMatchesPublic": true,
+          "imageSourceInPublic": true,
+          "localImageHashMatches": true,
+          "publicVariantCountMatches": true,
+          "publicVariantPriceAvailableOptionsMatch": true,
+          "nativeAllVariantPricesMatch": true
+        }
+      },
+      {
+        "slug": "haengematte",
+        "productId": "15450856292737",
+        "variantCount": 33,
+        "publicProductSha256": "d8a6cd60e2cead7794cf154c50e963f685292943fa056ffb2ec0e7fe52e98c3c",
+        "sourceImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1586294835111.jpg?v=1783476912",
+        "imageSha256": "8a724c9ee674c0596b1571bb85e281d71177eb34fc00616af5a0a1924e802a3b",
+        "checks": {
+          "adminActive": true,
+          "nativeCurrencyCHF": true,
+          "productIdMatchesPublic": true,
+          "imageSourceInPublic": true,
+          "localImageHashMatches": true,
+          "publicVariantCountMatches": true,
+          "publicVariantPriceAvailableOptionsMatch": true,
+          "nativeAllVariantPricesMatch": true
+        }
+      }
+    ],
+    "codeChecks": {
+      "noFetchXHRBeaconSocketOrStorage": true,
+      "noServerCheckoutEndpoint": true,
+      "hasGuardForUnknownProductVariantPrices": true,
+      "memoryCart": true,
+      "publicThreshold50Preserved": true,
+      "accountDomainPreserved": true,
+      "robotsOnlyLocalPrototype": true
+    },
+    "limits": [
+      "Six-product design sample only; not full catalog audit or live membership migration.",
+      "No network calls made by this review; public and native source files reviewed locally.",
+      "Source HTTP provenance for projector/diffuser is reused from morgen-20261025/products/PUBLIC-CHECK.json; four others from data/PUBLIC-PRODUCT-PROOF.json.",
+      "Prototype robots noindex is intentional and is not a live-shop SEO finding or change."
+    ]
+  },
+  "pdpCheck": {
+    "status": "PASS",
+    "checkDateUtc": "2026-10-25T12:50:44.572Z",
+    "errors": [],
+    "networkRequests": [],
+    "checks": [
+      {
+        "product": "projector",
+        "introCopies": 1,
+        "shippingLinks": 1,
+        "refundLinks": 1,
+        "shippingAccordion": 0,
+        "emptyAccordion": false,
+        "related": [
+          "aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben",
+          "magnetische-3-in-1-ladestation-613200",
+          "reise-hangematte-aus-fallschirm-nylon-86eb20"
+        ]
+      },
+      {
+        "product": "diffuser",
+        "introCopies": 1,
+        "shippingLinks": 1,
+        "refundLinks": 1,
+        "shippingAccordion": 0,
+        "emptyAccordion": false,
+        "related": [
+          "sternenlicht-projektor-fur-schlafzimmer-732544",
+          "reise-hangematte-aus-fallschirm-nylon-86eb20"
+        ]
+      },
+      {
+        "product": "sirene",
+        "introCopies": 1,
+        "shippingLinks": 1,
+        "refundLinks": 1,
+        "shippingAccordion": 1,
+        "emptyAccordion": false,
+        "related": [
+          "langarmliger-doppelt-reiteriger-trenchcoat-601700"
+        ]
+      },
+      {
+        "product": "trenchcoat",
+        "introCopies": 1,
+        "shippingLinks": 1,
+        "refundLinks": 1,
+        "shippingAccordion": 1,
+        "emptyAccordion": false,
+        "related": [
+          "abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe"
+        ]
+      },
+      {
+        "product": "ladestation",
+        "introCopies": 1,
+        "shippingLinks": 1,
+        "refundLinks": 1,
+        "shippingAccordion": 1,
+        "emptyAccordion": false,
+        "related": [
+          "sternenlicht-projektor-fur-schlafzimmer-732544"
+        ]
+      },
+      {
+        "product": "haengematte",
+        "introCopies": 1,
+        "shippingLinks": 1,
+        "refundLinks": 1,
+        "shippingAccordion": 1,
+        "emptyAccordion": false,
+        "related": [
+          "sternenlicht-projektor-fur-schlafzimmer-732544",
+          "aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben"
+        ]
+      }
+    ]
+  },
+  "rendererProposal": {
+    "repository": "allengchour-glitch/aban-news-landing",
+    "mainCommitRead": "a37f300d13bfe1b9317c7377c4e90ee956b84860",
+    "mainOriginEngineExists": false,
+    "mainProbePath": "automation/cj_video_reel_engine.mjs",
+    "sourceBranch": "claude/luxestyle-status-tztnn1",
+    "sourceCommit": "39f3f9dce201e6cc96af1cb3947e91e76381f15d",
+    "originEngineBlob": "946152fea3b0195f8320d6184cfada9bba9fc110",
+    "scope": "One text correction in existing branch helper copies; no main patch applicability or per-film render commit inferred",
+    "files": [
+      {
+        "path": "automation/reel/overlay.py",
+        "sourceGitBlob": "b582468004c57494c953023da21a3c1c600a3142",
+        "beforeSha256": "ed970a819f1520d5f2fef94ba9ea458e380b560db50b20c9c7b049cff2b6ce14",
+        "afterSha256": "ecce3269bcdd0f7035f461a6ac0af67c119d32b37707e8fd241d07f97e39835d"
+      },
+      {
+        "path": "automation/reel/schnitt.py",
+        "sourceGitBlob": "6b12b6c631ef854f6e7b967fddd0f6a0d301fca8",
+        "beforeSha256": "4d00184200130f1b784518fdc89e3d29b6f5278451c9511a180939039e768726",
+        "afterSha256": "0456de480ea5cf34e3b5eff4d47271567ec6a3e178dae77a3a94610b96b5f4cf"
+      },
+      {
+        "path": "automation/reel/bild_reel.py",
+        "sourceGitBlob": "2d20187ec59a2f6a2859368b81fdd4c93f6290b5",
+        "beforeSha256": "1bd50183b31c089b4e52a9a4bca1edb75640a27752eae27fb0f6fae2f37b0322",
+        "afterSha256": "86290d4208d8d8971af36443b5dedbd32301850da51c9f5023581af7b5b3a43f"
+      }
+    ],
+    "remoteWrites": 0,
+    "renders": 0,
+    "publishersExecuted": 0
+  },
+  "noLiveShopOrSocialWrites": true,
+  "claudeExecution": "unknown"
+}
