@@ -126,6 +126,7 @@ jobs:
           node automation/lib/seo_titel_test.mjs
           node automation/lib/fortura_marke_test.mjs
           node automation/lib/galaxus_treffer_test.mjs
+          node automation/lib/trend_auswahl_test.mjs
           node automation/lib/chf_preis_test.mjs
           node automation/fortura_preisvergleich_test.mjs
           node automation/lib/cj_video_test.mjs
