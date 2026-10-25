@@ -29,6 +29,9 @@ on:
       - 'automation/fortura_preis_kandidaten.mjs'
       - 'automation/fortura_preisvergleich.mjs'
       - 'automation/fortura_preisvergleich_test.mjs'
+      - 'automation/cj_video_produkte.mjs'
+      - 'automation/lib/cj_video.mjs'
+      - 'automation/lib/cj_video_test.mjs'
       - 'dropship/cj_enrich.mjs'
       - 'dropship/cj_enrich_test.mjs'
       - 'dropship/ads/render_brand_video.py'
@@ -76,6 +79,9 @@ jobs:
             automation/fortura_preis_kandidaten.mjs
             automation/fortura_preisvergleich.mjs
             automation/fortura_preisvergleich_test.mjs
+            automation/cj_video_produkte.mjs
+            automation/lib/cj_video.mjs
+            automation/lib/cj_video_test.mjs
             dropship/cj_enrich.mjs
             dropship/cj_enrich_test.mjs
             dropship/ads/render_brand_video.py
@@ -105,6 +111,8 @@ jobs:
           node --check automation/lib/galaxus_treffer.mjs
           node --check automation/fortura_preis_kandidaten.mjs
           node --check automation/fortura_preisvergleich.mjs
+          node --check automation/cj_video_produkte.mjs
+          node --check automation/lib/cj_video.mjs
       - name: Existing helper checks
         run: |
           node automation/lib/shopify_gql_test.mjs
@@ -120,6 +128,7 @@ jobs:
           node automation/lib/galaxus_treffer_test.mjs
           node automation/lib/chf_preis_test.mjs
           node automation/fortura_preisvergleich_test.mjs
+          node automation/lib/cj_video_test.mjs
       - name: CJ failures and publication regressions (mock APIs only)
         run: |
           node automation/lib/cj_response_test.mjs
