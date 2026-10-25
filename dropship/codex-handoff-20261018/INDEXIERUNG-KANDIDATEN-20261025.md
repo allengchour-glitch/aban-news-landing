@@ -23,3 +23,15 @@ Nicht als frisch HTTP-geprüfte Ziele ausgeben: Die zehn URLs wurden aus der ber
 
 Aktueller Zugriffsbefund: Die erfolgreiche begrenzte Windsor-Connectorliste liefert nur google_merchant / 5797470070 / LuxeStyle CH. Search Console ist über diesen Zugang nicht verbunden. Das beweist kein fehlendes Search-Console-Konto des Inhabers. Keine neuen Kennzahlen, Merchant-Statuszähler, Authflows oder operativen Änderungen.
 
+## Nachtrag aus den Inhaberrückmeldungen
+
+«6 ist schon» bezieht sich auf Küchenhelfer aus dieser Zehnerliste. Diese URL deshalb bei weiteren Vorschlägen ebenfalls auslassen. Die Rückmeldung belegt nicht separat, ob die Seite bereits indexiert ist oder ein Antrag gestellt wurde.
+
+Auf die Bitte um zwei weitere Links wurden aus derselben archivierten Navigation genannt:
+
+- https://luxestyle.ch/collections/wanduhren
+- https://luxestyle.ch/collections/hundebetten
+
+Auch diese beiden Ziele sind nur im Menü belegt, nicht frisch auf HTTP oder Google-Indexstatus geprüft. Keine automatische Indexierungsanfrage ausgeführt.
+
+
