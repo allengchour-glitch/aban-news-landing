@@ -115,6 +115,13 @@ ist('lampen: Gegenprobe Bewegungssensor-Schreibtischlampe für Schlafzimmertisch
 ist('mauspads: Mauspad', in_('mauspads', P('Mauspad «Alphorn»', 'Electronics > Electronics Accessories > Computer Accessories > Mouse Pads')), true);
 ist('mauspads: Gegenprobe Maus selbst', in_('mauspads', P('Kabellose Maus ergonomisch', 'Electronics > Electronics Accessories > Computer Components > Input Devices > Mice & Trackballs')), false);
 
+// ── Solar (Mehrfach-Zugehörigkeit: Solar-Rucksack bleibt auch bei Rucksäcken) ──
+ist('solar: Powerbank', in_('solar', P('Solar Powerbank 20000mAh', 'Electronics > Electronics Accessories')), true);
+ist('solar: Solar-Rucksack', in_('solar', P('Solar-Rucksack mit Ladefunktion', 'Luggage & Bags > Backpacks')), true);
+ist('solar: Solarpanel (Zusammensetzung)', in_('solar', P('Faltbares 36W Solarpanel für Outdoor', 'Electronics')), true);
+ist('solar: Gegenprobe Mode-Set «Solare» (italienisch)', in_('solar', P('Chiffon-Set «Solare» · Bluse + Weite Hose', 'Apparel & Accessories > Clothing')), false);
+ist('solar: Gegenprobe Rucksack behält seine andere Kategorie', [in_('solar', P('Solar-Rucksack mit Ladefunktion', 'Luggage & Bags > Backpacks')), in_('schule', P('Solar-Rucksack mit Ladefunktion', 'Luggage & Bags > Backpacks'))], [true, false]);
+
 // ── Retro: ganzes Wort ──
 ist('retro: Retro-Uhr', in_('retro', P('Retro-Glockenwecker aus Metall')), true);
 ist('retro: Gegenprobe «Retrograde» ist kein Retro-Stil', in_('retro', P('Retrograde Amnesie Buch')), false);

@@ -114,6 +114,7 @@ const VR_RE = /(^|[^a-zäöüß])(vr|virtual)[- ]?(brille|headset|reality|contro
 const SMART_BRILLE_RE = /smart(e|en)? ?brille|ar-brille|ki-brille|audio-brille|bluetooth-brille|mt5 ultra ai brille/i;
 const BUERO_LAMPE_RE = ende_('schreibtischlampe|schreibtischleuchte|bürolampe|leselampe|monitor-?lichtleiste|buchlampe|klemmlampe|arbeitsplatzleuchte|desk');
 const NACHT_LAMPE_RE = ende_('nachttisch\\w*|nachtlampe|bettlampe|bett-?leuchte|schlafzimmer\\w*');
+const SOLAR_RE = /(^|[^a-zäöüß])solar(?!e([^a-zäöüß]|$))/i;
 const BEZUG_RE = anfang('kissenbezug|kissenbezüge|kissenhülle|kissenüberzug|bezug|bezüge|hülle|überzug|ueberzug');
 const WANDBILD_RE = anfang('wandbild|leinwandbild|poster|gemälde|ölgemälde|kunstdruck|wandtattoo|wandsticker|wandaufkleber|bilderrahmen|fotowand|diamantmalerei-bild|leinwand');
 
@@ -494,6 +495,12 @@ export const KATEGORIEN = [
     seoBeschreibung: 'Mauspads & Schreibtischunterlagen: Gaming-Pads in vielen Motiven und Grössen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.',
     eltern: ['Elektronik', 'PC & Homeoffice'], nach: 'Tastaturen & Mäuse',
     passt: p => gp(p, 'Electronics > Electronics Accessories > Computer Accessories > Mouse Pads') || (ende_('mauspad|mousepad|mouse pad|schreibtischunterlage|handgelenkauflage').test(p.title) && gp(p, 'Electronics', 'Office Supplies', 'Home & Garden')) },
+
+  { id: 'solar', handle: 'solar-energie', titel: 'Solar & Outdoor-Energie', tag: 'sort-solar', min: 15,
+    beschreibung: 'Solar-Powerbanks, faltbare Solarpanels, Solar-Lichterketten, Gartenleuchten, Notfallradios mit Kurbel und weitere Geräte mit Sonnenenergie — Strom ohne Steckdose.',
+    seoBeschreibung: 'Solar & Outdoor-Energie: Solar-Powerbanks, Solarpanels, Solar-Lichterketten und Notfallradios. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.',
+    eltern: ['Elektronik'], nach: 'Ladegeräte & Powerbanks',
+    passt: p => SOLAR_RE.test(p.title) },
 
   // ── Stil ──
   { id: 'retro', handle: 'retro-vintage', titel: 'Retro & Vintage', tag: 'sort-retro', min: 15,

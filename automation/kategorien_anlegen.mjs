@@ -97,8 +97,11 @@ async function main() {
   // ── 4) Tags ──
   if (PHASE === 'alle' || PHASE === 'tags') {
     // Blöcke zu 20 Aliasen je Mutation, KONKURRENT (die Antwort dauert ~6 s, der Eimer bleibt dabei fast voll). CONC=5.
-    const CONC = Number(process.env.CONC || 5);
+    const CONC = Number(process.env.CONC || 3);
+    const fertigTags = new Set(existsSync('dropship/kategorien_ledger.txt') ? readFileSync('dropship/kategorien_ledger.txt', 'utf8').split('\n').map(l => l.split(' · ')[1]).filter(Boolean).map(l => l.split(' ').slice(0, 2).join(' ')) : []);
+    const mitRetry = async (m) => { for (let v = 0; ; v++) { try { return await q(m, {}); } catch (e) { if (v >= 6 || !/Throttled|THROTTLED|429|5\d\d/.test(e.message)) throw e; await schlaf(15000 * (v + 1)); } } };
     const stapel = async (fn, tag, ids) => {
+      if (process.env.FORCE !== '1' && fertigTags.has(`${fn} ${tag}`)) { console.log(`  übersprungen (laut Ledger fertig): ${fn} ${tag}`); return; }
       const liste = [...ids], bloecke = [];
       for (let i = 0; i < liste.length; i += 20) bloecke.push(liste.slice(i, i + 20));
       let fertig = 0, naechster = 0;
@@ -106,7 +109,7 @@ async function main() {
         while (naechster < bloecke.length) {
           const teil = bloecke[naechster++];
           const m = `mutation{${teil.map((id, n) => `a${n}:${fn}(id:${JSON.stringify(id)},tags:${JSON.stringify([tag])}){userErrors{field message}}`).join(' ')}}`;
-          const d = await q(m, {});
+          const d = await mitRetry(m);
           for (let n = 0; n < teil.length; n++) if (d[`a${n}`].userErrors.length) throw new Error(`${fn} ${tag}: ${JSON.stringify(d[`a${n}`].userErrors)}`);
           fertig += teil.length;
           if (Math.floor(fertig / 500) !== Math.floor((fertig - teil.length) / 500)) console.log(`  … ${tag}: ${fertig}/${liste.length}`);
